@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-05 01:20+0200\n"
+"POT-Creation-Date: 2008-08-08 20:23+0200\n"
 "PO-Revision-Date: 2007-11-08 01:45+0100\n"
 "Last-Translator: \n"
 "Language-Team:  <it@li.org>\n"
@@ -22,24 +22,24 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/dcc/requests.cpp:856
+#: src/modules/dcc/requests.cpp:857
 msgid "\"any\""
 msgstr "\"qualsiasi\""
 
-#: src/modules/dcc/send.cpp:1245
+#: src/modules/dcc/send.cpp:1247
 msgid "%1"
 msgstr "%1"
 
-#: src/modules/dcc/send.cpp:1234
-#: src/modules/dcc/send.cpp:1241
+#: src/modules/dcc/send.cpp:1236
+#: src/modules/dcc/send.cpp:1243
 msgid "%1 of %2 (%3%)"
 msgstr "%1 di %2 (%3%)"
 
-#: src/modules/dcc/requests.cpp:691
+#: src/modules/dcc/requests.cpp:692
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
 msgstr "%Q [%Q@%Q] è pronto per ricevere il file \"%s\""
 
-#: src/modules/dcc/dialogs.cpp:67
+#: src/modules/dcc/dialogs.cpp:72
 msgid "&Accept"
 msgstr "&Accetta"
 
@@ -84,11 +84,11 @@ msgstr "&Poligoni"
 msgid "&Rectangle"
 msgstr "&Rettangolo"
 
-#: src/modules/dcc/dialogs.cpp:72
+#: src/modules/dcc/dialogs.cpp:77
 msgid "&Reject"
 msgstr "&Rifiuta"
 
-#: src/modules/dcc/dialogs.cpp:129
+#: src/modules/dcc/dialogs.cpp:139
 msgid "&Rename"
 msgstr "&Rinomina"
 
@@ -104,8 +104,8 @@ msgstr "&Forma"
 msgid "&Triangle"
 msgstr "&Triangolo"
 
-#: src/modules/dcc/requests.cpp:771
-#: src/modules/dcc/requests.cpp:941
+#: src/modules/dcc/requests.cpp:772
+#: src/modules/dcc/requests.cpp:942
 msgid "(unknown)"
 msgstr "(sconosciuto)"
 
@@ -115,7 +115,7 @@ msgstr "(sconosciuto)"
 msgid "-c requires -i and -p"
 msgstr "-c richiede -i e -p"
 
-#: src/modules/dcc/broker.cpp:267
+#: src/modules/dcc/broker.cpp:268
 msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
@@ -123,7 +123,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> richiede una<br><b>Connessione Diretta con il Client</b> "
 "in modalità <b>%4</b>.<br>"
 
-#: src/modules/dcc/broker.cpp:408
+#: src/modules/dcc/broker.cpp:409
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
@@ -133,7 +133,7 @@ msgstr ""
 "in modalità <b>CANVAS</b>.<br>Il target della connessione sarà l'host <b>%4</"
 "b> sulla porta <b>%5</b><br>"
 
-#: src/modules/dcc/broker.cpp:338
+#: src/modules/dcc/broker.cpp:339
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
@@ -143,7 +143,7 @@ msgstr ""
 "in modalità <b>VOICE</b>.<br>Il target della connessione sarà l'host <b>%4</"
 "b> sulla porta <b>%5</b><br>"
 
-#: src/modules/dcc/broker.cpp:497
+#: src/modules/dcc/broker.cpp:498
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
@@ -151,7 +151,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> vuole inviarti il file '<b>%4</b>' di <b>%5</b>byte.<br>Il "
 "target della connessione sarà l'host <b>%6</b> sulla porta <b>%7</b><br>"
 
-#: src/modules/dcc/broker.cpp:510
+#: src/modules/dcc/broker.cpp:511
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
@@ -159,7 +159,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> vuole inviarti il file'<b>%4</b>', di <b>%5</b>byte.<br>Tu "
 "sarai la parte passiva della connessione.<br>"
 
-#: src/modules/dcc/broker.cpp:523
+#: src/modules/dcc/broker.cpp:524
 msgid ""
 "<center><b>Note:</b></center>The file appears to be an avatar that you have "
 "requested. You should not change its filename. Save it in a location where "
@@ -179,26 +179,26 @@ msgstr ""
 "l'opzione <tt>boolAutoAcceptIncomingAvatars</tt> come vera.<br>"
 
 #: src/modules/dcc/libkvidcc.cpp:634
-#: src/modules/dcc/requests.cpp:448
-#: src/modules/dcc/requests.cpp:738
+#: src/modules/dcc/requests.cpp:449
+#: src/modules/dcc/requests.cpp:739
 msgid "<unknown size>"
 msgstr "<dimensione sconosciuta>"
 
-#: src/modules/dcc/send.cpp:940
+#: src/modules/dcc/send.cpp:942
 msgid "Abort"
 msgstr "Annullato"
 
-#: src/modules/dcc/send.cpp:911
-#: src/modules/dcc/send.cpp:922
+#: src/modules/dcc/send.cpp:913
+#: src/modules/dcc/send.cpp:924
 msgid "Aborted"
 msgstr "Annullato"
 
-#: src/modules/dcc/send.cpp:1790
+#: src/modules/dcc/send.cpp:1792
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr ""
 "Accettata richiesta di RESUME: il trasferimento inizierà dalla posizione %1"
 
-#: src/modules/dcc/requests.cpp:957
+#: src/modules/dcc/requests.cpp:958
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
@@ -206,7 +206,7 @@ msgstr ""
 "Accettata richesta di file da %Q [%Q@%Q] per '%s' (file reale: %Q), offerta "
 "DCC %Q"
 
-#: src/modules/dcc/requests.cpp:900
+#: src/modules/dcc/requests.cpp:901
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %s since we can't accept incoming connections (user option)"
@@ -215,7 +215,7 @@ msgstr ""
 "DCC %s poichè impossibile accettare connessioni in entrata (opzione "
 "dell'utente)"
 
-#: src/modules/dcc/voice.cpp:925
+#: src/modules/dcc/voice.cpp:934
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Il codec attualmente in uso è '%s'"
@@ -224,7 +224,7 @@ msgstr "Il codec attualmente in uso è '%s'"
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Tento di stabilire una connessione DCC %1 passiva"
 
-#: src/modules/dcc/chat.cpp:157
+#: src/modules/dcc/chat.cpp:158
 #, c-format
 msgid "Attempting a passive DCC %s connection"
 msgstr "Tento di stabilire una connessione DCC %s passiva "
@@ -233,7 +233,7 @@ msgstr "Tento di stabilire una connessione DCC %s passiva "
 msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Tento una connessione DCC CANVAS passiva"
 
-#: src/modules/dcc/voice.cpp:732
+#: src/modules/dcc/voice.cpp:739
 msgid "Attempting a passive DCC VOICE connection"
 msgstr "Tento di stabilire una connessione DCC VOICE passiva "
 
@@ -241,7 +241,7 @@ msgstr "Tento di stabilire una connessione DCC VOICE passiva "
 msgid "Attempting an active DCC %1 connection"
 msgstr "Tento di stabilire una connessione DCC %1 attiva"
 
-#: src/modules/dcc/chat.cpp:166
+#: src/modules/dcc/chat.cpp:167
 #, c-format
 msgid "Attempting an active DCC %s connection"
 msgstr "Tento di stabilire una connessione DCC %s attiva"
@@ -250,20 +250,20 @@ msgstr "Tento di stabilire una connessione DCC %s attiva"
 msgid "Attempting an active DCC CANVAS connection"
 msgstr "Tento una connessione DCC CANVAS attiva"
 
-#: src/modules/dcc/voice.cpp:737
+#: src/modules/dcc/voice.cpp:744
 msgid "Attempting an active DCC VOICE connection"
 msgstr "Tento di stabilire una connessione DCC VOICE attiva"
 
-#: src/modules/dcc/broker.cpp:551
+#: src/modules/dcc/broker.cpp:552
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
 msgstr ""
 "Accetto in automatico la richiesta di DCC %Q da %Q!%Q@%Q per il file %Q"
 
-#: src/modules/dcc/broker.cpp:625
+#: src/modules/dcc/broker.cpp:626
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr "Salvo automaticamente il file DCC %Q come \r![!dbl]play $0\r%Q\r"
 
-#: src/modules/dcc/send.cpp:1273
+#: src/modules/dcc/send.cpp:1275
 msgid "Avg:"
 msgstr "Media:"
 
@@ -277,12 +277,12 @@ msgstr ""
 "nella finestra delle opzioni, disabilitando l'opzione stessa (la prossima "
 "DCC sarà in grado di funzionare)"
 
-#: src/modules/dcc/broker.cpp:198
-#: src/modules/dcc/broker.cpp:812
+#: src/modules/dcc/broker.cpp:199
+#: src/modules/dcc/broker.cpp:813
 msgid "Can't open file %Q for reading"
 msgstr "Impossibile aprire il file %Q in lettura"
 
-#: src/modules/dcc/requests.cpp:533
+#: src/modules/dcc/requests.cpp:534
 #, c-format
 msgid ""
 "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
@@ -290,7 +290,7 @@ msgstr ""
 "Impossibile procedere con DCC RECV: trasferimento non inizializzato per il "
 "file %s sulla porta %s"
 
-#: src/modules/dcc/requests.cpp:572
+#: src/modules/dcc/requests.cpp:573
 #, c-format
 msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
@@ -303,28 +303,28 @@ msgstr ""
 msgid "Can't retrieve a suitable local IPV4 address"
 msgstr "Impossibile trovare un indirizzo IPv4 locale disponibile"
 
-#: src/modules/dcc/broker.cpp:188
+#: src/modules/dcc/broker.cpp:189
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr ""
 "Impossibile inviare la richiesta di DCC %Q a %Q: la connessione IRC è stata "
 "terminata"
 
-#: src/modules/dcc/dialogs.cpp:142
-#: src/modules/dcc/send.cpp:1844
+#: src/modules/dcc/dialogs.cpp:152
+#: src/modules/dcc/send.cpp:1851
 msgid "Cancel"
 msgstr "Annulla"
 
-#: src/modules/dcc/chat.cpp:298
-#: src/modules/dcc/chat.cpp:384
+#: src/modules/dcc/chat.cpp:299
+#: src/modules/dcc/chat.cpp:385
 msgid "Cannot send data: No active connection"
 msgstr "Impossibile inviare dati: nessuna connessione attiva"
 
-#: src/modules/dcc/broker.cpp:612
+#: src/modules/dcc/broker.cpp:613
 msgid "Choose Files to Save - KVIrc"
 msgstr "Scegli i Files da Salvare - KVIrc"
 
-#: src/modules/dcc/broker.cpp:158
-#: src/modules/dcc/broker.cpp:775
+#: src/modules/dcc/broker.cpp:159
+#: src/modules/dcc/broker.cpp:776
 msgid "Choose Files to Send - KVIrc"
 msgstr "Scegli i Files da Inviare - KVIrc"
 
@@ -333,56 +333,56 @@ msgstr "Scegli i Files da Inviare - KVIrc"
 msgid "Concurrent transfer limit reached (%u of %u transfers running)"
 msgstr "Limite dei trasferimenti raggiunto (%u di %u trasferimenti attivi)"
 
-#: src/modules/dcc/send.cpp:932
+#: src/modules/dcc/send.cpp:934
 msgid "Configure Bandwidth..."
 msgstr "Configurazione della larghezza di banda..."
 
-#: src/modules/dcc/send.cpp:1818
+#: src/modules/dcc/send.cpp:1820
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr "Configurazione larghezza di banda per il trasferimento DCC %1"
 
-#: src/modules/dcc/send.cpp:1679
+#: src/modules/dcc/send.cpp:1681
 msgid "Connected to %1:%2"
 msgstr "Connesso a %1:%2"
 
-#: src/modules/dcc/voice.cpp:905
-#: src/modules/dcc/chat.cpp:517
+#: src/modules/dcc/voice.cpp:914
+#: src/modules/dcc/chat.cpp:518
 #: src/modules/dcc/canvas.cpp:281
 msgid "Connected to %Q:%Q"
 msgstr "Connesso a %Q:%Q"
 
-#: src/modules/dcc/send.cpp:1472
+#: src/modules/dcc/send.cpp:1474
 msgid "Contacting host %1 on port %2"
 msgstr "Contatto l'host %1 sulla porta %2"
 
-#: src/modules/dcc/voice.cpp:747
-#: src/modules/dcc/chat.cpp:180
+#: src/modules/dcc/voice.cpp:754
+#: src/modules/dcc/chat.cpp:181
 #: src/modules/dcc/canvas.cpp:107
 msgid "Contacting host %Q on port %Q"
 msgstr "Contatto l'host %Q sulla porta %Q"
 
-#: src/modules/dcc/broker.cpp:287
-#: src/modules/dcc/broker.cpp:538
+#: src/modules/dcc/broker.cpp:288
+#: src/modules/dcc/broker.cpp:539
 msgid "DCC %1 Request - KVIrc"
 msgstr "Richiesta DCC %1 - KVIrc"
 
-#: src/modules/dcc/send.cpp:1555
+#: src/modules/dcc/send.cpp:1557
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "Richiesta di DCC %1 non inviata: attendo una connessione manuale"
 
-#: src/modules/dcc/chat.cpp:489
+#: src/modules/dcc/chat.cpp:490
 msgid "DCC %Q failed: %Q"
 msgstr "DCC %Q fallita: %Q"
 
-#: src/modules/dcc/chat.cpp:234
+#: src/modules/dcc/chat.cpp:235
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "Richiesta di DCC %Q non inviata, attendo una connessione manuale"
 
-#: src/modules/dcc/send.cpp:1617
+#: src/modules/dcc/send.cpp:1619
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "Trasferimento DCC %s con %Q@%Q:%Q completato: \r![!dbl]play $0\r%s\r"
 
-#: src/modules/dcc/broker.cpp:414
+#: src/modules/dcc/broker.cpp:415
 msgid "DCC CANVAS request"
 msgstr "Richiesta DCC CANVAS"
 
@@ -390,16 +390,16 @@ msgstr "Richiesta DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "Richiesta di DCC CANVAS non inviata: attendo una connessione manuale."
 
-#: src/modules/dcc/voice.cpp:896
+#: src/modules/dcc/voice.cpp:905
 #: src/modules/dcc/canvas.cpp:276
 msgid "DCC Failed: %Q"
 msgstr "DCC Fallita: %Q"
 
-#: src/modules/dcc/broker.cpp:344
+#: src/modules/dcc/broker.cpp:345
 msgid "DCC VOICE request"
 msgstr "Richiesta DCC VOICE"
 
-#: src/modules/dcc/voice.cpp:767
+#: src/modules/dcc/voice.cpp:776
 msgid "DCC VOICE request not sent: awaiting manual connections"
 msgstr "Richiesta di DCC VOICE non inviata: attendo una connessione manuale"
 
@@ -419,20 +419,20 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Trasferimento dei dati terminato 30 secondi fa, chiudo la connessione"
 
-#: src/modules/dcc/voice.cpp:813
-#: src/modules/dcc/chat.cpp:399
+#: src/modules/dcc/voice.cpp:822
+#: src/modules/dcc/chat.cpp:400
 msgid "ERROR: %Q"
 msgstr "ERRORE: %Q"
 
-#: src/modules/dcc/broker.cpp:741
+#: src/modules/dcc/broker.cpp:742
 msgid "File %s exists, auto-renaming to %Q"
 msgstr "Il file %s esiste: lo rinomino automaticamente in %Q"
 
-#: src/modules/dcc/dialogs.cpp:149
+#: src/modules/dcc/dialogs.cpp:159
 msgid "File Already Exists - KVIrc"
 msgstr "Il file esiste già - KVIrc"
 
-#: src/modules/dcc/send.cpp:1130
+#: src/modules/dcc/send.cpp:1132
 msgid "From: "
 msgstr "Da: "
 
@@ -456,16 +456,16 @@ msgstr "Ignora e notifica il fallimento"
 msgid "Input buffer"
 msgstr "Input buffer"
 
-#: src/modules/dcc/voice.cpp:871
+#: src/modules/dcc/voice.cpp:880
 #, c-format
 msgid "Input buffer: %d bytes"
 msgstr "Input buffer: %d bytes"
 
-#: src/modules/dcc/send.cpp:1781
+#: src/modules/dcc/send.cpp:1783
 msgid "Internal error in RESUME request"
 msgstr "Errore interno nella richiesta di RESUME"
 
-#: src/modules/dcc/requests.cpp:195
+#: src/modules/dcc/requests.cpp:196
 #, c-format
 msgid "Invalid IP address %s"
 msgstr "Indirizzo IP %s non valido"
@@ -475,14 +475,14 @@ msgstr "Indirizzo IP %s non valido"
 msgid "Invalid IP address in old format %s"
 msgstr "Vecchio formato dell'indirizzo IP %s non valido"
 
-#: src/modules/dcc/requests.cpp:637
+#: src/modules/dcc/requests.cpp:638
 #, c-format
 msgid "Invalid RECV request: Position %u is is larger than file size"
 msgstr ""
 "Richiesta di RECV non valida: la posizione %u è più grande della dimensione "
 "del file"
 
-#: src/modules/dcc/send.cpp:1786
+#: src/modules/dcc/send.cpp:1788
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr ""
 "Richiesta di RESUME non valida: la posizione %1 è più grande della "
@@ -497,7 +497,7 @@ msgstr "Il codec specificato non è valido, utilizzo quello predefinito 'adpcm'"
 msgid "Invalid port number %s"
 msgstr "Numero della porta %s non valido"
 
-#: src/modules/dcc/requests.cpp:559
+#: src/modules/dcc/requests.cpp:560
 #, c-format
 msgid "Invalid resume position argument '%s'"
 msgstr "Argomento della posizione del resume non valido '%s'"
@@ -507,51 +507,51 @@ msgid "Invalid sample rate specified, defaulting to 8000"
 msgstr ""
 "Il sample-rate specificato non è valido, utilizzo quello predefinito di 8000"
 
-#: src/modules/dcc/requests.cpp:326
+#: src/modules/dcc/requests.cpp:327
 msgid "It seems that I haven't requested this dcc chat"
 msgstr "Sembra che non ho richiesto questa dcc chat"
 
-#: src/modules/dcc/send.cpp:1821
+#: src/modules/dcc/send.cpp:1823
 msgid "Limit download bandwidth to"
 msgstr "Limita la banda in download a"
 
-#: src/modules/dcc/send.cpp:1821
+#: src/modules/dcc/send.cpp:1823
 msgid "Limit upload bandwidth to"
 msgstr "Limita la banda in upload a"
 
-#: src/modules/dcc/send.cpp:1479
+#: src/modules/dcc/send.cpp:1481
 msgid "Listening on interface %1 port %2"
 msgstr "In ascolto sull'interfaccia %1 sulla porta %2"
 
-#: src/modules/dcc/voice.cpp:750
-#: src/modules/dcc/chat.cpp:182
+#: src/modules/dcc/voice.cpp:757
+#: src/modules/dcc/chat.cpp:183
 #: src/modules/dcc/canvas.cpp:83
 msgid "Listening on interface %Q port %Q"
 msgstr "In ascolto sull'interfaccia %Q sulla porta %Q"
 
-#: src/modules/dcc/send.cpp:1680
+#: src/modules/dcc/send.cpp:1682
 msgid "Local end is %1:%2"
 msgstr "L'indirizzo locale è %1:%2"
 
-#: src/modules/dcc/voice.cpp:907
-#: src/modules/dcc/chat.cpp:519
+#: src/modules/dcc/voice.cpp:916
+#: src/modules/dcc/chat.cpp:520
 #: src/modules/dcc/canvas.cpp:283
 msgid "Local end is %Q:%Q"
 msgstr "L'indirizzo locale è %Q:%Q"
 
-#: src/modules/dcc/chat.cpp:242
-#: src/modules/dcc/send.cpp:1566
+#: src/modules/dcc/chat.cpp:243
+#: src/modules/dcc/send.cpp:1568
 msgid "Low-level transport connection established"
 msgstr "Connessione stabilita ad un basso livello di trasporto dati"
 
-#: src/modules/dcc/requests.cpp:855
+#: src/modules/dcc/requests.cpp:856
 msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
 msgstr ""
 "Nessun file offerto chiamato '%s' (con dimensione %s) è disponibile per %Q [%"
 "Q@%Q]"
 
-#: src/modules/dcc/requests.cpp:777
-#: src/modules/dcc/requests.cpp:927
+#: src/modules/dcc/requests.cpp:778
+#: src/modules/dcc/requests.cpp:928
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr "Nessuna interfaccia disponibile in ascolto: provo a continuare..."
 
@@ -559,7 +559,7 @@ msgstr "Nessuna interfaccia disponibile in ascolto: provo a continuare..."
 msgid "No suitable interfaces to listen on, use -i"
 msgstr "Nessuna interfaccia su cui stare in ascolto, usa -i"
 
-#: src/modules/dcc/send.cpp:1839
+#: src/modules/dcc/send.cpp:1846
 msgid "OK"
 msgstr "OK"
 
@@ -573,41 +573,41 @@ msgstr ""
 msgid "Output buffer"
 msgstr "Output buffer"
 
-#: src/modules/dcc/voice.cpp:873
+#: src/modules/dcc/voice.cpp:882
 #, c-format
 msgid "Output buffer: %d bytes"
 msgstr "Output buffer: %d bytes"
 
-#: src/modules/dcc/dialogs.cpp:133
+#: src/modules/dcc/dialogs.cpp:143
 msgid "Over&write"
 msgstr "So&vrascrivi"
 
-#: src/modules/dcc/send.cpp:1750
+#: src/modules/dcc/send.cpp:1752
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME accettato, il trasferimento inizierà dalla posizione %1"
 
-#: src/modules/dcc/dialogs.cpp:137
+#: src/modules/dcc/dialogs.cpp:147
 msgid "Re&sume"
 msgstr "Ri&prendi"
 
-#: src/modules/dcc/send.cpp:934
+#: src/modules/dcc/send.cpp:936
 msgid "Resend DCC"
 msgstr "Reinvio DCC"
 
-#: src/modules/dcc/send.cpp:936
+#: src/modules/dcc/send.cpp:938
 msgid "Resend RevDCC"
 msgstr "Reinvio RevDCC"
 
-#: src/modules/dcc/send.cpp:935
+#: src/modules/dcc/send.cpp:937
 msgid "Resend TDCC"
 msgstr "Reinvio TDCC"
 
-#: src/modules/dcc/send.cpp:1553
+#: src/modules/dcc/send.cpp:1555
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 "Inviata richiesta di DCC %1 a %2, aspetto la connessione del client remoto..."
 
-#: src/modules/dcc/chat.cpp:231
+#: src/modules/dcc/chat.cpp:232
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
 msgstr ""
 "Inviata richiesta di DCC %Q a %Q, attendo la connessione del client remoto..."
@@ -623,7 +623,7 @@ msgstr ""
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "Inviata richiesta di DCC RESUME a %1, attendo ACCEPT"
 
-#: src/modules/dcc/voice.cpp:765
+#: src/modules/dcc/voice.cpp:774
 msgid ""
 "Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
 "connect..."
@@ -640,12 +640,12 @@ msgstr "Tento di stabilire una connessione"
 msgid "Slot limit reached (%u slots of %u)"
 msgstr "Limite degli slots raggiunto (%u slots su %u)"
 
-#: src/modules/dcc/send.cpp:1258
+#: src/modules/dcc/send.cpp:1260
 msgid "Spd:"
 msgstr "Velocità:"
 
-#: src/modules/dcc/chat.cpp:243
-#: src/modules/dcc/send.cpp:1567
+#: src/modules/dcc/chat.cpp:244
+#: src/modules/dcc/send.cpp:1569
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Avvio del protocollo di scambio con Socket sicuro"
 
@@ -654,7 +654,7 @@ msgstr "Avvio del protocollo di scambio con Socket sicuro"
 msgid "TRANSFER %d"
 msgstr "TRASFERIMENTO %d"
 
-#: src/modules/dcc/requests.cpp:1014
+#: src/modules/dcc/requests.cpp:1015
 #, c-format
 msgid ""
 "The above request appears to be broken: Invalid sample-rate '%s', defaulting "
@@ -663,7 +663,7 @@ msgstr ""
 "La richiesta fatta è sbagliata: sample-rate '%s' non valido: utilizzo quello "
 "predefinito (8000)"
 
-#: src/modules/dcc/requests.cpp:991
+#: src/modules/dcc/requests.cpp:992
 msgid ""
 "The above request cannot be accepted: DCC VOICE support not enabled at "
 "compilation time "
@@ -671,12 +671,12 @@ msgstr ""
 "La richiesta fatta non può essere accettata: DCC VOICE non abilitato al "
 "momento della compilazione "
 
-#: src/modules/dcc/requests.cpp:1001
+#: src/modules/dcc/requests.cpp:1002
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "La richiesta fatta non può essere accettata: codec non supportato '%s'"
 
-#: src/modules/dcc/requests.cpp:597
+#: src/modules/dcc/requests.cpp:598
 msgid ""
 "The above request has resume file size missing, assuming a resume file size "
 "of 0"
@@ -684,9 +684,9 @@ msgstr ""
 "Manca la dimensione del file nella richiesta di resume: assumo la dimensione "
 "del resume come 0"
 
-#: src/modules/dcc/requests.cpp:456
-#: src/modules/dcc/requests.cpp:607
-#: src/modules/dcc/requests.cpp:746
+#: src/modules/dcc/requests.cpp:457
+#: src/modules/dcc/requests.cpp:608
+#: src/modules/dcc/requests.cpp:747
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -694,7 +694,7 @@ msgstr ""
 "La richiesta è sbagliata: il nome del file contiene degli elementi del "
 "percorso; rimuovo il percorso e tento di continuare"
 
-#: src/modules/dcc/requests.cpp:446
+#: src/modules/dcc/requests.cpp:447
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number, trying to continue"
@@ -702,7 +702,7 @@ msgstr ""
 "La richiesta è sbagliata: il quarto parametro deve essere la dimensione del "
 "file ma non sembra essere un numero; provo a continuare"
 
-#: src/modules/dcc/requests.cpp:736
+#: src/modules/dcc/requests.cpp:737
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -710,7 +710,7 @@ msgstr ""
 "La richiesta è sbagliata: il quarto parametro deve essere la dimensione del "
 "file ma non sembra essere un numero; provo a continuare"
 
-#: src/modules/dcc/requests.cpp:262
+#: src/modules/dcc/requests.cpp:263
 #, c-format
 msgid ""
 "The above request is broken: The second parameter is '%s' and should be "
@@ -719,7 +719,7 @@ msgstr ""
 "La richiesta è sbagliata: il secondo parametro è '%s' mentre dovrebbe essere "
 "'chat'; provo a continuare"
 
-#: src/modules/dcc/requests.cpp:325
+#: src/modules/dcc/requests.cpp:326
 msgid ""
 "The above request is broken: it looks like a zero port tag acknowledge but I "
 "have either never seen this tag or it was sent more than 120 seconds ago"
@@ -727,16 +727,16 @@ msgstr ""
 "La richiesta è fallita: sembra un tag di accettazione su porta zero ma non "
 "ho mai visto questo tag oppure fu spedita più di 120 secondi fa"
 
-#: src/modules/dcc/broker.cpp:282
+#: src/modules/dcc/broker.cpp:283
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
 msgstr ""
 "Il target della connessione sarà l'host <b>%1</b> sulla porta <b>%2</b><br>"
 
-#: src/modules/dcc/broker.cpp:272
+#: src/modules/dcc/broker.cpp:273
 msgid "The connection will be secured using SSL.<br>"
 msgstr "La connessione sarà resa sicura utilizzando SSL.<br>"
 
-#: src/modules/dcc/chat.cpp:340
+#: src/modules/dcc/chat.cpp:341
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
@@ -750,7 +750,7 @@ msgstr ""
 msgid "The current window has no associated DCC session"
 msgstr "La finestra corrente non ha sessioni DCC associate"
 
-#: src/modules/dcc/broker.cpp:659
+#: src/modules/dcc/broker.cpp:660
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
@@ -760,7 +760,7 @@ msgstr ""
 "<br><b>sovrascriverlo</b> e <b>rinominare automaticamente</b> il nuovo file, "
 "o considerarlo come un download incompleto e attivare il <b>resume</b>?"
 
-#: src/modules/dcc/broker.cpp:671
+#: src/modules/dcc/broker.cpp:672
 msgid ""
 "The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
 "you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
@@ -771,7 +771,7 @@ msgstr ""
 "entrata, o considerarlo come un download incompleto e attivare la modalità "
 "<b>resume</b>?"
 
-#: src/modules/dcc/chat.cpp:443
+#: src/modules/dcc/chat.cpp:444
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
@@ -779,32 +779,32 @@ msgstr ""
 "Il seguente messaggio sembra essere crittato, ma il motore di cifratura non "
 "riesce a decrittarlo: %Q"
 
-#: src/modules/dcc/chat.cpp:209
-#: src/modules/dcc/send.cpp:1507
+#: src/modules/dcc/chat.cpp:210
+#: src/modules/dcc/send.cpp:1509
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "L'indirizzo IP locale è privato, non c'è nessun server IRC da cui "
 "determinarlo"
 
-#: src/modules/dcc/chat.cpp:206
-#: src/modules/dcc/send.cpp:1504
+#: src/modules/dcc/chat.cpp:207
+#: src/modules/dcc/send.cpp:1506
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr ""
 "L'indirizzo IP locale è privato, impossibile determinarlo dal server IRC"
 
-#: src/modules/dcc/send.cpp:1502
+#: src/modules/dcc/send.cpp:1504
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "L'indirizzo IP locale è privato, lo determino dal server IRC: %1"
 
-#: src/modules/dcc/chat.cpp:204
+#: src/modules/dcc/chat.cpp:205
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "L'indirizzo IP locale è privato, lo determino dal server IRC: %s"
 
-#: src/modules/dcc/requests.cpp:697
+#: src/modules/dcc/requests.cpp:698
 #, c-format
 msgid "The remote client is listening on interface %s and port %s"
 msgstr "Il client remoto è in ascolto sull'interfaccia %s e porta %s"
@@ -827,7 +827,7 @@ msgstr ""
 "Questo eseguibile è stato compilato senza il supporto SSL, opzione -s "
 "ignorata"
 
-#: src/modules/dcc/requests.cpp:274
+#: src/modules/dcc/requests.cpp:275
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC CHAT is not available"
@@ -835,7 +835,7 @@ msgstr ""
 "Questo eseguibile è stato compilato senza il supporto SSL: l'estensione SSL "
 "per DCC CHAT non è disponibile"
 
-#: src/modules/dcc/requests.cpp:843
+#: src/modules/dcc/requests.cpp:844
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC GET is not available"
@@ -843,7 +843,7 @@ msgstr ""
 "Questo eseguibile è stato compilato senza il supporto SSL: l'estensione SSL "
 "per DCC GET non è disponibile"
 
-#: src/modules/dcc/requests.cpp:621
+#: src/modules/dcc/requests.cpp:622
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RECV is not available"
@@ -851,7 +851,7 @@ msgstr ""
 "Questo eseguibile è stato compilato senza il supporto SSL: l'estensione SSL "
 "per DCC RECV non è disponibile"
 
-#: src/modules/dcc/requests.cpp:760
+#: src/modules/dcc/requests.cpp:761
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RSEND is not available"
@@ -859,7 +859,7 @@ msgstr ""
 "Questo eseguibile è stato compilato senza il supporto SSL: l'estensione SSL "
 "non è disponibile per DCC RSEND"
 
-#: src/modules/dcc/requests.cpp:470
+#: src/modules/dcc/requests.cpp:471
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC SEND is not available"
@@ -885,7 +885,7 @@ msgstr ""
 "Questa finestra non ha un Contesto IRC associato (ne necessiti almeno uno, a "
 "meno che tu non scelga l'opzione -c o -n)"
 
-#: src/modules/dcc/send.cpp:1131
+#: src/modules/dcc/send.cpp:1133
 msgid "To: "
 msgstr "A: "
 
@@ -893,21 +893,21 @@ msgstr "A: "
 msgid "Too many pending connections"
 msgstr "Troppe connessioni in sospeso"
 
-#: src/modules/dcc/send.cpp:1343
+#: src/modules/dcc/send.cpp:1345
 msgid "Transfer Log"
 msgstr "Log del Trasferimento"
 
-#: src/modules/dcc/send.cpp:1632
+#: src/modules/dcc/send.cpp:1634
 msgid "Transfer completed"
 msgstr "Trasferimento completato"
 
-#: src/modules/dcc/send.cpp:921
-#: src/modules/dcc/send.cpp:1592
-#: src/modules/dcc/send.cpp:1670
+#: src/modules/dcc/send.cpp:923
+#: src/modules/dcc/send.cpp:1594
+#: src/modules/dcc/send.cpp:1672
 msgid "Transfer failed: "
 msgstr "Trasferimento fallito: "
 
-#: src/modules/dcc/send.cpp:1724
+#: src/modules/dcc/send.cpp:1726
 msgid "Transferring data"
 msgstr "Trasferimento dati"
 
@@ -919,12 +919,12 @@ msgstr "Impossibile trovare l'indirizzo dell'interfaccia %Q"
 msgid "Unable to process the above request: %Q, %Q"
 msgstr "Impossibile processare la richiesta: %Q, %Q"
 
-#: src/modules/dcc/requests.cpp:1158
+#: src/modules/dcc/requests.cpp:1159
 #, c-format
 msgid "Unknown DCC type '%s'"
 msgstr "Tipo di DCC sconosciuto '%s'"
 
-#: src/modules/dcc/requests.cpp:704
+#: src/modules/dcc/requests.cpp:705
 msgid ""
 "Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
 "to send the file (or double-click on the socket)"
@@ -932,7 +932,7 @@ msgstr ""
 "Usa %c\r [!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
 "per inviare il file (o doppio click sul link)"
 
-#: src/modules/dcc/voice.cpp:1009
+#: src/modules/dcc/voice.cpp:1018
 #, c-format
 msgid "Volume: %i"
 msgstr "Volume: %i"
@@ -973,7 +973,7 @@ msgstr ""
 "ATTENZIONE: impossibile impostare il sample-rate richiesto (%d): il "
 "dispositivo ha utilizzato quello più simile (%d)"
 
-#: src/modules/dcc/broker.cpp:278
+#: src/modules/dcc/broker.cpp:279
 msgid "You will be the passive side of the connection.<br>"
 msgstr "Sarai il lato passivo della connessione.<br>"
 
@@ -985,16 +985,16 @@ msgstr ""
 "Non sei connesso ad un server (hai bisogno di una connessione attiva a meno "
 "che tu non scelga l'opzione -c o -n)"
 
-#: src/modules/dcc/send.cpp:1574
+#: src/modules/dcc/send.cpp:1576
 msgid "[SSL ERROR]: %1"
 msgstr "[ERRORE SSL]: %1"
 
-#: src/modules/dcc/chat.cpp:251
+#: src/modules/dcc/chat.cpp:252
 #, c-format
 msgid "[SSL ERROR]: %s"
 msgstr "[ERRORE SSL]: %s"
 
-#: src/modules/dcc/send.cpp:1835
+#: src/modules/dcc/send.cpp:1842
 msgid "bytes/sec"
 msgstr "bytes/sec"
 

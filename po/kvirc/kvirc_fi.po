@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-05 01:20+0200\n"
+"POT-Creation-Date: 2008-08-08 20:23+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -344,7 +344,7 @@ msgstr "%d osumaa: %Q"
 msgid "%d of %d"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1092
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1090
 #, c-format
 msgid "%d properties listed"
 msgstr "%d ominaisuutta listattu"
@@ -439,7 +439,7 @@ msgstr ""
 msgid "&Define Custom Colors >>"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:778
+#: src/kvirc/ui/kvi_window.cpp:749
 msgid "&Dock"
 msgstr "&Telakoi"
 
@@ -514,7 +514,7 @@ msgstr ""
 msgid "&Regular expression"
 msgstr "&Säännöllinen lauseke"
 
-#: src/kvirc/ui/kvi_window.cpp:789
+#: src/kvirc/ui/kvi_window.cpp:760
 msgid "&Restore"
 msgstr "P&alauta"
 
@@ -550,7 +550,7 @@ msgstr "&Työkalut"
 msgid "&Underline"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:775
+#: src/kvirc/ui/kvi_window.cpp:746
 msgid "&Undock"
 msgstr "&Irrota"
 
@@ -568,7 +568,7 @@ msgstr "&Kyllä"
 msgid "'item', 'popup', 'label' or 'separator' keyword expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:242
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:239
 msgid "'unset' command used without a variable list"
 msgstr ""
 
@@ -610,23 +610,23 @@ msgstr "(Tuntematon)"
 msgid "(unknown)"
 msgstr "(tuntematon)"
 
-#: src/kvirc/kernel/kvi_options.cpp:729
+#: src/kvirc/kernel/kvi_options.cpp:731
 msgid "+I mode change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:725
+#: src/kvirc/kernel/kvi_options.cpp:727
 msgid "+b mode change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:727
+#: src/kvirc/kernel/kvi_options.cpp:729
 msgid "+e mode change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:718
+#: src/kvirc/kernel/kvi_options.cpp:720
 msgid "+o mode change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:720
+#: src/kvirc/kernel/kvi_options.cpp:722
 msgid "+v mode change"
 msgstr ""
 
@@ -642,27 +642,27 @@ msgstr ", käyttää palvelinta %1"
 msgid "- d -- h -- m -- s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:730
+#: src/kvirc/kernel/kvi_options.cpp:732
 msgid "-I mode change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:726
+#: src/kvirc/kernel/kvi_options.cpp:728
 msgid "-b mode change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:728
+#: src/kvirc/kernel/kvi_options.cpp:730
 msgid "-e mode change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:719
+#: src/kvirc/kernel/kvi_options.cpp:721
 msgid "-o mode change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:721
+#: src/kvirc/kernel/kvi_options.cpp:723
 msgid "-v mode change"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:96
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:94
 msgid "/me can be used only in channels, queries and DCC chat windows"
 msgstr ""
 "/me:tä voidaan ainoastaan käyttää kanavissa, kyselyissä ja DCC- chat-"
@@ -706,7 +706,7 @@ msgstr ": Tuntematon käyttäjämoodi"
 msgid "<Ctrl+Return>; submits, <Ctrl+Backspace>; hides this editor"
 msgstr "<Ctrl+Enter>; lähettää, <Ctrl+Backspace>; piilottaa tämän editorin"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5128
+#: src/kvirc/ui/kvi_ircview.cpp:5154
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
@@ -714,7 +714,7 @@ msgstr ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u käyttäjää)<hr>%Q</nowrap>"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5134
+#: src/kvirc/ui/kvi_ircview.cpp:5160
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-"
 "click to join %Q<br>Right click to view other options"
@@ -727,15 +727,15 @@ msgstr ""
 msgid "<b>Channel mode:</b>"
 msgstr "<b>Kanavamoodi:</b>"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5154
+#: src/kvirc/ui/kvi_ircview.cpp:5180
 msgid "<b>Double-click:</b><br>%Q"
 msgstr "<b>Kaksoisnapauta:</b><br>%Q"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5159
+#: src/kvirc/ui/kvi_ircview.cpp:5185
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Keski-napauta:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:807
+#: src/kvirc/kernel/kvi_app.cpp:806
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -757,7 +757,7 @@ msgstr ""
 msgid "<b>Right click</b> to add/remove applets"
 msgstr "<b>Paina oikeaa nappia</b> lisääksesi/poistaaksesi appletteja"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5164
+#: src/kvirc/ui/kvi_ircview.cpp:5190
 msgid "<b>Right-click:</b><br>%Q"
 msgstr "<b>Oikea-napauta:</b><br>%Q"
 
@@ -779,18 +779,18 @@ msgstr "<br><b>Avain:</b> %s"
 msgid "<br><b>Limit:</b> %s"
 msgstr "<br><b>Käyttäjäraja:</b> %s"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:120
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:118
 msgid "A class can't be a subclass of itself"
 msgstr "Luokka ei voi olla itsensä aliluokka"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1282
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1280
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
 msgstr ""
 "Kuvapisteolio, kuvatunniste tai kuvapolku vaaditaan tälle ominaisuudelle"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:872
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:870
 msgid "A popup menu cannot be popped up twice"
 msgstr "Ponnahdusvalikkoa ei voi tuoda esiin kahdesti"
 
@@ -827,15 +827,15 @@ msgstr "Nappaa kuvakaappaus"
 msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr "Ottaa kuvakaappauksen KVIrcin pääikkunasta"
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:67
+#: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:69
+#: src/kvirc/kernel/kvi_actionmanager.cpp:67
 msgid "Actions related to the Graphic User Interface"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:71
+#: src/kvirc/kernel/kvi_actionmanager.cpp:69
 msgid "Actions that will appear in the \"Tools\" menu"
 msgstr ""
 
@@ -928,39 +928,39 @@ msgstr "Sallii sinun ylläpitää skripti-pohjaisia lisäyksiä"
 msgid "Allows you to manage the themes"
 msgstr "Sallii sinun ylläpitää teemoja"
 
-#: src/kvirc/kernel/kvi_options.cpp:783
+#: src/kvirc/kernel/kvi_options.cpp:785
 msgid "Am de-halfop'd"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:807
+#: src/kvirc/kernel/kvi_options.cpp:809
 msgid "Am de-userop'd"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:780
+#: src/kvirc/kernel/kvi_options.cpp:782
 msgid "Am deop'd"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:781
+#: src/kvirc/kernel/kvi_options.cpp:783
 msgid "Am devoiced"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:782
+#: src/kvirc/kernel/kvi_options.cpp:784
 msgid "Am halfop'd"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:777
+#: src/kvirc/kernel/kvi_options.cpp:779
 msgid "Am kicked"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:778
+#: src/kvirc/kernel/kvi_options.cpp:780
 msgid "Am op'd"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:806
+#: src/kvirc/kernel/kvi_options.cpp:808
 msgid "Am userop'd"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:779
+#: src/kvirc/kernel/kvi_options.cpp:781
 msgid "Am voiced"
 msgstr ""
 
@@ -976,7 +976,7 @@ msgstr "Anonyymi tai suojeltu käyttäjä"
 msgid "Another connection in progress"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:259
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:257
 msgid "Another connection is already in progress in the selected IRC context"
 msgstr "Toinen yhteys menoss valitussa IRC-kontekstissa"
 
@@ -988,16 +988,16 @@ msgstr "Ota käyttöön kaikilla IRC konteksteilla"
 msgid "Arranges the MDI windows in a maximized-cascade fashion"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:67
+#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:65
 msgid "Array index didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:73
+#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:71
 msgid ""
 "Array index evaluated to a negative integer (non negative integer expected)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayreferenceassert.cpp:74
+#: src/kvirc/kvs/kvi_kvs_treenode_arrayreferenceassert.cpp:72
 msgid "Array reference assert failed: the variable evaluated to type '%Q'"
 msgstr ""
 "Taulukon referenssi-assertti epäonnistui: muuttuja evaluoitui tyypiksi '%Q'"
@@ -1015,11 +1015,11 @@ msgstr ""
 msgid "Attempting to rejoin \r!c\r%Q\r..."
 msgstr "Aiotaan uudelleen liittyä kanavalle \r!c\r%Q\r..."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1249
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1233
 msgid "Auto-joining network specific channels"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1283
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1267
 msgid "Auto-joining server specific channels"
 msgstr ""
 
@@ -1031,11 +1031,11 @@ msgstr "Saatavilla olevat kanavamoodit:"
 msgid "Available user modes:"
 msgstr "Saatavilla olevat käyttäjämoodit:"
 
-#: src/kvirc/kernel/kvi_options.cpp:713
+#: src/kvirc/kernel/kvi_options.cpp:715
 msgid "Avatar change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:1018
+#: src/kvirc/kernel/kvi_app.cpp:1017
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr ""
 
@@ -1043,7 +1043,7 @@ msgstr ""
 msgid "Away Indicator"
 msgstr "Poissaoloilmaisin"
 
-#: src/kvirc/kernel/kvi_options.cpp:766
+#: src/kvirc/kernel/kvi_options.cpp:768
 msgid "Away message"
 msgstr ""
 
@@ -1088,7 +1088,7 @@ msgstr "Bännipoikkeuslista"
 msgid "Ban exception masks"
 msgstr "Bännipoikkeusmaskit"
 
-#: src/kvirc/kernel/kvi_options.cpp:786
+#: src/kvirc/kernel/kvi_options.cpp:788
 msgid "Ban exception matching my mask"
 msgstr ""
 
@@ -1100,20 +1100,20 @@ msgstr "Bännilista"
 msgid "Ban masks"
 msgstr "Bännimaskit"
 
-#: src/kvirc/kernel/kvi_options.cpp:784
+#: src/kvirc/kernel/kvi_options.cpp:786
 msgid "Ban matching my mask"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:787
+#: src/kvirc/kernel/kvi_options.cpp:789
 msgid "Ban unexception matching my mask"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:339
+#: src/kvirc/kernel/kvi_ircsocket.cpp:338
 #, c-format
 msgid "Binding to local address %s"
 msgstr "Sidotaan paikallisosoiteeseen %s"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:343
+#: src/kvirc/kernel/kvi_ircsocket.cpp:342
 #, c-format
 msgid ""
 "Binding to local address %s failed: the kernel will choose the correct "
@@ -1122,7 +1122,7 @@ msgstr ""
 "Sitominen paikallisosoitteeseen %s epäonnistui: ydin valitsee oikean "
 "käyttöliittymän"
 
-#: src/kvirc/kernel/kvi_options.cpp:821
+#: src/kvirc/kernel/kvi_options.cpp:823
 msgid "BitTorrent message"
 msgstr ""
 
@@ -1138,7 +1138,7 @@ msgstr ""
 msgid "Bookmarks"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1208
+#: src/kvirc/kernel/kvi_options.cpp:1209
 msgid "Boolean options (1/0)"
 msgstr ""
 
@@ -1146,23 +1146,23 @@ msgstr ""
 msgid "Bottom"
 msgstr "Ala"
 
-#: src/kvirc/kernel/kvi_options.cpp:776
+#: src/kvirc/kernel/kvi_options.cpp:778
 msgid "Broadcast notice"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:775
+#: src/kvirc/kernel/kvi_options.cpp:777
 msgid "Broadcast private message"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:113
+#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:111
 msgid "Broken condition in menu setup: assuming false"
 msgstr "Rikkinäinen ehto valikon rakenteessa: oletetaan epätodeksi"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:859
+#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:857
 msgid "Broken epilogue in popup menu '%Q': ignoring"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:220
+#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:218
 msgid "Broken icon parameter: ignoring"
 msgstr "Rikkinäinen kuvake-parametri: jätetään huomiotta"
 
@@ -1170,11 +1170,11 @@ msgstr "Rikkinäinen kuvake-parametri: jätetään huomiotta"
 msgid "Broken pipe"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:844
+#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:842
 msgid "Broken prologue in popup menu '%Q': ignoring"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:871
+#: src/kvirc/kvs/kvi_kvs_object.cpp:869
 msgid ""
 "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
 "object '%Q::%Q': disconnecting"
@@ -1182,7 +1182,7 @@ msgstr ""
 "Rikkinäinen paikka '%Q' kohdeoliossa '%Q::%Q' kun lähetetään signaalia "
 "oliosta '%Q::%Q': yhteys katkaistaan"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:244
+#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:242
 msgid "Broken text parameter: assuming empty string"
 msgstr ""
 
@@ -1218,32 +1218,32 @@ msgstr ""
 msgid "CTCP Page - KVIrc"
 msgstr "CTCP Page - KVIrc"
 
-#: src/kvirc/kernel/kvi_options.cpp:707
+#: src/kvirc/kernel/kvi_options.cpp:709
 msgid "CTCP reply"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:710
+#: src/kvirc/kernel/kvi_options.cpp:712
 msgid "CTCP request flood warning"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:709
+#: src/kvirc/kernel/kvi_options.cpp:711
 msgid "CTCP request ignored"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:708
+#: src/kvirc/kernel/kvi_options.cpp:710
 msgid "CTCP request replied"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:711
+#: src/kvirc/kernel/kvi_options.cpp:713
 msgid "CTCP request unknown"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:101
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:104
+#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:99
+#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:102
 msgid "Call to undefined command '%Q'"
 msgstr "Kutsu ei-määriteltyyn komentoon '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:68
+#: src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:66
 msgid "Call to undefined function '%Q'"
 msgstr ""
 
@@ -1251,11 +1251,11 @@ msgstr ""
 msgid "Can't assign the requested address"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:631
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:629
 msgid "Can't delete a null object reference"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:637
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:635
 msgid "Can't delete an inexisting object"
 msgstr ""
 
@@ -1263,8 +1263,8 @@ msgstr ""
 msgid "Can't evaluate creation time"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1131
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1362
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1129
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1360
 msgid ""
 "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
 "property is indexed and defined but the returned variant is not valid"
@@ -1273,8 +1273,8 @@ msgstr ""
 "ominaisuus on indeksoitu ja määritelty mutta palautettu variantti ei ole "
 "kelpoinen"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1124
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1354
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1122
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1352
 msgid ""
 "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
 "property is indexed but it doesn't really exist"
@@ -1282,16 +1282,16 @@ msgstr ""
 "Ei löydetä ominaisuutta \"%Q\" oliolle nimeltä \"%Q\" luokasta %Q: "
 "ominaisuus on indeksoitu mutta se ei oikein ole olemassa"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:500
+#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:498
 msgid "Can't find the external popup '%Q'; ignoring"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:228
+#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:226
 msgid "Can't find the icon \"%Q\": ignoring"
 msgstr "Ei löydetä kuvaketta \"%Q\": jätetään huomiotta"
 
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:477
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:444
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:442
 msgid "Can't find the icon '%Q'"
 msgstr "Ei voida löytää kuvaketta '%Q'"
 
@@ -1299,7 +1299,7 @@ msgstr "Ei voida löytää kuvaketta '%Q'"
 msgid "Can't find the proxy IP address: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1303
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1301
 msgid "Can't find the requested image"
 msgstr "Ei löydetä pyydettyä kuvaa"
 
@@ -1311,7 +1311,7 @@ msgstr ""
 msgid "Can't kill a builtin class"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:532
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:530
 msgid "Can't kill the timer '%Q' since it is not running"
 msgstr "Ei voida pysäyttää ajastinta '%Q' koska se ei ole käynnissä"
 
@@ -1343,15 +1343,15 @@ msgstr "Ei voida avata suodatintiedostoa %Q kirjoittamista varten"
 msgid "Can't open the filter file %s for reading."
 msgstr "Ei voida avata suodatintiedostoa %s lukemista varten"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:146
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:144
 msgid "Can't override the builtin class \"%Q\""
 msgstr "Ei voida ylikirjoittaa sisäänrakennettua luokkaa \"%Q\""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:726
+#: src/kvirc/kernel/kvi_ircconnection.cpp:710
 msgid "Can't resolve local host address, using default 127.0.0.1"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:719
+#: src/kvirc/kernel/kvi_ircconnection.cpp:703
 msgid "Can't resolve local host address, using user supplied one (%Q)"
 msgstr ""
 
@@ -1367,11 +1367,11 @@ msgstr ""
 msgid "Can't setup a listening socket : bind failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:846
+#: src/kvirc/kernel/kvi_ircconnection.cpp:830
 msgid "Can't start the DNS slave thread"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_moduleinterface.cpp:166
+#: src/kvirc/kvs/kvi_kvs_moduleinterface.cpp:164
 msgid "Can't unload the module: it has locked itself in memory"
 msgstr "Ei voida poistaa moduulia käytöstä: se on lukinnut itsensä muistiin"
 
@@ -1383,7 +1383,7 @@ msgstr "Ei voida poistaa moduulia käytöstä: se on lukinnut itsensä muistiin"
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1609
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1607
 msgid ""
 "Cannot call internal object function $%Q (for object named \"%Q\" of class %"
 "Q) from this context"
@@ -1391,11 +1391,11 @@ msgstr ""
 "Ei voida kutsua sisäistä oliofunktiota $%Q (oliolle nimeltä \"%Q\" luokasta "
 "% Q) tästä kontekstista"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1599
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1597
 msgid "Cannot find object function $%Q for object named \"%Q\" of class %Q"
 msgstr "Ei löydetä oliofunktiota $%Q oliosta nimeltä \"%Q\" luokasta %Q"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1601
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1599
 msgid "Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q"
 msgstr "Ei löydetä oliofunktiota $%Q::%Q oliosta \"%Q\" luokasta %Q"
 
@@ -1435,23 +1435,23 @@ msgstr ""
 msgid "Censor swear words"
 msgstr "Sensuroi kirosanat"
 
-#: src/kvirc/kernel/kvi_options.cpp:800
+#: src/kvirc/kernel/kvi_options.cpp:802
 msgid "Chan admin status set"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:801
+#: src/kvirc/kernel/kvi_options.cpp:803
 msgid "Chan admin status unset"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:809
+#: src/kvirc/kernel/kvi_options.cpp:811
 msgid "Chan owner status set"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:810
+#: src/kvirc/kernel/kvi_options.cpp:812
 msgid "Chan owner status unset"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:765
+#: src/kvirc/kernel/kvi_options.cpp:767
 msgid "ChanServ message"
 msgstr ""
 
@@ -1459,12 +1459,12 @@ msgstr ""
 msgid "Change Nickname"
 msgstr "Vaihda tunnusta"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:168
-#: src/kvirc/kernel/kvi_ircconnection.cpp:176
+#: src/kvirc/kernel/kvi_ircconnection.cpp:167
+#: src/kvirc/kernel/kvi_ircconnection.cpp:175
 msgid "Changed text encoding to %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:70
+#: src/kvirc/kernel/kvi_actionmanager.cpp:68
 msgid "Channel"
 msgstr ""
 
@@ -1482,19 +1482,19 @@ msgstr "Kanava-CTCP"
 msgid "Channel Modes"
 msgstr "Kanavamoodit"
 
-#: src/kvirc/kernel/kvi_options.cpp:742
+#: src/kvirc/kernel/kvi_options.cpp:744
 msgid "Channel creation time reply"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:746
+#: src/kvirc/kernel/kvi_options.cpp:748
 msgid "Channel encrypted private message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:723
+#: src/kvirc/kernel/kvi_options.cpp:725
 msgid "Channel key change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:724
+#: src/kvirc/kernel/kvi_options.cpp:726
 msgid "Channel limit change"
 msgstr ""
 
@@ -1502,7 +1502,7 @@ msgstr ""
 msgid "Channel list begin: channel, users, topic"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:768
+#: src/kvirc/kernel/kvi_options.cpp:770
 msgid "Channel list message"
 msgstr ""
 
@@ -1518,7 +1518,7 @@ msgstr ""
 msgid "Channel name"
 msgstr "Kanavan nimi"
 
-#: src/kvirc/kernel/kvi_options.cpp:757
+#: src/kvirc/kernel/kvi_options.cpp:759
 msgid "Channel notice"
 msgstr ""
 
@@ -1530,7 +1530,7 @@ msgstr "Kanavaoperaattorit"
 msgid "Channel password"
 msgstr "Kanavan salasana"
 
-#: src/kvirc/kernel/kvi_options.cpp:705
+#: src/kvirc/kernel/kvi_options.cpp:707
 msgid "Channel private message"
 msgstr ""
 
@@ -1559,11 +1559,11 @@ msgstr ""
 msgid "Check on startup"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:3925
+#: src/kvirc/ui/kvi_ircview.cpp:3954
 msgid "Choose Temporary Background..."
 msgstr "Valitse väliaikainen tausta..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:3924
+#: src/kvirc/ui/kvi_ircview.cpp:3953
 msgid "Choose Temporary Font..."
 msgstr "Valitse väliaikainen kirjaisin"
 
@@ -1576,7 +1576,7 @@ msgstr "Valitse kansio - KVIrc"
 msgid "Choose a File - KVIrc"
 msgstr "Valitse tiedosto - KVIrc"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:606
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:604
 msgid "Choose a file to parse"
 msgstr "Valitse tiedosto jäsennettäväksi"
 
@@ -1588,7 +1588,7 @@ msgstr "Valitse kuvatiedosto - KVIrc"
 msgid "Choose image ..."
 msgstr "Valitse kuva..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:3963
+#: src/kvirc/ui/kvi_ircview.cpp:3992
 msgid "Choose the background image..."
 msgstr "Valitse taustakuva..."
 
@@ -1604,7 +1604,7 @@ msgstr ""
 msgid "Clear"
 msgstr "Tyhjää"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3929
+#: src/kvirc/ui/kvi_ircview.cpp:3958
 msgid "Clear Buffer"
 msgstr "Tyhjennä ikkuna"
 
@@ -1613,7 +1613,7 @@ msgid "Clipboard"
 msgstr "Leikepöytä"
 
 #: src/kvirc/ui/kvi_modeeditor.cpp:79
-#: src/kvirc/ui/kvi_window.cpp:795
+#: src/kvirc/ui/kvi_window.cpp:766
 #: src/kvirc/ui/kvi_ctcppagedialog.cpp:58
 msgid "Close"
 msgstr "Sulje"
@@ -1626,7 +1626,7 @@ msgstr "Sulje kaikki kyselyt"
 msgid "Color free (no ANSI colors)"
 msgstr "Värivapaa (ei ANSI värejä)"
 
-#: src/kvirc/kernel/kvi_options.cpp:1211
+#: src/kvirc/kernel/kvi_options.cpp:1212
 msgid "Color options (#RRGGBB)"
 msgstr ""
 
@@ -1744,7 +1744,7 @@ msgstr ""
 msgid "Connection reset by peer"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:693
+#: src/kvirc/kernel/kvi_options.cpp:695
 msgid "Connection status"
 msgstr ""
 
@@ -1761,12 +1761,12 @@ msgstr ""
 msgid "Connection timed out"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:541
+#: src/kvirc/kernel/kvi_ircconnection.cpp:525
 msgid "Connection to server established"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:523
-#: src/kvirc/kernel/kvi_ircconnection.cpp:532
+#: src/kvirc/kernel/kvi_ircconnection.cpp:507
+#: src/kvirc/kernel/kvi_ircconnection.cpp:516
 msgid "Connection to server lost"
 msgstr ""
 
@@ -1782,13 +1782,13 @@ msgstr ""
 msgid "Copy to clipboard"
 msgstr "Kopioi leikepöydälle"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:250
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:248
 msgid ""
 "Couldn't find a suitable IRC context for the connection, try using -n or -u"
 msgstr ""
 "Ei löydetty sopivaa IRC-kontekstia yhteydelle, kokeile käyttää -n ta -u"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:127
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:125
 msgid "Couln't find base class named \"%Q\""
 msgstr "Ei voitu löytää pohjaluokkaa nimeltä \"%Q\""
 
@@ -1819,7 +1819,7 @@ msgid ""
 msgstr ""
 "Salaus: Sinun täytyy ottaa salaus ja/tai purku käyttöön jotta salaus toimisi"
 
-#: src/kvirc/ui/kvi_window.cpp:438
+#: src/kvirc/ui/kvi_window.cpp:409
 msgid "Crypting"
 msgstr "Salataan"
 
@@ -1835,7 +1835,7 @@ msgstr "&Leikkaa"
 msgid "Current IRC URI"
 msgstr "Nykyinen IRC -osoite"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1226
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1225
 #: src/kvirc/kernel/kvi_sslmaster.cpp:89
 msgid "Current transmission cipher"
 msgstr ""
@@ -1848,23 +1848,23 @@ msgstr "Hienosäädä työkalupalkkeja"
 msgid "Customize..."
 msgstr "Hienosäädä..."
 
-#: src/kvirc/kernel/kvi_options.cpp:748
+#: src/kvirc/kernel/kvi_options.cpp:750
 msgid "DCC chat message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:735
+#: src/kvirc/kernel/kvi_options.cpp:737
 msgid "DCC error"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:734
+#: src/kvirc/kernel/kvi_options.cpp:736
 msgid "DCC message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:733
+#: src/kvirc/kernel/kvi_options.cpp:735
 msgid "DCC request"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:157
+#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:155
 #: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:100
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "DNS-kyselyn tulos kohteelle \"%Q\""
@@ -1903,7 +1903,7 @@ msgstr "Irroitettu"
 msgid "Detailed View"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:137
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:135
 msgid ""
 "Detected a loop in the inheritance tree of the base class \"%Q\": redefine "
 "that class first"
@@ -1927,14 +1927,14 @@ msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
 #: src/kvilib/core/kvi_error.cpp:65
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:502
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:510
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:530
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:538
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:331
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:343
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:414
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:426
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:500
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:508
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:528
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:536
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:329
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:341
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:412
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:424
 msgid "Division by zero"
 msgstr "Jako nollalla"
 
@@ -1978,18 +1978,18 @@ msgstr "Kaksoisnapauta asettaaksesi<br>"
 msgid "Double-click to edit..."
 msgstr "Kaksoisnapauta muokataksesi"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5021
+#: src/kvirc/ui/kvi_ircview.cpp:5048
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Kaksoisnapauta selvittääksesi tämän isännän<br>Oikea napautus näyttää muut "
 "valinnat"
 
-#: src/kvirc/ui/kvi_ircview.cpp:4997
+#: src/kvirc/ui/kvi_ircview.cpp:5025
 msgid "Double-click to open this link"
 msgstr "Kaksoisnapauta avataksesi tämän linkin"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5049
+#: src/kvirc/ui/kvi_ircview.cpp:5076
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
 msgstr ""
 "Kaksoisnapauta lukeaksesi MOTD:n<br>Oike napautus näyttää muut valinnat"
@@ -1998,7 +1998,7 @@ msgstr ""
 msgid "Double-click to set..."
 msgstr "Kaksoisnapauta asettaaksesi"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5062
+#: src/kvirc/ui/kvi_ircview.cpp:5089
 msgid "Double-click to set<br>"
 msgstr "Kaksoisnapauta asettaaksesi<br>"
 
@@ -2038,25 +2038,25 @@ msgstr "Muokkaa raakoja tapahtumia..."
 msgid "Effects"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1145
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1142
 msgid "Empty infinite 'for' loop: fix the script"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:82
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:79
 msgid "Empty instruction block for command evaluation"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:149
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:167
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:188
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:146
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:164
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:185
 msgid "Empty script"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1011
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1009
 msgid "Empty target specified"
 msgstr "Tyhjä kohde annettu"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:80
+#: src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:78
 msgid ""
 "Empty window identifier specified in the standard rebinding switch: no "
 "rebinding performed"
@@ -2076,15 +2076,15 @@ msgstr "Ota salaus käyttöön"
 msgid "Encrypt key:"
 msgstr "Salausavain:"
 
-#: src/kvirc/kernel/kvi_options.cpp:749
+#: src/kvirc/kernel/kvi_options.cpp:751
 msgid "Encrypted DCC chat message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:758
+#: src/kvirc/kernel/kvi_options.cpp:760
 msgid "Encrypted channel notice"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:760
+#: src/kvirc/kernel/kvi_options.cpp:762
 msgid "Encrypted query notice"
 msgstr ""
 
@@ -2121,7 +2121,7 @@ msgstr ""
 msgid "End of merged output"
 msgstr "Liitetyn sisällön loppu"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:142
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:139
 msgid ""
 "Ending index of a multiple parameter identifier is lower or equal to the "
 "starting index. This will evaluate to a single parameter identifier."
@@ -2135,12 +2135,12 @@ msgstr "Siirry poissaolotilaan"
 msgid "Error in compressed file stream"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:116
+#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:114
 msgid "Error in inner alias command call '%Q', called from this context"
 msgstr ""
 "Virhe sisäisessä aliaksen komentokutsussa '%Q', kutsuttu tästä kontekstista"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:76
+#: src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:74
 msgid "Error in inner alias function call '%Q', called from this context"
 msgstr ""
 
@@ -2148,7 +2148,7 @@ msgstr ""
 msgid "Error in loading module"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_processmanager.cpp:217
+#: src/kvirc/kvs/kvi_kvs_processmanager.cpp:215
 msgid "Error triggered from process callback handler: killing process"
 msgstr ""
 
@@ -2156,12 +2156,12 @@ msgstr ""
 msgid "Error while compressing a file stream"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:162
+#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:160
 #: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:105
 msgid "Error: %Q"
 msgstr "Virhe: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_eventmanager.cpp:503
+#: src/kvirc/kvs/kvi_kvs_eventmanager.cpp:501
 msgid "Event handler %Q is broken: disabling"
 msgstr "Tapahtumakäsittelijä %Q rikki: otetaan pois käytöstä"
 
@@ -2169,27 +2169,27 @@ msgstr "Tapahtumakäsittelijä %Q rikki: otetaan pois käytöstä"
 msgid "Execute Script..."
 msgstr "Suorita skripti..."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1090
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1074
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1180
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1164
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1072
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1056
 msgid "Executing scheduled network specific \"on connect\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1162
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1146
 msgid "Executing scheduled network specific \"on login\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1081
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1065
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1171
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1155
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr ""
 
@@ -2209,11 +2209,11 @@ msgstr ""
 msgid "Failed to create the target directory"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:973
+#: src/kvirc/kernel/kvi_options.cpp:974
 msgid "Failed to create the theme directory"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1069
+#: src/kvirc/kernel/kvi_options.cpp:1070
 msgid "Failed to create the theme subdirectory"
 msgstr ""
 
@@ -2238,12 +2238,12 @@ msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
 msgstr ""
 "Ei pystytty lataamaan avataria nimellä \"%Q\" ja paikallispolulla \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:639
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:643
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:637
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:641
 msgid "Failed to load the file '%Q' for parsing"
 msgstr "Ei voitu avata tiedostoa '%Q' jäsennettäväksi"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3968
+#: src/kvirc/ui/kvi_ircview.cpp:3997
 msgid "Failed to load the selected image"
 msgstr "Ei voitu ladata valittua kuvaa"
 
@@ -2264,8 +2264,8 @@ msgstr ""
 msgid "Failed to rename the existing file, please rename manually and retry"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1056
-#: src/kvirc/kernel/kvi_options.cpp:1091
+#: src/kvirc/kernel/kvi_options.cpp:1057
+#: src/kvirc/kernel/kvi_options.cpp:1092
 msgid "Failed to save one of the theme images"
 msgstr ""
 
@@ -2275,11 +2275,11 @@ msgstr ""
 msgid "Failed to save the screenshot image"
 msgstr "Ei voitu tallentaa kuvakaappaus-kuvaa"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:100
+#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:98
 msgid "Failed to send an unknown command as /raw"
 msgstr "Ei voitu lähettää tuntematonta kometoa raakana viestinä (/raw)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:159
+#: src/kvirc/kernel/kvi_ircconnection.cpp:158
 msgid "Failed to set the encoding to %Q: mapping not available."
 msgstr ""
 
@@ -2312,7 +2312,7 @@ msgid "Fifo"
 msgstr ""
 
 #: src/kvirc/ui/kvi_filedialog.cpp:120
-#: src/kvirc/ui/kvi_filedialog.cpp:158
+#: src/kvirc/ui/kvi_filedialog.cpp:160
 msgid "File Exists - KVIrc"
 msgstr "Tiedosto on olemassa - KVIrc"
 
@@ -2320,19 +2320,19 @@ msgstr "Tiedosto on olemassa - KVIrc"
 msgid "File I/O error"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:985
+#: src/kvirc/kernel/kvi_app.cpp:984
 msgid "File download failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:987
+#: src/kvirc/kernel/kvi_app.cpp:986
 msgid "File download from %1 failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:998
+#: src/kvirc/kernel/kvi_app.cpp:997
 msgid "File download from %1 successfully complete"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:996
+#: src/kvirc/kernel/kvi_app.cpp:995
 msgid "File download successfully complete"
 msgstr ""
 
@@ -2381,7 +2381,7 @@ msgstr "Tulvitettu viesteillä"
 msgid "Floppy"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1216
+#: src/kvirc/kernel/kvi_options.cpp:1217
 msgid "Font options (family,pointsize,style,charset,weight,flags (biusf))"
 msgstr ""
 
@@ -2410,7 +2410,7 @@ msgstr "Litteä"
 msgid "Forward"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1483
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1480
 msgid ""
 "Found 'break' label where a 'case','match','regexp' or 'default' label was "
 "expected"
@@ -2420,100 +2420,100 @@ msgstr ""
 msgid "Found an empty namespace in alias name"
 msgstr "Tyhjä sisällin aliaksen nimessä löytyi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1115
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1112
 msgid ""
 "Found char %q (unicode %x) while looking for the terminating ')' in 'for' "
 "command"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1445
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1442
 msgid ""
 "Found character %q (unicode %x) where a 'case','match','regexp','default' or "
 "'break' label was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1592
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1589
 msgid ""
 "Found character %q (unicode %x) where a "
 "'prologue','separator','label','popup','item','extpopup' or 'epilogue' label "
 "was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:766
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:763
 msgid "Found character %q (unicode %x) where a 'while' keyword was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:469
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:497
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:524
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:466
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:494
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:521
 msgid "Found character %q (unicode %x) where a function name was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:233
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:303
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:230
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:300
 msgid "Found character %q (unicode %x) where a variable was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:402
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:654
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:399
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:651
 msgid "Found character %q (unicode %x) where an open parenthesis was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1219
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1216
 msgid ""
 "Found character '%q' (unicode %x) where '%' or '$' was expected: see /help "
 "foreach for the command syntax"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:827
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:845
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:868
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:824
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:842
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:865
 msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
 msgstr ""
 "Löydettiin merkki %q (unikoodi %x) missä kauttaviivan '/' oletettiin olevan"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2701
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2698
 msgid "Found character '%q' (unicode %x) where an instruction was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:112
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:109
 msgid ""
 "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %s"
 "\" for the command syntax"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1267
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1264
 msgid ""
 "Found empty 'foreach' execution block: maybe you need to fix your script ?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1693
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1690
 msgid "Found empty epilogue block: maybe you need to fix the script?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1800
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1797
 msgid ""
 "Found empty instruction for popup item: maybe you need to fix the script?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1691
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1688
 msgid "Found empty prologue block: maybe you need to fix the script?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:115
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:112
 #, c-format
 msgid ""
 "Found end of input where character '%c' was expected: see \"/help %s\" for "
 "the command syntax"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1488
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1485
 msgid ""
 "Found token '%Q' where a 'case','match','regexp','default' or 'break' label "
 "was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1844
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1841
 msgid ""
 "Found token '%Q' where a "
 "'prologue','separator','label','popup','item','extpopup' or 'epilogue' label "
@@ -2524,11 +2524,11 @@ msgstr ""
 msgid "Full path"
 msgstr "Täysi polku"
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:69
+#: src/kvirc/kernel/kvi_actionmanager.cpp:67
 msgid "GUI"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:802
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:799
 msgid "Garbage string after the expression in 'do' command: ignored"
 msgstr ""
 
@@ -2536,35 +2536,35 @@ msgstr ""
 msgid "Gender:"
 msgstr "Sukupuoli:"
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:66
+#: src/kvirc/kernel/kvi_actionmanager.cpp:64
 msgid "Generic"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:66
+#: src/kvirc/kernel/kvi_actionmanager.cpp:64
 msgid "Generic actions"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:799
+#: src/kvirc/kernel/kvi_options.cpp:801
 msgid "Generic critical error"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:798
+#: src/kvirc/kernel/kvi_options.cpp:800
 msgid "Generic error"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:795
+#: src/kvirc/kernel/kvi_options.cpp:797
 msgid "Generic status"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:794
+#: src/kvirc/kernel/kvi_options.cpp:796
 msgid "Generic success"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:796
+#: src/kvirc/kernel/kvi_options.cpp:798
 msgid "Generic verbose message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:797
+#: src/kvirc/kernel/kvi_options.cpp:799
 msgid "Generic warning"
 msgstr ""
 
@@ -2576,7 +2576,7 @@ msgstr "Hae kanavalista"
 msgid "Get Network Links"
 msgstr "Hae verkon linkit"
 
-#: src/kvirc/kernel/kvi_options.cpp:769
+#: src/kvirc/kernel/kvi_options.cpp:771
 msgid "Half-deop mode change"
 msgstr ""
 
@@ -2584,16 +2584,16 @@ msgstr ""
 msgid "Half-operators"
 msgstr "Puoli-operaattorit"
 
-#: src/kvirc/kernel/kvi_options.cpp:762
+#: src/kvirc/kernel/kvi_options.cpp:764
 msgid "Halfop mode change"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:71
-#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:117
+#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:69
+#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:115
 msgid "Hash key evaluated to empty string: fix the script"
 msgstr "Listan avain evaluoitui tyhjäksi merkkijonoksi: korjaa komentosarja"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashreferenceassert.cpp:72
+#: src/kvirc/kvs/kvi_kvs_treenode_hashreferenceassert.cpp:70
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 msgstr ""
 "Listan referenssi-assertti epäonnistui: muuttuja evaluoitui tyypiksi '%Q'"
@@ -2603,7 +2603,7 @@ msgid "Header too long: exceeded 4096 bytes"
 msgstr ""
 
 #: src/kvilib/tal/kvi_tal_wizard.cpp:193
-#: src/kvirc/kernel/kvi_options.cpp:814
+#: src/kvirc/kernel/kvi_options.cpp:816
 msgid "Help"
 msgstr ""
 
@@ -2615,7 +2615,7 @@ msgstr "Apuselain (&Ikkuna)"
 msgid "Help Index"
 msgstr "Apu-indeksi"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:807
+#: src/kvirc/kernel/kvi_ircconnection.cpp:791
 msgid ""
 "Here goes your \"broken bouncer hack\": The server has changed the hostname "
 "but I'll ignore the IP address change"
@@ -2630,7 +2630,7 @@ msgstr "Hex"
 msgid "Hide &Dock Icon"
 msgstr "Piilota telakiontikuvake"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3918
+#: src/kvirc/ui/kvi_ircview.cpp:3947
 msgid "Hide Find Window"
 msgstr "Piilota etsintäikkuna"
 
@@ -2638,7 +2638,7 @@ msgstr "Piilota etsintäikkuna"
 msgid "High activity"
 msgstr "Korkeaa aktiivisuutta"
 
-#: src/kvirc/kernel/kvi_options.cpp:682
+#: src/kvirc/kernel/kvi_options.cpp:684
 msgid "Highlighted text"
 msgstr ""
 
@@ -2651,10 +2651,10 @@ msgid "Home Directory"
 msgstr ""
 
 #: src/kvilib/net/kvi_http.cpp:210
-msgid "Host %s resolved to %Q"
+msgid "Host %Q resolved to %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:687
+#: src/kvirc/kernel/kvi_options.cpp:689
 msgid "Host lookup result"
 msgstr ""
 
@@ -2666,7 +2666,7 @@ msgstr ""
 msgid "Host unreachable (no route to host)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:167
+#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:165
 #: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:110
 msgid "Hostname %d: %Q"
 msgstr "Isäntä %d: %Q"
@@ -2675,24 +2675,24 @@ msgstr "Isäntä %d: %Q"
 msgid "Hostname resolution aborted"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:754
+#: src/kvirc/kernel/kvi_options.cpp:756
 msgid "ICQ message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:755
+#: src/kvirc/kernel/kvi_options.cpp:757
 msgid "ICQ user-message"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:173
+#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:171
 #: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:116
 msgid "IP address %d: %Q"
 msgstr "IP-osoite %d: %Q"
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:65
+#: src/kvirc/kernel/kvi_actionmanager.cpp:63
 msgid "IRC"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:70
+#: src/kvirc/kernel/kvi_actionmanager.cpp:68
 msgid "IRC Channel related actions"
 msgstr ""
 
@@ -2704,7 +2704,7 @@ msgstr "IRC -konteksti"
 msgid "IRC Context Display"
 msgstr "IRC-kontekstinäyttö"
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:65
+#: src/kvirc/kernel/kvi_actionmanager.cpp:63
 msgid "IRC Context related actions"
 msgstr ""
 
@@ -2720,11 +2720,11 @@ msgstr "IRC-Op kanava"
 msgid "Icon Size"
 msgstr "Kuvakekoko"
 
-#: src/kvirc/kernel/kvi_iconmanager.cpp:364
+#: src/kvirc/kernel/kvi_iconmanager.cpp:365
 msgid "Icon Table"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:767
+#: src/kvirc/kernel/kvi_options.cpp:769
 msgid "Ident message"
 msgstr ""
 
@@ -2738,7 +2738,7 @@ msgid ""
 "the CTRL+P prefix"
 msgstr "Jos et halua salata tiettyä riviä, aloita se CTRL+P -etuliitteellä"
 
-#: src/kvirc/kernel/kvi_options.cpp:790
+#: src/kvirc/kernel/kvi_options.cpp:792
 msgid "Ignored user message"
 msgstr ""
 
@@ -2791,7 +2791,7 @@ msgstr "Mahdotonta käyttää sekä 7- että 8-bittisiä kirjaimia tunnuksissa"
 msgid "In progress..."
 msgstr "Edistymässä..."
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:691
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:689
 msgid "Inexisting popup \"%Q\""
 msgstr ""
 
@@ -2812,7 +2812,7 @@ msgstr "Asenna paketti"
 msgid "Install Theme Package"
 msgstr "Asenna teemapaketti"
 
-#: src/kvirc/kernel/kvi_app.cpp:806
+#: src/kvirc/kernel/kvi_app.cpp:805
 msgid "Installation problems ?"
 msgstr ""
 
@@ -2829,16 +2829,16 @@ msgstr ""
 msgid "Internal error"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:85
+#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:83
 msgid "Internal error: pure virtual evaluateReadOnly called"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:98
+#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:96
 msgid "Internal error: pure virtual evaluateReadOnlyInObjectScope called"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:91
-#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:104
+#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:89
+#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:102
 msgid ""
 "Internal error: trying to evaluate as read-write a read-only data location"
 msgstr ""
@@ -2852,7 +2852,7 @@ msgstr ""
 msgid "Invalid IP address"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:385
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:383
 msgid "Invalid IRC url (%Q)"
 msgstr "Kelpaamaton IRC-url (%Q)"
 
@@ -2864,11 +2864,11 @@ msgstr ""
 msgid "Invalid array index: positive integer expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:980
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:978
 msgid "Invalid color-set specification, using default"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:73
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:70
 msgid "Invalid command evaluation in object scope"
 msgstr ""
 
@@ -2880,27 +2880,27 @@ msgstr ""
 msgid "Invalid data field: the package is probably corrupt"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:111
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:228
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:277
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:304
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:109
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:226
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:275
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:302
 #, c-format
 msgid "Invalid data type for parameter \"%s\""
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:308
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:306
 msgid "Invalid duration value: using default"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:58
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:55
 msgid "Invalid expression evaluation in object scope"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:3968
+#: src/kvirc/ui/kvi_ircview.cpp:3997
 msgid "Invalid image"
 msgstr "Kelvoton kuva"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:383
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:381
 msgid "Invalid index specified: ignored"
 msgstr "Epäkelpo indeksi annettu: jätettiin huomiotta"
 
@@ -2924,7 +2924,7 @@ msgstr "Kelvoton valinta"
 msgid "Invalid parameter"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:298
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:296
 msgid "Invalid pitch value: using default"
 msgstr ""
 
@@ -2936,7 +2936,7 @@ msgstr ""
 msgid "Invalid proxy address"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:897
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:895
 msgid "Invalid syntax for screen coordinates, using cursor position"
 msgstr "Epäkelpoa syntaksia ruudun kordinaateille, käytetään hiiren sijaintia"
 
@@ -2944,7 +2944,7 @@ msgstr "Epäkelpoa syntaksia ruudun kordinaateille, käytetään hiiren sijainti
 msgid "Invalid target address"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:91
+#: src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:89
 msgid ""
 "Invalid window specified in the standard rebinding switch: no rebinding "
 "performed"
@@ -2964,7 +2964,7 @@ msgstr "Kutsumuokkaaja"
 msgid "Invite exception masks or forbid /INVITE"
 msgstr "Kutsumaskit, tai /INVITE-kielto"
 
-#: src/kvirc/kernel/kvi_options.cpp:788
+#: src/kvirc/kernel/kvi_options.cpp:790
 msgid "Invite exception matching my mask"
 msgstr ""
 
@@ -2972,7 +2972,7 @@ msgstr ""
 msgid "Invite listing"
 msgstr "Kutsulista"
 
-#: src/kvirc/kernel/kvi_options.cpp:770
+#: src/kvirc/kernel/kvi_options.cpp:772
 msgid "Invite message"
 msgstr ""
 
@@ -2980,7 +2980,7 @@ msgstr ""
 msgid "Invite only"
 msgstr "Kutsupakko"
 
-#: src/kvirc/kernel/kvi_options.cpp:789
+#: src/kvirc/kernel/kvi_options.cpp:791
 msgid "Invite unexception matching my mask"
 msgstr ""
 
@@ -2992,7 +2992,7 @@ msgstr "IRC -toiminnot"
 msgid "Irc Tools"
 msgstr "IRC -työkalut"
 
-#: src/kvirc/kernel/kvi_options.cpp:1213
+#: src/kvirc/kernel/kvi_options.cpp:1214
 msgid "Irc context color options (#RRGGBB)"
 msgstr ""
 
@@ -3024,11 +3024,11 @@ msgstr "Liity KVIrcin kansainväliselle kanavalle IRCNet-verkossa"
 msgid "Join KVIrc Italian Channel on AzzurraNet"
 msgstr "Liity KVIrcin italiankieliselle kanavalle AzzurraNet-verkossa"
 
-#: src/kvirc/kernel/kvi_options.cpp:774
+#: src/kvirc/kernel/kvi_options.cpp:776
 msgid "Join error message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:700
+#: src/kvirc/kernel/kvi_options.cpp:702
 msgid "Join message"
 msgstr ""
 
@@ -3089,7 +3089,7 @@ msgstr ""
 msgid "Key"
 msgstr "Salasana"
 
-#: src/kvirc/kernel/kvi_options.cpp:751
+#: src/kvirc/kernel/kvi_options.cpp:753
 msgid "Kick action"
 msgstr ""
 
@@ -3154,7 +3154,7 @@ msgstr "Poistu poissaolotilasta"
 msgid "Left"
 msgstr "Vasen"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:370
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:368
 msgid "Left operand didn't evaluate to a number"
 msgstr "Vasen operandi ei evaluoitunut numeroksi"
 
@@ -3170,7 +3170,7 @@ msgstr ""
 msgid "Limited number of users"
 msgstr "Käyttäjämäärärajoitus"
 
-#: src/kvirc/kernel/kvi_options.cpp:684
+#: src/kvirc/kernel/kvi_options.cpp:686
 msgid "Link overlay foreground"
 msgstr ""
 
@@ -3178,16 +3178,16 @@ msgstr ""
 msgid "Link: %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:752
+#: src/kvirc/kernel/kvi_options.cpp:754
 msgid "Links reply"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:620
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:618
 #, fuzzy
 msgid "List of active timers"
 msgstr "aktiivista käyttäjää"
 
-#: src/kvirc/ui/kvi_window.cpp:552
+#: src/kvirc/ui/kvi_window.cpp:523
 msgid "List of window types available in this release of KVIrc:"
 msgstr "Ikkunatyypit tässä KVIrcin versiossa saatavilla"
 
@@ -3195,7 +3195,7 @@ msgstr "Ikkunatyypit tässä KVIrcin versiossa saatavilla"
 msgid "List: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1042
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1040
 msgid "Listing Qt properties for object named \"%Q\" of KVS class %Q"
 msgstr "Listataan Qt-ominaisuudet oliolle nimeltä \"%Q\" KVS-luokasta %Q"
 
@@ -3204,15 +3204,15 @@ msgstr "Listataan Qt-ominaisuudet oliolle nimeltä \"%Q\" KVS-luokasta %Q"
 msgid "Loaded module '%s' (%s)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:732
+#: src/kvirc/kernel/kvi_ircconnection.cpp:716
 msgid "Local host address is %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:881
+#: src/kvirc/kernel/kvi_ircconnection.cpp:865
 msgid "Local hostname as seen by the IRC server resolved to %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:977
+#: src/kvirc/kernel/kvi_ircconnection.cpp:961
 msgid "Logging in as %Q!%Q :%Q"
 msgstr ""
 
@@ -3221,24 +3221,24 @@ msgstr ""
 msgid "Login in progress..."
 msgstr "Kirjaudutaan sisään..."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1152
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1136
 msgid "Login operations complete, happy ircing!"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:750
+#: src/kvirc/kernel/kvi_options.cpp:752
 msgid "Login operations completed"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:4625
+#: src/kvilib/net/kvi_http.cpp:194
+#, fuzzy
+msgid "Looking up host %Q"
+msgstr "Selvitetään isäntä %Q..."
+
+#: src/kvirc/ui/kvi_ircview.cpp:4654
 msgid "Looking up host %Q..."
 msgstr "Selvitetään isäntä %Q..."
 
-#: src/kvilib/net/kvi_http.cpp:194
-#, c-format
-msgid "Looking up host %s"
-msgstr ""
-
-#: src/kvirc/kernel/kvi_ircconnection.cpp:853
+#: src/kvirc/kernel/kvi_ircconnection.cpp:837
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
 msgstr ""
 
@@ -3261,7 +3261,7 @@ msgstr "Matalaa aktiivisuutta"
 msgid "Low-level transport connection established [%s (%s:%u)]"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:786
+#: src/kvirc/ui/kvi_window.cpp:757
 msgid "Ma&ximize"
 msgstr "&Suurenna"
 
@@ -3294,11 +3294,11 @@ msgstr ""
 msgid "Medium activity"
 msgstr "Keskitason aktiivisuutta"
 
-#: src/kvirc/kernel/kvi_options.cpp:1217
+#: src/kvirc/kernel/kvi_options.cpp:1218
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:783
+#: src/kvirc/ui/kvi_window.cpp:754
 msgid "Mi&nimize"
 msgstr "&Pienennä"
 
@@ -3338,11 +3338,11 @@ msgstr "Pienennä kaikki ikkunat"
 msgid "Minimized all the currently visible MDI windows"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1212
+#: src/kvirc/kernel/kvi_options.cpp:1213
 msgid "Mirccolor options (#RRGGBB)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:965
+#: src/kvirc/kernel/kvi_options.cpp:966
 msgid "Missing absolute directory for the theme information"
 msgstr ""
 
@@ -3350,7 +3350,7 @@ msgstr ""
 msgid "Missing alias name"
 msgstr "Aliaksen nimi puuttuu"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:715
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:713
 msgid "Missing channel list"
 msgstr "Kanavalista puuttuu"
 
@@ -3358,8 +3358,8 @@ msgstr "Kanavalista puuttuu"
 msgid "Missing channel parameter in join message"
 msgstr "Kanavaparametri puuttuu liittymisviestistä"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:98
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:111
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:96
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:109
 msgid "Missing class name"
 msgstr "Puuttuva luokan nimi"
 
@@ -3367,7 +3367,7 @@ msgstr "Puuttuva luokan nimi"
 msgid "Missing closing brace"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:151
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:149
 #, c-format
 msgid "Missing non-optional parameter \"%s\""
 msgstr ""
@@ -3376,7 +3376,7 @@ msgstr ""
 msgid "Missing object class name"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:199
+#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:197
 msgid "Missing parameter"
 msgstr "Puuttuva parametri"
 
@@ -3384,43 +3384,43 @@ msgstr "Puuttuva parametri"
 msgid "Missing popup name"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1109
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1106
 msgid "Missing right operand for operator '"
 msgstr "Operaattorin ' oikealta puolelta puuttuu operandi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:956
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:953
 msgid "Missing right operand for operator '+='"
 msgstr "Operaattorin '+=' oikealta puolelta puuttuu operandi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:990
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:987
 msgid "Missing right operand for operator '-='"
 msgstr "Operaattorin '-=' oikealta puolelta puuttuu operandi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1090
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1087
 msgid "Missing right operand for operator '.='"
 msgstr "Operaattorin '.=' oikealta puolelta puuttuu operandi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1049
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1046
 msgid "Missing right operand for operator '<+'"
 msgstr "Operaattorin '<+' oikealta puolelta puuttuu operandi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1035
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1032
 msgid "Missing right operand for operator '<,'"
 msgstr "Operaattorin '<,' oikealta puolelta puuttuu operandi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1021
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1018
 msgid "Missing right operand for operator '<<'"
 msgstr "Operaattorin '<<' oikealta puolelta puuttuu operandi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1011
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1008
 msgid "Missing right operand for operator '<<='"
 msgstr "Operaattorin '<<=' oikealta puolelta puuttuu operandi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1071
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1068
 msgid "Missing right operand for operator '>>='"
 msgstr "Operaattorin '>>=' oikealta puolelta puuttuu operandi"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:922
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:919
 msgid "Missing right side operand for the binding operator '=~'"
 msgstr "Sitomisoperaatorin '=~' oikealta puolelta puuttuu operandi"
 
@@ -3444,22 +3444,22 @@ msgstr "Moodimuokkaaja"
 msgid "Moderated"
 msgstr "Valvottu"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:70
-#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:71
+#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:68
+#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:69
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr "Moduulin komennon kutsu epäonnistui: ei voida ladata moduulia '%Q': %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:802
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:800
 msgid "Module command call failed: can't load the module 'snd'"
 msgstr "Moduulin komennon kutsu epäonnistui: ei voida ladata moduulia 'snd'"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:78
+#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:76
 msgid ""
 "Module command call failed: the module '%Q' doesn't export a callback "
 "command named '%Q'"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:77
+#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:75
 msgid ""
 "Module command call failed: the module '%Q' doesn't export a command named '%"
 "Q'"
@@ -3467,7 +3467,7 @@ msgstr ""
 "Moduulin komennon kutsu epäonnistui: moduuli '%Q' ei vie komentoa nimeltä '% "
 "Q'"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:809
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:807
 msgid ""
 "Module command call failed: the module 'snd' doesn't export a command named "
 "'play'"
@@ -3475,11 +3475,11 @@ msgstr ""
 "Moduulin komennon kutsu epäonnistui: moduuli 'snd' ei vie komentoa nimeltä "
 "'play'"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:70
+#: src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:68
 msgid "Module function call failed: can't load the module '%Q': %Q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:77
+#: src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:75
 msgid ""
 "Module function call failed: the module '%Q' doesn't export a function named "
 "'%Q'"
@@ -3493,11 +3493,11 @@ msgstr ""
 msgid "Multi-line Editor<br>&lt;Alt+Backspace&gt;"
 msgstr "Multirivieditori<br>&lt;Alt+Backspace&gt;"
 
-#: src/kvirc/kernel/kvi_options.cpp:771
+#: src/kvirc/kernel/kvi_options.cpp:773
 msgid "Multimedia message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:731
+#: src/kvirc/kernel/kvi_options.cpp:733
 msgid "Multiple channel mode change"
 msgstr ""
 
@@ -3505,7 +3505,7 @@ msgstr ""
 msgid "Multiple operations not supported for numeric operators"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:722
+#: src/kvirc/kernel/kvi_options.cpp:724
 msgid "Multiple user mode change"
 msgstr ""
 
@@ -3517,7 +3517,7 @@ msgstr ""
 msgid "Negotiating relay information"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3053
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3050
 msgid ""
 "Nested character %q corresponding to expected terminator, this might confuse "
 "me a bit: it is a good idea to enclose it in quotes"
@@ -3569,11 +3569,11 @@ msgstr "Ei löytynyt"
 msgid "Next"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:717
+#: src/kvirc/kernel/kvi_options.cpp:719
 msgid "Nick changes"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:764
+#: src/kvirc/kernel/kvi_options.cpp:766
 msgid "NickServ message"
 msgstr ""
 
@@ -3582,12 +3582,12 @@ msgstr ""
 msgid "NickServ requests authentication, executing scheduled command"
 msgstr "NickServ pyytää kirjautumista, ajetaan asetettu komento"
 
-#: src/kvirc/kernel/kvi_options.cpp:736
+#: src/kvirc/kernel/kvi_options.cpp:738
 msgid "Nickname problem"
 msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:750
-#: src/kvirc/kernel/kvi_app.cpp:822
+#: src/kvirc/kernel/kvi_app.cpp:821
 #: src/kvirc/ui/kvi_input.cpp:2424
 msgid "No"
 msgstr "Ei"
@@ -3601,8 +3601,8 @@ msgstr ""
 msgid "No IRC context"
 msgstr "Ei IRC -kontekstia"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1117
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1345
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1115
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1343
 msgid "No Qt property named \"%Q\" for object named \"%Q\" of class %Q"
 msgstr "Ei ole Qt-ominaisuutta \"%Q\" oliolle nimeltä \"%Q\" luokasta %Q"
 
@@ -3610,15 +3610,15 @@ msgstr "Ei ole Qt-ominaisuutta \"%Q\" oliolle nimeltä \"%Q\" luokasta %Q"
 msgid "No activity"
 msgstr "Ei aktiivisuutta"
 
-#: src/kvirc/kernel/kvi_app.cpp:821
+#: src/kvirc/kernel/kvi_app.cpp:820
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:420
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:418
 msgid "No button with type %Q named %Q"
 msgstr "Ei nappia jolla olisi tyyppi %Q nimeltä %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:709
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:707
 msgid "No catalogue %Q for the current language found"
 msgstr "Ei katalogia %Q nykyiselle kielelle löytynyt"
 
@@ -3626,7 +3626,7 @@ msgstr "Ei katalogia %Q nykyiselle kielelle löytynyt"
 msgid "No channel topic is set"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:412
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:410
 msgid "No commandline specified for this type of url (%Q)"
 msgstr "Ei komentoriviä ole annettu tälle url-tyypille (%Q)"
 
@@ -3648,15 +3648,15 @@ msgid "No filename specified for the \"StoreToFile\" processing type"
 msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:560
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1209
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1222
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1244
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1207
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1220
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1242
 msgid "No handler '%Q' for event '%Q'"
 msgstr "Ei käsittelijää '%Q' tapahtumalle '%Q'"
 
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:554
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1205
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1218
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1203
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1216
 msgid "No handler '%Q' for raw numeric event '%d'"
 msgstr "Ei käsittelijää '%Q' raa-alle numeeriselle tapahtumalle '%d'"
 
@@ -3672,7 +3672,7 @@ msgstr "Ei potkuja sallittu (ellei U:Line)"
 msgid "No matches"
 msgstr "Ei osumia"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:369
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:367
 msgid "No menu bar item with text '%Q'"
 msgstr "Ei menupalkki-kohtaa tekstillä '%Q'"
 
@@ -3699,8 +3699,8 @@ msgstr ""
 #: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:559
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1185
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1193
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1183
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1191
 msgid "No such event (%Q)"
 msgstr "Tapahtumaa '%Q' ei löytynyt"
 
@@ -3732,11 +3732,11 @@ msgstr ""
 msgid "No such object function"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:608
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:606
 msgid "No target channel specified and the current window is not a channel"
 msgstr "Ei kohdekanavaa annettu eikä nykyinen ikkuna ole kanava"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:906
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:904
 #, fuzzy
 msgid ""
 "No target mask/channel specified and the current window is not a channel"
@@ -3767,12 +3767,12 @@ msgstr ""
 msgid "No way to login as '\r!n\r%Q\r' (%d: %Q), trying '%Q'..."
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:646
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:644
 #, fuzzy
 msgid "None"
 msgstr "Ei"
 
-#: src/kvirc/kernel/kvi_options.cpp:680
+#: src/kvirc/kernel/kvi_options.cpp:682
 msgid "Normal text"
 msgstr ""
 
@@ -3791,16 +3791,16 @@ msgstr "Ei yhdistetty"
 msgid "Not enough parameters"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:4118
-#: src/kvirc/ui/kvi_ircview.cpp:4172
+#: src/kvirc/ui/kvi_ircview.cpp:4147
+#: src/kvirc/ui/kvi_ircview.cpp:4201
 msgid "Not found"
 msgstr "Ei löytynyt"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5101
+#: src/kvirc/ui/kvi_ircview.cpp:5128
 msgid "Nothing known about %Q"
 msgstr "Ei tietoja palvelimesta %Q"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5102
+#: src/kvirc/ui/kvi_ircview.cpp:5129
 msgid "Nothing known about %Q (no connection)"
 msgstr "Ei tietoja palvelimesta %Q (ei yhteyttä)"
 
@@ -3809,11 +3809,11 @@ msgstr "Ei tietoja palvelimesta %Q (ei yhteyttä)"
 msgid "Notify List"
 msgstr "Huomautuslista"
 
-#: src/kvirc/kernel/kvi_options.cpp:743
+#: src/kvirc/kernel/kvi_options.cpp:745
 msgid "Notify list joins"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:744
+#: src/kvirc/kernel/kvi_options.cpp:746
 msgid "Notify list leaves"
 msgstr ""
 
@@ -3947,7 +3947,7 @@ msgstr "O: Paikallinen IRC-operaattori (LOCOP)"
 msgid "OK"
 msgstr "OK"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2641
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2638
 msgid "Objects have no extended scope variables"
 msgstr ""
 
@@ -3961,7 +3961,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_imagedialog.cpp:156
 #: src/kvirc/ui/kvi_maskeditor.cpp:82
-#: src/kvirc/ui/kvi_ircview.cpp:3968
+#: src/kvirc/ui/kvi_ircview.cpp:3997
 msgid "Ok"
 msgstr "Ok"
 
@@ -4031,7 +4031,7 @@ msgstr "Avaa KVIrcin kotisivun"
 msgid "Opens the KVIrc homepage in russian"
 msgstr "Avaa KVIrcin venäläisen kotisivun"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:221
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:219
 msgid "Operand of unary operator didn't evaluate to a number"
 msgstr "Unaarioperaattorin operandi ei evaluoitunut numeroksi"
 
@@ -4056,7 +4056,7 @@ msgstr ""
 msgid "Ops... for some reason the link filter object has been destroyed"
 msgstr "Hups.. jostain syystä linkin filtteriolio on tuhottu"
 
-#: src/kvirc/ui/kvi_window.cpp:538
+#: src/kvirc/ui/kvi_window.cpp:509
 msgid "Ops...I've accidentally lost the crypting engine..."
 msgstr "Hups... Minä juuri vahingossa hukkasin salauskoneiston..."
 
@@ -4083,7 +4083,7 @@ msgid ""
 "Trying to continue anyway..."
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:512
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:510
 msgid "Option setting error: Unknown option or invalid value for option type"
 msgstr ""
 "Valinnan asetus virhe: Tuntematon valinta tai kelpaamaton arvo valinnalle"
@@ -4105,31 +4105,31 @@ msgstr "Muu..."
 msgid "Out of address space"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:756
+#: src/kvirc/kernel/kvi_options.cpp:758
 msgid "Outgoing ICQ user-message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:802
+#: src/kvirc/kernel/kvi_options.cpp:804
 msgid "Own chan admin status set"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:803
+#: src/kvirc/kernel/kvi_options.cpp:805
 msgid "Own chan admin status unset"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:811
+#: src/kvirc/kernel/kvi_options.cpp:813
 msgid "Own chan owner status set"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:812
+#: src/kvirc/kernel/kvi_options.cpp:814
 msgid "Own chan owner status unset"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:745
+#: src/kvirc/kernel/kvi_options.cpp:747
 msgid "Own encrypted private message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:704
+#: src/kvirc/kernel/kvi_options.cpp:706
 msgid "Own private message"
 msgstr ""
 
@@ -4137,7 +4137,7 @@ msgstr ""
 msgid "Packaging file %Q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:96
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:93
 msgid ""
 "Parameter identifiers are forbidden in object scope (after the '->' operator)"
 msgstr ""
@@ -4146,11 +4146,11 @@ msgstr ""
 msgid "Parent Directory"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:685
+#: src/kvirc/kernel/kvi_options.cpp:687
 msgid "Parser error"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:686
+#: src/kvirc/kernel/kvi_options.cpp:688
 msgid "Parser warning"
 msgstr ""
 
@@ -4158,12 +4158,12 @@ msgstr ""
 msgid "Part All Channels"
 msgstr "Poistu kaikista kanavista"
 
-#: src/kvirc/kernel/kvi_options.cpp:701
+#: src/kvirc/kernel/kvi_options.cpp:703
 msgid "Part message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1775
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1795
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1774
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1794
 msgid "Partial socket write: packet broken into smaller pieces."
 msgstr "Osittainen yhteyteen kirjoitus: paketti hajotettiin useampaan osaan"
 
@@ -4179,11 +4179,11 @@ msgstr "Liitä (Hitaasti)"
 msgid "Peer X509 certificate"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:631
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:629
 msgid "Persistent"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1214
+#: src/kvirc/kernel/kvi_options.cpp:1215
 msgid "Pixmap options (image path)"
 msgstr ""
 
@@ -4191,17 +4191,17 @@ msgstr ""
 msgid "Play"
 msgstr "Soita"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:864
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:862
 msgid "Popup %Q is not defined"
 msgstr "Ponnahdusvalikkoa %Q ei ole määritelty"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:697
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:695
 msgid ""
 "Popup menu self-modification is not allowed (the popup is probably open)"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:4103
-#: src/kvirc/ui/kvi_ircview.cpp:4156
+#: src/kvirc/ui/kvi_ircview.cpp:4132
+#: src/kvirc/ui/kvi_ircview.cpp:4185
 #, c-format
 msgid "Pos %d"
 msgstr "Kohta %d"
@@ -4234,7 +4234,7 @@ msgstr "Pragman Pystysuora 9-Hila"
 msgid "Private"
 msgstr "Yksityinen"
 
-#: src/kvirc/ui/kvi_window.cpp:446
+#: src/kvirc/ui/kvi_window.cpp:417
 msgid "Private Text Encoding"
 msgstr "Yksityistesktienkoodi"
 
@@ -4246,7 +4246,7 @@ msgstr "Luultavasti poissa"
 msgid "Processing DCC %Q request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1048
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1046
 #, c-format
 msgid "Properties for Qt class %s"
 msgstr "Ominaisuudet Qt-luokalle %s"
@@ -4255,8 +4255,8 @@ msgstr "Ominaisuudet Qt-luokalle %s"
 msgid "Properties..."
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1310
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1453
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1308
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1451
 msgid ""
 "Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data "
 "type"
@@ -4264,7 +4264,7 @@ msgstr ""
 "Ominaisuudella \"%Q\" oliosta nimeltä \"%Q\" luokasta %Q on ei-tuettu "
 "datatyyppi"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1060
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1058
 msgid "Property: %c%Q%c, type %Q"
 msgstr "Ominaisuus: %c%Q%c, tyyppi %Q"
 
@@ -4284,16 +4284,16 @@ msgstr "Proxy-yhteys"
 msgid "Proxy hostname resolved to %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1160
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1159
 msgid "Proxy response: "
 msgstr "Proxy-vastaus: "
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1000
+#: src/kvirc/kernel/kvi_ircsocket.cpp:999
 msgid "Proxy response: Auth method OK: using method 0 (no auth)"
 msgstr ""
 "Proxy-vastaus: kirjautumismetodi OK: käytetään metodia 0 (ei kirjautumista)"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1007
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1006
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
 msgstr ""
 "Proxy-vastaus: kirjautumismetodi OK: käytetään metodia 2 (käyttäjätunnus/"
@@ -4311,7 +4311,7 @@ msgstr ""
 msgid "Proxy response: address type not supported"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:965
+#: src/kvirc/kernel/kvi_ircsocket.cpp:964
 msgid "Proxy response: auth OK: access granted"
 msgstr "Proxy-vastaus: kirjautuminen OK: pääsy myönnetty"
 
@@ -4359,12 +4359,12 @@ msgstr ""
 msgid "Proxy response: request failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1063
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1120
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1062
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1119
 msgid "Proxy response: target data OK: request granted"
 msgstr "Proxy-vastaus: kohde-data OK: pyyntö myönnetty"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1171
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1170
 msgid "Proxy said something about: \n"
 msgstr "Proxy sanoi jotakin aiheesta: \n"
 
@@ -4372,15 +4372,15 @@ msgstr "Proxy sanoi jotakin aiheesta: \n"
 msgid "Query Targets"
 msgstr "Kysele kohteilta"
 
-#: src/kvirc/kernel/kvi_options.cpp:747
+#: src/kvirc/kernel/kvi_options.cpp:749
 msgid "Query encrypted private message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:759
+#: src/kvirc/kernel/kvi_options.cpp:761
 msgid "Query notice"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:706
+#: src/kvirc/kernel/kvi_options.cpp:708
 msgid "Query private message"
 msgstr ""
 
@@ -4388,7 +4388,7 @@ msgstr ""
 msgid "Query target:"
 msgstr "Kysele kohteelta:"
 
-#: src/kvirc/kernel/kvi_options.cpp:772
+#: src/kvirc/kernel/kvi_options.cpp:774
 msgid "Query trace message"
 msgstr ""
 
@@ -4412,11 +4412,11 @@ msgstr "Hiljainen käyttäjä tai kanavaomistaja"
 msgid "Quit KVIrc"
 msgstr "Lopeta KVIrc"
 
-#: src/kvirc/kernel/kvi_options.cpp:714
+#: src/kvirc/kernel/kvi_options.cpp:716
 msgid "Quit message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:716
+#: src/kvirc/kernel/kvi_options.cpp:718
 msgid "Quit on netsplit message"
 msgstr ""
 
@@ -4424,7 +4424,7 @@ msgstr ""
 msgid "Quits KVIrc closing all the current connections"
 msgstr "Lopettaa KVIrcin, sulkee kaikki nykyiset yhteydet"
 
-#: src/kvirc/kernel/kvi_options.cpp:692
+#: src/kvirc/kernel/kvi_options.cpp:694
 msgid "Raw data to server"
 msgstr ""
 
@@ -4496,11 +4496,11 @@ msgstr "Vastaanotettiin pong käyttäjältä \r!s\r%s\r (PONG %s)"
 msgid "Reconnect attempt aborted"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1209
+#: src/kvirc/kernel/kvi_options.cpp:1210
 msgid "Rectangle options (x,y,width,height)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:486
+#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:484
 msgid "Recursive definition detected for popup '%Q': ignoring"
 msgstr ""
 
@@ -4525,7 +4525,7 @@ msgstr ""
 msgid "Reload"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:886
+#: src/kvirc/kernel/kvi_app.cpp:885
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr ""
@@ -4545,7 +4545,7 @@ msgstr "Poista %Q"
 msgid "Report a Bug / Propose Improvements"
 msgstr "Raportoi virheestä / Ehdota parannusta"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3926
+#: src/kvirc/ui/kvi_ircview.cpp:3955
 msgid "Reset Temporary Background"
 msgstr "Palauta tausta"
 
@@ -4553,7 +4553,7 @@ msgstr "Palauta tausta"
 msgid "Restore &Default Script"
 msgstr "Palauta &oletusskripti"
 
-#: src/kvirc/kernel/kvi_app.cpp:842
+#: src/kvirc/kernel/kvi_app.cpp:841
 msgid "Restore Default Script - KVIrc"
 msgstr ""
 
@@ -4578,7 +4578,7 @@ msgstr "Lajittele käänteisesti"
 msgid "Right"
 msgstr "Oikea"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:377
+#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:375
 msgid "Right operand didn't evaluate to a number"
 msgstr "Oikea operandi ei evaluoitunut numeroksi"
 
@@ -4595,11 +4595,11 @@ msgstr ""
 msgid "Run KVS Script"
 msgstr "Aja KVS-skripti"
 
-#: src/kvirc/kernel/kvi_options.cpp:792
+#: src/kvirc/kernel/kvi_options.cpp:794
 msgid "SSL message"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:807
+#: src/kvirc/ui/kvi_window.cpp:778
 msgid "Sa&ve Window Properties"
 msgstr "&Tallenna ikkunan asetukset"
 
@@ -4611,7 +4611,7 @@ msgstr ""
 msgid "Sample Text"
 msgstr "Esimerkkiteksti"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:94
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:92
 msgid "Say parse error: Broken command"
 msgstr "Say:n parsimisvirhe: Rikkinäinen komento"
 
@@ -4635,15 +4635,19 @@ msgstr "Skripti"
 msgid "Script Tester"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:68
+#: src/kvirc/kernel/kvi_actionmanager.cpp:66
 msgid "Scripting"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:68
+#: src/kvirc/kernel/kvi_actionmanager.cpp:66
 msgid "Scripting related actions"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:793
+#: src/kvirc/ui/kvi_ircview.cpp:5206
+msgid "Scroll up to read from the last read line"
+msgstr ""
+
+#: src/kvirc/kernel/kvi_options.cpp:795
 msgid "Search"
 msgstr ""
 
@@ -4687,7 +4691,7 @@ msgstr "Valitse nimi suodatintiedostolle"
 msgid "Select color"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:681
+#: src/kvirc/kernel/kvi_options.cpp:683
 msgid "Selection"
 msgstr ""
 
@@ -4695,7 +4699,7 @@ msgstr ""
 msgid "Self modification not allowed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:993
+#: src/kvirc/kernel/kvi_ircconnection.cpp:977
 #, c-format
 msgid "Sending %s as password"
 msgstr ""
@@ -4708,7 +4712,7 @@ msgstr ""
 msgid "Sending out PING based lag probe"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1551
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1548
 msgid "Senseless empty switch command: fix the script"
 msgstr ""
 
@@ -4762,7 +4766,7 @@ msgstr ""
 msgid "Server ERROR: %Q"
 msgstr "Palvelimen VIRHE: %Q"
 
-#: src/kvirc/kernel/kvi_options.cpp:698
+#: src/kvirc/kernel/kvi_options.cpp:700
 msgid "Server Message of the Day"
 msgstr ""
 
@@ -4770,15 +4774,15 @@ msgstr ""
 msgid "Server Notices (+s)"
 msgstr "Palvelinhuomatukset (+s)"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1212
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1211
 msgid "Server X509 certificate"
 msgstr "Palvelimen X5099 sertifikaatti"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5045
+#: src/kvirc/ui/kvi_ircview.cpp:5072
 msgid "Server appears to be a network hub<br>"
 msgstr "Palvelin näyttää olevan verkon runko<br>"
 
-#: src/kvirc/kernel/kvi_options.cpp:813
+#: src/kvirc/kernel/kvi_options.cpp:815
 msgid "Server error"
 msgstr ""
 
@@ -4800,19 +4804,19 @@ msgstr ""
 msgid "Server idle for"
 msgstr "Palvelin on idlannut"
 
-#: src/kvirc/kernel/kvi_options.cpp:697
+#: src/kvirc/kernel/kvi_options.cpp:699
 msgid "Server information"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:761
+#: src/kvirc/kernel/kvi_options.cpp:763
 msgid "Server notice"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:699
+#: src/kvirc/kernel/kvi_options.cpp:701
 msgid "Server ping"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:791
+#: src/kvirc/kernel/kvi_options.cpp:793
 msgid "Server statistics"
 msgstr ""
 
@@ -4845,11 +4849,11 @@ msgstr "Asetettu:"
 msgid "Setting away nickname (%Q)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1192
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1176
 msgid "Setting configured user mode"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:67
+#: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Settings"
 msgstr ""
 
@@ -4874,7 +4878,7 @@ msgstr "Näytä telakointikuvake"
 msgid "Show &Icon Table"
 msgstr "Näytä &kuvaketaulukko"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3920
+#: src/kvirc/ui/kvi_ircview.cpp:3949
 msgid "Show Find Window"
 msgstr "Näytä etsintäikkuna"
 
@@ -5005,11 +5009,11 @@ msgstr "Näyttää teeman valintojen ikkunan"
 msgid "Simple Clock"
 msgstr "Yksinkertainen kello"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:637
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:635
 msgid "SingleShot"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3063
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3060
 msgid "Skipping nested terminator character %q"
 msgstr ""
 
@@ -5017,7 +5021,7 @@ msgstr ""
 msgid "Slash (/) character expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:889
+#: src/kvirc/kvs/kvi_kvs_object.cpp:887
 msgid ""
 "Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
 msgstr "Paikan kohdeolio tuhottu kun lähetetään signaalia oliosta '%Q::%Q'"
@@ -5034,11 +5038,11 @@ msgstr ""
 msgid "Small icons"
 msgstr "Pienet kuvakkeet"
 
-#: src/kvirc/ui/kvi_window.cpp:742
+#: src/kvirc/ui/kvi_window.cpp:713
 msgid "Smart (Send Local)"
 msgstr "Fiksu (Lähetä lokaali)"
 
-#: src/kvirc/ui/kvi_window.cpp:743
+#: src/kvirc/ui/kvi_window.cpp:714
 msgid "Smart (Send UTF-8)"
 msgstr "Fiksu (Lähetä UTF-8)"
 
@@ -5050,11 +5054,11 @@ msgstr ""
 msgid "Socket creation failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:690
+#: src/kvirc/kernel/kvi_options.cpp:692
 msgid "Socket error"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:688
+#: src/kvirc/kernel/kvi_options.cpp:690
 msgid "Socket message"
 msgstr ""
 
@@ -5062,7 +5066,7 @@ msgstr ""
 msgid "Socket not connected"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:689
+#: src/kvirc/kernel/kvi_options.cpp:691
 msgid "Socket warning"
 msgstr ""
 
@@ -5098,7 +5102,7 @@ msgstr ""
 "Spam-viesti käyttäjältä \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q (täsmää spamsanan \"%"
 "s\" kanssa)"
 
-#: src/kvirc/kernel/kvi_options.cpp:753
+#: src/kvirc/kernel/kvi_options.cpp:755
 msgid "Spam report"
 msgstr ""
 
@@ -5106,7 +5110,7 @@ msgstr ""
 msgid "Split View"
 msgstr "Kaksoisnäkymä"
 
-#: src/kvirc/kernel/kvi_options.cpp:715
+#: src/kvirc/kernel/kvi_options.cpp:717
 msgid "Split message"
 msgstr ""
 
@@ -5115,7 +5119,7 @@ msgstr ""
 msgid "Standalone Servers"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:741
+#: src/kvirc/ui/kvi_window.cpp:712
 msgid "Standard"
 msgstr "Standardi"
 
@@ -5137,21 +5141,21 @@ msgid ""
 msgstr ""
 "Irronnainen ':'-merkki aliaksen nimessä: tarkoititko ...<sisällin>::<nimi> ?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:96
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:191
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:188
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr "Irrallinen ':' -merkki: tarkoititko '...<sisällyttäjä>::<aliasnimi>' ?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:88
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:183
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:180
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Irrallinen '::'-sekvenssi tai ei-sopiva aliasnimi"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3090
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3087
 msgid "Stray backslash at the end of the script"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:63
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:60
 msgid "Stray dot ('.') character or invalid following module command name"
 msgstr ""
 "Irrallinen piste-operaattori ('.') -merkki tai viallinen moduulikomento"
@@ -5169,11 +5173,11 @@ msgstr ""
 msgid "Stri&keout"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1218
+#: src/kvirc/kernel/kvi_options.cpp:1219
 msgid "String list options (comma separated list of strings)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1210
+#: src/kvirc/kernel/kvi_options.cpp:1211
 msgid "String options (string value)"
 msgstr ""
 
@@ -5195,56 +5199,56 @@ msgstr ""
 msgid "Switch dash without switch letter"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:49
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:46
 msgid ""
 "Syntax error after '$' function call prefix. If you want to use a plain '$' "
 "in the code you need to escape it"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2624
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2621
 msgid ""
 "Syntax error after '%' variable prefix. If you want to use a plain '%' in "
 "the code you need to escape it"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1154
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1176
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1151
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1173
 msgid "Syntax error: confused by earlier errors: bailing out"
 msgstr "Syntaksivirhe: hämmennytty aikaisempien virheiden takia: lopetetaan"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:158
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:155
 msgid "Syntax error: invalid $$ ($this) function call in object scope"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:97
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:94
 msgid "Syntax error: malformed (alias?) command identifier"
 msgstr "Syntaksivirhe: väärinmuotoiltu (alias?) komentokutsu"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:192
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:189
 msgid "Syntax error: malformed (alias?) function call identifier"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:184
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:181
 msgid "Syntax error: malformed alias function call identifier"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:89
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:86
 msgid "Syntax error: malformed alias identifier"
 msgstr "Syntaksivirhe: väärinmuotoiltu aliaskutsu"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:64
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:61
 msgid "Syntax error: malformed module command identifier"
 msgstr "Syntaksivirhe: väärinmuotoiltu moduulikomento"
 
-#: src/kvirc/kernel/kvi_options.cpp:691
+#: src/kvirc/kernel/kvi_options.cpp:693
 msgid "System error"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:695
+#: src/kvirc/kernel/kvi_options.cpp:697
 msgid "System message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:694
+#: src/kvirc/kernel/kvi_options.cpp:696
 msgid "System warning"
 msgstr ""
 
@@ -5256,11 +5260,11 @@ msgstr "Ikkunapalkki"
 msgid "Temporary Files"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:802
+#: src/kvirc/ui/kvi_window.cpp:773
 msgid "Text &Encoding"
 msgstr "Teksti&enkoodi"
 
-#: src/kvirc/kernel/kvi_options.cpp:815
+#: src/kvirc/kernel/kvi_options.cpp:817
 msgid "Text Encoding Server message"
 msgstr ""
 
@@ -5268,48 +5272,48 @@ msgstr ""
 msgid "The $sw() function can be used only in aliases"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1954
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1951
 msgid "The 'defpopup' command needs an expression enclosed in parenthesis"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1038
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1035
 msgid "The 'for' command needs an expression enclosed in parenthesis"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1246
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1243
 msgid ""
 "The 'foreach' command expects a comma separated list of iteration data items "
 "after the first parameter"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1218
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1228
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1215
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1225
 msgid ""
 "The 'foreach' command expects a writeable iteration variable as first "
 "parameter"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1204
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1201
 msgid "The 'foreach' command needs an expression enclosed in parenthesis"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:302
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:299
 msgid "The 'global' command needs a variable list"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:848
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:845
 msgid "The 'if' command needs an expression enclosed in parenthesis"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1388
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1385
 msgid "The 'switch' command needs an expression enclosed in parenthesis"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:232
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:229
 msgid "The 'unset' command needs a variable list"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:782
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:779
 msgid ""
 "The 'while' block of the 'do' command needs an expression enclosed in "
 "parenthesis"
@@ -5319,7 +5323,7 @@ msgstr ""
 msgid "The SOCKSv4 protocol lacks IPv6 support"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2843
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2840
 msgid ""
 "The above problem might be related to the switch dash and the following "
 "equal sign"
@@ -5329,31 +5333,31 @@ msgstr ""
 msgid "The alias %Q is not existing"
 msgstr "Alias %Q ei ole olemassa"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:859
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:857
 msgid ""
 "The argument of the -w switch did not evaluate to a valid window id: using "
 "default"
 msgstr "Kytkimen -w annettu arvo ei ole ikkunan ID: käytetään nykyistä"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:99
+#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:97
 msgid ""
 "The argument of the [] subscript didn't evaluate to an array: automatic "
 "conversion from %Q supplied"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:133
+#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:131
 msgid ""
 "The argument of the [] subscript didn't evaluate to an array: automatic "
 "conversion from type '%Q' supplied"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arraycount.cpp:69
+#: src/kvirc/kvs/kvi_kvs_treenode_arraycount.cpp:67
 msgid ""
 "The argument of the array count '#' operator didn't evaluate to an array: "
 "automatic conversion from type '%Q' supplied"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashcount.cpp:69
+#: src/kvirc/kvs/kvi_kvs_treenode_hashcount.cpp:67
 msgid ""
 "The argument of the hash count '#' operator didn't evaluate to a hash: "
 "automatic conversion from type '%Q' supplied"
@@ -5361,12 +5365,12 @@ msgstr ""
 "Listan alkionlaskentaoperaattorin '#' argumentti ei evaluoitunut listaksi: "
 "automaattinen muunnos tyypistä '%Q' viety"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:868
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:866
 msgid ""
 "The argument of the i switch did not evaluate to a number: using default"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:133
+#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:131
 msgid ""
 "The argument of the {} subscript didn't evaluate to a hash automatic "
 "conversion from %Q supplied"
@@ -5374,7 +5378,7 @@ msgstr ""
 "Argumentti alikomentosarjasta {} ei evaluoitunut listaksi automaattinen "
 "muunnos tyypistä '%Q' viety"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:90
+#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:88
 msgid ""
 "The argument of the {} subscript didn't evaluate to a hash: automatic "
 "conversion from type '%Q' supplied"
@@ -5382,11 +5386,11 @@ msgstr ""
 "Argumentti alikomentosarjasta {} ei evaluoitunut listaksi: automaattinen "
 "muunnos tyypistä '%Q' viety"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:748
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:746
 msgid "The catalogue %Q was not loaded"
 msgstr "Katalogia %Q ei ollut ladattu"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:410
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:408
 msgid "The commandline for this url type seems to be broken (%Q)"
 msgstr "Komentorivi tälle url-tyypille näyttää olevan rikki (%Q)"
 
@@ -5420,18 +5424,18 @@ msgstr ""
 msgid "The current network is %Q"
 msgstr "Nykyinen verkko on %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:459
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:457
 msgid "The current window is not a channel"
 msgstr "Nykyinen ikkuna ei ole kanava"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2812
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2809
 msgid ""
 "The dash after a command should be followed by a letter (switch), by a digit "
 "(negative number) or be escaped"
 msgstr ""
 
 #: src/kvirc/ui/kvi_filedialog.cpp:119
-#: src/kvirc/ui/kvi_filedialog.cpp:157
+#: src/kvirc/ui/kvi_filedialog.cpp:159
 #, c-format
 msgid "The file %s already exists.<br>Do you wish to overwrite it?"
 msgstr ""
@@ -5472,69 +5476,69 @@ msgid ""
 "to decode it: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:873
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:870
 msgid ""
 "The last if command in the buffer has no conditional instructions: it's "
 "senseless"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:677
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:674
 msgid ""
 "The last while command in the buffer has no conditional instructions: it's "
 "senseless"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:404
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:402
 msgid "The left side of operator '%=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:261
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:259
 msgid "The left side of operator '&=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:486
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:484
 msgid "The left side of operator '*=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:800
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:798
 msgid "The left side of operator '+=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:730
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:728
 msgid "The left side of operator '-=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:321
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:319
 msgid "The left side of operator '/=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:612
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:610
 msgid "The left side of operator '<<=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:671
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:669
 msgid "The left side of operator '>>=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:871
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:869
 msgid "The left side of operator '^=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:553
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:551
 msgid "The left side of operator '|=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:94
+#: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:92
 msgid ""
 "The left side of the scope operator didn't evaluate as an object reference"
 msgstr "Tähystin-operaattorin vasen puoli ei evaluoitunut olio-kohdistimeksi"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:100
+#: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:98
 msgid ""
 "The left side of the scope operator evaluated to a null object reference"
 msgstr "Tähystin-operaattorin vasen puoli evulaitui null-olio-kohdistimeksi"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:107
+#: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:105
 msgid ""
 "The left side of the scope operator evaluated to an invalid object reference "
 "(object doesn't exist)"
@@ -5542,17 +5546,17 @@ msgstr ""
 "Tähystin-operaattorin vasen puoli evaluoitui epäkelvoksi olio-kohdistimeksi "
 "(oliota ei ole olemassa)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:822
-#: src/kvirc/kernel/kvi_ircconnection.cpp:832
+#: src/kvirc/kernel/kvi_ircconnection.cpp:806
+#: src/kvirc/kernel/kvi_ircconnection.cpp:816
 msgid "The local IP address as seen by the IRC server is %Q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:704
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:702
 msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1110
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1332
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1108
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1330
 msgid "The object named \"%Q\" of class %Q has no Qt properties"
 msgstr "Oliolla\"%Q\" luokasta %Q ei ole Qt-ominaisuuksia"
 
@@ -5568,11 +5572,11 @@ msgid ""
 "newer KVIrc"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:392
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:390
 msgid "The popup '%Q' is not defined"
 msgstr "Ponnahdusikkunaa '%Q' ei ole määritelty"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommanddefpopup.cpp:320
+#: src/kvirc/kvs/kvi_kvs_treenode_specialcommanddefpopup.cpp:318
 #, c-format
 msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
 msgstr ""
@@ -5581,7 +5585,7 @@ msgstr ""
 msgid "The problem *might* be caused by an updated DNS entry"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1147
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1145
 #, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
@@ -5598,7 +5602,7 @@ msgstr ""
 "Juuri tapahtunut tunnuksen vaihto käyttäjältä \r!n\r%Q\r to \r!n\r%Q\r "
 "aiheutti kyselytörmäyksen, liitetään sisällöt toisiinsa"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:1241
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:1239
 msgid ""
 "The regular expression matched a zero-length substring: this is not valid in "
 "the s/// operator, skipping"
@@ -5608,43 +5612,43 @@ msgstr ""
 msgid "The remote server replied with "
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:393
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:391
 msgid "The right side of operator '%=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:250
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:248
 msgid "The right side of operator '&=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:475
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:473
 msgid "The right side of operator '*=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:789
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:787
 msgid "The right side of operator '+=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:719
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:717
 msgid "The right side of operator '-=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:310
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:308
 msgid "The right side of operator '/=' didn't evaluate to a number"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:601
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:599
 msgid "The right side of operator '<<=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:660
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:658
 msgid "The right side of operator '>>=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:860
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:858
 msgid "The right side of operator '^=' didn't evaluate to an integer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:542
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:540
 msgid "The right side of operator '|=' didn't evaluate to an integer"
 msgstr ""
 
@@ -5657,7 +5661,7 @@ msgstr ""
 "Asetettu NickServin kirjautumiskomento vaikuttaa olevan rikki, ole hyvä ja "
 "vaihda"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1216
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1215
 msgid "The server didn't provide a certificate"
 msgstr "Palvelin ei antanut sertifikaattia"
 
@@ -5667,16 +5671,16 @@ msgid ""
 "nickname manually"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1140
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1124
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:780
+#: src/kvirc/kernel/kvi_ircconnection.cpp:764
 msgid "The server seems to have changed the idea about the local hostname"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:671
+#: src/kvirc/kernel/kvi_ircconnection.cpp:655
 msgid ""
 "The server seems to support the WATCH notify list method, will try to use it"
 msgstr ""
@@ -5730,7 +5734,7 @@ msgid "The specified ping time is invalid: assuming zero (no ping)"
 msgstr "Annettu ping-aika on epäkelpo, oletetaan nolla (ei pingiä)"
 
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:437
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:411
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:409
 msgid "The specified window has no button containers"
 msgstr "Annetulla ikkunalla ei ole nappien sisältimiä"
 
@@ -5778,8 +5782,8 @@ msgstr ""
 "Tämän kyselyn kohde hukattiin ja löydettiin uudelleen kun \r!n\r%Q\r [%Q@\r!h"
 "\r%Q\r] vaihtoi tunnuksekseen \r!n\r%Q\r"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:155
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:206
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:153
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:204
 msgid "The target variable didn't evaluate to an integer or real value"
 msgstr ""
 
@@ -5791,7 +5795,7 @@ msgstr "Teeman tietotiedosto ei ole olemassa"
 msgid "The timeout delay didn't evaluate to an integer"
 msgstr "Viive-aika ei evaluoitunut kokonaislukuun"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:653
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:650
 msgid "The while command needs an expression enclosed in parenthesis"
 msgstr ""
 
@@ -5803,8 +5807,8 @@ msgstr "Teeman tietotiedosto ei ole kelvollinen"
 msgid "There are active connections, are you sure you wish to "
 msgstr "Aktiivisia yhteyksiä on olemassa, oletko varma että haluat "
 
-#: src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:56
-#: src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:74
+#: src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:54
+#: src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:72
 msgid "There are no extended scope variables in this scope"
 msgstr "Tässä laajuudessa ei ole pidennettyjä muuttujia."
 
@@ -5832,7 +5836,7 @@ msgstr ""
 "Tämä KVIrc-suoritettava on liian vanha tälle teemalle (minimi tälle "
 "teemakoneistolle vaadittu on %Q kun tämän teemakoneiston versio on %s)"
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:187
+#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:185
 msgid "This command can be used only in windows bound to an IRC context"
 msgstr ""
 "Tätä komentoa voi vain käyttää ikkunoissa jotka on liitetty IRC-kontekstiin"
@@ -5841,7 +5845,7 @@ msgstr ""
 msgid "This executable has been compiled without SSL support"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands.cpp:152
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands.cpp:150
 msgid "This is not a channel"
 msgstr ""
 
@@ -5851,7 +5855,7 @@ msgid ""
 "setting"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:982
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:979
 msgid ""
 "This looks a lot like an object handle dereferencing operator '->' but in "
 "fact it isn't. Maybe you forgot a '$' just after ?"
@@ -5922,11 +5926,11 @@ msgstr "Järjestä ikkunat"
 msgid "Tiles the MDI windows with the currently selected tile method"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_timermanager.cpp:239
+#: src/kvirc/kvs/kvi_kvs_timermanager.cpp:237
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:526
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:524
 msgid ""
 "Timer name omitted but there is not current timer (this is not a timer "
 "callback)"
@@ -5947,7 +5951,7 @@ msgstr ""
 msgid "Toolbars"
 msgstr "Työkalurivit"
 
-#: src/kvirc/kernel/kvi_actionmanager.cpp:71
+#: src/kvirc/kernel/kvi_actionmanager.cpp:69
 msgid "Tools"
 msgstr ""
 
@@ -5971,7 +5975,7 @@ msgstr ""
 msgid "Topic for \r!c\r%Q\r was set by %Q on %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:703
+#: src/kvirc/kernel/kvi_options.cpp:705
 msgid "Topic message"
 msgstr ""
 
@@ -5983,24 +5987,24 @@ msgstr ""
 msgid "Topic was set by %Q on %Q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:657
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:655
 #, c-format
 msgid "Total: %u timers running"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:142
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:139
 msgid "Trailing garbage at the end of the break command: ignored"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:170
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:167
 msgid "Trailing garbage at the end of the continue command: ignored"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:944
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:941
 msgid "Trailing garbage ignored after operator '++'"
 msgstr "Roskaa operaattorin '++' jälkeen jätetty huomiotta"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:975
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:972
 msgid "Trailing garbage ignored after operator '--'"
 msgstr "Roskaa operaattorin '--' jälkeen jätetty huomiotta"
 
@@ -6016,7 +6020,7 @@ msgstr ""
 msgid "UNUSED"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:683
+#: src/kvirc/kernel/kvi_options.cpp:685
 msgid "URL foreground"
 msgstr ""
 
@@ -6036,15 +6040,15 @@ msgstr ""
 msgid "Unable to add the timer: insufficient system resources"
 msgstr "Ei voitu lisätä ajastinta: ei riittävästi resursseja"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1230
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1229
 msgid "Unable to determine the current cipher"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:5018
+#: src/kvirc/ui/kvi_ircview.cpp:5045
 msgid "Unable to look it up hostname: Hostname appears to be masked"
 msgstr "Ei voida selvittää isäntää: Isäntä näyttää olevan naamioitu"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5019
+#: src/kvirc/ui/kvi_ircview.cpp:5046
 msgid "Unable to look it up hostname: Unknown host"
 msgstr "Ei voida selvittää isäntää: Tuntematon isäntä"
 
@@ -6065,12 +6069,12 @@ msgstr ""
 msgid "Unable to process the above request: DCC module may be broken"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:847
-#: src/kvirc/kernel/kvi_ircconnection.cpp:877
+#: src/kvirc/kernel/kvi_ircconnection.cpp:831
+#: src/kvirc/kernel/kvi_ircconnection.cpp:861
 msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:874
+#: src/kvirc/kernel/kvi_ircconnection.cpp:858
 msgid ""
 "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
 "previously resolved %Q"
@@ -6084,12 +6088,12 @@ msgstr ""
 msgid "Unable to start the request slave thread"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:785
+#: src/kvirc/kernel/kvi_options.cpp:787
 msgid "Unban matching my mask"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1153
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1174
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1150
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1171
 msgid "Unexpected (and senseless) read-only data evaluation"
 msgstr "Ei-odotettua (ja järjetöntä) vain-luku datan käsittelyä"
 
@@ -6101,7 +6105,7 @@ msgstr ""
 msgid "Unexpected character"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:447
+#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:444
 msgid ""
 "Unexpected character %q (unicode %h) in expression. If it meant to be a "
 "string use the quotes."
@@ -6109,25 +6113,25 @@ msgstr ""
 "Ei-oletettu merkki %q (unikoodi %h) lauseessa. Jos sen oli tarkoitus olla "
 "merkkijonossa, käytä lainausmerkkejä"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:48
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:45
 msgid "Unexpected character %q (unicode %x) after '$' function call prefix"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1175
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1172
 msgid "Unexpected character '%q' (unicode %x)"
 msgstr "Ei-odotettu merkki '%q' (unikoodi %x)"
 
-#: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:80
+#: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:77
 msgid ""
 "Unexpected character '%q' (unicode %x) after a slash (it is a typo or a "
 "malformed comment begin ?)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2816
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2813
 msgid "Unexpected character '%q' (unicode %x) after a switch dash"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1172
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1169
 msgid ""
 "Unexpected character '%q' (unicode %x) after a void function call: end of "
 "instruction expected"
@@ -6139,27 +6143,27 @@ msgstr ""
 msgid "Unexpected characters in array index"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1832
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1829
 msgid ""
 "Unexpected empty <name> field in extpopup parameters. See /help defpopup for "
 "the syntax"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1745
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1776
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1824
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1742
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1773
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1821
 msgid ""
 "Unexpected empty <text> field in extpopup parameters. See /help defpopup for "
 "the syntax"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1726
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1723
 msgid ""
 "Unexpected empty <text> field in label parameters. See /help defpopup for "
 "the syntax"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:462
+#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:459
 msgid "Unexpected empty expression operand"
 msgstr "Ei-oletettu tyhjä lauseen operandi"
 
@@ -6171,56 +6175,56 @@ msgstr ""
 msgid "Unexpected end in expression"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1242
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1239
 msgid ""
 "Unexpected end of 'foreach' parameters: at least one iteration data argument "
 "must be given"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:462
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:490
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:517
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:561
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:459
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:487
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:514
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:558
 msgid "Unexpected end of buffer in class definition"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1585
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1582
 msgid "Unexpected end of buffer in defpopup block"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:545
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:542
 msgid "Unexpected end of buffer in function parameter list reminder"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1438
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1435
 msgid "Unexpected end of buffer in switch condition block"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:989
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:986
 msgid ""
 "Unexpected end of buffer while looking for the closing ')' in the 'for' "
 "command"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:764
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:761
 msgid ""
 "Unexpected end of command after the 'do' command block: expected 'while' "
 "keyword"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:94
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:91
 msgid ""
 "Unexpected end of command buffer while looking for the \"perl.end\" statement"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:861
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:858
 msgid ""
 "Unexpected end of command in binding operation, at least one slash is missing"
 msgstr ""
 "Ei-oletettu loppu komennossa sitomisoperaatiossa, ainakin yksi kauttaviiva "
 "puuttuu"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:838
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:835
 msgid ""
 "Unexpected end of command in binding operation, at least two slashes are "
 "missing"
@@ -6244,80 +6248,80 @@ msgstr ""
 msgid "Unexpected end of command in string"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3364
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3361
 msgid ""
 "Unexpected end of line in hash key (missing '}' character or unescaped "
 "newline)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2925
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2992
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2922
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2989
 msgid "Unexpected end of line in parameter list"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3650
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3647
 msgid ""
 "Unexpected end of line in string constant (missing \" character or unescaped "
 "newline)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:47
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:44
 msgid "Unexpected end of script after '$' function call prefix"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2818
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2815
 msgid "Unexpected end of script after a switch dash"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1156
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1153
 msgid "Unexpected end of script after a variable reference: expected operator"
 msgstr ""
 "Ei-oletettu skriptin loppu muuttuja-referenssin jälkeen: oletettiin "
 "operaattoria"
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:301
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:367
+#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:298
+#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:364
 msgid "Unexpected end of script in expression"
 msgstr "Ei-oletettu skriptin loppu"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3357
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3354
 msgid "Unexpected end of script in hash key (missing '}' character ?)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2735
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2732
 msgid "Unexpected end of script in instruction block (missing closing brace)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:63
+#: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:60
 msgid "Unexpected end of script in multiline comment"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2919
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2986
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2916
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2983
 msgid "Unexpected end of script in parameter list"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3643
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3640
 msgid "Unexpected end of script in string constant (missing \" character ?)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:874
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:871
 msgid ""
 "Unexpected end of script while looking for the instruction block of the if "
 "command"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:678
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:675
 msgid ""
 "Unexpected end of script while looking for the instruction block of the "
 "while command"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1230
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1227
 msgid "Unexpected function call as 'foreach' iteration variable"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1232
+#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1229
 msgid "Unexpected read-only variable as 'foreach' iteration variable"
 msgstr ""
 
@@ -6325,7 +6329,7 @@ msgstr ""
 msgid "Unexpected token"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:696
+#: src/kvirc/kernel/kvi_options.cpp:698
 msgid "Unhandled server reply"
 msgstr ""
 
@@ -6345,7 +6349,7 @@ msgstr "Epäkorosta kaikki ikkunat"
 #: src/kvilib/net/kvi_ssl.cpp:611
 #: src/kvilib/net/kvi_ssl.cpp:634
 #: src/kvirc/kernel/kvi_theme.cpp:86
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:640
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:638
 #: src/kvirc/ui/kvi_topicw.cpp:121
 msgid "Unknown"
 msgstr "Tuntematon"
@@ -6354,23 +6358,23 @@ msgstr "Tuntematon"
 msgid "Unknown "
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:763
+#: src/kvirc/kernel/kvi_options.cpp:765
 msgid "Unknown CTCP reply"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:217
+#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:214
 msgid "Unknown binary operator '%q'"
 msgstr "Tuntematon binäärioperaattori '%q'"
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:119
+#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:116
 msgid "Unknown binary operator '=%q': did you mean '==' ?"
 msgstr "Tuntematon binäärioperaattori '=%q': tarkoititko '=='?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:901
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:898
 msgid "Unknown binding operation '%Q'"
 msgstr "Tuntematon sitomisoperaatio '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:274
+#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:271
 msgid "Unknown callback command \"%Q\""
 msgstr "Tuntematon taustakutsukomento \"%Q\""
 
@@ -6391,11 +6395,11 @@ msgid "Unknown node (host not found)"
 msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:71
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1126
+#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1123
 msgid "Unknown operator"
 msgstr "Tuntematon operaattori"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5046
+#: src/kvirc/ui/kvi_ircview.cpp:5073
 msgid "Unknown server<br>"
 msgstr "Tuntematon palvelin<br>"
 
@@ -6421,7 +6425,7 @@ msgstr ""
 msgid "Unrecognized proxy reply"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:702
+#: src/kvirc/kernel/kvi_options.cpp:704
 msgid "Unrecognized/broken message"
 msgstr ""
 
@@ -6433,7 +6437,7 @@ msgstr ""
 msgid "Unrecoverable nameserver error (crashed ?)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1215
+#: src/kvirc/kernel/kvi_options.cpp:1216
 msgid "Unsigned integer options (unsigned integer constant)"
 msgstr ""
 
@@ -6445,7 +6449,7 @@ msgstr ""
 msgid "Unsupported protocol %1"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:62
+#: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:59
 msgid "Unterminated c-style multiline comment"
 msgstr ""
 
@@ -6453,17 +6457,17 @@ msgstr ""
 msgid "Unterminated expression (missing ')' ?)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3356
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3363
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3353
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3360
 msgid "Unterminated hash key"
 msgstr "Ei-päätetty listan avain"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2734
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2731
 msgid "Unterminated instruction block"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3642
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3649
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3639
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3646
 msgid "Unterminated string constant"
 msgstr ""
 
@@ -6484,11 +6488,11 @@ msgstr ""
 msgid "Update missing"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1380
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1364
 msgid "Updating away state for channel %Q"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:729
+#: src/kvirc/ui/kvi_window.cpp:700
 msgid "Use Default Encoding"
 msgstr "Käytä oletusenkoodia"
 
@@ -6509,7 +6513,7 @@ msgstr "Käyttäjälista"
 msgid "User Mode"
 msgstr "Käyttäjämoodi"
 
-#: src/kvirc/kernel/kvi_options.cpp:712
+#: src/kvirc/kernel/kvi_options.cpp:714
 msgid "User action"
 msgstr ""
 
@@ -6521,7 +6525,7 @@ msgstr "Käyttäjä-ystävällinen komentorivi<br>Katso myös /help commandline"
 msgid "User mode for \r!n\r%Q\r is %s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:805
+#: src/kvirc/kernel/kvi_options.cpp:807
 msgid "User-deop mode change"
 msgstr ""
 
@@ -6531,20 +6535,20 @@ msgstr ""
 "Käyttäjä-operaattorit tai auditorio (/NAMES ja /WHO näyttävät vain "
 "operaattorit)"
 
-#: src/kvirc/kernel/kvi_options.cpp:804
+#: src/kvirc/kernel/kvi_options.cpp:806
 msgid "Userop mode change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:641
+#: src/kvirc/kernel/kvi_ircsocket.cpp:640
 msgid "Using HTTP protocol."
 msgstr "Käytetään HTTP-protokollaa"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:690
+#: src/kvirc/kernel/kvi_ircsocket.cpp:689
 #, fuzzy
 msgid "Using SOCKSv4 protocol."
 msgstr "Käytetään SOCKSV4-protokollaa"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:763
+#: src/kvirc/kernel/kvi_ircsocket.cpp:762
 msgid "Using SOCKSv5 protocol."
 msgstr "Käytetään SOCKSV5-protokollaa"
 
@@ -6562,19 +6566,19 @@ msgstr ""
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:936
+#: src/kvirc/kernel/kvi_ircconnection.cpp:920
 msgid "Using network specific nickname (%Q)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:960
+#: src/kvirc/kernel/kvi_ircconnection.cpp:944
 msgid "Using network specific real name (%Q)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:904
+#: src/kvirc/kernel/kvi_ircconnection.cpp:888
 msgid "Using network specific username (%Q)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:923
+#: src/kvirc/kernel/kvi_ircconnection.cpp:907
 msgid "Using reconnect specific nickname (%Q)"
 msgstr ""
 
@@ -6582,15 +6586,15 @@ msgstr ""
 msgid "Using server <b>%1</b>"
 msgstr "Käyttää palvelinta <b>%1</b>"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:929
+#: src/kvirc/kernel/kvi_ircconnection.cpp:913
 msgid "Using server specific nickname (%Q)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:953
+#: src/kvirc/kernel/kvi_ircconnection.cpp:937
 msgid "Using server specific real name (%Q)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:899
+#: src/kvirc/kernel/kvi_ircconnection.cpp:883
 msgid "Using server specific username (%Q)"
 msgstr ""
 
@@ -6606,7 +6610,7 @@ msgstr ""
 msgid "Variable or identifier expected"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:808
+#: src/kvirc/kernel/kvi_options.cpp:810
 msgid "Verbose/Debug"
 msgstr ""
 
@@ -6637,41 +6641,41 @@ msgstr "/WHO-"
 msgid "Wallops (+w)"
 msgstr "Wallopit (+w)"
 
-#: src/kvirc/kernel/kvi_options.cpp:773
+#: src/kvirc/kernel/kvi_options.cpp:775
 msgid "Wallops message"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:778
+#: src/kvirc/kernel/kvi_ircsocket.cpp:777
 msgid "We can accept auth method 0 (no auth)"
 msgstr "Voimme hyväksyä kirjautumis-metodin 0 (ei kirjautumista)"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:786
+#: src/kvirc/kernel/kvi_ircsocket.cpp:785
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
 msgstr ""
 "Voimme hyväksyä kirjautumis-metodin 0 (ei kirjautumista) tai 2 "
 "(käyttäjätunnus/salasana)"
 
-#: src/kvirc/kernel/kvi_options.cpp:732
+#: src/kvirc/kernel/kvi_options.cpp:734
 msgid "Who reply"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:738
+#: src/kvirc/kernel/kvi_options.cpp:740
 msgid "Whois channels reply"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:739
+#: src/kvirc/kernel/kvi_options.cpp:741
 msgid "Whois idle reply"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:741
+#: src/kvirc/kernel/kvi_options.cpp:743
 msgid "Whois other reply"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:740
+#: src/kvirc/kernel/kvi_options.cpp:742
 msgid "Whois server reply"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:737
+#: src/kvirc/kernel/kvi_options.cpp:739
 msgid "Whois user reply"
 msgstr ""
 
@@ -6680,7 +6684,7 @@ msgstr ""
 msgid "Will attempt to reconnect in %d seconds"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:990
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:988
 #, fuzzy
 msgid "Window '%Q' not found, using current one"
 msgstr "Ikkunaa '%s' ei löydetty, käytetään nykyistä"
@@ -6699,11 +6703,11 @@ msgstr "Ikkunanappi '%Q' ei löytynyt"
 msgid "Window with ID '%s' not found, returning empty string"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1237
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1235
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Ikkuna tunnisteella %Q ei löytynyt: ei uudelleensitomista suoritettu"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:634
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:632
 #, fuzzy
 msgid "WindowLifetime"
 msgstr "Ikkunalista"
@@ -6721,7 +6725,7 @@ msgid "Writing package header"
 msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:750
-#: src/kvirc/kernel/kvi_app.cpp:823
+#: src/kvirc/kernel/kvi_app.cpp:822
 #: src/kvirc/ui/kvi_input.cpp:2423
 msgid "Yes"
 msgstr "Kyllä"
@@ -6730,7 +6734,7 @@ msgstr "Kyllä"
 msgid "Yes, always"
 msgstr "Kyllä, aina"
 
-#: src/kvirc/kernel/kvi_app.cpp:843
+#: src/kvirc/kernel/kvi_app.cpp:842
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -6746,7 +6750,7 @@ msgid ""
 " \t\t\t\tShould I check it?"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:753
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:751
 #, c-format
 msgid "You don't appear to be on channel %s"
 msgstr "Et näytä olevan kanavalla %s"
@@ -6763,7 +6767,7 @@ msgid "You have been paged by"
 msgstr "Sinut pagesi käyttäjä"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1461
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1102
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1086
 msgid "You have changed your nickname to %Q"
 msgstr "Olet vaihtanut tunnukseksesi \"%Q\""
 
@@ -6810,15 +6814,15 @@ msgstr ""
 "lähettämästä tosi ison viestin vain<br>koska et muokannut sitä kunnolla kun "
 "sen<br>liitit leikepöydältä.<br><br>Haluatko lähettää viestin?"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5084
+#: src/kvirc/ui/kvi_ircview.cpp:5111
 msgid "You're not an operator: You may not change channel modes"
 msgstr "Et ole operaattori: Et voi muuttaa kanavamoodeja"
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:193
+#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:191
 msgid "You're not connected to an IRC server"
 msgstr "Et ole yhteydessä IRC-palvelimeen"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:781
+#: src/kvirc/kernel/kvi_ircconnection.cpp:765
 msgid ""
 "You're probably using a broken bouncer or maybe something weird is happening "
 "on the IRC server"
@@ -6834,11 +6838,11 @@ msgstr ""
 msgid "Your user mode is %s"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:3922
+#: src/kvirc/ui/kvi_ircview.cpp:3951
 msgid "Zoom In"
 msgstr "Zoomaa sisään"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3923
+#: src/kvirc/ui/kvi_ircview.cpp:3952
 msgid "Zoom Out"
 msgstr "Zoomaa ulos"
 
@@ -6887,46 +6891,46 @@ msgstr "[Kuollut kysely]"
 msgid "[Entering away status]: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:231
+#: src/kvirc/kvs/kvi_kvs_report.cpp:229
 #, c-format
 msgid "[KVS]   Destroyed window with pointer %x"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:213
+#: src/kvirc/kvs/kvi_kvs_report.cpp:211
 msgid "[KVS]   in script context \"%Q\""
 msgstr "[KVS] skriptikontekstissa \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:215
+#: src/kvirc/kvs/kvi_kvs_report.cpp:213
 msgid "[KVS]   in script context \"%Q\", %Q"
 msgstr "[KVS] skriptikontekstissa \"%Q\", %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:235
+#: src/kvirc/kvs/kvi_kvs_report.cpp:233
 msgid "[KVS] Call stack:"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:222
+#: src/kvirc/kvs/kvi_kvs_report.cpp:220
 msgid "[KVS] Code listing:"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:227
+#: src/kvirc/kvs/kvi_kvs_report.cpp:225
 msgid "[KVS] Window:"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:200
+#: src/kvirc/kvs/kvi_kvs_report.cpp:198
 msgid "[KVS]%c Compilation Error: %Q"
 msgstr "[KVS]%c Käännösvirhe: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:208
+#: src/kvirc/kvs/kvi_kvs_report.cpp:206
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Ajamisvirhe: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:196
-#: src/kvirc/kvs/kvi_kvs_report.cpp:204
+#: src/kvirc/kvs/kvi_kvs_report.cpp:194
+#: src/kvirc/kvs/kvi_kvs_report.cpp:202
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Varoitus: %Q"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:582
-#: src/kvirc/kernel/kvi_ircconnection.cpp:602
+#: src/kvirc/kernel/kvi_ircconnection.cpp:566
+#: src/kvirc/kernel/kvi_ircconnection.cpp:586
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr ""
 
@@ -6938,32 +6942,32 @@ msgstr ""
 msgid "[Leaving away status]: %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:202
+#: src/kvirc/kernel/kvi_ircsocket.cpp:201
 msgid "[PROXY ERROR]: %Q"
 msgstr "[PROXY-VIRHE]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:191
+#: src/kvirc/kernel/kvi_ircsocket.cpp:190
 msgid "[PROXY]: %Q"
 msgstr "[PROXY]: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1187
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:97
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1185
+#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:95
 msgid "[RAW]: %Q"
 msgstr "[RAAKA VIESTI]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:214
+#: src/kvirc/kernel/kvi_ircsocket.cpp:213
 msgid "[SOCKET ERROR]: %Q"
 msgstr "[YHTEYSVIRHE]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:220
+#: src/kvirc/kernel/kvi_ircsocket.cpp:219
 msgid "[SOCKET WARNING]: %Q"
 msgstr "[YHTEYSVAROITUS]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:209
+#: src/kvirc/kernel/kvi_ircsocket.cpp:208
 msgid "[SOCKET]: %Q"
 msgstr "[YHTEYS]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:181
+#: src/kvirc/kernel/kvi_ircsocket.cpp:180
 msgid "[SSL ERROR]: %Q"
 msgstr "[SSL-VIRHE]: %Q"
 
@@ -7051,7 +7055,7 @@ msgstr ""
 msgid "[SSL]:  Version: %c%s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:176
+#: src/kvirc/kernel/kvi_ircsocket.cpp:175
 msgid "[SSL]: %Q"
 msgstr "[SSL]: %Q"
 
@@ -7124,7 +7128,7 @@ msgstr "bännipoikkeuslista"
 msgid "ban list"
 msgstr "bännilista"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:100
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:97
 msgid "beginning of input"
 msgstr ""
 
@@ -7192,26 +7196,26 @@ msgstr "tuplapainalla kanavan nimeä liittyäksesi"
 msgid "f: Recipient for full server notices"
 msgstr "f: Vastaanottaja täysille palvelimen huomautuksille"
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:119
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:117
 #, c-format
 msgid "found empty string where type '%s' was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:230
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:279
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:228
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:277
 msgid "found empty string while a non empty one was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:306
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:304
 #, c-format
 msgid "found signed integer \"%d\" where type 'unsigned integer' was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:126
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:124
 msgid "found string value \"%Q\" where type '%s' was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:131
+#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:129
 msgid "found type %Q where type '%s' was expected"
 msgstr ""
 
@@ -7259,8 +7263,8 @@ msgstr "puhuu"
 msgid "k: Recipient for server kill messages"
 msgstr "k: Vastaanottaja palvelimen kill-viesteille"
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:110
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:98
+#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:95
 #, c-format
 msgid "line %d, near character %d"
 msgstr "rivillä %d, lähellä merkkiä %d"
@@ -7357,7 +7361,7 @@ msgstr "s: Vastaanottaja palvelimen huomautuksille"
 msgid "said something recently"
 msgstr "sanoi jotakin vähän aikaa sitten"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:91
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:89
 msgid "say: injected commandline"
 msgstr "say: injektoitu komentorivi"
 

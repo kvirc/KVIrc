@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-05 01:20+0200\n"
+"POT-Creation-Date: 2008-08-08 20:23+0200\n"
 "PO-Revision-Date: 2008-08-03 02:21+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -19,8 +19,8 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/options/optw_avatar.cpp:70
-#: src/modules/options/optw_dcc.cpp:272
+#: src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " Bytes"
 
@@ -28,40 +28,45 @@ msgstr " Bytes"
 msgid " lines"
 msgstr " Zeilen"
 
-#: src/modules/options/optw_logging.cpp:47
+#: src/modules/options/optw_logging.cpp:49
 msgid " min"
 msgstr "Min."
 
-#: src/modules/options/optw_lag.cpp:42
-#: src/modules/options/optw_lag.cpp:53
-#: src/modules/options/optw_connection.cpp:145
-#: src/modules/options/optw_dcc.cpp:263
+#: src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_lag.cpp:54
+#: src/modules/options/optw_connection.cpp:147
+#: src/modules/options/optw_dcc.cpp:268
 #: src/modules/options/optw_ircview.cpp:153
 #: src/modules/options/optw_ircview.cpp:155
 msgid " msec"
 msgstr " ms"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:83
+#: src/modules/options/optw_ircview.cpp:177
+#, fuzzy
+msgid " pixels"
+msgstr "Pixel"
+
+#: src/modules/options/optw_ctcpfloodprotection.cpp:85
 msgid " requests"
 msgstr " Anfragen"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:88
-#: src/modules/options/optw_connection.cpp:84
-#: src/modules/options/optw_connection.cpp:143
-#: src/modules/options/optw_avatar.cpp:94
-#: src/modules/options/optw_dcc.cpp:138
+#: src/modules/options/optw_ctcpfloodprotection.cpp:90
+#: src/modules/options/optw_connection.cpp:85
+#: src/modules/options/optw_connection.cpp:145
+#: src/modules/options/optw_avatar.cpp:96
+#: src/modules/options/optw_dcc.cpp:140
 msgid " sec"
 msgstr " Sekunden"
 
-#: src/modules/options/optw_connection.cpp:149
+#: src/modules/options/optw_connection.cpp:151
 msgid " usec"
 msgstr " µs"
 
-#: src/modules/options/optw_messages.cpp:84
+#: src/modules/options/optw_messages.cpp:85
 msgid "\"Smart\" nickname colors"
 msgstr "\"Elegante\" Spitznamenfarben"
 
-#: src/modules/options/dialog.cpp:244
+#: src/modules/options/dialog.cpp:247
 msgid "&Apply"
 msgstr "An&wenden"
 
@@ -69,11 +74,11 @@ msgstr "An&wenden"
 msgid "&Browse..."
 msgstr "&Auswählen..."
 
-#: src/modules/options/optw_servers.cpp:1453
+#: src/modules/options/optw_servers.cpp:1457
 msgid "&Copy Server"
 msgstr "Server &kopieren"
 
-#: src/modules/options/optw_mediatypes.cpp:141
+#: src/modules/options/optw_mediatypes.cpp:143
 msgid "&New"
 msgstr "&Neu"
 
@@ -81,18 +86,18 @@ msgstr "&Neu"
 msgid "&New Proxy"
 msgstr "&Neuer Proxy"
 
-#: src/modules/options/optw_servers.cpp:1450
+#: src/modules/options/optw_servers.cpp:1454
 msgid "&New Server"
 msgstr "&Neuer Server"
 
-#: src/modules/options/optw_servers.cpp:334
-#: src/modules/options/dialog.cpp:237
+#: src/modules/options/optw_servers.cpp:335
+#: src/modules/options/dialog.cpp:240
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/container.cpp:62
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/options/optw_servers.cpp:1455
+#: src/modules/options/optw_servers.cpp:1459
 msgid "&Paste Server"
 msgstr "Server &einfügen"
 
@@ -104,32 +109,32 @@ msgstr "3D-Knöpfe"
 msgid "3D Grid"
 msgstr "3D-Gitter"
 
-#: src/modules/options/optw_textencoding.cpp:80
+#: src/modules/options/optw_textencoding.cpp:81
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr ""
 "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
-#: src/modules/options/optw_urlhandlers.cpp:53
+#: src/modules/options/optw_urlhandlers.cpp:55
 msgid "<b>file://</b> handler command:"
 msgstr "<b>file://</b>-Handler-Kommando:"
 
-#: src/modules/options/optw_urlhandlers.cpp:51
+#: src/modules/options/optw_urlhandlers.cpp:53
 msgid "<b>ftp://</b> handler command:"
 msgstr "<b>ftp://</b>-Handler-Kommando:"
 
-#: src/modules/options/optw_urlhandlers.cpp:49
+#: src/modules/options/optw_urlhandlers.cpp:51
 msgid "<b>http://</b> handler command:"
 msgstr "<b>http://</b>-Handler-Kommando:"
 
-#: src/modules/options/optw_urlhandlers.cpp:50
+#: src/modules/options/optw_urlhandlers.cpp:52
 msgid "<b>https://</b> handler command:"
 msgstr "<b>https://</b>-Handler-Kommando:"
 
-#: src/modules/options/optw_urlhandlers.cpp:52
+#: src/modules/options/optw_urlhandlers.cpp:54
 msgid "<b>mailto:</b> handler command:"
 msgstr "<b>mailto://</b>-Handler-Kommando:"
 
-#: src/modules/options/optw_ctcp.cpp:36
+#: src/modules/options/optw_ctcp.cpp:38
 msgid ""
 "<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client "
 "Protocol</b> (CTCP) is used to transmit special control messages over an IRC "
@@ -141,13 +146,13 @@ msgstr ""
 "über eine IRC-Verbindung benutzt. Diese Nachrichten können Informationen von "
 "Clients anfragen oder Dateiübertragungen aushandeln.<br><br></p>"
 
-#: src/modules/options/optw_servers.cpp:1159
+#: src/modules/options/optw_servers.cpp:1163
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Hier klicken, um erweiterte Optionen für diesen Eintrag zu "
 "bearbeiten.</center>"
 
-#: src/modules/options/optw_dcc.cpp:75
+#: src/modules/options/optw_dcc.cpp:77
 msgid ""
 "<center>Enable this option if you are on a multihost machine and want to "
 "force one of the available IP addresses to be used for outgoing DCCs."
@@ -159,7 +164,7 @@ msgstr ""
 "ist besonders nützlich, wenn IPv6 und IPv4-Adressen benutzt werden.<br>KVIrc "
 "kann gezwungen werden, immer die IPv4-Schnittstelle zu verwenden.</center>"
 
-#: src/modules/options/optw_dcc.cpp:52
+#: src/modules/options/optw_dcc.cpp:53
 msgid ""
 "<center>Enable this option if you can't accept incoming connections."
 "<br>KVIrc will try to use different methods to send and receive files."
@@ -171,7 +176,7 @@ msgstr ""
 "zum Senden und Empfangen von Dateien zu benutzen.<br>Bitte beachten, dass "
 "diese Techniken NICHT mit nicht-KVIrc-Clients funktionieren müssen.</center>"
 
-#: src/modules/options/optw_dcc.cpp:89
+#: src/modules/options/optw_dcc.cpp:91
 msgid ""
 "<center>Enable this option if you want specify a local port range for DCC.</"
 "center>"
@@ -179,7 +184,7 @@ msgstr ""
 "<center>Diese Option aktivieren, wenn  ein lokalen Portbereich für DCC "
 "definiert werden soll</center>"
 
-#: src/modules/options/optw_dcc.cpp:101
+#: src/modules/options/optw_dcc.cpp:103
 msgid ""
 "<center>Enable this option if you want to always send a fake IP address in "
 "your DCC requests.<br>This might be useful if you're behind a router with a "
@@ -192,7 +197,7 @@ msgstr ""
 "Adressumsetzung (NAT) macht und alle oder einen Bereich von Ports "
 "weiterleitet.</center>"
 
-#: src/modules/options/optw_dcc.cpp:256
+#: src/modules/options/optw_dcc.cpp:261
 msgid ""
 "<center>Enable this option when the dcc file transfers tend to block your "
 "computer by consuming too much CPU time. When this option is enabled the "
@@ -215,7 +220,7 @@ msgstr ""
 "werden. KVIrc wird die Alternativen benutzen, wenn der primäre Spitzname "
 "bereits von jemand anderem im speziellen IRC-Netzwerk benutzt wird.</center>"
 
-#: src/modules/options/optw_servers.cpp:226
+#: src/modules/options/optw_servers.cpp:227
 msgid ""
 "<center>Here you can set a list of channels to be joined automatically after "
 "a connection to a server in this network has been established. To add a "
@@ -227,7 +232,7 @@ msgstr ""
 "werden. Zum Hinzufügen eines Kanals, den Namen des Kanals unten im "
 "Texteingabefeld eingeben und auf \"<b>Hinzufügen</b>\" klicken</center>"
 
-#: src/modules/options/optw_servers.cpp:775
+#: src/modules/options/optw_servers.cpp:777
 msgid ""
 "<center>Here you can set a list of channels to be joined automatically after "
 "a connection to this server has been established. To add a channel, type its "
@@ -238,14 +243,14 @@ msgstr ""
 "den Namen des Kanals unten im Texteingabefeld eingeben und auf "
 "\"<b>Hinzufügen</b>\" klicken</center>"
 
-#: src/modules/options/optw_servers.cpp:1165
+#: src/modules/options/optw_servers.cpp:1169
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
 
-#: src/modules/options/optw_servers.cpp:528
+#: src/modules/options/optw_servers.cpp:530
 msgid ""
 "<center>If this is enabled, the global initial <b>user mode</b> (configured "
 "from the identity dialog) will be used. If disabled, you can configure an "
@@ -256,7 +261,7 @@ msgstr ""
 "diese Option deaktivieren, können Sie hier den standardmässigen ersten "
 "Benutzermodus für diesen Server angeben"
 
-#: src/modules/options/optw_highlighting.cpp:59
+#: src/modules/options/optw_highlighting.cpp:62
 msgid ""
 "<center>If this option is enabled, KVIrc will (attempt to) flash the system "
 "taskbar entry when a highlighted message is printed and KVIrc is not the "
@@ -266,7 +271,7 @@ msgstr ""
 "aufblinken zu lassen, wenn eine Hervorhebung-Nachricht emfangen wurde und "
 "das KVIrc-Fenster nicht aktiv ist.</center>"
 
-#: src/modules/options/optw_highlighting.cpp:79
+#: src/modules/options/optw_highlighting.cpp:83
 msgid ""
 "<center>If this option is enabled, KVIrc will alert in the taskbar only if a "
 "normal message is received in a channel.<br>Actions like joins, parts and "
@@ -281,7 +286,7 @@ msgstr ""
 "mit hoher betreten-, verlassen-Rate und/ oder Modusänderungen ist, und nur "
 "nur bei Nachrichten alarmiert werden möchte.</center>"
 
-#: src/modules/options/optw_highlighting.cpp:90
+#: src/modules/options/optw_highlighting.cpp:94
 msgid ""
 "<center>If this option is enabled, KVIrc will alert in the taskbar only if "
 "the specified alert level is reached.</center>"
@@ -290,7 +295,7 @@ msgstr ""
 "Fensterleiste alarmieren, wenn die benutzerdefinierte Alarmstufe erreicht "
 "ist.</center>"
 
-#: src/modules/options/optw_highlighting.cpp:57
+#: src/modules/options/optw_highlighting.cpp:60
 msgid ""
 "<center>If this option is enabled, KVIrc will highlight any user message "
 "containing your current nickname</center>"
@@ -299,7 +304,7 @@ msgstr ""
 "alarmieren, wenn irgendeine Benutzernachricht den aktuellen Spitznamen "
 "enthält.</center>"
 
-#: src/modules/options/optw_highlighting.cpp:61
+#: src/modules/options/optw_highlighting.cpp:64
 msgid ""
 "<center>If this option is enabled, KVIrc will popup a little notifier window "
 "in the low right corner of your desktop when a highlighted message is "
@@ -310,7 +315,7 @@ msgstr ""
 "anzuzeigen, wenn eine neue Anfrage-Nachricht emfangen wurde und das KVIrc-"
 "Fenster nicht aktiv ist.</center>"
 
-#: src/modules/options/optw_servers.cpp:1180
+#: src/modules/options/optw_servers.cpp:1184
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -318,7 +323,7 @@ msgstr ""
 "<center>Wenn Sie diese Option aktiviert ist, wird der Serverdialog bei jedem "
 "Start von KVIrc geöffnet.</center>"
 
-#: src/modules/options/optw_highlighting.cpp:85
+#: src/modules/options/optw_highlighting.cpp:89
 msgid ""
 "<center>If this option is enabled, the taskbar will also alert for messages "
 "which are shown in queries.</center>"
@@ -326,7 +331,7 @@ msgstr ""
 "<center>Wenn diese Option aktiviert ist, wird die Fensterleiste auch bei "
 "Nachrichten, die in Anfragen angezeigt werden, alarmieren.</center>"
 
-#: src/modules/options/optw_highlighting.cpp:82
+#: src/modules/options/optw_highlighting.cpp:86
 msgid ""
 "<center>If this option is enabled, the taskbar will also alert for messages "
 "which contain a word from the highlighted words list above.</center>"
@@ -335,7 +340,7 @@ msgstr ""
 "Nachrichten, die in ein Word von der obigen <b>Wörter hervorheben</b>-Option "
 "enthalten, alarmieren.</center>"
 
-#: src/modules/options/optw_servers.cpp:507
+#: src/modules/options/optw_servers.cpp:509
 msgid ""
 "<center>If this server requires a password, put it in this field, otherwise "
 "leave it empty.</center>"
@@ -343,7 +348,7 @@ msgstr ""
 "<center>Wenn der Server ein Passwort erfordert, dieses in das Feld "
 "eintragen, ansonsten leer lassen.</center>"
 
-#: src/modules/options/optw_dcc.cpp:126
+#: src/modules/options/optw_dcc.cpp:128
 msgid ""
 "<center>If you enable this option, when a DCC request from a remote user "
 "can't be satisfied KVIrc will notify him by a CTCP ERRMSG. This is a nice "
@@ -358,7 +363,7 @@ msgstr ""
 "Überflutungssystem deaktiviert ist: in diesem Fall hilft das Deaktivieren "
 "dieser Option CTCP-Überflutungen zu vermeiden.</center>"
 
-#: src/modules/options/optw_irc.cpp:175
+#: src/modules/options/optw_irc.cpp:176
 msgid ""
 "<center>KVIrc sends out a channel /WHO message every now and then to keep "
 "the channel away list in sync. Use this option to disable this feature (and "
@@ -368,7 +373,7 @@ msgstr ""
 "Liste synchron zu halten. Diese Option deaktiviert diese Funktion (und spart "
 "IRC-Bandbreite).</center>"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:84
+#: src/modules/options/optw_ctcpfloodprotection.cpp:86
 msgid ""
 "<center>Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 "
 "requests</b></center>"
@@ -376,7 +381,7 @@ msgstr ""
 "<center>Minimaler Wert: <b>0 Anfragen</b><br>Maximaler Wert: <b>10000 "
 "Anfragen</b></center>"
 
-#: src/modules/options/optw_connection.cpp:86
+#: src/modules/options/optw_connection.cpp:87
 msgid ""
 "<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
 "center>"
@@ -384,14 +389,14 @@ msgstr ""
 "<center>Minimaler Wert: <b>0 sek</b><br>Maximaler Wert: <b>86400 sek</b></"
 "center>"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:89
+#: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
 msgstr ""
 "<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
 
-#: src/modules/options/optw_connection.cpp:150
+#: src/modules/options/optw_connection.cpp:152
 msgid ""
 "<center>Minimum value: <b>10000 usec</b><br>Maximum value: <b>10000000 usec</"
 "b></center>"
@@ -403,11 +408,11 @@ msgstr ""
 msgid "<center>Please wait while the avatar is being downloaded</center>"
 msgstr "<center>Bitte warten, während die Liste heruntergeladen wird</center>"
 
-#: src/modules/options/optw_servers.cpp:116
+#: src/modules/options/optw_servers.cpp:117
 msgid "<center>Put here a brief description of the network.</center>"
 msgstr "<center>Hier eine Kurzbeschreibung des Netzwerkes angeben.</center>"
 
-#: src/modules/options/optw_logging.cpp:49
+#: src/modules/options/optw_logging.cpp:51
 msgid ""
 "<center>Save logs with the current interval<br>Set to 0 to disable this "
 "feature</center>"
@@ -415,7 +420,7 @@ msgstr ""
 "<center>Speichere die Logdateien im angegebenen Intervall<br>0 deaktiviert "
 "diese Funktion</center>"
 
-#: src/modules/options/optw_dcc.cpp:248
+#: src/modules/options/optw_dcc.cpp:253
 msgid ""
 "<center>The \"send ahead\" DCC method allows data to be sent faster by "
 "breaking some of the rules of the original DCC SEND protocol specification."
@@ -428,7 +433,7 @@ msgstr ""
 "Optimierung umgehen, daher nur deaktivieren, wenn Probleme auftreten.</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:791
+#: src/modules/options/optw_servers.cpp:793
 msgid ""
 "<center>The following commands will be executed after a connection has been "
 "established.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -444,7 +449,7 @@ msgstr ""
 "Kommando und dann diese<br>Kommandosequenz.<br>Dies ist besonders nützlich "
 "bei Bouncern, die Loginkommandos erfordern.</center>"
 
-#: src/modules/options/optw_servers.cpp:242
+#: src/modules/options/optw_servers.cpp:243
 msgid ""
 "<center>The following commands will be executed after a connection to a "
 "server in this network has been established.<br><b>Important:</b> Enter "
@@ -461,7 +466,7 @@ msgstr ""
 "diese<br>Kommandosequenz.<br>Dies ist besonders nützlich bei Bouncern, die "
 "Loginkommandos erfordern.</center>"
 
-#: src/modules/options/optw_servers.cpp:261
+#: src/modules/options/optw_servers.cpp:262
 msgid ""
 "<center>The following commands will be executed after a successful login to "
 "a server in this network.<br><b>Important:</b> Enter commands <b>without</b> "
@@ -475,7 +480,7 @@ msgstr ""
 "<i>/quote privatelog<i>)<br>Dies ist nützlich zum automatischen Öffnen von "
 "Anfragen, Setzen von Variablen, etc.</center>"
 
-#: src/modules/options/optw_servers.cpp:810
+#: src/modules/options/optw_servers.cpp:812
 msgid ""
 "<center>The following commands will be executed after a successful login to "
 "this server.<br><b>Important:</b> Enter commands <b>without</b> a preceding "
@@ -489,7 +494,7 @@ msgstr ""
 "privatelog<i>)<br>Dies ist nützlich zum automatischen Öffnen von Anfragen, "
 "Setzen von Variablen, etc.</center>"
 
-#: src/modules/options/optw_servers.cpp:173
+#: src/modules/options/optw_servers.cpp:174
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used as the default for text messages."
@@ -503,7 +508,7 @@ msgstr ""
 "auf diesen programmweiten Wert eingestellt, der auf der Seite \"Kodierung\" "
 "in den Optionen eingestellt werden kann.</center>"
 
-#: src/modules/options/optw_servers.cpp:161
+#: src/modules/options/optw_servers.cpp:162
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used for server specific needs, like "
@@ -518,7 +523,7 @@ msgstr ""
 "benutzt, die auf der Seite \"Kodierung\" in den Optionen eingestellt werden "
 "kann.</center>"
 
-#: src/modules/options/optw_servers.cpp:659
+#: src/modules/options/optw_servers.cpp:661
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used as the default for text messages.If you "
@@ -530,7 +535,7 @@ msgstr ""
 "Wenn \"Netzwerkkodierung benutzen\" aktiviert ist, so wird die Kodierung vom "
 "Netzwerk, zu dem der Server gehört, geerbt.</center>"
 
-#: src/modules/options/optw_servers.cpp:647
+#: src/modules/options/optw_servers.cpp:649
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used for server specific needs, like "
@@ -544,7 +549,7 @@ msgstr ""
 "ist, so wird die Kodierung vom Netzwerk, zu dem der Server gehört, geerbt.</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:1176
+#: src/modules/options/optw_servers.cpp:1180
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -552,7 +557,7 @@ msgstr ""
 "<center>Das Klicken auf diesen Knopf zeigt eine Liste der zuletzt benutzten "
 "Server, dies erlaubt Ihnen, diese schnell in der Liste zu finden.</center>"
 
-#: src/modules/options/optw_servers.cpp:619
+#: src/modules/options/optw_servers.cpp:621
 msgid ""
 "<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will "
 "attempt to use the IPv6 protocol (thus your OS <b>must</b> have a working "
@@ -563,7 +568,7 @@ msgstr ""
 "<b>funktionierenden</b> IPv6-Stack und eine <b>IPv6-Verbindung</b> haben).</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:625
+#: src/modules/options/optw_servers.cpp:627
 msgid ""
 "<center>This check will cause the connection to use the <b>Secure Socket "
 "Layer</b> encryption support. Obviously, this server must have support for "
@@ -574,7 +579,7 @@ msgstr ""
 "<br>Offensichtlich muss der Server die Unterstützung ebenfalls besitzen :)</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:600
+#: src/modules/options/optw_servers.cpp:602
 msgid ""
 "<center>This check will enable <b>IP address caching</b> for this server:"
 "<br>DNS lookups can be time-consuming and might be blocking on some "
@@ -593,7 +598,7 @@ msgstr ""
 "temporär nicht erreichbar ist oder round-robin-Auflösungen vorgebeugt werden "
 "soll.</center>"
 
-#: src/modules/options/optw_lag.cpp:39
+#: src/modules/options/optw_lag.cpp:40
 msgid ""
 "<center>This enables the lag meter engine, which checks at regular intervals "
 "how much lag (latency) the server has.</center>"
@@ -601,7 +606,7 @@ msgstr ""
 "<center>Dies aktiviert die Lagmeterroutine, die in regelmässigen Intervallen "
 "den Lag (Verzögerung) des Servers prüft.</center>"
 
-#: src/modules/options/optw_servers.cpp:733
+#: src/modules/options/optw_servers.cpp:735
 msgid ""
 "<center>This field allows you to specify a really unique id for this server. "
 "You will then be able to use /server -x &lt;this_id&gt; to make the "
@@ -614,7 +619,7 @@ msgstr ""
 "mehrere Server-Einträge mit dem selben Hostnamen und Port in verschiedenen "
 "Netzwerken gibt (Bouncers?)</center>"
 
-#: src/modules/options/optw_mediatypes.cpp:119
+#: src/modules/options/optw_mediatypes.cpp:121
 msgid ""
 "<center>This field contains the command to execute to open a local file."
 "<br><tt>$0</tt> is used in place of the filename</center>"
@@ -622,7 +627,7 @@ msgstr ""
 "<center>Dieses Feld enthält das Kommando, das beim Öffnen einer lokalen "
 "Datei ausgeführt wird.<br><tt>$0</tt> steht für den Dateinamen</center>"
 
-#: src/modules/options/optw_mediatypes.cpp:127
+#: src/modules/options/optw_mediatypes.cpp:129
 msgid ""
 "<center>This field contains the command to execute when automatically "
 "opening a received file.<br><tt>$0</tt> is used in place of the filename</"
@@ -632,7 +637,7 @@ msgstr ""
 "einer empfangenen Datei ausgeführt wird.<br><tt>$0</tt> steht für den "
 "Dateinamen</center>"
 
-#: src/modules/options/optw_servers.cpp:723
+#: src/modules/options/optw_servers.cpp:725
 msgid ""
 "<center>This field specifies the name of a module that exports a link filter "
 "for this type of server.<br>For plain IRC connections, you don't need any "
@@ -643,7 +648,7 @@ msgstr ""
 "Verbindungen wird kein Verknüpfungsfilter benötigt: dies wird für nicht-"
 "kompatible Protokolle benutzt.</center>"
 
-#: src/modules/options/optw_servers.cpp:480
+#: src/modules/options/optw_servers.cpp:482
 msgid ""
 "<center>This is a brief description of this server. This field has no "
 "restrictions but many server lists use it to describe the server's physical "
@@ -677,7 +682,7 @@ msgstr ""
 "NickServ-Authentisierungsregeln für jedes Netzwerk, die in den \"Erweitert..."
 "\"-Netzwerkoptionen (erreichbar vom Serverdialog).</center>"
 
-#: src/modules/options/optw_servers.cpp:297
+#: src/modules/options/optw_servers.cpp:298
 msgid ""
 "<center>This is a list of NickServ identification rules. KVIrc will use them "
 "to model its automatic interaction with NickServ on this network.<br>Please "
@@ -698,7 +703,7 @@ msgstr ""
 "KVIrc-Konfigurationsdatei gespeichert wird.<br>Rechtsklick, um Regelzeilen "
 "hinzuzufügen oder zu entfernen.</center>"
 
-#: src/modules/options/optw_servers.cpp:578
+#: src/modules/options/optw_servers.cpp:580
 msgid ""
 "<center>This is the <b>IP address</b> of this server, it is here for caching "
 "purposes.<br>If you leave this field empty, KVIrc will fill it in the first "
@@ -713,7 +718,7 @@ msgstr ""
 "\"zwischengespeichertes Ergebnis\" benutzen und das erneute Auflösen "
 "vermeiden.</center>"
 
-#: src/modules/options/optw_servers.cpp:742
+#: src/modules/options/optw_servers.cpp:744
 msgid ""
 "<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
 "server.\n"
@@ -729,7 +734,7 @@ msgstr ""
 "KVIrc zum Server ohne Proxy verbinden. Neue Proxy-Server können in den "
 "globalen Optionen unter \"Proxy Server\" definiert werden.</center>"
 
-#: src/modules/options/optw_servers.cpp:135
+#: src/modules/options/optw_servers.cpp:136
 msgid ""
 "<center>This is the <b>username</b> that KVIrc will use to login to servers "
 "on this network.\n"
@@ -742,7 +747,7 @@ msgstr ""
 "Standardbenutzernamen, der in dem \"Identität\"-Optionentab angegeben ist, "
 "benutzen.</center>"
 
-#: src/modules/options/optw_servers.cpp:498
+#: src/modules/options/optw_servers.cpp:500
 msgid ""
 "<center>This is the <b>username</b> that KVIrc will use to login to this "
 "server.\n"
@@ -773,7 +778,7 @@ msgstr ""
 "<b>benutzername@hostname</b> identifiziert. Grundsätzlich kann jedes "
 "beliebige Wort hier eingetragen werden :D</center>"
 
-#: src/modules/options/optw_ctcp.cpp:62
+#: src/modules/options/optw_ctcp.cpp:64
 msgid ""
 "<center>This is the CTCP PAGE reply.<br>It should contain some sort of "
 "acknowledgement for CTCP PAGE messages.</center>"
@@ -781,7 +786,7 @@ msgstr ""
 "<center>Dies ist die CTCP PAGE-Antwort.<br>Diese sollte einige Sorten der "
 "Bestätigung der CTCP PAGE-Nachrichten enthalten.</center>"
 
-#: src/modules/options/optw_dcc.cpp:81
+#: src/modules/options/optw_dcc.cpp:83
 msgid ""
 "<center>This is the IP address or name of the interface to use by default "
 "for outgoing DCC transfers.<br>On UNIX systems that support it, you can also "
@@ -795,7 +800,7 @@ msgstr ""
 "<b>ppp0</b>) angegeben werden.<br>Wenn diese Adresse auf 0.0.0.0 gesetzt "
 "wird, wird KVIrc die erste verfügbare IPv4-Schittstelle versuchen</center>"
 
-#: src/modules/options/optw_dcc.cpp:139
+#: src/modules/options/optw_dcc.cpp:141
 msgid ""
 "<center>This is the amount of time that KVIrc will wait for a response "
 "before assuming that a DCC has failed because the remote client was unable "
@@ -805,7 +810,7 @@ msgstr ""
 "fehlgeschlagen angenommen wird, weil es der entfernten Seite nicht möglich "
 "war, zu hörenden Socket zu verbinden.</center>"
 
-#: src/modules/options/optw_avatar.cpp:96
+#: src/modules/options/optw_avatar.cpp:98
 msgid ""
 "<center>This is the amount of time to make an avatar available for transfer "
 "when requested.<br>When someone sends a CTCP AVATAR request, KVIrc will "
@@ -819,7 +824,7 @@ msgstr ""
 "enthält, antworten.<br>Ein zeitlich begrenztes Dateiangebot wird für die "
 "Bilddatei zu dem anfragenden Benutzer hinzugefügt.</center>"
 
-#: src/modules/options/optw_servers.cpp:569
+#: src/modules/options/optw_servers.cpp:571
 msgid ""
 "<center>This is the default <b>port</b> that this server will be contacted "
 "on.<br>Usually <b>6667</b> is OK.</center>"
@@ -838,7 +843,7 @@ msgid ""
 "the disconnect button.</center>"
 msgstr "<center> Standard<br></center>"
 
-#: src/modules/options/optw_dcc.cpp:107
+#: src/modules/options/optw_dcc.cpp:109
 msgid ""
 "<center>This is the fixed address that will be sent with all DCC requests if "
 "you enable the option above.</center>"
@@ -846,7 +851,7 @@ msgstr ""
 "<center>Diese falsche Adresse wird mit allen DCC-Anfragen gesendet, wenn die "
 "oberere Option aktiviert ist.</center>"
 
-#: src/modules/options/optw_servers.cpp:1075
+#: src/modules/options/optw_servers.cpp:1079
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -864,7 +869,7 @@ msgstr ""
 "<center>Dies ist die Liste der verfügbaren Proxy-Server.<br>Rechtsklick, um "
 "Server hinzuzufügen oder zu löschen.</center>"
 
-#: src/modules/options/optw_dcc.cpp:133
+#: src/modules/options/optw_dcc.cpp:135
 msgid ""
 "<center>This is the maximum number of concurrent DCC sessions and it "
 "includes all the DCC types (send,chat,recv...). KVIrc will refuse the "
@@ -874,7 +879,7 @@ msgstr ""
 "DCC-Typen wie send, chat, etc.). KVIrc wird Anfragen ablehnen, wenn die "
 "Grenze erreicht ist.</center>"
 
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:246
 msgid ""
 "<center>This is the maximum number of concurrent DCC transfers. KVIrc will "
 "refuse the requests when this limit is reached.</center>"
@@ -882,7 +887,7 @@ msgstr ""
 "<center>Dies ist die maximale Anzahl der gleichzeitigen DCC-Übertragungen. "
 "KVIrc wird Anfragen ablehnen, wenn die Grenze erreicht ist.</center>"
 
-#: src/modules/options/optw_avatar.cpp:73
+#: src/modules/options/optw_avatar.cpp:75
 msgid ""
 "<center>This is the maximum size for avatar images that will be "
 "automatically requested.<br>A reasonable value might be 102400 bytes (100 K)."
@@ -892,14 +897,14 @@ msgstr ""
 "angefordert werden.<br>Ein guter Wert könnte bei 102400 Byte (100 kB) "
 "liegen</center>"
 
-#: src/modules/options/optw_servers.cpp:1139
+#: src/modules/options/optw_servers.cpp:1143
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
 
-#: src/modules/options/optw_lag.cpp:61
+#: src/modules/options/optw_lag.cpp:62
 msgid ""
 "<center>This makes the IRC context display applet show the current lag after "
 "the user's nickname (in seconds)</center>"
@@ -907,7 +912,7 @@ msgstr ""
 "<center> Dies wird ein IRC-Kontextminiprogramm anzeigen, welches den "
 "aktuellen Lag hinter dem Spitznamen anzeigt (in Sekunden)</center>"
 
-#: src/modules/options/optw_lag.cpp:44
+#: src/modules/options/optw_lag.cpp:45
 msgid ""
 "<center>This option allows you to set the lag meter heartbeat interval."
 "<br>The lower the heartbeat interval the higher will be the accuracy of the "
@@ -923,7 +928,7 @@ msgstr ""
 "Intervall ist, in dem ein Ping zum Server gesendet wird: die Pings werden "
 "wirklich weniger oft gesendet. 5000 ist ein vernünftiger Wert.</center>"
 
-#: src/modules/options/optw_dcc.cpp:217
+#: src/modules/options/optw_dcc.cpp:222
 msgid ""
 "<center>This option causes KVIrc to accept RESUME requests with invalid "
 "filenames.<br>Use it if KVIrc fails to accept RESUME requests from other "
@@ -933,7 +938,7 @@ msgstr ""
 "Dateinamen. <br>Dies benutzen, wenn das Akzeptieren von Fortsetzenanfragen "
 "von anderen Clients (z.B. einige Versionen von mIRC) fehlschlägt.</center>"
 
-#: src/modules/options/optw_irc.cpp:71
+#: src/modules/options/optw_irc.cpp:72
 msgid ""
 "<center>This option causes KVIrc to close the connection immediately after "
 "sending the QUIT message.<br>When this option is disabled, KVIrc will wait "
@@ -946,7 +951,7 @@ msgstr ""
 "den Server warten. <br>Bitte beachten, dass wenn dies aktiviert ist, die "
 "QUIT-Nachricht möglicherweise nicht angezeigt wird.</center>"
 
-#: src/modules/options/optw_dcc.cpp:222
+#: src/modules/options/optw_dcc.cpp:227
 msgid ""
 "<center>This option causes KVIrc to replace spaces with underscores in "
 "filenames for all the outgoing file transfers. This will fix filename "
@@ -957,7 +962,7 @@ msgstr ""
 "repariert die Behandlung der Dateinamen bei einigen fehlerhaften Clients (z. "
 "B. einige Version von mIRC)."
 
-#: src/modules/options/optw_dcc.cpp:211
+#: src/modules/options/optw_dcc.cpp:216
 msgid ""
 "<center>This option causes KVIrc to send a zero-byte acknowledge to kick-"
 "start the DCC transfer with some buggy IRC clients.<br>Use it only if your "
@@ -969,7 +974,7 @@ msgstr ""
 "starten.<br>Bitte nur benutzen, wenn die DCC-Übertragung nach dem Aufbau der "
 "Verbindung ohne Senden von Daten steht.</center>"
 
-#: src/modules/options/optw_query.cpp:78
+#: src/modules/options/optw_query.cpp:80
 msgid ""
 "<center>This option causes a small notifier window to pop up in the low "
 "right corner of the screen when a new message is received and the KVIrc "
@@ -980,7 +985,7 @@ msgstr ""
 "anzuzeigen, wenn eine neue Anfrage-Nachricht emfangen wurde und das KVIrc-"
 "Fenster nicht aktiv ist.</center>"
 
-#: src/modules/options/optw_irc.cpp:129
+#: src/modules/options/optw_irc.cpp:130
 msgid ""
 "<center>This option causes newly created channel windows to be immediately "
 "minimized.<br>Enable this if you don't like channels popping up while you're "
@@ -990,7 +995,7 @@ msgstr ""
 "Kanalfenster.<br> Aktivieren Sie dies, wenn Sie keine aufgehenden "
 "Anfragefenster mögen, wenn Sie gerade im Kanal schreiben :D</center>"
 
-#: src/modules/options/optw_query.cpp:57
+#: src/modules/options/optw_query.cpp:59
 msgid ""
 "<center>This option causes newly created query windows to be immediately "
 "minimized.<br>Enable this if you don't like queries popping up while you're "
@@ -1000,7 +1005,7 @@ msgstr ""
 "Anfragefenster.<br> Aktivieren Sie dies, wenn Sie keine aufgehenden "
 "Anfragefenster mögen, wenn Sie gerade im Kanal schreiben :D</center>"
 
-#: src/modules/options/optw_query.cpp:72
+#: src/modules/options/optw_query.cpp:74
 msgid ""
 "<center>This option causes the system taskbar entry for KVIrc to flash when "
 "a new query message is received and the KVIrc window is not the active.</"
@@ -1010,7 +1015,7 @@ msgstr ""
 "aufblinken zu lassen, wenn eine neue Anfrage-Nachricht emfangen wurde und "
 "das KVIrc-Fenster nicht aktiv ist.</center>"
 
-#: src/modules/options/optw_lag.cpp:54
+#: src/modules/options/optw_lag.cpp:55
 msgid ""
 "<center>This option controls the threshold for the OnLagAlarmTimeUp and "
 "OnLagAlarmTimeDown events. When the lag goes above the threshold "
@@ -1022,7 +1027,7 @@ msgstr ""
 "OnLagAlarmTimeUp ausgelöst und wenn der Lag unter den Grenzwert fällt "
 "OnLagAlarmTimeDown</center>"
 
-#: src/modules/options/optw_query.cpp:41
+#: src/modules/options/optw_query.cpp:43
 msgid ""
 "<center>This option enables query window creation when a private message "
 "(PRIVMSG) is received.<br>If you disable this, private messages will be "
@@ -1032,7 +1037,7 @@ msgstr ""
 "Nachricht (PRIVMSG) emfangen wird.<br>Private Nachrichten werden im aktiven "
 "Fenster oder Kanal angezeigt.</center>"
 
-#: src/modules/options/optw_query.cpp:48
+#: src/modules/options/optw_query.cpp:50
 msgid ""
 "<center>This option enables query window creation when a private notice "
 "(NOTICE) is received.<br>If you disable this, private notices will be shown "
@@ -1042,7 +1047,7 @@ msgstr ""
 "private Notiz (NOTICE) emfangen wird.<br>Wenn dies deaktiviert ist, werden "
 "private Notizen im aktiven Fenster oder Kanal angezeigt.</center>"
 
-#: src/modules/options/optw_query.cpp:83
+#: src/modules/options/optw_query.cpp:85
 msgid ""
 "<center>This option enables query window information label. It can show you "
 "known information about query target at the top of the window.<br>Uncheck if "
@@ -1053,7 +1058,7 @@ msgstr ""
 "Gegenseite der Anfrage oben im Fenster anzeigen.<br>Wähle es ab, wenn Du "
 "denkst, es verschwendet nur Platz</center>"
 
-#: src/modules/options/optw_taskbar.cpp:39
+#: src/modules/options/optw_taskbar.cpp:41
 msgid ""
 "<center>This option enables the usage of the taskbar activity meter. Each "
 "window entry will have a small indicator of the activity that is going on in "
@@ -1074,7 +1079,7 @@ msgstr ""
 "Server). \"Menschliche\" Aktivität verursacht schattiertes Rot, während "
 "automatische Aktivität den Indikator blau schattiert.</center>"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:80
+#: src/modules/options/optw_ctcpfloodprotection.cpp:82
 msgid ""
 "<center>This option makes KVIrc only respond to a limited number of CTCP "
 "requests within a specified time interval, to prevent \"flooding\" CTCP "
@@ -1102,14 +1107,14 @@ msgstr ""
 "Hintergrundbild unten ausgewählt oder die Option <b>\"KDE-Arbeitsfläche für "
 "Transparenz benutzen\" aktiviert sein.</center>"
 
-#: src/modules/options/optw_highlighting.cpp:94
+#: src/modules/options/optw_highlighting.cpp:98
 msgid ""
 "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Diese Option setzt die minimale Alarmstufe für die Fensterleiste.</"
 "center>"
 
-#: src/modules/options/optw_irc.cpp:105
+#: src/modules/options/optw_irc.cpp:106
 msgid ""
 "<center>This option will cause KVIrc to attempt to rejoin a channel after "
 "being kicked.</center>"
@@ -1117,7 +1122,7 @@ msgstr ""
 "<center>Diese Option veranlasst KVIrc, einen Kanal<br>erneut zu betreten, "
 "nachdem man herausgeworfen wurde.</center>"
 
-#: src/modules/options/optw_avatar.cpp:81
+#: src/modules/options/optw_avatar.cpp:83
 msgid ""
 "<center>This option will cause KVIrc to auto-accept DCC SEND requests for "
 "incoming avatars.<br>If you're using the \"Request missing avatars\" option "
@@ -1130,7 +1135,7 @@ msgstr ""
 "eine gute Idee sein.<br>Die Avatare werden im lokalen KVIrc-Verzeichnis "
 "gespeichert und automatisch für die Quelle des Benutzers gesetzt.</center>"
 
-#: src/modules/options/optw_servers.cpp:205
+#: src/modules/options/optw_servers.cpp:206
 msgid ""
 "<center>This option will cause KVIrc to automatically connect to this "
 "network at startup</center>"
@@ -1138,7 +1143,7 @@ msgstr ""
 "<center>Diese Option veranlasst KVIrc, nach dem Start von KVIrc, sich zu "
 "diesem IRC-Netzwerk zu verbinden.</center>"
 
-#: src/modules/options/optw_irc.cpp:123
+#: src/modules/options/optw_irc.cpp:124
 msgid ""
 "<center>This option will cause KVIrc to automatically join a channel when an "
 "INVITE message for that channel is received.<br><b>Warning:</b> This may "
@@ -1148,7 +1153,7 @@ msgstr ""
 "betreten, wenn eine INVITE-Nachricht für diesen Kanal empfangen wurde. "
 "<br><b>Warnung:</b> Dies kann Spammern helfen, Sie zu stören :)</center>"
 
-#: src/modules/options/optw_servers.cpp:638
+#: src/modules/options/optw_servers.cpp:640
 msgid ""
 "<center>This option will cause KVIrc to connect to the IRC server when it is "
 "started.</center>"
@@ -1156,7 +1161,7 @@ msgstr ""
 "<center>Diese Option veranlasst KVIrc, nach dem Start von KVIrc zu dem IRC-"
 "Server zu verbinden.</center>"
 
-#: src/modules/options/optw_connection.cpp:51
+#: src/modules/options/optw_connection.cpp:52
 msgid ""
 "<center>This option will cause KVIrc to keep channels open after an "
 "unexpected disconnect.</center>"
@@ -1164,7 +1169,7 @@ msgstr ""
 "<center>Diese Option wird KVIrc veranlassen, die Kanalfenster nach einer "
 "unerwarteten Trennung geöffnet zu lassen.</center>"
 
-#: src/modules/options/optw_connection.cpp:42
+#: src/modules/options/optw_connection.cpp:43
 msgid ""
 "<center>This option will cause KVIrc to keep channels open after disconnect."
 "</center>"
@@ -1172,7 +1177,7 @@ msgstr ""
 "<center>Diese Option wird KVIrc veranlassen, die Kanalfenster nach einer "
 "Trennung geöffnet zu lassen.</center>"
 
-#: src/modules/options/optw_connection.cpp:54
+#: src/modules/options/optw_connection.cpp:55
 msgid ""
 "<center>This option will cause KVIrc to keep queries open after an "
 "unexpected disconnect.</center>"
@@ -1180,7 +1185,7 @@ msgstr ""
 "<center>Diese Option wird KVIrc veranlassen, die Anfragen nach einer "
 "unerwarteten Trennung geöffnet zu lassen.</center>"
 
-#: src/modules/options/optw_connection.cpp:45
+#: src/modules/options/optw_connection.cpp:46
 msgid ""
 "<center>This option will cause KVIrc to keep queries open after disconnect.</"
 "center>"
@@ -1188,7 +1193,7 @@ msgstr ""
 "<center>Diese Option wird KVIrc veranlassen, die Anfragen nach einer "
 "Trennung geöffnet zu lassen.</center>"
 
-#: src/modules/options/optw_irc.cpp:109
+#: src/modules/options/optw_irc.cpp:110
 msgid ""
 "<center>This option will cause KVIrc to keep the channel window open after "
 "being kicked.<br>It might be a good idea to also enable the \"Rejoin channel"
@@ -1198,7 +1203,7 @@ msgstr ""
 "lassen, nachdem man hinausgeworfen wurde.<br>Es könnte eine gute Idee sein, "
 "auch die Option<br> \"Kanal erneut betreten\" zu aktivieren.</center>"
 
-#: src/modules/options/optw_irc.cpp:118
+#: src/modules/options/optw_irc.cpp:119
 msgid ""
 "<center>This option will cause KVIrc to keep the channel window open after "
 "leaving it.</center>"
@@ -1206,7 +1211,7 @@ msgstr ""
 "<center>Diese Option wird KVIrc veranlassen, das Kanalfenster nach einer "
 "unerwarteten Trennung geöffnet zu lassen.</center>"
 
-#: src/modules/options/optw_irc.cpp:51
+#: src/modules/options/optw_irc.cpp:52
 msgid ""
 "<center>This option will cause KVIrc to minimize the console window after "
 "successfully logging into a server.</center>"
@@ -1214,7 +1219,7 @@ msgstr ""
 "<center>Diese Option wird KVIrc veranlassen, das Console-Fenster nach "
 "erfolgreichem Login zu minimieren.</center>"
 
-#: src/modules/options/optw_connection.cpp:57
+#: src/modules/options/optw_connection.cpp:58
 msgid ""
 "<center>This option will cause KVIrc to rejoin channels after a successful "
 "reconnect attempt.</center>"
@@ -1222,7 +1227,7 @@ msgstr ""
 "<center>Diese Option wird KVIrc veranlassen, die Kanäle nach einer "
 "unerwarteten Trennung erneut zu betreten.</center>"
 
-#: src/modules/options/optw_connection.cpp:60
+#: src/modules/options/optw_connection.cpp:61
 msgid ""
 "<center>This option will cause KVIrc to reopen query windows after a "
 "successful reconnect attempt.</center>"
@@ -1230,7 +1235,7 @@ msgstr ""
 "<center>Diese Option wird KVIrc veranlassen, die Anfragefenster nach einem "
 "erfolgreichen Neuverbinden erneut zu öffnen.</center>"
 
-#: src/modules/options/optw_avatar.cpp:68
+#: src/modules/options/optw_avatar.cpp:70
 msgid ""
 "<center>This option will cause KVIrc to send a DCC GET request when someone "
 "sets an avatar and there is no cached copy available.</center>"
@@ -1239,7 +1244,7 @@ msgstr ""
 "wenn jemand einen Avatar setzt und keine zwischen gespeicherte Kopie "
 "verfügbar ist.</center>"
 
-#: src/modules/options/optw_irc.cpp:54
+#: src/modules/options/optw_irc.cpp:55
 msgid ""
 "<center>This option will cause KVIrc to show the network name as the console "
 "taskbar entry instead of the server name. This is nice to keep on unless "
@@ -1252,7 +1257,7 @@ msgstr ""
 "nicht in Netzwerken organisiert sind, oder Du Dich öfters zu zwei Servern "
 "des gleichen Netzwerkes verbindest.</center>"
 
-#: src/modules/options/optw_dcc.cpp:186
+#: src/modules/options/optw_dcc.cpp:190
 msgid ""
 "<center>This option will cause succesfully terminated transfers to be "
 "automatically removed from the transfer window.</center>"
@@ -1260,7 +1265,7 @@ msgstr ""
 "<center>Diese Option veranlasst KVIrc, erfolgreich abgeschlossene Tranfers "
 "automatisch aus dem Transfer-Fenster zu löschen.</center>"
 
-#: src/modules/options/optw_connection.cpp:165
+#: src/modules/options/optw_connection.cpp:167
 msgid ""
 "<center>This option will cause the KVIrc networking stack to pick up a "
 "random entry when multiple IP address are retrieved for a server dns lookup. "
@@ -1276,7 +1281,7 @@ msgstr ""
 "deaktivieren, wenn Du darauf vertraust, dass der DNS-Server die beste "
 "Möglichkeit liefert.</center>"
 
-#: src/modules/options/optw_connection.cpp:64
+#: src/modules/options/optw_connection.cpp:65
 msgid ""
 "<center>This option will enable auto-reconnecting after an unexpected "
 "disconnect. An unexpected disconnect is the <b>termination</b> of a <b>fully "
@@ -1306,7 +1311,7 @@ msgstr ""
 "danach das \"quit\"-Kommando sendet.<br><tt>alias(bncdetach){ raw bouncer "
 "detach; quit; }</tt></p></center>"
 
-#: src/modules/options/optw_query.cpp:65
+#: src/modules/options/optw_query.cpp:67
 msgid ""
 "<center>This option will enable target user tracking.<br>Some actions of the "
 "target user (e.g. joins and parts) will be displayed in the window.<br></"
@@ -1316,7 +1321,7 @@ msgstr ""
 "Benutzers  (z.B. betreten und verlassen) wird in dem Fenster angezeigt.<br></"
 "center>"
 
-#: src/modules/options/optw_avatar.cpp:41
+#: src/modules/options/optw_avatar.cpp:43
 msgid ""
 "<center>This option will force KVIrc to scale avatars shown in the userlist."
 "<br>Avatars will be scaled to fit the constraints set below. Better keep "
@@ -1327,7 +1332,7 @@ msgstr ""
 "skaliert, wie unten festgelegt. Besser ist es, diese Option aktiviert zu "
 "lassen :).</center>"
 
-#: src/modules/options/optw_dcc.cpp:266
+#: src/modules/options/optw_dcc.cpp:271
 msgid ""
 "<center>This parameter controls the average delay between two packets sent "
 "or received.<br>A smaller interval will cause you to send data faster but "
@@ -1340,7 +1345,7 @@ msgstr ""
 "Netzwerkschnittstelle steigt.<br>Vernünftige Werte sind von 5 bis 50 "
 "Millisekunden.</center>"
 
-#: src/modules/options/optw_dcc.cpp:274
+#: src/modules/options/optw_dcc.cpp:279
 msgid ""
 "<center>This parameter controls the packet size used for DCC SEND.<br>With "
 "bigger packets you will be probably send data faster, but you will also "
@@ -1363,7 +1368,7 @@ msgstr ""
 "anwendet.<br>Dies sollte der reale Name sein, aber die Leute tendieren dazu, "
 "zufällige Zitierungen und Sätze hier einzutragen.</center>"
 
-#: src/modules/options/optw_ctcp.cpp:52
+#: src/modules/options/optw_ctcp.cpp:54
 msgid ""
 "<center>This text will be appended to the CTCP SOURCE reply.<br>For example, "
 "you can place the source URL for a script here.</center>"
@@ -1371,7 +1376,7 @@ msgstr ""
 "<center>Dieser Text wird and die CTCP SOURCE-Antwort angehägt.<br>Zum "
 "Beispiel kann hier die Quell-URL für ein Skript gesetzt werden.</center>"
 
-#: src/modules/options/optw_ctcp.cpp:47
+#: src/modules/options/optw_ctcp.cpp:49
 msgid ""
 "<center>This text will be appended to the CTCP VERSION reply.<br>For "
 "example, you can place a script name here.</center>"
@@ -1379,7 +1384,7 @@ msgstr ""
 "<center>Dieser Text wird an die CTCP VERSION-Antwort angehängt.<br>Zum "
 "Beispiel kann hier der Skriptname gesetzt werden.</center>"
 
-#: src/modules/options/optw_avatar.cpp:90
+#: src/modules/options/optw_avatar.cpp:92
 msgid ""
 "<center>Use a user's last known avatar by default (only for users that are "
 "registered).</center>"
@@ -1387,7 +1392,7 @@ msgstr ""
 "<center>Setzt den letzten Avatar des Benutzers als Standardavatarbild (aber "
 "nur für registrierte Benutzer.).</center>"
 
-#: src/modules/options/optw_dcc.cpp:119
+#: src/modules/options/optw_dcc.cpp:121
 msgid ""
 "<center>When you're behind a dialup router and also tunneling through a "
 "psyBNC bouncer, you can use a bug in the bouncer to force KVIrc to bind the "
@@ -1399,7 +1404,7 @@ msgstr ""
 "DCC-Verbindungen zur IP des Wählrouters zu binden.<br>Dies ist ein unschöner "
 "Hack: Bitte nur benutzen, wenn nichts anderes funktioniert.</center>"
 
-#: src/modules/options/optw_dcc.cpp:113
+#: src/modules/options/optw_dcc.cpp:115
 msgid ""
 "<center>You can enable this option if you are behind a router that forwards "
 "all or a range of ports.<br>KVIrc will try to guess the IP address to use "
@@ -1417,7 +1422,7 @@ msgstr ""
 "automatisch die richtige IP ermittelt werden, wenn verschiedene Bedingungen "
 "zutreffen (z.B. der IRC-Server verschlüsselt keine Hostnamen)</center>"
 
-#: src/modules/options/optw_servers.cpp:145
+#: src/modules/options/optw_servers.cpp:146
 msgid ""
 "<center>You can specify a \"special\" <b>nickname</b> that will be used to "
 "log in to the servers on this network.<br>If this field is left empty (most "
@@ -1429,7 +1434,7 @@ msgstr ""
 "leergelassen wird (in den meisten Fällen), wird KVIrc den Standardspitznamen "
 "(angegeben im \"Identität\"-Einstellungen) benutzen.</center>"
 
-#: src/modules/options/optw_servers.cpp:514
+#: src/modules/options/optw_servers.cpp:516
 msgid ""
 "<center>You can specify a \"special\" <b>nickname</b> that will be used to "
 "log in to this server.<br>If this field is left empty (most common case), "
@@ -1444,7 +1449,7 @@ msgstr ""
 "dieser leer, wird der Standardspitzname, der in dem \"Identität\"-"
 "Optionentab angegeben ist, benutzt werden.</center>"
 
-#: src/modules/options/optw_servers.cpp:151
+#: src/modules/options/optw_servers.cpp:152
 msgid ""
 "<center>You can specify a \"special\" <b>real name</b> that will be used to "
 "login with the servers on this network.<br>If you leave this field empty "
@@ -1457,7 +1462,7 @@ msgstr ""
 "Standard-\"Wirklicher Name\" (angegeben im \"Identität\"-Einstellungen) "
 "benutzen.</center>"
 
-#: src/modules/options/optw_servers.cpp:521
+#: src/modules/options/optw_servers.cpp:523
 msgid ""
 "<center>You can specify a \"special\" <b>real name</b> that will be used to "
 "login with this server.<br>If you leave this field empty (most common case), "
@@ -1485,7 +1490,7 @@ msgstr ""
 "Spitznamen angegeben werden. Diese können benutzt werden, wenn der Server "
 "den Hauptspitznamen ablehnt.</center>"
 
-#: src/modules/options/optw_notify.cpp:93
+#: src/modules/options/optw_notify.cpp:95
 msgid ""
 "<p><b>Note:</b><br>The notify list is managed using the \"Registered Users\" "
 "settings.</p>"
@@ -1493,7 +1498,7 @@ msgstr ""
 "<p><b>Bemerkung:</b><br>Die Benachrichtigungsliste wird in den "
 "\"Registrierte Benutzer\"-Einstellungen verwaltet.</p>"
 
-#: src/modules/options/optw_connection.cpp:240
+#: src/modules/options/optw_connection.cpp:243
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -1504,7 +1509,7 @@ msgstr ""
 "Dienstes implementiert. Wenn möglich, einen richtigen ident-Daemon "
 "installieren.</p>"
 
-#: src/modules/options/optw_connection.cpp:245
+#: src/modules/options/optw_connection.cpp:248
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -1520,7 +1525,7 @@ msgstr ""
 "<b>richtigen</b> systemweiten ident-Daemon oder keinen, wenn kein Ident "
 "benötigt wird, zu benutzen.</p>"
 
-#: src/modules/options/dialog.cpp:206
+#: src/modules/options/dialog.cpp:209
 msgid ""
 "<p>This is the search tool for this options dialog.</p><p>You can enter a "
 "search term either in your native language or in english and press the "
@@ -1534,7 +1539,7 @@ msgstr ""
 "zum Suchbegriff enthalten, werden hervorgehoben, so dass sie schnell zu "
 "finden sind.</p><p>Als Beispiel probiere \"Spitzname\" (\"nickname\").</p>"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:101
+#: src/modules/options/optw_ctcpfloodprotection.cpp:103
 msgid "AVATAR"
 msgstr "AVATAR"
 
@@ -1542,7 +1547,7 @@ msgstr "AVATAR"
 msgid "Abort"
 msgstr "Abgebrochen"
 
-#: src/modules/options/optw_dcc.cpp:215
+#: src/modules/options/optw_dcc.cpp:220
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Fehlerhafte RESUME-Anfragen akzeptieren (mIRC file.ext)"
 
@@ -1550,7 +1555,7 @@ msgstr "Fehlerhafte RESUME-Anfragen akzeptieren (mIRC file.ext)"
 msgid "Active Background"
 msgstr "Aktiver Hintergrund"
 
-#: src/modules/options/optw_servers.cpp:1135
+#: src/modules/options/optw_servers.cpp:1139
 msgid "Active Configuration"
 msgstr "Aktive Konfiguration"
 
@@ -1570,7 +1575,7 @@ msgstr "Aktiver Text (Primär)"
 msgid "Active Text (Secondary)"
 msgstr "Aktiver Text (Sekundär)"
 
-#: src/modules/options/optw_connection.cpp:193
+#: src/modules/options/optw_connection.cpp:196
 msgid "Active window"
 msgstr "aktives Fenster"
 
@@ -1578,7 +1583,7 @@ msgstr "aktives Fenster"
 msgid "Add"
 msgstr "Hinzufügen"
 
-#: src/modules/options/optw_servers.cpp:304
+#: src/modules/options/optw_servers.cpp:305
 #: src/modules/options/optw_nickserv.cpp:263
 msgid "Add Rule"
 msgstr "Regel hinzufügen"
@@ -1592,11 +1597,11 @@ msgstr "Regel hinzufügen"
 msgid "Advanced"
 msgstr "Erweitert"
 
-#: src/modules/options/optw_notify.cpp:56
+#: src/modules/options/optw_notify.cpp:58
 msgid "Advanced configuration"
 msgstr "Erweiterte Konfiguration"
 
-#: src/modules/options/optw_servers.cpp:1157
+#: src/modules/options/optw_servers.cpp:1161
 msgid "Advanced..."
 msgstr "Erweitert..."
 
@@ -1604,44 +1609,44 @@ msgstr "Erweitert..."
 msgid "Age:"
 msgstr "Alter:"
 
-#: src/modules/options/optw_taskbar.cpp:83
-#: src/modules/options/optw_taskbar.cpp:235
+#: src/modules/options/optw_taskbar.cpp:88
+#: src/modules/options/optw_taskbar.cpp:247
 msgid "Alert Level 1:"
 msgstr "Alarmstufe 1:"
 
-#: src/modules/options/optw_taskbar.cpp:84
-#: src/modules/options/optw_taskbar.cpp:236
+#: src/modules/options/optw_taskbar.cpp:89
+#: src/modules/options/optw_taskbar.cpp:248
 msgid "Alert Level 2:"
 msgstr "Alarmstufe 2:"
 
-#: src/modules/options/optw_taskbar.cpp:85
-#: src/modules/options/optw_taskbar.cpp:237
+#: src/modules/options/optw_taskbar.cpp:90
+#: src/modules/options/optw_taskbar.cpp:249
 msgid "Alert Level 3:"
 msgstr "Alarmstufe 3:"
 
-#: src/modules/options/optw_taskbar.cpp:86
-#: src/modules/options/optw_taskbar.cpp:238
+#: src/modules/options/optw_taskbar.cpp:91
+#: src/modules/options/optw_taskbar.cpp:250
 msgid "Alert Level 4:"
 msgstr "Alarmstufe 4:"
 
-#: src/modules/options/optw_taskbar.cpp:87
-#: src/modules/options/optw_taskbar.cpp:239
+#: src/modules/options/optw_taskbar.cpp:92
+#: src/modules/options/optw_taskbar.cpp:251
 msgid "Alert Level 5:"
 msgstr "Alarmstufe 5:"
 
-#: src/modules/options/optw_highlighting.cpp:77
+#: src/modules/options/optw_highlighting.cpp:81
 msgid "Alert Restrictions"
 msgstr "Alarmbeschränkungen"
 
-#: src/modules/options/optw_highlighting.cpp:81
+#: src/modules/options/optw_highlighting.cpp:85
 msgid "Alert for highlighted words"
 msgstr "Alarm für hervorgehobene Wörter"
 
-#: src/modules/options/optw_highlighting.cpp:84
+#: src/modules/options/optw_highlighting.cpp:88
 msgid "Alert for query messages"
 msgstr "Bei Anfragenachrichten alarmieren"
 
-#: src/modules/options/optw_messages.cpp:404
+#: src/modules/options/optw_messages.cpp:405
 msgid "Alert level:"
 msgstr "Alarmstufe:"
 
@@ -1649,7 +1654,7 @@ msgstr "Alarmstufe:"
 msgid "Alert/Highlight"
 msgstr "Alarm/Hervorhebung"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:82
+#: src/modules/options/optw_ctcpfloodprotection.cpp:84
 msgid "Allow up to:"
 msgstr "Erlauben bis:"
 
@@ -1669,19 +1674,19 @@ msgstr "Alt. Spitzname 3:"
 msgid "Alternatives..."
 msgstr "Alternativen..."
 
-#: src/modules/options/optw_dcc.cpp:304
+#: src/modules/options/optw_dcc.cpp:309
 msgid "Always open as minimized"
 msgstr "Immer minimiert öffnen"
 
-#: src/modules/options/optw_irc.cpp:127
+#: src/modules/options/optw_irc.cpp:128
 msgid "Always open channels as minimized"
 msgstr "Kanäle immer minimiert öffnen"
 
-#: src/modules/options/optw_query.cpp:54
+#: src/modules/options/optw_query.cpp:56
 msgid "Always open queries as minimized"
 msgstr "Alle Anfragen (Queries) minimiert öffnen"
 
-#: src/modules/options/optw_dcc.cpp:190
+#: src/modules/options/optw_dcc.cpp:194
 msgid "Always open transfer window as minimized"
 msgstr "Transfer-Fenster immer minimiert öffnen"
 
@@ -1689,54 +1694,54 @@ msgstr "Transfer-Fenster immer minimiert öffnen"
 msgid "Anti-spam"
 msgstr "Antispam"
 
-#: src/modules/options/optw_ctcp.cpp:49
+#: src/modules/options/optw_ctcp.cpp:51
 msgid "Append to SOURCE reply:"
 msgstr "An SOURCE-Antwort anhängen:"
 
-#: src/modules/options/optw_ctcp.cpp:44
+#: src/modules/options/optw_ctcp.cpp:46
 msgid "Append to VERSION reply:"
 msgstr "An VERSION-Antwort anhängen:"
 
-#: src/modules/options/optw_logging.cpp:46
+#: src/modules/options/optw_logging.cpp:48
 msgid "Auto flush logs every"
 msgstr "Schreibe Logdateien automatisch alle"
 
-#: src/modules/options/optw_sound.cpp:67
-#: src/modules/options/optw_sound.cpp:82
+#: src/modules/options/optw_sound.cpp:68
+#: src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Automatisch erkennen"
 
-#: src/modules/options/optw_textencoding.cpp:83
+#: src/modules/options/optw_textencoding.cpp:84
 msgid "Automatic detection"
 msgstr "Automatisch feststellen"
 
-#: src/modules/options/optw_logging.cpp:37
+#: src/modules/options/optw_logging.cpp:39
 msgid "Automatically Log"
 msgstr "Automatisch Loggen"
 
-#: src/modules/options/optw_dcc.cpp:171
-#: src/modules/options/optw_dcc.cpp:301
-#: src/modules/options/optw_dcc.cpp:322
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Automatisch akzeptieren"
 
-#: src/modules/options/optw_avatar.cpp:78
+#: src/modules/options/optw_avatar.cpp:80
 msgid "Automatically accept incoming avatars"
 msgstr "Automatisch ankommende Avatare akzeptieren"
 
-#: src/modules/options/optw_dcc.cpp:184
+#: src/modules/options/optw_dcc.cpp:188
 msgid "Automatically clear transfer"
 msgstr "Automatisch Transfer aufräumen"
 
-#: src/modules/options/optw_irc.cpp:121
+#: src/modules/options/optw_irc.cpp:122
 msgid "Automatically join channel on invite"
 msgstr "Automatisch Kanal betreten, wenn man eingeladen wurde"
 
-#: src/modules/options/optw_connection.cpp:63
+#: src/modules/options/optw_connection.cpp:64
 msgid "Automatically reconnect"
 msgstr "Automatisch erneut verbinden"
 
-#: src/modules/options/optw_dcc.cpp:173
+#: src/modules/options/optw_dcc.cpp:177
 msgid "Automatically resume when auto-accepted"
 msgstr "Automatisch Dateitransfer wiederaufnehmen, wenn automatisch akzeptiert"
 
@@ -1760,7 +1765,7 @@ msgstr "Herunterladen des Avatars fehlgeschlagen - KVIrc"
 msgid "Avatar Might Be Too Big - KVIrc"
 msgstr "Avatar eventuell zu groß - KVIrc"
 
-#: src/modules/options/optw_avatar.cpp:93
+#: src/modules/options/optw_avatar.cpp:95
 msgid "Avatar offer timeout:"
 msgstr "Avatarangebot-Zeitablauf:"
 
@@ -1772,7 +1777,7 @@ msgstr "Avatare"
 msgid "Away"
 msgstr "Abwesend"
 
-#: src/modules/options/optw_away.cpp:40
+#: src/modules/options/optw_away.cpp:42
 msgid "Away Nickname"
 msgstr "\"Abwesend\"-Spitzname"
 
@@ -1787,7 +1792,7 @@ msgstr "Abwesend:"
 msgid "Background"
 msgstr "Hintergrund"
 
-#: src/modules/options/optw_taskbar.cpp:109
+#: src/modules/options/optw_taskbar.cpp:116
 #: src/modules/options/optw_userlist.cpp:122
 msgid "Background Colors"
 msgstr "Hintergrundfarben"
@@ -1797,27 +1802,27 @@ msgstr "Hintergrundfarben"
 msgid "Background Image"
 msgstr "Hintergrundbild"
 
-#: src/modules/options/optw_input.cpp:35
+#: src/modules/options/optw_input.cpp:36
 #: src/modules/options/optw_topiclabel.cpp:35
 msgid "Background color"
 msgstr "Hintergrundfarbe"
 
-#: src/modules/options/optw_ircview.cpp:46
+#: src/modules/options/optw_ircview.cpp:48
 msgid "Background color:"
 msgstr "Hintergrundfarbe:"
 
-#: src/modules/options/optw_input.cpp:42
+#: src/modules/options/optw_input.cpp:43
 #: src/modules/options/optw_topiclabel.cpp:36
 msgid "Background image"
 msgstr "Hintergrundbild"
 
-#: src/modules/options/optw_taskbar.cpp:113
+#: src/modules/options/optw_taskbar.cpp:120
 #: src/modules/options/optw_userlist.cpp:127
-#: src/modules/options/optw_ircview.cpp:48
+#: src/modules/options/optw_ircview.cpp:50
 msgid "Background image:"
 msgstr "Hintergrundbild:"
 
-#: src/modules/options/optw_messages.cpp:387
+#: src/modules/options/optw_messages.cpp:388
 msgid "Background:"
 msgstr "Hintergrund:"
 
@@ -1825,11 +1830,11 @@ msgstr "Hintergrund:"
 msgid "Basic Properties"
 msgstr "Grundeigenschaften"
 
-#: src/modules/options/optw_connection.cpp:155
+#: src/modules/options/optw_connection.cpp:157
 msgid "Bind IPv4 connections to:"
 msgstr "IPv4-Verbindungen binden an:"
 
-#: src/modules/options/optw_connection.cpp:159
+#: src/modules/options/optw_connection.cpp:161
 msgid "Bind IPv6 connections to:"
 msgstr "IPv6-Verbindungen binden an:"
 
@@ -1837,22 +1842,22 @@ msgstr "IPv6-Verbindungen binden an:"
 msgid "Blend color:"
 msgstr "Mischfarbe:"
 
-#: src/modules/options/optw_taskbar.cpp:130
-#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_taskbar.cpp:137
+#: src/modules/options/optw_input.cpp:60
 #: src/modules/options/optw_userlist.cpp:144
 #: src/modules/options/optw_ircview.cpp:67
 msgid "Bottom"
 msgstr "Unten"
 
-#: src/modules/options/optw_ircoutput.cpp:64
+#: src/modules/options/optw_ircoutput.cpp:65
 msgid "Broadcast and WALLOPS messages"
 msgstr "Rundsende- und WALLOPS-Nachrichten"
 
-#: src/modules/options/optw_dcc.cpp:208
+#: src/modules/options/optw_dcc.cpp:213
 msgid "Bug Compatibility"
 msgstr "Fehlerkompatibilität"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:95
+#: src/modules/options/optw_ctcpfloodprotection.cpp:97
 msgid "CLIENTINFO"
 msgstr "CLIENTINFO"
 
@@ -1860,17 +1865,17 @@ msgstr "CLIENTINFO"
 msgid "CTCP"
 msgstr "CTCP"
 
-#: src/modules/options/optw_ctcp.cpp:43
+#: src/modules/options/optw_ctcp.cpp:45
 msgid "CTCP Replies"
 msgstr "CTCP Antworten"
 
-#: src/modules/options/optw_servers.cpp:597
+#: src/modules/options/optw_servers.cpp:599
 msgid "Cache IP address"
 msgstr "IP-Adresse zwischenspeichern"
 
-#: src/modules/options/optw_servers.cpp:340
-#: src/modules/options/optw_servers.cpp:822
-#: src/modules/options/dialog.cpp:250
+#: src/modules/options/optw_servers.cpp:341
+#: src/modules/options/optw_servers.cpp:824
+#: src/modules/options/dialog.cpp:253
 #: src/modules/options/optw_identity.cpp:93
 #: src/modules/options/optw_identity.cpp:243
 #: src/modules/options/container.cpp:70
@@ -1878,10 +1883,10 @@ msgstr "IP-Adresse zwischenspeichern"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/modules/options/optw_taskbar.cpp:126
-#: src/modules/options/optw_taskbar.cpp:131
-#: src/modules/options/optw_input.cpp:55
-#: src/modules/options/optw_input.cpp:60
+#: src/modules/options/optw_taskbar.cpp:133
+#: src/modules/options/optw_taskbar.cpp:138
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_userlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:145
 #: src/modules/options/optw_ircview.cpp:63
@@ -1889,23 +1894,23 @@ msgstr "Abbrechen"
 msgid "Center"
 msgstr "Mitte"
 
-#: src/modules/options/optw_connection.cpp:103
+#: src/modules/options/optw_connection.cpp:105
 msgid "Certificate"
 msgstr "Zertifikat:"
 
-#: src/modules/options/optw_connection.cpp:107
+#: src/modules/options/optw_connection.cpp:109
 msgid "Certificate location:"
 msgstr "Zertifikatsort:"
 
-#: src/modules/options/optw_connection.cpp:110
+#: src/modules/options/optw_connection.cpp:112
 msgid "Certificate password:"
 msgstr "Zertifikatspasswort:"
 
-#: src/modules/options/optw_ircoutput.cpp:60
+#: src/modules/options/optw_ircoutput.cpp:61
 msgid "ChanServ and NickServ notices"
 msgstr "ChanServ- und NickServ-Notizen"
 
-#: src/modules/options/optw_away.cpp:41
+#: src/modules/options/optw_away.cpp:43
 msgid "Change nickname on away"
 msgstr "Spitzname bei \"Abwesend\" ändern"
 
@@ -1921,12 +1926,12 @@ msgstr "Kanaladmin:"
 msgid "Channel owner:"
 msgstr "Kanaleigentümer:"
 
-#: src/modules/options/optw_logging.cpp:39
+#: src/modules/options/optw_logging.cpp:41
 msgid "Channel windows"
 msgstr "Kanalfenster"
 
-#: src/modules/options/optw_servers.cpp:224
-#: src/modules/options/optw_servers.cpp:774
+#: src/modules/options/optw_servers.cpp:225
+#: src/modules/options/optw_servers.cpp:776
 msgid "Channels to join automatically upon connect:"
 msgstr "Nach dem Verbinden Kanäle automatisch betreten:"
 
@@ -1934,11 +1939,11 @@ msgstr "Nach dem Verbinden Kanäle automatisch betreten:"
 msgid "Chat"
 msgstr "Chat"
 
-#: src/modules/options/optw_notify.cpp:61
+#: src/modules/options/optw_notify.cpp:63
 msgid "Check USERHOST for online users"
 msgstr "USERHOST für Benutzer, die online sind, prüfen"
 
-#: src/modules/options/optw_notify.cpp:76
+#: src/modules/options/optw_notify.cpp:78
 msgid "Check interval (in seconds)"
 msgstr "Prüfintervall (in Sekunden)"
 
@@ -1950,11 +1955,11 @@ msgstr "Kindfenster-Undurchsichtigkeit:"
 msgid "Choose Avatar - KVIrc"
 msgstr "Avatar auswählen - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:558
+#: src/modules/options/optw_messages.cpp:559
 msgid "Choose a Filename - KVIrc"
 msgstr "Dateiname auswählen - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:615
+#: src/modules/options/optw_messages.cpp:616
 msgid "Choose a Filename - KVIrc "
 msgstr "Dateiname auswählen - KVIrc "
 
@@ -1970,20 +1975,20 @@ msgstr "Auswählen..."
 msgid "Classic Taskbar"
 msgstr "Klassische Fensterleiste"
 
-#: src/modules/options/optw_servers.cpp:1460
+#: src/modules/options/optw_servers.cpp:1464
 msgid "Clear List"
 msgstr "Liste löschen"
 
-#: src/modules/options/optw_tray.cpp:39
+#: src/modules/options/optw_tray.cpp:41
 msgid "Close in tray"
 msgstr "In Tray schließen"
 
-#: src/modules/options/dialog.cpp:238
+#: src/modules/options/dialog.cpp:241
 #: src/modules/options/container.cpp:63
 msgid "Close this dialog, accepting all changes."
 msgstr "Um alle Änderungen zu akzeptieren, Dialog schliessen"
 
-#: src/modules/options/dialog.cpp:251
+#: src/modules/options/dialog.cpp:254
 #: src/modules/options/container.cpp:71
 msgid "Close this dialog, discarding all changes."
 msgstr "Um alle Änderungen zu verwerfen, Dialog schliessen"
@@ -1992,51 +1997,51 @@ msgstr "Um alle Änderungen zu verwerfen, Dialog schliessen"
 msgid "Color Set"
 msgstr "Farben"
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:147
 msgid "Commandline in user-friendly mode by default"
 msgstr "Kommandozeile standardmäßig in benutzerfreundlichem Modus"
 
-#: src/modules/options/dialog.cpp:245
+#: src/modules/options/dialog.cpp:248
 msgid "Commit all changes immediately."
 msgstr "Änderungen sofort anwenden"
 
-#: src/modules/options/optw_notify.cpp:37
-#: src/modules/options/optw_lag.cpp:40
-#: src/modules/options/optw_connection.cpp:210
+#: src/modules/options/optw_notify.cpp:39
+#: src/modules/options/optw_lag.cpp:41
+#: src/modules/options/optw_connection.cpp:213
 #: src/modules/options/optw_proxy.cpp:103
 msgid "Configuration"
 msgstr "Konfiguration"
 
-#: src/modules/options/optw_interfacefeatures.cpp:44
+#: src/modules/options/optw_interfacefeatures.cpp:45
 msgid "Confirm quit with active connections"
 msgstr "Beim Beenden mit aktiven Verbindungen um Bestätigung fragen"
 
-#: src/modules/options/optw_servers.cpp:1161
+#: src/modules/options/optw_servers.cpp:1165
 msgid "Connect &Now"
 msgstr "Jetzt verbi&nden"
 
-#: src/modules/options/optw_connection.cpp:142
+#: src/modules/options/optw_connection.cpp:144
 msgid "Connect timeout:"
 msgstr "Verbindungszeitablauf:"
 
-#: src/modules/options/optw_servers.cpp:201
+#: src/modules/options/optw_servers.cpp:202
 msgid "Connect to this network at startup"
 msgstr "Zu diesem Netzwerk beim Start von KVIrc verbinden"
 
-#: src/modules/options/optw_servers.cpp:633
+#: src/modules/options/optw_servers.cpp:635
 msgid "Connect to this server at startup"
 msgstr "Zu diesem Server beim Start von KVIrc verbinden"
 
-#: src/modules/options/optw_servers.cpp:764
+#: src/modules/options/optw_servers.cpp:766
 #: src/modules/options/optw_connection.h:30
 msgid "Connection"
 msgstr "Verbindung"
 
-#: src/modules/options/optw_connection.cpp:194
+#: src/modules/options/optw_connection.cpp:197
 msgid "Console"
 msgstr "Konsole"
 
-#: src/modules/options/optw_logging.cpp:41
+#: src/modules/options/optw_logging.cpp:43
 msgid "Console windows"
 msgstr "Console-Fenster"
 
@@ -2044,11 +2049,11 @@ msgstr "Console-Fenster"
 msgid "Contacts"
 msgstr "Kontakte"
 
-#: src/modules/options/optw_input.cpp:39
+#: src/modules/options/optw_input.cpp:40
 msgid "Control char color"
 msgstr "Kontrollzeichenfarbe"
 
-#: src/modules/options/optw_servers.cpp:1112
+#: src/modules/options/optw_servers.cpp:1116
 msgid "Copy Server"
 msgstr "Server kopieren"
 
@@ -2056,11 +2061,11 @@ msgstr "Server kopieren"
 msgid "Create minimized debug window"
 msgstr "Erstelle minimiertes Debug-Fenster"
 
-#: src/modules/options/optw_input.cpp:40
+#: src/modules/options/optw_input.cpp:41
 msgid "Cursor color"
 msgstr "Cursorfarbe"
 
-#: src/modules/options/optw_away.cpp:52
+#: src/modules/options/optw_away.cpp:54
 #, c-format
 msgid "Custom nickname (%%nick%% means a current nick):"
 msgstr "eigener (custom) Spitzname (%%nick%% heißt aktueller Spitzname):"
@@ -2069,19 +2074,31 @@ msgstr "eigener (custom) Spitzname (%%nick%% heißt aktueller Spitzname):"
 msgid "DCC"
 msgstr "DCC"
 
-#: src/modules/options/optw_logging.cpp:40
+#: src/modules/options/optw_logging.cpp:42
 msgid "DCC Chat windows"
 msgstr "DCC-Chat-Fenster"
 
-#: src/modules/options/optw_dcc.cpp:137
+#: src/modules/options/optw_dcc.cpp:139
 msgid "DCC socket timeout:"
 msgstr "DCC-Socketzeitüberschreitung:"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:102
+#: src/modules/options/optw_ctcpfloodprotection.cpp:104
 msgid "DCC/TDCC"
 msgstr "DCC/TDCC"
 
-#: src/modules/options/optw_servers.cpp:746
+#: src/modules/options/optw_ircview.cpp:189
+msgid "DashDotDotLine"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:188
+msgid "DashDotLine"
+msgstr ""
+
+#: src/modules/options/optw_ircview.cpp:186
+msgid "DashLine"
+msgstr ""
+
+#: src/modules/options/optw_servers.cpp:748
 msgid "Default"
 msgstr "Voreinstellungen"
 
@@ -2089,23 +2106,23 @@ msgstr "Voreinstellungen"
 msgid "Default Messages"
 msgstr "Standardnachrichten:"
 
-#: src/modules/options/optw_away.cpp:36
+#: src/modules/options/optw_away.cpp:38
 msgid "Default away message:"
 msgstr "Standard \"Abwesend\"-Nachricht:"
 
-#: src/modules/options/optw_irc.cpp:149
+#: src/modules/options/optw_irc.cpp:150
 msgid "Default ban mask:"
 msgstr "Standard Bann-Maske:"
 
-#: src/modules/options/optw_textencoding.cpp:41
+#: src/modules/options/optw_textencoding.cpp:42
 msgid "Default server encoding:"
 msgstr "Standard-Serverkodierung:"
 
-#: src/modules/options/optw_textencoding.cpp:49
+#: src/modules/options/optw_textencoding.cpp:50
 msgid "Default text encoding:"
 msgstr "Standard-Textkodierung:"
 
-#: src/modules/options/optw_connection.cpp:81
+#: src/modules/options/optw_connection.cpp:82
 msgid "Delay between attempts:"
 msgstr "Verzögerung zwischen den Versuchen:"
 
@@ -2113,23 +2130,23 @@ msgstr "Verzögerung zwischen den Versuchen:"
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/modules/options/optw_servers.cpp:313
+#: src/modules/options/optw_servers.cpp:314
 #: src/modules/options/optw_nickserv.cpp:271
 msgid "Delete Rule"
 msgstr "Regel löschen"
 
-#: src/modules/options/optw_servers.cpp:1058
-#: src/modules/options/optw_mediatypes.cpp:75
+#: src/modules/options/optw_servers.cpp:1062
+#: src/modules/options/optw_mediatypes.cpp:77
 msgid "Description"
 msgstr "Beschreibung"
 
-#: src/modules/options/optw_servers.cpp:110
-#: src/modules/options/optw_servers.cpp:474
-#: src/modules/options/optw_mediatypes.cpp:84
+#: src/modules/options/optw_servers.cpp:111
+#: src/modules/options/optw_servers.cpp:476
+#: src/modules/options/optw_mediatypes.cpp:86
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#: src/modules/options/optw_servers.cpp:747
+#: src/modules/options/optw_servers.cpp:749
 msgid "Direct connection"
 msgstr "direkte Verbindung"
 
@@ -2141,37 +2158,41 @@ msgstr "Fehlerhafte Ereignishandler deaktivieren"
 msgid "Disable parser warnings"
 msgstr "Parserwarnungen deaktivieren"
 
-#: src/modules/options/optw_interfacefeatures.cpp:50
+#: src/modules/options/optw_interfacefeatures.cpp:51
 msgid "Disable splash screen"
 msgstr "Begrüßungsbildschirm deaktivieren"
 
-#: src/modules/options/optw_irc.cpp:170
+#: src/modules/options/optw_irc.cpp:171
 msgid "Do not request ban exception list"
 msgstr "Bannausnahmenliste nicht anfordern"
 
-#: src/modules/options/optw_irc.cpp:169
+#: src/modules/options/optw_irc.cpp:170
 msgid "Do not request ban list"
 msgstr "Bannliste nicht anfordern"
 
-#: src/modules/options/optw_irc.cpp:171
+#: src/modules/options/optw_irc.cpp:172
 msgid "Do not request invite list"
 msgstr "Einladungsliste nicht anfordern"
 
-#: src/modules/options/optw_avatar.cpp:46
+#: src/modules/options/optw_avatar.cpp:48
 msgid "Do not scale avatar if it is less than required size"
 msgstr "Avatare nicht skalieren, wenn sie kleiner als die benötigte Größe sind"
 
-#: src/modules/options/optw_irc.cpp:168
+#: src/modules/options/optw_irc.cpp:169
 msgid "Do not send /WHO request"
 msgstr "/WHO-Anfrage nicht senden"
 
-#: src/modules/options/optw_connection.cpp:195
+#: src/modules/options/optw_connection.cpp:198
 msgid "Do not show any identd messages"
 msgstr "Keine identd-Meldungen anzeigen"
 
-#: src/modules/options/optw_messages.cpp:80
+#: src/modules/options/optw_messages.cpp:81
 msgid "Don't show colors in user messages"
 msgstr "Keine Farben in Benutzernachrichten anzeigen"
+
+#: src/modules/options/optw_ircview.cpp:185
+msgid "DotLine"
+msgstr ""
 
 #: src/modules/options/optw_userlist.cpp:95
 msgid "Dotted Grid"
@@ -2182,7 +2203,7 @@ msgstr "Gepunktetes Gitter"
 msgid "Download aborted by user"
 msgstr "Herunterladen vom Benutzer abgebrochen"
 
-#: src/modules/options/optw_dcc.cpp:176
+#: src/modules/options/optw_dcc.cpp:180
 msgid "Download folder:"
 msgstr "Herunterladen-Ordner:"
 
@@ -2190,15 +2211,15 @@ msgstr "Herunterladen-Ordner:"
 msgid "Draw nickname grid"
 msgstr "Gitter für Spitznamen zeichnen"
 
-#: src/modules/options/optw_messages.cpp:79
+#: src/modules/options/optw_messages.cpp:80
 msgid "Draw some emoticons (smileys) as pictures"
 msgstr "Einige Emoticons (Smilies) als Bilder darstellen"
 
-#: src/modules/options/optw_irc.cpp:180
+#: src/modules/options/optw_irc.cpp:181
 msgid "Echo channel topic"
 msgstr "Kanaltitel ausgeben"
 
-#: src/modules/options/optw_servers.cpp:309
+#: src/modules/options/optw_servers.cpp:310
 #: src/modules/options/optw_nickserv.cpp:267
 msgid "Edit Rule"
 msgstr "Regel bearbeiten"
@@ -2207,15 +2228,15 @@ msgstr "Regel bearbeiten"
 msgid "Emoticon"
 msgstr "Emoticon"
 
-#: src/modules/options/optw_antispam.cpp:36
+#: src/modules/options/optw_antispam.cpp:37
 msgid "Enable Anti-spam For"
 msgstr "Antispam aktivieren für"
 
-#: src/modules/options/optw_ignore.cpp:36
+#: src/modules/options/optw_ignore.cpp:37
 msgid "Enable Ignore For"
 msgstr "Ignorieren aktivieren für"
 
-#: src/modules/options/optw_servers.cpp:276
+#: src/modules/options/optw_servers.cpp:277
 #: src/modules/options/optw_nickserv.cpp:231
 msgid "Enable NickServ Identification"
 msgstr "NickServ-Indentifikation aktivieren"
@@ -2232,52 +2253,52 @@ msgstr "Animierte Avatars aktivieren"
 msgid "Enable fake transparency"
 msgstr "Falsche Transparenz aktivieren"
 
-#: src/modules/options/optw_connection.cpp:185
+#: src/modules/options/optw_connection.cpp:188
 msgid "Enable ident service (bad practice on UNIX!)"
 msgstr "Ident-Dienst aktivieren (schlechte Gewohnheit bei UNIX!)"
 
-#: src/modules/options/optw_connection.cpp:212
+#: src/modules/options/optw_connection.cpp:215
 msgid "Enable ident service only while connecting to server"
 msgstr "Ident-Service nur beim Verbinden zu einem Server aktivieren"
 
-#: src/modules/options/optw_lag.cpp:38
+#: src/modules/options/optw_lag.cpp:39
 msgid "Enable lag meter"
 msgstr "Lagmeter aktivieren"
 
-#: src/modules/options/optw_tray.cpp:43
+#: src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
 msgstr ""
 "Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
 
-#: src/modules/options/optw_notify.cpp:117
+#: src/modules/options/optw_notify.cpp:121
 msgid "Enable notifier window fade effect"
 msgstr "Ausblend-Effekt des Benachrichtigungsfensters einschalten"
 
-#: src/modules/options/optw_notify.cpp:116
+#: src/modules/options/optw_notify.cpp:120
 msgid "Enable notifier window flashing"
 msgstr "Blinken des Benachrichtigungsfensters einschalten"
 
-#: src/modules/options/optw_connection.cpp:224
+#: src/modules/options/optw_connection.cpp:227
 msgid "Enable service for IPv6"
 msgstr "Dienst für IPv6 aktivieren"
 
-#: src/modules/options/optw_query.cpp:63
+#: src/modules/options/optw_query.cpp:65
 msgid "Enable target user tracking"
 msgstr "Benutzerverfolgung aktivieren"
 
-#: src/modules/options/optw_input.cpp:140
+#: src/modules/options/optw_input.cpp:141
 msgid "Enable the input history logging"
 msgstr "Eingabeverlaufsfenster einschalten"
 
-#: src/modules/options/optw_notify.cpp:107
+#: src/modules/options/optw_notify.cpp:111
 msgid "Enable the notifier"
 msgstr "Benachrichtigungsfenster einschalten"
 
-#: src/modules/options/optw_tray.cpp:38
+#: src/modules/options/optw_tray.cpp:40
 msgid "Enable tray icon"
 msgstr "Tray-Icon aktivieren"
 
-#: src/modules/options/optw_tray.cpp:42
+#: src/modules/options/optw_tray.cpp:44
 msgid "Enable tray icon flashing"
 msgstr "Aktiviere Tray-Icon-Blinken"
 
@@ -2285,27 +2306,27 @@ msgstr "Aktiviere Tray-Icon-Blinken"
 msgid "Enable user tooltips"
 msgstr "Fensterkurzinfos aktivieren"
 
-#: src/modules/options/optw_interfacefeatures.cpp:54
+#: src/modules/options/optw_interfacefeatures.cpp:55
 msgid "Enable visual effects"
 msgstr "Visuelle Effekte einschalten"
 
-#: src/modules/options/optw_taskbar.cpp:47
+#: src/modules/options/optw_taskbar.cpp:49
 msgid "Enable window tooltips"
 msgstr "Fensterkurzinfos aktivieren"
 
-#: src/modules/options/optw_highlighting.cpp:50
+#: src/modules/options/optw_highlighting.cpp:53
 msgid "Enable word highlighting"
 msgstr "Wort-Hervorhebung aktivieren"
 
-#: src/modules/options/optw_ircoutput.cpp:58
+#: src/modules/options/optw_ircoutput.cpp:59
 msgid "External CTCP replies"
 msgstr "Externe CTCP-Antworten"
 
-#: src/modules/options/optw_ircoutput.cpp:57
+#: src/modules/options/optw_ircoutput.cpp:58
 msgid "External messages"
 msgstr "Externe Nachrichten"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:94
+#: src/modules/options/optw_ctcpfloodprotection.cpp:96
 msgid "FINGER"
 msgstr "FINGER"
 
@@ -2345,19 +2366,19 @@ msgstr "weiblich"
 msgid "File Transfer"
 msgstr "Dateiübertragung"
 
-#: src/modules/options/optw_mediatypes.cpp:96
+#: src/modules/options/optw_mediatypes.cpp:98
 msgid "File pattern:"
 msgstr "Dateimuster:"
 
-#: src/modules/options/optw_query.cpp:70
+#: src/modules/options/optw_query.cpp:72
 msgid "Flash system taskbar on new query message"
 msgstr "Systemfensterleiste bei neuer Anfrage-Nachricht aufblinken lassen"
 
-#: src/modules/options/optw_highlighting.cpp:58
+#: src/modules/options/optw_highlighting.cpp:61
 msgid "Flash the system taskbar entry on highlighted messages"
 msgstr "Systemfensterleiste bei neuer Hervorhebung-Nachricht aufblinken lassen"
 
-#: src/modules/options/optw_notify.cpp:47
+#: src/modules/options/optw_notify.cpp:49
 msgid "Flash window when users are going online"
 msgstr "Fenster aufblinken, wenn Benutzer online geht"
 
@@ -2365,32 +2386,32 @@ msgstr "Fenster aufblinken, wenn Benutzer online geht"
 msgid "Flood Protection"
 msgstr "Überflutungsbegrenzung"
 
-#: src/modules/options/optw_input.cpp:34
+#: src/modules/options/optw_input.cpp:35
 #: src/modules/options/optw_interfacelookglobal.cpp:194
 #: src/modules/options/optw_topiclabel.cpp:33
 msgid "Font"
 msgstr "Schriftart"
 
-#: src/modules/options/optw_taskbar.cpp:77
-#: src/modules/options/optw_taskbar.cpp:231
+#: src/modules/options/optw_taskbar.cpp:82
+#: src/modules/options/optw_taskbar.cpp:243
 #: src/modules/options/optw_userlist.cpp:49
-#: src/modules/options/optw_ircview.cpp:45
+#: src/modules/options/optw_ircview.cpp:47
 msgid "Font:"
 msgstr "Schriftart:"
 
-#: src/modules/options/optw_dcc.cpp:327
+#: src/modules/options/optw_dcc.cpp:332
 msgid "Force half-duplex mode on sound device"
 msgstr "Halb-duplex-Modus beim beim Klanggerät erzwingen"
 
-#: src/modules/options/optw_dcc.cpp:254
+#: src/modules/options/optw_dcc.cpp:259
 msgid "Force idle step"
 msgstr "Leerlaufschritt erzwingen"
 
-#: src/modules/options/optw_irc.cpp:69
+#: src/modules/options/optw_irc.cpp:70
 msgid "Force immediate quit"
 msgstr "Sofortiges Beenden erzwingen"
 
-#: src/modules/options/optw_textencoding.cpp:74
+#: src/modules/options/optw_textencoding.cpp:75
 msgid "Force language:"
 msgstr "Erzwinge Sprache:"
 
@@ -2399,12 +2420,12 @@ msgstr "Erzwinge Sprache:"
 msgid "Foreground"
 msgstr "Vordergrund"
 
-#: src/modules/options/optw_input.cpp:36
+#: src/modules/options/optw_input.cpp:37
 #: src/modules/options/optw_topiclabel.cpp:34
 msgid "Foreground color"
 msgstr "Vordergrundfarbe"
 
-#: src/modules/options/optw_messages.cpp:396
+#: src/modules/options/optw_messages.cpp:397
 msgid "Foreground:"
 msgstr "Vordergrund:"
 
@@ -2412,8 +2433,8 @@ msgstr "Vordergrund:"
 msgid "Gender:"
 msgstr "Geschlecht:"
 
-#: src/modules/options/optw_servers.cpp:214
-#: src/modules/options/optw_messages.cpp:76
+#: src/modules/options/optw_servers.cpp:215
+#: src/modules/options/optw_messages.cpp:77
 #: src/modules/options/optw_dcc.h:43
 #: src/modules/options/optw_dcc.h:86
 #: src/modules/options/optw_interfacelookglobal.h:32
@@ -2423,7 +2444,7 @@ msgstr "Geschlecht:"
 msgid "General"
 msgstr "Allgemein"
 
-#: src/modules/options/dialog.cpp:124
+#: src/modules/options/dialog.cpp:127
 msgid "General Preferences"
 msgstr "Allgemeine Einstellungen"
 
@@ -2443,15 +2464,15 @@ msgstr "Gitterfarbe:"
 msgid "Grid type:"
 msgstr "Gittertyp:"
 
-#: src/modules/options/optw_dcc.cpp:110
+#: src/modules/options/optw_dcc.cpp:112
 msgid "Guess address from IRC server if unroutable"
 msgstr "Adresse vom IRC-Server bekommen, wenn nicht routbar"
 
-#: src/modules/options/optw_dcc.cpp:178
+#: src/modules/options/optw_dcc.cpp:182
 msgid "Guess save path from media type"
 msgstr "Speicherpfad vom Medientyp bekommen"
 
-#: src/modules/options/optw_logging.cpp:43
+#: src/modules/options/optw_logging.cpp:45
 msgid "Gzip logs"
 msgstr "Gzip Logdateien"
 
@@ -2484,15 +2505,15 @@ msgstr "Hier kannst Du Dein Alter eintragen."
 msgid "Here you can specify your gender."
 msgstr "Hier kannst Du Dein Geschlecht angeben."
 
-#: src/modules/options/optw_interfacefeatures.cpp:55
+#: src/modules/options/optw_interfacefeatures.cpp:56
 msgid "Hide Channel window tool buttons by default"
 msgstr "Verstecke standardmäßig die Kanalfensterwerkzeugknöpfe"
 
-#: src/modules/options/optw_input.cpp:141
+#: src/modules/options/optw_input.cpp:142
 msgid "Hide input toolbuttons by default"
 msgstr "Eingabe-Werkzeugknöpfe standardmäßig verstecken"
 
-#: src/modules/options/optw_dcc.cpp:96
+#: src/modules/options/optw_dcc.cpp:98
 msgid "Highest port:"
 msgstr "Höchster Port:"
 
@@ -2500,11 +2521,11 @@ msgstr "Höchster Port:"
 msgid "Highlight"
 msgstr "Hervorhebung"
 
-#: src/modules/options/optw_highlighting.cpp:56
+#: src/modules/options/optw_highlighting.cpp:59
 msgid "Highlight messages containing my nickname"
 msgstr "Nachrichten, die den eigenen Spitznamen enthalten, hervorheben"
 
-#: src/modules/options/optw_sound.cpp:288
+#: src/modules/options/optw_sound.cpp:290
 msgid "Highlighted message in inactive window"
 msgstr "Hervorgehobene Nachricht in inaktivem Fenster"
 
@@ -2516,26 +2537,26 @@ msgstr "Tipp: Den Mauscursor über die Einträge führen, um Hilfe zu erhalten"
 msgid "Horizontal Alignment:"
 msgstr "Horizontale Ausrichtung:"
 
-#: src/modules/options/optw_taskbar.cpp:115
-#: src/modules/options/optw_input.cpp:44
-#: src/modules/options/optw_ircview.cpp:50
+#: src/modules/options/optw_taskbar.cpp:122
+#: src/modules/options/optw_input.cpp:45
+#: src/modules/options/optw_ircview.cpp:52
 msgid "Horizontal align:"
 msgstr "Horizontale Ausrichtung:"
 
-#: src/modules/options/optw_sound.cpp:94
+#: src/modules/options/optw_sound.cpp:95
 msgid "ID3 tags' encoding"
 msgstr "ID3-Tag Kodierung"
 
-#: src/modules/options/optw_servers.cpp:574
+#: src/modules/options/optw_servers.cpp:576
 #: src/modules/options/optw_proxy.cpp:112
 msgid "IP address:"
 msgstr "IP-Adresse:"
 
-#: src/modules/options/optw_connection.cpp:233
+#: src/modules/options/optw_connection.cpp:236
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
 msgstr "IP-Stack behandelt IPV4 als Teil des IPV6-Namensraums"
 
-#: src/modules/options/optw_connection.cpp:223
+#: src/modules/options/optw_connection.cpp:226
 msgid "IPv6 Settings"
 msgstr "IPv6-Einstellungen"
 
@@ -2543,15 +2564,15 @@ msgstr "IPv6-Einstellungen"
 msgid "IRC"
 msgstr "IRC"
 
-#: src/modules/options/optw_notify.cpp:82
+#: src/modules/options/optw_notify.cpp:84
 msgid "ISON delay (in seconds)"
 msgstr "ISON-Verzögerung (in Sekunden)"
 
-#: src/modules/options/optw_mediatypes.cpp:130
+#: src/modules/options/optw_mediatypes.cpp:132
 msgid "Icon"
 msgstr "Symbol"
 
-#: src/modules/options/optw_servers.cpp:726
+#: src/modules/options/optw_servers.cpp:728
 msgid "Id:"
 msgstr "Id:"
 
@@ -2559,18 +2580,18 @@ msgstr "Id:"
 msgid "Ident Service"
 msgstr "Ident-Dienst"
 
-#: src/modules/options/optw_connection.cpp:215
+#: src/modules/options/optw_connection.cpp:218
 msgid "Ident username:"
 msgstr "Ident-Benutzername:"
 
-#: src/modules/options/optw_servers.cpp:291
+#: src/modules/options/optw_servers.cpp:292
 #: src/modules/options/optw_nickserv.cpp:89
 #: src/modules/options/optw_nickserv.cpp:246
 msgid "Identify Command"
 msgstr "Indentifizierung-Kommando"
 
-#: src/modules/options/optw_servers.cpp:553
-#: src/modules/options/optw_interfacefeatures.cpp:60
+#: src/modules/options/optw_servers.cpp:555
+#: src/modules/options/optw_interfacefeatures.cpp:61
 #: src/modules/options/optw_identity.h:103
 msgid "Identity"
 msgstr "Identität"
@@ -2583,26 +2604,26 @@ msgstr "Ignorieren"
 msgid "Ignore module versions (dangerous)"
 msgstr "Modulversionen ignorieren (gefährlich)"
 
-#: src/modules/options/optw_avatar.cpp:103
+#: src/modules/options/optw_avatar.cpp:105
 msgid "Ignore requests if no avatar is set"
 msgstr "Anfragen ignorieren, wenn kein Avatar gesetzt ist"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:92
+#: src/modules/options/optw_ctcpfloodprotection.cpp:94
 msgid "Ignored Requests"
 msgstr "Anfragen ignorieren"
 
-#: src/modules/options/optw_avatar.cpp:50
-#: src/modules/options/optw_avatar.cpp:59
+#: src/modules/options/optw_avatar.cpp:52
+#: src/modules/options/optw_avatar.cpp:61
 msgid "Image height:"
 msgstr "Bildhöhe:"
 
-#: src/modules/options/optw_avatar.cpp:48
-#: src/modules/options/optw_avatar.cpp:57
+#: src/modules/options/optw_avatar.cpp:50
+#: src/modules/options/optw_avatar.cpp:59
 msgid "Image width:"
 msgstr "Bildbreite:"
 
-#: src/modules/options/optw_servers.cpp:1130
-#: src/modules/options/optw_servers.cpp:1462
+#: src/modules/options/optw_servers.cpp:1134
+#: src/modules/options/optw_servers.cpp:1466
 msgid "Import List"
 msgstr "Liste importieren"
 
@@ -2639,36 +2660,36 @@ msgstr "Schnittstelle"
 msgid "Invalid NickServ Rule"
 msgstr "Ungültige NickServ-Regel"
 
-#: src/modules/options/optw_servers.cpp:535
+#: src/modules/options/optw_servers.cpp:537
 #: src/modules/options/optw_identity.cpp:642
 msgid "Invisible (+i)"
 msgstr "Unsichtbar (+i)"
 
-#: src/modules/options/optw_ircoutput.cpp:61
+#: src/modules/options/optw_ircoutput.cpp:62
 msgid "Invite messages"
 msgstr "Einladungsnachrichten"
 
-#: src/modules/options/optw_servers.cpp:232
-#: src/modules/options/optw_servers.cpp:780
-#: src/modules/options/optw_interfacefeatures.cpp:62
+#: src/modules/options/optw_servers.cpp:233
+#: src/modules/options/optw_servers.cpp:782
+#: src/modules/options/optw_interfacefeatures.cpp:63
 msgid "Join Channels"
 msgstr "Kanäle betreten"
 
-#: src/modules/options/dialog.cpp:129
+#: src/modules/options/dialog.cpp:132
 msgid "KVIrc Preferences"
 msgstr "KVIrc-Einstellungen"
 
-#: src/modules/options/optw_irc.cpp:173
+#: src/modules/options/optw_irc.cpp:174
 msgid "Keep away list updated by sending WHO requests"
 msgstr "Abwesenheitsliste aktuell halten durch WHO-Anfragen"
 
-#: src/modules/options/optw_irc.cpp:107
-#: src/modules/options/optw_irc.cpp:116
+#: src/modules/options/optw_irc.cpp:108
+#: src/modules/options/optw_irc.cpp:117
 msgid "Keep channel open"
 msgstr "Kanal geöffnet lassen"
 
-#: src/modules/options/optw_connection.cpp:41
-#: src/modules/options/optw_connection.cpp:50
+#: src/modules/options/optw_connection.cpp:42
+#: src/modules/options/optw_connection.cpp:51
 msgid "Keep channels open"
 msgstr "Kanäle offenhalten"
 
@@ -2676,8 +2697,8 @@ msgstr "Kanäle offenhalten"
 msgid "Keep in sync with KDE background changes"
 msgstr "Synchron mit KDE-Hintergrundänderungen bleiben"
 
-#: src/modules/options/optw_connection.cpp:44
-#: src/modules/options/optw_connection.cpp:53
+#: src/modules/options/optw_connection.cpp:45
+#: src/modules/options/optw_connection.cpp:54
 msgid "Keep queries open"
 msgstr "Anfragen offen halten"
 
@@ -2693,7 +2714,7 @@ msgstr "Beschriftungen"
 msgid "Lag"
 msgstr "Lag"
 
-#: src/modules/options/optw_lag.cpp:41
+#: src/modules/options/optw_lag.cpp:42
 msgid "Lag meter heartbeat:"
 msgstr "Lag-Meter Herzschlag:"
 
@@ -2705,34 +2726,34 @@ msgstr "Sprache"
 msgid "Languages:"
 msgstr "Sprachen:"
 
-#: src/modules/options/optw_taskbar.cpp:124
-#: src/modules/options/optw_input.cpp:53
+#: src/modules/options/optw_taskbar.cpp:131
+#: src/modules/options/optw_input.cpp:54
 #: src/modules/options/optw_userlist.cpp:138
 #: src/modules/options/optw_ircview.cpp:61
 msgid "Left"
 msgstr "Links"
 
-#: src/modules/options/optw_dcc.cpp:234
+#: src/modules/options/optw_dcc.cpp:239
 msgid "Limit download bandwidth to"
 msgstr "Bandbreite zum Herunterladen beschränken auf"
 
-#: src/modules/options/optw_connection.cpp:146
+#: src/modules/options/optw_connection.cpp:148
 msgid "Limit outgoing traffic"
 msgstr "Abgehenden Netzverkehr begrenzen"
 
-#: src/modules/options/optw_connection.cpp:147
+#: src/modules/options/optw_connection.cpp:149
 msgid "Limit to 1 message every:"
 msgstr "1 Nachricht begrenzen auf alle:"
 
-#: src/modules/options/optw_dcc.cpp:228
+#: src/modules/options/optw_dcc.cpp:233
 msgid "Limit upload bandwidth to"
 msgstr "Bandbreite zum Hochladen beschränken auf"
 
-#: src/modules/options/optw_dcc.cpp:225
+#: src/modules/options/optw_dcc.cpp:230
 msgid "Limits"
 msgstr "Begrenzungen"
 
-#: src/modules/options/optw_servers.cpp:687
+#: src/modules/options/optw_servers.cpp:689
 msgid "Link filter:"
 msgstr "Verknüpfungsfilter:"
 
@@ -2744,15 +2765,15 @@ msgstr "Verknüpfung-Kurzinfo-Ausblendverzögerung:"
 msgid "Link tooltip show delay:"
 msgstr "Verknüpfung-Kurzinfo-Anzeigeverzögerung:"
 
-#: src/modules/options/optw_dcc.cpp:79
+#: src/modules/options/optw_dcc.cpp:81
 msgid "Listen on address/interface:"
 msgstr "An Adresse/Schnittstelle hören:"
 
-#: src/modules/options/optw_messages.cpp:428
+#: src/modules/options/optw_messages.cpp:429
 msgid "Load From..."
 msgstr "Laden von..."
 
-#: src/modules/options/optw_mediatypes.cpp:114
+#: src/modules/options/optw_mediatypes.cpp:116
 msgid "Local open command:"
 msgstr "Lokales Kommando ausführen:"
 
@@ -2760,11 +2781,11 @@ msgstr "Lokales Kommando ausführen:"
 msgid "Location:"
 msgstr "Ort:"
 
-#: src/modules/options/optw_irc.cpp:147
+#: src/modules/options/optw_irc.cpp:148
 msgid "Log joined channels history"
 msgstr "Verlauf betretener Kanäle speichern"
 
-#: src/modules/options/optw_messages.cpp:424
+#: src/modules/options/optw_messages.cpp:425
 msgid "Log this"
 msgstr "Dieses loggen"
 
@@ -2780,19 +2801,19 @@ msgstr "Aussehen"
 msgid "Low-Contrast Foreground"
 msgstr "Vordergrund mit niedrigem Kontrast"
 
-#: src/modules/options/optw_dcc.cpp:93
+#: src/modules/options/optw_dcc.cpp:95
 msgid "Lowest port:"
 msgstr "Niedrigster Port:"
 
-#: src/modules/options/optw_mediatypes.cpp:74
+#: src/modules/options/optw_mediatypes.cpp:76
 msgid "MIME Type"
 msgstr "MIME-Typ"
 
-#: src/modules/options/optw_mediatypes.cpp:90
+#: src/modules/options/optw_mediatypes.cpp:92
 msgid "MIME type:"
 msgstr "MIME-Typ:"
 
-#: src/modules/options/optw_mediatypes.cpp:102
+#: src/modules/options/optw_mediatypes.cpp:104
 msgid "Magic bytes:"
 msgstr "Magische Byte:"
 
@@ -2800,7 +2821,7 @@ msgstr "Magische Byte:"
 msgid "Male"
 msgstr "männlich"
 
-#: src/modules/options/dialog.cpp:139
+#: src/modules/options/dialog.cpp:142
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
@@ -2808,11 +2829,27 @@ msgstr ""
 "Viele Einstellungen haben Hinweistexte (tooltips), die angezeigt werden, "
 "wenn der Cursor ein paar Sekunden über dem Label steht."
 
-#: src/modules/options/optw_ircview.cpp:58
-msgid "Mark Line:"
-msgstr "Zeile markieren:"
+#: src/modules/options/optw_ircview.h:83
+#, fuzzy
+msgid "Marker"
+msgstr "Parser"
 
-#: src/modules/options/optw_connection.cpp:76
+#: src/modules/options/optw_ircview.cpp:174
+#, fuzzy
+msgid "Marker color:"
+msgstr "Hintergrundfarbe:"
+
+#: src/modules/options/optw_ircview.cpp:176
+#, fuzzy
+msgid "Marker size:"
+msgstr "Paketgrösse:"
+
+#: src/modules/options/optw_ircview.cpp:179
+#, fuzzy
+msgid "Marker style:"
+msgstr "Nachrichtenstil"
+
+#: src/modules/options/optw_connection.cpp:77
 msgid "Maximum attempts (0: unlimited):"
 msgstr "Maximale Versuche (0: unbegrenzt):"
 
@@ -2820,31 +2857,31 @@ msgstr "Maximale Versuche (0: unbegrenzt):"
 msgid "Maximum buffer size:"
 msgstr "Maximale Puffergrösse:"
 
-#: src/modules/options/optw_dcc.cpp:132
+#: src/modules/options/optw_dcc.cpp:134
 msgid "Maximum number of DCC sessions"
 msgstr "Maximale Anzahl der DCC-Sitzungen"
 
-#: src/modules/options/optw_dcc.cpp:240
+#: src/modules/options/optw_dcc.cpp:245
 msgid "Maximum number of DCC transfers"
 msgstr "Maximale Anzahl der DCC-Übertragungen"
 
-#: src/modules/options/optw_avatar.cpp:65
+#: src/modules/options/optw_avatar.cpp:67
 msgid "Maximum requested file size:"
 msgstr "Maximale angeforderte Dateigrösse:"
 
-#: src/modules/options/optw_taskbar.cpp:244
+#: src/modules/options/optw_taskbar.cpp:256
 msgid "Maximum width of buttons:"
 msgstr "Maximale Breite der Knöpfe:"
 
-#: src/modules/options/optw_taskbar.cpp:214
+#: src/modules/options/optw_taskbar.cpp:223
 msgid "Maximum width:"
 msgstr "Maximale Breite:"
 
-#: src/modules/options/optw_sound.cpp:291
+#: src/modules/options/optw_sound.cpp:293
 msgid "Me have been kicked"
 msgstr "Ich wurde rausgeschmissen (kicked)"
 
-#: src/modules/options/optw_sound.cpp:73
+#: src/modules/options/optw_sound.cpp:74
 msgid "Media Player"
 msgstr "Medienspieler"
 
@@ -2864,7 +2901,7 @@ msgstr "Nachrichten-Regexp"
 msgid "Message Style"
 msgstr "Nachrichtenstil"
 
-#: src/modules/options/optw_messages.cpp:376
+#: src/modules/options/optw_messages.cpp:377
 msgid "Message Type"
 msgstr "Nachrichtentyp"
 
@@ -2872,73 +2909,73 @@ msgstr "Nachrichtentyp"
 msgid "Mid-Contrast Foreground"
 msgstr "Vordergrund mit mittlerem Kontrast"
 
-#: src/modules/options/optw_irc.cpp:49
+#: src/modules/options/optw_irc.cpp:50
 msgid "Minimize console after successful login"
 msgstr "Console nach erfolgreichem Login minimieren"
 
-#: src/modules/options/optw_tray.cpp:40
+#: src/modules/options/optw_tray.cpp:42
 msgid "Minimize in tray"
 msgstr "In Tray minimieren"
 
-#: src/modules/options/optw_interfacefeatures.cpp:43
+#: src/modules/options/optw_interfacefeatures.cpp:44
 msgid "Minimize on startup"
 msgstr "Minimieren beim Start"
 
-#: src/modules/options/optw_taskbar.cpp:234
+#: src/modules/options/optw_taskbar.cpp:246
 msgid "Minimized:"
 msgstr "Minimiert:"
 
-#: src/modules/options/optw_highlighting.cpp:92
+#: src/modules/options/optw_highlighting.cpp:96
 msgid "Minimum alert level:"
 msgstr "Minimale Alarmstufe:"
 
-#: src/modules/options/optw_tray.cpp:51
+#: src/modules/options/optw_tray.cpp:53
 msgid "Minimum level for high-priority message"
 msgstr "Minimaler Level für Meldungen hoher Priorität"
 
-#: src/modules/options/optw_tray.cpp:47
+#: src/modules/options/optw_tray.cpp:49
 msgid "Minimum level for low-priority messages"
 msgstr "Minimaler Level für Meldungen niedriger Priorität"
 
-#: src/modules/options/optw_taskbar.cpp:241
+#: src/modules/options/optw_taskbar.cpp:253
 msgid "Minimum width of buttons:"
 msgstr "Minimale Breite der Knöpfe:"
 
-#: src/modules/options/optw_taskbar.cpp:213
+#: src/modules/options/optw_taskbar.cpp:222
 msgid "Minimum width:"
 msgstr "Minimale Breite:"
 
-#: src/modules/options/optw_dcc.cpp:331
+#: src/modules/options/optw_dcc.cpp:336
 msgid "Mixer device:"
 msgstr "Mixergerät:"
 
-#: src/modules/options/optw_ircoutput.cpp:46
+#: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
 msgstr "Still"
 
-#: src/modules/options/optw_servers.cpp:95
+#: src/modules/options/optw_servers.cpp:96
 msgid "Network Details"
 msgstr "Netzwerkdetails"
 
-#: src/modules/options/optw_connection.cpp:153
+#: src/modules/options/optw_connection.cpp:155
 msgid "Network Interfaces"
 msgstr "Netzwerkschnittstellen"
 
-#: src/modules/options/optw_dcc.cpp:70
+#: src/modules/options/optw_dcc.cpp:72
 msgid "Network Properties"
 msgstr "Netzwerkeigenschaften"
 
-#: src/modules/options/optw_servers.cpp:1344
+#: src/modules/options/optw_servers.cpp:1348
 msgid "Network:"
 msgstr "Netzwerk:"
 
-#: src/modules/options/optw_mediatypes.cpp:236
+#: src/modules/options/optw_mediatypes.cpp:238
 msgid "New Media Type"
 msgstr "Neuer Medientyp"
 
-#: src/modules/options/optw_servers.cpp:1089
-#: src/modules/options/optw_servers.cpp:1446
-#: src/modules/options/optw_servers.cpp:1573
+#: src/modules/options/optw_servers.cpp:1093
+#: src/modules/options/optw_servers.cpp:1450
+#: src/modules/options/optw_servers.cpp:1577
 msgid "New Network"
 msgstr "Neues Netzwerk"
 
@@ -2946,27 +2983,27 @@ msgstr "Neues Netzwerk"
 msgid "New Proxy"
 msgstr "Neuer Proxy"
 
-#: src/modules/options/optw_sound.cpp:282
+#: src/modules/options/optw_sound.cpp:284
 msgid "New Query opened"
 msgstr "Neue Anfrage geöffnet"
 
-#: src/modules/options/optw_servers.cpp:1095
+#: src/modules/options/optw_servers.cpp:1099
 msgid "New Server"
 msgstr "Neuer Server"
 
-#: src/modules/options/optw_sound.cpp:285
+#: src/modules/options/optw_sound.cpp:287
 msgid "New message in inactive query"
 msgstr "Neue Nachricht in inaktiver Anfrage"
 
-#: src/modules/options/optw_input.cpp:142
+#: src/modules/options/optw_input.cpp:143
 msgid "Nick completion"
 msgstr "Spitznamenkomplettierung"
 
-#: src/modules/options/optw_input.cpp:144
+#: src/modules/options/optw_input.cpp:145
 msgid "Nick completion postfix string"
 msgstr "Spitznamenkomplettierung des Zeichenkettenendes"
 
-#: src/modules/options/optw_servers.cpp:332
+#: src/modules/options/optw_servers.cpp:333
 #: src/modules/options/optw_nickserv.h:41
 msgid "NickServ"
 msgstr "NickServ"
@@ -2975,18 +3012,18 @@ msgstr "NickServ"
 msgid "NickServ Authentication Rule"
 msgstr "NickServ-Authentifikationsregel"
 
-#: src/modules/options/optw_servers.cpp:289
+#: src/modules/options/optw_servers.cpp:290
 #: src/modules/options/optw_nickserv.cpp:63
 #: src/modules/options/optw_nickserv.cpp:244
 msgid "NickServ Mask"
 msgstr "NickServ-Maske"
 
-#: src/modules/options/optw_servers.cpp:290
+#: src/modules/options/optw_servers.cpp:291
 #: src/modules/options/optw_nickserv.cpp:245
 msgid "NickServ Request Mask"
 msgstr "NickServ-Anfragemaske"
 
-#: src/modules/options/optw_servers.cpp:288
+#: src/modules/options/optw_servers.cpp:289
 #: src/modules/options/optw_nickserv.cpp:242
 msgid "Nickname"
 msgstr "Spitzname"
@@ -3003,17 +3040,17 @@ msgstr "Gitter für Spitznamen"
 msgid "Nickname alternatives"
 msgstr "Alternative Spitznamen"
 
-#: src/modules/options/optw_servers.cpp:140
-#: src/modules/options/optw_servers.cpp:509
+#: src/modules/options/optw_servers.cpp:141
+#: src/modules/options/optw_servers.cpp:511
 #: src/modules/options/optw_identity.cpp:310
 msgid "Nickname:"
 msgstr "Spitzname:"
 
-#: src/modules/options/optw_messages.cpp:82
+#: src/modules/options/optw_messages.cpp:83
 msgid "Nicknames"
 msgstr "Spitznamen"
 
-#: src/modules/options/optw_servers.cpp:1354
+#: src/modules/options/optw_servers.cpp:1358
 msgid "No selection"
 msgstr "Keine Auswahl"
 
@@ -3021,13 +3058,13 @@ msgstr "Keine Auswahl"
 msgid "No such options page class name %Q"
 msgstr "Keine Optionsseiten-Klassenname %Q"
 
-#: src/modules/options/optw_ircoutput.cpp:48
+#: src/modules/options/optw_ircoutput.cpp:49
 msgid "Normal"
 msgstr "Normal"
 
-#: src/modules/options/optw_taskbar.cpp:81
-#: src/modules/options/optw_taskbar.cpp:110
-#: src/modules/options/optw_taskbar.cpp:233
+#: src/modules/options/optw_taskbar.cpp:86
+#: src/modules/options/optw_taskbar.cpp:117
+#: src/modules/options/optw_taskbar.cpp:245
 #: src/modules/options/optw_userlist.cpp:52
 #: src/modules/options/optw_userlist.cpp:123
 msgid "Normal:"
@@ -3037,77 +3074,77 @@ msgstr "Normal:"
 msgid "Notifier"
 msgstr "Benachrichtiger"
 
-#: src/modules/options/optw_dcc.cpp:182
+#: src/modules/options/optw_dcc.cpp:186
 msgid "Notify completion in console"
 msgstr "Notiere Erfolg in der Console"
 
-#: src/modules/options/optw_dcc.cpp:183
+#: src/modules/options/optw_dcc.cpp:187
 msgid "Notify completion in notifier"
 msgstr "Abschluß in Benachrichtiger anzeigen"
 
-#: src/modules/options/optw_dcc.cpp:125
+#: src/modules/options/optw_dcc.cpp:127
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr "Fehlgeschlagene DCC-Handshakes zum entfernten Ende melden"
 
-#: src/modules/options/optw_servers.cpp:816
+#: src/modules/options/optw_servers.cpp:818
 #: src/modules/options/optw_nickserv.cpp:133
 #: src/modules/options/optw_nickserv.cpp:154
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/options/optw_textencoding.cpp:156
+#: src/modules/options/optw_textencoding.cpp:157
 #: src/modules/options/optw_identity.cpp:97
 msgid "Ok"
 msgstr "OK"
 
-#: src/modules/options/optw_irc.cpp:167
-#: src/modules/options/optw_irc.cpp:179
+#: src/modules/options/optw_irc.cpp:168
+#: src/modules/options/optw_irc.cpp:180
 msgid "On Channel Join"
 msgstr "Bei Betreten von Kanal"
 
-#: src/modules/options/optw_irc.cpp:101
+#: src/modules/options/optw_irc.cpp:102
 msgid "On Channel Kick"
 msgstr "Bei Kanalhinauswurf"
 
-#: src/modules/options/optw_irc.cpp:114
+#: src/modules/options/optw_irc.cpp:115
 msgid "On Channel Part"
 msgstr "Beim Verlassen von Kanal"
 
-#: src/modules/options/optw_dcc.cpp:300
+#: src/modules/options/optw_dcc.cpp:305
 msgid "On Chat Request"
 msgstr "Bei Chat-Anfrage"
 
-#: src/modules/options/optw_servers.cpp:247
-#: src/modules/options/optw_servers.cpp:796
+#: src/modules/options/optw_servers.cpp:248
+#: src/modules/options/optw_servers.cpp:798
 msgid "On Connect"
 msgstr "Beim Verbinden"
 
-#: src/modules/options/optw_connection.cpp:39
+#: src/modules/options/optw_connection.cpp:40
 msgid "On Disconnect"
 msgstr "Beim Trennen"
 
-#: src/modules/options/optw_dcc.cpp:181
+#: src/modules/options/optw_dcc.cpp:185
 msgid "On Download Completion"
 msgstr "Wenn herunterladen fertig"
 
-#: src/modules/options/optw_dcc.cpp:170
+#: src/modules/options/optw_dcc.cpp:174
 msgid "On Incoming File"
 msgstr "Bei ankommender Datei"
 
-#: src/modules/options/optw_servers.cpp:265
-#: src/modules/options/optw_servers.cpp:814
+#: src/modules/options/optw_servers.cpp:266
+#: src/modules/options/optw_servers.cpp:816
 msgid "On Login"
 msgstr "Beim Einloggen"
 
-#: src/modules/options/optw_connection.cpp:47
+#: src/modules/options/optw_connection.cpp:48
 msgid "On Unexpected Disconnect"
 msgstr "Bei unerwarteter Trennung"
 
-#: src/modules/options/optw_dcc.cpp:321
+#: src/modules/options/optw_dcc.cpp:326
 msgid "On Voice Request"
 msgstr "Bei Voice-Anfrage"
 
-#: src/modules/options/optw_servers.cpp:1499
+#: src/modules/options/optw_servers.cpp:1503
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3115,7 +3152,7 @@ msgstr ""
 "Ops... etwas sonderbares ist passiert:<br>Es kann kein Modul zum Importieren "
 "von Servern gefunden werden"
 
-#: src/modules/options/optw_servers.cpp:1516
+#: src/modules/options/optw_servers.cpp:1520
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3127,24 +3164,24 @@ msgstr ""
 msgid "Op:"
 msgstr "OP:"
 
-#: src/modules/options/optw_interfacefeatures.cpp:57
+#: src/modules/options/optw_interfacefeatures.cpp:58
 msgid "Open Dialog Window For"
 msgstr "Dialogfenster öffnen für"
 
-#: src/modules/options/optw_query.cpp:38
+#: src/modules/options/optw_query.cpp:40
 msgid "Open Query For"
 msgstr "Anfrage öffnen für"
 
-#: src/modules/options/optw_dcc.cpp:320
+#: src/modules/options/optw_dcc.cpp:325
 msgid "Open all minimized"
 msgstr "Alle minimiert öffnen"
 
-#: src/modules/options/optw_dcc.cpp:302
-#: src/modules/options/optw_dcc.cpp:324
+#: src/modules/options/optw_dcc.cpp:307
+#: src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Minimiert erzeugen, wenn automatisch akzeptiert"
 
-#: src/modules/options/optw_dcc.cpp:172
+#: src/modules/options/optw_dcc.cpp:176
 msgid "Open transfer window as minimized when auto-accepted"
 msgstr "Transferfenster minimiert erzeugen, wenn automatisch akzeptiert"
 
@@ -3152,7 +3189,7 @@ msgstr "Transferfenster minimiert erzeugen, wenn automatisch akzeptiert"
 msgid "Other:"
 msgstr "Anderes:"
 
-#: src/modules/options/optw_connection.cpp:144
+#: src/modules/options/optw_connection.cpp:146
 msgid "Outgoing data queue flush timeout:"
 msgstr "Zeitablauf ausgehende Datenwarteschlange:"
 
@@ -3160,32 +3197,32 @@ msgstr "Zeitablauf ausgehende Datenwarteschlange:"
 msgid "Output"
 msgstr "Ausgabe"
 
-#: src/modules/options/optw_connection.cpp:191
+#: src/modules/options/optw_connection.cpp:194
 msgid "Output identd messages to:"
 msgstr "Schreibe identd-Meldungen nach:"
 
-#: src/modules/options/optw_ircoutput.cpp:40
-#: src/modules/options/optw_connection.cpp:188
+#: src/modules/options/optw_ircoutput.cpp:41
+#: src/modules/options/optw_connection.cpp:191
 msgid "Output verbosity"
 msgstr "Ausgabestufe"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:100
+#: src/modules/options/optw_ctcpfloodprotection.cpp:102
 msgid "PAGE"
 msgstr "PAGE"
 
-#: src/modules/options/optw_ctcp.cpp:59
+#: src/modules/options/optw_ctcp.cpp:61
 msgid "PAGE reply:"
 msgstr "PAGE-Antwort:"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:93
+#: src/modules/options/optw_ctcpfloodprotection.cpp:95
 msgid "PING"
 msgstr "PING"
 
-#: src/modules/options/optw_dcc.cpp:271
+#: src/modules/options/optw_dcc.cpp:276
 msgid "Packet size:"
 msgstr "Paketgrösse:"
 
-#: src/modules/options/optw_ircoutput.cpp:50
+#: src/modules/options/optw_ircoutput.cpp:51
 msgid "Paranoic"
 msgstr "Paranoid"
 
@@ -3197,20 +3234,20 @@ msgstr "Kindfenster-Undurchsichtigkeit:"
 msgid "Part message:"
 msgstr "Verlassen-Nachricht:"
 
-#: src/modules/options/optw_servers.cpp:503
+#: src/modules/options/optw_servers.cpp:505
 #: src/modules/options/optw_proxy.cpp:116
 msgid "Password:"
 msgstr "Passwort:"
 
-#: src/modules/options/optw_servers.cpp:1119
+#: src/modules/options/optw_servers.cpp:1123
 msgid "Paste Server"
 msgstr "Server einfügen"
 
-#: src/modules/options/optw_mediatypes.cpp:73
+#: src/modules/options/optw_mediatypes.cpp:75
 msgid "Pattern"
 msgstr "Muster"
 
-#: src/modules/options/optw_connection.cpp:164
+#: src/modules/options/optw_connection.cpp:166
 msgid "Pick Random IP Address for Round-Robin Servers"
 msgstr "Zufällige IP-Adresse für Round-Robin-Server wählen"
 
@@ -3231,74 +3268,74 @@ msgstr ""
 "durchsuchen.<br>Die volle URL des Bildes (inklusive <b>http://</b>) kann "
 "manuell eingeben werden."
 
-#: src/modules/options/optw_query.cpp:76
+#: src/modules/options/optw_query.cpp:78
 msgid "Popup notifier on new query message"
 msgstr "Benachrichtungsfenster bei neuer Anfrage-Nachricht anzeigen"
 
-#: src/modules/options/optw_notify.cpp:52
+#: src/modules/options/optw_notify.cpp:54
 msgid "Popup notifier when users are going online"
 msgstr "Benachrichtigung-Popup, wenn Benutzer online geht"
 
-#: src/modules/options/optw_highlighting.cpp:60
+#: src/modules/options/optw_highlighting.cpp:63
 msgid "Popup the notifier window on highlighted messages"
 msgstr "Benachrichtungsfenster bei neuer Anfrage-Nachricht anzeigen"
 
-#: src/modules/options/optw_servers.cpp:560
+#: src/modules/options/optw_servers.cpp:562
 #: src/modules/options/optw_proxy.cpp:110
 msgid "Port:"
 msgstr "Port:"
 
-#: src/modules/options/optw_messages.cpp:111
+#: src/modules/options/optw_messages.cpp:112
 msgid "Postfix:"
 msgstr "Nachspann:"
 
-#: src/modules/options/optw_dcc.cpp:333
+#: src/modules/options/optw_dcc.cpp:338
 msgid "Pre-buffer size:"
 msgstr "Vorpuffergrösse:"
 
-#: src/modules/options/optw_interfacefeatures.cpp:58
+#: src/modules/options/optw_interfacefeatures.cpp:59
 msgid "Preferences"
 msgstr "Einstellungen"
 
-#: src/modules/options/optw_messages.cpp:106
+#: src/modules/options/optw_messages.cpp:107
 msgid "Prefix:"
 msgstr "Vorwahl:"
 
-#: src/modules/options/optw_irc.cpp:77
+#: src/modules/options/optw_irc.cpp:78
 msgid "Prepend avatar info to realname"
 msgstr "Avatar-Informationen dem Realnamen voranstellen"
 
-#: src/modules/options/optw_irc.cpp:76
+#: src/modules/options/optw_irc.cpp:77
 msgid "Prepend gender info to realname"
 msgstr "Geschlechtsinformationen vor Realnamen stellen"
 
-#: src/modules/options/optw_connection.cpp:114
+#: src/modules/options/optw_connection.cpp:116
 msgid "Private Key"
 msgstr "Privater Schlüssel"
 
-#: src/modules/options/optw_connection.cpp:117
+#: src/modules/options/optw_connection.cpp:119
 msgid "Private key location:"
 msgstr "Ort des privaten SSL-Schlüssels:"
 
-#: src/modules/options/optw_connection.cpp:120
+#: src/modules/options/optw_connection.cpp:122
 msgid "Private key password:"
 msgstr "Passwort für privaten SSL-Schlüssel:"
 
-#: src/modules/options/optw_query.cpp:39
-#: src/modules/options/optw_antispam.cpp:37
+#: src/modules/options/optw_query.cpp:41
+#: src/modules/options/optw_antispam.cpp:38
 msgid "Private messages"
 msgstr "Private Nachrichten"
 
-#: src/modules/options/optw_query.cpp:46
-#: src/modules/options/optw_antispam.cpp:39
+#: src/modules/options/optw_query.cpp:48
+#: src/modules/options/optw_antispam.cpp:40
 msgid "Private notices"
 msgstr "Private Notizen"
 
-#: src/modules/options/optw_ignore.cpp:37
+#: src/modules/options/optw_ignore.cpp:38
 msgid "Private/channel messages"
 msgstr "Private Nachrichen/Kanalnachrichten"
 
-#: src/modules/options/optw_ignore.cpp:38
+#: src/modules/options/optw_ignore.cpp:39
 msgid "Private/channel notices"
 msgstr "Private Notiz/Kanalnotiz"
 
@@ -3306,13 +3343,13 @@ msgstr "Private Notiz/Kanalnotiz"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/modules/options/optw_taskbar.cpp:89
-#: src/modules/options/optw_taskbar.cpp:240
+#: src/modules/options/optw_taskbar.cpp:94
+#: src/modules/options/optw_taskbar.cpp:252
 msgid "Progress bar color:"
 msgstr "Farbe der Fortschrittsleiste:"
 
-#: src/modules/options/optw_servers.cpp:127
-#: src/modules/options/optw_servers.cpp:492
+#: src/modules/options/optw_servers.cpp:128
+#: src/modules/options/optw_servers.cpp:494
 msgid "Properties"
 msgstr "Eigenschaften"
 
@@ -3332,7 +3369,7 @@ msgstr "Proxy"
 msgid "Proxy Hosts"
 msgstr "Proxyhosts"
 
-#: src/modules/options/optw_servers.cpp:738
+#: src/modules/options/optw_servers.cpp:740
 msgid "Proxy server:"
 msgstr "Proxy-Server:"
 
@@ -3349,11 +3386,11 @@ msgstr ""
 msgid "Query"
 msgstr "Anfrage"
 
-#: src/modules/options/optw_logging.cpp:38
+#: src/modules/options/optw_logging.cpp:40
 msgid "Query windows"
 msgstr "Anfragefenster"
 
-#: src/modules/options/optw_ircoutput.cpp:47
+#: src/modules/options/optw_ircoutput.cpp:48
 msgid "Quiet"
 msgstr "Leise"
 
@@ -3361,7 +3398,7 @@ msgstr "Leise"
 msgid "Quit message:"
 msgstr "Beenden-Nachricht:"
 
-#: src/modules/options/optw_mediatypes.cpp:145
+#: src/modules/options/optw_mediatypes.cpp:147
 msgid "Re&move"
 msgstr "&Löschen"
 
@@ -3369,12 +3406,12 @@ msgstr "&Löschen"
 msgid "Re&move Proxy"
 msgstr "Proxy &löschen"
 
-#: src/modules/options/optw_servers.cpp:1451
+#: src/modules/options/optw_servers.cpp:1455
 msgid "Re&move Server"
 msgstr "Server &löschen"
 
-#: src/modules/options/optw_servers.cpp:148
-#: src/modules/options/optw_servers.cpp:518
+#: src/modules/options/optw_servers.cpp:149
+#: src/modules/options/optw_servers.cpp:520
 #: src/modules/options/optw_identity.cpp:330
 msgid "Real name:"
 msgstr "Wirklicher Name:"
@@ -3383,15 +3420,15 @@ msgstr "Wirklicher Name:"
 msgid "Registered NickName"
 msgstr "Registrierter NickName"
 
-#: src/modules/options/optw_interfacefeatures.cpp:59
+#: src/modules/options/optw_interfacefeatures.cpp:60
 msgid "Registered Users"
 msgstr "Registrierte Benutzer"
 
-#: src/modules/options/optw_irc.cpp:103
+#: src/modules/options/optw_irc.cpp:104
 msgid "Rejoin channel"
 msgstr "Kanal erneut betreten"
 
-#: src/modules/options/optw_connection.cpp:56
+#: src/modules/options/optw_connection.cpp:57
 msgid "Rejoin channels after reconnect"
 msgstr "Kanäle nach neuverbinden erneut betreten"
 
@@ -3399,23 +3436,23 @@ msgstr "Kanäle nach neuverbinden erneut betreten"
 msgid "Relay errors and warnings to debug window"
 msgstr "Weitergabefehler (relay errors) und Warnungen zum Debug-Fenster"
 
-#: src/modules/options/optw_avatar.cpp:87
+#: src/modules/options/optw_avatar.cpp:89
 msgid "Remember avatars for registered users"
 msgstr "Avatare für registrierte Benutzer zwischenspeichern"
 
-#: src/modules/options/optw_interfacefeatures.cpp:45
+#: src/modules/options/optw_interfacefeatures.cpp:46
 msgid "Remember window properties"
 msgstr "Fenstereigenschaften speichern"
 
-#: src/modules/options/optw_mediatypes.cpp:122
+#: src/modules/options/optw_mediatypes.cpp:124
 msgid "Remote open command:"
 msgstr "Entferntes Öffnen-Kommando:"
 
-#: src/modules/options/optw_servers.cpp:1447
+#: src/modules/options/optw_servers.cpp:1451
 msgid "Remove Network"
 msgstr "Netzwerk löschen"
 
-#: src/modules/options/optw_servers.cpp:1102
+#: src/modules/options/optw_servers.cpp:1106
 msgid "Remove Network/Server"
 msgstr "Netzwerk/Server löschen"
 
@@ -3423,34 +3460,34 @@ msgstr "Netzwerk/Server löschen"
 msgid "Remove Proxy"
 msgstr "Proxy löschen"
 
-#: src/modules/options/optw_connection.cpp:59
+#: src/modules/options/optw_connection.cpp:60
 msgid "Reopen queries after reconnect"
 msgstr "Anfragen nach neuverbinden erneut öffnen"
 
-#: src/modules/options/optw_dcc.cpp:220
+#: src/modules/options/optw_dcc.cpp:225
 msgid "Replace spaces with underscores in outgoing filenames"
 msgstr "Ersetze Leerzeichen mit Unterstrichen in ausgehenden Dateinamen"
 
-#: src/modules/options/optw_avatar.cpp:63
+#: src/modules/options/optw_avatar.cpp:65
 msgid "Request CTCP"
 msgstr "CTCP anfordern"
 
-#: src/modules/options/optw_avatar.cpp:64
+#: src/modules/options/optw_avatar.cpp:66
 msgid "Request missing avatars"
 msgstr "Fehlende Avatare anfordern"
 
-#: src/modules/options/optw_highlighting.cpp:78
+#: src/modules/options/optw_highlighting.cpp:82
 msgid "Restrict alert"
 msgstr "Alarm einschränken"
 
-#: src/modules/options/optw_taskbar.cpp:125
-#: src/modules/options/optw_input.cpp:54
+#: src/modules/options/optw_taskbar.cpp:132
+#: src/modules/options/optw_input.cpp:55
 #: src/modules/options/optw_userlist.cpp:139
 #: src/modules/options/optw_ircview.cpp:62
 msgid "Right"
 msgstr "Rechts"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:98
+#: src/modules/options/optw_ctcpfloodprotection.cpp:100
 msgid "SOURCE"
 msgstr "SOURCE"
 
@@ -3458,31 +3495,31 @@ msgstr "SOURCE"
 msgid "SSL"
 msgstr "SSL"
 
-#: src/modules/options/optw_messages.cpp:430
+#: src/modules/options/optw_messages.cpp:431
 msgid "Save As..."
 msgstr "Speichern unter..."
 
-#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:179
 msgid "Save Location"
 msgstr "Speicherort"
 
-#: src/modules/options/optw_mediatypes.cpp:108
+#: src/modules/options/optw_mediatypes.cpp:110
 msgid "Save path:"
 msgstr "Speicherpfad:"
 
-#: src/modules/options/optw_avatar.cpp:40
+#: src/modules/options/optw_avatar.cpp:42
 msgid "Scale avatar images in userlist (recommended)"
 msgstr "Avatarbilder in Benutzerliste skalieren (empfohlen)"
 
-#: src/modules/options/optw_avatar.cpp:55
+#: src/modules/options/optw_avatar.cpp:57
 msgid "Scale avatar images on image load"
 msgstr "Avatarbilder beim Laden skalieren"
 
-#: src/modules/options/optw_avatar.cpp:39
+#: src/modules/options/optw_avatar.cpp:41
 msgid "Scaling in userlist"
 msgstr "In Benutzerliste skalieren"
 
-#: src/modules/options/optw_avatar.cpp:54
+#: src/modules/options/optw_avatar.cpp:56
 msgid "Scaling on load (and in user tooltips)"
 msgstr "Skalieren beim Laden (und in Benutzer-Tooltips)"
 
@@ -3490,34 +3527,34 @@ msgstr "Skalieren beim Laden (und in Benutzer-Tooltips)"
 msgid "Scripting Engine"
 msgstr "Skripte"
 
-#: src/modules/options/optw_tray.cpp:45
+#: src/modules/options/optw_tray.cpp:47
 msgid "Select message levels to notify"
 msgstr "Wähle Level zur Benachrichtigung aus"
 
-#: src/modules/options/optw_taskbar.cpp:82
-#: src/modules/options/optw_taskbar.cpp:111
+#: src/modules/options/optw_taskbar.cpp:87
+#: src/modules/options/optw_taskbar.cpp:118
 #: src/modules/options/optw_userlist.cpp:53
 #: src/modules/options/optw_userlist.cpp:124
 msgid "Selected:"
 msgstr "Ausgewählt:"
 
-#: src/modules/options/optw_input.cpp:37
+#: src/modules/options/optw_input.cpp:38
 msgid "Selection background color"
 msgstr "Ausgewählte Hintergrundfarbe"
 
-#: src/modules/options/optw_input.cpp:38
+#: src/modules/options/optw_input.cpp:39
 msgid "Selection foreground color"
 msgstr "Ausgewählte Vordergrundfarbe"
 
-#: src/modules/options/optw_dcc.cpp:209
+#: src/modules/options/optw_dcc.cpp:214
 msgid "Send ACK for byte 0"
 msgstr "ACK für Byte 0 senden"
 
-#: src/modules/options/optw_dcc.cpp:99
+#: src/modules/options/optw_dcc.cpp:101
 msgid "Send a fixed address in requests"
 msgstr "Feste Adresse in Anfragen senden"
 
-#: src/modules/options/optw_dcc.cpp:104
+#: src/modules/options/optw_dcc.cpp:106
 msgid "Send address/interface:"
 msgstr "Adresse/Schnittstelle senden:"
 
@@ -3525,16 +3562,16 @@ msgstr "Adresse/Schnittstelle senden:"
 msgid "Send unknown commands as /RAW"
 msgstr "Unbekannte Kommandos als /RAW senden"
 
-#: src/modules/options/optw_servers.cpp:1057
+#: src/modules/options/optw_servers.cpp:1061
 msgid "Server"
 msgstr "Server"
 
-#: src/modules/options/optw_servers.cpp:463
+#: src/modules/options/optw_servers.cpp:465
 msgid "Server Details"
 msgstr "Serverdetails"
 
-#: src/modules/options/optw_servers.cpp:156
-#: src/modules/options/optw_servers.cpp:642
+#: src/modules/options/optw_servers.cpp:157
+#: src/modules/options/optw_servers.cpp:644
 msgid "Server Encoding:"
 msgstr "Serverkodierung:"
 
@@ -3543,42 +3580,42 @@ msgstr "Serverkodierung:"
 msgid "Server mask"
 msgstr "Servermaske"
 
-#: src/modules/options/optw_ircoutput.cpp:63
+#: src/modules/options/optw_ircoutput.cpp:64
 msgid "Server notices"
 msgstr "Servernotizen"
 
-#: src/modules/options/optw_servers.cpp:539
+#: src/modules/options/optw_servers.cpp:541
 #: src/modules/options/optw_identity.cpp:643
 msgid "Server notices (+s)"
 msgstr "Servernotizen (+s)"
 
-#: src/modules/options/optw_ircoutput.cpp:62
+#: src/modules/options/optw_ircoutput.cpp:63
 msgid "Server replies"
 msgstr "Serverantworten"
 
-#: src/modules/options/optw_servers.cpp:1136
-#: src/modules/options/optw_servers.cpp:1341
+#: src/modules/options/optw_servers.cpp:1140
+#: src/modules/options/optw_servers.cpp:1345
 msgid "Server:"
 msgstr "Server:"
 
-#: src/modules/options/optw_interfacefeatures.cpp:61
+#: src/modules/options/optw_interfacefeatures.cpp:62
 #: src/modules/options/optw_servers.h:150
 msgid "Servers"
 msgstr "Server"
 
-#: src/modules/options/optw_connection.cpp:218
+#: src/modules/options/optw_connection.cpp:221
 msgid "Service port:"
 msgstr "Dienstport:"
 
-#: src/modules/options/optw_taskbar.cpp:243
+#: src/modules/options/optw_taskbar.cpp:255
 msgid "Set maximum button width"
 msgstr "Maximale Schaltflächenbreite:"
 
-#: src/modules/options/optw_taskbar.cpp:46
+#: src/modules/options/optw_taskbar.cpp:48
 msgid "Show IRC context indicator in taskbar"
 msgstr "IRC-Kontextindikator in Fensterleiste anzeigen"
 
-#: src/modules/options/optw_taskbar.cpp:38
+#: src/modules/options/optw_taskbar.cpp:40
 msgid "Show activity meter in taskbar"
 msgstr "Aktivitätsmeter in Fensterleiste anzeigen"
 
@@ -3586,23 +3623,23 @@ msgstr "Aktivitätsmeter in Fensterleiste anzeigen"
 msgid "Show avatars in userlist"
 msgstr "Avatars in Benutzerliste anzeigen"
 
-#: src/modules/options/optw_messages.cpp:89
+#: src/modules/options/optw_messages.cpp:90
 msgid "Show channel mode prefix"
 msgstr "Kanalmodus-Vorspann anzeigen"
 
-#: src/modules/options/optw_irc.cpp:181
+#: src/modules/options/optw_irc.cpp:182
 msgid "Show channel sync time"
 msgstr "Kanalsynchronisationszeit anzeigen"
 
-#: src/modules/options/optw_ircoutput.cpp:70
+#: src/modules/options/optw_ircoutput.cpp:71
 msgid "Show compact mode changes"
 msgstr "Kompakte Modus-Änderungen anzeigen"
 
-#: src/modules/options/optw_ctcp.cpp:66
+#: src/modules/options/optw_ctcp.cpp:68
 msgid "Show dialog for CTCP page requests"
 msgstr "Dialog für CTCP Page-Anfragen anzeigen"
 
-#: src/modules/options/optw_ircoutput.cpp:67
+#: src/modules/options/optw_ircoutput.cpp:68
 msgid "Show extended server information"
 msgstr "Erweiterte Serverinformationen anzeigen"
 
@@ -3610,7 +3647,7 @@ msgstr "Erweiterte Serverinformationen anzeigen"
 msgid "Show gender icons"
 msgstr "Geschlechtsicons anzeigen:"
 
-#: src/modules/options/optw_taskbar.cpp:211
+#: src/modules/options/optw_taskbar.cpp:220
 msgid "Show header"
 msgstr "Kopfzeilen (header) anzeigen"
 
@@ -3618,11 +3655,11 @@ msgstr "Kopfzeilen (header) anzeigen"
 msgid "Show icons in popup menus"
 msgstr "Symbole in Aufklappmenüs anzeigen"
 
-#: src/modules/options/optw_ircoutput.cpp:56
+#: src/modules/options/optw_ircoutput.cpp:57
 msgid "Show in active window"
 msgstr "Im aktiven Fenster anzeigen"
 
-#: src/modules/options/optw_query.cpp:81
+#: src/modules/options/optw_query.cpp:83
 msgid "Show information about query target at the top of the query"
 msgstr ""
 "Zeige Informationen über die Gegenseite der Anfrage (Query) oben im "
@@ -3632,39 +3669,39 @@ msgstr ""
 msgid "Show label with userlist stats"
 msgstr "Label mit Benutzerlistenstatistik anzeigen"
 
-#: src/modules/options/optw_lag.cpp:60
+#: src/modules/options/optw_lag.cpp:61
 msgid "Show lag in IRC context display"
 msgstr "Lag in IRC-Kontextanzeige anzeigen"
 
-#: src/modules/options/optw_messages.cpp:78
+#: src/modules/options/optw_messages.cpp:79
 msgid "Show message icons"
 msgstr "Nachrichtensymbole anzeigen"
 
-#: src/modules/options/optw_irc.cpp:53
+#: src/modules/options/optw_irc.cpp:54
 msgid "Show network name in console taskbar entry"
 msgstr "Netzwerknamen in Konsole-Taskbar-Eintrag anzeigen"
 
-#: src/modules/options/optw_messages.cpp:87
+#: src/modules/options/optw_messages.cpp:88
 msgid "Show nicknames in bold"
 msgstr "Spitznamen fett anzeigen"
 
-#: src/modules/options/optw_notify.cpp:42
+#: src/modules/options/optw_notify.cpp:44
 msgid "Show notifications in active window"
 msgstr "Benachrichtigungsliste im aktiven Fenster anzeigen"
 
-#: src/modules/options/optw_ircoutput.cpp:69
+#: src/modules/options/optw_ircoutput.cpp:70
 msgid "Show own parts in the console"
 msgstr "Eigenes Verlassen von Kanälen in Console anzeigen"
 
-#: src/modules/options/optw_ircoutput.cpp:68
+#: src/modules/options/optw_ircoutput.cpp:69
 msgid "Show server pings"
 msgstr "Zeige Server Pings"
 
-#: src/modules/options/optw_ctcp.cpp:64
+#: src/modules/options/optw_ctcp.cpp:66
 msgid "Show the CTCP replies in the active window"
 msgstr "CTCP-Antworten im aktiven Fenster anzeigen"
 
-#: src/modules/options/optw_servers.cpp:1178
+#: src/modules/options/optw_servers.cpp:1182
 msgid "Show this dialog at startup"
 msgstr "Diesen Dialog beim Start anzeigen"
 
@@ -3672,7 +3709,7 @@ msgstr "Diesen Dialog beim Start anzeigen"
 msgid "Show timestamp"
 msgstr "Zeitstempel anzeigen"
 
-#: src/modules/options/optw_messages.cpp:88
+#: src/modules/options/optw_messages.cpp:89
 msgid "Show user and host"
 msgstr "Benutzername und Host anzeigen"
 
@@ -3684,11 +3721,11 @@ msgstr "Kanalaktivitätsanzeiger für Benutzer anzeigen"
 msgid "Show user channel icons"
 msgstr "Benutzerkanalsymbole anzeigen"
 
-#: src/modules/options/optw_taskbar.cpp:37
+#: src/modules/options/optw_taskbar.cpp:39
 msgid "Show window icons in taskbar"
 msgstr "Fenstersymbole in Fensterleiste anzeigen"
 
-#: src/modules/options/optw_antispam.cpp:42
+#: src/modules/options/optw_antispam.cpp:43
 msgid "Silent anti-spam (no warnings)"
 msgstr "Stiller Antispam (keine Warnungen)"
 
@@ -3696,12 +3733,16 @@ msgstr "Stiller Antispam (keine Warnungen)"
 msgid "Socket"
 msgstr "Socket"
 
-#: src/modules/options/optw_dcc.cpp:177
+#: src/modules/options/optw_ircview.cpp:187
+msgid "SolidLine"
+msgstr ""
+
+#: src/modules/options/optw_dcc.cpp:181
 msgid "Sort saved files by nicknames (create subfolders)"
 msgstr ""
 "Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
 
-#: src/modules/options/optw_taskbar.cpp:36
+#: src/modules/options/optw_taskbar.cpp:38
 msgid "Sort windows by name"
 msgstr "Fenster nach Name sortieren"
 
@@ -3709,12 +3750,12 @@ msgstr "Fenster nach Name sortieren"
 msgid "Sound"
 msgstr "Klänge"
 
-#: src/modules/options/optw_sound.cpp:59
+#: src/modules/options/optw_sound.cpp:60
 #: src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "Klangsystem"
 
-#: src/modules/options/optw_dcc.cpp:330
+#: src/modules/options/optw_dcc.cpp:335
 msgid "Sound device:"
 msgstr "Klanggerät:"
 
@@ -3722,11 +3763,11 @@ msgstr "Klanggerät:"
 msgid "Sounds"
 msgstr "Klänge"
 
-#: src/modules/options/optw_logging.cpp:45
+#: src/modules/options/optw_logging.cpp:47
 msgid "Strip colors in logs"
 msgstr "Farben in Logdateien entfernen"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:99
+#: src/modules/options/optw_ctcpfloodprotection.cpp:101
 msgid "TIME"
 msgstr "TIME"
 
@@ -3738,8 +3779,8 @@ msgstr "Fensterleiste"
 msgid "Taskbar Alert"
 msgstr "Fensterleiste-Alarm"
 
-#: src/modules/options/optw_sound.cpp:70
-#: src/modules/options/optw_sound.cpp:85
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Test"
 
@@ -3748,8 +3789,8 @@ msgstr "Test"
 msgid "Text"
 msgstr "Text"
 
-#: src/modules/options/optw_servers.cpp:168
-#: src/modules/options/optw_servers.cpp:654
+#: src/modules/options/optw_servers.cpp:169
+#: src/modules/options/optw_servers.cpp:656
 msgid "Text Encoding:"
 msgstr "Textkodierung:"
 
@@ -3757,8 +3798,8 @@ msgstr "Textkodierung:"
 msgid "Text icons"
 msgstr "Emoticons"
 
-#: src/modules/options/optw_taskbar.cpp:79
-#: src/modules/options/optw_taskbar.cpp:232
+#: src/modules/options/optw_taskbar.cpp:84
+#: src/modules/options/optw_taskbar.cpp:244
 msgid "Text/Alert Colors"
 msgstr "Text-/Alarmfarben"
 
@@ -3797,20 +3838,20 @@ msgstr ""
 "Performance zu verbessern. Du *solltest* es manuell auf eine<br>vernünftige "
 "Größe skalieren (z. B. 800x600), oder ein anderes Bild wählen."
 
-#: src/modules/options/dialog.cpp:127
+#: src/modules/options/dialog.cpp:130
 msgid "Theme Preferences"
 msgstr "Themeneinstellungen"
 
-#: src/modules/options/optw_sound.cpp:96
+#: src/modules/options/optw_sound.cpp:97
 msgid "This allows you to select encoding of mp3 tags."
 msgstr ""
 "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
-#: src/modules/options/optw_sound.cpp:119
+#: src/modules/options/optw_sound.cpp:120
 msgid "This allows you to select encoding of winamp messages."
 msgstr "Dies erlaubt das Auswählen der Kodierung der Winamp-Meldungen."
 
-#: src/modules/options/optw_sound.cpp:75
+#: src/modules/options/optw_sound.cpp:76
 msgid ""
 "This allows you to select the preferred media player to be used with the "
 "mediaplayer.* module commands and functions."
@@ -3818,18 +3859,18 @@ msgstr ""
 "Dies erlaubt den bevorzugten Medienspieler auszuwählen, der mit dem "
 "mediaplayer-Modulkommandos benutzt wird."
 
-#: src/modules/options/optw_sound.cpp:61
+#: src/modules/options/optw_sound.cpp:62
 msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr ""
 "Dies erlaubt das Auswählen des Klangsystems, dass von KVIrc benutzt werden "
 "soll"
 
-#: src/modules/options/optw_servers.cpp:280
+#: src/modules/options/optw_servers.cpp:281
 #: src/modules/options/optw_nickserv.cpp:234
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Dies aktiviert die automatische Indentifikation mit NickServ"
 
-#: src/modules/options/dialog.cpp:132
+#: src/modules/options/dialog.cpp:135
 msgid ""
 "This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
 "to navigate through the option pages. The text box in the bottom left corner "
@@ -3841,7 +3882,7 @@ msgstr ""
 "unteren Ecke ein eine kleine Suchmaschine. Sie wird die Seiten hervorheben, "
 "welche Einstellungen bezüglich des eingegebenen Suchbegriffes haben."
 
-#: src/modules/options/optw_connection.cpp:126
+#: src/modules/options/optw_connection.cpp:127
 msgid "This executable has no SSL support."
 msgstr "Diese Version von KVIrc hat keine SSL-Unterstützung"
 
@@ -3852,7 +3893,7 @@ msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
 
-#: src/modules/options/optw_notify.cpp:109
+#: src/modules/options/optw_notify.cpp:113
 msgid ""
 "This is an option for the impatient: it allows to forcibly and permanently "
 "disable the notifier window. Please note that if this option is activated "
@@ -3925,7 +3966,7 @@ msgstr ""
 "password\" und wird gesendet, wenn der NickServ die Authorisierung "
 "anfordert. Es können *- und ?-Platzhalter benutzt werden."
 
-#: src/modules/options/optw_avatar.cpp:105
+#: src/modules/options/optw_avatar.cpp:107
 msgid ""
 "This option will cause KVIrc to ignore channel CTCP AVATAR requests when you "
 "have no avatar set. This is usually a good practice since it helps in "
@@ -3944,7 +3985,7 @@ msgstr ""
 "Diese Option erzwingt eine statische Schrift für alle Elemente, die keine "
 "eigene Schrifteneinstellung haben"
 
-#: src/modules/options/optw_protection.cpp:40
+#: src/modules/options/optw_protection.cpp:41
 msgid ""
 "This section contains irc protection tools<br><p>like<b> flood, ignore, "
 "antispam. </b> </p>"
@@ -3977,10 +4018,10 @@ msgstr ""
 "Anzeigen der CTRL+I-Escape-Sequenzen und eventuell auch bei den Emoticons "
 "benutzen."
 
-#: src/modules/options/optw_taskbar.cpp:123
-#: src/modules/options/optw_taskbar.cpp:128
-#: src/modules/options/optw_input.cpp:52
-#: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_taskbar.cpp:130
+#: src/modules/options/optw_taskbar.cpp:135
+#: src/modules/options/optw_input.cpp:53
+#: src/modules/options/optw_input.cpp:58
 #: src/modules/options/optw_userlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:142
 #: src/modules/options/optw_ircview.cpp:60
@@ -3988,7 +4029,7 @@ msgstr ""
 msgid "Tile"
 msgstr "Anordnung"
 
-#: src/modules/options/optw_connection.cpp:141
+#: src/modules/options/optw_connection.cpp:143
 msgid "Timeout Values"
 msgstr "Zeitlimit-Werte"
 
@@ -4008,14 +4049,14 @@ msgstr "Werkzeugleisten-Miniprogramme"
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: src/modules/options/optw_taskbar.cpp:129
-#: src/modules/options/optw_input.cpp:58
+#: src/modules/options/optw_taskbar.cpp:136
+#: src/modules/options/optw_input.cpp:59
 #: src/modules/options/optw_userlist.cpp:143
 #: src/modules/options/optw_ircview.cpp:66
 msgid "Top"
 msgstr "Oben"
 
-#: src/modules/options/optw_ircview.cpp:156
+#: src/modules/options/optw_ircview.cpp:173
 msgid "Track last read text line"
 msgstr "Zuletzt gelesene Textzeile verfolgen"
 
@@ -4028,7 +4069,7 @@ msgstr "Folie"
 msgid "Transparency blend image:"
 msgstr "Transparenz-Mischungsbild:"
 
-#: src/modules/options/optw_messages.cpp:304
+#: src/modules/options/optw_messages.cpp:305
 msgid "Transparent"
 msgstr "Transparent"
 
@@ -4040,11 +4081,11 @@ msgstr "Tray icon"
 msgid "Tree Taskbar"
 msgstr "Baumfensterleiste"
 
-#: src/modules/options/optw_lag.cpp:52
+#: src/modules/options/optw_lag.cpp:53
 msgid "Trigger event if lag exceeds:"
 msgstr "Trigger-Ereignis wenn Lag überschritten wird:"
 
-#: src/modules/options/optw_dcc.cpp:244
+#: src/modules/options/optw_dcc.cpp:249
 msgid "Tweaks"
 msgstr "Justierungen"
 
@@ -4052,23 +4093,23 @@ msgstr "Justierungen"
 msgid "URL handlers"
 msgstr "URL"
 
-#: src/modules/options/optw_notify.cpp:88
+#: src/modules/options/optw_notify.cpp:90
 msgid "USERHOST delay (in seconds)"
 msgstr "USERHOST-Verzögerung (in Sekunden)"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:96
+#: src/modules/options/optw_ctcpfloodprotection.cpp:98
 msgid "USERINFO"
 msgstr "USERINFO"
 
-#: src/modules/options/optw_textencoding.cpp:156
+#: src/modules/options/optw_textencoding.cpp:157
 msgid "Unable to write language information to"
 msgstr "Kann Sprachinformationen nicht schreiben nach"
 
-#: src/modules/options/optw_urlhandlers.cpp:54
+#: src/modules/options/optw_urlhandlers.cpp:56
 msgid "Unknown protocol handler command:"
 msgstr "Unbekanntes Protokoll-Handler-Kommando:"
 
-#: src/modules/options/optw_servers.cpp:1371
+#: src/modules/options/optw_servers.cpp:1375
 msgid "UnknownNet"
 msgstr "Unbekanntes Netz"
 
@@ -4077,15 +4118,15 @@ msgstr "Unbekanntes Netz"
 msgid "Unspecified"
 msgstr "Nicht angegeben"
 
-#: src/modules/options/optw_dcc.cpp:118
+#: src/modules/options/optw_dcc.cpp:120
 msgid "Use \"broken bouncer hack\" to detect address"
 msgstr "\"Hack für fehlerhaften Bouncer\" zum Erkennen der Adresse benutzen"
 
-#: src/modules/options/optw_notify.cpp:66
+#: src/modules/options/optw_notify.cpp:68
 msgid "Use \"smart\" notify list manager"
 msgstr "\"Intelligenten\"-Benachrichtungslistenmanager benutzen"
 
-#: src/modules/options/optw_servers.cpp:609
+#: src/modules/options/optw_servers.cpp:611
 #: src/modules/options/optw_proxy.cpp:126
 msgid "Use IPv6 protocol"
 msgstr "IPv6-Protokoll benutzen"
@@ -4094,32 +4135,32 @@ msgstr "IPv6-Protokoll benutzen"
 msgid "Use KDE desktop for transparency"
 msgstr "KDE-Arbeitsfläche für Transparenz benutzen"
 
-#: src/modules/options/optw_textencoding.cpp:46
-#: src/modules/options/optw_textencoding.cpp:54
-#: src/modules/options/optw_sound.cpp:101
-#: src/modules/options/optw_sound.cpp:125
+#: src/modules/options/optw_textencoding.cpp:47
+#: src/modules/options/optw_textencoding.cpp:55
+#: src/modules/options/optw_sound.cpp:102
+#: src/modules/options/optw_sound.cpp:126
 msgid "Use Language Encoding"
 msgstr "Sprachkodierung benutzen"
 
-#: src/modules/options/optw_servers.cpp:670
-#: src/modules/options/optw_servers.cpp:671
+#: src/modules/options/optw_servers.cpp:672
+#: src/modules/options/optw_servers.cpp:673
 msgid "Use Network Encoding"
 msgstr "Netzwerkkodierung benutzen"
 
-#: src/modules/options/optw_connection.cpp:105
+#: src/modules/options/optw_connection.cpp:107
 msgid "Use SSL certificate (PEM format only)"
 msgstr "SSL-Zertifikat benutzen (nur PEM-Format)"
 
-#: src/modules/options/optw_connection.cpp:115
+#: src/modules/options/optw_connection.cpp:117
 msgid "Use SSL private key"
 msgstr "Privaten SSL-Schlüssel benutzen"
 
-#: src/modules/options/optw_servers.cpp:622
+#: src/modules/options/optw_servers.cpp:624
 msgid "Use SSL protocol"
 msgstr "SSL-Protokoll benutzen"
 
-#: src/modules/options/optw_servers.cpp:184
 #: src/modules/options/optw_servers.cpp:185
+#: src/modules/options/optw_servers.cpp:186
 msgid "Use System Encoding"
 msgstr "Systemkodierung benutzen"
 
@@ -4127,7 +4168,7 @@ msgstr "Systemkodierung benutzen"
 msgid "Use UTC time for timestamp"
 msgstr "UTC-Zeit für Zeitstempel benutzen"
 
-#: src/modules/options/optw_away.cpp:44
+#: src/modules/options/optw_away.cpp:46
 msgid "Use automatic nickname ([5 letters]AWAY)"
 msgstr ""
 "Automatisch gernerierten \"Abwesend\"-Spitznamen benutzen ([5 Buchstaben]"
@@ -4137,15 +4178,15 @@ msgstr ""
 msgid "Use avatar"
 msgstr "Avatar benutzen"
 
-#: src/modules/options/optw_input.cpp:143
+#: src/modules/options/optw_input.cpp:144
 msgid "Use bash-like nick completion"
 msgstr "Bash-ähnliche Spitznamenkomplettierung benutzen"
 
-#: src/modules/options/optw_highlighting.cpp:89
+#: src/modules/options/optw_highlighting.cpp:93
 msgid "Use custom alert level"
 msgstr "Benutzerdefinierte Alarmstufe benutzen"
 
-#: src/modules/options/optw_servers.cpp:527
+#: src/modules/options/optw_servers.cpp:529
 msgid "Use default user mode"
 msgstr "Standard-Benutzermodus benutzen"
 
@@ -4153,15 +4194,15 @@ msgstr "Standard-Benutzermodus benutzen"
 msgid "Use different color for own nick:"
 msgstr "Benutze andere Farbe für eigenen Spitznamen:"
 
-#: src/modules/options/optw_dcc.cpp:246
+#: src/modules/options/optw_dcc.cpp:251
 msgid "Use fast send (send ahead)"
 msgstr "Schnelles Senden benutzen (Voraussenden)"
 
-#: src/modules/options/optw_taskbar.cpp:245
+#: src/modules/options/optw_taskbar.cpp:257
 msgid "Use flat buttons"
 msgstr "Flache Schaltflächen benutzen"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:79
+#: src/modules/options/optw_ctcpfloodprotection.cpp:81
 msgid "Use flood protection (recommended)"
 msgstr "Überflutungsbegrenzung benutzen (empfohlen)"
 
@@ -4173,7 +4214,7 @@ msgstr "Globale Schriftart für Anwendung benutzen"
 msgid "Use line wrap margin"
 msgstr "Umbruchbegrenzung benutzen"
 
-#: src/modules/options/optw_notify.cpp:36
+#: src/modules/options/optw_notify.cpp:38
 msgid "Use online notify list"
 msgstr "Online-Benachrichtigungsliste benutzen"
 
@@ -4181,7 +4222,7 @@ msgstr "Online-Benachrichtigungsliste benutzen"
 msgid "Use proxy"
 msgstr "Proxy benutzen"
 
-#: src/modules/options/optw_messages.cpp:85
+#: src/modules/options/optw_messages.cpp:86
 msgid "Use same colors as in the userlist"
 msgstr "Benutze die gleichen Farben wie in der Benutzerliste"
 
@@ -4189,48 +4230,48 @@ msgstr "Benutze die gleichen Farben wie in der Benutzerliste"
 msgid "Use special color for timestamps"
 msgstr "Benutze spezielle Farbe für Zeitstempel"
 
-#: src/modules/options/optw_urlhandlers.cpp:46
+#: src/modules/options/optw_urlhandlers.cpp:48
 msgid "Use system URL handlers"
 msgstr "Benutze die URL-Handler des Systems"
 
-#: src/modules/options/optw_notify.cpp:71
+#: src/modules/options/optw_notify.cpp:73
 msgid "Use the WATCH method if available"
 msgstr "Die \"WATCH\"-Methode benutzen, wenn verfügbar"
 
-#: src/modules/options/optw_input.cpp:145
+#: src/modules/options/optw_input.cpp:146
 msgid "Use the completion postfix string for the first word only"
 msgstr "Komplettierung des Zeichenkettenendes nur für das erste Wort benutzen"
 
-#: src/modules/options/optw_taskbar.cpp:35
+#: src/modules/options/optw_taskbar.cpp:37
 msgid "Use tree taskbar"
 msgstr "Baumfensterleiste benutzen"
 
-#: src/modules/options/optw_dcc.cpp:72
+#: src/modules/options/optw_dcc.cpp:74
 msgid "Use user-defined address or network interface"
 msgstr "Benutzerdefinierte Adresse oder Netzwerkschnittstelle benutzen"
 
-#: src/modules/options/optw_dcc.cpp:87
+#: src/modules/options/optw_dcc.cpp:89
 msgid "Use user-defined port range"
 msgstr "Benutzerdefinierten Portbereich benutzen"
 
-#: src/modules/options/optw_ignore.cpp:42
+#: src/modules/options/optw_ignore.cpp:43
 msgid "Use verbose ignore (show messages in console)"
 msgstr "Informatives Ignorieren benutzen (Nachrichten in der Konsole zeigen)"
 
-#: src/modules/options/optw_dcc.cpp:50
+#: src/modules/options/optw_dcc.cpp:51
 msgid "Use workaround for firewall"
 msgstr "Workaround für Firewall benutzen"
 
-#: src/modules/options/optw_servers.cpp:524
+#: src/modules/options/optw_servers.cpp:526
 #: src/modules/options/optw_identity.cpp:641
 msgid "User Mode"
 msgstr "Benutzermodus"
 
-#: src/modules/options/optw_away.cpp:38
+#: src/modules/options/optw_away.cpp:40
 msgid "User input exits away mode"
 msgstr "Benutzereingabe beendet \"weg\"-Modus"
 
-#: src/modules/options/optw_messages.cpp:90
+#: src/modules/options/optw_messages.cpp:91
 msgid "User-defined prefix and postfix"
 msgstr "Benutzerdefinierter Vorspann und Nachspann"
 
@@ -4242,18 +4283,18 @@ msgstr "Benutzer-OP:"
 msgid "Userlist"
 msgstr "Benutzerliste"
 
-#: src/modules/options/optw_servers.cpp:131
-#: src/modules/options/optw_servers.cpp:495
+#: src/modules/options/optw_servers.cpp:132
+#: src/modules/options/optw_servers.cpp:497
 #: src/modules/options/optw_identity.cpp:323
 #: src/modules/options/optw_proxy.cpp:114
 msgid "Username:"
 msgstr "Benutzername:"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:97
+#: src/modules/options/optw_ctcpfloodprotection.cpp:99
 msgid "VERSION"
 msgstr "VERSION"
 
-#: src/modules/options/optw_ircoutput.cpp:49
+#: src/modules/options/optw_ircoutput.cpp:50
 msgid "Verbose"
 msgstr "Informativ"
 
@@ -4265,9 +4306,9 @@ msgstr "Ausführlichkeit und Ausgabe"
 msgid "Vertical Alignment:"
 msgstr "Vertikale Ausrichtung:"
 
-#: src/modules/options/optw_taskbar.cpp:119
-#: src/modules/options/optw_input.cpp:48
-#: src/modules/options/optw_ircview.cpp:54
+#: src/modules/options/optw_taskbar.cpp:126
+#: src/modules/options/optw_input.cpp:49
+#: src/modules/options/optw_ircview.cpp:56
 msgid "Vertical align:"
 msgstr "Vertikale Ausrichtung:"
 
@@ -4279,20 +4320,20 @@ msgstr "Voice"
 msgid "Voice:"
 msgstr "Voice:"
 
-#: src/modules/options/optw_dcc.cpp:328
+#: src/modules/options/optw_dcc.cpp:333
 msgid "Volume slider controls PCM, not Master"
 msgstr "Lautstärkeregler kontrolliert PCM, nicht Master"
 
-#: src/modules/options/optw_servers.cpp:543
+#: src/modules/options/optw_servers.cpp:545
 #: src/modules/options/optw_identity.cpp:644
 msgid "Wallops (+w)"
 msgstr "Rundsendenachrichten (+w)"
 
-#: src/modules/options/optw_input.cpp:139
+#: src/modules/options/optw_input.cpp:140
 msgid "Warp cursor at the end of line when browsing history"
 msgstr "Cursor beim Blättern im Verlauf an das Ende der Zeile setzen"
 
-#: src/modules/options/dialog.cpp:142
+#: src/modules/options/dialog.cpp:145
 msgid ""
 "When you have finished, click \"<b>OK</b>\" to accept your changes or "
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
@@ -4302,11 +4343,11 @@ msgstr ""
 "oder \"<b>Abbrechen</b>\", um sie zu verwerfen. Klicke \"<b>Anwenden</b>\" "
 "um die Änderungen zu übernehmen, ohne das Fenster zu schließen."
 
-#: src/modules/options/optw_ircoutput.cpp:59
+#: src/modules/options/optw_ircoutput.cpp:60
 msgid "Whois replies"
 msgstr "Who-Antworten"
 
-#: src/modules/options/optw_sound.cpp:117
+#: src/modules/options/optw_sound.cpp:118
 msgid "Winamp messages ecoding"
 msgstr "Kodierung der Winamp-Meldungen"
 
@@ -4314,15 +4355,15 @@ msgstr "Kodierung der Winamp-Meldungen"
 msgid "Window Captions"
 msgstr "Fenstertitel"
 
-#: src/modules/options/optw_highlighting.cpp:54
+#: src/modules/options/optw_highlighting.cpp:57
 msgid "Word splitters:"
 msgstr "Worttrennzeichen:"
 
-#: src/modules/options/optw_antispam.cpp:43
+#: src/modules/options/optw_antispam.cpp:44
 msgid "Words considered spam:"
 msgstr "Spam-Wörter:"
 
-#: src/modules/options/optw_highlighting.cpp:52
+#: src/modules/options/optw_highlighting.cpp:55
 msgid "Words to highlight:"
 msgstr "Wörter zum Hervorheben:"
 
@@ -4362,11 +4403,11 @@ msgstr ""
 "Hier kannst Du die Kurzformen der Sprachen eintragen, die Du sprichst. Ein "
 "Beispiel wäre \"DE,EN\" für Deutsch und Englisch."
 
-#: src/modules/options/optw_messages.cpp:92
+#: src/modules/options/optw_messages.cpp:93
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
 msgstr "[VORSPANN]Spitzname[!Benutzername@Host][NACHSPANN] Nachricht"
 
-#: src/modules/options/optw_mediatypes.cpp:190
+#: src/modules/options/optw_mediatypes.cpp:192
 msgid "[Unknown Media Type]"
 msgstr "[Unbekannter Medientyp]"
 
@@ -4374,8 +4415,8 @@ msgstr "[Unbekannter Medientyp]"
 msgid "authentication,identify"
 msgstr "Authentifizierung, identifizieren"
 
-#: src/modules/options/optw_dcc.cpp:230
-#: src/modules/options/optw_dcc.cpp:236
+#: src/modules/options/optw_dcc.cpp:235
+#: src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "Bytes/s"
 
@@ -4399,7 +4440,7 @@ msgstr "ctcp,Flut"
 msgid "debug"
 msgstr "Fehlerbehebung"
 
-#: src/modules/options/optw_textencoding.cpp:84
+#: src/modules/options/optw_textencoding.cpp:85
 msgid "en"
 msgstr "en"
 
@@ -4407,7 +4448,7 @@ msgstr "en"
 msgid "file,audio,video,programs"
 msgstr "Datei,Audio,Video,Programme"
 
-#: src/modules/options/optw_servers.cpp:1594
+#: src/modules/options/optw_servers.cpp:1598
 msgid "irc.unknown.net"
 msgstr "irc.unknown.net"
 
@@ -4533,7 +4574,7 @@ msgstr "URL,Programme"
 msgid "userlist,channel"
 msgstr "Benutzerliste,Kanal"
 
-#: src/modules/options/optw_ctcpfloodprotection.cpp:87
+#: src/modules/options/optw_ctcpfloodprotection.cpp:89
 msgid "within:"
 msgstr "in:"
 
@@ -8848,6 +8889,9 @@ msgstr "in:"
 #~ msgid "Manually"
 #~ msgstr "Manuell"
 
+#~ msgid "Mark Line:"
+#~ msgstr "Zeile markieren:"
+
 #~ msgid "Mask"
 #~ msgstr "Maske"
 
@@ -10021,9 +10065,6 @@ msgstr "in:"
 #, fuzzy
 #~ msgid "Parent must be a widget object"
 #~ msgstr "Nicht-Widgetobjekt kann nicht gesetzt werden"
-
-#~ msgid "Parser"
-#~ msgstr "Parser"
 
 #~ msgid "Parser error"
 #~ msgstr "Parserfehler"
@@ -13635,9 +13676,6 @@ msgstr "in:"
 #, fuzzy
 #~ msgid "pix '%Q' doesn't exists"
 #~ msgstr "Das Aktion '%s' existiert nicht"
-
-#~ msgid "pixels"
-#~ msgstr "Pixel"
 
 #~ msgid "possible watch list desync"
 #~ msgstr "mögliche Desynchronisation der watch-Liste"
