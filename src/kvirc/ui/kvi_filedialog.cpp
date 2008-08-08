@@ -135,7 +135,9 @@ bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,c
 	// 190
 	d->setFileMode(KviTalFileDialog::AnyFile);
 	//d->setShowHiddenFiles(showHidden);
-
+#ifdef COMPILE_KDE_SUPPORT
+	d->setKeepLocation(true);
+#endif
 	while(d->exec() == QDialog::Accepted)
 	{
 		QStringList files = d->selectedFiles();
