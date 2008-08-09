@@ -1,0 +1,30 @@
+# CMakeLists for src/modules/upnp
+
+SET(kviupnp_SRCS
+	igdcontrolpoint.cpp
+	layer3forwardingservice.cpp
+	libkviupnp.cpp
+	manager.cpp
+	rootservice.cpp
+	service.cpp
+	ssdpconnection.cpp
+	wanconnectionservice.cpp
+	xmlfunctions.cpp
+)
+
+SET(kviupnp_MOC_HDRS
+	igdcontrolpoint.h
+	layer3forwardingservice.h
+	manager.h
+	rootservice.h
+	service.h
+	ssdpconnection.h
+	wanconnectionservice.h
+	xmlfunctions.h
+)
+
+# After this call, files will be moc'ed to moc_kvi_*.cpp
+QT4_WRAP_CPP(kviupnp_MOC_SRCS ${kviupnp_MOC_HDRS})
+
+SET(kvi_module_name kviupnp)
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
