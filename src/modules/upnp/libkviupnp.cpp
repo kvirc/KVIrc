@@ -66,9 +66,9 @@ static bool upnp_module_cleanup(KviModule *m)
 }
 
 KVIRC_MODULE(
-	"Upnp",                                                 // module name
+	"UPnP",                                                 // module name
 	"4.0.0",                                                // module version
-	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net),",
+	"Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com),",
 	"Universal Plug and Play",
 	upnp_module_init,
 	0,
