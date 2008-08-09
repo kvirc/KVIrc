@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   Creation date : Fri Aug 08 18:00:00 2000 GMT by Szymon Stefanek 
+//   Creation date : Fri Aug 08 18:00:00 2008 GMT by Fabio Bas
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)
@@ -19,7 +19,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-// Original Copyright following:
+//   Original Copyright follows:
 //=============================================================================
 
 /***************************************************************************

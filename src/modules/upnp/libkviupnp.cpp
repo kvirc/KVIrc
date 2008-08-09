@@ -1,7 +1,7 @@
 //=============================================================================
 //
 //   File : libkviupnp.cpp
-//   Creation date : Fri Aug 08 18:00:00 2000 GMT by Szymon Stefanek
+//   Creation date : Fri Aug 08 18:00:00 2008 GMT by Fabio Bas
 //
 //   This math is part of the KVirc irc client distribution
 //   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)
