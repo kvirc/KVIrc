@@ -183,7 +183,7 @@ inline bool kvi_socket_recoverableConnectError(int err)
 	return ((err == WSAEINPROGRESS) || (err == WSAEWOULDBLOCK));
 #else
 	return (err == EINPROGRESS);
-#endif	
+#endif
 };
 
 inline bool kvi_socket_recoverableError(int err)
@@ -191,7 +191,7 @@ inline bool kvi_socket_recoverableError(int err)
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	return ((err == WSAEWOULDBLOCK) || (err == EINTR) || (err == EAGAIN));
 #else
-	return ((err == EINTR) || (err = EAGAIN));
+	return ((err == EINTR) || (err == EAGAIN));
 #endif
 }
 
