@@ -173,9 +173,9 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 
 	m_pListWidget = new KviTalListWidget(this);
 	m_pListWidget->setContextMenuPolicy(Qt::CustomContextMenu);
-	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(m_pListWidget);
-	itemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
-	m_pListWidget->setItemDelegate(itemDelegate);
+	m_pItemDelegate = new KviTalIconAndRichTextItemDelegate(m_pListWidget);
+	m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
+	m_pListWidget->setItemDelegate(m_pItemDelegate);
 	m_pListWidget->setMinimumHeight(400);
 	m_pListWidget->setMinimumWidth(400);
 
@@ -216,7 +216,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 
 KviThemeManagementDialog::~KviThemeManagementDialog()
 {
-//	if (m_pItemDelegate) delete m_pItemDelegate;
+	if (m_pItemDelegate) delete m_pItemDelegate;
 	g_rectManagementDialogGeometry = QRect(pos().x(),pos().y(),size().width(),size().height());
 	m_pInstance = 0;
 }
@@ -295,6 +295,7 @@ void KviThemeManagementDialog::applyCurrentTheme()
 				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 		}
+		m_pItemDelegate->setDefaultIcon(g_pIconManager->getBigIcon(QString(KVI_BIGICON_THEME)));
 	}
 }
 

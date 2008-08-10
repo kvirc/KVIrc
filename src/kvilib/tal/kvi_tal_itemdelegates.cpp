@@ -58,7 +58,6 @@ void KviTalIconAndRichTextItemDelegate::paint( QPainter * painter, const QStyleO
 		}
 	} else {
 		if (m_pDefaultPix) painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*m_pDefaultPix);
-		else painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,ico.pixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
 	}
 	QTextDocument doc;
 	doc.setHtml( text );
