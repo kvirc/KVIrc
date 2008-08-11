@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-08 20:23+0200\n"
-"PO-Revision-Date: 2008-08-03 16:54+0200\n"
+"PO-Revision-Date: 2008-08-11 19:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -47,9 +47,8 @@ msgid " msec"
 msgstr " msec"
 
 #: src/modules/options/optw_ircview.cpp:177
-#, fuzzy
 msgid " pixels"
-msgstr " linee"
+msgstr " pixel"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:85
 msgid " requests"
@@ -116,8 +115,7 @@ msgstr "Griglia 3D"
 
 #: src/modules/options/optw_textencoding.cpp:81
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+msgstr "<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: src/modules/options/optw_urlhandlers.cpp:55
 msgid "<b>file://</b> handler command:"
@@ -247,10 +245,8 @@ msgstr ""
 "\"<b>Aggiungi</b>\".</center>"
 
 #: src/modules/options/optw_servers.cpp:1169
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: src/modules/options/optw_servers.cpp:530
 msgid ""
@@ -887,8 +883,7 @@ msgstr ""
 "(100 KB)</center>"
 
 #: src/modules/options/optw_servers.cpp:1143
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: src/modules/options/optw_lag.cpp:62
@@ -1093,8 +1088,7 @@ msgstr ""
 "\"Usa il desktop di KDE per la trasparenza\".</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Questa opzione imposta il livello minimo di allerta per la lista dei "
 "canali.</center>"
@@ -2064,15 +2058,15 @@ msgstr "DCC/TDCC"
 
 #: src/modules/options/optw_ircview.cpp:189
 msgid "DashDotDotLine"
-msgstr ""
+msgstr "Linea tratteggiata e puntinata doppia"
 
 #: src/modules/options/optw_ircview.cpp:188
 msgid "DashDotLine"
-msgstr ""
+msgstr "Linea tratteggiata e puntinata"
 
 #: src/modules/options/optw_ircview.cpp:186
 msgid "DashLine"
-msgstr ""
+msgstr "Linea tratteggiata"
 
 #: src/modules/options/optw_servers.cpp:748
 msgid "Default"
@@ -2168,7 +2162,7 @@ msgstr "Non mostrare i colori nei messaggi degli utenti"
 
 #: src/modules/options/optw_ircview.cpp:185
 msgid "DotLine"
-msgstr ""
+msgstr "Linea puntinata"
 
 #: src/modules/options/optw_userlist.cpp:95
 msgid "Dotted Grid"
@@ -2813,24 +2807,20 @@ msgstr ""
 "cursore del mouse sopra la loro etichetta per qualche secondo."
 
 #: src/modules/options/optw_ircview.h:83
-#, fuzzy
 msgid "Marker"
-msgstr "Evidenzia Linea:"
+msgstr "Segnalatore Ultima Riga:"
 
 #: src/modules/options/optw_ircview.cpp:174
-#, fuzzy
 msgid "Marker color:"
-msgstr "Colore sfondo:"
+msgstr "Colore linea:"
 
 #: src/modules/options/optw_ircview.cpp:176
-#, fuzzy
 msgid "Marker size:"
-msgstr "Dimensione del pacchetto:"
+msgstr "Dimensione linea:"
 
 #: src/modules/options/optw_ircview.cpp:179
-#, fuzzy
 msgid "Marker style:"
-msgstr "Stile Messaggio"
+msgstr "Stile linea:"
 
 #: src/modules/options/optw_connection.cpp:77
 msgid "Maximum attempts (0: unlimited):"
@@ -3715,7 +3705,7 @@ msgstr "Socket"
 
 #: src/modules/options/optw_ircview.cpp:187
 msgid "SolidLine"
-msgstr ""
+msgstr "Linea continua"
 
 #: src/modules/options/optw_dcc.cpp:181
 msgid "Sort saved files by nicknames (create subfolders)"
@@ -3788,13 +3778,11 @@ msgstr "Il comando di identificazione non può essere vuoto!"
 
 #: src/modules/options/optw_nickserv.cpp:180
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3866,8 +3854,7 @@ msgid "This executable has no SSL support."
 msgstr "Questo eseguibile non ha il supporto SSL"
 
 #: src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -4555,3 +4542,4 @@ msgstr "lista utenti,canale"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:89
 msgid "within:"
 msgstr "in:"
+

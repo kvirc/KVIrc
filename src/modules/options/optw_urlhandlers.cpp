@@ -5,7 +5,7 @@
 //   Creation date : Fri Aug 23 02:57:40 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,31 +29,50 @@
 
 #include <QLayout>
 #include <QLabel>
+#include <QRadioButton>
 
 
 KviUrlHandlersOptionsWidget::KviUrlHandlersOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#define START_ROW 1
+	#define START_ROW 2
 #else
-	#define START_ROW 0
+	#define START_ROW 1
 #endif
 
 	setObjectName("urlhandlers_options_widget");
-
 	createLayout();
 
+	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Mouse handler","options"));
+
+	addLabel(gbox,__tr2qs_ctx("How many click to open links?","options"));
+
+	m_pClickRadio = new QRadioButton(__tr2qs_ctx("Single click","options"),gbox);
+	m_pDoubleClickRadio = new QRadioButton(__tr2qs_ctx("Double click","options"),gbox);
+
+	switch(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum))
+	{
+		case 1:
+			m_pClickRadio->setChecked(true);
+			break;
+		case 2:
+			m_pDoubleClickRadio->setChecked(true);
+			break;
+	}
+
+	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Protocol handler","options"));
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Use system URL handlers","options"),KviOption_boolUseSystemUrlHandlers);
+	KviBoolSelector *b = addBoolSelector(gbox,__tr2qs_ctx("Use system URL handlers","options"),KviOption_boolUseSystemUrlHandlers);
 #endif
 
-	m_pHttpHandler=addStringSelector(0,START_ROW+0,0,START_ROW+0,__tr2qs_ctx("<b>http://</b> handler command:","options"),KviOption_stringUrlHttpCommand);
-	m_pHttpsHandler=addStringSelector(0,START_ROW+1,0,START_ROW+1,__tr2qs_ctx("<b>https://</b> handler command:","options"),KviOption_stringUrlHttpsCommand);
-	m_pFtpHandler=addStringSelector(0,START_ROW+2,0,START_ROW+2,__tr2qs_ctx("<b>ftp://</b> handler command:","options"),KviOption_stringUrlFtpCommand);
-	m_pMailtoHandler=addStringSelector(0,START_ROW+3,0,START_ROW+3,__tr2qs_ctx("<b>mailto:</b> handler command:","options"),KviOption_stringUrlMailtoCommand);
-	m_pFileHandler=addStringSelector(0,START_ROW+4,0,START_ROW+4,__tr2qs_ctx("<b>file://</b> handler command:","options"),KviOption_stringUrlFileCommand);
-	m_pOtherHandler=addStringSelector(0,START_ROW+5,0,START_ROW+5,__tr2qs_ctx("Unknown protocol handler command:","options"),KviOption_stringUrlUnknownCommand);
+	m_pHttpHandler=addStringSelector(gbox,__tr2qs_ctx("<b>http://</b> handler command:","options"),KviOption_stringUrlHttpCommand);
+	m_pHttpsHandler=addStringSelector(gbox,__tr2qs_ctx("<b>https://</b> handler command:","options"),KviOption_stringUrlHttpsCommand);
+	m_pFtpHandler=addStringSelector(gbox,__tr2qs_ctx("<b>ftp://</b> handler command:","options"),KviOption_stringUrlFtpCommand);
+	m_pMailtoHandler=addStringSelector(gbox,__tr2qs_ctx("<b>mailto:</b> handler command:","options"),KviOption_stringUrlMailtoCommand);
+	m_pFileHandler=addStringSelector(gbox,__tr2qs_ctx("<b>file://</b> handler command:","options"),KviOption_stringUrlFileCommand);
+	m_pOtherHandler=addStringSelector(gbox,__tr2qs_ctx("Unknown protocol handler command:","options"),KviOption_stringUrlUnknownCommand);
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	m_pHttpHandler->setEnabled(!KVI_OPTION_BOOL(KviOption_boolUseSystemUrlHandlers));
@@ -85,6 +104,11 @@ void KviUrlHandlersOptionsWidget::toggleEditors(bool bToggled)
 void KviUrlHandlersOptionsWidget::commit()
 {
 	KviOptionsWidget::commit();
+
+	if(m_pClickRadio->isChecked())
+		KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum)=1;
+	if(m_pDoubleClickRadio->isChecked())
+		KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum)=2;
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\\\","@MAGIC@");

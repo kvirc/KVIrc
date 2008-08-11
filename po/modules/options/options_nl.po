@@ -15,8 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.6\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 #, fuzzy
 msgid " bytes"
 msgstr "ja"
@@ -31,8 +30,7 @@ msgstr "&Online"
 msgid " min"
 msgstr "&Online"
 
-#: src/modules/options/optw_lag.cpp:43
-#: src/modules/options/optw_lag.cpp:54
+#: src/modules/options/optw_lag.cpp:43 src/modules/options/optw_lag.cpp:54
 #: src/modules/options/optw_connection.cpp:147
 #: src/modules/options/optw_dcc.cpp:268
 #: src/modules/options/optw_ircview.cpp:153
@@ -53,8 +51,7 @@ msgstr "s"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:90
 #: src/modules/options/optw_connection.cpp:85
 #: src/modules/options/optw_connection.cpp:145
-#: src/modules/options/optw_avatar.cpp:96
-#: src/modules/options/optw_dcc.cpp:140
+#: src/modules/options/optw_avatar.cpp:96 src/modules/options/optw_dcc.cpp:140
 msgid " sec"
 msgstr ""
 
@@ -95,8 +92,7 @@ msgstr "Popup"
 msgid "&New Server"
 msgstr "Netwerk"
 
-#: src/modules/options/optw_servers.cpp:335
-#: src/modules/options/dialog.cpp:240
+#: src/modules/options/optw_servers.cpp:335 src/modules/options/dialog.cpp:240
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/container.cpp:62
 #, fuzzy
@@ -1198,10 +1194,8 @@ msgstr "Toevoegen"
 msgid "Add Rule"
 msgstr "Toevoegen"
 
-#: src/modules/options/optw_dcc.h:56
-#: src/modules/options/optw_dcc.h:100
-#: src/modules/options/optw_irc.h:59
-#: src/modules/options/optw_irc.h:101
+#: src/modules/options/optw_dcc.h:56 src/modules/options/optw_dcc.h:100
+#: src/modules/options/optw_irc.h:59 src/modules/options/optw_irc.h:101
 #: src/modules/options/optw_identity.h:168
 #: src/modules/options/optw_connection.h:43
 #, fuzzy
@@ -1336,8 +1330,7 @@ msgstr ""
 msgid "Auto flush logs every"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr ""
 
@@ -1350,8 +1343,7 @@ msgstr "Auto"
 msgid "Automatically Log"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 #, fuzzy
 msgid "Automatically accept"
@@ -1532,8 +1524,7 @@ msgid "Cache IP address"
 msgstr "Cache IP"
 
 #: src/modules/options/optw_servers.cpp:341
-#: src/modules/options/optw_servers.cpp:824
-#: src/modules/options/dialog.cpp:253
+#: src/modules/options/optw_servers.cpp:824 src/modules/options/dialog.cpp:253
 #: src/modules/options/optw_identity.cpp:93
 #: src/modules/options/optw_identity.cpp:243
 #: src/modules/options/container.cpp:70
@@ -1544,8 +1535,7 @@ msgstr "Annuleren"
 
 #: src/modules/options/optw_taskbar.cpp:133
 #: src/modules/options/optw_taskbar.cpp:138
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_userlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:145
 #: src/modules/options/optw_ircview.cpp:63
@@ -1660,13 +1650,11 @@ msgstr "Beginwaarde"
 msgid "Close in tray"
 msgstr "M&inimaliseren"
 
-#: src/modules/options/dialog.cpp:241
-#: src/modules/options/container.cpp:63
+#: src/modules/options/dialog.cpp:241 src/modules/options/container.cpp:63
 msgid "Close this dialog, accepting all changes."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:254
-#: src/modules/options/container.cpp:71
+#: src/modules/options/dialog.cpp:254 src/modules/options/container.cpp:71
 msgid "Close this dialog, discarding all changes."
 msgstr ""
 
@@ -1684,8 +1672,7 @@ msgstr ""
 msgid "Commit all changes immediately."
 msgstr "Vastleggen (Commit)"
 
-#: src/modules/options/optw_notify.cpp:39
-#: src/modules/options/optw_lag.cpp:41
+#: src/modules/options/optw_notify.cpp:39 src/modules/options/optw_lag.cpp:41
 #: src/modules/options/optw_connection.cpp:213
 #: src/modules/options/optw_proxy.cpp:103
 #, fuzzy
@@ -2082,8 +2069,7 @@ msgid "Failed to start the download"
 msgstr "Faalde naar de"
 
 #: src/modules/options/optw_userlist.h:102
-#: src/modules/options/optw_taskbar.h:98
-#: src/modules/options/optw_ircview.h:69
+#: src/modules/options/optw_taskbar.h:98 src/modules/options/optw_ircview.h:69
 #, fuzzy
 msgid "Features"
 msgstr "Mogelijkheden"
@@ -2174,12 +2160,10 @@ msgid "Gender:"
 msgstr "Algemeen"
 
 #: src/modules/options/optw_servers.cpp:215
-#: src/modules/options/optw_messages.cpp:77
-#: src/modules/options/optw_dcc.h:43
+#: src/modules/options/optw_messages.cpp:77 src/modules/options/optw_dcc.h:43
 #: src/modules/options/optw_dcc.h:86
 #: src/modules/options/optw_interfacelookglobal.h:32
-#: src/modules/options/optw_irc.h:45
-#: src/modules/options/optw_irc.h:89
+#: src/modules/options/optw_irc.h:45 src/modules/options/optw_irc.h:89
 #: src/modules/options/optw_identity.h:119
 #, fuzzy
 msgid "General"
@@ -2402,8 +2386,7 @@ msgstr ""
 msgid "Inactive Text (Secondary)"
 msgstr ""
 
-#: src/modules/options/optw_input.h:33
-#: src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr ""
 
@@ -2443,8 +2426,7 @@ msgstr ""
 msgid "Keep away list updated by sending WHO requests"
 msgstr ""
 
-#: src/modules/options/optw_irc.cpp:108
-#: src/modules/options/optw_irc.cpp:117
+#: src/modules/options/optw_irc.cpp:108 src/modules/options/optw_irc.cpp:117
 #, fuzzy
 msgid "Keep channel open"
 msgstr "Kanaal mode"
@@ -2919,8 +2901,7 @@ msgstr "OK"
 msgid "Ok"
 msgstr "Ok"
 
-#: src/modules/options/optw_irc.cpp:168
-#: src/modules/options/optw_irc.cpp:180
+#: src/modules/options/optw_irc.cpp:168 src/modules/options/optw_irc.cpp:180
 #, fuzzy
 msgid "On Channel Join"
 msgstr "Kanaal mode"
@@ -3005,8 +2986,7 @@ msgstr ""
 msgid "Open all minimized"
 msgstr "Aanmaken"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
 #, fuzzy
 msgid "Open minimized when auto-accepted"
 msgstr "Aanmaken auto"
@@ -3665,8 +3645,7 @@ msgstr ""
 msgid "Sound"
 msgstr "Verzenden"
 
-#: src/modules/options/optw_sound.cpp:60
-#: src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
 #, fuzzy
 msgid "Sound System"
 msgstr "systeemfout"
@@ -3700,8 +3679,7 @@ msgstr "Takenbalk"
 msgid "Taskbar Alert"
 msgstr "Takenbalk"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 #, fuzzy
 msgid "Test"
 msgstr "Tekst:"
@@ -3894,8 +3872,7 @@ msgstr ""
 
 #: src/modules/options/optw_taskbar.cpp:130
 #: src/modules/options/optw_taskbar.cpp:135
-#: src/modules/options/optw_input.cpp:53
-#: src/modules/options/optw_input.cpp:58
+#: src/modules/options/optw_input.cpp:53 src/modules/options/optw_input.cpp:58
 #: src/modules/options/optw_userlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:142
 #: src/modules/options/optw_ircview.cpp:60
@@ -4320,8 +4297,7 @@ msgstr "Onbekend"
 msgid "authentication,identify"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 #, fuzzy
 msgid "bytes/sec"
 msgstr "bytes"
@@ -4401,10 +4377,8 @@ msgid "sound,xmms,audio,play,amarok"
 msgstr ""
 
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_taskbar.h:36
-#: src/modules/options/optw_taskbar.h:50
-#: src/modules/options/optw_taskbar.h:66
-#: src/modules/options/optw_taskbar.h:81
+#: src/modules/options/optw_taskbar.h:36 src/modules/options/optw_taskbar.h:50
+#: src/modules/options/optw_taskbar.h:66 src/modules/options/optw_taskbar.h:81
 #: src/modules/options/optw_taskbar.h:100
 #: src/modules/options/optw_taskbar.h:115
 msgid "theme"
@@ -4421,8 +4395,7 @@ msgid "theme,colors,messages,output"
 msgstr ""
 
 #: src/modules/options/optw_messages.h:38
-#: src/modules/options/optw_ircview.h:36
-#: src/modules/options/optw_ircview.h:50
+#: src/modules/options/optw_ircview.h:36 src/modules/options/optw_ircview.h:50
 msgid "theme,colors,output"
 msgstr ""
 

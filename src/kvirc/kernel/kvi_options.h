@@ -565,8 +565,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintNotifierInactiveTransparency 64
 #define KviOption_uintIrcViewMarkerStyle 65
 #define KviOption_uintIrcViewMarkerSize 66
+#define KviOption_uintUrlMouseClickNum 67
 
-#define KVI_NUM_UINT_OPTIONS 67
+#define KVI_NUM_UINT_OPTIONS 68
 
 namespace KviIdentdOutputMode {
 	enum Mode {

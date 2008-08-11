@@ -16,8 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " bájt"
 
@@ -29,8 +28,7 @@ msgstr " sor"
 msgid " min"
 msgstr " perc"
 
-#: src/modules/options/optw_lag.cpp:43
-#: src/modules/options/optw_lag.cpp:54
+#: src/modules/options/optw_lag.cpp:43 src/modules/options/optw_lag.cpp:54
 #: src/modules/options/optw_connection.cpp:147
 #: src/modules/options/optw_dcc.cpp:268
 #: src/modules/options/optw_ircview.cpp:153
@@ -50,8 +48,7 @@ msgstr "kérés"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:90
 #: src/modules/options/optw_connection.cpp:85
 #: src/modules/options/optw_connection.cpp:145
-#: src/modules/options/optw_avatar.cpp:96
-#: src/modules/options/optw_dcc.cpp:140
+#: src/modules/options/optw_avatar.cpp:96 src/modules/options/optw_dcc.cpp:140
 msgid " sec"
 msgstr " mp"
 
@@ -87,8 +84,7 @@ msgstr "Új Proxy"
 msgid "&New Server"
 msgstr "Új szerver"
 
-#: src/modules/options/optw_servers.cpp:335
-#: src/modules/options/dialog.cpp:240
+#: src/modules/options/optw_servers.cpp:335 src/modules/options/dialog.cpp:240
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/container.cpp:62
 msgid "&OK"
@@ -1525,10 +1521,8 @@ msgstr "Hozzáadás"
 msgid "Add Rule"
 msgstr "Szabály Hozzáadása"
 
-#: src/modules/options/optw_dcc.h:56
-#: src/modules/options/optw_dcc.h:100
-#: src/modules/options/optw_irc.h:59
-#: src/modules/options/optw_irc.h:101
+#: src/modules/options/optw_dcc.h:56 src/modules/options/optw_dcc.h:100
+#: src/modules/options/optw_irc.h:59 src/modules/options/optw_irc.h:101
 #: src/modules/options/optw_identity.h:168
 #: src/modules/options/optw_connection.h:43
 msgid "Advanced"
@@ -1643,8 +1637,7 @@ msgstr "Hozzáfűzés a VERZIÓ válaszhoz: "
 msgid "Auto flush logs every"
 msgstr "Naplófájlok mentése minden"
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Auto-Felismerés"
 
@@ -1656,8 +1649,7 @@ msgstr "Automatikus felismerés"
 msgid "Automatically Log"
 msgstr "Automatikus Naplózás"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Automatikus fogadás"
@@ -1811,8 +1803,7 @@ msgid "Cache IP address"
 msgstr "Ip cím tárolása"
 
 #: src/modules/options/optw_servers.cpp:341
-#: src/modules/options/optw_servers.cpp:824
-#: src/modules/options/dialog.cpp:253
+#: src/modules/options/optw_servers.cpp:824 src/modules/options/dialog.cpp:253
 #: src/modules/options/optw_identity.cpp:93
 #: src/modules/options/optw_identity.cpp:243
 #: src/modules/options/container.cpp:70
@@ -1822,8 +1813,7 @@ msgstr "Mégsem"
 
 #: src/modules/options/optw_taskbar.cpp:133
 #: src/modules/options/optw_taskbar.cpp:138
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_userlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:145
 #: src/modules/options/optw_ircview.cpp:63
@@ -1920,13 +1910,11 @@ msgstr "Lista Törlése"
 msgid "Close in tray"
 msgstr "Bezárásnál a KVIrcet tegye a tálcára"
 
-#: src/modules/options/dialog.cpp:241
-#: src/modules/options/container.cpp:63
+#: src/modules/options/dialog.cpp:241 src/modules/options/container.cpp:63
 msgid "Close this dialog, accepting all changes."
 msgstr "Párbeszédablak bezárása, összes változás érvényesítése."
 
-#: src/modules/options/dialog.cpp:254
-#: src/modules/options/container.cpp:71
+#: src/modules/options/dialog.cpp:254 src/modules/options/container.cpp:71
 msgid "Close this dialog, discarding all changes."
 msgstr "Párbeszédablak bezárása, összes változás elvetése."
 
@@ -1942,8 +1930,7 @@ msgstr "A parancssor felhasználóbarát alapértelmezetten"
 msgid "Commit all changes immediately."
 msgstr "Minden változás alkalmazása azonnal."
 
-#: src/modules/options/optw_notify.cpp:39
-#: src/modules/options/optw_lag.cpp:41
+#: src/modules/options/optw_notify.cpp:39 src/modules/options/optw_lag.cpp:41
 #: src/modules/options/optw_connection.cpp:213
 #: src/modules/options/optw_proxy.cpp:103
 msgid "Configuration"
@@ -2298,8 +2285,7 @@ msgid "Failed to start the download"
 msgstr "Letöltés megkezdése sikertelen"
 
 #: src/modules/options/optw_userlist.h:102
-#: src/modules/options/optw_taskbar.h:98
-#: src/modules/options/optw_ircview.h:69
+#: src/modules/options/optw_taskbar.h:98 src/modules/options/optw_ircview.h:69
 msgid "Features"
 msgstr "Lehetőségek"
 
@@ -2379,12 +2365,10 @@ msgid "Gender:"
 msgstr "Nem:"
 
 #: src/modules/options/optw_servers.cpp:215
-#: src/modules/options/optw_messages.cpp:77
-#: src/modules/options/optw_dcc.h:43
+#: src/modules/options/optw_messages.cpp:77 src/modules/options/optw_dcc.h:43
 #: src/modules/options/optw_dcc.h:86
 #: src/modules/options/optw_interfacelookglobal.h:32
-#: src/modules/options/optw_irc.h:45
-#: src/modules/options/optw_irc.h:89
+#: src/modules/options/optw_irc.h:45 src/modules/options/optw_irc.h:89
 #: src/modules/options/optw_identity.h:119
 msgid "General"
 msgstr "Általános"
@@ -2592,8 +2576,7 @@ msgstr "Inaktív Szöveg (Elsődleges)"
 msgid "Inactive Text (Secondary)"
 msgstr "Inaktív szöveg (Másodlagos)"
 
-#: src/modules/options/optw_input.h:33
-#: src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr "Bevitel"
 
@@ -2628,8 +2611,7 @@ msgstr "KVIrc Beállítások"
 msgid "Keep away list updated by sending WHO requests"
 msgstr ""
 
-#: src/modules/options/optw_irc.cpp:108
-#: src/modules/options/optw_irc.cpp:117
+#: src/modules/options/optw_irc.cpp:108 src/modules/options/optw_irc.cpp:117
 msgid "Keep channel open"
 msgstr "Csatorna maradjon nyitva"
 
@@ -3042,8 +3024,7 @@ msgstr "OK"
 msgid "Ok"
 msgstr "Ok"
 
-#: src/modules/options/optw_irc.cpp:168
-#: src/modules/options/optw_irc.cpp:180
+#: src/modules/options/optw_irc.cpp:168 src/modules/options/optw_irc.cpp:180
 msgid "On Channel Join"
 msgstr "Fellépés csatornára"
 
@@ -3121,8 +3102,7 @@ msgstr "Privát nyitása"
 msgid "Open all minimized"
 msgstr "Minden kicsinyített megnyitása"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Megnyitás a háttérben automatikus fogadásnál"
 
@@ -3695,8 +3675,7 @@ msgstr "Ablakok rendezése név szerint"
 msgid "Sound"
 msgstr "Hangok"
 
-#: src/modules/options/optw_sound.cpp:60
-#: src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "Hangrendszer"
 
@@ -3724,8 +3703,7 @@ msgstr "Tálca"
 msgid "Taskbar Alert"
 msgstr "Figyelmeztetés a Tálcán"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Teszt"
 
@@ -3956,8 +3934,7 @@ msgstr ""
 
 #: src/modules/options/optw_taskbar.cpp:130
 #: src/modules/options/optw_taskbar.cpp:135
-#: src/modules/options/optw_input.cpp:53
-#: src/modules/options/optw_input.cpp:58
+#: src/modules/options/optw_input.cpp:53 src/modules/options/optw_input.cpp:58
 #: src/modules/options/optw_userlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:142
 #: src/modules/options/optw_ircview.cpp:60
@@ -4351,8 +4328,7 @@ msgstr "[Ismeretlen Médiatípus]"
 msgid "authentication,identify"
 msgstr "azonosítás,auth"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bájt/mp"
 
@@ -4425,10 +4401,8 @@ msgid "sound,xmms,audio,play,amarok"
 msgstr "hang,xmms,audio,lejátszás,amarok"
 
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_taskbar.h:36
-#: src/modules/options/optw_taskbar.h:50
-#: src/modules/options/optw_taskbar.h:66
-#: src/modules/options/optw_taskbar.h:81
+#: src/modules/options/optw_taskbar.h:36 src/modules/options/optw_taskbar.h:50
+#: src/modules/options/optw_taskbar.h:66 src/modules/options/optw_taskbar.h:81
 #: src/modules/options/optw_taskbar.h:100
 #: src/modules/options/optw_taskbar.h:115
 msgid "theme"
@@ -4444,8 +4418,7 @@ msgid "theme,colors,messages,output"
 msgstr "megjelenés,színek,üzenetek,kimenet"
 
 #: src/modules/options/optw_messages.h:38
-#: src/modules/options/optw_ircview.h:36
-#: src/modules/options/optw_ircview.h:50
+#: src/modules/options/optw_ircview.h:36 src/modules/options/optw_ircview.h:50
 msgid "theme,colors,output"
 msgstr "megjelenés,színek,kimenet"
 

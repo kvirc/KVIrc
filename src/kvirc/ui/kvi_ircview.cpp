@@ -4668,7 +4668,8 @@ void KviIrcView::mouseDoubleClickEvent(QMouseEvent *e)
 				{
 					KviIrcUrl::run(urlText,KviIrcUrl::TryCurrentContext | KviIrcUrl::DoNotPartChans, console());
 				} else {
-					cmd = "openurl $0";
+					// Check for number of clicks
+					if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 2) cmd = "openurl $0";
 				}
 			}
 		break;
@@ -4833,7 +4834,14 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 					if(e->button() & Qt::RightButton)
 						KVS_TRIGGER_EVENT(KviEvent_OnUrlLinkPopupRequest,m_pKviWindow,pParams);
 					if(e->button() & Qt::LeftButton)
+					{
 						KVS_TRIGGER_EVENT(KviEvent_OnUrlLinkClick,m_pKviWindow,pParams);
+
+						// Check for clicks' number
+						QString cmd;
+						if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1) cmd = "openurl $0";
+						KviKvsScript::run(cmd,m_pKviWindow,pParams);
+					}
 				break;
 				case 'c':
 					if(e->button() & Qt::RightButton)
@@ -5022,7 +5030,12 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
 			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)->toImage().bits(), "/url_icon");
-			tip += __tr2qs("Double-click to open this link");
+
+			// Check clicks' number
+			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)
+				tip += __tr2qs("Click to open this link");
+			else
+				tip += __tr2qs("Double-click to open this link");
 			tip += "</td></tr></table>";
 		}
 		break;

@@ -104,9 +104,9 @@ protected:
 	KviBoolSelector * m_pEnableIpv6;
 	KviBoolSelector * m_pIpv4InIpv6;
 
-	QRadioButton *m_pConsoleRadio;
-	QRadioButton *m_pActiveRadio;
-	QRadioButton *m_pQuietRadio;
+	QRadioButton * m_pConsoleRadio;
+	QRadioButton * m_pActiveRadio;
+	QRadioButton * m_pQuietRadio;
 public slots:
 	void enableIpv4InIpv6(bool);
 };
