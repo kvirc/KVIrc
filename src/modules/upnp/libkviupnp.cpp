@@ -28,6 +28,8 @@
 
 #include "manager.h"
 
+// Please use our common variable naming conventions and coding style :)
+
 UPnP::Manager* p_manager = 0;
 
 
