@@ -14,13 +14,9 @@ SET(kviupnp_SRCS
 
 SET(kviupnp_MOC_HDRS
 	igdcontrolpoint.h
-	layer3forwardingservice.h
 	manager.h
-	rootservice.h
 	service.h
 	ssdpconnection.h
-	wanconnectionservice.h
-	xmlfunctions.h
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

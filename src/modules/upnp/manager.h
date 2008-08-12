@@ -56,52 +56,54 @@ class SsdpConnection;
  */
 class Manager : public QObject
 {
-  Q_OBJECT
+	Q_OBJECT
 
-  public:  // public methods
+public:  // public methods
 
-    // The destructor
-    virtual             ~Manager();
+	// The destructor
+	virtual             ~Manager();
 
-    // Return the external IP address
-    QString              getExternalIpAddress() const;
+	// Return the external IP address
+	QString              getExternalIpAddress() const;
 
-    // Return the instance of the manager class
-    static Manager *     instance();
+	// Return the instance of the manager class
+	static Manager *     instance();
 
-    // Return true if a controlable gateway is available
-    bool                 isGatewayAvailable();
+	// Return true if a controlable gateway is available
+	bool                 isGatewayAvailable();
 
-  private slots:
-    // The broadcast failed
-    void                 slotBroadcastTimeout();
-    // A device was discovered by the SSDP broadcast
-    void                 slotDeviceFound(const QString &hostname, int port, const QString &rootUrl);
+private slots:
+	// The broadcast failed
+	void                 slotBroadcastTimeout();
+	// A device was discovered by the SSDP broadcast
+	void                 slotDeviceFound(const QString &hostname, int port, const QString &rootUrl);
 
 
-  private:  // private methods
-    // The constructor  (it's a singleton)
-                         Manager();
-    // Disable the copy constructor
-                         Manager(const Manager &);
-    // Disable the assign operator
-    Manager&             operator=(const Manager&);
-    // Initialize the manager, detect all devices
-    void                 initialize();
+private:  // private methods
+	// The constructor  (it's a singleton)
+				Manager();
+	// Disable the copy constructor
+				Manager(const Manager &);
+	// Disable the assign operator
+	Manager&             operator=(const Manager&);
+	// Initialize the manager, detect all devices
+	void                 initialize();
 
-  private:
-    // The active control point we're working with
-    IgdControlPoint     *activeIgdControlPoint_;
-    // True if the broadcast failed
-    bool                 broadcastFailed_;
-    // The instance of the singleton class
-    static Manager      *instance_;
-    // A list of all detected gateway devices
-    KviPointerList<IgdControlPoint> igdControlPoints_;
-    // The SSDP connection to find all UPnP devices
-    SsdpConnection      *ssdpConnection_;
-    // The timer to detect a broadcast timeout
-    QTimer              *ssdpTimer_;
+private:
+	// The active control point we're working with
+	IgdControlPoint     *activeIgdControlPoint_;
+	// True if the broadcast failed (false during the discovery process)
+	bool                 broadcastFailed_;
+	// True if the broadcast found a device (false during the discovery process)
+	bool                 broadcastFoundIt_;
+	// The instance of the singleton class
+	static Manager      *instance_;
+	// A list of all detected gateway devices
+	KviPointerList<IgdControlPoint> igdControlPoints_;
+	// The SSDP connection to find all UPnP devices
+	SsdpConnection      *ssdpConnection_;
+	// The timer to detect a broadcast timeout
+	QTimer              *ssdpTimer_;
 };
 
 

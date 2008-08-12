@@ -55,43 +55,43 @@ class WanConnectionService;
  */
 class IgdControlPoint : public QObject
 {
-  Q_OBJECT
+	Q_OBJECT
 
-  public:  // public methods
+public:  // public methods
 
-    // The constructor
-                         IgdControlPoint(const QString &hostname, int port, const QString &rootUrl);
-    // The destructor
-    virtual             ~IgdControlPoint();
+	// The constructor
+	IgdControlPoint(const QString &hostname, int port, const QString &rootUrl);
+	// The destructor
+	virtual             ~IgdControlPoint();
 
-    // Return the external IP address
-    QString              getExternalIpAddress() const;
-    // Initialize the control point
-    void                 initialize();
-    // Return true if a controlable gateway is available
-    bool                 isGatewayAvailable();
+	// Return the external IP address
+	QString              getExternalIpAddress() const;
+	// Initialize the control point
+	void                 initialize();
+	// Return true if a controlable gateway is available
+	bool                 isGatewayAvailable();
 
-  private slots:
-    // The IGD was queried for it's services
-    void                 slotDeviceQueried(bool error);
-    // A WAN connection service was found
-    void                 slotWanConnectionFound(bool error);
-    // A WAN connection query was finished
-    void                 slotWanQueryFinished(bool error);
+private slots:
+	// The IGD was queried for it's services
+	void                 slotDeviceQueried(bool error);
+	// A WAN connection service was found
+	void                 slotWanConnectionFound(bool error);
+	// A WAN connection query was finished
+	void                 slotWanQueryFinished(bool error);
 
-  private:  // private attibutes
-    // The forwarding service
-    Layer3ForwardingService *forwardingService_;
-    // Is a gateway available?
-    bool                 gatewayAvailable_;
-    // The host of the gateway
-    QString              igdHostname_;
-    // The port of the gateway
-    int                  igdPort_;
-    // The root service
-    RootService         *rootService_;
-    // The wan connection service
-    WanConnectionService *wanConnectionService_;
+private:  // private attibutes
+	// The forwarding service
+	Layer3ForwardingService *forwardingService_;
+	// Is a gateway available?
+	bool                 gatewayAvailable_;
+	// The host of the gateway
+	QString              igdHostname_;
+	// The port of the gateway
+	int                  igdPort_;
+	// The root service
+	RootService         *rootService_;
+	// The wan connection service
+	WanConnectionService *wanConnectionService_;
 };
 
 

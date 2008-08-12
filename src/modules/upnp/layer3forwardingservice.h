@@ -49,34 +49,34 @@ namespace UPnP {
  */
 class Layer3ForwardingService : public Service
 {
-  public:  // public methods
+public:  // public methods
 
-    // The constructor
-                         Layer3ForwardingService(const ServiceParameters &params);
-    // The destructor
-    virtual             ~Layer3ForwardingService();
+	// The constructor
+	Layer3ForwardingService(const ServiceParameters &params);
+	// The destructor
+	virtual             ~Layer3ForwardingService();
 
-    // Get the device UDN of the default connection service
-    QString              getConnectionDeviceUdn() const;
-    // Get the service ID of the default connection service
-    QString              getConnectionServiceId() const;
+	// Get the device UDN of the default connection service
+	QString              getConnectionDeviceUdn() const;
+	// Get the service ID of the default connection service
+	QString              getConnectionServiceId() const;
 
-    // Query the Layer3Forwarding service for the default connection service
-    void                 queryDefaultConnectionService();
-
-
-  protected:  // protected methods
-
-    // The control point received a response to callAction()
-    virtual void         gotActionResponse(const QString &responseType, const QMap<QString,QString> &resultValues);
+	// Query the Layer3Forwarding service for the default connection service
+	void                 queryDefaultConnectionService();
 
 
-  private:  // private attributes
+protected:  // protected methods
 
-    // The device UDN of the default connection service
-    QString              connectionServiceId_;
-    // The service ID of the default connection service
-    QString              connectionDeviceUdn_;
+	// The control point received a response to callAction()
+	virtual void         gotActionResponse(const QString &responseType, const QMap<QString,QString> &resultValues);
+
+
+private:  // private attributes
+
+	// The service ID of the default connection service
+	QString              connectionServiceId_;
+	// The device UDN of the default connection service
+	QString              connectionDeviceUdn_;
 };
 
 }

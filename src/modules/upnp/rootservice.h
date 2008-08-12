@@ -49,50 +49,50 @@ namespace UPnP
  */
 class RootService : public Service
 {
-  public:  // public methods
+public:  // public methods
 
-    // The constructor
-                         RootService(const QString &hostname, int port, const QString &rootUrl);
-    // The destructor
-    virtual             ~RootService();
+	// The constructor
+	RootService(const QString &hostname, int port, const QString &rootUrl);
+	// The destructor
+	virtual             ~RootService();
 
-    // Return the device type
-    QString              getDeviceType() const;
+	// Return the device type
+	QString              getDeviceType() const;
 
-    // Return a service from the cached root device entry
-    ServiceParameters    getServiceById(const QString &serviceId) const;
-    // Return a service from a cached embedded device entry
-    ServiceParameters    getServiceById(const QString &serviceId, const QString &deviceUdn) const;
-    // Return a service from the cached root device entry
-    ServiceParameters    getServiceByType(const QString &serviceType) const;
-    // Return a service from a cached embedded device entry
-    ServiceParameters    getServiceByType(const QString &serviceType, const QString &deviceUdn) const;
+	// Return a service from the cached root device entry
+	ServiceParameters    getServiceById(const QString &serviceId) const;
+	// Return a service from a cached embedded device entry
+	ServiceParameters    getServiceById(const QString &serviceId, const QString &deviceUdn) const;
+	// Return a service from the cached root device entry
+	ServiceParameters    getServiceByType(const QString &serviceType) const;
+	// Return a service from a cached embedded device entry
+	ServiceParameters    getServiceByType(const QString &serviceType, const QString &deviceUdn) const;
 
-    // Query the device for its service list
-    void                 queryDevice();
-
-
-  protected:  // Protected methods
-    // The control point received a response to callInformationUrl()
-    virtual void         gotInformationResponse(const QDomNode &response);
+	// Query the device for its service list
+	void                 queryDevice();
 
 
-  private:  // Private methods
-    // Recursively add all devices and embedded devices to the deviceServices_ map
-    void                 addDeviceServices(const QDomNode &device);
+protected:  // Protected methods
+	// The control point received a response to callInformationUrl()
+	virtual void         gotInformationResponse(const QDomNode &response);
 
 
-  private:
-    // The device type
-    QString                     deviceType_;
-    // A collection of all services provided by the device
-    QMap<QString,QDomNodeList>  deviceServices_;
-    // The hostname of the device
-    QString                     hostname_;
-    // The port of the device
-    int                         port_;
-    // The udn of the root device
-    QString                     rootUdn_;
+private:  // Private methods
+	// Recursively add all devices and embedded devices to the deviceServices_ map
+	void                 addDeviceServices(const QDomNode &device);
+
+
+private:
+	// The device type
+	QString                     deviceType_;
+	// A collection of all services provided by the device
+	QMap<QString,QDomNodeList>  deviceServices_;
+	// The hostname of the device
+	QString                     hostname_;
+	// The port of the device
+	int                         port_;
+	// The udn of the root device
+	QString                     rootUdn_;
 };
 
 }

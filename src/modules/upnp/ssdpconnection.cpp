@@ -65,11 +65,7 @@ void SsdpConnection::slotDataReceived()
 {
 	qDebug() << "UPnP::SsdpConnection: received " << socket_->bytesAvailable() << " bytes." << endl;
 
-	// Get the HTTP-like content
-	// TODO: How to handle multiple packets arriving from different devices?
-	QByteArray response = socket_->readAll();
-
-	// Response from my Acatel router:
+	// Response from Diederik's Acatel router:
 	//
 	//   HTTP/1.1 200 OK
 	//   CACHE-CONTROL:max-age=1800
@@ -80,20 +76,41 @@ void SsdpConnection::slotDataReceived()
 	//   USN:uuid:UPnP-SpeedTouch510-1_00-90-D0-8E-A1-6F::upnp:rootdevice
 	//
 
-	QString sspdResponse = QString::fromUtf8(response.data(), response.size());
+	//  This is from a Zyxel router:
+	//
+	//   HTTP/1.1 200 OK
+	//   ST:urn:schemas-upnp-org:device:InternetGatewayDevice:1
+	//   USN:uuid:11111111-%04x-c0a8-fcb30002cf618c::urn:schemas-upnp-org:device:InternetGatewayDevice:1
+	//   Location:http://192.168.252.179:80/DeviceDescription.xml
+	//   Cache-Control: max-age=480
+	//   Server: ZyXEL-RomPlug/4.51 UPnP/1.0 IGD/1.00
+	//   Ext:
 
-	// Find the location field manually, MimeMessage is not required
-	int locationStart = sspdResponse.find("LOCATION:",0,false);   // case insensitive
-	int locationEnd   = sspdResponse.find("\r\n",locationStart);
+	while (socket_->hasPendingDatagrams()) {
+		QByteArray datagram;
+		datagram.resize(socket_->pendingDatagramSize());
+		socket_->readDatagram(datagram.data(), datagram.size());
 
-	locationStart    += 9;  // length of field name
-	QString location  = sspdResponse.mid(locationStart, locationEnd - locationStart);
+		qDebug("Received datagram: %s\n",datagram.data());
 
-	// Parse the URL syntax using KURL
-	QUrl url(location);
+		QString sspdResponse = QString::fromUtf8(datagram.data(), datagram.size());
 
-	// Emit success
-	emit deviceFound(url.host(), url.port(), url.path());
+		// Find the location field manually, MimeMessage is not required
+		int locationStart = sspdResponse.find("LOCATION:",0,false);   // case insensitive
+		int locationEnd   = sspdResponse.find("\r\n",locationStart);
+
+		locationStart    += 9;  // length of field name
+		QString location  = sspdResponse.mid(locationStart, locationEnd - locationStart);
+
+		// Parse the URL syntax using KURL
+		QUrl url(location);
+
+		qDebug("Found internet gateway: %s\n", location.toUtf8().data());
+		// Emit success
+		emit deviceFound(url.host(), url.port(), url.path());
+
+
+	}
 }
 
 
@@ -113,7 +130,7 @@ void SsdpConnection::queryDevices(int bindPort)
 			"\r\n";
 
 	// Bind the socket to a certain port
-	bool success = socket_->bind(address, bindPort);
+	bool success = socket_->bind(bindPort);
 	if(! success)
 	{
 		qDebug() << "UPnP::SsdpConnection: Failed to bind to port " << bindPort << "." << endl;

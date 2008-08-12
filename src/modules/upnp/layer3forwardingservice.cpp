@@ -57,7 +57,7 @@ Layer3ForwardingService::~Layer3ForwardingService()
 // Get the device UDN of the default connection service
 QString Layer3ForwardingService::getConnectionDeviceUdn() const
 {
-  return connectionDeviceUdn_;
+	return connectionDeviceUdn_;
 }
 
 
@@ -65,7 +65,7 @@ QString Layer3ForwardingService::getConnectionDeviceUdn() const
 // Get the service ID of the default connection service
 QString Layer3ForwardingService::getConnectionServiceId() const
 {
-  return connectionServiceId_;
+	return connectionServiceId_;
 }
 
 
@@ -73,56 +73,50 @@ QString Layer3ForwardingService::getConnectionServiceId() const
 // The control point received a response to callAction()
 void Layer3ForwardingService::gotActionResponse(const QString &responseType, const QMap<QString,QString> &resultValues)
 {
-  qDebug() << "UPnP::Layer3ForwardingService: Got action response"
-            << " type='" << responseType << "'." << endl;
+	qDebug() << "UPnP::Layer3ForwardingService: Got action response"
+		<< " type='" << responseType << "'." << endl;
 
-  // Example:
-  //
-  //   <m:GetDefaultConnectionServiceResponse xmlns:m="urn:schemas-upnp-org:service:Layer3Forwarding:1" >
-  //     <NewDefaultConnectionService>
-  //       (there is no white space between these parts!)
-  //       uuid:UPnP-SpeedTouch510-1_00-90-D0-8E-A1-6F_WCDpppoa:WANConnectionDevice:1,
-  //       urn:upnp-org:serviceId:wanpppc:pppoa
-  //     </NewDefaultConnectionService>
-  //   </m:GetDefaultConnectionServiceResponse>
+	// Example:
+	//
+	//   <m:GetDefaultConnectionServiceResponse xmlns:m="urn:schemas-upnp-org:service:Layer3Forwarding:1" >
+	//     <NewDefaultConnectionService>
+	//       (there is no white space between these parts!)
+	//       uuid:UPnP-SpeedTouch510-1_00-90-D0-8E-A1-6F_WCDpppoa:WANConnectionDevice:1,
+	//       urn:upnp-org:serviceId:wanpppc:pppoa
+	//     </NewDefaultConnectionService>
+	//   </m:GetDefaultConnectionServiceResponse>
 
 
-  if(responseType == "GetDefaultConnectionServiceResponse" )
-  {
-    QString     newService   = resultValues["NewDefaultConnectionService"];
-    QStringList serviceItems = QStringList::split(',', newService);
-    QString     uuid;
-    QString     urn;
+	if(responseType == "GetDefaultConnectionServiceResponse" )
+	{
+		QString     newService   = resultValues["NewDefaultConnectionService"];
+		QStringList serviceItems = QStringList::split(',', newService);
+		QString     uuid;
+		QString     urn;
 
-    // Extract the uuid and urn from the NewDefaultConnectionService value
-    for(uint i = 0; i < serviceItems.count(); i++)
-    {
-      QString type = serviceItems[i].section(':', 0, 0);
-      if(type == "uuid")
-      {
-        // format: uuid:<id>:<class>:<ver>
-        connectionDeviceUdn_ = serviceItems[i].section(':', 0, 1);
-      }
-      else if(type == "urn")
-      {
-        connectionServiceId_ = serviceItems[i];
-      }
-      else
-      {
-        qDebug() << "UPnP::Layer3ForwardingService - Unexpected section"
-                    << " '" << type << "' encountered in NewDefaultConnectionService value." << endl;
-      }
-    }
+		// Extract the uuid and urn from the NewDefaultConnectionService value
+		for(uint i = 0; i < serviceItems.count(); i++)
+		{
+			QString type = serviceItems[i].section(':', 0, 0);
+			if(type == "uuid")
+			{
+				// format: uuid:<id>:<class>:<ver>
+				connectionDeviceUdn_ = serviceItems[i].section(':', 0, 1);
+			} else if(type == "urn") {
+				connectionServiceId_ = serviceItems[i];
+			} else {
+				qDebug() << "UPnP::Layer3ForwardingService - Unexpected section"
+					<< " '" << type << "' encountered in NewDefaultConnectionService value." << endl;
+			}
+		}
 
-    qDebug() << "UPnP::Layer3ForwardingService:"
-              << " udn='"       << connectionDeviceUdn_ << "'"
-              << " serviceid='" << connectionServiceId_ << "'." << endl;
-  }
-  else
-  {
-    qDebug() << "UPnP::Layer3ForwardingService - Unexpected response type"
-                << " '" << responseType << "' encountered." << endl;
-  }
+		qDebug() << "UPnP::Layer3ForwardingService:"
+			<< " udn='"       << connectionDeviceUdn_ << "'"
+			<< " serviceid='" << connectionServiceId_ << "'." << endl;
+	} else {
+		qDebug() << "UPnP::Layer3ForwardingService - Unexpected response type"
+			<< " '" << responseType << "' encountered." << endl;
+	}
 }
 
 
@@ -130,7 +124,7 @@ void Layer3ForwardingService::gotActionResponse(const QString &responseType, con
 // Query the Layer3Forwarding service for the default connection service
 void Layer3ForwardingService::queryDefaultConnectionService()
 {
-  callAction("GetDefaultConnectionService");
+	callAction("GetDefaultConnectionService");
 }
 
 

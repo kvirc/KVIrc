@@ -42,6 +42,17 @@ static bool upnp_kvs_fnc_getExternalIpAddress(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+static bool upnp_kvs_fnc_isGatewayAvailable(KviKvsModuleFunctionCall * c)
+{
+	bool avail;
+
+	if(p_manager)
+		avail = p_manager->isGatewayAvailable();
+
+	c->returnValue()->setBoolean(avail);
+	return true;
+}
+
 static bool upnp_kvs_cmd_test(KviKvsModuleCommandCall * c)
 {
 	return true;
@@ -52,6 +63,7 @@ static bool upnp_module_init(KviModule * m)
 	p_manager = UPnP::Manager::instance();
 	//p_manager->initialize();
 
+	KVSM_REGISTER_FUNCTION(m,"isGatewayAvailable",upnp_kvs_fnc_isGatewayAvailable);
 	KVSM_REGISTER_FUNCTION(m,"getExternalIpAddress",upnp_kvs_fnc_getExternalIpAddress);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"test",upnp_kvs_cmd_test);
 
