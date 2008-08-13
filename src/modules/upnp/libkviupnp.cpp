@@ -29,16 +29,16 @@
 #include "manager.h"
 
 // Please use our common variable naming conventions and coding style :)
-
-UPnP::Manager* p_manager = 0;
+// Let's be so:)
+UPnP::Manager* g_pManager = 0;
 
 
 static bool upnp_kvs_fnc_getExternalIpAddress(KviKvsModuleFunctionCall * c)
 {
 	QString buffer;
 
-	if(p_manager)
-		buffer = p_manager->getExternalIpAddress();
+	if(g_pManager)
+		buffer = g_pManager->getExternalIpAddress();
 
 	c->returnValue()->setString(buffer);
 	return true;
@@ -48,8 +48,8 @@ static bool upnp_kvs_fnc_isGatewayAvailable(KviKvsModuleFunctionCall * c)
 {
 	bool avail;
 
-	if(p_manager)
-		avail = p_manager->isGatewayAvailable();
+	if(g_pManager)
+		avail = g_pManager->isGatewayAvailable();
 
 	c->returnValue()->setBoolean(avail);
 	return true;
@@ -62,7 +62,7 @@ static bool upnp_kvs_cmd_test(KviKvsModuleCommandCall * c)
 
 static bool upnp_module_init(KviModule * m)
 {
-	p_manager = UPnP::Manager::instance();
+	g_pManager = UPnP::Manager::instance();
 	//p_manager->initialize();
 
 	KVSM_REGISTER_FUNCTION(m,"isGatewayAvailable",upnp_kvs_fnc_isGatewayAvailable);
@@ -74,8 +74,8 @@ static bool upnp_module_init(KviModule * m)
 
 static bool upnp_module_cleanup(KviModule *m)
 {
-	delete p_manager;
-	p_manager = 0;
+	delete g_pManager;
+	g_pManager = 0;
 	return true;
 }
 
