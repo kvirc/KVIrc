@@ -2,7 +2,6 @@
 
 SET(kviupnp_SRCS
 	igdcontrolpoint.cpp
-	layer3forwardingservice.cpp
 	libkviupnp.cpp
 	manager.cpp
 	rootservice.cpp

@@ -35,14 +35,12 @@
 #include "igdcontrolpoint.h"
 
 #include "rootservice.h"
-#include "layer3forwardingservice.h"
 #include "wanconnectionservice.h"
 
 namespace UPnP
 {
 
 #define InternetGatewayDeviceType "urn:schemas-upnp-org:device:InternetGatewayDevice:1"
-//#define Layer3ForwardingType      "urn:schemas-upnp-org:service:Layer3Forwarding:1"
 
 #define WanIpConnectionType		"urn:schemas-upnp-org:service:WANIPConnection:1"
 #define WanPPPConnectionType		"urn:schemas-upnp-org:service:WANPPPConnection:1"
@@ -50,7 +48,6 @@ namespace UPnP
 // The constructor
 IgdControlPoint::IgdControlPoint(const QString &hostname, int port, const QString &rootUrl)
 : QObject()
-, m_pForwardingService(0)
 , m_bGatewayAvailable(false)
 , m_iIgdPort(0)
 , m_pRootService(0)
@@ -76,7 +73,6 @@ IgdControlPoint::IgdControlPoint(const QString &hostname, int port, const QStrin
 IgdControlPoint::~IgdControlPoint()
 {
 	delete m_pRootService;
-	delete m_pForwardingService;
 	delete m_pWanConnectionService;
 
 	qDebug() << "DESTROYED UPnP::IgdControlPoint [host=" << m_szIgdHostname << ", port=" << m_iIgdPort << "]" << endl;
@@ -137,36 +133,6 @@ void IgdControlPoint::slotDeviceQueried(bool error)
 		}
 	}
 }
-
-
-/*
-// A WAN connection service was found
-void IgdControlPoint::slotWanConnectionFound(bool error)
-{
-	if(! error)
-	{
-		// Get the retreived service description
-		QString deviceUrn = m_pForwardingService->getConnectionDeviceUdn();
-		QString serviceId = m_pForwardingService->getConnectionServiceId();
-		ServiceParameters params = m_pRootService->getServiceById(serviceId, deviceUrn);
-
-		if(! params.controlUrl.isNull())
-		{
-			qDebug() << "UPnP::IgdControlPoint: wan/ipconnection service found, "
-					<< "querying service '" << params.serviceId << "' for external ip address..." << endl;
-
-			// Call the service
-			m_pWanConnectionService = new WanConnectionService(params);
-			connect(m_pWanConnectionService, SIGNAL(queryFinished(bool)), this, SLOT(slotWanQueryFinished(bool)));
-			m_pWanConnectionService->queryExternalIpAddress();
-		}
-	}
-
-	// No longer need the forwarding service
-	m_pForwardingService->deleteLater();
-	m_pForwardingService = 0;
-}
-*/
 
 
 // A WAN connection query was finished
