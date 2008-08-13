@@ -103,7 +103,7 @@ void SsdpConnection::slotDataReceived()
 		QString location  = sspdResponse.mid(locationStart, locationEnd - locationStart);
 
 		// Parse the URL syntax using KURL
-		QUrl url(location);
+		QUrl url(location.trimmed());
 
 		qDebug("Found internet gateway: %s\n", location.toUtf8().data());
 		// Emit success

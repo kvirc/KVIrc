@@ -39,6 +39,8 @@
 namespace UPnP
 {
 
+#define InternetGatewayDeviceType "urn:schemas-upnp-org:device:InternetGatewayDevice:1"
+
 /**
  * The services of a device can be retrieved using the device root service.
  * The URL of the root service is returned by an SSDP broadcast.

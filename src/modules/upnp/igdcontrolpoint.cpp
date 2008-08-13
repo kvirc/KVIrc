@@ -40,8 +40,6 @@
 namespace UPnP
 {
 
-#define InternetGatewayDeviceType "urn:schemas-upnp-org:device:InternetGatewayDevice:1"
-
 #define WanIpConnectionType		"urn:schemas-upnp-org:service:WANIPConnection:1"
 #define WanPPPConnectionType		"urn:schemas-upnp-org:service:WANPPPConnection:1"
 
@@ -121,6 +119,9 @@ void IgdControlPoint::slotDeviceQueried(bool error)
 
 		if(! params.controlUrl.isNull())
 		{
+
+			m_bGatewayAvailable = true;
+
 			qDebug() << "UPnP::IgdControlPoint: wan/ipconnection service found, "
 					<< "querying service '" << params.serviceId << "' for external ip address..." << endl;
 
@@ -141,7 +142,6 @@ void IgdControlPoint::slotWanQueryFinished(bool error)
 	if(! error)
 	{
 		qDebug() << "IgdControlPoint: UPnP Gateway Device found." << endl;
-		m_bGatewayAvailable = true;
 	} else {
 		// Just started, the request for the external IP failed. This should succeed, abort portation
 		qDebug() << "Requesting external IP address failed, leaving UPnP Gateway Device untouched." << endl;

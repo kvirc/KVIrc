@@ -32,6 +32,10 @@
 
 #include "rootservice.h"
 #include "xmlfunctions.h"
+#include "kvi_locale.h"
+#include "kvi_out.h"
+#include "kvi_app.h"
+#include "kvi_console.h"
 
 #include <QDebug>
 
@@ -155,6 +159,23 @@ void RootService::addDeviceServices(const QDomNode &device)
 {
 	qDebug() << "UPnP Discovered device " << XmlFunctions::getNodeValue(device, "/UDN") << endl;
 
+	if(XmlFunctions::getNodeValue(device, "/deviceType") == InternetGatewayDeviceType)
+	{
+		QString description;
+		description = XmlFunctions::getNodeValue(device, "/friendlyName");
+		if(description.isNull())
+			description = XmlFunctions::getNodeValue(device, "/modelDescription");
+		if(description.isNull())
+			description = XmlFunctions::getNodeValue(device, "/modelName") + " " + XmlFunctions::getNodeValue(device, "/modelNumber");
+		if(description.isNull())
+			description = __tr2qs("Unknown");
+
+		qDebug() << "Model: " << description << endl;
+
+		g_pApp->activeConsole()->output(KVI_OUT_GENERICSTATUS,__tr2qs_ctx("[UPNP]: Found gateway device: %s","upnp"), description.toUtf8().data());
+
+
+	}
 	// Insert the given device node
 	// The "key" is the device/UDN tag, the value is a list of device/serviceList/service nodes
 	m_deviceServices.insert(XmlFunctions::getNodeValue(device, "/UDN"),
