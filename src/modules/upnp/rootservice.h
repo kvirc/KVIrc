@@ -62,11 +62,11 @@ public:  // public methods
 	// Return a service from the cached root device entry
 	ServiceParameters    getServiceById(const QString &serviceId) const;
 	// Return a service from a cached embedded device entry
-	ServiceParameters    getServiceById(const QString &serviceId, const QString &deviceUdn) const;
+	bool                 getServiceById(const QString &serviceId, const QString &deviceUdn, ServiceParameters &params) const;
 	// Return a service from the cached root device entry
 	ServiceParameters    getServiceByType(const QString &serviceType) const;
 	// Return a service from a cached embedded device entry
-	ServiceParameters    getServiceByType(const QString &serviceType, const QString &deviceUdn) const;
+	bool                 getServiceByType(const QString &serviceType, const QString &deviceUdn, ServiceParameters &params) const;
 
 	// Query the device for its service list
 	void                 queryDevice();

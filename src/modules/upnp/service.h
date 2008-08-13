@@ -120,6 +120,11 @@ private:
 	// The Type of the service
 	QString              m_szServiceType;
 
+	// hostname
+	QString              m_szHostname;
+	//port
+	int                  m_iPort;
+
 signals:
 	// Called when a query completed
 	void                 queryFinished(bool error);

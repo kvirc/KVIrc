@@ -178,24 +178,29 @@ QString RootService::getDeviceType() const
 }
 
 
-
 // Return a service from the cached root device entry
 ServiceParameters RootService::getServiceById(const QString &serviceId) const
 {
 	// Get a /root/device/serviceList/service/ tag
-	return getServiceById(serviceId, m_szRootUdn);
+
+	ServiceParameters params;
+	QMap<QString,QDomNodeList>::const_iterator i = m_deviceServices.constBegin();
+	while (i != m_deviceServices.constEnd()) {
+		if(getServiceById(serviceId, i.key(), params))
+			return params;
+		++i;
+	}
+
+	//calling function check this field to understand if the struct is null
+	params.controlUrl = QString::null;
+	return params;
 }
 
-
-
 // Return a service from a cached embedded device entry
-ServiceParameters RootService::getServiceById(const QString &serviceId, const QString &deviceUdn) const
+bool RootService::getServiceById(const QString &serviceId, const QString &deviceUdn, ServiceParameters &params) const
 {
 	// Get a /root/device/deviceList/device/.../serviceList/service/serviceId tag
 	QDomNode service = XmlFunctions::getNodeChildByKey( m_deviceServices[deviceUdn], "serviceId", serviceId );
-
-	// Initialize a ServiceParameters struct
-	ServiceParameters params;
 
 	if(! service.isNull())
 	{
@@ -205,33 +210,40 @@ ServiceParameters RootService::getServiceById(const QString &serviceId, const QS
 		params.scpdUrl    = XmlFunctions::getNodeValue(service, "/SCPDURL");
 		params.serviceId  = XmlFunctions::getNodeValue(service, "/serviceId");
 		params.serviceType = XmlFunctions::getNodeValue(service, "/serviceType");
+
+		return true;
 	} else {
-	qWarning() << "UPnP::RootService::getServiceById -"
-		<< " id '" << serviceId << "' not found for device '" << deviceUdn << "'." << endl;
+		return false;
 	}
-
-	return params;
 }
-
 
 
 // Return a service from the cached root device entry
 ServiceParameters RootService::getServiceByType(const QString &serviceType) const
 {
 	// Get a /root/device/serviceList/service/ tag
-	return getServiceByType(serviceType, m_szRootUdn);
+
+	ServiceParameters params;
+	QMap<QString,QDomNodeList>::const_iterator i = m_deviceServices.constBegin();
+	while (i != m_deviceServices.constEnd()) {
+		if(getServiceByType(serviceType, i.key(), params))
+			return params;
+		++i;
+	}
+
+	//calling function check this field to understand if the struct is null
+	params.controlUrl = QString::null;
+	return params;
+
 }
 
 
 
 // Return a service from a cached embedded device entry
-ServiceParameters RootService::getServiceByType(const QString &serviceType, const QString &deviceUdn) const
+bool RootService::getServiceByType(const QString &serviceType, const QString &deviceUdn, ServiceParameters &params) const
 {
 	// Get a /root/device/deviceList/device/.../serviceList/service/serviceType tag
 	QDomNode service = XmlFunctions::getNodeChildByKey( m_deviceServices[deviceUdn], "serviceType", serviceType );
-
-	// Initialize a ServiceParameters struct
-	ServiceParameters params;
 
 	if(! service.isNull())
 	{
@@ -241,12 +253,14 @@ ServiceParameters RootService::getServiceByType(const QString &serviceType, cons
 		params.scpdUrl    = XmlFunctions::getNodeValue(service, "/SCPDURL");
 		params.serviceId  = XmlFunctions::getNodeValue(service, "/serviceId");
 		params.serviceType = serviceType;
+
+		return true;
 	} else {
 	qWarning() << "UPnP::RootService::getServiceByType -"
 		<< " type '" << serviceType << "' not found for device '" << deviceUdn << "'." << endl;
-	}
 
-	return params;
+		return false;
+	}
 }
 
 

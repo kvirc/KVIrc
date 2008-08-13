@@ -51,6 +51,8 @@ namespace UPnP
 // The constructor for information services
 Service::Service(const QString &hostname, int port, const QString &informationUrl)
 : m_szInformationUrl(informationUrl)
+, m_szHostname(hostname)
+, m_iPort(port)
 , m_iPendingRequests(0)
 {
 	m_pHttp = new QHttp(hostname, port);
@@ -67,6 +69,8 @@ Service::Service(const ServiceParameters &params)
 , m_iPendingRequests(0)
 , m_szServiceId(params.serviceId)
 , m_szServiceType(params.serviceType)
+, m_szHostname(params.hostname)
+, m_iPort(params.port)
 {
 	m_pHttp = new QHttp(params.hostname, params.port);
 	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
@@ -106,7 +110,7 @@ int Service::callAction(const QString &actionName, const QMap<QString,QString> &
 // Makes a UPnP action request (keeps pointers from the external interface)
 int Service::callActionInternal(const QString &actionName, const QMap<QString,QString> *arguments)
 {
-	qDebug() << "UPnP::Service: calling remote prodecure '" << actionName << "'." << endl;
+	qDebug() << "UPnP::Service: calling remote procedure '" << actionName << "'." << endl;
 
 	// Create the data message
 	//NOTE: we shouldm use serviceId_ instead of serviceType_ , but it seems that my router
@@ -122,10 +126,11 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 
 	// this router wants us to use servicetype in the following requests
 
-	QString soapMessage = "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
-				" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
-				"<s:Body>"
-				"<u:" + actionName + " xmlns:u=\"" + m_szServiceType + "\">";
+	QString soapMessage = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n"
+				"<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
+				" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n"
+				" <s:Body>\n"
+				"  <u:" + actionName + " xmlns:u=\"" + m_szServiceType + "\">\n";
 
 	// Do we have any arguments?
 	if(arguments != 0)
@@ -140,21 +145,27 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 	}
 
 	// Add the closing tags
-	soapMessage += "</u:" + actionName + "></s:Body></s:Envelope>";
+	soapMessage += "  </u:" + actionName + ">\n </s:Body>\n</s:Envelope>\n";
 
 	// Get an utf8 encoding string
 	QByteArray content = soapMessage.toUtf8().data();
 
 	// Create the HTTP header
 	QHttpRequestHeader header("POST", m_szControlUrl);
-	header.setContentType("text/xml; charset=\"utf-8\"");
+	header.setContentType("text/xml");
 	header.setContentLength(content.size());
-	header.setValue("SoapAction", m_szServiceType + "#" + actionName);
+	header.setValue("SOAPAction", "\"" + m_szServiceType + "#" + actionName + "\"");
+	QString port;
+	port.setNum(m_iPort);
+	header.setValue("HOST", m_szHostname + ":" + port);
 
 	// Send the POST request
 	m_iPendingRequests++;
+
+	qDebug() << "Sending request:\n" << header.toString() << "\n---" << content << endl;
 	return m_pHttp->request(header, content);
 }
+
 
 
 
@@ -214,14 +225,14 @@ void Service::slotRequestFinished(int id, bool error)
 
 	if(! error)
 	{
-		// Not sure why this happens
+		// an answer with 0 bytes is probably an error
 		if(m_pHttp->bytesAvailable() > 0)
 		{
 			// Get the XML content
 			QByteArray   response = m_pHttp->readAll();
 			QDomDocument xml;
 
-			// TODO: handle 401 Authorisation required messages
+			qDebug() << "Response:\n" << response << "\n---\n";
 
 			// Parse the XML
 			QString errorMessage;
@@ -229,8 +240,32 @@ void Service::slotRequestFinished(int id, bool error)
 
 			if(! error)
 			{
+				//extract the xml prefix used by the device; should be "s"
+
+				//this is the reply of my Zyxel:
+				// <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" >
+				//  <SOAP-ENV:Body>
+				//   <u:GetDefaultConnectionServiceResponse xmlns:u="urn:schemas-upnp-org:service:Layer3Forwarding:1" >
+				//    <NewDefaultConnectionService>WANIPConnection</NewDefaultConnectionService>
+				//   </u:GetDefaultConnectionServiceResponse>
+				//  </SOAP-ENV:Body>
+				// </SOAP-ENV:Envelope>
+
+				QString baseNamespace = xml.documentElement().tagName();
+
+				if(baseNamespace.length() > 0)
+				{
+					int cutAt = baseNamespace.indexOf(':');
+					if(cutAt > -1)
+					{
+						baseNamespace.truncate(cutAt);
+						qDebug() << "Device is using " << baseNamespace << " as xml namespace" << endl;
+					} else {
+						baseNamespace = "s";
+					}
+				}
 				// Determine how to process the data
-				if(xml.namedItem("s:Envelope").isNull())
+				if(xml.namedItem(baseNamespace + ":Envelope").isNull())
 				{
 					qDebug() << "UPnP::Service: Plain XML detected, calling gotInformationResponse()." << endl;
 					// No SOAP envelope found, this is a normal response to callService()
@@ -238,13 +273,13 @@ void Service::slotRequestFinished(int id, bool error)
 				} else {
 					qDebug() << xml.toString() << endl;
 					// Got a SOAP message response to callAction()
-					QDomNode resultNode = XmlFunctions::getNode(xml, "/s:Envelope/s:Body").firstChild();
+					QDomNode resultNode = XmlFunctions::getNode(xml, "/" + baseNamespace + ":Envelope/" + baseNamespace + ":Body").firstChild();
 
-					error = (resultNode.nodeName() == "s:Fault");
+					error = (resultNode.nodeName() == baseNamespace + ":Fault");
 
 					if(! error)
 					{
-						if(resultNode.nodeName().startsWith("m:"))
+						if(resultNode.nodeName().startsWith("m:") || resultNode.nodeName().startsWith("u:"))
 						{
 							qDebug() << "UPnP::Service: SOAP Envelope detected, calling gotActionResponse()." << endl;
 							// Action success, return SOAP body

@@ -42,8 +42,10 @@ namespace UPnP
 {
 
 #define InternetGatewayDeviceType "urn:schemas-upnp-org:device:InternetGatewayDevice:1"
-#define Layer3ForwardingType      "urn:schemas-upnp-org:service:Layer3Forwarding:1"
+//#define Layer3ForwardingType      "urn:schemas-upnp-org:service:Layer3Forwarding:1"
 
+#define WanIpConnectionType		"urn:schemas-upnp-org:service:WANIPConnection:1"
+#define WanPPPConnectionType		"urn:schemas-upnp-org:service:WANPPPConnection:1"
 
 // The constructor
 IgdControlPoint::IgdControlPoint(const QString &hostname, int port, const QString &rootUrl)
@@ -116,26 +118,28 @@ void IgdControlPoint::slotDeviceQueried(bool error)
 {
 	if(! error)
 	{
-		// Get the Layer3ForwardingService from the retrieved service list
-		ServiceParameters params = m_pRootService->getServiceByType(Layer3ForwardingType);
+		ServiceParameters params = m_pRootService->getServiceByType(WanIpConnectionType);
+
+		if(params.controlUrl.isNull())
+			params = m_pRootService->getServiceByType(WanPPPConnectionType);
 
 		if(! params.controlUrl.isNull())
 		{
-			qDebug() << "UPnP::IgdControlPoint: Services found, "
-					<< "querying service '" << params.serviceId << "' for port mapping service..." << endl;
+			qDebug() << "UPnP::IgdControlPoint: wan/ipconnection service found, "
+					<< "querying service '" << params.serviceId << "' for external ip address..." << endl;
 
 			// Call the service
-			m_pForwardingService = new Layer3ForwardingService(params);
-			connect(m_pForwardingService, SIGNAL(queryFinished(bool)), this, SLOT(slotWanConnectionFound(bool)));
-			m_pForwardingService->queryDefaultConnectionService();
+			m_pWanConnectionService = new WanConnectionService(params);
+			connect(m_pWanConnectionService, SIGNAL(queryFinished(bool)), this, SLOT(slotWanQueryFinished(bool)));
+			m_pWanConnectionService->queryExternalIpAddress();
 		} else {
-			qDebug() << "UPnP::IgdControlPoint: No Layer3Forwarding service found on device" << endl;
+			qDebug() << "UPnP::IgdControlPoint: no ppp/ipconnection service found :(" << endl;
 		}
 	}
 }
 
 
-
+/*
 // A WAN connection service was found
 void IgdControlPoint::slotWanConnectionFound(bool error)
 {
@@ -162,7 +166,7 @@ void IgdControlPoint::slotWanConnectionFound(bool error)
 	m_pForwardingService->deleteLater();
 	m_pForwardingService = 0;
 }
-
+*/
 
 
 // A WAN connection query was finished

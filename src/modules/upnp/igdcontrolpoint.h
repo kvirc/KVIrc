@@ -75,7 +75,7 @@ private slots:
 	// The IGD was queried for it's services
 	void                 slotDeviceQueried(bool error);
 	// A WAN connection service was found
-	void                 slotWanConnectionFound(bool error);
+	//void                 slotWanConnectionFound(bool error);
 	// A WAN connection query was finished
 	void                 slotWanQueryFinished(bool error);
 
