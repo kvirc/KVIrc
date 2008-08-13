@@ -74,7 +74,7 @@ QSize KviTalIconAndRichTextItemDelegate::sizeHint( const QStyleOptionViewItem & 
 	QString text=index.data(Qt::DisplayRole).toString();
 	QTextDocument doc;
 	doc.setHtml( text );
-	int height=doc.documentLayout()->documentSize().height();
+	int height=doc.documentLayout()->documentSize().toSize().height();
 	if (height<(LVI_ICON_SIZE+(2 * LVI_BORDER))) height=LVI_ICON_SIZE;
 	return QSize(((QListWidget*)parent())->viewport()->size().width(), height + (2 * LVI_BORDER));
 }

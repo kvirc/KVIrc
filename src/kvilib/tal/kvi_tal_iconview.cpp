@@ -93,7 +93,7 @@ void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionVi
 		QColor col=brush.color();
 		col.setAlpha(127);
 		brush.setColor(col);
-		QRect textRect=QRect(QPoint(0,2),QSize(doc.documentLayout()->documentSize().width(),doc.documentLayout()->documentSize().height()-4));
+		QRect textRect=QRect(QPoint(0,2),QSize(doc.documentLayout()->documentSize().toSize().width(),doc.documentLayout()->documentSize().toSize().height()-4));
 		painter->fillRect(textRect,brush);
 	}
 	painter->restore();

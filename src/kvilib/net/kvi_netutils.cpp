@@ -29,7 +29,10 @@
 #define _KVI_NETUTILS_CPP_
 
 #define NTDDI_VERSION NTDDI_WINXP
-#define _WIN32_WINNT _WIN32_WINNT_WINXP
+
+#ifndef _WIN32_WINNT
+        #define _WIN32_WINNT _WIN32_WINNT_WINXP
+#endif
 
 #include "kvi_netutils.h"
 #include "kvi_memmove.h"

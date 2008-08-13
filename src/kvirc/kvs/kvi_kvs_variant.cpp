@@ -1104,7 +1104,7 @@ KviKvsVariant* KviKvsVariant::unserializeInteger(const QChar** aux,QString& data
 	kvs_int_t value = data.toInt();
 	if(!exponent.isNull())
 	{
-		value*=pow(10.0,exponent.toInt());
+		value*= (kvs_int_t) pow(10.0,exponent.toInt());
 	}
 	return new KviKvsVariant(value);
 }

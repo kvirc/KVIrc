@@ -1134,7 +1134,7 @@ void KviChannel::ownMessage(const QString &buffer)
 				//if szTmp.length() == 0 we already have break'ed out from here,
 				// so we can safely use it as a divisor
 				fPosDiff = (float)maxMsgLen / szTmp.length();
-				iPos=iPos*fPosDiff; // cut the string at each cycle
+				iPos=(int) (iPos*fPosDiff); // cut the string at each cycle
 				//printf("OPTIMIZATION: fPosDiff %f, iPos %d\n", fPosDiff, iPos);
 			}
 			//printf("Multi message: %d optimization cyles", iC);

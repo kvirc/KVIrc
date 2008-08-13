@@ -751,8 +751,10 @@ void KviApp::setupBegin()
 		KviMessageBox::warning(__tr2qs("Ops...it looks like I can't load modules on this sytem.\n" \
 			"I have been looking for the %s library but I haven't been able to load it\n" \
 			"due to the following error: \"%s\"\nAborting."),szSetupLib.toUtf8().data(),kvi_library_error());
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
+#elif defined(COMPILE_ON_MINGW)
+                ExitProcess(1);
 #else
 		::exit(-1);
 #endif
@@ -764,8 +766,10 @@ void KviApp::setupBegin()
 		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
 			"The setup module does not export the \"setup_begin\" function.\n" \
 			"Aborting!"));
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
+#elif defined(COMPILE_ON_MINGW)
+                ExitProcess(1);
 #else
 		::exit(-1);
 #endif
@@ -776,8 +780,10 @@ void KviApp::setupBegin()
 	if(!bRet)
 	{
 		KviMessageBox::warning(__tr2qs("Setup aborted"));
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
+#elif defined(COMPILE_ON_MINGW)
+                ExitProcess(1);
 #else
 		::exit(-1);
 #endif

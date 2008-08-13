@@ -337,8 +337,11 @@ ENDIF()
 TARGET_LINK_LIBRARIES(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
 
 IF(MINGW)
-	# Needed for linking
-	SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc" ENABLE_EXPORTS ON)
+        IF(WANT_DEBUG)
+        	SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc" ENABLE_EXPORTS ON)
+        ELSE()
+        	SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -mwindows" ENABLE_EXPORTS ON)
+        ENDIF()
 ENDIF()
 
 IF(MSVC)

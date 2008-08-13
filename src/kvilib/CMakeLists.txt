@@ -16,7 +16,6 @@ SET(kvilib_MOC_HDRS
 	ext/kvi_garbage.h
 	ext/kvi_regusersdb.h
 	ext/kvi_sharedfiles.h
-	ext/kvi_dbusadaptor.h
 	irc/kvi_ircuserdb.h
 	net/kvi_dns.h
 	net/kvi_http.h
