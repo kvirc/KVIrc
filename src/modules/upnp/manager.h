@@ -91,19 +91,19 @@ private:  // private methods
 
 private:
 	// The active control point we're working with
-	IgdControlPoint     *activeIgdControlPoint_;
+	IgdControlPoint     *m_pActiveIgdControlPoint;
 	// True if the broadcast failed (false during the discovery process)
-	bool                 broadcastFailed_;
+	bool                 m_bBroadcastFailed;
 	// True if the broadcast found a device (false during the discovery process)
-	bool                 broadcastFoundIt_;
+	bool                 m_bBroadcastFoundIt;
 	// The instance of the singleton class
-	static Manager      *instance_;
+	static Manager      *m_pInstance;
 	// A list of all detected gateway devices
-	KviPointerList<IgdControlPoint> igdControlPoints_;
+	KviPointerList<IgdControlPoint> m_lIgdControlPoints;
 	// The SSDP connection to find all UPnP devices
-	SsdpConnection      *ssdpConnection_;
+	SsdpConnection      *m_pSsdpConnection;
 	// The timer to detect a broadcast timeout
-	QTimer              *ssdpTimer_;
+	QTimer              *m_pSsdpTimer;
 };
 
 

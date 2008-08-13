@@ -136,8 +136,8 @@ namespace UPnP
 // The contructor
 RootService::RootService(const QString &hostname, int port, const QString &rootUrl)
 : Service(hostname, port, rootUrl)
-, hostname_(hostname)
-, port_(port)
+, m_szHostname(hostname)
+, m_iPort(port)
 {
 
 }
@@ -157,7 +157,7 @@ void RootService::addDeviceServices(const QDomNode &device)
 
 	// Insert the given device node
 	// The "key" is the device/UDN tag, the value is a list of device/serviceList/service nodes
-	deviceServices_.insert(XmlFunctions::getNodeValue(device, "/UDN"),
+	m_deviceServices.insert(XmlFunctions::getNodeValue(device, "/UDN"),
 				device.namedItem("serviceList").childNodes());
 
 	// Find all embedded device nodes
@@ -174,7 +174,7 @@ void RootService::addDeviceServices(const QDomNode &device)
 // Return the device type
 QString RootService::getDeviceType() const
 {
-	return deviceType_;
+	return m_szDeviceType;
 }
 
 
@@ -183,7 +183,7 @@ QString RootService::getDeviceType() const
 ServiceParameters RootService::getServiceById(const QString &serviceId) const
 {
 	// Get a /root/device/serviceList/service/ tag
-	return getServiceById(serviceId, rootUdn_);
+	return getServiceById(serviceId, m_szRootUdn);
 }
 
 
@@ -192,15 +192,15 @@ ServiceParameters RootService::getServiceById(const QString &serviceId) const
 ServiceParameters RootService::getServiceById(const QString &serviceId, const QString &deviceUdn) const
 {
 	// Get a /root/device/deviceList/device/.../serviceList/service/serviceId tag
-	QDomNode service = XmlFunctions::getNodeChildByKey( deviceServices_[deviceUdn], "serviceId", serviceId );
+	QDomNode service = XmlFunctions::getNodeChildByKey( m_deviceServices[deviceUdn], "serviceId", serviceId );
 
 	// Initialize a ServiceParameters struct
 	ServiceParameters params;
 
 	if(! service.isNull())
 	{
-		params.hostname   = hostname_;
-		params.port       = port_;
+		params.hostname   = m_szHostname;
+		params.port       = m_iPort;
 		params.controlUrl = XmlFunctions::getNodeValue(service, "/controlURL");
 		params.scpdUrl    = XmlFunctions::getNodeValue(service, "/SCPDURL");
 		params.serviceId  = XmlFunctions::getNodeValue(service, "/serviceId");
@@ -219,7 +219,7 @@ ServiceParameters RootService::getServiceById(const QString &serviceId, const QS
 ServiceParameters RootService::getServiceByType(const QString &serviceType) const
 {
 	// Get a /root/device/serviceList/service/ tag
-	return getServiceByType(serviceType, rootUdn_);
+	return getServiceByType(serviceType, m_szRootUdn);
 }
 
 
@@ -228,15 +228,15 @@ ServiceParameters RootService::getServiceByType(const QString &serviceType) cons
 ServiceParameters RootService::getServiceByType(const QString &serviceType, const QString &deviceUdn) const
 {
 	// Get a /root/device/deviceList/device/.../serviceList/service/serviceType tag
-	QDomNode service = XmlFunctions::getNodeChildByKey( deviceServices_[deviceUdn], "serviceType", serviceType );
+	QDomNode service = XmlFunctions::getNodeChildByKey( m_deviceServices[deviceUdn], "serviceType", serviceType );
 
 	// Initialize a ServiceParameters struct
 	ServiceParameters params;
 
 	if(! service.isNull())
 	{
-		params.hostname   = hostname_;
-		params.port       = port_;
+		params.hostname   = m_szHostname;
+		params.port       = m_iPort;
 		params.controlUrl = XmlFunctions::getNodeValue(service, "/controlURL");
 		params.scpdUrl    = XmlFunctions::getNodeValue(service, "/SCPDURL");
 		params.serviceId  = XmlFunctions::getNodeValue(service, "/serviceId");
@@ -255,12 +255,12 @@ ServiceParameters RootService::getServiceByType(const QString &serviceType, cons
 void RootService::gotInformationResponse(const QDomNode &response)
 {
 	// Register all device UDN nodes for later
-	deviceServices_.clear();
+	m_deviceServices.clear();
 	addDeviceServices( XmlFunctions::getNode(response, "/device") );
 
 	// Fetch the required data
-	deviceType_ = XmlFunctions::getNodeValue(response, "/device/deviceType");
-	rootUdn_    = XmlFunctions::getNodeValue(response, "/device/UDN");
+	m_szDeviceType = XmlFunctions::getNodeValue(response, "/device/deviceType");
+	m_szRootUdn    = XmlFunctions::getNodeValue(response, "/device/UDN");
 
 	// The rootUdn_ is used to retrieve
 	// the /root/device/serviceList/service

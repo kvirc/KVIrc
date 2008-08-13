@@ -35,23 +35,19 @@ UPnP::Manager* g_pManager = 0;
 
 static bool upnp_kvs_fnc_getExternalIpAddress(KviKvsModuleFunctionCall * c)
 {
-	QString buffer;
-
 	if(g_pManager)
-		buffer = g_pManager->getExternalIpAddress();
-
-	c->returnValue()->setString(buffer);
+	{
+	  c->returnValue()->setString(g_pManager->getExternalIpAddress());
+	}
 	return true;
 }
 
 static bool upnp_kvs_fnc_isGatewayAvailable(KviKvsModuleFunctionCall * c)
 {
-	bool avail;
-
-	if(g_pManager)
-		avail = g_pManager->isGatewayAvailable();
-
-	c->returnValue()->setBoolean(avail);
+        if (g_pManager)
+        {
+          c->returnValue()->setBoolean(g_pManager->isGatewayAvailable());
+        }
 	return true;
 }
 

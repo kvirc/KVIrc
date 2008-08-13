@@ -84,15 +84,15 @@ private:  // Private methods
 
 private:
 	// The device type
-	QString                     deviceType_;
+	QString                     m_szDeviceType;
 	// A collection of all services provided by the device
-	QMap<QString,QDomNodeList>  deviceServices_;
+	QMap<QString,QDomNodeList>  m_deviceServices;
 	// The hostname of the device
-	QString                     hostname_;
+	QString                     m_szHostname;
 	// The port of the device
-	int                         port_;
+	int                         m_iPort;
 	// The udn of the root device
-	QString                     rootUdn_;
+	QString                     m_szRootUdn;
 };
 
 }

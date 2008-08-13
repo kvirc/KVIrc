@@ -45,16 +45,16 @@ namespace UPnP
 SsdpConnection::SsdpConnection()
 : QObject()
 {
-	socket_ = new QUdpSocket();
-	connect(socket_, SIGNAL(readyRead()), this, SLOT(slotDataReceived()));
+	m_pSocket = new QUdpSocket();
+	connect(m_pSocket, SIGNAL(readyRead()), this, SLOT(slotDataReceived()));
 }
 
 SsdpConnection::~SsdpConnection()
 {
-	if(socket_ != 0)
+	if(m_pSocket != 0)
 	{
-		socket_->close();
-		delete socket_;
+		m_pSocket->close();
+		delete m_pSocket;
 	}
 }
 
@@ -63,7 +63,7 @@ SsdpConnection::~SsdpConnection()
 // Data was received by the socket
 void SsdpConnection::slotDataReceived()
 {
-	qDebug() << "UPnP::SsdpConnection: received " << socket_->bytesAvailable() << " bytes." << endl;
+	qDebug() << "UPnP::SsdpConnection: received " << m_pSocket->bytesAvailable() << " bytes." << endl;
 
 	// Response from Diederik's Acatel router:
 	//
@@ -86,10 +86,10 @@ void SsdpConnection::slotDataReceived()
 	//   Server: ZyXEL-RomPlug/4.51 UPnP/1.0 IGD/1.00
 	//   Ext:
 
-	while (socket_->hasPendingDatagrams()) {
+	while (m_pSocket->hasPendingDatagrams()) {
 		QByteArray datagram;
-		datagram.resize(socket_->pendingDatagramSize());
-		socket_->readDatagram(datagram.data(), datagram.size());
+		datagram.resize(m_pSocket->pendingDatagramSize());
+		m_pSocket->readDatagram(datagram.data(), datagram.size());
 
 		qDebug("Received datagram: %s\n",datagram.data());
 
@@ -130,7 +130,7 @@ void SsdpConnection::queryDevices(int bindPort)
 			"\r\n";
 
 	// Bind the socket to a certain port
-	bool success = socket_->bind(bindPort);
+	bool success = m_pSocket->bind(bindPort);
 	if(! success)
 	{
 		qDebug() << "UPnP::SsdpConnection: Failed to bind to port " << bindPort << "." << endl;
@@ -138,7 +138,7 @@ void SsdpConnection::queryDevices(int bindPort)
 
 	// Send the data
 	QByteArray dataBlock = data.utf8();
-	int bytesWritten = socket_->writeDatagram(dataBlock.data(), dataBlock.size(), address, 1900);
+	int bytesWritten = m_pSocket->writeDatagram(dataBlock.data(), dataBlock.size(), address, 1900);
 
 	if(bytesWritten == -1)
 	{

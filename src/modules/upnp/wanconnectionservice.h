@@ -101,11 +101,11 @@ class WanConnectionService : public Service
 
   private:  // private attributes
     // The external IP address
-    QString              externalIpAddress_;
+    QString              m_szExternalIpAddress;
     // True if NAT is enabled
-    bool                 natEnabled_;
+    bool                 m_bNatEnabled;
     // The current port mappings
-    KviPointerList<PortMapping> portMappings_;
+    KviPointerList<PortMapping> m_lPortMappings;
 };
 
 }

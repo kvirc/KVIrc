@@ -50,28 +50,28 @@ namespace UPnP
 
 // The constructor for information services
 Service::Service(const QString &hostname, int port, const QString &informationUrl)
-: informationUrl_(informationUrl)
-, pendingRequests_(0)
+: m_szInformationUrl(informationUrl)
+, m_iPendingRequests(0)
 {
-	http_ = new QHttp(hostname, port);
-	connect(http_, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
+	m_pHttp = new QHttp(hostname, port);
+	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
 
-	qDebug() << "UPnP::Service: Created information service url='" << informationUrl_ << "'." << endl;
+	qDebug() << "UPnP::Service: Created information service url='" << m_szInformationUrl << "'." << endl;
 }
 
 
 // The constructor for action services
 Service::Service(const ServiceParameters &params)
-: controlUrl_(params.controlUrl)
-, informationUrl_(params.scpdUrl)
-, pendingRequests_(0)
-, serviceId_(params.serviceId)
-, serviceType_(params.serviceType)
+: m_szControlUrl(params.controlUrl)
+, m_szInformationUrl(params.scpdUrl)
+, m_iPendingRequests(0)
+, m_szServiceId(params.serviceId)
+, m_szServiceType(params.serviceType)
 {
-	http_ = new QHttp(params.hostname, params.port);
-	connect(http_, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
+	m_pHttp = new QHttp(params.hostname, params.port);
+	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
 
-	qDebug() << "CREATED UPnP::Service: url='" << controlUrl_ << "' id='" << serviceId_ << "'." << endl;
+	qDebug() << "CREATED UPnP::Service: url='" << m_szControlUrl << "' id='" << m_szServiceId << "'." << endl;
 }
 
 
@@ -79,9 +79,9 @@ Service::Service(const ServiceParameters &params)
 // The destructor
 Service::~Service()
 {
-	qDebug() << "DESTROYED UPnP::Service [url=" << controlUrl_ << ",  id=" << serviceId_ << "]" << endl;
+	qDebug() << "DESTROYED UPnP::Service [url=" << m_szControlUrl << ",  id=" << m_szServiceId << "]" << endl;
 
-	delete http_;
+	delete m_pHttp;
 }
 
 
@@ -125,7 +125,7 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 	QString soapMessage = "<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
 				" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">"
 				"<s:Body>"
-				"<u:" + actionName + " xmlns:u=\"" + serviceType_ + "\">";
+				"<u:" + actionName + " xmlns:u=\"" + m_szServiceType + "\">";
 
 	// Do we have any arguments?
 	if(arguments != 0)
@@ -146,14 +146,14 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 	QByteArray content = soapMessage.toUtf8().data();
 
 	// Create the HTTP header
-	QHttpRequestHeader header("POST", controlUrl_);
+	QHttpRequestHeader header("POST", m_szControlUrl);
 	header.setContentType("text/xml; charset=\"utf-8\"");
 	header.setContentLength(content.size());
-	header.setValue("SoapAction", serviceType_ + "#" + actionName);
+	header.setValue("SoapAction", m_szServiceType + "#" + actionName);
 
 	// Send the POST request
-	pendingRequests_++;
-	return http_->request(header, content);
+	m_iPendingRequests++;
+	return m_pHttp->request(header, content);
 }
 
 
@@ -162,12 +162,12 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 // TODO: rename to downloadFile()
 int Service::callInformationUrl()
 {
-	qDebug() << "UPnP::Service: requesting file '" << informationUrl_ << "'." << endl;
+	qDebug() << "UPnP::Service: requesting file '" << m_szInformationUrl << "'." << endl;
 
 	// Send the GET request
 	// TODO: User-Agent: Mozilla/4.0 (compatible; UPnP/1.0; Windows NT/5.1)
-	pendingRequests_++;
-	return http_->get(informationUrl_);
+	m_iPendingRequests++;
+	return m_pHttp->get(m_szInformationUrl);
 }
 
 
@@ -175,7 +175,7 @@ int Service::callInformationUrl()
 // Get the number of pending requests
 int Service::getPendingRequests() const
 {
-	return pendingRequests_;
+	return m_iPendingRequests;
 }
 
 
@@ -210,15 +210,15 @@ void Service::gotInformationResponse(const QDomNode &response)
 // The QHttp object retrieved data.
 void Service::slotRequestFinished(int id, bool error)
 {
-	qDebug() << "UPnP::Service: Got HTTP response for request #"<< id << ", state: " << http_->state() << ", " << http_->bytesAvailable() << " bytes." << endl;
+	qDebug() << "UPnP::Service: Got HTTP response for request #"<< id << ", state: " << m_pHttp->state() << ", " << m_pHttp->bytesAvailable() << " bytes." << endl;
 
 	if(! error)
 	{
 		// Not sure why this happens
-		if(http_->bytesAvailable() > 0)
+		if(m_pHttp->bytesAvailable() > 0)
 		{
 			// Get the XML content
-			QByteArray   response = http_->readAll();
+			QByteArray   response = m_pHttp->readAll();
 			QDomDocument xml;
 
 			// TODO: handle 401 Authorisation required messages
@@ -275,15 +275,15 @@ void Service::slotRequestFinished(int id, bool error)
 			}
 
 			// Only emit when bytes>0
-			pendingRequests_--;
+			m_iPendingRequests--;
 			emit queryFinished(error);
 		} else {
-			QHttpResponseHeader header = http_->lastResponse();
+			QHttpResponseHeader header = m_pHttp->lastResponse();
 			qDebug() << "Received zero-bytes HTTP response! Status: " << header.statusCode() << "; reason: " << header.reasonPhrase() << endl;
 		}
 	} else {
-		qWarning() << "UPnP::Service - HTTP Request failed: " << http_->errorString() << endl;
-		pendingRequests_--;
+		qWarning() << "UPnP::Service - HTTP Request failed: " << m_pHttp->errorString() << endl;
+		m_iPendingRequests--;
 		emit queryFinished(error);
 	}
 

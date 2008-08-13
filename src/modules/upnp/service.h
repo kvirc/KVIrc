@@ -108,17 +108,17 @@ private:
 
 private:
 	// The URL to control the service
-	QString              controlUrl_;
+	QString              m_szControlUrl;
 	// The HTTP requester
-	QHttp               *http_;
+	QHttp               *m_pHttp;
 	// The URL to request service information
-	QString              informationUrl_;
+	QString              m_szInformationUrl;
 	// The number of pending queries/actions
-	int                  pendingRequests_;
+	int                  m_iPendingRequests;
 	// The ID of the service
-	QString              serviceId_;
+	QString              m_szServiceId;
 	// The Type of the service
-	QString              serviceType_;
+	QString              m_szServiceType;
 
 signals:
 	// Called when a query completed

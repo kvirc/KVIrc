@@ -48,11 +48,11 @@ namespace UPnP
 // The constructor
 IgdControlPoint::IgdControlPoint(const QString &hostname, int port, const QString &rootUrl)
 : QObject()
-, forwardingService_(0)
-, gatewayAvailable_(false)
-, igdPort_(0)
-, rootService_(0)
-, wanConnectionService_(0)
+, m_pForwardingService(0)
+, m_bGatewayAvailable(false)
+, m_iIgdPort(0)
+, m_pRootService(0)
+, m_pWanConnectionService(0)
 {
 	qDebug() << "CREATED UPnP::IgdControlPoint: Created control point"
 		<< " url='" << hostname << ":" << port << "/" << rootUrl << "'." << endl;
@@ -60,12 +60,12 @@ IgdControlPoint::IgdControlPoint(const QString &hostname, int port, const QStrin
 	qDebug() << "UPnP::IgdControlPoint: querying services..." << endl;
 
 	// Store device url
-	igdHostname_ = hostname;
-	igdPort_     = port;
+	m_szIgdHostname = hostname;
+	m_iIgdPort     = port;
 
 	// Query the device for it's services
-	rootService_ = new RootService(igdHostname_, igdPort_, rootUrl);
-	connect(rootService_, SIGNAL(queryFinished(bool)), this, SLOT(slotDeviceQueried(bool)));
+	m_pRootService = new RootService(m_szIgdHostname, m_iIgdPort, rootUrl);
+	connect(m_pRootService, SIGNAL(queryFinished(bool)), this, SLOT(slotDeviceQueried(bool)));
 }
 
 
@@ -73,11 +73,11 @@ IgdControlPoint::IgdControlPoint(const QString &hostname, int port, const QStrin
 // The destructor
 IgdControlPoint::~IgdControlPoint()
 {
-	delete rootService_;
-	delete forwardingService_;
-	delete wanConnectionService_;
+	delete m_pRootService;
+	delete m_pForwardingService;
+	delete m_pWanConnectionService;
 
-	qDebug() << "DESTROYED UPnP::IgdControlPoint [host=" << igdHostname_ << ", port=" << igdPort_ << "]" << endl;
+	qDebug() << "DESTROYED UPnP::IgdControlPoint [host=" << m_szIgdHostname << ", port=" << m_iIgdPort << "]" << endl;
 }
 
 
@@ -86,9 +86,9 @@ IgdControlPoint::~IgdControlPoint()
 QString IgdControlPoint::getExternalIpAddress() const
 {
 	// Do not expose  wanConnectionService_;
-	if(wanConnectionService_ != 0)
+	if(m_pWanConnectionService != 0)
 	{
-		return wanConnectionService_->getExternalIpAddress();
+		return m_pWanConnectionService->getExternalIpAddress();
 	} else {
 		return QString::null;
 	}
@@ -98,7 +98,7 @@ QString IgdControlPoint::getExternalIpAddress() const
 // Initialize the control point
 void IgdControlPoint::initialize()
 {
-	rootService_->queryDevice();
+	m_pRootService->queryDevice();
 }
 
 
@@ -106,7 +106,7 @@ void IgdControlPoint::initialize()
 // Return true if a controlable gateway is available
 bool IgdControlPoint::isGatewayAvailable()
 {
-	return gatewayAvailable_;
+	return m_bGatewayAvailable;
 }
 
 
@@ -117,7 +117,7 @@ void IgdControlPoint::slotDeviceQueried(bool error)
 	if(! error)
 	{
 		// Get the Layer3ForwardingService from the retrieved service list
-		ServiceParameters params = rootService_->getServiceByType(Layer3ForwardingType);
+		ServiceParameters params = m_pRootService->getServiceByType(Layer3ForwardingType);
 
 		if(! params.controlUrl.isNull())
 		{
@@ -125,9 +125,9 @@ void IgdControlPoint::slotDeviceQueried(bool error)
 					<< "querying service '" << params.serviceId << "' for port mapping service..." << endl;
 
 			// Call the service
-			forwardingService_ = new Layer3ForwardingService(params);
-			connect(forwardingService_, SIGNAL(queryFinished(bool)), this, SLOT(slotWanConnectionFound(bool)));
-			forwardingService_->queryDefaultConnectionService();
+			m_pForwardingService = new Layer3ForwardingService(params);
+			connect(m_pForwardingService, SIGNAL(queryFinished(bool)), this, SLOT(slotWanConnectionFound(bool)));
+			m_pForwardingService->queryDefaultConnectionService();
 		} else {
 			qDebug() << "UPnP::IgdControlPoint: No Layer3Forwarding service found on device" << endl;
 		}
@@ -142,9 +142,9 @@ void IgdControlPoint::slotWanConnectionFound(bool error)
 	if(! error)
 	{
 		// Get the retreived service description
-		QString deviceUrn = forwardingService_->getConnectionDeviceUdn();
-		QString serviceId = forwardingService_->getConnectionServiceId();
-		ServiceParameters params = rootService_->getServiceById(serviceId, deviceUrn);
+		QString deviceUrn = m_pForwardingService->getConnectionDeviceUdn();
+		QString serviceId = m_pForwardingService->getConnectionServiceId();
+		ServiceParameters params = m_pRootService->getServiceById(serviceId, deviceUrn);
 
 		if(! params.controlUrl.isNull())
 		{
@@ -152,15 +152,15 @@ void IgdControlPoint::slotWanConnectionFound(bool error)
 					<< "querying service '" << params.serviceId << "' for external ip address..." << endl;
 
 			// Call the service
-			wanConnectionService_ = new WanConnectionService(params);
-			connect(wanConnectionService_, SIGNAL(queryFinished(bool)), this, SLOT(slotWanQueryFinished(bool)));
-			wanConnectionService_->queryExternalIpAddress();
+			m_pWanConnectionService = new WanConnectionService(params);
+			connect(m_pWanConnectionService, SIGNAL(queryFinished(bool)), this, SLOT(slotWanQueryFinished(bool)));
+			m_pWanConnectionService->queryExternalIpAddress();
 		}
 	}
 
 	// No longer need the forwarding service
-	forwardingService_->deleteLater();
-	forwardingService_ = 0;
+	m_pForwardingService->deleteLater();
+	m_pForwardingService = 0;
 }
 
 
@@ -171,7 +171,7 @@ void IgdControlPoint::slotWanQueryFinished(bool error)
 	if(! error)
 	{
 		qDebug() << "IgdControlPoint: UPnP Gateway Device found." << endl;
-		gatewayAvailable_ = true;
+		m_bGatewayAvailable = true;
 	} else {
 		// Just started, the request for the external IP failed. This should succeed, abort portation
 		qDebug() << "Requesting external IP address failed, leaving UPnP Gateway Device untouched." << endl;

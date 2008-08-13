@@ -74,9 +74,9 @@ protected:  // protected methods
 private:  // private attributes
 
 	// The service ID of the default connection service
-	QString              connectionServiceId_;
+	QString              m_szConnectionServiceId;
 	// The device UDN of the default connection service
-	QString              connectionDeviceUdn_;
+	QString              m_szConnectionDeviceUdn;
 };
 
 }

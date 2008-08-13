@@ -81,17 +81,17 @@ private slots:
 
 private:  // private attibutes
 	// The forwarding service
-	Layer3ForwardingService *forwardingService_;
+	Layer3ForwardingService *m_pForwardingService;
 	// Is a gateway available?
-	bool                 gatewayAvailable_;
+	bool                 m_bGatewayAvailable;
 	// The host of the gateway
-	QString              igdHostname_;
+	QString              m_szIgdHostname;
 	// The port of the gateway
-	int                  igdPort_;
+	int                  m_iIgdPort;
 	// The root service
-	RootService         *rootService_;
+	RootService         *m_pRootService;
 	// The wan connection service
-	WanConnectionService *wanConnectionService_;
+	WanConnectionService *m_pWanConnectionService;
 };
 
 

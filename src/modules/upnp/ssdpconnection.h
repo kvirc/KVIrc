@@ -67,7 +67,7 @@ class SsdpConnection : public QObject
 	void slotDataReceived();
 
 	private:
-	QUdpSocket *socket_;
+	QUdpSocket *m_pSocket;
 	signals:
 	// Called when a query completed
 	void deviceFound(const QString &hostname, int port, const QString &rootUrl);

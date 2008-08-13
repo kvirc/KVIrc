@@ -40,7 +40,7 @@ namespace UPnP
 // The constructor
 WanConnectionService::WanConnectionService(const ServiceParameters &params)
   : Service(params)
-  , natEnabled_(false)
+  , m_bNatEnabled(false)
 {
 
 }
@@ -90,7 +90,7 @@ void WanConnectionService::deletePortMapping(const QString &protocol, const QStr
 // Return the external IP address
 QString WanConnectionService::getExternalIpAddress() const
 {
-  return externalIpAddress_;
+  return m_szExternalIpAddress;
 }
 
 
@@ -98,7 +98,7 @@ QString WanConnectionService::getExternalIpAddress() const
 // Return true if NAT is enabled
 bool WanConnectionService::getNatEnabled() const
 {
-  return natEnabled_;
+  return m_bNatEnabled;
 }
 
 
@@ -106,7 +106,7 @@ bool WanConnectionService::getNatEnabled() const
 // Return the port mappings
 const KviPointerList<PortMapping>& WanConnectionService::getPortMappings() const
 {
-  return portMappings_;
+  return m_lPortMappings;
 }
 
 
@@ -121,16 +121,16 @@ void WanConnectionService::gotActionResponse(const QString &responseType, const 
   if(responseType == "GetExternalIPAddressResponse")
   {
     // Get the external IP address from the response
-    externalIpAddress_ = resultValues["NewExternalIPAddress"];
+    m_szExternalIpAddress = resultValues["NewExternalIPAddress"];
 
-    qDebug() << "UPnP::WanConnectionService: externalIp='" << externalIpAddress_ << "'." << endl;
+    qDebug() << "UPnP::WanConnectionService: externalIp='" << m_szExternalIpAddress << "'." << endl;
   }
   else if(responseType == "GetNATRSIPStatusResponse")
   {
     // Get the nat status from the response
-    natEnabled_ = (resultValues["NewNATEnabled"] == "1");
+    m_bNatEnabled = (resultValues["NewNATEnabled"] == "1");
 
-    qDebug() << "UPnP::WanConnectionService: natEnabled=" << natEnabled_ << "." << endl;
+    qDebug() << "UPnP::WanConnectionService: natEnabled=" << m_bNatEnabled << "." << endl;
   }
   else if(responseType == "GetGenericPortMappingEntryResponse")
   {
@@ -148,7 +148,7 @@ void WanConnectionService::gotActionResponse(const QString &responseType, const 
     map->remoteHost     =  resultValues["NewRemoteHost"];
 
     // Register the mapping
-    portMappings_.append(map);
+    m_lPortMappings.append(map);
 
     qDebug() << "UPnP::WanConnectionService - Got mapping: " << map->protocol << " " << map->remoteHost << ":" << map->externalPort
               << " to " << map->internalClient << ":" << map->internalPort
