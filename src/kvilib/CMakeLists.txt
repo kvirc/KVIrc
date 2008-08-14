@@ -11,7 +11,10 @@ INCLUDE_DIRECTORIES(
 	${QT_INCLUDES}
 )
 
+# Please note that the sources have alphabetic order here
+
 SET(kvilib_MOC_HDRS
+	ext/kvi_animatedpixmap.h
 	ext/kvi_crypt.h
 	ext/kvi_garbage.h
 	ext/kvi_regusersdb.h
@@ -21,13 +24,13 @@ SET(kvilib_MOC_HDRS
 	net/kvi_http.h
 	system/kvi_locale.h
 	system/kvi_thread.h
-	tal/kvi_tal_popupmenu.h
 	tal/kvi_tal_groupbox.h
 	tal/kvi_tal_hbox.h
 	tal/kvi_tal_iconview.h
 	tal/kvi_tal_listbox.h
 	tal/kvi_tal_listview.h
 	tal/kvi_tal_listwidget.h
+	tal/kvi_tal_popupmenu.h
 	tal/kvi_tal_scrollview.h
 	tal/kvi_tal_tabdialog.h
 	tal/kvi_tal_tablewidget.h
@@ -37,7 +40,6 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_vbox.h
 	tal/kvi_tal_widgetstack.h
 	tal/kvi_tal_wizard.h
-	ext/kvi_animatedpixmap.h
 )
 
 IF(COMPILE_KDE_SUPPORT)
@@ -58,6 +60,14 @@ ELSE()
 	)
 ENDIF()
 
+IF(COMPILE_DBUS_SUPPORT)
+	LIST(APPEND kvilib_MOC_HDRS
+		ext/kvi_dbusadaptor.h
+	)
+ENDIF()
+
+# Please note that the sources have alphabetic order here
+
 SET(kvilib_SRCS
 	config/kvi_buildinfo.cpp
 	core/kvi_error.cpp
@@ -70,6 +80,7 @@ SET(kvilib_SRCS
 	ext/kvi_config.cpp
 	ext/kvi_crypt.cpp
 	ext/kvi_databuffer.cpp
+	ext/kvi_dbusadaptor.cpp
 	ext/kvi_dcophelper.cpp
 	ext/kvi_doublebuffer.cpp
 	ext/kvi_garbage.cpp
@@ -86,7 +97,6 @@ SET(kvilib_SRCS
 	ext/kvi_regusersdb.cpp
 	ext/kvi_sharedfiles.cpp
 	ext/kvi_stringconversion.cpp
-	ext/kvi_dbusadaptor.cpp
 	file/kvi_file.cpp
 	file/kvi_fileutils.cpp
 	file/kvi_packagefile.cpp
