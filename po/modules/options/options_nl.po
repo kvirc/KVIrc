@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 20:23+0200\n"
+"POT-Creation-Date: 2008-08-14 18:05+0200\n"
 "PO-Revision-Date: 2002-08-09 21:21+0200\n"
 "Last-Translator: Balboy <balboy@kvirc.net>\n"
 "Language-Team: Nederlands <kvirc@realityx.net>\n"
@@ -116,27 +116,27 @@ msgstr ""
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr ""
 
-#: src/modules/options/optw_urlhandlers.cpp:55
+#: src/modules/options/optw_urlhandlers.cpp:74
 #, fuzzy
 msgid "<b>file://</b> handler command:"
 msgstr "Geen zo een module commando"
 
-#: src/modules/options/optw_urlhandlers.cpp:53
+#: src/modules/options/optw_urlhandlers.cpp:72
 #, fuzzy
 msgid "<b>ftp://</b> handler command:"
 msgstr "Geen zo een module commando"
 
-#: src/modules/options/optw_urlhandlers.cpp:51
+#: src/modules/options/optw_urlhandlers.cpp:70
 #, fuzzy
 msgid "<b>http://</b> handler command:"
 msgstr "Geen zo een module commando"
 
-#: src/modules/options/optw_urlhandlers.cpp:52
+#: src/modules/options/optw_urlhandlers.cpp:71
 #, fuzzy
 msgid "<b>https://</b> handler command:"
 msgstr "Geen zo een module commando"
 
-#: src/modules/options/optw_urlhandlers.cpp:54
+#: src/modules/options/optw_urlhandlers.cpp:73
 #, fuzzy
 msgid "<b>mailto:</b> handler command:"
 msgstr "Geen zo een module commando"
@@ -1896,6 +1896,11 @@ msgstr ""
 msgid "Dotted Grid"
 msgstr ""
 
+#: src/modules/options/optw_urlhandlers.cpp:52
+#, fuzzy
+msgid "Double click"
+msgstr "<br> naar"
+
 #: src/modules/options/optw_identity.cpp:169
 #: src/modules/options/optw_identity.cpp:176
 msgid "Download aborted by user"
@@ -2268,6 +2273,11 @@ msgstr ""
 #, fuzzy
 msgid "Horizontal align:"
 msgstr "notificatie"
+
+#: src/modules/options/optw_urlhandlers.cpp:49
+#, fuzzy
+msgid "How many click to open links?"
+msgstr "naar<br>"
 
 #: src/modules/options/optw_sound.cpp:95
 #, fuzzy
@@ -2725,6 +2735,11 @@ msgstr "Minimale snelheid"
 #, fuzzy
 msgid "Mixer device:"
 msgstr "Karakter"
+
+#: src/modules/options/optw_urlhandlers.cpp:47
+#, fuzzy
+msgid "Mouse handler"
+msgstr "Verwijderen"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3189,6 +3204,11 @@ msgstr "Eigenschappen"
 msgid "Protection"
 msgstr "Gebruik"
 
+#: src/modules/options/optw_urlhandlers.cpp:64
+#, fuzzy
+msgid "Protocol handler"
+msgstr "Onbekend"
+
 #: src/modules/options/optw_proxy.cpp:118
 msgid "Protocol:"
 msgstr ""
@@ -3624,6 +3644,10 @@ msgstr "Geen naam opgegeven"
 msgid "Silent anti-spam (no warnings)"
 msgstr ""
 
+#: src/modules/options/optw_urlhandlers.cpp:51
+msgid "Single click"
+msgstr ""
+
 #: src/modules/options/optw_connection.h:74
 msgid "Socket"
 msgstr "Socket"
@@ -3950,7 +3974,7 @@ msgstr ""
 msgid "Tweaks"
 msgstr "Tekst:"
 
-#: src/modules/options/optw_urlhandlers.h:28
+#: src/modules/options/optw_urlhandlers.h:30
 #, fuzzy
 msgid "URL handlers"
 msgstr "Toevoegen"
@@ -3968,7 +3992,7 @@ msgstr ""
 msgid "Unable to write language information to"
 msgstr "Faalde naar de file"
 
-#: src/modules/options/optw_urlhandlers.cpp:56
+#: src/modules/options/optw_urlhandlers.cpp:75
 #, fuzzy
 msgid "Unknown protocol handler command:"
 msgstr "Onbekend"
@@ -4110,7 +4134,7 @@ msgstr ""
 msgid "Use special color for timestamps"
 msgstr "Gebruik"
 
-#: src/modules/options/optw_urlhandlers.cpp:48
+#: src/modules/options/optw_urlhandlers.cpp:67
 #, fuzzy
 msgid "Use system URL handlers"
 msgstr "Toevoegen"
@@ -4457,7 +4481,7 @@ msgstr ""
 msgid "unnamed"
 msgstr "naamloos"
 
-#: src/modules/options/optw_urlhandlers.h:31
+#: src/modules/options/optw_urlhandlers.h:33
 msgid "url,programs"
 msgstr ""
 
@@ -7768,10 +7792,6 @@ msgstr ""
 #~ msgstr "de IP"
 
 #, fuzzy
-#~ msgid "Double click to enable it"
-#~ msgstr "<br> naar"
-
-#, fuzzy
 #~ msgid "Double click to enter away mode"
 #~ msgstr "naar<br>"
 
@@ -7791,10 +7811,6 @@ msgstr ""
 #~ msgid ""
 #~ "Double-click to look up this hostname<br>Right-click to view other options"
 #~ msgstr "naar<br> Rechts naar overig"
-
-#, fuzzy
-#~ msgid "Double-click to open this link"
-#~ msgstr "naar<br>"
 
 #, fuzzy
 #~ msgid "Double-click to open this link<br>Right-click to view other options"
@@ -11252,10 +11268,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Raw event handler %s::%Q is broken: disabling"
 #~ msgstr "Gebeurtenis s s is"
-
-#, fuzzy
-#~ msgid "Re&move Handler"
-#~ msgstr "Verwijderen"
 
 #, fuzzy
 #~ msgid "Re&move Popup"

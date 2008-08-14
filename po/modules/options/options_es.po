@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 20:23+0200\n"
+"POT-Creation-Date: 2008-08-14 18:05+0200\n"
 "PO-Revision-Date: 2006-01-15 22:32+0100\n"
 "Last-Translator: Jose Luis Sanchez <jsanchezv@teleline.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -105,23 +105,23 @@ msgstr "Rejilla 3D"
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr ""
 
-#: src/modules/options/optw_urlhandlers.cpp:55
+#: src/modules/options/optw_urlhandlers.cpp:74
 msgid "<b>file://</b> handler command:"
 msgstr "<b>file://</b> comando manejador:"
 
-#: src/modules/options/optw_urlhandlers.cpp:53
+#: src/modules/options/optw_urlhandlers.cpp:72
 msgid "<b>ftp://</b> handler command:"
 msgstr "<b>ftp://</b> comando manejador:"
 
-#: src/modules/options/optw_urlhandlers.cpp:51
+#: src/modules/options/optw_urlhandlers.cpp:70
 msgid "<b>http://</b> handler command:"
 msgstr "<b>http://</b> comando manejador:"
 
-#: src/modules/options/optw_urlhandlers.cpp:52
+#: src/modules/options/optw_urlhandlers.cpp:71
 msgid "<b>https://</b> handler command:"
 msgstr "<b>https://</b> comando manejador:"
 
-#: src/modules/options/optw_urlhandlers.cpp:54
+#: src/modules/options/optw_urlhandlers.cpp:73
 msgid "<b>mailto:</b> handler command:"
 msgstr "<b>mailto:</b> comando manejador:"
 
@@ -2166,6 +2166,11 @@ msgstr ""
 msgid "Dotted Grid"
 msgstr "Rejilla Punteada"
 
+#: src/modules/options/optw_urlhandlers.cpp:52
+#, fuzzy
+msgid "Double click"
+msgstr "Doble click para habilitarlo"
+
 #: src/modules/options/optw_identity.cpp:169
 #: src/modules/options/optw_identity.cpp:176
 msgid "Download aborted by user"
@@ -2513,6 +2518,11 @@ msgstr ""
 #, fuzzy
 msgid "Horizontal align:"
 msgstr "Localización del certificado:"
+
+#: src/modules/options/optw_urlhandlers.cpp:49
+#, fuzzy
+msgid "How many click to open links?"
+msgstr "Doble click para abrir este enlace"
 
 #: src/modules/options/optw_sound.cpp:95
 msgid "ID3 tags' encoding"
@@ -2925,6 +2935,11 @@ msgstr "Anchura mínima:"
 #: src/modules/options/optw_dcc.cpp:336
 msgid "Mixer device:"
 msgstr "Dispositivo mezclador:"
+
+#: src/modules/options/optw_urlhandlers.cpp:47
+#, fuzzy
+msgid "Mouse handler"
+msgstr "Eli&minar Manejador"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3341,6 +3356,11 @@ msgstr "Propiedades"
 msgid "Protection"
 msgstr "Protección"
 
+#: src/modules/options/optw_urlhandlers.cpp:64
+#, fuzzy
+msgid "Protocol handler"
+msgstr "Protocolo:"
+
 #: src/modules/options/optw_proxy.cpp:118
 msgid "Protocol:"
 msgstr "Protocolo:"
@@ -3724,6 +3744,11 @@ msgstr "Mostrar iconos de ventana en la barra de tareas"
 msgid "Silent anti-spam (no warnings)"
 msgstr "Anti-spam silencioso (no avisa)"
 
+#: src/modules/options/optw_urlhandlers.cpp:51
+#, fuzzy
+msgid "Single click"
+msgstr "Reloj Sencillo"
+
 #: src/modules/options/optw_connection.h:74
 msgid "Socket"
 msgstr "Socket"
@@ -4078,7 +4103,7 @@ msgstr "Disparar evento si el retraso excede de:"
 msgid "Tweaks"
 msgstr "Prueba"
 
-#: src/modules/options/optw_urlhandlers.h:28
+#: src/modules/options/optw_urlhandlers.h:30
 msgid "URL handlers"
 msgstr "URL de manejadores"
 
@@ -4095,7 +4120,7 @@ msgstr "USERINFO"
 msgid "Unable to write language information to"
 msgstr "No fué posible escribir en el archivo de acciones."
 
-#: src/modules/options/optw_urlhandlers.cpp:56
+#: src/modules/options/optw_urlhandlers.cpp:75
 msgid "Unknown protocol handler command:"
 msgstr "Comando manejador de protocolo desconocido:"
 
@@ -4219,7 +4244,7 @@ msgstr "Usar los mismos colores que en la lista de usuarios"
 msgid "Use special color for timestamps"
 msgstr "Utilizar color especial para marca de tiempo"
 
-#: src/modules/options/optw_urlhandlers.cpp:48
+#: src/modules/options/optw_urlhandlers.cpp:67
 #, fuzzy
 msgid "Use system URL handlers"
 msgstr "URL de manejadores"
@@ -4553,7 +4578,7 @@ msgstr ""
 msgid "unnamed"
 msgstr "sin nombre"
 
-#: src/modules/options/optw_urlhandlers.h:31
+#: src/modules/options/optw_urlhandlers.h:33
 msgid "url,programs"
 msgstr ""
 
@@ -7163,9 +7188,6 @@ msgstr "cada:"
 #~ msgid "Doesn't a widget object"
 #~ msgstr "No es un objeto widget"
 
-#~ msgid "Double click to enable it"
-#~ msgstr "Doble click para habilitarlo"
-
 #~ msgid "Double click to enter away mode"
 #~ msgstr "Doble click para entrar en modo ausente"
 
@@ -7184,9 +7206,6 @@ msgstr "cada:"
 #~ msgstr ""
 #~ "Haga doble click para buscar esta máquina<br>Click derecho para ver otras "
 #~ "opciones"
-
-#~ msgid "Double-click to open this link"
-#~ msgstr "Doble click para abrir este enlace"
 
 #~ msgid "Double-click to read the MOTD<br>Right-click to view other options"
 #~ msgstr ""
@@ -10004,9 +10023,6 @@ msgstr "cada:"
 #~ msgid "Raw event handler %s::%Q is broken: disabling"
 #~ msgstr "El manejador de evento puro %s::%Q es erroneo: deshabilitando"
 
-#~ msgid "Re&move Handler"
-#~ msgstr "Eli&minar Manejador"
-
 #~ msgid "Re&move Popup"
 #~ msgstr "Eli&minar menú emergente"
 
@@ -10586,9 +10602,6 @@ msgstr "cada:"
 
 #~ msgid "Silence speaking"
 #~ msgstr "Hablando en silencio"
-
-#~ msgid "Simple Clock"
-#~ msgstr "Reloj Sencillo"
 
 #~ msgid "Skipping nested terminator character %q"
 #~ msgstr "Saltando caracter terminador anidado %q"

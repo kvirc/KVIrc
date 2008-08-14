@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 20:23+0200\n"
+"POT-Creation-Date: 2008-08-14 18:05+0200\n"
 "PO-Revision-Date: 2005-02-10 18:45+0100\n"
 "Last-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
 "Language-Team: spanish\n"
@@ -22,8 +22,7 @@ msgstr "\"cualquiera\""
 msgid "%1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1236
-#: src/modules/dcc/send.cpp:1243
+#: src/modules/dcc/send.cpp:1236 src/modules/dcc/send.cpp:1243
 #, fuzzy
 msgid "%1 of %2 (%3%)"
 msgstr "%1 de %2 bytes (%3%)"
@@ -72,8 +71,7 @@ msgstr "Tarta"
 msgid "&Polygons"
 msgstr "&Polígonos"
 
-#: src/modules/dcc/canvaswidget.cpp:1477
-#: src/modules/dcc/canvaswidget.cpp:1485
+#: src/modules/dcc/canvaswidget.cpp:1477 src/modules/dcc/canvaswidget.cpp:1485
 msgid "&Rectangle"
 msgstr "&Rectángulo"
 
@@ -97,13 +95,11 @@ msgstr "Figura"
 msgid "&Triangle"
 msgstr "&Triángulo"
 
-#: src/modules/dcc/requests.cpp:772
-#: src/modules/dcc/requests.cpp:942
+#: src/modules/dcc/requests.cpp:772 src/modules/dcc/requests.cpp:942
 msgid "(unknown)"
 msgstr "(desconocido)"
 
-#: src/modules/dcc/libkvidcc.cpp:434
-#: src/modules/dcc/libkvidcc.cpp:657
+#: src/modules/dcc/libkvidcc.cpp:434 src/modules/dcc/libkvidcc.cpp:657
 #: src/modules/dcc/libkvidcc.cpp:1159
 msgid "-c requires -i and -p"
 msgstr "-c necesita -i y -p"
@@ -173,8 +169,7 @@ msgstr ""
 "funcionará. Puedes pedir a KVIrc para que acepte avatares automáticamente "
 "activando la opción <tt>Aceptar automaticamente avatares entrantes</tt>.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:634
-#: src/modules/dcc/requests.cpp:449
+#: src/modules/dcc/libkvidcc.cpp:634 src/modules/dcc/requests.cpp:449
 #: src/modules/dcc/requests.cpp:739
 msgid "<unknown size>"
 msgstr "<tamaño desconocido>"
@@ -183,8 +178,7 @@ msgstr "<tamaño desconocido>"
 msgid "Abort"
 msgstr "Interrumpir"
 
-#: src/modules/dcc/send.cpp:913
-#: src/modules/dcc/send.cpp:924
+#: src/modules/dcc/send.cpp:913 src/modules/dcc/send.cpp:924
 msgid "Aborted"
 msgstr "Interrumpida"
 
@@ -275,8 +269,7 @@ msgstr ""
 "No puedo escuchar en el interfaz por defecto '%s': arréglalo en el diálogo "
 "de opciones deshabilitando la opción (para que funcione el próximo dcc)"
 
-#: src/modules/dcc/broker.cpp:199
-#: src/modules/dcc/broker.cpp:813
+#: src/modules/dcc/broker.cpp:199 src/modules/dcc/broker.cpp:813
 #, fuzzy
 msgid "Can't open file %Q for reading"
 msgstr "No pude abrir el archivo %s para lectura"
@@ -308,13 +301,11 @@ msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr ""
 "No pude enviar la petición DCC %s a %s: la conexión IRC ha sido finalizada"
 
-#: src/modules/dcc/dialogs.cpp:152
-#: src/modules/dcc/send.cpp:1851
+#: src/modules/dcc/dialogs.cpp:152 src/modules/dcc/send.cpp:1851
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/modules/dcc/chat.cpp:299
-#: src/modules/dcc/chat.cpp:385
+#: src/modules/dcc/chat.cpp:299 src/modules/dcc/chat.cpp:385
 msgid "Cannot send data: No active connection"
 msgstr "No puedo enviar datos: No hay una conexión activa"
 
@@ -323,8 +314,7 @@ msgstr "No puedo enviar datos: No hay una conexión activa"
 msgid "Choose Files to Save - KVIrc"
 msgstr "Escoja los Archivos a Enviar - KVIrc"
 
-#: src/modules/dcc/broker.cpp:159
-#: src/modules/dcc/broker.cpp:776
+#: src/modules/dcc/broker.cpp:159 src/modules/dcc/broker.cpp:776
 msgid "Choose Files to Send - KVIrc"
 msgstr "Escoja los Archivos a Enviar - KVIrc"
 
@@ -347,8 +337,7 @@ msgstr "Configurar el caudal para la transferencia DCC %1"
 msgid "Connected to %1:%2"
 msgstr "Conectado a %1:%2"
 
-#: src/modules/dcc/voice.cpp:914
-#: src/modules/dcc/chat.cpp:518
+#: src/modules/dcc/voice.cpp:914 src/modules/dcc/chat.cpp:518
 #: src/modules/dcc/canvas.cpp:281
 #, fuzzy
 msgid "Connected to %Q:%Q"
@@ -358,15 +347,13 @@ msgstr "Conectado a %s:%s"
 msgid "Contacting host %1 on port %2"
 msgstr "Contactando con la máquina %1 en el puerto %2"
 
-#: src/modules/dcc/voice.cpp:754
-#: src/modules/dcc/chat.cpp:181
+#: src/modules/dcc/voice.cpp:754 src/modules/dcc/chat.cpp:181
 #: src/modules/dcc/canvas.cpp:107
 #, fuzzy
 msgid "Contacting host %Q on port %Q"
 msgstr "Contactando con la máquina %s en el puerto %s"
 
-#: src/modules/dcc/broker.cpp:288
-#: src/modules/dcc/broker.cpp:539
+#: src/modules/dcc/broker.cpp:288 src/modules/dcc/broker.cpp:539
 msgid "DCC %1 Request - KVIrc"
 msgstr "Petición DCC %1 - KVIrc"
 
@@ -397,8 +384,7 @@ msgstr "Petición de DCC CANVAS"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "Petición DCC CANVAS no enviada; esperando conexiones manuales"
 
-#: src/modules/dcc/voice.cpp:905
-#: src/modules/dcc/canvas.cpp:276
+#: src/modules/dcc/voice.cpp:905 src/modules/dcc/canvas.cpp:276
 msgid "DCC Failed: %Q"
 msgstr "Falló el DCC: %Q"
 
@@ -427,8 +413,7 @@ msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr ""
 "La transferencia de datos terminó hace 30 segundos, cerrando la conexión"
 
-#: src/modules/dcc/voice.cpp:822
-#: src/modules/dcc/chat.cpp:400
+#: src/modules/dcc/voice.cpp:822 src/modules/dcc/chat.cpp:400
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
@@ -531,8 +516,7 @@ msgstr "Limitar el caudal de subida a"
 msgid "Listening on interface %1 port %2"
 msgstr "Escuchando en el interfaz %1 puerto %2"
 
-#: src/modules/dcc/voice.cpp:757
-#: src/modules/dcc/chat.cpp:183
+#: src/modules/dcc/voice.cpp:757 src/modules/dcc/chat.cpp:183
 #: src/modules/dcc/canvas.cpp:83
 #, fuzzy
 msgid "Listening on interface %Q port %Q"
@@ -542,15 +526,13 @@ msgstr "Escuchando en el interfaz %s puerto %s"
 msgid "Local end is %1:%2"
 msgstr "El extremo local es %1:%2"
 
-#: src/modules/dcc/voice.cpp:916
-#: src/modules/dcc/chat.cpp:520
+#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:520
 #: src/modules/dcc/canvas.cpp:283
 #, fuzzy
 msgid "Local end is %Q:%Q"
 msgstr "El extremo final es %s:%s"
 
-#: src/modules/dcc/chat.cpp:243
-#: src/modules/dcc/send.cpp:1568
+#: src/modules/dcc/chat.cpp:243 src/modules/dcc/send.cpp:1568
 msgid "Low-level transport connection established"
 msgstr "Establecida la conexión de transporte de bajo nivel"
 
@@ -559,8 +541,7 @@ msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
 msgstr ""
 "No hay una oferta del archivo '%s' (con tamaño %s) disponible para %Q [%Q@%Q]"
 
-#: src/modules/dcc/requests.cpp:778
-#: src/modules/dcc/requests.cpp:928
+#: src/modules/dcc/requests.cpp:778 src/modules/dcc/requests.cpp:928
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr ""
 "No hay un interfaz adecuando en el que escuchar, intentando continuar de "
@@ -659,8 +640,7 @@ msgstr "Límite de ranuras alcanzado (%u ranuras de %u)"
 msgid "Spd:"
 msgstr "Vel:"
 
-#: src/modules/dcc/chat.cpp:244
-#: src/modules/dcc/send.cpp:1569
+#: src/modules/dcc/chat.cpp:244 src/modules/dcc/send.cpp:1569
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Iniciando negociación del protocolo SSL"
 
@@ -698,8 +678,7 @@ msgstr ""
 "La petición anterior no tiene un tamaño de archivo para continuar, asumiendo "
 "0 como tamaño de archivo de reanudación"
 
-#: src/modules/dcc/requests.cpp:457
-#: src/modules/dcc/requests.cpp:608
+#: src/modules/dcc/requests.cpp:457 src/modules/dcc/requests.cpp:608
 #: src/modules/dcc/requests.cpp:747
 msgid ""
 "The above request is broken: The filename contains path components, "
@@ -759,8 +738,7 @@ msgstr ""
 "El motor de cifrado no fué capaz de descifrar el mensaje actual (%Q): %s, no "
 "se enviaron datos al extremo remoto"
 
-#: src/modules/dcc/libkvidcc.cpp:1577
-#: src/modules/dcc/libkvidcc.cpp:2542
+#: src/modules/dcc/libkvidcc.cpp:1577 src/modules/dcc/libkvidcc.cpp:2542
 #: src/modules/dcc/libkvidcc.cpp:2562
 msgid "The current window has no associated DCC session"
 msgstr "La ventana actual no tiene una sesión DCC asociada"
@@ -796,16 +774,14 @@ msgstr ""
 "El siguiente mensaje parece estar cifrado, pero el motor de cifrado falló al "
 "decodificarlo: %s"
 
-#: src/modules/dcc/chat.cpp:210
-#: src/modules/dcc/send.cpp:1509
+#: src/modules/dcc/chat.cpp:210 src/modules/dcc/send.cpp:1509
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "La dirección IP local es privada, pero no tengo un servidor IRC desde el "
 "quedeterminarla"
 
-#: src/modules/dcc/chat.cpp:207
-#: src/modules/dcc/send.cpp:1506
+#: src/modules/dcc/chat.cpp:207 src/modules/dcc/send.cpp:1506
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
@@ -920,8 +896,7 @@ msgstr "Registro de Transferencia"
 msgid "Transfer completed"
 msgstr "Transferencia completada"
 
-#: src/modules/dcc/send.cpp:923
-#: src/modules/dcc/send.cpp:1594
+#: src/modules/dcc/send.cpp:923 src/modules/dcc/send.cpp:1594
 #: src/modules/dcc/send.cpp:1672
 msgid "Transfer failed: "
 msgstr "Falló la transferencia: "
@@ -1022,22 +997,14 @@ msgstr "[ERROR SSL]: %s"
 msgid "bytes/sec"
 msgstr "bytes/seg"
 
-#: src/modules/dcc/libkvidcc.cpp:111
-#: src/modules/dcc/libkvidcc.cpp:408
-#: src/modules/dcc/libkvidcc.cpp:443
-#: src/modules/dcc/libkvidcc.cpp:642
-#: src/modules/dcc/libkvidcc.cpp:666
-#: src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:805
-#: src/modules/dcc/libkvidcc.cpp:1121
-#: src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/requests.cpp:136
-#: src/modules/dcc/requests.cpp:137
-#: src/modules/dcc/requests.cpp:138
-#: src/modules/dcc/descriptor.cpp:65
-#: src/modules/dcc/marshal.cpp:442
-#: src/modules/dcc/marshal.cpp:472
-#: src/modules/dcc/marshal.cpp:477
+#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:408
+#: src/modules/dcc/libkvidcc.cpp:443 src/modules/dcc/libkvidcc.cpp:642
+#: src/modules/dcc/libkvidcc.cpp:666 src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:805 src/modules/dcc/libkvidcc.cpp:1121
+#: src/modules/dcc/libkvidcc.cpp:1171 src/modules/dcc/requests.cpp:136
+#: src/modules/dcc/requests.cpp:137 src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/marshal.cpp:442
+#: src/modules/dcc/marshal.cpp:472 src/modules/dcc/marshal.cpp:477
 msgid "unknown"
 msgstr "desconocido"
 

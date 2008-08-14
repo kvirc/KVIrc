@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 20:23+0200\n"
+"POT-Creation-Date: 2008-08-14 18:05+0200\n"
 "PO-Revision-Date: 2008-03-06 18:30+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -111,23 +111,23 @@ msgstr ""
 "<b>Attention :</b>Vous devez redémarrer KVIrc pour appliquer le changement "
 "de langue"
 
-#: src/modules/options/optw_urlhandlers.cpp:55
+#: src/modules/options/optw_urlhandlers.cpp:74
 msgid "<b>file://</b> handler command:"
 msgstr "Commande pour gérer les <b>file://</b> :"
 
-#: src/modules/options/optw_urlhandlers.cpp:53
+#: src/modules/options/optw_urlhandlers.cpp:72
 msgid "<b>ftp://</b> handler command:"
 msgstr "Commande pour gérer les <b>ftp://</b> :"
 
-#: src/modules/options/optw_urlhandlers.cpp:51
+#: src/modules/options/optw_urlhandlers.cpp:70
 msgid "<b>http://</b> handler command:"
 msgstr "Commande pour gérer les <b>http://</b> :"
 
-#: src/modules/options/optw_urlhandlers.cpp:52
+#: src/modules/options/optw_urlhandlers.cpp:71
 msgid "<b>https://</b> handler command:"
 msgstr "Commande pour gérer les <b>https://</b> :"
 
-#: src/modules/options/optw_urlhandlers.cpp:54
+#: src/modules/options/optw_urlhandlers.cpp:73
 msgid "<b>mailto:</b> handler command:"
 msgstr "Commande pour gérer les <b>mailto:</b> :"
 
@@ -2171,6 +2171,10 @@ msgstr ""
 msgid "Dotted Grid"
 msgstr "Grille en pointillés"
 
+#: src/modules/options/optw_urlhandlers.cpp:52
+msgid "Double click"
+msgstr ""
+
 #: src/modules/options/optw_identity.cpp:169
 #: src/modules/options/optw_identity.cpp:176
 msgid "Download aborted by user"
@@ -2519,6 +2523,10 @@ msgstr "Alignement horizontal :"
 #: src/modules/options/optw_ircview.cpp:52
 msgid "Horizontal align:"
 msgstr "Alignement horizontal :"
+
+#: src/modules/options/optw_urlhandlers.cpp:49
+msgid "How many click to open links?"
+msgstr ""
 
 #: src/modules/options/optw_sound.cpp:95
 msgid "ID3 tags' encoding"
@@ -2924,6 +2932,11 @@ msgstr "Largeur minimale :"
 #: src/modules/options/optw_dcc.cpp:336
 msgid "Mixer device:"
 msgstr "Périphérique de mixage :"
+
+#: src/modules/options/optw_urlhandlers.cpp:47
+#, fuzzy
+msgid "Mouse handler"
+msgstr "Intercepteurs d'URL"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3333,6 +3346,11 @@ msgstr "Propriétés"
 msgid "Protection"
 msgstr "Protection"
 
+#: src/modules/options/optw_urlhandlers.cpp:64
+#, fuzzy
+msgid "Protocol handler"
+msgstr "Protocole :"
+
 #: src/modules/options/optw_proxy.cpp:118
 msgid "Protocol:"
 msgstr "Protocole :"
@@ -3708,6 +3726,10 @@ msgstr "Montrer les icônes de fenêtre dans la barre des tâches"
 msgid "Silent anti-spam (no warnings)"
 msgstr "Anti-spam silencieux (aucune mise en garde)"
 
+#: src/modules/options/optw_urlhandlers.cpp:51
+msgid "Single click"
+msgstr ""
+
 #: src/modules/options/optw_connection.h:74
 msgid "Socket"
 msgstr "Socket"
@@ -4058,7 +4080,7 @@ msgstr "Déclencher un événement si le retard excède :"
 msgid "Tweaks"
 msgstr "Bidouillages"
 
-#: src/modules/options/optw_urlhandlers.h:28
+#: src/modules/options/optw_urlhandlers.h:30
 msgid "URL handlers"
 msgstr "Intercepteurs d'URL"
 
@@ -4074,7 +4096,7 @@ msgstr "USERINFO"
 msgid "Unable to write language information to"
 msgstr "Impossible d'écrire les infos sur la langue dans"
 
-#: src/modules/options/optw_urlhandlers.cpp:56
+#: src/modules/options/optw_urlhandlers.cpp:75
 msgid "Unknown protocol handler command:"
 msgstr "Commande pour gérer les protocoles inconnus :"
 
@@ -4197,7 +4219,7 @@ msgstr "Utiliser les même couleurs que pour la liste des utilisateurs"
 msgid "Use special color for timestamps"
 msgstr "Utiliser une couleur spéciale pour l'horodateur"
 
-#: src/modules/options/optw_urlhandlers.cpp:48
+#: src/modules/options/optw_urlhandlers.cpp:67
 msgid "Use system URL handlers"
 msgstr "Utiliser l'intercepteur d'URL du système"
 
@@ -4535,7 +4557,7 @@ msgstr ""
 msgid "unnamed"
 msgstr "sans nom"
 
-#: src/modules/options/optw_urlhandlers.h:31
+#: src/modules/options/optw_urlhandlers.h:33
 msgid "url,programs"
 msgstr "url,programmes"
 

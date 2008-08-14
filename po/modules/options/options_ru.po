@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 20:23+0200\n"
+"POT-Creation-Date: 2008-08-14 18:05+0200\n"
 "PO-Revision-Date: 2007-03-31 10:19+0400\n"
 "Last-Translator: Alexey Uzhva <alexey at kvirc dot ru>\n"
 "Language-Team: Russian\n"
@@ -117,23 +117,23 @@ msgstr ""
 "<b>Внимание:</b> Вы должны перезапустить KVirc для изменения языка "
 "интерфейса программы"
 
-#: src/modules/options/optw_urlhandlers.cpp:55
+#: src/modules/options/optw_urlhandlers.cpp:74
 msgid "<b>file://</b> handler command:"
 msgstr "Команда обработки <b>file://</b>"
 
-#: src/modules/options/optw_urlhandlers.cpp:53
+#: src/modules/options/optw_urlhandlers.cpp:72
 msgid "<b>ftp://</b> handler command:"
 msgstr "Команда обработки <b>ftp://</b>"
 
-#: src/modules/options/optw_urlhandlers.cpp:51
+#: src/modules/options/optw_urlhandlers.cpp:70
 msgid "<b>http://</b> handler command:"
 msgstr "Команда обработки <b>http://</b>"
 
-#: src/modules/options/optw_urlhandlers.cpp:52
+#: src/modules/options/optw_urlhandlers.cpp:71
 msgid "<b>https://</b> handler command:"
 msgstr "Команда обработки <b>https://</b>"
 
-#: src/modules/options/optw_urlhandlers.cpp:54
+#: src/modules/options/optw_urlhandlers.cpp:73
 msgid "<b>mailto:</b> handler command:"
 msgstr "Команда обработки <b>mailto:</b>"
 
@@ -2142,6 +2142,10 @@ msgstr ""
 msgid "Dotted Grid"
 msgstr "Точечная сетка"
 
+#: src/modules/options/optw_urlhandlers.cpp:52
+msgid "Double click"
+msgstr ""
+
 #: src/modules/options/optw_identity.cpp:169
 #: src/modules/options/optw_identity.cpp:176
 msgid "Download aborted by user"
@@ -2490,6 +2494,10 @@ msgstr "Горизонтальное расположение:"
 #: src/modules/options/optw_ircview.cpp:52
 msgid "Horizontal align:"
 msgstr "Горизонтальное расположение:"
+
+#: src/modules/options/optw_urlhandlers.cpp:49
+msgid "How many click to open links?"
+msgstr ""
 
 #: src/modules/options/optw_sound.cpp:95
 msgid "ID3 tags' encoding"
@@ -2894,6 +2902,11 @@ msgstr "Минимальная ширина:"
 #: src/modules/options/optw_dcc.cpp:336
 msgid "Mixer device:"
 msgstr "Устройство микшера:"
+
+#: src/modules/options/optw_urlhandlers.cpp:47
+#, fuzzy
+msgid "Mouse handler"
+msgstr "Обработчики URL"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3303,6 +3316,11 @@ msgstr "Свойства"
 msgid "Protection"
 msgstr "Защита"
 
+#: src/modules/options/optw_urlhandlers.cpp:64
+#, fuzzy
+msgid "Protocol handler"
+msgstr "Протокол:"
+
 #: src/modules/options/optw_proxy.cpp:118
 msgid "Protocol:"
 msgstr "Протокол:"
@@ -3678,6 +3696,10 @@ msgstr "Показывать иконки окон в панели задач"
 msgid "Silent anti-spam (no warnings)"
 msgstr "Молчаливый антиспам (без предупреждений)"
 
+#: src/modules/options/optw_urlhandlers.cpp:51
+msgid "Single click"
+msgstr ""
+
 #: src/modules/options/optw_connection.h:74
 msgid "Socket"
 msgstr "Сокет"
@@ -4029,7 +4051,7 @@ msgstr "Запустить событие, если задержка превы�
 msgid "Tweaks"
 msgstr "Настройки"
 
-#: src/modules/options/optw_urlhandlers.h:28
+#: src/modules/options/optw_urlhandlers.h:30
 msgid "URL handlers"
 msgstr "Обработчики URL"
 
@@ -4045,7 +4067,7 @@ msgstr "USERINFO"
 msgid "Unable to write language information to"
 msgstr "Не могу записать информацию о языке в"
 
-#: src/modules/options/optw_urlhandlers.cpp:56
+#: src/modules/options/optw_urlhandlers.cpp:75
 msgid "Unknown protocol handler command:"
 msgstr "Команда обработки неизвестных протоколов:"
 
@@ -4168,7 +4190,7 @@ msgstr "Использовать те же цвета, что и в списке
 msgid "Use special color for timestamps"
 msgstr "использовать специальный цвет для меток времени"
 
-#: src/modules/options/optw_urlhandlers.cpp:48
+#: src/modules/options/optw_urlhandlers.cpp:67
 msgid "Use system URL handlers"
 msgstr "Использовать системные обработчики URL"
 
@@ -4502,7 +4524,7 @@ msgstr ""
 msgid "unnamed"
 msgstr "без имени"
 
-#: src/modules/options/optw_urlhandlers.h:31
+#: src/modules/options/optw_urlhandlers.h:33
 msgid "url,programs"
 msgstr "url,программы"
 

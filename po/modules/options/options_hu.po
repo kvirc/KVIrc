@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 20:23+0200\n"
+"POT-Creation-Date: 2008-08-14 18:05+0200\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -108,23 +108,23 @@ msgstr ""
 "<b>Megjegyzés:</b> Újra kell indítanod a KVIrcet, hogy érvényesítsd a nyelvi "
 "beállításokat"
 
-#: src/modules/options/optw_urlhandlers.cpp:55
+#: src/modules/options/optw_urlhandlers.cpp:74
 msgid "<b>file://</b> handler command:"
 msgstr "<b>file://</b> kezelő parancs:"
 
-#: src/modules/options/optw_urlhandlers.cpp:53
+#: src/modules/options/optw_urlhandlers.cpp:72
 msgid "<b>ftp://</b> handler command:"
 msgstr "<b>ftp://</b> kezelő parancs:"
 
-#: src/modules/options/optw_urlhandlers.cpp:51
+#: src/modules/options/optw_urlhandlers.cpp:70
 msgid "<b>http://</b> handler command:"
 msgstr "<b>http://</b> kezelő parancs:"
 
-#: src/modules/options/optw_urlhandlers.cpp:52
+#: src/modules/options/optw_urlhandlers.cpp:71
 msgid "<b>https://</b> handler command:"
 msgstr "<b>https://</b> kezelő parancs:"
 
-#: src/modules/options/optw_urlhandlers.cpp:54
+#: src/modules/options/optw_urlhandlers.cpp:73
 msgid "<b>mailto:</b> handler command:"
 msgstr "<b>mailto:</b> kezelő parancs:"
 
@@ -2126,6 +2126,10 @@ msgstr ""
 msgid "Dotted Grid"
 msgstr "Pontozott Rács"
 
+#: src/modules/options/optw_urlhandlers.cpp:52
+msgid "Double click"
+msgstr ""
+
 #: src/modules/options/optw_identity.cpp:169
 #: src/modules/options/optw_identity.cpp:176
 msgid "Download aborted by user"
@@ -2471,6 +2475,10 @@ msgstr "Vízszintes elhelyezés:"
 #: src/modules/options/optw_ircview.cpp:52
 msgid "Horizontal align:"
 msgstr "Vízszintes elhelyezés:"
+
+#: src/modules/options/optw_urlhandlers.cpp:49
+msgid "How many click to open links?"
+msgstr ""
 
 #: src/modules/options/optw_sound.cpp:95
 msgid "ID3 tags' encoding"
@@ -2875,6 +2883,11 @@ msgstr "Minimális szélesség:"
 #: src/modules/options/optw_dcc.cpp:336
 msgid "Mixer device:"
 msgstr "Keverőeszköz: "
+
+#: src/modules/options/optw_urlhandlers.cpp:47
+#, fuzzy
+msgid "Mouse handler"
+msgstr "URL kezelők"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3283,6 +3296,11 @@ msgstr "Tulajdonságok"
 msgid "Protection"
 msgstr "Védelem"
 
+#: src/modules/options/optw_urlhandlers.cpp:64
+#, fuzzy
+msgid "Protocol handler"
+msgstr "Protokoll:"
+
 #: src/modules/options/optw_proxy.cpp:118
 msgid "Protocol:"
 msgstr "Protokoll:"
@@ -3655,6 +3673,10 @@ msgstr "Ablak ikonjának mutatása tálcán"
 msgid "Silent anti-spam (no warnings)"
 msgstr "Csöndes spamszűrés (figyelmeztetés nélkül)"
 
+#: src/modules/options/optw_urlhandlers.cpp:51
+msgid "Single click"
+msgstr ""
+
 #: src/modules/options/optw_connection.h:74
 msgid "Socket"
 msgstr "Socket"
@@ -4002,7 +4024,7 @@ msgstr "Esemény, ha a lag meghaladja: "
 msgid "Tweaks"
 msgstr "Tuning"
 
-#: src/modules/options/optw_urlhandlers.h:28
+#: src/modules/options/optw_urlhandlers.h:30
 msgid "URL handlers"
 msgstr "URL kezelők"
 
@@ -4018,7 +4040,7 @@ msgstr "USERINFO"
 msgid "Unable to write language information to"
 msgstr "Nyelv információinak írása írása sikertelen: "
 
-#: src/modules/options/optw_urlhandlers.cpp:56
+#: src/modules/options/optw_urlhandlers.cpp:75
 msgid "Unknown protocol handler command:"
 msgstr "Ismeretlen protokollt kezelő parancs:"
 
@@ -4141,7 +4163,7 @@ msgstr "Használd ugyanazt a színt, mint a felhasználólistában"
 msgid "Use special color for timestamps"
 msgstr "Különleges szín időbélyegzőnek"
 
-#: src/modules/options/optw_urlhandlers.cpp:48
+#: src/modules/options/optw_urlhandlers.cpp:67
 msgid "Use system URL handlers"
 msgstr "Rendszer URL kezelőinek használata"
 
@@ -4475,7 +4497,7 @@ msgstr ""
 msgid "unnamed"
 msgstr "névtelen"
 
-#: src/modules/options/optw_urlhandlers.h:31
+#: src/modules/options/optw_urlhandlers.h:33
 msgid "url,programs"
 msgstr "url,programok,cím,webcím,web"
 

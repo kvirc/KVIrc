@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVirc 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 20:23+0200\n"
+"POT-Creation-Date: 2008-08-14 18:05+0200\n"
 "PO-Revision-Date: 2001-09-11 00:28+0200\n"
 "Last-Translator: Krzysztof Godlewski <kgod@poczta.onet.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -110,27 +110,27 @@ msgstr ""
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
 msgstr ""
 
-#: src/modules/options/optw_urlhandlers.cpp:55
+#: src/modules/options/optw_urlhandlers.cpp:74
 #, fuzzy
 msgid "<b>file://</b> handler command:"
 msgstr "Brak takiej komendy w module"
 
-#: src/modules/options/optw_urlhandlers.cpp:53
+#: src/modules/options/optw_urlhandlers.cpp:72
 #, fuzzy
 msgid "<b>ftp://</b> handler command:"
 msgstr "Brak takiej komendy w module"
 
-#: src/modules/options/optw_urlhandlers.cpp:51
+#: src/modules/options/optw_urlhandlers.cpp:70
 #, fuzzy
 msgid "<b>http://</b> handler command:"
 msgstr "Brak takiej komendy w module"
 
-#: src/modules/options/optw_urlhandlers.cpp:52
+#: src/modules/options/optw_urlhandlers.cpp:71
 #, fuzzy
 msgid "<b>https://</b> handler command:"
 msgstr "Brak takiej komendy w module"
 
-#: src/modules/options/optw_urlhandlers.cpp:54
+#: src/modules/options/optw_urlhandlers.cpp:73
 #, fuzzy
 msgid "<b>mailto:</b> handler command:"
 msgstr "Brak takiej komendy w module"
@@ -1774,6 +1774,13 @@ msgstr ""
 msgid "Dotted Grid"
 msgstr ""
 
+#: src/modules/options/optw_urlhandlers.cpp:52
+#, fuzzy
+msgid "Double click"
+msgstr ""
+"Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
+"zobaczyć inne opcje"
+
 #: src/modules/options/optw_identity.cpp:169
 #: src/modules/options/optw_identity.cpp:176
 msgid "Download aborted by user"
@@ -2125,6 +2132,13 @@ msgstr ""
 #: src/modules/options/optw_ircview.cpp:52
 msgid "Horizontal align:"
 msgstr ""
+
+#: src/modules/options/optw_urlhandlers.cpp:49
+#, fuzzy
+msgid "How many click to open links?"
+msgstr ""
+"Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
+"zobaczyć inne opcje"
 
 #: src/modules/options/optw_sound.cpp:95
 msgid "ID3 tags' encoding"
@@ -2552,6 +2566,11 @@ msgstr "M&inimalizuj"
 #: src/modules/options/optw_dcc.cpp:336
 msgid "Mixer device:"
 msgstr ""
+
+#: src/modules/options/optw_urlhandlers.cpp:47
+#, fuzzy
+msgid "Mouse handler"
+msgstr "Usuń"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -2981,6 +3000,11 @@ msgstr ""
 msgid "Protection"
 msgstr "Brak połączenia"
 
+#: src/modules/options/optw_urlhandlers.cpp:64
+#, fuzzy
+msgid "Protocol handler"
+msgstr "Protokół:"
+
 #: src/modules/options/optw_proxy.cpp:118
 msgid "Protocol:"
 msgstr "Protokół:"
@@ -3397,6 +3421,10 @@ msgstr "Nie podano indeksu"
 msgid "Silent anti-spam (no warnings)"
 msgstr ""
 
+#: src/modules/options/optw_urlhandlers.cpp:51
+msgid "Single click"
+msgstr ""
+
 #: src/modules/options/optw_connection.h:74
 #, fuzzy
 msgid "Socket"
@@ -3708,7 +3736,7 @@ msgstr ""
 msgid "Tweaks"
 msgstr ""
 
-#: src/modules/options/optw_urlhandlers.h:28
+#: src/modules/options/optw_urlhandlers.h:30
 #, fuzzy
 msgid "URL handlers"
 msgstr "Usuń"
@@ -3725,7 +3753,7 @@ msgstr ""
 msgid "Unable to write language information to"
 msgstr ""
 
-#: src/modules/options/optw_urlhandlers.cpp:56
+#: src/modules/options/optw_urlhandlers.cpp:75
 #, fuzzy
 msgid "Unknown protocol handler command:"
 msgstr "Nieznana komenda"
@@ -3856,7 +3884,7 @@ msgstr ""
 msgid "Use special color for timestamps"
 msgstr ""
 
-#: src/modules/options/optw_urlhandlers.cpp:48
+#: src/modules/options/optw_urlhandlers.cpp:67
 #, fuzzy
 msgid "Use system URL handlers"
 msgstr "Usuń"
@@ -4189,7 +4217,7 @@ msgstr ""
 msgid "unnamed"
 msgstr ""
 
-#: src/modules/options/optw_urlhandlers.h:31
+#: src/modules/options/optw_urlhandlers.h:33
 msgid "url,programs"
 msgstr ""
 
@@ -5237,12 +5265,6 @@ msgstr ""
 #~ msgstr "Nieprawidłowy indeks (%Q)"
 
 #, fuzzy
-#~ msgid "Double click to enable it"
-#~ msgstr ""
-#~ "Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
-#~ "zobaczyć inne opcje"
-
-#, fuzzy
 #~ msgid "Double click to enter away mode"
 #~ msgstr ""
 #~ "Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
@@ -5269,12 +5291,6 @@ msgstr ""
 #, fuzzy
 #~ msgid ""
 #~ "Double-click to look up this hostname<br>Right-click to view other options"
-#~ msgstr ""
-#~ "Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
-#~ "zobaczyć inne opcje"
-
-#, fuzzy
-#~ msgid "Double-click to open this link"
 #~ msgstr ""
 #~ "Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
 #~ "zobaczyć inne opcje"
@@ -6560,10 +6576,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Raw data to server"
 #~ msgstr "Ostatnie &serwery"
-
-#, fuzzy
-#~ msgid "Re&move Handler"
-#~ msgstr "Usuń"
 
 #, fuzzy
 #~ msgid "Re&move Popup"
