@@ -77,6 +77,7 @@ namespace KviTimeUtils
 {
 
 
+	long long  getCurrentTimeMills();
 	// splits the time span uSecs in days, hours, minutes and seconds
 	KVILIB_API void secondsToDaysHoursMinsSecs(unsigned int uSecs,
 					unsigned int * uD,unsigned int * uH,unsigned int * uM,unsigned int * uS);

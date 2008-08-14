@@ -81,6 +81,14 @@ unsigned long KviMSecTimeInterval::mark()
 
 namespace KviTimeUtils
 {
+	long long  getCurrentTimeMills()
+	{
+		struct timeval tmv;
+		kvi_gettimeofday(&tmv,0);
+		long long result = tmv.tv_sec * 1000 + tmv.tv_usec / 1000;
+		return result;
+	}
+
 	void secondsToDaysHoursMinsSecs(unsigned int uSecs,
 		unsigned int * uD,unsigned int * uH,unsigned int * uM,unsigned int * uS)
 	{

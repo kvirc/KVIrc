@@ -793,24 +793,31 @@ KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &
 	//if(!p)return 0;
 
 
+	KviAvatar* result = 0;
 
 	if(KviFileUtils::fileExists(szP))
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad))
 		{
-			return new KviAvatar(szP,szN,
+			result = new KviAvatar(szP,szN,
 						QSize(
 							KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadWidth),
 							KVI_OPTION_UINT(KviOption_uintScaleAvatarsOnLoadHeight)
 						)
 					);
 		} else {
-			return new KviAvatar(szP,szN);
+			result = new KviAvatar(szP,szN);
 		}
-	} else {
-		return 0;
 	}
 
+	//Can't load it
+	if(result && !result->isValid())
+	{
+		delete result;
+		result = 0;
+	}
+
+	return result;
 }
 
 void KviIconManager::clearCache()

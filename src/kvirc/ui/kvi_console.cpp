@@ -997,7 +997,14 @@ KviAvatar * KviConsole::defaultAvatarFromOptions()
 	if(!avatar)return 0;
 	if(avatar->isNull())return 0;
 	if(KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())return 0;
-	return new KviAvatar(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).path(),KVI_OPTION_STRING(KviOption_stringMyAvatar));
+	KviAvatar * loadedAvatar = new KviAvatar(KVI_OPTION_PIXMAP(KviOption_pixmapMyAvatar).path(),KVI_OPTION_STRING(KviOption_stringMyAvatar));
+	if(loadedAvatar->isValid())
+	{
+		return loadedAvatar;
+	} else {
+		delete loadedAvatar;
+		return 0;
+	}
 }
 
 KviAvatar * KviConsole::currentAvatar()

@@ -11,9 +11,16 @@
 #include <QMutex>
 #include <QPixmap>
 #include <QMultiHash>
+#include <QMultiMap>
+#include <QTimer>
 
-class KviAnimatedPixmapCache {
+class KviAnimatedPixmapInterface {
+  public:
+    virtual void nextFrame() = 0;
+};
 
+class KviAnimatedPixmapCache : public QObject {
+        Q_OBJECT
 public:
 	/*
 	 * This subclass represents simple structure
@@ -72,8 +79,12 @@ public:
 	};
 protected:
 
-	mutable QMutex                 m_cacheMutex;
-	QMultiHash<QString,Data*>      m_hCache;
+	mutable QMutex                               m_cacheMutex;
+	mutable QMutex                               m_timerMutex;
+
+	QMultiHash<QString,Data*>                    m_hCache;
+	QMultiMap<long long,KviAnimatedPixmapInterface*> m_timerData;
+	QTimer                                       m_animationTimer;
 
 	/*
 	 * This class is a singletone.
@@ -85,12 +96,19 @@ protected:
 	Data* internalResize(Data* data,QSize size);
 
 	void  internalFree(Data* data);
+	void  internalSceduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
+	void  internalNotifyDelete(KviAnimatedPixmapInterface* receiver);
+protected slots:
+        void timerEvent();
 public:
 	virtual ~KviAnimatedPixmapCache();
 
+	static void  sceduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
 	static Data* load(QString szFileName);
 	static Data* resize(Data* data,QSize size);
 	static void  free(Data* data);
+	static QPixmap* dummyPixmap();
+	static void notifyDelete(KviAnimatedPixmapInterface* receiver);
 };
 
 #endif /* KVI_ANIMATEDPIXMAPCACHE_H_ */

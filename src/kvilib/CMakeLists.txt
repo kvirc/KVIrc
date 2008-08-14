@@ -40,6 +40,7 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_vbox.h
 	tal/kvi_tal_widgetstack.h
 	tal/kvi_tal_wizard.h
+	ext/kvi_animatedpixmapcache.h
 )
 
 IF(COMPILE_KDE_SUPPORT)

@@ -96,6 +96,15 @@ public:
 	}
 
 	/*
+	 * Returns true if pixmap has at least one loaded frame.
+	 * Returns false otherways.
+	 */
+	inline bool isValid()
+	{
+		return m_pPixmap->isValid();
+	}
+
+	/*
 	 * Returns original animated pixmap.
 	 */
 	inline KviAnimatedPixmap * animatedPixmap() {

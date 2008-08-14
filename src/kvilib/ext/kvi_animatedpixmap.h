@@ -48,13 +48,12 @@
  * This class owns all pixmaps. Do not store links to them.
  */
 
-class KVILIB_API KviAnimatedPixmap : public QObject{
+class KVILIB_API KviAnimatedPixmap : public QObject , public KviAnimatedPixmapInterface{
 	Q_OBJECT
 
 protected:
 	QString                        m_szFileName;
 	KviAnimatedPixmapCache::Data*  m_lFrames;
-	QTimer                         m_timer;
 
 	uint                           m_uCurrentFrameNumber;
 	bool                           m_bStarted;
@@ -100,14 +99,15 @@ public:
 	}
 
 	/*
-	 * Returns active frame's pixmap
+	 * Returns active frame's pixmap.
+	 * Never fails.
 	 */
 	inline QPixmap* pixmap()
 	{
 		if(m_lFrames->count()>0)
 			return m_lFrames->at(m_uCurrentFrameNumber).pixmap;
 		else
-			return 0;
+			return KviAnimatedPixmapCache::dummyPixmap();
 	}
 
 	/*
@@ -140,17 +140,16 @@ public:
 	 */
 	void resize(QSize newSize,Qt::AspectRatioMode ratioMode);
 
-protected slots:
+	/*
+	 * Called when the frame changes
+	 */
+	void nextFrame();
+
+signals:
 
 	/*
 	 * Slot, to be connected to m_animationTimer, to receive animation
 	 * frame changes.
-	 */
-	void animationTimerShot();
-
-signals:
-	/*
-	 * This signal emitted when active frame changes
 	 */
 	void frameChanged();
 };
