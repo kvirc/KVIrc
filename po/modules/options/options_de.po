@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-14 18:05+0200\n"
-"PO-Revision-Date: 2008-08-08 20:43+0200\n"
+"PO-Revision-Date: 2008-08-14 18:27+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -106,8 +106,7 @@ msgstr "3D-Gitter"
 
 #: src/modules/options/optw_textencoding.cpp:81
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
+msgstr "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
 #: src/modules/options/optw_urlhandlers.cpp:74
 msgid "<b>file://</b> handler command:"
@@ -239,8 +238,7 @@ msgstr ""
 "\"<b>Hinzufügen</b>\" klicken</center>"
 
 #: src/modules/options/optw_servers.cpp:1169
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -388,8 +386,7 @@ msgstr ""
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
+msgstr "<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
 
 #: src/modules/options/optw_connection.cpp:152
 msgid ""
@@ -893,8 +890,7 @@ msgstr ""
 "liegen</center>"
 
 #: src/modules/options/optw_servers.cpp:1143
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -1103,8 +1099,7 @@ msgstr ""
 "Transparenz benutzen\" aktiviert sein.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Diese Option setzt die minimale Alarmstufe für die Fensterleiste.</"
 "center>"
@@ -2185,9 +2180,8 @@ msgid "Dotted Grid"
 msgstr "Gepunktetes Gitter"
 
 #: src/modules/options/optw_urlhandlers.cpp:52
-#, fuzzy
 msgid "Double click"
-msgstr "Doppelklick zum Aktivieren"
+msgstr "Doppelklick"
 
 #: src/modules/options/optw_identity.cpp:169
 #: src/modules/options/optw_identity.cpp:176
@@ -2258,8 +2252,7 @@ msgstr "Lagmeter aktivieren"
 
 #: src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
+msgstr "Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
 
 #: src/modules/options/optw_notify.cpp:121
 msgid "Enable notifier window fade effect"
@@ -2532,9 +2525,8 @@ msgid "Horizontal align:"
 msgstr "Horizontale Ausrichtung:"
 
 #: src/modules/options/optw_urlhandlers.cpp:49
-#, fuzzy
 msgid "How many click to open links?"
-msgstr "Doppelklick zum Öffnen der Verknüpfung"
+msgstr "Wieviele Klicks zum Öffnen der Links?"
 
 #: src/modules/options/optw_sound.cpp:95
 msgid "ID3 tags' encoding"
@@ -2937,9 +2929,8 @@ msgid "Mixer device:"
 msgstr "Mixergerät:"
 
 #: src/modules/options/optw_urlhandlers.cpp:47
-#, fuzzy
 msgid "Mouse handler"
-msgstr "Handler &löschen"
+msgstr "Maus-Handler"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3348,9 +3339,8 @@ msgid "Protection"
 msgstr "Sicherung"
 
 #: src/modules/options/optw_urlhandlers.cpp:64
-#, fuzzy
 msgid "Protocol handler"
-msgstr "Protokoll:"
+msgstr "Protokoll-Handler"
 
 #: src/modules/options/optw_proxy.cpp:118
 msgid "Protocol:"
@@ -3374,8 +3364,7 @@ msgstr "Proxy:"
 
 #: src/modules/options/optw_nickserv.cpp:59
 msgid "Put here the nickname that you have registered with NickServ"
-msgstr ""
-"Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
+msgstr "Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
 
 #: src/modules/options/optw_query.h:28
 msgid "Query"
@@ -3725,9 +3714,8 @@ msgid "Silent anti-spam (no warnings)"
 msgstr "Stiller Antispam (keine Warnungen)"
 
 #: src/modules/options/optw_urlhandlers.cpp:51
-#, fuzzy
 msgid "Single click"
-msgstr "Einfache Uhr"
+msgstr "Einfacher Klick"
 
 #: src/modules/options/optw_connection.h:74
 msgid "Socket"
@@ -3739,8 +3727,7 @@ msgstr "durchgezogene Linie"
 
 #: src/modules/options/optw_dcc.cpp:181
 msgid "Sort saved files by nicknames (create subfolders)"
-msgstr ""
-"Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
+msgstr "Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
 
 #: src/modules/options/optw_taskbar.cpp:38
 msgid "Sort windows by name"
@@ -3811,8 +3798,7 @@ msgstr "De Spitznamen-Feld darf nicht leer sein!"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3842,8 +3828,7 @@ msgstr "Themeneinstellungen"
 
 #: src/modules/options/optw_sound.cpp:97
 msgid "This allows you to select encoding of mp3 tags."
-msgstr ""
-"Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
+msgstr "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
 #: src/modules/options/optw_sound.cpp:120
 msgid "This allows you to select encoding of winamp messages."
@@ -3885,8 +3870,7 @@ msgid "This executable has no SSL support."
 msgstr "Diese Version von KVIrc hat keine SSL-Unterstützung"
 
 #: src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
@@ -13779,3 +13763,4 @@ msgstr "in:"
 
 #~ msgid "z: Recipient for oper wallop messages"
 #~ msgstr "z: Empfänger für oper wallop-Nachrichten"
+
