@@ -57,6 +57,7 @@ protected:
 	bool functioninsertWidgetItem(KviKvsObjectFunctionCall *c);
 	/*bool functionisSelected(KviKvsObjectFunctionCall *c);
 	*/
+	bool function_selectedItems(KviKvsObjectFunctionCall *c);
 	bool functioncurrentItemChangeEvent(KviKvsObjectFunctionCall *c);
 	bool functiononItemEvent(KviKvsObjectFunctionCall *c);
 

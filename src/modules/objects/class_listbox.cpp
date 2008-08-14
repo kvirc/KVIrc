@@ -117,6 +117,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listbox,"listbox","widget")
 //	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"itemRect", functionitemRect);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"setCurrentItem", functionsetCurrentItem);
 
+	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"selectedItems",function_selectedItems)
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"setSelectionMode",functionsetSelectionMode);
 	KVSO_REGISTER_HANDLER(KviKvsObject_listbox,"selectionMode",functionselectionMode);
@@ -323,6 +324,23 @@ bool KviKvsObject_listbox::functioninsertWidgetItem(KviKvsObjectFunctionCall *c)
 	((QListWidget *)widget())->setItemWidget(item,wi);
 	return true;
 }
+bool KviKvsObject_listbox::function_selectedItems(KviKvsObjectFunctionCall *c)
+{
+	if(widget())
+	{
+		QList<QListWidgetItem *> list=((QListWidget *)widget())->selectedItems();
+		KviKvsArray * pArray = new KviKvsArray();
+		c->returnValue()->setArray(pArray);
+		for (int i=0;i<list.count();i++){
+			kvs_int_t index=((QListWidget *)widget())->row(list.at(i));
+			pArray->set(i,new KviKvsVariant(index));
+		}
+	}
+	else
+		c->returnValue()->setNothing();
+	return true;
+}
+
 /*
 bool KviKvsObject_listbox::functionsetSelected(KviKvsObjectFunctionCall *c)
 {
