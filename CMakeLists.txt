@@ -654,25 +654,6 @@ IF(WANT_GETTEXT)
 	FIND_PROGRAM(GETTEXT_MSGFMT_EXECUTABLE msgfmt)
 	FIND_PROGRAM(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
 	FIND_PROGRAM(SED_EXECUTABLE sed)
-	IF(SED_EXECUTABLE)
-		# wipes absolute paths from .pot? files, by mren
-		ADD_CUSTOM_TARGET(message-tidy)
-		FILE(GLOB_RECURSE FILES_TO_TIDY ${CMAKE_SOURCE_DIR}/po/*.po)
-		FILE(GLOB_RECURSE POTS_TO_TIDY ${CMAKE_SOURCE_DIR}/po/*.pot)
-		LIST(APPEND FILES_TO_TIDY ${POTS_TO_TIDY})
-		FOREACH(curFile ${FILES_TO_TIDY})
-			ADD_CUSTOM_COMMAND(TARGET message-tidy
-			COMMENT "tidying ${curFile}..."
-			COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
-			VERBATIM
-			DEPENDS ${curFile}
-			)
-		ENDFOREACH()
-		ADD_DEPENDENCIES(message-update message-tidy)
-		SET(CMAKE_STATUS_MESSAGE_TIDY "Yes")
-	ELSE()
-		SET(CMAKE_STATUS_MESSAGE_TIDY "Sed not found")
-	ENDIF()
 
 	IF(GETTEXT_MSGFMT_EXECUTABLE)
 		ADD_CUSTOM_TARGET("kvirc-translations" ALL)
@@ -694,6 +675,27 @@ IF(WANT_GETTEXT)
 		SET(USE_GETTEXT_EXTRA 0)
 		SET(GETTEXT_EXTRA_STATUS)
 	ENDIF()
+
+	IF(SED_EXECUTABLE)
+		# wipes absolute paths from .pot? files, by mren
+		ADD_CUSTOM_TARGET(message-tidy)
+		FILE(GLOB_RECURSE FILES_TO_TIDY ${CMAKE_SOURCE_DIR}/po/*.po)
+		FILE(GLOB_RECURSE POTS_TO_TIDY ${CMAKE_SOURCE_DIR}/po/*.pot)
+		LIST(APPEND FILES_TO_TIDY ${POTS_TO_TIDY})
+		FOREACH(curFile ${FILES_TO_TIDY})
+			ADD_CUSTOM_COMMAND(TARGET message-tidy
+			COMMENT "tidying ${curFile}..."
+			COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+			VERBATIM
+			DEPENDS ${curFile}
+			)
+		ENDFOREACH()
+		ADD_DEPENDENCIES(message-update message-tidy)
+		SET(CMAKE_STATUS_MESSAGE_TIDY "Yes")
+	ELSE()
+		SET(CMAKE_STATUS_MESSAGE_TIDY "Sed not found")
+	ENDIF()
+
 ELSE()
 	SET(CMAKE_STATUS_GETTEXT_SUPPORT "User disabled")
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_GETTEXT)
