@@ -53,8 +53,8 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 3,2,6,99
- PRODUCTVERSION 3,2,6,99
+ FILEVERSION 3,4,1,0
+ PRODUCTVERSION 3,4,1,0
  FILEFLAGSMASK 0x17L
 #ifdef _DEBUG
  FILEFLAGS 0x1L
@@ -71,12 +71,12 @@ BEGIN
         BEGIN
             VALUE "CompanyName", "KVIrc Development Team"
             VALUE "FileDescription", "K Visual IRC Client Winamp Plugin"
-            VALUE "FileVersion", "3, 2, 6, 99"
+            VALUE "FileVersion", "3, 4, 1, 0"
             VALUE "InternalName", "gen_kvirc"
             VALUE "LegalCopyright", "Copyright (C) 2007"
             VALUE "OriginalFilename", "gen_kvirc.dll"
             VALUE "ProductName", "K Visual IRC Client"
-            VALUE "ProductVersion", "3, 2, 6, 99"
+            VALUE "ProductVersion", "3, 4, 1, 0"
         END
     END
     BLOCK "VarFileInfo"
