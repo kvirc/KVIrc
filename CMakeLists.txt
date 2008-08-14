@@ -668,7 +668,7 @@ IF(WANT_GETTEXT)
 			DEPENDS ${curFile}
 			)
 		ENDFOREACH()
-		ADD_DEFINITIONS(message-update message-tidy)
+		ADD_DEPENDENCIES(message-update message-tidy)
 		SET(CMAKE_STATUS_MESSAGE_TIDY "Yes")
 	ELSE()
 		SET(CMAKE_STATUS_MESSAGE_TIDY "Sed not found")
