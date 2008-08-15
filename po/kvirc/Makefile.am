@@ -21,7 +21,7 @@ tmp_DATA  = kvirc_bg.mo \
 	kvirc_hu.mo \
 	kvirc_hr.mo \
 	kvirc_fi.mo \
-	kvirc_uk.mo
+	kvirc_ua.mo
 
 CLEANFILES = $(tmp_DATA)
 

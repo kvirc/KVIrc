@@ -20,7 +20,7 @@ tmp_DATA  = editor_ca.mo \
 	editor_fr.mo \
 	editor_hu.mo \
 	editor_fi.mo \
-	editor_uk.mo
+	editor_ua.mo
 
 # The *.po files to generate
 POFILES  = editor_ca.po \

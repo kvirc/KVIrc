@@ -16,7 +16,7 @@ tmp_DATA  = theme_it.mo \
 	theme_fi.mo \
 	theme_cs.mo \
 	theme_hu.mo \
-	theme_uk.mo \
+	theme_ua.mo \
 	theme_fr.mo
 
 # The *.po files to generate

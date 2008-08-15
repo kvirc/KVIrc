@@ -20,7 +20,7 @@ tmp_DATA  = dcc_ca.mo \
 	dcc_hu.mo \
 	dcc_fr.mo \
 	dcc_fi.mo \
-	dcc_uk.mo
+	dcc_ua.mo
 
 # The *.po files to generate
 POFILES  = dcc_ca.po \

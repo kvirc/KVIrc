@@ -20,7 +20,7 @@ tmp_DATA  = logview_ca.mo \
 	logview_fr.mo \
 	logview_hu.mo \
 	logview_fi.mo \
-	logview_uk.mo
+	logview_ua.mo
 
 # The *.po files to generate
 POFILES  = logview_ca.po \

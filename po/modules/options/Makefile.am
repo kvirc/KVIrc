@@ -25,7 +25,7 @@ tmp_DATA  = options_bg.mo \
 	options_ru.mo \
 	options_sr.mo \
 	options_fi.mo \
-	options_uk.mo
+	options_ua.mo
 
 # The *.po files to generate
 POFILES = options_bg.po \

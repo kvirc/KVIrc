@@ -20,7 +20,7 @@ tmp_DATA  = perl_ca.mo \
 	perl_fr.mo \
 	perl_hu.mo \
 	perl_fi.mo \
-	perl_uk.mo
+	perl_ua.mo
 
 # The *.po files to generate
 POFILES  =  perl_ca.po \

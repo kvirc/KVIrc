@@ -21,7 +21,7 @@ tmp_DATA  = notifier_ca.mo \
 	notifier_hu.mo \
 	notifier_fi.mo \
 	notifier_hr.mo \
-	notifier_uk.mo
+	notifier_ua.mo
 
 # The *.po files to generate
 POFILES  =  notifier_ca.po \

@@ -21,7 +21,7 @@ tmp_DATA  = filetransferwindow_ca.mo \
 	filetransferwindow_hu.mo \
 	filetransferwindow_fi.mo \
 	filetransferwindow_hr.mo \
-	filetransferwindow_uk.mo
+	filetransferwindow_ua.mo
 
 # The *.po files to generate
 POFILES  = filetransferwindow_ca.po \

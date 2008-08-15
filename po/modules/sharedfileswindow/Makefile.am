@@ -21,7 +21,7 @@ tmp_DATA  = sharedfileswindow_ca.mo \
 	sharedfileswindow_fi.mo \
 	sharedfileswindow_hr.mo \
 	sharedfileswindow_hu.mo \
-	sharedfileswindow_uk.mo
+	sharedfileswindow_ua.mo
 
 # The *.po files to generate
 POFILES  = sharedfileswindow_ca.po \
