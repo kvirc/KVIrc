@@ -501,6 +501,7 @@ ENDIF()
 # NETWORK FUNCTIONS support
 ############################################################################
 
+INCLUDE(CheckFunctionExists)
 CHECK_FUNCTION_EXISTS("inet_ntoa" HAVE_INET_NTOA)
 # what systems lacks this!?
 IF(HAVE_INET_NTOA)

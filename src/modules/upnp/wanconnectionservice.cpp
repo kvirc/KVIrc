@@ -130,7 +130,7 @@ void WanConnectionService::gotActionResponse(const QString &responseType, const 
 
 		qDebug() << "UPnP::WanConnectionService: natEnabled=" << m_bNatEnabled << "." << endl;
 	}
-	else if(responseType == "GetGenericPortMappingEntryResponse" || responseType == "AddPortMappingResponse")
+	else if(responseType == "GetGenericPortMappingEntryResponse")
 	{
 		// Find a place to store the data
 		PortMapping *map = new PortMapping;
@@ -151,6 +151,14 @@ void WanConnectionService::gotActionResponse(const QString &responseType, const 
 		qDebug() << "UPnP::WanConnectionService - Got mapping: " << map->protocol << " " << map->remoteHost << ":" << map->externalPort
 			<< " to " << map->internalClient << ":" << map->internalPort
 			<< "    max " << map->leaseDuration << "s '" << map->description << "' " << (map->enabled ? "enabled" : "disabled") << endl;
+	}
+	else if(responseType == "AddPortMappingResponse")
+	{
+		qDebug() << "UPnP::WanConnectionService - Got mapping enabled" << endl;
+	}
+	else if(responseType == "DeletePortMappingResponse")
+	{
+		qDebug() << "UPnP::WanConnectionService - Got mapping disabled" << endl;
 	}
 	else
 	{
