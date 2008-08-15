@@ -34,7 +34,7 @@ POFILES  = editor_ca.po \
 	editor_fr.po \
 	editor_hu.po \
 	editor_fi.po \
-	editor_uk.po
+	editor_ua.po
 
 ###############################################################################
 # STOP EDITING HERE

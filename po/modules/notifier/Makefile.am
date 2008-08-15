@@ -36,7 +36,7 @@ POFILES  =  notifier_ca.po \
 	notifier_hu.po \
 	notifier_fi.po \
 	notifier_hr.po \
-	notifier_uk.po
+	notifier_ua.po
 
 
 ###############################################################################

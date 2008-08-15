@@ -28,7 +28,7 @@ POFILES  =  torrent_de.po \
 	torrent_ru.po \
 	torrent_cs.po \
 	torrent_hr.po \
-	torrent_uk.po
+	torrent_ua.po
 
 
 ###############################################################################

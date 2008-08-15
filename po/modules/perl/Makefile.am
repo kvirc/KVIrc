@@ -34,7 +34,7 @@ POFILES  =  perl_ca.po \
 	perl_fr.po \
 	perl_hu.po \
 	perl_fi.po \
-	perl_uk.po
+	perl_ua.po
 
 
 ###############################################################################

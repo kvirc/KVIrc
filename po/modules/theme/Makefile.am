@@ -27,7 +27,7 @@ POFILES  = theme_it.po \
 	theme_fi.po \
 	theme_cs.po \
 	theme_hu.po \
-	theme_uk.po \
+	theme_ua.po \
 	theme_fr.po
 
 

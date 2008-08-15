@@ -43,7 +43,7 @@ POFILES = options_bg.po \
 	options_ru.po \
 	options_sr.po \
 	options_fi.po \
-	options_uk.po
+	options_ua.po
 
 ###############################################################################
 # STOP EDITING HERE

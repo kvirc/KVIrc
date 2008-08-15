@@ -36,7 +36,7 @@ POFILES  = filetransferwindow_ca.po \
 	filetransferwindow_hu.po \
 	filetransferwindow_fi.po \
 	filetransferwindow_hr.po \
-	filetransferwindow_uk.po
+	filetransferwindow_ua.po
 
 ###############################################################################
 # STOP EDITING HERE

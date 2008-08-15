@@ -36,7 +36,7 @@ POFILES  = sharedfileswindow_ca.po \
 	sharedfileswindow_fi.po \
 	sharedfileswindow_hr.po \
 	sharedfileswindow_hu.po \
-	sharedfileswindow_uk.po
+	sharedfileswindow_ua.po
 
 
 ###############################################################################

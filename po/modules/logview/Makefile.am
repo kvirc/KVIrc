@@ -34,7 +34,7 @@ POFILES  = logview_ca.po \
 	logview_fr.po \
 	logview_hu.po \
 	logview_fi.po \
-	logview_uk.po
+	logview_ua.po
 
 
 ###############################################################################

@@ -42,7 +42,7 @@ POFILES = kvirc_bg.po \
 	kvirc_hu.po \
 	kvirc_hr.po \
 	kvirc_fi.po \
-	kvirc_uk.po
+	kvirc_ua.po
 
 EXTRA_DIST=$(POFILES)
 

@@ -28,7 +28,7 @@ POFILES  =  mediaplayer_cs.po \
 	mediaplayer_hu.po \
 	mediaplayer_fi.po \
 	mediaplayer_hr.po \
-	mediaplayer_uk.po
+	mediaplayer_ua.po
 
 
 ###############################################################################

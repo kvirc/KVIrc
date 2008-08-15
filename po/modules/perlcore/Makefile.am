@@ -32,7 +32,7 @@ POFILES  =  perlcore_ca.po \
 	perlcore_fr.po \
 	perlcore_fi.po \
 	perlcore_hu.po \
-	perlcore_uk.po
+	perlcore_ua.po
 
 
 ###############################################################################

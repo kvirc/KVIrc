@@ -36,7 +36,7 @@ POFILES  = about_ca.po \
 	about_hu.po \
 	about_fi.po \
 	about_hr.po \
-	about_uk.po
+	about_ua.po
 
 
 ###############################################################################

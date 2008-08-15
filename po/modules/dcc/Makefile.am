@@ -34,7 +34,7 @@ POFILES  = dcc_ca.po \
 	dcc_hu.po \
 	dcc_fr.po \
 	dcc_fi.po \
-	dcc_uk.po
+	dcc_ua.po
 
 # The *.po  -> *.mo rules
 dcc_it.mo: dcc_it.po
