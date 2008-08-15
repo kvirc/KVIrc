@@ -44,7 +44,7 @@ UPnP::Manager* g_pManager = 0;
 	@syntax:
 		<string> $upnp.getExternalIpAddress()
 	@description:
-		During the loading of the UPnP module, KVIrc searches the gateway of your local network. If a gateway is found, KVIrc requests it the external Ip address associated to the router and caches it.[br]
+		During the loading of the UPnP module (and during a [cmd]upnp.refresh[/cmd]), KVIrc searches the gateway of your local network. If a gateway is found, KVIrc requests it the external Ip address associated to the router and caches it.[br]
 		Using this function you can get this cached value.[br]
 		Take care that if no gateway have been found or it returned no external Ip address (this can happens if its upstream  (wan) link is not connected), this function returns an empty string.[br]
 		It's better to check is a gateway has been found using [fnc]$upnp.isGatewayAvailable[/fnc] before using this function.
@@ -158,15 +158,46 @@ static bool upnp_kvs_cmd_delPortMapping(KviKvsModuleCommandCall * c)
 	return true;
 }
 
+/*
+	@doc: upnp.refresh
+	@type:
+		command
+	@title:
+		upnp.refresh
+	@short:
+		Rescan the local network for a gateway using UPnP
+	@syntax:
+		upnp.refresh
+	@description:
+		Rescan the local network for a gateway using UPnP.[br]
+		This command is automatically executed when KVIrc loads the upnp module.
+	@seealso:
+		[fnc]$upnp.isGatewayAvailable[/fnc]
+*/
+static bool upnp_kvs_cmd_refresh(KviKvsModuleCommandCall * c)
+{
+	if(g_pManager)
+		delete g_pManager;
+	g_pManager = 0;
+
+	g_pManager = UPnP::Manager::instance();
+
+	return true;
+}
+
 static bool upnp_module_init(KviModule * m)
 {
+	if(g_pManager)
+		delete g_pManager;
+	g_pManager = 0;
+
 	g_pManager = UPnP::Manager::instance();
-	//p_manager->initialize();
 
 	KVSM_REGISTER_FUNCTION(m,"isGatewayAvailable",upnp_kvs_fnc_isGatewayAvailable);
 	KVSM_REGISTER_FUNCTION(m,"getExternalIpAddress",upnp_kvs_fnc_getExternalIpAddress);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"addPortMapping",upnp_kvs_cmd_addPortMapping);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"delPortMapping",upnp_kvs_cmd_delPortMapping);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"refresh",upnp_kvs_cmd_refresh);
 
 	return true;
 }
@@ -178,13 +209,19 @@ static bool upnp_module_cleanup(KviModule *m)
 	return true;
 }
 
+static bool upnp_module_can_unload(KviModule *m)
+{
+	// if a gateway is available, don't unload me
+	return !g_pManager->isGatewayAvailable();
+}
+
 KVIRC_MODULE(
 	"UPnP",                                                 // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com),",
 	"Universal Plug and Play",
 	upnp_module_init,
-	0,
+	upnp_module_can_unload,
 	0,
 	upnp_module_cleanup
 )

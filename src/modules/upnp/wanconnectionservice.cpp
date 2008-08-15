@@ -59,7 +59,6 @@ void WanConnectionService::addPortMapping(const QString &protocol, const QString
 					const QString &internalClient, int internalPort, const QString &description,
 					bool enabled, int leaseDuration)
 {
-	// TODO: this still needs to be tested
 	QMap<QString,QString> arguments;
 	arguments["NewProtocol"]               = protocol;
 	arguments["NewRemoteHost"]             = remoteHost;
@@ -77,7 +76,6 @@ void WanConnectionService::addPortMapping(const QString &protocol, const QString
 // Delete a port mapping
 void WanConnectionService::deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort)
 {
-	// TODO: this still needs to be tested
 	QMap<QString,QString> arguments;
 	arguments["NewProtocol"]       = protocol;
 	arguments["NewRemoteHost"]     = remoteHost;
