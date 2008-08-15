@@ -39,8 +39,8 @@ namespace UPnP
 
 // The constructor
 WanConnectionService::WanConnectionService(const ServiceParameters &params)
-  : Service(params)
-  , m_bNatEnabled(false)
+: Service(params)
+, m_bNatEnabled(false)
 {
 
 }
@@ -56,20 +56,20 @@ WanConnectionService::~WanConnectionService()
 
 // Add a port mapping
 void WanConnectionService::addPortMapping(const QString &protocol, const QString &remoteHost, int externalPort,
-                                          const QString &internalClient, int internalPort, const QString &description,
-                                          bool enabled, int leaseDuration)
+					const QString &internalClient, int internalPort, const QString &description,
+					bool enabled, int leaseDuration)
 {
-  // TODO: this still needs to be tested
-  QMap<QString,QString> arguments;
-  arguments["NewProtocol"]               = protocol;
-  arguments["NewRemoteHost"]             = remoteHost;
-  arguments["NewExternalPort"]           = QString::number(externalPort);
-  arguments["NewInternalClient"]         = internalClient;
-  arguments["NewInternalPort"]           = QString::number(internalPort);
-  arguments["NewPortMappingDescription"] = description;
-  arguments["NewEnabled"]                = QString::number(enabled ? 1 : 0);
-  arguments["NewLeaseDuration"]          = QString::number(leaseDuration);
-  callAction("AddPortMapping", arguments);
+	// TODO: this still needs to be tested
+	QMap<QString,QString> arguments;
+	arguments["NewProtocol"]               = protocol;
+	arguments["NewRemoteHost"]             = remoteHost;
+	arguments["NewExternalPort"]           = QString::number(externalPort);
+	arguments["NewInternalClient"]         = internalClient;
+	arguments["NewInternalPort"]           = QString::number(internalPort);
+	arguments["NewPortMappingDescription"] = description;
+	arguments["NewEnabled"]                = QString::number(enabled ? 1 : 0);
+	arguments["NewLeaseDuration"]          = QString::number(leaseDuration);
+	callAction("AddPortMapping", arguments, "m");
 }
 
 
@@ -77,12 +77,12 @@ void WanConnectionService::addPortMapping(const QString &protocol, const QString
 // Delete a port mapping
 void WanConnectionService::deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort)
 {
-  // TODO: this still needs to be tested
-  QMap<QString,QString> arguments;
-  arguments["NewProtocol"]       = protocol;
-  arguments["NewRemoteHost"]     = remoteHost;
-  arguments["NewExternalPort"]   = QString::number(externalPort);
-  callAction("DeletePortMapping", arguments);
+	// TODO: this still needs to be tested
+	QMap<QString,QString> arguments;
+	arguments["NewProtocol"]       = protocol;
+	arguments["NewRemoteHost"]     = remoteHost;
+	arguments["NewExternalPort"]   = QString::number(externalPort);
+	callAction("DeletePortMapping", arguments, "m");
 }
 
 
@@ -90,7 +90,7 @@ void WanConnectionService::deletePortMapping(const QString &protocol, const QStr
 // Return the external IP address
 QString WanConnectionService::getExternalIpAddress() const
 {
-  return m_szExternalIpAddress;
+	return m_szExternalIpAddress;
 }
 
 
@@ -98,7 +98,7 @@ QString WanConnectionService::getExternalIpAddress() const
 // Return true if NAT is enabled
 bool WanConnectionService::getNatEnabled() const
 {
-  return m_bNatEnabled;
+	return m_bNatEnabled;
 }
 
 
@@ -106,7 +106,7 @@ bool WanConnectionService::getNatEnabled() const
 // Return the port mappings
 const KviPointerList<PortMapping>& WanConnectionService::getPortMappings() const
 {
-  return m_lPortMappings;
+	return m_lPortMappings;
 }
 
 
@@ -114,51 +114,51 @@ const KviPointerList<PortMapping>& WanConnectionService::getPortMappings() const
 // The control point received a response to callAction()
 void WanConnectionService::gotActionResponse(const QString &responseType, const QMap<QString,QString> &resultValues)
 {
-  qDebug() << "UPnP::WanConnectionService: Parsing action response:"
-            << " type='" << responseType << "'." << endl;
+	qDebug() << "UPnP::WanConnectionService: Parsing action response:"
+		<< " type='" << responseType << "'." << endl;
 
-  // Check the message type
-  if(responseType == "GetExternalIPAddressResponse")
-  {
-    // Get the external IP address from the response
-    m_szExternalIpAddress = resultValues["NewExternalIPAddress"];
+	// Check the message type
+	if(responseType == "GetExternalIPAddressResponse")
+	{
+		// Get the external IP address from the response
+		m_szExternalIpAddress = resultValues["NewExternalIPAddress"];
 
-    qDebug() << "UPnP::WanConnectionService: externalIp='" << m_szExternalIpAddress << "'." << endl;
-  }
-  else if(responseType == "GetNATRSIPStatusResponse")
-  {
-    // Get the nat status from the response
-    m_bNatEnabled = (resultValues["NewNATEnabled"] == "1");
+		qDebug() << "UPnP::WanConnectionService: externalIp='" << m_szExternalIpAddress << "'." << endl;
+	}
+	else if(responseType == "GetNATRSIPStatusResponse")
+	{
+		// Get the nat status from the response
+		m_bNatEnabled = (resultValues["NewNATEnabled"] == "1");
 
-    qDebug() << "UPnP::WanConnectionService: natEnabled=" << m_bNatEnabled << "." << endl;
-  }
-  else if(responseType == "GetGenericPortMappingEntryResponse")
-  {
-    // Find a place to store the data
-    PortMapping *map = new PortMapping;
+		qDebug() << "UPnP::WanConnectionService: natEnabled=" << m_bNatEnabled << "." << endl;
+	}
+	else if(responseType == "GetGenericPortMappingEntryResponse" || responseType == "AddPortMappingResponse")
+	{
+		// Find a place to store the data
+		PortMapping *map = new PortMapping;
 
-    // Get the port mapping data from the response
-    map->enabled        = (resultValues["NewEnabled"] == "1");
-    map->externalPort   =  resultValues["NewExternalPort"].toInt();
-    map->internalClient =  resultValues["NewInternalClient"];
-    map->internalPort   =  resultValues["NewInternalPort"].toInt();
-    map->leaseDuration  =  resultValues["NewLeaseDuration"].toInt();
-    map->description    =  resultValues["NewPortMappingDescription"];
-    map->protocol       =  resultValues["NewProtocol"];
-    map->remoteHost     =  resultValues["NewRemoteHost"];
+		// Get the port mapping data from the response
+		map->enabled        = (resultValues["NewEnabled"] == "1");
+		map->externalPort   =  resultValues["NewExternalPort"].toInt();
+		map->internalClient =  resultValues["NewInternalClient"];
+		map->internalPort   =  resultValues["NewInternalPort"].toInt();
+		map->leaseDuration  =  resultValues["NewLeaseDuration"].toInt();
+		map->description    =  resultValues["NewPortMappingDescription"];
+		map->protocol       =  resultValues["NewProtocol"];
+		map->remoteHost     =  resultValues["NewRemoteHost"];
 
-    // Register the mapping
-    m_lPortMappings.append(map);
+		// Register the mapping
+		m_lPortMappings.append(map);
 
-    qDebug() << "UPnP::WanConnectionService - Got mapping: " << map->protocol << " " << map->remoteHost << ":" << map->externalPort
-              << " to " << map->internalClient << ":" << map->internalPort
-              << "    max " << map->leaseDuration << "s '" << map->description << "' " << (map->enabled ? "enabled" : "disabled") << endl;
-  }
-  else
-  {
-    qDebug() << "UPnP::WanConnectionService - Unexpected response type"
-                << " '" << responseType << "' encountered." << endl;
-  }
+		qDebug() << "UPnP::WanConnectionService - Got mapping: " << map->protocol << " " << map->remoteHost << ":" << map->externalPort
+			<< " to " << map->internalClient << ":" << map->internalPort
+			<< "    max " << map->leaseDuration << "s '" << map->description << "' " << (map->enabled ? "enabled" : "disabled") << endl;
+	}
+	else
+	{
+		qDebug() << "UPnP::WanConnectionService - Unexpected response type"
+				<< " '" << responseType << "' encountered." << endl;
+	}
 }
 
 
@@ -166,7 +166,7 @@ void WanConnectionService::gotActionResponse(const QString &responseType, const 
 // Query for the external IP address
 void WanConnectionService::queryExternalIpAddress()
 {
-  callAction("GetExternalIPAddress");
+	callAction("GetExternalIPAddress", "u");
 }
 
 
@@ -174,7 +174,7 @@ void WanConnectionService::queryExternalIpAddress()
 // Query for the Nat status
 void WanConnectionService::queryNatEnabled()
 {
-  callAction("GetNATRSIPStatus");
+	callAction("GetNATRSIPStatus", "u");
 }
 
 
@@ -182,9 +182,9 @@ void WanConnectionService::queryNatEnabled()
 // Query for a port mapping entry
 void WanConnectionService::queryPortMappingEntry(int index)
 {
-  QMap<QString,QString> arguments;
-  arguments["NewPortMappingIndex"] = QString::number(index);
-  callAction("GetGenericPortMappingEntry", arguments);
+	QMap<QString,QString> arguments;
+	arguments["NewPortMappingIndex"] = QString::number(index);
+	callAction("GetGenericPortMappingEntry", arguments, "m");
 }
 
 

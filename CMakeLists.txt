@@ -498,6 +498,16 @@ ENDIF()
 #ENDIF()
 
 ############################################################################
+# NETWORK FUNCTIONS support
+############################################################################
+
+CHECK_FUNCTION_EXISTS("inet_ntoa" HAVE_INET_NTOA)
+# what systems lacks this!?
+IF(HAVE_INET_NTOA)
+	ADD_DEFINITIONS("-DHAVE_INET_NTOA")
+ENDIF()
+
+############################################################################
 # GSM support
 ############################################################################
 OPTION(WANT_GSM "Compile GSM Support" ON)

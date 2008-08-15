@@ -148,6 +148,24 @@ void IgdControlPoint::slotWanQueryFinished(bool error)
 	}
 }
 
+// Return the external IP address
+void IgdControlPoint::addPortMapping(const QString &protocol, const QString &remoteHost, int externalPort,const QString &internalClient, int internalPort, const QString &description, bool enabled, int leaseDuration)
+{
+	// Do not expose  wanConnectionService_;
+	if(m_pWanConnectionService != 0)
+	{
+		m_pWanConnectionService->addPortMapping(protocol, remoteHost, externalPort, internalClient, internalPort, description, enabled, leaseDuration);
+	}
+}
 
+// Delete a port mapping
+void IgdControlPoint::deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort)
+{
+	// Do not expose  wanConnectionService_;
+	if(m_pWanConnectionService != 0)
+	{
+		m_pWanConnectionService->deletePortMapping(protocol, remoteHost, externalPort);
+	}
+}
 
 }  // End of namespace

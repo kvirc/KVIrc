@@ -72,6 +72,11 @@ public:  // public methods
 	// Return true if a controlable gateway is available
 	bool                 isGatewayAvailable();
 
+	// Add a port mapping
+	void                 addPortMapping(const QString &protocol, const QString &remoteHost, int externalPort, const QString &internalClient, int internalPort, const QString &description, bool enabled = true, int leaseDuration = 0);
+	// Delete a port mapping
+	void                 deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort);
+
 private slots:
 	// The broadcast failed
 	void                 slotBroadcastTimeout();

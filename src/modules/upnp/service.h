@@ -85,9 +85,9 @@ public:  // public methods
 
 protected:  // Protected methods
 	// Makes a UPnP action request
-	int                  callAction(const QString &actionName);
+	int                  callAction(const QString &actionName, const QString &prefix);
 	// Makes a UPnP action request
-	int                  callAction(const QString &actionName, const QMap<QString,QString> &arguments);
+	int                  callAction(const QString &actionName, const QMap<QString,QString> &arguments, const QString &prefix);
 	// Makes a UPnP service request
 	int                  callInformationUrl();
 
@@ -104,7 +104,7 @@ private slots:
 
 private:
 	// Makes a UPnP action request (keeps pointers from the external interface)
-	int                  callActionInternal(const QString &actionName, const QMap<QString,QString> *arguments);
+	int                  callActionInternal(const QString &actionName, const QMap<QString,QString> *arguments, const QString &prefix);
 
 private:
 	// The URL to control the service
@@ -119,7 +119,8 @@ private:
 	QString              m_szServiceId;
 	// The Type of the service
 	QString              m_szServiceType;
-
+	// The xml prefix used by the router
+	QString              m_szBaseXmlPrefix;
 	// hostname
 	QString              m_szHostname;
 	//port

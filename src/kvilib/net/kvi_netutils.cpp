@@ -192,15 +192,7 @@ bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer)
 
 #else //HAVE_INET_NTOA
 
-bool kvi_isValidStringIp(const char *szIp)
-{
-	struct in_addr address;
-	if(!szIp)return false;
-	if(!isdigit(*szIp))return false;
-	return kvi_stringIpToBinaryIp(szIp,&address);
-}
-
-bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer)f
+bool kvi_binaryIpToStringIp(struct in_addr in,QString &szBuffer)
 {
 // FIXME: #warning "This is NOT thread safe!"
 

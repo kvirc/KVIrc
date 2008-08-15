@@ -54,6 +54,7 @@ Service::Service(const QString &hostname, int port, const QString &informationUr
 , m_szHostname(hostname)
 , m_iPort(port)
 , m_iPendingRequests(0)
+, m_szBaseXmlPrefix("s")
 {
 	m_pHttp = new QHttp(hostname, port);
 	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
@@ -71,6 +72,7 @@ Service::Service(const ServiceParameters &params)
 , m_szServiceType(params.serviceType)
 , m_szHostname(params.hostname)
 , m_iPort(params.port)
+, m_szBaseXmlPrefix("s")
 {
 	m_pHttp = new QHttp(params.hostname, params.port);
 	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
@@ -92,23 +94,23 @@ Service::~Service()
 
 // Makes a UPnP action request
 // TODO: rename to callMethod / callSoapMethod
-int Service::callAction(const QString &actionName)
+int Service::callAction(const QString &actionName, const QString &prefix)
 {
-	return callActionInternal(actionName, 0);
+	return callActionInternal(actionName, 0, prefix);
 }
 
 
 
 // Makes a UPnP action request
-int Service::callAction(const QString &actionName, const QMap<QString,QString> &arguments)
+int Service::callAction(const QString &actionName, const QMap<QString,QString> &arguments, const QString &prefix)
 {
-	return callActionInternal(actionName, &arguments);
+	return callActionInternal(actionName, &arguments, prefix);
 }
 
 
 
 // Makes a UPnP action request (keeps pointers from the external interface)
-int Service::callActionInternal(const QString &actionName, const QMap<QString,QString> *arguments)
+int Service::callActionInternal(const QString &actionName, const QMap<QString,QString> *arguments, const QString &prefix)
 {
 	qDebug() << "UPnP::Service: calling remote procedure '" << actionName << "'." << endl;
 
@@ -127,10 +129,10 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 	// this router wants us to use servicetype in the following requests
 
 	QString soapMessage = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n"
-				"<s:Envelope xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\""
-				" s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n"
-				" <s:Body>\n"
-				"  <u:" + actionName + " xmlns:u=\"" + m_szServiceType + "\">\n";
+				"<" + m_szBaseXmlPrefix + ":Envelope xmlns:" + m_szBaseXmlPrefix + "=\"http://schemas.xmlsoap.org/soap/envelope/\""
+				" " + m_szBaseXmlPrefix + ":encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\">\n"
+				" <" + m_szBaseXmlPrefix + ":Body>\n"
+				"  <" + prefix + ":" + actionName + " xmlns:" + prefix + "=\"" + m_szServiceType + "\">\n";
 
 	// Do we have any arguments?
 	if(arguments != 0)
@@ -145,7 +147,7 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 	}
 
 	// Add the closing tags
-	soapMessage += "  </u:" + actionName + ">\n </s:Body>\n</s:Envelope>\n";
+	soapMessage += "  </" + prefix + ":" + actionName + ">\n </" + m_szBaseXmlPrefix + ":Body>\n</" + m_szBaseXmlPrefix + ":Envelope>\n";
 
 	// Get an utf8 encoding string
 	QByteArray content = soapMessage.toUtf8().data();
@@ -260,12 +262,12 @@ void Service::slotRequestFinished(int id, bool error)
 					{
 						baseNamespace.truncate(cutAt);
 						qDebug() << "Device is using " << baseNamespace << " as xml namespace" << endl;
-					} else {
-						baseNamespace = "s";
+						m_szBaseXmlPrefix = baseNamespace;
 					}
 				}
+
 				// Determine how to process the data
-				if(xml.namedItem(baseNamespace + ":Envelope").isNull())
+				if(xml.namedItem(m_szBaseXmlPrefix + ":Envelope").isNull())
 				{
 					qDebug() << "UPnP::Service: Plain XML detected, calling gotInformationResponse()." << endl;
 					// No SOAP envelope found, this is a normal response to callService()
@@ -273,9 +275,9 @@ void Service::slotRequestFinished(int id, bool error)
 				} else {
 					qDebug() << xml.toString() << endl;
 					// Got a SOAP message response to callAction()
-					QDomNode resultNode = XmlFunctions::getNode(xml, "/" + baseNamespace + ":Envelope/" + baseNamespace + ":Body").firstChild();
+					QDomNode resultNode = XmlFunctions::getNode(xml, "/" + m_szBaseXmlPrefix + ":Envelope/" + m_szBaseXmlPrefix + ":Body").firstChild();
 
-					error = (resultNode.nodeName() == baseNamespace + ":Fault");
+					error = (resultNode.nodeName() == m_szBaseXmlPrefix + ":Fault");
 
 					if(! error)
 					{

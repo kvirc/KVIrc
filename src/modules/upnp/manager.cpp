@@ -123,7 +123,19 @@ bool Manager::isGatewayAvailable()
 	return (m_pActiveIgdControlPoint != 0 && m_pActiveIgdControlPoint->isGatewayAvailable());
 }
 
+	// Add a port mapping
+void Manager::addPortMapping(const QString &protocol, const QString &remoteHost, int externalPort, const QString &internalClient, int internalPort, const QString &description, bool enabled, int leaseDuration)
+{
+	if(m_pActiveIgdControlPoint != 0)
+		m_pActiveIgdControlPoint->addPortMapping(protocol, remoteHost, externalPort, internalClient, internalPort, description, enabled, leaseDuration);
+}
 
+// Delete a port mapping
+void Manager::deletePortMapping(const QString &protocol, const QString &remoteHost, int externalPort)
+{
+	if(m_pActiveIgdControlPoint != 0)
+		m_pActiveIgdControlPoint->deletePortMapping(protocol, remoteHost, externalPort);
+}
 
 // The broadcast failed
 void Manager::slotBroadcastTimeout()
@@ -131,6 +143,7 @@ void Manager::slotBroadcastTimeout()
 	if(!m_bBroadcastFoundIt)
 	{
 		qDebug() << "UPnP::Manager: Timeout, no broadcast response received!" << endl;
+
 		m_bBroadcastFailed = true;
 	}
 }
