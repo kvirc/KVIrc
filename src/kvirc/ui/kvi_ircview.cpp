@@ -2042,7 +2042,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 
 	static void * char_to_check_jump_table[256]=
 	{
-		&(&found_end_of_buffer),0                      ,&&found_mirc_escape    ,&&found_color_escape   ,
+		&&found_end_of_buffer  ,0                      ,&&found_mirc_escape    ,&&found_color_escape   ,
 		0                      ,0                      ,0                      ,0                      ,
 		0                      ,0                      ,&&found_end_of_line    ,0                      ,
 		0                      ,&&found_command_escape ,0                      ,&&found_mirc_escape    ,
