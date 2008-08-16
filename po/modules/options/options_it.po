@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-14 18:05+0200\n"
-"PO-Revision-Date: 2008-08-11 19:21+0200\n"
+"PO-Revision-Date: 2008-08-16 16:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -111,8 +111,7 @@ msgstr "Griglia 3D"
 
 #: src/modules/options/optw_textencoding.cpp:81
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+msgstr "<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: src/modules/options/optw_urlhandlers.cpp:74
 msgid "<b>file://</b> handler command:"
@@ -242,10 +241,8 @@ msgstr ""
 "\"<b>Aggiungi</b>\".</center>"
 
 #: src/modules/options/optw_servers.cpp:1169
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: src/modules/options/optw_servers.cpp:530
 msgid ""
@@ -882,8 +879,7 @@ msgstr ""
 "(100 KB)</center>"
 
 #: src/modules/options/optw_servers.cpp:1143
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: src/modules/options/optw_lag.cpp:62
@@ -1088,8 +1084,7 @@ msgstr ""
 "\"Usa il desktop di KDE per la trasparenza\".</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Questa opzione imposta il livello minimo di allerta per la lista dei "
 "canali.</center>"
@@ -2162,7 +2157,7 @@ msgstr "Griglia a puntini"
 
 #: src/modules/options/optw_urlhandlers.cpp:52
 msgid "Double click"
-msgstr ""
+msgstr "Doppio click"
 
 #: src/modules/options/optw_identity.cpp:169
 #: src/modules/options/optw_identity.cpp:176
@@ -2515,7 +2510,7 @@ msgstr "Allineamento orizzontale:"
 
 #: src/modules/options/optw_urlhandlers.cpp:49
 msgid "How many click to open links?"
-msgstr ""
+msgstr "Quanti click per aprire i link?"
 
 #: src/modules/options/optw_sound.cpp:95
 msgid "ID3 tags' encoding"
@@ -2918,9 +2913,8 @@ msgid "Mixer device:"
 msgstr "Dispositivo Mixer:"
 
 #: src/modules/options/optw_urlhandlers.cpp:47
-#, fuzzy
 msgid "Mouse handler"
-msgstr "Gestore URL"
+msgstr "Gestore mouse"
 
 #: src/modules/options/optw_ircoutput.cpp:47
 msgid "Mute"
@@ -3329,9 +3323,8 @@ msgid "Protection"
 msgstr "Protezione"
 
 #: src/modules/options/optw_urlhandlers.cpp:64
-#, fuzzy
 msgid "Protocol handler"
-msgstr "Protocollo:"
+msgstr "Gestore protocollo"
 
 #: src/modules/options/optw_proxy.cpp:118
 msgid "Protocol:"
@@ -3704,7 +3697,7 @@ msgstr "Anti-spam silenzioso (nessun avvertimento)"
 
 #: src/modules/options/optw_urlhandlers.cpp:51
 msgid "Single click"
-msgstr ""
+msgstr "Click singolo"
 
 #: src/modules/options/optw_connection.h:74
 msgid "Socket"
@@ -3783,13 +3776,11 @@ msgstr "Il comando di identificazione non può essere vuoto!"
 
 #: src/modules/options/optw_nickserv.cpp:180
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3851,7 +3842,7 @@ msgid ""
 "is a small search engine. It will highlight the pages that contain options "
 "related to the search term you have entered."
 msgstr ""
-"Questo dialog contiene un set di settaggi KVIrc.<br>Usa i pulsanti sulla "
+"Questo dialog serve a configurare KVIrc.<br>Usa i pulsanti sulla "
 "sinistra per navigare attraverso le opzioni. La casella in basso a sinistra "
 "è un piccolo motore di ricerca. Evidenzierà le pagine che contengono le "
 "opzioni relative alle parole che hai cercato."
@@ -3861,8 +3852,7 @@ msgid "This executable has no SSL support."
 msgstr "Questo eseguibile non ha il supporto SSL"
 
 #: src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -4545,3 +4535,4 @@ msgstr "lista utenti,canale"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:89
 msgid "within:"
 msgstr "in:"
+
