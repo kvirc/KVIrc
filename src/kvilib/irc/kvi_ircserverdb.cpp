@@ -29,6 +29,7 @@
 #include <qlayout.h>
 #include <qmessagebox.h>
 #include <qcheckbox.h>
+#include <qstring.h>
 
 #include "kvi_ircserverdb.h"
 #include "kvi_config.h"
@@ -175,7 +176,7 @@ bool KviIrcServerDataBase::makeCurrentBestServerInNetwork(const QString &szNetNa
 {
 	m_szCurrentNetwork = szNetName;
 	// find a round-robin server in that network
-	
+
 	if(r->m_pServerList->isEmpty())
 	{
 		szError = __tr2qs("The specified network has no server entries");
@@ -261,9 +262,9 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d,QString 
 		szError = __tr2qs("The server specification seems to be in the id:<string> form but the identifier coulnd't be found in the database");
 		return false;
 	}
-	
+
 	it.toFirst();
-	
+
 	while((r = it.current()))
 	{
 		for(srv = r->serverList()->first();srv && (!pServer);srv = r->serverList()->next())
@@ -329,7 +330,7 @@ search_finished:
 		if(!d->szNick.isEmpty())pServer->m_szNick = d->szNick;
 		if(!d->szPass.isEmpty())pServer->m_szPass = d->szPass; // don't clear the pass!
 		if(!d->szInitUMode.isEmpty())pServer->m_szInitUMode = d->szInitUMode;
-		
+
 		m_szCurrentNetwork = r->network()->name();
 		r->setCurrentServer(pServer);
 		return true;
@@ -396,10 +397,10 @@ search_finished:
 	r->insertServer(s);
 	m_szCurrentNetwork = r->network()->name();
 	r->setCurrentServer(s);
-	
+
 	return true;
 }
-				
+
 void parseMircServerRecord(QString entry,QString& szNet,
 						   QString& szDescription,QString& szHost,QString& szPort,bool& bSsl,kvi_u32_t& uPort)
 {
@@ -494,7 +495,7 @@ void KviIrcServerDataBase::loadFromMircIni(const QString & filename, const QStri
 				// <net>:<description>SERVER:<server:port>GROUP:<group???>
 				if(entry==szDefaultServer)
 					bDefault = true;
-				
+
 				parseMircServerRecord(entry,szNet,
 						   szDescription,szHost,szPort,bSsl,uPort);
 
@@ -509,7 +510,7 @@ void KviIrcServerDataBase::loadFromMircIni(const QString & filename, const QStri
 				s->m_szHostname = szHost;
 				s->m_szDescription = szDescription;
 				s->m_uPort = uPort;
-				
+
 
 				r->m_pServerList->append(s);
 				if(bDefault)
