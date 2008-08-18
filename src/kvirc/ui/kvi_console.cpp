@@ -89,6 +89,7 @@
 #include "kvi_tal_popupmenu.h"
 #include <qmessagebox.h>
 #include <qstringlist.h>
+#include <qregexp.h>
 
 #ifdef COMPILE_USE_QT4
 	#include <q3mimefactory.h>
@@ -157,7 +158,7 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
 	m_pNotifyViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDELISTVIEW,KVI_SMALLICON_SHOWLISTVIEW,__tr2qs("Notify List"),buttonContainer(),true,"list_view_button");
 	connect(m_pNotifyViewButton,SIGNAL(clicked()),this,SLOT(toggleNotifyView()));
-	
+
 	m_pNotifyListView  = new KviUserListView(m_pSplitter,m_pNotifyViewButton,0,this,19,__tr2qs("Notify List"),"notify_list_view");
 
 	m_pInput   = new KviInput(this,m_pNotifyListView);
@@ -175,7 +176,7 @@ int KviConsole::selectedCount()
 void KviConsole::recentUrlsChanged(){
 	QString cur = m_pAddressEdit->currentText();
 	m_pAddressEdit->clear();
-	for ( 
+	for (
 		QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).begin();
 		it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentIrcUrls).end();
 		++it
@@ -415,7 +416,7 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 			buffer += "</nobr></td></tr></table>";
 		}
 	}
-	
+
 	if(e->isAway())
 	{
 		buffer += "<tr><td bgcolor=\"#F0F0F0\">";
@@ -607,7 +608,7 @@ void KviConsole::closeEvent(QCloseEvent *e)
 			break;
 		}
 	}
-	
+
 	g_pApp->quit();
 }
 
@@ -631,25 +632,17 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	QString szPattern=KVI_OPTION_STRING(KviOption_stringWordSplitters);
 	QString szSource;
 	QString szStripMsg=KviMircCntrl::stripControlBytes(szMsg);
-	QChar* aux=(QChar*)(szStripMsg.ucs2());
-	if(aux)
-	{
-		while(aux->unicode())
-		{
-			if( KVI_OPTION_STRING(KviOption_stringWordSplitters).find(*aux) > -1 )
-				szSource.append(' ');
-			else
-				szSource.append(*aux);
-			aux++;
-		}
-	} else {
-		szSource=szStripMsg;
-	}
-	szSource.append(' ');
-	szSource.prepend(' ');
+	QRegExp rgxHlite;
 	if(KVI_OPTION_BOOL(KviOption_boolAlwaysHighlightNick) && connection())
 	{
-		if(szSource.find(QString(" %1 ").arg(connection()->userInfo()->nickName()),0,false) > -1)
+		rgxHlite.setPattern(
+			// The second alternative in first parentheses may seem unnecessary, but regexp does not work without it
+			QString("(?:[%1]|\\b|^)%2(?:[%1]|\\b|$)").arg(
+				QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())
+			)
+		);
+		rgxHlite.setCaseSensitive(false);
+		if(szStripMsg.contains(rgxHlite))
 			return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
 	}
 
@@ -660,8 +653,13 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 		{
 			if((*it).isEmpty())
 				continue;
-			// FIXME : This is SLOOOOOOOOW (QString -> ascii translation!!) !!!!
-			if(szSource.find(QString(" %1 ").arg(*it),0,false) > -1)
+			rgxHlite.setPattern(
+			QString("(?:[%1]|\\b|^)%2(?:[%1]|\\b|$)").arg(
+				QRegExp::escape(szPattern), QRegExp::escape(*it)
+				)
+			);
+			rgxHlite.setCaseSensitive(false);
+			if(szStripMsg.contains(rgxHlite))
 			{
 				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
 			}
@@ -677,7 +675,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 		//        maybe mark the users as highlighted in the console user database
 		//        and then lookup them there ? this would be potentially a lot faster
 		KviRegisteredUser * u = connection()->userDataBase()->registeredUser(nick,user,host);
-	
+
 		// note that we're highlighting users only in channels since
 		// in a query (or DCC) highlighting the remote end is senseless.
 		if(u)
@@ -742,7 +740,7 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 	}
 
 	QString szDecodedMessage = msg; // shallow copy
-	
+
 	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
 		szDecodedMessage = KviMircCntrl::stripControlBytes(szDecodedMessage);
 
@@ -904,7 +902,7 @@ void KviConsole::avatarChangedUpdateWindows(const QString &nick,const QString &t
 void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QString &user,const QString &host,const QString &textLine)
 {
 	if(!connection())return; //ops...
-	
+
 	bool bRegisteredStuff = false;
 
 	if(KVI_OPTION_BOOL(KviOption_boolSetLastAvatarAsDefaultForRegisteredUsers))
@@ -921,7 +919,7 @@ void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QStr
 			}
 		}
 	}
-	
+
 	if(!bRegisteredStuff)
 	{
 		// cache it
@@ -930,7 +928,7 @@ void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QStr
 		else
 			KviAvatarCache::instance()->remove(KviIrcMask(nick,user,host),currentNetworkName().utf8().data());
 	}
-	
+
 	avatarChangedUpdateWindows(nick,textLine);
 }
 
