@@ -602,7 +602,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	if(KVI_OPTION_BOOL(KviOption_boolAlwaysHighlightNick) && connection())
 	{
 		rgxHlite.setPattern(
-			QString("(?:[%1]|\\b)%2(?:[%1]|\\b)").arg(
+			QString("(?:[%1]|\\b|^)%2(?:[%1]|\\b|$)").arg(
 				QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())
 			)
 		);
@@ -619,7 +619,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 			if((*it).isEmpty())
 				continue;
 			rgxHlite.setPattern(
-			QString("(?:[%1]|\\b)%2(?:[%1]|\\b)").arg(
+			QString("(?:[%1]|\\b|^)%2(?:[%1]|\\b|$)").arg(
 				QRegExp::escape(szPattern), QRegExp::escape(*it)
 				)
 			);
