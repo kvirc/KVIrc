@@ -85,6 +85,8 @@
 #include <QStringList>
 #include <QCloseEvent>
 #include <QTextDocument>
+#include <QRegExp>
+#include <QDebug>
 
 // FIXME: Qt4 #include <QMimeData>
 //#include <q3mimefactory.h>
@@ -596,25 +598,16 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	QString szPattern=KVI_OPTION_STRING(KviOption_stringWordSplitters);
 	QString szSource;
 	QString szStripMsg=KviMircCntrl::stripControlBytes(szMsg);
-	QChar* aux=(QChar*)(szStripMsg.utf16());
-	if(aux)
-	{
-		while(aux->unicode())
-		{
-			if( KVI_OPTION_STRING(KviOption_stringWordSplitters).indexOf(*aux,Qt::CaseInsensitive) > -1 )
-				szSource.append(' ');
-			else
-				szSource.append(*aux);
-			aux++;
-		}
-	} else {
-		szSource=szStripMsg;
-	}
-	szSource.append(' ');
-	szSource.prepend(' ');
+	QRegExp rgxHlite;
 	if(KVI_OPTION_BOOL(KviOption_boolAlwaysHighlightNick) && connection())
 	{
-		if(szSource.indexOf(QString(" %1 ").arg(connection()->userInfo()->nickName()),0,Qt::CaseInsensitive) > -1)
+		rgxHlite.setPattern(
+			QString("(?:[%1]|\\b)%2(?:[%1]|\\b)").arg(
+				QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())
+			)
+		);
+		rgxHlite.setCaseSensitivity(Qt::CaseInsensitive);
+		if(szStripMsg.contains(rgxHlite))
 			return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
 	}
 
@@ -625,8 +618,13 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 		{
 			if((*it).isEmpty())
 				continue;
-			// FIXME : This is SLOOOOOOOOW (QString -> ascii translation!!) !!!!
-			if(szSource.indexOf(QString(" %1 ").arg(*it),0,Qt::CaseInsensitive) > -1)
+			rgxHlite.setPattern(
+			QString("(?:[%1]|\\b)%2(?:[%1]|\\b)").arg(
+				QRegExp::escape(szPattern), QRegExp::escape(*it)
+				)
+			);
+			rgxHlite.setCaseSensitivity(Qt::CaseInsensitive);
+			if(szStripMsg.contains(rgxHlite))
 			{
 				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
 			}

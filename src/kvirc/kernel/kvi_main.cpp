@@ -33,7 +33,9 @@
 #include "kvi_msgbox.h"
 #include "kvi_buildinfo.h"
 #ifdef COMPILE_DBUS_SUPPORT
+#ifndef COMPILE_KDE_SUPPORT // 'cause kde adds an interface itself
 	#include "kvi_dbusadaptor.h"
+#endif
 #endif
 #ifndef COMPILE_NO_IPC
 	extern bool kvi_sendIpcMessage(const char * message); // kvi_ipc.cpp
@@ -321,8 +323,10 @@ int main(int argc,char ** argv)
 	// Need to have the X socket open before IPC startup
 	KviApp * theApp = new KviApp(argc,argv);
 #ifdef COMPILE_DBUS_SUPPORT
+#ifndef COMPILE_KDE_SUPPORT
 	new KviDbusAdaptor(theApp);
 	QDBusConnection::sessionBus().registerObject("/MainApplication", theApp);
+#endif
 #endif
 	KviStr szRemoteCommand = a.szExecCommand;
 	if(a.szExecRemoteCommand.hasData())
