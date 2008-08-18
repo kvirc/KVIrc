@@ -317,13 +317,13 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 {
 	m_pUser = r;
 	m_pCustomColor = new QColor();
-	
+
 	if(r)
 	{
 		QString col=r->getProperty("customColor");
 		KviStringConversion::fromString(col,(*m_pCustomColor));
 	}
-	
+
 	m_pPropertyDict = new KviPointerHashTable<QString,QString>(17,false);
 	m_pPropertyDict->setAutoDelete(true);
 
@@ -344,7 +344,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	l = new QLabel(__tr2qs("Comment:"),p1);
 	g->addWidget(l,1,0);
-	
+
 	m_pCommentEdit = new QLineEdit(p1);
 	g->addWidget(m_pCommentEdit,1,1);
 
@@ -413,13 +413,15 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	g->addMultiCellWidget(f,2,2,0,2);
 
 	m_pAvatar = 0;
+	QString avatarPath;
 	if(r)
 	{
-		const char * av = r->getProperty("avatar");
-		if(av)
-		{
-			m_pAvatar = new KviPixmap(av);
-		}
+		r->getProperty("avatar", avatarPath);
+	}
+
+	if(!avatarPath.isEmpty())
+	{
+		m_pAvatar = new KviPixmap(avatarPath);
 	}
 	if(!m_pAvatar)m_pAvatar = new KviPixmap();
 
@@ -437,7 +439,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	m_pCustomColorSelector = new KviColorSelector(p2,QString::null,m_pCustomColor,1);
 	g->addWidget(m_pCustomColorSelector,5,2);
-	
+
 	QPushButton * pb = new QPushButton(__tr2qs("All Properties..."),p2);
 	connect(pb,SIGNAL(clicked()),this,SLOT(editAllPropertiesClicked()));
 	g->addWidget(pb,6,2);
@@ -459,9 +461,9 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	QGroupBox * gb = new QGroupBox(__tr2qs("Ignore features"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),gb,SLOT(setEnabled(bool)));
-	
+
 	QVBoxLayout * layout = new QVBoxLayout(gb,20,3);
-	
+
 	m_pIgnoreQuery = new KviStyledCheckBox(__tr2qs("Ignore query-messages"),gb);
 	layout->addWidget(m_pIgnoreQuery);
 
@@ -511,7 +513,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 			m_pNotifyNick->setText(szNotifyNicks);
 			m_pNotifyNick->setEnabled(true);
 		}
-		
+
 		if(r->propertyDict())
 		{
 			KviPointerHashTableIterator<QString,QString> it(*(r->propertyDict()));
@@ -525,7 +527,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 		m_pIgnoreEnabled->setChecked(r->ignoreEnagled());
 
 		gb->setEnabled(r->ignoreEnagled());
-		
+
 		m_pIgnoreQuery->setChecked(r->ignoreFlags() & KviRegisteredUser::Query);
 		m_pIgnoreChannel->setChecked(r->ignoreFlags() & KviRegisteredUser::Channel);
 		m_pIgnoreNotice->setChecked(r->ignoreFlags() & KviRegisteredUser::Notice);
@@ -592,7 +594,7 @@ void KviRegisteredUserEntryDialog::okClicked()
 
 	u = g_pLocalRegisteredUserDataBase->addUser(szNameOk);
 	u->setGroup(szGroup);
-	
+
 	if(!u)
 	{
 		// ops... no way
@@ -614,7 +616,7 @@ void KviRegisteredUserEntryDialog::okClicked()
 		idx++;
 	}
 	u->setProperty("comment",m_pCommentEdit->text());
-	
+
 	m_pAvatarSelector->commit();
 
 	if(!m_pAvatar->isNull())
@@ -626,13 +628,13 @@ void KviRegisteredUserEntryDialog::okClicked()
 	if(m_pNotifyCheck->isChecked())
 	{
 		QString szNicks = m_pNotifyNick->text();
-	
+
 		if(!szNicks.isEmpty())
 		{
 			u->setProperty("notify",szNicks);
 		}
 	}
-	
+
 	m_pPropertyDict->remove("notify");
 	m_pPropertyDict->remove("avatar");
 
@@ -644,12 +646,12 @@ void KviRegisteredUserEntryDialog::okClicked()
 	}
 
 	u->setProperty("useCustomColor",m_pCustomColorCheck->isChecked());
-	
+
 	QString col;
 	KviStringConversion::toString(m_pCustomColorSelector->getColor(),col);
 	u->setProperty("customColor",col);
 
-	
+
 	int iIgnoreFlags=0;
 	u->setIgnoreEnabled(m_pIgnoreEnabled->isChecked());
 	if(m_pIgnoreQuery->isChecked())
@@ -731,7 +733,7 @@ void KviRegisteredUserEntryDialog::editAllPropertiesClicked()
 	if(m_pNotifyCheck->isChecked())
 	{
 		QString szNicks = m_pNotifyNick->text();
-	
+
 		if(!szNicks.isEmpty())
 		{
 			m_pPropertyDict->replace("notify",new QString(szNicks));
