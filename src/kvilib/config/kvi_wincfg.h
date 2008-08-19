@@ -77,7 +77,7 @@
 #define COMPILE_IPV6_SUPPORT 1
 
 /* define if you want zlib support */
-#define COMPILE_ZLIB_SUPPORT 1 
+#define COMPILE_ZLIB_SUPPORT 1
 
 /* define if you want to use the pthreads library */
 /* #undef COMPILE_THREADS_USE_POSIX */
@@ -154,7 +154,7 @@
 #define PACKAGE "kvirc"
 
 /* Version number of package */
-#define VERSION "3.4.0"
+#define VERSION "3.4.1"
 
 #define VERSION_BRANCH "3.4"
 
