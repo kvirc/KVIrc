@@ -1627,7 +1627,7 @@ bool KviDccFileTransfer::event(QEvent *e)
 				{
 					QString szMsg;
 					KviQString::sprintf(szMsg,__tr2qs_ctx(""));
-					g_pApp->notifierMessage(0,KVI_SMALLICON_DCCMSG,szMsg,30);
+					g_pApp->notifierMessage(0,KVI_SMALLICON_DCCMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 				}
 				*/
 				if(m_pDescriptor->bRecvFile)g_pApp->fileDownloadTerminated(true,m_pDescriptor->szFileName.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szNick.toUtf8().data());

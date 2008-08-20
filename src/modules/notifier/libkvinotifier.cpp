@@ -136,7 +136,7 @@ static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 		}
 	}
 	c->switches()->getAsStringIfExisting('i',"icon",szIco);
-	kvs_int_t uTime=0;
+	kvs_int_t uTime=KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime);
 	if(c->hasSwitch('t',"timeout"))
 	{
 		KviKvsVariant *time=c->getSwitch('t',"timeout");

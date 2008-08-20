@@ -212,7 +212,7 @@ void KviNotifyListManager::notifyOnLine(const QString &nick,const QString &user,
 			szWho += nick;
 			szWho += "</b>";
 			KviQString::sprintf(szMsg,szFmt,&szWho);
-			g_pApp->notifierMessage(0,KVI_OPTION_MSGTYPE(KVI_OUT_NOTIFYONLINE).pixId(),szMsg,15);
+			g_pApp->notifierMessage(0,KVI_OPTION_MSGTYPE(KVI_OUT_NOTIFYONLINE).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 		}
 	}
 }

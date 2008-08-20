@@ -999,7 +999,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 				szMsg += szLocalFileName;
 				szMsg += ")";
 			}
-			notifierMessage(0,iIconId,Qt::escape(szMsg),30);
+			notifierMessage(0,iIconId,Qt::escape(szMsg),KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 		}
 		return;
 	}

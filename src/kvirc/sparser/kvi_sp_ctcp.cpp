@@ -1441,7 +1441,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 				szMsg += "</b> ";
 				szMsg += Qt::escape(szData);
 				//debug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
-				g_pApp->notifierMessage(pOut,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,90);
+				g_pApp->notifierMessage(pOut,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
 			}
 		}
 	}

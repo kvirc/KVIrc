@@ -120,7 +120,17 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Enable notifier window flashing","options"),KviOption_boolNotifierFlashing);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
 
-	addRowSpacer(0,3,0,3);
+	KviTalGroupBox *g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
+	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
+
+	connect(b,
+		SIGNAL(toggled(bool)),
+		addUIntSelector(g,__tr2qs_ctx("Default auto hiding time for messages (0 to disable)","options"),
+				KviOption_uintNotifierAutoHideTime,
+				0,86400,30,KVI_OPTION_BOOL(KviOption_boolEnableNotifier)),
+		SLOT(setEnabled(bool)));
+
+	addRowSpacer(0,4,0,4);
 }
 
 KviNotifierOptionsWidget::~KviNotifierOptionsWidget()
