@@ -166,6 +166,7 @@ void KviCustomToolBar::unfilterChild(QObject * o)
 
 void KviCustomToolBar::beginCustomize()
 {
+	QString szClassName;
 	if(m_pFilteredChildren)delete m_pFilteredChildren;
 	m_pFilteredChildren = new KviPointerHashTable<void *,bool>;
 	m_pFilteredChildren->setAutoDelete(true);
@@ -175,7 +176,12 @@ void KviCustomToolBar::beginCustomize()
 	for(QList<QObject*>::Iterator it = l.begin();it != l.end();++it)
 	{
 		if((*it)->isWidgetType())
-			filterChild(*it);
+		{
+			szClassName = (*it)->className();
+			//we need to filter only some classes: eg. we don't want the QTitleBar of the QToolbar to be removeable (see bug report #210)
+			if(szClassName.compare("KviStyledToolButton") == 0 || szClassName.compare("KviCustomToolBarSeparator") == 0 )
+				filterChild(*it);
+		}
 	}
 #else
 	const QObjectList * l = children();
@@ -183,7 +189,12 @@ void KviCustomToolBar::beginCustomize()
 	while(QObject * o = it.current())
 	{
 		if(o->isWidgetType())
-			filterChild(o);
+		{
+			szClassName = o->className();
+			//we need to filter only some classes: eg. we don't want the QTitleBar of the QToolbar to be removeable (see bug report #210)
+			if(szClassName.compare("KviStyledToolButton") == 0 || szClassName.compare("KviCustomToolBarSeparator") == 0 )
+				filterChild(o);
+		}
 		++it;
 	}
 #endif
