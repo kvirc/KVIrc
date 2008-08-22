@@ -488,6 +488,7 @@ void KviDockWidget::toggleParentFrame()
 			m_pFrm->showNormal();
 		else
 			m_pFrm->show();
+		m_pFrm->setWindowState(getPrevWindowState() & Qt::WindowMaximized);
 	}
 }
 

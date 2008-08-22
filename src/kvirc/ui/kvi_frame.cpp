@@ -1451,11 +1451,16 @@ void KviFrame::hideEvent ( QHideEvent * e)
 		if(e->spontaneous())
 		{
 		
-		if(!dockExtension())
-		{
-			executeInternalCommand(KVI_INTERNALCOMMAND_DOCKWIDGET_SHOW);
-		}
-			 QTimer::singleShot( 0, this, SLOT(hide()) );	
+			if(!dockExtension())
+			{
+				executeInternalCommand(KVI_INTERNALCOMMAND_DOCKWIDGET_SHOW);
+			}
+	
+			if(dockExtension())
+			{
+				dockExtension()->setPrevWindowState(windowState());
+				QTimer::singleShot( 0, this, SLOT(hide()) );	
+			}
 		}
 		
 	}
