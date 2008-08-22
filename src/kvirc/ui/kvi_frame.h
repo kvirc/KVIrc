@@ -63,13 +63,13 @@ class KviTalPopupMenu;
 class KVIRC_API KviDockExtension
 {
 protected:
-	unsigned int m_uStoredWindowState;
+	Qt::WindowStates m_uStoredWindowState;
 public:
 	KviDockExtension() : m_uStoredWindowState(0){};
 	virtual ~KviDockExtension(){};
 public:
-	void setPrevWindowState(unsigned int state) { m_uStoredWindowState = state; };
-	unsigned int getPrevWindowState() { return m_uStoredWindowState; };
+	void setPrevWindowState(Qt::WindowStates state) { m_uStoredWindowState = state; };
+	Qt::WindowStates getPrevWindowState() { return m_uStoredWindowState; };
 	
 	virtual void refresh(){};
 	virtual void die(){ delete this; };
