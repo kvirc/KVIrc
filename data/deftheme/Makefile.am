@@ -1,2 +1,2 @@
-SUBDIRS = silverirc
+SUBDIRS = YellowIRC-1.0.0
 

@@ -37,7 +37,7 @@ SUBDIRS = Array( _
 	"modules\caps\toolbar", _
 	"modules\caps\serverimport", _
 	"themes", _
-	"themes\silverirc", _
+	"themes\YellowIRC-1.0.0", _
 	"msgcolors", _
 	"defscript", _
 	"config", _
@@ -74,8 +74,8 @@ fso.CopyFile PROJECTDIR + "/TODO", PACKAGEDIR + "/doc/", true
 
 fso.CopyFile PROJECTDIR + "/data/msgcolors/*.msgclr", PACKAGEDIR + "/msgcolors/", true
 
-fso.CopyFile PROJECTDIR + "/data/deftheme/silverirc/*.kvc", PACKAGEDIR + "/themes/silverirc/", true
-fso.CopyFile PROJECTDIR + "/data/deftheme/silverirc/*.png", PACKAGEDIR + "/themes/silverirc/", true
+fso.CopyFile PROJECTDIR + "/data/deftheme/YellowIRC-1.0.0/*.kvc", PACKAGEDIR + "/themes/YellowIRC-1.0.0/", true
+fso.CopyFile PROJECTDIR + "/data/deftheme/YellowIRC-1.0.0/*.png", PACKAGEDIR + "/themes/YellowIRC-1.0.0/", true
 
 fso.CopyFile PROJECTDIR + "/data/config/*.kvc", PACKAGEDIR + "/config/", True
 fso.CopyFile PROJECTDIR + "/data/config/*.css", PACKAGEDIR + "/config/", True

@@ -100,7 +100,7 @@ KVIMODULEEXPORTFUNC void setup_finish()
 			// default: no theme
 		}*/
 		
-		g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"silverirc");
+		g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"YellowIRC-1.0.0");
 		KviThemeInfo out;
 		KviTheme::load(szDir,out);
 		
