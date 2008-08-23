@@ -135,6 +135,25 @@ static const char * g_szAboutText = "" \
 "MacOS X porting" \
 "</font></td></tr>" \
 "</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Voker57</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Voker57" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"voker57 at gmail dot com" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Bugfixing, cmake, kde4, other new stuff" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"I'm not sure how i did it, but it works\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
 "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+3\"><b>Translators</b></font>" \
