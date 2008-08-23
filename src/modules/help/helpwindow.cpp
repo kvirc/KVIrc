@@ -270,7 +270,7 @@ void KviHelpWindow::indexSelected ( QListWidgetItem *item )
 void KviHelpWindow::searchSelected ( QListWidgetItem *item )
 {
 	if (!item) return;
-	int i=g_pDocIndex->titlesList().findIndex(item->text());
+	int i=g_pDocIndex->titlesList().indexOf(item->text());
 	textBrowser()->setSource(QUrl::fromLocalFile(g_pDocIndex->documentList()[ i ]));
 }
 

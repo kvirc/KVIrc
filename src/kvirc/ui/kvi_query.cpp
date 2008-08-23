@@ -662,7 +662,8 @@ void KviQuery::ownMessage(const QString &buffer)
 			while(1)
 			{
 				iC++;
-				szTmp = p_Encoder->fromUnicode(szTmpBuffer, iPos);
+				szTmp = p_Encoder->fromUnicode(szTmpBuffer.left(iPos));
+
 				if(szTmp.length() <= maxMsgLen) break;
 				//if szTmp.length() == 0 we already have break'ed out from here,
 				// so we can safely use it as a divisor
@@ -678,7 +679,7 @@ void KviQuery::ownMessage(const QString &buffer)
 			{
 				iC++;
 
-				szTmp = p_Encoder->fromUnicode(szTmpBuffer, iPos);
+				szTmp = p_Encoder->fromUnicode(szTmpBuffer.left(iPos));
 
 				// perfect match
 				if(iPos == szTmpBuffer.length()) break;
@@ -687,7 +688,7 @@ void KviQuery::ownMessage(const QString &buffer)
 				{
 					// overflowed.. last one was the good one
 					iPos--;
-					szTmp = p_Encoder->fromUnicode(szTmpBuffer, iPos);
+					szTmp = p_Encoder->fromUnicode(szTmpBuffer.left(iPos));
 					break;
 				} else {
 					//there's still free space.. add another char

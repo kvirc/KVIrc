@@ -46,35 +46,40 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 {
 	g_pLinksWindowList->append(this);
 
-	m_pTopSplitter = new QSplitter(Qt::Horizontal,this,"top_splitter");
+	m_pTopSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pTopSplitter->setObjectName("top_splitter");
 
 	// The button box on the left
 	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
 
-	m_pRequestButton = new QToolButton(box,"request_button");
-	m_pRequestButton->setUsesBigPixmap(false);
-	m_pRequestButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINKS)));
+	m_pRequestButton = new QToolButton(box);
+	m_pRequestButton->setObjectName("request_button");
+	m_pRequestButton->setIconSize(QSize(16,16));
+	m_pRequestButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINKS)));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestLinks()));
-	QToolTip::add(m_pRequestButton,__tr2qs("Request Links"));
+	m_pRequestButton->setToolTip(__tr2qs("Request Links"));
 
-	QLabel * l = new QLabel(box,"");
+	QLabel * l = new QLabel(box);
 	box->setStretchFactor(l,1);
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter,"info_label");
 
 	connect(lpConsole->context(),SIGNAL(stateChanged()),
 		this,SLOT(connectionStateChange()));
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
-	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter,"vsplitter");
+	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter->setObjectName("splitter");
 
-	m_pListView  = new KviTalListView(m_pVertSplitter);
-	m_pListView->addColumn(__tr2qs("Link"));
-	m_pListView->addColumn(__tr2qs("Hops"));
-	m_pListView->addColumn(__tr2qs("Description"));
+	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter->setObjectName("vsplitter");
+
+	m_pListView  = new KviTalTreeWidget(m_pVertSplitter);
+	m_pListView->setColumnCount(3);
+	m_pListView->setHeaderLabels(QStringList() << __tr2qs("Link") << __tr2qs("Hops") << __tr2qs("Description"));
+
 	m_pListView->setRootIsDecorated(true);
 	m_pListView->setAllColumnsShowFocus(true);
-	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalListViewItem *,const QPoint &,int)),
-			this,SLOT(showHostPopup(KviTalListViewItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalTreeWidgetItem *,const QPoint &,int)),
+			this,SLOT(showHostPopup(KviTalTreeWidgetItem *,const QPoint &,int)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
@@ -156,17 +161,17 @@ void KviLinksWindow::fillCaptionBuffers()
 	KviQString::sprintf(m_szHtmlActiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Links for %Q</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toUtf8().data(),
 		&m_szRootServer,
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().ascii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toUtf8().data(),
 		m_pConsole->context()->id());
 
 	KviQString::sprintf(m_szHtmlInactiveCaption,
 		__tr2qs("<nobr><font color=\"%s\"><b>Links for %Q</b></font> " \
 			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toUtf8().data(),
 		&m_szRootServer,
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().ascii(),
+		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toUtf8().data(),
 		m_pConsole->context()->id());
 }
 
@@ -189,14 +194,14 @@ void KviLinksWindow::endOfLinks()
 	m_pRequestButton->setEnabled(true);
 
 	m_pListView->clear();
-	m_pListView->setSorting(-1);
+	//m_pListView->setSorting(-1);
 
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE,"======================");
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Received end of links."));
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE,"======================");
 
-	KviTalListViewItem * it   = 0;
-	KviTalListViewItem * root = 0;
+	KviTalTreeWidgetItem * it   = 0;
+	KviTalTreeWidgetItem * root = 0;
 
 	int totalHosts  = 0;
 	int totalHops   = 0;
@@ -214,7 +219,7 @@ void KviLinksWindow::endOfLinks()
 	m_pListView->setUpdatesEnabled(false);
 	for(KviLink *l=m_pLinkList->first();l;l=m_pLinkList->next()){
 		totalHosts++;
-		if(l->hops == 0)root = new KviTalListViewItem(m_pListView,QString(l->host.ptr()),"0",QString(l->description.ptr()));
+		if(l->hops == 0)root = new KviTalTreeWidgetItem(m_pListView,QString(l->host.ptr()),QString("0"),QString(l->description.ptr()));
 		else {
 			totalHops += l->hops;
 			if(l->hops < 4){
@@ -239,13 +244,13 @@ void KviLinksWindow::endOfLinks()
 				QString tmp;
 				KviQString::sprintf(tmp,__tr2qs("%s: Parent link %s"),l->description.ptr(),l->parent.ptr());
 				KviStr tmp2(KviStr::Format,"%d",l->hops);
-				if(root)it = new KviTalListViewItem(m_pListView,root,QString(l->host.ptr()),QString(tmp2.ptr()),tmp);
+				if(root)it = new KviTalTreeWidgetItem(root,QString(l->host.ptr()),QString(tmp2.ptr()),tmp);
 				else {
 					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: No root link was sent by the server, the stats may be invalid."));
-					it = new KviTalListViewItem(m_pListView,QString(l->host.ptr()),QString(tmp2.ptr()),tmp);
+					it = new KviTalTreeWidgetItem(m_pListView,QString(l->host.ptr()),QString(tmp2.ptr()),tmp);
 				}
 			} else {
-				it = it->parent();
+				it = (KviTalTreeWidgetItem*) it->parent();
 				if(it)
 				{
 					int links = it->childCount() + 1;
@@ -306,35 +311,45 @@ void KviLinksWindow::endOfLinks()
 	m_pListView->repaint();
 }
 
-KviTalListViewItem * KviLinksWindow::insertLink(KviLink *l)
+KviTalTreeWidgetItem * KviLinksWindow::insertLink(KviLink *l)
 {
 	__range_valid(l->hops > 0);
-	KviTalListViewItem * i = getItemByHost(l->parent.ptr(),0);
-	KviTalListViewItem * it = 0;
+	KviTalTreeWidgetItem * i = getItemByHost(l->parent.ptr(),0);
+	KviTalTreeWidgetItem * it = 0;
 	if(!i)return 0;
 	else {
 		KviStr hops(KviStr::Format,"%d",l->hops);
-		it = new KviTalListViewItem(i,QString(l->host.ptr()),QString(hops.ptr()),QString(l->description.ptr()));
-		i->setOpen(true);
+		it = new KviTalTreeWidgetItem(i,QString(l->host.ptr()),QString(hops.ptr()),QString(l->description.ptr()));
+		i->setExpanded(true);
 	}
 	return it;
 }
 
-KviTalListViewItem * KviLinksWindow::getItemByHost(const char *host,KviTalListViewItem * par)
+KviTalTreeWidgetItem * KviLinksWindow::getItemByHost(const char *host,KviTalTreeWidgetItem * par)
 {
-	KviTalListViewItem * i = (par ? par->firstChild() : m_pListView->firstChild());
-	if(!i)return 0;
-	while(i){
-		KviStr tmp = i->text(0);
-		if(kvi_strEqualCI(tmp.ptr(),host))return i;
-		KviTalListViewItem * ch = getItemByHost(host,i);
-		if(ch)return ch;
-		i = i->nextSibling();
+	KviStr tmp;
+	if(par)
+	{
+		for(int i=0;i<par->childCount();i++)
+		{
+			tmp = par->child(i)->text(0);
+			if(kvi_strEqualCI(tmp.ptr(),host))return par->child(i);
+			KviTalTreeWidgetItem * ch = getItemByHost(host,par->child(i));
+			if(ch)return ch;
+		}
+	} else {
+		for(int i=0;i<m_pListView->topLevelItemCount();i++)
+		{
+			tmp = m_pListView->topLevelItem(i)->text(0);
+			if(kvi_strEqualCI(tmp.ptr(),host))return m_pListView->topLevelItem(i);
+			KviTalTreeWidgetItem * ch = getItemByHost(host,m_pListView->topLevelItem(i));
+			if(ch)return ch;
+		}
 	}
 	return 0;
 }
 
-void KviLinksWindow::showHostPopup(KviTalListViewItem *i,const QPoint &p,int)
+void KviLinksWindow::showHostPopup(KviTalTreeWidgetItem *i,const QPoint &p,int)
 {
 	if(!i)return;
 	KviStr host=i->text(0);

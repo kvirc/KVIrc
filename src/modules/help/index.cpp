@@ -477,8 +477,8 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 		qWarning( warn.toUtf8().data() );
 		return FALSE;
 	}
-	else debug("Open file %s",fileName.utf8().data());
-	debug("Patterns %s and words %s",patterns.join(",").utf8().data(),words.join(",").utf8().data());
+	else debug("Open file %s",fileName.toUtf8().data());
+	debug("Patterns %s and words %s",patterns.join(",").toUtf8().data(),words.join(",").toUtf8().data());
 	wordNum = 3;
 	miniDict.clear();
 
@@ -545,7 +545,7 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 			aIt = a.begin();
 
 			while ( aIt != a.end() ) {
-				if ( b.find( *aIt + 1 ) != b.end() ) {
+				if ( b.indexOf( *aIt + 1 ) != b.at(b.count()-1) ) {
 					(*aIt)++;
 					++aIt;
 				} else {

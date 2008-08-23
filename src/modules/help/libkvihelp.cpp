@@ -170,7 +170,8 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 
 	if(!c->switches()->find('n',"new"))
 	{
-		KviHelpWidget * w = (KviHelpWidget *)c->window()->frame()->child("help_widget","KviHelpWidget");
+		KviHelpWidget * w = (KviHelpWidget *)c->window()->frame()->findChild<KviHelpWidget *>("help_widget");
+
 		if(w)
 		{
 			w->textBrowser()->setSource(QUrl::fromLocalFile(f->absoluteFilePath()));

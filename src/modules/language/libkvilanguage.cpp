@@ -81,7 +81,7 @@ static bool language_kvs_cmd_detect(KviKvsModuleFunctionCall * c)
 		error = "err_notext";
 		matchcount = 0;
 	} else {
-		detect_language_and_encoding(text.utf8().data(),&r,0);
+		detect_language_and_encoding(text.toUtf8().data(),&r,0);
 
 		for(int i=0;i<matchcount;i++)
 		{

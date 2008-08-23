@@ -66,7 +66,7 @@ public:
 	QString authorName(){return m_pAuthorNameEdit->text();};
 	QString packageName(){return m_pPackageNameEdit->text();};
 	QString packageVersion(){return m_pPackageVersionEdit->text();};
-	QString packageDescription(){return m_pPackageDescriptionEdit->text();};
+	QString packageDescription(){return m_pPackageDescriptionEdit->toPlainText();};
 protected:
 	QLineEdit      * m_pAuthorNameEdit;
 	QLineEdit      * m_pPackageNameEdit;

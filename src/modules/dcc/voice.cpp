@@ -1016,7 +1016,7 @@ void KviDccVoice::setMixerVolume(int vol)
 
 	QString s;
 	s.sprintf(__tr_ctx("Volume: %i","dcc"), -vol);
-	QToolTip::add(m_pVolumeSlider, s);
+	m_pVolumeSlider->setToolTip(s);
 #endif
 }
 

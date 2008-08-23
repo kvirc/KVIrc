@@ -193,13 +193,15 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE))));
 	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));
 
-	m_pRequestButton = new QToolButton(box,"request_button");
+	m_pRequestButton = new QToolButton(box);
+	m_pRequestButton->setObjectName("request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
 	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST))));
 	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));
 	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request List"));
 
-	m_pStopListDownloadButton = new QToolButton(box,"stoplistdownload_button");
+	m_pStopListDownloadButton = new QToolButton(box);
+	m_pStopListDownloadButton->setObjectName("stoplistdownload_button");
 	m_pStopListDownloadButton->setIconSize(QSize(16,16));
 	m_pStopListDownloadButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICKNAMEPROBLEM))));
 	connect(m_pStopListDownloadButton,SIGNAL(clicked()),this,SLOT(stoplistdownload()));
