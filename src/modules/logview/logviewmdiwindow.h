@@ -26,7 +26,7 @@
 #include "kvi_window.h"
 #include "kvi_moduleextension.h"
 #include "kvi_tal_vbox.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 #include "kvi_pointerlist.h"
 
 #include <QTabWidget>
@@ -36,7 +36,6 @@
 class QStringList;
 class QLineEdit;
 class QDateEdit;
-class KviTalListView;
 class KviLogViewWidget;
 
 
@@ -80,7 +79,7 @@ public:
 protected:
 	KviPointerList<KviLogFile> m_logList;
 
-	KviTalListView     * m_pListView;
+	KviTalTreeWidget     * m_pListView;
 
 	// Type filter
 	QCheckBox          * m_pShowChannelsCheck;
@@ -116,8 +115,8 @@ protected:
 	virtual void die();
 	virtual QSize sizeHint() const;
 protected slots:
-	void rightButtonClicked ( KviTalListViewItem *, const QPoint &, int );
-	void itemSelected(KviTalListViewItem * it);
+	void rightButtonClicked ( KviTalTreeWidgetItem *, const QPoint &, int );
+	void itemSelected(KviTalTreeWidgetItem * it);
 	void deleteCurrent();
 	void applyFilter();
 };

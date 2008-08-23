@@ -27,17 +27,17 @@
 
 #include "kvi_window.h"
 #include "kvi_scripteditor.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 class KviScriptEditor;
 
-class KviLogListViewItem : public KviTalListViewItem
+class KviLogListViewItem : public KviTalTreeWidgetItem
 {
 public:
-	KviLogListViewItem(KviTalListViewItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
-	: KviTalListViewItem(par), m_type(type), m_pFileData(fileData) {};
-	KviLogListViewItem(KviTalListView * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
-	: KviTalListViewItem(par), m_type(type), m_pFileData(fileData) {};
+	KviLogListViewItem(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+	: KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData) {};
+	KviLogListViewItem(KviTalTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+	: KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData) {};
 	~KviLogListViewItem() {};
 public:
 	KviLogFile::KviLogTypes m_type;
@@ -50,7 +50,7 @@ public:
 class KviLogListViewItemFolder : public KviLogListViewItem
 {
 public:
-	KviLogListViewItemFolder(KviTalListViewItem * par, const QString& label)
+	KviLogListViewItemFolder(KviTalTreeWidgetItem * par, const QString& label)
 	: KviLogListViewItem(par,KviLogFile::Other,0),m_szLabel(label) {};
 	~KviLogListViewItemFolder() {};
 public:
@@ -61,7 +61,7 @@ public:
 class KviLogListViewItemType : public KviLogListViewItem
 {
 public:
-	KviLogListViewItemType(KviTalListView * par, KviLogFile::KviLogTypes type)
+	KviLogListViewItemType(KviTalTreeWidget * par, KviLogFile::KviLogTypes type)
 	: KviLogListViewItem(par,type,0) {};
 	~KviLogListViewItemType() {};
 public:
@@ -73,7 +73,7 @@ public:
 class KviLogListViewLog : public KviLogListViewItem
 {
 public:
-	KviLogListViewLog(KviTalListViewItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+	KviLogListViewLog(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
 	: KviLogListViewItem(par,type,fileData){};
 	~KviLogListViewLog() {};
 	virtual QString key ( int column, bool ascending ) const { return m_pFileData->date().toString("yyyy.MM.dd"); };
