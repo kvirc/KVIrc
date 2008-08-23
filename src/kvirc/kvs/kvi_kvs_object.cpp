@@ -751,6 +751,7 @@ bool KviKvsObject::connectSignal(const QString &sigName,KviKvsObject * pTarget,c
 	}
 
 	KviKvsObjectConnection * con = new KviKvsObjectConnection;
+	debug("set connetion signal %s - slot %s",sigName.utf8().data(),slotName.utf8().data());
 
 	con->pSourceObject = this;
 	con->pTargetObject = pTarget;
@@ -834,6 +835,42 @@ bool KviKvsObject::unregisterConnection(KviKvsObjectConnection * pConnection)
 	return true;
 }
 
+
+//FIXME: emitSignal crash whith this script test:
+/*
+class(A)
+{
+	emitted()
+	{
+		debug emitted
+		delete -i %C
+	}
+}
+class(C)
+{
+	emitted()
+	{
+		debug class C
+		delete -I %A
+	}
+}
+class(B)
+{
+	start()
+	{
+		@$emit(test)
+	}
+}
+%A=$new(A)
+%B=$new(B)
+%C=$new(C)
+
+objects.connect %B test %A emitted
+objects.connect %B test %C emitted
+
+
+%B->$start()
+*/
 int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * pOuterCall,KviKvsVariantList * pParams)
 {
 	if(!m_pSignalDict)return 0;
@@ -848,14 +885,20 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 
 	kvs_int_t emitted = 0;
 
-	KviKvsObjectConnectionListIterator it(*l);
+	KviPointerList<KviKvsObjectConnection> * pTest = new KviPointerList<KviKvsObjectConnection>;
+	pTest->setAutoDelete(true);
+	for (int i=0;i<l->count();i++) pTest->append(l->at(i));
 
-	while(KviKvsObjectConnection * s = it.current())
+	KviKvsObjectConnectionListIterator it(*pTest);
+//	int connectionsCount=l->count();
+//	for (int i=0;i<connectionsCount;i++)
+	while(KviKvsObjectConnection * s =it.current() )
 	{
+	//	KviKvsObjectConnection * s = l->at(i);
 		// save it , since s may be destroyed in the call!
+	
+		debug ("signal %s",sigName.utf8().data());
 		KviKvsObject * pTarget = s->pTargetObject;
-
-		emitted++;
 
 		kvs_hobject_t hTarget = pTarget->handle();
 		kvs_hobject_t hOld = pTarget->signalSender();
@@ -863,41 +906,64 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 		pTarget->setSignalSender(m_hObject);
 		pTarget->setSignalName(sigName);
 
-		if(!pTarget->callFunction(this,s->szSlot,QString::null,pOuterCall->context(),&retVal,pParams))
+		if(!KviKvsKernel::instance()->objectController()->lookupObject(hTarget))
 		{
-			if(KviKvsKernel::instance()->objectController()->lookupObject(hTarget) && it.current())
-			{
-				pOuterCall->warning(
-					__tr2qs("Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from object '%Q::%Q': disconnecting"),
-					&(s->szSlot),
-					&(s->pTargetObject->getClass()->name()),
-					&(s->pTargetObject->getName()),
-					&(sigName),
-					&(getClass()->name()),
-					&m_szName);
-
+			//FIXME
+			/*pOuterCall->warning("Object no longer exists"
+					);
+*/
+				debug("Object no longer exists");
+				/*
 				if(!pDis)
 				{
 					pDis = new KviPointerList<KviKvsObjectConnection>;
 					pDis->setAutoDelete(false);
 				}
 				pDis->append(s);
-			} else {
-			 	// else destroyed in the call! (already disconnected)
+				*/
 
-				pOuterCall->warning(
-					__tr2qs("Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"),
-					&(sigName),
-					&(getClass()->name()),
-					&m_szName);
-			}
 		}
+		else
+		{
+			emitted++;
 
+			if(!pTarget->callFunction(this,s->szSlot,QString::null,pOuterCall->context(),&retVal,pParams))
+			{
+				if(KviKvsKernel::instance()->objectController()->lookupObject(hTarget) && it.current())
+				{
+					pOuterCall->warning(
+						__tr2qs("Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from object '%Q::%Q': disconnecting"),
+						&(s->szSlot),
+						&(s->pTargetObject->getClass()->name()),
+						&(s->pTargetObject->getName()),
+						&(sigName),
+						&(getClass()->name()),
+						&m_szName);
+					if(!pDis)
+					{
+						pDis = new KviPointerList<KviKvsObjectConnection>;
+						pDis->setAutoDelete(false);
+					}
+					pDis->append(s);
+
+				} 
+				else 
+				{
+			 		// else destroyed in the call! (already disconnected)
+					pOuterCall->warning(
+						__tr2qs("Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"),
+						&(sigName),
+						&(getClass()->name()),
+					&m_szName);
+				}
+			}
+			else pTarget->setSignalSender(hOld);
+		}
+		/*
 		if(KviKvsKernel::instance()->objectController()->lookupObject(hTarget))
 		{
 			pTarget->setSignalSender(hOld);
-		}
-
+	}*/
 		++it;
 	}
 
@@ -911,6 +977,7 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 
 	return emitted;
 }
+
 
 bool KviKvsObject::function_name(KviKvsObjectFunctionCall * c)
 {
@@ -989,6 +1056,7 @@ bool KviKvsObject::function_emit(KviKvsObjectFunctionCall * c)
 		KVSO_PARAMETER("signal",KVS_PT_NONEMPTYSTRING,0,szSignal)
 		KVSO_PARAMETER("params",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,vList)
 	KVSO_PARAMETERS_END(c)
+	
 
 	emitSignal(szSignal,c,&vList);
 	return true;

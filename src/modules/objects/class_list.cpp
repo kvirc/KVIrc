@@ -182,7 +182,7 @@ bool KviKvsObject_list::function_current(KviKvsObjectFunctionCall *c)
 		c->returnValue()->setNothing();
 		return true;
 	}
-	KviKvsVariant * v = m_pDataList->current();
+	KviKvsVariant * v = m_pDataList->safeCurrent();
 	if(v)c->returnValue()->copyFrom(*v);
 	else c->returnValue()->setNothing();
 	return true;
@@ -346,6 +346,7 @@ bool KviKvsObject_list::function_append(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pDataList)return true;
 	m_pDataList->append(new KviKvsVariant(*pVar));
+	if (m_pDataList->count()) m_pDataList->first();
 	return true;
 }
 
