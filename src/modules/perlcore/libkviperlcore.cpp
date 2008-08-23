@@ -152,7 +152,7 @@ bool KviPerlInterpreter::init()
 	int daArgc = 4;
 	char * daArgs[] = { "yo", "-e", "0", "-w" };
 	char ** daEnv=NULL;
-	PERL_SYS_INIT3(&daArgc,&daArgs,&daEnv);
+	PERL_SYS_INIT3(&daArgc,(char ***)&daArgs,&daEnv);
 	m_pInterpreter = perl_alloc();
 	if(!m_pInterpreter)return false;
 	PERL_SET_CONTEXT(m_pInterpreter);
