@@ -1,5 +1,7 @@
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual C++ Express 2005
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA3DAF6C-ACA5-4F39-A581-5740FEF32BAF}"
+EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kvirc", "src\kvirc\kvirc_QT4_vc05.vcproj", "{92803FDD-DFDB-461D-8AA3-1F201F4EA06C}"
 	ProjectSection(ProjectDependencies) = postProject
 		{122A0296-534F-4A77-B55F-5EF4E642ACD0} = {122A0296-534F-4A77-B55F-5EF4E642ACD0}
@@ -290,8 +292,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "theme", "src\modules\theme\
 	ProjectSection(ProjectDependencies) = postProject
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA3DAF6C-ACA5-4F39-A581-5740FEF32BAF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "win32registrar_winapi", "src\win32registrar\win32registrar_winapi.vcproj", "{5B9C2364-6814-4C7F-B064-FA663F21220D}"
 EndProject

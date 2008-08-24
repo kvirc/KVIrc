@@ -31,6 +31,7 @@
 #include <QToolButton>
 #include <QWidget>
 #include <QPixmap>      // needed
+#include <QMultiHash>
 
 class QScrollBar;
 class QLineEdit;
@@ -43,6 +44,7 @@ class KviFrame;
 class KviConsole;
 class KviIrcViewToolWidget;
 class KviIrcViewToolTip;
+class KviAnimatedPixmap;
 
 typedef struct _KviIrcViewLineChunk KviIrcViewLineChunk;
 typedef struct _KviIrcViewWrappedBlock KviIrcViewWrappedBlock;
@@ -143,6 +145,8 @@ private:
 	KviIrcViewToolTip         * m_pToolTip;
 	bool m_bHaveUnreadedHighlightedMessages;
 	bool m_bHaveUnreadedMessages;
+
+	QMultiHash<KviIrcViewLine*,KviAnimatedPixmap*>  m_hAnimatedSmiles;
 public:
 	void checkLogDate();
 	void clearUnreaded();
@@ -242,6 +246,7 @@ protected:
 protected slots:
 	virtual void scrollBarPositionChanged(int newValue);
 	void masterDead();
+	void animatedIconChange();
 };
 
 #endif //_KVI_IRCVIEW_H_

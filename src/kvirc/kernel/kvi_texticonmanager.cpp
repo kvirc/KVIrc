@@ -34,16 +34,41 @@
 #include "kvi_config.h"
 #include "kvi_app.h"
 #include "kvi_confignames.h"
+#include "kvi_animatedpixmap.h"
 
 #include <QPixmap>
 #include <QFile>
 
 KVIRC_API KviTextIconManager * g_pTextIconManager = 0;
 
+KviTextIcon::KviTextIcon(QString szFile) :
+	m_iId(-1), m_szFilename(szFile)
+{
+
+	QString szRetPath;
+
+	if (g_pApp->findImage(szRetPath, szFile))
+	{
+		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath);
+	}
+	else
+	{
+		m_pAnimatedPixmap = 0;
+	}
+}
+
 KviTextIcon::KviTextIcon(KviTextIcon* icon)
 {
-	m_iId=icon->id();
-	m_szFilename=icon->m_szFilename;
+	m_iId = icon->id();
+	m_szFilename = icon->m_szFilename;
+	if (icon->m_pAnimatedPixmap)
+	{
+		m_pAnimatedPixmap = new KviAnimatedPixmap(m_pAnimatedPixmap);
+	}
+	else
+	{
+		m_pAnimatedPixmap = 0;
+	}
 }
 
 void KviTextIcon::setId(int id)
@@ -195,9 +220,9 @@ int KviTextIconManager::load(const QString &filename,bool bMerge)
 			QString szTmp;
 			QPixmap * pix=0;
 //			debug("%s %s %i %i",__FILE__,__FUNCTION__,__LINE__,id);
-			if(id!=-1)
+			if(id!=-1) {
 				pix = g_pIconManager->getSmallIcon(id);
-			else {
+			} else {
 				szTmp=cfg.readEntry(*s);
 				pix=g_pIconManager->getPixmap(szTmp);
 				if(!pix)
@@ -254,4 +279,5 @@ void KviTextIconManager::save(const QString &filename)
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_texticonmanager.moc"
+using namespace KviAnimatedPixmap;
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

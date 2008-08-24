@@ -601,8 +601,11 @@ void KviFrame::closeWindow(KviWindow *wnd)
 
 	// and shut it down...
 	// KviWindow will call childWindowDestroyed() here
-	if(wnd->mdiParent())m_pMdi->destroyChild(wnd->mdiParent(),true);
-	else delete wnd;
+	if(wnd->mdiParent()) {
+		m_pMdi->destroyChild(wnd->mdiParent(),true);
+	} else {
+		delete wnd;
+	}
 }
 
 

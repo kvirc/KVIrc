@@ -29,25 +29,27 @@
 #include "kvi_pointerhashtable.h"
 
 #include <QPixmap>
+#include "kvi_animatedpixmap.h"
 
 class KVIRC_API KviTextIcon
 {
 protected:
-	int      m_iId;
-	QString  m_szFilename;
+	int                m_iId;
+	QString            m_szFilename;
+	KviAnimatedPixmap* m_pAnimatedPixmap;
 public:
-	KviTextIcon(int id)
-		: m_iId(id) {};
-	KviTextIcon(QString szFile)
-		: m_iId(-1),m_szFilename(szFile) {};
+	inline KviTextIcon(int id)
+		: m_iId(id),m_pAnimatedPixmap(0) {};
+	KviTextIcon(QString szFile);
 	KviTextIcon(KviTextIcon* icon);
-	~KviTextIcon(){};
+	inline ~KviTextIcon(){ if(m_pAnimatedPixmap) delete m_pAnimatedPixmap;};
 public:
-	int id(){ return m_iId; };
+	inline int id(){ return m_iId; };
 	void setId(int id);
 	void setFilename(QString filename);
-	QString filename(){ return m_szFilename; };
-	QPixmap * pixmap();
+	inline QString filename(){ return m_szFilename; };
+	QPixmap          * pixmap();
+	inline KviAnimatedPixmap* animatedPixmap() { return m_pAnimatedPixmap; };
 };
 
 class KVIRC_API KviTextIconManager : public QObject
@@ -63,17 +65,17 @@ private:
 signals:
 	void changed();
 public:
-	KviPointerHashTable<QString,KviTextIcon> * textIconDict(){ return m_pTextIconDict; };
+	inline KviPointerHashTable<QString,KviTextIcon> * textIconDict(){ return m_pTextIconDict; };
 	void checkDefaultAssociations();
 	void clear();
 	void insert(const QString &name,int id);
 	void insert(const QString &name,KviTextIcon& icon);
-	KviTextIcon * lookupTextIcon(const QString &name){ return m_pTextIconDict->find(name); };
+	inline KviTextIcon * lookupTextIcon(const QString &name){ return m_pTextIconDict->find(name); };
 	void load();
 	void save();
 protected:
 	void save(const QString &filename);
-	int load(const QString &filename,bool bMerge = false);
+	int  load(const QString &filename,bool bMerge = false);
 };
 
 #ifndef _KVI_TEXTICONMANAGER_CPP_

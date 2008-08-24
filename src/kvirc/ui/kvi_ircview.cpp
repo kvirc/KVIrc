@@ -105,6 +105,7 @@
 #include "kvi_ircurl.h"
 #include "kvi_qcstring.h"
 #include "kvi_tal_popupmenu.h"
+#include "kvi_animatedpixmap.h"
 // FIXME: #warning "There should be an option to preserve control codes in copied text (clipboard) (mIrc = CTRL+Copy->with colors)"
 
 #include <QBitmap>
@@ -383,20 +384,26 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 
 }
 
-static inline void delete_text_line(KviIrcViewLine * l)
+static inline void delete_text_line(KviIrcViewLine * line,QHash<KviIrcViewLine*,KviAnimatedPixmap*>*  animatedSmiles)
 {
-	for(unsigned int i=0;i<l->uChunkCount;i++)
+	QMultiHash<KviIrcViewLine*, KviAnimatedPixmap*>::iterator it =
+			animatedSmiles->find(line);
+	while (it != animatedSmiles->end() && it.key() == line)
 	{
-		if((l->pChunks[i].type == KVI_TEXT_ESCAPE) || (l->pChunks[i].type == KVI_TEXT_ICON))
+		it = animatedSmiles->erase(it);
+	}
+	for(unsigned int i=0;i<line->uChunkCount;i++)
+	{
+		if((line->pChunks[i].type == KVI_TEXT_ESCAPE) || (line->pChunks[i].type == KVI_TEXT_ICON))
 		{
-			if( (l->pChunks[i].type == KVI_TEXT_ICON) && (l->pChunks[i].szPayload!=l->pChunks[i].szSmileId) )
-				kvi_free(l->pChunks[i].szSmileId);
-			kvi_free(l->pChunks[i].szPayload);
+			if( (line->pChunks[i].type == KVI_TEXT_ICON) && (line->pChunks[i].szPayload!=line->pChunks[i].szSmileId) )
+				kvi_free(line->pChunks[i].szSmileId);
+			kvi_free(line->pChunks[i].szPayload);
 		}
 	}
-	kvi_free(l->pChunks);                        //free attributes data
-	if(l->iBlockCount)kvi_free(l->pBlocks);
-	delete l;
+	kvi_free(line->pChunks);                        //free attributes data
+	if(line->iBlockCount)kvi_free(line->pBlocks);
+	delete line;
 }
 
 KviIrcView::~KviIrcView()
@@ -416,7 +423,7 @@ KviIrcView::~KviIrcView()
 	while(KviIrcViewLine * l = m_pMessagesStoppedWhileSelecting->first())
 	{
 		m_pMessagesStoppedWhileSelecting->removeFirst();
-		delete_text_line(l);
+		delete_text_line(l,&m_hAnimatedSmiles);
 	}
 	delete m_pMessagesStoppedWhileSelecting;
 	if(m_pFm)delete m_pFm;
@@ -1042,12 +1049,12 @@ void KviIrcView::removeHeadLine(bool bRepaint)
 		KviIrcViewLine *aux_ptr=m_pFirstLine->pNext;     //get the next line
 		aux_ptr->pPrev=0;                                    //becomes the first
 		if(m_pFirstLine==m_pCurLine)m_pCurLine=aux_ptr;      //move the cur line if necessary
-		delete_text_line(m_pFirstLine);                      //delete the struct
+		delete_text_line(m_pFirstLine,&m_hAnimatedSmiles);                   //delete the struct
 		m_pFirstLine=aux_ptr;                                //set the last
 		m_iNumLines--;                                       //and decrement the count
 	} else { //unique line
 		m_pCurLine   = 0;
-		delete_text_line(m_pFirstLine);
+		delete_text_line(m_pFirstLine,&m_hAnimatedSmiles);
 		m_pFirstLine = 0;
 		m_iNumLines  = 0;
 		m_pLastLine  = 0;
@@ -2348,6 +2355,13 @@ found_icon_escape:
 
 					APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(icon_name,datalen)
 
+					if(icon->animatedPixmap())
+					{
+						//FIXME: that's ugly
+						disconnect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
+						connect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
+						m_hAnimatedSmiles.insert(line_ptr,icon->animatedPixmap());
+					}
 					data_ptr = p;
 					NEW_LINE_CHUNK(KVI_TEXT_UNICON)
 				}
@@ -2698,6 +2712,15 @@ check_emoticon_char:
 					// do we have that emoticon-icon association ?
 					if(icon)
 					{
+
+						if(icon->animatedPixmap())
+						{
+							//FIXME: that's ugly
+							disconnect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
+							connect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
+							m_hAnimatedSmiles.insert(line_ptr,icon->animatedPixmap());
+						}
+
 						// we got an icon for this emoticon
 						// the tooltip will carry the original emoticon source text
 						APPEND_LAST_TEXT_BLOCK(data_ptr,begin - data_ptr)
@@ -3318,7 +3341,7 @@ no_selection_paint:
 					KviTextIcon* pIcon = g_pTextIconManager->lookupTextIcon(tmpQ);
 					if(pIcon)
 					{
-						daIcon = pIcon->pixmap();
+						daIcon = pIcon->animatedPixmap() ? pIcon->animatedPixmap()->pixmap() : pIcon->pixmap();
 					}
 					if(!daIcon)
 					{
@@ -5301,6 +5324,43 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 
 	if((linkUnderMouse == m_pLastLinkUnderMouse) && linkUnderMouse)doLinkToolTip(rctLink,linkCmd,linkText);
 	else m_pLastLinkUnderMouse = 0; //
+}
+
+void KviIrcView::animatedIconChange()
+{
+	//static int i = 0;
+	//debug("animation %i",i);
+	//i++;
+	update();
+
+	/*KviAnimatedPixmap* targetPixmap = (KviAnimatedPixmap*) sender();
+	KviIrcViewLine   * targetLine = m_hAnimatedSmiles[targetPixmap];
+	if(targetLine)
+	{
+		QRect repaintRect();
+	}
+
+	uint uWraps = 0;
+
+	KviIrcViewLine * l = m_pCurLine;
+	if(!l)return;
+
+	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER;
+
+	// our current line begins after the mouse position... go on
+	while(iTop > KVI_IRCVIEW_VERTICAL_BORDER)
+	{
+		//subtract from iTop the height of the current line (aka go to the end of the previous / start of the current point)
+		iTop -= ((l->uLineWraps + 1) * m_iFontLineSpacing) + m_iFontDescent;
+
+		l = l->pPrev;
+	}
+
+	if(l)
+	{
+		update(QRect(0,iTop,width()-m_pScrollBar->width(),((l->uLineWraps + 1) * m_iFontLineSpacing)));
+	}*/
+
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

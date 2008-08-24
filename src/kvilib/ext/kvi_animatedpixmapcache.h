@@ -13,13 +13,14 @@
 #include <QMultiHash>
 #include <QMultiMap>
 #include <QTimer>
+#include "kvi_settings.h"
 
 class KviAnimatedPixmapInterface {
   public:
     virtual void nextFrame() = 0;
 };
 
-class KviAnimatedPixmapCache : public QObject {
+class KVILIB_API KviAnimatedPixmapCache : public QObject {
         Q_OBJECT
 public:
 	/*

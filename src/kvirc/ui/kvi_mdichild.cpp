@@ -270,7 +270,7 @@ void KviMdiChild::systemPopupSlot()
 
 void KviMdiChild::resizeEvent(QResizeEvent *e)
 {
-	debug("Resize mdi child");
+	//debug("Resize mdi child");
 	int s = m_pCaption->heightHint();
 	m_pCaption->setGeometry(KVI_MDICHILD_BORDER,KVI_MDICHILD_BORDER,
 		width() - (KVI_MDICHILD_BORDER << 1),s);

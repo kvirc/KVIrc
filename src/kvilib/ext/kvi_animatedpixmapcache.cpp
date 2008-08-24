@@ -146,7 +146,7 @@ void KviAnimatedPixmapCache::free(KviAnimatedPixmapCache::Data* data) {
 
 void  KviAnimatedPixmapCache::internalSceduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver)
 {
-  debug("Adding %i - %i",(uint)KviTimeUtils::getCurrentTimeMills()+delay,receiver);
+  //debug("Adding %i - %i",(uint)KviTimeUtils::getCurrentTimeMills()+delay,receiver);
   m_timerMutex.lock();
   bool  needTimerChange = false;
   long long when = KviTimeUtils::getCurrentTimeMills()+delay;
@@ -196,7 +196,7 @@ void KviAnimatedPixmapCache::timerEvent()
    *
    * So it will not emit additional 5 events.
    */
-	long long now = KviTimeUtils::getCurrentTimeMills() + 15;
+	long long now = KviTimeUtils::getCurrentTimeMills() + 3;
 
 //	m_timerMutex.lock();
 
@@ -206,7 +206,7 @@ void KviAnimatedPixmapCache::timerEvent()
 	while (i != m_timerData.end() && i.key() <= now)
 	{
 		i.value()->nextFrame();
-		debug("Calling %i - %i",(uint)KviTimeUtils::getCurrentTimeMills(),i.value());
+		//debug("Calling %i - %i",(uint)KviTimeUtils::getCurrentTimeMills(),i.value());
 		i = m_timerData.erase(i);
 	}
 

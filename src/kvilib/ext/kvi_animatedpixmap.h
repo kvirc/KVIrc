@@ -102,7 +102,7 @@ public:
 	 * Returns active frame's pixmap.
 	 * Never fails.
 	 */
-#ifdef COMPILE_ON_MINGW
+//#ifdef COMPILE_ON_MINGW
       	/*
 	 * Mingw/gcc3.4.2 have some problems linking kvirc because of this:
 	 * It doesn't like the way we import inline static members from a singletone class, and spit out this error on linking:
@@ -111,8 +111,8 @@ public:
          * In function `ZN24KviPointerHashTableEntryI7QString16KviUserListEntryE3keyEv':
          * C:/kvirctrunk/src/kvirc/../kvilib/core/kvi_pointerlist.h: undefined reference to `KviAnimatedPixmapCache::dummyPixmap()'
 	 */
-  
-	inline QPixmap* pixmap()
+
+/*	inline QPixmap* pixmap()
 	{
 		if(m_lFrames->count()>0)
 			return m_lFrames->at(m_uCurrentFrameNumber).pixmap;
@@ -120,7 +120,7 @@ public:
 			return new QPixmap(); // FIXME, memory leak
 	}
 
-#else
+#else*/
 	inline QPixmap* pixmap()
 	{
 		if(m_lFrames->count()>0)
@@ -128,7 +128,7 @@ public:
 		else
 			return KviAnimatedPixmapCache::dummyPixmap();
 	}
-#endif
+//#endif
 	/*
 	 * Returns active frame number
 	 */
