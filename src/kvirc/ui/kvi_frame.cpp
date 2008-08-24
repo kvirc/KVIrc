@@ -58,6 +58,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_popupmenu.h"
+#include "kvi_texticonmanager.h"
 
 #include <QSplitter>
 #include <QVariant>
@@ -1047,6 +1048,7 @@ void KviFrame::applyOptions()
 	updateCaption();
 
 	m_pTaskBar->applyOptions();
+	g_pTextIconManager->applyOptions();
 }
 
 void KviFrame::toggleStatusBar()

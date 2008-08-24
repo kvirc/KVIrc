@@ -46,27 +46,27 @@ KviIrcViewLookOptionsWidget::KviIrcViewLookOptionsWidget(QWidget * parent)
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontIrcView);
 	addColorSelector(0,1,1,1,__tr2qs_ctx("Background color:","options"),KviOption_colorIrcViewBackground);
-	
+
 	addPixmapSelector(0,2,1,2,__tr2qs_ctx("Background image:","options"),KviOption_pixmapIrcViewBackground);
 
 	addLabel(0,3,0,3,__tr2qs_ctx("Horizontal align:","options"));
 	m_pHorizontalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pHorizontalAlign,1,3,1,3);
-	
+
 	addLabel(0,4,0,4,__tr2qs_ctx("Vertical align:","options"));
 	m_pVerticalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pVerticalAlign,1,4,1,4);
-	
+
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Left","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Right","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Center","options"));
-	
+
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Tile","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Top","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Bottom","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Center","options"));
-	
+
 	switch( KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign) & Qt::AlignHorizontal_Mask)
 	{
 		case Qt::AlignLeft:
@@ -81,7 +81,7 @@ KviIrcViewLookOptionsWidget::KviIrcViewLookOptionsWidget(QWidget * parent)
 		default:
 			m_pHorizontalAlign->setCurrentIndex(0);
 	}
-	
+
 	switch( KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign) & Qt::AlignVertical_Mask)
 	{
 		case Qt::AlignTop:
@@ -96,7 +96,7 @@ KviIrcViewLookOptionsWidget::KviIrcViewLookOptionsWidget(QWidget * parent)
 		default:
 			m_pVerticalAlign->setCurrentIndex(0);
 	}
-	
+
 	layout()->setRowStretch(2,1);
 }
 
@@ -131,7 +131,7 @@ void KviIrcViewLookOptionsWidget::commit()
 			iFlags|=Qt::AlignVCenter;
 			break;
 	}
-	
+
 	KVI_OPTION_UINT(KviOption_uintIrcViewPixmapAlign)=iFlags;
 	KviOptionsWidget::commit();
 }
@@ -153,8 +153,9 @@ KviIrcViewFeaturesOptionsWidget::KviIrcViewFeaturesOptionsWidget(QWidget * paren
 	s->setSuffix(__tr2qs_ctx(" msec","options"));
 	s = addUIntSelector(0,11,0,11,__tr2qs_ctx("Link tooltip hide delay:","options"),KviOption_uintIrcViewToolTipHideTimeoutInMsec,256,10000,12000);
 	s->setSuffix(__tr2qs_ctx(" msec","options"));
-	
-	addRowSpacer(0,12,0,12);
+	addBoolSelector(0,12,0,12,__tr2qs_ctx("Enable animated smiles","options"),KviOption_boolEnableAnimatedSmiles);
+
+	addRowSpacer(0,13,0,13);
 }
 
 KviIrcViewFeaturesOptionsWidget::~KviIrcViewFeaturesOptionsWidget()
@@ -230,7 +231,7 @@ void KviIrcViewMarkerOptionsWidget::commit()
 			iFlags|=Qt::DashDotDotLine;
 			break;
 	}
-	
+
 	KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle)=iFlags;
 	KviOptionsWidget::commit();
 }

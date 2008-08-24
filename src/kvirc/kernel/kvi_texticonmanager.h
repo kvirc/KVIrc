@@ -73,6 +73,7 @@ public:
 	inline KviTextIcon * lookupTextIcon(const QString &name){ return m_pTextIconDict->find(name); };
 	void load();
 	void save();
+	void applyOptions();
 protected:
 	void save(const QString &filename);
 	int  load(const QString &filename,bool bMerge = false);

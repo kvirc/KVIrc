@@ -5328,10 +5328,11 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 
 void KviIrcView::animatedIconChange()
 {
+	update();
 	//static int i = 0;
 	//debug("animation %i",i);
 	//i++;
-	update();
+	
 
 	/*KviAnimatedPixmap* targetPixmap = (KviAnimatedPixmap*) sender();
 	KviIrcViewLine   * targetLine = m_hAnimatedSmiles[targetPixmap];

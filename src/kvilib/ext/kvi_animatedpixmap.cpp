@@ -69,7 +69,10 @@ void KviAnimatedPixmap::nextFrame()
 	emit(frameChanged());
 
 	//run timer again
-	KviAnimatedPixmapCache::sceduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
+	if(m_bStarted)
+	{
+		KviAnimatedPixmapCache::sceduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
+	}
 }
 
 void KviAnimatedPixmap::resize(QSize newSize,Qt::AspectRatioMode ratioMode)

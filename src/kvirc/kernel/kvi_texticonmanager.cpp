@@ -35,6 +35,7 @@
 #include "kvi_app.h"
 #include "kvi_confignames.h"
 #include "kvi_animatedpixmap.h"
+#include "kvi_options.h"
 
 #include <QPixmap>
 #include <QFile>
@@ -50,6 +51,12 @@ KviTextIcon::KviTextIcon(QString szFile) :
 	if (g_pApp->findImage(szRetPath, szFile))
 	{
 		m_pAnimatedPixmap = new KviAnimatedPixmap(szRetPath);
+		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
+		{
+			m_pAnimatedPixmap->start();
+		} else {
+			m_pAnimatedPixmap->stop();
+		}
 	}
 	else
 	{
@@ -179,6 +186,25 @@ void KviTextIconManager::load()
 	g_pApp->getGlobalKvircDirectory(tmp,KviApp::Config,KVI_CONFIGFILE_TEXTICONS);
 	if(QFile::exists(tmp)) {
 		load(tmp,true);
+	}
+}
+
+void KviTextIconManager::applyOptions()
+{
+	for(
+			KviTextIcon* pIcon = m_pTextIconDict->first();
+			pIcon;
+			pIcon = m_pTextIconDict->next()
+			) {
+		if(pIcon->animatedPixmap())
+		{
+			if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedSmiles))
+			{
+				pIcon->animatedPixmap()->start();
+			} else {
+				pIcon->animatedPixmap()->stop();
+			}
+		}
 	}
 }
 
