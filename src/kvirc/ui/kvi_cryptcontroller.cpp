@@ -44,8 +44,8 @@
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 	extern KVIRC_API KviModuleManager      * g_pModuleManager;
 
-	KviEngineListBoxItem::KviEngineListBoxItem(KviTalListBox * lb,KviCryptEngineDescription * d,const char * modName)
-	: KviTalListBoxText(lb,d->szName)
+	KviEngineListBoxItem::KviEngineListBoxItem(KviTalListWidget * lb,KviCryptEngineDescription * d,const char * modName)
+	: KviTalListWidgetText(lb,d->szName)
 	{
 		m_szName = d->szName;
 		m_szAuthor = d->szAuthor;
@@ -93,8 +93,8 @@
 		g->addWidget(m_pEnableCheck,2,0,1,4);
 		connect(m_pEnableCheck,SIGNAL(toggled(bool)),this,SLOT(enableCheckToggled(bool)));
 
-		m_pListBox = new KviTalListBox(this);
-		connect(m_pListBox,SIGNAL(highlighted(KviTalListBoxItem *)),this,SLOT(engineHighlighted(KviTalListBoxItem *)));
+		m_pListBox = new KviTalListWidget(this);
+		connect(m_pListBox,SIGNAL(highlighted(KviTalListWidgetItem *)),this,SLOT(engineHighlighted(KviTalListWidgetItem *)));
 		g->addWidget(m_pListBox,3,0,6,1);
 	
 		m_pDescriptionLabel = new QLabel(this);
@@ -144,7 +144,7 @@
 
 		if(cur)
 		{
-			KviTalListBoxItem * it = (KviTalListBoxItem *)m_pListBox->findItem(cur->szEngineName.ptr());
+			KviTalListWidgetItem * it = (KviTalListWidgetItem *)m_pListBox->findItems(QString(cur->szEngineName),Qt::MatchFixedString).first();
 			if(it)
 			{
 				m_pEnableCheck->setChecked(true);
@@ -188,7 +188,7 @@
 		noEnginesAvailable();
 	}
 
-	void KviCryptController::engineHighlighted(KviTalListBoxItem *it)
+	void KviCryptController::engineHighlighted(KviTalListWidgetItem *it)
 	{
 		if(it)
 		{

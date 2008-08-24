@@ -29,7 +29,7 @@
 #include "kvi_string.h"
 #include "kvi_app.h"
 #include "kvi_input.h"
-#include "kvi_tal_listbox.h"
+#include "kvi_tal_listwidget.h"
 
 #include <QFrame>
 #include <QPushButton>
@@ -38,13 +38,12 @@ class QComboBox;
 class KviChannel;
 class KviTalPopupMenu;
 class KviIrcConnection;
-class KviTalListBox;
 
-class KVIRC_API KviListBoxTopicItem : public KviTalListBoxText
+class KVIRC_API KviListBoxTopicItem : public KviTalListWidgetText
 {
 public:
-	KviListBoxTopicItem( KviTalListBox * listbox = 0 , const QString & text = QString::null):KviTalListBoxText(listbox,text) { ; };
-	virtual int width ( const KviTalListBox * lb ) const;
+	KviListBoxTopicItem( KviTalListWidget * listbox = 0 , const QString & text = QString::null):KviTalListWidgetText(listbox,text) { ; };
+	virtual int width ( const KviTalListWidget * lb ) const;
 protected:
 	virtual void paint ( QPainter * p );
 
@@ -71,7 +70,7 @@ private:
 	QChar getSubstituteChar(unsigned short control_code);
 	int xCursorPostionCalculation(int xInd);
 	KviInputEditor* m_pInput;
-	KviTalListBox* 	m_pCompletionBox;
+	KviTalListWidget* 	m_pCompletionBox;
 protected:
 	int  m_iCursorPosition;
 	virtual void drawContents(QPainter *p);

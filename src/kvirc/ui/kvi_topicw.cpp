@@ -42,7 +42,6 @@
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_tal_tooltip.h"
-#include "kvi_tal_listbox.h"
 #include "kvi_tal_popupmenu.h"
 
 #include <QLineEdit>
@@ -67,7 +66,7 @@ static int g_iInputFontCharWidth[256];
 
 extern QStringList  * g_pRecentTopicList;
 
-int KviListBoxTopicItem::width ( const KviTalListBox * lb ) const
+int KviListBoxTopicItem::width ( const KviTalListWidget * lb ) const
 {
 	QFontMetrics fm(lb->font());
 	return fm.width(KviMircCntrl::stripControlBytes(text()));
@@ -75,7 +74,7 @@ int KviListBoxTopicItem::width ( const KviTalListBox * lb ) const
 
 void KviListBoxTopicItem::paint ( QPainter * p )
 {
-	KviTopicWidget::paintColoredText(p,text(),listBox()->palette(),height(listBox()));
+	KviTopicWidget::paintColoredText(p,text(),listWidget()->palette(),height(listWidget()));
 }
 
 
@@ -93,11 +92,11 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 	m_pInput = 0;
 	setAutoFillBackground(false);
 	reset();
-	m_pCompletionBox=new KviTalListBox(this,Qt::Popup);
+	m_pCompletionBox=new KviTalListWidget(this,"topic_completion_box",Qt::Popup);
 	m_pCompletionBox->setFont( font() );
 	m_pCompletionBox->setPalette( palette() );
-//	m_pCompletionBox->setVScrollBarMode( KviTalListBox::AlwaysOff );
-//	m_pCompletionBox->setHScrollBarMode( KviTalListBox::AlwaysOff );
+//	m_pCompletionBox->setVScrollBarMode( KviTalListWidget::AlwaysOff );
+//	m_pCompletionBox->setHScrollBarMode( KviTalListWidget::AlwaysOff );
 	m_pCompletionBox->setFrameStyle( QFrame::Box | QFrame::Plain );
 	m_pCompletionBox->setLineWidth( 1 );
 	connect(m_pCompletionBox,SIGNAL(selected(int)),this,SLOT(complete(int)));
@@ -773,7 +772,7 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 		switch( e->type() ) {
 		case QEvent::MouseButtonPress:
 			if ( m_pCompletionBox->rect().contains( ((QMouseEvent*)e)->pos() ) ) {
-				complete(m_pCompletionBox->index(m_pCompletionBox->itemAt(((QMouseEvent*)e)->pos())));
+				complete(m_pCompletionBox->row(m_pCompletionBox->itemAt(((QMouseEvent*)e)->pos())));
 				return TRUE;
 			}
 			break;
@@ -928,7 +927,7 @@ int KviTopicWidget::xCursorPostionCalculation(int xInd)
 }
 void KviTopicWidget::complete(int pos)
 {
-	m_pInput->setText(m_pCompletionBox->text(pos));
+	m_pInput->setText(m_pCompletionBox->item(pos)->text());
 	popDownListBox();
 }
 

@@ -36,12 +36,12 @@
 #include <QDir>
 
 
-int KviImageDialogItem::height(const KviTalListBox *lb) const
+int KviImageDialogItem::height(const KviTalListWidget *lb) const
 {
 	return pixmap()->height() + 12 + lb->fontMetrics().lineSpacing();
 }
 
-int KviImageDialogItem::width(const KviTalListBox *lb) const
+int KviImageDialogItem::width(const KviTalListWidget *lb) const
 {
 	int w;
 	if(text().isEmpty())w = 24;
@@ -62,7 +62,7 @@ void KviImageDialogItem::paint(QPainter * p)
 		p->drawRect(3,3,pm->width() + 4,pm->height() + 4);
 	}
 
-	QRect daRect(listBox()->itemRect(this));
+	QRect daRect(listWidget()->visualItemRect(this));
 
 	p->setPen(Qt::black);
 	p->drawRect(1,1,daRect.width() - 2,daRect.height() - 2);
@@ -141,9 +141,10 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	g->addWidget(l,1,0,1,3);
 
 
-	m_pListBox = new KviTalListBox(this);
-	m_pListBox->setColumnMode(KviTalListBox::FitToWidth);
-	m_pListBox->setRowMode(KviTalListBox::Variable);
+	m_pListBox = new KviTalListWidget(this);
+	//not supported by listwidget.. we'd need treewidget here
+// 	m_pListBox->setColumnMode(KviTalListWidget::FitToWidth);
+// 	m_pListBox->setRowMode(KviTalListWidget::Variable);
 
 	m_pTip = new KviDynamicToolTip(m_pListBox->viewport());
 
@@ -161,7 +162,7 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	g->setColumnStretch(0,1);
 
 	connect(m_pTypeComboBox,SIGNAL(activated(int)),this,SLOT(jobTypeSelected(int)));
-	connect(m_pListBox,SIGNAL(doubleClicked(KviTalListBoxItem *)),this,SLOT(itemDoubleClicked(KviTalListBoxItem *)));
+	connect(m_pListBox,SIGNAL(doubleClicked(KviTalListWidgetItem *)),this,SLOT(itemDoubleClicked(KviTalListWidgetItem *)));
 	connect(m_pTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 
 	m_pTypeComboBox->setCurrentIndex(idx);
@@ -309,9 +310,7 @@ void KviImageDialog::heartbeat()
 
 void KviImageDialog::okClicked()
 {
-	KviTalListBoxItem * it = 0;
-	int idx = m_pListBox->currentItem();
-	if(idx != -1)it = (KviTalListBoxItem *)m_pListBox->item(idx);
+	KviTalListWidgetItem * it = (KviTalListWidgetItem*) m_pListBox->currentItem();
 	if(!it)return;
 	itemDoubleClicked(it);
 }
@@ -328,7 +327,7 @@ void KviImageDialog::closeEvent(QCloseEvent * e)
 	QDialog::closeEvent(e);
 }
 
-void KviImageDialog::itemDoubleClicked(KviTalListBoxItem * it)
+void KviImageDialog::itemDoubleClicked(KviTalListWidgetItem * it)
 {
 	if(!it)return;
 	KviImageDialogItem * i = (KviImageDialogItem *)it;
@@ -350,9 +349,9 @@ void KviImageDialog::itemDoubleClicked(KviTalListBoxItem * it)
 
 void KviImageDialog::tipRequest(KviDynamicToolTip *,const QPoint &pnt)
 {
-	KviTalListBoxItem * it = (KviTalListBoxItem *)m_pListBox->itemAt(pnt);
+	KviTalListWidgetItem * it = (KviTalListWidgetItem *)m_pListBox->itemAt(pnt);
 	if(!it)return;
-	QRect r = m_pListBox->itemRect(it);
+	QRect r = m_pListBox->visualItemRect(it);
 	KviImageDialogItem * i = (KviImageDialogItem *)it;
 	m_pTip->tip(r,i->tipText());
 }

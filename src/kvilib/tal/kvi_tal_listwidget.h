@@ -38,7 +38,7 @@ class KVILIB_API KviTalListWidget : public QListWidget
 {
 	Q_OBJECT
 public:
-	KviTalListWidget(QWidget * pParent,QString name,Qt::WFlags f = 0);
+	KviTalListWidget(QWidget * pParent,QString name,Qt::WindowType f = Qt::Widget);
 	KviTalListWidget(QWidget * pParent)
 		: QListWidget (pParent){};
 	virtual ~KviTalListWidget()	{};
@@ -57,11 +57,60 @@ public:
 	: QListWidgetItem() {};
 	KviTalListWidgetItem(KviTalListWidget * pParent)
 	: QListWidgetItem(pParent){};
-	
+	KviTalListWidgetItem(KviTalListWidget * pParent, QString& label)
+	: QListWidgetItem(label, pParent){};
+	KviTalListWidget* listWidget() { return (KviTalListWidget*) QListWidgetItem::listWidget(); };
 	virtual ~KviTalListWidgetItem() {};
 
 };
 
+class KVILIB_API KviTalListWidgetText : public KviTalListWidgetItem
+{
+public:
+	KviTalListWidgetText(KviTalListWidget* listbox, const QString & text=QString());
+	KviTalListWidgetText(const QString & text=QString());
+// 	KviTalListWidgetText(KviTalListWidget* listbox, const QString & text, KviTalListWidgetItem *after);
+	~KviTalListWidgetText();
+	
+	int height(const KviTalListWidget *) const;
+	int width(const KviTalListWidget *)  const;
+	
+	int rtti() const;
+	enum { RTTI = 1 };
 
+protected:
+	virtual void  paint(QPainter *);
+
+private:
+	Q_DISABLE_COPY(KviTalListWidgetText)
+};
+
+
+class KVILIB_API KviTalListWidgetPixmap : public KviTalListWidgetItem
+{
+public:
+	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &);
+	KviTalListWidgetPixmap(const QPixmap &);
+// 	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap & pix, KviTalListWidgetItem *after);
+	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &, const QString&);
+	KviTalListWidgetPixmap(const QPixmap &, const QString&);
+// 	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap & pix, const QString&, KviTalListWidgetItem *after);
+	~KviTalListWidgetPixmap();
+	
+	const QPixmap *pixmap() const { return &pm; }
+	
+	int height(const KviTalListWidget *) const;
+	int width(const KviTalListWidget *)  const;
+	
+	int rtti() const;
+	enum { RTTI = 2 };
+
+protected:
+	virtual void paint(QPainter *);
+
+private:
+	Q_DISABLE_COPY(KviTalListWidgetPixmap)
+	QPixmap pm;
+};
 
 #endif // _KVI_TAL_LISTWIDGET_H_

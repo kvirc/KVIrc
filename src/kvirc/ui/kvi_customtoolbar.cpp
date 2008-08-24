@@ -67,7 +67,7 @@ void KviCustomToolBarSeparator::paintEvent(QPaintEvent *)
 	QPainter p(this);
 	QStyleOption opt;
 	opt.initFrom(this);
-	style()->drawPrimitive(QStyle::PE_Q3DockWindowSeparator,&opt,&p,this);
+	style()->drawPrimitive(QStyle::PE_IndicatorToolBarSeparator,&opt,&p,this);
 }
 
 

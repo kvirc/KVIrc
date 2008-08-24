@@ -30,7 +30,7 @@
 	#include "kvi_crypt.h"
 	#include "kvi_heapobject.h"
 	#include "kvi_toolwindows_container.h"
-	#include "kvi_tal_listbox.h"
+	#include "kvi_tal_listwidget.h"
 
 	#include <QWidget>
 	#include <QPushButton>
@@ -50,11 +50,11 @@
 		bool             bDoDecrypt;
 	};
 
-	class KVIRC_API KviEngineListBoxItem : public KviTalListBoxText
+	class KVIRC_API KviEngineListBoxItem : public KviTalListWidgetText
 	{
 		friend class KviCryptController;
 	public:
-		KviEngineListBoxItem(KviTalListBox * lb,KviCryptEngineDescription * d,const char * modName);
+		KviEngineListBoxItem(KviTalListWidget * lb,KviCryptEngineDescription * d,const char * modName);
 		~KviEngineListBoxItem();
 	public:
 		KviStr m_szName;
@@ -73,7 +73,7 @@
 		~KviCryptController();
 	protected:
 		KviWindow            * m_pWindow;
-		KviTalListBox             * m_pListBox;
+		KviTalListWidget     * m_pListBox;
 		QPushButton          * m_pOkButton;
 		QCheckBox            * m_pEnableCheck;
 		QLabel               * m_pDescriptionLabel;
@@ -90,7 +90,7 @@
 		KviCryptSessionInfo  * m_pSessionInfo;
 	private slots:
 		void enableCheckToggled(bool bChecked);
-		void engineHighlighted(KviTalListBoxItem *it);
+		void engineHighlighted(KviTalListWidgetItem *it);
 		void okClicked();
 	public:
 		KviCryptSessionInfo * getNewSessionInfo();
