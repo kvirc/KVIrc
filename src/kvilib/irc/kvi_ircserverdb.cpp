@@ -54,12 +54,11 @@ void KviServerDataBaseRecord::insertServer(KviServer *srv)
 	m_pServerList->append(srv);
 }
 
-KviServer * KviServerDataBaseRecord::findServer(const QString& szHostname)
+KviServer * KviServerDataBaseRecord::findServer(const QString & szHostname)
 {
 	for (KviServer *s = m_pServerList->first(); s; s = m_pServerList->next())
 	{
-
-		if (KviQString::equalCI(s->m_szHostname, pServer->m_szHostname))
+		if (KviQString::equalCI(s->m_szHostname, szHostname))
 			return s;
 	}
 	return 0;
