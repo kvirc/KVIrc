@@ -54,19 +54,25 @@ void KviServerDataBaseRecord::insertServer(KviServer *srv)
 	m_pServerList->append(srv);
 }
 
-KviServer * KviServerDataBaseRecord::findServer(const KviServer * pServer, bool bName)
+KviServer * KviServerDataBaseRecord::findServer(const QString& szHostname)
 {
-	for(KviServer *s=m_pServerList->first();s;s=m_pServerList->next())
+	for (KviServer *s = m_pServerList->first(); s; s = m_pServerList->next())
 	{
-		if(bName)
-		{
-			if(KviQString::equalCI(s->m_szHostname,pServer->m_szHostname)) return s;
-		} else {
-			if(KviQString::equalCI(s->m_szHostname,pServer->m_szHostname) &&
-				(s->m_uPort == pServer->m_uPort) &&
-				(s->useSSL() == pServer->useSSL()) &&
-				(s->isIPv6() == pServer->isIPv6())) return s;
-		}
+
+		if (KviQString::equalCI(s->m_szHostname, pServer->m_szHostname))
+			return s;
+	}
+	return 0;
+}
+
+KviServer * KviServerDataBaseRecord::findServer(const KviServer * pServer)
+{
+	for (KviServer *s = m_pServerList->first(); s; s = m_pServerList->next())
+	{
+		if (KviQString::equalCI(s->m_szHostname, pServer->m_szHostname)
+				&& (s->m_uPort == pServer->m_uPort) && (s->useSSL()
+				== pServer->useSSL()) && (s->isIPv6() == pServer->isIPv6()))
+			return s;
 	}
 	return 0;
 }
@@ -119,7 +125,7 @@ void KviServerDataBase::clear()
 	m_szCurrentNetwork = "";
 }
 
-KviServerDataBaseRecord * KviServerDataBase::insertNetwork(KviNetwork *n)
+KviServerDataBaseRecord * KviServerDataBase::addNetwork(KviNetwork *n)
 {
 	KviServerDataBaseRecord * r = new KviServerDataBaseRecord(n);
 	m_pRecords->replace(n->name(),r);
@@ -139,7 +145,7 @@ KviNetwork * KviServerDataBase::findNetwork(const QString &szName)
 	return r->network();
 }
 
-KviServerDataBaseRecord * KviServerDataBase::currentRecord()
+KviServerDataBaseRecord * KviServerDataBase::currentNetwork()
 {
 	KviServerDataBaseRecord * r = 0;
 	if(!m_szCurrentNetwork.isEmpty())r = m_pRecords->find(m_szCurrentNetwork);
@@ -150,21 +156,6 @@ KviServerDataBaseRecord * KviServerDataBase::currentRecord()
 	if(!r)return 0;
 	m_szCurrentNetwork = r->network()->name();
 	return r;
-}
-
-void KviServerDataBase::updateServerIp(KviServer * pServer,const QString & ip)
-{
-	KviPointerHashTableIterator<QString,KviServerDataBaseRecord> it(*m_pRecords);
-	while(KviServerDataBaseRecord * r = it.current())
-	{
-		KviServer * srv = r->findServer(pServer);
-		if(srv)
-		{
-			srv->m_szIp = ip;
-			return;
-		}
-		++it;
-	}
 }
 
 bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString &szNetName,KviServerDataBaseRecord * r,QString &szError)
@@ -421,7 +412,7 @@ QString& szDescription,QString& szHost,QString& szPort,bool& bSsl,kvi_u32_t& uPo
 	}
 }
 
-void KviServerDataBase::loadFromMircIni(const QString & filename, const QString & szMircIni, QStringList& recentServers)
+void KviServerDataBase::importFromMircIni(const QString & filename, const QString & szMircIni, QStringList& recentServers)
 {
 	clear();
 	recentServers.clear();
@@ -489,7 +480,7 @@ void KviServerDataBase::loadFromMircIni(const QString & filename, const QString 
 
 				if(!r) {
 					KviNetwork * n = new KviNetwork(szNet);
-					r = insertNetwork(n);
+					r = addNetwork(n);
 				}
 
 				KviServer *s = new KviServer();
@@ -524,7 +515,7 @@ void KviServerDataBase::load(const QString & filename)
 		if(it.current()->count() > 0)
 		{
 			KviNetwork * n = new KviNetwork(it.currentKey());
-			KviServerDataBaseRecord * r = insertNetwork(n);
+			KviServerDataBaseRecord * r = addNetwork(n);
 			cfg.setGroup(it.currentKey());
 			n->m_szEncoding = cfg.readQStringEntry("Encoding");
 			n->m_szTextEncoding = cfg.readQStringEntry("TextEncoding");

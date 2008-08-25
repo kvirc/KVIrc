@@ -58,10 +58,14 @@ protected:
 	KviServer             * m_pCurrentServer;
 public:
 	KviNetwork * network(){ return m_pNetwork; };
+
 	KviPointerList<KviServer> * serverList(){ return m_pServerList; };
 	KviServer * currentServer();
-	void insertServer(KviServer *srv);
-	KviServer * findServer(const KviServer * pServer, bool bName=0);
+	void        insertServer(KviServer *srv);
+
+	KviServer * findServer(const QString& szHostname);
+	KviServer * findServer(const KviServer * pServer);
+
 	void setCurrentServer(KviServer *srv);
 };
 
@@ -87,20 +91,27 @@ private:
 public:
 	void clear();
 	KviPointerHashTable<QString,KviServerDataBaseRecord> * recordDict(){ return m_pRecords; };
+
 	KviPointerList<KviServer> * autoConnectOnStartupServers(){ return m_pAutoConnectOnStartupServers; };
 	KviPointerList<KviServerDataBaseRecord> * autoConnectOnStartupNetworks(){ return m_pAutoConnectOnStartupNetworks; };
+
 	void clearAutoConnectOnStartupServers();
 	void clearAutoConnectOnStartupNetworks();
+
 	void setCurrentNetwork(const QString &szNetName){ m_szCurrentNetwork = szNetName; };
 	const QString & currentNetworkName(){ return m_szCurrentNetwork; };
-	KviServerDataBaseRecord * currentRecord();
+
+	KviServerDataBaseRecord * currentNetwork();
 	KviServerDataBaseRecord * findRecord(const QString &szNetName);
+
 	KviNetwork * findNetwork(const QString &name);
-	void loadFromMircIni(const QString & filename, const QString & szMircIni, QStringList& recentServers);
+
 	void load(const QString & filename);
 	void save(const QString & filename);
-	KviServerDataBaseRecord * insertNetwork(KviNetwork * n);
-	void updateServerIp(KviServer * pServer,const QString &ip);
+	void importFromMircIni(const QString & filename, const QString & szMircIni, QStringList& recentServers);
+
+	KviServerDataBaseRecord * addNetwork(KviNetwork * n);
+
 	bool makeCurrentServer(KviServerDefinition * d,QString &szError);
 	bool makeCurrentBestServerInNetwork(const QString &szNetName,KviServerDataBaseRecord * d,QString &szError);
 };

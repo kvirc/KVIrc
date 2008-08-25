@@ -396,16 +396,12 @@ void KviIrcContext::connectToCurrentServer()
 
 	m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE," "); // spacer
 
-	if(!m_pAsynchronousConnectionData)
+	// No connection target specified.
+	// If we have a saved target, reuse it
+	if(!m_pAsynchronousConnectionData && m_pSavedAsynchronousConnectionData)
 	{
-		// No connection target specified.
-		// If we have a saved target, reuse it
-
-		if(m_pSavedAsynchronousConnectionData)
-		{
 			m_pAsynchronousConnectionData = m_pSavedAsynchronousConnectionData;
 			m_pSavedAsynchronousConnectionData = 0;
-		}
 	}
 
 	if(m_pAsynchronousConnectionData)
@@ -414,39 +410,39 @@ void KviIrcContext::connectToCurrentServer()
 		if(m_pAsynchronousConnectionData->szServer.isEmpty())
 		{
 			// an empty server might mean "reuse the last server in context"
-			if(m_pAsynchronousConnectionData->bUseLastServerInContext)
+			if(
+					m_pAsynchronousConnectionData->bUseLastServerInContext &&
+					m_pSavedAsynchronousConnectionData
+				)
 			{
-				if(m_pSavedAsynchronousConnectionData)
-				{
-					// reuse the saved connection data
-					// the server for sure
-					m_pAsynchronousConnectionData->szServer = m_pSavedAsynchronousConnectionData->szServer;
-					m_pAsynchronousConnectionData->szServerId = m_pSavedAsynchronousConnectionData->szServerId;
-					m_pAsynchronousConnectionData->uPort = m_pSavedAsynchronousConnectionData->uPort;
-					m_pAsynchronousConnectionData->bPortIsOk = true;
-					m_pAsynchronousConnectionData->bUseIPv6 = m_pSavedAsynchronousConnectionData->bUseIPv6;
-					m_pAsynchronousConnectionData->bUseSSL = m_pSavedAsynchronousConnectionData->bUseSSL;
-					m_pAsynchronousConnectionData->m_pReconnectInfo = m_pSavedAsynchronousConnectionData->m_pReconnectInfo;
-					// and the other info, only if not overridden by the user
-					if(m_pAsynchronousConnectionData->szBindAddress.isEmpty())
-						m_pAsynchronousConnectionData->szBindAddress = m_pSavedAsynchronousConnectionData->szBindAddress;
-					if(m_pAsynchronousConnectionData->szCommandToExecAfterConnect.isEmpty())
-						m_pAsynchronousConnectionData->szCommandToExecAfterConnect = m_pSavedAsynchronousConnectionData->szCommandToExecAfterConnect;
-					if(m_pAsynchronousConnectionData->szLinkFilter.isEmpty())
-						m_pAsynchronousConnectionData->szLinkFilter = m_pSavedAsynchronousConnectionData->szLinkFilter;
-					if(m_pAsynchronousConnectionData->szPass.isEmpty())
-						m_pAsynchronousConnectionData->szPass = m_pSavedAsynchronousConnectionData->szPass;
-					if(m_pAsynchronousConnectionData->szNick.isEmpty())
-						m_pAsynchronousConnectionData->szNick = m_pSavedAsynchronousConnectionData->szNick;
-					if(m_pAsynchronousConnectionData->szInitUMode.isEmpty())
-						m_pAsynchronousConnectionData->szInitUMode = m_pSavedAsynchronousConnectionData->szInitUMode;
-				} else
-					m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This is the first connection in this IRC context: using the global server setting"));
-			} // else it just means "do connect" to the globally selected irc server in the options dialog
-		}
+				// reuse the saved connection data
+				// the server for sure
+				m_pAsynchronousConnectionData->szServer = m_pSavedAsynchronousConnectionData->szServer;
+				m_pAsynchronousConnectionData->szServerId = m_pSavedAsynchronousConnectionData->szServerId;
+				m_pAsynchronousConnectionData->uPort = m_pSavedAsynchronousConnectionData->uPort;
+				m_pAsynchronousConnectionData->bPortIsOk = true;
+				m_pAsynchronousConnectionData->bUseIPv6 = m_pSavedAsynchronousConnectionData->bUseIPv6;
+				m_pAsynchronousConnectionData->bUseSSL = m_pSavedAsynchronousConnectionData->bUseSSL;
+				m_pAsynchronousConnectionData->m_pReconnectInfo = m_pSavedAsynchronousConnectionData->m_pReconnectInfo;
 
-		if(!(m_pAsynchronousConnectionData->szServer.isEmpty()))
-		{
+				// and the other info, only if not overridden by the user
+				if(m_pAsynchronousConnectionData->szBindAddress.isEmpty())
+					m_pAsynchronousConnectionData->szBindAddress = m_pSavedAsynchronousConnectionData->szBindAddress;
+				if(m_pAsynchronousConnectionData->szCommandToExecAfterConnect.isEmpty())
+					m_pAsynchronousConnectionData->szCommandToExecAfterConnect = m_pSavedAsynchronousConnectionData->szCommandToExecAfterConnect;
+				if(m_pAsynchronousConnectionData->szLinkFilter.isEmpty())
+					m_pAsynchronousConnectionData->szLinkFilter = m_pSavedAsynchronousConnectionData->szLinkFilter;
+				if(m_pAsynchronousConnectionData->szPass.isEmpty())
+					m_pAsynchronousConnectionData->szPass = m_pSavedAsynchronousConnectionData->szPass;
+				if(m_pAsynchronousConnectionData->szNick.isEmpty())
+					m_pAsynchronousConnectionData->szNick = m_pSavedAsynchronousConnectionData->szNick;
+				if(m_pAsynchronousConnectionData->szInitUMode.isEmpty())
+					m_pAsynchronousConnectionData->szInitUMode = m_pSavedAsynchronousConnectionData->szInitUMode;
+			} else {
+				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This is the first connection in this IRC context: using the global server setting"));
+			}
+		} else {
+			// !m_pAsynchronousConnectionData->szServer.isEmpty()
 			// ok , have a server to look for in the db
 			// FIXME: this is a bit ugly... could it be managed in some completly different and nicer way ?
 			KviServerDefinition d;
@@ -470,7 +466,7 @@ void KviIrcContext::connectToCurrentServer()
 		} // else we just connect to the globally selected irc server in the options dialog
 	}
 
-	KviServerDataBaseRecord * rec = g_pServerDataBase->currentRecord();
+	KviServerDataBaseRecord * rec = g_pServerDataBase->currentNetwork();
 
 	KviNetwork * net;
 	KviServer  * srv;

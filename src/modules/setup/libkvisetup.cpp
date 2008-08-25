@@ -106,7 +106,7 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		
 		if(!szMircServers.isEmpty())
 		{
-			g_pServerDataBase->loadFromMircIni(szMircServers,szMircIni,
+			g_pServerDataBase->importFromMircIni(szMircServers,szMircIni,
 				KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers));
 			g_pApp->saveIrcServerDataBase();
 		}

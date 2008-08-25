@@ -1398,7 +1398,7 @@ void KviServerOptionsWidget::commit()
 		} else {
 			net = new KviNetwork(tmp);
 			net->copyFrom(*(network->m_pNetworkData));
-			r = g_pServerDataBase->insertNetwork(net);
+			r = g_pServerDataBase->addNetwork(net);
 		}
 		if(network == m_pLastEditedItem)g_pServerDataBase->setCurrentNetwork(net->name());
 

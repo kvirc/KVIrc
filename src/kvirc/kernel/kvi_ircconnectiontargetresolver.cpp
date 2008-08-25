@@ -417,7 +417,7 @@ void KviIrcConnectionTargetResolver::serverLookupTerminated(KviDns *)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,
 			__tr2qs("Server hostname resolved to %Q"),
 			&szIpAddress);
-	g_pServerDataBase->updateServerIp(m_pTarget->server(),szIpAddress);
+	m_pTarget->server()->setIp(szIpAddress);
 
 	QString szFirstHostname = m_pServerDns->firstHostname();
 
