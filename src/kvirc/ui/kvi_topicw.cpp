@@ -72,9 +72,21 @@ int KviListBoxTopicItem::width ( const KviTalListWidget * lb ) const
 	return fm.width(KviMircCntrl::stripControlBytes(text()));
 }
 
-void KviListBoxTopicItem::paint ( QPainter * p )
+QSize KviListBoxTopicItemDelegate::sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const
 {
-	KviTopicWidget::paintColoredText(p,text(),listWidget()->palette(),height(listWidget()));
+	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
+	QFontMetrics fm(listWidget->font());
+	KviListBoxTopicItem* item = (KviListBoxTopicItem*) listWidget->item(index.row());
+
+	return QSize(listWidget->width(), fm.height());
+}
+
+void KviListBoxTopicItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
+{
+	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
+	KviListBoxTopicItem* item = (KviListBoxTopicItem*) listWidget->item(index.row());
+
+	if(item) KviTopicWidget::paintColoredText(p,item->text(),option.palette,listWidget->visualItemRect(item).top());
 }
 
 
@@ -99,7 +111,11 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 //	m_pCompletionBox->setHScrollBarMode( KviTalListWidget::AlwaysOff );
 	m_pCompletionBox->setFrameStyle( QFrame::Box | QFrame::Plain );
 	m_pCompletionBox->setLineWidth( 1 );
-	connect(m_pCompletionBox,SIGNAL(selected(int)),this,SLOT(complete(int)));
+
+	m_pItemDelegate = new KviListBoxTopicItemDelegate(m_pCompletionBox);
+	m_pCompletionBox->setItemDelegate(m_pItemDelegate);
+
+	connect(m_pCompletionBox,SIGNAL(itemSelectionChanged(int)),this,SLOT(complete(int)));
 	m_pCompletionBox->hide();
 }
 

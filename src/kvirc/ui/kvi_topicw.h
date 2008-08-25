@@ -30,6 +30,7 @@
 #include "kvi_app.h"
 #include "kvi_input.h"
 #include "kvi_tal_listwidget.h"
+#include "kvi_tal_itemdelegates.h"
 
 #include <QFrame>
 #include <QPushButton>
@@ -45,7 +46,7 @@ public:
 	KviListBoxTopicItem( KviTalListWidget * listbox = 0 , const QString & text = QString::null):KviTalListWidgetText(listbox,text) { ; };
 	virtual int width ( const KviTalListWidget * lb ) const;
 protected:
-	virtual void paint ( QPainter * p );
+	//virtual void paint ( QPainter * p );
 
 };
 
@@ -54,7 +55,7 @@ class KVIRC_API KviTopicWidget : public QFrame
 	Q_OBJECT
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
 	friend class KviChannel;
-	
+	friend class KviTalListWidget;
 public:
 	KviTopicWidget(QWidget * par,const char * name);
 	~KviTopicWidget();
@@ -67,6 +68,7 @@ private:
 	QPushButton * m_pDiscard;
 	QPushButton * m_pHistory;
 	KviTalPopupMenu  * m_pContextPopup;
+	QAbstractItemDelegate* m_pItemDelegate;
 	QChar getSubstituteChar(unsigned short control_code);
 	int xCursorPostionCalculation(int xInd);
 	KviInputEditor* m_pInput;
@@ -115,4 +117,14 @@ signals:
 	void topicSelected(const QString &szTopic);
 };
 
+class KVIRC_API KviListBoxTopicItemDelegate : public KviTalIconAndRichTextItemDelegate
+{
+	Q_OBJECT
+public:
+	KviListBoxTopicItemDelegate(QAbstractItemView * pWidget=0)
+		: KviTalIconAndRichTextItemDelegate(pWidget) {};
+	~KviListBoxTopicItemDelegate(){};
+	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+};
 #endif //_KVI_TOPICW_H_
