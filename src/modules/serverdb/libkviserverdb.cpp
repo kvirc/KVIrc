@@ -206,7 +206,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 		KviServer * pCheckServer = new KviServer; \
 		pCheckServer->setHostName(szServName); \
 		\
-		KviServer * pServer = pRecord->findServer(pCheckServer,true); \
+		KviServer * pServer = pRecord->findServer(szServName); \
 		if(!pServer) \
 		{ \
 			c->error(__tr2qs_ctx("The specified server does not exist","serverdb")); \
@@ -877,10 +877,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 			return false; \
 		} \
 		\
-		KviServer * pCheckServer = new KviServer(); \
-		pCheckServer->setHostName(szServName); \
-		\
-		KviServer * pServer = pRecord->findServer(pCheckServer,true); \
+		KviServer * pServer = pRecord->findServer(szServName); \
 		if(!pServer) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
