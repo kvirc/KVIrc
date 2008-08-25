@@ -271,7 +271,7 @@ bool KviIrcServerDataBase::makeCurrentServer(KviIrcServerDefinition * d,QString 
 		{
 			if(KviQString::equalCI(srv->hostName(),d->szServer))
 			{
-				if(KviQString::equalCI(srv->id(),d->szId))
+				if(d->szId.isEmpty() || KviQString::equalCI(srv->id(),d->szId))
 				{
 					if(d->bIpV6 == srv->isIpV6())
 					{
