@@ -934,14 +934,15 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 		{
 			QString szDat;
 			v->asString(szDat);
-			KviQCString dat = bLocal8Bit ? szDat.local8Bit() : szDat.utf8();
+			dat = bLocal8Bit ? szDat.local8Bit() : szDat.utf8();
+
+			if(!bNoSeparator)
+			{
+				if(bAddCR)dat += "\r\n";
+				else dat += '\n';
+			}
+			f.writeBlock(dat.data(),dat.length());
 		}
-		if(!bNoSeparator)
-		{
-			if(bAddCR)dat += "\r\n";
-			else dat += '\n';
-		}
-		f.writeBlock(dat.data(),dat.length());
 		u++;
 	}
 
