@@ -203,9 +203,6 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 			return false; \
 		} \
 		\
-		KviServer * pCheckServer = new KviServer; \
-		pCheckServer->setHostName(szServName); \
-		\
 		KviServer * pServer = pRecord->findServer(szServName); \
 		if(!pServer) \
 		{ \
