@@ -340,17 +340,17 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 	{
 		QString mask;
 		u->mask()->mask(mask);
-		buffer += "<tr bgcolor=\"#F0F0F0\"><td>";
+		buffer += "<tr bgcolor=\"#F0F0F0\"><td><font color=\"#000000\">";
 		buffer += __tr2qs("Registered as");
 		buffer += " <b>";
 		buffer += u->user()->name();
 		buffer += "</b>; Group ";
 		buffer += u->user()->group();
-		buffer += "</td></tr><tr bgcolor=\"#F0F0F0\"><td><font size=\"-1\">";
+		buffer += "</font></td></tr><tr bgcolor=\"#F0F0F0\"><td><font size=\"-1\" color=\"#000000\">";
 		buffer += __tr2qs("(Matched by");
 		buffer += " ";
 		buffer += mask;
-		buffer += ")</td></tr>";
+		buffer += ")</font></td></tr>";
 	}
 
 	if(connection())
@@ -358,33 +358,33 @@ void KviConsole::getUserTipText(const QString &nick,KviIrcUserEntry *e,QString &
 		QString chans;
 		if(connection()->getCommonChannels(nick,chans,false))
 		{
-			buffer += "<tr><td bgcolor=\"#F0F0F0\">";
+			buffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
 			buffer += __tr2qs("On <b>");
 			buffer += chans;
-			buffer += "</b></td></tr>";
+			buffer += "</b></font></td></tr>";
 		}
 	}
 
 	if(e->hasServer())
 	{
-		buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr>";
+		buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
 		buffer += __tr2qs("Using server <b>%1</b>").arg(e->server());
 
 		if(e->hasHops())
 		{
 			buffer += " (";
 			buffer += __tr2qs("%1 hops").arg(e->hops());
-			buffer += ")</nobr></td></tr>";
+			buffer += ")</font></nobr></td></tr>";
 		} else {
-			buffer += "</nobr></td></tr></table>";
+			buffer += "</font></nobr></td></tr></table>";
 		}
 	}
 
 	if(e->isAway())
 	{
-		buffer += "<tr><td bgcolor=\"#F0F0F0\">";
+		buffer += "<tr><td bgcolor=\"#F0F0F0\"><font color=\"#000000\">";
 		buffer += __tr2qs("Probably Away");
-		buffer += "</td></tr>";
+		buffer += "</font></td></tr>";
 	}
 }
 
