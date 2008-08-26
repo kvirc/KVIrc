@@ -326,24 +326,30 @@ void KviRegistrationWizard::accept()
 		return;
 	}
 
+	KviIrcMask * mk;
 	QString m1 = m_pNicknameEdit1->text();
 	QString m2 = m_pUsernameEdit1->text();
 	QString m3 = m_pHostEdit1->text();
-	KviIrcMask * mk = new KviIrcMask(m1,m2,m3);
-	m_pDb->removeMask(*mk);
-	m_pDb->addMask(u,mk);
-
+	if(!(m1.isEmpty() && m2.isEmpty() && m3.isEmpty()))
+	{
+		mk = new KviIrcMask(m1,m2,m3);
+		m_pDb->removeMask(*mk);
+		m_pDb->addMask(u,mk);
+	}
 
 	m1 = m_pNicknameEdit2->text();
 	m2 = m_pUsernameEdit2->text();
-	if(m2.isEmpty())m2 = "*";
-	if(m3.isEmpty())m3 = "*";
 	m3 = m_pHostEdit2->text();
-	mk = new KviIrcMask(m1,m2,m3);
-	
-	m_pDb->removeMask(*mk);
-	m_pDb->addMask(u,mk);
-	
+	if(!(m1.isEmpty() && m2.isEmpty() && m3.isEmpty()))
+	{
+		if(m1.isEmpty())m1 = "*";
+		if(m2.isEmpty())m2 = "*";
+		if(m3.isEmpty())m3 = "*";
+		mk = new KviIrcMask(m1,m2,m3);
+		m_pDb->removeMask(*mk);
+		m_pDb->addMask(u,mk);
+	}
+
 	m_pAvatarSelector->commit();
 
 	bool bSetAvatar = false;
