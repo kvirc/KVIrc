@@ -128,26 +128,15 @@ extern KVIRC_API KviModuleExtensionManager    * g_pModuleExtensionManager;
 // FIXME: #warning "Move all the modules to the new locking method ?"
 
 
-KviModule::KviModule(kvi_library_t handle,KviModuleInfo * info,const QString &name,const QString &filename)
+KviModule::KviModule(QLibrary* handle,KviModuleInfo * info,const QString &name,const QString &filename)
 : KviKvsModuleInterface()
 {
-	m_dlHandle = handle;
+	m_pLibrary = handle;
 	m_pModuleInfo = info;
 	m_szName = name;
 	m_szFileName = filename;
-// FIXME: this should become case insensitive and converted toUpper()
-	/*
-	m_pCommandDict = new KviPointerHashTable<const char *,KviModuleCommandParseProc>(17,false,true);
-	m_pCommandDict->setAutoDelete(true);
-	m_pFunctionDict = new KviPointerHashTable<const char *,KviModuleFunctionParseProc>(17,false,true);
-	m_pFunctionDict->setAutoDelete(true);
-	*/
 	m_uLock = 0;
 	m_lastAccessTime = (long int)time(0);
-	/*
-	m_pGenericCommandParseProc = 0;
-	m_pGenericFunctionParseProc = 0;
-	*/
 }
 
 KviModule::~KviModule()
@@ -156,13 +145,9 @@ KviModule::~KviModule()
 	unregisterCryptEngines();
 #endif
 	unregisterAllExtensions();
-	/*
-	unregisterAllEventHandlers();
-	delete m_pCommandDict;
-	delete m_pFunctionDict;
-	if(m_pGenericCommandParseProc)delete m_pGenericCommandParseProc;
-	if(m_pGenericFunctionParseProc)delete m_pGenericFunctionParseProc;
-	*/
+
+	if(m_pLibrary->isLoaded()) m_pLibrary->unload();
+	delete m_pLibrary;
 }
 
 KviModuleExtensionDescriptor * KviModule::registerExtension(const KviStr &szType,const KviStr &szName,const QString &szVisibleName,KviModuleExtensionAllocRoutine r)
@@ -185,71 +170,7 @@ void KviModule::unregisterAllExtensions()
 {
 	g_pModuleExtensionManager->unregisterExtensionsByModule(this);
 }
-/*
-void KviModule::setGenericCommandParseProc(KviModuleCommandParseProc proc)
-{
-	if(m_pGenericCommandParseProc)delete m_pGenericCommandParseProc;
-	if(proc)
-	{
-		m_pGenericCommandParseProc = new KviModuleCommandParseProc(proc);
-	} else {
-		m_pGenericCommandParseProc = 0;
-	}
-}
 
-void KviModule::setGenericFunctionParseProc(KviModuleFunctionParseProc proc)
-{
-	if(m_pGenericFunctionParseProc)delete m_pGenericFunctionParseProc;
-	if(proc)
-	{
-		m_pGenericFunctionParseProc = new KviModuleFunctionParseProc(proc);
-	} else {
-		m_pGenericFunctionParseProc = 0;
-	}
-}
-
-void KviModule::completeCommand(const QString &cmd,KviPointerList<QString> * matches)
-{
-	KviPointerHashTableIterator<const char *,KviModuleCommandParseProc> it(*m_pCommandDict);
-
-	while(it.current())
-	{
-		if(KviQString::equalCIN(cmd,it.currentKey(),cmd.length()))
-		{
-			QString * s = new QString();
-			KviQString::sprintf(*s,"%s.%s",name(),it.currentKey());
-			matches->append(s);
-		}
-		++it;
-	}
-}
-
-void KviModule::completeFunction(const QString &cmd,KviPointerList<QString> * matches)
-{
-	KviPointerHashTableIterator<const char *,KviModuleFunctionParseProc> it(*m_pFunctionDict);
-
-	while(it.current())
-	{
-		if(KviQString::equalCIN(cmd,it.currentKey(),cmd.length()))
-		{
-			QString * s = new QString();
-			KviQString::sprintf(*s,"%s.%s",name(),it.currentKey());
-			matches->append(s);
-		}
-		++it;
-	}
-}
-
-
-void KviModule::unregisterMetaObject(const char * metaObjName)
-{
-#if QT_VERSION < 300
-// FIXME: 	#warning "We might need zeroing the d->slotAccess member of QMetaObject!"
-	if(!objectDict)return;
-	objectDict->remove(metaObjName);
-#endif
-}
-*/
 void KviModule::updateAccessTime()
 {
 	m_lastAccessTime = (long int)time(0);
@@ -259,71 +180,7 @@ unsigned int KviModule::secondsSinceLastAccess()
 {
 	return (unsigned int)(((long int)time(0)) - m_lastAccessTime);
 }
-/*
-void KviModule::registerCommand(const char * cmd,KviModuleCommandParseProc proc)
-{
-	if(m_pCommandDict->find(cmd))m_pCommandDict->remove(cmd);
-	m_pCommandDict->insert(cmd,new KviModuleCommandParseProc(proc));
-}
 
-void KviModule::unregisterCommand(const char * cmd)
-{
-	m_pCommandDict->remove(cmd);
-}
-
-void KviModule::unregisterAllCommands()
-{
-	delete m_pCommandDict;
-	m_pCommandDict = new KviPointerHashTable<const char *,KviModuleCommandParseProc>(17,false,true);
-	m_pCommandDict->setAutoDelete(true);
-}
-
-void KviModule::registerEventHandler(int evIdx,KviModuleEventParseProc proc)
-{
-	KviKvsOldModuleEventHandler * h = new KviKvsOldModuleEventHandler(proc,this);
-	KviKvsEventManager::instance()->addAppHandler(evIdx,h);
-}
-
-void KviModule::unregisterEventHandler(int evIdx)
-{
-	KviKvsEventManager::instance()->removeModuleAppHandler(evIdx,this);
-}
-
-void KviModule::registerRawNumericEventHandler(int evIdx,KviModuleEventParseProc proc)
-{
-	KviKvsOldModuleEventHandler * h = new KviKvsOldModuleEventHandler(proc,this);
-	KviKvsEventManager::instance()->addRawHandler(evIdx,h);
-}
-
-void KviModule::unregisterRawNumericEventHandler(int evIdx)
-{
-	KviKvsEventManager::instance()->removeModuleRawHandler(evIdx,this);
-}
-
-
-void KviModule::unregisterAllEventHandlers()
-{
-	KviKvsEventManager::instance()->removeAllModuleHandlers(this);
-}
-
-void KviModule::registerFunction(const char * fnc,KviModuleFunctionParseProc proc)
-{
-	if(m_pFunctionDict->find(fnc))m_pFunctionDict->remove(fnc);
-	m_pFunctionDict->insert(fnc,new KviModuleFunctionParseProc(proc));
-}
-
-void KviModule::unregisterFunction(const char * fnc)
-{
-	m_pFunctionDict->remove(fnc);
-}
-
-void KviModule::unregisterAllFunctions()
-{
-	delete m_pFunctionDict;
-	m_pFunctionDict = new KviPointerHashTable<const char *,KviModuleFunctionParseProc>(17,false,true);
-	m_pFunctionDict->setAutoDelete(true);
-}
-*/
 
 #ifdef COMPILE_CRYPT_SUPPORT
 
@@ -347,7 +204,7 @@ void KviModule::unregisterCryptEngines()
 
 void * KviModule::getSymbol(const char * symname)
 {
-	return kvi_library_symbol(handle(),symname);
+	return m_pLibrary->resolve(symname);
 }
 
 

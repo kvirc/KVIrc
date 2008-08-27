@@ -35,7 +35,6 @@
 #include "kvi_fileutils.h"
 #include "kvi_locale.h"
 #include "kvi_msgbox.h"
-#include "kvi_library.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_iconmanager.h"
 #include "kvi_config.h"
@@ -58,7 +57,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDir>
-
+#include <QLibrary>
 
 //
 // Things launched at startup:
@@ -729,7 +728,7 @@ void KviApp::loadDirectories()
 	if(!checkUriAssociations("ircs6"))  setupUriAssociations("ircs6");
 }
 
-static kvi_library_t g_hSetupLibrary = 0;
+static QLibrary* g_pSetupLibrary = 0;
 
 
 void KviApp::setupBegin()
@@ -745,12 +744,12 @@ void KviApp::setupBegin()
 #else
 	szSetupLib.append("libkvisetup.so");
 #endif
-	g_hSetupLibrary = kvi_library_open(szSetupLib.toLocal8Bit().data());
-	if(!g_hSetupLibrary)
+	g_pSetupLibrary = new QLibrary(szSetupLib);
+	if(!g_pSetupLibrary->load())
 	{
 		KviMessageBox::warning(__tr2qs("Ops...it looks like I can't load modules on this sytem.\n" \
 			"I have been looking for the %s library but I haven't been able to load it\n" \
-			"due to the following error: \"%s\"\nAborting."),szSetupLib.toUtf8().data(),kvi_library_error());
+			"due to the following error: \"%Q\"\nAborting."),szSetupLib.toUtf8().data(),&(g_pSetupLibrary->errorString()));
 #if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
 #elif defined(COMPILE_ON_MINGW)
@@ -760,7 +759,7 @@ void KviApp::setupBegin()
 #endif
 	}
 
-	bool (*sfunc)() = (bool(*)())kvi_library_symbol(g_hSetupLibrary,"setup_begin");
+	bool (*sfunc)() = (bool(*)())g_pSetupLibrary->resolve("setup_begin");
 	if(!sfunc)
 	{
 		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
@@ -797,13 +796,13 @@ void KviApp::setupBegin()
 
 void KviApp::setupFinish()
 {
-	if(!g_hSetupLibrary)
+	if(!g_pSetupLibrary)
 	{
 		debug("Oops... lost the setup library ?");
 		return;
 	}
 
-	void (*sfunc)() = (void(*)())kvi_library_symbol(g_hSetupLibrary,"setup_finish");
+	void (*sfunc)() = (void(*)())g_pSetupLibrary->resolve("setup_finish");
 	if(!sfunc)
 	{
 		KviMessageBox::warning(__tr2qs("Ops...it looks like you have a broken distribution.\n" \
@@ -813,8 +812,9 @@ void KviApp::setupFinish()
 
 	sfunc();
 
-	kvi_library_close(g_hSetupLibrary);
-	g_hSetupLibrary = 0;
+	g_pSetupLibrary->unload();
+	delete g_pSetupLibrary;
+	g_pSetupLibrary = 0;
 }
 
 

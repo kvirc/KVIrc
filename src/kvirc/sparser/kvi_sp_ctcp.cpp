@@ -1768,7 +1768,7 @@ void KviServerParser::parseCtcpRequestDcc(KviCtcpMessage *msg)
 		if(!m)
 		{
 			msg->msg->console()->output(KVI_OUT_DCCERROR,
-				__tr2qs("Unable to process the above request: Cannot load DCC module (%s)"),g_pModuleManager->lastError().ptr());
+				__tr2qs("Unable to process the above request: Cannot load DCC module (%Q)"),&(g_pModuleManager->lastError()));
 		} else {
 			dccModuleCtcpDccParseRoutine proc = (dccModuleCtcpDccParseRoutine)m->getSymbol("dccModuleCtcpDccParseRoutine");
 			if(!proc)

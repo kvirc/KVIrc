@@ -29,7 +29,7 @@
 #include "kvi_string.h"
 //#include "kvi_command.h"
 #include "kvi_parameterlist.h"
-#include "kvi_library.h"
+#include <QLibrary>
 #include "kvi_pointerlist.h"
 #include "kvi_moduleextension.h"
 #include "kvi_kvs_moduleinterface.h"
@@ -126,28 +126,20 @@ typedef struct _KviModuleInfo
 	};
 
 
-// old type parsing procedures
-/*
-typedef bool (*KviModuleCommandParseProc)(KviModule *,KviCommand *);
-typedef bool (*KviModuleFunctionParseProc)(KviModule *,KviCommand *,KviParameterList *,KviStr &);
-typedef bool (*KviModuleEventParseProc)(KviModule *,KviWindow *,KviParameterList *);
-*/
-
-
 class KVIRC_API KviModule : public KviKvsModuleInterface
 {
 	friend class KviPointerHashTable<const char *,KviModule>;
 	friend class KviModuleManager;
 	friend class KviUserParser;
 protected:
-	KviModule(kvi_library_t handle,KviModuleInfo * info,const QString &name,const QString &filename);
+	KviModule(QLibrary* handle,KviModuleInfo * info,const QString &name,const QString &filename);
 public:
 	~KviModule(); // must be public for KviPointerList
 private:
 	QString                                    m_szName;
 	QString                                    m_szFileName;
 	KviModuleInfo                            * m_pModuleInfo;
-	kvi_library_t                              m_dlHandle;
+	QLibrary                                 * m_pLibrary;
 	unsigned int                               m_uLock;
 	long int                                   m_lastAccessTime;
 protected:
@@ -158,7 +150,7 @@ public:
 	const QString & name(){ return m_szName; };
 	// filename of this module (with NO path): formatted as "libkvi%s.so",name()
 	const QString & filename(){ return m_szFileName; };
-	kvi_library_t   handle(){ return m_dlHandle; };
+	QLibrary*   handle(){ return m_pLibrary; };
 	KviModuleInfo * moduleInfo(){ return m_pModuleInfo; };
 
 	//

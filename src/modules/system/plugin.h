@@ -26,7 +26,7 @@
 
 #include "kvi_module.h"
 #include "kvi_pointerhashtable.h"
-
+#include <QLibrary>
 typedef int (*plugin_function)(int argc, char* argv[], char ** buffer);
 typedef int (*plugin_unload)();
 typedef int (*plugin_canunload)();
@@ -37,14 +37,14 @@ class KviPlugin
 {
 protected:
 	// You have to create plugin instance by calling KviPlugin::load()
-	KviPlugin(kvi_library_t pLib, const QString& name);
+	KviPlugin(QLibrary * pLibrary,const QString& name);
 public:
 	~KviPlugin();
 private:
 	// shared
 	// internal
-	kvi_library_t m_Plugin;
-	QString m_szName;
+	QLibrary *m_pLibrary;
+	QString   m_szName;
 public:
 	static KviPlugin* load(const QString& szFileName);
 	bool pfree(char * pBuffer);

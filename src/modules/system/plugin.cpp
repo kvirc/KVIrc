@@ -26,7 +26,6 @@
 
 #include "kvi_module.h"
 #include "kvi_string.h"
-#include "kvi_library.h"
 #include "kvi_thread.h"
 #include "kvi_locale.h"
 #include "kvi_app.h"
@@ -59,7 +58,7 @@
 			return 0;[br]
 		}[br]
 		[/example]
-		
+
 		[br][b]_load function[/b] [i](optional)[/i][br]
 		After the plugin has be loaded, KVIrc will call the _load-function. Here you can prepare your plugin stuff.
 		[example]
@@ -67,20 +66,20 @@
 		{[br]
 			return 0;[br]
 		}[br]
-		[/example]		
-		
+		[/example]
+
 		[br][b]_unload function[/b] [i]((optional)[/i][br]
-		This function will be called before the plugins is unloaded. In this function you can clean up memory or other things. 
+		This function will be called before the plugins is unloaded. In this function you can clean up memory or other things.
 		After this call there is no guarantee that the plugin will be kept in memory.[br]
 		[example]
 		int _unload()[br]
 		{[br]
 			return 0;[br]
 		}[br]
-		[/example]	
+		[/example]
 
 		[br][b]_canunload function[/b] [i](optional)[/i][br]
-		The _canunload-function will be called by KVIrc to check if it may unload the plugin. 
+		The _canunload-function will be called by KVIrc to check if it may unload the plugin.
 		If return value is true KVIrc will unload the plugin, false means he will try unloading it at the next check.[br]
 		Important: KVIrc will ignore this if unload of plugins will be forced! So you have to be sure that the _unload function of your plugins cleans up![br]
 		[example]
@@ -89,11 +88,11 @@
 			return 0; [br]
 		}[br]
 		[/example]
-		
+
 		[br][b]user function[/b][br]
 		This is the general structure of a user function call.[br]
 		The important thing here is the handling of return values. To return a value to KVIrc you have to allocate memory and write the pointer to it into pBuffer. Have a look at the example for more details.[br]
-		[example]	
+		[example]
 		int about(int argc, char * argv[], char ** pBuffer)[br]
 		{[br]
 		    *pBuffer = (char*)malloc(1024);[br]
@@ -103,29 +102,32 @@
 		[/example]
 */
 
-KviPlugin::KviPlugin(kvi_library_t pLib, const QString& name)
+KviPlugin::KviPlugin(QLibrary * pLibrary, const QString& name)
 {
-	m_Plugin = pLib;
+	m_pLibrary = pLibrary;
 	m_szName = name;
 }
 
 KviPlugin::~KviPlugin()
 {
+	if(m_pLibrary->isLoaded()) m_pLibrary->unload();
+	delete m_pLibrary;
 }
 
 KviPlugin* KviPlugin::load(const QString& szFileName)
 {
-	kvi_library_t pLibrary = kvi_library_open(szFileName.toLocal8Bit());
-	if (!pLibrary)
+	QLibrary* pLibrary = new QLibrary(szFileName);
+	if (!pLibrary->load())
 	{
+		delete pLibrary;
 		return 0;
-	} 
+	}
 
 	KviPlugin* pPlugin = new KviPlugin(pLibrary,KviFileUtils::extractFileName(szFileName));
-	
+
 	plugin_load function_load;
-	
-	function_load = (plugin_unload)kvi_library_symbol(pLibrary,"_load");
+
+	function_load = (plugin_unload)pLibrary->resolve("_load");
 	if (function_load)
 	{
 		//TODO: THREAD
@@ -137,8 +139,8 @@ KviPlugin* KviPlugin::load(const QString& szFileName)
 bool KviPlugin::pfree(char * pBuffer)
 {
 	plugin_free function_free;
-	
-	function_free = (plugin_free)kvi_library_symbol(m_Plugin,"_free");
+
+	function_free = (plugin_free)m_pLibrary->resolve("_free");
 	if (function_free)
 	{
 		//TODO: THREAD
@@ -151,19 +153,15 @@ bool KviPlugin::pfree(char * pBuffer)
 bool KviPlugin::unload()
 {
 	plugin_unload function_unload;
-	
-	function_unload = (plugin_unload)kvi_library_symbol(m_Plugin,"_unload");
+
+	function_unload = (plugin_unload)m_pLibrary->resolve("_unload");
 	if (function_unload)
 	{
 		//TODO: THREAD
 		function_unload();
 	}
-	
-	if(m_Plugin)
-	{
-		kvi_library_close(m_Plugin);
-	}
-	
+
+	m_pLibrary->unload();
 	return true;
 }
 
@@ -171,14 +169,11 @@ bool KviPlugin::canunload()
 {
 	plugin_canunload function_canunload;
 
-	function_canunload = (plugin_canunload)kvi_library_symbol(m_Plugin,"_canunload");
+	function_canunload = (plugin_canunload)m_pLibrary->resolve("_canunload");
 	if (function_canunload)
 	{
 		//TODO: THREAD
-		if(!function_canunload()) 
-		{
-			return false;
-		}
+		return function_canunload();
 	}
 	return true;
 }
@@ -187,7 +182,7 @@ int KviPlugin::call(const QString& pszFunctionName, int argc, char * argv[], cha
 {
 	int r;
 	plugin_function function_call;
-	function_call = (plugin_function)kvi_library_symbol(m_Plugin,pszFunctionName.toLocal8Bit());
+	function_call = (plugin_function)m_pLibrary->resolve(pszFunctionName);
 	if (!function_call)
 	{
 		return -1;
@@ -213,7 +208,7 @@ KviPluginManager::KviPluginManager()
 {
 	m_pPluginDict = new KviPointerHashTable<QString,KviPlugin>(5,false);
 	m_pPluginDict->setAutoDelete(false);
-	
+
 	m_bCanUnload = true;
 }
 
@@ -227,43 +222,43 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 	//   /echo $system.call("traffic.dll",about)
 	QString szPluginPath; //contains full path and plugin name like "c:/plugin.dll"
 	QString szFunctionName;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("plugin_path",KVS_PT_NONEMPTYSTRING,0,szPluginPath)
 		KVSM_PARAMETER("function",KVS_PT_NONEMPTYSTRING,0,szFunctionName)
 	KVSM_PARAMETERS_END(c)
-	
+
 	//Check if there is such a plugin
 	if(!findPlugin(szPluginPath))
 	{
 		c->error(__tr2qs("Plugin not found. Please check the plugin-name and path."));
 		return true;
 	}
-	
+
 	//Load plugin or check it in cache
 	if(!loadPlugin(szPluginPath))
 	{
 		c->error(__tr2qs("Error while loading plugin."));
 		return true;
 	}
-	
+
 	//Parsing more Parameters
 	int iArgc = 0;
 	char ** ppArgv;
 	char * pArgvBuffer;
-	
-	//Preparing argv buffer	
+
+	//Preparing argv buffer
 	if(c->parameterCount() > 2)
 	{
 		iArgc = c->parameterCount() - 2;
 	}
-		
+
 	if (iArgc > 0)
-	{	
+	{
 		int i = 2;
 		QString tmp;
 		int iSize = 0;
-		
+
 		//Calculate buffer size
 		while (i < (iArgc + 2) )
 		{
@@ -271,11 +266,11 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 			iSize += tmp.length()+1; //+1 for the \0 characters
 			i++;
 		}
-		
+
 		//Allocate buffer
 		ppArgv = (char**)malloc(iArgc*sizeof(char*));
 		pArgvBuffer = (char*)malloc(iSize);
-		
+
 		i = 2;
 		char * x = 0;
 		x = pArgvBuffer;
@@ -289,7 +284,7 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 			*x = 0;
 			x++;
 			i++;
-		}	
+		}
 
 	} else {
 		//Avoid using unfilled variables
@@ -297,14 +292,14 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 		pArgvBuffer = 0;
 		iArgc = 0;
 	}
-	
+
 	//Preparing return buffer
 	char * returnBuffer;
 	KviPlugin * plugin;
-	
+
 	plugin = getPlugin(szPluginPath);
 	int r = plugin->call(szFunctionName,iArgc,ppArgv,&returnBuffer);
-	
+
 	if(r == -1)
 	{
 		c->error(__tr2qs("This plugin does not export the desired function."));
@@ -315,7 +310,7 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 		c->returnValue()->setString(QString::fromLocal8Bit(returnBuffer));
 	}
 
-	
+
 	//Clean up
 	if(pArgvBuffer) free(pArgvBuffer);
 	if(ppArgv) free(ppArgv);
@@ -332,14 +327,14 @@ bool KviPluginManager::pluginCall(KviKvsModuleFunctionCall *c)
 
 bool KviPluginManager::checkUnload()
 {
-	/* 	
+	/*
 	Always called when system module should be unloaded
-	Checking here if all small "modules" can be unloaded	
+	Checking here if all small "modules" can be unloaded
 	*/
 	KviPointerHashTableIterator<QString,KviPlugin> it(*m_pPluginDict);
-	
+
 	m_bCanUnload = true;
-	
+
 	while(it.current())
 	{
 		if(it.current()->canunload())
@@ -351,14 +346,14 @@ bool KviPluginManager::checkUnload()
 		}
 		it.moveNext();
 	}
-	
+
 	return m_bCanUnload;
 }
 
 void KviPluginManager::unloadAll()
 {
 	KviPointerHashTableIterator<QString,KviPlugin> it(*m_pPluginDict);
-	
+
 	while(it.current())
 	{
 		it.current()->unload();
@@ -373,17 +368,17 @@ bool KviPluginManager::findPlugin(QString& szPath)
 //	szFileName.detach();
 	if(KviFileUtils::isAbsolutePath(szPath) && KviFileUtils::fileExists(szPath))
 	{
-		// Ok, 
+		// Ok,
 		return true;
 	} else {
 		//Plugin not found in direct way. Looking in kvirc local dir
 		g_pApp->getGlobalKvircDirectory(szPath,KviApp::EasyPlugins,szFileName);
-		
+
 		if(!KviFileUtils::fileExists(szPath))
 		{
 			//Plugin not found in kvirc local dir. Looking in kvirc global dir
 			g_pApp->getLocalKvircDirectory(szPath,KviApp::EasyPlugins,szFileName);
-			
+
 			if(!KviFileUtils::fileExists(szPath))
 			{
 				return false;

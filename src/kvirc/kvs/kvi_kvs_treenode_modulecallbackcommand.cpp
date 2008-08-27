@@ -61,11 +61,10 @@ void KviKvsTreeNodeModuleCallbackCommand::dump(const char * prefix)
 
 bool KviKvsTreeNodeModuleCallbackCommand::execute(KviKvsRunTimeContext * c)
 {
-//#warning "FIXME: module names should be UNICODE!"
-	KviModule * m = g_pModuleManager->getModule(m_szModuleName.toUtf8().data());
+	KviModule * m = g_pModuleManager->getModule(m_szModuleName);
 	if(!m)
 	{
-		QString szErr = g_pModuleManager->lastError().ptr(); // <-- fixme!
+		QString szErr = g_pModuleManager->lastError();
 		c->error(this,__tr2qs("Module command call failed: can't load the module '%Q': %Q"),&m_szModuleName,&szErr);
 		return false;
 	}

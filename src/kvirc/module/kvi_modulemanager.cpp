@@ -34,8 +34,6 @@
 #include "kvi_locale.h"
 #include "kvi_out.h"
 
-#include "kvi_library.h"
-
 #include <QDir>
 
 KviModuleManager * g_pModuleManager = 0;
@@ -184,24 +182,26 @@ bool KviModuleManager::loadModule(const QString &modName)
 		g_pApp->getGlobalKvircDirectory(tmp,KviApp::Plugins,szName);
 	}
 
-	kvi_library_t handle = kvi_library_open(tmp.toLocal8Bit().data());
-	if(!handle)
+	QLibrary* pLibrary = new QLibrary(tmp);
+	if(!pLibrary->load())
 	{
-		m_szLastError = kvi_library_error();
-		//debug("ERROR IN LOADING MODULE %s (%s): %s",modName,szName.ptr(),kvi_library_error());
+		m_szLastError = pLibrary->errorString();
+		delete pLibrary;
 		return false;
 	}
-	KviModuleInfo * info = (KviModuleInfo *)kvi_library_symbol(handle,KVIRC_MODULE_STRUCTURE_SYMBOL);
+	KviModuleInfo * info = (KviModuleInfo *)pLibrary->resolve(KVIRC_MODULE_STRUCTURE_SYMBOL);
 	if(!info)
 	{
 		m_szLastError = __tr2qs("No " KVIRC_MODULE_STRUCTURE_SYMBOL " symbol exported: not a kvirc module ?");
-		kvi_library_close(handle);
+		pLibrary->unload();
+		delete pLibrary;
 		return false;
 	}
 	if(!info->szKVIrcVersion)
 	{
 		m_szLastError = __tr2qs("This module has no version informations: refusing to load it");
-		kvi_library_close(handle);
+		pLibrary->unload();
+		delete pLibrary;
 		return false;
 	}
 	if(!KVI_OPTION_BOOL(KviOption_boolIgnoreModuleVersions))
@@ -212,11 +212,12 @@ bool KviModuleManager::loadModule(const QString &modName)
 			m_szLastError += " (";
 			m_szLastError += info->szKVIrcVersion;
 			m_szLastError += ")";
-			kvi_library_close(handle);
+			pLibrary->unload();
+			delete pLibrary;
 			return false;
 		}
 	}
-	KviModule * module = new KviModule(handle,info,modName,szName.toUtf8().data());
+	KviModule * module = new KviModule(pLibrary,info,modName,szName.toUtf8().data());
 
 	// the module is probably up.. the only thing can fail is the init_routine now
 	// load the message catalogue if any
@@ -238,7 +239,6 @@ bool KviModuleManager::loadModule(const QString &modName)
 		{
 			m_szLastError = __tr2qs("Failed to execute the init routine");
 			//debug("ERROR IN LOADING MODULE %s (%s): failed to execute the init routine",modName,szName.ptr());
-			kvi_library_close(handle);
 			delete module;
 			// kill the message catalogue too then
 			KviLocale::unloadCatalogue(modName);
@@ -270,14 +270,6 @@ bool KviModuleManager::loadModule(const QString &modName)
 	return true;
 }
 
-/*
-void KviModuleManager::registerDefaultCommands(KviModule * module)
-{
-	// Register the default commands
-	module->registerCommand("load",default_module_cmd_load);
-	module->registerCommand("unload",default_module_cmd_unload);
-}
-*/
 bool KviModuleManager::unloadModule(const QString &modName)
 {
 	return unloadModule(findModule(modName));
@@ -293,7 +285,7 @@ bool KviModuleManager::unloadModule(KviModule * module)
 		(module->moduleInfo()->cleanup_routine)(module);
 	}
 	QString szModName = module->name();
-	kvi_library_close(module->handle());
+	module->handle()->unload();
 	//debug("Closing module %s, dlclose returns %d",szModName.ptr(),dlclose(module->handle()));
 
 	m_pModuleDict->remove(szModName);

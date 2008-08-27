@@ -59,7 +59,7 @@ KviKvsKernel::KviKvsKernel()
 	m_pObjectController = new KviKvsObjectController();
 	m_pObjectController->init();
 	m_pAsyncOperationManager = new KviKvsAsyncOperationManager();
-	
+
 	KviKvsParser::init();
 
 	KviKvsCoreSimpleCommands::init();
@@ -138,7 +138,7 @@ void KviKvsKernel::completeCommand(const QString &szCommandBegin,KviPointerList<
 
 void KviKvsKernel::completeModuleCommand(const QString &szModuleName,const QString &szCommandBegin,KviPointerList<QString> * pMatches)
 {
-	KviModule * pModule = g_pModuleManager->getModule(szModuleName.toLatin1());
+	KviModule * pModule = g_pModuleManager->getModule(szModuleName);
 	if(!pModule)return;
 
 	KviPointerList<QString> lModuleMatches;
@@ -200,7 +200,7 @@ void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPointerLis
 
 void KviKvsKernel::completeModuleFunction(const QString &szModuleName,const QString &szCommandBegin,KviPointerList<QString> * pMatches)
 {
-	KviModule * pModule = g_pModuleManager->getModule(szModuleName.toLatin1());
+	KviModule * pModule = g_pModuleManager->getModule(szModuleName);
 	if(!pModule)return;
 
 	KviPointerList<QString> lModuleMatches;

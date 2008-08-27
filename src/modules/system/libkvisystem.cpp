@@ -369,7 +369,7 @@ static bool system_kvs_fnc_checkModule(KviKvsModuleFunctionCall *c)
 		KVSM_PARAMETER("module_name",KVS_PT_STRING,0,szModuleName)
 	KVSM_PARAMETERS_END(c)
 
-	c->returnValue()->setBoolean(g_pModuleManager->loadModule(szModuleName.toUtf8().data()));
+	c->returnValue()->setBoolean(g_pModuleManager->loadModule(szModuleName));
 	return true;
 }
 
@@ -450,7 +450,7 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 
 	KviQCString szApp,szObj,szFun;
 	QStringList parms;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("application",KVS_PT_NONEMPTYCSTRING,0,szApp)
 		KVSM_PARAMETER("objectid",KVS_PT_NONEMPTYCSTRING,0,szObj)
@@ -475,7 +475,7 @@ static bool system_kvs_fnc_dcop(KviKvsModuleFunctionCall *c)
 	for ( QStringList::Iterator it = parms.begin(); it != parms.end(); ++it )
 	{
 		KviStr tmp = *it;
-	
+
 		if(tmp.isEmpty())
 		{
 			c->warning(__tr2qs("Invalid DCOP parameter syntax"));
@@ -705,7 +705,7 @@ static bool system_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setSelection",system_kvs_cmd_setSelection);
 
 	g_pPluginManager = new(KviPluginManager);
-	
+
 	return true;
 }
 
