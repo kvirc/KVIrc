@@ -749,7 +749,7 @@ void KviApp::setupBegin()
 	{
 		KviMessageBox::warning(__tr2qs("Ops...it looks like I can't load modules on this sytem.\n" \
 			"I have been looking for the %s library but I haven't been able to load it\n" \
-			"due to the following error: \"%Q\"\nAborting."),szSetupLib.toUtf8().data(),&(g_pSetupLibrary->errorString()));
+			"due to the following error: \"%s\"\nAborting."),szSetupLib.toUtf8().data(),g_pSetupLibrary->errorString().toUtf8().data());
 #if defined(COMPILE_ON_WINDOWS)
 		ExitProcess(-1);
 #elif defined(COMPILE_ON_MINGW)
