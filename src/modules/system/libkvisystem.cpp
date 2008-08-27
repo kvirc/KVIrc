@@ -27,7 +27,6 @@
 #include "kvi_settings.h"
 #include "kvi_module.h"
 #include "kvi_string.h"
-#include "kvi_library.h"
 #include "kvi_thread.h"
 #include "kvi_locale.h"
 #include "kvi_qcstring.h"
