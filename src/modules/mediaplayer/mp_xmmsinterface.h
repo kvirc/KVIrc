@@ -29,7 +29,7 @@
 
 #include "kvi_settings.h"
 #include "mp_interface.h"
-#include "kvi_library.h"
+#include <QLibrary>
 
 #if !defined(COMPILE_ON_WINDOWS)  && !defined(COMPILE_ON_MINGW)
 	class KviXmmsInterface : public KviMediaPlayerInterface
@@ -38,7 +38,7 @@
 		KviXmmsInterface();
 		virtual ~KviXmmsInterface();
 	protected:
-		kvi_library_t m_pPlayerLibrary;
+		QLibrary* m_pPlayerLibrary;
 		QString m_szPlayerLibraryName;
 		const char ** m_pLibraryPaths;
 	public:
@@ -67,18 +67,18 @@
 		bool loadPlayerLibrary();
 		void * lookupSymbol(const char * szSymbolName);
 	};
-	
+
 	MP_DECLARE_DESCRIPTOR(KviXmmsInterface)
-	
+
 	class KviAudaciousClassicInterface : public KviXmmsInterface
 	{
 	public:
 		KviAudaciousClassicInterface();
 		virtual ~KviAudaciousClassicInterface();
 	};
-	
+
 	MP_DECLARE_DESCRIPTOR(KviAudaciousClassicInterface)
-	
+
 #endif //!COMPILE_ON_WINDOWS
 
 #endif //!_MP_XMMSINTERFACE_H_

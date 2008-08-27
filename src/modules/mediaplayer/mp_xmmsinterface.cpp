@@ -89,7 +89,8 @@ KviXmmsInterface::~KviXmmsInterface()
 {
 	if(m_pPlayerLibrary)
 	{
-		kvi_library_close(m_pPlayerLibrary);
+		m_pPlayerLibrary->unload();
+		delete m_pPlayerLibrary;
 		m_pPlayerLibrary = 0;
 	}
 }
@@ -107,17 +108,18 @@ KviAudaciousClassicInterface::~KviAudaciousClassicInterface()
 
 bool KviXmmsInterface::loadPlayerLibrary()
 {
-	if(m_pPlayerLibrary)return true;
+	if(m_pPlayerLibrary && m_pPlayerLibrary->isLoaded())return true;
 
 	const char **lib_name = m_pLibraryPaths;
 	while(*lib_name)
 	{
-		m_pPlayerLibrary = kvi_library_load(*lib_name);
-		if(m_pPlayerLibrary)
+		m_pPlayerLibrary = new QLibrary(*lib_name);
+		if(m_pPlayerLibrary->load())
 		{
 			m_szPlayerLibraryName = *lib_name;
 			break;
 		}
+		delete m_pPlayerLibrary;
 		lib_name++;
 	}
 	return true;
@@ -135,7 +137,7 @@ void * KviXmmsInterface::lookupSymbol(const char * szSymbolName)
 			return 0;
 		}
 	}
-	void * symptr = kvi_library_symbol(m_pPlayerLibrary,szSymbolName);
+	void * symptr =m_pPlayerLibrary->resolve(szSymbolName);
 	if(!symptr)
 	{
 		QString tmp;
