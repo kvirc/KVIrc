@@ -69,8 +69,8 @@ KviOptionsWidget::~KviOptionsWidget()
 
 void KviOptionsWidget::mergeTip(QWidget * w,const QString &tip)
 {
-	static QString begin = "<table width=\"100%\" align=\"center\"><tr><td bgcolor=\"#fefef0\">";
-	static QString mid = "</td></tr><tr><td>";
+	static QString begin = "<table width=\"100%\" align=\"center\"><tr><td bgcolor=\"#fefef0\"><font color=\"000000\">";
+	static QString mid = "</font></td></tr><tr><td>";
 	static QString end = "</td></tr></table>";
 
 	QString s = w->toolTip();

@@ -1394,9 +1394,9 @@ void KviUserListView::maybeTip(KviUserListToolTip * tip,const QPoint &pnt)
 			{
 				QDateTime dt;
 				dt.setTime_t(it->m_joinTime);
-				buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr>";
+				buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
 				buffer += __tr2qs("Joined on <b>%1</b>").arg(dt.toString());
-				buffer += "</nobr></td></tr>";
+				buffer += "</font></nobr></td></tr>";
 			}
 
 			if(it->m_lastActionTime != 0)
@@ -1406,9 +1406,9 @@ void KviUserListView::maybeTip(KviUserListToolTip * tip,const QPoint &pnt)
 				secs = secs % 60;
 				int hors = mins / 60;
 				mins = mins % 60;
-				buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr>";
+				buffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
 				buffer += __tr2qs("Quiet for <b>%1h %2m %3s</b>").arg(hors).arg(mins).arg(secs);
-				buffer += "</nobr></td></tr>";
+				buffer += "</font></nobr></td></tr>";
 			}
 			buffer += "</table>";
 
