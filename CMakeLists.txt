@@ -344,6 +344,34 @@ ELSE()
 ENDIF()
 
 ############################################################################
+# Check for AUDIOFILE
+############################################################################
+
+OPTION(WANT_AUDIOFILE "Whether to compile Audiofile support" ON)
+IF(WITH_AUDIOFILE)
+	SET(WANT_AUDIOFILE ON)
+ENDIF()
+IF(WANT_AUDIOFILE)
+	FIND_LIBRARY(AUDIOFILE_LIBRARY audiofile)
+	IF(NOT AUDIOFILE_LIBRARY MATCHES ".*NOTFOUND")
+		FIND_FILE(AUDIOFILE_HEADER audiofile.h)
+		IF(NOT AUDIOFILE_HEADER MATCHES ".*NOTFOUND")
+			SET(COMPILE_AUDIOFILE_SUPPORT 1)
+			LIST(APPEND LIBS ${AUDIOFILE_LIBRARY})
+			SET(CMAKE_STATUS_AUDIOFILE_SUPPORT "Yes")
+			LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS COMPILE_AUDIOFILE_SUPPORT)
+			MESSAGE("Found Audiofile: ${AUDIOFILE_LIBRARY}, ${AUDIOFILE_HEADER}")
+		ELSE()
+			SET(CMAKE_STATUS_AUDIOFILE_SUPPORT "Not available (no headers)")
+		ENDIF()
+	ELSE()
+		SET(CMAKE_STATUS_AUDIOFILE_SUPPORT "Not available (no library)")
+	ENDIF()
+ELSE()
+	SET(CMAKE_STATUS_AUDIOFILE_SUPPORT "No")
+ENDIF()
+
+############################################################################
 # Check for MacOS X universal binary
 ############################################################################
 
@@ -951,6 +979,7 @@ MESSAGE(STATUS "  GetText Support             : ${CMAKE_STATUS_GETTEXT_SUPPORT}$
 MESSAGE(STATUS "  GetText Messages Tidying    : ${CMAKE_STATUS_MESSAGE_TIDY}")
 #MESSAGE(STATUS "  Generate int. help files    : ${CMAKE_STATUS_GEN_USERDOC}")
 MESSAGE(STATUS "  Doxygen Support             : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
+MESSAGE(STATUS "  Audiofile Support           : ${CMAKE_STATUS_AUDIOFILE_SUPPORT}")
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "  Build Date                  : ${CMAKE_KVIRC_BUILD_DATE}")
 MESSAGE(STATUS " ")

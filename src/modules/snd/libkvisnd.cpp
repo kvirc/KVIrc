@@ -587,12 +587,12 @@ void KviSoundThread::run()
 		: KviSoundThread(szFileName)
 		{
 			if(!g_pPhononPlayer)
-                        {
-                                g_pPhononPlayer = Phonon::createPlayer(Phonon::MusicCategory);
+			{
+				g_pPhononPlayer = Phonon::createPlayer(Phonon::MusicCategory);
 			} else {
-                                if(g_pPhononPlayer->state()!=Phonon::ErrorState)
-                                        g_pPhononPlayer->setCurrentSource(QUrl(szFileName));
-                        }
+				if(g_pPhononPlayer->state()!=Phonon::ErrorState)
+					g_pPhononPlayer->setCurrentSource(QUrl(szFileName));
+			}
 		}
 
 		KviPhononSoundThread::~KviPhononSoundThread()
