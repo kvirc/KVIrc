@@ -466,10 +466,10 @@ void KviIrcContext::connectToCurrentServer()
 		} // else we just connect to the globally selected irc server in the options dialog
 	}
 
-	KviNetwork * net = g_pServerDataBase->currentNetwork();;
+	KviNetwork * net = g_pServerDataBase->currentNetwork();
 	KviServer  * srv = net ? net->currentServer() : 0;
 
-	KviProxy      * prx = 0;
+	KviProxy   * prx = 0;
 
 	if(!srv)
 	{
