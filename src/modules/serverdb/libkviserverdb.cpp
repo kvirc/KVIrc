@@ -107,7 +107,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 	if(!szNetwork.isEmpty())
 	{
 		// Check in the given network
-		KviServerDataBaseRecord * pRecord = g_pServerDataBase->findRecord(szNetwork);
+		KviNetwork * pRecord = g_pServerDataBase->findNetwork(szNetwork);
 		if(!pRecord)
 		{
 			c->returnValue()->setBoolean(false);
@@ -124,9 +124,9 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 		c->returnValue()->setBoolean(true);
 	} else {
 		// Check through all networks
-		KviPointerHashTableIterator<QString,KviServerDataBaseRecord> it(*(g_pServerDataBase->recordDict()));
+		KviPointerHashTableIterator<QString,KviNetwork> it(*(g_pServerDataBase->recordDict()));
 
-		while(KviServerDataBaseRecord * r = it.current())
+		while(KviNetwork * r = it.current())
 		{
 			KviPointerList<KviServer> * sl = r->serverList();
 
@@ -688,13 +688,7 @@ static bool serverdb_kvs_cmd_addNetwork(KviKvsModuleCommandCall * c)
 	pNetwork = new KviNetwork(szNetName);
 	if(c->switches()->find('a',"autoconnect")) pNetwork->setAutoConnect(true);
 
-	KviServerDataBaseRecord * pRecord = g_pServerDataBase->addNetwork(pNetwork);
-	if(!pRecord)
-	{
-		c->error("Internal error: KVIrc author screwed up","serverdb");
-		return false;
-	}
-
+	g_pServerDataBase->addNetwork(pNetwork);
 	return true;
 }
 
@@ -760,7 +754,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 		return false;
 	}
 
-	KviServerDataBaseRecord * pRecord = g_pServerDataBase->findRecord(szNetwork);
+	KviNetwork * pRecord = g_pServerDataBase->findNetwork(szNetwork);
 	if(!pRecord)
 	{
 		// FIXME: default to orphan servers
@@ -866,7 +860,7 @@ static bool serverdb_kvs_cmd_addServer(KviKvsModuleCommandCall * c)
 			return false; \
 		} \
 		\
-		KviServerDataBaseRecord * pRecord = g_pServerDataBase->findRecord(szNetName); \
+		KviNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName); \
 		if(!pRecord) \
 		{ \
 			if(c->switches()->find('q',"quiet")) return true; \
