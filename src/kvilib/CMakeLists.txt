@@ -105,6 +105,7 @@ SET(kvilib_SRCS
 	irc/kvi_avatarcache.cpp
 	irc/kvi_ircmask.cpp
 	irc/kvi_ircserver.cpp
+	irc/kvi_network.cpp
 	irc/kvi_ircserverdb.cpp
 	irc/kvi_ircuserdb.cpp
 	irc/kvi_mirccntrl.cpp

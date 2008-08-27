@@ -48,7 +48,7 @@ KviServer::KviServer()
 	m_pReconnectInfo=0;
 	m_uFlags = 0;
 	m_uPort  = 6667;
-	m_pChannelList = 0;
+	m_pAutoJoinChannelList = 0;
 	m_bAutoConnect = false;
 	m_iProxy = -1;
 }
@@ -88,9 +88,9 @@ KviServer::KviServer(const KviServer &serv)
 	m_szId               = serv.m_szId;
 	m_iProxy             = serv.m_iProxy;
 	m_szUserIdentityId   = serv.m_szUserIdentityId;
-	if(serv.m_pChannelList)
-		m_pChannelList = new QStringList(*(serv.m_pChannelList));
-	else m_pChannelList = 0;
+	if(serv.m_pAutoJoinChannelList)
+		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
+	else m_pAutoJoinChannelList = 0;
 	m_bAutoConnect       = serv.m_bAutoConnect;
 }
 
@@ -114,17 +114,17 @@ void KviServer::operator=(const KviServer &serv)
 	m_szId               = serv.m_szId;
 	m_szUserIdentityId   = serv.m_szUserIdentityId;
 	m_iProxy	     = serv.m_iProxy;
-	if(m_pChannelList)delete m_pChannelList;
-	if(serv.m_pChannelList)
-		m_pChannelList = new QStringList(*(serv.m_pChannelList));
-	else m_pChannelList = 0;
+	if(m_pAutoJoinChannelList)delete m_pAutoJoinChannelList;
+	if(serv.m_pAutoJoinChannelList)
+		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
+	else m_pAutoJoinChannelList = 0;
 	m_bAutoConnect    = serv.m_bAutoConnect;
 }
 
 
 KviServer::~KviServer()
 {
-	if(m_pChannelList)delete m_pChannelList;
+	if(m_pAutoJoinChannelList)delete m_pAutoJoinChannelList;
 	if(m_pReconnectInfo) delete m_pReconnectInfo;
 }
 
@@ -155,8 +155,8 @@ QString KviServer::ircUri()
 
 void KviServer::setAutoJoinChannelList(QStringList * pNewChannelList)
 {
-	if(m_pChannelList)delete m_pChannelList;
-	m_pChannelList = pNewChannelList;
+	if(m_pAutoJoinChannelList)delete m_pAutoJoinChannelList;
+	m_pAutoJoinChannelList = pNewChannelList;
 }
 
 
@@ -322,60 +322,6 @@ void KviServer::save(KviConfig * cfg,const QString &prefix)
 	}
 }
 
-
-KviNetwork::KviNetwork(const KviNetwork &src)
-{
-	m_pChannelList = 0;
-	m_pNickServRuleSet = 0;
-	copyFrom(src);
-}
-
-KviNetwork::KviNetwork(const QString &name)
-{
-	m_szName = name;
-	m_pChannelList = 0;
-	m_pNickServRuleSet = 0;
-	m_bAutoConnect = false;
-}
-
-KviNetwork::~KviNetwork()
-{
-	if(m_pChannelList)delete m_pChannelList;
-	if(m_pNickServRuleSet)delete m_pNickServRuleSet;
-}
-
-void KviNetwork::setAutoJoinChannelList(QStringList * pNewChannelList)
-{
-	if(m_pChannelList)delete m_pChannelList;
-	m_pChannelList = pNewChannelList;
-}
-
-void KviNetwork::setNickServRuleSet(KviNickServRuleSet * s)
-{
-	if(m_pNickServRuleSet)delete m_pNickServRuleSet;
-	m_pNickServRuleSet = s;
-}
-
-void KviNetwork::copyFrom(const KviNetwork &src)
-{
-	m_szName = src.m_szName;
-	m_szEncoding = src.m_szEncoding;
-	m_szTextEncoding = src.m_szTextEncoding;
-	m_szDescription = src.m_szDescription;
-	m_szNickName = src.m_szNickName;
-	m_szRealName = src.m_szRealName;
-	m_szUserName = src.m_szUserName;
-	m_bAutoConnect = src.m_bAutoConnect;
-	m_szUserIdentityId = src.m_szUserIdentityId;
-	m_szOnConnectCommand  = src.m_szOnConnectCommand;
-	m_szOnLoginCommand = src.m_szOnLoginCommand;
-	if(m_pChannelList)delete m_pChannelList;
-	if(src.m_pChannelList)m_pChannelList = new QStringList(*(src.m_pChannelList));
-	else m_pChannelList = 0;
-	if(m_pNickServRuleSet)delete m_pNickServRuleSet;
-	if(src.m_pNickServRuleSet)m_pNickServRuleSet = new KviNickServRuleSet(*(src.m_pNickServRuleSet));
-	else m_pNickServRuleSet = 0;
-}
 
 KviServerReconnectInfo::KviServerReconnectInfo()
 {

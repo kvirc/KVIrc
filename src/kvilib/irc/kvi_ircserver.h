@@ -72,7 +72,7 @@ public:
 	// Extended data
 	QString            m_szUserIdentityId;    // The user identity to use for this server: if empty
 	                                          // Then use the network identity instead
-	
+
 	QString            m_szUser;              // special username
 	QString            m_szPass;              // special password
 	QString            m_szNick;              // special nickname
@@ -83,66 +83,66 @@ public:
 	QString            m_szLinkFilter;        // the link filter object
 	QString            m_szEncoding;          // if empty, use network encoding
 	QString            m_szTextEncoding;      // if empty, use network encoding
-	QStringList      * m_pChannelList;        // Channels to auto join
+	QStringList      * m_pAutoJoinChannelList;        // Channels to auto join
 	bool               m_bAutoConnect;        // autoconnect
 	QString            m_szId;                // the server's may-be-unique id, may be auto-generated
 	int                m_iProxy;              // proxy server's id
 public:
-	int proxy() { return m_iProxy; };
+	inline int proxy() { return m_iProxy; };
 	KviProxy* proxyServer(KviProxyDataBase * pDb);
-	
-	kvi_u32_t port() const { return m_uPort; };
-	const QString & password() const { return m_szPass; };
-	const QString & nickName() const { return m_szNick; };
-	const QString & initUMode() const { return m_szInitUMode; };
-	const QString & hostName() const { return m_szHostname; };
-	const QString & ip() const { return m_szIp; };
-	const QString & onLoginCommand() const { return m_szOnLoginCommand; };
-	const QString & onConnectCommand() const { return m_szOnConnectCommand; };
-	const QString & userName() const { return m_szUser; };
-	const QString & realName() const { return m_szRealName; };
-	const QString & linkFilter() const { return m_szLinkFilter; };
-	const QString & description() const { return m_szDescription; };
-	const QString & encoding() const { return m_szEncoding; };
-	const QString & textEncoding() const { return m_szTextEncoding; };
-	const QString & id() const { return m_szId; };
-	const QString & userIdentityId() const { return m_szUserIdentityId; };
-	bool autoConnect() const { return m_bAutoConnect; };
-	QStringList* autoJoinChannelList(){ return m_pChannelList; };
-	bool isIPv6() const { return (m_uFlags & KVI_IRCSERVER_FLAG_IPV6); };
-	bool useSSL() const { return (m_uFlags & KVI_IRCSERVER_FLAG_SSL); };
-	bool cacheIp() const { return (m_uFlags & KVI_IRCSERVER_FLAG_CACHEIP); };
-	
-	void setProxy(int p){ m_iProxy = p; };
-	void setIp(const QString &a){ m_szIp = a; };
-	void setPort(kvi_u32_t p){ m_uPort = p; };
-	void setHostName(const QString &n){ m_szHostname = n; };
-	void setDescription(const QString &d){ m_szDescription = d; };
-	void setUserName(const QString &u){ m_szUser = u; };
-	void setPassword(const QString &p){ m_szPass = p; };
-	void setNickName(const QString &n){ m_szNick = n; };
-	void setRealName(const QString &r){ m_szRealName = r; };
-	void setEncoding(const QString &e){ m_szEncoding = e; };
-	void setTextEncoding(const QString &e){ m_szTextEncoding = e; };
-	void setInitUMode(const QString &u){ m_szInitUMode = u; };
-	void setOnConnectCommand(const QString &cmd){ m_szOnConnectCommand = cmd; };
-	void setOnLoginCommand(const QString &cmd){ m_szOnLoginCommand = cmd; };
-	void setLinkFilter(const QString &f){ m_szLinkFilter = f; };
+
+	inline kvi_u32_t port() const { return m_uPort; };
+	inline const QString & password() const { return m_szPass; };
+	inline const QString & nickName() const { return m_szNick; };
+	inline const QString & initUMode() const { return m_szInitUMode; };
+	inline const QString & hostName() const { return m_szHostname; };
+	inline const QString & ip() const { return m_szIp; };
+	inline const QString & onLoginCommand() const { return m_szOnLoginCommand; };
+	inline const QString & onConnectCommand() const { return m_szOnConnectCommand; };
+	inline const QString & userName() const { return m_szUser; };
+	inline const QString & realName() const { return m_szRealName; };
+	inline const QString & linkFilter() const { return m_szLinkFilter; };
+	inline const QString & description() const { return m_szDescription; };
+	inline const QString & encoding() const { return m_szEncoding; };
+	inline const QString & textEncoding() const { return m_szTextEncoding; };
+	inline const QString & id() const { return m_szId; };
+	inline const QString & userIdentityId() const { return m_szUserIdentityId; };
+	inline bool autoConnect() const { return m_bAutoConnect; };
+	inline QStringList* autoJoinChannelList(){ return m_pAutoJoinChannelList; };
+	inline bool isIPv6() const { return (m_uFlags & KVI_IRCSERVER_FLAG_IPV6); };
+	inline bool useSSL() const { return (m_uFlags & KVI_IRCSERVER_FLAG_SSL); };
+	inline bool cacheIp() const { return (m_uFlags & KVI_IRCSERVER_FLAG_CACHEIP); };
+
+	inline void setProxy(int p){ m_iProxy = p; };
+	inline void setIp(const QString &a){ m_szIp = a; };
+	inline void setPort(kvi_u32_t p){ m_uPort = p; };
+	inline void setHostName(const QString &n){ m_szHostname = n; };
+	inline void setDescription(const QString &d){ m_szDescription = d; };
+	inline void setUserName(const QString &u){ m_szUser = u; };
+	inline void setPassword(const QString &p){ m_szPass = p; };
+	inline void setNickName(const QString &n){ m_szNick = n; };
+	inline void setRealName(const QString &r){ m_szRealName = r; };
+	inline void setEncoding(const QString &e){ m_szEncoding = e; };
+	inline void setTextEncoding(const QString &e){ m_szTextEncoding = e; };
+	inline void setInitUMode(const QString &u){ m_szInitUMode = u; };
+	inline void setOnConnectCommand(const QString &cmd){ m_szOnConnectCommand = cmd; };
+	inline void setOnLoginCommand(const QString &cmd){ m_szOnLoginCommand = cmd; };
+	inline void setLinkFilter(const QString &f){ m_szLinkFilter = f; };
 	// the channel list must be allocated with new!
 	void setAutoJoinChannelList(QStringList * pNewChannelList);
-	void setAutoConnect(bool autoconnect) { m_bAutoConnect = autoconnect; };
-	void setUserIdentityId(const QString &szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
-	void setIPv6(bool bSet)
+	inline void setAutoConnect(bool autoconnect) { m_bAutoConnect = autoconnect; };
+	inline void setUserIdentityId(const QString &szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
+	inline void setIPv6(bool bSet)
 	{
 		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_IPV6;
 		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_IPV6);
 	};
-	void setUseSSL(bool bSet)
+	inline void setUseSSL(bool bSet)
 	{
 		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_SSL;
 		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_SSL);
 	};
-	void setCacheIp(bool bSet)
+	inline void setCacheIp(bool bSet)
 	{
 		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_CACHEIP;
 		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_CACHEIP);
@@ -151,63 +151,11 @@ public:
 
 	bool load(KviConfig * cfg,const QString &prefix);
 	void save(KviConfig * cfg,const QString &prefix);
-	
+
 	void generateUniqueId();
-	void setId(const QString &szId){ m_szId = szId; if(m_szId.isEmpty())generateUniqueId(); };
+	inline void setId(const QString &szId){ m_szId = szId; if(m_szId.isEmpty())generateUniqueId(); };
 
 	QString ircUri();
-};
-
-class KVILIB_API KviNetwork : public KviHeapObject
-{
-	friend class KviServerDataBase;
-public:
-	KviNetwork(const KviNetwork &src);
-	KviNetwork(const QString &name);
-	~KviNetwork();
-protected:
-	QString              m_szName;
-	QString              m_szDescription;
-	QString              m_szEncoding;                // if empty, use system default
-	QString              m_szTextEncoding;                // if empty, use system default
-	QString              m_szNickName;                // preferred nick name
-	QString              m_szUserName;                // preferred user name
-	QString              m_szRealName;                // preferred real name
-	QString              m_szOnConnectCommand;        // the command to run on connect
-	QString              m_szOnLoginCommand;          // the command to run after login
-	QStringList        * m_pChannelList;              // Channels to auto join
-	KviNickServRuleSet * m_pNickServRuleSet;          // set of nick serv rules
-	bool                 m_bAutoConnect;              // autoconnect
-	QString              m_szUserIdentityId;          // The user identity to use for this server: if empty
-	                                                  // Then use the global primary identity
-public:
-	const QString & name() const { return m_szName; };
-	const QString & encoding() const { return m_szEncoding; };
-	const QString & textEncoding() const { return m_szTextEncoding; };
-	const QString & description() const { return m_szDescription; };
-	const QString & nickName() const { return m_szNickName; };
-	const QString & realName() const { return m_szRealName; };
-	const QString & userName() const { return m_szUserName; };
-	const QString & onLoginCommand() const { return m_szOnLoginCommand; };
-	const QString & onConnectCommand() const { return m_szOnConnectCommand; };
-	const QString & userIdentityId() const { return m_szUserIdentityId; };
-	bool autoConnect() const { return m_bAutoConnect; };
-	QStringList* autoJoinChannelList(){ return m_pChannelList; };
-	KviNickServRuleSet * nickServRuleSet(){ return m_pNickServRuleSet; };
-	void setNickServRuleSet(KviNickServRuleSet * s);
-	void copyFrom(const KviNetwork &d);
-	void setName(const QString &szName){ m_szName = szName; };
-	void setEncoding(const QString &szEncoding){ m_szEncoding = szEncoding; };
-	void setTextEncoding(const QString &szEncoding){ m_szTextEncoding = szEncoding; };
-	void setDescription(const QString &szDescription){ m_szDescription = szDescription; };
-	void setOnConnectCommand(const QString &cmd){ m_szOnConnectCommand = cmd; };
-	void setOnLoginCommand(const QString &cmd){ m_szOnLoginCommand = cmd; };
-	void setNickName(const QString &n){ m_szNickName = n; };
-	void setRealName(const QString &r){ m_szRealName = r; };
-	void setUserName(const QString &u){ m_szUserName = u; };
-	void setAutoJoinChannelList(QStringList * pNewChannelList);
-	void setAutoConnect(bool bAutoConnect){ m_bAutoConnect = bAutoConnect; };
-	void setUserIdentityId(const QString &szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
 };
 
 

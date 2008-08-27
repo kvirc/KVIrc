@@ -1504,13 +1504,13 @@ void KviApp::autoConnectToServers()
 		g_pServerDataBase->clearAutoConnectOnStartupServers();
 	}
 
-	KviPointerList<KviServerDataBaseRecord> * lr = g_pServerDataBase->autoConnectOnStartupNetworks();
+	KviPointerList<KviNetwork> * lr = g_pServerDataBase->autoConnectOnStartupNetworks();
 	if(lr)
 	{
-		for(KviServerDataBaseRecord * r = lr->first();r;r = lr->next())
+		for(KviNetwork * r = lr->first();r;r = lr->next())
 		{
 			QString szCommandx = "server -u \"net:";
-			szCommandx += r->network()->name();
+			szCommandx += r->name();
 			szCommandx += "\"";
 			KviKvsScript::run(szCommandx,activeConsole());
 		}

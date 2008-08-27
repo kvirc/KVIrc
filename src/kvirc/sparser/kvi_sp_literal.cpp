@@ -58,6 +58,7 @@
 #include "kvi_ircserver.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_qcstring.h"
+#include "kvi_network.h"
 
 #include "kvi_settings.h"
 

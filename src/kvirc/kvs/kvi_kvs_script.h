@@ -84,7 +84,7 @@ public:
 	const QString & code() const;
 	bool locked() const;
 
-	void setName(const QString &szName); 
+	void setName(const QString &szName);
 
 	enum RunFlags {
 		// do not delete the eventual parameters passed (only execute() and run())
@@ -121,7 +121,7 @@ public:
 	// returns a combination of RunStatus flags (nonzero on no error)
 	// does NOT take params ownership
 	static int run(const QString &szCode,KviWindow * pWindow,KviKvsVariantList * pParams = 0,KviKvsVariant * pRetVal = 0);
-	
+
 	// static helper for quick evaluating parameters
 	// returns a combination of RunStatus flags (nonzero on no error)
 	// does NOT take params ownership

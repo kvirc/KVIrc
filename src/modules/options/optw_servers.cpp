@@ -1292,13 +1292,13 @@ void KviServerOptionsWidget::fillServerList()
 	KviServerOptionsTreeWidgetItem * srv;
 	KviServerOptionsTreeWidgetItem * cur = 0;
 
-	KviPointerHashTableIterator<QString,KviServerDataBaseRecord> it(*(g_pServerDataBase->recordDict()));
+	KviPointerHashTableIterator<QString,KviNetwork> it(*(g_pServerDataBase->recordDict()));
 
-	while(KviServerDataBaseRecord * r = it.current())
+	while(KviNetwork * r = it.current())
 	{
 		net = new KviServerOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),r->network());
 		KviPointerList<KviServer> * sl = r->serverList();
-		bool bCurrent = r->network()->name() == g_pServerDataBase->currentNetworkName().toUtf8().data();
+		bool bCurrent = r->name() == g_pServerDataBase->currentNetworkName().toUtf8().data();
 		net->setExpanded(bCurrent);
 		for(KviServer * s = sl->first();s;s = sl->next())
 		{
@@ -1389,16 +1389,14 @@ void KviServerOptionsWidget::commit()
 	{
 		network=(KviServerOptionsTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
 		QString tmp = network->m_pNetworkData->name();
-		KviNetwork * net = 0;
-		KviServerDataBaseRecord * r = g_pServerDataBase->findRecord(tmp);
-		if(r)
+		KviNetwork * pNetwork = g_pServerDataBase->findRecord(tmp);
+		if(pNetwork)
 		{
-			net = r->network();
-			net->copyFrom(*(network->m_pNetworkData));
+			pNetwork->copyFrom(*(network->m_pNetworkData));
 		} else {
-			net = new KviNetwork(tmp);
-			net->copyFrom(*(network->m_pNetworkData));
-			r = g_pServerDataBase->addNetwork(net);
+			pNetwork = new KviNetwork(tmp);
+			pNetwork->copyFrom(*(network->m_pNetworkData));
+			g_pServerDataBase->addNetwork(net);
 		}
 		if(network == m_pLastEditedItem)g_pServerDataBase->setCurrentNetwork(net->name());
 
@@ -1414,17 +1412,17 @@ void KviServerOptionsWidget::commit()
 			{
 				if(!ch->m_pServerData->m_szHostname.isEmpty())
 				{
-					srv = r->findServer(ch->m_pServerData);
+					srv = pNetwork->findServer(ch->m_pServerData);
 					if(!srv)
 					{
 						srv = new KviServer(*(ch->m_pServerData));
-						r->insertServer(srv);
+						pNetwork->insertServer(srv);
 					} else *srv = *(ch->m_pServerData);
 					if(srv->id().isEmpty())srv->generateUniqueId();
 					if(ch == m_pLastEditedItem)
 					{
 						g_pServerDataBase->setCurrentNetwork(net->name());
-						r->setCurrentServer(srv);
+						pNetwork->setCurrentServer(srv);
 					}
 				}
 			}

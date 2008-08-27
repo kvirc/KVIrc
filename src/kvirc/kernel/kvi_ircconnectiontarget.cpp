@@ -26,6 +26,7 @@
 
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_ircserver.h"
+#include "kvi_network.h"
 #include "kvi_proxydb.h"
 
 KviIrcConnectionTarget::KviIrcConnectionTarget(const KviNetwork * pNetwork,

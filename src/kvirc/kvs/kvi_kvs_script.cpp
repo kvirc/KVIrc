@@ -200,7 +200,7 @@ int KviKvsScript::run(KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVariant
 		//debug("USING A CACHED TREE FOR SCRIPT %s",name().latin1());
 		//debug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
 	}
-	
+
 	return execute(pWnd,pParams,pRetVal,iRunFlags,pExtData);
 }
 
@@ -230,7 +230,7 @@ int KviKvsScript::run(KviKvsRunTimeContext * pContext,int iRunFlags)
 	} else {
 		iRet = executeInternal(pContext);
 	}
-	
+
 	return iRet;
 }
 
@@ -260,10 +260,10 @@ bool KviKvsScript::parse(KviWindow * pOutput,int iRunFlags)
 
 	KviKvsParser p(this,(iRunFlags & Quiet) ? 0 : pOutput);
 	// parse never blocks
-	
+
 	int iFlags = iRunFlags & AssumeLocals ? KviKvsParser::AssumeLocals : 0;
 	if(iRunFlags & Pedantic)iFlags |= KviKvsParser::Pedantic;
-	
+
 	switch(m_pData->m_eType)
 	{
 		case Expression:
@@ -290,7 +290,7 @@ int KviKvsScript::executeInternal(KviKvsRunTimeContext * pContext)
 {
 	// lock this script
 	m_pData->m_uLock++;
-	
+
 	int iRunStatus = Success;
 
 	if(!m_pData->m_pTree->execute(pContext))
@@ -302,7 +302,7 @@ int KviKvsScript::executeInternal(KviKvsRunTimeContext * pContext)
 				iRunStatus |= HaltEncountered;
 		}
 	}
-	
+
 	// we can't block any longer: unlock
 	m_pData->m_uLock--;
 
@@ -337,12 +337,12 @@ int KviKvsScript::execute(KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVar
 	}
 
 	KviKvsRunTimeContext ctx(this,pWnd,pParams,pRetVal,pExtData);
-	
+
 	if(iRunFlags & Quiet)
 		ctx.disableReporting();
-	
+
 	int iRunStatus = executeInternal(&ctx);
-	
+
 	// don't forget to delete the params
 	if(bDeleteParams)delete pParams;
 	if(bDeleteRetVal)delete pRetVal;

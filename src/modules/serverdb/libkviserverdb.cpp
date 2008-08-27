@@ -196,7 +196,7 @@ static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 			return false; \
 		} \
 		\
-		KviServerDataBaseRecord * pRecord = g_pServerDataBase->findRecord(szNetName); \
+		KviNetwork * pRecord = g_pServerDataBase->findNetwork(szNetName); \
 		if(!pRecord) \
 		{ \
 			c->error(__tr2qs_ctx("The specified network does not exist","serverdb")); \
