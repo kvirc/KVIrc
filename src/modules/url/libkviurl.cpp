@@ -417,10 +417,13 @@ BanFrame::BanFrame(QWidget *parent, const char *name, bool banEnabled)
 	m_pEnable->setChecked(banEnabled);
 	g->addMultiCellWidget(m_pEnable,0,0,0,1);
 
-	m_pBanList = new KviTalListBox(this);
+	m_pBanList = new QListWidget(this);
 	m_pBanList->setMinimumHeight(100);
 	loadBanList();
-	for(KviStr *tmp=g_pBanList->first();tmp;tmp=g_pBanList->next()) m_pBanList->insertItem(tmp->ptr()); // load ban list into listbox
+	for(KviStr *tmp=g_pBanList->first();tmp;tmp=g_pBanList->next()) {
+		m_pBanList->addItem(tmp->ptr()); // load ban list into listbox
+	}
+
 	m_pBanList->setEnabled(m_pEnable->isChecked());
 	g->addMultiCellWidget(m_pBanList,1,1,0,1);
 
@@ -448,19 +451,17 @@ void BanFrame::addBan()
 	KviStr *text = new KviStr(QInputDialog::getText(__tr2qs("URL Ban List"),__tr2qs("Add"),QLineEdit::Normal,QString::null,&ok,this));
 	if (ok && !text->isEmpty()) {
 		g_pBanList->append(text);
-		m_pBanList->insertItem(text->ptr());
+		m_pBanList->addItem(text->ptr());
 	}
 }
 
 void BanFrame::removeBan()
 {
-	uint i = 0;
-	while ((!m_pBanList->isSelected(i)) && (i < m_pBanList->count())) i++;
-	if (!m_pBanList->isSelected(i)) {
+	if (!m_pBanList->currentItem()->isSelected()) {
 		QMessageBox::warning(0,__tr2qs("Warning - KVIrc"),__tr2qs("Select a ban."),QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return;
 	}
-	KviStr item(m_pBanList->text(i).toUtf8().data());
+	KviStr item(m_pBanList->currentItem()->text());
 	for(KviStr *tmp=g_pBanList->first();tmp;tmp=g_pBanList->next())
 	{
 		if (*tmp == item)
@@ -470,7 +471,7 @@ void BanFrame::removeBan()
 		}
 	}
 
-	m_pBanList->removeItem(i);
+	m_pBanList->removeItemWidget(m_pBanList->currentItem());
 
 }
 

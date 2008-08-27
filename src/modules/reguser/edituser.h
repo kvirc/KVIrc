@@ -29,10 +29,10 @@
 #include "kvi_selectors.h"
 #include "kvi_pointerhashtable.h"
 #include "kvi_tal_listview.h"
-#include "kvi_tal_listbox.h"
 #include "kvi_tal_popupmenu.h"
 #include <kvi_tal_tabdialog.h>
 
+#include <QListWidget>
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
@@ -79,7 +79,7 @@ protected:
 	QLineEdit * m_pNickEdit;
 	QLineEdit * m_pUserEdit;
 	QLineEdit * m_pHostEdit;
-	
+
 	virtual void closeEvent(QCloseEvent *);
 protected slots:
 	void okClicked();
@@ -98,7 +98,7 @@ protected:
 	QLineEdit          * m_pNameEdit;
 	QLineEdit          * m_pCommentEdit;
 
-	KviTalListBox      * m_pMaskListBox;
+	QListWidget        * m_pMaskListBox;
 
 	QPushButton        * m_pDelMaskButton;
 	QPushButton        * m_pEditMaskButton;
@@ -111,7 +111,7 @@ protected:
 	KviPixmapSelector  * m_pAvatarSelector;
 
 	KviPointerHashTable<QString,QString>     * m_pPropertyDict;
-	
+
 	QCheckBox          * m_pCustomColorCheck;
 	QColor             * m_pCustomColor;
 	KviColorSelector   * m_pCustomColorSelector;
@@ -132,7 +132,7 @@ protected slots:
 	void delMaskClicked();
 	void editMaskClicked();
 	void editAllPropertiesClicked();
-	void maskCurrentChanged(KviTalListBoxItem *it);
+	void maskCurrentChanged(QListWidgetItem *it);
 };
 
 #endif //_EDITUSER_H_

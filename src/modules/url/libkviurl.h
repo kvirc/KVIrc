@@ -40,6 +40,7 @@
 #include <QIcon>
 #include <QPixmap>
 #include <QCheckBox>
+#include <QListWidget>
 
 typedef struct _KviUrl
 {
@@ -89,10 +90,10 @@ public:
 	~BanFrame();
 	void saveBans();
 private:
-	QCheckBox *m_pEnable;
-	KviTalListBox *m_pBanList;
-	QPushButton *m_pAddBtn;
-	QPushButton *m_pRemoveBtn;
+	QCheckBox     *m_pEnable;
+	QListWidget   *m_pBanList;
+	QPushButton   *m_pAddBtn;
+	QPushButton   *m_pRemoveBtn;
 protected slots:
 	void enableClicked();
 	void addBan();

@@ -316,13 +316,13 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 {
 	m_pUser = r;
 	m_pCustomColor = new QColor();
-	
+
 	if(r)
 	{
 		QString col=r->getProperty("customColor");
 		KviStringConversion::fromString(col,(*m_pCustomColor));
 	}
-	
+
 	m_pPropertyDict = new KviPointerHashTable<QString,QString>(17,false);
 	m_pPropertyDict->setAutoDelete(true);
 
@@ -343,7 +343,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	l = new QLabel(__tr2qs("Comment:"),p1);
 	g->addWidget(l,1,0);
-	
+
 	m_pCommentEdit = new QLineEdit(p1);
 	g->addWidget(m_pCommentEdit,1,1);
 
@@ -354,8 +354,8 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	l = new QLabel(__tr2qs("Masks:"),p1);
 	g->addMultiCellWidget(l,3,3,0,1);
 
-	m_pMaskListBox = new KviTalListBox(p1);
-	connect(m_pMaskListBox,SIGNAL(currentChanged(KviTalListBoxItem *)),this,SLOT(maskCurrentChanged(KviTalListBoxItem *)));
+	m_pMaskListBox = new QListWidget(p1);
+	connect(m_pMaskListBox,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(maskCurrentChanged(QListWidgetItem *)));
 	m_pMaskListBox->setMinimumSize(300,200);
 
 	g->addMultiCellWidget(m_pMaskListBox,4,4,0,1);
@@ -432,7 +432,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	m_pCustomColorSelector = new KviColorSelector(p2,QString::null,m_pCustomColor,1);
 	g->addWidget(m_pCustomColorSelector,5,2);
-	
+
 	QPushButton * pb = new QPushButton(__tr2qs("All Properties..."),p2);
 	connect(pb,SIGNAL(clicked()),this,SLOT(editAllPropertiesClicked()));
 	g->addWidget(pb,6,2);
@@ -450,9 +450,9 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	QGroupBox * gb = new QGroupBox(__tr2qs("Ignore features"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),gb,SLOT(setEnabled(bool)));
-	
+
 	QVBoxLayout * layout = new QVBoxLayout(gb,20,3);
-	
+
 	m_pIgnoreQuery = new QCheckBox(__tr2qs("Ignore query-messages"),gb);
 	layout->addWidget(m_pIgnoreQuery);
 
@@ -492,7 +492,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 			mk += m->user();
 			mk += QChar('@');
 			mk += m->host();
-			m_pMaskListBox->insertItem(mk);
+			m_pMaskListBox->addItem(mk);
 		}
 
 		QString szNotifyNicks = r->getProperty("notify");
@@ -502,7 +502,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 			m_pNotifyNick->setText(szNotifyNicks);
 			m_pNotifyNick->setEnabled(true);
 		}
-		
+
 		if(r->propertyDict())
 		{
 			KviPointerHashTableIterator<QString,QString> it(*(r->propertyDict()));
@@ -516,7 +516,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 		m_pIgnoreEnabled->setChecked(r->ignoreEnagled());
 
 		gb->setEnabled(r->ignoreEnagled());
-		
+
 		m_pIgnoreQuery->setChecked(r->ignoreFlags() & KviRegisteredUser::Query);
 		m_pIgnoreChannel->setChecked(r->ignoreFlags() & KviRegisteredUser::Channel);
 		m_pIgnoreNotice->setChecked(r->ignoreFlags() & KviRegisteredUser::Notice);
@@ -546,7 +546,7 @@ KviRegisteredUserEntryDialog::~KviRegisteredUserEntryDialog()
 	delete m_pCustomColor;
 }
 
-void KviRegisteredUserEntryDialog::maskCurrentChanged(KviTalListBoxItem *it)
+void KviRegisteredUserEntryDialog::maskCurrentChanged(QListWidgetItem *it)
 {
 	m_pDelMaskButton->setEnabled(it);
 	m_pEditMaskButton->setEnabled(it);
@@ -583,7 +583,7 @@ void KviRegisteredUserEntryDialog::okClicked()
 
 	u = g_pLocalRegisteredUserDataBase->addUser(szNameOk);
 	u->setGroup(szGroup);
-	
+
 	if(!u)
 	{
 		// ops... no way
@@ -597,7 +597,7 @@ void KviRegisteredUserEntryDialog::okClicked()
 	idx = 0;
 	while(cnt > 0)
 	{
-		QString mask = m_pMaskListBox->text(idx);
+		QString mask = m_pMaskListBox->item(idx)->text();
 		KviIrcMask * mk = new KviIrcMask(mask);
 		g_pLocalRegisteredUserDataBase->removeMask(*mk);
 		g_pLocalRegisteredUserDataBase->addMask(u,mk);
@@ -605,7 +605,7 @@ void KviRegisteredUserEntryDialog::okClicked()
 		idx++;
 	}
 	u->setProperty("comment",m_pCommentEdit->text());
-	
+
 	m_pAvatarSelector->commit();
 
 	if(!m_pAvatar->isNull())
@@ -617,13 +617,13 @@ void KviRegisteredUserEntryDialog::okClicked()
 	if(m_pNotifyCheck->isChecked())
 	{
 		QString szNicks = m_pNotifyNick->text();
-	
+
 		if(!szNicks.isEmpty())
 		{
 			u->setProperty("notify",szNicks);
 		}
 	}
-	
+
 	m_pPropertyDict->remove("notify");
 	m_pPropertyDict->remove("avatar");
 
@@ -635,12 +635,12 @@ void KviRegisteredUserEntryDialog::okClicked()
 	}
 
 	u->setProperty("useCustomColor",m_pCustomColorCheck->isChecked());
-	
+
 	QString col;
 	KviStringConversion::toString(m_pCustomColorSelector->getColor(),col);
 	u->setProperty("customColor",col);
 
-	
+
 	int iIgnoreFlags=0;
 	u->setIgnoreEnabled(m_pIgnoreEnabled->isChecked());
 	if(m_pIgnoreQuery->isChecked())
@@ -672,26 +672,25 @@ void KviRegisteredUserEntryDialog::addMaskClicked()
 		m += mk.user();
 		m += QChar('@');
 		m += mk.host();
-		m_pMaskListBox->insertItem(m);
+		m_pMaskListBox->addItem(m);
 	}
 	delete dlg;
 }
 
 void KviRegisteredUserEntryDialog::delMaskClicked()
 {
-	int idx = m_pMaskListBox->currentItem();
-	if(idx == -1)return;
-	m_pMaskListBox->removeItem(idx);
+	if(m_pMaskListBox->currentItem()) {
+		delete m_pMaskListBox->currentItem();
+	}
 }
 
 void KviRegisteredUserEntryDialog::editMaskClicked()
 {
-	int idx = m_pMaskListBox->currentItem();
-	if(idx == -1)return;
-	KviStr szM = m_pMaskListBox->text(idx);
+	if(!m_pMaskListBox->currentItem())return;
+	QString szM = m_pMaskListBox->currentItem()->text();
 	if(szM.isEmpty())return;
 
-	KviIrcMask mk(szM.ptr());
+	KviIrcMask mk(szM);
 	KviReguserMaskDialog * dlg = new KviReguserMaskDialog(this,&mk);
 	if(dlg->exec() == QDialog::Accepted)
 	{
@@ -700,7 +699,7 @@ void KviRegisteredUserEntryDialog::editMaskClicked()
 		m += mk.user();
 		m += QChar('@');
 		m += mk.host();
-		m_pMaskListBox->changeItem(m,idx);
+		m_pMaskListBox->currentItem()->setText(m);
 	}
 	delete dlg;
 }
@@ -721,7 +720,7 @@ void KviRegisteredUserEntryDialog::editAllPropertiesClicked()
 	if(m_pNotifyCheck->isChecked())
 	{
 		QString szNicks = m_pNotifyNick->text();
-	
+
 		if(!szNicks.isEmpty())
 		{
 			m_pPropertyDict->replace("notify",new QString(szNicks));
