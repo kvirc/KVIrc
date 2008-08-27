@@ -323,6 +323,10 @@ General notes for the installation of the 4.0 release of KVIrc
         Compile KDE4 support. It will look for the KDE4 headers and libraries
         and if found it will enable the KDE4 support.
 
+    -DWITH_AUDIOFILE
+        Compile Audiofile support. It will look for Audiofile headers and libraries
+        and if found it will enable the Audiofile support.
+
     -DWITHOUT_SSL
         Disables the secure socket layer support. The SSL support is
         automatically enabled if OpenSSL is detected by CMake.
@@ -424,7 +428,6 @@ General notes for the installation of the 4.0 release of KVIrc
 
 # To add here and in main CMakeLists.txt
 COMPILE_ARTS_SUPPORT
-COMPILE_AUDIOFILE_SUPPORT
 COMPILE_DCC_CANVAS
 COMPILE_ESD_SUPPORT
 COMPILE_GET_INTERFACE_ADDRESS
