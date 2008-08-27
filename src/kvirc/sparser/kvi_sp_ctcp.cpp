@@ -1142,10 +1142,14 @@ void KviServerParser::parseCtcpRequestVersion(KviCtcpMessage *msg)
 		{
 			QString szVersion;
 
-#define QT4_TAG " (QT4) "
 
-
-			szVersion = "KVIrc " KVI_VERSION QT4_TAG " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - build ";
+			szVersion = "KVIrc " KVI_VERSION;
+			if(KviBuildInfo::buildRevision()!=QString::null)
+			{
+				szVersion+= " svn-";
+				szVersion+=KviBuildInfo::buildRevision();
+			}
+			szVersion += " '" KVI_RELEASE_NAME "' " KVI_SOURCES_DATE " - build ";
 			szVersion += KviBuildInfo::buildDate();
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			szVersion.append(QString(" - %1").arg(KviOsInfo::version()));

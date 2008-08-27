@@ -437,7 +437,7 @@ void KviUserListView::animatedAvatarUpdated()
 			rct.setY(curTop);
 			rct.setWidth(m_pViewArea->width());
 			rct.setHeight(e->m_iHeight);
-			
+
 			m_pViewArea->update(rct);
 		}
 		curTop = curBottom;
@@ -1567,20 +1567,17 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 		if(bottom >= r.top())
 		{
 			QColor * pClrFore = 0;
-			bool bColorAllocated=true;
 			if(e->m_bSelected)
 			{
 				QColor col=KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground);
 				col.setAlpha(150);
 				p.fillRect(0,theY,wdth,e->m_iHeight,col);
 				pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionForeground));
-				bColorAllocated = false;
 			} else if(KVI_OPTION_BOOL(KviOption_boolUseDifferentColorForOwnNick) && m_pListView->m_pKviWindow->connection())
 			{
 				if(e->m_szNick==m_pListView->m_pKviWindow->connection()->currentNickName())
 				{
 					pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewOwnForeground));
-					bColorAllocated = false;
 				}
 			}
 
@@ -1601,7 +1598,6 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 					if(e->m_iFlags == 0)
 					{
 						pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewNormalForeground));
-						bColorAllocated = false;
 					} else {
 						pClrFore = &(KVI_OPTION_COLOR((e->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 							KviOption_colorUserListViewChanOwnerForeground : ((e->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
@@ -1609,7 +1605,6 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 							KviOption_colorUserListViewOpForeground : ((e->m_iFlags & KVI_USERFLAG_HALFOP) ? \
 							KviOption_colorUserListViewHalfOpForeground : ((e->m_iFlags & KVI_USERFLAG_VOICE) ? \
 							KviOption_colorUserListViewVoiceForeground : KviOption_colorUserListViewUserOpForeground))))));
-						bColorAllocated = false;
 					}
 				}
 			}
@@ -1814,7 +1809,6 @@ void KviUserListViewArea::paintEvent(QPaintEvent *ev)
 					p.drawText(iAvatarAndTextX,theY,wdth - theX,fm.lineSpacing(),Qt::AlignLeft|Qt::AlignVCenter,e->m_szNick);
 				}
 			}
-			if(bColorAllocated) delete pClrFore;
 		}
 
 		theY = bottom;
