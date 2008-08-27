@@ -1,9 +1,5 @@
 # CMakeLists for src/modules/system
 
-SET(kvisystem_MOC_HDRS
-	plugin.h
-)
-
 SET(kvisystem_SRCS
 	libkvisystem.cpp
 	plugin.cpp
