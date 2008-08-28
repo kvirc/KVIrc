@@ -314,7 +314,8 @@ void KviIrcConnection::linkEstabilished()
 	// Switch STARTTLS support
 	if(KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable))
 	{
-		if(!target()->server()->useSSL()) checkCapSupport();
+		if(!target()->server()->useSSL())
+			checkCapSupport();
 	} else {
 #endif
 		loginToIrcServer();
@@ -917,7 +918,7 @@ void KviIrcConnection::checkStartTlsSupport(bool bEnable)
 		debug("Checking STARTTLS support...");
 		KviServer * pServer = target()->server();
 
-		if(pServer->useSTARTTLS())
+		if(pServer->useSTARTTLS() && !socket()->usingSSL())
 		{
 			debug("Sending STARTTLS command...");
 			if(!sendFmtData("STARTTLS"))
@@ -943,6 +944,7 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 		// Ok, the server supports STARTTLS protocol
 		// ssl handshake e switch del socket
 		debug("Starting SSL handshake...");
+		socket()->enterSSLMode(); // FIXME: this should be forwarded through KviIrcLink, probably
 	} else {
 		// The server does not support STARTTLS
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The server does not support STARTTLS command. Your connection will NOT be encrypted"));

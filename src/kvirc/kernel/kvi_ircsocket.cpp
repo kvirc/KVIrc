@@ -497,22 +497,32 @@ void KviIrcSocket::connectedToIrcServer()
 #ifdef COMPILE_SSL_SUPPORT
 	if(m_pIrcServer->useSSL())
 	{
-		m_pSSL = KviSSLMaster::allocSSL(m_pConsole,m_sock,KviSSL::Client);
-		if(!m_pSSL)
-		{
-			raiseSSLError();
-			raiseError(KviError_SSLError);
-			reset();
-			return;
-		}
-		setState(SSLHandshake);
-		doSSLHandshake(0);
+		enterSSLMode();
 		return;
 	}
-#endif
+#endif //COMPILE_SSL_SUPPORT
 	linkUp();
 }
 
+#ifdef COMPILE_SSL_SUPPORT
+
+void KviIrcSocket::enterSSLMode()
+{
+	Q_ASSERT(!m_pSSL); // Don't call this function twice in a session
+
+	m_pSSL = KviSSLMaster::allocSSL(m_pConsole,m_sock,KviSSL::Client);
+	if(!m_pSSL)
+	{
+		raiseSSLError();
+		raiseError(KviError_SSLError);
+		reset();
+		return;
+	}
+	setState(SSLHandshake);
+	doSSLHandshake(0);
+}
+
+#endif //COMPILE_SSL_MODE
 
 void KviIrcSocket::readProxyData(int)
 {

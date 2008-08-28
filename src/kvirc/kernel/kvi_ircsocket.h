@@ -118,7 +118,12 @@ public:
 	SocketState state(){ return m_state; };
 	bool isConnected(){ return m_state == Connected; };
 	int startConnection(KviServer * srv,KviProxy * prx = 0,const char * bindAddress = 0);
-
+#ifdef COMPILE_SSL_SUPPORT
+	///
+	/// Called either internally or from outside to enter SSL connection mode.
+	///
+	void enterSSLMode();
+#endif // COMPILE_SSL_SUPPORT
 	bool sendPacket(KviDataBuffer * pData);
 	void abort();
 	bool getLocalHostIp(QString &szIp,bool bIPv6);
@@ -135,7 +140,7 @@ protected:
 	void raiseSSLError();
 	void printSSLPeerCertificate();
 	void printSSLCipherInfo();
-#endif
+#endif // COMPILE_SSL_SUPPORT
 	bool sendRawData(const char *buffer,int buflen);
 	void raiseError(int iError);
 	void connectionEstabilished();

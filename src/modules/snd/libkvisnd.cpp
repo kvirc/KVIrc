@@ -177,8 +177,11 @@ void KviSoundPlayer::detectSoundSystem()
 {
 #ifdef COMPILE_PHONON_SUPPORT
 	if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::MusicCategory);
-	if(g_pPhononPlayer->state()!=Phonon::ErrorState) KVI_OPTION_STRING(KviOption_stringSoundSystem) = "phonon";
-	return;
+	if(g_pPhononPlayer->state() != Phonon::ErrorState)
+	{
+		KVI_OPTION_STRING(KviOption_stringSoundSystem) = "phonon";
+		return;
+	}
 #endif
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "winmm";
@@ -366,7 +369,7 @@ void KviSoundThread::run()
 }
 
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#ifdef COMPILE_OSS_SUPPORT
 		#ifdef COMPILE_AUDIOFILE_SUPPORT
 			KviOssAudiofileSoundThread::KviOssAudiofileSoundThread(const QString &szFileName)
