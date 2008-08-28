@@ -182,7 +182,7 @@ int KviPlugin::call(const QString& pszFunctionName, int argc, char * argv[], cha
 {
 	int r;
 	plugin_function function_call;
-	function_call = (plugin_function)m_pLibrary->resolve(pszFunctionName);
+	function_call = (plugin_function)m_pLibrary->resolve(pszFunctionName.toUtf8().data());
 	if (!function_call)
 	{
 		return -1;
