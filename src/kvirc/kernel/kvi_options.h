@@ -317,8 +317,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPrependAvatarInfoToRealname 223
 #define KviOption_boolEnableAnimatedAvatars 224
 #define KviOption_boolEnableAnimatedSmiles 225
+#define KviOption_boolPlaceNickWithNonAlphaCharsAtEnd 226
 
-#define KVI_NUM_BOOL_OPTIONS 226
+#define KVI_NUM_BOOL_OPTIONS 227
 
 
 

@@ -293,7 +293,7 @@ namespace KviQString
 		return 0; // never here
 	}
 
-	int cmpCI(const QString &sz1,const QString &sz2)
+	int cmpCI(const QString &sz1,const QString &sz2,bool nonAlphaGreater)
 	{
 		const QChar * c1 = sz1.unicode();
 		const QChar * c2 = sz2.unicode();
@@ -309,6 +309,14 @@ namespace KviQString
 
 		for(;;)
 		{
+			if(nonAlphaGreater) {
+				if(c1->isLetterOrNumber() && !c2->isLetterOrNumber()) {
+					return -1;
+				} else if(!c1->isLetterOrNumber() && c2->isLetterOrNumber()) {
+					return 1;
+				}
+			}
+
 			if(c1 >= c1e)
 			{
 				if(c2 < c2e)return /* 0 */ - (c2->toLower().unicode());

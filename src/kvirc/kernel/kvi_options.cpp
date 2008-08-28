@@ -309,7 +309,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("PickRandomIpAddressForRoundRobinServers",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("PrependAvatarInfoToRealname",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("EnableAnimatedAvatars",true,KviOption_sectFlagGui | KviOption_resetUpdateGui),
-	BOOL_OPTION("EnableAnimatedSmiles",true,KviOption_sectFlagGui | KviOption_resetUpdateGui)
+	BOOL_OPTION("EnableAnimatedSmiles",true,KviOption_sectFlagGui | KviOption_resetUpdateGui),
+	BOOL_OPTION("PlaceNickWithNonAlphaCharsAtEnd",true,KviOption_sectFlagGui | KviOption_resetUpdateGui)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

@@ -47,7 +47,7 @@ KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(Q
 	createLayout();
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font:","options"),KviOption_fontUserListView);
-	
+
 	KviTalGroupBox * g = addGroupBox(0,1,1,1,Qt::Horizontal,__tr2qs_ctx("Nickname Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorUserListViewNormalForeground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorUserListViewSelectionForeground);
@@ -58,7 +58,7 @@ KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(Q
 	addColorSelector(g,__tr2qs_ctx("Voice:","options"),KviOption_colorUserListViewVoiceForeground);
 	addColorSelector(g,__tr2qs_ctx("User-op:","options"),KviOption_colorUserListViewUserOpForeground);
 	addColorSelector(g,__tr2qs_ctx("Away:","options"),KviOption_colorUserListViewAwayForeground);
-	
+
 	KviTalHBox * hb = new KviTalHBox(g);
 	hb->setSpacing(4);
 	KviBoolSelector * b = addBoolSelector(hb,__tr2qs_ctx("Use different color for own nick:","options"),KviOption_boolUseDifferentColorForOwnNick);
@@ -109,7 +109,7 @@ void KviUserListGridOptionsWidget::commit()
 	KVI_OPTION_UINT(KviOption_uintUserListViewGridType) = m_pGridTypeCombo->currentIndex();
 	if(KVI_OPTION_UINT(KviOption_uintUserListViewGridType) > KVI_USERLISTVIEW_GRIDTYPE_MAXIMUM)
 		KVI_OPTION_UINT(KviOption_uintUserListViewGridType) = KVI_USERLISTVIEW_GRIDTYPE_DEFAULT;
-	
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -129,21 +129,21 @@ KviUserListLookBackgroundOptionsWidget::KviUserListLookBackgroundOptionsWidget(Q
 	addLabel(0,2,0,2,__tr2qs_ctx("Horizontal Alignment:","options"));
 	m_pHorizontalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pHorizontalAlign,1,2,1,2);
-	
+
 	addLabel(0,3,0,3,__tr2qs_ctx("Vertical Alignment:","options"));
 	m_pVerticalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pVerticalAlign,1,3,1,3);
-	
+
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Left","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Right","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Center","options"));
-	
+
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Tile","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Top","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Bottom","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Center","options"));
-	
+
 	switch( KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign) & Qt::AlignHorizontal_Mask)
 	{
 		case Qt::AlignLeft:
@@ -158,7 +158,7 @@ KviUserListLookBackgroundOptionsWidget::KviUserListLookBackgroundOptionsWidget(Q
 		default:
 			m_pHorizontalAlign->setCurrentIndex(0);
 	}
-	
+
 	switch( KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign) & Qt::AlignVertical_Mask)
 	{
 		case Qt::AlignTop:
@@ -213,7 +213,7 @@ void KviUserListLookBackgroundOptionsWidget::commit()
 			iFlags|=Qt::AlignVCenter;
 			break;
 	}
-	
+
 	KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign)=iFlags;
 }
 
@@ -232,8 +232,9 @@ KviUserListFeaturesOptionsWidget::KviUserListFeaturesOptionsWidget(QWidget * par
 	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable user tooltips","options"),KviOption_boolShowUserListViewToolTips);
 	b = addBoolSelector(0,5,0,5,__tr2qs_ctx("Show avatars in userlist","options"),KviOption_boolShowAvatarsInUserlist);
 	b = addBoolSelector(0,6,0,6,__tr2qs_ctx("Enable animated avatars","options"),KviOption_boolEnableAnimatedAvatars);
+	b = addBoolSelector(0,7,0,7,__tr2qs_ctx("Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the normal nicks","options"),KviOption_boolPlaceNickWithNonAlphaCharsAtEnd);
 
-	addRowSpacer(0,7,0,7);
+	addRowSpacer(0,8,0,8);
 }
 
 KviUserListFeaturesOptionsWidget::~KviUserListFeaturesOptionsWidget()

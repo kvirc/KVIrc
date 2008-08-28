@@ -645,7 +645,9 @@ void KviUserListView::insertUserEntry(const QString &nick,KviUserListEntry * e)
 		} // else it is chan owner, so nothing to skip: the chan owners are first in the list
 
 		// now strcmp within the current user-flag group...
-		while(entry && (KviQString::cmpCI(entry->m_szNick,e->m_szNick) < 0) &&
+		while(entry && (KviQString::cmpCI(entry->m_szNick,e->m_szNick,
+				KVI_OPTION_BOOL(KviOption_boolPlaceNickWithNonAlphaCharsAtEnd)
+				) < 0) &&
 				((entry->m_iFlags & flag) || (flag == 0)))
 		{
 			if(entry == m_pTopItem)bGotTopItem = true;
