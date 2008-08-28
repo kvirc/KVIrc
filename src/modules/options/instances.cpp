@@ -32,8 +32,8 @@
 #include "optw_avatar.h"
 #include "optw_away.h"
 #include "optw_connection.h"
-#include "optw_ctcp.h"
 #include "optw_ctcpfloodprotection.h"
+#include "optw_ctcp.h"
 #include "optw_dcc.h"
 #include "optw_generalopt.h"
 #include "optw_highlighting.h"
@@ -116,14 +116,14 @@ KviOptionsWidget * classKviIdentOptionsWidget_createInstanceProc(QWidget * paren
 	return new KviIdentOptionsWidget(parent);
 }
 
-KviOptionsWidget * classKviCtcpOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviCtcpOptionsWidget(parent);
-}
-
 KviOptionsWidget * classKviCtcpFloodProtectionOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviCtcpFloodProtectionOptionsWidget(parent);
+}
+
+KviOptionsWidget * classKviCtcpOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviCtcpOptionsWidget(parent);
 }
 
 KviOptionsWidget * classKviDccOptionsWidget_createInstanceProc(QWidget * parent)
@@ -499,10 +499,10 @@ static const char * g_szName_KviTransportOptionsWidget = KVI_OPTIONS_WIDGET_NAME
 static const char * g_szClassName_KviTransportOptionsWidget = "KviTransportOptionsWidget";
 static const char * g_szName_KviIdentOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIdentOptionsWidget;
 static const char * g_szClassName_KviIdentOptionsWidget = "KviIdentOptionsWidget";
-static const char * g_szName_KviCtcpOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviCtcpOptionsWidget;
-static const char * g_szClassName_KviCtcpOptionsWidget = "KviCtcpOptionsWidget";
 static const char * g_szName_KviCtcpFloodProtectionOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviCtcpFloodProtectionOptionsWidget;
 static const char * g_szClassName_KviCtcpFloodProtectionOptionsWidget = "KviCtcpFloodProtectionOptionsWidget";
+static const char * g_szName_KviCtcpOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviCtcpOptionsWidget;
+static const char * g_szClassName_KviCtcpOptionsWidget = "KviCtcpOptionsWidget";
 static const char * g_szName_KviDccOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccOptionsWidget;
 static const char * g_szClassName_KviDccOptionsWidget = "KviDccOptionsWidget";
 static const char * g_szName_KviDccGeneralOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviDccGeneralOptionsWidget;
