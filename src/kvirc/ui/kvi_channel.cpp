@@ -1195,8 +1195,18 @@ void KviChannel::ownMessage(const QString &buffer)
 void KviChannel::ownAction(const QString &buffer)
 {
 	if(!connection())return;
+        QString szTmpBuffer;
+
+	//see bug ticket #220
+	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
+	{
+		szTmpBuffer = KviMircCntrl::stripControlBytes(buffer);
+	} else {
+		szTmpBuffer = buffer;
+	}
+
 	KviQCString szName = connection()->encodeText(m_szName);
-	KviQCString szData = encodeText(buffer);
+	KviQCString szData = encodeText(szTmpBuffer);
 	const char * d = szData.data();
 	if(!d)return;
 	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,QString(d),QString(szName.data())))return;
@@ -1204,7 +1214,7 @@ void KviChannel::ownAction(const QString &buffer)
 	QString szBuffer = "\r!nc\r";
 	szBuffer += connection()->currentNickName();
 	szBuffer += "\r ";
-	szBuffer += buffer;
+	szBuffer += szTmpBuffer;
 	outputMessage(KVI_OUT_ACTION,szBuffer);
 	userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
 }

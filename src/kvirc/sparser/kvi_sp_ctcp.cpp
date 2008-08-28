@@ -1416,6 +1416,10 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 		pOut = KVI_OPTION_BOOL(KviOption_boolExternalMessagesToActiveWindow) ? msg->msg->console()->activeWindow() : msg->msg->console();
 	}
 
+	//see bug ticket #220 
+	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
+		szData = KviMircCntrl::stripControlBytes(szData);
+
 	if(KVS_TRIGGER_EVENT_5_HALTED(KviEvent_OnAction,pOut,
 				msg->pSource->nick(),
 				msg->pSource->user(),

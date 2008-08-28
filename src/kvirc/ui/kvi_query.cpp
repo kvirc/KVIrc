@@ -732,14 +732,25 @@ void KviQuery::ownAction(const QString &buffer)
 	{
 		outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This query has no active targets, no message sent"));
 	} else {
-		KviQCString szBuffer = encodeText(buffer);
-		if(!szBuffer.data())return;
+
+		if(buffer.isEmpty())return;
+		QString szTmpBuffer;
+		//see bug ticket #220
+		if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
+		{
+			szTmpBuffer = KviMircCntrl::stripControlBytes(buffer);
+		} else {
+			szTmpBuffer = buffer;
+		}
+
+		KviQCString szBuffer = encodeText(szTmpBuffer);
+
 		KviQCString sz = connection()->encodeText(windowName());
 		if(sz.isEmpty())return;
 		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,QString(szBuffer.data()),QString(sz.data())))return;
 		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",
 			sz.data(),0x01,szBuffer.data(),0x01))return;
-		output(KVI_OUT_ACTION,"\r!nc\r%Q\r %Q",&(connection()->currentNickName()),&buffer);
+		output(KVI_OUT_ACTION,"\r!nc\r%Q\r %Q",&(connection()->currentNickName()),&szTmpBuffer);
 		m_pUserListView->userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
 	}
 }
