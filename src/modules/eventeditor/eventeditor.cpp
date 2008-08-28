@@ -294,6 +294,8 @@ void KviEventEditor::saveLastEditedItem()
 	if(!m_pLastEditedItem)return;
 
 	QString buffer = m_pNameEditor->text();
+	//not-so elaborate fix for #218, we'd better rework this
+	buffer.replace(QRegExp("[^A-Za-z0-9_]"), "");
 	if(!KviQString::equalCI(buffer,m_pLastEditedItem->m_szName))
 	{
 		getUniqueHandlerName((KviEventListViewItem *)(m_pLastEditedItem->parent()),buffer);
