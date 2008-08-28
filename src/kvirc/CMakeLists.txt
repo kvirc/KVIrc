@@ -314,14 +314,13 @@ ELSE()
 ENDIF()
 
 IF(MINGW)
-        # resource compilation for mingw
-        ADD_CUSTOM_COMMAND(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o
-          COMMAND windres.exe -I${CMAKE_SOURCE_DIR}/data/resources_win32/ -i${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.rc -o${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/data/resources_win32
-        )
-        LIST(APPEND kvirc_SRCS ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o)
+	# resource compilation for mingw
+	ADD_CUSTOM_COMMAND(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o
+		COMMAND windres.exe -I${CMAKE_SOURCE_DIR}/data/resources_win32/ -i${CMAKE_SOURCE_DIR}/data/resources_win32/kvirc.rc -o${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o
+		WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/data/resources_win32
+	)
+	LIST(APPEND kvirc_SRCS ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o)
 ENDIF()
-
 
 ADD_EXECUTABLE(${KVIRC_BINARYNAME} ${kvirc_SRCS} ${kvirc_MOC_SRCS})
 
@@ -337,11 +336,11 @@ ENDIF()
 TARGET_LINK_LIBRARIES(${KVIRC_BINARYNAME} ${KVILIB_BINARYNAME} ${LIBS})
 
 IF(MINGW)
-        IF(WANT_DEBUG)
-        	SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc" ENABLE_EXPORTS ON)
-        ELSE()
-        	SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -mwindows" ENABLE_EXPORTS ON)
-        ENDIF()
+	IF(WANT_DEBUG)
+		SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc" ENABLE_EXPORTS ON)
+	ELSE()
+		SET_TARGET_PROPERTIES(${KVIRC_BINARYNAME} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -mwindows" ENABLE_EXPORTS ON)
+	ENDIF()
 ENDIF()
 
 IF(MSVC)

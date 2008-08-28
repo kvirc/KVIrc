@@ -630,14 +630,14 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 #endif
 	m_pUseSSLCheck->setChecked(s->useSSL());
 
-	m_pUseSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Use STARTTLS protocol","options"),tab);
-	gl->addWidget(m_pUseSTARTTLSCheck,5,0,1,2);
-	KviTalToolTip::add(m_pUseSTARTTLSCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Transport Layer Security</b> " \
-		"encryption support. Obviously, this server must have support for this, too. :)</center>","options"));
+	m_pSupportsSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Supports STARTTLS protocol","options"),tab);
+	gl->addWidget(m_pSupportsSTARTTLSCheck,5,0,1,2);
+	KviTalToolTip::add(m_pSupportsSTARTTLSCheck,__tr2qs_ctx("<center>This check marks the server as dynamically supporting the <b>Transport Layer Security</b> " \
+		"protocol. If you enable the proper global option in the Connection/SSL tab, the TLS protocol will be used for this server.</center>","options"));
 #ifndef COMPILE_SSL_SUPPORT
-	m_pUseSTARTTLSCheck->setEnabled(false);
+	m_pSupportsSTARTTLSCheck->setEnabled(false);
 #endif
-	m_pUseSTARTTLSCheck->setChecked(s->useSTARTTLS());
+	m_pSupportsSTARTTLSCheck->setChecked(s->supportsSTARTTLS());
 
 	m_pUseAutoConnect = new QCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
@@ -905,6 +905,8 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 		s->setCacheIp(m_pCacheIpCheck->isChecked());
 	if(m_pUseSSLCheck)
 		s->setUseSSL(m_pUseSSLCheck->isChecked());
+	if(m_pSupportsSTARTTLSCheck)
+		s->setSupportsSTARTTLS(m_pSupportsSTARTTLSCheck->isChecked());
 	if(m_pIdEditor)
 		s->setId(m_pIdEditor->text());
 	if(s->id().isEmpty())s->generateUniqueId();

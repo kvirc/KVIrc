@@ -193,7 +193,7 @@ bool KviServerDataBase::makeCurrentServer(KviServerDefinition * d,QString &szErr
 				{
 					if(d->bIPv6 == srv->isIPv6())
 					{
-						if((d->bSSL == srv->useSSL()) || (d->bSTARTTLS == srv->useSTARTTLS()))
+						if((d->bSSL == srv->useSSL()) || (d->bSTARTTLS == srv->supportsSTARTTLS()))
 						{
 							if(d->bPortIsValid)
 							{
@@ -308,7 +308,7 @@ search_finished:
 	s->m_szInitUMode = d->szInitUMode;
 	s->setIPv6(d->bIPv6);
 	s->setUseSSL(d->bSSL);
-	s->setUseSTARTTLS(d->bSTARTTLS);
+	s->setSupportsSTARTTLS(d->bSTARTTLS);
 	r->insertServer(s);
 	m_szCurrentNetwork = r->name();
 	r->setCurrentServer(s);

@@ -299,25 +299,30 @@ void KviIrcConnection::linkEstabilished()
 	m_pStatistics->setLastMessageTime(kvi_unixTime());
 	m_pServerInfo->setName(target()->server()->m_szHostname);
 
+	// FIXME: With STARTTLS this is called TWICE!
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor *m =l->first();m;m =l->next())
 			m->connectionInitiated();
 	}
 
+	// FIXME: With STARTTLS this is called TWICE!
 	context()->connectionEstabilished();
 
-	// Ok...we're loggin in now
-	resolveLocalHost();
-
 #ifdef COMPILE_SSL_SUPPORT
-	// Switch STARTTLS support
-	if(KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable))
+	if(
+			KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable) &&
+			target()->server()->supportsSTARTTLS() &&
+			(!socket()->usingSSL())
+		)
 	{
-		if(!target()->server()->useSSL())
-			checkCapSupport();
+		trySTARTTLS();
 	} else {
 #endif
+
+		// Ok...we're loggin in now
+		resolveLocalHost();
+
 		loginToIrcServer();
 #ifdef COMPILE_SSL_SUPPORT
 	}
@@ -909,31 +914,22 @@ void KviIrcConnection::closeCap()
 }
 
 #ifdef COMPILE_SSL_SUPPORT
-void KviIrcConnection::checkStartTlsSupport(bool bEnable)
+void KviIrcConnection::trySTARTTLS()
 {
-	if(bEnable)
+	// Check if the server supports STARTTLS protocol and we want to
+	// connect through it
+	debug("Checking STARTTLS support...");
+	KviServer * pServer = target()->server();
+
+	if(pServer->supportsSTARTTLS())
 	{
-		// Check if the server supports STARTTLS protocol and we want to
-		// connect through it
-		debug("Checking STARTTLS support...");
-		KviServer * pServer = target()->server();
-
-		if(pServer->useSTARTTLS() && !socket()->usingSSL())
+		debug("Sending STARTTLS command...");
+		if(!sendFmtData("STARTTLS"))
 		{
-			debug("Sending STARTTLS command...");
-			if(!sendFmtData("STARTTLS"))
-			{
-				// Cannot send command
-				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"));
-				return;
-			}
+			// Cannot send command
+			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"));
+			return;
 		}
-	} else {
-		// Server does not support TLS
-		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The IRC server does not support TLS encryption. Your connection will NOT be encrypted"));
-
-		// Close CAP
-		closeCap();
 	}
 }
 
@@ -949,8 +945,7 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 		// The server does not support STARTTLS
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The server does not support STARTTLS command. Your connection will NOT be encrypted"));
 
-		// Close CAP
-		closeCap();
+		loginToIrcServer();
 	}
 }
 #endif // COMPILE_SSL_SUPPORT

@@ -218,7 +218,7 @@ protected:
 	void checkCapSupport();
 	void closeCap();
 #ifdef COMPILE_SSL_SUPPORT
-	void checkStartTlsSupport(bool bEnable);
+	void trySTARTTLS();
 	void enableStartTlsSupport(bool bEnable);
 #endif
 	void loginToIrcServer();

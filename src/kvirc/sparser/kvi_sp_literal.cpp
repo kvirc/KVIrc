@@ -1888,5 +1888,5 @@ void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
 		if(szList.contains("tls")) bEnable = true;
 	}
 
-	msg->connection()->checkStartTlsSupport(bEnable);
+	//msg->connection()->checkStartTlsSupport(bEnable);
 }
