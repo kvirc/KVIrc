@@ -697,7 +697,11 @@ void KviRegisteredUsersDialog::exportClicked()
 
 	while ( it.current() ) {
 		KviRegisteredUsersDialogItemBase *pBase = (KviRegisteredUsersDialogItemBase *)(it.current());
-		if(pBase->type()!=KviRegisteredUsersDialogItemBase::User) continue;
+		if(pBase->type()!=KviRegisteredUsersDialogItemBase::User)
+		{
+			++it;
+			continue;
+		}
 		KviRegisteredUser * u = ((KviRegisteredUsersDialogItem *)(it.current()))->user();
 		QString szName = u->name();
 		if(u)
