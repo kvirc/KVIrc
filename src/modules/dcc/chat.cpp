@@ -378,12 +378,21 @@ void KviDccChat::ownAction(const QString &text)
 {
 	if(m_pSlaveThread)
 	{
-		KviQCString szData = encodeText(text);
+		QString szTmpBuffer;
+		//see bug ticket #220
+		if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
+		{
+			szTmpBuffer = KviMircCntrl::stripControlBytes(text);
+		} else {
+			szTmpBuffer = text;
+		}
+
+		KviQCString szData = encodeText(szTmpBuffer);
 		const char * d = szData.data();
 		if(!d)return;
 		KviStr buf(KviStr::Format,"%cACTION %s%c\r\n",0x01,d,0x01);
 		m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
-		output(KVI_OUT_ACTION,"%Q %Q",&(m_pDescriptor->szLocalNick),&text);
+		output(KVI_OUT_ACTION,"%Q %Q",&(m_pDescriptor->szLocalNick),&szTmpBuffer);
 	} else {
 		output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("Cannot send data: No active connection","dcc"));
 	}
