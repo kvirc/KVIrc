@@ -221,6 +221,7 @@ private:
 	void parseLiteralError(KviIrcMessage *msg);
 	void parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannel * chan,KviStr &modefl,KviIrcMessage *msg,int curParam);
 	void parseUserMode(KviIrcMessage *msg,const char * modeflptr);
+	void parseLiteralCap(KviIrcMessage * msg);
 
 	void parseCtcpRequest(KviCtcpMessage *msg);
 	void parseCtcpReply(KviCtcpMessage *msg);
@@ -245,10 +246,8 @@ private:
 	void parseCtcpReplyPing(KviCtcpMessage *msg);
 	void parseCtcpReplyLagcheck(KviCtcpMessage *msg);
 //	void parseCtcpReply(const char * msg_ptr,KviIrcUser &source,const char * target);
-
 	// STARTTLS support
-	void parseNumericStartTlsOk(KviIrcMessage * msg);
-	void parseNumericStartTlsFail(KviIrcMessage * msg);
+	void parseNumericStartTls(KviIrcMessage * msg);
 public:
 	static void encodeCtcpParameter(const char * param,KviStr &buffer,bool bSpaceBreaks = true);
 	static void encodeCtcpParameter(const char * param,QString &buffer,bool bSpaceBreaks = true);

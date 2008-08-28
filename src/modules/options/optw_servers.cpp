@@ -134,8 +134,8 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	m_pUserEditor->setText(n->userName());
 
 	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to servers on this network.\n" \
-			"If this field is left empty (most common case), KVIrc will use the default username " \
-			"specified in the \"Identity\" options tab.</center>","options"));
+		"If this field is left empty (most common case), KVIrc will use the default username " \
+		"specified in the \"Identity\" options tab.</center>","options"));
 
 
 	l = new QLabel(__tr2qs_ctx("Nickname:","options"),gbox);
@@ -144,13 +144,13 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	m_pNickEditor->setValidator(v);
 	m_pNickEditor->setText(n->nickName());
 	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to the servers on this network.<br>" \
-			"If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
+		"If this field is left empty (most common case), the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
 	m_pRealEditor = new QLineEdit(gbox);
 	m_pRealEditor->setText(n->realName());
 	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with the servers on this network.<br>" \
-			"If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
+		"If you leave this field empty (most common case), the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
 
 	//server encoding
 
@@ -160,9 +160,9 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	m_pEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pEncodingEditor,1,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
-			"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
-			"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
-			"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
+		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
+		"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
+		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 
 	//text encoding
 
@@ -172,9 +172,9 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
 	gl->addWidget(m_pTextEncodingEditor,2,1);
 	KviTalToolTip::add(m_pTextEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for the servers in this network. " \
-			"This encoding will be used as the default for text messages." \
-			"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
-			"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
+		"This encoding will be used as the default for text messages." \
+		"If you choose \"Use System Encoding\" then the encoding will be set to the systemwide " \
+		"value that you choose in the \"Encoding\" page of the options dialog.</center>","options"));
 
 	//common between server encoding and text encoding
 
@@ -241,9 +241,9 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	m_pOnConnectEditor->setText(n->onConnectCommand());
 	m_pOnConnectEditor->setMinimumHeight(150);
 	KviTalToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("<center>The following commands will be executed after a connection to a server in this network has been established.<br>" \
-				"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>"\
-				"KVIrc will first send the USER command, then eventually PASS and NICK and then execute this " \
-				"command sequence.</center>","options"));
+		"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>"\
+		"KVIrc will first send the USER command, then eventually PASS and NICK and then execute this " \
+		"command sequence.</center>","options"));
 
 	tw->addTab(tab,__tr2qs_ctx("On Connect","options"));
 
@@ -454,7 +454,7 @@ void KviNetworkDetailsWidget::fillData(KviNetwork * n)
 
 
 KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
-    : QDialog(par)//,"server_details",true)
+: QDialog(par)
 {
 	setModal(true);
 	setObjectName("server_details");
@@ -480,7 +480,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 //	g->addMultiCellWidget(m_pDescEditor,1,1,1,3);
 	m_pDescEditor->setText(s->description());
 	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>This is a brief description of this server. " \
-			"This field has no restrictions but many server lists use it to describe the server's physical location</center>","options"));
+		"This field has no restrictions but many server lists use it to describe the server's physical location</center>","options"));
 
 	// Identity tab
 
@@ -498,9 +498,9 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pUserEditor = new QLineEdit(gbox);
 	m_pUserEditor->setText(s->userName());
 	KviTalToolTip::add(m_pUserEditor,__tr2qs_ctx("<center>This is the <b>username</b> that KVIrc will use to login to this server.\n" \
-			"If this field is left empty (most common case), KVIrc will first look if an username is specified " \
-			"for the network that this server belongs to, and if that is empty then KVIrc will use the default username " \
-			"specified in the \"Identity\" options tab.</center>","options"));
+		"If this field is left empty (most common case), KVIrc will first look if an username is specified " \
+		"for the network that this server belongs to, and if that is empty then KVIrc will use the default username " \
+		"specified in the \"Identity\" options tab.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
 	m_pPassEditor = new QLineEdit(gbox);
@@ -514,21 +514,21 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pNickEditor->setValidator(v);
 	m_pNickEditor->setText(s->nickName());
 	KviTalToolTip::add(m_pNickEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>nickname</b> that will be used to log in to this server.<br>" \
-			"If this field is left empty (most common case), KVIrc will first look if a nickname is specified " \
-			"for the network that this server belongs to, and if that is empty then the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
+		"If this field is left empty (most common case), KVIrc will first look if a nickname is specified " \
+		"for the network that this server belongs to, and if that is empty then the default nickname (specified in the \"Identity\" settings) will be used.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Real name:","options"),gbox);
 	m_pRealEditor = new QLineEdit(gbox);
 	m_pRealEditor->setText(s->realName());
 	KviTalToolTip::add(m_pRealEditor,__tr2qs_ctx("<center>You can specify a \"special\" <b>real name</b> that will be used to login with this server.<br>" \
-			"If you leave this field empty (most common case), KVIrc will first look if a real name is specified " \
-			"for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
+		"If you leave this field empty (most common case), KVIrc will first look if a real name is specified " \
+		"for the network that this server belongs to, and if that is empty the default \"real name\" (specified in the \"Identity\" settings) will be used.</center>","options"));
 	gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("User Mode","options"),tab);
 	gl->addWidget(gbox,1,0);
 
 	m_pUseDefaultInitUMode = new QCheckBox(__tr2qs_ctx("Use default user mode","options"),gbox);
 	KviTalToolTip::add(m_pUseDefaultInitUMode,__tr2qs_ctx("<center>If this is enabled, the global initial <b>user mode</b> (configured from"\
-			" the identity dialog) will be used. If disabled, you can configure an initial user mode for this server","options"));
+		" the identity dialog) will be used. If disabled, you can configure an initial user mode for this server","options"));
 	bool bHasUmode = !(s->initUMode().isEmpty());
 	KviStr szDefUMode = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
 	m_pUseDefaultInitUMode->setChecked(!bHasUmode);
@@ -578,9 +578,9 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pIpEditor = new KviIpEditor(tab,KviIpEditor::IPv4);
 	gl->addWidget(m_pIpEditor,1,1);
 	KviTalToolTip::add(m_pIpEditor,__tr2qs_ctx("<center>This is the <b>IP address</b> of this server, it is here for caching purposes.<br>" \
-			"If you leave this field empty, KVIrc will fill it in the first time it connects to the server. " \
-			"If you enable the \"cache IP address\" option below, KVIrc will use it as a \"cached result\" " \
-			"and avoid looking it up again.</center>","options"));
+		"If you leave this field empty, KVIrc will fill it in the first time it connects to the server. " \
+		"If you enable the \"cache IP address\" option below, KVIrc will use it as a \"cached result\" " \
+		"and avoid looking it up again.</center>","options"));
 #ifdef COMPILE_IPV6_SUPPORT
 	m_pIpEditor->setAddressType(s->isIPv6() ? KviIpEditor::IPv6 : KviIpEditor::IPv4);
 #else
@@ -600,13 +600,12 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	gl->addWidget(m_pCacheIpCheck,2,0,1,2);
 //	gl->addMultiCellWidget(m_pCacheIpCheck,2,2,0,1);
 	KviTalToolTip::add(m_pCacheIpCheck,__tr2qs_ctx("<center>This check will enable <b>IP address caching</b> for this server:<br>" \
-			"DNS lookups can be time-consuming and might be blocking on some platforms; " \
-			"this option will cause KVIrc to look up the server hostname only once.<br><br> " \
-			"Advanced: you can also use this option to force a certain server name to resolve " \
-			"to a fixed ip address when either the dns for that server is temporairly " \
-			"unreachable or you want to avoid the round-robin lookups.</center>","options"));
+		"DNS lookups can be time-consuming and might be blocking on some platforms; " \
+		"this option will cause KVIrc to look up the server hostname only once.<br><br> " \
+		"Advanced: you can also use this option to force a certain server name to resolve " \
+		"to a fixed ip address when either the dns for that server is temporairly " \
+		"unreachable or you want to avoid the round-robin lookups.</center>","options"));
 	m_pCacheIpCheck->setChecked(s->cacheIp());
-
 
 	m_pUseIPV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
 	gl->addWidget(m_pUseIPV6Check,3,0,1,2);
@@ -619,7 +618,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	connect(m_pUseIPV6Check,SIGNAL(toggled(bool)),this,SLOT(useIPV6CheckToggled(bool)));
 
 	KviTalToolTip::add(m_pUseIPV6Check,__tr2qs_ctx("<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will attempt to use the IPv6 protocol " \
-			"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
+		"(thus your OS <b>must</b> have a working IPv6 stack and you <b>must</b> have an IPv6 connection).</center>","options"));
 
 	m_pUseSSLCheck = new QCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
 	gl->addWidget(m_pUseSSLCheck,4,0,1,2);

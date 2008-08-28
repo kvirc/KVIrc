@@ -2016,36 +2016,26 @@ void KviServerParser::parseNumericEndOfStats(KviIrcMessage *msg)
 }
 
 // STARTTLS support
-void KviServerParser::parseNumericStartTlsOk(KviIrcMessage * msg)
+void KviServerParser::parseNumericStartTls(KviIrcMessage * msg)
 {
 	// 670: RPL_STARTTLSOK
 	// :prefix 670 <nickname> :STARTTLS successful, go ahead with TLS handshake
-
-
-	// :prefix 331 target <channel> :No topic is set
-	// QString szChan = msg->connection()->decodeText(msg->safeParam(1));
-
-	debug("STARTTLS OK");
-	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
-	QString szPar1 = msg->connection()->decodeText(msg->safeParam(1));
-	QString szPar2 = msg->connection()->decodeText(msg->safeParam(2));
-
-	debug("Prefix: %s\nPar1: %s\nPar2: %s",szPrefix.toUtf8().data(),szPar1.toUtf8().data(),szPar2.toUtf8().data());
-
-	msg->connection()->enableStartTlsSupport();
-}
-
-void KviServerParser::parseNumericStartTlsFail(KviIrcMessage * msg)
-{
 	// 671: RPL_STARTTLSFAIL
 	// :prefix 671 <nickname> :STARTTLS failure
+	
+	bool bEnable = false;
 
-	debug("STARTTLS FAIL");
-	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
-	QString szPar1 = msg->connection()->decodeText(msg->safeParam(1));
-	QString szPar2 = msg->connection()->decodeText(msg->safeParam(2));
+	switch(msg->numeric())
+	{
+		case 670:
+			debug("STARTTLS OK");
+			bEnable = true;
+			break;
+		case 671:
+			debug("STARTTLS FAIL");
+			bEnable = false;
+			break;
+	}
 
-	debug("Prefix: %s\nPar1: %s\nPar2: %s",szPrefix.toUtf8().data(),szPar1.toUtf8().data(),szPar2.toUtf8().data());
-
-	msg->connection()->console()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The server does not support STARTTLS command. Connection will NOT be crypted"));
+	msg->connection()->enableStartTlsSupport(bEnable);
 }

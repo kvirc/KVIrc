@@ -1,10 +1,10 @@
-//====================================================================================
+//===============================================================================
 //
 //   File : kvi_sp_literal.cpp
 //   Creation date : Thu Aug 3 2000 01:29:12 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -20,7 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//====================================================================================
+//===============================================================================
 
 
 
@@ -59,7 +59,6 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_qcstring.h"
 #include "kvi_network.h"
-
 #include "kvi_settings.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -1865,4 +1864,29 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 				&nickBuffer,&szUser,&hostBuffer,modefl.ptr());
 		}
 	}
+}
+
+void KviServerParser::parseLiteralCap(KviIrcMessage *msg)
+{
+	// CAP
+	// CAP LS
+	// :prefix CAP * LS :tls userhost-in-names multi-prefix sasl
+	// Other subcommands:
+	// LIST, REQ, ACK, NAK, CLEAR, END
+
+	debug("Parsing literal CAP...");
+	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
+	QString szCmd = msg->connection()->decodeText(msg->safeParam(1));
+	QString szProtocols = msg->connection()->decodeText(msg->safeParam(2));
+
+	debug("Prefix: %s\nPar1: %s\nPar2: %s",szPrefix.toUtf8().data(),szCmd.toUtf8().data(),szProtocols.toUtf8().data());
+
+	bool bEnable = false;
+	if(szCmd == "LS")
+	{
+		QStringList szList = szProtocols.split(" ");
+		if(szList.contains("tls")) bEnable = true;
+	}
+
+	msg->connection()->checkStartTlsSupport(bEnable);
 }

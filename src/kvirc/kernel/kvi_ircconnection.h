@@ -215,8 +215,12 @@ protected:
 	// login operations
 	//
 	void resolveLocalHost();
-	void checkStartTlsSupport();
-	void enableStartTlsSupport();
+	void checkCapSupport();
+	void closeCap();
+#ifdef COMPILE_SSL_SUPPORT
+	void checkStartTlsSupport(bool bEnable);
+	void enableStartTlsSupport(bool bEnable);
+#endif
 	void loginToIrcServer();
 protected:
 	//

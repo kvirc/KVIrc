@@ -83,7 +83,7 @@ protected:
 	KviIrcLink           * m_pLink;
 	KviConsole           * m_pConsole;
 	kvi_socket_t           m_sock;
-	SocketState              m_state;
+	SocketState            m_state;
 	QSocketNotifier      * m_pWsn;
 	QSocketNotifier      * m_pRsn;
 	KviServer            * m_pIrcServer;

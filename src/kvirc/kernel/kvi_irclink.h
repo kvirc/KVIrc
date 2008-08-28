@@ -51,7 +51,7 @@ protected:
 	// only KviConsole can create this
 	// pConsole must NOT be null
 	// pServer is a shallow pointer: Connection makes a copy of it internally, must NOT be null
-	// pProxy may be null if a proxy is not desicred. Connection makes a copy of it internally
+	// pProxy may be null if a proxy is not desired. Connection makes a copy of it internally
 	KviIrcLink(KviIrcConnection * pConnection);
 	~KviIrcLink();
 private:

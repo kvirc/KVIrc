@@ -3,7 +3,7 @@
 //   Creation date : Sun Jun 30 2000 18:10:19 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,64 +23,63 @@
 
 #include "kvi_sparser.h"
 
-// FIXME: #warning "Reorder this table!"
 #define PTM(__m) KVI_PTR2MEMBER(KviServerParser::__m)
 
 KviLiteralMessageParseStruct KviServerParser::m_literalParseProcTable[]=
 {
-	{ "PRIVMSG" , PTM(parseLiteralPrivmsg)},
-	{ "PING"    , PTM(parseLiteralPing)   },
-	{ "MODE"    , PTM(parseLiteralMode)   },
-	{ "TOPIC"   , PTM(parseLiteralTopic)  },
-	{ "JOIN"    , PTM(parseLiteralJoin)   },
-	{ "PART"    , PTM(parseLiteralPart)   },
-	{ "QUIT"    , PTM(parseLiteralQuit)   },
-	{ "NICK"    , PTM(parseLiteralNick)   },
-	{ "KICK"    , PTM(parseLiteralKick)   },
-	{ "NOTICE"  , PTM(parseLiteralNotice) },
-	{ "INVITE"  , PTM(parseLiteralInvite) },
-	{ "WALLOPS" , PTM(parseLiteralWallops)},
-	{ "PONG"    , PTM(parseLiteralPong)   },
+	{ "CAP"     , PTM(parseLiteralCap)    },
 	{ "ERROR"   , PTM(parseLiteralError)  },
+	{ "INVITE"  , PTM(parseLiteralInvite) },
+	{ "JOIN"    , PTM(parseLiteralJoin)   },
+	{ "KICK"    , PTM(parseLiteralKick)   },
+	{ "MODE"    , PTM(parseLiteralMode)   },
+	{ "NICK"    , PTM(parseLiteralNick)   },
+	{ "NOTICE"  , PTM(parseLiteralNotice) },
+	{ "PART"    , PTM(parseLiteralPart)   },
+	{ "PING"    , PTM(parseLiteralPing)   },
+	{ "PONG"    , PTM(parseLiteralPong)   },
+	{ "PRIVMSG" , PTM(parseLiteralPrivmsg)},
+	{ "QUIT"    , PTM(parseLiteralQuit)   },
+	{ "TOPIC"   , PTM(parseLiteralTopic)  },
+	{ "WALLOPS" , PTM(parseLiteralWallops)},
 	{ 0         , 0                       }
 };
 
 // FIXME: #warning "Merge these two tables into one"
-
 KviCtcpMessageParseStruct KviServerParser::m_ctcpRequestParseProcTable[]=
 {
-	{ "PING"       , PTM(parseCtcpRequestPing)       , 0 },
-	{ "VERSION"    , PTM(parseCtcpRequestVersion)    , 0 },
-	{ "USERINFO"   , PTM(parseCtcpRequestUserinfo)   , 0 },
-	{ "CLIENTINFO" , PTM(parseCtcpRequestClientinfo) , 0 },
-	{ "FINGER"     , PTM(parseCtcpRequestFinger)     , 0 },
-	{ "SOURCE"     , PTM(parseCtcpRequestSource)     , 0 },
-	{ "TIME"       , PTM(parseCtcpRequestTime)       , 0 },
 	{ "ACTION"     , PTM(parseCtcpRequestAction)     , 0 },
 	{ "AVATAR"     , PTM(parseCtcpRequestAvatar)     , 0 },
+	{ "CLIENTINFO" , PTM(parseCtcpRequestClientinfo) , 0 },
 	{ "DCC"        , PTM(parseCtcpRequestDcc)        , 0 },
-	{ "TDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
-	{ "XDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
+	{ "FINGER"     , PTM(parseCtcpRequestFinger)     , 0 },
 	{ "PAGE"       , PTM(parseCtcpRequestPage)       , 0 },
+	{ "PING"       , PTM(parseCtcpRequestPing)       , 0 },
+	{ "SOURCE"     , PTM(parseCtcpRequestSource)     , 0 },
+	{ "TDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
+	{ "TIME"       , PTM(parseCtcpRequestTime)       , 0 },
+	{ "USERINFO"   , PTM(parseCtcpRequestUserinfo)   , 0 },
+	{ "VERSION"    , PTM(parseCtcpRequestVersion)    , 0 },
+	{ "XDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
 	{ 0            , 0                               , 0 }
 };
 
 KviCtcpMessageParseStruct KviServerParser::m_ctcpReplyParseProcTable[]=
 {
-	{ "AVATAR"     , PTM(parseCtcpReplyAvatar)       , 0 },
 	{ "ACTION"     , PTM(parseCtcpRequestAction)     , 0 },
-	{ "DCC"        , PTM(parseCtcpRequestDcc)        , 0 },
-	{ "TDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
-	{ "XDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
-	{ "VERSION"    , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "USERINFO"   , PTM(parseCtcpReplyUserinfo)     , 0 },
+	{ "AVATAR"     , PTM(parseCtcpReplyAvatar)       , 0 },
 	{ "CLIENTINFO" , PTM(parseCtcpReplyGeneric)      , 0 },
+	{ "DCC"        , PTM(parseCtcpRequestDcc)        , 0 },
 	{ "FINGER"     , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "TIME"       , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "SOURCE"     , PTM(parseCtcpReplyGeneric)      , 0 },
-	{ "PING"       , PTM(parseCtcpReplyPing)         , 0 },
-	{ "PAGE"       , PTM(parseCtcpReplyGeneric)      , 0 },
 	{ "LAGCHECK"   , PTM(parseCtcpReplyLagcheck)     , KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT },
+	{ "PAGE"       , PTM(parseCtcpReplyGeneric)      , 0 },
+	{ "PING"       , PTM(parseCtcpReplyPing)         , 0 },
+	{ "SOURCE"     , PTM(parseCtcpReplyGeneric)      , 0 },
+	{ "TDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
+	{ "TIME"       , PTM(parseCtcpReplyGeneric)      , 0 },
+	{ "USERINFO"   , PTM(parseCtcpReplyUserinfo)     , 0 },
+	{ "VERSION"    , PTM(parseCtcpReplyGeneric)      , 0 },
+	{ "XDCC"       , PTM(parseCtcpRequestDcc)        , 0 },
 	{ 0            , 0                               , 0 }
 };
 
@@ -756,8 +755,8 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 667
 	0,                                               // 668
 	0,                                               // 669
-	PTM(parseNumericStartTlsOk)                    , // 670 RPL_STARTTLSOK
-	PTM(parseNumericStartTlsFail)                  , // 671 RPL_STARTTLSFAIL
+	PTM(parseNumericStartTls)                      , // 670 RPL_STARTTLSOK
+	PTM(parseNumericStartTls)                      , // 671 RPL_STARTTLSFAIL
 	0,                                               // 672
 	0,                                               // 673
 	0,                                               // 674
