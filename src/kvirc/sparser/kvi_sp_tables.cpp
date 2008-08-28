@@ -756,8 +756,8 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 667
 	0,                                               // 668
 	0,                                               // 669
-	0,                                               // 670
-	0,                                               // 671
+	PTM(parseNumericStartTlsOk)                    , // 670 RPL_STARTTLSOK
+	PTM(parseNumericStartTlsFail)                  , // 671 RPL_STARTTLSFAIL
 	0,                                               // 672
 	0,                                               // 673
 	0,                                               // 674

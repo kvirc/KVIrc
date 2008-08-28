@@ -37,6 +37,7 @@ typedef struct _KviServerDefinition
 	bool               bPortIsValid;
 	bool               bIPv6;
 	bool               bSSL;
+	bool               bSTARTTLS;
 	QString            szLinkFilter;
 	QString            szPass;
 	QString            szNick;

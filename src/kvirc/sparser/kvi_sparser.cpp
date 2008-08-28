@@ -120,7 +120,6 @@ void KviServerParser::parseMessage(const char * message,KviIrcConnection * pConn
 				if(KviKvsEventManager::instance()->trigger(KviEvent_OnUnhandledLiteral,pConnection->console(),&parms))
 					msg.setHaltOutput();
 			}
-	
 		}
 	
 		// unhandled || unrecognized

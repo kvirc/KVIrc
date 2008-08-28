@@ -193,7 +193,7 @@ bool KviServerDataBase::makeCurrentServer(KviServerDefinition * d,QString &szErr
 				{
 					if(d->bIPv6 == srv->isIPv6())
 					{
-						if(d->bSSL == srv->useSSL())
+						if((d->bSSL == srv->useSSL()) || (d->bSTARTTLS == srv->useSTARTTLS()))
 						{
 							if(d->bPortIsValid)
 							{
@@ -308,6 +308,7 @@ search_finished:
 	s->m_szInitUMode = d->szInitUMode;
 	s->setIPv6(d->bIPv6);
 	s->setUseSSL(d->bSSL);
+	s->setUseSTARTTLS(d->bSTARTTLS);
 	r->insertServer(s);
 	m_szCurrentNetwork = r->name();
 	r->setCurrentServer(s);
@@ -315,8 +316,8 @@ search_finished:
 	return true;
 }
 
-void parseMircServerRecord(QString entry,QString& szNet,
-QString& szDescription,QString& szHost,QString& szPort,bool& bSsl,kvi_u32_t& uPort)
+void parseMircServerRecord(QString entry,QString & szNet,
+QString & szDescription,QString & szHost,QString & szPort,bool & bSsl,kvi_u32_t & uPort)
 {
 	bSsl = false;
 	int idx = KviQString::find(entry,"SERVER:");
@@ -349,7 +350,7 @@ QString& szDescription,QString& szHost,QString& szPort,bool& bSsl,kvi_u32_t& uPo
 	}
 }
 
-void KviServerDataBase::importFromMircIni(const QString & filename, const QString & szMircIni, QStringList& recentServers)
+void KviServerDataBase::importFromMircIni(const QString & filename, const QString & szMircIni, QStringList & recentServers)
 {
 	clear();
 	recentServers.clear();
@@ -436,7 +437,6 @@ void KviServerDataBase::importFromMircIni(const QString & filename, const QStrin
 		} while(!entry.isEmpty());
 	}
 }
-
 
 void KviServerDataBase::load(const QString & filename)
 {

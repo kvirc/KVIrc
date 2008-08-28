@@ -625,39 +625,47 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	gl->addWidget(m_pUseSSLCheck,4,0,1,2);
 //	gl->addMultiCellWidget(m_pUseSSLCheck,4,4,0,1);
 	KviTalToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Secure Socket Layer</b> " \
-			"encryption support. Obviously, this server must have support for this, too. :)</center>","options"));
+		"encryption support. Obviously, this server must have support for this, too. :)</center>","options"));
 #ifndef COMPILE_SSL_SUPPORT
 	m_pUseSSLCheck->setEnabled(false);
 #endif
 	m_pUseSSLCheck->setChecked(s->useSSL());
 
+	m_pUseSTARTTLSCheck = new QCheckBox(__tr2qs_ctx("Use STARTTLS protocol","options"),tab);
+	gl->addWidget(m_pUseSTARTTLSCheck,5,0,1,2);
+	KviTalToolTip::add(m_pUseSTARTTLSCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Transport Layer Security</b> " \
+		"encryption support. Obviously, this server must have support for this, too. :)</center>","options"));
+#ifndef COMPILE_SSL_SUPPORT
+	m_pUseSTARTTLSCheck->setEnabled(false);
+#endif
+	m_pUseSTARTTLSCheck->setChecked(s->useSTARTTLS());
 
 	m_pUseAutoConnect = new QCheckBox(__tr2qs_ctx("Connect to this server at startup","options"),tab);
 	m_pUseAutoConnect->setChecked(s->autoConnect());
 
-	gl->addWidget(m_pUseAutoConnect,5,0,1,2);
+	gl->addWidget(m_pUseAutoConnect,6,0,1,2);
 	//	gl->addMultiCellWidget(m_pUseAutoConnect,5,5,0,1);
 	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
 
 	//server encoding
 
 	l = new QLabel(__tr2qs_ctx("Server Encoding:","options"),tab);
-	gl->addWidget(l,6,0);
+	gl->addWidget(l,7,0);
 	m_pEncodingEditor = new QComboBox(tab);
 	m_pEncodingEditor->setDuplicatesEnabled(false);
-	gl->addWidget(m_pEncodingEditor,6,1);
+	gl->addWidget(m_pEncodingEditor,7,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this server. " \
-			"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
-			"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
-			"network that this server belongs to.</center>","options"));
+		"This encoding will be used for server specific needs, like referencing nicknames and channel names." \
+		"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
+		"network that this server belongs to.</center>","options"));
 
 	//text encoding
 
 	l = new QLabel(__tr2qs_ctx("Text Encoding:","options"),tab);
-	gl->addWidget(l,7,0);
+	gl->addWidget(l,8,0);
 	m_pTextEncodingEditor = new QComboBox(tab);
 	m_pTextEncodingEditor->setDuplicatesEnabled(false);
-	gl->addWidget(m_pTextEncodingEditor,7,1);
+	gl->addWidget(m_pTextEncodingEditor,8,1);
 	KviTalToolTip::add(m_pEncodingEditor,__tr2qs_ctx("<center>This box allows you to choose the preferred encoding for this server. " \
 			"This encoding will be used as the default for text messages." \
 			"If you choose \"Use Network Encoding\" then the encoding will be inherited from the " \
@@ -685,20 +693,17 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pEncodingEditor->setCurrentIndex(srvcurrent);
 	m_pTextEncodingEditor->setCurrentIndex(txtcurrent);
 
-
 	l = new QLabel(__tr2qs_ctx("Link filter:","options"),tab);
-	gl->addWidget(l,8,0);
+	gl->addWidget(l,9,0);
 	m_pLinkFilterEditor = new QComboBox(tab);
 	m_pLinkFilterEditor->setEditable(true);
 	m_pLinkFilterEditor->setDuplicatesEnabled(false);
-	gl->addWidget(m_pLinkFilterEditor,8,1);
+	gl->addWidget(m_pLinkFilterEditor,9,1);
 
 	m_pLinkFilterEditor->addItem("");
 
 	g_pModuleManager->loadModulesByCaps("linkfilter");
 	KviModuleExtensionDescriptorList * mexl = KviModuleExtensionManager::instance()->getExtensionList("linkfilter");
-
-
 
 	if(mexl)
 	{
@@ -726,24 +731,23 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 		"For plain IRC connections, you don't need any link filters; this is used for incompatible protocols.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Id:","options"),tab);
-	gl->addWidget(l,9,0);
+	gl->addWidget(l,10,0);
 	m_pIdEditor = new QLineEdit(tab);
 	if(s->id().isEmpty())s->generateUniqueId();
 	m_pIdEditor->setText(s->id());
-	gl->addWidget(m_pIdEditor,9,1);
+	gl->addWidget(m_pIdEditor,10,1);
 
 	KviTalToolTip::add(m_pIdEditor,__tr2qs_ctx("<center>This field allows you to specify a really unique id for this server. " \
 		"You will then be able to use /server -x &lt;this_id&gt; to make the connection. This is especially " \
 		"useful when you have multiple server entries with the same hostname and port in different networks (bouncers?)</center>","options"));
 
-
 	l = new QLabel(__tr2qs_ctx("Proxy server:","options"),tab);
-	gl->addWidget(l,10,0);
+	gl->addWidget(l,11,0);
 	m_pProxyEditor = new QComboBox(tab);
-	gl->addWidget(m_pProxyEditor,10,1);
+	gl->addWidget(m_pProxyEditor,11,1);
 	KviTalToolTip::add(m_pProxyEditor,__tr2qs_ctx("<center>This is the <b>proxy</b> that KVIrc will use to connect to this server.\n" \
-			"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" " \
-			"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
+		"If this field is set in \"Default\" KVirc will use global proxy settings, if it is set in \"Direct connection\" " \
+		"KVirc will connect to this server without proxy. You can define new proxy server in global options' \"Proxy servers\" menu.</center>","options"));
 
 	m_pProxyEditor->addItem(__tr2qs_ctx("Default","options"));
 	m_pProxyEditor->addItem(__tr2qs_ctx("Direct connection","options"));
@@ -758,10 +762,10 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 
 	l = new QLabel("",tab);
-	gl->addWidget(l,11,0,1,2);
+	gl->addWidget(l,12,0,1,2);
 //	gl->addMultiCellWidget(l,10,10,0,1);
 
-	gl->setRowStretch(11,1);
+	gl->setRowStretch(12,1);
 
 	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SOCKETWARNING)),__tr2qs_ctx("Connection","options"));
 
@@ -791,9 +795,9 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pOnConnectEditor->setText(s->onConnectCommand());
 	m_pOnConnectEditor->setMinimumHeight(150);
 	KviTalToolTip::add(m_pOnConnectEditor,__tr2qs_ctx("<center>The following commands will be executed after a connection has been established.<br>" \
-			"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>"\
-			"KVIrc will first send the USER command, then eventually PASS and NICK and then execute this " \
-			"command sequence.<br>This is particularly useful for IRC bouncers that require login commands.</center>","options"));
+		"<b>Important:</b> Enter commands <b>without</b> a preceding slash (e.g. <tt>quote pass secret</tt> instead of <tt>/quote pass secret</tt>).<br>"\
+		"KVIrc will first send the USER command, then eventually PASS and NICK and then execute this " \
+		"command sequence.<br>This is particularly useful for IRC bouncers that require login commands.</center>","options"));
 
 	tw->addTab(tab,__tr2qs_ctx("On Connect","options"));
 	// after login execute

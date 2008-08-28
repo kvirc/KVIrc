@@ -86,7 +86,7 @@ protected:
 	SocketState              m_state;
 	QSocketNotifier      * m_pWsn;
 	QSocketNotifier      * m_pRsn;
-	KviServer         * m_pIrcServer;
+	KviServer            * m_pIrcServer;
 	KviProxy             * m_pProxy;
 	QTimer               * m_pTimeoutTimer;
 	unsigned int           m_uReadBytes;

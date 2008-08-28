@@ -222,15 +222,12 @@ private:
 	void parseChannelMode(const QString &szNick,const QString &szUser,const QString &szHost,KviChannel * chan,KviStr &modefl,KviIrcMessage *msg,int curParam);
 	void parseUserMode(KviIrcMessage *msg,const char * modeflptr);
 
-
-	
 	void parseCtcpRequest(KviCtcpMessage *msg);
 	void parseCtcpReply(KviCtcpMessage *msg);
 	void echoCtcpRequest(KviCtcpMessage *msg);
 	void echoCtcpReply(KviCtcpMessage *msg);
 	void replyCtcp(KviCtcpMessage *msg,const QString &data);
 	bool checkCtcpFlood(KviCtcpMessage *msg);
-
 	void parseCtcpRequestPing(KviCtcpMessage *msg);
 	void parseCtcpRequestVersion(KviCtcpMessage *msg);
 	void parseCtcpRequestUserinfo(KviCtcpMessage *msg);
@@ -242,13 +239,16 @@ private:
 	void parseCtcpRequestAvatar(KviCtcpMessage *msg);
 	void parseCtcpRequestDcc(KviCtcpMessage *msg);
 	void parseCtcpRequestPage(KviCtcpMessage *msg);
-
 	void parseCtcpReplyAvatar(KviCtcpMessage *msg);
 	void parseCtcpReplyUserinfo(KviCtcpMessage *msg);
 	void parseCtcpReplyGeneric(KviCtcpMessage *msg);
 	void parseCtcpReplyPing(KviCtcpMessage *msg);
 	void parseCtcpReplyLagcheck(KviCtcpMessage *msg);
 //	void parseCtcpReply(const char * msg_ptr,KviIrcUser &source,const char * target);
+
+	// STARTTLS support
+	void parseNumericStartTlsOk(KviIrcMessage * msg);
+	void parseNumericStartTlsFail(KviIrcMessage * msg);
 public:
 	static void encodeCtcpParameter(const char * param,KviStr &buffer,bool bSpaceBreaks = true);
 	static void encodeCtcpParameter(const char * param,QString &buffer,bool bSpaceBreaks = true);

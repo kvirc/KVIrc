@@ -98,7 +98,6 @@ void KviIrcLink::linkFilterDestroyed()
 	m_pLinkFilter = 0;
 	m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 		__tr2qs("Ops... for some reason the link filter object has been destroyed"));
-
 }
 
 void KviIrcLink::destroySocket()
@@ -129,7 +128,7 @@ void KviIrcLink::createSocket(const QString &szLinkFilterName)
 	if(KviQString::equalCI(szLinkFilterName,"irc"))return;
 
 	m_pLinkFilter = (KviMexLinkFilter *)g_pModuleExtensionManager->allocateExtension("linkfilter",
-								szLinkFilterName.toUtf8().data(),m_pConsole,0,this,szLinkFilterName.toUtf8().data());
+		szLinkFilterName.toUtf8().data(),m_pConsole,0,this,szLinkFilterName.toUtf8().data());
 
 	if(m_pLinkFilter)
 	{
@@ -140,7 +139,7 @@ void KviIrcLink::createSocket(const QString &szLinkFilterName)
 	}
 
 	m_pConsole->output(KVI_OUT_SYSTEMWARNING,
-			__tr2qs("Failed to set up the link filter \"%Q\", will try with plain IRC"),&szLinkFilterName);
+		__tr2qs("Failed to set up the link filter \"%Q\", will try with plain IRC"),&szLinkFilterName);
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -193,7 +192,7 @@ void KviIrcLink::resolverTerminated()
 	createSocket(m_pTarget->server()->linkFilter());
 
 	int iErr = m_pSocket->startConnection(m_pTarget->server(),m_pTarget->proxy(),
-					m_pTarget->bindAddress().isEmpty() ? 0 : m_pTarget->bindAddress().toUtf8().data());
+		m_pTarget->bindAddress().isEmpty() ? 0 : m_pTarget->bindAddress().toUtf8().data());
 
 	if(iErr != KviError_success)
 	{
@@ -312,7 +311,7 @@ void KviIrcLink::processData(char * buffer,int len)
 		//The m_pReadBuffer contains at max 1 irc message...
 		//that can not be longer than 510 bytes (the message is not CRLF terminated)
 		// FIXME: Is this limit *really* valid on all servers ?
-		if(m_uReadBufferLen > 510)debug("WARNING : Receiving an invalid irc message from server.");
+		if(m_uReadBufferLen > 510) debug("WARNING: Receiving an invalid irc message from server.");
 	}
 	kvi_free(messageBuffer);
 }
@@ -327,7 +326,7 @@ bool KviIrcLink::sendPacket(KviDataBuffer * pData)
 	if(!m_pSocket)
 	{
 		delete pData;
-        pData = 0;
+		pData = 0;
 		return false;
 	}
 
@@ -403,4 +402,3 @@ void KviIrcLink::socketStateChange()
 		break;
 	}
 }
-

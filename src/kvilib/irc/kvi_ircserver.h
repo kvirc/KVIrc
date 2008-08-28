@@ -41,6 +41,7 @@ class KviServer;
 #define KVI_IRCSERVER_FLAG_IPV6 1
 #define KVI_IRCSERVER_FLAG_CACHEIP 2
 #define KVI_IRCSERVER_FLAG_SSL 4
+#define KVI_IRCSERVER_FLAG_STARTTLS 8
 
 class KVILIB_API KviServerReconnectInfo {
 public:
@@ -111,6 +112,7 @@ public:
 	inline QStringList* autoJoinChannelList(){ return m_pAutoJoinChannelList; };
 	inline bool isIPv6() const { return (m_uFlags & KVI_IRCSERVER_FLAG_IPV6); };
 	inline bool useSSL() const { return (m_uFlags & KVI_IRCSERVER_FLAG_SSL); };
+	inline bool useSTARTTLS() const { return (m_uFlags & KVI_IRCSERVER_FLAG_STARTTLS); };
 	inline bool cacheIp() const { return (m_uFlags & KVI_IRCSERVER_FLAG_CACHEIP); };
 
 	inline void setProxy(int p){ m_iProxy = p; };
@@ -141,6 +143,11 @@ public:
 	{
 		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_SSL;
 		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_SSL);
+	};
+	inline void setUseSTARTTLS(bool bSet)
+	{
+		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_STARTTLS;
+		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_STARTTLS);
 	};
 	inline void setCacheIp(bool bSet)
 	{

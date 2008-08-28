@@ -309,6 +309,12 @@ void KviIrcConnection::linkEstabilished()
 
 	// Ok...we're loggin in now
 	resolveLocalHost();
+
+	// Switch STARTTLS support
+	if(KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable))
+	{
+		if(!target()->server()->useSSL()) checkStartTlsSupport();
+	}
 	loginToIrcServer();
 }
 
@@ -870,8 +876,35 @@ void KviIrcConnection::hostNameLookupTerminated(KviDns *pDns)
 	m_pLocalhostDns = 0;
 }
 
+void KviIrcConnection::checkStartTlsSupport()
+{
+	debug("Checking STARTTLS support...");
+	KviServer * pServer = target()->server();
+
+	// Check if the server supports STARTTLS protocol and we want to
+	// connect through it
+	if(pServer->useSTARTTLS())
+	{
+		debug("Sending STARTTLS command...");
+		if(!sendFmtData("STARTTLS"));
+		{
+			// Cannot send command
+			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Connection will NOT be crypted"));
+			return;
+		}
+	}
+}
+
+void KviIrcConnection::enableStartTlsSupport()
+{
+	// Ok, the server supports STARTTLS protocol
+	// ssl handshake e switch del socket
+	debug("Starting SSL handshake...");
+}
+
 void KviIrcConnection::loginToIrcServer()
 {
+	debug("Loggin' in...");
 	KviServer * pServer = target()->server();
 	KviNetwork * pNet = target()->network();
 
@@ -984,7 +1017,6 @@ void KviIrcConnection::loginToIrcServer()
 			return;
 		}
 	}
-
 
 	if(!sendFmtData("NICK %s",szNick.data()))
 	{

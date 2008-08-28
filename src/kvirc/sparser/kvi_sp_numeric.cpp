@@ -1,10 +1,10 @@
-//=============================================================================
+//===========================================================================
 //
 //   File : kvi_sp_numeric.cpp
 //   Creation date : Thu Aug 3 2000 01:30:45 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -20,7 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//=============================================================================
+//===========================================================================
 
 
 
@@ -1927,7 +1927,6 @@ void KviServerParser::parseNumericCannotSend(KviIrcMessage * msg)
 	}
 }
 
-
 void KviServerParser::parseNumericCodePageSet(KviIrcMessage *msg)
 {
 	// a nice extension for irc.wenet.ru
@@ -2007,10 +2006,46 @@ void KviServerParser::parseNumericUserMode(KviIrcMessage *msg)
 
 void KviServerParser::parseNumericEndOfStats(KviIrcMessage *msg)
 {
+	// 219: RPL_ENDOFSTATS [I,E,U,D]
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 		QString szText = msg->connection()->decodeText(msg->safeTrailing());
 		pOut->outputNoFmt(KVI_OUT_STATS, szText);
 	}
+}
+
+// STARTTLS support
+void KviServerParser::parseNumericStartTlsOk(KviIrcMessage * msg)
+{
+	// 670: RPL_STARTTLSOK
+	// :prefix 670 <nickname> :STARTTLS successful, go ahead with TLS handshake
+
+
+	// :prefix 331 target <channel> :No topic is set
+	// QString szChan = msg->connection()->decodeText(msg->safeParam(1));
+
+	debug("STARTTLS OK");
+	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
+	QString szPar1 = msg->connection()->decodeText(msg->safeParam(1));
+	QString szPar2 = msg->connection()->decodeText(msg->safeParam(2));
+
+	debug("Prefix: %s\nPar1: %s\nPar2: %s",szPrefix.toUtf8().data(),szPar1.toUtf8().data(),szPar2.toUtf8().data());
+
+	msg->connection()->enableStartTlsSupport();
+}
+
+void KviServerParser::parseNumericStartTlsFail(KviIrcMessage * msg)
+{
+	// 671: RPL_STARTTLSFAIL
+	// :prefix 671 <nickname> :STARTTLS failure
+
+	debug("STARTTLS FAIL");
+	QString szPrefix = msg->connection()->decodeText(msg->safePrefix());
+	QString szPar1 = msg->connection()->decodeText(msg->safeParam(1));
+	QString szPar2 = msg->connection()->decodeText(msg->safeParam(2));
+
+	debug("Prefix: %s\nPar1: %s\nPar2: %s",szPrefix.toUtf8().data(),szPar1.toUtf8().data(),szPar2.toUtf8().data());
+
+	msg->connection()->console()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The server does not support STARTTLS command. Connection will NOT be crypted"));
 }

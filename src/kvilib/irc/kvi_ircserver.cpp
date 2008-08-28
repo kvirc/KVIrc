@@ -138,7 +138,7 @@ void KviServer::generateUniqueId()
 QString KviServer::ircUri()
 {
 	QString uri("irc");
-	if(useSSL())uri += "s";
+	if(useSSL() || useSTARTTLS())uri += "s";
 	if(isIPv6())uri += "6";
 	uri += "://";
 	uri += m_szHostname;
@@ -158,7 +158,6 @@ void KviServer::setAutoJoinChannelList(QStringList * pNewChannelList)
 	if(m_pAutoJoinChannelList)delete m_pAutoJoinChannelList;
 	m_pAutoJoinChannelList = pNewChannelList;
 }
-
 
 bool KviServer::load(KviConfig * cfg,const QString &prefix)
 {
@@ -206,6 +205,8 @@ bool KviServer::load(KviConfig * cfg,const QString &prefix)
 	setCacheIp(cfg->readBoolEntry(tmp,false)); // true ?
 	KviQString::sprintf(tmp,"%QSSL",&prefix);
 	setUseSSL(cfg->readBoolEntry(tmp,false));
+	KviQString::sprintf(tmp,"%QSTARTTLS",&prefix);
+	setUseSTARTTLS(cfg->readBoolEntry(tmp,false));
 	KviQString::sprintf(tmp,"%QProxy",&prefix);
 	setProxy(cfg->readIntEntry(tmp,-2));
 	KviQString::sprintf(tmp,"%QUserIdentityId",&prefix);
@@ -309,6 +310,11 @@ void KviServer::save(KviConfig * cfg,const QString &prefix)
 	{
 		KviQString::sprintf(tmp,"%QSSL",&prefix);
 		cfg->writeEntry(tmp,useSSL());
+	}
+	if(useSTARTTLS())
+	{
+		KviQString::sprintf(tmp,"%QSTARTTLS",&prefix);
+		cfg->writeEntry(tmp,useSTARTTLS());
 	}
 	if(proxy()!=-2)
 	{

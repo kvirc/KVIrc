@@ -47,7 +47,6 @@ KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 
 	gbox = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("On Unexpected Disconnect","options"));
 
-
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Keep channels open","options"),KviOption_boolKeepChannelsOpenOnUnexpectedDisconnect,true);
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to keep channels open after an unexpected disconnect.</center>","options"));
 
@@ -89,7 +88,6 @@ KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 	addRowSpacer(0,2,4,2);
 }
 
-
 KviConnectionOptionsWidget::~KviConnectionOptionsWidget()
 {
 }
@@ -122,7 +120,12 @@ KviSSLOptionsWidget::KviSSLOptionsWidget(QWidget * parent)
 	p = addPasswordSelector(gbox,__tr2qs_ctx("Private key password:","options"),
 		&(KVI_OPTION_STRING(KviOption_stringSSLPrivateKeyPass)),KVI_OPTION_BOOL(KviOption_boolUseSSLPrivateKey));
 	connect(b,SIGNAL(toggled(bool)),p,SLOT(setEnabled(bool)));
-	addRowSpacer(0,2,0,2);
+
+	b = addBoolSelector(this,__tr2qs_ctx("Use the STARTTLS security protocol if available","options"),&(KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable)),true);
+	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to try to reconnect to the server using an encrypted connection</center>","options"));
+	addWidgetToLayout(b,0,2,0,2);
+
+	addRowSpacer(0,3,0,3);
 #else
 	addLabel(0,0,0,0,__tr2qs_ctx("This executable has no SSL support.","options"));
 #endif

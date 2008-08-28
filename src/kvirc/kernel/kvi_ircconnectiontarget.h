@@ -46,8 +46,8 @@ public:
 private:
 	KviNetwork      * m_pNetwork;        // owned, never null
 	KviServer       * m_pServer;         // owned, never null
-	KviProxy           * m_pProxy;          // owned, may be null
-	QString              m_szBindAddress;   // forced bind address
+	KviProxy        * m_pProxy;          // owned, may be null
+	QString           m_szBindAddress;   // forced bind address
 public:
 	KviServer * server(){ return m_pServer; };
 	KviNetwork * network(){ return m_pNetwork; };

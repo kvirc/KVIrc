@@ -29,7 +29,7 @@
 // In kvirc 3.0.0 this file is newer included (at least for now: 31.07.2000)
 // Today I have included it in kvi_sp_numeric.cpp (23.03.2001)
 
-// ==============================================================================================//
+// ===============================================================================//
 //
 // E=EFnet hybrid 5.3p2
 // e=EFNet hybrid 5.3p2 with #ifdef
@@ -42,7 +42,7 @@
 // O=openprojects (dancer ircd)
 //
 
-// = 000-199 ====================================================================================//
+// = 000-199 ===============================================================================//
 //
 // Reserve numerics 000-099 for server-client connections where the client
 // is local to the server. If any server is passed a numeric in this range
@@ -366,6 +366,9 @@
 #define RPL_NOWOFF           605 /* <nick> <user> <host> 0 :is offline                          [D] # */
 #define RPL_WATCHLIST        606 /* ?                                                           [D] # */
 #define RPL_ENDOFWATCH       607 /* :End of WATCH <char l=list s=stats>                         [D] # */
+// STARTTLS extension
+#define RPL_STARTTLSOK       670 /* :test2.chatspike.net 670 nickname :STARTTLS successful, go ahead with TLS handshake */
+#define RPL_STARTTLSFAIL     671 /* :test2.chatspike.net 671 nickname :STARTTLS failure */
 // WeNet codepage extension
 #define RPL_CODEPAGESET      700 /* :irc.wenet.ru 700 Pragma CP1251 :is now your translation scheme # */
 #define RPL_WHOISSCHEME      703 /* :interdacom.vgd.wenet.ru 703 Alexey Begemot KOI8-R :translation scheme */

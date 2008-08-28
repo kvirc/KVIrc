@@ -100,8 +100,8 @@ private:
 
 	KviIrcConnectionStateData            * m_pStateData;            // owned, never null
 
-	KviPointerList<KviChannel>               * m_pChannelList;          // owned, never null, elements shallow
-	KviPointerList<KviQuery>                 * m_pQueryList;            // owned, never null, elements shallow
+	KviPointerList<KviChannel>           * m_pChannelList;          // owned, never null, elements shallow
+	KviPointerList<KviQuery>             * m_pQueryList;            // owned, never null, elements shallow
 
 	KviIrcUserDataBase                   * m_pUserDataBase;         // owned, never null
 
@@ -215,6 +215,8 @@ protected:
 	// login operations
 	//
 	void resolveLocalHost();
+	void checkStartTlsSupport();
+	void enableStartTlsSupport();
 	void loginToIrcServer();
 protected:
 	//
@@ -296,4 +298,3 @@ inline const QString & KviIrcConnection::currentUserName()
 }
 
 #endif //!_KVI_IRCCONNECTION_H_
-
