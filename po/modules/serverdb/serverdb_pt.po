@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: serverdb_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 20:23+0200\n"
+"POT-Creation-Date: 2008-08-29 18:14+0200\n"
 "PO-Revision-Date: 2008-08-06 07:11+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
@@ -19,45 +19,45 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/serverdb/libkviserverdb.cpp:690
+#: src/modules/serverdb/libkviserverdb.cpp:684
 msgid "The network specified already exists"
 msgstr "A rede indicada já existe"
 
-#: src/modules/serverdb/libkviserverdb.cpp:171
-#: src/modules/serverdb/libkviserverdb.cpp:205
-#: src/modules/serverdb/libkviserverdb.cpp:773
-#: src/modules/serverdb/libkviserverdb.cpp:837
-#: src/modules/serverdb/libkviserverdb.cpp:879
+#: src/modules/serverdb/libkviserverdb.cpp:168
+#: src/modules/serverdb/libkviserverdb.cpp:202
+#: src/modules/serverdb/libkviserverdb.cpp:761
+#: src/modules/serverdb/libkviserverdb.cpp:825
+#: src/modules/serverdb/libkviserverdb.cpp:867
 msgid "The specified network does not exist"
 msgstr "A rede indicada não existe"
 
-#: src/modules/serverdb/libkviserverdb.cpp:784
+#: src/modules/serverdb/libkviserverdb.cpp:772
 msgid "The specified server already exists"
 msgstr "O servidor indicado já existe"
 
-#: src/modules/serverdb/libkviserverdb.cpp:215
-#: src/modules/serverdb/libkviserverdb.cpp:890
+#: src/modules/serverdb/libkviserverdb.cpp:209
+#: src/modules/serverdb/libkviserverdb.cpp:875
 msgid "The specified server does not exist"
 msgstr "O servidor indicado não existe"
 
 #: src/modules/serverdb/libkviserverdb.cpp:59
-#: src/modules/serverdb/libkviserverdb.cpp:164
-#: src/modules/serverdb/libkviserverdb.cpp:192
-#: src/modules/serverdb/libkviserverdb.cpp:682
-#: src/modules/serverdb/libkviserverdb.cpp:759
-#: src/modules/serverdb/libkviserverdb.cpp:823
-#: src/modules/serverdb/libkviserverdb.cpp:859
+#: src/modules/serverdb/libkviserverdb.cpp:161
+#: src/modules/serverdb/libkviserverdb.cpp:189
+#: src/modules/serverdb/libkviserverdb.cpp:676
+#: src/modules/serverdb/libkviserverdb.cpp:747
+#: src/modules/serverdb/libkviserverdb.cpp:811
+#: src/modules/serverdb/libkviserverdb.cpp:847
 msgid "You must provide the network name as parameter"
 msgstr "Deve indicar o nome da rede como parâmetro"
 
 #: src/modules/serverdb/libkviserverdb.cpp:103
-#: src/modules/serverdb/libkviserverdb.cpp:198
-#: src/modules/serverdb/libkviserverdb.cpp:765
-#: src/modules/serverdb/libkviserverdb.cpp:865
+#: src/modules/serverdb/libkviserverdb.cpp:195
+#: src/modules/serverdb/libkviserverdb.cpp:753
+#: src/modules/serverdb/libkviserverdb.cpp:853
 msgid "You must provide the server name as parameter"
 msgstr "Deve indicar o nome do servidor como parâmetro"
 
-#: src/modules/serverdb/libkviserverdb.cpp:829
-#: src/modules/serverdb/libkviserverdb.cpp:871
+#: src/modules/serverdb/libkviserverdb.cpp:817
+#: src/modules/serverdb/libkviserverdb.cpp:859
 msgid "You must provide the value as parameter"
 msgstr "Deve indicar o valor como parâmetro"

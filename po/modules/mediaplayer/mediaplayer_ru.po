@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-08 20:23+0200\n"
+"POT-Creation-Date: 2008-08-29 18:14+0200\n"
 "PO-Revision-Date: 2005-12-28 00:20+0200\n"
 "Last-Translator: Valerius <valeragir@mail.ru>\n"
 "Language-Team: russian\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:44
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:362
 #, fuzzy
 msgid ""
 "An interface to BMPx.\n"
@@ -59,7 +59,7 @@ msgstr ""
 "Интерфейс к популярному в UNIX медиаплееру xmms.\n"
 "Вы можете загрузить его с http://www.xmms.org\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:33
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:251
 #, fuzzy
 msgid ""
 "An interface to the popular audacious media player.\n"
@@ -95,12 +95,12 @@ msgstr ""
 msgid "Can't find a running winamp window"
 msgstr "Не могу найти запущенное окно winamp"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:142
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
 #, fuzzy
 msgid "Can't find symbol %s in %Q"
 msgstr "Не найден символ %s в libxmms.so"
 
-#: src/modules/mediaplayer/mp_xmmsinterface.cpp:133
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
 #, fuzzy
 msgid "Can't load the player library (%Q)"
 msgstr "Не могу загрузить библиотеку xmms (libxmms.so)"

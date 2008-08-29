@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-27 17:54+0400\n"
+"POT-Creation-Date: 2008-08-29 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,55 +16,55 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:61
+#: src/modules/torrent/libkvitorrent.cpp:61
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:101
+#: src/modules/torrent/libkvitorrent.cpp:101
 msgid "Choosing torrent client interface \"%Q\""
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:108
+#: src/modules/torrent/libkvitorrent.cpp:108
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:117
+#: src/modules/torrent/libkvitorrent.cpp:117
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:127
+#: src/modules/torrent/libkvitorrent.cpp:127
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:128
+#: src/modules/torrent/libkvitorrent.cpp:128
 msgid "Last interface error: "
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:710
+#: src/modules/torrent/libkvitorrent.cpp:710
 msgid "Using client interface \"%Q\"."
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/libkvitorrent.cpp:718
+#: src/modules/torrent/libkvitorrent.cpp:718
 msgid "Invalid client interface \"%Q\"!"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+#: src/modules/torrent/tc_statusbarapplet.cpp:60
+msgid "Torrent Client"
+msgstr ""
+
+#: src/modules/torrent/tc_statusbarapplet.cpp:91
+msgid "No client selected!"
+msgstr ""
+
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
-#, possible-c-format
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
+#, c-format
 msgid "Index out of range: %d [0-%d]!"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:60
-msgid "Torrent Client"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/torrent/tc_statusbarapplet.cpp:91
-msgid "No client selected!"
 msgstr ""

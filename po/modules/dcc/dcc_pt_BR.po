@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-14 18:05+0200\n"
+"POT-Creation-Date: 2008-08-29 18:14+0200\n"
 "PO-Revision-Date: 2004-11-15 19:17+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
@@ -308,7 +308,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: src/modules/dcc/chat.cpp:299 src/modules/dcc/chat.cpp:385
+#: src/modules/dcc/chat.cpp:299 src/modules/dcc/chat.cpp:394
 msgid "Cannot send data: No active connection"
 msgstr "Não foi possível enviar dados: Não há uma conexão ativa"
 
@@ -340,7 +340,7 @@ msgstr ""
 msgid "Connected to %1:%2"
 msgstr "Conectado a %1:%2"
 
-#: src/modules/dcc/voice.cpp:914 src/modules/dcc/chat.cpp:518
+#: src/modules/dcc/voice.cpp:914 src/modules/dcc/chat.cpp:527
 #: src/modules/dcc/canvas.cpp:281
 #, fuzzy
 msgid "Connected to %Q:%Q"
@@ -364,7 +364,7 @@ msgstr "Pedido de DCC %1 - KVIrc"
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 não enviado, esperando conexão manual"
 
-#: src/modules/dcc/chat.cpp:490
+#: src/modules/dcc/chat.cpp:499
 #, fuzzy
 msgid "DCC %Q failed: %Q"
 msgstr "DCC %s falhou: %Q"
@@ -415,7 +415,7 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Transferência de dados terminou à 30 segundos, fechando a conexão"
 
-#: src/modules/dcc/voice.cpp:822 src/modules/dcc/chat.cpp:400
+#: src/modules/dcc/voice.cpp:822 src/modules/dcc/chat.cpp:409
 msgid "ERROR: %Q"
 msgstr "ERRO: %Q"
 
@@ -526,7 +526,7 @@ msgstr "Escutar a interface %s na porta %s"
 msgid "Local end is %1:%2"
 msgstr "A extremidade local é %1:%2"
 
-#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:520
+#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:529
 #: src/modules/dcc/canvas.cpp:283
 #, fuzzy
 msgid "Local end is %Q:%Q"
@@ -757,7 +757,7 @@ msgstr ""
 "<br>Deseja<br><b>sobrescrever</b> o arquivo existente,<br> <b>auto-renomear</"
 "b> o arquivo novo, ou<br><b>resumir</b> uma transferência incompleta?"
 
-#: src/modules/dcc/chat.cpp:444
+#: src/modules/dcc/chat.cpp:453
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "

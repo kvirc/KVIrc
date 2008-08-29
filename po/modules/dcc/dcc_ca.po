@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-14 18:05+0200\n"
+"POT-Creation-Date: 2008-08-29 18:14+0200\n"
 "PO-Revision-Date: 2005-02-24 23:18+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -306,7 +306,7 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-#: src/modules/dcc/chat.cpp:299 src/modules/dcc/chat.cpp:385
+#: src/modules/dcc/chat.cpp:299 src/modules/dcc/chat.cpp:394
 msgid "Cannot send data: No active connection"
 msgstr "No puc enviar dades: No hi ha una connexió activa"
 
@@ -338,7 +338,7 @@ msgstr ""
 msgid "Connected to %1:%2"
 msgstr "Conectat a %1:%2"
 
-#: src/modules/dcc/voice.cpp:914 src/modules/dcc/chat.cpp:518
+#: src/modules/dcc/voice.cpp:914 src/modules/dcc/chat.cpp:527
 #: src/modules/dcc/canvas.cpp:281
 #, fuzzy
 msgid "Connected to %Q:%Q"
@@ -362,7 +362,7 @@ msgstr "Petició DCC %1 - KVIrc"
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "Petició DCC %1 no enviada, esperant connexió manual"
 
-#: src/modules/dcc/chat.cpp:490
+#: src/modules/dcc/chat.cpp:499
 #, fuzzy
 msgid "DCC %Q failed: %Q"
 msgstr "DCC %s ha fallat: %Q"
@@ -413,7 +413,7 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "La transferència de dades ha acabat fa 30 segons, tancant la connexió"
 
-#: src/modules/dcc/voice.cpp:822 src/modules/dcc/chat.cpp:400
+#: src/modules/dcc/voice.cpp:822 src/modules/dcc/chat.cpp:409
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
@@ -526,7 +526,7 @@ msgstr "Escoltant en la interfície %s port %s"
 msgid "Local end is %1:%2"
 msgstr "El extrem local és %1:%2"
 
-#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:520
+#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:529
 #: src/modules/dcc/canvas.cpp:283
 #, fuzzy
 msgid "Local end is %Q:%Q"
@@ -762,7 +762,7 @@ msgstr ""
 "automàticament</b> el nou arxiu, o<br><b>continuar</b> una transferència "
 "incompleta?"
 
-#: src/modules/dcc/chat.cpp:444
+#: src/modules/dcc/chat.cpp:453
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "

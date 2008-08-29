@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-27 17:54+0400\n"
+"POT-Creation-Date: 2008-08-29 18:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,78 +16,662 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:159
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:776
+#: src/modules/dcc/voice.cpp:161
+msgid ""
+"WARNING: failed to check the soundcard duplex capabilities: if this is a "
+"half-duplex soundcard , use the DCC VOICE option to force half-duplex "
+"algorithm"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:169
+msgid ""
+"Half duplex soundcard detected, you will not be able to talk and listen at "
+"the same time"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:210
+#, c-format
+msgid ""
+"WARNING: failed to set the requested sample rate (%d): the device used "
+"closest match (%d)"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:268
+msgid "Ops...failed to test the soundcard capabilities...expect problems..."
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:654
+msgid "Input buffer"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:656
+msgid "Output buffer"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:739
+msgid "Attempting a passive DCC VOICE connection"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:744
+msgid "Attempting an active DCC VOICE connection"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:754
+#: src/modules/dcc/chat.cpp:181
+#: src/modules/dcc/canvas.cpp:107
+msgid "Contacting host %Q on port %Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:757
+#: src/modules/dcc/chat.cpp:183
+#: src/modules/dcc/canvas.cpp:83
+msgid "Listening on interface %Q port %Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:774
+msgid ""
+"Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
+"connect..."
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:776
+msgid "DCC VOICE request not sent: awaiting manual connections"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:822
+#: src/modules/dcc/chat.cpp:409
+msgid "ERROR: %Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:880
+#, c-format
+msgid "Input buffer: %d bytes"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:882
+#, c-format
+msgid "Output buffer: %d bytes"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:905
+#: src/modules/dcc/canvas.cpp:276
+msgid "DCC Failed: %Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:914
+#: src/modules/dcc/chat.cpp:527
+#: src/modules/dcc/canvas.cpp:281
+msgid "Connected to %Q:%Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:916
+#: src/modules/dcc/chat.cpp:529
+#: src/modules/dcc/canvas.cpp:283
+msgid "Local end is %Q:%Q"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:934
+#, c-format
+msgid "Actual codec used is '%s'"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:1018
+#, c-format
+msgid "Volume: %i"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:158
+#, c-format
+msgid "Attempting a passive DCC %s connection"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:167
+#, c-format
+msgid "Attempting an active DCC %s connection"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:205
+#, c-format
+msgid "The local IP address is private, determining from IRC server: %s"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:207
+#: src/modules/dcc/send.cpp:1506
+msgid ""
+"The local IP address is private, but unable to determine it from the IRC "
+"server"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:210
+#: src/modules/dcc/send.cpp:1509
+msgid ""
+"The local IP address is private, but have no IRC server to determine it from"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:232
+msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:235
+msgid "DCC %Q request not sent, awaiting manual connection"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:243
+#: src/modules/dcc/send.cpp:1568
+msgid "Low-level transport connection established"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:244
+#: src/modules/dcc/send.cpp:1569
+msgid "Starting Secure Socket Layer handshake"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:252
+#, c-format
+msgid "[SSL ERROR]: %s"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:299
+#: src/modules/dcc/chat.cpp:394
+msgid "Cannot send data: No active connection"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:341
+msgid ""
+"The crypto engine was not able to encrypt the current message (%Q): %Q, no "
+"data was sent to the remote end"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:453
+msgid ""
+"The following message appears to be encrypted, but the crypto engine failed "
+"to decode it: %Q"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:499
+msgid "DCC %Q failed: %Q"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:72
+msgid "&Accept"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:77
+msgid "&Reject"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:139
+msgid "&Rename"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:143
+msgid "Over&write"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:147
+msgid "Re&sume"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:152
+#: src/modules/dcc/send.cpp:1851
+msgid "Cancel"
+msgstr ""
+
+#: src/modules/dcc/dialogs.cpp:159
+msgid "File Already Exists - KVIrc"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:91
+msgid ""
+"This window has no associated IRC context (an IRC context is required unless "
+"-c or -n are passed)"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:104
+msgid ""
+"You're not connected to a server (an active connection is required unless -c "
+"or -n are passed)"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/libkvidcc.cpp:408
+#: src/modules/dcc/libkvidcc.cpp:443
+#: src/modules/dcc/libkvidcc.cpp:642
+#: src/modules/dcc/libkvidcc.cpp:666
+#: src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:805
+#: src/modules/dcc/libkvidcc.cpp:1121
+#: src/modules/dcc/libkvidcc.cpp:1171
+#: src/modules/dcc/requests.cpp:136
+#: src/modules/dcc/requests.cpp:137
+#: src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/descriptor.cpp:65
+#: src/modules/dcc/marshal.cpp:442
+#: src/modules/dcc/marshal.cpp:472
+#: src/modules/dcc/marshal.cpp:477
+msgid "unknown"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:129
+msgid "Unable to get address of interface %Q"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:139
+msgid "No suitable interfaces to listen on, use -i"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:172
+msgid "This executable was built without SSL support, -s switch ignored"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:434
+#: src/modules/dcc/libkvidcc.cpp:657
+#: src/modules/dcc/libkvidcc.cpp:1159
+msgid "-c requires -i and -p"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:634
+#: src/modules/dcc/requests.cpp:449
+#: src/modules/dcc/requests.cpp:739
+msgid "<unknown size>"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:890
+msgid "This executable has been built without SSL support, -s switch ignored"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:960
+msgid "This executable has no SSL support, -s switch ignored"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1114
+msgid "DCC VOICE support not enabled at compilation time"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1132
+msgid "Invalid sample rate specified, defaulting to 8000"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1148
+msgid "Invalid codec specified, defaulting to 'adpcm'"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1577
+#: src/modules/dcc/libkvidcc.cpp:2542
+#: src/modules/dcc/libkvidcc.cpp:2562
+msgid "The current window has no associated DCC session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1582
+msgid "The specified parameter is not a valid DCC identifier"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:1662
+msgid "This DCC session is not a DCC transfer session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:2553
+msgid "The specified window identifier is not valid"
+msgstr ""
+
+#: src/modules/dcc/utils.cpp:121
+msgid "Can't retrieve a suitable local IPV4 address"
+msgstr ""
+
+#: src/modules/dcc/utils.cpp:139
+#, c-format
+msgid ""
+"Can't listen on default interface '%s': fix it in the options dialog, "
+"disabling the option (so the next dcc will work)"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:77
+msgid "Unable to process the above request: %Q, %Q"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:79
+msgid "Ignoring and notifying failure"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:79
+msgid "Ignoring"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:96
+#, c-format
+msgid "Concurrent transfer limit reached (%u of %u transfers running)"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:113
+#, c-format
+msgid "Slot limit reached (%u slots of %u)"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:122
+msgid "Too many pending connections"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:158
+#, c-format
+msgid "Invalid port number %s"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:175
+#, c-format
+msgid "Invalid IP address in old format %s"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:196
+#, c-format
+msgid "Invalid IP address %s"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:263
+#, c-format
+msgid ""
+"The above request is broken: The second parameter is '%s' and should be "
+"'chat', trying to continue"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:275
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC CHAT is not available"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:326
+msgid ""
+"The above request is broken: it looks like a zero port tag acknowledge but I "
+"have either never seen this tag or it was sent more than 120 seconds ago"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:327
+msgid "It seems that I haven't requested this dcc chat"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:447
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number, trying to continue"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:457
+#: src/modules/dcc/requests.cpp:608
+#: src/modules/dcc/requests.cpp:747
+msgid ""
+"The above request is broken: The filename contains path components, "
+"stripping the leading path and trying to continue"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:471
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC SEND is not available"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:534
+#, c-format
+msgid ""
+"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:560
+#, c-format
+msgid "Invalid resume position argument '%s'"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:573
+#, c-format
+msgid ""
+"Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
+"or invalid resume size"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:598
+msgid ""
+"The above request has resume file size missing, assuming a resume file size "
+"of 0"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:622
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RECV is not available"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:638
+#, c-format
+msgid "Invalid RECV request: Position %u is is larger than file size"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:692
+msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:698
+#, c-format
+msgid "The remote client is listening on interface %s and port %s"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:705
+msgid ""
+"Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
+"to send the file (or double-click on the socket)"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:737
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number; trying to continue"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:761
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RSEND is not available"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:772
+#: src/modules/dcc/requests.cpp:942
+msgid "(unknown)"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:778
+#: src/modules/dcc/requests.cpp:928
+msgid "No suitable interface to listen on, trying to continue anyway..."
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:844
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC GET is not available"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:856
+msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:857
+msgid "\"any\""
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:901
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %s since we can't accept incoming connections (user option)"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:958
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %Q"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:992
+msgid ""
+"The above request cannot be accepted: DCC VOICE support not enabled at "
+"compilation time "
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:1002
+#, c-format
+msgid "The above request cannot be accepted: Unsupported codec '%s'"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:1015
+#, c-format
+msgid ""
+"The above request appears to be broken: Invalid sample-rate '%s', defaulting "
+"to 8000"
+msgstr ""
+
+#: src/modules/dcc/requests.cpp:1159
+#, c-format
+msgid "Unknown DCC type '%s'"
+msgstr ""
+
+#: src/modules/dcc/canvas.cpp:78
+msgid "Attempting a passive DCC CANVAS connection"
+msgstr ""
+
+#: src/modules/dcc/canvas.cpp:98
+msgid ""
+"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgstr ""
+
+#: src/modules/dcc/canvas.cpp:100
+msgid "DCC CANVAS request not sent: awaiting manual connections"
+msgstr ""
+
+#: src/modules/dcc/canvas.cpp:104
+msgid "Attempting an active DCC CANVAS connection"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1476
+msgid "&Line"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1477
+#: src/modules/dcc/canvaswidget.cpp:1485
+msgid "&Rectangle"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1478
+msgid "&Ellipse"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1479
+msgid "&Pie"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1480
+msgid "&Chord"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1482
+msgid "&Rich text (html)"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1484
+msgid "&Triangle"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1486
+msgid "&Pentagon"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1487
+msgid "&Hexagon"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1489
+msgid "&Shape"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1490
+msgid "&Item"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1491
+msgid "&Polygons"
+msgstr ""
+
+#: src/modules/dcc/canvaswidget.cpp:1493
+msgid "&Insert"
+msgstr ""
+
+#: src/modules/dcc/broker.cpp:159
+#: src/modules/dcc/broker.cpp:776
 msgid "Choose Files to Send - KVIrc"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:189
+#: src/modules/dcc/broker.cpp:189
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:199
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:813
+#: src/modules/dcc/broker.cpp:199
+#: src/modules/dcc/broker.cpp:813
 msgid "Can't open file %Q for reading"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:268
+#: src/modules/dcc/broker.cpp:268
 msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:273
+#: src/modules/dcc/broker.cpp:273
 msgid "The connection will be secured using SSL.<br>"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:279
+#: src/modules/dcc/broker.cpp:279
 msgid "You will be the passive side of the connection.<br>"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:283
+#: src/modules/dcc/broker.cpp:283
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:288
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:539
+#: src/modules/dcc/broker.cpp:288
+#: src/modules/dcc/broker.cpp:539
 msgid "DCC %1 Request - KVIrc"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:339
+#: src/modules/dcc/broker.cpp:339
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:345
+#: src/modules/dcc/broker.cpp:345
 msgid "DCC VOICE request"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:409
+#: src/modules/dcc/broker.cpp:409
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
 "<b>%5</b><br>"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:415
+#: src/modules/dcc/broker.cpp:415
 msgid "DCC CANVAS request"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:498
+#: src/modules/dcc/broker.cpp:498
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:511
+#: src/modules/dcc/broker.cpp:511
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:524
+#: src/modules/dcc/broker.cpp:524
 msgid ""
 "<center><b>Note:</b></center>The file appears to be an avatar that you have "
 "requested. You should not change its filename. Save it in a location where "
@@ -98,801 +682,217 @@ msgid ""
 "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:552
+#: src/modules/dcc/broker.cpp:552
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:613
+#: src/modules/dcc/broker.cpp:613
 msgid "Choose Files to Save - KVIrc"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:626
+#: src/modules/dcc/broker.cpp:626
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:660
+#: src/modules/dcc/broker.cpp:660
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
 "file, or<br><b>resume</b> an incomplete download?"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:672
+#: src/modules/dcc/broker.cpp:672
 msgid ""
 "The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
 "you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
 "the new file ?"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/broker.cpp:742
+#: src/modules/dcc/broker.cpp:742
 msgid "File %s exists, auto-renaming to %Q"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvas.cpp:78
-msgid "Attempting a passive DCC CANVAS connection"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvas.cpp:83
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:183
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:757
-msgid "Listening on interface %Q port %Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvas.cpp:98
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvas.cpp:100
-msgid "DCC CANVAS request not sent: awaiting manual connections"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvas.cpp:104
-msgid "Attempting an active DCC CANVAS connection"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvas.cpp:107
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:181
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:754
-msgid "Contacting host %Q on port %Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvas.cpp:276
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:905
-msgid "DCC Failed: %Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvas.cpp:281
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:518
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:914
-msgid "Connected to %Q:%Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvas.cpp:283
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:520
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:916
-msgid "Local end is %Q:%Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1476
-msgid "&Line"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1477
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1485
-msgid "&Rectangle"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1478
-msgid "&Ellipse"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1479
-msgid "&Pie"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1480
-msgid "&Chord"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1482
-msgid "&Rich text (html)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1484
-msgid "&Triangle"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1486
-msgid "&Pentagon"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1487
-msgid "&Hexagon"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1489
-msgid "&Shape"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1490
-msgid "&Item"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1491
-msgid "&Polygons"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/canvaswidget.cpp:1493
-msgid "&Insert"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:158
-#, possible-c-format
-msgid "Attempting a passive DCC %s connection"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:167
-#, possible-c-format
-msgid "Attempting an active DCC %s connection"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:205
-#, possible-c-format
-msgid "The local IP address is private, determining from IRC server: %s"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:207
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1506
-msgid ""
-"The local IP address is private, but unable to determine it from the IRC "
-"server"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:210
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1509
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:232
-msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:235
-msgid "DCC %Q request not sent, awaiting manual connection"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:243
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1568
-msgid "Low-level transport connection established"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:244
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1569
-msgid "Starting Secure Socket Layer handshake"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:252
-#, possible-c-format
-msgid "[SSL ERROR]: %s"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:299
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:385
-msgid "Cannot send data: No active connection"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:341
-msgid ""
-"The crypto engine was not able to encrypt the current message (%Q): %Q, no "
-"data was sent to the remote end"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:400
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:822
-msgid "ERROR: %Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:444
-msgid ""
-"The following message appears to be encrypted, but the crypto engine failed "
-"to decode it: %Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/chat.cpp:490
-msgid "DCC %Q failed: %Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/descriptor.cpp:65
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:111
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:408
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:443
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:642
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:666
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:803
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:805
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1121
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1171
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/marshal.cpp:442
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/marshal.cpp:472
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/marshal.cpp:477
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:136
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:137
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:138
-msgid "unknown"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/dialogs.cpp:72
-msgid "&Accept"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/dialogs.cpp:77
-msgid "&Reject"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/dialogs.cpp:139
-msgid "&Rename"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/dialogs.cpp:143
-msgid "Over&write"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/dialogs.cpp:147
-msgid "Re&sume"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/dialogs.cpp:152
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1851
-msgid "Cancel"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/dialogs.cpp:159
-msgid "File Already Exists - KVIrc"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:91
-msgid ""
-"This window has no associated IRC context (an IRC context is required unless "
-"-c or -n are passed)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:104
-msgid ""
-"You're not connected to a server (an active connection is required unless -c "
-"or -n are passed)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:129
-msgid "Unable to get address of interface %Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:139
-msgid "No suitable interfaces to listen on, use -i"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:172
-msgid "This executable was built without SSL support, -s switch ignored"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:434
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:657
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1159
-msgid "-c requires -i and -p"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:634
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:449
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:739
-msgid "<unknown size>"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:890
-msgid "This executable has been built without SSL support, -s switch ignored"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:960
-msgid "This executable has no SSL support, -s switch ignored"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1114
-msgid "DCC VOICE support not enabled at compilation time"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1132
-msgid "Invalid sample rate specified, defaulting to 8000"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1148
-msgid "Invalid codec specified, defaulting to 'adpcm'"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1577
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2542
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2562
-msgid "The current window has no associated DCC session"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1582
-msgid "The specified parameter is not a valid DCC identifier"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:1662
-msgid "This DCC session is not a DCC transfer session"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/libkvidcc.cpp:2553
-msgid "The specified window identifier is not valid"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:77
-msgid "Unable to process the above request: %Q, %Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:79
-msgid "Ignoring and notifying failure"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:79
-msgid "Ignoring"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:96
-#, possible-c-format
-msgid "Concurrent transfer limit reached (%u of %u transfers running)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:113
-#, possible-c-format
-msgid "Slot limit reached (%u slots of %u)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:122
-msgid "Too many pending connections"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:158
-#, possible-c-format
-msgid "Invalid port number %s"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:175
-#, possible-c-format
-msgid "Invalid IP address in old format %s"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:196
-#, possible-c-format
-msgid "Invalid IP address %s"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:263
-#, possible-c-format
-msgid ""
-"The above request is broken: The second parameter is '%s' and should be "
-"'chat', trying to continue"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:275
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC CHAT is not available"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:326
-msgid ""
-"The above request is broken: it looks like a zero port tag acknowledge but I "
-"have either never seen this tag or it was sent more than 120 seconds ago"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:327
-msgid "It seems that I haven't requested this dcc chat"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:447
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number, trying to continue"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:457
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:608
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:747
-msgid ""
-"The above request is broken: The filename contains path components, "
-"stripping the leading path and trying to continue"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:471
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC SEND is not available"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:534
-#, possible-c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:560
-#, possible-c-format
-msgid "Invalid resume position argument '%s'"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:573
-#, possible-c-format
-msgid ""
-"Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
-"or invalid resume size"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:598
-msgid ""
-"The above request has resume file size missing, assuming a resume file size "
-"of 0"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:622
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC RECV is not available"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:638
-#, possible-c-format
-msgid "Invalid RECV request: Position %u is is larger than file size"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:692
-msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:698
-#, possible-c-format
-msgid "The remote client is listening on interface %s and port %s"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:705
-msgid ""
-"Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
-"to send the file (or double-click on the socket)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:737
-msgid ""
-"The above request is broken: The fourth parameter should be the file size "
-"but does not appear to be an unsigned number; trying to continue"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:761
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC RSEND is not available"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:772
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:942
-msgid "(unknown)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:778
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:928
-msgid "No suitable interface to listen on, trying to continue anyway..."
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:844
-msgid ""
-"This executable has been compiled without SSL support, the SSL extension to "
-"DCC GET is not available"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:856
-msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:857
-msgid "\"any\""
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:901
-msgid ""
-"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
-"DCC %s since we can't accept incoming connections (user option)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:958
-msgid ""
-"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
-"DCC %Q"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:992
-msgid ""
-"The above request cannot be accepted: DCC VOICE support not enabled at "
-"compilation time "
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:1002
-#, possible-c-format
-msgid "The above request cannot be accepted: Unsupported codec '%s'"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:1015
-#, possible-c-format
-msgid ""
-"The above request appears to be broken: Invalid sample-rate '%s', defaulting "
-"to 8000"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/requests.cpp:1159
-#, possible-c-format
-msgid "Unknown DCC type '%s'"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:260
+#: src/modules/dcc/send.cpp:260
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:261
+#: src/modules/dcc/send.cpp:261
 msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:362
+#: src/modules/dcc/send.cpp:362
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:369
+#: src/modules/dcc/send.cpp:369
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:597
+#: src/modules/dcc/send.cpp:597
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:729
-#, possible-c-format
+#: src/modules/dcc/send.cpp:729
+#, c-format
 msgid "TRANSFER %d"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:752
+#: src/modules/dcc/send.cpp:752
 msgid "Setting up the connection"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:811
+#: src/modules/dcc/send.cpp:811
 msgid "Attempting a passive DCC %1 connection"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:815
+#: src/modules/dcc/send.cpp:815
 msgid "Attempting an active DCC %1 connection"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:841
+#: src/modules/dcc/send.cpp:841
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:913
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:924
+#: src/modules/dcc/send.cpp:913
+#: src/modules/dcc/send.cpp:924
 msgid "Aborted"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:923
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1594
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1672
+#: src/modules/dcc/send.cpp:923
+#: src/modules/dcc/send.cpp:1594
+#: src/modules/dcc/send.cpp:1672
 msgid "Transfer failed: "
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:934
+#: src/modules/dcc/send.cpp:934
 msgid "Configure Bandwidth..."
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:936
+#: src/modules/dcc/send.cpp:936
 msgid "Resend DCC"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:937
+#: src/modules/dcc/send.cpp:937
 msgid "Resend TDCC"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:938
+#: src/modules/dcc/send.cpp:938
 msgid "Resend RevDCC"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:942
+#: src/modules/dcc/send.cpp:942
 msgid "Abort"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1132
+#: src/modules/dcc/send.cpp:1132
 msgid "From: "
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1133
+#: src/modules/dcc/send.cpp:1133
 msgid "To: "
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1236
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1243
+#: src/modules/dcc/send.cpp:1236
+#: src/modules/dcc/send.cpp:1243
 msgid "%1 of %2 (%3%)"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1247
+#: src/modules/dcc/send.cpp:1247
 msgid "%1"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1260
+#: src/modules/dcc/send.cpp:1260
 msgid "Spd:"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1275
+#: src/modules/dcc/send.cpp:1275
 msgid "Avg:"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1345
+#: src/modules/dcc/send.cpp:1345
 msgid "Transfer Log"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1474
+#: src/modules/dcc/send.cpp:1474
 msgid "Contacting host %1 on port %2"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1481
+#: src/modules/dcc/send.cpp:1481
 msgid "Listening on interface %1 port %2"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1504
+#: src/modules/dcc/send.cpp:1504
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1555
+#: src/modules/dcc/send.cpp:1555
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1557
+#: src/modules/dcc/send.cpp:1557
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1576
+#: src/modules/dcc/send.cpp:1576
 msgid "[SSL ERROR]: %1"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1619
+#: src/modules/dcc/send.cpp:1619
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1634
+#: src/modules/dcc/send.cpp:1634
 msgid "Transfer completed"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1681
+#: src/modules/dcc/send.cpp:1681
 msgid "Connected to %1:%2"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1682
+#: src/modules/dcc/send.cpp:1682
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1726
+#: src/modules/dcc/send.cpp:1726
 msgid "Transferring data"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1752
+#: src/modules/dcc/send.cpp:1752
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1783
+#: src/modules/dcc/send.cpp:1783
 msgid "Internal error in RESUME request"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1788
+#: src/modules/dcc/send.cpp:1788
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1792
+#: src/modules/dcc/send.cpp:1792
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1820
+#: src/modules/dcc/send.cpp:1820
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1823
+#: src/modules/dcc/send.cpp:1823
 msgid "Limit upload bandwidth to"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1823
+#: src/modules/dcc/send.cpp:1823
 msgid "Limit download bandwidth to"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1842
+#: src/modules/dcc/send.cpp:1842
 msgid "bytes/sec"
 msgstr ""
 
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/send.cpp:1846
+#: src/modules/dcc/send.cpp:1846
 msgid "OK"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/utils.cpp:121
-msgid "Can't retrieve a suitable local IPV4 address"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/utils.cpp:139
-#, possible-c-format
-msgid ""
-"Can't listen on default interface '%s': fix it in the options dialog, "
-"disabling the option (so the next dcc will work)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:161
-msgid ""
-"WARNING: failed to check the soundcard duplex capabilities: if this is a "
-"half-duplex soundcard , use the DCC VOICE option to force half-duplex "
-"algorithm"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:169
-msgid ""
-"Half duplex soundcard detected, you will not be able to talk and listen at "
-"the same time"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:210
-#, possible-c-format
-msgid ""
-"WARNING: failed to set the requested sample rate (%d): the device used "
-"closest match (%d)"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:268
-msgid "Ops...failed to test the soundcard capabilities...expect problems..."
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:654
-msgid "Input buffer"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:656
-msgid "Output buffer"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:739
-msgid "Attempting a passive DCC VOICE connection"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:744
-msgid "Attempting an active DCC VOICE connection"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:774
-msgid ""
-"Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
-"connect..."
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:776
-msgid "DCC VOICE request not sent: awaiting manual connections"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:880
-#, possible-c-format
-msgid "Input buffer: %d bytes"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:882
-#, possible-c-format
-msgid "Output buffer: %d bytes"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:934
-#, possible-c-format
-msgid "Actual codec used is '%s'"
-msgstr ""
-
-#: C:/Programming/kvirc/qt4-trunk/kvirc/src/modules/dcc/voice.cpp:1018
-#, possible-c-format
-msgid "Volume: %i"
 msgstr ""

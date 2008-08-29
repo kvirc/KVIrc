@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-14 18:05+0200\n"
+"POT-Creation-Date: 2008-08-29 18:14+0200\n"
 "PO-Revision-Date: 2005-12-27 23:02+0200\n"
 "Last-Translator: Valerius <valeragir@mail.ru>\n"
 "Language-Team: russian\n"
@@ -302,7 +302,7 @@ msgstr "Невозможно отослать DCC %Q запрос в %Q: IRC с�
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/modules/dcc/chat.cpp:299 src/modules/dcc/chat.cpp:385
+#: src/modules/dcc/chat.cpp:299 src/modules/dcc/chat.cpp:394
 msgid "Cannot send data: No active connection"
 msgstr "Невозможно отослать данные: Нет активных соединений"
 
@@ -333,7 +333,7 @@ msgstr "Конфигурирование пропускной способнос
 msgid "Connected to %1:%2"
 msgstr "Подключение к%1:%2"
 
-#: src/modules/dcc/voice.cpp:914 src/modules/dcc/chat.cpp:518
+#: src/modules/dcc/voice.cpp:914 src/modules/dcc/chat.cpp:527
 #: src/modules/dcc/canvas.cpp:281
 msgid "Connected to %Q:%Q"
 msgstr "Подключение к %Q:%Q"
@@ -355,7 +355,7 @@ msgstr "Запрос DCC %1 - KVIrc"
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 запрос не отослан, ожидаю ручного соединения"
 
-#: src/modules/dcc/chat.cpp:490
+#: src/modules/dcc/chat.cpp:499
 msgid "DCC %Q failed: %Q"
 msgstr "Ошибка DCC %Q: %Q"
 
@@ -403,7 +403,7 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Передача данных завершилась 30 сек. назад, закрываю соединение"
 
-#: src/modules/dcc/voice.cpp:822 src/modules/dcc/chat.cpp:400
+#: src/modules/dcc/voice.cpp:822 src/modules/dcc/chat.cpp:409
 msgid "ERROR: %Q"
 msgstr "ОШИБКА: %Q"
 
@@ -510,7 +510,7 @@ msgstr "Прослушивание на интерфейсе %Q порта %Q"
 msgid "Local end is %1:%2"
 msgstr "Локальное окончание %1:%2"
 
-#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:520
+#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:529
 #: src/modules/dcc/canvas.cpp:283
 msgid "Local end is %Q:%Q"
 msgstr "Локальное окончание %Q:%Q"
@@ -735,7 +735,7 @@ msgstr ""
 "<br><b>переписать</b> существующий файл, или<br> <b>автоматически "
 "переименовать</b> новый файл?"
 
-#: src/modules/dcc/chat.cpp:444
+#: src/modules/dcc/chat.cpp:453
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
