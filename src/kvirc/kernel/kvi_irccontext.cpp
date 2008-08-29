@@ -849,7 +849,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce,const QString &szQuit
 					ret.asString(buffer);
 				else
 					buffer = szQuit;
-				KviQCString dat = console()->encodeText(buffer);
+				KviQCString dat = connection()->encodeText(buffer);
 				bWasSentQuit = false;
 				connection()->stateData()->setSentQuit();
 				connection()->sendFmtData("QUIT :%s",dat.data() ? dat.data() : ""); // here theoretically we COULD get disconnected

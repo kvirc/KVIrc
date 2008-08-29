@@ -924,20 +924,19 @@ void KviIrcConnection::trySTARTTLS()
 	if(pServer->supportsSTARTTLS())
 	{
 		debug("Sending STARTTLS command...");
-		if(!sendFmtData("STARTTLS"))
+		// HACK: this is needed to avoid timeouts connecting
+		// This MUST go as one network packet to avoid possible handshake problems
+		// on slow connections.
+
+		// And, probably, NICK hack is better then PING hack as soon as freenode
+		// not answer to ping!
+		if(!sendFmtData("STARTTLS\nPING :%s",pServer->hostName().data()))
 		{
 			// Cannot send command
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"));
 			return;
 		}
 		m_pStateData->setSentStartTls();
-
-		// HACK: this is needed to avoid timeouts connecting
-		if(!sendFmtData("PING :%s",pServer->hostName().data()))
-		{
-			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"));
-			return;
-		}
 	}
 }
 
