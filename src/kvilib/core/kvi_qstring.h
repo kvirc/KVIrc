@@ -1,6 +1,5 @@
 #ifndef _KVI_QSTRING_H_
 #define _KVI_QSTRING_H_
-
 //=============================================================================
 //
 //   File : kvi_qstring.h
@@ -25,11 +24,11 @@
 //
 //=============================================================================
 
-//=============================================================================
-//
-// Helper functions for the QString class
-//
-//=============================================================================
+/**
+* \file kvi_qstring.h
+* \author Szymon Stefanek
+* \brief Helper functions for the QString class
+*/
 
 #include "kvi_settings.h"
 #include "kvi_inttypes.h"
@@ -38,14 +37,13 @@
 
 #include <QString>
 
-///
-/// \namespace KviQString
-///
-/// \brief A namespace for QString helper functions
-///
-/// This namespace contains several helper functions
-/// that are used when dealing with QString.
-///
+/**
+* \namespace KviQString
+* \brief A namespace for QString helper functions
+*
+* This namespace contains several helper functions that are used when dealing
+* with QString.
+*/
 namespace KviQString
 {
 	extern KVILIB_API QString makeSizeReadable(size_t size);
@@ -91,8 +89,13 @@ namespace KviQString
 	// it MAY RETURN 0 when the QString is null!
 	extern KVILIB_API const QChar * nullTerminatedArray(const QString &sz);
 
-	inline bool lastCharIs(QString &szString,const QChar &c)
-					{ return szString.endsWith(c); };
+	/**
+	* \brief Returns true if the string ends with character c
+	* \param szString The source string
+	* \param c The char to check
+	*/
+	inline bool lastCharIs(QString & szString, const QChar & c)
+		{ return szString.endsWith(c); };
 
 	extern KVILIB_API void ensureLastCharIs(QString &szString,const QChar &c);
 
@@ -134,90 +137,192 @@ namespace KviQString
 	// a global empty string (note that this is ALSO NULL under Qt 3.x)
 	extern KVILIB_API const QString empty;
 
-	///
-	/// A portability wrapper which with Qt3 and Qt4.
-	/// Returns a lowcase version of the parameter string.
-	///
-	inline QString toLower(const QString &s)
+	/**
+	* \brief A portability wrapper which with Qt3 and Qt4.
+	* Returns a lowcase version of the parameter string.
+	* \param s The source string
+	*/
+	inline QString toLower(const QString & s)
 	{
 		return s.toLower();
 	}
 
-	inline int find(const QString &s,QChar c,int index = 0,bool cs = true)
+	/**
+	* \brief Returns the index position of the last occurrence of the character
+	* The search is made forward starting from index.
+	* \param s The source string
+	* \param c The character to find
+	* \param index The index to start from
+	* \param cs Case sensitive search
+	*/
+	inline int find(const QString & s, QChar c, int index = 0, bool cs = true)
 	{
 		return s.indexOf(c,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
-	inline int find(const QString &s,char c,int index = 0,bool cs = true)
+	/**
+	* \brief Returns the index position of the last occurrence of the character
+	* The search is made forward starting from index.
+	* \param s The source string
+	* \param c The character to find
+	* \param index The index to start from
+	* \param cs Case sensitive search
+	*/
+	inline int find(const QString & s, char c, int index = 0, bool cs = true)
 	{
 		return s.indexOf(c,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
-	inline int find(const QString &s,const QString & str,int index = 0,bool cs = true)
+	/**
+	* \brief Returns the index position of the last occurrence of the string
+	* The search is made forward starting from index.
+	* \param s The source string
+	* \param str The string to find
+	* \param index The index to start from
+	* \param cs Case sensitive search
+	*/
+	inline int find(const QString & s, const QString & str, int index = 0, bool cs = true)
 	{
 		return s.indexOf(str,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
-	inline int find(const QString &s,const QRegExp & rx,int index = 0)
+	/**
+	* \brief Returns the index position of the last occurrence of the string
+	* The search is made forward starting from index.
+	* \param s The source string
+	* \param str The string to find
+	* \param index The index to start from
+	* \param cs Case sensitive search
+	*/
+	inline int find(const QString & s, const char * str, int index = 0, bool cs = true)
+	{
+		return s.indexOf(QString(str),index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+	}
+
+	/**
+	* \brief Returns the index position of the last occurrence of the string
+	* The search is made forward starting from index.
+	* \param s The source string
+	* \param rx The regexp to match
+	* \param index The index to start from
+	*/
+	inline int find(const QString & s, const QRegExp & rx, int index = 0)
 	{
 		return s.indexOf(rx,index);
 	}
 
-	inline int find(const QString &s,const char * str,int index = 0)
-	{
-		return s.indexOf(QString(str),index);
-	}
-
-	inline int findRev(const QString &s,QChar c,int index = -1,bool cs = true)
+	/**
+	* \brief Returns the index position of the last occurrence of the character
+	* The search is made backward.
+	* If index is -1 the search starts at the last character.
+	* \param s The source string
+	* \param c The character to find
+	* \param index The index to start from
+	* \param cs Case sensitive search
+	*/
+	inline int findRev(const QString & s ,QChar c, int index = -1, bool cs = true)
 	{
 		return s.lastIndexOf(c,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
-	inline int findRev(const QString &s,char c,int index = -1,bool cs = true)
+	/**
+	* \brief Returns the index position of the last occurrence of the character
+	* The search is made backward.
+	* If index is -1 the search starts at the last character.
+	* \param s The source string
+	* \param c The character to find
+	* \param index The index to start from
+	* \param cs Case sensitive search
+	*/
+	inline int findRev(const QString & s, char c, int index = -1, bool cs = true)
 	{
 		return s.lastIndexOf(c,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
-	inline int findRev(const QString &s,const QString & str,int index = -1,bool cs = true)
+	/**
+	* \brief Returns the index position of the last occurrence of the string str
+	* The search is made backward.
+	* If index is -1 the search starts at the last character.
+	* \param s The source string
+	* \param str The string to find
+	* \param index The index to start from
+	* \param cs Case sensitive search
+	*/
+	inline int findRev(const QString & s, const QString & str, int index = -1, bool cs = true)
 	{
 		return s.lastIndexOf(str,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
-	inline int findRev(const QString &s,const QRegExp & rx,int index = -1)
+	/**
+	* \brief Returns the index position of the last occurrence of the string str
+	* The search is made backward.
+	* If index is -1 the search starts at the last character.
+	* \param s The source string
+	* \param str The string to find
+	* \param index The index to start from
+	* \param cs Case sensitive search
+	*/
+	inline int findRev(const QString & s, const char * str, int index = -1, bool cs = true)
+	{
+		return s.lastIndexOf(QString(str),index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+	}
+
+	/**
+	* \brief Returns the index position of the last match of the regexp
+	* The search is made backward.
+	* If index is -1 the search starts at the last character.
+	* \param s The source string
+	* \param rx The regexp to match
+	* \param index The index to start from
+	*/
+	inline int findRev(const QString & s, const QRegExp & rx, int index = -1)
 	{
 		return s.lastIndexOf(rx,index);
 	}
 
-	inline int findRev(const QString &s,const char * str,int index = -1)
-	{
-		return s.lastIndexOf(QString(str),index);
-	}
-
-	inline QString trimmed(const QString &s)
+	/**
+	* \brief Return a whitespace-trimmed string
+	* Spaces are trimmed at start and end of the string
+	* \param s The source string
+	*/
+	inline QString trimmed(const QString & s)
 	{
 		return s.trimmed();
 	}
 
-	// WARNING: DO NOT USE CONSTRUCTS LIKE char * c = KviQString::toUtf8(something).data();
-	//          They are dangerous since with many compilers the returned string gets destroyed
-	//          at the end of the instruction and the c pointer gets thus invalidated.
-	//          Use
-	//           KviQCString tmp = KviQString::toUtf8(something);
-	//           char * c = tmp.data();
-	//          instead.
-	//          Yes, I know that it sucks, but it's the only way to
-	//          transit to qt 4.x more or less cleanly...
-	inline KviQCString toUtf8(const QString &s)
+	/**
+	* \brief Return a UTF-8 formatted string
+	* \param s The source string
+	* \warning: DO NOT USE CONSTRUCTS LIKE char * c = KviQString::toUtf8(something).data();
+	* They are dangerous since with many compilers the returned string
+	* gets destroyed at the end of the instruction and the c pointer gets
+	* thus invalidated.
+	* Use
+	* KviQCString tmp = KviQString::toUtf8(something);
+	* char * c = tmp.data();
+	* instead. Yes, I know that it sucks, but it's the only way to
+	* transit to Qt 4.x more or less cleanly...
+	*/
+	inline KviQCString toUtf8(const QString & s)
 	{
 		return s.toUtf8();
 	}
 
-	inline KviQCString toLocal8Bit(const QString &s)
+	/**
+	* \brief Return the local 8-bit representation of the string
+	* \param s The source string
+	*/
+	inline KviQCString toLocal8Bit(const QString & s)
 	{
 		return s.toLocal8Bit();
 	}
 
-	inline kvi_i64_t toI64(QString &szNumber,bool * bOk)
+	/**
+	* \brief Return the string converted to a long
+	* \param s The source string
+	* \param bOk The conversion error handling
+	*/
+	inline kvi_i64_t toI64(QString & szNumber, bool * bOk)
 	{
 #if SYSTEM_SIZE_OF_LONG_INT == 8
 		return szNumber.toLong(bOk);
@@ -226,7 +331,12 @@ namespace KviQString
 #endif
 	}
 
-	inline kvi_u64_t toU64(QString &szNumber,bool * bOk)
+	/**
+	* \brief Return the string converted to an unsigned long
+	* \param s The source string
+	* \param bOk The conversion error handling
+	*/
+	inline kvi_u64_t toU64(QString & szNumber, bool * bOk)
 	{
 #if SYSTEM_SIZE_OF_LONG_INT == 8
 		return szNumber.toULong(bOk);
@@ -238,4 +348,4 @@ namespace KviQString
 
 // QT4SUX: Because QString::null is gone. QString() is SLOWER than QString::null since it invokes a constructor and destructor.
 
-#endif //!_KVI_QSTRING_H_
+#endif //_KVI_QSTRING_H_

@@ -1,6 +1,6 @@
 #ifndef _KVI_POINTERHASHTABLE_H_
 #define _KVI_POINTERHASHTABLE_H_
-//=================================================================================================
+//============================================================================
 //
 //   File : kvi_pointerhashtable.h
 //   Creation date : Sat Jan 12 2008 04:53 by Szymon Stefanek
@@ -22,7 +22,13 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//=================================================================================================
+//============================================================================
+
+/**
+* \file kvi_pointerhashtable.h
+* \author Szymon Stefanek
+* \brief Pointer Hash Table
+*/
 
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
@@ -195,7 +201,6 @@ inline const unsigned short & kvi_hash_key_default(unsigned short *)
 	return static_default;
 }
 
-
 inline unsigned int kvi_hash_hash(void * pKey,bool)
 {
 	unsigned char * pBytes = (unsigned char *)&(pKey);
@@ -286,65 +291,63 @@ public:
 	T * data(){ return pData; };
 };
 
-///
-///
-/// \class KviPointerHashTable
-/// \brief A fast pointer hash table implementation
-///
-/// A very cool, very fast hash table implementation :P
-///
-/// To use this hash table you need to provide implementations
-/// for the following functions:
-///
-/// \verbatim
-///
-/// unsigned int kvi_hash_hash(const Key &hKey,bool bCaseSensitive);
-/// bool kvi_hash_key_equal(const Key &hKey1,const Key &hKey2,bool bCaseSensitive);
-/// void kvi_hash_key_copy(const Key &hKeyFrom,Key &hKeyTo,bool bDeepCopy);
-/// void kvi_hash_key_destroy(Key &hKey,bool bIsDeepCopy);
-/// const Key & kvi_hash_key_default(Key *);
-///
-/// \endverbatim
-///
-/// Implementations for the most likey Key data types are provided below.
-/// KviPointerHashTable will automagically work with const char *,QString,KviStr
-/// and integer types as keys.
-///
-/// For string Key types, the hash table may or may not be case sensitive.
-/// For other Key types the case sensitive flag has no meaning and will
-/// (hopefully) be optimized out by the compiler.
-///
-/// For pointer based keys the hash table may or may not mantain deep copies
-/// of Key data. For example, with char * keys, if deep copying is enabled
-/// then a private copy of the string data will be mantained. With deep
-/// copying disabled only char * pointers will be kept. For types
-/// that do not have meaning of deep copy the deep copying code will
-/// (hopefully) be optimized out by the compiler.
-///
-/// The hashtable mantains an array of KviPointerList based buckets.
-/// The number of buckets may be specified by the application user
-/// and does NOT need to be a prime number. Yet better to have it a power
-/// of two so the memory allocation routines will feel better and are
-/// less likely to waste space.
-///
+/**
+* \class KviPointerHashTable
+* \brief A fast pointer hash table implementation
+*
+* A very cool, very fast hash table implementation :P
+*
+* To use this hash table you need to provide implementations for the
+* following functions:
+*
+* \verbatim
+* unsigned int kvi_hash_hash(const Key & hKey, bool bCaseSensitive);
+* bool kvi_hash_key_equal(const Key & hKey1, const Key & hKey2, bool
+* bCaseSensitive);
+* void kvi_hash_key_copy(const Key & hKeyFrom, Key & hKeyTo, bool bDeepCopy);
+* void kvi_hash_key_destroy(Key & hKey, bool bIsDeepCopy);
+* const Key & kvi_hash_key_default(Key *);
+* \endverbatim
+*
+* Implementations for the most likey Key data types are provided below.
+* KviPointerHashTable will automagically work with const char, QString,
+* KviStr and integer types as keys.
+*
+* For string Key types, the hash table may or may not be case sensitive.
+* For other Key types the case sensitive flag has no meaning and will
+* (hopefully) be optimized out by the compiler.
+*
+* For pointer based keys the hash table may or may not mantain deep copies of
+* Key data. For example, with char * keys, if deep copying is enabled then a
+* private copy of the string data will be mantained. With deep copying
+* disabled only char * pointers will be kept. For types that do not have
+* meaning of deep copy the deep copying code will (hopefully) be optimized
+* out by the compiler.
+*
+* The hashtable mantains an array of KviPointerList based buckets.
+* The number of buckets may be specified by the application user and does NOT
+* need to be a prime number. Yet better to have it a power of two so the
+* memory allocation routines will feel better and are less likely to waste
+* space.
+*/
 template<class Key,class T> class KviPointerHashTable
 {
 	friend class KviPointerHashTableIterator<Key,T>;
 protected:
-	KviPointerList<KviPointerHashTableEntry<Key,T> >      ** m_pDataArray;
-	bool                                                     m_bAutoDelete;
-	unsigned int                                             m_uSize;
-	unsigned int                                             m_uCount;
-	bool                                                     m_bCaseSensitive;
-	bool                                                     m_bDeepCopyKeys;
-	unsigned int                                             m_uIteratorIdx;
+	KviPointerList<KviPointerHashTableEntry<Key,T> > ** m_pDataArray;
+	bool                                                m_bAutoDelete;
+	unsigned int                                        m_uSize;
+	unsigned int                                        m_uCount;
+	bool                                                m_bCaseSensitive;
+	bool                                                m_bDeepCopyKeys;
+	unsigned int                                        m_uIteratorIdx;
 public:
-	///
-	/// Returns the item associated to the key hKey
-	/// or NULL if no such item exists in the hash table.
-	/// Places the hash table iterator at the position
-	/// of the item found.
-	///
+	/**
+	* \brief Returns the item associated to the key hKey
+	* Returns NULL if no such item exists in the hash table.
+	* Places the hash table iterator at the position of the item found.
+	* \param hKey The key to find
+	*/
 	T * find(const Key & hKey)
 	{
 		m_uIteratorIdx = kvi_hash_hash(hKey,m_bCaseSensitive) % m_uSize;
@@ -356,40 +359,39 @@ public:
 		return 0;
 	}
 	
-	///
-	/// Returns the item associated to the key hKey
-	/// or NULL if no such item exists in the hash table.
-	/// Places the hash table iterator at the position
-	/// of the item found. This is an alias to find().
-	///
+	/**
+	* \brief Returns the item associated to the key hKey
+	* Returns NULL if no such item exists in the hash table.
+	* Places the hash table iterator at the position of the item found.
+	* This is an alias to find().
+	* \param hKey The key to find
+	*/
 	T * operator[](const Key & hKey)
 	{
 		return find(hKey);
 	}
 
-	///
 	/// Returns the number of items in this hash table
-	///
 	unsigned int count() const
 	{
 		return m_uCount;
 	}
 
-	///
 	/// Returns true if the hash table is empty
-	///
 	bool isEmpty() const
 	{
 		return m_uCount == 0;
 	}
 
-	///
-	/// Inserts the item pData at the position specified by the key hKey.
-	/// Replaces any previous item with the same key
-	/// The replaced item is deleted if autodelete is enabled.
-	/// The hash table iterator is placed at the newly inserted item.
-	///
-	void insert(const Key & hKey,T * pData)
+	/**
+	* \brief Inserts the item pData at the position specified by the key hKey.
+	* Replaces any previous item with the same key
+	* The replaced item is deleted if autodelete is enabled.
+	* The hash table iterator is placed at the newly inserted item.
+	* \param hKey The key where to insert data
+	* \param pData The data to insert
+	*/
+	void insert(const Key & hKey, T * pData)
 	{
 		if(!pData)return;
 		unsigned int uEntry = kvi_hash_hash(hKey,m_bCaseSensitive) % m_uSize;
@@ -416,24 +418,27 @@ public:
 		m_uCount++;
 	}
 
-	///
-	/// Inserts the item pData at the position specified by the key hKey.
-	/// Replaces any previous item with the same key
-	/// The replaced item is deleted if autodelete is enabled.
-	/// The hash table iterator is placed at the newly inserted item.
-	/// This is just an alias to insert() with a different name.
-	///
-	void replace(const Key & hKey,T * pData)
+	/**
+	* \brief Inserts the item pData at the position specified by the key hKey.
+	* Replaces any previous item with the same key.
+	* The replaced item is deleted if autodelete is enabled.
+	* The hash table iterator is placed at the newly inserted item.
+	* This is just an alias to insert() with a different name.
+	* \param hKey The key where to insert data
+	* \param pData The new data to insert
+	*/
+	void replace(const Key & hKey, T * pData)
 	{
 		insert(hKey,pData);
 	}
 
-	///
-	/// Removes the item pointer associated to the key hKey, if such an item
-	/// exists in the hash table. The item is deleted if autodeletion
-	/// is enabled. Returns true if the item was found and removed and false if it wasn't found.
-	/// Invalidates the hash table iterator.
-	///
+	/**
+	* \brief Removes the item pointer associated to the key hKey, if such an item exists in the hash table.
+	* The item is deleted if autodeletion is enabled. Returns true if the
+	* item was found and removed and false if it wasn't found.
+	* Invalidates the hash table iterator.
+	* \param hKey The key where to remove the pointer
+	*/
 	bool remove(const Key & hKey)
 	{
 		unsigned int uEntry = kvi_hash_hash(hKey,m_bCaseSensitive) % m_uSize;
@@ -457,11 +462,13 @@ public:
 		return false;
 	}
 
-	///
-	/// Removes the first occurence of the item pointer pRef. The item is deleted if autodeletion
-	/// is enabled. Returns true if the pointer was found and false otherwise
-	/// Invalidates the hash table iterator.
-	///
+	/**
+	* \brief Removes the first occurence of the item pointer pRef.
+	* The item is deleted if autodeletion is enabled. Returns true if the
+	* pointer was found and false otherwise.
+	* Invalidates the hash table iterator.
+	* \param pRef The pointer to remove the first occurence
+	*/
 	bool removeRef(const T * pRef)
 	{
 		for(unsigned int i=0;i<m_uSize;i++)
@@ -489,11 +496,11 @@ public:
 		return false;
 	}
 
-	///
-	/// Removes all the items from the hash table.
-	/// The items are deleted if autodeletion is enabled.
-	/// Invalidates the hash table iterator.
-	///
+	/**
+	* \brief Removes all the items from the hash table.
+	* The items are deleted if autodeletion is enabled.
+	* Invalidates the hash table iterator.
+	*/
 	void clear()
 	{
 		for(unsigned int i=0;i<m_uSize;i++)
@@ -513,11 +520,12 @@ public:
 		m_uCount = 0;
 	}
 
-	///
-	/// Searches for the item pointer pRef and returns
-	/// it's hash table entry, if found, and NULL otherwise.
-	/// The hash table iterator is placed at the item found.
-	///
+	/**
+	* \brief Searches for the item pointer pRef
+	* Returns its hash table entry, if found, and NULL otherwise.
+	* The hash table iterator is placed at the item found.
+	* \param pRef The pointer to search
+	*/
 	KviPointerHashTableEntry<Key,T> * findRef(const T * pRef)
 	{
 		for(m_uIteratorIdx = 0;m_uIteratorIdx<m_uSize;m_uIteratorIdx++)
@@ -533,11 +541,11 @@ public:
 		return 0;
 	}
 
-	///
-	/// Returns the entry pointed by the hash table iterator.
-	/// This function must be preceeded by a call to firstEntry(), first()
-	/// or findRef().
-	///
+	/**
+	* \brief Returns the entry pointed by the hash table iterator.
+	* This function must be preceeded by a call to firstEntry(), first()
+	* or findRef().
+	*/
 	KviPointerHashTableEntry<Key,T> * currentEntry()
 	{
 		if(m_uIteratorIdx >= m_uSize)return 0;
@@ -545,10 +553,7 @@ public:
 		return 0;
 	}
 
-	///
-	/// Places the hash table iterator at the first entry
-	/// and returns it.
-	///
+	/// Places the hash table iterator at the first entry and returns it.
 	KviPointerHashTableEntry<Key,T> * firstEntry()
 	{
 		m_uIteratorIdx = 0;
@@ -560,12 +565,11 @@ public:
 		return m_pDataArray[m_uIteratorIdx]->first();
 	}
 
-	///
-	/// Places the hash table iterator at the next entry
-	/// and returns it.
-	/// This function must be preceeded by a call to firstEntry(), first()
-	/// or findRef().
-	///
+	/**
+	* \brief Places the hash table iterator at the next entry and returns it.
+	* This function must be preceeded by a call to firstEntry(), first()
+	* or findRef().
+	*/
 	KviPointerHashTableEntry<Key,T> * nextEntry()
 	{
 		if(m_uIteratorIdx >= m_uSize)return 0;
@@ -589,11 +593,11 @@ public:
 
 	}
 
-	///
-	/// Returns the data value pointer pointed by the hash table iterator.
-	/// This function must be preceeded by a call to firstEntry(), first()
-	/// or findRef().
-	///
+	/**
+	* \brief Returns the data value pointer pointed by the hash table iterator.
+	* This function must be preceeded by a call to firstEntry(), first()
+	* or findRef().
+	*/
 	T * current()
 	{
 		if(m_uIteratorIdx >= m_uSize)return 0;
@@ -606,11 +610,11 @@ public:
 		return 0;
 	}
 	
-	///
-	/// Returns the key pointed by the hash table iterator.
-	/// This function must be preceeded by a call to firstEntry(), first()
-	/// or findRef().
-	///
+	/**
+	* \brief Returns the key pointed by the hash table iterator.
+	* This function must be preceeded by a call to firstEntry(), first()
+	* or findRef().
+	*/
 	const Key & currentKey()
 	{
 		if(m_uIteratorIdx >= m_uSize)return kvi_hash_key_default(((Key *)NULL));
@@ -623,10 +627,9 @@ public:
 		return kvi_hash_key_default(((Key *)NULL));
 	}
 
-	///
-	/// Places the hash table iterator at the first entry
-	/// and returns the associated data value pointer.
-	///
+	/** \brief Places the hash table iterator at the first entry
+	* It returns the associated data value pointer.
+	*/
 	T * first()
 	{
 		m_uIteratorIdx = 0;
@@ -640,12 +643,11 @@ public:
 		return e->data();
 	}
 
-	///
-	/// Places the hash table iterator at the next entry
-	/// and returns the associated data value pointer.
-	/// This function must be preceeded by a call to firstEntry(), first()
-	/// or findRef().
-	///
+	/**
+	* \brief Places the hash table iterator at the next entry and returns the associated data value pointer.
+	* This function must be preceeded by a call to firstEntry(), first()
+	* or findRef().
+	*/
 	T * next()
 	{
 		if(m_uIteratorIdx >= m_uSize)return 0;
@@ -673,48 +675,50 @@ public:
 		return e->data();
 	}
 
-	///
-	/// Removes all items in the hash table and then
-	/// makes a complete shallow copy of the data contained in t.
-	/// The removed items are deleted if autodeletion is enabled.
-	/// The hash table iterator is invalidated.
-	/// Does not change autodelete flag: make sure you not delete the items twice :)
-	///
-	void copyFrom(KviPointerHashTable<Key,T> &t)
+	/**
+	* \brief Removes all items in the hash table and then makes a complete shallow copy of the data contained in t.
+	* The removed items are deleted if autodeletion is enabled.
+	* The hash table iterator is invalidated.
+	* Does not change autodelete flag: make sure you don't delete the
+	* items twice :)
+	* \param t The data to copy
+	*/
+	void copyFrom(KviPointerHashTable<Key,T> & t)
 	{
 		clear();
 		for(KviPointerHashTableEntry<Key,T> * e = t.firstEntry();e;e = t.nextEntry())
 			insert(e->key(),e->data());
 	}
 
-	///
-	/// Inserts a complete shallow copy of the data contained in t.
-	/// The hash table iterator is invalidated.
-	///
-	void insert(KviPointerHashTable<Key,T> &t)
+	/**
+	* \brief Inserts a complete shallow copy of the data contained in t.
+	* The hash table iterator is invalidated.
+	* \param t The data to insert
+	*/
+	void insert(KviPointerHashTable<Key,T> & t)
 	{
 		for(KviPointerHashTableEntry<Key,T> * e = t.firstEntry();e;e = t.nextEntry())
 			insert(e->key(),e->data());
 	}
 
-	///
-	/// Enables or disabled the autodeletion feature.
-	/// Items are deleted upon removal when the feature is enabled.
-	///
+	/**
+	* \brief Enables or disabled the autodeletion feature.
+	* Items are deleted upon removal when the feature is enabled.
+	* \param bAutoDelete Set the autodelete state
+	*/
 	void setAutoDelete(bool bAutoDelete)
 	{
 		m_bAutoDelete = bAutoDelete;
 	}
 
-	///
-	/// Creates an empty hash table.
-	/// Automatic deletion is enabled.
-	///
-	/// \param uSize The number of hash buckets: does NOT necesairly need to be prime
-	/// \param bCaseSensitive Are the key comparisons case sensitive ?
-	/// \param Do we need to mantain deep copies of keys ?
-	///
-	KviPointerHashTable(unsigned int uSize = 32,bool bCaseSensitive = true,bool bDeepCopyKeys = true)
+	/**
+	* \brief Creates an empty hash table.
+	* Automatic deletion is enabled.
+	* \param uSize The number of hash buckets: does NOT necesairly need to be prime
+	* \param bCaseSensitive Are the key comparisons case sensitive ?
+	* \param bDeepCopyKeys Do we need to mantain deep copies of keys ?
+	*/
+	KviPointerHashTable(unsigned int uSize = 32, bool bCaseSensitive = true, bool bDeepCopyKeys = true)
 	{
 		m_uCount = 0;
 		m_bCaseSensitive = bCaseSensitive;
@@ -725,12 +729,12 @@ public:
 		for(unsigned int i=0;i<m_uSize;i++)m_pDataArray[i] = NULL;
 	}
 
-	///
-	/// First creates an empty hash table
-	/// and then inserts a copy of all the item pointers present in t.
-	/// The autodelete feature is automatically disabled (take care!).
-	///
-	KviPointerHashTable(KviPointerHashTable<Key,T> &t)
+	/**
+	* \brief First creates an empty hash table and then inserts a copy of all the item pointers present in t.
+	* The autodelete feature is automatically disabled (take care!).
+	* \param t The data to copy
+	*/
+	KviPointerHashTable(KviPointerHashTable<Key,T> & t)
 	{
 		m_uCount = 0;
 		m_bAutoDelete = false;
@@ -742,10 +746,10 @@ public:
 		copyFrom(t);
 	}
 
-	///
-	/// Destroys the hash table and all the items contained within.
-	/// Items are deleted if autodeletion is enabled.
-	///
+	/**
+	* \brief Destroys the hash table and all the items contained within.
+	* Items are deleted if autodeletion is enabled.
+	*/
 	~KviPointerHashTable()
 	{
 		clear();
@@ -753,18 +757,23 @@ public:
 	}
 };
 
+/**
+* \class KviPointerHashTableIterator
+* \brief A fast pointer hash table iterator implementation
+*/
 template<typename Key,typename T> class KviPointerHashTableIterator
 {
 protected:
-	const KviPointerHashTable<Key,T>                         * m_pHashTable;
-	unsigned int                                               m_uEntryIndex;
+	const KviPointerHashTable<Key,T> * m_pHashTable;
+	unsigned int                       m_uEntryIndex;
 	KviPointerListIterator<KviPointerHashTableEntry<Key,T> > * m_pIterator;
 public:
-	///
-	/// Creates an iterator copy.
-	/// The new iterator points exactly to the item pointed by src.
-	///
-	void operator = (const KviPointerHashTableIterator<Key,T> &src)
+	/**
+	* \brief Creates an iterator copy.
+	* The new iterator points exactly to the item pointed by src.
+	* \param src The source pointer to copy from
+	*/
+	void operator = (const KviPointerHashTableIterator<Key,T> & src)
 	{
 		m_pHashTable = src.m_pHashTable;
 		m_uEntryIndex = src.m_uEntryIndex;
@@ -774,10 +783,11 @@ public:
 			m_pIterator = NULL;
 	}
 
-	///
-	/// Moves the iterator to the first element of the hash table.
-	/// Returns true in case of success or false if the hash table is empty.
-	///
+	/**
+	* \brief Moves the iterator to the first element of the hash table.
+	* Returns true in case of success or false if the hash table is
+	* empty.
+	*/
 	bool moveFirst()
 	{
 		if(m_pIterator)
@@ -805,10 +815,11 @@ public:
 		return bRet;
 	}
 	
-	///
-	/// Moves the iterator to the last element of the hash table.
-	/// Returns true in case of success or false if the hash table is empty.
-	///
+	/**
+	* \brief Moves the iterator to the last element of the hash table.
+	* Returns true in case of success or false if the hash table is
+	* empty.
+	*/
 	bool moveLast()
 	{
 		if(m_pIterator)
@@ -836,11 +847,11 @@ public:
 		return false;
 	}
 
-	///
-	/// Moves the iterator to the next element of the hash table.
-	/// The iterator must be actually valid for this function to work.
-	/// Returns true in case of success or false if there is no next item.
-	///
+	/**
+	* \brief Moves the iterator to the next element of the hash table.
+	* The iterator must be actually valid for this function to work.
+	* Returns true in case of success or false if there is no next item.
+	*/
 	bool moveNext()
 	{
 		if(!m_pIterator)
@@ -869,22 +880,23 @@ public:
 		return bRet;
 	}
 	
-	///
-	/// Moves the iterator to the next element of the hash table.
-	/// The iterator must be actually valid for this function to work.
-	/// Returns true in case of success or false if there is no next item.
-	/// This is just an alias to moveNext().
-	///
+	/**
+	* \brief Moves the iterator to the next element of the hash table.
+	* The iterator must be actually valid for this function to work.
+	* Returns true in case of success or false if there is no next item.
+	* This is just an alias to moveNext().
+	*/
 	bool operator ++()
 	{
 		return moveNext();
 	}
 	
-	///
-	/// Moves the iterator to the previous element of the hash table.
-	/// The iterator must be actually valid for this function to work.
-	/// Returns true in case of success or false if there is no previous item.
-	///
+	/**
+	* \brief Moves the iterator to the previous element of the hash table.
+	* The iterator must be actually valid for this function to work.
+	* Returns true in case of success or false if there is no previous
+	* item.
+	*/
 	bool movePrev()
 	{
 		if(!m_pIterator)
@@ -916,42 +928,42 @@ public:
 		return false;
 	}
 
-	
-	///
-	/// Moves the iterator to the previous element of the hash table.
-	/// The iterator must be actually valid for this function to work.
-	/// Returns true in case of success or false if there is no previous item.
-	/// This is just an alias to movePrev() with a different name.
-	///
+	/**
+	* \brief Moves the iterator to the previous element of the hash table.
+	* The iterator must be actually valid for this function to work.
+	* Returns true in case of success or false if there is no previous
+	* item.
+	* This is just an alias to movePrev() with a different name.
+	*/
 	bool operator --()
 	{
 		return movePrev();
 	}
 
-	///
-	/// Returs the value pointed by the iterator
-	/// or a default constructed value if the iterator is not valid.
-	/// This is an alias to operator *() with just a different name.
-	///
+	/**
+	* \brief Returs the value pointed by the iterator
+	* If the iterator is not valid it returns a default constructed value
+	* This is an alias to operator *() with just a different name.
+	*/
 	T * current() const
 	{
 		return m_pIterator ? m_pIterator->current()->data() : NULL;
 	}
 
-	///
-	/// Returs the value pointed by the iterator
-	/// or a default constructed value if the iterator is not valid.
-	/// This is an alias to current() with just a different name.
-	///
+	/**
+	* \brief Returs the value pointed by the iterator
+	* If the iterator is not valid it returns a default constructed value
+	* This is an alias to current() with just a different name.
+	*/
 	T * operator *() const
 	{
 		return m_pIterator ? m_pIterator->current()->data() : NULL;
 	}
 	
-	///
-	/// Returs the key pointed by the iterator
-	/// or a default constructed key if the iterator is not valid.
-	///
+	/**
+	* \brief Returs the key pointed by the iterator
+	* If the iterator is not valid it returns a default constructed value
+	*/
 	const Key & currentKey() const
 	{
 		if(m_pIterator)
@@ -959,10 +971,10 @@ public:
 		return kvi_hash_key_default(((Key *)NULL));
 	}
 
-	///
-	/// Moves the iterator to the first element of the hash table.
-	/// Returns the first item found or NULL if the hash table is empty.
-	///
+	/**
+	* \brief Moves the iterator to the first element of the hash table.
+	* Returns the first item found or NULL if the hash table is empty.
+	*/
 	T * toFirst()
 	{
 		if(!moveFirst())
@@ -970,10 +982,11 @@ public:
 		return current();
 	}
 public:
-	///
-	/// Creates an iterator pointing to the first item in the hash table, if any.
-	///
-	KviPointerHashTableIterator(const KviPointerHashTable<Key,T> &hTable)
+	/**
+	* \brief Creates an iterator pointing to the first item in the hash table, if any.
+	* \param hTable The hash table
+	*/
+	KviPointerHashTableIterator(const KviPointerHashTable<Key,T> & hTable)
 	{
 		m_pHashTable = &hTable;
 		m_uEntryIndex = 0;
@@ -981,9 +994,7 @@ public:
 		moveFirst();
 	}
 	
-	///
 	/// Destroys the iterator
-	///
 	~KviPointerHashTableIterator()
 	{
 		if(m_pIterator)

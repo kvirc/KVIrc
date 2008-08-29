@@ -25,24 +25,29 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_bswap.h
+* \author Szymon Stefanek
+* \brief Bit Swap
+*/
+
 #include "kvi_settings.h"
 #include "kvi_inttypes.h"
 
-
-// KVILIB_API has been removed from therse two functions
+// KVILIB_API has been removed from these two functions
 // these should always go inlined
 
 inline kvi_u64_t kvi_swap64(kvi_u64_t i)
 {
 	// abcdefgh to hgfedcba
 	return ((i << 56) |                /* h to a */
-			((i & 0xff00) << 40) |     /* g to b */
-			((i & 0xff0000) << 24) |   /* f to c */
-			((i & 0xff000000) << 8) |  /* e to d */
-			((i >> 8) & 0xff000000) |  /* d to e */
-			((i >> 24) & 0xff0000) |   /* c to f */
-			((i >> 40) & 0xff00) |     /* b to g */
-			(i >> 56));                /* a to h */
+		((i & 0xff00) << 40) |     /* g to b */
+		((i & 0xff0000) << 24) |   /* f to c */
+		((i & 0xff000000) << 8) |  /* e to d */
+		((i >> 8) & 0xff000000) |  /* d to e */
+		((i >> 24) & 0xff0000) |   /* c to f */
+		((i >> 40) & 0xff00) |     /* b to g */
+		(i >> 56));                /* a to h */
 }
 
 inline kvi_u32_t kvi_swap32(kvi_u32_t i)

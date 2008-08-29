@@ -25,9 +25,15 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_qcstring.h
+* \author Szymon Stefanek
+* \brief KviQCString
+*/
+
 #include "kvi_settings.h"
 
 #include <QByteArray>
 #define KviQCString QByteArray
 
-#endif //!_KVI_QCSTRING_H_
+#endif //_KVI_QCSTRING_H_

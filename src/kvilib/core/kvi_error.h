@@ -24,6 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_error.h
+* \author Szymon Stefanek
+* \brief Error List
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
@@ -178,6 +184,9 @@
 
 #define KVI_NUM_ERRORS 121
 
+/**
+* \namespace KviError
+*/
 namespace KviError
 {
 	KVILIB_API QString getDescription(int iErrorCode);

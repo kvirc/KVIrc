@@ -79,16 +79,14 @@ tal/kvi_tal_widgetstack.h
 tal/kvi_tal_application_qt.h
 core/kvi_memmove.h
 core/kvi_inttypes.h
-core/kvi_qcstring.h
-core/kvi_pointerhashtable.h
+core/kvi_pointerhashtable.h - incomplete from line 42 to 283
 core/kvi_malloc.h
-core/kvi_bswap.h
-core/kvi_heapobject.h
-core/kvi_error.h
+core/kvi_bswap.h - incomplete from line 40
+core/kvi_heapobject.h - incomplete from line 75 to 80
+core/kvi_error.h - incomplete from line 192 to 194
 core/kvi_strasm.h
-core/kvi_pointerlist.h
 core/kvi_string.h
-core/kvi_qstring.h
+core/kvi_qstring.h - incomplete lines 56-61, 70-75
 file/kvi_packagefile.h
 file/kvi_file.h
 file/kvi_fileutils.h
@@ -493,10 +491,3 @@ actioneditor/actioneditor.h
 iograph/libkviiograph.h
 perlcore/ppport.h
 perlcore/perlcoreinterface.h
-
-data:
-resources_win32/resource.h
-resources_win32/auto-generated/kvilib-resource.h
-resources_win32/auto-generated/modules/resource.h
-resources_win32/auto-generated/modules/winamp-resource.h
-resources_win32/auto-generated/kvirc-auto-resource.h
