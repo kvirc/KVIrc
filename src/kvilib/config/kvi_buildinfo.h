@@ -25,13 +25,18 @@
 //
 //=============================================================================
 
+/// \file kvi_buildinfo.h
+/// \author Szymon Stefanek
+/// \brief Useful functions which returns compilation and runtime info
+
 #include "kvi_settings.h"
 #include "kvi_sourcesdate.h"
 
 #include <QString>
 
 ///
-/// This namespace contains informations gathered at kvirc build time.
+/// \namespace KviBuildInfo
+/// \brief This namespace contains informations gathered at KVIrc build time.
 /// This, in fact, is the last time that "cmake" ran and successfully generated the
 /// kvilib Makefile. Since kvilib is generally built with the kvirc
 /// executable, then you can assume that the information returned
@@ -39,56 +44,58 @@
 ///
 namespace KviBuildInfo
 {
-	///
 	/// Retrieve the latest kvilib/kvirc build date.
-	///
 	extern KVILIB_API QString buildDate();
-	///
+
 	/// Returns the date tag applied to the currently compiled SVN sources.
-	///
 	extern KVILIB_API QString buildSourcesDate();
-	///
-	/// Returns the build command used by cmake to create the current kvirc executable.
-	///
+
+	/// Returns the build command used by cmake to create the KVIrc executable.
 	extern KVILIB_API QString buildCommand();
+
 	///
-	/// Returns some of the build flags that were worked out by cmake at
-	/// compilation time.
+	/// \brief Returns the build flags
+	/// The build flags were worked out by CMake at compilation time.
 	///
 	extern KVILIB_API QString buildFlags();
+
 	///
-	/// Returns a description of the system that the currently running
-	/// executable was built on.
+	/// \brief Returns a description of the system
+	/// The system refers to the one used to build the KVIrc executable.
 	///
 	extern KVILIB_API QString buildSystem();
+
 	///
-	/// Returns the name part of the system that the currently running
-	/// executable was built on.
+	/// \brief Returns the name part of the system
+	/// The system name refers to the one used to build the KVIrc executable.
 	///
 	extern KVILIB_API QString buildSystemName();
+
 	///
-	/// Returns the version part of the system that the currently running
-	/// executable was built on.
+	/// \brief Returns the version part of the system
+	/// The system version refers to the one used to build the KVIrc executable.
 	///
 	extern KVILIB_API QString buildSystemVersion();
+
 	///
-	/// Returns a description of the CPU that the currently running
-	/// executable was built on.
+	/// \brief Returns a description of the CPU
+	/// The CPU refers to the one used to build the KVIrc executable.
 	///
 	extern KVILIB_API QString buildCPU();
+
 	///
-	/// Returns a description of the compiler that the currently running
-	/// executable was built with.
+	/// \brief Returns a description of the compiler
+	/// The compiler refers to the one used to build the KVIrc executable.
 	///
 	extern KVILIB_API QString buildCompiler();
+
 	///
-	/// Returns a description of the compiler flags that the currently running
-	/// executable was built with.
+	/// \brief Returns a description of the compiler flags
+	/// The flags refer to the ones used to build the KVIrc executable.
 	///
 	extern KVILIB_API QString buildCompilerFlags();
-	///
+
 	/// Returns the SVN revision number of the local repository
-	///
 	extern KVILIB_API QString buildRevision();
 };
 

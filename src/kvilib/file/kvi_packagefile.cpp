@@ -968,7 +968,6 @@ bool KviPackageReader::unpackInternal(const QString &szLocalFileName,const QStri
 				return false;
 			break;
 		}
-
 	}
 
 	return true;
