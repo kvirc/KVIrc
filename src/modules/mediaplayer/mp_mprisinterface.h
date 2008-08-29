@@ -43,8 +43,19 @@
 		virtual bool play();
 		virtual bool stop();
 		virtual bool pause();
+		virtual bool quit();
 		virtual QString nowPlaying();
 		virtual QString mrl();
+		virtual QString title();
+		virtual QString artist();
+		virtual QString genre();
+		virtual QString comment();
+		virtual QString album();
+		virtual bool setVol(kvs_int_t &iVol);
+		virtual int getVol();
+		virtual int position();
+		virtual int length();
+		virtual bool jumpTo(int &iPos);
 	};
 
 	class KviAudaciousInterface : public KviMPRISInterface
@@ -53,17 +64,9 @@
 		KviAudaciousInterface();
 	public:
 		virtual bool quit();
-		virtual bool setVol(kvs_int_t &iVol);
-		virtual int getVol();
 		virtual KviMediaPlayerInterface::PlayerStatus status();
-		virtual int position();
+		virtual QString mrl();
 		virtual int length();
-		virtual bool jumpTo(int &iPos);
-		virtual QString title();
-		virtual QString artist();
-		virtual QString genre();
-		virtual QString comment();
-		virtual QString album();
 
 		virtual int getPlayListPos();
 		virtual QString year();
@@ -74,6 +77,7 @@
 	{
 	public:
 		KviBmpxInterface();
+		virtual KviMediaPlayerInterface::PlayerStatus status();
 	};
 	
 	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)

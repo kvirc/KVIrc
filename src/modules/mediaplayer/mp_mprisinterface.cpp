@@ -26,28 +26,6 @@
 #if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
 #include "kvi_locale.h"
 
-MP_IMPLEMENT_DESCRIPTOR(
-	KviAudaciousInterface,
-	"audacious",
-	__tr2qs_ctx(
-		"An interface to the popular audacious media player.\n" \
-		"Download it from http://audacious-media-player.org\n"
-		,
-		"mediaplayer"
-	)
-)
-
-MP_IMPLEMENT_DESCRIPTOR(
-	KviBmpxInterface,
-	"bmpx",
-	__tr2qs_ctx(
-		"An interface to BMPx.\n" \
-		"Download it from http://bmpx.backtrace.info\n"
-		,
-		"mediaplayer"
-	)
-)
-
 KviMPRISInterface::KviMPRISInterface()
 : KviMediaPlayerInterface()
 {
@@ -55,18 +33,6 @@ KviMPRISInterface::KviMPRISInterface()
 
 KviMPRISInterface::~KviMPRISInterface()
 {
-}
-
-KviAudaciousInterface::KviAudaciousInterface()
-: KviMPRISInterface()
-{
-	m_szServiceName = "org.mpris.audacious";
-}
-
-KviBmpxInterface::KviBmpxInterface()
-: KviMPRISInterface()
-{
-	m_szServiceName = "org.mpris.bmp";
 }
 
 int KviMPRISInterface::detect(bool bStart)
@@ -82,8 +48,8 @@ int KviMPRISInterface::detect(bool bStart)
 	return 1;	/* dbus works, player may be closed */
 }
 
-#define MPRIS_SIMPLE_CALL(__action) \
-	QDBusInterface dbus_iface(m_szServiceName, "/Player", \
+#define MPRIS_SIMPLE_CALL(__path, __action) \
+	QDBusInterface dbus_iface(m_szServiceName, __path, \
 				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus()); \
 	QDBusMessage reply = dbus_iface.call(QDBus::Block, __action); \
 	if (reply.type() == QDBusMessage::ErrorMessage) { \
@@ -95,32 +61,32 @@ int KviMPRISInterface::detect(bool bStart)
 
 bool KviMPRISInterface::prev()
 {
-	MPRIS_SIMPLE_CALL("Prev")
+	MPRIS_SIMPLE_CALL("/Player", "Prev")
 }
 
 bool KviMPRISInterface::next()
 {
-	MPRIS_SIMPLE_CALL("Next")
+	MPRIS_SIMPLE_CALL("/Player", "Next")
 }
 
 bool KviMPRISInterface::play()
 {
-	MPRIS_SIMPLE_CALL("Play")
+	MPRIS_SIMPLE_CALL("/Player", "Play")
 }
 
 bool KviMPRISInterface::stop()
 {
-	MPRIS_SIMPLE_CALL("Stop")
+	MPRIS_SIMPLE_CALL("/Player", "Stop")
 }
 
 bool KviMPRISInterface::pause()
 {
-	MPRIS_SIMPLE_CALL("Pause")
+	MPRIS_SIMPLE_CALL("/Player", "Pause")
 }
 
-bool KviAudaciousInterface::quit()
+bool KviMPRISInterface::quit()
 {
-	MPRIS_SIMPLE_CALL("Quit")
+	MPRIS_SIMPLE_CALL("/", "Quit")
 }
 
 #define MPRIS_CALL_METHOD(__method, __return_if_fail) \
@@ -142,11 +108,10 @@ bool KviAudaciousInterface::quit()
 		QVariant v = qdbus_cast<QVariantMap>(arg); \
 		if (v.userType() == QVariant::Map) { \
         		const QVariantMap map = v.toMap(); \
-        		QVariantMap::ConstIterator it = map.constBegin(); \
-        		for ( ; it != map.constEnd(); ++it) { \
-				if (it.key() == __field) \
-					return it.value().toString(); \
-			} \
+        		QVariantMap::ConstIterator it = map.find(__field); \
+                        if (it != map.end() && it.key() == __field) { \
+                                return it.value().toString(); \
+                        } \
 		} \
 	} \
 	return "";
@@ -199,28 +164,138 @@ QString KviMPRISInterface::mrl()
 		QVariant v = qdbus_cast<QVariantMap>(arg);
 		if (v.userType() == QVariant::Map) {
         		const QVariantMap map = v.toMap();
-        		QVariantMap::ConstIterator it = map.constBegin();
-        		for ( ; it != map.constEnd(); ++it) {
-				if (it.key() == "URI")
-					return it.value().toString();
+        		QVariantMap::ConstIterator it = map.find("location");
+        		if (it != map.end() && it.key() == "location") {
+				return it.value().toString();
 			}
 		}
 	}
 	return "";
 }
 
-bool KviAudaciousInterface::setVol(kvs_int_t &iVol)
+QString KviMPRISInterface::title()
+{
+	MPRIS_GET_METADATA_FIELD("title")
+}
+
+QString KviMPRISInterface::artist()
+{
+	MPRIS_GET_METADATA_FIELD("artist")
+}
+
+QString KviMPRISInterface::genre()
+{
+	MPRIS_GET_METADATA_FIELD("genre")
+}
+
+QString KviMPRISInterface::comment()
+{
+	MPRIS_GET_METADATA_FIELD("comment")
+}
+
+QString KviMPRISInterface::album()
+{
+	MPRIS_GET_METADATA_FIELD("album")
+}
+
+bool KviMPRISInterface::setVol(kvs_int_t &iVol)
 {
 	MPRIS_CALL_METHOD_WITH_ARG("VolumeSet", QVariant((int)(100*iVol/255)), false);
 	return true;
 }
 
-int KviAudaciousInterface::getVol()
+int KviMPRISInterface::getVol()
 {
 	MPRIS_CALL_METHOD("VolumeGet", -1)
 
 	int iVol = reply.arguments().first().toInt();
 	return iVol * 255 /100;
+}
+
+int KviMPRISInterface::position()
+{
+	MPRIS_CALL_METHOD("PositionGet", -1)
+	return reply.arguments().first().toInt();
+}
+
+int KviMPRISInterface::length()
+{
+	MPRIS_CALL_METHOD("GetMetadata", -1)
+
+	foreach (QVariant v, reply.arguments()) {
+		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
+		QVariant v = qdbus_cast<QVariantMap>(arg);
+		if (v.userType() == QVariant::Map) {
+        		const QVariantMap map = v.toMap();
+        		QVariantMap::ConstIterator it = map.constBegin();
+        		for ( ; it != map.constEnd(); ++it) {
+				if (it.key() == "time")
+					return it.value().toInt();
+			}
+		}
+	}
+	return -1;
+}
+
+bool KviMPRISInterface::jumpTo(int &iPos)
+{
+	MPRIS_CALL_METHOD_WITH_ARG("PositionSet", QVariant(iPos), false)
+	return true;
+}
+
+/* audacious interface */
+MP_IMPLEMENT_DESCRIPTOR(
+	KviAudaciousInterface,
+	"audacious",
+	__tr2qs_ctx(
+		"An interface to the popular audacious media player.\n" \
+		"Download it from http://audacious-media-player.org\n"
+		,
+		"mediaplayer"
+	)
+)
+
+KviAudaciousInterface::KviAudaciousInterface()
+: KviMPRISInterface()
+{
+	m_szServiceName = "org.mpris.audacious";
+}
+
+int KviAudaciousInterface::getPlayListPos()
+{
+	QDBusInterface dbus_iface("org.mpris.audacious", "/org/atheme/audacious",
+				"org.atheme.audacious", QDBusConnection::sessionBus());
+	QDBusReply<uint> pos = dbus_iface.call(QDBus::Block, "Position");
+	return pos;
+}
+
+
+bool KviAudaciousInterface::quit()
+{
+	MPRIS_SIMPLE_CALL("/Player", "Quit")
+}
+
+QString KviAudaciousInterface::mrl()
+{
+	MPRIS_CALL_METHOD("GetMetadata", "")
+
+	foreach (QVariant v, reply.arguments()) {
+		QDBusArgument arg = qvariant_cast<QDBusArgument>(v);
+		QVariant v = qdbus_cast<QVariantMap>(arg);
+		if (v.userType() == QVariant::Map) {
+        		const QVariantMap map = v.toMap();
+        		QVariantMap::ConstIterator it = map.find("location");
+        		if (it != map.end() && it.key() == "location") {
+				return it.value().toString();
+			}
+			/* Some audacious versions send URI instead of location */
+			it = map.find("URI");
+                        if (it != map.end() && it.key() == "URI") {
+                                return it.value().toString();
+                        }
+		}
+	}
+	return "";
 }
 
 KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
@@ -238,12 +313,6 @@ KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
 		case 2: return KviMediaPlayerInterface::Stopped;
 		default: return KviMediaPlayerInterface::Unknown;
 	}
-}
-
-int KviAudaciousInterface::position()
-{
-	MPRIS_CALL_METHOD("PositionGet", -1)
-	return reply.arguments().first().toInt();
 }
 
 int KviAudaciousInterface::length()
@@ -265,46 +334,6 @@ int KviAudaciousInterface::length()
 	return -1;
 }
 
-bool KviAudaciousInterface::jumpTo(int &iPos)
-{
-	MPRIS_CALL_METHOD_WITH_ARG("PositionSet", QVariant(iPos), false)
-	return true;
-}
-
-QString KviAudaciousInterface::title()
-{
-	MPRIS_GET_METADATA_FIELD("title")
-}
-
-QString KviAudaciousInterface::artist()
-{
-	MPRIS_GET_METADATA_FIELD("artist")
-}
-
-QString KviAudaciousInterface::genre()
-{
-	MPRIS_GET_METADATA_FIELD("genre")
-}
-
-QString KviAudaciousInterface::comment()
-{
-	MPRIS_GET_METADATA_FIELD("comment")
-}
-
-QString KviAudaciousInterface::album()
-{
-	MPRIS_GET_METADATA_FIELD("album")
-}
-
-/* audacious specific interface */
-int KviAudaciousInterface::getPlayListPos()
-{
-	QDBusInterface dbus_iface("org.mpris.audacious", "/org/atheme/audacious",
-				"org.atheme.audacious", QDBusConnection::sessionBus());
-	QDBusReply<uint> pos = dbus_iface.call(QDBus::Block, "Position");
-	return pos;
-}
-
 #define AUDACIOUS_GET_TUPLE_FIELD(__field) \
 	if (this->status() != KviMediaPlayerInterface::Playing) \
 		return ""; \
@@ -323,6 +352,30 @@ QString KviAudaciousInterface::year()
 QString KviAudaciousInterface::mediaType()
 {
 	AUDACIOUS_GET_TUPLE_FIELD("codec")
+}
+
+/* BMPx interface */
+MP_IMPLEMENT_DESCRIPTOR(
+	KviBmpxInterface,
+	"bmpx",
+	__tr2qs_ctx(
+		"An interface to BMPx.\n" \
+		"Download it from http://bmpx.backtrace.info\n"
+		,
+		"mediaplayer"
+	)
+)
+
+KviBmpxInterface::KviBmpxInterface()
+: KviMPRISInterface()
+{
+	m_szServiceName = "org.mpris.bmp";
+}
+
+/* BMPx doesn't provide GetStatus method, always assume Playing status */
+KviMediaPlayerInterface::PlayerStatus KviBmpxInterface::status()
+{
+	return KviMediaPlayerInterface::Playing;
 }
 
 #endif //!COMPILE_ON_WINDOWS
