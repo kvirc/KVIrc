@@ -1196,7 +1196,7 @@ defpopup(logging)
 		}
 	}
 
-	item($tr("Log To...") "("$tr("Include Existing Buffer"),119) (!%:logfile)
+	item($tr("Log To...") "("$tr("Include Existing Buffer")")",119) (!%:logfile)
 	{
 		dialog.file(save,$tr("Choose Log Filename"))
 		{
