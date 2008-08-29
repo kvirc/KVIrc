@@ -774,9 +774,8 @@ IF(WANT_DOXYGEN)
 
 		ADD_CUSTOM_COMMAND(
 			COMMENT "generate the api documentation"
-			COMMAND ${DOXYGEN_EXECUTABLE} -u
 			COMMAND mkdir -p ${PROJECT_SOURCE_DIR}/doc/api
-			COMMAND ${DOXYGEN_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/Doxyfile
+			COMMAND cd ${PROJECT_SOURCE_DIR}/admin && ${DOXYGEN_EXECUTABLE} Doxyfile
 			TARGET devdocs
 		)
 	ELSE()
