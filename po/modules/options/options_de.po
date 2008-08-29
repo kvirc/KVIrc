@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-29 18:14+0200\n"
-"PO-Revision-Date: 2008-08-14 18:27+0200\n"
+"PO-Revision-Date: 2008-08-29 19:03+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -106,8 +106,7 @@ msgstr "3D-Gitter"
 
 #: src/modules/options/optw_textencoding.cpp:81
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
+msgstr "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
 #: src/modules/options/optw_urlhandlers.cpp:74
 msgid "<b>file://</b> handler command:"
@@ -239,8 +238,7 @@ msgstr ""
 "\"<b>Hinzufügen</b>\" klicken</center>"
 
 #: src/modules/options/optw_servers.cpp:1174
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -388,8 +386,7 @@ msgstr ""
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
+msgstr "<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
 
 #: src/modules/options/optw_connection.cpp:155
 msgid ""
@@ -569,7 +566,7 @@ msgid ""
 "<b>Transport Layer Security</b> protocol. If you enable the proper global "
 "option in the Connection/SSL tab, the TLS protocol will be used for this "
 "server.</center>"
-msgstr ""
+msgstr "<center>Diese Option kennzeichnet den Server, dass dieser das <b>Transport Layer Security</b>-Protokoll (TLS) dynamisch unterstützt. Wenn die entsprechende  globale Option im Verbindung/SSL-Tab gesetzt ist, wird für diesen Server das TLS-Protokoll verwendet.</center>"
 
 #: src/modules/options/optw_servers.cpp:626
 msgid ""
@@ -901,8 +898,7 @@ msgstr ""
 "liegen</center>"
 
 #: src/modules/options/optw_servers.cpp:1148
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -1111,8 +1107,7 @@ msgstr ""
 "Transparenz benutzen\" aktiviert sein.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Diese Option setzt die minimale Alarmstufe für die Fensterleiste.</"
 "center>"
@@ -1261,13 +1256,10 @@ msgstr ""
 "des gleichen Netzwerkes verbindest.</center>"
 
 #: src/modules/options/optw_connection.cpp:125
-#, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to try to reconnect to the server using "
 "an encrypted connection</center>"
-msgstr ""
-"<center>Diese Option veranlasst KVIrc, nach dem Start von KVIrc zu dem IRC-"
-"Server zu verbinden.</center>"
+msgstr "<center>Durch diese Option versucht KVIrc sich erneut zu diesem Server verschlüsselt zu verbinden</center>"
 
 #: src/modules/options/optw_dcc.cpp:190
 msgid ""
@@ -2112,7 +2104,7 @@ msgstr "Standardnachrichten:"
 
 #: src/modules/options/optw_notify.cpp:128
 msgid "Default auto hiding time for messages (0 to disable)"
-msgstr ""
+msgstr "Standardzeit zum automatischen Ausblenden der Nachrichten (0 zum deaktivieren)"
 
 #: src/modules/options/optw_away.cpp:38
 msgid "Default away message:"
@@ -2262,9 +2254,8 @@ msgid "Enable animated avatars"
 msgstr "Animierte Avatars aktivieren"
 
 #: src/modules/options/optw_ircview.cpp:156
-#, fuzzy
 msgid "Enable animated smiles"
-msgstr "Animierte Avatars aktivieren"
+msgstr "Animierte Smilies aktivieren"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:68
 msgid "Enable fake transparency"
@@ -2284,8 +2275,7 @@ msgstr "Lagmeter aktivieren"
 
 #: src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
+msgstr "Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
 
 #: src/modules/options/optw_notify.cpp:121
 msgid "Enable notifier window fade effect"
@@ -3269,7 +3259,7 @@ msgstr "Zufällige IP-Adresse für Round-Robin-Server wählen"
 msgid ""
 "Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
 "normal nicks"
-msgstr ""
+msgstr "Sortiere Nicks, die nicht mit Buchstaben beginnen (z. B. _COOL_BOY_), nach den normalen"
 
 #: src/modules/options/optw_userlist.cpp:94
 msgid "Plain Grid"
@@ -3403,8 +3393,7 @@ msgstr "Proxy:"
 
 #: src/modules/options/optw_nickserv.cpp:59
 msgid "Put here the nickname that you have registered with NickServ"
-msgstr ""
-"Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
+msgstr "Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
 
 #: src/modules/options/optw_query.h:28
 msgid "Query"
@@ -3767,8 +3756,7 @@ msgstr "durchgezogene Linie"
 
 #: src/modules/options/optw_dcc.cpp:181
 msgid "Sort saved files by nicknames (create subfolders)"
-msgstr ""
-"Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
+msgstr "Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
 
 #: src/modules/options/optw_taskbar.cpp:38
 msgid "Sort windows by name"
@@ -3795,9 +3783,8 @@ msgid "Strip colors in logs"
 msgstr "Farben in Logdateien entfernen"
 
 #: src/modules/options/optw_servers.cpp:633
-#, fuzzy
 msgid "Supports STARTTLS protocol"
-msgstr "SSL-Protokoll benutzen"
+msgstr "Unterstützt das STARTTLS-Protokoll"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:101
 msgid "TIME"
@@ -3844,8 +3831,7 @@ msgstr "De Spitznamen-Feld darf nicht leer sein!"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3875,8 +3861,7 @@ msgstr "Themeneinstellungen"
 
 #: src/modules/options/optw_sound.cpp:97
 msgid "This allows you to select encoding of mp3 tags."
-msgstr ""
-"Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
+msgstr "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
 #: src/modules/options/optw_sound.cpp:120
 msgid "This allows you to select encoding of winamp messages."
@@ -3918,8 +3903,7 @@ msgid "This executable has no SSL support."
 msgstr "Diese Version von KVIrc hat keine SSL-Unterstützung"
 
 #: src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
@@ -4265,9 +4249,8 @@ msgid "Use system URL handlers"
 msgstr "Benutze die URL-Handler des Systems"
 
 #: src/modules/options/optw_connection.cpp:124
-#, fuzzy
 msgid "Use the STARTTLS security protocol if available"
-msgstr "Die \"WATCH\"-Methode benutzen, wenn verfügbar"
+msgstr "Nutze das STARTTLS-Protokoll, wenn verfügbar"
 
 #: src/modules/options/optw_notify.cpp:73
 msgid "Use the WATCH method if available"
@@ -13817,3 +13800,4 @@ msgstr "in:"
 
 #~ msgid "z: Recipient for oper wallop messages"
 #~ msgstr "z: Empfänger für oper wallop-Nachrichten"
+
