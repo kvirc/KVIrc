@@ -1,6 +1,5 @@
 #ifndef _KVI_QCSTRING_H_
 #define _KVI_QCSTRING_H_
-
 //=============================================================================
 //
 //   File : kvi_qcstring.h

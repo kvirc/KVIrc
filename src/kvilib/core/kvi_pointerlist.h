@@ -55,9 +55,10 @@ template<typename T> class KviPointerListIterator;
 	#define NULL 0
 #endif
 
-///
-/// \class KviPointerListNode
-/// \brief A KviPointerList node pointers.
+/**
+* \class KviPointerListNode
+* \brief A KviPointerList node pointers.
+*/
 class KviPointerListNode
 {
 public:
@@ -66,152 +67,159 @@ public:
 	KviPointerListNode * m_pNext;
 };
 
-///
-/// \class KviPointerListIterator
-/// \brief A fast KviPointerList iterator.
-///
-/// This class allows traversing the list sequentially.
-/// Multilpe iterators can traverse the list at the same time.
-///
-/// Iteration example 1:
-///
-/// \verbatim
-/// KviPointerListIterator<T> it(list);
-/// for(bool b = it.moveFirst(); b; b = it.moveNext())
-/// {
-///     T * pData = it.data();
-///     doSomethingWithData(pData);
-/// }
-/// \endverbatim
-///
-/// Iteration example 2:
-///
-/// \verbatim
-/// KviPointerListIterator<T> it(list);
-/// if(it.moveFirst())
-/// {
-///     do {
-///         T * pData = it.data();
-///         doSomethingWithData(pData);
-///     } while(it.moveNext());
-/// }
-/// \endverbatim
-///
-/// Iteration example 3:
-///
-/// \verbatim
-/// KviPointerListIterator<T> it(list.iteratorAt(10));
-/// if(it.isValid())
-/// {
-///    do {
-///         T * pData = it.data();
-///         doSomethingWithData(pData);
-///    while(it.movePrev());
-/// }
-/// \endverbatim
-///
-/// Please note that you must NOT remove any item from
-/// the list when using the iterators. An iterator pointing
-/// to a removed item will crash your application if you use it.
-/// The following code will NOT work (and crash):
-///
-/// \verbatim
-/// KviPointerList<T> l;
-/// l.append(new KviStr("x"));
-/// l.append(new KviStr("y"));
-/// KviPointerListIterator<T> it(l);
-/// it.moveFirst();
-/// l.removeFirst();
-/// KviStr * tmp = it.data(); <-- this will crash
-/// \endverbatim
-///
-/// In the rare cases in that you need to remove items
-/// while traversing the list you should put them
-/// in a temporary list and remove them after the iteration.
-///
-/// I've choosen this way because usually you don't modify
-/// the list while traversing it and a fix for this
-/// would add a constant overhead to several list operation.
-/// You just must take care of it yourself.
-///
-/// \warning This class is not thread safe by itself.
-///
+/**
+* \class KviPointerListIterator
+* \brief A fast KviPointerList iterator.
+*
+* This class allows traversing the list sequentially.
+* Multilpe iterators can traverse the list at the same time.
+*
+* Iteration example 1:
+*
+* \verbatim
+* KviPointerListIterator<T> it(list);
+* for(bool b = it.moveFirst(); b; b = it.moveNext())
+* {
+*     T * pData = it.data();
+*     doSomethingWithData(pData);
+* }
+* \endverbatim
+*
+* Iteration example 2:
+*
+* \verbatim
+* KviPointerListIterator<T> it(list);
+* if(it.moveFirst())
+* {
+*     do {
+*         T * pData = it.data();
+*         doSomethingWithData(pData);
+*     } while(it.moveNext());
+* }
+* \endverbatim
+*
+* Iteration example 3:
+*
+* \verbatim
+* KviPointerListIterator<T> it(list.iteratorAt(10));
+* if(it.isValid())
+* {
+*    do {
+*         T * pData = it.data();
+*         doSomethingWithData(pData);
+*    while(it.movePrev());
+* }
+* \endverbatim
+*
+* Please note that you must NOT remove any item from
+* the list when using the iterators. An iterator pointing
+* to a removed item will crash your application if you use it.
+* The following code will NOT work (and crash):
+*
+* \verbatim
+* KviPointerList<T> l;
+* l.append(new KviStr("x"));
+* l.append(new KviStr("y"));
+* KviPointerListIterator<T> it(l);
+* it.moveFirst();
+* l.removeFirst();
+* KviStr * tmp = it.data(); <-- this will crash
+* \endverbatim
+*
+* In the rare cases in that you need to remove items
+* while traversing the list you should put them
+* in a temporary list and remove them after the iteration.
+*
+* I've choosen this way because usually you don't modify
+* the list while traversing it and a fix for this
+* would add a constant overhead to several list operation.
+* You just must take care of it yourself.
+*
+* \warning This class is not thread safe by itself.
+*/
 template<typename T> class KviPointerListIterator
 {
 protected:
 	KviPointerList<T>                 * m_pList;
 	KviPointerListNode                * m_pNode;
 public:
-	///
-	/// \brief Creates an iterator copy.
-	/// The new iterator points exactly to the item pointed by src.
-	/// \param src The source item to point to
-	///
+	/**
+	* \brief Creates an iterator copy.
+	* The new iterator points exactly to the item pointed by src.
+	* \param src The source item to point to
+	* \return KviPointerListIterator
+	*/
 	KviPointerListIterator(const KviPointerListIterator<T> & src)
 	{
 		m_pList = src.m_pList;
 		m_pNode = src.m_pNode;
 	}
 
-	///
-	/// \brief Creates an iterator for the list l.
-	/// The iterator points to the first list item, if any.
-	/// \param l The source list to point to
-	///
+	/**
+	* \brief Creates an iterator for the list l.
+	* The iterator points to the first list item, if any.
+	* \param l The source list to point to
+	* \return KviPointerListIterator
+	*/
 	KviPointerListIterator(KviPointerList<T> & l)
 	{
 		m_pList = (KviPointerList<T> *)&l;
 		m_pNode = m_pList->m_pHead;
 	}
 
-	///
-	/// \brief Creates an iterator for the list l.
-	/// The iterator points to the specified list node.
-	/// \param l The source list
-	/// \param pNode The list node to point to
-	///
+	/**
+	* \brief Creates an iterator for the list l.
+	* The iterator points to the specified list node.
+	* \param l The source list
+	* \param pNode The list node to point to
+	* \return KviPointerListIterator
+	*/
 	KviPointerListIterator(KviPointerList<T> & l,KviPointerListNode * pNode)
 	{
 		m_pList = (KviPointerList<T> *)&l;
 		m_pNode = pNode;
 	}
 
-	///
-	/// \brief Creates an iterator copy.
-	/// The new iterator points exactly to the item pointed by src.
-	/// \param src The source item to copy
-	///
+	/**
+	* \brief Creates an iterator copy.
+	* The new iterator points exactly to the item pointed by src.
+	* \param src The source item to copy
+	* \return void
+	*/
 	void operator = (const KviPointerListIterator<T> & src)
 	{
 		m_pList = src.m_pList;
 		m_pNode = src.m_pNode;
 	}
 public:
-	///
-	/// \brief Moves the iterator to the first element of the list.
-	/// Returns true in case of success or false if the list is empty.
-	///
+	/**
+	* \brief Moves the iterator to the first element of the list.
+	* Returns true in case of success or false if the list is empty.
+	* \return bool
+	*/
 	bool moveFirst()
 	{
 		m_pNode = m_pList->m_pHead;
 		return m_pNode != NULL;
 	}
 	
-	///
-	/// \brief Moves the iterator to the last element of the list.
-	/// Returns true in case of success or false if the list is empty.
-	///
+	/**
+	* \brief Moves the iterator to the last element of the list.
+	* Returns true in case of success or false if the list is empty.
+	* \return bool
+	*/
 	bool moveLast()
 	{
 		m_pNode = m_pList->m_pTail;
 		return m_pNode != NULL;
 	}
 
-	///
-	/// \brief Moves the iterator to the next element of the list.
-	/// The iterator must be actually valid for this function to work.
-	/// Returns true in case of success or false if there is no next item.
-	///
+	/**
+	* \brief Moves the iterator to the next element of the list.
+	* The iterator must be actually valid for this function to work.
+	* Returns true in case of success or false if there is no next item.
+	* \return bool
+	*/
 	bool moveNext()
 	{
 		if(!m_pNode)return false;
@@ -219,12 +227,13 @@ public:
 		return m_pNode != NULL;
 	}
 
-	///
-	/// \brief Moves the iterator to the next element of the list.
-	/// The iterator must be actually valid for this operator to work.
-	/// Returns true in case of success or false if there is no next item.
-	/// This is just a convenient alias to moveNext().
-	///
+	/**
+	* \brief Moves the iterator to the next element of the list.
+	* The iterator must be actually valid for this operator to work.
+	* Returns true in case of success or false if there is no next item.
+	* This is just a convenient alias to moveNext().
+	* \return bool
+	*/
 	bool operator ++()
 	{
 		if(!m_pNode)return false;
@@ -232,12 +241,13 @@ public:
 		return m_pNode != NULL;
 	}
 
-	///
-	/// \brief Moves the iterator to the previous element of the list.
-	/// The iterator must be actually valid for this function to work.
-	/// Returns true in case of success or false if there is no previous
-	/// item.
-	///
+	/**
+	* \brief Moves the iterator to the previous element of the list.
+	* The iterator must be actually valid for this function to work.
+	* Returns true in case of success or false if there is no previous
+	* item.
+	* \return bool
+	*/
 	bool movePrev()
 	{
 		if(!m_pNode)return false;
@@ -245,13 +255,14 @@ public:
 		return m_pNode != NULL;
 	}
 
-	///
-	/// \brief Moves the iterator to the previous element of the list.
-	/// The iterator must be actually valid for this operator to work.
-	/// Returns true in case of success or false if there is no previous
-	/// item.
-	/// This is just a convenient alias to movePrev().
-	///
+	/**
+	* \brief Moves the iterator to the previous element of the list.
+	* The iterator must be actually valid for this operator to work.
+	* Returns true in case of success or false if there is no previous
+	* item.
+	* This is just a convenient alias to movePrev().
+	* \return bool
+	*/
 	bool operator --()
 	{
 		if(!m_pNode)return false;
@@ -259,79 +270,82 @@ public:
 		return m_pNode != NULL;
 	}
 
-	///
-	/// \brief Returs the value pointed by the iterator.
-	/// If the iterator is not valid, returns NULL.
-	///
+	/**
+	* \brief Returs the value pointed by the iterator.
+	* If the iterator is not valid, returns NULL.
+	* \return T *
+	*/
 	T * current()
 	{
 		return m_pNode ? (T *)(m_pNode->m_pData) : NULL;
 	}
 
-	///
-	/// \brief Returs the value pointed by the iterator.
-	/// If the iterator is not valid, returns NULL.
-	/// This is just an alias to current().
-	///
+	/**
+	* \brief Returs the value pointed by the iterator.
+	* If the iterator is not valid, returns NULL.
+	* This is just an alias to current().
+	* \return T *
+	*/
 	T * operator *()
 	{
 		return m_pNode ? (T *)(m_pNode->m_pData) : NULL;
 	}
 
-	///
-	/// \brief Returns true if this iterator points to a valid element
-	/// Returns false otherwise.
-	///
+	/**
+	* \brief Returns true if this iterator points to a valid element
+	* Returns false otherwise.
+	* \return bool
+	*/
 	bool isValid()
 	{
 		return m_pNode != NULL;
 	}
 };
 
-///
-/// \class KviPointerList
-/// \brief A template double linked list of pointers.
-///
-/// The main advantage of this type of list is speed.
-/// Insertion of pointers is very fast when compared to the typical "copy
-/// constructor" call used in the "plain type" template list implementations.
-///
-/// Iterating over pointers is also very fast and this class contains an
-/// internal iterator that allows to write loops in a compact and clean way.
-/// See the first(), next(), current() and findRef() functions for the
-/// description of this feature.
-///
-/// There is also a non-const external iterator that you can use to traverse
-/// the list concurrently.
-/// There is no const iterator (and no const access methods) since the list
-/// provides the autoDelete() method which vould implicitly violate
-/// constness.
-/// If you have to deal with const objects then you need to use a QList
-/// instead.
-///
-/// Your objects also do not need to support copy constructors or >=
-/// operators.
-/// This class will work fine without them as opposed to a plain QList.
-///
-/// This class also supports automatic deletion of the inseted items.
-/// See the setAutoDelete() and autoDelete() members for the description of
-/// the feature.
-///
-/// Typcal usage:
-///
-/// \verbatim
-///   KviPointerList<MyClass> list();
-///   list.append(new MyClass());
-///   list.append(new MyClass());
-///   ...
-///   for(MyClass * c = list.first(); c; c = list.next()) doSomethingWith(c);
-///   delete list; // autodelete is set to true in the constructor
-/// \endverbatim
-///
-/// \warning This class is absolutely NOT thread safe. You must protect
-/// concurrent access from multiple threads by using an external
-/// synchronization tool (such as KviMutex).
-///
+/**
+* \class KviPointerList
+* \brief A template double linked list of pointers.
+*
+* The main advantage of this type of list is speed.
+* Insertion of pointers is very fast when compared to the typical "copy
+* constructor" call used in the "plain type" template list implementations.
+*
+* Iterating over pointers is also very fast and this class contains an
+* internal iterator that allows to write loops in a compact and clean way.
+* See the first(), next(), current() and findRef() functions for the
+* description of this feature.
+*
+* There is also a non-const external iterator that you can use to traverse
+* the list concurrently.
+* There is no const iterator (and no const access methods) since the list
+* provides the autoDelete() method which vould implicitly violate
+* constness.
+* If you have to deal with const objects then you need to use a QList
+* instead.
+*
+* Your objects also do not need to support copy constructors or >=
+* operators.
+* This class will work fine without them as opposed to a plain QList.
+*
+* This class also supports automatic deletion of the inseted items.
+* See the setAutoDelete() and autoDelete() members for the description of
+* the feature.
+*
+* Typcal usage:
+*
+* \verbatim
+*   KviPointerList<MyClass> list();
+*   list.append(new MyClass());
+*   list.append(new MyClass());
+*   ...
+*   for(MyClass * c = list.first(); c; c = list.next()) doSomethingWith(c);
+*   delete list; // autodelete is set to true in the constructor
+* \endverbatim
+*
+* \warning This class is absolutely NOT thread safe. You must protect
+* concurrent access from multiple threads by using an external
+* synchronization tool (such as KviMutex).
+*/
 template<typename T> class KviPointerList
 {
 	friend class KviPointerListIterator<T>;
@@ -344,14 +358,15 @@ protected:
 
 	unsigned int m_uCount;  //< the count of items in the list
 protected:
-	///
-	/// \brief Inserts the item d before the item ref
-	/// If ref is not found in the list, it inserts d at the beginning
-	/// Also sets the current iteration pointer to the newly inserted
-	/// item
-	/// \param ref The source list node
-	/// \param d The item to insert
-	///
+	/**
+	* \brief Inserts the item d before the item ref
+	* If ref is not found in the list, it inserts d at the beginning
+	* Also sets the current iteration pointer to the newly inserted
+	* item
+	* \param ref The source list node
+	* \param d The item to insert
+	* \return void
+	*/
 	void insertBeforeSafe(KviPointerListNode * ref, const T * d)
 	{
 		m_pAux = ref;
@@ -369,11 +384,12 @@ protected:
 		m_uCount++;
 	}
 
-	///
-	/// Grabs the first element from the list src
-	/// and puts it as the first element of this list.
-	/// \param src The source list
-	///
+	/**
+	* Grabs the first element from the list src
+	* and puts it as the first element of this list.
+	* \param src The source list
+	* \return void
+	*/
 	void grabFirstAndPrepend(KviPointerList<T> * src)
 	{
 		KviPointerListNode * pNewHead = src->m_pHead;
@@ -403,9 +419,10 @@ protected:
 		src->m_uCount--;
 	}
 
-	///
-	/// \brief Removes the current iteration item assuming that it is valid.
-	///
+	/**
+	* \brief Removes the current iteration item assuming that it is valid.
+	* \return void
+	*/
 	void removeCurrentSafe()
 	{
 		if(m_pAux->m_pPrev)
@@ -425,12 +442,13 @@ protected:
 	}
 
 public:
-	///
-	/// \brief Inserts the list src inside this list
-	/// It respects the sort order.
-	/// The src list elements are removed.
-	/// \param src The list to insert
-	///
+	/**
+	* \brief Inserts the list src inside this list
+	* It respects the sort order.
+	* The src list elements are removed.
+	* \param src The list to insert
+	* \return void
+	*/
 	void merge(KviPointerList<T> * src)
 	{
 		m_pAux = m_pHead;
@@ -475,10 +493,11 @@ public:
 		src->m_uCount = 0;
 	}
 	
-	///
-	/// \brief Swap the lists
-	/// \param src The list to swap with
-	///
+	/**
+	* \brief Swap the lists
+	* \param src The list to swap with
+	* \return void
+	*/
 	void swap(KviPointerList<T> * src)
 	{
 		KviPointerListNode * n = m_pHead;
@@ -493,13 +512,14 @@ public:
 	}
 
 
-	///
-	/// \brief Sorts this list in ascending order.
-	/// There must be an int kvi_compare(const T *p1, const T *p2)
-	/// function which returns a value less than, equal to or greater
-	/// than zero when the item p1 is considered lower than, equal to or
-	/// greater than p2.
-	///
+	/**
+	* \brief Sorts this list in ascending order.
+	* There must be an int kvi_compare(const T *p1, const T *p2)
+	* function which returns a value less than, equal to or greater
+	* than zero when the item p1 is considered lower than, equal to or
+	* greater than p2.
+	* \return void
+	*/
 	void sort()
 	{
 		if(m_uCount < 2)return;
@@ -527,15 +547,16 @@ public:
 		swap(fill-1);
 	}
 
-	///
-	/// \brief Inserts the item respecting the sorting order inside the list.
-	/// The list itself must be already sorted for this to work
-	/// correctly.
-	/// There must be a int kvi_compare(const T *p1, const T * p2) that
-	/// returns a value less than, equal to or greater than zero when the
-	/// item p1 is considered lower than, equal to or greater than p2.
-	/// \param t The item to insert
-	///
+	/**
+	* \brief Inserts the item respecting the sorting order inside the list.
+	* The list itself must be already sorted for this to work
+	* correctly.
+	* There must be a int kvi_compare(const T *p1, const T * p2) that
+	* returns a value less than, equal to or greater than zero when the
+	* item p1 is considered lower than, equal to or greater than p2.
+	* \param t The item to insert
+	* \return void
+	*/
 	void inSort(T * t)
 	{
 		KviPointerListNode * x = m_pHead;
@@ -544,27 +565,30 @@ public:
 		else insertBeforeSafe(x,t);
 	}
 
-	///
-	/// \brief Returns true if the list is empty
-	///
+	/**
+	* \brief Returns true if the list is empty
+	* \return bool
+	*/
 	bool isEmpty() const
 	{
 		return (m_pHead == NULL);
 	}
 
-	///
-	/// \brief Returns the count of the items in the list
-	///
+	/**
+	* \brief Returns the count of the items in the list
+	* \return unsigned int
+	*/
 	unsigned int count() const
 	{
 		return m_uCount;
 	}
 
-	///
-	/// \brief Returns the first item in the list
-	/// Sets the iteration pointer to the first item in the list and
-	/// returns that item (or 0 if the list is empty)
-	///
+	/**
+	* \brief Returns the first item in the list
+	* Sets the iteration pointer to the first item in the list and
+	* returns that item (or 0 if the list is empty)
+	* \return T *
+	*/
 	T * first()
 	{
 		if(!m_pHead)
@@ -576,11 +600,12 @@ public:
 		return (T *)(m_pAux->m_pData);
 	}
 
-	///
-	/// \brief Removes the first element from the list
-	/// It returns the item to the caller. This function obviously never
-	/// deletes the item (regadless of autoDeletion()).
-	///
+	/**
+	* \brief Removes the first element from the list
+	* It returns the item to the caller. This function obviously never
+	* deletes the item (regadless of autoDeletion()).
+	* \return T *
+	*/
 	T * takeFirst()
 	{
 		if(!m_pHead)return NULL;
@@ -599,19 +624,21 @@ public:
 		return pData;
 	}
 
-	///
-	/// \brief Returns an iterator pointing to the first item of the list.
-	///
+	/**
+	* \brief Returns an iterator pointing to the first item of the list.
+	* \return KviPointerListIterator<T>
+	*/
 	KviPointerListIterator<T> iteratorAtFirst()
 	{
 		return KviPointerListIterator<T>(*this,m_pHead);
 	}
 
-	///
-	/// \brief Returns the last item in the list
-	/// Sets the iteration pointer to the last item in the list
-	/// and returns that item (or 0 if the list is empty)
-	///
+	/**
+	* \brief Returns the last item in the list
+	* Sets the iteration pointer to the last item in the list
+	* and returns that item (or 0 if the list is empty)
+	* \return T *
+	*/
 	T * last()
 	{
 		if(!m_pTail)
@@ -623,54 +650,58 @@ public:
 		return (T *)(m_pAux->m_pData);
 	}
 
-	///
-	/// \brief Returns an iterator pointing to the first item of the list.
-	///
+	/**
+	* \brief Returns an iterator pointing to the first item of the list.
+	* \return KviPointerListIterator<T>
+	*/
 	KviPointerListIterator<T> iteratorAtLast()
 	{
 		return KviPointerListIterator<T>(*this,m_pTail);
 	}
 
-	///
-	/// \brief Returns the current iteration item
-	/// A call to this function MUST be preceded by a call to
-	/// first(),last(),at() or findRef()
-	///
+	/**
+	* \brief Returns the current iteration item
+	* A call to this function MUST be preceded by a call to
+	* first(),last(),at() or findRef()
+	* \return T *
+	*/
 	T * current()
 	{
 		return (T *)(m_pAux->m_pData);
 	}
 
-	///
-	/// \brief Returns the current iteration item
-	/// A call to this function should be preceded by a call to
-	/// first(),last(),at() or findRef().
-	/// This function will return a NULL pointer if the current item has
-	/// been invalidated due to a remove operation.
-	///
+	/**
+	* \brief Returns the current iteration item
+	* A call to this function should be preceded by a call to
+	* first(),last(),at() or findRef().
+	* This function will return a NULL pointer if the current item has
+	* been invalidated due to a remove operation.
+	* \return T *
+	*/
 	T * safeCurrent()
 	{
 		return m_pAux ? (T *)(m_pAux->m_pData) : NULL;
 	}
 
-
-	///
-	/// \brief Returns an iterator pointing to the current item in the list.
-	/// A call to this function MUST be preceded by a call to
-	/// first(),last(),at() or findRef()
-	///
+	/**
+	* \brief Returns an iterator pointing to the current item in the list.
+	* A call to this function MUST be preceded by a call to
+	* first(),last(),at() or findRef()
+	* \return KviPointerListIterator<T>
+	*/
 	KviPointerListIterator<T> iteratorAtCurrent()
 	{
 		return KviPointerListIterator<T>(*this,m_pAux);
 	}
 
-	///
-	/// \brief Returns the next item in the list
-	/// Sets the iteration pointer to the next item in the list and
-	/// returns that item (or 0 if the end of the list has been reached)
-	/// A call to this function MUST be preceded by a _succesfull_ call
-	/// to first(),last(),at() or findRef().
-	///
+	/**
+	* \brief Returns the next item in the list
+	* Sets the iteration pointer to the next item in the list and
+	* returns that item (or 0 if the end of the list has been reached)
+	* A call to this function MUST be preceded by a _succesfull_ call
+	* to first(),last(),at() or findRef().
+	* \return T *
+	*/
 	T * next()
 	{
 		if(!m_pAux)return NULL;
@@ -679,14 +710,15 @@ public:
 		return NULL;
 	}
 
-	///
-	/// \brief Returns the previous item in the list
-	/// Sets the iteration pointer to the previous item in the list and
-	/// returns that item (or 0 if the beginning of the list has been
-	/// reached).
-	/// A call to this function MUST be preceded by a _succesfull_ call
-	/// to first(),last(),at() or findRef()
-	///
+	/**
+	* \brief Returns the previous item in the list
+	* Sets the iteration pointer to the previous item in the list and
+	* returns that item (or 0 if the beginning of the list has been
+	* reached).
+	* A call to this function MUST be preceded by a _succesfull_ call
+	* to first(),last(),at() or findRef()
+	* \return T *
+	*/
 	T * prev()
 	{
 		if(!m_pAux)return NULL;
@@ -695,12 +727,13 @@ public:
 		return NULL;
 	}
 
-	///
-	/// \brief Returns the item at index position
-	/// Sets the iteration pointer to the nTh item in the list
-	/// and returns that item (or 0 if the index is out of range)
-	/// \param idx The index of the element to return
-	///
+	/**
+	* \brief Returns the item at index position
+	* Sets the iteration pointer to the nTh item in the list
+	* and returns that item (or 0 if the index is out of range)
+	* \param idx The index of the element to return
+	* \return T *
+	*/
 	T * at(int idx)
 	{
 		T * t = first();
@@ -714,10 +747,11 @@ public:
 		return 0;
 	}
 
-	///
-	/// \brief Returns an iterator pointing to the item at the specified index.
-	/// \param idx The index of the element to return
-	///
+	/**
+	* \brief Returns an iterator pointing to the item at the specified index.
+	* \param idx The index of the element to return
+	* \return KviPointerListIterator<T>
+	*/
 	KviPointerListIterator<T> iteratorAt(int idx)
 	{
 		KviPointerListNode * n = m_pHead;
@@ -732,13 +766,14 @@ public:
 		return KviPointerListIterator<T>(*this,NULL);
 	}
 
-	///
-	/// \brief Returns the position of an item
-	/// Sets the iteration pointer to the item with pointer d
-	/// and returns its position (zero based index) in the list or -1 if
-	/// the item cannot be found
-	/// \param d The element to find
-	///
+	/**
+	* \brief Returns the position of an item
+	* Sets the iteration pointer to the item with pointer d
+	* and returns its position (zero based index) in the list or -1 if
+	* the item cannot be found
+	* \param d The element to find
+	* \return int
+	*/
 	int findRef(const T * d)
 	{
 		int ret = 0;
@@ -750,10 +785,11 @@ public:
 		return -1;
 	}
 
-	///
-	/// \brief Returns an iterator pointing to the item with pointer d.
-	/// \param d The element to find
-	///
+	/**
+	* \brief Returns an iterator pointing to the item with pointer d.
+	* \param d The element to find
+	* \return KviPointerListIterator<T>
+	*/
 	KviPointerListIterator<T> iteratorAtRef(const T * d)
 	{
 		KviPointerListNode * n = m_pHead;
@@ -766,10 +802,11 @@ public:
 		return KviPointerListIterator<T>(*this,NULL);
 	}
 
-	///
-	/// \brief Appends an item at the end of the list
-	/// \param d The item to append
-	///
+	/**
+	* \brief Appends an item at the end of the list
+	* \param d The item to append
+	* \return void
+	*/
 	void append(const T * d)
 	{
 		if(!m_pHead)
@@ -789,28 +826,31 @@ public:
 		m_uCount++;
 	}
 
-	///
-	/// \brief Appends all the items from the list l to this list
-	/// \param l The source list where to get items
-	///
+	/**
+	* \brief Appends all the items from the list l to this list
+	* \param l The source list where to get items
+	* \return void
+	*/
 	void append(KviPointerList<T> * l)
 	{
 		for(T * t = l->first();t;t = l->next())append(t);
 	}
 
-	///
-	/// \brief Prepends all the items from the list l to this list
-	/// \param l The source list where to get items
-	///
+	/**
+	* \brief Prepends all the items from the list l to this list
+	* \param l The source list where to get items
+	* \return void
+	*/
 	void prepend(KviPointerList<T> * l)
 	{
 		for(T * t = l->last();t;t = l->prev())prepend(t);
 	}
 
-	///
-	/// \brief Inserts the item d in the head position
-	/// \param d The element to insert
-	///
+	/**
+	* \brief Inserts the item d in the head position
+	* \param d The element to insert
+	* \return void
+	*/
 	void prepend(const T * d)
 	{
 		if(!m_pHead)
@@ -830,16 +870,17 @@ public:
 		}
 	}
 
-	///
-	/// \brief Inserts the item d at the position specified by iIndex.
-	/// The position is zero-based. If the specified position is out of
-	/// the list then the item is appended.
-	/// Note that this function costs O(n).
-	/// It's really better to use insertAfter() or insertBefore(), if
-	/// possible.
-	/// \param iIndex The index where to insert the item
-	/// \param d The item to insert
-	///
+	/**
+	* \brief Inserts the item d at the position specified by iIndex.
+	* The position is zero-based. If the specified position is out of
+	* the list then the item is appended.
+	* Note that this function costs O(n).
+	* It's really better to use insertAfter() or insertBefore(), if
+	* possible.
+	* \param iIndex The index where to insert the item
+	* \param d The item to insert
+	* \return void
+	*/
 	void insert(int iIndex, const T * d)
 	{
 		m_pAux = m_pHead;
@@ -854,10 +895,11 @@ public:
 			append(d);
 	}
 
-	///
-	/// \brief Removes the first item (if any)
-	/// The item is deleted if autoDelete() is set to true
-	///
+	/**
+	* \brief Removes the first item (if any)
+	* The item is deleted if autoDelete() is set to true
+	* \return bool
+	*/
 	bool removeFirst()
 	{
 		if(!m_pHead)return false;
@@ -881,10 +923,11 @@ public:
 		return true;
 	}
 
-	///
-	/// \brief Removes the firstitem (if any)
-	/// The item is deleted if autoDelete() is set to true
-	///
+	/**
+	* \brief Removes the firstitem (if any)
+	* The item is deleted if autoDelete() is set to true
+	* \return bool
+	*/
 	bool removeLast()
 	{
 		if(!m_pTail)return false;
@@ -908,12 +951,13 @@ public:
 		return true;
 	}
 
-	///
-	/// \brief Removes the item at zero-based position iIndex.
-	/// Does nothing and returns false if iIndex is out of the list.
-	/// Please note that this function costs O(n).
-	/// \param iIndex The index where to remove the item
-	///
+	/**
+	* \brief Removes the item at zero-based position iIndex.
+	* Does nothing and returns false if iIndex is out of the list.
+	* Please note that this function costs O(n).
+	* \param iIndex The index where to remove the item
+	* \return bool
+	*/
 	bool remove(int iIndex)
 	{
 		m_pAux = m_pHead;
@@ -928,40 +972,44 @@ public:
 		return true;
 	}
 
-	///
-	/// \brief Sets the autodelete flag
-	/// When this flag is on (default), all the items are deleted when
-	/// removed from the list (or when the list is destroyed or cleared
-	/// explicitly)
-	/// \param bAutoDelete The state of the autoDelete()
-	///
+	/**
+	* \brief Sets the autodelete flag
+	* When this flag is on (default), all the items are deleted when
+	* removed from the list (or when the list is destroyed or cleared
+	* explicitly)
+	* \param bAutoDelete The state of the autoDelete()
+	* \return void
+	*/
 	void setAutoDelete(bool bAutoDelete)
 	{
 		m_bAutoDelete = bAutoDelete;
 	}
 
-	///
-	/// \brief Returns the autodelete flag.
-	///
+	/**
+	* \brief Returns the autodelete flag.
+	* \return bool
+	*/
 	bool autoDelete()
 	{
 		return m_bAutoDelete;
 	};
 
-	///
-	/// \brief Removes all the items from the list
-	/// (the items are deleted if the autoDelete() flag is set to true)
-	///
+	/**
+	* \brief Removes all the items from the list
+	* (the items are deleted if the autoDelete() flag is set to true)
+	* \return void
+	*/
 	void clear()
 	{
 		while(m_pHead)removeFirst();
 	}
 
-	///
-	/// \brief Removes the current iteration item.
-	/// Returns true if the current iteration item was valid (and was
-	/// removed) and false otherwise.
-	///
+	/**
+	* \brief Removes the current iteration item.
+	* Returns true if the current iteration item was valid (and was
+	* removed) and false otherwise.
+	* \return bool
+	*/
 	bool removeCurrent()
 	{
 		if(!m_pAux)
@@ -970,12 +1018,13 @@ public:
 		return true;
 	}
 
-	///
-	/// \brief Removes the item pointed by d (if found in the list)
-	/// The item is deleted if the autoDelete() flag is set to true)
-	/// Returns true if the item was in the list and false otherwise.
-	/// \param d The pointer to the item to delete
-	///
+	/**
+	* \brief Removes the item pointed by d (if found in the list)
+	* The item is deleted if the autoDelete() flag is set to true)
+	* Returns true if the item was in the list and false otherwise.
+	* \param d The pointer to the item to delete
+	* \return bool
+	*/
 	bool removeRef(const T * d)
 	{
 		if(findRef(d) == -1)return false;
@@ -983,14 +1032,15 @@ public:
 		return true;
 	}
 
-	///
-	/// \brief Inserts the item d after the item ref
-	/// If ref is not found in the list, the item is inserted at the end
-	/// Also sets the current iteration pointer to the newly inserted
-	/// item
-	/// \param ref The index item
-	/// \param d The item to insert after ref
-	///
+	/**
+	* \brief Inserts the item d after the item ref
+	* If ref is not found in the list, the item is inserted at the end
+	* Also sets the current iteration pointer to the newly inserted
+	* item
+	* \param ref The index item
+	* \param d The item to insert after ref
+	* \return void
+	*/
 	void insertAfter(const T * ref, const T * d)
 	{
 		if(findRef(ref) == -1)
@@ -1010,15 +1060,16 @@ public:
 		m_uCount++;
 	}
 
-	///
-	/// \brief Inserts the item d before the item ref
-	/// If ref is not found in the list, the item is inserted at the
-	/// beginning.
-	/// Also sets the current iteration pointer to the newly inserted
-	/// item
-	/// \param ref The index item
-	/// \param d The item to insert before ref
-	///
+	/**
+	* \brief Inserts the item d before the item ref
+	* If ref is not found in the list, the item is inserted at the
+	* beginning.
+	* Also sets the current iteration pointer to the newly inserted
+	* item
+	* \param ref The index item
+	* \param d The item to insert before ref
+	* \return void
+	*/
 	void insertBefore(const T * ref, const T * d)
 	{
 		if(findRef(ref) == -1)
@@ -1038,9 +1089,10 @@ public:
 		m_uCount++;
 	}
 
-	///
-	/// \brief Inverts the elements in the list.
-	///
+	/**
+	* \brief Inverts the elements in the list.
+	* \return void
+	*/
 	void invert()
 	{
 		if(!m_pHead)return;
@@ -1058,31 +1110,34 @@ public:
 		m_pHead = oldTail;
 	}
 
-	///
-	/// \brief Clears the list and inserts all the items from the list l
-	/// \param l The source list to copy from
-	///
+	/**
+	* \brief Clears the list and inserts all the items from the list l
+	* \param l The source list to copy from
+	* \return void
+	*/
 	void copyFrom(KviPointerList<T> * l)
 	{
 		clear();
 		for(T * t = l->first();t;t = l->next())append(t);
 	}
 
-	///
-	/// \brief Clears the list and inserts all the items from the list l
-	/// This is just an alias to copyFrom(l)
-	/// \param l The source list to copy from
-	///
+	/**
+	* \brief Clears the list and inserts all the items from the list l
+	* This is just an alias to copyFrom(l)
+	* \param l The source list to copy from
+	* \return KviPointerList<T> &
+	*/
 	KviPointerList<T> & operator = (KviPointerList<T> & l)
 	{
 		copyFrom(&l);
 		return *this;
 	}
 
-	///
-	/// \brief Creates a template list
-	/// \param bAutoDelete The state of autoDelete()
-	///
+	/**
+	* \brief Creates a template list
+	* \param bAutoDelete The state of autoDelete()
+	* \return KviPointerList<T>
+	*/
 	KviPointerList<T>(bool bAutoDelete = true)
 	{
 		m_bAutoDelete = bAutoDelete;
@@ -1092,10 +1147,10 @@ public:
 		m_pAux	= NULL;
 	};
 
-	///
-	/// \brief Destroys the list
-	/// If autoDelete() is set to true, all the items are deleted
-	///
+	/**
+	* \brief Destroys the list
+	* If autoDelete() is set to true, all the items are deleted
+	*/
 	virtual ~KviPointerList<T>()
 	{
 		clear();

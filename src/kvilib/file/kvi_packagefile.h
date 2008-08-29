@@ -50,7 +50,10 @@ class KviFile;
 class KVILIB_API KviPackageIOEngine
 {
 public:
-	/// Creates the I/O engine object
+	/**
+	* \brief Creates the I/O engine object
+	* \return KviPackageIOEngine
+	*/
 	KviPackageIOEngine();
 	/// Destroys the object
 	virtual ~KviPackageIOEngine();
@@ -63,22 +66,26 @@ protected:
 public:
 	/**
 	* \brief Returns the last error
+	* \return const QString &
 	*/
 	const QString & lastError(){ return m_szLastError; };
 
 	/**
 	* \brief Sets the last error
 	* \param szLastError The string error
+	* \return void
 	*/
 	void setLastError(const QString & szLastError){ m_szLastError = szLastError; };
 
 	/**
 	* \brief Returns the string info fields
+	* \return KviPointerHashTable<QString,QString> *
 	*/
 	KviPointerHashTable<QString,QString> * stringInfoFields(){ return m_pStringInfoFields; };
 
 	/**
 	* \brief Returns the binary info fields
+	* \return KviPointerHashTable<QString,QByteArray> *
 	*/
 	KviPointerHashTable<QString,QByteArray> * binaryInfoFields(){ return m_pBinaryInfoFields; };
 protected:
@@ -86,11 +93,13 @@ protected:
 	* \brief Shows the progress dialog
 	* \param szCaption The caption of the dialog window
 	* \param iTotalSteps The total number of steps
+	* \return void
 	*/
 	void showProgressDialog(const QString & szCaption, int iTotalSteps);
 
 	/**
 	* \brief Hides the progress dialog
+	* \return void
 	*/
 	void hideProgressDialog();
 
@@ -98,18 +107,21 @@ protected:
 	* \brief Updates the progress dialog
 	* \param iProgress The value in steps of the progress bar
 	* \param szLabel The label of the step
+	* \return bool
 	*/
 	bool updateProgress(int iProgress, const QString & szLabel);
 
 	/**
 	* \brief Sets the last error as write error
 	* This is a shortcut to setLastError()
+	* \return bool
 	*/
 	bool writeError();
 
 	/**
 	* \brief Sets the last error as read error
 	* This is a shortcut to setLastError()
+	* \return bool
 	*/
 	bool readError();
 };
@@ -130,7 +142,10 @@ protected:
 class KVILIB_API KviPackageWriter : public KviPackageIOEngine
 {
 public:
-	/// Creates the package writer object
+	/**
+	* \brief Creates the package writer object
+	* \return KviPackageWriter
+	*/
 	KviPackageWriter();
 	/// Destroys the object
 	virtual ~KviPackageWriter();
@@ -174,6 +189,7 @@ public:
 	* \param szLocalFileName The source file
 	* \param szTargetFileName The destination file
 	* \param uAddFileFlags The flags of the file
+	* \return bool
 	*/
 	bool addFile(const QString & szLocalFileName, const QString & szTargetFileName, kvi_u32_t uAddFileFlags = 0);
 
@@ -182,6 +198,7 @@ public:
 	* \param szLocalDirectoryName The source directory
 	* \param szTargetDirectoryPrefix The destination directory
 	* \param uAddFileFlags The flags of the directory
+	* \return bool
 	*/
 	bool addDirectory(const QString & szLocalDirectoryName, const QString & szTargetDirectoryPrefix, kvi_u32_t uAddFileFlags = 0);
 
@@ -189,6 +206,7 @@ public:
 	* \brief Adds an info field as a name=value pair
 	* \param szName The name of the info field
 	* \param szValue The value of the info field
+	* \return void
 	*/
 	void addInfoField(const QString & szName, const QString & szValue);
 
@@ -196,6 +214,7 @@ public:
 	* \brief Adds an info field as a name=value pair
 	* \param szName The name of the info field
 	* \param pArray The value of the info field
+	* \return void
 	*/
 	void addInfoField(const QString & szName, QByteArray * pArray);
 
@@ -207,6 +226,7 @@ public:
 	* KVI_FILEEXTENSION_ADDONPACKAGE for addons. See kvi_fileextension.h
 	* \param szFileName The file name of the package
 	* \param uPackFlags The flags of the package
+	* \return bool
 	*/
 	bool pack(const QString & szFileName, kvi_u32_t uPackFlags = 0);
 private:
@@ -215,6 +235,7 @@ private:
 	* This is a shortcut to packFile() performing some checks
 	* \param szFileName The file name of the package
 	* \param uPackFlags The flags of the package
+	* \return bool
 	*/
 	bool packInternal(const QString & szFileName, kvi_u32_t uPackFlags = 0);
 
@@ -223,19 +244,18 @@ private:
 	* This is the real pack() function
 	* \param pFile The source file package
 	* \param pDataField The data field for the package
+	* \return bool
 	*/
 	bool packFile(KviFile * pFile, DataField * pDataField);
 
 	/**
 	* \brief Adds a file to the package.
-	* The file must be specified as absolute local path and as target path
-	* relative to the KVIrc local directory.
 	* This is the real addFile() function
-	* ... more ?
 	* \param fi THe information of the file
 	* \param szLocalFileName The source file
 	* \param szTargetFileName The destination file
 	* \param uAddFileFlags The flags of the file
+	* \return bool
 	*/
 	bool addFileInternal(const QFileInfo * fi, const QString & szLocalFileName, const QString & szTargetFileName, kvi_u32_t uAddFileFlags = 0);
 };
@@ -248,7 +268,10 @@ private:
 class KVILIB_API KviPackageReader : public KviPackageIOEngine
 {
 public:
-	/// Creates the package reader object
+	/**
+	* \brief Creates the package reader object
+	* \return KviPackageReader
+	*/
 	KviPackageReader();
 	/// Destroys the object
 	virtual ~KviPackageReader();
@@ -262,6 +285,7 @@ public:
 	* \brief Read the header of the package
 	* This is a shortcut to readHeaderInternal()
 	* \param szLocalFileName The source package
+	* \return bool
 	*/
 	bool readHeader(const QString & szLocalFileName);
 
@@ -269,6 +293,7 @@ public:
 	* \brief Get the string info field contained in the package
 	* \param szName The name of the info field
 	* \param szBuffer The buffer where to store data
+	* \return bool
 	*/
 	bool getStringInfoField(const QString & szName, QString & szBuffer);
 
@@ -278,6 +303,7 @@ public:
 	* \param szLocalFileName The source package
 	* \param szUnpackPath The path where to unpack the package
 	* \param uUnpackFlags The flags to unpack
+	* \return bool
 	*/
 	bool unpack(const QString & szLocalFileName, const QString & szUnpackPath, kvi_u32_t uUnpackFlags = 0);
 private:
@@ -287,6 +313,7 @@ private:
 	* \param szLocalFileName The source package
 	* \param szUnpackPath The path where to unpack the package
 	* \param uUnpackFlags The flags to unpack
+	* \return bool
 	*/
 	bool unpackInternal(const QString & szLocalFileName, const QString & szUnpackPath, kvi_u32_t uUnpackFlags = 0);
 
@@ -295,6 +322,7 @@ private:
 	* This is the real unpack() function.
 	* \param pFile The source file package
 	* \param szUnpackPath The path where to unpack the package
+	* \return bool
 	*/
 	bool unpackFile(KviFile * pFile, const QString & szUnpackPath);
 
@@ -303,6 +331,7 @@ private:
 	* This is the real readHeader() function
 	* \param pFile The pointer to the real file
 	* \param szLocalFileName The source package
+	* \return bool
 	*/
 	bool readHeaderInternal(KviFile * pFile, const QString & szLocalFileName);
 };

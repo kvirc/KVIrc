@@ -192,7 +192,7 @@ namespace KviError
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		switch(iErrNo)
 		{
-			case EBADF:		       return KviError_badFileDescriptor;          break;
+			case EBADF:            return KviError_badFileDescriptor;          break;
 			case WSAEINVAL:
 			case WSAEFAULT:
 			case EFAULT:           return KviError_outOfAddressSpace;          break;
@@ -200,9 +200,8 @@ namespace KviError
 			case WSAENOTSOCK:      return KviError_kernelNetworkingPanic;      break;
 			case WSAETIMEDOUT:     return KviError_connectionTimedOut;         break;
 			case WSAENETUNREACH:   return KviError_networkUnreachable;         break;
-			case EPIPE:			   return KviError_brokenPipe;                 break;
+			case EPIPE:            return KviError_brokenPipe;                 break;
 			case WSAENOTCONN:      return KviError_socketNotConnected;         break;
-
 			case WSAEACCES:        return KviError_accessDenied;               break;
 			case WSAEADDRINUSE:    return KviError_addressAlreadyInUse;        break;
 			case WSAEADDRNOTAVAIL: return KviError_cantAssignRequestedAddress; break;

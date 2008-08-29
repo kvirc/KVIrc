@@ -93,6 +93,7 @@ namespace KviQString
 	* \brief Returns true if the string ends with character c
 	* \param szString The source string
 	* \param c The char to check
+	* \return bool
 	*/
 	inline bool lastCharIs(QString & szString, const QChar & c)
 		{ return szString.endsWith(c); };
@@ -141,6 +142,7 @@ namespace KviQString
 	* \brief A portability wrapper which with Qt3 and Qt4.
 	* Returns a lowcase version of the parameter string.
 	* \param s The source string
+	* \return QString
 	*/
 	inline QString toLower(const QString & s)
 	{
@@ -154,6 +156,7 @@ namespace KviQString
 	* \param c The character to find
 	* \param index The index to start from
 	* \param cs Case sensitive search
+	* \return int
 	*/
 	inline int find(const QString & s, QChar c, int index = 0, bool cs = true)
 	{
@@ -167,6 +170,7 @@ namespace KviQString
 	* \param c The character to find
 	* \param index The index to start from
 	* \param cs Case sensitive search
+	* \return int
 	*/
 	inline int find(const QString & s, char c, int index = 0, bool cs = true)
 	{
@@ -180,6 +184,7 @@ namespace KviQString
 	* \param str The string to find
 	* \param index The index to start from
 	* \param cs Case sensitive search
+	* \return int
 	*/
 	inline int find(const QString & s, const QString & str, int index = 0, bool cs = true)
 	{
@@ -193,6 +198,7 @@ namespace KviQString
 	* \param str The string to find
 	* \param index The index to start from
 	* \param cs Case sensitive search
+	* \return int
 	*/
 	inline int find(const QString & s, const char * str, int index = 0, bool cs = true)
 	{
@@ -205,6 +211,7 @@ namespace KviQString
 	* \param s The source string
 	* \param rx The regexp to match
 	* \param index The index to start from
+	* \return int
 	*/
 	inline int find(const QString & s, const QRegExp & rx, int index = 0)
 	{
@@ -219,6 +226,7 @@ namespace KviQString
 	* \param c The character to find
 	* \param index The index to start from
 	* \param cs Case sensitive search
+	* \return int
 	*/
 	inline int findRev(const QString & s ,QChar c, int index = -1, bool cs = true)
 	{
@@ -233,6 +241,7 @@ namespace KviQString
 	* \param c The character to find
 	* \param index The index to start from
 	* \param cs Case sensitive search
+	* \return int
 	*/
 	inline int findRev(const QString & s, char c, int index = -1, bool cs = true)
 	{
@@ -247,6 +256,7 @@ namespace KviQString
 	* \param str The string to find
 	* \param index The index to start from
 	* \param cs Case sensitive search
+	* \return int
 	*/
 	inline int findRev(const QString & s, const QString & str, int index = -1, bool cs = true)
 	{
@@ -261,6 +271,7 @@ namespace KviQString
 	* \param str The string to find
 	* \param index The index to start from
 	* \param cs Case sensitive search
+	* \return int
 	*/
 	inline int findRev(const QString & s, const char * str, int index = -1, bool cs = true)
 	{
@@ -274,6 +285,7 @@ namespace KviQString
 	* \param s The source string
 	* \param rx The regexp to match
 	* \param index The index to start from
+	* \return int
 	*/
 	inline int findRev(const QString & s, const QRegExp & rx, int index = -1)
 	{
@@ -284,6 +296,7 @@ namespace KviQString
 	* \brief Return a whitespace-trimmed string
 	* Spaces are trimmed at start and end of the string
 	* \param s The source string
+	* \return QString
 	*/
 	inline QString trimmed(const QString & s)
 	{
@@ -293,6 +306,7 @@ namespace KviQString
 	/**
 	* \brief Return a UTF-8 formatted string
 	* \param s The source string
+	* \return KviQCString
 	* \warning: DO NOT USE CONSTRUCTS LIKE char * c = KviQString::toUtf8(something).data();
 	* They are dangerous since with many compilers the returned string
 	* gets destroyed at the end of the instruction and the c pointer gets
@@ -311,6 +325,7 @@ namespace KviQString
 	/**
 	* \brief Return the local 8-bit representation of the string
 	* \param s The source string
+	* \return KviQCString
 	*/
 	inline KviQCString toLocal8Bit(const QString & s)
 	{
@@ -321,6 +336,7 @@ namespace KviQString
 	* \brief Return the string converted to a long
 	* \param s The source string
 	* \param bOk The conversion error handling
+	* \return kvi_i64_t
 	*/
 	inline kvi_i64_t toI64(QString & szNumber, bool * bOk)
 	{
@@ -335,6 +351,7 @@ namespace KviQString
 	* \brief Return the string converted to an unsigned long
 	* \param s The source string
 	* \param bOk The conversion error handling
+	* \return kvi_u64_t
 	*/
 	inline kvi_u64_t toU64(QString & szNumber, bool * bOk)
 	{

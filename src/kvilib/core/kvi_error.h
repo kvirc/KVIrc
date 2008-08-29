@@ -186,11 +186,29 @@
 
 /**
 * \namespace KviError
+* \brief This namespace handle the error codes
 */
 namespace KviError
 {
+	/**
+	* \brief Returns the description of the error
+	* \param iErrorCode The code number of the error
+	* \return QString
+	*/
 	KVILIB_API QString getDescription(int iErrorCode);
+
+	/**
+	* \brief Returns an untranslated description of the error
+	* \param iErrorCode The code number of the error
+	* \return const char *
+	*/
 	KVILIB_API const char * getUntranslatedDescription(int iErrorCode);
+
+	/**
+	* \brief Gets system errors and returns their code number
+	* \param iErrNo The code number of the system error
+	* \return int
+	*/
 	KVILIB_API int translateSystemError(int iErrNo);
 };
 

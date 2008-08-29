@@ -347,6 +347,7 @@ public:
 	* Returns NULL if no such item exists in the hash table.
 	* Places the hash table iterator at the position of the item found.
 	* \param hKey The key to find
+	* \return T *
 	*/
 	T * find(const Key & hKey)
 	{
@@ -365,19 +366,26 @@ public:
 	* Places the hash table iterator at the position of the item found.
 	* This is an alias to find().
 	* \param hKey The key to find
+	* \return T *
 	*/
 	T * operator[](const Key & hKey)
 	{
 		return find(hKey);
 	}
 
-	/// Returns the number of items in this hash table
+	/**
+	* \brief Returns the number of items in this hash table
+	* \return unsigned int
+	*/
 	unsigned int count() const
 	{
 		return m_uCount;
 	}
 
-	/// Returns true if the hash table is empty
+	/**
+	* \brief Returns true if the hash table is empty
+	* \return bool
+	*/
 	bool isEmpty() const
 	{
 		return m_uCount == 0;
@@ -390,6 +398,7 @@ public:
 	* The hash table iterator is placed at the newly inserted item.
 	* \param hKey The key where to insert data
 	* \param pData The data to insert
+	* \return void
 	*/
 	void insert(const Key & hKey, T * pData)
 	{
@@ -426,6 +435,7 @@ public:
 	* This is just an alias to insert() with a different name.
 	* \param hKey The key where to insert data
 	* \param pData The new data to insert
+	* \return void
 	*/
 	void replace(const Key & hKey, T * pData)
 	{
@@ -438,6 +448,7 @@ public:
 	* item was found and removed and false if it wasn't found.
 	* Invalidates the hash table iterator.
 	* \param hKey The key where to remove the pointer
+	* \return bool
 	*/
 	bool remove(const Key & hKey)
 	{
@@ -468,6 +479,7 @@ public:
 	* pointer was found and false otherwise.
 	* Invalidates the hash table iterator.
 	* \param pRef The pointer to remove the first occurence
+	* \return bool
 	*/
 	bool removeRef(const T * pRef)
 	{
@@ -500,6 +512,7 @@ public:
 	* \brief Removes all the items from the hash table.
 	* The items are deleted if autodeletion is enabled.
 	* Invalidates the hash table iterator.
+	* \return void
 	*/
 	void clear()
 	{
@@ -525,6 +538,7 @@ public:
 	* Returns its hash table entry, if found, and NULL otherwise.
 	* The hash table iterator is placed at the item found.
 	* \param pRef The pointer to search
+	* \return KviPointerHashTableEntry<Key,T> *
 	*/
 	KviPointerHashTableEntry<Key,T> * findRef(const T * pRef)
 	{
@@ -545,6 +559,7 @@ public:
 	* \brief Returns the entry pointed by the hash table iterator.
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
+	* \return KviPointerHashTableEntry<Key,T> *
 	*/
 	KviPointerHashTableEntry<Key,T> * currentEntry()
 	{
@@ -553,7 +568,10 @@ public:
 		return 0;
 	}
 
-	/// Places the hash table iterator at the first entry and returns it.
+	/**
+	* \brief Places the hash table iterator at the first entry and returns it.
+	* \return KviPointerHashTableEntry<Key,T> *
+	*/
 	KviPointerHashTableEntry<Key,T> * firstEntry()
 	{
 		m_uIteratorIdx = 0;
@@ -569,6 +587,7 @@ public:
 	* \brief Places the hash table iterator at the next entry and returns it.
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
+	* \return KviPointerHashTableEntry<Key,T> *
 	*/
 	KviPointerHashTableEntry<Key,T> * nextEntry()
 	{
@@ -597,6 +616,7 @@ public:
 	* \brief Returns the data value pointer pointed by the hash table iterator.
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
+	* \return T *
 	*/
 	T * current()
 	{
@@ -614,6 +634,7 @@ public:
 	* \brief Returns the key pointed by the hash table iterator.
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
+	* \return const Key &
 	*/
 	const Key & currentKey()
 	{
@@ -629,6 +650,7 @@ public:
 
 	/** \brief Places the hash table iterator at the first entry
 	* It returns the associated data value pointer.
+	* \return T *
 	*/
 	T * first()
 	{
@@ -647,6 +669,7 @@ public:
 	* \brief Places the hash table iterator at the next entry and returns the associated data value pointer.
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
+	* \return T *
 	*/
 	T * next()
 	{
@@ -682,6 +705,7 @@ public:
 	* Does not change autodelete flag: make sure you don't delete the
 	* items twice :)
 	* \param t The data to copy
+	* \return void
 	*/
 	void copyFrom(KviPointerHashTable<Key,T> & t)
 	{
@@ -694,6 +718,7 @@ public:
 	* \brief Inserts a complete shallow copy of the data contained in t.
 	* The hash table iterator is invalidated.
 	* \param t The data to insert
+	* \return void
 	*/
 	void insert(KviPointerHashTable<Key,T> & t)
 	{
@@ -705,6 +730,7 @@ public:
 	* \brief Enables or disabled the autodeletion feature.
 	* Items are deleted upon removal when the feature is enabled.
 	* \param bAutoDelete Set the autodelete state
+	* \return void
 	*/
 	void setAutoDelete(bool bAutoDelete)
 	{
@@ -717,6 +743,7 @@ public:
 	* \param uSize The number of hash buckets: does NOT necesairly need to be prime
 	* \param bCaseSensitive Are the key comparisons case sensitive ?
 	* \param bDeepCopyKeys Do we need to mantain deep copies of keys ?
+	* \return KviPointerHashTable
 	*/
 	KviPointerHashTable(unsigned int uSize = 32, bool bCaseSensitive = true, bool bDeepCopyKeys = true)
 	{
@@ -733,6 +760,7 @@ public:
 	* \brief First creates an empty hash table and then inserts a copy of all the item pointers present in t.
 	* The autodelete feature is automatically disabled (take care!).
 	* \param t The data to copy
+	* \return KviPointerHashTable
 	*/
 	KviPointerHashTable(KviPointerHashTable<Key,T> & t)
 	{
