@@ -248,6 +248,7 @@ private:
 //	void parseCtcpReply(const char * msg_ptr,KviIrcUser &source,const char * target);
 	// STARTTLS support
 	void parseNumericStartTls(KviIrcMessage * msg);
+	void parseNumericNotRegistered(KviIrcMessage * msg);
 public:
 	static void encodeCtcpParameter(const char * param,KviStr &buffer,bool bSpaceBreaks = true);
 	static void encodeCtcpParameter(const char * param,QString &buffer,bool bSpaceBreaks = true);

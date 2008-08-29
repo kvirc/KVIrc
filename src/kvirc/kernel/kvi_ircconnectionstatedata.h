@@ -6,7 +6,7 @@
 //   Created on Sat 26 Jun 2004 09:31:52 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -44,6 +44,7 @@ public:
 	KviIrcConnectionStateData();
 	~KviIrcConnectionStateData();
 protected:
+	bool         m_bSentStartTls;                 // the state of STARTTLS protocol
 	bool         m_bSentQuit;                     // have we sent the quit message for this connection ?
 	unsigned int m_uLoginNickIndex;               // the index of the identity nicknames used until now (see KviIrcConnection::loginToIrcServer())
 	QString      m_szCommandToExecAfterConnect;   // yes.. this is a special command to execute after connection
@@ -52,6 +53,9 @@ protected:
 	kvi_time_t   m_tLastSentChannelWhoRequest;    // the time that we have sent our last channel who request
 	kvi_time_t   m_tLastReceivedWhoisReply;       // the time that we have received the last whois reply, reset to 0 when we receive an /END OF WHOIS
 public:
+	bool sentStartTls(){ return m_bSentStartTls; };
+	void setSentStartTls(){ m_bSentStartTls = true; };
+
 	bool sentQuit(){ return m_bSentQuit; };
 	void setSentQuit(){ m_bSentQuit = true; };
 	

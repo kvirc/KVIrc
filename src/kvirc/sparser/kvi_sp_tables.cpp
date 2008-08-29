@@ -536,7 +536,7 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 448
 	0,                                               // 449
 	0,                                               // 450
-	0,                                               // 451
+	PTM(parseNumericNotRegistered)                 , // 451 ERR_NOTREGISTERED
 	0,                                               // 452
 	0,                                               // 453
 	0,                                               // 454

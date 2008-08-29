@@ -28,6 +28,7 @@
 
 KviIrcConnectionStateData::KviIrcConnectionStateData()
 {
+	m_bSentStartTls = false;
 	m_bSentQuit = false;
 	m_uLoginNickIndex = 0;
 	m_bSimulateUnexpectedDisconnect = false;
@@ -39,4 +40,3 @@ KviIrcConnectionStateData::KviIrcConnectionStateData()
 KviIrcConnectionStateData::~KviIrcConnectionStateData()
 {
 }
-

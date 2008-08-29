@@ -930,6 +930,14 @@ void KviIrcConnection::trySTARTTLS()
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"));
 			return;
 		}
+		m_pStateData->setSentStartTls();
+
+		// HACK: this is needed to avoid timeouts connecting
+		if(!sendFmtData("PING :%s",pServer->hostName().data()))
+		{
+			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"));
+			return;
+		}
 	}
 }
 
