@@ -930,7 +930,7 @@ void KviIrcConnection::trySTARTTLS()
 
 		// And, probably, NICK hack is better then PING hack as soon as freenode
 		// not answer to ping!
-		if(!sendFmtData("STARTTLS\nPING :%s",pServer->hostName().data()))
+		if(!sendFmtData("STARTTLS\n\rPING :%s",pServer->hostName().data()))
 		{
 			// Cannot send command
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"));
