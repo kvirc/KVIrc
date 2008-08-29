@@ -30,6 +30,7 @@ SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
 
 # Some vars
 SET(PACKAGE "kvirc")
+SET(NICENAME "KVIrc")
 SET(VERSION_MAJOR "4")
 SET(VERSION_BRANCH "4.0")
 SET(VERSION_RELEASE "4.0.0")
@@ -774,8 +775,8 @@ IF(WANT_DOXYGEN)
 
 		ADD_CUSTOM_COMMAND(
 			COMMENT "generate the api documentation"
-			COMMAND mkdir -p ${PROJECT_SOURCE_DIR}/doc/api
-			COMMAND cd ${PROJECT_SOURCE_DIR}/admin && ${DOXYGEN_EXECUTABLE} Doxyfile
+			COMMAND mkdir -p ${CMAKE_BINARY_DIR}/doc/api
+			COMMAND cd ${CMAKE_BINARY_DIR}/admin && ${DOXYGEN_EXECUTABLE} Doxyfile
 			TARGET devdocs
 		)
 	ELSE()
@@ -920,13 +921,18 @@ ELSE()
 ENDIF()
 
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/FindKVIrc.cmake.in ${kvirc_BINARY_DIR}/FindKVIrc.cmake @ONLY)
-#CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/Doxyfile.cmake ${kvirc_BINARY_DIR}/Doxyfile @ONLY)
 
 CONFIGURE_FILE(
 	${PROJECT_SOURCE_DIR}/cmake/UninstallTarget.cmake.in
 	${PROJECT_BINARY_DIR}/cmake_uninstall.cmake
 	IMMEDIATE @ONLY
 )
+
+IF(WANT_DOXYGEN)
+	IF(DOXYGEN_FOUND)
+		CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/Doxyfile.cmake ${CMAKE_BINARY_DIR}/admin/Doxyfile @ONLY)
+	ENDIF()
+ENDIF()
 
 ###############################################################################
 # Mark as advanced some variables we really don't want to see in "simple" mode
