@@ -117,12 +117,13 @@ bool KviXmmsInterface::loadPlayerLibrary()
 		if(m_pPlayerLibrary->load())
 		{
 			m_szPlayerLibraryName = *lib_name;
-			break;
+			return true;
 		}
 		delete m_pPlayerLibrary;
+		m_pPlayerLibrary = 0;
 		lib_name++;
 	}
-	return true;
+	return false;
 }
 
 void * KviXmmsInterface::lookupSymbol(const char * szSymbolName)
