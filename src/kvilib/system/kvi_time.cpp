@@ -81,7 +81,7 @@ unsigned long KviMSecTimeInterval::mark()
 
 namespace KviTimeUtils
 {
-	long long  getCurrentTimeMills()
+	long long getCurrentTimeMills()
 	{
 		struct timeval tmv;
 		kvi_gettimeofday(&tmv,0);

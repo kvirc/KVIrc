@@ -25,11 +25,32 @@
 //
 //=============================================================================
 
-//=============================================================================
-// This file contains (more or less) freely customizable compile time defaults
-//
-// You can safely play with the ones you understand the meaning of
-//=============================================================================
+/**
+* \file kvi_defaults.h
+* \author Szymon Stefanek
+* \brief This file contains (more or less) freely customizable compile time defaults
+* You can safely play with the ones you understand the meaning of
+*
+* \def KVI_HOME_CONFIG_FILE_NAME Configuration file in home directory
+* \def KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME Directory for incoming DCC files
+* \def KVI_DEFAULT_NICKNAME1 Nickname
+* \def KVI_DEFAULT_NICKNAME2 Alternative nickname 2
+* \def KVI_DEFAULT_NICKNAME3 Alternative nickname 3
+* \def KVI_DEFAULT_NICKNAME4 Alternative nickname 4
+* \def KVI_DEFAULT_USERNAME Username
+* \def KVI_DEFAULT_REALNAME Realname
+* \def KVI_DEFAULT_PART_MESSAGE Part message
+* \def KVI_DEFAULT_QUIT_MESSAGE Quit message
+* \def KVI_DEFAULT_CTCP_USERINFO_REPLY Reply to CTCP USERINFO
+* \def KVI_DEFAULT_CTCP_PAGE_REPLY Reply to CTCP PAGE
+* \def KVI_DEFAULT_AWAY_MESSAGE Away message
+* \def KVI_DEFAULT_AWAY_NICK Nickname when in away mode
+* \def KVI_MAX_PENDING_AVATARS Maximum number of avatars to download simultanously
+* \def KVI_MAX_RECENT_SERVERS Maximum number of servers to hold in "recent" menu
+* \def KVI_MAX_RECENT_CHANNELS Maximum number of channels to hold in "recent" menu
+* \def KVI_MAX_RECENT_NICKNAMES Maximum number of nicknames to hold in "recent" menu
+* \def KVI_MAX_RECENT_TOPICS Maximum number of topics to hold in "recent" menu
+*/
 
 #include "kvi_settings.h"
 
@@ -38,7 +59,6 @@
 #else
 	#define KVI_HOME_CONFIG_FILE_NAME ".kvirc4.rc"
 #endif
-
 
 #define KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME "download"
 
@@ -60,6 +80,6 @@
 #define KVI_MAX_RECENT_SERVERS 10
 #define KVI_MAX_RECENT_CHANNELS 30
 #define KVI_MAX_RECENT_NICKNAMES 10
-#define KVI_RECENT_TOPIC_ENTRIES 20
+#define KVI_MAX_RECENT_TOPICS 20
 
 #endif //_KVI_DEFAULTS_H_

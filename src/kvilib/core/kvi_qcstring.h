@@ -28,6 +28,8 @@
 * \file kvi_qcstring.h
 * \author Szymon Stefanek
 * \brief KviQCString
+*
+* \def KviQCString Defines KviQCString as QByteArray
 */
 
 #include "kvi_settings.h"

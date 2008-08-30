@@ -603,7 +603,7 @@ void KviTopicWidget::setTopic(const QString & topic)
 	}
 	if(!bFound && (!m_szTopic.isEmpty()))
 	{
-		if(g_pRecentTopicList->count() >= KVI_RECENT_TOPIC_ENTRIES)
+		if(g_pRecentTopicList->count() >= KVI_MAX_RECENT_TOPICS)
 		{
 			g_pRecentTopicList->erase(g_pRecentTopicList->begin());
 		}

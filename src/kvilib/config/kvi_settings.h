@@ -25,12 +25,13 @@
 //
 //=============================================================================
 
-//=============================================================================
-// This file contains compile time settings, either set by configure or
-// non-customizable defaults
-//
-// Better do not touch this
-//=============================================================================
+/**
+* \file kvi_settings.h
+* \author Szymon Stefanek
+* \brief This file contains compile time settings
+* They are either set by configure or non-customizable defaults
+* Better to not touch this
+*/
 
 #include <QtGlobal>
 

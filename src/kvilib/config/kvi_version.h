@@ -1,6 +1,5 @@
 #ifndef _KVI_VERSION_H_
 #define _KVI_VERSION_H_
-
 //=============================================================================
 //
 //   File : kvi_version.h
@@ -25,9 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_version.h
+* \author Szymon Stefanek
+* \brief Shortcut for some headers
+*/
+
 #include "kvi_settings.h"
 
-
-
 #endif //!_KVI_VERSION_H_
-

@@ -52,7 +52,7 @@ static KviPointerHashTable<const char *,KviMessageCatalogue> * g_pCatalogueDict 
 static QTextCodec                        * g_pUtf8TextCodec       = 0;
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 //
 // The following code was extracted and adapted from gutf8.c
 // from the GNU GLIB2 package.
@@ -77,26 +77,24 @@ static QTextCodec                        * g_pUtf8TextCodec       = 0;
 // Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 // Boston, MA 02111-1307, USA.
 //
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 
 typedef char gchar;
 typedef unsigned char guchar;
 typedef signed int gssize;
 typedef unsigned int gunichar;
 
-
-
 #define UNICODE_VALID(Char)                  \
-    ((Char) < 0x110000 &&                    \
-    (((Char) & 0xFFFFF800) != 0xD800) &&     \
-    ((Char) < 0xFDD0 || (Char) > 0xFDEF) &&  \
-    ((Char) & 0xFFFE) != 0xFFFE)
+	((Char) < 0x110000 &&                    \
+	(((Char) & 0xFFFFF800) != 0xD800) &&     \
+	((Char) < 0xFDD0 || (Char) > 0xFDEF) &&  \
+	((Char) & 0xFFFE) != 0xFFFE)
 
 #define CONTINUATION_CHAR                            \
-   if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */ \
-     goto error;                                     \
-     val <<= 6;                                      \
-     val |= (*(guchar *)p) & 0x3f;
+	if ((*(guchar *)p & 0xc0) != 0x80) /* 10xxxxxx */ \
+		goto error;                                     \
+		val <<= 6;                                      \
+		val |= (*(guchar *)p) & 0x3f;
 
 
 static const char *
@@ -252,9 +250,9 @@ static bool g_utf8_validate (const char   *str,
 		return true;
 }
 
-///////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 //   End of gutf8.c
-///////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 
 
 class KviSmartTextCodec : public QTextCodec
@@ -310,7 +308,7 @@ static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict
 
 
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 //
 //   The following code was extracted and adapted from gettext.h and gettextP.h
 //   from the GNU gettext package.
@@ -333,7 +331,7 @@ static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict
 //   write to the Free Software Foundation, Inc., 59 Temple Place - Suite 330,
 //   Boston, MA 02111-1307, USA.
 //
-/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////
 
 #include <stdio.h>
 
@@ -378,10 +376,8 @@ struct GnuMoStringDescriptor
 
 #define KVI_SWAP_IF_NEEDED(flag,value) (flag ? kvi_swap32(value) : (value))
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-//   End of gettext.h & gettextP.h
-///////////////////////////////////////////////////////////////////////////////////////////////
-
+////////////////////////////////////////////////////////////////////////////////////////   End of gettext.h & gettextP.h
+//////////////////////////////////////////////////////////////////////////////////////
 
 // HELPERS
 

@@ -44,6 +44,9 @@
 * feature was great and I don't completly understand why they have
 * been removed from Qt4 in favor of the value based non-autodeleting
 * lists... anyway: here we go :)
+*
+* \def NULL Define NULL type to 0
+* \def KviPointerListBase Defines KviPointerListBase as KviPointerList
 */
 
 #include "kvi_settings.h"

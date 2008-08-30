@@ -1,6 +1,5 @@
 #ifndef _KVI_WINCFG_H_
 #define _KVI_WINCFG_H_
-
 //=============================================================================
 //
 //   File : kvi_wincfg.h
@@ -25,191 +24,198 @@
 //
 //=============================================================================
 
-//=============================================================================
-// Windows configuration: do not touch
-//=============================================================================
+/**
+* \file kvi_wincfg.h
+* \author Szymon Stefanek
+* \brief Windows configuration: do not touch
+*/
 
-/* define if you want to compile with new parser */
+/** \def COMPILE_NEW_KVS Define if you want to compile with new parser */
 #define COMPILE_NEW_KVS 1
 
-/* define if you want to use the Qt 4.x support */
-/* #undef COMPILE_USE_QT4 */
-
+/** \def COMPILE_USE_QT4 Define if you want to use the Qt 4.x support */
 #define COMPILE_USE_QT4
 
-/* define if you want to use only the new KVS parser */
+/** \def COMPILE_ONLY_NEW_KVS Define if you want to use only the new KVS parser */
 #define COMPILE_ONLY_NEW_KVS 1
 
-/* define if you want to disable DCC VOICE sound support */
+/** \def COMPILE_WITH_NO_SOUND Define if you want to disable DCC VOICE sound support */
 /* #undef COMPILE_WITH_NO_SOUND */
 
-/* define if you have libgsm and want the GSM code to be compiled */
+/** \def COMPILE_USE_GSM Define if you have libgsm and want the GSM code to be compiled */
 /* #undef COMPILE_USE_GSM */
 
-/* define if you want the info tips to be compiled in */
+/** \def COMPILE_INFO_TIPS Define if you want the info tips to be compiled in */
 /* #define COMPILE_INFO_TIPS 1 */
 
-/* define if you want to compile the KDE 2.x support */
+/** \def COMPILE_KDE_SUPPORT Define if you want to compile the KDE 2.x support */
 /* #undef COMPILE_KDE_SUPPORT */
 
-/* define if you want the gcc memory profile */
+/** \def COMPILE_MEMORY_PROFILE Define if you want the gcc memory profile */
 /* #undef COMPILE_MEMORY_PROFILE */
 
-/* define if you want the memory checks */
+/** \def COMPILE_MEMORY_CHECKS Define if you want the memory checks */
 /* #undef COMPILE_MEMORY_CHECKS */
 
-/* define if you trust your memmove() function */
+/** \def COMPILE_WITH_SYSTEM_MEMMOVE Define if you trust your memmove() function */
 #define COMPILE_WITH_SYSTEM_MEMMOVE 1
 
-/* define if you want to compile the crypt support */
+/** \def COMPILE_CRYPT_SUPPORT Define if you want to compile the crypt support */
 #define COMPILE_CRYPT_SUPPORT 1
 
-/* define if you want the i386 asm code */
+/** \def COMPILE_ix86_ASM Define if you want the i386 asm code */
 /* #undef COMPILE_ix86_ASM */
 
-/* define if your compiler supports gotos do dynamic labels */
+/** \def COMPILE_USE_DYNAMIC_LABELS Define if your compiler supports gotos do dynamic labels */
 /* #undef COMPILE_USE_DYNAMIC_LABELS */
 
-/* define if you want to compile the localization support */
+/** \def COMPILE_LOCALE_STUFF Define if you want to compile the localization support */
 #define COMPILE_LOCALE_STUFF 1
 
-/* define if you want the IPv6 support */
+/** \def COMPILE_IPV6_SUPPORT Define if you want the IPv6 support */
 #define COMPILE_IPV6_SUPPORT 1
 
-/* define if you want zlib support */
+/** \def COMPILE_ZLIB_SUPPORT Define if you want zlib support */
 #define COMPILE_ZLIB_SUPPORT 1
 
-/* define if you want to use the pthreads library */
+/** \def COMPILE_THREADS_USE_POSIX Define if you want to use the pthreads library */
 /* #undef COMPILE_THREADS_USE_POSIX */
 
-/* define if you want to use the solaris libthread */
+/** \def COMPILE_THREADS_USE_SOLARIS_LIBTHREAD Define if you want to use the solaris libthread */
 /* #undef COMPILE_THREADS_USE_SOLARIS_LIBTHREAD */
 
+/** \def COMPILE_PSEUDO_TRANSPARENCY Define if you want the pseudo transparency */
 #define COMPILE_PSEUDO_TRANSPARENCY
 
-/* define if you have the SIOCGIFADDR ioctl and the related headers */
+/** \def COMPILE_GET_INTERFACE_ADDRESS Define if you have the SIOCGIFADDR ioctl and the related headers */
 /* #undef COMPILE_GET_INTERFACE_ADDRESS */
 
-/* this is the build date (configure date rather) */
+/** \def KVIRC_BUILD_DATE This is the build date (configure date rather) */
 #define KVIRC_BUILD_DATE __DATE__" "__TIME__
 
-/* these are the build flags */
+/** \def KVIRC_BUILD_FLAGS This is a build flag */
 #define KVIRC_BUILD_FLAGS "win32"
+/** \def KVIRC_BUILD_COMMAND This is a build flag */
 #define KVIRC_BUILD_COMMAND "win32"
+/** \def KVIRC_BUILD_SYSTEM This is a build flag */
 #define KVIRC_BUILD_SYSTEM "win32"
+/** \def KVIRC_BUILD_CPU This is a build flag */
 #define KVIRC_BUILD_CPU "win32"
+/** \def KVIRC_BUILD_COMPILER This is a build flag */
 #define KVIRC_BUILD_COMPILER "win32"
+/** \def KVIRC_BUILD_COMPILER_FLAGS This is a build flag */
 #define KVIRC_BUILD_COMPILER_FLAGS "win32"
 
-/* define if you have strings.h */
+/** \def HAVE_STRINGS_H Define if you have strings.h */
 /* #undef HAVE_STRINGS_H */
 
-/* define if you have the getenv function */
+/** \def HAVE_GETENV Define if you have the getenv function */
 /* #undef HAVE_GETENV */
 
-/* define if you have the strerror function */
+/** \def HAVE_STRERROR Define if you have the strerror function */
 #define HAVE_STRERROR 1
 
-/* define if you have the inet_aton function */
+/** \def HAVE_INET_ATON Define if you have the inet_aton function */
 /* #define HAVE_INET_ATON 1 */
 
-/* define if you have the inet_ntoa function */
+/** \def HAVE_INET_NTOA Define if you have the inet_ntoa function */
 /* #define HAVE_INET_NTOA 1 */
 
-/* define if you have the inet_pton function */
+/** \def HAVE_INET_PTON Define if you have the inet_pton function */
 /* #undef HAVE_INET_PTON */
 
-/* define if you have the inet_ntop function */
+/** \def HAVE_INET_NTOP Define if you have the inet_ntop function */
 /* #undef HAVE_INET_NTOP */
 
-/* define if you have the getnameinfo function */
+/** \def HAVE_GETNAMEINFO Define if you have the getnameinfo function */
 #define HAVE_GETNAMEINFO
 
-/* define if you have the getaddrinfo function */
+/** \def HAVE_GETADDRINFO Define if you have the getaddrinfo function */
 #define HAVE_GETADDRINFO
 
-/* define this to the number of average channel users */
+/** \def AVERAGE_CHANNEL_USERS Define this to the number of average channel users */
 #define AVERAGE_CHANNEL_USERS 101
 
-/* define this if you want to ignore the SIGALARM signal */
+/** \def COMPILE_IGNORE_SIGALARM Define this if you want to ignore the SIGALARM signal */
 /* #undef COMPILE_IGNORE_SIGALARM */
 
-/* define this if you are on a big endian machine */
+/** \def BIG_ENDIAN_MACHINE_BYTE_ORDER Define this if you are on a big endian machine */
 /* #undef BIG_ENDIAN_MACHINE_BYTE_ORDER */
 
-/* define this if you want to use the unicode-local 8bit charset translation */
+/** \def COMPILE_USE_LOCAL_8BIT Define this if you want to use the unicode-local 8bit charset translation */
 /* #undef COMPILE_USE_LOCAL_8BIT */
 
-/* define this if you want to disable the inter-process communication support */
+/** \def COMPILE_NO_IPC Define this if you want to disable the inter-process communication support */
 /* #undef COMPILE_NO_IPC */
 
-/* Define if you have the `getenv' function. */
+/** \def HAVE_GETENV Define if you have the `getenv' function. */
 /* #undef HAVE_GETENV */
 
-/* Define if you have the <linux/soundcard.h> header file. */
+/** \def HAVE_LINUX_SOUNDCARD_H Define if you have the <linux/soundcard.h> header file. */
 /* #undef HAVE_LINUX_SOUNDCARD_H */
 
-/* Define if you have the <soundcard.h> header file. */
+/** \def HAVE_SOUNDCARD_H Define if you have the <soundcard.h> header file. */
 /* #undef HAVE_SOUNDCARD_H */
 
-/* Define if you have the <sys/soundcard.h> header file. */
+/** \def HAVE_SYS_SOUNDCARD_H Define if you have the <sys/soundcard.h> header file. */
 /* #undef HAVE_SYS_SOUNDCARD_H */
 
-/* Name of package */
+/** \def PACKAGE Name of package */
 #define PACKAGE "kvirc"
 
-/* Version number of package */
+/** \def VERSION Version number of package */
 #define VERSION "4.0.0"
 
+/** \def VERSION_BRANCH Version branch number of package */
 #define VERSION_BRANCH "4.0"
 
-
-/* Define if the system does not provide POSIX.1 features except with this
-   defined. */
+/** \def _POSIX_1_SOURCE Define if the system does not provide POSIX.1 features except with this defined. */
 /* #undef _POSIX_1_SOURCE */
 
-/* Define if you need to in order for `stat' and other things to work. */
+/** \def _POSIX_SOURCE Define if you need to in order for `stat' and other things to work. */
 /* #undef _POSIX_SOURCE */
 
+/** \def COMPILE_WITH_NO_SOUND Define if you want DCC Voice support */
 // for now we need this....dcc voice is not ported yet
 #define COMPILE_WITH_NO_SOUND
 
+/** \def COMPILE_DISABLE_DCC_VOICE Define if you don't want DCC Voice support */
 #define COMPILE_DISABLE_DCC_VOICE
 
-/* No X support */
+/** \def COMPILE_NO_X No X support */
 #define COMPILE_NO_X
 
-/* No X bell! */
+/** \def COMPILE_NO_X_BELL No X bell! */
 #define COMPILE_NO_X_BELL
 
-/* define if you have openssl and want the ssl support in kvirc */
+/** \def COMPILE_SSL_SUPPORT Define if you have openssl and want the ssl support in kvirc */
 #define COMPILE_SSL_SUPPORT
 
-/* define if you want perl scripting support */
+/** \def COMPILE_PERL_SUPPORT Define if you want perl scripting support */
 #define COMPILE_PERL_SUPPORT
 
-/* The size of a `int', as computed by sizeof. */
+/** \def SIZEOF_INT The size of a `int', as computed by sizeof. */
 #define SIZEOF_INT 4
 
-/* The size of a `long int', as computed by sizeof. */
+/** \def SIZEOF_LONG_INT The size of a `long int', as computed by sizeof. */
 #define SIZEOF_LONG_INT 4
 
-/* The size of a `long long int', as computed by sizeof. */
+/** \def SIZEOF_LONG_LONG_INT The size of a `long long int', as computed by sizeof. */
 #define SIZEOF_LONG_LONG_INT 8
 
-/* The size of a `short int', as computed by sizeof. */
+/** \def SIZEOF_SHORT_INT The size of a `short int', as computed by sizeof. */
 #define SIZEOF_SHORT_INT 2
 
-/* The size of a `unsigned int', as computed by sizeof. */
+/** \def SIZEOF_UNSIGNED_INT The size of a `unsigned int', as computed by sizeof. */
 #define SIZEOF_UNSIGNED_INT 4
 
-/* The size of a `unsigned long int', as computed by sizeof. */
+/** \def SIZEOF_UNSIGNED_LONG_INT The size of a `unsigned long int', as computed by sizeof. */
 #define SIZEOF_UNSIGNED_LONG_INT 4
 
-/* The size of a `unsigned long long int', as computed by sizeof. */
+/** \def SIZEOF_UNSIGNED_LONG_LONG_INT The size of a `unsigned long long int', as computed by sizeof. */
 #define SIZEOF_UNSIGNED_LONG_LONG_INT 8
 
-/* The size of a `unsigned short int', as computed by sizeof. */
+/** \def SIZEOF_UNSIGNED_SHORT_INT The size of a `unsigned short int', as computed by sizeof. */
 #define SIZEOF_UNSIGNED_SHORT_INT 2
 
 #endif //_KVI_WINCFG_H_

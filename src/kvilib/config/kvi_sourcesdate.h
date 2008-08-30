@@ -1,7 +1,5 @@
-
 #ifndef _KVI_SOURCESDATE_H_
 #define _KVI_SOURCESDATE_H_
-
 //=============================================================================
 //
 //   File : kvi_sourcesdate.h
@@ -26,15 +24,28 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_sourcesdate.h
+* \author Szymon Stefanek
+* \brief Sources date
+*/
+
 #include "kvi_settings.h"
 
+/**
+* \def KVI_SOURCES_DATE Defines the sources date
+* \def KVI_SOURCES_DATE_NUMERIC Defines the sources date
+*/
 #define KVI_SOURCES_DATE "20080829"
 #define KVI_SOURCES_DATE_NUMERIC 0x20080829
 
-// this is the date of the sources before that we should force a setup
-// this is usually changed only when a setup is really needed because
-// of an incompatible change in the configuration files
-// .. so do NOT change it just when you change KVI_SOURCES_DATE_NUMERIC :)
+/**
+* \brief This is the date of the sources before that we should force a setup
+* This is usually changed only when a setup is really needed because of an
+* incompatible change in the configuration files
+* .. so do NOT change it just when you change KVI_SOURCES_DATE_NUMERIC :)
+* \def KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP Defines a forced setup
+*/
 #define KVI_SOURCES_DATE_NUMERIC_FORCE_SETUP 0x20080324
 
 #endif //!_KVI_SOURCESDATE_H_

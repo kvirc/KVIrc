@@ -28,6 +28,11 @@
 * \file kvi_packagefile.h
 * \author Szymon Stefanek
 * \brief File packaging utilities
+*
+* \def KVI_PACKAGE_INFOFIELD_TYPE_STRING Defines the string type of the info field
+* \def KVI_PACKAGE_INFOFIELD_TYPE_BINARYBUFFER Defines the binary type of the info field
+* \def KVI_PACKAGE_DATAFIELD_TYPE_FILE Defines the file type of the data field
+* \def KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE Defines the type of file compression of the data field
 */
 
 #include "kvi_settings.h"
@@ -42,6 +47,11 @@ class QProgressDialog;
 class QLabel;
 class QFileInfo;
 class KviFile;
+
+#define KVI_PACKAGE_INFOFIELD_TYPE_STRING 1
+#define KVI_PACKAGE_INFOFIELD_TYPE_BINARYBUFFER 2
+#define KVI_PACKAGE_DATAFIELD_TYPE_FILE 1
+#define KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE 1
 
 /**
 * \class KviPackageIOEngine
@@ -125,13 +135,6 @@ protected:
 	*/
 	bool readError();
 };
-
-#define KVI_PACKAGE_INFOFIELD_TYPE_STRING 1
-#define KVI_PACKAGE_INFOFIELD_TYPE_BINARYBUFFER 2
-
-#define KVI_PACKAGE_DATAFIELD_TYPE_FILE 1
-
-#define KVI_PACKAGE_DATAFIELD_FLAG_FILE_DEFLATE 1
 
 /**
 * \class KviPackageWriter

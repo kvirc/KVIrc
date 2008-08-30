@@ -25,14 +25,39 @@
 //
 //=============================================================================
 
-#include "kvi_fileextensions.h"
+/**
+* \file kvi_confignames.h
+* \author Szymon Stefanek
+* \brief This file contains the config file names used in KVIrc
+* You can play a bit with these, but be aware that some (bad) scripts may find
+* themselves in trouble
+*
+* \def KVI_CONFIGFILE_MAIN Defines main.kvc
+* \def KVI_CONFIGFILE_WINPROPERTIES Defines winproperties.kvc
+* \def KVI_CONFIGFILE_SERVERDB Defines serverdb.kvc
+* \def KVI_CONFIGFILE_PROXYDB Defines proxydb.kvc
+* \def KVI_CONFIGFILE_EVENTS Defines events.kvc
+* \def KVI_CONFIGFILE_RAWEVENTS Defines rawevents.kvc
+* \def KVI_CONFIGFILE_POPUPS Defines popups.kvc
+* \def KVI_CONFIGFILE_SCRIPTTOOLBARS Defines toolbars.kvc
+* \def KVI_CONFIGFILE_CUSTOMTOOLBARS Defines customtoolbars.kvc
+* \def KVI_CONFIGFILE_MEDIATYPES Defines mediatypes.kvc
+* \def KVI_CONFIGFILE_REGUSERDB Defines reguserdb.kvc
+* \def KVI_CONFIGFILE_SHAREDFILES Defines sharedfiles.kvc
+* \def KVI_CONFIGFILE_RECENT Defines recent.kvc
+* \def KVI_CONFIGFILE_TOOLBARS Defines toolbarpos.kvc
+* \def KVI_CONFIGFILE_ALIASES Defines aliases.kvc
+* \def KVI_CONFIGFILE_NICKSERVDATABASE Defines nickserv.kvc
+* \def KVI_CONFIGFILE_TEXTICONS Defines texticons.kvc
+* \def KVI_CONFIGFILE_REGCHANDB Defines regchan.kvc
+* \def KVI_CONFIGFILE_INPUTHISTORY Defines inputhistory.kvc
+* \def KVI_CONFIGFILE_AVATARCACHE Defines avatarcache.kvc
+* \def KVI_CONFIGFILE_USERACTIONS Defines useractions.kvc
+* \def KVI_CONFIGFILE_SCRIPTADDONS Defines scriptaddons.kvc
+* \def KVI_CONFIGFILE_IDENTITIES Defines identities.kvc
+*/
 
-//=============================================================================
-// This file contains the config file names used in KVIrc
-//
-// You can play a bit with these, but be aware that some (bad) scripts
-// may find themselves in trouble
-//=============================================================================
+#include "kvi_fileextensions.h"
 
 #define KVI_CONFIGFILE_MAIN "main." KVI_FILEEXTENSION_CONFIG
 #define KVI_CONFIGFILE_WINPROPERTIES "winproperties." KVI_FILEEXTENSION_CONFIG
