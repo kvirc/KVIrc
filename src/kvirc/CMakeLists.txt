@@ -354,7 +354,7 @@ IF(WIN32)
 	# We need this defined when mingw will compile moc files
 	ADD_DEFINITIONS(-D__KVIRC__)
 	ADD_DEFINITIONS(-DCOMPILE_USE_STANDALONE_MOC_SOURCES)
-	LIST(APPEND LIBS�"shlwapi")
+	LIST(APPEND LIBS "shlwapi")
 ENDIF()
 
 # Installation directives
