@@ -344,7 +344,7 @@ void KviTaskBarButton::drawButtonLabel(QPainter * painter)
 		pPainter->setPen(KVI_OPTION_COLOR(KviOption_colorTaskBarNormalText));
 	} else {
 		int iLevel;
-	
+
 		switch(m_iHighlightLevel)
 		{
 			case 0: iLevel = bMinimized ? KviOption_colorTaskBarMinimizedText : KviOption_colorTaskBarNormalText; break;
@@ -427,7 +427,7 @@ void KviTaskBarButton::setProgress(int progress)
 }
 
 void KviTaskBarButton::unhighlight()
-{	
+{
 	if(m_iHighlightLevel < 1)return;
 	m_iHighlightLevel = 0;
 	if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
@@ -497,7 +497,7 @@ KviClassicTaskBar::KviClassicTaskBar()
 
 	m_pBase->setMinimumHeight(m_iButtonHeight+5);
 	setMinimumHeight(m_iButtonHeight+5);
-	
+
 #ifndef COMPILE_USE_QT4
 	setResizeEnabled( true );
 	connect(this,SIGNAL(orientationChanged(Qt::Orientation)),this,SLOT(orientationChangedSlot(Qt::Orientation)));
@@ -677,7 +677,7 @@ void KviClassicTaskBar::doLayout()
 #endif
 
 #ifdef COMPILE_USE_QT4
-	if ((width() > height()) && 
+	if ((width() > height()) &&
 #else
 	if ((orientation() == Qt::Horizontal) &&
 #endif
@@ -709,7 +709,7 @@ void KviClassicTaskBar::doLayout()
 		} else {
 			if((btnInRow == btnsInRow) || (totCount == 1))theWidth = baseWidth - theX;
 		}
-		
+
 		if( KVI_OPTION_BOOL(KviOption_boolClassicTaskBarSetMaximumButtonWidth) && (theWidth > KVI_OPTION_UINT(KviOption_uintClassicTaskBarMaximumButtonWidth)) &&
 #ifdef COMPILE_USE_QT4
 				(width() > height())
@@ -899,7 +899,7 @@ void KviTreeTaskBarItem::paintCell(QPainter *painter,const QColorGroup &cg,int c
 	QPixmap * pMemBuffer = db.pixmap();
 	QPainter p(pMemBuffer);
 	SET_ANTI_ALIASING(p);
-	
+
 	if(isSelected())
 	{
 		p.fillRect(0,0,width,height(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarActiveBackground));
@@ -916,7 +916,7 @@ void KviTreeTaskBarItem::paintCell(QPainter *painter,const QColorGroup &cg,int c
 				p.fillRect(0,0,width,height(),KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 			}
-#endif		
+#endif
 			QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeTaskBarBackground).pixmap();
 			if(pix)
 			{
@@ -934,7 +934,7 @@ void KviTreeTaskBarItem::paintCell(QPainter *painter,const QColorGroup &cg,int c
 					KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground).blue()+m_iBlueDiff*m_iStepNumber
 					)
 				);
-			
+
 		}
 	}
 
@@ -1056,7 +1056,7 @@ void KviTreeTaskBarItem::paintCell(QPainter *painter,const QColorGroup &cg,int c
 	} else {
 		p.drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText,-1,0);
 	}
-	
+
 	painter->drawPixmap(0,0,*pMemBuffer,0,0,width,height());
 	//bitBlt(painter->pixmap(),0,0,pMemBuffer,0,0,width,height(),Qt::CopyROP,false);
 }
@@ -1066,17 +1066,17 @@ QString KviTreeTaskBarItem::key(int,bool) const
 	// This is the sorting function for KviTreeTaskBarItem
 	// 1) window type (console, other window..) 2) unique id (to avoid bug #9) 3) windowname (for alphabetical sorting of childs)
 	QString ret;
-	ret.sprintf("%d%d%s",m_pWindow->type(),m_pWindow->numericId(),m_pWindow->windowName().utf8().data());
+	ret.sprintf("%d%s%d",m_pWindow->type(),m_pWindow->windowName(),m_pWindow->numericId());
 	return ret;
 }
 
-void KviTreeTaskBarItem::timerShot() 
+void KviTreeTaskBarItem::timerShot()
 {
 	if(m_bIncreasing)
 		m_iStepNumber++;
 	else
 		m_iStepNumber--;
-	
+
 	if((m_iStepNumber>=KVI_NUM_STEPS) && m_bIncreasing)
 	{
 		m_pAnimTimer->stop();
@@ -1128,7 +1128,7 @@ KviTreeTaskBarListView::~KviTreeTaskBarListView()
 {
 }
 
-void KviTreeTaskBarListView::contentsMouseMoveEvent ( QMouseEvent * e ) 
+void KviTreeTaskBarListView::contentsMouseMoveEvent ( QMouseEvent * e )
 {
 	if(!e) return;
 	KviTreeTaskBarItem* pCur=(KviTreeTaskBarItem*)(itemAt(contentsToViewport(e->pos())));
@@ -1204,7 +1204,7 @@ void KviTreeTaskBarListView::paintEmptyArea(QPainter * p,const QRect &rct)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
-	
+
 	QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeTaskBarBackground).pixmap();
 	if(pix)
 	{
@@ -1264,8 +1264,8 @@ KviTreeTaskBar::KviTreeTaskBar()
 	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeTaskbarHeader))
 	{
 		m_pListView->header()->hide();
-	} 
-	
+	}
+
 	m_pListView->header()->setResizeEnabled(true);
 
 #ifdef COMPILE_USE_QT4
@@ -1429,7 +1429,7 @@ KviTaskBarItem * KviTreeTaskBar::nextItem()
 }
 
 KviTaskBarItem * KviTreeTaskBar::prevItem()
-{	
+{
 	KviTreeTaskBarItem * it;
 
 	if(!m_pCurrentItem)return 0;
