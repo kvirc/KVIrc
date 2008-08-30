@@ -1064,9 +1064,9 @@ void KviTreeTaskBarItem::paintCell(QPainter *painter,const QColorGroup &cg,int c
 QString KviTreeTaskBarItem::key(int,bool) const
 {
 	// This is the sorting function for KviTreeTaskBarItem
-	// 1) window type (console, other window..) 2) unique id (to avoid bug #9) 3) windowname (for alphabetical sorting of childs)
+	// 1) window type (console, other window..) 2) windowname (for alphabetical sorting of childs) 3) unique id (to avoid bug #9)
 	QString ret;
-	ret.sprintf("%d%s%d",m_pWindow->type(),m_pWindow->windowName(),m_pWindow->numericId());
+	ret.sprintf("%d%s%d",m_pWindow->type(),m_pWindow->windowName().utf8().data(),m_pWindow->numericId());
 	return ret;
 }
 
