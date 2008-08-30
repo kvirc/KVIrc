@@ -40,7 +40,7 @@
 #include "kvi_ircsocket.h"
 #include "kvi_out.h"
 #include "kvi_malloc.h"
-#include "kvi_taskbar.h"
+#include "kvi_windowlist.h"
 #include "kvi_frame.h"
 #include "kvi_config.h"
 #include "kvi_themedlabel.h"
@@ -696,7 +696,7 @@ void KviChannel::getTalkingUsersStats(QString &buffer,QStringList &l,bool bPast)
 	}
 }
 
-void KviChannel::getTaskBarTipText(QString &buffer)
+void KviChannel::getWindowListTipText(QString &buffer)
 {
 	static QString html_bold("<b>");
 	static QString html_tab("&nbsp;&nbsp;");
@@ -1714,8 +1714,8 @@ void KviChannel::preprocessMessage(QString & szMessage)
 
 void KviChannel::unhighlight()
 {
-	if(!m_pTaskBarItem)return;
-	m_pTaskBarItem->unhighlight();
+	if(!m_pWindowListItem)return;
+	m_pWindowListItem->unhighlight();
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

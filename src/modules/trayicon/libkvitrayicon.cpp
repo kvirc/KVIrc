@@ -27,7 +27,7 @@
 #include "kvi_module.h"
 #include "kvi_locale.h"
 #include "kvi_memmove.h"
-#include "kvi_taskbar.h"
+#include "kvi_windowlist.h"
 #include "kvi_window.h"
 #include "kvi_dynamictooltip.h"
 #include "kvi_iconmanager.h"
@@ -157,11 +157,11 @@ void KviTrayIcon::tipRequest(KviDynamicToolTip *tip,const QPoint &pnt)
 {
 	QString tmp;
 
-	KviTaskBarBase * t = m_pFrm->taskBar();
+	KviWindowListBase * t = m_pFrm->windowListWidget();
 
 	QString line;
 
-	for(KviTaskBarItem * b = t->firstItem();b;b = t->nextItem())
+	for(KviWindowListItem * b = t->firstItem();b;b = t->nextItem())
 	{
 
 		if(b->kviWindow()->view())
@@ -374,7 +374,7 @@ void KviTrayIcon::activatedSlot( QSystemTrayIcon::ActivationReason reason )
 
 void KviTrayIcon::grabActivityInfo()
 {
-	KviTaskBarBase * t = m_pFrm->taskBar();
+	KviWindowListBase * t = m_pFrm->windowListWidget();
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseLevelBasedTrayNotification))
 	{
@@ -393,7 +393,7 @@ void KviTrayIcon::grabActivityInfo()
 	m_iQueries  = 0;
 	m_iOther    = 0;
 
-	for(KviTaskBarItem * b = t->firstItem();b;b = t->nextItem())
+	for(KviWindowListItem * b = t->firstItem();b;b = t->nextItem())
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolUseLevelBasedTrayNotification))
 		{

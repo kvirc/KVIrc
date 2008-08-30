@@ -51,7 +51,6 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_splash.h
 	ui/kvi_statusbar.h
 	ui/kvi_statusbarapplet.h
-	ui/kvi_taskbar.h
 	ui/kvi_texticonwin.h
 	ui/kvi_themedlabel.h
 	ui/kvi_toolbar.h
@@ -59,6 +58,8 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_topicw.h
 	ui/kvi_userlistview.h
 	ui/kvi_window.h
+	ui/kvi_windowlist.h
+	ui/kvi_windowlist_tree.h
 	sparser/kvi_sparser.h
 	module/kvi_mexlinkfilter.h
 	module/kvi_mexserverimport.h
@@ -126,7 +127,6 @@ SET(kvirc_SRCS
 	ui/kvi_splash.cpp
 	ui/kvi_statusbar.cpp
 	ui/kvi_statusbarapplet.cpp
-	ui/kvi_taskbar.cpp
 	ui/kvi_texticonwin.cpp
 	ui/kvi_themedlabel.cpp
 	ui/kvi_toolbar.cpp
@@ -134,6 +134,8 @@ SET(kvirc_SRCS
 	ui/kvi_topicw.cpp
 	ui/kvi_userlistview.cpp
 	ui/kvi_window.cpp
+	ui/kvi_windowlist.cpp
+	ui/kvi_windowlist_tree.cpp
 	sparser/kvi_antispam.cpp
 	sparser/kvi_ircmessage.cpp
 	sparser/kvi_sp_ctcp.cpp
@@ -352,7 +354,7 @@ IF(WIN32)
 	# We need this defined when mingw will compile moc files
 	ADD_DEFINITIONS(-D__KVIRC__)
 	ADD_DEFINITIONS(-DCOMPILE_USE_STANDALONE_MOC_SOURCES)
-	LIST(APPEND LIBS "shlwapi")
+	LIST(APPEND LIBSï¿½"shlwapi")
 ENDIF()
 
 # Installation directives

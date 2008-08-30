@@ -33,7 +33,6 @@
 #include "kvi_settings.h"
 #include "kvi_ircsocket.h"
 #include "kvi_out.h"
-#include "kvi_taskbar.h"
 #include "kvi_config.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_settings.h"

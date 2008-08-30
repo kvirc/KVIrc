@@ -31,7 +31,7 @@ SET(kvioptions_MOC_HDRS
 	optw_query.h
 	optw_servers.h
 	optw_sound.h
-	optw_taskbar.h
+	optw_windowlist.h
 	optw_textencoding.h
 	optw_texticons.h
 	optw_tools.h
@@ -75,7 +75,7 @@ SET(kvioptions_SRCS
 	optw_query.cpp
 	optw_servers.cpp
 	optw_sound.cpp
-	optw_taskbar.cpp
+	optw_windowlist.cpp
 	optw_textencoding.cpp
 	optw_texticons.cpp
 	optw_tools.cpp

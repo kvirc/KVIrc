@@ -28,7 +28,7 @@
 #include "kvi_iconmanager.h"
 #include "kvi_action.h"
 #include "kvi_actionmanager.h"
-#include "kvi_taskbar.h"
+#include "kvi_windowlist.h"
 #include "kvi_pointerlist.h"
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_tal_popupmenu.h"
@@ -754,7 +754,7 @@ bool urllist_module_event_onUrl(KviKvsModuleEventCall * c)
 				QString tmpCount;
 				tmpCount.setNum(tmp->count);
 				tmpitem->dlg->addUrl(QString(tmp->url), QString(tmp->window), tmpCount, QString(tmp->timestamp));
-				tmpitem->dlg->taskBarItem()->highlight(false);
+				tmpitem->dlg->windowListItem()->highlight(false);
 			}
 		}
 	}

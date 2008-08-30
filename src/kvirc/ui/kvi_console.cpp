@@ -1146,7 +1146,7 @@ QPixmap * KviConsole::myIconPtr()
 	return g_pIconManager->getSmallIcon(isConnected() ? KVI_SMALLICON_LINKS : KVI_SMALLICON_CONSOLE);
 }
 
-void KviConsole::getTaskBarTipText(QString &buffer)
+void KviConsole::getWindowListTipText(QString &buffer)
 {
 	fillStatusString();
 

@@ -52,7 +52,7 @@ public:
 
 
 #define KVI_OPTIONS_WIDGET_ICON_KviAlertOptionsWidget KVI_SMALLICON_RAW
-#define KVI_OPTIONS_WIDGET_NAME_KviAlertOptionsWidget __tr2qs_no_lookup("Taskbar Alert")
+#define KVI_OPTIONS_WIDGET_NAME_KviAlertOptionsWidget __tr2qs_no_lookup("Window List Alert")
 #define KVI_OPTIONS_WIDGET_PARENT_KviAlertOptionsWidget KviAlertHighlightingOptionsWidget
 
 class KviAlertOptionsWidget : public KviOptionsWidget

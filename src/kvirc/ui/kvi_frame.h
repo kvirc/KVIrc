@@ -42,7 +42,7 @@ class KviMdiManager;
 class KviMdiChild;
 class KviWindow;
 class KviConsole;
-class KviTaskBarBase;
+class KviWindowListBase;
 class QSplitter;
 class KviConfig;
 class KviMexToolBar;
@@ -100,7 +100,7 @@ protected:
 	KviMenuBar                            * m_pMenuBar;                      // the main menu bar
 	KviMdiManager                         * m_pMdi;                          // the mdi manager widget (child of the splitter)
 	KviPointerList<KviMexToolBar>         * m_pModuleExtensionToolBarList;   // the module extension toolbars
-	KviTaskBarBase                        * m_pTaskBar;                      // the taskbar
+	KviWindowListBase                        * m_pWindowList;                      // the WindowList
 	KviStatusBar                          * m_pStatusBar;
 	// the mdi workspace child windows
 	KviPointerList<KviWindow>             * m_pWinList;                      // the main list of windows
@@ -113,8 +113,8 @@ public:
 	KviMdiManager * mdiManager(){ return m_pMdi; };
 	// the splitter is the central widget for this frame
 	QSplitter * splitter(){ return m_pSplitter; };
-	// KviTaskBarBase is the base class for KviTreeTaskBar and the KviClassicTaskBar
-	KviTaskBarBase * taskBar(){ return m_pTaskBar; };
+	// KviWindowListBase is the base class for KviTreeWindowList and the KviClassicWindowList
+	KviWindowListBase * windowListWidget(){ return m_pWindowList; };
 	// well.. the menu bar :D
 	KviMenuBar * mainMenuBar(){ return m_pMenuBar; };
 	KviStatusBar * mainStatusBar(){ return m_pStatusBar; };
@@ -182,8 +182,8 @@ protected:
 
 	void unhighlightWindowsOfContext(KviIrcContext * c);
 
-	void createTaskBar();
-	void recreateTaskBar();
+	void createWindowList();
+	void recreateWindowList();
 		
 	KviMdiChild * dockWindow(KviWindow *wnd,bool bShow = true,bool bCascade = true,QRect * setGeom = 0);
 	void undockWindow(KviWindow *wnd);

@@ -129,7 +129,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolSendZeroAckInDccRecv 35                        /* dcc::send */
 #define KviOption_boolUseFastDccSend 36                              /* dcc::send */
 #define KviOption_boolObtainGlobalBackgroundFromKde 37               /* interface::look::global */
-#define KviOption_boolUseTaskBarIrcContextIndicator 38               /* interface::features::global */
+#define KviOption_boolUseWindowListIrcContextIndicator 38               /* interface::features::global */
 #define KviOption_boolUseGlobalApplicationFont 39                    /* interface::look::global */
 #define KviOption_boolAlwaysQuitKVIrcClosingLastConsole 40           /* internal */
 #define KviOption_boolAlwaysDisconnectClosingConnectedConsole 41     /* internal */
@@ -153,7 +153,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolCreateMinimizedDccChat 59                      /* dcc::chat */
 #define KviOption_boolAutoAcceptIncomingAvatars 60                   /* irc::ctcp::avatar */
 #define KviOption_boolUseNickCompletionPostfixForFirstWordOnly 61
-#define KviOption_boolUseTaskBarIcons 62                             /* interface::features */
+#define KviOption_boolUseWindowListIcons 62                             /* interface::features */
 #define KviOption_boolCreateMinimizedDccSendWhenAutoAccepted 63      /* dcc::send */
 #define KviOption_boolCreateMinimizedDccChatWhenAutoAccepted 64      /* dcc::chat */
 #define KviOption_boolDccGuessIpFromServerWhenLocalIsUnroutable 65   /* dcc */
@@ -167,7 +167,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolNotifyListSendUserhostForOnlineUsers 73        /* ircengine::notifylist */
 #define KviOption_boolUseIntelligentNotifyListManager 74             /* ircengine::notifylist */
 #define KviOption_boolUseWatchListIfAvailable 75                     /* ircengine::notifylist */
-#define KviOption_boolUseTreeWindowListTaskBar 76                    /* interface::features::global */
+#define KviOption_boolUseTreeWindowListWindowList 76                    /* interface::features::global */
 #define KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress 77    /* connection::transport */
 #define KviOption_boolBindIrcIPv6ConnectionsToSpecifiedAddress 78    /* connection::transport */
 #define KviOption_boolUseAntiSpamOnNotice 79                         /* ircengine::antispam */
@@ -213,7 +213,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolInvitesToActiveWindow 119                      /* irc::output */
 #define KviOption_boolShowChannelUserFlagInPrivmsgView 120           /* ircengine::outputcontrol::privmsg */
 #define KviOption_boolDccSendFakeAddressByDefault 121                /* dcc::general */
-#define KviOption_boolUseTaskBarActivityMeter 122                    /* irc::output */
+#define KviOption_boolUseWindowListActivityMeter 122                    /* irc::output */
 #define KviOption_boolCloseServerWidgetAfterConnect 123 /* IMPLEMENTATION NEEDED !!! */
 #define KviOption_boolShowIdentityDialogAsToplevel 124  /* ??? */
 #define KviOption_boolShowUserChannelIcons 125                       /* look & feel::interface features::userlist */
@@ -256,8 +256,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolServerRepliesToActiveWindow 162                /* irc::output */
 #define KviOption_boolServerNoticesToActiveWindow 163                /* irc::output */
 #define KviOption_boolServicesNoticesToActiveWindow 164              /* irc::output */
-#define KviOption_boolSortTaskBarItemsByName 165                     /* interface::features::global */
-#define KviOption_boolShowTaskBarToolTips 166                        /* interface::features::global */
+#define KviOption_boolSortWindowListItemsByName 165                     /* interface::features::global */
+#define KviOption_boolShowWindowListToolTips 166                        /* interface::features::global */
 #define KviOption_boolShowUserListViewToolTips 167                   /* interface::features::global */
 #define KviOption_boolWhoisRepliesToActiveWindow 168                 /* irc::output */
 #define KviOption_boolPopupNotifierOnNotifyOnLine 169                /* notify */
@@ -293,19 +293,19 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolStartupMinimized 199                                   /* interface */
 #define KviOption_boolSortReceivedByDccFilesByNicks 200                                   /* dcc */
 #define KviOption_boolLogChannelHistory 201                                   /* irc */
-#define KviOption_boolClassicTaskBarSetMaximumButtonWidth 202
+#define KviOption_boolClassicWindowListSetMaximumButtonWidth 202
 #define KviOption_boolKeepChannelsOpenOnDisconnect 203 				/* connection */
 #define KviOption_boolKeepQueriesOpenOnDisconnect 204				/* connection */
 #define KviOption_boolHideWindowToolButtons 205			/* interface */
 #define KviOption_boolHideInputToolButtons 206			/* interface */
 #define KviOption_boolStripControlCodesInLogs 207			/* log */
 #define KviOption_boolEnableTrayIconFlashing 208
-#define KviOption_boolUseFlatClassicTaskbarButtons 209
-#define KviOption_boolShowTreeTaskbarHeader 210
+#define KviOption_boolUseFlatClassicWindowListButtons 209
+#define KviOption_boolShowTreeWindowListHeader 210
 #define KviOption_boolUseLevelBasedTrayNotification 211
 #define KviOption_boolMuteAllSounds 212
 #define KviOption_boolCreateMinimizedChannels 213
-#define KviOption_boolShowNetworkNameForConsoleTaskBarEntry 214
+#define KviOption_boolShowNetworkNameForConsoleWindowListEntry 214
 #define KviOption_boolDrawGenderIcons 215
 #define KviOption_boolPrependGenderInfoToRealname 216
 #define KviOption_boolUseIdentServiceOnlyOnConnect 217      /* connection::ident */
@@ -414,11 +414,11 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KVI_COLOR_OPTIONS_PREFIX_LEN 5
 
 #define KviOption_colorMdiBackground 0              /* ?? look & feel : gui elements : mdi manager */
-#define KviOption_colorTaskBarNormalText 1                                        /* look & feel::interface look::taskbar::classic taskbar */
-#define KviOption_colorTaskBarMinimizedText 2                                     /* look & feel::interface look::taskbar::classic taskbar */
-#define KviOption_colorTaskBarHighlight1Text 3                                    /* look & feel::interface look::taskbar::classic taskbar */
-#define KviOption_colorTaskBarHighlight2Text 4                                    /* look & feel::interface look::taskbar::classic taskbar */
-#define KviOption_colorTaskBarProgressBar 5                                       /* look & feel::interface look::taskbar::classic taskbar */
+#define KviOption_colorWindowListNormalText 1                                        /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorWindowListMinimizedText 2                                     /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorWindowListHighlight1Text 3                                    /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorWindowListHighlight2Text 4                                    /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorWindowListProgressBar 5                                       /* look & feel::interface look::WindowList::classic WindowList */
 #define KviOption_colorMdiCaptionActive 6                                         /* theme::mdicaptions */
 #define KviOption_colorMdiCaptionInactive 7                                       /* theme::mdicaptions */
 #define KviOption_colorCaptionTextActive 8                                        /* theme::mdicaptions */
@@ -448,20 +448,20 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_colorIrcToolBarAppletForegroundHighContrastInactive2 32         /* theme::tool bar applets */
 #define KviOption_colorIrcToolBarAppletForegroundHighContrastActive1 33           /* theme::tool bar applets */
 #define KviOption_colorIrcToolBarAppletForegroundHighContrastActive2 34           /* theme::tool bar applets */
-#define KviOption_colorTreeTaskBarBackground 35                                   /* look & feel::interface look::taskbar::tree taskbar */
-#define KviOption_colorTreeTaskBarActiveBackground 36                             /* look & feel::interface look::taskbar::tree taskbar */
-#define KviOption_colorTreeTaskBarForeground 37                                   /* look & feel::interface look::taskbar::tree taskbar */
-#define KviOption_colorTreeTaskBarActiveForeground 38                             /* look & feel::interface look::taskbar::tree taskbar */
-#define KviOption_colorTreeTaskBarHighlight1Foreground 39                         /* look & feel::interface look::taskbar::tree taskbar */
-#define KviOption_colorTreeTaskBarHighlight2Foreground 40                         /* look & feel::interface look::taskbar::tree taskbar */
-#define KviOption_colorTreeTaskBarProgress 41                                     /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorTreeWindowListBackground 35                                   /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListActiveBackground 36                             /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListForeground 37                                   /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListActiveForeground 38                             /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListHighlight1Foreground 39                         /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListHighlight2Foreground 40                         /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListProgress 41                                     /* look & feel::interface look::WindowList::tree WindowList */
 #define KviOption_colorUserListViewHalfOpForeground 42                            /* look & feel::interface look::userlist */
-#define KviOption_colorTaskBarHighlight3Text 43                                   /* look & feel::interface look::taskbar::classic taskbar */
-#define KviOption_colorTaskBarHighlight4Text 44                                   /* look & feel::interface look::taskbar::classic taskbar */
-#define KviOption_colorTaskBarHighlight5Text 45                                   /* look & feel::interface look::taskbar::classic taskbar */
-#define KviOption_colorTreeTaskBarHighlight3Foreground 46                         /* look & feel::interface look::taskbar::tree taskbar */
-#define KviOption_colorTreeTaskBarHighlight4Foreground 47                         /* look & feel::interface look::taskbar::tree taskbar */
-#define KviOption_colorTreeTaskBarHighlight5Foreground 48                         /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_colorWindowListHighlight3Text 43                                   /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorWindowListHighlight4Text 44                                   /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorWindowListHighlight5Text 45                                   /* look & feel::interface look::WindowList::classic WindowList */
+#define KviOption_colorTreeWindowListHighlight3Foreground 46                         /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListHighlight4Foreground 47                         /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_colorTreeWindowListHighlight5Foreground 48                         /* look & feel::interface look::WindowList::tree WindowList */
 #define KviOption_colorUserListViewChanAdminForeground 49                         /* look & feel::interface look::userlist */
 #define KviOption_colorUserListViewUserOpForeground 50                            /* look & feel::interface look::userlist */
 #define KviOption_colorUserListViewGrid 51                                        /* look & feel::interface look::userlist */
@@ -484,7 +484,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_pixmapLabelBackground 4                                      /* look & feel::interface look::topic label */
 #define KviOption_pixmapMyAvatar 5                                             /* identity */
 #define KviOption_pixmapIrcToolBarAppletBackground 6                           /* theme::tool bar applets */
-#define KviOption_pixmapTreeTaskBarBackground 7                                /* look & feel::interface look::taskbar::tree taskbar */
+#define KviOption_pixmapTreeWindowListBackground 7                                /* look & feel::interface look::WindowList::tree WindowList */
 #define KviOption_pixmapGlobalTransparencyBackground 8                         /* theme::transparency */
 
 #define KVI_NUM_PIXMAP_OPTIONS 9
@@ -511,7 +511,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintOutgoingTrafficLimitUSeconds 13                /* connection::transport */
 #define KviOption_uintNotifyListIsOnDelayTimeInSecs 14               /* notify */
 #define KviOption_uintNotifyListUserhostDelayTimeInSecs 15           /* notify */
-#define KviOption_uintTreeTaskBarMinimumWidth 16           /* ?? interface::general ?? */
+#define KviOption_uintTreeWindowListMinimumWidth 16           /* ?? interface::general ?? */
 #define KviOption_uintAvatarOfferTimeoutInSecs 17                    /* irc::ctcp::avatar */
 #define KviOption_uintIrcViewMaxBufferSize 18                        /* interface::features::components::ircview */
 #define KviOption_uintIrcViewToolTipTimeoutInMsec 19                 /* interface::features::components::ircview */
@@ -525,7 +525,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintSoundOfferTimeoutInSecs 27
 #define KviOption_uintMaximumRequestedAvatarSize 28                  /* ctcp::avatar */
 // FIXME: THIS IS NO LONGER NEEDED ?
-#define KviOption_uintTreeTaskBarMaximumWidth 29
+#define KviOption_uintTreeWindowListMaximumWidth 29
 #define KviOption_uintPasteDelay 30
 // 0 = unlimited!
 #define KviOption_uintMaxDccSendTransfers 31
@@ -536,13 +536,13 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintLagAlarmTime 35
 // KVI_TEXT_ENCODING_UNKNOWN = KviLocale::defaultTextEncoding() <-- guessed from locale
 //#define KviOption_uintDefaultTextEncoding 36                          /* textencoding */
-#define KviOption_uintTaskBarButtonMinWidth 37                             /* interface::look::taskbar::classic taskbar */
+#define KviOption_uintWindowListButtonMinWidth 37                             /* interface::look::WindowList::classic WindowList */
 // follows the verbosity constants defined below
 #define KviOption_uintOutputVerbosityLevel 38
 #define KviOption_uintIrcContextAppletWidth 39                       /* internal */
 #define KviOption_uintMinHighlightLevel 40                                /* look::interface::features::output */
 #define KviOption_uintUserListViewGridType 41                        /* look&feel::ircview */
-#define KviOption_uintTaskBarMaximumRows 42                          /* interface::look::taskbar::classic taskbar */
+#define KviOption_uintWindowListMaximumRows 42                          /* interface::look::WindowList::classic WindowList */
 // 0 = unlimited attempts
 #define KviOption_uintMaxAutoReconnectAttempts 43                    /* connection */
 #define KviOption_uintAutoReconnectDelay 44                          /* connection */
@@ -551,12 +551,12 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintTimeStampForeground 47
 #define KviOption_uintTimeStampBackground 48
 #define KviOption_uintUserExperienceLevel 49
-#define KviOption_uintClassicTaskBarMaximumButtonWidth 50
+#define KviOption_uintClassicWindowListMaximumButtonWidth 50
 #define KviOption_uintDefaultBanType 51
 #define KviOption_uintIrcViewPixmapAlign 52
 #define KviOption_uintUserListPixmapAlign 53
 #define KviOption_uintToolBarAppletPixmapAlign 54
-#define KviOption_uintTreeTaskBarPixmapAlign 55
+#define KviOption_uintTreeWindowListPixmapAlign 55
 #define KviOption_uintInputPixmapAlign 56
 #define KviOption_uintAutoFlushLogs 57
 #define KviOption_uintMinTrayLowLevelMessage 58
@@ -591,8 +591,8 @@ namespace KviIdentdOutputMode {
 #define KviOption_fontLabel 3                                        /* look & feel::interface look::topic label */
 #define KviOption_fontApplication 4                                  /* interface::look::global */
 #define KviOption_fontIrcToolBarApplet 5                             /* theme::tool bar applet */
-#define KviOption_fontTaskbar 6                                      /* interface::look::taskbar::classic taskbar */
-#define KviOption_fontTreeTaskbar 7                                  /* interface::look::taskbar::tree taskbar */
+#define KviOption_fontWindowList 6                                      /* interface::look::WindowList::classic WindowList */
+#define KviOption_fontTreeWindowList 7                                  /* interface::look::WindowList::tree WindowList */
 
 #define KVI_NUM_FONT_OPTIONS 8
 
@@ -679,7 +679,7 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 	#define KviOption_sectFlagNone 0
 	#define KviOption_sectFlagFrame 1
 	#define KviOption_sectFlagMdi 2
-	#define KviOption_sectFlagTaskBar 3
+	#define KviOption_sectFlagWindowList 3
 	#define KviOption_sectFlagWindows 4
 	#define KviOption_sectFlagIrcView 5
 	#define KviOption_sectFlagMsgType 6
@@ -718,7 +718,7 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 	#define KviOption_resetNone 0
 	//#define KviOption_resetUpdateCaption (1 << 16) UNUSED!
 	#define KviOption_resetUpdateGui (1 << 17)
-	#define KviOption_resetUpdateTaskBar (1 << 18)
+	#define KviOption_resetUpdateWindowList (1 << 18)
 	#define KviOption_resetUpdateAppFont (1 << 19)
 	#define KviOption_resetUpdatePseudoTransparency (1 << 20)
 	#define KviOption_resetRestartNotifyList (1 << 21)

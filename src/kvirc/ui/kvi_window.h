@@ -51,7 +51,7 @@ class QPixmap;
 class QSplitter;
 class QTextCodec;
 class KviFrame;
-class KviTaskBarItem;
+class KviWindowListItem;
 class KviConfig;
 class KviIrcView;
 class KviInput;
@@ -126,11 +126,11 @@ class KVIRC_API KviWindow : public QWidget
 {
 	friend class KviInput;
 	friend class KviFrame;
-	friend class KviTaskBarItem;
-	friend class KviTaskBarButton;
-	friend class KviTreeTaskBarItem;
-	friend class KviTreeTaskBarItemDelegate;
-	friend class KviTreeTaskBar;
+	friend class KviWindowListItem;
+	friend class KviWindowListButton;
+	friend class KviTreeWindowListItem;
+	friend class KviTreeWindowListItemDelegate;
+	friend class KviTreeWindowList;
 	Q_PROPERTY(int KviProperty_ChildFocusOwner READ type)
 	Q_OBJECT
 public:
@@ -144,7 +144,7 @@ protected: // almost private: don't touch :D
 
 	int                                   m_iType;
 
-	KviTaskBarItem                      * m_pTaskBarItem;
+	KviWindowListItem                      * m_pWindowListItem;
 	QWidget                             * m_pFocusHandler;
 	QString                               m_szPlainTextCaption;
 	QString                               m_szHtmlActiveCaption;
@@ -203,8 +203,8 @@ public:
 	inline KviIrcConnection * connection();
 	// The splitter of this window: it *shouldn't* be null... but ... well.. who knows ? :D ...better check it
 	inline QSplitter * splitter(){ return m_pSplitter; };
-	// The window has ALWAYS a taskbar item
-	inline KviTaskBarItem * taskBarItem(){ return m_pTaskBarItem; };
+	// The window has ALWAYS a WindowList item
+	inline KviWindowListItem * windowListItem(){ return m_pWindowListItem; };
 	// The window *might* have a button container
 	virtual QFrame * buttonContainer(){ return (QFrame*)m_pButtonBox; };
 	virtual void toggleButtonContainer();
@@ -229,7 +229,7 @@ public:
 
 	void unhighlight();
 
-	virtual void getTaskBarTipText(QString &buffer);
+	virtual void getWindowListTipText(QString &buffer);
 
 	// This is meaningful only if view() is non NULL
 	const QString & lastLineOfText();
@@ -322,12 +322,12 @@ protected:
 	virtual void triggerCreationEvents(){};
 	virtual void triggerDestructionEvents(){};
 	// Internal: do not touch :D (KviFrame)
-	virtual void createTaskBarItem();
-	virtual void destroyTaskBarItem();
+	virtual void createWindowListItem();
+	virtual void destroyWindowListItem();
 	// called by KviFrame
 	// either lost the active window status or the frame is no longer active (but we're still the active kvirc's subwindow)
 	virtual void lostUserFocus();
-	// Sets the progress for the taskbar item: if "progress" makes sense in your window , well , use this
+	// Sets the progress for the WindowList item: if "progress" makes sense in your window , well , use this
 	void setProgress(int progress);
 	// call this in the constructor if your caption is fixed:
 	// it will set m_szPlainTextCaption to szCaption and it will
@@ -340,7 +340,7 @@ protected:
 	// Virtual events that signal dock state change
 	virtual void youAreDocked();
 	virtual void youAreUndocked();
-	// Reimplement to show a special icon in the taskbar items and captions
+	// Reimplement to show a special icon in the WindowList items and captions
 	virtual QPixmap * myIconPtr();
 	// Sets the type of this window: be careful with this
 	void setType(int iType);

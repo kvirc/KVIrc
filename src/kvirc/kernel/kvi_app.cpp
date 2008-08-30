@@ -45,7 +45,7 @@
 #include "kvi_thread.h"
 #include "kvi_sharedfiles.h"
 #include "kvi_confignames.h"
-#include "kvi_taskbar.h"
+#include "kvi_windowlist.h"
 #include "kvi_defaults.h"
 #include "kvi_locale.h"
 #include "kvi_out.h"

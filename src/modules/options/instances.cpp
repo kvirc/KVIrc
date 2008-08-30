@@ -4,7 +4,7 @@
 //   File : instances.cpp
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (stefanek@tin.it)
+//   Copyright (C) 2001-2008 Szymon Stefanek (stefanek@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -56,7 +56,6 @@
 #include "optw_query.h"
 #include "optw_servers.h"
 #include "optw_sound.h"
-#include "optw_taskbar.h"
 #include "optw_textencoding.h"
 #include "optw_texticons.h"
 #include "optw_tools.h"
@@ -65,6 +64,7 @@
 #include "optw_uparser.h"
 #include "optw_urlhandlers.h"
 #include "optw_userlist.h"
+#include "optw_windowlist.h"
 
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
@@ -392,36 +392,6 @@ KviOptionsWidget * classKviSoundsOptionsWidget_createInstanceProc(QWidget * pare
 	return new KviSoundsOptionsWidget(parent);
 }
 
-KviOptionsWidget * classKviTaskBarOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviTaskBarOptionsWidget(parent);
-}
-
-KviOptionsWidget * classKviTreeTaskBarOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviTreeTaskBarOptionsWidget(parent);
-}
-
-KviOptionsWidget * classKviTreeTaskBarForegroundOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviTreeTaskBarForegroundOptionsWidget(parent);
-}
-
-KviOptionsWidget * classKviTreeTaskBarBackgroundOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviTreeTaskBarBackgroundOptionsWidget(parent);
-}
-
-KviOptionsWidget * classKviTreeTaskBarFeaturesOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviTreeTaskBarFeaturesOptionsWidget(parent);
-}
-
-KviOptionsWidget * classKviClassicTaskBarOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviClassicTaskBarOptionsWidget(parent);
-}
-
 KviOptionsWidget * classKviTextEncodingOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviTextEncodingOptionsWidget(parent);
@@ -480,6 +450,36 @@ KviOptionsWidget * classKviUserListGridOptionsWidget_createInstanceProc(QWidget 
 KviOptionsWidget * classKviUserListFeaturesOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviUserListFeaturesOptionsWidget(parent);
+}
+
+KviOptionsWidget * classKviWindowListOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviWindowListOptionsWidget(parent);
+}
+
+KviOptionsWidget * classKviTreeWindowListOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviTreeWindowListOptionsWidget(parent);
+}
+
+KviOptionsWidget * classKviTreeWindowListForegroundOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviTreeWindowListForegroundOptionsWidget(parent);
+}
+
+KviOptionsWidget * classKviTreeWindowListBackgroundOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviTreeWindowListBackgroundOptionsWidget(parent);
+}
+
+KviOptionsWidget * classKviTreeWindowListFeaturesOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviTreeWindowListFeaturesOptionsWidget(parent);
+}
+
+KviOptionsWidget * classKviClassicWindowListOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviClassicWindowListOptionsWidget(parent);
 }
 
 
@@ -612,18 +612,6 @@ static const char * g_szName_KviSoundGeneralOptionsWidget = KVI_OPTIONS_WIDGET_N
 static const char * g_szClassName_KviSoundGeneralOptionsWidget = "KviSoundGeneralOptionsWidget";
 static const char * g_szName_KviSoundsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviSoundsOptionsWidget;
 static const char * g_szClassName_KviSoundsOptionsWidget = "KviSoundsOptionsWidget";
-static const char * g_szName_KviTaskBarOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTaskBarOptionsWidget;
-static const char * g_szClassName_KviTaskBarOptionsWidget = "KviTaskBarOptionsWidget";
-static const char * g_szName_KviTreeTaskBarOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeTaskBarOptionsWidget;
-static const char * g_szClassName_KviTreeTaskBarOptionsWidget = "KviTreeTaskBarOptionsWidget";
-static const char * g_szName_KviTreeTaskBarForegroundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeTaskBarForegroundOptionsWidget;
-static const char * g_szClassName_KviTreeTaskBarForegroundOptionsWidget = "KviTreeTaskBarForegroundOptionsWidget";
-static const char * g_szName_KviTreeTaskBarBackgroundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeTaskBarBackgroundOptionsWidget;
-static const char * g_szClassName_KviTreeTaskBarBackgroundOptionsWidget = "KviTreeTaskBarBackgroundOptionsWidget";
-static const char * g_szName_KviTreeTaskBarFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeTaskBarFeaturesOptionsWidget;
-static const char * g_szClassName_KviTreeTaskBarFeaturesOptionsWidget = "KviTreeTaskBarFeaturesOptionsWidget";
-static const char * g_szName_KviClassicTaskBarOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviClassicTaskBarOptionsWidget;
-static const char * g_szClassName_KviClassicTaskBarOptionsWidget = "KviClassicTaskBarOptionsWidget";
 static const char * g_szName_KviTextEncodingOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTextEncodingOptionsWidget;
 static const char * g_szClassName_KviTextEncodingOptionsWidget = "KviTextEncodingOptionsWidget";
 static const char * g_szName_KviTextIconsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTextIconsOptionsWidget;
@@ -648,6 +636,18 @@ static const char * g_szName_KviUserListGridOptionsWidget = KVI_OPTIONS_WIDGET_N
 static const char * g_szClassName_KviUserListGridOptionsWidget = "KviUserListGridOptionsWidget";
 static const char * g_szName_KviUserListFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviUserListFeaturesOptionsWidget;
 static const char * g_szClassName_KviUserListFeaturesOptionsWidget = "KviUserListFeaturesOptionsWidget";
+static const char * g_szName_KviWindowListOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviWindowListOptionsWidget;
+static const char * g_szClassName_KviWindowListOptionsWidget = "KviWindowListOptionsWidget";
+static const char * g_szName_KviTreeWindowListOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListOptionsWidget;
+static const char * g_szClassName_KviTreeWindowListOptionsWidget = "KviTreeWindowListOptionsWidget";
+static const char * g_szName_KviTreeWindowListForegroundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListForegroundOptionsWidget;
+static const char * g_szClassName_KviTreeWindowListForegroundOptionsWidget = "KviTreeWindowListForegroundOptionsWidget";
+static const char * g_szName_KviTreeWindowListBackgroundOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListBackgroundOptionsWidget;
+static const char * g_szClassName_KviTreeWindowListBackgroundOptionsWidget = "KviTreeWindowListBackgroundOptionsWidget";
+static const char * g_szName_KviTreeWindowListFeaturesOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviTreeWindowListFeaturesOptionsWidget;
+static const char * g_szClassName_KviTreeWindowListFeaturesOptionsWidget = "KviTreeWindowListFeaturesOptionsWidget";
+static const char * g_szName_KviClassicWindowListOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviClassicWindowListOptionsWidget;
+static const char * g_szClassName_KviClassicWindowListOptionsWidget = "KviClassicWindowListOptionsWidget";
 
 KviOptionsInstanceManager::KviOptionsInstanceManager()
 : QObject(0)
@@ -3074,214 +3074,6 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->pChildList = 0;
 
 	e0 = new KviOptionsWidgetInstanceEntry;
-	e0->createProc = &classKviTaskBarOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviTaskBarOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTaskBarOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTaskBarOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTaskBarOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTaskBarOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTaskBarOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTaskBarOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTaskBarOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTaskBarOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTaskBarOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTaskBarOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTaskBarOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviTaskBarOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTaskBarOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-
-	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
-	e0->pChildList->setAutoDelete(true);
-
-		e1 = new KviOptionsWidgetInstanceEntry;
-		e1->createProc = &classKviTreeTaskBarOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviTreeTaskBarOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeTaskBarOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeTaskBarOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeTaskBarOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeTaskBarOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeTaskBarOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeTaskBarOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeTaskBarOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviTreeTaskBarOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeTaskBarOptionsWidget,"options");
-		e0->pChildList->append(e1);
-
-		e1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
-		e1->pChildList->setAutoDelete(true);
-
-			e2 = new KviOptionsWidgetInstanceEntry;
-			e2->createProc = &classKviTreeTaskBarForegroundOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviTreeTaskBarForegroundOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeTaskBarForegroundOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeTaskBarForegroundOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeTaskBarForegroundOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarForegroundOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarForegroundOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarForegroundOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarForegroundOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeTaskBarForegroundOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeTaskBarForegroundOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeTaskBarForegroundOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeTaskBarForegroundOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviTreeTaskBarForegroundOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeTaskBarForegroundOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new KviOptionsWidgetInstanceEntry;
-			e2->createProc = &classKviTreeTaskBarBackgroundOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviTreeTaskBarBackgroundOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeTaskBarBackgroundOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeTaskBarBackgroundOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeTaskBarBackgroundOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarBackgroundOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarBackgroundOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarBackgroundOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarBackgroundOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeTaskBarBackgroundOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeTaskBarBackgroundOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeTaskBarBackgroundOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeTaskBarBackgroundOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviTreeTaskBarBackgroundOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeTaskBarBackgroundOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-			e2 = new KviOptionsWidgetInstanceEntry;
-			e2->createProc = &classKviTreeTaskBarFeaturesOptionsWidget_createInstanceProc;
-			e2->pWidget = 0;
-			e2->szClassName = g_szClassName_KviTreeTaskBarFeaturesOptionsWidget;
-			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeTaskBarFeaturesOptionsWidget;
-			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeTaskBarFeaturesOptionsWidget
-			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeTaskBarFeaturesOptionsWidget;
-			#else
-			e2->iPriority = 0;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarFeaturesOptionsWidget
-			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeTaskBarFeaturesOptionsWidget;
-			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarFeaturesOptionsWidget
-			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeTaskBarFeaturesOptionsWidget;
-			#else
-			e2->szGroup = "general";
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeTaskBarFeaturesOptionsWidget
-			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeTaskBarFeaturesOptionsWidget;
-			#else
-			e2->bIsContainer = false;
-			#endif
-			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeTaskBarFeaturesOptionsWidget
-			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeTaskBarFeaturesOptionsWidget;
-			#else
-			e2->bIsNotContained = false;
-			#endif
-			e2->szNameNoLocale = g_szName_KviTreeTaskBarFeaturesOptionsWidget;
-			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeTaskBarFeaturesOptionsWidget,"options");
-			e1->pChildList->append(e2);
-			e2->pChildList = 0;
-
-		e1 = new KviOptionsWidgetInstanceEntry;
-		e1->createProc = &classKviClassicTaskBarOptionsWidget_createInstanceProc;
-		e1->pWidget = 0;
-		e1->szClassName = g_szClassName_KviClassicTaskBarOptionsWidget;
-		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviClassicTaskBarOptionsWidget;
-		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviClassicTaskBarOptionsWidget
-		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviClassicTaskBarOptionsWidget;
-		#else
-		e1->iPriority = 0;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviClassicTaskBarOptionsWidget
-		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviClassicTaskBarOptionsWidget;
-		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviClassicTaskBarOptionsWidget
-		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviClassicTaskBarOptionsWidget;
-		#else
-		e1->szGroup = "general";
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviClassicTaskBarOptionsWidget
-		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviClassicTaskBarOptionsWidget;
-		#else
-		e1->bIsContainer = false;
-		#endif
-		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviClassicTaskBarOptionsWidget
-		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviClassicTaskBarOptionsWidget;
-		#else
-		e1->bIsNotContained = false;
-		#endif
-		e1->szNameNoLocale = g_szName_KviClassicTaskBarOptionsWidget;
-		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviClassicTaskBarOptionsWidget,"options");
-		e0->pChildList->append(e1);
-		e1->pChildList = 0;
-
-	e0 = new KviOptionsWidgetInstanceEntry;
 	e0->createProc = &classKviTopicLabelLookOptionsWidget_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_KviTopicLabelLookOptionsWidget;
@@ -3484,6 +3276,214 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		e1->szNameNoLocale = g_szName_KviUserListFeaturesOptionsWidget;
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviUserListFeaturesOptionsWidget,"options");
+		e0->pChildList->append(e1);
+		e1->pChildList = 0;
+
+	e0 = new KviOptionsWidgetInstanceEntry;
+	e0->createProc = &classKviWindowListOptionsWidget_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_KviWindowListOptionsWidget;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviWindowListOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviWindowListOptionsWidget
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviWindowListOptionsWidget;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviWindowListOptionsWidget
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviWindowListOptionsWidget;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviWindowListOptionsWidget
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviWindowListOptionsWidget;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviWindowListOptionsWidget
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviWindowListOptionsWidget;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviWindowListOptionsWidget
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviWindowListOptionsWidget;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_KviWindowListOptionsWidget;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviWindowListOptionsWidget,"options");
+	m_pInstanceTree->append(e0);
+
+	e0->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
+	e0->pChildList->setAutoDelete(true);
+
+		e1 = new KviOptionsWidgetInstanceEntry;
+		e1->createProc = &classKviTreeWindowListOptionsWidget_createInstanceProc;
+		e1->pWidget = 0;
+		e1->szClassName = g_szClassName_KviTreeWindowListOptionsWidget;
+		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListOptionsWidget;
+		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListOptionsWidget
+		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListOptionsWidget;
+		#else
+		e1->iPriority = 0;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListOptionsWidget
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListOptionsWidget;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListOptionsWidget
+		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListOptionsWidget;
+		#else
+		e1->szGroup = "general";
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListOptionsWidget
+		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListOptionsWidget;
+		#else
+		e1->bIsContainer = false;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListOptionsWidget
+		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListOptionsWidget;
+		#else
+		e1->bIsNotContained = false;
+		#endif
+		e1->szNameNoLocale = g_szName_KviTreeWindowListOptionsWidget;
+		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeWindowListOptionsWidget,"options");
+		e0->pChildList->append(e1);
+
+		e1->pChildList = new KviPointerList<KviOptionsWidgetInstanceEntry>;
+		e1->pChildList->setAutoDelete(true);
+
+			e2 = new KviOptionsWidgetInstanceEntry;
+			e2->createProc = &classKviTreeWindowListForegroundOptionsWidget_createInstanceProc;
+			e2->pWidget = 0;
+			e2->szClassName = g_szClassName_KviTreeWindowListForegroundOptionsWidget;
+			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListForegroundOptionsWidget;
+			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListForegroundOptionsWidget
+			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListForegroundOptionsWidget;
+			#else
+			e2->iPriority = 0;
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListForegroundOptionsWidget
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListForegroundOptionsWidget;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListForegroundOptionsWidget
+			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListForegroundOptionsWidget;
+			#else
+			e2->szGroup = "general";
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListForegroundOptionsWidget
+			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListForegroundOptionsWidget;
+			#else
+			e2->bIsContainer = false;
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListForegroundOptionsWidget
+			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListForegroundOptionsWidget;
+			#else
+			e2->bIsNotContained = false;
+			#endif
+			e2->szNameNoLocale = g_szName_KviTreeWindowListForegroundOptionsWidget;
+			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeWindowListForegroundOptionsWidget,"options");
+			e1->pChildList->append(e2);
+			e2->pChildList = 0;
+
+			e2 = new KviOptionsWidgetInstanceEntry;
+			e2->createProc = &classKviTreeWindowListBackgroundOptionsWidget_createInstanceProc;
+			e2->pWidget = 0;
+			e2->szClassName = g_szClassName_KviTreeWindowListBackgroundOptionsWidget;
+			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListBackgroundOptionsWidget;
+			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListBackgroundOptionsWidget
+			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListBackgroundOptionsWidget;
+			#else
+			e2->iPriority = 0;
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListBackgroundOptionsWidget
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListBackgroundOptionsWidget;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListBackgroundOptionsWidget
+			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListBackgroundOptionsWidget;
+			#else
+			e2->szGroup = "general";
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListBackgroundOptionsWidget
+			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListBackgroundOptionsWidget;
+			#else
+			e2->bIsContainer = false;
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListBackgroundOptionsWidget
+			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListBackgroundOptionsWidget;
+			#else
+			e2->bIsNotContained = false;
+			#endif
+			e2->szNameNoLocale = g_szName_KviTreeWindowListBackgroundOptionsWidget;
+			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeWindowListBackgroundOptionsWidget,"options");
+			e1->pChildList->append(e2);
+			e2->pChildList = 0;
+
+			e2 = new KviOptionsWidgetInstanceEntry;
+			e2->createProc = &classKviTreeWindowListFeaturesOptionsWidget_createInstanceProc;
+			e2->pWidget = 0;
+			e2->szClassName = g_szClassName_KviTreeWindowListFeaturesOptionsWidget;
+			e2->iIcon = KVI_OPTIONS_WIDGET_ICON_KviTreeWindowListFeaturesOptionsWidget;
+			#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListFeaturesOptionsWidget
+			e2->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviTreeWindowListFeaturesOptionsWidget;
+			#else
+			e2->iPriority = 0;
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListFeaturesOptionsWidget
+			e2->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviTreeWindowListFeaturesOptionsWidget;
+			e2->szKeywords = __tr2qs_ctx_no_xgettext(e2->szKeywordsNoLocale.toUtf8().data(),"options");;
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListFeaturesOptionsWidget
+			e2->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviTreeWindowListFeaturesOptionsWidget;
+			#else
+			e2->szGroup = "general";
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListFeaturesOptionsWidget
+			e2->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviTreeWindowListFeaturesOptionsWidget;
+			#else
+			e2->bIsContainer = false;
+			#endif
+			#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListFeaturesOptionsWidget
+			e2->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviTreeWindowListFeaturesOptionsWidget;
+			#else
+			e2->bIsNotContained = false;
+			#endif
+			e2->szNameNoLocale = g_szName_KviTreeWindowListFeaturesOptionsWidget;
+			e2->szName = __tr2qs_ctx_no_xgettext(g_szName_KviTreeWindowListFeaturesOptionsWidget,"options");
+			e1->pChildList->append(e2);
+			e2->pChildList = 0;
+
+		e1 = new KviOptionsWidgetInstanceEntry;
+		e1->createProc = &classKviClassicWindowListOptionsWidget_createInstanceProc;
+		e1->pWidget = 0;
+		e1->szClassName = g_szClassName_KviClassicWindowListOptionsWidget;
+		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviClassicWindowListOptionsWidget;
+		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviClassicWindowListOptionsWidget
+		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviClassicWindowListOptionsWidget;
+		#else
+		e1->iPriority = 0;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviClassicWindowListOptionsWidget
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviClassicWindowListOptionsWidget;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviClassicWindowListOptionsWidget
+		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviClassicWindowListOptionsWidget;
+		#else
+		e1->szGroup = "general";
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviClassicWindowListOptionsWidget
+		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviClassicWindowListOptionsWidget;
+		#else
+		e1->bIsContainer = false;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviClassicWindowListOptionsWidget
+		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviClassicWindowListOptionsWidget;
+		#else
+		e1->bIsNotContained = false;
+		#endif
+		e1->szNameNoLocale = g_szName_KviClassicWindowListOptionsWidget;
+		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviClassicWindowListOptionsWidget,"options");
 		e0->pChildList->append(e1);
 		e1->pChildList = 0;
 

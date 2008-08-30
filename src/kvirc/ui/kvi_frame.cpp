@@ -35,7 +35,8 @@
 #include "kvi_mdichild.h"
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
-#include "kvi_taskbar.h"
+#include "kvi_windowlist.h"
+#include "kvi_windowlist_tree.h"
 #include "kvi_console.h"
 #include "kvi_config.h"
 #include "kvi_internalcmd.h"
@@ -134,9 +135,9 @@ KviFrame::KviFrame()
 	else
 		m_pStatusBar = 0;
 
-	m_pTaskBar = 0;
+	m_pWindowList = 0;
 
-	createTaskBar();
+	createWindowList();
 
 	if((KVI_OPTION_RECT(KviOption_rectFrameGeometry).width() < 100) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).height() < 100) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).x() > g_pApp->desktop()->width()) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).y() > g_pApp->desktop()->height()))
 	{
@@ -416,7 +417,7 @@ void KviFrame::accelActivated()
 	//KviAccel * acc = (KviAccel *)sender();
 
 	int keys = (int)(((QShortcut *)sender())->key());
-	KviTaskBarItem *item = 0;
+	KviWindowListItem *item = 0;
 	debug("accel");
 	switch(keys)
 	{
@@ -430,51 +431,51 @@ void KviFrame::accelActivated()
 		case (Qt::Key_F4+Qt::CTRL):	if(g_pActiveWindow)g_pActiveWindow->close(); break;
 		case (Qt::Key_F1): g_pApp->contextSensitiveHelp(); break;
 /*		case(Qt::Key_F1 + SHIFT):
-			item = m_pTaskBar->item(0);
+			item = m_pWindowList->item(0);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F2 + SHIFT):
-			item = m_pTaskBar->item(1);
+			item = m_pWindowList->item(1);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F3 + SHIFT):
-			item = m_pTaskBar->item(2);
+			item = m_pWindowList->item(2);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F4 + SHIFT):
-			item = m_pTaskBar->item(3);
+			item = m_pWindowList->item(3);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F5 + SHIFT):
-			item = m_pTaskBar->item(4);
+			item = m_pWindowList->item(4);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F6 + SHIFT):
-			item = m_pTaskBar->item(5);
+			item = m_pWindowList->item(5);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F7 + SHIFT):
-			item = m_pTaskBar->item(6);
+			item = m_pWindowList->item(6);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F8 + SHIFT):
-			item = m_pTaskBar->item(7);
+			item = m_pWindowList->item(7);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F9 + SHIFT):
-			item = m_pTaskBar->item(8);
+			item = m_pWindowList->item(8);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F10 + SHIFT):
-			item = m_pTaskBar->item(9);
+			item = m_pWindowList->item(9);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F11 + SHIFT):
-			item = m_pTaskBar->item(10);
+			item = m_pWindowList->item(10);
 			if(item) setActiveWindow(item->window());
 			break;
 		case(Qt::Key_F12 + SHIFT):
-			item = m_pTaskBar->item(11);
+			item = m_pWindowList->item(11);
 			if(item) setActiveWindow(item->window());
 			break;*/
 		default:
@@ -613,7 +614,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 {
 	m_pWinList->append(wnd);
-	wnd->createTaskBarItem(); // create the window taskbar item AFTER it has been constructed
+	wnd->createWindowListItem(); // create the window WindowList item AFTER it has been constructed
 
 	QString group;
 	wnd->getConfigGroupName(group);
@@ -877,7 +878,7 @@ void KviFrame::childWindowActivated(KviWindow *wnd)
 	m_pActiveContext = wnd->context();
 
 	if(wnd->isMaximized() && wnd->mdiParent())updateCaption();
-	m_pTaskBar->setActiveItem(wnd->taskBarItem());
+	m_pWindowList->setActiveItem(wnd->windowListItem());
 
 	//wnd->gainedActiveWindowStatus(); // <-- atm unused
 
@@ -1026,7 +1027,7 @@ void KviFrame::updatePseudoTransparency()
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
 		for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())wnd->updateBackgrounds();
-		m_pTaskBar->updatePseudoTransparency();
+		m_pWindowList->updatePseudoTransparency();
 	}
 #endif
 }
@@ -1047,7 +1048,7 @@ void KviFrame::applyOptions()
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())wnd->applyOptions();
 	updateCaption();
 
-	m_pTaskBar->applyOptions();
+	m_pWindowList->applyOptions();
 	g_pTextIconManager->applyOptions();
 }
 
@@ -1220,50 +1221,50 @@ void KviFrame::restoreToolBarPositions()
 		bNeedDefaults = true;
 	}
 
-	if(m_pTaskBar->inherits("KviTreeTaskBar"))
+	if(m_pWindowList->inherits("KviTreeWindowList"))
 	{
 		// ensure that it is not too wide
-		m_pTaskBar->setMaximumWidth(600);
-		if(m_pTaskBar->width() > 600)
-			m_pTaskBar->setFixedWidth(250);
+		m_pWindowList->setMaximumWidth(600);
+		if(m_pWindowList->width() > 600)
+			m_pWindowList->setFixedWidth(250);
 	}
 }
 
-void KviFrame::createTaskBar()
+void KviFrame::createWindowList()
 {
-	if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListTaskBar))
+	if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListWindowList))
 	{
-		m_pTaskBar = new KviTreeTaskBar();
-		m_pTaskBar->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-		addDockWidget(Qt::LeftDockWidgetArea,m_pTaskBar);
+		m_pWindowList = new KviTreeWindowList();
+		m_pWindowList->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+		addDockWidget(Qt::LeftDockWidgetArea,m_pWindowList);
 	} else {
-		m_pTaskBar = new KviClassicTaskBar();
-		m_pTaskBar->setAllowedAreas(Qt::AllDockWidgetAreas);
-		addDockWidget(Qt::BottomDockWidgetArea,m_pTaskBar);
+		m_pWindowList = new KviClassicWindowList();
+		m_pWindowList->setAllowedAreas(Qt::AllDockWidgetAreas);
+		addDockWidget(Qt::BottomDockWidgetArea,m_pWindowList);
 	}
 }
 
-void KviFrame::recreateTaskBar()
+void KviFrame::recreateWindowList()
 {
-	QString szOldClass = m_pTaskBar->metaObject()->className();
+	QString szOldClass = m_pWindowList->metaObject()->className();
 
 	saveToolBarPositions();
 	KviWindow * w;
 	for(w = m_pWinList->first();w;w = m_pWinList->next())
 	{
-		w->destroyTaskBarItem();
+		w->destroyWindowListItem();
 	}
-	delete m_pTaskBar;
-	createTaskBar();
+	delete m_pWindowList;
+	createWindowList();
 	for(w = m_pWinList->first();w;w = m_pWinList->next())
 	{
-		w->createTaskBarItem();
+		w->createWindowListItem();
 	}
 	restoreToolBarPositions();
 
 
 	/*
-	QString szNewClass = m_pTaskBar->className();
+	QString szNewClass = m_pWindowList->className();
 	if(szOldClass != szNewClass)
 	{
 		// the class changed...
@@ -1274,20 +1275,20 @@ void KviFrame::recreateTaskBar()
 		int index;
 		bool nl;
 		int eo;
-		getLocation(m_pTaskBar,dock,index,nl,eo);
+		getLocation(m_pWindowList,dock,index,nl,eo);
 
-		if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListTaskBar))
+		if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListWindowList))
 		{
 			if((dock == Qt::Bottom) || (dock == Qt::Top))
-				moveDockWindow(m_pTaskBar,Qt::Left);
+				moveDockWindow(m_pWindowList,Qt::Left);
 		} else {
 			if((dock == Qt::Left) || (dock == Qt::Right))
-				moveDockWindow(m_pTaskBar,Qt::Bottom);
+				moveDockWindow(m_pWindowList,Qt::Bottom);
 		}
 	}
 	*/
 
-	if(g_pActiveWindow)m_pTaskBar->setActiveItem(g_pActiveWindow->taskBarItem());
+	if(g_pActiveWindow)m_pWindowList->setActiveItem(g_pActiveWindow->windowListItem());
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1308,22 +1309,22 @@ void KviFrame::minimizeWindow(void)
 
 void KviFrame::switchToPrevWindow(void)
 {
-	m_pTaskBar->switchWindow(false,false);
+	m_pWindowList->switchWindow(false,false);
 }
 
 void KviFrame::switchToNextWindow(void)
 {
-	m_pTaskBar->switchWindow(true,false);
+	m_pWindowList->switchWindow(true,false);
 }
 
 void KviFrame::switchToPrevWindowInContext(void)
 {
-	m_pTaskBar->switchWindow(false,true);
+	m_pWindowList->switchWindow(false,true);
 }
 
 void KviFrame::switchToNextWindowInContext(void)
 {
-	m_pTaskBar->switchWindow(true,true);
+	m_pWindowList->switchWindow(true,true);
 }
 
 void KviFrame::hideEvent ( QHideEvent * e)

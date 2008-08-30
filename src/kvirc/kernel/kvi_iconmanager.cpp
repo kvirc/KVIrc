@@ -249,8 +249,8 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"mebanunexcept", // 198
 	"meinviteexcept", // 199
 	"meinviteunexcept", // 200
-	"classictaskbar", // 201
-	"treetaskbar", // 202
+	"classicwindowlist", // 201
+	"treewindowlist", // 202
 	"ignore", // 203
 	"userlist",// 204
 	"stats", // 205

@@ -33,7 +33,7 @@
 #include "kvi_app.h"
 #include "kvi_window.h"
 #include "kvi_frame.h"
-#include "kvi_taskbar.h"
+#include "kvi_windowlist.h"
 #include "kvi_iconmanager.h"
 #include "kvi_mdichild.h"
 #include "kvi_locale.h"
@@ -126,7 +126,7 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 #endif
 
 	m_pAccel = 0;
-	m_pTaskBarItem = 0;
+	m_pWindowListItem = 0;
 
 	setMinimumSize(KVI_WINDOW_MIN_WIDTH,KVI_WINDOW_MIN_HEIGHT);
 	//setAutoFillBackground(false);
@@ -137,7 +137,7 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 KviWindow::~KviWindow()
 {
 	//g_pFrame->childWindowDestroyed(this);
-	destroyTaskBarItem();
+	destroyWindowListItem();
 	g_pApp->unregisterWindow(this);
 	if(g_pApp->windowCount() == 0)
 	{
@@ -314,12 +314,12 @@ bool KviWindow::activityMeter(unsigned int *,unsigned int *)
 
 bool KviWindow::highlightMeter(unsigned int *v)
 {
-	if(!m_pTaskBarItem)
+	if(!m_pWindowListItem)
 	{
 		*v=0;
 		return false;
 	}
-	*v= m_pTaskBarItem->highlightLevel();
+	*v= m_pWindowListItem->highlightLevel();
 	return true;
 }
 
@@ -328,8 +328,8 @@ bool KviWindow::highlightMe(unsigned int v)
 {
 	if(v<0) v=0;
 	if(v>5) v=5;
-	if(m_pTaskBarItem)
-		m_pTaskBarItem->highlight(v);
+	if(m_pWindowListItem)
+		m_pWindowListItem->highlight(v);
 	return true;
 }
 
@@ -377,17 +377,17 @@ void KviWindow::setType(int iType)
 	m_iType = iType;
 }
 
-void KviWindow::createTaskBarItem()
+void KviWindow::createWindowListItem()
 {
-	if(m_pTaskBarItem)return;
-	m_pTaskBarItem = g_pFrame->m_pTaskBar->addItem(this);
+	if(m_pWindowListItem)return;
+	m_pWindowListItem = g_pFrame->m_pWindowList->addItem(this);
 }
 
-void KviWindow::destroyTaskBarItem()
+void KviWindow::destroyWindowListItem()
 {
-	if(!m_pTaskBarItem)return;
-	g_pFrame->m_pTaskBar->removeItem(m_pTaskBarItem);
-	//	m_pTaskBarItem = 0; // actually the taskBarItem destructor sets it
+	if(!m_pWindowListItem)return;
+	g_pFrame->m_pWindowList->removeItem(m_pWindowListItem);
+	//	m_pWindowListItem = 0; // actually the WindowListItem destructor sets it
 }
 
 BUTTON_CLASS * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn)
@@ -515,7 +515,7 @@ void KviWindow::cryptSessionInfoDestroyed()
 
 void KviWindow::setProgress(int progress)
 {
-	m_pTaskBarItem->setProgress(progress);
+	m_pWindowListItem->setProgress(progress);
 }
 
 void KviWindow::listWindowTypes()
@@ -611,7 +611,7 @@ QPixmap * KviWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_DEFAULTICON);
 }
 
-void KviWindow::getTaskBarTipText(QString &buffer)
+void KviWindow::getWindowListTipText(QString &buffer)
 {
 	buffer = m_szPlainTextCaption;
 }
@@ -658,7 +658,7 @@ void KviWindow::updateCaption()
 		mdiParent()->setWindowTitle(plainTextCaption(),htmlActiveCaption(),htmlInactiveCaption());
 	else
 		setWindowTitle(plainTextCaption());
-	if(m_pTaskBarItem)m_pTaskBarItem->captionChanged();
+	if(m_pWindowListItem)m_pWindowListItem->captionChanged();
 	if(mdiParent() && isMaximized() && (g_pActiveWindow == this))
 		g_pFrame->updateCaption();
 }
@@ -920,7 +920,7 @@ void KviWindow::activateSelf()
 
 	g_pFrame->childWindowActivated(this);
 	// this is now done by KviFrame in childWindowActivated
-	//g_pFrame->m_pTaskBar->setActiveItem(m_pTaskBarItem);
+	//g_pFrame->m_pWindowList->setActiveItem(m_pWindowListItem);
 }
 
 void KviWindow::setFocus()
@@ -1238,7 +1238,7 @@ void KviWindow::internalOutput(KviIrcView * pView,int msg_type,const kvi_wchar_t
 		if(wnd)wnd->outputNoFmt(msg_type,pText,iFlags);
 	}
 
-	if(!m_pTaskBarItem) return;
+	if(!m_pWindowListItem) return;
 
 	// if this option is checked we dont highlight other than channel msg
 	if(KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsg))
@@ -1269,7 +1269,7 @@ void KviWindow::internalOutput(KviIrcView * pView,int msg_type,const kvi_wchar_t
 		return;
 	}
 
-	m_pTaskBarItem->highlight(KVI_OPTION_MSGTYPE(msg_type).level());
+	m_pWindowListItem->highlight(KVI_OPTION_MSGTYPE(msg_type).level());
 }
 
 void KviWindow::output(int msg_type,const char *format,...)
@@ -1333,8 +1333,8 @@ void KviWindow::outputNoFmt(int msg_type,const QString &szText,int iFlags)
 
 void KviWindow::unhighlight()
 {
-	if(!m_pTaskBarItem)return;
-	m_pTaskBarItem->unhighlight();
+	if(!m_pWindowListItem)return;
+	m_pWindowListItem->unhighlight();
 }
 
 /* This messes up a bit: for example it breaks the WHOIS output where

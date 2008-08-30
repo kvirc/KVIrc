@@ -80,22 +80,22 @@ KviAlertOptionsWidget::KviAlertOptionsWidget(QWidget * parent)
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Alert Restrictions","options"));
 	KviBoolSelector * b3 = addBoolSelector(g,__tr2qs_ctx("Restrict alert","options"),KviOption_boolHighlightOnlyNormalMsg);
-	mergeTip(b3, __tr2qs_ctx("<center>If this option is enabled, KVIrc will alert in the taskbar only if a normal message is received in a channel.<br>Actions like joins, parts and mode changes will be ignored.<br> This is useful if you are in channels with a high rate of traffic and only want to be alerted for messages that are interesting to you.</center>","options"));
+	mergeTip(b3, __tr2qs_ctx("<center>If this option is enabled, KVIrc will alert in the window list only if a normal message is received in a channel.<br>Actions like joins, parts and mode changes will be ignored.<br> This is useful if you are in channels with a high rate of traffic and only want to be alerted for messages that are interesting to you.</center>","options"));
 
 	KviBoolSelector * b4 = addBoolSelector(g,__tr2qs_ctx("Alert for highlighted words","options"),KviOption_boolHighlightOnlyNormalMsgHighlightInChanToo,KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsg));
-	mergeTip(b4, __tr2qs_ctx("<center>If this option is enabled, the taskbar will also alert for messages which contain a word from the highlighted words list above.</center>","options"));
+	mergeTip(b4, __tr2qs_ctx("<center>If this option is enabled, the window list will also alert for messages which contain a word from the highlighted words list above.</center>","options"));
 
 	KviBoolSelector * b5 = addBoolSelector(g,__tr2qs_ctx("Alert for query messages","options"),KviOption_boolHighlightOnlyNormalMsgQueryToo,KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsg));
-	mergeTip(b5, __tr2qs_ctx("<center>If this option is enabled, the taskbar will also alert for messages which are shown in queries.</center>","options"));
+	mergeTip(b5, __tr2qs_ctx("<center>If this option is enabled, the window list will also alert for messages which are shown in queries.</center>","options"));
 	connect(b3,SIGNAL(toggled(bool)),b4,SLOT(setEnabled(bool)));
 	connect(b3,SIGNAL(toggled(bool)),b5,SLOT(setEnabled(bool)));
 
 	KviBoolSelector * b6 = addBoolSelector(g,__tr2qs_ctx("Use custom alert level","options"),KviOption_boolHighlightOnlyAtCostumHighlightLevel);
-	mergeTip(b6, __tr2qs_ctx("<center>If this option is enabled, KVIrc will alert in the taskbar only if the specified alert level is reached.</center>","options"));
+	mergeTip(b6, __tr2qs_ctx("<center>If this option is enabled, KVIrc will alert in the window list only if the specified alert level is reached.</center>","options"));
 
 	KviUIntSelector * b7 = addUIntSelector(g,__tr2qs_ctx("Minimum alert level:","options"),KviOption_uintMinHighlightLevel,1,KVI_MSGTYPE_MAXLEVEL,KVI_MSGTYPE_MAXLEVEL,KVI_OPTION_UINT(KviOption_boolHighlightOnlyAtCostumHighlightLevel));
 	b7->setEnabled(KVI_OPTION_BOOL(KviOption_boolHighlightOnlyAtCostumHighlightLevel));
-	mergeTip(b6, __tr2qs_ctx("<center>This option sets the minimum alert level for the taskbar.</center>","options"));
+	mergeTip(b6, __tr2qs_ctx("<center>This option sets the minimum alert level for the window list.</center>","options"));
 	connect(b6,SIGNAL(toggled(bool)),b7,SLOT(setEnabled(bool)));
 
 	addRowSpacer(0,1,0,1);

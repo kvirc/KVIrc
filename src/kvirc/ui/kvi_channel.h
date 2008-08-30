@@ -285,7 +285,7 @@ public:
 	bool isHighlightedUser(const QString &nick) { return m_pTmpHighLighted->find(nick); };
 	KviIrcView * messageView() const { return m_pMessageView; };
 	virtual void lostUserFocus();
-	virtual void getTaskBarTipText(QString &buffer);
+	virtual void getWindowListTipText(QString &buffer);
 	QString channelMode() { return m_szChannelMode; };
 
 	void unhighlight();

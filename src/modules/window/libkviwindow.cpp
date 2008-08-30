@@ -721,11 +721,11 @@ static bool window_kvs_cmd_highlight(KviKvsModuleCommandCall * c)
 		$window.highlightLevel
 		$window.highlightLevel(<window_id>)
 	@description:
-		Every window has a current alert level; it corresponds to an highlight color of that window in the taskbar.
-		There are 6 defined levels, they start from 0 (normal) to 5 (max alarm level). The classic taskbar and the tree taskbar use different colors to represent these levels. Classic task bar uses options:
-		[ul][li]colorTaskBarNormalText : normale state[/li][li]colorTaskBarHighlight1Text : highlight state 1[/li][li]...[/li][li]colorTaskBarHighlight5Text : highlight state 5[/li][/ul]
-		While the tree taskbar uses options:
-		[ul][li]colorTreeTaskBarForeground : normale state[/li][li]colorTreeTaskBarHighlight1Foreground : highlight state 1[/li][li]...[/li][li]colorTreeTaskBarHighlight5Foreground : highlight state 5[/li][/ul]
+		Every window has a current alert level; it corresponds to an highlight color of that window in the window list.
+		There are 6 defined levels, they start from 0 (normal) to 5 (max alarm level). The classic window list and the tree window list use different colors to represent these levels. Classic task bar uses options:
+		[ul][li]colorWindowListNormalText : normale state[/li][li]colorWindowListHighlight1Text : highlight state 1[/li][li]...[/li][li]colorWindowListHighlight5Text : highlight state 5[/li][/ul]
+		While the tree window list uses options:
+		[ul][li]colorTreeWindowListForeground : normale state[/li][li]colorTreeWindowListHighlight1Foreground : highlight state 1[/li][li]...[/li][li]colorTreeWindowListHighlight5Foreground : highlight state 5[/li][/ul]
 		You can use [fnc]$option[/fnc] to read these options and the [cmd]option[/cmd] command to set them.
 	@seealso:
 		[fnc]$window.activityTemperature[/fnc]

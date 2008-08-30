@@ -51,8 +51,8 @@ KviIrcGeneralOptionsWidget::KviIrcGeneralOptionsWidget(QWidget * parent)
 
 	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to minimize the console window after successfully logging into a server.</center>","options"));
 
-	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show network name in console taskbar entry","options"),KviOption_boolShowNetworkNameForConsoleTaskBarEntry);
-	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to show the network name as the console taskbar entry instead of the server name. This is nice to keep on unless your servers are not organized in networks or you often connect to two servers of the same network.</center>","options"));
+	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Show network name in console window list entry","options"),KviOption_boolShowNetworkNameForConsoleWindowListEntry);
+	mergeTip(b,__tr2qs_ctx("<center>This option will cause KVIrc to show the network name as the console window list entry instead of the server name. This is nice to keep on unless your servers are not organized in networks or you often connect to two servers of the same network.</center>","options"));
 
 	addRowSpacer(0,2,0,2);
 }

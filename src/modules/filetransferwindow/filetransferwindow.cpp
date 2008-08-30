@@ -124,7 +124,8 @@ void KviFileTransferWidget::paintEvent(QPaintEvent * event)
 		p->drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
 	} else {
 #endif
-		p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeTaskBarBackground));
+		//FIXME this is not the treewindowlist
+		p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif

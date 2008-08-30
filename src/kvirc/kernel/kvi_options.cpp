@@ -113,7 +113,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("SendZeroAckInDccRecv",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("UseFastDccSend",true,KviOption_sectFlagDcc),
 	BOOL_OPTION("ObtainGlobalBackgroundFromKde",false,KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme),
-	BOOL_OPTION("UseTaskBarIrcContextIndicator",false,KviOption_sectFlagTaskBar | KviOption_resetUpdateGui),
+	BOOL_OPTION("UseWindowListIrcContextIndicator",false,KviOption_sectFlagWindowList | KviOption_resetUpdateGui),
 	BOOL_OPTION("UseGlobalApplicationFont",false,KviOption_sectFlagGui | KviOption_resetUpdateAppFont | KviOption_groupTheme),
 	BOOL_OPTION("AlwaysQuitKVIrcClosingLastConsole",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("AlwaysDisconnectClosingConnectedConsole",false,KviOption_sectFlagFrame),
@@ -137,7 +137,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("CreateMinimizedDccChat",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("AutoAcceptIncomingAvatars",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("UseNickCompletionPostfixForFirstWordOnly",true,KviOption_sectFlagInput),
-	BOOL_OPTION("UseTaskBarIcons",true,KviOption_sectFlagTaskBar | KviOption_resetUpdateGui),
+	BOOL_OPTION("UseWindowListIcons",true,KviOption_sectFlagWindowList | KviOption_resetUpdateGui),
 	BOOL_OPTION("CreateMinimizedDccSendWhenAutoAccepted",true,KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccChatWhenAutoAccepted",true,KviOption_sectFlagDcc),
 	BOOL_OPTION("DccGuessIpFromServerWhenLocalIsUnroutable",true,KviOption_sectFlagDcc),
@@ -152,7 +152,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("NotifyListSendUserhostForOnlineUsers",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseIntelligentNotifyListManager",true,KviOption_sectFlagConnection | KviOption_resetRestartNotifyList),
 	BOOL_OPTION("UseWatchListIfAvailable",true,KviOption_sectFlagConnection),
-	BOOL_OPTION("UseTreeWindowListTaskBar",true,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar | KviOption_groupTheme),
+	BOOL_OPTION("UseTreeWindowList",true,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList | KviOption_groupTheme),
 	BOOL_OPTION("BindIrcIPv4ConnectionsToSpecifiedAddress",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("BindIrcIPv6ConnectionsToSpecifiedAddress",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseAntiSpamOnNotice",false,KviOption_sectFlagAntiSpam),
@@ -206,7 +206,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("InviteToActiveWindow",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowChannelUserFlagInPrivmsgView",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("DccSendFakeAddressByDefault",false,KviOption_sectFlagDcc),
-	BOOL_OPTION("UseTaskBarActivityMeter",false,KviOption_sectFlagTaskBar | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("UseWindowListActivityMeter",false,KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("CloseServerWidgetAfterConnect",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowIdentityDialogAsToplevel",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ShowUserChannelIcons",true,KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
@@ -249,8 +249,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ServerRepliesToActiveWindow",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("ServerNoticesToActiveWindow",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("ServicesNoticesToActiveWindow",false,KviOption_sectFlagConnection),
-	BOOL_OPTION("SortTaskBarItemsByName",true,KviOption_sectFlagConnection),
-	BOOL_OPTION("ShowTaskBarToolTips",true,KviOption_sectFlagConnection),
+	BOOL_OPTION("SortWindowListItemsByName",true,KviOption_sectFlagConnection),
+	BOOL_OPTION("ShowWindowListToolTips",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("ShowUserListViewToolTips",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("WhoisRepliesToActiveWindow",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("PopupNotifierOnNotifyOnLine",true,KviOption_sectFlagConnection),
@@ -286,19 +286,19 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("StartupMinimized",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("SortReceivedByDccFilesByNicks",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("LogChannelHistory",true,KviOption_sectFlagConnection),
-	BOOL_OPTION("ClassicTaskBarSetMaximumButtonWidth",true,KviOption_groupTheme | KviOption_sectFlagGeometry | KviOption_resetUpdateGui),
+	BOOL_OPTION("ClassicWindowListSetMaximumButtonWidth",true,KviOption_groupTheme | KviOption_sectFlagGeometry | KviOption_resetUpdateGui),
 	BOOL_OPTION("KeepChannelsOpenOnDisconnect",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("KeepQueriesOpenOnDisconnect",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("HideWindowToolButtons",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("HideInputToolButtons",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("StripControlCodesInLogs",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("EnableTrayIconFlashing",true,KviOption_sectFlagFrame),
-	BOOL_OPTION("UseFlatClassicTaskbarButtons",false,KviOption_sectFlagTaskBar | KviOption_resetUpdateGui | KviOption_groupTheme),
-	BOOL_OPTION("ShowTreeTaskbarHeader",false,KviOption_sectFlagTaskBar | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("UseFlatClassicWindowListButtons",false,KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("ShowTreeWindowListHeader",false,KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("UseLevelBasedTrayNotification",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("MuteAllSounds",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("CreateMinimizedChannels",false,KviOption_sectFlagFrame),
-	BOOL_OPTION("ShowNetworkNameForConsoleTaskBarEntry",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui),
+	BOOL_OPTION("ShowNetworkNameForConsoleWindowListEntry",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui),
 	BOOL_OPTION("DrawGenderIcons",true,KviOption_sectFlagFrame | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("PrependGenderInfoToRealname",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("UseIdentServiceOnlyOnConnect",true,KviOption_sectFlagConnection | KviOption_resetRestartIdentd),
@@ -445,11 +445,11 @@ KviColorOption g_mirccolorOptionsTable[KVI_NUM_MIRCCOLOR_OPTIONS]=
 KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 {
 	COLOR_OPTION("MdiBackground",0,0,0,KviOption_sectFlagMdi),
-	COLOR_OPTION("TaskBarNormalText",0,0,0,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TaskBarMinimizedText",60,60,60,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TaskBarHighlight1Text",0,16,144,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TaskBarHighlight2Text",32,0,255,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TaskBarProgressBar",180,180,180,KviOption_sectFlagTaskBar),
+	COLOR_OPTION("WindowListNormalText",0,0,0,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListMinimizedText",60,60,60,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListHighlight1Text",0,16,144,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListHighlight2Text",32,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListProgressBar",180,180,180,KviOption_sectFlagWindowList),
 	COLOR_OPTION("MdiCaptionActive",113,125,190,KviOption_sectFlagMdi),
 	COLOR_OPTION("MdiCaptionInactive",180,180,180,KviOption_sectFlagMdi),
 	COLOR_OPTION("CaptionTextActive",255,255,255,KviOption_sectFlagWindows),
@@ -479,20 +479,20 @@ KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastInactive2",40,40,40,KviOption_sectFlagIrcToolBar),
 	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastActive1",0,0,0,KviOption_sectFlagIrcToolBar),
 	COLOR_OPTION("IrcToolBarAppletForegroundHighContrastActive2",0,60,0,KviOption_sectFlagIrcToolBar),
-	COLOR_OPTION("TreeTaskBarBackground",255,255,255,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TreeTaskBarActiveBackground",200,200,200,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TreeTaskBarForeground",0,0,0,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TreeTaskBarActiveForeground",0,0,0,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TreeTaskBarHighlight1Foreground",0,16,144,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TreeTaskBarHighlight2Foreground",32,0,255,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TreeTaskBarProgress",150,150,150,KviOption_sectFlagTaskBar),
+	COLOR_OPTION("TreeWindowListBackground",255,255,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListActiveBackground",200,200,200,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListForeground",0,0,0,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListActiveForeground",0,0,0,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight1Foreground",0,16,144,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight2Foreground",32,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListProgress",150,150,150,KviOption_sectFlagWindowList),
 	COLOR_OPTION("UserListViewHalfOpForeground",119,0,178,KviOption_sectFlagUserListView),
-	COLOR_OPTION("TaskBarHighlight3Text",128,20,255,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TaskBarHighlight4Text",220,0,255,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TaskBarHighlight5Text",255,0,0,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TreeTaskBarHighlight3Foreground",128,0,255,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TreeTaskBarHighlight4Foreground",220,0,255,KviOption_sectFlagTaskBar),
-	COLOR_OPTION("TreeTaskBarHighlight5Foreground",255,0,0,KviOption_sectFlagTaskBar),
+	COLOR_OPTION("WindowListHighlight3Text",128,20,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListHighlight4Text",220,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("WindowListHighlight5Text",255,0,0,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight3Foreground",128,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight4Foreground",220,0,255,KviOption_sectFlagWindowList),
+	COLOR_OPTION("TreeWindowListHighlight5Foreground",255,0,0,KviOption_sectFlagWindowList),
 	COLOR_OPTION("UserListViewChanAdminForeground",83,54,5,KviOption_sectFlagUserListView),
 	COLOR_OPTION("UserListViewUserOpForeground",0,127,178,KviOption_sectFlagUserListView),
 	COLOR_OPTION("UserListViewGrid",110,110,110,KviOption_sectFlagUserListView),
@@ -507,7 +507,7 @@ KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 	KviColorOption( \
 		KVI_ICCOLOR_OPTIONS_PREFIX _num, \
 		QColor(_red,_green,_blue), \
-		KviOption_sectFlagTaskBar | KviOption_resetUpdateGui | KviOption_groupTheme)
+		KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme)
 
 KviColorOption g_iccolorOptionsTable[KVI_NUM_ICCOLOR_OPTIONS]=
 {
@@ -536,7 +536,7 @@ KviPixmapOption g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS]=
 	PIXMAP_OPTION("LabelBackground",KviOption_sectFlagLabel | KviOption_groupTheme),
 	PIXMAP_OPTION("MyAvatar",KviOption_sectFlagUser),
 	PIXMAP_OPTION("IrcToolBarAppletBackground",KviOption_sectFlagIrcToolBar | KviOption_groupTheme),
-	PIXMAP_OPTION("TreeTaskBarBackground",KviOption_sectFlagTaskBar | KviOption_groupTheme),
+	PIXMAP_OPTION("TreeWindowListBackground",KviOption_sectFlagWindowList | KviOption_groupTheme),
 	PIXMAP_OPTION("GlobalTransparencyBackground",KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme)
 };
 
@@ -579,7 +579,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("OutgoingTrafficLimitUSeconds",2000000,KviOption_sectFlagIrcSocket),
 	UINT_OPTION("NotifyListIsOnDelayTimeInSecs",6,KviOption_sectFlagConnection),
 	UINT_OPTION("NotifyListUserhostDelayTimeInSecs",6,KviOption_sectFlagConnection),
-	UINT_OPTION("TreeTaskBarMinimumWidth",24,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar),
+	UINT_OPTION("TreeWindowListMinimumWidth",24,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
 	UINT_OPTION("AvatarOfferTimeoutInSecs",60,KviOption_sectFlagAvatar),
 	UINT_OPTION("IrcViewMaxBufferSize",1024,KviOption_sectFlagIrcView),
 	UINT_OPTION("IrcViewToolTipTimeoutInMsec",1200,KviOption_sectFlagIrcView),
@@ -592,7 +592,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("DccMaxPort",31000,KviOption_sectFlagDcc),
 	UINT_OPTION("SoundOfferTimeoutInSecs",60,KviOption_sectFlagConnection),
 	UINT_OPTION("MaximumRequestedAvatarSize",256000,KviOption_sectFlagAvatar),
-	UINT_OPTION("TreeTaskBarMaximumWidth",200,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar),
+	UINT_OPTION("TreeWindowListMaximumWidth",200,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
 	UINT_OPTION("PasteDelay",2000,KviOption_sectFlagInput),
 	UINT_OPTION("MaxDccSendTransfers",10,KviOption_sectFlagDcc),
 	UINT_OPTION("MaxDccSlots",64,KviOption_sectFlagDcc),
@@ -600,12 +600,12 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("LagMeterHeartbeat",5000,KviOption_sectFlagConnection | KviOption_resetRestartLagMeter),
 	UINT_OPTION("LagAlarmTime",120000,KviOption_sectFlagConnection),
 	UINT_OPTION("UNUSED",0,KviOption_sectFlagFrame),
-	UINT_OPTION("TaskBarButtonMinWidth",100,KviOption_sectFlagTaskBar),
+	UINT_OPTION("WindowListButtonMinWidth",100,KviOption_sectFlagWindowList),
 	UINT_OPTION("OutputVerbosityLevel",KVI_VERBOSITY_LEVEL_NORMAL,KviOption_sectFlagFrame),
 	UINT_OPTION("IrcContextAppletWidth",160,KviOption_sectFlagFrame),
 	UINT_OPTION("MinHighlightLevel",0,KviOption_uintMinHighlightLevel),
 	UINT_OPTION("UserListViewGridType",3,KviOption_sectFlagUserListView | KviOption_resetUpdateGui | KviOption_groupTheme),
-	UINT_OPTION("TaskBarMaximumRows",2,KviOption_sectFlagFrame),
+	UINT_OPTION("WindowListMaximumRows",2,KviOption_sectFlagFrame),
 	UINT_OPTION("MaxAutoReconnectAttempts",15,KviOption_sectFlagFrame),
 	UINT_OPTION("AutoReconnectDelay",10,KviOption_sectFlagFrame),
 	UINT_OPTION("MaxDccSendSpeed",0,KviOption_sectFlagFrame),
@@ -613,12 +613,12 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("TimeStampForeground",KVI_DARKGRAY,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("TimeStampBackground",KVI_TRANSPARENT,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("UserExperienceLevel",1,KviOption_sectFlagUser),
-	UINT_OPTION("ClassicTaskBarMaximumButtonWidth",100,KviOption_sectFlagGeometry | KviOption_resetUpdateGui | KviOption_groupTheme),
+	UINT_OPTION("ClassicWindowListMaximumButtonWidth",100,KviOption_sectFlagGeometry | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("DefaultBanType",7,KviOption_sectFlagIrcSocket),
 	UINT_OPTION("IrcViewPixmapAlign",0,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("UserListPixmapAlign",0,KviOption_sectFlagFrame | KviOption_groupTheme),
 	UINT_OPTION("ToolBarAppletPixmapAlign",0,KviOption_sectFlagFrame | KviOption_groupTheme),
-	UINT_OPTION("TreeTaskBarPixmapAlign",0,KviOption_sectFlagFrame | KviOption_groupTheme),
+	UINT_OPTION("TreeWindowListPixmapAlign",0,KviOption_sectFlagFrame | KviOption_groupTheme),
 	UINT_OPTION("InputPixmapAlign",0,KviOption_sectFlagFrame | KviOption_groupTheme),
 	UINT_OPTION("AutoFlushLogs",30,KviOption_sectFlagFrame),
 	UINT_OPTION("MinTrayLowLevelMessage",1,KviOption_sectFlagFrame),
@@ -650,8 +650,8 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 	FONT_OPTION("Label","Arial",9,KviOption_sectFlagLabel | KviOption_resetUpdateGui),
 	FONT_OPTION("Application","Arial",9,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
 	FONT_OPTION("IrcToolBarApplet","Arial",9,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
-	FONT_OPTION("Taskbar","Arial",9,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar),
-	FONT_OPTION("TreeTaskbar","Arial",9,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
+	FONT_OPTION("WindowList","Arial",9,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
+	FONT_OPTION("TreeWindowList","Arial",9,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList)
 #else
 	FONT_OPTION("IrcView","Monospace",10,KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
 	FONT_OPTION("Input","Sans Serif",12,KviOption_sectFlagInput | KviOption_resetUpdateGui),
@@ -659,8 +659,8 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 	FONT_OPTION("Label","Sans Serif",10,KviOption_sectFlagLabel | KviOption_resetUpdateGui),
 	FONT_OPTION("Application","Sans Serif",10,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
 	FONT_OPTION("IrcToolBarApplet","Sans Serif",10,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
-	FONT_OPTION("Taskbar","Sans Serif",10,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar),
-	FONT_OPTION("TreeTaskbar","Sans Serif",10,KviOption_sectFlagTaskBar | KviOption_resetUpdateTaskBar)
+	FONT_OPTION("WindowList","Sans Serif",10,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
+	FONT_OPTION("TreeWindowList","Sans Serif",10,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList)
 #endif
 };
 
@@ -821,7 +821,7 @@ KviMsgTypeOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	MSGTYPE_OPTION_SPEC("Help",__tr_no_lookup("Help"),KVI_SMALLICON_HELP,KVI_DARKGREEN,KVI_TRANSPARENT,KVI_MSGTYPE_LEVEL_1),
 	MSGTYPE_OPTION("TextEncoding",__tr_no_lookup("Text Encoding Server message"),KVI_SMALLICON_TEXTENCODING,KVI_MSGTYPE_LEVEL_1),
 	// TODO: add icon and check what level means
-	// Pragma: the message level is a warning level that is rendered in the taskbar
+	// Pragma: the message level is a warning level that is rendered in the WindowList
 	//         messages with higher level are rendered with more visible color (i.e. red)
 	//         messages with very high level might flash the tray and end up in the notifier
 	//         level 1 or 2 for standard torrent messages is ok
@@ -831,7 +831,7 @@ KviMsgTypeOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] =
 {
 	"None",          "Frame",       "Mdi",              "Windows",
-	"TaskBar",       "IrcView",     "MsgType",          "MircColor",
+	"WindowList",       "IrcView",     "MsgType",          "MircColor",
 	"Input",         "UserParser",  "Connection",       "IrcSocket",
 	"User",          "UserListView","Label",            "Modules",
 	"Ctcp",          "Dcc",         "Gui",              "IrcToolBar",
@@ -1297,9 +1297,9 @@ void KviApp::optionResetUpdate(int flags)
 		triggerUpdateGui();
 	}
 
-	if(flags & KviOption_resetUpdateTaskBar)
+	if(flags & KviOption_resetUpdateWindowList)
 	{
-		g_pFrame->recreateTaskBar();
+		g_pFrame->recreateWindowList();
 	}
 
 	if(flags & KviOption_resetRestartNotifyList)
