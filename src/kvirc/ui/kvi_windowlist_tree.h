@@ -47,7 +47,7 @@ protected:
 	QTimer* m_pAnimTimer;
 	KviTreeWindowListItemInternal *m_pInternal;
 public:
-	virtual QString key(int column,bool) const;
+	virtual QString key() const;
 	virtual void captionChanged();
 	virtual void highlight(int iLevel = 1);
 	virtual void unhighlight();
@@ -60,6 +60,10 @@ protected:
 	void timerShot();
 	int calculateColor(int col1,int col2);
 	QString currentCaption() const;
+	bool operator<(const QTreeWidgetItem &other)const
+	{
+		return key() < ((KviTreeWindowListItem*)&other)->key();
+	}
 };
 
 class KviTreeWindowListItemInternal : public QObject

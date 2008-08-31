@@ -59,7 +59,6 @@ KviTreeWindowListItem::KviTreeWindowListItem(KviTalTreeWidget * par,KviWindow * 
 	QObject::connect( m_pAnimTimer, SIGNAL(timeout()), m_pInternal, SLOT(timerShot()));
 	applyOptions();
 	//sort the widget
-	//TODO should we implement an operator< to fine tune our sorting?
 	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
@@ -171,10 +170,17 @@ void KviTreeWindowListItem::setActive(bool bActive)
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 }
 
-QString KviTreeWindowListItem::key(int,bool) const
+QString KviTreeWindowListItem::key() const
 {
-	QString ret = m_pWindow->typeString();
-	ret.append(m_pWindow->windowName());
+	// This is the sorting function for KviTreeTaskBarItem
+	// 1) window type (console, other window..) 2) unique id (to avoid bug #9) 3) windowname (for alphabetical sorting of childs) 3)
+	QString ret;
+	if(m_pWindow->type()==KVI_WINDOW_TYPE_CONSOLE)
+	{
+		ret.sprintf("%d%d",m_pWindow->type(),m_pWindow->numericId());
+	} else {
+		ret.sprintf("%d%s",m_pWindow->type(),m_pWindow->windowName().toLower().toUtf8().data());
+	}
 	return ret;
 }
 
