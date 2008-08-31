@@ -54,8 +54,6 @@ SET(Subversion_SVN_FOUND FALSE)
 
 # the subversion commands should be executed with the C locale, otherwise
 # the message (which are parsed) may be translated, Alex
-SET(_Subversion_SAVED_LC_ALL "$ENV{LC_ALL}" )
-SET(ENV{LC_ALL} C)
 
 FIND_PROGRAM(Subversion_SVN_EXECUTABLE svn
   DOC "subversion command line client")
@@ -64,6 +62,7 @@ MARK_AS_ADVANCED(Subversion_SVN_EXECUTABLE)
 IF(Subversion_SVN_EXECUTABLE)
   SET(Subversion_SVN_FOUND TRUE)
   SET(Subversion_FOUND TRUE)
+  SET(Subversion_SVN_EXECUTABLE "LANG=C ${Subversion_SVN_EXECUTABLE}")
 
   MACRO(Subversion_WC_INFO dir prefix)
     EXECUTE_PROCESS(COMMAND ${Subversion_SVN_EXECUTABLE} --version
@@ -98,9 +97,6 @@ IF(Subversion_SVN_EXECUTABLE)
   ENDMACRO(Subversion_WC_INFO)
 
 ENDIF(Subversion_SVN_EXECUTABLE)
-
-# restore the previous LC_ALL
-SET(ENV{LC_ALL} ${_Subversion_SAVED_LC_ALL})
 
 IF(NOT Subversion_FOUND)
   IF(NOT Subversion_FIND_QUIETLY)
