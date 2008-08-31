@@ -690,7 +690,7 @@ end_of_the_param:
 			[cmd]echo[/cmd] %a
 			%a <, but linux is better!
 			[cmd]echo[/cmd] %a
-		[example]
+		[/example]
 	@seealso:
 		[doc:operators]Operators[/doc]
 */
@@ -762,6 +762,7 @@ KviKvsTreeNodeData * KviKvsParser::parseBindingOperationParameter()
 			break;
 			case '$':
 			case '%':
+			case '@':
 			{
 				// this may be a data reference
 				KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
