@@ -65,6 +65,7 @@ protected slots:
 	void renameToolBar();
 	void exportToolBar();
 	void currentToolBarChanged();
+	virtual void reject();
 };
 
 

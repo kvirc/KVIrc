@@ -346,3 +346,8 @@ void KviScriptManagementDialog::closeEvent(QCloseEvent * e)
 	e->ignore();
 	delete this;
 }
+
+void KviScriptManagementDialog::reject()
+{
+	cleanup();
+}

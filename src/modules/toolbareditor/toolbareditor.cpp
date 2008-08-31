@@ -541,3 +541,8 @@ void KviCustomizeToolBarsDialog::closeEvent(QCloseEvent * e)
 	e->ignore();
 	delete this;
 }
+
+void KviCustomizeToolBarsDialog::reject()
+{
+	cleanup();
+}
