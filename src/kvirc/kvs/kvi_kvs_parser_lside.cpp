@@ -755,6 +755,7 @@ KviKvsTreeNodeData * KviKvsParser::parseBindingOperationParameter()
 			break;
 			case '$':
 			case '%':
+			case '@':
 			{
 				// this may be a data reference
 				KviKvsTreeNodeData * p = parseParameterPercentOrDollar();
