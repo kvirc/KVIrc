@@ -108,6 +108,7 @@ protected slots:
 	void uninstallScript();
 	void getMoreScripts();
 	void installScript();
+	virtual void reject();
 };
 
 
