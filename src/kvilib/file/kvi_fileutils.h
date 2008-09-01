@@ -28,6 +28,8 @@
 * \file kvi_fileutils.h
 * \author Szymon Stefanek
 * \brief File utilities functions
+* \def KVI_PATH_SEPARATOR Defines the path separator, UNIX or win32
+* \def KVI_PATH_SEPARATOR_CHAR Defines the path separator char, UNIX or win32
 */
 
 #include "kvi_settings.h"

@@ -85,4 +85,4 @@ void kvi_unsetenv(const char * name)
 #endif
 }
 
-#endif //!COMPILE_ON_WINDOWS
+#endif //COMPILE_ON_WINDOWS

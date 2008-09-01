@@ -24,46 +24,113 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_avatarcache.h
+* \author Szymon Stefanek
+* \brief Avatar cache handling
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_time.h"
 #include "kvi_ircmask.h"
-
 #include "kvi_pointerhashtable.h"
 
-
+/**
+* \typedef KviAvatarCacheEntry
+* \struct _KviAvatarCacheEntry
+* \brief Defines a struct for the avatar entry in the cache
+*/
 typedef struct _KviAvatarCacheEntry
 {
-	QString    szIdString;
-	kvi_time_t tLastAccess;
+	QString    szIdString; /**< The id of the avatar */
+	kvi_time_t tLastAccess; /**< The time the avatar was last accessed */
 } KviAvatarCacheEntry;
 
-
-
+/**
+* \class KviAvatarCache
+* \brief Avatar cache handling class
+*/
 class KVILIB_API KviAvatarCache
 {
 protected:
+	/**
+	* \brief Constructs the avatar cache object
+	* \return KviAvatarCache
+	*/
 	KviAvatarCache();
+
+	/**
+	* \brief Destroys the avatar cache object
+	*/
 	~KviAvatarCache();
 public:
 	KviPointerHashTable<QString,KviAvatarCacheEntry> * m_pAvatarDict;
 protected:
 	static KviAvatarCache * m_pAvatarCacheInstance;
 public:
+	/**
+	* \brief Initializes the avatar cache
+	* \return void
+	*/
 	static void init();
+
+	/**
+	* \brief Destroys the avatar cache
+	* \return void
+	*/
 	static void done();
 	
+	/**
+	* \brief Returns the instance of the avatar cache
+	* \return KviAvatarCache *
+	*/
 	static KviAvatarCache * instance(){ return m_pAvatarCacheInstance; };
 
-	void replace(const QString &szIdString,const KviIrcMask &mask,const QString &szNetwork);
-	void remove(const KviIrcMask &mask,const QString &szNetwork);
-	const QString & lookup(const KviIrcMask &mask,const QString &szNetwork);
+	/**
+	* \brief Replaces a cached avatar
+	* \param szIdString The id of the avatar
+	* \param mask The mask of the user
+	* \param szNetwork The network where the user is on
+	* \return void
+	*/
+	void replace(const QString & szIdString, const KviIrcMask & mask, const QString & szNetwork);
+
+	/**
+	* \brief Remove an avatar from the cache
+	* \param mask The mask of the user
+	* \param szNetwork The network where the user is on
+	* \return void
+	*/
+	void remove(const KviIrcMask & mask, const QString & szNetwork);
+
+	/**
+	* \brief Search an user in the cache and returns the id of the avatar
+	* \param mask The mask of the user
+	* \param szNetwork The network where the user is on
+	* \return const QString &
+	*/
+	const QString & lookup(const KviIrcMask & mask, const QString & szNetwork);
 	
+	/**
+	* \brief Deletes the cache
+	* \return void
+	*/
 	void cleanup();
 	
-	void load(const QString &szFileName);
-	void save(const QString &szFileName);
+	/**
+	* \brief Loads the cache
+	* \param szFileName The cache filename
+	* \return void
+	*/
+	void load(const QString & szFileName);
+
+	/**
+	* \brief Saves the cache
+	* \param szFileName The cache filename
+	* \return void
+	*/
+	void save(const QString & szFileName);
 };
 
-
-#endif //!_KVI_AVATARCACHE_H_
+#endif //_KVI_AVATARCACHE_H_

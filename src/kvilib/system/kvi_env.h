@@ -25,16 +25,23 @@
 //
 //=============================================================================
 
-//=============================================================================
-// Environment function wrappers
-//=============================================================================
+/**
+* \file kvi_env.h
+* \author Szymon Stefanek
+* \brief Environment function wrappers
+* \def kvi_setenv(__name,__value) Defines kvi_setenv(__name,__value) as SetEnvironmentVariable(__name,__value) on win32
+* \def kvi_unsetenv(__name) Defines kvi_unsetenv(__name) as SetEnvironmentVariable(__name,NULL) on win32
+*/
 
 #include "kvi_settings.h"
 
-
-
 #include <stdlib.h>
 
+/**
+* \brief Gets environment variable
+* \param name The name of the variable to get
+* \return char *
+*/
 inline char * kvi_getenv(const char * name)
 {
 	return getenv(name);
@@ -45,12 +52,22 @@ inline char * kvi_getenv(const char * name)
 	#define kvi_unsetenv(__name) SetEnvironmentVariable(__name,NULL)
 #else
 	#ifndef _KVI_ENV_CPP_
-		KVILIB_API extern bool kvi_setenv(const char * name,const char * value);
+		/**
+		* \brief Sets environment variable
+		* \param name The name of the variable to set
+		* \param value The value of the variable
+		* \return bool
+		*/
+		KVILIB_API extern bool kvi_setenv(const char * name, const char * value);
+
+		/**
+		* \brief Unsets environment variable
+		* \param name The name of the variable to set
+		* \return void
+		*/
 		KVILIB_API extern void kvi_unsetenv(const char * name);
 	#endif
 #endif
-
-
 
 
 #endif //_KVI_ENV_H_

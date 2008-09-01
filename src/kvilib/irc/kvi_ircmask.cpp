@@ -657,7 +657,6 @@ QString KviIrcMask::getHostDomainMask() const
 	return ret;
 }
 
-
 QString KviIrcMask::getLargeHostDomainMask() const
 {
 	int len = m_szHost.length();
@@ -683,7 +682,6 @@ QString KviIrcMask::getLargeHostDomainMask() const
 	return ret;
 }
 
-// this is just a GUESS and must be called AFTER making sure that it is NOT a plain numeric IP
 bool KviIrcMask::hasMaskedIp() const
 {
 	int len = m_szHost.length();
@@ -697,7 +695,6 @@ bool KviIrcMask::hasMaskedIp() const
 	while((b < p) && (p->unicode() != '.'))p--;
 	return ((e - p) > 4); // at the moment 4 should be enough : the largest top part is "name"
 }
-
 
 bool KviIrcMask::operator==(const KviIrcMask &user)
 {
@@ -743,7 +740,6 @@ int KviIrcMask::nonWildChars()
 		if((uc != '*') && (uc != '?'))iCnt++;
 		aux++;
 	}
-
 
 	aux = KviQString::nullTerminatedArray(m_szHost);
 	while((uc = aux->unicode()))
