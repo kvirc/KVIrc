@@ -251,9 +251,9 @@ bool KviKvsTreeNodeOperationSelfAnd::execute(KviKvsRunTimeContext * c)
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	kvs_int_t iLVal;
-	
+
 	if(!target->result()->asInteger(iLVal))
 	{
 		c->error(this,__tr2qs("The left side of operator '&=' didn't evaluate to an integer"));
@@ -261,7 +261,7 @@ bool KviKvsTreeNodeOperationSelfAnd::execute(KviKvsRunTimeContext * c)
         target = 0;
 		return false;
 	}
-	
+
 	target->result()->setInteger(iLVal & iRVal);
 	delete target;
 	return true;
@@ -308,12 +308,12 @@ bool KviKvsTreeNodeOperationSelfDivision::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs("The right side of operator '/=' didn't evaluate to a number"));
 		return false;
 	}
-	
+
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	if(!target->result()->asNumber(lnum))
 	{
 		c->error(this,__tr2qs("The left side of operator '/=' didn't evaluate to a number"));
@@ -391,12 +391,12 @@ bool KviKvsTreeNodeOperationSelfModulus::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs("The right side of operator '%=' didn't evaluate to a number"));
 		return false;
 	}
-	
+
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	if(!target->result()->asNumber(lnum))
 	{
 		c->error(this,__tr2qs("The left side of operator '%=' didn't evaluate to a number"));
@@ -473,12 +473,12 @@ bool KviKvsTreeNodeOperationSelfMultiplication::execute(KviKvsRunTimeContext * c
 		c->error(this,__tr2qs("The right side of operator '*=' didn't evaluate to a number"));
 		return false;
 	}
-	
+
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	if(!target->result()->asNumber(lnum))
 	{
 		c->error(this,__tr2qs("The left side of operator '*=' didn't evaluate to a number"));
@@ -540,12 +540,12 @@ bool KviKvsTreeNodeOperationSelfOr::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs("The right side of operator '|=' didn't evaluate to an integer"));
 		return false;
 	}
-	
+
 	kvs_int_t iLVal;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	if(!target->result()->asInteger(iLVal))
 	{
 		c->error(this,__tr2qs("The left side of operator '|=' didn't evaluate to an integer"));
@@ -553,7 +553,7 @@ bool KviKvsTreeNodeOperationSelfOr::execute(KviKvsRunTimeContext * c)
 		target = 0;
 		return false;
 	}
-	
+
 	target->result()->setInteger(iLVal | iRVal);
 	delete target;
 	return true;
@@ -599,12 +599,12 @@ bool KviKvsTreeNodeOperationSelfShl::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs("The right side of operator '<<=' didn't evaluate to an integer"));
 		return false;
 	}
-	
+
 	kvs_int_t iLVal;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	if(!target->result()->asInteger(iLVal))
 	{
 		c->error(this,__tr2qs("The left side of operator '<<=' didn't evaluate to an integer"));
@@ -612,7 +612,7 @@ bool KviKvsTreeNodeOperationSelfShl::execute(KviKvsRunTimeContext * c)
 		target = 0;
 		return false;
 	}
-	
+
 	target->result()->setInteger(iLVal << iRVal);
 	delete target;
 	return true;
@@ -658,12 +658,12 @@ bool KviKvsTreeNodeOperationSelfShr::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs("The right side of operator '>>=' didn't evaluate to an integer"));
 		return false;
 	}
-	
+
 	kvs_int_t iLVal;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	if(!target->result()->asInteger(iLVal))
 	{
 		c->error(this,__tr2qs("The left side of operator '>>=' didn't evaluate to an integer"));
@@ -671,7 +671,7 @@ bool KviKvsTreeNodeOperationSelfShr::execute(KviKvsRunTimeContext * c)
 		target = 0;
 		return false;
 	}
-	
+
 	target->result()->setInteger(iLVal >> iRVal);
 	delete target;
 	return true;
@@ -717,12 +717,12 @@ bool KviKvsTreeNodeOperationSelfSubtraction::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs("The right side of operator '-=' didn't evaluate to a number"));
 		return false;
 	}
-	
+
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	if(!target->result()->asNumber(lnum))
 	{
 		c->error(this,__tr2qs("The left side of operator '-=' didn't evaluate to a number"));
@@ -787,12 +787,12 @@ bool KviKvsTreeNodeOperationSelfSum::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs("The right side of operator '+=' didn't evaluate to a number"));
 		return false;
 	}
-	
+
 	KviKvsNumber lnum;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	if(!target->result()->asNumber(lnum))
 	{
 		c->error(this,__tr2qs("The left side of operator '+=' didn't evaluate to a number"));
@@ -858,12 +858,12 @@ bool KviKvsTreeNodeOperationSelfXor::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs("The right side of operator '^=' didn't evaluate to an integer"));
 		return false;
 	}
-	
+
 	kvs_int_t iLVal;
 
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	if(!target->result()->asInteger(iLVal))
 	{
 		c->error(this,__tr2qs("The left side of operator '^=' didn't evaluate to an integer"));
@@ -871,7 +871,7 @@ bool KviKvsTreeNodeOperationSelfXor::execute(KviKvsRunTimeContext * c)
 		target = 0;
 		return false;
 	}
-	
+
 	target->result()->setInteger(iLVal ^ iRVal);
 	delete target;
 	return true;
@@ -911,7 +911,7 @@ bool KviKvsTreeNodeOperationStringAppend::execute(KviKvsRunTimeContext * c)
 	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	QString sz1;
 	target->result()->asString(sz1);
 	v.appendAsString(sz1);
@@ -1031,7 +1031,7 @@ bool KviKvsTreeNodeOperationStringAppendWithComma::execute(KviKvsRunTimeContext 
 	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	QString sz1;
 	target->result()->asString(sz1);
 	if(sz1.isEmpty())
@@ -1082,7 +1082,7 @@ bool KviKvsTreeNodeOperationStringAppendWithSpace::execute(KviKvsRunTimeContext 
 	if(!m_pRightSide->evaluateReadOnly(c,&v))return false;
 	KviKvsRWEvaluationResult * target = m_pTargetData->evaluateReadWrite(c);
 	if(!target)return false;
-	
+
 	QString sz1;
 	target->result()->asString(sz1);
 	if(sz1.isEmpty())
@@ -1244,24 +1244,26 @@ bool KviKvsTreeNodeOperationStringSubstitution::execute(KviKvsRunTimeContext * c
 			QString szReplaced;
 			const QChar * p2 = KviQString::nullTerminatedArray(szR);
 			const QChar * begin = p2;
-			while(p2->unicode())
+			if(p2)  //see bug #228, second example
 			{
-				if(p2->unicode() == '\\')
+				while(p2->unicode())
 				{
-					p2++;
-					if(p2->unicode() >= '0' && p2->unicode() <= '9')
+					if(p2->unicode() == '\\')
 					{
-						szReplaced.append(QString(begin,(p2 - begin) - 1));
-						szReplaced.append(re.cap(p2->unicode() - '0'));
 						p2++;
-						begin = p2;
-					} else if(p2->unicode())p2++;
-				} else p2++;
+						if(p2->unicode() >= '0' && p2->unicode() <= '9')
+						{
+							szReplaced.append(QString(begin,(p2 - begin) - 1));
+							szReplaced.append(re.cap(p2->unicode() - '0'));
+							p2++;
+							begin = p2;
+						} else if(p2->unicode())p2++;
+					} else p2++;
+				}
+				if(begin != p2)szReplaced.append(QString(begin,p2 - begin));
+				str.insert(idx,szReplaced);
+				idx += szReplaced.length();
 			}
-			if(begin != p2)szReplaced.append(QString(begin,p2 - begin));
-			str.insert(idx,szReplaced);
-			idx += szReplaced.length();
-
 			if(!bGlobal)goto end_of_this_stuff;
 		}
 	}
