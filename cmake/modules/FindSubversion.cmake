@@ -56,57 +56,55 @@ SET(Subversion_SVN_FOUND FALSE)
 # the message (which are parsed) may be translated, Alex
 
 FIND_PROGRAM(Subversion_SVN_EXECUTABLE svn
-  DOC "subversion command line client")
+	DOC "subversion command line client")
 MARK_AS_ADVANCED(Subversion_SVN_EXECUTABLE)
 
 IF(Subversion_SVN_EXECUTABLE)
-  SET(Subversion_SVN_FOUND TRUE)
-  SET(Subversion_FOUND TRUE)
+	SET(Subversion_SVN_FOUND TRUE)
+	SET(Subversion_FOUND TRUE)
 
-  MACRO(Subversion_WC_INFO dir prefix)
-    EXECUTE_PROCESS(COMMAND ${Subversion_SVN_EXECUTABLE}  --version
-      WORKING_DIRECTORY ${dir}
-      OUTPUT_VARIABLE Subversion_VERSION_SVN
-      OUTPUT_STRIP_TRAILING_WHITESPACE)
-
-    EXECUTE_PROCESS(COMMAND ${Subversion_SVN_EXECUTABLE} info --xml ${dir}
-      OUTPUT_VARIABLE ${prefix}_WC_INFO
-      ERROR_VARIABLE Subversion_svn_info_error
-      RESULT_VARIABLE Subversion_svn_info_result
-      OUTPUT_STRIP_TRAILING_WHITESPACE)
-
-    IF(NOT ${Subversion_svn_info_result} EQUAL 0)
-      MESSAGE("Command \"${Subversion_SVN_EXECUTABLE} info ${dir}\" failed with output:\n${Subversion_svn_info_error}")
-    ELSE(NOT ${Subversion_svn_info_result} EQUAL 0)
-
-STRING(REPLACE "\n" "" ${prefix}_WC_INFO "${${prefix}_WC_INFO}")
-
-   STRING(REGEX REPLACE "^(.*\n)?svn, version ([.0-9]+).*" "\\2"
-     Subversion_VERSION_SVN "${Subversion_VERSION_SVN}")
-      STRING(REGEX REPLACE ".*<url>([^<]+)</url>.*" "\\1"
- ${prefix}_WC_URL "${${prefix}_WC_INFO}")
-      STRING(REGEX REPLACE ".*<entry[^>]+revision=\"([0-9]+)\">.*" "\\1"
- ${prefix}_WC_REVISION "${${prefix}_WC_INFO}")
-      STRING(REGEX REPLACE ".*<author>([^<]+)</author>.*" "\\1"
- ${prefix}_WC_LAST_CHANGED_AUTHOR "${${prefix}_WC_INFO}")
-      STRING(REGEX REPLACE ".*<commit +revision=\"([0-9]+)\".*" "\\1"
- ${prefix}_WC_LAST_CHANGED_REV "${${prefix}_WC_INFO}")
-      STRING(REGEX REPLACE ".*<date>([^<]+)</date>.*" "\\1"
- ${prefix}_WC_LAST_CHANGED_DATE "${${prefix}_WC_INFO}")
-
-    ENDIF(NOT ${Subversion_svn_info_result} EQUAL 0)
-  ENDMACRO(Subversion_WC_INFO)
-
+	MACRO(Subversion_WC_INFO dir prefix)
+		EXECUTE_PROCESS(
+			COMMAND ${Subversion_SVN_EXECUTABLE}  --version
+			WORKING_DIRECTORY ${dir}
+			OUTPUT_VARIABLE Subversion_VERSION_SVN
+			OUTPUT_STRIP_TRAILING_WHITESPACE)
+	
+		EXECUTE_PROCESS(
+			COMMAND ${Subversion_SVN_EXECUTABLE} info --xml ${dir}
+			OUTPUT_VARIABLE ${prefix}_WC_INFO
+			ERROR_VARIABLE Subversion_svn_info_error
+			RESULT_VARIABLE Subversion_svn_info_result
+			OUTPUT_STRIP_TRAILING_WHITESPACE)
+	
+		IF(NOT ${Subversion_svn_info_result} EQUAL 0)
+			MESSAGE("Command \"${Subversion_SVN_EXECUTABLE} info ${dir}\" failed with output:\n${Subversion_svn_info_error}")
+		ELSE(NOT ${Subversion_svn_info_result} EQUAL 0)
+			STRING(REPLACE "\n" "" ${prefix}_WC_INFO "${${prefix}_WC_INFO}")
+			STRING(REGEX REPLACE "^(.*\n)?svn, version ([.0-9]+).*" "\\2"
+			Subversion_VERSION_SVN "${Subversion_VERSION_SVN}")
+			STRING(REGEX REPLACE ".*<url>([^<]+)</url>.*" "\\1"
+			${prefix}_WC_URL "${${prefix}_WC_INFO}")
+			STRING(REGEX REPLACE ".*<entry[^>]+revision=\"([0-9]+)\">.*" "\\1"
+			${prefix}_WC_REVISION "${${prefix}_WC_INFO}")
+			STRING(REGEX REPLACE ".*<author>([^<]+)</author>.*" "\\1"
+			${prefix}_WC_LAST_CHANGED_AUTHOR "${${prefix}_WC_INFO}")
+			STRING(REGEX REPLACE ".*<commit +revision=\"([0-9]+)\".*" "\\1"
+			${prefix}_WC_LAST_CHANGED_REV "${${prefix}_WC_INFO}")
+			STRING(REGEX REPLACE ".*<date>([^<]+)</date>.*" "\\1"
+			${prefix}_WC_LAST_CHANGED_DATE "${${prefix}_WC_INFO}")
+		ENDIF(NOT ${Subversion_svn_info_result} EQUAL 0)
+	ENDMACRO(Subversion_WC_INFO)
 ENDIF(Subversion_SVN_EXECUTABLE)
 
 IF(NOT Subversion_FOUND)
-  IF(NOT Subversion_FIND_QUIETLY)
-    MESSAGE(STATUS "Subversion was not found.")
-  ELSE(NOT Subversion_FIND_QUIETLY)
-    IF(Subversion_FIND_REQUIRED)
-      MESSAGE(FATAL_ERROR "Subversion was not found.")
-    ENDIF(Subversion_FIND_REQUIRED)
-  ENDIF(NOT Subversion_FIND_QUIETLY)
+	IF(NOT Subversion_FIND_QUIETLY)
+		MESSAGE(STATUS "Subversion was not found.")
+	ELSE(NOT Subversion_FIND_QUIETLY)
+		IF(Subversion_FIND_REQUIRED)
+			MESSAGE(FATAL_ERROR "Subversion was not found.")
+		ENDIF(Subversion_FIND_REQUIRED)
+	ENDIF(NOT Subversion_FIND_QUIETLY)
 ENDIF(NOT Subversion_FOUND)
 
 # FindSubversion.cmake ends here.
