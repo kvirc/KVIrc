@@ -509,15 +509,15 @@ void KviTopicWidget::updateToolTip()
 		
 		if(!m_szSetBy.isEmpty())
 		{
-			txt +=      "<tr><td bgcolor=\"#D0D0D0\">";
+			txt +=      "<tr><td bgcolor=\"#D0D0D0\"><font color=\"000000\">";
 			txt +=       __tr2qs("Set by") + " <b>" + m_szSetBy + "</b>";
-			txt +=      "</td></tr>";
+			txt +=      "</font></td></tr>";
 
 			if(!m_szSetAt.isEmpty())
 			{
-				txt +=      "<tr><td bgcolor=\"#D0D0D0\">";
+				txt +=      "<tr><td bgcolor=\"#D0D0D0\"><font color=\"000000\">";
 				txt +=       __tr2qs("Set on") + " <b>" + m_szSetAt + "</b>";
-				txt +=      "</td></tr>";
+				txt +=      "</font></td></tr>";
 			}
 		}
 

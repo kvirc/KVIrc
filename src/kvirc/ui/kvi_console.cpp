@@ -1263,7 +1263,11 @@ void KviConsole::getTaskBarTipText(QString &buffer)
 		buffer += html_eofbold;
 		//buffer += html_spaceparclosed;
 
-		buffer += "</td></tr><tr><td bgcolor=\"#F0F0F0\">";
+		// FIXME this tag opens in START_TABLE_NORMAL_ROW / kvi_options.h (hardcoded styles sucks)
+		buffer += "</font>";
+
+		buffer += "</td></tr>";
+		buffer += START_TABLE_NORMAL_ROW;
 
 		tspan = KviTimeUtils::formatTimeInterval((unsigned int)(kvi_secondsSince(connection()->statistics()->lastMessageTime())),
 							KviTimeUtils::NoLeadingEmptyIntervals | KviTimeUtils::NoLeadingZeroes);
@@ -1272,7 +1276,9 @@ void KviConsole::getTaskBarTipText(QString &buffer)
 		buffer += html_space;
 		buffer += html_bold;
 		buffer += tspan;
-		buffer += "</b></td></tr>";
+
+		// FIXME this </font> tag opens in START_TABLE_NORMAL_ROW / kvi_options.h (hardcoded styles sucks)
+		buffer += "</b></font></td></tr>";
 	}
 
 	buffer += "</table>";

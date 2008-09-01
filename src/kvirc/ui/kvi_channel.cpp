@@ -805,11 +805,11 @@ void KviChannel::getTaskBarTipText(QString &buffer)
 	buffer += "</bold>";
 
 	buffer += p9;
+
 */
 	buffer += p10;
+	// FIXME this tag opens in START_TABLE_BOLD_ROW / kvi_options.h (hardcoded styles sucks)
 	buffer += "</font>";
-
-
 
 	//////////////////////
 
@@ -923,23 +923,26 @@ void KviChannel::getTaskBarTipText(QString &buffer)
 	{
 		if((cas.lTalkingUsers.count() < 3) && (cas.lWereTalkingUsers.count() > 0))
 		{
-			buffer += "<tr><td bgcolor=\"#E0E0E0\">";
+			buffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"000000\">";
 			getTalkingUsersStats(buffer,cas.lWereTalkingUsers,true);
+			buffer += "</font>";
 			buffer += end_of_row;
 		}
-		buffer += "<tr><td bgcolor=\"#E0E0E0\">";
+		buffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"000000\">";
 		getTalkingUsersStats(buffer,cas.lTalkingUsers,false);
+		buffer += "</font>";
 		buffer += end_of_row;
 	} else {
 		if(cas.lWereTalkingUsers.count() > 0)
 		{
-			buffer += "<tr><td bgcolor=\"#E0E0E0\">";
+			buffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"000000\">";
 			getTalkingUsersStats(buffer,cas.lWereTalkingUsers,true);
+			buffer += "</font>";
 			buffer += end_of_row;
 		}
 	}
 
-	buffer += "<tr><td bgcolor=\"#A0A0A0\"><b>";
+	buffer += "<tr><td bgcolor=\"#A0A0A0\"><b><font color=\"000000\">";
 
 	if(cas.dActionsPerMinute < 0.1)buffer += __tr2qs("No activity");
 	else if(cas.dActionsPerMinute < 0.3)buffer += __tr2qs("Minimal activity");
@@ -961,7 +964,7 @@ void KviChannel::getTaskBarTipText(QString &buffer)
 	}
 
 
-	buffer += "</b></td></tr>";
+	buffer += "</font></b></td></tr>";
 
 	buffer += end_of_doc;
 }
