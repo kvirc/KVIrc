@@ -62,15 +62,14 @@ MARK_AS_ADVANCED(Subversion_SVN_EXECUTABLE)
 IF(Subversion_SVN_EXECUTABLE)
   SET(Subversion_SVN_FOUND TRUE)
   SET(Subversion_FOUND TRUE)
-  SET(Subversion_SVN_EXECUTABLE "LANG=C ${Subversion_SVN_EXECUTABLE}")
 
   MACRO(Subversion_WC_INFO dir prefix)
-    EXECUTE_PROCESS(COMMAND ${Subversion_SVN_EXECUTABLE} --version
+    EXECUTE_PROCESS(COMMAND ${Subversion_SVN_EXECUTABLE}  --version
       WORKING_DIRECTORY ${dir}
       OUTPUT_VARIABLE Subversion_VERSION_SVN
       OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-    EXECUTE_PROCESS(COMMAND ${Subversion_SVN_EXECUTABLE} info ${dir}
+    EXECUTE_PROCESS(COMMAND ${Subversion_SVN_EXECUTABLE} info --xml ${dir}
       OUTPUT_VARIABLE ${prefix}_WC_INFO
       ERROR_VARIABLE Subversion_svn_info_error
       RESULT_VARIABLE Subversion_svn_info_result
@@ -80,18 +79,20 @@ IF(Subversion_SVN_EXECUTABLE)
       MESSAGE("Command \"${Subversion_SVN_EXECUTABLE} info ${dir}\" failed with output:\n${Subversion_svn_info_error}")
     ELSE(NOT ${Subversion_svn_info_result} EQUAL 0)
 
-      STRING(REGEX REPLACE "^(.*\n)?svn, version ([.0-9]+).*"
-        "\\2" Subversion_VERSION_SVN "${Subversion_VERSION_SVN}")
-      STRING(REGEX REPLACE "^(.*\n)?URL: ([^\n]+).*"
-        "\\2" ${prefix}_WC_URL "${${prefix}_WC_INFO}")
-      STRING(REGEX REPLACE "^(.*\n)?Revision: ([^\n]+).*"
-        "\\2" ${prefix}_WC_REVISION "${${prefix}_WC_INFO}")
-      STRING(REGEX REPLACE "^(.*\n)?Last Changed Author: ([^\n]+).*"
-        "\\2" ${prefix}_WC_LAST_CHANGED_AUTHOR "${${prefix}_WC_INFO}")
-      STRING(REGEX REPLACE "^(.*\n)?Last Changed Rev: ([^\n]+).*"
-        "\\2" ${prefix}_WC_LAST_CHANGED_REV "${${prefix}_WC_INFO}")
-      STRING(REGEX REPLACE "^(.*\n)?Last Changed Date: ([^\n]+).*"
-        "\\2" ${prefix}_WC_LAST_CHANGED_DATE "${${prefix}_WC_INFO}")
+STRING(REPLACE "\n" "" ${prefix}_WC_INFO "${${prefix}_WC_INFO}")
+
+   STRING(REGEX REPLACE "^(.*\n)?svn, version ([.0-9]+).*" "\\2"
+     Subversion_VERSION_SVN "${Subversion_VERSION_SVN}")
+      STRING(REGEX REPLACE ".*<url>([^<]+)</url>.*" "\\1"
+ ${prefix}_WC_URL "${${prefix}_WC_INFO}")
+      STRING(REGEX REPLACE ".*<entry[^>]+revision=\"([0-9]+)\">.*" "\\1"
+ ${prefix}_WC_REVISION "${${prefix}_WC_INFO}")
+      STRING(REGEX REPLACE ".*<author>([^<]+)</author>.*" "\\1"
+ ${prefix}_WC_LAST_CHANGED_AUTHOR "${${prefix}_WC_INFO}")
+      STRING(REGEX REPLACE ".*<commit +revision=\"([0-9]+)\".*" "\\1"
+ ${prefix}_WC_LAST_CHANGED_REV "${${prefix}_WC_INFO}")
+      STRING(REGEX REPLACE ".*<date>([^<]+)</date>.*" "\\1"
+ ${prefix}_WC_LAST_CHANGED_DATE "${${prefix}_WC_INFO}")
 
     ENDIF(NOT ${Subversion_svn_info_result} EQUAL 0)
   ENDMACRO(Subversion_WC_INFO)
