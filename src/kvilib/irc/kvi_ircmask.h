@@ -53,6 +53,37 @@ private:
 	static QString m_szWild;
 public:
 	/**
+	* \brief Constructs an empty mask (*!*@*)
+	* \return KviIrcMask
+	*/
+	KviIrcMask();
+
+	/**
+	* \brief Constructs this KviIrcMask object from a string mask
+	* \param szMask The mask of the user
+	* \return KviIrcMask
+	*/
+	KviIrcMask(const QString & szMask);
+
+	/**
+	* \brief Carbon copy
+	* \param ircUser The mask of the user
+	* \return KviIrcMask
+	*/
+	KviIrcMask(const KviIrcMask & ircUser)
+	: m_szNick(ircUser.m_szNick), m_szUser(ircUser.m_szUser), m_szHost(ircUser.m_szHost) {};
+
+	/**
+	* \brief Carbon copy
+	* \param nick The nickname of the user
+	* \param user The username of the user
+	* \param host The hostname of the user
+	* \return KviIrcMask
+	*/
+	KviIrcMask(const QString & nick, const QString & user, const QString & host)
+	: m_szNick(nick), m_szUser(user), m_szHost(host) {};
+
+	/**
 	* \enum MaskType
 	*/
 	enum MaskType
@@ -85,38 +116,7 @@ public:
 		NickCleanUserSmartNet = 25, /**< 25 : nick!*user@*.host.top */
 		CleanUserSmartNet = 26      /**< 26 : *!*user@*.host.top */
 	};
-
-	/**
-	* \brief Constructs an empty mask (*!*@*)
-	* \return KviIrcMask
-	*/
-	KviIrcMask();
-
-	/**
-	* \brief Constructs this KviIrcMask object from a string mask
-	* \param szMask The mask of the user
-	* \return KviIrcMask
-	*/
-	KviIrcMask(const QString & szMask);
-
-	/**
-	* \brief Carbon copy
-	* \param ircUser The mask of the user
-	* \return KviIrcMask
-	*/
-	KviIrcMask(const KviIrcMask & ircUser)
-	: m_szNick(ircUser.m_szNick), m_szUser(ircUser.m_szUser), m_szHost(ircUser.m_szHost) {};
-
-	/**
-	* \brief Carbon copy
-	* \param nick The nickname of the user
-	* \param user The username of the user
-	* \param host The hostname of the user
-	* \return KviIrcMask
-	*/
-	KviIrcMask(const QString & nick, const QString & user, const QString & host)
-	: m_szNick(nick), m_szUser(user), m_szHost(host) {};
-
+public:
 	/**
 	* \brief Sets the nick for this user.
 	* If szNick is NULL or it points to an empty string the nick is set to "*".
@@ -260,7 +260,7 @@ public:
 	int nonWildChars();
 
 	/**
-	* \brief Carbon copy
+	* \brief Comparison
 	* \param user The username of the user
 	* \return bool
 	*/

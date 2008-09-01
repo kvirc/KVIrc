@@ -234,11 +234,9 @@ void KviIrcUserDataBase::setupConnectionWithReguserDb()
 	connect(g_pRegisteredUserDataBase,SIGNAL(userChanged(const QString&)),this,SLOT(registeredUserChanged(const QString&)));
 	connect(g_pRegisteredUserDataBase,SIGNAL(userAdded(const QString&)),this,SLOT(registeredUserAdded(const QString&)));
 	connect(g_pRegisteredUserDataBase,SIGNAL(databaseCleared()),this,SLOT(registeredDatabaseCleared()));
-
-
 }
 
-void KviIrcUserDataBase::registeredUserRemoved(const QString& user)
+void KviIrcUserDataBase::registeredUserRemoved(const QString & user)
 {
 	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
 	for( ; it.current(); ++it )
@@ -251,7 +249,7 @@ void KviIrcUserDataBase::registeredUserRemoved(const QString& user)
 	}
 }
 
-void KviIrcUserDataBase::registeredUserChanged(const QString& user)
+void KviIrcUserDataBase::registeredUserChanged(const QString & user)
 {
 	//the same as above
 	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
@@ -265,7 +263,7 @@ void KviIrcUserDataBase::registeredUserChanged(const QString& user)
 	}
 }
 
-void KviIrcUserDataBase::registeredUserAdded(const QString& user)
+void KviIrcUserDataBase::registeredUserAdded(const QString & user)
 {
 	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
 	for( ; it.current(); ++it )

@@ -53,7 +53,7 @@ KviServer::KviServer()
 	m_iProxy = -1;
 }
 
-KviProxy* KviServer::proxyServer(KviProxyDataBase * pDb)
+KviProxy * KviServer::proxyServer(KviProxyDataBase * pDb)
 {
 	int i=0;
 	if(proxy()<0) return 0;
