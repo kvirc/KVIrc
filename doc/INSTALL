@@ -319,6 +319,15 @@ General notes for the installation of the 4.0 release of KVIrc
     -DUSE_PCH
         Use pre-compiled headers
 
+    -DWITHOUT_QTDBUS
+        Disable Qt-DBus support.
+
+    -DWITHOUT_QTPHONON
+        Disable Qt-Phonon support.
+
+    -DWITHOUT_QTWEBKIT
+        Disable Qt-WebKit support.
+
     -DWITH_KDE4
         Compile KDE4 support. It will look for the KDE4 headers and libraries
         and if found it will enable the KDE4 support.
