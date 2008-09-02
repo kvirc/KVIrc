@@ -548,7 +548,7 @@ namespace KviKvsCoreSimpleCommands
 		@seealso:
 	*/
 
-	KVSCSC(debug)
+	KVSCSC(debugCKEYWORDWORKAROUND)
 	{
 		QString szAll;
 		KVSCSC_pParams->allAsString(szAll);

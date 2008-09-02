@@ -23,16 +23,13 @@
 //=============================================================================
 
 #include "kvi_kvs_coresimplecommands.h"
-
 #include "kvi_kvs_timermanager.h"
 #include "kvi_kvs_asyncdnsoperation.h"
 #include "kvi_kvs_script.h"
-
 #include "kvi_fileutils.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_locale.h"
-
 #include "kvi_out.h"
 
 namespace KviKvsCoreSimpleCommands
@@ -287,9 +284,9 @@ try_again:
 		if(KVSCSC_pSwitches->find('a',"any"))queryType = KviDns::Any;
 
 		KviKvsAsyncDnsOperation * op = new KviKvsAsyncDnsOperation(
-						KVSCSC_pContext->window(),
-						szQuery,
-						queryType);
+			KVSCSC_pContext->window(),
+			szQuery,
+			queryType);
 
 		return true;
 	}
@@ -329,6 +326,74 @@ try_again:
 			This command is a [doc:rfc2821wrappers]RFC2821 command wrapper[/doc]; see that document for more information.[br]
 	*/
 	// RFC2821 wrapper
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: inject
+		@type:
+			command
+		@title:
+			inject
+		@syntax:
+			inject <text>
+		@short:
+			Injects <text> to the socket
+		@description:
+			Injects <text> to the socket as if come from the server.[br]
+			It's useful to test scripts without spamming or flooding the server.[br]
+		@examples:
+			[example]
+			[comment]Injects the string as we were sending a query message[/comment][br]
+			inject :foo!bar@foobar PRIVMSG HelLViS69 :message
+			[/example]
+	*/
+	KVSCSC(inject)
+	{
+		QString szText;
+		KVSCSC_PARAMETERS_BEGIN
+			KVSCSC_PARAMETER("text",KVS_PT_NONEMPTYSTRING,KVS_PF_APPENDREMAINING,szText)
+		KVSCSC_PARAMETERS_END
+
+		KVSCSC_REQUIRE_CONNECTION
+
+		if(!((KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL) || 
+			(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_QUERY) || 
+			(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CONSOLE)))
+		{
+			KVSCSC_pContext->warning(__tr2qs("The current window is not a channel, a query or a console"));
+			return false;
+		}
+
+		// Get the active window where we ran the command
+		KviWindow * pActive = KVSCSC_pWindow->context()->console()->activeWindow();
+
+		// Get the list of open windows
+		KviPointerList<KviWindow> * pList = KVSCSC_pWindow->frame()->windowList();
+
+		// Scan the windows
+		for(KviWindow * pWnd = pList->first(); pWnd; pWnd = pList->next())
+		{
+			// Search for the right socketspy
+			if((QString(pWnd->typeString()) == "socketspy") &&
+				(pWnd->context()->id() == pActive->context()->id()))
+			{
+				// Ok, found... send the warning
+				pWnd->outputNoFmt(KVI_OUT_SOCKETMESSAGE,__tr2qs("The following string was injected by the user:"));
+			}
+		}
+
+		// Send the warning to the right console
+		pActive->console()->output(KVI_WINDOW_TYPE_SOCKETSPY,__tr2qs("The following string was injected by the user:"));
+
+		// Encode the text for the socket
+		KviQCString szT = KVSCSC_pConnection->encodeText(szText);
+
+		// Send the converted text to the socket
+		KVSCSC_pConnection->incomingMessage(szT.constData());
+
+		return true;
+	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 

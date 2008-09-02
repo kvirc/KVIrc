@@ -24,6 +24,8 @@
 //
 //=============================================================================
 
+#include "kvi_frame.h"
+#include "kvi_console.h"
 #include "kvi_settings.h"
 #include "kvi_kvs_runtimecontext.h"
 #include "kvi_kvs_variantlist.h"
@@ -63,7 +65,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(beep);
 	KVSCSC(buttonctl);
 	KVSCSC(ctcp);
-	KVSCSC(debug);
+	KVSCSC(debugCKEYWORDWORKAROUND);
 	KVSCSC(deleteCKEYWORDWORKAROUND);
 	KVSCSC(delpopupitem);
 	KVSCSC(deop);
@@ -78,6 +80,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(halt);
 	KVSCSC(help);
 	KVSCSC(host);
+	KVSCSC(inject);
 	KVSCSC(join);
 	KVSCSC(kick);
 	KVSCSC(killtimer);
