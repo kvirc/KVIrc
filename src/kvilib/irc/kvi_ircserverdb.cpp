@@ -383,7 +383,7 @@ void KviServerDataBase::importFromMircIni(const QString & filename, const QStrin
 				kvi_u32_t uPort = 0;
 
 				parseMircServerRecord(entry,szNet,
-						   szDescription,szHost,szPort,bSsl,uPort);
+					   szDescription,szHost,szPort,bSsl,uPort);
 
 				recentServers << (bSsl ? "ircs://" : "irc://" ) +szHost+":"+szPort;
 			}
