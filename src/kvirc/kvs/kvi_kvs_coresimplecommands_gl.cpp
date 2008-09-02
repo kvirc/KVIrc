@@ -340,7 +340,7 @@ try_again:
 		@short:
 			Injects <text> to the socket
 		@description:
-			Injects <text> to the socket as if come from the server.[br]
+			Injects <text> to the socket as if it comes from the server.[br]
 			It's useful to test scripts without spamming or flooding the server.[br]
 		@examples:
 			[example]
