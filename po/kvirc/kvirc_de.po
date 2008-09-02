@@ -72,7 +72,7 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat den IRC verlassen: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1556
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] invites you to channel \r!c\r%Q\r (%Q)"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat Sie in den Kanal \r!c\r%Q\r (%Q) eingeladen"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] hat Sie in den Channel \r!c\r%Q\r (%Q) eingeladen"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1439
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1492
@@ -83,7 +83,7 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] heißt nun \r!n\r%Q\r"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1822
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1825
 msgid "\r!n\r%Q\r invited %Q into channel %Q"
-msgstr "\r!n\r%Q\r hat \r!n\r%Q\r in den Kanal %Q eingeladen"
+msgstr "\r!n\r%Q\r hat %Q in den Channel %Q eingeladen"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:425
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
@@ -187,19 +187,19 @@ msgstr "%Q PING-Antwort von \r!n\r%Q\r [%Q@r!h\r%Q\r]: %u Sekunden %u Millisekun
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1787
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1834
 msgid "%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"
-msgstr "%Q [%Q@%Q] hat den Kanal-\r!m%c%c\r-Modus %c%c\r gesetzt"
+msgstr "%Q [%Q@%Q] hat den Channel-\r!m%c%c\r-Modus %c%c\r gesetzt"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1754
 msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
-msgstr "%Q [%Q@%Q] hat die Kanal-\r!m-l\rBegrenzung auf %Q\r gesetzt"
+msgstr "%Q [%Q@%Q] hat die Channel-\r!m-l\rBegrenzung auf %Q\r gesetzt"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1731
 msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""
-msgstr "%Q [%Q@%Q] hat den Kanalschlüssel auf \"\r!m-k\r%Q\r\" gesetzt"
+msgstr "%Q [%Q@%Q] hat den Channel-Schlüssel auf \"\r!m-k\r%Q\r\" gesetzt"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1863
 msgid "%Q [%Q@%Q] has set channel mode %s"
-msgstr "%Q [%Q@%Q] setzt den Kanalmodus %s"
+msgstr "%Q [%Q@%Q] setzt den Channel-Modus %s"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1819
 msgid "%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"
@@ -215,11 +215,11 @@ msgstr "%Q [%Q@%Q] setzt den Modus %s %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1734
 msgid "%Q [%Q@%Q] has unset the channel key"
-msgstr "%Q [%Q@%Q] hat den Kanalschlüssel aufgehoben"
+msgstr "%Q [%Q@%Q] hat den Channel-Schlüssel aufgehoben"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1757
 msgid "%Q [%Q@%Q] has unset the channel limit"
-msgstr "%Q [%Q@%Q] hat die Kanalbegrenzung aufgehoben"
+msgstr "%Q [%Q@%Q] hat die Channel-Begrenzung aufgehoben"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1596
 msgid "%Q changes avatar to %s"
@@ -247,7 +247,7 @@ msgstr "%Q entfernte das Avatar"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1890
 msgid "%Q: no such channel"
-msgstr "%Q: kein solcher Kanal"
+msgstr "%Q: kein solcher Channel"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1879
 msgid "%Q: no such server"
@@ -279,7 +279,7 @@ msgstr "%c\r!n\r%Q\r%c wurde %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1196
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
-msgstr "%c\r!n\r%Q\r%cs Kanäle: %Q"
+msgstr "%c\r!n\r%Q\r%cs Channels: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1979
 msgid "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
@@ -664,13 +664,12 @@ msgstr "-v Modusänderung"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:94
 msgid "/me can be used only in channels, queries and DCC chat windows"
-msgstr "/me can nur in Kanälen, Anfragen und DCC-Chat-Fenstern genutzt werden"
+msgstr "/me can nur in Chanenl, Anfragen und DCC-Chat-Fenstern genutzt werden"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1682
 msgid ": No such nickname in the user database, ignoring the change"
 msgstr ""
-": Es ist kein solcher Spitzname in der Benutzerdatenbank; die Änderung wird "
-"ignoriert"
+": Es ist kein solcher Nick in der Benutzerdatenbank; die Änderung wird ignoriert"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1674
 msgid ": No valid local copy of avatar available, ignoring"
@@ -733,7 +732,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_channel.cpp:1577
 msgid "<b>Channel mode:</b>"
-msgstr "<b>Kanalmodus:</b>"
+msgstr "<b>Channel-Modus:</b>"
 
 #: src/kvirc/ui/kvi_ircview.cpp:5216
 msgid "<b>Double-click:</b><br>%Q"
@@ -935,8 +934,7 @@ msgstr "Erlaubt das Abonieren der KVIrc-Mailinigliste"
 #: src/kvirc/kernel/kvi_coreactions.cpp:149
 msgid "Allows you to configure nickname, username, avatar etc..."
 msgstr ""
-"Erlaubt Ihnen das Konfigurieren des Spitznamens, Benutzernamens, Avatars, "
-"etc..."
+"Erlaubt Ihnen das Konfigurieren des Nicks, Benutzernamens, Avatars, etc..."
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:116
 msgid "Allows you to configure the servers and eventually to connect to them"
@@ -1051,15 +1049,15 @@ msgstr "Es wird versucht \r!c\r%Q\r erneut zu betreten"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1320
 msgid "Auto-joining network specific channels"
-msgstr "Netzwerkspezifische Kanäle werden nun automatisch betreten"
+msgstr "Netzwerkspezifische Channel werden nun automatisch betreten"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1354
 msgid "Auto-joining server specific channels"
-msgstr "Serverspezifische Kanäle werden nun automatisch betreten"
+msgstr "Serverspezifische Channel werden nun automatisch betreten"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:176
 msgid "Available channel modes:"
-msgstr "Verfügbare Kanalmodi:"
+msgstr "Verfügbare Channel-Modi:"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:158
 msgid "Available user modes:"
@@ -1438,19 +1436,19 @@ msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1925
 msgid "Cannot sent text to channel %Q"
-msgstr "Der Text konnte nicht an den Kanal \r!c\r%Q\r gesendet werden"
+msgstr "Konnte den Text nicht zum Channel %Q senden"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1907
 msgid "Cannot sent text to channel %Q: %Q"
-msgstr "Konnte den Text nicht zum Kanal \r!c\r%Q\r senden: %Q"
+msgstr "Konnte den Text nicht zum Channel %Q senden: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1922
 msgid "Cannot sent to channel"
-msgstr "Der Text konnte nicht an den Kanal gesendet werden"
+msgstr "Konnte den Text nicht zum Channel senden"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1904
 msgid "Cannot sent to channel: %Q"
-msgstr "Der Text konnte nicht an den Kanal gesendet werden: %Q"
+msgstr "Konnte den Text nicht zum Channel senden: %Q"
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:647
 msgid "Cascade &Maximized"
@@ -1476,19 +1474,19 @@ msgstr "Zensierte Schimpfwörter"
 
 #: src/kvirc/kernel/kvi_options.cpp:807
 msgid "Chan admin status set"
-msgstr "Kanaladminstatus gesetzt"
+msgstr "Channel-Adminstatus gesetzt"
 
 #: src/kvirc/kernel/kvi_options.cpp:808
 msgid "Chan admin status unset"
-msgstr "Kanaladminstatus entfernt"
+msgstr "Channel-Adminstatus entfernt"
 
 #: src/kvirc/kernel/kvi_options.cpp:816
 msgid "Chan owner status set"
-msgstr "Kanaleigentümerstatus gesetzt"
+msgstr "Channel-Eigentümerstatus gesetzt"
 
 #: src/kvirc/kernel/kvi_options.cpp:817
 msgid "Chan owner status unset"
-msgstr "Kanaleigentümerstatus entfernt"
+msgstr "Channel-Eigentümerstatus entfernt"
 
 #: src/kvirc/kernel/kvi_options.cpp:772
 msgid "ChanServ message"
@@ -1496,7 +1494,7 @@ msgstr "ChanServ-Nachricht"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:806
 msgid "Change Nickname"
-msgstr "Spitznamen ändern"
+msgstr "Nick ändern"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:167
 #: src/kvirc/kernel/kvi_ircconnection.cpp:175
@@ -1505,11 +1503,11 @@ msgstr "Die Textkodierung wurde auf %Q geändert"
 
 #: src/kvirc/kernel/kvi_actionmanager.cpp:68
 msgid "Channel"
-msgstr "Kanal"
+msgstr "Channel"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1483
 msgid "Channel \r!c\r%Q\r was created at %Q"
-msgstr "Der Kanal \r!c\r%Q\r wurde am %Q erstellt"
+msgstr "Der Channel \r!c\r%Q\r wurde am %Q erstellt"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:982
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1023
@@ -1519,76 +1517,76 @@ msgstr "Channel-CTCP"
 
 #: src/kvirc/ui/kvi_modeeditor.cpp:92
 msgid "Channel Modes"
-msgstr "Kanalmodus"
+msgstr "Channel-Modus"
 
 #: src/kvirc/kernel/kvi_options.cpp:749
 msgid "Channel creation time reply"
-msgstr "Kanalerstellungszeit-Antwort"
+msgstr "Channel-Erstellungszeit-Antwort"
 
 #: src/kvirc/kernel/kvi_options.cpp:753
 msgid "Channel encrypted private message"
-msgstr "Verschlüsselte private Kanalnachricht"
+msgstr "Verschlüsselte private Channel-Nachricht"
 
 #: src/kvirc/kernel/kvi_options.cpp:730
 msgid "Channel key change"
-msgstr "Kanalschlüssel-Änderung"
+msgstr "Channel-Schlüssel-Änderung"
 
 #: src/kvirc/kernel/kvi_options.cpp:731
 msgid "Channel limit change"
-msgstr "Kanalbegrenzungs-Änderung"
+msgstr "Channel-Begrenzungs-Änderung"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1545
 msgid "Channel list begin: channel, users, topic"
-msgstr "Kanallistenbeginn: Kanal, Benutzer, Titel"
+msgstr "Channel-Listenbeginn: Channel, Benutzer, Thema"
 
 #: src/kvirc/kernel/kvi_options.cpp:775
 msgid "Channel list message"
-msgstr "Kanallisten-Nachricht"
+msgstr "Channel-Listen-Nachricht"
 
 #: src/kvirc/ui/kvi_channel.cpp:132
 msgid "Channel mode"
-msgstr "Kanalmodus"
+msgstr "Channel-Modus"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:591
 msgid "Channel mode for \r!c\r%Q\r is %s"
-msgstr "Der Kanalmodus für \r!c\r%Q\r ist %s"
+msgstr "Channel-Modus für \r!c\r%Q\r ist %s"
 
 #: src/kvirc/ui/kvi_selectors.cpp:738
 msgid "Channel name"
-msgstr "Kanalname"
+msgstr "Channel-Name"
 
 #: src/kvirc/kernel/kvi_options.cpp:764
 msgid "Channel notice"
-msgstr "Kanalnotiz"
+msgstr "Channel-Notiz"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:230
 msgid "Channel operators"
-msgstr "Kanaloperatoren"
+msgstr "Channel-Operatoren"
 
 #: src/kvirc/ui/kvi_selectors.cpp:739
 msgid "Channel password"
-msgstr "Kanalpasswort"
+msgstr "Channel-Passwort"
 
 #: src/kvirc/kernel/kvi_options.cpp:712
 msgid "Channel private message"
-msgstr "Private Kanalnachricht"
+msgstr "Private Channel-Nachricht"
 
 #: src/kvirc/ui/kvi_channel.cpp:1683
 #, c-format
 msgid "Channel synchronized in %d.%d seconds"
-msgstr "Kanal in %d.%d Sekunden synchronisiert"
+msgstr "Channel in %d.%d Sekunden synchronisiert"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:490
 msgid "Channel topic is: %Q"
-msgstr "Kanalthema ist: %Q"
+msgstr "Channel-Thema ist: %Q"
 
 #: src/kvirc/ui/kvi_topicw.cpp:639
 msgid "Channel topic:"
-msgstr "Kanalthema:"
+msgstr "Channel-Thema:"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1478
 msgid "Channel was created at %Q"
-msgstr "Der Kanal wurde am %Q erstellt"
+msgstr "Der Channel wurde am %Q erstellt"
 
 #: src/kvilib/ext/kvi_mediatype.cpp:361
 msgid "Char device"
@@ -1681,15 +1679,15 @@ msgstr "Änderungen festlegen"
 
 #: src/kvirc/ui/kvi_query.cpp:379
 msgid "Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Gemeinsame Kanäle mit \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Gemeinsame Channels mit \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/ui/kvi_query.cpp:191
 msgid "Common channels with %1: %2"
-msgstr "Gemeinsame Kanäle mit %1: <b>%2</b>"
+msgstr "Gemeinsame Channels mit %1: %2"
 
 #: src/kvirc/ui/kvi_query.cpp:243
 msgid "Common channels: %2"
-msgstr "Gemeinsame Kanäle: %2"
+msgstr "Gemeinsame Channels: %2"
 
 #: src/kvilib/file/kvi_packagefile.cpp:347
 #: src/kvilib/file/kvi_packagefile.cpp:778
@@ -1912,7 +1910,7 @@ msgstr "DNS-Ergebnis für Anfrage \"%Q\""
 
 #: src/kvirc/ui/kvi_channel.cpp:723
 msgid "Dead channel"
-msgstr "Toter Kanal"
+msgstr "Toter Channel"
 
 #: src/kvirc/ui/kvi_debugwindow.cpp:46
 msgid "Debug Messages"
@@ -2121,11 +2119,11 @@ msgstr "Verschlüsselte DCC-CHAT-Nachricht"
 
 #: src/kvirc/kernel/kvi_options.cpp:765
 msgid "Encrypted channel notice"
-msgstr "Verschlüsselte Kanalnotiz"
+msgstr "Verschlüsselte Channel-Notiz"
 
 #: src/kvirc/kernel/kvi_options.cpp:767
 msgid "Encrypted query notice"
-msgstr "Verschlüsselte Kanalnotiz"
+msgstr "Verschlüsselte Channel-Notiz"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1857
 #, c-format
@@ -2150,7 +2148,7 @@ msgstr "Ende der WHO-Liste für %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:630
 msgid "End of channel %Q for \r!c\r%Q\r"
-msgstr "Ende der %Q für Kanal \r!c\r%Q\r"
+msgstr "Ende der %Q für Channel \r!c\r%Q\r"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1006
 msgid "End of help about %Q"
@@ -2441,7 +2439,7 @@ msgstr "/KNOCK verbotenen"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:258
 msgid "Forbid channel CTCPs"
-msgstr "Kanal-CTCPs verbieten"
+msgstr "Channel-CTCPs verbieten"
 
 #: src/kvirc/ui/kvi_selectors.cpp:626
 msgid "Foreground"
@@ -2647,7 +2645,7 @@ msgstr "Generische Warnung"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:181
 msgid "Get Channel List"
-msgstr "Kanalliste holen"
+msgstr "Channel-Liste holen"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:170
 msgid "Get Network Links"
@@ -2775,7 +2773,7 @@ msgstr "IRC"
 
 #: src/kvirc/kernel/kvi_actionmanager.cpp:68
 msgid "IRC Channel related actions"
-msgstr "Aktionen bezüglich des IRC-Kanals"
+msgstr "Aktionen bezüglich des IRC-Channels"
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:299
 msgid "IRC Context"
@@ -2795,7 +2793,7 @@ msgstr "IRC-Server"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:253
 msgid "IRC-Op only channel"
-msgstr "Kanal nur für IRC-OPs"
+msgstr "Channel nur für IRC-OPs"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:92
 msgid "Icon Size"
@@ -2845,7 +2843,7 @@ msgstr "Ignoriere Notiz von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:984
 msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Ignoriere Kanal-PRIVMSG von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Channel-PRIVMSG von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1540
 msgid "Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
@@ -2888,7 +2886,7 @@ msgstr ""
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:261
 msgid "Impossible to use both 7-bit and 8-bit letters in nicknames"
 msgstr ""
-"Es ist unmöglich sowohl 7-Bit-, als auch 8-Bit-Buchstaben in Spitznamen zu "
+"Es ist unmöglich sowohl 7-Bit-, als auch 8-Bit-Buchstaben in Nicks zu "
 "verwenden"
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:392
@@ -3111,31 +3109,31 @@ msgstr "IRC-Kontext-Farboptionen (#RRGGBB)"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:762
 msgid "Join Channel"
-msgstr "Kanal betreten"
+msgstr "Channel betreten"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:237
 msgid "Join Channels..."
-msgstr "Kanäle betreten..."
+msgstr "Channels betreten..."
 
 #: src/kvirc/ui/kvi_menubar.cpp:167
 msgid "Join KVIrc French Channel on EuropNet"
-msgstr "Am französischen KVIrc-Kanal im EuropNet teilnehmen"
+msgstr "Den französischen KVIrc-Channel im EuropNet betreten"
 
 #: src/kvirc/ui/kvi_menubar.cpp:164
 msgid "Join KVIrc French Channel on Freenode"
-msgstr "Am französischen KVIrc-Kanal im Freenode teilnehmen"
+msgstr "Den französischen KVIrc-Channel im Freenode betreten"
 
 #: src/kvirc/ui/kvi_menubar.cpp:151
 msgid "Join KVIrc International Channel on Freenode"
-msgstr "Am internationalen KVIrc-Kanal im Freenode teilnehmen"
+msgstr "Den internationalen KVIrc-Channel im Freenode betreten"
 
 #: src/kvirc/ui/kvi_menubar.cpp:153
 msgid "Join KVIrc International Channel on IRCNet"
-msgstr "Am internationalen KVIrc-Kanal im IRCNet teilnehmen"
+msgstr "Den internationalen KVIrc-Channel im IRCNet betreten"
 
 #: src/kvirc/ui/kvi_menubar.cpp:158
 msgid "Join KVIrc Italian Channel on AzzurraNet"
-msgstr "Am italienischen IRC-Kanal im AzzurraNet teilnehmen"
+msgstr "Den italienischen IRC-Channel im AzzurraNet betreten"
 
 #: src/kvirc/kernel/kvi_options.cpp:781
 msgid "Join error message"
@@ -3465,11 +3463,11 @@ msgstr "Aliasname fehlt"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:713
 msgid "Missing channel list"
-msgstr "Kanalliste fehlt"
+msgstr "Channel-Liste fehlt"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:175
 msgid "Missing channel parameter in join message"
-msgstr "Es fehlt der Kanalparameter in der join-Nachricht"
+msgstr "Es fehlt der Channel-Parameter in der join-Nachricht"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:96
 #: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:109
@@ -3620,7 +3618,7 @@ msgstr "Multimedia-Nachricht"
 
 #: src/kvirc/kernel/kvi_options.cpp:738
 msgid "Multiple channel mode change"
-msgstr "Multiple Kanalmodiänderungen"
+msgstr "Multiple Channel-Modiänderungen"
 
 #: src/kvilib/core/kvi_error.cpp:64
 msgid "Multiple operations not supported for numeric operators"
@@ -3694,7 +3692,7 @@ msgstr "&Nächster"
 
 #: src/kvirc/kernel/kvi_options.cpp:724
 msgid "Nick changes"
-msgstr "Spitznamenänderungen"
+msgstr "Nickänderungen"
 
 #: src/kvirc/kernel/kvi_options.cpp:771
 msgid "NickServ message"
@@ -3707,7 +3705,7 @@ msgstr "NickServ fragt nach Authentifizierung: führe geplanten Befehl aus"
 
 #: src/kvirc/kernel/kvi_options.cpp:743
 msgid "Nickname problem"
-msgstr "Spitznamen-Problem"
+msgstr "Nickname Problem"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:750 src/kvirc/kernel/kvi_app.cpp:821
 #: src/kvirc/ui/kvi_input.cpp:2424
@@ -3744,7 +3742,7 @@ msgstr "Es wurde kein Katalog %Q für die aktuelle Sprache gefunden"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:515
 msgid "No channel topic is set"
-msgstr "Es ist kein Kanalthema gesetzt"
+msgstr "Es ist kein Channel-Thema gesetzt"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:410
 msgid "No commandline specified for this type of url (%Q)"
@@ -3752,7 +3750,7 @@ msgstr "Keine Kommandozeile für diesen URL-Typ (%Q) angegeben"
 
 #: src/kvirc/ui/kvi_query.cpp:382
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr "Sie haben keine gemeinsamen Kanäle mit \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
+msgstr "Sie haben keine gemeinsamen Channels mit \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:281 src/kvirc/ui/kvi_console.cpp:1072
 msgid "No connection"
@@ -3854,13 +3852,13 @@ msgstr "Es gibt keine solche Objektfunktion"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:606
 msgid "No target channel specified and the current window is not a channel"
-msgstr "Es wurde kein Ziel angegeben und das angegebene Fenster ist kein Kanal"
+msgstr "Es wurde kein Ziel-Channel angegeben und das angegebene Fenster ist kein Channel"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:904
 msgid "No target mask/channel specified and the current window is not a channel"
 msgstr ""
-"Es wurde kein Ziel (Maske/Kanal) angegeben und das aktuelle Fenster ist kein "
-"Kanal"
+"Es wurde keine Ziel-Maske/-Channel angegeben und das aktuelle Fenster ist kein "
+"Channel"
 
 #: src/kvirc/ui/kvi_topicw.cpp:674
 msgid "No topic is set"
@@ -3868,7 +3866,7 @@ msgstr "Kein Thema gesetzt"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:520
 msgid "No topic is set for channel \r!c\r%Q\r"
-msgstr "Es ist kein Thema für Kanal \r!c\r%Q\r gesetzt"
+msgstr "Es ist kein Thema für Channel \r!c\r%Q\r gesetzt"
 
 #: src/kvirc/ui/kvi_topicw.cpp:137
 msgid "No topic message has been received from the server yet"
@@ -3928,11 +3926,11 @@ msgstr "Benachrichtigungsliste"
 
 #: src/kvirc/kernel/kvi_options.cpp:750
 msgid "Notify list joins"
-msgstr "Ein Benutzer in der Benachrichtigungsliste hat den Kanal betreten"
+msgstr "Ein Benutzer in der Benachrichtigungsliste hat den Channel betreten"
 
 #: src/kvirc/kernel/kvi_options.cpp:751
 msgid "Notify list leaves"
-msgstr "Ein Benutzer in der Benachrichtigungsliste hat den Kanal verlassen"
+msgstr "Ein Benutzer in der Benachrichtigungsliste hat den Channel verlassen"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:699
 msgid ""
@@ -3940,8 +3938,8 @@ msgid ""
 "does not match (registration mask does not match, or nickname is being used "
 "by someone else)"
 msgstr ""
-"Benachrichtigungsliste: \r!n\r%Q\r scheint online zu sein, aber die Maske (%"
-"Q@\r!h\r%Q\r) stimmt nicht überein (jemand  anderes benutzt den Spitznamen "
+"Benachrichtigungsliste: \r!n\r%Q\r scheint online zu sein, aber die Maske [%"
+"Q@\r!h\r%Q\r] stimmt nicht überein (jemand  anderes benutzt den nick "
 "oder die Registrierungsmaske(n) stimmt nicht überein)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1205
@@ -3950,8 +3948,8 @@ msgid ""
 "does not match (watch: registration mask does not match, or nickname is "
 "being used by someone else)"
 msgstr ""
-"Benachrichtigungsliste: \r!n\r%Q\r scheint online, aber die Maske (%Q@\r!h\r%"
-"Q\r) passt nicht (watch: jemand anderes benutzt seinen Spitznamen oder die "
+"Benachrichtigungsliste: \r!n\r%Q\r scheint online, aber die Maske [%Q@\r!h\r%"
+"Q\r] passt nicht (watch: jemand anderes benutzt den Nick oder die "
 "Registrierungsmaske passt nicht)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:875
@@ -4130,7 +4128,7 @@ msgstr ""
 "Ein oder mehrere Standardmodiflags fehlen in den verfügbaren Servermodi.\n"
 "Dies kann durch einen nicht-RFC1459-konformen IRC-Server oder eine "
 "fehlerhafte Serverantwort verursacht werden.\n"
-"Serverbenutzermodi scheinen '%s' und Kanalmodi '%s' zu sein.\n"
+"Serverbenutzermodi scheinen '%s' und Channel-Modi '%s' zu sein.\n"
 "KVIrc ignoriert nun diese Antwort und nimmt an, dass der Basissatz an Modi "
 "verfügbar ist.\n"
 "Wenn große Probleme auftreten, sollten Sie versuchen den Server zu wechseln."
@@ -4141,11 +4139,11 @@ msgstr "Online seit"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:260
 msgid "Only 7-bit letters in nicknames allowed"
-msgstr "Es sind nur 7-Bit-Buchstaben in Spitznamen erlaubt"
+msgstr "Es sind nur 7-Bit-Buchstaben in Nicks erlaubt"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:251
 msgid "Only registered nicks can join"
-msgstr "Nur registrierte Spitznamen können Kanal betreten"
+msgstr "Nur registrierte Nicks können den Channel betreten"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:484
 msgid ""
@@ -4274,19 +4272,19 @@ msgstr "Abgehende ICQ-Benutzer-Nachricht"
 
 #: src/kvirc/kernel/kvi_options.cpp:809
 msgid "Own chan admin status set"
-msgstr "Eigener Kanaladminstatus gesetzt"
+msgstr "Eigener Channel-Adminstatus gesetzt"
 
 #: src/kvirc/kernel/kvi_options.cpp:810
 msgid "Own chan admin status unset"
-msgstr "Eigener Kanaladminstatus entfernt"
+msgstr "Eigener Channel-Adminstatus entfernt"
 
 #: src/kvirc/kernel/kvi_options.cpp:818
 msgid "Own chan owner status set"
-msgstr "Eigener Kanaleigentümerstatus gesetzt"
+msgstr "Eigener Channel-Eigentümerstatus gesetzt"
 
 #: src/kvirc/kernel/kvi_options.cpp:819
 msgid "Own chan owner status unset"
-msgstr "Eigener Kanaleigentümerstatus entfernt"
+msgstr "Eigener Channel-Eigentümerstatus entfernt"
 
 #: src/kvirc/kernel/kvi_options.cpp:752
 msgid "Own encrypted private message"
@@ -4320,7 +4318,7 @@ msgstr "Parserwarnung"
 
 #: src/kvirc/ui/kvi_console.cpp:238
 msgid "Part All Channels"
-msgstr "Alle Kanäle verlassen"
+msgstr "Alle Channels verlassen"
 
 #: src/kvirc/kernel/kvi_options.cpp:708
 msgid "Part message"
@@ -4437,7 +4435,7 @@ msgstr "Protokoll-Fehler: Die Stückchengröße ist ungültig"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:286
 msgid "Proxy %Q has a nickname: %Q"
-msgstr "Proxy %Q hat einen Spitzname: %Q"
+msgstr "Proxy %Q hat einen Nick: %Q"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:382
 msgid "Proxy connection"
@@ -4572,7 +4570,7 @@ msgstr "Still seit <b>%1 Stunden, %2 Minuten und %3 Sekunden</b>"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:243
 msgid "Quiet or channel owner"
-msgstr "Still oder Kanalbesitzer"
+msgstr "Still oder Channel-Eigentümer"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:431
 msgid "Quit KVIrc"
@@ -4629,38 +4627,38 @@ msgstr ""
 #: src/kvirc/sparser/kvi_sp_literal.cpp:210
 msgid "Received a join message for an unknown channel, possible desync"
 msgstr ""
-"Es wurde eine Join-Nachricht von einem unbekannten Kanal empfangen, "
+"Es wurde eine Join-Nachricht für einem unbekannten Channel empfangen, "
 "möglicherweise liegt Desynchronisation zwischen Server und Client vor"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:596
 msgid "Received a kick message for an unknown channel, possible desync"
 msgstr ""
-"Es wurde eine Kick-Nachricht von einem unbekannten Kanal empfangen, "
+"Es wurde eine Kick-Nachricht für einem unbekannten Channel empfangen, "
 "möglicherweise liegt Desynchronisation zwischen Server und Client vor"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1655
 msgid "Received a mode change for an unknown channel, possible desync"
 msgstr ""
-"Es wurde eine Modusänderung von einem unbekannten Kanal empfangen, "
+"Es wurde eine Modusänderung für einem unbekannten Channel empfangen, "
 "möglicherweise liegt Desynchronisation zwischen Server und Client vor"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:356
 msgid "Received a part message for an unknown channel, possible desync"
 msgstr ""
-"Es wurde eine Part-Nachricht von einem unbekannten Kanal empfangen, "
+"Es wurde eine Part-Nachricht für einem unbekannten Channel empfangen, "
 "möglicherweise liegt Desynchronisation zwischen Server und Client vor"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1387
 msgid "Received a topic message for an unknown channel, possible desync"
 msgstr ""
-"Es wurde eine Themennachricht von einem unbekannten Kanal empfangen, "
+"Es wurde eine Themennachricht für einem unbekannten Channel empfangen, "
 "möglicherweise liegt Desynchronisation zwischen Server und Client vor"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1564
 msgid "Received an invite message directed to another nick, possible desync"
 msgstr ""
 "Es wurde eine Invite-Nachricht empfangen, die jedoch für einen anderen "
-"Spitznamen bestimmt war; möglicherweise liegt Desynchronisation zwischen "
+"Nick bestimmt war; möglicherweise liegt Desynchronisation zwischen "
 "Server und Client vor"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:99
@@ -4686,7 +4684,7 @@ msgstr "Rekursive Definition für das Aufklappmenü '%Q' gefunden: wird ignorier
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:257
 msgid "Redirect on channel full"
-msgstr "Umleiten, wenn Kanal voll"
+msgstr "Umleiten, wenn Channel voll"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:247
 msgid "Registered"
@@ -4738,7 +4736,7 @@ msgstr "Standardskript wiederherstellen - KVIrc"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1665
 msgid "Restoring pre-away nickname (%Q)"
 msgstr ""
-"Der Spitzname, der vor dem Abwesendgehen gesetzt war (%Q), wird wieder "
+"Der Nick, der vor der Abwesendheit gesetzt war (%Q), wird wieder "
 "angenommen"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:241
@@ -4921,8 +4919,7 @@ msgstr "Verbindungsanfrage wurde gesendet, es wird auf Bestätigung gewartet"
 #: src/kvirc/ui/kvi_channel.cpp:1496
 msgid "Sent part request, waiting for reply..."
 msgstr ""
-"Anfrage auf Verlassen des Kanals wurde gesendet, es wird auf eine Antwort "
-"gewartet ..."
+"Anfrage zum Verlassen des Channels wurde gesendet, warte auf Antwort..."
 
 #: src/kvirc/kernel/kvi_irclink.cpp:392
 msgid "Sent target host data, waiting for acknowledgement"
@@ -4943,11 +4940,11 @@ msgstr "Trenner"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:442
 msgid "Server %Q has a nickname: %Q"
-msgstr "Der Server %Q hat einen Spitznamen: %Q"
+msgstr "Der Server %Q hat einen Nickname: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:196
 msgid "Server %Q version %S supporting user modes '%S' and channel modes '%S'"
-msgstr "Server %Q Version %S unterstützt die Benutzermodi '%S' und die Kanalmodi '%S'"
+msgstr "Server %Q Version %S unterstützt die Benutzermodi '%S' und die Channel-Modi '%S'"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:152
 msgid "Server ERROR: %Q"
@@ -5009,7 +5006,7 @@ msgstr "Serverstatistiken"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:254
 msgid "Server/Network/Tech Admin only channel"
-msgstr "Kanal nur für Server-, Netzwerk- oder technischen Adminstrator"
+msgstr "Channel nur für Server-, Netzwerk- oder technische Adminstratoren"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:173
 msgid "Set &All"
@@ -5033,7 +5030,7 @@ msgstr "Gesetzt am"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1703
 msgid "Setting away nickname (%Q)"
-msgstr "Abwesend-Spitzname (%Q) wird gesetzt"
+msgstr "Abwesend-Nick (%Q) wird gesetzt"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1263
 msgid "Setting configured user mode"
@@ -5112,11 +5109,11 @@ msgstr "Zeigt ein Fenster zum Bearbeiten der Einträge registrierter Benutzer an
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:238
 msgid "Shows a dialog that allows you joing channels"
-msgstr "Zeigt ein Dialog, das Ihnen erlaubt Kanäle zu betreten, an"
+msgstr "Zeigt ein Dialog an, der Ihnen erlaubt, Channels zu betreten"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:807
 msgid "Shows a popup menu that allows quickly changing the nickname"
-msgstr "Zeigt ein Aufklappmenü zum schnellen Ändern des Spitznamen an"
+msgstr "Zeigt ein Aufklappmenü zum schnellen Ändern des Nicks an"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:895
 msgid "Shows a popup menu that allows quickly changing user modes"
@@ -5128,7 +5125,7 @@ msgstr "Zeigt ein Aufklappmenü zum schnellen Verbinden zu Servern an"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:763
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
-msgstr "Zeigt ein Aufklappmenü zum schnellen Betreten von Kanälen an"
+msgstr "Zeigt ein Aufklappmenü zum schnellen Channel-Betreten an"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:1125
 msgid "Shows a popup menu with some IRC Actions"
@@ -5261,8 +5258,8 @@ msgid ""
 "Something really weird is happening: the server is refusing all the login "
 "nicknames..."
 msgstr ""
-"Etwas wirklich seltsames ist passiert: der Server lehnte den Login mit allen "
-"Spitznamen ab ..."
+"Etwas wirklich seltsames ist passiert: Der Server lehnte den Login mit allen "
+"Nicks ab ..."
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:252
 msgid "Sorry, no crypt engines available"
@@ -5652,7 +5649,7 @@ msgstr "Das aktuelle Netzwerk ist %Q"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:457
 msgid "The current window is not a channel"
-msgstr "Das aktuelle Fenster ist kein Kanal"
+msgstr "Das aktuelle Fenster ist kein Channel"
 
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:2809
 msgid ""
@@ -5852,8 +5849,8 @@ msgid ""
 "The recent nickname change from \r!n\r%Q\r to \r!n\r%Q\r caused a query "
 "collision: merging output"
 msgstr ""
-"Die letzte Spitznamenänderung von \r!n\r%Q\r nach \r!n\r%Q\r verursachte "
-"eine Anfragenkollision: die Ausgabe wird zusammengeführt"
+"Die letzte Nick-Änderung von \r!n\r%Q\r nach \r!n\r%Q\r verursachte "
+"eine Anfragenkollision: Die Ausgabe wird zusammengeführt"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:1239
 msgid ""
@@ -5947,14 +5944,14 @@ msgid ""
 "The server is refusing all the login nicknames: giving up, you must send the "
 "nickname manually"
 msgstr ""
-"Der Server lehnte den Login mit allen Spitznamen ab: es wird abgebrochen, "
-"bitte geben Sie manuell einen Spitznamen ein"
+"Der Server lehnt den Login mit allen Nicks ab: es wird abgebrochen, "
+"bitte geben Sie manuell einen Nick ein"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1211
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr ""
-"Der Server lehnte den vorschlagenen Spitznamen (%s) ab und gab Ihnen "
+"Der Server lehnte den vorschlagenen Nick (%s) ab und gab Ihnen "
 "stattdessen den Namen %s"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:781
@@ -6034,7 +6031,7 @@ msgstr "Das angegebene Fenster hat keine \"Button\"-kontainer"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:131
 msgid "The specified window is not a channel"
-msgstr "Das angegebene Fenster ist kein Kanal"
+msgstr "Das angegebene Fenster ist kein Channel"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:550
 #, c-format
@@ -6078,7 +6075,7 @@ msgid ""
 "\r%Q\r] changed his nickname to \r!n\r%Q\r"
 msgstr ""
 "Das Ziel dieser Anfrage wurde verloren, aber wiedergefunden, als \r!n\r%Q\r "
-"[%Q@\r!h\r%Q\r] seinen Spitznamen in \r!n\r%Q\r änderte"
+"[%Q@\r!h\r%Q\r] seinen Nick zu \r!n\r%Q\r änderte"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:153
 #: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:204
@@ -6152,7 +6149,7 @@ msgstr "Diese Version von KVIrc wurde ohne SSL-Unterstützung kompiliert"
 
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands.cpp:150
 msgid "This is not a channel"
-msgstr "Dies ist kein Kanal"
+msgstr "Dies ist kein Channel"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:442
 msgid ""
@@ -6681,7 +6678,7 @@ msgstr "Nicht behandelte Serverantwort"
 
 #: src/kvirc/ui/kvi_console.cpp:248
 msgid "Unhighlight All Channels"
-msgstr "Hervorhebung aller Kanäle aufheben"
+msgstr "Hervorhebung aller Channels aufheben"
 
 #: src/kvirc/ui/kvi_console.cpp:250
 msgid "Unhighlight All Queries"
@@ -6833,8 +6830,7 @@ msgstr "Update fehlt"
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1451
 msgid "Updating away state for channel %Q"
 msgstr ""
-"Die Abwesenheitsinformationen für den Kanal \r!c\r%Q\r werden auf den "
-"neuesten Stand gebracht"
+"Die Abwesenheitsinformationen für den Channel %Q werden aktualisiert"
 
 #: src/kvirc/ui/kvi_window.cpp:700
 msgid "Use Default Encoding"
@@ -6908,7 +6904,7 @@ msgstr "Gefiltertes IRC-Protokoll wird verwendet: Verknüpfungsfilter ist \"%Q\"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1008
 msgid "Using network specific nickname (%Q)"
-msgstr "Benutze netzwerkspezifischen Spitznamen (%Q)"
+msgstr "Benutze netzwerkspezifischen Nick (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1032
 msgid "Using network specific real name (%Q)"
@@ -6920,7 +6916,7 @@ msgstr "Benutze netzwerkspezifischen Benutzernamen (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:995
 msgid "Using reconnect specific nickname (%Q)"
-msgstr "Benutze wiederverbindungsspezifischen Spitznamen (%Q)"
+msgstr "Benutze wiederverbindungsspezifischen Nick (%Q)"
 
 #: src/kvirc/ui/kvi_console.cpp:371
 msgid "Using server <b>%1</b>"
@@ -6928,7 +6924,7 @@ msgstr "Benutzt Server <b>%1</b>"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1001
 msgid "Using server specific nickname (%Q)"
-msgstr "Benutze serverspezifischen Spitznamen (%Q)"
+msgstr "Benutze serverspezifischen Nick (%Q)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1025
 msgid "Using server specific real name (%Q)"
@@ -6976,9 +6972,9 @@ msgid ""
 "cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name"
 "%c: %Q"
 msgstr ""
-"WHO-Eintrag für %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cKanal%c: \r!c\r%Q\r, %"
-"cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAbwesend%c: %Q, %"
-"cWirklicher Name%c: %Q"
+"WHO-Eintrag für %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
+"cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAbwesend%c: %Q, %c"
+"Wirklicher Name%c: %Q"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:912
 msgid "Wallops (+w)"
@@ -7006,7 +7002,7 @@ msgstr "Who-Antwort"
 
 #: src/kvirc/kernel/kvi_options.cpp:745
 msgid "Whois channels reply"
-msgstr "Whois Kanäle-Antwort"
+msgstr "Whois Channels-Antwort"
 
 #: src/kvirc/kernel/kvi_options.cpp:746
 msgid "Whois idle reply"
@@ -7101,7 +7097,7 @@ msgstr ""
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:751
 #, c-format
 msgid "You don't appear to be on channel %s"
-msgstr "Sie scheinen nicht in Kanal %s zu sein"
+msgstr "Sie scheinen nicht in Channel %s zu sein"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:623
 #: src/kvirc/sparser/kvi_sp_literal.cpp:633
@@ -7115,7 +7111,7 @@ msgstr "Sie wurden gepaget von"
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1461
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1173
 msgid "You have changed your nickname to %Q"
-msgstr "Sie haben Ihren Spitznamen in %Q geändert"
+msgstr "Sie haben Ihren Nick zu  %Q geändert"
 
 #: src/kvirc/ui/kvi_console.cpp:524
 msgid ""
@@ -7137,11 +7133,11 @@ msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:385
 msgid "You have left channel \r!c\r%Q\r"
-msgstr "Sie haben den Kanal \r!c\r%Q\r verlassen"
+msgstr "Sie haben den Channel \r!c\r%Q\r verlassen"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:387
 msgid "You have left channel \r!c\r%Q\r: %Q"
-msgstr "Sie haben den Kanal \r!c\r%Q\r verlassen: %Q"
+msgstr "Sie haben den Channel \r!c\r%Q\r verlassen: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1648
 #, c-format
@@ -7164,7 +7160,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_ircview.cpp:5147
 msgid "You're not an operator: You may not change channel modes"
-msgstr "Sie sind kein Operator: Sie können die Kanalmodi nicht ändern"
+msgstr "Sie sind kein Operator: Sie können die Channel-Modi nicht ändern"
 
 #: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:191
 msgid "You're not connected to an IRC server"
@@ -7232,7 +7228,7 @@ msgstr "[Tote Anfrage]"
 
 #: src/kvirc/ui/kvi_channel.cpp:951
 msgid "[Dead channel]"
-msgstr "[Toter Kanal]"
+msgstr "[Toter Channel]"
 
 #: src/kvirc/ui/kvi_query.cpp:416
 msgid "[Dead query]"
@@ -7482,31 +7478,31 @@ msgstr "c: Empfänger für cconn-Nachrichten"
 
 #: src/kvirc/ui/kvi_console.cpp:1157
 msgid "channel"
-msgstr "Kanal"
+msgstr "Channel"
 
 #: src/kvirc/ui/kvi_channel.cpp:833
 msgid "channel administrator"
-msgstr "Kanaladministrator"
+msgstr "Channel-Administrator"
 
 #: src/kvirc/ui/kvi_channel.cpp:833
 msgid "channel administrators"
-msgstr "Kanaladministratoren"
+msgstr "Channel-Administratoren"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1583
 msgid "channel notification:"
-msgstr "Kanalbenachrichtigung:"
+msgstr "Channel-Benachrichtigung:"
 
 #: src/kvirc/ui/kvi_channel.cpp:822
 msgid "channel owner"
-msgstr "Kanaleigentümer"
+msgstr "Channel-Eigentümer"
 
 #: src/kvirc/ui/kvi_channel.cpp:822
 msgid "channel owners"
-msgstr "Kanaleigentümer"
+msgstr "Channel-Eigentümer"
 
 #: src/kvirc/ui/kvi_console.cpp:1158
 msgid "channels"
-msgstr "Kanäle"
+msgstr "Channels"
 
 #: src/kvirc/kernel/kvi_userinput.cpp:94
 msgid "commandline::kvs"
@@ -7530,7 +7526,7 @@ msgstr "Verzeichnis"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1555
 msgid "double-click the channel name to join"
-msgstr "Doppelklicken Sie auf den Kanalnamen, um ihn zu betreten"
+msgstr "Zum Betreten, auf den Channel-Namen doppelklicken"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:279
 msgid "f: Recipient for full server notices"
@@ -7627,7 +7623,7 @@ msgstr "Der listen()-Aufruf ist fehlgeschlagen"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:282
 msgid "n: Recipient for nick changes"
-msgstr "n: Empfänger für Spitznamenänderungen"
+msgstr "n: Empfänger für Nickname-Änderungen"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1584
 msgid "notification"
@@ -7690,8 +7686,8 @@ msgstr ""
 #: src/kvirc/kernel/kvi_notifylist.cpp:695
 msgid "registration mask changed, or nickname is being used by someone else"
 msgstr ""
-"Registrierungsmaske geändert oder irgend jemand anderes benutzt den "
-"Spitznamen jetzt"
+"Registrierungsmaske geändert oder irgendjemand anderes benutzt den "
+"Nick jetzt"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1260
 msgid "removed from watch list"
