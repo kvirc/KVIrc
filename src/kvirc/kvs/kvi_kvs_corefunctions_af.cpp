@@ -351,7 +351,9 @@ namespace KviKvsCoreFunctions
 		KviStr tmp1(szBase64);
 		char * buf;
 		int len = tmp1.base64ToBuffer(&buf,true);
-		KVSCF_pRetBuffer->setString(QString(buf));
+		QString szRet(buf);
+		szRet.truncate(len);
+		KVSCF_pRetBuffer->setString(szRet);
 		KviStr::freeBuffer(buf);
 		return true;
 	}
