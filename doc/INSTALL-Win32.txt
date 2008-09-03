@@ -20,20 +20,21 @@ Requisites:
   - CMake from Kitware:
       [Configuration tool; needed to compile KVIrc, mandatory]
       Download it from http://www.cmake.org
-      The package you want is called "Windows (Win32 Installer) cmake-2.6.0-win32-x86.exe" (version number may vary).
+      The package you want is called "Windows (Win32 Installer) cmake-2.6.1-win32-x86.exe" (version number may vary).
       You need at least version 2.4-patch8 to compile KVirc; version 2.6 will work well too. 
 
   - Qt 4 from Trolltech:
       [Graphic library, mandatory]
       Download it from http://trolltech.com/developer/downloads/qt/windows
-      The package you want is called "qt-win-opensource-4.4.0-mingw.exe" (version number may vary).
+      The package you want is called "qt-win-opensource-4.4.1-mingw.exe" (version number may vary).
       KVIrc has been tested with Qt 4.3 upwards; older versions may not work.
-      A good advice is to use at least Qt version 4.4 to get a working Phonon (aka multimedia) support.
+      A good advice is to use at least Qt version 4.4.0 to get a working Phonon (aka multimedia) support.
 
   - MinGW from the MinGW team:
       [Compiler; needed to compile KVIrc, mandatory]
-      You don't need to download it; while installing Qt4 you'll be asked if you want to perform a minimal install of MinGW too: simply answer 'yes'.
-      Anyway if you want to set up mingw by yourself, you can start from their website: http://www.mingw.org .
+      While installing Qt4, you will be asked to perform a minimal install of MinGW; you can simply answer 'yes' to get this installed.
+      Anyway, this installs by default the old gcc3-based mingw, while the new gcc4-based is really preferable. So, you'd better set up mingw by yourself:
+      Point your browset at: http://sourceforge.net/projects/mingw/ , follow the "download" link and get the "Automated MinGW Installer MinGW 5.1.4" (version number may vary) and the "GCC Version 4 Testing: gcc-4.3.0-20080502-mingw32-alpha" packages (version may vary). First execute the automated installer, then uncompress the gcc4 archive and copy it over the installation directory created by the installer (overwriting the old gcc3).
   
   - OpenSSL compiled for Win32 from Shining Light Productions:
       [Enc/Decrypt library; needed to secure your irc sessions, optional]
