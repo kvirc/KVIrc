@@ -361,6 +361,7 @@ KviTreeWindowList::KviTreeWindowList()
 	setMaximumWidth(iMax+4);
 
 	//misc settings
+	m_pTreeWidget->setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));
 	m_pTreeWidget->setFocusPolicy(Qt::NoFocus);
 	m_pTreeWidget->viewport()->setAutoFillBackground(false);
 
@@ -579,8 +580,6 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	KviTreeWindowListItem* item = (KviTreeWindowListItem*) treeWidget->itemFromIndex(index);
 	KviWindow* pWindow = item->kviWindow();
 
-	p->setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));
-
 	//paint cell background
 	if (option.state & QStyle::State_Selected)
 	{
@@ -724,9 +723,9 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 
 QSize KviTreeWindowListItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-	QString text=index.data(Qt::DisplayRole).toString();
-	// FIXME fixed width: 20; compute from font size
-	return QSize(((KviTreeWindowListTreeWidget*)parent())->viewport()->size().width(), 20);
+	KviTreeWindowListTreeWidget* treeWidget = (KviTreeWindowListTreeWidget*)parent();
+
+	return QSize(treeWidget->viewport()->size().width(), qMax(20, treeWidget->fontMetrics().xHeight() * 3));
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

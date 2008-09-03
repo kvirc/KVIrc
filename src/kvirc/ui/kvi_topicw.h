@@ -50,7 +50,7 @@ protected:
 
 };
 
-class KVIRC_API KviTopicWidget : public QFrame 
+class KVIRC_API KviTopicWidget : public QFrame
 {
 	Q_OBJECT
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
@@ -102,9 +102,8 @@ public:
 	const QString & topicSetAt(){ return m_szSetAt; };
 	virtual QSize sizeHint() const;
 	void applyOptions();
-	
-	static void paintColoredText(QPainter *p, QString text,const QPalette& cg, int h=-1, int w=-1);
-	static void paintColoredText(QPainter *p, QString text,const QPalette& cg, const QRect &rect);
+
+	static void paintColoredText(QPainter *p, QString text,const QPalette& cg, const QRect &rectz = QRect());
 protected slots:
 	void acceptClicked();
 	void discardClicked();

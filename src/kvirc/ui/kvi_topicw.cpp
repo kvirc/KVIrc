@@ -68,17 +68,14 @@ extern QStringList  * g_pRecentTopicList;
 
 int KviListBoxTopicItem::width ( const KviTalListWidget * lb ) const
 {
-	QFontMetrics fm(lb->font());
-	return fm.width(KviMircCntrl::stripControlBytes(text()));
+	return lb->fontMetrics().width(KviMircCntrl::stripControlBytes(text()));
 }
 
 QSize KviListBoxTopicItemDelegate::sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const
 {
 	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
-	QFontMetrics fm(listWidget->font());
-	KviListBoxTopicItem* item = (KviListBoxTopicItem*) listWidget->item(index.row());
 
-	return QSize(listWidget->width(), fm.height());
+	return QSize(listWidget->viewport()->size().width(), qMax(20, listWidget->fontMetrics().xHeight() * 3));
 }
 
 void KviListBoxTopicItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
@@ -86,7 +83,7 @@ void KviListBoxTopicItemDelegate::paint(QPainter * p, const QStyleOptionViewItem
 	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
 	KviListBoxTopicItem* item = (KviListBoxTopicItem*) listWidget->item(index.row());
 
-	if(item) KviTopicWidget::paintColoredText(p,item->text(),option.palette,listWidget->visualItemRect(item).top());
+	if(item) KviTopicWidget::paintColoredText(p,item->text(),option.palette,listWidget->visualItemRect(item));
 }
 
 
@@ -179,17 +176,17 @@ QString convertToHtml(const QString &text)
 			if(idx >= text.length())break;
 			else c = text[(int)idx].unicode();
 		}
-		
+
 		int len = idx - start;
 
 		if(len > 0)
 		{
 			bool bOpened = FALSE;
 			QString szText = text.mid(start,len);
-			
+
 			if(curBold) result.append("<b>");
 			if(curUnderline) result.append("<u>");
-			
+
 			if(curFore != KVI_LABEL_DEF_FORE)
 			{
 				result.append("<font color=\"");
@@ -197,10 +194,10 @@ QString convertToHtml(const QString &text)
 				result.append('"');
 				bOpened = TRUE;
 			}
-		
+
 /*			if(curBack != KVI_LABEL_DEF_BACK)
 			{
-				if(!bOpened) 
+				if(!bOpened)
 					result.append("<font bgcolor=");
 				else
 					result.append(" bgcolor=");
@@ -281,162 +278,30 @@ QString convertToHtml(const QString &text)
 	return result;
 }
 
-void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,int height, int width)
+void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rectz)
 {
 	QFontMetrics fm(p->font());
-	
-	if(height<0) height=p->window().height();
-	if(width<0) width=p->window().width();
-	
+	QRect rect;
 	bool curBold      = false;
 	bool curUnderline = false;
 	unsigned char curFore      = KVI_LABEL_DEF_FORE; //default fore
 	unsigned char curBack      = KVI_LABEL_DEF_BACK; //default back
-	int baseline = ((height + fm.ascent() - fm.descent() + 1) >> 1);
+	int baseline;
 
-	int curX = p->window().x() + 2; //2 is the margin
-
-	unsigned int idx = 0;
-
-	while((idx < text.length()) && (curX < width))
+	if(rectz.isNull())
 	{
-		unsigned short c = text[(int)idx].unicode();
-
-		unsigned int start = idx;
-
-		while((idx < text.length()) &&
-				(c != KVI_TEXT_COLOR) &&
-				(c != KVI_TEXT_BOLD) &&
-				(c != KVI_TEXT_UNDERLINE) &&
-				(c != KVI_TEXT_REVERSE) &&
-				(c != KVI_TEXT_RESET) &&
-				(c != KVI_TEXT_ICON)
-			)
-		{
-			idx++;
-			c = text[(int)idx].unicode();
-		}
-
-		int len = idx - start;
-		int wdth;
-
-		if(len > 0)
-		{
-			QString szText = text.mid(start,len);
-
-			wdth = fm.width(szText);
-	
-			if(curFore == KVI_LABEL_DEF_FORE)
-			{
-				p->setPen(cg.text().color());
-			} else {
-				if(curFore > 16)p->setPen(cg.background().color());
-				else p->setPen(KVI_OPTION_MIRCCOLOR(curFore));
-			}
-		
-			if(curBack != KVI_LABEL_DEF_BACK)
-			{
-				if(curBack > 16)
-				{
-					p->fillRect(curX,p->window().y() + 2,wdth,height - 4,
-						cg.text());
-				} else {
-					p->fillRect(curX,p->window().y() + 2,wdth,height - 4,
-						KVI_OPTION_MIRCCOLOR(curBack));
-				}
-			}
-
-			p->drawText(curX,baseline,szText.left(len));
-	
-			if(curBold)p->drawText(curX+1,baseline,szText.left(len));
-			if(curUnderline)
-			{
-				p->drawLine(curX,baseline + 1,curX+wdth,baseline + 1);
-			}
-		} else {
-			wdth = 0;
-		}
-
-
-		curX += wdth;
-
-		switch(c)
-		{
-			case KVI_TEXT_BOLD: curBold = !curBold; ++idx; break;
-			case KVI_TEXT_UNDERLINE: curUnderline = !curUnderline; ++idx; break;
-			case KVI_TEXT_REVERSE:
-				{
-					char auxBack = curBack;
-					curBack = curFore;
-					curFore = auxBack;
-				}
-				++idx;
-			break;
-			case KVI_TEXT_RESET:
-				curFore = KVI_LABEL_DEF_FORE;
-				curBack = KVI_LABEL_DEF_BACK;
-				curBold = false;
-				curUnderline = false;
-				++idx;
-			break;
-			case KVI_TEXT_COLOR:
-			{
-				++idx;
-				unsigned char fore;
-				unsigned char back;
-				idx = getUnicodeColorBytes(text,idx,&fore,&back);
-				if(fore != KVI_NOCHANGE)
-				{
-					curFore = fore;
-					if(back != KVI_NOCHANGE)curBack = back;
-				} else {
-					// only a CTRL+K
-					curBack = KVI_LABEL_DEF_BACK;
-					curFore = KVI_LABEL_DEF_FORE;
-				}
-			}
-			break;
-			case KVI_TEXT_ICON:
-			{
-				++idx;
-
-				unsigned int icoStart = idx;
-				while((idx < text.length()) && (text[(int)idx].unicode() > 32))idx++;
-
-				KviStr lookupString = text.mid(icoStart,idx - icoStart);
-
-				KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(lookupString.ptr());
-				if(icon)
-				{
-					QPixmap * pigzmap = icon->pixmap();
-					p->drawPixmap(curX,(baseline + 2) - pigzmap->height(),*(pigzmap));
-					curX += pigzmap->width();
-				} else {
-					idx = icoStart;
-				}
-			}
-			break;
-		}
+		rect = p->window();
+		baseline = ((rect.height() + fm.ascent() - fm.descent() + 1) >> 1);
+	} else {
+		rect = rectz;
+		baseline = rect.top();
 	}
-}
-void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rect)
-{
-	QFontMetrics fm(p->font());
-	
-	int height=rect.height();
-	int width=rect.width();
-	
-	bool curBold      = false;
-	bool curUnderline = false;
-	unsigned char curFore      = KVI_LABEL_DEF_FORE; //default fore
-	unsigned char curBack      = KVI_LABEL_DEF_BACK; //default back
-	int baseline = ((height + fm.ascent() - fm.descent() + 1) >> 1);
 
 	int curX = rect.x() + 2; //2 is the margin
 
 	unsigned int idx = 0;
 
-	while((idx < text.length()) && (curX < width))
+	while((idx < text.length()) && (curX < rect.width()))
 	{
 		unsigned short c = text[(int)idx].unicode();
 
@@ -463,7 +328,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 			QString szText = text.mid(start,len);
 
 			wdth = fm.width(szText);
-	
+
 			if(curFore == KVI_LABEL_DEF_FORE)
 			{
 				p->setPen(cg.text().color());
@@ -471,21 +336,21 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 				if(curFore > 16)p->setPen(cg.background().color());
 				else p->setPen(KVI_OPTION_MIRCCOLOR(curFore));
 			}
-		
+
 			if(curBack != KVI_LABEL_DEF_BACK)
 			{
 				if(curBack > 16)
 				{
-					p->fillRect(curX,rect.y() + 2,wdth,height - 4,
+					p->fillRect(curX,rect.y() + 2,wdth,rect.height() - 4,
 						cg.text());
 				} else {
-					p->fillRect(curX,rect.y() + 2,wdth,height - 4,
+					p->fillRect(curX,rect.y() + 2,wdth,rect.height() - 4,
 						KVI_OPTION_MIRCCOLOR(curBack));
 				}
 			}
 
 			p->drawText(curX,baseline,szText.left(len));
-	
+
 			if(curBold)p->drawText(curX+1,baseline,szText.left(len));
 			if(curUnderline)
 			{
@@ -557,6 +422,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 		}
 	}
 }
+
 void KviTopicWidget::paintEvent(QPaintEvent * e)
 {
 	QPainter pa(this);
@@ -642,15 +508,15 @@ void KviTopicWidget::updateToolTip()
 		txt +=          "<tr><td><center>";
 
 		QString tmp = m_szTopic;
-		
+
 		tmp.replace('&',"&amp;");
 		tmp.replace('<',"&lt;");
 		tmp.replace('>',"&gt;");
 		tmp = convertToHtml(tmp);
-		
+
 		txt += tmp;
 		txt +=          "</center></td></tr>";
-		
+
 		if(!m_szSetBy.isEmpty())
 		{
 			txt +=      "<tr><td bgcolor=\"#D0D0D0\">";
@@ -731,7 +597,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		KviTalToolTip::add(m_pHistory,__tr2qs("History"));
 		m_pHistory->show();
 		connect(m_pHistory,SIGNAL(clicked()),this,SLOT(historyClicked()));
-		
+
 		m_pAccept = new QPushButton(this);
 		m_pAccept->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT))));
 		m_pAccept->setGeometry(width() - (height() << 1),0,height(),height());
@@ -739,14 +605,14 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		m_pAccept->show();
 		KviTalToolTip::add(m_pAccept,__tr2qs("Commit Changes"));
 		connect(m_pAccept,SIGNAL(clicked()),this,SLOT(acceptClicked()));
-		
+
 		m_pDiscard = new QPushButton(this);
 		m_pDiscard->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD))));
 		m_pDiscard->setGeometry(width() - height(),0,height(),height());
 		KviTalToolTip::add(m_pDiscard,__tr2qs("Discard Changes"));
 		m_pDiscard->show();
 		connect(m_pDiscard,SIGNAL(clicked()),this,SLOT(discardClicked()));
-		
+
 		m_pInput->show();
 		m_pInput->setFocus();
 	}
@@ -832,7 +698,7 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 }
 
 bool KviTopicWidget::handleKeyPressEvent(QKeyEvent * e)
-{	
+{
 	return 1;
 }
 
@@ -871,9 +737,9 @@ void KviTopicWidget::deactivate()
 		delete m_pDiscard;
 		m_pDiscard = 0;
 	}
-	
+
 	// try to find a KviWindow parent and give it the focus
-	
+
 	QObject * w = parent();
 	while(w)
 	{
