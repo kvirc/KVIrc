@@ -140,6 +140,7 @@ void KviFileTransferItemDelegate::paint(QPainter * p, const QStyleOptionViewItem
 	//FIXME not exactly model/view coding style.. but we need to access data on the item by now
 	KviFileTransferWidget* tableWidget = (KviFileTransferWidget*)parent();
 	KviFileTransferItem* item = (KviFileTransferItem*) tableWidget->itemFromIndex(index);
+
 	KviFileTransfer* transfer = ((KviFileTransferItem*)tableWidget->item(item->row(), 0))->transfer();
 
 	p->setFont(option.font);
@@ -684,14 +685,18 @@ void KviFileTransferWindow::heartbeat()
 	KviFileTransferItem* it;
 	int dummy = (int) time(NULL);
 
-	for(i=0;i<m_pTableWidget->rowCount();i++)
+	for(i=0;i<=m_pTableWidget->rowCount();i++)
 	{
 		it = (KviFileTransferItem *)m_pTableWidget->item(i,0);
-		if(it->transfer()->active())
+
+		if(it)
 		{
-			m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,0), dummy, Qt::DisplayRole);
-			m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,1), dummy, Qt::DisplayRole);
-			m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,2), dummy, Qt::DisplayRole);
+			if(it->transfer()->active())
+			{
+				m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,0), dummy, Qt::DisplayRole);
+				m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,1), dummy, Qt::DisplayRole);
+				m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,2), dummy, Qt::DisplayRole);
+			}
 		}
 	}
 }
