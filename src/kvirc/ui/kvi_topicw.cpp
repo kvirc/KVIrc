@@ -83,7 +83,7 @@ void KviListBoxTopicItemDelegate::paint(QPainter * p, const QStyleOptionViewItem
 	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
 	KviListBoxTopicItem* item = (KviListBoxTopicItem*) listWidget->item(index.row());
 
-	if(item) KviTopicWidget::paintColoredText(p,item->text(),option.palette,listWidget->visualItemRect(item));
+	if(item) KviTopicWidget::paintColoredText(p,item->text(),option.palette,option.rect);
 }
 
 
@@ -104,15 +104,14 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 	m_pCompletionBox=new KviTalListWidget(this,"topic_completion_box",Qt::Popup);
 	m_pCompletionBox->setFont( font() );
 	m_pCompletionBox->setPalette( palette() );
-//	m_pCompletionBox->setVScrollBarMode( KviTalListWidget::AlwaysOff );
-//	m_pCompletionBox->setHScrollBarMode( KviTalListWidget::AlwaysOff );
 	m_pCompletionBox->setFrameStyle( QFrame::Box | QFrame::Plain );
-	m_pCompletionBox->setLineWidth( 1 );
+	m_pCompletionBox->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_pCompletionBox->setSelectionMode(QAbstractItemView::SingleSelection);
 
 	m_pItemDelegate = new KviListBoxTopicItemDelegate(m_pCompletionBox);
 	m_pCompletionBox->setItemDelegate(m_pItemDelegate);
 
-	connect(m_pCompletionBox,SIGNAL(itemSelectionChanged(int)),this,SLOT(complete(int)));
+	connect(m_pCompletionBox,SIGNAL(itemSelectionChanged()),this,SLOT(complete()));
 	m_pCompletionBox->hide();
 }
 
@@ -294,7 +293,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 		baseline = ((rect.height() + fm.ascent() - fm.descent() + 1) >> 1);
 	} else {
 		rect = rectz;
-		baseline = rect.top();
+		baseline = rect.top() + rect.height();
 	}
 
 	int curX = rect.x() + 2; //2 is the margin
@@ -654,7 +653,7 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 		switch( e->type() ) {
 		case QEvent::MouseButtonPress:
 			if ( m_pCompletionBox->rect().contains( ((QMouseEvent*)e)->pos() ) ) {
-				complete(m_pCompletionBox->row(m_pCompletionBox->itemAt(((QMouseEvent*)e)->pos())));
+				complete();
 				return TRUE;
 			}
 			break;
@@ -807,10 +806,14 @@ int KviTopicWidget::xCursorPostionCalculation(int xInd)
 {
 	return 0;
 }
-void KviTopicWidget::complete(int pos)
+void KviTopicWidget::complete()
 {
-	m_pInput->setText(m_pCompletionBox->item(pos)->text());
-	popDownListBox();
+	if(m_pCompletionBox->selectedItems().count() >0)
+	{
+		KviListBoxTopicItem* item = (KviListBoxTopicItem*) m_pCompletionBox->selectedItems().first();
+		m_pInput->setText(item->text());
+		popDownListBox();
+	}
 }
 
 QChar KviTopicWidget::getSubstituteChar(unsigned short control_code)

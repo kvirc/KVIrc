@@ -110,7 +110,7 @@ protected slots:
 	void historyClicked();
 	void contextPopupAboutToShow();
 	void copy();
-	void complete(int);
+	void complete();
 	void popDownListBox();
 signals:
 	void topicSelected(const QString &szTopic);
