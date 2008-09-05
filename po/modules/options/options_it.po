@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-08-29 18:14+0200\n"
-"PO-Revision-Date: 2008-08-16 16:21+0200\n"
+"PO-Revision-Date: 2008-09-05 02:01+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -111,8 +111,7 @@ msgstr "Griglia 3D"
 
 #: src/modules/options/optw_textencoding.cpp:81
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+msgstr "<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: src/modules/options/optw_urlhandlers.cpp:74
 msgid "<b>file://</b> handler command:"
@@ -242,10 +241,8 @@ msgstr ""
 "\"<b>Aggiungi</b>\".</center>"
 
 #: src/modules/options/optw_servers.cpp:1174
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: src/modules/options/optw_servers.cpp:530
 msgid ""
@@ -563,7 +560,7 @@ msgid ""
 "<b>Transport Layer Security</b> protocol. If you enable the proper global "
 "option in the Connection/SSL tab, the TLS protocol will be used for this "
 "server.</center>"
-msgstr ""
+msgstr "<center>Questo checkbox marca il server col support dinamico al protocollo <b>Transport Layer Security</b>.Se abiliti la giusta opzione nella scheda Connessione->SSL, il protocollo TLS verrà usato per questo server.</center>"
 
 #: src/modules/options/optw_servers.cpp:626
 msgid ""
@@ -890,8 +887,7 @@ msgstr ""
 "(100 KB)</center>"
 
 #: src/modules/options/optw_servers.cpp:1148
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: src/modules/options/optw_lag.cpp:62
@@ -1096,8 +1092,7 @@ msgstr ""
 "\"Usa il desktop di KDE per la trasparenza\".</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Questa opzione imposta il livello minimo di allerta per la lista dei "
 "canali.</center>"
@@ -1243,13 +1238,10 @@ msgstr ""
 "stessa rete.</center>"
 
 #: src/modules/options/optw_connection.cpp:125
-#, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to try to reconnect to the server using "
 "an encrypted connection</center>"
-msgstr ""
-"<center>Questa opzione fa sì che KVIrc si connetta al server IRC appena "
-"avviato</center>"
+msgstr "<center>Questa opzione fa sì che KVIrc tenterà di riconnettersi al server usando una connessione crittata</center>"
 
 #: src/modules/options/optw_dcc.cpp:190
 msgid ""
@@ -2088,7 +2080,7 @@ msgstr "Messaggi Predefiniti"
 
 #: src/modules/options/optw_notify.cpp:128
 msgid "Default auto hiding time for messages (0 to disable)"
-msgstr ""
+msgstr "Tempo predefinito per il nascondimento automatico dei messaggi (0 per disabilitare)"
 
 #: src/modules/options/optw_away.cpp:38
 msgid "Default away message:"
@@ -2238,9 +2230,8 @@ msgid "Enable animated avatars"
 msgstr "Abilita avatar animati"
 
 #: src/modules/options/optw_ircview.cpp:156
-#, fuzzy
 msgid "Enable animated smiles"
-msgstr "Abilita avatar animati"
+msgstr "Abilita smile animati"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:68
 msgid "Enable fake transparency"
@@ -3252,7 +3243,7 @@ msgstr "Prendi IP Casuale per Server Round Robin"
 msgid ""
 "Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
 "normal nicks"
-msgstr ""
+msgstr "Metti i nick che iniziano con caratteri non alfanumerici (come ad esempio _COOL_BOY_) dopo i nick normali"
 
 #: src/modules/options/optw_userlist.cpp:94
 msgid "Plain Grid"
@@ -3774,9 +3765,8 @@ msgid "Strip colors in logs"
 msgstr "Elimina i colori nei log"
 
 #: src/modules/options/optw_servers.cpp:633
-#, fuzzy
 msgid "Supports STARTTLS protocol"
-msgstr "Usa protocollo SSL"
+msgstr "Supporta il protocollo STARTTLS"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:101
 msgid "TIME"
@@ -3819,13 +3809,11 @@ msgstr "Il comando di identificazione non può essere vuoto!"
 
 #: src/modules/options/optw_nickserv.cpp:180
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3897,8 +3885,7 @@ msgid "This executable has no SSL support."
 msgstr "Questo eseguibile non ha il supporto SSL"
 
 #: src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -4241,9 +4228,8 @@ msgid "Use system URL handlers"
 msgstr "Usa il gestore URL di sistema"
 
 #: src/modules/options/optw_connection.cpp:124
-#, fuzzy
 msgid "Use the STARTTLS security protocol if available"
-msgstr "Usa il metodo WATCH se disponibile"
+msgstr "Usa il protocollo di sicurezza STARTTLS se disponibile"
 
 #: src/modules/options/optw_notify.cpp:73
 msgid "Use the WATCH method if available"
@@ -4586,3 +4572,4 @@ msgstr "lista utenti,canale"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:89
 msgid "within:"
 msgstr "in:"
+
