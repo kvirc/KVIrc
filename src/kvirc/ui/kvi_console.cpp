@@ -637,7 +637,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	{
 		rgxHlite.setPattern(
 			// The second alternative in first parentheses may seem unnecessary, but regexp does not work without it
-			QString("(?:[%1]|\\b|^)%2(?:[%1]|\\b|$)").arg(
+			QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(
 				QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())
 			)
 		);
