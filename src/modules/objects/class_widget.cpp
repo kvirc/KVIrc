@@ -47,6 +47,8 @@
 #include <QMetaObject>
 #include <QIcon>
 #include <QStatusBar>
+#include <QUiLoader>
+#include <QFile>
 
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
@@ -512,6 +514,10 @@ const Qt::WindowType widgettypes_cod[] = {
 		See also [classfnc]$removeFromStatusBar[/classfnc]().
 		!fn: $removeFromStatusBar()
 		Remove the widget from statusbar.
+
+		!fn: $loadInterface(<string:filename>)
+		Loads the interface file "<filename>.ui".
+		The UI file must be created in the proper way using a tool like Qt Designer or KDevelop Designer.
 	@examples:
 		[example]
 			%Widget = $new(widget)
@@ -631,6 +637,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setToolTip",function_setToolTip)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setWFlags",function_setWFlags)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setIcon",function_setWindowIcon)
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"loadInterface",function_loadInterface)
 	// fonts
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontDescent",function_fontDescent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontAscent",function_fontAscent)
@@ -697,10 +704,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"sizeHintRequestEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"maybeTipEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"shortCutEvent")
-
-
 KVSO_END_REGISTERCLASS(KviKvsObject_widget)
-
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_widget,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
@@ -1735,7 +1739,7 @@ bool KviKvsObject_widget::function_addWidgetToWrappedLayout(KviKvsObjectFunction
 	QLayout *lay=widget()->layout();
 	if (!lay)
 	{
-		c->warning(__tr2qs("No Layout associated to the widget "));
+		c->warning(__tr2qs("No Layout associated to the widget"));
 		return true;
 	}
 	if(!ob->object()->isWidgetType())
@@ -1946,6 +1950,31 @@ bool KviKvsObject_widget::function_removeFromStatusBar(KviKvsObjectFunctionCall 
 {
 	
 	if (widget()) g_pFrame->statusBar()->removeWidget(widget());
+	return true;
+}
+
+bool KviKvsObject_widget::function_loadInterface(KviKvsObjectFunctionCall *c)
+{
+	QString szFileName;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("interface_file",KVS_PT_STRING,0,szFileName)
+	KVSO_PARAMETERS_END(c)
+
+	QUiLoader loader;
+	QFile file(szFileName);
+	file.open(QFile::ReadOnly);
+	QWidget * pWidget = loader.load(&file,(QWidget *)this);
+	file.close();
+
+	QLayout * pLayout = widget()->layout();
+	if(!pLayout)
+	{
+		c->warning(__tr2qs("No layout associated to the widget"));
+		return true;
+	}
+
+	pLayout->addWidget(pWidget);
+
 	return true;
 }
 

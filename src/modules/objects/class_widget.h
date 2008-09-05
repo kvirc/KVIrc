@@ -1,6 +1,5 @@
 #ifndef _CLASS_WIDGET_H_
 #define _CLASS_WIDGET_H_
-//vim: ts=8
 //   File : class_widget.h
 //   Creation date : Mon 11 Sep 16:34:36 CET 2000 by Krzysztof Godlewski
 //
@@ -68,6 +67,7 @@ protected:
 	bool function_isEnabled(KviKvsObjectFunctionCall *c);
 	bool function_isTopLevel(KviKvsObjectFunctionCall *c);
 	bool function_isVisible(KviKvsObjectFunctionCall *c);
+	bool function_loadInterface(KviKvsObjectFunctionCall *c);
 	bool function_lower(KviKvsObjectFunctionCall *);
 	bool function_mapFromGlobal(KviKvsObjectFunctionCall *c);
 	bool function_mapToGlobal(KviKvsObjectFunctionCall *c);
@@ -126,4 +126,4 @@ protected:
 public:
 	QSize sizeHint() const;
 };
-#endif	// !_CLASS_WIDGET_H_
+#endif //_CLASS_WIDGET_H_
