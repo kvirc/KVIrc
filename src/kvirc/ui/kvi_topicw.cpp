@@ -74,8 +74,9 @@ int KviListBoxTopicItem::width ( const KviTalListWidget * lb ) const
 QSize KviListBoxTopicItemDelegate::sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const
 {
 	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
+	KviListBoxTopicItem* item = (KviListBoxTopicItem*) listWidget->item(index.row());
 
-	return QSize(listWidget->viewport()->size().width(), qMax(20, listWidget->fontMetrics().xHeight() * 3));
+	return listWidget->fontMetrics().size(Qt::TextSingleLine, KviMircCntrl::stripControlBytes(item->text()));
 }
 
 void KviListBoxTopicItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
