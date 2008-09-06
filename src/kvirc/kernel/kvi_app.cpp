@@ -437,12 +437,6 @@ void KviApp::setup()
 
 	KVI_SPLASH_SET_PROGRESS(88)
 
-	KviInputHistory::init();
-	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_INPUTHISTORY))
-		KviInputHistory::instance()->load(tmp);
-
-	KVI_SPLASH_SET_PROGRESS(89)
-
 	KviAvatarCache::init();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_AVATARCACHE))
 		KviAvatarCache::instance()->load(tmp);
