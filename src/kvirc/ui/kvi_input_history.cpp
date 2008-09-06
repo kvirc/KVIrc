@@ -25,8 +25,6 @@
 #include "kvi_input_history.h"
 #include "kvi_config.h"
 #include "kvi_string.h"
-#include "kvi_app.h"
-#include "kvi_confignames.h"
 
 KviInputHistory * KviInputHistory::m_pSelf = NULL;
 unsigned int KviInputHistory::m_uCount = 0;
@@ -49,18 +47,10 @@ void KviInputHistory::init()
 		m_pSelf = new KviInputHistory();
 		addRef();
 	}
-
-	QString tmp;
-	if(g_pApp->getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_INPUTHISTORY))
-		instance()->load(tmp);
 }
 
 void KviInputHistory::done()
 {
-	QString tmp;
-	if(g_pApp->getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_INPUTHISTORY))
-		instance()->save(tmp);
-
 	delRef();
 	if(m_pSelf->count() == 0)
 		delete m_pSelf;
