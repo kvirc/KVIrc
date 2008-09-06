@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-08-29 18:14+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.2-beta2\n"
+
+#: src/modules/torrent/libkvitorrent.cpp:61
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr ""
+
+#: src/modules/torrent/libkvitorrent.cpp:101
+msgid "Choosing torrent client interface \"%Q\""
+msgstr ""
+
+#: src/modules/torrent/libkvitorrent.cpp:108
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr ""
+
+#: src/modules/torrent/libkvitorrent.cpp:117
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr ""
+
+#: src/modules/torrent/libkvitorrent.cpp:127
+msgid ""
+"The selected torrent client interface failed to execute the requested "
+"function"
+msgstr ""
+
+#: src/modules/torrent/libkvitorrent.cpp:128
+msgid "Last interface error: "
+msgstr ""
+
+#: src/modules/torrent/libkvitorrent.cpp:710
+msgid "Using client interface \"%Q\"."
+msgstr ""
+
+#: src/modules/torrent/libkvitorrent.cpp:718
+msgid "Invalid client interface \"%Q\"!"
+msgstr ""
+
+#: src/modules/torrent/tc_statusbarapplet.cpp:60
+msgid "Torrent Client"
+msgstr ""
+
+#: src/modules/torrent/tc_statusbarapplet.cpp:91
+msgid "No client selected!"
+msgstr ""
+
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+msgid ""
+"An interface to KDE's excellent KTorrent client.\n"
+"Download it from http://www.ktorrent.org\n"
+msgstr ""
+
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
+#, c-format
+msgid "Index out of range: %d [0-%d]!"
+msgstr ""
