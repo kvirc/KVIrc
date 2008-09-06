@@ -8,17 +8,13 @@ PLEASE KEEP THIS FILE UPDATED!
 
 src/kvilib
 src/kvilib/tal
-	kvi_tal_listbox.cpp
-	kvi_tal_listbox.h
-	kvi_tal_popupmenu.cpp
-	kvi_tal_popupmenu.h
-	kvi_tal_listview.cpp
-	kvi_tal_listview.h
+	kvi_tal_listbox.cpp	| replaced by kvi_tal_listwidget.cpp, remove when porting has finished
+	kvi_tal_listbox.h	| replaced by kvi_tal_listwidget.h, remove when porting has finished
+	kvi_tal_listview.cpp	| replaced by kvi_tal_treewidget.cpp, remove when porting has finished
+	kvi_tal_listview.h	| replaced by kvi_tal_treewidget.cpp, remove when porting has finished
 
 src/kvirc/kernel
 	kvi_iconmanager.cpp
-	kvi_ircconnectiontargetresolver (QString related stuff)
-	kvi_ircsocket.cpp (QString related stuff)
 	
 src/kvirc/ui:
 	kvi_ircviewtools.cpp (graphic bug in panel view)
@@ -26,7 +22,6 @@ src/kvirc/ui:
 	kvi_mdichild.cpp (bug in resize)
 	kvi_menubar.cpp
 	kvi_query.cpp (QString related stuff)
-	kvi_topicw.cpp
 
 src/modules
 	iograph - all excluded by #if
