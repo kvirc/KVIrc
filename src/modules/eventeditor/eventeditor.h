@@ -40,12 +40,11 @@ public:
 	QString m_szName;
 	QString m_szParams;
 public:
-	KviEventListViewItem(QTreeWidget * par,unsigned int uEvIdx,const QString &name,const QString &params)
-	: QTreeWidgetItem(par), m_uEventIdx(uEvIdx), m_szName(name), m_szParams(params) {};
+	KviEventListViewItem(QTreeWidget * par,unsigned int uEvIdx,const QString &name,const QString &params);
 	~KviEventListViewItem() {};
 public:
-	virtual QString text(int col) const { return m_szName; };
-	virtual const QPixmap * pixmap(int col) const;
+	void setName(const QString &szName);
+	QString name() const { return m_szName; };
 };
 
 class KviEventHandlerListViewItem : public QTreeWidgetItem
@@ -55,12 +54,24 @@ public:
 	QString m_szBuffer;
 	bool   m_bEnabled;
 public:
-	KviEventHandlerListViewItem(QTreeWidgetItem * par,const QString &name,const QString &buffer,bool bEnabled)
-	: QTreeWidgetItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled) {};
+	KviEventHandlerListViewItem(QTreeWidgetItem * par,const QString &name,const QString &buffer,bool bEnabled);
 	~KviEventHandlerListViewItem() {};
 public:
-	virtual QString text(int col) const { return m_szName; };
-	virtual const QPixmap * pixmap(int col) const;
+	void setName(const QString &szName);
+	QString name() const { return m_szName; };
+	void setEnabled(const bool bEnabled);
+};
+
+class KviEventEditorListView : public QTreeWidget
+{
+	Q_OBJECT
+public:
+	KviEventEditorListView(QWidget*);
+	~KviEventEditorListView(){};
+protected:
+	void mousePressEvent (QMouseEvent *e);
+signals:
+	void rightButtonPressed(QTreeWidgetItem *,QPoint);
 };
 
 class KviEventEditor : public QWidget
@@ -71,7 +82,7 @@ public:
 	~KviEventEditor();
 public:
 	KviScriptEditor * m_pEditor;
-	QTreeWidget       * m_pListView;
+	KviEventEditorListView       * m_pListView;
 	QLineEdit       * m_pNameEditor;
 	KviTalPopupMenu      * m_pContextPopup;
 	KviEventHandlerListViewItem * m_pLastEditedItem;
@@ -82,8 +93,8 @@ public:
 	void getUniqueHandlerName(KviEventListViewItem *it,QString &buffer);
 	void getExportEventBuffer(QString &szBuffer,KviEventHandlerListViewItem * it);
 protected slots:
-	void selectionChanged(QTreeWidgetItem *it);
-	void itemPressed(QTreeWidgetItem *it,const QPoint &pnt,int col);
+	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
+	void itemPressed(QTreeWidgetItem *it,const QPoint &pnt);
 	void toggleCurrentHandlerEnabled();
 	void removeCurrentHandler();
 	void addHandlerForCurrentEvent();
