@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-29 18:14+0200\n"
-"PO-Revision-Date: 2008-08-29 19:03+0200\n"
+"POT-Creation-Date: 2008-09-06 16:18+0200\n"
+"PO-Revision-Date: 2008-09-06 16:44+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -211,8 +211,8 @@ msgid ""
 "someone else on a particular IRC network.</center>"
 msgstr ""
 "<center>Hier können bis zu 3 Nick-Alternativen zum primären ausgewählt "
-"werden. KVIrc wird die Alternativen benutzen, wenn der primäre Nick "
-"bereits von jemand anderem im speziellen IRC-Netzwerk benutzt wird.</center>"
+"werden. KVIrc wird die Alternativen benutzen, wenn der primäre Nick bereits "
+"von jemand anderem im speziellen IRC-Netzwerk benutzt wird.</center>"
 
 #: src/modules/options/optw_servers.cpp:227
 msgid ""
@@ -221,10 +221,10 @@ msgid ""
 "channel, type its name in the text input below and click \"<b>Add</b>\".</"
 "center>"
 msgstr ""
-"<center>Hier kann eine Liste der Channels, die automatisch nach dem Herstellen "
-"der Verbindung zu einem Server dieses Netzwerkes betreten werden, gesetzt "
-"werden. Zum Hinzufügen eines Channels, den Namen des Channels unten im "
-"Texteingabefeld eingeben und auf \"<b>Hinzufügen</b>\" klicken</center>"
+"<center>Hier kann eine Liste der Channels, die automatisch nach dem "
+"Herstellen der Verbindung zu einem Server dieses Netzwerkes betreten werden, "
+"gesetzt werden. Zum Hinzufügen eines Channels, den Namen des Channels unten "
+"im Texteingabefeld eingeben und auf \"<b>Hinzufügen</b>\" klicken</center>"
 
 #: src/modules/options/optw_servers.cpp:780
 msgid ""
@@ -232,10 +232,10 @@ msgid ""
 "a connection to this server has been established. To add a channel, type its "
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
-"<center>Hier kann eine Liste der Channels, die automatisch nach dem Herstellen "
-"der Verbindung betreten werden, gesetzt werden. Zum Hinzufügen eines Channels, "
-"den Namen des Chanenls unten im Texteingabefeld eingeben und auf "
-"\"<b>Hinzufügen</b>\" klicken</center>"
+"<center>Hier kann eine Liste der Channels, die automatisch nach dem "
+"Herstellen der Verbindung betreten werden, gesetzt werden. Zum Hinzufügen "
+"eines Channels, den Namen des Channels unten im Texteingabefeld eingeben und "
+"auf \"<b>Hinzufügen</b>\" klicken</center>"
 
 #: src/modules/options/optw_servers.cpp:1174
 msgid "<center>Hit this button to connect to the currently selected server.</center>"
@@ -266,26 +266,22 @@ msgstr ""
 
 #: src/modules/options/optw_highlighting.cpp:83
 msgid ""
-"<center>If this option is enabled, KVIrc will alert in the taskbar only if a "
-"normal message is received in a channel.<br>Actions like joins, parts and "
-"mode changes will be ignored.<br> This is useful if you are in channels with "
-"a high rate of traffic and only want to be alerted for messages that are "
-"interesting to you.</center>"
+"<center>If this option is enabled, KVIrc will alert in the window list only "
+"if a normal message is received in a channel.<br>Actions like joins, parts "
+"and mode changes will be ignored.<br> This is useful if you are in channels "
+"with a high rate of traffic and only want to be alerted for messages that "
+"are interesting to you.</center>"
 msgstr ""
 "<center>Wenn diese Option aktiviert ist, wird KVIrc den "
-"Fensterleisteneintrag nur bei Nachrichten, die in einem Channel-Fenster "
-"angezeigt werden, hervorheben. Aktionen, wie z.B. betreten, verlassen oder "
-"Modusänderungen werden ignoriert.<br>Dies ist sinnvoll, wenn man in Channel "
-"mit hoher betreten-, verlassen-Rate und/ oder Modusänderungen ist, und nur "
-"nur bei Nachrichten alarmiert werden möchte.</center>"
+"Fensterleisteneintrag nur bei normalen Nachrichten, die in einem Channel empfangen wurden, hervorheben.<br>Aktionen, wie z.B. betreten, verlassen oder Modusänderungen werden ignoriert.<br>Dies ist sinnvoll, wenn man in Channels mit hohem Datenaufkommen ist und nur bei interessanten Nachrichten benachrichtigt werden will.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:94
 msgid ""
-"<center>If this option is enabled, KVIrc will alert in the taskbar only if "
-"the specified alert level is reached.</center>"
+"<center>If this option is enabled, KVIrc will alert in the window list only "
+"if the specified alert level is reached.</center>"
 msgstr ""
-"<center>Wenn Sie diese Option aktiviert ist, wird KVIrc nur in der "
-"Fensterleiste alarmieren, wenn die benutzerdefinierte Alarmstufe erreicht "
+"<center>Wenn Sie diese Option aktiviert ist, wird KVIrc in der "
+"Fensterleiste nur alarmieren, wenn die benutzerdefinierte Alarmstufe erreicht "
 "ist.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:60
@@ -294,8 +290,8 @@ msgid ""
 "containing your current nickname</center>"
 msgstr ""
 "<center>Wenn Sie diese Option aktiviert ist, wird KVIrc in der Fensterleiste "
-"alarmieren, wenn irgendeine Benutzernachricht den aktuellen Nick "
-"enthält.</center>"
+"alarmieren, wenn irgendeine Benutzernachricht den aktuellen Nick enthält.</"
+"center>"
 
 #: src/modules/options/optw_highlighting.cpp:64
 msgid ""
@@ -318,20 +314,19 @@ msgstr ""
 
 #: src/modules/options/optw_highlighting.cpp:89
 msgid ""
-"<center>If this option is enabled, the taskbar will also alert for messages "
-"which are shown in queries.</center>"
+"<center>If this option is enabled, the window list will also alert for "
+"messages which are shown in queries.</center>"
 msgstr ""
 "<center>Wenn diese Option aktiviert ist, wird die Fensterleiste auch bei "
-"Nachrichten, die in Anfragen angezeigt werden, alarmieren.</center>"
+"Nachrichten, die in Queries angezeigt werden, alarmieren.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:86
 msgid ""
-"<center>If this option is enabled, the taskbar will also alert for messages "
-"which contain a word from the highlighted words list above.</center>"
+"<center>If this option is enabled, the window list will also alert for "
+"messages which contain a word from the highlighted words list above.</center>"
 msgstr ""
 "<center>Wenn diese Option aktiviert ist, wird die Fensterleiste auch bei "
-"Nachrichten, die in ein Word von der obigen <b>Wörter hervorheben</b>-Option "
-"enthalten, alarmieren.</center>"
+"Nachrichten, die ein Word der obigen Wörter-hervorheben-Liste enthalten, alarmieren.</center>"
 
 #: src/modules/options/optw_servers.cpp:509
 msgid ""
@@ -566,7 +561,11 @@ msgid ""
 "<b>Transport Layer Security</b> protocol. If you enable the proper global "
 "option in the Connection/SSL tab, the TLS protocol will be used for this "
 "server.</center>"
-msgstr "<center>Diese Option kennzeichnet den Server, dass dieser das <b>Transport Layer Security</b>-Protokoll (TLS) dynamisch unterstützt. Wenn die entsprechende  globale Option im Verbindung/SSL-Tab gesetzt ist, wird für diesen Server das TLS-Protokoll verwendet.</center>"
+msgstr ""
+"<center>Diese Option kennzeichnet den Server, dass dieser das <b>Transport "
+"Layer Security</b>-Protokoll (TLS) dynamisch unterstützt. Wenn die "
+"entsprechende  globale Option im Verbindung/SSL-Tab gesetzt ist, wird für "
+"diesen Server das TLS-Protokoll verwendet.</center>"
 
 #: src/modules/options/optw_servers.cpp:626
 msgid ""
@@ -991,8 +990,8 @@ msgid ""
 "typing something in a channel. :D</center>"
 msgstr ""
 "<center>Diese Option sorgt für das sofortige Minimieren neu erzeugter "
-"Channel-Fenster.<br> Aktivieren Sie dies, wenn Sie keine aufgehenden "
-"Channel-Fenster mögen, wenn Sie gerade im Channel schreiben :D</center>"
+"Channel-Fenster.<br> Aktivieren Sie dies, wenn Sie keine aufgehenden Channel-"
+"Fenster mögen, wenn Sie gerade im Channel schreiben :D</center>"
 
 #: src/modules/options/optw_query.cpp:59
 msgid ""
@@ -1057,11 +1056,11 @@ msgstr ""
 "Gegenseite der Anfrage oben im Fenster anzeigen.<br>Wähle es ab, wenn Du "
 "denkst, es verschwendet nur Platz</center>"
 
-#: src/modules/options/optw_taskbar.cpp:41
+#: src/modules/options/optw_windowlist.cpp:41
 msgid ""
-"<center>This option enables the usage of the taskbar activity meter. Each "
-"window entry will have a small indicator of the activity that is going on in "
-"that window. The indicator is a small square that changes colors, dark "
+"<center>This option enables the usage of the window list activity meter. "
+"Each window entry will have a small indicator of the activity that is going "
+"on in that window. The indicator is a small square that changes colors, dark "
 "colors mean low activity, while bright colors signal high activity. KVIrc "
 "also uses some heuristics to determine whether the activity is somewhat "
 "\"human\" or it is generated by automated entities (such as bots or IRC "
@@ -1070,10 +1069,10 @@ msgid ""
 msgstr ""
 "<center>Diese Option aktiviert die Benutzung des "
 "Fensterleistenaktivitätsmeters. Jeder Fenstereintrag wird einen schmalen "
-"Indikator für die Aktivität, die in diesem Fenster ist, haben. Der Indikator "
-"ist ein kleines Quadrat, dass Farben ändert. Dunkle Farben stehen für "
+"Indikator für die Aktivität des Fensters haben. Der Indikator "
+"ist ein kleines Quadrat, dass Farben ändert: Dunkle Farben stehen für "
 "niedrige Aktivität, helle Farben signalisieren hohe Aktivität. KVIrc benutzt "
-"auch einige Heurististiken, um festzustellen, welche Aktivität \"menschlich"
+"auch einige Heuristiken, um festzustellen, welche Aktivität \"menschlich"
 "\" ist und welche automatisch erzeugt wurde (z.B durch Bots oder IRC-"
 "Server). \"Menschliche\" Aktivität verursacht schattiertes Rot, während "
 "automatische Aktivität den Indikator blau schattiert.</center>"
@@ -1107,7 +1106,9 @@ msgstr ""
 "Transparenz benutzen\" aktiviert sein.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:98
-msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid ""
+"<center>This option sets the minimum alert level for the window list.</"
+"center>"
 msgstr ""
 "<center>Diese Option setzt die minimale Alarmstufe für die Fensterleiste.</"
 "center>"
@@ -1245,12 +1246,12 @@ msgstr ""
 #: src/modules/options/optw_irc.cpp:55
 msgid ""
 "<center>This option will cause KVIrc to show the network name as the console "
-"taskbar entry instead of the server name. This is nice to keep on unless "
+"window list entry instead of the server name. This is nice to keep on unless "
 "your servers are not organized in networks or you often connect to two "
 "servers of the same network.</center>"
 msgstr ""
 "<center>Diese Option veranlasst KVIrc dazu, den Netzwerknamen anstatt des "
-"Servernamens als Konsolen-Taskbar-Eintrag anzuzeigen. Es empfiehlt sich, "
+"Servernamens als Fensterlisteneintrag anzuzeigen. Es empfiehlt sich, "
 "dieses aktiviert zu lassen, so lange Du nicht zu Servern verbunden bist, die "
 "nicht in Netzwerken organisiert sind, oder Du Dich öfters zu zwei Servern "
 "des gleichen Netzwerkes verbindest.</center>"
@@ -1259,7 +1260,9 @@ msgstr ""
 msgid ""
 "<center>This option will cause KVIrc to try to reconnect to the server using "
 "an encrypted connection</center>"
-msgstr "<center>Durch diese Option versucht KVIrc sich erneut zu diesem Server verschlüsselt zu verbinden</center>"
+msgstr ""
+"<center>Durch diese Option versucht KVIrc sich erneut zu diesem Server "
+"verschlüsselt zu verbinden</center>"
 
 #: src/modules/options/optw_dcc.cpp:190
 msgid ""
@@ -1433,8 +1436,8 @@ msgid ""
 "common case), the default nickname (specified in the \"Identity\" settings) "
 "will be used.</center>"
 msgstr ""
-"<center>Hier kann ein \"spezieller\" <b>Nick</b> angegeben werden, der "
-"beim Einloggen in Server dieses Netzwerkes benutzt wird.<br>Wenn dieses Feld "
+"<center>Hier kann ein \"spezieller\" <b>Nick</b> angegeben werden, der beim "
+"Einloggen in Server dieses Netzwerkes benutzt wird.<br>Wenn dieses Feld "
 "leergelassen wird (in den meisten Fällen), wird KVIrc den Standard-Nick "
 "(angegeben im \"Identität\"-Einstellungen) benutzen.</center>"
 
@@ -1446,12 +1449,12 @@ msgid ""
 "server belongs to, and if that is empty then the default nickname (specified "
 "in the \"Identity\" settings) will be used.</center>"
 msgstr ""
-"<center>Hier kann ein \"spezieller\" <b>Nick</b> angegeben werden, der "
-"beim Einloggen in diesen Server benutzt wird.<br>Wenn dieses Feld "
-"leergelassen wird (in den meisten Fällen), wird KVIrc zuerst nachsehen, ob "
-"ein Nick für das Netzwerk, zu dem der Server gehört, vorhanden ist. Ist "
-"dieser leer, wird der Standardspitzname, der in dem \"Identität\"-"
-"Optionentab angegeben ist, benutzt werden.</center>"
+"<center>Hier kann ein \"spezieller\" <b>Nick</b> angegeben werden, der beim "
+"Einloggen in diesen Server benutzt wird.<br>Wenn dieses Feld leergelassen "
+"wird (in den meisten Fällen), wird KVIrc zuerst nachsehen, ob ein Nick für "
+"das Netzwerk, zu dem der Server gehört, vorhanden ist. Ist dieser leer, wird "
+"der Standardspitzname, der in dem \"Identität\"-Optionentab angegeben ist, "
+"benutzt werden.</center>"
 
 #: src/modules/options/optw_servers.cpp:152
 msgid ""
@@ -1488,11 +1491,10 @@ msgid ""
 "(case insensitive), you can provide alternative nicknames to be used in "
 "casethe server refuses to accept the default one.</center>"
 msgstr ""
-"<center>Der <b>Nick</b> ist die Hauptform der Identifikation im IRC."
-"<br>Da die Server nicht mehrere Benutzer mit dem gleichen Nick "
-"akzeptieren können (Gross-/Kleinschreibung egal), können alternative "
-"Nicks angegeben werden. Diese können benutzt werden, wenn der Server "
-"den Haupt-Nick ablehnt.</center>"
+"<center>Der <b>Nick</b> ist die Hauptform der Identifikation im IRC.<br>Da "
+"die Server nicht mehrere Benutzer mit dem gleichen Nick akzeptieren können "
+"(Gross-/Kleinschreibung egal), können alternative Nicks angegeben werden. "
+"Diese können benutzt werden, wenn der Server den Haupt-Nick ablehnt.</center>"
 
 #: src/modules/options/optw_notify.cpp:95
 msgid ""
@@ -1612,28 +1614,28 @@ msgstr "Erweitert..."
 msgid "Age:"
 msgstr "Alter:"
 
-#: src/modules/options/optw_taskbar.cpp:88
-#: src/modules/options/optw_taskbar.cpp:247
+#: src/modules/options/optw_windowlist.cpp:88
+#: src/modules/options/optw_windowlist.cpp:247
 msgid "Alert Level 1:"
 msgstr "Alarmstufe 1:"
 
-#: src/modules/options/optw_taskbar.cpp:89
-#: src/modules/options/optw_taskbar.cpp:248
+#: src/modules/options/optw_windowlist.cpp:89
+#: src/modules/options/optw_windowlist.cpp:248
 msgid "Alert Level 2:"
 msgstr "Alarmstufe 2:"
 
-#: src/modules/options/optw_taskbar.cpp:90
-#: src/modules/options/optw_taskbar.cpp:249
+#: src/modules/options/optw_windowlist.cpp:90
+#: src/modules/options/optw_windowlist.cpp:249
 msgid "Alert Level 3:"
 msgstr "Alarmstufe 3:"
 
-#: src/modules/options/optw_taskbar.cpp:91
-#: src/modules/options/optw_taskbar.cpp:250
+#: src/modules/options/optw_windowlist.cpp:91
+#: src/modules/options/optw_windowlist.cpp:250
 msgid "Alert Level 4:"
 msgstr "Alarmstufe 4:"
 
-#: src/modules/options/optw_taskbar.cpp:92
-#: src/modules/options/optw_taskbar.cpp:251
+#: src/modules/options/optw_windowlist.cpp:92
+#: src/modules/options/optw_windowlist.cpp:251
 msgid "Alert Level 5:"
 msgstr "Alarmstufe 5:"
 
@@ -1789,12 +1791,12 @@ msgstr "Abwesend:"
 #: src/modules/options/optw_interfacelookglobal.cpp:176
 #: src/modules/options/optw_interfacelookglobal.cpp:196
 #: src/modules/options/optw_userlist.h:45
-#: src/modules/options/optw_taskbar.h:79
+#: src/modules/options/optw_windowlist.h:79
 msgid "Background"
 msgstr "Hintergrund"
 
-#: src/modules/options/optw_taskbar.cpp:116
 #: src/modules/options/optw_userlist.cpp:122
+#: src/modules/options/optw_windowlist.cpp:116
 msgid "Background Colors"
 msgstr "Hintergrundfarben"
 
@@ -1817,9 +1819,9 @@ msgstr "Hintergrundfarbe:"
 msgid "Background image"
 msgstr "Hintergrundbild"
 
-#: src/modules/options/optw_taskbar.cpp:120
 #: src/modules/options/optw_userlist.cpp:127
 #: src/modules/options/optw_ircview.cpp:50
+#: src/modules/options/optw_windowlist.cpp:120
 msgid "Background image:"
 msgstr "Hintergrundbild:"
 
@@ -1843,10 +1845,10 @@ msgstr "IPv6-Verbindungen binden an:"
 msgid "Blend color:"
 msgstr "Mischfarbe:"
 
-#: src/modules/options/optw_taskbar.cpp:137
 #: src/modules/options/optw_input.cpp:60
 #: src/modules/options/optw_userlist.cpp:144
 #: src/modules/options/optw_ircview.cpp:67
+#: src/modules/options/optw_windowlist.cpp:137
 msgid "Bottom"
 msgstr "Unten"
 
@@ -1883,13 +1885,13 @@ msgstr "IP-Adresse zwischenspeichern"
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: src/modules/options/optw_taskbar.cpp:133
-#: src/modules/options/optw_taskbar.cpp:138
 #: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_userlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:145
 #: src/modules/options/optw_ircview.cpp:63
 #: src/modules/options/optw_ircview.cpp:68
+#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_windowlist.cpp:138
 msgid "Center"
 msgstr "Mitte"
 
@@ -1970,9 +1972,9 @@ msgstr "Bilddatei auswählen - KVIrc"
 msgid "Choose..."
 msgstr "Auswählen..."
 
-#: src/modules/options/optw_taskbar.h:112
-msgid "Classic Taskbar"
-msgstr "Klassische Fensterleiste"
+#: src/modules/options/optw_windowlist.h:112
+msgid "Classic Window List"
+msgstr "klassische Fensterliste"
 
 #: src/modules/options/optw_servers.cpp:1467
 msgid "Clear List"
@@ -2104,7 +2106,9 @@ msgstr "Standardnachrichten:"
 
 #: src/modules/options/optw_notify.cpp:128
 msgid "Default auto hiding time for messages (0 to disable)"
-msgstr "Standardzeit zum automatischen Ausblenden der Nachrichten (0 zum deaktivieren)"
+msgstr ""
+"Standardzeit zum automatischen Ausblenden der Nachrichten (0 zum "
+"deaktivieren)"
 
 #: src/modules/options/optw_away.cpp:38
 msgid "Default away message:"
@@ -2317,7 +2321,7 @@ msgstr "Fensterkurzinfos aktivieren"
 msgid "Enable visual effects"
 msgstr "Visuelle Effekte einschalten"
 
-#: src/modules/options/optw_taskbar.cpp:49
+#: src/modules/options/optw_windowlist.cpp:49
 msgid "Enable window tooltips"
 msgstr "Fensterkurzinfos aktivieren"
 
@@ -2360,7 +2364,8 @@ msgid "Failed to start the download"
 msgstr "Start des Herunterladens fehlgeschlagen"
 
 #: src/modules/options/optw_userlist.h:102
-#: src/modules/options/optw_taskbar.h:98 src/modules/options/optw_ircview.h:69
+#: src/modules/options/optw_ircview.h:69
+#: src/modules/options/optw_windowlist.h:98
 msgid "Features"
 msgstr "Funktionen"
 
@@ -2398,10 +2403,10 @@ msgstr "Überflutungsbegrenzung"
 msgid "Font"
 msgstr "Schriftart"
 
-#: src/modules/options/optw_taskbar.cpp:82
-#: src/modules/options/optw_taskbar.cpp:243
 #: src/modules/options/optw_userlist.cpp:49
 #: src/modules/options/optw_ircview.cpp:47
+#: src/modules/options/optw_windowlist.cpp:82
+#: src/modules/options/optw_windowlist.cpp:243
 msgid "Font:"
 msgstr "Schriftart:"
 
@@ -2422,7 +2427,7 @@ msgid "Force language:"
 msgstr "Erzwinge Sprache:"
 
 #: src/modules/options/optw_userlist.h:66
-#: src/modules/options/optw_taskbar.h:64
+#: src/modules/options/optw_windowlist.h:64
 msgid "Foreground"
 msgstr "Vordergrund"
 
@@ -2541,9 +2546,9 @@ msgstr "Tipp: Den Mauscursor über die Einträge führen, um Hilfe zu erhalten"
 msgid "Horizontal Alignment:"
 msgstr "Horizontale Ausrichtung:"
 
-#: src/modules/options/optw_taskbar.cpp:122
 #: src/modules/options/optw_input.cpp:45
 #: src/modules/options/optw_ircview.cpp:52
+#: src/modules/options/optw_windowlist.cpp:122
 msgid "Horizontal align:"
 msgstr "Horizontale Ausrichtung:"
 
@@ -2732,10 +2737,10 @@ msgstr "Sprache"
 msgid "Languages:"
 msgstr "Sprachen:"
 
-#: src/modules/options/optw_taskbar.cpp:131
 #: src/modules/options/optw_input.cpp:54
 #: src/modules/options/optw_userlist.cpp:138
 #: src/modules/options/optw_ircview.cpp:61
+#: src/modules/options/optw_windowlist.cpp:131
 msgid "Left"
 msgstr "Links"
 
@@ -2871,11 +2876,11 @@ msgstr "Maximale Anzahl der DCC-Übertragungen"
 msgid "Maximum requested file size:"
 msgstr "Maximale angeforderte Dateigrösse:"
 
-#: src/modules/options/optw_taskbar.cpp:256
+#: src/modules/options/optw_windowlist.cpp:256
 msgid "Maximum width of buttons:"
 msgstr "Maximale Breite der Knöpfe:"
 
-#: src/modules/options/optw_taskbar.cpp:223
+#: src/modules/options/optw_windowlist.cpp:223
 msgid "Maximum width:"
 msgstr "Maximale Breite:"
 
@@ -2923,7 +2928,7 @@ msgstr "In Tray minimieren"
 msgid "Minimize on startup"
 msgstr "Minimieren beim Start"
 
-#: src/modules/options/optw_taskbar.cpp:246
+#: src/modules/options/optw_windowlist.cpp:246
 msgid "Minimized:"
 msgstr "Minimiert:"
 
@@ -2939,11 +2944,11 @@ msgstr "Minimaler Level für Meldungen hoher Priorität"
 msgid "Minimum level for low-priority messages"
 msgstr "Minimaler Level für Meldungen niedriger Priorität"
 
-#: src/modules/options/optw_taskbar.cpp:253
+#: src/modules/options/optw_windowlist.cpp:253
 msgid "Minimum width of buttons:"
 msgstr "Minimale Breite der Knöpfe:"
 
-#: src/modules/options/optw_taskbar.cpp:222
+#: src/modules/options/optw_windowlist.cpp:222
 msgid "Minimum width:"
 msgstr "Minimale Breite:"
 
@@ -3068,11 +3073,11 @@ msgstr "Keine Optionsseiten-Klassenname %Q"
 msgid "Normal"
 msgstr "Normal"
 
-#: src/modules/options/optw_taskbar.cpp:86
-#: src/modules/options/optw_taskbar.cpp:117
-#: src/modules/options/optw_taskbar.cpp:245
 #: src/modules/options/optw_userlist.cpp:52
 #: src/modules/options/optw_userlist.cpp:123
+#: src/modules/options/optw_windowlist.cpp:86
+#: src/modules/options/optw_windowlist.cpp:117
+#: src/modules/options/optw_windowlist.cpp:245
 msgid "Normal:"
 msgstr "Normal:"
 
@@ -3103,8 +3108,7 @@ msgstr "OK"
 msgid "Ok"
 msgstr "OK"
 
-#: src/modules/options/optw_irc.cpp:168 
-#: src/modules/options/optw_irc.cpp:180
+#: src/modules/options/optw_irc.cpp:168 src/modules/options/optw_irc.cpp:180
 msgid "On Channel Join"
 msgstr "Beim Channel-Betreten"
 
@@ -3260,7 +3264,9 @@ msgstr "Zufällige IP-Adresse für Round-Robin-Server wählen"
 msgid ""
 "Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
 "normal nicks"
-msgstr "Sortiere Nicks, die nicht mit Buchstaben beginnen (z. B. _COOL_BOY_), nach den normalen"
+msgstr ""
+"Sortiere Nicks, die nicht mit Buchstaben beginnen (z. B. _COOL_BOY_), nach "
+"den normalen"
 
 #: src/modules/options/optw_userlist.cpp:94
 msgid "Plain Grid"
@@ -3354,8 +3360,8 @@ msgstr "Private Notiz/Channel-Notiz"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/modules/options/optw_taskbar.cpp:94
-#: src/modules/options/optw_taskbar.cpp:252
+#: src/modules/options/optw_windowlist.cpp:94
+#: src/modules/options/optw_windowlist.cpp:252
 msgid "Progress bar color:"
 msgstr "Farbe der Fortschrittsleiste:"
 
@@ -3494,10 +3500,10 @@ msgstr "Fehlende Avatare anfordern"
 msgid "Restrict alert"
 msgstr "Alarm einschränken"
 
-#: src/modules/options/optw_taskbar.cpp:132
 #: src/modules/options/optw_input.cpp:55
 #: src/modules/options/optw_userlist.cpp:139
 #: src/modules/options/optw_ircview.cpp:62
+#: src/modules/options/optw_windowlist.cpp:132
 msgid "Right"
 msgstr "Rechts"
 
@@ -3545,10 +3551,10 @@ msgstr "Skripte"
 msgid "Select message levels to notify"
 msgstr "Wähle Level zur Benachrichtigung aus"
 
-#: src/modules/options/optw_taskbar.cpp:87
-#: src/modules/options/optw_taskbar.cpp:118
 #: src/modules/options/optw_userlist.cpp:53
 #: src/modules/options/optw_userlist.cpp:124
+#: src/modules/options/optw_windowlist.cpp:87
+#: src/modules/options/optw_windowlist.cpp:118
 msgid "Selected:"
 msgstr "Ausgewählt:"
 
@@ -3621,17 +3627,17 @@ msgstr "Server"
 msgid "Service port:"
 msgstr "Dienstport:"
 
-#: src/modules/options/optw_taskbar.cpp:255
+#: src/modules/options/optw_windowlist.cpp:255
 msgid "Set maximum button width"
 msgstr "Maximale Schaltflächenbreite:"
 
-#: src/modules/options/optw_taskbar.cpp:48
-msgid "Show IRC context indicator in taskbar"
-msgstr "IRC-Kontextindikator in Fensterleiste anzeigen"
+#: src/modules/options/optw_windowlist.cpp:48
+msgid "Show IRC context indicator in window list"
+msgstr "IRC-Kontextindikator in Fensterliste anzeigen"
 
-#: src/modules/options/optw_taskbar.cpp:40
-msgid "Show activity meter in taskbar"
-msgstr "Aktivitätsmeter in Fensterleiste anzeigen"
+#: src/modules/options/optw_windowlist.cpp:40
+msgid "Show activity meter in window list"
+msgstr "Aktivitätsmeter in Fensterliste anzeigen"
 
 #: src/modules/options/optw_userlist.cpp:233
 msgid "Show avatars in userlist"
@@ -3661,7 +3667,7 @@ msgstr "Erweiterte Serverinformationen anzeigen"
 msgid "Show gender icons"
 msgstr "Geschlechtsicons anzeigen:"
 
-#: src/modules/options/optw_taskbar.cpp:220
+#: src/modules/options/optw_windowlist.cpp:220
 msgid "Show header"
 msgstr "Kopfzeilen (header) anzeigen"
 
@@ -3692,8 +3698,8 @@ msgid "Show message icons"
 msgstr "Nachrichtensymbole anzeigen"
 
 #: src/modules/options/optw_irc.cpp:54
-msgid "Show network name in console taskbar entry"
-msgstr "Netzwerknamen in Konsole-Taskbar-Eintrag anzeigen"
+msgid "Show network name in console window list entry"
+msgstr "Netzwerknamen als Konsoleneintrag der Fensterliste anzeigen"
 
 #: src/modules/options/optw_messages.cpp:88
 msgid "Show nicknames in bold"
@@ -3735,9 +3741,9 @@ msgstr "Channel-Aktivitätsanzeiger für Benutzer anzeigen"
 msgid "Show user channel icons"
 msgstr "Benutzerkanalsymbole anzeigen"
 
-#: src/modules/options/optw_taskbar.cpp:39
-msgid "Show window icons in taskbar"
-msgstr "Fenstersymbole in Fensterleiste anzeigen"
+#: src/modules/options/optw_windowlist.cpp:39
+msgid "Show window icons in window list"
+msgstr "Fenstersymbole in Fensterliste anzeigen"
 
 #: src/modules/options/optw_antispam.cpp:43
 msgid "Silent anti-spam (no warnings)"
@@ -3759,7 +3765,7 @@ msgstr "durchgezogene Linie"
 msgid "Sort saved files by nicknames (create subfolders)"
 msgstr "Sortiere gespeicherte Dateien nach Nicks (erzeuge Unterverzeichnisse)"
 
-#: src/modules/options/optw_taskbar.cpp:38
+#: src/modules/options/optw_windowlist.cpp:38
 msgid "Sort windows by name"
 msgstr "Fenster nach Name sortieren"
 
@@ -3791,14 +3797,6 @@ msgstr "Unterstützt das STARTTLS-Protokoll"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_taskbar.h:34
-msgid "Taskbar"
-msgstr "Fensterleiste"
-
-#: src/modules/options/optw_highlighting.h:55
-msgid "Taskbar Alert"
-msgstr "Fensterleiste-Alarm"
-
 #: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Test"
@@ -3817,8 +3815,8 @@ msgstr "Textkodierung:"
 msgid "Text icons"
 msgstr "Emoticons"
 
-#: src/modules/options/optw_taskbar.cpp:84
-#: src/modules/options/optw_taskbar.cpp:244
+#: src/modules/options/optw_windowlist.cpp:84
+#: src/modules/options/optw_windowlist.cpp:244
 msgid "Text/Alert Colors"
 msgstr "Text-/Alarmfarben"
 
@@ -3828,7 +3826,9 @@ msgstr "Das Indentifizierung-Kommando kann nicht leer sein!"
 
 #: src/modules/options/optw_nickserv.cpp:180
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr "Der reguläre Ausdruck kann nicht leer sein!<br>Es muss mindestens ein * eingegeben werden."
+msgstr ""
+"Der reguläre Ausdruck kann nicht leer sein!<br>Es muss mindestens ein * "
+"eingegeben werden."
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
@@ -3934,11 +3934,11 @@ msgid ""
 "no leading slash in this command."
 msgstr ""
 "<center>Dies ist das Kommando, welches ausgeführt wird, wenn NickServ die "
-"Authentifizierung für den Nick, der in dieser Regel beschrieben ist "
-"(und die Server- und NickServ-Maske stimmt), anfordert. Das wird gewöhnlich "
-"soetwas wie <b>msg NickServ identify &lt;ihrpasswort&gt;</b> sein. Es kann "
-"\"msg -q\" benutzt werden, falls nicht gewünscht ist, dass das Passwort auf "
-"dem Bildschirm angezeigt wird. Bitte beachten, dass dabei kein führender "
+"Authentifizierung für den Nick, der in dieser Regel beschrieben ist (und die "
+"Server- und NickServ-Maske stimmt), anfordert. Das wird gewöhnlich soetwas "
+"wie <b>msg NickServ identify &lt;ihrpasswort&gt;</b> sein. Es kann \"msg -q"
+"\" benutzt werden, falls nicht gewünscht ist, dass das Passwort auf dem "
+"Bildschirm angezeigt wird. Bitte beachten, dass dabei kein führender "
 "Schrägstrich in diesem Kommando vorkommen darf.</center>"
 
 #: src/modules/options/optw_nickserv.cpp:68
@@ -3951,12 +3951,12 @@ msgid ""
 "network can use the nickname \"NickServ\", the mask <b>NickServ!*@*</b> may "
 "be safe to use in this field."
 msgstr ""
-"Dies ist die Maske, in die NickServ korrekt als NickServ-Service passen muss. "
-"Das wird gewöhnlich etwas wie <b>Nickserv!service@services.dalnet</b> sein."
-"<br>Es können Wildcards für dieses Feld benutzt werden, aber grundsätzlich "
-"ist dies eine Sicherheitslücke. Wenn man zu 100%% sicher ist, dass KEIN "
-"Benutzer im Netzwerk den Nick \"NickServ\" benutzen kann, dann kann "
-"möglicherweise <b>Nickserv!*@*</b> für dieses Feld sicher sein."
+"Dies ist die Maske, in die NickServ korrekt als NickServ-Service passen "
+"muss. Das wird gewöhnlich etwas wie <b>Nickserv!service@services.dalnet</b> "
+"sein.<br>Es können Wildcards für dieses Feld benutzt werden, aber "
+"grundsätzlich ist dies eine Sicherheitslücke. Wenn man zu 100%% sicher ist, "
+"dass KEIN Benutzer im Netzwerk den Nick \"NickServ\" benutzen kann, dann "
+"kann möglicherweise <b>Nickserv!*@*</b> für dieses Feld sicher sein."
 
 #: src/modules/options/optw_nickserv.cpp:111
 msgid ""
@@ -4034,13 +4034,13 @@ msgstr ""
 "Anzeigen der CTRL+I-Escape-Sequenzen und eventuell auch bei den Emoticons "
 "benutzen."
 
-#: src/modules/options/optw_taskbar.cpp:130
-#: src/modules/options/optw_taskbar.cpp:135
 #: src/modules/options/optw_input.cpp:53 src/modules/options/optw_input.cpp:58
 #: src/modules/options/optw_userlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:142
 #: src/modules/options/optw_ircview.cpp:60
 #: src/modules/options/optw_ircview.cpp:65
+#: src/modules/options/optw_windowlist.cpp:130
+#: src/modules/options/optw_windowlist.cpp:135
 msgid "Tile"
 msgstr "Anordnung"
 
@@ -4064,10 +4064,10 @@ msgstr "Werkzeugleisten-Miniprogramme"
 msgid "Tools"
 msgstr "Werkzeuge"
 
-#: src/modules/options/optw_taskbar.cpp:136
 #: src/modules/options/optw_input.cpp:59
 #: src/modules/options/optw_userlist.cpp:143
 #: src/modules/options/optw_ircview.cpp:66
+#: src/modules/options/optw_windowlist.cpp:136
 msgid "Top"
 msgstr "Oben"
 
@@ -4092,9 +4092,9 @@ msgstr "Transparent"
 msgid "Tray icon"
 msgstr "Tray icon"
 
-#: src/modules/options/optw_taskbar.h:48
-msgid "Tree Taskbar"
-msgstr "Baumfensterleiste"
+#: src/modules/options/optw_windowlist.h:48
+msgid "Tree Window List"
+msgstr "Baum-Fensterliste"
 
 #: src/modules/options/optw_lag.cpp:53
 msgid "Trigger event if lag exceeds:"
@@ -4185,9 +4185,7 @@ msgstr "UTC-Zeit für Zeitstempel benutzen"
 
 #: src/modules/options/optw_away.cpp:46
 msgid "Use automatic nickname ([5 letters]AWAY)"
-msgstr ""
-"Automatisch gernerierten \"Abwesend\"-Nick benutzen ([5 Buchstaben]"
-"AWAY)"
+msgstr "Automatisch gernerierten \"Abwesend\"-Nick benutzen ([5 Buchstaben]AWAY)"
 
 #: src/modules/options/optw_identity.cpp:481
 msgid "Use avatar"
@@ -4195,7 +4193,7 @@ msgstr "Avatar benutzen"
 
 #: src/modules/options/optw_input.cpp:144
 msgid "Use bash-like nick completion"
-msgstr "Bash-ähnliche Nick-Kkomplettierung benutzen"
+msgstr "Bash-ähnliche Nick-Komplettierung benutzen"
 
 #: src/modules/options/optw_highlighting.cpp:93
 msgid "Use custom alert level"
@@ -4213,7 +4211,7 @@ msgstr "Benutze andere Farbe für eigenen Nick:"
 msgid "Use fast send (send ahead)"
 msgstr "Schnelles Senden benutzen (Voraussenden)"
 
-#: src/modules/options/optw_taskbar.cpp:257
+#: src/modules/options/optw_windowlist.cpp:257
 msgid "Use flat buttons"
 msgstr "Flache Schaltflächen benutzen"
 
@@ -4261,9 +4259,9 @@ msgstr "Die \"WATCH\"-Methode benutzen, wenn verfügbar"
 msgid "Use the completion postfix string for the first word only"
 msgstr "Komplettierung des Zeichenkettenendes nur für das erste Wort benutzen"
 
-#: src/modules/options/optw_taskbar.cpp:37
-msgid "Use tree taskbar"
-msgstr "Baumfensterleiste benutzen"
+#: src/modules/options/optw_windowlist.cpp:37
+msgid "Use tree window list"
+msgstr "Baum-Fensterliste benutzen"
 
 #: src/modules/options/optw_dcc.cpp:74
 msgid "Use user-defined address or network interface"
@@ -4325,9 +4323,9 @@ msgstr "Ausführlichkeit und Ausgabe"
 msgid "Vertical Alignment:"
 msgstr "Vertikale Ausrichtung:"
 
-#: src/modules/options/optw_taskbar.cpp:126
 #: src/modules/options/optw_input.cpp:49
 #: src/modules/options/optw_ircview.cpp:56
+#: src/modules/options/optw_windowlist.cpp:126
 msgid "Vertical align:"
 msgstr "Vertikale Ausrichtung:"
 
@@ -4373,6 +4371,14 @@ msgstr "Kodierung der Winamp-Meldungen"
 #: src/modules/options/optw_interfacelookglobal.h:74
 msgid "Window Captions"
 msgstr "Fenstertitel"
+
+#: src/modules/options/optw_windowlist.h:34
+msgid "Window List"
+msgstr "Fensterliste"
+
+#: src/modules/options/optw_highlighting.h:55
+msgid "Window List Alert"
+msgstr "Fensterlistenalarm"
 
 #: src/modules/options/optw_highlighting.cpp:57
 msgid "Word splitters:"
@@ -4507,10 +4513,12 @@ msgid "sound,xmms,audio,play,amarok"
 msgstr "Klänge,xmms,Audio,abspielen,amarok"
 
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_taskbar.h:36 src/modules/options/optw_taskbar.h:50
-#: src/modules/options/optw_taskbar.h:66 src/modules/options/optw_taskbar.h:81
-#: src/modules/options/optw_taskbar.h:100
-#: src/modules/options/optw_taskbar.h:115
+#: src/modules/options/optw_windowlist.h:36
+#: src/modules/options/optw_windowlist.h:50
+#: src/modules/options/optw_windowlist.h:66
+#: src/modules/options/optw_windowlist.h:81
+#: src/modules/options/optw_windowlist.h:100
+#: src/modules/options/optw_windowlist.h:115
 msgid "theme"
 msgstr "Thema"
 
@@ -6876,6 +6884,9 @@ msgstr "in:"
 #, fuzzy
 #~ msgid "Class is undefined"
 #~ msgstr "Klasse %s ist nicht definiert"
+
+#~ msgid "Classic Taskbar"
+#~ msgstr "Klassische Fensterleiste"
 
 #~ msgid "Clear"
 #~ msgstr "Löschen"
@@ -11237,6 +11248,12 @@ msgstr "in:"
 #~ msgid "TDCC Send to"
 #~ msgstr "TDCC Senden an"
 
+#~ msgid "Taskbar"
+#~ msgstr "Fensterleiste"
+
+#~ msgid "Taskbar Alert"
+#~ msgstr "Fensterleiste-Alarm"
+
 #~ msgid "Temporary Files"
 #~ msgstr "Temporäre Dateien"
 
@@ -12250,6 +12267,9 @@ msgstr "in:"
 #~ msgid "Transport"
 #~ msgstr "Versandart"
 
+#~ msgid "Tree Taskbar"
+#~ msgstr "Baumfensterleiste"
+
 #~ msgid "Try reconnecting with caching disabled"
 #~ msgstr "Neuverbinden mit ausgeschalteter Zwischenspeicherung versuchen"
 
@@ -12855,6 +12875,9 @@ msgstr "in:"
 #~ msgid "Use the crypt engine"
 #~ msgstr "Verschlüsselungsroutine benutzen"
 
+#~ msgid "Use tree taskbar"
+#~ msgstr "Baumfensterleiste benutzen"
+
 #, fuzzy
 #~ msgid "User %Q not found"
 #~ msgstr "Benutzer %s nicht gefunden"
@@ -13094,9 +13117,6 @@ msgstr "in:"
 
 #~ msgid "Window '%s' not found, using current one"
 #~ msgstr "Fenster '%s' nicht gefunden, benutze akuelles"
-
-#~ msgid "Window List"
-#~ msgstr "Fensterliste"
 
 #, fuzzy
 #~ msgid "Window button '%Q' not found"

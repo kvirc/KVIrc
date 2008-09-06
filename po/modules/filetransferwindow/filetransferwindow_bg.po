@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-29 18:14+0200\n"
+"POT-Creation-Date: 2008-09-06 16:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,115 +16,115 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.2-beta2\n"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:205
-msgid "Type"
+#: src/modules/filetransferwindow/filetransferwindow.cpp:460
+msgid "&Clear Terminated"
 msgstr ""
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:206
-msgid "Information"
+#: src/modules/filetransferwindow/filetransferwindow.cpp:431
+msgid "&Copy Path to Clipboard"
 msgstr ""
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:207
-msgid "Progress"
+#: src/modules/filetransferwindow/filetransferwindow.cpp:433
+msgid "&Delete file"
 msgstr ""
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:366
-msgid "Size: %1"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:385
-#: src/modules/filetransferwindow/filetransferwindow.cpp:418
+#: src/modules/filetransferwindow/filetransferwindow.cpp:387
+#: src/modules/filetransferwindow/filetransferwindow.cpp:420
 msgid "&Open"
 msgstr ""
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:406
+#: src/modules/filetransferwindow/filetransferwindow.cpp:408
 msgid "&Other..."
 msgstr ""
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:409
-#: src/modules/filetransferwindow/filetransferwindow.cpp:421
-msgid "Open &With"
+#: src/modules/filetransferwindow/filetransferwindow.cpp:467
+msgid "Clear &All"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:726
+msgid "Clear All Transfers? - KVIrc"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:722
+msgid "Clear all transfers, including any in progress?"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:560
+msgid "Confirm delete"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:565
+msgid "Delete failed"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:558
+msgid "Do you really want to delete the file %Q?"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:566
+msgid "Failed to remove the file"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:761
+msgid "File Transfers"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:208
+msgid "Information"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:435
+msgid "Local &File"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:426
+msgid "MS-DOS Prompt at Location"
+msgstr ""
+
+#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:123
+msgid "Manage File &Transfers"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:561
+#: src/modules/filetransferwindow/filetransferwindow.cpp:726
+msgid "No"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:567
+msgid "OK"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:413
+#: src/modules/filetransferwindow/filetransferwindow.cpp:425
+msgid "Open &Location"
 msgstr ""
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:411
 #: src/modules/filetransferwindow/filetransferwindow.cpp:423
-msgid "Open &Location"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:412
-msgid "Terminal at Location"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:424
-msgid "MS-DOS Prompt at Location"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:429
-msgid "&Copy Path to Clipboard"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:431
-msgid "&Delete file"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:433
-msgid "Local &File"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:458
-msgid "&Clear Terminated"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:465
-msgid "Clear &All"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:556
-msgid "Do you really want to delete the file %Q?"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:558
-msgid "Confirm delete"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:559
-#: src/modules/filetransferwindow/filetransferwindow.cpp:720
-msgid "Yes"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:559
-#: src/modules/filetransferwindow/filetransferwindow.cpp:720
-msgid "No"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:563
-msgid "Delete failed"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:564
-msgid "Failed to remove the file"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:565
-msgid "OK"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:716
-msgid "Clear all transfers, including any in progress?"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:720
-msgid "Clear All Transfers? - KVIrc"
-msgstr ""
-
-#: src/modules/filetransferwindow/filetransferwindow.cpp:755
-msgid "File Transfers"
+msgid "Open &With"
 msgstr ""
 
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
 msgid "Ops.. internal error"
 msgstr ""
 
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:123
-msgid "Manage File &Transfers"
+#: src/modules/filetransferwindow/filetransferwindow.cpp:209
+msgid "Progress"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:368
+msgid "Size: %1"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:414
+msgid "Terminal at Location"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:207
+msgid "Type"
+msgstr ""
+
+#: src/modules/filetransferwindow/filetransferwindow.cpp:561
+#: src/modules/filetransferwindow/filetransferwindow.cpp:726
+msgid "Yes"
 msgstr ""

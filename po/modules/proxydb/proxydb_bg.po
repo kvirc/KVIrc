@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-29 18:14+0200\n"
+"POT-Creation-Date: 2008-09-06 16:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,17 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.2-beta2\n"
 
-#: src/modules/proxydb/libkviproxydb.cpp:58
-#: src/modules/proxydb/libkviproxydb.cpp:101
-#: src/modules/proxydb/libkviproxydb.cpp:355
-#: src/modules/proxydb/libkviproxydb.cpp:427
-#: src/modules/proxydb/libkviproxydb.cpp:496
-#: src/modules/proxydb/libkviproxydb.cpp:551
-#: src/modules/proxydb/libkviproxydb.cpp:595
-msgid "You must provide the proxy hostname as parameter"
+#: src/modules/proxydb/libkviproxydb.cpp:452
+msgid "The specified IP is not valid"
+msgstr ""
+
+#: src/modules/proxydb/libkviproxydb.cpp:309
+#: src/modules/proxydb/libkviproxydb.cpp:576
+msgid "The specified protocol does not exist"
+msgstr ""
+
+#: src/modules/proxydb/libkviproxydb.cpp:282
+msgid "The specified proxy already exists"
 msgstr ""
 
 #: src/modules/proxydb/libkviproxydb.cpp:68
@@ -36,33 +39,30 @@ msgstr ""
 msgid "The specified proxy does not exist"
 msgstr ""
 
-#: src/modules/proxydb/libkviproxydb.cpp:271
-msgid "You must provide the proxy name as parameter"
-msgstr ""
-
-#: src/modules/proxydb/libkviproxydb.cpp:282
-msgid "The specified proxy already exists"
-msgstr ""
-
-#: src/modules/proxydb/libkviproxydb.cpp:309
-#: src/modules/proxydb/libkviproxydb.cpp:576
-msgid "The specified protocol does not exist"
+#: src/modules/proxydb/libkviproxydb.cpp:433
+msgid "You must provide the IP as parameter"
 msgstr ""
 
 #: src/modules/proxydb/libkviproxydb.cpp:361
 msgid "You must provide the port number as parameter"
 msgstr ""
 
-#: src/modules/proxydb/libkviproxydb.cpp:433
-msgid "You must provide the IP as parameter"
-msgstr ""
-
-#: src/modules/proxydb/libkviproxydb.cpp:452
-msgid "The specified IP is not valid"
-msgstr ""
-
 #: src/modules/proxydb/libkviproxydb.cpp:557
 msgid "You must provide the protocol as parameter"
+msgstr ""
+
+#: src/modules/proxydb/libkviproxydb.cpp:58
+#: src/modules/proxydb/libkviproxydb.cpp:101
+#: src/modules/proxydb/libkviproxydb.cpp:355
+#: src/modules/proxydb/libkviproxydb.cpp:427
+#: src/modules/proxydb/libkviproxydb.cpp:496
+#: src/modules/proxydb/libkviproxydb.cpp:551
+#: src/modules/proxydb/libkviproxydb.cpp:595
+msgid "You must provide the proxy hostname as parameter"
+msgstr ""
+
+#: src/modules/proxydb/libkviproxydb.cpp:271
+msgid "You must provide the proxy name as parameter"
 msgstr ""
 
 #: src/modules/proxydb/libkviproxydb.cpp:601
