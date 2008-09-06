@@ -294,7 +294,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 		baseline = ((rect.height() + fm.ascent() - fm.descent() + 1) >> 1);
 	} else {
 		rect = rectz;
-		baseline = rect.top() + rect.height();
+		baseline = rect.top() + rect.height() - fm.descent();
 	}
 
 	int curX = rect.x() + 2; //2 is the margin
