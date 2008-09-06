@@ -106,6 +106,7 @@
 #include "kvi_qcstring.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_animatedpixmap.h"
+
 // FIXME: #warning "There should be an option to preserve control codes in copied text (clipboard) (mIrc = CTRL+Copy->with colors)"
 
 #include <QBitmap>

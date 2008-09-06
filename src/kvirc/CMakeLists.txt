@@ -32,6 +32,7 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_htmldialog.h
 	ui/kvi_imagedialog.h
 	ui/kvi_input.h
+	ui/kvi_input_editor.h
 	ui/kvi_ipeditor.h
 	ui/kvi_irctoolbar.h
 	ui/kvi_ircview.h
@@ -107,6 +108,8 @@ SET(kvirc_SRCS
 	ui/kvi_htmldialog.cpp
 	ui/kvi_imagedialog.cpp
 	ui/kvi_input.cpp
+	ui/kvi_input_editor.cpp
+	ui/kvi_input_history.cpp
 	ui/kvi_ipeditor.cpp
 	ui/kvi_irctoolbar.cpp
 	ui/kvi_ircview.cpp

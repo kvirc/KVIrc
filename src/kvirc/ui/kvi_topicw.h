@@ -28,7 +28,8 @@
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_app.h"
-#include "kvi_input.h"
+#include "kvi_input_editor.h"
+//#include "kvi_input.h"
 #include "kvi_tal_listwidget.h"
 #include "kvi_tal_itemdelegates.h"
 

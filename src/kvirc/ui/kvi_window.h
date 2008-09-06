@@ -34,6 +34,7 @@
 #include "kvi_accel.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
+#include "kvi_input.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// The brain-damaged MSVC compiler can't instantiate QList templates without a destructor definition
@@ -54,7 +55,6 @@ class KviFrame;
 class KviWindowListItem;
 class KviConfig;
 class KviIrcView;
-class KviInput;
 class KviConsole;
 class KviIrcConnection;
 class KviWindowToolPageButton;
@@ -144,7 +144,7 @@ protected: // almost private: don't touch :D
 
 	int                                   m_iType;
 
-	KviWindowListItem                      * m_pWindowListItem;
+	KviWindowListItem                   * m_pWindowListItem;
 	QWidget                             * m_pFocusHandler;
 	QString                               m_szPlainTextCaption;
 	QString                               m_szHtmlActiveCaption;
@@ -152,7 +152,7 @@ protected: // almost private: don't touch :D
 	KviIrcView                          * m_pIrcView;
 	KviInput                            * m_pInput;
 	QSplitter                           * m_pSplitter;
-	KviTalHBox                               * m_pButtonBox;
+	KviTalHBox                          * m_pButtonBox;
 	unsigned long int                     m_uId;
 	QString                               m_szTextEncoding;
 #ifdef COMPILE_CRYPT_SUPPORT

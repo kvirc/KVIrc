@@ -31,6 +31,7 @@
 #include "kvi_msgbox.h"
 #include "kvi_iconmanager.h"
 #include "kvi_input.h"
+#include "kvi_input_history.h"
 #include "kvi_config.h"
 #include "kvi_colorwin.h"
 #include "kvi_window.h"
@@ -125,7 +126,6 @@ KVIRC_API KviNickServRuleSet            * g_pNickServRuleSet            = 0;
 KVIRC_API KviGarbageCollector           * g_pGarbageCollector           = 0;
 KVIRC_API KviCtcpPageDialog             * g_pCtcpPageDialog             = 0;
 KVIRC_API KviRegisteredChannelDataBase  * g_pRegisteredChannelDataBase  = 0;
-KVIRC_API KviInputHistory               * g_pInputHistory               = 0;
 KVIRC_API KviHistoryWindowWidget        * g_pHistoryWindow              = 0;
 
 // this is eventually set by libkviident
@@ -437,11 +437,12 @@ void KviApp::setup()
 
 	KVI_SPLASH_SET_PROGRESS(88)
 
-	g_pInputHistory = new KviInputHistory();
+	KviInputHistory::init();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_INPUTHISTORY))
-		g_pInputHistory->load(tmp);
+		KviInputHistory::instance()->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(89)
+
 	KviAvatarCache::init();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_AVATARCACHE))
 		KviAvatarCache::instance()->load(tmp);
@@ -608,7 +609,7 @@ KviApp::~KviApp()
 	delete g_pColorWindow;
 	if(g_pHistoryWindow)delete g_pHistoryWindow;
 	saveInputHistory();
-	delete g_pInputHistory;
+	KviInputHistory::done();
 	delete g_pInputPopup;
 	//delete g_pScriptObjectController;
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -1358,7 +1359,7 @@ void KviApp::saveInputHistory()
 	{
 		QString tmp;
 		getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_INPUTHISTORY);
-		g_pInputHistory->save(tmp);
+		KviInputHistory::instance()->save(tmp);
 	}
 }
 

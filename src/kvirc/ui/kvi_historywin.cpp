@@ -29,6 +29,7 @@
 #include "kvi_app.h"
 #include "kvi_options.h"
 #include "kvi_input.h"
+#include "kvi_input_history.h"
 #include "kvi_mirccntrl.h"
 
 #include <QEvent>
@@ -36,8 +37,6 @@
 #include <QListWidget>
 
 #include <ctype.h>
-
-extern KviInputHistory * g_pInputHistory;
 
 KviHistoryWindow::KviHistoryWindow(QWidget *parent)
 : QListWidget(parent)
@@ -63,7 +62,7 @@ KviHistoryWindow::~KviHistoryWindow()
 void KviHistoryWindow::fill()
 {
 	clear();
-	for(QString * s = g_pInputHistory->list()->last();s;s = g_pInputHistory->list()->prev())
+	for(QString * s = KviInputHistory::instance()->list()->last();s;s = KviInputHistory::instance()->list()->prev())
 	{
 		addItem(*s);
 	}
