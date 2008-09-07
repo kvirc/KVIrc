@@ -284,7 +284,7 @@ int KviMPRISInterface::length()
         		const QVariantMap map = v.toMap();
         		QVariantMap::ConstIterator it = map.constBegin();
         		for ( ; it != map.constEnd(); ++it) {
-				if (it.key() == "time")
+				if (it.key() == "mtime")
 					return it.value().toInt();
 			}
 		}
