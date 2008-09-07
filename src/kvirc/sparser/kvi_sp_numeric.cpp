@@ -2022,7 +2022,7 @@ void KviServerParser::parseNumericStartTls(KviIrcMessage * msg)
 	// :prefix 670 <nickname> :STARTTLS successful, go ahead with TLS handshake
 	// 671: RPL_STARTTLSFAIL
 	// :prefix 671 <nickname> :STARTTLS failure
-	
+
 	bool bEnable = false;
 
 	switch(msg->numeric())
@@ -2037,7 +2037,9 @@ void KviServerParser::parseNumericStartTls(KviIrcMessage * msg)
 			break;
 	}
 
+	#ifdef COMPILE_SSL_SUPPORT
 	msg->connection()->enableStartTlsSupport(bEnable);
+	#endif
 }
 
 void KviServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
@@ -2046,7 +2048,8 @@ void KviServerParser::parseNumericNotRegistered(KviIrcMessage * msg)
 	// :prefix 451 PING :You have not registered
 
 	KviIrcConnectionStateData * pStateData = msg->connection()->stateData();
-
+	#ifdef COMPILE_SSL_SUPPORT
 	if(pStateData->sentStartTls())
 		msg->connection()->enableStartTlsSupport(false);
+	#endif
 }
