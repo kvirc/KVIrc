@@ -26,9 +26,44 @@
 #if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
 #include "kvi_locale.h"
 
+/*
+	according to MPRIS 1.0, GetStatus returns struct of 4 integers.
+
+	First integer: 0 = Playing, 1 = Paused, 2 = Stopped.
+	Second interger: 0 = Playing linearly , 1 = Playing randomly.
+	Third integer: 0 = Go to the next element once the current has finished playing , 1 = Repeat the current element
+	Fourth integer: 0 = Stop playing once the last element has been played, 1 = Never give up playing
+*/
+
+struct MPRISPlayerStatus
+{
+	int Play;
+	int Random;
+	int RepeatCurrent;
+	int RepeatPlaylist;
+};
+Q_DECLARE_METATYPE( MPRISPlayerStatus )
+
+QDBusArgument &operator<<(QDBusArgument &argument, const MPRISPlayerStatus &status)
+{
+	argument.beginStructure();
+	argument << status.Play << status.Random << status.RepeatCurrent << status.RepeatPlaylist;
+	argument.endStructure();
+	return argument;
+};
+
+const QDBusArgument &operator>>(const QDBusArgument &argument, MPRISPlayerStatus &status)
+{
+	argument.beginStructure();
+	argument >> status.Play >> status.Random >> status.RepeatCurrent >> status.RepeatPlaylist;
+	argument.endStructure();
+	return argument;
+};
+
 KviMPRISInterface::KviMPRISInterface()
 : KviMediaPlayerInterface()
 {
+	qDBusRegisterMetaType<MPRISPlayerStatus>();
 }
 
 KviMPRISInterface::~KviMPRISInterface()
@@ -87,6 +122,26 @@ bool KviMPRISInterface::pause()
 bool KviMPRISInterface::quit()
 {
 	MPRIS_SIMPLE_CALL("/", "Quit")
+}
+
+KviMediaPlayerInterface::PlayerStatus KviMPRISInterface::status()
+{
+	QDBusInterface dbus_iface(m_szServiceName, "/Player",
+				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
+	if (!dbus_iface.isValid())
+		return KviMediaPlayerInterface::Unknown;
+
+	QDBusReply<MPRISPlayerStatus> reply = dbus_iface.call(QDBus::Block, "GetStatus");
+
+	if (!reply.isValid())
+		return KviMediaPlayerInterface::Unknown;
+
+	switch (reply.value().Play) {
+		case 0: return KviMediaPlayerInterface::Playing;
+		case 1: return KviMediaPlayerInterface::Paused;
+		case 2: return KviMediaPlayerInterface::Stopped;
+		default: return KviMediaPlayerInterface::Unknown;
+	}
 }
 
 #define MPRIS_CALL_METHOD(__method, __return_if_fail) \
@@ -376,6 +431,24 @@ KviBmpxInterface::KviBmpxInterface()
 KviMediaPlayerInterface::PlayerStatus KviBmpxInterface::status()
 {
 	return KviMediaPlayerInterface::Playing;
+}
+
+/* Amarok2 interface */
+MP_IMPLEMENT_DESCRIPTOR(
+	KviAmarok2Interface,
+	"amarok2",
+	__tr2qs_ctx(
+		"An interface to Amarok2.\n" \
+		"Download it from http://amarok.kde.org\n"
+		,
+		"mediaplayer"
+	)
+)
+
+KviAmarok2Interface::KviAmarok2Interface()
+: KviMPRISInterface()
+{
+	m_szServiceName = "org.mpris.amarok";
 }
 
 #endif //!COMPILE_ON_WINDOWS

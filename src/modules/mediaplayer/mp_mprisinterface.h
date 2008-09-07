@@ -44,6 +44,7 @@
 		virtual bool stop();
 		virtual bool pause();
 		virtual bool quit();
+		virtual KviMediaPlayerInterface::PlayerStatus status();
 		virtual QString nowPlaying();
 		virtual QString mrl();
 		virtual QString title();
@@ -79,10 +80,17 @@
 		KviBmpxInterface();
 		virtual KviMediaPlayerInterface::PlayerStatus status();
 	};
-	
+
+	class KviAmarok2Interface : public KviMPRISInterface
+	{
+	public:
+		KviAmarok2Interface();
+	};
+
 	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
 	MP_DECLARE_DESCRIPTOR(KviBmpxInterface)
-	
+	MP_DECLARE_DESCRIPTOR(KviAmarok2Interface)
+
 #endif //!COMPILE_ON_WINDOWS
 
 #endif //!_MP_AUDACIOUSINTERFACE_H_
