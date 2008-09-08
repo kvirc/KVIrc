@@ -44,6 +44,17 @@ typedef struct _KviLink
 	KviStr description;
 } KviLink;
 
+class KviLinksListView : public KviTalTreeWidget
+{
+	Q_OBJECT
+public:
+	KviLinksListView(QWidget*);
+	~KviLinksListView(){};
+protected:
+	void mousePressEvent (QMouseEvent *e);
+signals:
+	void rightButtonPressed(QTreeWidgetItem *,QPoint);
+};
 
 class KviLinksWindow : public KviWindow, public KviExternalServerDataParser
 {
@@ -54,7 +65,7 @@ public:
 protected:
 	QSplitter      * m_pVertSplitter;
 	QSplitter      * m_pTopSplitter;
-	KviTalTreeWidget      * m_pListView;
+	KviLinksListView      * m_pListView;
 	KviPointerList<KviLink> * m_pLinkList;
 	KviTalPopupMenu     * m_pHostPopup;
 	QString          m_szRootServer;
@@ -73,7 +84,7 @@ protected:
 //	virtual void setProperties(KviWindowProperty *p);
 //	virtual void saveProperties();
 protected slots:
-	void showHostPopup(KviTalTreeWidgetItem *i,const QPoint &p,int c);
+	void showHostPopup(QTreeWidgetItem *i,const QPoint &p);
 	void hostPopupClicked(int id);
 	void requestLinks();
 	void connectionStateChange();

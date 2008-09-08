@@ -100,7 +100,7 @@ static bool links_module_can_unload(KviModule *m)
 KVIRC_MODULE(
 	"Links",                                             // module name
 	"4.0.0",                                                // module version
-	"Copyright (C) 2000-2001 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Links window extension",
 	links_module_init,
 	links_module_can_unload,

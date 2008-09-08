@@ -38,6 +38,7 @@
 #include <QSplitter>
 #include <QToolTip>
 #include <QLabel>
+#include <QMouseEvent>
 
 extern KviPointerList<KviLinksWindow> * g_pLinksWindowList;
 
@@ -72,14 +73,10 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("vsplitter");
 
-	m_pListView  = new KviTalTreeWidget(m_pVertSplitter);
-	m_pListView->setColumnCount(3);
-	m_pListView->setHeaderLabels(QStringList() << __tr2qs("Link") << __tr2qs("Hops") << __tr2qs("Description"));
+	m_pListView  = new KviLinksListView(m_pVertSplitter);
 
-	m_pListView->setRootIsDecorated(true);
-	m_pListView->setAllColumnsShowFocus(true);
-	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalTreeWidgetItem *,const QPoint &,int)),
-			this,SLOT(showHostPopup(KviTalTreeWidgetItem *,const QPoint &,int)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(QTreeWidgetItem *,const QPoint &)),
+			this,SLOT(showHostPopup(QTreeWidgetItem *,const QPoint &)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
@@ -307,6 +304,7 @@ void KviLinksWindow::endOfLinks()
 
 	while(!m_pLinkList->isEmpty())m_pLinkList->removeFirst();
 
+	m_pListView->resizeColumnToContents(0);
 	m_pListView->setUpdatesEnabled(true);
 	m_pListView->repaint();
 }
@@ -349,7 +347,7 @@ KviTalTreeWidgetItem * KviLinksWindow::getItemByHost(const char *host,KviTalTree
 	return 0;
 }
 
-void KviLinksWindow::showHostPopup(KviTalTreeWidgetItem *i,const QPoint &p,int)
+void KviLinksWindow::showHostPopup(QTreeWidgetItem *i,const QPoint &p)
 {
 	if(!i)return;
 	KviStr host=i->text(0);
@@ -486,6 +484,27 @@ void KviLinksWindow::applyOptions()
 	KviWindow::applyOptions();
 }
 
+KviLinksListView::KviLinksListView(QWidget * par)
+: KviTalTreeWidget(par)
+{
+	header()->setSortIndicatorShown(true);
+	setColumnCount(3);
+	setHeaderLabels(QStringList() << __tr2qs("Link") << __tr2qs("Hops") << __tr2qs("Description"));
+	setRootIsDecorated(true);
+	setAnimated(true);
+	setSortingEnabled(true);
+	setAllColumnsShowFocus(true);
+}
+
+void KviLinksListView::mousePressEvent (QMouseEvent *e)
+{
+	if (e->button() == Qt::RightButton)
+	{
+		QTreeWidgetItem *i=itemAt(e->pos());
+		if (i) emit rightButtonPressed(i,QCursor::pos());
+	}
+	QTreeWidget::mousePressEvent(e);
+}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_linkswindow.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
