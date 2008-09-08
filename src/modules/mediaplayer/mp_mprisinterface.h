@@ -51,7 +51,10 @@
 		virtual QString artist();
 		virtual QString genre();
 		virtual QString comment();
+		virtual QString year();
 		virtual QString album();
+		virtual int bitRate();
+		virtual int sampleRate();
 		virtual bool setVol(kvs_int_t &iVol);
 		virtual int getVol();
 		virtual int position();

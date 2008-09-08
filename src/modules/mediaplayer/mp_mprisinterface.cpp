@@ -154,10 +154,10 @@ KviMediaPlayerInterface::PlayerStatus KviMPRISInterface::status()
 		return __return_if_fail; \
 	}
 
-#define MPRIS_GET_METADATA_FIELD(__field) \
+#define MPRIS_GET_METADATA_FIELD(__field, __return_type, __return_if_fail) \
 	if (this->status() != KviMediaPlayerInterface::Playing) \
-		return ""; \
-	MPRIS_CALL_METHOD("GetMetadata", "") \
+		return __return_if_fail; \
+	MPRIS_CALL_METHOD("GetMetadata", __return_if_fail) \
 	foreach (QVariant v, reply.arguments()) { \
 		QDBusArgument arg = qvariant_cast<QDBusArgument>(v); \
 		QVariant v = qdbus_cast<QVariantMap>(arg); \
@@ -165,11 +165,11 @@ KviMediaPlayerInterface::PlayerStatus KviMPRISInterface::status()
         		const QVariantMap map = v.toMap(); \
         		QVariantMap::ConstIterator it = map.find(__field); \
                         if (it != map.end() && it.key() == __field) { \
-                                return it.value().toString(); \
+                                return it.value().value< __return_type >(); \
                         } \
 		} \
 	} \
-	return "";
+	return __return_if_fail;
 
 #define MPRIS_CALL_METHOD_WITH_ARG(__method, __arg, __return_if_fail) \
         QDBusInterface dbus_iface(m_szServiceName, "/Player", \
@@ -230,27 +230,42 @@ QString KviMPRISInterface::mrl()
 
 QString KviMPRISInterface::title()
 {
-	MPRIS_GET_METADATA_FIELD("title")
+	MPRIS_GET_METADATA_FIELD("title", QString, "")
 }
 
 QString KviMPRISInterface::artist()
 {
-	MPRIS_GET_METADATA_FIELD("artist")
+	MPRIS_GET_METADATA_FIELD("artist", QString, "")
 }
 
 QString KviMPRISInterface::genre()
 {
-	MPRIS_GET_METADATA_FIELD("genre")
+	MPRIS_GET_METADATA_FIELD("genre", QString, "")
 }
 
 QString KviMPRISInterface::comment()
 {
-	MPRIS_GET_METADATA_FIELD("comment")
+	MPRIS_GET_METADATA_FIELD("comment", QString, "")
+}
+
+QString KviMPRISInterface::year()
+{
+	MPRIS_GET_METADATA_FIELD("year", QString, "")
 }
 
 QString KviMPRISInterface::album()
 {
-	MPRIS_GET_METADATA_FIELD("album")
+	MPRIS_GET_METADATA_FIELD("album", QString, "")
+}
+
+int KviMPRISInterface::bitRate()
+{
+	MPRIS_GET_METADATA_FIELD("audio-bitrate", int, -1)
+}
+
+int KviMPRISInterface::sampleRate()
+{
+	MPRIS_GET_METADATA_FIELD("audio-samplerate", int, -1)
 }
 
 bool KviMPRISInterface::setVol(kvs_int_t &iVol)
