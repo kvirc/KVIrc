@@ -200,7 +200,9 @@ void KviTreeWindowListItem::timerShot()
 		m_iStepNumber=0; //make shure, that we cannot get out of range
 	}
 	setData(0, KVI_TTBID_STEPNUM, m_iStepNumber);
-	treeWidget()->viewport()->update();
+
+	QRect rect = treeWidget()->visualItemRect(this);
+ 	treeWidget()->update(QRect(0, rect.top(), rect.left()+rect.width(), rect.height()));
 }
 
 void KviTreeWindowListItem::mouseEnter()
@@ -209,7 +211,7 @@ void KviTreeWindowListItem::mouseEnter()
 	{
 		m_bIncreasing=true;
 		if(!m_pAnimTimer->isActive()) m_pAnimTimer->start(KVI_TIMER_DELAY);
- 	}
+	}
 }
 
 void KviTreeWindowListItem::mouseLeave()
@@ -241,7 +243,6 @@ KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()
 
 void KviTreeWindowListTreeWidget::mouseMoveEvent ( QMouseEvent * e )
 {
-	if(!e) return;
 	KviTreeWindowListItem* pCur=(KviTreeWindowListItem*)(itemAt(e->pos()));
 	if(pCur!=m_pPrevItem)
 	{
@@ -314,18 +315,19 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 		p->drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
 	} else {
 #endif
-		p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
+		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeWindowListBackground).pixmap();
+		if(pix)
+		{
+			QPoint pnt = rect.topLeft();
+	
+			KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),rect,viewport()->width(),viewport()->height(),pnt.x(),pnt.y());
+		} else {
+			p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
+		}
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
 
-	QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeWindowListBackground).pixmap();
-	if(pix)
-	{
-		QPoint pnt = rect.topLeft();
-
-		KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),rect,viewport()->width(),viewport()->height(),pnt.x(),pnt.y());
-	}
 	delete p;
 
 	//call paint on all childrens
