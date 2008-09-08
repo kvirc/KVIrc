@@ -94,6 +94,7 @@ public:
 
 	/**
 	* \brief Returns fiename.
+	*
 	* For remote avatars, remote address will be returned.
 	* \return const QString &
 	*/
@@ -127,6 +128,7 @@ public:
 
 	/**
 	* \brief Returns true if pixmap has at least one loaded frame.
+	*
 	* Returns false otherwise.
 	* \return bool
 	*/
@@ -145,6 +147,7 @@ public:
 
 	/**
 	* \brief Returns animated pixmap, scaled to the requisted size.
+	*
 	* Scaling automagically keeps aspect ratio.
 	* Scaled image cached.
 	*
@@ -160,6 +163,7 @@ public:
 
 	/**
 	* \brief Returns animated pixmap, scaled to the requisted size.
+	*
 	* Scaling automagically keeps aspect ratio.
 	* Scaled image cached.
 	*
@@ -178,6 +182,7 @@ public:
 
 	/**
 	* \brief Returns the string that uniquely identifies this avatar.
+	*
 	* For remote avatars that have name starting with http:// the name is used.
 	* For local avatars the localPath is used instead
 	* \return const QString &

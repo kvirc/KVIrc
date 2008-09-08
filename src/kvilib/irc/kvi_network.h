@@ -93,16 +93,18 @@ public:
 
 	/**
 	* \brief Returns the encoding of the network
-	* \return const QString &
+	*
 	* Some informations as nickname and channel names are encoded when
 	* communicating with the server
+	* \return const QString &
 	*/
 	inline const QString & encoding() const { return m_szEncoding; };
 
 	/**
 	* \brief Returns the text encoding of the network
-	* \return const QString &
+	*
 	* This is the default encoding when talking on channels or queries
+	* \return const QString &
 	*/
 	inline const QString & textEncoding() const { return m_szTextEncoding; };
 
@@ -189,6 +191,7 @@ public:
 
 	/**
 	* \brief Sets the encondig of the network
+	*
 	* Some informations as nickname and channel names are encoded when
 	* communicating with the server
 	* \param szEncoding The encoding of the network
@@ -198,6 +201,7 @@ public:
 
 	/**
 	* \brief Sets the text encondig of the network
+	*
 	* This is the default encoding when talking on channels or queries
 	* \param szEncoding The text encoding of the network
 	* \return void

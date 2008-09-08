@@ -29,6 +29,7 @@
 * \file kvi_confignames.h
 * \author Szymon Stefanek
 * \brief This file contains the config file names used in KVIrc
+*
 * You can play a bit with these, but be aware that some (bad) scripts may find
 * themselves in trouble
 *

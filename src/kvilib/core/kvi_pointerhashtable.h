@@ -343,7 +343,8 @@ protected:
 	unsigned int                                        m_uIteratorIdx;
 public:
 	/**
-	* \brief Returns the item associated to the key hKey
+	* \brief Returns the item associated to the key
+	*
 	* Returns NULL if no such item exists in the hash table.
 	* Places the hash table iterator at the position of the item found.
 	* \param hKey The key to find
@@ -362,6 +363,7 @@ public:
 	
 	/**
 	* \brief Returns the item associated to the key hKey
+	*
 	* Returns NULL if no such item exists in the hash table.
 	* Places the hash table iterator at the position of the item found.
 	* This is an alias to find().
@@ -393,6 +395,7 @@ public:
 
 	/**
 	* \brief Inserts the item pData at the position specified by the key hKey.
+	*
 	* Replaces any previous item with the same key
 	* The replaced item is deleted if autodelete is enabled.
 	* The hash table iterator is placed at the newly inserted item.
@@ -429,6 +432,7 @@ public:
 
 	/**
 	* \brief Inserts the item pData at the position specified by the key hKey.
+	*
 	* Replaces any previous item with the same key.
 	* The replaced item is deleted if autodelete is enabled.
 	* The hash table iterator is placed at the newly inserted item.
@@ -444,6 +448,7 @@ public:
 
 	/**
 	* \brief Removes the item pointer associated to the key hKey, if such an item exists in the hash table.
+	*
 	* The item is deleted if autodeletion is enabled. Returns true if the
 	* item was found and removed and false if it wasn't found.
 	* Invalidates the hash table iterator.
@@ -475,6 +480,7 @@ public:
 
 	/**
 	* \brief Removes the first occurence of the item pointer pRef.
+	*
 	* The item is deleted if autodeletion is enabled. Returns true if the
 	* pointer was found and false otherwise.
 	* Invalidates the hash table iterator.
@@ -510,6 +516,7 @@ public:
 
 	/**
 	* \brief Removes all the items from the hash table.
+	*
 	* The items are deleted if autodeletion is enabled.
 	* Invalidates the hash table iterator.
 	* \return void
@@ -535,6 +542,7 @@ public:
 
 	/**
 	* \brief Searches for the item pointer pRef
+	*
 	* Returns its hash table entry, if found, and NULL otherwise.
 	* The hash table iterator is placed at the item found.
 	* \param pRef The pointer to search
@@ -557,6 +565,7 @@ public:
 
 	/**
 	* \brief Returns the entry pointed by the hash table iterator.
+	*
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
 	* \return KviPointerHashTableEntry<Key,T> *
@@ -585,6 +594,7 @@ public:
 
 	/**
 	* \brief Places the hash table iterator at the next entry and returns it.
+	*
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
 	* \return KviPointerHashTableEntry<Key,T> *
@@ -614,6 +624,7 @@ public:
 
 	/**
 	* \brief Returns the data value pointer pointed by the hash table iterator.
+	*
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
 	* \return T *
@@ -632,6 +643,7 @@ public:
 	
 	/**
 	* \brief Returns the key pointed by the hash table iterator.
+	*
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
 	* \return const Key &
@@ -649,6 +661,7 @@ public:
 	}
 
 	/** \brief Places the hash table iterator at the first entry
+	*
 	* It returns the associated data value pointer.
 	* \return T *
 	*/
@@ -667,6 +680,7 @@ public:
 
 	/**
 	* \brief Places the hash table iterator at the next entry and returns the associated data value pointer.
+	*
 	* This function must be preceeded by a call to firstEntry(), first()
 	* or findRef().
 	* \return T *
@@ -700,6 +714,7 @@ public:
 
 	/**
 	* \brief Removes all items in the hash table and then makes a complete shallow copy of the data contained in t.
+	*
 	* The removed items are deleted if autodeletion is enabled.
 	* The hash table iterator is invalidated.
 	* Does not change autodelete flag: make sure you don't delete the
@@ -716,6 +731,7 @@ public:
 
 	/**
 	* \brief Inserts a complete shallow copy of the data contained in t.
+	*
 	* The hash table iterator is invalidated.
 	* \param t The data to insert
 	* \return void
@@ -728,6 +744,7 @@ public:
 
 	/**
 	* \brief Enables or disabled the autodeletion feature.
+	*
 	* Items are deleted upon removal when the feature is enabled.
 	* \param bAutoDelete Set the autodelete state
 	* \return void
@@ -739,6 +756,7 @@ public:
 
 	/**
 	* \brief Creates an empty hash table.
+	*
 	* Automatic deletion is enabled.
 	* \param uSize The number of hash buckets: does NOT necesairly need to be prime
 	* \param bCaseSensitive Are the key comparisons case sensitive ?
@@ -758,6 +776,7 @@ public:
 
 	/**
 	* \brief First creates an empty hash table and then inserts a copy of all the item pointers present in t.
+	*
 	* The autodelete feature is automatically disabled (take care!).
 	* \param t The data to copy
 	* \return KviPointerHashTable
@@ -776,6 +795,7 @@ public:
 
 	/**
 	* \brief Destroys the hash table and all the items contained within.
+	*
 	* Items are deleted if autodeletion is enabled.
 	*/
 	~KviPointerHashTable()
@@ -798,8 +818,10 @@ protected:
 public:
 	/**
 	* \brief Creates an iterator copy.
+	*
 	* The new iterator points exactly to the item pointed by src.
 	* \param src The source pointer to copy from
+	* \return void
 	*/
 	void operator = (const KviPointerHashTableIterator<Key,T> & src)
 	{
@@ -813,8 +835,9 @@ public:
 
 	/**
 	* \brief Moves the iterator to the first element of the hash table.
-	* Returns true in case of success or false if the hash table is
-	* empty.
+	*
+	* Returns true in case of success or false if the hash table is empty.
+	* \return bool
 	*/
 	bool moveFirst()
 	{
@@ -845,8 +868,9 @@ public:
 	
 	/**
 	* \brief Moves the iterator to the last element of the hash table.
-	* Returns true in case of success or false if the hash table is
-	* empty.
+	*
+	* Returns true in case of success or false if the hash table is empty.
+	* \return bool
 	*/
 	bool moveLast()
 	{
@@ -877,8 +901,10 @@ public:
 
 	/**
 	* \brief Moves the iterator to the next element of the hash table.
+	*
 	* The iterator must be actually valid for this function to work.
 	* Returns true in case of success or false if there is no next item.
+	* \return bool
 	*/
 	bool moveNext()
 	{
@@ -910,9 +936,11 @@ public:
 	
 	/**
 	* \brief Moves the iterator to the next element of the hash table.
+	*
 	* The iterator must be actually valid for this function to work.
 	* Returns true in case of success or false if there is no next item.
 	* This is just an alias to moveNext().
+	* \return bool
 	*/
 	bool operator ++()
 	{
@@ -921,9 +949,11 @@ public:
 	
 	/**
 	* \brief Moves the iterator to the previous element of the hash table.
+	*
 	* The iterator must be actually valid for this function to work.
 	* Returns true in case of success or false if there is no previous
 	* item.
+	* \return bool
 	*/
 	bool movePrev()
 	{
@@ -958,10 +988,12 @@ public:
 
 	/**
 	* \brief Moves the iterator to the previous element of the hash table.
+	*
 	* The iterator must be actually valid for this function to work.
 	* Returns true in case of success or false if there is no previous
 	* item.
 	* This is just an alias to movePrev() with a different name.
+	* \return bool
 	*/
 	bool operator --()
 	{
@@ -970,8 +1002,10 @@ public:
 
 	/**
 	* \brief Returs the value pointed by the iterator
+	*
 	* If the iterator is not valid it returns a default constructed value
 	* This is an alias to operator *() with just a different name.
+	* \return T *
 	*/
 	T * current() const
 	{
@@ -980,8 +1014,10 @@ public:
 
 	/**
 	* \brief Returs the value pointed by the iterator
+	*
 	* If the iterator is not valid it returns a default constructed value
 	* This is an alias to current() with just a different name.
+	* \return T *
 	*/
 	T * operator *() const
 	{
@@ -990,7 +1026,9 @@ public:
 	
 	/**
 	* \brief Returs the key pointed by the iterator
+	*
 	* If the iterator is not valid it returns a default constructed value
+	* \return const Key &
 	*/
 	const Key & currentKey() const
 	{
@@ -1001,7 +1039,9 @@ public:
 
 	/**
 	* \brief Moves the iterator to the first element of the hash table.
+	*
 	* Returns the first item found or NULL if the hash table is empty.
+	* \return T *
 	*/
 	T * toFirst()
 	{
@@ -1013,6 +1053,7 @@ public:
 	/**
 	* \brief Creates an iterator pointing to the first item in the hash table, if any.
 	* \param hTable The hash table
+	* \return KviPointerHashTableIterator
 	*/
 	KviPointerHashTableIterator(const KviPointerHashTable<Key,T> & hTable)
 	{
@@ -1022,7 +1063,9 @@ public:
 		moveFirst();
 	}
 	
-	/// Destroys the iterator
+	/**
+	* \brief Destroys the iterator
+	*/
 	~KviPointerHashTableIterator()
 	{
 		if(m_pIterator)

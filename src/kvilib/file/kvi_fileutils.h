@@ -28,6 +28,7 @@
 * \file kvi_fileutils.h
 * \author Szymon Stefanek
 * \brief File utilities functions
+*
 * \def KVI_PATH_SEPARATOR Defines the path separator, UNIX or win32
 * \def KVI_PATH_SEPARATOR_CHAR Defines the path separator char, UNIX or win32
 */
@@ -163,6 +164,7 @@ namespace KviFileUtils
 
 	/**
 	* \brief Reads a complete file and puts it in the string szBuffer
+	*
 	* The file must be smaller than uMaxSize bytes
 	* \param szPath The path to the file to read
 	* \param szBuffer The buffer where to load the file
@@ -173,6 +175,7 @@ namespace KviFileUtils
 
 	/**
 	* \brief Reads a complete file and puts it in the string szBuffer
+	*
 	* The file must be smaller than uMaxSize bytes
 	* \param path The path to the file to read
 	* \param szBuffer The buffer where to load the file
@@ -277,6 +280,7 @@ namespace KviFileUtils
 
 	/**
 	* \brief Translates ANY string into a valid filename (with no path!)
+	*
 	* There is NO way to come back to the original string the algo is
 	* one-way only
 	* \param path

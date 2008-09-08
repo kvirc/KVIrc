@@ -24,6 +24,12 @@
 //
 //============================================================================
 
+/**
+* \file kvi_input.h
+* \author Szymon Stefanek
+* \brief Input handling
+*/
+
 #include "kvi_settings.h"
 #include "kvi_input_history.h"
 
@@ -38,11 +44,25 @@ class KviTalHBox;
 class KviTalPopupMenu;
 class KviScriptEditor;
 
+/**
+* \class KviInput
+* \brief Input handling class
+*/
 class KVIRC_API KviInput : public QWidget
 {
 	Q_OBJECT
 public:
-	KviInput(KviWindow * par, KviUserListView * view = 0);
+	/**
+	* \brief Constructs the input object
+	* \param pPar The parent window
+	* \param pView The userlist
+	* \return KviInput
+	*/
+	KviInput(KviWindow * pPar, KviUserListView * pView = 0);
+
+	/**
+	* \brief Destroys the input object
+	*/
 	~KviInput();
 public:
 	KviWindow       * m_pWindow;
@@ -55,33 +75,133 @@ public:
 	QToolButton     * m_pCommandlineModeButton;
 	QToolButton     * m_pHideToolsButton;
 	QHBoxLayout     * m_pLayout;
+public:
+	/**
+	* \brief Sets the focus to the input line
+	* \return void
+	*/
+	virtual void setFocus();
+
+	/**
+	* \brief Opens the multiline editor and pastes the given text
+	* \param szText The text to paste
+	* \return void
+	*/
+	void multiLinePaste(const QString & szText);
+
+	/**
+	* \brief Returns true if the input line is in user-friendly mode
+	* \return bool
+	*/
+	bool isUserFriendly() { return m_pCommandlineModeButton->isChecked(); };
+
+	/**
+	* \brief Sets the user-friendly mode to the input line
+	* \param bSet Whether to set the user-friendly mode
+	* \return void
+	*/
+	void setUserFriendly(bool bSet) { m_pCommandlineModeButton->setChecked(bSet); };
+
+	/**
+	* \brief Returns the height of the input line
+	* \return int
+	*/
+	int heightHint() const;
+
+	/**
+	* \brief Sets the given text
+	* \param szText The text to set in the input line
+	* \return void
+	*/
+	void setText(const QString & szText);
+
+	/**
+	* \brief Inserts the given character
+	* \param c The character to insert
+	* \return void
+	*/
+	void insertChar(char c);
+
+	/**
+	* \brief Inserts the given text
+	* \param szText The text to insert
+	* \return void
+	*/
+	void insertText(const QString & szText);
+
+	/**
+	* \brief Saves and applies the options
+	* \return void
+	*/
+	void applyOptions();
+
+	/**
+	* \brief Returns true if the buttons on the right are hidden
+	* \return bool
+	*/
+	bool isButtonsHidden();
+
+	/**
+	* \brief Sets the hidden status of the button on the right
+	* \param bHidden Whether to hide the buttons
+	* \return void
+	*/
+	void setButtonsHidden(bool bHidden);
+
+	/**
+	* \brief Returns the text written in the input line
+	* \return QString
+	*/
+	QString text();
+	//const QString & text();
+
+	/**
+	* \brief Return the instance of the input editor
+	* \return KviInputEditor *
+	*/
+	inline KviInputEditor * editor(){ return m_pInputEditor; };
+
+	/**
+	* \brief Return the instance of the input history
+	* \return KviInputHistory *
+	*/
+	inline KviInputHistory * history(){ return KviInputHistory::instance(); };
+public slots:
+	/**
+	* \brief Toggles the multiline editor
+	* \param bOn Whether to activate the multiline editor
+	* \return void
+	*/
+	void multilineEditorButtonToggled(bool bOn);
+
+	/**
+	* \brief Shows the history popup
+	* \return void
+	*/
+	void historyButtonClicked();
+
+	/**
+	* \brief Shows the icon popup
+	* \return void
+	*/
+	void iconButtonClicked();
+
+	/**
+	* \brief Parses the text written and clears the input line
+	* \return void
+	*/
+	void inputEditorEnterPressed();
+
+	/**
+	* \brief Toggles the buttons
+	* \return void
+	*/
+	void toggleToolButtons();
 protected:
 	//virtual void resizeEvent(QResizeEvent * e);
 	virtual void focusInEvent(QFocusEvent * e);
 	virtual void setFocusProxy(QWidget * w);
 	virtual void keyPressEvent(QKeyEvent * e);
-public slots:
-	void multilineEditorButtonToggled(bool bOn);
-	void historyButtonClicked();
-	void iconButtonClicked();
-	void inputEditorEnterPressed();
-	void toggleToolButtons();
-public:
-	virtual void setFocus();
-	void multiLinePaste(const QString & szText);
-	bool isUserFriendly() { return m_pCommandlineModeButton->isChecked(); };
-	void setUserFriendly(bool bSet) { m_pCommandlineModeButton->setChecked(bSet); };
-	int heightHint() const;
-	void setText(const QString & szText);
-	void insertChar(char c);
-	void insertText(const QString & szText);
-	void applyOptions();
-	bool isButtonsHidden();
-	void setButtonsHidden(bool bHidden);
-	//const QString & text();
-	QString text();
-	inline KviInputEditor * editor(){ return m_pInputEditor; };
-	inline KviInputHistory * history(){ return KviInputHistory::instance(); };
 };
 
 #endif //_KVI_INPUT_H_

@@ -140,6 +140,7 @@ namespace KviQString
 
 	/**
 	* \brief A portability wrapper which with Qt3 and Qt4.
+	*
 	* Returns a lowcase version of the parameter string.
 	* \param s The source string
 	* \return QString
@@ -151,6 +152,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last occurrence of the character
+	*
 	* The search is made forward starting from index.
 	* \param s The source string
 	* \param c The character to find
@@ -165,6 +167,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last occurrence of the character
+	*
 	* The search is made forward starting from index.
 	* \param s The source string
 	* \param c The character to find
@@ -179,6 +182,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last occurrence of the string
+	*
 	* The search is made forward starting from index.
 	* \param s The source string
 	* \param str The string to find
@@ -193,6 +197,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last occurrence of the string
+	*
 	* The search is made forward starting from index.
 	* \param s The source string
 	* \param str The string to find
@@ -207,6 +212,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last occurrence of the string
+	*
 	* The search is made forward starting from index.
 	* \param s The source string
 	* \param rx The regexp to match
@@ -220,6 +226,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last occurrence of the character
+	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
 	* \param s The source string
@@ -235,6 +242,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last occurrence of the character
+	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
 	* \param s The source string
@@ -250,6 +258,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last occurrence of the string str
+	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
 	* \param s The source string
@@ -265,6 +274,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last occurrence of the string str
+	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
 	* \param s The source string
@@ -280,6 +290,7 @@ namespace KviQString
 
 	/**
 	* \brief Returns the index position of the last match of the regexp
+	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
 	* \param s The source string
@@ -294,6 +305,7 @@ namespace KviQString
 
 	/**
 	* \brief Return a whitespace-trimmed string
+	*
 	* Spaces are trimmed at start and end of the string
 	* \param s The source string
 	* \return QString

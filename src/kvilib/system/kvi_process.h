@@ -28,6 +28,7 @@
 * \file kvi_process.h
 * \author Szymon Stefanek
 * \brief A simple name redefinition
+*
 * \def KviProcess Defines KviProcess as QProcess
 */
 #include "kvi_settings.h"

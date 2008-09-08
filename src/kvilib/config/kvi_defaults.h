@@ -29,6 +29,7 @@
 * \file kvi_defaults.h
 * \author Szymon Stefanek
 * \brief This file contains (more or less) freely customizable compile time defaults
+*
 * You can safely play with the ones you understand the meaning of
 *
 * \def KVI_HOME_CONFIG_FILE_NAME Configuration file in home directory

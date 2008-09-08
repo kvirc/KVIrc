@@ -72,8 +72,8 @@ extern KviTalPopupMenu         * g_pInputPopup;
 
 QFontMetrics * g_pLastFontMetrics = 0;
 
-KviInput::KviInput(KviWindow * par ,KviUserListView * view)
-: QWidget(par)
+KviInput::KviInput(KviWindow * pPar ,KviUserListView * pView)
+: QWidget(pPar)
 {
 	setObjectName("input_widget");
 	m_pLayout=new QHBoxLayout(this);
@@ -82,7 +82,7 @@ KviInput::KviInput(KviWindow * par ,KviUserListView * view)
 	m_pLayout->setMargin(0);
 	m_pLayout->setSpacing(0);
 
-	m_pWindow = par;
+	m_pWindow = pPar;
 	m_pMultiLineEditor = 0;
 
 	m_pHideToolsButton = new QToolButton(this);
@@ -96,7 +96,7 @@ KviInput::KviInput(KviWindow * par ,KviUserListView * view)
 
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
 
-	m_pButtonContainer=new KviTalHBox(this);
+	m_pButtonContainer = new KviTalHBox(this);
 	m_pButtonContainer->setSpacing(0);
 	m_pButtonContainer->setMargin(0);
 
@@ -161,7 +161,7 @@ KviInput::KviInput(KviWindow * par ,KviUserListView * view)
 
 	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multilineEditorButtonToggled(bool)));
 
-	m_pInputEditor = new KviInputEditor(this,par,view);
+	m_pInputEditor = new KviInputEditor(this,pPar,pView);
 	connect(m_pInputEditor,SIGNAL(enterPressed()),this,SLOT(inputEditorEnterPressed()));
 	m_pInputEditor->setSizePolicy(QSizePolicy(QSizePolicy::Expanding,QSizePolicy::Ignored));
 
@@ -179,7 +179,8 @@ KviInput::KviInput(KviWindow * par ,KviUserListView * view)
 
 KviInput::~KviInput()
 {
-	if(m_pMultiLineEditor)KviScriptEditor::destroyInstance(m_pMultiLineEditor);
+	if(m_pMultiLineEditor)
+		KviScriptEditor::destroyInstance(m_pMultiLineEditor);
 }
 
 bool KviInput::isButtonsHidden()
@@ -189,8 +190,10 @@ bool KviInput::isButtonsHidden()
 
 void KviInput::setButtonsHidden(bool bHidden)
 {
-	if(!m_pHideToolsButton || !m_pButtonContainer) return;
-	if(bHidden==m_pButtonContainer->isHidden()) return;
+	if(!m_pHideToolsButton || !m_pButtonContainer)
+		return;
+	if(bHidden==m_pButtonContainer->isHidden())
+		return;
 	m_pButtonContainer->setHidden(bHidden);
 	QPixmap * pix= bHidden ?
 		g_pIconManager->getBigIcon("kvi_horizontal_right.png") :
@@ -250,11 +253,11 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 										this,
 										__tr2qs("Confirm Multiline Message"),
 										__tr2qs("You're about to send a message with %1 lines of text.<br><br>" \
-												"There is nothing wrong with it, this warning is<br>" \
-												"here to prevent you from accidentally sending<br>" \
-												"a really large message just because you didn't edit it<br>" \
-												"properly after pasting text from the clipboard.<br><br>" \
-												"Do you want the message to be sent?").arg(nLines),
+											"There is nothing wrong with it, this warning is<br>" \
+											"here to prevent you from accidentally sending<br>" \
+											"a really large message just because you didn't edit it<br>" \
+											"properly after pasting text from the clipboard.<br><br>" \
+											"Do you want the message to be sent?").arg(nLines),
 										__tr2qs("Yes, always"),
 										__tr2qs("Yes"),
 										__tr2qs("No"),
@@ -288,7 +291,8 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 
 void KviInput::multiLinePaste(const QString & szText)
 {
-	if(!m_pMultiLineEditor)multilineEditorButtonToggled(true);
+	if(!m_pMultiLineEditor)
+		multilineEditorButtonToggled(true);
 	m_pMultiLineEditor->setText(szText);
 }
 
@@ -296,7 +300,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 {
 	if(m_pMultiLineEditor)
 	{
-		if(bOn)return;
+		if(bOn) return;
 		QString szTmp;
 		m_pMultiLineEditor->getText(szTmp);
 		m_pLayout->removeWidget(m_pMultiLineEditor);
@@ -309,7 +313,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		m_pInputEditor->setFocus();
 		m_pMultiEditorButton->setChecked(false);
 	} else {
-		if(!bOn)return;
+		if(!bOn) return;
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
 		QString szText = __tr2qs("<Ctrl+Return>; submits, <Ctrl+Backspace>; hides this editor");
 		m_pMultiLineEditor->setFindText(szText);
@@ -333,7 +337,8 @@ void KviInput::iconButtonClicked()
 
 void KviInput::historyButtonClicked()
 {
-	if(!g_pHistoryWindow)g_pHistoryWindow = new KviHistoryWindowWidget();
+	if(!g_pHistoryWindow)
+		g_pHistoryWindow = new KviHistoryWindowWidget();
 
 	QPoint pnt = mapToGlobal(QPoint(0,0));
 
@@ -377,7 +382,8 @@ int KviInput::heightHint() const
 void KviInput::setText(const QString & szText)
 {
 	// FIXME: Latin1 -> QString ?
-	if(m_pMultiLineEditor)m_pMultiLineEditor->setText(szText);
+	if(m_pMultiLineEditor)
+		m_pMultiLineEditor->setText(szText);
 	else m_pInputEditor->setText(szText);
 }
 
@@ -426,7 +432,7 @@ QString KviInput::text()
 	if(m_pMultiLineEditor)
 		m_pMultiLineEditor->getText(szText);
 	else
-		szText=m_pInputEditor->text();
+		szText = m_pInputEditor->text();
 	return szText;
 }
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

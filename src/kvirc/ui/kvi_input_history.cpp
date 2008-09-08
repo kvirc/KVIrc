@@ -21,6 +21,8 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //============================================================================
+//   This file was originally part of kvi_input.h
+//============================================================================
 
 #include "kvi_input_history.h"
 #include "kvi_config.h"
@@ -77,17 +79,17 @@ void KviInputHistory::load(const QString & szFileName)
 {
 	KviConfig c(szFileName,KviConfig::Read);
 
-	int cnt = c.readIntEntry("Count",0);
+	int iCount = c.readIntEntry("Count",0);
 
-	if(cnt > KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES)
-		cnt = KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES;
+	if(iCount > KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES)
+		iCount = KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES;
 
-	KviStr tmp;
+	KviStr szTmp;
 
-	for(int i=0;i<cnt;i++)
+	for(int i=0; i<iCount; i++)
 	{
-		tmp.sprintf("S%d",i);
-		QString szEntry = c.readQStringEntry(tmp.ptr(),"");
+		szTmp.sprintf("S%d",i);
+		QString szEntry = c.readQStringEntry(szTmp.ptr(),"");
 		if(!szEntry.isEmpty())
 			add(new QString(szEntry));
 	}
@@ -100,16 +102,16 @@ void KviInputHistory::save(const QString & szFileName)
 
 	c.writeEntry("Count",m_pStringList->count());
 
-	KviStr tmp;
-	int idx = 0;
+	KviStr szTmp;
+	int iIdx = 0;
 
 	for(QString * szString = m_pStringList->first(); szString; szString = m_pStringList->next())
 	{
 		if(!szString->isEmpty())
 		{
-			tmp.sprintf("S%d",idx);
-			c.writeEntry(tmp.ptr(),*szString);
-			idx++;
+			szTmp.sprintf("S%d",iIdx);
+			c.writeEntry(szTmp.ptr(),*szString);
+			iIdx++;
 		}
 	}
 }

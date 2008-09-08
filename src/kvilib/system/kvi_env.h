@@ -29,6 +29,7 @@
 * \file kvi_env.h
 * \author Szymon Stefanek
 * \brief Environment function wrappers
+*
 * \def kvi_setenv(__name,__value) Defines kvi_setenv(__name,__value) as SetEnvironmentVariable(__name,__value) on win32
 * \def kvi_unsetenv(__name) Defines kvi_unsetenv(__name) as SetEnvironmentVariable(__name,NULL) on win32
 */

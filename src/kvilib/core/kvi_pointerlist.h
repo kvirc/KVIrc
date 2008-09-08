@@ -148,6 +148,7 @@ protected:
 public:
 	/**
 	* \brief Creates an iterator copy.
+	*
 	* The new iterator points exactly to the item pointed by src.
 	* \param src The source item to point to
 	* \return KviPointerListIterator
@@ -160,6 +161,7 @@ public:
 
 	/**
 	* \brief Creates an iterator for the list l.
+	*
 	* The iterator points to the first list item, if any.
 	* \param l The source list to point to
 	* \return KviPointerListIterator
@@ -172,6 +174,7 @@ public:
 
 	/**
 	* \brief Creates an iterator for the list l.
+	*
 	* The iterator points to the specified list node.
 	* \param l The source list
 	* \param pNode The list node to point to
@@ -185,6 +188,7 @@ public:
 
 	/**
 	* \brief Creates an iterator copy.
+	*
 	* The new iterator points exactly to the item pointed by src.
 	* \param src The source item to copy
 	* \return void
@@ -197,6 +201,7 @@ public:
 public:
 	/**
 	* \brief Moves the iterator to the first element of the list.
+	*
 	* Returns true in case of success or false if the list is empty.
 	* \return bool
 	*/
@@ -208,6 +213,7 @@ public:
 	
 	/**
 	* \brief Moves the iterator to the last element of the list.
+	*
 	* Returns true in case of success or false if the list is empty.
 	* \return bool
 	*/
@@ -219,6 +225,7 @@ public:
 
 	/**
 	* \brief Moves the iterator to the next element of the list.
+	*
 	* The iterator must be actually valid for this function to work.
 	* Returns true in case of success or false if there is no next item.
 	* \return bool
@@ -232,6 +239,7 @@ public:
 
 	/**
 	* \brief Moves the iterator to the next element of the list.
+	*
 	* The iterator must be actually valid for this operator to work.
 	* Returns true in case of success or false if there is no next item.
 	* This is just a convenient alias to moveNext().
@@ -246,6 +254,7 @@ public:
 
 	/**
 	* \brief Moves the iterator to the previous element of the list.
+	*
 	* The iterator must be actually valid for this function to work.
 	* Returns true in case of success or false if there is no previous
 	* item.
@@ -260,6 +269,7 @@ public:
 
 	/**
 	* \brief Moves the iterator to the previous element of the list.
+	*
 	* The iterator must be actually valid for this operator to work.
 	* Returns true in case of success or false if there is no previous
 	* item.
@@ -275,6 +285,7 @@ public:
 
 	/**
 	* \brief Returs the value pointed by the iterator.
+	*
 	* If the iterator is not valid, returns NULL.
 	* \return T *
 	*/
@@ -285,6 +296,7 @@ public:
 
 	/**
 	* \brief Returs the value pointed by the iterator.
+	*
 	* If the iterator is not valid, returns NULL.
 	* This is just an alias to current().
 	* \return T *
@@ -296,6 +308,7 @@ public:
 
 	/**
 	* \brief Returns true if this iterator points to a valid element
+	*
 	* Returns false otherwise.
 	* \return bool
 	*/
@@ -363,6 +376,7 @@ protected:
 protected:
 	/**
 	* \brief Inserts the item d before the item ref
+	*
 	* If ref is not found in the list, it inserts d at the beginning
 	* Also sets the current iteration pointer to the newly inserted
 	* item
@@ -388,8 +402,7 @@ protected:
 	}
 
 	/**
-	* Grabs the first element from the list src
-	* and puts it as the first element of this list.
+	* \brief Grabs the first element from the list src and puts it as the first element of this list.
 	* \param src The source list
 	* \return void
 	*/
@@ -447,6 +460,7 @@ protected:
 public:
 	/**
 	* \brief Inserts the list src inside this list
+	*
 	* It respects the sort order.
 	* The src list elements are removed.
 	* \param src The list to insert
@@ -517,6 +531,7 @@ public:
 
 	/**
 	* \brief Sorts this list in ascending order.
+	*
 	* There must be an int kvi_compare(const T *p1, const T *p2)
 	* function which returns a value less than, equal to or greater
 	* than zero when the item p1 is considered lower than, equal to or
@@ -552,6 +567,7 @@ public:
 
 	/**
 	* \brief Inserts the item respecting the sorting order inside the list.
+	*
 	* The list itself must be already sorted for this to work
 	* correctly.
 	* There must be a int kvi_compare(const T *p1, const T * p2) that
@@ -588,6 +604,7 @@ public:
 
 	/**
 	* \brief Returns the first item in the list
+	*
 	* Sets the iteration pointer to the first item in the list and
 	* returns that item (or 0 if the list is empty)
 	* \return T *
@@ -605,6 +622,7 @@ public:
 
 	/**
 	* \brief Removes the first element from the list
+	*
 	* It returns the item to the caller. This function obviously never
 	* deletes the item (regadless of autoDeletion()).
 	* \return T *
@@ -638,6 +656,7 @@ public:
 
 	/**
 	* \brief Returns the last item in the list
+	*
 	* Sets the iteration pointer to the last item in the list
 	* and returns that item (or 0 if the list is empty)
 	* \return T *
@@ -664,6 +683,7 @@ public:
 
 	/**
 	* \brief Returns the current iteration item
+	*
 	* A call to this function MUST be preceded by a call to
 	* first(),last(),at() or findRef()
 	* \return T *
@@ -675,6 +695,7 @@ public:
 
 	/**
 	* \brief Returns the current iteration item
+	*
 	* A call to this function should be preceded by a call to
 	* first(),last(),at() or findRef().
 	* This function will return a NULL pointer if the current item has
@@ -688,6 +709,7 @@ public:
 
 	/**
 	* \brief Returns an iterator pointing to the current item in the list.
+	*
 	* A call to this function MUST be preceded by a call to
 	* first(),last(),at() or findRef()
 	* \return KviPointerListIterator<T>
@@ -699,6 +721,7 @@ public:
 
 	/**
 	* \brief Returns the next item in the list
+	*
 	* Sets the iteration pointer to the next item in the list and
 	* returns that item (or 0 if the end of the list has been reached)
 	* A call to this function MUST be preceded by a _succesfull_ call
@@ -715,6 +738,7 @@ public:
 
 	/**
 	* \brief Returns the previous item in the list
+	*
 	* Sets the iteration pointer to the previous item in the list and
 	* returns that item (or 0 if the beginning of the list has been
 	* reached).
@@ -732,6 +756,7 @@ public:
 
 	/**
 	* \brief Returns the item at index position
+	*
 	* Sets the iteration pointer to the nTh item in the list
 	* and returns that item (or 0 if the index is out of range)
 	* \param idx The index of the element to return
@@ -771,6 +796,7 @@ public:
 
 	/**
 	* \brief Returns the position of an item
+	*
 	* Sets the iteration pointer to the item with pointer d
 	* and returns its position (zero based index) in the list or -1 if
 	* the item cannot be found
@@ -875,6 +901,7 @@ public:
 
 	/**
 	* \brief Inserts the item d at the position specified by iIndex.
+	*
 	* The position is zero-based. If the specified position is out of
 	* the list then the item is appended.
 	* Note that this function costs O(n).
@@ -900,6 +927,7 @@ public:
 
 	/**
 	* \brief Removes the first item (if any)
+	*
 	* The item is deleted if autoDelete() is set to true
 	* \return bool
 	*/
@@ -928,6 +956,7 @@ public:
 
 	/**
 	* \brief Removes the firstitem (if any)
+	*
 	* The item is deleted if autoDelete() is set to true
 	* \return bool
 	*/
@@ -956,6 +985,7 @@ public:
 
 	/**
 	* \brief Removes the item at zero-based position iIndex.
+	*
 	* Does nothing and returns false if iIndex is out of the list.
 	* Please note that this function costs O(n).
 	* \param iIndex The index where to remove the item
@@ -977,6 +1007,7 @@ public:
 
 	/**
 	* \brief Sets the autodelete flag
+	*
 	* When this flag is on (default), all the items are deleted when
 	* removed from the list (or when the list is destroyed or cleared
 	* explicitly)
@@ -999,7 +1030,8 @@ public:
 
 	/**
 	* \brief Removes all the items from the list
-	* (the items are deleted if the autoDelete() flag is set to true)
+	*
+	* The items are deleted if the autoDelete() flag is set to true
 	* \return void
 	*/
 	void clear()
@@ -1009,6 +1041,7 @@ public:
 
 	/**
 	* \brief Removes the current iteration item.
+	*
 	* Returns true if the current iteration item was valid (and was
 	* removed) and false otherwise.
 	* \return bool
@@ -1023,6 +1056,7 @@ public:
 
 	/**
 	* \brief Removes the item pointed by d (if found in the list)
+	*
 	* The item is deleted if the autoDelete() flag is set to true)
 	* Returns true if the item was in the list and false otherwise.
 	* \param d The pointer to the item to delete
@@ -1037,6 +1071,7 @@ public:
 
 	/**
 	* \brief Inserts the item d after the item ref
+	*
 	* If ref is not found in the list, the item is inserted at the end
 	* Also sets the current iteration pointer to the newly inserted
 	* item
@@ -1065,6 +1100,7 @@ public:
 
 	/**
 	* \brief Inserts the item d before the item ref
+	*
 	* If ref is not found in the list, the item is inserted at the
 	* beginning.
 	* Also sets the current iteration pointer to the newly inserted
@@ -1126,6 +1162,7 @@ public:
 
 	/**
 	* \brief Clears the list and inserts all the items from the list l
+	*
 	* This is just an alias to copyFrom(l)
 	* \param l The source list to copy from
 	* \return KviPointerList<T> &
@@ -1152,6 +1189,7 @@ public:
 
 	/**
 	* \brief Destroys the list
+	*
 	* If autoDelete() is set to true, all the items are deleted
 	*/
 	virtual ~KviPointerList<T>()

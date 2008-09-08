@@ -23,11 +23,16 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //============================================================================
+//   This file was originally part of kvi_input.h
+//============================================================================
 
 /**
 * \file kvi_input_history.h
 * \author Elvio Basello
 * \brief Input history management
+*
+* \def KVI_INPUT_MAX_GLOBAL_HISTORY_ENTRIES
+* \def KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES
 */
 
 #include "kvi_settings.h"

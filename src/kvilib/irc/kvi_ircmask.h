@@ -119,6 +119,7 @@ public:
 public:
 	/**
 	* \brief Sets the nick for this user.
+	*
 	* If szNick is NULL or it points to an empty string the nick is set to "*".
 	* \param szNick The nickname of the user
 	* \return void
@@ -127,6 +128,7 @@ public:
 
 	/**
 	* \brief Sets the username for this user.
+	*
 	* If szUsername is NULL or it points to an empty string the username is set to "*".
 	* \param szUser The username of the user
 	* \return void
@@ -135,6 +137,7 @@ public:
 
 	/**
 	* \brief Sets the username for this user.
+	*
 	* If szUsername is NULL or it points to an empty string the username is set to "*".
 	* This is an alias of setUsername()
 	* \param szUser The username of the user
@@ -144,6 +147,7 @@ public:
 
 	/**
 	* \brief Sets the host for this user.
+	*
 	* If szHost is NULL or it points to an empty string the host is set to "*".
 	* \param szHost The hostname of the user
 	* \return void
@@ -166,6 +170,7 @@ public:
 
 	/**
 	* \brief Returns the nickname of this user.
+	*
 	* In the worst case you get a string == "*"
 	* \return const QString &
 	*/
@@ -173,6 +178,7 @@ public:
 
 	/**
 	* \brief Returns the username of this user.
+	*
 	* In the worst case you get a string == "*"
 	* \return const QString &
 	*/
@@ -180,6 +186,7 @@ public:
 
 	/**
 	* \brief Returns the hostname of this user.
+	*
 	* In the worst case you get a string == "*"
 	* \return const QString &
 	*/
@@ -205,6 +212,7 @@ public:
 
 	/**
 	* \brief Returns in szMask the specified (if possible) mask of this user.
+	*
 	* If the host or username are not known , the mask may contain less
 	* information than requested.
 	* \param szMask The mask of the user
@@ -268,6 +276,7 @@ public:
 private:
 	/**
 	* \brief Returns the number of characters which are parts of the IP
+	*
 	* The IP is in the form xxx.xxx.xxx.*
 	* \return int
 	*/
@@ -275,6 +284,7 @@ private:
 
 	/**
 	* \brief Returns the number of characters which are parts of the IP
+	*
 	* The IP is in the form xxx.xxx.*
 	* \return int
 	*/
@@ -293,7 +303,7 @@ private:
 	QString getLargeHostDomainMask() const;
 
 	/**
-	* \brief 
+	* \brief Returns true if the user has the ip in the mask
 	* \return bool
 	* \warning This is just a GUESS and must be called AFTER making sure that it is NOT a plain numeric IP
 	*/

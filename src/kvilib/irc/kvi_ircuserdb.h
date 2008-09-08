@@ -32,6 +32,7 @@
 *
 * The defines are ordered from the least to the most powerful. All the flags are
 * usermodes.
+*
 * \def KVI_USERFLAG_USEROP Defines the userop user
 * \def KVI_USERFLAG_VOICE Defines the voice user
 * \def KVI_USERFLAG_HALFOP Defines the halfop user
