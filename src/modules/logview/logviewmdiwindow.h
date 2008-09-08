@@ -42,7 +42,7 @@ class KviLogViewWidget;
 class KviLogFile {
 
 public:
-	
+
 	enum KviLogTypes {
 		Channel,
 		Console,
@@ -70,16 +70,28 @@ private:
 	QDate        m_date;
 };
 
+class KviLogViewListView : public KviTalTreeWidget
+{
+	Q_OBJECT
+public:
+	KviLogViewListView(QWidget*);
+	~KviLogViewListView(){};
+protected:
+	void mousePressEvent (QMouseEvent *e);
+signals:
+	void rightButtonPressed(QTreeWidgetItem *,QPoint);
+};
+
 class KviLogViewMDIWindow : public KviWindow , public KviModuleExtension
 {
     Q_OBJECT
-public: 
+public:
 	KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm);
 	~KviLogViewMDIWindow();
 protected:
 	KviPointerList<KviLogFile> m_logList;
 
-	KviTalTreeWidget     * m_pListView;
+	KviLogViewListView     * m_pListView;
 
 	// Type filter
 	QCheckBox          * m_pShowChannelsCheck;
@@ -105,7 +117,7 @@ protected:
 	QWidget            * m_pSearchTab;
 protected:
 	QStringList getFileNames();
-	
+
 	void setupItemList();
 	void cacheFileList();
 
@@ -115,8 +127,8 @@ protected:
 	virtual void die();
 	virtual QSize sizeHint() const;
 protected slots:
-	void rightButtonClicked ( KviTalTreeWidgetItem *, const QPoint &, int );
-	void itemSelected(KviTalTreeWidgetItem * it);
+	void rightButtonClicked ( QTreeWidgetItem *, const QPoint &);
+	void itemSelected(KviTalTreeWidgetItem * it, KviTalTreeWidgetItem *);
 	void deleteCurrent();
 	void applyFilter();
 };

@@ -37,41 +37,63 @@
 	#include <zlib.h>
 #endif
 
-
-const QPixmap * KviLogListViewItemType::pixmap(int col) const 
+KviLogListViewItem::KviLogListViewItem(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+: KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
 {
-	switch(m_type)
-	{
-		case KviLogFile::Channel:
-			return g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL);
-		case KviLogFile::Query:
-			return g_pIconManager->getSmallIcon(KVI_SMALLICON_QUERY);
-		case KviLogFile::DccChat:
-			return g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG);
-		case KviLogFile::Console:
-			return g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE);
-		default:
-			return g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP);
-	}
-}
-
-QString KviLogListViewItemType::text(int col) const
-{
-	switch(m_type)
-	{
-		case KviLogFile::Channel:
-			return __tr2qs_ctx("Channel","logview");
-		case KviLogFile::Query:
-			return __tr2qs_ctx("Query","logview");
-		case KviLogFile::DccChat:
-			return __tr2qs_ctx("DCC Chat","logview");
-		case KviLogFile::Console:
-			return __tr2qs_ctx("Console","logview");
-		default:
-			return __tr2qs_ctx("Other","logview");
-	}
+	setText(0,m_pFileData ? m_pFileData->name() : QString::null);
 };
 
+KviLogListViewItem::KviLogListViewItem(KviTalTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+: KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
+{
+	setText(0,m_pFileData ? m_pFileData->name() : QString::null);
+};
+
+KviLogListViewItemFolder::KviLogListViewItemFolder(KviTalTreeWidgetItem * par, const QString& label)
+: KviLogListViewItem(par,KviLogFile::Other,0)
+{
+	setText(0,label);
+};
+
+KviLogListViewItemType::KviLogListViewItemType(KviTalTreeWidget * par, KviLogFile::KviLogTypes type)
+: KviLogListViewItem(par,type,0)
+{
+	QIcon icon;
+	QString text;
+
+	switch(m_type)
+	{
+		case KviLogFile::Channel:
+			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL));
+			text = __tr2qs_ctx("Channel","logview");
+			break;
+		case KviLogFile::Query:
+			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_QUERY));
+			text = __tr2qs_ctx("Query","logview");
+			break;
+		case KviLogFile::DccChat:
+			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG));
+			text = __tr2qs_ctx("DCC Chat","logview");
+			break;
+		case KviLogFile::Console:
+			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE));
+			text = __tr2qs_ctx("Console","logview");
+			break;
+		default:
+			icon= QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP));
+			text = __tr2qs_ctx("Other","logview");
+			break;
+	}
+
+	setIcon(0, icon);
+	setText(0, text);
+}
+
+KviLogListViewLog::KviLogListViewLog(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+: KviLogListViewItem(par,type,fileData)
+{
+	setText(0, m_pFileData->date().toString("dd.MM.yyyy"));
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "logviewwidget.moc"

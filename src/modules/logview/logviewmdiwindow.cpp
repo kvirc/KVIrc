@@ -50,6 +50,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QShortcut>
+#include <QMouseEvent>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
@@ -67,34 +68,31 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pTabWidget = new QTabWidget(m_pSplitter);
-	
+
 	m_pIndexTab  = new KviTalVBox(m_pTabWidget);
 	m_pTabWidget->addTab(m_pIndexTab,__tr2qs_ctx("Index","logview"));
-	m_pListView = new KviTalTreeWidget(m_pIndexTab);
-	m_pListView->addColumn(__tr2qs_ctx("Log File","logview"));
-	//m_pListView->setColumnWidth(0,m_pListView->viewport()->width());
-	m_pListView->setAllColumnsShowFocus(true);
-	m_pListView->setSelectionMode(QAbstractItemView::SingleSelection);
-	m_pListView->header()->setSortIndicatorShown(true);
-	m_pListView->setRootIsDecorated(true);
-	connect(m_pListView,SIGNAL(selectionChanged(KviTalTreeWidgetItem *)),this,SLOT(itemSelected(KviTalTreeWidgetItem *)));
-	connect(m_pListView,SIGNAL(rightButtonClicked ( KviTalTreeWidgetItem * , const QPoint &, int )),this,SLOT(rightButtonClicked ( KviTalTreeWidgetItem * , const QPoint &, int )));
-	
+
+	m_pListView = new KviLogViewListView(m_pIndexTab);
+
+	connect(m_pListView,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),this,SLOT(itemSelected(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),
+		this,SLOT(rightButtonClicked(QTreeWidgetItem *,QPoint)));
+
 	m_pSearchTab  = new QWidget(m_pTabWidget);
 	m_pTabWidget->addTab(m_pSearchTab,__tr2qs_ctx("Filter","logview"));
 
 	QGridLayout *layout = new QGridLayout(m_pSearchTab);
-	
+
 	m_pShowChannelsCheck = new QCheckBox(__tr2qs_ctx("Show channel logs","logview"),m_pSearchTab);
 	m_pShowChannelsCheck->setChecked(true);
 	layout->addWidget(m_pShowChannelsCheck,0,0,1,2);
 //	layout->addMultiCellWidget(m_pShowChannelsCheck,0,0,0,1);
-	
+
 	m_pShowQueryesCheck  = new QCheckBox(__tr2qs_ctx("Show query logs","logview"),m_pSearchTab);
 	m_pShowQueryesCheck->setChecked(true);
 	layout->addWidget(m_pShowQueryesCheck,1,0,1,2);
 //	layout->addMultiCellWidget(m_pShowQueryesCheck,1,1,0,1);
-	
+
 	m_pShowConsolesCheck = new QCheckBox(__tr2qs_ctx("Show console logs","logview"),m_pSearchTab);
 	m_pShowConsolesCheck->setChecked(true);
 	layout->addWidget(m_pShowConsolesCheck,2,0,1,2);
@@ -104,12 +102,12 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	m_pShowDccChatCheck->setChecked(true);
 	layout->addWidget(m_pShowDccChatCheck,3,0,1,2);
 //	layout->addMultiCellWidget(m_pShowDccChatCheck,3,3,0,1);
-	
+
 	m_pShowOtherCheck   = new QCheckBox(__tr2qs_ctx("Show other logs","logview"),m_pSearchTab);
 	m_pShowOtherCheck->setChecked(true);
 	layout->addWidget(m_pShowOtherCheck,4,0,1,2);
 //	layout->addMultiCellWidget(m_pShowOtherCheck,4,4,0,1);
-	
+
 	QLabel *l;
 	l = new QLabel(__tr2qs_ctx("Contents filter","logview"),m_pSearchTab);
 	layout->addWidget(l,5,0,1,2);
@@ -158,10 +156,10 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	li.append(110);
 	li.append(width()-110);
 	m_pSplitter->setSizes(li);
-	
+
 	g_pApp->getLocalKvircDirectory(m_szLogDirectory,KviApp::Log);
 	KviQString::ensureLastCharIs(m_szLogDirectory,'/'); // Does this work on Windows?
-	
+
 	cacheFileList();
 	setupItemList();
 	connect(new QShortcut(Qt::Key_F+Qt::CTRL,this),SIGNAL(activated()),m_pIrcView,SLOT(toggleToolWidget()));
@@ -322,7 +320,7 @@ void KviLogViewMDIWindow::cacheFileList()
 	}
 }
 
-void KviLogViewMDIWindow::itemSelected(KviTalTreeWidgetItem * it)
+void KviLogViewMDIWindow::itemSelected(KviTalTreeWidgetItem * it,KviTalTreeWidgetItem *)
 {
 	bool bCompressed=0;
 	//A parent node
@@ -331,7 +329,7 @@ void KviLogViewMDIWindow::itemSelected(KviTalTreeWidgetItem * it)
 	{
 		return;
 	}
-	
+
 	QString text;
 	((KviLogListViewItem *)it)->m_pFileData->getText(text,m_szLogDirectory);
 
@@ -358,10 +356,12 @@ QStringList KviLogViewMDIWindow::getFileNames()
 	return logDir.entryList();
 }
 
-void KviLogViewMDIWindow::rightButtonClicked ( KviTalTreeWidgetItem * it, const QPoint &, int )
+void KviLogViewMDIWindow::rightButtonClicked ( QTreeWidgetItem * it, const QPoint &)
 {
 	if(!it) return;
-	if(((KviLogListViewItem *)it)->fileName(0).isEmpty()) return;
+	m_pListView->setCurrentItem(it);
+
+	if(((KviLogListViewItem *)it)->fileName().isEmpty()) return;
 	KviTalPopupMenu* popup = new KviTalPopupMenu(this);
 	popup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),__tr2qs_ctx("Remove file","logview"),this,SLOT(deleteCurrent()));
 	popup->exec( QCursor::pos() );
@@ -372,10 +372,10 @@ void KviLogViewMDIWindow::deleteCurrent()
 	KviLogListViewItem* pItem = (KviLogListViewItem *)(m_pListView->currentItem());
 	if(pItem)
 	{
-		if(!pItem->fileName(0).isNull())
+		if(!pItem->fileName().isNull())
 		{
 			QString szFname;
-			g_pApp->getLocalKvircDirectory(szFname,KviApp::Log,pItem->m_pFileData->fileName());
+			g_pApp->getLocalKvircDirectory(szFname,KviApp::Log,pItem->fileName());
 			KviFileUtils::removeFile(szFname);
 			delete pItem;
 			m_pIrcView->clearBuffer();
@@ -414,13 +414,13 @@ KviLogFile::KviLogFile(const QString& name)
 
 	undecoded = szTmpName.section('.',1).section('_',0,0);
 	m_szNetwork = undecoded.hexDecode(undecoded.ptr()).ptr();
-	
+
 	QString szDate = szTmpName.section('.',-4,-1).section('_',1,1);
 	int iYear = szDate.section('.',0,0).toInt();
 	int iMonth = szDate.section('.',1,1).toInt();
 	int iDay = szDate.section('.',2,2).toInt();
 	m_date.setYMD(iYear,iMonth,iDay);
-	
+
 	//debug("type=%i, name=%s, net=%s, date=%i %i %i",m_type,m_szName.ascii(),m_szNetwork.ascii(),iYear,iMonth,iDay);
 }
 
@@ -453,10 +453,10 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 	} else {
 #endif
 		logFile.setFileName(logName);
-		
+
 		if(!logFile.open(QIODevice::ReadOnly))
 		return;
-	
+
 		QByteArray bytes;
 		bytes=logFile.readAll();
 		text = QString::fromUtf8(bytes.data(), bytes.size());
@@ -464,6 +464,28 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 #ifdef COMPILE_ZLIB_SUPPORT
 	}
 #endif
+}
+
+KviLogViewListView::KviLogViewListView(QWidget * par)
+: KviTalTreeWidget(par)
+{
+	header()->setSortIndicatorShown(true);
+	setColumnCount(1);
+	setHeaderLabel(__tr2qs_ctx("Log File","logview"));
+	setSelectionMode(QAbstractItemView::SingleSelection);
+	setSortingEnabled(true);
+	setRootIsDecorated(true);
+	setAnimated(true);
+}
+
+void KviLogViewListView::mousePressEvent (QMouseEvent *e)
+{
+	if (e->button() == Qt::RightButton)
+	{
+		QTreeWidgetItem *i=itemAt(e->pos());
+		if (i) emit rightButtonPressed(i,QCursor::pos());
+	}
+	QTreeWidget::mousePressEvent(e);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

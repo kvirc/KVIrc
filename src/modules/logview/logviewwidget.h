@@ -34,50 +34,38 @@ class KviScriptEditor;
 class KviLogListViewItem : public KviTalTreeWidgetItem
 {
 public:
-	KviLogListViewItem(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
-	: KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData) {};
-	KviLogListViewItem(KviTalTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
-	: KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData) {};
+	KviLogListViewItem(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
+	KviLogListViewItem(KviTalTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
 	~KviLogListViewItem() {};
 public:
 	KviLogFile::KviLogTypes m_type;
 	KviLogFile*             m_pFileData;
-
-	virtual QString fileName(int col) const { return m_pFileData ? m_pFileData->name() : QString::null; };
-	virtual QString text(int col) const { return m_pFileData ? m_pFileData->name() : QString::null; };
+	virtual QString fileName() const { return QString::null; };
 };
 
 class KviLogListViewItemFolder : public KviLogListViewItem
 {
 public:
-	KviLogListViewItemFolder(KviTalTreeWidgetItem * par, const QString& label)
-	: KviLogListViewItem(par,KviLogFile::Other,0),m_szLabel(label) {};
+	KviLogListViewItemFolder(KviTalTreeWidgetItem * par, const QString& label);
 	~KviLogListViewItemFolder() {};
 public:
-	QString m_szLabel;
-	virtual QString text(int col) const { return m_szLabel; };
 };
 
 class KviLogListViewItemType : public KviLogListViewItem
 {
 public:
-	KviLogListViewItemType(KviTalTreeWidget * par, KviLogFile::KviLogTypes type)
-	: KviLogListViewItem(par,type,0) {};
+	KviLogListViewItemType(KviTalTreeWidget * par, KviLogFile::KviLogTypes type);
 	~KviLogListViewItemType() {};
-public:
-	virtual const QPixmap * pixmap(int col) const;
-	virtual QString text(int col) const;
 };
 
 
 class KviLogListViewLog : public KviLogListViewItem
 {
 public:
-	KviLogListViewLog(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
-	: KviLogListViewItem(par,type,fileData){};
+	KviLogListViewLog(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
 	~KviLogListViewLog() {};
-	virtual QString key ( int column, bool ascending ) const { return m_pFileData->date().toString("yyyy.MM.dd"); };
-	virtual QString text(int col) const { return m_pFileData->date().toString("dd.MM.yyyy"); };
+	virtual QString key ( int column, bool ascending ) const { return text(column); };
+	virtual QString fileName() const { return m_pFileData->fileName(); };
 };
 
 #endif
