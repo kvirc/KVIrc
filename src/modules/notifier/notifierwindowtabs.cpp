@@ -198,7 +198,7 @@ KviNotifierWindowTabs::~KviNotifierWindowTabs()
 {
 	QMap<KviWindow *, KviNotifierWindowTab *>::Iterator tab;
 	for(tab = m_tabMap.begin(); tab != m_tabMap.end(); tab++ )
-		delete tab.data();
+		delete tab.value();
 	m_tabMap.clear();
 	delete m_pFocusedFont;
 	delete m_pUnfocusedFont;
@@ -425,8 +425,8 @@ void KviNotifierWindowTabs::mousePressEvent(QMouseEvent * e)
 	{
 		QMap<KviWindow *, KviNotifierWindowTab *>::Iterator tab;
 		for (tab = m_tabMap.begin(); tab != m_tabMap.end(); tab++ ) {
-			if (tab.data()->rect().contains(e->pos())) {
-				setFocusOn(tab.data());
+			if (tab.value()->rect().contains(e->pos())) {
+				setFocusOn(tab.value());
 				return;
 			}
 		}
@@ -529,7 +529,7 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 {
 	if(!m_bNeedToRedraw)return;
 
-	m_pPixmap->resize(m_rct.width(), m_rct.height());
+	*m_pPixmap = QPixmap(m_rct.size());
 
 	m_pPainter->begin(m_pPixmap);
 
@@ -654,7 +654,7 @@ void KviNotifierWindowTabs::markAllMessagesAsHistoric()
 
 void KviNotifierWindowTabs::closeTab(KviWindow * pWnd)
 {
-	KviNotifierWindowTab * pTab = m_tabMap.find(pWnd).data();
+	KviNotifierWindowTab * pTab = m_tabMap.find(pWnd).value();
 	closeTab(pWnd, pTab);
 }
 

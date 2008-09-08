@@ -3,7 +3,7 @@
 //=============================================================================
 //
 //   File : notifiermessage.h
-//   Created on mar 02 nov 2004 02:41:18 by 
+//   Created on mar 02 nov 2004 02:41:18 by
 //		Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
 //
 //   This file is part of the KVIrc distribution
@@ -39,10 +39,8 @@
 #include <QFont>
 #include <QColor>
 #include <QLineEdit>
-#include <q3popupmenu.h>
-#include <q3simplerichtext.h>
-#define QSimpleRichText Q3SimpleRichText
-#define QPopupMenu Q3PopupMenu
+#include <QMenu>
+#include <QTextDocument>
 
 class QPopupMenu;
 class KviWindow;
@@ -65,7 +63,7 @@ public:
 protected:
 	KviWindow       * m_pWindow;
 	QPixmap         * m_pImage;
-	QSimpleRichText * m_pText;
+	QTextDocument   * m_pText;
 	bool              m_bHistoric;
 
 // ================================
@@ -78,8 +76,8 @@ public:
 	void setHistoric();
 	void setWindow(KviWindow * pWnd){ m_pWindow = pWnd; };
 	QPixmap * image(){ return m_pImage; };
-	QSimpleRichText * text(){ return m_pText; };
-	
+	QTextDocument * text(){ return m_pText; };
+
 protected:
 
 

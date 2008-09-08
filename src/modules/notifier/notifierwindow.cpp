@@ -40,6 +40,7 @@
 #include "kvi_options.h"
 #include "kvi_userinput.h"
 
+#include <QAbstractTextDocumentLayout>
 #include <QApplication>
 #include <QImage>
 #include <QDesktopWidget>
@@ -49,30 +50,27 @@
 #include <QFontMetrics>
 #include <QRegExp>
 #include <QPainter>
-#include <q3popupmenu.h>
-#include <q3simplerichtext.h>
-#define QPopupMenu Q3PopupMenu
-#define QSimpleRichText Q3SimpleRichText
 
 extern KviNotifierWindow * g_pNotifierWindow;
 
 KviNotifierWindow::KviNotifierWindow()
-: QWidget(0,"kvirc_notifier_window",
+: QWidget(0,
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			Qt::WStyle_Customize |
 			Qt::WStyle_NoBorder |
 			Qt::WStyle_Tool |
 			Qt::WStyle_StaysOnTop)
 #else
-			Qt::WStyle_Customize |
-			Qt::WStyle_NoBorder |
+			Qt::FramelessWindowHint |
 #ifndef COMPILE_ON_MAC
-			Qt::WStyle_Tool |
-			Qt::WX11BypassWM |
+			Qt::Tool |
+			Qt::X11BypassWindowManagerHint |
 #endif
-			Qt::WStyle_StaysOnTop)
+			Qt::WindowStaysOnTopHint)
 #endif
 {
+	setObjectName("kvirc_notifier_window");
+
 	g_pNotifierWindow = this;
 
 	m_eState = Hidden;
@@ -192,9 +190,9 @@ int KviNotifierWindow::countTabs()
 
 void KviNotifierWindow::reloadImages()
 {
-	m_pixBackground.resize(WDG_MIN_WIDTH,WDG_MIN_HEIGHT);
+	m_pixBackground = QPixmap(WDG_MIN_WIDTH,WDG_MIN_HEIGHT);
 	m_pixBackground.fill();
-	m_pixBackgroundHighlighted.resize(m_pixBackground.size());
+	m_pixBackgroundHighlighted = QPixmap(m_pixBackground.size());
 	m_pixBackgroundHighlighted.fill();
 
 	m_pWndBorder->resize(m_pixBackground.size());
@@ -316,12 +314,12 @@ void KviNotifierWindow::doShow(bool bDoAnimate)
 						m_wndRect.x(),
 						m_wndRect.y(),
 						m_wndRect.width(),
-						m_wndRect.height()).convertToImage();
+						m_wndRect.height()).toImage();
 		#endif
 			// QPixmap tmp = QPixmap::grabWindow( QApplication::desktop()->winId(),m_wndRect.x(), m_wndRect.y(), m_wndRect.width(), m_wndRect.height());
 			// tmp.save("/root/pix.png","PNG");
-			m_pixForeground.resize(m_pixBackground.size());
-			m_imgBuffer.create(m_pixBackground.width(),m_pixBackground.height(),32);
+			m_pixForeground = QPixmap(m_pixBackground.size());
+			m_imgBuffer = QImage(m_pixBackground.width(),m_pixBackground.height(),QImage::Format_RGB32);
 			if(bDoAnimate)
 			{
 				m_pShowHideTimer = new QTimer();
@@ -649,7 +647,7 @@ void KviNotifierWindow::paintEvent(QPaintEvent * e)
 	#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC) || defined(COMPILE_ON_MINGW))
 		px.drawPixmap(0,0,m_pixForeground);
 	#else
-		QImage temp_image = m_pixForeground.convertToImage();
+		QImage temp_image = m_pixForeground.toImage();
 		blend_images(m_imgBuffer,m_imgDesktop,temp_image,m_dOpacity);
 		px.drawImage(0,0,m_imgBuffer);
 	#endif
@@ -663,12 +661,13 @@ void KviNotifierWindow::paintEvent(QPaintEvent * e)
 void KviNotifierWindow::redrawText()
 {
 	QPainter p(&m_pixForeground);
+	QAbstractTextDocumentLayout::PaintContext context;
 
 	// the current tab
 	KviNotifierWindowTab * tab = m_pWndTabs->currentTab();
 	if(!tab)return;
 
-	// it's message list
+	// its message list
 	KviPointerList<KviNotifierMessage> * l = tab->messageList();
 	if(!l)return;
 	if(l->isEmpty())return;
@@ -693,32 +692,42 @@ void KviNotifierWindow::redrawText()
 
 	if(m_pLineEdit->isVisible())y -= (m_pLineEdit->height() + 4);
 
-	QColorGroup grp = colorGroup();
+	QPalette palette = QPalette();
 
 	int idx = iIdx;
 	KviNotifierMessage * m = cur;
 	while(m && (y > m_pWndBody->textRect().y()))
 	{
-		int iHeight = m->text()->height();
+		int iHeight = m->text()->size().height();
 		if(iHeight < 18)iHeight = 18;
 		y -= iHeight;
 		if(m->historic())
 		{
-			grp.setColor(QColorGroup::Text,m_clrHistoricText);
+			p.setPen(m_clrHistoricText);
 		} else {
 			if(m == last)
-				grp.setColor(QColorGroup::Text,m_clrCurText);
+				p.setPen(m_clrCurText);
 			else {
 				int iClrIdx = l->count() - (idx + 2);
-				if(iClrIdx < 0)iClrIdx = 0;
+				if(iClrIdx < 0)
+					iClrIdx = 0;
 				else if(iClrIdx >= NUM_OLD_COLORS)iClrIdx = (NUM_OLD_COLORS - 1);
-				grp.setColor(QColorGroup::Text,m_clrOldText[iClrIdx]);
+					p.setPen(m_clrOldText[iClrIdx]);
 			}
 		}
+
 		int iMaxY = y > m_pWndBody->textRect().y() ? y : m_pWndBody->textRect().y();
 		QRect clip(m_pWndBody->textRect().x() + 20,iMaxY,m_pWndBody->textRect().width() - 20,iHeight);
 
-		m->text()->draw(&p,m_pWndBody->textRect().x() + 20,y,clip,grp); //
+// 		m->text()->drawContents(&p);
+
+		p.save();
+
+		m->text()->setPageSize(clip.size());
+		p.translate(clip.x(),clip.y());
+		m->text()->documentLayout()->draw(&p, context);
+		p.restore();
+
 		if(y > m_pWndBody->textRect().y())
 		{
 			if(m->image())
@@ -738,7 +747,7 @@ void KviNotifierWindow::redrawText()
 		title += " ";
 		title += tab->window()->plainTextCaption();
 	}
-	p.drawText(m_pWndBorder->titleRect(),Qt::AlignLeft | Qt::SingleLine,title);
+	p.drawText(m_pWndBorder->titleRect(),Qt::AlignLeft | Qt::TextSingleLine,title);
 	p.end();
 }
 
@@ -815,7 +824,7 @@ void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 	m_tAutoHideAt = 0;
 	stopAutoHideTimer();
 
-	setActiveWindow();
+	activateWindow();
 	setFocus();
 
 	m_pntClick = e->pos();
@@ -1111,9 +1120,9 @@ void KviNotifierWindow::redrawWindow()
 	if(m_pixBackground.size()!=m_wndRect.size())
 	{
 		// Redraw only if size was modified..
-		m_pixBackground.resize(m_wndRect.size());
-		m_pixForeground.resize(m_wndRect.size());
-		m_pixBackgroundHighlighted.resize(m_wndRect.size());
+		m_pixBackground = QPixmap(m_wndRect.size());
+		m_pixForeground = QPixmap(m_wndRect.size());
+		m_pixBackgroundHighlighted = QPixmap(m_wndRect.size());
 
 		m_pWndBorder->resize( m_wndRect.size() );
 		m_pWndTabs->setWidth( m_pWndBorder->tabsRect().width() );
@@ -1133,7 +1142,7 @@ void KviNotifierWindow::redrawWindow()
 			m_pWndBody->draw(&paint);
 			m_pProgressBar->draw(&paint);
 		paint.end();
-		bitBlt(&m_pixForeground, 0,0, &m_pixBackgroundHighlighted);
+		m_pixForeground = m_pixBackgroundHighlighted.copy();
 		m_pWndBorder->touch();
 		m_pWndTabs->touch();
 		m_pWndBody->touch();
@@ -1144,7 +1153,7 @@ void KviNotifierWindow::redrawWindow()
 			m_pWndBody->draw(&paint);
 			m_pProgressBar->draw(&paint);
 		paint.end();
-		bitBlt(&m_pixForeground, 0,0, &m_pixBackground);
+		m_pixForeground = m_pixBackground.copy();
 	}
 
 }
@@ -1187,9 +1196,9 @@ void KviNotifierWindow::contextPopup(const QPoint &pos)
 {
 	if(!m_pContextPopup)
 	{
-		m_pContextPopup = new QPopupMenu(this);
+		m_pContextPopup = new KviTalPopupMenu(this);
 		connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(fillContextPopup()));
-		m_pDisablePopup = new QPopupMenu(this);
+		m_pDisablePopup = new KviTalPopupMenu(this);
 	}
 
 	m_pContextPopup->popup(pos);
@@ -1300,17 +1309,17 @@ void KviNotifierWindow::showLineEdit(bool bShow)
 		//if(m_pLineEdit->isVisible())return;
 		if(!m_pWndTabs->currentMessage())return;
 		if(!m_pWndTabs->currentTab()->window())return;
-		QToolTip::remove(m_pLineEdit);
+		m_pLineEdit->setToolTip("");;
 		QString tip = __tr2qs_ctx("Write text or commands to window","notifier");
 		tip += " \"";
 		tip += m_pWndTabs->currentTab()->window()->plainTextCaption();
 		tip += "\"";
-		QToolTip::add(m_pLineEdit,tip);
+		m_pLineEdit->setToolTip(tip);
 		m_pLineEdit->setGeometry(m_pWndBody->textRect().x(),m_pWndBody->textRect().y() + m_pWndBody->textRect().height() - m_iInputHeight,m_pWndBody->textRect().width(),m_iInputHeight);
 		m_pLineEdit->show();
 		m_pLineEdit->setFocus();
 		redrawWindow();
-		setActiveWindow();
+		activateWindow();
 	} else {
 		if(!m_pLineEdit->isVisible())return;
 		m_pLineEdit->hide();
@@ -1332,7 +1341,7 @@ bool KviNotifierWindow::eventFilter(QObject * pEdit,QEvent * e)
 		m_tAutoHideAt = 0;
 		stopAutoHideTimer();
 		stopBlinkTimer();
-		setActiveWindow();
+		activateWindow();
 		m_pLineEdit->setFocus();
 		if(bWasBlinkOn)update();
 		return true;

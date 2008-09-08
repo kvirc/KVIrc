@@ -24,14 +24,13 @@
 
 #include "kvi_window.h"
 #include "kvi_string.h"
-//#include "kvi_tal_listview.h"
+#include "kvi_tal_popupmenu.h"
 
 #include <QWidget>
 #include <QLineEdit>
 #include <QTreeWidget>
 
 class KviScriptEditor;
-class KviTalPopupMenu;
 
 class KviEventListViewItem : public QTreeWidgetItem
 {

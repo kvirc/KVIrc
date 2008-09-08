@@ -49,16 +49,17 @@
 #include <QImage>
 #include <QDesktopWidget>
 #include <QToolTip>
-#include <q3popupmenu.h>
-#define QPopupMenu Q3PopupMenu
+#include "kvi_tal_popupmenu.h"
 
 
 extern kvi_time_t g_tNotifierDisabledUntil;
 
 KviNotifierMessage::KviNotifierMessage(KviNotifierWindow * pNotifierWindow, QPixmap * pImage, const QString &szText)
 {
-	m_pText = new QSimpleRichText(KviMircCntrl::stripControlBytes(szText),pNotifierWindow->defaultFont());
-	m_pText->setWidth(pNotifierWindow->textWidth());
+	m_pText = new QTextDocument();
+	m_pText->setHtml(KviMircCntrl::stripControlBytes(szText));
+	m_pText->setDefaultFont(pNotifierWindow->defaultFont());
+	m_pText->setTextWidth(pNotifierWindow->textWidth());
 	m_pImage = pImage;
 	m_bHistoric = false;
 }
@@ -71,8 +72,7 @@ KviNotifierMessage::~KviNotifierMessage()
 
 static void increase_transparency(QImage &buffer,QImage &srcimg,int iDivisor)
 {
-	buffer.create(srcimg.width(),srcimg.height(),32);
-	buffer.setAlphaBuffer(true);
+	buffer = QImage(srcimg.size(),QImage::Format_ARGB32);
 
 	for(int y = 0;y < buffer.height();y++)
 	{
@@ -95,7 +95,7 @@ void KviNotifierMessage::setHistoric()
 	if(!m_pImage)return;
 	if(!m_pImage->hasAlphaChannel())return;
 	QImage tmp;
-	QImage out = m_pImage->convertToImage();
+	QImage out = m_pImage->toImage();
 	increase_transparency(tmp,out,2);
-	m_pImage->convertFromImage(tmp);
+	*m_pImage = QPixmap::fromImage(tmp);
 }

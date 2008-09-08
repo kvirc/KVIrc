@@ -29,6 +29,7 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_pointerlist.h"
+#include "kvi_tal_popupmenu.h"
 #include "kvi_time.h"
 
 #include <QBitmap>
@@ -44,7 +45,6 @@
 #include <QWidget>
 
 class QPainter;
-class QPopupMenu;
 class KviWindow;
 class KviNotifierMessage;
 class KviNotifierWindowBody;
@@ -73,7 +73,7 @@ protected:
 	QPixmap m_pixBackground;         // our background image
 	QPixmap m_pixBackgroundHighlighted;
 	QPixmap m_pixForeground;         // we paint the stuff HERE
-	
+
 	// Notifier graphic layout
 	QPixmap m_pixBckgrnd;
 
@@ -89,7 +89,7 @@ protected:
 
 	QFont * m_pDefaultFont;
 	QFont * m_pTitleFont;
-	
+
 	QRect	m_wndRect;
 
 	QColor  m_clrCurText;
@@ -104,26 +104,26 @@ protected:
 	bool	m_bLeftButtonIsPressed;
 	bool	m_bDiagonalResizing;
 	bool	m_bResizing;
-	
-	int		m_whereResizing;
-	
-	QPoint       m_pntDrag;
-	QPoint       m_pntPos;
-	QPoint		 m_pntClick;
-	int          m_iInputHeight;
-	int          m_iBlinkTimeout;
-	int          m_iBlinkCount;
-	QPopupMenu * m_pContextPopup;
-	QPopupMenu * m_pDisablePopup;
+
+	int	m_whereResizing;
+
+	QPoint      m_pntDrag;
+	QPoint      m_pntPos;
+	QPoint      m_pntClick;
+	int         m_iInputHeight;
+	int         m_iBlinkTimeout;
+	int         m_iBlinkCount;
+	KviTalPopupMenu     * m_pContextPopup;
+	KviTalPopupMenu     * m_pDisablePopup;
 	KviWindow * m_pWindowToRaise;
 	kvi_time_t  m_tAutoHideAt;
 	kvi_time_t  m_tStartedAt;
 	QTime	    m_qtStartedAt;
-	bool		m_bDisableHideOnMainWindowGotAttention;
-	//bool		m_bForceShowing;
-	
+	bool	    m_bDisableHideOnMainWindowGotAttention;
+	//bool	    m_bForceShowing;
+
 	QCursor m_cursor;
-	
+
 	KviNotifierWindowTabs 		* m_pWndTabs;
 	KviNotifierWindowProgressBar	* m_pProgressBar;
 	KviNotifierWindowBody 		* m_pWndBody;
