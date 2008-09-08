@@ -543,7 +543,7 @@ static bool objects_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 		return true;
 	}
 
-	c->returnValue()->setString(obSrcClass->name());
+	c->returnValue()->setString(obSrcClass->getName());
 	return true;
 }
 
@@ -774,8 +774,7 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		return true;
 	}
 	QImage buffer;
-	buffer.create(uW,uH,32);
-	buffer.setAlphaBuffer(true);
+	buffer = QImage(uW,uH,QImage::Format_ARGB32);
 	for(int y = 0;y < buffer.height();y++)
 	{
 		QRgb * dst = (QRgb *)buffer.scanLine(y);
@@ -873,9 +872,9 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 			KviKvsVariant v;
 			v.setString(szTemp);
 			n->set(idx,new KviKvsVariant(v));
-			debug ("string %s",szTemp.latin1());
-			debug ("class %s",szClass.latin1());
-			debug ("Obj %s",szObj.latin1());
+			debug ("string %s",szTemp.toUtf8().data());
+			debug ("class %s",szClass.toUtf8().data());
+			debug ("Obj %s",szObj.toUtf8().data());
 
 			idx++;
 
@@ -912,7 +911,7 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 			KviKvsVariant v;
 			v.setString(szTemp);
 			n->set(idx,new KviKvsVariant(v));
-			debug ("string %s",szTemp.latin1());
+			debug ("string %s",szTemp.toUtf8().data());
 			idx++;
 			dumpChildObjects(pWnd, list.at(i), sp.toUtf8().data(), bFlag, n, idx );
 		}
