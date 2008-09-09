@@ -25,15 +25,7 @@
 
 #include "kvi_buildinfo.h"
 #include "kvi_sourcesdate.h"
-
-//MSVC can use it!
 #include "kvi_sysbuildinfo.h"
-
-//#if (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)) && !defined(MINGW)
-//	#include "kvi_wincfg.h"
-//#else
-//	#include "kvi_sysbuildinfo.h"
-//#endif
 
 namespace KviBuildInfo
 {
@@ -99,10 +91,9 @@ namespace KviBuildInfo
 
 	QString buildRevision()
 	{
-		#ifdef KVIRC_BUILD_REVISION
-		QString rev = QString(KVIRC_BUILD_REVISION);
-		#else
 		QString rev;
+		#ifdef KVIRC_BUILD_REVISION
+		rev = QString(KVIRC_BUILD_REVISION);
 		#endif
 		return rev;
 	}

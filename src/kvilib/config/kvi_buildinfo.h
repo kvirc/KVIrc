@@ -39,6 +39,7 @@
 /**
 * \namespace KviBuildInfo
 * \brief This namespace contains informations gathered at KVIrc build time.
+*
 * This, in fact, is the last time that "cmake" ran and successfully generated the
 * kvilib Makefile. Since kvilib is generally built with the kvirc
 * executable, then you can assume that the information returned
@@ -66,6 +67,7 @@ namespace KviBuildInfo
 
 	/**
 	* \brief Returns the build flags
+	*
 	* The build flags were worked out by CMake at compilation time.
 	* \return QString
 	*/
@@ -73,6 +75,7 @@ namespace KviBuildInfo
 
 	/**
 	* \brief Returns a description of the system
+	*
 	* The system refers to the one used to build the KVIrc executable.
 	* \return QString
 	*/
@@ -80,6 +83,7 @@ namespace KviBuildInfo
 
 	/**
 	* \brief Returns the name part of the system
+	*
 	* The system name refers to the one used to build the KVIrc executable.
 	* \return QString
 	*/
@@ -87,6 +91,7 @@ namespace KviBuildInfo
 
 	/**
 	* \brief Returns the version part of the system
+	*
 	* The system version refers to the one used to build the KVIrc executable.
 	* \return QString
 	*/
@@ -94,6 +99,7 @@ namespace KviBuildInfo
 
 	/**
 	* \brief Returns a description of the CPU
+	*
 	* The CPU refers to the one used to build the KVIrc executable.
 	* \return QString
 	*/
@@ -101,6 +107,7 @@ namespace KviBuildInfo
 
 	/**
 	* \brief Returns a description of the compiler
+	*
 	* The compiler refers to the one used to build the KVIrc executable.
 	* \return QString
 	*/
@@ -108,6 +115,7 @@ namespace KviBuildInfo
 
 	/**
 	* \brief Returns a description of the compiler flags
+	*
 	* The flags refer to the ones used to build the KVIrc executable.
 	* \return QString
 	*/

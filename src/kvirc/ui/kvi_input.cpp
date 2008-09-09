@@ -72,7 +72,7 @@ extern KviTalPopupMenu         * g_pInputPopup;
 
 QFontMetrics * g_pLastFontMetrics = 0;
 
-KviInput::KviInput(KviWindow * pPar ,KviUserListView * pView)
+KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 : QWidget(pPar)
 {
 	setObjectName("input_widget");
