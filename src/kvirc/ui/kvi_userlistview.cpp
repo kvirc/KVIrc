@@ -398,7 +398,13 @@ bool KviUserListView::completeNickStandard(const QString &begin,const QString &s
 					buffer += entry->m_pGlobalData->host();
 				}
 				return true;
-			} else if(result < 0)
+			}
+			/*
+			 * This part of code has been commented out to fix #236
+			 *  This code takes some absurt assterion about the first character of nicknames
+			 * and their order in the userlist.
+			
+			else if(result < 0)
 			{
 				// No match...begin is lower than the current entry
 				if(entry->m_iFlags == 0)return false;
@@ -413,6 +419,8 @@ bool KviUserListView::completeNickStandard(const QString &begin,const QString &s
 					continue;
 				}
 			}
+			
+			*/
 		}
 		entry = entry->m_pNext;
 	}
