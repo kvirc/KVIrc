@@ -234,13 +234,17 @@ public:
 	void enableUserListUpdates(bool bEnable){ m_pUserListView->enableUpdates(bEnable); };
 	KviUserListEntry * join(const QString &nick,const QString &user = QString::null,const QString &host = QString::null,int iFlags = 0)
 		{ return m_pUserListView->join(nick,user,host,iFlags); };
-	bool op(const QString &nick,bool bOp){ return m_pUserListView->op(nick,bOp); };
+
+
 	bool avatarChanged(const QString &nick){ return m_pUserListView->avatarChanged(nick); };
-	bool voice(const QString &nick,bool bVoice){ return m_pUserListView->voice(nick,bVoice); };
-	bool halfop(const QString &nick,bool bHalfOp){ return m_pUserListView->halfop(nick,bHalfOp); };
-	bool userop(const QString &nick,bool bUserOp){ return m_pUserListView->userop(nick,bUserOp); };
+
+	bool setOp(const QString &nick,bool bOp){ return m_pUserListView->setOp(nick,bOp); };
+	bool setVoice(const QString &nick,bool bVoice){ return m_pUserListView->setVoice(nick,bVoice); };
+	bool setHalfOp(const QString &nick,bool bHalfOp){ return m_pUserListView->setHalfOp(nick,bHalfOp); };
+	bool setUserOp(const QString &nick,bool bUserOp){ return m_pUserListView->setUserOp(nick,bUserOp); };
 	bool setChanOwner(const QString &nick,bool bChanOwner){ return m_pUserListView->setChanOwner(nick,bChanOwner); };
 	bool setChanAdmin(const QString &nick,bool bChanAdmin){ return m_pUserListView->setChanAdmin(nick,bChanAdmin); };
+
 	void userAction(KviIrcMask * user,unsigned int uActionType);
 	void userAction(const QString &nick,unsigned int uActionType);
 	void userAction(const QString &nick,const QString &user,const QString &host,unsigned int uActionType);

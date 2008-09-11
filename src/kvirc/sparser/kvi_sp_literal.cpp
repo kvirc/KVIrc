@@ -1792,10 +1792,10 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			break;
 			CHANUSER_MODE('q',setChanOwner,KviEvent_OnMeChanOwner,KviEvent_OnMeDeChanOwner,KviEvent_OnChanOwner,KviEvent_OnDeChanOwner,KVI_OUT_MECHANOWNER,KVI_OUT_MEDECHANOWNER,KVI_OUT_CHANOWNER,KVI_OUT_DECHANOWNER)
 			CHANUSER_MODE('a',setChanAdmin,KviEvent_OnMeChanAdmin,KviEvent_OnMeDeChanAdmin,KviEvent_OnChanAdmin,KviEvent_OnDeChanAdmin,KVI_OUT_MECHANADMIN,KVI_OUT_MEDECHANADMIN,KVI_OUT_CHANADMIN,KVI_OUT_DECHANADMIN)
-			CHANUSER_MODE('o',op,KviEvent_OnMeOp,KviEvent_OnMeDeOp,KviEvent_OnOp,KviEvent_OnDeOp,KVI_OUT_MEOP,KVI_OUT_MEDEOP,KVI_OUT_OP,KVI_OUT_DEOP)
-			CHANUSER_MODE('h',halfop,KviEvent_OnMeHalfOp,KviEvent_OnMeDeHalfOp,KviEvent_OnHalfOp,KviEvent_OnDeHalfOp,KVI_OUT_MEHALFOP,KVI_OUT_MEDEHALFOP,KVI_OUT_HALFOP,KVI_OUT_HALFDEOP)
-			CHANUSER_MODE('v',voice,KviEvent_OnMeVoice,KviEvent_OnMeDeVoice,KviEvent_OnVoice,KviEvent_OnDeVoice,KVI_OUT_MEVOICE,KVI_OUT_MEDEVOICE,KVI_OUT_VOICE,KVI_OUT_DEVOICE)
-			CHANUSER_MODE('u',userop,KviEvent_OnMeUserOp,KviEvent_OnMeDeUserOp,KviEvent_OnUserOp,KviEvent_OnDeUserOp,KVI_OUT_MEUSEROP,KVI_OUT_MEDEUSEROP,KVI_OUT_USEROP,KVI_OUT_USERDEOP)
+			CHANUSER_MODE('o',setOp,KviEvent_OnMeOp,KviEvent_OnMeDeOp,KviEvent_OnOp,KviEvent_OnDeOp,KVI_OUT_MEOP,KVI_OUT_MEDEOP,KVI_OUT_OP,KVI_OUT_DEOP)
+			CHANUSER_MODE('h',setHalfOp,KviEvent_OnMeHalfOp,KviEvent_OnMeDeHalfOp,KviEvent_OnHalfOp,KviEvent_OnDeHalfOp,KVI_OUT_MEHALFOP,KVI_OUT_MEDEHALFOP,KVI_OUT_HALFOP,KVI_OUT_HALFDEOP)
+			CHANUSER_MODE('v',setVoice,KviEvent_OnMeVoice,KviEvent_OnMeDeVoice,KviEvent_OnVoice,KviEvent_OnDeVoice,KVI_OUT_MEVOICE,KVI_OUT_MEDEVOICE,KVI_OUT_VOICE,KVI_OUT_DEVOICE)
+			CHANUSER_MODE('u',setUserOp,KviEvent_OnMeUserOp,KviEvent_OnMeDeUserOp,KviEvent_OnUserOp,KviEvent_OnDeUserOp,KVI_OUT_MEUSEROP,KVI_OUT_MEDEUSEROP,KVI_OUT_USEROP,KVI_OUT_USERDEOP)
 
 #define CHANNEL_MODE(__modefl,__evmeset,__evmeunset,__evset,__evunset,__icomeset,__icomeunset,__icoset,__icounset) \
 			case __modefl: \
