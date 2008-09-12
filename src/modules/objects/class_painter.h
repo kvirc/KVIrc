@@ -21,7 +21,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-
+#include <QPrinter>
 
 #include <qpainter.h>
 #include <qpaintdevice.h>
@@ -36,6 +36,7 @@ class KviKvsObject_painter : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_painter)
 protected:
+	QPrinter * m_pPrinter;
 	QPainter * m_pPainter;
 	QMatrix  m_pMatrix;
 	QLinearGradient *m_pGradient;
@@ -104,6 +105,12 @@ public:
 	bool functionsetPenCapStyle(KviKvsObjectFunctionCall *c);
 	bool functionpathAddText(KviKvsObjectFunctionCall *c);
 	bool functionresetPath(KviKvsObjectFunctionCall *c);
+
+	bool functionBeginPdf(KviKvsObjectFunctionCall *c);
+	
+	bool functionwidth(KviKvsObjectFunctionCall *c);
+	bool functionheight(KviKvsObjectFunctionCall *c);
+
 
 protected:
 	void attachDevice(KviKvsObject * o,QPaintDevice * p);

@@ -69,6 +69,8 @@ protected:
 
 	bool functiontextChangedEvent(KviKvsObjectFunctionCall *c);
 
+
+	bool functionsetInputValidator(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotreturnPressed();
 	void slotlostFocus();

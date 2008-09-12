@@ -42,6 +42,7 @@ protected:
 	bool functionReset(KviKvsObjectFunctionCall *c);
 	bool functionSetPercentageVisible(KviKvsObjectFunctionCall *c);
 	bool functionPercentageVisible(KviKvsObjectFunctionCall *c);
+	bool functionSetFormat(KviKvsObjectFunctionCall *c);
 };
 
 

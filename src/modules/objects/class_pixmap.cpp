@@ -48,9 +48,16 @@
 		Note that x_offset, y_offest are offsets in the widget.
 		!fn: $resize(<width:integer>,<height:integer>)
 		Resizes the pixmap to w width and h height. Set wh or hg to 0, to have a null pixmap.
-		!fn: $scale(<sx:real>,<sy:real>)
+		!fn: $scale(<width:integer>,<height:integer>,[<aspect_ratio:string>,<transformation_type:string>])
 		Scales the pixmap by sx horizontally and sy vertically.
-		!fn: $rotate(<a:real>)
+		Aspect_ratio values:
+		- IgnoreAspectRatio:the pixmap is scaled ignoring his aspect ratio.
+		- KeepAspectRatio: pixmap is scaled to a rectangle as large as possible inside size, preserving the aspect ratio.
+		- KeepAspectRatioByExpanding, the pixmap is scaled to a rectangle as small as possible outside size, preserving the aspect ratio.
+		Transformation type values:
+		- Fast: fast transformation but less quality.
+		- Smooth: more quality using bilinear filtering.
+		!fn: $rotate(<a:real>) 
 		Rotates the pixmap by a degrees.
 		!fn: $load(<file_name:string>)
 		Load a pixmap from the <file>.
@@ -122,12 +129,25 @@ bool KviKvsObject_pixmap::functionfill(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_pixmap::functionscale(KviKvsObjectFunctionCall *c)
 {
-	kvs_real_t uScaleX,uScaleY;
+	kvs_int_t iScaleW,iScaleH;
+	QString szAspectRatio, szTransformation;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("sx",KVS_PT_REAL,0,uScaleX)
-		KVSO_PARAMETER("sy",KVS_PT_REAL,0,uScaleY)
+		KVSO_PARAMETER("new_width",KVS_PT_INTEGER,0,iScaleW)
+		KVSO_PARAMETER("new_height",KVS_PT_INTEGER,0,iScaleH)
+		KVSO_PARAMETER("aspect_ratio",KVS_PT_STRING,KVS_PF_OPTIONAL,szAspectRatio)
+		KVSO_PARAMETER("tranformation_type",KVS_PT_STRING,KVS_PF_OPTIONAL,szTransformation)
 	KVSO_PARAMETERS_END(c)
-	*m_pPixmap = m_pPixmap->scaled((m_pPixmap->width() * uScaleX), (m_pPixmap->height() * uScaleX));
+	Qt::AspectRatioMode ratio=Qt::IgnoreAspectRatio;
+	if (KviQString::equalCI(szAspectRatio,"IgnoreAspectRatio")) ratio=Qt::IgnoreAspectRatio;
+	else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatio")) ratio=Qt::KeepAspectRatio;
+	else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatioByExpanding")) ratio=Qt::KeepAspectRatioByExpanding;
+	else if (!szAspectRatio.isEmpty())c->warning(__tr2qs("Unknown aspect ratio: using default value IgnoreAspectRatio"));
+	Qt::TransformationMode tmode=Qt::FastTransformation;
+	if (KviQString::equalCI(szTransformation,"Fast")) tmode=Qt::FastTransformation;
+	else if (KviQString::equalCI(szTransformation,"Smooth")) tmode=Qt::SmoothTransformation;
+	else if (!szAspectRatio.isEmpty())c->warning(__tr2qs("Unknown tranformation mode: using default value Fast"));
+
+	*m_pPixmap = m_pPixmap->scaled(iScaleW, iScaleH,ratio,tmode);
 	bPixmapModified=true;
 	return true;
 }

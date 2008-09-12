@@ -31,6 +31,29 @@
 #define QLAYOUT_MINIMUM QLayout::SetMinimumSize
 
 
+// Tables used in $setAlignment & $alignment
+const char * const align_tbl[] = {
+			"Left", 
+			"Right",
+			"HCenter",
+			"VCenter",
+			"Center",
+			"Top",
+			"Bottom",
+			   };
+
+
+
+const int align_cod[] = {
+		Qt::AlignLeft,
+		Qt::AlignRight,
+	    Qt::AlignHCenter,
+	    Qt::AlignVCenter,
+	    Qt::AlignCenter,
+	 	Qt::AlignTop,
+	    Qt::AlignBottom,
+	};
+#define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 /*
 	@doc: layout
 	@keyterms:
@@ -71,6 +94,9 @@
 		Sets the default spacing of the widgets in pixels
 		!fn: $setMargin(<margin:uint>)
 		Sets the dimension of the layout margin : the distance from the border to the outermost child widget edges.
+		!fn: $setAlignment(<flag1:string>, <flag2:string>, ...)
+		Sets the alignment for widget w to  flags, given as parameters. 
+		Valid flags are:Right,Left,Top,Bottom,HCenter,VCenter,Center  
 		!fn: $setResizeMode(<resize_mode:string>)
 		Sets the resize mode of the parent widget in relation to this layout.
 		<mode> can be one of:[br]
@@ -91,6 +117,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_layout,"layout","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setMargin", functionSetMargin)
 	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setSpacing", functionSetSpacing)
 	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setResizeMode", functionSetResizeMode)
+	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setAlignment", functionsetAlignment )
 KVSO_END_REGISTERCLASS(KviKvsObject_layout)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_layout,KviKvsObject)
@@ -263,4 +290,60 @@ bool KviKvsObject_layout::functionSetResizeMode(KviKvsObjectFunctionCall *c)
 	((QGridLayout *)object())->setSizeConstraint(r);
 	return true;
 
+}
+
+bool KviKvsObject_layout::functionsetAlignment(KviKvsObjectFunctionCall *c)
+{
+	QStringList alignment;
+	KviKvsObject * pObject;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+		KVSO_PARAMETER("alignment",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,alignment)
+	KVSO_PARAMETERS_END(c)
+	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if(!widget())return true;
+	if (!pObject)
+	{
+		c->warning(__tr2qs("Widget parameter is not an object"));
+		return true;
+	}
+	if (!pObject->object())
+	{
+		c->warning(__tr2qs("Widget parameter is not a valid object"));
+		return true;
+	}
+	if(!pObject->object()->isWidgetType())
+	{
+		c->warning(__tr2qs("Can't add a non-widget object"));
+		return true;
+	}
+	int index=((QGridLayout *)widget())->indexOf(((QWidget *)(pObject->object())));
+	if(index ==-1)
+	{
+		c->warning(__tr2qs("The widget must be a child of this hbox"));
+		return true;
+	}
+
+	int align,sum=0;
+	for ( QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it )
+		{
+		
+			align = 0;
+			for(unsigned int j = 0; j < align_num; j++)
+			{
+				if(KviQString::equalCI((*it), align_tbl[j]))
+				{
+					align=align_cod[j];
+					break;
+				}
+			}
+			if(align)
+				sum = sum | align;
+			else
+				c->warning(__tr2qs("Unknown alignment: '%Q'"),&(*it));
+			
+		}
+	if (widget()) ((QGridLayout *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
+	return true;
 }

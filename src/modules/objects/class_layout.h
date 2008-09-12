@@ -42,6 +42,7 @@ protected:
 	bool functionAddRowSpacing(KviKvsObjectFunctionCall *c);
 	bool functionAddColSpacing(KviKvsObjectFunctionCall *c);
 	bool functionSetResizeMode(KviKvsObjectFunctionCall *c);
+	bool functionsetAlignment(KviKvsObjectFunctionCall *c);
 
 
 };

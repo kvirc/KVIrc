@@ -106,6 +106,9 @@ protected:
 /*	bool functionHexWrite(KviKvsObjectFunctionCall *c);
 	bool functionHexRead(KviKvsObjectFunctionCall *c);
 */
+	bool functionreadHexBlock(KviKvsObjectFunctionCall *c);
+	
+bool functionwriteHexBlock(KviKvsObjectFunctionCall *c);
 protected:
 	QFile * m_pFile;
 };

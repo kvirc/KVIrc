@@ -47,8 +47,8 @@
 #include <QMetaObject>
 #include <QIcon>
 #include <QStatusBar>
-#include <QUiLoader>
-#include <QFile>
+#include <QtWebKit/QWebView>
+#include <QUrl>
 
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
@@ -88,6 +88,8 @@ const char * const widgettypes_tbl[] = {
 	"SysMenu",
 	"Minimize",
 	"Maximize",
+	"Subwindow",
+	"FramelessWindow"
 };
 
 const Qt::WidgetAttribute widgetattributes_cod[] = {
@@ -149,6 +151,8 @@ const Qt::WindowType widgettypes_cod[] = {
 	Qt::WindowSystemMenuHint,
 	Qt::WindowMinimizeButtonHint,
 	Qt::WindowMaximizeButtonHint,
+	Qt::SubWindow,
+	Qt::FramelessWindowHint
 };
 
 #define QT_WIDGET_TABFOCUS Qt::TabFocus
@@ -180,9 +184,11 @@ const Qt::WindowType widgettypes_cod[] = {
 		!fn: $hide()
 		Hides this widget (and conseguently all the children).
 		See also [classfnc]$show[/classfnc]() and [classfnc]$isVisible[/classfnc].
-		!fn: $repaint(<bool erase>)
+		!fn: $repaint()
 		Repaints the widget directly by calling [classfnc]$paintEvent[/classfnc]() immediately.[br]
-		If erase is TRUE, erases the widget before the $paintEvent() call.
+		!fn: $update([<x:ingeter>,<y:integer>,<width:integer>,<height:integer>])
+		Updates enterily the widget or a rectangle.
+		This function does not cause an immediate [classfnc]$paintEvent[/classfnc](); instead it schedules a paint event for processing when KVIrc returns to the main event loop.
 		!fn: $x()
 		Returns the x coordinate of the upper-left corner
 		of this widget relative to the parent widget,
@@ -514,10 +520,6 @@ const Qt::WindowType widgettypes_cod[] = {
 		See also [classfnc]$removeFromStatusBar[/classfnc]().
 		!fn: $removeFromStatusBar()
 		Remove the widget from statusbar.
-
-		!fn: $loadInterface(<string:filename>)
-		Loads the interface file "<filename>.ui".
-		The UI file must be created in the proper way using a tool like Qt Designer or KDevelop Designer.
 	@examples:
 		[example]
 			%Widget = $new(widget)
@@ -637,7 +639,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setToolTip",function_setToolTip)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setWFlags",function_setWFlags)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setIcon",function_setWindowIcon)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"loadInterface",function_loadInterface)
 	// fonts
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontDescent",function_fontDescent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontAscent",function_fontAscent)
@@ -704,19 +705,25 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"sizeHintRequestEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"maybeTipEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"shortCutEvent")
+
+	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setWebView",function_setWebView)
+
 KVSO_END_REGISTERCLASS(KviKvsObject_widget)
+
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_widget,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_widget)
 	emit aboutToDie();
+//	if (webview) delete webview;
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
 bool KviKvsObject_widget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
 {
 	setObject(new KviKvsWidget(this,parentScriptWidget()));
 	widget()->setObjectName(getName());
+	webview=0;
 	return true;
 }
 
@@ -1021,9 +1028,6 @@ bool KviKvsObject_widget::function_fontAscent(KviKvsObjectFunctionCall * c)
 bool KviKvsObject_widget::function_repaint(KviKvsObjectFunctionCall * c)
 {
 	bool bEnabled;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
-	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
 	widget()->repaint();
 	return true;
@@ -1192,7 +1196,19 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
 		KVSO_PARAMETER("blue",KVS_PT_INT,KVS_PF_OPTIONAL,iColB)
 	KVSO_PARAMETERS_END(c)
-
+	
+	if(pColArray->isString())
+	{
+		QString szColor;
+		pColArray->asString(szColor);
+		if (widget())
+		{
+			QPalette p = widget()->palette(); 
+			p.setColor(widget()->foregroundRole(), QColor(szColor)); 
+			widget()->setPalette(p); 
+		}
+		return true;
+	}
 	if(pColArray->isArray())
 	{
 		if(pColArray->array()->size() < 3)
@@ -1739,7 +1755,7 @@ bool KviKvsObject_widget::function_addWidgetToWrappedLayout(KviKvsObjectFunction
 	QLayout *lay=widget()->layout();
 	if (!lay)
 	{
-		c->warning(__tr2qs("No Layout associated to the widget"));
+		c->warning(__tr2qs("No Layout associated to the widget "));
 		return true;
 	}
 	if(!ob->object()->isWidgetType())
@@ -1952,32 +1968,19 @@ bool KviKvsObject_widget::function_removeFromStatusBar(KviKvsObjectFunctionCall 
 	if (widget()) g_pFrame->statusBar()->removeWidget(widget());
 	return true;
 }
-
-bool KviKvsObject_widget::function_loadInterface(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_widget::function_setWebView(KviKvsObjectFunctionCall *c)
 {
-	QString szFileName;
+	QString szUrl;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("interface_file",KVS_PT_STRING,0,szFileName)
+		KVSO_PARAMETER("text",KVS_PT_STRING,0,szUrl)
 	KVSO_PARAMETERS_END(c)
 
-	QUiLoader loader;
-	QFile file(szFileName);
-	file.open(QFile::ReadOnly);
-	QWidget * pWidget = loader.load(&file,(QWidget *)this);
-	file.close();
-
-	QLayout * pLayout = widget()->layout();
-	if(!pLayout)
-	{
-		c->warning(__tr2qs("No layout associated to the widget"));
-		return true;
-	}
-
-	pLayout->addWidget(pWidget);
-
+	webview=new QWebView(widget());
+	webview->load(QUrl(szUrl));
+    webview->show();
+	//if (widget()) g_pFrame->statusBar()->removeWidget(widget());
 	return true;
 }
-
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_widget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

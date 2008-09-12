@@ -29,8 +29,10 @@
 #include "class_dialog.h"
 #include "class_dockwindow.h"
 #include "class_file.h"
+#include "class_ftp.h"
 #include "class_groupbox.h"
 #include "class_hbox.h"
+#include "class_http.h"
 #include "class_layout.h"
 #include "class_lcd.h"
 #include "class_lineedit.h"
@@ -88,6 +90,8 @@ static bool objects_module_cleanup(KviModule *m)
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be unregistered before the base ones.
 	KviKvsObject_process::unregisterSelf();
+	KviKvsObject_ftp::unregisterSelf();
+	KviKvsObject_http::unregisterSelf();
 	KviKvsObject_socket::unregisterSelf();
 	KviKvsObject_xmlreader::unregisterSelf();
 	KviKvsObject_wrapper::unregisterSelf();
@@ -986,6 +990,9 @@ static bool objects_module_init(KviModule * m)
 	KviKvsObject_wrapper::registerSelf();
 	KviKvsObject_xmlreader::registerSelf();
 	KviKvsObject_socket::registerSelf();
+	KviKvsObject_http::registerSelf();
+	KviKvsObject_ftp::registerSelf();
+
 	KviKvsObject_process::registerSelf();
 
 	return true;

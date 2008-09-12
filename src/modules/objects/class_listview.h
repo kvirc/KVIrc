@@ -59,7 +59,7 @@ protected:
 	bool function_itemExpandedEvent(KviKvsObjectFunctionCall *c);
 	bool function_itemCollapsedEvent(KviKvsObjectFunctionCall *c);
 	bool function_itemChangedEvent(KviKvsObjectFunctionCall *c);
-	bool function_rightButtonClickedEvent(KviKvsObjectFunctionCall *c);
+	bool function_customContextMenuRequestedEvent(KviKvsObjectFunctionCall *c);
 	bool function_selectedItems(KviKvsObjectFunctionCall *c);
 	bool function_currentItem(KviKvsObjectFunctionCall *c);
 	bool function_setSelectionMode(KviKvsObjectFunctionCall *c);

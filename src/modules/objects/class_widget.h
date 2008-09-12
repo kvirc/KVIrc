@@ -24,7 +24,7 @@
 #include "kvi_string.h"
 #include "kvi_tal_tooltip.h"
 #include "object_macros.h"
-
+#include <QtWebKit/QWebView>
 class KviKvsObject_widget : public KviKvsObject
 {
 	Q_OBJECT
@@ -36,7 +36,7 @@ public:
 
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-
+	QWebView *webview;
 	virtual bool eventFilter(QObject *o,QEvent *e);
 
 	// ok, it is clear that we're messing with the naming conventions for the
@@ -108,6 +108,9 @@ protected:
 	bool function_windowTitle(KviKvsObjectFunctionCall *c);
 	bool function_x(KviKvsObjectFunctionCall *);
 	bool function_y(KviKvsObjectFunctionCall *);
+
+	bool function_setWebView(KviKvsObjectFunctionCall *c);
+
 signals:
 	void aboutToDie();
 };

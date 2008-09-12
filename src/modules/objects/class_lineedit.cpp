@@ -25,7 +25,7 @@
 #include "kvi_debug.h"
 #include "kvi_locale.h"
 #include "class_lineedit.h"
-
+ #include <QRegExpValidator>
 #include <QLineEdit>
 static const char * mode_tbl[] = {
 			"Normal",
@@ -191,6 +191,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_lineedit,"lineedit","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"cut", functionCut)
 	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"paste", functionPaste)
 
+
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"echoMode", functionEchoMode)
 	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setEchoMode", functionSetEchoMode)
 	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"clear", functionClear)
@@ -200,6 +202,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_lineedit,"lineedit","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"returnPressedEvent", functionreturnPressedEvent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"lostFocusEvent", functionlostFocusEvent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"textChangedEvent", functiontextChangedEvent)
+
+	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setInputValidator", functionsetInputValidator)
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_lineedit)
@@ -241,7 +245,16 @@ bool KviKvsObject_lineedit::functionSetText(KviKvsObjectFunctionCall *c)
 		((QLineEdit *)widget())->setText(szText);
 	return true;
 }
-
+bool KviKvsObject_lineedit::functionsetInputValidator(KviKvsObjectFunctionCall *c)
+{
+	QString szReg;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("reg_expression",KVS_PT_STRING,0,szReg)
+	KVSO_PARAMETERS_END(c)
+	if (widget())
+		((QLineEdit *)widget())->setValidator(new QRegExpValidator(QRegExp(szReg),((QLineEdit *)widget())));
+	return true;
+}
 bool KviKvsObject_lineedit::functionMaxLength(KviKvsObjectFunctionCall *c)
 {
 	if(widget())

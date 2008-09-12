@@ -37,6 +37,8 @@ protected:
 	bool functionsetMargin(KviKvsObjectFunctionCall *c);
 	bool functionsetSpacing(KviKvsObjectFunctionCall *c);
 	bool functionsetStretchFactor(KviKvsObjectFunctionCall *c);
+	bool functionaddStretch(KviKvsObjectFunctionCall *c);
+	bool functionsetAlignment(KviKvsObjectFunctionCall *c);
 
 
 };

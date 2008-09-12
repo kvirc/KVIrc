@@ -170,6 +170,10 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_file,"file","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"getch", functiongetch)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"ungetch", functionunGetch)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readBlock", functionreadBlock)
+
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readHexBlock", functionreadHexBlock)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeHexBlock", functionwriteHexBlock)
+	
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeBlock", functionwriteBlock)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readLine", functionreadLine)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeLine", functionwriteLine)
@@ -287,7 +291,7 @@ bool KviKvsObject_file::functionseek(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
+		c->warning(__tr2qs("File is not open !"));
 	else m_pFile->seek(uIndex);
 	return true;
 }
@@ -312,11 +316,11 @@ bool KviKvsObject_file::functiongetch(KviKvsObjectFunctionCall *c)
 {
 	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
+		c->warning(__tr2qs("File is not open !"));
 	else
 	{
 		char ch;
-		if (!m_pFile->getChar(&ch)) c->warning(__tr("Read error occured !"));	// c->error ?
+		if (!m_pFile->getChar(&ch)) c->warning(__tr2qs("Read error occured !"));	// c->error ?
 		QString szChar = QChar(ch);
 		c->returnValue()->setString(szChar);
 	}
@@ -330,7 +334,7 @@ bool KviKvsObject_file::functionunGetch(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
+		c->warning(__tr2qs("File is not open !"));
 	else
 	{
 		if (szChar.length()>1) c->warning(__tr2qs("Argument to long, using only first char"));
@@ -346,10 +350,12 @@ bool KviKvsObject_file::functionreadBlock(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,0,uLen)
 	KVSO_PARAMETERS_END(c)
 	if (!m_pFile) return true;
-	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
+	if(!m_pFile->isOpen()){
+		c->warning(__tr2qs("File is not open !"));
+	}
 	else
 	{
+
 		char * buff = new char[uLen + 1];
 		m_pFile->flush(); // advice from QFile man page (to avoid trash)
 		int rlen = m_pFile->read(buff, uLen);
@@ -370,7 +376,7 @@ bool KviKvsObject_file::functionwriteBlock(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
+		c->warning(__tr2qs("File is not open !"));
 	const char *block=szBlock.toUtf8().data();
 	int rlen = m_pFile->write(block, uLen);
 	c->returnValue()->setInteger(rlen);
@@ -381,7 +387,7 @@ bool KviKvsObject_file::functionreadLine(KviKvsObjectFunctionCall *c)
 {
 	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
+		c->warning(__tr2qs("File is not open !"));
 	else
 	{
 		QString buffer;
@@ -398,7 +404,7 @@ bool KviKvsObject_file::functionwriteLine(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
+		c->warning(__tr2qs("File is not open !"));
 	else
 	{
 		QTextStream ts(m_pFile);
@@ -406,52 +412,71 @@ bool KviKvsObject_file::functionwriteLine(KviKvsObjectFunctionCall *c)
 	}
 	return true;
 }
-// fixme
-/*
-
-bool KviScriptFileObject::functionHexWrite(KviCommand * c, KviParameterList * p,
-	KviStr & b)
+bool KviKvsObject_file::functionreadHexBlock(KviKvsObjectFunctionCall *c)
 {
-	ENTER_STACK_FRAME(c, "file::hexWrite");
-	if(!p->count())
-		return c->error(KviError_notEnoughParameters);
-
-	char * val = 0;
-	int len = p->first()->hexToBuffer(&val,false);
-
-	if(len < 1)
-	{
-		c->warning(__tr("Nothing to write"));
-		return c->leaveStackFrame();
-	}
-
+	kvs_uint_t uLen;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,0,uLen)
+	KVSO_PARAMETERS_END(c)
+	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
-		c->warning(__tr("File is not open !"));
-
-	if(m_pFile->putch(*val) < 0)
-		c->warning(__tr("Write error occured !"));	// c->error ?
-
-	KviStr::freeBuffer(val);
-
-	return c->leaveStackFrame();
+		c->warning(__tr2qs("File is not open !"));
+	else
+	{
+		if (uLen>m_pFile->size()) uLen=m_pFile->size();
+		char * buff = new char[(uLen*2) + 1];
+		char * cc=buff;
+		m_pFile->flush(); // advice from QFile man page (to avoid trash)
+		int rlen = m_pFile->read(buff, uLen);
+		QString szHex;
+		unsigned char byte,msb,lsb=0;
+		int index=0;
+		for (int i=0;i<uLen;i++)
+		{
+			m_pFile->getChar((char*)&byte);
+			msb=(byte/16);
+			lsb=(byte%16);
+			msb>9?msb+='7':msb+='0';
+			lsb>9?lsb+='7':lsb+='0';
+			buff[index]=msb;
+			index++;
+			buff[index]=lsb;
+			index++;
+		}
+		buff[index]='\0';
+		c->returnValue()->setString(buff);
+	}
+	return true;
 }
-
-bool KviScriptFileObject::functionHexRead(KviCommand * c, KviParameterList * p,
-	KviStr & b)
+bool KviKvsObject_file::functionwriteHexBlock(KviKvsObjectFunctionCall *c)
 {
- 	if(!m_pFile->isOpen())
- 		c->warning(__tr("File is not open !"));
-
-	char ch = m_pFile->getch();
-
-	KviStr tmp;
- 	tmp.bufferToHex(&ch, 1);
- 	b.append(tmp);
-
- 	return true;
+	QString szBlock;
+	kvs_uint_t uLen;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("text_block",KVS_PT_STRING,0,szBlock)
+		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
+	KVSO_PARAMETERS_END(c)
+	if (!m_pFile) return true;
+	if(!m_pFile->isOpen()){
+		c->warning(__tr2qs("File is not open !"));
+		return true;
+	}
+	if (uLen>(szBlock.length()/2)|| !uLen) uLen=szBlock.length();
+	else uLen*=2;
+	unsigned char byte,lsb,msb;
+	for(int i=0;i<uLen;i+=2)
+	{
+		msb=szBlock.at(i).toAscii();
+		msb>='A'?msb-='7':msb-='0';
+		lsb=szBlock.at(i+1).toAscii();
+		lsb>='A'?lsb-='7':lsb-='0';
+		byte=(msb*16)+lsb;
+		m_pFile->putChar(byte);
+	}
+	c->returnValue()->setInteger(uLen/2);
+	return true;
 }
 
-*/
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_file.moc"

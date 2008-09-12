@@ -262,7 +262,6 @@ bool KviKvsObject_treewidgetitem::function_nextSibling(KviKvsObjectFunctionCall 
 	return true;
 }
 */
-
 bool KviKvsObject_treewidgetitem::function_setRenameEnabled(KviKvsObjectFunctionCall *c)
 {
 	kvs_uint_t uCol;

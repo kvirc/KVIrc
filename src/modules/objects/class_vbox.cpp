@@ -27,6 +27,34 @@
 #include "class_vbox.h"
 
 #include "kvi_tal_vbox.h"
+
+
+// Tables used in $setAlignment & $alignment
+const char * const align_tbl[] = {
+			"Left", 
+			"Right",
+			"HCenter",
+			"VCenter",
+			"Center",
+			"Top",
+			"Bottom",
+			"WordBreak"
+			   };
+
+
+
+const int align_cod[] = {
+		Qt::AlignLeft,
+		Qt::AlignRight,
+	    Qt::AlignHCenter,
+	    Qt::AlignVCenter,
+	    Qt::AlignCenter,
+	 	Qt::AlignTop,
+	    Qt::AlignBottom,
+	    Qt::AlignJustify,
+	};
+
+#define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 /*
 	@doc: vbox
 	@keyterms:
@@ -48,6 +76,11 @@
 		Sets the dimension of the layout margin : the distance from the border to the outermost child widget edges.
 		!fn: $setStretchFactor(<widget:hobject>,<stretch:uint>)
 		Sets the stretch factor of widget to stretch.
+		!fn: $addStretch(<stretch:integer>)
+		Adds a stretchable space with zero minimum size and stretch factor stretch to the end of this box layout.
+		!fn: $setAlignment(<flag1:string>, <flag2:string>, ...)
+		Sets the alignment for widget w to  flags, given as parameters. 
+		Valid flags are:Right,Left,Top,Bottom,HCenter,VCenter,Center  
 */
 
 
@@ -55,6 +88,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_vbox,"vbox","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_vbox,"setMargin", functionsetMargin)
 	KVSO_REGISTER_HANDLER(KviKvsObject_vbox,"setSpacing", functionsetSpacing)
 	KVSO_REGISTER_HANDLER(KviKvsObject_vbox,"setStretchFactor", functionsetStretchFactor )
+	KVSO_REGISTER_HANDLER(KviKvsObject_vbox,"addStretch", functionaddStretch )
+	KVSO_REGISTER_HANDLER(KviKvsObject_vbox,"setAlignment", functionsetAlignment )
 KVSO_END_REGISTERCLASS(KviKvsObject_vbox)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_vbox,KviKvsObject_widget)
@@ -125,5 +160,69 @@ bool KviKvsObject_vbox::functionsetStretchFactor(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	((KviTalVBox *)widget())->setStretchFactor(((QWidget *)(pObject->object())),uStretch);
+	return true;
+}
+bool KviKvsObject_vbox::functionaddStretch(KviKvsObjectFunctionCall *c)
+{
+	kvs_int_t iStretch;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("stretch",KVS_PT_INT,0,iStretch)
+	KVSO_PARAMETERS_END(c)
+	
+	if (widget())((KviTalVBox *)widget())->addStretch(iStretch);
+	return true;
+}
+bool KviKvsObject_vbox::functionsetAlignment(KviKvsObjectFunctionCall *c)
+{
+	QStringList alignment;
+	KviKvsObject * pObject;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+		KVSO_PARAMETER("alignment",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,alignment)
+	KVSO_PARAMETERS_END(c)
+	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if(!widget())return true;
+	if (!pObject)
+	{
+		c->warning(__tr2qs("Widget parameter is not an object"));
+		return true;
+	}
+	if (!pObject->object())
+	{
+		c->warning(__tr2qs("Widget parameter is not a valid object"));
+		return true;
+	}
+	if(!pObject->object()->isWidgetType())
+	{
+		c->warning(__tr2qs("Can't add a non-widget object"));
+		return true;
+	}
+	if(((KviKvsObject_widget *)pObject)->widget()->parentWidget() != widget())
+	{
+		c->warning(__tr2qs("The widget must be a child of this hbox"));
+		return true;
+	}
+
+	int align,sum=0;
+	for ( QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it )
+		{
+		
+			align = 0;
+			for(unsigned int j = 0; j < align_num; j++)
+			{
+				if(KviQString::equalCI((*it), align_tbl[j]))
+				{
+					align=align_cod[j];
+					break;
+				}
+			}
+			if(align)
+				sum = sum | align;
+			else
+				c->warning(__tr2qs("Unknown alignment: '%Q'"),&(*it));
+			
+		}
+	if (widget()) ((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;
 }

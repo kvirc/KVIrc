@@ -12,6 +12,8 @@ SET(kviobjects_MOC_HDRS
 	class_checkbox.h
 	class_combobox.h
 	class_dockwindow.h
+	class_ftp.h
+	class_http.h
 	class_lineedit.h
 	class_listbox.h
 	class_listview.h
@@ -45,7 +47,9 @@ SET(kviobjects_SRCS
 	class_dialog.cpp
 	class_dockwindow.cpp
 	class_file.cpp
+	class_ftp.cpp
 	class_groupbox.cpp
+	class_http.cpp
 	class_label.cpp
 	class_layout.cpp
 	class_lcd.cpp

@@ -449,6 +449,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"save",functionsave)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"restore",functionrestore)
 
+	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"beginPdf",functionBeginPdf)// FIXME: needs doc!
+//bool KviKvsObject_painter::functionBeginPdf(KviKvsObjectFunctionCall *c)
 //QT4
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setOpacity",functionsetOpacity)
@@ -476,6 +478,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setPenJoinStyle",functionsetPenJoinStyle)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setPenCapStyle",functionsetPenCapStyle)
 
+	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"painterDeviceWidth",functionwidth)
+	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"painterDeviceHeight",functionheight)
 
 //
 
@@ -489,6 +493,7 @@ KVSO_END_REGISTERCLASS(KviKvsObject_painter)
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_painter,KviKvsObject)
 
 	m_pPainter = new QPainter();
+	m_pPrinter = 0 ;
 	m_pDeviceObject=0;
 	m_pPainterPath=0;
 	m_pGradient=0;
@@ -503,7 +508,8 @@ if (m_pGradient) delete m_pGradient;
 	m_pGradient=0;
 if (m_pPainter) delete m_pPainter;
 	m_pPainter = 0;
-
+if (m_pPrinter) delete m_pPrinter;
+	m_pPrinter = 0;
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_painter)
 
@@ -1047,16 +1053,27 @@ bool KviKvsObject_painter::functionend(KviKvsObjectFunctionCall *c)
 	detachDevice();
 	return true;
 }
-
+bool KviKvsObject_painter::functionBeginPdf(KviKvsObjectFunctionCall *c)
+{
+	QString szFileName;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szFileName)
+	KVSO_PARAMETERS_END(c)
+	if (m_pPrinter) delete m_pPrinter;
+	m_pPrinter=new QPrinter();//QPrinter::HighResolution);
+	m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
+	m_pPrinter->setOutputFileName(szFileName);
+	m_pPainter->begin(m_pPrinter);
+	return true;
+} 
 bool KviKvsObject_painter::functiondrawText(KviKvsObjectFunctionCall *c)
 {
 	QString szText,szMode;
-	kvs_int_t iX,iY,iLen;
+	kvs_int_t iX,iY;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
 		KVSO_PARAMETER("y",KVS_PT_INT,0,iY)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-		KVSO_PARAMETER("length",KVS_PT_INT,0,iLen)
 		KVSO_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter)return true;
@@ -1554,7 +1571,18 @@ bool KviKvsObject_painter::functioncolorNames(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setArray(a);
 	return true;
 }
-
+bool KviKvsObject_painter::functionwidth(KviKvsObjectFunctionCall *c)
+{
+	kvs_int_t width=m_pPainter->device()->width();
+	c->returnValue()->setInteger(width);
+	return true;
+}
+bool KviKvsObject_painter::functionheight(KviKvsObjectFunctionCall *c)
+{
+	kvs_int_t height=m_pPainter->device()->height();
+	c->returnValue()->setInteger(height);
+	return true;
+}
 bool KviKvsObject_painter::functionpathMoveTo(KviKvsObjectFunctionCall *c)
 {
 	kvs_real_t dX,dY;

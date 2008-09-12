@@ -191,7 +191,10 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setRootIsDecorated",function_setRootIsDecorated)
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setAllColumnsShowFocus",function_setAllColumnsShowFocus)
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"clear",function_clear)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectedItem",function_selectedItems)
+	//FIXME 
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectedItem",function_selectedItems)//<--- remove this
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectedItems",function_selectedItems)
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"currentItem",function_currentItem)
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setSelectionMode",function_setSelectionMode)
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"listViewHeaderIsVisible",function_listViewHeaderIsVisible)
@@ -219,7 +222,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemChangedEvent",function_itemChangedEvent);
 	//
 	
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"rightButtonClickedEvent",function_rightButtonClickedEvent);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"rightButtonClickedEvent",function_customContextMenuRequestedEvent);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"customContextMenuRequestedEvent",function_customContextMenuRequestedEvent);
 
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_treewidget,"fileDroppedEvent")
 
@@ -550,9 +554,10 @@ void KviKvsObject_treewidget::slotItemCollapsed(KviTalTreeWidgetItem * i)
 	callFunction(this,"itemCollapsedEvent",0,&params);
 }
 
-bool KviKvsObject_treewidget::function_rightButtonClickedEvent(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_treewidget::function_customContextMenuRequestedEvent(KviKvsObjectFunctionCall *c)
 {
 	emitSignal("rightButtonClicked",c,c->params());
+	emitSignal("customContextMenuRequested",c,c->params());
 	return true;
 }
 
@@ -562,7 +567,7 @@ void KviKvsObject_treewidget::customContextMenuRequested(const QPoint &pnt)
 	KviKvsVariant *ypos=new KviKvsVariant((kvs_int_t)pnt.y());
 	KviTalTreeWidgetItem *it=(KviTalTreeWidgetItem *) ((KviTalTreeWidget *)widget())->itemAt(pnt);
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(it)),xpos,ypos);
-	callFunction(this,"rightButtonClickedEvent",0,&params);
+	callFunction(this,"customContextMenuRequestedEvent",0,&params);
 }
 
 bool KviKvsObject_treewidget::function_itemChangedEvent(KviKvsObjectFunctionCall *c)
