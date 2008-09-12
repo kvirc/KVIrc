@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="9,00"
 	Name="kvirc"
 	ProjectGUID="{92803FDD-DFDB-461D-8AA3-1F201F4EA06C}"
 	RootNamespace="kvirc"
 	Keyword="Win32Proj"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -44,7 +45,7 @@
 				InlineFunctionExpansion="0"
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\kvilib\net&quot;;&quot;$(ProjectDir)\..\kvilib\core\wstring&quot;;&quot;$(ProjectDir)\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\kvilib\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\kvs&quot;;&quot;$(ProjectDir)\module&quot;;&quot;$(ProjectDir)\uparser\scripttoolbar&quot;;&quot;$(ProjectDir)\uparser&quot;;&quot;$(ProjectDir)\sparser&quot;;&quot;$(ProjectDir)\kernel&quot;;&quot;$(ProjectDir)\ui&quot;;&quot;$(ZLIBINCDIR)&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;"
-				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;QT3_SUPPORT;"
+				PreprocessorDefinitions="__KVIRC__;WIN32;_DEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;QT3_SUPPORT;"
 				MinimalRebuild="true"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
@@ -71,6 +72,8 @@
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/kvirc.pdb"
 				SubSystem="2"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TurnOffAssemblyGeneration="false"
 				TargetMachine="1"
 			/>
@@ -93,9 +96,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -130,7 +130,7 @@
 				InlineFunctionExpansion="0"
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\kvilib\net&quot;;&quot;$(ProjectDir)\..\kvilib\core\wstring&quot;;&quot;$(ProjectDir)\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\kvilib\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\kvs&quot;;&quot;$(ProjectDir)\module&quot;;&quot;$(ProjectDir)\uparser\scripttoolbar&quot;;&quot;$(ProjectDir)\uparser&quot;;&quot;$(ProjectDir)\sparser&quot;;&quot;$(ProjectDir)\kernel&quot;;&quot;$(ProjectDir)\ui&quot;;&quot;$(ZLIBINCDIR)&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE"
+				PreprocessorDefinitions="QT3_SUPPORT;__KVIRC__;WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_DEPRECATE;"
 				RuntimeLibrary="2"
 				UsePrecompiledHeader="0"
 				WarningLevel="2"
@@ -157,6 +157,8 @@
 				GenerateDebugInformation="false"
 				SubSystem="2"
 				OptimizeReferences="2"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TurnOffAssemblyGeneration="false"
 				TargetMachine="1"
 			/>
@@ -179,9 +181,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -1099,6 +1098,14 @@
 					>
 				</File>
 				<File
+					RelativePath=".\ui\kvi_input_editor.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_input_history.cpp"
+					>
+				</File>
+				<File
 					RelativePath="ui\kvi_ipeditor.cpp"
 					>
 				</File>
@@ -1179,10 +1186,6 @@
 					>
 				</File>
 				<File
-					RelativePath="ui\kvi_taskbar.cpp"
-					>
-				</File>
-				<File
 					RelativePath="ui\kvi_texticonwin.cpp"
 					>
 				</File>
@@ -1208,6 +1211,14 @@
 				</File>
 				<File
 					RelativePath="ui\kvi_window.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_windowlist.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_windowlist_tree.cpp"
 					>
 				</File>
 			</Filter>
@@ -3132,6 +3143,32 @@
 					</FileConfiguration>
 				</File>
 				<File
+					RelativePath=".\ui\kvi_input_editor.h"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+							Outputs="$(InputDir)\$(InputName).moc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_input_history.h"
+					>
+					<FileConfiguration
+						Name="Debug|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine=""
+							Outputs=""
+						/>
+					</FileConfiguration>
+				</File>
+				<File
 					RelativePath="ui\kvi_ipeditor.h"
 					>
 					<FileConfiguration
@@ -3576,28 +3613,6 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="ui\kvi_taskbar.h"
-					>
-					<FileConfiguration
-						Name="Debug|Win32"
-						>
-						<Tool
-							Name="VCCustomBuildTool"
-							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-							Outputs="$(InputDir)\$(InputName).moc"
-						/>
-					</FileConfiguration>
-					<FileConfiguration
-						Name="Release|Win32"
-						>
-						<Tool
-							Name="VCCustomBuildTool"
-							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-							Outputs="$(InputDir)\$(InputName).moc"
-						/>
-					</FileConfiguration>
-				</File>
-				<File
 					RelativePath="ui\kvi_texticonwin.h"
 					>
 					<FileConfiguration
@@ -3741,6 +3756,32 @@
 							Outputs="$(InputDir)\$(InputName).moc"
 						/>
 					</FileConfiguration>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+							Outputs="$(InputDir)\$(InputName).moc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_windowlist.h"
+					>
+					<FileConfiguration
+						Name="Release|Win32"
+						>
+						<Tool
+							Name="VCCustomBuildTool"
+							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+							Outputs="$(InputDir)\$(InputName).moc"
+						/>
+					</FileConfiguration>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_windowlist_tree.h"
+					>
 					<FileConfiguration
 						Name="Release|Win32"
 						>

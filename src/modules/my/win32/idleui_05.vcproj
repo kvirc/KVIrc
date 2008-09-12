@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8,00"
+	Version="9,00"
 	Name="idleui"
 	ProjectGUID="{736D754E-BF35-4FE8-AA75-6BF903D5A1EC}"
 	RootNamespace="idleui"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -85,6 +86,8 @@
 				GenerateManifest="true"
 				IgnoreDefaultLibraryNames=""
 				ProgramDatabaseFile=".\Debug/idleui.pdb"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TurnOffAssemblyGeneration="true"
 				ImportLibrary="$(OutDir)/idleui.lib"
 				TargetMachine="1"
@@ -111,9 +114,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -190,6 +190,8 @@
 				GenerateManifest="true"
 				IgnoreAllDefaultLibraries="false"
 				ProgramDatabaseFile=".\Release/idleui.pdb"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TurnOffAssemblyGeneration="true"
 				ImportLibrary="$(OutDir)/idleui.lib"
 				TargetMachine="1"
@@ -216,9 +218,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
