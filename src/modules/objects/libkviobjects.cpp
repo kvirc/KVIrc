@@ -54,7 +54,7 @@
 #include "class_tbrowser.h"
 #include "class_toolbar.h"
 #include "class_toolbutton.h"
-#include "class_urllabel.h"
+#include "class_label.h"
 #include "class_vbox.h"
 #include "class_widget.h"
 #include "class_window.h"
@@ -96,7 +96,6 @@ static bool objects_module_cleanup(KviModule *m)
 	KviKvsObject_dockwindow::unregisterSelf();
 	KviKvsObject_wizard::unregisterSelf();
 	KviKvsObject_window::unregisterSelf();
-	KviKvsObject_urlabel::unregisterSelf();
 	KviKvsObject_toolbutton::unregisterSelf();
 	KviKvsObject_toolbar::unregisterSelf();
 	KviKvsObject_tabwidget::unregisterSelf();
@@ -979,7 +978,6 @@ static bool objects_module_init(KviModule * m)
 	KviKvsObject_tabwidget::registerSelf();
 	KviKvsObject_toolbar::registerSelf();
 	KviKvsObject_toolbutton::registerSelf();
-	KviKvsObject_urlabel::registerSelf();
 	KviKvsObject_window::registerSelf();
 	KviKvsObject_wizard::registerSelf();
 	KviKvsObject_dockwindow::registerSelf();
