@@ -3,7 +3,7 @@
 //   Creation date : Mon Nov 20 2000 12:20:42 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -38,204 +38,209 @@
 extern KviMediaManager * g_pMediaManager;
 
 
-KviFileDialog::KviFileDialog(const QString &dirName, const QString &filter,
-					QWidget *parent, const char *name, bool modal)
-: KviTalFileDialog(dirName,filter,parent,name,modal)
+KviFileDialog::KviFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char * name, bool bModal)
+: KviTalFileDialog(szDirName,szFilter,pParent,name,bModal)
 {
-
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER))));
-
 }
 
 KviFileDialog::~KviFileDialog()
 {
 }
 
-
 /*
 void KviFileDialog::goKvirc()
 {
-
 	KviStr tmp;
 	g_pApp->getLocalKvircDirectory(tmp,KviApp::None);
 	setDir(QDir(tmp.ptr()));
-
 }
 
 void KviFileDialog::goHome()
 {
-
 	setDir(QDir::home());
-
 }
 */
 
-
-
-bool KviFileDialog::askForOpenFileName(QString &buffer,const QString &caption,const QString &initial,const QString &filter,bool showHidden, bool showNative,QWidget* parent)
+bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool bShowHidden, bool bShowNative, QWidget * pParent)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	if(showNative)
+	if(bShowNative)
 	{
-		buffer=QFileDialog::getOpenFileName(parent,caption,initial,filter);
-		KviFileUtils::adjustFilePath(buffer);
-		return !buffer.isEmpty();
+		szBuffer = QFileDialog::getOpenFileName(pParent,szCaption,szInitial,szFilter);
+		KviFileUtils::adjustFilePath(szBuffer);
+		return !szBuffer.isEmpty();
 	}
 #endif
-	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"open_file_name_dialog",true);
-	d->setWindowTitle(caption);
+	KviFileDialog * pDialog = new KviFileDialog(szInitial,szFilter,pParent,"open_file_name_dialog",true);
+	pDialog->setWindowTitle(szCaption);
 	// i was ignorant
-	d->setFileMode(KviTalFileDialog::AnyFile);
-	//d->setShowHiddenFiles(showHidden);
-	if(d->exec() == QDialog::Accepted)
+	pDialog->setFileMode(KviTalFileDialog::AnyFile);
+	//pDialog->setShowHiddenFiles(showHidden);
+
+	if(pDialog->exec() == QDialog::Accepted)
 	{
-		QStringList files = d->selectedFiles();
-		if (!files.isEmpty())
-			buffer = files[0];
-		KviFileUtils::adjustFilePath(buffer);
-		delete d;
-		return !buffer.isEmpty();
+		QStringList szFiles = pDialog->selectedFiles();
+		if(!szFiles.isEmpty())
+			szBuffer = szFiles[0];
+		KviFileUtils::adjustFilePath(szBuffer);
+		delete pDialog;
+		return !szBuffer.isEmpty();
 	}
-	delete d;
+	delete pDialog;
 	return false;
 }
 
-
-bool KviFileDialog::askForSaveFileName(QString &buffer,const QString & caption,const QString &initial,const QString &filter,bool showHidden,bool bConfirmOverwrite,bool showNative,QWidget* parent)
+bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool bShowHidden, bool bConfirmOverwrite, bool bShowNative, QWidget * pParent)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	if (showNative)
+	if(bShowNative)
 	{
-		while (1)
+		while(1)
 		{
-			buffer=QFileDialog::getSaveFileName(parent,caption,initial,filter);
-			KviFileUtils::adjustFilePath(buffer);
+			szBuffer = QFileDialog::getSaveFileName(pParent,szCaption,szInitial,szFilter);
+			KviFileUtils::adjustFilePath(szBuffer);
 			//return !buffer.isEmpty();
-			if(buffer.isEmpty()) return false;
-			if(!bConfirmOverwrite) return true;
+			if(szBuffer.isEmpty())
+				return false;
+
+			if(!bConfirmOverwrite)
+				return true;
+
 			// Check for the file existence
-			if(!KviFileUtils::fileExists(buffer)) return true;
-			QString tmp;
-			KviQString::sprintf(tmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),buffer.toUtf8().data());
-			switch(QMessageBox::information(parent,__tr2qs("File Exists - KVIrc"),tmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
+			if(!KviFileUtils::fileExists(szBuffer))
+				return true;
+
+			QString szTmp;
+			KviQString::sprintf(szTmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),szBuffer.toUtf8().data());
+
+			switch(QMessageBox::information(pParent,__tr2qs("File Exists - KVIrc"),szTmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
 			{
-					case QMessageBox::Cancel: return false; break;
-					case QMessageBox::Yes:    return true;  break;
+				case QMessageBox::Cancel:
+					return false;
+				break;
+				case QMessageBox::Yes:
+					return true;
+				break;
 			}
-
 		}
-
-
 	}
 #endif
 
-
-	KviFileDialog * d = new KviFileDialog(initial,filter,parent,"save_file_name_dialog",true);
-	d->setWindowTitle(caption);
+	KviFileDialog * pDialog = new KviFileDialog(szInitial,szFilter,pParent,"save_file_name_dialog",true);
+	pDialog->setWindowTitle(szCaption);
 	// 190
-	d->setFileMode(KviTalFileDialog::AnyFile);
-	//d->setShowHiddenFiles(showHidden);
+	pDialog->setFileMode(KviTalFileDialog::AnyFile);
+	//pDialog->setShowHiddenFiles(showHidden);
 #ifdef COMPILE_KDE_SUPPORT
-	d->setKeepLocation(true);
+	pDialog->setKeepLocation(true);
 #endif
-	while(d->exec() == QDialog::Accepted)
+	while(pDialog->exec() == QDialog::Accepted)
 	{
-		QStringList files = d->selectedFiles();
-		if (!files.isEmpty())
-			buffer = files[0];
-		KviFileUtils::adjustFilePath(buffer);
+		QStringList szFiles = pDialog->selectedFiles();
+		if(!szFiles.isEmpty())
+			szBuffer = szFiles[0];
+		KviFileUtils::adjustFilePath(szBuffer);
 
-		if(!buffer.isEmpty())
+		if(!szBuffer.isEmpty())
 		{
 			if(!bConfirmOverwrite)
 			{
-				delete d;
+				delete pDialog;
 				return true;
 			}
+
 			// Check for the file existence
-			if(KviFileUtils::fileExists(buffer))
+			if(KviFileUtils::fileExists(szBuffer))
 			{
-				QString tmp;
-				KviQString::sprintf(tmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),buffer.toUtf8().data());
-				switch(QMessageBox::information(d,__tr2qs("File Exists - KVIrc"),tmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
+				QString szTmp;
+				KviQString::sprintf(szTmp,__tr2qs("The file %s already exists.<br>Do you wish to overwrite it?"),szBuffer.toUtf8().data());
+
+				switch(QMessageBox::information(pDialog,__tr2qs("File Exists - KVIrc"),szTmp,QMessageBox::Yes,QMessageBox::No | QMessageBox::Default,QMessageBox::Cancel | QMessageBox::Escape))
 				{
-					case QMessageBox::Cancel: delete d; return false; break;
-					case QMessageBox::Yes:    delete d; return true;  break;
+					case QMessageBox::Cancel:
+						delete pDialog;
+						return false;
+					break;
+					case QMessageBox::Yes:
+						delete pDialog;
+						return true;
+					break;
 				}
 			} else {
-				delete d;
+				delete pDialog;
 				return true; // ok...file not exists
 			}
 		} else {
-			delete d;
+			delete pDialog;
 			return false; // empty buffer
 		}
 	}
 
-	delete d;
+	delete pDialog;
 	return false;
-
 }
 
-bool KviFileDialog::askForDirectoryName(QString &buffer,const QString & caption,const QString & initial,const char * filter,bool showHidden,bool showNative,QWidget* parent)
+bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool bShowHidden, bool bShowNative, QWidget * pParent)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	if(showNative)
+	if(bShowNative)
 	{
-		buffer = QFileDialog::getExistingDirectory(parent,caption,initial);
-		return !buffer.isEmpty();
+		szBuffer = QFileDialog::getExistingDirectory(pParent,szCaption,szInitial);
+		return !szBuffer.isEmpty();
 	}
 #else
 	#ifdef COMPILE_KDE_SUPPORT
 		// the KDE based dir selection dialog is now quite nice
-		buffer = KFileDialog::getExistingDirectory(initial,parent,caption);
-		return !buffer.isEmpty();
+		szBuffer = KFileDialog::getExistingDirectory(szInitial,pParent,szCaption);
+		return !szBuffer.isEmpty();
 	#endif
 #endif
 
-	KviFileDialog * d = new KviFileDialog(initial,
-		filter,parent,"directory_name_dialog",true);
-	d->setWindowTitle(caption);
+	KviFileDialog * pDialog = new KviFileDialog(szInitial,
+		szFilter,pParent,"directory_name_dialog",true);
+	pDialog->setWindowTitle(szCaption);
 	// Move to tal and settle matters there?
-	d->setFileMode(KviTalFileDialog::Directory);
-	//d->setShowHiddenFiles(showHidden);
-	if(d->exec() == QDialog::Accepted)
+	pDialog->setFileMode(KviTalFileDialog::Directory);
+	//pDialog->setShowHiddenFiles(showHidden);
+
+	if(pDialog->exec() == QDialog::Accepted)
 	{
-		QStringList files = d->selectedFiles();
-		if (!files.isEmpty())
-			buffer = files[0];
-		KviFileUtils::adjustFilePath(buffer);
-		delete d;
-		return !buffer.isEmpty();
+		QStringList szFiles = pDialog->selectedFiles();
+		if(!szFiles.isEmpty())
+			szBuffer = szFiles[0];
+		KviFileUtils::adjustFilePath(szBuffer);
+		delete pDialog;
+		return !szBuffer.isEmpty();
 	}
-	delete d;
+	delete pDialog;
 
 	return false;
 }
 
-
-bool KviFileDialog::askForOpenFileNames(QStringList &buffer,const QString & caption,const QString & initial,const char * filter,bool showHidden,bool showNative,QWidget* parent)
+bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool bShowHidden, bool bShowNative, QWidget * pParent)
 {
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	if (showNative)
+	if(bShowNative)
 	{
-		buffer=QFileDialog::getOpenFileNames(parent,caption,initial,filter);
-		return (buffer.count()>0);
+		szBuffer = QFileDialog::getOpenFileNames(pParent,szCaption,szInitial,szFilter);
+		return (szBuffer.count() > 0);
 	}
-
 #endif
-	KviFileDialog * d = new KviFileDialog(initial,filter ? QString(filter) : QString::null,parent,"open_file_names_dialog",true);
-	d->setWindowTitle(caption);
+
+	KviFileDialog * pDialog = new KviFileDialog(szInitial,szFilter,pParent,"open_file_names_dialog",true);
+	pDialog->setWindowTitle(szCaption);
 	// See line 190
-	d->setFileMode(KviTalFileDialog::ExistingFiles);
-	//d->setShowHiddenFiles(showHidden);
-	if(d->exec() == QDialog::Accepted)
+	pDialog->setFileMode(KviTalFileDialog::ExistingFiles);
+	//pDialog->setShowHiddenFiles(showHidden);
+
+	if(pDialog->exec() == QDialog::Accepted)
 	{
-		buffer = d->selectedFiles();
-		delete d;
-		return (buffer.count() > 0);
+		szBuffer = pDialog->selectedFiles();
+		delete pDialog;
+		return (szBuffer.count() > 0);
 	}
-	delete d;
+	delete pDialog;
 	return false;
 }
 

@@ -6,7 +6,7 @@
 //   Creation date : Wed Aug 8 2001 17:45:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2005 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,6 +24,15 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_splash.h
+* \author Szymon Stefanek
+* \brief Splash screen
+*
+* \def KVI_SPLASH_SCREEN_MINIMUM_TIMEOUT_IN_MSECS The minimum timeout in msec
+* \def KVI_SPLASH_SET_PROGRESS Updates the splash screen progress bar
+*/
+
 #include "kvi_settings.h"
 
 #include <QFrame>
@@ -34,35 +43,71 @@
 #include <QSplashScreen>
 #include <QPixmap>
 
+#define KVI_SPLASH_SCREEN_MINIMUM_TIMEOUT_IN_MSECS 2000
+
+#define KVI_SPLASH_SET_PROGRESS(__val) \
+	if(g_pSplashScreen) \
+		g_pSplashScreen->setProgress(__val);
+
+//#define KVI_SPLASH_SET_TEXT(__txt) if(g_pSplashScreen){ g_pSplashScreen->message(__txt); debug(__txt.latin1()); }
+
+/**
+* \class KviSplashScreen
+* \brief Splash screen class
+*/
 class KVIRC_API KviSplashScreen : public QSplashScreen
 {
 	Q_OBJECT
 public:
+	/**
+	* \brief Constructs the splash screen object
+	* \return KviSplashScreen
+	*/
 	KviSplashScreen();
+
+	/**
+	* \brief Destroys the splash screen object
+	*/
 	virtual ~KviSplashScreen();
 private:
-	QTimer         * m_pTimer;
-	QTime            m_creationTime;
-	QPixmap        * m_pOverlay;
-	bool             m_bIncreasing;
-	qreal            m_rTransparency;
-	QTimer         * m_pFadeTimer;
+	QTimer  * m_pTimer;
+	QTime     m_creationTime;
+	QPixmap * m_pOverlay;
+	bool      m_bIncreasing;
+	qreal     m_rTransparency;
+	QTimer  * m_pFadeTimer;
+public:
+	/**
+	* \brief Sets the progress in steps
+	* \param iProgress The progress step
+	* \return void
+	*/
+	void setProgress(int iProgress);
+
+	/**
+	* \brief Kills the splash screen
+	* \return void
+	*/
+	void die();
+
+	//void message(QString);
+protected slots:
+	/**
+	* \brief Called when we want to kill the splash screen
+	* \return void
+	*/
+	void suicide();
+
+	/**
+	* \brief Sets the fading effect
+	* \return void
+	*/
+	void fadeTimerShot();
 protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void hideEvent(QHideEvent * e);
-public:
-	void setProgress(int progress);
-	void die();
-	//void message(QString);
-protected slots:
-	void suicide();
-	void fadeTimerShot();
 };
 
 extern KVIRC_API KviSplashScreen * g_pSplashScreen;
-
-#define KVI_SPLASH_SET_PROGRESS(__val) if(g_pSplashScreen)g_pSplashScreen->setProgress(__val);
-//#define KVI_SPLASH_SET_TEXT(__txt) if(g_pSplashScreen){ g_pSplashScreen->message(__txt); debug(__txt.latin1()); }
-
 
 #endif //_KVI_SPLASH_H_

@@ -6,7 +6,7 @@
 //   Creation date : Thu Jan 18 2007 00:34:33 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -29,7 +29,7 @@
 * \author Szymon Stefanek
 * \brief KviQCString
 *
-* \def KviQCString Defines KviQCString as QByteArray
+* \def KviQCString Defines KviQCString as QByteArray. See doc/hackers.guide.txt
 */
 
 #include "kvi_settings.h"

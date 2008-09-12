@@ -4,7 +4,7 @@
 //   Creation date : Fri May 17 2002 02:35:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_texticonwin.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_app.h"
@@ -38,32 +36,30 @@
 #include <QEvent>
 #include <QKeyEvent>
 #include <QHeaderView>
-
-#include <ctype.h>
 #include <QPalette>
 #include <QListView>
 
-KviTextIconWindow::KviTextIconWindow(QWidget *parent)
-: KviTalIconView(parent,Qt::Popup)
+#include <ctype.h>
+
+KviTextIconWindow::KviTextIconWindow(QWidget * pParent)
+: KviTalIconView(pParent,Qt::Popup)
 {
-	
-	
 	m_iTimerId = -1;
-	m_pParent=parent;
-	m_pItem=0;
+	m_pParent  = pParent;
+	m_pItem    = 0;
+	m_pOwner   = 0;
+	m_bAltMode = false;
+
 	setColumnCount(4);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setRowCount(10);
 	setWordWrap(true);
 	setFixedSize(KVI_TEXTICON_WIN_WIDTH,KVI_TEXTICON_WIN_HEIGHT);
-	m_pOwner = 0;
+
 	fill();
 	//connect(g_pTextIconManager,SIGNAL(changed()),this,SLOT(fill()));
 	connect(this,SIGNAL(cellActivated( KviTalIconViewItem * )),this,SLOT(itemSelected(KviTalIconViewItem *)));
 	connect(this,SIGNAL(currentItemChanged ( KviTalIconViewItem *, KviTalIconViewItem * )),this,SLOT(currentItemChanged( KviTalIconViewItem *, KviTalIconViewItem * )));
-	m_bAltMode = false;
-
-	
 }
 
 KviTextIconWindow::~KviTextIconWindow()
@@ -74,44 +70,50 @@ KviTextIconWindow::~KviTextIconWindow()
 		m_iTimerId = -1;
 	}
 
-//	if(m_pOwner)m_pOwner->setFocus();
+	//if(m_pOwner)m_pOwner->setFocus();
 }
 
 void KviTextIconWindow::fill()
 {
-	setEditTriggers( QAbstractItemView::NoEditTriggers );
+	setEditTriggers(QAbstractItemView::NoEditTriggers);
 	clear();
-	KviPointerHashTable<QString,KviTextIcon> * d = g_pTextIconManager->textIconDict();
-	KviPointerHashTableIterator<QString,KviTextIcon> it(*d);
+
+	KviPointerHashTable<QString,KviTextIcon> * pDict = g_pTextIconManager->textIconDict();
+	KviPointerHashTableIterator<QString,KviTextIcon> it(*pDict);
 	
-	int col=0;
-	int row=0;
-	while(KviTextIcon * i = it.current())
+	int iCol = 0;
+	int iRow = 0;
+	while(KviTextIcon * pIcon = it.current())
 	{
-		QPixmap *pix = i->pixmap();
-		if(pix){
-			setItem(row,col,new KviTalIconViewItem(it.currentKey(),*pix));
-			col++;
-			if (col==4){
-				col=0;
-				row++;
+		QPixmap * pPix = pIcon->pixmap();
+		if(pPix)
+		{
+			setItem(iRow,iCol,new KviTalIconViewItem(it.currentKey(),*pPix));
+			iCol++;
+			if(iCol == 4)
+			{
+				iCol=0;
+				iRow++;
 			}
 		}
 		++it;
 	}
+
 	verticalHeader()->setResizeMode(QHeaderView::Fixed);
 	verticalHeader()->setDefaultSectionSize(45);
 	horizontalHeader()->setResizeMode(QHeaderView::Fixed);
 	horizontalHeader()->setDefaultSectionSize(45);
 	//resizeColumnsToContents();
-	sortItems ( 0, Qt::AscendingOrder );
+	sortItems(0,Qt::AscendingOrder);
 	setCurrentItem(0);
 }
 
-void KviTextIconWindow::popup(QWidget *owner,bool bAltMode)
+void KviTextIconWindow::popup(QWidget * pOwner, bool bAltMode)
 {
-	if(m_pOwner)disconnect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
-	m_pOwner = owner;
+	if(m_pOwner)
+		disconnect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
+
+	m_pOwner = pOwner;
 	m_szTypedSeq = "";
 	m_bAltMode = bAltMode;
 	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
@@ -119,43 +121,44 @@ void KviTextIconWindow::popup(QWidget *owner,bool bAltMode)
 
 bool KviTextIconWindow::findTypedSeq()
 {
-
-	int max = 0;
-	KviTalIconViewItem *mit = 0;
+	int iMax = 0;
+	KviTalIconViewItem * pItem = 0;
 	bool bFullMax = false;
 	int y;
-	for ( y=0;y<rowCount();y++)
+	for (y = 0; y < rowCount(); y++)
 	{
 		int x;
-		for(x=0;x<columnCount();x++)
+		for(x = 0; x < columnCount(); x++)
 		{
 			QString szIt = item(y,x)->text();
 
 			int j;
-			for(j=0;j<((int)(szIt.length()));j++)
+			for(j = 0; j < ((int)(szIt.length())); j++)
 			{
 				if(szIt[j].toLower() != m_szTypedSeq[j].toLower())break;
 			}
-			if(j < max)
+
+			if(j < iMax)
 			{
-				goto got_mit;
+				goto item_found;
 			} else {
-				if(j >= max)
+				if(j >= iMax)
 				{
 					bFullMax = (j == ((int)(szIt.length())));
-					max = j;
-					mit = (KviTalIconViewItem *)item(y,x);
+					iMax = j;
+					pItem = (KviTalIconViewItem *)item(y,x);
 				}
 			}
 		}
 	}
-got_mit:
-	setCurrentItem(mit);
-	m_szCurFullSeq = mit->text();
+
+item_found:
+	setCurrentItem(pItem);
+	m_szCurFullSeq = pItem->text();
 	return bFullMax;
 }
 
-void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
+void KviTextIconWindow::keyPressEvent(QKeyEvent * e)
 {
 	switch(e->key())
 	{
@@ -165,18 +168,19 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 		case Qt::Key_Right:
 		case Qt::Key_PageUp:
 		case Qt::Key_PageDown:
-			case Qt::Key_Return:
+		case Qt::Key_Return:
 			KviTalIconView::keyPressEvent(e);
 			return;
-			break;
-	/*	case Qt::Key_Return:
+		break;
+		/*
+		case Qt::Key_Return:
 			{
 				if (m_pItem) itemSelected(m_pItem);
 				else KviTalIconView::keyPressEvent(e);
 				return;
 			}
 		break;
-	*/
+		*/
 		case Qt::Key_Escape:
 			doHide();
 			return;
@@ -188,7 +192,8 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 				findTypedSeq();
 			} else {
 				doHide();
-				if(m_pOwner)g_pApp->sendEvent(m_pOwner,e);
+				if(m_pOwner)
+					g_pApp->sendEvent(m_pOwner,e);
 			}
 			return;
 		break;
@@ -213,7 +218,8 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 					}
 				}
 			} else {
-				if(m_pOwner)g_pApp->sendEvent(m_pOwner,e);
+				if(m_pOwner)
+					g_pApp->sendEvent(m_pOwner,e);
 			}
 			return;
 		break;
@@ -222,16 +228,19 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 			findTypedSeq();
 			QString szItem = m_szCurFullSeq;
 			szItem.append(' ');
-			if(m_bAltMode)szItem.prepend(KVI_TEXT_ICON);
+
+			if(m_bAltMode)
+				szItem.prepend(KVI_TEXT_ICON);
+
 			if(m_pOwner->inherits("KviInputEditor"))
 				((KviInputEditor *)m_pOwner)->insertText(szItem);
 			else if(m_pOwner->inherits("KviInput"))
 				((KviInput *)m_pOwner)->insertText(szItem);
 			else if(m_pOwner->inherits("QLineEdit"))
 			{
-				QString tmp = ((QLineEdit *)m_pOwner)->text();
-				tmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(),szItem);
-				((QLineEdit *)m_pOwner)->setText(tmp);
+				QString szTmp = ((QLineEdit *)m_pOwner)->text();
+				szTmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(),szItem);
+				((QLineEdit *)m_pOwner)->setText(szTmp);
 				((QLineEdit *)m_pOwner)->setCursorPosition(((QLineEdit *)m_pOwner)->cursorPosition() + szItem.length());
 			}
 		return;
@@ -245,7 +254,8 @@ void KviTextIconWindow::keyPressEvent(QKeyEvent *e)
 		m_szTypedSeq.append((char)as);
 		findTypedSeq();
 	} else {
-		if(m_pOwner)g_pApp->sendEvent(m_pOwner,e);
+		if(m_pOwner)
+			g_pApp->sendEvent(m_pOwner,e);
 	}
 }
 
@@ -257,14 +267,15 @@ void KviTextIconWindow::ownerDead()
 
 void KviTextIconWindow::show()
 {
-	m_pItem=0;
+	m_pItem = 0;
 	m_iTimerId = startTimer(50000); //50 sec ...seems enough
 	QWidget::show();
 }
 
-void KviTextIconWindow::timerEvent(QTimerEvent *e)
+void KviTextIconWindow::timerEvent(QTimerEvent * e)
 {
-	if (e->timerId()!=m_iTimerId) {
+	if(e->timerId() != m_iTimerId)
+	{
 		QTableWidget::timerEvent(e);
 		return;
 	}
@@ -278,59 +289,80 @@ void KviTextIconWindow::doHide()
 		killTimer(m_iTimerId);
 		m_iTimerId = -1;
 	}
+
 	m_pParent->hide();
-	if(m_pOwner)m_pOwner->setFocus();
+
+	if(m_pOwner)
+		m_pOwner->setFocus();
 }
-void KviTextIconWindow::currentItemChanged(KviTalIconViewItem * item,KviTalIconViewItem * prev)
+
+void KviTextIconWindow::currentItemChanged(KviTalIconViewItem * pItem)
 {
-	m_pItem=item;
+	m_pItem = pItem;
 }
-void KviTextIconWindow::itemSelected(KviTalIconViewItem * item)
+
+void KviTextIconWindow::itemSelected(KviTalIconViewItem * pItem)
 {
-	if(item)
+	if(pItem)
 	{
 //		debug("%i %i %i %s",m_pOwner->inherits("KviInputEditor"),m_pOwner->inherits("KviInput"),m_pOwner->inherits("QLineEdit"),m_pOwner->className());
-		QString szItem = item->text();
+		QString szItem = pItem->text();
 		szItem.append(' ');
-		if(m_bAltMode)szItem.prepend(KVI_TEXT_ICON);
+
+		if(m_bAltMode)
+			szItem.prepend(KVI_TEXT_ICON);
+
 		if(m_pOwner->inherits("KviInputEditor"))
 			((KviInputEditor *)m_pOwner)->insertText(szItem);
 		else if(m_pOwner->inherits("KviInput"))
 			((KviInput *)m_pOwner)->insertText(szItem);
 		else if(m_pOwner->inherits("QLineEdit"))
 		{
-			QString tmp = ((QLineEdit *)m_pOwner)->text();
-			tmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(),szItem);
-			((QLineEdit *)m_pOwner)->setText(tmp);
+			QString szTmp = ((QLineEdit *)m_pOwner)->text();
+			szTmp.insert(((QLineEdit *)m_pOwner)->cursorPosition(),szItem);
+			((QLineEdit *)m_pOwner)->setText(szTmp);
 			((QLineEdit *)m_pOwner)->setCursorPosition(((QLineEdit *)m_pOwner)->cursorPosition() + szItem.length());
 		}
 		doHide();
- 	
 	}
 }
 
 // FIXME: this does not work
-void KviTextIconWindow::mousePressEvent(QMouseEvent *e)
+void KviTextIconWindow::mousePressEvent(QMouseEvent * e)
 {
-	if(e->pos().x() < 0)goto hideme;
-	if(e->pos().x() > width())goto hideme;
-	if(e->pos().y() < 0)goto hideme;
-	if(e->pos().y() > height())goto hideme;
-	m_pItem=(KviTalIconViewItem *)itemAt(e->pos());
+	if(
+		(e->pos().x() < 0) || (e->pos().x() > width()) ||
+		(e->pos().y() < 0) || (e->pos().y() > height())
+		)
+		goto hideme;
+
+	m_pItem = (KviTalIconViewItem *)itemAt(e->pos());
 	KviTalIconView::mousePressEvent(e);
 	return;
 hideme:
 	doHide();
 }
+
 KviTextIconWindowWidget::KviTextIconWindowWidget()
 :QWidget(0)
 {
 	setWindowFlags(Qt::Popup);
-	wid=new KviTextIconWindow(this);
+	m_pWindow = new KviTextIconWindow(this);
+
 	//FIXME: hack to prevent first showing at center of the screen ^_^
 	show();
 	hide();
 }
+
+KviTextIconWindowWidget::~KviTextIconWindowWidget()
+{
+}
+
+void KviTextIconWindowWidget::popup(QWidget * pOwner, bool bAltMode)
+{
+	m_pWindow->popup(pOwner,bAltMode);
+	show();
+};
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_texticonwin.moc"

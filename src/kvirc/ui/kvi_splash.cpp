@@ -4,7 +4,7 @@
 //   Creation date : Wed Aug 8 2001 17:46:10 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -125,25 +125,25 @@ KviSplashScreen::~KviSplashScreen()
 	delete m_pOverlay;
 }
 
-void KviSplashScreen::showEvent(QShowEvent *e)
+void KviSplashScreen::showEvent(QShowEvent * e)
 {
 	move((g_pApp->desktop()->width() - width())/2,
 		(g_pApp->desktop()->height() - height())/2);
 	m_creationTime = QTime::currentTime();
 }
 
-void KviSplashScreen::hideEvent(QHideEvent *e)
+void KviSplashScreen::hideEvent(QHideEvent * e)
 {
 	suicide();
 }
 
-void KviSplashScreen::setProgress(int progress)
+void KviSplashScreen::setProgress(int iProgress)
 {
 	QPixmap slowQt4Copy = pixmap();
 	QPainter painter(&slowQt4Copy);
 	QSize size = slowQt4Copy.size();
-	int w = (m_pOverlay->width() * progress) / 100;
-	painter.drawPixmap(0,size.height() - m_pOverlay->height(),w,m_pOverlay->height(),*m_pOverlay,0,0,w,m_pOverlay->height());
+	int iWidth = (m_pOverlay->width() * iProgress) / 100;
+	painter.drawPixmap(0,size.height() - m_pOverlay->height(),iWidth,m_pOverlay->height(),*m_pOverlay,0,0,iWidth,m_pOverlay->height());
 	painter.end();
 	setPixmap(slowQt4Copy);
 
@@ -151,8 +151,6 @@ void KviSplashScreen::setProgress(int progress)
 	repaint();
 	g_pApp->processEvents(); //damn...
 }
-
-#define KVI_SPLASH_SCREEN_MINIMUM_TIMEOUT_IN_MSECS 2000
 
 void KviSplashScreen::die()
 {
@@ -162,7 +160,8 @@ void KviSplashScreen::die()
 
 void KviSplashScreen::suicide()
 {
-	if(!g_pSplashScreen)return; // already in suicide ?
+	if(!g_pSplashScreen)
+		return; // already in suicide ?
 	//g_pApp->collectGarbage(this);
 	g_pSplashScreen = 0;
 	deleteLater();
@@ -173,25 +172,24 @@ void KviSplashScreen::fadeTimerShot()
 {
 	if(m_bIncreasing)
 	{
-		m_rTransparency+=0.05;
+		m_rTransparency += 0.05;
 		setWindowOpacity(m_rTransparency);
 		if(m_rTransparency>=1)
 		{
 			m_pFadeTimer->stop();
-			m_bIncreasing=false;
+			m_bIncreasing = false;
 		}
 	} else {
-		m_rTransparency-=0.02;
+		m_rTransparency -= 0.02;
 		setWindowOpacity(m_rTransparency);
 		if(m_rTransparency<=0)
 		{
 			m_pFadeTimer->stop();
-			m_bIncreasing=true;
+			m_bIncreasing = true;
 			suicide();
 		}
 	}
 }
-
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_splash.moc"

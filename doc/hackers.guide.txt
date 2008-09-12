@@ -9,14 +9,13 @@ The source tree
 -------------------------------------------------------------------------------
 
 /                         Root directory.
-|                         This is almost completely automake and autoconf stuff.
+|                         This is almost completely CMake stuff.
 |                         Here you can also find project files for various IDE:
 |                         by now KDevelop and Visual C++.
 |
-|-- admin                 Administrative files used during the compilation
-|                         automake, autoconf and document generation scripts.
+|-- admin                 Administrative files and document generation scripts.
 |
-|-- cmake                 Build files using the new cmake system resides in here.
+|-- cmake                 Build files using the new CMake system resides in here.
 |                         This is work in progress.
 |
 |-- data                  Data for the KVIrc program. Most of this stuff is
@@ -51,7 +50,7 @@ The source tree
 |   |
 |   |-- protocols         irc:// and irc6:// protocol definitions for konqueror
 |   |
-|   |-- resources         Resources for the windows compilation.
+|   |-- resources_win32   Resources for the windows compilation.
 |   |
 |   `-- resources_mac     Resources for the macosx compilation.
 |
@@ -63,7 +62,7 @@ The source tree
 |
 |-- no-dist               Stuff that does NOT end in the final distribution
 
-|-- po                    Internationalisation (i18n :)
+|-- po                    Internationalization (i18n :)
 |   |
 |   |-- kvirc             Translations for kvilib and the main KVIrc executable
 |   |
@@ -76,9 +75,6 @@ The source tree
 |   |-- kvilib            KVIrc library. Any source code snippet that can be
 |   |   |                 abstracted enough to not depend on the KVIrc core
 |   |   |                 ends up here. kvilib depends only on external stuff.
-|   |   |
-|   |   |-- build         This is the build directory for automake.
-|   |   |                 The main Makefile.am is here.
 |   |   |
 |   |   |-- config        The headers that control the compile-time
 |   |   |                 configuration.
@@ -108,9 +104,6 @@ The source tree
 |   |
 |   |-- kvirc             The KVIrc executable sources
 |   |   |
-|   |   |-- build         Again the build directory for automake.
-|   |   |                 Makefile.am is here.
-|   |   |
 |   |   |-- include       Again compile-time include files. Only links.
 |   |   |
 |   |   |-- kernel        The core of the executable. The main function is
@@ -133,8 +126,6 @@ The source tree
 |   |   |                 KviConsole, KviInput, KviIrcView and KviUserListView
 |   |   |                 which are the most common widgets in kvirc.
 |   |   |
-|   |   `-- uparser       Placeholder for the old scripting engine (user
-|   |                      parser).
 |   |
 |   |-- modules           Yes, the modules :D
 |   |   |
@@ -233,6 +224,8 @@ The source tree
 |   |   |
 |   |   |-- popupeditor   The popup editor window
 |   |   |
+|   |   |-- proxydb       The proxy DB management stuff from KVS
+|   |   |
 |   |   |-- raweditor     The raw events editor window
 |   |   |
 |   |   |-- regchan       regchan.* scripting stuff
@@ -240,6 +233,8 @@ The source tree
 |   |   |-- reguser       reguser.* scripting stuff
 |   |   |
 |   |   |-- rijndael      A crypting engine
+|   |   |
+|   |   |-- serverdb      The server DB management stuff from KVS
 |   |   |
 |   |   |-- setup         The module that is loaded when KVIrc is started
 |   |   |                 for the first time. It contains the initial
@@ -272,6 +267,8 @@ The source tree
 |   |   |-- torrent       The torrent module
 |   |   |
 |   |   |-- trayicon      The trayicon module
+|   |   |
+|   |   |-- upnp          The UPnP management module
 |   |   |
 |   |   |-- url           The url window
 |   |   |
@@ -929,7 +926,7 @@ KVIrc is LARGE. We need to start documenting the source code if we want
 to understand our own code in a year from now and if we want help from
 others.
 
-Use doxygen.
+Use Doxygen.
 
 There is a Doxyfile in the admin subdirectory. You can either
 run doxygen from there or simply type "make devdocs" from the

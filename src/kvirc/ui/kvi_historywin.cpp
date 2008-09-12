@@ -1,11 +1,12 @@
 #ifndef _KVI_HISTORYWIN_CPP_
 #define _KVI_HISTORYWIN_CPP_
+//=============================================================================
 //
 //   File : kvi_historywin.cpp
 //   Creation date : Mon Aug 19 01:34:48 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,9 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-
-
-
+//=============================================================================
 
 #include "kvi_historywin.h"
 #include "kvi_app.h"
@@ -38,13 +37,14 @@
 
 #include <ctype.h>
 
-KviHistoryWindow::KviHistoryWindow(QWidget *parent)
-: QListWidget(parent)
+KviHistoryWindow::KviHistoryWindow(QWidget * pParent)
+: QListWidget(pParent)
 {
-	m_pParent=parent;
-	m_pOwner = 0;
+	m_pParent = pParent;
+	m_pOwner  = 0;
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+
 	connect(this,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(itemSelected(QListWidgetItem *)));
 
 	m_iTimerId = -1;
@@ -62,28 +62,35 @@ KviHistoryWindow::~KviHistoryWindow()
 void KviHistoryWindow::fill()
 {
 	clear();
-	for(QString * s = KviInputHistory::instance()->list()->last();s;s = KviInputHistory::instance()->list()->prev())
+
+	for(QString * szTmp = KviInputHistory::instance()->list()->last(); szTmp; szTmp = KviInputHistory::instance()->list()->prev())
 	{
-		addItem(*s);
+		addItem(*szTmp);
 	}
-	if(count() > 0)setCurrentItem(item(count()-1));
+
+	if(count() > 0)
+		setCurrentItem(item(count()-1));
 }
 
-void KviHistoryWindow::popup(KviInput *owner)
+void KviHistoryWindow::popup(KviInput * pOwner)
 {
-	if(m_pOwner)disconnect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
-	m_pOwner = owner;
+	if(m_pOwner)
+		disconnect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
+
+	m_pOwner = pOwner;
 	connect(m_pOwner,SIGNAL(destroyed()),this,SLOT(ownerDead()));
+
 	fill();
 	show();
 }
 
-void KviHistoryWindow::mousePressEvent(QMouseEvent *e)
+void KviHistoryWindow::mousePressEvent(QMouseEvent * e)
 {
-	if(e->pos().x() < 0)goto hideme;
-	if(e->pos().x() > width())goto hideme;
-	if(e->pos().y() < 0)goto hideme;
-	if(e->pos().y() > height())goto hideme;
+	if(
+		(e->pos().x() < 0) || (e->pos().x() > width()) ||
+		(e->pos().y() < 0) || (e->pos().y() > height())
+		)
+		goto hideme;
 
 	QListWidget::mousePressEvent(e);
 	e->accept();
@@ -127,7 +134,7 @@ got_mit:
 }
 */
 
-void KviHistoryWindow::keyPressEvent(QKeyEvent *e)
+void KviHistoryWindow::keyPressEvent(QKeyEvent * e)
 {
 	switch(e->key())
 	{
@@ -143,7 +150,7 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent *e)
 			doHide();
 			return;
 		break;
-/*
+		/*
 		case Qt::Key_Backspace:
 			if(m_szTypedSeq.hasData())
 			{
@@ -155,8 +162,6 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent *e)
 			}
 			return;
 		break;
-*/
-/*
 		case Qt::Key_Space:
 			doHide();
 			if(findTypedSeq())
@@ -169,8 +174,6 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent *e)
 			}
 			return;
 		break;
-*/
-/*
 		case Qt::Key_Tab:
 			doHide();
 			findTypedSeq();
@@ -179,9 +182,10 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent *e)
 			if(m_pOwner)m_pOwner->insertText(szItem);
 			return;
 		break;
-*/
+	*/
 	}
-/*
+
+	/*
 	int as = e->ascii();
 	if((as >= 'a' && as <= 'z') || (as >= 'A' && as <= 'Z') || (as >= '0' && as <= '9')
 		|| (as == '?') || (as == '$') || (as == '.') || (as == ',') || (as == '!') || (as =='&'))
@@ -189,11 +193,12 @@ void KviHistoryWindow::keyPressEvent(QKeyEvent *e)
 		m_szTypedSeq.append((char)as);
 		findTypedSeq();
 	} else {
-*/
-		if(m_pOwner)g_pApp->sendEvent(m_pOwner,e);
-/*
+	*/
+		if(m_pOwner)
+			g_pApp->sendEvent(m_pOwner,e);
+	/*
 	}
-*/
+	*/
 }
 
 void KviHistoryWindow::ownerDead()
@@ -208,9 +213,9 @@ void KviHistoryWindow::show()
 	QWidget::show();
 }
 
-void KviHistoryWindow::timerEvent(QTimerEvent *e)
+void KviHistoryWindow::timerEvent(QTimerEvent * e)
 {
-	if (e->timerId()!=m_iTimerId)
+	if(e->timerId() != m_iTimerId)
 	{
 		QListWidget::timerEvent(e);
 		return;
@@ -227,19 +232,21 @@ void KviHistoryWindow::doHide()
 		killTimer(m_iTimerId);
 		m_iTimerId = -1;
 	}
+
 	m_pParent->hide();
+
 	if(m_pOwner)
 		m_pOwner->setFocus();
 }
 
-void KviHistoryWindow::itemSelected(QListWidgetItem *item)
+void KviHistoryWindow::itemSelected(QListWidgetItem * pItem)
 {
 	doHide();
-	if(m_pOwner && item)m_pOwner->setText(item->text());
+	if(m_pOwner && pItem)
+		m_pOwner->setText(pItem->text());
 }
 
-
-void KviHistoryWindow::hideEvent(QHideEvent *)
+void KviHistoryWindow::hideEvent(QHideEvent * e)
 {
 	if(m_iTimerId != -1)
 	{
@@ -247,14 +254,27 @@ void KviHistoryWindow::hideEvent(QHideEvent *)
 		m_iTimerId = -1;
 	}
 }
+
 KviHistoryWindowWidget::KviHistoryWindowWidget()
 :QWidget(0)
 {
 	setWindowFlags(Qt::Popup);
-	wid=new KviHistoryWindow(this);
+	m_pWindow = new KviHistoryWindow(this);
 }
+
+KviHistoryWindowWidget::~KviHistoryWindowWidget()
+{
+}
+
+void KviHistoryWindowWidget::popup(KviInput * pOwner)
+{
+	m_pWindow->popup(pOwner);
+	m_pWindow->setFixedSize(width(),height());
+	//move(QCursor::pos());
+	show();
+};
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_historywin.moc"
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 #endif //_KVI_HISTORYWIN_CPP_
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

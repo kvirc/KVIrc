@@ -4,7 +4,7 @@
 //   Creation date : Fri Aug 4 2000 12:09:21 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2005 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -66,25 +66,44 @@ static int g_iInputFontCharWidth[256];
 
 extern QStringList  * g_pRecentTopicList;
 
-int KviListBoxTopicItem::width ( const KviTalListWidget * lb ) const
+KviTopicListBoxItemDelegate::KviTopicListBoxItemDelegate(QAbstractItemView * pWidget)
+: KviTalIconAndRichTextItemDelegate(pWidget)
 {
-	return lb->fontMetrics().width(KviMircCntrl::stripControlBytes(text()));
 }
 
-QSize KviListBoxTopicItemDelegate::sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const
+KviTopicListBoxItemDelegate::~KviTopicListBoxItemDelegate()
+{
+}
+
+QSize KviTopicListBoxItemDelegate::sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const
 {
 	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
-	KviListBoxTopicItem* item = (KviListBoxTopicItem*) listWidget->item(index.row());
+	KviTopicListBoxItem* item = (KviTopicListBoxItem*) listWidget->item(index.row());
 
 	return listWidget->fontMetrics().size(Qt::TextSingleLine, KviMircCntrl::stripControlBytes(item->text()));
 }
 
-void KviListBoxTopicItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
+void KviTopicListBoxItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
 	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
-	KviListBoxTopicItem* item = (KviListBoxTopicItem*) listWidget->item(index.row());
+	KviTopicListBoxItem* item = (KviTopicListBoxItem*) listWidget->item(index.row());
 
 	if(item) KviTopicWidget::paintColoredText(p,item->text(),option.palette,option.rect);
+}
+
+
+KviTopicListBoxItem::KviTopicListBoxItem(KviTalListWidget * listbox, const QString & text)
+: KviTalListWidgetText(listbox,text)
+{
+}
+
+KviTopicListBoxItem::~KviTopicListBoxItem()
+{
+}
+
+int KviTopicListBoxItem::width ( const KviTalListWidget * lb ) const
+{
+	return lb->fontMetrics().width(KviMircCntrl::stripControlBytes(text()));
 }
 
 
@@ -109,7 +128,7 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 	m_pCompletionBox->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_pCompletionBox->setSelectionMode(QAbstractItemView::SingleSelection);
 
-	m_pItemDelegate = new KviListBoxTopicItemDelegate(m_pCompletionBox);
+	m_pItemDelegate = new KviTopicListBoxItemDelegate(m_pCompletionBox);
 	m_pCompletionBox->setItemDelegate(m_pItemDelegate);
 
 	connect(m_pCompletionBox,SIGNAL(itemSelectionChanged()),this,SLOT(complete()));
@@ -772,7 +791,7 @@ void KviTopicWidget::historyClicked()
 		m_pCompletionBox->installEventFilter( this );
 		m_pCompletionBox->clear();
 		for ( QStringList::Iterator it = g_pRecentTopicList->begin(); it != g_pRecentTopicList->end(); ++it ) {
-			KviListBoxTopicItem* item=new KviListBoxTopicItem(m_pCompletionBox,*it);
+			KviTopicListBoxItem* item=new KviTopicListBoxItem(m_pCompletionBox,*it);
 		}
 		m_pCompletionBox->resize(m_pInput->width(),6*m_pCompletionBox->fontMetrics().height()+20);
 		QPoint point=m_pInput->mapToGlobal(QPoint(0,0));
@@ -811,7 +830,7 @@ void KviTopicWidget::complete()
 {
 	if(m_pCompletionBox->selectedItems().count() >0)
 	{
-		KviListBoxTopicItem* item = (KviListBoxTopicItem*) m_pCompletionBox->selectedItems().first();
+		KviTopicListBoxItem* item = (KviTopicListBoxItem*) m_pCompletionBox->selectedItems().first();
 		m_pInput->setText(item->text());
 		popDownListBox();
 	}

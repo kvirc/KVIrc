@@ -1,12 +1,12 @@
 #ifndef _KVI_FILEDIALOG_H_
 #define _KVI_FILEDIALOG_H_
-
+//=============================================================================
 //
 //   File : kvi_filedialog.h
 //   Creation date : Mon Nov 20 2000 03:52:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,32 +22,95 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
+
+/**
+* \file kvi_filedialog.h
+* \author Szymon Stefanek
+* \brief File dialog helpers
+*/
 
 #ifdef Unsorted
 	#undef Unsorted
 #endif
+
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_tal_filedialog.h"
 
 #include <QStringList>
 
-
+/**
+* \class KviFileDialog
+* \brief File dialog class
+*/
 class KVIRC_API KviFileDialog : public KviTalFileDialog
 {
 	Q_OBJECT
 public:
-	KviFileDialog(const QString &dirName, const QString &filter=QString::null,
-					QWidget *parent=0, const char *name=0, bool modal=false);
+	/**
+	* \brief Constructs the file dialog object
+	* \param szDirName The directory where to use the dialog
+	* \param szFilter The filter to use
+	* \param pParent The parent widget
+	* \param name The name of the dialog
+	* \param bModal Whether to have a modal behaviour
+	* \return KviFileDialog
+	*/
+	KviFileDialog(const QString & szDirName, const QString & szFilter = QString::null, QWidget * pParent = 0, const char * name = 0, bool bModal = false);
+
+	/**
+	* \brief Destroys the file dialog object
+	*/
 	~KviFileDialog();
 public:
-	static bool askForOpenFileName(QString &buffer,const QString & caption,const QString &initial = QString::null,const QString &filter = QString::null,bool showHidden = false,bool showNative = true,QWidget* parent=0);
-	static bool askForSaveFileName(QString &buffer,const QString & caption,const QString &initial = QString::null,const QString &filter = QString::null,bool showHidden = false,bool bConfirmOverwrite = false,bool showNative = true,QWidget* parent=0);
+	/**
+	* \param szBuffer The buffer where to store the data
+	* \param szCaption The caption of the dialog
+	* \param szInitial The initial directory
+	* \param szFilter The filter to use
+	* \param bShowHidden Whether to show hidden files
+	* \param bShowNative Whether to show native dialogs
+	* \param pParent The parent widget
+	* \return bool
+	*/
+	static bool askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial = QString::null, const QString & szFilter = QString::null, bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
 
-	static bool askForDirectoryName(QString &buffer,const QString & caption,const QString & initial,const char * filter = 0,bool showHidden = false,bool showNative=true,QWidget* parent=0);
-	static bool askForOpenFileNames(QStringList &buffer,const QString & caption,const QString & initial,const char * filter = 0,bool showHidden = false,bool showNative=true,QWidget* parent=0);
+	/**
+	* \param szBuffer The buffer where to store the data
+	* \param szCaption The caption of the dialog
+	* \param szInitial The initial directory
+	* \param szFilter The filter to use
+	* \param bShowHidden Whether to show hidden files
+	* \param bShowNative Whether to show native dialogs
+	* \param pParent The parent widget
+	* \return bool
+	*/
+	static bool askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial = QString::null, const QString & szFilter = QString::null, bool bShowHidden = false, bool bConfirmOverwrite = false, bool bShowNative = true, QWidget * pParent = 0);
 
+	/**
+	* \param szBuffer The buffer where to store the data
+	* \param szCaption The caption of the dialog
+	* \param szInitial The initial directory
+	* \param szFilter The filter to use
+	* \param bShowHidden Whether to show hidden files
+	* \param bShowNative Whether to show native dialogs
+	* \param pParent The parent widget
+	* \return bool
+	*/
+	static bool askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter = QString::null, bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
+
+	/**
+	* \param szBuffer The buffer where to store the data
+	* \param szCaption The caption of the dialog
+	* \param szInitial The initial directory
+	* \param szFilter The filter to use
+	* \param bShowHidden Whether to show hidden files
+	* \param bShowNative Whether to show native dialogs
+	* \param pParent The parent widget
+	* \return bool
+	*/
+	static bool askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter = QString::null, bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
 };
-
 
 #endif //_KVI_FILEDIALOG_H_
