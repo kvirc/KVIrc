@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : kvi_tal_listbox.cpp
+//   File : kvi_tal_listwidget.cpp
 //   Creation date : Mon Jan 22 2007 11:25:08 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
