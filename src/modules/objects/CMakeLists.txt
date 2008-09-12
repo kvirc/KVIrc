@@ -75,7 +75,6 @@ SET(kviobjects_SRCS
 	class_wizard.cpp
 	class_workspace.cpp
 	class_wrapper.cpp
-	class_urllabel.cpp
 	class_xmlreader.cpp
 	class_vbox.cpp
 	class_hbox.cpp
