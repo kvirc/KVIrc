@@ -347,3 +347,4 @@ bool KviKvsObject_layout::functionsetAlignment(KviKvsObjectFunctionCall *c)
 	if (widget()) ((QGridLayout *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;
 }
+

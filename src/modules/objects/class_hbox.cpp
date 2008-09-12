@@ -221,3 +221,4 @@ bool KviKvsObject_hbox::functionsetAlignment(KviKvsObjectFunctionCall *c)
 	if (widget()) ((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;
 }
+
