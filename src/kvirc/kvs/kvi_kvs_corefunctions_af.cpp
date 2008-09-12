@@ -971,6 +971,12 @@ namespace KviKvsCoreFunctions
 	#ifdef COMPILE_SCRIPTTOOLBAR
 			"ScriptToolBar",
 	#endif // COMPILE_SCRIPTTOOLBAR
+	#ifdef COMPILE_PHONON_SUPPORT
+			"Phonon",
+	#endif 
+	#ifdef COMPILE_WEBKIT_SUPPORT
+			"Webkit",
+	#endif 
 			"Qt4",
 			"KVS",
 			0
