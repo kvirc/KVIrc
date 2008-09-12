@@ -624,7 +624,7 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 	@short:
 		Find the index of a substring in a string
 	@syntax:
-		<int> $str.findfirst(<findIn:string>,<toFind:string>)
+		<int> $str.findfirst(<findIn:string>,<toFind:string>,[<start_index:integer>])
 	@description:
 		This function search in the string given as the first parameter for the string
 		given as his second parameter, and will return the index where is first located or
@@ -634,11 +634,13 @@ static bool str_kvs_fnc_find(KviKvsModuleFunctionCall * c)
 static bool str_kvs_fnc_findfirst(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szString2;
+	kvs_int_t iFromIndex;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("findIn",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("toFind",KVS_PT_STRING,0,szString2)
+		KVSM_PARAMETER("from_index",KVS_PT_INTEGER,KVS_PF_OPTIONAL,iFromIndex)
 	KVSM_PARAMETERS_END(c)
-	c->returnValue()->setInteger(szString.indexOf(szString2));
+	c->returnValue()->setInteger(szString.indexOf(szString2,iFromIndex));
 	return true;
 }
 /*

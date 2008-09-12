@@ -31,7 +31,7 @@
 #include "kvi_qcstring.h"
 #include <kvi_tal_textedit.h>
 #include "kvi_tal_popupmenu.h"
-#include "kvi_tal_listbox.h"
+
 
 #include <QLabel>
 #include <QDialog>

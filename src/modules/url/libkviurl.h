@@ -28,7 +28,6 @@
 #include "kvi_mextoolbar.h"
 #include "kvi_kvs_action.h"
 #include "kvi_tal_listview.h"
-#include "kvi_tal_listbox.h"
 
 #include <QDialog>
 #include <QLayout>
