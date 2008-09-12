@@ -40,6 +40,7 @@ public:
 	void setSpacing(int);
 	void setMargin(int);
 	void setAlignment(Qt::Alignment);
+	void addStretch(int stretch=0);
 protected:
 	virtual void childEvent(QChildEvent * e);
 private:

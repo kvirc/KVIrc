@@ -77,6 +77,11 @@ void KviTalVBox::setAlignment(Qt::Alignment alignment)
 	m_pLayout->setAlignment(alignment);
 }
 
+void KviTalVBox::addStretch(int stretch)
+{
+	m_pLayout->addStretch(stretch);
+}
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_vbox.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

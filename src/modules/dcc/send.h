@@ -216,7 +216,7 @@ public:
 
 	virtual void displayPaint(QPainter * p,int column, QRect rect);
 	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(KviTalPopupMenu * m,int column);
+	virtual void fillContextPopup(KviTalPopupMenu * m);
 	virtual void fillStatusString(QString &szBuffer);
 	virtual bool active();
 	virtual void die();

@@ -77,6 +77,10 @@ void KviTalHBox::setAlignment(Qt::Alignment alignment)
 	m_pLayout->setAlignment(this,alignment);
 }
 
+void KviTalHBox::addStretch(int stretch)
+{
+	m_pLayout->addStretch(stretch);
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_hbox.moc"

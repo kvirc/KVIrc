@@ -77,7 +77,7 @@ KviFileTransferItem::KviFileTransferItem(KviFileTransferWidget * v,KviFileTransf
 	col1Item = new KviTalTableWidgetItem(v, row(), 1);
 	col2Item = new KviTalTableWidgetItem(v, row(), 2);
 	//FIXME fixed row height
-	tableWidget()->setRowHeight( row(), 68 );
+	tableWidget()->setRowHeight( row(), 70 );
 }
 
 KviFileTransferItem::~KviFileTransferItem()
@@ -89,6 +89,7 @@ KviFileTransferItem::~KviFileTransferItem()
 
 void KviFileTransferItem::displayUpdate()
 {
+	//FIXME this hurts
 	int dummy = (int) time(NULL);
 	tableWidget()->model()->setData(tableWidget()->model()->index(row(),0), dummy, Qt::DisplayRole);
 	tableWidget()->model()->setData(tableWidget()->model()->index(row(),1), dummy, Qt::DisplayRole);
@@ -107,6 +108,72 @@ QString KviFileTransferItem::key(int column,bool bAcending) const
 	else if(ret.length() == 6)ret.prepend("00");
 	else if(ret.length() == 7)ret.prepend("0");
 	return ret;
+}
+
+
+
+KviFileTransferWidget::KviFileTransferWidget(QWidget * pParent)
+: KviTalTableWidget(pParent)
+{
+	//hide the header
+	verticalHeader()->hide();
+	//hide cells grids
+	setShowGrid(false);
+	//disable cell content editing
+	setEditTriggers(QAbstractItemView::NoEditTriggers);
+
+	//select one row at once
+	setSelectionBehavior(QAbstractItemView::SelectRows);
+	setSelectionMode(QAbstractItemView::SingleSelection);
+
+	//prepare columns
+	setColumnCount(3);
+
+	QStringList colHeaders;
+	colHeaders << __tr2qs_ctx("Type","filetransferwindow")
+				<< __tr2qs_ctx("Information","filetransferwindow")
+				<< __tr2qs_ctx("Progress","filetransferwindow");
+	setHorizontalHeaderLabels(colHeaders);
+	horizontalHeader()->setResizeMode(QHeaderView::Interactive);
+
+	//default column widths
+	setColumnWidth(0, 68);
+	horizontalHeader()->setResizeMode(0, QHeaderView::Fixed);
+	horizontalHeader()->setResizeMode(1, QHeaderView::Stretch);
+	horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
+
+	//focus policy
+	setFocusPolicy(Qt::NoFocus);
+	viewport()->setFocusPolicy(Qt::NoFocus);
+}
+
+void KviFileTransferWidget::mousePressEvent (QMouseEvent *e)
+{
+	if (e->button() == Qt::RightButton)
+	{
+		// we have 3 items: the one on the first column is the real one (has a transfer() member)
+		// others are just fakes
+		QTableWidgetItem *clicked = itemAt(e->pos());
+		if(clicked)
+		{
+			KviFileTransferItem *i = (KviFileTransferItem*) item(clicked->row(),0);
+			if (i) emit rightButtonPressed(i, QCursor::pos());
+		}
+	}
+	QTableWidget::mousePressEvent(e);
+}
+
+void KviFileTransferWidget::mouseDoubleClickEvent (QMouseEvent *e)
+{
+	// we have 3 items: the one on the first column is the real one (has a transfer() member)
+	// others are just fakes
+	QTableWidgetItem *clicked = itemAt(e->pos());
+	if(clicked)
+	{
+		KviFileTransferItem *i = (KviFileTransferItem*) item(clicked->row(),0);
+		if (i) emit doubleClicked(i,QCursor::pos());
+	}
+	QTableWidget::mouseDoubleClickEvent(e);
 }
 
 void KviFileTransferWidget::paintEvent(QPaintEvent * event)
@@ -141,7 +208,9 @@ void KviFileTransferItemDelegate::paint(QPainter * p, const QStyleOptionViewItem
 	KviFileTransferWidget* tableWidget = (KviFileTransferWidget*)parent();
 	KviFileTransferItem* item = (KviFileTransferItem*) tableWidget->itemFromIndex(index);
 
+	if(!item) return;
 	KviFileTransfer* transfer = ((KviFileTransferItem*)tableWidget->item(item->row(), 0))->transfer();
+
 
 	p->setFont(option.font);
 
@@ -188,44 +257,16 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	m_pSplitter->setObjectName("transferwindow_hsplitter");
 	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("transferwindow_vsplitter");
-	
+
 	m_pTableWidget  = new KviFileTransferWidget(m_pVertSplitter);
 
 	//ad-hoc itemdelegate for this view
 	m_pItemDelegate = new KviFileTransferItemDelegate(m_pTableWidget);
 	m_pTableWidget->setItemDelegate(m_pItemDelegate);
 
-	m_pTableWidget->verticalHeader()->hide();
-	m_pTableWidget->setShowGrid(false);
-
-	m_pTableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-	m_pTableWidget->setSelectionMode(QAbstractItemView::SingleSelection);
-
-	m_pTableWidget->setColumnCount(3);
-
-	QStringList colHeaders;
-	colHeaders.append(__tr2qs_ctx("Type","filetransferwindow"));
-	colHeaders.append(__tr2qs_ctx("Information","filetransferwindow"));
-	colHeaders.append(__tr2qs_ctx("Progress","filetransferwindow"));
-	m_pTableWidget->setHorizontalHeaderLabels(colHeaders);
-	m_pTableWidget->horizontalHeader()->setResizeMode(QHeaderView::Interactive);
-	m_pTableWidget->horizontalHeader()->setMinimumSectionSize(50);
-
-	//default column widths
-	m_pTableWidget->setColumnWidth(0, 68);
-	m_pTableWidget->horizontalHeader()->setResizeMode(0, QHeaderView::Fixed);
-	m_pTableWidget->horizontalHeader()->setResizeMode(1, QHeaderView::Stretch);
-	m_pTableWidget->horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
-
 	KviDynamicToolTip * tp = new KviDynamicToolTip(m_pTableWidget->viewport());
 	//TODO
 	//connect(tp,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
-
-	m_pTableWidget->setFocusPolicy(Qt::NoFocus);
-	m_pTableWidget->viewport()->setFocusPolicy(Qt::NoFocus);
-
-	//connect(m_pTableWidget,SIGNAL(rightButtonPressed(KviTalTableWidgetItem *,const QPoint &,int)),
-	// this,SLOT(showHostPopup(KviTalTableWidgetItem *,const QPoint &,int)));
 
 	QFontMetrics fm(font());
 	m_iLineSpacing = fm.lineSpacing();
@@ -233,8 +274,10 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
 	m_pTableWidget->installEventFilter(this);
-	connect(m_pTableWidget,SIGNAL(rightButtonPressed(KviTalTableWidgetItem *,const QPoint &,int)),this,SLOT(rightButtonPressed(KviTalTableWidgetItem *,const QPoint &,int)));
-	connect(m_pTableWidget,SIGNAL(doubleClicked(KviTalTableWidgetItem *,const QPoint &,int)),this,SLOT(doubleClicked(KviTalTableWidgetItem *,const QPoint &,int)));
+
+	connect(m_pTableWidget,SIGNAL(rightButtonPressed(KviFileTransferItem *,QPoint)),
+		this,SLOT(rightButtonPressed(KviFileTransferItem *,QPoint)));
+	connect(m_pTableWidget,SIGNAL(doubleClicked(KviFileTransferItem *,const QPoint &)),this,SLOT(doubleClicked(KviFileTransferItem *,const QPoint &)));
 	fillTransferView();
 
 	connect(KviFileTransferManager::instance(),SIGNAL(transferRegistered(KviFileTransfer *)),this,SLOT(transferRegistered(KviFileTransfer *)));
@@ -327,12 +370,12 @@ void KviFileTransferWindow::transferUnregistering(KviFileTransfer * t)
     it = 0;
 }
 
-void KviFileTransferWindow::doubleClicked(KviFileTransferItem *it,const QPoint &pnt,int col)
+void KviFileTransferWindow::doubleClicked(KviFileTransferItem *it,const QPoint &)
 {
 	if(it) openLocalFile();
 }
 
-void KviFileTransferWindow::rightButtonPressed(KviFileTransferItem *it,const QPoint &pnt,int col)
+void KviFileTransferWindow::rightButtonPressed(KviFileTransferItem *it,const QPoint &pnt)
 {
 	if(!m_pContextPopup)m_pContextPopup = new KviTalPopupMenu(this);
 	if(!m_pLocalFilePopup)m_pLocalFilePopup = new KviTalPopupMenu(this);
@@ -437,7 +480,7 @@ void KviFileTransferWindow::rightButtonPressed(KviFileTransferItem *it,const QPo
 
 			}
 
-			i->transfer()->fillContextPopup(m_pContextPopup,col);
+			i->transfer()->fillContextPopup(m_pContextPopup);
 			m_pContextPopup->insertSeparator();
 		}
 	}

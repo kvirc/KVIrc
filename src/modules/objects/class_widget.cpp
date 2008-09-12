@@ -728,7 +728,6 @@ bool KviKvsObject_widget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 {
 	setObject(new KviKvsWidget(this,parentScriptWidget()));
 	widget()->setObjectName(getName());
-	webview=0;
 	return true;
 }
 

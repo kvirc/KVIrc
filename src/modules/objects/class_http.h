@@ -30,6 +30,8 @@
 #include <QHttp>
 #include <QFile>
 #include <QHash>
+#include <QSslError>
+
 class KviKvsObject_http : public KviKvsObject
 {
 	Q_OBJECT

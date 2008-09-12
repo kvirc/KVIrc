@@ -54,12 +54,12 @@ private:
 	kvi_time_t       m_tStartTime;
 	kvi_time_t       m_tTransferStartTime;
 	kvi_time_t       m_tTransferEndTime;
-	
+
 	KviKvsVariant    m_vMagicIdentifier;
 	bool             m_bNotifyCompletion;
 	bool             m_bAutoClean;
 	bool             m_bNoOutput;
-	
+
 	QTimer         * m_pAutoCleanTimer;
 	QString          m_szCompletionCallback;
 public:
@@ -69,7 +69,7 @@ public:
 	static void done();
 
 	virtual bool startDownload();
-	
+
 	void setCompletionCallback(const QString &szCallback){ m_szCompletionCallback = szCallback; };
 	void setMagicIdentifier(const KviKvsVariant &vIdentifier){ m_vMagicIdentifier = vIdentifier; };
 	void setNotifyCompletion(bool bNotify){ m_bNotifyCompletion = bNotify; };
@@ -78,7 +78,7 @@ public:
 
 	virtual void displayPaint(QPainter * p,int column, QRect rect);
 	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(KviTalPopupMenu * m,int column);
+	virtual void fillContextPopup(KviTalPopupMenu * m);
 	virtual bool active();
 	virtual void die();
 	virtual QString tipText();

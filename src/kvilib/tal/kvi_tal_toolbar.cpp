@@ -27,7 +27,7 @@
 	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
 	: KToolBar(nam,w,dock,bNewLine)
 	{
-		setLabel(label);
+		setWindowTitle(label);
 	}
 
 	KviTalToolBar::~KviTalToolBar()

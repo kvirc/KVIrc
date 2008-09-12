@@ -929,7 +929,7 @@ void KviDccFileTransfer::abort()
 	displayUpdate();
 }
 
-void KviDccFileTransfer::fillContextPopup(KviTalPopupMenu * m,int column)
+void KviDccFileTransfer::fillContextPopup(KviTalPopupMenu * m)
 {
 	m->insertItem(__tr2qs_ctx("Configure Bandwidth...","dcc"),this,SLOT(configureBandwidth()));
 	m->insertSeparator();
@@ -1358,7 +1358,7 @@ void KviDccFileTransfer::init()
 	g_pDccFileTransfers = new KviPointerList<KviDccFileTransfer>;
 	g_pDccFileTransfers->setAutoDelete(false);
 
-	QPixmap * pix = g_pIconManager->getImage("kvi_dccfiletransfericons.png");
+	QPixmap * pix = g_pIconManager->getImage("kvi_dccfiletransfericons.png", false);
 	if(pix)g_pDccFileTransferIcon = new QPixmap(*pix);
 	else g_pDccFileTransferIcon = 0;
 }

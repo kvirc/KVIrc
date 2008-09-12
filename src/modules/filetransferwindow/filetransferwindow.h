@@ -39,16 +39,24 @@
 #include <QTimer>
 #include <QPixmap>
 
+class KviFileTransferItem;
+
 class KviFileTransferWidget : public KviTalTableWidget
 {
 	friend class KviFileTransferItemDelegate;
 	Q_OBJECT
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
-	KviFileTransferWidget(QWidget * pParent) : KviTalTableWidget(pParent) {};
+	KviFileTransferWidget(QWidget * pParent);
 	~KviFileTransferWidget() {};
 	void paintEvent(QPaintEvent * event);
 	int dummyRead() const { return 0; };
+protected:
+	void mousePressEvent (QMouseEvent *e);
+	void mouseDoubleClickEvent (QMouseEvent *e);
+signals:
+	void rightButtonPressed(KviFileTransferItem *,QPoint pnt);
+	void doubleClicked(KviFileTransferItem *,QPoint pnt);
 };
 
 class KviFileTransferItem : public KviTalTableWidgetItemEx
@@ -115,8 +123,8 @@ public:
 protected slots:
 	void transferRegistered(KviFileTransfer *t);
 	void transferUnregistering(KviFileTransfer *t);
-	void rightButtonPressed(KviFileTransferItem *it,const QPoint &pnt,int col);
-	void doubleClicked(KviFileTransferItem *it,const QPoint &pnt,int col);
+	void rightButtonPressed(KviFileTransferItem *it,const QPoint &pnt);
+	void doubleClicked(KviFileTransferItem *it,const QPoint &pnt);
 	void heartbeat();
 	void clearTerminated();
 	void clearAll();

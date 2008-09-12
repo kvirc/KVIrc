@@ -49,7 +49,7 @@ KviHttpFileTransfer::KviHttpFileTransfer()
 	m_tStartTime = kvi_unixTime();
 	m_tTransferStartTime = 0;
 	m_tTransferEndTime = 0;
-	
+
 	m_bNotifyCompletion = true;
 	m_bAutoClean = false;
 	m_pAutoCleanTimer = 0;
@@ -65,7 +65,7 @@ KviHttpFileTransfer::KviHttpFileTransfer()
 	connect(m_pHttpRequest,SIGNAL(contactingHost(const QString &)),this,SLOT(contactingHost(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(receivedResponse(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
-	
+
 	m_eGeneralStatus = Initializing;
 	m_szStatusString = __tr2qs_ctx("Initializing","http");
 }
@@ -102,7 +102,7 @@ void KviHttpFileTransfer::abort()
 	m_pHttpRequest->abort();
 }
 
-void KviHttpFileTransfer::fillContextPopup(KviTalPopupMenu * m,int column)
+void KviHttpFileTransfer::fillContextPopup(KviTalPopupMenu * m)
 {
 	int id = m->insertItem(__tr2qs_ctx("Abort","http"),this,SLOT(abort()));
 	if(!active())m->setItemEnabled(id,false);
@@ -339,7 +339,7 @@ void KviHttpFileTransfer::init()
 	g_pHttpFileTransfers = new KviPointerList<KviHttpFileTransfer>;
 	g_pHttpFileTransfers->setAutoDelete(false);
 
-	QPixmap * pix = g_pIconManager->getImage("kvi_httpicons.png");
+	QPixmap * pix = g_pIconManager->getImage("kvi_httpicons.png", false);
 	if(pix)g_pHttpIcon = new QPixmap(*pix);
 	else g_pHttpIcon = new QPixmap(192,48);
 }
@@ -434,7 +434,7 @@ void KviHttpFileTransfer::transferTerminated(bool bSuccess)
 	} else {
 		KviKvsScript::run(m_szCompletionCallback,out ? out : (KviWindow *)(g_pApp->activeConsole()),&vParams);
 	}
-	
+
 	if(bSuccess)
 	{
 		m_szStatusString = __tr2qs_ctx("Transfer completed","http");
@@ -451,7 +451,7 @@ void KviHttpFileTransfer::transferTerminated(bool bSuccess)
 		if(out && (!m_bNoOutput))out->output(KVI_OUT_GENERICERROR,__tr2qs_ctx("[HTTP %d]: Transfer failed: %Q","http"),id(),&(m_pHttpRequest->lastError()));
 		g_pApp->fileDownloadTerminated(false,m_pHttpRequest->url().url(),m_pHttpRequest->fileName(),QString::null,m_pHttpRequest->lastError(),!m_bNotifyCompletion);
 	}
-	
+
 	if(m_bAutoClean)
 	{
 		if(m_pAutoCleanTimer)delete m_pAutoCleanTimer;

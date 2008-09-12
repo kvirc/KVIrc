@@ -107,7 +107,7 @@ public:
 	virtual QString localFileName();
 	virtual QString retryCommand();
 	virtual int displayHeight(int iLineSpacing);
-	virtual void fillContextPopup(KviTalPopupMenu * m,int column) = 0;
+	virtual void fillContextPopup(KviTalPopupMenu * m) = 0;
 	virtual void die() = 0;
 };
 
