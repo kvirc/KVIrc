@@ -40,7 +40,8 @@ public:
 	void setSpacing(int);
 	void setMargin(int);
 	void setAlignment(Qt::Alignment);
-	void addStretch(int stretch=0);
+	void setAlignment(QWidget * child,Qt::Alignment alignment);
+	void addStretch(int stretch);
 protected:
 	virtual void childEvent(QChildEvent * e);
 private:

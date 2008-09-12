@@ -25,6 +25,32 @@
 #include "kvi_tal_hbox.h"
 
 #include <QChildEvent>
+// Tables used in $setAlignment & $alignment
+const char * const align_tbl[] = {
+			"Left", 
+			"Right",
+			"HCenter",
+			"VCenter",
+			"Center",
+			"Top",
+			"Bottom",
+			"WordBreak"
+			   };
+
+
+
+const int align_cod[] = {
+		Qt::AlignLeft,
+		Qt::AlignRight,
+	    Qt::AlignHCenter,
+	    Qt::AlignVCenter,
+	    Qt::AlignCenter,
+	 	Qt::AlignTop,
+	    Qt::AlignBottom,
+	    Qt::AlignJustify,
+	};
+
+#define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 
 KviTalHBox::KviTalHBox(QWidget * pParent,char* name)
 : QWidget(pParent)
@@ -76,7 +102,10 @@ void KviTalHBox::setAlignment(Qt::Alignment alignment)
 {
 	m_pLayout->setAlignment(this,alignment);
 }
-
+void KviTalHBox::setAlignment(QWidget * child,Qt::Alignment alignment)
+{
+	m_pLayout->setAlignment(child,alignment);
+}
 void KviTalHBox::addStretch(int stretch)
 {
 	m_pLayout->addStretch(stretch);

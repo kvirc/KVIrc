@@ -66,6 +66,10 @@ void KviTalVBox::setSpacing(int spacing)
 {
 	m_pLayout->setSpacing(spacing);
 }
+void KviTalVBox::addStretch(int stretch)
+{
+	m_pLayout->addStretch(stretch);
+}
 
 void KviTalVBox::setMargin(int margin)
 {
@@ -76,12 +80,10 @@ void KviTalVBox::setAlignment(Qt::Alignment alignment)
 {
 	m_pLayout->setAlignment(alignment);
 }
-
-void KviTalVBox::addStretch(int stretch)
+void KviTalVBox::setAlignment(QWidget * child,Qt::Alignment alignment)
 {
-	m_pLayout->addStretch(stretch);
+	m_pLayout->setAlignment(child,alignment);
 }
-
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_vbox.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

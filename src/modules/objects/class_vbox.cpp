@@ -223,6 +223,6 @@ bool KviKvsObject_vbox::functionsetAlignment(KviKvsObjectFunctionCall *c)
 				c->warning(__tr2qs("Unknown alignment: '%Q'"),&(*it));
 			
 		}
-	if (widget()) ((KviTalHBox *)widget())->setAlignment((Qt::Alignment)sum);
+	if (widget()) ((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;
 }
