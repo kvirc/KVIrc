@@ -47,8 +47,11 @@
 #include <QMetaObject>
 #include <QIcon>
 #include <QStatusBar>
-#include <QtWebKit/QWebView>
 #include <QUrl>
+
+#ifdef COMPILE_WEBKIT_SUPPORT
+	#include <QtWebKit/QWebView>
+#endif
 
 KviKvsWidget::KviKvsWidget(KviKvsObject_widget * object,QWidget * par)
 :QWidget(par), m_pObject(object)
@@ -706,7 +709,9 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"maybeTipEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"shortCutEvent")
 
+#ifdef COMPILE_WEBKIT_SUPPORT
 	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setWebView",function_setWebView)
+#endif
 
 KVSO_END_REGISTERCLASS(KviKvsObject_widget)
 
@@ -1968,6 +1973,8 @@ bool KviKvsObject_widget::function_removeFromStatusBar(KviKvsObjectFunctionCall 
 	if (widget()) g_pFrame->statusBar()->removeWidget(widget());
 	return true;
 }
+
+#ifdef COMPILE_WEBKIT_SUPPORT
 bool KviKvsObject_widget::function_setWebView(KviKvsObjectFunctionCall *c)
 {
 	QString szUrl;
@@ -1975,12 +1982,14 @@ bool KviKvsObject_widget::function_setWebView(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szUrl)
 	KVSO_PARAMETERS_END(c)
 
-	webview=new QWebView(widget());
-	webview->load(QUrl(szUrl));
-    webview->show();
+	m_pWebview = new QWebView(widget());
+	m_pWebview->load(QUrl(szUrl));
+	m_pWebview->show();
 	//if (widget()) g_pFrame->statusBar()->removeWidget(widget());
 	return true;
 }
+#endif //COMPILE_WEBKIT_SUPPORT
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_widget.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
