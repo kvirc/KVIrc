@@ -3627,7 +3627,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			OnOutboundTraffic
 		@short:
 			Triggered on outbound traffic.[br]
-			USE THIS EVENT WITH REALLY CAUTION: an improper use can leads to many problem to KVIrc; especially avoid the use of 'halt' command.
+			USE THIS EVENT WITH REALLY CAUTION: an improper use can leads to many problems to KVIrc; especially avoid the use of 'halt' command.
 		@parameters:
 			$0 = outbound string
 		@window:
