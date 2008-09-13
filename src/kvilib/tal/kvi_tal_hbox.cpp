@@ -25,34 +25,33 @@
 #include "kvi_tal_hbox.h"
 
 #include <QChildEvent>
+
 // Tables used in $setAlignment & $alignment
 const char * const align_tbl[] = {
-			"Left", 
-			"Right",
-			"HCenter",
-			"VCenter",
-			"Center",
-			"Top",
-			"Bottom",
-			"WordBreak"
-			   };
-
-
+	"Left",
+	"Right",
+	"HCenter",
+	"VCenter",
+	"Center",
+	"Top",
+	"Bottom",
+	"WordBreak"
+};
 
 const int align_cod[] = {
-		Qt::AlignLeft,
-		Qt::AlignRight,
-	    Qt::AlignHCenter,
-	    Qt::AlignVCenter,
-	    Qt::AlignCenter,
-	 	Qt::AlignTop,
-	    Qt::AlignBottom,
-	    Qt::AlignJustify,
-	};
+	Qt::AlignLeft,
+	Qt::AlignRight,
+	Qt::AlignHCenter,
+	Qt::AlignVCenter,
+	Qt::AlignCenter,
+	Qt::AlignTop,
+	Qt::AlignBottom,
+	Qt::AlignJustify,
+};
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 
-KviTalHBox::KviTalHBox(QWidget * pParent,char* name)
+KviTalHBox::KviTalHBox(QWidget * pParent, char * name)
 : QWidget(pParent)
 {
 	setObjectName(name);
@@ -83,32 +82,34 @@ void KviTalHBox::childEvent(QChildEvent * e)
 	}
 }
 
-void KviTalHBox::setStretchFactor(QWidget * child,int stretch)
+void KviTalHBox::setStretchFactor(QWidget * pChild, int iStretch)
 {
-	m_pLayout->setStretchFactor(child,stretch);
+	m_pLayout->setStretchFactor(pChild,iStretch);
 }
 
-void KviTalHBox::setSpacing(int spacing)
+void KviTalHBox::setSpacing(int iSpacing)
 {
-	m_pLayout->setSpacing(spacing);
+	m_pLayout->setSpacing(iSpacing);
 }
 
-void KviTalHBox::setMargin(int margin)
+void KviTalHBox::setMargin(int iMargin)
 {
-	m_pLayout->setContentsMargins(margin,margin,margin,margin);
+	m_pLayout->setContentsMargins(iMargin,iMargin,iMargin,iMargin);
 }
 
 void KviTalHBox::setAlignment(Qt::Alignment alignment)
 {
 	m_pLayout->setAlignment(this,alignment);
 }
-void KviTalHBox::setAlignment(QWidget * child,Qt::Alignment alignment)
+
+void KviTalHBox::setAlignment(QWidget * pChild, Qt::Alignment alignment)
 {
-	m_pLayout->setAlignment(child,alignment);
+	m_pLayout->setAlignment(pChild,alignment);
 }
-void KviTalHBox::addStretch(int stretch)
+
+void KviTalHBox::addStretch(int iStretch)
 {
-	m_pLayout->addStretch(stretch);
+	m_pLayout->addStretch(iStretch);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

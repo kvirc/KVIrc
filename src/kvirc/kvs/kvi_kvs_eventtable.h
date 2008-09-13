@@ -6,7 +6,7 @@
 //   Created on Mon 23 Feb 2004 03:23:18 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -205,8 +205,8 @@
 
 #define KviEvent_OnMeAction 139
 
-#define KVI_KVS_NUM_APP_EVENTS 140
-// compat
-#define KVI_NUM_SCRIPT_EVENTS KVI_KVS_NUM_APP_EVENTS
+#define KviEvent_OnOutboundTraffic 140
 
-#endif //!_KVI_KVS_EVENTTABLE_H_
+#define KVI_KVS_NUM_APP_EVENTS 141
+
+#endif //_KVI_KVS_EVENTTABLE_H_
