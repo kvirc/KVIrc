@@ -39,10 +39,10 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_http)
 protected:
 	QHttp *m_pHttp;
-//	QFile *m_pFile;
 	QHash<int, QFile*> getDict;
 	int m_id;
 	bool m_bAbort;
+	bool m_bEnableForceRedirect;
 protected:
 	bool functionSetHost(KviKvsObjectFunctionCall *c);
 	bool functionGet(KviKvsObjectFunctionCall *c);
@@ -60,6 +60,9 @@ protected:
 	bool functionReadyReadEvent(KviKvsObjectFunctionCall *c);
 	bool functionErrorString(KviKvsObjectFunctionCall *c);
 	bool functionPost(KviKvsObjectFunctionCall *c);
+	bool functionFollowRedirect(KviKvsObjectFunctionCall *c);
+	
+	void redirect(QString &file,const QHttpResponseHeader &r);
 	
 	#ifndef QT_NO_OPENSSL
 	bool functionIgnoreSslErrors(KviKvsObjectFunctionCall *c);
@@ -74,7 +77,7 @@ protected slots:
 	void slotDataReadProgress ( int done, int total );
 	#ifndef QT_NO_OPENSSL
 	void slotSslErrors(QList<QSslError>);
-#endif
+	#endif
 	void slotResponseHeaderReceived(const QHttpResponseHeader &r);
 	void slotReadyRead(const QHttpResponseHeader &r);
 	void slotStateChanged ( int state);
