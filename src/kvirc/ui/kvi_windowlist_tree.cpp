@@ -47,7 +47,6 @@ extern QPixmap * g_pActivityMeterPixmap;
 KviTreeWindowListItem::KviTreeWindowListItem(KviTalTreeWidget * par,KviWindow * wnd)
 : KviTalTreeWidgetItem(par) , KviWindowListItem(wnd)
 {
-
 	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
 	{
 		m_Layout.addWidget(&m_Icon);
@@ -233,6 +232,7 @@ QString KviTreeWindowListItem::key() const
 KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 : KviTalTreeWidget(par)
 {
+	setObjectName("tree_windowlist");
 	setRootIsDecorated(true);
 	//Animation creates problem with the background painting on expande/collapse
 	//setAnimated(true);
