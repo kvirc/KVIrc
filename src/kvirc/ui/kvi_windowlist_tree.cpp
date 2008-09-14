@@ -163,6 +163,7 @@ void KviTreeWindowListItem::refreshBrush()
 	if(this == treeWidget()->currentItem())
 	{
 		setForeground(0, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground));
+		setBackground(0, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 	} else {
 		int iLevel;
 		switch(m_iHighlightLevel)
@@ -175,6 +176,7 @@ void KviTreeWindowListItem::refreshBrush()
 			default: iLevel = KviOption_colorTreeWindowListForeground; break;
 		}
 		setForeground(0, KVI_OPTION_COLOR(iLevel));
+		setBackground(0, Qt::transparent);
 	}
 }
 
@@ -270,9 +272,10 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 			pPopup->insertItem(__tr2qs("Sort"),this,SLOT(sort()));
 			pPopup->insertItem(__tr2qs("Reverse Sort"),this,SLOT(reverseSort()));
 			pPopup->popup(QCursor::pos());
+		} else {
+			QTreeWidget::mousePressEvent(e);
 		}
 	}
-	QTreeWidget::mousePressEvent(e);
 }
 
 void KviTreeWindowListTreeWidget::sort()
@@ -497,35 +500,6 @@ void KviTreeWindowList::applyOptions()
 	m_pTreeWidget->update();
 }
 
-/*
-void KviTreeWindowListItemWidget::paintEvent(QPaintEvent * e)
-{
-	// paint the channel activity meter
-	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter))
-	{
-		unsigned int uActivityValue;
-		unsigned int uActivityTemperature;
-		if(pWindow->activityMeter(&uActivityValue,&uActivityTemperature))
-		{
-			p->drawPixmap(cRect.left(),yPixmap,*g_pActivityMeterPixmap,uActivityValue * 5,uActivityTemperature * 16,5,16);
-			cRect.setLeft(cRect.left() + 7);
-		}
-	}
-
-	// paint the progress bar
-	if(iProgress >= 0)
-	{
-		int wdth = (iProgress * cRect.width()) / 100;
-		p->fillRect(cRect.x(),cRect.y(),wdth,cRect.height(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListProgress));
-	}
-
-	//choose window name font color (highlighting)
-	if (option.state & QStyle::State_Selected)
-	{
-		p->setPen(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground));
-	}
-}
-*/
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_windowlist_tree.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
