@@ -261,6 +261,7 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 					g_pFrame->setActiveWindow(wnd);
 				else wnd->minimize();
 			}
+			QTreeWidget::mousePressEvent(e);
 		} else if(e->button() & Qt::RightButton)
 		{
 			wnd->contextPopup();
@@ -272,8 +273,6 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 			pPopup->insertItem(__tr2qs("Sort"),this,SLOT(sort()));
 			pPopup->insertItem(__tr2qs("Reverse Sort"),this,SLOT(reverseSort()));
 			pPopup->popup(QCursor::pos());
-		} else {
-			QTreeWidget::mousePressEvent(e);
 		}
 	}
 }
