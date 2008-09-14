@@ -47,12 +47,40 @@ extern QPixmap * g_pActivityMeterPixmap;
 KviTreeWindowListItem::KviTreeWindowListItem(KviTalTreeWidget * par,KviWindow * wnd)
 : KviTalTreeWidgetItem(par) , KviWindowListItem(wnd)
 {
+
+	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
+	{
+		m_Layout.addWidget(&m_Icon);
+	}
+
 	if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
 	{
 		QFont myfont(font(0));
 		myfont.setBold(true);
-		setFont(0, myfont);
+		setFont(myfont);
+
+		if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator))
+		{
+			QPixmap pix(16,16);
+			QPainter p(&pix);
+			p.fillRect(0, 0, 16, 16, KVI_OPTION_ICCOLOR(wnd->console()->context()->id() % KVI_NUM_ICCOLOR_OPTIONS));
+			setContextIcon(pix);
+			m_Layout.addWidget(&m_Context);
+		}
+
 	}
+
+	//not for consoles / other windows
+	//m_Layout.addWidget(&m_Activity);
+
+	m_Layout.addWidget(&m_Text);
+	m_Layout.addStretch();
+	m_Layout.setContentsMargins(0,0,0,0);
+
+	m_pBox = new QWidget();
+	m_pBox->setLayout(&m_Layout);
+	treeWidget()->setItemWidget(this, 0, m_pBox);
+
 	//sort the widget
 	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
@@ -60,6 +88,35 @@ KviTreeWindowListItem::KviTreeWindowListItem(KviTalTreeWidget * par,KviWindow * 
 KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par,KviWindow * wnd)
 : KviTalTreeWidgetItem(par) , KviWindowListItem(wnd)
 {
+	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
+	{
+		m_Layout.addWidget(&m_Icon);
+	}
+	//used only in console windows
+	// m_Layout.addWidget(&m_Context);
+
+	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter))
+	{
+		unsigned int uActivityValue;
+		unsigned int uActivityTemperature;
+		if(wnd->activityMeter(&uActivityValue,&uActivityTemperature))
+		{
+			QPixmap pix2(5,16);
+			QPainter p2(&pix2);
+			p2.drawPixmap(0,0,*g_pActivityMeterPixmap,uActivityValue * 5,uActivityTemperature * 16,5,16);
+			setActivityIcon(pix2);
+		}
+		m_Layout.addWidget(&m_Activity);
+	}
+
+	m_Layout.addWidget(&m_Text);
+	m_Layout.addStretch();
+	m_Layout.setContentsMargins(0,0,0,0);
+
+	m_pBox = new QWidget();
+	m_pBox->setLayout(&m_Layout);
+	treeWidget()->setItemWidget(this, 0, m_pBox);
+
 	//sort the widget
 	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
@@ -91,11 +148,11 @@ void KviTreeWindowListItem::captionChanged()
 	if(m_pWindow->isMinimized())
 		szText.prepend('(').append(')');
 
-	setText(0, szText);
+	setText(szText);
 
 	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIcons))
 	{
-		setIcon(0, QIcon(*kviWindow()->myIconPtr()));
+		setWindowIcon(*kviWindow()->myIconPtr());
 	}
 
 	//sort the widget
@@ -122,8 +179,25 @@ void KviTreeWindowListItem::refreshBrush()
 	}
 }
 
+void KviTreeWindowListItem::refreshActivityIcon()
+{
+	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter))
+	{
+		unsigned int uActivityValue;
+		unsigned int uActivityTemperature;
+		if(kviWindow()->activityMeter(&uActivityValue,&uActivityTemperature))
+		{
+			QPixmap pix2(5,16);
+			QPainter p2(&pix2);
+			p2.drawPixmap(0,0,*g_pActivityMeterPixmap,uActivityValue * 5,uActivityTemperature * 16,5,16);
+			setActivityIcon(pix2);
+		}
+	}
+
+}
 void KviTreeWindowListItem::unhighlight()
 {
+	refreshActivityIcon();
 	if(m_iHighlightLevel < 1)return;
 	m_iHighlightLevel = 0;
 	refreshBrush();
@@ -132,6 +206,7 @@ void KviTreeWindowListItem::unhighlight()
 
 void KviTreeWindowListItem::highlight(int iLevel)
 {
+	refreshActivityIcon();
 	if(iLevel <= m_iHighlightLevel)return;
 	if((this == treeWidget()->currentItem()) && g_pFrame->isActiveWindow())return;
 	m_iHighlightLevel = iLevel;
@@ -280,8 +355,8 @@ KviTreeWindowList::KviTreeWindowList()
 	m_pTreeWidget->header()->setResizeMode(QHeaderView::Interactive);
 
 	//tooltips
-// 	m_pToolTip = new KviDynamicToolTip(m_pTreeWidget->viewport(),"tree_windowlist_tooltip");
-// 	connect(m_pToolTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+	m_pToolTip = new KviDynamicToolTip(m_pTreeWidget->viewport(),"tree_windowlist_tooltip");
+	connect(m_pToolTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 }
 
 KviTreeWindowList::~KviTreeWindowList()
@@ -425,12 +500,6 @@ void KviTreeWindowList::applyOptions()
 /*
 void KviTreeWindowListItemWidget::paintEvent(QPaintEvent * e)
 {
-	QPainter p;
-	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListIrcContextIndicator) && (m_pParentItem->kviWindow()->type()==KVI_WINDOW_TYPE_CONSOLE))
-	{
-		p.fillRect(0, 0, 16, 16, KVI_OPTION_ICCOLOR(m_pParentItem->kviWindow()->console()->context()->id() % KVI_NUM_ICCOLOR_OPTIONS));
-	}
-
 	// paint the channel activity meter
 	if(KVI_OPTION_BOOL(KviOption_boolUseWindowListActivityMeter))
 	{

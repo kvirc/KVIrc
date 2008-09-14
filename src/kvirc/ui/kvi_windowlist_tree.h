@@ -26,6 +26,8 @@
 
 #include "kvi_windowlist.h"
 #include "kvi_tal_treewidget.h"
+#include <QLabel>
+#include <QHBoxLayout>
 
 class KviTreeWindowList;
 
@@ -42,14 +44,26 @@ public:
 	virtual void captionChanged();
 	virtual void highlight(int iLevel = 1);
 	virtual void unhighlight();
+	inline void setFont(QFont& font) { m_Text.setFont(font); };
+	inline void setText(QString& txt) { m_Text.setText(txt); };
+	inline void setWindowIcon(QPixmap& ico) { m_Icon.setPixmap(ico); };
+	inline void setContextIcon(QPixmap& ico) { m_Context.setPixmap(ico); };
+	inline void setActivityIcon(QPixmap& ico) { m_Activity.setPixmap(ico); };
 protected:
 	void refreshBrush();
+	void refreshActivityIcon();
 	int calculateColor(int col1,int col2);
 	QString currentCaption() const;
 	bool operator<(const QTreeWidgetItem &other)const
 	{
 		return key() < ((KviTreeWindowListItem*)&other)->key();
 	}
+	QLabel m_Icon;
+	QLabel m_Context;
+	QLabel m_Activity;
+	QLabel m_Text;
+	QWidget *m_pBox;
+	QHBoxLayout m_Layout;
 };
 
 class KVIRC_API KviTreeWindowListTreeWidget : public KviTalTreeWidget
