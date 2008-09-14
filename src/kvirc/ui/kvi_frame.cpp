@@ -1257,9 +1257,6 @@ void KviFrame::createWindowList()
 
 void KviFrame::recreateWindowList()
 {
-	QString szOldClass = m_pWindowList->metaObject()->className();
-
-	saveToolBarPositions();
 	KviWindow * w;
 	for(w = m_pWinList->first();w;w = m_pWinList->next())
 	{
@@ -1271,33 +1268,6 @@ void KviFrame::recreateWindowList()
 	{
 		w->createWindowListItem();
 	}
-	restoreToolBarPositions();
-
-
-	/*
-	QString szNewClass = m_pWindowList->className();
-	if(szOldClass != szNewClass)
-	{
-		// the class changed...
-		// make sure that the tree task bar is in the left or right dock
-		// and the classic one is in the top or bottom on
-
-		Qt::Dock dock;
-		int index;
-		bool nl;
-		int eo;
-		getLocation(m_pWindowList,dock,index,nl,eo);
-
-		if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListWindowList))
-		{
-			if((dock == Qt::Bottom) || (dock == Qt::Top))
-				moveDockWindow(m_pWindowList,Qt::Left);
-		} else {
-			if((dock == Qt::Left) || (dock == Qt::Right))
-				moveDockWindow(m_pWindowList,Qt::Bottom);
-		}
-	}
-	*/
 
 	if(g_pActiveWindow)m_pWindowList->setActiveItem(g_pActiveWindow->windowListItem());
 }
