@@ -1137,7 +1137,7 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 			if(daW1 < daW2)daW1 = daW2;
 			int iLineSpacing = fm.lineSpacing();
 
-			int iY = 4;
+			int iY = rect.top() + 4;
 
 			p->setPen(Qt::black);
 
@@ -1155,20 +1155,20 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column, QRect rect)
 
 			p->setPen(Qt::darkGray);
 
-			p->drawText(rect.left() + 4,4,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szFrom);
-			p->drawText(rect.left() + 4,4 + iLineSpacing,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szTo);
+			p->drawText(rect.left() + 4, rect.top() + 4,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szFrom);
+			p->drawText(rect.left() + 4, rect.top() + 4 + iLineSpacing,width - 8,height - 8,Qt::AlignTop | Qt::AlignLeft,szTo);
 
 
 			p->setPen(QColor(180,180,200));
 
 			iLineSpacing += 2;
 
-			p->drawRect(rect.left() + 4,height - (iLineSpacing + 4),width - 8,iLineSpacing);
-			p->fillRect(rect.left() + 5,height - (iLineSpacing + 3),width - 10,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
+			p->drawRect(rect.left() + 4, rect.top() + height - (iLineSpacing + 4),width - 8,iLineSpacing);
+			p->fillRect(rect.left() + 5, rect.top() + height - (iLineSpacing + 3),width - 10,iLineSpacing - 2,bIsTerminated ? QColor(210,210,210) : QColor(190,190,240));
 
 			p->setPen(Qt::black);
 
-			p->drawText(rect.left() + 7,height - (iLineSpacing + 4),width - 14,iLineSpacing,Qt::AlignVCenter | Qt::AlignLeft,m_szStatusString);
+			p->drawText(rect.left() + 7, rect.top() + height - (iLineSpacing + 4),width - 14,iLineSpacing,Qt::AlignVCenter | Qt::AlignLeft,m_szStatusString);
 
 		}
 		break;

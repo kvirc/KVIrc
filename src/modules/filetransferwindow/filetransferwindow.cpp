@@ -77,7 +77,7 @@ KviFileTransferItem::KviFileTransferItem(KviFileTransferWidget * v,KviFileTransf
 	col1Item = new KviTalTableWidgetItem(v, row(), 1);
 	col2Item = new KviTalTableWidgetItem(v, row(), 2);
 	//FIXME fixed row height
-	tableWidget()->setRowHeight( row(), 70 );
+	tableWidget()->setRowHeight( row(), 68 );
 }
 
 KviFileTransferItem::~KviFileTransferItem()
