@@ -40,42 +40,76 @@
 	@type:
 		class
 	@short:
-		Provides a buttongroup bar.
+		Provides a buttongroup control.
 	@inherits:
-		[class]groupbox[/class]
 		[class]object[/class]
-		[class]widget[/class]
 	@description:
-		This widget organizes buttons in a group.
-		It will be usually a parent for other child controls.
-		You can either use a child layout to manage the children geometries
-		or use $setColumnLayout function to manage the layout automatically.
-		The class ineriths groupbox.
-
+		This object organizes buttons in a group.
 	@functions:
-	
+		!fn: $addButton(<checkbutton or radiobutton:object>)
+		Adds the given button to the button group.
+		!fn: <object> $checkedButton()
+		Returns the button group's checked button, or 0 if no buttons are checked.
 */
 
-KVSO_BEGIN_REGISTERCLASS(KviKvsObject_buttongroup,"buttongroup","groupbox")
+KVSO_BEGIN_REGISTERCLASS(KviKvsObject_buttongroup,"buttongroup","object")
+	KVSO_REGISTER_HANDLER(KviKvsObject_buttongroup,"addButton",functionAddButton)
+	KVSO_REGISTER_HANDLER(KviKvsObject_buttongroup,"checkedButton",functionCheckedButton)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_buttongroup)
 
-KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_buttongroup,KviKvsObject_groupbox)
-
+KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_buttongroup,KviKvsObject)
+	m_iId=0;
+	btnDict.setAutoDelete(false);
+	m_pButtonGroup=new QButtonGroup();
 KVSO_END_CONSTRUCTOR(KviKvsObject_buttongroup)
 
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_buttongroup)
-
+btnDict.clear();
+delete m_pButtonGroup;
 KVSO_END_CONSTRUCTOR(KviKvsObject_buttongroup)
 
-// CHECK ME
-bool KviKvsObject_buttongroup::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+
+bool KviKvsObject_buttongroup::functionAddButton(KviKvsObjectFunctionCall *c)
 {
-	QButtonGroup *group=new QButtonGroup(parentScriptWidget());
-	group->setObjectName(getName());
-	setObject(group,true);
+	KviKvsObject * pObject;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("button",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETERS_END(c)
+	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if (!pObject)
+	{
+		c->warning(__tr2qs("Widget parameter is not an object"));
+		return true;
+	}
+	if (!pObject->object())
+	{
+		c->warning(__tr2qs("Widget parameter is not a valid object"));
+		return true;
+	}
+	if(!pObject->object()->isWidgetType())
+	{
+		c->warning(__tr2qs("Can't add a non-widget object"));
+		return true;
+	}
+	if(pObject->inherits("KviKvsObject_radiobutton") || pObject->inherits("KviKvsObject_checkbox")){
+		m_pButtonGroup->addButton(((QRadioButton *)(pObject->object())),m_iId);
+		c->returnValue()->setInteger(m_iId);
+		btnDict.insert(m_iId,pObject);
+		m_iId++;
+	}
+	else{
+		c->warning(__tr2qs("Buttongroup support only checkbox and radiobox object"));
+		return true;
+	}
 	return true;
 }
-
-
+bool KviKvsObject_buttongroup::functionCheckedButton(KviKvsObjectFunctionCall *c)
+{
+	int id=m_pButtonGroup->checkedId();
+	if (id!=-1) c->returnValue()->setHObject(btnDict.find(id)->handle());
+	else c->returnValue()->setNothing();
+	return true;
+}

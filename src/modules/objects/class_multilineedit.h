@@ -29,11 +29,11 @@
 #include "class_widget.h"
 #include "object_macros.h"
 
-class KviKvsObject_mledit : public KviKvsObject_widget
+class KviKvsObject_textedit : public KviKvsObject_widget
 {
 	Q_OBJECT
 public:
-	KVSO_DECLARE_OBJECT(KviKvsObject_mledit)
+	KVSO_DECLARE_OBJECT(KviKvsObject_textedit)
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
@@ -78,14 +78,21 @@ protected:
     bool functionsetUndoDepth(KviKvsObjectFunctionCall *c);
     bool functionisUndoRedoEnabled(KviKvsObjectFunctionCall *c);
     bool functionundoDepth(KviKvsObjectFunctionCall *c);
+	
 	bool functionsetText(KviKvsObjectFunctionCall *c);
-    bool functionsetPointSize(KviKvsObjectFunctionCall *c);
+    bool functionsetHtmlText(KviKvsObjectFunctionCall *c);
+    bool functionsetPlainText(KviKvsObjectFunctionCall *c);
+    
+	
+	bool functionsetPointSize(KviKvsObjectFunctionCall *c);
     bool functionsetColor(KviKvsObjectFunctionCall *c);
 	bool functionisUndoAvailable(KviKvsObjectFunctionCall *c);
 	bool functionisRedoAvailable(KviKvsObjectFunctionCall *c);
 	bool functionsetLinkUnderline(KviKvsObjectFunctionCall *c);
 	bool functionsetFamily(KviKvsObjectFunctionCall *c);
 	bool functionsetModified(KviKvsObjectFunctionCall *c);
+	bool functioisModified(KviKvsObjectFunctionCall *c);
+
 	bool functioninsertParagraph(KviKvsObjectFunctionCall *c);
 	bool functionremoveParagraph(KviKvsObjectFunctionCall *c);
 	bool functionsetOverwriteMode(KviKvsObjectFunctionCall *c);
@@ -104,7 +111,10 @@ protected:
 	bool functionlineOfChar(KviKvsObjectFunctionCall *c);
 	bool functionlinesOfParagraph(KviKvsObjectFunctionCall *c);
 	bool functionselectAll(KviKvsObjectFunctionCall *c);
-	
+
+
+	bool functionAddWidget(KviKvsObjectFunctionCall *c);
+
 };
 
 #endif	//!_CLASS_MULTILINEEDIT_H_

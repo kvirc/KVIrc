@@ -23,7 +23,6 @@
 //=============================================================================
 
 #include "class_button.h"
-#include "class_buttongroup.h"
 #include "class_checkbox.h"
 #include "class_combobox.h"
 #include "class_dialog.h"
@@ -31,6 +30,7 @@
 #include "class_file.h"
 #include "class_ftp.h"
 #include "class_groupbox.h"
+#include "class_buttongroup.h"
 #include "class_hbox.h"
 #include "class_http.h"
 #include "class_layout.h"
@@ -122,15 +122,16 @@ static bool objects_module_cleanup(KviModule *m)
 	KviKvsObject_hbox::unregisterSelf();
 	KviKvsObject_vbox::unregisterSelf();
 	KviKvsObject_label::unregisterSelf();
-	KviKvsObject_buttongroup::unregisterSelf();
 	KviKvsObject_groupbox::unregisterSelf();
 	KviKvsObject_dialog::unregisterSelf();
 	KviKvsObject_checkbox::unregisterSelf();
 	KviKvsObject_textbrowser::unregisterSelf();
-	KviKvsObject_mledit::unregisterSelf();
+	KviKvsObject_textedit::unregisterSelf();
 	KviKvsObject_button::unregisterSelf();
 	KviKvsObject_widget::unregisterSelf();
 	KviKvsObject_list::unregisterSelf();
+	KviKvsObject_buttongroup::unregisterSelf();
+
 	return true;
 }
 
@@ -951,15 +952,16 @@ static bool objects_module_init(KviModule * m)
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be registered after the base ones.
 
+	KviKvsObject_buttongroup::registerSelf();
+
 	KviKvsObject_list::registerSelf();
 	KviKvsObject_widget::registerSelf();
 	KviKvsObject_button::registerSelf();
-	KviKvsObject_mledit::registerSelf();
+	KviKvsObject_textedit::registerSelf();
 	KviKvsObject_textbrowser::registerSelf();
 	KviKvsObject_checkbox::registerSelf();
 	KviKvsObject_dialog::registerSelf();
 	KviKvsObject_groupbox::registerSelf();
-	KviKvsObject_buttongroup::registerSelf();
 	KviKvsObject_label::registerSelf();
 	KviKvsObject_vbox::registerSelf();
 	KviKvsObject_hbox::registerSelf();

@@ -25,19 +25,19 @@
 
 
 
-#include <qbuttongroup.h>
-#include "class_groupbox.h"
+#include <QButtonGroup>
 #include "object_macros.h"
 
-class KviKvsObject_buttongroup : public KviKvsObject_groupbox
+class KviKvsObject_buttongroup : public KviKvsObject
 {
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_buttongroup)
-public:
-	QWidget * widget() { return (QWidget *)object(); };
 protected:
-	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-
+	QButtonGroup *m_pButtonGroup;
+	int m_iId;
+	KviPointerHashTable<int ,KviKvsObject > btnDict;
+	bool functionAddButton(KviKvsObjectFunctionCall *c);
+	bool functionCheckedButton(KviKvsObjectFunctionCall *c);
 
 };
 #endif	//!_CLASS_GROUPBOX_H_

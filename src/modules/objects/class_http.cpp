@@ -330,15 +330,15 @@ void KviKvsObject_http::slotRequestFinished ( int id, bool error )
 		return;
     }
 	QFile *pFile=getDict.value(id);
-	if (pFile){
+	if (pFile)
+	{
 		QString name=pFile->fileName();
-		debug ("closing %s",pFile->fileName().toUtf8().data());
-	pFile->close();
-	getDict.remove(id);
-	int res=m_pHttp->lastResponse().statusCode();
-	if ((m_pHttp->lastResponse().statusCode()==301 || m_pHttp->lastResponse().statusCode()==302 || m_pHttp->lastResponse().statusCode()==307) && m_bEnableForceRedirect)
-		redirect(name,m_pHttp->lastResponse());
-	delete pFile;
+		pFile->close();
+		getDict.remove(id);
+		int res=m_pHttp->lastResponse().statusCode();
+		if ((m_pHttp->lastResponse().statusCode()==301 || m_pHttp->lastResponse().statusCode()==302 || m_pHttp->lastResponse().statusCode()==307) && m_bEnableForceRedirect)
+			redirect(name,m_pHttp->lastResponse());
+		delete pFile;
 	}
 	callFunction(this,"requestFinishedEvent",0,new KviKvsVariantList(new KviKvsVariant((kvs_int_t) id),new KviKvsVariant(error)));
 

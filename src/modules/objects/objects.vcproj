@@ -412,12 +412,12 @@
 				RelativePath=".\class_buttongroup.h"
 				>
 				<FileConfiguration
-					Name="Release|Win32"
+					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine=""
-						Outputs=""
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\m_$(InputName).moc"
 					/>
 				</FileConfiguration>
 			</File>

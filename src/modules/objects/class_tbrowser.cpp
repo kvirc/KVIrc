@@ -72,7 +72,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_textbrowser,"textbrowser","multilineedit")
 	KVSO_REGISTER_HANDLER(KviKvsObject_textbrowser,"linkClickedEvent",function_linkClickedEvent)
 KVSO_END_REGISTERCLASS(KviKvsObject_textbrowser)
 
-KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_textbrowser,KviKvsObject_mledit)
+KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_textbrowser,KviKvsObject_textedit)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_textbrowser)
 

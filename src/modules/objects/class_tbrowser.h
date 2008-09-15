@@ -27,7 +27,7 @@
 #include "class_multilineedit.h"
 #include "object_macros.h"
 
-class KviKvsObject_textbrowser : public KviKvsObject_mledit
+class KviKvsObject_textbrowser : public KviKvsObject_textedit
 {
 	Q_OBJECT
 public:
