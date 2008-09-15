@@ -401,7 +401,7 @@ bool KviKvsObject_textedit::functionTextLine(KviKvsObjectFunctionCall *c)
 	if(!widget())return true;
 	if(iBlock > ((QTextEdit *)widget())->document()->blockCount() || iBlock < 0) c->warning(__tr2qs("No such line number"));
 	else
-		c->returnValue()->setString(((QTextEdit *)widget())->document()->findBlockByNumber(iBlock).text());
+		c->returnValue()->setString(((QTextEdit *)widget())->document()->findBlock(iBlock).text());
 	return true;
 }
 
