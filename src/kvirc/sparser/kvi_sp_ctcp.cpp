@@ -851,7 +851,7 @@ void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 				//do not allow to make faked version reply
 				if(!(bCtcpVersion && KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpVersion)))
 				{
-					if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCtcpRequest, \
+					if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCTCPRequest, \
 						msg->msg->console(), \
 						msg->pSource->nick(), \
 						msg->pSource->user(), \
@@ -868,7 +868,7 @@ void KviServerParser::parseCtcpRequest(KviCtcpMessage *msg)
 
 	QString szData = msg->msg->connection()->decodeText(msg->pData);
 	// trigger the event on unrecognized requests too
-	if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCtcpRequest, \
+	if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCTCPRequest, \
 		msg->msg->console(), \
 		msg->pSource->nick(), \
 		msg->pSource->user(), \
@@ -894,7 +894,7 @@ void KviServerParser::parseCtcpReply(KviCtcpMessage *msg)
 			if(!(m_ctcpReplyParseProcTable[i].iFlags & KVI_CTCP_MESSAGE_PARSE_TRIGGERNOEVENT))
 			{
 				QString szData = msg->msg->connection()->decodeText(msg->pData);
-				if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCtcpReply, \
+				if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCTCPReply, \
 					msg->msg->console(),msg->pSource->nick(),msg->pSource->user(), \
 					msg->pSource->host(),msg->szTarget,msg->szTag,szData))return;
 			}
@@ -905,7 +905,7 @@ void KviServerParser::parseCtcpReply(KviCtcpMessage *msg)
 
 	QString szData = msg->msg->connection()->decodeText(msg->pData);
 	// trigger the event on unrecognized replies too
-	if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCtcpReply, \
+	if(KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCTCPReply, \
 		msg->msg->console(),msg->pSource->nick(),msg->pSource->user(), \
 		msg->pSource->host(),msg->szTarget,msg->szTag,szData))return;
 
@@ -1025,7 +1025,7 @@ void KviServerParser::echoCtcpRequest(KviCtcpMessage *msg)
 		if(msg->bIsFlood)
 		{
 			QString szData = msg->msg->connection()->decodeText(msg->pData);
-			if(!KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCtcpFlood,pOut,msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),msg->szTarget,msg->szTag,szData))
+			if(!KVS_TRIGGER_EVENT_6_HALTED(KviEvent_OnCTCPFlood,pOut,msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),msg->szTarget,msg->szTag,szData))
 				pOut->output(KVI_OUT_CTCPREQUESTFLOOD,
 					__tr2qs("%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit exceeded)"),
 					&szWhat,&szTag,KVI_TEXT_RESET,&(msg->pSource->nick()),

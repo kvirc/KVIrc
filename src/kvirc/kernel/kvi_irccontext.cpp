@@ -661,7 +661,7 @@ void KviIrcContext::connectionEstabilished()
 
 	setState(LoggingIn); // this must be set in order for $server and other functions to return the correct values
 
-	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIrcConnectionEstabilished,m_pConsole);
+	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionEstabilished,m_pConsole);
 
 	if(!bStopOutput)
 	{
@@ -767,7 +767,7 @@ void KviIrcContext::connectionTerminated()
 
 	bool bStopOutput = false;
 
-	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIrcConnectionTerminated,m_pConsole);
+	bStopOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRCConnectionTerminated,m_pConsole);
 
 	if(!bStopOutput)
 	{

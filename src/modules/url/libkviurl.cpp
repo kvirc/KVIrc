@@ -800,7 +800,7 @@ static bool url_module_init(KviModule *m)
 	g_pUrlAction = new KviUrlAction(KviActionManager::instance());
 	KviActionManager::instance()->registerAction(g_pUrlAction);
 
-	m->kvsRegisterAppEventHandler(KviEvent_OnUrl,urllist_module_event_onUrl);
+	m->kvsRegisterAppEventHandler(KviEvent_OnURL,urllist_module_event_onUrl);
 
 	g_pApp->getLocalKvircDirectory(szConfigPath,KviApp::ConfigPlugins,"url.conf");
 

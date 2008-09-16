@@ -2621,7 +2621,7 @@ got_url:
 		{
 			QString tmp;
 			tmp.setUtf16(data_ptr,p-data_ptr);
-			KVS_TRIGGER_EVENT_1(KviEvent_OnUrl,m_pKviWindow,tmp);
+			KVS_TRIGGER_EVENT_1(KviEvent_OnURL,m_pKviWindow,tmp);
 		}
 
 		//add all the text till the end of the url, then create a new "clean" chunk for the next cycle loop
@@ -4856,10 +4856,10 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 				break;
 				case 'u':
 					if(e->button() & Qt::RightButton)
-						KVS_TRIGGER_EVENT(KviEvent_OnUrlLinkPopupRequest,m_pKviWindow,pParams);
+						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkPopupRequest,m_pKviWindow,pParams);
 					if(e->button() & Qt::LeftButton)
 					{
-						KVS_TRIGGER_EVENT(KviEvent_OnUrlLinkClick,m_pKviWindow,pParams);
+						KVS_TRIGGER_EVENT(KviEvent_OnURLLinkClick,m_pKviWindow,pParams);
 
 						// Check for clicks' number
 						QString cmd;

@@ -1233,7 +1233,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	g_pApp->addRecentNickname(szNickName);
 
 	bool bHaltOutput = false;
-	bHaltOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIrc,m_pConsole);
+	bHaltOutput = KVS_TRIGGER_EVENT_0_HALTED(KviEvent_OnIRC,m_pConsole);
 
 	if(!bHaltOutput)
 		m_pConsole->outputNoFmt(KVI_OUT_IRC,__tr2qs("Login operations complete, happy ircing!"));
