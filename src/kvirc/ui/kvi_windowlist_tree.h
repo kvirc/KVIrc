@@ -44,11 +44,17 @@ public:
 	virtual void captionChanged();
 	virtual void highlight(int iLevel = 1);
 	virtual void unhighlight();
+private:
 	inline void setFont(QFont& font) { m_Text.setFont(font); };
 	inline void setText(QString& txt) { m_Text.setText(txt); };
 	inline void setWindowIcon(QPixmap& ico) { m_Icon.setPixmap(ico); };
 	inline void setContextIcon(QPixmap& ico) { m_Context.setPixmap(ico); };
 	inline void setActivityIcon(QPixmap& ico) { m_Activity.setPixmap(ico); };
+	inline void setForeground(QColor & col) {
+		QPalette pal = m_Text.palette();
+		pal.setColor(QPalette::Text, col);
+		m_Text.setPalette(pal);
+	}
 protected:
 	void refreshBrush();
 	void refreshActivityIcon();

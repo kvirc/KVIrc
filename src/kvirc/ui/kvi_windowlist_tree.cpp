@@ -162,7 +162,7 @@ void KviTreeWindowListItem::refreshBrush()
 {
 	if(this == treeWidget()->currentItem())
 	{
-		setForeground(0, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground));
+		setForeground(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground));
 	} else {
 		int iLevel;
 		switch(m_iHighlightLevel)
@@ -174,7 +174,7 @@ void KviTreeWindowListItem::refreshBrush()
 			case 5: iLevel = KviOption_colorTreeWindowListHighlight5Foreground; break;
 			default: iLevel = KviOption_colorTreeWindowListForeground; break;
 		}
-		setForeground(0, KVI_OPTION_COLOR(iLevel));
+		setForeground(KVI_OPTION_COLOR(iLevel));
 	}
 }
 
@@ -254,15 +254,17 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 				wnd->delayedClose();
 			} else {
 				if((g_pActiveWindow != wnd) || (wnd->isMinimized()))
+				{
 					g_pFrame->setActiveWindow(wnd);
-				else wnd->minimize();
+					KviTalTreeWidget::mousePressEvent(e);
+				} else wnd->minimize();
 			}
 
 		} else if(e->button() & Qt::RightButton)
 		{
 			wnd->contextPopup();
 		}
-                KviTalTreeWidget::mousePressEvent(e);
+
 	} else {
 		if(e->button() & Qt::RightButton)
 		{
@@ -417,13 +419,15 @@ void KviTreeWindowList::setActiveItem(KviWindowListItem * i)
 		{
 			m_pTreeWidget->setCurrentItem(it);
 			m_pTreeWidget->scrollToItem(it);
+			it->setSelected(true);
 			it->unhighlight();
+			it->refreshBrush();
 			if(cur)
 			{
+				cur->setSelected(false);
 				cur->unhighlight();
 				cur->refreshBrush();
 			}
-			it->refreshBrush();
 		}
 		if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
 	}
