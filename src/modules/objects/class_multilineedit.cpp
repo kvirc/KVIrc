@@ -40,26 +40,26 @@
 
 
 //->Tables for Text Format
-static const char * const mod_tbl[] =	{
-					"PlainText",
-					"RichText",
-					"AutoText",
-					"LogText"
-				  };
+static const char * const mod_tbl[] = {
+	"PlainText",
+	"RichText",
+	"AutoText",
+	"LogText"
+};
 
-static int mod_cod[] =	{
-				Qt::PlainText,
-				Qt::RichText,
-				Qt::AutoText,
-				Qt::LogText
-			};
+static int mod_cod[] = {
+	Qt::PlainText,
+	Qt::RichText,
+	Qt::AutoText,
+	Qt::LogText
+};
 
-#define mod_num			(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
+#define mod_num		(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
 
 
 
 /*
-	@doc:	multilineedit
+	@doc: multilineedit
 	@keyterms:
 		multilineedit object class, line editor, input
 	@title:
@@ -244,14 +244,13 @@ static int mod_cod[] =	{
 		If there is no such paragraph or no such character at the index position  -1 is returned.
 		!fn: <integer> $paragraphLenght(<paragraph:integer>)
 		Returns the length of the paragraph par, or -1 if there is no paragraph with index par.
-
 */
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_textedit,"multilineedit","widget")
 KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
-	
-/*
+
+	/*
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"textLine", functionTextLine)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertLine", functionInsertLine)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"removeLine", functionRemoveLine)
@@ -268,13 +267,13 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setMaxLines", functionSetMaxLines)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"maxLines", functionMaxLines)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insert", functionInsert)
-*/
+	*/
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"append", functionAppend)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"copy", functionCopy)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"cut", functionCut)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"paste", functionPaste)
 
-//->Set Style
+	//->Set Style
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setFamily" , functionsetFamily)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setItalic", functionsetItalic)
 	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setBold", functionsetBold)
@@ -283,34 +282,36 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"bold", functionbold)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"underline", functionunderline)
 
-//->Zoom In, Out, To
+	//->Zoom In, Out, To
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomIn", functionzoomIn)
-    KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomOut", functionzoomOut)
-//    KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomTo", functionzoomTo)
-//->Undo & Redo
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomOut", functionzoomOut)
+	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomTo", functionzoomTo)
 
+	//->Undo & Redo
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"undo", functionundo)
-    KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"redo", functionredo)
-    //KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"del", functiondel)
-    KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"clear", functionclear)
-    KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setUndoRedoEnabled", functionsetUndoRedoEnabled)
-    //KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setUndoDepth", functionsetUndoDepth)
-    KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"isUndoRedoEnabled", functionsetUndoRedoEnabled)
-    //KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"undoDepth", functionundoDepth)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"redo", functionredo)
+	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"del", functiondel)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"clear", functionclear)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setUndoRedoEnabled", functionsetUndoRedoEnabled)
+	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setUndoDepth", functionsetUndoDepth)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"isUndoRedoEnabled", functionsetUndoRedoEnabled)
+	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"undoDepth", functionundoDepth)
 	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"indent", functionundoDepth)
 	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"isUndoAvailable", functionisUndoAvailable)
 	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"isUndoRedoAvailable", functionisRedoAvailable)
-//->Text color & others
 
+	//->Text color & others
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setText", functionsetText)
-/*    KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setPointSize", functionsetPointSize)
-    KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setColor", functionsetColor)
+	/*
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setPointSize", functionsetPointSize)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setColor", functionsetColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setModified" , functionsetModified)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setLinkUnderline" , functionsetLinkUnderline)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setOverwriteMode" , functionsetOverwriteMode)
-*/
+	*/
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setReadOnly",functionSetReadOnly)
-/*	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setTextFormat" , functionsetTextFormat)
+	/*
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setTextFormat" , functionsetTextFormat)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"textFormat" , functiontextFormat)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setParagraphBackgroundColor", functionsetParagraphBackgroundColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"clearParagraphBackgroundColor", functionsetParagraphBackgroundColor)
@@ -319,7 +320,7 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setAutoFormatting" , functionsetAutoFormatting)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setVerticalAlignment" , functionsetVerticalAlignment)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setWrapPolicy" , functionsetWrapPolicy)
-//->Paragraph & line
+	//->Paragraph & line
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"paragraphs" , functionparagraphs)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"paragraphLength" , functionparagraphLength)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertParagraph" , functioninsertParagraph)
@@ -328,8 +329,7 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"lineOfChar" , functionlineOfChar)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"linesOfParagraph" , functionlinesOfParagraph)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"selectAll" , functionselectAll)
-
-*/
+	*/
 KVSO_END_REGISTERCLASS(KviKvsObject_textedit)
 
 
@@ -348,7 +348,8 @@ bool KviKvsObject_textedit::init(KviKvsRunTimeContext * pContext,KviKvsVariantLi
 	SET_OBJECT(QTextEdit);
 	return true;
 }
-bool KviKvsObject_textedit::functionAddWidget(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionAddWidget(KviKvsObjectFunctionCall * c)
 {
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
@@ -376,9 +377,7 @@ bool KviKvsObject_textedit::functionAddWidget(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-
-bool KviKvsObject_textedit::functionSetReadOnly(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionSetReadOnly(KviKvsObjectFunctionCall * c)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -389,10 +388,7 @@ bool KviKvsObject_textedit::functionSetReadOnly(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-
-
-bool KviKvsObject_textedit::functionTextLine(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionTextLine(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iBlock;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -401,16 +397,12 @@ bool KviKvsObject_textedit::functionTextLine(KviKvsObjectFunctionCall *c)
 	if(!widget())return true;
 	if(iBlock > ((QTextEdit *)widget())->document()->blockCount() || iBlock < 0) c->warning(__tr2qs("No such line number"));
 	else
-#if QT_VERSION >= 0x040400
 		c->returnValue()->setString(((QTextEdit *)widget())->document()->findBlockByNumber(iBlock).text());
-#else
-		c->returnValue()->setString(((QTextEdit *)widget())->document()->findBlock(iBlock).text());
-#endif
+
 	return true;
 }
 
-bool KviKvsObject_textedit::functionInsertLine(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionInsertLine(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iLine;
 	QString szInsert;
@@ -419,11 +411,11 @@ bool KviKvsObject_textedit::functionInsertLine(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("line",KVS_PT_INT,KVS_PF_OPTIONAL,iLine)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-//	((QTextEdit *)widget())->insertLine(szInsert,iLine);
+	//((QTextEdit *)widget())->insertLine(szInsert,iLine);
 	return true;
 }
 
-bool KviKvsObject_textedit::functionRemoveLine(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionRemoveLine(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iLine;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -436,8 +428,7 @@ bool KviKvsObject_textedit::functionRemoveLine(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionInsertAt(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionInsertAt(KviKvsObjectFunctionCall * c)
 {
 	kvs_uint_t iLine,iCol;
 	QString szInsert;
@@ -454,27 +445,25 @@ bool KviKvsObject_textedit::functionInsertAt(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionNumLines(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionNumLines(KviKvsObjectFunctionCall * c)
 {
 	if(widget()) c->returnValue()->setInteger(((QTextEdit *)widget())->document()->blockCount());
 	return true;
 }
 
-bool KviKvsObject_textedit::functionSetCursorPosition(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionSetCursorPosition(KviKvsObjectFunctionCall * c)
 {
-
 	kvs_uint_t iLine,iCol;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("line",KVS_PT_UNSIGNEDINTEGER,0,iLine)
 		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
-KVSO_PARAMETERS_END(c)
-//	if(widget())
-//		((QTextEdit *)widget())->setCursorPosition(iLine, iCol, bFlag);
+	KVSO_PARAMETERS_END(c)
+	//if(widget())
+	//	((QTextEdit *)widget())->setCursorPosition(iLine, iCol, bFlag);
 	return true;
 }
 
-bool KviKvsObject_textedit::functionCursorPosition(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionCursorPosition(KviKvsObjectFunctionCall * c)
 {
 	if(!widget()) return true;
 	int iRow=((QTextEdit *)widget())->textCursor().blockNumber();
@@ -487,79 +476,80 @@ bool KviKvsObject_textedit::functionCursorPosition(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionAtBeginning(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionAtBeginning(KviKvsObjectFunctionCall * c)
 {
 	if(!widget()) return true;
 	c->returnValue()->setBoolean(((QTextEdit *)widget())->textCursor().atStart());
 	return true;
 }
 
-bool KviKvsObject_textedit::functionAtEnd(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionAtEnd(KviKvsObjectFunctionCall * c)
 {
 	if(!widget()) return true;
 	c->returnValue()->setBoolean(((QTextEdit *)widget())->textCursor().atEnd());
 	return true;
 }
 
-bool KviKvsObject_textedit::functionSetWordWrap(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionSetWordWrap(KviKvsObjectFunctionCall * c)
 {
 	if(!widget())return true;
 	QString szWrap;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("word_wrap",KVS_PT_STRING,0,szWrap)
 	KVSO_PARAMETERS_END(c)
-/*	if(KviQString::equalCI(szWrap,"NoWrap"))
-			((QTextEdit *)widget())->setWordWrap(QTextEdit::NoWrap);
+	/*
+	if(KviQString::equalCI(szWrap,"NoWrap"))
+		((QTextEdit *)widget())->setWordWrap(QTextEdit::NoWrap);
 	else if(KviQString::equalCI(szWrap,"WidgetWidth"))
-			((QTextEdit *)widget())->setWordWrap(QTextEdit::WidgetWidth);
+		((QTextEdit *)widget())->setWordWrap(QTextEdit::WidgetWidth);
 	else if(KviQString::equalCI(szWrap,"FixedPixelWidth"))
-			((QTextEdit *)widget())->setWordWrap(QTextEdit::FixedPixelWidth);
+		((QTextEdit *)widget())->setWordWrap(QTextEdit::FixedPixelWidth);
 	else if(KviQString::equalCI(szWrap,"FixedColumnWidth"))
-			((QTextEdit *)widget())->setWordWrap(QTextEdit::FixedColumnWidth);
+		((QTextEdit *)widget())->setWordWrap(QTextEdit::FixedColumnWidth);
 	else c->warning(__tr2qs("Unknown word wrap '%Q'"),&szWrap);
-*/
+	*/
 	return true;
 }
 
-bool KviKvsObject_textedit::functionsetWrapPolicy(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionsetWrapPolicy(KviKvsObjectFunctionCall * c)
 {
 	if(!widget())return true;
 	QString szPolicy;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("wrap_policy",KVS_PT_STRING,0,szPolicy)
 	KVSO_PARAMETERS_END(c)
-/*	if(KviQString::equalCI(szPolicy,"AtWhiteSpace)"))
-			((QTextEdit *)widget())->setWrapPolicy(QTextEdit::AtWhiteSpace);
+	/*
+	if(KviQString::equalCI(szPolicy,"AtWhiteSpace)"))
+		((QTextEdit *)widget())->setWrapPolicy(QTextEdit::AtWhiteSpace);
 	else if(KviQString::equalCI(szPolicy,"Anywhere"))
-			((QTextEdit *)widget())->setWrapPolicy(QTextEdit::Anywhere);
+		((QTextEdit *)widget())->setWrapPolicy(QTextEdit::Anywhere);
 	else if(KviQString::equalCI(szPolicy,"AtWordBoundary"))
-			((QTextEdit *)widget())->setWrapPolicy(QTextEdit::AtWordBoundary);
+		((QTextEdit *)widget())->setWrapPolicy(QTextEdit::AtWordBoundary);
 	else if(KviQString::equalCI(szPolicy,"AtWordOrDocumentBoundary"))
-			((QTextEdit *)widget())->setWrapPolicy(QTextEdit::AtWordOrDocumentBoundary);
+		((QTextEdit *)widget())->setWrapPolicy(QTextEdit::AtWordOrDocumentBoundary);
 	else c->warning(__tr2qs("Unknown wrap policy'%Q'"),&szPolicy);
 	*/
 	return true;
 }
 
-bool KviKvsObject_textedit::functionWordWrap(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionWordWrap(KviKvsObjectFunctionCall * c)
 {
-/*	if(widget())
+	/*
+	if(widget())
 		c->returnValue()->setBoolean(((QTextEdit *)widget())->wordWrap() & QTextEdit::WidgetWidth);
-*/
-		return true;
+	*/
+	return true;
 }
 
-bool KviKvsObject_textedit::functionText(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionText(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setString(((QTextEdit *)widget())->document()->toPlainText());
 	return true;
 }
 
-
-bool KviKvsObject_textedit::functionSetMaxLines(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionSetMaxLines(KviKvsObjectFunctionCall * c)
 {
-
 	kvs_uint_t imaxLines;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("max_lines",KVS_PT_UNSIGNEDINTEGER,0,imaxLines)
@@ -569,16 +559,14 @@ bool KviKvsObject_textedit::functionSetMaxLines(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionMaxLines(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionMaxLines(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setInteger(((QTextEdit *)widget())->document()->maximumBlockCount());
 	return true;
 }
 
-bool KviKvsObject_textedit::functionInsert(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionInsert(KviKvsObjectFunctionCall * c)
 {
 	QString szInsert;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -592,8 +580,7 @@ bool KviKvsObject_textedit::functionInsert(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionAppend(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionAppend(KviKvsObjectFunctionCall * c)
 {
 	QString szAppend;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -604,21 +591,21 @@ bool KviKvsObject_textedit::functionAppend(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionCopy(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionCopy(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		((QTextEdit *)widget())->copy();
 	return true;
 }
 
-bool KviKvsObject_textedit::functionCut(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionCut(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		((QTextEdit *)widget())->cut();
 	return true;
 }
 
-bool KviKvsObject_textedit::functionPaste(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionPaste(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		((QTextEdit *)widget())->paste();
@@ -626,7 +613,7 @@ bool KviKvsObject_textedit::functionPaste(KviKvsObjectFunctionCall *c)
 }
 
 //->Set Bold, Italic, Underline
-bool KviKvsObject_textedit::functionsetBold(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionsetBold(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -636,7 +623,8 @@ bool KviKvsObject_textedit::functionsetBold(KviKvsObjectFunctionCall *c)
 		((QTextEdit *)widget())->setFontWeight(bFlag?QFont::Bold:QFont::Normal);
 	return true;
 }
-bool KviKvsObject_textedit::functionsetUnderline(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionsetUnderline(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -647,7 +635,7 @@ bool KviKvsObject_textedit::functionsetUnderline(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionsetItalic(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionsetItalic(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -658,28 +646,30 @@ bool KviKvsObject_textedit::functionsetItalic(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-
 //-->Returns Italic , Bold, Underline.
-bool KviKvsObject_textedit::functionbold(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionbold(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setBoolean(((QTextEdit *)widget())->fontWeight() >= QFont::Bold );
 	return true;
 }
-bool KviKvsObject_textedit::functionitalic(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionitalic(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setBoolean(((QTextEdit *)widget())->fontItalic());
 	return true;
 }
-bool KviKvsObject_textedit::functionunderline(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionunderline(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setBoolean(((QTextEdit *)widget())->fontUnderline());
 	return true;
 }
+
 //->Zoom In, out at
-bool KviKvsObject_textedit::functionzoomIn(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionzoomIn(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iZoom;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -688,101 +678,110 @@ bool KviKvsObject_textedit::functionzoomIn(KviKvsObjectFunctionCall *c)
 	if (!widget()) return true;
 	if (!iZoom)
 		((QTextEdit *)object())->zoomIn();
-    else
+	else
 		((QTextEdit *)object())->zoomIn(iZoom);
-    return true;
+	return true;
 }
 
-bool KviKvsObject_textedit::functionzoomOut(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionzoomOut(KviKvsObjectFunctionCall * c)
 {
-    kvs_int_t iZoom;
+	kvs_int_t iZoom;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("zoom_value",KVS_PT_INT,KVS_PF_OPTIONAL,iZoom)
 	KVSO_PARAMETERS_END(c)
 	if (!widget()) return true;
 	if (!iZoom)
 		((QTextEdit *)object())->zoomOut();
-    else
+	else
 		((QTextEdit *)object())->zoomOut(iZoom);
-    return true;
+	return true;
 }
+
 /*
-bool KviKvsObject_textedit::functionzoomTo(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionzoomTo(KviKvsObjectFunctionCall * c)
 {
-    kvs_int_t iZoom;
+	kvs_int_t iZoom;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("zoom_size",KVS_PT_INT,0,iZoom)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
 		((QTextEdit *)object())->zoomTo(iZoom);
-    return true;
+	return true;
 }
 */
-//-> Undo & Redo functions
 
-bool KviKvsObject_textedit::functionundo(KviKvsObjectFunctionCall *c)
+//-> Undo & Redo functions
+bool KviKvsObject_textedit::functionundo(KviKvsObjectFunctionCall * c)
 {
-    if(widget())
-        ((QTextEdit *)widget())->undo();
-    return true;
+	if(widget())
+		((QTextEdit *)widget())->undo();
+	return true;
 }
-bool KviKvsObject_textedit::functionredo(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionredo(KviKvsObjectFunctionCall * c)
 {
-    if(widget())
-        ((QTextEdit *)widget())->redo();
-    return true;
+	if(widget())
+		((QTextEdit *)widget())->redo();
+	return true;
 }
-bool KviKvsObject_textedit::functionclear(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionclear(KviKvsObjectFunctionCall * c)
 {
-    if(widget())
-        ((QTextEdit *)widget())->clear();
-    return true;
+	if(widget())
+		((QTextEdit *)widget())->clear();
+	return true;
 }
+
 /*
-bool KviKvsObject_textedit::functiondel(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functiondel(KviKvsObjectFunctionCall * c)
 {
-    if(widget())
+	if(widget())
 		((QTextEdit *)widget())->del();
-    return true;
+	return true;
 }
-bool KviKvsObject_textedit::functionindent(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionindent(KviKvsObjectFunctionCall * c)
 {
-    if(widget())
-        ((QTextEdit *)widget())->indent();
-    return true;
+	if(widget())
+		((QTextEdit *)widget())->indent();
+	return true;
 }
 */
-bool KviKvsObject_textedit::functionsetUndoRedoEnabled(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionsetUndoRedoEnabled(KviKvsObjectFunctionCall * c)
 {
-    bool bFlag;
+	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bUndoredo",KVS_PT_BOOL,0,bFlag)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-       ((QTextEdit *)widget())->setUndoRedoEnabled(bFlag);
-    return true;
+		((QTextEdit *)widget())->setUndoRedoEnabled(bFlag);
+	return true;
 }
 
-bool KviKvsObject_textedit::functionisUndoRedoEnabled(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionisUndoRedoEnabled(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setBoolean(((QTextEdit *)widget())->isUndoRedoEnabled());
-    return true;
+	return true;
 }
+
 /*
-bool KviKvsObject_textedit::functionisUndoAvailable(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionisUndoAvailable(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setBoolean(((QTextEdit *)widget())->isUndoAvailable());
-    return true;
+	return true;
 }
-bool KviKvsObject_textedit::functionisRedoAvailable(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionisRedoAvailable(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setBoolean(((QTextEdit *)widget())->isRedoAvailable());
-    return true;
+	return true;
 }
-bool KviKvsObject_textedit::functionsetUndoDepth(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionsetUndoDepth(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iDepth;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -790,19 +789,20 @@ bool KviKvsObject_textedit::functionsetUndoDepth(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
 		((QTextEdit *)object())->setUndoDepth(iDepth);
-    return true;
-
+	return true;
 }
-bool KviKvsObject_textedit::functionundoDepth(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionundoDepth(KviKvsObjectFunctionCall * c)
 {
-    if(widget())
-        c->returnValue()->setInteger(((QTextEdit *)widget())->undoDepth());
-    return true;
+	if(widget())
+		c->returnValue()->setInteger(((QTextEdit *)widget())->undoDepth());
+	return true;
 }
 */
+
 //-->Text & Color & Family
 // Findme
-bool KviKvsObject_textedit::functionsetText(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionsetText(KviKvsObjectFunctionCall * c)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -812,7 +812,8 @@ bool KviKvsObject_textedit::functionsetText(KviKvsObjectFunctionCall *c)
 		((QTextEdit *)widget())->setText(szText);
 	return true;
 }
-bool KviKvsObject_textedit::functionsetPlainText(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionsetPlainText(KviKvsObjectFunctionCall * c)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -822,7 +823,8 @@ bool KviKvsObject_textedit::functionsetPlainText(KviKvsObjectFunctionCall *c)
 		((QTextEdit *)widget())->setPlainText(szText);
 	return true;
 }
-bool KviKvsObject_textedit::functionsetHtmlText(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionsetHtmlText(KviKvsObjectFunctionCall * c)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -832,7 +834,8 @@ bool KviKvsObject_textedit::functionsetHtmlText(KviKvsObjectFunctionCall *c)
 		((QTextEdit *)widget())->setHtml(szText);
 	return true;
 }
-bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 {
 	KviKvsVariant * pColArray;
 	kvs_int_t iColR,iColG,iColB;
@@ -904,7 +907,7 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionsetPointSize(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionsetPointSize(KviKvsObjectFunctionCall * c)
 {
 	kvs_uint_t uPointSize;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -914,8 +917,9 @@ bool KviKvsObject_textedit::functionsetPointSize(KviKvsObjectFunctionCall *c)
 		((QTextEdit *)widget())->setFontPointSize(uPointSize);
 	return true;
 }
+
 /*
-bool KviKvsObject_textedit::functionsetLinkUnderline(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionsetLinkUnderline(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -926,7 +930,8 @@ bool KviKvsObject_textedit::functionsetLinkUnderline(KviKvsObjectFunctionCall *c
 	return true;
 }
 */
-bool KviKvsObject_textedit::functionsetFamily(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functionsetFamily(KviKvsObjectFunctionCall * c)
 {
 	QString szFamily;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -937,7 +942,7 @@ bool KviKvsObject_textedit::functionsetFamily(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionsetModified(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionsetModified(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -947,13 +952,15 @@ bool KviKvsObject_textedit::functionsetModified(KviKvsObjectFunctionCall *c)
 		((QTextEdit *)widget())->document()->setModified(bFlag);
 	return true;
 }
-bool KviKvsObject_textedit::functioisModified(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functioisModified(KviKvsObjectFunctionCall * c)
 {
-    if(widget())
+	if(widget())
 		c->returnValue()->setBoolean(((QTextEdit *)widget())->document()->isModified());
-    return true;
+	return true;
 }
-bool KviKvsObject_textedit::functioninsertParagraph(KviKvsObjectFunctionCall *c)
+
+bool KviKvsObject_textedit::functioninsertParagraph(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iParagraph;
 	QString szText;
@@ -961,23 +968,23 @@ bool KviKvsObject_textedit::functioninsertParagraph(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 		KVSO_PARAMETER("paragraph",KVS_PT_INT,0,iParagraph)
 	KVSO_PARAMETERS_END(c)
-//	if(widget())
-//		((QTextEdit *)widget())->insertParagraph(szText,iParagraph);
+	//if(widget())
+	//	((QTextEdit *)widget())->insertParagraph(szText,iParagraph);
 	return true;
 }
 
-bool KviKvsObject_textedit::functionremoveParagraph(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionremoveParagraph(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iParagraph;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("paragraph",KVS_PT_INT,0,iParagraph)
 	KVSO_PARAMETERS_END(c)
-//	if(widget())
-//		((QTextEdit*)widget())->removeParagraph(iParagraph);
+	//if(widget())
+	//	((QTextEdit*)widget())->removeParagraph(iParagraph);
 	return true;
 }
 
-bool KviKvsObject_textedit::functionsetOverwriteMode(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionsetOverwriteMode(KviKvsObjectFunctionCall * c)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -988,11 +995,11 @@ bool KviKvsObject_textedit::functionsetOverwriteMode(KviKvsObjectFunctionCall *c
 	return true;
 }
 
-bool KviKvsObject_textedit::functiontextFormat(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functiontextFormat(KviKvsObjectFunctionCall * c)
 {
 	if(!widget())return true;
-/*	int fstyle = ((QTextEdit *)widget())->textFormat();
+	/*
+	int fstyle = ((QTextEdit *)widget())->textFormat();
 	QString format="";
 	for(unsigned int i = 0; i < mod_num; i++)
 	{
@@ -1002,34 +1009,35 @@ bool KviKvsObject_textedit::functiontextFormat(KviKvsObjectFunctionCall *c)
 		}
 	}
 	c->returnValue()->setString(format);
-*/
+	*/
 	return true;
-
 }
-bool KviKvsObject_textedit::functionsetTextFormat(KviKvsObjectFunctionCall *c)
 
+bool KviKvsObject_textedit::functionsetTextFormat(KviKvsObjectFunctionCall * c)
 {
 	QString szFormat;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("textformat",KVS_PT_STRING,0,szFormat)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-/*	if(KviQString::equalCI(szFormat,"PlainText"))
-			((QTextEdit *)widget())->setTextFormat(Qt::PlainText);
+	/*
+	if(KviQString::equalCI(szFormat,"PlainText"))
+		((QTextEdit *)widget())->setTextFormat(Qt::PlainText);
 	else if(KviQString::equalCI(szFormat,"RichText"))
-			((QTextEdit *)widget())->setTextFormat(Qt::RichText);
+		((QTextEdit *)widget())->setTextFormat(Qt::RichText);
 	else if(KviQString::equalCI(szFormat,"LogText"))
-			((QTextEdit *)widget())->setTextFormat(Qt::LogText);
+		((QTextEdit *)widget())->setTextFormat(Qt::LogText);
 	else if(KviQString::equalCI(szFormat,"AutoText"))
-			((QTextEdit *)widget())->setTextFormat(Qt::AutoText);
+		((QTextEdit *)widget())->setTextFormat(Qt::AutoText);
 	else c->warning(__tr2qs("Unknown text format '%Q'"),&szFormat);
-*/
+	*/
 	return true;
 }
+
 // findme
-bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunctionCall * c)
 {
-    KviKvsVariant * pColArray;
+	KviKvsVariant * pColArray;
 	kvs_int_t iParagraph,iColR,iColG,iColB;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("paragraph",KVS_PT_INT,0,iParagraph)
@@ -1061,30 +1069,30 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 
 	} else {
 		if (c->params()->count()==1)
+		{
+			bool bOk,bOk1,bOk2;
+			QString value;
+			pColArray->asString(value);
+			int i=0;
+			if (value.length()!=6)
 			{
-				bool bOk,bOk1,bOk2;
-				QString value;
-				pColArray->asString(value);
-				int i=0;
-				if (value.length()!=6)
-				{
-						c->warning(__tr2qs("A string of 6 digits hex is required"));
-						return true;
-				}
-				QString buffer(value.mid(0,2));
-				iColR=buffer.toInt(&bOk,16);
-				buffer=value.mid(2,2);
-				iColG=buffer.toInt(&bOk1,16);
-				buffer=value.mid(4,2);
-				iColB=buffer.toInt(&bOk2,16);
-				if (!bOk || !bOk1 || !bOk2)
-				{
-					c->warning(__tr2qs("Not an hex digits"));
-				return true;
-				}
-//			if (widget()) ((QTextEdit *)widget())->setParagraphBackgroundColor(iParagraph,QColor(iColR,iColG,iColB));
-			return true;
+					c->warning(__tr2qs("A string of 6 digits hex is required"));
+					return true;
 			}
+			QString buffer(value.mid(0,2));
+			iColR=buffer.toInt(&bOk,16);
+			buffer=value.mid(2,2);
+			iColG=buffer.toInt(&bOk1,16);
+			buffer=value.mid(4,2);
+			iColB=buffer.toInt(&bOk2,16);
+			if (!bOk || !bOk1 || !bOk2)
+			{
+				c->warning(__tr2qs("Not an hex digits"));
+				return true;
+			}
+			//if (widget()) ((QTextEdit *)widget())->setParagraphBackgroundColor(iParagraph,QColor(iColR,iColG,iColB));
+			return true;
+		}
 		if(c->params()->count() < 3)
 		{
 			c->error(__tr2qs("$setColor requires either an array as first parameter or three integers"));
@@ -1096,22 +1104,22 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 			return false;
 		}
 	}
-//   	if (widget()) ((QTextEdit *)widget())->setParagraphBackgroundColor(iParagraph,QColor(iColR,iColG,iColB));
+	//if (widget()) ((QTextEdit *)widget())->setParagraphBackgroundColor(iParagraph,QColor(iColR,iColG,iColB));
 	return true;
 }
 
-bool KviKvsObject_textedit::functionclearParagraphBackground(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionclearParagraphBackground(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iParagraph;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("paragraph",KVS_PT_INT,0,iParagraph)
 	KVSO_PARAMETERS_END(c)
-//	if(widget())
-//		((QTextEdit*)widget())->clearParagraphBackground(iParagraph);
+	//if(widget())
+	//	((QTextEdit*)widget())->clearParagraphBackground(iParagraph);
 	return true;
 }
 
-bool KviKvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall * c)
 {
 	QString szFile;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1131,17 +1139,16 @@ bool KviKvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall *c)
 	}
 
 	QTextStream ts( &file );
-    QString txt = ts.readAll();
-//	if ( !Q3StyleSheet::mightBeRichText( txt ) )
-//	txt = Q3StyleSheet::convertFromPlainText( txt, Q3StyleSheetItem::WhiteSpacePre );
+	QString txt = ts.readAll();
+	//if ( !Q3StyleSheet::mightBeRichText( txt ) )
+	//txt = Q3StyleSheet::convertFromPlainText( txt, Q3StyleSheetItem::WhiteSpacePre );
 	((QTextEdit *)widget())->setText( txt );
 
 	file.close();
 	return true;
 }
 
-bool KviKvsObject_textedit::functionsetAlignment(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionsetAlignment(KviKvsObjectFunctionCall * c)
 {
 	QString szAlignment;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1160,34 +1167,34 @@ bool KviKvsObject_textedit::functionsetAlignment(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionsetAutoFormatting(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionsetAutoFormatting(KviKvsObjectFunctionCall * c)
 {
 	QString szAutoformatting;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("autoformatting",KVS_PT_STRING,0,szAutoformatting)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-/*	if(KviQString::equalCI(szAutoformatting,"AutoNone"))
+	/*
+	if(KviQString::equalCI(szAutoformatting,"AutoNone"))
 		((QTextEdit *)widget())->setAutoFormatting(QTEXTEDIT_AUTO_NONE);
 	else if(KviQString::equalCI(szAutoformatting,"BulletList"))
 		((QTextEdit *)widget())->setAutoFormatting(QTEXTEDIT_AUTO_BULLET_LIST);
 	else if(KviQString::equalCI(szAutoformatting,"AutoAll"))
 		((QTextEdit *)widget())->setAutoFormatting(QTEXTEDIT_AUTO_ALL);
 	else c->warning(__tr2qs("Unknown auto formatting mode '%Q'"),&szAutoformatting);
-*/
+	*/
 	return true;
 }
 
-bool KviKvsObject_textedit::functionsetVerticalAlignment(KviKvsObjectFunctionCall *c)
-
+bool KviKvsObject_textedit::functionsetVerticalAlignment(KviKvsObjectFunctionCall * c)
 {
 	QString szValignment;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("alignment",KVS_PT_STRING,0,szValignment)
 	KVSO_PARAMETERS_END(c)
 	if(!widget()) return true;
-/*	if(KviQString::equalCI(szValignment,"Normal"))
+	/*
+	if(KviQString::equalCI(szValignment,"Normal"))
 		((QTextEdit *)widget())->setVerticalAlignment(QTextEdit::AlignNormal);
 	else if(KviQString::equalCI(szValignment,"SuperScript"))
 		((QTextEdit *)widget())->setVerticalAlignment(QTextEdit::AlignSuperScript);
@@ -1198,58 +1205,55 @@ bool KviKvsObject_textedit::functionsetVerticalAlignment(KviKvsObjectFunctionCal
 	return true;
 }
 
-bool KviKvsObject_textedit::functionparagraphs(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionparagraphs(KviKvsObjectFunctionCall * c)
 {
-//	if(widget())
-//		c->returnValue()->setInteger(((QTextEdit *)widget())->paragraphs());
+	//if(widget())
+	//	c->returnValue()->setInteger(((QTextEdit *)widget())->paragraphs());
 	return true;
-
 }
 
-bool KviKvsObject_textedit::functionlines(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionlines(KviKvsObjectFunctionCall * c)
 {
 	if(widget())
 		c->returnValue()->setInteger(((QTextEdit *)widget())->document()->blockCount());
 	return true;
 }
 
-bool KviKvsObject_textedit::functionlineOfChar(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionlineOfChar(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iPara,iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("paragraph",KVS_PT_INT,0,iPara)
 		KVSO_PARAMETER("index",KVS_PT_INT,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-//	if (widget())
-//		c->returnValue()->setInteger(((QTextEdit *)widget())->lineOfChar(iPara,iIndex));
+	//if (widget())
+	//	c->returnValue()->setInteger(((QTextEdit *)widget())->lineOfChar(iPara,iIndex));
 	return true;
 }
 
-bool KviKvsObject_textedit::functionlinesOfParagraph(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionlinesOfParagraph(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iLine;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("paragraph",KVS_PT_INT,0,iLine)
 	KVSO_PARAMETERS_END(c)
-//	if(widget())
-//		c->returnValue()->setInteger(((QTextEdit *)widget())->linesOfParagraph(iLine));
+	//if(widget())
+	//	c->returnValue()->setInteger(((QTextEdit *)widget())->linesOfParagraph(iLine));
 	return true;
 }
 
-
-bool KviKvsObject_textedit::functionparagraphLength(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionparagraphLength(KviKvsObjectFunctionCall * c)
 {
 	kvs_int_t iParagraph;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("paragraph",KVS_PT_INT,0,iParagraph)
 	KVSO_PARAMETERS_END(c)
-//	if(widget())
-//		c->returnValue()->setInteger(((QTextEdit *)widget())->paragraphLength(iParagraph));
+	//if(widget())
+	//	c->returnValue()->setInteger(((QTextEdit *)widget())->paragraphLength(iParagraph));
 	return true;
-
 }
 
-bool KviKvsObject_textedit::functionselectAll(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_textedit::functionselectAll(KviKvsObjectFunctionCall * c)
 {
 	if (widget())
 		((QTextEdit *)widget())->selectAll();
@@ -1260,4 +1264,3 @@ bool KviKvsObject_textedit::functionselectAll(KviKvsObjectFunctionCall *c)
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_multilineedit.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

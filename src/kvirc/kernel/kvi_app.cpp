@@ -168,12 +168,10 @@ KviApp::KviApp(int &argc,char ** argv)
 : KviTalApplication(argc,argv)
 {
 	setApplicationName("KVIrc");
-
-#if QT_VERSION >= 0x040400
 	setApplicationVersion(KVIRC_VERSION_RELEASE);
-#endif
 	setOrganizationDomain("kvirc.net");
 	setOrganizationName("KVIrc");
+
 	// Ok...everything begins here
 	g_pApp                  = this;
 	m_szConfigFile          = QString::null;

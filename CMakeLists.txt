@@ -15,7 +15,7 @@ PROJECT(kvirc)
 SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # Minimum cmake version
-CMAKE_MINIMUM_REQUIRED(VERSION 2.4.8)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
 
 # Compat for cmake 2.6
 IF(COMMAND cmake_policy)
@@ -23,10 +23,8 @@ IF(COMMAND cmake_policy)
         CMAKE_POLICY(SET CMP0002 OLD)
 ENDIF()
 
-
 # Check modules first in local dir
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
-
 
 # Some vars
 SET(PACKAGE "kvirc")
@@ -276,6 +274,12 @@ ENDIF()
 
 FIND_PACKAGE(Qt4 REQUIRED)
 IF(QT4_FOUND)
+	# We require at least Qt 4.4.x
+	IF(QT_VERSION_MINOR LESS 4)
+		MESSAGE(FATAL_ERROR "Upgrade your Qt GUI Toolkit to 4.4")
+	ENDIF()
+
+	# Qt3 support, remove it when the code will be completely ported
 	SET(QT_USE_QT3SUPPORT true)
 
 	IF(APPLE)
@@ -440,25 +444,25 @@ ENDIF()
 IF(WANT_OPENSSL)
 	FIND_PACKAGE(OpenSSL)
 	IF(OPENSSL_FOUND)
-                IF(WIN32)
-                        # On windows/mingw we need libeay32 too...
-                        FIND_LIBRARY(LIB_EAY NAMES libeay32MD eay libeay libeay32)
-                        IF(LIB_EAY)
-                                INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
-                                LIST(APPEND LIBS ${OPENSSL_LIBRARIES} ${LIB_EAY})
-                                SET(COMPILE_SSL_SUPPORT 1)
-                                SET(CMAKE_STATUS_SSL_SUPPORT "Yes")
-                        ELSE()
-                                SET(CMAKE_STATUS_SSL_SUPPORT "Not available, libeay missing")
-                        ENDIF()
-                ELSE()
-                        INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
-                        LIST(APPEND LIBS ${OPENSSL_LIBRARIES})
-                        SET(COMPILE_SSL_SUPPORT 1)
-                        SET(CMAKE_STATUS_SSL_SUPPORT "Yes")
-                        # CMake FindOpenSSL is incomplete and does not add -lcrypto to LIBS...
-                        LIST(APPEND LIBS -lcrypto)
-                ENDIF()
+		IF(WIN32)
+			# On windows/mingw we need libeay32 too...
+			FIND_LIBRARY(LIB_EAY NAMES libeay32MD eay libeay libeay32)
+			IF(LIB_EAY)
+				INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
+				LIST(APPEND LIBS ${OPENSSL_LIBRARIES} ${LIB_EAY})
+				SET(COMPILE_SSL_SUPPORT 1)
+				SET(CMAKE_STATUS_SSL_SUPPORT "Yes")
+			ELSE()
+				SET(CMAKE_STATUS_SSL_SUPPORT "Not available, libeay missing")
+			ENDIF()
+		ELSE()
+			INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
+			LIST(APPEND LIBS ${OPENSSL_LIBRARIES})
+			SET(COMPILE_SSL_SUPPORT 1)
+			SET(CMAKE_STATUS_SSL_SUPPORT "Yes")
+			# CMake FindOpenSSL is incomplete and does not add -lcrypto to LIBS...
+			LIST(APPEND LIBS -lcrypto)
+		ENDIF()
 	ELSE()
 		SET(CMAKE_STATUS_SSL_SUPPORT "Not available")
 	ENDIF()
@@ -998,8 +1002,8 @@ MESSAGE(STATUS "  Threading Support           : ${CMAKE_STATUS_THREADS_SUPPORT}"
 MESSAGE(STATUS "  X11 Support                 : ${CMAKE_STATUS_X11_SUPPORT}")
 #MESSAGE(STATUS "  PCH Support                : ${CMAKE_STATUS_PCH_SUPPORT}")
 MESSAGE(STATUS "  Qt-DBus Support             : ${CMAKE_STATUS_QTDBUS_SUPPORT}")
-MESSAGE(STATUS "  Phonon Support              : ${CMAKE_STATUS_PHONON_SUPPORT}")
 MESSAGE(STATUS "  Qt-WebKit Support           : ${CMAKE_STATUS_QTWEBKIT_SUPPORT}")
+MESSAGE(STATUS "  Phonon Support              : ${CMAKE_STATUS_PHONON_SUPPORT}")
 MESSAGE(STATUS "  KDE4 Support                : ${CMAKE_STATUS_KDE4_SUPPORT}")
 MESSAGE(STATUS "  OpenSSL Support             : ${CMAKE_STATUS_SSL_SUPPORT}")
 MESSAGE(STATUS "  Crypt Support And Engines   : ${CMAKE_STATUS_CRYPT_SUPPORT}")
