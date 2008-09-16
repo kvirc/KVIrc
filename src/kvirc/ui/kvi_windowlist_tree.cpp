@@ -163,7 +163,6 @@ void KviTreeWindowListItem::refreshBrush()
 	if(this == treeWidget()->currentItem())
 	{
 		setForeground(0, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground));
-		setBackground(0, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 	} else {
 		int iLevel;
 		switch(m_iHighlightLevel)
@@ -176,7 +175,6 @@ void KviTreeWindowListItem::refreshBrush()
 			default: iLevel = KviOption_colorTreeWindowListForeground; break;
 		}
 		setForeground(0, KVI_OPTION_COLOR(iLevel));
-		setBackground(0, Qt::transparent);
 	}
 }
 
@@ -194,7 +192,6 @@ void KviTreeWindowListItem::refreshActivityIcon()
 			setActivityIcon(pix2);
 		}
 	}
-
 }
 void KviTreeWindowListItem::unhighlight()
 {
@@ -239,14 +236,13 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 	//Animation creates problem with the background painting on expande/collapse
 	//setAnimated(true);
 	setAllColumnsShowFocus(true);
-	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	setSelectionBehavior(QAbstractItemView::SelectItems);
 	setSelectionMode(QAbstractItemView::SingleSelection);
-	setFrameShape(NoFrame);
+        setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 }
 
 void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 {
+
 	KviTreeWindowListItem * it = (KviTreeWindowListItem *)itemAt(e->pos());
 	if(it)
 	{
@@ -261,11 +257,12 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 					g_pFrame->setActiveWindow(wnd);
 				else wnd->minimize();
 			}
-			QTreeWidget::mousePressEvent(e);
+
 		} else if(e->button() & Qt::RightButton)
 		{
 			wnd->contextPopup();
 		}
+                KviTalTreeWidget::mousePressEvent(e);
 	} else {
 		if(e->button() & Qt::RightButton)
 		{
@@ -344,8 +341,6 @@ KviTreeWindowList::KviTreeWindowList()
 
 	//misc settings
 	m_pTreeWidget->setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));
-	m_pTreeWidget->setFocusPolicy(Qt::NoFocus);
-	m_pTreeWidget->viewport()->setAutoFillBackground(false);
 
 	if(KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHeader))
 	{
