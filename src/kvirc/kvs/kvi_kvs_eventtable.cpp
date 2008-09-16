@@ -196,7 +196,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnError
 		@short:
-			Server ERROR message received
+			Triggered when an ERROR message is received from the server
 		@parameters:
 			$0 = message source
 			$1 = error reason
@@ -218,7 +218,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnAccelKeyPressed
 		@short:
-			An accelerator key was pressed
+			Triggered when an accelerator key was pressed
 		@parameters:
 			$0 = keys
 		@window:
@@ -243,7 +243,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnHighlight
 		@short:
-			A channel or query message is going to be highlighted
+			Triggered when a channel or query message is going to be highlighted
 		@parameters:
 			$0 = talker nick
 			$1 = target username
@@ -284,7 +284,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnWindowActivated
 		@short:
-			A window has just been activated
+			Triggered when a window has just been activated
 		@parameters:
 			none
 		@window:
@@ -302,7 +302,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnNotifyOnline
 		@short:
-			An user in the notify list is on-line
+			A user in the notify list is on-line
 		@parameters:
 			$0 = nickname
 		@window:
@@ -328,7 +328,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnNotifyOffline
 		@short:
-			An user in the notify list went off-line
+			A user in the notify list went off-line
 		@parameters:
 			$0 = nickname
 		@window:
@@ -501,27 +501,6 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = nickname"),
 
 	/*
-		@doc: onnotifylistpopuprequest
-		@type:
-			event
-		@title:
-			OnNotifyListPopupRequest
-		@short:
-			Notify list context popup customization
-		@parameters:
-			$0 = nickname list
-		@window:
-			The window that the user has clicked in
-		@description:
-			This event is triggered when an user has right clicked on a list of nicknames in
-			the notify list (console window).[br]
-			This is a good place to show a [cmd]popup[/cmd] with some actions that can be performed
-			on the nicknames like querying , performing a whois lookup or sth similar.[br]
-	*/
-	EVENT("OnNotifyListPopupRequest", \
-		"$0 = nickname list"),
-
-	/*
 		@doc: onwallops
 		@type:
 			event
@@ -595,59 +574,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = source nick\n" \
 		"$1 = message"),
 
-	/*
-		@doc: ontextviewdoublecliked
-		@type:
-			event
-		@title:
-			OnTextViewDoubleClicked
-		@short:
-			Text view link double click customization
-		@parameters:
-			$0 = actual name
-			$1 - visible name
-			$2 - command name
-		@window:
-			The window that the user has clicked in
-		@description:
-			Actual name is equal to the command name if command name is not null.
-			Visible name is the link text (as it shown by user).
-			Command name is set if the visible name differs with the actual link target (probably contains mIRC colors,etc). It is equal to the actual target name.
-			This event is triggered when an user has double clicked on a text view and has not hit any link.[br]
-			I have no idea what you can do in this event....maybe some sort of channel-central dialog? :)
-	*/
-	EVENT("OnTextViewDoubleClicked",""),
 
-	/*
-		@doc: onnicklinkdefaultactionrequest
-		@type:
-			event
-		@title:
-			OnNickLinkDefaultActionRequest
-		@short:
-			Nick link double click customization
-		@parameters:
-			$0 = actual name
-			$1 - visible name
-			$2 - command name
-		@window:
-			The window that the user has clicked in
-		@description:
-			Actual name is equal to the command name if command name is not null.
-			Visible name is the link text (as it shown by user)
-			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
-			This event is triggered when an user has double clicked on a nickname link.[br]
-			You should use this event to perform some significant action associated with the double click.[br]
-			A good example might be a [cmd]whois[/cmd] or a [cmq]query[/cmd] call.[br]
-			Please note that NOT ALL nickname links will cause this event to be triggered: some nickname
-			links default actions are actually handled by the
-			[event:onquerynickdefaultactionrequest]OnQueryNickDefaultActionRequest[/event] and
-			[event:onchannelnickdefatulactionrequest]OnChannelNickDefaultActionRequest[/event] events.[br]
-	*/
-	EVENT("OnNickLinkDefaultActionRequest", \
-		"$0 = actual name\n" \
-		"$1 - visible name\n" \
-		"$2 - command name"),
 
 	// Connection
 	/*
@@ -1158,26 +1085,54 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	EVENT("OnChannelNickPopupRequest", \
 		"$0 = nick list"),
 
-	// Channels
 	/*
-		@doc: onchannelnickdefaultactionrequest
+		@doc: onnotifylistpopuprequest
 		@type:
 			event
 		@title:
-			OnChannelNickDefaultActionRequest
+			OnNotifyListPopupRequest
 		@short:
-			Allows customization of the double click on nicknames
+			Notify list context popup customization
 		@parameters:
-			$0 = nick list
+			$0 = nickname list
 		@window:
-			Channel window
+			The window that the user has clicked in
 		@description:
-		@seealso:
-			[event:onchannelnickpopuprequest]OnChannelNickPopupRequest[/event]
+			This event is triggered when an user has right clicked on a list of nicknames in
+			the notify list (console window).[br]
+			This is a good place to show a [cmd]popup[/cmd] with some actions that can be performed
+			on the nicknames like querying , performing a whois lookup or sth similar.[br]
 	*/
-	EVENT("OnChannelNickDefaultActionRequest", \
-		"$0 = nick list"),
+	EVENT("OnNotifyListPopupRequest", \
+		"$0 = nickname list"),
 
+	/*
+		@doc: ondccchatpopuprequest
+		@type:
+			event
+		@title:
+			OnDCCChatPopupRequest
+		@short:
+			Triggered when the DCC chat text view is right-clicked
+		@parameters:
+			$0 = DCC session ID
+		@window:
+			DCC Chat window
+		@description:
+			This event is triggered when the user clicks the DCC chat
+			text view with the right mouse button. It is a good place
+			to activate a [cmd]popup[/cmd] menu :)
+			You can retrieve the session information by calling the [module:dcc]dcc[/module].*
+			module functions and by passing the DCC session ID parameter.
+		@seealso:
+			[event:onconsolepuprequest]OnConsolePopupRequest[/event],
+			[event:onchannelpopuprequest]OnChannelPopupRequest[/event],
+			[event:onquerypopuprequest]OnQueryPopupRequest[/event]
+	*/
+	EVENT("OnDCCChatPopupRequest", \
+		"$0 = DCC session ID"),
+
+	// Channels
 	/*
 		@doc: onchannelwindowcreated
 		@type:
@@ -1448,7 +1403,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnQueryFileDropped
 		@short:
-			Drop in query
+			A file is dropped in a query
 		@parameters:
 			$0 = source nick
 			$1 = filedropped
@@ -1461,34 +1416,6 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	EVENT("OnQueryFileDropped", \
 		"$0 = nick\n" \
 		"$1 = filedropped"),
-
-	/*
-		@doc: onquerynickdefaultactionrequest
-		@type:
-			event
-		@title:
-			OnQueryNickDefaultActionRequest
-		@short:
-			Query double click customization
-		@parameters:
-			$0 = actual name
-			$1 - visible name
-			$2 - command name
-		@window:
-			The window that the user has clicked in
-		@description:
-			Actual name is equal to the command name if command name is not null.
-			Visible name is the link text (as it shown by user)
-			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
-			This event is triggered when an user has double clicked on a nickname in
-			the query target list.[br]
-			You should use this event to do some significant action associated with the double click.[br]
-			A good example might be a [cmd]whois[/cmd] query or a [cmd]dcc.chat[/cmd]
-	*/
-	EVENT("OnQueryNickDefaultActionRequest", \
-		"$0 = actual name\n" \
-		"$1 - visible name\n" \
-		"$2 - command name"),
 
 	// Actions
 	/*
@@ -1536,70 +1463,6 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	EVENT("OnMeBack", \
 		"$0 = away start time\n"
 		"$1- = server message trailing"),
-
-	/*
-		@doc: onaction
-		@type:
-			event
-		@title:
-			OnAction
-		@short:
-			Someone issued a CTCP ACTION
-		@parameters:
-			$0 = source nick
-			$1 = source username
-			$2 = source host
-			$3 = message target
-			$4 = action message text
-		@window:
-			Channels and query windows
-		@description:
-			This event is triggered when a remote user issues a CTCP ACTION.[br]
-			(The CTCP ACTION is usually triggered by the /me command).[br]
-			The parameters $0-$2 identify the source user.[br]
-			$3 identifies the message target and can be one of the following:[br]
-			- The local user nickname : this is a private CTCP ACTION and is triggered inside a query window.[br]
-			- A channel name : this is a channel CTCP ACTION and is triggered in the channel window.[br]
-			- Any other string : this is either a broadcast CTCP ACTION (sent by a privileged user
-				to a subset of clients) or a sign of the server brain damage :D In this
-				case the event is triggered in the console window.[br]
-			Calling [cmd]halt[/cmd] in this event stops the message output.[br]
-	*/
-	EVENT("OnAction", \
-		"$0 = source nick\n" \
-		"$1 = source username\n" \
-		"$2 = source hostname\n" \
-		"$3 = message target\n" \
-		"$4 = action message text"),
-
-	/*
-		@doc: onmeaction
-		@type:
-			event
-		@title:
-			OnMeAction
-		@short:
-			User issued a CTCP ACTION
-		@parameters:
-			$0 = action message text
-			$1 = action target (channel or nickname)
-		@window:
-			Channels and query windows
-		@description:
-			This event is triggered when user issues a CTCP ACTION.[br]
-			(The CTCP ACTION is usually triggered by the /me command).[br]
-			Warning: don't use a /me inside this event handler, or you'll get an infinite recursion.
-			If you need to halt the action (eg. to do some text substitution), follow the example code.
-		@examples:
-			[example]
-				ctcp $1 action "this text was changed in scripting, old one was $0";
-				echo -i=$msgtype(action) -w=$active "$me this text was changed in scripting, old one was $0";
-				halt;
-			[/example]
-	*/
-	EVENT("OnMeAction", \
-		"$0 = action message text\n" \
-		"$1 = action target"),
 
 	/*
 		@doc: onjoin
@@ -1827,7 +1690,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnQuit
 		@short:
-			An user is leaving a channel
+			An user is leaving IRC
 		@parameters:
 			$0 = nickname
 			$1 = username
@@ -2120,6 +1983,30 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$3 = mask"),
 
 	/*
+		@doc: oninvite
+		@type:
+			event
+		@title:
+			OnInvite
+		@short:
+			The local user has received an invitation
+		@parameters:
+			$0 = source nick
+			$1 = source username
+			$2 = source host
+			$3 = channel
+		@window:
+			Active window/console
+		@description:
+			Triggered when someone invites the local user to join a channel
+	*/
+	EVENT("OnInvite", \
+		"$0 = source nick\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname\n" \
+		"$3 = channel"),
+
+	/*
 		@doc: oninviteexception
 		@type:
 			event
@@ -2152,7 +2039,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnInviteExceptionRemove
 		@short:
-			Move -I has been set
+			Mode -I has been set
 		@parameters:
 			$0 = source nick
 			$1 = source username
@@ -2178,7 +2065,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnMeInviteException
 		@short:
-			A +I mode has been set
+			A +I mode has been set on the local user
 		@parameters:
 			$0 = source nick
 			$1 = source username
@@ -2374,30 +2261,6 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 	EVENT("OnMeNickChange", \
 		"$0 = old nick\n" \
 		"$1 = new nick"),
-
-	/*
-		@doc: oninvite
-		@type:
-			event
-		@title:
-			OnInvite
-		@short:
-			The local user has received an invitation
-		@parameters:
-			$0 = source nick
-			$1 = source username
-			$2 = source host
-			$3 = channel
-		@window:
-			Active window/console
-		@description:
-			Triggered when someone invites the local user to join a channel
-	*/
-	EVENT("OnInvite", \
-		"$0 = source nick\n" \
-		"$1 = source username\n" \
-		"$2 = source hostname\n" \
-		"$3 = channel"),
 
 	/*
 		@doc: onchanowner
@@ -3076,6 +2939,70 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 
 	// CTCPs
 	/*
+		@doc: onaction
+		@type:
+			event
+		@title:
+			OnAction
+		@short:
+			Someone issued a CTCP ACTION
+		@parameters:
+			$0 = source nick
+			$1 = source username
+			$2 = source host
+			$3 = message target
+			$4 = action message text
+		@window:
+			Channels and query windows
+		@description:
+			This event is triggered when a remote user issues a CTCP ACTION.[br]
+			(The CTCP ACTION is usually triggered by the /me command).[br]
+			The parameters $0-$2 identify the source user.[br]
+			$3 identifies the message target and can be one of the following:[br]
+			- The local user nickname : this is a private CTCP ACTION and is triggered inside a query window.[br]
+			- A channel name : this is a channel CTCP ACTION and is triggered in the channel window.[br]
+			- Any other string : this is either a broadcast CTCP ACTION (sent by a privileged user
+				to a subset of clients) or a sign of the server brain damage :D In this
+				case the event is triggered in the console window.[br]
+			Calling [cmd]halt[/cmd] in this event stops the message output.[br]
+	*/
+	EVENT("OnAction", \
+		"$0 = source nick\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname\n" \
+		"$3 = message target\n" \
+		"$4 = action message text"),
+
+	/*
+		@doc: onmeaction
+		@type:
+			event
+		@title:
+			OnMeAction
+		@short:
+			User issued a CTCP ACTION
+		@parameters:
+			$0 = action message text
+			$1 = action target (channel or nickname)
+		@window:
+			Channels and query windows
+		@description:
+			This event is triggered when user issues a CTCP ACTION.[br]
+			(The CTCP ACTION is usually triggered by the /me command).[br]
+			Warning: don't use a /me inside this event handler, or you'll get an infinite recursion.
+			If you need to halt the action (eg. to do some text substitution), follow the example code.
+		@examples:
+			[example]
+				ctcp $1 action "this text was changed in scripting, old one was $0";
+				echo -i=$msgtype(action) -w=$active "$me this text was changed in scripting, old one was $0";
+				halt;
+			[/example]
+	*/
+	EVENT("OnMeAction", \
+		"$0 = action message text\n" \
+		"$1 = action target"),
+
+	/*
 		@doc: onctcprequest
 		@type:
 			event
@@ -3211,39 +3138,13 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$0 = DCC session ID"),
 
 	/*
-		@doc: ondccchatpopuprequest
-		@type:
-			event
-		@title:
-			OnDCCChatPopupRequest
-		@short:
-			Triggered when the DCC chat text view is right-clicked
-		@parameters:
-			$0 = DCC session ID
-		@window:
-			DCC Chat window
-		@description:
-			This event is triggered when the user clicks the DCC chat
-			text view with the right mouse button. It is a good place
-			to activate a [cmd]popup[/cmd] menu :)
-			You can retrieve the session information by calling the [module:dcc]dcc[/module].*
-			module functions and by passing the DCC session ID parameter.
-		@seealso:
-			[event:onconsolepuprequest]OnConsolePopupRequest[/event],
-			[event:onchannelpopuprequest]OnChannelPopupRequest[/event],
-			[event:onquerypopuprequest]OnQueryPopupRequest[/event]
-	*/
-	EVENT("OnDCCChatPopupRequest", \
-		"$0 = DCC session ID"),
-
-	/*
 		@doc: ondccchatwindowcreated
 		@type:
 			event
 		@title:
 			OnDCCChatWindowCreated
 		@short:
-			A dcc chat window has been just created
+			A DCC Chat window has been just created
 		@parameters:
 			$0 = DCC session ID
 		@window:
@@ -3271,7 +3172,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@short:
 			A DCC Chat connection has just been started
 		@parameters:
-			$0 = DCC session ID 
+			$0 = DCC session ID
 		@window:
 			DCC Chat
 		@description:
@@ -3649,5 +3550,106 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			It will be triggered only at the left mouse button click
 	*/
 	EVENT("OnServerLinkClick", \
-		"$0 = server name")
+		"$0 = server name"),
+
+	/*
+		@doc: ontextviewdoublecliked
+		@type:
+			event
+		@title:
+			OnTextViewDoubleClicked
+		@short:
+			Text view link double click customization
+		@parameters:
+			$0 = actual name
+			$1 - visible name
+			$2 - command name
+		@window:
+			The window that the user has clicked in
+		@description:
+			Actual name is equal to the command name if command name is not null.
+			Visible name is the link text (as it shown by user).
+			Command name is set if the visible name differs with the actual link target (probably contains mIRC colors,etc). It is equal to the actual target name.
+			This event is triggered when an user has double clicked on a text view and has not hit any link.[br]
+			I have no idea what you can do in this event....maybe some sort of channel-central dialog? :)
+	*/
+	EVENT("OnTextViewDoubleClicked",""),
+
+	/*
+		@doc: onnicklinkdefaultactionrequest
+		@type:
+			event
+		@title:
+			OnNickLinkDefaultActionRequest
+		@short:
+			Nick link double click customization
+		@parameters:
+			$0 = actual name
+			$1 - visible name
+			$2 - command name
+		@window:
+			The window that the user has clicked in
+		@description:
+			Actual name is equal to the command name if command name is not null.
+			Visible name is the link text (as it shown by user)
+			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
+			This event is triggered when an user has double clicked on a nickname link.[br]
+			You should use this event to perform some significant action associated with the double click.[br]
+			A good example might be a [cmd]whois[/cmd] or a [cmq]query[/cmd] call.[br]
+			Please note that NOT ALL nickname links will cause this event to be triggered: some nickname
+			links default actions are actually handled by the
+			[event:onquerynickdefaultactionrequest]OnQueryNickDefaultActionRequest[/event] and
+			[event:onchannelnickdefatulactionrequest]OnChannelNickDefaultActionRequest[/event] events.[br]
+	*/
+	EVENT("OnNickLinkDefaultActionRequest", \
+		"$0 = actual name\n" \
+		"$1 - visible name\n" \
+		"$2 - command name"),
+
+	/*
+		@doc: onchannelnickdefaultactionrequest
+		@type:
+			event
+		@title:
+			OnChannelNickDefaultActionRequest
+		@short:
+			Allows customization of the double click on nicknames
+		@parameters:
+			$0 = nick list
+		@window:
+			Channel window
+		@description:
+		@seealso:
+			[event:onchannelnickpopuprequest]OnChannelNickPopupRequest[/event]
+	*/
+	EVENT("OnChannelNickDefaultActionRequest", \
+		"$0 = nick list"),
+
+	/*
+		@doc: onquerynickdefaultactionrequest
+		@type:
+			event
+		@title:
+			OnQueryNickDefaultActionRequest
+		@short:
+			Query double click customization
+		@parameters:
+			$0 = actual name
+			$1 - visible name
+			$2 - command name
+		@window:
+			The window that the user has clicked in
+		@description:
+			Actual name is equal to the command name if command name is not null.
+			Visible name is the link text (as it shown by user)
+			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
+			This event is triggered when an user has double clicked on a nickname in
+			the query target list.[br]
+			You should use this event to do some significant action associated with the double click.[br]
+			A good example might be a [cmd]whois[/cmd] query or a [cmd]dcc.chat[/cmd]
+	*/
+	EVENT("OnQueryNickDefaultActionRequest", \
+		"$0 = actual name\n" \
+		"$1 - visible name\n" \
+		"$2 - command name")
 };
