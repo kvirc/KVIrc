@@ -185,7 +185,6 @@ void KviTextIconsOptionsWidget::itemClicked(QTableWidgetItem *i)
 void KviTextIconsOptionsWidget::addClicked()
 {
 	m_pTable->setRowCount(m_pTable->rowCount() + 1);
-	int count=m_pTable->rowCount();
 	m_pTable->setItem(m_pTable->rowCount() - 1,0,new QTableWidgetItem(__tr2qs_ctx("unnamed","options")));
 	m_pTable->setItem(m_pTable->rowCount() - 1,1,new KviTextIconTableItem(m_pTable,0));
 	m_pDel->setEnabled(true);
