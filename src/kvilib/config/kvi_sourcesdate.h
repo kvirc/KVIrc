@@ -41,6 +41,7 @@
 
 /**
 * \brief This is the date of the sources before that we should force a setup
+*
 * This is usually changed only when a setup is really needed because of an
 * incompatible change in the configuration files
 * .. so do NOT change it just when you change KVI_SOURCES_DATE_NUMERIC :)

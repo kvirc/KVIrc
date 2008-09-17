@@ -4,7 +4,7 @@
 //   Creation date : Tue Mar 18 2003 13:36:12 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,11 +22,9 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_useraction.h"
 
-static int useraction_table[KVI_NUM_USERACTION_TYPES]=
+static int useraction_table[KVI_NUM_USERACTION_TYPES] =
 {
 	25,  // ACTION (typically human)
 	25,  // PRIVMSG
@@ -43,4 +41,3 @@ int kvi_getUserActionTemperature(unsigned int uIdx)
 {
 	return useraction_table[uIdx];
 }
-

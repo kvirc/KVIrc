@@ -15,13 +15,7 @@ PROJECT(kvirc)
 SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # Minimum cmake version
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
-
-# Compat for cmake 2.6
-IF(COMMAND cmake_policy)
-	CMAKE_POLICY(SET CMP0003 OLD)
-        CMAKE_POLICY(SET CMP0002 OLD)
-ENDIF()
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6.1)
 
 # Check modules first in local dir
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
