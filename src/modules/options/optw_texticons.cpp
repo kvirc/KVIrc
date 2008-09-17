@@ -45,6 +45,8 @@ KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
 		m_pIcon=new KviTextIcon(0);
 	QPixmap* pix=m_pIcon->pixmap();
 	if(pix) setIcon(QIcon(*pix));
+	
+
 }
 
 KviTextIconTableItem::~KviTextIconTableItem()
@@ -89,7 +91,12 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	while(KviTextIcon * i = it.current())
 	{
 		if(!m_pTable->item(idx,0)){
-			m_pTable->setItem(idx,0,new QTableWidgetItem(it.currentKey()));
+			QTableWidgetItem *item=new QTableWidgetItem(it.currentKey());
+			QFont itemFont=item->font();
+			itemFont.setBold(true);
+			itemFont.setUnderline(true);
+			item->setFont(itemFont);
+			m_pTable->setItem(idx,0,item);
 		}
 
 		m_pTable->setItem(idx,1,new KviTextIconTableItem(m_pTable,new KviTextIcon(i)));
@@ -98,7 +105,6 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	}
 
 	layout()->addWidget(m_pTable,0,0,1,2);
-//	layout()->addMultiCellWidget(m_pTable,0,0,0,1);
 
 	m_pAdd = new QPushButton(__tr2qs_ctx("Add","options"),this);
 	layout()->addWidget(m_pAdd,1,0);
@@ -165,6 +171,7 @@ void KviTextIconsOptionsWidget::itemClicked(QTableWidgetItem *i)
 	m_pBox=new KviTalHBox(0);
 	m_pItem=(KviTextIconTableItem *)i;
 	QToolButton *iconButton=new QToolButton(m_pBox);
+	iconButton->setMinimumWidth(150);
 	QToolButton *browseButton=new QToolButton(m_pBox);
 	browseButton->setText("...");
 	m_pBox->setSpacing(0);
@@ -178,7 +185,8 @@ void KviTextIconsOptionsWidget::itemClicked(QTableWidgetItem *i)
 void KviTextIconsOptionsWidget::addClicked()
 {
 	m_pTable->setRowCount(m_pTable->rowCount() + 1);
-	m_pTable->item(m_pTable->rowCount() - 1,0)->setText(__tr2qs_ctx("unnamed","options"));
+	int count=m_pTable->rowCount();
+	m_pTable->setItem(m_pTable->rowCount() - 1,0,new QTableWidgetItem(__tr2qs_ctx("unnamed","options")));
 	m_pTable->setItem(m_pTable->rowCount() - 1,1,new KviTextIconTableItem(m_pTable,0));
 	m_pDel->setEnabled(true);
 }
