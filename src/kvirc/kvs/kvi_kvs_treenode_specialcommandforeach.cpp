@@ -121,6 +121,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 						if(c->continuePending())
 						{
 							c->handleContinue();
+							idx++;
 							continue;
 						}
 
@@ -158,6 +159,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 						if(c->continuePending())
 						{
 							c->handleContinue();
+							++it;
 							continue;
 						}
 

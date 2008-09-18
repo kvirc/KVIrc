@@ -391,8 +391,26 @@ void KviSoundThread::run()
 				float frameSize;
 				void * buffer;
 
-				file = afOpenFile(m_szFileName.toUtf8().data(),"r",NULL);
+				file = afOpenFile(m_szFileName.utf8().data(),"r",NULL);
+				if(!file)
+				{
+					debug("libaudiofile could not open the file %s",m_szFileName.utf8().data());
+					debug("giving up playing sound...");
+					return; // screwed up
+				}
+
+				sampleFormat = -1;
+
 				afGetVirtualSampleFormat(file, AF_DEFAULT_TRACK, &sampleFormat, &sampleWidth);
+				
+				if(sampleFormat == -1)
+				{
+					debug("libaudiofile couldn't find the sample format for file %s",m_szFileName.utf8().data());
+					debug("giving up playing sound...");
+					afCloseFile(file);
+					return; // screwed up
+				}
+
 				frameSize = afGetVirtualFrameSize(file, AF_DEFAULT_TRACK, 1);
 				channelCount = afGetVirtualChannels(file, AF_DEFAULT_TRACK);
 				buffer = kvi_malloc(int(BUFFER_FRAMES * frameSize));
