@@ -4,8 +4,9 @@
 //   Creation date : Sun Feb 02 2002 05:27:11 GMT by Szymon Stefanek
 //
 //   This chan is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2005 Szymon Stefanek (pragma@kvirc.net)
-//   Copyright (C) 2002-2004 Juanjo Alvarez  (juanjux@yahoo.es)
+//   Copyright (C) 2002 Szymon Stefanek (pragma@kvirc.net)
+//   Copyright (C) 2002 Juanjo Alvarez  (juanjux@yahoo.es)
+//   Copyright (C) 2004-2008 Szymon Stefanek (pragma@kvirc.net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

@@ -3,7 +3,7 @@
 //=============================================================================
 //
 //   File : addonfunctions.h
-//   Created on Fri 02 May 2008 17:36:07 by Elvio Basello
+//   Creation date : Fri 02 May 2008 17:36:07 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>

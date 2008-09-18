@@ -1,7 +1,7 @@
 //============================================================================
 //
 //   File : packaddondialog.cpp
-//   Created on Sat 03 May 2008 01:40:44 by Elvio Basello
+//   Creation date : Sat 03 May 2008 01:40:44 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>

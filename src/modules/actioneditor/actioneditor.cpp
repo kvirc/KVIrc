@@ -4,7 +4,7 @@
 //   Creation date : Tue 29 Dec 2004 02:45:59 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2004-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License

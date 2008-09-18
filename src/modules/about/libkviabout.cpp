@@ -1,12 +1,13 @@
 //=============================================================================
 //
-//   File : kvi_about.cpp
+//   File : libkviabout.cpp
 //   Creation date : Tue Jul 6 1999 03:54:25 by Szymon Stefanek
-//   Last major modification : Tue Dec 05 2000 06:00:00 by Christian Strmmen
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Till Bush (buti at geocities dot com)
-//   Copyright (C) 1999-2005 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000 Christian Strmmen
+//   Copyright (C) 2000 Till Bush (buti at geocities dot com)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
