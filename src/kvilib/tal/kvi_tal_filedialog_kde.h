@@ -1,12 +1,12 @@
 #ifndef _KVI_TAL_FILEDIALOG_KDE_H_
 #define _KVI_TAL_FILEDIALOG_KDE_H_
-
+//=============================================================================
 //
 //   File : kvi_tal_filedialog_kde.h
 //   Creation date : Thu Aug 11 2003 04:43:58 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 

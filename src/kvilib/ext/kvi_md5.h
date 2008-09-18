@@ -1,11 +1,12 @@
 #ifndef _KVI_MD5_H_
 #define _KVI_MD5_H_
+//=============================================================================
 //
 //   File : kvi_md5.h
 //   Creation date : Wed Sep  4 22:16:44 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,7 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-
+//=============================================================================
 
 
 /* ######################################################################

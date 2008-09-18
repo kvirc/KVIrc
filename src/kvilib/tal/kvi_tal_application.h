@@ -2,11 +2,11 @@
 #define _KVI_TAL_APPLICATION_H_
 //=============================================================================
 //
-//   File : kvi_appbase_kde.h
+//   File : kvi_tal_application.h
 //   Creation date : Sun Jun 18 2000 12:53:08 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +21,10 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+//=============================================================================
+//
+// This file was originally named kvi_appbase_kde.h, created on 1999
 //
 //=============================================================================
 

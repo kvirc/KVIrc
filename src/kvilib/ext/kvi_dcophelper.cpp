@@ -1,11 +1,11 @@
 //=============================================================================
 //
 //   File : kvi_dcophelper.cpp
-//   Created on Sat 20 Jan 2007 12:35:21 by Alexander Stillich
+//   Creation date : Sat 20 Jan 2005 12:35:21 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2005 Szymon Stefanek <pragma at kvirc dot net>
-//   Copyright (C) 2007 Alexander Stillich <torque at pltn dot org>
+//   Copyright (C) 2007-2008 Alexander Stillich <torque at pltn dot org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

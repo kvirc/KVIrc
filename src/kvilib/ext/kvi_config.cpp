@@ -1,10 +1,10 @@
 //==========================================================================================
 //
 //   File : kvi_config.cpp
-//   Last major modification : Thu Jan 14 1999 18:03:59 by Szymon Stefanek
+//   Creation date : Thu Jan 14 1999 18:03:59 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

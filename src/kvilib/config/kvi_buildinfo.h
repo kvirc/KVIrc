@@ -3,7 +3,7 @@
 //=============================================================================
 //
 //   File : kvi_buildinfo.h
-//   Created on Sat 19 Apr 2008 17:01:57 by Szymon Stefanek
+//   Creation date : Sat 19 Apr 2008 17:01:57 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2008 Szymon Stefanek <s.stefanek at libero dot it>

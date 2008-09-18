@@ -4,7 +4,7 @@
 //   Creation date : Sun Jun 18 2000 18:37:27 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,16 +22,12 @@
 //
 //=============================================================================
 
-// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARGH!
-// This effect is caused by the combination of broken CVS installation and
-// the ugly windows "text mode" files
-
 #define _KVI_NETUTILS_CPP_
 
 #define NTDDI_VERSION NTDDI_WINXP
 
 #ifndef _WIN32_WINNT
-        #define _WIN32_WINNT _WIN32_WINNT_WINXP
+	#define _WIN32_WINNT _WIN32_WINNT_WINXP
 #endif
 
 #include "kvi_netutils.h"
@@ -41,9 +37,8 @@
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <sys/time.h> // struct timeval
-        #include <unistd.h>
+	#include <unistd.h>
 	#include <netdb.h>
-
 #endif
 
 #ifdef COMPILE_ON_WINDOWS
@@ -56,7 +51,6 @@
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
 	#include <sys/ioctl.h>
 	#include <net/if.h>
-
 #endif //COMPILE_GET_INTERFACE_ADDRESS
 
 #ifndef HAVE_INET_ATON

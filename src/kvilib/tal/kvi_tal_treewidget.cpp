@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : kvi_tal_treewidget.cpp
-//   Creation date : Mon Jan 22 2007 11:25:08 by Szymon Stefanek
+//   Creation date : Mon May 05 2008 11:25:08 by Alessandro Carbone
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

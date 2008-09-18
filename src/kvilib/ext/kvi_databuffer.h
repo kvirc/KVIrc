@@ -1,5 +1,6 @@
 #ifndef _KVI_DATABUFFER_H_
 #define _KVI_DATABUFFER_H_
+//=============================================================================
 //
 //   File : kvi_databuffer.h
 //   Creation date : Thu Aug 23 17:04:25 2001 GMT by Szymon Stefanek
@@ -21,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"

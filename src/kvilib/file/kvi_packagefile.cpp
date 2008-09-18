@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : kvi_packagefile.cpp
-//   Created on Tue 26 Dec 2006 05:33:33 by Szymon Stefanek
+//   Creation date : Tue 26 Dec 2006 05:33:33 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2006 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2006-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

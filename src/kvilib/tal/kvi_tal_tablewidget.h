@@ -7,7 +7,7 @@
 //   Creation date : Fri Jun 27 2008 10:00:08 by Fabio Bas
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

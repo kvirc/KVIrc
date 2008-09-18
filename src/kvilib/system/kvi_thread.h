@@ -1,11 +1,12 @@
 #ifndef _KVI_THREAD_H_
 #define _KVI_THREAD_H_
+//=============================================================================
 //
 //   File : kvi_thread.h
 //   Creation date : Mon May 17 1999 04:26:41 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 #include "kvi_heapobject.h"

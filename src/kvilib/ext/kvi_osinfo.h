@@ -1,13 +1,13 @@
 #ifndef _KVI_OSINFO_H_
 #define _KVI_OSINFO_H_
 
-///////////////////////////////////////////////////////////////////////////////
+//=============================================================================
 //
 //   File : kvi_osinfo.h
-//   Creation date : 19  Jan 2006 GMT by Alexey Uzhva
+//   Creation date : Thu Jan 19 2006 13:50:11 GMT by Alexey Uzhva
 //
 //   This toolbar is part of the KVirc irc client distribution
-//   Copyright (C) 2006 Alexey Uzhva
+//   Copyright (C) 2006-2008 Alexey Uzhva (wizard at opendoor dot ru)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,7 +23,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-///////////////////////////////////////////////////////////////////////////////
+//=============================================================================
 
 #include "kvi_settings.h"
 
