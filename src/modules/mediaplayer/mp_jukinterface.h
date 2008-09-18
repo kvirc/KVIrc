@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : mp_jukinterface.h
-//   Created on Tue 29 Mar 2005 01:38:34 by Szymon Stfeanek
+//   Creation date : Tue 29 Mar 2005 01:38:34 by Szymon Stfeanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005 Szymon Stfeanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2008 Szymon Stfeanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

@@ -1,7 +1,7 @@
 //=============================================================================
 //
-//   File : mp_audaciousinterface.cpp
-//   Created on Thu 06 Dec 2007 14:20:02 by Tomasz Moń
+//   File : mp_xmms2interface.cpp
+//   Creation date : Thu 06 Dec 2007 14:20:02 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>

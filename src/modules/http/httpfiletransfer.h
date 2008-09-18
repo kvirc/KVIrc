@@ -1,12 +1,12 @@
 #ifndef _HTTPFILETRANSFER_H_
 #define _HTTPFILETRANSFER_H_
-//==================================================================================
+//=============================================================================
 //
 //   File : httpfiletransfer.h
 //   Creation date : Tue Apr 22 2003 02:00:12 GMT by Szymon Stefanek
 //
 //   This config is part of the KVirc irc client distribution
-//   Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2003-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,7 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//==================================================================================
+//=============================================================================
 
 #include "kvi_filetransfer.h"
 #include "kvi_http.h"

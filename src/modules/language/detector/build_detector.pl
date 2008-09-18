@@ -73,7 +73,7 @@ print OUTPUT "//================================================================
 print OUTPUT "//\n";
 print OUTPUT "//   A Simple statistical language/encoding detector\n";
 print OUTPUT "//   This file is part of the KVirc irc client distribution\n";
-print OUTPUT "//   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)\n";
+print OUTPUT "//   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)\n";
 print OUTPUT "//\n";
 print OUTPUT "//   This program is FREE software. You can redistribute it and/or\n";
 print OUTPUT "//   modify it under the terms of the GNU General Public License\n";

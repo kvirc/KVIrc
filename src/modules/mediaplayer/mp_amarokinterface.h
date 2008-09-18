@@ -3,7 +3,7 @@
 //=============================================================================
 //
 //   File : mp_amarokinterface.h
-//   Created on Sun 27 Mar 2005 16:55:09 by Szymon Stefanek
+//   Creation date : Sun 27 Mar 2005 16:55:09 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2005 Szymon Stefanek <pragma at kvirc dot net>

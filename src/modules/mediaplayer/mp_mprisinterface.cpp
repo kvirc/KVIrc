@@ -1,7 +1,7 @@
 //=============================================================================
 //
 //   File : mp_mprisinterface.cpp
-//   Created on Thu 06 Dec 2007 14:20:02 by Tomasz Moń
+//   Creation date : Thu 06 Dec 2007 14:20:02 by Tomasz Moń
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2007-2008 Tomasz Moń <desowin@gmail.com>

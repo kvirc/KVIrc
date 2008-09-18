@@ -4,7 +4,7 @@
 //   Creation date : Fri Mar 25 20:01:25 2005 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2005 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This file is based on the mp3tech.c. It is released under the original
 //   license and the original copyright notice follows.

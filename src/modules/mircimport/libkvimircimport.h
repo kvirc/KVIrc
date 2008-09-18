@@ -1,11 +1,12 @@
 #ifndef _LIBKVIMIRCIMPORT_H_
 #define _LIBKVIMIRCIMPORT_H_
+//=============================================================================
 //
 //   File : libkvimircimport.h
 //   Creation date : Tue Aug 27 01:28:02 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_mexserverimport.h"
 #include "kvi_string.h"
