@@ -1,14 +1,13 @@
 #ifndef _CLASS_LISTVIEW_H_
-#define	_CLASS_LISTVIEW_H_
-//=================================================================================
+#define _CLASS_LISTVIEW_H_
+//=============================================================================
 //
-//   File : class_treewidget.h
+//   File : class_listview.h
 //   Creation date : Fri Jan 28 14:21:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2006 Szymon Stefanek (pragma at kvirc dot net)
-//   Copyright (C) 2005-2006 Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
+//   Copyright (C) 2005-2008 Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,7 +23,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//=================================================================================
+//=============================================================================
 
 #include "kvi_tal_treewidget.h"
 #include "class_widget.h"

@@ -1,9 +1,11 @@
+//=============================================================================
 //
 //   File : libkvirijndael.cpp
 //   Creation date : Sat Now 4 2000 15:33:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Till Bush (buti@geocities.com)
+//   Copyright (C) 2000 Till Bush (buti@geocities.com)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,6 +21,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "libkvirijndael.h"
 #include "rijndael.h"

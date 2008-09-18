@@ -1,12 +1,13 @@
 #ifndef _NOTIFIERWINDOW_H_
 #define _NOTIFIERWINDOW_H_
-//==================================================================================
+//=============================================================================
 //
 //   File : notifierwindow.h
 //   Creation date : Tue Jul 6 2004 20:25:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2005 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
+//   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2008 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -22,7 +23,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//==================================================================================
+//=============================================================================
 
 #include "notifiersettings.h"
 

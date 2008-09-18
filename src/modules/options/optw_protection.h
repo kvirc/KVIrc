@@ -1,14 +1,13 @@
 #ifndef _OPTW_PROTECTION_H_
 #define _OPTW_PROTECTION_H_
-
 //=============================================================================
 //
 //   File : optw_protection.h
-//
-//   This file is part of the KVirc irc client distribution
 //   Creation date : Wed Ott 19 16:15:16 2005 GMT by Grifisx & Noldor
 //
-//   Copyright (C) 2005 Grifisx & Noldor
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
+//
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
 //   as published by the Free Software Foundation; either version 2

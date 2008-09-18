@@ -1,9 +1,11 @@
-//vim: ts=8
+//=============================================================================
+//
 //   File : class_combobox.cpp
-//   Creation date : Thu Mar 22 20:57:45 CET 2001 by Krzysztof Godlewski
+//   Creation date : Wed 13 Sep 2000 02:42:05 CEST by Krzysztof Godlewski
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000 Krzysztof Godlewski
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,6 +21,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 
 #include "kvi_error.h"

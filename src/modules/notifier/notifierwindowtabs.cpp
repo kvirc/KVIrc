@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : kvinotifierwindowtabs.cpp
-//   Created on dom 02 gen 2005 15:30:50 by Iacopo Palazzi
+//   File : notifierwindowtabs.cpp
+//   Creation date : Sun 02 Jan 2005 15:30:50 by Iacopo Palazzi
 //
 //   This file is part of the KVIrc irc client distribution
-//   Copyright (C) 2005 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
+//   Copyright (C) 2005-2008 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

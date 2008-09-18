@@ -1,14 +1,13 @@
 #ifndef _CLASS_MULTILINEEDIT_H_
 #define _CLASS_MULTILINEEDIT_H_
-//vim: ts=8
-//   File : class_multilineedit.cpp
-//   Creation date : Mon Feb 19 00:45:34 CET by Krzysztof Godlewski
+//=============================================================================
 //
-//	 Modification date: Thu 15 Feb 2005 22:00 :00
-//	 by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
+//   File : class_multilineedit.cpp
+//   Creation date : Mon Feb 19 2000 00:45:34 CET by Krzysztof Godlewski
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000 Krzysztof Godlewski
+//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,6 +23,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 
 #include "class_widget.h"

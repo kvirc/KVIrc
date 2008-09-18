@@ -1,9 +1,11 @@
+//=============================================================================
 //
 //   File : class_vbox.cpp
-//   Creation date : Wed Mar 01 2005 23:00:01 by Alessandro Carbone & Tonino Imbesi
+//   Creation date : Fri Mar 18 14:30:48 CEST 2005
+//   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2006 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,9 +21,10 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
+
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
-
 #include "kvi_locale.h"
 
 #include "class_vbox.h"

@@ -1,9 +1,13 @@
+#ifndef _OPTW_TOPICLABEL_H
+#define _OPTW_TOPICLABEL_H
+//=============================================================================
 //
-//   File : optw_topiclabel.cpp
+//   File : optw_topiclabel.h
 //   Creation date : Mon Sep 24 02:44:55 CEST 2001 by Krzysztof Godlewski
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001 Krzysztof Godlewski
+//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,9 +23,8 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
-#ifndef OPTW_TOPICLABEL_H
-#define OPTW_TOPICLABEL_H
 
 #include "kvi_optionswidget.h"
 
@@ -38,4 +41,4 @@ public:
 	~KviTopicLabelLookOptionsWidget();
 };
 
-#endif	/* !OPTW_TOPICLABEL_H */
+#endif // _OPTW_TOPICLABEL_H

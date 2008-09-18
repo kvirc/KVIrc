@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : libkvipopupeditor.cpp
 //   Creation date : Mon 23 Dec 2002 20:23:59 2002 GMT by Szymon Stefanek
 //
 //   This toolbar is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,6 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "popupeditor.h"
 

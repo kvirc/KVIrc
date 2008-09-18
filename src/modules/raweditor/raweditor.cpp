@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : raweditor.cpp
 //   Creation date : Mon Dec 23 2002 20:28:18 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -19,7 +20,10 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
+
 #include "raweditor.h"
+
 #include "kvi_iconmanager.h"
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"

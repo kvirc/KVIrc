@@ -4,7 +4,7 @@
 //   Creation date : Tue Dec 26 2000 12:24:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +21,7 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
+
 #define _WANT_OPTION_FLAGS_
 
 #include "edituser.h"

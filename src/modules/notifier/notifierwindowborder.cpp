@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : kvinotifierwindowborder.cpp
-//   Created on lun 03 gen 2005 02:27:22 by Iacopo Palazzi
+//   File : notifierwindowborder.cpp
+//   Creation date : Mon 03 Jan 2005 02:27:22 by Iacopo Palazzi
 //
 //   This file is part of the KVIrc distribution
-//   Copyright (C) 2005 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
+//   Copyright (C) 2005-2008 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

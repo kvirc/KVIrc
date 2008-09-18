@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : notifierwindowprogressbar.cpp
-//   Created on Tue 17 Apr 2007 10:24:01 by Iacopo Palazzi
+//   Creation date : Tue 17 Apr 2007 10:24:01 by Iacopo Palazzi
 //
 //   This file is part of the KVIrc distribution
-//   Copyright (C) 2007 Iacopo Palazzi < iakko(at)siena.linux.it >
+//   Copyright (C) 2007-2008 Iacopo Palazzi < iakko(at)siena.linux.it >
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

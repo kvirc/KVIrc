@@ -1,12 +1,12 @@
 #ifndef _RIJNDAEL_H_
 #define _RIJNDAEL_H_
-
+//=============================================================================
 //
 //   File : rijndael.h
 //   Creation date : Sun Nov 5 2000 15:42:14 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 //
 // Another implementation of the Rijndael cipher.

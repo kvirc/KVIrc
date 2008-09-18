@@ -1,12 +1,12 @@
-#ifndef	_CLASS_LISTBOX_H_
-#define	_CLASS_LISTBOX_H_
-
-//vim: ts=8
+#ifndef _CLASS_LISTBOX_H_
+#define _CLASS_LISTBOX_H_
+//=============================================================================
+//
 //   File : class_listbox.h
 //   Creation date : Sat Oct 2 03:40:28 CET 2004 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2004-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 
 #include "class_widget.h"

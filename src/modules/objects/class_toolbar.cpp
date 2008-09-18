@@ -1,10 +1,11 @@
-//mdm:
+//=============================================================================
+//
 //   File : class_toolbar.cpp
-//   Creation date : Tue Feb 22 22:12:55 CEST 2005
+//   Creation date : Fri Mar 18 14:30:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
-// 
+//
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2005 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -20,6 +21,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "class_toolbar.h"
 #include "kvi_error.h"

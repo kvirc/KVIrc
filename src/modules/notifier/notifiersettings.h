@@ -2,11 +2,11 @@
 #define _NOTIFIER_SETTINGS_H_
 //=============================================================================
 //
-//   File : kvinotifierwindowcaption.h
-//   Created on gio 30 dic 2004 21:21:33 by Iacopo Palazzi
+//   File : notifiersettings.h
+//   Creation date : Thu 30 Dev 2004 21:21:33 by Iacopo Palazzi
 //
 //   This file is part of the Notifier - KVIrc Distribution distribution
-//   Copyright (C) 2004 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
+//   Copyright (C) 2004-2008 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

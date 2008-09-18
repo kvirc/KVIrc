@@ -1,11 +1,12 @@
 #ifndef _RAWEDITOR_H_
 #define _RAWEDITOR_H_
+//=============================================================================
 //
 //   File : eventeditor.h
 //   Creation date : Mon Dec 23 2002 20:24:55 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the linkss of the GNU General Public License
@@ -21,11 +22,13 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_window.h"
 #include "kvi_qstring.h"
 #include "kvi_tal_treewidget.h"
 #include "kvi_iconmanager.h"
+
 #include <QWidget>
 #include <QLineEdit>
 

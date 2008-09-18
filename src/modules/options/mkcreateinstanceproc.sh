@@ -18,6 +18,7 @@ cat >> instances.h <<EOF
 #ifndef __OPTIONS_INSTANCES_H__
 #define __OPTIONS_INSTANCES_H__
 
+//=============================================================================
 //
 //   File : instances.h
 //
@@ -38,6 +39,7 @@ cat >> instances.h <<EOF
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 //
 // Instance creation routines for the KVIrc options module
@@ -109,6 +111,7 @@ echo "" > $TARGET
 #################################################################################
 cat >> instances.cpp <<EOF
 
+//=============================================================================
 //
 //   File : instances.cpp
 //
@@ -129,6 +132,7 @@ cat >> instances.cpp <<EOF
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 //
 // Instance creation routines for the KVIrc options module

@@ -4,7 +4,7 @@
 //   Creation date : Fri Sep  6 02:18:23 2002 GMT by Szymon Stefanek
 //
 //   This file is part of the KVsound sound client distribution
-//   Copyright (C) 2002-2006 Szymon Stefanek (pragma at kvsound dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvsound dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

@@ -3,11 +3,11 @@
 //=============================================================================
 //
 //   File : notifiermessage.h
-//   Created on mar 02 nov 2004 02:41:18 by
-//		Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
+//   Creation date : Mar 02 Nov 2004 02:41:18 by Iacopo Palazzi
 //
 //   This file is part of the KVIrc distribution
 //   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2004-2008 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

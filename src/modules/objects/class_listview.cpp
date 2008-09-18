@@ -1,12 +1,11 @@
-//=================================================================================
+//=============================================================================
 //
-//   File : class_treewidget.cpp
+//   File : class_listview.cpp
 //   Creation date : Fri Jan 28 14:21:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2006 Szymon Stefanek (pragma at kvirc dot net)
-//   Copyright (C) 2005-2006 Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
+//   Copyright (C) 2005-2008 Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,7 +21,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//=================================================================================
+//=============================================================================
 
 #include "class_listview.h"
 
@@ -272,6 +271,7 @@ bool KviKvsObject_treewidget::function_setHeaderLabels(KviKvsObjectFunctionCall 
 	}
     return true;
 }
+
 bool KviKvsObject_treewidget::function_setColumnText(KviKvsObjectFunctionCall *c)
 {
 	if (!widget()) return true;
@@ -285,6 +285,7 @@ bool KviKvsObject_treewidget::function_setColumnText(KviKvsObjectFunctionCall *c
 	header->setText(iCol,szLabel);
 	return true;
 }
+
 bool KviKvsObject_treewidget::function_addColumn(KviKvsObjectFunctionCall *c)
 {
 	if (!widget()) return true;
@@ -312,7 +313,7 @@ bool KviKvsObject_treewidget::function_setAcceptDrops(KviKvsObjectFunctionCall *
 	KVSO_PARAMETERS_END(c)
 	if (widget())
 		((KviTalTreeWidget *)object())->setAcceptDrops(bEnable);
-    return true;
+	return true;
 }
 */
 bool KviKvsObject_treewidget::function_clear(KviKvsObjectFunctionCall *c)
@@ -374,8 +375,9 @@ bool KviKvsObject_treewidget::function_setColumnCount(KviKvsObjectFunctionCall *
 		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
 	KVSO_PARAMETERS_END(c)
 	if (widget())((KviTalTreeWidget *)widget())->setColumnCount(uCol);
-    return true;
+	return true;
 }
+
 bool KviKvsObject_treewidget::function_setSelectionMode(KviKvsObjectFunctionCall *c)
 {
 	QString szMode;
@@ -392,7 +394,7 @@ bool KviKvsObject_treewidget::function_setSelectionMode(KviKvsObjectFunctionCall
 	else if(KviQString::equalCI(szMode,"Single"))
 		((KviTalTreeWidget *)widget())->setSelectionMode(KviTalTreeWidget::SingleSelection);
 	else c->warning(__tr2qs("Invalid selection mode '%Q'"),&szMode);
-    return true;
+	return true;
 }
 
 bool KviKvsObject_treewidget::function_setSorting(KviKvsObjectFunctionCall *c)
@@ -406,12 +408,11 @@ bool KviKvsObject_treewidget::function_setSorting(KviKvsObjectFunctionCall *c)
 	if (!widget())return true;
 	if (iCol<0) 
 		((KviTalTreeWidget *)widget())->setSortingEnabled(false);
-	else 
+	else
 		if(!bEnables) ((KviTalTreeWidget *)widget())->sortItems(iCol,Qt::DescendingOrder);
 			else ((KviTalTreeWidget *)widget())->sortItems(iCol,Qt::AscendingOrder);
-    return true;
+	return true;
 }
-
 
 bool KviKvsObject_treewidget::function_setRootIsDecorated(KviKvsObjectFunctionCall *c)
 {
@@ -420,7 +421,7 @@ bool KviKvsObject_treewidget::function_setRootIsDecorated(KviKvsObjectFunctionCa
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if (widget()) 	((KviTalTreeWidget *)widget())->setRootIsDecorated(bEnabled);
-    return true;
+	return true;
 }
 
 bool KviKvsObject_treewidget::function_setAllColumnsShowFocus(KviKvsObjectFunctionCall *c)
@@ -438,11 +439,13 @@ bool KviKvsObject_treewidget::function_hideListViewHeader(KviKvsObjectFunctionCa
 	((KviTalTreeWidget *)widget())->header()->hide();
 	return true;
 }
+
 bool KviKvsObject_treewidget::function_showListViewHeader(KviKvsObjectFunctionCall *c)
 {
 	((KviTalTreeWidget *)widget())->header()->show(); 
 	return true;
 }
+
 bool KviKvsObject_treewidget::function_listViewHeaderIsVisible(KviKvsObjectFunctionCall *c)
 {
 	c->returnValue()->setBoolean(((KviTalTreeWidget *)widget())->header()->isVisible());
@@ -471,7 +474,6 @@ bool KviKvsObject_treewidget::function_selectionChangedEvent(KviKvsObjectFunctio
 
 void KviKvsObject_treewidget::slotSelectionChanged()
 {
-
 	if (((KviTalTreeWidget *)widget())->selectionMode()==KviTalTreeWidget::SingleSelection)
 	{
 		KviTalTreeWidgetItem *it=(KviTalTreeWidgetItem *) ((KviTalTreeWidget *)widget())->currentItem();
@@ -482,8 +484,8 @@ void KviKvsObject_treewidget::slotSelectionChanged()
 		KviKvsVariantList params(new KviKvsVariant((kvs_hobject_t)0));
 		callFunction(this,"selectionChangedEvent",0,&params);
 	}
-	
 }
+
 bool KviKvsObject_treewidget::function_currentChangedEvent(KviKvsObjectFunctionCall *c)
 {
 	emitSignal("currentChanged",c,c->params());
@@ -495,7 +497,6 @@ void KviKvsObject_treewidget::slotCurrentChanged(KviTalTreeWidgetItem * i,KviTal
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(i)),new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(prev)));
 	callFunction(this,"currentChangedEvent",0,&params);
 }
-
 
 bool KviKvsObject_treewidget::function_itemActivatedEvent(KviKvsObjectFunctionCall *c)
 {
@@ -528,7 +529,6 @@ void KviKvsObject_treewidget::slotOnItemEntered(KviTalTreeWidgetItem * i,int col
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(i)),column);
 	callFunction(this,"onItemEvent",0,&params);
 }
-
 
 bool KviKvsObject_treewidget::function_itemExpandedEvent(KviKvsObjectFunctionCall *c)
 {
@@ -602,26 +602,24 @@ KviKvsMdmListView::KviKvsMdmListView(QWidget * par,const char * name,KviKvsObjec
 	setDropIndicatorShown(true);
 	setDragDropMode(QAbstractItemView::DragDrop);
 	viewport()->setAcceptDrops(true);
-
 }
+
 KviKvsMdmListView::~KviKvsMdmListView()
 {
 }
 
-
-void KviKvsMdmListView::dragEnterEvent( QDragEnterEvent *e )
+void KviKvsMdmListView::dragEnterEvent( QDragEnterEvent * e )
 {
 	debug("Drag enter event");
-		if(!e->mimeData()->hasUrls())
-		{
-			debug("Ignore drag");
-			e->ignore();
-			return;
-		}
-
+	if(!e->mimeData()->hasUrls())
+	{
+		debug("Ignore drag");
+		e->ignore();
+		return;
+	}
 }
 
-void KviKvsMdmListView::dropEvent(QDropEvent *e)
+void KviKvsMdmListView::dropEvent(QDropEvent * e)
 {
 	debug("Drop event");
 	QList<QUrl> list;
@@ -645,10 +643,8 @@ void KviKvsMdmListView::dropEvent(QDropEvent *e)
 			}
 		}
 	}
-
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_listview.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

@@ -1,11 +1,13 @@
 #ifndef _OPTW_IGNORE_H_
 #define _OPTW_IGNORE_H_
+//=============================================================================
 //
 //   File : optw_ignore.h
-//   Creation date : Thu Feb 12 15:11:30 2002 GMT by Juanjo �lvarez
+//   Creation date : Thu Feb 12 15:11:30 2002 GMT by Juanjo Álvarez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002 Juanjo Álvarez
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +23,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_optionswidget.h"
 #include "kvi_selectors.h"

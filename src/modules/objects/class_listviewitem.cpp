@@ -1,10 +1,11 @@
-//mdm:
-//   File : class_ListViewItem.h
-//   Creation date : Thu Feb 1 14:39:48 CEST 2005
-//	 by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
+//=============================================================================
+//
+//   File : class_listviewitem.cpp
+//   Creation date : Fri Jan 28 14:21:48 CEST 2005
+//   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2008 Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,6 +20,8 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+//=============================================================================
 
 #include "class_listviewitem.h"
 #include "class_pixmap.h"

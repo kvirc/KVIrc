@@ -1,3 +1,4 @@
+//=============================================================================
 //
 //   File : optw_mediatypes.cpp
 //   Creation date : Sat Jan 20 2001 16:14:53 CEST by Szymon Stefanek
@@ -19,6 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "optw_mediatypes.h"
 

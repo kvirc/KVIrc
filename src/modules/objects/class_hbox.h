@@ -1,11 +1,12 @@
 #ifndef _CLASS_HBOX_H_
 #define _CLASS_HBOX_H_
+//=============================================================================
 //
 //   File : class_hbox.h
 //   Creation date : Wed Mar 01 2005 23:00:01 by Alessandro Carbone & Tonino Imbesi
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2006 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "object_macros.h"
 #include "class_widget.h"

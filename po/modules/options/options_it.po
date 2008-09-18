@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-06 16:18+0200\n"
-"PO-Revision-Date: 2008-09-05 02:01+0200\n"
+"PO-Revision-Date: 2008-09-18 17:42+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -111,8 +111,7 @@ msgstr "Griglia 3D"
 
 #: src/modules/options/optw_textencoding.cpp:81
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+msgstr "<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: src/modules/options/optw_urlhandlers.cpp:74
 msgid "<b>file://</b> handler command:"
@@ -242,10 +241,8 @@ msgstr ""
 "\"<b>Aggiungi</b>\".</center>"
 
 #: src/modules/options/optw_servers.cpp:1174
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: src/modules/options/optw_servers.cpp:530
 msgid ""
@@ -897,8 +894,7 @@ msgstr ""
 "(100 KB)</center>"
 
 #: src/modules/options/optw_servers.cpp:1148
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: src/modules/options/optw_lag.cpp:62
@@ -2842,7 +2838,7 @@ msgstr ""
 
 #: src/modules/options/optw_ircview.h:83
 msgid "Marker"
-msgstr "Segnalatore Ultima Riga:"
+msgstr "Segnalatore Ultima Riga"
 
 #: src/modules/options/optw_ircview.cpp:175
 msgid "Marker color:"
@@ -3828,13 +3824,11 @@ msgstr "Il comando di identificazione non può essere vuoto!"
 
 #: src/modules/options/optw_nickserv.cpp:180
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3906,8 +3900,7 @@ msgid "This executable has no SSL support."
 msgstr "Questo eseguibile non ha il supporto SSL"
 
 #: src/modules/options/optw_identity.cpp:337
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -4607,17 +4600,3 @@ msgstr "lista utenti,canale"
 msgid "within:"
 msgstr "in:"
 
-#~ msgid "Classic Taskbar"
-#~ msgstr "Taskbar classica"
-
-#~ msgid "Taskbar"
-#~ msgstr "Lista dei Canali"
-
-#~ msgid "Taskbar Alert"
-#~ msgstr "Avvisi nella Lista dei canali"
-
-#~ msgid "Tree Taskbar"
-#~ msgstr "Taskbar ad albero"
-
-#~ msgid "Use tree taskbar"
-#~ msgstr "Usa lista dei canali ad albero"

@@ -1,9 +1,10 @@
+//=============================================================================
 //
 //   File : optw_tray.cpp
 //   Creation date : Mon 14 Aug 2006 by Alexey Uzhva
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2006-2008 Alexey Uzhva (wizard at opendoor dot ru)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,7 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-
+//=============================================================================
 
 #include "optw_tray.h"
 

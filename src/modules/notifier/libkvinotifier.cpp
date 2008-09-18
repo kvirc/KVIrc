@@ -1,9 +1,11 @@
-//==================================================================================
+//=============================================================================
 //
 //   File : libkvinotifier.cpp
 //   Creation date : Tue Jul 7 2004 20:21:12 CEST by Szymon Stefanek
 //
-//   Copyright (C) 2005 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2008 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,7 +21,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-//==================================================================================
+//=============================================================================
 
 #include "notifierwindow.h"
 #include "notifiermessage.h"

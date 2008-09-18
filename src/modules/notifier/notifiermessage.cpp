@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : notifiermessage.cpp
-//   Created on mar 02 nov 2004 02:41:18 by Iacopo
+//   Creation date : Mar 02 Nov 2004 02:41:18 by Iacopo
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2004 Iacopo <iakko@siena.linux.it>
+//   Copyright (C) 2004-2008 Iacopo <iakko@siena.linux.it>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

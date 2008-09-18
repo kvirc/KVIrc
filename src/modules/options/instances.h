@@ -3,6 +3,7 @@
 #ifndef __OPTIONS_INSTANCES_H__
 #define __OPTIONS_INSTANCES_H__
 
+//=============================================================================
 //
 //   File : instances.h
 //
@@ -23,6 +24,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 //
 // Instance creation routines for the KVIrc options module

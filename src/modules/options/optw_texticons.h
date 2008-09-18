@@ -1,12 +1,12 @@
 #ifndef _OPTW_TEXTICONS_H_
 #define _OPTW_TEXTICONS_H_
-
+//=============================================================================
 //
 //   File : optw_texticons.h
 //   Creation date : Fri May 24 2002 00:14:02 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_optionswidget.h"
 #include "kvi_texticonmanager.h"

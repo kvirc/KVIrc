@@ -1,11 +1,12 @@
 #ifndef _OPTW_GENERALOPT_H_
 #define _OPTW_GENERALOPT_H_
+//=============================================================================
 //
 //   File : optw_generalopt.h
 //   Creation date : Wed Nov 19 09:25:16 2005 GMT by Grifisx & Noldor
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2005 Grifisx & Noldor
+//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_optionswidget.h"
 
