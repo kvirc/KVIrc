@@ -3,10 +3,11 @@
 //=============================================================================
 //
 //   File : kvi_statusbarapplet.h
-//   Created on Tue 07 Sep 2004 03:56:46 by Szymon Stefanek
+//   Creation date : Tue 07 Sep 2004 03:56:46 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dor org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

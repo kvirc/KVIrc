@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_action.cpp
-//   Created on Sat 04 Dec 2004 04:22:12 by Szymon Stefanek
+//   Creation date : Sat 04 Dec 2004 04:22:12 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

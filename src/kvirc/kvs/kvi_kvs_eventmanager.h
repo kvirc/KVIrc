@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_eventmanager.h
-//   Created on Thu Aug 17 2000 13:59:12 by Szymon Stefanek
+//   Creation date : Thu Aug 17 2000 13:59:12 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2000-2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2000-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

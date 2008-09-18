@@ -1,7 +1,7 @@
 //=============================================================================
 //
 //   File : kvi_kvs_treenode_specialcommandcontinue.cpp
-//   Created on Fri 13 Jun 2008 01:25:00 by Elvio Basello
+//   Creation date : Fri 13 Jun 2008 01:25:00 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2008 Szymon Stefanek <pragma at kvirc dot net>

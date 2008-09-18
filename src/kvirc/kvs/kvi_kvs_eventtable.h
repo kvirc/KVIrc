@@ -3,7 +3,7 @@
 //=============================================================================
 //
 //   File : kvi_kvs_eventtable.h
-//   Created on Mon 23 Feb 2004 03:23:18 by Szymon Stefanek
+//   Creation date : Mon 23 Feb 2004 03:23:18 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>

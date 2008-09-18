@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_treenode_specialcommandfor.cpp
-//   Created on Fri 07 Nov 2003 11:48:11 by Szymon Stefanek
+//   Creation date : Fri 07 Nov 2003 11:48:11 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

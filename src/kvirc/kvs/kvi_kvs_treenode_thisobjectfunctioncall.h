@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_treenode_thisobjectfunctioncall.h
-//   Created on Tue 07 Oct 2003 03:28:10 by Szymon Stefanek
+//   Creation date : Tue 07 Oct 2003 03:28:10 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

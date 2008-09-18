@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_treenode_parameterreturn.cpp
-//   Created on Fri 30 Jan 2004 01:31:01 by Szymon Stefanek
+//   Creation date : Fri 30 Jan 2004 01:31:01 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

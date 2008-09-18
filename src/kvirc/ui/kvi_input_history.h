@@ -6,7 +6,7 @@
 //   Creation date : Fri Sep 5 2008 17:26:34 by Elvio Basello
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

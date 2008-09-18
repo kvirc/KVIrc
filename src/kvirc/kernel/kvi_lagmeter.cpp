@@ -1,10 +1,11 @@
 //=============================================================================
 //
 //   File : kvi_lagmeter.cpp
-//   Creation date : Fri Oct 18 13:31:36 CEST 2002 by Juanjo ï¿½varez
+//   Creation date : Fri Oct 18 13:31:36 CEST 1999 by Juanjo Álvarez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999 Juanjo Álvarez
+//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

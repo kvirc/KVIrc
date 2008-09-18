@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : kvi_irccontext.cpp
-//   Created on Sun 09 May 2004 20:37:46 by Szymon Stefanek
+//   Creation date : Sun 09 May 2004 20:37:46 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

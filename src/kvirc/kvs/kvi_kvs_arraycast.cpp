@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_arraycast.cpp
-//   Created on Tue 10 May 2005 00:05:50 by Szymon Stefanek
+//   Creation date : Tue 10 May 2005 00:05:50 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2005 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

@@ -1,3 +1,4 @@
+//=============================================================================
 //
 //   File : kvi_filedialog.cpp
 //   Creation date : Mon Nov 20 2000 12:20:42 CEST by Szymon Stefanek
@@ -19,6 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_filedialog.h"
 #include "kvi_mediatype.h"

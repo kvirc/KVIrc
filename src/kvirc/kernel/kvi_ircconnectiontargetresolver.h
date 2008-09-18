@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : kvi_ircconnectiontargetresolver.h
-//   Created on Fri 11 May 2004 23:17:42 by Szymon Stefanek
+//   Creation date : Fri 11 May 2004 23:17:42 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

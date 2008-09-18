@@ -1,11 +1,12 @@
 #ifndef _KVI_SSLMASTER_H_
 #define _KVI_SSLMASTER_H_
+//=============================================================================
 //
 //   File : kvi_sslmaster.h
 //   Creation date : Mon Jun 17 2002 20:34:00 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +22,8 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
+
 #include "kvi_settings.h"
 
 #ifdef COMPILE_SSL_SUPPORT

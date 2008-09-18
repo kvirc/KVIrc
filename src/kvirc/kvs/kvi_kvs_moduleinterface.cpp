@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_moduleinterface.cpp
-//   Created on Tue 16 Dec 2003 00:27:54 by Szymon Stefanek
+//   Creation date : Tue 16 Dec 2003 00:27:54 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003-2005 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

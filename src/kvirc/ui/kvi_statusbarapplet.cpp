@@ -1,6 +1,7 @@
-//=============================================================================//
+//=============================================================================
+//
 //   File : kvi_statusbarapplet.cpp
-//   Created on Tue 07 Sep 2004 03:56:46 by Szymon Stefanek
+//   Creation date : Tue 07 Sep 2004 03:56:46 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
 //   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>

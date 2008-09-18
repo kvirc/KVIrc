@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_treenode_rebindingswitch.h
-//   Created on Mon 15 Aug 2005 13:32:31 by Szymon Stefanek
+//   Creation date : Mon 15 Aug 2005 13:32:31 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2005 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

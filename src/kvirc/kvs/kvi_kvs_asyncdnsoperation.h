@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_asyncdnsoperation.h
-//   Created on Sun 10 Jul 2005 04:36:15 by Szymon Stefanek
+//   Creation date : Sun 10 Jul 2005 04:36:15 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2005 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

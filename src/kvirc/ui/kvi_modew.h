@@ -4,9 +4,10 @@
 //============================================================================
 //
 //   File : kvi_modew.h
-//   Creation date : 12.11.2005 23.50 by Uzhva Alexey
+//   Creation date : Sat Nov 12 2005 23:50:12 by Alexey Uzhva
 //
 //   This file is part of the KVirc irc client distribution
+//   Copyright (C) 2005-2008 Alexey Uzhva (wizard at opendoor dot ru)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

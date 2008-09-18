@@ -1,7 +1,7 @@
 //=============================================================================
 //
 //   File : kvi_colorwin.cpp
-//   Creation date : Wed Jan 6 1999 04:30:20 by Szymon Stefanek
+//   Creation date : Wed Jan  6 1999 04:30:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)

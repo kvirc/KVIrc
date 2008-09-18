@@ -1,7 +1,7 @@
 //=============================================================================
 //
 //   File : kvi_actiondrawer.cpp
-//   Created on Sun 21 Nov 2004 05:44:22 by Szymon Stefanek
+//   Creation date : Sun 21 Nov 2004 05:44:22 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
 //   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>

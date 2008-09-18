@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : kvi_kvs_corefunctions_af.cpp
-//   Created on Fri 31 Oct 2003 01:52:04 by Szymon Stefanek
+//   Creation date : Fri 31 Oct 2003 01:52:04 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2003 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2003-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
