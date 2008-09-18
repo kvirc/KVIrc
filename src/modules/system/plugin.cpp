@@ -4,7 +4,7 @@
 //   Creation date : Wed Apr 11 04 2007 00:54:00 GMT+1 by TheXception
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007-2008 TheXception
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

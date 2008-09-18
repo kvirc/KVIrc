@@ -1,12 +1,13 @@
 #ifndef _LIBKVISND_H_
 #define _LIBKVISND_H_
-
+//=============================================================================
 //
 //   File : libkvisnd.h
-//   Creation date : Apr 21 2002 12:30:25 CEST by Juan Jos��varez
+//   Creation date : Thu Dec 27 2002 17:13:12 GMT by Juanjo Alvarez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2000 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,6 +23,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"

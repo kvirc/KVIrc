@@ -1,10 +1,10 @@
-///////////////////////////////////////////////////////////////////////////////
+//=============================================================================
 //
 //   File : libkvitheme.cpp
-//   Created on Sat 30 Dec 2006 14:54:56 by Szymon Stefanek
+//   Creation date : Sat 30 Dec 2006 14:54:56 by Szymon Stefanek
 //
 //   This toolbar is part of the KVirc irc client distribution
-//   Copyright (C) 2006 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2006-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -20,7 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
-///////////////////////////////////////////////////////////////////////////////
+//=============================================================================
 
 #include "managementdialog.h"
 #include "themefunctions.h"

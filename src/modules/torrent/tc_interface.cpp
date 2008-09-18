@@ -1,12 +1,11 @@
 //=============================================================================
 //
-//	Common interface for BitTorrent clients.
+//   Common interface for BitTorrent clients.
 //
 //   File : tc_interface.cpp
 //   Creation date : Fri Jan 1 15:42:25 2007 GMT by Alexander Stillich
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2005 Szymon Stefanek (pragma at kvirc dot net)
 //   Copyright (C) 2007 Alexander Stillich (torque at pltn dot org)
 //
 //   This program is FREE software. You can redistribute it and/or

@@ -4,7 +4,7 @@
 //   Creation date : Wed May 10 14:00:12 2006 GMT by Alexey Uzhva
 //
 //   This math is part of the KVirc irc client distribution
-//   Copyright (C) 2006 Alexey Uzhva (wizard at opendoor dot ru)
+//   Copyright (C) 2006-2008 Alexey Uzhva (wizard at opendoor dot ru)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

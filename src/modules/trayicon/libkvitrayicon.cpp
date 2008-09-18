@@ -1,9 +1,12 @@
+//=============================================================================
 //
-//   File : libKviTrayIcon.cpp
-//   Creation date : Tue Jan 02 20001 14:34:12 CEST by Szymon Stefanek
+//   File : libkvitrayicon.cpp
+//   Creation date : Tue Jan 02 2001 14:34:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2007 Alexey Uzhva (wizard at opendoor dot ru)
+//   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,6 +22,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "libkvitrayicon.h"
 
@@ -667,8 +671,10 @@ static bool trayicon_module_can_unload(KviModule *)
 KVIRC_MODULE(
 	"KVIrc Tray Icon Implementation",
 	"4.0.0",
-	"Szymon Stefanek <pragma at kvirc dot net> and Alexey Uzhva <alexey at kvirc dot ru>",
-	"exports the /trayicon.* interface\n",
+	"Copyright (C) 2001 Szymon Stefanek <pragma at kvirc dot net>" \
+	"Copyright (C) 2007 Alexey Uzhva <alexey at kvirc dot ru>" \
+	"Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>",
+	"Exports the /trayicon.* interface\n",
 	trayicon_module_init ,
 	trayicon_module_can_unload,
 	0,

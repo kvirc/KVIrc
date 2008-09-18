@@ -1,6 +1,10 @@
+//=============================================================================
+//
+//   File : libkviurl.cpp
+//   Creation date : 1999 Andrea Parella
 //
 //   This file is part of the KVIrc irc client distribution
-//   Copyright (C) 1999-2002 Andrea Parrella (yap@kvirc.net)
+//   Copyright (C) 1999-2008 Andrea Parrella (yap@kvirc.net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -16,6 +20,7 @@
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
+//=============================================================================
 
 #include "libkviurl.h"
 #include "icons.h"

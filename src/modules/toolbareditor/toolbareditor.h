@@ -3,10 +3,10 @@
 //=============================================================================
 //
 //   File : toolbareditor.h
-//   Created on Wed 01 Dec 2004 14:42:20 by Szymon Stefanek
+//   Creation date : Wed 01 Dec 2004 14:42:20 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

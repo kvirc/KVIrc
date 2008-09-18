@@ -1,11 +1,11 @@
 //=============================================================================
 //
 //   File : libkvisnd.cpp
-//   Creation date : Thu Dec 27 2002 17:13:12 GMT by Juanjo �varez
+//   Creation date : Thu Dec 27 2002 17:13:12 GMT by Juanjo Alvarez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Juanjo �varez (juanjux at yahoo dot es)
-//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002 Juanjo Alvarez (juanjux at yahoo dot es)
+//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

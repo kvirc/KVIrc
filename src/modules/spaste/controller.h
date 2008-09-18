@@ -1,11 +1,13 @@
 #ifndef _SPASTE_CONTROLLER_H_
 #define _SPASTE_CONTROLLER_H_
+//=============================================================================
+//
 //   File : controller.h
-//   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo ¡lvarez
+//   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo √Ålvarez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Juanjo ¡lvarez (juanjux@yahoo.es)
-//   Copyright (C) 2002 Szymon Stefanek (kvirc@tin.it)
+//   Copyright (C) 2002 Juanjo √Ålvarez (juanjux@yahoo.es)
+//   Copyright (C) 2002-2008 Szymon Stefanek (kvirc@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -20,7 +22,8 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-
+//
+//=============================================================================
 
 
 #include "kvi_window.h"
