@@ -4,7 +4,7 @@
 //   Created on Sun 21 Nov 2004 05:44:22 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -40,106 +40,6 @@
 #include <QMouseEvent>
 #include <QTextDocument>
 
-KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListWidget * v,KviAction * a)
-: KviTalListWidgetItem(v)
-{
-	m_pListWidget = v;
-	//setDragEnabled(true);
-	m_szName = a->name();
-	QString t = "<b>" + a->visibleName() + "</b>";
-	if(a->isKviUserActionNeverOverrideThis())
-		t += " <font color=\"#a0a0a0\">[" + __tr2qs("Script") + "]</font>";
-	t += "<br><font size=\"-1\">" + a->description()+ "</font>";
-	m_szKey = a->visibleName().toUpper();
-
-	QPixmap * p = a->bigIcon();
-	setIcon(QIcon(*p));
-	setText(t);
-}
-
-KviActionDrawerPageListWidgetItem::~KviActionDrawerPageListWidgetItem()
-{
-
-}
-KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage * pParent)
-: KviTalListWidget(pParent)
-{
-	KviTalIconAndRichTextItemDelegate *itemDelegate=new KviTalIconAndRichTextItemDelegate(this);
-	setItemDelegate(itemDelegate);
-	setSelectionMode(QAbstractItemView::SingleSelection);
-	setSortingEnabled(true);
-	setMinimumHeight(400);
-	setMinimumWidth(380);
-
-	QString szPic;
-	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
-	szPic.replace('\\',"/");
-
-	szPic += "/kvi_actiondrawer.png";
-	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
-	setStyleSheet(szStyle);
-//	m_pPage = pParent;
-//	setSelectionMode(Single);[{['
-
-	//header()->hide();
-//	int iWidth = viewport()->width();
-//	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-//	setHeaderLabel("");
-//	addColumn("",iWidth);
-//	setSorting(0,true);
-}
-
-KviActionDrawerPageListWidget::~KviActionDrawerPageListWidget()
-{
-}
-
-
-void KviActionDrawerPageListWidget::contentsMousePressEvent(QMouseEvent * e)
-{
-	/*
-	KviListView::contentsMousePressEvent(e);
-	KviActionDrawerPageListWidgetItem * i = (KviActionDrawerPageListWidgetItem *)itemAt(QPoint(5,contentsToViewport(e->pos()).y()));
-	if(!i)return;
-	KviTextDrag * dr = new KviTextDrag();
-	dr->setText(i->name());
-	if(i->icon()) dr->setImageData(i->icon());
-	*/
-}
-
-void KviActionDrawerPageListWidget::resizeEvent(QResizeEvent * e)
-{
-	KviTalListWidget::resizeEvent(e);
-	int iWidth = viewport()->width();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	//setColumnWidth(0,iWidth);
-}
-
-
-KviActionDrawerPage::KviActionDrawerPage(QWidget * pParent,const QString &szDescription)
-: QWidget(pParent)
-{
-	QGridLayout * g = new QGridLayout(this);
-	
-	QString t = "<b>" + szDescription + "</b>";
-	QLabel * l = new QLabel(t,this);
-	g->addWidget(l,0,0);
-
-	m_pListWidget = new KviActionDrawerPageListWidget(this);
-
-	g->addWidget(m_pListWidget,1,0);
-
-	g->setRowStretch(1,1);
-}
-
-KviActionDrawerPage::~KviActionDrawerPage()
-{
-}
-
-void KviActionDrawerPage::add(KviAction * a)
-{
-	(void)new KviActionDrawerPageListWidgetItem(m_pListWidget,a);
-}
-
 KviActionDrawer::KviActionDrawer(QWidget * pParent)
 : QTabWidget(pParent)
 {
@@ -159,29 +59,138 @@ void KviActionDrawer::fill()
 	pages.setAutoDelete(false);
 
 	KviPointerHashTable<QString,KviAction> * d = KviActionManager::instance()->actions();
-	if(!d)return; // ooops
+	if(!d)
+		return; // ooops
 
 	KviPointerHashTableIterator<QString,KviAction> it(*d);
-	while(KviAction * a = it.current())
+	while(KviAction * pAction = it.current())
 	{
-		KviActionCategory * c = a->category();
-		if(!c)c = KviActionManager::categoryGeneric();
-		KviActionDrawerPage * p = pages.find(c->visibleName());
-		if(!p)
+		KviActionCategory * pCat = pAction->category();
+		if(!pCat)
+			pCat = KviActionManager::categoryGeneric();
+
+		KviActionDrawerPage * pPage = pages.find(pCat->visibleName());
+		if(!pPage)
 		{
-			p = new KviActionDrawerPage(this,c->description());
-			pages.replace(c->visibleName(),p);
-			addTab(p,c->visibleName());
+			pPage = new KviActionDrawerPage(this,pCat->description());
+			pages.replace(pCat->visibleName(),pPage);
+			addTab(pPage,pCat->visibleName());
 			//p->show();
 		}
-		p->add(a);
+		pPage->add(pAction);
 		++it;
 	}
 
-	KviActionDrawerPage * p = pages.find(KviActionManager::categoryIrc()->visibleName());
-	if(p)
+	KviActionDrawerPage * pPage = pages.find(KviActionManager::categoryIrc()->visibleName());
+	if(pPage)
 	{
-		int iii = indexOf(p);
-		if(iii >= 0)setCurrentIndex(iii);
+		int iId = indexOf(pPage);
+		if(iId >= 0)
+			setCurrentIndex(iId);
 	}
+}
+
+KviActionDrawerPage::KviActionDrawerPage(QWidget * pParent, const QString & szDescription)
+: QWidget(pParent)
+{
+	QGridLayout * pLayout = new QGridLayout(this);
+	
+	QString szDesc = "<b>" + szDescription + "</b>";
+	QLabel * pLabel = new QLabel(szDesc,this);
+	pLayout->addWidget(pLabel,0,0);
+
+	m_pListWidget = new KviActionDrawerPageListWidget(this);
+
+	pLayout->addWidget(m_pListWidget,1,0);
+
+	pLayout->setRowStretch(1,1);
+}
+
+KviActionDrawerPage::~KviActionDrawerPage()
+{
+}
+
+void KviActionDrawerPage::add(KviAction * pAction)
+{
+	(void)new KviActionDrawerPageListWidgetItem(m_pListWidget,pAction);
+}
+
+KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage * pParent)
+: KviTalListWidget(pParent)
+{
+	KviTalIconAndRichTextItemDelegate * pItemDelegate = new KviTalIconAndRichTextItemDelegate(this);
+	setItemDelegate(pItemDelegate);
+	setSelectionMode(QAbstractItemView::SingleSelection);
+	setSortingEnabled(true);
+	setMinimumHeight(400);
+	setMinimumWidth(380);
+
+	QString szPic;
+	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
+	szPic.replace('\\',"/");
+
+	szPic += "/kvi_actiondrawer.png";
+	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
+	setStyleSheet(szStyle);
+	/*
+	m_pPage = pParent;
+	setSelectionMode(Single);[{['
+
+	//header()->hide();
+	int iWidth = viewport()->width();
+	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
+	setHeaderLabel("");
+	addColumn("",iWidth);
+	setSorting(0,true);
+	*/
+}
+
+KviActionDrawerPageListWidget::~KviActionDrawerPageListWidget()
+{
+}
+
+/*
+void KviActionDrawerPageListWidget::contentsMousePressEvent(QMouseEvent * e)
+{
+	KviListView::contentsMousePressEvent(e);
+	KviActionDrawerPageListWidgetItem * pItem = (KviActionDrawerPageListWidgetItem *)itemAt(QPoint(5,contentsToViewport(e->pos()).y()));
+	if(!pItem)
+		return;
+
+	KviTextDrag * pDrag = new KviTextDrag();
+	pDrag->setText(pItem->name());
+
+	if(pItem->icon())
+		pDrag->setImageData(pItem->icon());
+}
+*/
+
+void KviActionDrawerPageListWidget::resizeEvent(QResizeEvent * e)
+{
+	KviTalListWidget::resizeEvent(e);
+	int iWidth = viewport()->width();
+	if(iWidth < LVI_MINIMUM_CELL_WIDTH)
+		iWidth = LVI_MINIMUM_CELL_WIDTH;
+	//setColumnWidth(0,iWidth);
+}
+
+KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListWidget * pList, KviAction * pAction)
+: KviTalListWidgetItem(pList)
+{
+	m_pListWidget = pList;
+	//setDragEnabled(true);
+	m_szName = pAction->name();
+	QString szText = "<b>" + pAction->visibleName() + "</b>";
+	if(pAction->isKviUserActionNeverOverrideThis())
+		szText += " <font color=\"#a0a0a0\">[" + __tr2qs("Script") + "]</font>";
+	szText += "<br><font size=\"-1\">" + pAction->description() + "</font>";
+	m_szKey = pAction->visibleName().toUpper();
+
+	QPixmap * p = pAction->bigIcon();
+	setIcon(QIcon(*p));
+	setText(szText);
+}
+
+KviActionDrawerPageListWidgetItem::~KviActionDrawerPageListWidgetItem()
+{
 }

@@ -4,7 +4,7 @@
 //   Creation date : Wed Jan 6 1999 04:30:20 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2007 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,8 +21,6 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
-
-
 
 #include "kvi_colorwin.h"
 #include "kvi_app.h"
@@ -53,22 +51,21 @@ KviColorWindow::~KviColorWindow()
 {
 	if(m_iTimerId != -1)
 		killTimer(m_iTimerId);
-//	if(m_pOwner)m_pOwner->setFocus();
+	//if(m_pOwner)m_pOwner->setFocus();
 }
 
-void KviColorWindow::popup(QWidget *owner)
+void KviColorWindow::popup(QWidget * pOwner)
 {
-	m_pOwner = owner;
+	m_pOwner = pOwner;
 	show();
 }
 
-
-void KviColorWindow::paintEvent(QPaintEvent *)
+void KviColorWindow::paintEvent(QPaintEvent * e)
 {
-	static int clrIdx[16]={ 1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1 };
+	static int clrIdx[16] = { 1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1 };
 	QPainter p(this);
 
-	for(int i=0;i<16;i++)
+	for(int i=0; i<16; i++)
 	{
 		p.fillRect((i % 8) * 18,(i / 8) * 18,18,18,KVI_OPTION_MIRCCOLOR(i));
 		p.setPen(KVI_OPTION_MIRCCOLOR(clrIdx[i]));
@@ -77,7 +74,7 @@ void KviColorWindow::paintEvent(QPaintEvent *)
 	}
 }
 
-void KviColorWindow::keyPressEvent(QKeyEvent *e)
+void KviColorWindow::keyPressEvent(QKeyEvent * e)
 {
 	if(m_iTimerId != -1)
 		killTimer(m_iTimerId);
@@ -85,31 +82,47 @@ void KviColorWindow::keyPressEvent(QKeyEvent *e)
 	if(m_pOwner)g_pApp->sendEvent(m_pOwner,e);
 }
 
-void KviColorWindow::mousePressEvent(QMouseEvent *e)
+void KviColorWindow::mousePressEvent(QMouseEvent * e)
 {
-	QString str;
-	if(!((e->pos().x() < 0) || (e->pos().x() > width()) || (e->pos().y() < 0) || (e->pos().y() > height())))
+	QString szStr;
+	if(!(
+		(e->pos().x() < 0) || (e->pos().x() > width()) ||
+		(e->pos().y() < 0) || (e->pos().y() > height())
+		))
 	{
-	int key=e->x()/18;
-	if (e->x()<36 && e->y()>18) key +=8;
-	if (e->x()>36 && e->y()>18) key -=2;
-	int ascii=key+48;
-	str.setNum(key);
-	if (e->x()>36 && e->y()>18)
-		if(m_pOwner) g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,Qt::Key_1,Qt::NoModifier,"1"));
-	if(m_pOwner) g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,key,(Qt::KeyboardModifiers)Qt::NoModifier,str));
+		int iKey = e->x() / 18;
+		if (e->x() < 36 && e->y() > 18)
+			iKey += 8;
+		if (e->x() > 36 && e->y() > 18)
+			iKey -= 2;
+
+		int iAscii = iKey + 48;
+
+		// FIXME: is this right? maybe it should be szStr.setNum(iAscii);
+		szStr.setNum(iKey);
+
+		if (e->x() > 36 && e->y() > 18)
+		{
+			if(m_pOwner)
+				g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,Qt::Key_1,Qt::NoModifier,"1"));
+		}
+
+		if(m_pOwner)
+			g_pApp->sendEvent(m_pOwner,new QKeyEvent(QEvent::KeyPress,iKey,(Qt::KeyboardModifiers)Qt::NoModifier,szStr));
 	}
+
 	if(m_iTimerId != -1)
 		killTimer(m_iTimerId);
 	hide();
 }
+
 void KviColorWindow::show()
 {
 	m_iTimerId = startTimer(10000); //10 sec ...seems enough
 	QWidget::show();
 }
 
-void KviColorWindow::timerEvent(QTimerEvent *)
+void KviColorWindow::timerEvent(QTimerEvent * e)
 {
 	if(m_iTimerId != -1)
 		killTimer(m_iTimerId);

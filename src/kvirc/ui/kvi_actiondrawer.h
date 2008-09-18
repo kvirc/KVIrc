@@ -6,7 +6,7 @@
 //   Created on Sun 21 Nov 2004 05:44:22 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2004 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2004-2008 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -24,6 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_actiondrawer.h
+* \author Szymon Stefanek
+* \brief Handling of actions drawer
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_tal_listwidget.h"
@@ -31,69 +37,131 @@
 #include <QWidget>
 #include <QTabWidget>
 
-class KviAction;
-class KviActionDrawerPage;
 class QPixmap;
+class KviAction;
+class KviActionDrawerPageListWidget;
 
-class KVIRC_API KviActionDrawerPageListWidgetItem : public KviTalListWidgetItem
+/**
+* \class KviActionDrawer
+* \brief Action drawer class
+*/
+class KVIRC_API KviActionDrawer : public QTabWidget
 {
-public:
-	KviActionDrawerPageListWidgetItem(KviTalListWidget * v,KviAction * a);
-	~KviActionDrawerPageListWidgetItem();
-protected:
-	QString m_szName;
-//	Q3SimpleRichText * m_pText;
-	QPixmap * m_pIcon;
-	KviTalListWidget * m_pListWidget;
-	QString m_szKey;
-public:
-//	QPixmap * icon(){ return m_pIcon; };
-//	const QString & name(){ return m_szName; };
-	/*
-protected:
-	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
-	virtual void setup();
-	virtual QString key(int,bool) const;
-	*/
-};
-
-class KVIRC_API KviActionDrawerPageListWidget : public KviTalListWidget
-{
-	friend class KviActionDrawerPage;
 	Q_OBJECT
-protected:
-	KviActionDrawerPageListWidget(KviActionDrawerPage * pParent);
 public:
-	~KviActionDrawerPageListWidget();
-//protected:
-//	KviActionDrawerPage * m_pPage;
-protected:
-	virtual void resizeEvent(QResizeEvent * e);
-	virtual void contentsMousePressEvent(QMouseEvent * e);
+	/**
+	* \brief Constructs an action drawer object
+	* \param pParent The parent widget
+	* \return KviActionDrawer
+	*/
+	KviActionDrawer(QWidget * pParent);
+
+	/**
+	* \brief Destroys an action drawer object
+	*/
+	~KviActionDrawer();
+public:
+	/**
+	* \brief Fills in the drawer page
+	* \return void
+	*/
+	void fill();
 };
 
+/**
+* \class KviActionDrawer
+* \brief Action drawer page class
+*/
 class KVIRC_API KviActionDrawerPage : public QWidget
 {
 	friend class KviActionDrawer;
 	Q_OBJECT
 protected:
-	KviActionDrawerPage(QWidget * pParent,const QString &szDescription);
+	/**
+	* \brief Constructs an action drawer page object
+	* \param pParent The parent widget
+	* \param szDescription The description of the page
+	* \return KviActionDrawerPage
+	*/
+	KviActionDrawerPage(QWidget * pParent, const QString & szDescription);
 public:
+	/**
+	* \brief Destroys an action drawer page object
+	*/
 	~KviActionDrawerPage();
 protected:
 	KviActionDrawerPageListWidget * m_pListWidget;
 protected:
-	void add(KviAction * a);
+	/**
+	* \brief Adds an action
+	* \param pAction The pointer to the action to add
+	* \return void
+	*/
+	void add(KviAction * pAction);
 };
 
-class KVIRC_API KviActionDrawer : public QTabWidget
+/**
+* \class KviActionDrawer
+* \brief Action drawer page list class
+*/
+class KVIRC_API KviActionDrawerPageListWidget : public KviTalListWidget
 {
+	friend class KviActionDrawerPage;
 	Q_OBJECT
+protected:
+	/**
+	* \brief Constructs an action drawer page list object
+	* \param pParent The parent widget
+	* \return KviActionDrawerPageListWidget
+	*/
+	KviActionDrawerPageListWidget(KviActionDrawerPage * pParent);
 public:
-	KviActionDrawer(QWidget * pParent);
-	~KviActionDrawer();
-public:
-	void fill();
+	/**
+	* \brief Destroys an action drawer page list object
+	*/
+	~KviActionDrawerPageListWidget();
+/*
+protected:
+	KviActionDrawerPage * m_pPage;
+*/
+protected:
+	virtual void resizeEvent(QResizeEvent * e);
+	//virtual void contentsMousePressEvent(QMouseEvent * e);
 };
 
-#endif //!_KVI_ACTIONDRAWER_H_
+/**
+* \class KviActionDrawer
+* \brief Action drawer page list item class
+*/
+class KVIRC_API KviActionDrawerPageListWidgetItem : public KviTalListWidgetItem
+{
+public:
+	/**
+	* \brief Constructs an action drawer page list item object
+	* \param pList The list where to add the item
+	* \param pAction The action associated to the item
+	* \return KviActionDrawerPageListWidget
+	*/
+	KviActionDrawerPageListWidgetItem(KviTalListWidget * pList, KviAction * pAction);
+
+	/**
+	* \brief Destroys an action drawer page list item object
+	*/
+	~KviActionDrawerPageListWidgetItem();
+protected:
+	QString            m_szName;
+	QPixmap          * m_pIcon;
+	KviTalListWidget * m_pListWidget;
+	QString            m_szKey;
+/*
+public:
+	QPixmap * icon(){ return m_pIcon; };
+	const QString & name(){ return m_szName; };
+protected:
+	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
+	virtual void setup();
+	virtual QString key(int,bool) const;
+*/
+};
+
+#endif //_KVI_ACTIONDRAWER_H_
