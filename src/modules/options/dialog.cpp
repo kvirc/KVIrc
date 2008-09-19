@@ -79,7 +79,6 @@ KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(KviTalTreeWidget *parent,KviO
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
-	m_bHighlighted = false;
 	setIcon(0,*(g_pIconManager->getSmallIcon(e->iIcon)));
 }
 
@@ -88,28 +87,12 @@ KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
-	m_bHighlighted = false;
 	setIcon(0,*(g_pIconManager->getSmallIcon(e->iIcon)));
 }
 
 KviOptionsTreeWidgetItem::~KviOptionsTreeWidgetItem()
 {
 }
-/*
-void KviOptionsTreeWidgetItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
-{
-	if(m_bHighlighted)
-	{
-		QColorGroup tmp(cg);
-		tmp.setColor(QColorGroup::Base,Qt::red);
-		tmp.setColor(QColorGroup::Background,Qt::red);
-		tmp.setColor(QColorGroup::Text,Qt::yellow);
-		KviTalTreeWidgetItem::paintCell(p,tmp,column,width,align);
-	} else {
-		KviTalTreeWidgetItem::paintCell(p,cg,column,width,align);
-	}
-}
-*/
 
 KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 : QDialog(par)
@@ -179,7 +162,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	QGridLayout * g1 = new QGridLayout(this);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
 
-	g1->addWidget(spl,0,0,0,4);
+	g1->addWidget(spl,0,0,1,5);
 
 	KviTalVBox * vbox = new KviTalVBox(spl);
 	vbox->setSpacing(2);
@@ -191,7 +174,8 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	m_pTreeWidget->header()->hide();
 	m_pTreeWidget->setRootIsDecorated(true);
-// 	m_pTreeWidget->setSorting(-1);
+	m_pTreeWidget->setSortingEnabled(false);
+
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem*, KviTalTreeWidgetItem *)),this,SLOT(treeWidgetItemSelectionChanged(KviTalTreeWidgetItem *, KviTalTreeWidgetItem *)));
 
 	KviTalHBox * hbox = new KviTalHBox(vbox);
@@ -413,7 +397,14 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QS
 		}
 	}
 
-	pItem->setHighlighted(bFoundSomethingHere);
+	if(bFoundSomethingHere)
+	{
+		pItem->setForeground(0, Qt::yellow);
+		pItem->setBackground(0, Qt::red);
+	} else {
+		pItem->setForeground(0, Qt::black);
+		pItem->setBackground(0, Qt::transparent);
+	}
 
 	bool bFoundSomethingInside = false;
 	int ccount = pItem->childCount();

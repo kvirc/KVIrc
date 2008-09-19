@@ -58,11 +58,6 @@ public:
 public:
 	KviOptionsWidgetInstanceEntry * m_pInstanceEntry;
 	KviOptionsWidget              * m_pOptionsWidget;
-	bool m_bHighlighted;
-public:
-	void setHighlighted(bool b){ m_bHighlighted = b; };
-protected:
-// 	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
 };
 
 class KviOptionsDialog : public QDialog
