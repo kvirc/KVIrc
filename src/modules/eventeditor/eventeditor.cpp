@@ -134,6 +134,7 @@ void KviEventEditor::oneTimeSetup()
 	for(unsigned int i = 0;i < KVI_KVS_NUM_APP_EVENTS;i++)
 	{
 		KviKvsEvent * e = KviKvsEventManager::instance()->appEvent(i);
+
 		it = new KviEventListViewItem(m_pListView,i,e->name(),e->parameterDescription());
 		if(KviPointerList<KviKvsEventHandler> * l = e->handlers())
 		{
@@ -145,7 +146,6 @@ void KviEventEditor::oneTimeSetup()
 					((KviKvsScriptEventHandler *)s)->code(),((KviKvsScriptEventHandler *)s)->isEnabled());
 				}
 			}
-			it->setExpanded(true);
 		}
 		it->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(it->childCount() ? KVI_SMALLICON_EVENT : KVI_SMALLICON_EVENTNOHANDLERS))));
 	}
