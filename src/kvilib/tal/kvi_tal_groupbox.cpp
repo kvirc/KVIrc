@@ -37,7 +37,6 @@ KviTalGroupBox::KviTalGroupBox(QWidget * pParent,char* name)
 KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation,QWidget * pParent)
 : QGroupBox (pParent)
 {
-	debug("Creating groupbox");
 	if (orientation==Qt::Vertical)
 	m_pLayout = new QHBoxLayout(this);
 	else m_pLayout = new QVBoxLayout(this);
@@ -46,7 +45,6 @@ KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation,QWidget * pParent)
 KviTalGroupBox::KviTalGroupBox(Qt::Orientation orientation,const QString & title,QWidget * pParent)
 : QGroupBox (title,pParent)
 {
-	debug("Creating groupbox");
 	mOrientation=orientation;
 	if (orientation==Qt::Vertical)
 	m_pLayout = new QHBoxLayout(this);
