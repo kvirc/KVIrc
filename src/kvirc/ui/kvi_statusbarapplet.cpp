@@ -734,28 +734,28 @@ void KviStatusBarUpdateIndicator::checkVersion()
 	QString szFileName;
 	KviUrl url("http://kvirc.net/checkversion.php");
 
-	qDebug("Created http object");
+	//qDebug("Created http object");
 	m_pHttpRequest = new KviHttpRequest();
 	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(hostResolved(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
 	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(responseReceived(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(binaryData(const KviDataBuffer &)),this,SLOT(binaryDataReceived(const KviDataBuffer &)));
 	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(requestCompleted(bool)));
-	qDebug("Connected signals");
+	//qDebug("Connected signals");
 
-	qDebug("Making http request");
+	//qDebug("Making http request");
 	m_pHttpRequest->get(url,KviHttpRequest::WholeFile,szFileName);
 }
 
 void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	qDebug("Update mouse double click event");
+	//qDebug("Update mouse double click event");
 	if(!(e->button() & Qt::LeftButton))return;
 
 	if(m_bUpdateStatus) getNewVersion();
 	else checkVersion();
 }
-
+/*
 void KviStatusBarUpdateIndicator::hostResolved(const QString &host)
 {
 	qDebug("Resolved host: %s",host.toUtf8().data());
@@ -765,11 +765,10 @@ void KviStatusBarUpdateIndicator::connectionEstabilished()
 {
 	qDebug("Connection established");
 }
-
+*/
 void KviStatusBarUpdateIndicator::responseReceived(const QString &response)
 {
-	qDebug("Remote response: %s",response.toUtf8().data());
-
+	//qDebug("Remote response: %s",response.toUtf8().data());
 	if(response != "HTTP/1.1 200 OK")
 	{
 		m_szHttpResponse = response;
@@ -782,8 +781,8 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer
 {
 	// Got data
 	KviStr szData((const char *)buffer.data(),buffer.size());
-	qDebug("Data received: %s",szData.ptr());
-	qDebug("Version: %s",QString(KVI_VERSION).toUtf8().data());
+	//qDebug("Data received: %s",szData.ptr());
+	//qDebug("Version: %s",QString(KVI_VERSION).toUtf8().data());
 
 	// The version returned by remote server is newer than ours
 	if(KviMiscUtils::compareVersions(szData.ptr(),KVI_VERSION) < 0)
@@ -798,36 +797,36 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer
 
 void KviStatusBarUpdateIndicator::requestCompleted(bool status)
 {
-	qDebug("Data transfer terminated");
+	//qDebug("Data transfer terminated");
 	delete m_pHttpRequest;
-	qDebug("Deleted http object");
+	//qDebug("Deleted http object");
 }
 
 void KviStatusBarUpdateIndicator::getNewVersion()
 {
 	// Set build platform
 	QString system = KviBuildInfo::buildSystemName();
-	qDebug("System: %s",system.toUtf8().data());
+	//qDebug("System: %s",system.toUtf8().data());
 	if(system == "Windows") system = "win32";
 	else if(system == "Darwin") system = "macosx";
 	else system = "unix";
-	qDebug("System: %s",system.toUtf8().data());
+	//qDebug("System: %s",system.toUtf8().data());
 
 	// Create page to link to
 	QString url = "http://kvirc.net/?id=releases&platform=";
 	url += system;
 	url += "&version=";
 	url += m_szNewVersion;
-	qDebug("URL: %s",url.toUtf8().data());
+	//qDebug("URL: %s",url.toUtf8().data());
 
 	// Create command to run
 	QString command = "openurl ";
 	command += url;
-	qDebug("Command: %s",command.toUtf8().data());
+	//qDebug("Command: %s",command.toUtf8().data());
 
 	// Open the download page for the platform we're using
 	int test = KviKvsScript::run(command,g_pActiveWindow);
-	qDebug("KviKvsScript returned: %d",test);
+	//qDebug("KviKvsScript returned: %d",test);
 }
 
 QString KviStatusBarUpdateIndicator::tipText(const QPoint &)

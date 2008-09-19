@@ -224,8 +224,8 @@ protected:
 protected slots:
 	void updateDisplay();
 	void toggleContext();
-	void hostResolved(const QString &);
-	void connectionEstabilished();
+	//void hostResolved(const QString &);
+	//void connectionEstabilished();
 	void responseReceived(const QString &);
 	void requestCompleted(bool status);
 	void binaryDataReceived(const KviDataBuffer &);
@@ -239,5 +239,4 @@ private:
 	bool             m_bUpdateOnStartup;
 };
 
-
-#endif //!_KVI_STATUSBARAPPLET_H_
+#endif //_KVI_STATUSBARAPPLET_H_

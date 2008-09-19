@@ -307,7 +307,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_codetester.png",
 		KVI_SMALLICON_BOMB,
 		0,
-		QString::null);
+		"Ctrl+Alt+C");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EXECUTEKVS,
@@ -373,7 +373,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_screenshot.png",
 		KVI_SMALLICON_SCREENSHOT,
 		0,
-		QString::null);
+		"Ctrl+Alt+A");
 
 
 	SLOT_ACTION(
