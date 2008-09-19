@@ -445,9 +445,9 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	layout()->setRowStretch(0,1);
 	layout()->setColumnStretch(0,1);
 
-	connect(m_pListView,SIGNAL(selectionChanged()),this,SLOT(itemChanged()));
-	connect(m_pForeListBox,SIGNAL(selectionChanged()),this,SLOT(colorChanged()));
-	connect(m_pBackListBox,SIGNAL(selectionChanged()),this,SLOT(colorChanged()));
+	connect(m_pListView,SIGNAL(itemSelectionChanged ()),this,SLOT(itemChanged()));
+	connect(m_pForeListBox,SIGNAL(itemSelectionChanged ()),this,SLOT(colorChanged()));
+	connect(m_pBackListBox,SIGNAL(itemSelectionChanged ()),this,SLOT(colorChanged()));
 
 	itemChanged();
 }
