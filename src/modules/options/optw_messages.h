@@ -26,13 +26,14 @@
 
 #include "kvi_optionswidget.h"
 #include "kvi_msgtype.h"
-#include "kvi_tal_listview.h"
-#include "kvi_tal_listbox.h"
+#include "kvi_tal_treewidget.h"
+#include "kvi_tal_listwidget.h"
 #include "kvi_tal_popupmenu.h"
 
 #include <QCheckBox>
 #include <QToolButton>
-
+#include <QPainter>
+#include <QColorGroup>
 
 #define KVI_OPTIONS_WIDGET_ICON_KviMessageOptionsWidget KVI_SMALLICON_MESSAGES
 #define KVI_OPTIONS_WIDGET_NAME_KviMessageOptionsWidget __tr2qs_no_lookup("Text")
@@ -92,7 +93,7 @@ protected slots:
 #define KVI_OPTIONS_WIDGET_PARENT_KviMessageColorsOptionsWidget KviMessageOptionsWidget
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviMessageColorsOptionsWidget 30
 
-class KviMessageListView : public KviTalListView
+class KviMessageListView : public KviTalTreeWidget
 {
 	Q_OBJECT
 public:
@@ -105,10 +106,10 @@ public:
 };
 
 
-class KviMessageListViewItem : public KviTalListViewItem
+class KviMessageListViewItem : public KviTalTreeWidgetItem
 {
 public:
-	KviMessageListViewItem(KviTalListView * l,int optId);
+	KviMessageListViewItem(KviTalTreeWidget * l,int optId);
 	~KviMessageListViewItem();
 private:
 	int          m_iOptId;
@@ -120,42 +121,43 @@ public:
 };
 
 
-class KviMessageColorListBoxItem : public KviTalListBoxText
+class KviMessageColorListBoxItem : public KviTalListWidgetText
 {
 public:
-	KviMessageColorListBoxItem(KviTalListBox * b,const QColor & clr,int idx);
+	KviMessageColorListBoxItem(KviTalListWidget * b,const QColor & clr,int idx);
 	~KviMessageColorListBoxItem();
 public:
 	int m_iClrIdx;
 	QColor m_clr;
 public:
 	virtual void paint(QPainter * p);
-	virtual int width(const KviTalListBox * lv) const { return 120; };
+	virtual int width(const KviTalListWidget * lv) const { return 120; };
 };
 
 
 class KviMessageColorsOptionsWidget : public KviOptionsWidget
 {
 	Q_OBJECT
+	friend class KviTalListWidget;
 public:
 	KviMessageColorsOptionsWidget(QWidget * parent);
 	~KviMessageColorsOptionsWidget();
 public:
 	KviMessageListView         * m_pListView;
-	KviTalListBox                   * m_pForeListBox;
-	KviTalListBox                   * m_pBackListBox;
-	KviTalListBox                   * m_pLevelListBox;
+	KviTalListWidget           * m_pForeListBox;
+	KviTalListWidget           * m_pBackListBox;
+	KviTalListWidget           * m_pLevelListBox;
 	KviMessageColorListBoxItem * m_pForeItems[16];
 	KviMessageColorListBoxItem * m_pBackItems[17];
 	KviMessageListViewItem     * m_pLastItem;
 	QCheckBox                  * m_pEnableLogging;
 	QToolButton                * m_pIconButton;
-	KviTalPopupMenu                 * m_pIconPopup;
+	KviTalPopupMenu            * m_pIconPopup;
 public:
 	void saveLastItem();
 protected slots:
-	void itemChanged(KviTalListViewItem * it);
-	void colorChanged(KviTalListBoxItem *);
+	void itemChanged();
+	void colorChanged();
 	void iconButtonClicked();
 	void newIconSelected(int iconId);
 	virtual void commit();
@@ -176,7 +178,7 @@ class KviStandardColorsOptionsWidget : public KviOptionsWidget
 public:
 	KviStandardColorsOptionsWidget(QWidget * par);
 	~KviStandardColorsOptionsWidget();
-	
+
 };
 
 

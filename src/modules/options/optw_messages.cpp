@@ -75,7 +75,7 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 	KviBoolSelector * b2;
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("General","options"));
-	
+
 	addBoolSelector(g,__tr2qs_ctx("Show message icons","options"),KviOption_boolIrcViewShowImages);
 	addBoolSelector(g,__tr2qs_ctx("Draw some emoticons (smileys) as pictures","options"),KviOption_boolDrawEmoticons);
 	addBoolSelector(g,__tr2qs_ctx("Don't show colors in user messages","options"),KviOption_boolStripMircColorsInUserMessages);
@@ -123,19 +123,19 @@ KviTimestampOptionsWidget::KviTimestampOptionsWidget(QWidget * pParent)
 {
 	createLayout();
 	m_pUseTimestampSelector = addBoolSelector(0,0,0,0,__tr2qs_ctx("Show timestamp","options"),KviOption_boolIrcViewTimestamp);
-	
+
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),this,SLOT(enableDisableTimestampSelector(bool)));
 	KviBoolSelector* b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Use UTC time for timestamp","options"),KviOption_boolIrcViewTimestampUTC,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp));
-	
+
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
-	
+
 	KviTalHBox *hb = new KviTalHBox(this);
 	addWidgetToLayout(hb,0,2,0,2);
-	
+
 	m_pSpecialTimestampColorSelector = addBoolSelector(hb,__tr2qs_ctx("Use special color for timestamps","options"),KviOption_boolUseSpecialColorForTimestamp,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp));
 	connect(m_pSpecialTimestampColorSelector,SIGNAL(toggled(bool)),this,SLOT(enableDisableTimestampSelector(bool)));
 	connect(m_pUseTimestampSelector,SIGNAL(toggled(bool)),m_pSpecialTimestampColorSelector,SLOT(setEnabled(bool)));
-	
+
 	m_pTimestampColorSelector = addMircTextColorSelector(hb,"",KviOption_uintTimeStampForeground,KviOption_uintTimeStampBackground,KVI_OPTION_BOOL(KviOption_boolIrcViewTimestamp) && KVI_OPTION_BOOL(KviOption_boolUseSpecialColorForTimestamp));
 
 	KviStringSelector * st=addStringSelector(0,3,0,3,__tr2qs_ctx("Timestamp format:","options"),KviOption_stringIrcViewTimestampFormat);
@@ -161,7 +161,7 @@ KviStandardColorsOptionsWidget::KviStandardColorsOptionsWidget(QWidget * parent)
 {
 	setObjectName("stdcolors");
 	createLayout();
-	
+
 	addColorSelector(0,0,0,0,"0:",&(KVI_OPTION_MIRCCOLOR(0)));
 	addColorSelector(1,0,1,0,"1:",&(KVI_OPTION_MIRCCOLOR(1)));
 	addColorSelector(2,0,2,0,"2:",&(KVI_OPTION_MIRCCOLOR(2)));
@@ -180,7 +180,7 @@ KviStandardColorsOptionsWidget::KviStandardColorsOptionsWidget(QWidget * parent)
 	addColorSelector(3,3,3,3,"15:",&(KVI_OPTION_MIRCCOLOR(15)));
 
 	addRowSpacer(0,4,3,4);
-	
+
 	layout()->setRowStretch(4,1);
 }
 
@@ -193,9 +193,9 @@ KviStandardColorsOptionsWidget::~KviStandardColorsOptionsWidget()
 
 
 KviMessageListView::KviMessageListView(QWidget * par)
-: KviTalListView(par)
+: KviTalTreeWidget(par)
 {
-	setItemMargin(2);
+// 	setContentsMargin(2,2,2,2);
 }
 
 KviMessageListView::~KviMessageListView()
@@ -215,7 +215,7 @@ void KviMessageListView::paintEmptyAreaInternal(QPainter * p,const QRect &viewpo
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap();
 		if(pix)
 		{
-			QPoint pnt = viewportToContents(viewportRect.topLeft());
+			QPoint pnt = viewport()->mapToGlobal(viewportRect.topLeft());
 			p->fillRect(painterRect.x(),painterRect.y(),painterRect.width(),painterRect.height(),KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 			p->drawTiledPixmap(painterRect.x(),painterRect.y(),painterRect.width(),painterRect.height(),*pix,pnt.x(),pnt.y());
 		} else {
@@ -229,17 +229,17 @@ void KviMessageListView::paintEmptyAreaInternal(QPainter * p,const QRect &viewpo
 void KviMessageListView::paintEmptyArea(QPainter * p,const QRect &rct)
 {
 	paintEmptyAreaInternal(p,rct,rct);
-	KviTalListView::paintEmptyArea(p,rct);
+// 	KviTalTreeWidget::paintEmptyArea(p,rct);
 }
 
 
-KviMessageListViewItem::KviMessageListViewItem(KviTalListView * l,int optId)
-: KviTalListViewItem(l)
+KviMessageListViewItem::KviMessageListViewItem(KviTalTreeWidget * l,int optId)
+: KviTalTreeWidgetItem(l)
 {
 	m_iOptId = optId;
 	setText(0,"WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW");
 	m_pMsgType = new KviMsgType(KVI_OPTION_MSGTYPE(optId));
-	setPixmap(0,*(g_pIconManager->getSmallIcon(0))); // just a dummy one to ensure that the size of the item is at least 20 pixels (16 + 2 * margin)
+	setIcon(0,*(g_pIconManager->getSmallIcon(0))); // just a dummy one to ensure that the size of the item is at least 20 pixels (16 + 2 * margin)
 }
 
 KviMessageListViewItem::~KviMessageListViewItem()
@@ -247,35 +247,38 @@ KviMessageListViewItem::~KviMessageListViewItem()
 	delete m_pMsgType;
 }
 
-void KviMessageListViewItem::paintCell(QPainter * p,const QColorGroup &,int,int w,int)
+void KviMessageListViewItem::paintCell(QPainter * p,const QColorGroup &,int,int w,int h)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
-		QPoint pnt = listView()->viewport()->mapToGlobal(QPoint(int(p->worldMatrix().dx()),int(p->worldMatrix().dy())));
-		p->drawTiledPixmap(0,0,w,height(),*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
+		QPoint pnt = treeWidget()->viewport()->mapToGlobal(QPoint(int(p->worldMatrix().dx()),int(p->worldMatrix().dy())));
+		p->drawTiledPixmap(0,0,w,h,*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
 	} else {
 #endif
 		QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap();
 		if(pix)
 		{
-			QPoint pnt = listView()->viewportToContents(QPoint(int(p->worldMatrix().dx()),int(p->worldMatrix().dy())));
-			p->fillRect(0,0,w,height(),KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
-			p->drawTiledPixmap(0,0,w,height(),*pix,pnt.x(),pnt.y());
+			QPoint pnt =
+			treeWidget()->viewport()->mapToGlobal(QPoint(int(p->worldMatrix().dx()),int(p->worldMatrix().dy())));
+			p->fillRect(0,0,w,h,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
+			p->drawTiledPixmap(0,0,w,h,*pix,pnt.x(),pnt.y());
 		} else {
-			p->fillRect(0,0,w,height(),KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
+			p->fillRect(0,0,w,h,KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 		}
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
 
+//fixme
+int itemMargin=0;
 
-	p->drawPixmap(listView()->itemMargin(),(height() - 16) / 2,*(g_pIconManager->getSmallIcon(m_pMsgType->pixId())));
+	p->drawPixmap(itemMargin,(h - 16) / 2,*(g_pIconManager->getSmallIcon(m_pMsgType->pixId())));
 	// draw the background
 	if(m_pMsgType->back() < 16)
 	{
 		QColor bColor = KVI_OPTION_MIRCCOLOR(m_pMsgType->back());
-		p->fillRect(22,listView()->itemMargin(),w - 24,height() - (listView()->itemMargin() * 2),bColor);
+		p->fillRect(22,itemMargin,w - 24,h - (itemMargin * 2),bColor);
 	}
 	unsigned char ucFore = m_pMsgType->fore();
 	if(ucFore > 15)ucFore = 0;
@@ -285,20 +288,20 @@ void KviMessageListViewItem::paintCell(QPainter * p,const QColorGroup &,int,int 
 	txt += " (";
 	txt += __tr2qs_no_xgettext(m_pMsgType->type());
 	txt += ")";
-	p->drawText(24,listView()->itemMargin(),w - 24,height() - (listView()->itemMargin() * 2),Qt::AlignLeft | Qt::AlignVCenter,txt);
+	p->drawText(24,itemMargin,w - 24,h - (itemMargin * 2),Qt::AlignLeft | Qt::AlignVCenter,txt);
 	if(isSelected())
 	{
 		QPen pen(KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
 		pen.setStyle(Qt::DashLine);
 		p->setPen( pen);
-		p->drawRect(0,0,w,height());
-		p->drawRect(1,1,w - 2,height() - 2);
+		p->drawRect(0,0,w,h);
+		p->drawRect(1,1,w - 2,h - 2);
 	}
 }
 
 
-KviMessageColorListBoxItem::KviMessageColorListBoxItem(KviTalListBox * b,const QColor &clr,int idx)
-: KviTalListBoxText(b,QString::null)
+KviMessageColorListBoxItem::KviMessageColorListBoxItem(KviTalListWidget * b,const QColor &clr,int idx)
+: KviTalListWidgetText(b,QString::null)
 {
 	m_clr = clr;
 	m_iClrIdx = idx;
@@ -313,15 +316,15 @@ void KviMessageColorListBoxItem::paint(QPainter * p)
 {
 	QColor clr;
 
-	const KviTalListBox * lb = (const KviTalListBox *)listBox();
+	const KviTalListWidget * lb = (const KviTalListWidget *)listWidget();
 
 	if((m_iClrIdx >= 0) && (m_iClrIdx <= 15))
 	{
 		clr = lb->isEnabled() ? KVI_OPTION_MIRCCOLOR(m_iClrIdx) : Qt::gray;
 		p->fillRect(0,0,width(lb),height(lb),clr);
 	} else {
-		clr = listBox()->colorGroup().background();
-		KviTalListBoxText::paint(p);
+		clr = listWidget()->palette().color(QPalette::Window);
+		KviTalListWidgetText::paint(p);
 	}
 
 	if(isSelected())
@@ -335,7 +338,7 @@ void KviMessageColorListBoxItem::paint(QPainter * p)
 	}
 }
 /*
-int KviMessageColorListBoxItem::width(const KviTalListBox * lb) const
+int KviMessageColorListBoxItem::width(const KviTalListWidget * lb) const
 {
 	int w = lb->width();
 	if(w < 30)w = 30;
@@ -343,7 +346,7 @@ int KviMessageColorListBoxItem::width(const KviTalListBox * lb) const
 	return w;
 }
 
-int KviMessageColorListBoxItem::height(const KviTalListBox *) const 
+int KviMessageColorListBoxItem::height(const KviTalListWidget *) const
 {
 	return 30;
 }
@@ -376,10 +379,10 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	m_pListView = new KviMessageListView(this);
 	m_pListView->addColumn(__tr2qs_ctx("Message Type","options"));
 	m_pListView->setAllColumnsShowFocus(true);
-	m_pListView->setSelectionMode(KviTalListView::Single);
+	m_pListView->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pListView->setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
-	m_pListView->setStaticBackground(true);
-	
+// 	m_pListView->setStaticBackground(true);
+
 	addWidgetToLayout(m_pListView,0,0,2,0);
 
 	KviTalVBox * box = new KviTalVBox(this);
@@ -387,7 +390,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Background:","options"),box);
 
-	m_pBackListBox = new KviTalListBox(box);
+	m_pBackListBox = new KviTalListWidget(box);
 	m_pBackItems[16] = new KviMessageColorListBoxItem(m_pBackListBox,Qt::gray,KVI_TRANSPARENT);
 	for(i=0;i<16;i++)
 	{
@@ -396,7 +399,7 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 
 	l = new QLabel(__tr2qs_ctx("Foreground:","options"),box);
 
-	m_pForeListBox = new KviTalListBox(box);
+	m_pForeListBox = new KviTalListWidget(box);
 	for(i=0;i<16;i++)
 	{
 		m_pForeItems[i] = new KviMessageColorListBoxItem(m_pForeListBox,KVI_OPTION_MIRCCOLOR(i),i);
@@ -404,13 +407,13 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 
 	l = new QLabel(__tr2qs_ctx("Alert level:","options"),box);
 
-	m_pLevelListBox = new KviTalListBox(box);
-	KviTalListBoxText * lbt;
+	m_pLevelListBox = new KviTalListWidget(box);
+	KviTalListWidgetText * lbt;
 	for(i=0;i<6;i++)
 	{
 		QString tmpn;
 		tmpn.setNum(i);
-		lbt = new KviTalListBoxText(m_pLevelListBox,tmpn);
+		lbt = new KviTalListWidgetText(m_pLevelListBox,tmpn);
 	}
 
 	m_pIconButton = new QToolButton(box);
@@ -442,11 +445,11 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	layout()->setRowStretch(0,1);
 	layout()->setColumnStretch(0,1);
 
-	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(itemChanged(KviTalListViewItem *)));
-	connect(m_pForeListBox,SIGNAL(selectionChanged(KviTalListBoxItem *)),this,SLOT(colorChanged(KviTalListBoxItem *)));
-	connect(m_pBackListBox,SIGNAL(selectionChanged(KviTalListBoxItem *)),this,SLOT(colorChanged(KviTalListBoxItem *)));
+	connect(m_pListView,SIGNAL(selectionChanged()),this,SLOT(itemChanged()));
+	connect(m_pForeListBox,SIGNAL(selectionChanged()),this,SLOT(colorChanged()));
+	connect(m_pBackListBox,SIGNAL(selectionChanged()),this,SLOT(colorChanged()));
 
-	itemChanged(0);
+	itemChanged();
 }
 
 KviMessageColorsOptionsWidget::~KviMessageColorsOptionsWidget()
@@ -459,37 +462,38 @@ void KviMessageColorsOptionsWidget::newIconSelected(int iconId)
 	if(iconId >= KVI_NUM_SMALL_ICONS)return;
 	m_pLastItem->msgType()->setPixId(iconId);
 	m_pIconButton->setIcon(*(g_pIconManager->getSmallIcon(iconId)));
-	m_pListView->repaintItem(m_pLastItem);
+	m_pListView->repaint(m_pListView->visualItemRect(m_pLastItem));
 }
 
 void KviMessageColorsOptionsWidget::saveLastItem()
 {
 	if(!m_pLastItem)return;
 
-	int curIt = m_pForeListBox->currentItem();
-	if(curIt != -1)
+	int curIt = m_pForeListBox->currentRow();
+	if(curIt)
 	{
 		//qDebug("Setting fore %d",curIt);
 		KviMessageColorListBoxItem * fore = (KviMessageColorListBoxItem *)m_pForeListBox->item(curIt);
 		//qDebug("And is %d",fore);
 		if(fore)m_pLastItem->msgType()->setFore(fore->m_iClrIdx);
 	}
-	curIt = m_pBackListBox->currentItem();
-	if(curIt != -1)
+	curIt = m_pBackListBox->currentRow();
+	if(curIt)
 	{
 		KviMessageColorListBoxItem * back = (KviMessageColorListBoxItem *)m_pBackListBox->item(curIt);
 		if(back)m_pLastItem->msgType()->setBack(back->m_iClrIdx);
 	}
 	m_pLastItem->msgType()->enableLogging(m_pEnableLogging->isChecked());
 	//qDebug("Updating","options");
-	curIt = m_pLevelListBox->currentItem();
+	curIt = m_pLevelListBox->currentRow();
 	if(curIt < 0 || curIt > 5)curIt = 1;
 	m_pLastItem->msgType()->setLevel(curIt);
-	m_pListView->repaintItem(m_pLastItem);
+	m_pListView->repaint(m_pListView->visualItemRect(m_pLastItem));
 }
 
-void KviMessageColorsOptionsWidget::itemChanged(KviTalListViewItem * it)
+void KviMessageColorsOptionsWidget::itemChanged()
 {
+	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem*)m_pListView->currentItem();
 	//qDebug("Item changed","options");
 	if(m_pLastItem)saveLastItem();
 
@@ -515,7 +519,7 @@ void KviMessageColorsOptionsWidget::itemChanged(KviTalListViewItem * it)
 		} else {
 			m_pBackListBox->setCurrentItem(m_pBackItems[16]);
 		}
-		m_pLevelListBox->setCurrentItem(((KviMessageListViewItem *)it)->msgType()->level());
+		m_pLevelListBox->setCurrentRow(((KviMessageListViewItem *)it)->msgType()->level());
 		m_pEnableLogging->setChecked(((KviMessageListViewItem *)it)->msgType()->logEnabled());
 		m_pIconButton->setIcon(*(g_pIconManager->getSmallIcon(((KviMessageListViewItem *)it)->msgType()->pixId())));
 	}
@@ -524,7 +528,7 @@ void KviMessageColorsOptionsWidget::itemChanged(KviTalListViewItem * it)
 	m_pLastItem = (KviMessageListViewItem *)it;
 }
 
-void KviMessageColorsOptionsWidget::colorChanged(KviTalListBoxItem *)
+void KviMessageColorsOptionsWidget::colorChanged()
 {
 	if(m_pLastItem)saveLastItem();
 }
@@ -540,11 +544,11 @@ void KviMessageColorsOptionsWidget::commit()
 
 	mergeResetFlag(KviOption_resetUpdateGui);
 
-	KviMessageListViewItem * it = (KviMessageListViewItem *)m_pListView->firstChild();
-	while(it)
+	int count = m_pListView->topLevelItemCount();
+	for(int i=0; i<count;i++)
 	{
+		KviMessageListViewItem* it = (KviMessageListViewItem *)m_pListView->topLevelItem(i);
 		KVI_OPTION_MSGTYPE(it->optionId()) = *(it->msgType());
-		it = (KviMessageListViewItem *)(it->nextSibling());
 	}
 
 	KviOptionsWidget::commit();
@@ -566,11 +570,12 @@ void KviMessageColorsOptionsWidget::save()
 
 		KviStr tmp;
 
-	
-		KviMessageListViewItem * it = (KviMessageListViewItem *)m_pListView->firstChild();
 
-		while(it)
+		int count = m_pListView->topLevelItemCount();
+		for(int i=0; i<count;i++)
 		{
+			KviMessageListViewItem* it = (KviMessageListViewItem *)m_pListView->topLevelItem(i);
+
 			tmp.sprintf("Fore%d",it->optionId());
 			cfg.writeEntry(tmp.ptr(),it->msgType()->fore());
 			tmp.sprintf("Back%d",it->optionId());
@@ -581,7 +586,6 @@ void KviMessageColorsOptionsWidget::save()
 			cfg.writeEntry(tmp.ptr(),it->msgType()->logEnabled());
 			tmp.sprintf("Level%d",it->optionId());
 			cfg.writeEntry(tmp.ptr(),it->msgType()->level());
-			it = (KviMessageListViewItem *)(it->nextSibling());
 		}
 
 	}
@@ -615,7 +619,7 @@ void KviMessageColorsOptionsWidget::load()
 
 	if(KviFileDialog::askForOpenFileName(szName,__tr2qs_ctx("Choose a Filename - KVIrc ","options"),szInit))
 	{
-		itemChanged(0);
+		itemChanged();
 
 		KviConfig cfg(szName,KviConfig::Read);
 
@@ -623,10 +627,12 @@ void KviMessageColorsOptionsWidget::load()
 
 		//KviStr tmp;
 		QString tmp;
-		KviMessageListViewItem * it = (KviMessageListViewItem *)m_pListView->firstChild();
 
-		while(it)
+		int count = m_pListView->topLevelItemCount();
+		for(int i=0; i<count;i++)
 		{
+			KviMessageListViewItem* it = (KviMessageListViewItem *)m_pListView->topLevelItem(i);
+
 			tmp.sprintf("Fore%d",it->optionId());
 			int fore = cfg.readIntEntry(tmp,it->msgType()->fore());
 			if(fore < 0 || fore > 15)fore = 0;
@@ -650,9 +656,7 @@ void KviMessageColorsOptionsWidget::load()
 			int iLevel = cfg.readIntEntry(tmp,it->msgType()->level());
 			it->msgType()->setLevel(iLevel);
 
-			m_pListView->repaintItem(it);
-
-			it = (KviMessageListViewItem *)(it->nextSibling());
+			m_pListView->repaint(m_pListView->visualItemRect(it));
 		}
 	}
 }

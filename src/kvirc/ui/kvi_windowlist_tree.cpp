@@ -710,7 +710,7 @@ QSize KviTreeWindowListItemDelegate::sizeHint( const QStyleOptionViewItem & opti
 {
 	KviTreeWindowListTreeWidget* treeWidget = (KviTreeWindowListTreeWidget*)parent();
 
-	return QSize(treeWidget->viewport()->size().width(), treeWidget->fontMetrics().xHeight() * 3);
+	return QSize(treeWidget->viewport()->size().width(), qMax(20, treeWidget->fontMetrics().xHeight() * 3));
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

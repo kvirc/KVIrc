@@ -48,8 +48,8 @@
 #include <QCloseEvent>
 #include <QShortcut>
 #include <QHeaderView>
+
 //FIXME: some headers must be hidden
-//#include <q3header.h>
 
 
 //extern KviModule * g_pOptionsModule;
@@ -74,29 +74,29 @@ KviGeneralOptionsFrontWidget::~KviGeneralOptionsFrontWidget()
 }
 
 
-KviOptionsListViewItem::KviOptionsListViewItem(KviTalListView *parent,KviOptionsWidgetInstanceEntry * e)
-:KviTalListViewItem(parent,e->szName)
+KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(KviTalTreeWidget *parent,KviOptionsWidgetInstanceEntry * e)
+:KviTalTreeWidgetItem(parent,e->szName)
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
 	m_bHighlighted = false;
-	setPixmap(0,*(g_pIconManager->getSmallIcon(e->iIcon)));
+	setIcon(0,*(g_pIconManager->getSmallIcon(e->iIcon)));
 }
 
-KviOptionsListViewItem::KviOptionsListViewItem(KviTalListViewItem *parent,KviOptionsWidgetInstanceEntry * e)
-:KviTalListViewItem(parent,e->szName)
+KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,KviOptionsWidgetInstanceEntry * e)
+:KviTalTreeWidgetItem(parent,e->szName)
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
 	m_bHighlighted = false;
-	setPixmap(0,*(g_pIconManager->getSmallIcon(e->iIcon)));
+	setIcon(0,*(g_pIconManager->getSmallIcon(e->iIcon)));
 }
 
-KviOptionsListViewItem::~KviOptionsListViewItem()
+KviOptionsTreeWidgetItem::~KviOptionsTreeWidgetItem()
 {
 }
-
-void KviOptionsListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
+/*
+void KviOptionsTreeWidgetItem::paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align)
 {
 	if(m_bHighlighted)
 	{
@@ -104,19 +104,19 @@ void KviOptionsListViewItem::paintCell(QPainter * p,const QColorGroup & cg,int c
 		tmp.setColor(QColorGroup::Base,Qt::red);
 		tmp.setColor(QColorGroup::Background,Qt::red);
 		tmp.setColor(QColorGroup::Text,Qt::yellow);
-		KviTalListViewItem::paintCell(p,tmp,column,width,align);
+		KviTalTreeWidgetItem::paintCell(p,tmp,column,width,align);
 	} else {
-		KviTalListViewItem::paintCell(p,cg,column,width,align);
+		KviTalTreeWidgetItem::paintCell(p,cg,column,width,align);
 	}
 }
-
+*/
 
 KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 : QDialog(par)
 {
 	setObjectName("general_options_dialog");
 
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 
 	m_szGroup = szGroup;
 
@@ -140,7 +140,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	QString szInfoTips;
 	szInfoTips = __tr2qs_ctx("Many settings have tooltips that can be shown by holding " \
-			"the cursor over their label for a few seconds.","options"); 
+			"the cursor over their label for a few seconds.","options");
 
 	QString szOkCancelButtons = __tr2qs_ctx("When you have finished, click \"<b>OK</b>\" to accept your changes " \
 			"or \"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit your " \
@@ -179,20 +179,20 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	QGridLayout * g1 = new QGridLayout(this);
 	QSplitter * spl = new QSplitter(Qt::Horizontal,this);
 
-	g1->addMultiCellWidget(spl,0,0,0,4);
+	g1->addWidget(spl,0,0,0,4);
 
 	KviTalVBox * vbox = new KviTalVBox(spl);
 	vbox->setSpacing(2);
 	vbox->setMargin(0);
 
 	// Controlling list view
-	m_pListView = new KviTalListView(vbox);
-	m_pListView->addColumn("");
-	// This does not work in Qt4
-	//m_pListView->header()->hide();
-	m_pListView->setRootIsDecorated(true);
-	m_pListView->setSorting(-1);
-	connect(m_pListView,SIGNAL(selectionChanged(KviTalListViewItem *)),this,SLOT(listViewItemSelectionChanged(KviTalListViewItem *)));
+	m_pTreeWidget = new KviTalTreeWidget(vbox);
+	m_pTreeWidget->addColumn("");
+
+	m_pTreeWidget->header()->hide();
+	m_pTreeWidget->setRootIsDecorated(true);
+// 	m_pTreeWidget->setSorting(-1);
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *prev)),this,SLOT(treeWidgetItemSelectionChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *prev)));
 
 	KviTalHBox * hbox = new KviTalHBox(vbox);
 	vbox->setSpacing(0);
@@ -201,7 +201,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	m_pSearchLineEdit = new QLineEdit(hbox);
 	connect(m_pSearchLineEdit,SIGNAL(returnPressed()),this,SLOT(searchClicked()));
 	m_pSearchButton = new QToolButton(hbox);
-	m_pSearchButton->setUsesBigPixmap(false);
+	m_pSearchButton->setIconSize(QSize(16,16));
 	m_pSearchButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)));
 	connect(m_pSearchButton,SIGNAL(clicked()),this,SLOT(searchClicked()));
 	connect(m_pSearchLineEdit,SIGNAL(textChanged(const QString &)),this,SLOT(searchLineEditTextChanged(const QString &)));
@@ -219,7 +219,8 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	vbox->setSpacing(2);
 	vbox->setMargin(0);
 
-	m_pCategoryLabel = new QLabel("<b>&nbsp;</b>",vbox,"labgeneraloptions");
+	m_pCategoryLabel = new QLabel("<b>&nbsp;</b>",vbox);
+	m_pCategoryLabel->setObjectName("labgeneraloptions");
 	//m_pCategoryLabel->setMargin(3);
 
 	QFrame * f = new QFrame(vbox);
@@ -237,20 +238,23 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	m_pWidgetStack->widget(idx)->raise();
 
 	//  Ok,Cancel,Help
-	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","options"),this,"btnok");
+	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","options"),this);
+	b->setObjectName("btnok");
 	KviTalToolTip::add(b,__tr2qs_ctx("Close this dialog, accepting all changes.","options"));
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
 	//b->setMinimumWidth(whatIsThisWidth);
 	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
-	g1->addWidget(b,1,2);	
+	g1->addWidget(b,1,2);
 
-	b = new QPushButton(__tr2qs_ctx("&Apply","options"),this,"btnapply");
+	b = new QPushButton(__tr2qs_ctx("&Apply","options"),this);
+	b->setObjectName("btnapply");
 	KviTalToolTip::add(b,__tr2qs_ctx("Commit all changes immediately.","options"));
 	connect(b,SIGNAL(clicked()),this,SLOT(applyClicked()));
 	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g1->addWidget(b,1,3);
 
-	b = new QPushButton(__tr2qs_ctx("Cancel","options"),this,"btncancel");
+	b = new QPushButton(__tr2qs_ctx("Cancel","options"),this);
+	b->setObjectName("btncancel");
 	KviTalToolTip::add(b,__tr2qs_ctx("Close this dialog, discarding all changes.","options"));
 	b->setDefault(true);
 	//b->setMinimumWidth(whatIsThisWidth);
@@ -262,8 +266,8 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	g1->setColumnStretch(1,1);
 
 
-	fillListView(0,g_pOptionsInstanceManager->instanceEntryTree(),szGroup);
-	
+	fillTreeWidget(0,g_pOptionsInstanceManager->instanceEntryTree(),szGroup);
+
 	if(!parent())
 	{
 		if(KVI_OPTION_RECT(KviOption_rectGeneralOptionsDialogGeometry).y() < 5)
@@ -295,7 +299,7 @@ void KviOptionsDialog::searchLineEditTextChanged(const QString &)
 	m_pSearchButton->setEnabled(txt.length() > 0);
 }
 
-bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStringList &lKeywords)
+bool KviOptionsDialog::recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QStringList &lKeywords)
 {
 	//qDebug("recursive search:");
 	if(!pItem)return false;
@@ -310,9 +314,9 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 	KviPointerHashTable<void *,bool> lOptionWidgetsToMark;
 	lOptionWidgetsToMark.setAutoDelete(true);
 	QTabWidget * pTabWidgetToMark = 0;
-	
+
 	QObject * o;
-	QObjectList ol = pItem->m_pOptionsWidget->queryList();
+	QObjectList ol = pItem->m_pOptionsWidget->children();
 	if(ol.count() > 0)
 	{
 		for(QObjectList::Iterator it = ol.begin();it != ol.end();++it)
@@ -340,7 +344,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 				{
 					bFoundSomethingHere = true;
 				}
-				
+
 				if(o->inherits("QWidget"))
 				{
 					QWidget* pWidget=(QWidget*)o;
@@ -393,7 +397,7 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 		while(bool * pBool = it.current())
 		{
 			KviOptionsWidget * pOptionsWidget = (KviOptionsWidget *)it.currentKey();
-			QString szTxt = pTabWidgetToMark->tabLabel(pOptionsWidget);
+			QString szTxt = pTabWidgetToMark->tabText(pTabWidgetToMark->indexOf(pOptionsWidget));
 			if(KviQString::equalCIN(szTxt,">>> ",4))
 			{
 				szTxt.replace(">>> ","");
@@ -404,44 +408,49 @@ bool KviOptionsDialog::recursiveSearch(KviOptionsListViewItem * pItem,const QStr
 				szTxt.insert(0,">>> ");
 				szTxt += QString(" <<<");
 			}
-			pTabWidgetToMark->setTabLabel(pOptionsWidget,szTxt);
+			pTabWidgetToMark->setTabText(pTabWidgetToMark->indexOf(pOptionsWidget), szTxt);
 			++it;
 		}
 	}
 
 	pItem->setHighlighted(bFoundSomethingHere);
 
-	KviOptionsListViewItem * pChild = (KviOptionsListViewItem *)pItem->firstChild();
 	bool bFoundSomethingInside = false;
-	while(pChild)
+	int ccount = pItem->childCount();
+	if(ccount > 0)
 	{
-		bool bRet = recursiveSearch(pChild,lKeywords);
-		if(bRet)bFoundSomethingInside = true;
-		pChild = (KviOptionsListViewItem *)(pChild->nextSibling());
+		for(int j=0;j<ccount;j++)
+		{
+			KviOptionsTreeWidgetItem * pChild = (KviOptionsTreeWidgetItem *)pItem->child(j);
+
+			bool bRet = recursiveSearch(pChild,lKeywords);
+			if(bRet)bFoundSomethingInside = true;
+		}
 	}
+
 	pItem->setSelected(false);
-	m_pListView->setOpen(pItem,bFoundSomethingInside);
+	pItem->setExpanded(bFoundSomethingInside);
 	return (bFoundSomethingInside || bFoundSomethingHere);
 }
 
 void KviOptionsDialog::search(const QStringList &lKeywords)
 {
-	m_pListView->setUpdatesEnabled(false);
+	m_pTreeWidget->setUpdatesEnabled(false);
 
-	KviOptionsListViewItem * pChild = (KviOptionsListViewItem *)(m_pListView->firstChild());
 	bool bFoundSomethingInside = false;
-	while(pChild)
+	int count=m_pTreeWidget->topLevelItemCount();
+	for (int i=0;i<count;i++)
 	{
+		KviOptionsTreeWidgetItem * pChild = (KviOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		bFoundSomethingInside = recursiveSearch(pChild,lKeywords);
-		pChild = (KviOptionsListViewItem *)(pChild->nextSibling());
 	}
-	m_pListView->setUpdatesEnabled(true);
-	m_pListView->triggerUpdate();
+	m_pTreeWidget->setUpdatesEnabled(true);
+	m_pTreeWidget->update();
 }
 
 void KviOptionsDialog::search(const QString &szKeywords)
 {
-	QStringList lKeywords = QStringList::split(" ",szKeywords,false);
+	QStringList lKeywords = szKeywords.split(" ",QString::SkipEmptyParts);
 	search(lKeywords);
 }
 
@@ -452,11 +461,11 @@ void KviOptionsDialog::searchClicked()
 		search(szTxt);
 }
 
-void KviOptionsDialog::fillListView(KviTalListViewItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly)
+void KviOptionsDialog::fillTreeWidget(KviTalTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly)
 {
 	if(!l)return;
 
-	KviOptionsListViewItem * it;
+	KviOptionsTreeWidgetItem * it;
 	KviOptionsWidgetInstanceEntry * e;
 
 	KviPointerList<KviOptionsWidgetInstanceEntry> tmp;
@@ -483,37 +492,37 @@ void KviOptionsDialog::fillListView(KviTalListViewItem * p,KviPointerList<KviOpt
 	{
 		if(e->bDoInsert)
 		{
-			if(p)it = new KviOptionsListViewItem(p,e);
-			else it = new KviOptionsListViewItem(m_pListView,e);
+			if(p)it = new KviOptionsTreeWidgetItem(p,e);
+			else it = new KviOptionsTreeWidgetItem(m_pTreeWidget,e);
 			if(!it->m_pOptionsWidget)
 			{
 				it->m_pOptionsWidget = g_pOptionsInstanceManager->getInstance(it->m_pInstanceEntry,m_pWidgetStack);
 				m_pWidgetStack->addWidget(it->m_pOptionsWidget);
 			}
 		} else {
-			it = (KviOptionsListViewItem *)p;
+			it = (KviOptionsTreeWidgetItem *)p;
 		}
-		
+
 		if(e->pChildList)
 		{
 			if(e->bIsContainer)
 			{
 				// it's a container: add only eventual not contained children (containers or explicitly marked as not contained)
-				fillListView(it,e->pChildList,szGroup,true);
+				fillTreeWidget(it,e->pChildList,szGroup,true);
 			} else {
 				// it's not a container, add any children
-				fillListView(it,e->pChildList,szGroup,false);
+				fillTreeWidget(it,e->pChildList,szGroup,false);
 			}
 		}
 	}
 }
 
-void KviOptionsDialog::listViewItemSelectionChanged(KviTalListViewItem *it)
+void KviOptionsDialog::treeWidgetItemSelectionChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *prev)
 {
 	if(it)
 	{
 		QString str = it->text(0);
-		KviTalListViewItem * par = it->parent();
+		KviTalTreeWidgetItem * par = it->parent();
 
 		while(par)
 		{
@@ -524,7 +533,7 @@ void KviOptionsDialog::listViewItemSelectionChanged(KviTalListViewItem *it)
 		str.prepend("<b>");
 		str += "</b>";
 
-		KviOptionsListViewItem *i = (KviOptionsListViewItem *)it;
+		KviOptionsTreeWidgetItem *i = (KviOptionsTreeWidgetItem *)it;
 		if(!i->m_pOptionsWidget)
 		{
 			i->m_pOptionsWidget = g_pOptionsInstanceManager->getInstance(i->m_pInstanceEntry,m_pWidgetStack);
@@ -536,23 +545,34 @@ void KviOptionsDialog::listViewItemSelectionChanged(KviTalListViewItem *it)
 		m_pCategoryLabel->setText(str);
 	}
 }
-
-KviOptionsListViewItem * KviOptionsDialog::findItemByPage(KviOptionsListViewItem *it,KviOptionsWidget * pPage)
+/*
+KviOptionsTreeWidgetItem * KviOptionsDialog::findItemByPage(KviOptionsTreeWidgetItem *it,KviOptionsWidget * pPage)
 {
 	if(!it)return 0;
 	if(it->m_pOptionsWidget == pPage)return it;
 
-	KviOptionsListViewItem *i;
-	// run through the children
-	i = (KviOptionsListViewItem *)(it->firstChild());
-	if(i)
+	KviOptionsTreeWidgetItem *i;
+
+	int ccount = it->childCount();
+
+	for(int j=0;j<ccount;j++)
 	{
+		KviOptionsTreeWidgetItem * i = (KviOptionsTreeWidgetItem *)it->child(j);
+
 		i = findItemByPage(i,pPage);
 		if(i)return i;
 	}
-	
+
 	// not found in the children tree.. look in the next sibling
-	i = (KviOptionsListViewItem *)(it->nextSibling());
+	for(int j=0;j<ccount;j++)
+	{
+		KviOptionsTreeWidgetItem * pChild = (KviOptionsTreeWidgetItem *)pItem->child(j);
+
+		i = findItemByPage(i,pPage);
+		if(i)return i;
+	}
+
+	i = (KviOptionsTreeWidgetItem *)(it->nextSibling());
 	if(i)
 	{
 		i = findItemByPage(i,pPage);
@@ -560,7 +580,7 @@ KviOptionsListViewItem * KviOptionsDialog::findItemByPage(KviOptionsListViewItem
 	}
 	return 0;
 }
-
+*/
 void KviOptionsDialog::pageWantsToSwitchToAdvancedPage(KviOptionsWidget * pPage)
 {
 	// unused
@@ -573,19 +593,20 @@ void KviOptionsDialog::applyClicked()
 
 void KviOptionsDialog::apply(bool bDialogAboutToClose)
 {
+	int count=m_pTreeWidget->topLevelItemCount();
+	KviOptionsTreeWidgetItem * it;
 
-	KviOptionsListViewItem *it = (KviOptionsListViewItem *)m_pListView->firstChild();
-	while(it)
+	for (int i=0;i<count;i++)
 	{
+		it = (KviOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		recursiveCommit(it);
-		it = (KviOptionsListViewItem *)it->nextSibling();
 	}
-	
+
 	if(!bDialogAboutToClose)
 	{
 		// bring up the current widget again!
-		it = (KviOptionsListViewItem *)m_pListView->currentItem();
-		if(it)listViewItemSelectionChanged(it);
+		it = (KviOptionsTreeWidgetItem *)m_pTreeWidget->currentItem();
+		if(it)treeWidgetItemSelectionChanged(it, 0);
 	}
 
 	g_pApp->saveConfiguration();
@@ -609,16 +630,17 @@ void KviOptionsDialog::closeEvent(QCloseEvent *e)
 	delete this;
 }
 
-void KviOptionsDialog::recursiveCommit(KviOptionsListViewItem *it)
+void KviOptionsDialog::recursiveCommit(KviOptionsTreeWidgetItem *it)
 {
 	// First commit the children
 	if(!it) return;
-	KviOptionsListViewItem *it2 = (KviOptionsListViewItem *)it->firstChild();
-	while(it2)
+	int count=it->childCount();
+	for (int i=0;i<count;i++)
 	{
-		recursiveCommit(it2);
-		it2 = (KviOptionsListViewItem *)it2->nextSibling();
+		KviOptionsTreeWidgetItem * pChild = (KviOptionsTreeWidgetItem *)it->child(i);
+		recursiveCommit(pChild);
 	}
+
 	// then the parents
 	if(it->m_pOptionsWidget)
 	{
@@ -626,7 +648,7 @@ void KviOptionsDialog::recursiveCommit(KviOptionsListViewItem *it)
 		delete it->m_pOptionsWidget;
 		it->m_pOptionsWidget = 0;
 	}
-	//refreshListView(); // <-- this tends to jump into infinite recursion
+	//refreshTreeWidget(); // <-- this tends to jump into infinite recursion
 }
 
 void  KviOptionsDialog::keyPressEvent( QKeyEvent * e )

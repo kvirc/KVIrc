@@ -3546,7 +3546,7 @@ KviOptionsWidget * KviOptionsInstanceManager::getInstance(KviOptionsWidgetInstan
 	if(e->pWidget->parent() != par)
 	{
 		QWidget * oldPar = (QWidget *)e->pWidget->parent();
-		e->pWidget->reparent(par,QPoint(0,0));
+		e->pWidget->setParent(par); //reparent(par,QPoint(0,0));
 		delete oldPar;
 	}
 	if(e->bIsContainer)

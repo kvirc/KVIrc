@@ -28,11 +28,13 @@
 #include "instances.h"
 
 #include "kvi_optionswidget.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QDialog>
 #include <QStringList>
 #include <QToolButton>
+#include <QPainter>
+#include <QColorGroup>
 
 class QLabel;
 class QPushButton;
@@ -47,12 +49,12 @@ public:
 	~KviGeneralOptionsFrontWidget();
 };
 
-class KviOptionsListViewItem : public KviTalListViewItem
+class KviOptionsTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
-	KviOptionsListViewItem(KviTalListView *parent,KviOptionsWidgetInstanceEntry * e);
-	KviOptionsListViewItem(KviTalListViewItem *parent,KviOptionsWidgetInstanceEntry * e);
-	~KviOptionsListViewItem();
+	KviOptionsTreeWidgetItem(KviTalTreeWidget *parent,KviOptionsWidgetInstanceEntry * e);
+	KviOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,KviOptionsWidgetInstanceEntry * e);
+	~KviOptionsTreeWidgetItem();
 public:
 	KviOptionsWidgetInstanceEntry * m_pInstanceEntry;
 	KviOptionsWidget              * m_pOptionsWidget;
@@ -60,17 +62,17 @@ public:
 public:
 	void setHighlighted(bool b){ m_bHighlighted = b; };
 protected:
-	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
+// 	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
 };
 
 class KviOptionsDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	KviOptionsDialog(QWidget * par,const QString &szGroup); 
+	KviOptionsDialog(QWidget * par,const QString &szGroup);
 	~KviOptionsDialog();
 private:
-	KviTalListView    * m_pListView;
+	KviTalTreeWidget    * m_pTreeWidget;
 	QLabel       * m_pCategoryLabel;
 	KviTalWidgetStack * m_pWidgetStack;
 	KviGeneralOptionsFrontWidget* m_pFrontWidget;
@@ -78,12 +80,12 @@ private:
 	QLineEdit    * m_pSearchLineEdit;
 	QToolButton  * m_pSearchButton;
 private:
-	void recursiveCommit(KviOptionsListViewItem *it);
-	void fillListView(KviTalListViewItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
-	//KviOptionsListViewItem * showHiddenChildren(KviTalListViewItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
-	KviOptionsListViewItem * findItemByPage(KviOptionsListViewItem *it,KviOptionsWidget * pPage);
+	void recursiveCommit(KviOptionsTreeWidgetItem *it);
+	void fillTreeWidget(KviTalTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
+	//KviOptionsTreeWidgetItem * showHiddenChildren(KviTalTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
+// 	KviOptionsTreeWidgetItem * findItemByPage(KviOptionsTreeWidgetItem *it,KviOptionsWidget * pPage);
 private slots:
-	void listViewItemSelectionChanged(KviTalListViewItem *it);
+	void treeWidgetItemSelectionChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *prev);
 	void applyClicked();
 	void okClicked();
 	void cancelClicked();
@@ -94,7 +96,7 @@ protected:
 	void apply(bool bDialogAboutToClose);
 	virtual void closeEvent(QCloseEvent *e);
 	virtual void keyPressEvent( QKeyEvent * e );
-	bool recursiveSearch(KviOptionsListViewItem * pItem,const QStringList &lKeywords);
+	bool recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QStringList &lKeywords);
 public:
 	void search(const QString &szKeywords);
 	void search(const QStringList &lKeywords);
