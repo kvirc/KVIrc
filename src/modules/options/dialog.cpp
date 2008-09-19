@@ -192,7 +192,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	m_pTreeWidget->header()->hide();
 	m_pTreeWidget->setRootIsDecorated(true);
 // 	m_pTreeWidget->setSorting(-1);
-	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *prev)),this,SLOT(treeWidgetItemSelectionChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *prev)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem*, KviTalTreeWidgetItem *)),this,SLOT(treeWidgetItemSelectionChanged(KviTalTreeWidgetItem *, KviTalTreeWidgetItem *)));
 
 	KviTalHBox * hbox = new KviTalHBox(vbox);
 	vbox->setSpacing(0);
