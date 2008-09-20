@@ -399,20 +399,10 @@ KviStringListSelector::~KviStringListSelector()
 
 void KviStringListSelector::itemSelectionChanged()
 {
-
-	//unsigned int uCount = m_pListWidget->count();
 	bool bSomeSelected ;
 	if (m_pListWidget->selectedItems().count())  bSomeSelected = true;
 	else bSomeSelected = false;
-	/*for(unsigned int u=0;u<uCount;u++)
-	{
-		if(m_pListWidget->isSelected(u))
-		{
-			bSomeSelected = true;
-			break;
-		}
-	}
-	*/
+
 	m_pRemoveButton->setEnabled(isEnabled() && bSomeSelected);
 }
 
@@ -430,18 +420,10 @@ void KviStringListSelector::setEnabled(bool bEnabled)
 	QString txt = m_pLineEdit->text();
 	txt.trimmed();
 	m_pAddButton->setEnabled(bEnabled && (txt.length() > 0));
-	//unsigned int uCount = m_pListWidget->count();
+
 	bool bSomeSelected;
 	if (m_pListWidget->selectedItems().count())  bSomeSelected = true;
 	else bSomeSelected = false;
-	/*for(unsigned int u=0;u<uCount;u++)
-	{
-		if(m_pListWidget->isSelected(u))
-		{
-			bSomeSelected = true;
-			break;
-		}
-	}*/
 
 	m_pRemoveButton->setEnabled(bEnabled && bSomeSelected);
 	m_pListWidget->setEnabled(bEnabled);
@@ -469,12 +451,15 @@ void KviStringListSelector::addClicked()
 
 void KviStringListSelector::removeClicked()
 {
-	unsigned int uCount = m_pListWidget->count();
-	for(unsigned int u=0;u<uCount;u++)
+	int u=0;
+	while(u<m_pListWidget->count())
 	{
-		while(m_pListWidget->item(u)->isSelected()){
-			delete (KviTalListWidgetItem*)m_pListWidget->takeItem(u);
+		if(m_pListWidget->item(u)->isSelected())
+		{
+			m_pListWidget->takeItem(u);
+			continue;
 		}
+		u++;
 	}
 }
 

@@ -47,8 +47,6 @@ KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
 		m_pIcon=new KviTextIcon(0);
 	QPixmap* pix=m_pIcon->pixmap();
 	if(pix) setIcon(QIcon(*pix));
-	
-
 }
 
 KviTextIconTableItem::~KviTextIconTableItem()
@@ -84,6 +82,8 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	header.append(__tr2qs("Emoticon"));
 
 	m_pTable->setHorizontalHeaderLabels(header);
+	m_pTable->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_pTable->setSelectionMode(QAbstractItemView::SingleSelection);
 
 	mergeTip(m_pTable->viewport(),__tr2qs_ctx("This table contains the text icon associations.<br>" \
 			"KVirc will use them to display the CTRL+I escape sequences and eventually the " \
@@ -168,7 +168,7 @@ void KviTextIconsOptionsWidget::itemClicked(QTableWidgetItem *i)
 {
 	if (i->column()!=1) return;
 	if (m_iLastEditedRow==i->row()) return;
-	if (m_pBox) 
+	if (m_pBox)
 		delete m_pBox;
 	m_pBox=new KviTalHBox(0);
 	m_pItem=(KviTextIconTableItem *)i;
@@ -189,6 +189,7 @@ void KviTextIconsOptionsWidget::addClicked()
 	m_pTable->setRowCount(m_pTable->rowCount() + 1);
 	m_pTable->setItem(m_pTable->rowCount() - 1,0,new QTableWidgetItem(__tr2qs_ctx("unnamed","options")));
 	m_pTable->setItem(m_pTable->rowCount() - 1,1,new KviTextIconTableItem(m_pTable,0));
+	m_pTable->scrollToBottom();
 	m_pDel->setEnabled(true);
 }
 
@@ -198,27 +199,7 @@ void KviTextIconsOptionsWidget::delClicked()
 
 	if((i > -1) && (i < m_pTable->rowCount()))
 	{
-		// remove row i
-		m_pTable->takeItem(i,0);
-		m_pTable->takeItem(i,1);
-		m_pTable->takeItem(i,2);
-
-		for(;i < (m_pTable->rowCount() - 1);i++)
-		{
-			// Get first line data
-			QString cellData1 = m_pTable->item(i,0)->text();
-			QString cellData2 = m_pTable->item(i,1)->text();
-
-			// Fill in first line with second line data
-			m_pTable->item(i,0)->setText(m_pTable->item(i+1,0)->text());
-			m_pTable->item(i,1)->setText(m_pTable->item(i+1,1)->text());
-
-			// Put first line data in second line
-			m_pTable->item(i+1,0)->setText(cellData1);
-			m_pTable->item(i+1,1)->setText(cellData2);
-		}
-
-		m_pTable->setRowCount(m_pTable->rowCount() - 1);
+		m_pTable->removeRow(i);
 		if(m_pTable->rowCount() == 0) m_pDel->setEnabled(false);
 	}
 }

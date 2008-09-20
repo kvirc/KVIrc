@@ -162,6 +162,7 @@ void KviProxyOptionsWidget::fillProxyList()
 		if(p == g_pProxyDataBase->currentProxy())
 		{
 			prx->setSelected(true);
+			m_pTreeWidget->setCurrentItem(prx);
 			m_pTreeWidget->scrollToItem(prx);
 		}
 	}
@@ -330,6 +331,7 @@ void KviProxyOptionsWidget::newProxy()
 	KviProxy prx;
 	KviProxyOptionsTreeWidgetItem * it = new KviProxyOptionsTreeWidgetItem(m_pTreeWidget,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),&prx);
 	it->setSelected(true);
+	m_pTreeWidget->setCurrentItem(it);
 	m_pTreeWidget->scrollToItem(it);
 }
 
