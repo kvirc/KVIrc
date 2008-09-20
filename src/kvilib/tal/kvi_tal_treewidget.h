@@ -50,7 +50,7 @@ signals:
 	void itemActivated(KviTalTreeWidgetItem *,int);
 	void itemChanged(KviTalTreeWidgetItem *,int);
 	void itemClicked(KviTalTreeWidgetItem *,int);
-	
+
 	void itemCollapsed(KviTalTreeWidgetItem *);
 	void itemExpanded(KviTalTreeWidgetItem *);
 	void itemDoubleClicked(KviTalTreeWidgetItem *,int);
@@ -73,6 +73,8 @@ protected slots:
 class KVILIB_API KviTalTreeWidgetItem : public QTreeWidgetItem
 {
 public:
+	KviTalTreeWidgetItem()
+	: QTreeWidgetItem() {};
 	KviTalTreeWidgetItem(KviTalTreeWidget * pParent)
 	: QTreeWidgetItem(pParent) {};
 	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent)
