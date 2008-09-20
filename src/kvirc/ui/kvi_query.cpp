@@ -137,6 +137,8 @@ void KviQuery::updateLabelText()
 QString KviQuery::getInfoLabelTipText()
 {
 	QString txt;
+	if (!connection())
+		return txt;
 	KviIrcUserEntry * e = connection()->userDataBase()->find(m_szName);
 	if(e)
 	{
@@ -219,7 +221,7 @@ QString KviQuery::getInfoLabelTipText()
 QString KviQuery::getInfoLabelText()
 {
 	QString tmp;
-	if(KVI_OPTION_BOOL(KviOption_boolShowExtendedInfoInQueryLabel))
+	if(KVI_OPTION_BOOL(KviOption_boolShowExtendedInfoInQueryLabel) && connection())
 	{
 		KviIrcUserEntry * e = connection()->userDataBase()->find(m_szName);
 		if(e)
