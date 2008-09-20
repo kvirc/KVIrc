@@ -103,17 +103,12 @@ static bool options_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 		{
 			if(d->parent())
 			{
-			//	d->reparent(0,QPoint(0,0),true);
 				d->setParent(0);
 				d->setGeometry(0,0,d->width(),d->height());
-	//			inline QT3_SUPPORT void reparent(QWidget *parent, const QPoint &p, bool showIt=false)
-    //{ setParent(parent, windowFlags() & ~Qt::WindowType_Mask); setGeometry(p.x(),p.y(),width(),height()); if (showIt) show(); }
-    
 			}
 		} else {
 			if(d->parent() != c->window()->frame()->splitter())
 			{
-			//	d->reparent(c->window()->frame()->splitter(),QPoint(0,0),true);
 				d->setParent(c->window()->frame()->splitter());
 				d->setGeometry(0,0,d->width(),d->height());
 				d->show();
@@ -209,7 +204,6 @@ static bool options_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 
 	if(e->pWidget)
 	{
-		//c->warning(__tr("The editor page is already open","options"));
 		e->pWidget->raise();
 		e->pWidget->activateWindow();
 		e->pWidget->setFocus();

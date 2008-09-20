@@ -75,19 +75,23 @@ KviGeneralOptionsFrontWidget::~KviGeneralOptionsFrontWidget()
 
 
 KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(KviTalTreeWidget *parent,KviOptionsWidgetInstanceEntry * e)
-:KviTalTreeWidgetItem(parent,e->szName)
+:KviTalTreeWidgetItem()
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
+	setText(0,e->szName);
 	setIcon(0,*(g_pIconManager->getSmallIcon(e->iIcon)));
+	parent->insertTopLevelItem(0, this);
 }
 
 KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,KviOptionsWidgetInstanceEntry * e)
-:KviTalTreeWidgetItem(parent,e->szName)
+:KviTalTreeWidgetItem()
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
+	setText(0,e->szName);
 	setIcon(0,*(g_pIconManager->getSmallIcon(e->iIcon)));
+	parent->insertChild(0, this);
 }
 
 KviOptionsTreeWidgetItem::~KviOptionsTreeWidgetItem()
@@ -179,8 +183,8 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem*, KviTalTreeWidgetItem *)),this,SLOT(treeWidgetItemSelectionChanged(KviTalTreeWidgetItem *, KviTalTreeWidgetItem *)));
 
 	KviTalHBox * hbox = new KviTalHBox(vbox);
-	vbox->setSpacing(0);
-	vbox->setMargin(0);
+	hbox->setSpacing(2);
+	hbox->setMargin(0);
 
 	m_pSearchLineEdit = new QLineEdit(hbox);
 	connect(m_pSearchLineEdit,SIGNAL(returnPressed()),this,SLOT(searchClicked()));
