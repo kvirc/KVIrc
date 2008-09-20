@@ -1,13 +1,13 @@
 # translation of filetransferwindow_hu.po to hungarian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# 
+#
 # Ádám Fibinger <vfiber@interware.hu>, 2006, 2007, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: filetransferwindow_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 21:27+0200\n"
+"POT-Creation-Date: 2008-09-20 22:44+0200\n"
 "PO-Revision-Date: 2008-02-26 07:58+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,117 +16,117 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:460
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:503
 msgid "&Clear Terminated"
 msgstr "Megszakított eltávolítása"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:431
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:474
 msgid "&Copy Path to Clipboard"
 msgstr "Útvonal másolása vágólapra"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:433
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:476
 msgid "&Delete file"
 msgstr "Fájl Törlése"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:387
-#: src/modules/filetransferwindow/filetransferwindow.cpp:420
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:430
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:463
 msgid "&Open"
 msgstr "Megnyitás"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:408
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:451
 msgid "&Other..."
 msgstr "Egyéb"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:467
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:510
 msgid "Clear &All"
 msgstr "Minden eltávolítása"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:726
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:769
 msgid "Clear All Transfers? - KVIrc"
 msgstr "Minden Adatátvitel eltávolítása? - KVIrc"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:722
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:765
 msgid "Clear all transfers, including any in progress?"
 msgstr ""
 "Minden adatátvitel eltávolítása, beleértve a még folyamatban lévőket is?"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:560
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:603
 msgid "Confirm delete"
 msgstr "Törlés Megerőssítése"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:565
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:608
 msgid "Delete failed"
 msgstr "Törlés sikertelen"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:558
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:601
 msgid "Do you really want to delete the file %Q?"
 msgstr "Tényleg törölni szeretnéd a fájlt: %Q?"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:566
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:609
 msgid "Failed to remove the file"
 msgstr "A fájl eltávolítása sikertelen"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:761
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:804
 msgid "File Transfers"
 msgstr "Fájl Átvitelek"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:208
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:134
 msgid "Information"
 msgstr "Információ"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:435
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:478
 msgid "Local &File"
 msgstr "Helyi Fájl"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:426
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:469
 msgid "MS-DOS Prompt at Location"
 msgstr "MS-DOS Promt az adott helyen"
 
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:123
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/libkvifiletransferwindow.cpp:123
 #, fuzzy
 msgid "Manage File &Transfers"
 msgstr "Fájl Átvitelek"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:561
-#: src/modules/filetransferwindow/filetransferwindow.cpp:726
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:604
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:769
 msgid "No"
 msgstr "Nem"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:567
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:610
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:413
-#: src/modules/filetransferwindow/filetransferwindow.cpp:425
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:456
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:468
 msgid "Open &Location"
 msgstr "Hely megnyitása"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:411
-#: src/modules/filetransferwindow/filetransferwindow.cpp:423
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:454
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:466
 msgid "Open &With"
 msgstr "Megnyitás ezzel..."
 
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
 msgid "Ops.. internal error"
 msgstr ""
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:209
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:135
 msgid "Progress"
 msgstr "Folyamat"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:368
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:411
 msgid "Size: %1"
 msgstr "Méret: %1"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:414
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:457
 msgid "Terminal at Location"
 msgstr "Terminál az adott helyen"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:207
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:133
 msgid "Type"
 msgstr "Típus"
 
-#: src/modules/filetransferwindow/filetransferwindow.cpp:561
-#: src/modules/filetransferwindow/filetransferwindow.cpp:726
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:604
+#: /home/mr/Projekte/kvirc/trunk/src/modules/filetransferwindow/filetransferwindow.cpp:769
 msgid "Yes"
 msgstr "Igen"

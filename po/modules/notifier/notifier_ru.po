@@ -5,12 +5,12 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Valerius <valeragir@mail.ru>, 2004.
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: notifier_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-06 16:18+0200\n"
+"POT-Creation-Date: 2008-09-20 22:45+0200\n"
 "PO-Revision-Date: 2005-02-16 19:45+0200\n"
 "Last-Translator: Valeriy Girchenko <valeragir@mail.ru>\n"
 "Language-Team: russian\n"
@@ -22,55 +22,55 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/modules/notifier/notifierwindow.cpp:1209
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1218
 msgid "1 Hour"
 msgstr "1 Час"
 
-#: src/modules/notifier/notifierwindow.cpp:1205
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1214
 msgid "1 Minute"
 msgstr "1 Минута"
 
-#: src/modules/notifier/notifierwindow.cpp:1207
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1216
 msgid "15 Minutes"
 msgstr "15 Минут"
 
-#: src/modules/notifier/notifierwindow.cpp:1208
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1217
 msgid "30 Minutes"
 msgstr "30 Минут"
 
-#: src/modules/notifier/notifierwindow.cpp:1206
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1215
 msgid "5 Minutes"
 msgstr "5 Минут"
 
-#: src/modules/notifier/notifierwindow.cpp:1214
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1223
 msgid "Disable"
 msgstr "Выключить"
 
-#: src/modules/notifier/notifierwindow.cpp:1202
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1211
 msgid "Hide"
 msgstr "Скрыть"
 
-#: src/modules/notifier/notifierwindow.cpp:1212
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1221
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Навсегда (До явного включения)"
 
-#: src/modules/notifier/libkvinotifier.cpp:152
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/libkvinotifier.cpp:154
 msgid "The -t switch expects a timeout in seconds"
 msgstr "Используйте ключ -t чтобы задать таймаут в секундах"
 
-#: src/modules/notifier/libkvinotifier.cpp:149
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/libkvinotifier.cpp:151
 msgid "The specified timeout is not valid, assuming 0"
 msgstr "Заданный таймаут недействителен, принимается 0"
 
-#: src/modules/notifier/libkvinotifier.cpp:135
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/libkvinotifier.cpp:137
 msgid "The specified window does not exist"
 msgstr "Заданное окно не существует"
 
-#: src/modules/notifier/notifierwindow.cpp:1211
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1220
 msgid "Until KVIrc is Restarted"
 msgstr "Пока KVIrc не будет перезапущен"
 
-#: src/modules/notifier/notifierwindow.cpp:1304
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1313
 msgid "Write text or commands to window"
 msgstr "Напишите текст или команду в окне"
 

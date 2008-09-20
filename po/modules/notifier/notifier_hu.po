@@ -1,13 +1,13 @@
 # translation of notifier_hu.po to hungarian
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# 
+#
 # Ádám Fibinger <vfiber@interware.hu>, 2006, 2007.
 msgid ""
 msgstr ""
 "Project-Id-Version: notifier_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 21:27+0200\n"
+"POT-Creation-Date: 2008-09-20 22:45+0200\n"
 "PO-Revision-Date: 2007-08-23 18:55+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,54 +16,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/notifier/notifierwindow.cpp:1209
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1218
 msgid "1 Hour"
 msgstr "1 Óra"
 
-#: src/modules/notifier/notifierwindow.cpp:1205
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1214
 msgid "1 Minute"
 msgstr "1 Perc"
 
-#: src/modules/notifier/notifierwindow.cpp:1207
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1216
 msgid "15 Minutes"
 msgstr "15 Perc"
 
-#: src/modules/notifier/notifierwindow.cpp:1208
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1217
 msgid "30 Minutes"
 msgstr "30 Perc"
 
-#: src/modules/notifier/notifierwindow.cpp:1206
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1215
 msgid "5 Minutes"
 msgstr "5 Perc"
 
-#: src/modules/notifier/notifierwindow.cpp:1214
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1223
 msgid "Disable"
 msgstr "Letiltás"
 
-#: src/modules/notifier/notifierwindow.cpp:1202
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1211
 msgid "Hide"
 msgstr "Elrejt"
 
-#: src/modules/notifier/notifierwindow.cpp:1212
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1221
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Végleg (amíg újra engedélyezve nem lesz)"
 
-#: src/modules/notifier/libkvinotifier.cpp:152
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/libkvinotifier.cpp:154
 msgid "The -t switch expects a timeout in seconds"
 msgstr "A -t kapcsoló időtúllépést vár másodpercekben"
 
-#: src/modules/notifier/libkvinotifier.cpp:149
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/libkvinotifier.cpp:151
 msgid "The specified timeout is not valid, assuming 0"
 msgstr "A megadott időtúllépés érvénytelen, beállítás nullára"
 
-#: src/modules/notifier/libkvinotifier.cpp:135
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/libkvinotifier.cpp:137
 msgid "The specified window does not exist"
 msgstr "A megadott ablak nem létezik"
 
-#: src/modules/notifier/notifierwindow.cpp:1211
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1220
 msgid "Until KVIrc is Restarted"
 msgstr "Amíg a KVIrcet újra nem indítod"
 
-#: src/modules/notifier/notifierwindow.cpp:1304
+#: /home/mr/Projekte/kvirc/trunk/src/modules/notifier/notifierwindow.cpp:1313
 msgid "Write text or commands to window"
 msgstr "Szöveg vagy parancs írása az ablakba"
