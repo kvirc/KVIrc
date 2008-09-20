@@ -60,15 +60,15 @@ KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString
 		"alternative to the primary one. KVIrc will use the alternatives " \
 		"if the primary nick is already used by someone else on a particular " \
 		"IRC network.</center>","options"));
+	l->setWordWrap(true);
+
 	g->addWidget(l,0,0,1,3);
-//	g->addMultiCellWidget(l,0,0,0,2);
 
 	l = new QLabel(this);
 	l->setText(__tr2qs_ctx("Alt. Nickname 1:","options"));
 	g->addWidget(l,1,0);
 	m_pNickEdit1 = new QLineEdit(this);
 	g->addWidget(m_pNickEdit1,1,1,1,2);
-//	g->addMultiCellWidget(m_pNickEdit1,1,1,1,2);
 	m_pNickEdit1->setText(n1);
 
 	l = new QLabel(this);
@@ -76,7 +76,6 @@ KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString
 	g->addWidget(l,2,0);
 	m_pNickEdit2 = new QLineEdit(this);
 	g->addWidget(m_pNickEdit2,2,1,1,2);
-//	g->addMultiCellWidget(m_pNickEdit2,2,2,1,2);
 	m_pNickEdit2->setText(n2);
 
 	l = new QLabel(this);
@@ -84,14 +83,12 @@ KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString
 	g->addWidget(l,3,0);
 	m_pNickEdit3 = new QLineEdit(this);
 	g->addWidget(m_pNickEdit3,3,1,1,2);
-//	g->addMultiCellWidget(m_pNickEdit3,3,3,1,2);
 	m_pNickEdit3->setText(n3);
 	KviTalHBox * h = new KviTalHBox(this);
 	h->setSpacing(8);
 	g->addWidget(h,4,2);
 
 	QPushButton * pb = new QPushButton(__tr2qs_ctx("Cancel","options"),h);
-	//g->addWidget(pb,4,2);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
 
 	pb = new QPushButton(__tr2qs_ctx("Ok","options"),h);
@@ -99,8 +96,6 @@ KviNickAlternativesDialog::KviNickAlternativesDialog(QWidget * par,const QString
 	connect(pb,SIGNAL(clicked()),this,SLOT(accept()));
 
 	g->setColumnStretch(0,1);
-
-	//setMinimumSize(250,120);
 }
 
 KviNickAlternativesDialog::~KviNickAlternativesDialog()
@@ -126,7 +121,6 @@ KviAvatarDownloadDialog::KviAvatarDownloadDialog(QWidget * par,const QString &sz
 
 	m_pOutput = new QLabel(__tr2qs_ctx("<center>Please wait while the avatar is being downloaded</center>","options"),this);
 	g->addWidget(m_pOutput,0,0,1,2);
-//	g->addMultiCellWidget(m_pOutput,0,0,0,1);
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("Abort","options"),this);
 	g->addWidget(b,1,1);
@@ -219,35 +213,29 @@ KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &
 	l->setMinimumWidth(250);
 
 	g->addWidget(l,0,0,1,3);
-//	g->addMultiCellWidget(l,0,0,0,2);
 
 	m_pLineEdit = new QLineEdit(this);
 	m_pLineEdit->setText(szInitialPath);
 	m_pLineEdit->setMinimumWidth(180);
 
 	g->addWidget(m_pLineEdit,1,0,1,2);
-//	g->addMultiCellWidget(m_pLineEdit,1,1,0,1);
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
 	g->addWidget(b,1,2);
 	KviTalHBox * h = new KviTalHBox(this);h->setSpacing(8);
 	g->addWidget(h,2,1,1,2);
-//	g->addMultiCellWidget(h,2,2,1,2);
 	b = new QPushButton(__tr2qs_ctx("&OK","options"),h);
 	b->setMinimumWidth(80);
 	b->setDefault(true);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
-	//g->addWidget(b,2,1);
 
 	b = new QPushButton(__tr2qs_ctx("Cancel","options"),h);
 	b->setMinimumWidth(80);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
-	//g->addWidget(b,2,2);
 
 	g->setRowStretch(0,1);
 	g->setColumnStretch(0,1);
-	//setMinimumSize(250,120);
 }
 
 KviAvatarSelectionDialog::~KviAvatarSelectionDialog()
@@ -305,7 +293,8 @@ KviIdentityGeneralOptionsWidget::KviIdentityGeneralOptionsWidget(QWidget * paren
 
 	KviTalGroupBox * gbox = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Basic Properties","options"));
 	KviTalHBox * hb = new KviTalHBox(gbox);
-	hb->setSpacing(3);
+	hb->setSpacing(0);
+	hb->setMargin(0);
 
 	KviStringSelector * sel = addStringSelector(hb,__tr2qs_ctx("Nickname:","options"),KviOption_stringNickname1);
 	sel->setMinimumLabelWidth(120);

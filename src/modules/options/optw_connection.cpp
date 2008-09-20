@@ -221,6 +221,7 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 
 	KviStringSelector * s = addStringSelector(gbox,__tr2qs_ctx("Ident username:","options"),
 		KviOption_stringIdentdUser,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
+	connect(m_pEnableIdent,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
 	
 	KviUIntSelector * u = addUIntSelector(gbox,__tr2qs_ctx("Service port:","options"),
 		KviOption_uintIdentdPort,0,65535,113,KVI_OPTION_BOOL(KviOption_boolUseIdentService));

@@ -87,6 +87,7 @@ public:
 	virtual void commit();
 public slots:
 	void setNotEnabled(bool bNotEnabled);
+	void setEnabled(bool bEnabled);
 };
 
 class KVIRC_API KviStringSelector : public KviTalHBox, public KviSelectorInterface
@@ -103,8 +104,9 @@ public:
 	void setValidator(QValidator * v){ m_pLineEdit->setValidator(v); };
 	void setMinimumLabelWidth(unsigned int uWidth){ m_pLabel->setMinimumWidth(uWidth); };
 	virtual void commit();
-	virtual void setEnabled(bool bEnabled);
 	void setText(const QString& text);
+public slots:
+	virtual void setEnabled(bool bEnabled);
 };
 
 
@@ -169,6 +171,7 @@ public:
 	virtual void setPrefix(const QString & txt);
 	virtual void setSuffix(const QString & txt);
 	virtual void commit();
+public slots:
 	virtual void setEnabled(bool bEnabled);
 };
 
@@ -193,10 +196,11 @@ protected:
 	QString       m_szFilter;
 public:
 	virtual void commit();
-	virtual void setEnabled(bool bEnabled);
 	void setSelection(const QString &szSelection);
 signals:
 	void selectionChanged(const QString &szNewValue);
+public slots:
+	virtual void setEnabled(bool bEnabled);
 private slots:
 	void browseClicked();
 protected:

@@ -49,6 +49,11 @@ KviBoolSelector::KviBoolSelector(QWidget * par,const QString & txt,bool *pOption
 	m_pOption = pOption;
 }
 
+void KviBoolSelector::setEnabled(bool bEnabled)
+{
+	QCheckBox::setEnabled(bEnabled);
+}
+
 void KviBoolSelector::setNotEnabled(bool bNotEnabled)
 {
 	setEnabled(!bNotEnabled);
