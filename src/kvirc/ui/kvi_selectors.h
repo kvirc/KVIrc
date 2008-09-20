@@ -123,12 +123,9 @@ public:
 	KviPixmapPreview(QWidget * par);
 	~KviPixmapPreview();
 protected:
-	KviPixmap * m_pPixmap;
+	QLabel *m_pLabPixmap;
 public:
 	void setPixmap(KviPixmap * pix);
-protected:
-	virtual void drawContents(QPainter * p, int clipx, int clipy, int clipw, int cliph);
-
 };
 
 class KVIRC_API KviPixmapSelector : public QWidget, public KviSelectorInterface

@@ -171,41 +171,26 @@ KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QStri
 KviPixmapPreview::KviPixmapPreview(QWidget * par)
 : KviTalScrollView(par)
 {
-	m_pPixmap = 0;
-	resizeContents(0,0);
+	m_pLabPixmap = new QLabel;
+	setWidget(m_pLabPixmap);
+	setBackgroundRole(QPalette::Dark);
 }
 
 KviPixmapPreview::~KviPixmapPreview()
 {
+	delete m_pLabPixmap;
 }
 
 void KviPixmapPreview::setPixmap(KviPixmap * pix)
 {
-	m_pPixmap = pix;
-	if(m_pPixmap)
+	if(!pix->isNull())
 	{
-		if(m_pPixmap->pixmap())
-		{
-			resizeContents(m_pPixmap->pixmap()->width(),m_pPixmap->pixmap()->height());
-			update();
-			return;
-		}
-	}
-	resizeContents(0,0);
-	update();
-}
+		m_pLabPixmap->resize(pix->pixmap()->size());
+		m_pLabPixmap->setPixmap(*pix->pixmap());
 
-void KviPixmapPreview::drawContents(QPainter * p, int clipx, int clipy, int clipw, int cliph)
-{
-	if(m_pPixmap)
-	{
-		if(m_pPixmap->pixmap())
-		{
-			p->drawPixmap(clipx,clipy,*(m_pPixmap->pixmap()),clipx,clipy,clipw,cliph);
-		}
+		setWidget(m_pLabPixmap);
 	}
 }
-
 
 KviPixmapSelector::KviPixmapSelector(QWidget * par,const QString & txt,KviPixmap * pOption,bool bEnabled)
 : QWidget(par), KviSelectorInterface()
@@ -264,7 +249,6 @@ void KviPixmapSelector::commit()
 
 void KviPixmapSelector::choosePixmap()
 {
-//	KviStr tmp;
 	QString tmp;
 	if(KviFileDialog::askForOpenFileName(tmp,__tr("Choose an Image File - KVIrc")))
 	{
