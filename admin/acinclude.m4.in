@@ -2472,7 +2472,7 @@ AC_DEFUN([AC_SS_FINAL_CONFIG],
 		SS_INCDIRS="$SS_INCDIRS -I$SS_KDE_INCDIR"
 		SS_RPATH="$SS_RPATH -rpath $SS_KDE_LIBDIR"
 		SS_LIBDIRS="$SS_LIBDIRS -L$SS_KDE_LIBDIR"
-		SS_LIBLINK="-lkdecore -lkdeui -lkparts $SS_LIBLINK"
+		SS_LIBLINK="-lkdecore -lkdeui -lkparts -lkio $SS_LIBLINK"
 		AC_DEFINE([COMPILE_KDE_SUPPORT], 1, [define if you want to compile the KDE 3.x support])
 		SS_BUILD_FLAGS="k$SS_BUILD_FLAGS"
 	fi

@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvitorrent.la
 #%.moc: %.h
 #	$(SS_QT_MOC) $< -o $@
 
-libkvitorrent_la_LDFLAGS = -avoid-version -module
+libkvitorrent_la_LDFLAGS = -avoid-version -module $(SS_LIBDIRS)
 
 libkvitorrent_la_SOURCES = libkvitorrent.cpp \
 		tc_interface.cpp \

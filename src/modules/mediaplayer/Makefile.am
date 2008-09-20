@@ -10,7 +10,7 @@ pluglib_LTLIBRARIES      = libkvimediaplayer.la
 #%.moc: %.h
 #	$(SS_QT_MOC) $< -o $@
 
-libkvimediaplayer_la_LDFLAGS = -avoid-version -module
+libkvimediaplayer_la_LDFLAGS = -avoid-version -module $(SS_LIBDIRS)
 
 libkvimediaplayer_la_SOURCES = libkvimediaplayer.cpp \
 		mp_amarokinterface.cpp \
