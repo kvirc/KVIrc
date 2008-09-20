@@ -16,27 +16,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/perl/libkviperl.cpp:477
-#: /home/mr/Projekte/kvirc/trunk/src/modules/perl/libkviperl.cpp:481
+#: src/modules/perl/libkviperl.cpp:477
+#: src/modules/perl/libkviperl.cpp:481
 msgid "Perl execution error:"
 msgstr "Perl-ajo virhe:"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/perl/libkviperl.cpp:47
+#: src/modules/perl/libkviperl.cpp:47
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr "Moduulia perlcore ei voitu ladata: perl-tuke ei saatavilla"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/perl/libkviperl.cpp:460
-#: /home/mr/Projekte/kvirc/trunk/src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:460
+#: src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"
 msgstr ""
 "Perlcore -moduuli ei onnistunut ajamaan koodia: jokin on vialla perl-tuessa"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/perl/libkviperl.cpp:61
+#: src/modules/perl/libkviperl.cpp:61
 msgid "This KVIrc executable has been compiled without perl scripting support"
 msgstr "Tämä KVIrc suoritettava on käännetty ilman perl-skriptaus tukea"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/perl/libkviperl.cpp:48
+#: src/modules/perl/libkviperl.cpp:48
 msgid "To see more details about loading failure try /perlcore.load"
 msgstr "Saadaksesi lisätietoja latausvirheestä, kokeile /perlcore.load"
