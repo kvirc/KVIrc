@@ -185,7 +185,7 @@ KviStandardColorsOptionsWidget::~KviStandardColorsOptionsWidget()
 {
 }
 
-KviMessageListViewItem::KviMessageListViewItem(KviMessageListView* l,int optId)
+KviMessageListWidgetItem::KviMessageListWidgetItem(KviMessageListWidget* l,int optId)
 : KviTalListWidgetItem(l)
 {
 	m_iOptId = optId;
@@ -201,16 +201,16 @@ KviMessageListViewItem::KviMessageListViewItem(KviMessageListView* l,int optId)
 	setIcon(*(g_pIconManager->getSmallIcon(m_pMsgType->pixId())));
 }
 
-KviMessageListViewItem::~KviMessageListViewItem()
+KviMessageListWidgetItem::~KviMessageListWidgetItem()
 {
 	delete m_pMsgType;
 }
 
-void KviMessageListViewItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const
+void KviMessageListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const
 {
 
 	const KviTalListWidget *tb = (const KviTalListWidget *)parent();
-	KviMessageListViewItem *it = static_cast<KviMessageListViewItem*>(index.internalPointer());
+	KviMessageListWidgetItem *it = static_cast<KviMessageListWidgetItem*>(index.internalPointer());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
@@ -321,8 +321,8 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	int i;
 	m_pLastItem = 0;
 
-	m_pListView = new KviMessageListView(this);
-	m_pListViewItemDelegate = new KviMessageListViewItemDelegate(m_pListView);
+	m_pListView = new KviMessageListWidget(this);
+	m_pListViewItemDelegate = new KviMessageListWidgetItemDelegate(m_pListView);
 	m_pListView->setItemDelegate(m_pListViewItemDelegate);
 	m_pListView->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pListView->setFont(KVI_OPTION_FONT(KviOption_fontIrcView));
@@ -389,11 +389,11 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(clicked()),this,SLOT(save()));
 
 
-	KviMessageListViewItem * it;
+	KviMessageListWidgetItem * it;
 
 	for(i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 	{
-		it = new KviMessageListViewItem(m_pListView,i);
+		it = new KviMessageListWidgetItem(m_pListView,i);
 	}
 
 	layout()->setRowStretch(0,1);
@@ -478,8 +478,8 @@ void KviMessageColorsOptionsWidget::itemChanged()
 
 	if(it)
 	{
-		int back = ((KviMessageListViewItem *)it)->msgType()->back();
-		int fore = ((KviMessageListViewItem *)it)->msgType()->fore();
+		int back = ((KviMessageListWidgetItem *)it)->msgType()->back();
+		int fore = ((KviMessageListWidgetItem *)it)->msgType()->fore();
 		if(fore >= 0 && fore <= 15)
 		{
 			m_pForeListBox->setCurrentItem(m_pForeItems[fore]);
@@ -490,13 +490,13 @@ void KviMessageColorsOptionsWidget::itemChanged()
 		} else {
 			m_pBackListBox->setCurrentItem(m_pBackItems[16]);
 		}
-		m_pLevelListBox->setCurrentRow(((KviMessageListViewItem *)it)->msgType()->level());
-		m_pEnableLogging->setChecked(((KviMessageListViewItem *)it)->msgType()->logEnabled());
-		m_pIconButton->setIcon(*(g_pIconManager->getSmallIcon(((KviMessageListViewItem *)it)->msgType()->pixId())));
+		m_pLevelListBox->setCurrentRow(((KviMessageListWidgetItem *)it)->msgType()->level());
+		m_pEnableLogging->setChecked(((KviMessageListWidgetItem *)it)->msgType()->logEnabled());
+		m_pIconButton->setIcon(*(g_pIconManager->getSmallIcon(((KviMessageListWidgetItem *)it)->msgType()->pixId())));
 	}
 
 	// Ok...can save from now on
-	m_pLastItem = (KviMessageListViewItem *)it;
+	m_pLastItem = (KviMessageListWidgetItem *)it;
 }
 
 void KviMessageColorsOptionsWidget::colorChanged()
@@ -518,7 +518,7 @@ void KviMessageColorsOptionsWidget::commit()
 	int count = m_pListView->count();
 	for(int i=0; i<count;i++)
 	{
-		KviMessageListViewItem* it = (KviMessageListViewItem *)m_pListView->item(i);
+		KviMessageListWidgetItem* it = (KviMessageListWidgetItem *)m_pListView->item(i);
 		KVI_OPTION_MSGTYPE(it->optionId()) = *(it->msgType());
 	}
 
@@ -545,7 +545,7 @@ void KviMessageColorsOptionsWidget::save()
 		int count = m_pListView->count();
 		for(int i=0; i<count;i++)
 		{
-			KviMessageListViewItem* it = (KviMessageListViewItem *)m_pListView->item(i);
+			KviMessageListWidgetItem* it = (KviMessageListWidgetItem *)m_pListView->item(i);
 
 			tmp.sprintf("Fore%d",it->optionId());
 			cfg.writeEntry(tmp.ptr(),it->msgType()->fore());
@@ -602,7 +602,7 @@ void KviMessageColorsOptionsWidget::load()
 		int count = m_pListView->count();
 		for(int i=0; i<count;i++)
 		{
-			KviMessageListViewItem* it = (KviMessageListViewItem *)m_pListView->item(i);
+			KviMessageListWidgetItem* it = (KviMessageListWidgetItem *)m_pListView->item(i);
 
 			tmp.sprintf("Fore%d",it->optionId());
 			int fore = cfg.readIntEntry(tmp,it->msgType()->fore());

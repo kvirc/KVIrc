@@ -93,29 +93,29 @@ protected slots:
 #define KVI_OPTIONS_WIDGET_PARENT_KviMessageColorsOptionsWidget KviMessageOptionsWidget
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviMessageColorsOptionsWidget 30
 
-class KviMessageListView : public KviTalListWidget
+class KviMessageListWidget : public KviTalListWidget
 {
 	Q_OBJECT
 public:
-	KviMessageListView(QWidget * par): KviTalListWidget(par) {};
-	~KviMessageListView() {};
+	KviMessageListWidget(QWidget * par): KviTalListWidget(par) {};
+	~KviMessageListWidget() {};
 };
 
-class KVIRC_API KviMessageListViewItemDelegate : public QItemDelegate
+class  KviMessageListWidgetItemDelegate : public QItemDelegate
 {
 	Q_OBJECT
 public:
-	KviMessageListViewItemDelegate(QAbstractItemView * pWidget=0)
+	KviMessageListWidgetItemDelegate(QAbstractItemView * pWidget=0)
 		: QItemDelegate(pWidget) {};
-	~KviMessageListViewItemDelegate(){};
+	~KviMessageListWidgetItemDelegate(){};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
 };
 
-class KviMessageListViewItem : public KviTalListWidgetItem
+class KviMessageListWidgetItem : public KviTalListWidgetItem
 {
 public:
-	KviMessageListViewItem(KviMessageListView* l,int optId);
-	~KviMessageListViewItem();
+	KviMessageListWidgetItem(KviMessageListWidget* l,int optId);
+	~KviMessageListWidgetItem();
 private:
 	int          m_iOptId;
 	KviMsgType * m_pMsgType;
@@ -136,7 +136,7 @@ public:
 	inline int clrIdx() { return m_iClrIdx; };
 };
 
-class KVIRC_API KviMessageColorListBoxItemDelegate : public QItemDelegate
+class  KviMessageColorListBoxItemDelegate : public QItemDelegate
 {
 	Q_OBJECT
 public:
@@ -154,8 +154,8 @@ public:
 	KviMessageColorsOptionsWidget(QWidget * parent);
 	~KviMessageColorsOptionsWidget();
 public:
-	KviMessageListView         * m_pListView;
-	KviMessageListViewItemDelegate * m_pListViewItemDelegate;
+	KviMessageListWidget         * m_pListView;
+	KviMessageListWidgetItemDelegate * m_pListViewItemDelegate;
 	KviTalListWidget           * m_pForeListBox;
 	KviMessageColorListBoxItemDelegate * m_pForeListBoxDelegate;
 	KviTalListWidget           * m_pBackListBox;
@@ -163,7 +163,7 @@ public:
 	KviTalListWidget           * m_pLevelListBox;
 	KviMessageColorListBoxItem * m_pForeItems[16];
 	KviMessageColorListBoxItem * m_pBackItems[17];
-	KviMessageListViewItem     * m_pLastItem;
+	KviMessageListWidgetItem     * m_pLastItem;
 	QCheckBox                  * m_pEnableLogging;
 	QToolButton                * m_pIconButton;
 	KviTalPopupMenu            * m_pIconPopup;
