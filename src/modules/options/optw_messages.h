@@ -93,47 +93,58 @@ protected slots:
 #define KVI_OPTIONS_WIDGET_PARENT_KviMessageColorsOptionsWidget KviMessageOptionsWidget
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviMessageColorsOptionsWidget 30
 
-class KviMessageListView : public KviTalTreeWidget
+class KviMessageListView : public KviTalListWidget
 {
 	Q_OBJECT
 public:
-	KviMessageListView(QWidget * par);
-	~KviMessageListView();
-protected:
-	void paintEmptyAreaInternal(QPainter * p,const QRect &viewportRect,const QRect &painterRect);
-public:
-	void paintEmptyArea(QPainter * p,const QRect &rct);
+	KviMessageListView(QWidget * par): KviTalListWidget(par) {};
+	~KviMessageListView() {};
 };
 
+class KVIRC_API KviMessageListViewItemDelegate : public QItemDelegate
+{
+	Q_OBJECT
+public:
+	KviMessageListViewItemDelegate(QAbstractItemView * pWidget=0)
+		: QItemDelegate(pWidget) {};
+	~KviMessageListViewItemDelegate(){};
+	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
+};
 
-class KviMessageListViewItem : public KviTalTreeWidgetItem
+class KviMessageListViewItem : public KviTalListWidgetItem
 {
 public:
-	KviMessageListViewItem(KviTalTreeWidget * l,int optId);
+	KviMessageListViewItem(KviMessageListView* l,int optId);
 	~KviMessageListViewItem();
 private:
 	int          m_iOptId;
 	KviMsgType * m_pMsgType;
 public:
-	int optionId(){ return m_iOptId; };
-	KviMsgType * msgType(){ return m_pMsgType; };
-	virtual void paintCell(QPainter * p,const QColorGroup &,int,int,int);
+	inline int optionId(){ return m_iOptId; };
+	inline KviMsgType * msgType(){ return m_pMsgType; };
 };
 
 
 class KviMessageColorListBoxItem : public KviTalListWidgetText
 {
 public:
-	KviMessageColorListBoxItem(KviTalListWidget * b,const QColor & clr,int idx);
+	KviMessageColorListBoxItem(KviTalListWidget * b, int idx);
 	~KviMessageColorListBoxItem();
 public:
 	int m_iClrIdx;
-	QColor m_clr;
 public:
-	virtual void paint(QPainter * p);
-	virtual int width(const KviTalListWidget * lv) const { return 120; };
+	inline int clrIdx() { return m_iClrIdx; };
 };
 
+class KVIRC_API KviMessageColorListBoxItemDelegate : public QItemDelegate
+{
+	Q_OBJECT
+public:
+	KviMessageColorListBoxItemDelegate(QAbstractItemView * pWidget=0)
+		: QItemDelegate(pWidget) {};
+	~KviMessageColorListBoxItemDelegate(){};
+	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
+};
 
 class KviMessageColorsOptionsWidget : public KviOptionsWidget
 {
@@ -144,8 +155,11 @@ public:
 	~KviMessageColorsOptionsWidget();
 public:
 	KviMessageListView         * m_pListView;
+	KviMessageListViewItemDelegate * m_pListViewItemDelegate;
 	KviTalListWidget           * m_pForeListBox;
+	KviMessageColorListBoxItemDelegate * m_pForeListBoxDelegate;
 	KviTalListWidget           * m_pBackListBox;
+	KviMessageColorListBoxItemDelegate * m_pBackListBoxDelegate;
 	KviTalListWidget           * m_pLevelListBox;
 	KviMessageColorListBoxItem * m_pForeItems[16];
 	KviMessageColorListBoxItem * m_pBackItems[17];

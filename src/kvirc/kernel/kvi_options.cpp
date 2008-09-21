@@ -831,7 +831,7 @@ KviMsgTypeOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] =
 {
 	"None",          "Frame",       "Mdi",              "Windows",
-	"WindowList",       "IrcView",     "MsgType",          "MircColor",
+	"WindowList",    "IrcView",     "MsgType",          "MircColor",
 	"Input",         "UserParser",  "Connection",       "IrcSocket",
 	"User",          "UserListView","Label",            "Modules",
 	"Ctcp",          "Dcc",         "Gui",              "IrcToolBar",
