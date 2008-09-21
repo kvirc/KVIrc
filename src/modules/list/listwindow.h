@@ -78,7 +78,6 @@ public:
 	const KviChannelTreeWidgetItemData * channelData(){ return m_pData;}
 	int width ( const QFontMetrics & fm, const KviTalTreeWidget * lv, int column ) const;
 protected:
-//	virtual void paintCell(QPainter * p,const QColorGroup &cg,int col,int wdth,int align);
 	virtual QString key(int col,bool) const;
 };
 
@@ -90,16 +89,16 @@ public:
 	KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole);
 	~KviListWindow();
 protected:
-	QSplitter                              * m_pVertSplitter;
-	QSplitter                              * m_pTopSplitter;
-	KviTalTreeWidget                         * m_pTreeWidget;
-	QLineEdit                              * m_pParamsEdit;
-	QToolButton                            * m_pRequestButton;
-	QToolButton							   * m_pStopListDownloadButton;
-	QToolButton							   * m_pOpenButton;
-	QToolButton							   * m_pSaveButton;
-	KviThemedLabel                         * m_pInfoLabel;
-	QTimer                                 * m_pFlushTimer;
+	QSplitter          * m_pVertSplitter;
+	QSplitter          * m_pTopSplitter;
+	KviTalTreeWidget   * m_pTreeWidget;
+	QLineEdit          * m_pParamsEdit;
+	QToolButton        * m_pRequestButton;
+	QToolButton        * m_pStopListDownloadButton;
+	QToolButton        * m_pOpenButton;
+	QToolButton        * m_pSaveButton;
+	KviThemedLabel     * m_pInfoLabel;
+	QTimer             * m_pFlushTimer;
 	KviPointerList<KviChannelTreeWidgetItemData> * m_pItemList;
 public: // Methods
 	virtual void control(int msg);
@@ -113,7 +112,7 @@ protected:
 	virtual void getBaseLogFileName(KviStr &buffer);
 protected slots:
 	void flush();
-	void itemDoubleClicked(KviTalTreeWidgetItem *it);
+	void itemDoubleClicked(KviTalTreeWidgetItem *it, int);
 	void requestList();
 	void stoplistdownload();
 	void connectionStateChange();

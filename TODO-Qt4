@@ -27,14 +27,8 @@ src/modules
 	iograph - all excluded by #if
 	objects - qt3support:
 		multilineedit
-	options
-		optw_connection: some checkboxes not working
-		optw_dcc: some checkboxes not working
-		optw_proxy: segfault removing proxy from list (listwidget issue)
-		optw_server: buttons on the right are messed
 	torrent - broken
 	help <-done, needs some fixing
-	list
 	notifier <-done, needs fixing
 	popupeditor
 	reguser

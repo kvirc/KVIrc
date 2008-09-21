@@ -107,43 +107,23 @@ int KviChannelTreeWidgetItem::width ( const QFontMetrics & fm, const KviTalTreeW
 
 void KviChannelTreeWidgetItemDelegate::paint( QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-	QString szText;
 	QPalette cg;
 	KviChannelTreeWidgetItem *item=static_cast<KviChannelTreeWidgetItem *>(index.internalPointer());
+
+	KviTalTreeWidget* lv = (KviTalTreeWidget *)parent();
+
+	if (option.state & QStyle::State_Selected)
+		p->fillRect(option.rect, cg.brush( QPalette::Highlight ) );
+
+	//reset the color
+	p->setPen( cg.text().color() );
+
 	switch(index.column())
 	{
-		case 0:  szText = item->channelData()->m_szChan;   break;
-		case 1:  szText = item->channelData()->m_szUsers;  break;
-		default: szText = item->channelData()->m_szTopic;  break;
+		case 0:  p->drawText(option.rect, item->channelData()->m_szChan);   break;
+		case 1:  p->drawText(option.rect, item->channelData()->m_szUsers);   break;
+		default: KviTopicWidget::paintColoredText(p,item->channelData()->m_szTopic,cg,option.rect);  break;
 	}
-
-	KviTalTreeWidget* lv = (KviTalTreeWidget *)item->treeWidget();
-	// FIXME
-	int marg = 5;//lv->itemMargin();
-	int r = marg;
-
-	p->fillRect( option.rect.x(), option.rect.y(), option.rect.width(), option.rect.height(), cg.brush(lv->viewport()->backgroundRole()) );
-	int width=option.rect.width();
-
-	if ((option.state & QStyle::State_Selected) && (index.column() == 0 || lv->allColumnsShowFocus()) ) {
-		p->fillRect( r - marg, 0, width - r + marg, option.rect.height(),
-		cg.brush( QPalette::Highlight ) );
-
-		if ( (option.state & QStyle::State_Enabled) || !lv )
-			p->setPen( cg.highlightedText().color() );
-		else if ( !(option.state & QStyle::State_Enabled) && lv)
-			// FIXME
-			// p->setPen( lv->palette().currentColorGroup().inactive().highlightedText() );
-			p->setPen( lv->palette().highlightedText().color() );
-	} else {
-		if ( (option.state & QStyle::State_Enabled) || !lv )
-			p->setPen( cg.text().color() );
-		else if ( !(option.state & QStyle::State_Enabled) && lv)
-			//p->setPen( lv->palette().disabled().text() );
-			p->setPen(lv->palette().text().color());
-	}
-
-	KviTopicWidget::paintColoredText(p,szText,cg,option.rect);
 }
 
 QString KviChannelTreeWidgetItem::key(int col,bool) const
@@ -217,6 +197,8 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter,"info_label");
 
 	m_pTreeWidget  = new KviTalTreeWidget(m_pVertSplitter);
+	m_pTreeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTreeWidget->setItemDelegate(new KviChannelTreeWidgetItemDelegate(m_pTreeWidget));
 	QStringList columnLabels;
 	columnLabels.append(__tr2qs("Channel"));
@@ -225,11 +207,9 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pTreeWidget->setColumnCount(3);
 	m_pTreeWidget->setHeaderLabels(columnLabels);
 	m_pTreeWidget->setAllColumnsShowFocus(TRUE);
-	//m_pTreeWidget->setColumnWidthMode(2,KviTalTreeWidget::Maximum);
-	//m_pTreeWidget->setColumnWidthMode(3,KviTalTreeWidget::Maximum);
-	//m_pTreeWidget->setSorting(100);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
-	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(KviTalTreeWidgetItem *)),this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem *)));
+
+	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(KviTalTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem *, int)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
@@ -239,7 +219,6 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 		this,SLOT(connectionStateChange()));
 
 	connectionStateChange();
-
 }
 
 KviListWindow::~KviListWindow()
@@ -491,7 +470,7 @@ void KviListWindow::flush()
 	m_pTreeWidget->viewport()->update();
 }
 
-void KviListWindow::itemDoubleClicked(KviTalTreeWidgetItem *it)
+void KviListWindow::itemDoubleClicked(KviTalTreeWidgetItem *it, int)
 {
 	QString sz = ((KviChannelTreeWidgetItem *)it)->channel();
 	if(sz.isEmpty())return;
