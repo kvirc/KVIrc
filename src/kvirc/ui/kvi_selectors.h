@@ -231,13 +231,14 @@ private:
 	QPushButton * m_pButton;
 public:
 	virtual void commit();
-	virtual void setEnabled(bool bEnabled);
 	QColor getColor(){ return m_memColor; };
 	void forceColor(QColor clr);
 private:
 	void setButtonPalette(QColor * pOption);
 private slots:
 	void changeClicked();
+public slots:
+	virtual void setEnabled(bool bEnabled);
 };
 
 class KVIRC_API KviFontSelector : public KviTalHBox, public KviSelectorInterface
@@ -252,9 +253,10 @@ private:
 	QPushButton * m_pButton;
 public:
 	virtual void commit();
-	virtual void setEnabled(bool bEnabled);
 private:
 	void setButtonFont(QFont * pOption);
+public slots:
+	virtual void setEnabled(bool bEnabled);
 private slots:
 	void changeClicked();
 };
