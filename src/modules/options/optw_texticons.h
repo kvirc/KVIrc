@@ -29,6 +29,7 @@
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
 
+#include <QToolButton>
 #include <QTableWidget>
 #include <QTableWidgetItem>
 
@@ -50,7 +51,7 @@ protected:
 public:
 	KviTextIcon * icon() { return m_pIcon; };
 	void setId(int id);
-	
+
 };
 
 class KviTextIconsOptionsWidget : public KviOptionsWidget
@@ -67,6 +68,8 @@ protected:
 	QPushButton  * m_pDel;
 	KviTalPopupMenu *m_pPopup;
 	KviTalHBox *m_pBox;
+	QToolButton *m_pIconButton;
+	QToolButton *m_pBrowseButton;
 public:
 	virtual void commit();
 protected slots:

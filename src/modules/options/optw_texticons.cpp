@@ -33,9 +33,6 @@
 
 #include <QLayout>
 #include <QCursor>
-#include <QTableWidget>
-#include <QTableWidgetItem>
-#include <QToolButton>
 
 
 KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
@@ -52,7 +49,7 @@ KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
 KviTextIconTableItem::~KviTextIconTableItem()
 {
 	delete m_pIcon;
-	
+
 }
 
 void KviTextIconTableItem::setId(int id)
@@ -67,9 +64,11 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
 	m_pBox=0;
+	m_pIconButton=0;
+	m_pBrowseButton=0;
 	m_pPopup=0;
 	m_iLastEditedRow=-1;
-	
+
 	setObjectName("texticons_options_widget");
 	createLayout();
 
@@ -81,27 +80,34 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 	header.append(__tr2qs("Text"));
 	header.append(__tr2qs("Emoticon"));
 
+	m_pTable->setColumnWidth(0,300);
+	m_pTable->horizontalHeader()->setResizeMode(QHeaderView::Stretch);
+	m_pTable->horizontalHeader()->stretchLastSection();
 	m_pTable->setHorizontalHeaderLabels(header);
 	m_pTable->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_pTable->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_pTable->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 
 	mergeTip(m_pTable->viewport(),__tr2qs_ctx("This table contains the text icon associations.<br>" \
 			"KVirc will use them to display the CTRL+I escape sequences and eventually the " \
 			"emoticons.","options"));
 
 	int idx = 0;
+	QTableWidgetItem *item0;
+	KviTextIconTableItem *item1;
 	while(KviTextIcon * i = it.current())
 	{
-		if(!m_pTable->item(idx,0)){
-			QTableWidgetItem *item=new QTableWidgetItem(it.currentKey());
-			QFont itemFont=item->font();
-			itemFont.setBold(true);
-			itemFont.setUnderline(true);
-			item->setFont(itemFont);
-			m_pTable->setItem(idx,0,item);
+		if(!m_pTable->item(idx,0))
+		{
+			item0 = new QTableWidgetItem(it.currentKey());
+			m_pTable->setItem(idx,0,item0);
 		}
 
-		m_pTable->setItem(idx,1,new KviTextIconTableItem(m_pTable,new KviTextIcon(i)));
+		item1 = new KviTextIconTableItem(m_pTable,new KviTextIcon(i));
+		//remove from the item the ability to be edited as text
+		item1->setFlags(item1->flags() ^ Qt::ItemIsEditable);
+		m_pTable->setItem(idx,1,item1);
+
 		++idx;
 		++it;
 	}
@@ -124,7 +130,12 @@ KviTextIconsOptionsWidget::KviTextIconsOptionsWidget(QWidget * parent)
 
 KviTextIconsOptionsWidget::~KviTextIconsOptionsWidget()
 {
-	if (m_pBox) delete m_pBox;
+	if(m_pIconButton)
+		delete m_pIconButton;
+	if(m_pBrowseButton)
+		delete m_pBrowseButton;
+	if (m_pBox)
+		delete m_pBox;
 }
 
 
@@ -144,6 +155,7 @@ void KviTextIconsOptionsWidget::iconSelected(int id)
 {
 	m_pItem->icon()->setId(id);
 	m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
+	m_pIconButton->setIcon(QIcon(*m_pItem->icon()->pixmap()));
 }
 
 void KviTextIconsOptionsWidget::chooseFromFile()
@@ -156,6 +168,7 @@ void KviTextIconsOptionsWidget::chooseFromFile()
 		{
 			m_pItem->icon()->setFilename(szFile);
 			m_pItem->setIcon(QIcon(*m_pItem->icon()->pixmap()));
+			m_pIconButton->setIcon(QIcon(*m_pItem->icon()->pixmap()));
 		}
 	}
 }
@@ -168,22 +181,33 @@ void KviTextIconsOptionsWidget::itemClicked(QTableWidgetItem *i)
 {
 	if (i->column()!=1) return;
 	if (m_iLastEditedRow==i->row()) return;
+
+	m_pItem=(KviTextIconTableItem *)i;
+
+	if(m_pIconButton)
+		delete m_pIconButton;
+	if(m_pBrowseButton)
+		delete m_pBrowseButton;
 	if (m_pBox)
 		delete m_pBox;
+
 	m_pBox=new KviTalHBox(0);
-	m_pItem=(KviTextIconTableItem *)i;
-	QToolButton *iconButton=new QToolButton(m_pBox);
-	iconButton->setMinimumWidth(150);
-	QToolButton *browseButton=new QToolButton(m_pBox);
-	browseButton->setText("...");
 	m_pBox->setSpacing(0);
 	m_pBox->setMargin(0);
-	iconButton->setIcon(QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_THEME)));
+
+	m_pIconButton=new QToolButton(m_pBox);
+	m_pIconButton->setMinimumWidth(150);
+	m_pIconButton->setIcon(QIcon(i->icon()));
+	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
+
+	m_pBrowseButton=new QToolButton(m_pBox);
+	m_pBrowseButton->setText("...");
+	connect(m_pBrowseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
+
 	m_pTable->setCellWidget(i->row(),1,m_pBox);
-	connect(iconButton,SIGNAL(clicked()),this,SLOT(doPopup()));
-	connect(browseButton,SIGNAL(clicked()),this,SLOT(chooseFromFile()));
 	m_iLastEditedRow=i->row();
 }
+
 void KviTextIconsOptionsWidget::addClicked()
 {
 	m_pTable->setRowCount(m_pTable->rowCount() + 1);
@@ -223,11 +247,11 @@ void KviTextIconsOptionsWidget::commit()
 		}
 	}
 	g_pTextIconManager->checkDefaultAssociations();
-	
+
 	for(int i=0; i<n; i++)
 		for (int j=0; j<m_pTable->columnCount(); j++)
 			if (m_pTable->item(i,j)) m_pTable->takeItem(i,j);
-	
+
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
