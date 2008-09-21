@@ -125,24 +125,24 @@ public:
 };
 
 
-class KviMessageColorListBoxItem : public KviTalListWidgetText
+class KviMessageColorListWidgetItem : public KviTalListWidgetText
 {
 public:
-	KviMessageColorListBoxItem(KviTalListWidget * b, int idx);
-	~KviMessageColorListBoxItem();
+	KviMessageColorListWidgetItem(KviTalListWidget * b, int idx);
+	~KviMessageColorListWidgetItem();
 public:
 	int m_iClrIdx;
 public:
 	inline int clrIdx() { return m_iClrIdx; };
 };
 
-class  KviMessageColorListBoxItemDelegate : public QItemDelegate
+class  KviMessageColorListWidgetItemDelegate : public QItemDelegate
 {
 	Q_OBJECT
 public:
-	KviMessageColorListBoxItemDelegate(QAbstractItemView * pWidget=0)
+	KviMessageColorListWidgetItemDelegate(QAbstractItemView * pWidget=0)
 		: QItemDelegate(pWidget) {};
-	~KviMessageColorListBoxItemDelegate(){};
+	~KviMessageColorListWidgetItemDelegate(){};
 	void paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const;
 };
 
@@ -156,13 +156,13 @@ public:
 public:
 	KviMessageListWidget         * m_pListView;
 	KviMessageListWidgetItemDelegate * m_pListViewItemDelegate;
-	KviTalListWidget           * m_pForeListBox;
-	KviMessageColorListBoxItemDelegate * m_pForeListBoxDelegate;
-	KviTalListWidget           * m_pBackListBox;
-	KviMessageColorListBoxItemDelegate * m_pBackListBoxDelegate;
-	KviTalListWidget           * m_pLevelListBox;
-	KviMessageColorListBoxItem * m_pForeItems[16];
-	KviMessageColorListBoxItem * m_pBackItems[17];
+	KviTalListWidget           * m_pForeListWidget;
+	KviMessageColorListWidgetItemDelegate * m_pForeListWidgetDelegate;
+	KviTalListWidget           * m_pBackListWidget;
+	KviMessageColorListWidgetItemDelegate * m_pBackListWidgetDelegate;
+	KviTalListWidget           * m_pLevelListWidget;
+	KviMessageColorListWidgetItem * m_pForeItems[16];
+	KviMessageColorListWidgetItem * m_pBackItems[17];
 	KviMessageListWidgetItem     * m_pLastItem;
 	QCheckBox                  * m_pEnableLogging;
 	QToolButton                * m_pIconButton;

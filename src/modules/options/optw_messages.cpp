@@ -261,7 +261,7 @@ void KviMessageListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionVie
 }
 
 
-KviMessageColorListBoxItem::KviMessageColorListBoxItem(KviTalListWidget * b,int idx)
+KviMessageColorListWidgetItem::KviMessageColorListWidgetItem(KviTalListWidget * b,int idx)
 : KviTalListWidgetText(b,QString::null)
 {
 
@@ -276,18 +276,18 @@ KviMessageColorListBoxItem::KviMessageColorListBoxItem(KviTalListWidget * b,int 
 	}
 }
 
-KviMessageColorListBoxItem::~KviMessageColorListBoxItem()
+KviMessageColorListWidgetItem::~KviMessageColorListWidgetItem()
 {
 }
 
-void KviMessageColorListBoxItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const
+void KviMessageColorListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & opt, const QModelIndex & index) const
 {
 
 	if(opt.state & QStyle::State_Selected)
 	{
 		QColor clr;
 		const KviTalListWidget *lb = (const KviTalListWidget *)parent();
-		KviMessageColorListBoxItem *it = static_cast<KviMessageColorListBoxItem*>(index.internalPointer());
+		KviMessageColorListWidgetItem *it = static_cast<KviMessageColorListWidgetItem*>(index.internalPointer());
 
 		if((it->clrIdx() >= 0) && (it->clrIdx() <= 15))
 		{
@@ -335,39 +335,39 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Background:","options"),box);
 
-	m_pBackListBox = new KviTalListWidget(box);
-	m_pBackListBox->setMaximumWidth(150);
-	m_pBackListBoxDelegate = new KviMessageColorListBoxItemDelegate(m_pBackListBox);
-	m_pBackListBox->setItemDelegate(m_pBackListBoxDelegate);
+	m_pBackListWidget = new KviTalListWidget(box);
+	m_pBackListWidget->setMaximumWidth(150);
+	m_pBackListWidgetDelegate = new KviMessageColorListWidgetItemDelegate(m_pBackListWidget);
+	m_pBackListWidget->setItemDelegate(m_pBackListWidgetDelegate);
 
-	m_pBackItems[16] = new KviMessageColorListBoxItem(m_pBackListBox,KVI_TRANSPARENT);
+	m_pBackItems[16] = new KviMessageColorListWidgetItem(m_pBackListWidget,KVI_TRANSPARENT);
 	for(i=0;i<16;i++)
 	{
-		m_pBackItems[i] = new KviMessageColorListBoxItem(m_pBackListBox,i);
+		m_pBackItems[i] = new KviMessageColorListWidgetItem(m_pBackListWidget,i);
 	}
 
 	l = new QLabel(__tr2qs_ctx("Foreground:","options"),box);
 
-	m_pForeListBox = new KviTalListWidget(box);
-	m_pForeListBox->setMaximumWidth(150);
-	m_pForeListBoxDelegate = new KviMessageColorListBoxItemDelegate(m_pForeListBox);
-	m_pForeListBox->setItemDelegate(m_pForeListBoxDelegate);
+	m_pForeListWidget = new KviTalListWidget(box);
+	m_pForeListWidget->setMaximumWidth(150);
+	m_pForeListWidgetDelegate = new KviMessageColorListWidgetItemDelegate(m_pForeListWidget);
+	m_pForeListWidget->setItemDelegate(m_pForeListWidgetDelegate);
 
 	for(i=0;i<16;i++)
 	{
-		m_pForeItems[i] = new KviMessageColorListBoxItem(m_pForeListBox,i);
+		m_pForeItems[i] = new KviMessageColorListWidgetItem(m_pForeListWidget,i);
 	}
 
 	l = new QLabel(__tr2qs_ctx("Alert level:","options"),box);
 
-	m_pLevelListBox = new KviTalListWidget(box);
-	m_pLevelListBox->setMaximumWidth(150);
+	m_pLevelListWidget = new KviTalListWidget(box);
+	m_pLevelListWidget->setMaximumWidth(150);
 	KviTalListWidgetText * lbt;
 	for(i=0;i<6;i++)
 	{
 		QString tmpn;
 		tmpn.setNum(i);
-		lbt = new KviTalListWidgetText(m_pLevelListBox,tmpn);
+		lbt = new KviTalListWidgetText(m_pLevelListWidget,tmpn);
 	}
 
 	m_pIconButton = new QToolButton(box);
@@ -400,8 +400,8 @@ KviMessageColorsOptionsWidget::KviMessageColorsOptionsWidget(QWidget * parent)
 	layout()->setColumnStretch(0,1);
 
 	connect(m_pListView,SIGNAL(itemSelectionChanged ()),this,SLOT(itemChanged()));
-	connect(m_pForeListBox,SIGNAL(itemSelectionChanged ()),this,SLOT(colorChanged()));
-	connect(m_pBackListBox,SIGNAL(itemSelectionChanged ()),this,SLOT(colorChanged()));
+	connect(m_pForeListWidget,SIGNAL(itemSelectionChanged ()),this,SLOT(colorChanged()));
+	connect(m_pBackListWidget,SIGNAL(itemSelectionChanged ()),this,SLOT(colorChanged()));
 
 	itemChanged();
 }
@@ -418,10 +418,10 @@ KviMessageColorsOptionsWidget::~KviMessageColorsOptionsWidget()
 		delete m_pBackItems[i];
 	}
 	delete m_pListView;
-	delete m_pForeListBox;
-	delete m_pBackListBox;
+	delete m_pForeListWidget;
+	delete m_pBackListWidget;
 
-	delete m_pLevelListBox;
+	delete m_pLevelListWidget;
 	delete m_pEnableLogging;
 	delete m_pIconButton;
 	delete m_pIconPopup;
@@ -440,23 +440,23 @@ void KviMessageColorsOptionsWidget::saveLastItem()
 {
 	if(!m_pLastItem)return;
 
-	int curIt = m_pForeListBox->currentRow();
+	int curIt = m_pForeListWidget->currentRow();
 	if(curIt)
 	{
 		//qDebug("Setting fore %d",curIt);
-		KviMessageColorListBoxItem * fore = (KviMessageColorListBoxItem *)m_pForeListBox->item(curIt);
+		KviMessageColorListWidgetItem * fore = (KviMessageColorListWidgetItem *)m_pForeListWidget->item(curIt);
 		//qDebug("And is %d",fore);
 		if(fore)m_pLastItem->msgType()->setFore(fore->m_iClrIdx);
 	}
-	curIt = m_pBackListBox->currentRow();
+	curIt = m_pBackListWidget->currentRow();
 	if(curIt)
 	{
-		KviMessageColorListBoxItem * back = (KviMessageColorListBoxItem *)m_pBackListBox->item(curIt);
+		KviMessageColorListWidgetItem * back = (KviMessageColorListWidgetItem *)m_pBackListWidget->item(curIt);
 		if(back)m_pLastItem->msgType()->setBack(back->m_iClrIdx);
 	}
 	m_pLastItem->msgType()->enableLogging(m_pEnableLogging->isChecked());
 	//qDebug("Updating","options");
-	curIt = m_pLevelListBox->currentRow();
+	curIt = m_pLevelListWidget->currentRow();
 	if(curIt < 0 || curIt > 5)curIt = 1;
 	m_pLastItem->msgType()->setLevel(curIt);
 	m_pListView->repaint(m_pListView->visualItemRect(m_pLastItem));
@@ -470,11 +470,11 @@ void KviMessageColorsOptionsWidget::itemChanged()
 
 	m_pLastItem = 0; // do NOT save in this routine
 
-	m_pForeListBox->setEnabled(it);
-	m_pBackListBox->setEnabled(it);
+	m_pForeListWidget->setEnabled(it);
+	m_pBackListWidget->setEnabled(it);
 	m_pEnableLogging->setEnabled(it);
 	m_pIconButton->setEnabled(it);
-	m_pLevelListBox->setEnabled(it);
+	m_pLevelListWidget->setEnabled(it);
 
 	if(it)
 	{
@@ -482,15 +482,15 @@ void KviMessageColorsOptionsWidget::itemChanged()
 		int fore = ((KviMessageListWidgetItem *)it)->msgType()->fore();
 		if(fore >= 0 && fore <= 15)
 		{
-			m_pForeListBox->setCurrentItem(m_pForeItems[fore]);
+			m_pForeListWidget->setCurrentItem(m_pForeItems[fore]);
 		}
 		if(back >= 0 && back <= 15)
 		{
-			m_pBackListBox->setCurrentItem(m_pBackItems[back]);
+			m_pBackListWidget->setCurrentItem(m_pBackItems[back]);
 		} else {
-			m_pBackListBox->setCurrentItem(m_pBackItems[16]);
+			m_pBackListWidget->setCurrentItem(m_pBackItems[16]);
 		}
-		m_pLevelListBox->setCurrentRow(((KviMessageListWidgetItem *)it)->msgType()->level());
+		m_pLevelListWidget->setCurrentRow(((KviMessageListWidgetItem *)it)->msgType()->level());
 		m_pEnableLogging->setChecked(((KviMessageListWidgetItem *)it)->msgType()->logEnabled());
 		m_pIconButton->setIcon(*(g_pIconManager->getSmallIcon(((KviMessageListWidgetItem *)it)->msgType()->pixId())));
 	}
