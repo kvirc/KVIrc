@@ -83,6 +83,7 @@ KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
 
 	pop = new KviTalPopupMenu(this,"help");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupHelpPopup()));
+	connect(pop,SIGNAL(activated(int)),this,SLOT(actionTriggered(int)));
 	addDefaultItem(__tr2qs("&Help"),pop);
 }
 
@@ -167,7 +168,6 @@ void KviMenuBar::setupHelpPopup()
 		id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),__tr2qs("Join KVIrc French Channel on EuropNet"));
 		help->setItemParameter(id,KVI_INTERNALCOMMAND_OPENURL_KVIRC_FR_ON_EUROPNET);
 	}
-	connect(help,SIGNAL(activated(int)),this,SLOT(actionTriggered(int)));
 }
 
 void KviMenuBar::actionTriggered(int id)
