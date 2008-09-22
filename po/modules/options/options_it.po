@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-20 22:45+0200\n"
-"PO-Revision-Date: 2008-09-18 17:42+0200\n"
+"PO-Revision-Date: 2008-09-22 16:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr ""
 #: src/modules/options/optw_avatar.cpp:72
 #: src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
-msgstr " bytes"
+msgstr " byte"
 
 #: src/modules/options/optw_ircview.cpp:155
 msgid " lines"
@@ -115,8 +115,7 @@ msgstr "Griglia 3D"
 
 #: src/modules/options/optw_textencoding.cpp:84
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+msgstr "<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: src/modules/options/optw_urlhandlers.cpp:76
 msgid "<b>file://</b> handler command:"
@@ -246,10 +245,8 @@ msgstr ""
 "\"<b>Aggiungi</b>\".</center>"
 
 #: src/modules/options/optw_servers.cpp:1174
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: src/modules/options/optw_servers.cpp:530
 msgid ""
@@ -272,7 +269,6 @@ msgstr ""
 "attiva</center>"
 
 #: src/modules/options/optw_highlighting.cpp:85
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, KVIrc will alert in the window list only "
 "if a normal message is received in a channel.<br>Actions like joins, parts "
@@ -280,20 +276,19 @@ msgid ""
 "with a high rate of traffic and only want to be alerted for messages that "
 "are interesting to you.</center>"
 msgstr ""
-"<center>Se questa opzione è abilitata, KVIrc ti avvertirà nella lista dei "
-"canali solo se ricevi un messaggio normale in un canale.<br>Le azioni come "
+"<center>Se questa opzione è abilitata, KVIrc ti avvertirà nella lista delle finestre "
+"se ricevi un messaggio normale in un canale.<br>Le azioni come "
 "le entrate, le uscite e il cambio dei modi saranno ignorate.<br>Questo è "
 "molto utile se sei in un canale con molto traffico e vuoi essere avvertito "
 "solo dei messaggi che potrebbero interessarti.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:96
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, KVIrc will alert in the window list only "
 "if the specified alert level is reached.</center>"
 msgstr ""
-"<center>Se questa opzione è abilitata, KVIrc ti avvertirà nella lista dei "
-"canali solo se il livello di allerta specificato viene raggiunto.</center>"
+"<center>Se questa opzione è abilitata, KVIrc ti avvertirà nella lista delle finestre "
+"se il livello di allerta specificato viene raggiunto.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:62
 msgid ""
@@ -322,21 +317,19 @@ msgstr ""
 "volta che avvii KVIrc</center>"
 
 #: src/modules/options/optw_highlighting.cpp:91
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which are shown in queries.</center>"
 msgstr ""
-"<center>Se questa opzione è abilitata, la lista dei canali ti avvertirà "
-"anche dei messaggi mostrati in query</center>"
+"<center>Se questa opzione è abilitata, la lista delle finestre ti avvertirà "
+"anche dei messaggi mostrati nelle query</center>"
 
 #: src/modules/options/optw_highlighting.cpp:88
-#, fuzzy
 msgid ""
 "<center>If this option is enabled, the window list will also alert for "
 "messages which contain a word from the highlighted words list above.</center>"
 msgstr ""
-"<center>Se questa opzione è abilitata, la lista dei canali ti avvertirà "
+"<center>Se questa opzione è abilitata, la lista delle finestre ti avvertirà "
 "anche dei messaggi contenenti una parola presente nella lista delle parole "
 "da evidenziare</center>"
 
@@ -901,8 +894,7 @@ msgstr ""
 "(100 KB)</center>"
 
 #: src/modules/options/optw_servers.cpp:1148
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: src/modules/options/optw_lag.cpp:64
@@ -1059,7 +1051,6 @@ msgstr ""
 "<br>Deselezionala se credi, che occupino solo spazio nella finestra</center>"
 
 #: src/modules/options/optw_windowlist.cpp:43
-#, fuzzy
 msgid ""
 "<center>This option enables the usage of the window list activity meter. "
 "Each window entry will have a small indicator of the activity that is going "
@@ -1108,7 +1099,6 @@ msgstr ""
 "\"Usa il desktop di KDE per la trasparenza\".</center>"
 
 #: src/modules/options/optw_highlighting.cpp:100
-#, fuzzy
 msgid ""
 "<center>This option sets the minimum alert level for the window list.</"
 "center>"
@@ -1245,7 +1235,6 @@ msgstr ""
 "qualcuno setta un avatar e non ci sono copie disponibili in cache.</center>"
 
 #: src/modules/options/optw_irc.cpp:56
-#, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to show the network name as the console "
 "window list entry instead of the server name. This is nice to keep on unless "
@@ -1253,7 +1242,7 @@ msgid ""
 "servers of the same network.</center>"
 msgstr ""
 "<center>Quest'opzione farà in modo che KVIrc mostrerà il nome della rete "
-"come nella console invece del nome del server. Questo è efficace quando i "
+"come console invece del nome del server. Questo è efficace quando i "
 "tuoi server non sono organizzati in reti o se connetti più server della "
 "stessa rete.</center>"
 
@@ -1976,7 +1965,7 @@ msgstr "Scegli..."
 
 #: src/modules/options/optw_windowlist.h:112
 msgid "Classic Window List"
-msgstr ""
+msgstr "Lista Finestre Classica"
 
 #: src/modules/options/optw_servers.cpp:1467
 msgid "Clear List"
@@ -3651,12 +3640,10 @@ msgid "Set maximum button width"
 msgstr "Larghezza massima:"
 
 #: src/modules/options/optw_windowlist.cpp:50
-#, fuzzy
 msgid "Show IRC context indicator in window list"
-msgstr "Mostra l'indicatore del IRC context nella lista dei canali"
+msgstr "Mostra l'indicatore del contesto IRC nella lista dei canali"
 
 #: src/modules/options/optw_windowlist.cpp:42
-#, fuzzy
 msgid "Show activity meter in window list"
 msgstr "Mostra il misuratore di attività nella lista dei canali"
 
@@ -3717,9 +3704,8 @@ msgid "Show message icons"
 msgstr "Mostra icone dei messaggi"
 
 #: src/modules/options/optw_irc.cpp:55
-#, fuzzy
 msgid "Show network name in console window list entry"
-msgstr "Mostra il nome della rete nella console"
+msgstr "Mostra il nome della rete come nome della console"
 
 #: src/modules/options/optw_messages.cpp:88
 msgid "Show nicknames in bold"
@@ -3762,7 +3748,6 @@ msgid "Show user channel icons"
 msgstr "Mostra icone per gli utenti del canale"
 
 #: src/modules/options/optw_windowlist.cpp:41
-#, fuzzy
 msgid "Show window icons in window list"
 msgstr "Mostra le icone delle finestre nella lista dei canali"
 
@@ -3849,13 +3834,11 @@ msgstr "Il comando di identificazione non può essere vuoto!"
 
 #: src/modules/options/optw_nickserv.cpp:180
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3927,8 +3910,7 @@ msgid "This executable has no SSL support."
 msgstr "Questo eseguibile non ha il supporto SSL"
 
 #: src/modules/options/optw_identity.cpp:326
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -4118,7 +4100,7 @@ msgstr "Icona del vassoio di sistema"
 
 #: src/modules/options/optw_windowlist.h:48
 msgid "Tree Window List"
-msgstr ""
+msgstr "Lista Finestre ad Albero"
 
 #: src/modules/options/optw_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
@@ -4284,9 +4266,8 @@ msgid "Use the completion postfix string for the first word only"
 msgstr "Aggiungi i caratteri dopo il completamento solo per la prima parola"
 
 #: src/modules/options/optw_windowlist.cpp:39
-#, fuzzy
 msgid "Use tree window list"
-msgstr "Usa online notify list "
+msgstr "Usa la lista finestre ad albero"
 
 #: src/modules/options/optw_dcc.cpp:74
 msgid "Use user-defined address or network interface"
@@ -4400,13 +4381,12 @@ msgid "Window Captions"
 msgstr "Caption Finestra"
 
 #: src/modules/options/optw_windowlist.h:34
-#, fuzzy
 msgid "Window List"
-msgstr "Caption Finestra"
+msgstr "Lista Finestre"
 
 #: src/modules/options/optw_highlighting.h:57
 msgid "Window List Alert"
-msgstr ""
+msgstr "Livello d'Allerta delle Finestre"
 
 #: src/modules/options/optw_highlighting.cpp:59
 msgid "Word splitters:"
@@ -4630,3 +4610,4 @@ msgstr "lista utenti,canale"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid "within:"
 msgstr "in:"
+
