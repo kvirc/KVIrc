@@ -26,7 +26,7 @@
 
 #include "kvi_window.h"
 #include "kvi_string.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 #include "kvi_tal_popupmenu.h"
 
 #include <QWidget>
@@ -39,12 +39,12 @@ class KviScriptEditor;
 class KviMenuListViewItem;
 
 // KviPopupListViewItem
-class KviPopupListViewItem : public KviTalListViewItem
+class KviPopupListViewItem : public KviTalTreeWidgetItem
 {
 public:
 	enum Type { Item , Menu , Separator , Label , Epilogue , Prologue , ExtMenu };
 public:
-	KviPopupListViewItem(KviTalListView * pListView,KviPopupListViewItem * after,Type t);
+	KviPopupListViewItem(KviTalTreeWidget * pListView,KviPopupListViewItem * after,Type t);
 	KviPopupListViewItem(KviPopupListViewItem * parent,KviPopupListViewItem * after,Type t);
 public:
 	Type                   m_type;
@@ -75,7 +75,7 @@ protected:
 	KviKvsPopupMenu      * m_pClipboard;
 	KviKvsPopupMenu      * m_pTestPopup;
 	KviPopupListViewItem * m_pLastSelectedItem;
-	KviTalListView            * m_pListView;
+	KviTalTreeWidget     * m_pListView;
 	QLineEdit            * m_pNameEditor;
 	KviScriptEditor      * m_pEditor;
 	QLineEdit            * m_pTextEditor;
@@ -83,7 +83,7 @@ protected:
 	QLineEdit            * m_pIconEditor;
 	QLineEdit            * m_pConditionEditor;
 	QLineEdit            * m_pExtNameEditor;
-	KviTalPopupMenu           * m_pContextPopup;
+	KviTalPopupMenu      * m_pContextPopup;
 public:
 	void edit(KviMenuListViewItem * it);
 	KviKvsPopupMenu * getMenu();
@@ -123,18 +123,18 @@ protected slots:
 	void contextNewLabelInside();
 	void contextNewPrologue();
 	void contextNewEpilogue();
-	void selectionChanged(KviTalListViewItem * it);
-	void itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
+	void selectionChanged();
+	void itemPressed(KviTalTreeWidgetItem * item, int column);
 	void testPopup();
 	void testModeMenuItemClicked(KviKvsPopupMenuItem * it);
 };
 
 
 
-class KviMenuListViewItem : public KviTalListViewItem
+class KviMenuListViewItem : public KviTalTreeWidgetItem
 {
 public:
-	KviMenuListViewItem(KviTalListView * par,KviKvsPopupMenu * popup);
+	KviMenuListViewItem(KviTalTreeWidget * par,KviKvsPopupMenu * popup);
 	~KviMenuListViewItem();
 public:
 	KviKvsPopupMenu * m_pPopup;
@@ -153,21 +153,21 @@ public:
 	~KviPopupEditor();
 public:
 	KviSinglePopupEditor * m_pEditor;
-	KviTalListView            * m_pListView;
+	KviTalTreeWidget     * m_pListView;
 	KviMenuListViewItem  * m_pLastEditedItem;
 	bool                   m_bOneTimeSetupDone;
-	KviTalPopupMenu           * m_pContextPopup;
+	KviTalPopupMenu      * m_pContextPopup;
 public:
 	void commit();
 	void exportPopups(bool);
 protected slots:
-	void currentItemChanged(KviTalListViewItem *it);
+	void currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev);
 	void newPopup();
 	void exportAll();
 	void exportSelected();
 	void exportCurrentPopup();
 	void removeCurrentPopup();
-	void itemPressed(KviTalListViewItem *it,const QPoint &pnt,int col);
+	void itemPressed(KviTalTreeWidgetItem * item, int column);
 protected:
 	void showEvent(QShowEvent *e);
 	void getExportPopupBuffer(QString &buffer,KviMenuListViewItem * it);

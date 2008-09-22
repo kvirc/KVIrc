@@ -79,6 +79,11 @@ public:
 	: QTreeWidgetItem(pParent) {};
 	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent)
 	: QTreeWidgetItem(pParent) {};
+	KviTalTreeWidgetItem(KviTalTreeWidget * pParent, KviTalTreeWidgetItem * preceding)
+	: QTreeWidgetItem(pParent, preceding) {};
+	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent, KviTalTreeWidgetItem * preceding)
+	: QTreeWidgetItem(pParent, preceding) {};
+
 	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent,const QString &szLabel, const QString &szLabel1 = QString(), const QString &szLabel2 = QString(), const QString &szLabel3 = QString(), const QString &szLabel4 = QString())
 	: QTreeWidgetItem(pParent) {
 		setText(0,szLabel);

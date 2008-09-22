@@ -241,8 +241,8 @@ protected:
 private:
 	QString                            m_szName;
 	KviKvsPopupMenu                  * m_pParentPopup;
-	KviPointerList<KviKvsScript>         * m_pPrologues;
-	KviPointerList<KviKvsScript>         * m_pEpilogues;
+	KviPointerList<KviKvsScript>     * m_pPrologues;
+	KviPointerList<KviKvsScript>     * m_pEpilogues;
 	KviKvsPopupMenuTopLevelData      * m_pTopLevelData;
 	// this is a temporary used to hack-in the activation from KviMenuBar
 	KviKvsPopupMenuTopLevelData      * m_pTempTopLevelData;
