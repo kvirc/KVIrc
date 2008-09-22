@@ -1008,12 +1008,14 @@ namespace KviKvsCoreFunctions
 			Returns informations about the version of the currently running KVIrc.[br]
 			Type can be one of:[br]
 			[ul]
-			[li]v: return the current numeric version[/li]
-			[li]s: return the current sources date[/li]
-			[li]r: return the release name[/li]
 			[li]b: return the build date in human readable form[/li]
+			[li]n: return the release name[/li]
+			[li]r: return the revision number[/li]
+			[li]s: return the current sources date[/li]
+			[li]v: return the current numeric version[/li]
 			[/ul]
-			If <type> is omitted then v is assumed.[br]
+
+			If <type> is omitted a full string is returned.[br]
 		@examples:
 			[example]
 				[cmd]echo[/cmd] $version $version(r)
@@ -1025,17 +1027,35 @@ namespace KviKvsCoreFunctions
 	KVSCF(version)
 	{
 		QString szType;
+		QString szVersion;
+		QString szRetValue;
+
 		KVSCF_PARAMETERS_BEGIN
 			KVSCF_PARAMETER("type",KVS_PT_STRING,KVS_PF_OPTIONAL,szType)
 		KVSCF_PARAMETERS_END
 
+		szVersion = KVI_RELEASE_NAME " " KVI_VERSION;
+		szVersion += ", revision: ";
+		szVersion += KviBuildInfo::buildRevision();
+		szVersion += ", sources date: ";
+		szVersion += KviBuildInfo::buildSourcesDate();
+		szVersion += ", built on: ";
+		szVersion += KviBuildInfo::buildDate();
+
 		if(szType.isEmpty())
-			KVSCF_pRetBuffer->setString(KVI_VERSION);
+			KVSCF_pRetBuffer->setString(szVersion);
 		else {
-			if(szType.indexOf('r') != -1)KVSCF_pRetBuffer->setString(KVI_RELEASE_NAME);
-			else if(szType.indexOf('s') != -1)KVSCF_pRetBuffer->setString(KVI_SOURCES_DATE);
-			else if(szType.indexOf('b') != -1)KVSCF_pRetBuffer->setString(KviBuildInfo::buildDate());
-			else KVSCF_pRetBuffer->setString(KVI_VERSION);
+			if(szType.indexOf('b') != -1)
+				szRetValue = KviBuildInfo::buildDate();
+			else if(szType.indexOf('n') != -1)
+				szRetValue = KVI_RELEASE_NAME;
+			else if(szType.indexOf('r') != -1)
+				szRetValue = KviBuildInfo::buildRevision();
+			else if(szType.indexOf('s') != -1)
+				szRetValue = KviBuildInfo::buildSourcesDate();
+			else szRetValue = szVersion;
+
+			KVSCF_pRetBuffer->setString(szRetValue);
 		}
 		return true;
 	}
