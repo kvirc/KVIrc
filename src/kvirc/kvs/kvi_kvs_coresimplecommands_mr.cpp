@@ -945,8 +945,10 @@ namespace KviKvsCoreSimpleCommands
 		KviWindow * w = KVSCSC_pConnection->findChannel(szTarget);
 		if(!w)w = KVSCSC_pConnection->findQuery(szTarget);
 
-		if(w)w->ownMessage(szText);
-		else {
+		if(!KVSCSC_pSwitches->find('q',"quiet") && w)
+		{
+			w->ownMessage(szText);
+		} else {
 
 			KviQCString szT = KVSCSC_pConnection->encodeText(szTarget);
 			KviQCString szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
