@@ -56,15 +56,15 @@ public:
 	KviTalToolTip(QWidget * pParent);
 	virtual ~KviTalToolTip();
 protected:
-KviTalToolTipHelper * m_pHelper;
-QWidget * m_pParent;
+	KviTalToolTipHelper * m_pHelper;
+	QWidget * m_pParent;
 public:
-static void add(QWidget * widget,const QString & text);
-static void remove(QWidget * widget);
-virtual void tip(const QRect & rect,const QString & text);
+	static void add(QWidget * widget,const QString & text);
+	static void remove(QWidget * widget);
+	virtual void tip(const QRect & rect,const QString & text);
 protected:
 	virtual void maybeTip(const QPoint & p);
-void helperDying();
+	void helperDying();
 };
 
 #endif // _KVI_TAL_TOOLTIP_H_

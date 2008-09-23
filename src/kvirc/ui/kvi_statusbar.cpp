@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_statusbar.h"
 #include "kvi_frame.h"
 #include "kvi_iconmanager.h"
@@ -51,6 +49,7 @@
 #include <QFont>
 #include <QEvent>
 #include <QMouseEvent>
+#include <QMessageBox>
 
 // This class COULD be derived also from KStatusBar but in fact
 // it adds no graphic functionality and it has only useless methods for us.
@@ -135,8 +134,8 @@ void KviStatusBar::load()
 	KviConfig cfg(szBuf,KviConfig::Read);
 	cfg.setGroup("Applets");
 
-	int nApplets = cfg.readIntEntry("Count",0);
-	for(int i=0;i<nApplets;i++)
+	int iApplets = cfg.readIntEntry("Count",0);
+	for(int i=0; i<iApplets; i++)
 	{
 		KviStr prefix(KviStr::Format,"Applet%d",i);
 		KviStr tmp(KviStr::Format,"%s_InternalName",prefix.ptr());
@@ -148,9 +147,9 @@ void KviStatusBar::load()
 			if(!szPreloadModule.isEmpty())
 				g_pModuleManager->getModule(szPreloadModule.toUtf8().data());
 
-			KviStatusBarApplet * a = createApplet(szInternalName);
-			if (a)
-				a->loadState(prefix.ptr(),&cfg);
+			KviStatusBarApplet * pApplet = createApplet(szInternalName);
+			if(pApplet)
+				pApplet->loadState(prefix.ptr(),&cfg);
 			else
 				qDebug("warning: failed to create applet %s (preload: %s)!",
 					szInternalName.toUtf8().data(), szPreloadModule.toUtf8().data());
@@ -170,31 +169,26 @@ void KviStatusBar::save()
 	cfg.writeEntry("Count",m_pAppletList->count());
 
 	int i = 0;
-	for(KviStatusBarApplet * a = m_pAppletList->first();a;a = m_pAppletList->next())
+	for(KviStatusBarApplet * pApplet = m_pAppletList->first(); pApplet; pApplet = m_pAppletList->next())
 	{
 		KviStr prefix(KviStr::Format,"Applet%d",i);
 		KviStr tmp(KviStr::Format,"%s_InternalName",prefix.ptr());
-		cfg.writeEntry(tmp.ptr(),a->descriptor()->internalName());
-		a->saveState(prefix.ptr(),&cfg);
-		if(!(a->descriptor()->preloadModule().isEmpty()))
+		cfg.writeEntry(tmp.ptr(),pApplet->descriptor()->internalName());
+		pApplet->saveState(prefix.ptr(),&cfg);
+		if(!(pApplet->descriptor()->preloadModule().isEmpty()))
 		{
 			tmp.sprintf("%s_PreloadModule",prefix.ptr());
-			cfg.writeEntry(tmp.ptr(),a->descriptor()->preloadModule());
+			cfg.writeEntry(tmp.ptr(),pApplet->descriptor()->preloadModule());
 		}
 		i++;
 	}
 }
-
-#define VMARGIN 3
-#define HMARGIN 4
-#define SPACING 3
-#define RICHTEXTLABELTRICK 2
-
+/*
 void KviStatusBar::layoutChildren()
 {
 	int x = width() - HMARGIN;
 	int h = height() - (VMARGIN * 2);
-	/*for(KviStatusBarApplet * a = m_pAppletList->last();a;a = m_pAppletList->prev())
+	for(KviStatusBarApplet * a = m_pAppletList->last();a;a = m_pAppletList->prev())
 	{
 		int w = a->KviStatusBarApplet::sizeHint().width();
 		//debug("width %d",w);
@@ -202,11 +196,11 @@ void KviStatusBar::layoutChildren()
 		a->setGeometry(x,VMARGIN,w,h);
 		x -= SPACING;
 	}
-	*/
+
 	// trick to center vertically the rich text label: make it some pixels smaller
-//	m_pMessageLabel->setGeometry(HMARGIN,VMARGIN,x - HMARGIN,h - RICHTEXTLABELTRICK);
+	m_pMessageLabel->setGeometry(HMARGIN,VMARGIN,x - HMARGIN,h - RICHTEXTLABELTRICK);
 }
-/*
+
 void KviStatusBar::resizeEvent(QResizeEvent * e)
 {
 	layoutChildren();
@@ -219,33 +213,40 @@ bool KviStatusBar::event(QEvent * e)
 		//updateLayout();
 		return false; // send to parents too!
 	}
+
 	if (e->type() == QEvent::ToolTip)
 	{
-	    QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
-		tipRequest(helpEvent);
+		QHelpEvent * pHelpEvent = (QHelpEvent *)e;
+		tipRequest(pHelpEvent);
 	}
 	return QStatusBar::event(e);
 }
 
 void KviStatusBar::recalcMinimumHeight()
 {
-	int s = 18;
-	int h = m_pMessageLabel->sizeHint().height();
-	if(h > s)s = h;
-	for(KviStatusBarApplet * a = m_pAppletList->last();a;a = m_pAppletList->prev())
+	int iSize = 18;
+	int iHeight = m_pMessageLabel->sizeHint().height();
+	if(iHeight > iSize)
+		iSize = iHeight;
+
+	for(KviStatusBarApplet * pApplet = m_pAppletList->last(); pApplet; pApplet = m_pAppletList->prev())
 	{
-		h = a->sizeHint().height();
-		if(h > s)s = h;
+		iHeight = pApplet->sizeHint().height();
+		if(iHeight > iSize)
+			iSize = iHeight;
 	}
-	s += (VMARGIN * 2) + RICHTEXTLABELTRICK;
-	if(m_iLastMinimumHeight != s)
+
+	iSize += (VMARGIN * 2) + RICHTEXTLABELTRICK;
+	if(m_iLastMinimumHeight != iSize)
 	{
-		m_iLastMinimumHeight = s;
-		setMinimumHeight(s);
+		m_iLastMinimumHeight = iSize;
+		setMinimumHeight(iSize);
 		QLayout * l = layout();
 		if(l)
+		{
 			if(l->inherits("QBoxLayout"))
-				((QBoxLayout *)l)->addStrut(s);
+				((QBoxLayout *)l)->addStrut(iSize);
+		}
 		// FIXME: do QMainWindow need setUpLayout() here ?
 	}
 }
@@ -255,40 +256,41 @@ bool KviStatusBar::appletExists(KviStatusBarApplet * pApplet)
 	return (m_pAppletList->findRef(pApplet) != -1);
 }
 
-KviStatusBarApplet * KviStatusBar::appletAt(const QPoint &pnt,bool bBestMatch)
+KviStatusBarApplet * KviStatusBar::appletAt(const QPoint & pnt, bool bBestMatch)
 {
 	QPoint local = mapFromGlobal(pnt);
 	if(bBestMatch)
 	{
-		for(KviStatusBarApplet * a = m_pAppletList->first();a;a = m_pAppletList->next())
+		for(KviStatusBarApplet * pApplet = m_pAppletList->first(); pApplet; pApplet = m_pAppletList->next())
 		{
-			if(local.x() <= (a->x() + a->width()))return a;
+			if(local.x() <= (pApplet->x() + pApplet->width()))
+				return pApplet;
 		}
 		return m_pAppletList->last(); // last anyway
 	}
 
-	for(KviStatusBarApplet * a = m_pAppletList->first();a;a = m_pAppletList->next())
+	for(KviStatusBarApplet * pApplet = m_pAppletList->first(); pApplet; pApplet = m_pAppletList->next())
 	{
-		if((local.x() >= a->x()) && (local.y() >= a->y()))
+		if((local.x() >= pApplet->x()) && (local.y() >= pApplet->y()))
 		{
-			if((local.x() <= (a->x() + a->width())) && (local.y() <= (a->y() + a->height())))
+			if((local.x() <= (pApplet->x() + pApplet->width())) && (local.y() <= (pApplet->y() + pApplet->height())))
 			{
-				return a;
+				return pApplet;
 			}
 		}
 	}
 	return 0;
 }
 
-void KviStatusBar::tipRequest(QHelpEvent *pTip)
+void KviStatusBar::tipRequest(QHelpEvent * e)
 {
-	KviStatusBarApplet * a = appletAt(mapToGlobal(pTip->pos()));
+	KviStatusBarApplet * pApplet = appletAt(mapToGlobal(e->pos()));
 	QString szTip;
-	if(a)
+	if(pApplet)
 	{
-		szTip = "<table width=\"100%\"><tr><td bgcolor=\"#303030\" align=\"center\"><font color=\"#ffffff\"><b>" + a->descriptor()->visibleName() + "</b></font></td></tr>";
+		szTip = "<table width=\"100%\"><tr><td bgcolor=\"#303030\" align=\"center\"><font color=\"#ffffff\"><b>" + pApplet->descriptor()->visibleName() + "</b></font></td></tr>";
 
-		QString szTipx = a->tipText(a->mapFromGlobal(mapToGlobal(pTip->pos())));
+		QString szTipx = pApplet->tipText(pApplet->mapFromGlobal(mapToGlobal(e->pos())));
 		if(!szTipx.isEmpty())
 		{
 			szTip += "<tr><td>";
@@ -300,14 +302,16 @@ void KviStatusBar::tipRequest(QHelpEvent *pTip)
 		szTip += __tr2qs("<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around<br><b>Right click</b> to see the other options");
 		szTip += "</font></td></tr></table>";
 	} else {
-		szTip = "<center>";
+		szTip = "<center><p>";
+		szTip += __tr2qs("<b>Double-click</b> to get network informations");
+		szTip += "</p><p>";
 		szTip += __tr2qs("<b>Right click</b> to add/remove applets");
-		szTip += "</center>";
+		szTip += "</p></center>";
 	}
-	QToolTip::showText(pTip->globalPos(),szTip);
+	QToolTip::showText(e->globalPos(),szTip);
 }
 
-void KviStatusBar::contextMenuRequested(const QPoint &pos)
+void KviStatusBar::contextMenuRequested(const QPoint & pos)
 {
 	if(!m_pContextPopup)
 	{
@@ -321,27 +325,28 @@ void KviStatusBar::contextMenuRequested(const QPoint &pos)
 
 void KviStatusBar::contextPopupAboutToShow()
 {
-	if(!m_pContextPopup)return;
-	m_pContextPopup->clear();
+	if(!m_pContextPopup)
+		return;
 
+	m_pContextPopup->clear();
 
 	if(appletExists(m_pClickedApplet))
 	{
-		QString app = m_pClickedApplet->descriptor()->visibleName();
+		QString szApp = m_pClickedApplet->descriptor()->visibleName();
 
-		QString tmp;
-		KviQString::sprintf(tmp,"<center><b>%Q</b></center>",&app);
+		QString szTmp;
+		KviQString::sprintf(szTmp,"<center><b>%Q</b></center>",&szApp);
 
-		QLabel * l = new QLabel(tmp,m_pContextPopup);
+		QLabel * pLabel = new QLabel(szTmp,m_pContextPopup);
 		QPalette p;
-		l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
-		m_pContextPopup->insertItem(l);
+		pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
+		m_pContextPopup->insertItem(pLabel);
 
 		m_pClickedApplet->fillContextPopup(m_pContextPopup);
 
-		KviQString::sprintf(tmp,__tr2qs("Remove %Q"),&app);
+		KviQString::sprintf(szTmp,__tr2qs("Remove %Q"),&szApp);
 		m_pContextPopup->insertSeparator();
-		m_pContextPopup->insertItem(tmp,this,SLOT(removeClickedApplet()));
+		m_pContextPopup->insertItem(szTmp,this,SLOT(removeClickedApplet()));
 	}
 
 	if(!m_pAppletsPopup)
@@ -356,14 +361,18 @@ void KviStatusBar::contextPopupAboutToShow()
 
 void KviStatusBar::removeClickedApplet()
 {
-	if(!appletExists(m_pClickedApplet))return;
+	if(!appletExists(m_pClickedApplet))
+		return;
+
 	delete m_pClickedApplet;
 	m_pClickedApplet = 0;
 }
 
 void KviStatusBar::appletsPopupAboutToShow()
 {
-	if(!m_pAppletsPopup)return;
+	if(!m_pAppletsPopup)
+		return;
+
 	m_pAppletsPopup->clear();
 
 	// FIXME: could we cache the module results in some way ?
@@ -372,19 +381,23 @@ void KviStatusBar::appletsPopupAboutToShow()
 	KviPointerHashTableIterator<QString,KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
-		int id;
+		int iId;
 		QPixmap * pix = d->icon();
-		if(pix)id = m_pAppletsPopup->insertItem(*pix,d->visibleName());
-		else id = m_pAppletsPopup->insertItem(d->visibleName());
-		m_pAppletsPopup->setItemParameter(id,d->id());
+		if(pix)
+			iId = m_pAppletsPopup->insertItem(*pix,d->visibleName());
+		else
+			iId = m_pAppletsPopup->insertItem(d->visibleName());
+		m_pAppletsPopup->setItemParameter(iId,d->id());
 		++it;
 	}
 }
 
-KviStatusBarApplet * KviStatusBar::createApplet(const QString &szInternalName)
+KviStatusBarApplet * KviStatusBar::createApplet(const QString & szInternalName)
 {
 	KviStatusBarAppletDescriptor * d = m_pAppletDescriptors->find(szInternalName);
-	if(!d)return 0;
+	if(!d)
+		return 0;
+
 	return d->create(this);
 }
 
@@ -393,30 +406,32 @@ void KviStatusBar::showLayoutHelp()
 	queueMessage(new KviStatusBarMessage(__tr2qs("Drag the applet while holding the Shift or Ctrl key to move it to the desired position")));
 }
 
-void KviStatusBar::appletsPopupActivated(int id)
+void KviStatusBar::appletsPopupActivated(int iId)
 {
 	// FIXME: In fact the applet descriptors in modules could
 	//        have been unloaded while the popup was being shown...
 	//        For now we just assume that this never happens :D
 
-	if(!m_pAppletsPopup)return;
-	int par = m_pAppletsPopup->itemParameter(id);
+	if(!m_pAppletsPopup)
+		return;
+
+	int iPar = m_pAppletsPopup->itemParameter(iId);
 	KviPointerHashTableIterator<QString,KviStatusBarAppletDescriptor> it(*m_pAppletDescriptors);
 	while(KviStatusBarAppletDescriptor * d = it.current())
 	{
-		if(par == d->id())
+		if(iPar == d->id())
 		{
 			if(m_pClickedApplet)
 			{
-				int idx = m_pAppletList->findRef(m_pClickedApplet);
-				if(idx != -1)
+				int iIdx = m_pAppletList->findRef(m_pClickedApplet);
+				if(iIdx != -1)
 				{
 					// try to put the new applet just after the clicked one
 					bool bSave = m_bStopLayoutOnAddRemove;
 					m_bStopLayoutOnAddRemove = true;
-					KviStatusBarApplet * a = d->create(this);
-					m_pAppletList->removeRef(a);
-					m_pAppletList->insert(idx + 1,a);
+					KviStatusBarApplet * pApplet = d->create(this);
+					m_pAppletList->removeRef(pApplet);
+					m_pAppletList->insert(iIdx + 1,pApplet);
 					m_bStopLayoutOnAddRemove = bSave;
 					//if(!m_bStopLayoutOnAddRemove)updateLayout();
 					showLayoutHelp();
@@ -436,30 +451,35 @@ void KviStatusBar::registerAppletDescriptor(KviStatusBarAppletDescriptor * d)
 	m_pAppletDescriptors->replace(d->internalName(),d);
 }
 
-void KviStatusBar::registerApplet(KviStatusBarApplet * a)
+void KviStatusBar::registerApplet(KviStatusBarApplet * pApplet)
 {
-	m_pAppletList->append(a);
-	if(!a->isVisible())a->show();
+	m_pAppletList->append(pApplet);
+	if(!pApplet->isVisible())
+		pApplet->show();
 	//if(!m_bStopLayoutOnAddRemove)updateLayout();
 }
 
-void KviStatusBar::unregisterApplet(KviStatusBarApplet * a)
+void KviStatusBar::unregisterApplet(KviStatusBarApplet * pApplet)
 {
-	if(!a)return;
-	m_pAppletList->removeRef(a);
-	if(a->isVisible())a->hide();
-//	if(!m_bStopLayoutOnAddRemove)updateLayout();
+	if(!pApplet)
+		return;
+
+	m_pAppletList->removeRef(pApplet);
+	if(pApplet->isVisible())
+		pApplet->hide();
+	//if(!m_bStopLayoutOnAddRemove)updateLayout();
 }
 
-
+/*
 void KviStatusBar::paintEvent(QPaintEvent * e)
 {
 	// avoid the ugly rectangle around the widgets painted by QStatusBar
-//	QPainter p(this);
-//	style().drawPrimitive(QStyle::PE_Panel,&p,rect(),colorGroup(),QStyle::Style_Raised,QStyleOption(1,1));
-	//QStatusBar::paintEvent(e);
-	//qDrawWinPanel(&p,0,0,width(),height(),colorGroup(),false,0);
+	QPainter p(this);
+	style().drawPrimitive(QStyle::PE_Panel,&p,rect(),colorGroup(),QStyle::Style_Raised,QStyleOption(1,1));
+	QStatusBar::paintEvent(e);
+	qDrawWinPanel(&p,0,0,width(),height(),colorGroup(),false,0);
 }
+*/
 
 void KviStatusBar::mousePressEvent(QMouseEvent * e)
 {
@@ -468,7 +488,9 @@ void KviStatusBar::mousePressEvent(QMouseEvent * e)
 	{
 		// move!
 		m_pClickedApplet = appletAt(mapToGlobal(e->pos()));
-		if(!m_pClickedApplet)return;
+		if(!m_pClickedApplet)
+			return;
+
 		m_pClickedApplet->select();
 		g_pApp->setOverrideCursor(Qt::SizeAllCursor);
 	}
@@ -476,47 +498,60 @@ void KviStatusBar::mousePressEvent(QMouseEvent * e)
 
 void KviStatusBar::mouseMoveEvent(QMouseEvent * e)
 {
-	if(!m_pClickedApplet)return;
-	if(!appletExists(m_pClickedApplet))return;
-	debug ("index clicked %d",m_pClickedApplet->index());
-	QPoint g = mapToGlobal(e->pos());
-	KviStatusBarApplet * a = appletAt(g,true);
-	if(a == m_pClickedApplet)return;
-	debug("Moved over index %d",a->index());
-	// move!
-	if(!a)
-	{
-		a = m_pAppletList->first();
-		if(!a)return; // ops!
+	if(!m_pClickedApplet)
+		return;
+	if(!appletExists(m_pClickedApplet))
+		return;
 
-		if(e->pos().x() < (a->x() + a->width()))
+	debug ("index clicked %d",m_pClickedApplet->index());
+
+	QPoint g = mapToGlobal(e->pos());
+	KviStatusBarApplet * pApplet = appletAt(g,true);
+	if(pApplet == m_pClickedApplet)
+		return;
+	debug("Moved over index %d",pApplet->index());
+
+	// move!
+	if(!pApplet)
+	{
+		pApplet = m_pAppletList->first();
+		if(!pApplet)
+			return; // ops!
+
+		if(e->pos().x() < (pApplet->x() + pApplet->width()))
 		{
-			if(a == m_pClickedApplet)return; // don't move
+			if(pApplet == m_pClickedApplet)
+				return; // don't move
 		} else {
-			a = m_pAppletList->last();
-			if(!a)return;
-			if(a == m_pClickedApplet)return; // no way to move
+			pApplet = m_pAppletList->last();
+			if(!pApplet)
+				return;
+			if(pApplet == m_pClickedApplet)
+				return; // no way to move
 		}
 	}
 
 	m_pAppletList->removeRef(m_pClickedApplet);
 
-	int index=a->index();
+	int iIndex = pApplet->index();
+	debug ("Move from to index %d",iIndex);
 
-	debug ("Move from to index %d",index);
 	//removeWidget(m_pClickedApplet);
-	insertPermanentWidget(index,m_pClickedApplet);
+	insertPermanentWidget(iIndex,m_pClickedApplet);
 
-	m_pClickedApplet->setIndex(index);
-	//index++;
-	//a->setIndex(index);
+	m_pClickedApplet->setIndex(iIndex);
+	//iIndex++;
+	//a->setIndex(iIndex);
 	//removeWidget(m_pClickedApplet);
-	int idx = m_pAppletList->findRef(a);
-	if(idx == -1)m_pAppletList->append(m_pClickedApplet); // uhg ?
+
+	int iIdx = m_pAppletList->findRef(pApplet);
+	if(iIdx == -1)
+		m_pAppletList->append(m_pClickedApplet); // uhg ?
 	else {
-		QPoint p = a->mapFromGlobal(g);
-		if(p.x() > (a->width() / 2))idx++; // just after
-		m_pAppletList->insert(idx,m_pClickedApplet);
+		QPoint p = pApplet->mapFromGlobal(g);
+		if(p.x() > (pApplet->width() / 2))
+			iIdx++; // just after
+		m_pAppletList->insert(iIdx,m_pClickedApplet);
 	}
 	update();
 	//layoutChildren();
@@ -534,17 +569,83 @@ void KviStatusBar::mouseReleaseEvent(QMouseEvent * e)
 	}
 }
 
+void KviStatusBar::mouseDoubleClickEvent(QMouseEvent * e)
+{
+	const QString szTitle = __tr2qs("Network informations");
+	QString szText, szUserModes, szAway;
+
+	KviIrcContext * c = m_pFrame->activeContext();
+
+	if(c->state() != KviIrcContext::Connected)
+		return;
+
+	// User modes
+	if(!c->connection()->userInfo()->userMode().isEmpty())
+	{
+		szUserModes += "+";
+		szUserModes += c->connection()->userInfo()->userMode();
+	}
+
+	// Away status
+	if(c->connection()->userInfo()->isAway())
+		szAway = __tr2qs("Yes");
+	else
+		szAway = __tr2qs("No");
+
+	szText += __tr2qs("Network");
+	szText += ": ";
+	szText += c->connection()->networkName();
+	szText += "<br>";
+	szText += __tr2qs("Server");
+	szText += ": ";
+	szText += c->connection()->currentServerName();
+	szText += "<br>";
+	szText += __tr2qs("Nickname");
+	szText += ": ";
+	szText += c->connection()->userInfo()->nickName();
+	szText += "<br>";
+	szText += __tr2qs("Username");
+	szText += ": ";
+	szText += c->connection()->userInfo()->userName();
+	szText += "<br>";
+	szText += __tr2qs("Hostname");
+	szText += ": ";
+	szText += c->connection()->userInfo()->hostName();
+	szText += "<br>";
+	szText += __tr2qs("Local IP");
+	szText += ": ";
+	szText += c->connection()->userInfo()->localHostIp();
+	szText += "<br>";
+	szText += __tr2qs("User Modes");
+	szText += ": ";
+	szText += szUserModes;
+	szText += "<br>";
+	szText += __tr2qs("Away");
+	szText += ": ";
+	szText += szAway;
+
+	QMessageBox * pMsgBox = new QMessageBox(QMessageBox::Information, szTitle, (const QString)szText, QMessageBox::Ok, this);
+	pMsgBox->show();
+}
+
 void KviStatusBar::queueMessage(KviStatusBarMessage * pMsg)
 {
-	// FIXME: the priority of the message!!!
-	m_pMessageQueue->append(pMsg);
-	if(!m_pMessageTimer)showFirstMessageInQueue();
+	// Rearrange queue using the priority of the message
+
+	if(pMsg->priority() > m_pMessageQueue->first()->priority())
+		m_pMessageQueue->prepend(pMsg);
+	else
+		m_pMessageQueue->append(pMsg);
+
+	if(!m_pMessageTimer)
+		showFirstMessageInQueue();
 	// else we wait for the message timer to shot
 }
 
 void KviStatusBar::messageTimerFired()
 {
-	if(m_pMessageTimer)m_pMessageTimer->stop();
+	if(m_pMessageTimer)
+		m_pMessageTimer->stop();
 
 	if(!m_pMessageQueue->isEmpty())
 	{
@@ -553,7 +654,7 @@ void KviStatusBar::messageTimerFired()
 		m_pMessageQueue->removeFirst();
 		if(!m_pMessageQueue->isEmpty())
 		{
-			// something to show
+			// somKviStatusBar::ething to show
 			showFirstMessageInQueue();
 		}
 	}
@@ -591,46 +692,47 @@ void KviStatusBar::showFirstMessageInQueue()
 
 void KviStatusBar::setPermanentMessage()
 {
-	if(m_pMessageTimer)return; // something is being actually shown!
+	if(m_pMessageTimer)
+		return; // something is being actually shown!
 
 	KviIrcContext * c = m_pFrame->activeContext();
 
-	QString txt = "<nobr>";
+	QString szTxt = "<nobr>";
 
 	if(c)
 	{
 		switch(c->state())
 		{
 			case KviIrcContext::Connected:
-				txt += "<b>[";
-				txt += c->connection()->currentServerName();
-				txt += "]</b> ";
-				txt += c->connection()->currentNickName();
+				szTxt += "<b>[";
+				szTxt += c->connection()->currentServerName();
+				szTxt += "]</b> ";
+				szTxt += c->connection()->currentNickName();
 				if(!c->connection()->userInfo()->userMode().isEmpty())
 				{
-					txt += " (+";
-					txt += c->connection()->userInfo()->userMode();
-					txt += ")";
+					szTxt += " (+";
+					szTxt += c->connection()->userInfo()->userMode();
+					szTxt += ")";
 				}
 			break;
 			case KviIrcContext::Connecting:
-				txt += __tr2qs("Connection in progress...");
+				szTxt += __tr2qs("Connection in progress...");
 			break;
 			case KviIrcContext::LoggingIn:
-				txt += "<b>[";
-				txt += c->connection()->currentServerName();
-				txt += "]</b> ";
-				txt += __tr2qs("Login in progress...");
+				szTxt += "<b>[";
+				szTxt += c->connection()->currentServerName();
+				szTxt += "]</b> ";
+				szTxt += __tr2qs("Login in progress...");
 			break;
 			default:
-				txt += __tr2qs("Not connected");
+				szTxt += __tr2qs("Not connected");
 			break;
 		}
 	} else {
-		txt += __tr2qs("No IRC context");
+		szTxt += __tr2qs("No IRC context");
 	}
 
-	txt += "</nobr>";
+	szTxt += "</nobr>";
 
-	m_pMessageLabel->setText(txt);
+	m_pMessageLabel->setText(szTxt);
 }
