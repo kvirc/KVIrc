@@ -28,36 +28,57 @@
 #include "kvi_regusersdb.h"
 #include "kvi_selectors.h"
 #include "kvi_pointerhashtable.h"
-#include "kvi_tal_listview.h"
-#include "kvi_tal_listbox.h"
+#include "kvi_tal_treewidget.h"
+#include "kvi_tal_listwidget.h"
 #include "kvi_tal_popupmenu.h"
 
 #include <QWidget>
 #include <QLineEdit>
 #include <QPushButton>
-
-// FIXME: Qt4 #include <QMultiHash>
-#include <q3intdict.h>
-
+#include <QItemDelegate>
+#include <QMultiHash>
 #include <QTextDocument>
 
-class KviRegisteredUsersDialogItemBase : public KviTalListViewItem
+class  KviRegisteredUsersListView : public KviTalTreeWidget
+{
+	Q_OBJECT
+public:
+	 KviRegisteredUsersListView(QWidget*);
+	~KviRegisteredUsersListView(){};
+protected:
+	void mousePressEvent (QMouseEvent *e);
+signals:
+	void rightButtonPressed(KviTalTreeWidgetItem *,QPoint);
+};
+
+class KviRegisteredUsersDialogItemDelegate : public QItemDelegate
+{
+public:
+	KviRegisteredUsersDialogItemDelegate(KviRegisteredUsersListView * pWidget=0)
+		: QItemDelegate(pWidget) {};
+	~KviRegisteredUsersDialogItemDelegate(){};
+	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+	void paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
+
+};
+
+class KviRegisteredUsersDialogItemBase : public KviTalTreeWidgetItem
 {
 public:
 	enum Types { User,Group };
 protected:
-	KviRegisteredUsersDialogItemBase(Types type,KviTalListView * par)
-	:KviTalListViewItem(par),m_iType(type)
+	KviRegisteredUsersDialogItemBase(Types type,KviRegisteredUsersListView * par)
+	:KviTalTreeWidgetItem(par),m_iType(type)
 	{
 	};
-	KviRegisteredUsersDialogItemBase(Types type,KviTalListViewItem * par)
-	:KviTalListViewItem(par),m_iType(type)
+	KviRegisteredUsersDialogItemBase(Types type,KviTalTreeWidgetItem * par)
+	:KviTalTreeWidgetItem(par),m_iType(type)
 	{
 	};
 	~KviRegisteredUsersDialogItemBase()
 	{
 	};
-	
+
 private:
 	KviRegisteredUsersDialogItemBase::Types m_iType;
 public:
@@ -69,7 +90,7 @@ class KviRegisteredUsersGroupItem : public KviRegisteredUsersDialogItemBase
 protected:
 	KviRegisteredUserGroup * m_pGroup;
 public:
-	KviRegisteredUsersGroupItem(KviTalListView * par,KviRegisteredUserGroup * g)
+	KviRegisteredUsersGroupItem(KviRegisteredUsersListView * par,KviRegisteredUserGroup * g)
 	:KviRegisteredUsersDialogItemBase(Group,par), m_pGroup(g)
 	{
 		setText(0,m_pGroup->name());
@@ -82,17 +103,16 @@ public:
 
 class KviRegisteredUsersDialogItem : public KviRegisteredUsersDialogItemBase
 {
+	friend class KviRegisteredUsersDialogItemDelegate;
 protected:
 	KviRegisteredUser * m_pUser;
-	QTextDocument * m_pText;
+	QTextDocument       m_pText;
 public:
-	KviRegisteredUsersDialogItem(KviTalListViewItem * par,KviRegisteredUser * u);
+	KviRegisteredUsersDialogItem(KviTalTreeWidgetItem * par,KviRegisteredUser * u);
 	~KviRegisteredUsersDialogItem();
 public:
 	KviRegisteredUser * user(){ return m_pUser; };
 	void setUser(KviRegisteredUser * u){ m_pUser = u; };
-	virtual void paintCell(QPainter * p,const QColorGroup &cg,int column,int width,int align);
-	virtual void setup();
 	virtual QString key(int,bool) const;
 };
 
@@ -103,7 +123,7 @@ public:
 	KviRegisteredUsersDialog(QWidget * par = 0);
 	~KviRegisteredUsersDialog();
 public:
-	KviTalListView   * m_pListView;
+	KviRegisteredUsersListView   * m_pListView;
 	QPushButton * m_pAddButton;
 	QPushButton * m_pWizardAddButton;
 	QPushButton * m_pRemoveButton;
@@ -111,10 +131,10 @@ public:
 	QPushButton * m_pImportButton;
 	QPushButton * m_pExportButton;
 	QPushButton * m_pAddGroupButton;
-	Q3IntDict<KviRegisteredUserGroup> m_TmpDict;
+	QMultiHash<int, KviRegisteredUserGroup*> m_TmpDict;
 protected slots:
-	void itemPressed(KviTalListViewItem *it,const QPoint &pnt,int c);
-	void itemDoubleClicked(KviTalListViewItem *it);
+	void itemPressed(KviTalTreeWidgetItem *it,int c);
+	void itemDoubleClicked(KviTalTreeWidgetItem *it, int);
 protected:
 	void fillList();
 protected:
@@ -132,7 +152,7 @@ protected slots:
 	void exportClicked();
 	void addWizardClicked();
 	void addGroupClicked();
-	void listViewRightButtonClicked ( KviTalListViewItem *, const QPoint &, int );
+	void listViewRightButtonClicked ( KviTalTreeWidgetItem *, QPoint);
 	void moveToGroupMenuClicked(int);
 };
 

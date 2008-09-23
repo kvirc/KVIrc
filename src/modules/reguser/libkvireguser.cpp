@@ -116,12 +116,12 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 		{
 			if(g_pRegisteredUsersDialog->parent())
 			{
-				g_pRegisteredUsersDialog->reparent(0,QPoint(0,0),true);
+				g_pRegisteredUsersDialog->setParent(0);
 			}
 		} else {
 			if(g_pRegisteredUsersDialog->parent() != c->window()->frame()->splitter())
 			{
-				g_pRegisteredUsersDialog->reparent(c->window()->frame()->splitter(),QPoint(0,0),true);
+				g_pRegisteredUsersDialog->setParent(c->window()->frame()->splitter());
 			}
 		}
 	} else {

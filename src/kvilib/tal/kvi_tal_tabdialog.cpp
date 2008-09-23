@@ -41,7 +41,7 @@ KviTalTabDialog::KviTalTabDialog(QWidget * pParent,const char * name,bool bModal
 	setLayout(m_pLayout);
 
 	m_pTabWidget = new QTabWidget(this);
-	m_pLayout->addWidget(m_pTabWidget,0,0,1,2);
+	m_pLayout->addWidget(m_pTabWidget,0,0,1,3);
 }
 
 KviTalTabDialog::~KviTalTabDialog()

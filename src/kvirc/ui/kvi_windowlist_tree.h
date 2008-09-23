@@ -146,7 +146,7 @@ public:
 	KviTreeWindowListItemDelegate(QAbstractItemView * pWidget=0)
 		: KviTalIconAndRichTextItemDelegate(pWidget) {};
 	~KviTreeWindowListItemDelegate(){};
-	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
+	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 	int calculateColor(int col1,int col2, int iStepNumber) const;
 };

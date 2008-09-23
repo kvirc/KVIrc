@@ -69,12 +69,14 @@ KviRegisteredUserDataBase * g_pLocalRegisteredUserDataBase; // local copy!
 
 
 KviReguserPropertiesDialog::KviReguserPropertiesDialog(QWidget * p,KviPointerHashTable<QString,QString> * dict)
-: QDialog(p,"property_editor",true)
+: QDialog(p)
 {
+	setObjectName("property_editor");
+	setWindowModality(Qt::WindowModal);
 	m_pPropertyDict = dict;
 
 	setWindowTitle(__tr2qs("Property Editor"));
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -217,8 +219,10 @@ void KviReguserPropertiesDialog::delClicked()
 
 
 KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
-: QDialog(p,"reguser_mask_editor",true)
+: QDialog(p)
 {
+	setObjectName("reguser_mask_editor");
+	setWindowModality(Qt::WindowModal);
 	m_pMask = m;
 
 	setWindowTitle(__tr2qs("Mask Editor"));
@@ -227,15 +231,15 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 
 	QLabel * l = new QLabel(__tr2qs("Insert a mask for this user.<br>It can contain the wildcard characters '*' and '?'."),this);
 	//l->setAlignment(Qt::AlignCenter);
-	g->addMultiCellWidget(l,0,0,0,1);
+	g->addWidget(l,0,0,1,2);
 
 	KviTalHBox * b = new KviTalHBox(this);
-	g->addMultiCellWidget(b,1,1,0,1);
+	g->addWidget(b,1,0,1,2);
 
 	m_pNickEdit = new QLineEdit(b);
 	//m_pNickEdit->setMinimumWidth(120);
 	m_pNickEdit->setAlignment(Qt::AlignRight);
-	QToolTip::add(m_pNickEdit,__tr2qs("<center>This the <b>nickname</b> that will match this user, default value is the registered name.</center>"));
+	m_pNickEdit->setToolTip(__tr2qs("<center>This the <b>nickname</b> that will match this user, default value is the registered name.</center>"));
 
 	l = new QLabel("<center><b>!</b></center>",b);
 	l->setAlignment(Qt::AlignCenter);
@@ -244,7 +248,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	m_pUserEdit = new QLineEdit(b);
 	//m_pUserEdit->setMinimumWidth(120);
 	m_pUserEdit->setAlignment(Qt::AlignCenter);
-	QToolTip::add(m_pUserEdit,__tr2qs("<center>This the <b>username</b> that will match this user. <b>*</b> will match any username.</center>"));
+	m_pUserEdit->setToolTip(__tr2qs("<center>This the <b>username</b> that will match this user. <b>*</b> will match any username.</center>"));
 
 	l = new QLabel("<center><b>@</b></center>",b);
 	l->setAlignment(Qt::AlignCenter);
@@ -253,7 +257,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	m_pHostEdit = new QLineEdit(b);
 	//m_pHostEdit->setMinimumWidth(120);
 	m_pHostEdit->setAlignment(Qt::AlignLeft);
-	QToolTip::add(m_pHostEdit,__tr2qs("<center>This the <b>hostname</b> that will match this user. <b>*</b> will match any hostname.</center>"));
+	m_pHostEdit->setToolTip(__tr2qs("<center>This the <b>hostname</b> that will match this user. <b>*</b> will match any hostname.</center>"));
 
 	// just a spacer
 //	l = new QLabel("<nobr>&nbsp;<nobr>",this);
@@ -328,7 +332,7 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 
 	//setMinimumSize(400,450);
 
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
 	setWindowTitle(__tr2qs("Registered User Entry"));
 
 	QWidget * p1 = new QWidget(this);
@@ -348,20 +352,20 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	g->addWidget(m_pCommentEdit,1,1);
 
 	QFrame * f = new QFrame(p1);
-	g->addMultiCellWidget(f,2,2,0,1);
+	g->addWidget(f,2,0,1,2);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 
 	l = new QLabel(__tr2qs("Masks:"),p1);
-	g->addMultiCellWidget(l,3,3,0,1);
+	g->addWidget(l,3,0,1,2);
 
 	m_pMaskListBox = new QListWidget(p1);
-	connect(m_pMaskListBox,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(maskCurrentChanged(QListWidgetItem *)));
+	connect(m_pMaskListBox,SIGNAL(itemSelectionChanged()),this,SLOT(maskCurrentChanged()));
 	m_pMaskListBox->setMinimumSize(300,200);
 
-	g->addMultiCellWidget(m_pMaskListBox,4,4,0,1);
+	g->addWidget(m_pMaskListBox,4,0,1,2);
 
 	KviTalHBox * b = new KviTalHBox(p1);
-	g->addMultiCellWidget(b,5,5,0,1);
+	g->addWidget(b,5,0,1,2);
 	b->setSpacing(4);
 
 	m_pAddMaskButton = new QPushButton(__tr2qs("&Add..."),b);
@@ -388,24 +392,25 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	g = new QGridLayout(p2);
 
 	m_pNotifyCheck = new QCheckBox(__tr2qs("Notify when user is online"),p2);
-	g->addMultiCellWidget(m_pNotifyCheck,0,0,0,2);
+	g->addWidget(m_pNotifyCheck,0,0,1,3);
 
 	l = new QLabel(__tr2qs("Notify nicknames:"),p2);
 	l->setEnabled(m_pNotifyCheck->isChecked());
 	g->addWidget(l,1,0);
 	connect(m_pNotifyCheck,SIGNAL(toggled(bool)),l,SLOT(setEnabled(bool)));
-	QToolTip::add(m_pNotifyCheck,__tr2qs("<center>You can enter a space separated list of nicknames.</center>"));
+	m_pNotifyCheck->setToolTip(__tr2qs("<center>You can enter a space separated list of nicknames.</center>"));
 
 
 	m_pNotifyNick = new QLineEdit(p2);
 	m_pNotifyNick->setEnabled(false);
-	g->addMultiCellWidget(m_pNotifyNick,1,1,1,2);
+
+	g->addWidget(m_pNotifyNick,1,1,1,2);
 	connect(m_pNotifyCheck,SIGNAL(toggled(bool)),m_pNotifyNick,SLOT(setEnabled(bool)));
 
 
 	f = new QFrame(p2);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
-	g->addMultiCellWidget(f,2,2,0,2);
+	g->addWidget(f,2,0,1,3);
 
 	m_pAvatar = 0;
 	if(r)
@@ -419,16 +424,16 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	if(!m_pAvatar)m_pAvatar = new KviPixmap();
 
 	m_pAvatarSelector = new KviPixmapSelector(p2,__tr2qs("Avatar"),m_pAvatar,true);
-	g->addMultiCellWidget(m_pAvatarSelector,3,3,0,2);
+	g->addWidget(m_pAvatarSelector,3,0,1,3);
 
 	f = new QFrame(p2);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
-	g->addMultiCellWidget(f,4,4,0,2);
+	g->addWidget(f,4,0,1,3);
 
 	m_pCustomColorCheck = new QCheckBox(__tr2qs("Use custom color in userlist"),p2);
 	if(r)
 		m_pCustomColorCheck->setChecked(r->getBoolProperty("useCustomColor"));
-	g->addMultiCellWidget(m_pCustomColorCheck,5,5,0,1);
+	g->addWidget(m_pCustomColorCheck,5,0,1,2);
 
 	m_pCustomColorSelector = new KviColorSelector(p2,QString::null,m_pCustomColor,1);
 	g->addWidget(m_pCustomColorSelector,5,2);
@@ -451,7 +456,9 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	QGroupBox * gb = new QGroupBox(__tr2qs("Ignore features"),vb);
 	connect(m_pIgnoreEnabled,SIGNAL(toggled(bool)),gb,SLOT(setEnabled(bool)));
 
-	QVBoxLayout * layout = new QVBoxLayout(gb,20,3);
+	QVBoxLayout * layout = new QVBoxLayout(gb);
+	layout->setMargin(20);
+	layout->setSpacing(3);
 
 	m_pIgnoreQuery = new QCheckBox(__tr2qs("Ignore query-messages"),gb);
 	layout->addWidget(m_pIgnoreQuery);
@@ -546,10 +553,12 @@ KviRegisteredUserEntryDialog::~KviRegisteredUserEntryDialog()
 	delete m_pCustomColor;
 }
 
-void KviRegisteredUserEntryDialog::maskCurrentChanged(QListWidgetItem *it)
+void KviRegisteredUserEntryDialog::maskCurrentChanged()
 {
-	m_pDelMaskButton->setEnabled(it);
-	m_pEditMaskButton->setEnabled(it);
+	bool bHaveSelected = !m_pMaskListBox->selectedItems().empty();
+
+	m_pDelMaskButton->setEnabled(bHaveSelected);
+	m_pEditMaskButton->setEnabled(bHaveSelected);
 }
 
 void KviRegisteredUserEntryDialog::okClicked()

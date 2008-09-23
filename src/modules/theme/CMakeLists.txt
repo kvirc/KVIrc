@@ -4,7 +4,6 @@ SET(kvitheme_MOC_HDRS
 	managementdialog.h
 	packthemedialog.h
 	savethemedialog.h
-	themefunctions.h
 )
 
 SET(kvitheme_SRCS

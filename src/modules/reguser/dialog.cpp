@@ -60,6 +60,8 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QAbstractItemView>
+#include <QTextDocument>
+#include <QAbstractTextDocumentLayout>
 
 #define LVI_ICON_SIZE 32
 #define LVI_BORDER 4
@@ -70,7 +72,42 @@
 
 extern KviRegisteredUsersDialog * g_pRegisteredUsersDialog;
 
-KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalListViewItem * par,KviRegisteredUser * u)
+KviRegisteredUsersListView::KviRegisteredUsersListView(QWidget * par)
+: KviTalTreeWidget(par)
+{
+	setColumnCount(2);
+
+	QStringList labels;
+	labels << __tr2qs("Name") << __tr2qs("Flags");
+	setHeaderLabels(labels);
+	setColumnWidth(0,360);
+	setColumnWidth(1,20);
+
+	setAllColumnsShowFocus(true);
+
+	setSelectionBehavior(QAbstractItemView::SelectRows);
+	setSelectionMode(QAbstractItemView::ExtendedSelection);
+	setRootIsDecorated(TRUE);
+	setSortingEnabled(true);
+
+	setToolTip(__tr2qs("<center>This is the list of registered users. " \
+		"KVIrc can automatically recognize and associate properties to them.<br>" \
+		"Use the buttons on the right to add, edit and remove entries. " \
+		"The \"notify\" column allows you to quickly add users to the notify list. " \
+		"Notify list fine-tuning can be performed by editing the entry properties.</center>"));
+}
+
+void KviRegisteredUsersListView::mousePressEvent (QMouseEvent *e)
+{
+	if (e->button() == Qt::RightButton)
+	{
+		KviTalTreeWidgetItem *i= (KviTalTreeWidgetItem*)itemAt(e->pos());
+		if (i) emit rightButtonPressed(i,QCursor::pos());
+	}
+	KviTalTreeWidget::mousePressEvent(e);
+}
+
+KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalTreeWidgetItem * par,KviRegisteredUser * u)
 : KviRegisteredUsersDialogItemBase(User,par), m_pUser(u)
 {
 	QString szTmp;
@@ -97,15 +134,13 @@ KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalListViewItem * 
 		t += m_pUser->getProperty("comment");
 	}
 	t += "</font></nobr>";
-	m_pText = new QTextDocument();
-	m_pText->setHtml(t);
-	m_pText->setDefaultFont(listView()->font());
-	//setText(0,u->name());
+	m_pText.setHtml(t);
+	m_pText.setTextWidth(-1);
+// 	setText(0,t);
 }
 
 KviRegisteredUsersDialogItem::~KviRegisteredUsersDialogItem()
 {
-	delete m_pText;
 }
 
 QString KviRegisteredUsersDialogItem::key(int,bool) const
@@ -113,48 +148,61 @@ QString KviRegisteredUsersDialogItem::key(int,bool) const
 	return m_pUser->name();
 }
 
-void KviRegisteredUsersDialogItem::paintCell(QPainter * p,const QColorGroup &cg,int column,int width,int align)
+void KviRegisteredUsersDialogItemDelegate::paint( QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-	KviTalListViewItem::paintCell(p,cg,column,width,align);
-	if(column==0)
+
+	KviRegisteredUsersDialogItemBase *item=static_cast<KviRegisteredUsersDialogItemBase *>(index.internalPointer());
+
+	if(item->type()==KviRegisteredUsersDialogItemBase::Group)
 	{
-		if (isSelected())
-		{
-			QColor col(listView()->palette().highlight());
-			col.setAlpha(127);
-			p->setBrush(col);
-			p->drawRect(0, 0, listView()->visibleWidth(), height());
-		}
-		p->drawPixmap(LVI_BORDER,LVI_BORDER, *(g_pIconManager->getBigIcon(QString(KVI_BIGICON_REGUSERS))) );
-		int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
-		int www = listView()->visibleWidth() - (afterIcon + LVI_BORDER);
-	p->translate(afterIcon,LVI_BORDER);
-	m_pText->setPageSize(QSizeF(www,height() - (LVI_BORDER * 2)));
-	m_pText->drawContents(p);
+		//groups
+		QItemDelegate::paint(p, option, index);
 	} else {
-		if(m_pUser)
+		if (option.state & QStyle::State_Selected)
+			p->fillRect(option.rect, option.palette.brush( QPalette::Highlight ) );
+
+		KviRegisteredUsersDialogItem *it=(KviRegisteredUsersDialogItem*)item;
+
+		if(index.column()==0)
 		{
-			if(!m_pUser->getProperty("notify").isEmpty())
-				p->drawPixmap(LVI_BORDER,LVI_BORDER,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTIFYONLINE)));
-			if(m_pUser->ignoreEnagled())
-				p->drawPixmap(LVI_BORDER,2*LVI_BORDER+16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IGNORE)));
+			QPoint pt=option.rect.topLeft();
+			pt.setX(pt.x()+LVI_BORDER);
+			pt.setY(pt.y()+LVI_BORDER);
+
+			p->drawPixmap(pt, *(g_pIconManager->getBigIcon(KVI_BIGICON_REGUSERS)));
+			QRect cliprect=QRect(QPoint(0,0),QSize(option.rect.width()-(LVI_ICON_SIZE+LVI_SPACING+LVI_BORDER),option.rect.height()));
+			p->save();
+
+			p->translate(option.rect.x()+LVI_ICON_SIZE+LVI_SPACING, option.rect.y());
+			it->m_pText.drawContents(p, cliprect);
+			p->restore();
+		} else {
+			if(it->user())
+			{
+				if(!it->user()->getProperty("notify").isEmpty())
+					p->drawPixmap(option.rect.topLeft().x()+LVI_BORDER,option.rect.topLeft().y()+LVI_BORDER,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NOTIFYONLINE)));
+				if(it->user()->ignoreEnagled())
+					p->drawPixmap(option.rect.topLeft().x()+LVI_BORDER,option.rect.topLeft().y()+2*LVI_BORDER+16,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IGNORE)));
+			}
 		}
 	}
 }
 
-void KviRegisteredUsersDialogItem::setup()
+QSize KviRegisteredUsersDialogItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-	KviTalListViewItem::setup();
-	int iWidth = listView()->visibleWidth();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	iWidth -= LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER;
-	//m_pText->setWidth(iWidth);
-	//int iHeight = m_pText->height() + (2 * LVI_BORDER);
-	int iHeight = m_pText->size().height() + (2 * LVI_BORDER);
-	if(iHeight < (LVI_ICON_SIZE + (2 * LVI_BORDER)))iHeight = LVI_ICON_SIZE + (2 * LVI_BORDER);
-	setHeight(iHeight+2);
-}
+	KviRegisteredUsersDialogItemBase *item=static_cast<KviRegisteredUsersDialogItemBase *>(index.internalPointer());
 
+	if(item->type()==KviRegisteredUsersDialogItemBase::Group)
+	{
+		//groups
+		return QItemDelegate::sizeHint(option, index);
+	} else {
+		//users
+// 		KviRegisteredUsersDialogItem *it=(KviRegisteredUsersDialogItem*)item;
+
+		return QSize(300, LVI_ICON_SIZE+2.0*LVI_BORDER);
+	}
+}
 
 KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 : QWidget(par)
@@ -164,32 +212,19 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	g_pLocalRegisteredUserDataBase = new KviRegisteredUserDataBase();
 	g_pLocalRegisteredUserDataBase->copyFrom(g_pRegisteredUserDataBase);
 
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_REGUSERS)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_REGUSERS)));
 	setWindowTitle(__tr2qs("Registered Users - KVIrc"));
 
 	QGridLayout * g = new QGridLayout(this);
 
 
-	m_pListView = new KviTalListView(this);
+	m_pListView = new KviRegisteredUsersListView(this);
+	m_pListView->setItemDelegate(new KviRegisteredUsersDialogItemDelegate());
 
-	m_pListView->addColumn(__tr2qs("Name"),200);
-	m_pListView->addColumn(__tr2qs("Flags"),20);
+	connect(m_pListView,SIGNAL(itemPressed(KviTalTreeWidgetItem *,int)),this,SLOT(itemPressed(KviTalTreeWidgetItem *,int)));
+	connect(m_pListView,SIGNAL(itemDoubleClicked(KviTalTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem *, int)));
 
-	m_pListView->setAllColumnsShowFocus(true);
-
-	m_pListView->setSelectionMode(Q3ListView::Extended);
-	m_pListView->setRootIsDecorated(TRUE);
-
-	QToolTip::add(m_pListView,__tr2qs("<center>This is the list of registered users. " \
-		"KVIrc can automatically recognize and associate properties to them.<br>" \
-		"Use the buttons on the right to add, edit and remove entries. " \
-		"The \"notify\" column allows you to quickly add users to the notify list. " \
-		"Notify list fine-tuning can be performed by editing the entry properties.</center>"));
-
-	connect(m_pListView,SIGNAL(pressed(KviTalListViewItem *,const QPoint &,int)),this,SLOT(itemPressed(KviTalListViewItem *,const QPoint &,int)));
-	connect(m_pListView,SIGNAL(doubleClicked(KviTalListViewItem *)),this,SLOT(itemDoubleClicked(KviTalListViewItem *)));
-
-	g->addMultiCellWidget(m_pListView,0,1,0,1);
+	g->addWidget(m_pListView,0,0,2,2);
 
 	KviTalVBox * vbox = new KviTalVBox(this);
 	vbox->setSpacing(4);
@@ -197,31 +232,31 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 
 	m_pWizardAddButton = new QPushButton(__tr2qs("Add (Wizard)..."),vbox);
 	connect(m_pWizardAddButton,SIGNAL(clicked()),this,SLOT(addWizardClicked()));
-	QToolTip::add(m_pWizardAddButton,__tr2qs("Add a registered user by means of a user-friendly wizard."));
+	m_pWizardAddButton->setToolTip(__tr2qs("Add a registered user by means of a user-friendly wizard."));
 	m_pWizardAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEMBYWIZARD)));
 
 
 	m_pAddButton = new QPushButton(__tr2qs("&Add..."),vbox);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
-	QToolTip::add(m_pAddButton,__tr2qs("Open the edit dialog to create a new user entry."));
+	m_pAddButton->setToolTip(__tr2qs("Open the edit dialog to create a new user entry."));
 	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 
 	m_pAddGroupButton = new QPushButton(__tr2qs("&Add Group..."),vbox);
 	connect(m_pAddGroupButton,SIGNAL(clicked()),this,SLOT(addGroupClicked()));
-	QToolTip::add(m_pAddGroupButton,__tr2qs("Adds a new group"));
+	m_pAddGroupButton->setToolTip(__tr2qs("Adds a new group"));
 	m_pAddGroupButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 
 	m_pRemoveButton = new QPushButton(__tr2qs("Re&move"),vbox);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveButton->setEnabled(false);
-	QToolTip::add(m_pRemoveButton,__tr2qs("Remove the currently selected entries."));
+	m_pRemoveButton->setToolTip(__tr2qs("Remove the currently selected entries."));
 	m_pRemoveButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 
 
 	m_pEditButton = new QPushButton(__tr2qs("&Edit..."),vbox);
 	connect(m_pEditButton,SIGNAL(clicked()),this,SLOT(editClicked()));
 	m_pEditButton->setEnabled(false);
-	QToolTip::add(m_pEditButton,__tr2qs("Edit the first selected entry."));
+	m_pEditButton->setToolTip(__tr2qs("Edit the first selected entry."));
 	m_pEditButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
 
 	QFrame * f = new QFrame(vbox);
@@ -230,19 +265,19 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	m_pExportButton = new QPushButton(__tr("Export To..."),vbox);
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
-	QToolTip::add(m_pExportButton,__tr2qs("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button."));
+	m_pExportButton->setToolTip(__tr2qs("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button."));
 	m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)));
 
 
 	m_pImportButton = new QPushButton(__tr("Import From..."),vbox);
 	connect(m_pImportButton,SIGNAL(clicked()),this,SLOT(importClicked()));
-	QToolTip::add(m_pImportButton,__tr2qs("Import entries from a file exported earlier by the \"export\" function of this dialog."));
+	m_pImportButton->setToolTip(__tr2qs("Import entries from a file exported earlier by the \"export\" function of this dialog."));
 	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
 
 
 	KviTalHBox * hbox = new KviTalHBox(this);
 	hbox->setSpacing(4);
-	g->addMultiCellWidget(hbox,3,3,1,2);
+	g->addWidget(hbox,3,1,1,2);
 
 	QPushButton * b;
 
@@ -257,12 +292,12 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	//b->setMinimumWidth(120);
 
-	g->addRowSpacing(2,15);
-	g->setColStretch(0,1);
+	g->addItem(new QSpacerItem(0, 15), 2, 0);
+	g->setColumnStretch(0,1);
 	g->setRowStretch(1,1);
 
-	connect(m_pListView,SIGNAL(selectionChanged()),this,SLOT(selectionChanged()));
-	connect(m_pListView,SIGNAL(rightButtonClicked ( KviTalListViewItem *, const QPoint &, int ) ),this,SLOT(listViewRightButtonClicked ( KviTalListViewItem *, const QPoint &, int )));
+	connect(m_pListView,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
+	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalTreeWidgetItem *, QPoint)),this,SLOT(listViewRightButtonClicked(KviTalTreeWidgetItem *, QPoint)));
 
 	fillList();
 
@@ -294,7 +329,7 @@ KviRegisteredUsersDialog::~KviRegisteredUsersDialog()
 	g_pLocalRegisteredUserDataBase = 0;
 }
 
-void KviRegisteredUsersDialog::itemPressed(KviTalListViewItem *it,const QPoint &pnt,int c)
+void KviRegisteredUsersDialog::itemPressed(KviTalTreeWidgetItem *it,int c)
 {
 	if(!it)return;
 	KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)it;
@@ -302,10 +337,10 @@ void KviRegisteredUsersDialog::itemPressed(KviTalListViewItem *it,const QPoint &
 	{
 		KviRegisteredUsersDialogItem *i = (KviRegisteredUsersDialogItem *)it;
 
-		QRect r = m_pListView->itemRect(i);
+		QRect r = m_pListView->visualItemRect(i);
 		int daw = m_pListView->columnWidth(0);
 
-		QPoint ppp = m_pListView->mapFromGlobal(pnt);
+		QPoint ppp = m_pListView->mapFromGlobal(QCursor::pos());
 
 		if((c == 1) && (ppp.x() < (r.height() + 5 + daw)))
 		{
@@ -340,7 +375,7 @@ void KviRegisteredUsersDialog::itemPressed(KviTalListViewItem *it,const QPoint &
 	}
 }
 
-void KviRegisteredUsersDialog::itemDoubleClicked(KviTalListViewItem *it)
+void KviRegisteredUsersDialog::itemDoubleClicked(KviTalTreeWidgetItem *it, int)
 {
 	if(!it)return;
 	KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)it;
@@ -356,9 +391,9 @@ void KviRegisteredUsersDialog::itemDoubleClicked(KviTalListViewItem *it)
 void KviRegisteredUsersDialog::addGroupClicked()
 {
 	bool ok;
-	QString text = QInputDialog::getText(
+	QString text = QInputDialog::getText( this,
 		"KVIrc", __tr("Group name:"), QLineEdit::Normal,
-		QString::null, &ok, this );
+		QString::null, &ok );
 	if ( ok && !text.isEmpty() ) {
 		g_pLocalRegisteredUserDataBase->addGroup(text);
 		fillList();
@@ -369,9 +404,9 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 {
 	bool ok;
 
-	QString text = QInputDialog::getText(
+	QString text = QInputDialog::getText( this,
 		"KVIrc", __tr("Group name:"), QLineEdit::Normal,
-		group->name(), &ok, this );
+		group->name(), &ok );
 	if ( ok && !text.isEmpty() ) {
 		QString szOldGroup=group->name();
 		g_pLocalRegisteredUserDataBase->groupDict()->setAutoDelete(0);
@@ -392,7 +427,8 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 	}
 }
 
-void KviRegisteredUsersDialog::listViewRightButtonClicked ( KviTalListViewItem * pItem, const QPoint & point, int )
+
+void KviRegisteredUsersDialog::listViewRightButtonClicked ( KviTalTreeWidgetItem * pItem, QPoint pnt)
 {
 	if(pItem)
 	{
@@ -413,22 +449,22 @@ void KviRegisteredUsersDialog::listViewRightButtonClicked ( KviTalListViewItem *
 
 			KviTalPopupMenu *mainPopup = new KviTalPopupMenu;
 			mainPopup->insertItem(__tr("Move to group"),groups);
-			mainPopup->exec(point);
+			mainPopup->exec(pnt);
 		}
 	}
 }
 
 void KviRegisteredUsersDialog::moveToGroupMenuClicked(int id)
 {
-	QString szGroup=m_TmpDict.find(id)->name();
-	KviTalListViewItemIterator it( m_pListView,  KviTalListViewItemIterator::Selected );
-	while ( it.current() ) {
-		KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)(it.current());
+	QString szGroup=(*(m_TmpDict.find(id)))->name();
+	QList<QTreeWidgetItem *> list = m_pListView->selectedItems();
+	for(int i=0; i<list.count(); i++)
+	{
+		KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)(list.at(i));
 		if(b->type()==KviRegisteredUsersDialogItemBase::User)
 		{
-			((KviRegisteredUsersDialogItem *)(it.current()))->user()->setGroup(szGroup);
+			((KviRegisteredUsersDialogItem *)list.at(i))->user()->setGroup(szGroup);
 		}
-		++it;
 	}
 	fillList();
 }
@@ -444,7 +480,7 @@ void KviRegisteredUsersDialog::fillList()
 	{
 		KviRegisteredUsersGroupItem* pCur = new KviRegisteredUsersGroupItem(m_pListView,g);
 		groupItems.insert(g->name(),pCur);
-		pCur->setOpen(TRUE);
+		pCur->setExpanded(TRUE);
 	}
 
 	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pLocalRegisteredUserDataBase->userDict();
@@ -465,10 +501,10 @@ void KviRegisteredUsersDialog::fillList()
 			item = new KviRegisteredUsersDialogItem(pCur,u);
 		}
 	}
-	if(m_pListView->firstChild())
+	if(m_pListView->topLevelItem(0))
 	{
-		m_pListView->setSelected(m_pListView->firstChild(),true);
-		m_pListView->setCurrentItem(m_pListView->firstChild());
+		m_pListView->topLevelItem(0)->setSelected(true);
+		m_pListView->setCurrentItem(m_pListView->topLevelItem(0));
 	}
 }
 
@@ -522,16 +558,16 @@ void KviRegisteredUsersDialog::addWizardClicked()
 
 void KviRegisteredUsersDialog::removeClicked()
 {
-	KviTalListViewItemIterator it( m_pListView,  KviTalListViewItemIterator::Selected );
-	while ( it.current() ) {
-		KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)(it.current());
+	QList<QTreeWidgetItem *> list = m_pListView->selectedItems();
+	for(int i=0; i<list.count(); i++)
+	{
+		KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)(list.at(i));
 		if(b->type()==KviRegisteredUsersDialogItemBase::User)
 		{
-			g_pLocalRegisteredUserDataBase->removeUser(((KviRegisteredUsersDialogItem *)(it.current()))->user()->name());
+			g_pLocalRegisteredUserDataBase->removeUser(((KviRegisteredUsersDialogItem *)list.at(i))->user()->name());
 		} else {
-			g_pLocalRegisteredUserDataBase->removeGroup(((KviRegisteredUsersGroupItem *)(it.current()))->group()->name());
+			g_pLocalRegisteredUserDataBase->removeGroup(((KviRegisteredUsersGroupItem *)list.at(i))->group()->name());
 		}
-		++it;
 	}
 	fillList();
 // 	KviRegisteredUsersDialogItem *it = (KviRegisteredUsersDialogItem *)m_pListView->firstChild();
@@ -589,17 +625,17 @@ void KviRegisteredUsersDialog::editItem(KviRegisteredUsersDialogItem * i)
 		fillList();
 
 		// select the last edited item
-		KviTalListViewItem * i = m_pListView->firstChild();
-		while(i)
+		int count = m_pListView->topLevelItemCount();
+		for(int c=0;c<count;c++)
 		{
+			KviTalTreeWidgetItem * i = m_pListView->topLevelItem(c);
 			QString szTmp = i->text(0);
 			if(KviQString::equalCI(szTmp,szName))
 			{
-				m_pListView->setSelected(i,true);
+				i->setSelected(true);
 				m_pListView->setCurrentItem(i);
 				break;
 			}
-			i = i->nextSibling();
 		}
 
 		return;
@@ -611,7 +647,7 @@ void KviRegisteredUsersDialog::editItem(KviRegisteredUsersDialogItem * i)
 
 void KviRegisteredUsersDialog::selectionChanged()
 {
-	bool bHaveSelected = !m_pListView->selectedItem();
+	bool bHaveSelected = !m_pListView->selectedItems().empty();
 
 	m_pEditButton->setEnabled(bHaveSelected);
 	m_pRemoveButton->setEnabled(bHaveSelected);
@@ -633,12 +669,13 @@ void KviRegisteredUsersDialog::exportClicked()
 {
 	unsigned int nEntries = 0;
 
-	KviTalListViewItemIterator it( m_pListView, KviTalListViewItemIterator::Selected );
-	KviTalListViewItemIterator cit( m_pListView, KviTalListViewItemIterator::Selected );
-	while ( cit.current() ) {
-		if(((KviRegisteredUsersDialogItemBase *)(cit.current()))->type() == KviRegisteredUsersDialogItemBase::User)
+	QList<QTreeWidgetItem *> list = m_pListView->selectedItems();
+
+	//only "user" entries matters, discard groups from count
+	for(int i=0; i<list.count(); i++)
+	{
+		if(((KviRegisteredUsersDialogItemBase *)list.at(i))->type() == KviRegisteredUsersDialogItemBase::User)
 			nEntries++;
-		++cit;
 	}
 
 	if(nEntries < 1)
@@ -654,7 +691,7 @@ void KviRegisteredUsersDialog::exportClicked()
 	if(!g_pRegisteredUsersDialog)return; // we have been deleted!
 
 	KviFile f(buffer);
-	if(!f.open(IO_WriteOnly | IO_Truncate))
+	if(!f.open(QIODevice::WriteOnly | QIODevice::Truncate))
 	{
 		KviMessageBox::warning(__tr("Can't open file %Q for writing."),&buffer);
 		return;
@@ -667,15 +704,14 @@ void KviRegisteredUsersDialog::exportClicked()
 
 	if(f.writeBlock((const char *)&hf,sizeof(KviReguserDbFileHeader)) != sizeof(KviReguserDbFileHeader))goto write_error;
 
-	while ( it.current() ) {
-		KviRegisteredUsersDialogItemBase *pBase = (KviRegisteredUsersDialogItemBase *)(it.current());
+	for(int i=0; i<list.count(); i++)
+	{
+		KviRegisteredUsersDialogItemBase *pBase = (KviRegisteredUsersDialogItemBase *)list.at(i);
 		if(pBase->type()!=KviRegisteredUsersDialogItemBase::User)
-		{
-			++it;
 			continue;
-		}
-		QString szName = it.current()->text(0);
-		KviRegisteredUser * u = ((KviRegisteredUsersDialogItem *)(it.current()))->user();
+
+		QString szName = list.at(i)->text(0);
+		KviRegisteredUser * u = ((KviRegisteredUsersDialogItem *)list.at(i))->user();
 		if(u)
 		{
 			if(!f.save(szName))goto write_error;
@@ -719,7 +755,7 @@ void KviRegisteredUsersDialog::exportClicked()
 						QImageWriter io;
 						io.setDevice(&f);
 						io.setFormat("PNG");
-						if(!io.write(av->pixmap()->convertToImage()))goto write_error;
+						if(!io.write(av->pixmap()->toImage()))goto write_error;
 					} else {
 						if(!f.save(0))goto write_error;
 					}
@@ -730,7 +766,6 @@ void KviRegisteredUsersDialog::exportClicked()
 				if(!f.save(0))goto write_error;
 			}
 		}
-		++it;
 	}
 
 	goto succesfull_export;
@@ -756,7 +791,7 @@ void KviRegisteredUsersDialog::importClicked()
 	if(!g_pRegisteredUsersDialog)return; // we have been deleted!
 
 	KviFile f(buffer);
-	if(!f.open(IO_ReadOnly))
+	if(!f.open(QIODevice::ReadOnly))
 	{
 		KviMessageBox::warning(__tr2qs("Can't open file %s for reading."),&buffer);
 		return;
@@ -833,7 +868,7 @@ void KviRegisteredUsersDialog::importClicked()
 
 			if(!img.save(fPath,"PNG"))
 			{
-				debug("Can't save image %s",fPath.local8Bit().data());
+				debug("Can't save image %s",fPath.toUtf8().data());
 			} else {
 				u->setProperty("avatar",fPath);
 			}

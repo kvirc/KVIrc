@@ -2,7 +2,6 @@
 
 SET(kvispaste_MOC_HDRS
 	controller.h
-	libkvispaste.h
 )
 
 SET(kvispaste_SRCS

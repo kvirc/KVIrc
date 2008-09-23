@@ -28,7 +28,7 @@
 #include "kvi_regusersdb.h"
 #include "kvi_selectors.h"
 #include "kvi_pointerhashtable.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 #include "kvi_tal_popupmenu.h"
 #include <kvi_tal_tabdialog.h>
 
@@ -132,7 +132,7 @@ protected slots:
 	void delMaskClicked();
 	void editMaskClicked();
 	void editAllPropertiesClicked();
-	void maskCurrentChanged(QListWidgetItem *it);
+	void maskCurrentChanged();
 };
 
 #endif //_EDITUSER_H_

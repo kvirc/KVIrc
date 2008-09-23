@@ -107,22 +107,21 @@ int KviChannelTreeWidgetItem::width ( const QFontMetrics & fm, const KviTalTreeW
 
 void KviChannelTreeWidgetItemDelegate::paint( QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-	QPalette cg;
 	KviChannelTreeWidgetItem *item=static_cast<KviChannelTreeWidgetItem *>(index.internalPointer());
 
 	KviTalTreeWidget* lv = (KviTalTreeWidget *)parent();
 
 	if (option.state & QStyle::State_Selected)
-		p->fillRect(option.rect, cg.brush( QPalette::Highlight ) );
+		p->fillRect(option.rect, option.palette.brush( QPalette::Highlight ) );
 
 	//reset the color
-	p->setPen( cg.text().color() );
+	p->setPen( option.palette.text().color() );
 
 	switch(index.column())
 	{
 		case 0:  p->drawText(option.rect, item->channelData()->m_szChan);   break;
 		case 1:  p->drawText(option.rect, item->channelData()->m_szUsers);   break;
-		default: KviTopicWidget::paintColoredText(p,item->channelData()->m_szTopic,cg,option.rect);  break;
+		default: KviTopicWidget::paintColoredText(p,item->channelData()->m_szTopic,option.palette,option.rect);  break;
 	}
 }
 
