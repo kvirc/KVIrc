@@ -1,5 +1,5 @@
 This stuff is needed to succesfully
-build a KVIrc distribution with Miscrosoft Visual C++ 2005 Express edition.
+build a KVIrc distribution with Microsoft Visual C++ 2005 Express edition.
 
 - The manifest file Microsoft.VC80.CRT.manifest MUST be installed
   in the application directory (e.g. C:\Program Files\KVIrc\)
