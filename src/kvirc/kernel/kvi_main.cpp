@@ -133,7 +133,7 @@ int parseArgs(ParseArgs * a)
 			KviQString::appendFormatted(szMessage,"                 <commands> must be a single shell token.\n");
 			KviQString::appendFormatted(szMessage,"                 You can eventually use this switch more than once\n");
 			KviQString::appendFormatted(szMessage,"  -m           : If a KVIrc session is already running, show an informational\n");
-			KviQString::appendFormatted(szMessage,"                 popup dialog instead of writing to the console");
+			KviQString::appendFormatted(szMessage,"                 popup dialog instead of writing to the console\n");
 			KviQString::appendFormatted(szMessage,"  --nosplash   : Do not show the splash screen at startup\n");
 			KviQString::appendFormatted(szMessage,"  [server]     : Connect to this server after startup\n");
 			KviQString::appendFormatted(szMessage,"  [port]       : Use this port for connection\n");
