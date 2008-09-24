@@ -89,7 +89,8 @@ void Manager::initialize()
 	m_bBroadcastFailed = false;
 	m_bBroadcastFoundIt = false;
 	m_pSsdpConnection->queryDevices();
-	m_pSsdpTimer->start(2000, true);
+	m_pSsdpTimer->setSingleShot(true);
+	m_pSsdpTimer->start(2000);
 }
 
 

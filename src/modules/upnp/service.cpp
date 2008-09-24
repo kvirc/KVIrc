@@ -143,7 +143,7 @@ int Service::callActionInternal(const QString &actionName, const QMap<QString,QS
 		for(it = arguments->begin(); it != arguments->end(); ++it)
 		{
 			QString argumentName = it.key();
-			soapMessage += "<" + argumentName + ">" + it.data() + "</" + argumentName + ">";
+			soapMessage += "<" + argumentName + ">" + it.value() + "</" + argumentName + ">";
 		}
 	}
 

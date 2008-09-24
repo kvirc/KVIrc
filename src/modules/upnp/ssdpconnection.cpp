@@ -97,8 +97,8 @@ void SsdpConnection::slotDataReceived()
 		QString sspdResponse = QString::fromUtf8(datagram.data(), datagram.size());
 
 		// Find the location field manually, MimeMessage is not required
-		int locationStart = sspdResponse.find("LOCATION:",0,false);   // case insensitive
-		int locationEnd   = sspdResponse.find("\r\n",locationStart);
+		int locationStart = sspdResponse.indexOf("LOCATION:",0,Qt::CaseInsensitive);
+		int locationEnd   = sspdResponse.indexOf("\r\n",locationStart,Qt::CaseSensitive);
 
 		locationStart    += 9;  // length of field name
 		QString location  = sspdResponse.mid(locationStart, locationEnd - locationStart);
@@ -138,7 +138,7 @@ void SsdpConnection::queryDevices(int bindPort)
 	}
 
 	// Send the data
-	QByteArray dataBlock = data.utf8();
+	QByteArray dataBlock = data.toUtf8();
 	int bytesWritten = m_pSocket->writeDatagram(dataBlock.data(), dataBlock.size(), address, 1900);
 
 	if(bytesWritten == -1)

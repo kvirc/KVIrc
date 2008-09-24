@@ -40,7 +40,7 @@
 QDomNode XmlFunctions::getNode( const QDomNode &rootNode, const QString &path )
 {
 
-  QStringList pathItems = QStringList::split( "/", path, false );
+  QStringList pathItems = path.split( "/", QString::SkipEmptyParts );
   QDomNode    childNode = rootNode.namedItem( pathItems[0] );  // can be a null node
 
   uint i = 1;
@@ -120,7 +120,7 @@ QString XmlFunctions::getNodeValue( const QDomNode &rootNode, const QString &pat
 QString XmlFunctions::getSource( const QDomNode &node, int indent )
 {
   QString source;
-  QTextStream textStream( &source, IO_WriteOnly );
+  QTextStream textStream( &source, QIODevice::WriteOnly );
   node.save( textStream, indent );
   return source;
 }
