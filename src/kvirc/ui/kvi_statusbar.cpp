@@ -576,6 +576,9 @@ void KviStatusBar::mouseDoubleClickEvent(QMouseEvent * e)
 
 	KviIrcContext * c = m_pFrame->activeContext();
 
+	if(!c)
+		return;
+
 	if(c->state() != KviIrcContext::Connected)
 		return;
 
