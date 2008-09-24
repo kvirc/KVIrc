@@ -10,8 +10,6 @@ src/kvilib
 src/kvilib/tal
 	kvi_tal_listbox.cpp	| replaced by kvi_tal_listwidget.cpp, remove when porting has finished
 	kvi_tal_listbox.h	| replaced by kvi_tal_listwidget.h, remove when porting has finished
-	kvi_tal_listview.cpp	| replaced by kvi_tal_treewidget.cpp, remove when porting has finished
-	kvi_tal_listview.h	| replaced by kvi_tal_treewidget.cpp, remove when porting has finished
 
 src/kvirc/kernel
 	kvi_iconmanager.cpp
@@ -20,6 +18,8 @@ src/kvirc/ui:
 	kvi_ircviewtools.cpp (graphic bug in panel view)
 	kvi_statusbar.cpp (QT4 ported but still some bugs)
 	kvi_mdichild.cpp (bug in resize)
+		All MDI stuff will be reworked to use Qt subsystem
+		See branches/kvirc/qt-mdi/
 	kvi_menubar.cpp
 	kvi_query.cpp (QString related stuff)
 

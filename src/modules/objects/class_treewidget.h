@@ -1,8 +1,8 @@
-#ifndef _CLASS_LISTVIEW_H_
-#define _CLASS_LISTVIEW_H_
+#ifndef _CLASS_TREEWIDGET_H_
+#define _CLASS_TREEWIDGET_H_
 //=============================================================================
 //
-//   File : class_listview.h
+//   File : class_treewidget.h
 //   Creation date : Fri Jan 28 14:21:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
@@ -25,11 +25,11 @@
 //
 //=============================================================================
 
-#include "kvi_tal_treewidget.h"
 #include "class_widget.h"
-#include "class_listviewitem.h"
-
+#include "class_treewidgetitem.h"
 #include "object_macros.h"
+
+#include "kvi_tal_treewidget.h"
 
 class KviKvsObject_treewidget : public KviKvsObject_widget
 {
@@ -69,8 +69,6 @@ protected:
 	bool function_setAcceptDrops(KviKvsObjectFunctionCall *c);
 	bool function_setHeaderLabels(KviKvsObjectFunctionCall *c);
 	bool function_setColumnCount(KviKvsObjectFunctionCall *c);
-
-
 protected slots:
 	void slotClicked(KviTalTreeWidgetItem *,int);
 	void customContextMenuRequested(const QPoint &pnt);
@@ -83,19 +81,17 @@ protected slots:
 	void slotItemChanged(KviTalTreeWidgetItem *,int);
 };
 
-class KviKvsMdmListView :  public KviTalTreeWidget
+class KviKvsTreeWidget : public KviTalTreeWidget
 {
 	Q_OBJECT
 public:
-	KviKvsMdmListView(QWidget * par,const char * name,KviKvsObject_treewidget *);
-
-	virtual ~KviKvsMdmListView();
+	KviKvsTreeWidget(QWidget * par, const char * name, KviKvsObject_treewidget *);
+	virtual ~KviKvsTreeWidget();
 protected:
-	KviKvsObject_treewidget *m_pParentScript;
-	void dropEvent(QDropEvent *e);
-	void dragEnterEvent( QDragEnterEvent *e );
-	
-
-
+	KviKvsObject_treewidget * m_pParentScript;
+protected:
+	void dropEvent(QDropEvent * e);
+	void dragEnterEvent(QDragEnterEvent * e);
 };
-#endif	//!_CLASS_LISTVIEW_H_
+
+#endif // _CLASS_TREEWIDGET_H_

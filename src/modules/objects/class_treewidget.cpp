@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   File : class_listview.cpp
+//   File : class_treewidget.cpp
 //   Creation date : Fri Jan 28 14:21:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
@@ -23,7 +23,7 @@
 //
 //=============================================================================
 
-#include "class_listview.h"
+#include "class_treewidget.h"
 
 #include "kvi_error.h"
 #include "kvi_debug.h"
@@ -239,7 +239,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_treewidget)
 
 bool KviKvsObject_treewidget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
-	setObject(new KviKvsMdmListView(parentScriptWidget(),getName().toUtf8().data(),this),true);
+	setObject(new KviKvsTreeWidget(parentScriptWidget(),getName().toUtf8().data(),this),true);
 	
 	// hack for compatibility with "old" addColumn method;
 	((KviTalTreeWidget*) widget())->setColumnCount(0);
@@ -593,7 +593,7 @@ void KviKvsObject_treewidget::fileDropped(QString &szFile,KviTalTreeWidgetItem *
 	callFunction(this,"fileDroppedEvent",0,&params);
 }
 
-KviKvsMdmListView::KviKvsMdmListView(QWidget * par,const char * name,KviKvsObject_treewidget *parent)
+KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par,const char * name,KviKvsObject_treewidget *parent)
 :KviTalTreeWidget(par)
 {
 	m_pParentScript=parent;
@@ -604,11 +604,11 @@ KviKvsMdmListView::KviKvsMdmListView(QWidget * par,const char * name,KviKvsObjec
 	viewport()->setAcceptDrops(true);
 }
 
-KviKvsMdmListView::~KviKvsMdmListView()
+KviKvsTreeWidget::~KviKvsTreeWidget()
 {
 }
 
-void KviKvsMdmListView::dragEnterEvent( QDragEnterEvent * e )
+void KviKvsTreeWidget::dragEnterEvent( QDragEnterEvent * e )
 {
 	debug("Drag enter event");
 	if(!e->mimeData()->hasUrls())
@@ -619,7 +619,7 @@ void KviKvsMdmListView::dragEnterEvent( QDragEnterEvent * e )
 	}
 }
 
-void KviKvsMdmListView::dropEvent(QDropEvent * e)
+void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 {
 	debug("Drop event");
 	QList<QUrl> list;

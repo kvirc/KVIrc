@@ -1,8 +1,8 @@
-#ifndef _CLASS_LISTVIEWITEM_H_
-#define _CLASS_LISTVIEWITEM_H_
+#ifndef _CLASS_TREEWIDGETITEM_H_
+#define _CLASS_TREEWIDGETITEM_H_
 //=============================================================================
 //
-//   File : class_listviewitem.h
+//   File : class_treewidgetitem.h
 //   Creation date : Fri Jan 28 14:21:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
@@ -25,12 +25,11 @@
 //
 //=============================================================================
 
-#include "kvi_tal_treewidget.h"
+
 #include "class_widget.h"
-
-
-
 #include "object_macros.h"
+
+#include "kvi_tal_treewidget.h"
 
 class KviKvsObject_treewidgetitem : public KviKvsObject
 {
@@ -39,7 +38,7 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_treewidgetitem)
 	void childDestroyed();
 protected:
-	KviTalTreeWidgetItem * m_pListViewItem;
+	KviTalTreeWidgetItem * m_pTreeWidgetItem;
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 protected:
@@ -65,29 +64,29 @@ public:
 };
 
 
-
-class KviKvsMdmStandardListViewItem : public KviTalTreeWidgetItem
+class KviKvsStandardTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
-	KviKvsMdmStandardListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par);
-	KviKvsMdmStandardListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par);
-	virtual ~KviKvsMdmStandardListViewItem();
+	KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par);
+	KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par);
+	virtual ~KviKvsStandardTreeWidgetItem();
 protected:
 	KviKvsObject_treewidgetitem * m_pMasterObject;
 public:
 	KviKvsObject_treewidgetitem * masterObject(){ return m_pMasterObject; }
 };
+
 /*
-class KviKvsMdmCheckListViewItem : public KviTalCheckListItem
+class KviKvsCheckTreeWidgetItem : public KviTalCheckListItem
 {
 public:
-	KviKvsMdmCheckListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par);
-	KviKvsMdmCheckListViewItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par);
-	virtual ~KviKvsMdmCheckListViewItem();
+	KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par);
+	KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par);
+	virtual ~KviKvsCheckTreeWidgetItem();
 protected:
 	KviKvsObject_treewidgetitem * m_pMasterObject;
 public:
 	KviKvsObject_treewidgetitem * masterObject(){ return m_pMasterObject; }
 };
 */
-#endif	// !_CLASS_LISTVIEWITEM_H_
+#endif // _CLASS_TREEWIDGETITEM_H_

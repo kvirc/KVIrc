@@ -16,8 +16,6 @@ SET(kviobjects_MOC_HDRS
 	class_http.h
 	class_lineedit.h
 	class_listbox.h
-	class_listview.h
-	class_listviewitem.h
 	class_multilineedit.h
 	class_painter.h
 	class_pixmap.h
@@ -31,6 +29,8 @@ SET(kviobjects_MOC_HDRS
 	class_tbrowser.h
 	class_toolbar.h
 	class_toolbutton.h
+	class_treewidget.h
+	class_treewidgetitem.h
 	class_widget.h
 	class_window.h
 	class_wizard.h
@@ -49,6 +49,7 @@ SET(kviobjects_SRCS
 	class_file.cpp
 	class_ftp.cpp
 	class_groupbox.cpp
+	class_hbox.cpp
 	class_http.cpp
 	class_label.cpp
 	class_layout.cpp
@@ -56,11 +57,11 @@ SET(kviobjects_SRCS
 	class_lineedit.cpp
 	class_list.cpp
 	class_listbox.cpp
-	class_listview.cpp
-	class_listviewitem.cpp
 	class_mainwindow.cpp
 	class_menubar.cpp
 	class_multilineedit.cpp
+	class_painter.cpp
+	class_pixmap.cpp
 	class_popupmenu.cpp
 	class_process.cpp
 	class_progressbar.cpp
@@ -69,19 +70,18 @@ SET(kviobjects_SRCS
 	class_socket.cpp
 	class_spinbox.cpp
 	class_tabwidget.cpp
+	class_tbrowser.cpp
 	class_toolbar.cpp
 	class_toolbutton.cpp
-	class_painter.cpp
-	class_pixmap.cpp
-	class_tbrowser.cpp
+	class_treewidget.cpp
+	class_treewidgetitem.cpp
+	class_vbox.cpp
 	class_widget.cpp
 	class_window.cpp
 	class_wizard.cpp
 	class_workspace.cpp
 	class_wrapper.cpp
 	class_xmlreader.cpp
-	class_vbox.cpp
-	class_hbox.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

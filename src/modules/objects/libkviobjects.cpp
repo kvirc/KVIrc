@@ -33,13 +33,12 @@
 #include "class_buttongroup.h"
 #include "class_hbox.h"
 #include "class_http.h"
+#include "class_label.h"
 #include "class_layout.h"
 #include "class_lcd.h"
 #include "class_lineedit.h"
 #include "class_list.h"
 #include "class_listbox.h"
-#include "class_listview.h"
-#include "class_listviewitem.h"
 #include "class_mainwindow.h"
 #include "class_menubar.h"
 #include "class_multilineedit.h"
@@ -56,7 +55,8 @@
 #include "class_tbrowser.h"
 #include "class_toolbar.h"
 #include "class_toolbutton.h"
-#include "class_label.h"
+#include "class_treewidget.h"
+#include "class_treewidgetitem.h"
 #include "class_vbox.h"
 #include "class_widget.h"
 #include "class_window.h"
@@ -77,7 +77,6 @@
 #include "kvi_out.h"
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
-#include "kvi_tal_listview.h"
 
 #include <QDir>
 #include <QImage>
