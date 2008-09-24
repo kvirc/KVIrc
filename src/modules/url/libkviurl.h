@@ -31,7 +31,7 @@
 #include "kvi_tal_menubar.h"
 #include "kvi_mextoolbar.h"
 #include "kvi_kvs_action.h"
-#include "kvi_tal_listview.h"
+#include "kvi_tal_treewidget.h"
 
 #include <QDialog>
 #include <QLayout>
@@ -53,6 +53,17 @@ typedef struct _KviUrl
 	QString timestamp;
 } KviUrl;
 
+class KviUrlDialogTreeWidget : public KviTalTreeWidget
+{
+	Q_OBJECT
+public:
+	KviUrlDialogTreeWidget(QWidget*);
+	~KviUrlDialogTreeWidget(){};
+protected:
+	void mousePressEvent (QMouseEvent *e);
+signals:
+	void rightButtonPressed(KviTalTreeWidgetItem *,QPoint);
+};
 
 class UrlDialog : public KviWindow
 {
@@ -63,12 +74,12 @@ public:
 private:
 	KviTalMenuBar *m_pMenuBar;
 	KviTalPopupMenu *m_pListPopup;	// dynamic popup menu
-	KviStr m_szUrl;			// used to pass urls to sayToWin slot
+	QString m_szUrl;		// used to pass urls to sayToWin slot
 protected:
 	QPixmap *myIconPtr();
 	void resizeEvent(QResizeEvent *);
 public:
-	KviTalListView *m_pUrlList;
+	KviUrlDialogTreeWidget *m_pUrlList;
 	void addUrl(QString url, QString window, QString count, QString timestamp);
 //	void saveProperties();
 protected slots:
@@ -80,9 +91,9 @@ protected slots:
 	void close_slot();
 	void remove();
 	void findtext();
-	void dblclk_url(KviTalListViewItem *item);
-	void popup(KviTalListViewItem *item, const QPoint &p, int col);
-	void sayToWin(int);
+	void dblclk_url(KviTalTreeWidgetItem *item, int);
+	void popup(KviTalTreeWidgetItem *item, const QPoint &p);
+	void sayToWin(QAction * act);
 };
 
 class BanFrame : public QFrame
