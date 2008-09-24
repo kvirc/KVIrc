@@ -86,7 +86,6 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_pointerhashtable.h"
 #include "kvi_tal_popupmenu.h"
-#include "kvi_tal_listbox.h"
 
 #include <QSplitter>
 #include <QStringList>
