@@ -174,3 +174,23 @@ void KviKvsModuleInterface::registerDefaultCommands()
 	kvsRegisterSimpleCommand("load",default_module_kvs_cmd_load);
 	kvsRegisterSimpleCommand("unload",default_module_kvs_cmd_unload);
 }
+void KviKvsModuleInterface::getAllFunctionsCommandsModule(QStringList *list,QString &szModuleName)
+{
+	KviPointerHashTableIterator<QString,KviKvsModuleFunctionExecRoutine>  it(*m_pModuleFunctionExecRoutineDict);
+	while(it.current())
+	{
+		QString szF("$"+szModuleName+".");
+		szF.append(it.currentKey());
+		list->append(szF);
+		++it;
+	}
+	KviPointerHashTableIterator<QString,KviKvsModuleSimpleCommandExecRoutine>  it2(*m_pModuleSimpleCommandExecRoutineDict);
+	while(it2.current())
+	{
+		QString szF(szModuleName+".");
+		szF.append(it2.currentKey());
+		list->append(szF);
+		++it2;
+	}
+}
+

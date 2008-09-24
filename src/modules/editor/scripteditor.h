@@ -32,7 +32,7 @@
 #include <kvi_tal_textedit.h>
 #include "kvi_tal_popupmenu.h"
 
-
+#include <QCompleter>
 #include <QLabel>
 #include <QDialog>
 #include <QEvent>
@@ -54,7 +54,7 @@ public:
 	KviCompletionBox(QTextEdit * parent);
 	~KviCompletionBox(){};
 	
-	void updateContents(QString word);
+//	void updateContents(QString word);
 protected:
 	QTextEdit *m_pTextEdit;
 	virtual void keyPressEvent(QKeyEvent * e);
@@ -68,28 +68,36 @@ public:
 	KviScriptEditorWidget(QWidget * pParent);
 	virtual ~KviScriptEditorWidget();
 public:
+	void createCompleter(QStringList &list);
+	void loadCompleterFromFile();
+	QCompleter * completer() const;
+	QString textUnderCursor() const;
 	void updateOptions();
 	void find1();
 	QString m_szFind;
-	KviCompletionBox *completelistbox;
-	void completition(bool bCanComplete = 1);
-	void getWordBeforeCursor(QString &buffer,int index,bool *);
-	void getWordOnCursor(QString &buffer,int index) const;
 	bool contextSensitiveHelp() const;
 public slots:
+	void insertCompletion(const QString& completion);
 	void slotFind();
 	void slotHelp();
 	void slotReplace();
-	void slotComplete(QListWidgetItem *);
+
 
 signals:
 	void keyPressed();
 protected:
+	QCompleter * m_pCompleter;
+	QStringList * m_pListModulesNames;
+	QStringList * m_pListCompletition;
+	QTimer *m_pStartTimer;
 	void contextMenuEvent(QContextMenuEvent *event);
 	virtual void keyPressEvent(QKeyEvent * e);
 	void mouseReleaseEvent(QMouseEvent *);
 	QWidget *m_pParent;
 	QString m_szHelp;
+	protected slots:
+		void asyncCompleterCreation();
+	
 };
 
 class KviScriptSyntaxHighlighter : public QSyntaxHighlighter

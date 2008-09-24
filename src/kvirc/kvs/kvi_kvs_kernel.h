@@ -151,6 +151,8 @@ public:
 		if(!l)return;
 		delete l;
 	}
+	void getAllFunctionsCommandsCore(QStringList *list);
+
 };
 
 #endif //!_KVI_KVS_KERNEL_H_

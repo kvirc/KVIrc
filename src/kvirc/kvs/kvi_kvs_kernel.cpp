@@ -36,6 +36,7 @@
 #include "kvi_kvs_asyncoperation.h"
 #include "kvi_modulemanager.h"
 
+#include <QDir>
 KviKvsKernel * KviKvsKernel::m_pKvsKernel = 0;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -215,3 +216,20 @@ void KviKvsKernel::completeModuleFunction(const QString &szModuleName,const QStr
 		pMatches->append(pszMatch);
 	}
 }
+void KviKvsKernel::getAllFunctionsCommandsCore(QStringList *list)
+{
+	KviPointerHashTableIterator<QString,KviKvsCoreFunctionExecRoutine>  it(*m_pCoreFunctionExecRoutineDict);
+	while(it.current())
+	{
+		list->append("$"+it.currentKey());
+		++it;
+	}
+	KviPointerHashTableIterator<QString,KviKvsCoreSimpleCommandExecRoutine>  it2(*m_pCoreSimpleCommandExecRoutineDict);
+	while(it2.current())
+	{
+		list->append(it2.currentKey());
+		++it2;
+	}
+}
+
+

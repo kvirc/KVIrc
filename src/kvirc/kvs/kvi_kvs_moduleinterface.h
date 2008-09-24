@@ -175,6 +175,7 @@ public:
 
 	void completeCommand(const QString &cmd,KviPointerList<QString> * matches);
 	void completeFunction(const QString &cmd,KviPointerList<QString> * matches);
+	void getAllFunctionsCommandsModule(QStringList *list,QString &szModuleName);
 protected:
 	void registerDefaultCommands();
 };
@@ -226,3 +227,4 @@ protected:
 
 
 #endif //!_KVI_KVS_MODULEINTERFACE_H_
+
