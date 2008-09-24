@@ -47,19 +47,6 @@ class QTimer;
 
 typedef KviPointerList<int> ColumnList;
 
-class KviCompletionBox: public QListWidget
-{
-	Q_OBJECT
-public:
-	KviCompletionBox(QTextEdit * parent);
-	~KviCompletionBox(){};
-	
-//	void updateContents(QString word);
-protected:
-	QTextEdit *m_pTextEdit;
-	virtual void keyPressEvent(QKeyEvent * e);
-};
-
 class KviScriptEditorWidget : public QTextEdit
 {
 	Q_OBJECT
