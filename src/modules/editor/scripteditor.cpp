@@ -97,10 +97,10 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 	s = addColorSelector(gbox,__tr2qs_ctx("Variables:","editor"),&g_clrVariable,true);
 	s = addColorSelector(gbox,__tr2qs_ctx("Punctuation:","editor"),&g_clrPunctuation,true);
 	s = addColorSelector(gbox,__tr2qs_ctx("Find:","editor"),&g_clrFind,true);
-	
+
 
 	KviTalHBox * hbox = new KviTalHBox(box);
-	
+
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","editor"),hbox);
 	b->setDefault(true);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
@@ -178,7 +178,7 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 		#else
 			d.setNameFilters(QStringList("libkvi*.so"));
 		#endif
-		m_pListModulesNames = new QStringList(d.entryList(QDir::Files | QDir::Readable | QDir::NoSymLinks));
+		m_pListModulesNames = new QStringList(d.entryList(QDir::Files | QDir::Readable));
 		modulesCount=m_pListModulesNames->count();
 	}
 	QString szModuleName=m_pListModulesNames->at(index);
@@ -187,9 +187,12 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 	szModuleName=szModuleName.replace("kvi","");
 	szModuleName=szModuleName.replace(".dll","");
 	szModuleName=szModuleName.replace(".so","");
-	if (szModuleName=="perlcore" || szModuleName=="snd") return;//<-- FIXME: perlcore and snd modules crashes!
+
 	KviModule * pModule = g_pModuleManager->getModule(szModuleName);
-	pModule->getAllFunctionsCommandsModule(m_pListCompletition,szModuleName);
+	if(pModule)
+	{
+		pModule->getAllFunctionsCommandsModule(m_pListCompletition,szModuleName);
+	}
 	if (index==modulesCount)
 	{
 		m_pStartTimer->stop();
@@ -212,7 +215,7 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 
 
 }
-	
+
 
 void KviScriptEditorWidget::loadCompleterFromFile()
 {
@@ -291,14 +294,14 @@ void KviScriptEditorWidget::updateOptions()
 	setFont(g_fntNormal);
 	setTextColor(g_clrNormalText);
 //	setTextFormat(Qt::PlainText);
-	
+
 	// this will rehighlight everything
 	setText(toPlainText()); // an "hack" to ensure Update all in the editor
 	KviScriptSyntaxHighlighter *h = new KviScriptSyntaxHighlighter(this);
 	(void)h;
-	p = ((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->palette(); 
-	p.setColor(foregroundRole(),g_clrFind); 
-	((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->setPalette(p); 
+	p = ((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->palette();
+	p.setColor(foregroundRole(),g_clrFind);
+	((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->setPalette(p);
 }
 
  QCompleter *KviScriptEditorWidget::completer() const
@@ -306,7 +309,7 @@ void KviScriptEditorWidget::updateOptions()
      return m_pCompleter;
  }
 void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
-{  
+{
 
 	if (m_pCompleter && m_pCompleter->popup()->isVisible()) {
         switch (e->key()) {
@@ -316,7 +319,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
         case Qt::Key_Tab:
         case Qt::Key_Backtab:
              e->ignore();
-             return; 
+             return;
         default:
             break;
         }
@@ -447,7 +450,7 @@ return;
 
 bool KviScriptEditorWidget::contextSensitiveHelp() const
 {
-	
+
 /*	QString buffer;
 	int para,index;
 	getCursorPosition(&para,&index);
@@ -455,7 +458,7 @@ bool KviScriptEditorWidget::contextSensitiveHelp() const
 
 	getWordOnCursor(buffer,index);
 */
-	
+
 	QRect r=cursorRect();
 	QTextCursor cur=cursorForPosition(QPoint(r.x(),r.y()));
 	cur.select(QTextCursor::WordUnderCursor);
@@ -490,8 +493,8 @@ bool KviScriptEditorWidget::contextSensitiveHelp() const
 	KviQString::sprintf(parse,"timer -s (help,0){ help -s %Q; }",&buffer);
 	debug ("parsing %s",parse.latin1());
 	KviKvsScript::run(parse,(KviWindow*)g_pApp->activeConsole());
-	
-	
+
+
 	*/
 	return true;
 }
@@ -536,7 +539,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 	QTextCharFormat normaltextFormat;
 	normaltextFormat.setForeground(g_clrNormalText);
 	normaltextFormat.setFont(g_fntNormal);
-	
+
 	QTextCharFormat functionFormat;
 	functionFormat.setForeground(g_clrFunction);
 	functionFormat.setFont(g_fntNormal);
@@ -545,7 +548,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 	QTextCharFormat findFormat;
 	findFormat.setForeground(g_clrFind);
 	findFormat.setFont(g_fntNormal);
-	
+
 	int endStateOfLastPara=previousBlockState();
 	if(endStateOfLastPara < 0)endStateOfLastPara = 0;
 	/*
@@ -708,7 +711,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 			}
 			continue;
 		}
-		
+
 		if(c->unicode() == '-')
 		{
 			QChar * pTmp =(QChar *) c;
@@ -829,14 +832,14 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	m_pFindLineedit = new QLineEdit(" ",this);
 	m_pFindLineedit->setText("");
 
-	QPalette p = m_pFindLineedit->palette(); 
-	p.setColor(foregroundRole(), g_clrFind); 
+	QPalette p = m_pFindLineedit->palette();
+	p.setColor(foregroundRole(), g_clrFind);
 	m_pFindLineedit->setPalette(p);
 
-	
+
 	m_pEditor = new KviScriptEditorWidget(this);
 	g->addWidget(m_pEditor, 0, 0, 1,4);
- 
+
 	g->setRowStretch(0,1);
 
 	QToolButton * b = new QToolButton(this);
@@ -1024,7 +1027,7 @@ void KviScriptEditorImplementation::setFindText(const QString &txt)
 void KviScriptEditorImplementation::setFindLineeditReadOnly(bool b)
 {
 	m_pFindLineedit->setReadOnly(b);
-	
+
 }
 
 void KviScriptEditorImplementation::updateRowColLabel()
@@ -1092,20 +1095,20 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 {
 	m_pParent=parent;
 	emit initFind();
-	QPalette p = palette(); 
-	p.setColor(foregroundRole(),QColor( 0, 0, 0 )); 
-	p.setColor(backgroundRole(),QColor( 236, 233, 216 )); 
+	QPalette p = palette();
+	p.setColor(foregroundRole(),QColor( 0, 0, 0 ));
+	p.setColor(backgroundRole(),QColor( 236, 233, 216 ));
 	setPalette(p);
 
 	QGridLayout *layout = new QGridLayout( this);
-		layout->setObjectName("replace layout"); 
+		layout->setObjectName("replace layout");
 
 
 	QLabel *findlabel = new QLabel( this);
 	findlabel->setObjectName("findlabel");
 	findlabel->setText(tr("Word to Find"));
 	layout->addWidget( findlabel, 0, 0 );
- 
+
 	m_pFindlineedit = new QLineEdit( this);
 	m_pFindlineedit->setObjectName( "findlineedit" );
 	layout->addWidget(m_pFindlineedit,0,1);
@@ -1137,15 +1140,15 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, con
 	checkReplaceAll->setObjectName("replaceAll" );
 	checkReplaceAll->setText(tr("&Replace in all Aliases"));
 	layout->addWidget( checkReplaceAll, 2, 0 );
-	
+
 	findNext = new QPushButton(this);
-	findNext->setObjectName( "findNext(WIP)" );	
+	findNext->setObjectName( "findNext(WIP)" );
 	findNext->setText(tr("&Findnext"));
 	layout->addWidget( findNext, 0, 2 );
 	findNext->setEnabled(false);
 
 	replace = new QPushButton(this);
-	replace->setObjectName( "replace" );	
+	replace->setObjectName( "replace" );
 	replace->setText(tr("&Replace(WIP)"));
 	layout->addWidget( replace, 1, 2 );
 	replace->setEnabled(false);
