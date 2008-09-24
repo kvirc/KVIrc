@@ -303,8 +303,14 @@ void KviStatusBar::tipRequest(QHelpEvent * e)
 		szTip += "</font></td></tr></table>";
 	} else {
 		szTip = "<center><p>";
-		szTip += __tr2qs("<b>Double-click</b> to get network informations");
-		szTip += "</p><p>";
+
+		KviIrcContext * c = m_pFrame->activeContext();
+		if(c && (c->state() == KviIrcContext::Connected))
+		{
+			szTip += __tr2qs("<b>Double-click</b> to get network informations");
+			szTip += "</p><p>";
+		}
+
 		szTip += __tr2qs("<b>Right click</b> to add/remove applets");
 		szTip += "</p></center>";
 	}
