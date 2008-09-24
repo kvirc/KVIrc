@@ -8,7 +8,6 @@ PLEASE KEEP THIS FILE UPDATED!
 
 src/kvirc/kernel
 	kvi_iconmanager.cpp
-	
 src/kvirc/ui:
 	kvi_ircviewtools.cpp (graphic bug in panel view)
 	kvi_statusbar.cpp (QT4 ported but still some bugs)
@@ -16,12 +15,8 @@ src/kvirc/ui:
 		All MDI stuff will be reworked to use Qt subsystem
 		See branches/kvirc/qt-mdi/
 	kvi_menubar.cpp
-	kvi_query.cpp (QString related stuff)
-
 src/modules
 	iograph - all excluded by #if
-	objects - qt3support:
-		multilineedit
 	torrent - broken
 	help <-done, needs some fixing
 	notifier <-done, needs fixing
