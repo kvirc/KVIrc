@@ -273,9 +273,6 @@ IF(QT4_FOUND)
 		MESSAGE(FATAL_ERROR "Upgrade your Qt GUI Toolkit to 4.4")
 	ENDIF()
 
-	# Qt3 support, remove it when the code will be completely ported
-	SET(QT_USE_QT3SUPPORT true)
-
 	IF(APPLE)
 		SET(QT_USE_QTSQL true)
 		SET(QT_USE_QTXML true)

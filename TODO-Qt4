@@ -6,11 +6,6 @@ os simply they're still the old unchecked kvirc3 files.
 
 PLEASE KEEP THIS FILE UPDATED!
 
-src/kvilib
-src/kvilib/tal
-	kvi_tal_listbox.cpp	| replaced by kvi_tal_listwidget.cpp, remove when porting has finished
-	kvi_tal_listbox.h	| replaced by kvi_tal_listwidget.h, remove when porting has finished
-
 src/kvirc/kernel
 	kvi_iconmanager.cpp
 	
@@ -30,6 +25,4 @@ src/modules
 	torrent - broken
 	help <-done, needs some fixing
 	notifier <-done, needs fixing
-	reguser
 	theme (dynamic tooltip)
-	trayicon

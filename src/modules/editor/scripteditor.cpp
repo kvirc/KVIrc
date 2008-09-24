@@ -38,13 +38,13 @@
 #include "kvi_console.h"
 #include "kvi_window.h"
 #include "kvi_iconmanager.h"
-#include <kvi_tal_groupbox.h>
+#include "kvi_tal_groupbox.h"
 #include "kvi_tal_scrollview.h"
 #include "kvi_kvs_kernel.h"
 #include "kvi_modulemanager.h"
 #include "kvi_config.h"
-
 #include "kvi_tal_vbox.h"
+
 #include "kvi_tal_hbox.h"
 #include <QScrollBar>
 #include <QLayout>
@@ -225,7 +225,7 @@ void KviScriptEditorWidget::loadCompleterFromFile()
 	f.open(QIODevice::ReadOnly);
 	szBuffer=f.readAll();
 	f.close();
-	szListFunctionsCommand=QStringList::split(',',szBuffer);
+	szListFunctionsCommand=szBuffer.split(',');
 	createCompleter(szListFunctionsCommand);
 }
 void KviScriptEditorWidget::createCompleter(QStringList &list)

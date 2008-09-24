@@ -78,7 +78,8 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	m_iQueries  = 0;
 	m_iOther    = 0;
 
-	m_pFlashingTimer = new QTimer(this,"flashing_timer");
+	m_pFlashingTimer = new QTimer(this);
+	m_pFlashingTimer->setObjectName("flashing_timer");
 	connect( m_pFlashingTimer, SIGNAL(timeout()), this, SLOT(flashingTimerShot()) );
 	m_bFlashed=0;
 	g_pTrayIconList->append(this);
@@ -93,8 +94,9 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 	m_pContextPopup->insertItem(l);
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
-	m_iAwayMenuId = m_pContextPopup->insertItem ( __tr2qs("Away"), m_pAwayPopup);
-	m_pContextPopup->changeItem(m_iAwayMenuId,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)),__tr2qs("Away"));
+	m_iAwayMenuId = m_pContextPopup->addMenu(m_pAwayPopup);
+	m_iAwayMenuId.setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)));
+	m_iAwayMenuId.setText(__tr2qs("Away"));
 
 	int id = m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_OPTIONS)),__tr2qs("&Configure KVIrc..."),m_pFrm,SLOT(executeInternalCommand(int)));
 	m_pContextPopup->setItemParameter(id,KVI_INTERNALCOMMAND_OPTIONS_DIALOG);
@@ -251,7 +253,7 @@ void KviTrayIcon::fillContextPopup()
 	m_pContextPopup->changeItem(m_iToggleFrame,m_pFrm->isVisible() ? __tr2qs("Hide Window") : __tr2qs("Show Window"));
 	if(g_pApp->topmostConnectedConsole())
 	{
-		m_pContextPopup->setItemVisible(m_iAwayMenuId,true);
+		m_iAwayMenuId->setVisible(true);
 		m_pAwayPopup->clear();
 
 		int iAllAway=m_pAwayPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Away on all"),this,SLOT(doAway(int)));
@@ -304,19 +306,19 @@ void KviTrayIcon::fillContextPopup()
 
 void KviTrayIcon::toggleParentFrame()
 {
-	QWidget *top_widget = m_pFrm->topLevelWidget();
+	KviWindow *top_widget = m_pFrm->topLevelWidget();
 
 	if(m_pFrm->isVisible()) {
 		m_pFrm->hide();
 	} else {
-		top_widget->show();
-		top_widget->raise();
-		top_widget->setActiveWindow();
-		if(g_pActiveWindow) g_pActiveWindow->setFocus();
+/*		top_widget->show();
+		top_widget->raise();*/
+		g_pFrame->setActiveWindow(top_widget);
+/*		if(g_pActiveWindow) g_pActiveWindow->setFocus();
 		if(m_pFrm->isMinimized())
 			m_pFrm->showNormal();
 		else
-			m_pFrm->show();
+			m_pFrm->show();*/
 // 		m_pFrm->setWindowState(getPrevWindowState() & Qt::WindowMinimized);
 	}
 }

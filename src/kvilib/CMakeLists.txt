@@ -27,7 +27,6 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_groupbox.h
 	tal/kvi_tal_hbox.h
 	tal/kvi_tal_iconview.h
-	tal/kvi_tal_listbox.h
 	tal/kvi_tal_listwidget.h
 	tal/kvi_tal_popupmenu.h
 	tal/kvi_tal_scrollview.h
@@ -126,7 +125,6 @@ SET(kvilib_SRCS
 	tal/kvi_tal_hbox.cpp
 	tal/kvi_tal_iconview.cpp
 	tal/kvi_tal_itemdelegates.cpp
-	tal/kvi_tal_listbox.cpp
 	tal/kvi_tal_listwidget.cpp
 	tal/kvi_tal_mainwindow.cpp
 	tal/kvi_tal_menubar.cpp

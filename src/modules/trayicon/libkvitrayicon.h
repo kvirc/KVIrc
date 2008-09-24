@@ -50,10 +50,10 @@ protected:
 	KviTalPopupMenu        * m_pAwayPopup;
 
 	int m_iToggleFrame;
-	int m_iAwayMenuId;
+	QAction* m_pAwayMenuId;
 
 	bool m_bFlashed;
-	
+
 	QPixmap m_CurrentPixmap;
 	QTimer* m_pFlashingTimer;
 	int m_iConsoles;
