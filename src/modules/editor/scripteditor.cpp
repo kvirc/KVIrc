@@ -255,8 +255,6 @@ void KviScriptEditorWidget::updateOptions()
 	setPalette(p);
 	setFont(g_fntNormal);
 	setTextColor(g_clrNormalText);
-	//setTextFormat(Qt::PlainText);
-
 	// this will rehighlight everything
 	setText(toPlainText()); // an "hack" to ensure Update all in the editor
 	KviScriptEditorSyntaxHighlighter *h = new KviScriptEditorSyntaxHighlighter(this);
@@ -331,37 +329,6 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
     QRect cr = cursorRect();
     cr.setWidth(m_pCompleter->popup()->sizeHintForColumn(0)+ m_pCompleter->popup()->verticalScrollBar()->sizeHint().width());
 	m_pCompleter->complete(cr);
-	/*
-	bool bIsShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
-
-	// don't process the shortcut when we have a completer
-	if(!m_pCompleter || !bIsShortcut)QTextEdit::keyPressEvent(e);
-
-	const bool bCtrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
-	if(!m_pCompleter || (bCtrlOrShift && e->text().isEmpty()))return;
-
-	// end of word
-	static QString szEow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-=");
-	bool hasModifier = (e->modifiers() != Qt::NoModifier) && !bCtrlOrShift;
-
-	QString szCompletionPrefix = textUnderCursor();
-	debug ("completition prefix %s",szCompletionPrefix.toUtf8().data());
-	if(!bIsShortcut && (hasModifier || e->text().isEmpty()|| szCompletionPrefix.length() < 3 || szEow.contains(e->text().right(1))))
-	{
-		m_pCompleter->popup()->hide();
-		return;
-	}
-
-	if(szCompletionPrefix != m_pCompleter->completionPrefix())
-	{
-		m_pCompleter->setCompletionPrefix(szCompletionPrefix);
-		m_pCompleter->popup()->setCurrentIndex(m_pCompleter->completionModel()->index(0, 0));
-	}
-
-	QRect cr = cursorRect();
-	cr.setWidth(m_pCompleter->popup()->sizeHintForColumn(0) + m_pCompleter->popup()->verticalScrollBar()->sizeHint().width());
-	m_pCompleter->complete(cr);
-	*/
 }
 
 QString KviScriptEditorWidget::textUnderCursor() const
@@ -1037,8 +1004,6 @@ void KviScriptEditorImplementation::saveToFile()
 void KviScriptEditorImplementation::setText(const KviQCString & szText)
 {
 	m_pEditor->setText(szText.data());
-	//m_pEditor->setTextFormat(Qt::PlainText);
-	//m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }

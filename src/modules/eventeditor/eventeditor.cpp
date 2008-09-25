@@ -52,32 +52,33 @@
 
 extern KviEventEditorWindow * g_pEventEditorWindow;
 
-KviEventListViewItem::KviEventListViewItem(QTreeWidget * par,unsigned int uEvIdx,const QString &name,const QString &params)
+KviEventTreeWidgetItem::KviEventTreeWidgetItem(QTreeWidget * par,unsigned int uEvIdx,const QString &name,const QString &params)
 : QTreeWidgetItem(par), m_uEventIdx(uEvIdx), m_szParams(params)
 {
 	setName(name);
 }
 
-void KviEventListViewItem::setName(const QString &szName)
+void KviEventTreeWidgetItem::setName(const QString &szName)
 {
 	m_szName = szName;
 	setText(0,m_szName);
 }
 
-KviEventHandlerListViewItem::KviEventHandlerListViewItem(QTreeWidgetItem * par,const QString &name,const QString &buffer,bool bEnabled)
+KviEventHandlerTreeWidgetItem::KviEventHandlerTreeWidgetItem(QTreeWidgetItem * par,const QString &name,const QString &buffer,bool bEnabled)
 : QTreeWidgetItem(par), m_szBuffer(buffer)
 {
+	m_cPos=0;
 	setEnabled(bEnabled); //this updates the icon too
 	setName(name);
 }
 
-void KviEventHandlerListViewItem::setName(const QString &szName)
+void KviEventHandlerTreeWidgetItem::setName(const QString &szName)
 {
 	m_szName = szName;
 	setText(0,m_szName);
 }
 
-void KviEventHandlerListViewItem::setEnabled(const bool bEnabled)
+void KviEventHandlerTreeWidgetItem::setEnabled(const bool bEnabled)
 {
 	m_bEnabled = bEnabled;
 	setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(m_bEnabled ? KVI_SMALLICON_HANDLER : KVI_SMALLICON_HANDLERDISABLED))));
@@ -95,16 +96,19 @@ KviEventEditor::KviEventEditor(QWidget * par)
 
 	l->addWidget(spl,0,0);
 
-	KviTalVBox * boxi = new KviTalVBox(spl);
-	boxi->setSpacing(0);
-	boxi->setMargin(0);
+	KviTalVBox * vbox = new KviTalVBox(spl);
+	vbox->setSpacing(0);
+	vbox->setMargin(0);
 
-	m_pListView = new KviEventEditorListView(boxi);
+	m_pTreeWidget = new KviEventEditorTreeWidget(vbox);
 
-	QPushButton * pb = new QPushButton(__tr2qs("&Export All To..."),boxi);
+	QPushButton * pb = new QPushButton(__tr2qs("&Export All To..."),vbox);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAllEvents()));
 
 	KviTalVBox * box = new KviTalVBox(spl);
+	spl->setStretchFactor (0,20);
+	spl->setStretchFactor (1,80);
+
 	box->setSpacing(0);
 	box->setMargin(0);
 
@@ -113,7 +117,6 @@ KviEventEditor::KviEventEditor(QWidget * par)
 
 	m_pEditor = KviScriptEditor::createInstance(box);
 	m_pEditor->setFocus();
-
 	m_bOneTimeSetupDone = false;
 	m_pLastEditedItem = 0;
 }
@@ -128,21 +131,21 @@ void KviEventEditor::oneTimeSetup()
 	if(m_bOneTimeSetupDone)return;
 	m_bOneTimeSetupDone = true;
 
-	KviEventListViewItem * it;
-	KviEventHandlerListViewItem * ch;
+	KviEventTreeWidgetItem * it;
+	KviEventHandlerTreeWidgetItem * ch;
 
 	for(unsigned int i = 0;i < KVI_KVS_NUM_APP_EVENTS;i++)
 	{
 		KviKvsEvent * e = KviKvsEventManager::instance()->appEvent(i);
 
-		it = new KviEventListViewItem(m_pListView,i,e->name(),e->parameterDescription());
+		it = new KviEventTreeWidgetItem(m_pTreeWidget,i,e->name(),e->parameterDescription());
 		if(KviPointerList<KviKvsEventHandler> * l = e->handlers())
 		{
 			for(KviKvsEventHandler * s = l->first();s;s = l->next())
 			{
 				if(s->type() == KviKvsEventHandler::Script)
 				{
-					ch = new KviEventHandlerListViewItem(it,((KviKvsScriptEventHandler *)s)->name(),
+					ch = new KviEventHandlerTreeWidgetItem(it,((KviKvsScriptEventHandler *)s)->name(),
 					((KviKvsScriptEventHandler *)s)->code(),((KviKvsScriptEventHandler *)s)->isEnabled());
 				}
 			}
@@ -150,15 +153,15 @@ void KviEventEditor::oneTimeSetup()
 		it->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(it->childCount() ? KVI_SMALLICON_EVENT : KVI_SMALLICON_EVENTNOHANDLERS))));
 	}
 
-	connect(m_pListView,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
-	connect(m_pListView,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
+	connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),
 		this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
 
 	m_pContextPopup = new KviTalPopupMenu(this);
-	m_pListView->sortItems(0,Qt::AscendingOrder);
+	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
 }
 
-KviEventEditorListView::KviEventEditorListView(QWidget * par)
+KviEventEditorTreeWidget::KviEventEditorTreeWidget(QWidget * par)
 : QTreeWidget(par)
 {
 	setColumnCount (1);
@@ -169,7 +172,7 @@ KviEventEditorListView::KviEventEditorListView(QWidget * par)
 	setAnimated(true);
 }
 
-void KviEventEditorListView::mousePressEvent (QMouseEvent *e)
+void KviEventEditorTreeWidget::mousePressEvent (QMouseEvent *e)
 {
 	if (e->button() == Qt::RightButton)
 	{
@@ -189,7 +192,7 @@ void KviEventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 		if(it->parent())
 		{
 			QString tmp;
-			if(!(((KviEventHandlerListViewItem *)it)->m_bEnabled))
+			if(!(((KviEventHandlerTreeWidgetItem *)it)->m_bEnabled))
 				m_pContextPopup->insertItem(
 					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER)),
 					__tr2qs("&Enable Handler"),this,SLOT(toggleCurrentHandlerEnabled()));
@@ -217,7 +220,7 @@ void KviEventEditor::itemPressed(QTreeWidgetItem *it,const QPoint &pnt)
 	}
 }
 
-void KviEventEditor::getUniqueHandlerName(KviEventListViewItem *it,QString &buffer)
+void KviEventEditor::getUniqueHandlerName(KviEventTreeWidgetItem *it,QString &buffer)
 {
 	__range_valid(m_bOneTimeSetupDone);
 
@@ -232,9 +235,9 @@ void KviEventEditor::getUniqueHandlerName(KviEventListViewItem *it,QString &buff
 		bFound = false;
 
 		for(int i=0;i<it->childCount();i++)
-		//for(KviEventHandlerListViewItem * ch = (KviEventHandlerListViewItem *)(it->firstChild());ch;ch = (KviEventHandlerListViewItem *)ch->nextSibling())
+		//for(KviEventHandlerTreeWidgetItem * ch = (KviEventHandlerTreeWidgetItem *)(it->firstChild());ch;ch = (KviEventHandlerTreeWidgetItem *)ch->nextSibling())
 		{
-			if(KviQString::equalCI(newName,((KviEventHandlerListViewItem *)it->child(i))->m_szName))
+			if(KviQString::equalCI(newName,((KviEventHandlerTreeWidgetItem *)it->child(i))->m_szName))
 			{
 				bFound = true;
 				KviQString::sprintf(newName,"%Q_%d",&buffer,idx);
@@ -251,9 +254,9 @@ void KviEventEditor::addHandlerForCurrentEvent()
 {
 	__range_valid(m_pOneTimeSetupDone);
 
-	if(!m_pListView->selectedItems().isEmpty())
+	if(!m_pTreeWidget->selectedItems().isEmpty())
 	{
-		QTreeWidgetItem * it = m_pListView->selectedItems().first();
+		QTreeWidgetItem * it = m_pTreeWidget->selectedItems().first();
 
 		if(it->parent() == 0)
 		{
@@ -261,8 +264,8 @@ void KviEventEditor::addHandlerForCurrentEvent()
 				it->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EVENT))));
 
 			QString buffer = __tr2qs("default");
-			getUniqueHandlerName((KviEventListViewItem *)it,buffer);
-			QTreeWidgetItem * ch = new KviEventHandlerListViewItem(it,buffer,"",true);
+			getUniqueHandlerName((KviEventTreeWidgetItem *)it,buffer);
+			QTreeWidgetItem * ch = new KviEventHandlerTreeWidgetItem(it,buffer,"",true);
 			it->setExpanded(true);
 			ch->setSelected(true);
 		}
@@ -296,7 +299,7 @@ void KviEventEditor::toggleCurrentHandlerEnabled()
 	if(m_pLastEditedItem)
 	{
 		m_pLastEditedItem->setEnabled(!(m_pLastEditedItem->m_bEnabled));
-		m_pListView->repaint(m_pListView->visualItemRect(m_pLastEditedItem));
+		m_pTreeWidget->repaint(m_pTreeWidget->visualItemRect(m_pLastEditedItem));
 		currentItemChanged(m_pLastEditedItem,0);
 	}
 }
@@ -308,31 +311,27 @@ void KviEventEditor::commit()
 	saveLastEditedItem();
 	KviKvsEventManager::instance()->removeAllScriptAppHandlers();
 
-	int count=m_pListView->topLevelItemCount();
+	int count=m_pTreeWidget->topLevelItemCount();
 	for (int i=0;i<count;i++)
-	//for(QTreeWidgetItem * it = m_pListView->firstChild();it;it = it->nextSibling())
 	{
-		QTreeWidgetItem * it = m_pListView->topLevelItem(i);
+		QTreeWidgetItem * it = m_pTreeWidget->topLevelItem(i);
 		int ccount = it->childCount();
 		if(ccount > 0)
 		{
 			QString szContext;
 
 			for(int j=0;j<ccount;j++)
-			//for(QTreeWidgetItem * ch = it->firstChild();ch;ch = ch->nextSibling())
 			{
 				QTreeWidgetItem * ch = it->child(j);
-
-				KviQString::sprintf(szContext,"%Q::%Q",&(((KviEventListViewItem *)it)->m_szName),&(((KviEventHandlerListViewItem *)ch)->m_szName));
-
+				KviQString::sprintf(szContext,"%Q::%Q",&(((KviEventTreeWidgetItem *)it)->m_szName),&(((KviEventHandlerTreeWidgetItem *)ch)->m_szName));
 				KviKvsScriptEventHandler * s = KviKvsScriptEventHandler::createInstance( // msvc workaround
-						((KviEventHandlerListViewItem *)ch)->m_szName,
+						((KviEventHandlerTreeWidgetItem *)ch)->m_szName,
 						szContext,
-						((KviEventHandlerListViewItem *)ch)->m_szBuffer,
-						((KviEventHandlerListViewItem *)ch)->m_bEnabled
+						((KviEventHandlerTreeWidgetItem *)ch)->m_szBuffer,
+						((KviEventHandlerTreeWidgetItem *)ch)->m_bEnabled
 					);
 
-				KviKvsEventManager::instance()->addAppHandler(((KviEventListViewItem *)it)->m_uEventIdx,s);
+				KviKvsEventManager::instance()->addAppHandler(((KviEventTreeWidgetItem *)it)->m_uEventIdx,s);
 			}
 		}
 	}
@@ -344,13 +343,13 @@ void KviEventEditor::saveLastEditedItem()
 {
 	__range_valid(m_bOneTimeSetupDone);
 	if(!m_pLastEditedItem)return;
-
+	((KviEventHandlerTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 	QString buffer = m_pNameEditor->text();
 	//not-so elaborate fix for #218, we'd better rework this
 	buffer.replace(QRegExp("[^A-Za-z0-9_]"), "");
 	if(!KviQString::equalCI(buffer,m_pLastEditedItem->m_szName))
 	{
-		getUniqueHandlerName((KviEventListViewItem *)(m_pLastEditedItem->parent()),buffer);
+		getUniqueHandlerName((KviEventTreeWidgetItem *)(m_pLastEditedItem->parent()),buffer);
 	}
 
 	m_pLastEditedItem->setName(buffer);
@@ -372,27 +371,30 @@ void KviEventEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *pr
 		m_pEditor->setEnabled(false);
 		return;
 	}
-
+	
 	if(it->parent())
 	{
-		m_pLastEditedItem = (KviEventHandlerListViewItem *)it;
+		m_pLastEditedItem = (KviEventHandlerTreeWidgetItem *)it;
 		m_pNameEditor->setEnabled(true);
 		m_pNameEditor->setText(m_pLastEditedItem->name());
 		m_pEditor->setEnabled(true);
+		m_pEditor->setFocus();
 		m_pEditor->setText(m_pLastEditedItem->m_szBuffer);
+		m_pEditor->setCursorPosition(((KviEventHandlerTreeWidgetItem *)it)->cursorPosition());
 	} else {
 		m_pLastEditedItem = 0;
 		m_pNameEditor->setEnabled(false);
 		m_pNameEditor->setText("");
 		m_pEditor->setEnabled(false);
-		QString parms = ((KviEventListViewItem *)it)->m_szParams;
+		QString parms = ((KviEventTreeWidgetItem *)it)->m_szParams;
 		if(parms.isEmpty())parms = __tr2qs("none");
 		KviCommandFormatter::indent(parms);
 		KviCommandFormatter::indent(parms);
 		QString tmp;
 		KviQString::sprintf(tmp,__tr2qs("\n\n	Event:\n		%s\n\n	Parameters:\n%s"),
-			((KviEventListViewItem *)it)->m_szName.toUtf8().data(),parms.toUtf8().data());
+			((KviEventTreeWidgetItem *)it)->m_szName.toUtf8().data(),parms.toUtf8().data());
 		m_pEditor->setText(tmp);
+	
 	}
 }
 
@@ -402,7 +404,7 @@ void KviEventEditor::showEvent(QShowEvent *e)
 	QWidget::showEvent(e);
 }
 
-void KviEventEditor::getExportEventBuffer(QString &buffer,KviEventHandlerListViewItem * it)
+void KviEventEditor::getExportEventBuffer(QString &buffer,KviEventHandlerTreeWidgetItem * it)
 {
 	if(!it->parent())return;
 
@@ -411,7 +413,7 @@ void KviEventEditor::getExportEventBuffer(QString &buffer,KviEventHandlerListVie
 	KviCommandFormatter::blockFromBuffer(szBuf);
 
 	buffer = "event(";
-	buffer += ((KviEventListViewItem *)(it->parent()))->m_szName;
+	buffer += ((KviEventTreeWidgetItem *)(it->parent()))->m_szName;
 	buffer += ",";
 	buffer += it->m_szName;
 	buffer += ")\n";
@@ -422,7 +424,7 @@ void KviEventEditor::getExportEventBuffer(QString &buffer,KviEventHandlerListVie
 	{
 		buffer += "\n";
 		buffer += "eventctl -d ";
-		buffer += ((KviEventListViewItem *)(it->parent()))->m_szName;
+		buffer += ((KviEventTreeWidgetItem *)(it->parent()))->m_szName;
 		buffer += " ";
 		buffer += it->m_szName;
 	}
@@ -436,7 +438,7 @@ void KviEventEditor::exportCurrentHandler()
 
 	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
-	szName += ((KviEventListViewItem *)(m_pLastEditedItem->parent()))->m_szName;
+	szName += ((KviEventTreeWidgetItem *)(m_pLastEditedItem->parent()))->m_szName;
 	szName += ".";
 	szName += m_pLastEditedItem->m_szName;
 	szName += ".kvs";
@@ -460,16 +462,16 @@ void KviEventEditor::exportAllEvents()
 
 	QString out;
 
-	int count=m_pListView->topLevelItemCount();
+	int count=m_pTreeWidget->topLevelItemCount();
 	for (int i=0;i<count;i++)
 	{
-		KviEventListViewItem * it = (KviEventListViewItem *)m_pListView->topLevelItem(i);
+		KviEventTreeWidgetItem * it = (KviEventTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 
 		int ccount = it->childCount();
 
 		for(int j=0;j<ccount;j++)
 		{
-			KviEventHandlerListViewItem * item = (KviEventHandlerListViewItem *) it->child(j);
+			KviEventHandlerTreeWidgetItem * item = (KviEventHandlerTreeWidgetItem *) it->child(j);
 
 			QString tmp;
 			getExportEventBuffer(tmp,item);

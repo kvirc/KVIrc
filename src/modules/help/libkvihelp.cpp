@@ -25,8 +25,9 @@
 #include "helpwidget.h"
 #include "helpwindow.h"
 #include "index.h"
-
+#include "kvi_locale.h"
 #include "kvi_module.h"
+#include "kvi_fileutils.h"
 #include "kvi_sourcesdate.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
@@ -137,36 +138,56 @@ static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
 
 static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	QString doc, szHelpDir;
+	QString szDoc, szHelpDir;
         QDir dirHelp;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,doc)
+		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,szDoc)
 	KVSM_PARAMETERS_END(c)
 
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
         dirHelp = QDir(szHelpDir);
 
-	if(doc.isEmpty()){
-		doc = dirHelp.absoluteFilePath("index.html");
-		qDebug ("No file, use default at path %s",doc.toUtf8().data());
-	} else qDebug("Doc set from user to %s",doc.toUtf8().data());
-
-	QFileInfo * f= new QFileInfo(doc);
-	qDebug("Path %s",doc.toUtf8().data());
+	if(szDoc.isEmpty()){
+		szDoc = dirHelp.absoluteFilePath("index.html");
+		qDebug ("No file, use default at path %s",szDoc.toUtf8().data());
+	} else qDebug("Doc set from user to %s",szDoc.toUtf8().data());
+	
+	if (g_pDocIndex)
+	{
+		if (!g_pDocIndex->documentList().count())
+		{
+			QString szDoclist,szDict;
+			g_pApp->getLocalKvircDirectory(szDoclist,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
+			g_pApp->getLocalKvircDirectory(szDict,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
+			if ( KviFileUtils::fileExists(szDoclist) && KviFileUtils::fileExists( szDict )) g_pDocIndex->readDict();
+			else
+			{
+				c->warning(__tr2qs("Docs database is not builded"));
+						return true;
+			}
+		}
+		int i=g_pDocIndex->titlesList().indexOf(szDoc);
+		if (i!=-1)
+		{
+			szDoc=QUrl::fromLocalFile(g_pDocIndex->documentList()[ i ]).path();
+			if (szDoc.left(1)=="/") szDoc.remove(0,1);
+		}			
+	}
+	QFileInfo * f= new QFileInfo(szDoc);
 	if(f)
 	{
 		if(!f->exists())
 		{
-			doc = dirHelp.absoluteFilePath(doc);
-			qDebug("No abs path, trying relative path: %s",doc.toUtf8().data());
-			f->setFile(doc);
+			szDoc = dirHelp.absoluteFilePath(szDoc);
+			qDebug("No abs path, trying relative path: %s",szDoc.toUtf8().data());
+			f->setFile(szDoc);
 		}
 		if(!f->exists())
 		{
-			doc = dirHelp.absoluteFilePath("nohelpavailable.html");
-			qDebug("No rel path, defaulting to error page: %s",doc.toUtf8().data());
-			f->setFile(doc);
+			szDoc = dirHelp.absoluteFilePath("nohelpavailable.html");
+			qDebug("No rel path, defaulting to error page: %s",szDoc.toUtf8().data());
+			f->setFile(szDoc);
 		}
 	}
 

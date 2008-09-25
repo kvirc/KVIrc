@@ -56,21 +56,21 @@ extern KviPopupEditorWindow * g_pPopupEditorWindow;
 
 
 //KviPopupEntryItem
-KviPopupListViewItem::KviPopupListViewItem(KviTalTreeWidget * pListView,KviPopupListViewItem * after,Type t)
-: KviTalTreeWidgetItem(pListView,after)
+KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviTalTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t)
+: KviTalTreeWidgetItem(pTreeWidget,after)
 {
 	m_type = t;
 	init();
 }
 
-KviPopupListViewItem::KviPopupListViewItem(KviPopupListViewItem * parent,KviPopupListViewItem * after,Type t)
+KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviPopupTreeWidgetItem * parent,KviPopupTreeWidgetItem * after,Type t)
 : KviTalTreeWidgetItem(parent,after)
 {
 	m_type = t;
 	init();
 }
 
-void KviPopupListViewItem::init()
+void KviPopupTreeWidgetItem::init()
 {
 	switch(m_type)
 	{
@@ -103,7 +103,7 @@ void KviPopupListViewItem::init()
 	}
 }
 
-void KviPopupListViewItem::setItemText(const QString & szText)
+void KviPopupTreeWidgetItem::setItemText(const QString & szText)
 {
 	switch(m_type)
 	{
@@ -119,7 +119,7 @@ void KviPopupListViewItem::setItemText(const QString & szText)
 	}
 }
 
-void KviPopupListViewItem::setCondition(const QString & szCondition)
+void KviPopupTreeWidgetItem::setCondition(const QString & szCondition)
 {
 	switch(m_type)
 	{
@@ -134,7 +134,7 @@ void KviPopupListViewItem::setCondition(const QString & szCondition)
 	}
 }
 
-void KviPopupListViewItem::setCode(const QString & szCode)
+void KviPopupTreeWidgetItem::setCode(const QString & szCode)
 {
 	switch(m_type)
 	{
@@ -149,12 +149,12 @@ void KviPopupListViewItem::setCode(const QString & szCode)
 	}
 }
 
-void KviPopupListViewItem::setId(const QString & szId)
+void KviPopupTreeWidgetItem::setId(const QString & szId)
 {
 	m_szId = szId;
 }
 
-void KviPopupListViewItem::setIcon(const QString & szIcon)
+void KviPopupTreeWidgetItem::setIcon(const QString & szIcon)
 {
 	switch(m_type)
 	{
@@ -189,6 +189,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	g->setMargin(0);
 	g->setSpacing(2);
 
+
 	m_pNameEditor = new QLineEdit(this);
 	m_pNameEditor->setToolTip(__tr2qs("Popup name"));
 
@@ -201,24 +202,26 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	spl->setObjectName("popupeditor");
 	spl->setOpaqueResize(false);
 
-	m_pListView = new KviTalTreeWidget(spl);
-	m_pListView->setColumnCount(2);
+	m_pTreeWidget = new KviTalTreeWidget(spl);
+	m_pTreeWidget->setColumnCount(2);
 	QStringList labels;
 	labels << __tr2qs("Item") << __tr2qs("Type");
-	m_pListView->setHeaderLabels(labels);
-	m_pListView->setSelectionMode(QAbstractItemView::SingleSelection);
-	m_pListView->setSelectionBehavior(QAbstractItemView::SelectRows);
-	m_pListView->setAllColumnsShowFocus(true);
-	m_pListView->setRootIsDecorated(true);
-	m_pListView->header()->setSortIndicatorShown(false);
-	m_pListView->setSortingEnabled(false);
+	m_pTreeWidget->setHeaderLabels(labels);
+	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_pTreeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+	m_pTreeWidget->setAllColumnsShowFocus(true);
+	m_pTreeWidget->setRootIsDecorated(true);
+	m_pTreeWidget->header()->setSortIndicatorShown(false);
+	m_pTreeWidget->setSortingEnabled(false);
 
-	connect(m_pListView,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
-	connect(m_pListView,SIGNAL(itemPressed(KviTalTreeWidgetItem *, int)),
+	connect(m_pTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
+	connect(m_pTreeWidget,SIGNAL(itemPressed(KviTalTreeWidgetItem *, int)),
 		this,SLOT(itemPressed(KviTalTreeWidgetItem *, int)));
 
-	m_pEditor = KviScriptEditor::createInstance(spl);
+	
 
+	m_pEditor = KviScriptEditor::createInstance(spl);
+	
 	g->addWidget(spl,1,0,1,3);
 
 	QLabel * l = new QLabel(__tr2qs("Text:"),this);
@@ -292,11 +295,11 @@ void KviSinglePopupEditor::testPopup()
 	m_pTestPopup->doPopup(pnt,g_pActiveWindow,parms,true);
 }
 
-KviPopupListViewItem * KviSinglePopupEditor::findMatchingItem(KviKvsPopupMenuItem * it,KviPopupListViewItem * item)
+KviPopupTreeWidgetItem * KviSinglePopupEditor::findMatchingItem(KviKvsPopupMenuItem * it,KviPopupTreeWidgetItem * item)
 {
 
 	if(it->type() != KviKvsPopupMenuItem::Item)goto not_this_one;
-	if(item->m_type != KviPopupListViewItem::Item)goto not_this_one;
+	if(item->m_type != KviPopupTreeWidgetItem::Item)goto not_this_one;
 	if(it->name() != item->m_szId)goto not_this_one;
 	if(it->kvsText())
 	{
@@ -329,8 +332,8 @@ not_this_one:
 	int count=item->childCount();
 	for(int i=0; i<count; i++)
 	{
-		item = (KviPopupListViewItem *)item->child(i);
-		KviPopupListViewItem * found = findMatchingItem(it,item);
+		item = (KviPopupTreeWidgetItem *)item->child(i);
+		KviPopupTreeWidgetItem * found = findMatchingItem(it,item);
 		if(found)return found;
 	}
 
@@ -342,16 +345,16 @@ void KviSinglePopupEditor::testModeMenuItemClicked(KviKvsPopupMenuItem * it)
 
 	saveLastSelectedItem(); // that's the first thingie
 	// find the matching item and set it as current
-	int count=m_pListView->topLevelItemCount();
+	int count=m_pTreeWidget->topLevelItemCount();
 	for(int i=0; i<count; i++)
 	{
-		KviPopupListViewItem * item = (KviPopupListViewItem *)m_pListView->topLevelItem(i);
-		KviPopupListViewItem * found = findMatchingItem(it,item);
+		KviPopupTreeWidgetItem * item = (KviPopupTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+		KviPopupTreeWidgetItem * found = findMatchingItem(it,item);
 		if(found)
 		{
 			// set the item as current
-			m_pListView->scrollToItem(found);
-			m_pListView->setCurrentItem(found);
+			m_pTreeWidget->scrollToItem(found);
+			m_pTreeWidget->setCurrentItem(found);
 			found->setSelected(true);
 			selectionChanged();
 			return;
@@ -367,13 +370,13 @@ void KviSinglePopupEditor::itemPressed(KviTalTreeWidgetItem * it, int)
 
 	m_pContextPopup->clear();
 
-	KviPopupListViewItem * parentMenu = 0;
+	KviPopupTreeWidgetItem * parentMenu = 0;
 	bool bIsMenu = false;
 
 	if(it)
 	{
-		parentMenu = (KviPopupListViewItem *) (((KviPopupListViewItem *)it)->parent());
-		bIsMenu = ((KviPopupListViewItem *)it)->m_type == KviPopupListViewItem::Menu;
+		parentMenu = (KviPopupTreeWidgetItem *) (((KviPopupTreeWidgetItem *)it)->parent());
+		bIsMenu = ((KviPopupTreeWidgetItem *)it)->m_type == KviPopupTreeWidgetItem::Menu;
 	}
 
 	m_pContextPopup->insertItem(__tr2qs("New Separator Below"),this,SLOT(contextNewSeparatorBelow()));
@@ -477,120 +480,120 @@ void KviSinglePopupEditor::itemPressed(KviTalTreeWidgetItem * it, int)
 	m_pContextPopup->popup(QCursor::pos());
 }
 
-void KviSinglePopupEditor::createNewItemAboveLastSelected(KviPopupListViewItem::Type t)
+void KviSinglePopupEditor::createNewItemAboveLastSelected(KviPopupTreeWidgetItem::Type t)
 {
-	m_pListView->setCurrentItem(newItemAbove(m_pLastSelectedItem,t));
+	m_pTreeWidget->setCurrentItem(newItemAbove(m_pLastSelectedItem,t));
 }
 
-void KviSinglePopupEditor::createNewItemBelowLastSelected(KviPopupListViewItem::Type t)
+void KviSinglePopupEditor::createNewItemBelowLastSelected(KviPopupTreeWidgetItem::Type t)
 {
-	m_pListView->setCurrentItem(newItemBelow(m_pLastSelectedItem,t));
+	m_pTreeWidget->setCurrentItem(newItemBelow(m_pLastSelectedItem,t));
 }
 
-void KviSinglePopupEditor::createNewItemInsideLastSelected(KviPopupListViewItem::Type t)
+void KviSinglePopupEditor::createNewItemInsideLastSelected(KviPopupTreeWidgetItem::Type t)
 {
 	if(m_pLastSelectedItem)m_pLastSelectedItem->setExpanded(true);
-	m_pListView->setCurrentItem(newItemInside(m_pLastSelectedItem,t));
+	m_pTreeWidget->setCurrentItem(newItemInside(m_pLastSelectedItem,t));
 }
 
 void KviSinglePopupEditor::contextNewSeparatorAbove()
 {
-	createNewItemAboveLastSelected(KviPopupListViewItem::Separator);
+	createNewItemAboveLastSelected(KviPopupTreeWidgetItem::Separator);
 }
 
 void KviSinglePopupEditor::contextNewSeparatorBelow()
 {
-	createNewItemBelowLastSelected(KviPopupListViewItem::Separator);
+	createNewItemBelowLastSelected(KviPopupTreeWidgetItem::Separator);
 }
 
 void KviSinglePopupEditor::contextNewSeparatorInside()
 {
-	createNewItemInsideLastSelected(KviPopupListViewItem::Separator);
+	createNewItemInsideLastSelected(KviPopupTreeWidgetItem::Separator);
 }
 
 void KviSinglePopupEditor::contextNewItemBelow()
 {
-	createNewItemBelowLastSelected(KviPopupListViewItem::Item);
+	createNewItemBelowLastSelected(KviPopupTreeWidgetItem::Item);
 }
 
 void KviSinglePopupEditor::contextNewItemAbove()
 {
-	createNewItemAboveLastSelected(KviPopupListViewItem::Item);
+	createNewItemAboveLastSelected(KviPopupTreeWidgetItem::Item);
 }
 
 void KviSinglePopupEditor::contextNewItemInside()
 {
-	createNewItemInsideLastSelected(KviPopupListViewItem::Item);
+	createNewItemInsideLastSelected(KviPopupTreeWidgetItem::Item);
 }
 
 void KviSinglePopupEditor::contextNewMenuBelow()
 {
-	createNewItemBelowLastSelected(KviPopupListViewItem::Menu);
+	createNewItemBelowLastSelected(KviPopupTreeWidgetItem::Menu);
 }
 
 void KviSinglePopupEditor::contextNewMenuAbove()
 {
-	createNewItemAboveLastSelected(KviPopupListViewItem::Menu);
+	createNewItemAboveLastSelected(KviPopupTreeWidgetItem::Menu);
 }
 
 void KviSinglePopupEditor::contextNewMenuInside()
 {
-	createNewItemInsideLastSelected(KviPopupListViewItem::Menu);
+	createNewItemInsideLastSelected(KviPopupTreeWidgetItem::Menu);
 }
 
 void KviSinglePopupEditor::contextNewExtMenuBelow()
 {
-	createNewItemBelowLastSelected(KviPopupListViewItem::ExtMenu);
+	createNewItemBelowLastSelected(KviPopupTreeWidgetItem::ExtMenu);
 }
 
 void KviSinglePopupEditor::contextNewExtMenuAbove()
 {
-	createNewItemAboveLastSelected(KviPopupListViewItem::ExtMenu);
+	createNewItemAboveLastSelected(KviPopupTreeWidgetItem::ExtMenu);
 }
 void KviSinglePopupEditor::contextNewExtMenuInside()
 {
-	createNewItemInsideLastSelected(KviPopupListViewItem::ExtMenu);
+	createNewItemInsideLastSelected(KviPopupTreeWidgetItem::ExtMenu);
 }
 
 
 void KviSinglePopupEditor::contextNewLabelBelow()
 {
-	createNewItemBelowLastSelected(KviPopupListViewItem::Label);
+	createNewItemBelowLastSelected(KviPopupTreeWidgetItem::Label);
 }
 
 void KviSinglePopupEditor::contextNewLabelAbove()
 {
-	createNewItemAboveLastSelected(KviPopupListViewItem::Label);
+	createNewItemAboveLastSelected(KviPopupTreeWidgetItem::Label);
 }
 
 void KviSinglePopupEditor::contextNewLabelInside()
 {
-	createNewItemInsideLastSelected(KviPopupListViewItem::Label);
+	createNewItemInsideLastSelected(KviPopupTreeWidgetItem::Label);
 }
 
-KviPopupListViewItem * KviSinglePopupEditor::newItem(KviPopupListViewItem * par,KviPopupListViewItem * after,KviPopupListViewItem::Type t)
+KviPopupTreeWidgetItem * KviSinglePopupEditor::newItem(KviPopupTreeWidgetItem * par,KviPopupTreeWidgetItem * after,KviPopupTreeWidgetItem::Type t)
 {
-	if(par)return new KviPopupListViewItem(par,after,t);
-	return new KviPopupListViewItem(m_pListView,after,t);
+	if(par)return new KviPopupTreeWidgetItem(par,after,t);
+	return new KviPopupTreeWidgetItem(m_pTreeWidget,after,t);
 }
 
-KviPopupListViewItem * KviSinglePopupEditor::newItemBelow(KviPopupListViewItem * it,KviPopupListViewItem::Type t)
-{
-	if(!it)return newItem(0,0,t);
-	return newItem((KviPopupListViewItem *)it->parent(),it,t);
-}
-
-KviPopupListViewItem * KviSinglePopupEditor::newItemAbove(KviPopupListViewItem * it,KviPopupListViewItem::Type t)
+KviPopupTreeWidgetItem * KviSinglePopupEditor::newItemBelow(KviPopupTreeWidgetItem * it,KviPopupTreeWidgetItem::Type t)
 {
 	if(!it)return newItem(0,0,t);
-	return newItem((KviPopupListViewItem *)it->parent(),(KviPopupListViewItem *)m_pListView->itemAbove(it),t);
+	return newItem((KviPopupTreeWidgetItem *)it->parent(),it,t);
 }
 
-KviPopupListViewItem * KviSinglePopupEditor::newItemInside(KviPopupListViewItem * it,KviPopupListViewItem::Type t)
+KviPopupTreeWidgetItem * KviSinglePopupEditor::newItemAbove(KviPopupTreeWidgetItem * it,KviPopupTreeWidgetItem::Type t)
+{
+	if(!it)return newItem(0,0,t);
+	return newItem((KviPopupTreeWidgetItem *)it->parent(),(KviPopupTreeWidgetItem *)m_pTreeWidget->itemAbove(it),t);
+}
+
+KviPopupTreeWidgetItem * KviSinglePopupEditor::newItemInside(KviPopupTreeWidgetItem * it,KviPopupTreeWidgetItem::Type t)
 {
 	if(it)
 	{
-		if(it->m_type != KviPopupListViewItem::Menu)
+		if(it->m_type != KviPopupTreeWidgetItem::Menu)
 		{
 			return newItemBelow(it,t);
 		}
@@ -600,30 +603,30 @@ KviPopupListViewItem * KviSinglePopupEditor::newItemInside(KviPopupListViewItem 
 
 void KviSinglePopupEditor::contextNewPrologue()
 {
-	KviPopupListViewItem * it = m_pLastSelectedItem ? (KviPopupListViewItem *)m_pLastSelectedItem->parent() : 0;
+	KviPopupTreeWidgetItem * it = m_pLastSelectedItem ? (KviPopupTreeWidgetItem *)m_pLastSelectedItem->parent() : 0;
 //	if(!findPrologue(it))
 //	{
-		m_pListView->setCurrentItem(newItem(it,it,KviPopupListViewItem::Prologue));
+		m_pTreeWidget->setCurrentItem(newItem(it,it,KviPopupTreeWidgetItem::Prologue));
 //	}
 }
 
 void KviSinglePopupEditor::contextNewEpilogue()
 {
-	KviPopupListViewItem * it = m_pLastSelectedItem ? (KviPopupListViewItem *)m_pLastSelectedItem->parent() : 0;
+	KviPopupTreeWidgetItem * it = m_pLastSelectedItem ? (KviPopupTreeWidgetItem *)m_pLastSelectedItem->parent() : 0;
 //	if(!findEpilogue(it))
 //	{
-		KviPopupListViewItem * after = it ? (KviPopupListViewItem *)it->child(0) : (KviPopupListViewItem *)m_pListView->topLevelItem(0);
+		KviPopupTreeWidgetItem * after = it ? (KviPopupTreeWidgetItem *)it->child(0) : (KviPopupTreeWidgetItem *)m_pTreeWidget->topLevelItem(0);
 		if(after)
 		{
-			while(m_pListView->itemAbove(after))
+			while(m_pTreeWidget->itemAbove(after))
 			{
-				if(after->parent()==m_pListView->itemAbove(after)->parent())
-					after = (KviPopupListViewItem *)m_pListView->itemAbove(after);
+				if(after->parent()==m_pTreeWidget->itemAbove(after)->parent())
+					after = (KviPopupTreeWidgetItem *)m_pTreeWidget->itemAbove(after);
 			}
 		} else {
 			after = it;
 		}
-		m_pListView->setCurrentItem(newItem(it,after,KviPopupListViewItem::Epilogue));
+		m_pTreeWidget->setCurrentItem(newItem(it,after,KviPopupTreeWidgetItem::Epilogue));
 //	}
 }
 
@@ -640,7 +643,7 @@ void KviSinglePopupEditor::contextCut()
 	if(!m_pLastSelectedItem)return;
 	contextCopy();
 
-	KviPopupListViewItem * it = m_pLastSelectedItem;
+	KviPopupTreeWidgetItem * it = m_pLastSelectedItem;
 	m_pLastSelectedItem = 0;
 	delete it;
 	if(!m_pLastSelectedItem)selectionChanged();
@@ -649,15 +652,15 @@ void KviSinglePopupEditor::contextCut()
 void KviSinglePopupEditor::contextPasteBelow()
 {
 	if(!m_pClipboard)return;
-	KviPopupListViewItem * par = m_pLastSelectedItem ? (KviPopupListViewItem *)m_pLastSelectedItem->parent() : 0;
+	KviPopupTreeWidgetItem * par = m_pLastSelectedItem ? (KviPopupTreeWidgetItem *)m_pLastSelectedItem->parent() : 0;
 	populateMenu(m_pClipboard,par,m_pLastSelectedItem);
 }
 
 void KviSinglePopupEditor::contextPasteAbove()
 {
 	if(!m_pClipboard)return;
-	KviPopupListViewItem * par = m_pLastSelectedItem ? (KviPopupListViewItem *)m_pLastSelectedItem->parent() : 0;
-	KviPopupListViewItem * above = m_pLastSelectedItem ? (KviPopupListViewItem *)m_pListView->itemAbove(m_pLastSelectedItem) : 0;
+	KviPopupTreeWidgetItem * par = m_pLastSelectedItem ? (KviPopupTreeWidgetItem *)m_pLastSelectedItem->parent() : 0;
+	KviPopupTreeWidgetItem * above = m_pLastSelectedItem ? (KviPopupTreeWidgetItem *)m_pTreeWidget->itemAbove(m_pLastSelectedItem) : 0;
 	populateMenu(m_pClipboard,par,above);
 
 }
@@ -667,7 +670,7 @@ void KviSinglePopupEditor::contextPasteInside()
 	if(!m_pClipboard)return;
 	if(m_pLastSelectedItem)
 	{
-		if(m_pLastSelectedItem->m_type != KviPopupListViewItem::Menu)
+		if(m_pLastSelectedItem->m_type != KviPopupTreeWidgetItem::Menu)
 		{
 			contextPasteBelow();
 			return;
@@ -685,9 +688,9 @@ void KviSinglePopupEditor::saveLastSelectedItem()
 
 	switch(m_pLastSelectedItem->m_type)
 	{
-		case KviPopupListViewItem::Prologue:
-		case KviPopupListViewItem::Epilogue:
-		case KviPopupListViewItem::Item:
+		case KviPopupTreeWidgetItem::Prologue:
+		case KviPopupTreeWidgetItem::Epilogue:
+		case KviPopupTreeWidgetItem::Item:
 		{
 			QString tmpx;
 			m_pEditor->getText(tmpx);
@@ -702,9 +705,9 @@ void KviSinglePopupEditor::saveLastSelectedItem()
 
 	switch(m_pLastSelectedItem->m_type)
 	{
-		case KviPopupListViewItem::Menu:
-		case KviPopupListViewItem::ExtMenu:
-		case KviPopupListViewItem::Item:
+		case KviPopupTreeWidgetItem::Menu:
+		case KviPopupTreeWidgetItem::ExtMenu:
+		case KviPopupTreeWidgetItem::Item:
 			m_pLastSelectedItem->setIcon(m_pIconEditor->text());
 		break;
 		default:
@@ -713,10 +716,10 @@ void KviSinglePopupEditor::saveLastSelectedItem()
 
 	switch(m_pLastSelectedItem->m_type)
 	{
-		case KviPopupListViewItem::Menu:
-		case KviPopupListViewItem::Item:
-		case KviPopupListViewItem::Label:
-		case KviPopupListViewItem::ExtMenu:
+		case KviPopupTreeWidgetItem::Menu:
+		case KviPopupTreeWidgetItem::Item:
+		case KviPopupTreeWidgetItem::Label:
+		case KviPopupTreeWidgetItem::ExtMenu:
 			m_pLastSelectedItem->setItemText(m_pTextEditor->text());
 			m_pLastSelectedItem->setCondition(m_pConditionEditor->text());
 		break;
@@ -724,50 +727,50 @@ void KviSinglePopupEditor::saveLastSelectedItem()
 		break;
 	}
 
-	if(m_pLastSelectedItem->m_type == KviPopupListViewItem::ExtMenu)
+	if(m_pLastSelectedItem->m_type == KviPopupTreeWidgetItem::ExtMenu)
 	{
 		m_pLastSelectedItem->setCode(m_pExtNameEditor->text());
 	}
 }
 
-void KviSinglePopupEditor::addItemToMenu(KviKvsPopupMenu * p,KviPopupListViewItem *it)
+void KviSinglePopupEditor::addItemToMenu(KviKvsPopupMenu * p,KviPopupTreeWidgetItem *it)
 {
 	it->m_szId.trimmed();
 	switch(it->m_type)
 	{
-		case KviPopupListViewItem::Prologue:
+		case KviPopupTreeWidgetItem::Prologue:
 			it->m_szCode.trimmed();
 			p->addPrologue(it->m_szId,it->m_szCode);
 		break;
-		case KviPopupListViewItem::Epilogue:
+		case KviPopupTreeWidgetItem::Epilogue:
 			it->m_szCode.trimmed();
 			p->addEpilogue(it->m_szId,it->m_szCode);
 		break;
-		case KviPopupListViewItem::Separator:
+		case KviPopupTreeWidgetItem::Separator:
 			it->m_szCondition.trimmed();
 			p->addSeparator(it->m_szId,it->m_szCondition);
 		break;
-		case KviPopupListViewItem::Label:
+		case KviPopupTreeWidgetItem::Label:
 			it->m_szText.trimmed();
 			it->m_szCondition.trimmed();
 			it->m_szIcon.trimmed();
 			p->addLabel(it->m_szId,it->m_szText,it->m_szIcon,it->m_szCondition);
 		break;
-		case KviPopupListViewItem::Item:
+		case KviPopupTreeWidgetItem::Item:
 			it->m_szText.trimmed();
 			it->m_szIcon.trimmed();
 			it->m_szCondition.trimmed();
 			it->m_szCode.trimmed();
 			p->addItem(it->m_szId,it->m_szCode,it->m_szText,it->m_szIcon,it->m_szCondition);
 		break;
-		case KviPopupListViewItem::ExtMenu:
+		case KviPopupTreeWidgetItem::ExtMenu:
 			it->m_szText.trimmed();
 			it->m_szIcon.trimmed();
 			it->m_szCondition.trimmed();
 			it->m_szCode.trimmed();// <-- this is the ext name in fact
 			p->addExtPopup(it->m_szId,it->m_szCode,it->m_szText,it->m_szIcon,it->m_szCondition);
 		break;
-		case KviPopupListViewItem::Menu:
+		case KviPopupTreeWidgetItem::Menu:
 		{
 			it->m_szText.trimmed();
 			it->m_szIcon.trimmed();
@@ -776,7 +779,7 @@ void KviSinglePopupEditor::addItemToMenu(KviKvsPopupMenu * p,KviPopupListViewIte
 			int count= it->childCount();
 			for(int i=0; i<count; i++)
 			{
-				addItemToMenu(menu,(KviPopupListViewItem *)it->child(i));
+				addItemToMenu(menu,(KviPopupTreeWidgetItem *)it->child(i));
 			}
 		}
 		break;
@@ -794,10 +797,10 @@ KviKvsPopupMenu * KviSinglePopupEditor::getMenu()
 
 	KviKvsPopupMenu * p = new KviKvsPopupMenu(tmp);
 
-	int count= m_pListView->topLevelItemCount();
+	int count= m_pTreeWidget->topLevelItemCount();
 	for(int i=0; i<count; i++)
 	{
-		addItemToMenu(p,(KviPopupListViewItem *)m_pListView->topLevelItem(i));
+		addItemToMenu(p,(KviPopupTreeWidgetItem *)m_pTreeWidget->topLevelItem(i));
 	}
 	return p;
 }
@@ -814,64 +817,64 @@ void KviSinglePopupEditor::selectionChanged()
 
 	KviTalTreeWidgetItem * it;
 
-	if(m_pListView->selectedItems().empty())
+	if(m_pTreeWidget->selectedItems().empty())
 	{
 		it=0;
 	} else {
-		it= (KviTalTreeWidgetItem*)m_pListView->selectedItems().first();
+		it= (KviTalTreeWidgetItem*)m_pTreeWidget->selectedItems().first();
 	}
 
 	if(it)
 	{
-		m_pIdEditor->setText(((KviPopupListViewItem *)it)->m_szId);
+		m_pIdEditor->setText(((KviPopupTreeWidgetItem *)it)->m_szId);
 
-		switch(((KviPopupListViewItem *)it)->m_type)
+		switch(((KviPopupTreeWidgetItem *)it)->m_type)
 		{
-			case KviPopupListViewItem::Prologue:
-			case KviPopupListViewItem::Epilogue:
-			case KviPopupListViewItem::Item:
-				m_pEditor->setText(((KviPopupListViewItem *)it)->m_szCode);
+			case KviPopupTreeWidgetItem::Prologue:
+			case KviPopupTreeWidgetItem::Epilogue:
+			case KviPopupTreeWidgetItem::Item:
+				m_pEditor->setText(((KviPopupTreeWidgetItem *)it)->m_szCode);
 				bEditorEnabled = true;
 			break;
 			default:
 			break;
 		}
 
-		switch(((KviPopupListViewItem *)it)->m_type)
+		switch(((KviPopupTreeWidgetItem *)it)->m_type)
 		{
-			case KviPopupListViewItem::Menu:
-			case KviPopupListViewItem::Item:
-			case KviPopupListViewItem::Label:
-			case KviPopupListViewItem::ExtMenu:
-				m_pIconEditor->setText(((KviPopupListViewItem *)it)->m_szIcon);
+			case KviPopupTreeWidgetItem::Menu:
+			case KviPopupTreeWidgetItem::Item:
+			case KviPopupTreeWidgetItem::Label:
+			case KviPopupTreeWidgetItem::ExtMenu:
+				m_pIconEditor->setText(((KviPopupTreeWidgetItem *)it)->m_szIcon);
 				bIconEditorEnabled = true;
 			break;
 			default:
 			break;		}
 
-		switch(((KviPopupListViewItem *)it)->m_type)
+		switch(((KviPopupTreeWidgetItem *)it)->m_type)
 		{
-			case KviPopupListViewItem::Menu:
-			case KviPopupListViewItem::Item:
-			case KviPopupListViewItem::Label:
-			case KviPopupListViewItem::ExtMenu:
-				m_pConditionEditor->setText(((KviPopupListViewItem *)it)->m_szCondition);
+			case KviPopupTreeWidgetItem::Menu:
+			case KviPopupTreeWidgetItem::Item:
+			case KviPopupTreeWidgetItem::Label:
+			case KviPopupTreeWidgetItem::ExtMenu:
+				m_pConditionEditor->setText(((KviPopupTreeWidgetItem *)it)->m_szCondition);
 				bConditionEditorEnabled = true;
-				m_pTextEditor->setText(((KviPopupListViewItem *)it)->m_szText);
+				m_pTextEditor->setText(((KviPopupTreeWidgetItem *)it)->m_szText);
 				bTextEditorEnabled = true;
 			break;
 			default:
 			break;
 		}
 
-		if(((KviPopupListViewItem *)it)->m_type == KviPopupListViewItem::ExtMenu)
+		if(((KviPopupTreeWidgetItem *)it)->m_type == KviPopupTreeWidgetItem::ExtMenu)
 		{
-			m_pExtNameEditor->setText(((KviPopupListViewItem *)it)->m_szCode);
+			m_pExtNameEditor->setText(((KviPopupTreeWidgetItem *)it)->m_szCode);
 			bNameEditorEnabled =true;
 		}
 	}
 
-	m_pLastSelectedItem = (KviPopupListViewItem *)it;
+	m_pLastSelectedItem = (KviPopupTreeWidgetItem *)it;
 
 	if(!bEditorEnabled)m_pEditor->setText("");
 	m_pEditor->setEnabled(bEditorEnabled);
@@ -887,14 +890,14 @@ void KviSinglePopupEditor::selectionChanged()
 	m_pIdEditor->setEnabled(it);
 }
 
-void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupListViewItem * par,KviPopupListViewItem * theItem)
+void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupTreeWidgetItem * par,KviPopupTreeWidgetItem * theItem)
 {
 	if(!pop)return;
 
 	for(KviKvsScript * sp = pop->prologues()->first();sp;sp = pop->prologues()->next())
 	{
-		if(par)theItem = new KviPopupListViewItem(par,theItem,KviPopupListViewItem::Prologue);
-		else theItem = new KviPopupListViewItem(m_pListView,theItem,KviPopupListViewItem::Prologue);
+		if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Prologue);
+		else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Prologue);
 		theItem->setCode(sp->code());
 		theItem->setId(sp->name());
 	}
@@ -904,8 +907,8 @@ void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupListViewIt
 		switch(item->type())
 		{
 			case KviKvsPopupMenuItem::Item:
-				if(par)theItem = new KviPopupListViewItem(par,theItem,KviPopupListViewItem::Item);
-				else theItem = new KviPopupListViewItem(m_pListView,theItem,KviPopupListViewItem::Item);
+				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Item);
+				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Item);
 				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString::null);
 				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString::null);
 				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString::null);
@@ -913,8 +916,8 @@ void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupListViewIt
 				theItem->setId(item->name());
 			break;
 			case KviKvsPopupMenuItem::ExtMenu:
-				if(par)theItem = new KviPopupListViewItem(par,theItem,KviPopupListViewItem::ExtMenu);
-				else theItem = new KviPopupListViewItem(m_pListView,theItem,KviPopupListViewItem::ExtMenu);
+				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::ExtMenu);
+				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::ExtMenu);
 				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString::null);
 				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString::null);
 				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString::null);
@@ -922,21 +925,21 @@ void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupListViewIt
 				theItem->setId(item->name());
 			break;
 			case KviKvsPopupMenuItem::Label:
-				if(par)theItem = new KviPopupListViewItem(par,theItem,KviPopupListViewItem::Label);
-				else theItem = new KviPopupListViewItem(m_pListView,theItem,KviPopupListViewItem::Label);
+				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Label);
+				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Label);
 				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString::null);
 				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString::null);
 				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString::null);
 				theItem->setId(item->name());
 			break;
 			case KviKvsPopupMenuItem::Separator:
-				if(par)theItem = new KviPopupListViewItem(par,theItem,KviPopupListViewItem::Separator);
-				else theItem = new KviPopupListViewItem(m_pListView,theItem,KviPopupListViewItem::Separator);
+				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Separator);
+				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Separator);
 				theItem->setId(item->name());
 			break;
 			case KviKvsPopupMenuItem::Menu:
-				if(par)theItem = new KviPopupListViewItem(par,theItem,KviPopupListViewItem::Menu);
-				else theItem = new KviPopupListViewItem(m_pListView,theItem,KviPopupListViewItem::Menu);
+				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Menu);
+				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Menu);
 				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString::null);
 				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString::null);
 				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString::null);
@@ -950,31 +953,29 @@ void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupListViewIt
 
 	for(KviKvsScript * se = pop->epilogues()->first();se;se = pop->epilogues()->next())
 	{
-		if(par)theItem = new KviPopupListViewItem(par,theItem,KviPopupListViewItem::Epilogue);
-		else theItem = new KviPopupListViewItem(m_pListView,theItem,KviPopupListViewItem::Epilogue);
+		if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Epilogue);
+		else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Epilogue);
 		theItem->setCode(se->code());
 		theItem->setId(se->name());
 	}
 
-	m_pListView->resizeColumnToContents(0);
+	m_pTreeWidget->resizeColumnToContents(0);
 }
 
-void KviSinglePopupEditor::edit(KviMenuListViewItem * it)
+void KviSinglePopupEditor::edit(KviMenuTreeWidgetItem * it)
 {
 	saveLastSelectedItem();
 
 	m_pLastSelectedItem = 0;
 
-	m_pListView->clear();
+	m_pTreeWidget->clear();
 
 	selectionChanged();
 
 	if(it)
 	{
 		m_pNameEditor->setText(it->m_pPopup->popupName());
-
 		populateMenu(it->m_pPopup,0,0);
-
 	} else {
 		m_pIconEditor->setText("");
 		m_pIconEditor->setEnabled(false);
@@ -990,14 +991,14 @@ void KviSinglePopupEditor::edit(KviMenuListViewItem * it)
 		m_pExtNameEditor->setText("");
 		m_pExtNameEditor->setEnabled(false);
 	}
-	m_pListView->setEnabled(it);
+	m_pTreeWidget->setEnabled(it);
 	m_pNameEditor->setEnabled(it);
 	m_pMenuButton->setEnabled(it);
 
 }
 
 
-KviMenuListViewItem::KviMenuListViewItem(KviTalTreeWidget * par,KviKvsPopupMenu * popup)
+KviMenuTreeWidgetItem::KviMenuTreeWidgetItem(KviTalTreeWidget * par,KviKvsPopupMenu * popup)
 : KviTalTreeWidgetItem(par)
 {
 	setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)));
@@ -1005,12 +1006,12 @@ KviMenuListViewItem::KviMenuListViewItem(KviTalTreeWidget * par,KviKvsPopupMenu 
 	m_pPopup = popup;
 }
 
-KviMenuListViewItem::~KviMenuListViewItem()
+KviMenuTreeWidgetItem::~KviMenuTreeWidgetItem()
 {
 	delete m_pPopup;
 }
 
-void KviMenuListViewItem::replacePopup(KviKvsPopupMenu * popup)
+void KviMenuTreeWidgetItem::replacePopup(KviKvsPopupMenu * popup)
 {
 	delete m_pPopup;
 	m_pPopup = popup;
@@ -1027,10 +1028,10 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 
 	KviTalVBox * box = new KviTalVBox(spl);
 
-	m_pListView = new KviTalTreeWidget(box);
-	m_pListView->addColumn(__tr2qs("Popup"));
-	m_pListView->setSelectionMode(QAbstractItemView::ExtendedSelection);
-	m_pListView->header()->setSortIndicatorShown(true);
+	m_pTreeWidget = new KviTalTreeWidget(box);
+	m_pTreeWidget->addColumn(__tr2qs("Popup"));
+	m_pTreeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
+	m_pTreeWidget->header()->setSortIndicatorShown(true);
 
 	QPushButton * pb = new QPushButton(__tr2qs("&Export All To..."),box);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAll()));
@@ -1043,6 +1044,9 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 	m_pLastEditedItem = 0;
 
 	m_pContextPopup = new KviTalPopupMenu(this);
+	
+	spl->setStretchFactor (0,20);
+	spl->setStretchFactor (1,80);
 
 	currentItemChanged(0,0);
 }
@@ -1061,19 +1065,19 @@ void KviPopupEditor::oneTimeSetup()
 
 	KviPointerHashTableIterator<QString,KviKvsPopupMenu> it(*a);
 
-	KviMenuListViewItem * item;
+	KviMenuTreeWidgetItem * item;
 
 	while(it.current())
 	{
 		KviKvsPopupMenu * popup = it.current();
 		KviKvsPopupMenu * copy = new KviKvsPopupMenu(popup->popupName());
 		copy->copyFrom(popup);
-		item = new KviMenuListViewItem(m_pListView,copy);
+		item = new KviMenuTreeWidgetItem(m_pTreeWidget,copy);
 		++it;
 	}
 
-	connect(m_pListView,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
-	connect(m_pListView,SIGNAL(itemPressed(KviTalTreeWidgetItem *, int)),
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
+	connect(m_pTreeWidget,SIGNAL(itemPressed(KviTalTreeWidgetItem *, int)),
 		this,SLOT(itemPressed(KviTalTreeWidgetItem *, int)));
 }
 
@@ -1149,11 +1153,11 @@ void KviPopupEditor::exportPopups(bool bSelectedOnly)
 	saveLastEditedItem();
 
 	QString out;
-	int count=0, topcount=m_pListView->topLevelItemCount();
+	int count=0, topcount=m_pTreeWidget->topLevelItemCount();
 
 	for(int i=0; i<topcount;i++)
 	{
-		KviMenuListViewItem * it = (KviMenuListViewItem *)m_pListView->topLevelItem(i);
+		KviMenuTreeWidgetItem * it = (KviMenuTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		if ( (it->isSelected()) || (bSelectedOnly == true) )
 		{
 			count++;
@@ -1183,7 +1187,7 @@ void KviPopupEditor::removeCurrentPopup()
 {
 	if(m_pLastEditedItem)
 	{
-		KviMenuListViewItem * it = m_pLastEditedItem;
+		KviMenuTreeWidgetItem * it = m_pLastEditedItem;
 		m_pLastEditedItem = 0;
 		delete it;
 		if(!m_pLastEditedItem)currentItemChanged(0,0);
@@ -1194,8 +1198,8 @@ void KviPopupEditor::newPopup()
 {
 	QString newName;
 	getUniquePopupName(0,newName);
-	KviMenuListViewItem * it = new KviMenuListViewItem(m_pListView,new KviKvsPopupMenu(newName));
-	m_pListView->setCurrentItem(it);
+	KviMenuTreeWidgetItem * it = new KviMenuTreeWidgetItem(m_pTreeWidget,new KviKvsPopupMenu(newName));
+	m_pTreeWidget->setCurrentItem(it);
 }
 
 void KviPopupEditor::saveLastEditedItem()
@@ -1219,7 +1223,7 @@ void KviPopupEditor::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidge
 {
 	saveLastEditedItem();
 
-	m_pLastEditedItem = (KviMenuListViewItem *)it;
+	m_pLastEditedItem = (KviMenuTreeWidgetItem *)it;
 
 	m_pEditor->edit(m_pLastEditedItem);
 }
@@ -1238,7 +1242,7 @@ void KviPopupEditor::commit()
 
 	//KviKvsPopupManager::instance()->clear();
 
-	int count=0, topcount=m_pListView->topLevelItemCount();
+	int count=0, topcount=m_pTreeWidget->topLevelItemCount();
 
 	// Copy the original popup dict
 	KviPointerHashTable<QString,KviKvsPopupMenu> copy(*(KviKvsPopupManager::instance()->popupDict()));
@@ -1246,7 +1250,7 @@ void KviPopupEditor::commit()
 
 	for(int i=0; i<topcount;i++)
 	{
-		KviMenuListViewItem * it = (KviMenuListViewItem *)m_pListView->topLevelItem(i);
+		KviMenuTreeWidgetItem * it = (KviMenuTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		KviKvsPopupMenu * p = KviKvsPopupManager::instance()->get(it->m_pPopup->popupName());
 		p->doClear();
 		p->copyFrom(it->m_pPopup);
@@ -1268,7 +1272,7 @@ void KviPopupEditor::commit()
 	g_pApp->savePopups();
 }
 
-void KviPopupEditor::getUniquePopupName(KviMenuListViewItem *item,QString &buffer)
+void KviPopupEditor::getUniquePopupName(KviMenuTreeWidgetItem *item,QString &buffer)
 {
 	__range_valid(m_bOneTimeSetupDone);
 
@@ -1277,7 +1281,7 @@ void KviPopupEditor::getUniquePopupName(KviMenuListViewItem *item,QString &buffe
 
 	bool bFound = true;
 	int idx = 1;
-	int topcount=m_pListView->topLevelItemCount();
+	int topcount=m_pTreeWidget->topLevelItemCount();
 
 	while(bFound)
 	{
@@ -1285,7 +1289,7 @@ void KviPopupEditor::getUniquePopupName(KviMenuListViewItem *item,QString &buffe
 
 		for(int i=0; i<topcount;i++)
 		{
-			KviMenuListViewItem * ch = (KviMenuListViewItem *)m_pListView->topLevelItem(i);
+			KviMenuTreeWidgetItem * ch = (KviMenuTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 
 			if(KviQString::equalCI(newName,ch->m_pPopup->popupName()) && (ch != item))
 			{

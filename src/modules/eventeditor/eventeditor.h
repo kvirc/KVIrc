@@ -34,42 +34,47 @@
 
 class KviScriptEditor;
 
-class KviEventListViewItem : public QTreeWidgetItem
+class KviEventTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	unsigned int m_uEventIdx;
 	QString m_szName;
 	QString m_szParams;
 public:
-	KviEventListViewItem(QTreeWidget * par,unsigned int uEvIdx,const QString &name,const QString &params);
-	~KviEventListViewItem() {};
+	KviEventTreeWidgetItem(QTreeWidget * par,unsigned int uEvIdx,const QString &name,const QString &params);
+	~KviEventTreeWidgetItem() {};
 public:
 	void setName(const QString &szName);
 	QString name() const { return m_szName; };
 };
 
-class KviEventHandlerListViewItem : public QTreeWidgetItem
+class KviEventHandlerTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	QString m_szName;
 	QString m_szBuffer;
 	bool   m_bEnabled;
+	int m_cPos;
 public:
-	KviEventHandlerListViewItem(QTreeWidgetItem * par,const QString &name,const QString &buffer,bool bEnabled);
-	~KviEventHandlerListViewItem() {};
+	KviEventHandlerTreeWidgetItem(QTreeWidgetItem * par,const QString &name,const QString &buffer,bool bEnabled);
+	~KviEventHandlerTreeWidgetItem() {};
 public:
+	const int & cursorPosition(){return m_cPos; };
+	void setCursorPosition(const int &cPos){debug ("set cursor to %d",cPos); m_cPos = cPos; };
+	
 	void setName(const QString &szName);
 	QString name() const { return m_szName; };
 	void setEnabled(const bool bEnabled);
 };
 
-class KviEventEditorListView : public QTreeWidget
+class KviEventEditorTreeWidget : public QTreeWidget
 {
 	Q_OBJECT
 public:
-	KviEventEditorListView(QWidget*);
-	~KviEventEditorListView(){};
+	KviEventEditorTreeWidget(QWidget*);
+	~KviEventEditorTreeWidget(){};
 protected:
+
 	void mousePressEvent (QMouseEvent *e);
 signals:
 	void rightButtonPressed(QTreeWidgetItem *,QPoint);
@@ -83,16 +88,16 @@ public:
 	~KviEventEditor();
 public:
 	KviScriptEditor * m_pEditor;
-	KviEventEditorListView       * m_pListView;
+	KviEventEditorTreeWidget       * m_pTreeWidget;
 	QLineEdit       * m_pNameEditor;
 	KviTalPopupMenu      * m_pContextPopup;
-	KviEventHandlerListViewItem * m_pLastEditedItem;
+	KviEventHandlerTreeWidgetItem * m_pLastEditedItem;
 	bool              m_bOneTimeSetupDone;
 public:
 	void commit();
 	void saveLastEditedItem();
-	void getUniqueHandlerName(KviEventListViewItem *it,QString &buffer);
-	void getExportEventBuffer(QString &szBuffer,KviEventHandlerListViewItem * it);
+	void getUniqueHandlerName(KviEventTreeWidgetItem *it,QString &buffer);
+	void getExportEventBuffer(QString &szBuffer,KviEventHandlerTreeWidgetItem * it);
 protected slots:
 	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *);
 	void itemPressed(QTreeWidgetItem *it,const QPoint &pnt);
