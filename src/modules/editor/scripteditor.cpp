@@ -857,23 +857,20 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	m_lastCursorPos = 0;
 	QGridLayout * g = new QGridLayout(this);
 
-	m_pFindLineedit = new QLineEdit(" ",this);
-	m_pFindLineedit->setText("");
+	m_pFindLineEdit = new QLineEdit(" ",this);
+	m_pFindLineEdit->setText("");
 
-	QPalette p = m_pFindLineedit->palette();
+	QPalette p = m_pFindLineEdit->palette();
 	p.setColor(foregroundRole(), g_clrFind);
-	m_pFindLineedit->setPalette(p);
-
+	m_pFindLineEdit->setPalette(p);
 
 	m_pEditor = new KviScriptEditorWidget(this);
 	g->addWidget(m_pEditor, 0, 0, 1,4);
-
 	g->setRowStretch(0,1);
 
 	QToolButton * b = new QToolButton(this);
 	b->setArrowType(Qt::DownArrow);
 	b->setObjectName("ToolButtonEditor");
-
 	b->setMinimumWidth(24);
 	g->addWidget(b,1,0);
 
@@ -887,18 +884,19 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 
 	g->setColumnStretch(1,1);
 	g->setColumnStretch(2,10);
-	g->addWidget(m_pFindLineedit,1,2);
+	g->addWidget(m_pFindLineEdit,1,2);
+
 	QLabel *lab= new QLabel("find",this);
 	lab->setText(tr("Find"));
-
 	g->addWidget(lab,1,1);
+
 	m_pRowColLabel = new QLabel("0",this);
 	m_pRowColLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
 	m_pRowColLabel->setMinimumWidth(80);
 	g->addWidget(m_pRowColLabel,1,3);
 
-	connect(m_pFindLineedit,SIGNAL(returnPressed()),m_pEditor,SLOT(slotFind()));
-	connect(m_pFindLineedit,SIGNAL(returnPressed()),this,SLOT(slotFind()));
+	connect(m_pFindLineEdit,SIGNAL(returnPressed()),m_pEditor,SLOT(slotFind()));
+	connect(m_pFindLineEdit,SIGNAL(returnPressed()),this,SLOT(slotFind()));
 	connect(m_pEditor,SIGNAL(keyPressed()),this,SLOT(updateRowColLabel()));
 	connect(m_pEditor,SIGNAL(textChanged()),this,SLOT(updateRowColLabel()));
 	connect(m_pEditor,SIGNAL(selectionChanged()),this,SLOT(updateRowColLabel()));
@@ -914,10 +912,10 @@ KviScriptEditorImplementation::~KviScriptEditorImplementation()
 
 void KviScriptEditorImplementation::loadOptions()
 {
-	QString tmp;
-	g_pEditorModulePointer->getDefaultConfigFileName(tmp);
+	QString szTmp;
+	g_pEditorModulePointer->getDefaultConfigFileName(szTmp);
 
-	KviConfig cfg(tmp,KviConfig::Read);
+	KviConfig cfg(szTmp,KviConfig::Read);
 	g_clrBackground = cfg.readColorEntry("Background",QColor(0,0,0));;
 	g_clrNormalText = cfg.readColorEntry("NormalText",QColor(100,255,0));
 	g_clrBracket = cfg.readColorEntry("Bracket",QColor(255,0,0));
@@ -937,7 +935,7 @@ bool KviScriptEditorImplementation::isModified()
 
 void KviScriptEditorImplementation::slotFind()
 {
-	emit find(m_pFindLineedit->text());
+	emit find(m_pFindLineEdit->text());
 }
 
 void KviScriptEditorImplementation::slotNextFind(const QString & szText)
@@ -1042,13 +1040,13 @@ void KviScriptEditorImplementation::text(QString & szText)
 
 void KviScriptEditorImplementation::setFindText(const QString & szText)
 {
-	m_pFindLineedit->setText(szText);
+	m_pFindLineEdit->setText(szText);
 	m_pEditor->slotFind();
 }
 
 void KviScriptEditorImplementation::setFindLineEditReadOnly(bool b)
 {
-	m_pFindLineedit->setReadOnly(b);
+	m_pFindLineEdit->setReadOnly(b);
 }
 
 void KviScriptEditorImplementation::updateRowColLabel()

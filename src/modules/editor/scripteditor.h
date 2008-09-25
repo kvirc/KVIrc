@@ -118,7 +118,7 @@ public:
 	KviScriptEditorImplementation(QWidget * par);
 	virtual ~KviScriptEditorImplementation();
 public:
-	QLineEdit * m_pFindlineedit;
+	QLineEdit * m_pFindLineEdit;
 protected:
 	KviScriptEditorWidget * m_pEditor;
 	QLabel                * m_pRowColLabel;
@@ -135,7 +135,7 @@ public:
 	void setFindLineEditReadOnly(bool b);
 	void setCursorPosition(int iPos);
 	int cursor(){ return m_lastCursorPos; };
-	QLineEdit * findLineEdit(){ return m_pFindLineedit; };
+	QLineEdit * findLineEdit(){ return m_pFindLineEdit; };
 protected:
 	virtual void focusInEvent(QFocusEvent * e);
 	void loadOptions();
