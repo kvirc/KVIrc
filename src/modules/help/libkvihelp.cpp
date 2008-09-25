@@ -138,57 +138,66 @@ static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
 
 static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	QString szDoc, szHelpDir;
+	QString szDoc, szHelpDir, szParam;
         QDir dirHelp;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,szDoc)
+		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,szParam)
 	KVSM_PARAMETERS_END(c)
 
+	szDoc=szParam;
 	g_pApp->getGlobalKvircDirectory(szHelpDir,KviApp::Help);
         dirHelp = QDir(szHelpDir);
 
-	if(szDoc.isEmpty()){
+	// no document => index
+	if(szDoc.isEmpty())
+	{
 		szDoc = dirHelp.absoluteFilePath("index.html");
 		qDebug ("No file, use default at path %s",szDoc.toUtf8().data());
-	} else qDebug("Doc set from user to %s",szDoc.toUtf8().data());
-	
-	if (g_pDocIndex && !szDoc.isEmpty())
+	}
+
+	// try absolute path
+	QFileInfo * f= new QFileInfo(szDoc);
+	if(!f->exists())
 	{
-		if (!g_pDocIndex->documentList().count())
+		//try relative path
+		szDoc = dirHelp.absoluteFilePath(szDoc);
+		qDebug("No abs path, trying relative path: %s",szDoc.toUtf8().data());
+		f->setFile(szDoc);
+	}
+
+	if(!f->exists())
+	{
+		//try search
+		qDebug("No rel path, trying search..");
+		if(g_pDocIndex)
 		{
-			QString szDoclist,szDict;
-			g_pApp->getLocalKvircDirectory(szDoclist,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
-			g_pApp->getLocalKvircDirectory(szDict,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
-			if ( KviFileUtils::fileExists(szDoclist) && KviFileUtils::fileExists( szDict )) g_pDocIndex->readDict();
-			else
+			if (!g_pDocIndex->documentList().count())
 			{
-				c->warning(__tr2qs("Docs database is not builded"));
-						return true;
+				QString szDoclist,szDict;
+				g_pApp->getLocalKvircDirectory(szDoclist,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
+				g_pApp->getLocalKvircDirectory(szDict,KviApp::Help,"help.dict." KVI_SOURCES_DATE);
+				if ( KviFileUtils::fileExists(szDoclist) && KviFileUtils::fileExists( szDict ))
+				{
+					g_pDocIndex->readDict();
+				}
+			}
+			int i=g_pDocIndex->titlesList().indexOf(szParam);
+			if (i!=-1)
+			{
+				szDoc=QUrl::fromLocalFile(g_pDocIndex->documentList()[ i ]).path();
+				f->setFile(szDoc);
 			}
 		}
-		int i=g_pDocIndex->titlesList().indexOf(szDoc);
-		if (i!=-1)
-		{
-			szDoc=QUrl::fromLocalFile(g_pDocIndex->documentList()[ i ]).path();
-			if (szDoc.left(1)=="/") szDoc.remove(0,1);
-		}			
 	}
-	QFileInfo * f= new QFileInfo(szDoc);
-	if(f)
+
+	if(!f->exists())
 	{
-		if(!f->exists())
-		{
-			szDoc = dirHelp.absoluteFilePath(szDoc);
-			qDebug("No abs path, trying relative path: %s",szDoc.toUtf8().data());
-			f->setFile(szDoc);
-		}
-		if(!f->exists())
-		{
-			szDoc = dirHelp.absoluteFilePath("nohelpavailable.html");
-			qDebug("No rel path, defaulting to error page: %s",szDoc.toUtf8().data());
-			f->setFile(szDoc);
-		}
+		//everything failed => error
+		szDoc = dirHelp.absoluteFilePath("nohelpavailable.html");
+
+		qDebug("Document not found, defaulting to error page: %s",szDoc.toUtf8().data());
+		f->setFile(szDoc);
 	}
 
 	if(!c->switches()->find('n',"new"))

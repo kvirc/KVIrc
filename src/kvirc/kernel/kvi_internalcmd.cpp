@@ -31,8 +31,8 @@
 static const char * internalCommandTable[KVI_NUM_INTERNAL_COMMANDS]=
 {
 	"echo INTERNAL COMMAND ERROR: INDEX OUT OF RANGE",
-	"help.open -n -m index.html",
-	"help.open -n index.html",
+	"help.open -n -m",
+	"help.open -n",
 	"about.kvirc",
 	"if($option(boolShowGeneralOptionsDialogAsToplevel))options.dialog -t; else options.dialog",
 	"codetester.open",
