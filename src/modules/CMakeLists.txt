@@ -35,10 +35,10 @@ SUBDIRS(
 	raweditor regchan reguser
 	serverdb setup sharedfile sharedfileswindow
 	snd socketspy spaste str system
-	texticons term 
+	texticons term
 #	theme  <- to port
-	tip tmphighlight toolbar toolbareditor 
-#	trayicon <- to port
+	tip tmphighlight toolbar toolbareditor
+	trayicon
 	upnp
 	url
 	window

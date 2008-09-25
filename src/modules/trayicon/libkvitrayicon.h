@@ -49,7 +49,7 @@ protected:
 	KviTalPopupMenu        * m_pContextPopup;
 	KviTalPopupMenu        * m_pAwayPopup;
 
-	int m_iToggleFrame;
+	QAction* m_pToggleFrame;
 	QAction* m_pAwayMenuId;
 
 	bool m_bFlashed;
@@ -76,6 +76,7 @@ protected slots:
 	void doAway(int);
 	void flashingTimerShot();
 	void activatedSlot( QSystemTrayIcon::ActivationReason reason );
+	void executeInternalCommand(bool);
 };
 
 #endif //_KVI_TRAYICON_H_
