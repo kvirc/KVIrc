@@ -24,6 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_kvs_treenode_aliassimplecommand.h
+* \author Szymon Stefanek
+* \brief Treenode alias simple command call handling
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_kvs_treenode_simplecommand.h"
@@ -31,17 +37,47 @@
 class KviKvsTreeNodeDataList;
 class KviKvsRunTimeContext;
 
+/**
+* \class KviKvsTreeNodeAliasSimpleCommand
+* \brief Treenode alias simple command call class
+*/
 class KVIRC_API KviKvsTreeNodeAliasSimpleCommand : public KviKvsTreeNodeSimpleCommand
 {
 public:
-	KviKvsTreeNodeAliasSimpleCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params);
+	/**
+	* \brief Constructs the treenode alias simple command call object
+	* \param pLocation The location char of the instruction
+	* \param szCmdName The name of the command
+	* \param pParams The parameters' list
+	* \return KviKvsTreeNodeAliasSimpleCommand
+	*/
+	KviKvsTreeNodeAliasSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params);
+
+	/**
+	* \brief Destroys the treenode alias simple command call object
+	*/
 	~KviKvsTreeNodeAliasSimpleCommand();
 public:
-	virtual void contextDescription(QString &szBuffer);
+	/**
+	* \brief Sets the buffer as Alias Simple Command
+	* \param szBuffer The buffer :)
+	* \return void
+	*/
+	virtual void contextDescription(QString & szBuffer);
+
+	/**
+	* \brief Dumps the tree
+	* \param prefix The prefix of the instruction
+	* \return void
+	*/
 	virtual void dump(const char * prefix);
+
+	/**
+	* \brief Evaluates the command
+	* \param c The context where the command is bound to
+	* \return bool
+	*/
 	virtual bool execute(KviKvsRunTimeContext * c);
 };
 
-
-
-#endif //!_KVI_KVS_TREENODE_ALIASSIMPLECOMMAND_H_
+#endif //_KVI_KVS_TREENODE_ALIASSIMPLECOMMAND_H_

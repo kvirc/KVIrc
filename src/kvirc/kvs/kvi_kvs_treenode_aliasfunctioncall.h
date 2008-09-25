@@ -24,6 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_kvs_treenode_aliasfunctioncall.h
+* \author Szymon Stefanek
+* \brief Treenode alias function call handling
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_kvs_treenode_functioncall.h"
@@ -31,15 +37,48 @@
 
 class KviKvsRunTimeContext;
 
+/**
+* \class KviKvsTreeNodeAliasFunctionCall
+* \brief Treenode alias function call class
+*/
 class KVIRC_API KviKvsTreeNodeAliasFunctionCall : public KviKvsTreeNodeFunctionCall
 {
 public:
-	KviKvsTreeNodeAliasFunctionCall(const QChar * pLocation,const QString &szAliasName,KviKvsTreeNodeDataList * pParams);
+	/**
+	* \brief Constructs the treenode alias function call object
+	* \param pLocation The location char of the instruction
+	* \param szAliasName The name of the alias
+	* \param pParams The parameters' list
+	* \return KviKvsTreeNodeAliasFunctionCall
+	*/
+	KviKvsTreeNodeAliasFunctionCall(const QChar * pLocation, const QString & szAliasName, KviKvsTreeNodeDataList * pParams);
+
+	/**
+	* \brief Destroys the treenode alias function call object
+	*/
 	~KviKvsTreeNodeAliasFunctionCall();
 public:
+	/**
+	* \brief Dumps the tree
+	* \param prefix The prefix of the instruction
+	* \return void
+	*/
 	virtual void dump(const char * prefix);
-	virtual void contextDescription(QString &szBuffer);
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+
+	/**
+	* \brief Sets the buffer as Alias Function Call
+	* \param szBuffer The buffer :)
+	* \return void
+	*/
+	virtual void contextDescription(QString & szBuffer);
+
+	/**
+	* \brief Evaluates the script in read-only mode
+	* \param c The context where the alias is bound to
+	* \param pBuffer The data buffer
+	* \return bool
+	*/
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 };
 
-#endif //!_KVI_KVS_TREENODE_ALIASFUNCTIONCALL_H_
+#endif //_KVI_KVS_TREENODE_ALIASFUNCTIONCALL_H_

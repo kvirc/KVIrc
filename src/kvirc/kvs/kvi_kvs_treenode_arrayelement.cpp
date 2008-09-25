@@ -28,20 +28,19 @@
 #include "kvi_kvs_array.h"
 #include "kvi_kvs_object.h"
 
-KviKvsTreeNodeArrayElement::KviKvsTreeNodeArrayElement(const QChar * pLocation,KviKvsTreeNodeData * pSource,KviKvsTreeNodeExpression * pIndex)
+KviKvsTreeNodeArrayElement::KviKvsTreeNodeArrayElement(const QChar * pLocation, KviKvsTreeNodeData * pSource, KviKvsTreeNodeExpression * pIndex)
 : KviKvsTreeNodeArrayOrHashElement(pLocation,pSource)
 {
 	m_pIndex = pIndex;
 	m_pIndex->setParent(this);
 }
 
-
 KviKvsTreeNodeArrayElement::~KviKvsTreeNodeArrayElement()
 {
 	delete m_pIndex;
 }
 
-void KviKvsTreeNodeArrayElement::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeArrayElement::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Array Element Evaluation";
 }
@@ -49,16 +48,17 @@ void KviKvsTreeNodeArrayElement::contextDescription(QString &szBuffer)
 void KviKvsTreeNodeArrayElement::dump(const char * prefix)
 {
 	debug("%s ArrayElement",prefix);
-	QString tmp = prefix;
-	tmp.append("  ");
-	m_pSource->dump(tmp.toUtf8().data());
-	m_pIndex->dump(tmp.toUtf8().data());
+	QString szTmp = prefix;
+	szTmp.append("  ");
+	m_pSource->dump(szTmp.toUtf8().data());
+	m_pIndex->dump(szTmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeArrayElement::evaluateIndex(KviKvsRunTimeContext *c,kvs_int_t &iVal)
+bool KviKvsTreeNodeArrayElement::evaluateIndex(KviKvsRunTimeContext * c, kvs_int_t & iVal)
 {
 	KviKvsVariant idx;
-	if(!m_pIndex->evaluateReadOnly(c,&idx))return false;
+	if(!m_pIndex->evaluateReadOnly(c,&idx))
+		return false;
 
 	if(!idx.asInteger(iVal))
 	{
@@ -74,18 +74,20 @@ bool KviKvsTreeNodeArrayElement::evaluateIndex(KviKvsRunTimeContext *c,kvs_int_t
 	return true;
 }
 
-
-bool KviKvsTreeNodeArrayElement::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeArrayElement::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	kvs_int_t iVal;
-	if(!evaluateIndex(c,iVal))return false;
+	if(!evaluateIndex(c,iVal))
+		return false;
 
 	KviKvsVariant val;
 	if(o)
 	{
-		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,&val))return false;
+		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,&val))
+			return false;
 	} else {
-		if(!m_pSource->evaluateReadOnly(c,&val))return false;
+		if(!m_pSource->evaluateReadOnly(c,&val))
+			return false;
 	}
 
 	if(!val.isArray())
@@ -111,15 +113,19 @@ bool KviKvsTreeNodeArrayElement::evaluateReadOnlyInObjectScope(KviKvsObject * o,
 	return true;
 }
 
-KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c)
+KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c)
 {
 	kvs_int_t iVal;
-	if(!evaluateIndex(c,iVal))return false;
+	if(!evaluateIndex(c,iVal))
+		return false;
 
 	KviKvsRWEvaluationResult * result;
-	if(o)result = m_pSource->evaluateReadWriteInObjectScope(o,c);
+	if(o)
+		result = m_pSource->evaluateReadWriteInObjectScope(o,c);
 	else result = m_pSource->evaluateReadWrite(c);
-	if(!result)return 0;
+
+	if(!result)
+		return 0;
 
 	if(!result->result()->isArray())
 	{
@@ -135,7 +141,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObject
 	return new KviKvsArrayElement(result,result->result()->array()->getAt(iVal),result->result()->array(),iVal);
 }
 
-bool KviKvsTreeNodeArrayElement::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeArrayElement::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	return evaluateReadOnlyInObjectScope(0,c,pBuffer);
 }

@@ -36,53 +36,41 @@
 #include "kvi_window.h"
 #include "kvi_app.h"
 
-class KVIRC_API KviKvsScriptData
-{
-	friend class KviKvsScript;
-protected:
-	unsigned int                m_uRefs;     // Reference count for this structure
-
-	QString                     m_szName;    // script context name
-	QString                     m_szBuffer;  // NEVER TOUCH THIS
-	const QChar               * m_pBuffer;   // this points to m_szBuffer: use it to extract string data
-
-	KviKvsScript::ScriptType    m_eType;     // the type of the code in m_szBuffer
-
-	KviKvsTreeNodeInstruction * m_pTree;     // syntax tree
-	unsigned int                m_uLock;     // this is increased while the script is being executed
-};
-
 //#warning "THERE IS SOME MESS WITH m_szBuffer and m_pBuffer : with some script copying we may get errors with negative char indexes!"
 
-KviKvsScript::KviKvsScript(const QString &szName,const QString &szBuffer,ScriptType eType)
+KviKvsScript::KviKvsScript(const QString & szName, const QString & szBuffer, ScriptType eType)
 {
 	m_pData = new KviKvsScriptData;
 	m_pData->m_uRefs = 1;
 	m_pData->m_szName = szName;
 	m_pData->m_eType = eType;
 	m_pData->m_szBuffer = szBuffer;
-	if(m_pData->m_szBuffer.isNull())m_pData->m_szBuffer = "";
+	if(m_pData->m_szBuffer.isNull())
+		m_pData->m_szBuffer = "";
+
 	//KviQString::detach(*(m_pData->m_pszBuffer));
 	m_pData->m_pBuffer = KviQString::nullTerminatedArray(m_pData->m_szBuffer); // never 0
 	m_pData->m_uLock = 0;
 	m_pData->m_pTree = 0;
 }
 
-KviKvsScript::KviKvsScript(const QString &szName,const QString &szBuffer,KviKvsTreeNodeInstruction * pPreparsedTree,ScriptType eType)
+KviKvsScript::KviKvsScript(const QString & szName, const QString & szBuffer, KviKvsTreeNodeInstruction * pPreparsedTree, ScriptType eType)
 {
 	m_pData = new KviKvsScriptData;
 	m_pData->m_uRefs = 1;
 	m_pData->m_szName = szName;
 	m_pData->m_szBuffer = szBuffer;
 	m_pData->m_eType = eType;
-	if(m_pData->m_szBuffer.isNull())m_pData->m_szBuffer = "";
+	if(m_pData->m_szBuffer.isNull())
+		m_pData->m_szBuffer = "";
+
 	//KviQString::detach(*(m_pData->m_pszBuffer));
 	m_pData->m_pBuffer = KviQString::nullTerminatedArray(m_pData->m_szBuffer); // never 0
 	m_pData->m_uLock = 0;
 	m_pData->m_pTree = pPreparsedTree;
 }
 
-KviKvsScript::KviKvsScript(const KviKvsScript &src)
+KviKvsScript::KviKvsScript(const KviKvsScript & src)
 {
 	m_pData = src.m_pData;
 	m_pData->m_uRefs++;
@@ -100,9 +88,10 @@ KviKvsScript::~KviKvsScript()
 	}
 }
 
-void KviKvsScript::setName(const QString &szName)
+void KviKvsScript::setName(const QString & szName)
 {
-	if(m_pData->m_uRefs > 1)detach();
+	if(m_pData->m_uRefs > 1)
+		detach();
 	m_pData->m_szName = szName;
 }
 
@@ -123,19 +112,24 @@ bool KviKvsScript::locked() const
 
 void KviKvsScript::dump(const char * prefix)
 {
-	if(m_pData->m_pTree)m_pData->m_pTree->dump(prefix);
+	if(m_pData->m_pTree)
+		m_pData->m_pTree->dump(prefix);
 	else debug("%s KviKvsScript : no tree to dump",prefix);
 }
 
 void KviKvsScript::detach()
 {
-	if(m_pData->m_uRefs <= 1)return;
+	if(m_pData->m_uRefs <= 1)
+		return;
+
 	m_pData->m_uRefs--;
 	KviKvsScriptData * d = new KviKvsScriptData;
 	d->m_uRefs = 1;
 	d->m_eType = m_pData->m_eType;
 	d->m_szBuffer = m_pData->m_szBuffer;
-	if(d->m_szBuffer.isNull())d->m_szBuffer = "";
+	if(d->m_szBuffer.isNull())
+		d->m_szBuffer = "";
+
 	KviQString::detach(d->m_szBuffer);
 	d->m_pBuffer = KviQString::nullTerminatedArray(d->m_szBuffer); // never 0
 	d->m_uLock = 0;
@@ -148,21 +142,21 @@ const QChar * KviKvsScript::buffer() const
 	return m_pData->m_pBuffer;
 }
 
-int KviKvsScript::run(const QString &szCode,KviWindow * pWindow,KviKvsVariantList * pParams,KviKvsVariant * pRetVal)
+int KviKvsScript::run(const QString & szCode, KviWindow * pWindow, KviKvsVariantList * pParams, KviKvsVariant * pRetVal)
 {
 	// static helper
 	KviKvsScript s("kvirc::corecall(run)",szCode);
 	return s.run(pWindow,pParams,pRetVal,PreserveParams);
 }
 
-int KviKvsScript::evaluate(const QString &szCode,KviWindow * pWindow,KviKvsVariantList * pParams,KviKvsVariant * pRetVal)
+int KviKvsScript::evaluate(const QString & szCode, KviWindow * pWindow, KviKvsVariantList * pParams, KviKvsVariant * pRetVal)
 {
 	// static helper
 	KviKvsScript s("kvirc::corecall(evalutate)",szCode,Parameter);
 	return s.run(pWindow,pParams,pRetVal,PreserveParams);
 }
 
-int KviKvsScript::evaluateAsString(const QString &szCode,KviWindow * pWindow,KviKvsVariantList * pParams,QString &szRetVal)
+int KviKvsScript::evaluateAsString(const QString & szCode, KviWindow * pWindow, KviKvsVariantList * pParams, QString & szRetVal)
 {
 	// static helper
 	KviKvsVariant ret;
@@ -172,7 +166,7 @@ int KviKvsScript::evaluateAsString(const QString &szCode,KviWindow * pWindow,Kvi
 	return iRet;
 }
 
-int KviKvsScript::run(KviWindow * pWnd,KviKvsVariantList * pParams,QString &szRetVal,int iRunFlags,KviKvsExtendedRunTimeData * pExtData)
+int KviKvsScript::run(KviWindow * pWnd, KviKvsVariantList * pParams, QString & szRetVal, int iRunFlags, KviKvsExtendedRunTimeData * pExtData)
 {
 	KviKvsVariant retVal;
 	int iRet = run(pWnd,pParams,&retVal,iRunFlags,pExtData);
@@ -183,7 +177,7 @@ int KviKvsScript::run(KviWindow * pWnd,KviKvsVariantList * pParams,QString &szRe
 //static long int g_iTreeCacheHits = 0;
 //static long int g_iTreeCacheMisses = 0;
 
-int KviKvsScript::run(KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVariant * pRetVal,int iRunFlags,KviKvsExtendedRunTimeData * pExtData)
+int KviKvsScript::run(KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsVariant * pRetVal, int iRunFlags, KviKvsExtendedRunTimeData * pExtData)
 {
 	if(!m_pData->m_pTree)
 	{
@@ -192,7 +186,8 @@ int KviKvsScript::run(KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVariant
 		//debug("TREE CACHE STATS: HITS=%d, MISSES=%d",g_iTreeCacheHits,g_iTreeCacheMisses);
 		if(!parse(pWnd,iRunFlags))
 		{
-			if(pParams && !(iRunFlags & PreserveParams))delete pParams;
+			if(pParams && !(iRunFlags & PreserveParams))
+				delete pParams;
 			return Error;
 		}
 	} else {
@@ -204,7 +199,7 @@ int KviKvsScript::run(KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVariant
 	return execute(pWnd,pParams,pRetVal,iRunFlags,pExtData);
 }
 
-int KviKvsScript::run(KviKvsRunTimeContext * pContext,int iRunFlags)
+int KviKvsScript::run(KviKvsRunTimeContext * pContext, int iRunFlags)
 {
 	if(!m_pData->m_pTree)
 	{
@@ -234,8 +229,7 @@ int KviKvsScript::run(KviKvsRunTimeContext * pContext,int iRunFlags)
 	return iRet;
 }
 
-
-bool KviKvsScript::parse(KviWindow * pOutput,int iRunFlags)
+bool KviKvsScript::parse(KviWindow * pOutput, int iRunFlags)
 {
 	if(m_pData->m_pTree)
 	{
@@ -253,7 +247,9 @@ bool KviKvsScript::parse(KviWindow * pOutput,int iRunFlags)
 				debug("WARNING: Trying to reparse a locked KviKvsScript!");
 				return false;
 			}
-			if(m_pData->m_pTree)delete m_pData->m_pTree;
+			if(m_pData->m_pTree)
+				delete m_pData->m_pTree;
+
 			m_pData->m_pTree = 0;
 		}
 	} // else there is no tree at all, nobody can be locked inside
@@ -285,7 +281,6 @@ bool KviKvsScript::parse(KviWindow * pOutput,int iRunFlags)
 	return !p.error();
 }
 
-
 int KviKvsScript::executeInternal(KviKvsRunTimeContext * pContext)
 {
 	// lock this script
@@ -309,18 +304,21 @@ int KviKvsScript::executeInternal(KviKvsRunTimeContext * pContext)
 	return iRunStatus;
 }
 
-int KviKvsScript::execute(KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVariant * pRetVal,int iRunFlags,KviKvsExtendedRunTimeData * pExtData)
+int KviKvsScript::execute(KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsVariant * pRetVal, int iRunFlags, KviKvsExtendedRunTimeData * pExtData)
 {
 	bool bDeleteParams = !(iRunFlags & PreserveParams);
 
 	// do we have a parsed tree ?
 	if(!m_pData->m_pTree)
 	{
-		if(pParams && bDeleteParams)delete pParams;
+		if(pParams && bDeleteParams)
+			delete pParams;
+
 		// this is intended for developers only
 		pWnd->outputNoFmt(KVI_OUT_PARSERERROR,"[developer error]: you must succesfully call KviKvsScript::parse() before KviKvsScript::execute()");
 		return Error;
 	}
+
 	// do we need to pass dummy params ?
 	if(!pParams)
 	{
@@ -344,8 +342,11 @@ int KviKvsScript::execute(KviWindow * pWnd,KviKvsVariantList * pParams,KviKvsVar
 	int iRunStatus = executeInternal(&ctx);
 
 	// don't forget to delete the params
-	if(bDeleteParams)delete pParams;
-	if(bDeleteRetVal)delete pRetVal;
-    pParams = 0; pRetVal = 0;
+	if(bDeleteParams)
+		delete pParams;
+	if(bDeleteRetVal)
+		delete pRetVal;
+	pParams = 0;
+	pRetVal = 0;
 	return iRunStatus;
 }

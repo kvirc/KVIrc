@@ -35,17 +35,16 @@
 #include "kvi_out.h"
 
 
-KviKvsTreeNodeAliasSimpleCommand::KviKvsTreeNodeAliasSimpleCommand(const QChar * pLocation,const QString &szCmdName,KviKvsTreeNodeDataList * params)
+KviKvsTreeNodeAliasSimpleCommand::KviKvsTreeNodeAliasSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params)
 : KviKvsTreeNodeSimpleCommand(pLocation,szCmdName,params)
 {
 }
-
 
 KviKvsTreeNodeAliasSimpleCommand::~KviKvsTreeNodeAliasSimpleCommand()
 {
 }
 
-void KviKvsTreeNodeAliasSimpleCommand::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeAliasSimpleCommand::contextDescription(QString & szBuffer)
 {
 	KviQString::sprintf(szBuffer,"Alias Simple Command \"%Q\"",&m_szCmdName);
 }
@@ -60,12 +59,14 @@ void KviKvsTreeNodeAliasSimpleCommand::dump(const char * prefix)
 bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariantList l;
-	if(!m_pParams->evaluate(c,&l))return false;
+	if(!m_pParams->evaluate(c,&l))
+		return false;
 
 	KviKvsSwitchList swl;
 	if(m_pSwitches)
 	{
-		if(!(m_pSwitches->evaluate(c,&swl)))return false;
+		if(!(m_pSwitches->evaluate(c,&swl)))
+			return false;
 	}
 
 	const KviKvsScript * s = KviKvsAliasManager::instance()->lookup(m_szCmdName);
@@ -76,7 +77,8 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 			QString szAll;
 			l.allAsString(szAll);
 			
-			if(!szAll.isEmpty())szAll.prepend(" ");
+			if(!szAll.isEmpty())
+				szAll.prepend(" ");
 			szAll.prepend(m_szCmdName);
 
 			KviQCString szData;
@@ -87,7 +89,8 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 				goto no_way_to_send_as_raw;
 
 			szData = c->window()->connection()->encodeText(szAll);
-			if(!szData.data())szData = "";
+			if(!szData.data())
+				szData = "";
 	
 			if(!c->window()->connection()->sendData(szData.data()))
 				goto no_way_to_send_as_raw;

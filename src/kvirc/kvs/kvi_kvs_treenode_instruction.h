@@ -2,7 +2,7 @@
 #define _KVI_KVS_TREENODE_INSTRUCTION_H_
 //=============================================================================
 //
-//   File : kvi_kvs_treenode.h
+//   File : kvi_kvs_treenode_instruction.h
 //   Creation date : Mon 06 Oct 2003 03.46 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
@@ -24,31 +24,62 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_kvs_treenode.h
+* \author Szymon Stefanek
+* \brief Treenode instruction handling
+*/
+
 #include "kvi_qstring.h"
 #include "kvi_kvs_treenode_base.h"
 
 class KviKvsRunTimeContext;
 
-
+/**
+* \class KviKvsTreeNodeInstruction
+* \brief Treenode class to handle instructions
+*/
 class KVIRC_API KviKvsTreeNodeInstruction : public KviKvsTreeNode
 {
 public:
+	/**
+	* \brief Constructs the treenode instruction object
+	* \param pLocation The location char of the instruction
+	* \return KviKvsTreeNodeInstruction
+	*/
 	KviKvsTreeNodeInstruction(const QChar * pLocation)
 	: KviKvsTreeNode(pLocation){};
+
+	/**
+	* \brief Destroys the treenode instruction object
+	*/
 	~KviKvsTreeNodeInstruction(){};
 public:
-	virtual void contextDescription(QString &szBuffer);
+	/**
+	* \brief Sets the buffer as Instruction
+	* \param szBuffer The buffer :)
+	* \return void
+	*/
+	virtual void contextDescription(QString & szBuffer);
+
+	/**
+	* \brief Dumps the instructions tree
+	* \param prefix The prefix of the instruction
+	* \return void
+	*/
 	virtual void dump(const char * prefix);
 	
-	// execute() is the main entry point to the tree visit
-	// execute() returns false when the tree visiting has
-	// to be stopped and returns true when it has been
-	// succesfully completed. A false return value may
-	// signal an error but is also used by break, halt, return
-	// and similar. The error condition is signaled by
-	// KviKvsRunTimeContext::error().
+	/**
+	* \brief This is the main entry point to the tree visit
+	*
+	* It returns false when the tree visiting has to be stopped and returns
+	* true when it has been succesfully completed. A false return value may
+	* signal an error but is also used by break, halt, return and similar.
+	* The error condition is signaled by KviKvsRunTimeContext::error().
+	* \param c The source context
+	* \return bool
+	*/
 	virtual bool execute(KviKvsRunTimeContext * c) = 0;
 };
 
-
-#endif //!_KVI_KVS_TREENODE_H_
+#endif //_KVI_KVS_TREENODE_H_

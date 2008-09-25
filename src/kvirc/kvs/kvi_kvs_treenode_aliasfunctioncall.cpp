@@ -28,35 +28,33 @@
 #include "kvi_locale.h"
 #include "kvi_qstring.h"
 
-KviKvsTreeNodeAliasFunctionCall::KviKvsTreeNodeAliasFunctionCall(const QChar * pLocation,const QString &szAliasName,KviKvsTreeNodeDataList * pParams)
+KviKvsTreeNodeAliasFunctionCall::KviKvsTreeNodeAliasFunctionCall(const QChar * pLocation, const QString & szAliasName, KviKvsTreeNodeDataList * pParams)
 : KviKvsTreeNodeFunctionCall(pLocation,szAliasName,pParams)
 {
-
 }
 
 KviKvsTreeNodeAliasFunctionCall::~KviKvsTreeNodeAliasFunctionCall()
 {
 }
 
-void KviKvsTreeNodeAliasFunctionCall::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeAliasFunctionCall::contextDescription(QString & szBuffer)
 {
 	KviQString::sprintf(szBuffer,"Alias Function Call \"%Q\"",&m_szFunctionName);
 }
 
-
-
 void KviKvsTreeNodeAliasFunctionCall::dump(const char * prefix)
 {
 	qDebug("%s AliasFunctionCall(%s)",prefix,m_szFunctionName.toUtf8().data());
-	QString tmp = prefix;
-	tmp.append("  ");
-	m_pParams->dump(tmp.toUtf8().data());
+	QString szTmp = prefix;
+	szTmp.append("  ");
+	m_pParams->dump(szTmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariantList l;
-	if(!m_pParams->evaluate(c,&l))return false;
+	if(!m_pParams->evaluate(c,&l))
+		return false;
 	
 	pBuffer->setNothing();
 

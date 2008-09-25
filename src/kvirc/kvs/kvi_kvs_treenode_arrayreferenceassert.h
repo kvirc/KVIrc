@@ -24,6 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_kvs_treenode_arrayreferenceassert.h
+* \author Szymon Stefanek
+* \brief Treenode array reference assert handling
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_kvs_treenode_indirectdata.h"
@@ -33,22 +39,81 @@ class KviKvsVariant;
 class KviKvsRWEvaluationResult;
 class KviKvsObject;
 
+/**
+* \class KviKvsTreeNodeArrayReferenceAssert
+* \brief Treenode array reference assert class
+*/
 class KVIRC_API KviKvsTreeNodeArrayReferenceAssert : public KviKvsTreeNodeIndirectData
 {
 public:
-	KviKvsTreeNodeArrayReferenceAssert(const QChar * pLocation,KviKvsTreeNodeData * pSource);
+	/**
+	* \brief Constructs the treenode array reference assert object
+	* \param pLocation The location char of the instruction
+	* \param pSource The source data
+	* \return KviKvsTreeNodeArrayReferenceAssert
+	*/
+	KviKvsTreeNodeArrayReferenceAssert(const QChar * pLocation, KviKvsTreeNodeData * pSource);
+
+	/**
+	* \brief Destroys the treenode array reference assert object
+	* \return KviKvsTreeNodeArrayElement
+	*/
 	~KviKvsTreeNodeArrayReferenceAssert();
 protected:
 
 public:
+	/**
+	* \brief Returns true if the array reference is read-only
+	* \return bool
+	*/
 	virtual bool isReadOnly();
-	virtual void contextDescription(QString &szBuffer);
+
+	/**
+	* \brief Sets the buffer as Array Reference Assert
+	* \param szBuffer The buffer :)
+	* \return void
+	*/
+	virtual void contextDescription(QString & szBuffer);
+
+	/**
+	* \brief Dumps the tree
+	* \param prefix The prefix of the instruction
+	* \return void
+	*/
 	virtual void dump(const char * prefix);
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+
+	/**
+	* \brief Evaluates the array in read-only mode
+	* \param c The context where the alias is bound to
+	* \param pBuffer The data buffer
+	* \return bool
+	*/
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+
+	/**
+	* \brief Evaluates the array in read-write mode
+	* \param c The context where the alias is bound to
+	* \param pBuffer The data buffer
+	* \return KviKvsRWEvaluationResult *
+	*/
 	virtual KviKvsRWEvaluationResult * evaluateReadWrite(KviKvsRunTimeContext * c);
-	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
-	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c);
+
+	/**
+	* \brief Evaluates the array in read-only mode in the object scope
+	* \param o The source object to evaluate
+	* \param c The context where the array is bound to
+	* \param pBuffer The data buffer
+	* \return bool
+	*/
+	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+
+	/**
+	* \brief Evaluates the array in read-write mode in the object scope
+	* \param o The source object to evaluate
+	* \param c The context where the array is bound to
+	* \return KviKvsRWEvaluationResult *
+	*/
+	virtual KviKvsRWEvaluationResult * evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c);
 };
 
-
-#endif //!_KVI_KVS_TREENODE_ARRAYREFERENCEASSERT_H_
+#endif //_KVI_KVS_TREENODE_ARRAYREFERENCEASSERT_H_

@@ -23,10 +23,9 @@
 //=============================================================================
 
 
-
 #include "kvi_kvs_treenode_instruction.h"
 
-void KviKvsTreeNodeInstruction::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeInstruction::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Instruction";
 }

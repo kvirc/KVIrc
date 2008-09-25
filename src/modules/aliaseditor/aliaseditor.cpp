@@ -482,9 +482,9 @@ bool KviAliasEditor::itemExists(QTreeWidgetItem *pSearchFor)
 
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-			if(m_pTreeWidget->topLevelItem(i)==pSearchFor) return true;
-		else
-		{
+		if(m_pTreeWidget->topLevelItem(i)==pSearchFor)
+			return true;
+		else {
 			if(!((KviAliasEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->isAlias())
 			{
 				if (itemExistsRecursive(pSearchFor,m_pTreeWidget->topLevelItem(i))) return true;
@@ -625,12 +625,10 @@ void KviAliasEditor::slotFind()
 			if(((KviAliasTreeWidgetItem *)m_pTreeWidget->topLevelItem(i))->buffer().indexOf(szSearch,0,Qt::CaseInsensitive) != -1)
 			{
 				m_pTreeWidget->topLevelItem(i)->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIASHIGHLIGHTED))));
-			}
-			else 
+			} else {
 				m_pTreeWidget->topLevelItem(i)->setIcon(0,QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS))));
-		
-		}
-		else {
+			}
+		} else {
 			recursiveSearchReplace(szSearch,(KviAliasEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i));
 		}
 	}

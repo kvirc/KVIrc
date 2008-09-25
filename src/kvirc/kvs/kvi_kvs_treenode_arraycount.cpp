@@ -29,7 +29,7 @@
 #include "kvi_kvs_object.h"
 
 
-KviKvsTreeNodeArrayCount::KviKvsTreeNodeArrayCount(const QChar * pLocation,KviKvsTreeNodeData * pSource)
+KviKvsTreeNodeArrayCount::KviKvsTreeNodeArrayCount(const QChar * pLocation, KviKvsTreeNodeData * pSource)
 : KviKvsTreeNodeIndirectData(pLocation,pSource)
 {
 }
@@ -38,7 +38,7 @@ KviKvsTreeNodeArrayCount::~KviKvsTreeNodeArrayCount()
 {
 }
 
-void KviKvsTreeNodeArrayCount::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeArrayCount::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Array Count Operator";
 }
@@ -48,14 +48,16 @@ void KviKvsTreeNodeArrayCount::dump(const char * prefix)
 	qDebug("%s ArrayCount",prefix);
 }
 
-bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	KviKvsVariant val;
 	if(o)
 	{
-		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,&val))return false;
+		if(!m_pSource->evaluateReadOnlyInObjectScope(o,c,&val))
+			return false;
 	} else {
-		if(!m_pSource->evaluateReadOnly(c,&val))return false;
+		if(!m_pSource->evaluateReadOnly(c,&val))
+			return false;
 	}
 
 	if(!val.isArray())
@@ -74,7 +76,7 @@ bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kvi
 	return true;
 }
 
-bool KviKvsTreeNodeArrayCount::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeArrayCount::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	return evaluateReadOnlyInObjectScope(0,c,pBuffer);
 }

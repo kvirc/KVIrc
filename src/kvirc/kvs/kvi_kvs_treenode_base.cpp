@@ -23,7 +23,6 @@
 //=============================================================================
 
 
-
 #include "kvi_kvs_treenode_base.h"
 
 KviKvsTreeNode::KviKvsTreeNode(const QChar * pLocation)
@@ -31,5 +30,3 @@ KviKvsTreeNode::KviKvsTreeNode(const QChar * pLocation)
 	m_pParent = 0;
 	m_pLocation = pLocation;
 }
-
-

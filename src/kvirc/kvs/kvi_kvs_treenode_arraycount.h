@@ -24,6 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_kvs_treenode_arraycount.h
+* \author Szymon Stefanek
+* \brief Treenode array count handling
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_kvs_treenode_indirectdata.h"
@@ -32,16 +38,56 @@ class KviKvsRunTimeContext;
 class KviKvsVariant;
 class KviKvsObject;
 
+/**
+* \class KviKvsTreeNodeArrayCount
+* \brief Treenode array count class
+*/
 class KVIRC_API KviKvsTreeNodeArrayCount : public KviKvsTreeNodeIndirectData
 {
 public:
-	KviKvsTreeNodeArrayCount(const QChar * pLocation,KviKvsTreeNodeData * pSource);
+	/**
+	* \brief Constructs the treenode array count object
+	* \param pLocation The location char of the instruction
+	* \param pSource The source data
+	* \return KviKvsTreeNodeArrayCount
+	*/
+	KviKvsTreeNodeArrayCount(const QChar * pLocation, KviKvsTreeNodeData * pSource);
+
+	/**
+	* \brief Destroys the treenode array count object
+	*/
 	~KviKvsTreeNodeArrayCount();
 public:
-	virtual void contextDescription(QString &szBuffer);
+	/**
+	* \brief Sets the buffer as Array Count Operator
+	* \param szBuffer The buffer :)
+	* \return void
+	*/
+	virtual void contextDescription(QString & szBuffer);
+
+	/**
+	* \brief Dumps the tree
+	* \param prefix The prefix of the instruction
+	* \return void
+	*/
 	virtual void dump(const char * prefix);
-	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
-	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
+
+	/**
+	* \brief Evaluates the array in read-only mode
+	* \param c The context where the alias is bound to
+	* \param pBuffer The data buffer
+	* \return bool
+	*/
+	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
+
+	/**
+	* \brief Evaluates the array in read-only mode in the object scope
+	* \param o The source object to evaluate
+	* \param c The context where the array is bound to
+	* \param pBuffer The data buffer
+	* \return bool
+	*/
+	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer);
 };
 
-#endif //!_KVI_KVS_TREENODE_ARRAYCOUNT_H_
+#endif //_KVI_KVS_TREENODE_ARRAYCOUNT_H_

@@ -29,7 +29,7 @@
 #include "kvi_locale.h"
 #include "kvi_kvs_object.h"
 
-KviKvsTreeNodeArrayReferenceAssert::KviKvsTreeNodeArrayReferenceAssert(const QChar * pLocation,KviKvsTreeNodeData * pSource)
+KviKvsTreeNodeArrayReferenceAssert::KviKvsTreeNodeArrayReferenceAssert(const QChar * pLocation, KviKvsTreeNodeData * pSource)
 : KviKvsTreeNodeIndirectData(pLocation,pSource)
 {
 }
@@ -43,18 +43,17 @@ bool KviKvsTreeNodeArrayReferenceAssert::isReadOnly()
 	return m_pSource->isReadOnly();
 }
 
-void KviKvsTreeNodeArrayReferenceAssert::contextDescription(QString &szBuffer)
+void KviKvsTreeNodeArrayReferenceAssert::contextDescription(QString & szBuffer)
 {
 	szBuffer = "Array Reference Assert";
 }
-
 
 void KviKvsTreeNodeArrayReferenceAssert::dump(const char * prefix)
 {
 	qDebug("%s ArrayReferenceAssert",prefix);
 }
 
-bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	if(o)
 	{
@@ -76,17 +75,20 @@ bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObj
 	return true;
 }
 
-KviKvsRWEvaluationResult * KviKvsTreeNodeArrayReferenceAssert::evaluateReadWriteInObjectScope(KviKvsObject *o,KviKvsRunTimeContext * c)
+KviKvsRWEvaluationResult * KviKvsTreeNodeArrayReferenceAssert::evaluateReadWriteInObjectScope(KviKvsObject * o, KviKvsRunTimeContext * c)
 {
 	KviKvsRWEvaluationResult * r;
-	if(o)r = m_pSource->evaluateReadWriteInObjectScope(o,c);
+	if(o)
+		r = m_pSource->evaluateReadWriteInObjectScope(o,c);
 	else r = m_pSource->evaluateReadWrite(c);
-	if(!r)return false;
+
+	if(!r)
+		return false;
 
 	return r;
 }
 
-bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnly(KviKvsRunTimeContext * c, KviKvsVariant * pBuffer)
 {
 	return evaluateReadOnlyInObjectScope(0,c,pBuffer);
 }
