@@ -46,8 +46,7 @@
 #include <QEvent>
 #include <QCloseEvent>
 
-#include <q3multilineedit.h>
-#define QMultiLineEdit Q3MultiLineEdit
+#include <QTextEdit>
 
 static KviPointerList<QWidget> * g_pDialogModuleDialogList;
 
@@ -240,8 +239,8 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 
 	if(m_bMultiLine)
 	{
-		m_pEdit = new QMultiLineEdit(this);
-		((QMultiLineEdit *)m_pEdit)->setText(szDefaultText);
+		m_pEdit = new QTextEdit(this);
+		((QTextEdit *)m_pEdit)->setPlainText(szDefaultText);
 	} else {
 		m_pEdit = new QLineEdit(this);
 		((QLineEdit *)m_pEdit)->setText(szDefaultText);
@@ -362,7 +361,7 @@ void KviKvsCallbackTextInput::done(int code)
 	
 	if(m_bMultiLine)
 	{
-		txt = ((QMultiLineEdit *)m_pEdit)->text();
+		txt = ((QTextEdit *)m_pEdit)->toPlainText();
 	} else {
 		txt = ((QLineEdit *)m_pEdit)->text();
 	}
