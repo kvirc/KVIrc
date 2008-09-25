@@ -73,6 +73,11 @@ static QColor g_clrPunctuation(180,180,0);
 static QColor g_clrFind(0,0,0);
 static QFont g_fntNormal("Courier New",8);
 
+
+
+
+
+
 KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
 : QTextEdit(pParent)
 {
@@ -114,11 +119,11 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 		g_pApp->getGlobalKvircDirectory(szPath,KviApp::Plugins);
 		QDir d(szPath);
 #if defined(COMPILE_ON_WINDOWS)
-			d.setNameFilters(QStringList("kvi*.dll"));
+		d.setNameFilters(QStringList("kvi*.dll"));
 #elif defined(COMPILE_ON_MINGW)
-			d.setNameFilters(QStringList("libkvi*.dll"));
+		d.setNameFilters(QStringList("libkvi*.dll"));
 #else
-			d.setNameFilters(QStringList("libkvi*.so"));
+		d.setNameFilters(QStringList("libkvi*.so"));
 #endif
 		m_pListModulesNames = new QStringList(d.entryList(QDir::Files | QDir::Readable));
 		iModulesCount = m_pListModulesNames->count();
@@ -209,6 +214,8 @@ void KviScriptEditorWidget::insertCompletion(const QString & szCompletion)
 	tc.insertText(szTmp);
 	setTextCursor(tc);
 }
+
+
 
 void KviScriptEditorWidget::contextMenuEvent(QContextMenuEvent * e)
 {
@@ -302,16 +309,36 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 			break;
 		}
 	}
-
+// Adapted from QT4 QCompleter example
+	bool isShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
+	if (!m_pCompleter || !isShortcut) // dont process the shortcut when we have a completer
+         QTextEdit::keyPressEvent(e);
+	const bool ctrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
+    if (!m_pCompleter || (ctrlOrShift && e->text().isEmpty()))
+         return;
+    static QString eow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-="); // end of word
+    bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
+    QString completionPrefix = textUnderCursor();
+	if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 || eow.contains(e->text().right(1)))) 
+	{
+    	m_pCompleter->popup()->hide();
+		return;
+    }
+    if (completionPrefix != m_pCompleter->completionPrefix()) {
+        m_pCompleter->setCompletionPrefix(completionPrefix);
+         m_pCompleter->popup()->setCurrentIndex(m_pCompleter->completionModel()->index(0, 0));
+     }
+    QRect cr = cursorRect();
+    cr.setWidth(m_pCompleter->popup()->sizeHintForColumn(0)+ m_pCompleter->popup()->verticalScrollBar()->sizeHint().width());
+	m_pCompleter->complete(cr);
+	/*
 	bool bIsShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
 
 	// don't process the shortcut when we have a completer
-	if(!m_pCompleter || !bIsShortcut)
-		QTextEdit::keyPressEvent(e);
+	if(!m_pCompleter || !bIsShortcut)QTextEdit::keyPressEvent(e);
 
 	const bool bCtrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
-	if(!m_pCompleter || (bCtrlOrShift && e->text().isEmpty()))
-		return;
+	if(!m_pCompleter || (bCtrlOrShift && e->text().isEmpty()))return;
 
 	// end of word
 	static QString szEow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-=");
@@ -319,11 +346,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 
 	QString szCompletionPrefix = textUnderCursor();
 	debug ("completition prefix %s",szCompletionPrefix.toUtf8().data());
-	if(!bIsShortcut && (hasModifier || e->text().isEmpty()
-				|| szCompletionPrefix.length() < 3
-				|| szEow.contains(e->text().right(1))
-			)
-	)
+	if(!bIsShortcut && (hasModifier || e->text().isEmpty()|| szCompletionPrefix.length() < 3 || szEow.contains(e->text().right(1))))
 	{
 		m_pCompleter->popup()->hide();
 		return;
@@ -338,6 +361,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 	QRect cr = cursorRect();
 	cr.setWidth(m_pCompleter->popup()->sizeHintForColumn(0) + m_pCompleter->popup()->verticalScrollBar()->sizeHint().width());
 	m_pCompleter->complete(cr);
+	*/
 }
 
 QString KviScriptEditorWidget::textUnderCursor() const
@@ -1019,7 +1043,7 @@ void KviScriptEditorImplementation::setText(const KviQCString & szText)
 	updateRowColLabel();
 }
 
-void KviScriptEditorImplementation::text(KviQCString & szText)
+void KviScriptEditorImplementation::getText(KviQCString & szText)
 {
 	szText = m_pEditor->toPlainText().toUtf8();
 }
@@ -1027,13 +1051,14 @@ void KviScriptEditorImplementation::text(KviQCString & szText)
 void KviScriptEditorImplementation::setText(const QString & szText)
 {
 	m_pEditor->setText(szText);
-	//m_pEditor->setTextFormat(Qt::PlainText);
-	m_pEditor->textCursor().movePosition(QTextCursor::End);
+	QTextCursor cur=m_pEditor->textCursor();
+	cur.movePosition(QTextCursor::End);
+	m_pEditor->setTextCursor(cur);
 	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }
 
-void KviScriptEditorImplementation::text(QString & szText)
+void KviScriptEditorImplementation::getText(QString & szText)
 {
 	szText = m_pEditor->toPlainText();
 }
@@ -1064,6 +1089,7 @@ void KviScriptEditorImplementation::updateRowColLabel()
 
 void KviScriptEditorImplementation::setCursorPosition(int iPos)
 {
+	debug ("Moving to %d",iPos);
 	QTextCursor cur = m_pEditor->textCursor();
 	cur.setPosition(iPos);
 	m_pEditor->setTextCursor(cur);

@@ -126,12 +126,13 @@ protected:
 public:
 	virtual void setText(const QString & szText);
 	virtual void setText(const KviQCString & szText);
-	virtual void text(QString & szText);
-	virtual void text(KviQCString & szText);
+	virtual void getText(QString & szText);
+	virtual void getText(KviQCString & szText);
 	virtual void setFindText(const QString & szText);
 	virtual void setEnabled(bool bEnabled);
 	virtual void setFocus();
 	virtual bool isModified();
+	int getCursor(){return m_pEditor->textCursor().position();};
 	void setFindLineEditReadOnly(bool b);
 	void setCursorPosition(int iPos);
 	int cursor(){ return m_lastCursorPos; };
