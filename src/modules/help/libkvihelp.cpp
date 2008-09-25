@@ -153,7 +153,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		qDebug ("No file, use default at path %s",szDoc.toUtf8().data());
 	} else qDebug("Doc set from user to %s",szDoc.toUtf8().data());
 	
-	if (g_pDocIndex)
+	if (g_pDocIndex && !szDoc.isEmpty())
 	{
 		if (!g_pDocIndex->documentList().count())
 		{
