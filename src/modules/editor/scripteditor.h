@@ -29,7 +29,7 @@
 #include "kvi_pointerlist.h"
 #include "kvi_selectors.h"
 #include "kvi_qcstring.h"
-#include <kvi_tal_textedit.h>
+#include "kvi_tal_textedit.h"
 #include "kvi_tal_popupmenu.h"
 
 #include <QCompleter>
@@ -39,13 +39,11 @@
 #include <QTextEdit>
 #include <QListWidget>
 #include <QCheckBox>
-// Q3PopupMenu
-
 #include <QSyntaxHighlighter>
 
 class QTimer;
 
-typedef KviPointerList<int> ColumnList;
+//typedef KviPointerList<int> ColumnList;
 
 class KviScriptEditorWidget : public QTextEdit
 {
@@ -55,47 +53,35 @@ public:
 	KviScriptEditorWidget(QWidget * pParent);
 	virtual ~KviScriptEditorWidget();
 public:
+	QString m_szFind;
+protected:
+	QCompleter  * m_pCompleter;
+	QStringList * m_pListModulesNames;
+	QStringList * m_pListCompletition;
+	QTimer      * m_pStartTimer;
+	QWidget     * m_pParent;
+	QString       m_szHelp;
+public:
 	void createCompleter(QStringList &list);
 	void loadCompleterFromFile();
-	QCompleter * completer() const;
+	QCompleter * completer() const { return m_pCompleter; };
 	QString textUnderCursor() const;
 	void updateOptions();
-	void find1();
-	QString m_szFind;
+	//void find1();
 	bool contextSensitiveHelp() const;
 public slots:
-	void insertCompletion(const QString& completion);
+	void insertCompletion(const QString & szCompletion);
 	void slotFind();
 	void slotHelp();
 	void slotReplace();
-
-
+protected slots:
+	void asyncCompleterCreation();
 signals:
 	void keyPressed();
 protected:
-	QCompleter * m_pCompleter;
-	QStringList * m_pListModulesNames;
-	QStringList * m_pListCompletition;
-	QTimer *m_pStartTimer;
-	void contextMenuEvent(QContextMenuEvent *event);
+	void contextMenuEvent(QContextMenuEvent * e);
 	virtual void keyPressEvent(QKeyEvent * e);
-	void mouseReleaseEvent(QMouseEvent *);
-	QWidget *m_pParent;
-	QString m_szHelp;
-	protected slots:
-		void asyncCompleterCreation();
-	
-};
-
-class KviScriptSyntaxHighlighter : public QSyntaxHighlighter
-{
-public:
-	KviScriptSyntaxHighlighter(KviScriptEditorWidget * pWidget);
-	virtual ~KviScriptSyntaxHighlighter();
-public:
-	QTextEdit *m_pTextEdit;
-	QTextEdit *textEdit(){return m_pTextEdit;}
-	void highlightBlock(const QString &text);
+	void mouseReleaseEvent(QMouseEvent * e);
 };
 
 class KviScriptEditorWidgetColorOptions : public QDialog
@@ -113,32 +99,45 @@ protected slots:
 	void okClicked();
 };
 
+class KviScriptEditorSyntaxHighlighter : public QSyntaxHighlighter
+{
+public:
+	KviScriptEditorSyntaxHighlighter(KviScriptEditorWidget * pWidget);
+	virtual ~KviScriptEditorSyntaxHighlighter();
+public:
+	QTextEdit * m_pTextEdit;
+public:
+	QTextEdit * textEdit(){ return m_pTextEdit; }
+	void highlightBlock(const QString & szText);
+};
+
 class KviScriptEditorImplementation : public KviScriptEditor
 {
 	Q_OBJECT
 public:
 	KviScriptEditorImplementation(QWidget * par);
 	virtual ~KviScriptEditorImplementation();
+public:
+	QLineEdit * m_pFindlineedit;
 protected:
 	KviScriptEditorWidget * m_pEditor;
 	QLabel                * m_pRowColLabel;
-	int                  m_lastCursorPos;
+	int                     m_lastCursorPos;
 public:
-	virtual void setText(const QString &txt);
-	virtual void getText(QString &txt);
-	virtual void setText(const KviQCString &txt);
-	virtual void getText(KviQCString &txt);
-	virtual void setFindText(const QString & text);
+	virtual void setText(const QString & szText);
+	virtual void setText(const KviQCString & szText);
+	virtual void text(QString & szText);
+	virtual void text(KviQCString & szText);
+	virtual void setFindText(const QString & szText);
 	virtual void setEnabled(bool bEnabled);
 	virtual void setFocus();
 	virtual bool isModified();
-	void setFindLineeditReadOnly(bool b);
-	void setCursorPosition(int);
-	int getCursor();
-	QLineEdit *m_pFindlineedit;
-	QLineEdit * getFindlineedit();
+	void setFindLineEditReadOnly(bool b);
+	void setCursorPosition(int iPos);
+	int cursor(){ return m_lastCursorPos; };
+	QLineEdit * findLineEdit(){ return m_pFindLineedit; };
 protected:
-	virtual void focusInEvent(QFocusEvent *e);
+	virtual void focusInEvent(QFocusEvent * e);
 	void loadOptions();
 	void saveOptions();
 protected slots:
@@ -147,43 +146,37 @@ protected slots:
 	void configureColors();
 	void updateRowColLabel();
 	void slotFind();
-	void slotReplaceAll(const QString &,const QString &);
+	void slotReplaceAll(const QString & szToReplace, const QString & szReplaceWith);
 	void slotInitFind();
 	void slotNextFind(const QString &);
 signals:
-	void find( const QString &);
-	void replaceAll( const QString &, const QString &);
+	void find(const QString &);
+	void replaceAll(const QString & szToReplace, const QString & szReplaceWith);
 	void initFind();
-	void nextFind(const QString &);
+	void nextFind(const QString & szText);
 };
 
 class KviScriptEditorReplaceDialog: public QDialog
 {
 	Q_OBJECT
 public:
-	KviScriptEditorReplaceDialog( QWidget* parent = 0, const char* name = 0);
+	KviScriptEditorReplaceDialog(QWidget * parent = 0, const char * name = 0);
 	~KviScriptEditorReplaceDialog();
-	QLineEdit *m_pFindlineedit;
-	QLineEdit *m_pReplacelineedit;
+public:
+	QLineEdit * m_pFindLineEdit;
+	QLineEdit * m_pReplaceLineEdit;
 protected:
-	QLabel *findlabel;
-	QLabel *replacelabel;
-	QPushButton *replacebutton;
-	QPushButton *replace;
-	QPushButton *findNext;
-
-//	QPushButton *cancelbutton;
-	QCheckBox *checkReplaceAll;
-	QWidget *m_pParent;
+	QPushButton * m_pReplaceButton;
+	QCheckBox   * m_pCheckReplaceAll;
+	QWidget     * m_pParent;
 protected slots:
 	void textChanged(const QString &);
 	void slotReplace();
 	void slotNextFind();
 signals:
-	void replaceAll( const QString &,const QString &);
+	void replaceAll(const QString &, const QString &);
 	void initFind();
 	void nextFind(const QString &);
 };
 
-
-#endif //!_SCRIPTEDITOR_H_
+#endif // _SCRIPTEDITOR_H_

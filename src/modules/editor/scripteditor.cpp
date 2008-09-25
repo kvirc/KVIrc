@@ -38,14 +38,14 @@
 #include "kvi_console.h"
 #include "kvi_window.h"
 #include "kvi_iconmanager.h"
-#include "kvi_tal_groupbox.h"
-#include "kvi_tal_scrollview.h"
 #include "kvi_kvs_kernel.h"
 #include "kvi_modulemanager.h"
 #include "kvi_config.h"
 #include "kvi_tal_vbox.h"
-
 #include "kvi_tal_hbox.h"
+#include "kvi_tal_groupbox.h"
+#include "kvi_tal_scrollview.h"
+
 #include <QScrollBar>
 #include <QLayout>
 #include <QMessageBox>
@@ -58,9 +58,9 @@
 #include <QMenu>
 #include <QListWidget>
 
-extern KVIRC_API KviModuleManager      * g_pModuleManager;
+extern KVIRC_API KviModuleManager                    * g_pModuleManager;
 extern KviPointerList<KviScriptEditorImplementation> * g_pScriptEditorWindowList;
-extern KviModule * g_pEditorModulePointer;
+extern KviModule                                     * g_pEditorModulePointer;
 
 static QColor g_clrBackground(0,0,0);
 static QColor g_clrNormalText(100,100,100);
@@ -73,11 +73,413 @@ static QColor g_clrPunctuation(180,180,0);
 static QColor g_clrFind(0,0,0);
 static QFont g_fntNormal("Courier New",8);
 
+KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
+: QTextEdit(pParent)
+{
+	setTabStopWidth(48);
+	setWordWrapMode(QTextOption::NoWrap);
+	m_pParent = pParent;
+	m_szHelp = "Nothing";
+	updateOptions();
+	m_szFind = "";
+	m_pCompleter = 0;
+	QStringList szListFunctionsCommands;
+	QString tmp("kvscompleter.idx");
+
+	QString szPath;
+	g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,tmp);
+	if(!KviFileUtils::fileExists(szPath))
+	{
+		m_pStartTimer = new QTimer();
+		m_pStartTimer->setInterval(500);
+		connect(m_pStartTimer,SIGNAL(timeout()),this,SLOT(asyncCompleterCreation()));
+		m_pStartTimer->start(500);
+	} else loadCompleterFromFile();
+}
+
+KviScriptEditorWidget::~KviScriptEditorWidget()
+{
+	if(m_pCompleter)
+		delete m_pCompleter;
+}
+
+void KviScriptEditorWidget::asyncCompleterCreation()
+{
+	static int iIndex = 0;
+	static int iModulesCount = 0;
+	if(!iIndex)
+	{
+		m_pListCompletition = new QStringList();
+		QString szPath;
+		g_pApp->getGlobalKvircDirectory(szPath,KviApp::Plugins);
+		QDir d(szPath);
+#if defined(COMPILE_ON_WINDOWS)
+			d.setNameFilters(QStringList("kvi*.dll"));
+#elif defined(COMPILE_ON_MINGW)
+			d.setNameFilters(QStringList("libkvi*.dll"));
+#else
+			d.setNameFilters(QStringList("libkvi*.so"));
+#endif
+		m_pListModulesNames = new QStringList(d.entryList(QDir::Files | QDir::Readable));
+		iModulesCount = m_pListModulesNames->count();
+	}
+
+	QString szModuleName = m_pListModulesNames->at(iIndex);
+	iIndex++;
+
+#if defined(COMPILE_ON_WINDOWS)
+	szModuleName=szModuleName.replace("kvi","");
+	szModuleName=szModuleName.replace(".dll","");
+#elif defined(COMPILE_ON_MINGW)
+	szModuleName=szModuleName.replace("libkvi","");
+	szModuleName=szModuleName.replace(".dll","");
+#else
+	szModuleName=szModuleName.replace("libkvi","");
+	szModuleName=szModuleName.replace(".so","");
+#endif
+
+	KviModule * pModule = g_pModuleManager->getModule(szModuleName);
+	if(pModule)
+	{
+		pModule->getAllFunctionsCommandsModule(m_pListCompletition,szModuleName);
+	}
+
+	if(iIndex == iModulesCount)
+	{
+		m_pStartTimer->stop();
+		m_pStartTimer->deleteLater();
+		m_pStartTimer = 0;
+		QString szTmp("kvscompleter.idx");
+		QString szPath;
+		g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,szTmp);
+		QString szBuffer = m_pListCompletition->join(",");
+		QFile f(szPath);
+		f.open(QIODevice::WriteOnly);
+		f.write(szBuffer.toUtf8());
+		f.close();
+		createCompleter(*m_pListCompletition);
+		iIndex = 0;
+		iModulesCount = 0;
+		delete m_pListCompletition;
+		delete m_pListModulesNames;
+	}
+}
+
+void KviScriptEditorWidget::loadCompleterFromFile()
+{
+	QStringList szListFunctionsCommand;
+	QString szTmp("kvscompleter.idx");
+	QString szPath;
+	g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,szTmp);
+	QString szBuffer;
+	QFile f(szPath);
+	f.open(QIODevice::ReadOnly);
+	szBuffer = f.readAll();
+	f.close();
+	szListFunctionsCommand = szBuffer.split(',');
+	createCompleter(szListFunctionsCommand);
+}
+
+void KviScriptEditorWidget::createCompleter(QStringList & list)
+{
+	m_pCompleter = new QCompleter(list);
+	m_pCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+	m_pCompleter->setWrapAround(false);
+	m_pCompleter->setWidget(this);
+	m_pCompleter->setCompletionMode(QCompleter::PopupCompletion);
+	m_pCompleter->setCaseSensitivity(Qt::CaseInsensitive);
+	QObject::connect(m_pCompleter, SIGNAL(activated(const QString &)),this, SLOT(insertCompletion(const QString &)));
+}
+
+void KviScriptEditorWidget::insertCompletion(const QString & szCompletion)
+{
+	QTextCursor tc = textCursor();
+	int iExtra = szCompletion.length() - m_pCompleter->completionPrefix().length();
+
+	tc.movePosition(QTextCursor::Left);
+	tc.movePosition(QTextCursor::EndOfWord);
+
+	QString szTmp = szCompletion.right(iExtra);
+	debug ("append %s to %s",szTmp.toUtf8().data(),m_pCompleter->completionPrefix().toUtf8().data());
+	if(szCompletion.left(1)=="$")
+		szTmp.append("(");
+	else
+		szTmp.append(" ");
+
+	tc.insertText(szTmp);
+	setTextCursor(tc);
+}
+
+void KviScriptEditorWidget::contextMenuEvent(QContextMenuEvent * e)
+{
+	QMenu * pMenu = createStandardContextMenu();
+	pMenu->addAction(__tr2qs("Context sensitive help"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
+	pMenu->addAction(__tr2qs("&Replace"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
+	pMenu->exec(e->globalPos());
+	delete pMenu;
+}
+
+void KviScriptEditorWidget::slotFind()
+{
+	m_szFind = ((KviScriptEditorImplementation*)m_pParent)->findLineEdit()->text();
+	setText(toPlainText());
+}
+
+void KviScriptEditorWidget::slotReplace()
+{
+	KviScriptEditorReplaceDialog * pDialog = new KviScriptEditorReplaceDialog(this,__tr("Find & Replace"));
+	connect(pDialog,SIGNAL(replaceAll(const QString &,const QString &)),m_pParent,SLOT(slotReplaceAll(const QString &,const QString &)));
+	connect(pDialog,SIGNAL(initFind()),m_pParent,SLOT(slotInitFind()));
+	connect(pDialog,SIGNAL(nextFind(const QString &)),m_pParent,SLOT(slotNextFind(const QString &)));
+
+	if(pDialog->exec()){};
+}
+
+void KviScriptEditorWidget::slotHelp()
+{
+	contextSensitiveHelp();
+}
+
+void KviScriptEditorWidget::updateOptions()
+{
+	QPalette p = palette();
+	p.setColor(QPalette::Base,g_clrBackground);
+	p.setColor(QPalette::Text,g_clrNormalText);
+	setPalette(p);
+	setFont(g_fntNormal);
+	setTextColor(g_clrNormalText);
+	//setTextFormat(Qt::PlainText);
+
+	// this will rehighlight everything
+	setText(toPlainText()); // an "hack" to ensure Update all in the editor
+	KviScriptEditorSyntaxHighlighter *h = new KviScriptEditorSyntaxHighlighter(this);
+	(void)h;
+	p = ((KviScriptEditorImplementation*)m_pParent)->findLineEdit()->palette();
+	p.setColor(foregroundRole(),g_clrFind);
+	((KviScriptEditorImplementation*)m_pParent)->findLineEdit()->setPalette(p);
+}
+
+void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
+{
+	if(m_pCompleter && m_pCompleter->popup()->isVisible())
+	{
+		switch(e->key())
+		{
+			case Qt::Key_Enter:
+			case Qt::Key_Return:
+			case Qt::Key_Escape:
+			case Qt::Key_Tab:
+			case Qt::Key_Backtab:
+				e->ignore();
+				return;
+			default:
+				break;
+		}
+	}
+
+	if(e->modifiers() == Qt::ControlModifier)
+	{
+		switch(e->key())
+		{
+			case Qt::Key_B:
+				insertPlainText("$b");
+				return;
+			case Qt::Key_K:
+				insertPlainText("$k");
+				return;
+			case Qt::Key_O:
+				insertPlainText("$o");
+				return;
+			case Qt::Key_U:
+				insertPlainText("$u");
+				return;
+			case Qt::Key_Enter:
+			case Qt::Key_Return:
+			case Qt::Key_Backspace:
+			case Qt::Key_PageUp:
+				 e->ignore(); // allow the parent to process it
+				 return;
+			break;
+		}
+	}
+
+	bool bIsShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
+
+	// don't process the shortcut when we have a completer
+	if(!m_pCompleter || !bIsShortcut)
+		QTextEdit::keyPressEvent(e);
+
+	const bool bCtrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
+	if(!m_pCompleter || (bCtrlOrShift && e->text().isEmpty()))
+		return;
+
+	// end of word
+	static QString szEow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-=");
+	bool hasModifier = (e->modifiers() != Qt::NoModifier) && !bCtrlOrShift;
+
+	QString szCompletionPrefix = textUnderCursor();
+	debug ("completition prefix %s",szCompletionPrefix.toUtf8().data());
+	if(!bIsShortcut && (hasModifier || e->text().isEmpty()
+				|| szCompletionPrefix.length() < 3
+				|| szEow.contains(e->text().right(1))
+			)
+	)
+	{
+		m_pCompleter->popup()->hide();
+		return;
+	}
+
+	if(szCompletionPrefix != m_pCompleter->completionPrefix())
+	{
+		m_pCompleter->setCompletionPrefix(szCompletionPrefix);
+		m_pCompleter->popup()->setCurrentIndex(m_pCompleter->completionModel()->index(0, 0));
+	}
+
+	QRect cr = cursorRect();
+	cr.setWidth(m_pCompleter->popup()->sizeHintForColumn(0) + m_pCompleter->popup()->verticalScrollBar()->sizeHint().width());
+	m_pCompleter->complete(cr);
+}
+
+QString KviScriptEditorWidget::textUnderCursor() const
+{
+	QString szWord;
+	QTextCursor tc = textCursor();
+	if(tc.atBlockStart())
+		return QString();
+
+	tc.clearSelection();
+	tc.movePosition(QTextCursor::StartOfWord);
+	if(tc.atBlockStart())
+	{
+		tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor);
+		if(tc.atBlockEnd())
+			return tc.selectedText();
+
+		tc.movePosition(QTextCursor::NextCharacter,QTextCursor::KeepAnchor);
+		szWord = tc.selectedText();
+		if(szWord.right(1)!=".")
+			szWord.chop(1);
+
+		return szWord;
+	}
+
+	tc.movePosition(QTextCursor::PreviousCharacter);
+	tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor);
+	szWord=tc.selectedText();
+	if(szWord.left(1)==".")
+	{
+		tc.movePosition(QTextCursor::StartOfWord);
+		tc.movePosition(QTextCursor::PreviousCharacter);
+		tc.movePosition(QTextCursor::PreviousWord);
+		tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor,1);
+		szWord.prepend(tc.selectedText());
+	} else szWord.remove(0,1);
+
+	return szWord;
+}
+
+void KviScriptEditorWidget::mouseReleaseEvent(QMouseEvent * e)
+{
+	return;
+	//completelistbox->hide();
+	if (e->button() == Qt::RightButton)
+	{
+		QString szBuffer;
+		/*
+		int iPara = paragraphAt(e->pos());
+		int iIndex=charAt(e->pos(),&iPara);
+		szBuffer = this->text(iPara);
+		getWordOnCursor(szBuffer,iIndex);
+		*/
+		QRect r = cursorRect();
+		QTextCursor cur = cursorForPosition(e->pos());
+		cur.select(QTextCursor::WordUnderCursor);
+		szBuffer = cur.selectedText();
+		QString szTmp = szBuffer;
+		KviPointerList<QString> * pList;
+		if(szTmp.left(1) == "$")
+		{
+			szTmp.remove(0,1);
+			pList = KviKvsKernel::instance()->completeCommandAllocateResult(szTmp);
+			if (pList->count() != 1)
+				szBuffer = "";
+			else
+				szBuffer = *(pList->at(0));
+		} else {
+			pList = KviKvsKernel::instance()->completeCommandAllocateResult(szTmp);
+			if (pList->count() != 1)
+				szBuffer = "";
+			else
+				szBuffer = *(pList->at(0));
+		}
+
+		for (int i=0; i < pList->count(); i++)
+			QString str = *(pList->at(i));
+
+		KviKvsKernel::instance()->freeCompletionResult(pList);
+		m_szHelp = szBuffer;
+	}
+
+	QTextEdit::mouseReleaseEvent(e);
+}
+
+bool KviScriptEditorWidget::contextSensitiveHelp() const
+{
+	/*
+	QString szBuffer;
+	int iPara, iIndex;
+	getCursorPosition(&iPara,&iIndex);
+	szBuffer = text(iPara);
+
+	getWordOnCursor(szBuffer,iIndex);
+	*/
+
+	QRect r = cursorRect();
+	QTextCursor cur = cursorForPosition(QPoint(r.x(),r.y()));
+	cur.select(QTextCursor::WordUnderCursor);
+	QString szText = cur.selectedText();
+	QString szTmp = szText;
+	/*
+	KviPointerList<QString> * pList;
+	if(szTmp.left(1) == "$")
+	{
+		szTmp.remove(0,1);
+		pList = g_pUserParser->completeFunctionAllocateResult(szTmp);
+	} else {
+		pList = g_pUserParser->completeCommandAllocateResult(szTmp);
+	}
+	debug ("command or func %s",szTmp.toUtf8().data());
+
+	bool bOk = false;
+	if(pList)
+	{
+		for(QString * s = pList->first(); s; s = pList->next())
+		{
+			if(KviQString::equalCI(*s,szBuffer))
+			{
+				pList->last();
+				bOk = true;
+			}
+		}
+	}
+
+	g_pUserParser->freeCompletionResult(pList);
+	if(!bOk)return false;
+
+	QString szParse;
+	KviQString::sprintf(szParse,"timer -s (help,0){ help -s %Q; }",&szBuffer);
+	debug ("parsing %s",szParse.toLatin1());
+	KviKvsScript::run(szParse,(KviWindow*)g_pApp->activeConsole());
+	*/
+
+	return true;
+}
+
 KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * pParent)
 : QDialog(pParent)
 {
 	m_pSelectorInterfaceList = new KviPointerList<KviSelectorInterface>;
-    m_pSelectorInterfaceList->setAutoDelete(false);
+	m_pSelectorInterfaceList->setAutoDelete(false);
 	setWindowTitle(__tr2qs_ctx("Preferences","editor"));
 	QGridLayout * g = new QGridLayout(this);
 	KviTalVBox * box = new KviTalVBox(this);
@@ -97,7 +499,6 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 	s = addColorSelector(gbox,__tr2qs_ctx("Variables:","editor"),&g_clrVariable,true);
 	s = addColorSelector(gbox,__tr2qs_ctx("Punctuation:","editor"),&g_clrPunctuation,true);
 	s = addColorSelector(gbox,__tr2qs_ctx("Find:","editor"),&g_clrFind,true);
-
 
 	KviTalHBox * hbox = new KviTalHBox(box);
 
@@ -132,379 +533,12 @@ void KviScriptEditorWidgetColorOptions::okClicked()
 }
 
 
-KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
-: QTextEdit(pParent)
-{
-	setTabStopWidth(48);
-	setWordWrapMode(QTextOption::NoWrap);
-	m_pParent=pParent;
-	m_szHelp="Nothing";
-	updateOptions();
-	m_szFind="";
-	m_pCompleter=0;
-	QStringList szListFunctionsCommands;
-	QString tmp("kvscompleter.idx");
-	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,tmp);
-	if(!KviFileUtils::fileExists(szPath))
-	{
-		m_pStartTimer=new QTimer();
-		m_pStartTimer->setInterval(500);
-		connect(m_pStartTimer,SIGNAL(timeout()),this,SLOT(asyncCompleterCreation()));
-		m_pStartTimer->start(500);
-	}
-	else loadCompleterFromFile();
-}
-
-KviScriptEditorWidget::~KviScriptEditorWidget()
-{
-	if (m_pCompleter) delete m_pCompleter;
-
-}
-void KviScriptEditorWidget::asyncCompleterCreation()
-{
-	static int index=0;
-	static int modulesCount=0;
-	if (!index)
-	{
-		m_pListCompletition=new QStringList();
-		QString szPath;
-		g_pApp->getGlobalKvircDirectory(szPath,KviApp::Plugins);
-		QDir d(szPath);
-		#if defined(COMPILE_ON_WINDOWS)
-			d.setNameFilters(QStringList("kvi*.dll"));
-		#elif defined(COMPILE_ON_MINGW)
-			d.setNameFilters(QStringList("libkvi*.dll"));
-		#else
-			d.setNameFilters(QStringList("libkvi*.so"));
-		#endif
-		m_pListModulesNames = new QStringList(d.entryList(QDir::Files | QDir::Readable));
-		modulesCount=m_pListModulesNames->count();
-	}
-	QString szModuleName=m_pListModulesNames->at(index);
-	index++;
-	szModuleName=szModuleName.replace("lib","");
-	szModuleName=szModuleName.replace("kvi","");
-	szModuleName=szModuleName.replace(".dll","");
-	szModuleName=szModuleName.replace(".so","");
-
-	KviModule * pModule = g_pModuleManager->getModule(szModuleName);
-	if(pModule)
-	{
-		pModule->getAllFunctionsCommandsModule(m_pListCompletition,szModuleName);
-	}
-	if (index==modulesCount)
-	{
-		m_pStartTimer->stop();
-		m_pStartTimer->deleteLater();
-		m_pStartTimer=0;
-		QString tmp("kvscompleter.idx");
-		QString szPath;
-		g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,tmp);
-		QString szBuffer=m_pListCompletition->join(",");
-		QFile f(szPath);
-		f.open(QIODevice::WriteOnly);
-		f.write(szBuffer.toUtf8());
-		f.close();
-		createCompleter(*m_pListCompletition);
-		index=0;
-		modulesCount=0;
-		delete m_pListCompletition;
-		delete m_pListModulesNames;
-	}
-
-
-}
-
-
-void KviScriptEditorWidget::loadCompleterFromFile()
-{
-	QStringList szListFunctionsCommand;
-	QString tmp("kvscompleter.idx");
-	QString szPath;
-	g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,tmp);
-	QString szBuffer;
-	QFile f(szPath);
-	f.open(QIODevice::ReadOnly);
-	szBuffer=f.readAll();
-	f.close();
-	szListFunctionsCommand=szBuffer.split(',');
-	createCompleter(szListFunctionsCommand);
-}
-void KviScriptEditorWidget::createCompleter(QStringList &list)
-{
-	m_pCompleter=new QCompleter(list);
-	m_pCompleter->setCaseSensitivity(Qt::CaseInsensitive);
-	m_pCompleter->setWrapAround(false);
-	m_pCompleter->setWidget(this);
-	m_pCompleter->setCompletionMode(QCompleter::PopupCompletion);
-	m_pCompleter->setCaseSensitivity(Qt::CaseInsensitive);
-	QObject::connect(m_pCompleter, SIGNAL(activated(const QString&)),this, SLOT(insertCompletion(const QString&)));
-
-}
- void KviScriptEditorWidget::insertCompletion(const QString& completion)
- {
-    QTextCursor tc = textCursor();
-    int extra = completion.length() - m_pCompleter->completionPrefix().length();
-    tc.movePosition(QTextCursor::Left);
-    tc.movePosition(QTextCursor::EndOfWord);
-	QString tmp=completion.right(extra);
-	debug ("append %s to %s",tmp.toUtf8().data(),m_pCompleter->completionPrefix().toUtf8().data());
-	if (completion.left(1)=="$") tmp.append("(");
-	else tmp.append(" ");
-    tc.insertText(tmp);
-    setTextCursor(tc);
- }
-void KviScriptEditorWidget::contextMenuEvent(QContextMenuEvent *event)
-{
-	QMenu *pop=createStandardContextMenu();
-	pop->addAction(__tr2qs("Context sensitive help"),this,SLOT(slotHelp()),Qt::CTRL+Qt::Key_H);
-	pop->addAction(__tr2qs("&Replace"),this,SLOT(slotReplace()),Qt::CTRL+Qt::Key_R);
-	pop->exec(event->globalPos());
-     delete pop;
-}
-
-void KviScriptEditorWidget::slotFind()
-{
-	m_szFind=((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->text();
-	setText(toPlainText());
-}
-
-void KviScriptEditorWidget::slotReplace()
-{
-	KviScriptEditorReplaceDialog *dialog=new KviScriptEditorReplaceDialog(this,__tr("Find & Replace"));
-	connect (dialog,SIGNAL(replaceAll(const QString &,const QString &)),m_pParent,SLOT(slotReplaceAll(const QString &,const QString &)));
-	connect (dialog,SIGNAL(initFind()),m_pParent,SLOT(slotInitFind()));
-	connect (dialog,SIGNAL(nextFind(const QString &)),m_pParent,SLOT(slotNextFind(const QString &)));
-	if(dialog->exec()){};
-
-}
-
-void KviScriptEditorWidget::slotHelp()
-{
-	contextSensitiveHelp();
-}
-
-void KviScriptEditorWidget::updateOptions()
-{
-	QPalette p=palette();
-	p.setColor(QPalette::Base, g_clrBackground);
-	p.setColor(QPalette::Text,g_clrNormalText);
-	setPalette(p);
-	setFont(g_fntNormal);
-	setTextColor(g_clrNormalText);
-//	setTextFormat(Qt::PlainText);
-
-	// this will rehighlight everything
-	setText(toPlainText()); // an "hack" to ensure Update all in the editor
-	KviScriptSyntaxHighlighter *h = new KviScriptSyntaxHighlighter(this);
-	(void)h;
-	p = ((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->palette();
-	p.setColor(foregroundRole(),g_clrFind);
-	((KviScriptEditorImplementation*)m_pParent)->getFindlineedit()->setPalette(p);
-}
-
- QCompleter *KviScriptEditorWidget::completer() const
- {
-     return m_pCompleter;
- }
-void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
-{
-
-	if (m_pCompleter && m_pCompleter->popup()->isVisible()) {
-        switch (e->key()) {
-        case Qt::Key_Enter:
-        case Qt::Key_Return:
-        case Qt::Key_Escape:
-        case Qt::Key_Tab:
-        case Qt::Key_Backtab:
-             e->ignore();
-             return;
-        default:
-            break;
-        }
-     }
-	if(e->modifiers() == Qt::ControlModifier)
-	{
-		switch(e->key())
-		{
-			case Qt::Key_B:
-				insertPlainText("$b");
-				return;
-			case Qt::Key_K:
-				insertPlainText("$k");
-				return;
-			case Qt::Key_O:
-				insertPlainText("$o");
-				return;
-			case Qt::Key_U:
-				insertPlainText("$u");
-				return;
-			case Qt::Key_Enter:
-			case Qt::Key_Return:
-			case Qt::Key_Backspace:
-			case Qt::Key_PageUp:
-				 e->ignore(); // allow the parent to process it
-				 return;
-			break;
-		}
-	}
-
-	bool isShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
-	if (!m_pCompleter || !isShortcut) // dont process the shortcut when we have a completer
-         QTextEdit::keyPressEvent(e);
-	const bool ctrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
-    if (!m_pCompleter || (ctrlOrShift && e->text().isEmpty()))
-         return;
-    static QString eow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-="); // end of word
-    bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
-    QString completionPrefix = textUnderCursor();
-	debug ("completition prefix %s",completionPrefix.toUtf8().data());
-    if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3
-                       || eow.contains(e->text().right(1)))) {
-         m_pCompleter->popup()->hide();
-         return;
-     }
-     if (completionPrefix != m_pCompleter->completionPrefix()) {
-         m_pCompleter->setCompletionPrefix(completionPrefix);
-         m_pCompleter->popup()->setCurrentIndex(m_pCompleter->completionModel()->index(0, 0));
-     }
-     QRect cr = cursorRect();
-     cr.setWidth(m_pCompleter->popup()->sizeHintForColumn(0)
-                 + m_pCompleter->popup()->verticalScrollBar()->sizeHint().width());
-	 m_pCompleter->complete(cr);
-}
-
- QString KviScriptEditorWidget::textUnderCursor() const
- {
-    QString szWord;
-	QTextCursor tc = textCursor();
-	if (tc.atBlockStart())return QString();
-	tc.clearSelection();
-	tc.movePosition(QTextCursor::StartOfWord);
-	if (tc.atBlockStart())
-	{
-		tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor);
-		if(tc.atBlockEnd()) return tc.selectedText();
-		tc.movePosition(QTextCursor::NextCharacter,QTextCursor::KeepAnchor);
-		szWord=tc.selectedText();
-		if (szWord.right(1)!=".")  szWord.chop(1);
-		return szWord;
-	}
-	tc.movePosition(QTextCursor::PreviousCharacter);
-	tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor);
-	szWord=tc.selectedText();
-	if (szWord.left(1)==".")
-	{
-		tc.movePosition(QTextCursor::StartOfWord);
-		tc.movePosition(QTextCursor::PreviousCharacter);
-		tc.movePosition(QTextCursor::PreviousWord);
-		tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor,1);
-		szWord.prepend(tc.selectedText());
-	}
-	else szWord.remove(0,1);
-	return szWord;
-}
-
-void KviScriptEditorWidget::mouseReleaseEvent (QMouseEvent *e)
-{
-return;
-//	completelistbox->hide();
-	if (e->button() == Qt::RightButton)
-	{
-	QString buffer;
-	/*int para = paragraphAt(e->pos());
-	int index=charAt(e->pos(),&para);
-	buffer=this->text(para);
-	getWordOnCursor(buffer,index);
-	*/
-	QRect r=cursorRect();
-	QTextCursor cur=cursorForPosition(e->pos());
-	cur.select(QTextCursor::WordUnderCursor);
-	buffer=cur.selectedText();
-	QString tmp=buffer;
-	KviPointerList<QString> *l;
-	if (tmp.left(1) == "$")
-	{
-		tmp.remove(0,1);
-		l=KviKvsKernel::instance()->completeCommandAllocateResult(tmp);
-		if (l->count() != 1) buffer="";
-		else buffer=*(l->at(0));
-	}
-	else
-	{
-		l=KviKvsKernel::instance()->completeCommandAllocateResult(tmp);
-		if (l->count() != 1) buffer="";
-		else buffer=*(l->at(0));
-	}
-	for (int i=0;i<l->count();i++){
-		QString str=*(l->at(i));
-	}
-	KviKvsKernel::instance()->freeCompletionResult(l);
-	m_szHelp=buffer;
-	}
-	QTextEdit::mouseReleaseEvent(e);
-
-
-}
-
-bool KviScriptEditorWidget::contextSensitiveHelp() const
-{
-
-/*	QString buffer;
-	int para,index;
-	getCursorPosition(&para,&index);
-	buffer=text(para);
-
-	getWordOnCursor(buffer,index);
-*/
-
-	QRect r=cursorRect();
-	QTextCursor cur=cursorForPosition(QPoint(r.x(),r.y()));
-	cur.select(QTextCursor::WordUnderCursor);
-	QString text=cur.selectedText();
-	QString tmp=text;
-	/*KviPointerList<QString> * l;
-	if(tmp.left(1) == "$")
-	{
-		tmp.remove(0,1);
-		l = g_pUserParser->completeFunctionAllocateResult(tmp);
-	} else {
-		l = g_pUserParser->completeCommandAllocateResult(tmp);
-	}
-	debug ("command or func %s",tmp.toUtf8().data());
-	bool bOk = false;
-	if(l)
-	{
-		for(QString * s = l->first();s;s = l->next())
-		{
-			if(KviQString::equalCI(*s,buffer))
-			{
-				l->last();
-				bOk = true;
-			}
-		}
-	}
-	g_pUserParser->freeCompletionResult(l);
-	if(!bOk)return false;
-	*/
-/*
-	QString parse;
-	KviQString::sprintf(parse,"timer -s (help,0){ help -s %Q; }",&buffer);
-	debug ("parsing %s",parse.latin1());
-	KviKvsScript::run(parse,(KviWindow*)g_pApp->activeConsole());
-
-
-	*/
-	return true;
-}
-
-KviScriptSyntaxHighlighter::KviScriptSyntaxHighlighter(KviScriptEditorWidget * pWidget)
+KviScriptEditorSyntaxHighlighter::KviScriptEditorSyntaxHighlighter(KviScriptEditorWidget * pWidget)
 : QSyntaxHighlighter(pWidget),m_pTextEdit(pWidget)
 {
 }
 
-KviScriptSyntaxHighlighter::~KviScriptSyntaxHighlighter()
+KviScriptEditorSyntaxHighlighter::~KviScriptEditorSyntaxHighlighter()
 {
 }
 
@@ -512,10 +546,11 @@ KviScriptSyntaxHighlighter::~KviScriptSyntaxHighlighter()
 #define IN_LINE 2
 #define IN_STRING 4
 
-void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
+void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 {
-	const QChar * pBuf = (const QChar *)text.utf16();
+	const QChar * pBuf = (const QChar *)szText.utf16();
 	const QChar * c = pBuf;
+
 	QTextCharFormat commentFormat;
 	commentFormat.setForeground(g_clrComment);
 	commentFormat.setFont(g_fntNormal);
@@ -544,35 +579,37 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 	functionFormat.setForeground(g_clrFunction);
 	functionFormat.setFont(g_fntNormal);
 
-
 	QTextCharFormat findFormat;
 	findFormat.setForeground(g_clrFind);
 	findFormat.setFont(g_fntNormal);
 
-	int endStateOfLastPara=previousBlockState();
-	if(endStateOfLastPara < 0)endStateOfLastPara = 0;
+	int iEndStateOfLastPara = previousBlockState();
+	if(iEndStateOfLastPara < 0)
+		iEndStateOfLastPara = 0;
 	/*
 	QRegExp reg("[$][a-zA-Z][a-zA-Z0-9_\\.:]+");
 	int index = text.indexOf(reg);
-    while (index >= 0) {
-        int length = reg.matchedLength();
-             setFormat(index, length, functionFormat);
-             index = text.indexOf(reg, index + length);
-         }
+	while (index >= 0)
+	{
+		int length = reg.matchedLength();
+		setFormat(index, length, functionFormat);
+		index = text.indexOf(reg, index + length);
+	}
 
 	QRegExp reg1("[{}]+");
 	index = text.indexOf(reg1);
-    while (index >= 0) {
-        int length = reg1.matchedLength();
-             setFormat(index, length, bracketFormat);
-             index = text.indexOf(reg1, index + length);
-         }
+	while (index >= 0)
+	{
+		int length = reg1.matchedLength();
+		setFormat(index, length, bracketFormat);
+		index = text.indexOf(reg1, index + length);
+	}
 	*/
 
-	bool bNewCommand = !(endStateOfLastPara & IN_LINE);
-	bool bInComment = endStateOfLastPara & IN_COMMENT;
-	bool bInString = endStateOfLastPara & IN_STRING;
-	if (bInComment) debug ("start incomment %s",text.toUtf8().data());
+	bool bNewCommand = !(iEndStateOfLastPara & IN_LINE);
+	bool bInComment = iEndStateOfLastPara & IN_COMMENT;
+	bool bInString = iEndStateOfLastPara & IN_STRING;
+	if (bInComment) debug ("start incomment %s",szText.toUtf8().data());
 	const QChar * pBegin;
 
 	while(c->unicode())
@@ -638,6 +675,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 				setFormat(pBegin - pBuf,c - pBegin,commentFormat);
 				continue;
 			}
+
 			if(c->unicode() == '/')
 			{
 				c++;
@@ -655,6 +693,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 				}
 				c--;
 			}
+
 			if(c->unicode() && (c->isLetterOrNumber() || (c->unicode() == '_')))
 			{
 				c++;
@@ -698,6 +737,7 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 				continue;
 			}
 		}
+
 		if(c->unicode() == '$')
 		{
 			c++;
@@ -787,38 +827,26 @@ void KviScriptSyntaxHighlighter::highlightBlock(const QString &text)
 		}
 	}
 
-	bool i=TRUE;
-	KviScriptEditorWidget *editor=((KviScriptEditorWidget *)textEdit());
-	QString szFind=editor->m_szFind;
+	bool bCheck = true;
+	KviScriptEditorWidget * pEditor = ((KviScriptEditorWidget *)textEdit());
+	QString szFind = pEditor->m_szFind;
 	if (!szFind.isEmpty())
 	{
-		int index=0;
-		while (i)
+		int iIndex = 0;
+		while(bCheck)
 		{
-			index=text.indexOf(szFind,index,Qt::CaseInsensitive);
-			if (index != -1)
+			iIndex = szText.indexOf(szFind,iIndex,Qt::CaseInsensitive);
+			if (iIndex != -1)
 			{
-				setFormat(index,szFind.length(),findFormat);
-				index += szFind.length();
-			}
-		else i=false;
+				setFormat(iIndex,szFind.length(),findFormat);
+				iIndex += szFind.length();
+			} else bCheck = false;
 		}
 	}
 
 	if(bInString)
 		setCurrentBlockState(IN_LINE | IN_STRING);
-
 }
-
-// 22.02.2005 :: 00:01
-// valgrind --leak-check=yes --num-callers=10 -v kvirc -f
-//
-//==30299== Warning: SIGSEGV not in user code; either from syscall kill()
-//==30299==    or possible Valgrind bug.  This message is only shown 3 times.
-//==30299== Warning: SIGSEGV not in user code; either from syscall kill()
-//==30299==    or possible Valgrind bug.  This message is only shown 3 times.
-//==30299== Warning: SIGSEGV not in user code; either from syscall kill()
-//==30299==    or possible Valgrind bug.  This message is only shown 3 times.
 
 
 KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
@@ -826,7 +854,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 {
 	if(g_pScriptEditorWindowList->isEmpty())loadOptions();
 	g_pScriptEditorWindowList->append(this);
-	m_lastCursorPos=0;
+	m_lastCursorPos = 0;
 	QGridLayout * g = new QGridLayout(this);
 
 	m_pFindLineedit = new QLineEdit(" ",this);
@@ -880,7 +908,8 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 KviScriptEditorImplementation::~KviScriptEditorImplementation()
 {
 	g_pScriptEditorWindowList->removeRef(this);
-	if(g_pScriptEditorWindowList->isEmpty())saveOptions();
+	if(g_pScriptEditorWindowList->isEmpty())
+		saveOptions();
 }
 
 void KviScriptEditorImplementation::loadOptions()
@@ -909,12 +938,11 @@ bool KviScriptEditorImplementation::isModified()
 void KviScriptEditorImplementation::slotFind()
 {
 	emit find(m_pFindLineedit->text());
-
 }
 
-void KviScriptEditorImplementation::slotNextFind(const QString &text)
+void KviScriptEditorImplementation::slotNextFind(const QString & szText)
 {
-//	emit nextFind(const QString &text);
+//	emit nextFind(const QString & szText);
 }
 
 void KviScriptEditorImplementation::slotInitFind()
@@ -922,17 +950,17 @@ void KviScriptEditorImplementation::slotInitFind()
 	emit initFind();
 }
 
-void KviScriptEditorImplementation::slotReplaceAll(const QString &txt,const QString &txt1)
+void KviScriptEditorImplementation::slotReplaceAll(const QString & szToReplace, const QString & szReplaceWith)
 {
-	emit replaceAll(txt,txt1);
+	emit replaceAll(szToReplace,szReplaceWith);
 }
 
 void KviScriptEditorImplementation::saveOptions()
 {
-	QString tmp;
-	g_pEditorModulePointer->getDefaultConfigFileName(tmp);
+	QString szTmp;
+	g_pEditorModulePointer->getDefaultConfigFileName(szTmp);
 
-	KviConfig cfg(tmp,KviConfig::Write);
+	KviConfig cfg(szTmp,KviConfig::Write);
 	cfg.writeEntry("Background",g_clrBackground);;
 	cfg.writeEntry("NormalText",g_clrNormalText);
 	cfg.writeEntry("Bracket",g_clrBracket);
@@ -950,7 +978,7 @@ void KviScriptEditorImplementation::setFocus()
 	m_pEditor->setFocus();
 }
 
-void KviScriptEditorImplementation::focusInEvent(QFocusEvent *)
+void KviScriptEditorImplementation::focusInEvent(QFocusEvent * e)
 {
 	m_pEditor->setFocus();
 }
@@ -964,117 +992,105 @@ void KviScriptEditorImplementation::setEnabled(bool bEnabled)
 
 void KviScriptEditorImplementation::saveToFile()
 {
-	QString fName;
-	if(KviFileDialog::askForSaveFileName(fName,
+	QString szFileName;
+	if(KviFileDialog::askForSaveFileName(szFileName,
 		__tr2qs_ctx("Choose a Filename - KVIrc","editor"),
 		QString::null,
 		QString::null,false,true,true))
 	{
-		QString buffer = m_pEditor->toPlainText();
+		QString szBuffer = m_pEditor->toPlainText();
 
 		//if(tmp.isEmpty())tmp = "";
 		//KviStr buffer = tmp.toUtf8().data();
-		if(!KviFileUtils::writeFile(fName,buffer))
+		if(!KviFileUtils::writeFile(szFileName,szBuffer))
 		{
-			QString tmp;
+			QString szTmp;
 			QMessageBox::warning(this,
 				__tr2qs_ctx("Save Failed - KVIrc","editor"),
-				KviQString::sprintf(tmp,__tr2qs_ctx("Can't open the file %s for writing.","editor"),&fName));
+				KviQString::sprintf(szTmp,__tr2qs_ctx("Can't open the file %s for writing.","editor"),&szFileName));
 		}
 	}
 }
 
-void KviScriptEditorImplementation::setText(const KviQCString &txt)
+void KviScriptEditorImplementation::setText(const KviQCString & szText)
 {
-	m_pEditor->setText(txt.data());
+	m_pEditor->setText(szText.data());
 	//m_pEditor->setTextFormat(Qt::PlainText);
 	//m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }
 
-void KviScriptEditorImplementation::getText(KviQCString &txt)
+void KviScriptEditorImplementation::text(KviQCString & szText)
 {
-	txt = m_pEditor->toPlainText().toUtf8();
+	szText = m_pEditor->toPlainText().toUtf8();
 }
 
-QLineEdit * KviScriptEditorImplementation::getFindlineedit()
+void KviScriptEditorImplementation::setText(const QString & szText)
 {
-	return m_pFindLineedit;
-}
-
-void KviScriptEditorImplementation::setText(const QString &txt)
-{
-	m_pEditor->setText(txt);
-//	m_pEditor->setTextFormat(Qt::PlainText);
+	m_pEditor->setText(szText);
+	//m_pEditor->setTextFormat(Qt::PlainText);
 	m_pEditor->textCursor().movePosition(QTextCursor::End);
 	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }
 
-void KviScriptEditorImplementation::getText(QString &txt)
+void KviScriptEditorImplementation::text(QString & szText)
 {
-	txt = m_pEditor->toPlainText();
+	szText = m_pEditor->toPlainText();
 }
 
-void KviScriptEditorImplementation::setFindText(const QString &txt)
+void KviScriptEditorImplementation::setFindText(const QString & szText)
 {
-	m_pFindLineedit->setText(txt);
+	m_pFindLineedit->setText(szText);
 	m_pEditor->slotFind();
-
 }
 
-void KviScriptEditorImplementation::setFindLineeditReadOnly(bool b)
+void KviScriptEditorImplementation::setFindLineEditReadOnly(bool b)
 {
 	m_pFindLineedit->setReadOnly(b);
-
 }
 
 void KviScriptEditorImplementation::updateRowColLabel()
 {
-	if (m_lastCursorPos==m_pEditor->textCursor().position()) return;
-	int iRow=m_pEditor->textCursor().blockNumber();
-	int iCol=m_pEditor->textCursor().columnNumber();
-	QString tmp;
-	KviQString::sprintf(tmp,__tr2qs_ctx("Row: %d Col: %d","editor"),iRow,iCol);
-	m_pRowColLabel->setText(tmp);
-	m_lastCursorPos=m_pEditor->textCursor().position();
+	if(m_lastCursorPos==m_pEditor->textCursor().position())
+		return;
 
+	int iRow = m_pEditor->textCursor().blockNumber();
+	int iCol = m_pEditor->textCursor().columnNumber();
+	QString szTmp;
+	KviQString::sprintf(szTmp,__tr2qs_ctx("Row: %d Col: %d","editor"),iRow,iCol);
+	m_pRowColLabel->setText(szTmp);
+	m_lastCursorPos = m_pEditor->textCursor().position();
 }
 
-int KviScriptEditorImplementation::getCursor()
+void KviScriptEditorImplementation::setCursorPosition(int iPos)
 {
-	return m_lastCursorPos;
-}
-
-void KviScriptEditorImplementation::setCursorPosition(int pos)
-{
-	QTextCursor cur=m_pEditor->textCursor();
-	cur.setPosition(pos);
+	QTextCursor cur = m_pEditor->textCursor();
+	cur.setPosition(iPos);
 	m_pEditor->setTextCursor(cur);
 	updateRowColLabel();
 }
 
 void KviScriptEditorImplementation::loadFromFile()
 {
-
-	QString fName;
-	if(KviFileDialog::askForOpenFileName(fName,
+	QString szFileName;
+	if(KviFileDialog::askForOpenFileName(szFileName,
 		__tr2qs_ctx("Load Script File - KVIrc","editor"),
 		QString::null,KVI_FILTER_SCRIPT,false,true))
 	{
-		QString buffer;
-		if(KviFileUtils::loadFile(fName,buffer))
+		QString szBuffer;
+		if(KviFileUtils::loadFile(szFileName,szBuffer))
 		{
-			m_pEditor->setText(buffer);
+			m_pEditor->setText(szBuffer);
 			setCursorPosition(0);
 			//m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 			//updateRowColLabel();
 		} else {
-			QString tmp;
+			QString szTmp;
 			QMessageBox::warning(this,
 				__tr2qs_ctx("Open Failed - KVIrc","editor"),
-				KviQString::sprintf(tmp,__tr2qs_ctx("Can't open the file %s for reading.","editor"),&fName));
+				KviQString::sprintf(szTmp,__tr2qs_ctx("Can't open the file %s for reading.","editor"),&szFileName));
 		}
 	}
 }
@@ -1083,108 +1099,109 @@ void KviScriptEditorImplementation::configureColors()
 {
 	KviScriptEditorWidgetColorOptions dlg(this);
 	if(dlg.exec() == QDialog::Accepted)
-
 	{
 		m_pEditor->updateOptions();
 		saveOptions();
 	}
 }
 
-KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog( QWidget* parent, const char* name)
-: QDialog( parent)
+KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, const char * name)
+: QDialog(parent)
 {
-	m_pParent=parent;
+	m_pParent = parent;
 	emit initFind();
 	QPalette p = palette();
 	p.setColor(foregroundRole(),QColor( 0, 0, 0 ));
 	p.setColor(backgroundRole(),QColor( 236, 233, 216 ));
 	setPalette(p);
 
-	QGridLayout *layout = new QGridLayout( this);
-		layout->setObjectName("replace layout");
+	QGridLayout * pLayout = new QGridLayout(this);
+	pLayout->setObjectName("replace layout");
 
+	QLabel * m_pFindLabel = new QLabel(this);
+	m_pFindLabel->setObjectName("findlabel");
+	m_pFindLabel->setText(tr("Word to Find"));
+	pLayout->addWidget(m_pFindLabel,0,0);
 
-	QLabel *findlabel = new QLabel( this);
-	findlabel->setObjectName("findlabel");
-	findlabel->setText(tr("Word to Find"));
-	layout->addWidget( findlabel, 0, 0 );
+	m_pFindLineEdit = new QLineEdit(this);
+	m_pFindLineEdit->setObjectName("findlineedit");
+	pLayout->addWidget(m_pFindLineEdit,0,1);
 
-	m_pFindlineedit = new QLineEdit( this);
-	m_pFindlineedit->setObjectName( "findlineedit" );
-	layout->addWidget(m_pFindlineedit,0,1);
+	QPushButton * pFindNext = new QPushButton(this);
+	pFindNext->setObjectName("findnext");
+	pFindNext->setText(tr("&Find Next(WIP)"));
+	pFindNext->setEnabled(false);
+	pLayout->addWidget(pFindNext,0,2);
 
+	QLabel * m_pReplaceLabel = new QLabel(this);
+	m_pReplaceLabel->setObjectName("replacelabel");
+	m_pReplaceLabel->setText(tr("Replace with"));
+	pLayout->addWidget(m_pReplaceLabel,1,0);
 
-	QLabel *replaceLabel = new QLabel( this);
-	replaceLabel->setObjectName( "replacelabel" );
-	replaceLabel->setText(tr("Replace with"));
-	layout->addWidget( replaceLabel, 1, 0 );
+	m_pReplaceLineEdit = new QLineEdit(this);
+	m_pReplaceLineEdit->setObjectName("replacelineedit");
+	pLayout->addWidget(m_pReplaceLineEdit,1,1);
 
-	m_pReplacelineedit = new QLineEdit( this);
-	m_pReplacelineedit->setObjectName( "replacelineedit" );
-	layout->addWidget( m_pReplacelineedit,1,1);
+	QPushButton * pReplace = new QPushButton(this);
+	pReplace->setObjectName("replace");
+	pReplace->setText(tr("&Replace(WIP)"));
+	pReplace->setEnabled(false);
+	pLayout->addWidget(pReplace,1,2);
 
-	m_pFindlineedit->setFocus();
+	m_pFindLineEdit->setFocus();
 
-	QPushButton *cancelButton = new QPushButton( this);
-	cancelButton->setObjectName( "cancelButton" );
-	cancelButton->setText(tr("&Cancel"));
-	layout->addWidget( cancelButton, 3, 1 );
+	m_pCheckReplaceAll = new QCheckBox(this);
+	m_pCheckReplaceAll->setObjectName("replaceAll");
+	m_pCheckReplaceAll->setText(tr("&Replace in all Aliases"));
+	pLayout->addWidget(m_pCheckReplaceAll,2,0);
 
-	replacebutton = new QPushButton( this);
-	replacebutton->setObjectName("replacebutton" );
-	replacebutton->setText(tr("&Replace"));
-	replacebutton->setEnabled( FALSE );
-	layout->addWidget( replacebutton, 3, 2 );
+	QPushButton * pCancelButton = new QPushButton(this);
+	pCancelButton->setObjectName("cancelButton");
+	pCancelButton->setText(tr("&Cancel"));
+	pLayout->addWidget(pCancelButton,3,1);
 
-	checkReplaceAll = new QCheckBox( this);
-	checkReplaceAll->setObjectName("replaceAll" );
-	checkReplaceAll->setText(tr("&Replace in all Aliases"));
-	layout->addWidget( checkReplaceAll, 2, 0 );
+	m_pReplaceButton = new QPushButton(this);
+	m_pReplaceButton->setObjectName("replacebutton");
+	m_pReplaceButton->setText(tr("&Replace"));
+	m_pReplaceButton->setEnabled(false);
+	pLayout->addWidget(m_pReplaceButton,3,2);
 
-	findNext = new QPushButton(this);
-	findNext->setObjectName( "findNext(WIP)" );
-	findNext->setText(tr("&Findnext"));
-	layout->addWidget( findNext, 0, 2 );
-	findNext->setEnabled(false);
-
-	replace = new QPushButton(this);
-	replace->setObjectName( "replace" );
-	replace->setText(tr("&Replace(WIP)"));
-	layout->addWidget( replace, 1, 2 );
-	replace->setEnabled(false);
+	setLayout(pLayout);
 
 	// signals and slots connections
-	connect( replacebutton, SIGNAL( clicked() ), this, SLOT( slotReplace() ) );
-	connect( findNext, SIGNAL( clicked() ),this,SLOT( slotNextFind()));
-	connect( cancelButton, SIGNAL( clicked() ), this, SLOT( reject() ) );
-	connect( m_pFindlineedit, SIGNAL( textChanged(const QString &)), this, SLOT( textChanged(const QString &)));
+	connect(m_pReplaceButton, SIGNAL(clicked()), this, SLOT(slotReplace()));
+	connect(pFindNext, SIGNAL(clicked()),this,SLOT(slotNextFind()));
+	connect(pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
+	connect(m_pFindLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
 }
-
 
 KviScriptEditorReplaceDialog::~KviScriptEditorReplaceDialog()
 {
 }
 
-void KviScriptEditorReplaceDialog::textChanged(const QString &txt)
+void KviScriptEditorReplaceDialog::textChanged(const QString & szText)
 {
-	if (!txt.isEmpty()) replacebutton->setEnabled(TRUE);
-	else replacebutton->setEnabled(FALSE);
-
+	if(!szText.isEmpty())
+		m_pReplaceButton->setEnabled(true);
+	else
+		m_pReplaceButton->setEnabled(false);
 }
 
 void KviScriptEditorReplaceDialog::slotReplace()
 {
-	QString txt=((KviScriptEditorWidget *)m_pParent)->toPlainText();
-	if (checkReplaceAll->isChecked()) emit replaceAll(m_pFindlineedit->text(),m_pReplacelineedit->text());
-	txt.replace(m_pFindlineedit->text(),m_pReplacelineedit->text(),Qt::CaseInsensitive);
-	((KviScriptEditorWidget *)m_pParent)->setText(txt);
+	QString szText = ((KviScriptEditorWidget *)m_pParent)->toPlainText();
+	if(m_pCheckReplaceAll->isChecked())
+		emit replaceAll(m_pFindLineEdit->text(),m_pReplaceLineEdit->text());
+
+	szText.replace(m_pFindLineEdit->text(),m_pReplaceLineEdit->text(),Qt::CaseInsensitive);
+	((KviScriptEditorWidget *)m_pParent)->setText(szText);
 	((KviScriptEditorWidget *)m_pParent)->document()->setModified(true);
-	m_pFindlineedit->setText("");
-	m_pReplacelineedit->setText("");
-	setTabOrder(m_pFindlineedit,m_pReplacelineedit);
+	m_pFindLineEdit->setText("");
+	m_pReplaceLineEdit->setText("");
+	setTabOrder(m_pFindLineEdit,m_pReplaceLineEdit);
 }
 
 void KviScriptEditorReplaceDialog::slotNextFind()
 {
-	emit nextFind(m_pFindlineedit->text());
+	emit nextFind(m_pFindLineEdit->text());
 }
