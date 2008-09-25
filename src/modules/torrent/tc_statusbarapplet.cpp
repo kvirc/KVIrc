@@ -37,7 +37,9 @@ KviTorrentStatusBarApplet::KviTorrentStatusBarApplet(KviStatusBar *parent, KviSt
 {
 	QTimer *timer = new QTimer(this);
 	connect(timer, SIGNAL(timeout()), this, SLOT(update()));
-	timer->start(250, FALSE);
+	timer->setInterval(250);
+	timer->setSingleShot(false);
+	timer->start(250);
 //	updateDisplay();
 //
 	setText("torrent client");

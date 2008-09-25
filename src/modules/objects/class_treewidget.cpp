@@ -646,5 +646,5 @@ void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_class_listview.moc"
+#include "m_class_treewidget.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

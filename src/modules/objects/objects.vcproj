@@ -277,14 +277,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\class_listview.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\class_listviewitem.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\class_mainwindow.cpp"
 				>
 			</File>
@@ -346,6 +338,14 @@
 			</File>
 			<File
 				RelativePath=".\class_toolbutton.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\class_treewidget.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\class_treewidgetitem.cpp"
 				>
 			</File>
 			<File
@@ -416,7 +416,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\m_$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -695,50 +695,6 @@
 			</File>
 			<File
 				RelativePath=".\class_listbox.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\class_listview.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\class_listviewitem.h"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -1107,6 +1063,32 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\m_$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\class_treewidget.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\m_$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\class_treewidgetitem.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
 						Outputs="$(InputDir)\m_$(InputName).moc"
 					/>
 				</FileConfiguration>
