@@ -60,8 +60,8 @@ QRect g_rectManagementDialogGeometry(0,0,0,0);
 
 static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 {
-	QString szThemePackFile; 
-	
+	QString szThemePackFile;
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("package_path",KVS_PT_STRING,0,szThemePackFile)
 	KVSM_PARAMETERS_END(c)
@@ -94,8 +94,8 @@ static bool theme_kvs_cmd_install(KviKvsModuleCommandCall * c)
 
 static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 {
-	QString szFileName; 
-	
+	QString szFileName;
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("file_name_path",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
 	KVSM_PARAMETERS_END(c)
@@ -115,7 +115,7 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 
 	if(szFileName.isEmpty())return true; // done
 	KviFileUtils::adjustFilePath(szFileName);
-	if(QFileInfo(szFileName).extension(false)!="png")
+	if(QFileInfo(szFileName).suffix()!="png")
 		szFileName+=".png";
 
 	QString szError;

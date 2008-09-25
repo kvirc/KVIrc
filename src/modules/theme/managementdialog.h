@@ -27,7 +27,6 @@
 #include "kvi_optionswidget.h"
 #include "kvi_pointerlist.h"
 #include "kvi_theme.h"
-#include "kvi_tal_listbox.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_wizard.h"
 #include "kvi_tal_listwidget.h"

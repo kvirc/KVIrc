@@ -67,7 +67,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	// welcome page ==================================================================================
 	QWidget * pPage = new QWidget(this);
 	QGridLayout * pLayout = new QGridLayout(pPage);
-	
+
 	QLabel * pLabel = new QLabel(pPage);
 	pLabel->setWordWrap(true);
 	QString szText = "<p>";
@@ -77,11 +77,11 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	szText += "</p><p>";
 	szText += __tr2qs_ctx("Hit the \"Next\" button to begin.","theme");
 	szText += "<p>";
-	
+
 	pLabel->setText(szText);
 	pLayout->addWidget(pLabel,0,0);
 	pLayout->setRowStretch(1,1);
-	
+
 	addPage(pPage,__tr2qs_ctx("Welcome","theme"));
 	setBackEnabled(pPage,false);
 	setNextEnabled(pPage,true);
@@ -97,12 +97,12 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the author) and a short description of the theme you're creating.","theme"));
 	pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
-	pLayout->addMultiCellWidget(pLabel,0,0,0,1);
-	
+	pLayout->addWidget(pLabel,0,0,1,2);
+
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Theme Name:","theme"));
 	pLayout->addWidget(pLabel,1,0);
-	
+
 	m_pThemeNameEdit = new QLineEdit(pPage);
 	//m_pThemeNameEdit->setText(szThemeName);
 	pLayout->addWidget(m_pThemeNameEdit,1,1);
@@ -110,7 +110,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Version:","theme"));
 	pLayout->addWidget(pLabel,2,0);
-	
+
 	m_pThemeVersionEdit = new QLineEdit(pPage);
 	//m_pThemeVersionEdit->setText(szThemeVersion);
 	pLayout->addWidget(m_pThemeVersionEdit,2,1);
@@ -118,7 +118,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Description:","theme"));
 	pLayout->addWidget(pLabel,3,0);
-	
+
 	m_pThemeDescriptionEdit = new KviTalTextEdit(pPage);
 	//m_pThemeDescriptionEdit->setText(szThemeDescription);
 	pLayout->addWidget(m_pThemeDescriptionEdit,3,1);
@@ -126,7 +126,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Theme Author:","theme"));
 	pLayout->addWidget(pLabel,4,0);
-	
+
 	m_pAuthorNameEdit = new QLineEdit(pPage);
 	//m_pAuthorNameEdit->setText(szThemeAuthor);
 	pLayout->addWidget(m_pAuthorNameEdit,4,1);
@@ -151,7 +151,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
-	
+
 	m_pImageLabel = new QLabel(pPage);
 	m_pImageLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
 	m_pImageLabel->setMinimumSize(300,225);
@@ -189,9 +189,9 @@ void KviSaveThemeDialog::imageSelectionChanged(const QString &szImagePath)
 	{
 		QPixmap out;
 		if(pix.width() > 300 || pix.height() > 225)
-			out.convertFromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
+			out = QPixmap::fromImage(pix.scaled(300,225,Qt::KeepAspectRatio));
 		else
-			out.convertFromImage(pix);
+			out = QPixmap::fromImage(pix);
 		m_pImageLabel->setPixmap(out);
 		return;
 	}
@@ -237,7 +237,7 @@ bool KviSaveThemeDialog::saveTheme()
 	}
 
 	sto.setAuthor(m_pAuthorNameEdit->text());
-	sto.setDescription(m_pThemeDescriptionEdit->text());
+	sto.setDescription(m_pThemeDescriptionEdit->toPlainText());
 	sto.setDate(QDateTime::currentDateTime().toString());
 	sto.setVersion(m_pThemeVersionEdit->text());
 	sto.setApplication("KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
@@ -269,7 +269,7 @@ bool KviSaveThemeDialog::saveTheme()
 		return false;
 	}
 	// write down the screenshot, if needed
-	
+
 	if(!m_szScreenshotPath.isEmpty())
 	{
 		if(!KviTheme::saveScreenshots(sto,m_szScreenshotPath))

@@ -42,7 +42,6 @@
 #include "kvi_dynamictooltip.h"
 #include "kvi_iconmanager.h"
 #include "kvi_msgbox.h"
-#include "kvi_tal_listbox.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_listwidget.h"
 
@@ -76,13 +75,13 @@ KviThemeListWidgetItem::KviThemeListWidgetItem(KviTalListWidget * box,KviThemeIn
 	t = "<nobr><b>";
 	t += inf->name();
 	t += "</b>";
-	
+
 	if(!inf->version().isEmpty()) {
 		t += "[";
 		t += inf->version();
 		t += "]";
 	}
-	
+
 	if(!inf->author().isEmpty()) {
 		t += " <font color=\"#a0a0a0\"> ";
 		t += __tr2qs_ctx("by","theme");
@@ -113,7 +112,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	m_pItemDelegate=0;
 	setObjectName("theme_options_widget");
 	setWindowTitle(__tr2qs_ctx("Manage Themes - KVIrc","theme"));
-	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_THEME)));
+	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_THEME)));
 
 	setModal(true);
 
@@ -132,24 +131,24 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE)));
 	tb->setIconSize(QSize(32,32));
-	QToolTip::add(tb,__tr2qs_ctx("Save Current Theme...","theme"));
+	tb->setToolTip(__tr2qs_ctx("Save Current Theme...","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(saveCurrentTheme()));
 
 	sep = new QFrame(hb);
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
-	
+
 	m_pPackThemeButton = new QToolButton(hb);
 	m_pPackThemeButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 
 	m_pPackThemeButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pPackThemeButton,__tr2qs_ctx("Export Selected Themes to a Distributable Package","theme"));
+	m_pPackThemeButton->setToolTip(__tr2qs_ctx("Export Selected Themes to a Distributable Package","theme"));
 	connect(m_pPackThemeButton,SIGNAL(clicked()),this,SLOT(packTheme()));
 
 	m_pDeleteThemeButton = new QToolButton(hb);
 	m_pDeleteThemeButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_REMOVE)));
 	m_pDeleteThemeButton->setIconSize(QSize(32,32));
-	QToolTip::add(m_pDeleteThemeButton,__tr2qs_ctx("Delete Selected Themes","theme"));
+	m_pDeleteThemeButton->setToolTip(__tr2qs_ctx("Delete Selected Themes","theme"));
 	connect(m_pDeleteThemeButton,SIGNAL(clicked()),this,SLOT(deleteTheme()));
 
 	sep = new QFrame(hb);
@@ -159,13 +158,13 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN)));
 	tb->setIconSize(QSize(32,32));
-	QToolTip::add(tb,__tr2qs_ctx("Install Theme Package From Disk","theme"));
+	tb->setToolTip(__tr2qs_ctx("Install Theme Package From Disk","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(installFromFile()));
 
 	tb = new QToolButton(hb);
 	tb->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_WWW)));
 	tb->setIconSize(QSize(32,32));
-	QToolTip::add(tb,__tr2qs_ctx("Get More Themes...","theme"));
+	tb->setToolTip(__tr2qs_ctx("Get More Themes...","theme"));
 	connect(tb,SIGNAL(clicked()),this,SLOT(getMoreThemes()));
 
 	QWidget *w= new QWidget(hb);
@@ -182,7 +181,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 	m_pListWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pListWidget->setSortingEnabled(true);
 	connect(m_pListWidget,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(applyTheme(QListWidgetItem *)));
-	
+
 	//FIXME tooltip
 	//connect(m_pListWidget,SIGNAL(tipRequest(QListWidgetItem *,const QPoint &)),this,SLOT(tipRequest(QListWidgetItem *,const QPoint &)));
 	connect(m_pListWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
@@ -318,7 +317,7 @@ void KviThemeManagementDialog::installFromFile()
 	int iThemeCount=0;
 	QString szFileName;
 	QString szError;
-	
+
 	if(!KviFileDialog::askForOpenFileName(szFileName,__tr2qs_ctx("Open Theme - KVIrc","theme"),QString::null,KVI_FILTER_THEME))
 		return;
 	if(!KviThemeFunctions::installThemePackage(szFileName,szError,this))
@@ -387,7 +386,7 @@ bool KviThemeManagementDialog::hasSelectedItems()
 {
 	QList<QListWidgetItem*> itemsSelected = m_pListWidget->selectedItems ();
 	return itemsSelected.count()?true:false;
-	
+
 }
 
 void KviThemeManagementDialog::enableDisableButtons()

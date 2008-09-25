@@ -68,7 +68,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	QString szPackageDescription;
 	QString szPackageVersion;
 
-	m_szPackagePath = QDir::homeDirPath();
+	m_szPackagePath = QDir::homePath();
 	KviQString::ensureLastCharIs(m_szPackagePath,QChar(KVI_PATH_SEPARATOR_CHAR));
 
 	bool bPackagePathSet = false;
@@ -89,14 +89,14 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 			szPackageVersion = pThemeInfo->version();
 
 			m_szPackagePath += pThemeInfo->subdirectory();
-			if(m_szPackagePath.find(QRegExp("[0-9]\\.[0-9]")) == -1)
+			if(m_szPackagePath.indexOf(QRegExp("[0-9]\\.[0-9]")) == -1)
 			{
 				m_szPackagePath += "-";
 				m_szPackagePath += szPackageVersion;
 			}
 			m_szPackagePath += ".";
 			m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
-			
+
 			bPackagePathSet = true;
 		}
 	}
@@ -116,7 +116,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	// welcome page ==================================================================================
 	QWidget * pPage = new QWidget(this);
 	QGridLayout * pLayout = new QGridLayout(pPage);
-	
+
 	QLabel * pLabel = new QLabel(pPage);
 	QString szText = "<p>";
 	szText += __tr2qs_ctx("This procedure allows you to export the selected themes to a single package. It is useful when you want to distribute your themes to the public.","theme");
@@ -130,7 +130,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLabel->setText(szText);
 	pLayout->addWidget(pLabel,0,0);
 	pLayout->setRowStretch(1,1);
-	
+
 	addPage(pPage,__tr2qs_ctx("Welcome","theme"));
 	setBackEnabled(pPage,false);
 	setNextEnabled(pPage,true);
@@ -157,14 +157,14 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	for(pThemeInfo = m_pThemeInfoList->first();pThemeInfo;pThemeInfo = m_pThemeInfoList->next())
 	{
 		QString szThemeDescription;
-		
+
 		if(pixScreenshot.isNull())
 		{
 			pixScreenshot = pThemeInfo->smallScreenshot();
 			if(!pixScreenshot.isNull())
 				szScreenshotPath = pThemeInfo->smallScreenshotPath();
 		}
-		
+
 		KviThemeFunctions::getThemeHtmlDescription(
 			szThemeDescription,
 			pThemeInfo->name(),
@@ -184,7 +184,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 		szThemesDescription += szThemeDescription;
 		iIdx++;
 	}
-	
+
 	szThemesDescription += "</body></html>";
 
 	KviTalTextEdit * pTextEdit = new KviTalTextEdit(pPage);
@@ -213,13 +213,13 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the packager) and a short description of the package you're creating.","theme"));
 	pLabel->setTextFormat(Qt::RichText);
-	pLayout->addMultiCellWidget(pLabel,0,0,0,1);
-	
+	pLayout->addWidget(pLabel,0,0,1,2);
+
 	pLabel = new QLabel(pPage);
 	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("Package Name:","theme"));
 	pLayout->addWidget(pLabel,1,0);
-	
+
 	m_pPackageNameEdit = new QLineEdit(pPage);
 	m_pPackageNameEdit->setText(szPackageName);
 	pLayout->addWidget(m_pPackageNameEdit,1,1);
@@ -228,7 +228,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLabel->setWordWrap(true);
 	pLabel->setText(__tr2qs_ctx("Version:","theme"));
 	pLayout->addWidget(pLabel,2,0);
-	
+
 	m_pPackageVersionEdit = new QLineEdit(pPage);
 	m_pPackageVersionEdit->setText(szPackageVersion);
 	pLayout->addWidget(m_pPackageVersionEdit,2,1);
@@ -236,7 +236,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Description:","theme"));
 	pLayout->addWidget(pLabel,3,0);
-	
+
 	m_pPackageDescriptionEdit = new KviTalTextEdit(pPage);
 	m_pPackageDescriptionEdit->setText(szPackageDescription);
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
@@ -244,7 +244,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLabel = new QLabel(pPage);
 	pLabel->setText(__tr2qs_ctx("Package Author:","theme"));
 	pLayout->addWidget(pLabel,4,0);
-	
+
 	m_pPackagerNameEdit = new QLineEdit(pPage);
 	m_pPackagerNameEdit->setText(szPackageAuthor);
 	pLayout->addWidget(m_pPackagerNameEdit,4,1);
@@ -268,7 +268,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLabel->setText(__tr2qs_ctx("Here you can choose the image that will appear in the installation dialog for your theme package. It can be an icon, a logo or a screenshot and it should be not larger than 300x225. If you don't provide an image a simple default icon will be used at installation stage.","theme"));
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
-	
+
 	m_pImageLabel = new QLabel(pPage);
 	m_pImageLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
 	m_pImageLabel->setMinimumSize(300,225);
@@ -363,7 +363,7 @@ bool KviPackThemeDialog::packTheme()
 
 	QString szPackageAuthor = m_pPackagerNameEdit->text();
 	QString szPackageName = m_pPackageNameEdit->text();
-	QString szPackageDescription = m_pPackageDescriptionEdit->text();
+	QString szPackageDescription = m_pPackageDescriptionEdit->toPlainText();
 	QString szPackageVersion = m_pPackageVersionEdit->text();
 
 	QImage pix(m_szImagePath);
@@ -401,7 +401,7 @@ bool KviPackThemeDialog::packTheme()
 	{
 		QByteArray * pba = new QByteArray();
 		QBuffer buffer(pba,0);
-		buffer.open(IO_WriteOnly);
+		buffer.open(QIODevice::WriteOnly);
 		out.save(&buffer,"PNG");
 		buffer.close();
 		f.addInfoField("Image",pba); // cool :) [no disk access needed]
@@ -436,7 +436,7 @@ bool KviPackThemeDialog::packTheme()
 			QByteArray * pba = new QByteArray();
 
 			QBuffer bufferz(pba,0);
-			bufferz.open(IO_WriteOnly);
+			bufferz.open(QIODevice::WriteOnly);
 			pixScreenshot.save(&bufferz,"PNG");
 			bufferz.close();
 			f.addInfoField(szTmp,pba);
@@ -463,7 +463,7 @@ bool KviPackThemeDialog::packTheme()
 				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
-	
+
 	//KviPackageReader r;
 	//r.unpack("/root/test.kvt","/root/unpacked_test_kvt");
 
