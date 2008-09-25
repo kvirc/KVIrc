@@ -825,8 +825,7 @@ bool KviConfig::readBoolEntry(const QString & szKey,bool bTrue)
 	KviConfigGroup * p_group = getCurrentGroup();
 	QString * p_str = p_group->find(szKey);
 	if(!p_str)return bTrue;
-	static QString szTrue = "true";
-	return (KviQString::toLower(*p_str) == szTrue);
+	return p_str->toLower() == "true";
 }
 
 ////////////////////////////////// QRect

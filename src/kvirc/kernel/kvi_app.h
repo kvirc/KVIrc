@@ -177,8 +177,6 @@ public:
 	bool setOptionValue(const QString &optName,const QString &value);
 	void optionResetUpdate(int flags);
 
-	void contextSensitiveHelp();
-
 	// kvi_app_fs.cpp : Filesystem thingies
 	void getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString::null);
 	void getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString::null,bool bCreateIfNeeded = true);

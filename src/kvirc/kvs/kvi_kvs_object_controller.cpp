@@ -66,7 +66,6 @@ void KviKvsObjectController::init()
 	m_pObjectClass->registerFunctionHandler("name",KVI_PTR2MEMBER(KviKvsObject::function_name));
 	m_pObjectClass->registerFunctionHandler("startTimer",KVI_PTR2MEMBER(KviKvsObject::function_startTimer));
 	m_pObjectClass->registerFunctionHandler("killTimer",KVI_PTR2MEMBER(KviKvsObject::function_killTimer));
-	m_pObjectClass->registerFunctionHandler("killTimers",KVI_PTR2MEMBER(KviKvsObject::function_killTimers));
 	m_pObjectClass->registerFunctionHandler("className",KVI_PTR2MEMBER(KviKvsObject::function_className));
 	m_pObjectClass->registerFunctionHandler("findChild",KVI_PTR2MEMBER(KviKvsObject::function_findChild));
 	m_pObjectClass->registerFunctionHandler("childCount",KVI_PTR2MEMBER(KviKvsObject::function_childCount));

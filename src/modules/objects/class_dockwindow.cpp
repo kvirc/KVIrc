@@ -45,17 +45,10 @@
 		[class]widget[/class]
 	@description:
 		A window dockable to the KVIrc main frame borders (like a toolbar).
-		The window has an implicit layout that will automatically manage
-		the children depending on the dock window's orientation.
 	@functions:
 		!fn: $addWidget(<widget:hobject>)
 			Adds <widget> to the internal layout of this dock window.[br]
 			The widget must be a child of this dock window (otherwise strange things may happen).
-		!fn: <string> $orientation()
-			Returns the string "vertical" or "horizontal" depending on the orientation of this dock window.
-		!fn: $setOrientation(<orientation:string>)
-			Forces the orentation of this dock window. <ordientation> must be either "horizontal" or "vertical".[br]
-			Please note that KVIrc sets the orientation automatically when it is moved between the main frame docks by the user.
 		!fn: <bool> $resizeEnabled()
 			Returns $true if resizing of this window is enabled and false otherwise.
 		!fn: $setResizeEnabled(<bEnabled:bool>)
@@ -72,8 +65,6 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_dockwindow,"dockwindow","widget")
 	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"addWidget",function_addWidget)
-	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"orientation",function_orientation)
-	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"setOrientation",function_setOrientation)
 	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"resizeEnabled",function_resizeEnabled)
 	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"setResizeEnabled",function_setResizeEnabled)
 	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"setAllowedDockAreas",function_setAllowedDockAreas)
@@ -139,27 +130,6 @@ bool KviKvsObject_dockwindow::function_addWidget(KviKvsObjectFunctionCall *c)
 	}
 
 	_pDockWindow->setWidget((QWidget *)(pWidget->object()));
-	return true;
-}
-
-bool KviKvsObject_dockwindow::function_orientation(KviKvsObjectFunctionCall * c)
-{
-	if(!widget())return true; // hum ? dead ?
-	c->returnValue()->setString(QString("horizontal"));
-	return true;
-}
-
-bool KviKvsObject_dockwindow::function_setOrientation(KviKvsObjectFunctionCall * c)
-{
-	QString szOrientation;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("orientation",KVS_PT_NONEMPTYSTRING,0,szOrientation)
-	KVSO_PARAMETERS_END(c)
-
-	if(!widget())return true; // hum ? dead ?
-#ifndef COMPILE_USE_QT4
-	_pDockWindow->setOrientation(KviQString::equalCI(szOrientation,"vertical") ? Qt::Vertical : Qt::Horizontal);
-#endif //!COMPILE_USE_QT4
 	return true;
 }
 // Fix me

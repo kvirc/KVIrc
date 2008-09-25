@@ -33,9 +33,6 @@
 /** \def COMPILE_NEW_KVS Define if you want to compile with new parser */
 #define COMPILE_NEW_KVS 1
 
-/** \def COMPILE_USE_QT4 Define if you want to use the Qt 4.x support */
-#define COMPILE_USE_QT4
-
 /** \def COMPILE_ONLY_NEW_KVS Define if you want to use only the new KVS parser */
 #define COMPILE_ONLY_NEW_KVS 1
 

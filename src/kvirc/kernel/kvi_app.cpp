@@ -697,36 +697,6 @@ QTextCodec * KviApp::defaultSrvCodec()
 	return c;
 }
 
-void KviApp::contextSensitiveHelp()
-{
-	// this stuff doesn't work with Qt 4.x
-#ifndef COMPILE_USE_QT4
-	// the F1 Key has been pressed
-	// try to pass it to the active widget or one of its parents
-	QWidget * w = g_pApp->focusWidget();
-	while(w)
-	{
-		//QVariant v = w->property("contextSensitiveHelp"); <-- this prints a lot of warnings: this is a QT BUG
-		QMetaObject * o = w->metaObject();
-		if(o)
-		{
-			int i = o->findProperty("contextSensitiveHelp",true);
-			if(i != -1)
-			{
-				QVariant v = w->property("contextSensitiveHelp");
-				if(v.isValid() && v.toBool())
-					return; // done!
-			}
-		}
-		w = w->parentWidget();
-	}
-	// no way
-	// FIXME: just show up simple plain online help
-	//debug("No way: found no focus widget for that...");
-#endif
-}
-
-
 void KviApp::collectGarbage(QObject * garbage)
 {
 //	if(!g_pGarbageCollector)debug("Ops... no garbage collector ?");
@@ -743,10 +713,6 @@ void KviApp::loadDefaultScript()
 	cmd.replace("\\","\\\\");
 #endif
 	KviKvsScript::run(cmd,g_pFrame->firstConsole());
-	// now line up the toolbars (they may get messed while loading the script)
-#ifndef COMPILE_USE_QT4
-	g_pFrame->lineUpDockWindows(); // missing on Qt 4.x
-#endif
 }
 
 // 07.01.2005 06:01: Got this curious gcc error while writing

@@ -421,13 +421,13 @@ bool KviIconWidget::eventFilter(QObject * o,QEvent *e)
 			} else {
 				if(const QPixmap * pix = ((QLabel *)o)->pixmap())
 				{
-// FIXME: In Qt 4.x this stuff needs to be ported to a different api.. which one ?
-#ifndef COMPILE_USE_QT4
-					QDragObject * drobj = new QTextDrag(o->name(),this);
-					drobj->setPixmap(*pix,((QLabel *)o)->mapFromGlobal(QCursor::pos()));
-					drobj->dragCopy();
-#endif
-					return true;
+					QDrag *drobj = new QDrag(this);
+					QMimeData *mimeData = new QMimeData;
+				
+					mimeData->setText(o->objectName());
+					mimeData->setImageData(*pix);
+					drobj->setMimeData(mimeData);
+					drobj->setPixmap(*pix);
 				}
 			}
 		}

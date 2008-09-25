@@ -1014,15 +1014,6 @@ bool KviKvsObject::function_killTimer(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
-bool KviKvsObject::function_killTimers(KviKvsObjectFunctionCall * c)
-{
-	// FIXME: QT4 does not seem to have QObject::killTimers()
-#ifndef COMPILE_USE_QT4
-	killTimers();
-#endif
-	return true;
-}
-
 bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 {
 	bool bArray;

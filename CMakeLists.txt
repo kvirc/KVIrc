@@ -277,8 +277,6 @@ IF(QT4_FOUND)
 	SET(QT_USE_QTXML true)
 	SET(QT_USE_QTNETWORK true)
 
-	SET(COMPILE_USE_QT4 1)
-
 	# Qt-DBus support
 	OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" ON)
 	IF(WITHOUT_QTDBUS)

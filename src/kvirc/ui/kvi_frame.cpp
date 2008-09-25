@@ -440,7 +440,7 @@ void KviFrame::accelActivated()
 		//case (Qt::Key_Left+Qt::ALT+Qt::SHIFT): switchToPrevWindowInContext(); break;
 		//case (Qt::Key_Right+Qt::ALT+Qt::SHIFT): switchToNextWindowInContext(); break;
 		case (Qt::Key_F4+Qt::CTRL):	if(g_pActiveWindow)g_pActiveWindow->close(); break;
-		case (Qt::Key_F1): g_pApp->contextSensitiveHelp(); break;
+// 		case (Qt::Key_F1): g_pApp->contextSensitiveHelp(); break;
 /*		case(Qt::Key_F1 + SHIFT):
 			item = m_pWindowList->item(0);
 			if(item) setActiveWindow(item->window());

@@ -88,18 +88,12 @@
 #include <QRegExp>
 #include <QDebug>
 
-// FIXME: Qt4 #include <QMimeData>
-//#include <q3mimefactory.h>
-
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
-
 
 extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
 extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
-
-// %tmp[] = $str.grep("test",%array[])
 
 KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 #ifdef COMPILE_ON_WINDOWS

@@ -54,8 +54,6 @@
 		Sets the toolbar's label.
 		!fn: <string> $label()
 		Returns the toolbar's label.
-		!fn: $setStretchableWidget(<widget:object>)
-		Sets the <widget> to be expanded.
 		!fn: $clear()
 		Deletes all the toolbar's child widgets.
 
@@ -66,7 +64,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbar,"toolbar","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbar,"addSeparator", functionaddSeparator)
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbar,"setLabel", functionsetLabel)
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbar,"label", functionlabel)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbar,"setStretchableWidget", functionsetStretchableWidget)
 	KVSO_REGISTER_HANDLER(KviKvsObject_toolbar,"clear", functionclear)
 KVSO_END_REGISTERCLASS(KviKvsObject_toolbar)
 
@@ -116,37 +113,6 @@ bool KviKvsObject_toolbar::functionlabel(KviKvsObjectFunctionCall *c)
 {
 	if (widget()) c->returnValue()->setString(((KviTalToolBar *)widget())->windowTitle());
 	return true;
-}
-//FIX ME
-bool KviKvsObject_toolbar::functionsetStretchableWidget(KviKvsObjectFunctionCall *c)
-{
-	KviKvsObject *ob;
-	kvs_hobject_t hObject;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-	KVSO_PARAMETERS_END(c)
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!widget()) return true;
-	if (!ob)
-	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
-		return true;
-	}
-	if (!ob->object())
-	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
-		return true;
-	}
-	if(!ob->object()->inherits("KviKvsObject_widget"))
-    {
-		c->warning(__tr2qs("Widget object required"));
-        return TRUE;
-    }
-#ifndef COMPILE_USE_QT4
-	// FIXME: no support for this in Qt4 ?
-	if(widget()) ((KviTalToolBar *)widget())->setStretchableWidget(((QWidget  *)(ob->object())));
-#endif //!COMPILE_USE_QT4
-	return true;	
 }
 bool KviKvsObject_toolbar::functionclear(KviKvsObjectFunctionCall *c)
 {

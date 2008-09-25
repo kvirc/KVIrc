@@ -90,11 +90,6 @@
 
 #endif
 
-#ifndef COMPILE_USE_QT4
-	// It's now a requirement! (until we cleanup the code and will be able to remove this conditional at all)
-	#define COMPILE_USE_QT4
-#endif
-
 #define KVI_VERSION KVIRC_VERSION_RELEASE
 
 #ifndef KVIRC_VERSION_BRANCH

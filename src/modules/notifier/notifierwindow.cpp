@@ -307,14 +307,12 @@ void KviNotifierWindow::doShow(bool bDoAnimate)
 			m_bNextDown = false;
 			m_bWriteDown = false;
 			m_bBlinkOn = false;
-		#if (!defined COMPILE_USE_QT4) || !(defined(COMPILE_USE_QT4) && (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC) || defined(COMPILE_ON_MINGW)))
 			m_imgDesktop = QPixmap::grabWindow(
 						QApplication::desktop()->winId(),
 						m_wndRect.x(),
 						m_wndRect.y(),
 						m_wndRect.width(),
 						m_wndRect.height()).toImage();
-		#endif
 			// QPixmap tmp = QPixmap::grabWindow( QApplication::desktop()->winId(),m_wndRect.x(), m_wndRect.y(), m_wndRect.width(), m_wndRect.height());
 			// tmp.save("/root/pix.png","PNG");
 			m_pixForeground = QPixmap(m_pixBackground.size());

@@ -158,7 +158,6 @@ protected:
 	bool function_name(KviKvsObjectFunctionCall *c);
 	bool function_startTimer(KviKvsObjectFunctionCall *c);
 	bool function_killTimer(KviKvsObjectFunctionCall *c);
-	bool function_killTimers(KviKvsObjectFunctionCall *c);
 	bool function_className(KviKvsObjectFunctionCall *c);
 	bool function_findChild(KviKvsObjectFunctionCall *c);
 	bool function_childCount(KviKvsObjectFunctionCall *c);
