@@ -30,14 +30,6 @@
 #include <QColor>
 #include <QPainter>
 
-/*
-#ifdef QT3_SUPPORT
-	#include <Q3Painter>
-#else
-	#include <qpainter.h>
-#endif
-*/
-
 KviNotifierWindowBody::KviNotifierWindowBody(QRect r)
 {
 	loadImages();

@@ -244,10 +244,9 @@ void KviHelpWindow::showIndexTopic()
 
 void KviHelpWindow::searchInIndex( const QString &s )
 {
-	QListWidgetItem *item ;//= m_pIndexListWidget->firstItem();
+	QListWidgetItem *item ;
 	QString sl = s.toLower();
 	for(int i=0;i<m_pIndexListWidget->count();i++)
-//	while ( i ) {
 	{
 		item=m_pIndexListWidget->item(i);
 		QString t = item->text();
@@ -257,7 +256,6 @@ void KviHelpWindow::searchInIndex( const QString &s )
 			m_pIndexListWidget->scrollToItem(item,QAbstractItemView::PositionAtTop);
 			break;
 		}
-	//	i = i->next();
 	}
 }
 

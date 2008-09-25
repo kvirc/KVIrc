@@ -1139,8 +1139,7 @@ bool KviKvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall * c)
 
 	QTextStream ts( &file );
 	QString txt = ts.readAll();
-	//if ( !Q3StyleSheet::mightBeRichText( txt ) )
-	//txt = Q3StyleSheet::convertFromPlainText( txt, Q3StyleSheetItem::WhiteSpacePre );
+	//settext tries to understand if the text is html or plain
 	((QTextEdit *)widget())->setText( txt );
 
 	file.close();

@@ -28,12 +28,6 @@
 
 #ifdef COMPILE_DCC_CANVAS
 	#include <QCanvas>
-	
-	//#ifdef QT_NO_CANVAS
-	//	#warning "Here is not"
-	//#endif
-	
-	
 	#include <QMenuBar>
 	#include <QLabel>
 	#include <QMap>
@@ -256,7 +250,6 @@
 	};
 	
 
-	// For Qt3.0 this might need to be changed
 	class KviVariantTableItem : public QTableItem
 	{
 	public:

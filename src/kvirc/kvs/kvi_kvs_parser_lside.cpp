@@ -154,9 +154,6 @@
 		to be replaced by the captured text.[br]
 		(We use \\N because KVIrc will first unquote the string when parsing...)[br]
 		\\0 is a special escape that will be replaced by the entire match (is always valid!).[br]
-		WARNING: the "capture-text" feature is not available if KVIrc has been compiled
-		with qt older than 3.0.0. You can find out if the feature is available by
-		looking for the string "Qt3" in the array returned by [fnc]$features[/fnc].[br]
 		[flags] may be a combination of the letters 'g','i' and 'w'.[br]
 		'g' causes the search to be global and not stop after the first occurence of <search pattern>.[br]
 		'i' causes the search to be case insensitive.[br]

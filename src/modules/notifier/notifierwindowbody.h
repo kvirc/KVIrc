@@ -34,22 +34,11 @@
 
 class QPainter;
 
-/*
-#ifdef QT3_SUPPORT
-	#define QPainter Q3Painter
-#endif
-*/
-
-
 class KviNotifierWindowBody
 {
 public:
 	KviNotifierWindowBody(QRect r);
 	~KviNotifierWindowBody();
-
-// ================================
-// Put members declaration below...
-// ================================
 private:
 	QRect 	m_rct;
 	QPoint	m_pnt;
@@ -91,18 +80,8 @@ private:
 	int m_prevIconState;
 	int m_nextIconState;
 	int m_writeIconState;
-
-public:
-
-protected:
-
-
-// ================================
-// Put methods declaration below...
-// ================================
 private:
 	void loadImages();
-
 public:
 	void setWidth(int w);
 	void setHeight(int h);
@@ -139,9 +118,6 @@ public:
 	void mouseMoveEvent(QMouseEvent * e);
 	void mousePressEvent(QMouseEvent * e);
 	void mouseReleaseEvent(QMouseEvent * e);
-
-protected:
-
 };
 
 #endif //!_KVINOTIFIERWINDOWBODY_H_

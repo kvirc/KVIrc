@@ -50,11 +50,6 @@
 #include <QStyleOption>
 #include <QTextDocument>
 
-//#include <q3simplerichtext.h>
-//#define QSimpleRichText Q3SimpleRichText
-
-
-
 KviMdiCaptionButton::KviMdiCaptionButton(const QPixmap &pix,QWidget * parent,const char * name)
 : QToolButton(parent)
 {
@@ -212,15 +207,11 @@ void KviMdiCaption::paintEvent(QPaintEvent * e)
 	if (m_bActive)text=((KviMdiChild *)parent())->xmlActiveCaption();
 	else text=((KviMdiChild *)parent())->xmlInactiveCaption();
 
-	// Q3SimpleRichText rt(text,font());
-
-	// QSimpleRichText rt(m_bActive ? ((KviMdiChild *)parent())->xmlActiveCaption() : ((KviMdiChild *)parent())->xmlInactiveCaption(),font()); 
-	// rt.draw(&p,height() + 2,-1,rect(),colorGroup()); 
-	 QTextDocument doc;
-	 p.translate(16,0);
-	 doc.setHtml(text);
-	 doc.setDefaultFont(font());
-	 doc.drawContents(&p);
+	QTextDocument doc;
+	p.translate(16,0);
+	doc.setHtml(text);
+	doc.setDefaultFont(font());
+	doc.drawContents(&p);
 }
 
 void KviMdiCaption::mouseReleaseEvent(QMouseEvent *)

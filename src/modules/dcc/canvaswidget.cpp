@@ -31,7 +31,7 @@
 	
 	#include <QCursor>
 	#include <QPainter>
-	#include <q3simplerichtext.h>
+	#include <QTextDocument>
 	#include <QLineEdit>
 	#include <QComboBox>
 	#include <QValidator>

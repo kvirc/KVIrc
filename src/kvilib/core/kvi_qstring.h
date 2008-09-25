@@ -139,18 +139,6 @@ namespace KviQString
 	extern KVILIB_API const QString empty;
 
 	/**
-	* \brief A portability wrapper which with Qt3 and Qt4.
-	*
-	* Returns a lowcase version of the parameter string.
-	* \param s The source string
-	* \return QString
-	*/
-	inline QString toLower(const QString & s)
-	{
-		return s.toLower();
-	}
-
-	/**
 	* \brief Returns the index position of the last occurrence of the character
 	*
 	* The search is made forward starting from index.

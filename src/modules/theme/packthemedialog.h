@@ -33,7 +33,6 @@
 
 class QLineEdit;
 class QLabel;
-//class Q3MultiLineEdit;
 class KviTalTextEdit;
 class KviFileSelector;
 
