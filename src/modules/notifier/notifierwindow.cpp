@@ -56,10 +56,9 @@ extern KviNotifierWindow * g_pNotifierWindow;
 KviNotifierWindow::KviNotifierWindow()
 : QWidget(0,
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-			Qt::WStyle_Customize |
-			Qt::WStyle_NoBorder |
-			Qt::WStyle_Tool |
-			Qt::WStyle_StaysOnTop)
+			Qt::FramelessWindowHint |
+			Qt::Tool |
+			Qt::WindowStaysOnTopHint)
 #else
 			Qt::FramelessWindowHint |
 #ifndef COMPILE_ON_MAC
