@@ -1,5 +1,5 @@
 Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
+# Visual C++ Express 2008
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FA3DAF6C-ACA5-4F39-A581-5740FEF32BAF}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kvirc", "src\kvirc\kvirc_QT4_vc05.vcproj", "{92803FDD-DFDB-461D-8AA3-1F201F4EA06C}"
@@ -170,11 +170,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "logview", "src\modules\logv
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "objects", "src\modules\objects\objects.vcproj", "{A58E91C7-B9B7-4BBA-A79D-73EDE4C99D62}"
-	ProjectSection(ProjectDependencies) = postProject
-		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
-	EndProjectSection
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "popupeditor", "src\modules\popupeditor\popupeditor_QT4_vc05.vcproj", "{078F074D-5696-47FC-8848-325344C87EB3}"
 	ProjectSection(ProjectDependencies) = postProject
 		{92803FDD-DFDB-461D-8AA3-1F201F4EA06C} = {92803FDD-DFDB-461D-8AA3-1F201F4EA06C}
@@ -299,6 +294,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "torrent", "src\modules\torrent\torrent_QT4_vc05.vcproj", "{3A215B90-64EF-4A95-859E-F5CD38016258}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "reguser", "src\modules\reguser\reguser_QT4_vc05.vcproj", "{EBA84F00-581C-4105-8967-340E1D6431C3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "classeditor", "src\modules\classeditor\classeditor_QT4_vc05.vcproj", "{B7C9B5A8-4C5C-4639-9147-CD66FCB719B8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "objects", "src\modules\objects\objects_QT4_vc05.vcproj", "{02F67265-3895-42D2-B342-2ED5F6B84C70}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -438,10 +437,6 @@ Global
 		{0895E8B5-8A1B-4993-8DFE-BADDB5FC1415}.Debug|Win32.Build.0 = Debug|Win32
 		{0895E8B5-8A1B-4993-8DFE-BADDB5FC1415}.Release|Win32.ActiveCfg = Release|Win32
 		{0895E8B5-8A1B-4993-8DFE-BADDB5FC1415}.Release|Win32.Build.0 = Release|Win32
-		{A58E91C7-B9B7-4BBA-A79D-73EDE4C99D62}.Debug|Win32.ActiveCfg = Debug|Win32
-		{A58E91C7-B9B7-4BBA-A79D-73EDE4C99D62}.Debug|Win32.Build.0 = Debug|Win32
-		{A58E91C7-B9B7-4BBA-A79D-73EDE4C99D62}.Release|Win32.ActiveCfg = Release|Win32
-		{A58E91C7-B9B7-4BBA-A79D-73EDE4C99D62}.Release|Win32.Build.0 = Release|Win32
 		{078F074D-5696-47FC-8848-325344C87EB3}.Debug|Win32.ActiveCfg = Debug|Win32
 		{078F074D-5696-47FC-8848-325344C87EB3}.Debug|Win32.Build.0 = Debug|Win32
 		{078F074D-5696-47FC-8848-325344C87EB3}.Release|Win32.ActiveCfg = Release|Win32
@@ -558,6 +553,14 @@ Global
 		{EBA84F00-581C-4105-8967-340E1D6431C3}.Debug|Win32.Build.0 = Debug|Win32
 		{EBA84F00-581C-4105-8967-340E1D6431C3}.Release|Win32.ActiveCfg = Release|Win32
 		{EBA84F00-581C-4105-8967-340E1D6431C3}.Release|Win32.Build.0 = Release|Win32
+		{B7C9B5A8-4C5C-4639-9147-CD66FCB719B8}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B7C9B5A8-4C5C-4639-9147-CD66FCB719B8}.Debug|Win32.Build.0 = Debug|Win32
+		{B7C9B5A8-4C5C-4639-9147-CD66FCB719B8}.Release|Win32.ActiveCfg = Release|Win32
+		{B7C9B5A8-4C5C-4639-9147-CD66FCB719B8}.Release|Win32.Build.0 = Release|Win32
+		{02F67265-3895-42D2-B342-2ED5F6B84C70}.Debug|Win32.ActiveCfg = Debug|Win32
+		{02F67265-3895-42D2-B342-2ED5F6B84C70}.Debug|Win32.Build.0 = Debug|Win32
+		{02F67265-3895-42D2-B342-2ED5F6B84C70}.Release|Win32.ActiveCfg = Release|Win32
+		{02F67265-3895-42D2-B342-2ED5F6B84C70}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

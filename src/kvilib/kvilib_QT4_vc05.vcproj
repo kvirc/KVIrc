@@ -44,7 +44,7 @@
 				Optimization="0"
 				FavorSizeOrSpeed="1"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include\&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;&quot;$(ZLIBINCDIR)&quot;"
-				PreprocessorDefinitions="WIN32;_DEBUG;QT3_SUPPORT;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE;__KVILIB__"
+				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE;__KVILIB__"
 				MinimalRebuild="true"
 				BasicRuntimeChecks="3"
 				RuntimeLibrary="1"
@@ -64,7 +64,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt3support4.lib qtcore4.lib qtnetwork4.lib qtgui4.lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib advapi32.lib user32.lib"
+				AdditionalDependencies="qtcore4.lib qtnetwork4.lib qtgui4.lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib advapi32.lib user32.lib"
 				OutputFile="$(OutDir)\kvilib.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(QTDIR)\lib&quot;;&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE\&quot;;&quot;$(SolutionDir)\win32build\bin\&quot;;&quot;$(ZLIBLIBDIR)&quot;"
@@ -131,7 +131,7 @@
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\tal&quot;;&quot;$(ProjectDir)\system&quot;;&quot;$(ProjectDir)\irc&quot;;&quot;$(ProjectDir)\file&quot;;&quot;$(ProjectDir)\ext&quot;;&quot;$(ProjectDir)\net&quot;;&quot;$(ProjectDir)\core\wstring&quot;;&quot;$(ProjectDir)\core&quot;;&quot;$(ProjectDir)\config&quot;;&quot;$(SSLINCDIR)&quot;;&quot;$(QTDIR)\include\&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;&quot;$(ZLIBINCDIR)&quot;"
-				PreprocessorDefinitions="WIN32;QT3_SUPPORT;NDEBUG;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE;__KVILIB__"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;KVILIB_EXPORTS;_CRT_SECURE_NO_DEPRECATE;__KVILIB__"
 				MinimalRebuild="false"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
@@ -151,7 +151,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt3support4.lib qtcore4.lib qtgui4.lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib  advapi32.lib user32.lib"
+				AdditionalDependencies="qtcore4.lib qtgui4.lib qtmain.lib libeay32.lib SSLeay32.lib ws2_32.lib  advapi32.lib user32.lib"
 				OutputFile="$(OutDir)\kvilib.dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
@@ -407,14 +407,6 @@
 			</File>
 			<File
 				RelativePath=".\tal\kvi_tal_itemdelegates.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_listbox.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_listview.cpp"
 				>
 			</File>
 			<File
@@ -1878,52 +1870,6 @@
 			<File
 				RelativePath=".\tal\kvi_tal_itemdelegates.h"
 				>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_listbox.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step For $(InputName)"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						Description="Performing Custom Build Step $(InputName)"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\$(InputName).moc"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath=".\tal\kvi_tal_listview.h"
-				>
-				<FileConfiguration
-					Name="Debug|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\$(InputName).moc"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Release|Win32"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-						Outputs="$(InputDir)\$(InputName).moc"
-					/>
-				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\tal\kvi_tal_listwidget.h"

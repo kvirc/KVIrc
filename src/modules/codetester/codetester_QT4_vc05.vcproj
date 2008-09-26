@@ -63,7 +63,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt3support4.lib qtcore4.lib qtgui4.lib qtmain.lib kvilib.lib kvirc.lib"
+				AdditionalDependencies="qtcore4.lib qtgui4.lib qtmain.lib kvilib.lib kvirc.lib"
 				OutputFile="$(OutDir)/kvi$(ProjectName).dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
@@ -135,7 +135,7 @@
 				EnableFiberSafeOptimizations="true"
 				WholeProgramOptimization="true"
 				AdditionalIncludeDirectories="&quot;$(ProjectDir)\..\..\kvirc\ui&quot;;&quot;$(ProjectDir)\..\..\kvilib\core&quot;;&quot;$(ProjectDir)\..\..\kvirc\module&quot;;&quot;$(ProjectDir)\..\..\kvilib\config&quot;;&quot;$(QTDIR)\include&quot;;&quot;$(ProjectDir)\..\..\kvilib\system&quot;;&quot;$(ProjectDir)\..\..\kvirc\uparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\sparser&quot;;&quot;$(ProjectDir)\..\..\kvirc\kernel&quot;;&quot;$(ProjectDir)\..\..\kvilib\ext&quot;;&quot;$(ProjectDir)\..\..\kvilib\irc&quot;;&quot;$(ProjectDir)\..\..\kvilib\tal&quot;;&quot;$(ProjectDir)\..\..\kvirc\kvs&quot;;&quot;$(ProjectDir)\..\..\kvilib\file&quot;;&quot;$(ProjectDir)\..\..\kvilib\net&quot;;&quot;$(QTDIR)\include\Qt3Support&quot;;&quot;$(QTDIR)\include\QtCore\&quot;;&quot;$(QTDIR)\include\QtGui&quot;;&quot;$(QTDIR)\include\Qt&quot;;&quot;$(QTDIR)\include\QtNetwork&quot;;&quot;$(QTDIR)\include\QtXml&quot;;"
-				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CODETESTER_EXPORTS;_CRT_SECURE_NO_DEPRECATE;QT3_SUPPORT;"
+				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS;_USRDLL;CODETESTER_EXPORTS;_CRT_SECURE_NO_DEPRECATE;"
 				StringPooling="true"
 				MinimalRebuild="true"
 				ExceptionHandling="1"
@@ -156,7 +156,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="kvilib.lib kvirc.lib  qt3support4.lib qtgui4.lib qtcore4.lib"
+				AdditionalDependencies="kvilib.lib kvirc.lib   qtgui4.lib qtcore4.lib"
 				OutputFile="$(OutDir)/kvi$(ProjectName).dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
