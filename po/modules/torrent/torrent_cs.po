@@ -2,12 +2,12 @@
 # Copyright (C) 2004 THE Kvirc'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the Kvirc package.
 # Dušan Hokův <dusan@mirc.cz>, 2007.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 21:10+0200\n"
+"POT-Creation-Date: 2008-09-20 22:44+0200\n"
 "PO-Revision-Date: 2007-12-05 18:20+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:41
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Vybírám interface torrent klienta \"%Q\""
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:57
 #, c-format
 msgid "Index out of range: %d [0-%d]!"
 msgstr "Index mimo rozsah: %d [0-%d]!"
@@ -40,7 +40,7 @@ msgstr "Neplatný interface klienta \"%Q\"!"
 msgid "Last interface error: "
 msgstr "POslední chyba interfacu:"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:91
+#: src/modules/torrent/tc_statusbarapplet.cpp:90
 msgid "No client selected!"
 msgstr "Nebyl zvolen klient!"
 
@@ -58,7 +58,7 @@ msgid ""
 "function"
 msgstr "Zvolený interface torrent klienta selhal ve spuštění požadované funkce"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:60
+#: src/modules/torrent/tc_statusbarapplet.cpp:59
 msgid "Torrent Client"
 msgstr ""
 

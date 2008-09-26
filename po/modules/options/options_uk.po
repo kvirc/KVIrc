@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 22:45+0200\n"
+"POT-Creation-Date: 2008-09-26 22:34+0200\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -21,8 +21,7 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " байт"
 
@@ -34,8 +33,7 @@ msgstr " рядків"
 msgid " min"
 msgstr " хвилин"
 
-#: src/modules/options/optw_lag.cpp:45
-#: src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_connection.cpp:151
 #: src/modules/options/optw_dcc.cpp:268
 #: src/modules/options/optw_ircview.cpp:157
@@ -55,8 +53,7 @@ msgstr " запитів"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:92
 #: src/modules/options/optw_connection.cpp:85
 #: src/modules/options/optw_connection.cpp:149
-#: src/modules/options/optw_avatar.cpp:96
-#: src/modules/options/optw_dcc.cpp:140
+#: src/modules/options/optw_avatar.cpp:96 src/modules/options/optw_dcc.cpp:140
 msgid " sec"
 msgstr " сек"
 
@@ -64,7 +61,7 @@ msgstr " сек"
 msgid " usec"
 msgstr " мксек"
 
-#: src/modules/options/optw_messages.cpp:85
+#: src/modules/options/optw_messages.cpp:82
 msgid "\"Smart\" nickname colors"
 msgstr "\"Розумні\" кольори ніків"
 
@@ -92,8 +89,7 @@ msgstr "&Новий Проксі"
 msgid "&New Server"
 msgstr "&Новий сервер"
 
-#: src/modules/options/optw_servers.cpp:335
-#: src/modules/options/dialog.cpp:229
+#: src/modules/options/optw_servers.cpp:335 src/modules/options/dialog.cpp:229
 #: src/modules/options/optw_identity.cpp:228
 #: src/modules/options/container.cpp:64
 msgid "&OK"
@@ -1545,7 +1541,7 @@ msgstr "Активний текст (вторинний)"
 msgid "Active window"
 msgstr "Показувати в активному вікні"
 
-#: src/modules/options/optw_texticons.cpp:111
+#: src/modules/options/optw_texticons.cpp:117
 msgid "Add"
 msgstr "Додати"
 
@@ -1554,10 +1550,8 @@ msgstr "Додати"
 msgid "Add Rule"
 msgstr "Додати правило"
 
-#: src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102
-#: src/modules/options/optw_irc.h:59
-#: src/modules/options/optw_irc.h:101
+#: src/modules/options/optw_dcc.h:58 src/modules/options/optw_dcc.h:102
+#: src/modules/options/optw_irc.h:59 src/modules/options/optw_irc.h:101
 #: src/modules/options/optw_identity.h:168
 #: src/modules/options/optw_connection.h:45
 msgid "Advanced"
@@ -1613,7 +1607,7 @@ msgstr "Попереджати з появою подсвечиваємих сл
 msgid "Alert for query messages"
 msgstr "Попереджати при одержанні особистих повідомлень"
 
-#: src/modules/options/optw_messages.cpp:408
+#: src/modules/options/optw_messages.cpp:361
 msgid "Alert level:"
 msgstr "Рівень попереджень:"
 
@@ -1673,8 +1667,7 @@ msgstr "Додати до відповіді VERSION:"
 msgid "Auto flush logs every"
 msgstr "Автоматично записувати логі кожні"
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Автоопределение"
 
@@ -1686,8 +1679,7 @@ msgstr "Автоматичне визначення"
 msgid "Automatically Log"
 msgstr "Автоматично журналювати"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Автоматично приймати"
@@ -1789,7 +1781,7 @@ msgstr "Фонове зображення"
 msgid "Background image:"
 msgstr "Фонове зображення:"
 
-#: src/modules/options/optw_messages.cpp:391
+#: src/modules/options/optw_messages.cpp:336
 msgid "Background:"
 msgstr "Тло:"
 
@@ -1841,8 +1833,7 @@ msgid "Cache IP address"
 msgstr "Кеширувати IP адреса"
 
 #: src/modules/options/optw_servers.cpp:341
-#: src/modules/options/optw_servers.cpp:827
-#: src/modules/options/dialog.cpp:244
+#: src/modules/options/optw_servers.cpp:827 src/modules/options/dialog.cpp:244
 #: src/modules/options/optw_identity.cpp:91
 #: src/modules/options/optw_identity.cpp:233
 #: src/modules/options/container.cpp:72
@@ -1850,8 +1841,7 @@ msgstr "Кеширувати IP адреса"
 msgid "Cancel"
 msgstr "О&тмена"
 
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_userlist.cpp:143
 #: src/modules/options/optw_userlist.cpp:148
 #: src/modules/options/optw_ircview.cpp:67
@@ -1922,11 +1912,11 @@ msgstr "Затемненность дочірніх вікон:"
 msgid "Choose Avatar - KVIrc"
 msgstr "Вибір аватара - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:563
+#: src/modules/options/optw_messages.cpp:534
 msgid "Choose a Filename - KVIrc"
 msgstr "Виберіть ім'я файлу - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:620
+#: src/modules/options/optw_messages.cpp:591
 msgid "Choose a Filename - KVIrc "
 msgstr "Виберіть ім'я файлу - KVIrc "
 
@@ -1950,17 +1940,15 @@ msgstr "Очистити список"
 msgid "Close in tray"
 msgstr "Згортатись в трей при закритті вікна"
 
-#: src/modules/options/dialog.cpp:231
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:231 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Закрити цей діалог, застосувавши всі зміни."
 
-#: src/modules/options/dialog.cpp:246
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:246 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Закрити цей діалог, забувши про всі зміни."
 
-#: src/modules/options/optw_messages.h:169
+#: src/modules/options/optw_messages.h:183
 msgid "Color Set"
 msgstr "Набір квітів"
 
@@ -1972,8 +1960,7 @@ msgstr "Дружній режим командного рядка"
 msgid "Commit all changes immediately."
 msgstr "Застосувати всі зміни негайно."
 
-#: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_notify.cpp:41 src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
 #: src/modules/options/optw_proxy.cpp:105
 msgid "Configuration"
@@ -2099,7 +2086,7 @@ msgstr "Кодування тексту за замовчуванням:"
 msgid "Delay between attempts:"
 msgstr "Затримка між спробами:"
 
-#: src/modules/options/optw_texticons.cpp:115
+#: src/modules/options/optw_texticons.cpp:121
 msgid "Delete"
 msgstr "Видалити"
 
@@ -2160,7 +2147,7 @@ msgstr "Не посилати запити /WHO"
 msgid "Do not show any identd messages"
 msgstr "Не офарблювати повідомлення користувачів"
 
-#: src/modules/options/optw_messages.cpp:81
+#: src/modules/options/optw_messages.cpp:78
 msgid "Don't show colors in user messages"
 msgstr "Не офарблювати повідомлення користувачів"
 
@@ -2189,7 +2176,7 @@ msgstr "Каталог завантаження:"
 msgid "Draw nickname grid"
 msgstr "Малювати сітку між ніками"
 
-#: src/modules/options/optw_messages.cpp:80
+#: src/modules/options/optw_messages.cpp:77
 msgid "Draw some emoticons (smileys) as pictures"
 msgstr "Малювати деякі іконки (смайли) як картинки"
 
@@ -2202,7 +2189,7 @@ msgstr "Показувати тему каналу"
 msgid "Edit Rule"
 msgstr "Редагувати правило"
 
-#: src/modules/options/optw_texticons.cpp:82
+#: src/modules/options/optw_texticons.cpp:81
 msgid "Emoticon"
 msgstr ""
 
@@ -2412,7 +2399,7 @@ msgstr "Передній план"
 msgid "Foreground color"
 msgstr "Кольори переднього плану"
 
-#: src/modules/options/optw_messages.cpp:400
+#: src/modules/options/optw_messages.cpp:349
 msgid "Foreground:"
 msgstr "Передній план:"
 
@@ -2421,12 +2408,10 @@ msgid "Gender:"
 msgstr "Стать:"
 
 #: src/modules/options/optw_servers.cpp:215
-#: src/modules/options/optw_messages.cpp:77
-#: src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_messages.cpp:74 src/modules/options/optw_dcc.h:45
 #: src/modules/options/optw_dcc.h:88
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_irc.h:45
-#: src/modules/options/optw_irc.h:89
+#: src/modules/options/optw_irc.h:45 src/modules/options/optw_irc.h:89
 #: src/modules/options/optw_identity.h:119
 msgid "General"
 msgstr "Загальні"
@@ -2641,8 +2626,7 @@ msgstr "Неактивний текст (первинний)"
 msgid "Inactive Text (Secondary)"
 msgstr "Неактивний текст (вторинний)"
 
-#: src/modules/options/optw_input.h:33
-#: src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr "Уведення"
 
@@ -2677,8 +2661,7 @@ msgstr "Настроювання KVIrc"
 msgid "Keep away list updated by sending WHO requests"
 msgstr ""
 
-#: src/modules/options/optw_irc.cpp:109
-#: src/modules/options/optw_irc.cpp:118
+#: src/modules/options/optw_irc.cpp:109 src/modules/options/optw_irc.cpp:118
 msgid "Keep channel open"
 msgstr "Зберігати канал відкритим"
 
@@ -2763,7 +2746,7 @@ msgstr "Затримка спливаючих підказок:"
 msgid "Listen on address/interface:"
 msgstr "Слухати адреса/інтерфейс:"
 
-#: src/modules/options/optw_messages.cpp:432
+#: src/modules/options/optw_messages.cpp:386
 msgid "Load From..."
 msgstr "Завантажити з..."
 
@@ -2779,7 +2762,7 @@ msgstr "Розташування:"
 msgid "Log joined channels history"
 msgstr "Запам'ятовувати канали, на які ви заходите"
 
-#: src/modules/options/optw_messages.cpp:428
+#: src/modules/options/optw_messages.cpp:382
 msgid "Log this"
 msgstr "Журналювати"
 
@@ -2894,10 +2877,6 @@ msgstr "Повідомлення у вигляді регулярного вир
 #: src/modules/options/optw_messages.h:54
 msgid "Message Style"
 msgstr "Стиль повідомлень"
-
-#: src/modules/options/optw_messages.cpp:380
-msgid "Message Type"
-msgstr "Типи повідомлень"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Mid-Contrast Foreground"
@@ -3045,7 +3024,7 @@ msgstr "Альтернативні ніки"
 msgid "Nickname:"
 msgstr "Нік:"
 
-#: src/modules/options/optw_messages.cpp:83
+#: src/modules/options/optw_messages.cpp:80
 msgid "Nicknames"
 msgstr "Нікі"
 
@@ -3096,8 +3075,7 @@ msgstr "Ok"
 msgid "Ok"
 msgstr "Ок"
 
-#: src/modules/options/optw_irc.cpp:169
-#: src/modules/options/optw_irc.cpp:181
+#: src/modules/options/optw_irc.cpp:169 src/modules/options/optw_irc.cpp:181
 msgid "On Channel Join"
 msgstr "При вході на канал"
 
@@ -3175,8 +3153,7 @@ msgstr "Відкривати окремі вікна для"
 msgid "Open all minimized"
 msgstr "Відкрити всі мінімізованим"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Відкривати мінімізованим при авто-прийомі"
 
@@ -3290,7 +3267,7 @@ msgstr "Спливаюче вікно извещателя для подсвеч
 msgid "Port:"
 msgstr "Порт:"
 
-#: src/modules/options/optw_messages.cpp:112
+#: src/modules/options/optw_messages.cpp:109
 msgid "Postfix:"
 msgstr "Постфікс:"
 
@@ -3302,7 +3279,7 @@ msgstr "Розмір буфера:"
 msgid "Preferences"
 msgstr "Настроювання"
 
-#: src/modules/options/optw_messages.cpp:107
+#: src/modules/options/optw_messages.cpp:104
 msgid "Prefix:"
 msgstr "Префікс:"
 
@@ -3506,7 +3483,7 @@ msgstr "SOURCE"
 msgid "SSL"
 msgstr "SSL"
 
-#: src/modules/options/optw_messages.cpp:434
+#: src/modules/options/optw_messages.cpp:388
 msgid "Save As..."
 msgstr "Зберегти як..."
 
@@ -3640,7 +3617,7 @@ msgstr "Показувати індикатор активності"
 msgid "Show avatars in userlist"
 msgstr "Масштабувати аватар (рекомендується)"
 
-#: src/modules/options/optw_messages.cpp:90
+#: src/modules/options/optw_messages.cpp:87
 msgid "Show channel mode prefix"
 msgstr "Показувати префікс режиму каналу"
 
@@ -3689,7 +3666,7 @@ msgstr ""
 msgid "Show lag in IRC context display"
 msgstr "Показувати затримку в контексті IRC"
 
-#: src/modules/options/optw_messages.cpp:79
+#: src/modules/options/optw_messages.cpp:76
 msgid "Show message icons"
 msgstr "Показувати іконки повідомлень"
 
@@ -3698,7 +3675,7 @@ msgstr "Показувати іконки повідомлень"
 msgid "Show network name in console window list entry"
 msgstr "Показувати ім'я мережі замість імені сервера в списку каналів"
 
-#: src/modules/options/optw_messages.cpp:88
+#: src/modules/options/optw_messages.cpp:85
 msgid "Show nicknames in bold"
 msgstr "Показувати нікі жирним шрифтом"
 
@@ -3722,11 +3699,11 @@ msgstr "Показувати відповіді CTCP в активному ві�
 msgid "Show this dialog at startup"
 msgstr "Показати цей діалог при старті"
 
-#: src/modules/options/optw_messages.cpp:125
+#: src/modules/options/optw_messages.cpp:122
 msgid "Show timestamp"
 msgstr "Показувати оцінки часу"
 
-#: src/modules/options/optw_messages.cpp:89
+#: src/modules/options/optw_messages.cpp:86
 msgid "Show user and host"
 msgstr "Показувати користувача й хостмаску"
 
@@ -3771,8 +3748,7 @@ msgstr "Сортувати вікна по імені"
 msgid "Sound"
 msgstr "Звук"
 
-#: src/modules/options/optw_sound.cpp:60
-#: src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "Звукова система"
 
@@ -3797,12 +3773,11 @@ msgstr "Використати SSL"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Тест"
 
-#: src/modules/options/optw_texticons.cpp:81
+#: src/modules/options/optw_texticons.cpp:80
 #: src/modules/options/optw_messages.h:39
 msgid "Text"
 msgstr "Текст"
@@ -3813,7 +3788,7 @@ msgstr "Текст"
 msgid "Text Encoding:"
 msgstr "Кодування:"
 
-#: src/modules/options/optw_texticons.h:38
+#: src/modules/options/optw_texticons.h:39
 msgid "Text icons"
 msgstr "Текстові іконки"
 
@@ -4019,7 +3994,7 @@ msgstr ""
 "Цей розділ містить основні клієнтські настроювання,<br><p>такі як<b> звук, "
 "файли медіа, URL оброблювачі </b> і т.д...</p>"
 
-#: src/modules/options/optw_texticons.cpp:88
+#: src/modules/options/optw_texticons.cpp:91
 msgid ""
 "This table contains the text icon associations.<br>KVirc will use them to "
 "display the CTRL+I escape sequences and eventually the emoticons."
@@ -4027,8 +4002,7 @@ msgstr ""
 "Ця таблиця містить текстові іконки<br>KVirc will use them to display the CTRL"
 "+I escape sequences and eventually the emoticons."
 
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_userlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:145
 #: src/modules/options/optw_ircview.cpp:64
@@ -4046,7 +4020,7 @@ msgstr "Значення таймаута"
 msgid "Timestamp"
 msgstr "Оцінка часу"
 
-#: src/modules/options/optw_messages.cpp:141
+#: src/modules/options/optw_messages.cpp:138
 msgid "Timestamp format:"
 msgstr "Формат оцінки часу"
 
@@ -4078,7 +4052,7 @@ msgstr "Прозорість"
 msgid "Transparency blend image:"
 msgstr "Підміли изображение, що:"
 
-#: src/modules/options/optw_messages.cpp:308
+#: src/modules/options/optw_messages.cpp:271
 msgid "Transparent"
 msgstr "Прозорість"
 
@@ -4173,7 +4147,7 @@ msgstr "Використати SSL"
 msgid "Use System Encoding"
 msgstr "Використати кодування системи"
 
-#: src/modules/options/optw_messages.cpp:128
+#: src/modules/options/optw_messages.cpp:125
 msgid "Use UTC time for timestamp"
 msgstr "Використати UTC для оцінок часу"
 
@@ -4229,11 +4203,11 @@ msgstr "Використати онлайн список повідомлень"
 msgid "Use proxy"
 msgstr "Використати Проксі"
 
-#: src/modules/options/optw_messages.cpp:86
+#: src/modules/options/optw_messages.cpp:83
 msgid "Use same colors as in the userlist"
 msgstr "Використати ті ж кольори, що й у списку користувачів"
 
-#: src/modules/options/optw_messages.cpp:135
+#: src/modules/options/optw_messages.cpp:132
 msgid "Use special color for timestamps"
 msgstr "використати спеціальні кольори для міток часу"
 
@@ -4284,7 +4258,7 @@ msgstr "Режим користувача"
 msgid "User input exits away mode"
 msgstr "Уведення повідомлення виключає режим Відійшло"
 
-#: src/modules/options/optw_messages.cpp:91
+#: src/modules/options/optw_messages.cpp:88
 msgid "User-defined prefix and postfix"
 msgstr "Визначити префікс і постфікс"
 
@@ -4426,7 +4400,7 @@ msgstr ""
 "Наприклад \"RU,EN\" буде значити що ви можете говорити на російському й "
 "англійському."
 
-#: src/modules/options/optw_messages.cpp:93
+#: src/modules/options/optw_messages.cpp:90
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
 msgstr "[PREFIX]Нік[!user@host][POSTFIX] повідомлення"
 
@@ -4438,8 +4412,7 @@ msgstr "[Невідомий медіа тип]"
 msgid "authentication,identify"
 msgstr "ідентифікація,аутентификация"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "байт/сек"
 
@@ -4499,7 +4472,7 @@ msgstr "збереження,висновок"
 msgid "scripting,kvs,debug"
 msgstr "скріптінг,kvs,налагодження"
 
-#: src/modules/options/optw_texticons.h:40
+#: src/modules/options/optw_texticons.h:41
 msgid "smileys,emoticons"
 msgstr "смайли, іконки"
 
@@ -4526,13 +4499,12 @@ msgid "theme,background"
 msgstr "тема, тло"
 
 #: src/modules/options/optw_messages.h:91
-#: src/modules/options/optw_messages.h:170
+#: src/modules/options/optw_messages.h:184
 msgid "theme,colors,messages,output"
 msgstr "тема,кольори,повідомлення,висновок"
 
 #: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37
-#: src/modules/options/optw_ircview.h:51
+#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
 msgid "theme,colors,output"
 msgstr "тема,кольори,висновок"
 
@@ -4585,7 +4557,7 @@ msgstr "час,Оцінка часу"
 msgid "tray,TRAYICON"
 msgstr ""
 
-#: src/modules/options/optw_texticons.cpp:190
+#: src/modules/options/optw_texticons.cpp:214
 msgid "unnamed"
 msgstr "без імені"
 
@@ -4615,6 +4587,9 @@ msgstr "у плині:"
 
 #~ msgid "Hide users label"
 #~ msgstr "Сховати мітки користувачів"
+
+#~ msgid "Message Type"
+#~ msgstr "Типи повідомлень"
 
 #, fuzzy
 #~ msgid "Output verosity"

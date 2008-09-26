@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 22:44+0200\n"
+"POT-Creation-Date: 2008-09-26 22:34+0200\n"
 "PO-Revision-Date: 2005-12-27 23:04+0200\n"
 "Last-Translator: Valerius <valeragir@mail.ru>\n"
 "Language-Team: russian\n"
@@ -21,144 +21,144 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/modules/editor/scripteditor.cpp:1218
+#: src/modules/editor/scripteditor.cpp:1149
 #, fuzzy
 msgid "&Cancel"
 msgstr "Отмена"
 
-#: src/modules/editor/scripteditor.cpp:932
+#: src/modules/editor/scripteditor.cpp:872
 msgid "&Configure Editor..."
 msgstr "&Настроить редактор..."
 
-#: src/modules/editor/scripteditor.cpp:1234
-msgid "&Findnext"
+#: src/modules/editor/scripteditor.cpp:1121
+msgid "&Find Next(WIP)"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:192
+#: src/modules/editor/scripteditor.cpp:496
 msgid "&OK"
 msgstr "&Ok"
 
-#: src/modules/editor/scripteditor.cpp:929
+#: src/modules/editor/scripteditor.cpp:869
 msgid "&Open..."
 msgstr "&Открыть..."
 
-#: src/modules/editor/scripteditor.cpp:251
-#: src/modules/editor/scripteditor.cpp:1223
+#: src/modules/editor/scripteditor.cpp:224
+#: src/modules/editor/scripteditor.cpp:1154
 msgid "&Replace"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:1229
+#: src/modules/editor/scripteditor.cpp:1144
 msgid "&Replace in all Aliases"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:1240
+#: src/modules/editor/scripteditor.cpp:1136
 msgid "&Replace(WIP)"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:930
+#: src/modules/editor/scripteditor.cpp:870
 msgid "&Save As..."
 msgstr "&Сохранить как..."
 
-#: src/modules/editor/scripteditor.cpp:182
+#: src/modules/editor/scripteditor.cpp:484
 msgid "Background:"
 msgstr "Фон:"
 
-#: src/modules/editor/scripteditor.cpp:184
+#: src/modules/editor/scripteditor.cpp:486
 msgid "Brackets:"
 msgstr "Скобки:"
 
-#: src/modules/editor/scripteditor.cpp:1165
+#: src/modules/editor/scripteditor.cpp:1082
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Невозможно открыть файл %s на чтение."
 
-#: src/modules/editor/scripteditor.cpp:1058
+#: src/modules/editor/scripteditor.cpp:999
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Невозможно открыть файл %s на запись."
 
-#: src/modules/editor/scripteditor.cpp:197
+#: src/modules/editor/scripteditor.cpp:500
 msgid "Cancel"
 msgstr "Отмена"
 
-#: src/modules/editor/scripteditor.cpp:1045
+#: src/modules/editor/scripteditor.cpp:986
 msgid "Choose a Filename - KVIrc"
 msgstr "Выберите имя файла - KVIrc"
 
-#: src/modules/editor/scripteditor.cpp:179
+#: src/modules/editor/scripteditor.cpp:482
 msgid "Colors"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:185
+#: src/modules/editor/scripteditor.cpp:487
 msgid "Comments:"
 msgstr "Комментарии:"
 
-#: src/modules/editor/scripteditor.cpp:250
+#: src/modules/editor/scripteditor.cpp:223
 msgid "Context sensitive help"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:940
+#: src/modules/editor/scripteditor.cpp:881
 #, fuzzy
 msgid "Find"
 msgstr "Поиск:"
 
-#: src/modules/editor/scripteditor.cpp:264
+#: src/modules/editor/scripteditor.cpp:237
 msgid "Find & Replace"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:190
+#: src/modules/editor/scripteditor.cpp:492
 msgid "Find:"
 msgstr "Поиск:"
 
-#: src/modules/editor/scripteditor.cpp:175
+#: src/modules/editor/scripteditor.cpp:480
 msgid "Font:"
 msgstr "Шрифт:"
 
-#: src/modules/editor/scripteditor.cpp:186
+#: src/modules/editor/scripteditor.cpp:488
 msgid "Functions:"
 msgstr "Функции:"
 
-#: src/modules/editor/scripteditor.cpp:187
+#: src/modules/editor/scripteditor.cpp:489
 msgid "Keywords:"
 msgstr "Ключевые слова:"
 
-#: src/modules/editor/scripteditor.cpp:1151
+#: src/modules/editor/scripteditor.cpp:1068
 msgid "Load Script File - KVIrc"
 msgstr "Загрузить файл скрипта - KVIrc"
 
-#: src/modules/editor/scripteditor.cpp:183
+#: src/modules/editor/scripteditor.cpp:485
 msgid "Normal text:"
 msgstr "Обычный текст:"
 
-#: src/modules/editor/scripteditor.cpp:1164
+#: src/modules/editor/scripteditor.cpp:1081
 msgid "Open Failed - KVIrc"
 msgstr "Ошибка открытия - KVIrc"
 
-#: src/modules/editor/scripteditor.cpp:172
+#: src/modules/editor/scripteditor.cpp:474
 msgid "Preferences"
 msgstr "Предпочтения"
 
-#: src/modules/editor/scripteditor.cpp:189
+#: src/modules/editor/scripteditor.cpp:491
 msgid "Punctuation:"
 msgstr "Знаки препинания:"
 
-#: src/modules/editor/scripteditor.cpp:1207
+#: src/modules/editor/scripteditor.cpp:1127
 msgid "Replace with"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:1115
+#: src/modules/editor/scripteditor.cpp:1050
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Строк: %d Колонок:%d"
 
-#: src/modules/editor/scripteditor.cpp:1057
+#: src/modules/editor/scripteditor.cpp:998
 msgid "Save Failed - KVIrc"
 msgstr "Ошибка записи - KVIrc"
 
-#: src/modules/editor/scripteditor.cpp:188
+#: src/modules/editor/scripteditor.cpp:490
 msgid "Variables:"
 msgstr "Переменные:"
 
-#: src/modules/editor/scripteditor.cpp:1197
+#: src/modules/editor/scripteditor.cpp:1112
 msgid "Word to Find"
 msgstr ""

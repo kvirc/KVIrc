@@ -2,13 +2,13 @@
 # Russian translation file
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the KVIrc package.
-# 
+#
 # Govorov Igor <govorov.igor at-sign gmail.com>, 2007
 msgid ""
 msgstr ""
 "Project-Id-Version: torrent_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-03 21:10+0200\n"
+"POT-Creation-Date: 2008-09-20 22:44+0200\n"
 "PO-Revision-Date: 2007-11-21 09:19+0300\n"
 "Last-Translator: Govorov Igor <govorov.igor at-sign gmail.com>\n"
 "Language-Team:  Russian\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:41
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Выбран интерфейс torrent-клиента \"%Q\""
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:57
 #, c-format
 msgid "Index out of range: %d [0-%d]!"
 msgstr "Индекс не попадает в пределы: %d [0-%d]!"
@@ -42,7 +42,7 @@ msgstr "Выбран интерфейс torrent-клиента \"%Q\""
 msgid "Last interface error: "
 msgstr "Последняя ошибка интерфейса: "
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:91
+#: src/modules/torrent/tc_statusbarapplet.cpp:90
 msgid "No client selected!"
 msgstr "Не выбран клиент!"
 
@@ -63,7 +63,7 @@ msgid ""
 msgstr ""
 "Выбранный интерфейс torrent-клиента не смог выполнить запрошенную функцию"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:60
+#: src/modules/torrent/tc_statusbarapplet.cpp:59
 msgid "Torrent Client"
 msgstr ""
 

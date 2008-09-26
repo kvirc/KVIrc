@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 22:45+0200\n"
+"POT-Creation-Date: 2008-09-26 22:34+0200\n"
 "PO-Revision-Date: 2008-03-06 19:12+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -16,11 +16,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/theme/managementdialog.cpp:265
+#: src/modules/theme/managementdialog.cpp:264
 msgid "&Apply Theme"
 msgstr "&Appliquer le thème"
 
-#: src/modules/theme/managementdialog.cpp:264
+#: src/modules/theme/managementdialog.cpp:263
 msgid "&Remove Theme"
 msgstr "&Retirer le thème"
 
@@ -28,8 +28,8 @@ msgstr "&Retirer le thème"
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Acquérir capture d'écran - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:281
-#: src/modules/theme/managementdialog.cpp:294
+#: src/modules/theme/managementdialog.cpp:280
+#: src/modules/theme/managementdialog.cpp:293
 msgid "Apply theme - KVIrc"
 msgstr "Appliquer le thème - KVIrc"
 
@@ -43,7 +43,7 @@ msgid "Choose a file to save the screenshot to"
 msgstr ""
 "Choisir le fichier dans lequel vous souhaitez enregistrer la capture d'écran"
 
-#: src/modules/theme/managementdialog.cpp:196
+#: src/modules/theme/managementdialog.cpp:195
 msgid "Close"
 msgstr ""
 
@@ -57,11 +57,11 @@ msgstr "Créé le"
 msgid "Created with"
 msgstr "Créé avec"
 
-#: src/modules/theme/managementdialog.cpp:152
+#: src/modules/theme/managementdialog.cpp:151
 msgid "Delete Selected Themes"
 msgstr "Supprimer les thèmes sélectionnés"
 
-#: src/modules/theme/managementdialog.cpp:307
+#: src/modules/theme/managementdialog.cpp:306
 msgid "Delete Theme - KVIrc"
 msgstr "Supprimer thème - KVIrc"
 
@@ -74,7 +74,7 @@ msgstr "Description :"
 msgid "Do Not Install"
 msgstr "Ne pas installer"
 
-#: src/modules/theme/managementdialog.cpp:308
+#: src/modules/theme/managementdialog.cpp:307
 msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
 msgstr "Voulez-vous vraiment supprimer le thème \"%Q\" (version %Q) ?"
 
@@ -82,7 +82,7 @@ msgstr "Voulez-vous vraiment supprimer le thème \"%Q\" (version %Q) ?"
 msgid "Do you want to proceed with the installation ?"
 msgstr "Voulez vous lancer l'installation ?"
 
-#: src/modules/theme/managementdialog.cpp:282
+#: src/modules/theme/managementdialog.cpp:281
 msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
 msgstr "Voulez-vous appliquer le thème \"%Q\" (version %Q) ?"
 
@@ -94,7 +94,7 @@ msgstr "Erreur pendant l'installation du thème : %Q"
 msgid "Error making screenshot"
 msgstr "Erreur pendant la création de la capture d'écran"
 
-#: src/modules/theme/managementdialog.cpp:146
+#: src/modules/theme/managementdialog.cpp:145
 msgid "Export Selected Themes to a Distributable Package"
 msgstr "Exoporter les thèmes sélectionnés dans un paquet distribuable"
 
@@ -107,7 +107,7 @@ msgstr "Exoporter les thèmes sélectionnés dans un paquet distribuable"
 msgid "Export Theme - KVIrc"
 msgstr "Exporter Thème - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:293
+#: src/modules/theme/managementdialog.cpp:292
 msgid "Failed to apply the specified theme: %Q"
 msgstr "L'application du thème choisi a échoué : %Q"
 
@@ -139,7 +139,7 @@ msgstr "Echec de la décompression du fichier sélectionné : %Q"
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr "Pour terminer, cliquez sur \"Terminer\" pour compléter le paquetage."
 
-#: src/modules/theme/managementdialog.cpp:168
+#: src/modules/theme/managementdialog.cpp:167
 msgid "Get More Themes..."
 msgstr "Obtenir d'autres thèmes"
 
@@ -208,7 +208,7 @@ msgstr "Icône/Capture d'écran"
 msgid "Install Theme Pack - KVIrc"
 msgstr "Installer un pack de thème - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:162
+#: src/modules/theme/managementdialog.cpp:161
 msgid "Install Theme Package From Disk"
 msgstr "Installer un thème depuis le disque"
 
@@ -216,11 +216,11 @@ msgstr "Installer un thème depuis le disque"
 msgid "Make Screenshot Now"
 msgstr "Faire une capture d'écran maintenant"
 
-#: src/modules/theme/managementdialog.cpp:115
+#: src/modules/theme/managementdialog.cpp:114
 msgid "Manage Themes - KVIrc"
 msgstr "Gérer les thèmes - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:322
+#: src/modules/theme/managementdialog.cpp:321
 msgid "Open Theme - KVIrc"
 msgstr "Ouvrir thème - KVIrc"
 
@@ -263,7 +263,7 @@ msgstr "Insérez ici une description du paquet"
 msgid "Save Current Theme - KVIrc"
 msgstr "Enregistrer le thème actuel - KVIrc"
 
-#: src/modules/theme/managementdialog.cpp:135
+#: src/modules/theme/managementdialog.cpp:134
 msgid "Save Current Theme..."
 msgstr "Enregistrer le thème en cours..."
 
@@ -414,6 +414,6 @@ msgstr "Vous êtes sur le point d'installer le paquet de thème suivant"
 msgid "Your name here"
 msgstr "Votre nom ici"
 
-#: src/modules/theme/managementdialog.cpp:88
+#: src/modules/theme/managementdialog.cpp:87
 msgid "by"
 msgstr "par"
