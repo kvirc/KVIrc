@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE' COPYRIGHT HOLDER.
 # Belyaev Stanislav <belyaev-st@yandex.ru>, 2007.
-# 
+#
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_dcc.cpp:304
 msgid ""
 msgstr ""
 "Project-Id-Version: options_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 21:38+0200\n"
+"POT-Creation-Date: 2008-09-27 00:52+0200\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -2316,6 +2316,12 @@ msgstr "Включити спливаючі підказки по користу
 msgid "Hide avatars"
 msgstr "Сховати аватари в списку користувачів"
 
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_userlist.cpp:237
+msgid ""
+"Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
+"normal nicks"
+msgstr ""
+
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_ctcpfloodprotection.cpp:79
 msgid "Use flood protection (recommended)"
 msgstr "Використати захист від флуда (рекомендується)"
@@ -2975,23 +2981,23 @@ msgstr "Включити ident сервіс тільки на час підкл�
 msgid "Ident username:"
 msgstr "Ідентифікаційне ім'я:"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:243
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:244
 msgid "Service port:"
 msgstr "Порт сервісу:"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:248
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:249
 msgid "IPv6 Settings"
 msgstr "Властивості IPv6"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:249
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:250
 msgid "Enable service for IPv6"
 msgstr "Включити сервіс для IPv6"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:258
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:259
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
 msgstr "Обробляти IPv4 як частина простору імен IPv6"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:265
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:266
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -3001,7 +3007,7 @@ msgstr ""
 "ідентифікації й забезпечує тільки частина специфікації Протоколу "
 "Ідентифікації. Якщо можливо, установите реальний демон ідентифікації</p>"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:270
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:271
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "

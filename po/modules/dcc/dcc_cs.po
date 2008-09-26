@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 21:38+0200\n"
+"POT-Creation-Date: 2008-09-27 00:52+0200\n"
 "PO-Revision-Date: 2007-12-05 17:57+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -235,7 +235,7 @@ msgid "[SSL ERROR]: %s"
 msgstr "[SSL CHYBA]: %s"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:302
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:388
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:397
 msgid "Cannot send data: No active connection"
 msgstr "Nelze poslat data: Žádné aktivní připojení"
 
@@ -247,12 +247,12 @@ msgstr ""
 "Šifrovací program nebyl schopen zašifrovat aktuální zprávu (%Q): %Q, žadná "
 "data nebyla odeslána na vzdálený konec"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:403
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:412
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/voice.cpp:827
 msgid "ERROR: %Q"
 msgstr "CHYBA: %Q"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:447
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:456
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
@@ -260,17 +260,17 @@ msgstr ""
 "Následující zpráva se zdá být zašifrovaná, ale šifrovací program nebyl "
 "schopen ji dešifrovat: %Q"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:493
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:502
 msgid "DCC %Q failed: %Q"
 msgstr "DCC %Q selhalo: %Q"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:521
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:530
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/voice.cpp:919
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/canvas.cpp:282
 msgid "Connected to %Q:%Q"
 msgstr "Spojeno s %Q:%Q"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:523
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:532
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/voice.cpp:921
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/canvas.cpp:284
 msgid "Local end is %Q:%Q"

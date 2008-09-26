@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 21:38+0200\n"
+"POT-Creation-Date: 2008-09-27 00:52+0200\n"
 "PO-Revision-Date: 2007-11-13 22:32+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -251,7 +251,7 @@ msgid "[SSL ERROR]: %s"
 msgstr "[SSL-FEHLER]: %s"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:302
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:388
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:397
 msgid "Cannot send data: No active connection"
 msgstr "Daten können nicht gesendet werden: keine aktive Verbindung"
 
@@ -263,12 +263,12 @@ msgstr ""
 "Die Verschlüsselungsroutine war nicht in der Lage, die aktuelle Nachricht (%"
 "Q): %Q zu verschlüsseln: keine Daten an das enfernte Ende gesendet"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:403
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:412
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/voice.cpp:827
 msgid "ERROR: %Q"
 msgstr "FEHLER: %Q"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:447
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:456
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
@@ -276,17 +276,17 @@ msgstr ""
 "Die folgende Nachricht sieht wie eine verschlüsselte aus, aber die "
 "Verschlüsselungsroutine konnte sie nicht dekodieren: %Q"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:493
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:502
 msgid "DCC %Q failed: %Q"
 msgstr "DCC %Q fehlgeschlagen: %Q"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:521
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:530
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/voice.cpp:919
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/canvas.cpp:282
 msgid "Connected to %Q:%Q"
 msgstr "Verbunden zu %Q:%Q"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:523
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:532
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/voice.cpp:921
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/canvas.cpp:284
 msgid "Local end is %Q:%Q"

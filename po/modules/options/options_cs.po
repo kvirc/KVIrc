@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-08-25 21:38+0200\n"
+"POT-Creation-Date: 2008-09-27 00:52+0200\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -2280,6 +2280,12 @@ msgstr "Povolit tooltipy uživatele"
 msgid "Hide avatars"
 msgstr "Schovat avatary"
 
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_userlist.cpp:237
+msgid ""
+"Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
+"normal nicks"
+msgstr ""
+
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_ctcpfloodprotection.cpp:79
 msgid "Use flood protection (recommended)"
 msgstr "Použít ochranu před zahlcením (doporučeno)"
@@ -2923,23 +2929,23 @@ msgstr "Povolit ident službu pouze během připojování k serveru"
 msgid "Ident username:"
 msgstr "Ident:"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:243
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:244
 msgid "Service port:"
 msgstr "port:"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:248
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:249
 msgid "IPv6 Settings"
 msgstr "IPv6 nastavení"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:249
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:250
 msgid "Enable service for IPv6"
 msgstr "Povolit službu pro IPv6"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:258
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:259
 msgid "IP stack treats IPv4 as part of IPv6 namespace"
 msgstr "IP stack považuje IPv4 jako součást jmenného prostoru IPv6"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:265
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:266
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
@@ -2949,7 +2955,7 @@ msgstr ""
 "jenž implementuje pouze omezenou skupinu funkcí Identifikačního Protokolu. "
 "Pokud je to možné, nainstalujte skutečného ident démona.</p>"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:270
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_connection.cpp:271
 msgid ""
 "<p><b>Warning:</b><br>This is a <b>non RFC 1413 compliant</b> ident daemon "
 "that implements only a limited subset of the Identification Protocol "
