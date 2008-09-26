@@ -83,8 +83,6 @@ public:
 	void setupDocumentList();
 	const QStringList& documentList() { return docList; };
 	const QStringList& titlesList() { return titleList; };
-signals:
-	void indexingProgress( int );
 private slots:
 	void setLastWinClosed();
 private:

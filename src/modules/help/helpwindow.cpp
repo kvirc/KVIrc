@@ -59,12 +59,9 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 		if ( QFileInfo( szDoclist ).exists() && QFileInfo( szDict ).exists() ) {
 			g_pDocIndex->readDict();
 		} else {
-			QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 0,100 );
-			connect(g_pDocIndex,SIGNAL(indexingProgress(int)), pProgressDialog, SLOT(setValue(int)) );
 			g_pDocIndex->makeIndex();
 			g_pDocIndex->writeDict();
 			g_pDocIndex->writeDocumentList();
-			delete pProgressDialog;
 		}
 		g_bIndexingDone=TRUE;
 	}
@@ -103,8 +100,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	m_pTabWidget->addTab(m_pSearchTab,__tr2qs("Search"));
 
 	m_pTermsEdit = new QLineEdit(m_pSearchTab);
-/*	connect( m_pTermsEdit, SIGNAL( textChanged(const QString&) ),
-	     this, SLOT( searchInIndex(const QString&) ) );*/
+
 	connect( m_pTermsEdit, SIGNAL( returnPressed() ),
 	     this, SLOT( startSearch() ) );
 
@@ -142,12 +138,9 @@ void KviHelpWindow::loadProperties(KviConfig *cfg)
 void KviHelpWindow::refreshIndex()
 {
 	m_pIndexListWidget->clear();
-	QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 0,100 );
-	connect(g_pDocIndex,SIGNAL(indexingProgress(int)), pProgressDialog, SLOT(setValue(int)) );
 	g_pDocIndex->makeIndex();
 	g_pDocIndex->writeDict();
 	g_pDocIndex->writeDocumentList();
-	delete pProgressDialog;
 	g_bIndexingDone=TRUE;
 	QStringList docList=g_pDocIndex->titlesList();
 	m_pIndexListWidget->addItems(docList);

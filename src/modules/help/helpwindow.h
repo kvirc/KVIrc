@@ -31,7 +31,6 @@
 
 #include <QTabWidget>
 #include <QLineEdit>
-#include <QProgressDialog>
 
 class QTextBrowser;
 class KviHelpWidget;
@@ -48,7 +47,7 @@ protected:
 	QTabWidget    * m_pTabWidget;
 	KviTalVBox    * m_pIndexTab;
 	KviTalVBox    * m_pSearchTab;
-	
+
 	KviTalListWidget* m_pIndexListWidget;
 	QLineEdit     * m_pIndexSearch;
 	QStringList     m_foundDocs;

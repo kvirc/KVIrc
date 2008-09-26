@@ -41,72 +41,6 @@ KviPointerList<KviHelpWidget> * g_pHelpWidgetList = 0;
 KviPointerList<KviHelpWindow> * g_pHelpWindowList = 0;
 
 /*
-	@doc: help.search
-	@type:
-		command
-	@title:
-		help.search
-	@short:
-		Searches the documentation
-	@syntax:
-		help.search [-n] [-m] <key terms>
-	@description:
-		Finds the first available help browser in the current frame
-		then searches the documentation for the specified <key terms>.
-		If no help browser is available it creates one first:
-		if the -m switch is present, the created browser is a MDI window,
-		otherwise it is a static window.
-		If the -n switch is present, the window creation is forced even
-		if there are other help browsers already open.[br]
-		The <key terms> are [b]space separated words[/b]
-		to be matched inside the document body (logical AND).[br]
-		This command is exported by the "help" module.
-*/
-
-/*tatic bool help_module_cmd_search(KviModule *m,KviCommand *c)
-{
-	ENTER_STACK_FRAME(c,"help_module_cmd_search");
-
-	KviStr keys;
-	if(!g_pZZZZZZUserParser->parseCmdFinalPart(c,keys))return false;
-
-	if(keys.isEmpty())keys = "kvirc";
-
-	if(!c->hasSwitch('n'))
-	{
-		// look for an already open help widget in this frame
-		KviHelpWidget * w = (KviHelpWidget *)c->window()->frame()->child(
-			"help_widget","KviHelpWidget");
-
-		if(w)
-		{
-			w->doExactSearchFor(keys.ptr());
-			return c->leaveStackFrame();
-		}
-	}
-
-	if(c->hasSwitch('m'))
-	{
-		KviHelpWindow *w = new KviHelpWindow(c->window()->frame(),"Help browser");
-		w->helpWidget()->doExactSearchFor(keys.ptr());
-		c->window()->frame()->addWindow(w);
-	} else {
-		KviHelpWidget *w = new KviHelpWidget(c->window()->frame()->splitter(),
-			c->window()->frame(),true);
-		w->doExactSearchFor(keys.ptr());
-		w->show();
-	}
-
-	return c->leaveStackFrame();
-}*/
-/*
-#ifdef COMPILE_NEW_KVS
-static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
-{
-}
-#endif
-*/
-/*
 	@doc: help.open
 	@type:
 		command
@@ -123,6 +57,9 @@ static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
 		If no help browser is available , a new one is created.
 		[document] can be an absolute path or a relative one: in this case
 		the document is searched in the KVIrc documentation directory.[br]
+		If no document has been found using absolute and relative paths,
+		the first document matching [document] in the help search database
+		is shown. Otherway, an error page is displayed.
 		The help browser has limited html browsing capabilities: you can
 		use it to view simple html files on your filesystem.[br]
 		This command is exported by the "help" module.
@@ -133,6 +70,14 @@ static bool help_kvs_cmd_search(KviKvsModuleCommandCall * c)
 		!sw: -n | --new
 		The window creation is forced even
 		if there are other help browsers already open.[br]
+	@examples:
+		[example]
+		help.open /home/pragma/myfile.html	//absolute path
+		help.open cmd_snd.play.html		//relative path
+		help.open "Binding operator"		//keyword search, remember quoting
+		help.open OnNickServAuth		//keyword search for an event
+		help.open \$my.user			//keyword search, $ needs to be escaped
+		[/example]
 */
 
 
@@ -142,7 +87,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
         QDir dirHelp;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL,szParam)
+		KVSM_PARAMETER("document",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParam)
 	KVSM_PARAMETERS_END(c)
 
 	szDoc=szParam;
@@ -153,7 +98,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	if(szDoc.isEmpty())
 	{
 		szDoc = dirHelp.absoluteFilePath("index.html");
-		qDebug ("No file, use default at path %s",szDoc.toUtf8().data());
+		//qDebug ("No file, use default at path %s",szDoc.toUtf8().data());
 	}
 
 	// try absolute path
@@ -162,14 +107,14 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	{
 		//try relative path
 		szDoc = dirHelp.absoluteFilePath(szDoc);
-		qDebug("No abs path, trying relative path: %s",szDoc.toUtf8().data());
+		//qDebug("No abs path, trying relative path: %s",szDoc.toUtf8().data());
 		f->setFile(szDoc);
 	}
 
 	if(!f->exists())
 	{
 		//try search
-		qDebug("No rel path, trying search..");
+		//qDebug("No rel path, trying search..");
 		if(g_pDocIndex)
 		{
 			if (!g_pDocIndex->documentList().count())
@@ -180,6 +125,10 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 				if ( KviFileUtils::fileExists(szDoclist) && KviFileUtils::fileExists( szDict ))
 				{
 					g_pDocIndex->readDict();
+				} else {
+					g_pDocIndex->makeIndex();
+					g_pDocIndex->writeDict();
+					g_pDocIndex->writeDocumentList();
 				}
 			}
 			int i=g_pDocIndex->titlesList().indexOf(szParam);
@@ -196,7 +145,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		//everything failed => error
 		szDoc = dirHelp.absoluteFilePath("nohelpavailable.html");
 
-		qDebug("Document not found, defaulting to error page: %s",szDoc.toUtf8().data());
+		//qDebug("Document not found, defaulting to error page: %s",szDoc.toUtf8().data());
 		f->setFile(szDoc);
 	}
 

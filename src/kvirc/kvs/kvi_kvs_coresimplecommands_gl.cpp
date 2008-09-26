@@ -69,54 +69,51 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			help
 		@syntax:
-			help [-s] <topic>
+			help.open [-n] [-m] [document: string]
 		@short:
-			Shows a help page
+			Shows a help document
 		@description:
-			Shows a help page about <topic>.[br]
-			<topic> can be a command name , or an identifier.[br]
-			If <topic> starts with a slash , it is assumed to be a full path
-			to a html file to be displayed in the help browser.[br]
-			This command is a shortcut for the [cmd]help.open[/cmd] module command.[br]
+			Finds the first available help browser in the current frame
+			then opens the specified [document].
+			If no [document] is specified it the documentation index is shown.
+			If no help browser is available , a new one is created.
+			[document] can be an absolute path or a relative one: in this case
+			the document is searched in the KVIrc documentation directory.[br]
+			If no document has been found using absolute and relative paths,
+			the first document matching [document] in the help search database
+			is shown. Otherway, an error page is displayed.[br/]
+			The help browser has limited html browsing capabilities: you can
+			use it to view simple html files on your filesystem.[br]
+			This command is an alias for the [cmd]help.open[cmd] command exported
+			by the "help" module.
+		@switches:
+			!sw: -m | --mdi
+			The created browser is a MDI window,
+			otherwise it is a static window.
+			!sw: -n | --new
+			The window creation is forced even
+			if there are other help browsers already open.[br]
+		@seealso:
+			[cmd]help.open[/cmd]
 		@examples:
 			[example]
-			help run
-			help help
-			help index
-			help $mask
-			help /home/pragma/myfile.html
+			help /home/pragma/myfile.html	//absolute path
+			help cmd_snd.play.html		//relative path
+			help "Binding operator"		//keyword search, remember quoting
+			help OnNickServAuth		//keyword search for an event
+			help \$my.user			//keyword search, $ needs to be escaped
 			[/example]
 	*/
 
-	static bool file_in_path(QStringList &pathlist,QString &file)
-	{
-		for(QStringList::Iterator it = pathlist.begin();it != pathlist.end();++it)
-		{
-			QString tmp = *it;
-			tmp.append('/');
-			tmp.append(file);
-			KviFileUtils::adjustFilePath(tmp);
-			if(KviFileUtils::fileExists(tmp))return true;
-		}
-		return false;
-	}
-
 	KVSCSC(help)
 	{
-		QString szTopic;
+		QString szParams;
 		KVSCSC_PARAMETERS_BEGIN
-			KVSCSC_PARAMETER("topic",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szTopic)
+			KVSCSC_PARAMETER("params",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szParams)
 		KVSCSC_PARAMETERS_END
 
-		szTopic.trimmed();
-		if(szTopic.endsWith(";"))
-		{
-			szTopic.truncate(szTopic.length() - 1);
-			szTopic.trimmed();
-		}
-
-		// We don't care about the return value...
-		KviKvsScript s("help","help.open " + szTopic);
+		// We just alias the help.open function
+		KviKvsScript s("help","help.open " + szParams);
 		s.run(KVSCSC_pContext->window());
 
 		return true;
@@ -246,8 +243,8 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		if(!((KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL) || 
-			(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_QUERY) || 
+		if(!((KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL) ||
+			(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_QUERY) ||
 			(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CONSOLE)))
 		{
 			KVSCSC_pContext->warning(__tr2qs("The current window is not a channel, a query or a console"));
@@ -566,13 +563,13 @@ namespace KviKvsCoreSimpleCommands
 
 		if(!pTimerDict)
 			return true;
-		
+
 		KviPointerHashTableIterator<QString,KviKvsTimer> it(*pTimerDict);
-		
+
 		KVSCSC_pContext->window()->outputNoFmt(KVI_OUT_VERBOSE,__tr2qs("List of active timers"));
-		
+
 		unsigned int uCnt = 0;
-		
+
 		while(KviKvsTimer * pTimer = it.current())
 		{
 			QString szName = pTimer->name();

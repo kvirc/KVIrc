@@ -29,6 +29,7 @@
 #include "kvi_file.h"
 #include "kvi_qstring.h"
 #include "kvi_pointerhashtable.h"
+#include "kvi_locale.h"
 
 #include <ctype.h>
 
@@ -36,6 +37,7 @@
 #include <QStringList>
 #include <QApplication>
 #include <QTextStream>
+#include <QProgressDialog>
 
 int kvi_compare(const Term * p1,const Term * p2)
 {
@@ -96,17 +98,18 @@ int Index::makeIndex()
 	if ( docList.isEmpty() ) return 1;
 	dict.clear();
 	QStringList::Iterator it = docList.begin();
-	int steps = docList.count() / 100;
-	if ( !steps ) steps++;
-	int prog = 0;
+
+// 	QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 0, docList.count() );
+// 	pProgressDialog->setWindowTitle(__tr2qs("KVIrc"));
+// 	pProgressDialog->setMinimumDuration(500);
+// 	pProgressDialog->setWindowModality(Qt::WindowModal);
 	for ( int i = 0; it != docList.end(); ++it, ++i ) {
-		if ( lastWindowClosed ) return -1;
+// 		if (lastWindowClosed ||pProgressDialog->wasCanceled())
+// 			break;
 		parseDocument( *it, i );
-		if ( i%steps == 0 ) {
-			prog++;
-			emit indexingProgress( prog );
-		}
+// 		pProgressDialog->setValue(i);
 	}
+// 	delete pProgressDialog;
 	return 0;
 }
 
