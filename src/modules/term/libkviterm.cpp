@@ -131,6 +131,9 @@ static bool term_module_init(KviModule * m)
 	{
 		g_szKonsoleLibraryName = pKonsoleService->library();
 //		debug("KONSOLE LIB %s",g_szKonsoleLibraryName.ptr());
+	} else {
+		// try the default name
+		g_szKonsoleLibraryName = "libkonsolepart";
 	}
 //	delete pKonsoleService;
 #endif
