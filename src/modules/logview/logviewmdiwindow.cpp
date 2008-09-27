@@ -166,16 +166,27 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	
 	g_pApp->getLocalKvircDirectory(m_szLogDirectory,KviApp::Log);
 	KviQString::ensureLastCharIs(m_szLogDirectory,'/'); // Does this work on Windows?
-        
-        cacheFileList();
-        setupItemList();
-        KviAccel *a = new KviAccel( this );
-        a->connectItem( a->insertItem(Qt::Key_F+Qt::CTRL),
-                        m_pIrcView,
-                        SLOT(toggleToolWidget()) );
+
+	cacheFileList();
+	setupItemList();
 }
 
-
+void KviLogViewMDIWindow::keyPressEvent(QKeyEvent *e)
+{
+//Make CtrlKey and CommandKey ("Apple") behave equally on MacOSX.
+//This way typical X11 and Apple shortcuts can be used simultanously within the input line.
+#ifndef Q_OS_MACX
+	if(e->state() & Qt::ControlButton)
+#else
+	if((e->state() & Qt::ControlButton) || (e->state() & Qt::MetaButton))
+#endif
+	{
+		if(e->key() == Qt::Key_F)
+		{
+			m_pIrcView->toggleToolWidget();
+		}
+	}
+}
 
 KviLogViewMDIWindow::~KviLogViewMDIWindow()
 {

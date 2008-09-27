@@ -1128,7 +1128,7 @@ void KviWindow::childInserted(QWidget * o)
 	o->installEventFilter(this); // we filter its events
 	connect(o,SIGNAL(destroyed()),this,SLOT(childDestroyed()));
 
-	if(o->inherits("KviInput"))
+	if(o->inherits("KviInput") || (m_iType==KVI_WINDOW_TYPE_LOGVIEW && o->inherits("KviIrcView")))
 		m_pFocusHandler = o;
 	else
 	{
