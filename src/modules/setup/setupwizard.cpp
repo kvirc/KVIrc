@@ -852,7 +852,7 @@ void KviSetupWizard::makeLink()
 #endif //COMPILE_ON_WINDOWS
 
 #ifdef COMPILE_KDE_SUPPORT
-	QString tmp = QDir::homeDirPath();
+	QString tmp = QDir::homePath();
 	KviQString::ensureLastCharIs(tmp,KVI_PATH_SEPARATOR_CHAR);
 	tmp.append("Desktop");
 	KviQString::ensureLastCharIs(tmp,KVI_PATH_SEPARATOR_CHAR);

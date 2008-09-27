@@ -344,9 +344,9 @@ int main(int argc,char ** argv)
 			A weak file locking mechanism should be used too...
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	QString szLock = convertSeparators(cleanDirPath(QDir::homeDirPath() + "/.kvirc.lock"));
+	QString szLock = convertSeparators(cleanDirPath(QDir::homeath() + "/.kvirc.lock"));
 #else
-	QString szLock = convertSeparators(cleanDirPath(QDir::homeDirPath() + "/.kvirc.lock"));
+	QString szLock = convertSeparators(cleanDirPath(QDir::homePath() + "/.kvirc.lock"));
 #endif
 
 	QFileInfo inf(szLock);
