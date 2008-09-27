@@ -165,13 +165,25 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 
 	cacheFileList();
 	setupItemList();
-	connect(new QShortcut(Qt::Key_F+Qt::CTRL,this),SIGNAL(activated()),m_pIrcView,SLOT(toggleToolWidget()));
 }
 
 
 KviLogViewMDIWindow::~KviLogViewMDIWindow()
 {
 	g_pLogViewWindow = 0;
+}
+
+void KviLogViewMDIWindow::keyPressEvent(QKeyEvent *e)
+{
+//Make CtrlKey and CommandKey ("Apple") behave equally on MacOSX.
+//This way typical X11 and Apple shortcuts can be used simultanously within the input line.
+	if((e->modifiers() & Qt::ControlModifier) || (e->modifiers() & Qt::AltModifier) || (e->modifiers() & Qt::MetaModifier))
+	{
+		if(e->key() == Qt::Key_F)
+		{
+			m_pIrcView->toggleToolWidget();
+		}
+	}
 }
 
 void KviLogViewMDIWindow::applyFilter()

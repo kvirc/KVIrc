@@ -126,6 +126,7 @@ protected:
 
 	virtual QPixmap * myIconPtr();
 	virtual void resizeEvent(QResizeEvent *e);
+	virtual void keyPressEvent(QKeyEvent *e);
 	virtual void fillCaptionBuffers();
 	virtual void die();
 	virtual QSize sizeHint() const;
