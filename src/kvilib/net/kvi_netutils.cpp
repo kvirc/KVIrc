@@ -520,7 +520,7 @@ namespace KviNetUtils
 		return (inet_pton(AF_INET6,KviQString::toUtf8(szStringIp).data(),(void *)address) == 1);
 	}
 
-	bool isValidStringIp_V6(const QString &szIp)
+	bool isValidStringIPv6(const QString &szIp)
 	{
 		struct in6_addr address;
 		if(szIp.isEmpty())return false;

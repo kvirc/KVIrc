@@ -511,7 +511,7 @@ bool  KviKvsObject_socket::functionConnect(KviKvsObjectFunctionCall *c)
 
 
 #ifdef COMPILE_IPV6_SUPPORT
-	if(KviNetUtils::isValidStringIp(m_szRemoteIp) || KviNetUtils::isValidStringIp_V6(m_szRemoteIp))
+	if(KviNetUtils::isValidStringIp(m_szRemoteIp) || KviNetUtils::isValidStringIPv6(m_szRemoteIp))
 #else
 	if(KviNetUtils::isValidStringIp(m_szRemoteIp))
 #endif
@@ -572,7 +572,7 @@ bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
 		if(KviNetUtils::isValidStringIp(m_szLocalIp))bGotIp = true;
 		else {
 #ifdef COMPILE_IPV6_SUPPORT
-			if(KviNetUtils::isValidStringIp_V6(m_szLocalIp))
+			if(KviNetUtils::isValidStringIPv6(m_szLocalIp))
 			{
 				bGotIp = true;
 				m_bIPv6 = true;

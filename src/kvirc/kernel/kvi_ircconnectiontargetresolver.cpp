@@ -181,7 +181,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 	if(m_pTarget->proxy()->isIPv6())
 	{
-		bValidIp = KviNetUtils::isValidStringIp_V6(m_pTarget->proxy()->m_szIp);
+		bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->proxy()->m_szIp);
 	} else {
 #endif
 		bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->m_szIp);
@@ -203,7 +203,7 @@ void KviIrcConnectionTargetResolver::lookupProxyHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pTarget->proxy()->isIPv6())
 		{
-			bValidIp = KviNetUtils::isValidStringIp_V6(m_pTarget->proxy()->m_szHostname);
+			bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->proxy()->m_szHostname);
 		} else {
 #endif
 			bValidIp = KviNetUtils::isValidStringIp(m_pTarget->proxy()->m_szHostname);
@@ -309,7 +309,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 	if(m_pTarget->server()->isIPv6())
 	{
-		bValidIp = KviNetUtils::isValidStringIp_V6(m_pTarget->server()->m_szIp);
+		bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->server()->m_szIp);
 	} else {
 #endif
 		bValidIp = KviNetUtils::isValidStringIp(m_pTarget->server()->m_szIp);
@@ -328,7 +328,7 @@ void KviIrcConnectionTargetResolver::lookupServerHostname()
 #ifdef COMPILE_IPV6_SUPPORT
 		if(m_pTarget->server()->isIPv6())
 		{
-			bValidIp = KviNetUtils::isValidStringIp_V6(m_pTarget->server()->m_szHostname);
+			bValidIp = KviNetUtils::isValidStringIPv6(m_pTarget->server()->m_szHostname);
 		} else {
 #endif
 			bValidIp = KviNetUtils::isValidStringIp(m_pTarget->server()->m_szHostname);
@@ -455,7 +455,7 @@ bool KviIrcConnectionTargetResolver::validateLocalAddress(const QString &szAddre
 #ifdef COMPILE_IPV6_SUPPORT
 	if(m_pTarget->server()->isIPv6())
 	{
-		if(KviNetUtils::isValidStringIp_V6(szAddress))
+		if(KviNetUtils::isValidStringIPv6(szAddress))
 		{
 			szBuffer = szAddress;
 			return true;

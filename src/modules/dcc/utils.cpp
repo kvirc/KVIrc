@@ -62,7 +62,7 @@ bool dcc_module_get_listen_ip_address(KviCommand *c,KviConsole * pConsole,QStrin
 				return true;
 			}
 #ifdef COMPILE_IPV6_SUPPORT
-			if(kvi_isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
+			if(kvi_isValidStringIPv6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
 			{
 				szListenIp = KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface);
 			} else {
@@ -130,7 +130,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 				return true;
 			}
 #ifdef COMPILE_IPV6_SUPPORT
-			if(KviNetUtils::isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
+			if(KviNetUtils::isValidStringIPv6(KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface).toUtf8().data()))
 			{
 				szListenIp = KVI_OPTION_STRING(KviOption_stringDccListenDefaultInterface);
 			} else {

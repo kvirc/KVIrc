@@ -259,7 +259,7 @@ void KviProxyOptionsWidget::saveLastItem()
 			if(m_pIPv6Check->isChecked())
 			{
 				if((!KviQString::equalCI(tmpAddr,"0:0:0:0:0:0:0:0")) &&
-						KviNetUtils::isValidStringIp_V6(tmpAddr))
+						KviNetUtils::isValidStringIPv6(tmpAddr))
 				{
 					m_pLastEditedItem->m_pProxyData->m_szIp = tmpAddr;
 				}

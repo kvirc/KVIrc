@@ -277,7 +277,7 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 			// IPv6 proxy :) (STILL QUITE UNTESTED ?)
 #ifdef COMPILE_IPV6_SUPPORT
 			bTargetIPv6 = true;
-			if(!KviNetUtils::isValidStringIp_V6(m_pProxy->ip()))return KviError_invalidProxyAddress;
+			if(!KviNetUtils::isValidStringIPv6(m_pProxy->ip()))return KviError_invalidProxyAddress;
 			// SOCKSv4 does not support IPV6 addresses
 			if(m_pProxy->protocol() == KviProxy::Socks4)return KviError_socksV4LacksIPv6Support;
 #else
@@ -296,7 +296,7 @@ int KviIrcSocket::startConnection(KviServer *srv,KviProxy * prx,const char * bin
 		if(m_pIrcServer->isIPv6())
 		{
 			// We have an IPv6 server host (Interesting if proxy is IPv4)
-			if( !KviNetUtils::isValidStringIp_V6(m_pIrcServer->ip()) )return KviError_invalidIpAddress;
+			if( !KviNetUtils::isValidStringIPv6(m_pIrcServer->ip()) )return KviError_invalidIpAddress;
 			if(!m_pProxy)bTargetIPv6 = true; // otherwise the proxy rules
 		} else {
 #endif
@@ -897,7 +897,7 @@ void KviIrcSocket::proxySendTargetDataV5()
 		(
 		KviNetUtils::isValidStringIp(m_pIrcServer->ip())
 		#ifdef COMPILE_IPV6_SUPPORT
-			|| KviNetUtils::isValidStringIp_V6(m_pIrcServer->ip())
+			|| KviNetUtils::isValidStringIPv6(m_pIrcServer->ip())
 		#endif
 		)
 

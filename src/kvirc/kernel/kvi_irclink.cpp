@@ -23,7 +23,6 @@
 //=============================================================================
 
 
-
 #include "kvi_irclink.h"
 #include "kvi_dns.h"
 #include "kvi_locale.h"
@@ -52,10 +51,9 @@
 
 #include <QTimer>
 
-extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
-extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
-extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
-
+extern KVIRC_API KviServerDataBase   * g_pServerDataBase;
+extern KVIRC_API KviProxyDataBase    * g_pProxyDataBase;
+extern KVIRC_API KviGarbageCollector * g_pGarbageCollector;
 
 
 KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
@@ -64,10 +62,9 @@ KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
 	m_pConnection = pConnection;
 	m_pTarget = pConnection->target();
 	m_pConsole = m_pConnection->console();
-	m_pSocket = 0;
-	
-	m_pLinkFilter = 0;
 
+	m_pSocket = 0;
+	m_pLinkFilter = 0;
 	m_pResolver = 0;
 
 	m_pReadBuffer    = 0;            // incoming data buffer
@@ -79,9 +76,13 @@ KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
 
 KviIrcLink::~KviIrcLink()
 {
-	if(m_pResolver)delete m_pResolver;
+	if(m_pResolver)
+		delete m_pResolver;
+
 	destroySocket();
-	if(m_pReadBuffer)kvi_free(m_pReadBuffer);
+
+	if(m_pReadBuffer)
+		kvi_free(m_pReadBuffer);
 }
 
 
@@ -92,9 +93,6 @@ KviIrcLink::~KviIrcLink()
 
 void KviIrcLink::linkFilterDestroyed()
 {
-	// ops.. the link filter has been destroyed without permission :D
-	// this should NEVER happen (?)
-	
 	m_pLinkFilter = 0;
 	m_pConsole->output(KVI_OUT_SYSTEMWARNING,
 		__tr2qs("Ops... for some reason the link filter object has been destroyed"));
@@ -117,15 +115,17 @@ void KviIrcLink::destroySocket()
 	}
 }
 
-void KviIrcLink::createSocket(const QString &szLinkFilterName)
+void KviIrcLink::createSocket(const QString & szLinkFilterName)
 {
 	destroySocket(); // make sure we do not leak memory
 
 	m_pSocket = new KviIrcSocket(this);
 
-	if(szLinkFilterName.isEmpty())return;
+	if(szLinkFilterName.isEmpty())
+		return;
 	
-	if(KviQString::equalCI(szLinkFilterName,"irc"))return;
+	if(KviQString::equalCI(szLinkFilterName,"irc"))
+		return;
 
 	m_pLinkFilter = (KviMexLinkFilter *)g_pModuleExtensionManager->allocateExtension("linkfilter",
 		szLinkFilterName.toUtf8().data(),m_pConsole,0,this,szLinkFilterName.toUtf8().data());
@@ -154,6 +154,7 @@ void KviIrcLink::abort()
 		m_pSocket->abort();
 		return;
 	}
+
 	if(m_pResolver)
 	{
 		m_pResolver->abort();
@@ -164,7 +165,9 @@ void KviIrcLink::abort()
 void KviIrcLink::start()
 {
 	m_eState = Connecting;
-	if(m_pResolver)delete m_pResolver; // this should never happen
+	if(m_pResolver)
+		delete m_pResolver; // this should never happen
+
 	m_pResolver = new KviIrcConnectionTargetResolver(m_pConnection);
 	connect(m_pResolver,SIGNAL(terminated()),this,SLOT(resolverTerminated()));
 	m_pResolver->start(m_pTarget);
@@ -196,10 +199,10 @@ void KviIrcLink::resolverTerminated()
 
 	if(iErr != KviError_success)
 	{
-		QString strDescription(KviError::getDescription(iErr));
+		QString szStrDescription(KviError::getDescription(iErr));
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,
 			__tr2qs("Failed to start the connection: %Q"),
-			&strDescription);
+			&szStrDescription);
 //			&(KviError::getDescription(iErr)));
 
 		m_eState = Idle;
@@ -213,18 +216,18 @@ void KviIrcLink::resolverTerminated()
 // Incoming data processing
 //
 
-void KviIrcLink::processData(char * buffer,int len)
+void KviIrcLink::processData(char * buffer, int iLen)
 {
 	if(m_pLinkFilter)
 	{
-		m_pLinkFilter->processData(buffer,len);
+		m_pLinkFilter->processData(buffer,iLen);
 		return;
 	}
 
-	register char *p=buffer;
-	char *beginOfCurData = buffer;
-	int   bufLen = 0;
-	char *messageBuffer = (char *)kvi_malloc(1);
+	register char * p = buffer;
+	char * cBeginOfCurData = buffer;
+	int iBufLen = 0;
+	char * cMessageBuffer = (char *)kvi_malloc(1);
 
 	while(*p)
 	{
@@ -232,23 +235,23 @@ void KviIrcLink::processData(char * buffer,int len)
 		{
 			//found a CR or LF...
 			//prepare a message buffer
-			bufLen = p - beginOfCurData;
+			iBufLen = p - cBeginOfCurData;
 			//check for previous unterminated data
 			if(m_uReadBufferLen > 0)
 			{
 				__range_valid(m_pReadBuffer);
-				messageBuffer = (char *)kvi_realloc(messageBuffer,bufLen + m_uReadBufferLen + 1);
-				kvi_memmove(messageBuffer,m_pReadBuffer,m_uReadBufferLen);
-				kvi_memmove((void *)(messageBuffer + m_uReadBufferLen),beginOfCurData,bufLen);
-				*(messageBuffer + bufLen + m_uReadBufferLen) = '\0';
+				cMessageBuffer = (char *)kvi_realloc(cMessageBuffer,iBufLen + m_uReadBufferLen + 1);
+				kvi_memmove(cMessageBuffer,m_pReadBuffer,m_uReadBufferLen);
+				kvi_memmove((void *)(cMessageBuffer + m_uReadBufferLen),cBeginOfCurData,iBufLen);
+				*(cMessageBuffer + iBufLen + m_uReadBufferLen) = '\0';
 				m_uReadBufferLen = 0;
 				kvi_free(m_pReadBuffer);
 				m_pReadBuffer = 0;
 			} else {
 				__range_invalid(m_pReadBuffer);
-				messageBuffer = (char *)kvi_realloc(messageBuffer,bufLen + 1);
-				kvi_memmove(messageBuffer,beginOfCurData,bufLen);
-				*(messageBuffer + bufLen) = '\0';
+				cMessageBuffer = (char *)kvi_realloc(cMessageBuffer,iBufLen + 1);
+				kvi_memmove(cMessageBuffer,cBeginOfCurData,iBufLen);
+				*(cMessageBuffer + iBufLen) = '\0';
 			}
 			m_uReadPackets++;
 
@@ -264,8 +267,8 @@ void KviIrcLink::processData(char * buffer,int len)
 			//   the disconnect and thus destroying the irc context).
 			// For now we try to rely on the remaining parts to handle correctly
 			// such conditions. Let's see...
-			if(strlen(messageBuffer)>0)
-				m_pConnection->incomingMessage(messageBuffer);
+			if(strlen(cMessageBuffer) > 0)
+				m_pConnection->incomingMessage(cMessageBuffer);
 
 			if(m_pSocket->state() != KviIrcSocket::Connected)
 			{
@@ -276,12 +279,12 @@ void KviIrcLink::processData(char * buffer,int len)
 				//
 				// We handle it by simply returning control to readData() which
 				// will return immediately (and safely) control to Qt
-				kvi_free(messageBuffer);
+				kvi_free(cMessageBuffer);
 				return;
 			}
 
 			while(*p && ((*p=='\r')||(*p=='\n')) )p++;
-			beginOfCurData = p;
+			cBeginOfCurData = p;
 
 		} else p++;
 	}
@@ -290,30 +293,30 @@ void KviIrcLink::processData(char * buffer,int len)
 	//beginOfCurData points to '\0' if we have
 	//no more stuff to parse , or points to something
 	//different than '\r' or '\n'...
-	if(*beginOfCurData)
+	if(*cBeginOfCurData)
 	{
 		//Have remaining data...in the local buffer
-		bufLen = p - beginOfCurData;
+		iBufLen = p - cBeginOfCurData;
 		if(m_uReadBufferLen > 0)
 		{
 			//and there was more stuff saved... (really slow connection)
 			__range_valid(m_pReadBuffer);
-			m_pReadBuffer =(char *)kvi_realloc(m_pReadBuffer,m_uReadBufferLen + bufLen);
-			kvi_memmove((void *)(m_pReadBuffer+m_uReadBufferLen),beginOfCurData,bufLen);
-			m_uReadBufferLen += bufLen;
+			m_pReadBuffer =(char *)kvi_realloc(m_pReadBuffer,m_uReadBufferLen + iBufLen);
+			kvi_memmove((void *)(m_pReadBuffer+m_uReadBufferLen),cBeginOfCurData,iBufLen);
+			m_uReadBufferLen += iBufLen;
 		} else {
 			//
 			__range_invalid(m_pReadBuffer);
-			m_uReadBufferLen = bufLen;
+			m_uReadBufferLen = iBufLen;
 			m_pReadBuffer =(char *)kvi_malloc(m_uReadBufferLen);
-			kvi_memmove(m_pReadBuffer,beginOfCurData,m_uReadBufferLen);
+			kvi_memmove(m_pReadBuffer,cBeginOfCurData,m_uReadBufferLen);
 		}
 		//The m_pReadBuffer contains at max 1 irc message...
 		//that can not be longer than 510 bytes (the message is not CRLF terminated)
 		// FIXME: Is this limit *really* valid on all servers ?
 		if(m_uReadBufferLen > 510) debug("WARNING: Receiving an invalid irc message from server.");
 	}
-	kvi_free(messageBuffer);
+	kvi_free(cMessageBuffer);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////

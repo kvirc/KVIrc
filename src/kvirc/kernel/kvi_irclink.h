@@ -24,8 +24,15 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_irclink.h
+* \author Szymon Stefanek
+* \brief Middle stack protocol for IRC connection
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
+
 #include <QObject>
 
 class KviConsole;
@@ -39,20 +46,44 @@ class KviIrcConnectionTargetResolver;
 class KviDataBuffer;
 class KviMexLinkFilter;
 
-
+/**
+* \class KviIrcLink
+* \brief Middle stack class for IRC connection
+*
+* This class gets data from KviIrcSocket and pass it to KviIrcConnection
+*/
 class KVIRC_API KviIrcLink : public QObject
 {
 	friend class KviIrcConnection; // upper protocol in the stack
 	friend class KviIrcSocket; // lower protocol in the stack
 	Q_OBJECT
 public:
-	enum State { Idle, Connecting, Connected };
+	/**
+	* \enum State
+	*/
+	enum State {
+		Idle, /**< Socket idling */
+		Connecting, /**< Socket connecting */
+		Connected /**< Socket connected */
+	};
 protected:
-	// only KviConsole can create this
-	// pConsole must NOT be null
-	// pServer is a shallow pointer: Connection makes a copy of it internally, must NOT be null
-	// pProxy may be null if a proxy is not desired. Connection makes a copy of it internally
+	/**
+	* \brief Constructs the IrcLink object
+	*
+	* Only KviConsole can create this.
+	* pConsole must NOT be null;
+	* pServer is a shallow pointer: Connection makes a copy of it internally,
+	* must NOT be null;
+	* pProxy may be null if a proxy is not desired. Connection makes a copy
+	* of it internally;
+	* \param pConnection The pointer to the KviIrcConnection class
+	* \return KviIrcLink
+	*/
 	KviIrcLink(KviIrcConnection * pConnection);
+
+	/**
+	* \brief Destroys the IrcLink object
+	*/
 	~KviIrcLink();
 private:
 	KviIrcConnection               * m_pConnection;       // shallow, never null
@@ -69,54 +100,116 @@ private:
 
 	KviIrcConnectionTargetResolver * m_pResolver;         // owned
 public:
-	// da socket(): may be null!
+	/**
+	* \brief Returns the socket
+	*
+	* May be null!
+	* \return KviIrcSocket *
+	*/
 	KviIrcSocket * socket(){ return m_pSocket; };
-	// da connection: never null
+
+	/**
+	* \brief Returns the connection object
+	*
+	* Never null
+	* \return KviIrcConnection *
+	*/
 	KviIrcConnection * connection(){ return m_pConnection; };
-	// da console: never null
+
+	/**
+	* \brief Returns the console
+	*
+	* Never null
+	* \return KviConsole *
+	*/
 	KviConsole * console(){ return m_pConsole; };
+
+	/**
+	* \brief Returns the state of the socket
+	* \return State
+	*/
 	State state(){ return m_eState; };
 protected:
-	//
-	// interface for KviIrcConnection (up)
-	//
-
-	// This is used by KviIrcConnection::send*()
-	// This should be used to intercept the outgoing packets
-	// when implementing a new protocol
+	/**
+	* \brief Sends a data packet
+	*
+	* This is used by KviIrcConnection::send*()
+	* This should be used to intercept the outgoing packets when implementing
+	* a new protocol.
+	* It's an interface for KviIrcConnection (upper protocol in stack)
+	* \param pData The pointer to the data packet
+	* \return bool
+	*/
 	virtual bool sendPacket(KviDataBuffer * pData);
-	// this aborts any connection or attempt
+
+	/**
+	* \brief Aborts any connection or attempt
+	* \return void
+	*/
 	void abort();
 protected:
-	//
-	// local overridables (called internally)
-	//
-	
-	// This is the function used to start a connection attempt.
-	// It starts the server or proxy DNS lookup
-	// The function MUST be asynchronous: it must return succesfully
-	// and report any error by using m_pConnection->linkAttemptFailed()
+	/**
+	* \brief Starts a connection attempt.
+	*
+	* It starts the server or proxy DNS lookup.
+	* The function MUST be asynchronous: it must return succesfully and
+	* report any error by using m_pConnection->linkAttemptFailed()
+	* It's called internally and it's overridable
+	* \return void
+	*/
 	void start();
 protected:
-	//
-	// interface for KviIrcSocket (down)
-	//
-	
-	// This is called by KviIrcSocket to process a packet
-	// of raw data from the server. The buffer is iLength+1
-	// bytes long and contains a null terminator
-	void processData(char * buffer,int iLength);
-	// this is called at each state change
+	/**
+	* \brief Process a packet of raw data from the server
+	*
+	* This is called by KviIrcSocket.
+	* The buffer is iLength+1 bytes long and contains a null terminator
+	* It's an interface for KviIrcSocket (lower protocol in stack)
+	* \param buffer The buffer :)
+	* \param iLength The length of the buffer
+	* \return void
+	*/
+	void processData(char * buffer, int iLength);
+
+	/**
+	* \brief Called at each state change
+	* \return void
+	*/
 	void socketStateChange();
 protected slots:
+	/**
+	* \brief Called when the link filter has been destroyed without permission :D
+	*
+	* This should NEVER happen (?)
+	* This is part of the KviIrcSocket management
+	* \return void
+	*/
 	void linkFilterDestroyed();
 private:
+	/**
+	* \brief Destroys the socket
+	* \return void
+	*/
 	void destroySocket();
-	void createSocket(const QString &szLinkFilterName);
+
+	/**
+	* \brief Creates the socket
+	* \param szLinkFilterName The source linkfilter name
+	* \return void
+	*/
+	void createSocket(const QString & szLinkFilterName);
 signals:
-	void connectionFailed(); // the connection attempt has failed
+	/**
+	* \brief Emitted when the connection attempt has failed
+	* \return void
+	*/
+	void connectionFailed();
 private slots:
+	/**
+	* \brief Called when the DNS lookup has terminated
+	* \return void
+	*/
 	void resolverTerminated();
 };
 
-#endif //!_KVI_IRCLINK_H_
+#endif //_KVI_IRCLINK_H_

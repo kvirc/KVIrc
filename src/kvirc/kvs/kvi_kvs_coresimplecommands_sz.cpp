@@ -276,7 +276,7 @@ namespace KviKvsCoreSimpleCommands
 			d->szLinkFilter = szSocketFilter;
 			d->bPortIsOk = (uPort > 0);
 #ifdef COMPILE_IPV6_SUPPORT
-			d->bUseIPv6 = (KVSCSC_pSwitches->find('i',"ipv6") != 0) || KviNetUtils::isValidStringIp_V6(szServer);
+			d->bUseIPv6 = (KVSCSC_pSwitches->find('i',"ipv6") != 0) || KviNetUtils::isValidStringIPv6(szServer);
 #else
 			d->bUseIPv6 = false;
 #endif

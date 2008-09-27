@@ -80,7 +80,7 @@ namespace KviNetUtils
 	KVILIB_API bool binaryIpToStringIp(struct in_addr in,QString &szBuffer);
 	KVILIB_API bool getInterfaceAddress(const QString &szInterfaceName,QString &szBuffer);
 #ifdef COMPILE_IPV6_SUPPORT
-	KVILIB_API bool isValidStringIp_V6(const QString &szStringIp);
+	KVILIB_API bool isValidStringIPv6(const QString &szStringIp);
 	KVILIB_API bool stringIpToBinaryIp_V6(const QString &szStringIp,struct in6_addr * address);
 	KVILIB_API bool binaryIpToStringIp_V6(struct in6_addr in,QString &szBuffer);
 #endif

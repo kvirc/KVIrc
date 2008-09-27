@@ -23,18 +23,16 @@
 //=============================================================================
 
 
-
-#include <QApplication>
-#include <QLayout>
-#include <QMessageBox>
-#include <QCheckBox>
-
 #include "kvi_ircserverdb.h"
 #include "kvi_config.h"
 #include "kvi_locale.h"
 #include "kvi_netutils.h"
 #include "kvi_nickserv.h"
 
+#include <QApplication>
+#include <QLayout>
+#include <QMessageBox>
+#include <QCheckBox>
 
 KviServerDataBase::KviServerDataBase()
 {
@@ -47,20 +45,26 @@ KviServerDataBase::KviServerDataBase()
 KviServerDataBase::~KviServerDataBase()
 {
 	delete m_pRecords;
-	if(m_pAutoConnectOnStartupServers)delete m_pAutoConnectOnStartupServers;
-	if(m_pAutoConnectOnStartupNetworks)delete m_pAutoConnectOnStartupNetworks;
+	if(m_pAutoConnectOnStartupServers)
+		delete m_pAutoConnectOnStartupServers;
+	if(m_pAutoConnectOnStartupNetworks)
+		delete m_pAutoConnectOnStartupNetworks;
 }
 
 void KviServerDataBase::clearAutoConnectOnStartupServers()
 {
-	if(!m_pAutoConnectOnStartupServers)return;
+	if(!m_pAutoConnectOnStartupServers)
+		return;
+
 	delete m_pAutoConnectOnStartupServers;
 	m_pAutoConnectOnStartupServers = 0;
 }
 
 void KviServerDataBase::clearAutoConnectOnStartupNetworks()
 {
-	if(!m_pAutoConnectOnStartupNetworks)return;
+	if(!m_pAutoConnectOnStartupNetworks)
+		return;
+
 	delete m_pAutoConnectOnStartupNetworks;
 	m_pAutoConnectOnStartupNetworks = 0;
 }
@@ -71,12 +75,12 @@ void KviServerDataBase::clear()
 	m_szCurrentNetwork = "";
 }
 
-void KviServerDataBase::addNetwork(KviNetwork *n)
+void KviServerDataBase::addNetwork(KviNetwork * n)
 {
 	m_pRecords->replace(n->name(),n);
 }
 
-KviNetwork * KviServerDataBase::findNetwork(const QString &szName)
+KviNetwork * KviServerDataBase::findNetwork(const QString & szName)
 {
 	KviNetwork * r = m_pRecords->find(szName);
 	return r;
@@ -85,17 +89,21 @@ KviNetwork * KviServerDataBase::findNetwork(const QString &szName)
 KviNetwork * KviServerDataBase::currentNetwork()
 {
 	KviNetwork * r = 0;
-	if(!m_szCurrentNetwork.isEmpty())r = m_pRecords->find(m_szCurrentNetwork);
-	if(r)return r;
+	if(!m_szCurrentNetwork.isEmpty())
+		r = m_pRecords->find(m_szCurrentNetwork);
+	if(r)
+		return r;
 
 	KviPointerHashTableIterator<QString,KviNetwork> it(*m_pRecords);
 	r = it.current();
-	if(!r)return 0;
+	if(!r)
+		return 0;
+
 	m_szCurrentNetwork = r->name();
 	return r;
 }
 
-bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString &szNetName,KviNetwork * r,QString &szError)
+bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString & szNetName, KviNetwork * r, QString & szError)
 {
 	m_szCurrentNetwork = szNetName;
 	// find a round-robin server in that network
@@ -106,10 +114,11 @@ bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString &szNetName,
 		return false;
 	}
 
-	for(KviServer * s = r->m_pServerList->first();s;s = r->m_pServerList->next())
+	for(KviServer * s = r->m_pServerList->first(); s; s = r->m_pServerList->next())
 	{
 		if(s->m_szDescription.contains("random",Qt::CaseInsensitive) ||
-			(s->m_szDescription.contains("round",Qt::CaseInsensitive) && s->m_szDescription.contains("robin",Qt::CaseInsensitive)))
+			(s->m_szDescription.contains("round",Qt::CaseInsensitive) &&
+			 s->m_szDescription.contains("robin",Qt::CaseInsensitive)))
 		{
 			r->setCurrentServer(s);
 			return true;
@@ -118,17 +127,17 @@ bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString &szNetName,
 
 	// no explicit round robin... try some common names
 
-	QString tryAlso1,tryAlso2,tryAlso3;
+	QString szTryAlso1, szTryAlso2, szTryAlso3;
 
-	KviQString::sprintf(tryAlso1,"irc.%Q.org",&szNetName);
-	KviQString::sprintf(tryAlso2,"irc.%Q.net",&szNetName);
-	KviQString::sprintf(tryAlso3,"irc.%Q.com",&szNetName);
+	KviQString::sprintf(szTryAlso1,"irc.%Q.org",&szNetName);
+	KviQString::sprintf(szTryAlso2,"irc.%Q.net",&szNetName);
+	KviQString::sprintf(szTryAlso3,"irc.%Q.com",&szNetName);
 
-	for(KviServer * ss = r->m_pServerList->first();ss;ss = r->m_pServerList->next())
+	for(KviServer * ss = r->m_pServerList->first(); ss; ss = r->m_pServerList->next())
 	{
-		if(KviQString::equalCI(ss->m_szHostname,tryAlso1) ||
-			KviQString::equalCI(ss->m_szHostname,tryAlso2) ||
-			KviQString::equalCI(ss->m_szHostname,tryAlso3))
+		if(KviQString::equalCI(ss->m_szHostname,szTryAlso1) ||
+			KviQString::equalCI(ss->m_szHostname,szTryAlso2) ||
+			KviQString::equalCI(ss->m_szHostname,szTryAlso3))
 		{
 			r->setCurrentServer(ss);
 			return true;
@@ -139,8 +148,7 @@ bool KviServerDataBase::makeCurrentBestServerInNetwork(const QString &szNetName,
 	return true;
 }
 
-
-bool KviServerDataBase::makeCurrentServer(KviServerDefinition * d,QString &szError)
+bool KviServerDataBase::makeCurrentServer(KviServerDefinition * d, QString & szError)
 {
 	KviServer * pServer = 0;
 
@@ -185,7 +193,7 @@ bool KviServerDataBase::makeCurrentServer(KviServerDefinition * d,QString &szErr
 
 	while((r = it.current()))
 	{
-		for(srv = r->serverList()->first();srv && (!pServer);srv = r->serverList()->next())
+		for(srv = r->serverList()->first(); srv && (!pServer); srv = r->serverList()->next())
 		{
 			if(KviQString::equalCI(srv->hostName(),d->szServer))
 			{
@@ -245,9 +253,12 @@ search_finished:
 
 	if(r && pServer)
 	{
-		if(!d->szNick.isEmpty())pServer->m_szNick = d->szNick;
-		if(!d->szPass.isEmpty())pServer->m_szPass = d->szPass; // don't clear the pass!
-		if(!d->szInitUMode.isEmpty())pServer->m_szInitUMode = d->szInitUMode;
+		if(!d->szNick.isEmpty())
+			pServer->m_szNick = d->szNick;
+		if(!d->szPass.isEmpty())
+			pServer->m_szPass = d->szPass; // don't clear the pass!
+		if(!d->szInitUMode.isEmpty())
+			pServer->m_szInitUMode = d->szInitUMode;
 
 		m_szCurrentNetwork = r->name();
 		r->setCurrentServer(pServer);
@@ -257,7 +268,7 @@ search_finished:
 	// no such server: is it a valid ip address or hostname ?
 	bool bIsValidIPv4 = KviNetUtils::isValidStringIp(d->szServer);
 #ifdef COMPILE_IPV6_SUPPORT
-	bool bIsValidIPv6 =KviNetUtils::isValidStringIp_V6(d->szServer);
+	bool bIsValidIPv6 = KviNetUtils::isValidStringIPv6(d->szServer);
 #else
 	bool bIsValidIPv6 = false;
 #endif

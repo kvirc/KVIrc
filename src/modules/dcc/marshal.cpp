@@ -126,7 +126,7 @@ void KviDccMarshal::doListen()
 	if(!KviNetUtils::isValidStringIp(m_szIp))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		if(!KviNetUtils::isValidStringIp_V6(m_szIp))
+		if(!KviNetUtils::isValidStringIPv6(m_szIp))
 		{
 			emit error(KviError_invalidIpAddress);
 			return;
@@ -300,7 +300,7 @@ void KviDccMarshal::doConnect()
 	if(!KviNetUtils::isValidStringIp(m_szIp))
 	{
 #ifdef COMPILE_IPV6_SUPPORT
-		if(!KviNetUtils::isValidStringIp_V6(m_szIp))
+		if(!KviNetUtils::isValidStringIPv6(m_szIp))
 		{
 			emit error(KviError_invalidIpAddress);
 			return;

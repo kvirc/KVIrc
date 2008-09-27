@@ -721,10 +721,12 @@ void KviIrcConnection::resolveLocalHost()
 #ifdef COMPILE_IPV6_SUPPORT
 			if(server()->isIPv6())
 			{
-				if(KviNetUtils::isValidStringIp_V6(KVI_OPTION_STRING(KviOption_stringLocalHostIp)))bGotIp = true;
+				if(KviNetUtils::isValidStringIPv6(KVI_OPTION_STRING(KviOption_stringLocalHostIp)))
+					bGotIp = true;
 			} else {
 #endif
-				if(KviNetUtils::isValidStringIp(KVI_OPTION_STRING(KviOption_stringLocalHostIp)))bGotIp = true;
+				if(KviNetUtils::isValidStringIp(KVI_OPTION_STRING(KviOption_stringLocalHostIp)))
+					bGotIp = true;
 #ifdef COMPILE_IPV6_SUPPORT
 			}
 #endif
@@ -811,7 +813,7 @@ void KviIrcConnection::userInfoReceived(const QString &szUserName,const QString 
 #ifdef COMPILE_IPV6_SUPPORT
 	if((KviNetUtils::isValidStringIp(m_pUserInfo->hostIp()) &&
 		KviNetUtils::isRoutableIpString(m_pUserInfo->hostIp())) ||
-		KviNetUtils::isValidStringIp_V6(m_pUserInfo->hostIp()))
+		KviNetUtils::isValidStringIPv6(m_pUserInfo->hostIp()))
 #else
 	if((KviNetUtils::isValidStringIp(m_pUserInfo->hostIp()) &&
 		KviNetUtils::isRoutableIpString(m_pUserInfo->hostIp())))
@@ -830,7 +832,7 @@ void KviIrcConnection::userInfoReceived(const QString &szUserName,const QString 
 	{
 		// lookup the new hostname then...
 #ifdef COMPILE_IPV6_SUPPORT
-		if(KviNetUtils::isValidStringIp(szHostName) || KviNetUtils::isValidStringIp_V6(szHostName))
+		if(KviNetUtils::isValidStringIp(szHostName) || KviNetUtils::isValidStringIPv6(szHostName))
 #else
 		if(KviNetUtils::isValidStringIp(szHostName))
 #endif
@@ -840,7 +842,7 @@ void KviIrcConnection::userInfoReceived(const QString &szUserName,const QString 
 			m_pUserInfo->setHostIp(szHostName);
 		} else
 #ifdef COMPILE_IPV6_SUPPORT
-		if(KviNetUtils::isValidStringIp(szUnmaskedHost) || KviNetUtils::isValidStringIp_V6(szUnmaskedHost))
+		if(KviNetUtils::isValidStringIp(szUnmaskedHost) || KviNetUtils::isValidStringIPv6(szUnmaskedHost))
 #else
 		if(KviNetUtils::isValidStringIp(szUnmaskedHost))
 #endif
