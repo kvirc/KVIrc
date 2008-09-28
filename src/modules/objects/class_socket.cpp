@@ -1212,15 +1212,20 @@ bool KviKvsObject_socket::functionRead(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_socket::functionReadHex(KviKvsObjectFunctionCall *c)
 {
-	unsigned char hex[]="000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C6C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5F6F7F8F9DADBDCDDDEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF";
 	unsigned int uLen = readGetLength(c);
 	char * str = new char[(uLen*2) + 1];
 	int index=0;
+	unsigned char byte,msb,lsb=0;
 	for (int i=0;i<uLen;i++)
 	{
-		unsigned int byte=(unsigned char)m_pInBuffer[i]*2;
-		str[index++]=hex[byte++];
-		str[index++]=hex[byte];
+		byte=(unsigned char)m_pInBuffer[i];
+		msb=byte & 0xf0;
+		msb=msb>>4;
+		lsb=byte & 0x0f;
+		msb>9?msb+='7':msb+='0'; 
+		lsb>9?lsb+='7':lsb+='0'; 
+		str[index++]=msb; 
+		str[index++]=lsb;
 	}
 	str[index]='\0';
 	c->returnValue()->setString(str);
