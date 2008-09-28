@@ -433,9 +433,9 @@ bool KviKvsObject_file::functionreadHexBlock(KviKvsObjectFunctionCall *c)
 		for (int i=0;i<rlen;i++)
 		{
 			byte=(unsigned char)buff[i];
-			msb=byte & 0xf0;
-			msb=msb>>4;
 			lsb=byte & 0x0f;
+			msb=byte>>4;
+			
 			msb>9?msb+='7':msb+='0'; 
 			lsb>9?lsb+='7':lsb+='0'; 
 			str[index++]=msb; 

@@ -1219,9 +1219,8 @@ bool KviKvsObject_socket::functionReadHex(KviKvsObjectFunctionCall *c)
 	for (int i=0;i<uLen;i++)
 	{
 		byte=(unsigned char)m_pInBuffer[i];
-		msb=byte & 0xf0;
-		msb=msb>>4;
 		lsb=byte & 0x0f;
+		msb=byte>>4;
 		msb>9?msb+='7':msb+='0'; 
 		lsb>9?lsb+='7':lsb+='0'; 
 		str[index++]=msb; 
