@@ -157,12 +157,12 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 		QString szTmp("kvscompleter.idx");
 		QString szPath;
 		g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,szTmp);
+		KviKvsKernel::instance()->getAllFunctionsCommandsCore(m_pListCompletition);
 		QString szBuffer = m_pListCompletition->join(",");
 		QFile f(szPath);
 		f.open(QIODevice::WriteOnly);
 		f.write(szBuffer.toUtf8());
 		f.close();
-		KviKvsKernel::instance()->getAllFunctionsCommandsCore(m_pListCompletition);
 		createCompleter(*m_pListCompletition);
 		iIndex = 0;
 		iModulesCount = 0;
@@ -579,7 +579,7 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	if(iEndStateOfLastPara < 0)
 		iEndStateOfLastPara = 0;
 	/*
-	QRegExp reg("[$](|[a-zA-Z]|[a-zA-Z]+[a-zA-Z0-9_\.:]*)");
+	QRegExp reg("[$](|[a-zA-Z]|[a-zA-Z]+[a-zA-Z0-9_\\.:]*)");
 	int index = text.indexOf(reg);
 	while (index >= 0)
 	{
