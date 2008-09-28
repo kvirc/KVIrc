@@ -63,7 +63,7 @@ protected:
 	bool functionErrorString(KviKvsObjectFunctionCall *c);
 	bool functionPost(KviKvsObjectFunctionCall *c);
 	bool functionFollowRedirect(KviKvsObjectFunctionCall *c);
-	
+	bool functionCurrentId(KviKvsObjectFunctionCall *c);
 	void redirect(QString &file,const QHttpResponseHeader &r);
 	
 	#ifndef QT_NO_OPENSSL

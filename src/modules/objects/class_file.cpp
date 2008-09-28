@@ -180,10 +180,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_file,"file","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeBlock", functionwriteBlock)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readLine", functionreadLine)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeLine", functionwriteLine)
-/*	KVSO_REGISTER_HANDLER(KviKvsObject_file,"hexWrite", functionHexWrite)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"hexRead", functionHexRead)
-*/
-  KVSO_END_REGISTERCLASS(KviKvsObject_file)
+KVSO_END_REGISTERCLASS(KviKvsObject_file)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_file,KviKvsObject)
 	m_pFile = new QFile();
@@ -417,6 +414,7 @@ bool KviKvsObject_file::functionwriteLine(KviKvsObjectFunctionCall *c)
 }
 bool KviKvsObject_file::functionreadHexBlock(KviKvsObjectFunctionCall *c)
 {
+	unsigned char hex[]="000102030405060708090A0B0C0D0E0F101112131415161718191A1B1C1D1E1F202122232425262728292A2B2C2D2E2F303132333435363738393A3B3C3D3E3F404142434445464748494A4B4C4D4E4F505152535455565758595A5B5C5D5E5F606162636465666768696A6B6C6D6E6F707172737475767778797A7B7C7D7E7F808182838485868788898A8B8C8D8E8F909192939495969798999A9B9C9D9E9FA0A1A2A3A4A5A6A7A8A9AAABACADAEAFB0B1B2B3B4B5B6B7B8B9BABBBCBDBEBFC0C1C2C3C4C6C6C7C8C9CACBCCCDCECFD0D1D2D3D4D5F6F7F8F9DADBDCDDDEDFE0E1E2E3E4E5E6E7E8E9EAEBECEDEEEFF0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF";
 	kvs_uint_t uLen;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,0,uLen)
@@ -427,27 +425,21 @@ bool KviKvsObject_file::functionreadHexBlock(KviKvsObjectFunctionCall *c)
 	else
 	{
 		if (uLen>m_pFile->size()) uLen=m_pFile->size();
-		char * buff = new char[(uLen*2) + 1];
-		char * cc=buff;
+		char * buff = new char[uLen];
+		char * str = new char [(uLen*2)+1];
 		m_pFile->flush(); // advice from QFile man page (to avoid trash)
 		int rlen = m_pFile->read(buff, uLen);
-		QString szHex;
-		unsigned char byte,msb,lsb=0;
 		int index=0;
-		for (int i=0;i<uLen;i++)
+		for (int i=0;i<rlen;i++)
 		{
-			m_pFile->getChar((char*)&byte);
-			msb=(byte/16);
-			lsb=(byte%16);
-			msb>9?msb+='7':msb+='0';
-			lsb>9?lsb+='7':lsb+='0';
-			buff[index]=msb;
-			index++;
-			buff[index]=lsb;
-			index++;
+			unsigned int byte=(unsigned char)buff[i]*2;
+			str[index++]=hex[byte++];
+			str[index++]=hex[byte];
 		}
-		buff[index]='\0';
-		c->returnValue()->setString(buff);
+		str[index]='\0';
+		c->returnValue()->setString(str);
+		delete str;
+		delete buff;
 	}
 	return true;
 }
@@ -464,15 +456,28 @@ bool KviKvsObject_file::functionwriteHexBlock(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("File is not open !"));
 		return true;
 	}
+	if (szBlock.length()%2) 
+	{
+		c->warning(__tr2qs("Lenght of hex string is not multiple of 2"));
+		return true;
+	}
 	if (uLen>(szBlock.length()/2)|| !uLen) uLen=szBlock.length();
 	else uLen*=2;
 	unsigned char byte,lsb,msb;
 	for(int i=0;i<uLen;i+=2)
 	{
 		msb=szBlock.at(i).toAscii();
-		msb>='A'?msb-='7':msb-='0';
 		lsb=szBlock.at(i+1).toAscii();
-		lsb>='A'?lsb-='7':lsb-='0';
+		
+		if (((msb>='A' && msb<='F')||(msb>='0' && msb<='9')) && ((lsb>='A' && lsb<='F')|| (lsb>='0' && lsb<='9')))
+		{
+					msb>='A'?msb-='7':msb-='0';
+					lsb>='A'?lsb-='7':lsb-='0';
+		}
+		else{
+			c->warning("The hex string is not correct!");
+			return true;
+		}
 		byte=(msb*16)+lsb;
 		m_pFile->putChar(byte);
 	}

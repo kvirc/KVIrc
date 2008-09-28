@@ -63,7 +63,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qt3support4.lib qtcore4.lib qtgui4.lib qtmain.lib kvilib.lib kvirc.lib qtxml4.lib ws2_32.lib qtwebkit4.lib qtnetwork4.lib"
+				AdditionalDependencies="qtcore4.lib qtgui4.lib qtmain.lib kvilib.lib kvirc.lib qtxml4.lib ws2_32.lib qtwebkit4.lib qtnetwork4.lib"
 				OutputFile="$(OutDir)/kvi$(ProjectName).dll"
 				LinkIncremental="2"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
@@ -156,7 +156,7 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="qtmain.lib kvilib.lib kvirc.lib qt3support4.lib qtcore4.lib qtgui4.lib qtxml4.lib ws2_32.lib qtwebkit4.lib"
+				AdditionalDependencies="qtnetwork4.lib qtmain.lib kvilib.lib kvirc.lib qtcore4.lib qtgui4.lib qtxml4.lib ws2_32.lib qtwebkit4.lib"
 				OutputFile="$(OutDir)/kvi$(ProjectName).dll"
 				LinkIncremental="1"
 				AdditionalLibraryDirectories="&quot;$(SSLLIBDIR)&quot;;&quot;$(PERLDIR)\lib\CORE&quot;;&quot;$(QTDIR)\lib&quot;;&quot;$(SolutionDir)\win32build\bin&quot;;&quot;$(ZLIBLIBDIR)&quot;"
@@ -543,6 +543,15 @@
 						Outputs="$(InputDir)\m_$(InputName).moc"
 					/>
 				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						Outputs="$(InputDir)\m_$(InputName).moc"
+					/>
+				</FileConfiguration>
 			</File>
 			<File
 				RelativePath=".\class_groupbox.h"
@@ -579,6 +588,15 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\m_$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
 						Outputs="$(InputDir)\m_$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -1076,6 +1094,15 @@
 					<Tool
 						Name="VCCustomBuildTool"
 						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\m_$(InputName).moc"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
 						Outputs="$(InputDir)\m_$(InputName).moc"
 					/>
 				</FileConfiguration>

@@ -1032,7 +1032,6 @@ bool KviKvsObject_widget::function_fontAscent(KviKvsObjectFunctionCall * c)
 
 bool KviKvsObject_widget::function_repaint(KviKvsObjectFunctionCall * c)
 {
-	bool bEnabled;
 	if(!widget()) return true;
 	widget()->repaint();
 	return true;

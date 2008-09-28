@@ -80,6 +80,7 @@ const char * const ssl_errors_tbl[] = {
 		!fn: <id:integer>$post(<remote_path:string>,<post_data:string>,<local_file: string>)
 		!fn: $abort()
 		!fn: <id:integer>$setHost(<host:string>,<remote_port:unsigned_integer>)
+		!fn: <id:integer>$currentId()
 		!fn: $setProxy(<host:string>,[<user:string>,<password:string>])
 		!fn: $setUser(<user:string>,<password:string>)
 		!fn: $readAll()
@@ -115,14 +116,12 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_http,"http","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"abort",functionAbort)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"setHost",functionSetHost)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"setProxy",functionSetProxy)
+	KVSO_REGISTER_HANDLER(KviKvsObject_http,"currentId",functionCurrentId)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"setUser",functionSetUser)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"readAll",functionReadAll)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"errorString",functionErrorString)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"setFollowRedirect",functionFollowRedirect)
 	
-	#ifndef QT_NO_OPENSSL
-	KVSO_REGISTER_HANDLER(KviKvsObject_http,"ignoreSSlErrors",functionIgnoreSslErrors)
-	#endif
 	// events
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"doneEvent",functionDoneEvent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"requestFinishedEvent",functionRequestFinishedEvent)
@@ -132,10 +131,10 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_http,"http","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"dataSendProgressEvent",functionDataSendProgressEvent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"stateChangedEvent",functionStateChangedEvent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"readyReadEvent",functionReadyReadEvent)
-	 #ifndef QT_NO_OPENSSL
-
+	#ifndef QT_NO_OPENSSL
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"sslErrorsEvent",functionSslErrorsEvent)
-#endif
+	KVSO_REGISTER_HANDLER(KviKvsObject_http,"ignoreSSlErrors",functionIgnoreSslErrors)
+	#endif
 KVSO_END_REGISTERCLASS(KviKvsObject_http)
 
 
@@ -160,20 +159,8 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_http)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_http)
 	QHashIterator<int,QFile *> t(getDict);
-/*
-
-	while (t.hasNext()) 
-	{
-		t.next();
-		int key=t.key();
-		QFile *pFile=getDict.value(key);
-		pFile->close();
-		delete pFile;
-	}
-*/
 	delete m_pHttp;
 	getDict.clear();
-
 KVSO_END_DESTRUCTOR(KviKvsObject_http)
 //----------------------
 
@@ -188,7 +175,6 @@ bool  KviKvsObject_http::functionSetHost(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("remote_port",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uRemotePort)
 	KVSO_PARAMETERS_END(c)
 	QUrl url(szHost);
-
 	if (!url.isValid())
 	{
 		c->warning(__tr2qs("Host '%Q' is not a valid url"),&szHost);
@@ -203,6 +189,11 @@ bool  KviKvsObject_http::functionSetHost(KviKvsObjectFunctionCall *c)
 	if (mode==QHttp::ConnectionModeHttps) uRemotePort=443;
 	if (m_pHttp) id=m_pHttp->setHost(url.host(), mode, uRemotePort);
 	c->returnValue()->setInteger(id);
+	return true;
+}
+bool  KviKvsObject_http::functionCurrentId(KviKvsObjectFunctionCall *c)
+{
+	c->returnValue()->setInteger(m_pHttp->currentId());
 	return true;
 }
 bool  KviKvsObject_http::functionSetUser(KviKvsObjectFunctionCall *c)
@@ -239,11 +230,20 @@ bool  KviKvsObject_http::functionGet(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("local_filename",KVS_PT_STRING,0,szDest)
 	KVSO_PARAMETERS_END(c)
 	QFile *pFile=0;
-	if (!szDest.isEmpty()){
+	if (!szDest.isEmpty())
+	{
 		pFile=new QFile(szDest);
-		if (pFile){
+		if (pFile)
+		{
 				pFile->open(QIODevice::WriteOnly);
 		}
+		else
+		{
+			c->warning(__tr2qs("'%Q' is not a valid file path"),&szDest);
+			c->returnValue()->setInteger(-1);
+			return true;
+		}
+
 	}
 	int id=0;
 	if (szPath.isEmpty()) szPath="/";
@@ -343,7 +343,6 @@ void KviKvsObject_http::slotRequestFinished ( int id, bool error )
 		delete pFile;
 	}
 	callFunction(this,"requestFinishedEvent",0,new KviKvsVariantList(new KviKvsVariant((kvs_int_t) id),new KviKvsVariant(error)));
-
 }
 
 bool KviKvsObject_http::functionRequestStartedEvent(KviKvsObjectFunctionCall *c)
@@ -406,7 +405,6 @@ void KviKvsObject_http::redirect(QString &file,const QHttpResponseHeader &r)
 	pFile->open(QIODevice::WriteOnly);
 	int id=m_pHttp->get(url.path(),pFile);
 	getDict[id]=pFile;
-	debug("exit redirect");
 }
 
 void KviKvsObject_http::slotResponseHeaderReceived(const QHttpResponseHeader &r)
