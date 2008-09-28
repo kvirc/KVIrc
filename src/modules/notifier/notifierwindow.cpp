@@ -370,6 +370,7 @@ void KviNotifierWindow::heartbeat()
 			stopShowHideTimer();
 			m_dOpacity = 1.0;
 			if(!isVisible())show(); //!!!
+			else update();
 		break;
 		case Showing:
 			// if the main window got attention while
@@ -1185,8 +1186,11 @@ void KviNotifierWindow::leaveEvent(QEvent * e)
 		m_pShowHideTimer = new QTimer();
 		connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 	}
-	m_eState = FocusingOff;
-	m_pShowHideTimer->start(40);
+	if (m_eState!=Hidden)
+	{
+		m_eState = FocusingOff;
+		m_pShowHideTimer->start(40);
+	}
 }
 
 void KviNotifierWindow::contextPopup(const QPoint &pos)
