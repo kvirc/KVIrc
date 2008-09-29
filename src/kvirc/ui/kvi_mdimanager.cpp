@@ -128,11 +128,11 @@ void KviMdiManager::drawContents(QPainter *p,int x,int y,int w,int h)
 {
 	//debug("MY DRAW CONTENTS (%d,%d,%d,%d)",x,y,w,h);
 	QRect r(x,y,w,h);
+	QPoint pnt = viewport()->mapToGlobal(contentsToViewport(r.topLeft()));
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedParentGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapToGlobal(contentsToViewport(r.topLeft()));
 		p->drawTiledPixmap(r,*(g_pShadedParentGlobalDesktopBackground),pnt);
 		return;
 	}
@@ -140,7 +140,7 @@ void KviMdiManager::drawContents(QPainter *p,int x,int y,int w,int h)
 
 	if(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap())
 	{
-		p->drawTiledPixmap(r,*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()));
+		p->drawTiledPixmap(r,*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()), pnt);
 	} else {
 		p->fillRect(r,KVI_OPTION_COLOR(KviOption_colorMdiBackground));
 	}
