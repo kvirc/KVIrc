@@ -1069,7 +1069,7 @@ void KviFrame::moveEvent(QMoveEvent *e)
 
 void KviFrame::applyOptions()
 {
-	m_pMdi->update();
+	m_pMdi->updateContents();
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())wnd->applyOptions();
 	updateCaption();
 	
