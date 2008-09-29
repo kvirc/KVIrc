@@ -3554,7 +3554,7 @@ msgstr "Ignoriere DCC von \r!nc\r%s\r [%s@\r!h\r%s\r]"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_ctcp.cpp:844
 #, c-format
 msgid "Ignoring CTCP from \r!nc\r%s\r [%s@\r!h\r%s\r]"
-msgstr "Ignoriere die CTCP-Abfrage durch \r!n\r%s\r [%s@\r!h\r%s\r]"
+msgstr "Ignoriere die CTCP-Abfrage durch \r!nc\r%s\r [%s@\r!h\r%s\r]"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_ctcp.cpp:983
 msgid "The following CTCP reply has unrecognized target %Q"
@@ -3855,22 +3855,22 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:782
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Ignoriere Anfragen-PRIVMSG von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Anfragen-PRIVMSG von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:849
 msgid ""
 "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
-"Private Spamnachricht von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (paßt auf das "
+"Private Spamnachricht von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (passt auf das "
 "Spamwort \"%s\")"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:987
 msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Ignoriere Kanal-PRIVMSG von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Kanal-PRIVMSG von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1109
 msgid "Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Ignoriere Notiz von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Notiz von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1145
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1162
@@ -3935,7 +3935,7 @@ msgstr "Ende der zusammengeführten Ausgabe"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1540
 msgid "Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr "Ignoriere Invite von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Invite von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1555
 msgid "autojoining"
@@ -5706,7 +5706,7 @@ msgstr "Server-IP-Adresse kann nicht gefunden werden: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:380
 msgid "If this server is an IPv6 one, try /server -i %Q"
-msgstr "Falls dies ein IPv6-Server ist, versuchen Sie <b>/server -i %Q</b>"
+msgstr "Falls dies ein IPv6-Server ist, versuchen Sie /server -i %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:390
 msgid "Server hostname resolved to %Q"
