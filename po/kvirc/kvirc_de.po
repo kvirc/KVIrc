@@ -2821,7 +2821,7 @@ msgstr "Ident-Nachricht"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:382
 msgid "If this server is an IPv6 one, try /server -i %Q"
-msgstr "Falls dies ein IPv6-Server ist, versuchen Sie <b>/server -i %Q</b>"
+msgstr "Falls dies ein IPv6-Server ist, versuchen Sie /server -i %Q"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:201
 msgid ""
@@ -2838,7 +2838,7 @@ msgstr "Ignorierte Benutzernachricht"
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:831
 #, c-format
 msgid "Ignoring CTCP from \r!nc\r%s\r [%s@\r!h\r%s\r]"
-msgstr "Ignoriere die CTCP-Abfrage durch \r!n\r%s\r [%s@\r!h\r%s\r]"
+msgstr "Ignoriere die CTCP-Abfrage durch \r!nc\r%s\r [%s@\r!h\r%s\r]"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1722
 msgid "Ignoring DCC %S request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"
@@ -2851,7 +2851,7 @@ msgstr "Ignoriere DCC von \r!nc\r%s\r [%s@\r!h\r%s\r]"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1107
 msgid "Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Ignoriere Notiz von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Notiz von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:985
 msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -2859,11 +2859,11 @@ msgstr "Ignoriere Channel-PRIVMSG von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1541
 msgid "Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr "Ignoriere Invite von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Invite von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:784
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr "Ignoriere Anfragen-PRIVMSG von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "Ignoriere Anfragen-PRIVMSG von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:250
 msgid "Impossible to change nick if not authenticated with NickServ"
