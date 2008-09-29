@@ -194,7 +194,7 @@ void KviChannelsJoinWindow::fillListView()
 	}
 }
 
-void KviChannelsJoinWindow::itemClicked(QTreeWidgetItem * it)
+void KviChannelsJoinWindow::itemClicked(QTreeWidgetItem * it, int)
 {
 	if(!it)
 		return;
@@ -206,7 +206,7 @@ void KviChannelsJoinWindow::itemClicked(QTreeWidgetItem * it)
 	enableJoin();
 }
 
-void KviChannelsJoinWindow::itemDoubleClicked(QTreeWidgetItem * it)
+void KviChannelsJoinWindow::itemDoubleClicked(QTreeWidgetItem * it, int)
 {
 	if(!it)
 		return;

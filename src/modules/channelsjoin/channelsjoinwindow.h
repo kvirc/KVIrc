@@ -105,14 +105,14 @@ protected slots:
 	* \param it The item clicked
 	* \return void
 	*/
-	void itemClicked(QTreeWidgetItem * it);
+	void itemClicked(QTreeWidgetItem * it, int);
 
 	/**
 	* \brief Called when an item is double-clicked
 	* \param it The item clicked
 	* \return void
 	*/
-	void itemDoubleClicked(QTreeWidgetItem * it);
+	void itemDoubleClicked(QTreeWidgetItem * it, int);
 
 	/**
 	* \brief Called when the return is pressed
