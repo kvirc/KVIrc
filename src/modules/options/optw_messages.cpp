@@ -191,8 +191,9 @@ KviMessageListWidgetItem::KviMessageListWidgetItem(KviMessageListWidget* l,int o
 	m_iOptId = optId;
 	m_pMsgType = new KviMsgType(KVI_OPTION_MSGTYPE(optId));
 
+	QString txt = g_msgtypeOptionsTable[m_iOptId].name;
 	// skip the msgtype prefix
-	QString txt = g_msgtypeOptionsTable[m_iOptId].name.remove(0,7);
+	txt.remove(0,KVI_MSGTYPE_OPTIONS_PREFIX_LEN);
 	txt += " (";
 	txt += __tr2qs_no_xgettext(m_pMsgType->type());
 	txt += ")";
