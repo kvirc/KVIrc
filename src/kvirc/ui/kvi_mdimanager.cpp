@@ -111,10 +111,10 @@ bool KviMdiManager::focusNextPrevChild(bool bNext)
 void KviMdiManager::paintEvent(QPaintEvent * event)
 {
 	QPainter p(viewport());
+	QPoint pnt = viewport()->mapToGlobal(event->rect().topLeft());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedParentGlobalDesktopBackground)
 	{
-		QPoint pnt = viewport()->mapToGlobal(event->rect().topLeft());
 		p.drawTiledPixmap(event->rect(),*(g_pShadedParentGlobalDesktopBackground), pnt);
 		return;
 	}
@@ -122,7 +122,7 @@ void KviMdiManager::paintEvent(QPaintEvent * event)
 
 	if(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap())
 	{
-		p.drawTiledPixmap(event->rect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()));
+		p.drawTiledPixmap(event->rect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()),pnt);
 	} else {
 		p.fillRect(event->rect(),KVI_OPTION_COLOR(KviOption_colorMdiBackground));
 	}
