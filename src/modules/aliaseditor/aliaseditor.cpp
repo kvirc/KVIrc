@@ -437,8 +437,7 @@ void KviAliasEditor::oneTimeSetup()
 	}
 
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
-	connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),
-		this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
+	connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
 	connect(m_pTreeWidget,SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(itemRenamed(QTreeWidgetItem *,int)));
 
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
@@ -670,9 +669,14 @@ void KviAliasEditor::slotCollapseNamespaces()
 	//recursiveCollapseNamespaces((KviAliasEditorTreeWidgetItem *)m_pTreeWidget->firstChild());
 }
 
-void KviAliasEditor::slotReplaceAll(const QString &before,const QString &after)
+void KviAliasEditor::slotReplaceAll(const QString &szFind,const QString &szReplace)
 {
-	//recursiveSearchReplace(before,(KviAliasEditorTreeWidgetItem *)m_pTreeWidget->firstChild(),true,after);
+	m_pEditor->setFindText(szReplace);
+
+	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+	{
+		recursiveSearchReplace(szFind,(KviAliasEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i),true,szReplace);
+	}
 }
 
 void KviAliasEditor::getExportAliasBuffer(QString &buffer,KviAliasTreeWidgetItem * it)

@@ -57,6 +57,7 @@
 #include <QKeyEvent>
 #include <QMenu>
 #include <QListWidget>
+#include <QPainter>
 
 extern KVIRC_API KviModuleManager                    * g_pModuleManager;
 extern KviPointerList<KviScriptEditorImplementation> * g_pScriptEditorWindowList;
@@ -81,6 +82,7 @@ static QFont g_fntNormal("Courier New",8);
 KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
 : QTextEdit(pParent)
 {
+	m_pSyntaxHighlighter=0;
 	setTabStopWidth(48);
 	setWordWrapMode(QTextOption::NoWrap);
 	m_pParent = pParent;
@@ -107,6 +109,7 @@ KviScriptEditorWidget::~KviScriptEditorWidget()
 	if(m_pCompleter)
 		delete m_pCompleter;
 }
+
 
 void KviScriptEditorWidget::asyncCompleterCreation()
 {
@@ -192,6 +195,7 @@ void KviScriptEditorWidget::createCompleter(QStringList & list)
 	m_pCompleter->setCaseSensitivity(Qt::CaseInsensitive);
 	m_pCompleter->setWrapAround(false);
 	m_pCompleter->setWidget(this);
+	m_pCompleter->setModelSorting(QCompleter::CaseSensitivelySortedModel);
 	m_pCompleter->setCompletionMode(QCompleter::PopupCompletion);
 	m_pCompleter->setCaseSensitivity(Qt::CaseInsensitive);
 	QObject::connect(m_pCompleter, SIGNAL(activated(const QString &)),this, SLOT(insertCompletion(const QString &)));
@@ -258,8 +262,9 @@ void KviScriptEditorWidget::updateOptions()
 	setTextColor(g_clrNormalText);
 	// this will rehighlight everything
 	setText(toPlainText()); // an "hack" to ensure Update all in the editor
-	KviScriptEditorSyntaxHighlighter *h = new KviScriptEditorSyntaxHighlighter(this);
-	(void)h;
+	if (!m_pSyntaxHighlighter)  m_pSyntaxHighlighter = new KviScriptEditorSyntaxHighlighter(this);
+	else m_pSyntaxHighlighter->updateSyntaxtTextFormat();
+	//(void)h;
 	p = ((KviScriptEditorImplementation*)m_pParent)->findLineEdit()->palette();
 	p.setColor(foregroundRole(),g_clrFind);
 	((KviScriptEditorImplementation*)m_pParent)->findLineEdit()->setPalette(p);
@@ -372,7 +377,13 @@ QString KviScriptEditorWidget::textUnderCursor() const
 
 void KviScriptEditorWidget::mouseReleaseEvent(QMouseEvent * e)
 {
+
 	return;
+		QRect r = cursorRect();
+		QTextCursor cur = cursorForPosition(e->pos());
+	//	cur.select(
+	
+
 	//completelistbox->hide();
 	if (e->button() == Qt::RightButton)
 	{
@@ -520,7 +531,6 @@ void KviScriptEditorWidgetColorOptions::okClicked()
 	{
 		i->commit();
 	}
-
 	accept();
 }
 
@@ -528,316 +538,142 @@ void KviScriptEditorWidgetColorOptions::okClicked()
 KviScriptEditorSyntaxHighlighter::KviScriptEditorSyntaxHighlighter(KviScriptEditorWidget * pWidget)
 : QSyntaxHighlighter(pWidget),m_pTextEdit(pWidget)
 {
+	// code adpated from QT4 example
+	
+	// FIX-ME: "function ..." - "function internal ..."
+	// FIX-ME: "@$"
+	// FIX-ME: # comment
+	updateSyntaxtTextFormat();
+
+	KviScriptHighlightingRule rule;
+	
+	rule.pattern=QRegExp("([=()[\\]!\"?<>;:.,+-])+");
+	rule.format=punctuationFormat;
+	highlightingRules.append(rule);
+
+	rule.pattern=QRegExp("[{};](|[a-zA-Z]|[a-zA-Z]+[a-zA-Z0-9_\\.:]*)");
+	rule.format=keywordFormat;
+	highlightingRules.append(rule);
+
+
+	rule.pattern=QRegExp("[$](|[a-zA-Z0-9]+[a-zA-Z0-9_\\.:]*)");
+	rule.format=functionFormat;
+	highlightingRules.append(rule);
+
+	rule.pattern=QRegExp("[%](|[a-zA-Z]|[a-zA-Z]+[a-zA-Z0-9_\\.]*)");
+	rule.format=variableFormat;
+	highlightingRules.append(rule);
+
+	rule.pattern=QRegExp("([{}])+");
+	rule.format=bracketFormat;
+	highlightingRules.append(rule);
+
+	rule.pattern=QRegExp("(//[^\\n]*)|(#[^\\n]*)");
+	rule.format=commentFormat;
+	highlightingRules.append(rule);
+
+	commentStartExpression = QRegExp("/\\*");
+    commentEndExpression = QRegExp("\\*/");
+	
 }
 
 KviScriptEditorSyntaxHighlighter::~KviScriptEditorSyntaxHighlighter()
 {
+	
 }
-
-#define IN_COMMENT 1
-#define IN_LINE 2
-#define IN_STRING 4
-
-void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
+void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 {
-	const QChar * pBuf = (const QChar *)szText.utf16();
-	const QChar * c = pBuf;
-
-	QTextCharFormat commentFormat;
-	commentFormat.setForeground(g_clrComment);
-	commentFormat.setFont(g_fntNormal);
-
-	QTextCharFormat bracketFormat;
-	bracketFormat.setForeground(g_clrBracket);
-	bracketFormat.setFont(g_fntNormal);
-
-	QTextCharFormat punctuationFormat;
 	punctuationFormat.setForeground(g_clrPunctuation);
 	punctuationFormat.setFont(g_fntNormal);
 
-	QTextCharFormat keywordFormat;
 	keywordFormat.setForeground(g_clrKeyword);
 	keywordFormat.setFont(g_fntNormal);
-
-	QTextCharFormat variableFormat;
-	variableFormat.setForeground(g_clrVariable);
-	variableFormat.setFont(g_fntNormal);
-
-	QTextCharFormat normaltextFormat;
-	normaltextFormat.setForeground(g_clrNormalText);
-	normaltextFormat.setFont(g_fntNormal);
-
-	QTextCharFormat functionFormat;
+	
 	functionFormat.setForeground(g_clrFunction);
 	functionFormat.setFont(g_fntNormal);
 
-	QTextCharFormat findFormat;
+	
+	variableFormat.setForeground(g_clrVariable);
+	variableFormat.setFont(g_fntNormal);
+
+	
+	bracketFormat.setForeground(g_clrBracket);
+	bracketFormat.setFont(g_fntNormal);
+
+	commentFormat.setFont(g_fntNormal);
+	commentFormat.setForeground(g_clrComment);
+
 	findFormat.setForeground(g_clrFind);
 	findFormat.setFont(g_fntNormal);
 
-	int iEndStateOfLastPara = previousBlockState();
-	if(iEndStateOfLastPara < 0)
-		iEndStateOfLastPara = 0;
-	/*
-	QRegExp reg("[$](|[a-zA-Z]|[a-zA-Z]+[a-zA-Z0-9_\\.:]*)");
-	int index = text.indexOf(reg);
-	while (index >= 0)
+}
+
+void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
+{
+	if(szText.isEmpty()) return;
+	int start=0;
+
+	// skip tabulations
+	while(szText.at(start).unicode()=='\t') start++;
+	
+	// check 'commands'
+	if (szText.at(start).unicode()!='$' && szText.at(start).unicode()!='{' && szText.at(start).unicode()!='}')
 	{
-		int length = reg.matchedLength();
-		setFormat(index, length, functionFormat);
-		index = text.indexOf(reg, index + length);
+		while(szText.at(start).unicode() && (szText.at(start).isLetterOrNumber() || (szText.at(start).unicode() == '.') || (szText.at(start).unicode() == '_') || (szText.at(start).unicode()== ':')))start++;
+		setFormat(0,start,keywordFormat);
 	}
 
-	QRegExp reg1("[{}]+");
-	index = text.indexOf(reg1);
-	while (index >= 0)
+	// code from QT4 example
+	int index=0;
+	foreach (KviScriptHighlightingRule rule, highlightingRules) 
 	{
-		int length = reg1.matchedLength();
-		setFormat(index, length, bracketFormat);
-		index = text.indexOf(reg1, index + length);
-	}
-	*/
+		QRegExp expression(rule.pattern);
+		QString sz=expression.pattern();
+        index = szText.indexOf(expression,start);
+        while (index >= 0) 
+		{
+			int length = expression.matchedLength();
+            setFormat(index, length, rule.format);
+            index = szText.indexOf(expression, index + length);
+        }
+    }
+	setCurrentBlockState(0);
 
-	bool bNewCommand = !(iEndStateOfLastPara & IN_LINE);
-	bool bInComment = iEndStateOfLastPara & IN_COMMENT;
-	bool bInString = iEndStateOfLastPara & IN_STRING;
-	if (bInComment) debug ("start incomment %s",szText.toUtf8().data());
-	const QChar * pBegin;
+    int startIndex = 0;
+    if (previousBlockState() != 1) startIndex = szText.indexOf(commentStartExpression);
 
-	while(c->unicode())
+    while (startIndex >= 0) 
 	{
-		if(bInComment)
+		int endIndex = szText.indexOf(commentEndExpression, startIndex);
+        int commentLength;
+        if (endIndex == -1) 
 		{
-			pBegin = c;
-			while(c->unicode() && (c->unicode() != '*'))c++;
-			if(!c->unicode())
-			{
-				setFormat(pBegin - pBuf,c - pBegin,commentFormat);
-				setCurrentBlockState(IN_COMMENT);
-				return;
-			}
-			c++;
-			if(c->unicode() == '/')
-			{
-				// end of the comment!
-				c++;
-				setFormat(pBegin - pBuf,c - pBegin,commentFormat);
-				bInComment = false;
-				bNewCommand = true;
-					setCurrentBlockState(0);
-			}
-			continue;
-		}
-
-		if(c->isSpace())
+			setCurrentBlockState(1);
+            commentLength = szText.length() - startIndex;
+        } 
+		else 
 		{
-			while(c->unicode() && c->isSpace())c++;
-			if(!c->unicode())continue;
-		}
+            commentLength = endIndex - startIndex + commentEndExpression.matchedLength();
+        }
+        setFormat(startIndex, commentLength, commentFormat);
+        startIndex = szText.indexOf(commentStartExpression, startIndex + commentLength);
+    }
 
-		pBegin = c;
-
-		// this does not break the bNewCommand flag
-		if((c->unicode() == '{') || (c->unicode() == '}'))
-		{
-			c++;
-			setFormat(pBegin - pBuf,1,bracketFormat);
-			continue;
-		}
-
-		if(bNewCommand)
-		{
-			bNewCommand = false;
-
-			if(c->unicode() == '#')
-			{
-				if(c > pBuf)
-				{
-					const QChar * prev = c - 1;
-					if((prev->unicode() == ']') || (prev->unicode() == '}'))
-					{
-						// array or hash count
-						c++;
-						setFormat(pBegin - pBuf,c - pBegin,punctuationFormat);
-						continue;
-					}
-				}
-				// comment until the end of the line
-				while(c->unicode())c++;
-				setFormat(pBegin - pBuf,c - pBegin,commentFormat);
-				continue;
-			}
-
-			if(c->unicode() == '/')
-			{
-				c++;
-				if(c->unicode() == '/')
-				{
-					while(c->unicode())c++;
-					setFormat(pBegin - pBuf,c - pBegin,commentFormat);
-					continue;
-				} else if(c->unicode() == '*')
-				{
-					c++;
-					setFormat(pBegin - pBuf,c - pBegin,commentFormat);
-					bInComment = true;
-					continue;
-				}
-				c--;
-			}
-
-			if(c->unicode() && (c->isLetterOrNumber() || (c->unicode() == '_')))
-			{
-				c++;
-				while(c->unicode() && (c->isLetterOrNumber() || (c->unicode() == '.') || (c->unicode() == '_') || (c->unicode() == ':')))c++;
-				setFormat(pBegin - pBuf,c - pBegin,keywordFormat);
-				// special processing for callbacks and magic commands
-				if(pBegin->unicode() == 'e')
-				{
-					if(c - pBegin == 4)
-					{
-						// might be "else"
-						QString tmp(pBegin,4);
-						if(tmp.toLower() == "else")bNewCommand = true;
-						continue;
-					}
-				}
-				else
-				if(pBegin->unicode() == 'f')
-				{
-					if(c - pBegin == 8)
-					{
-						// might be "function"
-						QString tmp(pBegin,8);
-						if(tmp.toLower() == "function")bNewCommand = true;
-						continue;
-					}
-				}
-
-				if(pBegin->unicode() == 'i')
-				{
-					if(c - pBegin == 8)
-					{
-						// might be "internal"
-						QString tmp(pBegin,8);
-						if(tmp.toLower() == "internal")bNewCommand = true;
-						continue;
-					}
-				}
-
-				// not an else or special command function... FIXME: should check for callbacks.. but that's prolly too difficult :)
-				continue;
-			}
-		}
-
-		if(c->unicode() == '$')
-		{
-			c++;
-			if(c->unicode() == '$')
-			{
-				c++;
-				setFormat(pBegin - pBuf,c - pBegin,keywordFormat);
-			} else {
-				while(c->unicode() && (c->isLetterOrNumber() || (c->unicode() == '.') || (c->unicode() == '_') || (c->unicode() == ':')))c++;
-				setFormat(pBegin - pBuf,c - pBegin,functionFormat);
-			}
-			continue;
-		}
-
-		if(c->unicode() == '-')
-		{
-			QChar * pTmp =(QChar *) c;
-			c++;
-			if(c->unicode() == '-')	c++;
-			if(c->isLetter())
-			{
-				while(c->unicode() && (c->isLetterOrNumber() || (c->unicode() == '_')))c++;
-				setFormat(pBegin - pBuf,c - pBegin,keywordFormat);
-				continue;
-			} else {
-				while(c!=pTmp) c--;
-			}
-		}
-
-		if(c->unicode() == '%')
-		{
-			c++;
-			if(c->unicode() && (c->isLetterOrNumber() || (c->unicode() == ':') || (c->unicode() == '_')))
-			{
-				while(c->unicode() && (c->isLetterOrNumber() || (c->unicode() == ':') || (c->unicode() == '_')))c++;
-				setFormat(pBegin - pBuf,c - pBegin,variableFormat);
-				continue;
-			}
-			c--;
-		}
-
-		if(!c->unicode())continue;
-
-		if(c->isLetterOrNumber() || c->unicode() == '_')
-		{
-			c++;
-			while(c->unicode() && c->isLetterOrNumber() || (c->unicode() == '_'))c++;
-			setFormat(pBegin - pBuf,c - pBegin,normaltextFormat);
-			continue;
-		}
-
-		if(c->unicode() == '\\')
-		{
-			c++;
-			setFormat(pBegin - pBuf,c - pBegin,punctuationFormat);
-			// the next char is to be interpreted as normal text
-			pBegin = c;
-			if(c->unicode() && (c->unicode() != '\n'))
-			{
-				c++;
-				setFormat(pBegin - pBuf,c - pBegin,normaltextFormat);
-				continue;
-			}
-			// this is never returned since Qt sux in string processing
-			// it sets the newlines to spaces and we have no secure way to undestand that this was the end of a line
-			setCurrentBlockState(IN_LINE);
-			return;
-		}
-
-		if(c->unicode() == '"')
-		{
-			bInString = !bInString;
-			c++;
-			setFormat(pBegin - pBuf,c - pBegin,punctuationFormat);
-			continue;
-		} else if(c->unicode() == ';')
-		{
-			if(!bInString)	bNewCommand = true; // the next will be a new command
-		}
-
-		c++;
-		if(bInString)
-		{
-			setFormat(pBegin - pBuf,c - pBegin,normaltextFormat);
-		} else {
-			setFormat(pBegin - pBuf,c - pBegin,punctuationFormat);
-		}
-	}
-
-	bool bCheck = true;
+	// 'found matches' highlighting
 	KviScriptEditorWidget * pEditor = ((KviScriptEditorWidget *)textEdit());
 	QString szFind = pEditor->m_szFind;
 	if (!szFind.isEmpty())
 	{
-		int iIndex = 0;
-		while(bCheck)
+		QRegExp regFind(szFind);
+		index = szText.indexOf(regFind);
+		while (index >= 0)
 		{
-			iIndex = szText.indexOf(szFind,iIndex,Qt::CaseInsensitive);
-			if (iIndex != -1)
-			{
-				setFormat(iIndex,szFind.length(),findFormat);
-				iIndex += szFind.length();
-			} else bCheck = false;
+			int length = regFind.matchedLength();
+			setFormat(index, length, findFormat);
+			index = szText.indexOf(regFind, index + length);
 		}
 	}
-
-	if(bInString)
-		setCurrentBlockState(IN_LINE | IN_STRING);
+	
 }
 
 
@@ -857,6 +693,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	m_pFindLineEdit->setPalette(p);
 
 	m_pEditor = new KviScriptEditorWidget(this);
+	
 	g->addWidget(m_pEditor, 0, 0, 1,4);
 	g->setRowStretch(0,1);
 
@@ -1055,7 +892,6 @@ void KviScriptEditorImplementation::updateRowColLabel()
 
 void KviScriptEditorImplementation::setCursorPosition(int iPos)
 {
-	debug ("Moving to %d",iPos);
 	QTextCursor cur = m_pEditor->textCursor();
 	cur.setPosition(iPos);
 	m_pEditor->setTextCursor(cur);
@@ -1117,11 +953,6 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, con
 	m_pFindLineEdit->setObjectName("findlineedit");
 	pLayout->addWidget(m_pFindLineEdit,0,1);
 
-	QPushButton * pFindNext = new QPushButton(this);
-	pFindNext->setObjectName("findnext");
-	pFindNext->setText(tr("&Find Next(WIP)"));
-	pFindNext->setEnabled(false);
-	pLayout->addWidget(pFindNext,0,2);
 
 	QLabel * m_pReplaceLabel = new QLabel(this);
 	m_pReplaceLabel->setObjectName("replacelabel");
@@ -1132,12 +963,7 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, con
 	m_pReplaceLineEdit->setObjectName("replacelineedit");
 	pLayout->addWidget(m_pReplaceLineEdit,1,1);
 
-	QPushButton * pReplace = new QPushButton(this);
-	pReplace->setObjectName("replace");
-	pReplace->setText(tr("&Replace(WIP)"));
-	pReplace->setEnabled(false);
-	pLayout->addWidget(pReplace,1,2);
-
+	
 	m_pFindLineEdit->setFocus();
 
 	m_pCheckReplaceAll = new QCheckBox(this);
@@ -1148,19 +974,18 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, con
 	QPushButton * pCancelButton = new QPushButton(this);
 	pCancelButton->setObjectName("cancelButton");
 	pCancelButton->setText(tr("&Cancel"));
-	pLayout->addWidget(pCancelButton,3,1);
+	pLayout->addWidget(pCancelButton,3,0);
 
 	m_pReplaceButton = new QPushButton(this);
 	m_pReplaceButton->setObjectName("replacebutton");
 	m_pReplaceButton->setText(tr("&Replace"));
 	m_pReplaceButton->setEnabled(false);
-	pLayout->addWidget(m_pReplaceButton,3,2);
+	pLayout->addWidget(m_pReplaceButton,3,1);
 
 	setLayout(pLayout);
 
 	// signals and slots connections
 	connect(m_pReplaceButton, SIGNAL(clicked()), this, SLOT(slotReplace()));
-	connect(pFindNext, SIGNAL(clicked()),this,SLOT(slotNextFind()));
 	connect(pCancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 	connect(m_pFindLineEdit, SIGNAL(textChanged(const QString &)), this, SLOT(textChanged(const QString &)));
 }

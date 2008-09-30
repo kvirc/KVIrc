@@ -44,7 +44,7 @@
 class QTimer;
 
 //typedef KviPointerList<int> ColumnList;
-
+class KviScriptEditorSyntaxHighlighter;
 class KviScriptEditorWidget : public QTextEdit
 {
 	Q_OBJECT
@@ -55,6 +55,7 @@ public:
 public:
 	QString m_szFind;
 protected:
+	KviScriptEditorSyntaxHighlighter *m_pSyntaxHighlighter;
 	QCompleter  * m_pCompleter;
 	QStringList * m_pListModulesNames;
 	QStringList * m_pListCompletition;
@@ -62,6 +63,7 @@ protected:
 	QWidget     * m_pParent;
 	QString       m_szHelp;
 public:
+	KviScriptEditorSyntaxHighlighter * syntaxHighlighter(){return m_pSyntaxHighlighter;};
 	void createCompleter(QStringList &list);
 	void loadCompleterFromFile();
 	QCompleter * completer() const { return m_pCompleter; };
@@ -97,6 +99,7 @@ protected:
 
 protected slots:
 	void okClicked();
+
 };
 
 class KviScriptEditorSyntaxHighlighter : public QSyntaxHighlighter
@@ -109,6 +112,27 @@ public:
 public:
 	QTextEdit * textEdit(){ return m_pTextEdit; }
 	void highlightBlock(const QString & szText);
+	void updateSyntaxtTextFormat();
+private:
+     struct KviScriptHighlightingRule
+     {
+         QRegExp pattern;
+         QTextCharFormat format;
+     };
+	QVector<KviScriptHighlightingRule> highlightingRules;
+	QRegExp commentStartExpression;
+    QRegExp commentEndExpression;
+
+   	QTextCharFormat bracketFormat;
+	QTextCharFormat punctuationFormat;
+	QTextCharFormat keywordFormat;
+	QTextCharFormat variableFormat;
+	QTextCharFormat normaltextFormat;
+	QTextCharFormat findFormat;
+	QTextCharFormat functionFormat;
+    QTextCharFormat commentFormat;
+
+	
 };
 
 class KviScriptEditorImplementation : public KviScriptEditor
@@ -120,6 +144,7 @@ public:
 public:
 	QLineEdit * m_pFindLineEdit;
 protected:
+
 	KviScriptEditorWidget * m_pEditor;
 	QLabel                * m_pRowColLabel;
 	int                     m_lastCursorPos;
@@ -137,11 +162,14 @@ public:
 	void setCursorPosition(int iPos);
 	int cursor(){ return m_lastCursorPos; };
 	QLineEdit * findLineEdit(){ return m_pFindLineEdit; };
+
 protected:
 	virtual void focusInEvent(QFocusEvent * e);
 	void loadOptions();
 	void saveOptions();
+
 protected slots:
+
 	void saveToFile();
 	void loadFromFile();
 	void configureColors();
