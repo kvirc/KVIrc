@@ -235,7 +235,7 @@ void register_core_actions(KviActionManager * m)
 		KVI_COREACTION_JOINCHANNELS,
 		"channelsjoin.open",
 		__tr2qs("Join Channels..."),
-		__tr2qs("Shows a dialog that allows you joing channels"),
+		__tr2qs("Shows a dialog that allows you join channels"),
 		KviActionManager::categoryIrc(),
 		"kvi_bigicon_channels.png",
 		KVI_SMALLICON_CHANNEL,
