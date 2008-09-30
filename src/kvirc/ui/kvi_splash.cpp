@@ -127,8 +127,8 @@ KviSplashScreen::~KviSplashScreen()
 
 void KviSplashScreen::showEvent(QShowEvent * e)
 {
-	move((g_pApp->desktop()->width() - width())/2,
-		(g_pApp->desktop()->height() - height())/2);
+/*	move((g_pApp->desktop()->width() - width())/2,
+		(g_pApp->desktop()->height() - height())/2);*/
 	m_creationTime = QTime::currentTime();
 }
 
