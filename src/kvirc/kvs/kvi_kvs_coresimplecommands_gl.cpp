@@ -113,7 +113,10 @@ namespace KviKvsCoreSimpleCommands
 		KVSCSC_PARAMETERS_END
 
 		// We just alias the help.open function
-		KviKvsScript s("help","help.open " + szParams);
+		QString szSwitches="";
+		if(KVSCSC_pSwitches->find('m',"mdi"))szSwitches.append("-m ");
+		if(KVSCSC_pSwitches->find('n',"new"))szSwitches.append("-n ");
+		KviKvsScript s("help","help.open " + szSwitches + szParams);
 		s.run(KVSCSC_pContext->window());
 
 		return true;
