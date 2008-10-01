@@ -148,7 +148,6 @@ private:
 
 	QMultiHash<KviIrcViewLine*,KviAnimatedPixmap*>  m_hAnimatedSmiles;
 public:
-	void checkLogDate();
 	void clearUnreaded();
 	void applyOptions();
 	void enableDnd(bool bEnable);

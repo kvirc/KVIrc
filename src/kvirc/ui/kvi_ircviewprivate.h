@@ -45,6 +45,10 @@
 	#endif
 #endif //!COMPILE_ON_WINDOWS
 
+// Borders...just do not set it to 0
+#define KVI_IRCVIEW_HORIZONTAL_BORDER 4
+#define KVI_IRCVIEW_VERTICAL_BORDER 4
+
 //
 // The LineChunk structure contains informations about
 // an attribute change, an icon or a link
@@ -112,7 +116,7 @@ typedef struct _KviIrcViewLine
 	// signal attribute changes (or icons)
 	unsigned int                 uChunkCount;           // number of allocated chunks
 	KviIrcViewLineChunk        * pChunks;               // pointer to the allocated structures
-	
+
 	// At paint time the data is re-splitted in drawable chunks which
 	// are either real data chunks or line wraps.
 	// The algorightm that does this is lazy and computes it

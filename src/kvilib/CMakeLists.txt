@@ -71,6 +71,7 @@ SET(kvilib_SRCS
 	config/kvi_buildinfo.cpp
 	core/kvi_error.cpp
 	core/kvi_heapobject.cpp
+	core/kvi_hstrEqualCIN.cpp
 	core/kvi_malloc.cpp
 	core/kvi_memmove.cpp
 	core/kvi_qstring.cpp

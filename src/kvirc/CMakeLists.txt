@@ -113,6 +113,9 @@ SET(kvirc_SRCS
 	ui/kvi_ipeditor.cpp
 	ui/kvi_irctoolbar.cpp
 	ui/kvi_ircview.cpp
+	ui/kvi_ircview_events.cpp
+	ui/kvi_ircview_gettextline.cpp
+	ui/kvi_ircview_loghandling.cpp
 	ui/kvi_ircviewtools.cpp
 	ui/kvi_maskeditor.cpp
 	ui/kvi_mdicaption.cpp
