@@ -1153,7 +1153,7 @@ void KviChannel::ownMessage(const QString & szBuffer)
 	if(szData.length() > maxMsgLen)
 	{
 		/* Multi message; we want to split the message, preferably on a word boundary,
-		 * and sszEnd each message part as a different PRIVMSG
+		 * and send each message part as a different PRIVMSG
 		 * Due to encoding stuff, this is frikin'time eater
 		 */
 		QTextEncoder * p_Encoder = makeEncoder(); // our temp encoder
@@ -1214,7 +1214,7 @@ void KviChannel::ownMessage(const QString & szBuffer)
 			//prepare the feedback string for the user
 			szCurSubString=szTmpBuffer.left(iPos);
 
-			//sszEnd the string to the server
+			//send the string to the server
 			if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),szTmp.data()))
 			{
 				//feeedback the user
@@ -1695,7 +1695,7 @@ void KviChannel::outputMessage(int msg_type,const char *format,...)
 	kvi_va_start(list,format);
 	if(kvi_wvsnprintcf(txt_ptr,512,format,list) < 0){
 		//Just in case...
-		kvi_va_szEnd(list);
+		kvi_va_end(list);
 		int len = 512;
 		kvi_wchar_t *long_txt_ptr = 0;
 		int result;
@@ -1706,13 +1706,13 @@ void KviChannel::outputMessage(int msg_type,const char *format,...)
 			long_txt_ptr = (kvi_wchar_t *)kvi_realloc((void *)long_txt_ptr,len * sizeof(kvi_wchar_t));
 			kvi_va_start(list,format);
 			result = kvi_wvsnprintcf(long_txt_ptr,len,format,list);
-			kvi_va_szEnd(list);
+			kvi_va_end(list);
 		} while(result < 0);
 		internalOutput(m_pMessageView ? m_pMessageView : m_pIrcView,msg_type,long_txt_ptr);
 		kvi_free((void *)long_txt_ptr);
 	} else {
 		//Succesful vsnprintf
-		kvi_va_szEnd(list);
+		kvi_va_end(list);
 		internalOutput(m_pMessageView ? m_pMessageView : m_pIrcView,msg_type,txt_ptr);
 	}
 }
