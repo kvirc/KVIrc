@@ -4,7 +4,7 @@
 //   Creation date : Wed Oct 1 2008 17:18:20 by Fabio Bas
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -19,6 +19,10 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program. If not, write to the Free Software Foundation,
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//
+//===========================================================================
+//
+// This file was originally part of kvi_ircview.cpp
 //
 //===========================================================================
 

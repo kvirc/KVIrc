@@ -4,7 +4,7 @@
 //   Creation date : Wed Oct 1 2008 17:18:20 by Fabio Bas
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 1999-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -21,6 +21,24 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //===========================================================================
+//
+// This file was originally part of kvi_ircview.h
+//
+//===========================================================================
+
+/**
+* \file kvi_hstrEqualCIN.h
+* \author Fabio Bas
+* \brief Comparison function kvi_hstrEqualCIN
+*/
 
 #include "kvi_string.h"
-__KVI_EXTERN KVILIB_API bool kvi_hstrEqualCIN(const kvi_wchar_t *str1,const char *str2,int len);
+
+/**
+* \brief Returns true if the string are equals casa insensitive
+* \param pcStr1 The source string
+* \param pcStr2 The target string
+* \param iLen The lenght of the string
+* \return bool
+*/
+__KVI_EXTERN KVILIB_API bool kvi_hstrEqualCIN(const kvi_wchar_t * pcStr1, const char * pcStr2, int iLen);
