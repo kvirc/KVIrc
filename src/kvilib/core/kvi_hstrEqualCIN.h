@@ -23,4 +23,4 @@
 //===========================================================================
 
 #include "kvi_string.h"
-bool kvi_hstrEqualCIN(const kvi_wchar_t *str1,const char *str2,int len);
+__KVI_EXTERN KVILIB_API bool kvi_hstrEqualCIN(const kvi_wchar_t *str1,const char *str2,int len);
