@@ -97,8 +97,8 @@ KviDccRecvThread::KviDccRecvThread(QObject * par,kvi_socket_t fd,KviDccRecvThrea
 : KviDccThread(par,fd)
 {
 	m_pOpt                  = opt;
-	m_iAverageSpeed         = -1;
-	m_iInstantSpeed         = -1;
+	m_iAverageSpeed         = 0;
+	m_iInstantSpeed         = 0;
 	m_iFilePosition         = 0;
 
 	m_iTotalReceivedBytes   = 0;
@@ -116,9 +116,9 @@ KviDccRecvThread::~KviDccRecvThread()
 	delete m_pTimeInterval;
 }
 
-bool KviDccRecvThread::sendAck(int filePos)
+bool KviDccRecvThread::sendAck(unsigned long filePos)
 {
-	int size = htonl(filePos);
+	unsigned long size = htonl(filePos);
 	if(kvi_socket_send(m_fd,(void *)(&size),4) != 4)
 	{
 		postErrorEvent(KviError_acknowledgeError);
@@ -141,7 +141,7 @@ void KviDccRecvThread::updateStats()
 
 	if(m_uInstantSpeedInterval > INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS)
 	{
-		unsigned int uMSecsOfTheNextInterval = 0;
+		unsigned long uMSecsOfTheNextInterval = 0;
 		if(m_uInstantSpeedInterval < (INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS + (INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS / 2)))
 			uMSecsOfTheNextInterval = m_uInstantSpeedInterval - INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_MSECS;
 		m_iInstantSpeed = (m_iInstantReceivedBytes * 1000) / m_uInstantSpeedInterval;
@@ -243,14 +243,14 @@ void KviDccRecvThread::run()
 				char buffer[KVI_DCC_RECV_BLOCK_SIZE];
 
 				m_pMutex->lock(); // FIXME: how to remove this lock ?
-				unsigned int uMaxPossible = (m_pOpt->uMaxBandwidth < MAX_DCC_BANDWIDTH_LIMIT) ? m_pOpt->uMaxBandwidth * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS : MAX_DCC_BANDWIDTH_LIMIT * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS;
+				unsigned long uMaxPossible = (m_pOpt->uMaxBandwidth < MAX_DCC_BANDWIDTH_LIMIT) ? m_pOpt->uMaxBandwidth * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS : MAX_DCC_BANDWIDTH_LIMIT * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS;
 				m_pMutex->unlock();
-				unsigned int uToRead = uMaxPossible > ((unsigned int)(m_iInstantReceivedBytes)) ? uMaxPossible - m_iInstantReceivedBytes : 0;
+				unsigned long uToRead = uMaxPossible > m_iInstantReceivedBytes ? uMaxPossible - m_iInstantReceivedBytes : 0;
 				if(uToRead > KVI_DCC_RECV_BLOCK_SIZE)uToRead = KVI_DCC_RECV_BLOCK_SIZE;
 
 				if(uToRead > 0)
 				{
-					int readLen = kvi_socket_recv(m_fd,buffer,uToRead);
+					long readLen = kvi_socket_recv(m_fd,buffer,uToRead);
 
 					if(readLen > 0)
 					{
@@ -288,7 +288,7 @@ void KviDccRecvThread::run()
 							// Interrupt if the whole file has been received
 							if(m_pOpt->iTotalFileSize > 0)
 							{
-								if(((int)(m_pFile->at())) == m_pOpt->iTotalFileSize)
+								if(m_pFile->at() == m_pOpt->iTotalFileSize)
 								{
 									// Received the whole file...die
 									KviThreadEvent * e = new KviThreadEvent(KVI_DCC_THREAD_EVENT_SUCCESS);
@@ -323,7 +323,7 @@ void KviDccRecvThread::run()
 						if(readLen == 0)
 						{
 							// readed EOF..
-							if((((int)(m_pFile->at())) == m_pOpt->iTotalFileSize) || (m_pOpt->iTotalFileSize < 0))
+							if((m_pFile->at() == m_pOpt->iTotalFileSize) || (m_pOpt->iTotalFileSize < 0))
 							{
 								// success if we got the whole file or if we don't know the file size (we trust the peer)
 								KviThreadEvent * e = new KviThreadEvent(KVI_DCC_THREAD_EVENT_SUCCESS);
@@ -352,7 +352,7 @@ void KviDccRecvThread::run()
 				if(iFailedSelects > 3)
 					msleep(3 * iFailedSelects);
 
-				if(((int)(m_pFile->at())) == m_pOpt->iTotalFileSize)
+				if(m_pFile->at() == m_pOpt->iTotalFileSize)
 				{
 					// Wait for the peer to close the connection
 					if(iProbableTerminationTime == 0)
@@ -486,7 +486,7 @@ void KviDccSendThread::run()
 	int iFailedSelects        = 0;
 	char ackbuffer[4];
 	int iBytesInAckBuffer     = 0;
-	Q_UINT32 iLastAck         = 0;
+	unsigned long iLastAck    = 0;
 
 	if(m_pOpt->iPacketSize < 32)m_pOpt->iPacketSize = 32;
 	char * buffer = (char *)kvi_malloc(m_pOpt->iPacketSize * sizeof(char));
@@ -550,9 +550,11 @@ void KviDccSendThread::run()
 						iBytesInAckBuffer += readLen;
 						if(iBytesInAckBuffer == 4)
 						{
-							Q_UINT32 iNewAck = ntohl(*((Q_UINT32 *)ackbuffer));
+							unsigned long iNewAck = ntohl(*((unsigned long *)ackbuffer));
 							if((iNewAck > pFile->at()) || (iNewAck < iLastAck))
 							{
+
+								if(iLastAck > (2^32))
 								// the peer is drunk or is trying to fool us
 								postErrorEvent(KviError_acknowledgeError);
 								break;
@@ -612,10 +614,10 @@ void KviDccSendThread::run()
 					if(m_pOpt->bFastSend || m_pOpt->bNoAcks || (iLastAck == pFile->at()))
 					{
 						// maximum readable size
-						int toRead = pFile->size() - pFile->at();
+						unsigned long toRead = pFile->size() - pFile->at();
 						// the max number of bytes we can send in this interval (bandwidth limit)
 						m_pMutex->lock(); // FIXME: how to remove this lock ?
-						int iMaxPossible = m_pOpt->uMaxBandwidth < MAX_DCC_BANDWIDTH_LIMIT ? m_pOpt->uMaxBandwidth * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS : MAX_DCC_BANDWIDTH_LIMIT * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS;
+						unsigned long iMaxPossible = m_pOpt->uMaxBandwidth < MAX_DCC_BANDWIDTH_LIMIT ? m_pOpt->uMaxBandwidth * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS : MAX_DCC_BANDWIDTH_LIMIT * INSTANT_BANDWIDTH_CHECK_INTERVAL_IN_SECS;
 						m_pMutex->unlock();
 						if(iMaxPossible < m_iInstantSentBytes)toRead = 0; // already sent too much!
 						else {
@@ -625,11 +627,11 @@ void KviDccSendThread::run()
 						// limit to packet size
 						if(toRead > m_pOpt->iPacketSize)toRead = m_pOpt->iPacketSize;
 
-						int written = 0;
+						unsigned long written = 0;
 						if(toRead > 0)
 						{
 							// read data
-							int readed = pFile->readBlock(buffer,toRead);
+							unsigned long readed = pFile->readBlock(buffer,toRead);
 							if(readed < toRead)
 							{
 								postErrorEvent(KviError_fileIOError);
@@ -756,7 +758,7 @@ KviDccFileTransfer::KviDccFileTransfer(KviDccDescriptor * dcc)
 	m_eGeneralStatus = Connecting;
 
 	bool bOk;
-	m_uTotalFileSize = dcc->bRecvFile ? dcc->szFileSize.toUInt(&bOk) :  dcc->szLocalFileSize.toUInt(&bOk);
+	m_uTotalFileSize = dcc->bRecvFile ? dcc->szFileSize.toULong(&bOk) :  dcc->szLocalFileSize.toULong(&bOk);
 	if(!bOk)m_uTotalFileSize = 0;
 
 	if(m_pDescriptor->bRecvFile)
@@ -1010,34 +1012,34 @@ bool KviDccFileTransfer::active()
 	return ((m_eGeneralStatus == Connecting) || (m_eGeneralStatus == Transferring));
 }
 
-int KviDccFileTransfer::bandwidthLimit()
+unsigned long KviDccFileTransfer::bandwidthLimit()
 {
-	int iLimit = m_uMaxBandwidth; // we have the cached value anyway...
+	unsigned long iLimit = m_uMaxBandwidth; // we have the cached value anyway...
 	if(m_pDescriptor->bRecvFile)
 	{
 		if(m_pSlaveRecvThread)
 		{
 			m_pSlaveRecvThread->initGetInfo();
-			iLimit = (int)m_pSlaveRecvThread->bandwidthLimit();
+			iLimit = m_pSlaveRecvThread->bandwidthLimit();
 			m_pSlaveRecvThread->doneGetInfo();
-			if(iLimit < 0)iLimit = MAX_DCC_BANDWIDTH_LIMIT;
+			if(iLimit == 0)iLimit = MAX_DCC_BANDWIDTH_LIMIT;
 		}
 	} else {
 		if(m_pSlaveSendThread)
 		{
 			m_pSlaveSendThread->initGetInfo();
-			iLimit = (int)m_pSlaveSendThread->bandwidthLimit();
+			iLimit = m_pSlaveSendThread->bandwidthLimit();
 			m_pSlaveSendThread->doneGetInfo();
-			if(iLimit < 0)iLimit = MAX_DCC_BANDWIDTH_LIMIT;
+			if(iLimit == 0)iLimit = MAX_DCC_BANDWIDTH_LIMIT;
 		}
 	}
 	return iLimit;
 }
 
-void KviDccFileTransfer::setBandwidthLimit(int iVal)
+void KviDccFileTransfer::setBandwidthLimit(unsigned long iVal)
 {
-	if(iVal < 0)iVal = MAX_DCC_BANDWIDTH_LIMIT;
-	if(iVal > MAX_DCC_BANDWIDTH_LIMIT)iVal = MAX_DCC_BANDWIDTH_LIMIT;
+	if(iVal == 0 || iVal > MAX_DCC_BANDWIDTH_LIMIT)
+		iVal = MAX_DCC_BANDWIDTH_LIMIT;
 	m_uMaxBandwidth = iVal;
 	if(m_pDescriptor->bRecvFile)
 	{
@@ -1057,31 +1059,31 @@ void KviDccFileTransfer::setBandwidthLimit(int iVal)
 	}
 }
 
-unsigned int KviDccFileTransfer::averageSpeed()
+unsigned long KviDccFileTransfer::averageSpeed()
 {
-	unsigned int iAvgBandwidth = 0;
+	unsigned long iAvgBandwidth = 0;
 	if(m_pDescriptor->bRecvFile)
 	{
 		if(m_pSlaveRecvThread)
 		{
 			m_pSlaveRecvThread->initGetInfo();
-			iAvgBandwidth = (unsigned int)m_pSlaveRecvThread->averageSpeed();
+			iAvgBandwidth = m_pSlaveRecvThread->averageSpeed();
 			m_pSlaveRecvThread->doneGetInfo();
 		}
 	} else {
 		if(m_pSlaveSendThread)
 		{
 			m_pSlaveSendThread->initGetInfo();
-			iAvgBandwidth = (unsigned int)m_pSlaveSendThread->averageSpeed();
+			iAvgBandwidth = m_pSlaveSendThread->averageSpeed();
 			m_pSlaveSendThread->doneGetInfo();
 		}
 	}
 	return iAvgBandwidth;
 }
 
-unsigned int KviDccFileTransfer::transferredBytes()
+unsigned long KviDccFileTransfer::transferredBytes()
 {
-	unsigned int uTransferred = 0;
+	unsigned long uTransferred = 0;
 	if(m_pDescriptor->bRecvFile)
 	{
 		if(m_pSlaveRecvThread)
@@ -1178,13 +1180,13 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 			QFontMetrics fm(p->font());
 
 			int iW = width - 8;
-			int iAvgBandwidth = -1;
-			int iInstantSpeed = -1;
-			int iAckedBytes = -1;
+			unsigned long iAvgBandwidth = 0;
+			unsigned long iInstantSpeed = 0;
+			unsigned long iAckedBytes = 0;
 
 			int iEta = -1;
 
-			unsigned int uTransferred = 0;
+			unsigned long uTransferred = 0;
 
 			if(m_pDescriptor->bRecvFile)
 			{
@@ -1217,7 +1219,7 @@ void KviDccFileTransfer::displayPaint(QPainter * p,int column,int width,int heig
 			{
 				if(iAvgBandwidth > 0)
 				{
-					unsigned int uRemaining = m_uTotalFileSize - uTransferred;
+					unsigned long uRemaining = m_uTotalFileSize - uTransferred;
 					iEta = uRemaining / iAvgBandwidth;
 				}
 
@@ -1424,7 +1426,7 @@ bool KviDccFileTransfer::handleResumeAccepted(const char * filename,const char *
 	return false;
 }
 
-bool KviDccFileTransfer::handleResumeRequest(const char * filename,const char * port,unsigned int filePos)
+bool KviDccFileTransfer::handleResumeRequest(const char * filename,const char * port,unsigned long filePos)
 {
 	if(!g_pDccFileTransfers)return false;
 
@@ -1701,8 +1703,8 @@ void KviDccFileTransfer::connected()
 		KviDccRecvThreadOptions * o = new KviDccRecvThreadOptions;
 		o->szFileName      = m_pDescriptor->szLocalFileName.utf8().data();
 		bool bOk;
-		o->iTotalFileSize  = m_pDescriptor->szFileSize.toInt(&bOk);
-		if(!bOk)o->iTotalFileSize = -1;
+		o->iTotalFileSize  = m_pDescriptor->szFileSize.toULong(&bOk);
+		if(!bOk)o->iTotalFileSize = 0;
 		o->bResume         = m_pDescriptor->bResume;
 		o->iIdleStepLengthInMSec = KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep) ? KVI_OPTION_UINT(KviOption_uintDccSendIdleStepInMSec) : 0;
 		o->bIsTdcc         = m_pDescriptor->bIsTdcc;
@@ -1718,8 +1720,9 @@ void KviDccFileTransfer::connected()
 		o->iIdleStepLengthInMSec = KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep) ? KVI_OPTION_UINT(KviOption_uintDccSendIdleStepInMSec) : 0;
 		bool bOk;
 		o->bIsTdcc         = m_pDescriptor->bIsTdcc;
-		o->iStartPosition  = m_pDescriptor->szFileSize.toInt(&bOk);
-		if(!bOk || (o->iStartPosition < 0))o->iStartPosition = 0;
+		o->iStartPosition  = m_pDescriptor->szFileSize.toULong(&bOk);
+		if(!bOk)
+			o->iStartPosition = 0;
 		o->iPacketSize     = KVI_OPTION_UINT(KviOption_uintDccSendPacketSize);
 		if(o->iPacketSize < 32)o->iPacketSize = 32;
 		o->uMaxBandwidth   = m_uMaxBandwidth;
@@ -1774,7 +1777,7 @@ bool KviDccFileTransfer::resumeAccepted(const char *filename,const char *port,co
 	return true;
 }
 
-bool KviDccFileTransfer::doResume(const char * filename,const char * port,unsigned int filePos)
+bool KviDccFileTransfer::doResume(const char * filename,const char * port,unsigned long filePos)
 {
 	if(KviQString::equalCI(port,m_pMarshal->dccPort()) &&
 		(!m_pSlaveRecvThread) && (!m_pDescriptor->bRecvFile))
@@ -1782,7 +1785,7 @@ bool KviDccFileTransfer::doResume(const char * filename,const char * port,unsign
 		if(KviQString::equalCI(filename,m_pDescriptor->szFileName) || KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests))
 		{
 			bool bOk;
-			unsigned int iLocalFileSize = m_pDescriptor->szLocalFileSize.toUInt(&bOk);
+			unsigned long iLocalFileSize = m_pDescriptor->szLocalFileSize.toULong(&bOk);
 			if(!bOk)
 			{
 				// ops...internal error

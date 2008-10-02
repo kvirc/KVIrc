@@ -48,14 +48,14 @@
 
 typedef struct _KviDccSendThreadOptions
 {
-	KviStr       szFileName;
-	int          iStartPosition;
-	int          iPacketSize;
-	int          iIdleStepLengthInMSec;
-	bool         bFastSend;
-	bool         bNoAcks;
-	bool         bIsTdcc;
-	unsigned int uMaxBandwidth;
+	KviStr        szFileName;
+	unsigned long iStartPosition;
+	unsigned int  iPacketSize;
+	unsigned int  iIdleStepLengthInMSec;
+	bool          bFastSend;
+	bool          bNoAcks;
+	bool          bIsTdcc;
+	unsigned long uMaxBandwidth;
 } KviDccSendThreadOptions;
 
 
@@ -66,27 +66,27 @@ public:
 	~KviDccSendThread();
 private:
 	// stats: SHARED!!!
-	int            m_iAverageSpeed;
-	int            m_iInstantSpeed;
-	int            m_iFilePosition;
-	int            m_iAckedBytes;
-	int            m_iTotalSentBytes;
+	unsigned long  m_iAverageSpeed;
+	unsigned long  m_iInstantSpeed;
+	unsigned long  m_iFilePosition;
+	unsigned long  m_iAckedBytes;
+	unsigned long  m_iTotalSentBytes;
 	// internal
 	unsigned long  m_uStartTime;
 	unsigned long  m_uInstantSpeedInterval;
-	int            m_iInstantSentBytes;
+	unsigned long  m_iInstantSentBytes;
 	KviDccSendThreadOptions * m_pOpt;
 	KviMSecTimeInterval * m_pTimeInterval;             // used for computing the instant bandwidth but not only
 public:
 	void initGetInfo();
-	int averageSpeed(){ return m_iAverageSpeed; };
-	int instantSpeed(){ return m_iInstantSpeed; };
-	int filePosition(){ return m_iFilePosition; };
+	unsigned long averageSpeed(){ return m_iAverageSpeed; };
+	unsigned long instantSpeed(){ return m_iInstantSpeed; };
+	unsigned long filePosition(){ return m_iFilePosition; };
 	// sent ONLY in this session
-	int sentBytes(){ return m_iTotalSentBytes; };
-	int ackedBytes(){ return m_iAckedBytes; };
-	unsigned int bandwidthLimit(){ return m_pOpt->uMaxBandwidth; };
-	void setBandwidthLimit(unsigned int uMaxBandwidth){ m_pOpt->uMaxBandwidth = uMaxBandwidth; };
+	unsigned long sentBytes(){ return m_iTotalSentBytes; };
+	unsigned long ackedBytes(){ return m_iAckedBytes; };
+	unsigned long bandwidthLimit(){ return m_pOpt->uMaxBandwidth; };
+	void setBandwidthLimit(unsigned long uMaxBandwidth){ m_pOpt->uMaxBandwidth = uMaxBandwidth; };
 	void doneGetInfo();
 protected:
 	void updateStats();
@@ -95,14 +95,14 @@ protected:
 
 typedef struct _KviDccRecvThreadOptions
 {
-	bool         bResume;
-	KviStr       szFileName;
-	int          iTotalFileSize;
-	int          iIdleStepLengthInMSec;
-	bool         bSendZeroAck;
-	bool         bNoAcks;
-	bool         bIsTdcc;
-	unsigned int uMaxBandwidth;
+	bool          bResume;
+	KviStr        szFileName;
+	unsigned long iTotalFileSize;
+	unsigned int  iIdleStepLengthInMSec;
+	bool          bSendZeroAck;
+	bool          bNoAcks;
+	bool          bIsTdcc;
+	unsigned long uMaxBandwidth;
 } KviDccRecvThreadOptions;
 
 class KviDccRecvThread : public KviDccThread
@@ -114,31 +114,31 @@ protected:
 	KviDccRecvThreadOptions * m_pOpt;
 
 	// stats: SHARED!
-	int                   m_iAverageSpeed;
-	int                   m_iInstantSpeed;
-	int                   m_iFilePosition;
-	int                   m_iTotalReceivedBytes;
+	unsigned long m_iAverageSpeed;
+	unsigned long m_iInstantSpeed;
+	unsigned long m_iFilePosition;
+	unsigned long m_iTotalReceivedBytes;
 
 	// internal
 	unsigned long         m_uStartTime;
 	KviMSecTimeInterval * m_pTimeInterval;             // used for computing the instant bandwidth
-	int                   m_iInstantReceivedBytes;
+	unsigned long         m_iInstantReceivedBytes;
 	unsigned long         m_uInstantSpeedInterval;
 	QFile               * m_pFile;
 public:
 	void initGetInfo();
-	int averageSpeed(){ return m_iAverageSpeed; };
-	int instantSpeed(){ return m_iInstantSpeed; };
-	int filePosition(){ return m_iFilePosition; };
+	unsigned long averageSpeed(){ return m_iAverageSpeed; };
+	unsigned long instantSpeed(){ return m_iInstantSpeed; };
+	unsigned long filePosition(){ return m_iFilePosition; };
 	// received ONLY in this session
-	int receivedBytes(){ return m_iTotalReceivedBytes; };
-	unsigned int bandwidthLimit(){ return m_pOpt->uMaxBandwidth; };
+	unsigned long receivedBytes(){ return m_iTotalReceivedBytes; };
+	unsigned long bandwidthLimit(){ return m_pOpt->uMaxBandwidth; };
 	void setBandwidthLimit(unsigned int uMaxBandwidth){ m_pOpt->uMaxBandwidth = uMaxBandwidth; };
 	void doneGetInfo();
 protected:
 	void postMessageEvent(const char * msg);
 	void updateStats();
-	bool sendAck(int filePos);
+	bool sendAck(unsigned long filePos);
 	virtual void run();
 };
 
@@ -195,15 +195,15 @@ private:
 	kvi_time_t               m_tTransferStartTime;
 	kvi_time_t               m_tTransferEndTime;
 	// cached stats
-	unsigned int             m_uTotalFileSize; // total file size to transfer
+	unsigned long            m_uTotalFileSize; // total file size to transfer
 	
-	unsigned int             m_uMaxBandwidth;
+	unsigned long            m_uMaxBandwidth;
 	KviDccFileTransferBandwidthDialog * m_pBandwidthDialog;
 	
 	QTimer                 * m_pResumeTimer; // used to signal resume timeout
 public:
 	bool resumeAccepted(const char * filename,const char * port,const char *szZeroPortTag);
-	bool doResume(const char * filename,const char * port,unsigned int filePos);
+	bool doResume(const char * filename,const char * port,unsigned long filePos);
 
 	static void init();
 	static void done();
@@ -211,7 +211,7 @@ public:
 	static KviDccFileTransfer * nonFailedTransferWithLocalFileName(const QString &szLocalFileName);
 	static unsigned int transferCount();
 	static bool handleResumeAccepted(const char * filename,const char * port,const char * szZeroPortTag);
-	static bool handleResumeRequest(const char * filename,const char * port,unsigned int filePos);
+	static bool handleResumeRequest(const char * filename,const char * port,unsigned long filePos);
 
 	virtual bool event(QEvent *e);
 
@@ -229,11 +229,11 @@ public:
 	
 	bool isFileUpload(){ return m_pDescriptor->isFileUpload(); };
 
-	unsigned int averageSpeed();
-	unsigned int transferredBytes();
+	unsigned long averageSpeed();
+	unsigned long transferredBytes();
 	
-	int bandwidthLimit();
-	void setBandwidthLimit(int iVal);
+	unsigned long bandwidthLimit();
+	void setBandwidthLimit(unsigned long iVal);
 protected:
 	void startConnection();
 	void listenOrConnect();

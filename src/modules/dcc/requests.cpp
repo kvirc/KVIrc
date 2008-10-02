@@ -545,7 +545,7 @@ static void dccModuleParseDccResume(KviDccRequest *dcc)
 	//      DCC SEND <filename> <remoteip> <remoteport> <filesize> <tag>
 
 	bool bOk;
-	unsigned int filePos = dcc->szParam3.toUInt(&bOk);
+	unsigned long filePos = dcc->szParam3.toULong(&bOk);
 	if(!bOk)
 	{
 		if(!dcc->ctcpMsg->msg->haltOutput())
@@ -621,7 +621,7 @@ static void dccModuleParseDccRecv(KviDccRequest * dcc)
 	if(o)
 	{
 
-		unsigned int uResumeSize = dcc->szParam4.toUInt(); // this will NEVER fail
+		unsigned long uResumeSize = dcc->szParam4.toULong(); // this will NEVER fail
 		if(uResumeSize >= o->fileSize())
 		{
 			// senseless request
@@ -817,7 +817,7 @@ static void dccModuleParseDccGet(KviDccRequest *dcc)
 	// ...
 	dcc->szParam1=dcc->pConsole->decodeText(dcc->szParam1);
 	bool bOk;
-	unsigned int uSize = dcc->szParam2.toUInt(&bOk);
+	unsigned long uSize = dcc->szParam2.toULong(&bOk);
 	if(!bOk)uSize = 0;
 
 	if(!dcc_module_check_limits(dcc))return;

@@ -94,7 +94,7 @@ public:
 	void sendFileManage(KviDccDescriptor * dcc);
 
 	bool handleResumeAccepted(const char * filename,const char * port,const char * szZeroPortTag);
-	bool handleResumeRequest(KviDccRequest * dcc,const char * filename,const char * port,unsigned int filePos,const char * szZeroPortTag);
+	bool handleResumeRequest(KviDccRequest * dcc,const char * filename,const char * port,unsigned long filePos,const char * szZeroPortTag);
 
 public slots:
 	void rsendExecute(KviDccBox * box,KviDccDescriptor * dcc);

@@ -165,7 +165,7 @@ namespace KviQString
 	{
 		double size = bytes;
 		if(size<900)
-			return QString(__tr2qs("%1 bytes")).arg(size,0,'f',3);
+			return QString(__tr2qs("%1 bytes")).arg(size,0,'f',0);
 
 		size/=1024;
 		if(size<900)
