@@ -39,8 +39,8 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 
 	createLayout();
 
-	KviTalGroupBox *g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Open Query For","options"));
-	KviBoolSelector *b  = addBoolSelector(g, __tr2qs_ctx("Private messages","options"),KviOption_boolCreateQueryOnPrivmsg);
+	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Open Query For","options"));
+	KviBoolSelector * b  = addBoolSelector(g, __tr2qs_ctx("Private messages","options"),KviOption_boolCreateQueryOnPrivmsg);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option enables query window creation " \
 			"when a private message (PRIVMSG) is received.<br>" \
@@ -89,7 +89,21 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 			"Uncheck if you think,that it wastes your query space/" \
 			"</center>","options"));
 
-	addRowSpacer(0,6,0,6);
+	b = addBoolSelector(0,6,0,6,__tr2qs_ctx("Paste last channel log","options"),KviOption_boolPasteLastLogOnQueryJoin);
+
+	KviTalHBox * box = new KviTalHBox(this);
+	addWidgetToLayout(box,0,7,1,7);
+
+	KviUIntSelector * u = addUIntSelector(box,__tr2qs_ctx("Paste up to:","options"),KviOption_uintLinesToPasteOnQueryJoin,0,50,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin));
+	u->setSuffix(__tr2qs_ctx(" lines","options"));
+	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></center>","options"));
+	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
+	u = addUIntSelector(box,__tr2qs_ctx("Interval:","options"),KviOption_uintDaysIntervalToPasteOnQueryJoin,1,10,10,KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin));
+	u->setSuffix(__tr2qs_ctx(" days","options"));
+	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></center>","options"));
+	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
+
+	addRowSpacer(0,8,0,8);
 }
 
 KviQueryOptionsWidget::~KviQueryOptionsWidget()
@@ -99,4 +113,4 @@ KviQueryOptionsWidget::~KviQueryOptionsWidget()
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_query.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

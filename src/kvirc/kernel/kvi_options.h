@@ -104,7 +104,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolShowPingPong 10                                /* ircoutput */
 #define KviOption_boolPopupNotifierOnNewQueryMessages 11             /* query */
 #define KviOption_boolShowExtendedServerInfo 12                      /* ircoutput */
-#define KviOption_boolEchoNumericTopic 13                            /* ircoutput */
+#define KviOption_boolEchoNumericTopic 13                            /* channel */
 #define KviOption_boolShowOwnParts 14                                /* ircoutput */
 #define KviOption_boolUseAntiSpamOnPrivmsg 15                        /* ircengine::outputcontrol::antispam */
 #define KviOption_boolUseExtendedPrivmsgView 16                      /* ircengine::outputcontrol::privmsg */
@@ -144,9 +144,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolLimitOutgoingTraffic 50                        /* transport */
 #define KviOption_boolSendUnknownCommandsAsRaw 51                    /* ircengine::uparser */
 #define KviOption_boolUserListViewDrawGrid 52                        /* look & feel::interface look::userlist */
-#define KviOption_boolShowChannelSyncTime 53                         /* ircoutput */
-#define KviOption_boolRejoinChannelOnKick 54                         /* irc */
-#define KviOption_boolKeepChannelOpenOnKick 55                       /* irc */
+#define KviOption_boolShowChannelSyncTime 53                         /* channel */
+#define KviOption_boolRejoinChannelOnKick 54                         /* channel */
+#define KviOption_boolKeepChannelOpenOnKick 55                       /* channel */
 #define KviOption_boolAutoCloseDccSendOnSuccess 56                   /* dcc::send */
 #define KviOption_boolNotifyDccSendSuccessInConsole 57               /* dcc::send */
 #define KviOption_boolCreateMinimizedDccSend 58                      /* dcc::send */
@@ -198,17 +198,17 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolShowChannelsJoinOnIrc 104                      /* internal */
 #define KviOption_boolShowChannelsJoinDialogAsToplevel 105           /* FIXME: internal ??? */
 #define KviOption_boolUserDefinedPortRange 106                       /* dcc */
-#define KviOption_boolCreateQueryOnPrivmsg 107                       /* irc::query */
-#define KviOption_boolCreateQueryOnNotice 108                        /* irc::query */
-#define KviOption_boolCreateMinimizedQuery 109                       /* irc::query */
-#define KviOption_boolAutoJoinOnInvite 110                           /* irc */
+#define KviOption_boolCreateQueryOnPrivmsg 107                       /* query */
+#define KviOption_boolCreateQueryOnNotice 108                        /* query */
+#define KviOption_boolCreateMinimizedQuery 109                       /* query */
+#define KviOption_boolAutoJoinOnInvite 110                           /* channel */
 #define KviOption_boolShowServersConnectDialogOnStart 111            /* connection::ircservers */
 #define KviOption_boolShowServersConnectDialogAsToplevel 112         /* FIXME: internal ?? */
 #define KviOption_boolAcceptBrokenFileNameDccResumeRequests 113      /* dcc::send */
 #define KviOption_boolAutoReconnectOnUnexpectedDisconnect 114        /* connection */
 #define KviOption_boolRejoinChannelsAfterReconnect 115               /* connection */
 #define KviOption_boolReopenQueriesAfterReconnect 116                /* connection */
-#define KviOption_boolEnableQueryTracing 117                         /* irc::query */
+#define KviOption_boolEnableQueryTracing 117                         /* query */
 #define KviOption_boolOperatorMessagesToActiveWindow 118             /* irc::output */
 #define KviOption_boolInvitesToActiveWindow 119                      /* irc::output */
 #define KviOption_boolShowChannelUserFlagInPrivmsgView 120           /* ircengine::outputcontrol::privmsg */
@@ -234,10 +234,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolKeepQueriesOpenOnUnexpectedDisconnect 140      /* connection */
 #define KviOption_boolUseLagMeterEngine 141                          /* irc::lag */
 #define KviOption_boolShowLagOnContextDisplay 142                    /* irc::lag */
-#define KviOption_boolDisableBanListRequestOnJoin 143                /* irc::output */
-#define KviOption_boolDisableBanExceptionListRequestOnJoin 144       /* irc::output */
-#define KviOption_boolDisableInviteListRequestOnJoin 145             /* irc::output */
-#define KviOption_boolDisableWhoRequestOnJoin 146                    /* irc::output */
+#define KviOption_boolDisableBanListRequestOnJoin 143                /* channel */
+#define KviOption_boolDisableBanExceptionListRequestOnJoin 144       /* channel */
+#define KviOption_boolDisableInviteListRequestOnJoin 145             /* channel */
+#define KviOption_boolDisableWhoRequestOnJoin 146                    /* channel */
 #define KviOption_boolShowDockExtension 147                          /* internal ? */
 #define KviOption_boolDccAddressByIrcDns 148                         /* irc::general */
 #define KviOption_boolMinimizeConsoleAfterConnect 149                /* irc::connection */
@@ -265,7 +265,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolDccSendForceIdleStep 171                       /* dcc */
 #define KviOption_boolStatusBarVisible 172                           /* internal */
 #define KviOption_boolTrackLastReadTextViewLine 173                  /* ircview::features */
-#define KviOption_boolKeepChannelOpenOnPart 174                      /* irc */
+#define KviOption_boolKeepChannelOpenOnPart 174                      /* channel */
 #define KviOption_boolStripMircColorsInUserMessages 175              /* irc::output */
 #define KviOption_boolDoNotSuggestRestoreDefaultScript 176           /* internal */
 #define KviOption_boolLimitDccSendSpeed 177                          /* dcc::file transfers */
@@ -273,13 +273,13 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolIgnoreModuleVersions 179
 #define KviOption_boolEnableInputHistory 180                        /* interface::input */
 #define KviOption_boolUseSpecialColorForTimestamp 181                /* interface::output */
-#define KviOption_boolEnableAwayListUpdates 182                     /* irc::output */
+#define KviOption_boolEnableAwayListUpdates 182                     /* channel */
 #define KviOption_boolShowAvatarsInUserlist 183				 /* interface::userlist */
 #define KviOption_boolShowUserListStatisticLabel 184		        	 /* interface::userlist */
 #define KviOption_boolShowIconsInPopupMenus 185			     /* themes::general */
 #define KviOption_boolScriptErrorsToDebugWindow 186                  /* parser */
 #define KviOption_boolShowMinimizedDebugWindow 187                   /* parser */
-#define KviOption_boolShowExtendedInfoInQueryLabel 188               /* irc::query */
+#define KviOption_boolShowExtendedInfoInQueryLabel 188               /* query */
 #define KviOption_boolUseUserListColorsAsNickColors 189              /* irc::usermessages */
 #define KviOption_boolGzipLogs 190                                   /* ircengine::logging */
 #define KviOption_boolMinimizeInTray 191                                   /* interface */
@@ -292,7 +292,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolCloseInTray 198                                   /* interface */
 #define KviOption_boolStartupMinimized 199                                   /* interface */
 #define KviOption_boolSortReceivedByDccFilesByNicks 200                                   /* dcc */
-#define KviOption_boolLogChannelHistory 201                                   /* irc */
+#define KviOption_boolLogChannelHistory 201                                   /* channel */
 #define KviOption_boolClassicWindowListSetMaximumButtonWidth 202
 #define KviOption_boolKeepChannelsOpenOnDisconnect 203 				/* connection */
 #define KviOption_boolKeepQueriesOpenOnDisconnect 204				/* connection */
@@ -319,8 +319,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolEnableAnimatedSmiles 225
 #define KviOption_boolPlaceNickWithNonAlphaCharsAtEnd 226
 #define KviOption_boolUseStartTlsIfAvailable 227
+#define KviOption_boolPasteLastLogOnChannelJoin 228                /* channel */
+#define KviOption_boolPasteLastLogOnQueryJoin 229                  /* query */
 
-#define KVI_NUM_BOOL_OPTIONS 228
+#define KVI_NUM_BOOL_OPTIONS 230
 
 
 
@@ -570,8 +572,12 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintIrcViewMarkerSize 66
 #define KviOption_uintUrlMouseClickNum 67
 #define KviOption_uintNotifierAutoHideTime 68
+#define KviOption_uintLinesToPasteOnChannelJoin 69                /* channel */
+#define KviOption_uintDaysIntervalToPasteOnChannelJoin 70         /* channel */
+#define KviOption_uintLinesToPasteOnQueryJoin 71                  /* query */
+#define KviOption_uintDaysIntervalToPasteOnQueryJoin 72           /* query */
 
-#define KVI_NUM_UINT_OPTIONS 69
+#define KVI_NUM_UINT_OPTIONS 73
 
 namespace KviIdentdOutputMode {
 	enum Mode {

@@ -75,8 +75,9 @@ void KviModeWidget::refreshModes()
 	if(!m_pChannel->channelKey().isEmpty())
 		szMode+=QString(" k:%1").arg(m_pChannel->channelKey());
 	if(!m_pChannel->channelLimit().isEmpty())
-		szMode+=QString(" l:%1").arg(m_pChannel->channelLimit().ptr());
-	if(m_pLabel) m_pLabel->setText(szMode);
+		szMode+=QString(" l:%1").arg(m_pChannel->channelLimit().toUtf8().data());
+	if(m_pLabel)
+		m_pLabel->setText(szMode);
 }
 
 void KviModeWidget::applyOptions()

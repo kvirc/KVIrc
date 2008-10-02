@@ -26,8 +26,6 @@
 
 #include "kvi_optionswidget.h"
 
-class QComboBox;
-
 #define KVI_OPTIONS_WIDGET_ICON_KviIrcOptionsWidget KVI_SMALLICON_IRC
 #define KVI_OPTIONS_WIDGET_NAME_KviIrcOptionsWidget __tr2qs_no_lookup("IRC")
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviIrcOptionsWidget 80000
@@ -66,51 +64,6 @@ class KviIrcAdvancedOptionsWidget : public KviOptionsWidget
 public:
 	KviIrcAdvancedOptionsWidget(QWidget * parent);
 	~KviIrcAdvancedOptionsWidget();
-};
-
-
-#define KVI_OPTIONS_WIDGET_ICON_KviChannelOptionsWidget KVI_SMALLICON_CHANNEL
-#define KVI_OPTIONS_WIDGET_NAME_KviChannelOptionsWidget __tr2qs_no_lookup("Channel")
-#define KVI_OPTIONS_WIDGET_PARENT_KviChannelOptionsWidget KviIrcOptionsWidget
-#define KVI_OPTIONS_WIDGET_CONTAINER_KviChannelOptionsWidget true
-#define KVI_OPTIONS_WIDGET_NOTCONTAINED_KviChannelOptionsWidget true
-#define KVI_OPTIONS_WIDGET_PRIORITY_KviChannelOptionsWidget 90000
-
-class KviChannelOptionsWidget : public KviOptionsWidget
-{
-	Q_OBJECT
-public:
-	KviChannelOptionsWidget(QWidget * parent);
-	~KviChannelOptionsWidget();
-};
-
-
-#define KVI_OPTIONS_WIDGET_ICON_KviChannelGeneralOptionsWidget KVI_SMALLICON_CHANNEL
-#define KVI_OPTIONS_WIDGET_NAME_KviChannelGeneralOptionsWidget __tr2qs_no_lookup("General")
-#define KVI_OPTIONS_WIDGET_PARENT_KviChannelGeneralOptionsWidget KviChannelOptionsWidget
-
-class KviChannelGeneralOptionsWidget : public KviOptionsWidget
-{
-	Q_OBJECT
-public:
-	KviChannelGeneralOptionsWidget(QWidget * parent);
-	~KviChannelGeneralOptionsWidget();
-};
-
-#define KVI_OPTIONS_WIDGET_ICON_KviChannelAdvancedOptionsWidget KVI_SMALLICON_CHANNEL
-#define KVI_OPTIONS_WIDGET_NAME_KviChannelAdvancedOptionsWidget __tr2qs_no_lookup("Advanced")
-#define KVI_OPTIONS_WIDGET_PARENT_KviChannelAdvancedOptionsWidget KviChannelOptionsWidget
-
-class KviChannelAdvancedOptionsWidget : public KviOptionsWidget
-{
-	Q_OBJECT
-public:
-	KviChannelAdvancedOptionsWidget(QWidget * parent);
-	~KviChannelAdvancedOptionsWidget();
-public:
-	virtual void commit();
-protected:
-	QComboBox * m_pBanTypeCombo;
 };
 
 #endif //_OPTW_IRC_H_

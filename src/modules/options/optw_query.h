@@ -39,7 +39,6 @@ class KviQueryOptionsWidget : public KviOptionsWidget
 public:
 	KviQueryOptionsWidget(QWidget * parent);
 	~KviQueryOptionsWidget();
-protected: 
 };
 
-#endif //_OPTW_away_H_
+#endif //_OPTW_QUERY_H_

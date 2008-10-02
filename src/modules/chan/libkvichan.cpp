@@ -1012,8 +1012,8 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 	{
 		if(ch->hasChannelLimit())
 		{
-			lim=ch->channelLimit().ptr();
-			limit=lim.toInt();
+			lim = ch->channelLimit().toUtf8().data();
+			limit = lim.toInt();
 		}
 		c->returnValue()->setInteger(limit);
 	}

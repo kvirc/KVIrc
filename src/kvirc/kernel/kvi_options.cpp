@@ -311,7 +311,9 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("EnableAnimatedAvatars",true,KviOption_sectFlagGui | KviOption_resetUpdateGui),
 	BOOL_OPTION("EnableAnimatedSmiles",true,KviOption_sectFlagGui | KviOption_resetUpdateGui),
 	BOOL_OPTION("PlaceNickWithNonAlphaCharsAtEnd",true,KviOption_sectFlagGui | KviOption_resetUpdateGui),
-	BOOL_OPTION("UseStartTlsIfAvailable",true,KviOption_sectFlagConnection)
+	BOOL_OPTION("UseStartTlsIfAvailable",true,KviOption_sectFlagConnection),
+	BOOL_OPTION("PasteLastLogOnChannelJoin",false,KviOption_sectFlagLogging),
+	BOOL_OPTION("PasteLastLogOnQueryJoin",false,KviOption_sectFlagLogging)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
@@ -631,7 +633,11 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("IrcViewMarkerStyle",0,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("IrcViewMarkerSize",1,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("UrlMouseClickNum",2,KviOption_sectFlagUrl),
-	UINT_OPTION("NotifierAutoHideTime",30,KviOption_sectFlagModules)
+	UINT_OPTION("NotifierAutoHideTime",30,KviOption_sectFlagModules),
+	UINT_OPTION("LinesToPasteOnChannelJoin",10,KviOption_sectFlagLogging),
+	UINT_OPTION("DaysIntervalToPasteOnChannelJoin",10,KviOption_sectFlagLogging),
+	UINT_OPTION("LinesToPasteOnQueryJoin",10,KviOption_sectFlagLogging),
+	UINT_OPTION("DaysIntervalToPasteOnQueryJoin",10,KviOption_sectFlagLogging)
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \

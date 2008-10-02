@@ -1014,5 +1014,5 @@ MESSAGE(STATUS "  Audiofile Support           : ${CMAKE_STATUS_AUDIOFILE_SUPPORT
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "  Build Date                  : ${CMAKE_KVIRC_BUILD_DATE}")
 MESSAGE(STATUS " ")
-MESSAGE(STATUS "I'm ready to build kvirc for you: please type 'make' now...")
+MESSAGE(STATUS "I'm ready to build KVIrc for you: please type 'make' now...")
 MESSAGE(STATUS " ")

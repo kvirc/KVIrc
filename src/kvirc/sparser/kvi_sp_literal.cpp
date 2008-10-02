@@ -242,18 +242,21 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 
 		// FIXME: #warning "IF VERBOSE SAY THAT WE'RE REQUESTING MODES & BAN LIST" (Synching channel)
 
-		if(!msg->connection()->sendFmtData("MODE %s",encodedChan))return; // disconnected
+		if(!msg->connection()->sendFmtData("MODE %s",encodedChan))
+			return; // disconnected
 
 		if(msg->connection()->serverInfo()->supportsModesIe())
 		{
 			if(!KVI_OPTION_BOOL(KviOption_boolDisableBanExceptionListRequestOnJoin))
 			{
-				if(!msg->connection()->sendFmtData("MODE %s e",encodedChan))return; // disconnected
+				if(!msg->connection()->sendFmtData("MODE %s e",encodedChan))
+					return; // disconnected
 				chan->setSentBanExceptionListRequest();
 			}
 			if(!KVI_OPTION_BOOL(KviOption_boolDisableInviteListRequestOnJoin))
 			{
-				if(!msg->connection()->sendFmtData("MODE %s I",encodedChan))return; // disconnected
+				if(!msg->connection()->sendFmtData("MODE %s I",encodedChan))
+					return; // disconnected
 				chan->setSentInviteListRequest();
 			}
 		}
@@ -270,14 +273,20 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 				KviStr tmp(KviStr::Format,"WHO %s",encodedChan);
 				msg->connection()->lagMeter()->lagCheckRegister(tmp.ptr(),60);
 			}
-			if(!msg->connection()->sendFmtData("WHO %s",encodedChan))return; // disconnected
+			if(!msg->connection()->sendFmtData("WHO %s",encodedChan))
+				return; // disconnected
 			chan->setSentWhoRequest();
 		}
+
 		if(!KVI_OPTION_BOOL(KviOption_boolDisableBanListRequestOnJoin))
 		{
-			if(!msg->connection()->sendFmtData("MODE %s b",encodedChan))return; // disconnected
+			if(!msg->connection()->sendFmtData("MODE %s b",encodedChan))
+				return; // disconnected
 			chan->setSentBanListRequest();
 		}
+
+		if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnChannelJoin))
+			chan->pasteLastLog();
 
 	} else {
 		// This must be someone else...(or desync)
@@ -314,7 +323,6 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 		}
 	}
 
-	//if(!bisMe) deleted because we can open query with our nick
 	QString szChans;
 	int iChans = msg->connection()->getCommonChannels(szNick,szChans);
 	KviQuery * q = console->connection()->findQuery(szNick);
@@ -723,10 +731,10 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 				} \
 			} else _retptr = _txt, _retmsgtype=_type; \
 		} else _retptr = _txt, _retmsgtype=_type;
-#else //!COMPILE_CRYPT_SUPPORT
+#else //COMPILE_CRYPT_SUPPORT
 	#define DECRYPT_IF_NEEDED(_target,_txt,_type,_type2,_buffer,_retptr,_retmsgtype) \
 		_retptr = _txt; _retmsgtype = _type;
-#endif //!COMPILE_CRYPT_SUPPORT
+#endif //COMPILE_CRYPT_SUPPORT
 
 
 
@@ -879,6 +887,9 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					query->setTarget(szNick,szUser,szHost);
 				}
 			}
+
+			if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
+				query->pasteLastLog();
 		}
 
 		// ok, now we either have a query or not
@@ -1240,6 +1251,10 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 					// and this will trigger OnQueryTargetAdded
 					query->setTarget(szNick,szUser,szHost);
 				}
+
+			if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
+				query->pasteLastLog();
+
 			}
 		}
 

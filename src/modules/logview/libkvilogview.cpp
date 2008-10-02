@@ -161,7 +161,7 @@ KVIRC_MODULE(
 	"KVIrc Log Viewer Widget",
 	"4.0.0",
 	"Juanjo Alvarez <juanjux@yahoo.es>",
-	"An structured log file viewer",
+	"A structured log file viewer",
 	logview_module_init,
 	logview_module_can_unload,
 	0,

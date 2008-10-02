@@ -6,6 +6,7 @@ SET(kvioptions_MOC_HDRS
 	instances.h
 	optw_antispam.h
 	optw_avatar.h
+	optw_channel.h
 	optw_connection.h
 	optw_ctcp.h
 	optw_ctcpfloodprotection.h
@@ -50,6 +51,7 @@ SET(kvioptions_SRCS
 	instances.cpp
 	optw_antispam.cpp
 	optw_avatar.cpp
+	optw_channel.cpp
 	optw_connection.cpp
 	optw_ctcp.cpp
 	optw_ctcpfloodprotection.cpp

@@ -411,7 +411,7 @@ KviLogFile::KviLogFile(const QString& name)
 		szTmpName.chop(3);
 	}
 	QString typeToken = szTmpName.section('_',0,0);
-    // Ignore non-logs files, this includes '.' and '..'
+	// Ignore non-logs files, this includes '.' and '..'
 	if( KviQString::equalCI(typeToken,"channel") )
 		m_type = Channel;
 	else if( KviQString::equalCI(typeToken,"console") )
