@@ -1138,7 +1138,7 @@ void KviWatchNotifyListManager::start()
 				KviQCString dat = m_pConnection->encodeText(watchStr);
 				m_pConnection->sendFmtData("WATCH%s",dat.data());
 				if(_OUTPUT_VERBOSE)
-					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Adding watch entries for%Q"),&watchStr);
+					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Adding watch entries for %Q"),&watchStr);
 				watchStr = "";
 			}
 			KviQString::appendFormatted(watchStr," +%Q",&nk);
@@ -1151,7 +1151,7 @@ void KviWatchNotifyListManager::start()
 		KviQCString dat = m_pConnection->encodeText(watchStr);
 		m_pConnection->sendFmtData("WATCH%s",dat.data());
 		if(_OUTPUT_VERBOSE)
-			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Adding watch entries for%Q"),&watchStr);
+			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Adding watch entries for %Q"),&watchStr);
 	}
 }
 void KviWatchNotifyListManager::stop()
