@@ -1,3 +1,4 @@
+# translation of options_it.po to Italian
 # translation of options_it.po to
 # KVIrc OPTIONS module Italian traslation file
 # Italian translation file for KVIrc 3.0
@@ -15,9 +16,9 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-09-27 00:52+0200\n"
-"PO-Revision-Date: 2007-11-08 01:57+0100\n"
+"PO-Revision-Date: 2008-09-27 01:20+0200\n"
 "Last-Translator: \n"
-"Language-Team:  <it@li.org>\n"
+"Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -268,13 +269,11 @@ msgstr "Il campo NickName non può contenere spazi"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_nickserv.cpp:199
 msgid "The Identify Command can't be empty!"
@@ -1185,8 +1184,7 @@ msgid "Server:"
 msgstr "Server:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_servers.cpp:1130
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_servers.cpp:1153
@@ -1204,10 +1202,8 @@ msgid "Connect &Now"
 msgstr "&Connetti Ora"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_servers.cpp:1164
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_servers.cpp:1177
 msgid ""
@@ -1442,8 +1438,7 @@ msgstr ""
 "delle citazioni casuali o delle frasi.</center>"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_identity.cpp:351
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -2343,6 +2338,8 @@ msgid ""
 "Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
 "normal nicks"
 msgstr ""
+"Metti i nick che iniziano con caratteri non alfanumerici (come _COOL_BOY_) dopo "
+"i nick normali"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_ctcpfloodprotection.cpp:79
 msgid "Use flood protection (recommended)"
@@ -2642,8 +2639,7 @@ msgid "Minimum alert level:"
 msgstr "Livello di allerta minimo:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_highlighting.cpp:114
-msgid ""
-"<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Questa opzione imposta il livello minimo di allerta per la lista dei "
 "canali.</center>"
@@ -3286,8 +3282,7 @@ msgstr "Forza lingua:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_textencoding.cpp:65
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+msgstr "<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_textencoding.cpp:68
 msgid "Automatic detection"
@@ -4441,3 +4436,4 @@ msgstr "Query"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_query.h:30
 msgid "chat"
 msgstr "chat"
+
