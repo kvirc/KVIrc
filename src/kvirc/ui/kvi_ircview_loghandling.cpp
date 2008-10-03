@@ -47,8 +47,7 @@ void KviIrcView::stopLogging()
 {
 	if(m_pLogFile)
 	{
-		QString szLogStart = QString(__tr2qs("### Log session terminated at %1 ###")).arg(QDateTime::currentDateTime().toString());
-
+		QString szLogEnd = QString(__tr2qs("### Log session terminated at %1 ###")).arg(QDateTime::currentDateTime().toString());
 		add2Log(szLogEnd);
 		m_pLogFile->close();
 #ifdef COMPILE_ZLIB_SUPPORT
