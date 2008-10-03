@@ -827,7 +827,7 @@ namespace KviKvsCoreFunctions
 		@syntax:
 			<boolean> $false
 		@description:
-			Evaluates to the false boolean constant. True
+			Evaluates to the false boolean constant. False
 			is equivalent to the integer 0 too. This function/constant
 			is useful to keep your code readable: when you
 			have a variable that can assume boolean values it's
