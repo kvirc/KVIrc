@@ -299,7 +299,7 @@ bool KviKvsObject_popupmenu::functionexec(KviKvsObjectFunctionCall *c)
 	}
 	if(!pObject->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Doesn't a widget object"));
+		c->warning(__tr2qs("Widget parameter ist not a widget object"));
 		return true;
 	}
 
