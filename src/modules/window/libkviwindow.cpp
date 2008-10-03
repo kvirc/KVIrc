@@ -1502,7 +1502,7 @@ static bool window_kvs_cmd_setCryptEngine(KviKvsModuleCommandCall * c)
 	if(c->hasSwitch('n',"onlydecrypt") && c->hasSwitch('m',"onlyencrypt"))
 	{
 		if(!c->hasSwitch('q',"quiet"))
-			c->warning(__tr2qs("Both -n and -m switchess specified, -n takes precedence"));
+			c->warning(__tr2qs("Both -n and -m switches specified, -n takes precedence"));
 	}
 
 	if(szEngine.isEmpty())

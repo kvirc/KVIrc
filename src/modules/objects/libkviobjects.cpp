@@ -739,7 +739,7 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 	obDest=KviKvsKernel::instance()->objectController()->lookupObject(hDest);
 	if (!obFor || !obBck || !obDest)
 	{
-		c->warning(__tr2qs("One o more of background, foreground or destination aren't objects"));
+		c->warning(__tr2qs("One or more of background, foreground or destination aren't objects"));
 		return true;
 	}
 
