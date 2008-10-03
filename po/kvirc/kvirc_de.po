@@ -6172,11 +6172,11 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:128
 msgid "Manage Addons..."
-msgstr "Zusätze verwalten..."
+msgstr "AddOns verwalten..."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:129
 msgid "Allows you to manage the script-based addons"
-msgstr "Erlaubt Ihnen die Verwaltung von skriptbasierten Zusätzen"
+msgstr "Erlaubt Ihnen die Verwaltung von skriptbasierten AddOns"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:139
 msgid "Configure Registered Users..."
@@ -6259,7 +6259,7 @@ msgstr "Kanäle betreten..."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:240
 msgid "Shows a dialog that allows you joing channels"
-msgstr "Zeigt ein Dialog, das Ihnen erlaubt Kanäle zu betreten, an"
+msgstr "Zeigt einen Dialog an, der Ihnen erlaubt, Kanäle zu betreten"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:251
 msgid "Edit Actions..."
@@ -6414,7 +6414,7 @@ msgid ""
 "Allows you to connect to a server or to terminate the current connection"
 msgstr ""
 "Erlaubt Ihnen das Verbinden zu einem Server oder das Trennen der "
-"derzeitigenVerbindung"
+"derzeitigen Verbindung"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:628
 msgid "Connect"
@@ -6542,7 +6542,7 @@ msgstr "Themenpaket installieren"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_app_setup.cpp:478
 msgid "KVIrc Addon Package"
-msgstr "Das KVIrc-Zusatzpaket installieren"
+msgstr "Das KVIrc-AddOn-Paket installieren"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_app_setup.cpp:486
 msgid "Install Package"
@@ -6650,15 +6650,15 @@ msgid ""
 msgstr ""
 "Benachrichtigungsliste: \r!n\r%Q\r scheint online zu sein, aber die Maske (%"
 "Q@\r!h\r%Q\r) stimmt nicht überein (jemand anderes benutzt den Nick oder die "
-"Registrierungsmaske(n) stimmt nicht überein)"
+"Registrierungsmaske stimmt nicht überein)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:691
 msgid ""
 "Notify list: Unexpected inconsistency, registered user DB modified? "
 "(restarting)"
 msgstr ""
-"Benachrichtigungsliste: Unerwartete Inkonsistenz: Registrierte "
-"Benutzerdatenbank modifiziert? (wird neugestartet)"
+"Benachrichtigungsliste: Unerwartete Inkonsistenz: 'Registrierte "
+"Benutzer'-Datenbank modifiziert? (wird neugestartet)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:698
 msgid ""
@@ -6666,7 +6666,7 @@ msgid ""
 "user DB"
 msgstr ""
 "Benachrichtigungsliste: Unerwartete Inkonsistenz: \r!n\r%Q\r in "
-"registrierter Benutzer-Datenbank erwartet"
+"'Registrierte Benutzer'-Datenbank erwartet"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:712
 #, c-format
@@ -6729,22 +6729,22 @@ msgid ""
 "Notify list: Timeout (%d sec) is too short, resetting to something more "
 "reasonable (5 sec)"
 msgstr ""
-"Benachrichtigungsliste: Der Zeitablauf (%d Sek.) ist zu wirklich klein: Es "
+"Benachrichtigungsliste: Der Zeitablauf (%d Sek.) ist zu klein: Es "
 "wird auf vernünftigen Wert (5 Sek.) gesetzt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1126
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1139
 msgid "Notify list: Adding watch entries for%Q"
 msgstr ""
-"Benachrichtigungsliste: Es werden zu beobachtende Einträge für %Q hinzugefügt"
+"Benachrichtigungsliste: Beobachtungslisteneintrag für %Q hinzugefügt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1171
 msgid "watch entry listing requested by user"
-msgstr "Watch-Listeneintrag angefordert vom Benutzer"
+msgstr "Beobachtungslisteneinträge angefordert vom Benutzer"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1175
 msgid "possible watch list desync"
-msgstr "mögliche Desynchronisation der watch-Liste"
+msgstr "mögliche Desynchronisation der Beobachtungsliste"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1185
 msgid "registration mask changed or desync with the watch service"
@@ -6759,7 +6759,7 @@ msgid ""
 "being used by someone else)"
 msgstr ""
 "Benachrichtigungsliste: \r!n\r%Q\r scheint online, aber die Maske (%Q@\r!h\r%"
-"Q\r) passt nicht (watch: jemand anderes benutzt seinen Spitznamen oder die "
+"Q\r) passt nicht (Beobachtung: Jemand anderes benutzt seinen Spitznamen oder die "
 "Registrierungsmaske passt nicht)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1197
@@ -6767,12 +6767,12 @@ msgid ""
 "Notify list: Unexpected inconsistency, registered user DB modified? (watch: "
 "restarting)"
 msgstr ""
-"Benachrichtigungsliste: unerwaretete Inkonsistenz: wurde die Datenbank der "
-"registrierten Benutzer geändert? (watch: wird neugestartet)"
+"Benachrichtigungsliste: unerwaretete Inkonsistenz: Wurde die Datenbank der "
+"registrierten Benutzer geändert? (Beobachtung: wird neugestartet)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1207
 msgid "watch entry added by user"
-msgstr "watch-Eintrag vom Benutzer hinzugefügt"
+msgstr "Beobachtungslisteneintrag vom Benutzer hinzugefügt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1245
 msgid "removed from watch list"
@@ -6784,7 +6784,7 @@ msgstr "Benachrichtungsliste: Beobachtung für \r!n\r%Q\r wird gestoppt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1258
 msgid "watch"
-msgstr "watch"
+msgstr "Beobachtung"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1264
 msgid "Notify list: \r!n\r%Q\r is offline (watch)"
@@ -6792,7 +6792,7 @@ msgstr "Benachrichtigungsliste: \r!n\r%Q\r ist offline (beobachtet)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1267
 msgid "unmatched watch list entry"
-msgstr "nicht passender watch-Listeneintrag"
+msgstr "nicht passender Beobachtungslisteneintrag"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_userinput.cpp:80
 msgid "commandline::userfriendly"
@@ -6812,7 +6812,7 @@ msgstr "Symboltabelle"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/module/kvi_modulemanager.cpp:190
 msgid "No "
-msgstr "Nein"
+msgstr "Nein "
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/module/kvi_modulemanager.cpp:196
 msgid "This module has no version informations: refusing to load it"
@@ -6878,25 +6878,25 @@ msgstr "Dieses Fenster hat keine Log-Fähigkeiten"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/log/libkvilog.cpp:275
 msgid "Window with id '%Q' not found, returning empty string"
 msgstr ""
-"Fenster mit der ID '%Q' nicht gefunden, es wird leere Zeichenkette "
+"Fenster mit der ID '%Q' nicht gefunden, es wird eine leere Zeichenkette "
 "zurückgeliefert"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/snd/libkvisnd.cpp:616
 msgid "Sound file '%Q' not found"
-msgstr "Klangdatei '%Q' nicht gefunden"
+msgstr "Tondatei '%Q' nicht gefunden"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/snd/libkvisnd.cpp:622
 msgid "Unable to play sound '%Q'"
-msgstr "Klang '%Q' konnte nicht abgepielt werden"
+msgstr "Ton '%Q' konnte nicht abgepielt werden"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/snd/libkvisnd.cpp:633
 msgid "Sorry , I can't find a sound system to use on this machine"
-msgstr "Es konnte kein benutzbares Klangsystem gefunden werden"
+msgstr "Es konnte kein benutzbares Soundsystem gefunden werden"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/snd/libkvisnd.cpp:635
 #, c-format
 msgid "Sound system detected to: %s"
-msgstr "Klangsystem erkannt als: %s"
+msgstr "Soundsystem erkannt als: %s"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/tip/libkvitip.cpp:141
 msgid "Show at startup"
@@ -7035,7 +7035,7 @@ msgstr "&Text suchen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/url/libkviurl.cpp:280
 msgid "&Say to Window"
-msgstr "Ins Fenster &sagen"
+msgstr "Ins Fenster &senden"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/url/libkviurl.cpp:294
 msgid "Window not found."
@@ -7182,7 +7182,7 @@ msgstr "Unbetitelt"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/help/helpwindow.cpp:152
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/help/helpwindow.cpp:154
 msgid "Indexing help files"
-msgstr "Hilfe-Dateien werden indexiert"
+msgstr "Hilfe-Dateien werden indiziert"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/help/helpwindow.cpp:87
 msgid "Index"
@@ -7463,7 +7463,7 @@ msgstr "Am Vegetieren"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dockwidget/libkvidockwidget_qt3.cpp:297
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dockwidget/libkvidockwidget_qt4.cpp:156
 msgid "Hey... are ya sure that your network is up?"
-msgstr "Hey... bist Du sicher, dass dein Netzwerk konfiguriert ist?"
+msgstr "Hey... bist Du sicher, dass Dein Netzwerk verfügbar ist?"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dockwidget/libkvidockwidget_qt3.cpp:298
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dockwidget/libkvidockwidget_qt4.cpp:157
@@ -7565,7 +7565,7 @@ msgstr "In den Aliasen suchen..."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:476
 msgid "Collapse All Namespaces"
-msgstr "Alle Platzhalter stürzen"
+msgstr "Alle Namensräume einklappen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:508
 msgid "Find In Aliases"
@@ -7586,7 +7586,7 @@ msgstr "Alias exportieren"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:587
 msgid "There is not selection!"
-msgstr "Da ist keine Auswahl!"
+msgstr "Keine Auswahl getroffen!"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:615
 msgid "The file \"%Q\" exists. Do you want to replace it ?"
@@ -7599,7 +7599,7 @@ msgstr "Datei ersetzen"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:616
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:801
 msgid "Yes to All"
-msgstr "Ja zu allem"
+msgstr "Ja, alle"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:661
 msgid "There exported file would be empty: cowardly refusing to write it"
@@ -7646,7 +7646,7 @@ msgstr "Möchten Sie den Platzhalter \"%Q\" wirklich löschen?"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:797
 msgid "Please note that all the children items will be deleted too."
-msgstr "Bitte beachten Sie, dass alle Kindelemente ebenfalls gelöscht werden."
+msgstr "Bitte beachten Sie, dass alle Unterelemente ebenfalls gelöscht werden."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:801
 msgid "Remove item"
@@ -7796,7 +7796,7 @@ msgstr "Registrierte Kanäle"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/sharedfileswindow/sharedfileswindow.cpp:133
 msgid "Choose the file to share"
-msgstr "Wählen Sie die zu verteilende Datei aus"
+msgstr "Wählen Sie die anzubietende Datei aus"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/regchan/libkviregchan.cpp:121
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/regchan/libkviregchan.cpp:178
@@ -7975,7 +7975,7 @@ msgstr "Ignorieren"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/dialog.cpp:94
 msgid "Notify disabled"
-msgstr "Banachrichtigungen ausgeschaltet"
+msgstr "Benachrichtigungen ausgeschaltet"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/dialog.cpp:96
 msgid "Notify as: "
@@ -8081,7 +8081,7 @@ msgstr "Gruppenname:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/dialog.cpp:442
 msgid "Move to group"
-msgstr "Zu einer Gruppe veIn eine Gruppe verschieben"
+msgstr "In eine Gruppe verschieben"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/dialog.cpp:483
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/dialog.cpp:486
@@ -8298,7 +8298,7 @@ msgstr "Benutzer %Q wurde nicht gefunden"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/libkvireguser.cpp:355
 msgid "Mask %Q already used to identify user %Q"
 msgstr ""
-"Die Maske %Q wird bereits benutzt, um den Benutzer %sQ zu identifizieren"
+"Die Maske %Q wird bereits benutzt, um den Benutzer %Q zu identifizieren"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/libkvireguser.cpp:410
 msgid "Mask %Q not found"
@@ -8339,7 +8339,7 @@ msgstr "Gesamt: %d übereinstimmende Benutzer (von %d in der Datenbank)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/managementdialog.cpp:197
 msgid "Manage Script-Based Addons"
-msgstr "Skripbasierte Zusätze verwalten"
+msgstr "Skripbasierte AddOns verwalten"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/managementdialog.cpp:221
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/system/kvi_locale.cpp:1155
@@ -8356,27 +8356,27 @@ msgstr "Deinstallieren"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/managementdialog.cpp:243
 msgid "Install Addon..."
-msgstr "Zusatz installieren..."
+msgstr "AddOn installieren..."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/managementdialog.cpp:247
 msgid "More Addons..."
-msgstr "Mehr Zusätze..."
+msgstr "Mehr AddOns..."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/managementdialog.cpp:333
 msgid "Do you really want to uninstall the addon \"%1\" ?"
-msgstr "Soll der Zusatz \"%1\" wirklich deinstalliert werden?"
+msgstr "Soll das AddOn \"%1\" wirklich deinstalliert werden?"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/managementdialog.cpp:337
 msgid "Confirm addon uninstallation"
-msgstr "Zusatzdeinstallation bestätigen"
+msgstr "AddOn-Deinstallation bestätigen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/managementdialog.cpp:354
 msgid "Please select the addon installation file"
-msgstr "Bitte wählen Sie die die Installationsdatei des Zusatzs aus"
+msgstr "Bitte wählen Sie die die Installationsdatei des AddOns aus"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:144
 msgid "%cAddon id %Q, version %Q%c"
-msgstr "%cZusatz-ID %Q, Version %Q%c"
+msgstr "%cAddOn-ID %Q, Version %Q%c"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:145
 msgid "Name: %Q"
@@ -8390,12 +8390,12 @@ msgstr "Beschreibung: %Q"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:152
 #, c-format
 msgid "Total: %d addons installed"
-msgstr "Gesamt: %d Zusätze installiert"
+msgstr "Gesamt: %d AddOns installiert"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:192
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:571
 msgid "Uninstalling existing addon version %Q"
-msgstr "Existierende Zusatzversion %Q wird deinstalliert"
+msgstr "Existierende AddOn-Version %Q wird deinstalliert"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:198
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:244
@@ -8403,15 +8403,15 @@ msgstr "Existierende Zusatzversion %Q wird deinstalliert"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:337
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:384
 msgid "The addon \"%1\" does not exist"
-msgstr "Der Zusatz \"%1\" existiert nicht"
+msgstr "Das AddOn \"%1\" existiert nicht"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:238
 msgid "The addon \"%1\" has no configure callback set"
-msgstr "Der Zusatz \"%1\" hat keinen configure-Rückruf gesetzt"
+msgstr "Das AddOn \"%1\" hat keinen configure-Rückruf gesetzt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:285
 msgid "The addon \"%1\" has no help callback set"
-msgstr "Der Zusatz \"%1\" hat kein help-Rückruf gesetzt"
+msgstr "Das AddOn \"%1\" hat keinen help-Rückruf gesetzt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:527
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/action/libkviaction.cpp:377
@@ -8432,19 +8432,19 @@ msgid ""
 "This KVIrc executable is too old to run this addon (minimum version required "
 "is %Q)"
 msgstr ""
-"Diese KVIrc-Version ist zu alt, um diesen Zusatz auszuführen (minimale Version ist %"
+"Diese KVIrc-Version ist zu alt, um dieses AddOn auszuführen (minimale Version ist %"
 "Q)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:553
 msgid "Attempting to register addon \"%Q\" with version %Q"
-msgstr "Es wird versucht, den Zusatz \"%Q\" mit Version %Q zu registrieren"
+msgstr "Es wird versucht, das AddOn \"%Q\" mit Version %Q zu registrieren"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:565
 msgid ""
 "The script addon \"%Q\" already exists with version %Q which is higher than %"
 "Q"
 msgstr ""
-"Der Skriptzusatz \"%Q\" existiert bereits in Version %Q, welche höher als %Q "
+"Das Skript-AddOn \"%Q\" existiert bereits in Version %Q, welche höher als %Q "
 "ist"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:579
@@ -8804,7 +8804,7 @@ msgid ""
 "It MUST be included in the distribution...\n"
 "Please report to <pragma at kvirc dot net>"
 msgstr ""
-"Ups... kann Lizenzdatei nicht finden...\n"
+"Ups... kann die Lizenzdatei nicht finden...\n"
 "Diese MUSS in der Distribution enthalten sein...\n"
 "Bitte melden Sie das <pragma at kvirc dot net>"
 
@@ -8861,7 +8861,7 @@ msgid "Download files to folder:"
 msgstr "Heruntergeladene Dateien in Verzeichnis speichern:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:304
-msgid "All settings in  shared program folder (portable)"
+msgid "All settings in shared program folder (portable)"
 msgstr "Alle Einstellungen in ein gemeinsames Programmverzeichnis (portabel)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:325
@@ -8878,8 +8878,8 @@ msgstr ""
 "Leerzeichen oder Satzzeichen enthalten. Einige IRC-Netzwerke werden Ihren "
 "Spitznamen auf 32 Zeichen kürzen, falls er länger sein sollte.<br><br>Im "
 "Zweifelsfall tragen Sie einfach den Spitznamen ein, der Ihnen gerade "
-"einfällt. Sie können ihn später in den Identitätseigenschaften oder mit den /"
-"NICK-Kommando ändern."
+"einfällt. Sie können ihn später in den Identitätseigenschaften oder mit dem "
+"/NICK-Kommando ändern."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:348
 msgid ""
@@ -8930,7 +8930,7 @@ msgstr "Desktopintegration"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:504
 msgid "Make KVIrc default IRC client"
-msgstr "KVIrc zum Standard-IRC-Klienten machen"
+msgstr "KVIrc zum Standard-IRC-Client machen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:508
 msgid "Create desktop shortcut"
@@ -9164,7 +9164,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/popupeditor/popupeditor.cpp:257
 msgid "External menu:"
-msgstr "Externes Menü"
+msgstr "Externes Menü:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/popupeditor/popupeditor.cpp:263
 msgid ""
@@ -9329,7 +9329,7 @@ msgstr "Die Aktion \"%1\" ist eine Kernaktion und kann nicht zerstört werden"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/action/libkviaction.cpp:392
 msgid "The switch -l requires -c"
-msgstr "Der -I-Schalter erfordert -c"
+msgstr "Der -l-Schalter erfordert -c"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/action/libkviaction.cpp:409
 msgid "The switch -s requires -w with a combination of flags 'c','x' and 'q'"
@@ -9511,7 +9511,7 @@ msgstr "Die Aktion \"%Q\" existiert nicht"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/torrent/tc_statusbarapplet.cpp:31
 msgid "Torrent Client"
-msgstr "Torrent-Klient"
+msgstr "Torrent-Client"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/mircimport/libkvimircimport.cpp:97
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/irc/kvi_ircserverdb.cpp:365
@@ -9649,7 +9649,7 @@ msgstr "Ein Widgetobjekt ist erforderlich"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_mainwindow.cpp:126
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_mainwindow.cpp:151
 msgid "Unknown dock area '%Q'"
-msgstr "Unbekanntes Dock-Areal '%Q'"
+msgstr "Unbekannter Dock-Bereich '%Q'"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_label.cpp:321
 msgid "Unknown alignment: '%Q'"
@@ -9665,7 +9665,7 @@ msgstr "Die Werkzeugleiste kann kein Elternwidget sein!"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_toolbar.cpp:93
 msgid "The parent-widget isn't a MainWindow."
-msgstr "Das aktuelle Elternwidget ist kein MainWindow"
+msgstr "Das aktuelle Elternwidget ist kein Hauptfenster
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:408
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:999
@@ -9676,12 +9676,12 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:417
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1012
 msgid "One of the geometry array parameters is empty"
-msgstr "Eins der Geometrie-Array-Parameter ist leer."
+msgstr "Einer der Geometrie-Array-Parameter ist leer."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:422
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1017
 msgid "One of the geometry array parameters didn't evaluate to an integer"
-msgstr "Eins der Geometrie-Array-Parameter evaluierte nicht zu einer Ganzzahl."
+msgstr "Einer der Geometrie-Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:434
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:468
@@ -9707,12 +9707,12 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:451
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:486
 msgid "One of the array parameters is empty"
-msgstr "Eins der Array-Parameter ist leer."
+msgstr "Einer der Array-Parameter ist leer."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:456
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:491
 msgid "One of the array parameters didn't evaluate to an integer"
-msgstr "Eins der Array-Parameter evaluierte nicht zu einer Ganzzahl."
+msgstr "Einer der Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_painter.cpp:478
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1096
@@ -9763,14 +9763,14 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_multilineedit.cpp:813
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_multilineedit.cpp:1002
 msgid "One of the colors array parameters is empty"
-msgstr "Eines der Farb-Array-Parameter ist leer."
+msgstr "Einer der Farb-Array-Parameter ist leer."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1110
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1185
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_multilineedit.cpp:818
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_multilineedit.cpp:1007
 msgid "One of the colors array parameters didn't evaluate to an integer"
-msgstr "Eines der Farb-Array-Parameter evaluierte nicht zu einer Ganzzahl."
+msgstr "Einer der Farb-Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1123
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1198
@@ -9804,11 +9804,11 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1426
 msgid "One of the move array parameters is empty"
-msgstr "Eins der Move-Array-Parameter ist leer."
+msgstr "Einer der Move-Array-Parameter ist leer."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1431
 msgid "One of the move array parameters didn't evaluate to an integer"
-msgstr "Eins der Move-Array-Parameter evaluierte nicht zu einer Ganzzahl."
+msgstr "Einer der Move-Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1438
 msgid "$move() requires either an array as first parameter or two integers"
@@ -9818,11 +9818,11 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1483
 msgid "One of the resize array parameters is empty"
-msgstr "Eins der Resize-Array-Parameter ist leer."
+msgstr "Einer der Resize-Array-Parameter ist leer."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1488
 msgid "One of the resize array parameters didn't evaluate to an integer"
-msgstr "Eins der Resize-Array-Parameter evaluierte nicht zu einer Ganzzahl."
+msgstr "Einer der Resize-Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1495
 msgid "$resize() requires either an array as first parameter or two integers"
@@ -9935,7 +9935,7 @@ msgid "I can't find the specified file %Q."
 msgstr "Ich konnte die angegebene Datei %Q nicht finden."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:222
-msgid "Destination  parameter is not an object"
+msgid "Destination parameter is not an object"
 msgstr "Der Zielparameter ist kein Objekt."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:228
@@ -9944,7 +9944,7 @@ msgstr "Das Ziel muss ein Pixmapobjekt sein."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:238
 msgid "Area dimensions are out of destination size "
-msgstr "Die Arealdimensionen befinden sich außerhalb der Zielgröße."
+msgstr "Die Bereichsdimensionen befinden sich außerhalb der Zielgröße."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:244
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:253
@@ -9953,11 +9953,11 @@ msgstr "Die Pixmapdimensionen befinden sich außerhalb der Zielgröße."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:261
 msgid "Offset width area is out of pixmap size "
-msgstr "Das Dickenversatzareal befindet sich außerhalb der Pixmapgröße."
+msgstr "Der Breitenversatzbereich befindet sich außerhalb der Pixmapgröße."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:266
 msgid "Offset height area is out of pixmap size "
-msgstr "Das Höhenversatzaeral befindet sich außerhalb der Pixmapgröße."
+msgstr "Der Höhenversatzbereich befindet sich außerhalb der Pixmapgröße."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_hbox.cpp:121
 msgid "The widget must be a child of this hbox"
@@ -10093,7 +10093,7 @@ msgstr "Verbindungsfehler:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_socket.cpp:967
 msgid "Connect attempt timed out"
-msgstr "tüberschreitung beim Verbindungsversuch."
+msgstr "Zeitüberschreitung beim Verbindungsversuch."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_socket.cpp:993
 msgid "Can't start the DNS thread"
@@ -10201,7 +10201,7 @@ msgstr "Das einzuhüllende Widget kann nicht gefunden werden."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_layout.cpp:119
 msgid "The parent of a layout must be a widget!"
-msgstr "Das übergeordnete Element von einem Layout muss ein Widget sein!"
+msgstr "Das übergeordnete Element eines Layouts muss ein Widget sein!"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_layout.cpp:269
 msgid "Invalid resize mode defaulting to Auto"
@@ -10226,7 +10226,7 @@ msgstr "Ich kann die angegebene Datei '%Q' nicht finden."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_dockwindow.cpp:121
 msgid "Can't add a null object"
-msgstr "Es Kann kein Nullobjekt hinzugefügt werden."
+msgstr "Es kann kein Nullobjekt hinzugefügt werden."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_dockwindow.cpp:128
 msgid ""
@@ -10253,7 +10253,7 @@ msgstr "Das hinzugefügte Widget ist kein Kind dieses Dockfensters."
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_dockwindow.cpp:262
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_dockwindow.cpp:271
 msgid "Invalid dock area specified"
-msgstr "Es wurde ein ungültiges Dock-Areal angegeben."
+msgstr "Es wurde ein ungültiger Dock-Bereich angegeben."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/libkviobjects.cpp:181
 msgid "Class '%Q' is not definited"
@@ -10294,14 +10294,14 @@ msgstr "Das Ziel ist kein Objekt."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/libkviobjects.cpp:625
 msgid "Widget, Image or Pixmap required "
-msgstr "Es wird ein Widget, Pixmap oder Bild erfordert."
+msgstr "Es ist ein Widget, Pixmap oder Bild erforderlich."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/libkviobjects.cpp:635
 msgid "Widget or Pixmap required"
 msgstr "Es ist ein Widget oder Pixmap erforderlich."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/libkviobjects.cpp:714
-msgid "One o more of background, foreground or destination aren't objects"
+msgid "One or more of background, foreground or destination aren't objects"
 msgstr ""
 "Eines oder mehre der Hintergrund-, Vordergrund- oder Ziel-Objekte sind in "
 "Wirklichkeit keine Objekte."
@@ -10455,7 +10455,7 @@ msgstr ""
 "auch Rijndael genannt, basiert.\n"
 "Der Text wird zuerst mit Rijndael verschlüsselt\n"
 "und danach zur %s-Notierung umgewandelt werden.\n"
-"Die benutzten Schlüssel sind %d Bits lang und werden mit Nullen aufgefüll,\n"
+"Die benutzten Schlüssel sind %d Bits lang und werden mit Nullen aufgefüllt,\n"
 "falls Sie kürzere angeben.\n"
 "Falls Sie nur einen Schlüssel angeben, wird ihn diese Routine\n"
 "für beides (Verschlüsseln und Entschlüsseln) verwenden.\n"
@@ -10489,11 +10489,11 @@ msgid ""
 "if you want to use CBC mode you must prefix\n"
 "your key(s) with \"cbc:\".\n"
 msgstr ""
-"Das ist eine popuräre kryptographische Routine,\n"
+"Das ist eine populäre kryptographische Routine,\n"
 "basierend auf dem alten\n"
 "Blowfish-Verschlüsselungsalgorithmus (AES).\n"
 "Dieser Text wird zuerst mit Blowfish verschlüsselt\n"
-"und danach zur base64-Notierung umgewandelt.\n"
+"und danach zur base64-Notation umgewandelt.\n"
 "Die benutzten Schlüssel besitzen eine variable Länge und sind als "
 "Zeichenketten definiert.\n"
 "Es können Schlüssel bis zu einer Länge von 56 Byte (448 Bit) verwendet "
@@ -10501,14 +10501,13 @@ msgstr ""
 "Falls nur ein Schlüssel angegeben wird, wird diese Routine\n"
 "ihn für beides (Verschlüsseln und Entschlüsseln) benutzen.\n"
 "Diese Routine arbeitet standardmäßig im ECB-Modus:\n"
-"falls der CBC-Modus benutzt werden soll, müssen Sie Ihrem/Ihren Schlüssel/n "
-"mit\n"
+"falls der CBC-Modus benutzt werden soll, müssen Sie Ihrem/Ihren Schlüssel(n)\n "
 "ein \"cbc:\" voranstellen.\n"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/toolbareditor/toolbareditor.cpp:61
 msgid "Drop here the icons from the toolbars to remove them"
 msgstr ""
-"Lassen Sie Die Symbole der Werkzeugleisten hier hin fallen, um sie zu "
+"Lassen Sie die Symbole der Werkzeugleisten hier hin fallen, um sie zu "
 "entfernen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/toolbareditor/toolbareditor.cpp:128
@@ -10739,9 +10738,9 @@ msgstr ""
 "Der Entschlüsselungsschlüssel war keine gültige hexadezimale Zeichenkette"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/window/libkviwindow.cpp:1446
-msgid "Both -n and -m switchess specified, -n takes precedence"
+msgid "Both -n and -m switches specified, -n takes precedence"
 msgstr ""
-"Es wurden die beiden Parameter -n und -m angegeben, -n erhält den Vorrang"
+"Es wurden die beiden Schalter -n und -m angegeben, -n erhält den Vorrang"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/window/libkviwindow.cpp:1456
 msgid "No encrypt key specified: can't allocate engine"
@@ -10812,7 +10811,7 @@ msgstr "Eine wirklich lahme Textumformungsroutine :D"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/lamerizer/libkvilamerizer.cpp:229
 msgid "A really lame text transformation engine: Light Version."
-msgstr "Eine wirklich lahme Textumformungsroutine: leichte Version."
+msgstr "Eine wirklich lahme Textumformungsroutine: Light Version."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/socketspy/socketspywindow.cpp:82
 #, c-format
@@ -11213,12 +11212,12 @@ msgstr "Der Datenstrom überschreitet die maximale Länge"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/net/kvi_http.cpp:661
 msgid "Header too long: exceeded 4096 bytes"
-msgstr "Der Header ist zu lang: Er überschreitete 4096 Byte"
+msgstr "Der Header ist zu lang: Er überschritt 4096 Byte"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/net/kvi_http.cpp:710
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/net/kvi_http.cpp:852
 msgid "Stream exceeded expected length"
-msgstr "Der Datenstrom überschreitete die erwartete Länge"
+msgstr "Der Datenstrom überschritt die erwartete Länge"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/net/kvi_http.cpp:798
 msgid "Protocol error: invalid chunk size"
@@ -11226,7 +11225,7 @@ msgstr "Protokoll-Fehler: Die Stückchengröße ist ungültig"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/net/kvi_http.cpp:818
 msgid "Chunk header too long: exceeded 4096 bytes"
-msgstr "Der Stückchen-Header ist zu lang: Er überschreitete 4096 Byte"
+msgstr "Der Stückchen-Header ist zu lang: Er überschritt 4096 Byte"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/net/kvi_http.cpp:987
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/net/kvi_http.cpp:1193
