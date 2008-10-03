@@ -219,7 +219,7 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 
 	if (!pObDest)
 	{
-		c->warning(__tr2qs("Destination  parameter is not an object"));
+		c->warning(__tr2qs("Destination parameter is not an object"));
 		return true;
 	}
 

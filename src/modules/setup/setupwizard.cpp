@@ -301,7 +301,7 @@ KviSetupWizard::KviSetupWizard()
 	newDirClicked();
 
 #ifdef COMPILE_ON_WINDOWS
-	m_pDirMakePortable = new QRadioButton(__tr2qs("All settings in  shared program folder (portable)")
+	m_pDirMakePortable = new QRadioButton(__tr2qs("All settings in shared program folder (portable)")
 			,m_pDirButtonGroup);
 #endif
 	// Pragma: Unused, takes only space.
