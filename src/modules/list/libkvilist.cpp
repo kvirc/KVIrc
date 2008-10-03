@@ -59,7 +59,7 @@ static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 		KviListWindow *w = new KviListWindow(c->window()->frame(),c->window()->console());
 		c->window()->frame()->addWindow(w);
 	} else {
-		c->warning(__tr2qs("List window alread open for this IRC context"));
+		c->warning(__tr2qs("List window already open for this IRC context"));
 	}
 	return true;
 }

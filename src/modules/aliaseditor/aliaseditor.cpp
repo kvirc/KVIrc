@@ -713,7 +713,7 @@ void KviAliasEditor::exportSelectionInSinglesFiles(KviPointerList<KviAliasTreeWi
 	if (!l->first())
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs("Alias Export"),__tr2qs("There is not selection!"),__tr2qs("Ok"));
+		QMessageBox::warning(this,__tr2qs("Alias Export"),__tr2qs("There is no selection!"),__tr2qs("Ok"));
 		g_pAliasEditorModule->unlock();
 		return;
 	}
@@ -787,7 +787,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	if(out.isEmpty())
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs("Alias Export"),__tr2qs("There exported file would be empty: cowardly refusing to write it"),__tr2qs("Ok"));
+		QMessageBox::warning(this,__tr2qs("Alias Export"),__tr2qs("The exported file would be empty: cowardly refusing to write it"),__tr2qs("Ok"));
 		g_pAliasEditorModule->unlock();
 		return;
 	}
