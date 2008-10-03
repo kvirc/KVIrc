@@ -955,7 +955,7 @@ void KviStupidNotifyListManager::sendIsOn()
 		i++;
 	}
 	if(_OUTPUT_PARANOIC)
-		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Checking for:%Q"),&m_szLastIsOnMsg);
+		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Checking for: %Q"),&m_szLastIsOnMsg);
 	KviQCString dat = m_pConnection->encodeText(m_szLastIsOnMsg);
 	m_pConnection->sendFmtData("ISON%s",dat.data());
 
