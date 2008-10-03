@@ -950,11 +950,11 @@ msgstr ""
 msgid "Allows you to connect to a server or to terminate the current connection"
 msgstr ""
 "Erlaubt Ihnen das Verbinden zu einem Server oder das Trennen der "
-"derzeitigenVerbindung"
+"derzeitigen Verbindung"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:127
 msgid "Allows you to manage the script-based addons"
-msgstr "Erlaubt Ihnen die Verwaltung von skriptbasierten Zusätzen"
+msgstr "Erlaubt Ihnen die Verwaltung von skriptbasierten AddOns"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:215
 msgid "Allows you to manage the themes"
@@ -1638,7 +1638,7 @@ msgstr "Hintergrund-Bilddatei auswählen ..."
 
 #: src/kvilib/net/kvi_http.cpp:811
 msgid "Chunk header too long: exceeded 4096 bytes"
-msgstr "Der Stückchen-Header ist zu lang: Er überschreitete 4096 Byte"
+msgstr "Der Stückchen-Header ist zu lang: Er überschritt 4096 Byte"
 
 #: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:292
 msgid "Class \"%Q\" is not defined"
@@ -2685,7 +2685,7 @@ msgstr ""
 
 #: src/kvilib/net/kvi_http.cpp:654
 msgid "Header too long: exceeded 4096 bytes"
-msgstr "Der Header ist zu lang: Er überschreitete 4096 Byte"
+msgstr "Der Header ist zu lang: Er überschritt 4096 Byte"
 
 #: src/kvilib/tal/kvi_tal_wizard.cpp:193 src/kvirc/kernel/kvi_options.cpp:821
 msgid "Help"
@@ -3166,7 +3166,7 @@ msgstr "Betreten um <b>%1</b>"
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:468
 msgid "KVIrc Addon Package"
-msgstr "Das KVIrc-Zusatzpaket installieren"
+msgstr "Das KVIrc-AddOn-Paket installieren"
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:426
 msgid "KVIrc Configuration File"
@@ -3403,7 +3403,7 @@ msgstr "männlich"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:126
 msgid "Manage Addons..."
-msgstr "Zusätze verwalten..."
+msgstr "AddOns verwalten..."
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:214
 msgid "Manage Themes..."
@@ -3743,7 +3743,7 @@ msgstr "Nein"
 
 #: src/kvirc/module/kvi_modulemanager.cpp:195
 msgid "No "
-msgstr "Nein"
+msgstr "Nein "
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:321 src/kvirc/ui/kvi_statusbar.cpp:741
 msgid "No IRC context"
@@ -3971,7 +3971,7 @@ msgid ""
 msgstr ""
 "Benachrichtigungsliste: \r!n\r%Q\r scheint online zu sein, aber die Maske [%"
 "Q@\r!h\r%Q\r] stimmt nicht überein (jemand anderes benutzt den Nick oder die "
-"Registrierungsmaske(n) stimmt nicht überein)"
+"Registrierungsmaske stimmt nicht überein)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1205
 msgid ""
@@ -3980,7 +3980,7 @@ msgid ""
 "being used by someone else)"
 msgstr ""
 "Benachrichtigungsliste: \r!n\r%Q\r scheint online, aber die Maske [%Q@\r!h\r%"
-"Q\r] passt nicht (watch: jemand anderes benutzt den Nick oder die "
+"Q\r] passt nicht (Beobachtung: Jemand anderes benutzt den Nick oder die "
 "Registrierungsmaske passt nicht)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:875
@@ -3994,12 +3994,12 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1279
 msgid "Notify list: \r!n\r%Q\r is offline (watch)"
-msgstr "Benachrichtigungsliste: \r!n\r%Q\r ist offline (beobachtet)"
+msgstr "Benachrichtigungsliste: \r!n\r%Q\r ist offline (Beobachtung)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1141
 #: src/kvirc/kernel/kvi_notifylist.cpp:1154
 msgid "Notify list: Adding watch entries for%Q"
-msgstr "Benachrichtigungsliste: Es werden zu beobachtende Einträge für %Q hinzugefügt"
+msgstr "Benachrichtigungsliste: Beobachtungslisteneinträge für %Q hinzugefügt"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:851
 #, c-format
@@ -4074,7 +4074,7 @@ msgid ""
 "Notify list: Timeout (%d sec) is too short, resetting to something more "
 "reasonable (5 sec)"
 msgstr ""
-"Benachrichtigungsliste: Der Zeitablauf (%d Sek.) ist zu wirklich klein: Es "
+"Benachrichtigungsliste: Der Zeitablauf (%d Sek.) ist zu klein: Es "
 "wird auf vernünftigen Wert (5 Sek.) gesetzt"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:725
@@ -4092,23 +4092,23 @@ msgid ""
 "user DB"
 msgstr ""
 "Benachrichtigungsliste: Unerwartete Inkonsistenz: \r!n\r%Q\r in "
-"registrierter Benutzer-Datenbank erwartet"
+"'registrierte Benutzer'-Datenbank erwartet"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:704
 msgid ""
 "Notify list: Unexpected inconsistency, registered user DB modified? "
 "(restarting)"
 msgstr ""
-"Benachrichtigungsliste: Unerwartete Inkonsistenz: Registrierte "
-"Benutzerdatenbank modifiziert? (wird neugestartet)"
+"Benachrichtigungsliste: Unerwartete Inkonsistenz: 'Registrierte "
+"Benutzer'-Datenbank modifiziert? (wird neugestartet)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1212
 msgid ""
 "Notify list: Unexpected inconsistency, registered user DB modified? (watch: "
 "restarting)"
 msgstr ""
-"Benachrichtigungsliste: unerwaretete Inkonsistenz: wurde die Datenbank der "
-"registrierten Benutzer geändert? (watch: wird neugestartet)"
+"Benachrichtigungsliste: unerwaretete Inkonsistenz: Wurde die 'Registrierte "
+"Benutzer'-Datenbank geändert? (Beobachtung: wird neugestartet)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:741
 msgid "Notify list: Unexpected inconsistency, userhost list is empty!"
@@ -5381,7 +5381,7 @@ msgstr ""
 
 #: src/kvilib/net/kvi_http.cpp:703 src/kvilib/net/kvi_http.cpp:845
 msgid "Stream exceeded expected length"
-msgstr "Der Datenstrom überschreitete die erwartete Länge"
+msgstr "Der Datenstrom überschritt die erwartete Länge"
 
 #: src/kvilib/net/kvi_http.cpp:621
 msgid "Stream exceeding maximum length"
@@ -7691,7 +7691,7 @@ msgstr "Pixel"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1190
 msgid "possible watch list desync"
-msgstr "mögliche Desynchronisation der watch-Liste"
+msgstr "mögliche Desynchronisation der Beobachtungsliste"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1583
 msgid "private"
@@ -7757,7 +7757,7 @@ msgstr "sichere Verbindung"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1282
 msgid "unmatched watch list entry"
-msgstr "nicht passender watch-Listeneintrag"
+msgstr "nicht passender Beobachtungslisteneintrag"
 
 #: src/kvirc/ui/kvi_channel.cpp:886
 msgid "user total"
@@ -7789,15 +7789,15 @@ msgstr "w: Empfänger von Rundsendenachrichten"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1273
 msgid "watch"
-msgstr "watch"
+msgstr "Beobachtung"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1222
 msgid "watch entry added by user"
-msgstr "watch-Eintrag vom Benutzer hinzugefügt"
+msgstr "Beobachtungslisteneintrag vom Benutzer hinzugefügt"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1186
 msgid "watch entry listing requested by user"
-msgstr "Watch-Listeneintrag angefordert vom Benutzer"
+msgstr "Beobachtungslisteneinträge angefordert vom Benutzer"
 
 #: src/kvirc/ui/kvi_channel.cpp:674 src/kvirc/ui/kvi_channel.cpp:695
 msgid "were talking recently"
@@ -7927,7 +7927,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "%c%cVerknüpfungen für %Q"
 
 #~ msgid "%cAddon id %Q, version %Q%c"
-#~ msgstr "%cZusatz-ID %Q, Version %Q%c"
+#~ msgstr "%cAddOn-ID %Q, Version %Q%c"
 
 #~ msgid "%cCore action: %Q"
 #~ msgstr "%cKernaktion: %Q"
@@ -8107,7 +8107,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "&Speichern"
 
 #~ msgid "&Say to Window"
-#~ msgstr "Ins Fenster &sagen"
+#~ msgstr "Ins Fenster &senden"
 
 #~ msgid "&Voice"
 #~ msgstr "&Stimmstatus geben"
@@ -8455,7 +8455,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Eine wirklich lahme Textumformungsroutine :D"
 
 #~ msgid "A really lame text transformation engine: Light Version."
-#~ msgstr "Eine wirklich lahme Textumformungsroutine: leichte Version."
+#~ msgstr "Eine wirklich lahme Textumformungsroutine: Light Version."
 
 #~ msgid "A string of 6 digits hex is required"
 #~ msgstr "Eine sechs-Zahlen-Hex-Zeichenkette ist erforderlich."
@@ -8518,7 +8518,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgid "All Properties..."
 #~ msgstr "Alle Eigenschaften..."
 
-#~ msgid "All settings in  shared program folder (portable)"
+#~ msgid "All settings in shared program folder (portable)"
 #~ msgstr ""
 #~ "Alle Einstellungen in ein gemeinsames Programmverzeichnis (portabel)"
 
@@ -8538,13 +8538,13 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Bist Du hier?"
 
 #~ msgid "Area dimensions are out of destination size "
-#~ msgstr "Die Arealdimensionen befinden sich außerhalb der Zielgröße."
+#~ msgstr "Die Bereichsdimensionen befinden sich außerhalb der Zielgröße."
 
 #~ msgid "Argument to long, using only first char"
 #~ msgstr "Das Argument ist zu lang, benutze nur das erste Zeichen"
 
 #~ msgid "Attempting to register addon \"%Q\" with version %Q"
-#~ msgstr "Es wird versucht, den Zusatz \"%Q\" mit Version %Q zu registrieren"
+#~ msgstr "Es wird versucht, das AddOn \"%Q\" mit Version %Q zu registrieren"
 
 #~ msgid "Automatically"
 #~ msgstr "Automatisch"
@@ -8588,9 +8588,9 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgid "Bind failure"
 #~ msgstr "Das Binden ist fehlgeschlagen."
 
-#~ msgid "Both -n and -m switchess specified, -n takes precedence"
+#~ msgid "Both -n and -m switches specified, -n takes precedence"
 #~ msgstr ""
-#~ "Es wurden die beiden Parameter -n und -m angegeben, -n erhält den Vorrang"
+#~ "Es wurden die beiden Schalter -n und -m angegeben, -n erhält den Vorrang"
 
 #~ msgid "Broken (unknown) links: %d"
 #~ msgstr "Kaputte (unbekannte) Verknüpfungen: %d"
@@ -8619,7 +8619,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Ein nicht-Widget-Objekt kann nicht hinzugefügt werden."
 
 #~ msgid "Can't add a null object"
-#~ msgstr "Es Kann kein Nullobjekt hinzugefügt werden."
+#~ msgstr "Es kann kein Nullobjekt hinzugefügt werden."
 
 #~ msgid "Can't create the terminal emulation part"
 #~ msgstr "Terminalemulationsteil kann nicht erstellt werden"
@@ -8881,7 +8881,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Wählen Sie die Kategorie aus, die am besten zu dieser Aktion passt"
 
 #~ msgid "Choose the file to share"
-#~ msgstr "Wählen Sie die zu verteilende Datei aus"
+#~ msgstr "Wählen Sie die anzubietende Datei aus"
 
 #~ msgid "Class '%Q' is not definited"
 #~ msgstr "Die Klasse '%Q' ist nicht definiert."
@@ -8902,7 +8902,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Code"
 
 #~ msgid "Collapse All Namespaces"
-#~ msgstr "Alle Platzhalter stürzen"
+#~ msgstr "Alle Namensräume einklappen"
 
 #~ msgid "Colors"
 #~ msgstr "Farben"
@@ -8929,7 +8929,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Bestätigung zum Löschen der Werkzeugleiste"
 
 #~ msgid "Confirm addon uninstallation"
-#~ msgstr "Zusatzdeinstallation bestätigen"
+#~ msgstr "AddOn-Deinstallation bestätigen"
 
 #~ msgid "Connect attempt timed out"
 #~ msgstr "Zeitüberschreitung beim Verbindungsversuch."
@@ -8988,7 +8988,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "Der Text wird zuerst mit Rijndael verschlüsselt\n"
 #~ "und danach zur %s-Notierung umgewandelt werden.\n"
 #~ "Die benutzten Schlüssel sind %d Bits lang und werden mit Nullen "
-#~ "aufgefüll,\n"
+#~ "aufgefüllt,\n"
 #~ "falls Sie kürzere angeben.\n"
 #~ "Falls Sie nur einen Schlüssel angeben, wird ihn diese Routine\n"
 #~ "für beides (Verschlüsseln und Entschlüsseln) verwenden.\n"
@@ -9042,7 +9042,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgid "Destinaion file exists: no copy made"
 #~ msgstr "Zieldateidei existiert bereits: es wurde keine Kopie angelegt"
 
-#~ msgid "Destination  parameter is not an object"
+#~ msgid "Destination parameter is not an object"
 #~ msgstr "Der Zielparameter ist kein Objekt."
 
 #~ msgid "Destination file exists: file not renamed"
@@ -9079,7 +9079,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Möchten Sie den Platzhalter \"%Q\" wirklich löschen?"
 
 #~ msgid "Do you really want to uninstall the addon \"%1\" ?"
-#~ msgstr "Soll der Zusatz \"%1\" wirklich deinstalliert werden?"
+#~ msgstr "Soll das AddOn \"%1\" wirklich deinstalliert werden?"
 
 #~ msgid "Do you want the associated actions to be exported with the toolbar ?"
 #~ msgstr ""
@@ -9096,7 +9096,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 
 #~ msgid "Drop here the icons from the toolbars to remove them"
 #~ msgstr ""
-#~ "Lassen Sie Die Symbole der Werkzeugleisten hier hin fallen, um sie zu "
+#~ "Lassen Sie die Symbole der Werkzeugleisten hier hin fallen, um sie zu "
 #~ "entfernen"
 
 #~ msgid "Dropping connection (request too long)"
@@ -9242,7 +9242,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Externes Menü"
 
 #~ msgid "External menu:"
-#~ msgstr "Externes Menü"
+#~ msgstr "Externes Menü:"
 
 #~ msgid "Failed to copy from %Q to %Q"
 #~ msgstr "Kopieren von %Q nach %Q ist fehlgeschlagen"
@@ -9340,7 +9340,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Hey Du... tu was!"
 
 #~ msgid "Hey... are ya sure that your network is up?"
-#~ msgstr "Hey... bist Du sicher, dass dein Netzwerk konfiguriert ist?"
+#~ msgstr "Hey... bist Du sicher, dass Dein Netzwerk verfügbar ist?"
 
 #~ msgid "Hide Advanced"
 #~ msgstr "Erweiterte Optionen ausblenden"
@@ -9453,7 +9453,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Hilfeindex"
 
 #~ msgid "Indexing help files"
-#~ msgstr "Hilfe-Dateien werden indexiert"
+#~ msgstr "Hilfe-Dateien werden indiziert"
 
 #~ msgid "Inexisting source object for objects.connect"
 #~ msgstr "Das Quellobjekt für objects.connect existiert nicht."
@@ -9478,7 +9478,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "Jokerzeichen '*' und '?' enthalten."
 
 #~ msgid "Install Addon..."
-#~ msgstr "Zusatz installieren..."
+#~ msgstr "AddOn installieren..."
 
 #~ msgid "Internal error: I'm not in the user database ?"
 #~ msgstr "Interner Fehler: Ich bin nicht in der Datenbank?"
@@ -9520,7 +9520,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Diese Richtung ist für diesen Algorithmus nicht zulässig."
 
 #~ msgid "Invalid dock area specified"
-#~ msgstr "Es wurde ein ungültiges Dock-Areal angegeben."
+#~ msgstr "Es wurde ein ungültiger Dock-Bereich angegeben."
 
 #~ msgid "Invalid insertion Policy %Q"
 #~ msgstr "Ungültige Einfügerichtlinie %Q"
@@ -9668,20 +9668,20 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Loggen nach"
 
 #~ msgid "Make KVIrc default IRC client"
-#~ msgstr "KVIrc zum Standard-IRC-Klienten machen"
+#~ msgstr "KVIrc zum Standard-IRC-Client machen"
 
 #~ msgid "Manage File &Transfers"
 #~ msgstr "Dateiüber&tragungen verwalten"
 
 #~ msgid "Manage Script-Based Addons"
-#~ msgstr "Skripbasierte Zusätze verwalten"
+#~ msgstr "Skripbasierte AddOns verwalten"
 
 #~ msgid "Manually"
 #~ msgstr "Manuell"
 
 #~ msgid "Mask %Q already used to identify user %Q"
 #~ msgstr ""
-#~ "Die Maske %Q wird bereits benutzt, um den Benutzer %sQ zu identifizieren"
+#~ "Die Maske %Q wird bereits benutzt, um den Benutzer %Q zu identifizieren"
 
 #~ msgid "Mask %Q is already used to identify user %s"
 #~ msgstr ""
@@ -9757,10 +9757,10 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "namens 'split'"
 
 #~ msgid "More Addons..."
-#~ msgstr "Mehr Zusätze..."
+#~ msgstr "Mehr AddOns..."
 
 #~ msgid "Move to group"
-#~ msgstr "Zu einer Gruppe veIn eine Gruppe verschieben"
+#~ msgstr "In eine Gruppe verschieben"
 
 #~ msgid "Multiple Users"
 #~ msgstr "Mehrere Benutzer"
@@ -9962,7 +9962,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Avatar veröffentlichen"
 
 #~ msgid "Notify disabled"
-#~ msgstr "Banachrichtigungen ausgeschaltet"
+#~ msgstr "Benachrichtigungen ausgeschaltet"
 
 #~ msgid "Notify nicknames:"
 #~ msgstr "Spitznamen benachrichtigen:"
@@ -9991,10 +9991,10 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Das Objekt befindet sich in einem ungültigen Zustand."
 
 #~ msgid "Offset height area is out of pixmap size "
-#~ msgstr "Das Höhenversatzaeral befindet sich außerhalb der Pixmapgröße."
+#~ msgstr "Der Höhenversatzbereich befindet sich außerhalb der Pixmapgröße."
 
 #~ msgid "Offset width area is out of pixmap size "
-#~ msgstr "Das Dickenversatzareal befindet sich außerhalb der Pixmapgröße."
+#~ msgstr "Der Breitenversatzbereich befindet sich außerhalb der Pixmapgröße."
 
 #~ msgid "Ok, Let me try again..."
 #~ msgstr "In Ordnung, lassen Sie es mich noch einmal versuchen..."
@@ -10002,41 +10002,41 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgid "Ok, let me try again..."
 #~ msgstr "In Ordnung, lassen Sie es mich noch einmal versuchen..."
 
-#~ msgid "One o more of background, foreground or destination aren't objects"
+#~ msgid "One or more of background, foreground or destination aren't objects"
 #~ msgstr ""
 #~ "Eines oder mehre der Hintergrund-, Vordergrund- oder Ziel-Objekte sind in "
 #~ "Wirklichkeit keine Objekte."
 
 #~ msgid "One of the array parameters didn't evaluate to an integer"
-#~ msgstr "Eins der Array-Parameter evaluierte nicht zu einer Ganzzahl."
+#~ msgstr "Einer der Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #~ msgid "One of the array parameters is empty"
-#~ msgstr "Eins der Array-Parameter ist leer."
+#~ msgstr "Einer der Array-Parameter ist leer."
 
 #~ msgid "One of the colors array parameters didn't evaluate to an integer"
-#~ msgstr "Eines der Farb-Array-Parameter evaluierte nicht zu einer Ganzzahl."
+#~ msgstr "Einer der Farb-Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #~ msgid "One of the colors array parameters is empty"
-#~ msgstr "Eines der Farb-Array-Parameter ist leer."
+#~ msgstr "Einer der Farb-Array-Parameter ist leer."
 
 #~ msgid "One of the geometry array parameters didn't evaluate to an integer"
 #~ msgstr ""
-#~ "Eins der Geometrie-Array-Parameter evaluierte nicht zu einer Ganzzahl."
+#~ "Einer der Geometrie-Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #~ msgid "One of the geometry array parameters is empty"
-#~ msgstr "Eins der Geometrie-Array-Parameter ist leer."
+#~ msgstr "Einer der Geometrie-Array-Parameter ist leer."
 
 #~ msgid "One of the move array parameters didn't evaluate to an integer"
-#~ msgstr "Eins der Move-Array-Parameter evaluierte nicht zu einer Ganzzahl."
+#~ msgstr "Einer der Move-Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #~ msgid "One of the move array parameters is empty"
-#~ msgstr "Eins der Move-Array-Parameter ist leer."
+#~ msgstr "Einer der Move-Array-Parameter ist leer."
 
 #~ msgid "One of the resize array parameters didn't evaluate to an integer"
-#~ msgstr "Eins der Resize-Array-Parameter evaluierte nicht zu einer Ganzzahl."
+#~ msgstr "Einer der Resize-Array-Parameter evaluierte nicht zu einer Ganzzahl."
 
 #~ msgid "One of the resize array parameters is empty"
-#~ msgstr "Eins der Resize-Array-Parameter ist leer."
+#~ msgstr "Einer der Resize-Array-Parameter ist leer."
 
 #~ msgid "Only If There Are Selected Users"
 #~ msgstr "Nur, wenn Benutzer ausgewählt sind"
@@ -10046,7 +10046,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "It MUST be included in the distribution...\n"
 #~ "Please report to <pragma at kvirc dot net>"
 #~ msgstr ""
-#~ "Ups... kann Lizenzdatei nicht finden...\n"
+#~ "Ups... kann die Lizenzdatei nicht finden...\n"
 #~ "Diese MUSS in der Distribution enthalten sein...\n"
 #~ "Bitte melden Sie das <pragma at kvirc dot net>"
 
@@ -10142,7 +10142,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "Spitznamen auf 32 Zeichen kürzen, falls er länger sein sollte.<br><br>Im "
 #~ "Zweifelsfall tragen Sie einfach den Spitznamen ein, der Ihnen gerade "
 #~ "einfällt. Sie können ihn später in den Identitätseigenschaften oder mit "
-#~ "den /NICK-Kommando ändern."
+#~ "dem /NICK-Kommando ändern."
 
 #~ msgid "Please choose the icon for the ToolBar"
 #~ msgstr "Bitte wählen Sie das Symbol für die Werkzeugleiste aus"
@@ -10168,7 +10168,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 
 #~ msgid "Please note that all the children items will be deleted too."
 #~ msgstr ""
-#~ "Bitte beachten Sie, dass alle Kindelemente ebenfalls gelöscht werden."
+#~ "Bitte beachten Sie, dass alle Unterelemente ebenfalls gelöscht werden."
 
 #~ msgid ""
 #~ "Please select an avatar image. The full path to a local file or an image "
@@ -10183,7 +10183,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "Bildes (inklusive <b>http://</b>) kann manuell eingeben werden."
 
 #~ msgid "Please select the addon installation file"
-#~ msgstr "Bitte wählen Sie die die Installationsdatei des Zusatzs aus"
+#~ msgstr "Bitte wählen Sie die die Installationsdatei des AddOns aus"
 
 #~ msgid "Please specify the properties for the new toolbar"
 #~ msgstr "Bitte geben Sie die Eigenschaften für die neue Werkzeugleiste an"
@@ -10225,9 +10225,8 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "Falls nur ein Schlüssel angegeben wird, wird diese Routine\n"
 #~ "ihn für beides (Verschlüsseln und Entschlüsseln) benutzen.\n"
 #~ "Diese Routine arbeitet standardmäßig im ECB-Modus:\n"
-#~ "falls der CBC-Modus benutzt werden soll, müssen Sie Ihrem/Ihren Schlüssel/"
-#~ "n mit\n"
-#~ "ein \"cbc:\" voranstellen.\n"
+#~ "falls der CBC-Modus benutzt werden soll, müssen Sie Ihrem/Ihren Schlüssel"
+#~ "(n) ein \"cbc:\" voranstellen.\n"
 
 #~ msgid "Popup"
 #~ msgstr "Aufklappmenü"
@@ -10489,13 +10488,13 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Socket geöffnet"
 
 #~ msgid "Sorry , I can't find a sound system to use on this machine"
-#~ msgstr "Es konnte kein benutzbares Klangsystem gefunden werden"
+#~ msgstr "Es konnte kein benutzbares Soundsystem gefunden werden"
 
 #~ msgid "Sound file '%Q' not found"
-#~ msgstr "Klangdatei '%Q' nicht gefunden"
+#~ msgstr "Tondatei '%Q' nicht gefunden"
 
 #~ msgid "Sound system detected to: %s"
-#~ msgstr "Klangsystem erkannt als: %s"
+#~ msgstr "Soundsystem erkannt als: %s"
 
 #~ msgid "Source is not an object"
 #~ msgstr "Die Quelle ist kein Objekt."
@@ -10609,13 +10608,13 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Das hinzugefügte Widget ist kein Kind dieses Dockfensters."
 
 #~ msgid "The addon \"%1\" does not exist"
-#~ msgstr "Der Zusatz \"%1\" existiert nicht"
+#~ msgstr "Das AddOn \"%1\" existiert nicht"
 
 #~ msgid "The addon \"%1\" has no configure callback set"
-#~ msgstr "Der Zusatz \"%1\" hat keinen configure-Rückruf gesetzt"
+#~ msgstr "Das AddOn \"%1\" hat keinen configure-Rückruf gesetzt"
 
 #~ msgid "The addon \"%1\" has no help callback set"
-#~ msgstr "Der Zusatz \"%1\" hat kein help-Rückruf gesetzt"
+#~ msgstr "Das AddOn \"%1\" hat keinen help-Rückruf gesetzt"
 
 #~ msgid "The array passed as parameter must contain at least 2 elements"
 #~ msgstr ""
@@ -10712,7 +10711,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "nichts zu tun"
 
 #~ msgid "The parent of a layout must be a widget!"
-#~ msgstr "Das übergeordnete Element von einem Layout muss ein Widget sein!"
+#~ msgstr "Das übergeordnete Element eines Layouts muss ein Widget sein!"
 
 #~ msgid ""
 #~ "The parent of the listviewitem must be either another listviewitem or a "
@@ -10722,7 +10721,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ "anderes Listviewelement, oder eine Listview sein."
 
 #~ msgid "The parent-widget isn't a MainWindow."
-#~ msgstr "Das aktuelle Elternwidget ist kein MainWindow"
+#~ msgstr "Das aktuelle Elternwidget ist kein Hauptfenster"
 
 #~ msgid ""
 #~ "The plugin has no function to free memory. This can result in Memory "
@@ -10792,7 +10791,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Das angegebene Fenster ist nicht vom Typ \"userwnd\""
 
 #~ msgid "The switch -l requires -c"
-#~ msgstr "Der -I-Schalter erfordert -c"
+#~ msgstr "Der -l-Schalter erfordert -c"
 
 #~ msgid ""
 #~ "The switch -s requires -w with a combination of flags 'c','x' and 'q'"
@@ -10829,13 +10828,13 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Es gibt keine Verbindung zum annehmen!"
 
 #~ msgid "There is not selection!"
-#~ msgstr "Da ist keine Auswahl!"
+#~ msgstr "Keine Auswahl getroffen!"
 
 #~ msgid ""
 #~ "This KVIrc executable is too old to run this addon (minimum version "
 #~ "required is %Q)"
 #~ msgstr ""
-#~ "Diese KVIrc-Version ist zu alt, um diesen Zusatz auszuführen (minimale Version "
+#~ "Diese KVIrc-Version ist zu alt, um dieses AddOn auszuführen (minimale Version "
 #~ "ist %Q)"
 
 #~ msgid "This executable has been compiled without crypt support"
@@ -10902,7 +10901,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Thema"
 
 #~ msgid "Torrent Client"
-#~ msgstr "Torrent-Klient"
+#~ msgstr "Torrent-Client"
 
 #~ msgid "Total %d channels"
 #~ msgstr "Gesamt %d Kanäle"
@@ -10917,7 +10916,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Gesamtverknüpfungen: %d"
 
 #~ msgid "Total: %d addons installed"
-#~ msgstr "Gesamt: %d Zusätze installiert"
+#~ msgstr "Gesamt: %d AddOns installiert"
 
 #~ msgid "Total: %d matching users (of %d in the database)"
 #~ msgstr "Gesamt: %d übereinstimmende Benutzer (von %d in der Datenbank)"
@@ -10947,7 +10946,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Los&lösen"
 
 #~ msgid "Unable to play sound '%Q'"
-#~ msgstr "Klang '%Q' konnte nicht abgepielt werden"
+#~ msgstr "Ton '%Q' konnte nicht abgepielt werden"
 
 #~ msgid "Unable to write to the actions file."
 #~ msgstr "Die Aktionendatei kann nicht geschrieben werden."
@@ -10980,7 +10979,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Deinstallieren"
 
 #~ msgid "Uninstalling existing addon version %Q"
-#~ msgstr "Existierende Zusatzversion %Q wird deinstalliert"
+#~ msgstr "Existierende AddOn-Version %Q wird deinstalliert"
 
 #~ msgid "Unknown alignment"
 #~ msgstr "Unbekannte Ausrichtung"
@@ -10995,7 +10994,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Unbekannter automatischer Formatierungsmodus '%Q'"
 
 #~ msgid "Unknown dock area '%Q'"
-#~ msgstr "Unbekanntes Dock-Areal '%Q'"
+#~ msgstr "Unbekannter Dock-Bereich '%Q'"
 
 #~ msgid "Unknown echo mode %Q"
 #~ msgstr "Unbekannter Echo-Modus %Q"
@@ -11192,7 +11191,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Der Widget-Parameter ist kein Objekt"
 
 #~ msgid "Widget, Image or Pixmap required "
-#~ msgstr "Es wird ein Widget, Pixmap oder Bild erfordert."
+#~ msgstr "Es ist ein Widget, Pixmap oder Bild erforderlich."
 
 #~ msgid "Wildcard servers (hubs?): %d"
 #~ msgstr "Jokerzeichen-Server (Hubs?): %d"
@@ -11223,7 +11222,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 
 #~ msgid "Window with id '%Q' not found, returning empty string"
 #~ msgstr ""
-#~ "Fenster mit der ID '%Q' nicht gefunden, es wird leere Zeichenkette "
+#~ "Fenster mit der ID '%Q' nicht gefunden, es wird eine leere Zeichenkette "
 #~ "zurückgeliefert"
 
 #~ msgid "With..."
@@ -11242,7 +11241,7 @@ msgstr "z: Empfänger für oper wallop-Nachrichten"
 #~ msgstr "Es gibt keine XML-Unterstützung in dieser Qt-Bibliothek."
 
 #~ msgid "Yes to All"
-#~ msgstr "Ja zu allem"
+#~ msgstr "Ja, alle"
 
 #~ msgid "You cannot export an empty list"
 #~ msgstr "Sie können keine leere Liste exportieren"
