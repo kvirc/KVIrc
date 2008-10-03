@@ -723,6 +723,9 @@ void KviIrcSocket::proxyLoginV4()
 	quint32 host=(quint32)ircInAddr.s_addr;
 	kvi_memmove((void *)(bufToSend+4),(void *)&host,4);
 	kvi_memmove((void *)(bufToSend+8),(void *)(szUserAndPass.ptr()),szUserAndPass.len());
+
+	bufToSend[iLen-1] = NULL;
+
 	// send it into hyperspace...
 	setState(ProxyFinalV4);
 	sendRawData(bufToSend,iLen);
