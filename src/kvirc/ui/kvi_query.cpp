@@ -814,12 +814,11 @@ void KviQuery::pasteLastLog()
 	for(QStringList::Iterator it = logList.begin(); it != logList.end(); ++it)
 	{
 		int iLogYear, iLogMonth, iLogDay;
-		QString szTmpName;
-		QFileInfo fi(szTmpName);
 
-		bGzip = false;
 		szFileName = (*it);
-		szTmpName = (*it);
+		QString szTmpName = (*it);
+		QFileInfo fi(szTmpName);
+		bGzip = false;
 
 		// Skip the log just created on join
 		if(fi.suffix() == "tmp")
@@ -867,30 +866,29 @@ void KviQuery::pasteLastLog()
 			uStart = 0;
 
 		QString szDummy = __tr2qs("Starting last log");
-		//outputMessage(KVI_OUT_QUERYPRIVMSG,szDummy);
-		ownMessage(szDummy);
+		output(KVI_OUT_QUERYPRIVMSG,szDummy);
 
 		// Scan the log file
 		for(int i = uStart; i < uCount; i++)
 		{
 			QString szLine = QString(list.at(i));
+			szLine = szLine.section(' ',1);
 #ifdef COMPILE_ON_WINDOWS
 			// Remove the \r char at the szEnd of line
 			szLine.chop(1);
 #endif
 			// Print the line in the channel buffer
-			//outputMessage(KVI_OUT_QUERYPRIVMSG,szLine);
-			ownMessage(szLine);
+			output(KVI_OUT_QUERYPRIVMSG,szLine);
 		}
 
 		szDummy = __tr2qs("End of log");
-		//outputMessage(KVI_OUT_QUERYPRIVMSG,szDummy);
-		ownMessage(szDummy);
+		output(KVI_OUT_QUERYPRIVMSG,szDummy);
 	}
 }
 
 QByteArray KviQuery::loadLogFile(const QString & szFileName, bool bGzip)
 {
+	debug("Opening log file");
 	QByteArray data;
 
 #ifdef COMPILE_ZLIB_SUPPORT

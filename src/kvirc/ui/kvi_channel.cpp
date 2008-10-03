@@ -1687,37 +1687,6 @@ void KviChannel::updateModeLabel()
 	KviTalToolTip::add(m_pModeWidget,szTip);
 }
 
-/*
-void KviChannel::outputMessage(int msg_type,const char *format,...)
-{
-	kvi_wchar_t txt_ptr[512]; //It should be enough for all outputs...
-	kvi_va_list list;
-	kvi_va_start(list,format);
-	if(kvi_wvsnprintcf(txt_ptr,512,format,list) < 0){
-		//Just in case...
-		kvi_va_end(list);
-		int len = 512;
-		kvi_wchar_t *long_txt_ptr = 0;
-		int result;
-		do{
-			len += 512;
-			//first time long_txt_ptr == 0 so it is equivalent to malloc
-			//At least the man page says that...
-			long_txt_ptr = (kvi_wchar_t *)kvi_realloc((void *)long_txt_ptr,len * sizeof(kvi_wchar_t));
-			kvi_va_start(list,format);
-			result = kvi_wvsnprintcf(long_txt_ptr,len,format,list);
-			kvi_va_end(list);
-		} while(result < 0);
-		internalOutput(m_pMessageView ? m_pMessageView : m_pIrcView,msg_type,long_txt_ptr);
-		kvi_free((void *)long_txt_ptr);
-	} else {
-		//Succesful vsnprintf
-		kvi_va_end(list);
-		internalOutput(m_pMessageView ? m_pMessageView : m_pIrcView,msg_type,txt_ptr);
-	}
-}
-*/
-
 void KviChannel::outputMessage(int iMsgType, const QString & szMsg)
 {
 	QString szBuf(szMsg);
@@ -1849,12 +1818,11 @@ void KviChannel::pasteLastLog()
 	for(QStringList::Iterator it = logList.begin(); it != logList.end(); ++it)
 	{
 		int iLogYear, iLogMonth, iLogDay;
-		QString szTmpName;
-		QFileInfo fi(szTmpName);
 
-		bGzip = false;
 		szFileName = (*it);
-		szTmpName = (*it);
+		QString szTmpName = (*it);
+		QFileInfo fi(szTmpName);
+		bGzip = false;
 
 		// Skip the log just created on join
 		if(fi.suffix() == "tmp")
@@ -1908,6 +1876,7 @@ void KviChannel::pasteLastLog()
 		for(int i = uStart; i < uCount; i++)
 		{
 			QString szLine = QString(list.at(i));
+			szLine = szLine.section(' ',1);
 #ifdef COMPILE_ON_WINDOWS
 			// Remove the \r char at the szEnd of line
 			szLine.chop(1);

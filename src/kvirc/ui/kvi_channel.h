@@ -822,7 +822,7 @@ public:
 	void updateModeLabel();
 
 	/**
-	* \brief Outputs a message to che channel
+	* \brief Outputs a message to the channel window
 	* \param iMsgType The type of the message
 	* \param szMsg The message :)
 	* \return void
