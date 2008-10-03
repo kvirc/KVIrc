@@ -888,7 +888,6 @@ void KviQuery::pasteLastLog()
 
 QByteArray KviQuery::loadLogFile(const QString & szFileName, bool bGzip)
 {
-	debug("Opening log file");
 	QByteArray data;
 
 #ifdef COMPILE_ZLIB_SUPPORT
