@@ -47,7 +47,7 @@ void KviIrcView::stopLogging()
 {
 	if(m_pLogFile)
 	{
-		QString szLogEnd = QString(__tr2qs("### Log session terminated at %s ###")).arg(QDateTime::currentDateTime().toString().toUtf8().data());
+		QString szLogStart = QString(__tr2qs("### Log session terminated at %1 ###")).arg(QDateTime::currentDateTime().toString());
 
 		add2Log(szLogEnd);
 		m_pLogFile->close();
@@ -202,7 +202,7 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 		}
 	}
 
-	QString szLogStart = QString(__tr2qs("### Log session started at %s ###")).arg(QDateTime::currentDateTime().toString().toUtf8().data());
+	QString szLogStart = QString(__tr2qs("### Log session started at %1 ###")).arg(QDateTime::currentDateTime().toString());
 	add2Log(szLogStart);
 	if(bPrependCurBuffer)
 	{
