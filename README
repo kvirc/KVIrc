@@ -1,32 +1,7 @@
-23.03.2008: Release 3.4.0 "Virgo"
+XX October 2008: Release 3.4.2 "Shiny"
 ###############################################################################
 
 Here we go with another release :)
-
-This one took a very long time but, well, finally it's here.
-
-Notable new features of this release include:
-
-	- improved themeing support
-	- better desktop integration
-	- nicer support for many different IRC servers
-	- a totally revised option layout
-	- basic support for script "addons"
-	- improved help subsystem
-	- new nice statusbar applets
-	- improved scripting engine
-	- improved windows and macosx support
-	- ....
-
-There is also a lot of small new details that you will
-find out by yourself while playing around and finally
-we obviously also have a huge number of bugfixes.
-
-This will be the last stable release of the 3.* series and also the last
-one using Qt3. From now on we'll be working on major version 4 and
-switching completly to Qt4. This release actually contains a preliminary
-Qt4 support and if you feel brave you might test it by passing
-the "hidden" --enable-qt swtich to configure.
 
 Have fun :)
 Szymon Stefanek and The KVIrc Development Team
@@ -89,21 +64,45 @@ you got it from (cvs, kvirc site, other sites).
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 ###############################################################################
 # Historic entries : just for the curious
 ###############################################################################
+
+23.03.2008: Release 3.4.0 "Virgo"
+###############################################################################
+
+Here we go with another release :)
+
+This one took a very long time but, well, finally it's here.
+
+Notable new features of this release include:
+
+	- improved themeing support
+	- better desktop integration
+	- nicer support for many different IRC servers
+	- a totally revised option layout
+	- basic support for script "addons"
+	- improved help subsystem
+	- new nice statusbar applets
+	- improved scripting engine
+	- improved windows and macosx support
+	- ....
+
+There is also a lot of small new details that you will
+find out by yourself while playing around and finally
+we obviously also have a huge number of bugfixes.
+
+This will be the last stable release of the 3.* series and also the last
+one using Qt3. From now on we'll be working on major version 4 and
+switching completly to Qt4. This release actually contains a preliminary
+Qt4 support and if you feel brave you might test it by passing
+the "hidden" --enable-qt swtich to configure.
+
+Have fun :)
+Szymon Stefanek and The KVIrc Development Team
+
+
+
 
 
 22.02.2005: Release 3.2.0 "Realia"
