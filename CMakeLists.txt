@@ -730,11 +730,11 @@ IF(WANT_GETTEXT)
 		SET(USE_GETTEXT_TRANSLATIONS 0)
 	ENDIF()
 	IF(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_XGETTEXT_EXECUTABLE)
-		# message-update target;
-		ADD_CUSTOM_TARGET(message-update)
-		# message-extract target;
-		ADD_CUSTOM_TARGET(message-extract)
-		ADD_DEPENDENCIES(message-update message-extract)
+		# messages-update target;
+		ADD_CUSTOM_TARGET(messages-update)
+		# messages-extract target;
+		ADD_CUSTOM_TARGET(messages-extract)
+		ADD_DEPENDENCIES(messages-update messages-extract)
 		SET(USE_GETTEXT_EXTRA 1)
 		SET(GETTEXT_EXTRA_STATUS ", + extra")
 	ELSE()
@@ -744,20 +744,20 @@ IF(WANT_GETTEXT)
 
 	IF(SED_EXECUTABLE)
 		# wipes absolute paths from .pot? files, by mren
-		ADD_CUSTOM_TARGET(message-tidy)
+		ADD_CUSTOM_TARGET(messages-tidy)
 		FILE(GLOB_RECURSE FILES_TO_TIDY ${CMAKE_SOURCE_DIR}/po/*.po)
 		FILE(GLOB_RECURSE POTS_TO_TIDY ${CMAKE_SOURCE_DIR}/po/*.pot)
 		LIST(APPEND FILES_TO_TIDY ${POTS_TO_TIDY})
 		FOREACH(curFile ${FILES_TO_TIDY})
-			ADD_CUSTOM_COMMAND(TARGET message-tidy
-			COMMENT "tidying ${curFile}..."
+			ADD_CUSTOM_COMMAND(TARGET messages-tidy
+			COMMENT "Tidying ${curFile}..."
 			COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
 			VERBATIM
 			DEPENDS ${curFile}
 			)
 		ENDFOREACH()
 		IF(GETTEXT_MSGMERGE_EXECUTABLE AND GETTEXT_XGETTEXT_EXECUTABLE)
-			ADD_DEPENDENCIES(message-update message-tidy)
+			ADD_DEPENDENCIES(messages-update messages-tidy)
 		ENDIF()
 		SET(CMAKE_STATUS_MESSAGE_TIDY "Yes")
 	ELSE()
