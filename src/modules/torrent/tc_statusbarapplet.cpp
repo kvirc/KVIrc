@@ -93,4 +93,6 @@ void KviTorrentStatusBarApplet::update()
 	}
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "tc_statusbarapplet.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
