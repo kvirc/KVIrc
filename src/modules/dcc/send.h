@@ -191,7 +191,7 @@ private:
 	kvi_time_t               m_tTransferStartTime;
 	kvi_time_t               m_tTransferEndTime;
 	// cached stats
-	unsigned int             m_uTotalFileSize; // total file size to transfer
+	unsigned long            m_uTotalFileSize; // total file size to transfer
 	
 	unsigned int             m_uMaxBandwidth;
 	KviDccFileTransferBandwidthDialog * m_pBandwidthDialog;

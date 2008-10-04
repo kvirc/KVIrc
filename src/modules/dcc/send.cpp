@@ -753,7 +753,7 @@ KviDccFileTransfer::KviDccFileTransfer(KviDccDescriptor * dcc)
 	m_eGeneralStatus = Connecting;
 
 	bool bOk;
-	m_uTotalFileSize = dcc->bRecvFile ? dcc->szFileSize.toUInt(&bOk) :  dcc->szLocalFileSize.toUInt(&bOk);
+	m_uTotalFileSize = dcc->bRecvFile ? dcc->szFileSize.toULong(&bOk) :  dcc->szLocalFileSize.toULong(&bOk);
 	if(!bOk)m_uTotalFileSize = 0;
 
 	if(m_pDescriptor->bRecvFile)

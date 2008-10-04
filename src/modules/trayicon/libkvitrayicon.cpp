@@ -228,8 +228,21 @@ void KviTrayIcon::tipRequest(KviDynamicToolTip *tip,const QPoint &pnt)
 		m_pContextPopup->popup(mapToGlobal(e->pos()));
 }*/
 
-void KviTrayIcon::doAway(int id)
+void KviTrayIcon::doAway(bool)
 {
+	int id;
+	bool ok;
+	QAction * act = (QAction*)QObject::sender();
+
+	if(act)
+	{
+		id = act->data().toInt(&ok);
+		if(!ok)
+			return;
+	} else {
+		return;
+	}
+
 	if(id<0)
 	{
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
@@ -269,10 +282,10 @@ void KviTrayIcon::fillContextPopup()
 		m_pAwayMenuId->setVisible(true);
 		m_pAwayPopup->clear();
 
-		QAction* pAllAway=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Away on all"),this,SLOT(doAway(int)));
+		QAction* pAllAway=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Away on all"),this,SLOT(doAway(bool)));
 		pAllAway->setData(-1);
 
-		QAction* pAllUnaway=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Back on all"),this,SLOT(doAway(int)));
+		QAction* pAllUnaway=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Back on all"),this,SLOT(doAway(bool)));
 		pAllUnaway->setData(-2);
 
 		QAction* pSeparator=m_pAwayPopup->addSeparator();
@@ -291,10 +304,12 @@ void KviTrayIcon::fillContextPopup()
 					QAction* id;
 					if(pConsole->connection()->userInfo()->isAway())
 					{
-						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Back on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(int)));
+						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Back on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
+						id->setData(pConsole->context()->id());
 						bAllUnaway=0;
 					} else {
-						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Away on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(int)));
+						id=m_pAwayPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CONSOLE)),__tr2qs("Away on %1").arg(pConsole->currentNetworkName()),this,SLOT(doAway(bool)));
+						id->setData(pConsole->context()->id());
 						bAllAway=0;
 					}
 					id->setData(pConsole->context()->id());

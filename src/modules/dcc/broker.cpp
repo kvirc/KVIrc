@@ -479,7 +479,7 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 	if(dcc->bIsIncomingAvatar)
 	{
 		bool bOk;
-		uint size = dcc->szFileSize.toUInt(&bOk);
+		unsigned long size = dcc->szFileSize.toULong(&bOk);
 		if(bOk) {
 			if(size>=KVI_OPTION_UINT(KviOption_uintMaximumRequestedAvatarSize)) {
 				cancelDcc(0,dcc);
@@ -504,7 +504,7 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 						"The connection target will be host <b>%6</b> on port <b>%7</b><br>" \
 					,"dcc" \
 				).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(
-				dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toInt())).arg(
+				dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toULong())).arg(
 					dcc->szIp).arg(dcc->szPort);
 
 		} else {
@@ -517,7 +517,7 @@ void KviDccBroker::recvFileManage(KviDccDescriptor * dcc)
 						"You will be the passive side of the connection.<br>" \
 					,"dcc" \
 				).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(
-					dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toInt()));
+					dcc->szFileName).arg(KviQString::makeSizeReadable(dcc->szFileSize.toULong()));
 		}
 
 		if(dcc->bIsIncomingAvatar)

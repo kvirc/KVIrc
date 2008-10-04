@@ -73,7 +73,7 @@ protected slots:
 	void fillContextPopup();
 	void toggleParentFrame();
 	void tipRequest(KviDynamicToolTip *tip,const QPoint &pnt);
-	void doAway(int);
+	void doAway(bool);
 	void flashingTimerShot();
 	void activatedSlot( QSystemTrayIcon::ActivationReason reason );
 	void executeInternalCommand(bool);
