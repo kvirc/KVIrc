@@ -173,7 +173,7 @@ namespace KviKvsCoreFunctions
 		@type:
 			function
 		@title:
-			<string> $serialize(<data:mixed>)
+			$serialize
 		@short:
 			Encodes variable to JSON string
 		@syntax:
@@ -909,7 +909,7 @@ namespace KviKvsCoreFunctions
 		@type:
 			function
 		@title:
-			<mixed> $unserialize(<data:string>)
+			$unserialize
 		@short:
 			Decodes JSON-encoded string
 		@syntax:
