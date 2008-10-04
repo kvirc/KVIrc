@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-27 00:51+0200\n"
+"POT-Creation-Date: 2008-10-04 15:05+0200\n"
 "PO-Revision-Date: 2005-05-26 22:52+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
@@ -4747,7 +4747,7 @@ msgid "[SSL]: The peer didn't provide a certificate"
 msgstr "[SSL]: A ponta não forneceu um certificado"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_sslmaster.cpp:89
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1222
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1225
 msgid "Current transmission cipher"
 msgstr "Cifra atual da transmissão"
 
@@ -6027,59 +6027,59 @@ msgstr "Usando protocolo HTTP"
 msgid "Using SOCKSV4 protocol."
 msgstr "Usando protocolo SOCKSV4."
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:759
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:762
 #, fuzzy
 msgid "Using SOCKSv5 protocol."
 msgstr "Usando protocolo SOCKSV5."
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:774
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:777
 msgid "We can accept auth method 0 (no auth)"
 msgstr "Podemos aceitar o método 0 do auth (sem auth)"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:782
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:785
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
 msgstr "Podemos aceitar o método 0 do auth (sem auth) ou 2 (usuário/senha)"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:961
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:964
 msgid "Proxy response: auth OK: access granted"
 msgstr "Resposta do proxy: auth OK : acesso garantido"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:996
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:999
 msgid "Proxy response: Auth method OK: using method 0 (no auth)"
 msgstr "Resposta do proxy: Método auth Ok usando método 0 (sem auth)"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1003
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1006
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
 msgstr "Resposta do proxy: Método auth Ok usando método 2 (usuário/senha)"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1059
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1116
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1062
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1119
 msgid "Proxy response: target data OK: request granted"
 msgstr "Resposta do proxy: dados de destino OK: pedido garantido"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1156
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1159
 msgid "Proxy response: "
 msgstr "Resposta do Proxy:"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1167
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1170
 #, fuzzy
 msgid "Proxy said something about: \n"
 msgstr "O proxy disse algo sobre \""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1208
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1211
 msgid "Server X509 certificate"
 msgstr "Servidor X509 certificado"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1212
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1215
 msgid "The server didn't provide a certificate"
 msgstr "O Servidor não provê um certificado"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1226
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1229
 msgid "Unable to determine the current cipher"
 msgstr "Impossível de determinar a cifra atual"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1771
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1791
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1774
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1794
 msgid "Partial socket write: packet broken into smaller pieces."
 msgstr "Escrita parcial em socket: pacote dividido em partes menores"
 
@@ -6219,7 +6219,8 @@ msgid "Join Channels..."
 msgstr "Entrar nos Canais..."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:240
-msgid "Shows a dialog that allows you joing channels"
+#, fuzzy
+msgid "Shows a dialog that allows you join channels"
 msgstr "Exibe o diálogo que permite a você entrar nos canais"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:251
@@ -6589,6 +6590,7 @@ msgstr ""
 "muito pequeno, configurando algo mais razoável (5 segundos)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:491
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:958
 msgid "Notify list: Checking for: %Q"
 msgstr "Lista de Notificação: Verificando: %Q"
 
@@ -6679,10 +6681,6 @@ msgstr "Iniciando lista de notificação"
 msgid "No users in the notify list"
 msgstr "Não existem usuários na lista de notificação"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:958
-msgid "Notify list: Checking for:%Q"
-msgstr "Lista de Notificação: Verificando: %Q"
-
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1013
 #, c-format
 msgid ""
@@ -6694,7 +6692,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1126
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1139
-msgid "Notify list: Adding watch entries for%Q"
+#, fuzzy
+msgid "Notify list: Adding watch entries for %Q"
 msgstr "Lista de Notificação: Adicionando entradas watch para %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1171
@@ -7290,7 +7289,8 @@ msgid "Processing list: %Q"
 msgstr "Processando a lista: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/list/libkvilist.cpp:63
-msgid "List window alread open for this IRC context"
+#, fuzzy
+msgid "List window already open for this IRC context"
 msgstr "Lista de janelas já esta aberta para o contexto de IRC"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/term/termwindow.cpp:70
@@ -7556,7 +7556,7 @@ msgstr "Editor de Alias"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:587
 #, fuzzy
-msgid "There is not selection!"
+msgid "There is no selection!"
 msgstr "Não há nenhum widget"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:615
@@ -7576,7 +7576,7 @@ msgid "Yes to All"
 msgstr "Selecionar &Todos"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:661
-msgid "There exported file would be empty: cowardly refusing to write it"
+msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:680
@@ -8837,7 +8837,7 @@ msgid "Download files to folder:"
 msgstr "<b>Diretório para arquivos baixados:</b>"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:304
-msgid "All settings in  shared program folder (portable)"
+msgid "All settings in shared program folder (portable)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:325
@@ -9440,7 +9440,7 @@ msgstr "Respostas"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/editor/scripteditor.cpp:268
 #, fuzzy
-msgid "Find & Repalce"
+msgid "Find & Replace"
 msgstr "Respostas"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/editor/scripteditor.cpp:1148
@@ -9931,8 +9931,9 @@ msgid "Can't add a non - popupmenu  object"
 msgstr "Não foi possível adicionar um objeto não widget"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_popupmenu.cpp:302
-msgid "Doesn't a widget object"
-msgstr "Não é um objeto do widget"
+#, fuzzy
+msgid "Widget parameter is not a widget object"
+msgstr "O parâmetro especificado não é um inteiro"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:182
 #, fuzzy
@@ -9941,7 +9942,7 @@ msgstr "Eu não posso encontrar o arquivo especificado."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:222
 #, fuzzy
-msgid "Destination  parameter is not an object"
+msgid "Destination parameter is not an object"
 msgstr "O parâmetro especificado não é um inteiro"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:228
@@ -10326,7 +10327,7 @@ msgid "Widget or Pixmap required"
 msgstr "Widget ou Pixmap requerido (%s)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/libkviobjects.cpp:714
-msgid "One o more of background, foreground or destination aren't objects"
+msgid "One or more of background, foreground or destination aren't objects"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/libkviobjects.cpp:720
@@ -10754,7 +10755,8 @@ msgid "The decrypt key wasn't a valid hexadecimal string"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/window/libkviwindow.cpp:1446
-msgid "Both -n and -m switchess specified, -n takes precedence"
+#, fuzzy
+msgid "Both -n and -m switches specified, -n takes precedence"
 msgstr "Ambas as opções -n e -m especificadas, -n toma precedência"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/window/libkviwindow.cpp:1456
@@ -12792,6 +12794,12 @@ msgid ""
 "[Installer] The first argument to \\%installer->\\$includefiles must be a "
 "source directory"
 msgstr ""
+
+#~ msgid "Notify list: Checking for:%Q"
+#~ msgstr "Lista de Notificação: Verificando: %Q"
+
+#~ msgid "Doesn't a widget object"
+#~ msgstr "Não é um objeto do widget"
 
 #~ msgid "Lag is"
 #~ msgstr "Lag é"

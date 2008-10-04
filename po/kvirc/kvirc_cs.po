@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-27 00:51+0200\n"
+"POT-Creation-Date: 2008-10-04 15:05+0200\n"
 "PO-Revision-Date: 2007-12-17 11:31+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -4496,7 +4496,7 @@ msgid "[SSL]: The peer didn't provide a certificate"
 msgstr "[SSL]: Druhá strana nedodala certifikát"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_sslmaster.cpp:89
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1222
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1225
 msgid "Current transmission cipher"
 msgstr "Současná přenosová šifra"
 
@@ -5751,57 +5751,57 @@ msgstr "Použit HTTP protokol."
 msgid "Using SOCKSV4 protocol."
 msgstr "Použit SOCKSV4 protokol."
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:759
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:762
 msgid "Using SOCKSv5 protocol."
 msgstr "Použit SOCKSv5 protokol."
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:774
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:777
 msgid "We can accept auth method 0 (no auth)"
 msgstr "Můžeme přijmout auth metodu 0 (bez auth)"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:782
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:785
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
 msgstr "Můžeme přijmout auth metodu 0 (bez auth) nebo 2 (uživatel/heslo)"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:961
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:964
 msgid "Proxy response: auth OK: access granted"
 msgstr "Proxy odezva: auth OK: přístup povolen"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:996
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:999
 msgid "Proxy response: Auth method OK: using method 0 (no auth)"
 msgstr "Proxy odezva: autorizace úspěšná: použita metoda 0 (bez autorizace)"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1003
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1006
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
 msgstr "Proxy odezva: autorizace úspěšná: použita metoda 2 (uživatel/heslo)"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1059
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1116
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1062
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1119
 msgid "Proxy response: target data OK: request granted"
 msgstr "Proxy odezva: cílová data OK požadavek přijmut"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1156
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1159
 msgid "Proxy response: "
 msgstr "Proxy odezva: "
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1167
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1170
 msgid "Proxy said something about: \n"
 msgstr "Proxy říká něco o: \n"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1208
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1211
 msgid "Server X509 certificate"
 msgstr "Certifikát X509 serveru"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1212
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1215
 msgid "The server didn't provide a certificate"
 msgstr "Server neposkytuje certifikát"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1226
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1229
 msgid "Unable to determine the current cipher"
 msgstr "Nelze rozpoznat současnou šifru"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1771
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1791
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1774
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1794
 msgid "Partial socket write: packet broken into smaller pieces."
 msgstr "Částečný zápis soketu: paket rozbit na malé části."
 
@@ -5928,7 +5928,8 @@ msgid "Join Channels..."
 msgstr "Přijít do kanálů..."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:240
-msgid "Shows a dialog that allows you joing channels"
+#, fuzzy
+msgid "Shows a dialog that allows you join channels"
 msgstr "Zobrazí dialog, který umožňuje příchod do kanálů"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:251
@@ -6288,6 +6289,7 @@ msgstr ""
 "něco více přijatelného (5 sek)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:491
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:958
 msgid "Notify list: Checking for: %Q"
 msgstr "Seznam Oznamování: Kontroluje se: %Q"
 
@@ -6376,10 +6378,6 @@ msgstr "Zahajuji vypisování seznamu oznamování"
 msgid "No users in the notify list"
 msgstr "Žádní uživatelé nejsou v seznamu oznamování"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:958
-msgid "Notify list: Checking for:%Q"
-msgstr "Seznam Oznamování: Kontroluje se: %Q"
-
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1013
 #, c-format
 msgid ""
@@ -6391,7 +6389,8 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1126
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1139
-msgid "Notify list: Adding watch entries for%Q"
+#, fuzzy
+msgid "Notify list: Adding watch entries for %Q"
 msgstr "Seznam Oznamování: Přidány watch záznamy pro %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1171
@@ -6967,7 +6966,8 @@ msgid "Processing list: %Q"
 msgstr "Zpracovává se seznam: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/list/libkvilist.cpp:63
-msgid "List window alread open for this IRC context"
+#, fuzzy
+msgid "List window already open for this IRC context"
 msgstr "Okno se seznamem kanálů je již otevřené v tomto IRC kontextu"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/term/termwindow.cpp:70
@@ -7222,7 +7222,8 @@ msgid "Alias Export"
 msgstr "Export aliasu"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:587
-msgid "There is not selection!"
+#, fuzzy
+msgid "There is no selection!"
 msgstr "Zde není výběr!"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:615
@@ -7239,7 +7240,7 @@ msgid "Yes to All"
 msgstr "Ano všem"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:661
-msgid "There exported file would be empty: cowardly refusing to write it"
+msgid "The exported file would be empty: cowardly refusing to write it"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:680
@@ -8447,7 +8448,7 @@ msgid "Download files to folder:"
 msgstr "Stažené soubory do adresáře:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:304
-msgid "All settings in  shared program folder (portable)"
+msgid "All settings in shared program folder (portable)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:325
@@ -9022,7 +9023,8 @@ msgid "&Replace"
 msgstr "&Nahradit"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/editor/scripteditor.cpp:268
-msgid "Find & Repalce"
+#, fuzzy
+msgid "Find & Replace"
 msgstr "Najít & Nahradit"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/editor/scripteditor.cpp:1148
@@ -9481,15 +9483,17 @@ msgid "Can't add a non - popupmenu  object"
 msgstr "Nelze přidat ne - popupmenu  objekt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_popupmenu.cpp:302
-msgid "Doesn't a widget object"
-msgstr "Není-widget objekt"
+#, fuzzy
+msgid "Widget parameter is not a widget object"
+msgstr "Widget parametr není platný objekt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:182
 msgid "I can't find the specified file %Q."
 msgstr "Nelze nalézt zadaný soubor %Q."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:222
-msgid "Destination  parameter is not an object"
+#, fuzzy
+msgid "Destination parameter is not an object"
 msgstr "Cílový parametr není objekt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_pixmap.cpp:228
@@ -9843,7 +9847,7 @@ msgid "Widget or Pixmap required"
 msgstr "Je třeba widget nebo pixmapa "
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/libkviobjects.cpp:714
-msgid "One o more of background, foreground or destination aren't objects"
+msgid "One or more of background, foreground or destination aren't objects"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/libkviobjects.cpp:720
@@ -10254,7 +10258,8 @@ msgid "The decrypt key wasn't a valid hexadecimal string"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/window/libkviwindow.cpp:1446
-msgid "Both -n and -m switchess specified, -n takes precedence"
+#, fuzzy
+msgid "Both -n and -m switches specified, -n takes precedence"
 msgstr "Oba -n a -m přepínače zadány, -n bere precedent"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/window/libkviwindow.cpp:1456
@@ -12244,6 +12249,12 @@ msgid ""
 "[Installer] The first argument to \\%installer->\\$includefiles must be a "
 "source directory"
 msgstr ""
+
+#~ msgid "Notify list: Checking for:%Q"
+#~ msgstr "Seznam Oznamování: Kontroluje se: %Q"
+
+#~ msgid "Doesn't a widget object"
+#~ msgstr "Není-widget objekt"
 
 #~ msgid "Lag is"
 #~ msgstr "Lag je"

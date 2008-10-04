@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-27 00:52+0200\n"
+"POT-Creation-Date: 2008-10-04 15:07+0200\n"
 "PO-Revision-Date: 2004-11-15 19:17+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
@@ -219,7 +219,7 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "O endereço IP local é privado, determinando pelo servidor IRC: %s"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:209
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1509
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1511
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
@@ -228,7 +228,7 @@ msgstr ""
 "IRC"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:212
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1512
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1514
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
@@ -246,12 +246,12 @@ msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "Pedido de DCC %s não foi enviado, esperando conexão manual"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:245
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1571
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1573
 msgid "Low-level transport connection established"
 msgstr "Conexão de transporte de baixo nível estabelecida"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/chat.cpp:246
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1572
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1574
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Iniciando negociação do Secure Socket Layer"
 
@@ -500,175 +500,175 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Transferência de dados terminou à 30 segundos, fechando a conexão"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:600
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:602
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr "ATENÇÃO: Dados recebidos de um DCC TSEND, não devia haver confirmações"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:732
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:734
 #, c-format
 msgid "TRANSFER %d"
 msgstr "TRANSFERÊNCIA %d"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:755
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:757
 msgid "Setting up the connection"
 msgstr "Configurar a conexão"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:814
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:816
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Tentar uma conexão DCC passiva %1"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:818
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:820
 msgid "Attempting an active DCC %1 connection"
 msgstr "Tentar uma conexão DCC ativa %1"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:844
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:846
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "DCC RESUME enviado pedido por %1, esperando que aceite"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:914
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:925
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:916
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:927
 msgid "Aborted"
 msgstr "Abortado"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:924
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1600
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1678
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:926
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1602
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1680
 msgid "Transfer failed: "
 msgstr "Transferência falhou: "
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:936
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:938
 msgid "Configure Bandwidth..."
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:938
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:940
 msgid "Resend DCC"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:939
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:941
 msgid "Resend TDCC"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:940
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:942
 msgid "Resend RevDCC"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:944
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:946
 msgid "Abort"
 msgstr "Abortar"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1132
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1134
 msgid "From: "
 msgstr "De: "
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1133
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1135
 msgid "To: "
 msgstr "Para: "
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1236
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1243
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1238
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1245
 #, fuzzy
 msgid "%1 of %2 (%3%)"
 msgstr "%1 de %2 bytes (%3%)"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1247
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1249
 msgid "%1"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1260
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1262
 msgid "Spd:"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1275
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1277
 msgid "Avg:"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1346
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1348
 msgid "Transfer Log"
 msgstr "Registo de Transferências"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1477
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1479
 msgid "Contacting host %1 on port %2"
 msgstr "Contactar a máquina %1 na porta %2"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1484
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1486
 msgid "Listening on interface %1 port %2"
 msgstr "Escutar a interface %1 na porta %2"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1507
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1509
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "O endereço IP local é privado, determinando pelo servidor IRC: %1"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1558
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1560
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr "DCC %1 enviado para %2, esperando que o cliente remoto conecte..."
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1560
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1562
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 não enviado, esperando conexão manual"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1579
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1581
 msgid "[SSL ERROR]: %1"
 msgstr "[ERRO SSL]: %1"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1625
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1627
 #, fuzzy
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "Transferência DCC %s com %s@%s:%s completa: \r![!dbl]play $0\r%s\r"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1640
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1642
 msgid "Transfer completed"
 msgstr "Transferência completa"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1687
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1689
 msgid "Connected to %1:%2"
 msgstr "Conectado a %1:%2"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1688
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1690
 msgid "Local end is %1:%2"
 msgstr "A extremidade local é %1:%2"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1732
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1735
 msgid "Transferring data"
 msgstr "Transferindo dados"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1758
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1761
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME aceito, a transferência começará na posição %1"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1789
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1792
 msgid "Internal error in RESUME request"
 msgstr "Erro interno no pedido RESUME"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1794
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1797
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr "Pedido RESUME inválido: a posição %1 é maior que o tamanho do arquivo"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1798
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1801
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Aceitar pedido RESUME, a transferência começará na posição %1"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1830
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1833
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1833
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1836
 msgid "Limit upload bandwidth to"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1833
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1836
 msgid "Limit download bandwidth to"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1846
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1849
 #, fuzzy
 msgid "bytes/sec"
 msgstr "Media: ? bytes/seg"
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1850
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1853
 msgid "OK"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1855
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/send.cpp:1858
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/dcc/dialogs.cpp:142
 msgid "Cancel"
 msgstr "Cancelar"

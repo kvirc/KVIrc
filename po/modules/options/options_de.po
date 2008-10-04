@@ -2,15 +2,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
-#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_dcc.cpp:304
 # Christoph Thielecke <crissi99@gmx.de>, 2004, 2005.
 # Christoph Thielecke <u15119@hs-harz.de>, 2005.
 # Markus Rennings <kvirc@mrmx.de>, 2007, 2008.
+#: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_dcc.cpp:304
 msgid ""
 msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-27 00:52+0200\n"
+"POT-Creation-Date: 2008-10-04 15:07+0200\n"
 "PO-Revision-Date: 2008-09-27 01:08+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -149,7 +149,8 @@ msgstr "Registrierter NickName"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_nickserv.cpp:60
 msgid "Put here the nickname that you have registered with NickServ"
-msgstr "Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
+msgstr ""
+"Hier den Spitznamen, mit dem man bei dem NickServ registriert ist, eingeben"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_nickserv.cpp:64
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_nickserv.cpp:257
@@ -264,7 +265,8 @@ msgstr "Das Spitznamen-Feld darf keine Leerzeichen enthalten!"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_nickserv.cpp:183
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr ""
+"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_nickserv.cpp:191
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
@@ -372,7 +374,8 @@ msgstr "Aktiviere Tray-Icon-Blinken"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_tray.cpp:45
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr "Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
+msgstr ""
+"Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_tray.cpp:47
 msgid "Select message levels to notify"
@@ -1189,7 +1192,8 @@ msgid "Server:"
 msgstr "Server:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_servers.cpp:1130
-msgid "<center>This is the name of the currently selected server or network</center>"
+msgid ""
+"<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -1209,7 +1213,8 @@ msgid "Connect &Now"
 msgstr "Jetzt verbi&nden"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_servers.cpp:1164
-msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgid ""
+"<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -1446,7 +1451,8 @@ msgstr ""
 "zufällige Zitierungen und Sätze hier einzutragen.</center>"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_identity.cpp:351
-msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid ""
+"This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
@@ -2347,7 +2353,9 @@ msgstr "Avatare verstecken"
 msgid ""
 "Place nicks starting with non-alpha chars (such as _COOL_BOY_) after the "
 "normal nicks"
-msgstr "Sortiere Nicks, die nicht mit Buchstaben beginnen (z. B. _COOL_BOY_) nach den normalen Nicks"
+msgstr ""
+"Sortiere Nicks, die nicht mit Buchstaben beginnen (z. B. _COOL_BOY_) nach "
+"den normalen Nicks"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_ctcpfloodprotection.cpp:79
 msgid "Use flood protection (recommended)"
@@ -2387,7 +2395,8 @@ msgstr "in:"
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr "<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
+msgstr ""
+"<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_ctcpfloodprotection.cpp:96
 msgid "Ignored Requests"
@@ -2648,7 +2657,8 @@ msgid "Minimum alert level:"
 msgstr "Minimale Alarmstufe:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_highlighting.cpp:114
-msgid "<center>This option sets the minimum alert level for the taskbar.</center>"
+msgid ""
+"<center>This option sets the minimum alert level for the taskbar.</center>"
 msgstr ""
 "<center>Diese Option setzt die minimale Alarmstufe für die Fensterleiste.</"
 "center>"
@@ -3294,7 +3304,8 @@ msgstr "Erzwinge Sprache:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_textencoding.cpp:65
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
+msgstr ""
+"<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_textencoding.cpp:68
 msgid "Automatic detection"
@@ -3536,7 +3547,8 @@ msgstr "Herunterladen-Ordner:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_dcc.cpp:205
 msgid "Sort saved files by nicknames (create subfolders)"
-msgstr "Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
+msgstr ""
+"Sortiere gespeicherte Dateien nach Spitznamen (erzeuge Unterverzeichnisse)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_dcc.cpp:206
 msgid "Guess save path from media type"
@@ -3812,7 +3824,8 @@ msgstr "ID3-Tag Kodierung"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_sound.cpp:102
 msgid "This allows you to select encoding of mp3 tags."
-msgstr "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
+msgstr ""
+"Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/options/optw_sound.cpp:123
 msgid "Winamp messages ecoding"
@@ -13666,4 +13679,3 @@ msgstr "Chat"
 
 #~ msgid "Parser"
 #~ msgstr "Parser"
-
