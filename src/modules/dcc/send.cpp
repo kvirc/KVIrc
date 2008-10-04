@@ -551,6 +551,14 @@ void KviDccSendThread::run()
 						if(iBytesInAckBuffer == 4)
 						{
 							unsigned long iNewAck = ntohl(*((unsigned long *)ackbuffer));
+							/*
+							 * SUPPORT FOR DCC > 4GB:
+							 * dcc file size is limited by the 4-byte acknowledge size
+							 * we try to get it working anyway, resetting its value
+							 */
+							if(iNewAck < iLastAck && iLastAck > 4294967296)
+								iLastAck=0; //-=4294967296;
+
 							if((iNewAck > pFile->at()) || (iNewAck < iLastAck))
 							{
 

@@ -47,10 +47,10 @@
 #define KVI_DEFAULT_NICKNAME3 "_newbie_"
 #define KVI_DEFAULT_NICKNAME4 "newbie4"
 #define KVI_DEFAULT_USERNAME "kvirc"
-#define KVI_DEFAULT_REALNAME "KVIrc " VERSION " '" KVI_RELEASE_NAME "' http://kvirc.net/"
+#define KVI_DEFAULT_REALNAME "KVIrc " VERSION " '" KVI_RELEASE_NAME "' http://kvirc.net"
 
-#define KVI_DEFAULT_PART_MESSAGE "No matter how dark the night, somehow the Sun rises once again"
-#define KVI_DEFAULT_QUIT_MESSAGE "KVIrc $version $version(r) http://www.kvirc.net/"
+#define KVI_DEFAULT_PART_MESSAGE "Reality is that which, when you stop believing in it, doesn't go away"
+#define KVI_DEFAULT_QUIT_MESSAGE "When two people dream the same dream, it ceases to be an illusion. KVIrc $version $version(r) http://www.kvirc.net"
 #define KVI_DEFAULT_CTCP_USERINFO_REPLY "I'm too lazy to edit this field."
 #define KVI_DEFAULT_CTCP_PAGE_REPLY "Your message has been received and logged"
 #define KVI_DEFAULT_AWAY_MESSAGE "I'm off to see the wizard."
