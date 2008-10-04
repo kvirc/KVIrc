@@ -101,12 +101,10 @@ protected:
 	KviTalPopupMenu		* m_pLocalFilePopup;
 	KviTalPopupMenu		* m_pOpenFilePopup;
 	QTimer			* m_pTimer;
-	QPixmap			* m_pMemPixmap;
 	int			m_iLineSpacing; // cached fm value
 public: // Methods
 	virtual void die();
 protected:
-	QPixmap * memPixmap(){ return m_pMemPixmap; };
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void applyOptions();

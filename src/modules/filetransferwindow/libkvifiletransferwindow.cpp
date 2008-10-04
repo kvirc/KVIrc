@@ -149,7 +149,7 @@ static bool filetransferwindow_module_can_unload(KviModule *m)
 KVIRC_MODULE(
 	"FileTransferWindow",
 	"4.0.0",
-	"Copyright (C) 2003 Szymon Stefanek (pragma at kvirc dot net)",
+	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)",
 	"Links window extension",
 	filetransferwindow_module_init,
 	filetransferwindow_module_can_unload,

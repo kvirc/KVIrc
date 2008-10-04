@@ -219,7 +219,6 @@ public:
 	virtual void fillContextPopup(KviTalPopupMenu * m);
 	virtual void fillStatusString(QString &szBuffer);
 	virtual bool active();
-	virtual void die();
 	virtual QString tipText();
 	virtual QString localFileName();
 	

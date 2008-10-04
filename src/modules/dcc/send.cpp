@@ -893,11 +893,6 @@ const char * KviDccFileTransfer::dccMarshalOutputContextString()
 	return m_szTransferIdString.toUtf8().data();
 }
 
-void KviDccFileTransfer::die()
-{
-	delete this;
-}
-
 QString KviDccFileTransfer::localFileName()
 {
 	return m_pDescriptor->szLocalFileName;

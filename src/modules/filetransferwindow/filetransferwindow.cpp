@@ -64,6 +64,8 @@
 	extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
+#define FILETRANSFERW_CELLSIZE 70
+
 extern KviFileTransferWindow * g_pFileTransferWindow;
 
 
@@ -77,7 +79,7 @@ KviFileTransferItem::KviFileTransferItem(KviFileTransferWidget * v,KviFileTransf
 	col1Item = new KviTalTableWidgetItem(v, row(), 1);
 	col2Item = new KviTalTableWidgetItem(v, row(), 2);
 	//FIXME fixed row height
-	tableWidget()->setRowHeight( row(), 68 );
+	tableWidget()->setRowHeight( row(), FILETRANSFERW_CELLSIZE );
 }
 
 KviFileTransferItem::~KviFileTransferItem()
@@ -137,7 +139,7 @@ KviFileTransferWidget::KviFileTransferWidget(QWidget * pParent)
 	horizontalHeader()->setResizeMode(QHeaderView::Interactive);
 
 	//default column widths
-	setColumnWidth(0, 68);
+	setColumnWidth(0, FILETRANSFERW_CELLSIZE);
 	horizontalHeader()->setResizeMode(0, QHeaderView::Fixed);
 	horizontalHeader()->setResizeMode(1, QHeaderView::Stretch);
 	horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
@@ -246,12 +248,8 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	m_pLocalFilePopup = 0;
 	m_pOpenFilePopup = 0;
 
-	m_pMemPixmap = new QPixmap(1,1);
-
 	m_pTimer = new QTimer(this);
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
-
-	m_pInput   = new KviInput(this,0);
 
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("transferwindow_hsplitter");
@@ -285,8 +283,6 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 
 	KviFileTransferManager::instance()->setTransferWindow(this);
 
-	//setFocusHandler(m_pInput,this);
-
 	m_pTimer->start(2000);
 }
 
@@ -294,7 +290,6 @@ KviFileTransferWindow::~KviFileTransferWindow()
 {
 	KviFileTransferManager::instance()->setTransferWindow(0);
 	g_pFileTransferWindow = 0;
-	delete m_pMemPixmap;
 }
 
 bool KviFileTransferWindow::eventFilter( QObject *obj, QEvent *ev )
@@ -351,7 +346,10 @@ KviFileTransferItem * KviFileTransferWindow::findItem(KviFileTransfer * t)
 	for(i=0;i<m_pTableWidget->rowCount();i++)
 	{
 		it = (KviFileTransferItem *)m_pTableWidget->item(i,0);
-		if(it->transfer() == t)return it;
+		if(!it) continue;
+
+		if(it->transfer() == t)
+			return it;
 	}
 	return 0;
 }
@@ -493,6 +491,9 @@ void KviFileTransferWindow::rightButtonPressed(KviFileTransferItem *it,const QPo
 	for(i=0;i<m_pTableWidget->rowCount();i++)
 	{
 		item = (KviFileTransferItem *)m_pTableWidget->item(i,0);
+		if(!item)
+			continue;
+
 		if(item->transfer()->terminated())
 		{
 			bHaveTerminated = true;
@@ -732,14 +733,14 @@ void KviFileTransferWindow::heartbeat()
 	{
 		it = (KviFileTransferItem *)m_pTableWidget->item(i,0);
 
-		if(it)
+		if(!it)
+			continue;
+
+		if(it->transfer()->active())
 		{
-			if(it->transfer()->active())
-			{
-				m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,0), dummy, Qt::DisplayRole);
-				m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,1), dummy, Qt::DisplayRole);
-				m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,2), dummy, Qt::DisplayRole);
-			}
+			m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,0), dummy, Qt::DisplayRole);
+			m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,1), dummy, Qt::DisplayRole);
+			m_pTableWidget->model()->setData(m_pTableWidget->model()->index(i,2), dummy, Qt::DisplayRole);
 		}
 	}
 }
@@ -755,6 +756,9 @@ void KviFileTransferWindow::clearAll()
 	for(i=0;i<m_pTableWidget->rowCount();i++)
 	{
 		item = (KviFileTransferItem *)m_pTableWidget->item(i,0);
+		if(!item)
+			continue;
+
 		if(!item->transfer()->terminated())
 		{
 			bHaveAllTerminated = false;
@@ -789,9 +793,7 @@ QPixmap * KviFileTransferWindow::myIconPtr()
 
 void KviFileTransferWindow::resizeEvent(QResizeEvent *e)
 {
-	int h = m_pInput->heightHint();
-	m_pSplitter->setGeometry(0,0,width(),height() - h);
-	m_pInput->setGeometry(0,height() - h,width(),h);
+	m_pSplitter->setGeometry(0,0,width(),height());
 }
 
 QSize KviFileTransferWindow::sizeHint() const

@@ -193,3 +193,10 @@ void KviFileTransfer::displayUpdate()
 {
 	if(m_pDisplayItem)m_pDisplayItem->displayUpdate();
 }
+
+void KviFileTransfer::die()
+{
+	if(m_pDisplayItem)
+		m_pDisplayItem->tableWidget()->removeRow(m_pDisplayItem->row());
+	delete this;
+}

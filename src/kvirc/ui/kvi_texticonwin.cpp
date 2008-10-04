@@ -296,7 +296,7 @@ void KviTextIconWindow::doHide()
 		m_pOwner->setFocus();
 }
 
-void KviTextIconWindow::currentItemChanged(KviTalIconViewItem * pItem)
+void KviTextIconWindow::currentItemChanged(KviTalIconViewItem * pItem, KviTalIconViewItem *)
 {
 	m_pItem = pItem;
 }

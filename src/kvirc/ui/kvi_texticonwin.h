@@ -118,7 +118,7 @@ public slots:
 	* \param pItem The selected item
 	* \return void
 	*/
-	void currentItemChanged(KviTalIconViewItem * pItem);
+	void currentItemChanged(KviTalIconViewItem * pItem, KviTalIconViewItem *);
 
 	/**
 	* \brief Called when an item is selected

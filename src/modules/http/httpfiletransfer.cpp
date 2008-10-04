@@ -88,11 +88,6 @@ void KviHttpFileTransfer::autoClean()
 	die();
 }
 
-void KviHttpFileTransfer::die()
-{
-	delete this;
-}
-
 QString KviHttpFileTransfer::localFileName()
 {
 	return m_pHttpRequest->fileName();
@@ -342,7 +337,7 @@ void KviHttpFileTransfer::init()
 
 	QPixmap * pix = g_pIconManager->getImage("kvi_httpicons.png", false);
 	if(pix)g_pHttpIcon = new QPixmap(*pix);
-	else g_pHttpIcon = new QPixmap(192,48);
+	else g_pHttpIcon = 0;
 }
 
 void KviHttpFileTransfer::done()

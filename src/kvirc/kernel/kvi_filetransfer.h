@@ -108,7 +108,7 @@ public:
 	virtual QString retryCommand();
 	virtual int displayHeight(int iLineSpacing);
 	virtual void fillContextPopup(KviTalPopupMenu * m) = 0;
-	virtual void die() = 0;
+	virtual void die();
 };
 
 #endif //! _KVI_FILETRANSFER_H_

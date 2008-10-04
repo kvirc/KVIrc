@@ -41,30 +41,6 @@ public:
 	KviTalTableWidget(QWidget * pParent);
 	virtual ~KviTalTableWidget() {};
 public:
-/*
-signals:
-	void currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *);
-	void itemActivated(KviTalTreeWidgetItem *,int);
-	void itemChanged(KviTalTreeWidgetItem *,int);
-	void itemClicked(KviTalTreeWidgetItem *,int);
-	
-	void itemCollapsed(KviTalTreeWidgetItem *);
-	void itemExpanded(KviTalTreeWidgetItem *);
-	void itemDoubleClicked(KviTalTreeWidgetItem *,int);
-	void itemEntered(KviTalTreeWidgetItem *,int);
-	void itemPressed(KviTalTreeWidgetItem *,int);
-
-protected slots:
-	void redirect_currentItemChanged(QTreeWidgetItem *pItemCurr,QTreeWidgetItem *pItemPrev);
-	void redirect_itemActivated(QTreeWidgetItem *pItem,int col);
-	void redirect_itemChanged(QTreeWidgetItem *pItem,int col);
-	void redirect_itemClicked(QTreeWidgetItem *pItem,int col);
-	void redirect_itemCollapsed(QTreeWidgetItem *pItem);
-	void redirect_itemExpanded(QTreeWidgetItem *pItem);
-	void redirect_itemDoubleClicked(QTreeWidgetItem *pItem,int col);
-	void redirect_itemEntered(QTreeWidgetItem *pItem,int col);
-	void redirect_itemPressed(QTreeWidgetItem *pItem,int col);
-*/
 };
 
 
