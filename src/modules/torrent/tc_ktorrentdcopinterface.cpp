@@ -26,11 +26,12 @@
 
 #include "tc_ktorrentdcopinterface.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
+
 	#include "kvi_app.h"
 	#include "kvi_locale.h"
 	
-	#include "dcopclient.h" // <-- this include should be hidden in kvilib
+	#include "dcopclient.h"
 	
 	#include <QTimer>
 	
@@ -491,5 +492,4 @@
 	
 	#include "tc_ktorrentdcopinterface.moc"
 
-#endif // COMPILE_KDE_SUPPORT
-
+#endif //	COMPILE_KDE3_SUPPORT

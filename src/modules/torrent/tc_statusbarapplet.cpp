@@ -1,6 +1,6 @@
 //=============================================================================
 //
-//   DCOP interface for KTorrent client.
+//   StatuBar for Torrent client.
 //
 //   File : tc_statusbarapplet.cpp
 //   Creation date : Fri Jan 1 15:42:25 2007 GMT by Alexander Stillich

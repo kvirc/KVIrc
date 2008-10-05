@@ -22,6 +22,7 @@
 //
 //=============================================================================
 
+
 #include "tc_interface.h"
 #include "tc_ktorrentdcopinterface.h"
 #include "tc_statusbarapplet.h"
@@ -829,7 +830,7 @@ static bool torrent_module_init(KviModule *m)
 	g_pDescriptorList = new KviPointerList<KviTorrentInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	g_pDescriptorList->append(new KviKTorrentDCOPInterfaceDescriptor);
 #endif // COMPILE_KDE_SUPPORT
 

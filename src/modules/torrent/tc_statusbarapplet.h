@@ -2,7 +2,7 @@
 #define _TC_STATUSBARAPPLET_H_
 //=============================================================================
 //
-//   DCOP interface for KTorrent client.
+//   StatusBar for Torrent client.
 //
 //   File : tc_statusbarapplet.h
 //   Creation date : Fri Jan 1 15:42:25 2007 GMT by Alexander Stillich
