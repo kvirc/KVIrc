@@ -17,6 +17,10 @@ src/kvirc/ui:
 	kvi_menubar.cpp
 src/modules
 	iograph - all excluded by #if
-	torrent - broken
 	notifier <-done, needs fixing
-	theme<-done, needs fixing (dynamic tooltip)
+	theme <-done, needs fixing (dynamic tooltip)
+
+
+Note: some code depends on kde3-only functionality, like dcop:
+src/kvilib/ext/kvi_dcophelper.*
+src/modules/torrent/*  <-- adaptable, but by now supports only dcop communication
