@@ -30,7 +30,8 @@
 
 #include "tc_interface.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
+
 	#include <kvi_dcophelper.h>
 	
 	// DCOP interface to KTorrent. this has 'DCOP' in its name
@@ -113,6 +114,6 @@
 	
 	TORR_DECLARE_DESCRIPTOR(KviKTorrentDCOPInterface)
 
-#endif // COMPILE_KDE_SUPPORT
+#endif // COMPILE_KDE3_SUPPORT
 
 #endif // _TC_KTORRENTDCOPINTERFACE_H_

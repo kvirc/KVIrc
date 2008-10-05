@@ -394,7 +394,6 @@ void KviEventEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *pr
 		KviQString::sprintf(tmp,__tr2qs("\n\n	Event:\n		%s\n\n	Parameters:\n%s"),
 			((KviEventTreeWidgetItem *)it)->m_szName.toUtf8().data(),parms.toUtf8().data());
 		m_pEditor->setText(tmp);
-	
 	}
 }
 

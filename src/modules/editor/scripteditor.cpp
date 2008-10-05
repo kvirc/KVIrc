@@ -611,16 +611,39 @@ void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 {
 	if(szText.isEmpty()) return;
-	int start=0;
+	int start=0, lastsimplechar=-1;
 
 	// skip tabulations
-	while(szText.at(start).unicode()=='\t') start++;
-	
-	// check 'commands'
-	if (szText.at(start).unicode()!='$' && szText.at(start).unicode()!='{' && szText.at(start).unicode()!='}')
+	while(start < szText.size())
 	{
-		while(szText.at(start).unicode() && (szText.at(start).isLetterOrNumber() || (szText.at(start).unicode() == '.') || (szText.at(start).unicode() == '_') || (szText.at(start).unicode()== ':')))start++;
-		setFormat(0,start,keywordFormat);
+		if(szText.at(start).unicode()=='\t')
+		{
+			start++;
+		} else {
+			break;
+		}
+	}
+
+	// check 'commands'
+
+	while(start < szText.size())
+	{
+		if(	szText.at(start).unicode()=='$' ||
+			szText.at(start).unicode()=='{' ||
+			szText.at(start).unicode()=='}' )
+		{
+			if(lastsimplechar > -1)
+				setFormat(0,lastsimplechar,keywordFormat);
+			break;
+		} else if( szText.at(start).unicode() &&
+				( szText.at(start).isLetterOrNumber() ||
+				  szText.at(start).unicode() == '.' ||
+				  szText.at(start).unicode() == '_' ||
+				  szText.at(start).unicode()== ':' ) )
+		{
+			lastsimplechar = start;
+		}
+		start++;
 	}
 
 	// code from QT4 example
@@ -629,35 +652,35 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	{
 		QRegExp expression(rule.pattern);
 		QString sz=expression.pattern();
-        index = szText.indexOf(expression,start);
-        while (index >= 0) 
+
+	        index = szText.indexOf(expression,start);
+	        while (index >= 0)
 		{
 			int length = expression.matchedLength();
-            setFormat(index, length, rule.format);
-            index = szText.indexOf(expression, index + length);
-        }
-    }
+			setFormat(index, length, rule.format);
+			index = szText.indexOf(expression, index + length);
+        	}
+	}
+
 	setCurrentBlockState(0);
 
-    int startIndex = 0;
-    if (previousBlockState() != 1) startIndex = szText.indexOf(commentStartExpression);
-
-    while (startIndex >= 0) 
+	int startIndex = 0;
+	if (previousBlockState() != 1) startIndex = szText.indexOf(commentStartExpression);
+	
+	while (startIndex >= 0) 
 	{
 		int endIndex = szText.indexOf(commentEndExpression, startIndex);
-        int commentLength;
-        if (endIndex == -1) 
+		int commentLength;
+		if (endIndex == -1)
 		{
 			setCurrentBlockState(1);
-            commentLength = szText.length() - startIndex;
-        } 
-		else 
-		{
-            commentLength = endIndex - startIndex + commentEndExpression.matchedLength();
-        }
-        setFormat(startIndex, commentLength, commentFormat);
-        startIndex = szText.indexOf(commentStartExpression, startIndex + commentLength);
-    }
+			commentLength = szText.length() - startIndex;
+		} else {
+			commentLength = endIndex - startIndex + commentEndExpression.matchedLength();
+		}
+		setFormat(startIndex, commentLength, commentFormat);
+		startIndex = szText.indexOf(commentStartExpression, startIndex + commentLength);
+	}
 
 	// 'found matches' highlighting
 	KviScriptEditorWidget * pEditor = ((KviScriptEditorWidget *)textEdit());
