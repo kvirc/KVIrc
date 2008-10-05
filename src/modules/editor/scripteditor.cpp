@@ -131,7 +131,10 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 		m_pListModulesNames = new QStringList(d.entryList(QDir::Files | QDir::Readable));
 		iModulesCount = m_pListModulesNames->count();
 	}
-
+	if (!m_pListModulesNames)
+	{
+		return;
+	}
 	QString szModuleName = m_pListModulesNames->at(iIndex);
 	iIndex++;
 
