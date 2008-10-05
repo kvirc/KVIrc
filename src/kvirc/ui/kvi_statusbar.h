@@ -183,6 +183,14 @@ public:
 	*/
 	void registerAppletDescriptor(KviStatusBarAppletDescriptor * d);
 
+	/**
+	* \brief Inserts an applet at the end of the statusbar as a permanent widget and returns its index.
+	* \param widget The widget to insert
+	* \param stretch Stretch factor used to compute widget size when the statusbar gets resized. Defaults to 0.
+	* \return int
+	*/
+	int insertPermanentWidgetAtTheEnd(QWidget * widget, int stretch = 0);
+
 	//void addApplet(KviStatusBarApplet * pApplet);
 	//void removeApplet(KviStatusBarApplet * pApplet);
 protected:

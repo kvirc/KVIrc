@@ -51,14 +51,6 @@
 #include <QMouseEvent>
 #include <QMessageBox>
 
-// This class COULD be derived also from KStatusBar but in fact
-// it adds no graphic functionality and it has only useless methods for us.
-// ... for now let's keep it simple :)
-
-/*
-	IDEAS:
-		- Countdown timer
-*/
 KviStatusBar::KviStatusBar(KviFrame * pFrame)
 : QStatusBar(pFrame)
 {
@@ -92,8 +84,6 @@ KviStatusBar::KviStatusBar(KviFrame * pFrame)
 	m_pMessageLabel = new QLabel("<b>[x]</b> x",this);
 	m_pMessageLabel->setObjectName("msgstatuslabel");
 	m_pMessageLabel->setMargin(1);
-	//m_pMessageLabel->setAlignment(Qt::AlignVCenter | Qt::AlignLeft);
-	//m_pMessageLabel->setMinimumWidth(350);
 	insertWidget(0,m_pMessageLabel);
 	m_iLastMinimumHeight = 0;
 	m_bStopLayoutOnAddRemove = true;
@@ -437,7 +427,7 @@ void KviStatusBar::appletsPopupActivated(int iId)
 					m_bStopLayoutOnAddRemove = true;
 					KviStatusBarApplet * pApplet = d->create(this);
 					m_pAppletList->removeRef(pApplet);
-					m_pAppletList->insert(iIdx + 1,pApplet);
+					m_pAppletList->insert(pApplet->index(),pApplet);
 					m_bStopLayoutOnAddRemove = bSave;
 					//if(!m_bStopLayoutOnAddRemove)updateLayout();
 					showLayoutHelp();
@@ -476,101 +466,81 @@ void KviStatusBar::unregisterApplet(KviStatusBarApplet * pApplet)
 	//if(!m_bStopLayoutOnAddRemove)updateLayout();
 }
 
-/*
-void KviStatusBar::paintEvent(QPaintEvent * e)
+int KviStatusBar::insertPermanentWidgetAtTheEnd(QWidget * widget, int stretch)
 {
-	// avoid the ugly rectangle around the widgets painted by QStatusBar
-	QPainter p(this);
-	style().drawPrimitive(QStyle::PE_Panel,&p,rect(),colorGroup(),QStyle::Style_Raised,QStyleOption(1,1));
-	QStatusBar::paintEvent(e);
-	qDrawWinPanel(&p,0,0,width(),height(),colorGroup(),false,0);
+	return insertPermanentWidget(m_pAppletList->count(), widget, stretch);
 }
-*/
 
 void KviStatusBar::mousePressEvent(QMouseEvent * e)
 {
 	m_pClickedApplet = 0;
-	if((e->modifiers() & Qt::LeftButton) && (e->modifiers() & (Qt::ShiftModifier | Qt::ControlModifier)))
+	if((e->button() == Qt::LeftButton) && (e->modifiers() & (Qt::ShiftModifier | Qt::ControlModifier)))
 	{
 		// move!
-		m_pClickedApplet = appletAt(mapToGlobal(e->pos()));
-		if(!m_pClickedApplet)
-			return;
-
-		m_pClickedApplet->select();
-		g_pApp->setOverrideCursor(Qt::SizeAllCursor);
+		m_pClickedApplet = (KviStatusBarApplet*) childAt(e->pos());
+		if(m_pClickedApplet)
+		{
+			m_pClickedApplet->select();
+			g_pApp->setOverrideCursor(Qt::SizeAllCursor);
+		}
 	}
 }
 
 void KviStatusBar::mouseMoveEvent(QMouseEvent * e)
 {
+
 	if(!m_pClickedApplet)
 		return;
 	if(!appletExists(m_pClickedApplet))
 		return;
 
-	debug ("index clicked %d",m_pClickedApplet->index());
+	KviStatusBarApplet * pApplet = (KviStatusBarApplet *) childAt(e->pos());
 
-	QPoint g = mapToGlobal(e->pos());
-	KviStatusBarApplet * pApplet = appletAt(g,true);
 	if(pApplet == m_pClickedApplet)
 		return;
-	debug("Moved over index %d",pApplet->index());
 
 	// move!
 	if(!pApplet)
 	{
 		pApplet = m_pAppletList->first();
-		if(!pApplet)
-			return; // ops!
-
-		if(e->pos().x() < (pApplet->x() + pApplet->width()))
+		while(pApplet)
 		{
-			if(pApplet == m_pClickedApplet)
-				return; // don't move
-		} else {
-			pApplet = m_pAppletList->last();
-			if(!pApplet)
-				return;
-			if(pApplet == m_pClickedApplet)
-				return; // no way to move
+			if(e->pos().x() < (pApplet->x()+pApplet->width()))
+			{
+				break;
+			} else {
+				pApplet = m_pAppletList->next();
+			}
 		}
+		if(!pApplet || pApplet == m_pClickedApplet)
+			return; // no way to move
 	}
 
-	m_pAppletList->removeRef(m_pClickedApplet);
+	printf("inverting %d and %d\n",m_pClickedApplet->index(),pApplet->index());
 
-	int iIndex = pApplet->index();
-	debug ("Move from to index %d",iIndex);
+	//swap indexes
+	int oldIndex = m_pClickedApplet->index();
+	m_pClickedApplet->setIndex(pApplet->index());
+	pApplet->setIndex(oldIndex);
 
-	//removeWidget(m_pClickedApplet);
-	insertPermanentWidget(iIndex,m_pClickedApplet);
+	removeWidget(m_pClickedApplet); //Note: This function does not delete the widget but hides it. To add the widget again, you must call both the addWidget() and show() functions.
+	insertPermanentWidget(m_pClickedApplet->index(), m_pClickedApplet);
+	m_pClickedApplet->show();
 
-	m_pClickedApplet->setIndex(iIndex);
-	//iIndex++;
-	//a->setIndex(iIndex);
-	//removeWidget(m_pClickedApplet);
-
-	int iIdx = m_pAppletList->findRef(pApplet);
-	if(iIdx == -1)
-		m_pAppletList->append(m_pClickedApplet); // uhg ?
-	else {
-		QPoint p = pApplet->mapFromGlobal(g);
-		if(p.x() > (pApplet->width() / 2))
-			iIdx++; // just after
-		m_pAppletList->insert(iIdx,m_pClickedApplet);
-	}
-	update();
-	//layoutChildren();
+	m_pClickedApplet->select(false);
+	g_pApp->restoreOverrideCursor();
+	m_pClickedApplet = 0;
 }
 
 void KviStatusBar::mouseReleaseEvent(QMouseEvent * e)
 {
-	if(e->button() & Qt::LeftButton)
+	if(e->button() == Qt::LeftButton)
 	{
 		if(m_pClickedApplet && appletExists(m_pClickedApplet))
 		{
 			m_pClickedApplet->select(false);
 			g_pApp->restoreOverrideCursor();
+			m_pClickedApplet = 0;
 		}
 	}
 }
@@ -640,10 +610,13 @@ void KviStatusBar::mouseDoubleClickEvent(QMouseEvent * e)
 void KviStatusBar::queueMessage(KviStatusBarMessage * pMsg)
 {
 	// Rearrange queue using the priority of the message
-
-	if(pMsg->priority() > m_pMessageQueue->first()->priority())
-		m_pMessageQueue->prepend(pMsg);
-	else
+	if(m_pMessageQueue->count() > 0)
+	{
+		if(pMsg->priority() > m_pMessageQueue->first()->priority())
+			m_pMessageQueue->prepend(pMsg);
+		else
+			m_pMessageQueue->append(pMsg);
+	} else 
 		m_pMessageQueue->append(pMsg);
 
 	if(!m_pMessageTimer)

@@ -61,15 +61,6 @@
 #include <QEvent>
 #include <QMouseEvent>
 
-// This class COULD be derived also from KStatusBar but in fact
-// it adds no graphic functionality and it has only useless methods for us.
-// ... for now let's keep it simple :)
-// FIXME: Applets in modules SHOULD be unregistered automatically on unload!
-/*
-	IDEAS:
-		- Countdown timer
-*/
-
 KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString &szVisibleName,const QString &szInternalName,CreateAppletCallback pProc,const QString &szPreloadModule,const QPixmap &pixIcon)
 : KviHeapObject()
 {
@@ -218,7 +209,7 @@ void KviStatusBarAwayIndicator::saveState(const char * prefix,KviConfig *cfg)
 KviStatusBarApplet * CreateStatusBarAwayIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
 	KviStatusBarApplet * applet=new KviStatusBarAwayIndicator(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
 	
 	return applet;
 }
@@ -385,7 +376,7 @@ void KviStatusBarLagIndicator::updateDisplay()
 KviStatusBarApplet * CreateStatusBarLagIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
 	KviStatusBarApplet * applet=new KviStatusBarLagIndicator(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
 	return applet;
 }
 
@@ -544,7 +535,7 @@ void KviStatusBarClock::saveState(const char * prefix,KviConfig *cfg)
 KviStatusBarApplet * CreateStatusBarClock(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
 	KviStatusBarApplet * applet=new KviStatusBarClock(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
 	return applet;
 }
 
@@ -622,7 +613,7 @@ void KviStatusBarConnectionTimer::saveState(const char * prefix,KviConfig *cfg)
 KviStatusBarApplet * CreateStatusBarConnectionTimer(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
 	KviStatusBarApplet * applet=new KviStatusBarConnectionTimer(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
 	return applet;
 }
 
@@ -648,7 +639,7 @@ KviStatusBarSeparator::~KviStatusBarSeparator()
 KviStatusBarApplet * CreateStatusBarSeparator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
 	KviStatusBarApplet * applet=new KviStatusBarSeparator(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
 	return applet;
 }
 
@@ -717,7 +708,7 @@ KviStatusBarApplet * CreateStatusBarUpdateIndicator(KviStatusBar * pBar,KviStatu
 {
 //	return new KviStatusBarUpdateIndicator(pBar,pDescriptor);
 	KviStatusBarApplet * applet=new KviStatusBarUpdateIndicator(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidget(-1,applet));
+	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
 	return applet;
 }
 
