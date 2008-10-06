@@ -221,8 +221,10 @@ void KviTipWindow::nextTip()
 void KviTipWindow::showEvent(QShowEvent *e)
 {
 	resize(KVI_TIP_WINDOW_WIDTH,KVI_TIP_WINDOW_HEIGHT);
-	move((g_pApp->desktop()->width() - KVI_TIP_WINDOW_WIDTH) / 2,
-		(g_pApp->desktop()->height() - KVI_TIP_WINDOW_HEIGHT) / 2);
+
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	move((rect.width() - KVI_TIP_WINDOW_WIDTH)/2,(rect.height() - KVI_TIP_WINDOW_HEIGHT)/2);
+
 	QWidget::showEvent(e);
 }
 

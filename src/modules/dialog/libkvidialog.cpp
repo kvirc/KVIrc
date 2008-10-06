@@ -379,7 +379,9 @@ void KviKvsCallbackTextInput::done(int code)
 
 void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 {
-	move((g_pApp->desktop()->width() - width())/2,(g_pApp->desktop()->height() - height()) / 2);
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	move((rect.width() - width())/2,(rect.height() - height())/2);
+
 	QDialog::showEvent(e);
 }
 

@@ -368,7 +368,7 @@ void KviCustomizeToolBarsDialog::currentToolBarChanged()
 void KviCustomizeToolBarsDialog::showEvent(QShowEvent * e)
 {
 //	repaintContents();
-//	QRect r = parentWidget() ? parentWidget()->rect() : QApplication::desktop()->rect();
+//	QRect r = parentWidget() ? parentWidget()->rect() : QApplication::desktop() SCREEEN ->rect();
 //	int x = (r.width() - width()) / 2;
 //	int y = (r.height() - height()) / 2;
 //	move(x,y);

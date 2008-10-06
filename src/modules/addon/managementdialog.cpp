@@ -316,7 +316,7 @@ void KviScriptManagementDialog::installScript()
 
 void KviScriptManagementDialog::showEvent(QShowEvent * e)
 {
-//	QRect r = parentWidget() ? parentWidget()->rect() : QApplication::desktop()->rect();
+//	QRect r = parentWidget() ? parentWidget()->rect() : g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
 //	int x = (r.width() - width()) / 2;
 //	int y = (r.height() - height()) / 2;
 //	move(x,y);

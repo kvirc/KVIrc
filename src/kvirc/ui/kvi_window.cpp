@@ -1169,8 +1169,10 @@ bool KviWindow::isMaximized()
 		return (mdiParent()->state() == KviMdiChild::Maximized);
 	// Heh...how to check it ?
 	// Empirical check
-	int wdth = (g_pApp->desktop()->width() * 75) / 100;
-	int hght = (g_pApp->desktop()->height() * 75) / 100;
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+
+	int wdth = (rect.width() * 75) / 100;
+	int hght = (rect.height() * 75) / 100;
 
 	return ((x() <= 1)&&(y() <= 1)&&(width() >= wdth)&&(height() >= hght));
 }

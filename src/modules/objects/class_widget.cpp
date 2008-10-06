@@ -1059,8 +1059,10 @@ bool KviKvsObject_widget::function_fontMetricsHeight(KviKvsObjectFunctionCall * 
 bool KviKvsObject_widget::function_screenResolution(KviKvsObjectFunctionCall * c)
 {
 	KviKvsArray * a = new KviKvsArray();
-	a->set(0,new KviKvsVariant((kvs_int_t)g_pApp->desktop()->width()));
-	a->set(1,new KviKvsVariant((kvs_int_t)g_pApp->desktop()->height()));
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+
+	a->set(0,new KviKvsVariant((kvs_int_t)rect.width()));
+	a->set(1,new KviKvsVariant((kvs_int_t)rect.height()));
 	c->returnValue()->setArray(a);
 	return true;
 }
@@ -1185,7 +1187,12 @@ bool KviKvsObject_widget::function_mapFromGlobal(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_widget::function_centerToScreen(KviKvsObjectFunctionCall *c)
 {
-	if(widget()) widget()->move((g_pApp->desktop()->width() - widget()->width())/2,(g_pApp->desktop()->height() - widget()->height())/2);
+	if(widget())
+	{
+		QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+		widget()->move((rect.width() - widget()->width())/2,(rect.height() - widget()->height())/2);
+	}
+
 	return true;
 }
 
