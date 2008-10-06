@@ -393,7 +393,10 @@ void KviRegistrationWizard::accept()
 void KviRegistrationWizard::showEvent(QShowEvent *e)
 {
 	if(height() < 420)resize(width(),420);
-	move((g_pApp->desktop()->width() - width())/2,(g_pApp->desktop()->height() - height())/2);
+
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	move((rect.width() - width())/2,(rect.height() - height())/2);
+
 	KviTalWizard::showEvent(e);
 }
 

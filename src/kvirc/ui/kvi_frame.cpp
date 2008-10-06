@@ -162,7 +162,14 @@ KviFrame::KviFrame()
 		|| (KVI_OPTION_RECT(KviOption_rectFrameGeometry).x() > g_pApp->desktop()->width()) || (KVI_OPTION_RECT(KviOption_rectFrameGeometry).y() > g_pApp->desktop()->height()))
 	{
 		// Try to find some reasonable defaults
-		KVI_OPTION_RECT(KviOption_rectFrameGeometry) = QRect(10,10,g_pApp->desktop()->width() - 200,g_pApp->desktop()->height() - 150);
+		// prefer primary screen for first startup
+		int primary_screen = g_pApp->desktop()->primaryScreen();
+		QRect r = g_pApp->desktop()->screenGeometry(primary_screen);
+		r.setLeft(r.left() + 10);
+		r.setRight(r.right() - 100);
+		r.setTop(r.top() + 10);
+		r.setBottom(r.bottom() - 200);
+		KVI_OPTION_RECT(KviOption_rectFrameGeometry) = r;
 	}
 
 

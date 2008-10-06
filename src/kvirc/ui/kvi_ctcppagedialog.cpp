@@ -79,8 +79,8 @@ KviCtcpPageDialog::~KviCtcpPageDialog()
 
 void KviCtcpPageDialog::center()
 {
-	move((g_pApp->desktop()->width() - width()) >> 1,
-		(g_pApp->desktop()->height() - height()) >> 1);
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	move((rect.width() - width())/2,(rect.height() - height())/2);
 }
 
 void KviCtcpPageDialog::die()
