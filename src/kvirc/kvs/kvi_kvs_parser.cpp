@@ -2624,7 +2624,7 @@ KviKvsTreeNodeVariable * KviKvsParser::parsePercent(bool bInObjScope)
 
 	const QChar * pIdBegin = KVSP_curCharPointer;
 
-	while((KVSP_curCharIsLetterOrNumber) || (KVSP_curCharUnicode == '_') || (KVSP_curCharUnicode == '.'))KVSP_skipChar;
+	while((KVSP_curCharIsLetterOrNumber) || (KVSP_curCharUnicode == '_'))KVSP_skipChar;
 
 	QString szIdentifier(pIdBegin,KVSP_curCharPointer - pIdBegin);
 
