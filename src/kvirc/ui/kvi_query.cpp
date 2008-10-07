@@ -662,7 +662,7 @@ void KviQuery::ownAction(const QString &buffer)
 
 		KviQCString sz = connection()->encodeText(windowName());
 		if(sz.isEmpty())return;
-		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,QString(szBuffer.data()),QString(sz.data())))return;
+		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,QString(sz.data())))return;
 		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",
 			sz.data(),0x01,szBuffer.data(),0x01))return;
 		output(KVI_OUT_ACTION,"\r!nc\r%Q\r %Q",&(connection()->currentNickName()),&szTmpBuffer);
