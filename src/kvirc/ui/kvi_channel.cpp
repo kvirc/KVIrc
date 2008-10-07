@@ -1259,7 +1259,7 @@ void KviChannel::ownAction(const QString & szBuffer)
 
 	if(!d)
 		return;
-	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,QString(d),QString(szName.data())))
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,QString(szName.data())))
 		return;
 	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",szName.data(),0x01,d,0x01))
 		return;

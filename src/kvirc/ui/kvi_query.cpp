@@ -772,7 +772,7 @@ void KviQuery::ownAction(const QString & szBuffer)
 		if(sz.isEmpty())
 			return;
 
-		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,QString(szBuffer.data()),QString(sz.data())))
+		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,QString(sz.data())))
 			return;
 
 		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",
