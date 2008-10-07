@@ -50,8 +50,8 @@ for filename in filelist:
 		doc_name = match[1]
 
 		# if it already exists append our data
-		if comments.has_key(match[1]):
-			comment = comments[match[1]]
+		if comments.has_key(doc_name):
+			comment = comments[doc_name]
 
 		# go through the comment line by line
 		for m in match[0].splitlines():
@@ -72,9 +72,11 @@ for filename in filelist:
 							comment[category] = tmp
 
 		# add the comment to our comments dict
-		comments[match[1]] = comment
+		comments[doc_name] = comment
 
 	# then we write all parsed comments to our file
+	# keeping all stuff in memory created weird result in the dictonaries
+
 	for key in comments:
 		outfile.write("<h1>" + key + "</h1>\n")
 		for subkey in comments[key]:
