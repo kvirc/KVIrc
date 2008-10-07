@@ -48,6 +48,7 @@
 #include <QCloseEvent>
 #include <QShortcut>
 #include <QHeaderView>
+#include <QDesktopWidget>
 
 //FIXME: some headers must be hidden
 
@@ -280,6 +281,30 @@ KviOptionsDialog::~KviOptionsDialog()
 		g_pOptionsDialogDict->remove(m_szGroup);
 }
 
+void KviOptionsDialog::showEvent(QShowEvent *e)
+{
+	QRect r = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+		
+	int w = r.width();
+	int h = r.height();
+
+	int ww = width();
+	int wh = height();
+
+	if(w < 800)
+	{
+		// 640x480
+		if(ww < 630)ww = 630;
+	} else {
+		if(ww < 770)ww = 770;
+	}
+	
+	setGeometry((w - ww) / 2,(h - wh) / 2,ww,wh);
+
+	move((r.width() - width())/2,(r.height() - height())/2);
+
+	QDialog::showEvent(e);
+}
 
 void KviOptionsDialog::searchLineEditTextChanged(const QString &)
 {

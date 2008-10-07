@@ -89,6 +89,8 @@ void KviOptionsWidget::createLayout()
 {
 	if(m_pLayout)delete m_pLayout;
 	m_pLayout = new QGridLayout(this);//,rows,cols,KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER,KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE);
+	m_pLayout->setMargin(0);
+	m_pLayout->setSpacing(0);
 }
 
 void KviOptionsWidget::createTabbedPage()

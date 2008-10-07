@@ -91,6 +91,7 @@ protected:
 	void apply(bool bDialogAboutToClose);
 	virtual void closeEvent(QCloseEvent *e);
 	virtual void keyPressEvent( QKeyEvent * e );
+	virtual void showEvent(QShowEvent *e);
 	bool recursiveSearch(KviOptionsTreeWidgetItem * pItem,const QStringList &lKeywords);
 public:
 	void search(const QString &szKeywords);

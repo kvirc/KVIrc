@@ -24,6 +24,7 @@
 
 #include "toolbareditor.h"
 
+#include "kvi_app.h"
 #include "kvi_actiondrawer.h"
 #include "kvi_locale.h"
 #include "kvi_frame.h"
@@ -49,6 +50,7 @@
 #include <QTimer>
 #include <QEvent>
 #include <QDropEvent>
+#include <QDesktopWidget>
 
 KviCustomizeToolBarsDialog * KviCustomizeToolBarsDialog::m_pInstance = 0;
 extern QRect g_rectToolBarEditorDialogGeometry;
@@ -367,11 +369,10 @@ void KviCustomizeToolBarsDialog::currentToolBarChanged()
 
 void KviCustomizeToolBarsDialog::showEvent(QShowEvent * e)
 {
-//	repaintContents();
-//	QRect r = parentWidget() ? parentWidget()->rect() : QApplication::desktop() SCREEEN ->rect();
-//	int x = (r.width() - width()) / 2;
-//	int y = (r.height() - height()) / 2;
-//	move(x,y);
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	move((rect.width() - width())/2,(rect.height() - height())/2);
+
+	QDialog::showEvent(e);
 }
 
 void KviCustomizeToolBarsDialog::deleteToolBar()

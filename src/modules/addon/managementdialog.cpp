@@ -48,7 +48,7 @@
 #include <QPushButton>
 #include <QLayout>
 #include <QApplication>
-
+#include <QDesktopWidget>
 #include <QLineEdit>
 #include <QLabel>
 #include <QFrame>
@@ -316,10 +316,10 @@ void KviScriptManagementDialog::installScript()
 
 void KviScriptManagementDialog::showEvent(QShowEvent * e)
 {
-//	QRect r = parentWidget() ? parentWidget()->rect() : g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-//	int x = (r.width() - width()) / 2;
-//	int y = (r.height() - height()) / 2;
-//	move(x,y);
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	move((rect.width() - width())/2,(rect.height() - height())/2);
+
+	QDialog::showEvent(e);
 }
 
 void KviScriptManagementDialog::closeClicked()
