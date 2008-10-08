@@ -299,6 +299,26 @@ KviOptionsDialog::~KviOptionsDialog()
 		g_pOptionsDialogDict->remove(m_szGroup);
 }
 
+void KviOptionsDialog::showEvent(QShowEvent *e)
+{
+	QRect r = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+		
+	int w = r.width();
+	int h = r.height();
+
+	int ww = width();
+	int wh = height();
+
+	if(w < ww + 100)
+		ww = w - 100;
+
+ 	if(h < wh + 100)
+		wh = h - 100;
+
+	setGeometry((w - ww) / 2,(h - wh) / 2,ww,wh);
+
+	QDialog::showEvent(e);
+}
 
 void KviOptionsDialog::searchLineEditTextChanged(const QString &)
 {
