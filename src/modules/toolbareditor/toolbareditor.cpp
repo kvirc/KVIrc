@@ -128,7 +128,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	setCaption(__tr2qs("ToolBar Properties"));
 	setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
 	
-	QGridLayout * g = new QGridLayout(this,5,6,5,3);
+	QGridLayout * g = new QGridLayout(this,5,6,8,8);
 	
 	QLabel * l = new QLabel(szText,this);
 	g->addMultiCellWidget(l,0,0,0,5);

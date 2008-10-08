@@ -151,7 +151,7 @@ KviThemeManagementDialog::KviThemeManagementDialog(QWidget * parent)
 
 	m_pInstance = this;
 
-	QGridLayout * g = new QGridLayout(this,3,2,4,4);
+	QGridLayout * g = new QGridLayout(this,3,2,8,8);
 
 	KviTalHBox *hb = new KviTalHBox(this);
 	g->addMultiCellWidget(hb,0,0,0,1);
