@@ -103,16 +103,15 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	QLabel * l = new QLabel(szTmp,this);
 	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	l->setAlignment(Qt::AlignCenter);
-	l->setMargin(10);
 	g->addWidget(l,0,0,1,4);
-//	g->addMultiCellWidget(l,0,0,0,3);
+
 	l->setMinimumWidth(200);
 
 	l = new QLabel(__tr2qs_ctx("Description:","options"),this);
 	g->addWidget(l,1,0);
 	m_pDescEditor = new QLineEdit(this);
 	g->addWidget(m_pDescEditor,1,1,1,3);
-//	g->addMultiCellWidget(m_pDescEditor,1,1,1,3);
+
 	m_pDescEditor->setText(n->description());
 	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>Put here a brief description of the network.</center>","options"));
 
@@ -120,14 +119,12 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 
 	QTabWidget * tw = new QTabWidget(this);
 	g->addWidget(tw,2,0,1,4);
-//	g->addMultiCellWidget(tw,2,2,0,3);
 
 	QWidget * tab = new QWidget(tw);
 	QGridLayout * gl = new QGridLayout(tab);
 
 	KviTalGroupBox *gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("Properties","options"),tab);
 	gl->addWidget(gbox,0,0,1,2);
-//	gl->addMultiCellWidget(gbox,0,0,0,1);
 
 	l = new QLabel(__tr2qs_ctx("Username:","options"),gbox);
 	m_pUserEditor = new QLineEdit(gbox);
@@ -202,7 +199,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	m_pAutoConnectCheck = new QCheckBox(__tr2qs_ctx("Connect to this network at startup","options"),tab);
 	m_pAutoConnectCheck->setChecked(n->autoConnect());
 	gl->addWidget(m_pAutoConnectCheck,3,0,1,2);
-//	gl->addMultiCellWidget(m_pAutoConnectCheck,2,2,0,1);
+
 	KviTalToolTip::add(m_pAutoConnectCheck,__tr2qs_ctx("<center>This option will cause KVIrc to automatically connect to this network at startup</center>","options"));
 
 
@@ -276,7 +273,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 
 	m_pNickServCheck = new QCheckBox(__tr2qs_ctx("Enable NickServ Identification","options"),tab);
 	gl->addWidget(m_pNickServCheck,0,0,1,3);
-//	gl->addMultiCellWidget(m_pNickServCheck,0,0,0,2);
+
 	KviTalToolTip::add(m_pNickServCheck,
 				__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
 	m_pNickServCheck->setChecked(bNickServEnabled);
@@ -293,7 +290,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 	m_pNickServTreeWidget->setHeaderLabels(columnLabels);
 	connect(m_pNickServTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(enableDisableNickServControls()));
 	gl->addWidget(m_pNickServTreeWidget,1,0,1,3);
-////  gl->addMultiCellWidget(m_pNickServTreeWidget,1,1,0,2);
+
 	KviTalToolTip::add(m_pNickServTreeWidget,
 		__tr2qs_ctx("<center>This is a list of NickServ identification rules. " \
 				"KVIrc will use them to model its automatic interaction with NickServ on this network.<br>" \
@@ -427,13 +424,11 @@ void KviNetworkDetailsWidget::fillData(KviNetwork * n)
 		{
 			KviNickServRuleSet * rs = KviNickServRuleSet::createInstance();
 			rs->setEnabled(m_pNickServCheck->isChecked());
-			KviTalTreeWidgetItem * it;// = (KviTalTreeWidgetItem *)m_pNickServTreeWidget->firstChild();
+			KviTalTreeWidgetItem * it;
 			for (int i=0;i<m_pNickServTreeWidget->topLevelItemCount();i++)
-			//while(it)
 			{
 				it=(KviTalTreeWidgetItem *) m_pNickServTreeWidget->topLevelItem(i);
 				rs->addRule(KviNickServRule::createInstance(it->text(0),it->text(1),it->text(2),it->text(3)));
-			//	it = it->nextSibling();
 			}
 			n->setNickServRuleSet(rs);
 		} else n->setNickServRuleSet(0);
@@ -468,16 +463,14 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pHeaderLabel = new QLabel("",this); // the text will be set later
 	m_pHeaderLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	m_pHeaderLabel->setAlignment(Qt::AlignCenter);
-	m_pHeaderLabel->setMargin(10);
 	g->addWidget(m_pHeaderLabel,0,0,1,4);
-//	g->addMultiCellWidget(m_pHeaderLabel,0,0,0,3);
 	m_pHeaderLabel->setMinimumWidth(200);
 
 	QLabel * l = new QLabel(__tr2qs_ctx("Description:","options"),this);
 	g->addWidget(l,1,0);
 	m_pDescEditor = new QLineEdit(this);
 	g->addWidget(m_pDescEditor,1,1,1,3);
-//	g->addMultiCellWidget(m_pDescEditor,1,1,1,3);
+
 	m_pDescEditor->setText(s->description());
 	KviTalToolTip::add(m_pDescEditor,__tr2qs_ctx("<center>This is a brief description of this server. " \
 		"This field has no restrictions but many server lists use it to describe the server's physical location</center>","options"));
@@ -486,7 +479,6 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	QTabWidget * tw = new QTabWidget(this);
 	g->addWidget(tw,2,0,1,4);
-//	g->addMultiCellWidget(tw,2,2,0,3);
 
 	QWidget * tab = new QWidget(tw);
 	QGridLayout * gl = new QGridLayout(tab);
@@ -550,7 +542,6 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	gl->addWidget(l,2,0);
 
 	gl->setRowStretch(2,1);
-	//gl->setColumnStretch(1,1);
 
 	tw->addTab(tab,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WHO)),__tr2qs_ctx("Identity","options"));
 
@@ -598,7 +589,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	m_pCacheIpCheck = new QCheckBox(__tr2qs_ctx("Cache IP address","options"),tab);
 	gl->addWidget(m_pCacheIpCheck,2,0,1,2);
-//	gl->addMultiCellWidget(m_pCacheIpCheck,2,2,0,1);
+
 	KviTalToolTip::add(m_pCacheIpCheck,__tr2qs_ctx("<center>This check will enable <b>IP address caching</b> for this server:<br>" \
 		"DNS lookups can be time-consuming and might be blocking on some platforms; " \
 		"this option will cause KVIrc to look up the server hostname only once.<br><br> " \
@@ -609,7 +600,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	m_pUseIPV6Check = new QCheckBox(__tr2qs_ctx("Use IPv6 protocol","options"),tab);
 	gl->addWidget(m_pUseIPV6Check,3,0,1,2);
-//	gl->addMultiCellWidget(m_pUseIPV6Check,3,3,0,1);
+
 #ifdef COMPILE_IPV6_SUPPORT
 	m_pUseIPV6Check->setChecked(s->isIPv6());
 #else
@@ -622,7 +613,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	m_pUseSSLCheck = new QCheckBox(__tr2qs_ctx("Use SSL protocol","options"),tab);
 	gl->addWidget(m_pUseSSLCheck,4,0,1,2);
-//	gl->addMultiCellWidget(m_pUseSSLCheck,4,4,0,1);
+
 	KviTalToolTip::add(m_pUseSSLCheck,__tr2qs_ctx("<center>This check will cause the connection to use the <b>Secure Socket Layer</b> " \
 		"encryption support. Obviously, this server must have support for this, too. :)</center>","options"));
 #ifndef COMPILE_SSL_SUPPORT
@@ -643,7 +634,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 	m_pUseAutoConnect->setChecked(s->autoConnect());
 
 	gl->addWidget(m_pUseAutoConnect,6,0,1,2);
-	//	gl->addMultiCellWidget(m_pUseAutoConnect,5,5,0,1);
+
 	KviTalToolTip::add(m_pUseAutoConnect,__tr2qs_ctx("<center>This option will cause KVIrc to connect to the IRC server when it is started.</center>","options"));
 
 	//server encoding
@@ -715,7 +706,6 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	if(!s->linkFilter().isEmpty())
 	{
-		//m_pLinkFilterEditor->setCurrentText(s->linkFilter());
 		int i = m_pLinkFilterEditor->findText(s->linkFilter());
 		if (i != -1)
 			m_pLinkFilterEditor->setCurrentIndex(i);
@@ -762,7 +752,6 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 
 	l = new QLabel("",tab);
 	gl->addWidget(l,12,0,1,2);
-//	gl->addMultiCellWidget(l,10,10,0,1);
 
 	gl->setRowStretch(12,1);
 
@@ -1135,7 +1124,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pImportButton->setAutoRaise(true);
 	m_pImportButton->setMenu(m_pImportPopup);
 	m_pImportButton->setPopupMode(QToolButton::InstantPopup);
-//	m_pImportButton->setPopupDelay(1);
+
 	KviTalToolTip::add(m_pImportButton,__tr2qs_ctx("Import List","options"));
 
 	QFrame * lll = new QFrame(vbox);
@@ -1197,8 +1186,6 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	fillServerList();
 
 	layout()->setRowStretch(0,1);
-	//layout()->setColumnStretch(1,5);
-	//layout()->setColumnStretch(2,2);
 	layout()->setColumnStretch(0,1);
 	setMinimumWidth(320);
 }
@@ -1240,12 +1227,10 @@ void KviServerOptionsWidget::recentServersPopupClicked(int id)
 	KviTalTreeWidgetItem * pFoundNet = 0;
 	KviTalTreeWidgetItem * pFoundSrv = 0;
 
-	//for(KviTalTreeWidgetItem * net = m_pTreeWidget->firstChild();net;net = net->nextSibling()
 	KviTalTreeWidgetItem * net;
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		net=(KviTalTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
-		//for(KviTalTreeWidgetItem * srv = net->firstChild();srv;srv = srv->nextSibling())
 		KviTalTreeWidgetItem * srv;
 		for (int j=0;j<net->childCount();j++)
 		{
@@ -1387,10 +1372,9 @@ void KviServerOptionsWidget::commit()
 {
 	saveLastItem();
 	g_pServerDataBase->clear();
-//	KviServerOptionsTreeWidgetItem * it = (KviServerOptionsTreeWidgetItem *)m_pTreeWidget->firstChild();
+
 	KviServerOptionsTreeWidgetItem * network;
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
-	//while(it)
 	{
 		network=(KviServerOptionsTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
 		QString tmp = network->m_pNetworkData->name();
@@ -1408,11 +1392,8 @@ void KviServerOptionsWidget::commit()
 		KviServerOptionsTreeWidgetItem * ch;
 		for (int j=0;j<network->childCount();j++)
 		{
-			//KviServerOptionsTreeWidgetItem * ch;// = (KviServerOptionsTreeWidgetItem *)it->firstChild();
 			KviServer *srv;
 			ch=(KviServerOptionsTreeWidgetItem *)network->child(j);
-		//	while(ch)
-		//	{
 			if(ch->m_pServerData)
 			{
 				if(!ch->m_pServerData->m_szHostname.isEmpty())
@@ -1431,12 +1412,9 @@ void KviServerOptionsWidget::commit()
 					}
 				}
 			}
-			//ch = (KviServerOptionsTreeWidgetItem *)ch->nextSibling();
 		}
 
 	}
-	//	it = (KviServerOptionsTreeWidgetItem *)it->nextSibling();
-//}
 
 	KviOptionsWidget::commit();
 
@@ -1545,7 +1523,6 @@ void KviServerOptionsWidget::importServer(const KviServer &s,const QString &netw
 		net->setExpanded(true);
 	}
 
-	//for(KviServerOptionsTreeWidgetItem * srv = (KviServerOptionsTreeWidgetItem *)net->firstChild();srv;srv = (KviServerOptionsTreeWidgetItem *)srv->nextSibling())
 	KviServerOptionsTreeWidgetItem * srv ;
 	for(int i=0;i<net->childCount();i++)
 	{
@@ -1682,13 +1659,11 @@ void KviServerOptionsWidget::removeCurrent()
 KviServerOptionsTreeWidgetItem * KviServerOptionsWidget::findNetItem(const QString &netname)
 {
 
-	KviServerOptionsTreeWidgetItem * it;// = (KviServerOptionsTreeWidgetItem *)m_pTreeWidget->firstChild();
-	//while(it)
+	KviServerOptionsTreeWidgetItem * it;
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		it=(KviServerOptionsTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		if(KviQString::equalCI(it->text(0),netname))return it;
-	//	it = (KviServerOptionsTreeWidgetItem *)it->nextSibling();
 	}
 	return 0;
 }

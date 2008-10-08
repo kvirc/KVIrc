@@ -39,7 +39,7 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 
 	createLayout();
 
-	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Open Query For","options"));
+	KviTalGroupBox * g = addGroupBox(0,0,1,0,Qt::Horizontal,__tr2qs_ctx("Open Query For","options"));
 	KviBoolSelector * b  = addBoolSelector(g, __tr2qs_ctx("Private messages","options"),KviOption_boolCreateQueryOnPrivmsg);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option enables query window creation " \
@@ -55,7 +55,7 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 			"be shown in the active window or a common channel.</center>","options"));
 
 
-	b = addBoolSelector(0,1,0,1,__tr2qs_ctx("Always open queries as minimized","options"),KviOption_boolCreateMinimizedQuery);
+	b = addBoolSelector(0,1,1,1,__tr2qs_ctx("Always open queries as minimized","options"),KviOption_boolCreateMinimizedQuery);
 
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes newly created " \
@@ -64,32 +64,32 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 			"popping up while you're typing something in a channel. :D</center>","options"));
 
 
-	b = addBoolSelector(0,2,0,2, __tr2qs_ctx("Enable target user tracking","options"),KviOption_boolEnableQueryTracing);
+	b = addBoolSelector(0,2,1,2, __tr2qs_ctx("Enable target user tracking","options"),KviOption_boolEnableQueryTracing);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option will enable target user tracking.<br>" \
 			"Some actions of the target user (e.g. joins and parts) " \
 			"will be displayed in the window.<br></center>","options"));
 
 #if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MINGW))
-	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Flash system taskbar on new query message","options"),KviOption_boolFlashQueryWindowOnNewMessages);
+	b = addBoolSelector(0,3,1,3,__tr2qs_ctx("Flash system taskbar on new query message","options"),KviOption_boolFlashQueryWindowOnNewMessages);
 		mergeTip(b,
 			__tr2qs_ctx("<center>This option causes the system taskbar entry for KVIrc to flash when a new query message " \
 				"is received and the KVIrc window is not the active.</center>","options"));
 #endif
 
-	b = addBoolSelector(0,4,0,4, __tr2qs_ctx("Popup notifier on new query message","options"),KviOption_boolPopupNotifierOnNewQueryMessages);
+	b = addBoolSelector(0,4,1,4, __tr2qs_ctx("Popup notifier on new query message","options"),KviOption_boolPopupNotifierOnNewQueryMessages);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes a small notifier window to pop up " \
 			"in the low right corner of the screen when a new message is received " \
 			"and the KVIrc window is not active.</center>","options"));
-	b = addBoolSelector(0,5,0,5, __tr2qs_ctx("Show information about query target at the top of the query","options"),KviOption_boolShowExtendedInfoInQueryLabel);
+	b = addBoolSelector(0,5,1,5, __tr2qs_ctx("Show information about query target at the top of the query","options"),KviOption_boolShowExtendedInfoInQueryLabel);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option enables query window information " \
 			"label. It can show you known information about query target at the top of the window.<br>" \
 			"Uncheck if you think,that it wastes your query space/" \
 			"</center>","options"));
 
-	b = addBoolSelector(0,6,0,6,__tr2qs_ctx("Paste last channel log","options"),KviOption_boolPasteLastLogOnQueryJoin);
+	b = addBoolSelector(0,6,1,6,__tr2qs_ctx("Paste last channel log","options"),KviOption_boolPasteLastLogOnQueryJoin);
 
 	KviTalHBox * box = new KviTalHBox(this);
 	addWidgetToLayout(box,0,7,1,7);
@@ -103,7 +103,7 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></center>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
-	addRowSpacer(0,8,0,8);
+	addRowSpacer(0,8,1,8);
 }
 
 KviQueryOptionsWidget::~KviQueryOptionsWidget()

@@ -171,7 +171,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	KviTalVBox * vbox = new KviTalVBox(spl);
 	vbox->setSpacing(2);
-	vbox->setMargin(0);
+	vbox->setMargin(3);
 
 	// Controlling list view
 	m_pTreeWidget = new KviTalTreeWidget(vbox);
@@ -185,7 +185,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	KviTalHBox * hbox = new KviTalHBox(vbox);
 	hbox->setSpacing(2);
-	hbox->setMargin(0);
+	hbox->setMargin(3);
 
 	m_pSearchLineEdit = new QLineEdit(hbox);
 	connect(m_pSearchLineEdit,SIGNAL(returnPressed()),this,SLOT(searchClicked()));
@@ -206,11 +206,10 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	vbox = new KviTalVBox(spl);
 	vbox->setSpacing(2);
-	vbox->setMargin(0);
+	vbox->setMargin(3);
 
 	m_pCategoryLabel = new QLabel("<b>&nbsp;</b>",vbox);
 	m_pCategoryLabel->setObjectName("labgeneraloptions");
-	//m_pCategoryLabel->setMargin(3);
 
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
@@ -300,8 +299,6 @@ void KviOptionsDialog::showEvent(QShowEvent *e)
 	}
 	
 	setGeometry((w - ww) / 2,(h - wh) / 2,ww,wh);
-
-	move((r.width() - width())/2,(r.height() - height())/2);
 
 	QDialog::showEvent(e);
 }

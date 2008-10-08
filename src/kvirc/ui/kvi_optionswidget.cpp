@@ -89,15 +89,15 @@ void KviOptionsWidget::createLayout()
 {
 	if(m_pLayout)delete m_pLayout;
 	m_pLayout = new QGridLayout(this);//,rows,cols,KVI_OPTIONSWIDGET_GRIDLAYOUT_BORDER,KVI_OPTIONSWIDGET_GRIDLAYOUT_SPACE);
-	m_pLayout->setMargin(0);
-	m_pLayout->setSpacing(0);
+	m_pLayout->setMargin(3);
+	m_pLayout->setSpacing(2);
 }
 
 void KviOptionsWidget::createTabbedPage()
 {
 	createLayout();
-	layout()->setMargin(0);
-	layout()->setSpacing(0);
+	layout()->setMargin(3);
+	layout()->setSpacing(2);
 	m_pTabWidget = new QTabWidget(this);
 	addWidgetToLayout(m_pTabWidget,0,0,0,0);
 }
@@ -105,7 +105,7 @@ void KviOptionsWidget::createTabbedPage()
 void KviOptionsWidget::addOptionsWidget(const QString &szText,const QIcon &iconSet,KviOptionsWidget * pWidget)
 {
 	if(pWidget->layout())
-		pWidget->layout()->setMargin(10);
+		pWidget->layout()->setMargin(3);
 	m_pTabWidget->addTab(pWidget,iconSet,szText);
 	m_pSelectorInterfaceList->append(pWidget);
 }
