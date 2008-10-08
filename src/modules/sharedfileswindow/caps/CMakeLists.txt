@@ -1,6 +1,6 @@
 # CMakeLists for ./caps
 
-SET(CAPSFILE sharedfileswindow)
+SET(CAPSFILE sharedfilewindow)
 
 IF(UNIX)
 	IF(APPLE)
