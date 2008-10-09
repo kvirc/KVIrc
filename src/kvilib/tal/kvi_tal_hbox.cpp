@@ -52,10 +52,10 @@ const int align_cod[] = {
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 
-KviTalHBox::KviTalHBox(QWidget * pParent, char * name)
+KviTalHBox::KviTalHBox(QWidget * pParent, char * pcName)
 : QWidget(pParent)
 {
-	setObjectName(name);
+	setObjectName(pcName);
 
 	m_pLayout = new QHBoxLayout(this);
 	m_pLayout->setMargin(3);
@@ -70,8 +70,10 @@ KviTalHBox::~KviTalHBox()
 
 void KviTalHBox::childEvent(QChildEvent * e)
 {
-	if(!e->child()->isWidgetType()) return;
-	if(e->child()->parent() != this) return;
+	if(!e->child()->isWidgetType())
+		return;
+	if(e->child()->parent() != this)
+		return;
 
 	switch(e->type())
 	{
@@ -118,4 +120,4 @@ void KviTalHBox::addStretch(int iStretch)
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_hbox.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

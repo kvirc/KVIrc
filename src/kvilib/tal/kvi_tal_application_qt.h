@@ -24,16 +24,35 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_application_qt.h
+* \author Szymon Stefanek
+* \brief Qt class for application
+*/
+
 #include "kvi_settings.h"
 
 #include <QApplication>
 
-
+/**
+* \class KviTalApplication
+* \brief Toolkit Abstraction Layer: application class
+*/
 class KVILIB_API KviTalApplication : public QApplication
 {
 	Q_OBJECT
 public:
-	KviTalApplication(int &argc,char ** argv);
+	/**
+	* \brief Constructs the application object
+	* \param iArgc The number of arguments
+	* \param ppcArgv The arguments list
+	* \return KviTalApplication
+	*/
+	KviTalApplication(int & iArgc, char ** ppcArgv);
+
+	/**
+	* \brief Destroys the application object
+	*/
 	~KviTalApplication();
 };
 

@@ -25,6 +25,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_iconview.h
+* \author Szymon Stefanek
+* \brief Class for iconview
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 
@@ -33,43 +39,119 @@
 
 class KviTalIconViewItem;
 class KviTalIconViewItemDelegate;
+
+/**
+* \class KviTalApplication
+* \brief Toolkit Abstraction Layer: iconview class
+*/
 class KVILIB_API KviTalIconView : public QTableWidget
 {
 	Q_OBJECT
 public:
-	KviTalIconView(QWidget * pParent,Qt::WFlags f = 0);
-	void setPixmap(QPixmap *pix);
+	/**
+	* \brief Constructs the iconview object
+	* \param pParent The parent object
+	* \param f The Qt flags
+	* \return KviTalIconView
+	*/
+	KviTalIconView(QWidget * pParent, Qt::WFlags f = 0);
 
-	virtual ~KviTalIconView() {};
+	/**
+	* \brief Destroys the iconview object
+	*/
+	virtual ~KviTalIconView();
 protected:
-	KviTalIconViewItemDelegate *m_pDelegate;
-signals:
-	void cellActivated(KviTalIconViewItem * pItem);
-	void currentItemChanged(KviTalIconViewItem *pItem,KviTalIconViewItem *prev);
+	KviTalIconViewItemDelegate * m_pDelegate;
+public:
+
+	/**
+	* \brief Sets the pixmap for the object
+	* \param pPix The pixmap :)
+	* \return void
+	*/
+	void setPixmap(QPixmap * pPix);
 protected slots:
-	void redirect_cellActivated(int,int);
-	void redirect_currentItemChanged(QTableWidgetItem * pItem,QTableWidgetItem * prev);
+	/**
+	* \brief Called when a cell is activated
+	* \param iRow The row of the cell
+	* \param iCol The column of the cell
+	* \return void
+	*/
+	void emitCellActivated(int iRow, int iCol);
+
+	/**
+	* \brief Called when the current item changes
+	* \param pItem The new item
+	* \param pPrev The previous item
+	* \return void
+	*/
+	void emitCurrentItemChanged(QTableWidgetItem * pItem, QTableWidgetItem * pPrev);
+signals:
+	/**
+	* \brief Emitted when a cell is activated
+	* \param pItem The activated item
+	* \return void
+	*/
+	void cellActivated(KviTalIconViewItem * pItem);
+
+	/**
+	* \brief Emitted when the current item changes
+	* \param pItem The new item
+	* \param pPrev The previous item
+	* \return void
+	*/
+	void currentItemChanged(KviTalIconViewItem * pItem, KviTalIconViewItem * pPrev);
 };
 
+/**
+* \class KviTalIconViewItem
+* \brief Toolkit Abstraction Layer: iconviewitem class
+*/
 class KVILIB_API KviTalIconViewItem : public QTableWidgetItem
 {
 public:
-	KviTalIconViewItem(QString text,const QIcon & icon)
-	: QTableWidgetItem(icon,text) {setSizeHint(QSize(30,20));};
-protected:
-	QItemDelegate m_pDelegate; 
+	/**
+	* \brief Constructs an iconviewitem object
+	* \param szText The text of the cell item
+	* \param icon The icon of the item
+	* \return KviTalIconViewItem
+	*/
+	KviTalIconViewItem(QString szText, const QIcon & icon);
+
+	/**
+	* \brief Destroys an iconviewitem object
+	*/
+	~KviTalIconViewItem();
 };
 
+/**
+* \class KviTalIconViewItemDelegate
+* \brief Toolkit Abstraction Layer: iconviewitemdelegate class
+*/
 class KviTalIconViewItemDelegate : public QItemDelegate
 {
+public:
+	/**
+	* \brief Constructs an iconviewitemdelegate object
+	* \param pTableWidget The parent tablewidget object
+	* \return KviTalIconViewItemDelegate
+	*/
+	KviTalIconViewItemDelegate(QTableWidget * pTableWidget);
+
+	/**
+	* \brief Destroys an iconviewitemdelegate object
+	*/
+	~KviTalIconViewItemDelegate();
 protected:
 	QTableWidget * m_pTableWidget;
 public:
-	KviTalIconViewItemDelegate(QTableWidget * pTableWidget)
-		: QItemDelegate(pTableWidget), m_pTableWidget(pTableWidget){};
-	~KviTalIconViewItemDelegate(){};
-//	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-//	 void drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const;
-	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-	};
+	/**
+	* \brief Paints the view
+	* \param pPainter The painter to draw the view
+	* \param option The options of the item
+	* \param index The model index of the item
+	* \return void
+	*/
+	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+};
 #endif // _KVI_TAL_ICONVIEW_H_

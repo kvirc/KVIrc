@@ -28,10 +28,10 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	KviTalFileDialog::KviTalFileDialog(const QString &dirName,const QString &filter,QWidget *parent,const char *name,bool modal)
-	: KFileDialog(KUrl(dirName),filter,parent)
+	KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char * pcName, bool bModal)
+	: KFileDialog(KUrl(szDirName),szFilter,pParent)
 	{
-	//	clearWFlags(WDestructiveClose);
+		//clearWFlags(WDestructiveClose);
 	}
 
 	KviTalFileDialog::~KviTalFileDialog()
@@ -67,7 +67,7 @@
 		}
 	}
 
-	void KviTalFileDialog::setDirectory(const QString &szDirectory)
+	void KviTalFileDialog::setDirectory(const QString & szDirectory)
 	{
 		setUrl(KUrl(szDirectory));
 	}
@@ -75,16 +75,16 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_filedialog_kde.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #else
 
 	#include <QDir>
 
-	KviTalFileDialog::KviTalFileDialog(const QString &dirName,const QString &filter,QWidget *parent,const char *name,bool modal)
-	: QFileDialog(parent,"",dirName,filter)
+	KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char * pcName, bool bModal)
+	: QFileDialog(pParent,"",szDirName,szFilter)
 	{
-		setModal(modal);
+		setModal(bModal);
 	}
 
 	KviTalFileDialog::~KviTalFileDialog()
@@ -116,7 +116,7 @@
 		}
 	}
 
-	void KviTalFileDialog::setDirectory(const QString &szDirectory)
+	void KviTalFileDialog::setDirectory(const QString & szDirectory)
 	{
 		QFileDialog::setDirectory(szDirectory);
 	}
@@ -124,6 +124,6 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_filedialog_qt.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif

@@ -23,61 +23,76 @@
 //=============================================================================
 
 #include "kvi_tal_itemdelegates.h"
+
 #include <QListWidget>
 #include <QPainter>
 #include <QAbstractTextDocumentLayout>
 
-void KviTalIconAndRichTextItemDelegate::paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
+KviTalIconAndRichTextItemDelegate::KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget)
+: QItemDelegate(pWidget), m_pDefaultPix(0), m_pParent(pWidget)
 {
-	painter->save();
-	if (option.state & QStyle::State_Selected)
+}
+
+KviTalIconAndRichTextItemDelegate::~KviTalIconAndRichTextItemDelegate()
+{
+}
+
+void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
+{
+	pPainter->save();
+	if(option.state & QStyle::State_Selected)
 	{
-		QPalette pal=option.palette;
-		QBrush brush=pal.highlight();
-		QColor col=brush.color();
+		QPalette pal = option.palette;
+		QBrush brush = pal.highlight();
+		QColor col = brush.color();
 		col.setAlpha(127);
 		brush.setColor(col);
-		painter->fillRect(option.rect,brush);
+		pPainter->fillRect(option.rect,brush);
 	}
-	QString text=index.data(Qt::DisplayRole).toString();
+
+	QString szText = index.data(Qt::DisplayRole).toString();
 	QPixmap pixmap;
 	QRect decorationRect;
 	QVariant value = index.data(Qt::DecorationRole);
-	QStyle::State state=option.state;
-	QRect rect=option.rect;
-	int afterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
+	QStyle::State state = option.state;
+	QRect rect = option.rect;
+	int iAfterIcon = LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING;
+
 	QIcon ico;
 	if(value.canConvert<QIcon>())
 	{
-		ico= QIcon(value.value<QIcon>());
-		if (ico.isNull())
+		ico = QIcon(value.value<QIcon>());
+		if(ico.isNull())
 		{
-			if (m_pDefaultPix) painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*m_pDefaultPix);
+			if(m_pDefaultPix)
+				pPainter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*m_pDefaultPix);
 		} else {
-			painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,ico.pixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
+			pPainter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,ico.pixmap(LVI_ICON_SIZE,LVI_ICON_SIZE));
 		}
 	} else {
-		if (m_pDefaultPix) painter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*m_pDefaultPix);
+		if(m_pDefaultPix)
+			pPainter->drawPixmap(option.rect.x()+LVI_BORDER,option.rect.y()+LVI_BORDER,*m_pDefaultPix);
 	}
+
 	QTextDocument doc;
-	doc.setHtml( text );
-	doc.setDefaultFont(painter->font());
-	painter->translate(option.rect.x()+afterIcon,option.rect.y()+LVI_BORDER);
+	doc.setHtml(szText);
+	doc.setDefaultFont(pPainter->font());
+	pPainter->translate(option.rect.x()+iAfterIcon,option.rect.y()+LVI_BORDER);
 	doc.setTextWidth(option.rect.width()-10);
-	QRect cliprect=QRect(QPoint(0,0),QSize(option.rect.width()-afterIcon,option.rect.height()-(LVI_BORDER*2)-4));
-	doc.drawContents(painter, cliprect);
-	painter->restore();
+	QRect cliprect = QRect(QPoint(0,0),QSize(option.rect.width()-iAfterIcon,option.rect.height()-(LVI_BORDER*2)-4));
+	doc.drawContents(pPainter,cliprect);
+	pPainter->restore();
 }
 
-QSize KviTalIconAndRichTextItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
+QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
-	QString text=index.data(Qt::DisplayRole).toString();
+	QString szText = index.data(Qt::DisplayRole).toString();
 	QTextDocument doc;
-	doc.setHtml( text );
-	int height=doc.documentLayout()->documentSize().toSize().height();
-	if (height<(LVI_ICON_SIZE+(2 * LVI_BORDER))) height=LVI_ICON_SIZE;
-	return QSize(((QListWidget*)parent())->viewport()->size().width(), height + (2 * LVI_BORDER));
+	doc.setHtml(szText);
+
+	int iHeight = doc.documentLayout()->documentSize().toSize().height();
+	if(iHeight < (LVI_ICON_SIZE+(2 * LVI_BORDER)))
+		iHeight = LVI_ICON_SIZE;
+
+	return QSize(((QListWidget *)parent())->viewport()->size().width(), iHeight + (2 * LVI_BORDER));
 }
-
-
-

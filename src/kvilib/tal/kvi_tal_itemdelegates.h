@@ -25,7 +25,14 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_itemdelegates.h
+* \author Szymon Stefanek
+* \brief Class for item delegates
+*/
+
 #include "kvi_settings.h"
+
 #include <QItemDelegate>
 #include <QListWidget>
 #include <QTreeWidget>
@@ -37,20 +44,51 @@
 #define LVI_MINIMUM_TEXT_WIDTH 300
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
 
-
+/**
+* \class KviTalIconAndRichTextItemDelegate
+* \brief Toolkit Abstraction Layer: itemdelegate class
+*/
 class KVILIB_API KviTalIconAndRichTextItemDelegate : public QItemDelegate
 {
 public:
-	KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget=0)
-		: QItemDelegate(pWidget), m_pDefaultPix(0), m_pParent(pWidget) {};
-	~KviTalIconAndRichTextItemDelegate(){};
-	 QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
-	 void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-	 void setDefaultIcon(QPixmap *pix){m_pDefaultPix=pix;};
-protected:
-	QAbstractItemView *m_pParent;
-	QPixmap *m_pDefaultPix;
-};
+	/**
+	* \brief Constructs the icon and rich text item delegate object
+	* \param pWidget The item which we have to delegate for the paint
+	* \return KviTalIconAndRichTextItemDelegate
+	*/
+	KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget = 0);
 
+	/**
+	* \brief Destroys the icon and rich text item delegate object
+	*/
+	~KviTalIconAndRichTextItemDelegate();
+protected:
+	QAbstractItemView * m_pParent;
+	QPixmap           * m_pDefaultPix;
+public:
+	/**
+	* \brief Returns the size hint for the view
+	* \param option The style options for the item
+	* \param index The model index for the item
+	* \return QSize
+	*/
+	QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
+
+	/**
+	* \brief Paints the view
+	* \param pPainter The painter to draw the view
+	* \param option The style options for the item
+	* \param index The model index for the item
+	* \return void
+	*/
+	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+
+	/**
+	* \brief Sets the default icon
+	* \param pPix The icon pixmap
+	* \return void
+	*/
+	void setDefaultIcon(QPixmap * pPix){ m_pDefaultPix = pPix; };
+};
 
 #endif // _KVI_TAL_LISTWIDGET_H_

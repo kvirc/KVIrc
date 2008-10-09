@@ -24,27 +24,77 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_filedialog_qt.h
+* \author Szymon Stefanek
+* \brief KDE class for application
+*/
+
 #include "kvi_settings.h"
 
 #include <KFileDialog>
 
+/**
+* \class KviTalFileDialog
+* \brief Toolkit Abstraction Layer: filedialog class
+*/
 class KVILIB_API KviTalFileDialog : public KFileDialog
 {
 	Q_OBJECT
 public:
-	KviTalFileDialog(const QString &dirName,const QString &filter = QString::null,QWidget *parent = 0,const char *name = 0,bool modal = FALSE);
+	/**
+	* \brief Constructs the filedialog object
+	* \param szDirName The initial directory to display
+	* \param szFilter The filter to use to display
+	* \param pParent The parent object
+	* \param pcName The caption name of the dialog
+	* \param bModal Whether the dialog is modal
+	* \return KviTalFileDialog
+	*/
+	KviTalFileDialog(const QString & szDirName, const QString & szFilter = QString::null, QWidget * pParent = 0, const char * pcName = 0, bool bModal = false);
+
+	/**
+	* \brief Destroys the filedialog object
+	*/
 	~KviTalFileDialog();
 public:
-	enum FileMode { AnyFile, ExistingFile, ExistingFiles, Directory, DirectoryOnly };
+	/**
+	* \enum FileMode
+	* \brief Indicate what the user may select in the file dialog
+	*/
+	enum FileMode {
+		AnyFile,         /**< The name of a file, whether it exists or not */
+		ExistingFile,    /**< The name of a single existing file */
+		ExistingFiles,   /**< The names of zero or more existing files */
+		Directory,       /**< The name of a directory. Both files and directories are displayed */
+		DirectoryOnly    /**< The name of a directory. The file dialog will only display directories */
+	};
 
+	/**
+	* \brief Sets the file mode
+	* \param m The mode :)
+	* \return void
+	*/
 	void setFileMode(FileMode m);
-	void setDirectory(const QString &szDirectory);
 
+	/**
+	* \brief Sets the current directory
+	* \param szDirectory The directory
+	* \return void
+	*/
+	void setDirectory(const QString & szDirectory);
 
-	static QString getExistingDirectoryPath(const QString &dir = QString::null,const QString &caption = QString::null,QWidget *parent = 0)
+	/**
+	* \brief Returns an existing directory selected by the user
+	* \param szDir The directory to display
+	* \param szCaption The caption of the dialog
+	* \param pParent The parent object
+	* \return QString
+	*/
+	static QString getExistingDirectoryPath(const QString & szDir = QString::null, const QString & szCaption = QString::null, QWidget * pParent = 0)
 	{
 		// QFileDialog allows making new directories...kfiledialog not :/
-		return KFileDialog::getExistingDirectory(KUrl(dir),parent,caption);
+		return KFileDialog::getExistingDirectory(KUrl(szDir),pParent,szCaption);
 		//return getExistingDirectory(dir,parent,caption);
 	};
 };

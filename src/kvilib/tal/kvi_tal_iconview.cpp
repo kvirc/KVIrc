@@ -24,6 +24,7 @@
 
 
 #include "kvi_tal_iconview.h"
+
 #include <QTableWidget>
 #include <QHeaderView>
 #include <QSize>
@@ -32,82 +33,7 @@
 #include <QAbstractTextDocumentLayout>
 #include <QStyle>
 
-/*
-void KviTalIconViewItemDelegate::drawDisplay ( QPainter * painter, const QStyleOptionViewItem & option, const QRect & rect, const QString & text ) const
-{
-
-	painter->save();
-	QTextDocument doc;
-	doc.setHtml( text );
-	QAbstractTextDocumentLayout::PaintContext context;
-	doc.setPageSize(rect.size());
-	painter->translate(rect.x(),rect.y());
-	doc.documentLayout()->draw(painter, context);
-	painter->restore();
-}
-*/
-void KviTalIconViewItemDelegate::paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const
-{
-	painter->save();
-		QString text="<center>";
-	text+=index.data(Qt::DisplayRole).toString();
-	text +="</center>";
-
-	QPixmap pixmap;
-	QRect decorationRect;
-	QVariant value = index.data(Qt::DecorationRole);
-	QStyle::State state=option.state;
-	QRect rect=option.rect;
-
-
-	int iconx=option.rect.x()+(option.rect.width()/2);
-	iconx-=8;
-	QIcon ico=QIcon(value.value<QIcon>());
-	QRect rect2=QRect(QPoint(iconx,option.rect.y()),QSize(16,16));
-	painter->drawPixmap(rect2,ico.pixmap(QSize(16,16)));
-
-
-	if (option.state & QStyle::State_Selected)
-	{
-		QPalette pal=option.palette;
-		QBrush brush=pal.highlight();
-		QColor col=brush.color();
-		col.setAlpha(127);
-		brush.setColor(col);
-		painter->fillRect(rect2,brush);
-	}
-
-	painter->restore();
-	painter->save();
-	QAbstractTextDocumentLayout::PaintContext context;
-	QTextDocument doc;
-	doc.setHtml( text );
-	painter->translate(option.rect.x()+5,option.rect.y()+14);
-	doc.setTextWidth(option.rect.width()-10);
-	doc.documentLayout()->draw(painter, context);
-
-	if (option.state & QStyle::State_Selected)
-	{
-		QPalette pal=option.palette;
-		QBrush brush=pal.highlight();
-		QColor col=brush.color();
-		col.setAlpha(127);
-		brush.setColor(col);
-		QRect textRect=QRect(QPoint(0,2),QSize(doc.documentLayout()->documentSize().toSize().width(),doc.documentLayout()->documentSize().toSize().height()-4));
-		painter->fillRect(textRect,brush);
-	}
-	painter->restore();
-}
-
-
-/*
-QSize KviTalIconViewItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
-{
-
-}
-*/
-
-KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
+KviTalIconView::KviTalIconView(QWidget * pParent, Qt::WFlags f)
 : QTableWidget(pParent)
 {
 	setSelectionMode(QAbstractItemView::SingleSelection);
@@ -115,24 +41,102 @@ KviTalIconView::KviTalIconView(QWidget * pParent,Qt::WFlags f)
 	verticalHeader()->hide();
 	setShowGrid(false);
 
-	m_pDelegate=new KviTalIconViewItemDelegate(this);
+	m_pDelegate = new KviTalIconViewItemDelegate(this);
 	setItemDelegate(m_pDelegate);
-	connect(this,SIGNAL(cellActivated(int,int)),this,SLOT(redirect_cellActivated(int,int)));
-	connect(this,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(redirect_currentItemChanged( QTableWidgetItem *, QTableWidgetItem *)));
 
+	connect(this,SIGNAL(cellActivated(int,int)),this,SLOT(emitCellActivated(int,int)));
+	connect(this,SIGNAL(currentItemChanged(QTableWidgetItem *, QTableWidgetItem *)),this,SLOT(emitCurrentItemChanged(QTableWidgetItem *, QTableWidgetItem *)));
+}
+
+KviTalIconView::~KviTalIconView()
+{
+}
+
+void KviTalIconView::emitCellActivated(int iRow, int iCol)
+{
+	emit cellActivated((KviTalIconViewItem *)item(iRow,iCol));
+}
+
+void KviTalIconView::emitCurrentItemChanged(QTableWidgetItem * pItem, QTableWidgetItem * pPrev)
+{
+	emit currentItemChanged((KviTalIconViewItem *)pItem,(KviTalIconViewItem *)pPrev);
 }
 
 
-void KviTalIconView::redirect_cellActivated(int row,int col)
+KviTalIconViewItem::KviTalIconViewItem(QString szText, const QIcon & icon)
+: QTableWidgetItem(icon,szText)
 {
-	emit cellActivated((KviTalIconViewItem *)item(row,col));
+	setSizeHint(QSize(30,20));
 }
 
-void KviTalIconView::redirect_currentItemChanged(QTableWidgetItem * pItem,QTableWidgetItem * prev)
+KviTalIconViewItem::~KviTalIconViewItem()
 {
-	emit currentItemChanged((KviTalIconViewItem *)pItem,(KviTalIconViewItem *)prev);
+}
+
+
+KviTalIconViewItemDelegate::KviTalIconViewItemDelegate(QTableWidget * pTableWidget)
+: QItemDelegate(pTableWidget), m_pTableWidget(pTableWidget)
+{
+}
+
+KviTalIconViewItemDelegate::~KviTalIconViewItemDelegate()
+{
+}
+
+void KviTalIconViewItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
+{
+	pPainter->save();
+
+	QString szText = "<center>";
+	szText += index.data(Qt::DisplayRole).toString();
+	szText += "</center>";
+
+	QPixmap pixmap;
+	QRect decorationRect;
+	QVariant value = index.data(Qt::DecorationRole);
+	QStyle::State state = option.state;
+	QRect rect = option.rect;
+
+	int iIconx = option.rect.x()+(option.rect.width()/2);
+	iIconx -= 8;
+	QIcon ico = QIcon(value.value<QIcon>());
+	QRect rect2 = QRect(QPoint(iIconx,option.rect.y()),QSize(16,16));
+	pPainter->drawPixmap(rect2,ico.pixmap(QSize(16,16)));
+
+	if(option.state & QStyle::State_Selected)
+	{
+		QPalette pal = option.palette;
+		QBrush brush = pal.highlight();
+		QColor col = brush.color();
+
+		col.setAlpha(127);
+		brush.setColor(col);
+		pPainter->fillRect(rect2,brush);
+	}
+
+	pPainter->restore();
+	pPainter->save();
+
+	QAbstractTextDocumentLayout::PaintContext context;
+	QTextDocument doc;
+	doc.setHtml(szText);
+	pPainter->translate(option.rect.x()+5,option.rect.y()+14);
+	doc.setTextWidth(option.rect.width()-10);
+	doc.documentLayout()->draw(pPainter,context);
+
+	if(option.state & QStyle::State_Selected)
+	{
+		QPalette pal = option.palette;
+		QBrush brush = pal.highlight();
+		QColor col = brush.color();
+		col.setAlpha(127);
+		brush.setColor(col);
+		QRect textRect = QRect(QPoint(0,2),QSize(doc.documentLayout()->documentSize().toSize().width(),doc.documentLayout()->documentSize().toSize().height()-4));
+		pPainter->fillRect(textRect,brush);
+	}
+	pPainter->restore();
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_iconview.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

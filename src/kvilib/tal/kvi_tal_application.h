@@ -28,6 +28,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_application.h
+* \author Szymon Stefanek
+* \brief Switcher between Qt and KDE classes
+*/
+
 #include "kvi_settings.h"
 
 #ifdef COMPILE_KDE_SUPPORT
