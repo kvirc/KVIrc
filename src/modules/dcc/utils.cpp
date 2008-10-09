@@ -30,6 +30,7 @@
 #include "kvi_locale.h"
 #include "kvi_netutils.h"
 #include "kvi_ircsocket.h"
+#include "kvi_irclink.h"
 #include "kvi_qstring.h"
 
 /*
@@ -157,7 +158,7 @@ bool dcc_kvs_get_listen_ip_address(KviKvsModuleCommandCall *c,KviConsole * pCons
 		if(pConsole->isConnected())
 		{
 			//#warning "The IPV6 choice is not OK here.... and maybe allow to bind to specified ports"
-			pConsole->connection()->socket()->getLocalHostIp(szListenIp,pConsole->isIPv6Connection());
+			pConsole->connection()->link()->socket()->getLocalHostIp(szListenIp,pConsole->isIPv6Connection());
 		} else {
 			szListenIp = "0.0.0.0"; // huh ? :)
 		}

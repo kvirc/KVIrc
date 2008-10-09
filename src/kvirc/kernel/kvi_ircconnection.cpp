@@ -69,9 +69,9 @@
 #include <QTimer>
 #include <QTextCodec>
 
-extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
-extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
-extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
+extern KVIRC_API KviServerDataBase   * g_pServerDataBase;
+extern KVIRC_API KviProxyDataBase    * g_pProxyDataBase;
+extern KVIRC_API KviGarbageCollector * g_pGarbageCollector;
 
 KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity)
 : QObject()
@@ -105,7 +105,9 @@ KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarg
 
 KviIrcConnection::~KviIrcConnection()
 {
-	if(m_bIdentdAttached) g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+	if(m_bIdentdAttached)
+		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
+
 	m_bIdentdAttached = false;
 	if(m_pLocalhostDns)
 	{
@@ -124,16 +126,19 @@ KviIrcConnection::~KviIrcConnection()
 		delete m_pNotifyListTimer;
 		m_pNotifyListTimer = 0;
 	}
+
 	if(m_pNotifyListManager)
 	{
 		delete m_pNotifyListManager; // destroy this before the userDb
 		m_pNotifyListManager = 0;
 	}
+
 	if(m_pLagMeter)
 	{
 		delete m_pLagMeter;
 		m_pLagMeter = 0;
 	}
+
 	delete m_pLink; // <-- this MAY trigger a linkTerminated() or something like this!
 	delete m_pChannelList;
 	delete m_pQueryList;
@@ -149,30 +154,35 @@ KviIrcConnection::~KviIrcConnection()
 	delete m_pUserIdentity;
 }
 
-void KviIrcConnection::setEncoding(const QString &szEncoding)
+void KviIrcConnection::setEncoding(const QString & szEncoding)
 {
 	QTextCodec * c = KviLocale::codecForName(szEncoding.toLatin1());
-	if(c == m_pTextCodec)return;
+	if(c == m_pTextCodec)
+		return;
 	if(!c)
 	{
 		m_pConsole->output(KVI_OUT_SYSTEMERROR,__tr2qs("Failed to set the encoding to %Q: mapping not available."),&szEncoding);
 		return;
 	}
-	QString tmp = c->name();
-	for(KviChannel * ch = m_pChannelList->first();ch;ch = m_pChannelList->next())
+
+	QString szTmp = c->name();
+	for(KviChannel * ch = m_pChannelList->first(); ch; ch = m_pChannelList->next())
 	{
 		if((ch->textCodec() != c) && (ch->textCodec() != ch->defaultTextCodec())) // actually not using the default!
 		{
 			ch->forceTextCodec(c);
-			if(_OUTPUT_VERBOSE)ch->output(KVI_OUT_VERBOSE,__tr2qs("Changed text encoding to %Q"),&tmp);
+			if(_OUTPUT_VERBOSE)
+				ch->output(KVI_OUT_VERBOSE,__tr2qs("Changed text encoding to %Q"),&szTmp);
 		}
 	}
-	for(KviQuery * q = m_pQueryList->first();q;q = m_pQueryList->next())
+
+	for(KviQuery * q = m_pQueryList->first(); q; q = m_pQueryList->next())
 	{
 		if((q->textCodec() != c) && (q->textCodec() != q->defaultTextCodec())) // actually not using the default!
 		{
 			q->forceTextCodec(c);
-			if(_OUTPUT_VERBOSE)q->output(KVI_OUT_VERBOSE,__tr2qs("Changed text encoding to %Q"),&tmp);
+			if(_OUTPUT_VERBOSE)
+				q->output(KVI_OUT_VERBOSE,__tr2qs("Changed text encoding to %Q"),&szTmp);
 		}
 	}
 	m_pTextCodec = c;
@@ -186,17 +196,21 @@ void KviIrcConnection::setupSrvCodec()
 	if(!m_pTarget->server()->encoding().isEmpty())
 	{
 		m_pSrvCodec = KviLocale::codecForName(m_pTarget->server()->encoding().toLatin1());
-		if(!m_pSrvCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->encoding().toUtf8().data());
+		if(!m_pSrvCodec)
+			qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->encoding().toUtf8().data());
 	}
+
 	if(!m_pSrvCodec)
 	{
 		// try the network
 		if(!m_pTarget->network()->encoding().isEmpty())
 		{
 			m_pSrvCodec = KviLocale::codecForName(m_pTarget->network()->encoding().toLatin1());
-			if(!m_pSrvCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->encoding().toUtf8().data());
+			if(!m_pSrvCodec)
+				qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->encoding().toUtf8().data());
 		}
 	}
+
 	if(!m_pSrvCodec)
 	{
 		m_pSrvCodec = KviApp::defaultSrvCodec();
@@ -213,6 +227,7 @@ void KviIrcConnection::setupTextCodec()
 		m_pTextCodec = KviLocale::codecForName(m_pTarget->server()->textEncoding().toLatin1());
 		if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->server()->textEncoding().toUtf8().data());
 	}
+
 	if(!m_pTextCodec)
 	{
 		// try the network
@@ -222,6 +237,7 @@ void KviIrcConnection::setupTextCodec()
 			if(!m_pTextCodec)qDebug("KviIrcConnection: can't find QTextCodec for encoding %s",m_pTarget->network()->textEncoding().toUtf8().data());
 		}
 	}
+
 	if(!m_pTextCodec)
 	{
 		m_pTextCodec = KviApp::defaultTextCodec();
@@ -232,19 +248,21 @@ void KviIrcConnection::setupTextCodec()
  * We're asking the connection itself to encode/decode text: use server specific encoding,
  * instead of the "user text" encoding used in channels
  */
-KviQCString KviIrcConnection::encodeText(const QString &szText)
+KviQCString KviIrcConnection::encodeText(const QString & szText)
 {
-	if(!m_pSrvCodec)return szText.toUtf8();
+	if(!m_pSrvCodec)
+		return szText.toUtf8();
 	return m_pSrvCodec->fromUnicode(szText);
 }
 
-QString KviIrcConnection::decodeText(const char * szText)
+QString KviIrcConnection::decodeText(const char * pcText)
 {
-	if(!m_pSrvCodec)return QString(szText);
-	return m_pSrvCodec->toUnicode(szText);
+	if(!m_pSrvCodec)
+		return QString(pcText);
+	return m_pSrvCodec->toUnicode(pcText);
 }
 
-void KviIrcConnection::serverInfoReceived(const QString &szServerName,const QString &szUserModes,const QString &szChanModes)
+void KviIrcConnection::serverInfoReceived(const QString & szServerName, const QString & szUserModes, const QString & szChanModes)
 {
 	serverInfo()->setName(szServerName);
 	serverInfo()->setSupportedUserModes(szUserModes);
@@ -253,24 +271,9 @@ void KviIrcConnection::serverInfoReceived(const QString &szServerName,const QStr
 	m_pConsole->frame()->childConnectionServerInfoChange(this);
 }
 
-KviServer * KviIrcConnection::server()
-{
-	return m_pTarget->server();
-}
-
-KviProxy * KviIrcConnection::proxy()
-{
-	return m_pTarget->proxy();
-}
-
 const QString & KviIrcConnection::networkName()
 {
 	return m_pTarget->networkName();
-}
-
-KviIrcSocket * KviIrcConnection::socket()
-{
-	return m_pLink->socket();
 }
 
 void KviIrcConnection::abort()
@@ -311,15 +314,14 @@ void KviIrcConnection::linkEstabilished()
 
 #ifdef COMPILE_SSL_SUPPORT
 	if(
-			KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable) &&
-			target()->server()->supportsSTARTTLS() &&
-			(!socket()->usingSSL())
-		)
+		KVI_OPTION_BOOL(KviOption_boolUseStartTlsIfAvailable) &&
+		target()->server()->supportsSTARTTLS() &&
+		(!link()->socket()->usingSSL())
+	)
 	{
 		trySTARTTLS();
 	} else {
 #endif
-
 		// Ok...we're loggin in now
 		resolveLocalHost();
 
@@ -371,52 +373,56 @@ void KviIrcConnection::linkAttemptFailed(int iError)
 	context()->connectionFailed(iError);
 }
 
-KviChannel * KviIrcConnection::findChannel(const QString &name)
+KviChannel * KviIrcConnection::findChannel(const QString & szName)
 {
-	for(KviChannel * c = m_pChannelList->first();c;c = m_pChannelList->next())
+	for(KviChannel * c = m_pChannelList->first(); c; c = m_pChannelList->next())
 	{
-		if(KviQString::equalCI(name,c->windowName()))return c;
+		if(KviQString::equalCI(szName,c->windowName()))
+			return c;
 	}
 	return 0;
 }
 
-int KviIrcConnection::getCommonChannels(const QString &nick,QString &szChansBuffer,bool bAddEscapeSequences)
+int KviIrcConnection::getCommonChannels(const QString & szNick, QString & szChansBuffer, bool bAddEscapeSequences)
 {
-	int count = 0;
-	for(KviChannel * c = m_pChannelList->first();c;c = m_pChannelList->next())
+	int iCount = 0;
+	for(KviChannel * c = m_pChannelList->first(); c; c = m_pChannelList->next())
 	{
-		if(c->isOn(nick))
+		if(c->isOn(szNick))
 		{
-			if(!szChansBuffer.isEmpty())szChansBuffer.append(", ");
-			char uFlag = c->getUserFlag(nick);
+			if(!szChansBuffer.isEmpty())
+				szChansBuffer.append(", ");
+
+			char uFlag = c->getUserFlag(szNick);
 			if(uFlag)
 			{
 				KviQString::appendFormatted(szChansBuffer,bAddEscapeSequences ? "%c\r!c\r%Q\r" : "%c%Q",uFlag,&(c->windowName()));
 			} else {
-				if(bAddEscapeSequences)KviQString::appendFormatted(szChansBuffer,"\r!c\r%Q\r",&(c->windowName()));
+				if(bAddEscapeSequences)
+					KviQString::appendFormatted(szChansBuffer,"\r!c\r%Q\r",&(c->windowName()));
 				else szChansBuffer.append(c->windowName());
 			}
-			count++;
+			iCount++;
 		}
 	}
-	return count;
+	return iCount;
 }
 
 void KviIrcConnection::unhighlightAllChannels()
 {
-	for(KviChannel * c = m_pChannelList->first();c;c = m_pChannelList->next())
+	for(KviChannel * c = m_pChannelList->first(); c; c = m_pChannelList->next())
 		c->unhighlight();
 }
 
 void KviIrcConnection::unhighlightAllQueries()
 {
-	for(KviQuery * c = m_pQueryList->first();c;c = m_pQueryList->next())
+	for(KviQuery * c = m_pQueryList->first(); c; c = m_pQueryList->next())
 		c->unhighlight();
 }
 
 void KviIrcConnection::partAllChannels()
 {
-	for(KviChannel * c = m_pChannelList->first();c;c = m_pChannelList->next())
+	for(KviChannel * c = m_pChannelList->first(); c; c = m_pChannelList->next())
 	{
 		c->close();
 	}
@@ -438,7 +444,7 @@ void KviIrcConnection::closeAllQueries()
 	}
 }
 
-KviChannel * KviIrcConnection::createChannel(const QString &szName)
+KviChannel * KviIrcConnection::createChannel(const QString & szName)
 {
 	KviChannel * c = m_pContext->findDeadChannel(szName);
 	if(c)
@@ -452,18 +458,20 @@ KviChannel * KviIrcConnection::createChannel(const QString &szName)
 	} else {
 		c = new KviChannel(m_pConsole->frame(),m_pConsole,szName);
 		m_pConsole->frame()->addWindow(c,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
-		if(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels)) c->minimize();
+		if(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels))
+			c->minimize();
 	}
 	return c;
 }
 
-KviQuery * KviIrcConnection::createQuery(const QString &szNick)
+KviQuery * KviIrcConnection::createQuery(const QString & szNick)
 {
 	KviQuery * q = m_pContext->findDeadQuery(szNick);
 	if(!q)
 	{
 		q = findQuery(szNick);
-		if(q)return q; // hm ?
+		if(q)
+			return q; // hm ?
 	}
 	if(q)
 	{
@@ -476,16 +484,18 @@ KviQuery * KviIrcConnection::createQuery(const QString &szNick)
 	} else {
 		q = new KviQuery(m_pConsole->frame(),m_pConsole,szNick);
 		m_pConsole->frame()->addWindow(q,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery));
-		if(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery))q->minimize();
+		if(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery))
+			q->minimize();
 	}
 	return q;
 }
 
-KviQuery * KviIrcConnection::findQuery(const QString &name)
+KviQuery * KviIrcConnection::findQuery(const QString & szName)
 {
-	for(KviQuery * c = m_pQueryList->first();c;c = m_pQueryList->next())
+	for(KviQuery * c = m_pQueryList->first(); c; c = m_pQueryList->next())
 	{
-		if(KviQString::equalCI(name,c->windowName()))return c;
+		if(KviQString::equalCI(szName,c->windowName()))
+			return c;
 	}
 	return 0;
 }
@@ -506,15 +516,15 @@ void KviIrcConnection::unregisterChannel(KviChannel * c)
 	emit(chanListChanged());
 }
 
-void KviIrcConnection::registerQuery(KviQuery * c)
+void KviIrcConnection::registerQuery(KviQuery * q)
 {
-	m_pQueryList->append(c);
+	m_pQueryList->append(q);
 }
 
-
-void KviIrcConnection::unregisterQuery(KviQuery * c)
+void KviIrcConnection::unregisterQuery(KviQuery * q)
 {
-	if(m_pQueryList->removeRef(c))return;
+	if(m_pQueryList->removeRef(q))
+		return;
 }
 
 void KviIrcConnection::keepChannelsOpenAfterDisconnect()
@@ -566,17 +576,20 @@ void KviIrcConnection::resurrectDeadQueries()
 // We keep a list of data to send , and flush it as soon as we can.
 //
 
-bool KviIrcConnection::sendFmtData(const char *fmt,...)
+bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 {
 	KviDataBuffer * pData = new KviDataBuffer(512);
 	kvi_va_list(list);
-	kvi_va_start(list,fmt);
+	kvi_va_start(list,pcFmt);
 	bool bTruncated;
 	//sprintf the buffer up to 512 chars (adds a CRLF too)
-	int iLen = kvi_irc_vsnprintf((char *)(pData->data()),fmt,list,&bTruncated);
+	int iLen = kvi_irc_vsnprintf((char *)(pData->data()),pcFmt,list,&bTruncated);
 	kvi_va_end(list);
+
 	//adjust the buffer size
-	if(iLen < 512)pData->resize(iLen);
+	if(iLen < 512)
+		pData->resize(iLen);
+
 	if(bTruncated)
 	{
 		if(!_OUTPUT_MUTE)
@@ -586,7 +599,7 @@ bool KviIrcConnection::sendFmtData(const char *fmt,...)
 	// notify the monitors
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
-		for(KviIrcDataStreamMonitor *m = l->first();m;m = l->next())
+		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
 			m->outgoingMessage((const char *)(pData->data()),iLen - 2);
 	}
 
@@ -601,30 +614,32 @@ bool KviIrcConnection::sendFmtData(const char *fmt,...)
 	return m_pLink->sendPacket(pData);
 }
 
-bool KviIrcConnection::sendData(const char *buffer,int buflen)
+bool KviIrcConnection::sendData(const char * pcBuffer, int iBuflen)
 {
-	if(buflen < 0)buflen = (int)strlen(buffer);
-	if(buflen > 510)
+	if(iBuflen < 0)
+		iBuflen = (int)strlen(pcBuffer);
+	if(iBuflen > 510)
 	{
-		buflen = 510;
+		iBuflen = 510;
 		if(!_OUTPUT_MUTE)
 			m_pConsole->outputNoFmt(KVI_OUT_SOCKETWARNING,__tr2qs("[LINK WARNING]: Socket message truncated to 512 bytes."));
 	}
-	KviDataBuffer * pData = new KviDataBuffer(buflen + 2);
-	kvi_memmove(pData->data(),buffer,buflen);
-	*(pData->data()+buflen)='\r';
-	*(pData->data()+buflen+1)='\n';
+
+	KviDataBuffer * pData = new KviDataBuffer(iBuflen + 2);
+	kvi_memmove(pData->data(),pcBuffer,iBuflen);
+	*(pData->data() + iBuflen) = '\r';
+	*(pData->data() + iBuflen + 1) = '\n';
 
 	// notify the monitors
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
-		for(KviIrcDataStreamMonitor *m = l->first();m;m = l->next())
-			m->outgoingMessage((const char *)(pData->data()),buflen);
+		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
+			m->outgoingMessage((const char *)(pData->data()),iBuflen);
 	}
 
 	// Trigger OnOutboundTraffic event
 	QString szMsg = (const char *)(pData->data());
-	szMsg.truncate(buflen);
+	szMsg.truncate(iBuflen);
 	KviKvsVariantList * pParams = new KviKvsVariantList();
 	pParams->append(szMsg);
 
@@ -639,17 +654,16 @@ bool KviIrcConnection::sendData(const char *buffer,int buflen)
 
 void KviIrcConnection::delayedStartNotifyList()
 {
-	// start the notify list in 15 seconds
-	// We have this delay to wait an eventual RPL_PROTOCTL from the server
-	// telling us that the WATCH notify list method is supported
 	__range_invalid(m_pNotifyListTimer);
 
-	if(m_pNotifyListTimer)delete m_pNotifyListTimer;
+	if(m_pNotifyListTimer)
+		delete m_pNotifyListTimer;
+
 	m_pNotifyListTimer = new QTimer();
-	connect(m_pNotifyListTimer,SIGNAL(timeout()),this,SLOT(restartNotifyList()));
 	m_pNotifyListTimer->setInterval(15000);
 	m_pNotifyListTimer->setSingleShot(true);
 	m_pNotifyListTimer->start();
+	connect(m_pNotifyListTimer,SIGNAL(timeout()),this,SLOT(restartNotifyList()));
 
 	// This delay is large enough to fire after the MOTD has been sent,
 	// even on the weirdest network.
@@ -661,7 +675,8 @@ void KviIrcConnection::delayedStartNotifyList()
 void KviIrcConnection::endOfMotdReceived()
 {
 	// if the timer is still there running then just
-	if(m_pNotifyListTimer)restartNotifyList();
+	if(m_pNotifyListTimer)
+		restartNotifyList();
 }
 
 void KviIrcConnection::restartNotifyList()
@@ -680,7 +695,8 @@ void KviIrcConnection::restartNotifyList()
 		m_pNotifyListManager = 0;
 	}
 
-	if(!KVI_OPTION_BOOL(KviOption_boolUseNotifyList))return;
+	if(!KVI_OPTION_BOOL(KviOption_boolUseNotifyList))
+		return;
 
 	if(serverInfo()->supportsWatchList() && KVI_OPTION_BOOL(KviOption_boolUseWatchListIfAvailable))
 	{
@@ -705,7 +721,8 @@ void KviIrcConnection::restartLagMeter()
 		delete m_pLagMeter;
 		m_pLagMeter = 0;
 	}
-	if(!KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine))return;
+	if(!KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine))
+		return;
 	m_pLagMeter = new KviLagMeter(this);
 }
 
@@ -713,13 +730,13 @@ void KviIrcConnection::resolveLocalHost()
 {
 	QString szIp;
 
-	if(!socket()->getLocalHostIp(szIp,server()->isIPv6()))
+	if(!link()->socket()->getLocalHostIp(szIp,target()->server()->isIPv6()))
 	{
 		bool bGotIp = false;
 		if(!KVI_OPTION_STRING(KviOption_stringLocalHostIp).isEmpty())
 		{
 #ifdef COMPILE_IPV6_SUPPORT
-			if(server()->isIPv6())
+			if(target()->server()->isIPv6())
 			{
 				if(KviNetUtils::isValidStringIPv6(KVI_OPTION_STRING(KviOption_stringLocalHostIp)))
 					bGotIp = true;
@@ -731,6 +748,7 @@ void KviIrcConnection::resolveLocalHost()
 			}
 #endif
 		}
+
 		if(bGotIp)
 		{
 			m_pUserInfo->setLocalHostIp(KVI_OPTION_STRING(KviOption_stringLocalHostIp));
@@ -759,7 +777,8 @@ void KviIrcConnection::resolveLocalHost()
 
 void KviIrcConnection::changeAwayState(bool bAway)
 {
-	if(bAway)m_pUserInfo->setAway();
+	if(bAway)
+		m_pUserInfo->setAway();
 	else m_pUserInfo->setBack();
 
 	m_pConsole->updateCaption();
@@ -768,7 +787,7 @@ void KviIrcConnection::changeAwayState(bool bAway)
 	emit awayStateChanged();
 }
 
-void KviIrcConnection::userInfoReceived(const QString &szUserName,const QString &szHostName)
+void KviIrcConnection::userInfoReceived(const QString & szUserName, const QString & szHostName)
 {
 	userInfo()->setUserName(szUserName);
 	QString szUnmaskedHost = m_pUserInfo->unmaskedHostName();
@@ -780,9 +799,11 @@ void KviIrcConnection::userInfoReceived(const QString &szUserName,const QString 
 		if(!szHostName.isEmpty())e->setHost(szHostName);
 	} // else buuug
 
-	if(szHostName.isEmpty())return; // nothing to do anyway
+	if(szHostName.isEmpty())
+		return; // nothing to do anyway
 
-	if(KviQString::equalCS(m_pUserInfo->hostName(),szHostName))return; // again nothing to do
+	if(KviQString::equalCS(m_pUserInfo->hostName(),szHostName))
+		return; // again nothing to do
 
 	static bool warned_once = false;
 
@@ -853,7 +874,8 @@ void KviIrcConnection::userInfoReceived(const QString &szUserName,const QString 
 
 		} else {
 			// look it up too
-			if(m_pLocalhostDns)delete m_pLocalhostDns; // it could be only another local host lookup
+			if(m_pLocalhostDns)
+				delete m_pLocalhostDns; // it could be only another local host lookup
 			m_pLocalhostDns = new KviDns();
 			connect(m_pLocalhostDns,SIGNAL(lookupDone(KviDns *)),this,SLOT(hostNameLookupTerminated(KviDns *)));
 
@@ -875,11 +897,8 @@ void KviIrcConnection::userInfoReceived(const QString &szUserName,const QString 
 	}
 }
 
-void KviIrcConnection::hostNameLookupTerminated(KviDns *pDns)
+void KviIrcConnection::hostNameLookupTerminated(KviDns * pDns)
 {
-	//
-	// This is called when our hostname lookup terminates
-	//
 	if(!m_pLocalhostDns)
 	{
 		qDebug("Something weird is happening: pDns != 0 but m_pLocalhostDns == 0 :/");
@@ -965,7 +984,7 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 		// Ok, the server supports STARTTLS protocol
 		// ssl handshake e switch del socket
 		debug("Starting SSL handshake...");
-		socket()->enterSSLMode(); // FIXME: this should be forwarded through KviIrcLink, probably
+		link()->socket()->enterSSLMode(); // FIXME: this should be forwarded through KviIrcLink, probably
 	} else {
 		// The server does not support STARTTLS
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The server does not support STARTTLS command. Your connection will NOT be encrypted"));
@@ -999,7 +1018,8 @@ void KviIrcConnection::loginToIrcServer()
 	}
 
 	pServer->m_szUser.trimmed();
-	if(pServer->m_szUser.isEmpty())pServer->m_szUser = KVI_DEFAULT_USERNAME;
+	if(pServer->m_szUser.isEmpty())
+		pServer->m_szUser = KVI_DEFAULT_USERNAME;
 
 	// For now this is the only we know
 	m_pUserInfo->setUserName(pServer->m_szUser);
@@ -1040,15 +1060,13 @@ void KviIrcConnection::loginToIrcServer()
 	if(!pServer->m_szRealName.isEmpty())
 	{
 		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific real name (%Q)"),
-							&(pServer->m_szRealName));
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific real name (%Q)"),&(pServer->m_szRealName));
 		m_pUserInfo->setRealName(pServer->m_szRealName);
 	} else {
 		if(!pNet->realName().isEmpty())
 		{
 			if(!_OUTPUT_MUTE)
-				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific real name (%Q)"),
-							&(pNet->realName()));
+				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific real name (%Q)"),&(pNet->realName()));
 			m_pUserInfo->setRealName(pNet->realName());
 		} else {
 			m_pUserInfo->setRealName(KVI_OPTION_STRING(KviOption_stringRealname));
@@ -1076,8 +1094,9 @@ void KviIrcConnection::loginToIrcServer()
 	if(!pServer->m_szPass.isEmpty())
 	{
 		KviStr szHidden;
-		int pLen = pServer->m_szPass.length();
-		for(int i=0;i<pLen;i++)szHidden.append('*');
+		int iLen = pServer->m_szPass.length();
+		for(int i=0; i<iLen; i++)
+			szHidden.append('*');
 
 		if(!_OUTPUT_MUTE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Sending %s as password"),szHidden.ptr());
@@ -1109,6 +1128,7 @@ void KviIrcConnection::loginToIrcServer()
 			iGenderAvatarTag|=2;
 		}
 	}
+
 	if(KVI_OPTION_BOOL(KviOption_boolPrependAvatarInfoToRealname) && !KVI_OPTION_STRING(KviOption_stringMyAvatar).isEmpty())
 	{
 		iGenderAvatarTag|=4;
@@ -1153,37 +1173,37 @@ void KviIrcConnection::loginToIrcServer()
 
 	// on connect stuff ?
 
-	QString tmp = pNet->onConnectCommand();
-	tmp.trimmed();
-	if(!tmp.isEmpty())
+	QString szTmp = pNet->onConnectCommand();
+	szTmp.trimmed();
+	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled network specific \"on connect\" commands"));
-		KviKvsScript::run(tmp,m_pConsole);
+		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
-	tmp = pServer->onConnectCommand();
-	tmp.trimmed();
-	if(!tmp.isEmpty())
+	szTmp = pServer->onConnectCommand();
+	szTmp.trimmed();
+	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled server specific \"on connect\" commands"));
-		KviKvsScript::run(tmp,m_pConsole);
+		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
-	tmp = m_pUserIdentity->onConnectCommand();
-	tmp.trimmed();
-	if(!tmp.isEmpty())
+	szTmp = m_pUserIdentity->onConnectCommand();
+	szTmp.trimmed();
+	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled identity specific \"on connect\" commands"));
-		KviKvsScript::run(tmp,m_pConsole);
+		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
 	// and wait for the server to agree...
 }
 
-void KviIrcConnection::nickChange(const QString &szNewNick)
+void KviIrcConnection::nickChange(const QString & szNewNick)
 {
 	// FIXME: should the new nickname be decoded in some way ?
 	m_pConsole->notifyListView()->nickChange(m_pUserInfo->nickName(),szNewNick);
@@ -1195,16 +1215,18 @@ void KviIrcConnection::nickChange(const QString &szNewNick)
 	g_pApp->addRecentNickname(szNewNick);
 }
 
-bool KviIrcConnection::changeUserMode(char mode,bool bSet)
+bool KviIrcConnection::changeUserMode(char cMode, bool bSet)
 {
 	__range_valid(m_pConnectionInfo);
 	if(bSet)
 	{
-		if(m_pUserInfo->hasUserMode(mode))return false;
-		m_pUserInfo->addUserMode(mode);
+		if(m_pUserInfo->hasUserMode(cMode))
+			return false;
+		m_pUserInfo->addUserMode(cMode);
 	} else {
-		if(!m_pUserInfo->hasUserMode(mode))return false;
-		m_pUserInfo->removeUserMode(mode);
+		if(!m_pUserInfo->hasUserMode(cMode))
+			return false;
+		m_pUserInfo->removeUserMode(cMode);
 	}
 	m_pConsole->updateCaption();
 	console()->frame()->childConnectionUserModeChange(this);
@@ -1212,22 +1234,22 @@ bool KviIrcConnection::changeUserMode(char mode,bool bSet)
 	return true;
 }
 
-void KviIrcConnection::loginComplete(const QString &szNickName)
+void KviIrcConnection::loginComplete(const QString & szNickName)
 {
-	if(context()->state() == KviIrcContext::Connected)return;
+	if(context()->state() == KviIrcContext::Connected)
+		return;
 
 	context()->loginComplete();
 
 	if(m_bIdentdAttached)
 	{
 		g_pFrame->executeInternalCommand(KVI_INTERNALCOMMAND_IDENT_STOP);
-		m_bIdentdAttached=false;
+		m_bIdentdAttached = false;
 	}
 
 	if(szNickName != m_pUserInfo->nickName())
 	{
-		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The server refused the suggested nickname (%s) and named you %s instead"),
-			m_pUserInfo->nickName().toUtf8().data(),szNickName.toUtf8().data());
+		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("The server refused the suggested nickname (%s) and named you %s instead"),m_pUserInfo->nickName().toUtf8().data(),szNickName.toUtf8().data());
 		m_pConsole->notifyListView()->nickChange(m_pUserInfo->nickName(),szNickName);
 		m_pUserInfo->setNickName(szNickName);
 	}
@@ -1243,44 +1265,42 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 	resurrectDeadQueries();
 
 	// on connect stuff ?
-	QString tmp = target()->network()->onLoginCommand();
-	tmp.trimmed();
-	if(!tmp.isEmpty())
+	QString szTmp = target()->network()->onLoginCommand();
+	szTmp.trimmed();
+	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled network specific \"on login\" commands"));
-		KviKvsScript::run(tmp,m_pConsole);
+		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
-	tmp = target()->server()->onLoginCommand();
-	tmp.trimmed();
-	if(!tmp.isEmpty())
+	szTmp = target()->server()->onLoginCommand();
+	szTmp.trimmed();
+	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled server specific \"on login\" commands"));
-		KviKvsScript::run(tmp,m_pConsole);
+		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
-	tmp = m_pUserIdentity->onLoginCommand();
-	tmp.trimmed();
-	if(!tmp.isEmpty())
+	szTmp = m_pUserIdentity->onLoginCommand();
+	szTmp.trimmed();
+	if(!szTmp.isEmpty())
 	{
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Executing scheduled identity specific \"on login\" commands"));
-		KviKvsScript::run(tmp,m_pConsole);
+		KviKvsScript::run(szTmp,m_pConsole);
 	}
 
 	// Set the configured umode
-	QString modeStr = server()->initUMode();
+	QString szModeStr = target()->server()->initUMode();
 
-	if(modeStr.isEmpty())modeStr = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
+	if(szModeStr.isEmpty())
+		szModeStr = KVI_OPTION_STRING(KviOption_stringDefaultUserMode);
 
-	if(!modeStr.isEmpty())
-	{
-		if(_OUTPUT_VERBOSE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Setting configured user mode"));
-		sendFmtData("MODE %s +%s",encodeText(m_pUserInfo->nickName()).data(),encodeText(modeStr).data());
-	}
+	if(_OUTPUT_VERBOSE)
+		m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Setting configured user mode"));
+	sendFmtData("MODE %s +%s",encodeText(m_pUserInfo->nickName()).data(),encodeText(szModeStr).data());
 
 	delayedStartNotifyList();
 	restartLagMeter();
@@ -1303,31 +1323,33 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 		if(!target()->server()->m_pReconnectInfo->m_szJoinChannels.isEmpty())
 			sendFmtData("JOIN %s",encodeText(target()->server()->m_pReconnectInfo->m_szJoinChannels).data());
 
-		KviQuery * query;
+		KviQuery * pQuery;
 
 		for(QStringList::Iterator it = target()->server()->m_pReconnectInfo->m_szOpenQueryes.begin();
 			it != target()->server()->m_pReconnectInfo->m_szOpenQueryes.end();it++)
 		{
 			QString szNick = *it;
-			query = findQuery(szNick);
-			if(!query) {
-				query = createQuery(szNick);
-				QString user;
-				QString host;
+			pQuery = findQuery(szNick);
+			if(!pQuery)
+			{
+				pQuery = createQuery(szNick);
+				QString szUser;
+				QString szHost;
+
 				KviIrcUserDataBase * db = userDataBase();
 				if(db)
 				{
 					KviIrcUserEntry * e = db->find(szNick);
 					if(e)
 					{
-						user = e->user();
-						host = e->host();
+						szUser = e->user();
+						szHost = e->host();
 					}
 				}
-				query->setTarget(szNick,user,host);
+				pQuery->setTarget(szNick,szUser,szHost);
 			}
-			query->autoRaise();
-			query->setFocus();
+			pQuery->autoRaise();
+			pQuery->setFocus();
 		}
 		delete target()->server()->m_pReconnectInfo;
 		target()->server()->m_pReconnectInfo=0;
@@ -1340,8 +1362,8 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 			QStringList * l = target()->network()->autoJoinChannelList();
 			if(l->count()!=0)
 			{
-				for ( QStringList::Iterator it = l->begin(); it != l->end(); ++it ) {
-
+				for(QStringList::Iterator it = l->begin(); it != l->end(); ++it)
+				{
 					szCurPass=(*it).section(':',1);
 					if(szCurPass.isEmpty())
 					{
@@ -1349,14 +1371,14 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 							szChannels.append(",");
 						szCurChan = (*it).section(':',0,0);
 						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-								szCurChan.prepend('#');
+							szCurChan.prepend('#');
 						szChannels.append(szCurChan);
 					} else {
 						if(!szProtectedChannels.isEmpty())
 							szProtectedChannels.append(",");
 						szCurChan = (*it).section(':',0,0);
 						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-								szCurChan.prepend('#');
+							szCurChan.prepend('#');
 						szProtectedChannels.append(szCurChan);
 						if(!szPasswords.isEmpty())
 							szPasswords.append(",");
@@ -1366,15 +1388,16 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 			}
 		}
 
-		if(server()->autoJoinChannelList())
+		if(target()->server()->autoJoinChannelList())
 		{
 			if(_OUTPUT_VERBOSE)
 				m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Auto-joining server specific channels"));
 
-			QStringList * l = server()->autoJoinChannelList();
+			QStringList * l = target()->server()->autoJoinChannelList();
 			if(l->count()!=0)
 			{
-				for ( QStringList::Iterator it = l->begin(); it != l->end(); ++it ) {
+				for(QStringList::Iterator it = l->begin(); it != l->end(); ++it)
+				{
 					szCurPass=(*it).section(':',1);
 					if(szCurPass.isEmpty())
 					{
@@ -1389,7 +1412,7 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 							szProtectedChannels.append(",");
 						szCurChan = (*it).section(':',0,0);
 						if(!(szCurChan[0]=='#' || szCurChan[0]=='&' || szCurChan[0]=='!'))
-								szCurChan.prepend('#');
+							szCurChan.prepend('#');
 						szProtectedChannels.append(szCurChan);
 						if(!szPasswords.isEmpty())
 							szPasswords.append(",");
@@ -1417,21 +1440,21 @@ void KviIrcConnection::loginComplete(const QString &szNickName)
 		m_pConsole->minimize();
 }
 
-void KviIrcConnection::incomingMessage(const char * message)
+void KviIrcConnection::incomingMessage(const char * pcMessage)
 {
 	// A message has arrived from the current server
 	// First of all , notify the monitors
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
-		for(KviIrcDataStreamMonitor *m = l->first();m;m = l->next())
+		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
 		{
-			m->incomingMessage(message);
+			m->incomingMessage(pcMessage);
 		}
 	}
 	// set the last message time
 	m_pStatistics->setLastMessageTime(kvi_unixTime());
 	// and pass it to the server parser for processing
-	g_pServerParser->parseMessage(message,this);
+	g_pServerParser->parseMessage(pcMessage,this);
 }
 
 void KviIrcConnection::heartbeat(kvi_time_t tNow)
@@ -1474,7 +1497,7 @@ void KviIrcConnection::heartbeat(kvi_time_t tNow)
 						}
 						pOldest->setSentSyncWhoRequest();
 						if(!sendFmtData("WHO %s",encodeText(pOldest->windowName()).data()))
-								return;
+							return;
 					}
 				}
 			}

@@ -26,6 +26,7 @@
 #include "kvi_console.h"
 #include "kvi_app.h"
 #include "kvi_locale.h"
+#include "kvi_irclink.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_ircconnectionserverinfo.h"
@@ -290,7 +291,7 @@ static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 	if(wnd)
 	{
 		if(wnd->connection())
-			c->returnValue()->setBoolean(wnd->connection()->server()->isIPv6());
+			c->returnValue()->setBoolean(wnd->connection()->target()->server()->isIPv6());
 	}
 	return true;
 }
@@ -320,7 +321,7 @@ static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
 	if(wnd)
 	{
 		if(wnd->connection())
-			c->returnValue()->setBoolean(wnd->connection()->socket()->usingSSL());
+			c->returnValue()->setBoolean(wnd->connection()->link()->socket()->usingSSL());
 	}
 	return true;
 }

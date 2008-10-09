@@ -26,6 +26,7 @@
 
 #include "kvi_settings.h"
 #include "kvi_ircconnection.h"
+#include "kvi_ircconnectiontarget.h"
 #include "kvi_window.h"
 #include "kvi_ircsocket.h"
 #include "kvi_ircserver.h"
@@ -202,7 +203,7 @@ inline int KviConsole::selectedCount()
 inline bool KviConsole::isIPv6Connection()
 {
 	__range_valid(connection());
-	return connection()->server()->isIPv6();
+	return connection()->target()->server()->isIPv6();
 }
 
 inline bool KviConsole::isNotConnected()

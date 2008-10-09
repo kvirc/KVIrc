@@ -24,6 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_ircconnection.h
+* \author Szymon Stefanek
+* \brief An abstraction of a connection to an IRC server
+*/
+
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_qcstring.h"
@@ -34,6 +40,8 @@
 
 #include <QObject>
 
+class QTimer;
+class QTextCodec;
 class KviConsole;
 class KviNetworkData;
 class KviServer;
@@ -59,30 +67,28 @@ class KviNotifyListManager;
 class KviDns;
 class KviUserIdentity;
 
-class QTimer;
-class QTextCodec;
 
-///
-/// \class KviIrcConnection
-/// \brief An abstraction of a connection to an IRC server
-///
-/// This class deals with the high-level logic of a connection to an IRC server.
-/// It's always attached to a KviIrcContext and thus to a KviConsole window.
-/// The connection has a KviIrcConnectionTarget object which specifies the
-/// data of the server that needs to be contacted and a KviUserIdentity object
-/// which specifies the user data to use.
-///
-/// The connection is the upper layer of the KVIrc networking stack. It owns
-/// KviIrcLink which is the layer immediately below and which in turn contains
-/// a KviIrcSocket.
-///
-/// The connection creates and manages a lot of objects that handle
-/// runtime informations. These objects include a KviIrcConnectionUserInfo which
-/// contains the ACTUAL user informations, KviIrcConnectionServerInfo which
-/// contains the ACTUAL server informations, KviIrcUserDataBase which is substantially
-/// a big hash table containing all the users visible to KVIrc in this connection,
-/// a list of channels, a list of queries etc...
-///
+/**
+* \class KviIrcConnection
+* \brief An abstraction of a connection to an IRC server
+*
+* This class deals with the high-level logic of a connection to an IRC server.
+* It's always attached to a KviIrcContext and thus to a KviConsole window.
+* The connection has a KviIrcConnectionTarget object which specifies the
+* data of the server that needs to be contacted and a KviUserIdentity object
+* which specifies the user data to use.
+*
+* The connection is the upper layer of the KVIrc networking stack. It owns
+* KviIrcLink which is the layer immediately below and which in turn contains
+* a KviIrcSocket.
+*
+* The connection creates and manages a lot of objects that handle
+* runtime informations. These objects include a KviIrcConnectionUserInfo which
+* contains the ACTUAL user informations, KviIrcConnectionServerInfo which
+* contains the ACTUAL server informations, KviIrcUserDataBase which is
+* substantially a big hash table containing all the users visible to KVIrc in
+* this connection, a list of channels, a list of queries etc...
+*/
 class KVIRC_API KviIrcConnection : public QObject
 {
 	friend class KviConsole;
@@ -91,32 +97,41 @@ class KVIRC_API KviIrcConnection : public QObject
 	friend class KviServerParser;
 	Q_OBJECT
 protected:
-	///
-	/// Creates a KviIrcConnection object. This is actually used only by KviConsole.
-	///
-	/// \param pContext  The KviIrcContext we're attacched to: must not be NULL and is
-	///                  kept as shallow pointer (that is, it's not owned and must persist
-	///                  for the entire life of KviIrcConnection: caller is responsable for that).
-	/// \param pTarget   The server data: must not be NULL and must be allocated with new as this class
-	///                  takes the ownership.
-	/// \param pIdentity The KviUserIdentity object that specifies the user informations to
-	///                  use in ths connection. Must not be NULL and must be allocated with new
-	///                  as this class takes the ownership.
-	///
+	/**
+	* \brief Creates a KviIrcConnection object.
+	*
+	* This is actually used only by KviConsole.
+	*
+	* pContext must not be NULL and is kept as shallow pointer (that is, it's
+	* not owned and must persists for the entire life of KviIrcConnection:
+	* caller is responsable for that).
+	*
+	* pTarget must not be NULL and must be allocated with new as this class
+	* takes the ownership.
+	*
+	* pIdentity must not be NULL and must be allocated with new as this class
+	* takes the ownership.
+	* \param pContext The KviIrcContext we're attacched to
+	* \param pTarget The server data
+	* \param pIdentity User informations to use in ths connection
+	* \return KviIrcConnection
+	*/
 	KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity);
-	///
-	/// Destroys a KviIrcConnection object. KviConsole uses this.
-	///
+
+	/**
+	* \brief Destroys a KviIrcConnection object. KviConsole uses this.
+	*/
 	~KviIrcConnection();
 public:
-	///
-	/// The possible "high level" states of this connection.
-	///
+	/**
+	* \enum State
+	* \brief The possible "high level" states of this connection.
+	*/
 	enum State
 	{
-		Idle,       ///< The connection is doing nothing
-		Connecting, ///< A connection attempt is in progress
-		Connected   ///< We're connected to an IRC server
+		Idle,       /**< The connection is doing nothing */
+		Connecting, /**< A connection attempt is in progress */
+		Connected   /**< We're connected to an IRC server */
 	};
 private:
 	KviConsole                           * m_pConsole;              // shallow, never null
@@ -160,224 +175,244 @@ private:
 
 	QTextCodec                           * m_pSrvCodec;             // connection codec: never null
 	QTextCodec                           * m_pTextCodec;            // connection codec: never null
-
 public:
+	/**
+	* \brief Returns a pointer to the owning console
+	*
+	* The pointer is never NULL
+	* \return KviConsole *
+	*/
+	inline KviConsole * console(){ return m_pConsole; };
 
-	///
-	/// Returns a pointer to the owning console
-	/// The pointer is never NULL
-	///
-	inline KviConsole * console()
-		{ return m_pConsole; };
+	/**
+	* \brief Returns a pointer to the owning KviIrcContext.
+	*
+	* The returned value is never NULL
+	* \return KviIrcContext *
+	*/
+	inline KviIrcContext * context(){ return m_pContext; };
 
-	///
-	/// Returns a pointer to the owning KviIrcContext.
-	/// The returned value is never NULL
-	///
-	inline KviIrcContext * context()
-		{ return m_pContext; };
+	/**
+	* \brief Returns the target of this connection.
+	*
+	* Please note that the target doesn't necessairly contain up-to-date data.
+	* You might want to look at serverInfo() instead.
+	* The returned pointer is never NULL.
+	* \return KviIrcConnectionTarget *
+	*/
+	inline KviIrcConnectionTarget * target(){ return m_pTarget; };
 
-	///
-	/// Forwarder from KviIrcConnectionTarget, never null
-	/// Deprecated: use target()->server()
-	///
-	KVI_DEPRECATED KviServer * server();
+	/**
+	* \brief Returns the underlying KviIrcLink object
+	*
+	* The returned pointer is never NULL.
+	* \return KviIrcLink *
+	*/
+	inline KviIrcLink * link(){ return m_pLink; };
 
-	///
-	/// Forwarder from KviIrcConnectionTarget, may be null
-	/// Deprecated: use target()->proxy()
-	///
-	KVI_DEPRECATED KviProxy * proxy();
+	/**
+	* \brief Returns the current state of the connection
+	* \return State
+	*/
+	inline State state(){ return m_eState; };
 
-	///
-	/// Returns the target of this connection. Please note
-	/// that the target doesn't necessairly contain up-to-date data.
-	/// You might want to look at serverInfo() instead.
-	/// The returned pointer is never NULL.
-	///
-	inline KviIrcConnectionTarget * target()
-		{ return m_pTarget; };
+	/**
+	* \brief Returns a pointer to the big connection user database.
+	*
+	* The database contains ALL the users KVIrc can "see" in this connection.
+	* The returned pointer is never NULL.
+	* \return KviIrcUserDataBase *
+	*/
+	inline KviIrcUserDataBase * userDataBase(){ return m_pUserDataBase; };
 
-	///
-	/// Returns the underlying KviIrcLink object which is one level
-	/// lower in the KVIrc's networking stack.
-	/// The returned pointer is never NULL.
-	///
-	inline KviIrcLink * link()
-		{ return m_pLink; };
+	/**
+	* \brief Returns a pointer to the KviIrcConnectionUserInfo object
+	*
+	* It contains runtime informations about the user. This includes the
+	* current nickname, username, flags and other stuff that KviUserIdentity
+	* actually doesn't contain (or has only "default" values for).
+	* The returned pointer is never NULL.
+	* Use #include "kvi_ircconnectionuserinfo.h" as the class is only
+	* forwarded here.
+	* \return KviIrcConnectionUserInfo *
+	*/
+	inline KviIrcConnectionUserInfo * userInfo(){ return m_pUserInfo; };
 
-	///
-	/// Returns a pointer to the KviIrcSocket which is two levels
-	/// lower in the KVIrc's networking stack.
-	/// Deprecated: don't use it at all: create wrappers in KviIrcLink
-	/// instead as we want to achieve networking stack layer insulation.
-	///
-	KVI_DEPRECATED KviIrcSocket * socket();
+	/**
+	* \brief Returns a pointer to the KviIrcConnectionServerInfo object
+	*
+	* It contains runtime informations about the current server. This includes
+	* the current servername, the server capabilities and other stuff that
+	* KviConnectionTarget actually doesn't contain (or has only "default"
+	* values for).
+	* The returned pointer is never NULL.
+	* Use #include "kvi_ircconnectionserverinfo.h" as the class is only
+	* forwarded here.
+	* \return KviIrcConnectionServerInfo *
+	*/
+	inline KviIrcConnectionServerInfo * serverInfo(){ return m_pServerInfo; };
 
-	///
-	/// Returns the current state of the connection
-	///
-	inline State state()
-		{ return m_eState; };
+	/**
+	* \brief Returns a pointer to the KviIrcConnectionStateData object
+	*
+	* It contains _generic_ connection state data. This includes the current
+	* nickname index at login time, flags that signal "micro-states" etc...
+	* This data *could* be part of KviIrcConnection itself but we prefer to
+	* keep it in a separate class in order to cleanup the implementation.
+	* The returned pointer is never NULL.
+	* Use #include "kvi_ircconnectionstatedata.h" as the class is only
+	* forwarded here.
+	* \return KviIrcConnectionStateData *
+	*/
+	inline KviIrcConnectionStateData * stateData(){ return m_pStateData; };
 
-	///
-	/// Forwarder from KviIrcConnectionTarget, always non-empty string
-	///
-	const QString & networkName();
-
-	///
-	/// Returns a pointer to the big connection user database.
-	/// The database contains ALL the users KVIrc can "see" in this connection.
-	/// The returned pointer is never NULL.
-	///
-	inline KviIrcUserDataBase * userDataBase()
-		{ return m_pUserDataBase; };
-
-	///
-	/// Returns a pointer to the KviIrcConnectionUserInfo object
-	/// which contains runtime informations about the user. This includes
-	/// the current nickname, username, flags and other stuff that
-	/// KviUserIdentity actually doesn't contain (or has only "default" values for).
-	/// The returned pointer is never NULL.
-	/// Use #include "kvi_ircconnectionuserinfo.h" as the class is only forwarded here.
-	///
-	inline KviIrcConnectionUserInfo * userInfo()
-		{ return m_pUserInfo; };
-
-	///
-	/// Returns a pointer to the KviIrcConnectionServerInfo object
-	/// which contains runtime informations about the current server. This includes
-	/// the current servername, the server capabilities and other stuff that
-	/// KviConnectionTarget actually doesn't contain (or has only "default" values for).
-	/// The returned pointer is never NULL.
-	/// Use #include "kvi_ircconnectionserverinfo.h" as the class is only forwarded here.
-	///
-	inline KviIrcConnectionServerInfo * serverInfo()
-		{ return m_pServerInfo; };
-
-	///
-	/// Returns a pointer to the KviIrcConnectionStateData object
-	/// which contains _generic_ connection state data. This includes the current
-	/// nickname index at login time, flags that signal "micro-states" etc...
-	/// This data *could* be part of KviIrcConnection itself but we
-	/// prefer to keep it in a separate class in order to cleanup the implementation.
-	/// The returned pointer is never NULL.
-	/// Use #include "kvi_ircconnectionstatedata.h" as the class is only forwarded here.
-	///
-	inline KviIrcConnectionStateData * stateData()
-		{ return m_pStateData; };
-
-	///
-	/// Returns a pointer to the KviIrcConnectionAntiCtcpFloodData object
-	/// which contains data private to the Anti CTCP Flood engine. Very similar
-	/// to KviIrcConnectionStateData but dedicated to Ctcp flood.
-	/// The returned pointer is never NULL.
-	/// Use #include "kvi_ircconnectionantictcpflooddata.h" as the class is only forwarded here.
-	///
+	/**
+	* \brief Returns a pointer to the KviIrcConnectionAntiCtcpFloodData object
+	*
+	* It contains data private to the Anti CTCP Flood engine. Very similar
+	* to KviIrcConnectionStateData but dedicated to Ctcp flood.
+	* The returned pointer is never NULL.
+	* Use #include "kvi_ircconnectionantictcpflooddata.h" as the class is
+	* only forwarded here.
+	* \return KviIrcConnectionAntiCtcpFloodData *
+	*/
 	inline KviIrcConnectionAntiCtcpFloodData * antiCtcpFloodData()
 		{ return m_pAntiCtcpFloodData; };
 
-	///
-	/// Returns a pointer to the KviIrcConnectionNetsplitDetectorData object
-	/// which contains data private to the netsplit detector engine. Very similar
-	/// to KviIrcConnectionStateData but dedicated to netsplit detection.
-	/// The returned pointer is never NULL.
-	/// Use #include "kvi_ircconnectionnetsplitdetectordata.h" as the class is only forwarded here.
-	///
+	/**
+	* \brief Returns a pointer to the KviIrcConnectionNetsplitDetectorData object
+	*
+	* It contains data private to the netsplit detector engine. Very similar
+	* to KviIrcConnectionStateData but dedicated to netsplit detection.
+	* The returned pointer is never NULL.
+	* Use #include "kvi_ircconnectionnetsplitdetectordata.h" as the class is
+	* only forwarded here.
+	* \return KviIrcConnectionNetsplitDetectorData *
+	*/
 	inline KviIrcConnectionNetsplitDetectorData * netsplitDetectorData()
 		{ return m_pNetsplitDetectorData; };
 
-	///
-	/// Returns a pointer to the KviIrcConnectionAsyncWhoisData object
-	/// which contains data private to the async whois engine. Very similar
-	/// to KviIrcConnectionStateData but dedicated to async whois.
-	/// The returned pointer is never NULL.
-	/// Use #include "kvi_ircconnectionasyncwhoisdata.h" as the class is only forwarded here.
-	///
+	/**
+	* \brief Returns a pointer to the KviIrcConnectionAsyncWhoisData object
+	*
+	* It contains data private to the async whois engine. Very similar to
+	* KviIrcConnectionStateData but dedicated to async whois.
+	* The returned pointer is never NULL.
+	* Use #include "kvi_ircconnectionasyncwhoisdata.h" as the class is only
+	* forwarded here.
+	* \return KviIrcConnectionAsyncWhoisData *
+	*/
 	inline KviIrcConnectionAsyncWhoisData * asyncWhoisData()
 		{ return m_pAsyncWhoisData; };
 
-	///
-	/// Returns a pointer to the KviIrcConnectionStatistics object
-	/// which contains runtime statistics about the connection. Very similar
-	/// to KviIrcConnectionStateData but dedicated to statistics.
-	/// The returned pointer is never NULL.
-	/// Use #include "kvi_ircconnectionstatistics.h" as the class is only forwarded here.
-	///
-	inline KviIrcConnectionStatistics * statistics()
-		{ return m_pStatistics; };
+	/**
+	* \brief Returns a pointer to the KviIrcConnectionStatistics object
+	*
+	* It contains runtime statistics about the connection. Very similar to
+	* KviIrcConnectionStateData but dedicated to statistics.
+	* The returned pointer is never NULL.
+	* Use #include "kvi_ircconnectionstatistics.h" as the class is only
+	* forwarded here.
+	* \return KviIrcConnectionStatistics *
+	*/
+	inline KviIrcConnectionStatistics * statistics(){ return m_pStatistics; };
 
-	///
-	/// Returns a pointer to the current KviNotifyListManager.
-	/// The returned pointer is NULL if notify list management is disabled
-	/// for the current connection.
-	///
+	/**
+	* \brief Returns a pointer to the current KviNotifyListManager.
+	*
+	* The returned pointer is NULL if notify list management is disabled for
+	* the current connection.
+	* \return KviNotifyListManager *
+	*/
 	inline KviNotifyListManager * notifyListManager()
 		{ return m_pNotifyListManager; };
 
-	///
-	/// Returns a pointer to the current KviLagMeter.
-	/// The returned pointer is NULL if lag measurement is disabled
-	/// for the current connection.
-	///
-	inline KviLagMeter * lagMeter()
-		{ return m_pLagMeter; };
+	/**
+	* \brief Returns a pointer to the current KviLagMeter.
+	*
+	* The returned pointer is NULL if lag measurement is disabled for the
+	* current connection.
+	* \return KviLagMeter *
+	*/
+	inline KviLagMeter * lagMeter(){ return m_pLagMeter; };
 
-	///
-	/// Helper that provides a shortcut for really common access to userInfo()->nickName()
-	///
+	/**
+	* \brief Returns the list of the channels bound to the current connection.
+	*
+	* The pointer itself is never null (though the list may be empty).
+	* \return KviPointerList<KviChannel> *
+	*/
+	inline KviPointerList<KviChannel> * channelList(){ return m_pChannelList; };
+
+	/**
+	* \brief Forwarder from KviIrcConnectionTarget, always non-empty string
+	* \return const QString &
+	*/
+	const QString & networkName();
+
+	/**
+	* \brief Helper that provides a shortcut for really common access to userInfo()->nickName()
+	* \return const QString &
+	*/
 	inline const QString & currentNickName();
 
-	///
-	/// Helper that provides a shortcut for really common access to userInfo()->userName()
-	///
+	/**
+	* \brief Helper that provides a shortcut for really common access to userInfo()->userName()
+	* \return const QString &
+	*/
 	inline const QString & currentUserName();
 
-	///
-	/// Helper that provides a shortcut for really common access to serverInfo()->name()
-	///
+	/**
+	* \brief Helper that provides a shortcut for really common access to serverInfo()->name()
+	* \return const QString &
+	*/
 	inline const QString & currentServerName();
 
 	//
-	// channel management
+	// Channel management
 	//
 	// FIXME: Delegate to a KviChannelManager
 	//
 
-	///
-	/// Finds the channel with the specified unicode name. Returns the
-	/// pointer to the channel found or NULL if there is no such channel.
-	///
-	KviChannel * findChannel(const QString &name);
-	
-	///
-	/// Returns the list of the channels bound to the current connection.
-	/// The pointer itself is never null (though the list may be empty).
-	///
-	inline KviPointerList<KviChannel> * channelList()
-		{ return m_pChannelList; };
+	/**
+	* \brief Finds the channel with the specified unicode name.
+	*
+	* Returns the pointer to the channel found or NULL if there is no such
+	* channel.
+	* \param szName The name of the channel
+	* \return KviChannel *
+	*/
+	KviChannel * findChannel(const QString & szName);
 
-	///
-	/// Returns a list of channels bound to the current connection that the user
-	/// with the specified nickname is on. This is actually the list of channels
-	/// that the local user has in common with the specified user.
-	/// The list is returned as a comma separated string. If bAddEscapeSequences
-	/// is true then the string includes special escape sequences for KviIrcView
-	/// that will make the channel names clickable.
-	///
-	/// Returns the number of channels found.
-	///
-	int getCommonChannels(const QString &nick,QString &szChansBuffer,bool bAddEscapeSequences = true);
+	/**
+	* \brief Returns a list of channels bound to the current connection
+	*
+	* This is actually the list of channels that the local user has in common
+	* with the specified user.
+	* The list is returned as a comma separated string. If bAddEscapeSequences
+	* is true, then the string includes special escape sequences for
+	* KviIrcView that will make the channel names clickable.
+	*
+	* Returns the number of channels found.
+	* \param szNick The nickname of the user
+	* \param szChansBuffer The buffer where to store data
+	* \param bAddEscapeSequences Whether to include escape sequences
+	* \return int
+	*/
+	int getCommonChannels(const QString & szNick, QString & szChansBuffer, bool bAddEscapeSequences = true);
 	
-	///
-	/// Creates a new channel with the specified name. This should be called
-	/// in response to a JOIN message.
-	/// This function _assumes_ that such a channel doesn't exist yet (or if it
-	/// exists then it's actually in DEAD state). You can assume that channel
-	/// creation never fails: if the returned pointer is NULL then we're screwed
-	/// anyway as virtual memory is exausted.
-	///
-	KviChannel * createChannel(const QString &name);
+	/**
+	* \brief Creates a new channel with the specified name.
+	*
+	* This should be called in response to a JOIN message.
+	* This function _assumes_ that such a channel doesn't exist yet (or if it
+	* exists then it's actually in DEAD state). You can assume that channel
+	* creation never fails: if the returned pointer is NULL then we're screwed
+	* anyway as virtual memory is exausted.
+	* \param szName The name of the channel
+	* \return KviChannel *
+	*/
+	KviChannel * createChannel(const QString & szName);
 	
 	///
 	/// This is called by KviChannel upon creation. You shouldn't need to call it.
@@ -393,43 +428,56 @@ public:
 	///
 	void unregisterChannel(KviChannel *c);
 
-	///
-	/// Marks all the currently existing channels as DEAD so they are preserved
-	/// across connections. Marking a channel as dead actually removes the ownership
-	/// of KviChannel from KviIrcConnection and moves it to KviIrcContext (as the
-	/// contex is preserved across connections).
-	///
+	/**
+	* \brief Marks all the currently existing channels as DEAD
+	*
+	* They are preserved across connections. Marking a channel as dead
+	* actually removes the ownership of KviChannel from KviIrcConnection and
+	* moves it to KviIrcContext (as the contex is preserved across
+	* connections).
+	* \return void
+	*/
 	void keepChannelsOpenAfterDisconnect();
 	
-	///
-	/// Closes all the currently open channels (that aren't marked as dead).
-	///
+	/**
+	* \brief Closes all the currently open channels not marked as dead).
+	* \return void
+	*/
 	void closeAllChannels();
 	
 	//
-	// query management
+	// Query management
 	//
 	// FIXME: Delegate to a KviQueryManager ?
 	//
 
-	///
-	/// Finds the query with the specified nick. Returns the
-	/// pointer to the query found or NULL if there is no such query.
-	///
-	KviQuery * findQuery(const QString &nick);
+	/**
+	* \brief Finds the query with the specified nick.
+	*
+	* Returns the pointer to the query found or NULL if there is no such
+	* query.
+	* \param szNick The nickname of the user
+	* \return KviQuery *
+	*/
+	KviQuery * findQuery(const QString & szNick);
 
-	///
-	/// Returns the list of the currently open queries. The returned
-	/// pointer is never NULL (the list may be empty though).
-	///
+	/**
+	* \brief Returns the list of the currently open queries.
+	*
+	* The returned pointer is never NULL (the list may be empty though).
+	* \return KviPointerList<KviQuery> *
+	*/
 	inline KviPointerList<KviQuery> * queryList(){ return m_pQueryList; };
 
-	///
-	/// Creates a query with the specified nick as target. This function
-	/// assumes that such a query doesn't exist yet (or if it exists
-	/// it's actually marked as dead and needs to be resurrected).
-	///
-	KviQuery * createQuery(const QString &nick);
+	/**
+	* \brief Creates a query with the specified nick as target.
+	*
+	* This function assumes that such a query doesn't exist yet (or if it
+	* exists it's actually marked as dead and needs to be resurrected).
+	* \param szNick The nickname of the user
+	* \return KviQuery *
+	*/
+	KviQuery * createQuery(const QString & szNick);
 
 	///
 	/// This is called by KviQuery upon creation, you shouldn't need to use it.
@@ -445,18 +493,23 @@ public:
 	///
 	void unregisterQuery(KviQuery *q);
 	
-	///
-	/// Marks all the currently open queries as dead in order to keep them
-	/// open after a disconnect. Marking a query as dead removes ownership from
-	/// this class and gives it to KviIrcContext (which survives disconnects).
-	///
+	/**
+	* \brief Marks all the currently open queries as DEAD
+	*
+	* They are kept open after a disconnect. Marking a query as dead removes
+	* ownership from this class and gives it to KviIrcContext (which survives
+	* disconnects).
+	* \return void
+	*/
 	void keepQueriesOpenAfterDisconnect();
 	
-	///
-	/// This is the inverse of keepQueriesOpenAfterDisconnect().
-	/// It's meant to be called upon reconnection (as queries don't need
-	/// a JOIN message to be opened).
-	///
+	/**
+	* \brief This is the inverse of keepQueriesOpenAfterDisconnect().
+	*
+	* It's meant to be called upon reconnection (as queries don't need a JOIN
+	* message to be opened).
+	* \return void
+	*/
 	void resurrectDeadQueries();
 	
 	///
@@ -470,175 +523,361 @@ public:
 	// Networking stack public stuff
 	//
 
-	///
-	/// Sends (or rather enqueues) the specified text on the connected link (and thus socket).
-	/// This function basically works like sprintf(). Please note that you should
-	/// send only ENCODED text to the server. This is why the accepted parameter
-	/// is a const char *. IRC is an 8 (I'd say even 7 sometimes) bit protocol.
-	///
-	/// Please note that you don't actually need to append a CRLF pair to your buffer:
-	/// the implementation of the networking stack will do it for you. Hovewer you
-	/// can send multiple IRC commands by separating them by CRLF pairs. Just take
-	/// care of avoiding a CRLF after the last command you specify.
-	///
-	/// Returns true on success or false if the data can't be actually enqueued/sent (and
-	/// this usually means that there is no connection at the moment). Please note
-	/// that it MAY happen that a send attempt on a correctly connected link
-	/// causes the link to actually disconnect (or rather "discover" the fact
-	/// that it's disconnected at OS level).
-	///
-	/// \param buffer The _encoded_ text data to send
-	/// \param buflen The length of the data: if -1 the length is determined via strlen().
-	///
-	bool sendData(const char *buffer,int buflen = -1);
+	/**
+	* \brief Sends the specified text on the connected link (and thus socket).
+	*
+	* This function basically works like sprintf(). Please note that you
+	* should send only ENCODED text to the server. This is why the accepted
+	* parameter is a const char *. IRC is an 8 (I'd say even 7 sometimes) bit
+	* protocol.
+	*
+	* Please note that you don't actually need to append a CRLF pair to your
+	* buffer:
+	* the implementation of the networking stack will do it for you. Hovewer
+	* you can send multiple IRC commands by separating them by CRLF pairs.
+	* Just take care of avoiding a CRLF after the last command you specify.
+	*
+	* Returns true on success or false if the data can't be actually
+	* enqueued/sent (and this usually means that there is no connection at
+	* the moment). Please note that it MAY happen that a send attempt on a
+	* correctly connected link causes the link to actually disconnect (or
+	* rather "discover" the fact that it's disconnected at OS level).
+	* \param pcBuffer The _encoded_ text data to send
+	* \param iBuflen The length of the data: if -1 the length is determined via strlen().
+	* \return bool
+	*/
+	bool sendData(const char * pcBuffer, int iBuflen = -1);
 
-	///
-	/// Sends (or rather enqueues) the specified formatted text on the connected link (and thus socket).
-	/// This function basically works like sprintf(). Please note that you should
-	/// send only ENCODED text to the server. This is why the accepted parameter
-	/// is a const char *. IRC is an 8 (I'd say even 7 sometimes) bit protocol.
-	///
-	/// Please note that you don't actually need to append a CRLF pair to your buffer:
-	/// the implementation of the networking stack will do it for you. Hovewer you
-	/// can send multiple IRC commands by separating them by CRLF pairs. Just take
-	/// care of avoiding a CRLF after the last command you specify.
-	///
-	/// Returns true on success or false if the data can't be actually enqueued/sent (and
-	/// this usually means that there is no connection at the moment). Please note
-	/// that it MAY happen that a send attempt on a correctly connected link
-	/// causes the link to actually disconnect (or rather "discover" the fact
-	/// that it's disconnected at OS level).
-	///
-	/// \param fmt The format string to be first sprintf'ed with the variadic params and then sent
-	/// \param ... The variadic arguments (see man sprintf for an explaination)
-	///
-	/// FIXME: change name to sendFormattedData() ?
-	///
-	bool sendFmtData(const char *fmt,...);
+	/**
+	* \brief Sends the specified text on the connected link (and thus socket).
+	*
+	* This function basically works like sprintf(). Please note that you
+	* should send only ENCODED text to the server. This is why the accepted
+	* parameter is a const char *. IRC is an 8 (I'd say even 7 sometimes) bit
+	* protocol.
+	*
+	* Please note that you don't actually need to append a CRLF pair to your
+	* buffer:
+	* the implementation of the networking stack will do it for you. Hovewer
+	* you can send multiple IRC commands by separating them by CRLF pairs.
+	* Just take care of avoiding a CRLF after the last command you specify.
+	*
+	* Returns true on success or false if the data can't be actually
+	* enqueued/sent (and this usually means that there is no connection at
+	* the moment). Please note that it MAY happen that a send attempt on a
+	* correctly connected link causes the link to actually disconnect (or
+	* rather "discover" the fact that it's disconnected at OS level).
+	* \param pcFmt The format string to be first sprintf'ed with the variadic params and then sent
+	* \param ... The variadic arguments (see man sprintf for an explaination)
+	* \return bool
+	*
+	* FIXME: change name to sendFormattedData() ?
+	*/
+	bool sendFmtData(const char * pcFmt, ...);
 
-	///
-	/// This function is part of the networking stack.
-	/// It's called by KviIrcLink OR KviMexLinkFilter when a message is arriving
-	/// from the server. Needs to be public because subclasses of KviMexLinkFilter may call it.
-	///
-	void incomingMessage(const char * message);
+	/**
+	* \brief This function is part of the networking stack.
+	*
+	* It's called by KviIrcLink OR KviMexLinkFilter when a message is arriving
+	* from the server. Needs to be public because subclasses of
+	* KviMexLinkFilter may call it.
+	* \param pcMessage The message :)
+	* \return void
+	*/
+	void incomingMessage(const char * pcMessage);
 
 	//
 	// Encoding related stuff
 	//
 	
-	///
-	/// Returns a pointer to the current global codec for outbound text.
-	/// This codec is a global setting and may be overridden by specific
-	/// windows. The returned pointer may be null if things really went
-	/// wrong.
-	///
-	inline QTextCodec * textCodec()
-		{ return m_pTextCodec; };
+	/**
+	* \brief Returns a pointer to the current global codec for outbound text.
+	*
+	* This codec is a global setting and may be overridden by specific
+	* windows. The returned pointer may be null if things really went wrong.
+	* \return QTextCodec *
+	*/
+	inline QTextCodec * textCodec(){ return m_pTextCodec; };
 
-	///
-	/// Returns a pointer to the current global codec for inbound data.
-	/// This codec is a global setting and may be overridden by specific
-	/// windows. The returned pointer may be null if things really went
-	/// wrong.
-	///
-	/// FIXME: The name of this function is ugly.
-	///
-	inline QTextCodec * srvCodec()
-		{ return m_pSrvCodec; };
-	///
-	/// Sets the global encoding for this connection. This is a default
-	/// value and can be overridden by specific windows.
-	///
-	/// FIXME: This is quite unclear (why it forces encoding to all the windows?)
-	///
-	void setEncoding(const QString &szEncoding);
+	/**
+	* \brief Returns a pointer to the current global codec for inbound data.
+	*
+	* This codec is a global setting and may be overridden by specific
+	* windows. The returned pointer may be null if things really went wrong.
+	* \return QTextCodec *
+	*/
+	inline QTextCodec * serverCodec(){ return m_pSrvCodec; };
 
-	///
-	/// Decodes the specified text by using the server codec.
-	/// You should first attempt to decode the text by using
-	/// the window codec (if you belong to a window).
-	///
+	/**
+	* \brief Sets the global encoding for this connection.
+	*
+	* This is a default value and can be overridden by specific windows.
+	* \param szEncoding The encoding to use
+	* \return void
+	*
+	* FIXME: This is quite unclear (why it forces encoding to all the windows?)
+	*/
+	void setEncoding(const QString & szEncoding);
+
+	/**
+	* \brief Decodes the specified text by using the server codec.
+	*
+	* You should first attempt to decode the text by using the window codec
+	* (if you belong to a window).
+	* \param szText The text to decode
+	* \return QString
+	*/
 	QString decodeText(const char * szText);
 	
-	///
-	/// Encodes the specified text by using the local text codec.
-	/// You should first attempt to encode the text by using
-	/// the window codec (if you belong to a window).
-	///
-	KviQCString encodeText(const QString &szText);
-
-public slots:
-	void partAllChannels();
-	void unhighlightAllChannels();
-	void unhighlightAllQueries();
-	void restartNotifyList();
-	void closeAllQueries();
+	/**
+	* \brief Encodes the specified text by using the local text codec.
+	*
+	* You should first attempt to encode the text by using the window codec
+	* (if you belong to a window).
+	* \param szText The text to encode
+	* \return KviQCString
+	*/
+	KviQCString encodeText(const QString & szText);
 protected:
 	//
-	// notify list management
+	// Notify list management
 	//
+
+	/**
+	* \brief Starts the notify list in 15 seconds
+	*
+	* We have this delay to wait an eventual RPL_PROTOCTL from the server
+	* telling us that the WATCH notify list method is supported
+	* \return void
+	*/
 	void delayedStartNotifyList();
+
 	//
-	// login operations
+	// Login operations
 	//
+
+	/**
+	* \brief Resolves the localhost into an IP address
+	* \return void
+	*/
 	void resolveLocalHost();
+
+	/**
+	* \brief Checks if the server supports the CAPabilities protocol
+	* \return void
+	*/
 	void checkCapSupport();
+
+	/**
+	* \brief Called to close the CAPabilities negotiation
+	* \return void
+	*/
 	void closeCap();
+
 #ifdef COMPILE_SSL_SUPPORT
 	void trySTARTTLS();
 	void enableStartTlsSupport(bool bEnable);
 #endif
+
+	/**
+	* \brief Logins to the irc server
+	* \return void
+	*/
 	void loginToIrcServer();
+
 	//
 	// KviServerParser interface
 	//
-	// called to start the notify lists when RPL_ENDOFMOTD is received
+
+	/**
+	* \brief Called to start the notify lists when RPL_ENDOFMOTD is received
+	* \return void
+	*/
 	void endOfMotdReceived();
-	// called when RPL_SERVINFO (004) is received
-	void serverInfoReceived(const QString &szServerName,const QString &szUserModes,const QString &szChanModes);
-	// called to update the away state
+
+	/**
+	* \brief Called when RPL_SERVINFO (004) is received and sets the info
+	* \param szServerName The name of the server
+	* \param szUserModes The user modes supported by the server
+	* \param szChanModes The chan modes supported by the server
+	* \return void
+	*/
+	void serverInfoReceived(const QString & szServerName, const QString & szUserModes, const QString & szChanModes);
+
+	/**
+	* \brief Called to update the away state
+	* \param bAway Whether we enter the away mode
+	* \return void
+	*/
 	void changeAwayState(bool bAway);
-	// called on each JOIN (but meaningful almost only on the first one) (FIXME: call it also on other messages ?)
-	void userInfoReceived(const QString &szUserName,const QString &szHostName);
-	// called when NICK is received
-	void nickChange(const QString &szNewNick);
-	// called when MODE is received for each mode character
-	bool changeUserMode(char mode,bool bSet);
-	// called on the first numerics received from server
-	void loginComplete(const QString &szNickName);
+
+	/**
+	* \brief Called on each JOIN and sets the info
+	*
+	* It's called meaningful almost only on the first time
+	* \param szUserName The username
+	* \param szHostName The hostname
+	* \return void
+	* FIXME: call it also on other messages ?
+	*/
+	void userInfoReceived(const QString & szUserName, const QString & szHostName);
+
+	/**
+	* \brief Called when NICK is received
+	* \param szNewNick The new nickname for the user
+	* \return void
+	*/
+	void nickChange(const QString & szNewNick);
+
+	/**
+	* \brief Called when MODE is received for each mode character
+	* \param cMode The mode flag :)
+	* \param bSet Whether to set the mode
+	* \return bool
+	*/
+	bool changeUserMode(char cMode, bool bSet);
+
+	/**
+	* \brief Called on the first numeric received from server
+	* \param szNickName The nickname to use
+	* \return void
+	*/
+	void loginComplete(const QString & szNickName);
+
 	//
 	// KviIrcContext interface
 	//
-	// this starts an asynchronous connection attempt
-	// you must return control to the qt core for the connection
-	// operations to be initiated
+
+	/**
+	* \brief This starts an asynchronous connection attempt
+	*
+	* You must return control to the Qt core for the connection operations to
+	* be initiated
+	* \return void
+	*/
 	void start();
-	// kills any running connection or attempt
+
+	/**
+	* \brief Kills any running connection or attempt
+	* \return void
+	*/
 	void abort();
-	// called once in a while (every 5 secs at the moment)
+
+	/**
+	* \brief Called once in a while (every 5 secs at the moment)
+	* \param tNow The current time
+	* \return void
+	*/
 	void heartbeat(kvi_time_t tNow);
+
 	//
 	// KviIrcLink interface (down)
 	//
-	// this signals that the connection attempt has failed
+
+	/**
+	* \brief This signals that the connection attempt has failed
+	* \param iError The error code
+	* \return void
+	*/
 	void linkAttemptFailed(int iError);
-	// called by KviIrcLink when the socket state changes to Connected
+
+	/**
+	* \brief Called by KviIrcLink when the socket state changes to Connected
+	* \return void
+	*/
 	void linkEstabilished();
-	// called by KviIrcLink when the socket state changes to Ready
+
+	/**
+	* \brief Called by KviIrcLink when the socket state changes to Ready
+	* \return void
+	*/
 	void linkTerminated();
-signals:
-	void awayStateChanged();
-	void userModeChanged();
-	void nickNameChanged();
-	void channelRegistered(KviChannel*);
-	void channelUnregistered(KviChannel*);
-	void chanListChanged();
 private:
+	/**
+	* \brief Setups the codec for the text
+	* \return void
+	*/
 	void setupTextCodec();
+
+	/**
+	* \brief Setups the codec for the server
+	* \return void
+	*/
 	void setupSrvCodec();
+public slots:
+	/**
+	* \brief Called when we parts from all channels
+	* \return void
+	*/
+	void partAllChannels();
+
+	/**
+	* \brief Called when we unhighlight all channels
+	* \return void
+	*/
+	void unhighlightAllChannels();
+
+	/**
+	* \brief Called when we unhighlight all queries
+	* \return void
+	*/
+	void unhighlightAllQueries();
+
+	/**
+	* \brief Called to restart the notify list
+	* \return void
+	*/
+	void restartNotifyList();
+
+	/**
+	* \brief Called when we close all queries
+	* \return void
+	*/
+	void closeAllQueries();
 private slots:
+	/**
+	* \brief Called when the hostname lookup is finished
+	* \return void
+	*/
 	void hostNameLookupTerminated(KviDns * pDns);
+signals:
+	/**
+	* \brief Emitted when the away state changes
+	* \return void
+	*/
+	void awayStateChanged();
+
+	/**
+	* \brief Emitted when the user modes change
+	* \return void
+	*/
+	void userModeChanged();
+
+	/**
+	* \brief Emitted when the nickname changes
+	* \return void
+	*/
+	void nickNameChanged();
+
+	/**
+	* \brief Emitted when we register a channel
+	* \param pChan The channel :)
+	* \return void
+	*/
+	void channelRegistered(KviChannel * pChan);
+
+	/**
+	* \brief Emitted when we unregister a channel
+	* \param pChan The channel :)
+	* \return void
+	*/
+	void channelUnregistered(KviChannel * pChan);
+
+	/**
+	* \brief Emitted when the channels list change
+	* \return void
+	*/
+	void chanListChanged();
 };
 
 
@@ -659,4 +898,4 @@ inline const QString & KviIrcConnection::currentUserName()
 	return userInfo()->userName();
 }
 
-#endif //!_KVI_IRCCONNECTION_H_
+#endif //_KVI_IRCCONNECTION_H_

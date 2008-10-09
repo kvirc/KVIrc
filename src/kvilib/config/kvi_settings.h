@@ -29,6 +29,7 @@
 * \file kvi_settings.h
 * \author Szymon Stefanek
 * \brief This file contains compile time settings
+*
 * They are either set by configure or non-customizable defaults
 * Better to not touch this
 */
@@ -137,16 +138,8 @@
 	#endif
 #endif
 
-/*
-#if __GNUC__ - 0 > 3 || (__GNUC__ - 0 == 3 && __GNUC_MINOR__ - 0 >= 2)
-	#define KVI_DEPRECATED __attribute__ ((deprecated))
-#else
-	#define KVI_DEPRECATED
-#endif
-*/
 #define KVI_DEPRECATED
 #define debug qDebug
-
 
 // Trust Qt about the current target processor endianness
 #if Q_BYTE_ORDER == Q_BIG_ENDIAN

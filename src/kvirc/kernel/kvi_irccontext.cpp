@@ -31,6 +31,7 @@
 #include "kvi_frame.h"
 #include "kvi_debug.h"
 #include "kvi_sparser.h"
+#include "kvi_irclink.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_asynchronousconnectiondata.h"
@@ -603,7 +604,7 @@ void KviIrcContext::connectionFailed(int iError)
 				m_pConsole->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,tmp);
 			}
 
-			KviServer oldServer(*(connection()->server()));
+			KviServer oldServer(*(connection()->target()->server()));
 			QString oldNickname = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
 
 			KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
@@ -632,7 +633,7 @@ void KviIrcContext::connectionFailed(int iError)
 	// reset the attempt count
 	m_uConnectAttemptCount = 1;
 
-	if(connection()->server()->cacheIp())
+	if(connection()->target()->server()->cacheIp())
 	{
 		if((((int)iError) == KviError_connectionTimedOut) ||
 			(((int)iError) == KviError_connectionRefused) ||
@@ -666,15 +667,15 @@ void KviIrcContext::connectionEstabilished()
 	if(!bStopOutput)
 	{
 		m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%Q established [%s (%s:%u)]"),
-			connection()->socket()->usingSSL() ? &(__tr2qs("Secure connection")) : &(__tr2qs("Connection")),
-			connection()->server()->m_szHostname.toUtf8().data(),
-			connection()->server()->m_szIp.toUtf8().data(),
-			connection()->server()->m_uPort);
+			connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure connection")) : &(__tr2qs("Connection")),
+			connection()->target()->server()->m_szHostname.toUtf8().data(),
+			connection()->target()->server()->m_szIp.toUtf8().data(),
+			connection()->target()->server()->m_uPort);
 	}
 
 	// Add to recent server list (build the url of type irc[6]://<server>:<port>
 	QString url;
-	KviIrcUrl::join(url,connection()->server());
+	KviIrcUrl::join(url,connection()->target()->server());
 	g_pApp->addRecentServer(url);
 
 	// save the last server this console used
@@ -686,7 +687,7 @@ void KviIrcContext::connectionTerminated()
 {
 	if(!m_pConnection)return; // this may happen in the destructor!
 
-	KviServer oldServer(*(connection()->server()));
+	KviServer oldServer(*(connection()->target()->server()));
 	if(oldServer.m_pReconnectInfo) delete oldServer.m_pReconnectInfo;
 	KviServerReconnectInfo* pInfo = new KviServerReconnectInfo();
 	pInfo->m_szNick = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
