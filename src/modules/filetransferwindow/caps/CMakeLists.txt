@@ -1,4 +1,4 @@
-# CMakeLists for ./caps
+# CMakeLists for src/modules/filetransferwindow/caps
 
 SET(CAPSFILE filetransferwindow)
 
@@ -10,5 +10,5 @@ IF(UNIX)
 		INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/modules/caps/tool/)
 	ENDIF()
 ELSEIF(WIN32)
-	#INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/ ??? /${VERSION_BRANCH}/modules/caps/tool/)
+	INSTALL(FILES ${CAPSFILE} DESTINATION ${CMAKE_INSTALL_PREFIX}/modules/caps/tool/)
 ENDIF()

@@ -4,8 +4,7 @@ FILE(GLOB images "${CMAKE_CURRENT_SOURCE_DIR}/*.png")
 
 IF(UNIX)
 	IF(APPLE)
-		# FIXME correct path ?
-		#INSTALL(FILES ${images} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/pics/)
+		INSTALL(FILES ${images} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/help/en/)
 	ELSE()
 		# Assume linux
 		INSTALL(FILES ${images} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/help/en/)
