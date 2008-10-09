@@ -25,7 +25,7 @@
 
 #include "kvi_tal_mainwindow.h"
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 
 	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
 	: KMainWindow(par)
@@ -47,7 +47,7 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_mainwindow_kde.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #else
 	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
@@ -69,7 +69,7 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_mainwindow_qt.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif
 

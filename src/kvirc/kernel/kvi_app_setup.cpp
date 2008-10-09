@@ -46,7 +46,7 @@
 	#include <stdlib.h> // for getenv()
 	#include <unistd.h> // for symlink() <-- unused ?
 
-	#ifdef COMPILE_KDE3_SUPPORT
+	#ifdef COMPILE_KDE_SUPPORT
 		#include <kconfig.h>
 		#include <KConfigGroup>
 //		#include <kstddirs.h>
@@ -541,7 +541,7 @@ void KviApp::findGlobalKvircDirectory()
 	// because of strange distributions or KDEDIRS
 	// I do it in that way...
 	/* does not work with kde4...
-	#ifdef COMPILE_KDE3_SUPPORT
+	#ifdef COMPILE_KDE_SUPPORT
 		// KDE compilation ...
 		// The things usually go installed into $KDEDIR/share/apps/kvirc/$VERSION_BRANCH
 		// Look in the main KDE directory
@@ -594,7 +594,7 @@ void KviApp::findGlobalKvircDirectory()
 		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 	}
 
-	#ifdef COMPILE_KDE3_SUPPORT
+	#ifdef COMPILE_KDE_SUPPORT
 		for(int k=0;usualKvircGlobalDir[k] != 0;k++){
 			m_szGlobalKvircDir = QDir::homePath();
 			m_szGlobalKvircDir+= "/.kde";
@@ -602,7 +602,7 @@ void KviApp::findGlobalKvircDirectory()
 			m_szGlobalKvircDir+= KVIRC_VERSION_BRANCH;
 			if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 		}
-	#endif //COMPILE_KDE3_SUPPORT
+	#endif //COMPILE_KDE_SUPPORT
 */
 	m_szGlobalKvircDir="";
 
@@ -610,7 +610,7 @@ void KviApp::findGlobalKvircDirectory()
 	// THE TRANSLATION DIRECTORY WAS NOT FOUND YET
 	// AND THE LOCALE IS NOT INITIALIZED AT ALL
 
-	#ifdef COMPILE_KDE3_SUPPORT
+	#ifdef COMPILE_KDE_SUPPORT
 		KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
 				"The usual path for this directory is $KDEDIR/share/apps/kvirc.\n"\
 				"Are you sure that 'make install' worked correctly ?\n"\
@@ -625,7 +625,7 @@ void KviApp::findGlobalKvircDirectory()
 				"Something went wrong during the bundle creation.\n"\
 				"Please read the documentation and make sure to set proper paths for --prefix, -bindir, -libdir and --datadir during the configure run.\n"\
 				"Trying to run anyway...\n");
-	#else //!defined(COMPILE_KDE3_SUPPORT) && !defined(COMPILE_ON_MAC)
+	#else //!defined(COMPILE_KDE_SUPPORT) && !defined(COMPILE_ON_MAC)
 		KviMessageBox::warning("Unable to find the shared KVIrc directory.\n"\
 				"The usual path for this directory is /usr/local/share/kvirc.\n"\
 				"Are you sure that 'make install' worked correctly ?\n"\
@@ -643,7 +643,7 @@ bool KviApp::findLocalKvircDirectory()
 {
 	// Here we check if we already did the setup
 	// and we have the kvirc local directory saved somewhere
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	if(m_szConfigFile.isEmpty())
 	{  // don't do that if user supplied a config file :)
 		KConfig * cfg = new KConfig("kvirc");
@@ -663,7 +663,7 @@ bool KviApp::findLocalKvircDirectory()
 			}
 		}
 	}
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable")) {
@@ -829,7 +829,7 @@ void KviApp::saveKvircDirectory()
 #else //!COMPILE_ON_WINDOWS
 */
 	// Here we save the local directory path
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	// In KDE we use the application config file
 	if(m_szConfigFile.isEmpty())
 	{
@@ -847,7 +847,7 @@ void KviApp::saveKvircDirectory()
 			}
 		}
 	}
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT
 	// In NON-KDE we use $HOME/.kvirc.rc or $HOME/kvirc.ini
 	QString szF = QDir::homePath();
 	if(!m_szConfigFile.isEmpty())

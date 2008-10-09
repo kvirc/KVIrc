@@ -507,7 +507,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pCreateUrlHandlers = new QCheckBox(__tr2qs("Make KVIrc default IRC client"),m_pDesktopIntegration->m_pVBox);
 	m_pCreateUrlHandlers->setChecked(true);
 #endif
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	m_pCreateDesktopShortcut = new QCheckBox(__tr2qs("Create desktop shortcut"),m_pDesktopIntegration->m_pVBox);
 	m_pCreateDesktopShortcut->setChecked(true);
 #endif
@@ -851,7 +851,7 @@ void KviSetupWizard::makeLink()
 	CoUninitialize();
 #endif //COMPILE_ON_WINDOWS
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	QString tmp = QDir::homePath();
 	KviQString::ensureLastCharIs(tmp,KVI_PATH_SEPARATOR_CHAR);
 	tmp.append("Desktop");
@@ -870,7 +870,7 @@ void KviSetupWizard::makeLink()
 		"X-KDE-SubstituteUID=false\n";
 
 	KviFileUtils::writeFile(tmp,contents,false);
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT
 
 }
 
@@ -1016,7 +1016,7 @@ void KviSetupWizard::accept()
 		symlink(QTextCodec::codecForLocale()->fromUnicode(g_pApp->m_szGlobalKvircDir).data(),QTextCodec::codecForLocale()->fromUnicode(localPath).data());
 #endif
 	
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 		if(m_pCreateDesktopShortcut->isChecked())
 			makeLink();
 #endif

@@ -178,4 +178,4 @@
 	
 	#include "termwidget.moc"
 
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT

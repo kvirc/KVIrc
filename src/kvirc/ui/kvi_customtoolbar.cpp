@@ -256,7 +256,7 @@ void KviCustomToolBar::dragEnterEvent(QDragEnterEvent *e)
 				if(!bDone)
 					a = addWidget(m_pDraggedChild);
 				a->setVisible(true);
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 				// bleah ://///
 				//insertWidget(-1,m_pDraggedChild->sizeHint().width(),m_pDraggedChild,idx);
 				addWidget(m_pDraggedChild);
@@ -462,7 +462,7 @@ void KviCustomToolBar::drag(QWidget * child,const QPoint &pnt)
 	if(!bDone)
 		a = addWidget(child);
 	a->setVisible(true);
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	// bleah ://///
 	// not sure if i'm losing anythig from insertWidget(-1,child->width(),child,idx);
 	addWidget(child);
@@ -580,7 +580,7 @@ bool KviCustomToolBar::eventFilter(QObject *o,QEvent *e)
 					QAction * pActionForMovedChild = actionForWidget(m_pMovedChild);
 					if(pActionForMovedChild)
 						pActionForMovedChild->setVisible(false);
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 					// bleah ://///
 					// muarghh
 					//insertWidget(-1,m_pMovedChild->width(),m_pMovedChild,0);

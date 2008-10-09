@@ -77,6 +77,6 @@ protected:
 	bool		qcstringListRetVoidDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,KviQCStringList &ret);
 };
 
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT
 
 #endif // _KVI_DCOPHELPER_H_

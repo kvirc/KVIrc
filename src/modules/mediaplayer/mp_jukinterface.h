@@ -72,6 +72,6 @@
 	
 	MP_DECLARE_DESCRIPTOR(KviJukInterface)
 
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT
 
 #endif //!_MP_JUKINTERFACE_H_

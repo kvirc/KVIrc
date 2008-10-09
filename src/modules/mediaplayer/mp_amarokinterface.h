@@ -71,6 +71,6 @@
 	
 	MP_DECLARE_DESCRIPTOR(KviAmarokInterface)
 
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT
 
 #endif //!_MP_AMAROKINTERFACE_H_

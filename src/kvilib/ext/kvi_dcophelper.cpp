@@ -353,4 +353,4 @@ bool KviDCOPHelper::startApp(const QString &szApp,int iWaitMSecs)
 }
 
 
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT

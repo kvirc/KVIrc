@@ -24,7 +24,7 @@
 
 #include "kvi_tal_toolbar.h"
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
 	: KToolBar(nam,w,dock,bNewLine)
 	{
@@ -37,7 +37,7 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_toolbar_kde.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #else
 	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
@@ -86,6 +86,6 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_toolbar_qt.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif

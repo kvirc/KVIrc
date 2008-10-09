@@ -39,7 +39,7 @@
 	#include <windows.h>
 #endif
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	#include <netwm.h>
 #endif
 */

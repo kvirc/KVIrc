@@ -33,7 +33,7 @@
 #include "kvi_msgbox.h"
 #include "kvi_buildinfo.h"
 #ifdef COMPILE_DBUS_SUPPORT
-#ifndef COMPILE_KDE3_SUPPORT // 'cause kde adds an interface itself
+#ifndef COMPILE_KDE_SUPPORT // 'cause kde adds an interface itself
 	#include "kvi_dbusadaptor.h"
 #endif
 #endif
@@ -45,7 +45,7 @@
 
 #include <QMessageBox>
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	#include <kcmdlineargs.h>
 #endif
 
@@ -317,13 +317,13 @@ int main(int argc,char ** argv)
 
 	if(retCode != KVI_ARGS_RETCODE_OK)return ((retCode == KVI_ARGS_RETCODE_ERROR) ? (-1) : 0);
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	KCmdLineArgs::init(argc,argv,"kvirc","noway",ki18n("KVIrc"),KVI_VERSION);
 #endif
 	// Need to have the X socket open before IPC startup
 	KviApp * theApp = new KviApp(argc,argv);
 #ifdef COMPILE_DBUS_SUPPORT
-#ifndef COMPILE_KDE3_SUPPORT
+#ifndef COMPILE_KDE_SUPPORT
 	new KviDbusAdaptor(theApp);
 	QDBusConnection::sessionBus().registerObject("/MainApplication", theApp);
 #endif

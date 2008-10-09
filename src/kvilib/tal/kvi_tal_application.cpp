@@ -25,7 +25,7 @@
 
 #include "kvi_tal_application.h"
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 
 	KviTalApplication::KviTalApplication(int &argc,char ** argv)
 	: KApplication()

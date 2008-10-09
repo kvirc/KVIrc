@@ -310,7 +310,7 @@ void KviMenuBar::setupToolsPopup()
 
 	// moved the old tools here
 	m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ICONMANAGER)),__tr2qs("Show &Icon Table"),g_pIconManager,SLOT(showIconWidget()));
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	int id;
 	id = m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),__tr2qs("Open &Terminal"),m_pFrm,SLOT(executeInternalCommand(int)));
 	m->setItemParameter(id,KVI_INTERNALCOMMAND_TERM_OPEN);

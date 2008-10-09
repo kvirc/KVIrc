@@ -181,4 +181,4 @@ bool KviJukInterface::playMrl(const QString &mrl)
 }
 
 
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT

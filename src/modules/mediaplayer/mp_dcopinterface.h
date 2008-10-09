@@ -52,6 +52,6 @@ protected:
 	bool boolRetDCOPCall(const KviQCString &szObj,const KviQCString &szFunc,bool &ret);
 };
 
-#endif //COMPILE_KDE3_SUPPORT
+#endif //COMPILE_KDE_SUPPORT
 
 #endif //!_MP_DCOPINTERFACE_H_

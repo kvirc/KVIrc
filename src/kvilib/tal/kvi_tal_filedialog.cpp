@@ -26,7 +26,7 @@
 
 #include "kvi_tal_filedialog.h"
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 
 	KviTalFileDialog::KviTalFileDialog(const QString &dirName,const QString &filter,QWidget *parent,const char *name,bool modal)
 	: KFileDialog(KUrl(dirName),filter,parent)
@@ -75,7 +75,7 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_filedialog_kde.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #else
 
@@ -124,6 +124,6 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_filedialog_qt.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif
