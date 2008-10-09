@@ -45,7 +45,6 @@
 #include <QClipboard>
 #include <QEvent>
 #include <QMouseEvent>
-#include <QResource>
 #include <QScrollBar>
 #include <QUrl>
 
@@ -628,10 +627,9 @@ void KviIrcView::doMarkerToolTip(const QRect &rct)
 {
 	QString tip;
 	tip = "<table width=\"100%\">" \
-		"<tr><td valign=\"center\"><img src=\":/marker_icon\"> <u><font color=\"blue\"><nowrap>";
+		"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KVI_SMALLICON_UNREADTEXT) + "\"> <u><font color=\"blue\"><nowrap>";
 	tip += __tr2qs("Scroll up to read from the last read line");
 	tip += "</nowrap></font></u></td></tr><tr><td>";
-	QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_UNREADTEXT)->toImage().bits(), "/marker_icon");
 	tip += "</td></tr></table>";
 
 	if(tip.isEmpty())return;
@@ -653,7 +651,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		case 'u': // url link
 		{
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\":/url_icon\"> <u><font color=\"blue\"><nowrap>";
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KVI_SMALLICON_URL) + "\"> <u><font color=\"blue\"><nowrap>";
 			if(linkText.length() > 50)
 			{
 				tip += linkText.left(47);
@@ -662,7 +660,6 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				tip += linkText;
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
-			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL)->toImage().bits(), "/url_icon");
 
 			// Check clicks' number
 			if(KVI_OPTION_UINT(KviOption_uintUrlMouseClickNum) == 1)
@@ -675,7 +672,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 		case 'h': // host link
 		{
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\":/host_icon\"> <u><font color=\"blue\"><nowrap>";
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KVI_SMALLICON_SERVER) + "\"> <u><font color=\"blue\"><nowrap>";
 			if(linkText.length() > 50)
 			{
 				tip += linkText.left(47);
@@ -684,7 +681,6 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 				tip += linkText;
 			}
 			tip+="</nowrap></font></u></td></tr><tr><td>";
-			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)->toImage().bits(), "/host_icon");
 
 			if(linkText.indexOf('*') != -1)
 			{
@@ -701,8 +697,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			// FIXME: #warning "Spit out some server info...hub ?...registered ?"
 
 			tip = "<table width=\"100%\">" \
-				"<tr><td valign=\"center\"><img src=\":/server_icon\"> <u><font color=\"blue\"><nowrap>";
-			QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_IRC)->toImage().bits(), "/server_icon");
+				"<tr><td valign=\"center\"><img src=\"" + g_pIconManager->getSmallIconResourceName(KVI_SMALLICON_IRC) + "\"> <u><font color=\"blue\"><nowrap>";
 
 			if(linkText.length() > 50)
 			{
@@ -782,8 +777,7 @@ void KviIrcView::doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkTe
 			{
 				QString szChan = linkText;
 				QString buf;
-				tip = "<img src=\":/chan_icon\"> ";
-				QResource::registerResource(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)->toImage().bits(), "/chan_icon");
+				tip = "<img src=\"" + g_pIconManager->getSmallIconResourceName(KVI_SMALLICON_CHANNEL) + "\"> ";
 
 				if(szCmd.length()>0) szChan=szCmd;
 				KviChannel * c = console()->connection()->findChannel(szChan);

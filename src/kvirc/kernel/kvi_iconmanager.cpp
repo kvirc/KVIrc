@@ -39,6 +39,7 @@
 #include <QEvent>
 #include <QCloseEvent>
 #include <QIcon>
+#include <QDir>
 
 // kvi_app.cpp
 extern QPixmap * g_pUserChanStatePixmap;
@@ -464,6 +465,7 @@ KviIconManager::KviIconManager()
 	int i=0;
 	for(i=0;i<KVI_NUM_SMALL_ICONS;i++)m_smallIcons[i] = 0;
 
+	initQResourceBackend();
 	//loadSmallIcons();
 
 	m_pCachedImages = new KviPointerHashTable<QString,KviCachedPixmap>(21,true);
@@ -520,6 +522,32 @@ KviIconManager::~KviIconManager()
 	}
 	delete m_pCachedImages;
 	if(m_pIconNames)delete m_pIconNames;
+}
+
+void KviIconManager::initQResourceBackend()
+{
+	QString szPath;
+
+	g_pApp->getLocalKvircDirectory(szPath,KviApp::Pics);
+	QDir::addSearchPath("icons", szPath);
+
+	g_pApp->getGlobalKvircDirectory(szPath,KviApp::Pics);
+	QDir::addSearchPath("icons", szPath);
+
+	g_pApp->getLocalKvircDirectory(szPath,KviApp::SmallIcons);
+	QDir::addSearchPath("smallicons", szPath);
+
+	g_pApp->getGlobalKvircDirectory(szPath,KviApp::SmallIcons);
+	QDir::addSearchPath("smallicons", szPath);
+
+}
+
+QString KviIconManager::getSmallIconResourceName(int idx)
+{
+	QString szName("smallicons:kcs_");
+	szName.append(g_szIconNames[idx]);
+	szName.append(".png");
+	return szName;
 }
 
 const char * KviIconManager::getSmallIconName(int idx)

@@ -475,6 +475,9 @@ public:
 	QPixmap * getSmallIcon(int idx){ return idx < KVI_NUM_SMALL_ICONS ? (m_smallIcons[idx] ? m_smallIcons[idx] : loadSmallIcon(idx) ) : 0; };
 
 	const char * getSmallIconName(int idx);
+
+	QString getSmallIconResourceName(int idx);
+
 	int getSmallIconIdFromName(const QString &szName);
 
 	// if szLocalPath is empty then szName can be the identification
@@ -488,10 +491,13 @@ public:
 	void reloadImages();
 
 	void cacheCleanup();
+
 protected:
 	void addToCache(const QString &szName,KviCachedPixmap * p);
 	//void loadSmallIcons();
 	QPixmap * loadSmallIcon(int idx);
+
+	void initQResourceBackend();
 public slots:
 	void showIconWidget();
 protected slots:
