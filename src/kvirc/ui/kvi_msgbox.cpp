@@ -28,7 +28,7 @@
 #include "kvi_locale.h"
 
 // FIXME: #warning "This should go into TAL as layer ...then maybe a wrapper in KviApp!"
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	#include <kmessagebox.h>
 #else
 	#include <QMessageBox>
@@ -45,7 +45,7 @@ namespace KviMessageBox
 		QString s;
 		KviQString::vsprintf(s,fmt,list);
 		kvi_va_end(list);
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 		KMessageBox::error(0,s,"KVIrc");
 #else
 		QMessageBox::warning(0,"KVIrc",s);
@@ -59,7 +59,7 @@ namespace KviMessageBox
 		QString s;
 		KviQString::vsprintf(s,fmt,list);
 		kvi_va_end(list);
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 		KMessageBox::information(0,s,"KVIrc");
 #else
 		QMessageBox::information(0,"KVIrc",s);
@@ -74,7 +74,7 @@ namespace KviMessageBox
 		KviQString::vsprintf(s,fmt,list);
 		kvi_va_end(list);
 		bool bRet;
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 		bRet = (KMessageBox::questionYesNo(0,s,caption) == KMessageBox::Yes);
 #else
 		bRet = (QMessageBox::information(0,caption,s,

@@ -25,7 +25,7 @@
 
 #include "kvi_tal_menubar.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 
 	KviTalMenuBar::KviTalMenuBar(QWidget * par,const char * nam)
 	: KMenuBar(par)
@@ -39,7 +39,7 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_menubar_kde.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #else
 
@@ -54,6 +54,6 @@
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_menubar_qt.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif

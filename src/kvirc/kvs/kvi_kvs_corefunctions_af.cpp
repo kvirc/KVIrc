@@ -947,7 +947,7 @@ namespace KviKvsCoreFunctions
 	#ifndef COMPILE_NO_IPC
 			"IPC",
 	#endif
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 			"KDE",
 	#endif
 	#ifdef COMPILE_OSS_SUPPORT

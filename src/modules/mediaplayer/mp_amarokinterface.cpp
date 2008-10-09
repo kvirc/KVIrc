@@ -193,4 +193,4 @@ bool KviAmarokInterface::playMrl(const QString &mrl)
 }
 
 
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT

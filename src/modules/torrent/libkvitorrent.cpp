@@ -832,7 +832,7 @@ static bool torrent_module_init(KviModule *m)
 
 #ifdef COMPILE_KDE3_SUPPORT
 	g_pDescriptorList->append(new KviKTorrentDCOPInterfaceDescriptor);
-#endif // COMPILE_KDE_SUPPORT
+#endif // COMPILE_KDE3_SUPPORT
 
 	KviTorrentInterface::select(0);
 

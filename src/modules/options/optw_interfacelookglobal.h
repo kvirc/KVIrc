@@ -60,7 +60,7 @@ protected:
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	KviPixmapSelector * m_pGlobalBackgroundPixmapSelector;
 	KviBoolSelector * m_pUseTransparencyBoolSelector;
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		KviBoolSelector * m_pObtainBackgroundFromKdeBoolSelector;
 		KviBoolSelector * m_pUpdateKdeBackgroundOnChangeBoolSelector;
 	#endif

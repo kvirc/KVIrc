@@ -427,18 +427,18 @@ void KviSharedFilesWindow::rightButtonPressed(KviTalTreeWidgetItem *it,const QPo
 					tmp += "</nobr><br>";
 				}
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 				tmp += "<nobr>Mime: ";
 				tmp += KMimeType::findByPath(szFile)->name();
 				tmp += "</nobr>";
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 
 				QLabel * l = new QLabel(tmp,m_pLocalFilePopup);
 				QPalette p;
 				m_pLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
 				m_pLocalFilePopup->insertItem(l);
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 				QString mimetype = KMimeType::findByPath(szFile)->name();
 				KServiceTypeProfile::OfferList offers = KServiceTypeProfile::offers(mimetype,"Application");
 
@@ -467,7 +467,7 @@ void KviSharedFilesWindow::rightButtonPressed(KviTalTreeWidgetItem *it,const QPo
 				m_pLocalFilePopup->insertItem(__tr2qs_ctx("Open folder","filetransferwindow"),this,SLOT(openLocalFileFolder()));
 				m_pLocalFilePopup->insertItem(__tr2qs_ctx("Reach in terminal","filetransferwindow"),this,SLOT(openLocalFileTerminal()));
 				m_pLocalFilePopup->insertSeparator();
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 				m_pLocalFilePopup->insertItem(__tr2qs_ctx("Copy path to clipboard","filetransferwindow"),this,SLOT(copyLocalFileToClipboard()));
 
 				m_pContextPopup->insertItem(__tr2qs_ctx("Local file","filetransferwindow"),m_pLocalFilePopup);
@@ -511,7 +511,7 @@ KviSharedFiles * KviSharedFilesWindow::selectedTransfer()
 
 void KviSharedFilesWindow::openFilePopupActivated(int id)
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	int ip = m_pOpenFilePopup->itemParameter(id);
 	if(ip < 0)return;
 	QString txt = m_pOpenFilePopup->text(id);
@@ -537,12 +537,12 @@ void KviSharedFilesWindow::openFilePopupActivated(int id)
 			break;
 		}
 	}
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 }
 
 void KviSharedFilesWindow::openLocalFileTerminal()
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	KviSharedFiles * t = selectedTransfer();
 	if(!t)return;
 	QString tmp = t->localFileName();
@@ -556,12 +556,12 @@ void KviSharedFilesWindow::openLocalFileTerminal()
 	tmp.append("\"");
 
 	KRun::runCommand(tmp);
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 }
 
 void KviSharedFilesWindow::openLocalFile()
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	KviSharedFiles * t = selectedTransfer();
 	if(!t)return;
 	QString tmp = t->localFileName();
@@ -580,12 +580,12 @@ void KviSharedFilesWindow::openLocalFile()
 	url.setPath(tmp);
 	lst.append(url);
 	KRun::run(*offer, lst);
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 }
 
 void KviSharedFilesWindow::openLocalFileWith()
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	KviSharedFiles * t = selectedTransfer();
 	if(!t)return;
 	QString tmp = t->localFileName();
@@ -596,7 +596,7 @@ void KviSharedFilesWindow::openLocalFileWith()
 	url.setPath(tmp);
 	lst.append(url);
 	KRun::displayOpenWithDialog(lst);
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 }
 
 void KviSharedFilesWindow::copyLocalFileToClipboard()
@@ -613,7 +613,7 @@ void KviSharedFilesWindow::copyLocalFileToClipboard()
 
 void KviSharedFilesWindow::openLocalFileFolder()
 {
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	KviSharedFiles * t = selectedTransfer();
 	if(!t)return;
 	QString tmp = t->localFileName();
@@ -632,7 +632,7 @@ void KviSharedFilesWindow::openLocalFileFolder()
 	url.setPath(tmp);
 	lst.append(url);
 	KRun::run(*offer, lst);
-#endif //COMPILE_KDE_SUPPORT
+#endif //COMPILE_KDE3_SUPPORT
 }
 
 void KviSharedFilesWindow::heartbeat()

@@ -70,7 +70,7 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 			"Some actions of the target user (e.g. joins and parts) " \
 			"will be displayed in the window.<br></center>","options"));
 
-#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MINGW))
+#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_KDE3_SUPPORT) || defined(COMPILE_ON_MINGW))
 	b = addBoolSelector(0,3,1,3,__tr2qs_ctx("Flash system taskbar on new query message","options"),KviOption_boolFlashQueryWindowOnNewMessages);
 		mergeTip(b,
 			__tr2qs_ctx("<center>This option causes the system taskbar entry for KVIrc to flash when a new query message " \

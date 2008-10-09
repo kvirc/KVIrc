@@ -26,6 +26,7 @@
 //=============================================================================
 
 #include "kvi_settings.h"
+
 #include <QItemDelegate>
 #include <QListWidget>
 #include <QTreeWidget>

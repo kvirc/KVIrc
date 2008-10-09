@@ -73,7 +73,7 @@
 	#include "kvi_cryptcontroller.h"
 #endif
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 //	#include <kwin.h>
 	#include <kdeversion.h>
 #endif
@@ -226,7 +226,7 @@ void KviWindow::demandAttention()
 		fwi.dwTimeout = 500;
 		FlashWindowEx(&fwi);
 #else
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		#if (KDE_VERSION_MAJOR >= 3) && (KDE_VERSION_MINOR >= 2)
 			KWin::demandAttention(frame()->winId(),true);
 		#endif
@@ -243,7 +243,7 @@ void KviWindow::demandAttention()
 		fwi.dwTimeout = 500;
 		FlashWindowEx(&fwi);
 #else
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		#if (KDE_VERSION_MAJOR >= 3) && (KDE_VERSION_MINOR >= 2)
 			KWin::demandAttention(winId(),true);
 		#endif

@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	#include "kvi_tal_menubar_kde.h"
 #else
 	#include "kvi_tal_menubar_qt.h"

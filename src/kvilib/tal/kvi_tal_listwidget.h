@@ -28,7 +28,6 @@
 #include "kvi_settings.h"
 #include "kvi_tal_itemdelegates.h"
 
-
 #include <QListWidget>
 
 class KviTalListWidgetItem;

@@ -61,14 +61,14 @@ KviThemeTransparencyOptionsWidget::KviThemeTransparencyOptionsWidget(QWidget * p
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		createLayout();
 	#else
 		createLayout();
 	#endif
 
 	m_pUseTransparencyBoolSelector = addBoolSelector(0,0,1,0,__tr2qs_ctx("Enable fake transparency","options"),KviOption_boolUseGlobalPseudoTransparency);
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		mergeTip(m_pUseTransparencyBoolSelector,
 			__tr2qs_ctx("<center>This option makes all KVIrc windows look " \
 				"transparent.<br>You must choose a blending " \
@@ -94,7 +94,7 @@ KviThemeTransparencyOptionsWidget::KviThemeTransparencyOptionsWidget(QWidget * p
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),c,SLOT(setEnabled(bool)));
 
 //	addRowSpacer(0,13,0,13);
-#ifdef COMPILE_KDE_SUPPORT
+#ifdef COMPILE_KDE3_SUPPORT
 	m_pObtainBackgroundFromKdeBoolSelector = addBoolSelector(0,4,1,4,__tr2qs_ctx("Use KDE desktop for transparency","options"),KviOption_boolObtainGlobalBackgroundFromKde,
 			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),m_pObtainBackgroundFromKdeBoolSelector,SLOT(setEnabled(bool)));
@@ -108,11 +108,11 @@ KviThemeTransparencyOptionsWidget::KviThemeTransparencyOptionsWidget(QWidget * p
 	layout()->setRowStretch(6,1);
 	connect(m_pObtainBackgroundFromKdeBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
 
-#else //!COMPILE_KDE_SUPPORT
+#else //!COMPILE_KDE3_SUPPORT
 	m_pGlobalBackgroundPixmapSelector = addPixmapSelector(0,4,1,4,__tr2qs_ctx("Transparency blend image:","options"),KviOption_pixmapGlobalTransparencyBackground,
 			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency));
 	layout()->setRowStretch(4,1);
-#endif //!COMPILE_KDE_SUPPORT
+#endif //!COMPILE_KDE3_SUPPORT
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableGlobalBackgroundPixmapSelector(bool)));
 	connect(m_pUseTransparencyBoolSelector,SIGNAL(toggled(bool)),this,SLOT(enableUpdateKdeBackgroundBoolSelector(bool)));
 #else
@@ -128,7 +128,7 @@ KviThemeTransparencyOptionsWidget::~KviThemeTransparencyOptionsWidget()
 void KviThemeTransparencyOptionsWidget::enableGlobalBackgroundPixmapSelector(bool)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked() && !(m_pObtainBackgroundFromKdeBoolSelector->isChecked()));
 	#else
 		m_pGlobalBackgroundPixmapSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked());
@@ -139,7 +139,7 @@ void KviThemeTransparencyOptionsWidget::enableGlobalBackgroundPixmapSelector(boo
 void KviThemeTransparencyOptionsWidget::enableUpdateKdeBackgroundBoolSelector(bool)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		m_pUpdateKdeBackgroundOnChangeBoolSelector->setEnabled(m_pUseTransparencyBoolSelector->isChecked() && m_pObtainBackgroundFromKdeBoolSelector->isChecked());
 	#endif
 #endif

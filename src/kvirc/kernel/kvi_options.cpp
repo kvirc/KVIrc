@@ -323,7 +323,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define RUN_THE_BROWSER "run \"cmd.exe /c start \\\"\\\" \\\"$0\\\"\""
 #else
-	#ifdef COMPILE_KDE_SUPPORT
+	#ifdef COMPILE_KDE3_SUPPORT
 		#define RUN_THE_BROWSER "run kfmclient openURL $0"
 	#else
 		#ifdef COMPILE_ON_MAC
