@@ -47,9 +47,7 @@
 
 // FIXME: Once we have a stable CMake build system, this section needs a cleanup.
 #if (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)) && !defined(MINGW)
-
 	#define COMPILE_WITH_SYSTEM_MEMMOVE
-	#define FEEL_LIKE_I_AM_COMPILING_UNDER_WINDOZE
 	#define COMPILE_ON_WINDOWS
 
 	#ifdef __KVILIB__
