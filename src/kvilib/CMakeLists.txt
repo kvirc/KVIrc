@@ -25,6 +25,7 @@ SET(kvilib_MOC_HDRS
 	system/kvi_locale.h
 	system/kvi_thread.h
 	tal/kvi_tal_application.h
+	tal/kvi_tal_filedialog.h
 	tal/kvi_tal_groupbox.h
 	tal/kvi_tal_hbox.h
 	tal/kvi_tal_iconview.h
@@ -45,14 +46,12 @@ SET(kvilib_MOC_HDRS
 IF(COMPILE_KDE_SUPPORT)
 	LIST(APPEND kvilib_MOC_HDRS
 		tal/kvi_tal_menubar_kde.h
-		tal/kvi_tal_filedialog_kde.h
 		tal/kvi_tal_mainwindow_kde.h
 		tal/kvi_tal_toolbar_kde.h
 	)
 ELSE()
 	LIST(APPEND kvilib_MOC_HDRS
 		tal/kvi_tal_menubar_qt.h
-		tal/kvi_tal_filedialog_qt.h
 		tal/kvi_tal_mainwindow_qt.h
 		tal/kvi_tal_toolbar_qt.h
 	)
