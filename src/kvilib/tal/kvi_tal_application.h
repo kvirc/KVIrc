@@ -28,18 +28,25 @@
 //
 //=============================================================================
 
-/**
-* \file kvi_tal_application.h
-* \author Szymon Stefanek
-* \brief Switcher between Qt and KDE classes
-*/
-
 #include "kvi_settings.h"
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include "kvi_tal_application_kde.h"
-#else
-	#include "kvi_tal_application_qt.h"
-#endif
 
+#include <KApplication>
+class KVILIB_API KviTalApplication : public KApplication
+#else
+
+#include <QApplication>
+class KVILIB_API KviTalApplication : public QApplication
+#endif
+{
+	Q_OBJECT
+public:
+	KviTalApplication(int &argc,char ** argv);
+	~KviTalApplication();
+	void commitData(QSessionManager &);
+signals:
+	void commitData();
+	virtual void saveConfiguration();
+};
 #endif // _KVI_TAL_APPLICATION_H_

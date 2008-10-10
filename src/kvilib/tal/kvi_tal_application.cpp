@@ -27,23 +27,19 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	KviTalApplication::KviTalApplication(int & iArgc, char ** ppcArgv)
+	KviTalApplication::KviTalApplication(int &argc,char ** argv)
 	: KApplication()
 	{
 	}
 
 	KviTalApplication::~KviTalApplication()
 	{
+
 	}
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_tal_application_kde.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
-
 #else
 
-	KviTalApplication::KviTalApplication(int & iArgc, char ** ppcArgv)
-	: QApplication(iArgc,ppcArgv)
+	KviTalApplication::KviTalApplication(int &argc,char ** argv)
+	: QApplication(argc,argv)
 	{
 	}
 
@@ -51,8 +47,18 @@
 	{
 	}
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_tal_application_qt.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif
+
+void KviTalApplication::commitData(QSessionManager & manager)
+{
+	saveConfiguration();
+#ifdef COMPILE_KDE_SUPPORT
+	KApplication::commitData(manager);
+#else
+	QApplication::commitData(manager);
+#endif
+}
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_application.moc"
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
