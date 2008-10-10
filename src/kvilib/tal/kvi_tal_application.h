@@ -77,7 +77,7 @@ public:
 	* \brief Saves configuration to disk
 	* \return void
 	*/
-	virtual void saveConfiguration();
+	virtual void saveConfiguration() = 0;
 };
 
 #endif // _KVI_TAL_APPLICATION_H_
