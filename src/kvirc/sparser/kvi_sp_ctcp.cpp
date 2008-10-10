@@ -1144,7 +1144,7 @@ void KviServerParser::parseCtcpRequestVersion(KviCtcpMessage *msg)
 
 
 			szVersion = "KVIrc " KVI_VERSION;
-			if(KviBuildInfo::buildRevision()!=QString::null)
+			if(KviBuildInfo::buildRevision()!=QString())
 			{
 				szVersion+= " svn-";
 				szVersion+=KviBuildInfo::buildRevision();
@@ -1606,7 +1606,7 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 			KviQString::cutToLast(szRemoteFile,'\\');
 		}
 
-		avatar = g_pIconManager->getAvatar(QString::null,szRemoteFile);
+		avatar = g_pIconManager->getAvatar(QString(),szRemoteFile);
 
 		if((avatar == 0) && e)
 		{
@@ -1687,7 +1687,7 @@ void KviServerParser::parseCtcpReplyAvatar(KviCtcpMessage *msg)
 	if(bResetAvatar)e->setAvatar(avatar);
 
 	msg->msg->console()->avatarChanged(avatar,msg->pSource->nick(),msg->pSource->user(),msg->pSource->host(),
-												msg->msg->haltOutput() ? QString::null : textLine);
+												msg->msg->haltOutput() ? QString() : textLine);
 }
 
 

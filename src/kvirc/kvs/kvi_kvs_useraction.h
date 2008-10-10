@@ -44,7 +44,7 @@ public:
 		const QString &szBigIcon,
 		const QString &szSmallIcon,
 		unsigned int uFlags,
-		const QString &szKeySequence = QString::null);
+		const QString &szKeySequence = QString());
 	KviKvsUserAction(QObject * pParent);
 	~KviKvsUserAction();
 
@@ -61,7 +61,7 @@ public:
 		const QString &szBigIcon,
 		const QString &szSmallIcon,
 		unsigned int uFlags,
-		const QString &szKeySequence = QString::null);
+		const QString &szKeySequence = QString());
 	void suicide() { delete this; };
 protected:
 	QString m_szSmallIcon;

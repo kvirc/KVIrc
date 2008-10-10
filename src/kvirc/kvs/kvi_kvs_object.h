@@ -118,9 +118,9 @@ public:
 	bool dieNow();
 
 	KviKvsObjectClass * getExactClass(){ return m_pClass; };
-	KviKvsObjectClass * getClass(const QString & classOverride = QString::null);
+	KviKvsObjectClass * getClass(const QString & classOverride = QString());
 	bool inheritsClass(KviKvsObjectClass * pClass);
-	KviKvsObjectFunctionHandler * lookupFunctionHandler(const QString & funcName,const QString & classOverride = QString::null);
+	KviKvsObjectFunctionHandler * lookupFunctionHandler(const QString & funcName,const QString & classOverride = QString());
 
 	// Registers a private implementation of a function
 	// The function may or may not be already registered in the class
@@ -132,7 +132,7 @@ public:
 	bool callFunction(
 		KviKvsObject * pCaller,          // calling object, can be zero (used for the "internal" access list verification)
 		const QString & fncName,         // name of the function to call
-		const QString & classOverride,   // eventual class override for the functon call, may be QString::null
+		const QString & classOverride,   // eventual class override for the functon call, may be QString()
 		KviKvsRunTimeContext * pContext, // calling runtime context (you'll have problems with instantiating this... :P )
 		KviKvsVariant * pRetVal,         // the return value
 		KviKvsVariantList * pParams);    // the parameters for the call

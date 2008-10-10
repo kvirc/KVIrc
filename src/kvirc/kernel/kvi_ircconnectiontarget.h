@@ -41,7 +41,7 @@ public:
 	KviIrcConnectionTarget(const KviNetwork * pNetwork,
 							const KviServer * pServer,
 							const KviProxy * pProxy = 0,
-							const QString &szBindAddress = QString::null);
+							const QString &szBindAddress = QString());
 	~KviIrcConnectionTarget();
 private:
 	KviNetwork      * m_pNetwork;        // owned, never null

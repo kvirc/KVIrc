@@ -57,7 +57,7 @@ public:
 	* \param bModal Whether to have a modal behaviour
 	* \return KviFileDialog
 	*/
-	KviFileDialog(const QString & szDirName, const QString & szFilter = QString::null, QWidget * pParent = 0, const char * name = 0, bool bModal = false);
+	KviFileDialog(const QString & szDirName, const QString & szFilter = QString(), QWidget * pParent = 0, const char * name = 0, bool bModal = false);
 
 	/**
 	* \brief Destroys the file dialog object
@@ -74,7 +74,7 @@ public:
 	* \param pParent The parent widget
 	* \return bool
 	*/
-	static bool askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial = QString::null, const QString & szFilter = QString::null, bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
+	static bool askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial = QString(), const QString & szFilter = QString(), bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
 
 	/**
 	* \param szBuffer The buffer where to store the data
@@ -86,7 +86,7 @@ public:
 	* \param pParent The parent widget
 	* \return bool
 	*/
-	static bool askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial = QString::null, const QString & szFilter = QString::null, bool bShowHidden = false, bool bConfirmOverwrite = false, bool bShowNative = true, QWidget * pParent = 0);
+	static bool askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial = QString(), const QString & szFilter = QString(), bool bShowHidden = false, bool bConfirmOverwrite = false, bool bShowNative = true, QWidget * pParent = 0);
 
 	/**
 	* \param szBuffer The buffer where to store the data
@@ -98,7 +98,7 @@ public:
 	* \param pParent The parent widget
 	* \return bool
 	*/
-	static bool askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter = QString::null, bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
+	static bool askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter = QString(), bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
 
 	/**
 	* \param szBuffer The buffer where to store the data
@@ -110,7 +110,7 @@ public:
 	* \param pParent The parent widget
 	* \return bool
 	*/
-	static bool askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter = QString::null, bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
+	static bool askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter = QString(), bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
 };
 
 #endif //_KVI_FILEDIALOG_H_

@@ -172,7 +172,7 @@ void KviKvsVariantList::setAutoDelete(bool bAutoDelete)
 
 void KviKvsVariantList::allAsString(QString &szBuffer)
 {
-	szBuffer = QString::null;
+	szBuffer = QString();
 	bool bFirst = true;
 	for(KviKvsVariant * v = first();v;v = next())
 	{

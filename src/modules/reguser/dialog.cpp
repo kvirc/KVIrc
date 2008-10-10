@@ -393,7 +393,7 @@ void KviRegisteredUsersDialog::addGroupClicked()
 	bool ok;
 	QString text = QInputDialog::getText( this,
 		"KVIrc", __tr("Group name:"), QLineEdit::Normal,
-		QString::null, &ok );
+		QString(), &ok );
 	if ( ok && !text.isEmpty() ) {
 		g_pLocalRegisteredUserDataBase->addGroup(text);
 		fillList();
@@ -746,7 +746,7 @@ void KviRegisteredUsersDialog::exportClicked()
 			QString avatar;
 			if(u->getProperty("avatar",avatar))
 			{
-				KviAvatar * av = g_pIconManager->getAvatar(QString::null,avatar);
+				KviAvatar * av = g_pIconManager->getAvatar(QString(),avatar);
 				if(av)
 				{
 					if(!av->pixmap()->isNull())

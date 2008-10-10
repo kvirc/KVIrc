@@ -173,7 +173,7 @@ KviApp::KviApp(int &argc,char ** argv)
 
 	// Ok...everything begins here
 	g_pApp                  = this;
-	m_szConfigFile          = QString::null;
+	m_szConfigFile          = QString();
 	m_bCreateConfig         = false;
 	m_bShowSplashScreen     = true;
 	m_bUpdateGuiPending     = false;
@@ -973,7 +973,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		if(windowExists(p->pConsole))
 		{
 			p->pConsole->setAvatar(p->szNick,p->szUser,p->szHost,
-				szLocalFileName,KviQString::equalCIN("http://",szRemoteUrl,7) ? szRemoteUrl : QString::null);
+				szLocalFileName,KviQString::equalCIN("http://",szRemoteUrl,7) ? szRemoteUrl : QString());
 		}
 	} else {
 		if((!_OUTPUT_MUTE) && (!bQuiet))

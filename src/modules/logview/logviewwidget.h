@@ -42,7 +42,7 @@ public:
 public:
 	KviLogFile::KviLogTypes m_type;
 	KviLogFile*             m_pFileData;
-	virtual QString fileName() const { return QString::null; };
+	virtual QString fileName() const { return QString(); };
 };
 
 class KviLogListViewItemFolder : public KviLogListViewItem

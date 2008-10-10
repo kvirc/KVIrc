@@ -102,7 +102,7 @@ KviTextIcon::~KviTextIcon()
 void KviTextIcon::setId(int iId)
 {
 	m_iId = iId;
-	m_szFileName=QString::null;
+	m_szFileName=QString();
 }
 
 void KviTextIcon::setFilename(QString szFileName)

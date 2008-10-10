@@ -155,7 +155,7 @@ public:
 	void registerDataStreamMonitor(KviIrcDataStreamMonitor * m);
 	void unregisterDataStreamMonitor(KviIrcDataStreamMonitor *m);
 
-	void terminateConnectionRequest(bool bForce,const QString &szQuitMessage = QString::null,bool bSimulateUnexpectedDisconnect = false);
+	void terminateConnectionRequest(bool bForce,const QString &szQuitMessage = QString(),bool bSimulateUnexpectedDisconnect = false);
 
 protected:
 	// called by KviIrcContextToolBar: this will DIE in favor of connectOrDisconnect()

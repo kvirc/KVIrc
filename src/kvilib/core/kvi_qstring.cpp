@@ -488,7 +488,7 @@ namespace KviQString
 		const QChar * fmt = nullTerminatedArray(szFmt);
 		if(!fmt)
 		{
-			s = QString::null;
+			s = QString();
 			return;
 		}
 

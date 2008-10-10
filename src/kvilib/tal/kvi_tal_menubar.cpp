@@ -27,33 +27,29 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	KviTalMenuBar::KviTalMenuBar(QWidget * par,const char * nam)
-	: KMenuBar(par)
+	KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
+	: KMenuBar(pParent)
 	{
-		setWindowTitle(nam);
-	}
-
-	KviTalMenuBar::~KviTalMenuBar()
-	{
+		setWindowTitle(pcName);
 	}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_menubar_kde.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #else
 
-	KviTalMenuBar::KviTalMenuBar(QWidget * par,const char * nam)
-	: QMenuBar(par)
-	{
-	}
-
-	KviTalMenuBar::~KviTalMenuBar()
+	KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
+	: QMenuBar(pParent)
 	{
 	}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_menubar_qt.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif
+
+KviTalMenuBar::~KviTalMenuBar()
+{
+}

@@ -745,7 +745,7 @@ void KviSetupWizard::chooseOldDataPath()
 					"Do you want to use it anyway?")
 					.arg( szBuffer ),
 				__tr2qs("&Yes"), __tr2qs("&No"),
-				QString::null, 0, 1 ) == 0
+				QString(), 0, 1 ) == 0
 			) {
 				m_pOldDataPathEdit->setText(szBuffer);
 			}

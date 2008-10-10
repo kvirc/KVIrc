@@ -42,7 +42,7 @@ bool KviKvsObjectFunctionHandler::isScriptHandler()
 
 QString KviKvsObjectFunctionHandler::scriptHandlerCode()
 {
-	return QString::null;
+	return QString();
 }
 
 

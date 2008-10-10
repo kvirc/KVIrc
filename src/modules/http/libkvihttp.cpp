@@ -245,7 +245,7 @@ static bool http_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
 	KVSM_PARAMETERS_END(c)
 
-	return http_kvs_complete_get(c,szUrl,szFileName,QString::null);
+	return http_kvs_complete_get(c,szUrl,szFileName,QString());
 }
 /*
 	@doc: http.asyncGet

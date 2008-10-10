@@ -761,7 +761,7 @@ QPixmap * KviIconManager::getBigIcon(const QString &szName)
 			QImage tmp2 = tmpi.scaled(32,32,Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
 			QPixmap *pix=new QPixmap();
 			*pix = QPixmap::fromImage(tmp2);
-			KviCachedPixmap * cp = new KviCachedPixmap(pix,QString::null);
+			KviCachedPixmap * cp = new KviCachedPixmap(pix,QString());
 			addToCache(tmpName,cp);
 			return cp->pixmap();
 		}
@@ -769,7 +769,7 @@ QPixmap * KviIconManager::getBigIcon(const QString &szName)
 
 	p = getPixmap("kvi_bigicon_unknown.png");
 	if(p)return p;
-	KviCachedPixmap * cp = new KviCachedPixmap(new QPixmap(32,32),QString::null);
+	KviCachedPixmap * cp = new KviCachedPixmap(new QPixmap(32,32),QString());
 	addToCache(szName,cp);
 	return cp->pixmap();
 }

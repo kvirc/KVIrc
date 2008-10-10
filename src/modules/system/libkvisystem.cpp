@@ -208,7 +208,7 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
 #else
 */
 	char * b = kvi_getenv(szVar.data());
-	c->returnValue()->setString(b ? QString::fromLocal8Bit(b) : QString::null);
+	c->returnValue()->setString(b ? QString::fromLocal8Bit(b) : QString());
 //#endif
 	return true;
 }

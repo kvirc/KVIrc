@@ -861,7 +861,7 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 		pTarget->setSignalSender(m_hObject);
 		pTarget->setSignalName(sigName);
 
-		if(!pTarget->callFunction(this,s->szSlot,QString::null,pOuterCall->context(),&retVal,pParams))
+		if(!pTarget->callFunction(this,s->szSlot,QString(),pOuterCall->context(),&retVal,pParams))
 		{
 			if(KviKvsKernel::instance()->objectController()->lookupObject(hTarget) && it.current())
 			{
@@ -1563,7 +1563,7 @@ bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,Kv
 	if(!pRetVal)pRetVal = &rv;
 	KviKvsRunTimeContext ctx(0,g_pApp->activeConsole(),KviKvsKernel::instance()->emptyParameterList(),pRetVal,0);
 	if(!pParams)pParams = KviKvsKernel::instance()->emptyParameterList();
-	return callFunction(pCaller,fncName,QString::null,&ctx,pRetVal,pParams);
+	return callFunction(pCaller,fncName,QString(),&ctx,pRetVal,pParams);
 }
 
 bool KviKvsObject::callFunction(KviKvsObject * pCaller,const QString &fncName,KviKvsVariantList * pParams)

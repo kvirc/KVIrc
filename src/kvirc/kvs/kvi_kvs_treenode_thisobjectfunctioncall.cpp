@@ -57,5 +57,5 @@ bool KviKvsTreeNodeThisObjectFunctionCall::evaluateReadOnlyInObjectScope(KviKvsO
 	if(!m_pParams->evaluate(c,&l))return false;
 	pBuffer->setNothing();
 	c->setDefaultReportLocation(this);
-	return o->callFunction(c->thisObject(),m_szFunctionName,QString::null,c,pBuffer,&l);
+	return o->callFunction(c->thisObject(),m_szFunctionName,QString(),c,pBuffer,&l);
 }

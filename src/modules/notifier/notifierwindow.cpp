@@ -1376,7 +1376,7 @@ void KviNotifierWindow::returnPressed()
 
 	addMessage(tab->window(),tmp.ptr(),html,0); //m_pCurrentFocusedWindowTab on place of m_pCurrentMessage->window()
 	m_pLineEdit->setText("");
-	KviUserInput::parse(txt,tab->window(),QString::null,1);
+	KviUserInput::parse(txt,tab->window(),QString(),1);
 }
 
 void KviNotifierWindow::progressUpdate()

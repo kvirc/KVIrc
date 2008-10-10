@@ -174,7 +174,7 @@ public:
 	//==============================================================================================
 	// Logging
 	// Stops previous logging session too...
-	bool startLogging(const QString& fname = QString::null,bool bPrependCurBuffer = false);
+	bool startLogging(const QString& fname = QString(),bool bPrependCurBuffer = false);
 	void stopLogging();
 	bool isLogging(){ return (m_pLogFile != 0); };
 	void getLogFileName(QString &buffer);

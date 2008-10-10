@@ -485,7 +485,7 @@ void KviEventEditor::exportAllEvents()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,QString::null,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,QString(),true,true))return;
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{

@@ -116,7 +116,7 @@ KviStatusBarApplet::~KviStatusBarApplet()
 
 QString KviStatusBarApplet::tipText(const QPoint &)
 {
-	return QString::null;
+	return QString();
 }
 
 void KviStatusBarApplet::paintEvent(QPaintEvent * e)

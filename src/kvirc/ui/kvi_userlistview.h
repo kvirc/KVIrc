@@ -238,7 +238,7 @@ public:
 	* \param pName The name of the users list
 	* \return KviUserListView
 	*/
-	KviUserListView(QWidget * pParent, KviWindowToolPageButton * pButton, KviIrcUserDataBase * pDb, KviWindow * pWnd, int iDictSize = 5, const QString & szTextLabel = QString::null, const char * pName = "userslistview");
+	KviUserListView(QWidget * pParent, KviWindowToolPageButton * pButton, KviIrcUserDataBase * pDb, KviWindow * pWnd, int iDictSize = 5, const QString & szTextLabel = QString(), const char * pName = "userslistview");
 
 	/**
 	* \brief Destroys the user list view object
@@ -711,7 +711,7 @@ public:
 	* \param iFlags The flags of the user
 	* \return KviUserListEntry *
 	*/
-	KviUserListEntry * join(const QString & szNick, const QString & szUser = QString::null, const QString & szHost = QString::null, int iFlags = 0);
+	KviUserListEntry * join(const QString & szNick, const QString & szUser = QString(), const QString & szHost = QString(), int iFlags = 0);
 
 	/**
 	* \brief Returns true if the avatar of a user is changed

@@ -36,7 +36,7 @@
 
 
 KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
-: QTableWidgetItem(QString::null,Qt::ItemIsEditable)
+: QTableWidgetItem(QString(),Qt::ItemIsEditable)
 {
 	if(icon)
 		m_pIcon=icon;
@@ -161,7 +161,7 @@ void KviTextIconsOptionsWidget::iconSelected(int id)
 void KviTextIconsOptionsWidget::chooseFromFile()
 {
 	QString szFile;
-	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString::null,KVI_FILTER_IMAGE,"options");
+	KviFileDialog::askForOpenFileName(szFile,"Choose icon filename",QString(),KVI_FILTER_IMAGE,"options");
 	if(!szFile.isEmpty())
 	{
 		if(g_pIconManager->getPixmap(szFile))

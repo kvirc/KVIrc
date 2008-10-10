@@ -65,7 +65,7 @@ public:
 	KviStatusBarAppletDescriptor(const QString &szVisibleName,
 					const QString &szInternalName,
 					CreateAppletCallback pProc,
-					const QString &szPreloadModule = QString::null,
+					const QString &szPreloadModule = QString(),
 					const QPixmap &pixIcon = QPixmap());
 	virtual ~KviStatusBarAppletDescriptor();
 public:

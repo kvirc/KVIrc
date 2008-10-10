@@ -1890,7 +1890,7 @@ static bool str_kvs_fnc_split(KviKvsModuleFunctionCall * c)
 		}
 	} else {
 		if(!bNoEmpty)
-			a->set(id,new KviKvsVariant(QString::null)); // empty string at the end
+			a->set(id,new KviKvsVariant(QString())); // empty string at the end
 	}
 
 	return true;

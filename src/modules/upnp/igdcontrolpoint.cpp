@@ -87,7 +87,7 @@ QString IgdControlPoint::getExternalIpAddress() const
 	{
 		return m_pWanConnectionService->getExternalIpAddress();
 	} else {
-		return QString::null;
+		return QString();
 	}
 }
 

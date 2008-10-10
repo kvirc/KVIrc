@@ -43,13 +43,13 @@
 KviLogListViewItem::KviLogListViewItem(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
 : KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
 {
-	setText(0,m_pFileData ? m_pFileData->name() : QString::null);
+	setText(0,m_pFileData ? m_pFileData->name() : QString());
 };
 
 KviLogListViewItem::KviLogListViewItem(KviTalTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
 : KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
 {
-	setText(0,m_pFileData ? m_pFileData->name() : QString::null);
+	setText(0,m_pFileData ? m_pFileData->name() : QString());
 };
 
 KviLogListViewItemFolder::KviLogListViewItemFolder(KviTalTreeWidgetItem * par, const QString& label)

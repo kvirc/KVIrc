@@ -53,7 +53,7 @@ public:
 class KVIRC_API KviTopicListBoxItem : public KviTalListWidgetText
 {
 public:
-	KviTopicListBoxItem(KviTalListWidget * pListBox = 0, const QString & text = QString::null);
+	KviTopicListBoxItem(KviTalListWidget * pListBox = 0, const QString & text = QString());
 	~KviTopicListBoxItem();
 public:
 	virtual int width(const KviTalListWidget * pList) const;

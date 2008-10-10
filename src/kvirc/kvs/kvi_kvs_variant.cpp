@@ -585,14 +585,14 @@ void KviKvsVariant::asString(QString &szBuffer) const
 {
 	if(!m_pData)
 	{
-		szBuffer = QString::null;
+		szBuffer = QString();
 		return;
 	}
 	switch(m_pData->m_eType)
 	{
 		case KviKvsVariantData::String: szBuffer = *(m_pData->m_u.pString); break;
-		case KviKvsVariantData::Array: szBuffer = QString::null; m_pData->m_u.pArray->appendAsString(szBuffer); break;
-		case KviKvsVariantData::Hash: szBuffer = QString::null; m_pData->m_u.pHash->appendAsString(szBuffer); break;
+		case KviKvsVariantData::Array: szBuffer = QString(); m_pData->m_u.pArray->appendAsString(szBuffer); break;
+		case KviKvsVariantData::Hash: szBuffer = QString(); m_pData->m_u.pHash->appendAsString(szBuffer); break;
 		case KviKvsVariantData::Integer:  szBuffer.setNum(m_pData->m_u.iInteger); break;
 		case KviKvsVariantData::Real: szBuffer.setNum(*(m_pData->m_u.pReal)); break;
 		case KviKvsVariantData::Boolean: szBuffer.setNum(m_pData->m_u.bBoolean ? 1 : 0); break;

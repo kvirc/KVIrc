@@ -41,7 +41,7 @@ public:
 	QString m_szImageId;
 	QString m_szTipText;
 public:
-	KviImageDialogItem(KviTalListWidget * b,const QPixmap &thumb,const QString &szFile,const QString &image_id,const QString &szTipText = QString::null,bool bIsFolder = false)
+	KviImageDialogItem(KviTalListWidget * b,const QPixmap &thumb,const QString &szFile,const QString &image_id,const QString &szTipText = QString(),bool bIsFolder = false)
 	: KviTalListWidgetPixmap(b,thumb,szFile) , m_bIsFolder(bIsFolder) , m_szImageId(image_id) , m_szTipText(szTipText) {};
 	~KviImageDialogItem(){};
 public:
@@ -64,10 +64,10 @@ class KVIRC_API KviImageDialog : public QDialog
 	Q_OBJECT
 public:
 	KviImageDialog(QWidget * par,
-		const QString &szCaption = QString::null,
+		const QString &szCaption = QString(),
 		int types = KID_TYPE_ALL,
 		int initialType = 0,
-		const QString &szInitialDir = QString::null,
+		const QString &szInitialDir = QString(),
 		int maxPreviewFileSize = 256000, bool modal=false);
 	virtual ~KviImageDialog();
 protected:
@@ -92,7 +92,7 @@ protected:
 public:
 	const QString & selectedImage(){ return m_szSelectedImage; };
 protected:
-	void startJob(int type,const QString &szInitialPath = QString::null);
+	void startJob(int type,const QString &szInitialPath = QString());
 	void jobTerminated();
 	virtual void closeEvent(QCloseEvent *e);
 protected slots:

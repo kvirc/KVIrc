@@ -650,7 +650,7 @@ QString KviIrcMask::getHostDomainMask() const
 {
 	int len = m_szHost.length();
 	const QChar *p=KviQString::nullTerminatedArray(m_szHost);
-	if(!p)return QString::null;
+	if(!p)return QString();
 	const QChar *b = p;
 	while(p->unicode() && p->unicode() != '.')p++;
 	QString ret(p,len - (p - b));

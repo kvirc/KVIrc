@@ -105,7 +105,7 @@ public:
 	void writeEntry(const QString & szKey,const QString & szValue);
 	void writeEntry(const QString & szKey,const char * szValue)
 		{ writeEntry(szKey,QString::fromUtf8(szValue)); };
-	QString readEntry(const QString & szKey,const QString & szDefault = QString::null);
+	QString readEntry(const QString & szKey,const QString & szDefault = QString());
 	// HACK for KviOptions.. (FIXME)
 	QString readKviStrEntry(const QString &szKey,const KviStr &szDefault)
 		{ return readEntry(szKey,szDefault.ptr()); };
@@ -127,7 +127,7 @@ public:
 	void writeEntry(const QString & szKey,const QStringList &list);
 	QList<int> readIntListEntry(const QString & ,const QList<int> &list);
 	void writeEntry(const QString & szKey,const QList<int> &list);
-	QString readQStringEntry(const QString & szKey,const QString &szDefault = QString::null)
+	QString readQStringEntry(const QString & szKey,const QString &szDefault = QString())
 		{ return readEntry(szKey,szDefault); };
 	//void writeEntry(const QString & szKey,const QString &szValue);
 	//void writeEntry(const char *szKey,unsigned long lValue);

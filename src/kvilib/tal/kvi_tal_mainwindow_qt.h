@@ -24,19 +24,50 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_mainwindow_qt.h
+* \author Szymon Stefanek
+* \brief Qt class for mainwindow
+*/
+
 #include "kvi_settings.h"
 
 #include <QMainWindow>
 
+/**
+* \class KviTalMainWindow
+* \brief Toolkit Abstraction Layer: mainwindow class
+*/
 class KVILIB_API KviTalMainWindow : public QMainWindow
 {
 	Q_OBJECT
 public:
-	KviTalMainWindow(QWidget * par,const char * nam);
+	/**
+	* \brief Constructs the mainwindow object
+	* \param pParent The parent object
+	* \param pcName The name of the object
+	* \return KviTalMainWindow
+	*/
+	KviTalMainWindow(QWidget * pParent, const char * pcName);
+
+	/**
+	* \brief Destroys the mainwindow object
+	* \return KviTalMainWindow
+	*/
 	~KviTalMainWindow();
 public:
+	/**
+	* \brief Returns true if the mainwindow uses big pixmaps
+	* \return bool
+	*/
 	bool usesBigPixmaps();
-	void setUsesBigPixmaps(bool b);
+
+	/**
+	* \brief Sets the use of big pixmaps
+	* \param bUse Whether to use big pixmaps
+	* \return void
+	*/
+	void setUsesBigPixmaps(bool bUse);
 };
 
 #endif // _KVI_TAL_MAINWINDOW_QT_H_

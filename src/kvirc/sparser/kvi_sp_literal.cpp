@@ -225,7 +225,7 @@ void KviServerParser::parseLiteralJoin(KviIrcMessage *msg)
 			if(av)
 			{
 				it->globalData()->setAvatar(av);
-				console->avatarChanged(av,szNick,szUser,szHost,QString::null);
+				console->avatarChanged(av,szNick,szUser,szHost,QString());
 			}
 		}
 
@@ -367,7 +367,7 @@ void KviServerParser::parseLiteralPart(KviIrcMessage *msg)
 	}
 
 	// always decode with the textEncoding of the channel
-	QString partMsg = msg->paramCount() > 1 ? chan->decodeText(msg->safeTrailing()) : QString::null;
+	QString partMsg = msg->paramCount() > 1 ? chan->decodeText(msg->safeTrailing()) : QString();
 
 	if(IS_ME(msg,szNick))
 	{

@@ -328,7 +328,7 @@ bool KviConfig::load()
 								// we in fact need this (mercy :D)
 								// otherwise the empty options will be treated as non-existing ones
 								// and will get the defaults (which is bad)
-								QString * pVal = new QString(QString::null);
+								QString * pVal = new QString(QString());
 								p_group->replace(szKey,pVal);
 							}
 						}

@@ -370,7 +370,7 @@ void KviSingleActionEditor::chooseSmallIcon()
 void KviSingleActionEditor::chooseBigIcon()
 {
 	if(!m_pActionData)return;
-	KviImageDialog * d = new KviImageDialog(this,QString::null,KID_TYPE_ALL,KID_TYPE_FULL_PATH);
+	KviImageDialog * d = new KviImageDialog(this,QString(),KID_TYPE_ALL,KID_TYPE_FULL_PATH);
 	int ret = d->exec();
 	QString s = d->selectedImage();
 	delete d;
@@ -696,7 +696,7 @@ void KviActionEditor::exportActions()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,QString::null,true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,QString(),true,true,true))return;
 
 	QString szCode;
 
@@ -778,14 +778,14 @@ void KviActionEditor::newAction()
 	szDes.append("\")");
 
 	KviActionData * ad = new KviActionData(szName,
-			QString::null,
+			QString(),
 			szVis,
 			szDes,
 			KviActionManager::categoryGeneric()->name(),
-			QString::null,
-			QString::null,
+			QString(),
+			QString(),
 			0,
-			QString::null,
+			QString(),
 			0);
 
 	KviActionEditorTreeWidgetItem * lvi = new KviActionEditorTreeWidgetItem(m_pTreeWidget,ad);

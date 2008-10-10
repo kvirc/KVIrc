@@ -180,7 +180,7 @@ class KVIRC_API KviFileSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
-	KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags = 0,const QString &szFilter = QString::null);
+	KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags = 0,const QString &szFilter = QString());
 	~KviFileSelector(){};
 public:
 	enum Flags {

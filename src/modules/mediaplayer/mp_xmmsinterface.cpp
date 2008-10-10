@@ -306,20 +306,20 @@ bool KviXmmsInterface::playMrl(const QString &mrl)
 QString KviXmmsInterface::nowPlaying()
 {
 	int (*sym)(int) = (int (*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
-	if(!sym)return QString::null;
+	if(!sym)return QString();
 	int pos = sym(0);
 	char * (*sym2)(int,int) = (char * (*)(int,int))lookupSymbol("xmms_remote_get_playlist_title");
-	if(!sym2)return QString::null;
+	if(!sym2)return QString();
 	return QString::fromLocal8Bit(sym2(0,pos));
 }
 
 QString KviXmmsInterface::mrl()
 {
 	int (*sym)(int) = (int (*)(int))lookupSymbol("xmms_remote_get_playlist_pos");
-	if(!sym)return QString::null;
+	if(!sym)return QString();
 	int pos = sym(0);
 	char * (*sym2)(int,int) = (char * (*)(int,int))lookupSymbol("xmms_remote_get_playlist_file");
-	if(!sym2)return QString::null;
+	if(!sym2)return QString();
 	QString ret = QString::fromLocal8Bit(sym2(0,pos));
 	if(ret.length() > 1)
 		if(ret[0] == '/')ret.prepend("file://");

@@ -28,11 +28,11 @@
 
 
 // Data type: QString
-// Default: QString::null
+// Default: QString()
 #define KVS_PT_STRING 0
 
 // Data type: QString
-// Default: QString::null
+// Default: QString()
 #define KVS_PT_NONEMPTYSTRING 1
 
 // Data type: kvs_int_t

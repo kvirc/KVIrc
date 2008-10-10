@@ -139,7 +139,7 @@ bool KviKvsProcessAsyncOperation::start()
 
 void KviKvsProcessAsyncOperation::ping()
 {
-	if(trigger(EventPing,QString::null))
+	if(trigger(EventPing,QString()))
 	{
 		triggerSelfDelete();
 	}

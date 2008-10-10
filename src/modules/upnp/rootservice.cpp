@@ -214,7 +214,7 @@ ServiceParameters RootService::getServiceById(const QString &serviceId) const
 	}
 
 	//calling function check this field to understand if the struct is null
-	params.controlUrl = QString::null;
+	params.controlUrl = QString();
 	return params;
 }
 
@@ -254,7 +254,7 @@ ServiceParameters RootService::getServiceByType(const QString &serviceType) cons
 	}
 
 	//calling function check this field to understand if the struct is null
-	params.controlUrl = QString::null;
+	params.controlUrl = QString();
 	return params;
 
 }

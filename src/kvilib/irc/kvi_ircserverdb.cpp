@@ -473,7 +473,7 @@ void KviServerDataBase::load(const QString & filename)
 			pNewNet->m_szUserName = cfg.readQStringEntry("UserName");
 			pNewNet->m_szOnConnectCommand = cfg.readQStringEntry("OnConnectCommand");
 			pNewNet->m_szOnLoginCommand = cfg.readQStringEntry("OnLoginCommand");
-			pNewNet->m_pNickServRuleSet = KviNickServRuleSet::load(&cfg,QString::null);
+			pNewNet->m_pNickServRuleSet = KviNickServRuleSet::load(&cfg,QString());
 			pNewNet->m_bAutoConnect = cfg.readBoolEntry("AutoConnect",false);
 			pNewNet->m_szUserIdentityId = cfg.readQStringEntry("UserIdentityId");
 			if(pNewNet->m_bAutoConnect)
@@ -549,7 +549,7 @@ void KviServerDataBase::save(const QString &filename)
 			cfg.writeEntry("OnConnectCommand",pNetwork->m_szOnConnectCommand);
 		if(!pNetwork->m_szOnLoginCommand.isEmpty())
 			cfg.writeEntry("OnLoginCommand",pNetwork->m_szOnLoginCommand);
-		if(pNetwork->m_pNickServRuleSet)pNetwork->m_pNickServRuleSet->save(&cfg,QString::null);
+		if(pNetwork->m_pNickServRuleSet)pNetwork->m_pNickServRuleSet->save(&cfg,QString());
 		if(pNetwork->autoJoinChannelList())
 			cfg.writeEntry("AutoJoinChannels",*(pNetwork->autoJoinChannelList()));
 		if(pNetwork->m_szName == m_szCurrentNetwork)cfg.writeEntry("Current",true);

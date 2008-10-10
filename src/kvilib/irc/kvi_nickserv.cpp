@@ -280,7 +280,7 @@ bool KviNickServRule::load(KviConfig * cfg,const QString &prefix)
 	m_szNickServMask = cfg->readQStringEntry(tmp);
 	if(m_szNickServMask.isEmpty())return false;
 	KviQString::sprintf(tmp,"%QServerMask",&prefix);
-	m_szServerMask = cfg->readQStringEntry(tmp,QString::null);
+	m_szServerMask = cfg->readQStringEntry(tmp,QString());
 	KviQString::sprintf(tmp,"%QMessageRegexp",&prefix);
 	m_szMessageRegexp = cfg->readQStringEntry(tmp);
 	if(m_szMessageRegexp.isEmpty())return false;

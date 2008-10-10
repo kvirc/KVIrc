@@ -207,12 +207,12 @@ KviKvsStandardTreeWidgetItem::~KviKvsStandardTreeWidgetItem()
 
 /*
 KviKvsCheckTreeWidgetItem::KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par)
-:KviTalCheckListItem(par,QString::null,KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
+:KviTalCheckListItem(par,QString(),KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
 {
 }
 
 KviKvsCheckTreeWidgetItem::KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par)
-:KviTalCheckListItem(par,QString::null,KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
+:KviTalCheckListItem(par,QString(),KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
 {
 }
 

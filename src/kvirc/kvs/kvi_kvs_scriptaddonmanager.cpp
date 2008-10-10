@@ -53,11 +53,11 @@ KviKvsScriptAddon::KviKvsScriptAddon(const KviKvsScriptAddon &a)
 	m_szName = a.m_szName;
 	m_szVersion = a.m_szVersion;
 	m_szIconId = a.m_szIconId;
-	allocateScripts(a.m_pVisibleNameScript->code(),a.m_pDescriptionScript->code(),a.m_pUninstallCallback ? a.m_pUninstallCallback->code() : QString::null);
+	allocateScripts(a.m_pVisibleNameScript->code(),a.m_pDescriptionScript->code(),a.m_pUninstallCallback ? a.m_pUninstallCallback->code() : QString());
 	m_pConfigureCallback = 0;
-	setConfigureCallback(a.m_pConfigureCallback ? a.m_pConfigureCallback->code() : QString::null);
+	setConfigureCallback(a.m_pConfigureCallback ? a.m_pConfigureCallback->code() : QString());
 	m_pHelpCallback = 0;
-	setHelpCallback(a.m_pHelpCallback ? a.m_pHelpCallback->code() : QString::null);
+	setHelpCallback(a.m_pHelpCallback ? a.m_pHelpCallback->code() : QString());
 }
 
 KviKvsScriptAddon::KviKvsScriptAddon()

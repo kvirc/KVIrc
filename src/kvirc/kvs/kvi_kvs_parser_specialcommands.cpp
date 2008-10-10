@@ -1695,7 +1695,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 				QString szInstruction(pBegin,KVSP_curCharPointer - pBegin);
 				KviCommandFormatter::bufferFromBlock(szInstruction);
 				QString * pItemName = pParameters ? pParameters->first() : 0;
-				QString szItemName = pItemName ? *pItemName : QString::null;
+				QString szItemName = pItemName ? *pItemName : QString();
 				if(bPrologue)
 					pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue(pLabelBegin,szInstruction,szItemName));
 				else
@@ -1728,7 +1728,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			QString * pIcon = pParameters->next();
 			if(KVSP_curCharUnicode == ';')KVSP_skipChar;
 			QString * pItemName = pParameters->next();
-			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelLabel(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString::null,pItemName ? *pItemName : QString::null));
+			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelLabel(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString(),pItemName ? *pItemName : QString()));
 			delete pParameters;
 		} else if(szLabelLow == "popup")
 		{
@@ -1757,7 +1757,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			
 			pSubPopup->setCondition(szCondition);
 			pSubPopup->setText(*pText);
-			pSubPopup->setItemName(pItemName ? *pItemName : QString::null);
+			pSubPopup->setItemName(pItemName ? *pItemName : QString());
 			if(pIcon)pSubPopup->setIcon(*pIcon);
 			pPopup->addLabel(pSubPopup);
 			delete pParameters;
@@ -1801,12 +1801,12 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			{
 				QString szInstruction(pBegin,KVSP_curCharPointer - pBegin);
 				KviCommandFormatter::bufferFromBlock(szInstruction);
-				pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelItem(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString::null,szInstruction,pItemName ? *pItemName : QString::null));
+				pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelItem(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString(),szInstruction,pItemName ? *pItemName : QString()));
 			} else {
 				// zero length instruction, but still add the item
 				QString szInstruction = "";
 				KviCommandFormatter::bufferFromBlock(szInstruction);
-				pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelItem(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString::null,szInstruction,pItemName ? *pItemName : QString::null));
+				pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelItem(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString(),szInstruction,pItemName ? *pItemName : QString()));
 			}
 			delete pParameters;
 		} else if(szLabelLow == "extpopup")
@@ -1834,7 +1834,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 			QString * pIcon = pParameters->next();
 			QString * pItemName = pParameters->next();
 			if(KVSP_curCharUnicode == ';')KVSP_skipChar;
-			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString::null,*pName,pItemName ? *pItemName : QString::null));
+			pPopup->addLabel(new KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup(pLabelBegin,szCondition,*pText,pIcon ? *pIcon : QString(),*pName,pItemName ? *pItemName : QString()));
 			delete pParameters;
 		} else {
 			/////////////////////////////////////////////////////////////////////////////////////////////////

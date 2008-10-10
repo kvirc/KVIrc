@@ -114,7 +114,7 @@ Manager * Manager::instance()
 QString Manager::getExternalIpAddress() const
 {
 	// Do not expose activeIgd_;
-	return (m_pActiveIgdControlPoint != 0 ? m_pActiveIgdControlPoint->getExternalIpAddress() : QString::null);
+	return (m_pActiveIgdControlPoint != 0 ? m_pActiveIgdControlPoint->getExternalIpAddress() : QString());
 }
 
 

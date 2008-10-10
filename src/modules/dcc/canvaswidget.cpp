@@ -1184,7 +1184,7 @@
 	// KviVariantTableItem
 	//
 	KviVariantTableItem::KviVariantTableItem(QTable * t,const QVariant & property)
-	: QTableItem(t,QTableItem::WhenCurrent,QString::null)
+	: QTableItem(t,QTableItem::WhenCurrent,QString())
 	{
 		m_property = property;
 	}

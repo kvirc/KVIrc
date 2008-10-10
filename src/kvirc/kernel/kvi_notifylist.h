@@ -58,8 +58,8 @@ protected:
 	virtual bool handleUserhost(KviIrcMessage * msg);
 	virtual bool handleIsOn(KviIrcMessage * msg);
 	virtual bool handleWatchReply(KviIrcMessage *msg);
-	void notifyOnLine(const QString &nick,const QString &user = QString::null,const QString &host = QString::null,const QString &szReason = QString::null,bool bJoin=true);
-	void notifyOffLine(const QString &nick,const QString &user = QString::null,const QString &host = QString::null,const QString &szReason = QString::null);
+	void notifyOnLine(const QString &nick,const QString &user = QString(),const QString &host = QString(),const QString &szReason = QString(),bool bJoin=true);
+	void notifyOffLine(const QString &nick,const QString &user = QString(),const QString &host = QString(),const QString &szReason = QString());
 public:
 	KviConsole * console(){ return m_pConsole;  };
 };

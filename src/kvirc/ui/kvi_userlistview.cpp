@@ -753,7 +753,7 @@ KviUserListEntry * KviUserListView::join(const QString & szNick, const QString &
 		// add an entry to the global dict
 		KviIrcUserEntry * pGlobalData = m_pIrcUserDataBase->insertUser(szNick,szUser,szHost);
 		// calculate the flags and update the counters
-		pEntry = new KviUserListEntry(this,szNick,pGlobalData,iFlags,(szUser == QString::null));
+		pEntry = new KviUserListEntry(this,szNick,pGlobalData,iFlags,(szUser == QString()));
 		insertUserEntry(szNick,pEntry);
 	} else {
 //		if(!host.isEmpty()) - it can be UHNAMES with host or NAMEX(X) w/o it

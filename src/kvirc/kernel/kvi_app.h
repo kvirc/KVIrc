@@ -178,10 +178,10 @@ public:
 	void optionResetUpdate(int flags);
 
 	// kvi_app_fs.cpp : Filesystem thingies
-	void getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString::null);
-	void getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString::null,bool bCreateIfNeeded = true);
+	void getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString());
+	void getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QString &appendFile = QString(),bool bCreateIfNeeded = true);
 
-	void getTmpFileName(QString &szBuffer,const QString &szEndingFileName = QString::null);
+	void getTmpFileName(QString &szBuffer,const QString &szEndingFileName = QString());
 	void getChannelDumpLogFileName(QString &str);
 
 	static QTextCodec * defaultTextCodec();
@@ -233,7 +233,7 @@ public:
 	// kvi_app.cpp : DCC (and CTCP AVATAR & SOUND) related stuff
 	void setAvatarOnFileReceived(KviConsole * pConsole,const QString &szRemoteUrl,const QString &szNick,const QString &szUser,const QString &szHost);
 	KviPendingAvatarChange * findPendingAvatarChange(KviConsole * pConsole,const QString &szNick,const QString &szRemoteUrl);
-	void fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,const QString &szLocalFileName,const QString &szNick = QString::null,const QString &szError = QString::null,bool bQuiet = false);
+	void fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,const QString &szLocalFileName,const QString &szNick = QString(),const QString &szError = QString(),bool bQuiet = false);
 
 	void setAvatarFromOptions();
 

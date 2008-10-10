@@ -190,7 +190,7 @@ void KviCustomToolBarManager::load(const QString &szFileName)
 	while(it.current())
 	{
 		cfg.setGroup(it.currentKey());
-		KviCustomToolBarDescriptor * d = new KviCustomToolBarDescriptor(it.currentKey(),QString::null);
+		KviCustomToolBarDescriptor * d = new KviCustomToolBarDescriptor(it.currentKey(),QString());
 		d->m_bVisibleAtStartup = (cfg.readIntEntry("Visible",0) > 0);
 		if(!d->load(&cfg))delete d;
 		else m_pDescriptors->replace(it.currentKey(),d);
@@ -226,7 +226,7 @@ void KviCustomToolBarManager::loadScripttoolbarsCompat(const QString &szFileName
 	for(unsigned int i=0;i<cnt;i++)
 	{
 		tmp.sprintf("%d",i);
-		KviCustomToolBarDescriptor * d = new KviCustomToolBarDescriptor(QString::null,QString::null);
+		KviCustomToolBarDescriptor * d = new KviCustomToolBarDescriptor(QString(),QString());
 		if(!d->loadScripttoolbarCompat(tmp.ptr(),&cfg))delete d;
 		else m_pDescriptors->replace(d->id(),d);
 	}

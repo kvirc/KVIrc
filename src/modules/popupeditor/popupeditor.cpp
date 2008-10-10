@@ -909,27 +909,27 @@ void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupTreeWidget
 			case KviKvsPopupMenuItem::Item:
 				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Item);
 				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Item);
-				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString::null);
-				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString::null);
-				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString::null);
-				theItem->setCode(item->kvsCode() ? item->kvsCode()->code() : QString::null);
+				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
+				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
+				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
+				theItem->setCode(item->kvsCode() ? item->kvsCode()->code() : QString());
 				theItem->setId(item->name());
 			break;
 			case KviKvsPopupMenuItem::ExtMenu:
 				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::ExtMenu);
 				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::ExtMenu);
-				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString::null);
-				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString::null);
-				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString::null);
+				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
+				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
+				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
 				theItem->setCode(((KviKvsPopupMenuItemExtMenu *)item)->extName());
 				theItem->setId(item->name());
 			break;
 			case KviKvsPopupMenuItem::Label:
 				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Label);
 				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Label);
-				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString::null);
-				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString::null);
-				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString::null);
+				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
+				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
+				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
 				theItem->setId(item->name());
 			break;
 			case KviKvsPopupMenuItem::Separator:
@@ -940,9 +940,9 @@ void KviSinglePopupEditor::populateMenu(KviKvsPopupMenu * pop,KviPopupTreeWidget
 			case KviKvsPopupMenuItem::Menu:
 				if(par)theItem = new KviPopupTreeWidgetItem(par,theItem,KviPopupTreeWidgetItem::Menu);
 				else theItem = new KviPopupTreeWidgetItem(m_pTreeWidget,theItem,KviPopupTreeWidgetItem::Menu);
-				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString::null);
-				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString::null);
-				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString::null);
+				theItem->setIcon(item->kvsIcon() ? item->kvsIcon()->code() : QString());
+				theItem->setItemText(item->kvsText() ? item->kvsText()->code() : QString());
+				theItem->setCondition(item->kvsCondition() ? item->kvsCondition()->code() : QString());
 				theItem->setId(item->name());
 				populateMenu(((KviKvsPopupMenuItemMenu *)item)->menu(),theItem,0);
 			break;

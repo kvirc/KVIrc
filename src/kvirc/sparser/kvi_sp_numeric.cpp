@@ -445,8 +445,8 @@ void KviServerParser::parseNumericNames(KviIrcMessage *msg)
 			KviIrcMask mask(msg->connection()->decodeText(begin));
 			// and make it join
 			if(!mask.nick().isEmpty())chan->join(mask.nick(),
-				mask.hasUser() ? mask.user() : QString::null,
-				mask.hasHost() ? mask.host() : QString::null,
+				mask.hasUser() ? mask.user() : QString(),
+				mask.hasHost() ? mask.host() : QString(),
 					iFlags);
 			*aux = ' ';
 			*aux = save;

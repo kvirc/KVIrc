@@ -403,13 +403,13 @@ void KviNetworkDetailsWidget::fillData(KviNetwork * n)
 	if(m_pAutoConnectCheck)
 		n->setAutoConnect(m_pAutoConnectCheck->isChecked());
 	if(m_pEncodingEditor)
-		if(m_pEncodingEditor->currentIndex() <= 0)n->setEncoding(QString::null);
+		if(m_pEncodingEditor->currentIndex() <= 0)n->setEncoding(QString());
 		else {
 			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
 			n->setEncoding(d->szName);
 		}
 	if(m_pTextEncodingEditor)
-		if(m_pTextEncodingEditor->currentIndex() <= 0)n->setTextEncoding(QString::null);
+		if(m_pTextEncodingEditor->currentIndex() <= 0)n->setTextEncoding(QString());
 		else {
 			KviLocale::EncodingDescription * dd = KviLocale::encodingDescription(m_pTextEncodingEditor->currentIndex() - 1);
 			n->setTextEncoding(dd->szName);

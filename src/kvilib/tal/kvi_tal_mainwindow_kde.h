@@ -24,20 +24,51 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_mainwindow_kde.h
+* \author Szymon Stefanek
+* \brief KDE class for mainwindow
+*/
+
 #include "kvi_settings.h"
 
 #include <kmainwindow.h>
 #include <kstatusbar.h> // statusBar() is overridden to return a KStatusBar
 
+/**
+* \class KviTalMainWindow
+* \brief Toolkit Abstraction Layer: mainwindow class
+*/
 class KVILIB_API KviTalMainWindow : public KMainWindow
 {
 	Q_OBJECT
 public:
-	KviTalMainWindow(QWidget * par,const char * nam);
+	/**
+	* \brief Constructs the mainwindow object
+	* \param pParent The parent object
+	* \param pcName The name of the object
+	* \return KviTalMainWindow
+	*/
+	KviTalMainWindow(QWidget * pParent, const char * pcName);
+
+	/**
+	* \brief Destroys the mainwindow object
+	* \return KviTalMainWindow
+	*/
 	~KviTalMainWindow();
-	public:
+public:
+	/**
+	* \brief Returns true if the mainwindow uses big pixmaps
+	* \return bool
+	*/
 	bool usesBigPixmaps();
-	void setUsesBigPixmaps(bool b);
+
+	/**
+	* \brief Sets the use of big pixmaps
+	* \param bUse Whether to use big pixmaps
+	* \return void
+	*/
+	void setUsesBigPixmaps(bool bUse);
 };
 
 #endif // _KVI_TAL_MAINWINDOW_KDE_H_

@@ -201,7 +201,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 
 	if(szAvatar.isEmpty())
 	{
-		KviAsyncAvatarSelectionDialog * d = new KviAsyncAvatarSelectionDialog(g_pFrame,QString::null,c->window()->connection());
+		KviAsyncAvatarSelectionDialog * d = new KviAsyncAvatarSelectionDialog(g_pFrame,QString(),c->window()->connection());
 		d->show();
 		return true;
 	}
@@ -215,7 +215,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	KviAvatar * av = g_pIconManager->getAvatar(QString::null,szAvatar);
+	KviAvatar * av = g_pIconManager->getAvatar(QString(),szAvatar);
 	if(av)
 	{
 		// Ok...got it...
@@ -224,7 +224,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 			c->window()->connection()->userInfo()->nickName(),
 			c->window()->connection()->userInfo()->userName(),
 			c->window()->connection()->userInfo()->hostName(),
-			QString::null);
+			QString());
 	} else {
 		bool bIsUrl = KviQString::equalCIN(szAvatar,"http://",7) && (szAvatar.length() > 7);
 
@@ -298,7 +298,7 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 			c->window()->connection()->userInfo()->nickName(),
 			c->window()->connection()->userInfo()->userName(),
 			c->window()->connection()->userInfo()->hostName(),
-			QString::null);
+			QString());
 
 	return true;
 }

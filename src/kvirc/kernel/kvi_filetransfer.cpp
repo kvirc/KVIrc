@@ -166,12 +166,12 @@ void KviFileTransfer::invokeTransferWindow(KviWindow * pWnd,bool bCreateMinimize
 
 QString KviFileTransfer::localFileName()
 {
-	return QString::null;
+	return QString();
 }
 
 QString KviFileTransfer::retryCommand()
 {
-	return QString::null;
+	return QString();
 }
 
 bool KviFileTransfer::terminated()
@@ -181,7 +181,7 @@ bool KviFileTransfer::terminated()
 
 QString KviFileTransfer::tipText()
 {
-	return QString::null;
+	return QString();
 }
 
 int KviFileTransfer::displayHeight(int iLineSpacing)

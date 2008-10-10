@@ -62,7 +62,7 @@ KviKvsUserAction::KviKvsUserAction(QObject * pParent,
 
 
 KviKvsUserAction::KviKvsUserAction(QObject * pParent)
-	: KviKvsAction(pParent,QString::null,QString::null,QString::null,QString::null)
+	: KviKvsAction(pParent,QString(),QString(),QString(),QString())
 {
 	// needs loading!
 	m_pDescriptionScript = 0;

@@ -107,7 +107,7 @@ QString XmlFunctions::getNodeValue( const QDomNode &rootNode, const QString &pat
   if( rootNode.isNull() )
   {
     qWarning() << "XmlFunctions::getNodeValue: Attempted to request '" << path << "' on null root node." << endl;
-    return QString::null;
+    return QString();
   }
 
 

@@ -151,7 +151,7 @@ public:
 		NoNotifications = 7 // this is 1|2|4 implies NoWindowFlashing and NoNotifier
 	};
 	void outputPrivmsg(KviWindow *wnd,int type,const QString &nick,
-		const QString &user,const QString &host,const QString &msg,int iFlags = 0,const QString &prefix = QString::null,const QString &suffix = QString::null);
+		const QString &user,const QString &host,const QString &msg,int iFlags = 0,const QString &prefix = QString(),const QString &suffix = QString());
 	// this applies highlighting to the specified message
 	// and triggers the OnHighlight event.
 	// it returns KVI_OUT_HIGHLIGHT if highlighting was applied
@@ -213,7 +213,7 @@ inline bool KviConsole::isNotConnected()
 
 inline QString KviConsole::currentNetworkName()
 {
-	return (connection() ? connection()->networkName() : QString::null);
+	return (connection() ? connection()->networkName() : QString());
 }
 
 #endif //_KVI_CONSOLE_H_

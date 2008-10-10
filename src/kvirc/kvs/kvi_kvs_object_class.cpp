@@ -139,7 +139,7 @@ KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent,const 
 		v = pParams->next();
 	}
 
-	if(!pObject->callFunction(pObject,"constructor",QString::null,pContext,&ret,&copy))
+	if(!pObject->callFunction(pObject,"constructor",QString(),pContext,&ret,&copy))
 	{
 		// ops...constructor failed (script error!)
 		delete pObject;

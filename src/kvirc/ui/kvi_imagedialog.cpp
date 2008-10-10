@@ -318,13 +318,13 @@ void KviImageDialog::okClicked()
 
 void KviImageDialog::cancelClicked()
 {
-	m_szSelectedImage = QString::null;
+	m_szSelectedImage = QString();
 	reject();
 }
 
 void KviImageDialog::closeEvent(QCloseEvent * e)
 {
-	m_szSelectedImage = QString::null;
+	m_szSelectedImage = QString();
 	QDialog::closeEvent(e);
 }
 

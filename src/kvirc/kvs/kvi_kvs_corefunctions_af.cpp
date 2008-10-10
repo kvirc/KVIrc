@@ -152,7 +152,7 @@ namespace KviKvsCoreFunctions
 			tmp2.bufferToBase64(tmp1.ptr(),tmp1.len());
 			KVSCF_pRetBuffer->setString(QString(tmp2.ptr()));
 		} else {
-			KVSCF_pRetBuffer->setString(QString::null);
+			KVSCF_pRetBuffer->setString(QString());
 		}
 		return true;
 	}
@@ -194,7 +194,7 @@ namespace KviKvsCoreFunctions
 			tmp2.bufferToHex(tmp1.ptr(),tmp1.len());
 			KVSCF_pRetBuffer->setString(QString(tmp2.ptr()));
 		} else {
-			KVSCF_pRetBuffer->setString(QString::null);
+			KVSCF_pRetBuffer->setString(QString());
 		}
 		return true;
 	}
@@ -513,7 +513,7 @@ namespace KviKvsCoreFunctions
 		if(ac != 0 && ac < 65536)
 			KVSCF_pRetBuffer->setString(QString(QChar((unsigned short)ac)));
 		else
-			KVSCF_pRetBuffer->setString(QString::null);
+			KVSCF_pRetBuffer->setString(QString());
 		return true;
 	}
 

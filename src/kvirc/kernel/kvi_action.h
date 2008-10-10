@@ -97,10 +97,10 @@ public:
 		const QString &szVisibleName,               // permanent visible name, visible at least in the action drawer
 		const QString &szDescription,               // what this action does ?
 		KviActionCategory * pCategory = 0,          // one of KviActionManager::category*() or 0 (default category)
-		const QString &szBigIcon = QString::null,
+		const QString &szBigIcon = QString(),
 		int iSmallIconId = 0,
 		unsigned int uFlags = 0,
-		const QString &szKeySequence = QString::null)
+		const QString &szKeySequence = QString())
 	: QObject(pParent),
 		m_szName(szName),
 		m_szVisibleName(szVisibleName),

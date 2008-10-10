@@ -598,7 +598,7 @@ public:
 	* \param iFlags The flags of the user
 	* \return KviUserListEntry *
 	*/
-	KviUserListEntry * join(const QString & szNick, const QString & szUser = QString::null, const QString & szHost = QString::null, int iFlags = 0){ return m_pUserListView->join(szNick,szUser,szHost,iFlags); };
+	KviUserListEntry * join(const QString & szNick, const QString & szUser = QString(), const QString & szHost = QString(), int iFlags = 0){ return m_pUserListView->join(szNick,szUser,szHost,iFlags); };
 
 	/**
 	* \brief Returns true if the avatar of a user is changed

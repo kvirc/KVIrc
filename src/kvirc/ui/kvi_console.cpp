@@ -869,7 +869,7 @@ void KviConsole::avatarChanged(KviAvatar * avatar,const QString &nick,const QStr
 			if(u)
 			{
 				if(avatar)u->setProperty("avatar",avatar->identificationString());
-				else u->setProperty("avatar",QString::null);
+				else u->setProperty("avatar",QString());
 				bRegisteredStuff = true;
 			}
 		}
@@ -894,12 +894,12 @@ void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const
 	if(!szAvatar.isEmpty())
 	{
 		// got a cache hit... is it on disk ?
-		KviAvatar * avatar = g_pIconManager->getAvatar(QString::null,szAvatar);
+		KviAvatar * avatar = g_pIconManager->getAvatar(QString(),szAvatar);
 		if(avatar)
 		{
 			// cached image on disk
 			e->setAvatar(avatar);
-			avatarChangedUpdateWindows(nick,QString::null);
+			avatarChangedUpdateWindows(nick,QString());
 			return;
 		} else {
 			// no cached image on disk.. will need to requery it anyway
@@ -917,11 +917,11 @@ void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const
 		if(u->getProperty("avatar",szAvatar))
 		{
 			// the user has a default avatar...
-			KviAvatar * avatar = g_pIconManager->getAvatar(QString::null,szAvatar);
+			KviAvatar * avatar = g_pIconManager->getAvatar(QString(),szAvatar);
 			if(avatar)
 			{
 				e->setAvatar(avatar);
-				avatarChangedUpdateWindows(nick,QString::null);
+				avatarChangedUpdateWindows(nick,QString());
 				return;
 			}
 		}
@@ -942,9 +942,9 @@ void KviConsole::resetAvatarForMatchingUsers(KviRegisteredUser * u)
 		{
 			if(u->matchesFixed(it.currentKey(),e->user(),e->host()))
 			{
-				KviAvatar * a = g_pIconManager->getAvatar(QString::null,szAvatar);
+				KviAvatar * a = g_pIconManager->getAvatar(QString(),szAvatar);
 				e->setAvatar(a);
-				avatarChangedUpdateWindows(it.currentKey(),QString::null);
+				avatarChangedUpdateWindows(it.currentKey(),QString());
 			}
 		}
 		++it;
@@ -973,7 +973,7 @@ KviAvatar * KviConsole::setAvatar(const QString &nick,const QString &user,const 
 		if(avatar)
 		{
 			e->setAvatar(avatar);
-			avatarChanged(avatar,nick,user,host,QString::null);
+			avatarChanged(avatar,nick,user,host,QString());
 			return avatar;
 		} else {
 			if(_OUTPUT_PARANOIC)
@@ -1011,7 +1011,7 @@ KviAvatar * KviConsole::currentAvatar()
 		if(a)
 		{
 			e->setAvatar(a);
-			avatarChanged(a,connection()->userInfo()->nickName(),QString::null,QString::null,QString::null);
+			avatarChanged(a,connection()->userInfo()->nickName(),QString(),QString(),QString());
 		}
 	}
 	return a;
@@ -1026,7 +1026,7 @@ void KviConsole::setAvatarFromOptions()
 	if(a)
 	{
 		e->setAvatar(a);
-		avatarChanged(a,connection()->userInfo()->nickName(),QString::null,QString::null,QString::null);
+		avatarChanged(a,connection()->userInfo()->nickName(),QString(),QString(),QString());
 	}
 }
 

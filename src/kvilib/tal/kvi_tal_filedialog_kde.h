@@ -51,7 +51,7 @@ public:
 	* \param bModal Whether the dialog is modal
 	* \return KviTalFileDialog
 	*/
-	KviTalFileDialog(const QString & szDirName, const QString & szFilter = QString::null, QWidget * pParent = 0, const char * pcName = 0, bool bModal = false);
+	KviTalFileDialog(const QString & szDirName, const QString & szFilter = QString(), QWidget * pParent = 0, const char * pcName = 0, bool bModal = false);
 
 	/**
 	* \brief Destroys the filedialog object
@@ -91,7 +91,7 @@ public:
 	* \param pParent The parent object
 	* \return QString
 	*/
-	static QString getExistingDirectoryPath(const QString & szDir = QString::null, const QString & szCaption = QString::null, QWidget * pParent = 0)
+	static QString getExistingDirectoryPath(const QString & szDir = QString(), const QString & szCaption = QString(), QWidget * pParent = 0)
 	{
 		// QFileDialog allows making new directories...kfiledialog not :/
 		return KFileDialog::getExistingDirectory(KUrl(szDir),pParent,szCaption);

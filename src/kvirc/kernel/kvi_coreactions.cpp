@@ -162,7 +162,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_socketspy.png",
 		KVI_SMALLICON_SPY,
 		KviAction::NeedsContext,
-		QString::null);
+		QString());
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_NETWORKLINKS,
@@ -173,7 +173,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_networklinks.png",
 		KVI_SMALLICON_LINKS,
 		KviAction::NeedsContext,
-		QString::null);
+		QString());
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_CHANNELLIST,
@@ -184,7 +184,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_channellist.png",
 		KVI_SMALLICON_LIST,
 		KviAction::NeedsContext,
-		QString::null);
+		QString());
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_GENERALOPTIONS,
@@ -340,7 +340,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_mailinglist.png",
 		KVI_SMALLICON_MESSAGE,
 		0,
-		QString::null);
+		QString());
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_KVIRCHOMEPAGE,
@@ -351,7 +351,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_kvircwww.png",
 		KVI_SMALLICON_KVIRC,
 		0,
-		QString::null);
+		QString());
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_KVIRCRUHOMEPAGE,
@@ -362,7 +362,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_kvircwww.png",
 		KVI_SMALLICON_KVIRC,
 		0,
-		QString::null);
+		QString());
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_SCREENSHOT,
@@ -386,7 +386,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_cascadewindows.png",
 		KVI_SMALLICON_CASCADEWINDOWS,
 		0,
-		QString::null);
+		QString());
 
 	SLOT_ACTION(
 		KVI_COREACTION_TILEWINDOWS,
@@ -398,7 +398,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_tilewindows.png",
 		KVI_SMALLICON_TILEWINDOWS,
 		0,
-		QString::null);
+		QString());
 
 	SLOT_ACTION(
 		KVI_COREACTION_MINIMIZEALLWINDOWS,
@@ -410,7 +410,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_minimizeallwindows.png",
 		KVI_SMALLICON_MINIMIZE,
 		0,
-		QString::null);
+		QString());
 
 	SLOT_ACTION(
 		KVI_COREACTION_NEWIRCCONTEXT,
@@ -434,7 +434,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_quit.png",
 		KVI_SMALLICON_QUITAPP,
 		0,
-		QString::null);
+		QString());
 }
 
 

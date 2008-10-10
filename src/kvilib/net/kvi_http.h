@@ -135,7 +135,7 @@ public:
 	bool start();
 
 	// this is a shortcut for reset()+setUrl()+setProcessingType()+setFileName()+start()
-	bool get(const KviUrl &u,ProcessingType p = WholeFile,const QString &szFileName = QString::null);
+	bool get(const KviUrl &u,ProcessingType p = WholeFile,const QString &szFileName = QString());
 
 	const QString & lastError(){ return m_szLastError; };
 
@@ -170,7 +170,7 @@ protected:
 		const QString &szPath,
 		unsigned int uContentOffset,
 		RequestMethod m,
-		const QString &szPostData = QString::null,
+		const QString &szPostData = QString(),
 		bool bUseSSL = false);
 
 public:

@@ -263,7 +263,7 @@ void KviMessageListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionVie
 
 
 KviMessageColorListWidgetItem::KviMessageColorListWidgetItem(KviTalListWidget * b,int idx)
-: KviTalListWidgetText(b,QString::null)
+: KviTalListWidgetText(b,QString())
 {
 
 	m_iClrIdx = idx;

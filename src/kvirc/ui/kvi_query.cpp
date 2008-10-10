@@ -622,7 +622,7 @@ void KviQuery::ownMessage(const QString & szBuffer)
 							return;
 
 						m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSGCRYPTED,
-							QString::null,QString::null,QString::null,szBuffer,KviConsole::NoNotifications);
+							QString(),QString(),QString(),szBuffer,KviConsole::NoNotifications);
 					break;
 					case KviCryptEngine::Encoded:
 					{
@@ -632,7 +632,7 @@ void KviQuery::ownMessage(const QString & szBuffer)
 						// ugly ,but we must redecode here
 						QString szRedecoded = decodeText(encrypted.ptr());
 						m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,
-							QString::null,QString::null,QString::null,szRedecoded,KviConsole::NoNotifications);
+							QString(),QString(),QString(),szRedecoded,KviConsole::NoNotifications);
 					}
 					break;
 					default: // also case KviCryptEngine::EncryptError
@@ -726,7 +726,7 @@ void KviQuery::ownMessage(const QString & szBuffer)
 			if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),szTmp.data()))
 			{
 				//feeedback the user
-				m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString::null,QString::null,QString::null,szCurSubString,KviConsole::NoNotifications);
+				m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szCurSubString,KviConsole::NoNotifications);
 				userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
 			} else {
 				// skipped a part in this multi message.. we don't want to continue
@@ -741,7 +741,7 @@ void KviQuery::ownMessage(const QString & szBuffer)
 	} else {
 		if(connection()->sendFmtData("PRIVMSG %s :%s",szName.data(),d))
 		{
-			m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString::null,QString::null,QString::null,szTmpBuffer,KviConsole::NoNotifications);
+			m_pConsole->outputPrivmsg(this,KVI_OUT_OWNPRIVMSG,QString(),QString(),QString(),szTmpBuffer,KviConsole::NoNotifications);
 			userAction(connection()->currentNickName(),KVI_USERACTION_PRIVMSG);
 		}
 	}

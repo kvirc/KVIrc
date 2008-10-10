@@ -88,19 +88,19 @@ QString KviMediaPlayerInterface::getLocalFile()
 		ret.remove(0,7);
 		return ret;
 	}
-	return QString::null;
+	return QString();
 }
 
 QString KviMediaPlayerInterface::amipEval(const QString &cmd)
 {
-	return QString::null;
+	return QString();
 }
 
 #define SCAN_MP3_FILE \
 	QString f = getLocalFile(); \
-	if(f.isEmpty())return QString::null; \
+	if(f.isEmpty())return QString(); \
 	mp3info mp3; \
-	if(!scan_mp3_file(f,&mp3))return QString::null; \
+	if(!scan_mp3_file(f,&mp3))return QString(); \
 	QTextCodec *pCodec; \
 	pCodec=mediaplayer_get_codec();
 
@@ -270,6 +270,6 @@ QString KviMediaPlayerInterface::mediaType()
 	else if(ret.endsWith(".mpeg",Qt::CaseInsensitive))ret = "MPEG Video";
 	else if(ret.endsWith(".mpg",Qt::CaseInsensitive))ret = "MPEG Video";
 	else if(ret.startsWith("http://",Qt::CaseInsensitive))ret = "HTTP Audio Stream";
-	else ret = QString::null;
+	else ret = QString();
 	return ret;
 }

@@ -211,7 +211,7 @@ void KviInput::toggleToolButtons()
 void KviInput::inputEditorEnterPressed()
 {
 	QString szText = m_pInputEditor->text();
-	KviUserInput::parse(szText,m_pWindow,QString::null,m_pCommandlineModeButton->isChecked());
+	KviUserInput::parse(szText,m_pWindow,QString(),m_pCommandlineModeButton->isChecked());
 	m_pInputEditor->setText("");
 }
 
@@ -278,7 +278,7 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 							}
 						}
 					}
-					KviUserInput::parse(szText,m_pWindow,QString::null,m_pCommandlineModeButton->isChecked());
+					KviUserInput::parse(szText,m_pWindow,QString(),m_pCommandlineModeButton->isChecked());
 					m_pMultiLineEditor->setText("");
 				}
 			}

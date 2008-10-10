@@ -919,7 +919,7 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 		// Might be old version!
 		KviQString::sprintf(tmp,"%Q_Prologue",&(prefix));
 		QString pr = cfg->readQStringEntry(tmp,"");
-		if(!pr.isEmpty())addPrologue(QString::null,pr);
+		if(!pr.isEmpty())addPrologue(QString(),pr);
 	}
 
 	KviQString::sprintf(tmp,"%Q_EpilogueCount",&prefix);
@@ -939,7 +939,7 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 		// Might be old version!
 		KviQString::sprintf(tmp,"%Q_Epilogue",&prefix);
 		QString ep = cfg->readQStringEntry(tmp,"");
-		if(!ep.isEmpty())addEpilogue(QString::null,ep);
+		if(!ep.isEmpty())addEpilogue(QString(),ep);
 	}
 
 
@@ -953,7 +953,7 @@ void KviKvsPopupMenu::load(const QString &prefix,KviConfig * cfg)
 		KviQString::sprintf(pre,"%Q_%d",&prefix,idx);
 
 		KviQString::sprintf(tmp,"%Q_Id",&pre);
-		QString itemName = cfg->readQStringEntry(tmp,QString::null);
+		QString itemName = cfg->readQStringEntry(tmp,QString());
 		KviQString::sprintf(tmp,"%Q_Type",&pre);
 
 		int type = cfg->readIntEntry(tmp,3);

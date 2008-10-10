@@ -1013,7 +1013,7 @@ namespace KviKvsCoreSimpleCommands
 		pConsole->outputPrivmsg(pWnd,type,
 				szNick,szUser,szHost,szText,
 				iFlags,
-				bPrefix ? szPrefix : QString::null,bSuffix ? szSuffix : QString::null);
+				bPrefix ? szPrefix : QString(),bSuffix ? szSuffix : QString());
 
 		return true;
 	}

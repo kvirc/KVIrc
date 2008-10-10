@@ -359,7 +359,7 @@ void KviAliasEditor::splitFullAliasOrNamespaceName(const QString &szFullName,QSt
 
 QString KviAliasEditor::buildFullItemName(KviAliasEditorTreeWidgetItem * it)
 {
-	if(!it) return QString::null;
+	if(!it) return QString();
 	QString szName = it->name();
 	KviAliasNamespaceTreeWidgetItem * nit = it->parentNamespaceItem();
 	while(nit)
@@ -837,7 +837,7 @@ void KviAliasEditor::loadProperties(KviConfig *cfg)
 	def.append(20);
 	def.append(80);
 	m_pSplitter->setSizes(cfg->readIntListEntry("Sizes",def));
-	QString tmp = cfg->readEntry("LastAlias",QString::null);
+	QString tmp = cfg->readEntry("LastAlias",QString());
 
 	KviAliasEditorTreeWidgetItem * it = findAliasItem(tmp);
 	if(!it)it = findNamespaceItem(tmp);
@@ -1101,7 +1101,7 @@ QString KviAliasEditor::askForAliasName(const QString &szAction,const QString &s
 						szInitialText,
 						&bOk);
 		g_pAliasEditorModule->unlock();
-		if(!bOk)return QString::null;
+		if(!bOk)return QString();
 		if(szNewName.isEmpty())
 		{
 			g_pAliasEditorModule->lock();
@@ -1169,7 +1169,7 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 						szInitialText,
 						&bOk);
 		g_pAliasEditorModule->unlock();
-		if(!bOk)return QString::null;
+		if(!bOk)return QString();
 		if(szNewName.isEmpty())
 		{
 			g_pAliasEditorModule->lock();

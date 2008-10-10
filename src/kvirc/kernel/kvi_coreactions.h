@@ -71,7 +71,7 @@ public:
 		const QString &szVisibleName,
 		const QString &szDescription,
 		KviActionCategory * pCategory = 0,
-		const QString &szBigIcon = QString::null,
+		const QString &szBigIcon = QString(),
 		int iSmallIconId = 0,
 		unsigned int uFlags = 0);
 	~KviSubmenuAction();

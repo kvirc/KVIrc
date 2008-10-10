@@ -280,7 +280,7 @@ void KviScriptManagementDialog::installScript()
 {
 	QString szFileName, szError;
 
-	if(!KviFileDialog::askForOpenFileName(szFileName,__tr2qs("Please select the addon installation file"),QString::null,KVI_FILTER_SCRIPTS,false,true))return;
+	if(!KviFileDialog::askForOpenFileName(szFileName,__tr2qs("Please select the addon installation file"),QString(),KVI_FILTER_SCRIPTS,false,true))return;
 
 	szFileName.replace("\\","\\\\");
 

@@ -73,7 +73,7 @@ class KviCustomToolBarPropertiesDialog : public QDialog
 {
 	Q_OBJECT
 public:
-	KviCustomToolBarPropertiesDialog(QWidget * p,const QString &szText,const QString &szId = QString::null,const QString &szLabel = QString::null,const QString &szIconId = QString::null);
+	KviCustomToolBarPropertiesDialog(QWidget * p,const QString &szText,const QString &szId = QString(),const QString &szLabel = QString(),const QString &szIconId = QString());
 	~KviCustomToolBarPropertiesDialog();
 protected:
 	QString m_szId;

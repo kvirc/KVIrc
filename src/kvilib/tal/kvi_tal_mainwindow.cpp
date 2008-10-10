@@ -27,11 +27,11 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
-	: KMainWindow(par)
+	KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
+	: KMainWindow(pParent)
 	{
 		//setWindowTitle(nam);
-		setObjectName(nam);
+		setObjectName(pcName);
 	}
 
 	bool KviTalMainWindow::usesBigPixmaps()
@@ -39,21 +39,23 @@
 		return (iconSize().width() > 40);
 	}
 
-	void KviTalMainWindow::setUsesBigPixmaps(bool b)
+	void KviTalMainWindow::setUsesBigPixmaps(bool bUse)
 	{
-		if(b)setIconSize(QSize(48,48));
-		else setIconSize(QSize(24,24));
+		if(bUse)
+			setIconSize(QSize(48,48));
+		else
+			setIconSize(QSize(24,24));
 	}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_mainwindow_kde.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #else
-	KviTalMainWindow::KviTalMainWindow(QWidget * par,const char * nam)
-	: QMainWindow(par)
+	KviTalMainWindow::KviTalMainWindow(QWidget * pParent, const char * pcName)
+	: QMainWindow(pParent)
 	{
-		setObjectName(nam);
+		setObjectName(pcName);
 	}
 
 	bool KviTalMainWindow::usesBigPixmaps()
@@ -61,19 +63,20 @@
 		return (iconSize().width() > 40);
 	}
 
-	void KviTalMainWindow::setUsesBigPixmaps(bool b)
+	void KviTalMainWindow::setUsesBigPixmaps(bool bUse)
 	{
-		if(b)setIconSize(QSize(48,48));
-		else setIconSize(QSize(24,24));
+		if(bUse)
+			setIconSize(QSize(48,48));
+		else
+			setIconSize(QSize(24,24));
 	}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_mainwindow_qt.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif
 
 KviTalMainWindow::~KviTalMainWindow()
 {
 }
-

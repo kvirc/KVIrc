@@ -45,7 +45,7 @@ namespace KviKvsParameterProcessor
 		{
 			case KVS_PT_STRING:
 			case KVS_PT_NONEMPTYSTRING:
-				*((QString *)(pFmtArray->pContainer)) = QString::null;
+				*((QString *)(pFmtArray->pContainer)) = QString();
 			break;
 			case KVS_PT_INT:
 				*((kvs_int_t *)(pFmtArray->pContainer)) = 0;

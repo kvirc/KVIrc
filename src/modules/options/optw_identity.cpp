@@ -257,7 +257,7 @@ void KviAvatarSelectionDialog::chooseFileClicked()
 {
 	QString tmp;
  	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs_ctx("Choose an Image File - KVIrc","options"),
-		QString::null,KVI_FILTER_IMAGE,false,true,this))
+		QString(),KVI_FILTER_IMAGE,false,true,this))
 	{
 		m_pLineEdit->setText(tmp);
 	}
@@ -534,7 +534,7 @@ void KviIdentityAvatarOptionsWidget::chooseAvatar()
 	{
 		// this is an url
 		// first check if we have it in the cache
-		KviAvatar * a = g_pIconManager->getAvatar(QString::null,szCurrent);
+		KviAvatar * a = g_pIconManager->getAvatar(QString(),szCurrent);
 		if(!a)
 		{
 			// no cache... try downloading
