@@ -28,6 +28,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_application.h
+* \author Szymon Stefanek
+* \brief Toolkit Abstraction Level class
+*/
+
 #include "kvi_settings.h"
 
 #ifdef COMPILE_KDE_SUPPORT
@@ -42,7 +48,7 @@ class KVILIB_API KviTalApplication : public QApplication
 {
 	Q_OBJECT
 public:
-	KviTalApplication(int &argc,char ** argv);
+	KviTalApplication(int & iArgc, char ** ppcArgv);
 	~KviTalApplication();
 	void commitData(QSessionManager &);
 signals:
