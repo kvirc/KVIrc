@@ -97,6 +97,9 @@
 #define KVSO_CLASS_FUNCTION(__className,__functionName)\
 	bool KviKvsObject_##__className##::##__functionName##(KviKvsObjectFunctionCall *c)
 #define CHECK_INTERNAL_QPOINTER(__pointer)\
-	if (!__pointer) {c->error(__tr2qs("Internal error: no valid pointer for this object"));return false;}
+	if(!__pointer) \
+	{ \
+		c->error(__tr2qs_ctx("Internal error: no valid pointer for this object","object")); \
+		return false; \
+	}
 #endif
-
