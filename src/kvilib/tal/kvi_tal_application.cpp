@@ -32,10 +32,6 @@
 	{
 	}
 
-	KviTalApplication::~KviTalApplication()
-	{
-
-	}
 #else
 
 	KviTalApplication::KviTalApplication(int & iArgc, char ** ppcArgv)
@@ -43,12 +39,11 @@
 	{
 	}
 
-	KviTalApplication::~KviTalApplication()
-	{
-	}
-
-
 #endif
+
+KviTalApplication::~KviTalApplication()
+{
+}
 
 void KviTalApplication::commitData(QSessionManager & manager)
 {
@@ -59,6 +54,7 @@ void KviTalApplication::commitData(QSessionManager & manager)
 	QApplication::commitData(manager);
 #endif
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_application.moc"
 #endif //COMPILE_USE_STANDALONE_MOC_SOURCES

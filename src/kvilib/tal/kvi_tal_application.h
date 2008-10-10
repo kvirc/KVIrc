@@ -36,6 +36,11 @@
 
 #include "kvi_settings.h"
 
+/**
+* \class KviTalApplication
+* \brief Toolkit Abstraction Layer: application class
+*/
+
 #ifdef COMPILE_KDE_SUPPORT
 
 #include <KApplication>
@@ -48,11 +53,37 @@ class KVILIB_API KviTalApplication : public QApplication
 {
 	Q_OBJECT
 public:
+	/**
+	* \brief Constructs the application object
+	* \param iArgc The number of arguments
+	* \param ppcArgv The arguments list
+	* \return KviTalApplication
+	*/
 	KviTalApplication(int & iArgc, char ** ppcArgv);
+
+	/**
+	* \brief Constructs the application object
+	*/
 	~KviTalApplication();
-	void commitData(QSessionManager &);
+
+	/**
+	* \brief Commits the data and save the session
+	* \param manager The session manager
+	* \return void
+	*/
+	void commitData(QSessionManager & manager);
 signals:
+	/**
+	* \brief Emitted when we commit the data
+	* \return void
+	*/
 	void commitData();
+
+	/**
+	* \brief Emitted when we save the configuration
+	* \return void
+	*/
 	virtual void saveConfiguration();
 };
+
 #endif // _KVI_TAL_APPLICATION_H_
