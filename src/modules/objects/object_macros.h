@@ -94,8 +94,10 @@
 
 #define KVSO_END_DESTRUCTOR(__className) \
 	}
+
 #define KVSO_CLASS_FUNCTION(__className,__functionName)\
-	bool KviKvsObject_##__className##::##__functionName##(KviKvsObjectFunctionCall *c)
+	bool KviKvsObject_##__className::__functionName(KviKvsObjectFunctionCall * c)
+
 #define CHECK_INTERNAL_QPOINTER(__pointer)\
 	if(!__pointer) \
 	{ \

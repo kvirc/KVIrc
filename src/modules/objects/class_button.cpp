@@ -35,9 +35,6 @@
 #include <QIcon>
 #include <QPushButton>
 
-
-
-
 /*
 	@doc:button
 	@title:
