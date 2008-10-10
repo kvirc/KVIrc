@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-
-
 #include "kvi_toolbar.h"
 #include "kvi_frame.h"
 #include "kvi_locale.h"
@@ -34,31 +32,35 @@
 #include <QEvent>
 #include <QMouseEvent>
 
-static KviTalPopupMenu * g_pToolBarContextPopup = 0;
-static KviTalPopupMenu * g_pToolBarWindowsPopup = 0;
+static KviTalPopupMenu * g_pToolBarContextPopup   = 0;
+static KviTalPopupMenu * g_pToolBarWindowsPopup   = 0;
 static KviTalPopupMenu * g_pToolBarIconSizesPopup = 0;
 static KviTalPopupMenu * g_pToolBarPositionsPopup = 0;
 
 
-KviToolBar::KviToolBar(const QString &label,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
-: KviTalToolBar(label,g_pFrame,dock,bNewLine,nam)
+KviToolBar::KviToolBar(const QString & szLabel, Qt::ToolBarArea type, bool bNewLine, const char * pcName)
+: KviTalToolBar(szLabel,g_pFrame,type,bNewLine,pcName)
 {
 }
 
 KviToolBar::~KviToolBar()
 {
-	if(g_pToolBarContextPopup)delete g_pToolBarContextPopup;
-	if(g_pToolBarIconSizesPopup)delete g_pToolBarIconSizesPopup;
-	if(g_pToolBarPositionsPopup)delete g_pToolBarPositionsPopup;
-	if(g_pToolBarWindowsPopup)delete g_pToolBarWindowsPopup;
+	if(g_pToolBarContextPopup)
+		delete g_pToolBarContextPopup;
+	if(g_pToolBarIconSizesPopup)
+		delete g_pToolBarIconSizesPopup;
+	if(g_pToolBarPositionsPopup)
+		delete g_pToolBarPositionsPopup;
+	if(g_pToolBarWindowsPopup)
+		delete g_pToolBarWindowsPopup;
 
-	g_pToolBarContextPopup = 0;
+	g_pToolBarContextPopup   = 0;
 	g_pToolBarIconSizesPopup = 0;
 	g_pToolBarPositionsPopup = 0;
-	g_pToolBarWindowsPopup = 0;
+	g_pToolBarWindowsPopup   = 0;
 }
 
-void KviToolBar::mousePressEvent(QMouseEvent *e)
+void KviToolBar::mousePressEvent(QMouseEvent * e)
 {
 	if(!(e->button() & Qt::RightButton))
 	{
@@ -66,10 +68,14 @@ void KviToolBar::mousePressEvent(QMouseEvent *e)
 		return;
 	}
 	
-	if(!g_pToolBarContextPopup)g_pToolBarContextPopup = new KviTalPopupMenu();
-	if(!g_pToolBarIconSizesPopup)g_pToolBarIconSizesPopup = new KviTalPopupMenu();
-	if(!g_pToolBarPositionsPopup)g_pToolBarPositionsPopup = new KviTalPopupMenu();
-	if(!g_pToolBarWindowsPopup)g_pToolBarWindowsPopup = new KviTalPopupMenu();
+	if(!g_pToolBarContextPopup)
+		g_pToolBarContextPopup = new KviTalPopupMenu();
+	if(!g_pToolBarIconSizesPopup)
+		g_pToolBarIconSizesPopup = new KviTalPopupMenu();
+	if(!g_pToolBarPositionsPopup)
+		g_pToolBarPositionsPopup = new KviTalPopupMenu();
+	if(!g_pToolBarWindowsPopup)
+		g_pToolBarWindowsPopup = new KviTalPopupMenu();
 
 	g_pToolBarContextPopup->clear();
 	g_pToolBarIconSizesPopup->clear();
@@ -97,41 +103,41 @@ void KviToolBar::mousePressEvent(QMouseEvent *e)
 	g_pToolBarContextPopup->popup(QCursor::pos());
 }
 
-void KviToolBar::moveTo(QT_TOOLBARDOCK_TYPE dock)
+void KviToolBar::moveTo(Qt::ToolBarArea type)
 {
 	// FIXME: this should be hidden in Tal
 	g_pFrame->removeToolBar(this);
-	g_pFrame->addToolBar(dock,this);
+	g_pFrame->addToolBar(type,this);
 }
 
 void KviToolBar::moveToTop()
 {
-	moveTo(QT_DOCK_TOP);
+	moveTo(Qt::TopToolBarArea);
 }
 
 void KviToolBar::moveToLeft()
 {
-	moveTo(QT_DOCK_LEFT);
+	moveTo(Qt::LeftToolBarArea);
 }
 
 void KviToolBar::moveToRight()
 {
-	moveTo(QT_DOCK_RIGHT);
+	moveTo(Qt::RightToolBarArea);
 }
 
 void KviToolBar::moveToBottom()
 {
-	moveTo(QT_DOCK_BOTTOM);
+	moveTo(Qt::BottomToolBarArea);
 }
 
 void KviToolBar::moveToMinimized()
 {
-	moveTo(QT_DOCK_MINIMIZED);
+	moveTo(QT_TOOLBAR_MINIMIZED);
 }
 
 void KviToolBar::moveToTornOff()
 {
-	moveTo(QT_DOCK_TORNOFF);
+	moveTo(QT_TOOLBAR_TORNOFF);
 }
 
 void KviToolBar::setBigIcons()
@@ -146,4 +152,4 @@ void KviToolBar::setSmallIcons()
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_toolbar.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

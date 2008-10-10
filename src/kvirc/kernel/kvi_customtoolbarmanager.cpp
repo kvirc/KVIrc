@@ -210,30 +210,3 @@ void KviCustomToolBarManager::save(const QString &szFileName)
 		++it;
 	}
 }
-
-
-// THIS IS A COMPATIBILITY ENTRY ADDED AT 3.0.2 TIME THAT SHOULD BE DROPPED IN A COUPLE OF VERSION BUMPS!
-#ifdef SCRIPTTOOLBAR_COMPAT
-
-#include <QDir>
-void KviCustomToolBarManager::loadScripttoolbarsCompat(const QString &szFileName)
-{
-	KviConfig cfg(szFileName,KviConfig::Read);
-	
-	unsigned int cnt = cfg.readUIntEntry("Count",0);
-	KviStr tmp;
-	
-	for(unsigned int i=0;i<cnt;i++)
-	{
-		tmp.sprintf("%d",i);
-		KviCustomToolBarDescriptor * d = new KviCustomToolBarDescriptor(QString(),QString());
-		if(!d->loadScripttoolbarCompat(tmp.ptr(),&cfg))delete d;
-		else m_pDescriptors->replace(d->id(),d);
-	}
-
-	// get rid of the file now...
-	QString szNewFileName = szFileName + ".old";
-	QDir d;
-	d.rename(szFileName,szNewFileName);
-}
-#endif

@@ -33,7 +33,7 @@ class KVIRC_API KviMexToolBar : public KviToolBar , public KviModuleExtension
 {
 	Q_OBJECT
 public:
-	KviMexToolBar(KviModuleExtensionDescriptor * d,const QString &szName);
+	KviMexToolBar(KviModuleExtensionDescriptor * pDesc, const QString & szName);
 	~KviMexToolBar();
 };
 

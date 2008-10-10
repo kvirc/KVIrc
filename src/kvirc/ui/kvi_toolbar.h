@@ -26,17 +26,15 @@
 
 #include "kvi_tal_toolbar.h"
 
-class KviFrame;
-
 class KVIRC_API KviToolBar : public KviTalToolBar
 {
 	Q_OBJECT
 public:
-	KviToolBar(const QString &label,QT_TOOLBARDOCK_TYPE dock = QT_DOCK_TOP,bool bNewLine = false,const char * nam = 0);
+	KviToolBar(const QString & szLabel, Qt::ToolBarArea type = Qt::TopToolBarArea, bool bNewLine = false, const char * pcName = 0);
 	~KviToolBar();
 protected:
-	virtual void mousePressEvent(QMouseEvent *e);
-	void moveTo(QT_TOOLBARDOCK_TYPE dock);
+	virtual void mousePressEvent(QMouseEvent * e);
+	void moveTo(Qt::ToolBarArea type);
 public slots:
 	void moveToTop();
 	void moveToLeft();
@@ -47,6 +45,5 @@ public slots:
 	void setBigIcons();
 	void setSmallIcons();
 };
-
 
 #endif //_KVI_TOOLBAR_H_

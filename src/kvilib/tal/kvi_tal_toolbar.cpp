@@ -25,38 +25,30 @@
 #include "kvi_tal_toolbar.h"
 
 #ifdef COMPILE_KDE_SUPPORT
-	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
-	: KToolBar(nam,w,dock,bNewLine)
+	KviTalToolBar::KviTalToolBar(const QString & szLabel, QMainWindow * pWnd, Qt::ToolBarArea type, bool bNewLine, const char * pcName)
+	: KToolBar(pcName,pWnd,type,bNewLine)
 	{
-		setWindowTitle(label);
+		setWindowTitle(szLabel);
 	}
-
-	KviTalToolBar::~KviTalToolBar()
-	{
-	}
-
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_tal_toolbar_kde.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
 #else
-	KviTalToolBar::KviTalToolBar(const QString &label,QMainWindow *w,QT_TOOLBARDOCK_TYPE dock,bool bNewLine,const char * nam)
-	: QToolBar(label,w)
+	KviTalToolBar::KviTalToolBar(const QString & szLabel, QMainWindow * pWnd, Qt::ToolBarArea type, bool bNewLine, const char * pcName)
+	: QToolBar(szLabel,pWnd)
 	{
 		//setFrameStyle(QFrame::NoFrame);
-		setObjectName(nam);
+		setObjectName(pcName);
 		if(!layout())
 			this->setLayout(new QBoxLayout(QBoxLayout::LeftToRight));
-		w->addToolBar(dock,this);
+		pWnd->addToolBar(type,this);
 	}
-	KviTalToolBar::KviTalToolBar(QMainWindow *w,const char * name)
-	: QToolBar(w)
+
+	KviTalToolBar::KviTalToolBar(QMainWindow * pWnd, const char * pcName)
+	: QToolBar(pWnd)
 	{
 		//setFrameStyle(QFrame::NoFrame);
-		setObjectName(name);
+		setObjectName(pcName);
 		if(!layout())
 			this->setLayout(new QBoxLayout(QBoxLayout::LeftToRight));
-		w->addToolBar(this);
+		pWnd->addToolBar(this);
 	}
 
 	QBoxLayout * KviTalToolBar::boxLayout()
@@ -64,9 +56,9 @@
 		return (QBoxLayout*)this->layout();
 	}
 
-	void KviTalToolBar::setBoxLayout(QBoxLayout * l)
+	void KviTalToolBar::setBoxLayout(QBoxLayout * pLayout)
 	{
-		this->setLayout(l);
+		this->setLayout(pLayout);
 	}
 
 	bool KviTalToolBar::usesBigPixmaps()
@@ -74,18 +66,19 @@
 		return (iconSize().width() > 40);
 	}
 
-	void KviTalToolBar::setUsesBigPixmaps(bool b)
+	void KviTalToolBar::setUsesBigPixmaps(bool bUse)
 	{
-		if(b)setIconSize(QSize(48,48));
-		else setIconSize(QSize(22,22));
+		if(bUse)
+			setIconSize(QSize(48,48));
+		else
+			setIconSize(QSize(22,22));
 	}
+#endif // COMPILE_KDE_SUPPORT
 
-	KviTalToolBar::~KviTalToolBar()
-	{
-	}
+KviTalToolBar::~KviTalToolBar()
+{
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_tal_toolbar_qt.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
-#endif
+	#include "kvi_tal_toolbar.moc"
+#endif // COMPILE_USE_STANDALONE_MOC_SOURCES

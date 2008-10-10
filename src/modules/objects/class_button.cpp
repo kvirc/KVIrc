@@ -27,13 +27,15 @@
 #include "kvi_locale.h"
 #include "kvi_error.h"
 #include "kvi_iconmanager.h"
+#include "kvi_file.h"
+
 #include "class_button.h"
 #include "class_pixmap.h"
 
 #include <QIcon>
 #include <QPushButton>
 
-#include <kvi_file.h>
+
 
 
 /*
@@ -82,7 +84,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_button)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_button)
 
-KVSO_END_CONSTRUCTOR(KviKvsObject_button)
+KVSO_END_DESTRUCTOR(KviKvsObject_button)
 
 bool KviKvsObject_button::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
@@ -156,5 +158,4 @@ void KviKvsObject_button::slotClicked()
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_button.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

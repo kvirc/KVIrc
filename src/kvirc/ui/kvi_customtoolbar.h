@@ -33,47 +33,34 @@
 #else
 	class KviCustomToolBarDescriptor;
 #endif
-class KviCustomToolBar;
-
-class KviCustomToolBarSeparator : public QWidget
-{
-	Q_OBJECT
-public:
-	KviCustomToolBarSeparator(KviCustomToolBar *pParent,const char * name);
-	QSize sizeHint() const;
-protected:
-	KviCustomToolBar * m_pToolBar;
-protected:
-	void paintEvent(QPaintEvent *e);
-};
 
 class KVIRC_API KviCustomToolBar : public KviToolBar
 {
 	friend class KviCustomToolBarDescriptor;
 	Q_OBJECT
 protected:
-	KviCustomToolBar(KviCustomToolBarDescriptor * d,const QString &label,QT_TOOLBARDOCK_TYPE dock = QT_DOCK_TOP,bool bNewLine = false,const char * nam = 0);
+	KviCustomToolBar(KviCustomToolBarDescriptor * d, const QString & szLabel, Qt::ToolBarArea type = Qt::TopToolBarArea, bool bNewLine = false, const char * pcName = 0);
 public:
 	~KviCustomToolBar();
 protected:
-	KviCustomToolBarDescriptor * m_pDescriptor;
-	QWidget * m_pMovedChild;
-	QWidget * m_pDraggedChild;
+	KviCustomToolBarDescriptor       * m_pDescriptor;
+	QWidget                          * m_pMovedChild;
+	QWidget                          * m_pDraggedChild;
 	KviPointerHashTable<void *,bool> * m_pFilteredChildren;
 public:
 	KviCustomToolBarDescriptor * descriptor(){ return m_pDescriptor; };
 protected:
 	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void dragEnterEvent(QDragEnterEvent *e);
-	virtual void dragMoveEvent(QDragMoveEvent *e);
-	virtual void dragLeaveEvent(QDragLeaveEvent *e);
-	virtual void dropEvent(QDropEvent *e);
-	virtual void childEvent(QChildEvent *e);
-	virtual bool eventFilter(QObject *o,QEvent *e);
-	int dropIndexAt(const QPoint &pnt,QWidget * exclude,int * excludeIdx);
-	QWidget * widgetAt(int index);
+	virtual void dragEnterEvent(QDragEnterEvent * e);
+	virtual void dragMoveEvent(QDragMoveEvent * e);
+	virtual void dragLeaveEvent(QDragLeaveEvent * e);
+	virtual void dropEvent(QDropEvent * e);
+	virtual void childEvent(QChildEvent * e);
+	virtual bool eventFilter(QObject * o, QEvent * e);
+	int dropIndexAt(const QPoint & pnt, QWidget * pExclude, int * piExcludeIdx);
+	QWidget * widgetAt(int iIndex);
 	QAction * actionForWidget(QWidget * pWidget);
-	void drag(QWidget * child,const QPoint &pnt);
+	void drag(QWidget * pChild, const QPoint & pnt);
 	void filterChild(QObject * o);
 	void unfilterChild(QObject * o);
 	virtual void paintEvent(QPaintEvent * e);
@@ -84,4 +71,17 @@ protected slots:
 	void filteredChildDestroyed();
 };
 
-#endif //!_KVI_CUSTOMTOOLBAR_H_
+class KviCustomToolBarSeparator : public QWidget
+{
+	Q_OBJECT
+public:
+	KviCustomToolBarSeparator(KviCustomToolBar * pParent, const char * pcName);
+protected:
+	KviCustomToolBar * m_pToolBar;
+public:
+	QSize sizeHint() const;
+protected:
+	void paintEvent(QPaintEvent * e);
+};
+
+#endif //_KVI_CUSTOMTOOLBAR_H_

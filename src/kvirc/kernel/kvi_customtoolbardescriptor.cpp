@@ -148,7 +148,7 @@ KviCustomToolBar * KviCustomToolBarDescriptor::createToolBar()
 	if(!m_pToolBar)
 	{
 		QByteArray dd = id().toUtf8();
-		m_pToolBar = new KviCustomToolBar(this,label(),QT_DOCK_TOP,false,dd.data());
+		m_pToolBar = new KviCustomToolBar(this,label(),Qt::TopToolBarArea,false,dd.data());
 		fillToolBar();
 	}
 	return m_pToolBar;
@@ -180,65 +180,6 @@ void KviCustomToolBarDescriptor::clear()
 		m_pToolBar = 0;
 	}
 }
-
-#ifdef SCRIPTTOOLBARDESCRIPTOR_COMPAT
-// THIS IS A COMPATIBILITY ENTRY ADDED AT 3.0.2 TIME THAT SHOULD BE DROPPED IN A COUPLE OF VERSION BUMPS!
-#include "kvi_kvs_useraction.h"
-#include "kvi_string.h"
-
-bool KviCustomToolBarDescriptor::loadScripttoolbarCompat(const char * szPrefix,KviConfig * cfg)
-{
-	m_pActions->clear();
-	KviStr tmp;
-	tmp.sprintf("%s_Name",szPrefix);
-	m_szId = cfg->readQStringEntry(tmp.ptr(),"");	
-	tmp.sprintf("%s_Label",szPrefix);
-	QString szLabelCode = cfg->readQStringEntry(tmp.ptr(),"");
-	if(szLabelCode.isEmpty())szLabelCode = "$tr(Unnamed)";
-	delete m_pLabelScript;
-	createLabelScript(szLabelCode);
-	
-	tmp.sprintf("%s_Visible",szPrefix);
-	m_bVisibleAtStartup = (cfg->readIntEntry(tmp.ptr(),0) > 0);
-	tmp.sprintf("%s_Count",szPrefix);
-	unsigned int cnt = cfg->readUIntEntry(tmp.ptr(),0);
-	for(unsigned int i=0;i<cnt;i++)
-	{
-		tmp.sprintf("%s_%d",szPrefix,i);
-		KviStr tmp2;
-		tmp2.sprintf("%s_Type",tmp.ptr());
-		tmp2 = cfg->readEntry(tmp2.ptr(),"separator");
-		if(kvi_strEqualCI(tmp2.ptr(),"button"))
-		{
-			tmp2.sprintf("%s_Name",tmp.ptr());
-			QString szName = cfg->readQStringEntry(tmp2.ptr(),"");
-			tmp2.sprintf("%s_Code",tmp.ptr());
-			QString szCode = cfg->readQStringEntry(tmp2.ptr(),"");
-			tmp2.sprintf("%s_Icon",tmp.ptr());
-			QString szIcon = cfg->readQStringEntry(tmp2.ptr(),"");
-			tmp2.sprintf("%s_Text",tmp.ptr());
-			QString szText = cfg->readQStringEntry(tmp2.ptr(),"");
-			//tmp2.sprintf("%s_Enabled",tmp.ptr());
-			//bool bEnabled = cfg->readBoolEntry(tmp2.ptr(),true);
-
-			if(KviAction * old = KviActionManager::instance()->getAction(szName))
-			{
-				if(!old->isKviUserActionNeverOverrideThis())
-					szName = KviActionManager::instance()->nameForAutomaticAction(szName);
-			}
-			KviKvsUserAction * a = new KviKvsUserAction(KviActionManager::instance(),
-									szName,szCode,szText,
-									__tr2qs("Backward compatibility action for toolbar.define"),
-									"generic",szIcon,szIcon,0);
-			KviActionManager::instance()->registerAction(a);
-			m_pActions->append(new QString(szName));
-		} else {
-			m_pActions->append(new QString("separator"));
-		}
-	}
-	return true;
-}
-#endif
 
 bool KviCustomToolBarDescriptor::load(KviConfig * cfg)
 {

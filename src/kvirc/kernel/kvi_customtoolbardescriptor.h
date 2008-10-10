@@ -33,15 +33,12 @@ class KviConfig;
 class KviKvsScript;
 
 
-// THIS IS A COMPATIBILITY ENTRY ADDED AT 3.0.2 TIME THAT SHOULD BE DROPPED IN A COUPLE OF VERSION BUMPS!
-#define SCRIPTTOOLBARDESCRIPTOR_COMPAT 1
-
 class KVIRC_API KviCustomToolBarDescriptor
 {
 	friend class KviCustomToolBar;
 	friend class KviCustomToolBarManager;
 protected:
-	KviCustomToolBarDescriptor(const QString &szId,const QString &szLabelCode);
+	KviCustomToolBarDescriptor(const QString & szId, const QString & szLabelCode);
 public:
 	~KviCustomToolBarDescriptor();
 protected:
@@ -73,14 +70,9 @@ protected:
 	void createLabelScript(const QString &szNewLabelCode);
 	void fillToolBar();
 	bool load(KviConfig * cfg);
-#ifdef SCRIPTTOOLBARDESCRIPTOR_COMPAT
-// THIS IS A COMPATIBILITY ENTRY ADDED AT 3.0.2 TIME THAT SHOULD BE DROPPED IN A COUPLE OF VERSION BUMPS!
-	bool loadScripttoolbarCompat(const char * prefix,KviConfig * cfg);
-#endif
 	void save(KviConfig * cfg);
 	void registerToolBar(KviCustomToolBar * t);
 	void unregisterToolBar(KviCustomToolBar * t);
 };
 
-
-#endif //!_KVI_CUSTOMTOOLBARDESCRIPTOR_H_
+#endif //_KVI_CUSTOMTOOLBARDESCRIPTOR_H_

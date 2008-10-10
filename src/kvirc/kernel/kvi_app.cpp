@@ -363,11 +363,6 @@ void KviApp::setup()
 	KviCustomToolBarManager::init();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_CUSTOMTOOLBARS))
 		KviCustomToolBarManager::instance()->load(tmp);
-	// THIS IS A COMPATIBILITY ENTRY ADDED AT 3.0.2 TIME THAT SHOULD BE DROPPED IN A COUPLE OF VERSION BUMPS!
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_SCRIPTTOOLBARS);
-	if(KviFileUtils::fileExists(tmp))
-		KviCustomToolBarManager::instance()->loadScripttoolbarsCompat(tmp);
-	// EOF COMPATIBILITY
 
 	KVI_SPLASH_SET_PROGRESS(70)
 

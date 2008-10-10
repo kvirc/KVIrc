@@ -40,7 +40,6 @@
 #include "class_list.h"
 #include "class_listwidget.h"
 #include "class_mainwindow.h"
-#include "class_memorybuffer.h"
 #include "class_menubar.h"
 #include "class_multilineedit.h"
 #include "class_painter.h"
@@ -89,8 +88,6 @@ static bool objects_module_cleanup(KviModule *m)
 {
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be unregistered before the base ones.
-	
-	KviKvsObject_memorybuffer::unregisterSelf();
 	
 	KviKvsObject_process::unregisterSelf();
 	KviKvsObject_ftp::unregisterSelf();
@@ -999,7 +996,6 @@ static bool objects_module_init(KviModule * m)
 	KviKvsObject_ftp::registerSelf();
 
 	KviKvsObject_process::registerSelf();
-	KviKvsObject_memorybuffer::registerSelf();
 
 	return true;
 }

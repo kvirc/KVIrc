@@ -15,6 +15,7 @@ INCLUDE_DIRECTORIES(
 
 SET(kvilib_MOC_HDRS
 	ext/kvi_animatedpixmap.h
+	ext/kvi_animatedpixmapcache.h
 	ext/kvi_crypt.h
 	ext/kvi_garbage.h
 	ext/kvi_regusersdb.h
@@ -34,26 +35,24 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_scrollview.h
 	tal/kvi_tal_tabdialog.h
 	tal/kvi_tal_tablewidget.h
-	tal/kvi_tal_tooltip.h
 	tal/kvi_tal_textedit.h
+	tal/kvi_tal_toolbar.h
+	tal/kvi_tal_tooltip.h
 	tal/kvi_tal_treewidget.h
 	tal/kvi_tal_vbox.h
 	tal/kvi_tal_widgetstack.h
 	tal/kvi_tal_wizard.h
-	ext/kvi_animatedpixmapcache.h
 )
 
 IF(COMPILE_KDE_SUPPORT)
 	LIST(APPEND kvilib_MOC_HDRS
 		tal/kvi_tal_menubar_kde.h
 		tal/kvi_tal_mainwindow_kde.h
-		tal/kvi_tal_toolbar_kde.h
 	)
 ELSE()
 	LIST(APPEND kvilib_MOC_HDRS
 		tal/kvi_tal_menubar_qt.h
 		tal/kvi_tal_mainwindow_qt.h
-		tal/kvi_tal_toolbar_qt.h
 	)
 ENDIF()
 

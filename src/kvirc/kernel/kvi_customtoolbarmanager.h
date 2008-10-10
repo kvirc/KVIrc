@@ -35,9 +35,6 @@
 
 class KviCustomToolBar;
 
-// THIS IS A COMPATIBILITY ENTRY ADDED AT 3.0.2 TIME THAT SHOULD BE DROPPED IN A COUPLE OF VERSION BUMPS!
-#define SCRIPTTOOLBAR_COMPAT 1
-
 class KVIRC_API KviCustomToolBarManager
 {
 protected:
@@ -65,12 +62,7 @@ public:
 	bool renameDescriptor(const QString &szId,const QString &szNewId,const QString &szNewLabelCode);
 	bool destroyDescriptor(const QString &szId);
 	void load(const QString &szFileName);
-	// THIS IS A COMPATIBILITY ENTRY ADDED AT 3.0.2 TIME THAT SHOULD BE DROPPED IN A COUPLE OF VERSION BUMPS!
-#ifdef SCRIPTTOOLBAR_COMPAT
-	void loadScripttoolbarsCompat(const QString &szFileName);
-#endif
 	void save(const QString &szFileName);
 };
 
-
-#endif //!_KVI_CUSTOMTOOLBARMANAGER_H_
+#endif //_KVI_CUSTOMTOOLBARMANAGER_H_
