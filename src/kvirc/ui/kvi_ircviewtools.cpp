@@ -80,11 +80,13 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	setAutoFillBackground(true);
 	QPalette p=palette();
 	QColor col=p.color(backgroundRole());
-	//installEventFilter(
+
 	p.setColor(backgroundRole(), col);
 	setPalette(p);
 
 	QGridLayout * gl = new QGridLayout(this);
+	gl->setMargin(3);
+	gl->setSpacing(2);
 
 	QLabel * l = new QLabel(__tr2qs("Find Text"),this);
 	l->setMaximumHeight(16);
@@ -114,19 +116,19 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	QGridLayout * g = new QGridLayout(w);
 
 	m_pStringToFind = new QLineEdit(w);
-	g->addWidget(m_pStringToFind,0,0,1,3);
+	g->addWidget(m_pStringToFind,0,0,1,2);
 	connect(m_pStringToFind,SIGNAL(returnPressed()),this,SLOT(findNext()));
 
 	m_pRegExp = new QCheckBox(__tr2qs("&Regular expression"),w);
-	g->addWidget(m_pRegExp,1,0,1,3);
+	g->addWidget(m_pRegExp,1,0,1,2);
 
 	m_pExtendedRegExp = new QCheckBox(__tr2qs("E&xtended regexp."),w);
-	g->addWidget(m_pExtendedRegExp,2,0,1,3);
+	g->addWidget(m_pExtendedRegExp,2,0,1,2);
 	m_pExtendedRegExp->setEnabled(false);
 	connect(m_pRegExp,SIGNAL(toggled(bool)),m_pExtendedRegExp,SLOT(setEnabled(bool)));
 
 	m_pCaseSensitive = new QCheckBox(__tr2qs("C&ase sensitive"),w);
-	g->addWidget(m_pCaseSensitive,3,0,1,3);
+	g->addWidget(m_pCaseSensitive,3,0,1,2);
 
 	QPushButton * pb = new QPushButton(__tr2qs("Find &Prev."),w);
 	connect(pb,SIGNAL(clicked()),this,SLOT(findPrev()));
@@ -135,13 +137,11 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	pb = new QPushButton(__tr2qs("&Find Next"),w);
 	pb->setDefault(true);
 	connect(pb,SIGNAL(clicked()),this,SLOT(findNext()));
-	g->addWidget(pb,4,1,0,2);
+	g->addWidget(pb,4,1,1,1);
 
 	m_pFindResult = new QLabel(w);
 	m_pFindResult->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-	g->addWidget(m_pFindResult,5,0,1,3);
-
-	//g->setResizeMode(QGridLayout::Fixed);
+	g->addWidget(m_pFindResult,5,0,1,2);
 
 	tw->addTab(w,__tr2qs("Find"));
 
@@ -155,9 +155,8 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 	m_pFilterView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	m_pFilterView->setRootIsDecorated(false);
 	m_pFilterView->setColumnCount(1);
-	//m_pFilterView->addColumn(__tr2qs("Type"));
+// 	m_pFilterView->setHeaderLabel(__tr2qs("Type"));
 	m_pFilterView->header()->hide();
-	m_pFilterView->setMinimumSize(QSize(10,10));
 
 	g->addWidget(m_pFilterView,0,0,5,1);
 
@@ -205,9 +204,7 @@ void KviIrcViewToolWidget::filterEnableAll()
 {
 	for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 	{
-	//	m_pFilterItems[i]->setToolWidget(0);
 		m_pFilterItems[i]->setOn(true);
-	//	m_pFilterItems[i]->setToolWidget(this);
 	}
 
 }
@@ -216,9 +213,7 @@ void KviIrcViewToolWidget::filterEnableNone()
 {
 	for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 	{
-	//	m_pFilterItems[i]->setToolWidget(0);
 		m_pFilterItems[i]->setOn(false);
-	//	m_pFilterItems[i]->setToolWidget(this);
 	}
 
 }
@@ -248,9 +243,7 @@ void KviIrcViewToolWidget::filterLoad()
 			f.close();
 			for(int i=0;i<KVI_NUM_MSGTYPE_OPTIONS;i++)
 			{
-			//	m_pFilterItems[i]->setToolWidget(0);
 				m_pFilterItems[i]->setOn(buffer[i]);
-			///	m_pFilterItems[i]->setToolWidget(this);
 			}
 			forceRepaint();
 		} else {

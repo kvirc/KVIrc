@@ -95,7 +95,6 @@ KviMenuBar::~KviMenuBar()
 
 void KviMenuBar::showEvent(QShowEvent *e)
 {
-	qDebug("menubar show");
 	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
 	// by resetting the corner widget
 	m_pFrm->mdiManager()->relayoutMenuButtons();
@@ -116,18 +115,17 @@ void KviMenuBar::setupHelpPopup()
 	help->clear();
 
 	int id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP)),__tr2qs("&Help Browser (Panel)"));
-	debug ("Item %d named Help Browser (Panel)",id);
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_HELP_NEWSTATICWINDOW);
+
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MDIHELP)),__tr2qs("Help Browser (&Window)"));
-		debug ("Item %d named Help Browser (Window)",id);
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_HELP_NEWMDIWINDOW);
 	help->insertSeparator();
+
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)),__tr2qs("&Tip of the Day"));
-	debug ("Item %d named Help Browser (Tip of the Day)",id);
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_TIP_OPEN);
 	help->insertSeparator();
+
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("About &KVIrc"));
-	debug ("Item %d named Help Browser (About &KVIrc)",id);
 	
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 	help->insertSeparator();
@@ -294,9 +292,12 @@ void KviMenuBar::setupToolsPopup()
 		for(KviModuleExtensionDescriptor * d = l->first();d;d = l->next())
 		{
 			int id;
-			if(d->icon())id = m->insertItem(*(d->icon()),d->visibleName());
-			else id = m->insertItem(d->visibleName());
-			//m->setItemChecked(id,(m_pFrm->moduleExtensionToolBar(d->id())));
+			if(d->icon())
+			{
+				id = m->insertItem(*(d->icon()),d->visibleName());
+			} else {
+				id = m->insertItem(d->visibleName());
+			}
 			m->setItemParameter(id,d->id());
 		}
 	}
@@ -329,7 +330,7 @@ void KviMenuBar::setupToolsPopup()
 void KviMenuBar::toolsPopupSelected(int id)
 {
 	KviTalPopupMenu * m = (KviTalPopupMenu *)sender();
-	if(!m)return;
+	if(!m) return;
 	int idext = m->itemParameter(id);
 	g_pModuleExtensionManager->allocateExtension("tool",idext,m_pFrm->firstConsole());
 }
@@ -345,15 +346,18 @@ void KviMenuBar::setupToolbarsPopup()
 
 int KviMenuBar::getDefaultItemRealIndex(int iDefaultIndex)
 {
-	if(iDefaultIndex < 0)iDefaultIndex = 0;
+	if(iDefaultIndex < 0)
+		iDefaultIndex = 0;
 	if(iDefaultIndex >= m_iNumDefaultItems)
 		return m_pDefaultItemId[m_iNumDefaultItems - 1] + 1;
+
 	return m_pDefaultItemId[iDefaultIndex];
 }
 
 KviScriptMenuBarItem * KviMenuBar::findMenu(const QString &text)
 {
-	if(!m_pScriptItemList)return 0;
+	if(!m_pScriptItemList)
+		return 0;
 	for(KviScriptMenuBarItem * i = m_pScriptItemList->first();i;i = m_pScriptItemList->next())
 	{
 		if(KviQString::equalCI(i->szText,text))return i;
@@ -366,7 +370,7 @@ KviScriptMenuBarItem * KviMenuBar::findMenu(KviKvsPopupMenu * p)
 	if(!m_pScriptItemList)return 0;
 	for(KviScriptMenuBarItem * i = m_pScriptItemList->first();i;i = m_pScriptItemList->next())
 	{
-		if(i->pPopup == p)return i;
+		if(i->pPopup == p) return i;
 	}
 	return 0;
 }
@@ -400,9 +404,8 @@ void KviMenuBar::addMenu(const QString &text,KviKvsPopupMenu * p,int index)
 	{
 		m_pScriptItemList = new KviPointerList<KviScriptMenuBarItem>;
 		m_pScriptItemList->setAutoDelete(true);
-	}/* else {
-		removeMenu(text);
-	}*/
+	}
+
 	KviScriptMenuBarItem * it = new KviScriptMenuBarItem;
 	it->szText = text;
 	it->szPopupName = p->objectName();

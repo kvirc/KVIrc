@@ -1,20 +1,16 @@
 Here there is all porting work to do.
 Files listed below need working to be ported to Qt4.
-They still have Qt3 code, unworking Qt4 code, q3support, fuzzy ifdefs
+They still have unworking Qt4 code, q3support, fuzzy ifdefs
 os simply they're still the old unchecked kvirc3 files.
 
 
 PLEASE KEEP THIS FILE UPDATED!
 
-src/kvirc/kernel
-	kvi_iconmanager.cpp
 src/kvirc/ui:
-	kvi_ircviewtools.cpp (graphic bug in panel view)
 	kvi_statusbar.cpp (QT4 ported but still some bugs)
 	kvi_mdichild.cpp (bug in resize)
 		All MDI stuff will be reworked to use Qt subsystem
 		See branches/kvirc/qt-mdi/
-	kvi_menubar.cpp
 src/modules
 	iograph - all excluded by #if
 	notifier <-done, needs fixing
@@ -24,3 +20,6 @@ src/modules
 Note: some code depends on kde3-only functionality, like dcop:
 src/kvilib/ext/kvi_dcophelper.*
 src/modules/torrent/*  <-- adaptable, but by now supports only dcop communication
+
+By now, this code has been excluded using the bogus "#ifdef COMPILE_KDE3_SUPPORT" directive, while
+the working code for kde4 uses #ifdef COMPILE_KDE_SUPPORT
