@@ -62,7 +62,7 @@ public:
 	KviTalApplication(int & iArgc, char ** ppcArgv);
 
 	/**
-	* \brief Constructs the application object
+	* \brief Destructs the application object
 	*/
 	~KviTalApplication();
 
@@ -72,15 +72,9 @@ public:
 	* \return void
 	*/
 	void commitData(QSessionManager & manager);
-signals:
-	/**
-	* \brief Emitted when we commit the data
-	* \return void
-	*/
-	void commitData();
 
 	/**
-	* \brief Emitted when we save the configuration
+	* \brief Saves configuration to disk
 	* \return void
 	*/
 	virtual void saveConfiguration();
