@@ -41,31 +41,31 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 	
-	bool functioninsertItem(KviKvsObjectFunctionCall *c);
-	bool functionchangeItem(KviKvsObjectFunctionCall *c);
-	bool functionremoveItem(KviKvsObjectFunctionCall *c);
-	bool functionclear(KviKvsObjectFunctionCall *c);
+	bool insertItem(KviKvsObjectFunctionCall *c);
+	bool changeItem(KviKvsObjectFunctionCall *c);
+	bool removeItem(KviKvsObjectFunctionCall *c);
+	bool clear(KviKvsObjectFunctionCall *c);
 //#warning "$insertPixItem"
 //#warning "$changePixItem"
 
-	bool functioncount(KviKvsObjectFunctionCall *c);
-	bool functionsetMaxCount(KviKvsObjectFunctionCall *c);
-	bool functionmaxCount(KviKvsObjectFunctionCall *c);
-	bool functioncurrent(KviKvsObjectFunctionCall *c);
-	bool functioncurrentItem(KviKvsObjectFunctionCall *c);
-	bool functionsetEditable(KviKvsObjectFunctionCall *c);
-	bool functioneditable(KviKvsObjectFunctionCall *c);
-	bool functionsetEditText(KviKvsObjectFunctionCall *c);
-	bool functiontextAt(KviKvsObjectFunctionCall *c);
-	bool functiontextLineEdit(KviKvsObjectFunctionCall *c);
-	bool functionsetTextLineEdit(KviKvsObjectFunctionCall *c);
+	bool count(KviKvsObjectFunctionCall *c);
+	bool setMaxCount(KviKvsObjectFunctionCall *c);
+	bool maxCount(KviKvsObjectFunctionCall *c);
+	bool current(KviKvsObjectFunctionCall *c);
+	bool currentItem(KviKvsObjectFunctionCall *c);
+	bool setEditable(KviKvsObjectFunctionCall *c);
+	bool editable(KviKvsObjectFunctionCall *c);
+	bool setEditText(KviKvsObjectFunctionCall *c);
+	bool textAt(KviKvsObjectFunctionCall *c);
+	bool textLineEdit(KviKvsObjectFunctionCall *c);
+	bool setTextLineEdit(KviKvsObjectFunctionCall *c);
 
-	bool functionsetInsertionPolicy(KviKvsObjectFunctionCall *c);
+	bool setInsertionPolicy(KviKvsObjectFunctionCall *c);
 
-	bool functionsetCurrentItem(KviKvsObjectFunctionCall *c);
-	bool functionpopup(KviKvsObjectFunctionCall *c);
-	bool functiontextChangedEvent(KviKvsObjectFunctionCall *c);
-	bool functionactivatedEvent(KviKvsObjectFunctionCall *c);
+	bool setCurrentItem(KviKvsObjectFunctionCall *c);
+	bool popup(KviKvsObjectFunctionCall *c);
+	bool textChangedEvent(KviKvsObjectFunctionCall *c);
+	bool activatedEvent(KviKvsObjectFunctionCall *c);
 protected slots:
 	void editTextChanged(const QString &);
 	void slotActivated(int);

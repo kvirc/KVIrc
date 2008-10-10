@@ -24,11 +24,13 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-
+#include "class_memorybuffer.h"
+#include "class_file.h"
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
 
-
+#include "kvi_file.h"
+#include "kvi_fileutils.h"
 #include "kvi_locale.h"
 #include "kvi_error.h"
 #include "kvi_netutils.h"
@@ -277,22 +279,22 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_socket,"socket","object")
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"status",functionStatus)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"remotePort",functionRemotePort)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"remoteIp",functionRemoteIp)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"localIp",functionLocalIp)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"localPort",functionLocalPort)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,status)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,remotePort)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,remoteIp)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,localIp)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,localPort)
 	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"connect",functionConnect)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"connectTimeout",functionConnectTimeout)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"setConnectTimeout",functionSetConnectTimeout)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"close",functionClose)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"read",functionRead)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"readHex",functionReadHex)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"write",functionWrite)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"writeHex",functionWriteHex)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"setProtocol",functionSetProtocol)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"listen",functionListen)
-	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"accept",functionAccept)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,connectTimeout)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,setConnectTimeout)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,close)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,read)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,readHex)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,write)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,writeHex)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,setProtocol)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,listen)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,accept)
 
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_socket,"connectEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_socket,"connectFailedEvent")
@@ -304,8 +306,6 @@ KVSO_END_REGISTERCLASS(KviKvsObject_socket)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_socket,KviKvsObject)
-
-
 	m_bUdp = false;
 	m_uConnectionId = 0;
 	m_sock = KVI_INVALID_SOCKET;
@@ -333,6 +333,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_socket)
 	m_pOutBuffer=0;
 	m_pFlushTimer=0;
 
+	
 	if(m_pInBuffer)kvi_free(m_pInBuffer);
 	if(m_pDelayTimer)delete m_pDelayTimer;
 	if(m_pDns)delete m_pDns;
@@ -343,13 +344,13 @@ KVSO_END_DESTRUCTOR(KviKvsObject_socket)
 //----------------------
 
 
-bool KviKvsObject_socket::functionStatus(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,status)
 {
 	c->returnValue()->setInteger(m_iStatus);
 	return true;
 }
 
-bool KviKvsObject_socket::functionClose(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,close)
 {
 	if (!m_pOutBuffer) return true;
 	if((m_pOutBuffer->size() != 0) && (m_iStatus == KVI_SCRIPT_SOCKET_STATUS_CONNECTED))
@@ -359,13 +360,13 @@ bool KviKvsObject_socket::functionClose(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_socket::functionConnectTimeout(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,connectTimeout)
 {
 	c->returnValue()->setInteger(m_uConnectTimeout);
 	return true;
 }
 
-bool KviKvsObject_socket::functionSetConnectTimeout(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,setConnectTimeout)
 {
 	kvs_uint_t uTimeout;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -375,31 +376,182 @@ bool KviKvsObject_socket::functionSetConnectTimeout(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_socket::functionRemotePort(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,remotePort)
 {
 	c->returnValue()->setInteger(m_uRemotePort);
 	return true;
 }
 
-bool KviKvsObject_socket::functionRemoteIp(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,remoteIp)
 {
 	c->returnValue()->setString(m_szRemoteIp);
 	return true;
 }
 
-bool KviKvsObject_socket::functionLocalPort(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,localPort)
 {
 	c->returnValue()->setInteger(m_uLocalPort);
 	return true;
 }
 
-bool KviKvsObject_socket::functionLocalIp(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,localIp)
 {
 	c->returnValue()->setString(m_szLocalIp);
 	return true;
 }
 
-bool KviKvsObject_socket::functionAccept(KviKvsObjectFunctionCall *c)
+unsigned int KviKvsObject_socket::readGetLength(KviKvsObjectFunctionCall * c)
+{
+	kvs_uint_t uLen;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
+	KVSO_PARAMETERS_END(c)
+	if (uLen>m_uInDataLen || !uLen) return m_uInDataLen;
+	else return uLen;
+}
+
+KVSO_CLASS_FUNCTION(socket,read)
+{
+	kvs_uint_t uLen;
+	KviKvsObject * pObject;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
+		KVSO_PARAMETER("hobject",KVS_PT_HOBJECT,KVS_PF_OPTIONAL,hObject)
+	KVSO_PARAMETERS_END(c)
+	if (uLen>m_uInDataLen || !uLen) uLen=m_uInDataLen;
+	if (hObject)
+	{
+		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		if (!pObject)
+		{
+			c->warning(__tr2qs("Buffer parameter is not an object"));
+			return true;
+		}
+		if (!pObject->inherits("KviKvsObject_memorybuffer"))
+		{
+			c->warning(__tr2qs("Buffer parameter is not a memorybuffer object"));
+			return true;
+		}
+
+		QByteArray *pBuffer=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
+		int oldsize=pBuffer->size();
+		pBuffer->resize(oldsize+uLen);
+		kvi_memmove(pBuffer->data()+oldsize,m_pInBuffer,uLen);
+		eatInData(uLen);
+		return true;
+	}
+	if(uLen > 0)
+	{
+		// convert NULLS to char 255
+		for(unsigned int i = 0;i < uLen;i++)
+		{
+			if(!m_pInBuffer[i])m_pInBuffer[i] = (char)(255);
+		}
+		QString tmpBuffer = QString::fromUtf8(m_pInBuffer,uLen);
+		c->returnValue()->setString(tmpBuffer);
+
+		eatInData(uLen);
+	}
+	return true;
+}
+
+// FIXME: obsolete?
+KVSO_CLASS_FUNCTION(socket,readHex)
+{
+	unsigned int uLen = readGetLength(c);
+	char * str = new char[(uLen*2) + 1];
+	int index=0;
+	unsigned char byte,msb,lsb=0;
+	for (int i=0;i<uLen;i++)
+	{
+		byte=(unsigned char)m_pInBuffer[i];
+		lsb=byte & 0x0f;
+		msb=byte>>4;
+		msb>9?msb+='7':msb+='0'; 
+		lsb>9?lsb+='7':lsb+='0'; 
+		str[index++]=msb; 
+		str[index++]=lsb;
+	}
+	str[index]='\0';
+	c->returnValue()->setString(str);
+	eatInData(uLen);
+	delete str;
+	return true;
+}
+
+KVSO_CLASS_FUNCTION(socket,write)
+{
+	kvs_uint_t uLen;
+	KviKvsObject * pObject;
+	KviKvsVariant * pVariantData;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+			KVSO_PARAMETER("data_or_file_or_",KVS_PT_VARIANT,0,pVariantData)
+			KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
+	KVSO_PARAMETERS_END(c)
+	if (pVariantData->isHObject())
+	{
+		pVariantData->asHObject(hObject);
+		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		if (!pObject)
+		{
+			c->warning(__tr2qs("Buffer parameter is not an object"));
+			return true;
+		}
+		if (pObject->inherits("KviKvsObject_memorybuffer"))
+		{
+			QByteArray *p=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
+			m_pOutBuffer->append((const unsigned char*)p->data(),p->size());
+		}
+		else if (pObject->inherits("KviKvsObject_file"))
+		{
+			KviFile *pFile=((KviKvsObject_file *)pObject)->pFile();
+			if (!pFile->isOpen()) 
+			{
+				c->warning(__tr2qs("File is not open !"));
+				return true;
+			}
+			if (!uLen) uLen=pFile->size();
+			kvs_int_t siz=pFile->size();
+			pFile->flush();
+			m_pOutBuffer->append((const unsigned char*)pFile->read(uLen).data(),uLen);
+			c->returnValue()->setBoolean((siz-pFile->pos()==0));
+		}
+		else
+		{
+			c->warning(__tr2qs("Buffer parameter is not a memorybuffer or file object"));
+			return true;
+		}
+		
+	}
+	else
+	{
+		QString szData;
+		pVariantData->asString(szData);
+		if(!KviFileUtils::fileExists(szData))
+		{
+			KviQCString szData8 = szData.toUtf8();
+			if(szData8.length() > 0)
+			{
+					m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());
+			}
+		}
+		else
+		{
+			KviFile f(szData);
+			f.open(QIODevice::ReadOnly);
+			QByteArray ar= f.readAll();
+			m_pOutBuffer->append((const unsigned char*)ar.data(),ar.size());
+			f.close();
+		}
+	}
+	delayedFlush(0);
+	return true;
+}
+
+
+KVSO_CLASS_FUNCTION(socket,accept)
 {
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
@@ -435,7 +587,7 @@ bool KviKvsObject_socket::functionAccept(KviKvsObjectFunctionCall *c)
 }
 
 
-bool  KviKvsObject_socket::functionSetProtocol(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,setProtocol)
 {
 	QString m_szHex;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -446,7 +598,8 @@ bool  KviKvsObject_socket::functionSetProtocol(KviKvsObjectFunctionCall *c)
 	return false;
 }
 
-bool  KviKvsObject_socket::functionWriteHex(KviKvsObjectFunctionCall *c)
+// FIXME: obsolete?
+KVSO_CLASS_FUNCTION(socket,writeHex)
 {
 	QString m_szHex;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -485,10 +638,7 @@ bool  KviKvsObject_socket::functionWriteHex(KviKvsObjectFunctionCall *c)
 }
 
 
-
-
-
-bool  KviKvsObject_socket::functionConnect(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,functionConnect)
 {
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("remote_ip",KVS_PT_STRING,0,m_szRemoteIp)
@@ -531,11 +681,7 @@ bool  KviKvsObject_socket::functionConnect(KviKvsObjectFunctionCall *c)
 }
 
 
-
-
-
-
-bool KviKvsObject_socket::functionListen(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(socket,listen)
 {
 	if((m_sock != KVI_INVALID_SOCKET) || (m_iStatus != KVI_SCRIPT_SOCKET_STATUS_DISCONNECTED))
 	{
@@ -795,9 +941,7 @@ void KviKvsObject_socket::doConnect()
 		KviQString::sprintf(tmp,__tr2qs("Invalid ip address (%Q)"),&m_szRemoteIp);
 		params.append(new KviKvsVariant(tmp));
 		callFunction(this,"connectFailedEvent",&params);
-	/*	callEventFunction("connectFailedEvent",0,new KviParameterList(
-			new KviStr(KviStr::Format,__tr("Invalid ip address (%s)"),m_szRemoteIp.ptr())));
-	*/	if(m_uConnectionId == uOldConnectionId)reset();
+		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
 		return;
 	}
@@ -852,12 +996,9 @@ debug ("Socket created");
 			QString callBackError=__tr2qs("Connect failure: ");
 
 			callBackError.append((KviError::getDescription(KviError::translateSystemError(sockError)).toUtf8().data()));
-			callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-			new KviKvsVariant(callBackError)));
+			callFunction(this,"connectFailedEvent",new KviKvsVariantList(new KviKvsVariant(callBackError)));
 
-/*			callEventFunction("connectFailedEvent",0,new KviParameterList(
-				new KviStr(KviStr::Format,__tr("Connect failure: %s"),KviError::getDescription(KviError::translateSystemError(sockError)).toUtf8().data())));
-*/			if(m_uConnectionId == uOldConnectionId)reset();
+			if(m_uConnectionId == uOldConnectionId)reset();
 			// else it has already been called!
 			return;
 		}
@@ -938,7 +1079,6 @@ void KviKvsObject_socket::lookupDone(KviDns *pDns)
 
 void KviKvsObject_socket::writeNotifierFired(int)
 {
-	debug ("Here in the writeNotifierFired");
 	if(m_pSn)
 	{
 		delete m_pSn;
@@ -995,14 +1135,15 @@ void KviKvsObject_socket::writeNotifierFired(int)
 
 void KviKvsObject_socket::readNotifierFired(int)
 {
-	debug ("here in the readNotifierFired");
-	//read data
+	//read da
 	if((m_uInBufferLen - m_uInDataLen) < KVI_READ_CHUNK)
 	{
 		m_uInBufferLen += KVI_IN_BUFFER_ALLOC_CHUNK;
+		//m_pInBuffer->resize(m_uInBufferLen);
 		m_pInBuffer = (char *)kvi_realloc(m_pInBuffer,m_uInBufferLen);
 	}
 
+	//int readLength = kvi_socket_recv(m_sock,m_pInBuffer->data() + m_uInDataLen,KVI_READ_CHUNK);
 	int readLength = kvi_socket_recv(m_sock,m_pInBuffer + m_uInDataLen,KVI_READ_CHUNK);
 
 	if(readLength <= 0)
@@ -1046,13 +1187,9 @@ void KviKvsObject_socket::readNotifierFired(int)
 	// readLength > 0
 	m_uInDataLen += readLength;
 
-	//KviStr * s = new KviStr();
-	QString s;
-	s.setNum(m_uInDataLen);
-
-
+	
 	unsigned int uOldConnectionId = m_uConnectionId;
-	callFunction(this,"dataAvailableEvent",new KviKvsVariantList(new KviKvsVariant(s)));
+	callFunction(this,"dataAvailableEvent",new KviKvsVariantList(new KviKvsVariant((kvs_int_t)readLength)));
 	if(m_uConnectionId == uOldConnectionId)
 	{
 		if(m_uInDataLen > (4096 * 1024)) // too much data in buffer (not reading)
@@ -1181,73 +1318,6 @@ void KviKvsObject_socket::reset()
 	m_szLocalIp="";
 	m_bIPv6 = false;
 }
-unsigned int KviKvsObject_socket::readGetLength(KviKvsObjectFunctionCall *c)
-{
-	kvs_uint_t uLen;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
-	KVSO_PARAMETERS_END(c)
-	if (uLen>m_uInDataLen || !uLen) return m_uInDataLen;
-	else return uLen;
-	}
-
-bool KviKvsObject_socket::functionRead(KviKvsObjectFunctionCall *c)
-{
-	unsigned int uLen = readGetLength(c);
-
-	if(uLen > 0)
-	{
-		// convert NULLS to char 255
-		for(unsigned int i = 0;i < uLen;i++)
-		{
-			if(!m_pInBuffer[i])m_pInBuffer[i] = (char)(255);
-		}
-		QString tmpBuffer = QString::fromUtf8(m_pInBuffer,uLen);
-		c->returnValue()->setString(tmpBuffer);
-
-		eatInData(uLen);
-	}
-	return true;
-}
-
-bool KviKvsObject_socket::functionReadHex(KviKvsObjectFunctionCall *c)
-{
-	unsigned int uLen = readGetLength(c);
-	char * str = new char[(uLen*2) + 1];
-	int index=0;
-	unsigned char byte,msb,lsb=0;
-	for (int i=0;i<uLen;i++)
-	{
-		byte=(unsigned char)m_pInBuffer[i];
-		lsb=byte & 0x0f;
-		msb=byte>>4;
-		msb>9?msb+='7':msb+='0'; 
-		lsb>9?lsb+='7':lsb+='0'; 
-		str[index++]=msb; 
-		str[index++]=lsb;
-	}
-	str[index]='\0';
-	c->returnValue()->setString(str);
-	eatInData(uLen);
-	delete str;
-	return true;
-}
-
-bool KviKvsObject_socket::functionWrite(KviKvsObjectFunctionCall *c)
-{
- QString szData;
- KVSO_PARAMETERS_BEGIN(c)
-  KVSO_PARAMETER("szData",KVS_PT_STRING,0,szData)
- KVSO_PARAMETERS_END(c)
-
-KviQCString szData8 = szData.toUtf8();
- if(szData8.length() > 0)
- {
-  m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());
-  delayedFlush(0);
- }
- return true;
-}
 
 
 
@@ -1256,4 +1326,7 @@ KviQCString szData8 = szData.toUtf8();
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_socket.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
+
+
 

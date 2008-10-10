@@ -84,11 +84,11 @@ const int align_cod[] = {
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_hbox,"hbox","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_hbox,"setMargin", functionsetMargin)
-	KVSO_REGISTER_HANDLER(KviKvsObject_hbox,"setSpacing", functionsetSpacing)
-	KVSO_REGISTER_HANDLER(KviKvsObject_hbox,"setStretchFactor", functionsetStretchFactor )
-	KVSO_REGISTER_HANDLER(KviKvsObject_hbox,"addStretch", functionaddStretch )
-	KVSO_REGISTER_HANDLER(KviKvsObject_hbox,"setAlignment", functionsetAlignment )
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,setMargin)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,setSpacing)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,setStretchFactor )
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,addStretch )
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,setAlignment )
 KVSO_END_REGISTERCLASS(KviKvsObject_hbox)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_hbox,KviKvsObject_widget)
@@ -107,7 +107,7 @@ bool KviKvsObject_hbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 	return true;
 }
 
-bool KviKvsObject_hbox::functionsetMargin(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(hbox,setMargin)
 {
 	kvs_uint_t uMargin;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -117,7 +117,7 @@ bool KviKvsObject_hbox::functionsetMargin(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_hbox::functionsetSpacing(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(hbox,setSpacing)
 {
 	kvs_uint_t uSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -127,7 +127,7 @@ bool KviKvsObject_hbox::functionsetSpacing(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_hbox::functionsetStretchFactor(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(hbox,setStretchFactor)
 {
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
@@ -161,7 +161,7 @@ bool KviKvsObject_hbox::functionsetStretchFactor(KviKvsObjectFunctionCall *c)
 	((KviTalHBox *)widget())->setStretchFactor(((QWidget *)(pObject->object())),uStretch);
 	return true;
 }
-bool KviKvsObject_hbox::functionaddStretch(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(hbox,addStretch)
 {
 	kvs_int_t iStretch;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -170,7 +170,7 @@ bool KviKvsObject_hbox::functionaddStretch(KviKvsObjectFunctionCall *c)
 	if (widget()) ((KviTalHBox *)widget())->addStretch(iStretch);
 	return true;
 }
-bool KviKvsObject_hbox::functionsetAlignment(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(hbox,setAlignment)
 {
 	QStringList alignment;
 	KviKvsObject * pObject;

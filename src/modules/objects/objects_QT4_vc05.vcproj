@@ -273,11 +273,15 @@
 				>
 			</File>
 			<File
-				RelativePath=".\class_listbox.cpp"
+				RelativePath=".\class_listwidget.cpp"
 				>
 			</File>
 			<File
 				RelativePath=".\class_mainwindow.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\class_memorybuffer.cpp"
 				>
 			</File>
 			<File
@@ -548,7 +552,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\m_$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -596,7 +600,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\m_$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -712,7 +716,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\class_listbox.h"
+				RelativePath=".\class_listwidget.h"
 				>
 				<FileConfiguration
 					Name="Debug|Win32"
@@ -747,6 +751,19 @@
 				</FileConfiguration>
 				<FileConfiguration
 					Name="Release|Win32"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
+						Outputs="$(InputDir)\m_$(InputName).moc"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\class_memorybuffer.h"
+				>
+				<FileConfiguration
+					Name="Debug|Win32"
 					>
 					<Tool
 						Name="VCCustomBuildTool"
@@ -1102,7 +1119,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\m_$(InputName).moc"
 					/>
 				</FileConfiguration>

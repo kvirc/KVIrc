@@ -186,18 +186,16 @@ const int frame_cod[] = {
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_label,"label","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setText",functionSetText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"text", functionText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"margin", functionMargin)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setMargin", functionSetMargin)
-//	KVSO_REGISTER_HANDLER(KviKvsObject_label,"autoResize", functionAutoResize)
-//	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setAutoResize", functionSetAutoResize)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"alignment", functionAlignment)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setAlignment", functionSetAlignment)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"clear", functionClear)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"frameStyle", functionFrameStyle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setFrameStyle", functionSetFrameStyle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_label,"setImage", functionSetImage)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,setText)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,text)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,margin)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,setMargin)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,alignment)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,setAlignment)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,clear)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,frameStyle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,setFrameStyle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_label,setImage)
 KVSO_END_REGISTERCLASS(KviKvsObject_label)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_label,KviKvsObject_widget)
@@ -215,7 +213,7 @@ bool KviKvsObject_label::init(KviKvsRunTimeContext * pContext,KviKvsVariantList 
 	return true;
 }
 
-bool KviKvsObject_label::functionSetText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,setText)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -225,13 +223,13 @@ bool KviKvsObject_label::functionSetText(KviKvsObjectFunctionCall *c)
 		((QLabel *)widget())->setText(szText);
 	return true;
 }
-bool KviKvsObject_label::functionText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,text)
 {
 	if (widget()) c->returnValue()->setString(((QLabel *)widget())->text());
 	return true;
 }
 
-bool KviKvsObject_label::functionSetMargin(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,setMargin)
 {
 	kvs_uint_t iMargin;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -240,7 +238,7 @@ bool KviKvsObject_label::functionSetMargin(KviKvsObjectFunctionCall *c)
     if (widget()) ((QLabel *)widget())->setMargin(iMargin);
 	return true;
 }
-bool KviKvsObject_label::functionMargin(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,margin)
 {
 	if (widget()) c->returnValue()->setInteger(((QLabel *)widget())->margin());
 	return true;
@@ -265,7 +263,7 @@ bool KviKvsObject_label::functionAutoResize(KviKvsObjectFunctionCall *c)
 }
 */
 
-bool KviKvsObject_label::functionSetAlignment(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,setAlignment)
 {
 	QStringList alignment;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -294,7 +292,7 @@ bool KviKvsObject_label::functionSetAlignment(KviKvsObjectFunctionCall *c)
 	((QLabel *)widget())->setAlignment((Qt::Alignment)sum);
 	return true;
 }
-bool KviKvsObject_label::functionAlignment(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,alignment)
 {
 	int mode = ((QLabel *)widget())->alignment();
 	QString szAlignment="";
@@ -309,7 +307,7 @@ bool KviKvsObject_label::functionAlignment(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setString(szAlignment);
 	return true;
 }
-bool KviKvsObject_label::functionClear(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,clear)
 {
 	if(widget())
 		((QLabel *)widget())->clear();
@@ -317,7 +315,7 @@ bool KviKvsObject_label::functionClear(KviKvsObjectFunctionCall *c)
 }
 
 
-bool KviKvsObject_label::functionSetFrameStyle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,setFrameStyle)
 {
 
 	QStringList style;
@@ -350,7 +348,7 @@ bool KviKvsObject_label::functionSetFrameStyle(KviKvsObjectFunctionCall *c)
 
 
 }
-bool KviKvsObject_label::functionFrameStyle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,frameStyle)
 {
 	int mode = ((QLabel *)widget())->frameStyle();
 	QString szStyle="";
@@ -365,7 +363,7 @@ bool KviKvsObject_label::functionFrameStyle(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setString(szStyle);
 	return true;
 }
-bool KviKvsObject_label::functionSetImage(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(label,setImage)
 {
 	
 	QString icon;

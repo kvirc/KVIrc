@@ -40,24 +40,24 @@ protected:
 protected:
 	KviPointerList<KviKvsVariant> * dataList() const { return m_pDataList; };
 public:
-	bool function_count(KviKvsObjectFunctionCall *c);
-	bool function_isEmpty(KviKvsObjectFunctionCall *c);
-	bool function_clear(KviKvsObjectFunctionCall *c);
-	bool function_append(KviKvsObjectFunctionCall *c);
-	bool function_prepend(KviKvsObjectFunctionCall *c);
-	bool function_insert(KviKvsObjectFunctionCall *c);
-	bool function_at(KviKvsObjectFunctionCall *c);
-	bool function_remove(KviKvsObjectFunctionCall *c);
-	bool function_removeFirst(KviKvsObjectFunctionCall *c);
-	bool function_removeLast(KviKvsObjectFunctionCall *c);
-	bool function_removeCurrent(KviKvsObjectFunctionCall *c);
-	bool function_moveFirst(KviKvsObjectFunctionCall *c);
-	bool function_moveNext(KviKvsObjectFunctionCall *c);
-	bool function_movePrev(KviKvsObjectFunctionCall *c);
-	bool function_moveLast(KviKvsObjectFunctionCall *c);
-	bool function_eof(KviKvsObjectFunctionCall *c);
-	bool function_current(KviKvsObjectFunctionCall *c);
-	bool function_sort(KviKvsObjectFunctionCall *c);
+	bool count(KviKvsObjectFunctionCall *c);
+	bool isEmpty(KviKvsObjectFunctionCall *c);
+	bool clear(KviKvsObjectFunctionCall *c);
+	bool append(KviKvsObjectFunctionCall *c);
+	bool prepend(KviKvsObjectFunctionCall *c);
+	bool insert(KviKvsObjectFunctionCall *c);
+	bool at(KviKvsObjectFunctionCall *c);
+	bool remove(KviKvsObjectFunctionCall *c);
+	bool removeFirst(KviKvsObjectFunctionCall *c);
+	bool removeLast(KviKvsObjectFunctionCall *c);
+	bool removeCurrent(KviKvsObjectFunctionCall *c);
+	bool moveFirst(KviKvsObjectFunctionCall *c);
+	bool moveNext(KviKvsObjectFunctionCall *c);
+	bool movePrev(KviKvsObjectFunctionCall *c);
+	bool moveLast(KviKvsObjectFunctionCall *c);
+	bool eof(KviKvsObjectFunctionCall *c);
+	bool current(KviKvsObjectFunctionCall *c);
+	bool sort(KviKvsObjectFunctionCall *c);
 };
 
 

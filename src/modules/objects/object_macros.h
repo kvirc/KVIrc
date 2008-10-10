@@ -44,6 +44,11 @@
 #define KVSO_REGISTER_HANDLER(__className,__szName,__proc) \
 	g_pKvs##__className##Class->registerFunctionHandler(__szName,(KviKvsObjectFunctionHandlerProc)(KVI_PTR2MEMBER(__className::__proc)));
 
+// TEST
+#define KVSO_REGISTER_HANDLER_NEW(__className,__szName) \
+	g_pKvs##__className##Class->registerFunctionHandler("##__szName##",(KviKvsObjectFunctionHandlerProc)(KVI_PTR2MEMBER(__className::__szName)));
+
+
 #define KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(__className,__szName) \
 	g_pKvs##__className##Class->registerStandardNothingReturnFunctionHandler(__szName);
 
@@ -89,6 +94,9 @@
 
 #define KVSO_END_DESTRUCTOR(__className) \
 	}
-
-
+#define KVSO_CLASS_FUNCTION(__className,__functionName)\
+	bool KviKvsObject_##__className##::##__functionName##(KviKvsObjectFunctionCall *c)
+#define CHECK_INTERNAL_QPOINTER(__pointer)\
+	if (!__pointer) {c->error(__tr2qs("Internal error: no valid pointer for this object"));return false;}
 #endif
+

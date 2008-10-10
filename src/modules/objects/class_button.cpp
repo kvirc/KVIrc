@@ -24,28 +24,54 @@
 //=============================================================================
 
 #include "kvi_debug.h"
+#include "kvi_locale.h"
 #include "kvi_error.h"
 #include "kvi_iconmanager.h"
 #include "class_button.h"
+#include "class_pixmap.h"
 
 #include <QIcon>
 #include <QPushButton>
 
+#include <kvi_file.h>
+
+
+/*
+	@doc:button
+	@title:
+		button class
+	@type:
+		class
+	@short:
+		Button widget.
+	@inherits:
+		[class]object[/class]
+		[class]button[/class]
+	@description:
+		This widget provides a push button 
+	@functions:
+		!fn: $setText([<text:string>])
+		Set the button text.[br]
+		See also [classfnc]$text[/classfnc]().
+		!fn: <string> $text()
+		Return the button text.[br]
+		See also [classfnc]$setText[/classfnc]().
+		!fn: $setImage(<image_id_or_pixmap_object>)
+		Sets the icon for this button.
+		See the [doc:image_id]image identifier[/doc] documentation for the explaination	of the <image_id> parameter.
+		@signals:
+		!sg: $clicked()
+		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
+
+*/
+
+
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_button,"button","widget")
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setText", functionSetText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"text", functionText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setAutoDefault", functionSetAutoDefault)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setToggleButton", functionSetToggleButton)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setOn", functionSetChecked)/*DEPRECATED*/
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setChecked", functionSetChecked)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"isOn", functionIsChecked)/*DEPRECATED*/
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"isChecked", functionIsChecked)
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"toggle", functionToggle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"clickEvent", functionclickEvent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_button,"setImage", functionSetImage)
-
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_button,setText)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_button,text)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_button,clickEvent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_button,setImage)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_button)
 
@@ -65,84 +91,62 @@ bool KviKvsObject_button::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 	return true;
 }
 
-bool KviKvsObject_button::functionText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(button,text)
 {
-	if(widget()) c->returnValue()->setString(((QPushButton *)widget())->text());
+	CHECK_INTERNAL_QPOINTER(widget())
+	c->returnValue()->setString(((QPushButton *)widget())->text());
 	return true;
 }
 
-bool KviKvsObject_button::functionSetText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(button,setText)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
-		((QPushButton *)widget())->setText(szText);
-	return true;
-}
-bool KviKvsObject_button::functionSetAutoDefault(KviKvsObjectFunctionCall *c)
-{
-	bool bEnabled;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QPushButton *)widget())->setAutoDefault(bEnabled);
-	return true;
-}
-bool KviKvsObject_button::functionSetToggleButton(KviKvsObjectFunctionCall *c)
-{
-	bool bEnabled;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QPushButton *)widget())->setCheckable(bEnabled);
-	return true;
-}
-bool KviKvsObject_button::functionSetChecked(KviKvsObjectFunctionCall *c)
-{
-	bool bEnabled;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
-	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QPushButton *)widget())->setChecked(bEnabled);
+	((QPushButton *)widget())->setText(szText);
 	return true;
 }
 
-
-//
-bool KviKvsObject_button::functionIsChecked(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(button,setImage)
 {
-	if (widget()) c->returnValue()->setBoolean(((QPushButton *)widget())->isChecked());
-	return true;
-}
-bool KviKvsObject_button::functionToggle(KviKvsObjectFunctionCall *c)
-{
-	if(widget()) ((QPushButton *)widget())->toggle();
-	return true;
-}
-
-bool KviKvsObject_button::functionSetImage(KviKvsObjectFunctionCall *c)
-{
-	QString icon;
+	CHECK_INTERNAL_QPOINTER(widget())
+	KviKvsVariant icon;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("icon",KVS_PT_STRING,0,icon)
+		KVSO_PARAMETER("icon_or_hobject",KVS_PT_VARIANT,0,icon)
 	KVSO_PARAMETERS_END(c)
-	if (!widget()) return true;
-	QPixmap * pix = g_pIconManager->getImage(icon);
+	if(icon.isHObject())
+	{
+		kvs_hobject_t hObj;
+		icon.asHObject(hObj);	
+		KviKvsObject *pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
+		if (!pObject)
+		{
+			c->warning(__tr2qs("Pixmap parameter is not an object!"));
+			return true;
+		}
+		if(pObject->inherits("KviKvsObject_pixmap"))
+			((QPushButton *)widget())->setIcon(QIcon(*((KviKvsObject_pixmap *)pObject)->getPixmap()));
+		else{ 
+			c->warning(__tr2qs("Object Pixmap required!"));
+		}
+		return true;
+	}
+	QString szIcon;
+	icon.asString(szIcon);
+	QPixmap * pix = g_pIconManager->getImage(szIcon);
 	if(pix)	((QPushButton *)widget())->setIcon(*pix);
 	else((QPushButton *)widget())->setIcon(QIcon());
 	return true;
 }
-bool KviKvsObject_button::functionclickEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(button,clickEvent)
 {
 	emitSignal("clicked",c);
 	return true;
 }
 
+// slots
 void KviKvsObject_button::slotClicked()
 {
 	KviKvsVariantList *params=0;

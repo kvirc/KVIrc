@@ -70,14 +70,14 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_lcd,"lcdnumber","widget")
 	
-	KVSO_REGISTER_HANDLER(KviKvsObject_lcd,"setDisplayStr", functiondisplayStr)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lcd,"setDisplayInt", functiondisplayInt)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lcd,"setDisplayDouble", functiondisplayDouble)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lcd,"setMode", functionsetMode)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lcd,"setSegmentStyle", functionsetSegmentStyle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lcd,"setNumDigits", functionsetNumDigits)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lcd,"setSmallDecimalPoint",functionsetSmallDecimalPoint)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lcd,"checkOverflow", functioncheckOverflow)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,displayStr)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,displayInt)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,displayDouble)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,setMode)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,setSegmentStyle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,setNumDigits)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,setSmallDecimalPoint)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,checkOverflow)
 KVSO_END_REGISTERCLASS(KviKvsObject_lcd)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_lcd,KviKvsObject_widget)
@@ -94,8 +94,7 @@ bool KviKvsObject_lcd::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *p
 	SET_OBJECT(QLCDNumber)
 	return true;
 }
-
-bool KviKvsObject_lcd::functiondisplayInt(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lcd,displayInt)
 {
 	kvs_int_t iDigit;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -105,7 +104,7 @@ bool KviKvsObject_lcd::functiondisplayInt(KviKvsObjectFunctionCall *c)
     return true;
 }
 
-bool KviKvsObject_lcd::functiondisplayStr(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lcd,displayStr)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -115,7 +114,7 @@ bool KviKvsObject_lcd::functiondisplayStr(KviKvsObjectFunctionCall *c)
     return true;
 }
 
-bool KviKvsObject_lcd::functiondisplayDouble(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lcd,displayDouble)
 {
 	kvs_real_t dDigit;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -124,7 +123,7 @@ bool KviKvsObject_lcd::functiondisplayDouble(KviKvsObjectFunctionCall *c)
     if(widget()) ((QLCDNumber *)widget())->display(dDigit);
     return true;
 }
-bool KviKvsObject_lcd::functionsetMode(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lcd,setMode)
 {
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -138,7 +137,7 @@ bool KviKvsObject_lcd::functionsetMode(KviKvsObjectFunctionCall *c)
 	else c->warning( __tr2qs("Unknown mode "));
 	return true;
 }
-bool KviKvsObject_lcd::functionsetSegmentStyle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lcd,setSegmentStyle)
 {
 	QString szStyle;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -151,7 +150,7 @@ bool KviKvsObject_lcd::functionsetSegmentStyle(KviKvsObjectFunctionCall *c)
 	else c->warning( __tr2qs("Unknown segment style "));
 	return true;
 }
-bool KviKvsObject_lcd::functionsetNumDigits(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lcd,setNumDigits)
 {
 	kvs_real_t digit;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -160,7 +159,7 @@ bool KviKvsObject_lcd::functionsetNumDigits(KviKvsObjectFunctionCall *c)
     if(widget()) ((QLCDNumber *)widget())->setNumDigits(digit);
     return true;
 }
-bool KviKvsObject_lcd::functionsetSmallDecimalPoint(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lcd,setSmallDecimalPoint)
 {
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -169,7 +168,7 @@ bool KviKvsObject_lcd::functionsetSmallDecimalPoint(KviKvsObjectFunctionCall *c)
     if(widget()) ((QLCDNumber *)widget())->setSmallDecimalPoint(bFlag);
 	return true;
 }
-bool KviKvsObject_lcd::functioncheckOverflow(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lcd,checkOverflow)
 {
 	kvs_real_t iDigit;
 	KVSO_PARAMETERS_BEGIN(c)

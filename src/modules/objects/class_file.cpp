@@ -1,11 +1,11 @@
 //=============================================================================
 //
-//   File : class_file.cpp
-//   Creation date : Thu Sep 21 04:42:16 CEST 2000 by Krzysztof Godlewski
+//   File : class_memorybuffer.cpp
+//   Creation date : Fri Mar 18 21:30:48 CEST 2005
+//   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000 Krzysztof Godlewski
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -23,19 +23,18 @@
 //
 //=============================================================================
 
-//#warning "Add QFILEINFO to this stuff ?"
 
 #include "class_file.h"
 #include "kvi_debug.h"
 #include "kvi_locale.h"
 #include "kvi_error.h"
+#include "kvi_file.h"
 #include "kvi_fileutils.h"
+#include "class_memorybuffer.h"
 
 #include <QStringList>
-#include <QFile>
+//#include <QFile>
 #include <QTextStream>
-
-
 
 // needed for $open()
 const char * const mod_tbl[] =	{
@@ -46,20 +45,14 @@ const char * const mod_tbl[] =	{
 					"Append",
 					"Truncate"
 				  };
-#define	IO_RAW QIODevice::Unbuffered
-#define IO_READONLY QIODevice::ReadOnly
-#define IO_WRITEONLY QIODevice::WriteOnly
-#define IO_READWRITE QIODevice::ReadWrite
-#define IO_APPEND QIODevice::Append
-#define IO_TRUNCATE QIODevice::Truncate
-//#define IO_TRANSLATE QIODevice::Text
+
 const QIODevice::OpenMode mod_cod[] = {
-				IO_RAW,
-				IO_READONLY,
-				IO_WRITEONLY,
-				IO_READWRITE,
-				IO_APPEND,
-				IO_TRUNCATE
+				QIODevice::Unbuffered,
+				QIODevice::ReadOnly,
+				QIODevice::WriteOnly,
+				QIODevice::ReadWrite,
+				QIODevice::Append,
+				QIODevice::Truncate
 			};
 
 #define mod_num			(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
@@ -155,45 +148,53 @@ const QIODevice::OpenMode mod_cod[] = {
 */
 
 
-//---------------------------------------------------------------------------------
-
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_file,"file","object")
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"setName", functionsetName)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"name", functionname)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"open", functionopen)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"isOpen", functionisOpen)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"close", functionclose)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"flush", functionflush)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"size", functionsize)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"atEnd", functionatEnd)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"where", functionwhere)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"setName",setName)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"name",name)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"seek", functionseek)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"putch", functionputch)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"getch", functiongetch)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"ungetch", functionunGetch)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readBlock", functionreadBlock)
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readHexBlock", functionreadHexBlock)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeHexBlock", functionwriteHexBlock)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"open",open)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"isOpen",isOpen)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"close",close)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"flush",flush)
 	
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeBlock", functionwriteBlock)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readLine", functionreadLine)
-	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeLine", functionwriteLine)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"size",size)
+
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"atEnd",atEnd)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"where",where)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"seek",seek)
+	
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"putch",putch)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"getch",getch)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"ungetch",unGetch)
+	
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readBlock",readBlock)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeBlock", writeBlock)
+
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readHexBlock",readHexBlock)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeHexBlock",writeHexBlock)
+
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readLine",readLine)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeLine",writeLine)
+
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"write",write)
+	KVSO_REGISTER_HANDLER(KviKvsObject_file,"read",read)
+	
+	
 KVSO_END_REGISTERCLASS(KviKvsObject_file)
 
+
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_file,KviKvsObject)
-	m_pFile = new QFile();
+
+	m_pFile = new KviFile();
+
 KVSO_END_CONSTRUCTOR(KviKvsObject_file)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_file)
-if (m_pFile) delete m_pFile;
-m_pFile=0;
+
+	if (m_pFile) delete m_pFile;
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_file)
-
-
-bool KviKvsObject_file::functionsetName(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,setName)
 {
 	QString szName;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -202,26 +203,29 @@ bool KviKvsObject_file::functionsetName(KviKvsObjectFunctionCall *c)
 	if (m_pFile) m_pFile->setFileName(szName);
 	return true;
 }
-bool KviKvsObject_file::functionname(KviKvsObjectFunctionCall *c)
+
+KVSO_CLASS_FUNCTION(file,name)
 {
-	if (m_pFile) c->returnValue()->setString(m_pFile->fileName());
+	CHECK_INTERNAL_QPOINTER(m_pFile)
+	c->returnValue()->setString(m_pFile->fileName());
 	return true;
 }
 
-bool KviKvsObject_file::functionopen(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,open)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	QStringList modes;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("file_mode",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,modes)
 	KVSO_PARAMETERS_END(c)
-	if (!m_pFile) return true;
+	
 	if(m_pFile->fileName().isEmpty())
 	{
 		c->warning(__tr2qs("Empty filename string"));
 		return true;
 	}
 	QIODevice::OpenMode mod,sum;
-	if (modes.empty()) sum = IO_READONLY; // if no parameters given, default to ReadWrite | Append
+	if (modes.empty()) sum = QIODevice::ReadWrite|QIODevice::Append; // if no parameters given, default to ReadWrite | Append
 	else
 	{
 		for ( int idx=0;idx<modes.count();idx++)
@@ -246,75 +250,77 @@ bool KviKvsObject_file::functionopen(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_file::functionisOpen(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,isOpen)
 {
-	if (m_pFile) c->returnValue()->setBoolean(m_pFile->isOpen());
+	CHECK_INTERNAL_QPOINTER(m_pFile)
+	c->returnValue()->setBoolean(m_pFile->isOpen());
 	return true;
 }
 
-bool KviKvsObject_file::functionclose(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,close)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	if (!m_pFile->isOpen()) c->warning(__tr2qs("File is not open!"));
 	else m_pFile->close();
 	return true;
 }
-bool KviKvsObject_file::functionflush(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,flush)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	if (!m_pFile->isOpen()) c->warning(__tr2qs("File is not open!"));
 	else m_pFile->flush();
 	return true;
 }
 
-bool KviKvsObject_file::functionsize(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,size)
 {
-	if (m_pFile) c->returnValue()->setInteger((kvs_int_t)(m_pFile->size()));
+	CHECK_INTERNAL_QPOINTER(m_pFile)
+	c->returnValue()->setInteger((kvs_int_t)(m_pFile->size()));
 	return true;
 }
-bool KviKvsObject_file::functionatEnd(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,atEnd)
 {
-	if (m_pFile) c->returnValue()->setInteger((kvs_int_t)(m_pFile->atEnd()));
+	CHECK_INTERNAL_QPOINTER(m_pFile)
+	c->returnValue()->setInteger((kvs_int_t)(m_pFile->atEnd()));
 	return true;
 }
 
 
-bool KviKvsObject_file::functionwhere(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,where)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	if (!m_pFile->isOpen()) c->warning(__tr2qs("File is not open!"));
 	else c->returnValue()->setInteger((kvs_int_t)(m_pFile->pos()));
 	return true;
 }
-bool KviKvsObject_file::functionseek(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,seek)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)
-	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
 		c->warning(__tr2qs("File is not open !"));
 	else m_pFile->seek(uIndex);
 	return true;
 }
 
-bool KviKvsObject_file::functionputch(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,putch)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	QString szChar;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("char",KVS_PT_STRING,0,szChar)
 	KVSO_PARAMETERS_END(c)
-	if (m_pFile)
-	{
-		if (szChar.length()>1)c->warning(__tr2qs("Argument to long, using only first char"));
-		const char *ch=szChar.toUtf8().data();
-
-		if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs("Write error occured !"));
-	}
-
+	if (szChar.length()>1)c->warning(__tr2qs("Argument to long, using only first char"));
+	const char *ch=szChar.toUtf8().data();
+	if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs("Write error occured !"));
 	return true;
 }
-bool KviKvsObject_file::functiongetch(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,getch)
 {
-	if (!m_pFile) return true;
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	if(!m_pFile->isOpen())
 		c->warning(__tr2qs("File is not open !"));
 	else
@@ -326,13 +332,13 @@ bool KviKvsObject_file::functiongetch(KviKvsObjectFunctionCall *c)
 	}
 	return true;
 }
-bool KviKvsObject_file::functionunGetch(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,unGetch)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	QString szChar;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("char",KVS_PT_STRING,0,szChar)
 	KVSO_PARAMETERS_END(c)
-	if (!m_pFile) return true;
 	if(!m_pFile->isOpen())
 		c->warning(__tr2qs("File is not open !"));
 	else
@@ -343,49 +349,198 @@ bool KviKvsObject_file::functionunGetch(KviKvsObjectFunctionCall *c)
 	}
 	return true;
 }
-bool KviKvsObject_file::functionreadBlock(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,readBlock)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	kvs_uint_t uLen;
+	KviKvsObject * pObject;
+	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,0,uLen)
+		KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,0,uLen)
+		KVSO_PARAMETER("hobject",KVS_PT_HOBJECT,KVS_PF_OPTIONAL,hObject)
 	KVSO_PARAMETERS_END(c)
-	if (!m_pFile) return true;
 	if(!m_pFile->isOpen()){
 		c->warning(__tr2qs("File is not open !"));
 	}
 	else
 	{
+		if (uLen>(kvs_uint_t)m_pFile->size()) uLen=m_pFile->size();
+		if (hObject)
+		{
+			pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+			if (!pObject)
+			{
+				c->warning(__tr2qs("Buffer parameter is not an object"));
+				return true;
+			}
+			if (!pObject->inherits("KviKvsObject_memorybuffer"))
+			{
+				debug ("Classname %s",pObject->metaObject()->className());
+				c->warning(__tr2qs("Buffer parameter is not a memorybuffer object"));
+				return true;
+			}
+			//m_pFile->flush();
+			((KviKvsObject_memorybuffer *)pObject)->pBuffer()->append(m_pFile->read(uLen));
+			return true;
+		}
+		else
+		{
+			char * buff = new char[uLen + 1];
+			//m_pFile->flush(); // advice from QFile man page (to avoid trash)
+			int rlen = m_pFile->read(buff, uLen);
+			buff[rlen] = '\0';
+			QString szBlock(buff);
+			c->returnValue()->setString(szBlock);
+		}
+	}
+	return true;
+}
+KVSO_CLASS_FUNCTION(file,read)
+{
+	CHECK_INTERNAL_QPOINTER(m_pFile)
+	QString szType;
+	KVSO_PARAMETERS_BEGIN(c)
+			KVSO_PARAMETER("type",KVS_PT_STRING,0,szType)
+	KVSO_PARAMETERS_END(c)
+	if(!m_pFile->isOpen()){
+		c->warning(__tr2qs("File is not open !"));
+	}
+	else
+	{
+		if(KviQString::equalCI(szType, "String"))
+		{
+			QString szStr;
+			m_pFile->load((QString)szStr);
+			c->returnValue()->setString(szStr);
+		}
+		else if(KviQString::equalCI(szType, "Integer"))
+		{
+			int iValue;
+			m_pFile->load(iValue);
+			c->returnValue()->setInteger(iValue);
+		}
+		if(KviQString::equalCI(szType, "Array"))
+		{
+			QString szData;
+			m_pFile->load(szData);
+			KviKvsVariant *pVar = KviKvsVariant::unserialize(szData);
+			if (pVar->isArray())
+				c->returnValue()->setArray(pVar->array());
+			else
+				c->warning(__tr2qs("The incoming data doesn't an array"));
+		}
+		if(KviQString::equalCI(szType, "Dict"))
+		{
+			QString szData;
+			m_pFile->load(szData);
+			KviKvsVariant *pVar = KviKvsVariant::unserialize(szData);
+			if (pVar->isHash())
+				c->returnValue()->setHash(pVar->hash());
+			else
+				c->warning(__tr2qs("The incoming data doesn't a Dictionary"));
+		}
+		if(KviQString::equalCI(szType, "String"))
+		{
+			QString szStr;
+			m_pFile->load(szStr);
+			c->returnValue()->setString(szStr);
+		}
+	}
+	return true;
+}
+KVSO_CLASS_FUNCTION(file,write)
+{
+	CHECK_INTERNAL_QPOINTER(m_pFile)
+	KviKvsVariant * pVariantData;
+	KVSO_PARAMETERS_BEGIN(c)
+			KVSO_PARAMETER("variant_data",KVS_PT_VARIANT,0,pVariantData)
+	KVSO_PARAMETERS_END(c)
+	if(!m_pFile->isOpen())c->warning(__tr2qs("File is not open !"));
+	else
+	{
+		if (pVariantData->isInteger()) 
+		{
+			kvs_int_t num;
+			pVariantData->asInteger(num);
+			m_pFile->save(num);
+		}
+		if (pVariantData->isHash() || pVariantData->isArray() || pVariantData->isString())
+		{
+			QString szTmp;
+			pVariantData->serialize(szTmp);
+			m_pFile->save(szTmp);
+		}
 
-		char * buff = new char[uLen + 1];
-		m_pFile->flush(); // advice from QFile man page (to avoid trash)
-		int rlen = m_pFile->read(buff, uLen);
-		buff[rlen] = '\0';
-		QString szBlock(buff);
-		c->returnValue()->setString(szBlock);
 	}
 	return true;
 }
 
-bool KviKvsObject_file::functionwriteBlock(KviKvsObjectFunctionCall *c)
+
+KVSO_CLASS_FUNCTION(file,writeBlock)
 {
-	QString szBlock;
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	kvs_uint_t uLen;
+	KviKvsObject * pObject;
+	KviKvsVariant * pVariantData;
+	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,0,uLen)
-		KVSO_PARAMETER("text_block",KVS_PT_STRING,0,szBlock)
+			KVSO_PARAMETER("string_or_hobject",KVS_PT_VARIANT,0,pVariantData)
+			KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
 	KVSO_PARAMETERS_END(c)
-	if (!m_pFile) return true;
-	if(!m_pFile->isOpen())
-		c->warning(__tr2qs("File is not open !"));
-	const char *block=szBlock.toUtf8().data();
-	int rlen = m_pFile->write(block, uLen);
-	c->returnValue()->setInteger(rlen);
-	m_pFile->flush();
+	if(!m_pFile->isOpen())c->warning(__tr2qs("File is not open !"));
+	else
+	{
+		if (pVariantData->isHObject())
+		{
+			pVariantData->asHObject(hObject);
+			pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+			if (!pObject)
+			{
+				c->warning(__tr2qs("Buffer parameter is not an object"));
+				return true;
+			}
+			if (pObject->inherits("KviKvsObject_memorybuffer"))
+			{
+				if (!uLen)
+				{
+					if (((KviKvsObject_memorybuffer *)pObject)->pBuffer()->size())
+						uLen=((KviKvsObject_memorybuffer *)pObject)->pBuffer()->size();
+					else
+					{
+						c->warning(__tr2qs("The memoryBuffer object is empty: nothing will be saved"));
+					}
+				}
+				const char *pData=((KviKvsObject_memorybuffer *)pObject)->pBuffer()->data();
+				int rlen=m_pFile->write(pData,uLen);
+				c->returnValue()->setInteger(rlen);
+				//m_pFile->flush();
+			}
+			else
+			{
+				c->warning(__tr2qs("Buffer parameter is not a memorybufferobject"));
+				return true;
+			}
+		
+		}
+		else
+		{
+			if (!pVariantData->isString()){
+				c->warning(__tr2qs("Block must been a string or a memorybufferobject"));
+				return true;
+			}
+			QString szBlock;
+			pVariantData->asString(szBlock);
+			const char *block=szBlock.toUtf8().data();
+			int rlen = m_pFile->write(block, uLen);
+			c->returnValue()->setInteger(rlen);
+			//m_pFile->flush();
+		}
+	}
 	return true;
 }
-bool KviKvsObject_file::functionreadLine(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,readLine)
 {
-	if (!m_pFile) return true;
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	if(!m_pFile->isOpen())
 		c->warning(__tr2qs("File is not open !"));
 	else
@@ -396,13 +551,14 @@ bool KviKvsObject_file::functionreadLine(KviKvsObjectFunctionCall *c)
 	}
 	return true;
 }
-bool KviKvsObject_file::functionwriteLine(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,writeLine)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	QString szLine;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text_line",KVS_PT_STRING,0,szLine)
 	KVSO_PARAMETERS_END(c)
-	if (!m_pFile) return true;
+	
 	if(!m_pFile->isOpen())
 		c->warning(__tr2qs("File is not open !"));
 	else
@@ -412,18 +568,19 @@ bool KviKvsObject_file::functionwriteLine(KviKvsObjectFunctionCall *c)
 	}
 	return true;
 }
-bool KviKvsObject_file::functionreadHexBlock(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,readHexBlock)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	kvs_uint_t uLen;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,0,uLen)
 	KVSO_PARAMETERS_END(c)
-	if (!m_pFile) return true;
+	
 	if(!m_pFile->isOpen())
 		c->warning(__tr2qs("File is not open !"));
 	else
 	{
-		if (uLen>m_pFile->size()) uLen=m_pFile->size();
+		if (uLen>(kvs_uint_t)m_pFile->size()) uLen=m_pFile->size();
 		char * buff = new char[uLen];
 		char * str = new char [(uLen*2)+1];
 		m_pFile->flush(); // advice from QFile man page (to avoid trash)
@@ -448,15 +605,16 @@ bool KviKvsObject_file::functionreadHexBlock(KviKvsObjectFunctionCall *c)
 	}
 	return true;
 }
-bool KviKvsObject_file::functionwriteHexBlock(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(file,writeHexBlock)
 {
+	CHECK_INTERNAL_QPOINTER(m_pFile)
 	QString szBlock;
 	kvs_uint_t uLen;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text_block",KVS_PT_STRING,0,szBlock)
 		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
 	KVSO_PARAMETERS_END(c)
-	if (!m_pFile) return true;
+	
 	if(!m_pFile->isOpen()){
 		c->warning(__tr2qs("File is not open !"));
 		return true;
@@ -489,7 +647,6 @@ bool KviKvsObject_file::functionwriteHexBlock(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setInteger(uLen/2);
 	return true;
 }
-
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_file.moc"

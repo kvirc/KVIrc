@@ -47,7 +47,7 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_menubar,"menubar","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_menubar,"inserItem",functionInsertItem)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_menubar,insertItem)
 KVSO_END_REGISTERCLASS(KviKvsObject_menubar)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_menubar,KviKvsObject_widget)
@@ -65,12 +65,13 @@ bool KviKvsObject_menubar::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 	return true;
 }
 
-bool KviKvsObject_menubar::functionInsertItem(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(menubar,insertItem)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	QString szItem;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item",KVS_PT_STRING,0,szItem)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QMenuBar *)widget())->addAction(szItem);
+	((QMenuBar *)widget())->addAction(szItem);
 	return true;
 }

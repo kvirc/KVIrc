@@ -115,6 +115,8 @@ protected:
 
 	bool functionAddWidget(KviKvsObjectFunctionCall *c);
 
+	bool functionInsertTable(KviKvsObjectFunctionCall * c);
+
 };
 
 #endif	//!_CLASS_MULTILINEEDIT_H_

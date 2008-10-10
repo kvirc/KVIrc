@@ -23,7 +23,7 @@
 //=============================================================================
 
 #include "class_xmlreader.h"
-
+#include "class_memorybuffer.h"
 #include "kvi_locale.h"
 
 #include "kvi_kvs_variantlist.h"
@@ -53,7 +53,7 @@
 		during the execution of [classfnc:xmlparser]$parse[/classfnc]() in an order
 		reflecting the order of elements in the parsed document.
 	@functions:
-		!fn: <boolean> $parse(<xml_data:string>)
+		!fn: <boolean> $parse(<xml_data:string_or_memorybuffer_object>)
 		Call this function to parse a string that contains an XML document.
 		A typical call for this method will look like:
 		[example]
@@ -277,8 +277,8 @@ public:
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_xmlreader,"xmlreader","object")
-	KVSO_REGISTER_HANDLER(KviKvsObject_xmlreader,"lastError",function_lastError)
-	KVSO_REGISTER_HANDLER(KviKvsObject_xmlreader,"parse",function_parse)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_xmlreader,lastError)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_xmlreader,parse)
 
 	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KviKvsObject_xmlreader,"onDocumentStart")
 	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KviKvsObject_xmlreader,"onDocumentEnd")
@@ -304,28 +304,60 @@ void KviKvsObject_xmlreader::fatalError(const QString &szError)
 	callFunction(this,"onError",&vArgs);
 }
 
-bool KviKvsObject_xmlreader::function_parse(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(xmlreader,parse)
 {
-	QString szString;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("string",KVS_PT_STRING,0,szString)
-	KVSO_PARAMETERS_END(c)
+	KviKvsVariant * pVariantData;
 
-#ifdef QT_NO_XML
+	KVSO_PARAMETERS_BEGIN(c)
+			KVSO_PARAMETER("string_or_memorybuffer_object",KVS_PT_VARIANT,0,pVariantData)
+	KVSO_PARAMETERS_END(c)
+	#ifdef QT_NO_XML
 	fatalError(__tr2qs("XML support not available in the Qt library"));
 	c->returnValue()->setBoolean(false);
-#else
+	#else
 	m_szLastError = "";
 	KviXmlHandler handler(this);
 	QXmlInputSource source;
-	// We have a problem here.. most kvirc functions already interpret the data
-	// read from files. We should have binary data handling features to get this to work correctly.
-	// The following snippet of code tries to provide a best-effort workaround.
-	KviQCString utf8data = KviQString::toUtf8(szString);
-	QByteArray data = utf8data;
-	data.truncate(utf8data.length()); // don't include the null terminator in data
-	source.setData(data);
-	//debug("PARSING(%s) LEN(%d)",szString.toUtf8().data(),szString.toUtf8().length());
+		
+	if (pVariantData->isHObject())
+	{
+		KviKvsObject * pObject;
+		kvs_hobject_t hObject;
+		pVariantData->asHObject(hObject);
+		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+		if (!pObject)
+		{
+			c->warning(__tr2qs("Data parameter is not an object"));
+			return true;
+		}
+		if (pObject->inherits("KviKvsObject_memorybuffer"))
+		{
+			source.setData(*((KviKvsObject_memorybuffer *)pObject)->pBuffer());
+		}
+		else
+		{
+			c->warning(__tr2qs("Data parameter is not a memorybuffer object"));
+			return true;
+		}
+	}
+	else if(pVariantData->isString())
+	{
+		QString szString;
+		pVariantData->asString(szString);
+		// We have a problem here.. most kvirc functions already interpret the data
+		// read from files. We should have binary data handling features to get this to work correctly.
+		// The following snippet of code tries to provide a best-effort workaround.
+		KviQCString utf8data = KviQString::toUtf8(szString);
+		QByteArray data = utf8data;
+		data.truncate(utf8data.length()); // don't include the null terminator in data
+		source.setData(data);
+		//debug("PARSING(%s) LEN(%d)",szString.toUtf8().data(),szString.toUtf8().length());
+	}
+	else
+	{
+		c->warning(__tr2qs("Data is not a memorybuffer object or string"));
+		return true;
+	}
 	QXmlSimpleReader reader;
 	reader.setContentHandler(&handler);
 	reader.setErrorHandler(&handler);
@@ -334,7 +366,7 @@ bool KviKvsObject_xmlreader::function_parse(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_xmlreader::function_lastError(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(xmlreader,lastError)
 {
 	c->returnValue()->setString(m_szLastError);
 	return true;

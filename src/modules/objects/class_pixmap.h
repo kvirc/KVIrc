@@ -65,6 +65,8 @@ protected:
 	bool functionheight(KviKvsObjectFunctionCall *c);
 	bool functionwidth(KviKvsObjectFunctionCall *c);
 	bool functionsetOpacity(KviKvsObjectFunctionCall *c);
+	bool functionloadFromMemoryBuffer(KviKvsObjectFunctionCall *c);
+
 
   };
 

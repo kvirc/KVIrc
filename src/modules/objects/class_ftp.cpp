@@ -74,6 +74,7 @@ KVSO_END_REGISTERCLASS(KviKvsObject_ftp)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_ftp,KviKvsObject)
+debug("this %s",this->metaObject()->className());
 	m_pFtp = new QFtp();
 	m_pFile=0;
 	connect(m_pFtp,SIGNAL(commandFinished(int,bool)),this,SLOT(slotCommandFinished(int,bool)));

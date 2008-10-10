@@ -15,7 +15,7 @@ SET(kviobjects_MOC_HDRS
 	class_ftp.h
 	class_http.h
 	class_lineedit.h
-	class_listbox.h
+	class_listwidget.h
 	class_multilineedit.h
 	class_painter.h
 	class_pixmap.h
@@ -56,7 +56,7 @@ SET(kviobjects_SRCS
 	class_lcd.cpp
 	class_lineedit.cpp
 	class_list.cpp
-	class_listbox.cpp
+	class_listwidget.cpp
 	class_mainwindow.cpp
 	class_menubar.cpp
 	class_multilineedit.cpp

@@ -41,22 +41,22 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
 	
-	bool functionSetTitle(KviKvsObjectFunctionCall *c);
-	bool functionTitle(KviKvsObjectFunctionCall *c);
-	bool functionSetFlat(KviKvsObjectFunctionCall *c);
-	bool functionIsFlat(KviKvsObjectFunctionCall *c);
-	bool functionSetCheckable(KviKvsObjectFunctionCall *c);
-	bool functionIsCheckable(KviKvsObjectFunctionCall *c);
-	bool functionSetInsideMargin(KviKvsObjectFunctionCall *c);
-	bool functionInsideMargin(KviKvsObjectFunctionCall *c);
-	bool functionSetInsideSpacing(KviKvsObjectFunctionCall *c);
-	bool functionInsideSpacing(KviKvsObjectFunctionCall *c);
-	bool functionAddSpace(KviKvsObjectFunctionCall *c);
-	bool functionAlignment(KviKvsObjectFunctionCall *c);
-	bool functionSetAlignment(KviKvsObjectFunctionCall *c);
-	bool functionSetOrientation(KviKvsObjectFunctionCall *c);
-	bool functionIsChecked(KviKvsObjectFunctionCall *c);
-	bool functionSetChecked(KviKvsObjectFunctionCall *c);
+	bool setTitle(KviKvsObjectFunctionCall *c);
+	bool title(KviKvsObjectFunctionCall *c);
+	bool setFlat(KviKvsObjectFunctionCall *c);
+	bool isFlat(KviKvsObjectFunctionCall *c);
+	bool setCheckable(KviKvsObjectFunctionCall *c);
+	bool isCheckable(KviKvsObjectFunctionCall *c);
+	bool setInsideMargin(KviKvsObjectFunctionCall *c);
+	bool insideMargin(KviKvsObjectFunctionCall *c);
+	bool setInsideSpacing(KviKvsObjectFunctionCall *c);
+	bool insideSpacing(KviKvsObjectFunctionCall *c);
+	bool addSpace(KviKvsObjectFunctionCall *c);
+	bool alignment(KviKvsObjectFunctionCall *c);
+	bool setAlignment(KviKvsObjectFunctionCall *c);
+	bool setOrientation(KviKvsObjectFunctionCall *c);
+	bool isChecked(KviKvsObjectFunctionCall *c);
+	bool setChecked(KviKvsObjectFunctionCall *c);
 
 };
 #endif //!_CLASS_GROUPBOX_H_

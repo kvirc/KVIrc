@@ -38,8 +38,9 @@
 #include "class_lcd.h"
 #include "class_lineedit.h"
 #include "class_list.h"
-#include "class_listbox.h"
+#include "class_listwidget.h"
 #include "class_mainwindow.h"
+#include "class_memorybuffer.h"
 #include "class_menubar.h"
 #include "class_multilineedit.h"
 #include "class_painter.h"
@@ -88,6 +89,9 @@ static bool objects_module_cleanup(KviModule *m)
 {
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be unregistered before the base ones.
+	
+	KviKvsObject_memorybuffer::unregisterSelf();
+	
 	KviKvsObject_process::unregisterSelf();
 	KviKvsObject_ftp::unregisterSelf();
 	KviKvsObject_http::unregisterSelf();
@@ -111,7 +115,7 @@ static bool objects_module_cleanup(KviModule *m)
 	KviKvsObject_mainwindow::unregisterSelf();
 	KviKvsObject_treewidgetitem::unregisterSelf();
 	KviKvsObject_treewidget::unregisterSelf();
-	KviKvsObject_listbox::unregisterSelf();
+	KviKvsObject_listwidget::unregisterSelf();
 	KviKvsObject_combobox::unregisterSelf();
 	KviKvsObject_workspace::unregisterSelf();
 	KviKvsObject_menubar::unregisterSelf();
@@ -970,7 +974,7 @@ static bool objects_module_init(KviModule * m)
 	KviKvsObject_menubar::registerSelf();
 	KviKvsObject_workspace::registerSelf();
 	KviKvsObject_combobox::registerSelf();
-	KviKvsObject_listbox::registerSelf();
+	KviKvsObject_listwidget::registerSelf();
 	KviKvsObject_treewidget::registerSelf();
 	KviKvsObject_treewidgetitem::registerSelf();
 	KviKvsObject_mainwindow::registerSelf();
@@ -995,6 +999,7 @@ static bool objects_module_init(KviModule * m)
 	KviKvsObject_ftp::registerSelf();
 
 	KviKvsObject_process::registerSelf();
+	KviKvsObject_memorybuffer::registerSelf();
 
 	return true;
 }

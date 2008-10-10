@@ -45,35 +45,35 @@ protected:
 
 	
 
-	bool functionText(KviKvsObjectFunctionCall *c);
-	bool functionSetText(KviKvsObjectFunctionCall *c);
-	bool functionMaxLength(KviKvsObjectFunctionCall *c);
-	bool functionSetMaxLength(KviKvsObjectFunctionCall *c);
-	bool functionFrame(KviKvsObjectFunctionCall *c);
-	bool functionSetCursorPosition(KviKvsObjectFunctionCall *c);
-	bool functionCursorPosition(KviKvsObjectFunctionCall *c);
-	bool functionSetFrame(KviKvsObjectFunctionCall *c);
-	bool functionSelectAll(KviKvsObjectFunctionCall *c);
-	bool functionSetSelection(KviKvsObjectFunctionCall *c);
-	bool functionCopy(KviKvsObjectFunctionCall *c);
-	bool functionCut(KviKvsObjectFunctionCall *c);
+	bool text(KviKvsObjectFunctionCall *c);
+	bool setText(KviKvsObjectFunctionCall *c);
+	bool maxLength(KviKvsObjectFunctionCall *c);
+	bool setMaxLength(KviKvsObjectFunctionCall *c);
+	bool frame(KviKvsObjectFunctionCall *c);
+	bool setCursorPosition(KviKvsObjectFunctionCall *c);
+	bool cursorPosition(KviKvsObjectFunctionCall *c);
+	bool setFrame(KviKvsObjectFunctionCall *c);
+	bool selectAll(KviKvsObjectFunctionCall *c);
+	bool setSelection(KviKvsObjectFunctionCall *c);
+	bool copy(KviKvsObjectFunctionCall *c);
+	bool cut(KviKvsObjectFunctionCall *c);
 
-	bool functionPaste(KviKvsObjectFunctionCall *c);
-	bool functionEchoMode(KviKvsObjectFunctionCall *c);
-	bool functionSetEchoMode(KviKvsObjectFunctionCall *c);
-	bool functionClear(KviKvsObjectFunctionCall *c);
-	bool functionDragAndDrop(KviKvsObjectFunctionCall *c);
-	bool functionSetInputMask(KviKvsObjectFunctionCall *c);
-	bool functionSetReadOnly(KviKvsObjectFunctionCall *c);
+	bool paste(KviKvsObjectFunctionCall *c);
+	bool echoMode(KviKvsObjectFunctionCall *c);
+	bool setEchoMode(KviKvsObjectFunctionCall *c);
+	bool clear(KviKvsObjectFunctionCall *c);
+	bool dragAndDrop(KviKvsObjectFunctionCall *c);
+	bool setInputMask(KviKvsObjectFunctionCall *c);
+	bool setReadOnly(KviKvsObjectFunctionCall *c);
 
-	bool functionreturnPressedEvent(KviKvsObjectFunctionCall *c);
+	bool returnPressedEvent(KviKvsObjectFunctionCall *c);
 
-	bool functionlostFocusEvent(KviKvsObjectFunctionCall *c);
+	bool lostFocusEvent(KviKvsObjectFunctionCall *c);
 
-	bool functiontextChangedEvent(KviKvsObjectFunctionCall *c);
+	bool textChangedEvent(KviKvsObjectFunctionCall *c);
 
 
-	bool functionsetInputValidator(KviKvsObjectFunctionCall *c);
+	bool setInputValidator(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotreturnPressed();
 	void slotlostFocus();

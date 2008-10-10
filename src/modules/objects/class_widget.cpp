@@ -556,11 +556,11 @@ const Qt::WindowType widgettypes_cod[] = {
 			%Widget->%combobox->$insertItem("This is a combobox")
 			%Widget->%combobox->$insertItem("This is a combobox's item")
 
-			%Widget->%listbox = $new(listbox,%Widget)
-			%Widget->%listbox->$setGeometry(10,180,150,40)
-			%Widget->%listbox->$insertItem("This is another item")
-			%Widget->%listbox->$insertItem("This is a listbox's item")
-			%Widget->%listbox->$insertItem("This is a listbox")
+			%Widget->%listwidget = $new(listwidget,%Widget)
+			%Widget->%listwidget->$setGeometry(10,180,150,40)
+			%Widget->%listwidget->$insertItem("This is another item")
+			%Widget->%listwidget->$insertItem("This is a listwidget's item")
+			%Widget->%listwidget->$insertItem("This is a listwidget")
 
 			%Widget->%radiobutton = $new(radiobutton,%Widget)
 			%Widget->%radiobutton->$setGeometry(10,230,150,20)

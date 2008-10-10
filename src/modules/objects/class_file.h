@@ -1,13 +1,13 @@
-#ifndef	_CLASS_FILE_H_
-#define	_CLASS_FILE_H_
+#ifndef _CLASS_FILE_H_
+#define _CLASS_FILE_H_
 //=============================================================================
 //
-//   File : class_file.h
-//   Creation date : Thu Sep 21 04:43:01 CEST 2000 by Krzysztof Godlewski
+//   File : class_memorybuffer.h
+//   Creation date : Fri Mar 18 21:30:48 CEST 2005
+//   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000 Krzysztof Godlewski
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,93 +25,53 @@
 //
 //=============================================================================
 
-
-#include "kvi_string.h"
-
-#include <QFile>
-
-/*
-//class KviCommand;
-class KviParameterList;
-
-class KviScriptFileObject : public KviScriptObject
-{
-	Q_OBJECT
-public:
-	KviScriptFileObject(KviScriptObjectClass *, KviScriptObject *, const char *);
-	virtual ~KviScriptFileObject();
-
-	static void registerSelf();
-	static void unregisterSelf();
-
-protected:
-	bool functionSetName(KviCommand *, KviParameterList *, KviStr &);
-	bool functionName(KviCommand *, KviParameterList *, KviStr &);
-	bool functionOpen(KviCommand *, KviParameterList *, KviStr &);
-	bool functionIsOpen(KviCommand *, KviParameterList *, KviStr &);
-	bool functionClose(KviCommand *, KviParameterList *, KviStr &);
-	bool functionFlush(KviCommand *, KviParameterList *, KviStr &);
-	bool functionSize(KviCommand *, KviParameterList *, KviStr &);
-	
-	bool functionAtEnd(KviCommand *, KviParameterList *, KviStr &);
-		// int QFile at() const
-	bool functionWhere(KviCommand *, KviParameterList *, KviStr &);
-		// void QFile at(int)
-	bool functionSeek(KviCommand *, KviParameterList *, KviStr &);
-	bool functionPutch(KviCommand *, KviParameterList *, KviStr &);
-	bool functionGetch(KviCommand *, KviParameterList *, KviStr &);
-	bool functionUngetch(KviCommand *, KviParameterList *, KviStr &);
-	
-	bool functionReadBlock(KviCommand *, KviParameterList *, KviStr &);
-	bool functionWriteBlock(KviCommand *, KviParameterList *, KviStr &);
-
-	bool functionReadLine(KviCommand *, KviParameterList *, KviStr &);
-	bool functionWriteLine(KviCommand *, KviParameterList *, KviStr &);
-	bool functionHexWrite(KviCommand *, KviParameterList *, KviStr &);
-	bool functionHexRead(KviCommand *, KviParameterList *, KviStr &);
-	
-protected:
-	QFile * m_pFile;
-};
-
-*/
+#include "kvi_file.h"
 
 #include "object_macros.h"
 
+
+
 class KviKvsObject_file : public KviKvsObject
 {
+	Q_OBJECT
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_file)
 protected:
-  	bool functionsetName(KviKvsObjectFunctionCall *c);
-	bool functionname(KviKvsObjectFunctionCall *c);
-	bool functionopen(KviKvsObjectFunctionCall *c);
-	bool functionisOpen(KviKvsObjectFunctionCall *c);
-	bool functionclose(KviKvsObjectFunctionCall *c);
-	bool functionflush(KviKvsObjectFunctionCall *c);
-	bool functionsize(KviKvsObjectFunctionCall *c);
+	KviFile* m_pFile;
+public:
+	KviFile *pFile(){return m_pFile;};
+  	bool setName(KviKvsObjectFunctionCall *c);
+	bool name(KviKvsObjectFunctionCall *c);
+	bool open(KviKvsObjectFunctionCall *c);
+	bool isOpen(KviKvsObjectFunctionCall *c);
+	bool close(KviKvsObjectFunctionCall *c);
+	bool flush(KviKvsObjectFunctionCall *c);
+	bool size(KviKvsObjectFunctionCall *c);
 	
-	bool functionatEnd(KviKvsObjectFunctionCall *c);
+	bool atEnd(KviKvsObjectFunctionCall *c);
 		// int QFile at() const
-	bool functionwhere(KviKvsObjectFunctionCall *c);
+	bool where(KviKvsObjectFunctionCall *c);
 		// void QFile at(int)
-	bool functionseek(KviKvsObjectFunctionCall *c);
-	bool functionputch(KviKvsObjectFunctionCall *c);
-	bool functiongetch(KviKvsObjectFunctionCall *c);
-	bool functionunGetch(KviKvsObjectFunctionCall *c);
+	bool seek(KviKvsObjectFunctionCall *c);
+	bool putch(KviKvsObjectFunctionCall *c);
+	bool getch(KviKvsObjectFunctionCall *c);
+	bool unGetch(KviKvsObjectFunctionCall *c);
 	
-	bool functionreadBlock(KviKvsObjectFunctionCall *c);
-	bool functionwriteBlock(KviKvsObjectFunctionCall *c);
+	bool readBlock(KviKvsObjectFunctionCall *c);
+	bool writeBlock(KviKvsObjectFunctionCall *c);
 
-	bool functionreadLine(KviKvsObjectFunctionCall *c);
-	bool functionwriteLine(KviKvsObjectFunctionCall *c);
-/*	bool functionHexWrite(KviKvsObjectFunctionCall *c);
-	bool functionHexRead(KviKvsObjectFunctionCall *c);
-*/
-	bool functionreadHexBlock(KviKvsObjectFunctionCall *c);
-	
-bool functionwriteHexBlock(KviKvsObjectFunctionCall *c);
-protected:
-	QFile * m_pFile;
+	bool readLine(KviKvsObjectFunctionCall *c);
+	bool writeLine(KviKvsObjectFunctionCall *c);
+
+	bool readHexBlock(KviKvsObjectFunctionCall *c);
+	bool writeHexBlock(KviKvsObjectFunctionCall *c);
+
+	bool write(KviKvsObjectFunctionCall *c);
+	bool read(KviKvsObjectFunctionCall *c);
+
+
+
+
 };
+
 #endif	// !_CLASS_FILE_H_

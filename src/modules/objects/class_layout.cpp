@@ -28,10 +28,7 @@
 #include "class_layout.h"
 
 #include <QGridLayout>
-#define QLAYOUT_AUTO_CONSTRAINT QLayout::SetDefaultConstraint
-#define QLAYOUT_FIXED QLayout::SetFixedSize
-#define QLAYOUT_FREE_RESIZE QLayout::SetNoConstraint
-#define QLAYOUT_MINIMUM QLayout::SetMinimumSize
+
 
 
 // Tables used in $setAlignment & $alignment
@@ -111,16 +108,16 @@ const int align_cod[] = {
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_layout,"layout","object")
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"addWidget", functionAddWidget)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"addMultiCellWidget", functionAddMultiCellWidget)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setRowStretch", functionSetRowStretch)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setColumnStretch", functionSetColumnStretch)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"addRowSpacing", functionAddRowSpacing)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"addColSpacing", functionAddColSpacing)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setMargin", functionSetMargin)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setSpacing", functionSetSpacing)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setResizeMode", functionSetResizeMode)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setAlignment", functionsetAlignment )
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,addWidget)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,addMultiCellWidget)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,setRowStretch)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,setColumnStretch)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,addRowSpacing)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,addColSpacing)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,setMargin)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,setSpacing)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,setResizeMode)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_layout,setAlignment )
 KVSO_END_REGISTERCLASS(KviKvsObject_layout)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_layout,KviKvsObject)
@@ -146,7 +143,7 @@ bool KviKvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 	return true;
 }
 
-bool KviKvsObject_layout::functionAddWidget(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,addWidget)
 {
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
@@ -177,7 +174,7 @@ bool KviKvsObject_layout::functionAddWidget(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_layout::functionAddMultiCellWidget(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,addMultiCellWidget)
 {
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
@@ -211,7 +208,7 @@ bool KviKvsObject_layout::functionAddMultiCellWidget(KviKvsObjectFunctionCall *c
 	return true;
 }
 
-bool KviKvsObject_layout::functionSetRowStretch(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,setRowStretch)
 {
 	kvs_uint_t uRow,uStretch;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -223,7 +220,7 @@ bool KviKvsObject_layout::functionSetRowStretch(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_layout::functionSetColumnStretch(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,setColumnStretch)
 {
 	kvs_uint_t uCol,uStretch;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -235,7 +232,7 @@ bool KviKvsObject_layout::functionSetColumnStretch(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_layout::functionSetMargin(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,setMargin)
 {
 	kvs_uint_t uMargin;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -245,7 +242,7 @@ bool KviKvsObject_layout::functionSetMargin(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_layout::functionSetSpacing(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,setSpacing)
 {
 	kvs_uint_t uSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -255,7 +252,7 @@ bool KviKvsObject_layout::functionSetSpacing(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_layout::functionAddRowSpacing(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,addRowSpacing)
 {
 	kvs_uint_t uSpacing,uRow;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -267,7 +264,7 @@ bool KviKvsObject_layout::functionAddRowSpacing(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_layout::functionAddColSpacing(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,addColSpacing)
 {
 	kvs_uint_t uSpacing,uCol;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -278,24 +275,24 @@ bool KviKvsObject_layout::functionAddColSpacing(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_layout::functionSetResizeMode(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,setResizeMode)
 {
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("resize_mode",KVS_PT_STRING,0,szMode)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-	QLayout::SizeConstraint r = QLAYOUT_AUTO_CONSTRAINT;
-	if(KviQString::equalCI(szMode,"FreeResize")) r = QLAYOUT_FREE_RESIZE;
-	else if(KviQString::equalCI(szMode,"Minimum")) r = QLAYOUT_MINIMUM;
-	else if(KviQString::equalCI(szMode,"Fixed"))r = QLAYOUT_FIXED;
+	QLayout::SizeConstraint r = QLayout::SetDefaultConstraint;
+	if(KviQString::equalCI(szMode,"FreeResize")) r = QLayout::SetNoConstraint;
+	else if(KviQString::equalCI(szMode,"Minimum")) r = QLayout::SetMinimumSize;
+	else if(KviQString::equalCI(szMode,"Fixed"))r = QLayout::SetFixedSize;
 	else c->warning(__tr2qs("Invalid resize mode defaulting to Auto"));
 	((QGridLayout *)object())->setSizeConstraint(r);
 	return true;
 
 }
 
-bool KviKvsObject_layout::functionsetAlignment(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(layout,setAlignment)
 {
 	QStringList alignment;
 	KviKvsObject * pObject;

@@ -33,7 +33,7 @@
 #include <QTextDocument>
 #include <QTextEdit>
 #include <QTextStream>
-
+ #include <QTextCursor>
 
 #include "class_multilineedit.h"
 
@@ -329,6 +329,8 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"linesOfParagraph" , functionlinesOfParagraph)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"selectAll" , functionselectAll)
 	*/
+
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertTable",functionInsertTable)
 KVSO_END_REGISTERCLASS(KviKvsObject_textedit)
 
 
@@ -375,7 +377,21 @@ bool KviKvsObject_textedit::functionAddWidget(KviKvsObjectFunctionCall * c)
 	((QTextEdit *)object())->addScrollBarWidget(((QWidget *)(pObject->object())),Qt::AlignLeft);
 	return true;
 }
+bool KviKvsObject_textedit::functionInsertTable(KviKvsObjectFunctionCall * c)
+{
+	if(widget()){
+		QTextCursor cur= ((QTextEdit *)widget())->textCursor();
+		QTextTableFormat tableModel;
+		tableModel.setBorderStyle(QTextFrameFormat::BorderStyle_Solid);
+		tableModel.setCellPadding(0);
+		tableModel.setCellSpacing(0);
+		tableModel.setBorderBrush(QColor(255,255,255));
 
+		cur.insertTable(3,3,tableModel);
+		((QTextEdit *)widget())->setTextCursor(cur);
+	}
+	return true;
+}
 bool KviKvsObject_textedit::functionSetReadOnly(KviKvsObjectFunctionCall * c)
 {
 	bool bEnabled;

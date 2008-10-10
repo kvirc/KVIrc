@@ -38,8 +38,8 @@ protected:
 	QButtonGroup *m_pButtonGroup;
 	int m_iId;
 	KviPointerHashTable<int ,KviKvsObject > btnDict;
-	bool functionAddButton(KviKvsObjectFunctionCall *c);
-	bool functionCheckedButton(KviKvsObjectFunctionCall *c);
+	bool addButton(KviKvsObjectFunctionCall *c);
+	bool checkedButton(KviKvsObjectFunctionCall *c);
 
 };
 #endif	//!_CLASS_GROUPBOX_H_

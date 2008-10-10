@@ -40,16 +40,11 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionSetText(KviKvsObjectFunctionCall *c);
-	bool functionIsChecked(KviKvsObjectFunctionCall *c);
-	bool functionText(KviKvsObjectFunctionCall *c);
-	bool functionSetAutoDefault(KviKvsObjectFunctionCall *c);
-	bool functionSetToggleButton(KviKvsObjectFunctionCall *c);
-	bool functionSetChecked(KviKvsObjectFunctionCall *c);
-	bool functionisChecked(KviKvsObjectFunctionCall *c);
-	bool functionToggle(KviKvsObjectFunctionCall *c);
-	bool functionSetImage(KviKvsObjectFunctionCall *c);
-	bool functionclickEvent(KviKvsObjectFunctionCall *c);
+	bool setText(KviKvsObjectFunctionCall *c);
+	bool text(KviKvsObjectFunctionCall *c);
+
+	bool setImage(KviKvsObjectFunctionCall *c);
+	bool clickEvent(KviKvsObjectFunctionCall *c);
 
 protected slots:
 	void slotClicked();

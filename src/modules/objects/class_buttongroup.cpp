@@ -55,8 +55,8 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_buttongroup,"buttongroup","object")
-	KVSO_REGISTER_HANDLER(KviKvsObject_buttongroup,"addButton",functionAddButton)
-	KVSO_REGISTER_HANDLER(KviKvsObject_buttongroup,"checkedButton",functionCheckedButton)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_buttongroup,addButton)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_buttongroup,checkedButton)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_buttongroup)
 
@@ -73,8 +73,9 @@ delete m_pButtonGroup;
 KVSO_END_CONSTRUCTOR(KviKvsObject_buttongroup)
 
 
-bool KviKvsObject_buttongroup::functionAddButton(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(buttongroup,addButton)
 {
+	CHECK_INTERNAL_QPOINTER(m_pButtonGroup)
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -108,8 +109,9 @@ bool KviKvsObject_buttongroup::functionAddButton(KviKvsObjectFunctionCall *c)
 	}
 	return true;
 }
-bool KviKvsObject_buttongroup::functionCheckedButton(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(buttongroup,checkedButton)
 {
+	CHECK_INTERNAL_QPOINTER(m_pButtonGroup)
 	int id=m_pButtonGroup->checkedId();
 	if (id!=-1) c->returnValue()->setHObject(btnDict.find(id)->handle());
 	else c->returnValue()->setNothing();

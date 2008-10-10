@@ -36,13 +36,13 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 	
-	bool function_addWidget(KviKvsObjectFunctionCall *c);
-	bool function_orientation(KviKvsObjectFunctionCall *c);
-	bool function_setOrientation(KviKvsObjectFunctionCall *c);
-	bool function_resizeEnabled(KviKvsObjectFunctionCall *c);
-	bool function_setResizeEnabled(KviKvsObjectFunctionCall * c);
-	bool function_setAllowedDockAreas(KviKvsObjectFunctionCall * c);
-	bool function_dock(KviKvsObjectFunctionCall * c);
+	bool addWidget(KviKvsObjectFunctionCall *c);
+	bool orientation(KviKvsObjectFunctionCall *c);
+	bool setOrientation(KviKvsObjectFunctionCall *c);
+	bool resizeEnabled(KviKvsObjectFunctionCall *c);
+	bool setResizeEnabled(KviKvsObjectFunctionCall * c);
+	bool setAllowedDockAreas(KviKvsObjectFunctionCall * c);
+	bool dock(KviKvsObjectFunctionCall * c);
 };
 
 #endif //!_CLASS_DOCKWINDOW_H_

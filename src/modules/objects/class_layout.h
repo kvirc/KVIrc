@@ -35,16 +35,16 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionAddWidget(KviKvsObjectFunctionCall *c);
-	bool functionAddMultiCellWidget(KviKvsObjectFunctionCall *c);
-	bool functionSetRowStretch(KviKvsObjectFunctionCall *c);
-	bool functionSetColumnStretch(KviKvsObjectFunctionCall *c);
-	bool functionSetMargin(KviKvsObjectFunctionCall *c);
-	bool functionSetSpacing(KviKvsObjectFunctionCall *c);
-	bool functionAddRowSpacing(KviKvsObjectFunctionCall *c);
-	bool functionAddColSpacing(KviKvsObjectFunctionCall *c);
-	bool functionSetResizeMode(KviKvsObjectFunctionCall *c);
-	bool functionsetAlignment(KviKvsObjectFunctionCall *c);
+	bool addWidget(KviKvsObjectFunctionCall *c);
+	bool addMultiCellWidget(KviKvsObjectFunctionCall *c);
+	bool setRowStretch(KviKvsObjectFunctionCall *c);
+	bool setColumnStretch(KviKvsObjectFunctionCall *c);
+	bool setMargin(KviKvsObjectFunctionCall *c);
+	bool setSpacing(KviKvsObjectFunctionCall *c);
+	bool addRowSpacing(KviKvsObjectFunctionCall *c);
+	bool addColSpacing(KviKvsObjectFunctionCall *c);
+	bool setResizeMode(KviKvsObjectFunctionCall *c);
+	bool setAlignment(KviKvsObjectFunctionCall *c);
 
 
 };

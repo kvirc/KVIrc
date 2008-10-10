@@ -63,11 +63,9 @@
 //---------------------------------------------------------------------------------
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_checkbox,"checkbox","button")
-	// appearance
-	KVSO_REGISTER_HANDLER(KviKvsObject_checkbox,"setChecked",function_setChecked)
-	KVSO_REGISTER_HANDLER(KviKvsObject_checkbox,"isChecked",function_isChecked)
-	KVSO_REGISTER_HANDLER(KviKvsObject_checkbox,"toggleEvent",function_toggleEvent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_checkbox,"setText",function_setText)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_checkbox,setChecked)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_checkbox,isChecked)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_checkbox,toggleEvent)
 KVSO_END_REGISTERCLASS(KviKvsObject_checkbox)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_checkbox,KviKvsObject_button)
@@ -89,38 +87,31 @@ bool KviKvsObject_checkbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantLi
 	return true;
 }
 
-bool KviKvsObject_checkbox::function_isChecked(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(checkbox,isChecked)
 {
-	if(widget()) c->returnValue()->setBoolean(((QCheckBox *)widget())->isChecked());
+	CHECK_INTERNAL_QPOINTER(widget())
+	c->returnValue()->setBoolean(((QCheckBox *)widget())->isChecked());
 	return true;
 }
 
-bool KviKvsObject_checkbox::function_setChecked(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(checkbox,setChecked)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	bool bChecked;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,KVS_PF_OPTIONAL,bChecked)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) ((QCheckBox *)widget())->setChecked(bChecked);
+	((QCheckBox *)widget())->setChecked(bChecked);
 	return true;
 }
 
-bool KviKvsObject_checkbox::function_setText(KviKvsObjectFunctionCall *c)
-{
-	QString szText;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
-	KVSO_PARAMETERS_END(c)
-	if(widget()) ((QCheckBox *)widget())->setText(szText);
-	return true;
-}
-
-bool KviKvsObject_checkbox::function_toggleEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(checkbox,toggleEvent)
 {
 	emitSignal("toggled",c,c->params());
 	return true;
 }
 
+//slots
 void KviKvsObject_checkbox::toggled(bool b)
 {
 	KviKvsVariantList params(new KviKvsVariant(b));

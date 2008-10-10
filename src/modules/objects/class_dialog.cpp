@@ -54,7 +54,7 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_dialog,"dialog","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_dialog,"setModal",functionSetModal)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dialog,setModal)
 KVSO_END_REGISTERCLASS(KviKvsObject_dialog)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_dialog,KviKvsObject_widget)
@@ -76,14 +76,14 @@ bool KviKvsObject_dialog::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 	setObject(d);
 	return true;
 }
-bool KviKvsObject_dialog::functionSetModal(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(dialog,setModal)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QDialog *)widget())->setModal(bEnabled);
+	((QDialog *)widget())->setModal(bEnabled);
 	return true;
 }
 

@@ -36,7 +36,7 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	bool functionSetModal(KviKvsObjectFunctionCall *c);
+	bool setModal(KviKvsObjectFunctionCall *c);
 };
 
 #endif // !_CLASS_DIALOG_H_

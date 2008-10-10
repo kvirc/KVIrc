@@ -37,6 +37,27 @@
 #include <QTextDocument>
 #include <QIcon>
 
+#define PAINTER_ROTATE(__angle)\
+	 QMatrix matrix;\
+     matrix.rotate(__angle);\
+     m_pPainter->setWorldMatrix(matrix,true);
+
+#define PAINTER_TRANSLATE(__x,__y)\
+	 QMatrix matrix;\
+     matrix.translate(__x,__y);\
+     m_pPainter->setWorldMatrix(matrix,true);
+
+#define PAINTER_SHEAR(__sH,__sV)\
+	 QMatrix matrix;\
+     matrix.shear(__sH,__sV);\
+     m_pPainter->setWorldMatrix(matrix,true);
+
+#define PAINTER_SCALE(__sX,__sY)\
+	 QMatrix matrix;\
+     matrix.scale(__sX,__sY);\
+     m_pPainter->setWorldMatrix(matrix,true);
+
+
 const Qt::PenStyle penstyles_cod[] = {
 	Qt::NoPen,
 	Qt::SolidLine,
@@ -1136,9 +1157,7 @@ bool KviKvsObject_painter::functionrotateMatrix(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("angle",KVS_PT_DOUBLE,0,dAngle)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter)return true;
-	//m_pMatrix.rotate(dAngle);
-	//m_pPainter->setWorldMatrix( m_pMatrix,false );
-	m_pPainter->rotate(dAngle);
+	PAINTER_ROTATE(dAngle)
 	return true;
 }
 
@@ -1150,12 +1169,13 @@ bool KviKvsObject_painter::functiontranslateMatrix(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("trasl_y",KVS_PT_DOUBLE,0,dYtrasl)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter)return true;
+	PAINTER_TRANSLATE(dXtrasl,dYtrasl)
 	//QWMatrix tmpMatrix;
 	//tmpMatrix.translate(dXtrasl,dYtrasl);
 	//tmpMatrix = m_pMatrix * tmpMatrix;
 	//m_pPainter->setWorldMatrix( tmpMatrix );
 	//m_pMatrix=tmpMatrix;
-	m_pPainter->translate(dXtrasl,dYtrasl);
+	//m_pPainter->translate(dXtrasl,dYtrasl);
 	return true;
 }
 
@@ -1167,9 +1187,10 @@ bool KviKvsObject_painter::functionshearMatrix(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("shear_v",KVS_PT_DOUBLE,0,dShearv)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter)return true;
+	PAINTER_SHEAR(dShearh,dShearv);
 	//m_pMatrix.shear(dShearh,dShearv);
 	//m_pPainter->setWorldMatrix(m_pMatrix);
-	m_pPainter->shear(dShearh,dShearv);
+	//m_pPainter->shear(dShearh,dShearv);
 	return true;
 }
 
@@ -1181,9 +1202,11 @@ bool KviKvsObject_painter::functionscaleMatrix(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("scale_y",KVS_PT_DOUBLE,0,dScaley)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter)return true;
+	PAINTER_SCALE(dScalex,dScaley);
+	
 	//m_pMatrix.scale(dScalex,dScaley);
 	//m_pPainter->setWorldMatrix(m_pMatrix);
-	m_pPainter->scale(dScalex,dScaley);
+	//m_pPainter->scale(dScalex,dScaley);
 	return true;
 }
 
@@ -1648,3 +1671,6 @@ bool KviKvsObject_painter::functionresetPath(KviKvsObjectFunctionCall *c)
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_painter.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+
+
+

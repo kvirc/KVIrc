@@ -40,10 +40,10 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	bool function_setChecked(KviKvsObjectFunctionCall *c);
-	bool function_isChecked(KviKvsObjectFunctionCall *c);
-	bool function_toggleEvent(KviKvsObjectFunctionCall *c);
-	bool function_setText(KviKvsObjectFunctionCall *c);
+	bool setChecked(KviKvsObjectFunctionCall *c);
+	bool isChecked(KviKvsObjectFunctionCall *c);
+	bool toggleEvent(KviKvsObjectFunctionCall *c);
+	bool setText(KviKvsObjectFunctionCall *c);
 protected slots:
 	void toggled(bool b);
 };

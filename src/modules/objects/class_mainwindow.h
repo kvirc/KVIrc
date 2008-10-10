@@ -38,9 +38,9 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionsetCentralWidget(KviKvsObjectFunctionCall *c);
-	bool functionsetDockEnabled(KviKvsObjectFunctionCall *c);
-	bool functionisDockEnabled(KviKvsObjectFunctionCall *c);
+	bool setCentralWidget(KviKvsObjectFunctionCall *c);
+	bool setDockEnabled(KviKvsObjectFunctionCall *c);
+	bool isDockEnabled(KviKvsObjectFunctionCall *c);
 
 };
 

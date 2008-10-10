@@ -24,6 +24,8 @@
 //=============================================================================
 
 #include "class_pixmap.h"
+#include "class_memorybuffer.h"
+
 #include "kvi_debug.h"
 #include "kvi_locale.h"
 
@@ -76,7 +78,10 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_pixmap,"pixmap","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"fill",functionfill)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"resize",functionresize)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"load",functionload)
+	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"loadFromMemoryBuffer",functionloadFromMemoryBuffer)
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"height",functionheight)
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"width",functionwidth)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"setOpacity",functionsetOpacity)
 	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"scale",functionscale)
@@ -200,6 +205,32 @@ bool KviKvsObject_pixmap::functionload(KviKvsObjectFunctionCall *c)
 	bPixmapModified=true;
 	return true;
 }
+bool KviKvsObject_pixmap::functionloadFromMemoryBuffer(KviKvsObjectFunctionCall *c)
+{
+	KviKvsObject * pObject;
+	kvs_hobject_t hObject;
+	KVSO_PARAMETERS_BEGIN(c)
+		KVSO_PARAMETER("hobject",KVS_PT_HOBJECT,0,hObject)
+	KVSO_PARAMETERS_END(c)
+	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	if (!pObject)
+	{
+		c->warning(__tr2qs("Buffer parameter is not an object"));
+		return true;
+	}
+	if (!pObject->inherits("KviKvsObjet_memorybuffer"))
+	{
+		c->warning(__tr2qs("Buffer parameter is not a memorybuffer object"));
+		return true;
+	}
+
+	m_pPixmap->loadFromData(((KviKvsObject_memorybuffer *)pObject)->dataBuffer());
+
+	bPixmapModified=true;
+
+	return true;
+}
+
 bool KviKvsObject_pixmap::functionheight(KviKvsObjectFunctionCall *c)
 {
 	c->returnValue()->setInteger(m_pPixmap->height());	
@@ -224,7 +255,6 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_BEGIN(c)
 			KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)	
 			KVSO_PARAMETER("destination",KVS_PT_HOBJECT,0,hObject)
-
 			KVSO_PARAMETER("x_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uXoffset)
 			KVSO_PARAMETER("y_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uYoffset)
 			KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uWidth)

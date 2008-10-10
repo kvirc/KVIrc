@@ -137,27 +137,27 @@
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_list,"list","object")
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"count",function_count)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"isEmpty",function_isEmpty)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"clear",function_clear)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"removeAll",function_clear)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"append",function_append)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"prepend",function_prepend)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"insert",function_insert)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"add",function_insert)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"at",function_at)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"item",function_at)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"remove",function_remove)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"removeFirst",function_removeFirst)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"removeLast",function_removeLast)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"removeCurrent",function_removeCurrent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"moveFirst",function_moveFirst)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"moveNext",function_moveNext)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"movePrev",function_movePrev)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"moveLast",function_moveLast)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"sort",function_sort)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"eof",function_eof)
-	KVSO_REGISTER_HANDLER(KviKvsObject_list,"current",function_current)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,count)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,isEmpty)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,clear)
+	KVSO_REGISTER_HANDLER(KviKvsObject_list,"removeAll",clear)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,append)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,prepend)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,insert)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,insert)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,at)
+	KVSO_REGISTER_HANDLER(KviKvsObject_list,"item",at)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,remove)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,removeFirst)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,removeLast)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,removeCurrent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,moveFirst)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,moveNext)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,movePrev)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,moveLast)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,sort)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,eof)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_list,current)
 KVSO_END_REGISTERCLASS(KviKvsObject_list)
 
 
@@ -172,9 +172,10 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_list)
 	m_pDataList = 0;
 KVSO_END_CONSTRUCTOR(KviKvsObject_list)
 
-bool KviKvsObject_list::function_current(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,current)
 {
-	if(!m_pDataList|!m_pDataList->count())
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	if(!m_pDataList->count())
 	{
 		c->returnValue()->setNothing();
 		return true;
@@ -185,79 +186,51 @@ bool KviKvsObject_list::function_current(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_list::function_eof(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,eof)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(true);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->current() != 0);
 	return true;
 }
 
-bool KviKvsObject_list::function_moveLast(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,moveLast)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(false);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->last() != 0);
 	return true;
 }
 
-bool KviKvsObject_list::function_movePrev(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,movePrev)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(false);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->prev() != 0);
 	return true;
 }
 
-bool KviKvsObject_list::function_moveNext(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,moveNext)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(false);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->next() != 0);
 	return true;
 }
 
-bool KviKvsObject_list::function_moveFirst(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,moveFirst)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(false);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->first() != 0);
 	return true;
 }
 
-bool KviKvsObject_list::function_removeLast(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,removeLast)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(false);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->removeLast());
 	return true;
 }
 
-bool KviKvsObject_list::function_removeCurrent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,removeCurrent)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(false);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	if(m_pDataList->current())
 	{
 		m_pDataList->removeCurrent();
@@ -268,89 +241,76 @@ bool KviKvsObject_list::function_removeCurrent(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_list::function_removeFirst(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,removeFirst)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(false);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->removeFirst());
 	return true;
 }
 
-bool KviKvsObject_list::function_remove(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,remove)
 {
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UINT,0,uIndex)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(false);
-		return true;
-	}
 	c->returnValue()->setBoolean(m_pDataList->remove(uIndex));
 	return true;
 }
 
-bool KviKvsObject_list::function_at(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,at)
 {
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UINT,0,uIndex)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pDataList)
-	{
-		c->returnValue()->setNothing();
-		return true;
-	}
 	KviKvsVariant * v = m_pDataList->at(uIndex);
 	if(v)c->returnValue()->copyFrom(*v);
 	else c->returnValue()->setNothing();
 	return true;
 }
 
-bool KviKvsObject_list::function_insert(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,insert)
 {
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	kvs_uint_t uIndex;
 	KviKvsVariant * pVar;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UINT,0,uIndex)
 		KVSO_PARAMETER("item",KVS_PT_VARIANT,0,pVar)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pDataList)return true;
 	m_pDataList->insert(uIndex,new KviKvsVariant(*pVar));
 	return true;
 }
 
-bool KviKvsObject_list::function_prepend(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,prepend)
 {
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	KviKvsVariant * pVar;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item",KVS_PT_VARIANT,0,pVar)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pDataList)return true;
 	m_pDataList->prepend(new KviKvsVariant(*pVar));
 	return true;
 }
 
-bool KviKvsObject_list::function_append(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,append)
 {
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	KviKvsVariant * pVar;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item",KVS_PT_VARIANT,0,pVar)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pDataList)return true;
 	m_pDataList->append(new KviKvsVariant(*pVar));
 	if (m_pDataList->count()==1) m_pDataList->first();
-
 	return true;
 }
 
-bool KviKvsObject_list::function_clear(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,clear)
 {
-	if(!m_pDataList)return true;
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	m_pDataList->clear();
 	return true;
 }
@@ -360,31 +320,23 @@ inline int kvi_compare(const KviKvsVariant * p1,const KviKvsVariant * p2)
 	return p1->compare(p2);
 }
 
-bool KviKvsObject_list::function_sort(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,sort)
 {
-	if(!m_pDataList)return true;
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	m_pDataList->sort();
 	return true;
 }
 
-bool KviKvsObject_list::function_isEmpty(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,isEmpty)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setBoolean(true);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->isEmpty());
 	return true;
 }
 
-bool KviKvsObject_list::function_count(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(list,count)
 {
-	if(!m_pDataList)
-	{
-		c->returnValue()->setInteger(0);
-		return true;
-	}
+	CHECK_INTERNAL_QPOINTER(m_pDataList)
 	c->returnValue()->setInteger(m_pDataList->count());
 	return true;
 }

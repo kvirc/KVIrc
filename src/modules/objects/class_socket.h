@@ -38,78 +38,6 @@
 
 class KviDns;
 class KviDataBuffer;
-/*
-class KviScriptSocketObject : public KviScriptObject
-{
-	Q_OBJECT
-public:
-	KviScriptSocketObject(KviScriptObjectClass * cla,KviScriptObject * par,const char * nam);
-	virtual ~KviScriptSocketObject();
-protected:
-	kvi_socket_t       m_sock;
-	int                m_iStatus;
-	KviStr             m_szRemoteIp;
-	unsigned short int m_uRemotePort;
-	KviStr             m_szLocalIp;
-	unsigned short int m_uLocalPort;
-	unsigned int       m_uConnectTimeout;
-	QSocketNotifier  * m_pSn;
-	KviDns           * m_pDns;
-	QTimer           * m_pDelayTimer;
-	char             * m_pInBuffer;
-	unsigned int       m_uInBufferLen;
-	unsigned int       m_uInDataLen;
-	bool               m_bIPv6;
-	unsigned int       m_uConnectionId;
-
-	KviDataBuffer    * m_pOutBuffer;
-	QTimer           * m_pFlushTimer;
-
-	kvi_socket_t       m_secondarySock;
-	unsigned short int m_uSecondaryPort;
-	KviStr             m_szSecondaryIp;
-protected:
-	bool functionStatus(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionRemotePort(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionRemoteIp(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionLocalPort(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionLocalIp(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionConnect(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionSetConnectTimeout(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionConnectTimeout(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionClose(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionRead(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionReadHex(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionWrite(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionWriteHex(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionListen(KviCommand *c,KviParameterList * params,KviStr &buffer);
-	bool functionAccept(KviCommand *c,KviParameterList * params,KviStr &buffer);
-
-	void delayedConnect();
-	void delayedLookupRemoteIp();
-	void delayedFlush(unsigned int uTimeout);
-
-	void eatInData(unsigned int uLen);
-	unsigned int readGetLength(KviParameterList * params);
-
-	void acceptConnection(kvi_socket_t s,unsigned short int uPort,const char * szIp);
-
-	void reset();
-protected slots:
-	void doConnect();
-	void lookupRemoteIp();
-	void lookupDone(KviDns * pDns);
-	void connectTimeout();
-	void writeNotifierFired(int);
-	void readNotifierFired(int);
-	void tryFlush();
-	void incomingConnection(int);
-public:
-	static void registerSelf();
-	static void unregisterSelf();
-};
-*/
-//===============================================================
 #include "object_macros.h"
 
 
@@ -130,7 +58,7 @@ protected:
 	QSocketNotifier  * m_pSn;
 	KviDns           * m_pDns;
 	QTimer           * m_pDelayTimer;
-	char             * m_pInBuffer;
+	char				* m_pInBuffer;
 	unsigned int       m_uInBufferLen;
 	unsigned int       m_uInDataLen;
 	bool               m_bIPv6;
@@ -143,25 +71,25 @@ protected:
 	kvi_u32_t          m_uSecondaryPort;
 	QString             m_szSecondaryIp;
 protected:
-	bool functionStatus(KviKvsObjectFunctionCall *c);
-	bool functionRemotePort(KviKvsObjectFunctionCall *c);
-	bool functionRemoteIp(KviKvsObjectFunctionCall *c);
-	bool functionLocalPort(KviKvsObjectFunctionCall *c);
-	bool functionLocalIp(KviKvsObjectFunctionCall *c);
+	bool status(KviKvsObjectFunctionCall *c);
+	bool remotePort(KviKvsObjectFunctionCall *c);
+	bool remoteIp(KviKvsObjectFunctionCall *c);
+	bool localPort(KviKvsObjectFunctionCall *c);
+	bool localIp(KviKvsObjectFunctionCall *c);
 	bool functionConnect(KviKvsObjectFunctionCall *c);
-	bool functionSetConnectTimeout(KviKvsObjectFunctionCall *c);
-	bool functionConnectTimeout(KviKvsObjectFunctionCall *c);
+	bool setConnectTimeout(KviKvsObjectFunctionCall *c);
+	bool connectTimeout(KviKvsObjectFunctionCall *c);
 
-	bool functionClose(KviKvsObjectFunctionCall *c);
-	bool functionRead(KviKvsObjectFunctionCall *c);
-	bool functionReadHex(KviKvsObjectFunctionCall *c);
-	bool functionWrite(KviKvsObjectFunctionCall *c);
-	bool functionWriteHex(KviKvsObjectFunctionCall *c);
+	bool close(KviKvsObjectFunctionCall *c);
+	bool read(KviKvsObjectFunctionCall *c);
+	bool readHex(KviKvsObjectFunctionCall *c);
+	bool write(KviKvsObjectFunctionCall *c);
+	bool writeHex(KviKvsObjectFunctionCall *c);
 
-	bool functionSetProtocol(KviKvsObjectFunctionCall *c);
+	bool setProtocol(KviKvsObjectFunctionCall *c);
 
-	bool functionListen(KviKvsObjectFunctionCall *c);
-	bool functionAccept(KviKvsObjectFunctionCall *c);
+	bool listen(KviKvsObjectFunctionCall *c);
+	bool accept(KviKvsObjectFunctionCall *c);
 
 	void delayedConnect();
 	void delayedLookupRemoteIp();

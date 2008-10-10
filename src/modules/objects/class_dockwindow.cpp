@@ -64,11 +64,11 @@
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_dockwindow,"dockwindow","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"addWidget",function_addWidget)
-	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"resizeEnabled",function_resizeEnabled)
-	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"setResizeEnabled",function_setResizeEnabled)
-	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"setAllowedDockAreas",function_setAllowedDockAreas)
-	KVSO_REGISTER_HANDLER(KviKvsObject_dockwindow,"dock",function_dock)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,addWidget)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,resizeEnabled)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,setResizeEnabled)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,setAllowedDockAreas)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,dock)
 KVSO_END_REGISTERCLASS(KviKvsObject_dockwindow)
 
 
@@ -89,15 +89,13 @@ bool KviKvsObject_dockwindow::init(KviKvsRunTimeContext * pContext,KviKvsVariant
 	return true;
 }
 
-bool KviKvsObject_dockwindow::function_addWidget(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(dockwindow,addWidget)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	kvs_hobject_t hWidget;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hWidget)
 	KVSO_PARAMETERS_END(c)
-
-	if(!widget())return true; // hum ? dead ?
-
 	if(hWidget == (kvs_hobject_t)0)
 	{
 		// null widget ?
@@ -133,33 +131,31 @@ bool KviKvsObject_dockwindow::function_addWidget(KviKvsObjectFunctionCall *c)
 	return true;
 }
 // Fix me
-bool KviKvsObject_dockwindow::function_resizeEnabled(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(dockwindow,resizeEnabled)
 {
-	if(!widget())return true; // hum ? dead ?
+	CHECK_INTERNAL_QPOINTER(widget())
 	c->returnValue()->setBoolean(false);
 	return true;
 }
 
 // Fix me
-bool KviKvsObject_dockwindow::function_setResizeEnabled(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(dockwindow,setResizeEnabled)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	bool bResizeEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bResizeEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true; // hum ? dead ?
 	return true;
 }
 
-bool KviKvsObject_dockwindow::function_setAllowedDockAreas(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(dockwindow,setAllowedDockAreas)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	QString szFlags;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("docks",KVS_PT_STRING,0,szFlags)
 	KVSO_PARAMETERS_END(c)
-
-	if(!widget())return true; // hum ? dead ?
-
 	Qt::DockWidgetAreas fAreas = Qt::NoDockWidgetArea;
 	if(szFlags.indexOf('t',Qt::CaseInsensitive))fAreas |= Qt::TopDockWidgetArea;
 	if(szFlags.indexOf('l',Qt::CaseInsensitive))fAreas |= Qt::LeftDockWidgetArea;
@@ -179,14 +175,13 @@ bool KviKvsObject_dockwindow::function_setAllowedDockAreas(KviKvsObjectFunctionC
 }
 
 
-bool KviKvsObject_dockwindow::function_dock(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(dockwindow,dock)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	QString szDock;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("dock",KVS_PT_STRING,0,szDock)
 	KVSO_PARAMETERS_END(c)
-
-	if(!widget())return true; // hum ? dead ?
 	g_pFrame->removeDockWidget(_pDockWindow);
 	if(szDock.indexOf('m',Qt::CaseInsensitive) == -1)_pDockWindow->setFloating(false);
 	if(szDock.indexOf('t',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::TopDockWidgetArea,_pDockWindow);

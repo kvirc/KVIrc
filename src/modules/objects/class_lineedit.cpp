@@ -179,33 +179,29 @@ static const int mode_cod[] =  {
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_lineedit,"lineedit","widget")
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"text", functionText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setText", functionSetText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"maxLength", functionMaxLength)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setMaxLength", functionSetMaxLength)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"frame", functionFrame)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setCursorPosition", functionSetCursorPosition)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"cursorPosition", functionCursorPosition)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setFrame", functionSetFrame)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"selectAll" , functionSelectAll)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setSelection", functionSetSelection)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"copy", functionCopy)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"cut", functionCut)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"paste", functionPaste)
-
-
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"echoMode", functionEchoMode)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setEchoMode", functionSetEchoMode)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"clear", functionClear)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setDragEnabled", functionDragAndDrop)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setInputMask", functionSetInputMask)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setReadOnly", functionSetReadOnly)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"returnPressedEvent", functionreturnPressedEvent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"lostFocusEvent", functionlostFocusEvent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"textChangedEvent", functiontextChangedEvent)
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_lineedit,"setInputValidator", functionsetInputValidator)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,text)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,setText)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,maxLength)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,setMaxLength)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,frame)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,setCursorPosition)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,cursorPosition)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,setFrame)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,selectAll)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,setSelection)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,copy)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,cut)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,paste)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,echoMode)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,setEchoMode)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,clear)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,dragAndDrop)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,setInputMask)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,setReadOnly)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,returnPressedEvent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,lostFocusEvent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,textChangedEvent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lineedit,setInputValidator)
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_lineedit)
@@ -230,14 +226,14 @@ bool KviKvsObject_lineedit::init(KviKvsRunTimeContext * pContext,KviKvsVariantLi
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,text)
 {
 	if(widget())
 		c->returnValue()->setString(((QLineEdit *)widget())->text());
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionSetText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,setText)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -247,7 +243,7 @@ bool KviKvsObject_lineedit::functionSetText(KviKvsObjectFunctionCall *c)
 		((QLineEdit *)widget())->setText(szText);
 	return true;
 }
-bool KviKvsObject_lineedit::functionsetInputValidator(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,setInputValidator)
 {
 	QString szReg;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -257,14 +253,14 @@ bool KviKvsObject_lineedit::functionsetInputValidator(KviKvsObjectFunctionCall *
 		((QLineEdit *)widget())->setValidator(new QRegExpValidator(QRegExp(szReg),((QLineEdit *)widget())));
 	return true;
 }
-bool KviKvsObject_lineedit::functionMaxLength(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,maxLength)
 {
 	if(widget())
 		c->returnValue()->setInteger(((QLineEdit *)widget())->maxLength());
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionSetMaxLength(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,setMaxLength)
 {
 	kvs_uint_t iMaxlen;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -275,14 +271,14 @@ bool KviKvsObject_lineedit::functionSetMaxLength(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionFrame(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,frame)
 {
 	if(widget())
 		c->returnValue()->setBoolean(((QLineEdit *)widget())->hasFrame());
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionSetFrame(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,setFrame)
 {
 	bool bFrame;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -293,14 +289,14 @@ bool KviKvsObject_lineedit::functionSetFrame(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionCursorPosition(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,cursorPosition)
 {
 	if(widget())
 		c->returnValue()->setInteger(((QLineEdit *)widget())->cursorPosition());
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionSetCursorPosition(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,setCursorPosition)
 {
 	kvs_uint_t iPos;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -311,14 +307,14 @@ bool KviKvsObject_lineedit::functionSetCursorPosition(KviKvsObjectFunctionCall *
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionSelectAll(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,selectAll)
 {
 	if(widget())
 		((QLineEdit *)widget())->selectAll();
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionSetSelection(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,setSelection)
 {
 	kvs_uint_t uStart,uLen;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -330,28 +326,28 @@ bool KviKvsObject_lineedit::functionSetSelection(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionCopy(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,copy)
 {
 	if(widget())
 		((QLineEdit *)widget())->copy();
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionCut(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,cut)
 {
 	if(widget())
 		((QLineEdit *)widget())->cut();
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionPaste(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,paste)
 {
 	if(widget())
 		((QLineEdit *)widget())->paste();
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionEchoMode(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,echoMode)
 {
 	int mode = ((QLineEdit *)widget())->echoMode();
 	QString szEchomode="";
@@ -367,7 +363,7 @@ bool KviKvsObject_lineedit::functionEchoMode(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionSetEchoMode(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,setEchoMode)
 {
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -387,7 +383,7 @@ bool KviKvsObject_lineedit::functionSetEchoMode(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionClear(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,clear)
 {
 	if(widget())
 		((QLineEdit *)widget())->clear();
@@ -395,7 +391,7 @@ bool KviKvsObject_lineedit::functionClear(KviKvsObjectFunctionCall *c)
 }
 
 //-| Grifisx & Noldor |-Start:
-bool KviKvsObject_lineedit::functionDragAndDrop(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,dragAndDrop)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -406,7 +402,7 @@ bool KviKvsObject_lineedit::functionDragAndDrop(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionSetReadOnly(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,setReadOnly)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -417,7 +413,7 @@ bool KviKvsObject_lineedit::functionSetReadOnly(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionSetInputMask(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,setInputMask)
 {
 	QString szMask;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -428,7 +424,7 @@ bool KviKvsObject_lineedit::functionSetInputMask(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_lineedit::functionreturnPressedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,returnPressedEvent)
 {
 
 	emitSignal("returnPressed",c);
@@ -443,7 +439,7 @@ void KviKvsObject_lineedit::slotreturnPressed()
 
 }
 // FIND ME
-bool KviKvsObject_lineedit::functionlostFocusEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,lostFocusEvent)
 {
 
 
@@ -458,7 +454,7 @@ void KviKvsObject_lineedit::slotlostFocus()
 	callFunction(this,"lostFocusEvent",params);
 }
 /////
-bool KviKvsObject_lineedit::functiontextChangedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(lineedit,textChangedEvent)
 {
 	emitSignal("textChanged",c,c->params());
 	return true;

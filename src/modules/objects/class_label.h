@@ -38,16 +38,16 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionSetTitle(KviKvsObjectFunctionCall *c);
-	bool functionSetText(KviKvsObjectFunctionCall *c);
-	bool functionText(KviKvsObjectFunctionCall *c);
-	bool functionMargin(KviKvsObjectFunctionCall *c);
-	bool functionSetMargin(KviKvsObjectFunctionCall *c);
-	bool functionAlignment(KviKvsObjectFunctionCall *c);
-	bool functionSetAlignment(KviKvsObjectFunctionCall *c);
-	bool functionClear(KviKvsObjectFunctionCall *c);
-	bool functionFrameStyle(KviKvsObjectFunctionCall *c);
-	bool functionSetFrameStyle(KviKvsObjectFunctionCall *c);
-	bool functionSetImage(KviKvsObjectFunctionCall *c);
+	bool setTitle(KviKvsObjectFunctionCall *c);
+	bool setText(KviKvsObjectFunctionCall *c);
+	bool text(KviKvsObjectFunctionCall *c);
+	bool margin(KviKvsObjectFunctionCall *c);
+	bool setMargin(KviKvsObjectFunctionCall *c);
+	bool alignment(KviKvsObjectFunctionCall *c);
+	bool setAlignment(KviKvsObjectFunctionCall *c);
+	bool clear(KviKvsObjectFunctionCall *c);
+	bool frameStyle(KviKvsObjectFunctionCall *c);
+	bool setFrameStyle(KviKvsObjectFunctionCall *c);
+	bool setImage(KviKvsObjectFunctionCall *c);
 };
 #endif	// !_CLASS_LABEL_H_

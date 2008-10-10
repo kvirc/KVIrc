@@ -52,9 +52,9 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_mainwindow,"mainwindow","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_mainwindow,"setCentralWidget",functionsetCentralWidget)
-	KVSO_REGISTER_HANDLER(KviKvsObject_mainwindow,"setDockEnabled",functionsetDockEnabled)
-	KVSO_REGISTER_HANDLER(KviKvsObject_mainwindow,"isDockEnabled",functionisDockEnabled)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_mainwindow,setCentralWidget)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_mainwindow,setDockEnabled)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_mainwindow,isDockEnabled)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_mainwindow)
 
@@ -73,8 +73,9 @@ bool KviKvsObject_mainwindow::init(KviKvsRunTimeContext * pContext,KviKvsVariant
 	return true;
 }
 
-bool KviKvsObject_mainwindow::functionsetCentralWidget(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(mainwindow,setCentralWidget)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -96,37 +97,38 @@ bool KviKvsObject_mainwindow::functionsetCentralWidget(KviKvsObjectFunctionCall 
 		c->warning(__tr2qs("Widget object required"));
         return TRUE;
     }
-	if(widget()) ((KviTalMainWindow *)widget())->setCentralWidget(((QWidget  *)(pObject->object())));
+	((KviTalMainWindow *)widget())->setCentralWidget(((QWidget  *)(pObject->object())));
 	return true;	
 }
 //FIX ME
-bool KviKvsObject_mainwindow::functionsetDockEnabled(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(mainwindow,setDockEnabled)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	QString szDockarea;
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("dock area",KVS_PT_STRING,0,szDockarea)
 		KVSO_PARAMETER("bool enabled",KVS_PT_BOOL,0,bFlag)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
+/*	if(widget())
 	{
 
 	}
+*/
 	return true;
 
 }
 
 //FIX ME
-bool KviKvsObject_mainwindow::functionisDockEnabled(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(mainwindow,isDockEnabled)
 {
-	
+	CHECK_INTERNAL_QPOINTER(widget())
 	QString szDockarea;
 	bool bFlag = false;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("dock_area",KVS_PT_STRING,0,szDockarea)
 	KVSO_PARAMETERS_END(c)
-    if(!widget()) return true;
-	c->returnValue()->setBoolean(bFlag);
+   c->returnValue()->setBoolean(bFlag);
 	return true;		
 
 }
