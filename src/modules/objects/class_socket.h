@@ -105,7 +105,7 @@ protected slots:
 	void doConnect();
 	void lookupRemoteIp();
 	void lookupDone(KviDns * pDns);
-	void connectTimeout();
+	void connectTimeoutSlot();
 	void writeNotifierFired(int);
 	void readNotifierFired(int);
 	void tryFlush();

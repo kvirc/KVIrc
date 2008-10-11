@@ -284,10 +284,9 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_socket,"socket","object")
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,remoteIp)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,localIp)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,localPort)
-/*	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"connect",functionConnect)
+	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"connect",functionConnect)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,connectTimeout)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,setConnectTimeout)
-*/
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,close)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,read)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,readHex)
@@ -1006,7 +1005,7 @@ debug ("Socket created");
 	}
 	debug ("Socket connected");
 	m_pDelayTimer = new QTimer();
-	connect(m_pDelayTimer,SIGNAL(timeout()),this,SLOT(connectTimeout()));
+	connect(m_pDelayTimer,SIGNAL(timeout()),this,SLOT(connectTimeoutSlot()));
 	m_pDelayTimer->setInterval(m_uConnectTimeout);
 	m_pDelayTimer->setSingleShot(true);
 	m_pDelayTimer->start();
@@ -1016,7 +1015,7 @@ debug ("Socket created");
 	m_pSn->setEnabled(true);
 }
 
-void KviKvsObject_socket::connectTimeout()
+void KviKvsObject_socket::connectTimeoutSlot()
 {
 	unsigned int uOldConnectionId = m_uConnectionId;
 
