@@ -24,7 +24,6 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "class_memorybuffer.h"
 #include "class_file.h"
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
@@ -284,9 +283,12 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_socket,"socket","object")
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,remoteIp)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,localIp)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,localPort)
+	/*
+	FIXME
 	KVSO_REGISTER_HANDLER(KviKvsObject_socket,"connect",functionConnect)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,connectTimeout)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,setConnectTimeout)
+	*/
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,close)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,read)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_socket,readHex)
@@ -434,10 +436,13 @@ KVSO_CLASS_FUNCTION(socket,read)
 			return true;
 		}
 
+		/*
+		FIXME
 		QByteArray *pBuffer=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
 		int oldsize=pBuffer->size();
 		pBuffer->resize(oldsize+uLen);
 		kvi_memmove(pBuffer->data()+oldsize,m_pInBuffer,uLen);
+		*/
 		eatInData(uLen);
 		return true;
 	}
@@ -499,12 +504,14 @@ KVSO_CLASS_FUNCTION(socket,write)
 			c->warning(__tr2qs("Buffer parameter is not an object"));
 			return true;
 		}
+		/*
+		FIXME
 		if (pObject->inherits("KviKvsObject_memorybuffer"))
 		{
 			QByteArray *p=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
 			m_pOutBuffer->append((const unsigned char*)p->data(),p->size());
 		}
-		else if (pObject->inherits("KviKvsObject_file"))
+		else*/ if (pObject->inherits("KviKvsObject_file"))
 		{
 			KviFile *pFile=((KviKvsObject_file *)pObject)->pFile();
 			if (!pFile->isOpen()) 

@@ -23,12 +23,11 @@
 //=============================================================================
 
 #include "class_xmlreader.h"
-#include "class_memorybuffer.h"
-#include "kvi_locale.h"
+//#include "class_memorybuffer.h"
 
+#include "kvi_locale.h"
 #include "kvi_kvs_variantlist.h"
 #include "kvi_kvs_hash.h"
-
 #include "kvi_qstring.h"
 
 
@@ -311,10 +310,10 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 	KVSO_PARAMETERS_BEGIN(c)
 			KVSO_PARAMETER("string_or_memorybuffer_object",KVS_PT_VARIANT,0,pVariantData)
 	KVSO_PARAMETERS_END(c)
-	#ifdef QT_NO_XML
+#ifdef QT_NO_XML
 	fatalError(__tr2qs("XML support not available in the Qt library"));
 	c->returnValue()->setBoolean(false);
-	#else
+#else // QT_NO_XML
 	m_szLastError = "";
 	KviXmlHandler handler(this);
 	QXmlInputSource source;
@@ -330,6 +329,8 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 			c->warning(__tr2qs("Data parameter is not an object"));
 			return true;
 		}
+		/*
+		FIXME
 		if (pObject->inherits("KviKvsObject_memorybuffer"))
 		{
 			source.setData(*((KviKvsObject_memorybuffer *)pObject)->pBuffer());
@@ -339,6 +340,7 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 			c->warning(__tr2qs("Data parameter is not a memorybuffer object"));
 			return true;
 		}
+		*/
 	}
 	else if(pVariantData->isString())
 	{
@@ -362,7 +364,7 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 	reader.setContentHandler(&handler);
 	reader.setErrorHandler(&handler);
 	c->returnValue()->setBoolean(reader.parse(source));
-#endif
+#endif // QT_NO_XML
 	return true;
 }
 
