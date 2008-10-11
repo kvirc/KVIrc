@@ -24,33 +24,49 @@
 //
 //=============================================================================
 
-#if 0
+#include <QSplitter>
 
-#include "kvi_irctoolbar.h"
-
+#include "kvi_frame.h"
+#include "kvi_inttypes.h"
+#include "kvi_moduleextension.h"
+#include "kvi_window.h"
 
 #define KVI_IOGRAPH_NUMBER_POINTS 148
+#define KVI_IOGRAPH_HORIZ_SEGMENTS 6
+#define KVI_IOGRAPH_VERT_SEGMENTS 29
+#define IOGRAPH_MODULE_EXTENSION_NAME "IO graph extension"
 
-class KviIOGraphDisplay : public KviIrcContextGraphicalApplet
+class KviIOGraphWidget : public QWidget
 {
 	Q_OBJECT
 public:
-	KviIOGraphDisplay(KviIrcContextController * pController,bool sentGraph,bool recvGraph);
-	~KviIOGraphDisplay();
+	KviIOGraphWidget(QWidget *parent);
+	~KviIOGraphWidget() {};
 protected:
 	unsigned int m_sendRates[KVI_IOGRAPH_NUMBER_POINTS];
 	unsigned int m_recvRates[KVI_IOGRAPH_NUMBER_POINTS];
 	int m_iNextPoint;
-	unsigned int m_uLastSentBytes;
-	unsigned int m_uLastRecvBytes;
-	bool m_bShowSentGraph;
-	bool m_bShowRecvGraph;
+	kvi_u64_t m_uLastSentBytes;
+	kvi_u64_t m_uLastRecvBytes;
 protected:
-	virtual void drawContents(QPainter *p);
-	virtual QSize sizeHint() const;
 	virtual void timerEvent(QTimerEvent *e);
+	virtual void paintEvent (QPaintEvent *e);
+};
+
+class KviIOGraphWindow : public KviWindow , public KviModuleExtension
+{
+	Q_OBJECT
+public:
+	KviIOGraphWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm,const char * name);
+	~KviIOGraphWindow();
+private:
+	KviIOGraphWidget * m_pIOGraph;
+protected:
+	virtual QPixmap * myIconPtr();
+	virtual void fillCaptionBuffers();
+	virtual void resizeEvent(QResizeEvent *e);
+	virtual void die();
 };
 
 #endif
 
-#endif

@@ -23,269 +23,287 @@
 //=============================================================================
 
 #include "libkviiograph.h"
-#include "kvi_module.h"
-
-#if 0
-
-
-#include "kvi_console.h"
-#include "kvi_options.h"
-#include "kvi_ircsocket.h"
 #include "kvi_frame.h"
+#include "kvi_iconmanager.h"
 #include "kvi_locale.h"
+#include "kvi_module.h"
+#include "kvi_options.h"
+#include "kvi_socket.h"
 
-#include "kvi_pointerlist.h"
-#include <qtooltip.h>
-#include <qpointarray.h>
-#include <qpainter.h>
+#include <QPainter>
+#include <QPaintEvent>
 
+KviIOGraphWindow* g_pIOGraphWindow = 0;
 
-extern QPixmap                 * g_pIccMemBuffer;
-
-
-static KviPointerList<KviIOGraphDisplay> * g_pIOGraphWidgetList;
-
-KviIOGraphDisplay::KviIOGraphDisplay(KviIrcContextController * pController,bool sentGraph,bool recvGraph)
-: KviIrcContextGraphicalApplet(pController,"iograph_display")
+KviIOGraphWindow::KviIOGraphWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm,const char * name)
+: KviWindow(KVI_WINDOW_TYPE_IOGRAPH,lpFrm,name), KviModuleExtension(d)
 {
-	g_pIOGraphWidgetList->append(this);
+	m_pIOGraph = new KviIOGraphWidget(this);
+}
+
+KviIOGraphWindow::~KviIOGraphWindow()
+{
+	if(m_pIOGraph)
+		delete m_pIOGraph;
+	m_pIOGraph=0;
+
+	g_pIOGraphWindow = 0;
+}
+
+QPixmap * KviIOGraphWindow::myIconPtr()
+{
+	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYICON);
+}
+
+void KviIOGraphWindow::resizeEvent(QResizeEvent *e)
+{
+	m_pIOGraph->setGeometry(0,0,width(),height());
+}
+
+void KviIOGraphWindow::fillCaptionBuffers()
+{
+	m_szPlainTextCaption = __tr2qs("I/O Traffic Graph");
+
+	m_szHtmlActiveCaption = "<nobr><font color=\"";
+	m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name();
+	m_szHtmlActiveCaption += "\"><b>";
+	m_szHtmlActiveCaption += m_szPlainTextCaption;
+	m_szHtmlActiveCaption += "</b></font></nobr>";
+
+	m_szHtmlInactiveCaption = "<nobr><font color=\"";
+	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name();
+	m_szHtmlInactiveCaption += "\"><b>";
+	m_szHtmlInactiveCaption += m_szPlainTextCaption;
+	m_szHtmlInactiveCaption += "</b></font></nobr>";
+}
+
+void KviIOGraphWindow::die()
+{
+	close();
+}
+
+
+
+KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
+: QWidget(par)
+{
 	for(int i=0;i < KVI_IOGRAPH_NUMBER_POINTS;i++)
 	{
 		m_sendRates[i] = 0;
 		m_recvRates[i] = 0;
 	}
 	m_iNextPoint = 1;
-	m_uLastSentBytes = pController->console()->socket()->sentBytes();
-	m_uLastRecvBytes = pController->console()->socket()->readBytes();
-	m_bShowSentGraph = sentGraph;
-	m_bShowRecvGraph = recvGraph;
+	m_uLastSentBytes = g_uOutgoingTraffic;
+	m_uLastRecvBytes = g_uIncomingTraffic;
 
-	KviStr tip;
-	if(sentGraph)tip = __tr("Outgoing traffic");
-	if(recvGraph)
-	{
-		if(tip.hasData())tip.append("\n");
-		tip.append(__tr("Incoming traffic"));
-	}
+	QString tip(__tr("Outgoing traffic"));
+	tip.append("\n");
+	tip.append(__tr("Incoming traffic"));
 
-	QToolTip::add(this,tip.ptr());
+	this->setToolTip(tip);
 
 	startTimer(1000);
 }
 
-KviIOGraphDisplay::~KviIOGraphDisplay()
+void KviIOGraphWidget::timerEvent(QTimerEvent *e)
 {
-	g_pIOGraphWidgetList->removeRef(this);
-}
+	kvi_u64_t sB = g_uOutgoingTraffic;
+	kvi_u64_t rB = g_uIncomingTraffic;
 
-void KviIOGraphDisplay::timerEvent(QTimerEvent *e)
-{
-	unsigned int sB = console()->socket()->sentBytes();
-	unsigned int rB = console()->socket()->readBytes();
 	int sDiff = (sB - m_uLastSentBytes) / 8;
 	int rDiff = (rB - m_uLastRecvBytes) / 32;
-//	debug("s:%d,r:%d",sDiff,rDiff);
-	if(sDiff < 0)sDiff = 0;
-	else if(sDiff > 30)sDiff = 30;
-	if(rDiff < 0)rDiff = 0;
-	else if(rDiff > 30)rDiff = 30;
+
+	if(sDiff < 0)
+		sDiff = 0;
+	else if(sDiff > 30)
+		sDiff = 30;
+	if(rDiff < 0)
+		rDiff = 0;
+	else if(rDiff > 30)
+		rDiff = 30;
 	m_uLastSentBytes = sB;
 	m_uLastRecvBytes = rB;
 	m_sendRates[m_iNextPoint] = sDiff;
 	m_recvRates[m_iNextPoint] = rDiff;
 	m_iNextPoint++;
-	if(m_iNextPoint >= KVI_IOGRAPH_NUMBER_POINTS)m_iNextPoint = 0;
+	if(m_iNextPoint >= KVI_IOGRAPH_NUMBER_POINTS)
+		m_iNextPoint = 0;
 	update();
 }
 
-static QCOORD horizSegments[6 * 4]=
+void KviIOGraphWidget::paintEvent(QPaintEvent * e)
 {
-	5 , 3  , KVI_IRCTOOLBARAPPLET_MAXIMUM_WIDTH - 4 , 3  ,
-	5 , 8  , KVI_IRCTOOLBARAPPLET_MAXIMUM_WIDTH - 4 , 8  ,
-	5 , 13 , KVI_IRCTOOLBARAPPLET_MAXIMUM_WIDTH - 4 , 13 ,
-	5 , 18 , KVI_IRCTOOLBARAPPLET_MAXIMUM_WIDTH - 4 , 18 ,
-	5 , 23 , KVI_IRCTOOLBARAPPLET_MAXIMUM_WIDTH - 4 , 23 ,
-	5 , 28 , KVI_IRCTOOLBARAPPLET_MAXIMUM_WIDTH - 4 , 28
-};
+	QPainter p(this);
 
-static QCOORD vertSegments[29 * 4]=
-{
-	 9   , 4  , 9   , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 14  , 4  , 14  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 19  , 4  , 19  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 24  , 4  , 24  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 29  , 4  , 29  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 34  , 4  , 34  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 39  , 4  , 39  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 44  , 4  , 44  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 49  , 4  , 49  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 54  , 4  , 54  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 59  , 4  , 59  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 64  , 4  , 64  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 69  , 4  , 69  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 74  , 4  , 74  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 79  , 4  , 79  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 84  , 4  , 84  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 89  , 4  , 89  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 94  , 4  , 94  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 99  , 4  , 99  , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 104 , 4  , 104 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 109 , 4  , 109 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 114 , 4  , 114 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 119 , 4  , 119 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 124 , 4  , 124 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 129 , 4  , 129 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 134 , 4  , 134 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 139 , 4  , 139 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 144 , 4  , 144 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 ,
-	 149 , 4  , 149 , KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5 
-};
+	p.fillRect(e->rect(), QColor("#000000"));
 
-void KviIOGraphDisplay::drawContents(QPainter * p)
-{
-	static QPointArray hp(6 * 4,horizSegments);
-	static QPointArray vp(29 * 4,vertSegments);
+	p.setRenderHint(QPainter::Antialiasing);
+	p.setPen(QColor("#c0c0c0"));
 
-	p->setPen(KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletForegroundLowContrast));
-	p->drawLineSegments(hp,0,6);
-	p->drawLineSegments(vp,0,29);
-	p->setPen(KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletForegroundMidContrast));
+	int c=0;
+	int sw = e->rect().width() / KVI_IOGRAPH_HORIZ_SEGMENTS;
+	int sh = e->rect().height() / KVI_IOGRAPH_VERT_SEGMENTS;
 
-	p->drawLine(4,33,KVI_IRCTOOLBARAPPLET_MAXIMUM_WIDTH - 4,33);
-	p->drawLine(4,3,4,KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT - 5);
+	for(int i=0;i<KVI_IOGRAPH_HORIZ_SEGMENTS;i++)
+	{
+		p.drawLine(0, c, e->rect().width(), c);
+		c+=sw;
+	}
 
-	p->setPen(isActiveContext() ?
-			KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletForegroundHighContrastActive1) : 
-			KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletForegroundHighContrastInactive1));
+	c=0;
+	for(int i=0;i<KVI_IOGRAPH_VERT_SEGMENTS;i++)
+	{
+		p.drawLine(c, 0, c, e->rect().height());
+		c+=sh;
+	}
+// 	p.setPen(QColor("#c0c0c0"));
 
 	// the first point to draw is "m_iNextPoint"
-	// it will be drawn at X = 4
 
 	int leftPart = KVI_IOGRAPH_NUMBER_POINTS - m_iNextPoint;
 
 	int i;
 
-	if(m_bShowSentGraph)
+	p.setPen(QColor("#FF0000"));
+	for(i = 1;i < leftPart;i++)
 	{
-		for(i = 1;i < leftPart;i++)
-		{
-			p->drawLine(3 + i,33 - m_sendRates[m_iNextPoint + i - 1],4 + i,33 - m_sendRates[m_iNextPoint + i]);
-		}
-	
-		p->drawLine(3 + i,33 - m_sendRates[m_iNextPoint + i - 1],4 + i,33 - m_sendRates[0]);
-	
-		for(i = 1;i < m_iNextPoint;i++)
-		{
-			p->drawLine(leftPart + 3 + i,33 - m_sendRates[i - 1],leftPart + 4 + i,33 - m_sendRates[i]);
-		}
+		p.drawLine(i * sw,33 - m_sendRates[m_iNextPoint + i - 1],i * sw,33 - m_sendRates[m_iNextPoint + i]);
 	}
 
-	if(m_bShowRecvGraph)
-	{
-		p->setPen(isActiveContext() ?
-				KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletForegroundHighContrastActive2) : 
-				KVI_OPTION_COLOR(KviOption_colorIrcToolBarAppletForegroundHighContrastInactive2));
-	
-		for(i = 1;i < leftPart;i++)
-		{
-			p->drawLine(3 + i,33 - m_recvRates[m_iNextPoint + i - 1],4 + i,33 - m_recvRates[m_iNextPoint + i]);
-		}
-	
-		p->drawLine(3 + i,33 - m_recvRates[m_iNextPoint + i - 1],4 + i,33 - m_recvRates[0]);
+	p.drawLine(i * sw,33 - m_sendRates[m_iNextPoint + i - 1],i * sw,33 - m_sendRates[0]);
 
-		for(i = 1;i < m_iNextPoint;i++)
-		{
-			p->drawLine(leftPart + 3 + i,33 - m_recvRates[i - 1],leftPart + 4 + i,33 - m_recvRates[i]);
-		}
+	for(i = 1;i < m_iNextPoint;i++)
+	{
+		p.drawLine(leftPart + i * sw,33 - m_sendRates[i - 1],leftPart + i * sw,33 - m_sendRates[i]);
+	}
+
+	p.setPen(QColor("#0000FF"));
+
+	for(i = 1;i < leftPart;i++)
+	{
+		p.drawLine(i * sw,33 - m_recvRates[m_iNextPoint + i - 1],i * sw,33 - m_recvRates[m_iNextPoint + i]);
+	}
+
+	p.drawLine(i * sw,33 - m_recvRates[m_iNextPoint + i - 1],i * sw,33 - m_recvRates[0]);
+
+	for(i = 1;i < m_iNextPoint;i++)
+	{
+		p.drawLine(leftPart + i * sw,33 - m_recvRates[i - 1],leftPart + i * sw,33 - m_recvRates[i]);
 	}
 }
-
-QSize KviIOGraphDisplay::sizeHint() const
-{
-	return QSize(KVI_IRCTOOLBARAPPLET_MAXIMUM_WIDTH,KVI_IRCTOOLBARAPPLET_MAXIMUM_HEIGHT);
-}
-
 
 /*
-	@doc: iograph.add
+	@doc: iograph.open
 	@type:
 		command
 	@title:
-		iograph.add
+		iograph.open
 	@short:
-		Adds an IOGraph applet
-	@syntax:
-		iograph.add [-i] [-o]
+		Opens the IOGraph chart
 	@description:
-		Adds an IOGraph applet to the current irc-context toolbar. It will
+		Opens the IOGraph chart. It will
 		monitor the Incoming and Outgoing socket traffic.[br]
-		Since both graphs often are somewhat unreadable,
-		the -i switch will cause the IOGraph applet to show only
-		the incoming traffic, and the -o switch will cause it to show
-		only the outgoing traffic.[br]
-		Well...I agree...this is an amazing misuse of resources :)
 */
 
-
-
-static bool iograph_module_cmd_add(KviModule *m,KviCommand *c)
+static bool iograph_module_cmd_open(KviKvsModuleCommandCall * c)
 {
-	ENTER_STACK_FRAME(c,"iograph_module_cmd_add");
+	KviModuleExtensionDescriptor * d = c->module()->findExtensionDescriptor("tool",IOGRAPH_MODULE_EXTENSION_NAME);
 
-	KviStr dummy;
-	if(!g_pUserParser->parseCmdFinalPart(c,dummy))return false;
+	if(d)
+	{
+		KviPointerHashTable<QString,QVariant> dict(17,true);
+		dict.setAutoDelete(true);
+		QString dummy;
+		dict.replace("bCreateMinimized",new QVariant(c->hasSwitch('m',dummy)));
+		dict.replace("bNoRaise",new QVariant(c->hasSwitch('n',dummy)));
 
-	if(!c->window()->console())return c->noIrcContext();
-
-	bool bSentGraph = !(c->hasSwitch('i'));
-	bool bRecvGraph = !(c->hasSwitch('o'));
-
-	if(!(bSentGraph || bRecvGraph))bRecvGraph = true;
-
-	KviIOGraphDisplay * dpy = new KviIOGraphDisplay(c->window()->console()->icController(),bSentGraph,bRecvGraph);
-	c->window()->console()->icController()->addApplet(dpy);
-	dpy->show();
-
-	return c->leaveStackFrame();
+		d->allocate(c->window(),&dict,0);
+	} else {
+		c->warning(__tr("Ops.. internal error"));
+	}
+	return true;
 }
-#endif
+
+static KviModuleExtension * iograph_extension_alloc(KviModuleExtensionAllocStruct * s)
+{
+	bool bCreateMinimized = false;
+	bool bNoRaise = false;
+
+	if(!g_pIOGraphWindow)
+	{
+		if(s->pParams)
+		{
+			if(QVariant * v = s->pParams->find("bCreateMinimized"))
+			{
+				if(v->isValid())
+				{
+					if(v->type() == QVariant::Bool)
+					{
+						bCreateMinimized = v->toBool();
+					}
+				}
+			}
+		}
+
+		g_pIOGraphWindow = new KviIOGraphWindow(s->pDescriptor,g_pFrame,"IOGraph Window");
+		g_pFrame->addWindow(g_pIOGraphWindow,!bCreateMinimized);
+
+		if(bCreateMinimized)g_pIOGraphWindow->minimize();
+		return g_pIOGraphWindow;
+	}
+
+	if(s->pParams)
+	{
+		if(QVariant * v = s->pParams->find("bNoRaise"))
+		{
+			if(v)
+			{
+				if(v->isValid() && v->type() == QVariant::Bool)
+					bNoRaise = v->toBool();
+			}
+		}
+	}
+
+	if(!bNoRaise)
+		g_pIOGraphWindow->delayedAutoRaise();
+	return g_pIOGraphWindow;
+}
 
 static bool iograph_module_init(KviModule *m)
 {
-#if 0
-	g_pIOGraphWidgetList = new KviPointerList<KviIOGraphDisplay>;
-	g_pIOGraphWidgetList->setAutoDelete(false);
-	m->registerCommand("add",iograph_module_cmd_add);
-#endif
+	g_pIOGraphWindow = 0;
+
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",iograph_module_cmd_open);
+
+	KviModuleExtensionDescriptor * d = m->registerExtension("tool",
+							IOGRAPH_MODULE_EXTENSION_NAME,
+							__tr2qs_ctx("Show I/O &Traffic graph","iograph"),
+							iograph_extension_alloc);
+
+	if(d)d->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYICON)));
+
 	return true;
 }
 
 static bool iograph_module_cleanup(KviModule *m)
 {
-#if 0
-	while(g_pIOGraphWidgetList->first())
+	if(g_pIOGraphWindow)
 	{
-		KviIOGraphDisplay * dpy = g_pIOGraphWidgetList->first();
-		dpy->controller()->removeApplet(dpy); // deleted path
+		delete g_pIOGraphWindow;
+		g_pIOGraphWindow = 0;
 	}
-	delete g_pIOGraphWidgetList;
-#endif
 	return true;
 }
 
 static bool iograph_module_can_unload(KviModule *m)
 {
-#if 0
-	return g_pIOGraphWidgetList->isEmpty();
-#else
-	return true;
-#endif
+	return (!g_pIOGraphWindow);
 }
 
 KVIRC_MODULE(
 	"IOGraph",                                              // module name
 	"4.0.0",                                                // module version
-	"Copyright (C) 2000 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
+	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"IRC socket traffic monitor",
 	iograph_module_init,
 	iograph_module_can_unload,
@@ -293,6 +311,6 @@ KVIRC_MODULE(
 	iograph_module_cleanup
 )
 
-#if 0
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "libkviiograph.moc"
-#endif
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
