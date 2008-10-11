@@ -16,7 +16,6 @@ SET(kviobjects_MOC_HDRS
 	class_http.h
 	class_lineedit.h
 	class_listwidget.h
-	class_memorybuffer.h
 	class_multilineedit.h
 	class_painter.h
 	class_pixmap.h
