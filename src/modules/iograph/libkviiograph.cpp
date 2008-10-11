@@ -87,18 +87,22 @@ void KviIOGraphWindow::die()
 KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
 : QWidget(par)
 {
-	for(int i=0;i < KVI_IOGRAPH_NUMBER_POINTS;i++)
-	{
-		m_sendRates[i] = 0;
-		m_recvRates[i] = 0;
-	}
-	m_iNextPoint = 1;
-	m_uLastSentBytes = g_uOutgoingTraffic;
-	m_uLastRecvBytes = g_uIncomingTraffic;
+	m_maxSendRate = m_uLastSentBytes = g_uOutgoingTraffic;
+	m_maxRecvRate = m_uLastRecvBytes = g_uIncomingTraffic;
 
-	QString tip(__tr("Outgoing traffic"));
-	tip.append("\n");
+	if(m_maxSendRate < 1)
+		m_maxSendRate = 1;
+	if(m_maxRecvRate < 1)
+		m_maxRecvRate = 1;
+
+	m_sendRates.prepend(0);
+	m_recvRates.prepend(0);
+
+	QString tip("<font color=\"#FF0000\">");
+	tip.append(__tr("Outgoing traffic"));
+	tip.append("</font><br/><font color=\"#0000FF\">");
 	tip.append(__tr("Incoming traffic"));
+	tip.append("</font>");
 
 	this->setToolTip(tip);
 
@@ -110,24 +114,25 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *e)
 	kvi_u64_t sB = g_uOutgoingTraffic;
 	kvi_u64_t rB = g_uIncomingTraffic;
 
-	int sDiff = (sB - m_uLastSentBytes) / 8;
-	int rDiff = (rB - m_uLastRecvBytes) / 32;
+	unsigned int sDiff = (sB - m_uLastSentBytes) / KVI_IOGRAPH_HORIZ_SEGMENTS;
+	unsigned int rDiff = (rB - m_uLastRecvBytes) / KVI_IOGRAPH_HORIZ_SEGMENTS;
 
-	if(sDiff < 0)
-		sDiff = 0;
-	else if(sDiff > 30)
-		sDiff = 30;
-	if(rDiff < 0)
-		rDiff = 0;
-	else if(rDiff > 30)
-		rDiff = 30;
+	if(sDiff > m_maxSendRate)
+		m_maxSendRate = sDiff;
+	if(rDiff > m_maxRecvRate)
+		m_maxRecvRate = rDiff;
+
 	m_uLastSentBytes = sB;
 	m_uLastRecvBytes = rB;
-	m_sendRates[m_iNextPoint] = sDiff;
-	m_recvRates[m_iNextPoint] = rDiff;
-	m_iNextPoint++;
-	if(m_iNextPoint >= KVI_IOGRAPH_NUMBER_POINTS)
-		m_iNextPoint = 0;
+
+	
+	m_sendRates.prepend(sDiff);
+// 	if(m_sendRates.count()>KVI_IOGRAPH_NUMBER_POINTS)
+// 		m_sendRates.removeLast();
+	m_recvRates.prepend(rDiff);
+// 	if(m_recvRates.count()>KVI_IOGRAPH_NUMBER_POINTS)
+// 		m_recvRates.removeLast();
+
 	update();
 }
 
@@ -141,55 +146,58 @@ void KviIOGraphWidget::paintEvent(QPaintEvent * e)
 	p.setPen(QColor("#c0c0c0"));
 
 	int c=0;
-	int sw = e->rect().width() / KVI_IOGRAPH_HORIZ_SEGMENTS;
-	int sh = e->rect().height() / KVI_IOGRAPH_VERT_SEGMENTS;
+	int sw = width() / KVI_IOGRAPH_HORIZ_SEGMENTS;
+	int sh = height() / KVI_IOGRAPH_VERT_SEGMENTS;
 
 	for(int i=0;i<KVI_IOGRAPH_HORIZ_SEGMENTS;i++)
 	{
-		p.drawLine(0, c, e->rect().width(), c);
-		c+=sw;
+		p.drawLine(0, c, width(), c);
+		c+=sh;
 	}
 
 	c=0;
 	for(int i=0;i<KVI_IOGRAPH_VERT_SEGMENTS;i++)
 	{
-		p.drawLine(c, 0, c, e->rect().height());
-		c+=sh;
+		p.drawLine(c, 0, c, height());
+		c+=sw;
 	}
-// 	p.setPen(QColor("#c0c0c0"));
 
-	// the first point to draw is "m_iNextPoint"
+	QPainterPath sP, rP;
+	int wStep=width()/KVI_IOGRAPH_NUMBER_POINTS;
 
-	int leftPart = KVI_IOGRAPH_NUMBER_POINTS - m_iNextPoint;
+	if(m_sendRates.count())
+	{
+		sP.moveTo(QPoint(width(), height() - (height() * m_sendRates.first() / m_maxSendRate)));
+	} else {
+		sP.moveTo(QPoint(width(), height()));
+	}
 
-	int i;
+	c=wStep;
+	for(int i = 1;(i <= KVI_IOGRAPH_NUMBER_POINTS) and (i < m_sendRates.count());i++)
+	{
+		sP.lineTo(QPoint(width()- c, height() - (height() * m_sendRates.at(i) / m_maxSendRate)));
+		c+=wStep;
+	}
+
+	if(m_recvRates.count())
+	{
+		rP.moveTo(QPoint(width(), height() - (height() * m_recvRates.first() / m_maxRecvRate)));
+	} else {
+		rP.moveTo(QPoint(width(), height()));
+	}
+
+	c=wStep;
+	for(int i = 1;(i <= KVI_IOGRAPH_NUMBER_POINTS) and (i < m_recvRates.count());i++)
+	{
+		rP.lineTo(width()-c,  height() - (height() * m_recvRates.at(i) / m_maxRecvRate));
+		c+=wStep;
+	}
 
 	p.setPen(QColor("#FF0000"));
-	for(i = 1;i < leftPart;i++)
-	{
-		p.drawLine(i * sw,33 - m_sendRates[m_iNextPoint + i - 1],i * sw,33 - m_sendRates[m_iNextPoint + i]);
-	}
-
-	p.drawLine(i * sw,33 - m_sendRates[m_iNextPoint + i - 1],i * sw,33 - m_sendRates[0]);
-
-	for(i = 1;i < m_iNextPoint;i++)
-	{
-		p.drawLine(leftPart + i * sw,33 - m_sendRates[i - 1],leftPart + i * sw,33 - m_sendRates[i]);
-	}
+	p.drawPath(sP);
 
 	p.setPen(QColor("#0000FF"));
-
-	for(i = 1;i < leftPart;i++)
-	{
-		p.drawLine(i * sw,33 - m_recvRates[m_iNextPoint + i - 1],i * sw,33 - m_recvRates[m_iNextPoint + i]);
-	}
-
-	p.drawLine(i * sw,33 - m_recvRates[m_iNextPoint + i - 1],i * sw,33 - m_recvRates[0]);
-
-	for(i = 1;i < m_iNextPoint;i++)
-	{
-		p.drawLine(leftPart + i * sw,33 - m_recvRates[i - 1],leftPart + i * sw,33 - m_recvRates[i]);
-	}
+	p.drawPath(rP);
 }
 
 /*

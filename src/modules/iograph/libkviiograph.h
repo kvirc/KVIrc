@@ -24,16 +24,16 @@
 //
 //=============================================================================
 
-#include <QSplitter>
+#include <QQueue>
 
 #include "kvi_frame.h"
 #include "kvi_inttypes.h"
 #include "kvi_moduleextension.h"
 #include "kvi_window.h"
 
-#define KVI_IOGRAPH_NUMBER_POINTS 148
-#define KVI_IOGRAPH_HORIZ_SEGMENTS 6
-#define KVI_IOGRAPH_VERT_SEGMENTS 29
+#define KVI_IOGRAPH_NUMBER_POINTS 10
+#define KVI_IOGRAPH_HORIZ_SEGMENTS 10
+#define KVI_IOGRAPH_VERT_SEGMENTS 10
 #define IOGRAPH_MODULE_EXTENSION_NAME "IO graph extension"
 
 class KviIOGraphWidget : public QWidget
@@ -43,9 +43,10 @@ public:
 	KviIOGraphWidget(QWidget *parent);
 	~KviIOGraphWidget() {};
 protected:
-	unsigned int m_sendRates[KVI_IOGRAPH_NUMBER_POINTS];
-	unsigned int m_recvRates[KVI_IOGRAPH_NUMBER_POINTS];
-	int m_iNextPoint;
+	QQueue<unsigned int> m_sendRates;
+	QQueue<unsigned int> m_recvRates;
+	unsigned int m_maxSendRate;
+	unsigned int m_maxRecvRate;
 	kvi_u64_t m_uLastSentBytes;
 	kvi_u64_t m_uLastRecvBytes;
 protected:
