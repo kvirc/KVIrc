@@ -520,18 +520,16 @@ void KviMdiChild::unsetClient()
 	setFocusProxy(0); //remove the focus proxy...
 	//Kewl...the reparent function has a small prob now..
 	//the new toplelvel widgets gets not reenabled for dnd
-#ifndef COMPILE_ON_MAC
-	//m_pClient->reparent(0,m_pClient->mapToGlobal(QPoint(0,0)),true);
+#ifdef COMPILE_ON_MAC
+	QRect r = g_pApp->desktop()->availableGeometry(m_pClient);
+	r.translate(0, 22);
+	m_pClient->setParent(0, m_pClient->windowFlags() & ~Qt::WindowType_Mask);
+	m_pClient->setGeometry(r.topLeft().x(),r.topLeft().y(),m_pClient->width(),m_pClient->height());
+	m_pClient->show();
+#else
 	QPoint p=m_pClient->mapToGlobal(QPoint(0,0));
 	m_pClient->setParent(0, m_pClient->windowFlags() & ~Qt::WindowType_Mask);
 	m_pClient->setGeometry(p.x(),p.y(),m_pClient->width(),m_pClient->height());
-	m_pClient->show();
-#else
-	QRect r = g_pApp->desktop()->availableGeometry(m_pClient);
-	r.moveBy(0, 22);
-	m_pClient->reparent(0,r.topLeft(),true);
-	m_pClient->setParent(0, m_pClient->windowFlags() & ~Qt::WindowType_Mask);
-	m_pClient->setGeometry(r.topLeft().x(),r.topLeft().y(),m_pClient->width(),m_pClient->height());
 	m_pClient->show();
 #endif
 	m_pClient=0;
