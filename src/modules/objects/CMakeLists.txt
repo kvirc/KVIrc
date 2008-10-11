@@ -16,6 +16,7 @@ SET(kviobjects_MOC_HDRS
 	class_http.h
 	class_lineedit.h
 	class_listwidget.h
+	class_memorybuffer.h
 	class_multilineedit.h
 	class_painter.h
 	class_pixmap.h
@@ -58,6 +59,7 @@ SET(kviobjects_SRCS
 	class_list.cpp
 	class_listwidget.cpp
 	class_mainwindow.cpp
+	class_memorybuffer.cpp
 	class_menubar.cpp
 	class_multilineedit.cpp
 	class_painter.cpp
