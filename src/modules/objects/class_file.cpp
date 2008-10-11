@@ -410,7 +410,7 @@ KVSO_CLASS_FUNCTION(file,read)
 		if(KviQString::equalCI(szType, "String"))
 		{
 			QString szStr;
-			m_pFile->load((QString)szStr);
+			m_pFile->load(szStr);
 			c->returnValue()->setString(szStr);
 		}
 		else if(KviQString::equalCI(szType, "Integer"))
