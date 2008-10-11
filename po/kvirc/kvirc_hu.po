@@ -5,12 +5,13 @@
 # Ádám Fibinger <vfiber@interware.hu>, 2006, 2007, 2008.
 # Ádám Fibinger <vfiber@gmail.com>, 2007.
 # Ádám Péter Fibinger <vfiber@gmail.com>, 2008.
+# Fibinger Zsuzsa Petra <petrazsuzsa@gmail.com>, 2008.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_hu\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-04 15:05+0200\n"
-"PO-Revision-Date: 2008-07-13 20:44+0200\n"
+"PO-Revision-Date: 2008-10-11 14:55+0200\n"
 "Last-Translator: Ádám Péter Fibinger <vfiber@gmail.com>\n"
 "Language-Team: Hungarian <hu@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -575,7 +576,7 @@ msgstr "CTCP Page - KVIrc"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/ui/kvi_ctcppagedialog.cpp:109
 msgid "You have been paged by"
-msgstr ""
+msgstr "Megcsipogtatott: "
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/ui/kvi_maskeditor.cpp:75
 msgid "Mask editor - KVirc"
@@ -721,8 +722,7 @@ msgid "Crypt: Can't initialize the engine :%s"
 msgstr "Titkosítás: Nem tudom inicializálni: %s"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/ui/kvi_cryptcontroller.cpp:302
-msgid ""
-"Crypt: You have to enable encryption and/or decryption for the engine to work"
+msgid "Crypt: You have to enable encryption and/or decryption for the engine to work"
 msgstr ""
 "Titkosítás: Engedélyezned vagy tiltanod kell a titkosítást, hogy az "
 "működésbe lépjen"
@@ -826,8 +826,7 @@ msgid "Unable to look it up hostname: Unknown host"
 msgstr "Hosztnév felderítése sikertelen, ismeretlen hoszt"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/ui/kvi_ircview.cpp:4961
-msgid ""
-"Double-click to look up this hostname<br>Right-click to view other options"
+msgid "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr "Dupla kattintás: felderítés <br>Jobb kattintás: egyéb opciók"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/ui/kvi_ircview.cpp:4984
@@ -1754,8 +1753,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_object.cpp:954
-msgid ""
-"Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
+msgid "Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_object.cpp:1109
@@ -1810,12 +1808,16 @@ msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
 "that type (expecting \"%s\")"
 msgstr ""
+"A tulajdonság típusa %s, de a kapott argumentumot nem lehet átkonvertálni erre "
+"a típusra. Az alábbi típusra van szükség: \"%s\" ."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_object.cpp:1400
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
 msgstr ""
+"Egy pixmap objektum, egy kép_azonosító vagy egy képfile útvonala "
+"szükséges ehhez a tulajdonsághoz."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_object.cpp:1421
 msgid "Can't find the requested image"
@@ -1823,24 +1825,27 @@ msgstr "A kért kép nem található"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_object.cpp:1427
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_object.cpp:1581
+#, fuzzy
 msgid ""
 "Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data "
 "type"
-msgstr ""
+msgstr "A \"%Q\" tulajdonságú \"%Q\" nevű objektum, amely a %Q osztályba tartozik, nem támogatott típus."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_object.cpp:1728
 msgid "Cannot find object function $%Q for object named \"%Q\" of class %Q"
-msgstr ""
+msgstr "Nem található a(z) $%Q függvény, amely a(z) \"%Q\" nevű objektumhoz tartozik a(z) %Q osztályból."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_object.cpp:1730
 msgid "Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q"
-msgstr ""
+msgstr "Nem található a(z) $%Q::%Q függvény, amely a(z) \"%Q\" nevű objektumhoz tartozik a(z) %Q osztályból."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_object.cpp:1738
 msgid ""
 "Cannot call internal object function $%Q (for object named \"%Q\" of class %"
 "Q) from this context"
 msgstr ""
+"Nem hívható a(z) $%Q belső(?) objektum függvénye (\"%Q\" nevű objektum "
+"a(z) %Q osztályból) ebben a környezetben."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_command.cpp:69
 msgid "Stray dot ('.') character or invalid following module command name"
@@ -1870,7 +1875,7 @@ msgstr "Szintaktikai hiba: deformált (alias?) parancs azonosító"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_command.cpp:280
 msgid "Unknown callback command \"%Q\""
-msgstr ""
+msgstr "Ismeretlen callback parancs: \"%Q\""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:465
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/chan/libkvichan.cpp:44
@@ -1881,7 +1886,7 @@ msgstr "Az aktuális ablak nem csatorna"
 msgid ""
 "Timer name omitted but there is not current timer (this is not a timer "
 "callback)"
-msgstr ""
+msgstr "Elmaradt időzítő név, de nincs futó időzítő (ez nem egy időzítő callback)."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:538
 msgid "Can't kill the timer '%Q' since it is not running"
@@ -1893,7 +1898,7 @@ msgstr "Aktív időzítők listája"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:637
 msgid "Persistent"
-msgstr ""
+msgstr "Állandó"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:640
 msgid "WindowLifetime"
@@ -1922,38 +1927,41 @@ msgstr "'%q' karakter van, ahol (unicode %x) '/' per jel szükséges"
 msgid ""
 "Unexpected end of command in binding operation, at least two slashes are "
 "missing"
-msgstr ""
+msgstr "Parancs nem várt vége az összekötő operátoroknál, legalább két perjel hiányzik."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:866
-msgid ""
-"Unexpected end of command in binding operation, at least one slash is missing"
-msgstr ""
+msgid "Unexpected end of command in binding operation, at least one slash is missing"
+msgstr "Parancs nem várt vége az összekötő operátoroknál, legalább egy perjel hiányzik."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:906
 msgid "Unknown binding operation '%Q'"
-msgstr ""
+msgstr "Ismeretlen összekötő operátor: '%Q'"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:927
 msgid "Missing right side operand for the binding operator '=~'"
-msgstr ""
+msgstr "Az operandus jobb oldala hiányzik, ahol az összekötő operátor '=~'."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:949
+#, fuzzy
 msgid "Trailing garbage ignored after operator '++'"
-msgstr ""
+msgstr "Soremelés kihagyva a '++' operátor után."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:961
 msgid "Missing right operand for operator '+='"
 msgstr "Hiányzó jobb operandus '+=' operátornál"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:980
+#, fuzzy
 msgid "Trailing garbage ignored after operator '--'"
-msgstr ""
+msgstr "Soremelés kihagyva a '--' operátor után."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:987
 msgid ""
 "This looks a lot like an object handle dereferencing operator '->' but in "
 "fact it isn't. Maybe you forgot a '$' just after ?"
 msgstr ""
+"Ez teljesen úgy néz ki, mint egy objektumkezelő hivatkozási operátor ('->'), "
+"de nem az. Lehet, hogy elfelejtetted utána a '$'-t?"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:995
 msgid "Missing right operand for operator '-='"
@@ -2004,13 +2012,15 @@ msgstr "Szintaktikai hiba: Korábbi hibák zavarosak: kidőlés"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1161
 msgid "Unexpected end of script after a variable reference: expected operator"
-msgstr ""
+msgstr "Script nem várt vége a változóhivatkozás után, operátor hiányzik"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1177
 msgid ""
 "Unexpected character '%q' (unicode %x) after a void function call: end of "
 "instruction expected"
 msgstr ""
+"Nem várt karakter ('%q', unicode: %x) void függvényhívás után az utasítás "
+"lezárására számítva"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1180
 msgid "Unexpected character '%q' (unicode %x)"
@@ -2034,7 +2044,7 @@ msgstr "Nincs meghatározva művelet ehhez a címtípushoz (%Q)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:512
 msgid "Option setting error: Unknown option or invalid value for option type"
-msgstr ""
+msgstr "Opció beállítási hiba: ismeretlen opció, vagy nem megfelelő érték az opció típusánál."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:606
 msgid "Choose a file to parse"
@@ -2062,8 +2072,7 @@ msgstr "Modul parancs hívási hiba: 'snd' modul nem tölthető be"
 msgid ""
 "Module command call failed: the module 'snd' doesn't export a command named "
 "'play'"
-msgstr ""
-"Modul parancs hívása sikertelen: az 'snd' nem exportált 'play' nevű parancsot"
+msgstr "Modul parancs hívása sikertelen: az 'snd' nem exportált 'play' nevű parancsot"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:864
 msgid "Popup %Q is not defined"
@@ -2089,8 +2098,9 @@ msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1239
+#, fuzzy
 msgid "Window with id %Q not found: no rebinding performed"
-msgstr ""
+msgstr "A %Q azonosítójú ablak nem található: nem visszakapcsolt(?) szerepel."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1332
 msgid "Failed to execute command '%Q'"
@@ -2111,8 +2121,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:262
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:903
-msgid ""
-"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr "':' karater az alias nevében: úgy érted: <névtér>::<név> ?"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:268
@@ -2162,8 +2171,7 @@ msgstr "%Q -nak nincs kezelője %Q eseményre"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:936
 msgid "The specified ping time is invalid: assuming zero (no ping)"
-msgstr ""
-"A meghatározott ping idő érvénytelen: feltételezem, hogy 0 (nincs ping)"
+msgstr "A meghatározott ping idő érvénytelen: feltételezem, hogy 0 (nincs ping)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:946
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
@@ -2237,8 +2245,7 @@ msgid "Say parse error: Broken command"
 msgstr "Say értelmezési hiba: Hibás parancs"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:250
-msgid ""
-"Couldn't find a suitable IRC context for the connection, try using -n or -u"
+msgid "Couldn't find a suitable IRC context for the connection, try using -n or -u"
 msgstr ""
 "Nem található megfelelő IRC környezet a kapcsolathoz, próbáld -n vagy -u "
 "kapcsolóval"
@@ -2272,40 +2279,42 @@ msgid "The catalogue %Q was not loaded"
 msgstr "%Q csomag nincs betöltve"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:80
+#, fuzzy
 msgid ""
 "Empty window identifier specified in the standard rebinding switch: no "
 "rebinding performed"
-msgstr ""
+msgstr "Üres ablakazonosító az általános visszakötő(?) kapcsolóban: nem visszakötő(?) szerepel."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:91
+#, fuzzy
 msgid ""
 "Invalid window specified in the standard rebinding switch: no rebinding "
 "performed"
-msgstr ""
+msgstr "Nem megfelelő ablak az általános visszakötő(?) kapcsolóban: nem visszakötő(?) szerepel."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:94
-msgid ""
-"The left side of the scope operator didn't evaluate as an object reference"
-msgstr ""
+msgid "The left side of the scope operator didn't evaluate as an object reference"
+msgstr "A hivatkozó operátor bal oldala nem értékelhető ki objektumhivatkozásként"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:100
-msgid ""
-"The left side of the scope operator evaluated to a null object reference"
-msgstr ""
+msgid "The left side of the scope operator evaluated to a null object reference"
+msgstr "A hivatkozó operátor bal oldala null objektumhivatkozást ereményez"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:107
 msgid ""
 "The left side of the scope operator evaluated to an invalid object reference "
 "(object doesn't exist)"
 msgstr ""
+"A hivatkozó operátor bal oldala nem megfelelő objektumhivatkozást "
+"ereményezett (az objektum nem létezik)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_arrayreferenceassert.cpp:77
 msgid "Array reference assert failed: the variable evaluated to type '%Q'"
-msgstr ""
+msgstr "A tömbre való hivatkozás meghiusult: a változó végeredménye '%Q' típusú"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:247
 msgid "Operand of unary operator didn't evaluate to a number"
-msgstr ""
+msgstr "Az egy értékű (unáris) operátor nem eredményezett számot"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:415
 msgid "Left operand didn't evaluate to a number"
@@ -2351,20 +2360,23 @@ msgid "Hash key evaluated to empty string: fix the script"
 msgstr "Hash kulcs nullára kiértékelve: javítsd a szkriptet"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:99
+#, fuzzy
 msgid ""
 "The argument of the {} subscript didn't evaluate to a hash: automatic "
 "conversion from type '%Q' supplied"
-msgstr ""
+msgstr "A {} alscript argumentumai nem eredményeztek hasht: automatikus konvertálás '%Q' típusból. (?)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:144
+#, fuzzy
 msgid ""
 "The argument of the {} subscript didn't evaluate to a hash automatic "
 "conversion from %Q supplied"
-msgstr ""
+msgstr "A {} alscript argumentumai nem eredményeztek hasht: automatikus konvertálás '%Q'-ból. (?)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_hashreferenceassert.cpp:77
+#, fuzzy
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
-msgstr ""
+msgstr "Hash hivatkozás meghiusult: a változó végeredménye '%Q' típus."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:100
 msgid "Failed to send an unknown command as /raw"
@@ -2376,8 +2388,9 @@ msgid "Call to undefined command '%Q'"
 msgstr "Ismeretlen parancs: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:116
+#, fuzzy
 msgid "Error in inner alias command call '%Q', called from this context"
-msgstr ""
+msgstr "Hiba a belső aliasban '%Q' parancs hívásakor, ebből a környezetből."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:56
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:74
@@ -2390,33 +2403,41 @@ msgid "Missing class name"
 msgstr "Hiányzó osztály név"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:120
+#, fuzzy
 msgid "A class can't be a subclass of itself"
-msgstr ""
+msgstr "Az osztály nem lehet önmaga belső(?) osztálya."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:127
+#, fuzzy
 msgid "Couln't find base class named \"%Q\""
-msgstr ""
+msgstr "Nem található \"%Q\" nevű ősosztály."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:137
+#, fuzzy
 msgid ""
 "Detected a loop in the inheritance tree of the base class \"%Q\": redefine "
 "that class first"
-msgstr ""
+msgstr "Kör az ősosztály(\"%Q\") származtatási gráfjában: definiáld újra az első osztályt."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:146
+#, fuzzy
 msgid "Can't override the builtin class \"%Q\""
-msgstr ""
+msgstr "Nem túlterhelhető a \"%Q\" beépített osztály."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:70
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:71
+#, fuzzy
 msgid "Module command call failed: can't load the module '%Q': %Q"
-msgstr ""
+msgstr "Modulparancs hívás sikertelen: nem tölthető be a '%Q': %Q modul."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:77
+#, fuzzy
 msgid ""
 "Module command call failed: the module '%Q' doesn't export a command named '%"
 "Q'"
 msgstr ""
+"Modulparancs hívása sikertelen: a '%Q' modul nem expotrtálta a '%"
+"Q' nevű parancsot."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:113
 msgid "Broken condition in menu setup: assuming false"
@@ -2461,8 +2482,9 @@ msgid ""
 msgstr "Modul funkció hívása sikertelen: a %Q modul nem exportált %Q funkciót"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_timermanager.cpp:244
+#, fuzzy
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
-msgstr ""
+msgstr "'%Q' nevű időzítő visszahívó kezelője nem működik: állítsd le az időzítőt."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:167
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:229
@@ -2550,59 +2572,70 @@ msgid "The left side of operator '^=' didn't evaluate to an integer"
 msgstr "Az operátor bal oldala '^=' nem értékelhető ki egész számként"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:1462
+#, fuzzy
 msgid ""
 "The regular expression matched a zero-length substring: this is not valid in "
 "the s/// operator, skipping"
-msgstr ""
+msgstr "A reguláris kifejezés megegyezik a nulla hosszúságú alstringgel: nem megfelelő az s/// operátor, kihagyás."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:52
+#, fuzzy
 msgid "Unexpected end of script after '$' function call prefix"
-msgstr ""
+msgstr "Script nem várt vége a '$' prefix függvény hívása után."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:53
+#, fuzzy
 msgid "Unexpected character %q (unicode %x) after '$' function call prefix"
-msgstr ""
+msgstr "Nem várt %q (unicode-ja %x) karakter a prefix '$' függvényhívás után."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:54
+#, fuzzy
 msgid ""
 "Syntax error after '$' function call prefix. If you want to use a plain '$' "
 "in the code you need to escape it"
-msgstr ""
+msgstr "Szintaktikai hiba a prefix '$' függvényhívás után: ha akarod, használhatod a sima '$'-t a kódban, ha kilépésre(?) van szükséged."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:63
+#, fuzzy
 msgid "Invalid expression evaluation in object scope"
-msgstr ""
+msgstr "Nem megfelelő kifejezés az objektumhivatkozásban."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:78
+#, fuzzy
 msgid "Invalid command evaluation in object scope"
-msgstr ""
+msgstr "Nem megfelelő parancs az objektumhivatkozásban."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:87
+#, fuzzy
 msgid "Empty instruction block for command evaluation"
-msgstr ""
+msgstr "Üres utasításblokk parancsvégrehajtáshoz."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:101
-msgid ""
-"Parameter identifiers are forbidden in object scope (after the '->' operator)"
-msgstr ""
+#, fuzzy
+msgid "Parameter identifiers are forbidden in object scope (after the '->' operator)"
+msgstr "Paraméter azonosítók hiányoznak az objektumhivatkozásban (a '->' operátor után)."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:147
+#, fuzzy
 msgid ""
 "Ending index of a multiple parameter identifier is lower or equal to the "
 "starting index. This will evaluate to a single parameter identifier."
-msgstr ""
+msgstr "Az összetett paraméter azonosítók utolsó indexe kisebb vagy egyenlő a kezdő indexszel. Ez egyszerű paraméter azonosítót eredményez. "
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:163
+#, fuzzy
 msgid "Syntax error: invalid $$ ($this) function call in object scope"
-msgstr ""
+msgstr "Szintaktikai hiba: nem megfelelő $$ ($this) függvényhívás az objektumhivatkozásban."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:189
+#, fuzzy
 msgid "Syntax error: malformed alias function call identifier"
-msgstr ""
+msgstr "Szintaktikai hiba: deformálódott alias függvényhívó azonosító."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:197
+#, fuzzy
 msgid "Syntax error: malformed (alias?) function call identifier"
-msgstr ""
+msgstr "Szintaktikai hiba: deformálódott (alias?) függvényhívó azonosító."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:114
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:231
@@ -2618,8 +2651,9 @@ msgid "found empty string where type '%s' was expected"
 msgstr "üres sztringet találtam ahol '%s'-t vártam"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:129
+#, fuzzy
 msgid "found string value \"%Q\" where type '%s' was expected"
-msgstr ""
+msgstr "\"%Q\" értékű string, ahol '%s' típus kell."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:134
 msgid "found type %Q where type '%s' was expected"
@@ -2658,53 +2692,58 @@ msgid "This window is not associated to an IRC context"
 msgstr "Ez az ablak nincs hozzárendelve IRC környezethez"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:811
+#, fuzzy
 msgid ""
 "The specified format string wasn't accepted by the underlying system time "
 "formatting function"
-msgstr ""
+msgstr "A megadott alakú stringet nem fogadta el az alapul szolgáló rendszeridő formázó függvény."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_comment.cpp:70
 msgid "Unterminated c-style multiline comment"
 msgstr "Befejezetlen c-típusú többsoros komment"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_comment.cpp:71
+#, fuzzy
 msgid "Unexpected end of script in multiline comment"
-msgstr ""
+msgstr "Script nem várt vége a többsoros megjegyzésben."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_comment.cpp:88
+#, fuzzy
 msgid ""
 "Unexpected character '%q' (unicode %x) after a slash (it is a typo or a "
 "malformed comment begin ?)"
-msgstr ""
+msgstr "Nem várt '%q' (unicode-ja %x) karakter a perjel után (hiba vagy deformált megjegyzés kezdete lenne?)."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:71
 msgid "Call to undefined function '%Q'"
 msgstr "Ismeretlen függvény hívása: (%Q)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:79
+#, fuzzy
 msgid "Error in inner alias function call '%Q', called from this context"
-msgstr ""
+msgstr "Hiba a belső alias '%Q' függvény hívásánál, ebből a környezetből hívva."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:73
 msgid "Array index didn't evaluate to an integer"
 msgstr "Tömb index nem értelmezhető egész számként"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:79
-msgid ""
-"Array index evaluated to a negative integer (non negative integer expected)"
+msgid "Array index evaluated to a negative integer (non negative integer expected)"
 msgstr "Az index negatív számként értelmezhető (nem negatív szükséges)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:106
+#, fuzzy
 msgid ""
 "The argument of the [] subscript didn't evaluate to an array: automatic "
 "conversion from %Q supplied"
-msgstr ""
+msgstr "A [] alscript argumenumai nem eredményeztek tömböt: automatikus konvertálás a %Q-ból."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:142
+#, fuzzy
 msgid ""
 "The argument of the [] subscript didn't evaluate to an array: automatic "
 "conversion from type '%Q' supplied"
-msgstr ""
+msgstr "A [] alscript argumenumai nem eredményeztek tömböt: automatikus konvertálás a %Q típusból."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:219
 msgid "Lag meter was not enabled"
@@ -2719,13 +2758,14 @@ msgid "This is not a channel"
 msgstr "Ez nem egy csatorna"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:99
-msgid ""
-"Unexpected end of command buffer while looking for the \"perl.end\" statement"
-msgstr ""
+#, fuzzy
+msgid "Unexpected end of command buffer while looking for the \"perl.end\" statement"
+msgstr "Parancs buffer nem várt vége, amíg \"perl.end\" kifejezést keres."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:147
+#, fuzzy
 msgid "Trailing garbage at the end of the break command: ignored"
-msgstr ""
+msgstr "Sorvégejel figyelmen kívül hagyva a break parancs végén."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:209
 msgid "The 'unset' command needs a variable list"
@@ -2774,8 +2814,7 @@ msgstr "A 'while' parancsnak szüksége van zárójelezett kifejezésre"
 msgid ""
 "The last while command in the buffer has no conditional instructions: it's "
 "senseless"
-msgstr ""
-"Az utolsó while parancsnak a bufferben nincsenek utasításai: értelmetlen"
+msgstr "Az utolsó while parancsnak a bufferben nincsenek utasításai: értelmetlen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:655
 msgid ""
@@ -2794,10 +2833,11 @@ msgid "Found character %q (unicode %x) where a 'while' keyword was expected"
 msgstr "%q karakter (unicode %x) ahol egy kulcsszó szükséges"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:759
+#, fuzzy
 msgid ""
 "The 'while' block of the 'do' command needs an expression enclosed in "
 "parenthesis"
-msgstr ""
+msgstr "A do blokk while parancsának szüksége van egy kifejezésre, hogy kiléphessen."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:779
 msgid "Garbage string after the expression in 'do' command: ignored"
@@ -2877,8 +2917,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1244
-msgid ""
-"Found empty 'foreach' execution block: maybe you need to fix your script ?"
+msgid "Found empty 'foreach' execution block: maybe you need to fix your script ?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1365
@@ -2945,8 +2984,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1777
-msgid ""
-"Found empty instruction for popup item: maybe you need to fix the script?"
+msgid "Found empty instruction for popup item: maybe you need to fix the script?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1809
@@ -3123,8 +3161,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:91
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:104
-msgid ""
-"Internal error: trying to evaluate as read-write a read-only data location"
+msgid "Internal error: trying to evaluate as read-write a read-only data location"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:98
@@ -3208,8 +3245,7 @@ msgid "Inexisting popup \"%Q\""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:698
-msgid ""
-"Popup menu self-modification is not allowed (the popup is probably open)"
+msgid "Popup menu self-modification is not allowed (the popup is probably open)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:705
@@ -3225,8 +3261,7 @@ msgstr ""
 "használata"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:869
-msgid ""
-"The argument of the i switch did not evaluate to a number: using default"
+msgid "The argument of the i switch did not evaluate to a number: using default"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:981
@@ -3377,8 +3412,7 @@ msgstr ""
 "s)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_ctcp.cpp:1678
-msgid ""
-": No valid local copy of avatar available; flood limit exceeded, ignoring"
+msgid ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
 ": Nincs érvényes helyi másolata az avatarnak, árasztási küszöb meghaladva, "
 "mellőzés"
@@ -3402,16 +3436,14 @@ msgstr "DCC válasz: %Q kérés: \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s)"
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_ctcp.cpp:1784
 #, c-format
 msgid "Unable to process the above request: Cannot load DCC module (%s)"
-msgstr ""
-"Fenti kérés teljesítése sikertelen. DCC modul (%s) betöltése sikertelen"
+msgstr "Fenti kérés teljesítése sikertelen. DCC modul (%s) betöltése sikertelen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_ctcp.cpp:1790
 msgid "Unable to process the above request: DCC module may be broken"
 msgstr "Fenti kérés teljesítése sikertelen. DCC modul valószínűleg megsérült."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sparser.cpp:132
-msgid ""
-"[Server parser]: Encountered problems while parsing the following message:"
+msgid "[Server parser]: Encountered problems while parsing the following message:"
 msgstr "[Értelmező]: A következő üzenek feldolgozásakor hibák léptek fel:"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sparser.cpp:134
@@ -3447,8 +3479,7 @@ msgstr ""
 "szinkron hiba"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:311
-msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
+msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
 msgstr ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] csatlakozott: \r!c\r%Q\r [implicit +%c umode "
 "change]"
@@ -3459,13 +3490,11 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] csatlakozott a(z) \r!c\r%Q\r csatornára."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:330
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
-msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] épp most csatlakozott \r!c\r%Q\r csatornára."
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] épp most csatlakozott \r!c\r%Q\r csatornára."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:361
 msgid "Received a part message for an unknown channel, possible desync"
-msgstr ""
-"Ismeretlen csatornáról lelépő üzenetet kaptam, valószínűleg szinkron hiba"
+msgstr "Ismeretlen csatornáról lelépő üzenetet kaptam, valószínűleg szinkron hiba"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:390
 msgid "You have left channel \r!c\r%Q\r"
@@ -3485,8 +3514,7 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] lelépett a(z) \r!c\r%Q\r csatornáról."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:426
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
-msgstr ""
-"\r!nc\r%Q\r [%Q@\r!h\r%Q\r] épp most lépett le \r!c\r%Q\r csatornáról: %Q "
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] épp most lépett le \r!c\r%Q\r csatornáról: %Q "
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:430
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
@@ -3537,18 +3565,15 @@ msgstr ""
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
-msgstr ""
-"A következő üzenet titkosított, de a titkosító képtelen volt dekódolni: %Q"
+msgstr "A következő üzenet titkosított, de a titkosító képtelen volt dekódolni: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:782
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "PRIVMSG mellőzve \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:849
-msgid ""
-"Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
-msgstr ""
-"Privát spam üzenet: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam-szó \"%s\")"
+msgid "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
+msgstr "Privát spam üzenet: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam-szó \"%s\")"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:987
 msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
@@ -3573,20 +3598,16 @@ msgstr ""
 "beállításokban"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1216
-msgid ""
-"Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
-msgstr ""
-"Spam éretesítés: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam szó \"%Q\")"
+msgid "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
+msgstr "Spam éretesítés: \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (egyező spam szó \"%Q\")"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1394
 msgid "Received a topic message for an unknown channel, possible desync"
-msgstr ""
-"Ismeretlen csatorna topik üzenetét kaptam meg, valószínűleg szinkron hiba"
+msgstr "Ismeretlen csatorna topik üzenetét kaptam meg, valószínűleg szinkron hiba"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1413
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
-msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] megváltoztatta a csatorna topicját: \"%Q%c\""
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] megváltoztatta a csatorna topicját: \"%Q%c\""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1446
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_literal.cpp:1492
@@ -3726,8 +3747,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_numeric.cpp:244
 msgid "This server supports the WATCH notify list method, it will be used"
-msgstr ""
-"Ez a szerver támogatja a WATCH értesítési metódust, ezt fogom használni"
+msgstr "Ez a szerver támogatja a WATCH értesítési metódust, ezt fogom használni"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/sparser/kvi_sp_numeric.cpp:262
 msgid "The current network is %Q"
@@ -4085,8 +4105,7 @@ msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr "[Kapcsolat Figyelmeztetető]: Socket üzenet csonkolva 512 bytera."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircconnection.cpp:640
-msgid ""
-"The server seems to support the WATCH notify list method, will try to use it"
+msgid "The server seems to support the WATCH notify list method, will try to use it"
 msgstr "A szerver támogatja a WATCH értesítési metódust, megpróbálom használni"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircconnection.cpp:688
@@ -4097,8 +4116,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircconnection.cpp:695
 msgid "Can't resolve local host address, using default 127.0.0.1"
-msgstr ""
-"Helyi cím visszafejtése sikertelen, alapértelmezés használata: 127.0.0.1"
+msgstr "Helyi cím visszafejtése sikertelen, alapértelmezés használata: 127.0.0.1"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircconnection.cpp:701
 msgid "Local host address is %Q"
@@ -4447,8 +4465,7 @@ msgstr "[%s]: [SSL]: %s hitelesítő fájl használata"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_sslmaster.cpp:116
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
 msgstr "[%s]: [SSL HIBA]: File I/O hiba a %s hitelesítés használatakor"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_sslmaster.cpp:123
@@ -4464,8 +4481,7 @@ msgstr "[%s]: [SSL]: Privát kulcs használata: %s"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_sslmaster.cpp:139
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
 msgstr "[%s]: [SSL HIBA]: File I/O hiba magán kulcs használatakor: %s"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_irccontext.cpp:375
@@ -4481,8 +4497,7 @@ msgstr ""
 "alkalmazása"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_irccontext.cpp:485
-msgid ""
-"No servers available. Check the options dialog or use the /SERVER command"
+msgid "No servers available. Check the options dialog or use the /SERVER command"
 msgstr ""
 "Nincsenek elérhető szerverek. Ellenőrízd a beállításokban vagy használd a /"
 "SERVER parancsot"
@@ -5166,8 +5181,7 @@ msgstr "Előjel nélküli egész opciók (előjel nélküli egész konstans)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_options.cpp:1222
 msgid "Font options (family,pointsize,style,charset,weight,flags (biusf))"
-msgstr ""
-"Font opciók (family, pontméret,stílus,karakterkészlet,szélesség (biusf))"
+msgstr "Font opciók (family, pontméret,stílus,karakterkészlet,szélesség (biusf))"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_options.cpp:1223
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
@@ -5355,8 +5369,7 @@ msgstr "A megadott kapcsoló cím (%Q) nem érvényes"
 msgid ""
 "The specified bind address (%Q) is not valid (the interface it refers to "
 "might be down)"
-msgstr ""
-"A megadott cím (%Q) érvénytelen (a kapcsolódó eszköz valószínűleg nem él)"
+msgstr "A megadott cím (%Q) érvénytelen (a kapcsolódó eszköz valószínűleg nem él)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:493
 #, c-format
@@ -5368,8 +5381,7 @@ msgstr "Rendszer oldali IPv6 kapcsoló cím (%s) érvénytelen"
 msgid ""
 "The system-wide IPv6 bind address (%s) is not valid (the interface it refers "
 "to might be down)"
-msgstr ""
-"A rendszer oldali IPv6 cím (%s) nem érvényes (az eszköz valószínűleg nem él)"
+msgstr "A rendszer oldali IPv6 cím (%s) nem érvényes (az eszköz valószínűleg nem él)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:522
 #, c-format
@@ -5706,8 +5718,7 @@ msgstr "Azonosítás nem szükséges, nincs azonosítás"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:785
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
-msgstr ""
-"Azonosítás nem szükséges, nincs azonosítás vagy 2 (felhasználónév/jelszó)"
+msgstr "Azonosítás nem szükséges, nincs azonosítás vagy 2 (felhasználónév/jelszó)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:964
 msgid "Proxy response: auth OK: access granted"
@@ -5719,8 +5730,7 @@ msgstr "Proxy válasz: Azonosítás rendben, 0. metódus (nincs azonosítás)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1006
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
-msgstr ""
-"Proxy válasz: Azonosítási metódus rendben, 2. metódus (felhasználónév/jelszó)"
+msgstr "Proxy válasz: Azonosítási metódus rendben, 2. metódus (felhasználónév/jelszó)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1062
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_ircsocket.cpp:1119
@@ -5804,8 +5814,7 @@ msgstr "Regisztrált felhasználók kezelése..."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:140
 msgid "Shows a dialog that allows editing the registered user entries"
-msgstr ""
-"Párbeszédablak, mely lehetővé teszi a regisztrált felhasználók szerkesztését"
+msgstr "Párbeszédablak, mely lehetővé teszi a regisztrált felhasználók szerkesztését"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:150
 msgid "Configure Identity..."
@@ -6029,8 +6038,7 @@ msgid "Connect/Disconnect"
 msgstr "Kapcsolódás / Kapcsolat lezárása"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:555
-msgid ""
-"Allows you to connect to a server or to terminate the current connection"
+msgid "Allows you to connect to a server or to terminate the current connection"
 msgstr "Kapcsolódás a szerverhez vagy az aktuális kapcsolat bontása"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_coreactions.cpp:628
@@ -6301,8 +6309,7 @@ msgstr "Értesítési lista: userhost ellenőrzése: %Q"
 msgid ""
 "Notify list: Hey! You've used USERHOST behind my back? (I might be confused "
 "now...)"
-msgstr ""
-"Értesítési lista: Hé, USERHOST-ot használtál nélkülem? (összezavarodtam...)"
+msgstr "Értesítési lista: Hé, USERHOST-ot használtál nélkülem? (összezavarodtam...)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:836
 #, c-format
@@ -6330,8 +6337,7 @@ msgstr "Értesítési lista: %Q ellenőrzése"
 msgid ""
 "Notify list: Timeout (%d sec) is too short, resetting to something more "
 "reasonable (5 sec)"
-msgstr ""
-"Értesítési lista: Időtúllépés (%d mp) túl rövid, átállítás 5 másodpercre"
+msgstr "Értesítési lista: Időtúllépés (%d mp) túl rövid, átállítás 5 másodpercre"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1126
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1139
@@ -6349,8 +6355,7 @@ msgstr "lehetséges figyelési lista aszinkron"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1185
 msgid "registration mask changed or desync with the watch service"
-msgstr ""
-"regisztrációs maszk megváltozott vagy aszinkron a figyelő szolgáltatásban"
+msgstr "regisztrációs maszk megváltozott vagy aszinkron a figyelő szolgáltatásban"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/kernel/kvi_notifylist.cpp:1190
 msgid ""
@@ -6419,10 +6424,8 @@ msgid "This module has no version informations: refusing to load it"
 msgstr "A megadott modulnak nincs verziószáma, betöltés visszautasítva"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/module/kvi_modulemanager.cpp:204
-msgid ""
-"This module was compiled for a different KVIrc version and can't be loaded"
-msgstr ""
-"Ez a modul más KVIrc verzióhoz lett lefordítva, nem lehetséges a betöltése"
+msgid "This module was compiled for a different KVIrc version and can't be loaded"
+msgstr "Ez a modul más KVIrc verzióhoz lett lefordítva, nem lehetséges a betöltése"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvirc/module/kvi_modulemanager.cpp:232
 msgid "Failed to execute the init routine"
@@ -6449,8 +6452,7 @@ msgstr "Nincs ilyen IRC környezet (%d)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/my/libkvimy.cpp:147
 msgid "Global idle timer must be started before using $my.globalIdle function"
-msgstr ""
-"Globális tétlenségi stoppert a $my.globalide függvény előtt kell meghívni"
+msgstr "Globális tétlenségi stoppert a $my.globalide függvény előtt kell meghívni"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/log/libkvilog.cpp:103
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/log/libkvilog.cpp:162
@@ -6510,10 +6512,8 @@ msgid "%Q algorytm is not supported"
 msgstr "%Q algoritmus nem támogatott"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/str/libkvistr.cpp:1566
-msgid ""
-"KVIrc is compiled without OpenSSL support. $str.digest function disabled"
-msgstr ""
-"KVIrc OpenSSL támogatás nélkül lett lefordítva. $str.digest függvény letiltva"
+msgid "KVIrc is compiled without OpenSSL support. $str.digest function disabled"
+msgstr "KVIrc OpenSSL támogatás nélkül lett lefordítva. $str.digest függvény letiltva"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/str/libkvistr.cpp:2030
 msgid "Invalid argument for ?d escape sequence, 0 assumed"
@@ -7289,10 +7289,8 @@ msgstr ""
 "tartalmazhatnak"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:972
-msgid ""
-"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr ""
-"Elkóborolt ':' karakter a névtér nevében, úgy érted: ...<namespace>::<name> ?"
+msgid "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
+msgstr "Elkóborolt ':' karakter a névtér nevében, úgy érted: ...<namespace>::<name> ?"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/aliaseditor/aliaseditor.cpp:983
 msgid "Found an empty namespace in namespace name"
@@ -7687,8 +7685,7 @@ msgstr "%Q nem nyitható meg írásra."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/dialog.cpp:776
 msgid "Can't export the registered users database: Write error."
-msgstr ""
-"Nem lehet exportálni a regisztrált felhasználói adatbázist: Írási hiba."
+msgstr "Nem lehet exportálni a regisztrált felhasználói adatbázist: Írási hiba."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/dialog.cpp:797
 #, c-format
@@ -7707,8 +7704,7 @@ msgstr "A %s fájl érvénytelen felhasználói adatbázis verzió."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/dialog.cpp:896
 msgid "Can't import the registered users database: Read error."
-msgstr ""
-"Nem lehet importálni a regisztrált felhasználói adatbázist: Olvasási hiba."
+msgstr "Nem lehet importálni a regisztrált felhasználói adatbázist: Olvasási hiba."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/reguser/wizard.cpp:78
 msgid "User Registration Wizard - KVIrc"
@@ -7997,8 +7993,7 @@ msgstr "A megadott KVIrc verzió \"%Q\" nem érvényes verzió sztring"
 msgid ""
 "This KVIrc executable is too old to run this addon (minimum version required "
 "is %Q)"
-msgstr ""
-"A KVIrc ezen verziója túl régi az addon futtatásához (szükséges legalább: %Q)"
+msgstr "A KVIrc ezen verziója túl régi az addon futtatásához (szükséges legalább: %Q)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/addon/libkviaddon.cpp:553
 msgid "Attempting to register addon \"%Q\" with version %Q"
@@ -8193,8 +8188,7 @@ msgstr "Kapcsolatok vége jel."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/links/linkswindow.cpp:235
 #, c-format
-msgid ""
-"Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"
+msgid "Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"
 msgstr "Hibás kapcsolat: hiányzó szülő (%s) %s (%d hop): %s ( /LINKS <mask> ?)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/links/linkswindow.cpp:238
@@ -8411,8 +8405,7 @@ msgstr ""
 "tulajdonságokban."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:348
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr "Ez a mező opcionális és csak a CTCP USERINFO válaszban tűnik fel"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/setup/setupwizard.cpp:353
@@ -8865,8 +8858,7 @@ msgstr ""
 "\" és \" <b>q</b>\" kombinációjában."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/action/libkviaction.cpp:420
-msgid ""
-"The action \"%1\" is already defined as core action and cannot be overridden"
+msgid "The action \"%1\" is already defined as core action and cannot be overridden"
 msgstr "A(z) \"%1\" akció már definiálva van, mint mag akció, nem felülírható"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/filetransferwindow/libkvifiletransferwindow.cpp:116
@@ -8905,8 +8897,7 @@ msgstr "Nem lehet beállítani az aktuális avatart, (%Q) http átvitel sikertel
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/avatar/libkviavatar.cpp:249
 msgid "Can't set the current avatar to '%Q': can't load the image"
-msgstr ""
-"Nem lehet beállítani az aktuális avatart, (%Q) képet betöltés sikertlen"
+msgstr "Nem lehet beállítani az aktuális avatart, (%Q) képet betöltés sikertlen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/avatar/libkviavatar.cpp:351
 msgid "Invalid timeout specified, using default"
@@ -8914,8 +8905,7 @@ msgstr "Helytelen megadott időtúllépés, alapértelmezett használata"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/avatar/libkviavatar.cpp:389
 msgid "Can't add a file offer for file %Q (huh ? file not readable ?)"
-msgstr ""
-"Nem tudom felajánlani elküldésre a %Q fájlt (uhh? a fájl nem olvasható?)"
+msgstr "Nem tudom felajánlani elküldésre a %Q fájlt (uhh? a fájl nem olvasható?)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/avatar/libkviavatar.cpp:396
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
@@ -9268,8 +9258,7 @@ msgid "Pixmap object required"
 msgstr "Pixmap objektum szükséges"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1027
-msgid ""
-"$setGeometry() requires either an array as first parameter or four integers"
+msgid "$setGeometry() requires either an array as first parameter or four integers"
 msgstr "$setGeometry() paraméterként igényel egy tömböt vagy négy egész számot"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_widget.cpp:1105
@@ -9605,10 +9594,8 @@ msgid "Can't start the DNS thread"
 msgstr "DNS szál indítása sikertelen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_socket.cpp:1143
-msgid ""
-"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
-msgstr ""
-"Túl sok beérkező feldolgozatlan adat (talán a socket nem lett lekezelve?)"
+msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgstr "Túl sok beérkező feldolgozatlan adat (talán a socket nem lett lekezelve?)"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/objects/class_xmlreader.cpp:151
 msgid "Error in KVS class implementation: processing aborted"
@@ -10115,8 +10102,7 @@ msgid "This plugin does not export the desired function."
 msgstr "Ebben a pluginben nem áll rendelkezésre a kívánt funkció."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/system/plugin.cpp:327
-msgid ""
-"The plugin has no function to free memory. This can result in Memory Leaks!"
+msgid "The plugin has no function to free memory. This can result in Memory Leaks!"
 msgstr ""
 "A pluginnak nincs memóriafelszabadító funkciója. Ez memória lyukakat "
 "eredményezhet!"
@@ -10146,8 +10132,7 @@ msgstr "DCOP hívás sikertelen"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/system/libkvisystem.cpp:599
 msgid "DCOP calls are available only when KDE support is compiled in"
-msgstr ""
-"DCOP hívások csak akkor elérhetőek, ha a KDE támogatás be lett fordítva"
+msgstr "DCOP hívások csak akkor elérhetőek, ha a KDE támogatás be lett fordítva"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/window/libkviwindow.cpp:78
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/window/libkviwindow.cpp:1143
@@ -10365,7 +10350,7 @@ msgid ""
 "Ctrl+C\" ..."
 msgstr ""
 "Opcionális billentyűleütés, ami aktiválja az akciót.<br>A billentyűsor "
-"lehetegy 4 kulcsú vesszővel elválasztott szöveg kombinálva a módosítókkal "
+"lehet egy 4 kulcsú, vesszővel elválasztott szöveg, kombinálva a módosítókkal "
 "\"Ctrl\",\"Shift\",\"Alt\" és \"Meta\".<br>Ilyen kombinációk például a \"Ctrl"
 "+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
@@ -10441,8 +10426,7 @@ msgstr "Csak ha van kijelölve felhasználó"
 msgid ""
 "This will enable the action only if there are selected users in the active "
 "window"
-msgstr ""
-"Engedélyezett, ha több kiválasztott felhasználó is van az aktív ablakban"
+msgstr "Engedélyezett, ha több kiválasztott felhasználó is van az aktív ablakban"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/modules/actioneditor/actioneditor.cpp:282
 msgid "Enable in Channel Windows"
@@ -10989,8 +10973,7 @@ msgstr "Proxy válasza: azonosítás sikertelen, hozzáférés megtagadva"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/core/kvi_error.cpp:121
 msgid "Proxy response: No acceptable auth method: request rejected"
-msgstr ""
-"Proxy válasza: Nincs elfogadható azonosítási eljárás, kérés visszautasítva"
+msgstr "Proxy válasza: Nincs elfogadható azonosítási eljárás, kérés visszautasítva"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/src/kvilib/core/kvi_error.cpp:122
 msgid "Proxy response: request failed"
@@ -11690,8 +11673,7 @@ msgstr "Az alapértelmezett szkriptek sikeresen telepítve lettek."
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/data/defscript/default.kvs:34
 msgid "To connect to a server, type /server <server name>"
-msgstr ""
-"Hogy kapcsolódj egy szerverhez, használd a /server <szerver neve> parancsot"
+msgstr "Hogy kapcsolódj egy szerverhez, használd a /server <szerver neve> parancsot"
 
 #: /home/hellvis69/kvircsvn/branches/kvirc/3.4/data/defscript/default.kvs:36
 msgid "Happy ircing :)"
@@ -12186,8 +12168,3 @@ msgstr ""
 "[Telepítő] Az első argumentumnak \\%installer->\\$includefiles forrás "
 "könyvtárnak kell lennie"
 
-#~ msgid "Notify list: Checking for:%Q"
-#~ msgstr "Értesítési lista: %Q ellenőrzése"
-
-#~ msgid "Doesn't a widget object"
-#~ msgstr "Nem widget objektum"
