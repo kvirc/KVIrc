@@ -30,31 +30,32 @@
 #include "kvi_error.h"
 #include "kvi_file.h"
 #include "kvi_fileutils.h"
+#include "class_memorybuffer.h"
 
 #include <QStringList>
 //#include <QFile>
 #include <QTextStream>
 
 // needed for $open()
-const char * const mod_tbl[] = {
-	"Raw",
-	"ReadOnly",
-	"WriteOnly",
-	"ReadWrite",
-	"Append",
-	"Truncate"
-};
+const char * const mod_tbl[] =	{
+					"Raw",
+					"ReadOnly",
+					"WriteOnly",
+					"ReadWrite",
+					"Append",
+					"Truncate"
+				  };
 
 const QIODevice::OpenMode mod_cod[] = {
-	QIODevice::Unbuffered,
-	QIODevice::ReadOnly,
-	QIODevice::WriteOnly,
-	QIODevice::ReadWrite,
-	QIODevice::Append,
-	QIODevice::Truncate
-};
+				QIODevice::Unbuffered,
+				QIODevice::ReadOnly,
+				QIODevice::WriteOnly,
+				QIODevice::ReadWrite,
+				QIODevice::Append,
+				QIODevice::Truncate
+			};
 
-#define mod_num		(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
+#define mod_num			(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
 
 /*
 	@doc:	file
@@ -379,8 +380,7 @@ KVSO_CLASS_FUNCTION(file,readBlock)
 				return true;
 			}
 			//m_pFile->flush();
-			// FIXME
-			//((KviKvsObject_memorybuffer *)pObject)->pBuffer()->append(m_pFile->read(uLen));
+			((KviKvsObject_memorybuffer *)pObject)->pBuffer()->append(m_pFile->read(uLen));
 			return true;
 		}
 		else
@@ -410,7 +410,7 @@ KVSO_CLASS_FUNCTION(file,read)
 		if(KviQString::equalCI(szType, "String"))
 		{
 			QString szStr;
-			m_pFile->load(szStr);
+			m_pFile->load((QString)szStr);
 			c->returnValue()->setString(szStr);
 		}
 		else if(KviQString::equalCI(szType, "Integer"))
@@ -503,24 +503,17 @@ KVSO_CLASS_FUNCTION(file,writeBlock)
 			{
 				if (!uLen)
 				{
-					/*
-					FIXME
 					if (((KviKvsObject_memorybuffer *)pObject)->pBuffer()->size())
 						uLen=((KviKvsObject_memorybuffer *)pObject)->pBuffer()->size();
 					else
 					{
 						c->warning(__tr2qs("The memoryBuffer object is empty: nothing will be saved"));
 					}
-					*/
 				}
-
-				/*
-				FIXME
 				const char *pData=((KviKvsObject_memorybuffer *)pObject)->pBuffer()->data();
 				int rlen=m_pFile->write(pData,uLen);
 				c->returnValue()->setInteger(rlen);
 				//m_pFile->flush();
-				*/
 			}
 			else
 			{

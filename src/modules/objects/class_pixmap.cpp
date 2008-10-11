@@ -24,6 +24,7 @@
 //=============================================================================
 
 #include "class_pixmap.h"
+#include "class_memorybuffer.h"
 
 #include "kvi_debug.h"
 #include "kvi_locale.h"
@@ -223,8 +224,7 @@ bool KviKvsObject_pixmap::functionloadFromMemoryBuffer(KviKvsObjectFunctionCall 
 		return true;
 	}
 
-	// FIXME
-	//m_pPixmap->loadFromData(((KviKvsObject_memorybuffer *)pObject)->dataBuffer());
+	m_pPixmap->loadFromData(((KviKvsObject_memorybuffer *)pObject)->dataBuffer());
 
 	bPixmapModified=true;
 
