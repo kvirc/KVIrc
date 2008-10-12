@@ -173,7 +173,7 @@ void KviIOGraphWidget::paintEvent(QPaintEvent * e)
 	}
 
 	c=wStep;
-	for(int i = 1;(i <= KVI_IOGRAPH_NUMBER_POINTS) and (i < m_sendRates.count());i++)
+	for(int i = 1;(i <= KVI_IOGRAPH_NUMBER_POINTS) && (i < m_sendRates.count());i++)
 	{
 		sP.lineTo(QPoint(width()- c, height() - (height() * m_sendRates.at(i) / m_maxSendRate)));
 		c+=wStep;
@@ -187,7 +187,7 @@ void KviIOGraphWidget::paintEvent(QPaintEvent * e)
 	}
 
 	c=wStep;
-	for(int i = 1;(i <= KVI_IOGRAPH_NUMBER_POINTS) and (i < m_recvRates.count());i++)
+	for(int i = 1;(i <= KVI_IOGRAPH_NUMBER_POINTS) && (i < m_recvRates.count());i++)
 	{
 		rP.lineTo(width()-c,  height() - (height() * m_recvRates.at(i) / m_maxRecvRate));
 		c+=wStep;
