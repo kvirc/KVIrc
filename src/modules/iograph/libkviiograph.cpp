@@ -87,13 +87,13 @@ void KviIOGraphWindow::die()
 KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
 : QWidget(par)
 {
-	m_maxSendRate = m_uLastSentBytes = g_uOutgoingTraffic;
-	m_maxRecvRate = m_uLastRecvBytes = g_uIncomingTraffic;
+	m_uLastSentBytes = g_uOutgoingTraffic;
+	m_uLastRecvBytes = g_uIncomingTraffic;
 
-	if(m_maxSendRate < 1)
-		m_maxSendRate = 1;
-	if(m_maxRecvRate < 1)
-		m_maxRecvRate = 1;
+	m_maxRate = qMax(m_uLastSentBytes, m_uLastRecvBytes);
+
+	if(m_maxRate < 1)
+		m_maxRate = 1;
 
 	m_sendRates.prepend(0);
 	m_recvRates.prepend(0);
@@ -117,21 +117,21 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *e)
 	unsigned int sDiff = (sB - m_uLastSentBytes) / KVI_IOGRAPH_HORIZ_SEGMENTS;
 	unsigned int rDiff = (rB - m_uLastRecvBytes) / KVI_IOGRAPH_HORIZ_SEGMENTS;
 
-	if(sDiff > m_maxSendRate)
-		m_maxSendRate = sDiff;
-	if(rDiff > m_maxRecvRate)
-		m_maxRecvRate = rDiff;
+	if(sDiff > m_maxRate)
+		m_maxRate = sDiff;
+	if(rDiff > m_maxRate)
+		m_maxRate = rDiff;
 
 	m_uLastSentBytes = sB;
 	m_uLastRecvBytes = rB;
 
 	
 	m_sendRates.prepend(sDiff);
-// 	if(m_sendRates.count()>KVI_IOGRAPH_NUMBER_POINTS)
-// 		m_sendRates.removeLast();
+	if(m_sendRates.count()>(KVI_IOGRAPH_NUMBER_POINTS+1))
+		m_sendRates.removeLast();
 	m_recvRates.prepend(rDiff);
-// 	if(m_recvRates.count()>KVI_IOGRAPH_NUMBER_POINTS)
-// 		m_recvRates.removeLast();
+	if(m_recvRates.count()>(KVI_IOGRAPH_NUMBER_POINTS+1))
+		m_recvRates.removeLast();
 
 	update();
 }
@@ -145,59 +145,61 @@ void KviIOGraphWidget::paintEvent(QPaintEvent * e)
 	p.setRenderHint(QPainter::Antialiasing);
 	p.setPen(QColor("#c0c0c0"));
 
-	int c=0;
-	int sw = width() / KVI_IOGRAPH_HORIZ_SEGMENTS;
-	int sh = height() / KVI_IOGRAPH_VERT_SEGMENTS;
+	float c = 1.0;
+	float sw = (width() - 2.0) / KVI_IOGRAPH_VERT_SEGMENTS;
+	float sh = (height() - 2.0) / KVI_IOGRAPH_HORIZ_SEGMENTS;
 
-	for(int i=0;i<KVI_IOGRAPH_HORIZ_SEGMENTS;i++)
+	for(int i=0;i<=KVI_IOGRAPH_HORIZ_SEGMENTS;i++)
 	{
 		p.drawLine(0, c, width(), c);
+		if(i>0 and i < KVI_IOGRAPH_HORIZ_SEGMENTS)
+			p.drawText(2,c,KviQString::makeSizeReadable(m_maxRate / i));
 		c+=sh;
 	}
 
-	c=0;
-	for(int i=0;i<KVI_IOGRAPH_VERT_SEGMENTS;i++)
+	c=1;
+	for(int i=0;i<=KVI_IOGRAPH_VERT_SEGMENTS;i++)
 	{
 		p.drawLine(c, 0, c, height());
 		c+=sw;
 	}
 
 	QPainterPath sP, rP;
-	int wStep=width()/KVI_IOGRAPH_NUMBER_POINTS;
+	float wStep=(width() - 2.0) / KVI_IOGRAPH_NUMBER_POINTS;
 
 	if(m_sendRates.count())
 	{
-		sP.moveTo(QPoint(width(), height() - (height() * m_sendRates.first() / m_maxSendRate)));
+		sP.moveTo(QPointF(width(), height() - (height() * m_sendRates.first() / m_maxRate)));
 	} else {
-		sP.moveTo(QPoint(width(), height()));
+		sP.moveTo(QPointF(width(), height()));
 	}
 
-	c=wStep;
-	for(int i = 1;(i <= KVI_IOGRAPH_NUMBER_POINTS) && (i < m_sendRates.count());i++)
+	c = 1.0 + wStep;
+	for(int i = 1;(i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_sendRates.count());i++)
 	{
-		sP.lineTo(QPoint(width()- c, height() - (height() * m_sendRates.at(i) / m_maxSendRate)));
+		sP.lineTo(QPointF(width()- c, height() - (height() * m_sendRates.at(i) / m_maxRate)));
 		c+=wStep;
 	}
 
 	if(m_recvRates.count())
 	{
-		rP.moveTo(QPoint(width(), height() - (height() * m_recvRates.first() / m_maxRecvRate)));
+		rP.moveTo(QPointF(width(), height() - (height() * m_recvRates.first() / m_maxRate)));
 	} else {
-		rP.moveTo(QPoint(width(), height()));
+		rP.moveTo(QPointF(width(), height()));
 	}
 
-	c=wStep;
-	for(int i = 1;(i <= KVI_IOGRAPH_NUMBER_POINTS) && (i < m_recvRates.count());i++)
+	c = 1.0 + wStep;
+	for(int i = 1;(i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_recvRates.count());i++)
 	{
-		rP.lineTo(width()-c,  height() - (height() * m_recvRates.at(i) / m_maxRecvRate));
+		rP.lineTo(QPointF(width()-c,  height() - (height() * m_recvRates.at(i) / m_maxRate)));
 		c+=wStep;
 	}
 
-	p.setPen(QColor("#FF0000"));
-	p.drawPath(sP);
-
 	p.setPen(QColor("#0000FF"));
 	p.drawPath(rP);
+
+	p.setPen(QColor("#FF0000"));
+	p.drawPath(sP);
 }
 
 /*

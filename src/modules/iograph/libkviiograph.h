@@ -31,7 +31,7 @@
 #include "kvi_moduleextension.h"
 #include "kvi_window.h"
 
-#define KVI_IOGRAPH_NUMBER_POINTS 10
+#define KVI_IOGRAPH_NUMBER_POINTS 60
 #define KVI_IOGRAPH_HORIZ_SEGMENTS 10
 #define KVI_IOGRAPH_VERT_SEGMENTS 10
 #define IOGRAPH_MODULE_EXTENSION_NAME "IO graph extension"
@@ -45,8 +45,7 @@ public:
 protected:
 	QQueue<unsigned int> m_sendRates;
 	QQueue<unsigned int> m_recvRates;
-	unsigned int m_maxSendRate;
-	unsigned int m_maxRecvRate;
+	unsigned int m_maxRate;
 	kvi_u64_t m_uLastSentBytes;
 	kvi_u64_t m_uLastRecvBytes;
 protected:
