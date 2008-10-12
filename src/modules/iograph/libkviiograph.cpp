@@ -152,9 +152,10 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *e)
 	kvi_u64_t sB = g_uOutgoingTraffic;
 	kvi_u64_t rB = g_uIncomingTraffic;
 
-	unsigned int sDiff = (sB - m_uLastSentBytes) / KVI_IOGRAPH_HORIZ_SEGMENTS;
-	unsigned int rDiff = (rB - m_uLastRecvBytes) / KVI_IOGRAPH_HORIZ_SEGMENTS;
+	unsigned int sDiff = sB - m_uLastSentBytes;
+	unsigned int rDiff = rB - m_uLastRecvBytes;
 
+	printf("%d\n",sDiff);
 	int iMax = qMax(sDiff, rDiff);
 	while(iMax > m_maxRate)
 		m_maxRate*=2;
@@ -187,8 +188,8 @@ void KviIOGraphWidget::paintEvent(QPaintEvent * e)
 	for(int i=0;i<=KVI_IOGRAPH_HORIZ_SEGMENTS;i++)
 	{
 		p.drawLine(0, c, width(), c);
-		if(i>0 && i < KVI_IOGRAPH_HORIZ_SEGMENTS)
-			p.drawText(2,c,KviQString::makeSizeReadable(m_maxRate / i));
+		if(i>0)
+			p.drawText(2,c,KviQString::makeSizeReadable(m_maxRate * (KVI_IOGRAPH_HORIZ_SEGMENTS - i) / KVI_IOGRAPH_HORIZ_SEGMENTS));
 		c+=sh;
 	}
 
