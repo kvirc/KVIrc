@@ -100,7 +100,7 @@ protected slots:
 	void cancelClicked();
 	void heartbeat();
 	void jobTypeSelected(int index);
-	void itemDoubleClicked(KviTalListWidgetItem * it);
+	void itemDoubleClicked(QListWidgetItem * it);
 	void tipRequest(KviDynamicToolTip *,const QPoint &pnt);
 };
 

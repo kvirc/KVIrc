@@ -163,7 +163,7 @@ KviImageDialog::KviImageDialog(QWidget * par,
 	g->setColumnStretch(0,1);
 
 	connect(m_pTypeComboBox,SIGNAL(activated(int)),this,SLOT(jobTypeSelected(int)));
-	connect(m_pListBox,SIGNAL(doubleClicked(KviTalListWidgetItem *)),this,SLOT(itemDoubleClicked(KviTalListWidgetItem *)));
+	connect(m_pListBox,SIGNAL(itemActivated(QListWidgetItem *)),this,SLOT(itemDoubleClicked(QListWidgetItem *)));
 	connect(m_pTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
 
 	m_pTypeComboBox->setCurrentIndex(idx);
@@ -328,7 +328,7 @@ void KviImageDialog::closeEvent(QCloseEvent * e)
 	QDialog::closeEvent(e);
 }
 
-void KviImageDialog::itemDoubleClicked(KviTalListWidgetItem * it)
+void KviImageDialog::itemDoubleClicked(QListWidgetItem * it)
 {
 	if(!it)return;
 	KviImageDialogItem * i = (KviImageDialogItem *)it;
