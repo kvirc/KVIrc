@@ -35,7 +35,6 @@
 
 class KviKvsObject_wrapper : public KviKvsObject_widget
 {
-	Q_OBJECT
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_wrapper)
 public:

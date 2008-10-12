@@ -648,7 +648,3 @@ KVSO_CLASS_FUNCTION(file,writeHexBlock)
 	return true;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_class_file.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-

@@ -121,8 +121,5 @@ bool KviKvsObject_toolbar::functionclear(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_class_toolbar.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 

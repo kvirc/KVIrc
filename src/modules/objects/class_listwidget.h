@@ -27,10 +27,6 @@
 
 #include "class_widget.h"
 #include <QListWidget>
-
-//class KviTalListBox;
-//class KviTalListBoxItem;
-
 #include "object_macros.h"
 
 class KviKvsObject_listwidget: public KviKvsObject_widget

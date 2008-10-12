@@ -475,6 +475,3 @@ bool KviKvsObject_treewidgetitem::function_setPixmap(KviKvsObjectFunctionCall *c
 	return true;
 }
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "m_class_treewidgetitem.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

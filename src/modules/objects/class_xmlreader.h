@@ -31,7 +31,6 @@
 
 class KviKvsObject_xmlreader : public KviKvsObject
 {
-	Q_OBJECT
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_xmlreader)
 public:
