@@ -84,12 +84,12 @@ KVSO_CLASS_FUNCTION(buttongroup,addButton)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if (!pObject)
 	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
+		c->warning(__tr2qs_ctx("Widget parameter is not an object","object"));
 		return true;
 	}
 	if (!pObject->object())
 	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
+		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","object"));
 		return true;
 	}
 	if(!pObject->object()->isWidgetType())
@@ -104,7 +104,7 @@ KVSO_CLASS_FUNCTION(buttongroup,addButton)
 		m_iId++;
 	}
 	else{
-		c->warning(__tr2qs("Buttongroup support only checkbox and radiobox object"));
+		c->warning(__tr2qs_ctx("Buttongroup support only checkbox and radiobox object","object"));
 		return true;
 	}
 	return true;

@@ -96,10 +96,8 @@ void KviKvsScriptWindowWindow::centralWidgetDestroyed()
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_window,"window","widget")
-	
-	KVSO_REGISTER_HANDLER(KviKvsObject_window,"setWindowTitle", functionsetWindowTitle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_window,"setCentralWidget", functionsetCentralWidget)
-//	KVSO_REGISTER_HANDLER(KviKvsObject_window,"setIcon", functionsetIcon)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_window,setWindowTitle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_window,setCentralWidget)
 KVSO_END_REGISTERCLASS(KviKvsObject_window)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_window,KviKvsObject_widget)
@@ -120,25 +118,26 @@ bool KviKvsObject_window::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 
 	return true;
 }
-bool KviKvsObject_window::functionsetWindowTitle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(window,setWindowTitle)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
 	QString szCaption;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((KviKvsScriptWindowWindow *)widget())->setWindowTitleString(szCaption);
+	((KviKvsScriptWindowWindow *)widget())->setWindowTitleString(szCaption);
 	return true;
 }
-bool KviKvsObject_window::functionsetCentralWidget(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(window,setCentralWidget)
 {
+	CHECK_INTERNAL_QPOINTER(widget())
+
 	KviKvsObject *ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
 	KVSO_PARAMETERS_END(c)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!widget())return true;
 	if(!ob->object()->isWidgetType())
 	{
 		c->warning(__tr2qs("Can't add a non-widget object"));

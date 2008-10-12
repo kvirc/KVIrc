@@ -38,8 +38,8 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-    bool functionsetWindowTitle(KviKvsObjectFunctionCall *c);
-	bool functionsetCentralWidget(KviKvsObjectFunctionCall *c);
+    bool setWindowTitle(KviKvsObjectFunctionCall *c);
+	bool setCentralWidget(KviKvsObjectFunctionCall *c);
 
 };
 

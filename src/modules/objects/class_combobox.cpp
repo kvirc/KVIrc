@@ -171,11 +171,11 @@ KVSO_CLASS_FUNCTION(combobox,changeItem)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
 	KVSO_PARAMETERS_END(c)
-	if (szText.isEmpty()) c->warning(__tr2qs("No string parameter given - using empty string"));
+	if (szText.isEmpty()) c->warning(__tr2qs_ctx("No string parameter given - using empty string","object"));
 	if(uIndex >= (cnt = ((QComboBox *)widget())->count()))
 	{
-		c->warning(__tr2qs("Item index [%d] is too big - defaulting to " \
-			"$count() - 1 [%d]"), uIndex, cnt);
+		c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to " \
+			"$count() - 1 [%d]","object"), uIndex, cnt);
 		uIndex = cnt - 1;
 	}
 	((QComboBox *)widget())->setItemText( uIndex,szText);
@@ -191,8 +191,8 @@ KVSO_CLASS_FUNCTION(combobox,removeItem)
 	KVSO_PARAMETERS_END(c)
 	if(uIndex >= (cnt = ((QComboBox *)widget())->count()))
 	{
-		c->warning(__tr2qs("Item index [%d] is too big - defaulting to " \
-			"$count() - 1 [%d]"), uIndex, cnt);
+		c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to " \
+			"$count() - 1 [%d]","object"), uIndex, cnt);
 		uIndex = cnt - 1;
 	}
 
@@ -328,7 +328,7 @@ KVSO_CLASS_FUNCTION(combobox,setInsertionPolicy)
 			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertAfterCurrent);
 	else if(KviQString::equalCI(szPolicy,"BeforeCurrent"))
 			((QComboBox *)widget())->setInsertPolicy(QComboBox::InsertBeforeCurrent);
-	else c->warning(__tr2qs("Invalid insertion Policy %Q"),&szPolicy);
+	else c->warning(__tr2qs_ctx("Invalid insertion Policy %Q","object"),&szPolicy);
 	return true;
 }
 

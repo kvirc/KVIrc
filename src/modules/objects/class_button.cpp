@@ -122,13 +122,13 @@ KVSO_CLASS_FUNCTION(button,setImage)
 		KviKvsObject *pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 		if (!pObject)
 		{
-			c->warning(__tr2qs("Pixmap parameter is not an object!"));
+			c->warning(__tr2qs_ctx("Pixmap parameter is not an object!","object"));
 			return true;
 		}
 		if(pObject->inherits("KviKvsObject_pixmap"))
 			((QPushButton *)widget())->setIcon(QIcon(*((KviKvsObject_pixmap *)pObject)->getPixmap()));
 		else{ 
-			c->warning(__tr2qs("Object Pixmap required!"));
+			c->warning(__tr2qs_ctx("Object Pixmap required!","object"));
 		}
 		return true;
 	}

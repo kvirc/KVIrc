@@ -44,22 +44,22 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-    bool functionaddPage(KviKvsObjectFunctionCall *c);
-	bool functioninsertPage(KviKvsObjectFunctionCall *c);
-	bool functionremovePage(KviKvsObjectFunctionCall *c);
-	bool functionsetTitle(KviKvsObjectFunctionCall *c);
-	bool functionsetBackEnabled(KviKvsObjectFunctionCall *c);
-	bool functionsetNextEnabled(KviKvsObjectFunctionCall *c);
-	bool functionsetFinishEnabled(KviKvsObjectFunctionCall *c);
-	bool functionsetHelpEnabled(KviKvsObjectFunctionCall *c);
+    bool addPage(KviKvsObjectFunctionCall *c);
+	bool insertPage(KviKvsObjectFunctionCall *c);
+	bool removePage(KviKvsObjectFunctionCall *c);
+	bool setTitle(KviKvsObjectFunctionCall *c);
+	bool setBackEnabled(KviKvsObjectFunctionCall *c);
+	bool setNextEnabled(KviKvsObjectFunctionCall *c);
+	bool setFinishEnabled(KviKvsObjectFunctionCall *c);
+	bool setHelpEnabled(KviKvsObjectFunctionCall *c);
 
-	bool functionsetBackBtnText(KviKvsObjectFunctionCall *c);
-	bool functionsetNextBtnText(KviKvsObjectFunctionCall *c);
-	bool functionsetFinishBtnText(KviKvsObjectFunctionCall *c);
-	bool functionsetHelpBtnText(KviKvsObjectFunctionCall *c);
+	bool setBackBtnText(KviKvsObjectFunctionCall *c);
+	bool setNextBtnText(KviKvsObjectFunctionCall *c);
+	bool setFinishBtnText(KviKvsObjectFunctionCall *c);
+	bool setHelpBtnText(KviKvsObjectFunctionCall *c);
 
-	bool functionnextClickedEvent(KviKvsObjectFunctionCall *c);
-	bool functionbackClickedEvent(KviKvsObjectFunctionCall *c);
+	bool nextClickedEvent(KviKvsObjectFunctionCall *c);
+	bool backClickedEvent(KviKvsObjectFunctionCall *c);
 
 };
 class KviKvsMdmWizard :  public KviTalWizard
