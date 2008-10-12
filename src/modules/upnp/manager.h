@@ -35,16 +35,14 @@
 #define UPNPMANAGER_H
 
 #include <QObject>
-#include "kvi_pointerlist.h"
+#include <QTimer>
 
-class QTimer;
+#include "kvi_pointerlist.h"
+#include "igdcontrolpoint.h"
+#include "ssdpconnection.h"
 
 namespace UPnP
 {
-
-class IgdControlPoint;
-class SsdpConnection;
-
 
 /**
  * The manager class is the public interface used by other networking classes.
