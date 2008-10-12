@@ -208,7 +208,6 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	m_pNeedsContextCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window belongs to an irc context"));
 	gl->addWidget(m_pNeedsContextCheck,0,0,1,4);
-//	gl->addMultiCellWidget(m_pNeedsContextCheck,0,0,0,3);
 
 
 	l = new QLabel(tab);
@@ -220,7 +219,6 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	m_pNeedsConnectionCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window has an active IRC connection"));
 	gl->addWidget(m_pNeedsConnectionCheck,1,1,1,3);
-//	gl->addMultiCellWidget(m_pNeedsConnectionCheck,1,1,1,3);
 
 
 	l = new QLabel(tab);
@@ -231,14 +229,12 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	m_pEnableAtLoginCheck->setToolTip(__tr2qs("Check this option if this action should be enabled also during " \
 						"the login operations (so when the logical IRC connection hasn't been estabilished yet)"));
 	gl->addWidget(m_pEnableAtLoginCheck,2,2,1,2);
-//	gl->addMultiCellWidget(m_pEnableAtLoginCheck,2,2,2,3);
 
 	m_pSpecificWindowsCheck = new QCheckBox(__tr2qs("Enable Only in Specified Windows"),tab);
 	connect(m_pSpecificWindowsCheck,SIGNAL(toggled(bool)),this,SLOT(specificWindowsCheckToggled(bool)));
 	m_pSpecificWindowsCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is of a specified type"));
 	gl->addWidget(m_pSpecificWindowsCheck,3,0,1,4);
-//	gl->addMultiCellWidget(m_pSpecificWindowsCheck,3,3,0,3);
 
 
 	m_pWindowConsoleCheck = new QCheckBox(__tr2qs("Enable in Console Windows"),tab);
@@ -246,49 +242,41 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 						"the active window is a console"));
 	connect(m_pWindowConsoleCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addWidget(m_pWindowConsoleCheck,4,1,1,3);
-//	gl->addMultiCellWidget(m_pWindowConsoleCheck,4,4,1,3);
 
 	m_pConsoleOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
 	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
 	gl->addWidget(m_pConsoleOnlyIfUsersSelectedCheck,5,2,1,2);
-//	gl->addMultiCellWidget(m_pConsoleOnlyIfUsersSelectedCheck,5,5,2,3);
 
 	m_pWindowChannelCheck = new QCheckBox(__tr2qs("Enable in Channel Windows"),tab);
 	m_pWindowChannelCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a channel"));
 	connect(m_pWindowChannelCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addWidget(m_pWindowChannelCheck,6,1,1,3);
-//	gl->addMultiCellWidget(m_pWindowChannelCheck,6,6,1,3);
 
 	m_pChannelOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
 	m_pChannelOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
 	gl->addWidget(m_pChannelOnlyIfUsersSelectedCheck,7,2,1,2);
-//	gl->addMultiCellWidget(m_pChannelOnlyIfUsersSelectedCheck,7,7,2,3);
 
 	m_pWindowQueryCheck = new QCheckBox(__tr2qs("Enable in Query Windows"),tab);
 	m_pWindowQueryCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a query"));
 	connect(m_pWindowQueryCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addWidget(m_pWindowQueryCheck,8,1,1,3);
-//	gl->addMultiCellWidget(m_pWindowQueryCheck,8,8,1,3);
 
 	m_pQueryOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
 	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
 						"selected users in the active window"));
 	gl->addWidget(m_pQueryOnlyIfUsersSelectedCheck,9,2,1,2);
-//	gl->addMultiCellWidget(m_pQueryOnlyIfUsersSelectedCheck,9,9,2,3);
 
 	m_pWindowDccChatCheck = new QCheckBox(__tr2qs("Enable in DCC Chat Windows"),tab);
 	m_pWindowDccChatCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
 						"the active window is a dcc chat"));
 	gl->addWidget(m_pWindowDccChatCheck,10,1,1,2);
-//	gl->addMultiCellWidget(m_pWindowDccChatCheck,10,10,1,3);
 
 	l = new QLabel(tab);
 	gl->addWidget(l,11,0,1,4);
-//	gl->addMultiCellWidget(l,11,11,0,3);
 	gl->setColumnStretch(3,1);
 	gl->setRowStretch(11,1);
 
@@ -361,7 +349,12 @@ void KviSingleActionEditor::chooseSmallIcon()
 	QString s = d->selectedImage();
 	delete d;
 	if(ret != QDialog::Accepted)return;
-	QPixmap * p = g_pIconManager->getImage(s.toUtf8().data());
+	s.replace("$icon(","");
+	s.chop(1);
+	int id=g_pIconManager->getSmallIconIdFromName(s);
+	QString szId;
+	szId.setNum(id);
+	QPixmap * p = g_pIconManager->getImage(szId);
 	if(!p)return;
 	m_pSmallIconEdit->setText(s);
 	m_pSmallIconButton->setIcon(QIcon(*p));
