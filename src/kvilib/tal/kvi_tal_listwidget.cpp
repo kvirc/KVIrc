@@ -126,6 +126,7 @@ KviTalListWidgetPixmap::KviTalListWidgetPixmap(KviTalListWidget* listbox, const 
 {
 	pm = pix;
 	setText(text);
+	setIcon(QIcon(pix));
 }
 
 KviTalListWidgetPixmap::KviTalListWidgetPixmap(const QPixmap & pix, const QString& text)
