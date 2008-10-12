@@ -61,11 +61,14 @@ public:
 	~KviIOGraphWindow();
 private:
 	KviIOGraphWidget * m_pIOGraph;
+	virtual void updatePseudoTransparency();
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void die();
+	virtual void moveEvent(QMoveEvent *);
+	virtual void paintEvent (QPaintEvent *e);
 };
 
 #endif

@@ -22,6 +22,8 @@
 //
 //=============================================================================
 
+#include <math.h>
+
 #include "libkviiograph.h"
 #include "kvi_frame.h"
 #include "kvi_iconmanager.h"
@@ -32,6 +34,10 @@
 
 #include <QPainter>
 #include <QPaintEvent>
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+#endif
 
 KviIOGraphWindow* g_pIOGraphWindow = 0;
 
@@ -82,7 +88,38 @@ void KviIOGraphWindow::die()
 	close();
 }
 
+void KviIOGraphWindow::updatePseudoTransparency()
+{
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	update();
+#endif
+}
 
+void KviIOGraphWindow::moveEvent(QMoveEvent *)
+{
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	updatePseudoTransparency();
+#endif
+}
+
+void KviIOGraphWindow::paintEvent(QPaintEvent * e)
+{
+	QPainter p(this);
+
+	QRect rect = e->rect();
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	if(g_pShadedChildGlobalDesktopBackground)
+	{
+		QPoint pnt = mapToGlobal(rect.topLeft());
+		p.drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
+	} else {
+#endif
+		p.fillRect(rect, QColor("#000000"));
+//		p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorIOGraphBackground));
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	}
+#endif
+}
 
 KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
 : QWidget(par)
@@ -90,10 +127,11 @@ KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
 	m_uLastSentBytes = g_uOutgoingTraffic;
 	m_uLastRecvBytes = g_uIncomingTraffic;
 
-	m_maxRate = qMax(m_uLastSentBytes, m_uLastRecvBytes);
+	m_maxRate = 1;
 
-	if(m_maxRate < 1)
-		m_maxRate = 1;
+	int iMax = qMax(m_uLastSentBytes, m_uLastRecvBytes);
+	while(iMax > m_maxRate)
+		m_maxRate*=2;
 
 	m_sendRates.prepend(0);
 	m_recvRates.prepend(0);
@@ -117,10 +155,9 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *e)
 	unsigned int sDiff = (sB - m_uLastSentBytes) / KVI_IOGRAPH_HORIZ_SEGMENTS;
 	unsigned int rDiff = (rB - m_uLastRecvBytes) / KVI_IOGRAPH_HORIZ_SEGMENTS;
 
-	if(sDiff > m_maxRate)
-		m_maxRate = sDiff;
-	if(rDiff > m_maxRate)
-		m_maxRate = rDiff;
+	int iMax = qMax(sDiff, rDiff);
+	while(iMax > m_maxRate)
+		m_maxRate*=2;
 
 	m_uLastSentBytes = sB;
 	m_uLastRecvBytes = rB;
@@ -140,8 +177,6 @@ void KviIOGraphWidget::paintEvent(QPaintEvent * e)
 {
 	QPainter p(this);
 
-	p.fillRect(e->rect(), QColor("#000000"));
-
 	p.setRenderHint(QPainter::Antialiasing);
 	p.setPen(QColor("#c0c0c0"));
 
@@ -152,7 +187,7 @@ void KviIOGraphWidget::paintEvent(QPaintEvent * e)
 	for(int i=0;i<=KVI_IOGRAPH_HORIZ_SEGMENTS;i++)
 	{
 		p.drawLine(0, c, width(), c);
-		if(i>0 and i < KVI_IOGRAPH_HORIZ_SEGMENTS)
+		if(i>0 && i < KVI_IOGRAPH_HORIZ_SEGMENTS)
 			p.drawText(2,c,KviQString::makeSizeReadable(m_maxRate / i));
 		c+=sh;
 	}
@@ -167,38 +202,31 @@ void KviIOGraphWidget::paintEvent(QPaintEvent * e)
 	QPainterPath sP, rP;
 	float wStep=(width() - 2.0) / KVI_IOGRAPH_NUMBER_POINTS;
 
-	if(m_sendRates.count())
-	{
-		sP.moveTo(QPointF(width(), height() - (height() * m_sendRates.first() / m_maxRate)));
-	} else {
-		sP.moveTo(QPointF(width(), height()));
-	}
 
-	c = 1.0 + wStep;
-	for(int i = 1;(i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_sendRates.count());i++)
+	sP.moveTo(QPointF(width(), height()));
+	c = 1.0;
+	for(int i = 0;(i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_sendRates.count());i++)
 	{
 		sP.lineTo(QPointF(width()- c, height() - (height() * m_sendRates.at(i) / m_maxRate)));
 		c+=wStep;
 	}
+	sP.lineTo(QPointF(0, height()));
 
-	if(m_recvRates.count())
-	{
-		rP.moveTo(QPointF(width(), height() - (height() * m_recvRates.first() / m_maxRate)));
-	} else {
-		rP.moveTo(QPointF(width(), height()));
-	}
-
-	c = 1.0 + wStep;
-	for(int i = 1;(i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_recvRates.count());i++)
+	rP.moveTo(QPointF(width(), height()));
+	c = 1.0;
+	for(int i = 0;(i <= (KVI_IOGRAPH_NUMBER_POINTS + 1)) && (i < m_recvRates.count());i++)
 	{
 		rP.lineTo(QPointF(width()-c,  height() - (height() * m_recvRates.at(i) / m_maxRate)));
 		c+=wStep;
 	}
+	rP.lineTo(QPointF(0, height()));
 
-	p.setPen(QColor("#0000FF"));
+	p.setPen(QColor(0, 0, 255));
+	p.setBrush(QColor(0, 0, 255, 128));
 	p.drawPath(rP);
 
-	p.setPen(QColor("#FF0000"));
+	p.setPen(QColor(255, 0, 0));
+	p.setBrush(QColor(255, 0, 0, 128));
 	p.drawPath(sP);
 }
 
