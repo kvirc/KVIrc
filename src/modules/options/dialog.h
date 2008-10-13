@@ -39,7 +39,7 @@
 class QLabel;
 class QPushButton;
 class QLineEdit;
-class KviTalWidgetStack;
+class QStackedWidget;
 
 class KviGeneralOptionsFrontWidget : public KviOptionsWidget
 {
@@ -67,18 +67,18 @@ public:
 	KviOptionsDialog(QWidget * par,const QString &szGroup);
 	~KviOptionsDialog();
 private:
-	KviTalTreeWidget    * m_pTreeWidget;
-	QLabel       * m_pCategoryLabel;
-	KviTalWidgetStack * m_pWidgetStack;
-	KviGeneralOptionsFrontWidget* m_pFrontWidget;
-	QString        m_szGroup;
-	QLineEdit    * m_pSearchLineEdit;
-	QToolButton  * m_pSearchButton;
+	KviTalTreeWidget             * m_pTreeWidget;
+	QLabel                       * m_pCategoryLabel;
+	QStackedWidget               * m_pWidgetStack;
+	KviGeneralOptionsFrontWidget * m_pFrontWidget;
+	QString                        m_szGroup;
+	QLineEdit                    * m_pSearchLineEdit;
+	QToolButton                  * m_pSearchButton;
 private:
 	void recursiveCommit(KviOptionsTreeWidgetItem *it);
 	void fillTreeWidget(KviTalTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
 	//KviOptionsTreeWidgetItem * showHiddenChildren(KviTalTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
-// 	KviOptionsTreeWidgetItem * findItemByPage(KviOptionsTreeWidgetItem *it,KviOptionsWidget * pPage);
+	//KviOptionsTreeWidgetItem * findItemByPage(KviOptionsTreeWidgetItem *it,KviOptionsWidget * pPage);
 private slots:
 	void treeWidgetItemSelectionChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *prev);
 	void applyClicked();
@@ -99,4 +99,4 @@ public:
 };
 
 
-#endif //!_DIALOG_H_
+#endif //_DIALOG_H_

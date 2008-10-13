@@ -34,6 +34,9 @@
 #include <QPixmap>
 #include <QDesktopWidget>
 #include <QSpacerItem>
+#include <QStackedWidget>
+#include <QPushButton>
+#include <QTabBar>
 
 // kvi_app.cpp
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
@@ -45,7 +48,7 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	setWindowTitle(__tr2qs("CTCP Page - KVIrc"));
 
 	QGridLayout * g = new QGridLayout(this);
-	m_pWidgetStack = new KviTalWidgetStack(this);
+	m_pWidgetStack = new QStackedWidget(this);
 	g->addWidget(m_pWidgetStack,0,0);
 	m_pTabBar = new QTabBar(this);
 	m_pTabBar->setShape(QTabBar::TriangularSouth);

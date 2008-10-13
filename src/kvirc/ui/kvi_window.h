@@ -29,12 +29,11 @@
 #include "kvi_qstring.h"
 #include "kvi_qcstring.h"
 #include "kvi_settings.h"
-#include "kvi_tal_hbox.h"
-#include "kvi_tal_widgetstack.h"
 #include "kvi_accel.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
 #include "kvi_input.h"
+#include "kvi_tal_hbox.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// The brain-damaged MSVC compiler can't instantiate QList templates without a destructor definition
@@ -48,6 +47,7 @@
 #include <QToolButton>
 #include <QTextEncoder>
 
+class QPushButton;
 class QPixmap;
 class QSplitter;
 class QTextCodec;
@@ -60,10 +60,6 @@ class KviIrcConnection;
 class KviWindowToolPageButton;
 class KviTalPopupMenu;
 class KviTalHBox;
-class KviTalWidgetStack;
-
-class QPushButton;
-#define BUTTON_CLASS QPushButton
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	class KviCryptController;
@@ -160,7 +156,7 @@ protected: // almost private: don't touch :D
 	KviCryptController                  * m_pCryptController;
 	KviCryptSessionInfo                 * m_pCryptSessionInfo;
 #endif
-	BUTTON_CLASS                        * m_pTextEncodingButton;
+	QPushButton                         * m_pTextEncodingButton;
 	QToolButton                         * m_pHideToolsButton;
 	QWidget                             * m_pLastFocusedChild;
 	KviAccel                            * m_pAccel;
@@ -364,7 +360,7 @@ protected:
 	void createTextEncodingButton(QWidget * par);
 	void createSystemTextEncodingPopup();
 
-	BUTTON_CLASS * createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn);
+	QPushButton * createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn);
 	// This is called by KviInput: actually it links the widgetAdded
 	virtual void childrenTreeChanged(QWidget * widgetAdded);
 

@@ -31,6 +31,8 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_hbox.h
 	tal/kvi_tal_iconview.h
 	tal/kvi_tal_listwidget.h
+	tal/kvi_tal_mainwindow.h
+	tal/kvi_tal_menubar.h
 	tal/kvi_tal_popupmenu.h
 	tal/kvi_tal_scrollview.h
 	tal/kvi_tal_tabdialog.h
@@ -40,21 +42,8 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_tooltip.h
 	tal/kvi_tal_treewidget.h
 	tal/kvi_tal_vbox.h
-	tal/kvi_tal_widgetstack.h
 	tal/kvi_tal_wizard.h
 )
-
-IF(COMPILE_KDE_SUPPORT)
-	LIST(APPEND kvilib_MOC_HDRS
-		tal/kvi_tal_menubar_kde.h
-		tal/kvi_tal_mainwindow_kde.h
-	)
-ELSE()
-	LIST(APPEND kvilib_MOC_HDRS
-		tal/kvi_tal_menubar_qt.h
-		tal/kvi_tal_mainwindow_qt.h
-	)
-ENDIF()
 
 IF(COMPILE_DBUS_SUPPORT)
 	LIST(APPEND kvilib_MOC_HDRS
@@ -135,7 +124,6 @@ SET(kvilib_SRCS
 	tal/kvi_tal_tooltip.cpp
 	tal/kvi_tal_treewidget.cpp
 	tal/kvi_tal_vbox.cpp
-	tal/kvi_tal_widgetstack.cpp
 	tal/kvi_tal_wizard.cpp
 )
 
@@ -172,7 +160,6 @@ IF(UNIX)
 		ENDIF()
 	ENDIF()
 ELSEIF(WIN32)
-        # For DLL platforms the DLL part of a shared library is treated as a RUNTIME target
-        # and the corresponding import library is treated as an ARCHIVE target
+	# For DLL platforms the DLL part of a shared library is treated as a RUNTIME target and the corresponding import library is treated as an ARCHIVE target
 	INSTALL(TARGETS ${KVILIB_BINARYNAME} RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX})
 ENDIF()

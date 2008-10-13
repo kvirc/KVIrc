@@ -390,9 +390,9 @@ void KviWindow::destroyWindowListItem()
 	//	m_pWindowListItem = 0; // actually the WindowListItem destructor sets it
 }
 
-BUTTON_CLASS * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn)
+QPushButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn)
 {
-	BUTTON_CLASS * b = new BUTTON_CLASS(par);
+	QPushButton * b = new QPushButton(par);
 	b->setObjectName(nam);
 	b->setFlat(true);
 	b->setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));

@@ -27,10 +27,10 @@
 
 #include <QChildEvent>
 
-KviTalVBox::KviTalVBox(QWidget * pParent,char* name)
+KviTalVBox::KviTalVBox(QWidget * pParent, char * pcName)
 : QWidget(pParent)
 {
-	setObjectName(name);
+	setObjectName(pcName);
 
 	m_pLayout = new QVBoxLayout(this);
 	m_pLayout->setMargin(3);
@@ -45,8 +45,10 @@ KviTalVBox::~KviTalVBox()
 
 void KviTalVBox::childEvent(QChildEvent * e)
 {
-	if(!e->child()->isWidgetType()) return;
-	if(e->child()->parent() != this) return;
+	if(!e->child()->isWidgetType())
+		return;
+	if(e->child()->parent() != this)
+		return;
 
 	switch(e->type())
 	{
@@ -61,34 +63,36 @@ void KviTalVBox::childEvent(QChildEvent * e)
 	}
 }
 
-void KviTalVBox::setStretchFactor(QWidget * child,int stretch)
+void KviTalVBox::setStretchFactor(QWidget * pChild, int iStretch)
 {
-	m_pLayout->setStretchFactor(child,stretch);
+	m_pLayout->setStretchFactor(pChild,iStretch);
 }
 
-void KviTalVBox::setSpacing(int spacing)
+void KviTalVBox::setSpacing(int iSpacing)
 {
-	m_pLayout->setSpacing(spacing);
-}
-void KviTalVBox::addStretch(int stretch)
-{
-	m_pLayout->addStretch(stretch);
+	m_pLayout->setSpacing(iSpacing);
 }
 
-void KviTalVBox::setMargin(int margin)
+void KviTalVBox::addStretch(int iStretch)
 {
-	m_pLayout->setContentsMargins(margin,margin,margin,margin);
+	m_pLayout->addStretch(iStretch);
+}
+
+void KviTalVBox::setMargin(int iMargin)
+{
+	m_pLayout->setContentsMargins(iMargin,iMargin,iMargin,iMargin);
 }
 
 void KviTalVBox::setAlignment(Qt::Alignment alignment)
 {
 	m_pLayout->setAlignment(alignment);
 }
-void KviTalVBox::setAlignment(QWidget * child,Qt::Alignment alignment)
+
+void KviTalVBox::setAlignment(QWidget * pChild, Qt::Alignment alignment)
 {
-	m_pLayout->setAlignment(child,alignment);
+	m_pLayout->setAlignment(pChild,alignment);
 }
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 	#include "kvi_tal_vbox.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

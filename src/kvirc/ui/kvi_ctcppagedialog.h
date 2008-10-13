@@ -26,11 +26,12 @@
 
 #include "kvi_settings.h"
 #include "kvi_string.h"
-#include "kvi_tal_widgetstack.h"
 
-#include <QTabBar>
 #include <QWidget>
-#include <QPushButton>
+
+class QTabBar;
+class QPushButton;
+class QStackedWidget;
 
 class KVIRC_API KviCtcpPageDialog : public QWidget
 {
@@ -39,19 +40,20 @@ public:
 	KviCtcpPageDialog();
 	~KviCtcpPageDialog();
 protected:
-	KviTalWidgetStack * m_pWidgetStack;
-	QTabBar      * m_pTabBar;
-	QPushButton  * m_pCloseButton;
+	QStackedWidget * m_pWidgetStack;
+	QTabBar        * m_pTabBar;
+	QPushButton    * m_pCloseButton;
 public:
 	void popup();
-	void addPage(const QString &szNick,const QString &szUser,const QString &szHost,const QString &szMsg);
+	void addPage(const QString & szNick, const QString & szUser, const QString & szHost, const QString & szMsg);
+protected:
+	void center();
+protected:
+	virtual void showEvent(QShowEvent * e);
+	virtual void closeEvent(QCloseEvent * e);
 protected slots:
 	void tabSelected(int id);
 	void die();
-protected:
-	void center();
-	virtual void showEvent(QShowEvent *e);
-	virtual void closeEvent(QCloseEvent *);
 };
 
 #endif //_KVI_CTCPPAGEDIALOG_H_

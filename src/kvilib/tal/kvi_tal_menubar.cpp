@@ -33,10 +33,6 @@
 		setWindowTitle(pcName);
 	}
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_tal_menubar_kde.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
-
 #else
 
 	KviTalMenuBar::KviTalMenuBar(QWidget * pParent, const char * pcName)
@@ -44,12 +40,12 @@
 	{
 	}
 
-#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-	#include "kvi_tal_menubar_qt.moc"
-#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
-
 #endif
 
 KviTalMenuBar::~KviTalMenuBar()
 {
 }
+
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+	#include "kvi_tal_menubar.moc"
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

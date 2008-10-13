@@ -56,7 +56,6 @@
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_popupmenu.h"
-#include "kvi_tal_widgetstack.h"
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"

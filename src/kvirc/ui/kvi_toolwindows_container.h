@@ -26,7 +26,6 @@
 //=============================================================================
 
 #include "kvi_heapobject.h"
-#include "kvi_tal_widgetstack.h"
 #include "kvi_tal_vbox.h"
 
 #include <QToolButton>

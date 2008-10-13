@@ -27,15 +27,45 @@
 /**
 * \file kvi_tal_menubar.h
 * \author Szymon Stefanek
-* \brief Switcher between Qt and KDE classes
+* \brief Toolkit Abstraction Layer class
 */
 
 #include "kvi_settings.h"
 
+/**
+* \class KviTalMenuBar
+* \brief Toolkit Abstraction Layer: menubar class
+*/
+
 #ifdef COMPILE_KDE_SUPPORT
-	#include "kvi_tal_menubar_kde.h"
+
+#include <kmenubar.h>
+
+class KVILIB_API KviTalMenuBar : public KMenuBar
+
 #else
-	#include "kvi_tal_menubar_qt.h"
+
+#include <QMenuBar>
+
+class KVILIB_API KviTalMenuBar : public QMenuBar
+
 #endif
+{
+	Q_OBJECT
+public:
+	/**
+	* \brief Constructs the menubar object
+	* \param pParent The parent object
+	* \param pcName The name of the menubar
+	* \return KviTalMenuBar
+	*/
+	KviTalMenuBar(QWidget * pParent, const char * pcName);
+
+	/**
+	* \brief Destroys the menubar object
+	*/
+	~KviTalMenuBar();
+};
+
 
 #endif //_KVI_TAL_MENUBAR_H_

@@ -179,7 +179,7 @@ public:
 protected:
 	QSplitter                            * m_pTopSplitter;
 	QSplitter                            * m_pVertSplitter;
-	BUTTON_CLASS                         * m_pDoubleViewButton;
+	QPushButton                          * m_pDoubleViewButton;
 	KviWindowToolPageButton              * m_pListViewButton;
 	KviWindowToolPageButton              * m_pBanEditorButton;
 	KviWindowToolPageButton              * m_pBanExceptionEditorButton;

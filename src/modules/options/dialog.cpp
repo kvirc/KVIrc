@@ -33,10 +33,9 @@
 #include "kvi_pointerhashtable.h"
 #include "kvi_accel.h"
 #include "kvi_tal_vbox.h"
-#include "kvi_tal_widgetstack.h"
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_popupmenu.h"
-#include <kvi_tal_groupbox.h>
+#include "kvi_tal_groupbox.h"
 
 #include <QLayout>
 #include <QLabel>
@@ -49,6 +48,7 @@
 #include <QShortcut>
 #include <QHeaderView>
 #include <QDesktopWidget>
+#include <QStackedWidget>
 
 //FIXME: some headers must be hidden
 
@@ -215,7 +215,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 
 	// Widget stack
-	m_pWidgetStack = new KviTalWidgetStack(vbox);
+	m_pWidgetStack = new QStackedWidget(vbox);
 	vbox->setStretchFactor(m_pWidgetStack,1);
 
 	// First widget visible

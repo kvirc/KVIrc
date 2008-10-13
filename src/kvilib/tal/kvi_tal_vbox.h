@@ -26,27 +26,85 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_vbox.h
+* \author Szymon Stefanek
+* \brief Class for vertical box
+*/
+
 #include "kvi_settings.h"
 
 #include <QWidget>
 #include <QVBoxLayout>
 
+/**
+* \class KviTalVBox
+* \brief Toolkit Abstraction Layer: vbox class
+*/
 class KVILIB_API KviTalVBox : public QWidget
 {
 	Q_OBJECT
 public:
-	KviTalVBox(QWidget * pParent,char* name=0);
+	/**
+	* \brief Constructs a vertical box object
+	* \param pParent The parent object
+	* \param pcName The name of the box
+	* \return KviTalVBox
+	*/
+	KviTalVBox(QWidget * pParent, char * pcName = 0);
+
+	/**
+	* \brief Destroys a vertical box object
+	*/
 	~KviTalVBox();
-	void setStretchFactor(QWidget * child,int stretch);
-	void setSpacing(int spacing);
-	void setMargin(int margin);
-	void setAlignment(Qt::Alignment);
-	void addStretch(int stretch);
-	void setAlignment(QWidget * child,Qt::Alignment alignment);
-protected:
-	virtual void childEvent(QChildEvent * e);
 private:
 	QVBoxLayout * m_pLayout;
+public:
+	/**
+	* \brief Sets the stretch factor for an object
+	* \param pChild The object to stretch
+	* \param iStretch The stretch factor to use
+	* \return void
+	*/
+	void setStretchFactor(QWidget * pChild, int iStretch);
+
+	/**
+	* \brief Sets the spacing of the box
+	* \param iSpacing The space in pixels
+	* \return void
+	*/
+	void setSpacing(int iSpacing);
+
+	/**
+	* \brief Sets the margin of the box
+	* \param iMargin The margin in pixels
+	* \return void
+	*/
+	void setMargin(int iMargin);
+
+	/**
+	* \brief Sets the alignment of the box
+	* \param alignment The alignment
+	* \return void
+	*/
+	void setAlignment(Qt::Alignment alignment);
+
+	/**
+	* \brief Sets the alignment of the box for a child object
+	* \param pChild The object to align
+	* \param alignment The alignment
+	* \return void
+	*/
+	void setAlignment(QWidget * pChild, Qt::Alignment alignment);
+
+	/**
+	* \brief Adds the stretch factor
+	* \param iStretch The stretch factor
+	* \return void
+	*/
+	void addStretch(int iStretch);
+protected:
+	virtual void childEvent(QChildEvent * e);
 };
 
 #endif // _KVI_TAL_VBOX_H_

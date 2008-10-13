@@ -30,7 +30,6 @@
 #include "kvi_toolbar.h"
 #include "kvi_console.h"
 #include "kvi_pointerlist.h"
-#include "kvi_tal_widgetstack.h"
 
 #include <QWidget>
 #include <QToolButton>
