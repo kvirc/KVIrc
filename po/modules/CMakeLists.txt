@@ -9,6 +9,7 @@ SUBDIRS(
 	logview
 	mediaplayer
 	notifier
+	objects
 	options
 	perl
 	proxydb
