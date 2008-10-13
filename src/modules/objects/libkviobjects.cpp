@@ -262,7 +262,11 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 		c->warning(__tr2qs("Inexisting source object for objects.connect"));
 		return true;
 	}
-	obSrc->connectSignal(szSignal,obTrg,szSlot);
+	if(!obSrc->connectSignal(szSignal,obTrg,szSlot))
+	{
+		c->warning(__tr2qs("Inexisting target slot '%Q' for objects.connect"),&szSlot);
+		return true;
+	}
 	return true;
 }
 
