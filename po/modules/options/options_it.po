@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-15 00:33+0200\n"
-"PO-Revision-Date: 2008-09-22 16:15+0200\n"
+"PO-Revision-Date: 2008-10-15 01:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr " byte"
 #: src/modules/options/optw_query.cpp:102
 #: src/modules/options/optw_channel.cpp:135
 msgid " days"
-msgstr ""
+msgstr " giorni"
 
 #: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_query.cpp:98
@@ -119,8 +119,7 @@ msgstr "Griglia 3D"
 
 #: src/modules/options/optw_textencoding.cpp:84
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+msgstr "<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: src/modules/options/optw_urlhandlers.cpp:76
 msgid "<b>file://</b> handler command:"
@@ -250,10 +249,8 @@ msgstr ""
 "\"<b>Aggiungi</b>\".</center>"
 
 #: src/modules/options/optw_servers.cpp:1163
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: src/modules/options/optw_servers.cpp:522
 msgid ""
@@ -375,22 +372,20 @@ msgstr ""
 
 #: src/modules/options/optw_query.cpp:103
 #: src/modules/options/optw_channel.cpp:136
-#, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr ""
-"<center>Valore Minimo:<b>0 sec</b><br>Valore Massimo: <b>86400 sec</b></"
+"<center>Valore Minimo:<b>0 giorni</b><br>Valore Massimo: <b>10 giorni</b></"
 "center>"
 
 #: src/modules/options/optw_query.cpp:99
 #: src/modules/options/optw_channel.cpp:132
-#, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
 "center>"
 msgstr ""
-"<center>Valore Minimo:<b>0 sec</b><br>Valore Massimo: <b>86400 sec</b></"
+"<center>Valore Minimo:<b>0 linee</b><br>Valore Massimo: <b>50 linee</b></"
 "center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:88
@@ -921,8 +916,7 @@ msgstr ""
 "(100 KB)</center>"
 
 #: src/modules/options/optw_servers.cpp:1137
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: src/modules/options/optw_lag.cpp:64
@@ -2692,9 +2686,8 @@ msgstr "Interfaccia"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
-#, fuzzy
 msgid "Interval:"
-msgstr "Interfaccia"
+msgstr "Intervallo:"
 
 #: src/modules/options/optw_nickserv.cpp:153
 msgid "Invalid NickServ Rule"
@@ -3279,14 +3272,13 @@ msgstr "Incolla Server"
 
 #: src/modules/options/optw_query.cpp:92
 #: src/modules/options/optw_channel.cpp:127
-#, fuzzy
 msgid "Paste last channel log"
-msgstr "lista utenti,canale"
+msgstr "Incolla l'ultimo log del canale"
 
 #: src/modules/options/optw_query.cpp:97
 #: src/modules/options/optw_channel.cpp:130
 msgid "Paste up to:"
-msgstr ""
+msgstr "Incolla fino a:"
 
 #: src/modules/options/optw_mediatypes.cpp:77
 msgid "Pattern"
@@ -3860,13 +3852,11 @@ msgstr "Il comando di identificazione non può essere vuoto!"
 
 #: src/modules/options/optw_nickserv.cpp:180
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3938,8 +3928,7 @@ msgid "This executable has no SSL support."
 msgstr "Questo eseguibile non ha il supporto SSL"
 
 #: src/modules/options/optw_identity.cpp:326
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -4637,5 +4626,3 @@ msgstr "lista utenti,canale"
 msgid "within:"
 msgstr "in:"
 
-#~ msgid "Message Type"
-#~ msgstr "Tipo di messaggio"
