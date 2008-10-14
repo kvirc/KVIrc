@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-15 00:33+0200\n"
-"PO-Revision-Date: 2008-09-06 16:44+0200\n"
+"PO-Revision-Date: 2008-10-15 00:45+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr " Bytes"
 #: src/modules/options/optw_query.cpp:102
 #: src/modules/options/optw_channel.cpp:135
 msgid " days"
-msgstr ""
+msgstr " Tage"
 
 #: src/modules/options/optw_ircview.cpp:155
 #: src/modules/options/optw_query.cpp:98
@@ -114,8 +114,7 @@ msgstr "3D-Gitter"
 
 #: src/modules/options/optw_textencoding.cpp:84
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
+msgstr "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
 #: src/modules/options/optw_urlhandlers.cpp:76
 msgid "<b>file://</b> handler command:"
@@ -247,8 +246,7 @@ msgstr ""
 "auf \"<b>Hinzufügen</b>\" klicken</center>"
 
 #: src/modules/options/optw_servers.cpp:1163
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -377,22 +375,20 @@ msgstr ""
 
 #: src/modules/options/optw_query.cpp:103
 #: src/modules/options/optw_channel.cpp:136
-#, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 days</b><br>Maximum value: <b>10 days</b></"
 "center>"
 msgstr ""
-"<center>Minimaler Wert: <b>0 sek</b><br>Maximaler Wert: <b>86400 sek</b></"
+"<center>Minimaler Wert: <b>0 Tage</b><br>Maximaler Wert: <b>10 Tage</b></"
 "center>"
 
 #: src/modules/options/optw_query.cpp:99
 #: src/modules/options/optw_channel.cpp:132
-#, fuzzy
 msgid ""
 "<center>Minimum value: <b>0 lines</b><br>Maximum value: <b>50 lines</b></"
 "center>"
 msgstr ""
-"<center>Minimaler Wert: <b>0 sek</b><br>Maximaler Wert: <b>86400 sek</b></"
+"<center>Minimaler Wert: <b>0 Zeilen</b><br>Maximaler Wert: <b>50 Zeilen</b></"
 "center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:88
@@ -408,15 +404,14 @@ msgid ""
 "<center>Minimum value: <b>0 sec</b><br>Maximum value: <b>86400 sec</b></"
 "center>"
 msgstr ""
-"<center>Minimaler Wert: <b>0 sek</b><br>Maximaler Wert: <b>86400 sek</b></"
+"<center>Minimaler Wert: <b>0 Sek.</b><br>Maximaler Wert: <b>86400 Sek.</b></"
 "center>"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:93
 msgid ""
 "<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></"
 "center>"
-msgstr ""
-"<center>Minimaler Wert: <b>0 s</b><br>Maximaler Wert: <b>3600 s</b></center>"
+msgstr "<center>Minimaler Wert: <b>0 Sek.</b><br>Maximaler Wert: <b>3600 Sek.</b></center>"
 
 #: src/modules/options/optw_connection.cpp:156
 msgid ""
@@ -932,8 +927,7 @@ msgstr ""
 "liegen</center>"
 
 #: src/modules/options/optw_servers.cpp:1137
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -2316,8 +2310,7 @@ msgstr "Lagmeter aktivieren"
 
 #: src/modules/options/optw_tray.cpp:46
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Aktiviere die Level-bezogene Benachrichtigung (keine Meldungstyp-bezogene)"
+msgstr "Aktiviere die level-bezogene Benachrichtigung (keine meldungstyp-bezogene)"
 
 #: src/modules/options/optw_notify.cpp:123
 msgid "Enable notifier window fade effect"
@@ -2708,9 +2701,8 @@ msgstr "Schnittstelle"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
-#, fuzzy
 msgid "Interval:"
-msgstr "Leerlaufintervall:"
+msgstr "Intervall:"
 
 #: src/modules/options/optw_nickserv.cpp:153
 msgid "Invalid NickServ Rule"
@@ -3295,15 +3287,13 @@ msgstr "Server einfügen"
 
 #: src/modules/options/optw_query.cpp:92
 #: src/modules/options/optw_channel.cpp:127
-#, fuzzy
 msgid "Paste last channel log"
-msgstr "Benutzerliste,Channel"
+msgstr "Letztes Channel-Log einfügen"
 
 #: src/modules/options/optw_query.cpp:97
 #: src/modules/options/optw_channel.cpp:130
-#, fuzzy
 msgid "Paste up to:"
-msgstr "Darüber einfügen"
+msgstr "Einfügen bis zu:"
 
 #: src/modules/options/optw_mediatypes.cpp:77
 msgid "Pattern"
@@ -3885,8 +3875,7 @@ msgstr ""
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3916,8 +3905,7 @@ msgstr "Themeneinstellungen"
 
 #: src/modules/options/optw_sound.cpp:97
 msgid "This allows you to select encoding of mp3 tags."
-msgstr ""
-"Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
+msgstr "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
 #: src/modules/options/optw_sound.cpp:120
 msgid "This allows you to select encoding of winamp messages."
@@ -3959,8 +3947,7 @@ msgid "This executable has no SSL support."
 msgstr "Diese Version von KVIrc hat keine SSL-Unterstützung"
 
 #: src/modules/options/optw_identity.cpp:326
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
@@ -4241,8 +4228,7 @@ msgstr "UTC-Zeit für Zeitstempel benutzen"
 
 #: src/modules/options/optw_away.cpp:47
 msgid "Use automatic nickname ([5 letters]AWAY)"
-msgstr ""
-"Automatisch gernerierten \"Abwesend\"-Nick benutzen ([5 Buchstaben]AWAY)"
+msgstr "Automatisch gernerierten \"Abwesend\"-Nick benutzen ([5 Buchstaben]AWAY)"
 
 #: src/modules/options/optw_identity.cpp:470
 msgid "Use avatar"
@@ -13875,3 +13861,4 @@ msgstr "in:"
 
 #~ msgid "z: Recipient for oper wallop messages"
 #~ msgstr "z: Empfänger für oper wallop-Nachrichten"
+
