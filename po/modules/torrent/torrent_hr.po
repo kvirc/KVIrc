@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 22:44+0200\n"
+"POT-Creation-Date: 2008-10-15 00:29+0200\n"
 "PO-Revision-Date: 2008-01-12 03:57+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Hrvatski <en@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:41
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -24,49 +24,49 @@ msgstr ""
 "Sučelje za KDE-ov sjajni KTorrent klijent.\n"
 "Preuzmite ga sa http://www.ktorrent.org\n"
 
-#: src/modules/torrent/libkvitorrent.cpp:101
+#: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Odabiranje sučelja za torrent klijent \"%Q\""
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:57
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
 #, c-format
 msgid "Index out of range: %d [0-%d]!"
 msgstr "Indeks izvan dometa: %d [0-%d]!"
 
-#: src/modules/torrent/libkvitorrent.cpp:718
+#: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Neispravno klijent sučelje \"%Q\"!"
 
-#: src/modules/torrent/libkvitorrent.cpp:128
+#: src/modules/torrent/libkvitorrent.cpp:129
 msgid "Last interface error: "
 msgstr "Posljednja greška sučelja. "
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:90
+#: src/modules/torrent/tc_statusbarapplet.cpp:92
 msgid "No client selected!"
 msgstr "Nema odabranog klijenta!"
 
-#: src/modules/torrent/libkvitorrent.cpp:117
+#: src/modules/torrent/libkvitorrent.cpp:118
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr "Nema odabranih torrent klijent sučelja. Pokušajte /torrent.detect"
 
-#: src/modules/torrent/libkvitorrent.cpp:108
+#: src/modules/torrent/libkvitorrent.cpp:109
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr "Čini se da nema korisnih torrent klijenata na ovom računalu"
 
-#: src/modules/torrent/libkvitorrent.cpp:127
+#: src/modules/torrent/libkvitorrent.cpp:128
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
 msgstr "Odabrani torrent klijent nije uspio izvršiti zatraženu funkciju"
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:59
+#: src/modules/torrent/tc_statusbarapplet.cpp:61
 msgid "Torrent Client"
 msgstr ""
 
-#: src/modules/torrent/libkvitorrent.cpp:61
+#: src/modules/torrent/libkvitorrent.cpp:62
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Pokušavam torrent sučelje za klijenta \"%Q\": score %d "
 
-#: src/modules/torrent/libkvitorrent.cpp:710
+#: src/modules/torrent/libkvitorrent.cpp:711
 msgid "Using client interface \"%Q\"."
 msgstr "Koristim klijent sućelje \"%Q\"."

@@ -46,12 +46,12 @@
 	)
 	
 	#define ERROR_MSG \
-		QCString msg; \
+		QString szMsg; \
 		if (!findRunningApp(m_szAppId)) \
-			msg = "KTorrent's isn't running!"; \
+			szMsg = "KTorrent's isn't running!"; \
 		else \
-			msg = "Something's wrong here! KTorrent's DCOP interface has probably changed."; \
-		m_lastError = __tr2qs_ctx(QString(msg), "torrent"); \
+			szMsg = "Something's wrong here! KTorrent's DCOP interface has probably changed."; \
+		m_lastError = __tr2qs_ctx(szMsg,"torrent"); \
 		debug("%s (%s:%d): %s", __PRETTY_FUNCTION__, __FILE__, __LINE__, (const char*)msg); \
 	
 	#define ERROR_MSG_RANGE(I, SIZE) \

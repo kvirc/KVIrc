@@ -16,7 +16,7 @@ IF(USE_GETTEXT_TRANSLATIONS)
 		)
 
 		INSTALL(FILES ${_gmoFile} DESTINATION share/${PACKAGE}/${VERSION_BRANCH}/locale/ RENAME ${_lang}.mo)
-		SET(_gmoFiles ${_gmoFiles} ${_gmoFile})
+		LIST(APPEND _gmoFiles ${_gmoFile})
 	ENDFOREACH()
 
 	ADD_CUSTOM_TARGET(kvirc-translations-${_potBasename} DEPENDS ${_gmoFiles})
@@ -36,14 +36,14 @@ IF(USE_GETTEXT_TRANSLATIONS)
 			LIST(APPEND XGETTEXT_FILES ${XGETTEXT_FILES_TEMP})
 		ENDFOREACH()
 
-		# Semicolons 2 spaces
-		SET(XGETTEXT_FILES_STRING)
-		FOREACH(arg ${XGETTEXT_FILES})
-			SET(XGETTEXT_FILES_STRING "${XGETTEXT_FILES_STRING} ${arg}")
-		ENDFOREACH()
-
+		# All files in a new line
 		GET_FILENAME_COMPONENT(PO_DIR ${_absPotFile} PATH)
-		FILE(WRITE ${PO_DIR}/filelist.txt ${XGETTEXT_FILES_STRING})
+		FILE(WRITE ${PO_DIR}/filelist.txt "")
+
+		SET(XGETTEXT_FILES_STRING)
+		FOREACH(ARG ${XGETTEXT_FILES})
+			FILE(APPEND ${PO_DIR}/filelist.txt ${ARG} "\n")
+		ENDFOREACH()
 
 		ADD_CUSTOM_COMMAND(
 			COMMENT "Extracting messages for ${_potBasename}"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-20 22:44+0200\n"
+"POT-Creation-Date: 2008-10-15 00:29+0200\n"
 "PO-Revision-Date: 2008-07-10 01:14+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:41
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -27,40 +27,40 @@ msgstr ""
 "Eine Schnittstelle für KTorrent.\n"
 "Sie können es von http://www.ktorrent.org herunterladen.\n"
 
-#: src/modules/torrent/libkvitorrent.cpp:101
+#: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Benutze Torrent-Client Schnittstelle \"%Q\"."
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:57
+#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
 #, c-format
 msgid "Index out of range: %d [0-%d]!"
 msgstr "Index ausserhalb des gültigen Bereichs: %d [0-%d]!"
 
-#: src/modules/torrent/libkvitorrent.cpp:718
+#: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
 msgstr "Ungültige Client-Schnittstelle \"%Q\"!"
 
-#: src/modules/torrent/libkvitorrent.cpp:128
+#: src/modules/torrent/libkvitorrent.cpp:129
 msgid "Last interface error: "
 msgstr "Letzter Schnittstellen-Fehler: "
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:90
+#: src/modules/torrent/tc_statusbarapplet.cpp:92
 msgid "No client selected!"
 msgstr "Keine Schnittstelle ausgewählt!"
 
-#: src/modules/torrent/libkvitorrent.cpp:117
+#: src/modules/torrent/libkvitorrent.cpp:118
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr ""
 "Keine Torrent-Client Schnittstelle ausgewählt. Probieren Sie /torrent.detect "
 "auszuführen."
 
-#: src/modules/torrent/libkvitorrent.cpp:108
+#: src/modules/torrent/libkvitorrent.cpp:109
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr ""
 "Es scheint kein Benutzbarer Torrent-Client auf diesem System installiert zu "
 "sein."
 
-#: src/modules/torrent/libkvitorrent.cpp:127
+#: src/modules/torrent/libkvitorrent.cpp:128
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
@@ -68,14 +68,14 @@ msgstr ""
 "Die ausgewählte Torrent-Client Schnittstelle konnte die Funktion nicht "
 "ausführen."
 
-#: src/modules/torrent/tc_statusbarapplet.cpp:59
+#: src/modules/torrent/tc_statusbarapplet.cpp:61
 msgid "Torrent Client"
 msgstr "Torrent Client"
 
-#: src/modules/torrent/libkvitorrent.cpp:61
+#: src/modules/torrent/libkvitorrent.cpp:62
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr "Versuche Torrent-Client Schnittstelle \"%Q\": %d Punkte."
 
-#: src/modules/torrent/libkvitorrent.cpp:710
+#: src/modules/torrent/libkvitorrent.cpp:711
 msgid "Using client interface \"%Q\"."
 msgstr "Benutze Client Schnittstelle \"%Q\"."

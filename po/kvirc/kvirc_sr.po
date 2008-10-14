@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-26 22:34+0200\n"
+"POT-Creation-Date: 2008-10-15 00:32+0200\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.5\n"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:678
+#: src/kvirc/sparser/kvi_sp_literal.cpp:686
 msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@"
 "\r!h\r%Q\r]: %Q"
@@ -22,23 +22,23 @@ msgstr ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je izba�n sa \r!c\r%Q\r od \r!n\r%Q\r [%Q@\r!h\r%Q"
 "\r] :%Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1407
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1422
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je promenio topic (naslov) u \"%Q%c\""
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:312
+#: src/kvirc/sparser/kvi_sp_literal.cpp:321
 #, fuzzy
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] ulazi na \r!c\r%Q\r"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:307
+#: src/kvirc/sparser/kvi_sp_literal.cpp:316
 #, fuzzy
 msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
 msgstr ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] ulazi na \r!c\r%Q\r [implicitno +%c promena umoda]"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:690
+#: src/kvirc/sparser/kvi_sp_literal.cpp:698
 msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%Q"
 "\r [%Q@\r!h\r%Q\r]: %Q"
@@ -46,33 +46,33 @@ msgstr ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je upravo izba�n sa \r!c\r%Q\r od \r!n\r%Q\r [%Q@"
 "\r!h\r%Q\r] :%Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:326
+#: src/kvirc/sparser/kvi_sp_literal.cpp:334
 #, fuzzy
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] upravo ulazi na \r!c\r%Q\r"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:408
+#: src/kvirc/sparser/kvi_sp_literal.cpp:416
 #, fuzzy
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je napustio \r!c\r%Q\r :%s"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:404
+#: src/kvirc/sparser/kvi_sp_literal.cpp:412
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r: %Q"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je napustio \r!c\r%Q\r :%Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:554
-#: src/kvirc/sparser/kvi_sp_literal.cpp:570
+#: src/kvirc/sparser/kvi_sp_literal.cpp:562
+#: src/kvirc/sparser/kvi_sp_literal.cpp:578
 #, fuzzy
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has quit IRC: %Q"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je prekinuo IRC %Q%s"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1557
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1572
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] invites you to channel \r!c\r%Q\r (%Q)"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] vas poziva na kanal \r!c\r%Q\r (%Q)"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1440
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1493
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1513
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1455
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1508
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1528
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je sad poznat kao \r!n\r%Q\r"
 
@@ -82,42 +82,42 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je sad poznat kao \r!n\r%Q\r"
 msgid "\r!n\r%Q\r invited %Q into channel %Q"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] vas poziva na kanal \r!c\r%Q\r (%Q)"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:426
+#: src/kvirc/sparser/kvi_sp_literal.cpp:434
 #, fuzzy
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je upravo napustio \r!c\r%Q\r :%s"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:422
+#: src/kvirc/sparser/kvi_sp_literal.cpp:430
 #, fuzzy
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] je upravo napustio \r!c\r%Q\r :%Q"
 
-#: src/kvirc/ui/kvi_query.cpp:238
+#: src/kvirc/ui/kvi_query.cpp:255
 #, fuzzy
 msgid " (%1 hops)"
 msgstr " (%d skokova)</nobr>"
 
-#: src/kvirc/ui/kvi_query.cpp:448 src/kvirc/ui/kvi_console.cpp:1096
-#: src/kvirc/ui/kvi_channel.cpp:1005
+#: src/kvirc/ui/kvi_channel.cpp:1046 src/kvirc/ui/kvi_console.cpp:1096
+#: src/kvirc/ui/kvi_query.cpp:456
 msgid " on "
 msgstr " na "
 
-#: src/kvirc/ui/kvi_ircview.cpp:696
+#: src/kvirc/ui/kvi_ircview_loghandling.cpp:212
 msgid "### End of existing data buffer."
 msgstr "### Kraj postoje�g bufera podataka."
 
-#: src/kvirc/ui/kvi_ircview.cpp:692
+#: src/kvirc/ui/kvi_ircview_loghandling.cpp:208
 msgid "### Existing data buffer:"
 msgstr "### Postoje� bufer podataka:"
 
-#: src/kvirc/ui/kvi_ircview.cpp:688
-#, c-format
-msgid "### Log session started at %s ###"
+#: src/kvirc/ui/kvi_ircview_loghandling.cpp:204
+#, fuzzy
+msgid "### Log session started at %1 ###"
 msgstr "### Sesija beleenja pokrenuta u %s ###"
 
-#: src/kvirc/ui/kvi_ircview.cpp:532
-#, c-format
-msgid "### Log session terminated at %s ###"
+#: src/kvirc/ui/kvi_ircview_loghandling.cpp:50
+#, fuzzy
+msgid "### Log session terminated at %1 ###"
 msgstr "### Sesija beleenja prekinuta u %s ###"
 
 #: src/kvilib/core/kvi_qstring.cpp:167
@@ -145,24 +145,24 @@ msgstr "0 bajtova"
 msgid "%1 hops"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:164
+#: src/kvirc/ui/kvi_query.cpp:176
 msgid "%1 is %2"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:162
+#: src/kvirc/ui/kvi_query.cpp:174
 msgid "%1 is %2 (%3)"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:187
+#: src/kvirc/ui/kvi_query.cpp:199
 msgid "%1 is probably away"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:180
+#: src/kvirc/ui/kvi_query.cpp:192
 #, fuzzy
 msgid "%1 is using irc server: %2"
 msgstr "<nobr>Koristi server <b>%1</b>"
 
-#: src/kvirc/ui/kvi_query.cpp:178
+#: src/kvirc/ui/kvi_query.cpp:190
 #, fuzzy
 msgid "%1 is using irc server: %2 (%3 hops)"
 msgstr "<nobr>Koristi server <b>%1</b>"
@@ -188,41 +188,41 @@ msgstr "%Q %S zahtev od %Q [%Q@%Q] (%Q): ignorisan (flood limit ostvaren)"
 msgid "%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"
 msgstr "%Q PING odgovor od %Q [%Q@%Q]: ~ %u sekundi %u msekundi"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1788
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1835
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1803
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1850
 msgid "%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"
 msgstr "%Q [%Q@%Q] je postavio na kanalu \r!m%c%c\rmod %c%c\r"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1755
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1770
 msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
 msgstr "%Q [%Q@%Q] je postavio na kanalu \r!m-l\rograni�nje na %Q\r"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1732
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1747
 msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""
 msgstr "%Q [%Q@%Q] je postavio klju�kanala u \"\r!m-k\r%Q\r\""
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1864
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1879
 msgid "%Q [%Q@%Q] has set channel mode %s"
 msgstr "%Q [%Q@%Q] je postavio mod kanala %s"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1820
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1835
 #, fuzzy
 msgid "%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"
 msgstr "%Q [%Q@%Q] je postavio mod %ce \r!m%ce\r%c\r"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1780
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1795
 msgid "%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"
 msgstr "%Q [%Q@%Q] je postavio mod %ce \r!m%ce\r%Q\r"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1861
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1876
 msgid "%Q [%Q@%Q] has set mode %s %Q"
 msgstr "%Q [%Q@%Q] je postavio mod %s %Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1735
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1750
 msgid "%Q [%Q@%Q] has unset the channel key"
 msgstr "%Q [%Q@%Q] je sklonio klju�kanala"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1758
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1773
 msgid "%Q [%Q@%Q] has unset the channel limit"
 msgstr "%Q [%Q@%Q] je uklonio ograni�nje kanala"
 
@@ -231,7 +231,7 @@ msgstr "%Q [%Q@%Q] je uklonio ograni�nje kanala"
 msgid "%Q changes avatar to %s"
 msgstr "%Q [%Q@%Q] menja avatar u  %s (%Q bajtova, %Q %s)"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:668
+#: src/kvirc/kernel/kvi_irccontext.cpp:669
 #, fuzzy
 msgid "%Q established [%s (%s:%u)]"
 msgstr "%w uspostavljen [%s (%s:%u)]"
@@ -346,7 +346,7 @@ msgstr "%c\r!n\r%Q\r%c - informacije: %Q"
 msgid "%c\r!s\r%s\r%c's time is %Q"
 msgstr "[\r!s\r%s\r]: %s"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:598
+#: src/kvirc/kernel/kvi_irccontext.cpp:599
 #, c-format
 msgid "%d"
 msgstr ""
@@ -355,7 +355,7 @@ msgstr ""
 msgid "%d matches: %Q"
 msgstr "%d podudara: %Q"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:600
+#: src/kvirc/kernel/kvi_irccontext.cpp:601
 #, c-format
 msgid "%d of %d"
 msgstr ""
@@ -365,7 +365,7 @@ msgstr ""
 msgid "%d properties listed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_irclink.cpp:381
+#: src/kvirc/kernel/kvi_irclink.cpp:384
 #, fuzzy, c-format
 msgid "%s established [%s (%s:%u)]"
 msgstr "%w uspostavljen [%s (%s:%u)]"
@@ -478,7 +478,7 @@ msgstr "Markeri"
 msgid "&Filter:"
 msgstr "Filter"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:135
+#: src/kvirc/ui/kvi_ircviewtools.cpp:137
 #, fuzzy
 msgid "&Find Next"
 msgstr "&Na� tekst"
@@ -496,11 +496,11 @@ msgstr ""
 msgid "&Help"
 msgstr "&Pomo"
 
-#: src/kvirc/ui/kvi_menubar.cpp:118
+#: src/kvirc/ui/kvi_menubar.cpp:117
 msgid "&Help Browser (Panel)"
 msgstr "&Pomo�(stati�i �ta�"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:181
+#: src/kvirc/ui/kvi_ircviewtools.cpp:180
 #, fuzzy
 msgid "&Load From..."
 msgstr "U�tavanje ikona..."
@@ -521,7 +521,7 @@ msgstr "Ne"
 msgid "&OK"
 msgstr "OK"
 
-#: src/kvirc/ui/kvi_menubar.cpp:262 src/kvirc/ui/kvi_menubar.cpp:270
+#: src/kvirc/ui/kvi_menubar.cpp:260 src/kvirc/ui/kvi_menubar.cpp:268
 msgid "&Other..."
 msgstr ""
 
@@ -535,7 +535,7 @@ msgstr "Prenesi"
 msgid "&Preview"
 msgstr "&Pita"
 
-#: src/kvirc/ui/kvi_menubar.cpp:253
+#: src/kvirc/ui/kvi_menubar.cpp:251
 msgid "&Quit"
 msgstr "&Zavri"
 
@@ -543,7 +543,7 @@ msgstr "&Zavri"
 msgid "&Red"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:120
+#: src/kvirc/ui/kvi_ircviewtools.cpp:122
 #, fuzzy
 msgid "&Regular expression"
 msgstr "Regularni izraz"
@@ -553,12 +553,12 @@ msgstr "Regularni izraz"
 msgid "&Restore"
 msgstr "&Obnovi"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:185
+#: src/kvirc/ui/kvi_ircviewtools.cpp:184
 #, fuzzy
 msgid "&Save As..."
 msgstr "S&a�vaj kao..."
 
-#: src/kvirc/ui/kvi_menubar.cpp:202
+#: src/kvirc/ui/kvi_menubar.cpp:200
 msgid "&Save Configuration"
 msgstr "&Sa�vaj podeavanja"
 
@@ -576,7 +576,7 @@ msgstr "Veli�na"
 msgid "&Tile Windows"
 msgstr "&Terminal prozor"
 
-#: src/kvirc/ui/kvi_menubar.cpp:125
+#: src/kvirc/ui/kvi_menubar.cpp:124
 msgid "&Tip of the Day"
 msgstr "&Da li ste znali..."
 
@@ -638,8 +638,8 @@ msgstr "(DNS Interni) Nepodran tip priklju�a"
 msgid "(Matched by"
 msgstr ""
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:610
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:647 src/kvirc/ui/kvi_channel.cpp:1557
+#: src/kvirc/ui/kvi_channel.cpp:1632 src/kvirc/sparser/kvi_sp_numeric.cpp:610
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:647
 msgid "(Unknown)"
 msgstr "(Nepoznat)"
 
@@ -648,31 +648,31 @@ msgstr "(Nepoznat)"
 msgid "(unknown)"
 msgstr "(Nepoznat)"
 
-#: src/kvirc/kernel/kvi_options.cpp:736
+#: src/kvirc/kernel/kvi_options.cpp:742
 msgid "+I mode change"
 msgstr "+i promena moda"
 
-#: src/kvirc/kernel/kvi_options.cpp:732
+#: src/kvirc/kernel/kvi_options.cpp:738
 msgid "+b mode change"
 msgstr "+b promena moda"
 
-#: src/kvirc/kernel/kvi_options.cpp:734
+#: src/kvirc/kernel/kvi_options.cpp:740
 msgid "+e mode change"
 msgstr "+e promena moda"
 
-#: src/kvirc/kernel/kvi_options.cpp:725
+#: src/kvirc/kernel/kvi_options.cpp:731
 msgid "+o mode change"
 msgstr "+o promena moda"
 
-#: src/kvirc/kernel/kvi_options.cpp:727
+#: src/kvirc/kernel/kvi_options.cpp:733
 msgid "+v mode change"
 msgstr "+v promena moda"
 
-#: src/kvirc/ui/kvi_query.cpp:240
+#: src/kvirc/ui/kvi_query.cpp:258
 msgid ", probably away"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:236
+#: src/kvirc/ui/kvi_query.cpp:252
 #, fuzzy
 msgid ", using server %1"
 msgstr "<nobr>Koristi server <b>%1</b>"
@@ -681,24 +681,24 @@ msgstr "<nobr>Koristi server <b>%1</b>"
 msgid "- d -- h -- m -- s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:737
+#: src/kvirc/kernel/kvi_options.cpp:743
 msgid "-I mode change"
 msgstr "-i promena moda"
 
-#: src/kvirc/kernel/kvi_options.cpp:733
+#: src/kvirc/kernel/kvi_options.cpp:739
 msgid "-b mode change"
 msgstr "-b promena moda"
 
-#: src/kvirc/kernel/kvi_options.cpp:735
+#: src/kvirc/kernel/kvi_options.cpp:741
 #, fuzzy
 msgid "-e mode change"
 msgstr "-o promena moda"
 
-#: src/kvirc/kernel/kvi_options.cpp:726
+#: src/kvirc/kernel/kvi_options.cpp:732
 msgid "-o mode change"
 msgstr "-o promena moda"
 
-#: src/kvirc/kernel/kvi_options.cpp:728
+#: src/kvirc/kernel/kvi_options.cpp:734
 msgid "-v mode change"
 msgstr "-v promena moda"
 
@@ -752,38 +752,38 @@ msgstr ": nepoznat korisni�i mod"
 msgid "<Ctrl+Return>; submits, <Ctrl+Backspace>; hides this editor"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:5191
+#: src/kvirc/ui/kvi_ircview_events.cpp:794
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
 "<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:5197
+#: src/kvirc/ui/kvi_ircview_events.cpp:800
 #, fuzzy
 msgid ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-"
 "click to join %Q<br>Right click to view other options"
 msgstr "Dupli klik za ulazak na %Q<br>Desni klik za pregled ostalih opcija"
 
-#: src/kvirc/ui/kvi_channel.cpp:1577
+#: src/kvirc/ui/kvi_channel.cpp:1656
 #, fuzzy
 msgid "<b>Channel mode:</b>"
 msgstr "<b>Mod kanala</b><br>"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5217
+#: src/kvirc/ui/kvi_ircview_events.cpp:820
 msgid "<b>Double-click:</b><br>%Q"
 msgstr "<b>Dupli klik:</b><br>%Q"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:310
+#: src/kvirc/ui/kvi_statusbar.cpp:300
 #, fuzzy
 msgid "<b>Double-click</b> to get network informations"
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5222
+#: src/kvirc/ui/kvi_ircview_events.cpp:825
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Srednji klik:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:770
+#: src/kvirc/kernel/kvi_app.cpp:765
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -801,26 +801,26 @@ msgid ""
 "\"Scripting\" menu.</font>"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbar.cpp:314
+#: src/kvirc/ui/kvi_statusbar.cpp:304
 msgid "<b>Right click</b> to add/remove applets"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:5227
+#: src/kvirc/ui/kvi_ircview_events.cpp:830
 msgid "<b>Right-click:</b><br>%Q"
 msgstr "<b>Desni klik:</b><br>%Q"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:302
+#: src/kvirc/ui/kvi_statusbar.cpp:292
 msgid ""
 "<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around<br><b>Right "
 "click</b> to see the other options"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:1591
+#: src/kvirc/ui/kvi_channel.cpp:1672
 #, fuzzy, c-format
 msgid "<br><b>Key:</b> %s"
 msgstr "<br>klju� %s"
 
-#: src/kvirc/ui/kvi_channel.cpp:1598
+#: src/kvirc/ui/kvi_channel.cpp:1681
 #, fuzzy, c-format
 msgid "<br><b>Limit:</b> %s"
 msgstr "<br>ograni�nje: %s"
@@ -854,7 +854,7 @@ msgstr "nema konekcije"
 msgid "Aborted"
 msgstr "Prekini"
 
-#: src/kvirc/ui/kvi_menubar.cpp:129
+#: src/kvirc/ui/kvi_menubar.cpp:128
 msgid "About &KVIrc"
 msgstr "O &KVIrc-u..."
 
@@ -909,7 +909,7 @@ msgstr ""
 msgid "Add"
 msgstr "Dodaj"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:365
+#: src/kvirc/ui/kvi_statusbar.cpp:355
 #, fuzzy
 msgid "Add Applet"
 msgstr "Dodaj osobinu"
@@ -933,7 +933,7 @@ msgstr "Adresa se ve�koristi"
 msgid "Address:"
 msgstr "IP Adresa:"
 
-#: src/kvirc/ui/kvi_optionswidget.cpp:671
+#: src/kvirc/ui/kvi_optionswidget.cpp:673
 #, fuzzy
 msgid "Advanced..."
 msgstr "Napredno ..."
@@ -982,46 +982,46 @@ msgstr ""
 msgid "Allows you to manage the themes"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:790
+#: src/kvirc/kernel/kvi_options.cpp:796
 #, fuzzy
 msgid "Am de-halfop'd"
 msgstr "me de-half-oped"
 
-#: src/kvirc/kernel/kvi_options.cpp:814
+#: src/kvirc/kernel/kvi_options.cpp:820
 #, fuzzy
 msgid "Am de-userop'd"
 msgstr "me de-oped"
 
-#: src/kvirc/kernel/kvi_options.cpp:787
+#: src/kvirc/kernel/kvi_options.cpp:793
 #, fuzzy
 msgid "Am deop'd"
 msgstr "me de-oped"
 
-#: src/kvirc/kernel/kvi_options.cpp:788
+#: src/kvirc/kernel/kvi_options.cpp:794
 #, fuzzy
 msgid "Am devoiced"
 msgstr "me de-voiced"
 
-#: src/kvirc/kernel/kvi_options.cpp:789
+#: src/kvirc/kernel/kvi_options.cpp:795
 #, fuzzy
 msgid "Am halfop'd"
 msgstr "me half-oped"
 
-#: src/kvirc/kernel/kvi_options.cpp:784
+#: src/kvirc/kernel/kvi_options.cpp:790
 #, fuzzy
 msgid "Am kicked"
 msgstr "ja isteran"
 
-#: src/kvirc/kernel/kvi_options.cpp:785
+#: src/kvirc/kernel/kvi_options.cpp:791
 #, fuzzy
 msgid "Am op'd"
 msgstr "me oped"
 
-#: src/kvirc/kernel/kvi_options.cpp:813
+#: src/kvirc/kernel/kvi_options.cpp:819
 msgid "Am userop'd"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:786
+#: src/kvirc/kernel/kvi_options.cpp:792
 #, fuzzy
 msgid "Am voiced"
 msgstr "me voiced"
@@ -1045,7 +1045,7 @@ msgstr "Jo jedna konekcija je u toku"
 msgid "Another connection is already in progress in the selected IRC context"
 msgstr "Jo jedna konekcija je u toku"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:202
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:193
 #, fuzzy
 msgid "Apply to all IRC Contexts"
 msgstr "&Nov irc kontekst"
@@ -1078,16 +1078,16 @@ msgstr "Pokuavam %w ka %s (%s) na portu %u"
 msgid "Attempting to 'bounce' on proxy %s on port %u (protocol %s)"
 msgstr "Pokuavam 'skok' na proksi %s na portu %u (protokol %s)"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:641
+#: src/kvirc/sparser/kvi_sp_literal.cpp:649
 msgid "Attempting to rejoin \r!c\r%Q\r..."
 msgstr "Pokuavam da ponovo u�m na \r!c\r%Q\r"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1336
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1360
 #, fuzzy
 msgid "Auto-joining network specific channels"
 msgstr "Koristim serverski naveden nadimak (%s)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1370
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1394
 #, fuzzy
 msgid "Auto-joining server specific channels"
 msgstr "Koristim serverski naveden nadimak (%s)"
@@ -1100,31 +1100,31 @@ msgstr "Mogu� modovi kanala:"
 msgid "Available user modes:"
 msgstr "Mogu� modovi korisnika:"
 
-#: src/kvirc/kernel/kvi_options.cpp:720
+#: src/kvirc/kernel/kvi_options.cpp:726
 #, fuzzy
 msgid "Avatar change"
 msgstr "promena avatara"
 
-#: src/kvirc/kernel/kvi_app.cpp:981
+#: src/kvirc/kernel/kvi_app.cpp:976
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbar.cpp:632
+#: src/kvirc/ui/kvi_statusbar.cpp:602
 #, fuzzy
 msgid "Away"
 msgstr "&Odsutnost"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:229
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:220
 #, fuzzy
 msgid "Away Indicator"
 msgstr "Ime alijasa"
 
-#: src/kvirc/kernel/kvi_options.cpp:773
+#: src/kvirc/kernel/kvi_options.cpp:779
 #, fuzzy
 msgid "Away message"
 msgstr "poruka odsutnosti"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:257
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:248
 #, fuzzy
 msgid "Away since"
 msgstr "Nadimak"
@@ -1143,20 +1143,16 @@ msgstr ""
 msgid "Background"
 msgstr "Pozadina"
 
-#: src/kvirc/kernel/kvi_customtoolbardescriptor.cpp:231
-msgid "Backward compatibility action for toolbar.define"
-msgstr ""
-
 #: src/kvilib/core/kvi_error.cpp:90
 msgid "Bad file descriptor"
 msgstr "Lo opisiva�fajla"
 
-#: src/kvirc/ui/kvi_channel.cpp:159
+#: src/kvirc/ui/kvi_channel.cpp:156
 #, fuzzy
 msgid "Ban Editor"
 msgstr "Tekstualni editor"
 
-#: src/kvirc/ui/kvi_channel.cpp:164
+#: src/kvirc/ui/kvi_channel.cpp:161
 #, fuzzy
 msgid "Ban Exception Editor"
 msgstr "Uklju�/isklju� editor izuzetaka zabrana"
@@ -1171,7 +1167,7 @@ msgstr "maske izuzetaka zabrane"
 msgid "Ban exception masks"
 msgstr "maske izuzetaka zabrane"
 
-#: src/kvirc/kernel/kvi_options.cpp:793
+#: src/kvirc/kernel/kvi_options.cpp:799
 #, fuzzy
 msgid "Ban exception matching my mask"
 msgstr "izuzetak zabrane (ban-a) po masci"
@@ -1186,22 +1182,22 @@ msgstr "Lista URL zabrane"
 msgid "Ban masks"
 msgstr "maske zabrana"
 
-#: src/kvirc/kernel/kvi_options.cpp:791
+#: src/kvirc/kernel/kvi_options.cpp:797
 #, fuzzy
 msgid "Ban matching my mask"
 msgstr "poklapanje zabrane (ban) po masci"
 
-#: src/kvirc/kernel/kvi_options.cpp:794
+#: src/kvirc/kernel/kvi_options.cpp:800
 #, fuzzy
 msgid "Ban unexception matching my mask"
 msgstr "neizuzetna zabrana po masci"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:338
+#: src/kvirc/kernel/kvi_ircsocket.cpp:350
 #, c-format
 msgid "Binding to local address %s"
 msgstr "Ugra�vanje na lokalnu adresu %s"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:342
+#: src/kvirc/kernel/kvi_ircsocket.cpp:354
 #, c-format
 msgid ""
 "Binding to local address %s failed: the kernel will choose the correct "
@@ -1210,7 +1206,7 @@ msgstr ""
 "Ugra�vanje na lokalnu adresu %s neuspeno: kernel ce izabrati korektan "
 "interfejs"
 
-#: src/kvirc/kernel/kvi_options.cpp:828
+#: src/kvirc/kernel/kvi_options.cpp:834
 #, fuzzy
 msgid "BitTorrent message"
 msgstr "ident poruka"
@@ -1227,20 +1223,20 @@ msgstr "Blok ure�j"
 msgid "Bookmarks"
 msgstr "Markeri"
 
-#: src/kvirc/kernel/kvi_options.cpp:1214
+#: src/kvirc/kernel/kvi_options.cpp:1220
 msgid "Boolean options (1/0)"
 msgstr "Boolean opcije (1/0)"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:87
+#: src/kvirc/ui/kvi_toolbar.cpp:93
 msgid "Bottom"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:783
+#: src/kvirc/kernel/kvi_options.cpp:789
 #, fuzzy
 msgid "Broadcast notice"
 msgstr "obavetenje prenosa"
 
-#: src/kvirc/kernel/kvi_options.cpp:782
+#: src/kvirc/kernel/kvi_options.cpp:788
 #, fuzzy
 msgid "Broadcast private message"
 msgstr "privatna poruka prenosa"
@@ -1302,7 +1298,7 @@ msgstr "Naziv"
 msgid "By Size"
 msgstr "Veli�na"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:128
+#: src/kvirc/ui/kvi_ircviewtools.cpp:130
 #, fuzzy
 msgid "C&ase sensitive"
 msgstr "Razlikuj velika i mala slova"
@@ -1312,28 +1308,28 @@ msgstr "Razlikuj velika i mala slova"
 msgid "CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "CTCP ACTION od %Q [%Q@%Q] ka nepoznatoj meti %Q: %s"
 
-#: src/kvirc/ui/kvi_ctcppagedialog.cpp:45
+#: src/kvirc/ui/kvi_ctcppagedialog.cpp:48
 #, fuzzy
 msgid "CTCP Page - KVIrc"
 msgstr "CTCP Page"
 
-#: src/kvirc/kernel/kvi_options.cpp:714
+#: src/kvirc/kernel/kvi_options.cpp:720
 msgid "CTCP reply"
 msgstr "CTCP odgovor"
 
-#: src/kvirc/kernel/kvi_options.cpp:717
+#: src/kvirc/kernel/kvi_options.cpp:723
 msgid "CTCP request flood warning"
 msgstr "CTCP zahtev upozorenje na poplavu"
 
-#: src/kvirc/kernel/kvi_options.cpp:716
+#: src/kvirc/kernel/kvi_options.cpp:722
 msgid "CTCP request ignored"
 msgstr "CTCP zahtev ignorisan"
 
-#: src/kvirc/kernel/kvi_options.cpp:715
+#: src/kvirc/kernel/kvi_options.cpp:721
 msgid "CTCP request replied"
 msgstr "CTCP zahtev odgovoren"
 
-#: src/kvirc/kernel/kvi_options.cpp:718
+#: src/kvirc/kernel/kvi_options.cpp:724
 msgid "CTCP request unknown"
 msgstr "CTCP zahtev nepoznat"
 
@@ -1408,7 +1404,7 @@ msgstr "Ne mogu da na�m IP adresu servera: %Q"
 msgid "Can't kill a builtin class"
 msgstr "Ne mogu da ubijem ugra�nu klasu"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:481
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:484
 msgid "Can't kill the timer '%Q' since it is not running"
 msgstr "Ne mogu da na�m spoljni popup '%Q': ignoriem"
 
@@ -1421,21 +1417,21 @@ msgstr "Ne mogu da otvorim fajl %s za upisivanje"
 msgid "Can't open file for appending"
 msgstr "Ne mogu da otvof\brim fajl za dodavanje\b"
 
-#: src/kvilib/file/kvi_packagefile.cpp:679
-#: src/kvilib/file/kvi_packagefile.cpp:932 src/kvilib/core/kvi_error.cpp:143
+#: src/kvilib/core/kvi_error.cpp:143 src/kvilib/file/kvi_packagefile.cpp:679
+#: src/kvilib/file/kvi_packagefile.cpp:932
 msgid "Can't open file for reading"
 msgstr "Ne mogu da otvorim fajl za �tanje"
 
-#: src/kvilib/file/kvi_packagefile.cpp:493 src/kvilib/core/kvi_error.cpp:140
+#: src/kvilib/core/kvi_error.cpp:140 src/kvilib/file/kvi_packagefile.cpp:493
 msgid "Can't open file for writing"
 msgstr "Ne mogu da otvorim fajl za upisivanje"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:280
+#: src/kvirc/ui/kvi_ircviewtools.cpp:273
 #, fuzzy
 msgid "Can't open the filter file %Q for writing"
 msgstr "Ne mogu da otvorim filter fajl %s za pisanje"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:257
+#: src/kvirc/ui/kvi_ircviewtools.cpp:250
 #, fuzzy, c-format
 msgid "Can't open the filter file %s for reading."
 msgstr "Ne mogu da otvorim filter fajla %s za �tanje"
@@ -1445,13 +1441,13 @@ msgstr "Ne mogu da otvorim filter fajla %s za �tanje"
 msgid "Can't override the builtin class \"%Q\""
 msgstr "Ne mogu da ubijem ugra�nu klasu"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:743
+#: src/kvirc/kernel/kvi_ircconnection.cpp:763
 #, fuzzy
 msgid "Can't resolve local host address, using default 127.0.0.1"
 msgstr ""
 "Ne mogu da reim adresu lokalnog hosta : koristim predefinisanu 127.0.0.1"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:736
+#: src/kvirc/kernel/kvi_ircconnection.cpp:756
 msgid "Can't resolve local host address, using user supplied one (%Q)"
 msgstr ""
 "Ne mogu da reim adresu lokalnog hosta : koristim postavku krisnika (%Q)"
@@ -1468,7 +1464,7 @@ msgstr "Ne mogu da poaljem prazan fajl"
 msgid "Can't setup a listening socket : bind failed"
 msgstr "Ne mogu da postavim sluaju� priklju�k: dodeljivanje neuspeno"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:863
+#: src/kvirc/kernel/kvi_ircconnection.cpp:887
 #, fuzzy
 msgid "Can't start the DNS slave thread"
 msgstr "Ne mogu da pokrenem DNS traganje"
@@ -1477,9 +1473,10 @@ msgstr "Ne mogu da pokrenem DNS traganje"
 msgid "Can't unload the module: it has locked itself in memory"
 msgstr ""
 
+#: src/kvilib/tal/kvi_tal_wizard.cpp:181
 #: src/kvilib/file/kvi_packagefile.cpp:142
-#: src/kvilib/tal/kvi_tal_wizard.cpp:181 src/kvilib/system/kvi_locale.cpp:1025
-#: src/kvirc/ui/kvi_imagedialog.cpp:154 src/kvirc/ui/kvi_maskeditor.cpp:87
+#: src/kvilib/system/kvi_locale.cpp:1025 src/kvirc/ui/kvi_maskeditor.cpp:87
+#: src/kvirc/ui/kvi_imagedialog.cpp:154
 msgid "Cancel"
 msgstr "Poniti"
 
@@ -1541,27 +1538,27 @@ msgstr "Razlikuj velika i mala slova"
 msgid "Censor swear words"
 msgstr "cenzurisane re�"
 
-#: src/kvirc/kernel/kvi_options.cpp:807
+#: src/kvirc/kernel/kvi_options.cpp:813
 #, fuzzy
 msgid "Chan admin status set"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:808
+#: src/kvirc/kernel/kvi_options.cpp:814
 #, fuzzy
 msgid "Chan admin status unset"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:816
+#: src/kvirc/kernel/kvi_options.cpp:822
 #, fuzzy
 msgid "Chan owner status set"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:817
+#: src/kvirc/kernel/kvi_options.cpp:823
 #, fuzzy
 msgid "Chan owner status unset"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:772
+#: src/kvirc/kernel/kvi_options.cpp:778
 msgid "ChanServ message"
 msgstr "ChanServ poruka"
 
@@ -1570,8 +1567,8 @@ msgstr "ChanServ poruka"
 msgid "Change Nickname"
 msgstr "Promeni nadimak pri odsutnosti"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:167
 #: src/kvirc/kernel/kvi_ircconnection.cpp:175
+#: src/kvirc/kernel/kvi_ircconnection.cpp:185
 #, fuzzy
 msgid "Changed text encoding to %Q"
 msgstr "Izaberi fajlove za slanje"
@@ -1595,22 +1592,22 @@ msgstr "CTCP Kanala"
 msgid "Channel Modes"
 msgstr "Modovi kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:749
+#: src/kvirc/kernel/kvi_options.cpp:755
 #, fuzzy
 msgid "Channel creation time reply"
 msgstr "odgovor vremena stvaranja"
 
-#: src/kvirc/kernel/kvi_options.cpp:753
+#: src/kvirc/kernel/kvi_options.cpp:759
 #, fuzzy
 msgid "Channel encrypted private message"
 msgstr "ifrovana privatna poruka kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:730
+#: src/kvirc/kernel/kvi_options.cpp:736
 #, fuzzy
 msgid "Channel key change"
 msgstr "promena klju� kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:731
+#: src/kvirc/kernel/kvi_options.cpp:737
 #, fuzzy
 msgid "Channel limit change"
 msgstr "promena limita kanala"
@@ -1620,12 +1617,12 @@ msgstr "promena limita kanala"
 msgid "Channel list begin: channel, users, topic"
 msgstr "Po�tak liste kanala: Kamal , korisnika , naslov"
 
-#: src/kvirc/kernel/kvi_options.cpp:775
+#: src/kvirc/kernel/kvi_options.cpp:781
 #, fuzzy
 msgid "Channel list message"
 msgstr "poruka liste kanala"
 
-#: src/kvirc/ui/kvi_channel.cpp:132
+#: src/kvirc/ui/kvi_channel.cpp:129
 msgid "Channel mode"
 msgstr "Mod kanala"
 
@@ -1638,7 +1635,7 @@ msgstr "Mod kanala za \r!c\r%Q\r je %s"
 msgid "Channel name"
 msgstr "Mod kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:764
+#: src/kvirc/kernel/kvi_options.cpp:770
 #, fuzzy
 msgid "Channel notice"
 msgstr "obavetenje kanala"
@@ -1653,12 +1650,12 @@ msgstr "Operatori kanala"
 msgid "Channel password"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:712
+#: src/kvirc/kernel/kvi_options.cpp:718
 #, fuzzy
 msgid "Channel private message"
 msgstr "privatna poruka kanala"
 
-#: src/kvirc/ui/kvi_channel.cpp:1683
+#: src/kvirc/ui/kvi_channel.cpp:1742
 #, c-format
 msgid "Channel synchronized in %d.%d seconds"
 msgstr "Kanal sinhronizovan za %d.%d sekundi"
@@ -1680,17 +1677,17 @@ msgstr "Kanal je kreiran u %Q"
 msgid "Char device"
 msgstr "Karakter ure�j"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:698
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:689
 #, fuzzy
 msgid "Check on startup"
 msgstr "status konekcije"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3978
+#: src/kvirc/ui/kvi_ircview.cpp:2101
 #, fuzzy
 msgid "Choose Temporary Background..."
 msgstr "Izaberite jednu sliku..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:3977
+#: src/kvirc/ui/kvi_ircview.cpp:2100
 #, fuzzy
 msgid "Choose Temporary Font..."
 msgstr "Izaberite jednu sliku..."
@@ -1719,7 +1716,7 @@ msgstr "Izaberite jednu sliku..."
 msgid "Choose image ..."
 msgstr "Izaberite jednu sliku..."
 
-#: src/kvirc/ui/kvi_ircview.cpp:4016
+#: src/kvirc/ui/kvi_ircview.cpp:2139
 #, fuzzy
 msgid "Choose the background image..."
 msgstr "Globalna slika pozadine"
@@ -1737,11 +1734,11 @@ msgstr "Klasa %s nije definisana"
 msgid "Clear"
 msgstr "O�sti"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3982
+#: src/kvirc/ui/kvi_ircview.cpp:2105
 msgid "Clear Buffer"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:5060
+#: src/kvirc/ui/kvi_ircview_events.cpp:666
 #, fuzzy
 msgid "Click to open this link"
 msgstr "Dupli klik za postavljanje<br>"
@@ -1750,8 +1747,8 @@ msgstr "Dupli klik za postavljanje<br>"
 msgid "Clipboard"
 msgstr ""
 
-#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_window.cpp:766
-#: src/kvirc/ui/kvi_ctcppagedialog.cpp:59
+#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_ctcppagedialog.cpp:62
+#: src/kvirc/ui/kvi_window.cpp:766
 msgid "Close"
 msgstr "Zatvori"
 
@@ -1765,7 +1762,7 @@ msgstr "Zatvori sve upite"
 msgid "Color free (no ANSI colors)"
 msgstr "bez boje (nema ANSI boja)"
 
-#: src/kvirc/kernel/kvi_options.cpp:1217
+#: src/kvirc/kernel/kvi_options.cpp:1223
 msgid "Color options (#RRGGBB)"
 msgstr "Opcije boja (#RRGGBB)"
 
@@ -1778,15 +1775,15 @@ msgstr ""
 msgid "Commit Changes"
 msgstr "Izvri promene"
 
-#: src/kvirc/ui/kvi_query.cpp:380
+#: src/kvirc/ui/kvi_query.cpp:405
 msgid "Common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Uobi�jeni kanali za \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
-#: src/kvirc/ui/kvi_query.cpp:192
+#: src/kvirc/ui/kvi_query.cpp:204
 msgid "Common channels with %1: %2"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:244
+#: src/kvirc/ui/kvi_query.cpp:263
 #, fuzzy
 msgid "Common channels: %2"
 msgstr "Komandna linija: %s"
@@ -1865,16 +1862,16 @@ msgstr "Konekcija"
 msgid "Connected since"
 msgstr "Povezivanje"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:669
+#: src/kvirc/kernel/kvi_irccontext.cpp:670
 msgid "Connection"
 msgstr "Konekcija"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:632
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:623
 #, fuzzy
 msgid "Connection Timer"
 msgstr "Isteklo je vreme za povezivanje"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:576
+#: src/kvirc/kernel/kvi_irccontext.cpp:577
 #, c-format
 msgid "Connection attempt failed [%s]"
 msgstr "Neuspean pokuaj ka�nja [%s]"
@@ -1884,7 +1881,7 @@ msgstr "Neuspean pokuaj ka�nja [%s]"
 msgid "Connection established, sending request"
 msgstr "Povei na izabrano"
 
-#: src/kvirc/ui/kvi_console.cpp:1069 src/kvirc/ui/kvi_statusbar.cpp:728
+#: src/kvirc/ui/kvi_console.cpp:1069 src/kvirc/ui/kvi_statusbar.cpp:701
 #, fuzzy
 msgid "Connection in progress..."
 msgstr "konektovanje u toku..."
@@ -1897,12 +1894,12 @@ msgstr "Konekcija odbijena"
 msgid "Connection reset by peer"
 msgstr "Konekcija resetovana od peer"
 
-#: src/kvirc/kernel/kvi_options.cpp:700
+#: src/kvirc/kernel/kvi_options.cpp:706
 #, fuzzy
 msgid "Connection status"
 msgstr "status konekcije"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:774
+#: src/kvirc/kernel/kvi_irccontext.cpp:775
 #, c-format
 msgid "Connection terminated [%s (%s:%u)]"
 msgstr "Konekcija prekinuta [%s (%s:%u)]"
@@ -1915,18 +1912,18 @@ msgstr "Konekcija kroz HTTP proksi neuspena"
 msgid "Connection timed out"
 msgstr "Isteklo je vreme za povezivanje"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:542
+#: src/kvirc/kernel/kvi_ircconnection.cpp:552
 #, fuzzy
 msgid "Connection to server established"
 msgstr "Povei na izabrano"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:524
-#: src/kvirc/kernel/kvi_ircconnection.cpp:533
+#: src/kvirc/kernel/kvi_ircconnection.cpp:534
+#: src/kvirc/kernel/kvi_ircconnection.cpp:543
 #, fuzzy
 msgid "Connection to server lost"
 msgstr "Isteklo je vreme za povezivanje"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:367
+#: src/kvirc/kernel/kvi_irclink.cpp:370
 #, fuzzy
 msgid "Contacting %Q %s (%s) on port %u"
 msgstr "Kontaktiram %w %s (%s) na portu %u"
@@ -1995,8 +1992,8 @@ msgstr "Iseci"
 msgid "Current IRC URI"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1235
 #: src/kvirc/kernel/kvi_sslmaster.cpp:90
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1274
 msgid "Current transmission cipher"
 msgstr "Trenutna ifra prenoenja"
 
@@ -2009,21 +2006,21 @@ msgstr "&Alati"
 msgid "Customize..."
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:755
+#: src/kvirc/kernel/kvi_options.cpp:761
 msgid "DCC chat message"
 msgstr "DCC poruka za razgovor"
 
-#: src/kvirc/kernel/kvi_options.cpp:742
+#: src/kvirc/kernel/kvi_options.cpp:748
 #, fuzzy
 msgid "DCC error"
 msgstr "DCC greka"
 
-#: src/kvirc/kernel/kvi_options.cpp:741
+#: src/kvirc/kernel/kvi_options.cpp:747
 #, fuzzy
 msgid "DCC message"
 msgstr "ICQ poruka"
 
-#: src/kvirc/kernel/kvi_options.cpp:740
+#: src/kvirc/kernel/kvi_options.cpp:746
 #, fuzzy
 msgid "DCC request"
 msgstr "DCC %s zahtev"
@@ -2034,7 +2031,7 @@ msgstr "DCC %s zahtev"
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "DNS rezultat pregleda za upit \"%s\""
 
-#: src/kvirc/ui/kvi_channel.cpp:723
+#: src/kvirc/ui/kvi_channel.cpp:758
 #, fuzzy
 msgid "Dead channel"
 msgstr "Odbaci izmene"
@@ -2063,7 +2060,7 @@ msgstr "Obrii"
 msgid "Desktop"
 msgstr "Link radne povrine"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:89
+#: src/kvirc/ui/kvi_toolbar.cpp:95
 #, fuzzy
 msgid "Detached"
 msgstr "Odbaci izmene"
@@ -2092,7 +2089,7 @@ msgstr "Direktorijum"
 msgid "Discard Changes"
 msgstr "Odbaci izmene"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:615 src/kvirc/ui/kvi_menubar.cpp:233
+#: src/kvirc/ui/kvi_menubar.cpp:231 src/kvirc/kernel/kvi_coreactions.cpp:615
 msgid "Disconnect"
 msgstr "Prekini vezu"
 
@@ -2116,33 +2113,33 @@ msgstr "DNS upit neuspean"
 msgid "Dns temporaneous fault (try again)"
 msgstr "DNS privremena greka (probaj ponovo)"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:842
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:833
 #, fuzzy
 msgid "Double click to check"
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:341
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:332
 #, fuzzy
 msgid "Double click to enable it"
 msgstr "<br>Dupli klik za editovanje"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:265
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:256
 #, fuzzy
 msgid "Double click to enter away mode"
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:858
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:849
 #, fuzzy
 msgid "Double click to get the lastest version"
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:261
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:252
 #, fuzzy
 msgid "Double click to leave away mode"
 msgstr "<br>Dupli klik za editovanje"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:850
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:854
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:841
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:845
 #, fuzzy
 msgid "Double click to retry"
 msgstr "Dupli klik za postavljanje<br>"
@@ -2152,19 +2149,19 @@ msgstr "Dupli klik za postavljanje<br>"
 msgid "Double-click to edit..."
 msgstr "<br>Dupli klik za editovanje"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5085
+#: src/kvirc/ui/kvi_ircview_events.cpp:690
 #, fuzzy
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Dupli klik za reavanje ovog hosta<br>Desni klik za pregled ostalih opcija"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5062
+#: src/kvirc/ui/kvi_ircview_events.cpp:668
 #, fuzzy
 msgid "Double-click to open this link"
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5113
+#: src/kvirc/ui/kvi_ircview_events.cpp:717
 #, fuzzy
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
 msgstr "Dupli klik za �tanje MOTD-a<br>Desni klik za pregled ostalih opcija"
@@ -2174,18 +2171,18 @@ msgstr "Dupli klik za �tanje MOTD-a<br>Desni klik za pregled ostalih opcija"
 msgid "Double-click to set..."
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5126
+#: src/kvirc/ui/kvi_ircview_events.cpp:730
 #, fuzzy
 msgid "Double-click to set<br>"
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:412
+#: src/kvirc/ui/kvi_statusbar.cpp:402
 msgid ""
 "Drag the applet while holding the Shift or Ctrl key to move it to the "
 "desired position"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:123
+#: src/kvirc/ui/kvi_ircviewtools.cpp:125
 #, fuzzy
 msgid "E&xtended regexp."
 msgstr "Proireni regularni izraz"
@@ -2251,17 +2248,17 @@ msgstr "Omogu� ifrovanje"
 msgid "Encrypt key:"
 msgstr "Klju�za ifrovanje"
 
-#: src/kvirc/kernel/kvi_options.cpp:756
+#: src/kvirc/kernel/kvi_options.cpp:762
 #, fuzzy
 msgid "Encrypted DCC chat message"
 msgstr "ifrovana poruka DCC razgovora"
 
-#: src/kvirc/kernel/kvi_options.cpp:765
+#: src/kvirc/kernel/kvi_options.cpp:771
 #, fuzzy
 msgid "Encrypted channel notice"
 msgstr "ifrovano obavetenje kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:767
+#: src/kvirc/kernel/kvi_options.cpp:773
 #, fuzzy
 msgid "Encrypted query notice"
 msgstr "ifrovano obavetenje kanala"
@@ -2299,7 +2296,12 @@ msgstr "Kraj liste zabrana (ban) za \r!c\r%Q\r"
 msgid "End of help about %Q"
 msgstr "Kraj /WHO liste za %W"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1496
+#: src/kvirc/ui/kvi_channel.cpp:1887 src/kvirc/ui/kvi_query.cpp:884
+#, fuzzy
+msgid "End of log"
+msgstr "Kraj linkova"
+
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1511
 msgid "End of merged output"
 msgstr ""
 
@@ -2353,31 +2355,31 @@ msgstr "Upravlja�doga�ja %Q::%s je prekinut: isklju�jem"
 msgid "Execute Script..."
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1177
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1199
 #, fuzzy
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr "Izvravam raspore�ne \"on connect\" komande specifi�e za server"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1267
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1291
 #, fuzzy
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr "Izvravam raspore�ne \"on connect\" komande specifi�e za server"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1159
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1181
 #, fuzzy
 msgid "Executing scheduled network specific \"on connect\" commands"
 msgstr "Izvravam raspore�ne \"on connect\" komande specifi�e za server"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1249
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1273
 #, fuzzy
 msgid "Executing scheduled network specific \"on login\" commands"
 msgstr "Izvravam raspore�ne \"on connect\" komande specifi�e za server"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1168
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1190
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr "Izvravam raspore�ne \"on connect\" komande specifi�e za server"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1258
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1282
 #, fuzzy
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr "Izvravam raspore�ne \"on connect\" komande specifi�e za server"
@@ -2401,12 +2403,12 @@ msgstr "Ne mogu da napravim priklju�k"
 msgid "Failed to create the target directory"
 msgstr "Neuspeno uklanjanje direktorijuma %s"
 
-#: src/kvirc/kernel/kvi_options.cpp:979
+#: src/kvirc/kernel/kvi_options.cpp:985
 #, fuzzy
 msgid "Failed to create the theme directory"
 msgstr "Neuspeno uklanjanje direktorijuma %s"
 
-#: src/kvirc/kernel/kvi_options.cpp:1075
+#: src/kvirc/kernel/kvi_options.cpp:1081
 #, fuzzy
 msgid "Failed to create the theme subdirectory"
 msgstr "Neuspeno uklanjanje direktorijuma %s"
@@ -2438,7 +2440,7 @@ msgstr ""
 msgid "Failed to load the file '%Q' for parsing"
 msgstr "Ne mogu da otvorim fajl %Q"
 
-#: src/kvirc/ui/kvi_ircview.cpp:4021
+#: src/kvirc/ui/kvi_ircview.cpp:2144
 #, fuzzy
 msgid "Failed to load the selected image"
 msgstr "Ne mogu da otvorim fajl %Q"
@@ -2462,7 +2464,7 @@ msgstr "Nisam uspeo da stavim priklju�k u ne blokiraju� mod"
 msgid "Failed to rename the existing file, please rename manually and retry"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1062 src/kvirc/kernel/kvi_options.cpp:1097
+#: src/kvirc/kernel/kvi_options.cpp:1068 src/kvirc/kernel/kvi_options.cpp:1103
 #, fuzzy
 msgid "Failed to save one of the theme images"
 msgstr "Ne mogu da otvorim fajl %Q"
@@ -2478,7 +2480,7 @@ msgstr "Ne mogu da otvorim fajl %Q"
 msgid "Failed to send an unknown command as /raw"
 msgstr "Posalji nepoznatu komandu kao /RAW"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:158
+#: src/kvirc/kernel/kvi_ircconnection.cpp:164
 msgid "Failed to set the encoding to %Q: mapping not available."
 msgstr ""
 
@@ -2486,7 +2488,7 @@ msgstr ""
 msgid "Failed to set up the link filter \"%Q\", will try with plain IRC"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_irclink.cpp:201
+#: src/kvirc/kernel/kvi_irclink.cpp:204
 #, fuzzy
 msgid "Failed to start the connection: %Q"
 msgstr "Ne mogu da odredim lokalni port"
@@ -2496,7 +2498,7 @@ msgstr "Ne mogu da odredim lokalni port"
 msgid "Failed to start the process"
 msgstr "Ne mogu da po�em da sluam"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:278
+#: src/kvirc/ui/kvi_ircviewtools.cpp:271
 #, fuzzy
 msgid "Failed to write the filter file %Q (IO Error)"
 msgstr "Neuspeno pisanje filter fajla %s (IO greka)"
@@ -2522,22 +2524,22 @@ msgstr "Fajl postoji"
 msgid "File I/O error"
 msgstr "Ulazno-izlazna greka"
 
-#: src/kvirc/kernel/kvi_app.cpp:948
+#: src/kvirc/kernel/kvi_app.cpp:943
 #, fuzzy
 msgid "File download failed"
 msgstr "Direktorijum za svla�nje"
 
-#: src/kvirc/kernel/kvi_app.cpp:950
+#: src/kvirc/kernel/kvi_app.cpp:945
 #, fuzzy
 msgid "File download from %1 failed"
 msgstr "U�taj iz fajla"
 
-#: src/kvirc/kernel/kvi_app.cpp:961
+#: src/kvirc/kernel/kvi_app.cpp:956
 #, fuzzy
 msgid "File download from %1 successfully complete"
 msgstr "U�taj iz fajla"
 
-#: src/kvirc/kernel/kvi_app.cpp:959
+#: src/kvirc/kernel/kvi_app.cpp:954
 #, fuzzy
 msgid "File download successfully complete"
 msgstr "Direktorijum za svla�nje"
@@ -2552,7 +2554,7 @@ msgstr "Ulazno-izlazna greka"
 msgid "File write error"
 msgstr "Ulazno-izlazna greka"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:189
+#: src/kvirc/ui/kvi_ircviewtools.cpp:188
 msgid "Filter"
 msgstr "Filter"
 
@@ -2565,12 +2567,12 @@ msgstr "Filter"
 msgid "Find"
 msgstr "Na�"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:131
+#: src/kvirc/ui/kvi_ircviewtools.cpp:133
 #, fuzzy
 msgid "Find &Prev."
 msgstr "Na� prethodno"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:89
+#: src/kvirc/ui/kvi_ircviewtools.cpp:91
 #, fuzzy
 msgid "Find Text"
 msgstr "&Na� tekst"
@@ -2579,12 +2581,12 @@ msgstr "&Na� tekst"
 msgid "Finish"
 msgstr "Zavri"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:90
+#: src/kvirc/ui/kvi_toolbar.cpp:96
 #, fuzzy
 msgid "Flat"
 msgstr "Filter"
 
-#: src/kvirc/ui/kvi_channel.cpp:923
+#: src/kvirc/ui/kvi_channel.cpp:966
 #, fuzzy
 msgid "Flooded with messages"
 msgstr "poruka razdvajanja"
@@ -2593,7 +2595,7 @@ msgstr "poruka razdvajanja"
 msgid "Floppy"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1222
+#: src/kvirc/kernel/kvi_options.cpp:1228
 msgid "Font options (family,pointsize,style,charset,weight,flags (biusf))"
 msgstr "Opcije fontova (vrsta,veli�na.stil.karakterset,irina,zastavice)"
 
@@ -2616,7 +2618,7 @@ msgstr "odbi CTCP kanala"
 msgid "Foreground"
 msgstr "Boja ispisa"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:501
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:492
 #, fuzzy
 msgid "Format"
 msgstr "Normalni mod"
@@ -2771,32 +2773,32 @@ msgstr "Generalne opcije"
 msgid "Generic actions"
 msgstr "status konekcije"
 
-#: src/kvirc/kernel/kvi_options.cpp:806
+#: src/kvirc/kernel/kvi_options.cpp:812
 #, fuzzy
 msgid "Generic critical error"
 msgstr "Interna greka."
 
-#: src/kvirc/kernel/kvi_options.cpp:805
+#: src/kvirc/kernel/kvi_options.cpp:811
 #, fuzzy
 msgid "Generic error"
 msgstr "Interna greka."
 
-#: src/kvirc/kernel/kvi_options.cpp:802
+#: src/kvirc/kernel/kvi_options.cpp:808
 #, fuzzy
 msgid "Generic status"
 msgstr "status konekcije"
 
-#: src/kvirc/kernel/kvi_options.cpp:801
+#: src/kvirc/kernel/kvi_options.cpp:807
 #, fuzzy
 msgid "Generic success"
 msgstr "status konekcije"
 
-#: src/kvirc/kernel/kvi_options.cpp:803
+#: src/kvirc/kernel/kvi_options.cpp:809
 #, fuzzy
 msgid "Generic verbose message"
 msgstr "ignorisana poruka korisnika"
 
-#: src/kvirc/kernel/kvi_options.cpp:804
+#: src/kvirc/kernel/kvi_options.cpp:810
 #, fuzzy
 msgid "Generic warning"
 msgstr "Upozorenje parsera"
@@ -2810,7 +2812,7 @@ msgstr "Lista kanala"
 msgid "Get Network Links"
 msgstr "Nova Mrea"
 
-#: src/kvirc/kernel/kvi_options.cpp:776
+#: src/kvirc/kernel/kvi_options.cpp:782
 #, fuzzy
 msgid "Half-deop mode change"
 msgstr "half deop promena moda"
@@ -2820,7 +2822,7 @@ msgstr "half deop promena moda"
 msgid "Half-operators"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:769
+#: src/kvirc/kernel/kvi_options.cpp:775
 #, fuzzy
 msgid "Halfop mode change"
 msgstr "half op promena moda"
@@ -2838,11 +2840,11 @@ msgstr ""
 msgid "Header too long: exceeded 4096 bytes"
 msgstr ""
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:193 src/kvirc/kernel/kvi_options.cpp:821
+#: src/kvilib/tal/kvi_tal_wizard.cpp:193 src/kvirc/kernel/kvi_options.cpp:827
 msgid "Help"
 msgstr "Pomo"
 
-#: src/kvirc/ui/kvi_menubar.cpp:121
+#: src/kvirc/ui/kvi_menubar.cpp:120
 msgid "Help Browser (&Window)"
 msgstr "Pomo�(&MDI �ta�"
 
@@ -2851,7 +2853,7 @@ msgstr "Pomo�(&MDI �ta�"
 msgid "Help Index"
 msgstr "Prozor za pomo"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:824
+#: src/kvirc/kernel/kvi_ircconnection.cpp:847
 msgid ""
 "Here goes your \"broken bouncer hack\": The server has changed the hostname "
 "but I'll ignore the IP address change"
@@ -2862,20 +2864,20 @@ msgstr ""
 msgid "Hex"
 msgstr "Hex"
 
-#: src/kvirc/ui/kvi_menubar.cpp:242
+#: src/kvirc/ui/kvi_menubar.cpp:240
 msgid "Hide &Dock Icon"
 msgstr "Sakrij &sputaju� widget"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3971
+#: src/kvirc/ui/kvi_ircview.cpp:2094
 #, fuzzy
 msgid "Hide Find Window"
 msgstr "&Terminal prozor"
 
-#: src/kvirc/ui/kvi_channel.cpp:921
+#: src/kvirc/ui/kvi_channel.cpp:962
 msgid "High activity"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:689
+#: src/kvirc/kernel/kvi_options.cpp:695
 #, fuzzy
 msgid "Highlighted text"
 msgstr "Naglaeni tekst"
@@ -2895,7 +2897,7 @@ msgstr "Korisni�i direktorijum"
 msgid "Host %Q resolved to %Q"
 msgstr "Ime hosta proksija pronadjeno kao %s"
 
-#: src/kvirc/kernel/kvi_options.cpp:694
+#: src/kvirc/kernel/kvi_options.cpp:700
 #, fuzzy
 msgid "Host lookup result"
 msgstr "Rezultat potrage hosta"
@@ -2908,7 +2910,7 @@ msgstr "Host nije prona�n"
 msgid "Host unreachable (no route to host)"
 msgstr "Host nedostupan (nema rute ka hostu)"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:620
+#: src/kvirc/ui/kvi_statusbar.cpp:590
 #, fuzzy
 msgid "Hostname"
 msgstr "Ime hosta %d: %s"
@@ -2924,11 +2926,11 @@ msgstr "Ime hosta %d: %s"
 msgid "Hostname resolution aborted"
 msgstr "Konektovanje prekinuto"
 
-#: src/kvirc/kernel/kvi_options.cpp:761
+#: src/kvirc/kernel/kvi_options.cpp:767
 msgid "ICQ message"
 msgstr "ICQ poruka"
 
-#: src/kvirc/kernel/kvi_options.cpp:762
+#: src/kvirc/kernel/kvi_options.cpp:768
 msgid "ICQ user-message"
 msgstr "ICQ poruka korisnika"
 
@@ -2962,7 +2964,7 @@ msgstr "&Nov irc kontekst"
 msgid "IRC Context related actions"
 msgstr "&Nov irc kontekst"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:368
+#: src/kvirc/kernel/kvi_irclink.cpp:371
 #, fuzzy
 msgid "IRC server"
 msgstr "irc server"
@@ -2971,17 +2973,17 @@ msgstr "irc server"
 msgid "IRC-Op only channel"
 msgstr "Kanal samo za IRC-Opove"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:92
+#: src/kvirc/ui/kvi_toolbar.cpp:98
 #, fuzzy
 msgid "Icon Size"
 msgstr "&Ikone widget"
 
-#: src/kvirc/kernel/kvi_iconmanager.cpp:365
+#: src/kvirc/kernel/kvi_iconmanager.cpp:366
 #, fuzzy
 msgid "Icon Table"
 msgstr "&Ikone widget"
 
-#: src/kvirc/kernel/kvi_options.cpp:774
+#: src/kvirc/kernel/kvi_options.cpp:780
 #, fuzzy
 msgid "Ident message"
 msgstr "ident poruka"
@@ -2997,7 +2999,7 @@ msgid ""
 "the CTRL+P prefix"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:797
+#: src/kvirc/kernel/kvi_options.cpp:803
 #, fuzzy
 msgid "Ignored user message"
 msgstr "ignorisana poruka korisnika"
@@ -3017,22 +3019,22 @@ msgstr "Ignoriem DCC %S zahtev od %Q [%Q@%Q] (%S %S)"
 msgid "Ignoring DCC from \r!nc\r%s\r [%s@\r!h\r%s\r]"
 msgstr "Ignoriem PRIVMSG od %Q: %Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1107
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1118
 #, fuzzy
 msgid "Ignoring Notice from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Ignoriem PRIVMSG od %Q: %Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:985
+#: src/kvirc/sparser/kvi_sp_literal.cpp:996
 #, fuzzy
 msgid "Ignoring channel-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Ignoriem PRIVMSG od %Q: %Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1541
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1556
 #, fuzzy
 msgid "Ignoring invite from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Ignoriem PRIVMSG od %Q: %Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:784
+#: src/kvirc/sparser/kvi_sp_literal.cpp:792
 #, fuzzy
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Ignoriem PRIVMSG od %Q: %Q"
@@ -3041,19 +3043,19 @@ msgstr "Ignoriem PRIVMSG od %Q: %Q"
 msgid "Impossible to change nick if not authenticated with NickServ"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:925
+#: src/kvirc/kernel/kvi_ircconnection.cpp:946
 msgid ""
 "Impossible to send CAP END command to the IRC server. Your connection will "
 "NOT be encrypted"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:914
+#: src/kvirc/kernel/kvi_ircconnection.cpp:935
 msgid ""
 "Impossible to send CAP LS command to the IRC server. Your connection will "
 "NOT be encrypted"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:952
+#: src/kvirc/kernel/kvi_ircconnection.cpp:973
 msgid ""
 "Impossible to send STARTTLS command to the IRC server. Your connection will "
 "NOT be encrypted"
@@ -3093,7 +3095,7 @@ msgstr ""
 msgid "Install Theme Package"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:769
+#: src/kvirc/kernel/kvi_app.cpp:764
 msgid "Installation problems ?"
 msgstr ""
 
@@ -3105,7 +3107,7 @@ msgstr "Nedovoljno resursa za kompletiranje operacije"
 msgid "Integer parameter expected"
 msgstr "Celobrojni parametar je o�kivan"
 
-#: src/kvilib/file/kvi_packagefile.cpp:571 src/kvilib/core/kvi_error.cpp:52
+#: src/kvilib/core/kvi_error.cpp:52 src/kvilib/file/kvi_packagefile.cpp:571
 msgid "Internal error"
 msgstr "Interna greka."
 
@@ -3179,7 +3181,7 @@ msgstr "Pogreno trajanje (%s): koristim predefinisano"
 msgid "Invalid expression evaluation in object scope"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:4021
+#: src/kvirc/ui/kvi_ircview.cpp:2144
 #, fuzzy
 msgid "Invalid image"
 msgstr "Pogreno vreme isteka"
@@ -3243,7 +3245,7 @@ msgstr ""
 msgid "Invisible (+i)"
 msgstr "i (nevidljivost)"
 
-#: src/kvirc/ui/kvi_channel.cpp:171
+#: src/kvirc/ui/kvi_channel.cpp:169
 #, fuzzy
 msgid "Invite Exception Editor"
 msgstr "Uklju�/isklju� editor izuzetaka poziva"
@@ -3253,7 +3255,7 @@ msgstr "Uklju�/isklju� editor izuzetaka poziva"
 msgid "Invite exception masks or forbid /INVITE"
 msgstr "maske izuzetka poziva ili odbij /INVITE"
 
-#: src/kvirc/kernel/kvi_options.cpp:795
+#: src/kvirc/kernel/kvi_options.cpp:801
 #, fuzzy
 msgid "Invite exception matching my mask"
 msgstr "izuzetak poziva koji se poklapa po masci"
@@ -3263,7 +3265,7 @@ msgstr "izuzetak poziva koji se poklapa po masci"
 msgid "Invite listing"
 msgstr "poruka pozivanja"
 
-#: src/kvirc/kernel/kvi_options.cpp:777
+#: src/kvirc/kernel/kvi_options.cpp:783
 #, fuzzy
 msgid "Invite message"
 msgstr "poruka pozivanja"
@@ -3273,7 +3275,7 @@ msgstr "poruka pozivanja"
 msgid "Invite only"
 msgstr "samo pozvani"
 
-#: src/kvirc/kernel/kvi_options.cpp:796
+#: src/kvirc/kernel/kvi_options.cpp:802
 #, fuzzy
 msgid "Invite unexception matching my mask"
 msgstr "neizuzetak poziva koji se poklapa po masci"
@@ -3288,7 +3290,7 @@ msgstr "Akcije"
 msgid "Irc Tools"
 msgstr "Irc alati"
 
-#: src/kvirc/kernel/kvi_options.cpp:1219
+#: src/kvirc/kernel/kvi_options.cpp:1225
 msgid "Irc context color options (#RRGGBB)"
 msgstr "Opcije boja IRC konteksta (#RRGGBB)"
 
@@ -3302,32 +3304,32 @@ msgstr "Ovo nije kanal"
 msgid "Join Channels..."
 msgstr "Ovo nije kanal"
 
-#: src/kvirc/ui/kvi_menubar.cpp:168
+#: src/kvirc/ui/kvi_menubar.cpp:166
 msgid "Join KVIrc French Channel on EuropNet"
 msgstr ""
 
-#: src/kvirc/ui/kvi_menubar.cpp:165
+#: src/kvirc/ui/kvi_menubar.cpp:163
 msgid "Join KVIrc French Channel on Freenode"
 msgstr ""
 
-#: src/kvirc/ui/kvi_menubar.cpp:152
+#: src/kvirc/ui/kvi_menubar.cpp:150
 msgid "Join KVIrc International Channel on Freenode"
 msgstr ""
 
-#: src/kvirc/ui/kvi_menubar.cpp:154
+#: src/kvirc/ui/kvi_menubar.cpp:152
 msgid "Join KVIrc International Channel on IRCNet"
 msgstr ""
 
-#: src/kvirc/ui/kvi_menubar.cpp:159
+#: src/kvirc/ui/kvi_menubar.cpp:157
 msgid "Join KVIrc Italian Channel on AzzurraNet"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:781
+#: src/kvirc/kernel/kvi_options.cpp:787
 #, fuzzy
 msgid "Join error message"
 msgstr "poruka greke ulaza"
 
-#: src/kvirc/kernel/kvi_options.cpp:707
+#: src/kvirc/kernel/kvi_options.cpp:713
 #, fuzzy
 msgid "Join message"
 msgstr "poruka ulaska"
@@ -3345,12 +3347,12 @@ msgstr ""
 msgid "KVIrc Configuration File"
 msgstr "&Sa�vaj podeavanja"
 
-#: src/kvirc/ui/kvi_menubar.cpp:143
+#: src/kvirc/ui/kvi_menubar.cpp:141
 #, fuzzy
 msgid "KVIrc French Home&page"
 msgstr "KVIrc po�tna &stranica"
 
-#: src/kvirc/ui/kvi_menubar.cpp:134
+#: src/kvirc/ui/kvi_menubar.cpp:132
 msgid "KVIrc Home&page"
 msgstr "KVIrc po�tna &stranica"
 
@@ -3359,7 +3361,7 @@ msgstr "KVIrc po�tna &stranica"
 msgid "KVIrc KVS Script"
 msgstr ""
 
-#: src/kvirc/ui/kvi_menubar.cpp:138
+#: src/kvirc/ui/kvi_menubar.cpp:136
 #, fuzzy
 msgid "KVIrc Russian Home&page"
 msgstr "KVIrc po�tna &stranica"
@@ -3394,12 +3396,12 @@ msgstr "Kernelov mreni deo je u panici"
 msgid "Key"
 msgstr "klju"
 
-#: src/kvirc/kernel/kvi_options.cpp:758
+#: src/kvirc/kernel/kvi_options.cpp:764
 #, fuzzy
 msgid "Kick action"
 msgstr "akcija izbacivanja"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:395
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:386
 #, fuzzy
 msgid "Lag Indicator"
 msgstr "Tekstualni editor"
@@ -3414,12 +3416,12 @@ msgstr ""
 msgid "Lag check completed (%s)"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:335
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:326
 #, fuzzy
 msgid "Lag measure not available yet"
 msgstr "Mogu�ost nije dostupna"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:339
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:330
 msgid "Lag meter engine disabled"
 msgstr ""
 
@@ -3429,18 +3431,18 @@ msgid "Lag meter was not enabled"
 msgstr "Naveden prozor nije kanal"
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:314 src/kvirc/ui/kvi_irctoolbar.cpp:386
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:328
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:368
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:319
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:359
 #, c-format
 msgid "Lag: %d.%d%d"
 msgstr ""
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:316 src/kvirc/ui/kvi_irctoolbar.cpp:388
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:382
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:373
 msgid "Lag: ?.??"
 msgstr ""
 
-#: src/kvirc/ui/kvi_toolbar.cpp:95
+#: src/kvirc/ui/kvi_toolbar.cpp:101
 msgid "Large (32x32)"
 msgstr ""
 
@@ -3448,7 +3450,7 @@ msgstr ""
 msgid "Large Icons"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:333
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:324
 #, c-format
 msgid "Last checked %d mins %d secs ago"
 msgstr ""
@@ -3458,7 +3460,7 @@ msgstr ""
 msgid "Leave Away Mode"
 msgstr "&Odsutnost"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:85
+#: src/kvirc/ui/kvi_toolbar.cpp:91
 msgid "Left"
 msgstr ""
 
@@ -3480,7 +3482,7 @@ msgstr "Levi operator nije broj"
 msgid "Limited number of users"
 msgstr "ograni�n broj korisnika"
 
-#: src/kvirc/kernel/kvi_options.cpp:691
+#: src/kvirc/kernel/kvi_options.cpp:697
 #, fuzzy
 msgid "Link overlay foreground"
 msgstr "Veza prekriva ispis"
@@ -3489,12 +3491,12 @@ msgstr "Veza prekriva ispis"
 msgid "Link: %Q"
 msgstr "Link: %Q"
 
-#: src/kvirc/kernel/kvi_options.cpp:759
+#: src/kvirc/kernel/kvi_options.cpp:765
 #, fuzzy
 msgid "Links reply"
 msgstr "odgovor linkova"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:569
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:572
 #, fuzzy
 msgid "List of active timers"
 msgstr "Nema aktivnih fajl ponuda"
@@ -3517,34 +3519,34 @@ msgstr "Ne mogu da prona�m prozor sa ID-om '%s'"
 msgid "Loaded module '%s' (%s)"
 msgstr "U�tan modul '%s' (%s)"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:624
+#: src/kvirc/ui/kvi_statusbar.cpp:594
 msgid "Local IP"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:749
+#: src/kvirc/kernel/kvi_ircconnection.cpp:769
 msgid "Local host address is %Q"
 msgstr "Adresa lokalnog hosta je %Q"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:898
+#: src/kvirc/kernel/kvi_ircconnection.cpp:919
 #, fuzzy
 msgid "Local hostname as seen by the IRC server resolved to %Q"
 msgstr "Traim ime hosta za proksi (%s)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1065
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1085
 msgid "Logging in as %Q!%Q :%Q"
 msgstr "Prijavljeni ste kao %Q!%Q :%Q"
 
-#: src/kvirc/ui/kvi_console.cpp:1072 src/kvirc/ui/kvi_statusbar.cpp:734
+#: src/kvirc/ui/kvi_console.cpp:1072 src/kvirc/ui/kvi_statusbar.cpp:707
 #, fuzzy
 msgid "Login in progress..."
 msgstr "prijavljivanje u toku..."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1239
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1263
 #, fuzzy
 msgid "Login operations complete, happy ircing!"
 msgstr "Operacija prijavljivanja je kompletna: prijatno ircanje!"
 
-#: src/kvirc/kernel/kvi_options.cpp:757
+#: src/kvirc/kernel/kvi_options.cpp:763
 #, fuzzy
 msgid "Login operations completed"
 msgstr "login operacija kompletna"
@@ -3554,11 +3556,11 @@ msgstr "login operacija kompletna"
 msgid "Looking up host %Q"
 msgstr "Traim host %s"
 
-#: src/kvirc/ui/kvi_ircview.cpp:4678
+#: src/kvirc/ui/kvi_ircview_events.cpp:221
 msgid "Looking up host %Q..."
 msgstr "Traim host %Q..."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:870
+#: src/kvirc/kernel/kvi_ircconnection.cpp:894
 #, fuzzy
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
 msgstr "Traim ime hosta za proksi (%s)"
@@ -3573,11 +3575,11 @@ msgstr "Traim ime hosta za proksi (%s)"
 msgid "Looking up the server hostname (%s)..."
 msgstr "Traim ime hosta za irc server (%s)"
 
-#: src/kvirc/ui/kvi_channel.cpp:919
+#: src/kvirc/ui/kvi_channel.cpp:958
 msgid "Low activity"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_irclink.cpp:374
+#: src/kvirc/kernel/kvi_irclink.cpp:377
 #, fuzzy, c-format
 msgid "Low-level transport connection established [%s (%s:%u)]"
 msgstr "Uspostavljena konekcija niskog nivoa transporta [%s (%s:%u)]"
@@ -3611,16 +3613,16 @@ msgstr "Maska"
 msgid "Mask editor - KVirc"
 msgstr "Ime alijasa"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:628
+#: src/kvirc/kernel/kvi_irccontext.cpp:629
 #, c-format
 msgid "Maximum number of reconnect attempts reached (%d): giving up"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:920
+#: src/kvirc/ui/kvi_channel.cpp:960
 msgid "Medium activity"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1223
+#: src/kvirc/kernel/kvi_options.cpp:1229
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
 msgstr "Opcije boja poruka (id_slike,pozadina,ispis,logFlag (0/1))"
 
@@ -3634,27 +3636,27 @@ msgstr "M&inimizuj"
 msgid "Mi&nimize All"
 msgstr "M&inimizuj"
 
-#: src/kvirc/ui/kvi_channel.cpp:923
+#: src/kvirc/ui/kvi_channel.cpp:966
 msgid "Might be flooded with messages"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:921
+#: src/kvirc/ui/kvi_channel.cpp:962
 msgid "Might be high activity"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:919
+#: src/kvirc/ui/kvi_channel.cpp:958
 msgid "Might be low activity"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:920
+#: src/kvirc/ui/kvi_channel.cpp:960
 msgid "Might be medium activity"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:922
+#: src/kvirc/ui/kvi_channel.cpp:964
 msgid "Might be very high activity"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:917
+#: src/kvirc/ui/kvi_channel.cpp:954
 msgid "Minimal activity"
 msgstr ""
 
@@ -3667,11 +3669,11 @@ msgstr "M&inimizuj"
 msgid "Minimized all the currently visible MDI windows"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1218
+#: src/kvirc/kernel/kvi_options.cpp:1224
 msgid "Mirccolor options (#RRGGBB)"
 msgstr "Opcije mirc boja (#RRGGBB)"
 
-#: src/kvirc/kernel/kvi_options.cpp:971
+#: src/kvirc/kernel/kvi_options.cpp:977
 msgid "Missing absolute directory for the theme information"
 msgstr ""
 
@@ -3769,7 +3771,7 @@ msgstr "Nedostaje ime tajmera"
 msgid "Missing variable name"
 msgstr "Nedostaje ime promenljive"
 
-#: src/kvirc/ui/kvi_channel.cpp:176
+#: src/kvirc/ui/kvi_channel.cpp:175
 #, fuzzy
 msgid "Mode Editor"
 msgstr "Uklju�/isklju� editor modova"
@@ -3824,12 +3826,12 @@ msgstr "Mnoenje sa nulom"
 msgid "Multi-line Editor<br>&lt;Alt+Backspace&gt;"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:778
+#: src/kvirc/kernel/kvi_options.cpp:784
 #, fuzzy
 msgid "Multimedia message"
 msgstr "multimedijalna poruka"
 
-#: src/kvirc/kernel/kvi_options.cpp:738
+#: src/kvirc/kernel/kvi_options.cpp:744
 #, fuzzy
 msgid "Multiple channel mode change"
 msgstr "promena moda za vie kanala"
@@ -3838,7 +3840,7 @@ msgstr "promena moda za vie kanala"
 msgid "Multiple operations not supported for numeric operators"
 msgstr "Visetruke operacije nisu podrane za numeri�e operatore"
 
-#: src/kvirc/kernel/kvi_options.cpp:729
+#: src/kvirc/kernel/kvi_options.cpp:735
 #, fuzzy
 msgid "Multiple user mode change"
 msgstr "promena moda za vie korisnika"
@@ -3847,7 +3849,7 @@ msgstr "promena moda za vie korisnika"
 msgid "Names for \r!c\r%Q\r: %Q"
 msgstr "Imena za \r!c\r%Q\r: %Q"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:386
+#: src/kvirc/kernel/kvi_irclink.cpp:389
 #, fuzzy
 msgid "Negotiating relay information"
 msgstr "Informacije relejnog pregovaranja"
@@ -3858,16 +3860,16 @@ msgid ""
 "me a bit: it is a good idea to enclose it in quotes"
 msgstr ""
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:496
+#: src/kvirc/sparser/kvi_sp_literal.cpp:504
 #, fuzzy, c-format
 msgid "Netsplit detected: %s"
 msgstr "Detektovano razdvajanje mrea :%s"
 
-#: src/kvilib/system/kvi_locale.cpp:1074 src/kvirc/ui/kvi_statusbar.cpp:604
+#: src/kvilib/system/kvi_locale.cpp:1074 src/kvirc/ui/kvi_statusbar.cpp:574
 msgid "Network"
 msgstr "Mrea"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:580
+#: src/kvirc/ui/kvi_statusbar.cpp:550
 #, fuzzy
 msgid "Network informations"
 msgstr "informacije servera"
@@ -3876,7 +3878,7 @@ msgstr "informacije servera"
 msgid "Network is unreachable"
 msgstr "Mrea je nedostupna"
 
-#: src/kvirc/ui/kvi_menubar.cpp:236
+#: src/kvirc/ui/kvi_menubar.cpp:234
 #, fuzzy
 msgid "New &Connection To"
 msgstr "&Novo konektovanje na"
@@ -3904,7 +3906,7 @@ msgstr "&Nov irc kontekst"
 msgid "New mask must match an *!*@* expression"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:856
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:847
 #, fuzzy
 msgid "New updates found"
 msgstr "Nije na�no"
@@ -3914,33 +3916,33 @@ msgstr "Nije na�no"
 msgid "Next"
 msgstr "Tekst:"
 
-#: src/kvirc/kernel/kvi_options.cpp:724
+#: src/kvirc/kernel/kvi_options.cpp:730
 #, fuzzy
 msgid "Nick changes"
 msgstr "promena nadimka"
 
-#: src/kvirc/kernel/kvi_options.cpp:771
+#: src/kvirc/kernel/kvi_options.cpp:777
 msgid "NickServ message"
 msgstr "NickServ poruka"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1143
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1160
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1154
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1171
 #, fuzzy
 msgid "NickServ requests authentication, executing scheduled command"
 msgstr "NickServ zahteva auttentifikaciju; izvravam zadatu komandu"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:612
+#: src/kvirc/ui/kvi_statusbar.cpp:582
 #, fuzzy
 msgid "Nickname"
 msgstr "Nadimak"
 
-#: src/kvirc/kernel/kvi_options.cpp:743
+#: src/kvirc/kernel/kvi_options.cpp:749
 #, fuzzy
 msgid "Nickname problem"
 msgstr "problem nadimka"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:751 src/kvirc/kernel/kvi_app.cpp:785
-#: src/kvirc/ui/kvi_input.cpp:264 src/kvirc/ui/kvi_statusbar.cpp:602
+#: src/kvirc/ui/kvi_input.cpp:264 src/kvirc/ui/kvi_statusbar.cpp:572
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:751 src/kvirc/kernel/kvi_app.cpp:780
 msgid "No"
 msgstr "Ne"
 
@@ -3949,7 +3951,7 @@ msgstr "Ne"
 msgid "No "
 msgstr "Ne"
 
-#: src/kvirc/ui/kvi_irctoolbar.cpp:321 src/kvirc/ui/kvi_statusbar.cpp:741
+#: src/kvirc/ui/kvi_irctoolbar.cpp:321 src/kvirc/ui/kvi_statusbar.cpp:714
 #, fuzzy
 msgid "No IRC context"
 msgstr "&Nov irc kontekst"
@@ -3958,11 +3960,11 @@ msgstr "&Nov irc kontekst"
 msgid "No Qt property named \"%Q\" for object named \"%Q\" of class %Q"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:916
+#: src/kvirc/ui/kvi_channel.cpp:952
 msgid "No activity"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:784
+#: src/kvirc/kernel/kvi_app.cpp:779
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
@@ -3984,7 +3986,7 @@ msgstr "Nema postavljenog naslova kanala"
 msgid "No commandline specified for this type of url (%Q)"
 msgstr "Nema navedene komandne linije za ovu vrstu url-a (%s)"
 
-#: src/kvirc/ui/kvi_query.cpp:383
+#: src/kvirc/ui/kvi_query.cpp:408
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Nema uobi�jenih kanala za \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
@@ -4034,7 +4036,7 @@ msgstr "Nema podudaranja"
 msgid "No menu bar item with text '%Q'"
 msgstr "Nema stavke meni trake sa tekstom '%s'"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:497
+#: src/kvirc/kernel/kvi_irccontext.cpp:498
 #, fuzzy
 msgid "No proxy hosts available, resuming direct connection"
 msgstr "Nema mogu�g proksi hosta: prebacujem na direktno konektovanje"
@@ -4044,7 +4046,7 @@ msgstr "Nema mogu�g proksi hosta: prebacujem na direktno konektovanje"
 msgid "No request"
 msgstr "DCC zahtev"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:476
+#: src/kvirc/kernel/kvi_irccontext.cpp:477
 #, fuzzy
 msgid ""
 "No servers available. Check the options dialog or use the /SERVER command"
@@ -4058,10 +4060,10 @@ msgstr ""
 msgid "No such IRC context (%u)"
 msgstr "Nema takvog IRC konteksta (%u)"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:551
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:559
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
+#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:551
+#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:559
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1183
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1191
 #, fuzzy
@@ -4122,7 +4124,7 @@ msgstr "Nema postavljenog naslova za kanal \r!c\r%Q\r"
 msgid "No topic message has been received from the server yet"
 msgstr "Nije jo primljena poruka za naslov (topic) od servera"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:852
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:843
 #, fuzzy
 msgid "No updates found"
 msgstr "Nije na�no"
@@ -4135,23 +4137,23 @@ msgstr "Nema korisnika u listi obavetenja"
 msgid "No way to login as '\r!n\r%Q\r' (%d: %Q), trying '%Q'..."
 msgstr "Nema anse da se logujete kao '\r!n\r%Q\r' (%d:%Q): pokuavam '%Q'..."
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:595
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:598
 #, fuzzy
 msgid "None"
 msgstr "(Nijedan)"
 
-#: src/kvirc/kernel/kvi_options.cpp:687
+#: src/kvirc/kernel/kvi_options.cpp:693
 msgid "Normal text"
 msgstr "Normalni tekst"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:263
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:254
 #, fuzzy
 msgid "Not away"
 msgstr " odsutnost)"
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:350
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:271
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:347 src/kvirc/ui/kvi_statusbar.cpp:737
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:262
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:338 src/kvirc/ui/kvi_statusbar.cpp:710
 #, fuzzy
 msgid "Not connected"
 msgstr "Nema konekcije"
@@ -4160,15 +4162,15 @@ msgstr "Nema konekcije"
 msgid "Not enough parameters"
 msgstr "Nema dovoljno parametara"
 
-#: src/kvirc/ui/kvi_ircview.cpp:4171 src/kvirc/ui/kvi_ircview.cpp:4225
+#: src/kvirc/ui/kvi_ircview.cpp:2294 src/kvirc/ui/kvi_ircview.cpp:2348
 msgid "Not found"
 msgstr "Nije na�no"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5165
+#: src/kvirc/ui/kvi_ircview_events.cpp:769
 msgid "Nothing known about %Q"
 msgstr "Nita poznato o %Q"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5166
+#: src/kvirc/ui/kvi_ircview_events.cpp:770
 msgid "Nothing known about %Q (no connection)"
 msgstr "Nita poznato o %Q (mi nismo na vezi)"
 
@@ -4177,12 +4179,12 @@ msgstr "Nita poznato o %Q (mi nismo na vezi)"
 msgid "Notify List"
 msgstr "Lista obavetenja"
 
-#: src/kvirc/kernel/kvi_options.cpp:750
+#: src/kvirc/kernel/kvi_options.cpp:756
 #, fuzzy
 msgid "Notify list joins"
 msgstr "lista obavetenja ulasci"
 
-#: src/kvirc/kernel/kvi_options.cpp:751
+#: src/kvirc/kernel/kvi_options.cpp:757
 #, fuzzy
 msgid "Notify list leaves"
 msgstr "lista obavetenja odlasci"
@@ -4221,7 +4223,8 @@ msgstr "Lista obavetenja: \r!n\r%Q\r nej na vezi (traga�"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1141
 #: src/kvirc/kernel/kvi_notifylist.cpp:1154
-msgid "Notify list: Adding watch entries for%Q"
+#, fuzzy
+msgid "Notify list: Adding watch entries for %Q"
 msgstr "Lista obavetenja: dodajem zapis za pra�nje za %Q"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:851
@@ -4231,11 +4234,8 @@ msgstr ""
 "Lista obavetenja: mmmg...primljen prekinut USERHOST odgovor od servera ? (%s)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:504
-msgid "Notify list: Checking for: %Q"
-msgstr "Lista obavetenja: proveravam za: %Q"
-
 #: src/kvirc/kernel/kvi_notifylist.cpp:973
-msgid "Notify list: Checking for:%Q"
+msgid "Notify list: Checking for: %Q"
 msgstr "Lista obavetenja: proveravam za: %Q"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:776
@@ -4364,8 +4364,8 @@ msgstr "Oktet strim (nepoznat)"
 msgid "Often used directories"
 msgstr ""
 
-#: src/kvirc/ui/kvi_imagedialog.cpp:158 src/kvirc/ui/kvi_maskeditor.cpp:82
-#: src/kvirc/ui/kvi_ircview.cpp:4021
+#: src/kvirc/ui/kvi_maskeditor.cpp:82 src/kvirc/ui/kvi_ircview.cpp:2144
+#: src/kvirc/ui/kvi_imagedialog.cpp:158
 msgid "Ok"
 msgstr "Ok"
 
@@ -4403,13 +4403,13 @@ msgstr ""
 msgid "Only registered nicks can join"
 msgstr "samo registrovani nadimci mogu da u�"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:484
+#: src/kvirc/kernel/kvi_irccontext.cpp:485
 msgid ""
 "Ooops.. you've hit a bug in the servers database... I have found a server "
 "but not a network..."
 msgstr ""
 
-#: src/kvirc/ui/kvi_menubar.cpp:315
+#: src/kvirc/ui/kvi_menubar.cpp:316
 #, fuzzy
 msgid "Open &Terminal"
 msgstr "&Terminal prozor"
@@ -4461,7 +4461,7 @@ msgstr "Isteklo vreme za operaciju"
 msgid "Operation timed out (while selecting for read)"
 msgstr "Operacija istekla (dok je birano za �tanje)"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:100
+#: src/kvirc/kernel/kvi_irclink.cpp:98
 msgid "Ops... for some reason the link filter object has been destroyed"
 msgstr ""
 
@@ -4511,7 +4511,7 @@ msgstr ""
 "Neuspena postavka ocije: nepoznata opcija ili pogrena tip vrednosti za tip "
 "opcije"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:82
+#: src/kvirc/ui/kvi_toolbar.cpp:88
 #, fuzzy
 msgid "Orientation"
 msgstr "obavetenje"
@@ -4530,37 +4530,37 @@ msgstr "Izm&ena"
 msgid "Out of address space"
 msgstr "Van adresnog prostora"
 
-#: src/kvirc/kernel/kvi_options.cpp:763
+#: src/kvirc/kernel/kvi_options.cpp:769
 #, fuzzy
 msgid "Outgoing ICQ user-message"
 msgstr "odlaze� IRC korisni�a-poruka"
 
-#: src/kvirc/kernel/kvi_options.cpp:809
+#: src/kvirc/kernel/kvi_options.cpp:815
 #, fuzzy
 msgid "Own chan admin status set"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:810
+#: src/kvirc/kernel/kvi_options.cpp:816
 #, fuzzy
 msgid "Own chan admin status unset"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:818
+#: src/kvirc/kernel/kvi_options.cpp:824
 #, fuzzy
 msgid "Own chan owner status set"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:819
+#: src/kvirc/kernel/kvi_options.cpp:825
 #, fuzzy
 msgid "Own chan owner status unset"
 msgstr "Operatori kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:752
+#: src/kvirc/kernel/kvi_options.cpp:758
 #, fuzzy
 msgid "Own encrypted private message"
 msgstr "vlastita privatna ifrovana poruka"
 
-#: src/kvirc/kernel/kvi_options.cpp:711
+#: src/kvirc/kernel/kvi_options.cpp:717
 #, fuzzy
 msgid "Own private message"
 msgstr "li�a privatna poruka"
@@ -4579,12 +4579,12 @@ msgstr ""
 msgid "Parent Directory"
 msgstr "Direktorijum"
 
-#: src/kvirc/kernel/kvi_options.cpp:692
+#: src/kvirc/kernel/kvi_options.cpp:698
 #, fuzzy
 msgid "Parser error"
 msgstr "Greka parsera"
 
-#: src/kvirc/kernel/kvi_options.cpp:693
+#: src/kvirc/kernel/kvi_options.cpp:699
 #, fuzzy
 msgid "Parser warning"
 msgstr "Upozorenje parsera"
@@ -4594,13 +4594,13 @@ msgstr "Upozorenje parsera"
 msgid "Part All Channels"
 msgstr "Napusti sve kanale"
 
-#: src/kvirc/kernel/kvi_options.cpp:708
+#: src/kvirc/kernel/kvi_options.cpp:714
 #, fuzzy
 msgid "Part message"
 msgstr "poruka izlaska"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1784
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1804
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1816
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1836
 msgid "Partial socket write: packet broken into smaller pieces."
 msgstr "Parcijalni zapis priklju�a: paket razbijen na manje par��."
 
@@ -4619,11 +4619,11 @@ msgstr "Prenesi (polako)"
 msgid "Peer X509 certificate"
 msgstr "Server X509 sertifikat"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:580
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:583
 msgid "Persistent"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1220
+#: src/kvirc/kernel/kvi_options.cpp:1226
 msgid "Pixmap options (image path)"
 msgstr "Pixmap opcije (putanja slike)"
 
@@ -4640,7 +4640,7 @@ msgid ""
 "Popup menu self-modification is not allowed (the popup is probably open)"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:4156 src/kvirc/ui/kvi_ircview.cpp:4209
+#: src/kvirc/ui/kvi_ircview.cpp:2279 src/kvirc/ui/kvi_ircview.cpp:2332
 #, c-format
 msgid "Pos %d"
 msgstr "Poz %d"
@@ -4724,7 +4724,7 @@ msgstr ""
 msgid "Proxy %Q has a nickname: %Q"
 msgstr "Proksi %s ima nadimak: %s"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:382
+#: src/kvirc/kernel/kvi_irclink.cpp:385
 msgid "Proxy connection"
 msgstr "Proksi konekcija"
 
@@ -4733,15 +4733,15 @@ msgstr "Proksi konekcija"
 msgid "Proxy hostname resolved to %Q"
 msgstr "Ime hosta proksija pronadjeno kao %s"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1169
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1210
 msgid "Proxy response: "
 msgstr "Odgovor proksija: "
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1009
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1048
 msgid "Proxy response: Auth method OK: using method 0 (no auth)"
 msgstr "Odgovor proksija: Auth metoda je OK: kori�na metoda 0 (nema auth)"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1016
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1056
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
 msgstr "Odgovor proksija: Auth metoda je OK: kori�na metoda 2 (user/pass)"
 
@@ -4758,7 +4758,7 @@ msgstr "Odgovor proksija: TTL istekao"
 msgid "Proxy response: address type not supported"
 msgstr "Odgovor proksija: tip adrese nije podran"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:974
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1013
 msgid "Proxy response: auth OK: access granted"
 msgstr "Odgovor proksija: auth OK: pristup odobren"
 
@@ -4806,51 +4806,51 @@ msgstr "Odgovor proksija: mrea nedostupna"
 msgid "Proxy response: request failed"
 msgstr "Odgovor proksija: zahtev neuspean"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1072
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1129
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1113
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1170
 msgid "Proxy response: target data OK: request granted"
 msgstr "Odgovor proksija: ciljni podaci OK: zahtev je odobren"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1180
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1220
 #, fuzzy
 msgid "Proxy said something about: \n"
 msgstr "Proksi govori neto o \""
 
-#: src/kvirc/ui/kvi_query.cpp:95
+#: src/kvirc/ui/kvi_query.cpp:101
 #, fuzzy
 msgid "Query Targets"
 msgstr "Upit za ciljeve"
 
-#: src/kvirc/kernel/kvi_options.cpp:754
+#: src/kvirc/kernel/kvi_options.cpp:760
 #, fuzzy
 msgid "Query encrypted private message"
 msgstr "upit privatne ifrovane poruke"
 
-#: src/kvirc/kernel/kvi_options.cpp:766
+#: src/kvirc/kernel/kvi_options.cpp:772
 #, fuzzy
 msgid "Query notice"
 msgstr "upit obavetenja"
 
-#: src/kvirc/kernel/kvi_options.cpp:713
+#: src/kvirc/kernel/kvi_options.cpp:719
 #, fuzzy
 msgid "Query private message"
 msgstr "upit privatne poruke"
 
-#: src/kvirc/ui/kvi_query.cpp:157
+#: src/kvirc/ui/kvi_query.cpp:169
 #, fuzzy
 msgid "Query target:"
 msgstr "Upit za ciljeve"
 
-#: src/kvirc/kernel/kvi_options.cpp:779
+#: src/kvirc/kernel/kvi_options.cpp:785
 #, fuzzy
 msgid "Query trace message"
 msgstr "upit prati poruke"
 
-#: src/kvirc/ui/kvi_query.cpp:234
+#: src/kvirc/ui/kvi_query.cpp:249
 msgid "Query with %1!%2"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:232
+#: src/kvirc/ui/kvi_query.cpp:247
 msgid "Query with %1!%2 (%3)"
 msgstr ""
 
@@ -4869,12 +4869,12 @@ msgstr "tiho ili vlasnik kanala"
 msgid "Quit KVIrc"
 msgstr "&Zavri Kvirc"
 
-#: src/kvirc/kernel/kvi_options.cpp:721
+#: src/kvirc/kernel/kvi_options.cpp:727
 #, fuzzy
 msgid "Quit message"
 msgstr "poruka prekida"
 
-#: src/kvirc/kernel/kvi_options.cpp:723
+#: src/kvirc/kernel/kvi_options.cpp:729
 #, fuzzy
 msgid "Quit on netsplit message"
 msgstr "poruka prekida pri razdvajanju"
@@ -4883,13 +4883,13 @@ msgstr "poruka prekida pri razdvajanju"
 msgid "Quits KVIrc closing all the current connections"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:699
+#: src/kvirc/kernel/kvi_options.cpp:705
 #, fuzzy
 msgid "Raw data to server"
 msgstr "sirovi podaci ka serveru"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:204 src/kvirc/ui/kvi_selectors.cpp:385
-#: src/kvirc/ui/kvi_selectors.cpp:730
+#: src/kvirc/ui/kvi_selectors.cpp:385 src/kvirc/ui/kvi_selectors.cpp:730
+#: src/kvirc/ui/kvi_maskeditor.cpp:204
 #, fuzzy
 msgid "Re&move"
 msgstr "Ukloni"
@@ -4928,27 +4928,27 @@ msgstr "Primljen prekinut RPL_WHOISIDLE: nemogu da procenim vreme neaktivnosti"
 msgid "Received a join message for an unknown channel, possible desync"
 msgstr "Primljena PART poruka za nepoznat kanal...desinhronizovano?"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:597
+#: src/kvirc/sparser/kvi_sp_literal.cpp:605
 #, fuzzy
 msgid "Received a kick message for an unknown channel, possible desync"
 msgstr "Primljena PART poruka za nepoznat kanal...desinhronizovano?"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1656
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1671
 #, fuzzy
 msgid "Received a mode change for an unknown channel, possible desync"
 msgstr "Primljena PART poruka za nepoznat kanal...desinhronizovano?"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:357
+#: src/kvirc/sparser/kvi_sp_literal.cpp:365
 #, fuzzy
 msgid "Received a part message for an unknown channel, possible desync"
 msgstr "Primljena PART poruka za nepoznat kanal...desinhronizovano?"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1388
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1403
 #, fuzzy
 msgid "Received a topic message for an unknown channel, possible desync"
 msgstr "Primljena PART poruka za nepoznat kanal...desinhronizovano?"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1565
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1580
 #, fuzzy
 msgid "Received an invite message directed to another nick, possible desync"
 msgstr "Primljena je INVITE poruka namenjena nekom drugom...hmmm"
@@ -4963,12 +4963,12 @@ msgstr "Primljen ping od \r!s\r%s\r (PING %s) : odgovoren pong"
 msgid "Received pong from \r!s\r%s\r (PONG %s)"
 msgstr "Primljen ping od \r!s\r%s\r (PING %s) : odgovoren pong"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:375
+#: src/kvirc/kernel/kvi_irccontext.cpp:376
 #, fuzzy
 msgid "Reconnect attempt aborted"
 msgstr "Isteklo je vreme za povezivanje"
 
-#: src/kvirc/kernel/kvi_options.cpp:1215
+#: src/kvirc/kernel/kvi_options.cpp:1221
 msgid "Rectangle options (x,y,width,height)"
 msgstr "Opcije pravougaonika (x,y,irina,visina)"
 
@@ -5000,7 +5000,7 @@ msgstr ""
 msgid "Reload"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:849
+#: src/kvirc/kernel/kvi_app.cpp:844
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Primljena je udaljena komanda (%s ...)"
@@ -5010,25 +5010,25 @@ msgstr "Primljena je udaljena komanda (%s ...)"
 msgid "Remote end has closed the connection"
 msgstr "Udaljeni krajnji je zatvorio konekciju"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:353
+#: src/kvirc/ui/kvi_statusbar.cpp:343
 #, fuzzy
 msgid "Remove %Q"
 msgstr "Ukloni"
 
-#: src/kvirc/ui/kvi_menubar.cpp:149
+#: src/kvirc/ui/kvi_menubar.cpp:147
 msgid "Report a Bug / Propose Improvements"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:3979
+#: src/kvirc/ui/kvi_ircview.cpp:2102
 #, fuzzy
 msgid "Reset Temporary Background"
 msgstr "Izaberite jednu sliku..."
 
-#: src/kvirc/ui/kvi_menubar.cpp:221
+#: src/kvirc/ui/kvi_menubar.cpp:219
 msgid "Restore &Default Script"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:805
+#: src/kvirc/kernel/kvi_app.cpp:800
 msgid "Restore Default Script - KVIrc"
 msgstr ""
 
@@ -5051,7 +5051,7 @@ msgstr "Server"
 msgid "Reverse Sort"
 msgstr "Server"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:86
+#: src/kvirc/ui/kvi_toolbar.cpp:92
 msgid "Right"
 msgstr ""
 
@@ -5074,7 +5074,7 @@ msgstr "Desni operator nije broj"
 msgid "Run KVS Script"
 msgstr "Opis"
 
-#: src/kvirc/kernel/kvi_options.cpp:799
+#: src/kvirc/kernel/kvi_options.cpp:805
 #, fuzzy
 msgid "SSL message"
 msgstr "DCC poruka"
@@ -5131,16 +5131,16 @@ msgstr "Opis"
 msgid "Scripting related actions"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:5243
+#: src/kvirc/ui/kvi_ircview_events.cpp:631
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:800
+#: src/kvirc/kernel/kvi_options.cpp:806
 #, fuzzy
 msgid "Search"
 msgstr "Pretrai"
 
-#: src/kvirc/ui/kvi_ircview.cpp:363
+#: src/kvirc/ui/kvi_ircview.cpp:320
 msgid "Search tools"
 msgstr "Alati za pretraivanje"
 
@@ -5153,11 +5153,11 @@ msgstr "tajno"
 msgid "Secure Socket Layer error"
 msgstr "Grea Sigurnog Nivo-a Priklju�a (SSL-a)"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:669
+#: src/kvirc/kernel/kvi_irccontext.cpp:670
 msgid "Secure connection"
 msgstr "Sigurna konekcija"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:382
+#: src/kvirc/kernel/kvi_irclink.cpp:385
 msgid "Secure proxy connection"
 msgstr "Sigurna proksi konekcija"
 
@@ -5170,12 +5170,12 @@ msgstr "Izaberi sve"
 msgid "Select Font"
 msgstr "selekcija"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:240
+#: src/kvirc/ui/kvi_ircviewtools.cpp:235
 #, fuzzy
 msgid "Select a Filter File"
 msgstr "Izaberite filter fajla"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:267
+#: src/kvirc/ui/kvi_ircviewtools.cpp:260
 #, fuzzy
 msgid "Select a Name for the Filter File"
 msgstr "Izaberite ime za filter fajla"
@@ -5185,7 +5185,7 @@ msgstr "Izaberite ime za filter fajla"
 msgid "Select color"
 msgstr "Izaberi sve"
 
-#: src/kvirc/kernel/kvi_options.cpp:688
+#: src/kvirc/kernel/kvi_options.cpp:694
 #, fuzzy
 msgid "Selection"
 msgstr "selekcija"
@@ -5194,7 +5194,7 @@ msgstr "selekcija"
 msgid "Self modification not allowed"
 msgstr "Automodifikovanje nije dozvoljeno"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1081
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1102
 #, c-format
 msgid "Sending %s as password"
 msgstr "aljem %s kao lozinku"
@@ -5211,37 +5211,37 @@ msgstr ""
 msgid "Senseless empty switch command: fix the script"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:870
+#: src/kvirc/kernel/kvi_irccontext.cpp:871
 #, fuzzy
 msgid "Sent QUIT, waiting for the server to close the connection..."
 msgstr "Poslat QUIT...�kam da server zatvori konekciju"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:395
+#: src/kvirc/kernel/kvi_irclink.cpp:398
 #, fuzzy
 msgid "Sent auth method request, waiting for acknowledgement"
 msgstr "Poslata zahtev za auth metodu, �kam potvr�vanje"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:401
+#: src/kvirc/kernel/kvi_irclink.cpp:404
 #, fuzzy
 msgid "Sent connection request, waiting for \"HTTP 200\" acknowledgement"
 msgstr "Poslat zahtev za konektovanje, �kam za \"HTTP 200\" potvrdom"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:389
+#: src/kvirc/kernel/kvi_irclink.cpp:392
 #, fuzzy
 msgid "Sent connection request, waiting for acknowledgement"
 msgstr "Poslat zahtev konektovanja, �kam potvr�vanje"
 
-#: src/kvirc/ui/kvi_channel.cpp:1496
+#: src/kvirc/ui/kvi_channel.cpp:1566
 #, fuzzy
 msgid "Sent part request, waiting for reply..."
 msgstr "Poslat zahtev za listu: �kam odgovor..."
 
-#: src/kvirc/kernel/kvi_irclink.cpp:392
+#: src/kvirc/kernel/kvi_irclink.cpp:395
 #, fuzzy
 msgid "Sent target host data, waiting for acknowledgement"
 msgstr "Poslati podaci eljenom hostu, �kam potvr�vanje"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:398
+#: src/kvirc/kernel/kvi_irclink.cpp:401
 #, fuzzy
 msgid "Sent username and password, waiting for acknowledgement"
 msgstr "Poslato ime korisnika i ifra, �kam potvr�vanje"
@@ -5251,12 +5251,12 @@ msgstr "Poslato ime korisnika i ifra, �kam potvr�vanje"
 msgid "Separate Directories"
 msgstr "Razdvaja"
 
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:649
 #: src/kvirc/kernel/kvi_coreactions.cpp:509
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:658
 msgid "Separator"
 msgstr "Razdvaja"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:608
+#: src/kvirc/ui/kvi_statusbar.cpp:578
 #, fuzzy
 msgid "Server"
 msgstr "serverov ping"
@@ -5275,7 +5275,7 @@ msgstr "Server %Q verzija %S podrani modovi '%S' i '%S'"
 msgid "Server ERROR: %Q"
 msgstr "[SSL GREKA]: %Q"
 
-#: src/kvirc/kernel/kvi_options.cpp:705
+#: src/kvirc/kernel/kvi_options.cpp:711
 #, fuzzy
 msgid "Server Message of the Day"
 msgstr "serverska poruka dana"
@@ -5285,15 +5285,15 @@ msgstr "serverska poruka dana"
 msgid "Server Notices (+s)"
 msgstr "s (Obavetenja servera)"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1221
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1260
 msgid "Server X509 certificate"
 msgstr "Server X509 sertifikat"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5109
+#: src/kvirc/ui/kvi_ircview_events.cpp:713
 msgid "Server appears to be a network hub<br>"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:820
+#: src/kvirc/kernel/kvi_options.cpp:826
 #, fuzzy
 msgid "Server error"
 msgstr "Greka parsera"
@@ -5318,22 +5318,22 @@ msgstr "Ime hosta servera prona�no kao %s"
 msgid "Server idle for"
 msgstr "Port servisa"
 
-#: src/kvirc/kernel/kvi_options.cpp:704
+#: src/kvirc/kernel/kvi_options.cpp:710
 #, fuzzy
 msgid "Server information"
 msgstr "informacije servera"
 
-#: src/kvirc/kernel/kvi_options.cpp:768
+#: src/kvirc/kernel/kvi_options.cpp:774
 #, fuzzy
 msgid "Server notice"
 msgstr "obavetenje servera"
 
-#: src/kvirc/kernel/kvi_options.cpp:706
+#: src/kvirc/kernel/kvi_options.cpp:712
 #, fuzzy
 msgid "Server ping"
 msgstr "serverov ping"
 
-#: src/kvirc/kernel/kvi_options.cpp:798
+#: src/kvirc/kernel/kvi_options.cpp:804
 #, fuzzy
 msgid "Server statistics"
 msgstr "statistike servera"
@@ -5343,12 +5343,12 @@ msgstr "statistike servera"
 msgid "Server/Network/Tech Admin only channel"
 msgstr "Kanal samo za Server Admine | Admine Mree | Admine Podu�vanja"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:173
+#: src/kvirc/ui/kvi_ircviewtools.cpp:172
 #, fuzzy
 msgid "Set &All"
 msgstr "Izaberi sve"
 
-#: src/kvirc/ui/kvi_ircviewtools.cpp:177
+#: src/kvirc/ui/kvi_ircviewtools.cpp:176
 #, fuzzy
 msgid "Set &None"
 msgstr "Nijedan"
@@ -5357,7 +5357,7 @@ msgstr "Nijedan"
 msgid "Set at"
 msgstr "Postavljeno u"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:193 src/kvirc/ui/kvi_topicw.cpp:542
+#: src/kvirc/ui/kvi_topicw.cpp:542 src/kvirc/ui/kvi_maskeditor.cpp:193
 msgid "Set by"
 msgstr "Postavljeno od"
 
@@ -5371,7 +5371,7 @@ msgstr "Nijedan"
 msgid "Setting away nickname (%Q)"
 msgstr "Server %Q ima nadimak: %s"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1279
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1302
 msgid "Setting configured user mode"
 msgstr ""
 
@@ -5394,16 +5394,16 @@ msgstr "poruka razdvajanja"
 msgid "Show %1"
 msgstr "&Pove�j KVIrc przor"
 
-#: src/kvirc/ui/kvi_menubar.cpp:245
+#: src/kvirc/ui/kvi_menubar.cpp:243
 msgid "Show &Dock Icon"
 msgstr "Pokai &sputaju� widget"
 
-#: src/kvirc/ui/kvi_menubar.cpp:312
+#: src/kvirc/ui/kvi_menubar.cpp:313
 #, fuzzy
 msgid "Show &Icon Table"
 msgstr "&Ikone widget"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3973
+#: src/kvirc/ui/kvi_ircview.cpp:2096
 #, fuzzy
 msgid "Show Find Window"
 msgstr "&Kazi u prozor"
@@ -5435,17 +5435,17 @@ msgstr ""
 msgid "Show SocketSpy..."
 msgstr "&pijun priklju�a"
 
-#: src/kvirc/ui/kvi_menubar.cpp:187
+#: src/kvirc/ui/kvi_menubar.cpp:185
 #, fuzzy
 msgid "Show StatusBar"
 msgstr "Pokai na po�tku"
 
-#: src/kvirc/ui/kvi_query.cpp:88
+#: src/kvirc/ui/kvi_query.cpp:94
 #, fuzzy
 msgid "Show User List"
 msgstr "URL lista"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:606
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:597
 #, fuzzy
 msgid "Show total connection time"
 msgstr "Pokai vreme sinhronizovanja kanala"
@@ -5455,7 +5455,7 @@ msgid "Shows a dialog that allows editing the registered user entries"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:238
-msgid "Shows a dialog that allows you joing channels"
+msgid "Shows a dialog that allows you join channels"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:807
@@ -5537,11 +5537,11 @@ msgstr "Pokai dijalog opcija kao toplevel prozor"
 msgid "Shows the theme options dialog"
 msgstr "Pokai dijalog opcija kao toplevel prozor"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:554
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:545
 msgid "Simple Clock"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:586
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:589
 msgid "SingleShot"
 msgstr ""
 
@@ -5562,7 +5562,7 @@ msgstr ""
 "Prekinut slot '%s' u odredinom objektu '%s' dok je emitovan signal '%s' od"
 "\robjekta '%s': prekidam vezu"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:94
+#: src/kvirc/ui/kvi_toolbar.cpp:100
 msgid "Small (22x22)"
 msgstr ""
 
@@ -5592,12 +5592,12 @@ msgstr "Priklju�k"
 msgid "Socket creation failed"
 msgstr "Neuspeno kreiranje priklju�a"
 
-#: src/kvirc/kernel/kvi_options.cpp:697
+#: src/kvirc/kernel/kvi_options.cpp:703
 #, fuzzy
 msgid "Socket error"
 msgstr "greka priklju�a"
 
-#: src/kvirc/kernel/kvi_options.cpp:695
+#: src/kvirc/kernel/kvi_options.cpp:701
 #, fuzzy
 msgid "Socket message"
 msgstr "poruka priklju�a"
@@ -5606,7 +5606,7 @@ msgstr "poruka priklju�a"
 msgid "Socket not connected"
 msgstr "Priklju�k nije povezan"
 
-#: src/kvirc/kernel/kvi_options.cpp:696
+#: src/kvirc/kernel/kvi_options.cpp:702
 #, fuzzy
 msgid "Socket warning"
 msgstr "upozorenje priklju�a"
@@ -5631,37 +5631,37 @@ msgstr "Port"
 msgid "Sorting"
 msgstr "Deljenje"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1214
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1225
 msgid ""
 "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
 msgstr ""
 "Spam obavetenje od \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (poklapa se sa spam re�u "
 "\"%Q\")"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:851
+#: src/kvirc/sparser/kvi_sp_literal.cpp:859
 msgid ""
 "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
 "Spam privatna poruka od \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (poklapa se sa spam "
 "re�u \"%s\")"
 
-#: src/kvirc/kernel/kvi_options.cpp:760
+#: src/kvirc/kernel/kvi_options.cpp:766
 #, fuzzy
 msgid "Spam report"
 msgstr "spam izvetaj"
 
-#: src/kvirc/ui/kvi_channel.cpp:154
+#: src/kvirc/ui/kvi_channel.cpp:151
 #, fuzzy
 msgid "Split View"
 msgstr "poruka razdvajanja"
 
-#: src/kvirc/kernel/kvi_options.cpp:722
+#: src/kvirc/kernel/kvi_options.cpp:728
 #, fuzzy
 msgid "Split message"
 msgstr "poruka razdvajanja"
 
-#: src/kvilib/irc/kvi_ircserverdb.cpp:279
-#: src/kvilib/irc/kvi_ircserverdb.cpp:282
+#: src/kvilib/irc/kvi_ircserverdb.cpp:290
+#: src/kvilib/irc/kvi_ircserverdb.cpp:293
 #, fuzzy
 msgid "Standalone Servers"
 msgstr "uske boje"
@@ -5671,9 +5671,14 @@ msgstr "uske boje"
 msgid "Standard"
 msgstr "uske boje"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:378
+#: src/kvirc/kernel/kvi_irclink.cpp:381
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Pokrenuto rukovanje Sigurnog Nivoa Priklju�a"
+
+#: src/kvirc/ui/kvi_channel.cpp:1871 src/kvirc/ui/kvi_query.cpp:868
+#, fuzzy
+msgid "Starting last log"
+msgstr "Pokre�m listu obavetenja"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:946
 msgid "Starting notify list"
@@ -5719,11 +5724,11 @@ msgstr ""
 msgid "Stri&keout"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:1224
+#: src/kvirc/kernel/kvi_options.cpp:1230
 msgid "String list options (comma separated list of strings)"
 msgstr "Opcije liste znakova (zarezom razdvojena lista znakova)"
 
-#: src/kvirc/kernel/kvi_options.cpp:1216
+#: src/kvirc/kernel/kvi_options.cpp:1222
 msgid "String options (string value)"
 msgstr "Opcije znakova (znakovna vrednost)"
 
@@ -5732,7 +5737,7 @@ msgstr "Opcije znakova (znakovna vrednost)"
 msgid "Strip colors"
 msgstr "uske boje"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:337 src/kvirc/ui/kvi_menubar.cpp:147
+#: src/kvirc/ui/kvi_menubar.cpp:145 src/kvirc/kernel/kvi_coreactions.cpp:337
 msgid "Subscribe to the Mailing List"
 msgstr ""
 
@@ -5785,17 +5790,17 @@ msgstr ""
 msgid "Syntax error: malformed module command identifier"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:698
+#: src/kvirc/kernel/kvi_options.cpp:704
 #, fuzzy
 msgid "System error"
 msgstr "sistemska greka"
 
-#: src/kvirc/kernel/kvi_options.cpp:702
+#: src/kvirc/kernel/kvi_options.cpp:708
 #, fuzzy
 msgid "System message"
 msgstr "sistemska poruka"
 
-#: src/kvirc/kernel/kvi_options.cpp:701
+#: src/kvirc/kernel/kvi_options.cpp:707
 #, fuzzy
 msgid "System warning"
 msgstr "sistemsko upozorenje"
@@ -5809,7 +5814,7 @@ msgstr ""
 msgid "Text &Encoding"
 msgstr "Tekstualni editor"
 
-#: src/kvirc/kernel/kvi_options.cpp:822
+#: src/kvirc/kernel/kvi_options.cpp:828
 #, fuzzy
 msgid "Text Encoding Server message"
 msgstr "poruka greke ulaza"
@@ -5937,7 +5942,7 @@ msgstr "Fajl '%s' nije �tljiv"
 msgid "The commandline for this url type seems to be broken (%Q)"
 msgstr "Komandna linija za ovaj url izgleda da je prekinuta (%s)"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:642
+#: src/kvirc/kernel/kvi_irccontext.cpp:643
 #, fuzzy
 msgid ""
 "The connection attempt failed while using a cached IP address for the "
@@ -5946,12 +5951,12 @@ msgstr ""
 "Pokuak konektovanja neuspean doje je keiranje IP adrese za ovaj server "
 "uklju�no"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:786
+#: src/kvirc/kernel/kvi_irccontext.cpp:787
 #, fuzzy
 msgid "The connection terminated unexpectedly. Trying to reconnect..."
 msgstr "Konekcija je neo�kivano prekinuta: pokuavam da rekonektujem..."
 
-#: src/kvirc/ui/kvi_channel.cpp:1090
+#: src/kvirc/ui/kvi_channel.cpp:1135
 #, fuzzy
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %Q, no "
@@ -5960,7 +5965,7 @@ msgstr ""
 "Maina za ifrovanje nije u mogu�osti da ifruje trenutnu poruku (%Q): %s nema "
 "podataka poslatih serveru"
 
-#: src/kvirc/ui/kvi_query.cpp:624
+#: src/kvirc/ui/kvi_query.cpp:642
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %s, no "
 "data sent to the server"
@@ -5972,11 +5977,11 @@ msgstr ""
 msgid "The current network is %Q"
 msgstr "Trenutni upit nema metu '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:408
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:411
 msgid "The current window is not a channel"
 msgstr "Trenutni prozor nije kanal"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:250
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:253
 #, fuzzy
 msgid "The current window is not a channel, a query or a console"
 msgstr "Trenutni prozor nije kanal"
@@ -6024,7 +6029,7 @@ msgstr "Slede� CTCP odgovor ima nepoznatu metu \"%Q\""
 msgid "The following CTCP request has unrecognized target %Q"
 msgstr "Slede� CTCP zahtev ima nepoznatu metu %Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:718
+#: src/kvirc/sparser/kvi_sp_literal.cpp:726
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
@@ -6033,8 +6038,8 @@ msgstr ""
 "Prate� poruka izgleda da je ifrovana, ali maina za deifrovanje ne moe da je "
 "deifruje: %s"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:268
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:273
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:271
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:276
 msgid "The following string was injected by the user:"
 msgstr ""
 
@@ -6118,8 +6123,8 @@ msgid ""
 "(object doesn't exist)"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:839
-#: src/kvirc/kernel/kvi_ircconnection.cpp:849
+#: src/kvirc/kernel/kvi_ircconnection.cpp:862
+#: src/kvirc/kernel/kvi_ircconnection.cpp:872
 msgid "The local IP address as seen by the IRC server is %Q"
 msgstr "Traim ime hosta za proksi (%Q)"
 
@@ -6154,7 +6159,7 @@ msgstr "Iska�� meni (popup) '%s' nije definisan"
 msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:643
+#: src/kvirc/kernel/kvi_irccontext.cpp:644
 #, fuzzy
 msgid "The problem *might* be caused by an updated DNS entry"
 msgstr "Problem *moe* biti prouzrokovan promenom DNS unosa"
@@ -6166,7 +6171,7 @@ msgid ""
 "that type (expecting \"%s\")"
 msgstr ""
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1487
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1502
 msgid ""
 "The recent nickname change from \r!n\r%Q\r to \r!n\r%Q\r caused a query "
 "collision: merging output"
@@ -6178,7 +6183,7 @@ msgid ""
 "the s/// operator, skipping"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:847
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:838
 msgid "The remote server replied with "
 msgstr ""
 
@@ -6232,8 +6237,8 @@ msgstr "Desni operand operatora %s procenjen na '%s' (nije broj)"
 msgid "The right side of operator '|=' didn't evaluate to an integer"
 msgstr "Desni operand operatora %s procenjen na '%s' (nije broj)"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1146
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1163
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1157
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1174
 #, fuzzy
 msgid ""
 "The scheduled NickServ identification command appears to be broken, please "
@@ -6242,11 +6247,11 @@ msgstr ""
 "Zadata NickServ identifikaciona komanda izgleda da je prekinuta; molim "
 "popravite to u dijalogu opcija"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1225
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1264
 msgid "The server didn't provide a certificate"
 msgstr "Server nije obezbedio sertifikat"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:969
+#: src/kvirc/kernel/kvi_ircconnection.cpp:990
 msgid ""
 "The server does not support STARTTLS command. Your connection will NOT be "
 "encrypted"
@@ -6258,29 +6263,29 @@ msgid ""
 "nickname manually"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1227
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1252
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr "Server odbija predloeni nadimak (%s) i umesto toga vas imenuje sa %s"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:797
+#: src/kvirc/kernel/kvi_ircconnection.cpp:820
 msgid "The server seems to have changed the idea about the local hostname"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:688
+#: src/kvirc/kernel/kvi_ircconnection.cpp:704
 #, fuzzy
 msgid ""
 "The server seems to support the WATCH notify list method, will try to use it"
 msgstr ""
 "Server izgleda podrava WATCH listu obavetenja: probacemo da je koristimo."
 
-#: src/kvilib/irc/kvi_ircserverdb.cpp:180
+#: src/kvilib/irc/kvi_ircserverdb.cpp:188
 msgid ""
 "The server specification seems to be in the id:<string> form but the "
 "identifier coulnd't be found in the database"
 msgstr ""
 
-#: src/kvilib/irc/kvi_ircserverdb.cpp:158
+#: src/kvilib/irc/kvi_ircserverdb.cpp:166
 msgid ""
 "The server specification seems to be in the net:<string> but the network "
 "couln't be found in the database"
@@ -6307,7 +6312,7 @@ msgstr ""
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 msgstr ""
 
-#: src/kvilib/irc/kvi_ircserverdb.cpp:105
+#: src/kvilib/irc/kvi_ircserverdb.cpp:113
 #, fuzzy
 msgid "The specified network has no server entries"
 msgstr "Navedeni prozor nema pripadaju�h dugmadi"
@@ -6364,13 +6369,13 @@ msgstr ""
 "Sistemsko globalno IPV6 povezivanje adrese (%s) nije vae�: izgleda da je "
 "interfejs pao"
 
-#: src/kvirc/ui/kvi_query.cpp:312
+#: src/kvirc/ui/kvi_query.cpp:335
 msgid ""
 "The target of this query has changed from \r!n\r%Q\r [%Q@\r!h\r%Q\r] to \r!n"
 "\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr ""
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1478
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1493
 msgid ""
 "The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h"
 "\r%Q\r] changed his nickname to \r!n\r%Q\r"
@@ -6447,7 +6452,7 @@ msgstr "Ovaj KVIrc je kompajliran bez SSL podrke"
 msgid "This is not a channel"
 msgstr "Ovo nije kanal"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:442
+#: src/kvirc/kernel/kvi_irccontext.cpp:443
 msgid ""
 "This is the first connection in this IRC context: using the global server "
 "setting"
@@ -6472,7 +6477,7 @@ msgstr ""
 msgid "This option is also available as"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:567 src/kvirc/ui/kvi_query.cpp:734
+#: src/kvirc/ui/kvi_query.cpp:580 src/kvirc/ui/kvi_query.cpp:754
 #, fuzzy
 msgid "This query has no active targets, no message sent"
 msgstr "Ovaj upit nema aktivnih ciljeva: nije poslata poruka"
@@ -6535,7 +6540,7 @@ msgstr ""
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:475
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:478
 msgid ""
 "Timer name omitted but there is not current timer (this is not a timer "
 "callback)"
@@ -6551,7 +6556,7 @@ msgstr "Naslov (topic) za \r!c\r%Q\r je: %Q"
 msgid "Tip: %Q"
 msgstr "Lista: %Q"
 
-#: src/kvirc/ui/kvi_menubar.cpp:185 src/kvirc/ui/kvi_toolbar.cpp:80
+#: src/kvirc/ui/kvi_toolbar.cpp:86 src/kvirc/ui/kvi_menubar.cpp:183
 #, fuzzy
 msgid "Toolbars"
 msgstr "&Alati"
@@ -6561,7 +6566,7 @@ msgstr "&Alati"
 msgid "Tools"
 msgstr "&Alati"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:84
+#: src/kvirc/ui/kvi_toolbar.cpp:90
 #, fuzzy
 msgid "Top"
 msgstr "Naslov"
@@ -6585,7 +6590,7 @@ msgstr "Naslov (topic) za \r!c\r%Q\r je: %Q"
 msgid "Topic for \r!c\r%Q\r was set by %Q on %Q"
 msgstr "Naslov za \r!c\r%Q\r je postavljen od \r!n\r%Q\r u %Q"
 
-#: src/kvirc/kernel/kvi_options.cpp:710
+#: src/kvirc/kernel/kvi_options.cpp:716
 #, fuzzy
 msgid "Topic message"
 msgstr "poruka teme (topic-a)"
@@ -6600,7 +6605,7 @@ msgstr "Naslov je postavljen od \r!n\r%Q\r"
 msgid "Topic was set by %Q on %Q"
 msgstr "Naslov je postavljen od \r!n\r%Q\r u %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:606
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:609
 #, fuzzy, c-format
 msgid "Total: %u timers running"
 msgstr "Ukupno: %d ponuda"
@@ -6625,7 +6630,7 @@ msgstr ""
 msgid "Transparent"
 msgstr "Transparentno "
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:644
+#: src/kvirc/kernel/kvi_irccontext.cpp:645
 msgid "Try reconnecting with caching disabled"
 msgstr ""
 
@@ -6633,7 +6638,7 @@ msgstr ""
 msgid "UNUSED"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:690
+#: src/kvirc/kernel/kvi_options.cpp:696
 #, fuzzy
 msgid "URL foreground"
 msgstr "URL ispis"
@@ -6658,17 +6663,17 @@ msgid "Unable to add the timer: insufficient system resources"
 msgstr ""
 "Interna greka: ne mogu da dodam tajmer %s, nedovoljno sistemskih resursa"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1239
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1278
 msgid "Unable to determine the current cipher"
 msgstr "Ne mogu da ustanovim trenutnu ifru"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5082
+#: src/kvirc/ui/kvi_ircview_events.cpp:687
 #, fuzzy
 msgid "Unable to look it up hostname: Hostname appears to be masked"
 msgstr ""
 "Ne mogu da pronadjem ime hosta IRC servera: Ne mogu da pokrenem DNS slave"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5083
+#: src/kvirc/ui/kvi_ircview_events.cpp:688
 #, fuzzy
 msgid "Unable to look it up hostname: Unknown host"
 msgstr ""
@@ -6696,12 +6701,12 @@ msgstr "Ne mogu da odradim navedeni zahtev: ne mogu da u�tam dcc modul (%s)"
 msgid "Unable to process the above request: DCC module may be broken"
 msgstr "Ne mogu da odradim gornji zahtev: dcc modul izgleda da je ote�n"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:864
-#: src/kvirc/kernel/kvi_ircconnection.cpp:894
+#: src/kvirc/kernel/kvi_ircconnection.cpp:888
+#: src/kvirc/kernel/kvi_ircconnection.cpp:915
 msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
 msgstr "Traim ime hosta za proksi (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:891
+#: src/kvirc/kernel/kvi_ircconnection.cpp:912
 #, fuzzy
 msgid ""
 "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
@@ -6718,7 +6723,7 @@ msgstr "Ne mogu da pokrenem DNS traganje"
 msgid "Unable to start the request slave thread"
 msgstr "Ne mogu da pokrenem DNS traganje"
 
-#: src/kvirc/kernel/kvi_options.cpp:792
+#: src/kvirc/kernel/kvi_options.cpp:798
 #, fuzzy
 msgid "Unban matching my mask"
 msgstr "poklapanje unban-a po masci"
@@ -6974,7 +6979,7 @@ msgstr ""
 msgid "Unexpected token"
 msgstr "Neo�kivani znak"
 
-#: src/kvirc/kernel/kvi_options.cpp:703
+#: src/kvirc/kernel/kvi_options.cpp:709
 #, fuzzy
 msgid "Unhandled server reply"
 msgstr "nepodran odgovor servera"
@@ -6995,9 +7000,9 @@ msgid "Unhighlight All Windows"
 msgstr "M&inimizuj"
 
 #: src/kvilib/net/kvi_ssl.cpp:581 src/kvilib/net/kvi_ssl.cpp:611
-#: src/kvilib/net/kvi_ssl.cpp:634 src/kvirc/kernel/kvi_theme.cpp:86
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:589
-#: src/kvirc/ui/kvi_topicw.cpp:152
+#: src/kvilib/net/kvi_ssl.cpp:634 src/kvirc/ui/kvi_topicw.cpp:152
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:592
+#: src/kvirc/kernel/kvi_theme.cpp:86
 msgid "Unknown"
 msgstr "Nepoznato"
 
@@ -7006,7 +7011,7 @@ msgstr "Nepoznato"
 msgid "Unknown "
 msgstr "Nepoznato"
 
-#: src/kvirc/kernel/kvi_options.cpp:770
+#: src/kvirc/kernel/kvi_options.cpp:776
 #, fuzzy
 msgid "Unknown CTCP reply"
 msgstr "nepoznat CTCP odgovor"
@@ -7052,7 +7057,7 @@ msgstr "Nepoznat �or (host nije prona�n)"
 msgid "Unknown operator"
 msgstr "Nepoznat operator"
 
-#: src/kvirc/ui/kvi_ircview.cpp:5110
+#: src/kvirc/ui/kvi_ircview_events.cpp:714
 #, fuzzy
 msgid "Unknown server<br>"
 msgstr "Nepoznata greka"
@@ -7079,7 +7084,7 @@ msgstr ""
 msgid "Unrecognized proxy reply"
 msgstr "Nepoznat odgovor proksija"
 
-#: src/kvirc/kernel/kvi_options.cpp:709
+#: src/kvirc/kernel/kvi_options.cpp:715
 #, fuzzy
 msgid "Unrecognized/broken message"
 msgstr "neprepoznatljiva/prekinuta poruka"
@@ -7093,7 +7098,7 @@ msgstr "Fatalna greka DNS servera (sruen ?)"
 msgid "Unrecoverable nameserver error (crashed ?)"
 msgstr "Fatalna greka DNS servera (sruen ?)"
 
-#: src/kvirc/kernel/kvi_options.cpp:1221
+#: src/kvirc/kernel/kvi_options.cpp:1227
 msgid "Unsigned integer options (unsigned integer constant)"
 msgstr "Neozna�ne celobrojne opcije (neozna�na celobrojna konstanta)"
 
@@ -7131,21 +7136,21 @@ msgstr ""
 msgid "Unterminated subexpression (Parenthesis mismatch)"
 msgstr "Besprekidni podizraz (Neodgovaraju� zagrade)"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:727
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:718
 #, fuzzy
 msgid "Update Indicator"
 msgstr "Tekstualni editor"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:845
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:836
 #, fuzzy
 msgid "Update failed"
 msgstr "odgovoreno"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:837
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:828
 msgid "Update missing"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1467
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1492
 #, fuzzy
 msgid "Updating away state for channel %Q"
 msgstr "Nema postavljenog naslova za kanal \r!c\r%Q\r"
@@ -7164,7 +7169,7 @@ msgstr "<br>Dupli klik za editovanje"
 msgid "Use the crypt engine"
 msgstr "Koristi mainu za ifrovanje"
 
-#: src/kvirc/ui/kvi_channel.cpp:157 src/kvirc/ui/kvi_channel.cpp:196
+#: src/kvirc/ui/kvi_channel.cpp:154 src/kvirc/ui/kvi_channel.cpp:194
 #, fuzzy
 msgid "User List"
 msgstr "Lista korisnika"
@@ -7174,12 +7179,12 @@ msgstr "Lista korisnika"
 msgid "User Mode"
 msgstr "&Mod korisnika"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:628
+#: src/kvirc/ui/kvi_statusbar.cpp:598
 #, fuzzy
 msgid "User Modes"
 msgstr "&Mod korisnika"
 
-#: src/kvirc/kernel/kvi_options.cpp:719
+#: src/kvirc/kernel/kvi_options.cpp:725
 #, fuzzy
 msgid "User action"
 msgstr "akcija korisnika"
@@ -7192,7 +7197,7 @@ msgstr ""
 msgid "User mode for \r!n\r%Q\r is %s"
 msgstr "Mod kanala za \r!c\r%Q\r je %s"
 
-#: src/kvirc/kernel/kvi_options.cpp:812
+#: src/kvirc/kernel/kvi_options.cpp:818
 #, fuzzy
 msgid "User-deop mode change"
 msgstr "-o promena moda"
@@ -7202,25 +7207,25 @@ msgstr "-o promena moda"
 msgid "User-operators OR Auditorium: /NAMES and /WHO show only ops"
 msgstr "auditorijum : /NAMES i /WHO pokazuje samo operatore"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:616
+#: src/kvirc/ui/kvi_statusbar.cpp:586
 msgid "Username"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:811
+#: src/kvirc/kernel/kvi_options.cpp:817
 #, fuzzy
 msgid "Userop mode change"
 msgstr "+o promena moda"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:650
+#: src/kvirc/kernel/kvi_ircsocket.cpp:666
 msgid "Using HTTP protocol."
 msgstr "Kori�nje HTTP protokola."
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:699
+#: src/kvirc/kernel/kvi_ircsocket.cpp:715
 #, fuzzy
 msgid "Using SOCKSv4 protocol."
 msgstr "Kori�nje SOCKSV4 protokola."
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:772
+#: src/kvirc/kernel/kvi_ircsocket.cpp:795
 #, fuzzy
 msgid "Using SOCKSv5 protocol."
 msgstr "Kori�nje SOCKSV5 protokola."
@@ -7239,19 +7244,19 @@ msgstr "Koristim keiranu IP adresu servera (%s)"
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1024
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1046
 msgid "Using network specific nickname (%Q)"
 msgstr "Koristim serverski naveden nadimak (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1048
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1069
 msgid "Using network specific real name (%Q)"
 msgstr "Koristim serverski navedeno stvarno ime (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:992
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1013
 msgid "Using network specific username (%Q)"
 msgstr "Koristim serverski navedeno ime korisnika (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1011
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1033
 #, fuzzy
 msgid "Using reconnect specific nickname (%Q)"
 msgstr "Koristim serverski naveden nadimak (%Q)"
@@ -7260,15 +7265,15 @@ msgstr "Koristim serverski naveden nadimak (%Q)"
 msgid "Using server <b>%1</b>"
 msgstr "<nobr>Koristi server <b>%1</b>"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1017
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1039
 msgid "Using server specific nickname (%Q)"
 msgstr "Koristim serverski naveden nadimak (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1041
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1063
 msgid "Using server specific real name (%Q)"
 msgstr "Koristim serverski navedeno stvarno ime (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:987
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1008
 msgid "Using server specific username (%Q)"
 msgstr "Koristim serverski navedeno ime korisnika (%Q)"
 
@@ -7284,15 +7289,15 @@ msgstr "Promenljiva o�kivana"
 msgid "Variable or identifier expected"
 msgstr "O�kivana promenljiva ili identifikator"
 
-#: src/kvirc/kernel/kvi_options.cpp:815
+#: src/kvirc/kernel/kvi_options.cpp:821
 msgid "Verbose/Debug"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:922
+#: src/kvirc/ui/kvi_channel.cpp:964
 msgid "Very high activity"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:918
+#: src/kvirc/ui/kvi_channel.cpp:956
 msgid "Very low activity"
 msgstr ""
 
@@ -7301,7 +7306,7 @@ msgstr ""
 msgid "Voiced users"
 msgstr "voiced korisnici"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1585
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1600
 msgid "WALLOPS from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "WALLOPS od \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
@@ -7321,50 +7326,50 @@ msgstr ""
 msgid "Wallops (+w)"
 msgstr "w (Wallops)"
 
-#: src/kvirc/kernel/kvi_options.cpp:780
+#: src/kvirc/kernel/kvi_options.cpp:786
 #, fuzzy
 msgid "Wallops message"
 msgstr "wallops poruka"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:787
+#: src/kvirc/kernel/kvi_ircsocket.cpp:811
 msgid "We can accept auth method 0 (no auth)"
 msgstr "Mi moemo prihvatiti auth metodu 0 (nema auth)"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:795
+#: src/kvirc/kernel/kvi_ircsocket.cpp:819
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
 msgstr "Mi moemo prihvatiti auth metodu 0 (nema auth) ili 2 (user/pass)"
 
-#: src/kvirc/kernel/kvi_options.cpp:739
+#: src/kvirc/kernel/kvi_options.cpp:745
 #, fuzzy
 msgid "Who reply"
 msgstr "ko (who) odgovor"
 
-#: src/kvirc/kernel/kvi_options.cpp:745
+#: src/kvirc/kernel/kvi_options.cpp:751
 #, fuzzy
 msgid "Whois channels reply"
 msgstr "koje (whois) odgovor kanala"
 
-#: src/kvirc/kernel/kvi_options.cpp:746
+#: src/kvirc/kernel/kvi_options.cpp:752
 #, fuzzy
 msgid "Whois idle reply"
 msgstr "koje (whois) neuposlen odgovor"
 
-#: src/kvirc/kernel/kvi_options.cpp:748
+#: src/kvirc/kernel/kvi_options.cpp:754
 #, fuzzy
 msgid "Whois other reply"
 msgstr "koje (whois) ostali odgovori"
 
-#: src/kvirc/kernel/kvi_options.cpp:747
+#: src/kvirc/kernel/kvi_options.cpp:753
 #, fuzzy
 msgid "Whois server reply"
 msgstr "koje (whois) odgovor servera"
 
-#: src/kvirc/kernel/kvi_options.cpp:744
+#: src/kvirc/kernel/kvi_options.cpp:750
 #, fuzzy
 msgid "Whois user reply"
 msgstr "koje (whois) odgovor korisnika"
 
-#: src/kvirc/kernel/kvi_irccontext.cpp:594
+#: src/kvirc/kernel/kvi_irccontext.cpp:595
 #, c-format
 msgid "Will attempt to reconnect in %d seconds"
 msgstr ""
@@ -7393,7 +7398,7 @@ msgstr "Prozor sa ID-om '%s' nije na�n, vra�m prazan znakovni niz"
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Prozor sa ID-om '%Q' nije na�n, vra�m prazan znakovni niz"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:583
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:586
 #, fuzzy
 msgid "WindowLifetime"
 msgstr "Lista prozora"
@@ -7410,8 +7415,8 @@ msgstr ""
 msgid "Writing package header"
 msgstr ""
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:751 src/kvirc/kernel/kvi_app.cpp:786
-#: src/kvirc/ui/kvi_input.cpp:263 src/kvirc/ui/kvi_statusbar.cpp:600
+#: src/kvirc/ui/kvi_input.cpp:263 src/kvirc/ui/kvi_statusbar.cpp:570
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:751 src/kvirc/kernel/kvi_app.cpp:781
 msgid "Yes"
 msgstr "Da"
 
@@ -7419,7 +7424,7 @@ msgstr "Da"
 msgid "Yes, always"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:806
+#: src/kvirc/kernel/kvi_app.cpp:801
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -7430,7 +7435,7 @@ msgstr ""
 msgid "You are not connected to a server"
 msgstr "Niste zaka�ni na IRC server"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:839
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:830
 msgid ""
 "You didn't checked yet.\n"
 " \t\t\t\tShould I check it?"
@@ -7441,17 +7446,17 @@ msgstr ""
 msgid "You don't appear to be on channel %s"
 msgstr "Niste operator; ne moete da menjate modove kanala"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:624
-#: src/kvirc/sparser/kvi_sp_literal.cpp:634
+#: src/kvirc/sparser/kvi_sp_literal.cpp:632
+#: src/kvirc/sparser/kvi_sp_literal.cpp:642
 msgid "You have been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Izba�ni ste sa \r!c\r%Q\r od \r!n\r%Q\r [%Q@\r!h\r%Q\r] :%Q"
 
-#: src/kvirc/ui/kvi_ctcppagedialog.cpp:99
+#: src/kvirc/ui/kvi_ctcppagedialog.cpp:102
 msgid "You have been paged by"
 msgstr ""
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1462
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1189
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1477
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1211
 msgid "You have changed your nickname to %Q"
 msgstr "Promenili ste va nadimak u %Q"
 
@@ -7468,16 +7473,16 @@ msgid ""
 "Are you sure you wish to quit KVIrc?"
 msgstr ""
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:386
+#: src/kvirc/sparser/kvi_sp_literal.cpp:394
 #, fuzzy
 msgid "You have left channel \r!c\r%Q\r"
 msgstr "Napustio si kanal \r!c\r%Q\r :%s"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:388
+#: src/kvirc/sparser/kvi_sp_literal.cpp:396
 msgid "You have left channel \r!c\r%Q\r: %Q"
 msgstr "Napustio si kanal \r!c\r%Q\r :%Q"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1649
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1664
 #, c-format
 msgid "You have set user mode %s"
 msgstr "Postavili ste korisnikov mod %s"
@@ -7491,7 +7496,7 @@ msgid ""
 "message to be sent?"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:5148
+#: src/kvirc/ui/kvi_ircview_events.cpp:752
 #, fuzzy
 msgid "You're not an operator: You may not change channel modes"
 msgstr "Niste operator; ne moete da menjate modove kanala"
@@ -7501,7 +7506,7 @@ msgstr "Niste operator; ne moete da menjate modove kanala"
 msgid "You're not connected to an IRC server"
 msgstr "Niste zaka�ni na IRC server"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:798
+#: src/kvirc/kernel/kvi_ircconnection.cpp:821
 msgid ""
 "You're probably using a broken bouncer or maybe something weird is happening "
 "on the IRC server"
@@ -7518,11 +7523,11 @@ msgstr "Va korisni�i mod je %s"
 msgid "Your user mode is %s"
 msgstr "Va korisni�i mod je %s"
 
-#: src/kvirc/ui/kvi_ircview.cpp:3975
+#: src/kvirc/ui/kvi_ircview.cpp:2098
 msgid "Zoom In"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:3976
+#: src/kvirc/ui/kvi_ircview.cpp:2099
 msgid "Zoom Out"
 msgstr ""
 
@@ -7554,17 +7559,17 @@ msgstr ""
 msgid "[%s]: [SSL]: Using private key file %s"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:205 src/kvirc/ui/kvi_query.cpp:246
+#: src/kvirc/ui/kvi_query.cpp:217 src/kvirc/ui/kvi_query.cpp:265
 #, fuzzy
 msgid "[Dead Query]"
 msgstr "Odbaci izmene"
 
-#: src/kvirc/ui/kvi_channel.cpp:951
+#: src/kvirc/ui/kvi_channel.cpp:992
 #, fuzzy
 msgid "[Dead channel]"
 msgstr "Odbaci izmene"
 
-#: src/kvirc/ui/kvi_query.cpp:417
+#: src/kvirc/ui/kvi_query.cpp:425
 msgid "[Dead query]"
 msgstr ""
 
@@ -7613,8 +7618,8 @@ msgstr ""
 msgid "[KVS]%c Warning: %Q"
 msgstr "KVIrc : Upozorenje"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:583
-#: src/kvirc/kernel/kvi_ircconnection.cpp:611
+#: src/kvirc/kernel/kvi_ircconnection.cpp:596
+#: src/kvirc/kernel/kvi_ircconnection.cpp:625
 #, fuzzy
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr "Poruka priklju�a skra�na na 512 bajtova."
@@ -7627,11 +7632,11 @@ msgstr "[Naputa status odsutnosti posle %u d %u h %u m %u s]: %Q"
 msgid "[Leaving away status]: %Q"
 msgstr "[Napusta status odsutnosti]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:201
+#: src/kvirc/kernel/kvi_ircsocket.cpp:203
 msgid "[PROXY ERROR]: %Q"
 msgstr "[PROKSI GREKA]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:190
+#: src/kvirc/kernel/kvi_ircsocket.cpp:192
 msgid "[PROXY]: %Q"
 msgstr "[PROKSI]: %Q"
 
@@ -7640,19 +7645,19 @@ msgstr "[PROKSI]: %Q"
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:213
+#: src/kvirc/kernel/kvi_ircsocket.cpp:215
 msgid "[SOCKET ERROR]: %Q"
 msgstr "[GREKA PRIKLJU�A]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:219
+#: src/kvirc/kernel/kvi_ircsocket.cpp:220
 msgid "[SOCKET WARNING]: %Q"
 msgstr "[UPOZORENJE PRIKLJU�A]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:208
+#: src/kvirc/kernel/kvi_ircsocket.cpp:210
 msgid "[SOCKET]: %Q"
 msgstr "[PRIKLJU�K]: %Q"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:180
+#: src/kvirc/kernel/kvi_ircsocket.cpp:182
 msgid "[SSL ERROR]: %Q"
 msgstr "[SSL GREKA]: %Q"
 
@@ -7734,7 +7739,7 @@ msgstr "[SSL]:  Verzija: %c%d"
 msgid "[SSL]:  Version: %c%s"
 msgstr "[SSL]:  Verzija: %c%s"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:175
+#: src/kvirc/kernel/kvi_ircsocket.cpp:177
 msgid "[SSL]: %Q"
 msgstr "[SSL]: %Q"
 
@@ -7769,31 +7774,31 @@ msgstr ""
 msgid "[Server parser]: [%s][%s] %Q"
 msgstr "[Serverov parser]: [%s][%s] %W"
 
-#: src/kvirc/ui/kvi_channel.cpp:752
+#: src/kvirc/ui/kvi_channel.cpp:787
 #, fuzzy
 msgid "active user"
 msgstr "Aktivne zabrane"
 
-#: src/kvirc/ui/kvi_channel.cpp:752
+#: src/kvirc/ui/kvi_channel.cpp:787
 #, fuzzy
 msgid "active users"
 msgstr "voiced korisnici"
 
-#: src/kvirc/ui/kvi_channel.cpp:669 src/kvirc/ui/kvi_channel.cpp:684
+#: src/kvirc/ui/kvi_channel.cpp:704 src/kvirc/ui/kvi_channel.cpp:719
 msgid "and"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:692
+#: src/kvirc/ui/kvi_channel.cpp:727
 #, fuzzy
 msgid "and other %1 users"
 msgstr "voiced korisnici"
 
-#: src/kvirc/ui/kvi_channel.cpp:674 src/kvirc/ui/kvi_channel.cpp:695
+#: src/kvirc/ui/kvi_channel.cpp:709 src/kvirc/ui/kvi_channel.cpp:730
 #, fuzzy
 msgid "are talking"
 msgstr "Upozorenje parsera"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1556
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1571
 msgid "autojoining"
 msgstr "autoulazak"
 
@@ -7832,12 +7837,12 @@ msgstr "c: prima�cconn poruka"
 msgid "channel"
 msgstr "Kanal"
 
-#: src/kvirc/ui/kvi_channel.cpp:833
+#: src/kvirc/ui/kvi_channel.cpp:868
 #, fuzzy
 msgid "channel administrator"
 msgstr "Operatori kanala"
 
-#: src/kvirc/ui/kvi_channel.cpp:833
+#: src/kvirc/ui/kvi_channel.cpp:868
 #, fuzzy
 msgid "channel administrators"
 msgstr "Operatori kanala"
@@ -7846,12 +7851,12 @@ msgstr "Operatori kanala"
 msgid "channel notification:"
 msgstr "obavetenje kanala"
 
-#: src/kvirc/ui/kvi_channel.cpp:822
+#: src/kvirc/ui/kvi_channel.cpp:857
 #, fuzzy
 msgid "channel owner"
 msgstr "tiho ili vlasnik kanala"
 
-#: src/kvirc/ui/kvi_channel.cpp:822
+#: src/kvirc/ui/kvi_channel.cpp:857
 #, fuzzy
 msgid "channel owners"
 msgstr "Modovi kanala"
@@ -7885,7 +7890,7 @@ msgstr "d: kori�nje 'DEBUG' zastavice"
 msgid "directory"
 msgstr "Direktorijum"
 
-#: src/kvirc/sparser/kvi_sp_literal.cpp:1556
+#: src/kvirc/sparser/kvi_sp_literal.cpp:1571
 #, fuzzy
 msgid "double-click the channel name to join"
 msgstr "dupli klik na ima kanala za ulazak"
@@ -7920,27 +7925,27 @@ msgstr "Neo�kivani karakteri u nizu indeksa"
 msgid "found type %Q where type '%s' was expected"
 msgstr "Neo�kivani karakteri u nizu indeksa"
 
-#: src/kvirc/ui/kvi_channel.cpp:855
+#: src/kvirc/ui/kvi_channel.cpp:890
 #, fuzzy
 msgid "half-operator"
 msgstr "Operatori kanala"
 
-#: src/kvirc/ui/kvi_channel.cpp:855
+#: src/kvirc/ui/kvi_channel.cpp:890
 #, fuzzy
 msgid "half-operators"
 msgstr "Operatori kanala"
 
-#: src/kvirc/ui/kvi_channel.cpp:795
+#: src/kvirc/ui/kvi_channel.cpp:830
 #, fuzzy
 msgid "hot user"
 msgstr "voiced korisnici"
 
-#: src/kvirc/ui/kvi_channel.cpp:795
+#: src/kvirc/ui/kvi_channel.cpp:830
 #, fuzzy
 msgid "hot users"
 msgstr "voiced korisnici"
 
-#: src/kvirc/ui/kvi_channel.cpp:931
+#: src/kvirc/ui/kvi_channel.cpp:973
 msgid "human"
 msgstr ""
 
@@ -7963,7 +7968,7 @@ msgstr "ignorisan (nije prepoznat)"
 msgid "invite list"
 msgstr "Sa�vaj listu"
 
-#: src/kvirc/ui/kvi_channel.cpp:663
+#: src/kvirc/ui/kvi_channel.cpp:698
 msgid "is talking"
 msgstr ""
 
@@ -8004,12 +8009,12 @@ msgstr "obavetenje"
 msgid "o: IRC operator (OPER)"
 msgstr "o: IRC operator (OPER)"
 
-#: src/kvirc/ui/kvi_channel.cpp:738
+#: src/kvirc/ui/kvi_channel.cpp:773
 #, fuzzy
 msgid "operator"
 msgstr "operator %c%c"
 
-#: src/kvirc/ui/kvi_channel.cpp:739
+#: src/kvirc/ui/kvi_channel.cpp:774
 #, fuzzy
 msgid "operators"
 msgstr "operator %c%c"
@@ -8027,7 +8032,7 @@ msgstr ""
 msgid "private"
 msgstr "privatno"
 
-#: src/kvirc/kernel/kvi_irclink.cpp:368
+#: src/kvirc/kernel/kvi_irclink.cpp:371
 msgid "proxy host"
 msgstr "proksi host"
 
@@ -8082,7 +8087,7 @@ msgstr "odgovoreno"
 msgid "s: Recipient for server notices"
 msgstr "s: prima�serverskih obavetenja"
 
-#: src/kvirc/ui/kvi_channel.cpp:663
+#: src/kvirc/ui/kvi_channel.cpp:698
 #, fuzzy
 msgid "said something recently"
 msgstr "Proksi govori neto o \""
@@ -8099,30 +8104,30 @@ msgstr "sigurna konekcija"
 msgid "unmatched watch list entry"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:886
+#: src/kvirc/ui/kvi_channel.cpp:921
 msgid "user total"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:877
+#: src/kvirc/ui/kvi_channel.cpp:912
 #, fuzzy
 msgid "user-operator"
 msgstr "operator %c%c"
 
-#: src/kvirc/ui/kvi_channel.cpp:877
+#: src/kvirc/ui/kvi_channel.cpp:912
 #, fuzzy
 msgid "user-operators"
 msgstr "operator %c%c"
 
-#: src/kvirc/ui/kvi_channel.cpp:886
+#: src/kvirc/ui/kvi_channel.cpp:921
 msgid "users total"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:866
+#: src/kvirc/ui/kvi_channel.cpp:901
 #, fuzzy
 msgid "voiced user"
 msgstr "voiced korisnici"
 
-#: src/kvirc/ui/kvi_channel.cpp:866
+#: src/kvirc/ui/kvi_channel.cpp:901
 msgid "voiced users"
 msgstr "voiced korisnici"
 
@@ -8144,7 +8149,7 @@ msgstr ""
 msgid "watch entry listing requested by user"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:674 src/kvirc/ui/kvi_channel.cpp:695
+#: src/kvirc/ui/kvi_channel.cpp:709 src/kvirc/ui/kvi_channel.cpp:730
 msgid "were talking recently"
 msgstr ""
 
@@ -11167,6 +11172,9 @@ msgstr "z: prima�oper wallop poruka"
 #, fuzzy
 #~ msgid "Change now"
 #~ msgstr "Change now"
+
+#~ msgid "Notify list: Checking for:%Q"
+#~ msgstr "Lista obavetenja: proveravam za: %Q"
 
 #~ msgid "Taskbar"
 #~ msgstr "Taskbar"

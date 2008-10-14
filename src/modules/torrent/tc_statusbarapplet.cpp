@@ -58,7 +58,7 @@ static KviStatusBarApplet *CreateTorrentClientApplet(KviStatusBar *bar, KviStatu
 void KviTorrentStatusBarApplet::selfRegister(KviStatusBar *bar)
 {
 	KviStatusBarAppletDescriptor *d = new KviStatusBarAppletDescriptor(
-		__tr2qs("Torrent Client"),
+		__tr2qs_ctx("Torrent Client","torrent"),
 			"torrentapplet",
 			CreateTorrentClientApplet,
 			"torrent", *(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)));
@@ -95,4 +95,4 @@ void KviTorrentStatusBarApplet::update()
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "tc_statusbarapplet.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
