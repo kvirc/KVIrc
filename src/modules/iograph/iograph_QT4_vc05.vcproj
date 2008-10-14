@@ -226,7 +226,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -DCOMPILE_CRYPT_SUPPORT -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -DCOMPILE_CRYPT_SUPPORT -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>
@@ -235,7 +235,7 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -DCOMPILE_CRYPT_SUPPORT -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
+						CommandLine="$(QTDIR)\bin\moc -DCOMPILE_CRYPT_SUPPORT -o &quot;$(InputDir)\$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
 						Outputs="$(InputDir)\$(InputName).moc"
 					/>
 				</FileConfiguration>

@@ -36,7 +36,7 @@
 #include <QPaintEvent>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
+	extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 KviIOGraphWindow* g_pIOGraphWindow = 0;
