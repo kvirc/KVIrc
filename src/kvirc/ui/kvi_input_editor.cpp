@@ -1977,7 +1977,11 @@ int KviInputEditor::charIndexFromXPosition(int iXPos)
 	{
 		QChar c = m_szTextBuffer.at(iCurChar);
 
-		int iWidthCh = c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);
+		int iWidthCh;
+		if (c.unicode() < 32)
+			iWidthCh=fm.width(getSubstituteChar(c.unicode())) + 3 ;
+		else 
+		iWidthCh=fm.width(c);
 
 		if(iXPos < (iCurXPos+(iWidthCh/2))) return iCurChar;
 		else if(iXPos < (iCurXPos+iWidthCh)) return (iCurChar+1);
@@ -2023,6 +2027,9 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx, bool bContentsCoords)
 
 	return iCurXPos;
 }
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+#include "kvi_input_editor.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 /*
 	@doc: texticons

@@ -1841,7 +1841,7 @@ void KviChannel::pasteLastLog()
 		iLogDay = szLogDate.section('.',2,2).toInt();
 
 		// Check log validity
-		int iInterval = -KVI_OPTION_UINT(KviOption_uintDaysIntervalToPasteOnChannelJoin);
+		int iInterval = -(int)KVI_OPTION_UINT(KviOption_uintDaysIntervalToPasteOnChannelJoin);
 		QDate logDate(iLogYear,iLogMonth,iLogDay);
 		QDate checkDate = date.addDays(iInterval);
 

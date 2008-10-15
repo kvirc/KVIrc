@@ -1165,6 +1165,7 @@ bool KviWindow::isMinimized()
 
 bool KviWindow::isMaximized()
 {
+//	debug ("check maximized %s",mdiParent()->plainCaption().utf8().data());
 	if(mdiParent())
 		return (mdiParent()->state() == KviMdiChild::Maximized);
 	// Heh...how to check it ?

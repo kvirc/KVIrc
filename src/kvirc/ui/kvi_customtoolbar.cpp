@@ -440,7 +440,7 @@ void KviCustomToolBar::drag(QWidget * pChild, const QPoint & pnt)
 	if(!pMyOwnAction)
 		return;
 
-	QAction * pAction;
+	QAction * pAction=0;
 	removeAction(pMyOwnAction);
 	if(pWidgetToMove)
 	{

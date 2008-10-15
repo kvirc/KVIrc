@@ -1793,10 +1793,11 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 								KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
 								KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
 								)->pixmap();
+				
 					} else {
 						pPix = pAv->pixmap();
 					}
-					//debug("Pixmap: null=%i;height=%i;width=%i",pix.isNull(),pix.height(),pix.width());
+					
 					p.drawPixmap(iAvatarAndTextX,iTheY,*pPix);
 					iTheY += pPix->height() + 1;
 				}

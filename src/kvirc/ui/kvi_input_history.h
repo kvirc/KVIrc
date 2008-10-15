@@ -51,14 +51,15 @@ private:
 	static KviInputHistory * m_pSelf;
 	static unsigned int      m_uCount;
 
+	
+protected:
+	KviPointerList<QString> * m_pStringList;
+public:
 	/**
 	* \brief Constructs the input history object
 	* \return KviInputHistory
 	*/
 	KviInputHistory();
-protected:
-	KviPointerList<QString> * m_pStringList;
-public:
 	/**
 	* \brief Destroys the input history object
 	*/
