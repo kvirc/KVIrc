@@ -95,7 +95,7 @@ int parseArgs(ParseArgs * a)
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
-			debug(szMessage.toLocal8Bit().data());
+			debug("%s",szMessage.toLocal8Bit().data());
 #endif
 
 			return KVI_ARGS_RETCODE_STOP;
@@ -143,7 +143,7 @@ int parseArgs(ParseArgs * a)
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			MessageBox(0,szMessage.toLocal8Bit().data(),"KVIrc",0);
 #else
-			debug(szMessage.toLocal8Bit().data());
+			debug("%s",szMessage.toLocal8Bit().data());
 #endif
 			return KVI_ARGS_RETCODE_STOP;
 		}
@@ -371,7 +371,7 @@ int main(int argc,char ** argv)
 				if(a.bShowPopup)
 					QMessageBox::information(0,"Session - KVIrc",tmp.ptr(),QMessageBox::Ok);
 				else
-					debug(tmp.ptr());
+					debug("%s",tmp.ptr());
 			}
 			delete theApp;
 			return 0;

@@ -150,7 +150,7 @@ void Index::parseDocument( const QString &filename, int docNum )
 	KviFile file( filename );
 	if ( !file.openForReading() ) {
 		QString warn = "cannot open file " + filename;
-		qWarning( warn.toUtf8().data() );
+		qWarning("%s", warn.toUtf8().data() );
 		return;
 	}
 	QTextStream s( &file );
@@ -338,7 +338,7 @@ QString Index::getDocumentTitle( const QString &fileName )
 	KviFile file( fileName );
 	if ( !file.openForReading() ) {
 		QString warn = "cannot open file " + fileName;
-		qWarning( warn.toUtf8().data() );
+		qWarning("%s", warn.toUtf8().data() );
 		return fileName;
 	}
 
@@ -477,7 +477,7 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 
 	if ( !file.openForReading() ) {
 		QString warn = "cannot open file " + fileName;
-		qWarning( warn.toUtf8().data() );
+		qWarning("%s", warn.toUtf8().data() );
 		return FALSE;
 	}
 	else debug("Open file %s",fileName.toUtf8().data());

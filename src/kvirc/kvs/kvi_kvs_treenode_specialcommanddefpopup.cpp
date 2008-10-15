@@ -222,15 +222,15 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelPopup::dump(const char * prefix)
 	QString x = tmp;
 	x += "CONDITION: ";
 	x += m_szCondition;
-	debug(x.toUtf8().data());
+	debug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "TEXT: ";
 	x += m_szText;
-	debug(x.toUtf8().data());
+	debug("%s",x.toUtf8().data());
 	x = tmp;
 	x += "ICON: ";
 	x += m_szIcon;
-	debug(x.toUtf8().data());
+	debug("%s",x.toUtf8().data());
 	for(KviKvsTreeNodeSpecialCommandDefpopupLabel * l = m_pLabels->first();l;l = m_pLabels->next())
 		l->dump(tmp.toUtf8().data());
 }
