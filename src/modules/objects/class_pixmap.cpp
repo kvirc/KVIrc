@@ -218,7 +218,7 @@ bool KviKvsObject_pixmap::functionloadFromMemoryBuffer(KviKvsObjectFunctionCall 
 		c->warning(__tr2qs("Buffer parameter is not an object"));
 		return true;
 	}
-	if (!pObject->inherits("KviKvsObjet_memorybuffer"))
+	if (!pObject->inheritsClass("memorybuffer"))
 	{
 		c->warning(__tr2qs("Buffer parameter is not a memorybuffer object"));
 		return true;
@@ -268,7 +268,7 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 
-	if(!pObDest->inherits("KviKvsObject_pixmap"))
+	if(!pObDest->inheritsClass("pixmap"))
 	{
 		c->warning(__tr2qs("Destination must be a pixmap object"));
 		return true;

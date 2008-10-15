@@ -24,22 +24,23 @@
 //   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 //
 //=============================================================================
-
+#include "class_widget.h"
 #include "kvi_file.h"
 
 #include "object_macros.h"
 
 
 
-class KviKvsObject_file : public KviKvsObject
+class KviKvsObject_file : public KviKvsObject_widget
 {
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_file)
 protected:
 	KviFile* m_pFile;
 public:
+
 	KviFile *pFile(){return m_pFile;};
-  	bool setName(KviKvsObjectFunctionCall *c);
+	bool setName(KviKvsObjectFunctionCall *c);
 	bool name(KviKvsObjectFunctionCall *c);
 	bool open(KviKvsObjectFunctionCall *c);
 	bool isOpen(KviKvsObjectFunctionCall *c);

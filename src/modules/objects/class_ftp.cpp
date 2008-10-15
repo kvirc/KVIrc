@@ -62,19 +62,18 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_ftp,"ftp","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"connect",functionConnect)
-	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"abort",functionAbort)
-	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"login",functionLogin)
-	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"get",functionGet)
-	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"cd",functionCd)
-	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"list",functionList)
-	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"commandFinishedEvent",function_commandFinishedEvent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"listInfoEvent",function_listInfoEvent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"dataTransferProgressEvent",function_dataTransferProgressEvent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,abort)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,login)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,get)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,cd)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,list)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,commandFinishedEvent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,listInfoEvent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,dataTransferProgressEvent)
 KVSO_END_REGISTERCLASS(KviKvsObject_ftp)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_ftp,KviKvsObject)
-debug("this %s",this->metaObject()->className());
 	m_pFtp = new QFtp();
 	m_pFile=0;
 	connect(m_pFtp,SIGNAL(commandFinished(int,bool)),this,SLOT(slotCommandFinished(int,bool)));
@@ -89,14 +88,13 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_ftp)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_ftp)
 	if (m_pFile) delete m_pFile;
+	delete m_pFtp;
 KVSO_END_DESTRUCTOR(KviKvsObject_ftp)
 //----------------------
 
 
 
-
-
-bool  KviKvsObject_ftp::functionConnect(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,functionConnect)
 {
 	QString szHost;
 	kvs_uint_t uRemotePort;
@@ -110,7 +108,7 @@ bool  KviKvsObject_ftp::functionConnect(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setInteger(id);
 	return true;
 }
-bool  KviKvsObject_ftp::functionLogin(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,login)
 {
 	QString szUser,szPass;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -122,7 +120,7 @@ bool  KviKvsObject_ftp::functionLogin(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setInteger(id);
 	return true;
 }
-bool  KviKvsObject_ftp::functionGet(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,get)
 {
 	QString szFile,szDest;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -136,7 +134,7 @@ bool  KviKvsObject_ftp::functionGet(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setInteger(id);
 	return true;
 }
-bool  KviKvsObject_ftp::functionCd(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,cd)
 {
 	QString szPath;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -147,7 +145,7 @@ bool  KviKvsObject_ftp::functionCd(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setInteger(id);
 	return true;
 }
-bool  KviKvsObject_ftp::functionList(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,list)
 {
 	QString szPath;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -158,13 +156,13 @@ bool  KviKvsObject_ftp::functionList(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setInteger(id);
 	return true;
 }
-bool  KviKvsObject_ftp::functionAbort(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,abort)
 {
 	if (m_pFtp) m_pFtp->abort();
 	return true;
 }
 //signals & slots 
-bool KviKvsObject_ftp::function_commandFinishedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,commandFinishedEvent)
 {
 	emitSignal("commandFinished",c,c->params());
 	return true;
@@ -196,7 +194,7 @@ void KviKvsObject_ftp::slotDataTransferProgress ( qint64 done, qint64 total )
 	callFunction(this,"dataTransferProgressEvent",0,new KviKvsVariantList(
 		new KviKvsVariant((kvs_int_t) done),new KviKvsVariant((kvs_int_t) total)));
 }
-bool KviKvsObject_ftp::function_dataTransferProgressEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,dataTransferProgressEvent)
 {
 	emitSignal("dataTransferProgress",c,c->params());
 	return true;
@@ -207,11 +205,10 @@ void KviKvsObject_ftp::slotDone ( bool error )
 
 void KviKvsObject_ftp::slotListInfo ( const QUrlInfo & i )
 {
-	callFunction(this,"listInfoEvent",0,new KviKvsVariantList(
-		new KviKvsVariant(i.name())));
+	callFunction(this,"listInfoEvent",0,new KviKvsVariantList(new KviKvsVariant(i.name())));
 	
 }
-bool KviKvsObject_ftp::function_listInfoEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,listInfoEvent)
 {
 	emitSignal("listInfo",c,c->params());
 	return true;
@@ -236,7 +233,7 @@ void KviKvsObject_ftp::slotStateChanged ( int state)
 	callFunction(this,"stateChangedEvent",0,new KviKvsVariantList(
 		new KviKvsVariant(szState)));
 }
-bool KviKvsObject_ftp::function_stateChangedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(ftp,stateChangedEvent)
 {
 	emitSignal("stateChanged",c,c->params());
 	return true;

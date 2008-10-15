@@ -428,7 +428,7 @@ KVSO_CLASS_FUNCTION(socket,read)
 			c->warning(__tr2qs("Buffer parameter is not an object"));
 			return true;
 		}
-		if (!pObject->inherits("KviKvsObject_memorybuffer"))
+		if (!pObject->inheritsClass("memorybuffer"))
 		{
 			c->warning(__tr2qs("Buffer parameter is not a memorybuffer object"));
 			return true;
@@ -499,12 +499,12 @@ KVSO_CLASS_FUNCTION(socket,write)
 			c->warning(__tr2qs("Buffer parameter is not an object"));
 			return true;
 		}
-		if (pObject->inherits("KviKvsObject_memorybuffer"))
+		if (pObject->inheritsClass("memorybuffer"))
 		{
 			QByteArray *p=((KviKvsObject_memorybuffer *)pObject)->pBuffer();
 			m_pOutBuffer->append((const unsigned char*)p->data(),p->size());
 		}
-		else if (pObject->inherits("KviKvsObject_file"))
+		else if (pObject->inheritsClass("file"))
 		{
 			KviFile *pFile=((KviKvsObject_file *)pObject)->pFile();
 			if (!pFile->isOpen()) 
@@ -567,7 +567,7 @@ KVSO_CLASS_FUNCTION(socket,accept)
 		return true;
 	}
 
-	if(!pObject->inherits("KviKvsObject_socket"))
+	if(!pObject->inheritsClass("socket"))
 	{
 		c->warning(__tr2qs("Invalid socket object specified (it doesn't inherit from socket)"));
 		return true;

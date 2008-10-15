@@ -62,7 +62,7 @@ protected:
 	kvs_hobject_t                                m_hObject;            // global object handle
 	KviKvsObjectClass                          * m_pClass;             // the class definition
 
-	KviKvsHash                                 * m_pDataContainer;     // member variables
+	KviKvsHash                                 * m_pdataContainer;     // member variables
 
 	KviPointerList<KviKvsObject>                   * m_pChildList;
 
@@ -112,7 +112,7 @@ public:
 
 	KviPointerHashTable<QString,KviKvsObjectFunctionHandler> * functionHandlers(){ return m_pFunctionHandlers; };
 
-	KviKvsHash * dataContainer(){ return m_pDataContainer; };
+	KviKvsHash * dataContainer(){ return m_pdataContainer; };
 
 	bool die();
 	bool dieNow();
@@ -120,6 +120,8 @@ public:
 	KviKvsObjectClass * getExactClass(){ return m_pClass; };
 	KviKvsObjectClass * getClass(const QString & classOverride = QString());
 	bool inheritsClass(KviKvsObjectClass * pClass);
+	bool inheritsClass(const QString &szClass);
+
 	KviKvsObjectFunctionHandler * lookupFunctionHandler(const QString & funcName,const QString & classOverride = QString());
 
 	// Registers a private implementation of a function

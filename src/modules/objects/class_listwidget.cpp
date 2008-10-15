@@ -157,7 +157,7 @@ bool KviKvsObject_listwidget::init(KviKvsRunTimeContext * pContext,KviKvsVariant
 
 KVSO_CLASS_FUNCTION(listwidget,insertItem)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iRow;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -171,14 +171,14 @@ KVSO_CLASS_FUNCTION(listwidget,insertItem)
 
 KVSO_CLASS_FUNCTION(listwidget,clear)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	((QListWidget *)widget())->clear();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(listwidget,changeItem)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iIndex,cnt;
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -199,7 +199,7 @@ KVSO_CLASS_FUNCTION(listwidget,changeItem)
 
 KVSO_CLASS_FUNCTION(listwidget,removeItem)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iIndex,cnt;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
@@ -216,13 +216,13 @@ KVSO_CLASS_FUNCTION(listwidget,removeItem)
 
 KVSO_CLASS_FUNCTION(listwidget,count)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QListWidget *)widget())->count());
 	return true;
 }
 KVSO_CLASS_FUNCTION(listwidget,currentText)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString text;
 	QListWidgetItem *item=((QListWidget *)widget())->currentItem();
 	if (item) text=item->text();
@@ -232,14 +232,14 @@ KVSO_CLASS_FUNCTION(listwidget,currentText)
 }
 KVSO_CLASS_FUNCTION(listwidget,currentItem)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QListWidget *)widget())->currentRow());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(listwidget,textAt)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
@@ -249,7 +249,7 @@ KVSO_CLASS_FUNCTION(listwidget,textAt)
 }
 KVSO_CLASS_FUNCTION(listwidget,setCurrentItem)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
@@ -259,7 +259,7 @@ KVSO_CLASS_FUNCTION(listwidget,setCurrentItem)
 }
 KVSO_CLASS_FUNCTION(listwidget,setSelectionMode)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("selection_mode",KVS_PT_STRING,0,szMode)
@@ -275,7 +275,7 @@ KVSO_CLASS_FUNCTION(listwidget,setSelectionMode)
 }
 KVSO_CLASS_FUNCTION(listwidget,selectionMode)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	switch(((QListWidget *)widget())->selectionMode())
 	{
 		case QAbstractItemView::SingleSelection: c->returnValue()->setString("single"); break;
@@ -289,7 +289,7 @@ KVSO_CLASS_FUNCTION(listwidget,selectionMode)
 
 KVSO_CLASS_FUNCTION(listwidget,insertWidgetItem)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *pObject;
 	kvs_int_t iIndex;
 	kvs_hobject_t hWid;
@@ -315,7 +315,7 @@ KVSO_CLASS_FUNCTION(listwidget,insertWidgetItem)
 }
 KVSO_CLASS_FUNCTION(listwidget,selectedItems)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QList<QListWidgetItem *> list=((QListWidget *)widget())->selectedItems();
 	KviKvsArray * pArray = new KviKvsArray();
 	c->returnValue()->setArray(pArray);
@@ -329,7 +329,7 @@ KVSO_CLASS_FUNCTION(listwidget,selectedItems)
 
 KVSO_CLASS_FUNCTION(listwidget,setSelected)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	bool bSel;
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -341,7 +341,7 @@ KVSO_CLASS_FUNCTION(listwidget,setSelected)
 }
 KVSO_CLASS_FUNCTION(listwidget,isSelected)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,uIndex)
@@ -351,7 +351,7 @@ KVSO_CLASS_FUNCTION(listwidget,isSelected)
 }
 KVSO_CLASS_FUNCTION(listwidget,itemAt)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uX,uY;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("uX",KVS_PT_UNSIGNEDINTEGER,0,uX)
@@ -362,7 +362,7 @@ KVSO_CLASS_FUNCTION(listwidget,itemAt)
 }
 KVSO_CLASS_FUNCTION(listwidget,itemRect)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("iIndex",KVS_PT_UNSIGNEDINTEGER,0,uIndex)

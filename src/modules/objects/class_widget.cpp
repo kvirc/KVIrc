@@ -719,9 +719,11 @@ KVSO_END_REGISTERCLASS(KviKvsObject_widget)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_widget,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
-
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_widget)
-	emit aboutToDie();
+debug("destr");
+int tt=0;
+
+emit aboutToDie();
 //	if (webview) delete webview;
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
@@ -1864,7 +1866,7 @@ bool KviKvsObject_widget::function_setMask(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Pixmap parameter is not an object"));
 		return true;
 	}
-	if (!obj->inherits("KviKvsObject_pixmap"))
+	if (!obj->inheritsClass("pixmap"))
 	{
 		c->warning(__tr2qs("Pixmap object required"));
 		return true;

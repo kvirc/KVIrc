@@ -92,14 +92,14 @@ bool KviKvsObject_button::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 
 KVSO_CLASS_FUNCTION(button,text)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setString(((QPushButton *)widget())->text());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(button,setText)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
@@ -110,7 +110,7 @@ KVSO_CLASS_FUNCTION(button,setText)
 
 KVSO_CLASS_FUNCTION(button,setImage)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsVariant icon;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("icon_or_hobject",KVS_PT_VARIANT,0,icon)
@@ -122,10 +122,10 @@ KVSO_CLASS_FUNCTION(button,setImage)
 		KviKvsObject *pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 		if (!pObject)
 		{
-			c->warning(__tr2qs_ctx("Pixmap parameter is not an object!","object"));
+			c->warning(__tr2qs_ctx("Pixmap parameter is not an object!","objects"));
 			return true;
 		}
-		if(pObject->inherits("KviKvsObject_pixmap"))
+		if(pObject->inheritsClass("pixmap"))
 			((QPushButton *)widget())->setIcon(QIcon(*((KviKvsObject_pixmap *)pObject)->getPixmap()));
 		else{ 
 			c->warning(__tr2qs_ctx("Object Pixmap required!","object"));

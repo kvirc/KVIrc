@@ -601,7 +601,7 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 	m_pChildList         = new KviPointerList<KviKvsObject>;
 	m_pChildList->setAutoDelete(false);
 
-	m_pDataContainer     = new KviKvsHash();
+	m_pdataContainer     = new KviKvsHash();
 
 	m_pFunctionHandlers  = 0; // no local function handlers yet!
 
@@ -627,9 +627,6 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 KviKvsObject::~KviKvsObject()
 {
 	m_bInDelayedDeath = true;
-
-	callFunction(this,"destructor");
-
 	while(m_pChildList->first())delete m_pChildList->first();
 	delete m_pChildList;
 
@@ -696,7 +693,7 @@ KviKvsObject::~KviKvsObject()
 		if(m_bObjectOwner)delete m_pObject;
 	}
 
-	delete m_pDataContainer;
+	delete m_pdataContainer;
 	if(m_pFunctionHandlers)delete m_pFunctionHandlers;
 }
 
@@ -1459,7 +1456,12 @@ void KviKvsObject::killAllChildrenWithClass(KviKvsObjectClass *cl)
 		} else o->killAllChildrenWithClass(cl);
 	}
 }
-
+bool KviKvsObject::inheritsClass(const QString &szClass)
+{
+	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClass);
+	if (pClass) return inheritsClass(pClass);
+	else return false;
+}
 bool KviKvsObject::inheritsClass(KviKvsObjectClass * pClass)
 {
 	if(pClass == m_pClass)return true;

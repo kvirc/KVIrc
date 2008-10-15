@@ -42,15 +42,15 @@ protected:
 	QFile *m_pFile;
 protected:
 	bool functionConnect(KviKvsObjectFunctionCall *c);
-	bool functionGet(KviKvsObjectFunctionCall *c);
-	bool functionLogin(KviKvsObjectFunctionCall *c);
-	bool functionCd(KviKvsObjectFunctionCall *c);
-	bool functionList(KviKvsObjectFunctionCall *c);
-	bool function_dataTransferProgressEvent(KviKvsObjectFunctionCall *c);
-	bool function_listInfoEvent(KviKvsObjectFunctionCall *c);
-	bool function_commandFinishedEvent(KviKvsObjectFunctionCall *c);
-	bool function_stateChangedEvent(KviKvsObjectFunctionCall *c);
-	bool functionAbort(KviKvsObjectFunctionCall *c);
+	bool get(KviKvsObjectFunctionCall *c);
+	bool login(KviKvsObjectFunctionCall *c);
+	bool cd(KviKvsObjectFunctionCall *c);
+	bool list(KviKvsObjectFunctionCall *c);
+	bool dataTransferProgressEvent(KviKvsObjectFunctionCall *c);
+	bool listInfoEvent(KviKvsObjectFunctionCall *c);
+	bool commandFinishedEvent(KviKvsObjectFunctionCall *c);
+	bool stateChangedEvent(KviKvsObjectFunctionCall *c);
+	bool abort(KviKvsObjectFunctionCall *c);
 
 protected slots:
 	void slotCommandFinished ( int id, bool error );

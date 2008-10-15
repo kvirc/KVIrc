@@ -130,22 +130,22 @@ const char * const itemflags_tbl[] = {
 //===========================================================================================
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidgetitem,"listviewitem","object")
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setText",function_setText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"text",function_text)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setPixmap",function_setPixmap);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setRenameEnabled",function_setRenameEnabled);
-	//KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setEnabled",function_setEnabled);
-	//KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"isEnabled",function_isEnabled);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setOpen",function_setOpen);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"isOpen",function_isOpen);
-	//KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setCheckable",function_setCheckable);
-	//KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"isCheckable",function_isCheckable);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setChecked",function_setChecked);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"isChecked",function_isChecked);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"firstChild",function_firstChild);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"setFlags",function_setFlags);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setText)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,text)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setPixmap);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setRenameEnabled);
+	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"setEnabled",function_setEnabled);
+	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"isEnabled",function_isEnabled);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setOpen);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,isOpen);
+	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"setCheckable",function_setCheckable);
+	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"isCheckable",function_isCheckable);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setChecked);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,isChecked);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,firstChild);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setFlags);
 
-	//KVSO_REGISTER_HANDLER(KviKvsObject_treewidgetitem,"nextSibling",function_nextSibling);
+	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"nextSibling",function_nextSibling);
 KVSO_END_REGISTERCLASS(KviKvsObject_treewidgetitem)
 
 
@@ -166,17 +166,17 @@ bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVar
 {
 	if (!parentObject())
 	{
-			pContext->error(__tr2qs("The treewidgetitem cannot be parentless"));
+			pContext->error(__tr2qs("The listviewitem cannot be parentless"));
 			return false;
 	}
-	if(parentObject()->inherits("KviKvsObject_treewidgetitem"))
+	if(parentObject()->inheritsClass("listviewitem"))
 	{
 		 m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((KviKvsObject_treewidgetitem *)parentObject())->m_pTreeWidgetItem);
 	} else {
-		if(parentObject()->inherits("KviKvsObject_treewidget"))
+		if(parentObject()->inheritsClass("listview"))
 			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((KviTalTreeWidget *)parentScriptWidget()));
 		else {
-			pContext->error(__tr2qs("The parent of the treewidgetitem must be either another treewidgetitem or a treewidget"));
+			pContext->error(__tr2qs("The parent of the listwidgetitem must be either another listwidgetitem or a listwidget"));
 			return false;
 		}
 	}
@@ -205,35 +205,16 @@ KviKvsStandardTreeWidgetItem::~KviKvsStandardTreeWidgetItem()
 	if(m_pMasterObject)m_pMasterObject->childDestroyed();
 }
 
-/*
-KviKvsCheckTreeWidgetItem::KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par)
-:KviTalCheckListItem(par,QString(),KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
-{
-}
-
-KviKvsCheckTreeWidgetItem::KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par)
-:KviTalCheckListItem(par,QString(),KviTalCheckListItem::CheckBox), m_pMasterObject(ob)
-{
-}
-
-KviKvsCheckTreeWidgetItem::~KviKvsCheckTreeWidgetItem()
-{
-	if(m_pMasterObject)m_pMasterObject->childDestroyed();
-}
-*/
-
 kvs_hobject_t KviKvsObject_treewidgetitem::itemToHandle(KviTalTreeWidgetItem * it)
 {
 	if(!it)return (kvs_hobject_t)0;
 	KviKvsObject_treewidgetitem * pObject;
-	//if(it->rtti() == 1)pObject = ((KviKvsCheckTreeWidgetItem *)it)->masterObject();
-	//else
 	pObject = ((KviKvsStandardTreeWidgetItem *)it)->masterObject();
 	if(!pObject)return (kvs_hobject_t)0;
 	return pObject->handle();
 }
 
-bool KviKvsObject_treewidgetitem::function_setText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,setText)
 {
 	kvs_uint_t uCol;
 	QString szText;
@@ -246,7 +227,7 @@ bool KviKvsObject_treewidgetitem::function_setText(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_treewidgetitem::function_firstChild(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,firstChild)
 {
 	if(m_pTreeWidgetItem)
 		c->returnValue()->setHObject(itemToHandle((KviTalTreeWidgetItem*)m_pTreeWidgetItem->child(0)));
@@ -255,7 +236,7 @@ bool KviKvsObject_treewidgetitem::function_firstChild(KviKvsObjectFunctionCall *
 	return true;
 }
 /*
-bool KviKvsObject_treewidgetitem::function_nextSibling(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,nextSibling)
 {
 	if(m_pTreeWidgetItem)
 		c->returnValue()->setHObject(itemToHandle(m_pTreeWidgetItem->nextSibling()));
@@ -264,7 +245,7 @@ bool KviKvsObject_treewidgetitem::function_nextSibling(KviKvsObjectFunctionCall 
 	return true;
 }
 */
-bool KviKvsObject_treewidgetitem::function_setRenameEnabled(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,setRenameEnabled)
 {
 	kvs_uint_t uCol;
 	bool bEnabled;
@@ -277,7 +258,7 @@ bool KviKvsObject_treewidgetitem::function_setRenameEnabled(KviKvsObjectFunction
 	return true;
 }
 
-bool KviKvsObject_treewidgetitem::function_setFlags(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,setFlags)
 {
 	QStringList itemflags;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -301,7 +282,7 @@ bool KviKvsObject_treewidgetitem::function_setFlags(KviKvsObjectFunctionCall *c)
 			sum = sum | flag;
 		}
 		else
-			c->warning(__tr2qs("Unknown item flag: %s"),&itemflags.at(i));
+			c->warning(__tr2qs("Unknown item flag: '%Q'"),&itemflags.at(i));
 	}
 	if(m_pTreeWidgetItem)
 		m_pTreeWidgetItem->setFlags((Qt::ItemFlags)sum);
@@ -309,7 +290,7 @@ bool KviKvsObject_treewidgetitem::function_setFlags(KviKvsObjectFunctionCall *c)
 	return true;
 }
 /*
-bool KviKvsObject_treewidgetitem::function_setEnabled(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,setEnabled)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -320,7 +301,7 @@ bool KviKvsObject_treewidgetitem::function_setEnabled(KviKvsObjectFunctionCall *
 	return true;
 }
 
-bool KviKvsObject_treewidgetitem::function_isEnabled(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,isEnabled)
 {
 	if(!m_pTreeWidgetItem)
 	{
@@ -331,7 +312,7 @@ bool KviKvsObject_treewidgetitem::function_isEnabled(KviKvsObjectFunctionCall *c
 	return true;
 }
 */
-bool KviKvsObject_treewidgetitem::function_setOpen(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,setOpen)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -342,7 +323,7 @@ bool KviKvsObject_treewidgetitem::function_setOpen(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_treewidgetitem::function_isOpen(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,isOpen)
 {
 	if(!m_pTreeWidgetItem)
 	{
@@ -353,7 +334,7 @@ bool KviKvsObject_treewidgetitem::function_isOpen(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_treewidgetitem::function_setChecked(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,setChecked)
 {
 	bool bChecked;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -365,7 +346,7 @@ bool KviKvsObject_treewidgetitem::function_setChecked(KviKvsObjectFunctionCall *
 	return true;
 }
 
-bool KviKvsObject_treewidgetitem::function_isChecked(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,isChecked)
 {
 	if(!m_pTreeWidgetItem)
 	{
@@ -382,7 +363,7 @@ bool KviKvsObject_treewidgetitem::function_isChecked(KviKvsObjectFunctionCall *c
 	return true;
 }
 /*
-bool KviKvsObject_treewidgetitem::function_setCheckable(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,setCheckable)
 {
 	bool bCheckable;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -418,7 +399,7 @@ bool KviKvsObject_treewidgetitem::function_setCheckable(KviKvsObjectFunctionCall
 	return true;
 }
 
-bool KviKvsObject_treewidgetitem::function_isCheckable(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,isCheckable)
 {
 	if(!m_pTreeWidgetItem)
 	{
@@ -429,7 +410,7 @@ bool KviKvsObject_treewidgetitem::function_isCheckable(KviKvsObjectFunctionCall 
 	return true;
 }
 */
-bool KviKvsObject_treewidgetitem::function_text(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,text)
 {
 	kvs_uint_t uCol;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -440,7 +421,7 @@ bool KviKvsObject_treewidgetitem::function_text(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_treewidgetitem::function_setPixmap(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidgetitem,setPixmap)
 {
 	kvs_uint_t uCol;
 	KviKvsObject *obPixmap;
@@ -455,7 +436,7 @@ bool KviKvsObject_treewidgetitem::function_setPixmap(KviKvsObjectFunctionCall *c
 	{
 		vPixmap->asHObject(obHpixmap);
 		obPixmap=KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
-		if (!obPixmap->inherits("KviKvsObject_pixmap"))
+		if (!obPixmap->inheritsClass("pixmap"))
 		{
 			c->warning(__tr2qs("Pixmap object or image Id required"));
 			return true;

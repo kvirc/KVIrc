@@ -657,24 +657,24 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 	QImage  * imgSource=0;
 	QPaintDevice  * pdSource = 0;
 
-	if(obSrc->inherits("KviKvsObject_pixmap")) pdSource =((KviKvsObject_pixmap *)obSrc)->getPixmap();
-	else if (obSrc->inherits("KviKvsObject_widget")) pdSource=((KviKvsObject_widget *)obSrc)->widget();
+	if(obSrc->inheritsClass("pixmap")) pdSource =((KviKvsObject_pixmap *)obSrc)->getPixmap();
+	else if (obSrc->inheritsClass("widget")) pdSource=((KviKvsObject_widget *)obSrc)->widget();
 	if (!pdSource)
 	{
 		c->warning(__tr2qs("Widget, Image or Pixmap required "));
 		return true;
 	}
 	QPaintDevice  * pdDest = 0;
-	if(obDst->inherits("KviKvsObject_pixmap")){
+	if(obDst->inheritsClass("pixmap")){
 		pdDest= ((KviKvsObject_pixmap *)obDst)->getPixmap();
 	}
-	else if (obDst->inherits("KviKvsObject_widget")) pdDest=((KviKvsObject_widget *)obDst)->widget();
+	else if (obDst->inheritsClass("widget")) pdDest=((KviKvsObject_widget *)obDst)->widget();
 	if (!pdDest)
 	{
 		c->warning(__tr2qs("Widget or Pixmap required"));
 		return true;
 	}
-	if(obDst->inherits("KviKvsObject_pixmap")){
+	if(obDst->inheritsClass("pixmap")){
 		((KviKvsObject_pixmap *)obDst)->pixmapChanged();
 	}
 
@@ -751,15 +751,15 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	if (!obBck->inherits("KviKvsObject_pixmap") || !obFor->inherits("KviKvsObject_pixmap"))
+	if (!obBck->inheritsClass("pixmap") || !obFor->inherits("KviKvsObject_pixmap"))
 	{
 		c->warning(__tr2qs("Pixmap objects required"));
 		return true;
 	}
 
 	QPaintDevice  * pdDest = 0;
-	if(obDest->inherits("KviKvsObject_pixmap")) pdDest = ((KviKvsObject_pixmap *)obDest)->getPixmap();
-	else if (obDest->inherits("KviKvsObject_widget")) pdDest=((KviKvsObject_widget *)obDest)->widget();
+	if(obDest->inheritsClass("pixmap")) pdDest = ((KviKvsObject_pixmap *)obDest)->getPixmap();
+	else if (obDest->inheritsClass("widget")) pdDest=((KviKvsObject_widget *)obDest)->widget();
 
 	if (!pdDest)
 	{
@@ -767,7 +767,7 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	if(obDest->inherits("KviKvsObject_pixmap")) ((KviKvsObject_pixmap *)obDest)->pixmapChanged();
+	if(obDest->inheritsClass("pixmap")) ((KviKvsObject_pixmap *)obDest)->pixmapChanged();
 
 
 	QImage  *img_back=((KviKvsObject_pixmap *)obBck)->getImage();

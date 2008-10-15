@@ -41,22 +41,22 @@ protected:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 protected:
-	bool function_setText(KviKvsObjectFunctionCall *c);
-	bool function_insertItem(KviKvsObjectFunctionCall *c);
-	bool function_setPixmap(KviKvsObjectFunctionCall *c);
-	bool function_setRenameEnabled(KviKvsObjectFunctionCall *c);
-	bool function_setEnabled(KviKvsObjectFunctionCall *c);
-	bool function_isEnabled(KviKvsObjectFunctionCall *c);
-	bool function_setOpen(KviKvsObjectFunctionCall *c);
-	bool function_isOpen(KviKvsObjectFunctionCall *c);
-	bool function_text(KviKvsObjectFunctionCall *c);
-	bool function_setCheckable(KviKvsObjectFunctionCall *c);
-	bool function_isCheckable(KviKvsObjectFunctionCall *c);
-	bool function_setChecked(KviKvsObjectFunctionCall *c);
-	bool function_isChecked(KviKvsObjectFunctionCall *c);
-	bool function_firstChild(KviKvsObjectFunctionCall *c);
-	//bool function_nextSibling(KviKvsObjectFunctionCall *c);
-	bool function_setFlags(KviKvsObjectFunctionCall *c);
+	bool setText(KviKvsObjectFunctionCall *c);
+	bool insertItem(KviKvsObjectFunctionCall *c);
+	bool setPixmap(KviKvsObjectFunctionCall *c);
+	bool setRenameEnabled(KviKvsObjectFunctionCall *c);
+	bool setEnabled(KviKvsObjectFunctionCall *c);
+	bool isEnabled(KviKvsObjectFunctionCall *c);
+	bool setOpen(KviKvsObjectFunctionCall *c);
+	bool isOpen(KviKvsObjectFunctionCall *c);
+	bool text(KviKvsObjectFunctionCall *c);
+	bool setCheckable(KviKvsObjectFunctionCall *c);
+	bool isCheckable(KviKvsObjectFunctionCall *c);
+	bool setChecked(KviKvsObjectFunctionCall *c);
+	bool isChecked(KviKvsObjectFunctionCall *c);
+	bool firstChild(KviKvsObjectFunctionCall *c);
+	//bool nextSibling(KviKvsObjectFunctionCall *c);
+	bool setFlags(KviKvsObjectFunctionCall *c);
 
 public:
 	static kvs_hobject_t itemToHandle(KviTalTreeWidgetItem * it);

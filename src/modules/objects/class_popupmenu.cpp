@@ -273,7 +273,7 @@ bool KviKvsObject_popupmenu::functioninsertHandle(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("icon_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
 	KVSO_PARAMETERS_END(c)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!ob->object()->inherits("KviKvsObject_popupmenu"))
+	if(!ob->object()->inheritsClass("popupmenu"))
 	{
 		c->warning(__tr2qs("Can't add a non - popupmenu  object"));
 		return TRUE;

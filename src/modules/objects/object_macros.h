@@ -89,7 +89,9 @@ g_pKvs##__className##Class->registerFunctionHandler(#__szName,(KviKvsObjectFunct
 
 #define KVSO_BEGIN_DESTRUCTOR(__className) \
 	__className::~__className() \
-	{
+	{\
+	callFunction(this,"destructor");
+
 
 #define KVSO_END_DESTRUCTOR(__className) \
 	}
@@ -97,10 +99,10 @@ g_pKvs##__className##Class->registerFunctionHandler(#__szName,(KviKvsObjectFunct
 #define KVSO_CLASS_FUNCTION(__className,__functionName)\
 	bool KviKvsObject_##__className::__functionName(KviKvsObjectFunctionCall * c)
 
-#define CHECK_INTERNAL_QPOINTER(__pointer)\
+#define CHECK_INTERNAL_POINTER(__pointer)\
 	if(!__pointer) \
 	{ \
-		c->error(__tr2qs_ctx("Internal error: no valid pointer for this object","object")); \
+		c->error(__tr2qs("Internal error: no valid pointer for this object")); \
 		return false; \
 	}
 #endif

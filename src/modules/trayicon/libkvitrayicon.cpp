@@ -591,11 +591,11 @@ static bool trayicon_kvs_cmd_hide(KviKvsModuleCommandCall * c)
 	@title:
 		trayicon.hidewindow
 	@short:
-		Returns the state of the dock widget
+		Hides the window, associated with trayicon
 	@syntax:
 		trayicon.hidewindow
-	@description:
-		Hides the window, assotiated with trayicon
+	@description
+		Hides the window, associated with trayicon
 	@seealso:
 		[cmd]trayicon.show[/cmd], [cmd]trayicon.hide[/cmd]
 */

@@ -83,7 +83,7 @@ bool KviKvsObject_toolbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		pContext->warning(__tr2qs("the toolbar cannot be a parent-widget!"));
 		return true;
 	}
-	if(parentObject()->inherits("KviKvsObject_mainwindow"))
+	if(parentObject()->inheritsClass("mainwindow"))
 	{ 
 		setObject(new KviTalToolBar(getName(), ((KviTalMainWindow *)parentScriptWidget())), true);
 	}

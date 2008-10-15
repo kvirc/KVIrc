@@ -37,11 +37,11 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	bool functionsetMargin(KviKvsObjectFunctionCall *c);
-	bool functionsetSpacing(KviKvsObjectFunctionCall *c);
-	bool functionsetStretchFactor(KviKvsObjectFunctionCall *c);
-	bool functionaddStretch(KviKvsObjectFunctionCall *c);
-	bool functionsetAlignment(KviKvsObjectFunctionCall *c);
+	bool setMargin(KviKvsObjectFunctionCall *c);
+	bool setSpacing(KviKvsObjectFunctionCall *c);
+	bool setStretchFactor(KviKvsObjectFunctionCall *c);
+	bool addStretch(KviKvsObjectFunctionCall *c);
+	bool setAlignment(KviKvsObjectFunctionCall *c);
 
 };
 

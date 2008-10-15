@@ -120,7 +120,7 @@ bool KviKvsObject_window::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 }
 KVSO_CLASS_FUNCTION(window,setWindowTitle)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szCaption;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
@@ -130,7 +130,7 @@ KVSO_CLASS_FUNCTION(window,setWindowTitle)
 }
 KVSO_CLASS_FUNCTION(window,setCentralWidget)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
 	KviKvsObject *ob;
 	kvs_hobject_t hObject;
@@ -143,7 +143,7 @@ KVSO_CLASS_FUNCTION(window,setCentralWidget)
 		c->warning(__tr2qs("Can't add a non-widget object"));
 		return true;
 	}
-	if(!ob->inherits("KviKvsObject_widget"))
+	if(!ob->inheritsClass("widget"))
 	{
 		c->warning(__tr2qs("Can't add a non-widget object"));
 		return true;

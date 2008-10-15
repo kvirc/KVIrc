@@ -32,6 +32,7 @@
 
 #include <QTextBrowser>
 #include <QFile>
+#include <QUrl>
 /*
 	@doc: textbrowser
 	@keyterms:
@@ -86,7 +87,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_textbrowser)
 bool KviKvsObject_textbrowser::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
 	SET_OBJECT(QTextBrowser);
-	connect(obj,SIGNAL(anchorClicked(const QString &,const QString &)),this,SLOT(anchorClicked(const QString &,const QString &)));
+	connect(obj,SIGNAL(anchorClicked(const QUrl &)),this,SLOT(anchorClicked(const QUrl &)));
 	return true;
 }
 
@@ -131,9 +132,9 @@ bool KviKvsObject_textbrowser::function_reload(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-void KviKvsObject_textbrowser::anchorClicked(const QString &szName,const QString &szLink)
+void KviKvsObject_textbrowser::anchorClicked(const QUrl &url)
 {
-	KviKvsVariantList parms(new KviKvsVariant(szLink));
+	KviKvsVariantList parms(new KviKvsVariant(url.path()));
 	callFunction(this,"linkClickedEvent",0,&parms);
 }
 

@@ -89,14 +89,14 @@ bool KviKvsObject_checkbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantLi
 
 KVSO_CLASS_FUNCTION(checkbox,isChecked)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((QCheckBox *)widget())->isChecked());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(checkbox,setChecked)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	bool bChecked;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,KVS_PF_OPTIONAL,bChecked)

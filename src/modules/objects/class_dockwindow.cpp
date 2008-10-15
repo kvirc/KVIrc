@@ -91,7 +91,7 @@ bool KviKvsObject_dockwindow::init(KviKvsRunTimeContext * pContext,KviKvsVariant
 
 KVSO_CLASS_FUNCTION(dockwindow,addWidget)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_hobject_t hWidget;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hWidget)
@@ -99,32 +99,32 @@ KVSO_CLASS_FUNCTION(dockwindow,addWidget)
 	if(hWidget == (kvs_hobject_t)0)
 	{
 		// null widget ?
-		c->warning(__tr2qs("Can't add a null object"));
+		c->warning(__tr2qs_ctx("Can't add a null object","objects"));
 		return true;
 	}
 
 	KviKvsObject * pWidget = KviKvsKernel::instance()->objectController()->lookupObject(hWidget);
 	if(!pWidget)
 	{
-		c->warning(__tr2qs("Invalid object handle passed as parameter (the object is no longer existing ?)"));
+		c->warning(__tr2qs_ctx("Invalid object handle passed as parameter (the object is no longer existing ?)","objects"));
 		return true;
 	}
 
 	if(!pWidget->object())
 	{
-		c->warning(__tr2qs("Object in invalid state"));
+		c->warning(__tr2qs_ctx("Object in invalid state","objects"));
 		return true;
 	}
 
 	if(!pWidget->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Can't set a non-widget object to be the main widget of a dock window"));
+		c->warning(__tr2qs_ctx("Can't set a non-widget object to be the main widget of a dock window","objects"));
 		return true;
 	}
 
 	if(((QWidget *)(pWidget->object()))->parent() != (QObject *)_pDockWindow)
 	{
-		c->warning(__tr2qs("The added widget is not a child of this dock window"));
+		c->warning(__tr2qs_ctx("The added widget is not a child of this dock window","objects"));
 	}
 
 	_pDockWindow->setWidget((QWidget *)(pWidget->object()));
@@ -133,7 +133,7 @@ KVSO_CLASS_FUNCTION(dockwindow,addWidget)
 // Fix me
 KVSO_CLASS_FUNCTION(dockwindow,resizeEnabled)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(false);
 	return true;
 }
@@ -141,7 +141,7 @@ KVSO_CLASS_FUNCTION(dockwindow,resizeEnabled)
 // Fix me
 KVSO_CLASS_FUNCTION(dockwindow,setResizeEnabled)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	bool bResizeEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bResizeEnabled)
@@ -151,7 +151,7 @@ KVSO_CLASS_FUNCTION(dockwindow,setResizeEnabled)
 
 KVSO_CLASS_FUNCTION(dockwindow,setAllowedDockAreas)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szFlags;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("docks",KVS_PT_STRING,0,szFlags)
@@ -177,7 +177,7 @@ KVSO_CLASS_FUNCTION(dockwindow,setAllowedDockAreas)
 
 KVSO_CLASS_FUNCTION(dockwindow,dock)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szDock;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("dock",KVS_PT_STRING,0,szDock)

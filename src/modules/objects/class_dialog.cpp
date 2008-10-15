@@ -78,7 +78,7 @@ bool KviKvsObject_dialog::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 }
 KVSO_CLASS_FUNCTION(dialog,setModal)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)

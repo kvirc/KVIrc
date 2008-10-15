@@ -194,7 +194,7 @@ void KviChannelsJoinWindow::fillListView()
 	}
 }
 
-void KviChannelsJoinWindow::itemClicked(QTreeWidgetItem * it, int)
+void KviChannelsJoinWindow::itemClicked(QTreeWidgetItem * it, int index)
 {
 	if(!it)
 		return;

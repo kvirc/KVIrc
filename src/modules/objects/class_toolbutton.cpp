@@ -268,7 +268,7 @@ bool KviKvsObject_toolbutton::functionsetPopup(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Widget parameter is not a valid object"));
 		return true;
 	}
-	if(!ob->object()->inherits("KviKvsObject_popupmenu"))
+	if(!ob->inheritsClass("popupmenu"))
     {
 		c->warning(__tr2qs("Can't add a non - popupmenu  object"));
         return TRUE;

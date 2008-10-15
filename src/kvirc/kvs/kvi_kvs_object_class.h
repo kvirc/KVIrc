@@ -36,7 +36,7 @@ class KviKvsObject;
 class KviKvsObjectClass;
 class KviKvsRunTimeContext;
 class KviKvsVariantList;
-
+class KviKvsVariant;
 // Object allocation function
 // parameters are: the class, the parent object (eventually 0), the object name (eventually empty)
 typedef KviKvsObject * (*KviKvsObjectAllocateInstanceProc)(KviKvsObjectClass *,KviKvsObject *,const QString &);

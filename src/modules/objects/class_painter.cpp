@@ -846,7 +846,7 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 			c->warning(__tr2qs("Pixmap parameter is not an object!"));
 			return true;
 		}
-		if(pObject->inherits("KviKvsObject_pixmap"))
+		if(pObject->inheritsClass("pixmap"))
 			m_pPainter->setBrush(*((KviKvsObject_pixmap *)pObject)->getPixmap());
 		else c->warning(__tr2qs("Object Pixmap required!"));
 		return true;
@@ -1038,15 +1038,15 @@ bool KviKvsObject_painter::functionbegin(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	QPaintDevice * pd;
-	if(pObject->inherits("KviKvsObject_pixmap"))pd=((KviKvsObject_pixmap *)pObject)->getPixmap();
+	if(pObject->inheritsClass("pixmap"))pd=((KviKvsObject_pixmap *)pObject)->getPixmap();
 		
-	else if (pObject->inherits("KviKvsObject_widget")) pd=((KviKvsObject_widget *)pObject)->widget();
+	else if (pObject->inheritsClass("widget")) pd=((KviKvsObject_widget *)pObject)->widget();
 	else{
 		c->warning(__tr2qs("Widget or Pixmap required "));
 		return true;
 	}
 	attachDevice(pObject,pd);
-	if (pObject->inherits("KviKvsObject_pixmap")) ((KviKvsObject_pixmap *)pObject)->pixmapChanged();
+	if (pObject->inheritsClass("pixmap")) ((KviKvsObject_pixmap *)pObject)->pixmapChanged();
 	return true;
 }
 
@@ -1138,7 +1138,7 @@ bool KviKvsObject_painter::functiondrawPixmap(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Pixmap parameter is not an object"));
 		return true;
 	}
-	if (!obj->inherits("KviKvsObject_pixmap"))
+	if (!obj->inheritsClass("pixmap"))
 	{
 		c->warning(__tr2qs("Pixmap object required"));
 		return true;

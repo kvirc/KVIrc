@@ -67,7 +67,7 @@ bool KviKvsObject_menubar::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 
 KVSO_CLASS_FUNCTION(menubar,insertItem)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szItem;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item",KVS_PT_STRING,0,szItem)

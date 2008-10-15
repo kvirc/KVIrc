@@ -180,49 +180,49 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setHeaderLabels",function_setHeaderLabels)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"addColumn",function_addColumn)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setHeaderLabels)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,addColumn)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setColumnText",function_setColumnText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setColumnCount",function_setColumnCount)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setColumnText)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setColumnCount)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setSorting",function_setSorting)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setRootIsDecorated",function_setRootIsDecorated)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setAllColumnsShowFocus",function_setAllColumnsShowFocus)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"clear",function_clear)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setSorting)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setRootIsDecorated)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setAllColumnsShowFocus)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,clear)
 	//FIXME 
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectedItem",function_selectedItems)//<--- remove this
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectedItems",function_selectedItems)
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectedItem",selectedItems)//<--- remove this
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,selectedItems)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"currentItem",function_currentItem)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"setSelectionMode",function_setSelectionMode)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"listViewHeaderIsVisible",function_listViewHeaderIsVisible)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,currentItem)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setSelectionMode)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,listViewHeaderIsVisible)
 
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"hideListViewHeader",function_hideListViewHeader)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"showListViewHeader",function_showListViewHeader)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"firstChild",function_firstChild)
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectionChangedEvent",function_selectionChangedEvent);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"currentChangedEvent",function_currentChangedEvent);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,hideListViewHeader)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,showListViewHeader)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,firstChild)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,selectionChangedEvent);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,currentChangedEvent);
 	
 	// FIX-ME
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"returnPressedEvent",function_itemActivatedEvent);//<- remove me
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemActivatedEvent",function_itemActivatedEvent);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"returnPressedEvent",itemActivatedEvent);//<- remove me
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemActivatedEvent);
 	//
 	
-//	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"spacePressedEvent",function_spacePressedEvent);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"onItemEvent",function_onItemEvent);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemClickedEvent",function_itemClickedEvent);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemExpandedEvent",function_itemExpandedEvent);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemCollapsedEvent",function_itemCollapsedEvent);
+//	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,"spacePressedEvent",function_spacePressedEvent);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,onItemEvent);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemClickedEvent);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemExpandedEvent);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemCollapsedEvent);
 	
 	//FIXME
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemRenamedEvent",function_itemChangedEvent);//<- remove me
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemChangedEvent",function_itemChangedEvent);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemRenamedEvent",itemChangedEvent);//<- remove me
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemChangedEvent);
 	//
 	
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"rightButtonClickedEvent",function_customContextMenuRequestedEvent);
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"customContextMenuRequestedEvent",function_customContextMenuRequestedEvent);
+	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"rightButtonClickedEvent",customContextMenuRequestedEvent);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,customContextMenuRequestedEvent);
 
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_treewidget,"fileDroppedEvent")
 
@@ -255,12 +255,12 @@ bool KviKvsObject_treewidget::init(KviKvsRunTimeContext * pContext,KviKvsVariant
 	connect(widget(),SIGNAL(itemChanged(KviTalTreeWidgetItem *,int)),this,SLOT(slotItemChanged(KviTalTreeWidgetItem *,int)));
 	
 	widget()->setContextMenuPolicy(Qt::CustomContextMenu);
-	connect(widget(),SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(customContextMenuRequested(const QPoint &)));
+	connect(widget(),SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(slotCustomContextMenuRequested(const QPoint &)));
 	
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_setHeaderLabels(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,setHeaderLabels)
 {
 	QStringList columns;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -272,7 +272,7 @@ bool KviKvsObject_treewidget::function_setHeaderLabels(KviKvsObjectFunctionCall 
     return true;
 }
 
-bool KviKvsObject_treewidget::function_setColumnText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,setColumnText)
 {
 	if (!widget()) return true;
 	QString szLabel;
@@ -286,7 +286,7 @@ bool KviKvsObject_treewidget::function_setColumnText(KviKvsObjectFunctionCall *c
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_addColumn(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,addColumn)
 {
 	if (!widget()) return true;
 	QString szLabel;
@@ -305,7 +305,7 @@ bool KviKvsObject_treewidget::function_addColumn(KviKvsObjectFunctionCall *c)
 	return true;
 }
 /*
-bool KviKvsObject_treewidget::function_setAcceptDrops(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,setAcceptDrops)
 {
 	bool bEnable;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -316,14 +316,14 @@ bool KviKvsObject_treewidget::function_setAcceptDrops(KviKvsObjectFunctionCall *
 	return true;
 }
 */
-bool KviKvsObject_treewidget::function_clear(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,clear)
 {
 	if (widget())
 		((KviTalTreeWidget *)object())->clear();
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_selectedItems(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,selectedItems)
 {
 	if(widget())
 	{
@@ -338,7 +338,7 @@ bool KviKvsObject_treewidget::function_selectedItems(KviKvsObjectFunctionCall *c
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_firstChild(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,firstChild)
 {
 	if(widget())
 		c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle((KviTalTreeWidgetItem*)((KviTalTreeWidget *)widget())->topLevelItem(0)));
@@ -347,7 +347,7 @@ bool KviKvsObject_treewidget::function_firstChild(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_currentItem(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,currentItem)
 {
 	if(widget())
 		c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle((KviTalTreeWidgetItem*)((KviTalTreeWidget *)widget())->currentItem()));
@@ -356,7 +356,7 @@ bool KviKvsObject_treewidget::function_currentItem(KviKvsObjectFunctionCall *c)
 	return true;
 }
 /*
-bool KviKvsObject_treewidget::function_setColumnText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,setColumnText)
 {
 	kvs_int_t uCol;
 	QString szText;
@@ -368,7 +368,7 @@ bool KviKvsObject_treewidget::function_setColumnText(KviKvsObjectFunctionCall *c
     return true;
 }
 */
-bool KviKvsObject_treewidget::function_setColumnCount(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,setColumnCount)
 {
 	kvs_int_t uCol;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -378,7 +378,7 @@ bool KviKvsObject_treewidget::function_setColumnCount(KviKvsObjectFunctionCall *
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_setSelectionMode(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,setSelectionMode)
 {
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -397,7 +397,7 @@ bool KviKvsObject_treewidget::function_setSelectionMode(KviKvsObjectFunctionCall
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_setSorting(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,setSorting)
 {
 	kvs_int_t iCol;
 	bool bEnables;
@@ -414,7 +414,7 @@ bool KviKvsObject_treewidget::function_setSorting(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_setRootIsDecorated(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,setRootIsDecorated)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -424,7 +424,7 @@ bool KviKvsObject_treewidget::function_setRootIsDecorated(KviKvsObjectFunctionCa
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_setAllColumnsShowFocus(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,setAllColumnsShowFocus)
 {
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -434,25 +434,25 @@ bool KviKvsObject_treewidget::function_setAllColumnsShowFocus(KviKvsObjectFuncti
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_hideListViewHeader(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,hideListViewHeader)
 {
 	((KviTalTreeWidget *)widget())->header()->hide();
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_showListViewHeader(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,showListViewHeader)
 {
 	((KviTalTreeWidget *)widget())->header()->show(); 
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_listViewHeaderIsVisible(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,listViewHeaderIsVisible)
 {
 	c->returnValue()->setBoolean(((KviTalTreeWidget *)widget())->header()->isVisible());
 	return true;
 }
 
-bool KviKvsObject_treewidget::function_itemClickedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,itemClickedEvent)
 {
 	emitSignal("itemClicked",c,c->params());
 	return true;
@@ -466,7 +466,7 @@ void KviKvsObject_treewidget::slotClicked(KviTalTreeWidgetItem * i,int col)
 	callFunction(this,"itemClickedEvent",0,&params);
 }
 
-bool KviKvsObject_treewidget::function_selectionChangedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,selectionChangedEvent)
 {
 	emitSignal("selectionChanged",c,c->params());
 	return true;
@@ -486,7 +486,7 @@ void KviKvsObject_treewidget::slotSelectionChanged()
 	}
 }
 
-bool KviKvsObject_treewidget::function_currentChangedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,currentChangedEvent)
 {
 	emitSignal("currentChanged",c,c->params());
 	return true;
@@ -498,7 +498,7 @@ void KviKvsObject_treewidget::slotCurrentChanged(KviTalTreeWidgetItem * i,KviTal
 	callFunction(this,"currentChangedEvent",0,&params);
 }
 
-bool KviKvsObject_treewidget::function_itemActivatedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,itemActivatedEvent)
 {
 	//FIXME: compatibility
 	emitSignal("returnPressed",c,c->params());//<----remove me 
@@ -515,7 +515,7 @@ void KviKvsObject_treewidget::slotItemActivated(KviTalTreeWidgetItem * i,int col
 	callFunction(this,"itemActivatedEvent",0,&params);
 }
 
-bool KviKvsObject_treewidget::function_onItemEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,onItemEvent)
 {
 	
 	emitSignal("onItem",c,c->params());
@@ -530,7 +530,7 @@ void KviKvsObject_treewidget::slotOnItemEntered(KviTalTreeWidgetItem * i,int col
 	callFunction(this,"onItemEvent",0,&params);
 }
 
-bool KviKvsObject_treewidget::function_itemExpandedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,itemExpandedEvent)
 {
 	emitSignal("itemExpanded",c,c->params());
 	return true;
@@ -542,7 +542,7 @@ void KviKvsObject_treewidget::slotItemExpanded(KviTalTreeWidgetItem * i)
 	callFunction(this,"itemExpandedEvent",0,&params);
 }
 
-bool KviKvsObject_treewidget::function_itemCollapsedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,itemCollapsedEvent)
 {
 	emitSignal("itemCollapsed",c,c->params());
 	return true;
@@ -554,14 +554,14 @@ void KviKvsObject_treewidget::slotItemCollapsed(KviTalTreeWidgetItem * i)
 	callFunction(this,"itemCollapsedEvent",0,&params);
 }
 
-bool KviKvsObject_treewidget::function_customContextMenuRequestedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,customContextMenuRequestedEvent)
 {
 	emitSignal("rightButtonClicked",c,c->params());
 	emitSignal("customContextMenuRequested",c,c->params());
 	return true;
 }
 
-void KviKvsObject_treewidget::customContextMenuRequested(const QPoint &pnt)
+void KviKvsObject_treewidget::slotCustomContextMenuRequested(const QPoint &pnt)
 {
 	KviKvsVariant *xpos=new KviKvsVariant((kvs_int_t)pnt.x());
 	KviKvsVariant *ypos=new KviKvsVariant((kvs_int_t)pnt.y());
@@ -570,7 +570,7 @@ void KviKvsObject_treewidget::customContextMenuRequested(const QPoint &pnt)
 	callFunction(this,"customContextMenuRequestedEvent",0,&params);
 }
 
-bool KviKvsObject_treewidget::function_itemChangedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(treewidget,itemChangedEvent)
 {
 	//FIXME
 	emitSignal("itemRenamed",c,c->params());//<--remove me

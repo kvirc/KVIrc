@@ -28,7 +28,7 @@
 #include "class_widget.h"
 #include "class_multilineedit.h"
 #include "object_macros.h"
-
+#include <QUrl>
 class KviKvsObject_textbrowser : public KviKvsObject_textedit
 {
 	Q_OBJECT
@@ -46,7 +46,7 @@ protected:
 	bool function_reload(KviKvsObjectFunctionCall *c);
 	bool function_linkClickedEvent(KviKvsObjectFunctionCall *c);
 protected slots:
-	void anchorClicked(const QString &szName,const QString &szLink);
+	void anchorClicked(const QUrl &);
 };
 
 #endif	//!_CLASS_TBROWSER_H_

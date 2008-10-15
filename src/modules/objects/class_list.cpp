@@ -174,7 +174,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_list)
 
 KVSO_CLASS_FUNCTION(list,current)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	if(!m_pDataList->count())
 	{
 		c->returnValue()->setNothing();
@@ -188,49 +188,49 @@ KVSO_CLASS_FUNCTION(list,current)
 
 KVSO_CLASS_FUNCTION(list,eof)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->current() != 0);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list,moveLast)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->last() != 0);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list,movePrev)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->prev() != 0);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list,moveNext)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->next() != 0);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list,moveFirst)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->first() != 0);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list,removeLast)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->removeLast());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list,removeCurrent)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	if(m_pDataList->current())
 	{
 		m_pDataList->removeCurrent();
@@ -243,14 +243,14 @@ KVSO_CLASS_FUNCTION(list,removeCurrent)
 
 KVSO_CLASS_FUNCTION(list,removeFirst)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->removeFirst());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list,remove)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UINT,0,uIndex)
@@ -261,7 +261,7 @@ KVSO_CLASS_FUNCTION(list,remove)
 
 KVSO_CLASS_FUNCTION(list,at)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	kvs_uint_t uIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UINT,0,uIndex)
@@ -274,7 +274,7 @@ KVSO_CLASS_FUNCTION(list,at)
 
 KVSO_CLASS_FUNCTION(list,insert)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	kvs_uint_t uIndex;
 	KviKvsVariant * pVar;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -287,7 +287,7 @@ KVSO_CLASS_FUNCTION(list,insert)
 
 KVSO_CLASS_FUNCTION(list,prepend)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	KviKvsVariant * pVar;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item",KVS_PT_VARIANT,0,pVar)
@@ -298,7 +298,7 @@ KVSO_CLASS_FUNCTION(list,prepend)
 
 KVSO_CLASS_FUNCTION(list,append)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	KviKvsVariant * pVar;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("item",KVS_PT_VARIANT,0,pVar)
@@ -310,7 +310,7 @@ KVSO_CLASS_FUNCTION(list,append)
 
 KVSO_CLASS_FUNCTION(list,clear)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	m_pDataList->clear();
 	return true;
 }
@@ -322,21 +322,21 @@ inline int kvi_compare(const KviKvsVariant * p1,const KviKvsVariant * p2)
 
 KVSO_CLASS_FUNCTION(list,sort)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	m_pDataList->sort();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list,isEmpty)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setBoolean(m_pDataList->isEmpty());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(list,count)
 {
-	CHECK_INTERNAL_QPOINTER(m_pDataList)
+	CHECK_INTERNAL_POINTER(m_pDataList)
 	c->returnValue()->setInteger(m_pDataList->count());
 	return true;
 }

@@ -34,6 +34,7 @@
 #include "kvi_fileutils.h"
 #include "kvi_window.h"
 #include "kvi_cmdformatter.h"
+#include "kvi_locale.h"
 
 KviKvsObjectClass::KviKvsObjectClass(
 		KviKvsObjectClass * pParent,
@@ -130,7 +131,7 @@ KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent,const 
 		return 0;
 	}
 
-	KviKvsVariant ret;
+	//KviKvsVariant ret;
 	KviKvsVariantList copy;
 	copy.setAutoDelete(false);
 	while(v)
@@ -138,30 +139,15 @@ KviKvsObject * KviKvsObjectClass::allocateInstance(KviKvsObject * pParent,const 
 		copy.append(v);
 		v = pParams->next();
 	}
-
+	KviKvsVariant ret;
 	if(!pObject->callFunction(pObject,"constructor",QString(),pContext,&ret,&copy))
 	{
 		// ops...constructor failed (script error!)
 		delete pObject;
 		return 0;
 	} else {
-		if(ret.isInteger())
-		{
-			if(ret.integer() == 0)
-			{
-				// implementation failure...
-				delete pObject;
-				return 0;
-			}
-		} else if(ret.isHObject())
-		{
-			if(ret.hobject() == (kvs_hobject_t)0)
-			{
-				// implementation failure...
-				delete pObject;
-				return 0;
-			}
-		}
+		if(!ret.isEmpty())
+			pContext->warning(__tr2qs("It's not allowed to return values in the constructor"));
 	}
 
 	return pObject;

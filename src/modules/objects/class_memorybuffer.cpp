@@ -75,7 +75,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_memorybuffer)
 
 KVSO_CLASS_FUNCTION(memorybuffer,loadFromFile)
 {
-	CHECK_INTERNAL_QPOINTER(m_pBuffer)
+	CHECK_INTERNAL_POINTER(m_pBuffer)
 	QString szFileName;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("filename",KVS_PT_NONEMPTYSTRING,0,szFileName)
@@ -92,7 +92,7 @@ KVSO_CLASS_FUNCTION(memorybuffer,loadFromFile)
 }
 KVSO_CLASS_FUNCTION(memorybuffer,saveToFile)
 {
-	CHECK_INTERNAL_QPOINTER(m_pBuffer)
+	CHECK_INTERNAL_POINTER(m_pBuffer)
 	QString szFileName;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("filename",KVS_PT_NONEMPTYSTRING,0,szFileName)

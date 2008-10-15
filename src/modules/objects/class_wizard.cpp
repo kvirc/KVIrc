@@ -132,7 +132,7 @@ bool KviKvsObject_wizard::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 }
 KVSO_CLASS_FUNCTION(wizard,addPage)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *ob;
 	QString szLabel;
 	kvs_hobject_t hObject;
@@ -151,7 +151,7 @@ KVSO_CLASS_FUNCTION(wizard,addPage)
 }
 KVSO_CLASS_FUNCTION(wizard,insertPage)
 {	
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
 	KviKvsObject *ob;
 	QString szLabel;
@@ -175,7 +175,7 @@ KVSO_CLASS_FUNCTION(wizard,insertPage)
 
 KVSO_CLASS_FUNCTION(wizard,setTitle)
 {	
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *ob;
 	QString szTitle;
 	kvs_hobject_t hObject;
@@ -194,7 +194,7 @@ KVSO_CLASS_FUNCTION(wizard,setTitle)
 }
 KVSO_CLASS_FUNCTION(wizard,setBackEnabled)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KviKvsObject *ob;
 	kvs_hobject_t hObject;
@@ -214,7 +214,7 @@ KVSO_CLASS_FUNCTION(wizard,setBackEnabled)
 
 KVSO_CLASS_FUNCTION(wizard,setNextEnabled)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
 	bool bEnabled;
 	KviKvsObject *ob;
@@ -234,7 +234,7 @@ KVSO_CLASS_FUNCTION(wizard,setNextEnabled)
 }
 KVSO_CLASS_FUNCTION(wizard,setFinishEnabled)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
 	bool bEnabled;
 	KviKvsObject *ob;
@@ -254,7 +254,7 @@ KVSO_CLASS_FUNCTION(wizard,setFinishEnabled)
 }
 KVSO_CLASS_FUNCTION(wizard,setHelpEnabled)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
 	bool bEnabled;
 	KviKvsObject *ob;
@@ -274,7 +274,7 @@ KVSO_CLASS_FUNCTION(wizard,setHelpEnabled)
 }
 KVSO_CLASS_FUNCTION(wizard,setBackBtnText)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -285,7 +285,7 @@ KVSO_CLASS_FUNCTION(wizard,setBackBtnText)
 }
 KVSO_CLASS_FUNCTION(wizard,setNextBtnText)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -296,7 +296,7 @@ KVSO_CLASS_FUNCTION(wizard,setNextBtnText)
 }
 KVSO_CLASS_FUNCTION(wizard,setHelpBtnText)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -307,7 +307,7 @@ KVSO_CLASS_FUNCTION(wizard,setHelpBtnText)
 }
 KVSO_CLASS_FUNCTION(wizard,setFinishBtnText)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)

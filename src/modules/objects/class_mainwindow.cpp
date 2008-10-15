@@ -75,7 +75,7 @@ bool KviKvsObject_mainwindow::init(KviKvsRunTimeContext * pContext,KviKvsVariant
 
 KVSO_CLASS_FUNCTION(mainwindow,setCentralWidget)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -92,7 +92,7 @@ KVSO_CLASS_FUNCTION(mainwindow,setCentralWidget)
 		c->warning(__tr2qs("Widget parameter is not a valid object"));
 		return true;
 	}
-	if(!pObject->object()->inherits("KviKvsObject_widget"))
+	if(!pObject->inheritsClass("widget"))
     {
 		c->warning(__tr2qs("Widget object required"));
         return TRUE;
@@ -103,7 +103,7 @@ KVSO_CLASS_FUNCTION(mainwindow,setCentralWidget)
 //FIX ME
 KVSO_CLASS_FUNCTION(mainwindow,setDockEnabled)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szDockarea;
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -122,7 +122,7 @@ KVSO_CLASS_FUNCTION(mainwindow,setDockEnabled)
 //FIX ME
 KVSO_CLASS_FUNCTION(mainwindow,isDockEnabled)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szDockarea;
 	bool bFlag = false;
 	KVSO_PARAMETERS_BEGIN(c)

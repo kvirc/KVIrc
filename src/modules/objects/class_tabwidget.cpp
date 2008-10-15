@@ -180,7 +180,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_tabwidget)
 bool KviKvsObject_tabwidget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
 	SET_OBJECT(QTabWidget)
-	connect(widget(),SIGNAL(currentChanged(int)),this,SLOT(slotcurrentChanged(int)));
+	connect(widget(),SIGNAL(currentChanged(int)),this,SLOT(slotCurrentChanged(int)));
 	return true;
 }
 bool KviKvsObject_tabwidget::functionaddTab(KviKvsObjectFunctionCall *c)

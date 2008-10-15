@@ -877,6 +877,34 @@
 						/>
 					</FileConfiguration>
 				</File>
+				<Filter
+					Name="sparser"
+					>
+					<File
+						RelativePath="sparser\kvi_ircmessage.cpp"
+						>
+					</File>
+					<File
+						RelativePath="sparser\kvi_sp_ctcp.cpp"
+						>
+					</File>
+					<File
+						RelativePath="sparser\kvi_sp_literal.cpp"
+						>
+					</File>
+					<File
+						RelativePath="sparser\kvi_sp_numeric.cpp"
+						>
+					</File>
+					<File
+						RelativePath="sparser\kvi_sp_tables.cpp"
+						>
+					</File>
+					<File
+						RelativePath="sparser\kvi_sparser.cpp"
+						>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="kernel"
@@ -1118,6 +1146,18 @@
 					>
 				</File>
 				<File
+					RelativePath=".\ui\kvi_ircview_events.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_ircview_gettextline.cpp"
+					>
+				</File>
+				<File
+					RelativePath=".\ui\kvi_ircview_loghandling.cpp"
+					>
+				</File>
+				<File
 					RelativePath=".\ui\kvi_ircviewtools.cpp"
 					>
 				</File>
@@ -1219,34 +1259,6 @@
 				</File>
 				<File
 					RelativePath=".\ui\kvi_windowlist_tree.cpp"
-					>
-				</File>
-			</Filter>
-			<Filter
-				Name="sparser"
-				>
-				<File
-					RelativePath="sparser\kvi_ircmessage.cpp"
-					>
-				</File>
-				<File
-					RelativePath="sparser\kvi_sp_ctcp.cpp"
-					>
-				</File>
-				<File
-					RelativePath="sparser\kvi_sp_literal.cpp"
-					>
-				</File>
-				<File
-					RelativePath="sparser\kvi_sp_numeric.cpp"
-					>
-				</File>
-				<File
-					RelativePath="sparser\kvi_sp_tables.cpp"
-					>
-				</File>
-				<File
-					RelativePath="sparser\kvi_sparser.cpp"
 					>
 				</File>
 			</Filter>
@@ -2466,8 +2478,8 @@
 						>
 						<Tool
 							Name="VCCustomBuildTool"
-							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-							Outputs="$(InputDir)\moc_$(InputName).cpp"
+							CommandLine=""
+							Outputs=""
 						/>
 					</FileConfiguration>
 					<FileConfiguration
@@ -2488,8 +2500,8 @@
 						>
 						<Tool
 							Name="VCCustomBuildTool"
-							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-							Outputs="$(InputDir)\moc_$(InputName).cpp"
+							CommandLine=""
+							Outputs=""
 						/>
 					</FileConfiguration>
 					<FileConfiguration
@@ -2821,8 +2833,8 @@
 						>
 						<Tool
 							Name="VCCustomBuildTool"
-							CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\moc_$(InputName).cpp&quot; &quot;$(InputDir)\$(InputFileName)&quot;&#x0D;&#x0A;"
-							Outputs="$(InputDir)\moc_$(InputName).cpp"
+							CommandLine=""
+							Outputs=""
 						/>
 					</FileConfiguration>
 				</File>

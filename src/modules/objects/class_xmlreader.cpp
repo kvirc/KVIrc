@@ -330,7 +330,7 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 			c->warning(__tr2qs("Data parameter is not an object"));
 			return true;
 		}
-		if (pObject->inherits("KviKvsObject_memorybuffer"))
+		if (pObject->inheritsClass("memorybuffer"))
 		{
 			source.setData(*((KviKvsObject_memorybuffer *)pObject)->pBuffer());
 		}

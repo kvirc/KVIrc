@@ -204,7 +204,7 @@ KVSO_CLASS_FUNCTION(groupbox,title)
 }
 KVSO_CLASS_FUNCTION(groupbox,setFlat)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bFlag",KVS_PT_BOOL,0,bEnabled)
@@ -214,13 +214,13 @@ KVSO_CLASS_FUNCTION(groupbox,setFlat)
 }
 KVSO_CLASS_FUNCTION(groupbox,isFlat)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isFlat());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupbox,setCheckable)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bFlag",KVS_PT_BOOL,0,bEnabled)
@@ -230,13 +230,13 @@ KVSO_CLASS_FUNCTION(groupbox,setCheckable)
 }
 KVSO_CLASS_FUNCTION(groupbox,isCheckable)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isCheckable());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupbox,setChecked)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bFlag",KVS_PT_BOOL,0,bEnabled)
@@ -246,13 +246,13 @@ KVSO_CLASS_FUNCTION(groupbox,setChecked)
 }
 KVSO_CLASS_FUNCTION(groupbox,isChecked)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((KviTalGroupBox *)widget())->isChecked());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupbox,setInsideMargin)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uMargin;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,uMargin)
@@ -262,13 +262,13 @@ KVSO_CLASS_FUNCTION(groupbox,setInsideMargin)
 }
 KVSO_CLASS_FUNCTION(groupbox,insideMargin)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideMargin());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupbox,setInsideSpacing)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
@@ -278,14 +278,14 @@ KVSO_CLASS_FUNCTION(groupbox,setInsideSpacing)
 }
 KVSO_CLASS_FUNCTION(groupbox,insideSpacing)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((KviTalGroupBox *)widget())->insideSpacing());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(groupbox,addSpace)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iSpace;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("colums",KVS_PT_UNSIGNEDINTEGER,0,iSpace)
@@ -296,7 +296,7 @@ KVSO_CLASS_FUNCTION(groupbox,addSpace)
 
 KVSO_CLASS_FUNCTION(groupbox,setAlignment)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szAlign;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("alignment",KVS_PT_STRING,0,szAlign)
@@ -315,7 +315,7 @@ KVSO_CLASS_FUNCTION(groupbox,setAlignment)
 
 KVSO_CLASS_FUNCTION(groupbox,alignment)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	int mode = ((KviTalGroupBox *)widget())->alignment();
 	QString szAlignment="";
 	for(unsigned int i = 0; i < align_num; i++)
@@ -332,7 +332,7 @@ KVSO_CLASS_FUNCTION(groupbox,alignment)
 
 KVSO_CLASS_FUNCTION(groupbox,setOrientation)
 {
-	CHECK_INTERNAL_QPOINTER(widget())
+	CHECK_INTERNAL_POINTER(widget())
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("orientation",KVS_PT_STRING,0,szMode)
