@@ -22,9 +22,6 @@
 //
 //=============================================================================
 
-#define __KVILIB__
-
-
 #include "kvi_parameterlist.h"
 
 KviParameterList::KviParameterList()
