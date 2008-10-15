@@ -36,7 +36,7 @@
 #define WDG_ICON_OUT		0
 #define WDG_ICON_OVER		1
 #define WDG_ICON_CLICKED	2
-#define WDG_ICON_ON			3
+#define WDG_ICON_ON		3
 #define WDG_ICON_OFF		4
 
 #define NTF_TABS_FONT_BASELINE	8

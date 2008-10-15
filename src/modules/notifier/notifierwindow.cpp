@@ -360,7 +360,7 @@ bool KviNotifierWindow::shouldHideIfMainWindowGotAttention()
 void KviNotifierWindow::heartbeat()
 {
 	bool bIncreasing;
-	double targetOpacity = 0; //qt4
+	double targetOpacity = 0;
 	switch(m_eState)
 	{
 		case Hidden:
@@ -369,7 +369,7 @@ void KviNotifierWindow::heartbeat()
 		case Visible:
 			stopShowHideTimer();
 			m_dOpacity = 1.0;
-			if(!isVisible())show(); //!!!
+			if(!isVisible())show();
 			else update();
 		break;
 		case Showing:
@@ -628,30 +628,33 @@ static void blend_images(QImage &buffer,QImage &background,QImage &foreground,do
 void KviNotifierWindow::paintEvent(QPaintEvent * e)
 {
 
-/*
-	if(m_bBlinkOn)
-		bitBlt(&m_pixForeground,QPoint(0,0),&m_pixBackgroundHighlighted);
-	else
-		bitBlt(&m_pixForeground,QPoint(0,0),&m_pixBackground);
-
-	QPainter p(&m_pixForeground);
-*/
 	redrawWindow();
 	redrawText();
+
+	QPainter px(this);
+
 	if(m_dOpacity < 1.0)
 	{
-			QPainter px(this);
 
 	#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC) || defined(COMPILE_ON_MINGW))
 		px.drawPixmap(0,0,m_pixForeground);
 	#else
 		QImage temp_image = m_pixForeground.toImage();
-		blend_images(m_imgBuffer,m_imgDesktop,temp_image,m_dOpacity);
-		px.drawImage(0,0,m_imgBuffer);
+
+		if(temp_image.size()!=m_imgBuffer.size())
+			m_imgBuffer = QImage(m_pixBackground.width(),m_pixBackground.height(),QImage::Format_RGB32);
+
+		//FIXME if the window gets moved/resized, we hould update m_imgDesktop
+		if(temp_image.size()==m_imgDesktop.size())
+		{
+			blend_images(m_imgBuffer,m_imgDesktop,temp_image,m_dOpacity);
+			px.drawImage(0,0,m_imgBuffer);
+		} else {
+			px.drawPixmap(0,0,m_pixForeground);
+		}
 	#endif
 		px.end();
 	} else {
-		QPainter px(this);
 		px.drawPixmap(0,0,m_pixForeground);
 	}
 }
@@ -1384,8 +1387,6 @@ void KviNotifierWindow::progressUpdate()
 	double dProgress = m_qtStartedAt.elapsed()/(m_tAutoHideAt - m_tStartedAt);
 	dProgress/=1000;
 	m_pProgressBar->setProgress(dProgress);
-	QPainter p(this);
-	m_pProgressBar->draw(&p);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
