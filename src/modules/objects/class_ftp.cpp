@@ -25,6 +25,7 @@
 #include "kvi_debug.h"
 #include "kvi_error.h"
 #include "class_ftp.h"
+#include "kvi_locale.h"
 #include <QFtp>
 
 
@@ -96,6 +97,7 @@ KVSO_END_DESTRUCTOR(KviKvsObject_ftp)
 
 KVSO_CLASS_FUNCTION(ftp,functionConnect)
 {
+	CHECK_INTERNAL_POINTER(m_pFtp)
 	QString szHost;
 	kvs_uint_t uRemotePort;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -104,61 +106,64 @@ KVSO_CLASS_FUNCTION(ftp,functionConnect)
 	KVSO_PARAMETERS_END(c)
 	if (!uRemotePort) uRemotePort=21;
 	kvs_uint_t id=0;
-	if (m_pFtp) id=m_pFtp->connectToHost(szHost, uRemotePort);
+	id=m_pFtp->connectToHost(szHost, uRemotePort);
 	c->returnValue()->setInteger(id);
 	return true;
 }
 KVSO_CLASS_FUNCTION(ftp,login)
 {
+	CHECK_INTERNAL_POINTER(m_pFtp)
 	QString szUser,szPass;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("user",KVS_PT_STRING,0,szUser)
 		KVSO_PARAMETER("password",KVS_PT_STRING,0,szPass)
 	KVSO_PARAMETERS_END(c)
-	int id=0;
-	if (m_pFtp) id=m_pFtp->login(szUser, szPass);
+	int id=m_pFtp->login(szUser, szPass);
 	c->returnValue()->setInteger(id);
 	return true;
 }
 KVSO_CLASS_FUNCTION(ftp,get)
 {
+	CHECK_INTERNAL_POINTER(m_pFtp)
 	QString szFile,szDest;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("remote_filename",KVS_PT_STRING,0,szFile)
 		KVSO_PARAMETER("local_filename",KVS_PT_STRING,0,szDest)
 	KVSO_PARAMETERS_END(c)
+	if (m_pFile) delete m_pFile;
 	m_pFile=new QFile(szDest);
 	m_pFile->open(QIODevice::WriteOnly);
 	int id=0;
-	if (m_pFtp) id=m_pFtp->get(szFile,m_pFile);
+	id=m_pFtp->get(szFile,m_pFile);
 	c->returnValue()->setInteger(id);
 	return true;
 }
 KVSO_CLASS_FUNCTION(ftp,cd)
 {
+	CHECK_INTERNAL_POINTER(m_pFtp)
 	QString szPath;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("remote_filename",KVS_PT_STRING,0,szPath)
 	KVSO_PARAMETERS_END(c)
-	int id=0;
-	if (m_pFtp) id=m_pFtp->cd(szPath);
+	int id=m_pFtp->cd(szPath);
 	c->returnValue()->setInteger(id);
 	return true;
 }
 KVSO_CLASS_FUNCTION(ftp,list)
 {
+	CHECK_INTERNAL_POINTER(m_pFtp)
 	QString szPath;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("remote_dir",KVS_PT_STRING,0,szPath)
 	KVSO_PARAMETERS_END(c)
-	int id=0;
-	if (m_pFtp) id=m_pFtp->list(szPath);
+	int id=m_pFtp->list(szPath);
 	c->returnValue()->setInteger(id);
 	return true;
 }
 KVSO_CLASS_FUNCTION(ftp,abort)
 {
-	if (m_pFtp) m_pFtp->abort();
+	CHECK_INTERNAL_POINTER(m_pFtp)
+	m_pFtp->abort();
 	return true;
 }
 //signals & slots 

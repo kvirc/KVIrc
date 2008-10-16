@@ -45,20 +45,20 @@ private:
 	QStringList args;
 public:
 
-	bool functionaddArgument(KviKvsObjectFunctionCall *c);
-	bool functionstartProcess(KviKvsObjectFunctionCall *c);
-	bool functionreadStdout(KviKvsObjectFunctionCall *c);
-	bool functionreadStderr(KviKvsObjectFunctionCall *c);
-	bool functionwriteToStdin(KviKvsObjectFunctionCall *c);
-	bool functionclosekill(KviKvsObjectFunctionCall *c);
-	bool functioncloseStdin(KviKvsObjectFunctionCall *c);
-	bool functionkill(KviKvsObjectFunctionCall *c);
-	bool functiontryTerminate(KviKvsObjectFunctionCall *c);
-	bool functionnormalExit(KviKvsObjectFunctionCall *c);
-	bool functionisRunning(KviKvsObjectFunctionCall *c);
+	bool addArgument(KviKvsObjectFunctionCall *c);
+	bool startProcess(KviKvsObjectFunctionCall *c);
+	bool readStdout(KviKvsObjectFunctionCall *c);
+	bool readStderr(KviKvsObjectFunctionCall *c);
+	bool writeToStdin(KviKvsObjectFunctionCall *c);
+	bool closekill(KviKvsObjectFunctionCall *c);
+	bool closeStdin(KviKvsObjectFunctionCall *c);
+	bool kill(KviKvsObjectFunctionCall *c);
+	bool tryTerminate(KviKvsObjectFunctionCall *c);
+	bool normalExit(KviKvsObjectFunctionCall *c);
+	bool isRunning(KviKvsObjectFunctionCall *c);
 
-	bool functionreadyReadStdoutEvent(KviKvsObjectFunctionCall *c);
-	bool functionreadyReadStderrEvent(KviKvsObjectFunctionCall *c);
+	bool readyReadStdoutEvent(KviKvsObjectFunctionCall *c);
+	bool readyReadStderrEvent(KviKvsObjectFunctionCall *c);
 
 protected slots:
 	void slotReadStdout();

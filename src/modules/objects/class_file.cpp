@@ -187,7 +187,6 @@ KVSO_END_REGISTERCLASS(KviKvsObject_file)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_file,KviKvsObject_widget)
-
 	m_pFile = new KviFile();
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_file)
@@ -614,3 +613,6 @@ KVSO_CLASS_FUNCTION(file,writeHexBlock)
 	return true;
 }
 
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+#include "m_class_file.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

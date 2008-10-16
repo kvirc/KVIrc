@@ -189,17 +189,18 @@ bool KviKvsObject_groupbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantLi
 
 KVSO_CLASS_FUNCTION(groupbox,setTitle)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szTitle;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("title",KVS_PT_STRING,0,szTitle)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
-		((KviTalGroupBox *)widget())->setTitle(szTitle);
+	((KviTalGroupBox *)widget())->setTitle(szTitle);
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupbox,title)
 {
-	if (widget()) c->returnValue()->setString(((KviTalGroupBox *)widget())->title());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setString(((KviTalGroupBox *)widget())->title());
 	return true;
 }
 KVSO_CLASS_FUNCTION(groupbox,setFlat)
@@ -309,7 +310,7 @@ KVSO_CLASS_FUNCTION(groupbox,setAlignment)
 			return true;
 		}
 	}
-	c->warning(__tr2qs("Unknown alignment"));
+	c->warning(__tr2qs_ctx("Unknown alignment: 'Q'","objets"),&szAlign);
 	return true;
 }
 
@@ -342,7 +343,7 @@ KVSO_CLASS_FUNCTION(groupbox,setOrientation)
 	else
 	if(KviQString::equalCI(szMode, "Vertical"))
 		((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
-	else c->warning( __tr2qs("Unknown orientation: "));
+	else c->warning( __tr2qs_ctx("Unknown orientation: 'Q'","objects"),&szMode);
 
 	return true;
 }

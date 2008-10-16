@@ -102,7 +102,7 @@ g_pKvs##__className##Class->registerFunctionHandler(#__szName,(KviKvsObjectFunct
 #define CHECK_INTERNAL_POINTER(__pointer)\
 	if(!__pointer) \
 	{ \
-		c->error(__tr2qs("Internal error: no valid pointer for this object")); \
+		c->error(__tr2qs_ctx("Internal error: no valid pointer for this object","objects")); \
 		return false; \
 	}
 #endif

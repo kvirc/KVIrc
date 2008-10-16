@@ -38,11 +38,11 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionSetText(KviKvsObjectFunctionCall *c);
-	bool functionIsChecked(KviKvsObjectFunctionCall *c);
-	bool functionSetChecked(KviKvsObjectFunctionCall *c);
-	bool functionSetImage(KviKvsObjectFunctionCall *c);
-	bool function_toggleEvent(KviKvsObjectFunctionCall *c);
+	bool setText(KviKvsObjectFunctionCall *c);
+	bool isChecked(KviKvsObjectFunctionCall *c);
+	bool setChecked(KviKvsObjectFunctionCall *c);
+	bool setImage(KviKvsObjectFunctionCall *c);
+	bool toggleEvent(KviKvsObjectFunctionCall *c);
 protected slots:
 	void toggled(bool b);
 

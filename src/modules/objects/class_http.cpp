@@ -167,6 +167,7 @@ KVSO_END_DESTRUCTOR(KviKvsObject_http)
 
 bool  KviKvsObject_http::functionSetHost(KviKvsObjectFunctionCall *c)
 {
+	CHECK_INTERNAL_POINTER(m_pHttp)
 	QString szHost;
 	QString szConnectionType;
 	kvs_uint_t uRemotePort;
@@ -177,7 +178,7 @@ bool  KviKvsObject_http::functionSetHost(KviKvsObjectFunctionCall *c)
 	QUrl url(szHost);
 	if (!url.isValid())
 	{
-		c->warning(__tr2qs("Host '%Q' is not a valid url"),&szHost);
+		c->warning(__tr2qs_ctx("Host '%Q' is not a valid url","objects"),&szHost);
 		return true;
 	}
 	if (!szHost.isEmpty() && url.host().isEmpty()) url.setHost(szHost);
@@ -187,17 +188,19 @@ bool  KviKvsObject_http::functionSetHost(KviKvsObjectFunctionCall *c)
 	if(url.scheme().toLower()=="https")  mode=QHttp::ConnectionModeHttps;
 	else {mode=QHttp::ConnectionModeHttp;url.setScheme("http");}
 	if (mode==QHttp::ConnectionModeHttps) uRemotePort=443;
-	if (m_pHttp) id=m_pHttp->setHost(url.host(), mode, uRemotePort);
+	id=m_pHttp->setHost(url.host(), mode, uRemotePort);
 	c->returnValue()->setInteger(id);
 	return true;
 }
 bool  KviKvsObject_http::functionCurrentId(KviKvsObjectFunctionCall *c)
 {
+	CHECK_INTERNAL_POINTER(m_pHttp)
 	c->returnValue()->setInteger(m_pHttp->currentId());
 	return true;
 }
 bool  KviKvsObject_http::functionSetUser(KviKvsObjectFunctionCall *c)
 {
+	CHECK_INTERNAL_POINTER(m_pHttp)
 	QString szUser;
 	QString szPass;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -205,11 +208,12 @@ bool  KviKvsObject_http::functionSetUser(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("password",KVS_PT_STRING,0,szPass)
 	KVSO_PARAMETERS_END(c)
 	kvs_int_t id;
-	if (m_pHttp) id=m_pHttp->setUser(szUser,szPass);
+	id=m_pHttp->setUser(szUser,szPass);
 	return true;
 }
 bool  KviKvsObject_http::functionSetProxy(KviKvsObjectFunctionCall *c)
 {
+	CHECK_INTERNAL_POINTER(m_pHttp)
 	QString szHost;
 	QString szUser,szPass;
 	kvs_uint_t uRemotePort;
@@ -219,11 +223,12 @@ bool  KviKvsObject_http::functionSetProxy(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("user",KVS_PT_STRING,KVS_PF_OPTIONAL,szUser)
 		KVSO_PARAMETER("pass",KVS_PT_STRING,KVS_PF_OPTIONAL,szPass)
 	KVSO_PARAMETERS_END(c)
-	if (m_pHttp) m_pHttp->setProxy(szHost,uRemotePort,szUser,szPass);
+	m_pHttp->setProxy(szHost,uRemotePort,szUser,szPass);
 	return true;
 }
 bool  KviKvsObject_http::functionGet(KviKvsObjectFunctionCall *c)
 {
+	CHECK_INTERNAL_POINTER(m_pHttp)
 	QString szPath,szDest;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("remote_path",KVS_PT_STRING,0,szPath)
@@ -239,24 +244,21 @@ bool  KviKvsObject_http::functionGet(KviKvsObjectFunctionCall *c)
 		}
 		else
 		{
-			c->warning(__tr2qs("'%Q' is not a valid file path"),&szDest);
+			c->warning(__tr2qs_ctx("'%Q' is not a valid file path","objects"),&szDest);
 			c->returnValue()->setInteger(-1);
 			return true;
 		}
 
 	}
-	int id=0;
 	if (szPath.isEmpty()) szPath="/";
-	if (m_pHttp)
-	{
-		id=m_pHttp->get(szPath,pFile);
-		if (pFile) getDict[id]=pFile;
-		c->returnValue()->setInteger(id);
-	}
+	int id=m_pHttp->get(szPath,pFile);
+	if (pFile) getDict[id]=pFile;
+	c->returnValue()->setInteger(id);
 	return true;
 }
 bool  KviKvsObject_http::functionPost(KviKvsObjectFunctionCall *c)
 {
+	CHECK_INTERNAL_POINTER(m_pHttp)	
 	QString szPath,szDest,szData;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("remote_path",KVS_PT_STRING,0,szPath)
@@ -270,30 +272,29 @@ bool  KviKvsObject_http::functionPost(KviKvsObjectFunctionCall *c)
 				pFile->open(QIODevice::WriteOnly);
 		}
 	}
-	int id=0;
 	if (szPath.isEmpty()) szPath="/";
-	if (m_pHttp)
-	{
-		id=m_pHttp->post(szPath,szDest.toAscii(),pFile);
-		if (pFile) getDict[id]=pFile;
-		c->returnValue()->setInteger(id);
-	}
+	int id=m_pHttp->post(szPath,szDest.toAscii(),pFile);
+	if (pFile) getDict[id]=pFile;
+	c->returnValue()->setInteger(id);
 	return true;
 }
 bool  KviKvsObject_http::functionAbort(KviKvsObjectFunctionCall *c)
 {
+	CHECK_INTERNAL_POINTER(m_pHttp)	
 	m_bAbort=true;
-	if (m_pHttp) m_pHttp->abort();
+	m_pHttp->abort();
 	return true;
 }
 bool  KviKvsObject_http::functionReadAll(KviKvsObjectFunctionCall *c)
 {
-	if (m_pHttp) c->returnValue()->setString(m_pHttp->readAll());
+	CHECK_INTERNAL_POINTER(m_pHttp)	
+	c->returnValue()->setString(m_pHttp->readAll());
 	return true;
 }
 bool  KviKvsObject_http::functionErrorString(KviKvsObjectFunctionCall *c)
 {
-	if (m_pHttp) c->returnValue()->setString(m_pHttp->errorString());
+	CHECK_INTERNAL_POINTER(m_pHttp)	
+	c->returnValue()->setString(m_pHttp->errorString());
 	return true;
 }
 bool KviKvsObject_http::functionFollowRedirect(KviKvsObjectFunctionCall *c)

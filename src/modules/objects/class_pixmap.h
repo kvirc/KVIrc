@@ -57,15 +57,15 @@ signals:
 	void aboutToDie();
 
 protected:
-	bool functionfill(KviKvsObjectFunctionCall *c);
-	bool functionresize(KviKvsObjectFunctionCall *c);
-	bool functionscale(KviKvsObjectFunctionCall *c);
-	bool functionrotate(KviKvsObjectFunctionCall *c);
-	bool functionload(KviKvsObjectFunctionCall *c);
-	bool functionheight(KviKvsObjectFunctionCall *c);
-	bool functionwidth(KviKvsObjectFunctionCall *c);
-	bool functionsetOpacity(KviKvsObjectFunctionCall *c);
-	bool functionloadFromMemoryBuffer(KviKvsObjectFunctionCall *c);
+	bool fill(KviKvsObjectFunctionCall *c);
+	bool resize(KviKvsObjectFunctionCall *c);
+	bool scale(KviKvsObjectFunctionCall *c);
+	bool rotate(KviKvsObjectFunctionCall *c);
+	bool load(KviKvsObjectFunctionCall *c);
+	bool height(KviKvsObjectFunctionCall *c);
+	bool width(KviKvsObjectFunctionCall *c);
+	bool setOpacity(KviKvsObjectFunctionCall *c);
+	bool loadFromMemoryBuffer(KviKvsObjectFunctionCall *c);
 
 
   };

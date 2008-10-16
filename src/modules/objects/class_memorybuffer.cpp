@@ -87,7 +87,7 @@ KVSO_CLASS_FUNCTION(memorybuffer,loadFromFile)
 		f.load(*m_pBuffer);
 		f.close();
 	}
-	else c->warning(__tr2qs("The file '%Q' does not exists"),&szFileName);
+	else c->warning(__tr2qs_ctx("The file '%Q' does not exists","objects"),&szFileName);
 	return true;
 }
 KVSO_CLASS_FUNCTION(memorybuffer,saveToFile)
@@ -105,7 +105,7 @@ KVSO_CLASS_FUNCTION(memorybuffer,saveToFile)
 	}
 	else
 	{
-		c->warning(__tr2qs("Cannot open file '%Q' for writing"),&szFileName);
+		c->warning(__tr2qs_ctx("Cannot open file '%Q' for writing","objects"),&szFileName);
 	}
 	return true;
 }

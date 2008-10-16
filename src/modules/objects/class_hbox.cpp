@@ -109,26 +109,29 @@ bool KviKvsObject_hbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 
 KVSO_CLASS_FUNCTION(hbox,setMargin)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uMargin;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,uMargin)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((KviTalHBox *)widget())->setMargin(uMargin);
+	((KviTalHBox *)widget())->setMargin(uMargin);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(hbox,setSpacing)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((KviTalHBox *)widget())->setSpacing(uSpacing);
+	((KviTalHBox *)widget())->setSpacing(uSpacing);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(hbox,setStretchFactor)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	kvs_uint_t uStretch;
@@ -137,7 +140,6 @@ KVSO_CLASS_FUNCTION(hbox,setStretchFactor)
 		KVSO_PARAMETER("stretch",KVS_PT_UNSIGNEDINTEGER,0,uStretch)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!widget())return true;
 	if (!pObject)
 	{
 		c->warning(__tr2qs("Widget parameter is not an object"));
@@ -163,15 +165,17 @@ KVSO_CLASS_FUNCTION(hbox,setStretchFactor)
 }
 KVSO_CLASS_FUNCTION(hbox,addStretch)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iStretch;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("stretch",KVS_PT_INT,0,iStretch)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((KviTalHBox *)widget())->addStretch(iStretch);
+	((KviTalHBox *)widget())->addStretch(iStretch);
 	return true;
 }
 KVSO_CLASS_FUNCTION(hbox,setAlignment)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QStringList alignment;
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
@@ -180,7 +184,6 @@ KVSO_CLASS_FUNCTION(hbox,setAlignment)
 		KVSO_PARAMETER("alignment",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,alignment)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!widget())return true;
 	if (!pObject)
 	{
 		c->warning(__tr2qs("Widget parameter is not an object"));

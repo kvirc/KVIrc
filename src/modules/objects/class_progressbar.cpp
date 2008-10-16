@@ -68,12 +68,12 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_progressbar,"progressbar","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_progressbar,"setProgress", functionSetProgress)
-	KVSO_REGISTER_HANDLER(KviKvsObject_progressbar,"setFormat", functionSetFormat)
-	KVSO_REGISTER_HANDLER(KviKvsObject_progressbar,"setTotalSteps", functionSetTotalSteps)
-	KVSO_REGISTER_HANDLER(KviKvsObject_progressbar,"reset", functionReset)
-	KVSO_REGISTER_HANDLER(KviKvsObject_progressbar,"setPercentageVisible", functionSetPercentageVisible)
-	KVSO_REGISTER_HANDLER(KviKvsObject_progressbar,"isPercentageVisible", functionPercentageVisible)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,setProgress)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,setFormat)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,setTotalSteps)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,reset)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,setPercentageVisible)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,percentageVisible)
 KVSO_END_REGISTERCLASS(KviKvsObject_progressbar)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_progressbar,KviKvsObject_widget)
@@ -90,56 +90,60 @@ bool KviKvsObject_progressbar::init(KviKvsRunTimeContext * pContext,KviKvsVarian
 	SET_OBJECT (QProgressBar)
 	return true;
 }
-bool KviKvsObject_progressbar::functionSetProgress(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(progressbar,setProgress)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iValue;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("step_value",KVS_PT_UNSIGNEDINTEGER,0,iValue)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QProgressBar *)widget())->setValue(iValue);
+	((QProgressBar *)widget())->setValue(iValue);
     return true;
 }
 
-bool KviKvsObject_progressbar::functionSetTotalSteps(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(progressbar,setTotalSteps)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iMax;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("total_steps",KVS_PT_UNSIGNEDINTEGER,0,iMax)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((QProgressBar *)widget())->setMaximum(iMax);
+	((QProgressBar *)widget())->setMaximum(iMax);
     return true;
 }
 
-bool KviKvsObject_progressbar::functionReset(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(progressbar,reset)
 {
-	if (widget()) ((QProgressBar *)widget())->reset();
+	CHECK_INTERNAL_POINTER(widget())
+	((QProgressBar *)widget())->reset();
 	return true;
 }
 
 
-bool KviKvsObject_progressbar::functionSetPercentageVisible(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(progressbar,setPercentageVisible)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QProgressBar *)widget())->setTextVisible(bEnabled);
+	((QProgressBar *)widget())->setTextVisible(bEnabled);
 	return true;
 }
-bool KviKvsObject_progressbar::functionSetFormat(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(progressbar,setFormat)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szFormat;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_STRING,0,szFormat)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QProgressBar *)widget())->setFormat(szFormat);
+	((QProgressBar *)widget())->setFormat(szFormat);
 	return true;
 }
-bool KviKvsObject_progressbar::functionPercentageVisible(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(progressbar,percentageVisible)
 {
-	if (widget()) c->returnValue()->setBoolean(((QProgressBar *)widget())->isTextVisible());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setBoolean(((QProgressBar *)widget())->isTextVisible());
 	return true;
 }
 

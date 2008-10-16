@@ -75,17 +75,17 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_pixmap,"pixmap","object")
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"fill",functionfill)
-	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"resize",functionresize)
-	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"load",functionload)
-	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"loadFromMemoryBuffer",functionloadFromMemoryBuffer)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,fill)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,resize)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,load)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,loadFromMemoryBuffer)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"height",functionheight)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,height)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"width",functionwidth)
-	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"setOpacity",functionsetOpacity)
-	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"scale",functionscale)
-	KVSO_REGISTER_HANDLER(KviKvsObject_pixmap,"rotate",functionrotate)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,width)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,setOpacity)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,scale)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,rotate)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_pixmap)
 
@@ -107,8 +107,9 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_pixmap)
 KVSO_END_CONSTRUCTOR(KviKvsObject_pixmap)
 
 
-bool KviKvsObject_pixmap::functionfill(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(pixmap,fill)
 {
+	CHECK_INTERNAL_POINTER(m_pPixmap)
 	KviKvsObject *ob;
 	kvs_int_t iXoffset,iYoffset;
 	kvs_hobject_t hObject;
@@ -134,8 +135,9 @@ bool KviKvsObject_pixmap::functionfill(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_pixmap::functionscale(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(pixmap,scale)
 {
+	CHECK_INTERNAL_POINTER(m_pPixmap)
 	kvs_int_t iScaleW,iScaleH;
 	QString szAspectRatio, szTransformation;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -159,8 +161,9 @@ bool KviKvsObject_pixmap::functionscale(KviKvsObjectFunctionCall *c)
 	return true;
 }
   
-bool KviKvsObject_pixmap::functionrotate(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(pixmap,rotate)
 {
+	CHECK_INTERNAL_POINTER(m_pPixmap)
 	kvs_real_t uDegrees;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("a",KVS_PT_REAL,0,uDegrees)
@@ -172,41 +175,40 @@ bool KviKvsObject_pixmap::functionrotate(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_pixmap::functionresize(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(pixmap,resize)
 {
+	CHECK_INTERNAL_POINTER(m_pPixmap)
 	kvs_int_t uWidth,uHeight;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,0,uWidth)
 		KVSO_PARAMETER("height",KVS_PT_UNSIGNEDINTEGER,0,uHeight)
 	KVSO_PARAMETERS_END(c)
-	if (m_pPixmap)
-	{
-		delete m_pPixmap;
-		m_pPixmap=new QPixmap(uWidth,uHeight);
-	}
+	delete m_pPixmap;
+	m_pPixmap=new QPixmap(uWidth,uHeight);
 	bPixmapModified=true;
 	return true;
 }
 
 
-bool KviKvsObject_pixmap::functionload(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(pixmap,load)
 {
+	CHECK_INTERNAL_POINTER(m_pPixmap)
 	QString szFile;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
 	KVSO_PARAMETERS_END(c)
-	
 	if(!QFile::exists(szFile))
 	{
-		c->warning(__tr2qs("I can't find the specified file %Q."),&szFile);
+		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
         return true;
 	}
 	m_pPixmap->load(szFile);
 	bPixmapModified=true;
 	return true;
 }
-bool KviKvsObject_pixmap::functionloadFromMemoryBuffer(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(pixmap,loadFromMemoryBuffer)
 {
+	CHECK_INTERNAL_POINTER(m_pPixmap)
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -215,12 +217,12 @@ bool KviKvsObject_pixmap::functionloadFromMemoryBuffer(KviKvsObjectFunctionCall 
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if (!pObject)
 	{
-		c->warning(__tr2qs("Buffer parameter is not an object"));
+		c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
 		return true;
 	}
 	if (!pObject->inheritsClass("memorybuffer"))
 	{
-		c->warning(__tr2qs("Buffer parameter is not a memorybuffer object"));
+		c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
 		return true;
 	}
 
@@ -231,20 +233,22 @@ bool KviKvsObject_pixmap::functionloadFromMemoryBuffer(KviKvsObjectFunctionCall 
 	return true;
 }
 
-bool KviKvsObject_pixmap::functionheight(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(pixmap,height)
 {
+	CHECK_INTERNAL_POINTER(m_pPixmap)
 	c->returnValue()->setInteger(m_pPixmap->height());	
 	return true;
 }
-bool KviKvsObject_pixmap::functionwidth(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(pixmap,width)
 {
+	CHECK_INTERNAL_POINTER(m_pPixmap)
 	c->returnValue()->setInteger(m_pPixmap->width());	
 	return true;
 }
 // maybe DEPRECATED?
-bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(pixmap,setOpacity)
 {
-	if(!m_pPixmap)return true; 
+	CHECK_INTERNAL_POINTER(m_pPixmap)
 	kvs_real_t dOpacity;
 	kvs_uint_t uXoffset,uYoffset;
 	kvs_uint_t uWidth,uHeight;
@@ -253,24 +257,24 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 	kvs_hobject_t hObject;
 		
 	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)	
-			KVSO_PARAMETER("destination",KVS_PT_HOBJECT,0,hObject)
-			KVSO_PARAMETER("x_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uXoffset)
-			KVSO_PARAMETER("y_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uYoffset)
-			KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uWidth)
-			KVSO_PARAMETER("height",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uHeight)
+		KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)	
+		KVSO_PARAMETER("destination",KVS_PT_HOBJECT,0,hObject)
+		KVSO_PARAMETER("x_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uXoffset)
+		KVSO_PARAMETER("y_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uYoffset)
+		KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uWidth)
+		KVSO_PARAMETER("height",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uHeight)
 	KVSO_PARAMETERS_END(c)
 	pObDest=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 
 	if (!pObDest)
 	{
-		c->warning(__tr2qs("Destination parameter is not an object"));
+		c->warning(__tr2qs_ctx("Destination parameter is not an object","objects"));
 		return true;
 	}
 
 	if(!pObDest->inheritsClass("pixmap"))
 	{
-		c->warning(__tr2qs("Destination must be a pixmap object"));
+		c->warning(__tr2qs_ctx("Destination must be a pixmap object","objects"));
 		return true;
 	}
 	QImage *buffer=((KviKvsObject_pixmap *)pObDest)->getImage();
@@ -280,13 +284,13 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 	}
 	if (uWidth>buffer->width() || uHeight>buffer->height())
 	{
-			c->warning(__tr2qs("Area dimensions are out of destination size "));
+			c->warning(__tr2qs_ctx("Area dimensions are out of destination size ","objects"));
 			return true;
 	}
 	if (!uWidth){
 		if(m_pImage->width()>buffer->width())
 		{
-			c->warning(__tr2qs("Pixmap dimensions are out of destination size "));
+			c->warning(__tr2qs_ctx("Pixmap dimensions are out of destination size ","objects"));
 			return true;
 		}
 	}
@@ -295,7 +299,7 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 	{
 		if(m_pImage->height()>buffer->height())
 		{
-			c->warning(__tr2qs("Pixmap dimensions are out of destination size "));
+			c->warning(__tr2qs_ctx("Pixmap dimensions are out of destination size ","objects"));
 			return true;
 		}
 	}
@@ -303,12 +307,12 @@ bool KviKvsObject_pixmap::functionsetOpacity(KviKvsObjectFunctionCall *c)
 
 if(uXoffset+uWidth>m_pImage->width())
 	{
-		c->warning(__tr2qs("Offset width area is out of pixmap size "));
+		c->warning(__tr2qs_ctx("Offset width area is out of pixmap size ","objects"));
 		return true;
 	}
 	if( uYoffset+uHeight>m_pImage->height())
 	{
-		c->warning(__tr2qs("Offset height area is out of pixmap size "));
+		c->warning(__tr2qs_ctx("Offset height area is out of pixmap size ","objects"));
 		return true;
 	}
 
@@ -341,7 +345,8 @@ if(uXoffset+uWidth>m_pImage->width())
 
 QPixmap * KviKvsObject_pixmap::getPixmap() 
 {
-	if (bImageModified) {
+	if (bImageModified) 
+	{
 		m_pPixmap->fromImage(*m_pImage);
 		bImageModified=false;
 	}
@@ -349,10 +354,9 @@ QPixmap * KviKvsObject_pixmap::getPixmap()
 }
 QImage * KviKvsObject_pixmap::getImage()
 {
-	if (bPixmapModified) {
+	if (bPixmapModified) 
+	{
 		*m_pImage=m_pPixmap->toImage();
-		//debug ("image info2  %d and %d",test.width(),test.height());
-		
 		bPixmapModified=false;
 	}
 	

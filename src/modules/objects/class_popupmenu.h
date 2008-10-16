@@ -41,16 +41,16 @@ protected:
 
 	QHash<int,QAction *> actionsDict;
 	int identifier;
-	bool functioninsertItem(KviKvsObjectFunctionCall *c);
-	//bool functionsetTitle(KviKvsObjectFunctionCall *c);
-	//bool functioninsertWidget(KviKvsObjectFunctionCall *c);
-	//bool functioninsertHandle(KviKvsObjectFunctionCall *c);
-	bool functionexec(KviKvsObjectFunctionCall *c);
-	bool functionremoveItem(KviKvsObjectFunctionCall *c);
-	bool functionremoveItemAt(KviKvsObjectFunctionCall *c);
-	bool functioninsertSeparator(KviKvsObjectFunctionCall *c);
-	bool functionactivatedEvent(KviKvsObjectFunctionCall *c);
-	bool functionhighlightedEvent(KviKvsObjectFunctionCall *c);
+	bool insertItem(KviKvsObjectFunctionCall *c);
+	//bool setTitle(KviKvsObjectFunctionCall *c);
+	//bool insertWidget(KviKvsObjectFunctionCall *c);
+	//bool insertHandle(KviKvsObjectFunctionCall *c);
+	bool exec(KviKvsObjectFunctionCall *c);
+	bool removeItem(KviKvsObjectFunctionCall *c);
+	bool removeItemAt(KviKvsObjectFunctionCall *c);
+	bool insertSeparator(KviKvsObjectFunctionCall *c);
+	bool activatedEvent(KviKvsObjectFunctionCall *c);
+	bool highlightedEvent(KviKvsObjectFunctionCall *c);
 
 protected slots:
 	void slottriggered(QAction *);

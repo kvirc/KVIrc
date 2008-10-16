@@ -425,12 +425,12 @@ KVSO_CLASS_FUNCTION(socket,read)
 		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 		if (!pObject)
 		{
-			c->warning(__tr2qs("Buffer parameter is not an object"));
+			c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
 			return true;
 		}
 		if (!pObject->inheritsClass("memorybuffer"))
 		{
-			c->warning(__tr2qs("Buffer parameter is not a memorybuffer object"));
+			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
 			return true;
 		}
 
@@ -496,7 +496,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 		if (!pObject)
 		{
-			c->warning(__tr2qs("Buffer parameter is not an object"));
+			c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
 			return true;
 		}
 		if (pObject->inheritsClass("memorybuffer"))
@@ -509,7 +509,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 			KviFile *pFile=((KviKvsObject_file *)pObject)->pFile();
 			if (!pFile->isOpen()) 
 			{
-				c->warning(__tr2qs("File is not open !"));
+				c->warning(__tr2qs_ctx("File is not open !","objects"));
 				return true;
 			}
 			if (!uLen) uLen=pFile->size();
@@ -520,7 +520,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 		}
 		else
 		{
-			c->warning(__tr2qs("Buffer parameter is not a memorybuffer or file object"));
+			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer or file object","objects"));
 			return true;
 		}
 		
@@ -563,13 +563,13 @@ KVSO_CLASS_FUNCTION(socket,accept)
 
 	if(!pObject)
 	{
-		c->warning(__tr2qs("No socket object specified"));
+		c->warning(__tr2qs_ctx("No socket object specified","objects"));
 		return true;
 	}
 
 	if(!pObject->inheritsClass("socket"))
 	{
-		c->warning(__tr2qs("Invalid socket object specified (it doesn't inherit from socket)"));
+		c->warning(__tr2qs_ctx("Invalid socket object specified (it doesn't inherit from socket)","objects"));
 		return true;
 	}
 
@@ -581,7 +581,7 @@ KVSO_CLASS_FUNCTION(socket,accept)
 		m_uSecondaryPort = 0;
 		m_szSecondaryIp="";
 	} else {
-		c->warning(__tr2qs("There is no connection to accept!"));
+		c->warning(__tr2qs_ctx("There is no connection to accept!","objects"));
 	}
 	return true;
 }
@@ -607,7 +607,7 @@ KVSO_CLASS_FUNCTION(socket,writeHex)
 	KVSO_PARAMETERS_END(c)
 	if (m_szHex.length()%2) 
 	{
-		c->warning(__tr2qs("Lenght of hex string is not multiple 2"));
+		c->warning(__tr2qs_ctx("Lenght of hex string is not multiple 2","objects"));
 		return true;
 	}
 	unsigned char byte,lsb,msb;
@@ -624,7 +624,7 @@ KVSO_CLASS_FUNCTION(socket,writeHex)
 					lsb>='A'?lsb-='7':lsb-='0';
 		}
 		else{
-			c->warning("The hex string is not correct!");
+			c->warning(__tr2qs_ctx("The hex string is not correct!","objects"));
 			return true;
 		}
 		byte=(msb*16)+lsb;
@@ -649,12 +649,12 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 
 	if (m_uRemotePort>65535)
 	{
-		c->warning(__tr2qs("Value %d for port is out of range (values allowed are from 0 to 65535"),m_uRemotePort);
+		c->warning(__tr2qs_ctx("Value %d for port is out of range (values allowed are from 0 to 65535","objects"),m_uRemotePort);
 		return true;
 	}
 	if((m_sock != KVI_INVALID_SOCKET) || (m_iStatus != KVI_SCRIPT_SOCKET_STATUS_DISCONNECTED))
 	{
-		c->warning(__tr2qs("Another connection in progress"));
+		c->warning(__tr2qs_ctx("Another connection in progress","objects"));
 		c->returnValue()->setBoolean(true);
 		return true;
 	}
@@ -685,7 +685,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 {
 	if((m_sock != KVI_INVALID_SOCKET) || (m_iStatus != KVI_SCRIPT_SOCKET_STATUS_DISCONNECTED))
 	{
-		c->warning(__tr2qs("Another connection in progress"));
+		c->warning(__tr2qs_ctx("Another connection in progress","objects"));
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
@@ -724,7 +724,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 				m_bIPv6 = true;
 			} else {
 #else
-				c->warning(__tr2qs("Invalid IP address specified ('%Q')"),&m_szLocalIp);
+				c->warning(__tr2qs_ctx("Invalid IP address specified ('%Q')","objects"),&m_szLocalIp);
 				c->returnValue()->setBoolean(false);
 				reset();
 				return true;
@@ -745,7 +745,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 
 	if(m_sock == KVI_INVALID_SOCKET)
 	{
-		c->warning(__tr2qs("Socket creation failed"));
+		c->warning(__tr2qs_ctx("Socket creation failed","objects"));
 		c->returnValue()->setBoolean(false);
 		reset();
 		return true;
@@ -760,7 +760,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 #endif
 		if(!sa.socketAddress())
 		{
-			c->warning(__tr2qs("Invalid socket address"));
+			c->warning(__tr2qs_ctx("Invalid socket address","objects"));
 			reset();
 			c->returnValue()->setBoolean(false);
 			return true;
@@ -768,7 +768,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 
 		if(!kvi_socket_bind(m_sock,sa.socketAddress(),((int)(sa.addressLength()))))
 		{
-			c->warning(__tr2qs("Bind failure"));
+			c->warning(__tr2qs_ctx("Bind failure","objects"));
 			reset();
 			c->returnValue()->setBoolean(false);
 			return true;
@@ -781,7 +781,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 #endif
 		if(!sa.socketAddress())
 		{
-			c->warning(__tr2qs("Invalid socket address"));
+			c->warning(__tr2qs_ctx("Invalid socket address","objects"));
 			reset();
 			c->returnValue()->setBoolean(false);
 			return true;
@@ -789,7 +789,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 
 		if(!kvi_socket_bind(m_sock,sa.socketAddress(),((int)(sa.addressLength()))))
 		{
-			c->warning(__tr2qs("Bind failure"));
+			c->warning(__tr2qs_ctx("Bind failure","objects"));
 			reset();
 			c->returnValue()->setBoolean(false);
 			return true;
@@ -799,7 +799,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 
 	if(!kvi_socket_listen(m_sock,5))
 	{
-		c->warning(__tr2qs("Listen failure"));
+		c->warning(__tr2qs_ctx("Listen failure","objects"));
 		reset();
 		c->returnValue()->setBoolean(false);
 		return true;
@@ -932,13 +932,13 @@ void KviKvsObject_socket::doConnect()
 	if(!sa.socketAddress())
 	{
 		unsigned int uOldConnectionId = m_uConnectionId;
-		QString ipAddressError=__tr2qs("Invalid ip address ");
+		QString ipAddressError=__tr2qs_ctx("Invalid ip address ","objects");
 
 		ipAddressError.append(m_szRemoteIp);
 
 		KviKvsVariantList params;
 		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs("Invalid ip address (%Q)"),&m_szRemoteIp);
+		KviQString::sprintf(tmp,__tr2qs_ctx("Invalid ip address (%Q)","objects"),&m_szRemoteIp);
 		params.append(new KviKvsVariant(tmp));
 		callFunction(this,"connectFailedEvent",&params);
 		if(m_uConnectionId == uOldConnectionId)reset();
@@ -972,7 +972,7 @@ debug ("Socket created");
 		unsigned int uOldConnectionId = m_uConnectionId;
 
 		callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-			new KviKvsVariant(__tr2qs("Failed to setup a nonblocking socket"))));
+			new KviKvsVariant(__tr2qs_ctx("Failed to setup a nonblocking socket","objects"))));
 		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
 		return;
@@ -993,7 +993,7 @@ debug ("Socket created");
 						(void *)&sockError,&iSize))sockError=0;
 			}
 			unsigned int uOldConnectionId = m_uConnectionId;
-			QString callBackError=__tr2qs("Connect failure: ");
+			QString callBackError=__tr2qs_ctx("Connect failure: ","objects");
 
 			callBackError.append((KviError::getDescription(KviError::translateSystemError(sockError)).toUtf8().data()));
 			callFunction(this,"connectFailedEvent",new KviKvsVariantList(new KviKvsVariant(callBackError)));
@@ -1020,7 +1020,7 @@ void KviKvsObject_socket::connectTimeoutSlot()
 	unsigned int uOldConnectionId = m_uConnectionId;
 
 	callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-				new KviKvsVariant(__tr2qs("Connect attempt timed out"))));
+				new KviKvsVariant(__tr2qs_ctx("Connect attempt timed out","objects"))));
 	if(m_uConnectionId == uOldConnectionId)reset();
 	// else it has already been called!
 }
@@ -1049,7 +1049,7 @@ void KviKvsObject_socket::lookupRemoteIp()
 		unsigned int uOldConnectionId = m_uConnectionId;
 
 		callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-				new KviKvsVariant(__tr2qs("Can't start the DNS thread"))));
+				new KviKvsVariant(__tr2qs_ctx("Can't start the DNS thread","objects"))));
 		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
 	}
@@ -1195,7 +1195,7 @@ void KviKvsObject_socket::readNotifierFired(int)
 		if(m_uInDataLen > (4096 * 1024)) // too much data in buffer (not reading)
 		{
 			callFunction(this,"disconnectEvent",new KviKvsVariantList(
-				new KviKvsVariant(__tr2qs("Too much unprocessed incoming data (you've left this socket unmanaged ?)"))));
+				new KviKvsVariant(__tr2qs_ctx("Too much unprocessed incoming data (you've left this socket unmanaged ?)","objects"))));
 			reset();
 		}
 	}

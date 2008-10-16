@@ -84,17 +84,17 @@ KVSO_CLASS_FUNCTION(mainwindow,setCentralWidget)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if (!pObject)
 	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
+		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
 		return true;
 	}
 	if (!pObject->object())
 	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
+		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
 		return true;
 	}
 	if(!pObject->inheritsClass("widget"))
     {
-		c->warning(__tr2qs("Widget object required"));
+		c->warning(__tr2qs_ctx("Widget object required","objects"));
         return TRUE;
     }
 	((KviTalMainWindow *)widget())->setCentralWidget(((QWidget  *)(pObject->object())));

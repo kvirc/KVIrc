@@ -33,6 +33,7 @@
 
 class KviKvsObject_file : public KviKvsObject_widget
 {
+	Q_OBJECT
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_file)
 protected:

@@ -185,7 +185,7 @@ KVSO_CLASS_FUNCTION(listwidget,changeItem)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-	if (szText.isEmpty()) c->warning(__tr2qs("No string parameter given - using empty string"));
+	if (szText.isEmpty()) c->warning(__tr2qs_ctx("No string parameter given - using empty string","objects"));
 	if(iIndex >= (cnt = ((QListWidget *)widget())->count()))
 	{
 		c->warning(__tr2qs("Item index [%d] is too big - defaulting to " 
@@ -206,8 +206,8 @@ KVSO_CLASS_FUNCTION(listwidget,removeItem)
 	KVSO_PARAMETERS_END(c)
 	if(iIndex >= (cnt = ((QListWidget *)widget())->count()))
 	{
-		c->warning(__tr2qs("Item index [%d] is too big - defaulting to " \
-			"$count() - 1 [%d]"), iIndex, cnt);
+		c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to " \
+			"$count() - 1 [%d]","objects"), iIndex, cnt);
 		iIndex = cnt - 1;
 	}
 	delete ((QListWidget *)widget())->takeItem(iIndex);
@@ -269,7 +269,7 @@ KVSO_CLASS_FUNCTION(listwidget,setSelectionMode)
 	else if(KviQString::equalCI(szMode,"multi")) iMode = QAbstractItemView::MultiSelection;
 	else if(KviQString::equalCI(szMode,"extended")) iMode = QAbstractItemView::ExtendedSelection;
 	else if(KviQString::equalCI(szMode,"none")) iMode = QAbstractItemView::NoSelection;
-	else  c->warning(__tr2qs("Invalid selection mode '%Q' assuming single"),&szMode);
+	else  c->warning(__tr2qs_ctx("Invalid selection mode '%Q' assuming single","objects"),&szMode);
 	((QListWidget *)widget())->setSelectionMode(iMode);
 	return true;
 }
@@ -300,12 +300,12 @@ KVSO_CLASS_FUNCTION(listwidget,insertWidgetItem)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hWid);
 	if(pObject==this) 
 	{
-		c->warning(__tr2qs("Can't insert the listwidget itelf!"));
+		c->warning(__tr2qs_ctx("Can't insert the listwidget itelf!","objects"));
 		return true;
 	}
 	if(!pObject->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Can't insert a non-widget object"));
+		c->warning(__tr2qs_ctx("Can't insert a non-widget object","objects"));
 		return true;
 	}
 	QWidget *wi=((QWidget *)(pObject->object()));

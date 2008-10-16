@@ -38,12 +38,12 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionSetProgress(KviKvsObjectFunctionCall *c);
-	bool functionSetTotalSteps(KviKvsObjectFunctionCall *c);
-	bool functionReset(KviKvsObjectFunctionCall *c);
-	bool functionSetPercentageVisible(KviKvsObjectFunctionCall *c);
-	bool functionPercentageVisible(KviKvsObjectFunctionCall *c);
-	bool functionSetFormat(KviKvsObjectFunctionCall *c);
+	bool setProgress(KviKvsObjectFunctionCall *c);
+	bool setTotalSteps(KviKvsObjectFunctionCall *c);
+	bool reset(KviKvsObjectFunctionCall *c);
+	bool setPercentageVisible(KviKvsObjectFunctionCall *c);
+	bool percentageVisible(KviKvsObjectFunctionCall *c);
+	bool setFormat(KviKvsObjectFunctionCall *c);
 };
 
 
