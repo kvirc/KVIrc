@@ -607,7 +607,7 @@ KVSO_CLASS_FUNCTION(socket,writeHex)
 	KVSO_PARAMETERS_END(c)
 	if (m_szHex.length()%2) 
 	{
-		c->warning(__tr2qs_ctx("Lenght of hex string is not multiple 2","objects"));
+		c->warning(__tr2qs_ctx("The hex string lenght is not a multiple of 2","objects"));
 		return true;
 	}
 	unsigned char byte,lsb,msb;
@@ -932,13 +932,13 @@ void KviKvsObject_socket::doConnect()
 	if(!sa.socketAddress())
 	{
 		unsigned int uOldConnectionId = m_uConnectionId;
-		QString ipAddressError=__tr2qs_ctx("Invalid ip address ","objects");
+		QString ipAddressError=__tr2qs_ctx("Invalid IP address ","objects");
 
 		ipAddressError.append(m_szRemoteIp);
 
 		KviKvsVariantList params;
 		QString tmp;
-		KviQString::sprintf(tmp,__tr2qs_ctx("Invalid ip address (%Q)","objects"),&m_szRemoteIp);
+		KviQString::sprintf(tmp,__tr2qs_ctx("Invalid IP address (%Q)","objects"),&m_szRemoteIp);
 		params.append(new KviKvsVariant(tmp));
 		callFunction(this,"connectFailedEvent",&params);
 		if(m_uConnectionId == uOldConnectionId)reset();

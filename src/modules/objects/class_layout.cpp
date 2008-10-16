@@ -158,7 +158,7 @@ KVSO_CLASS_FUNCTION(layout,addWidget)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if (!pObject)
 	{
-		c->warning(__tr2qs_ctx("Widget parameter is not an object","objets"));
+		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
 		return true;
 	}
 	if (!pObject->object())
@@ -263,7 +263,7 @@ KVSO_CLASS_FUNCTION(layout,addRowSpacing)
 		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
 	KVSO_PARAMETERS_END(c)
-    //((QGridLayout *)object())->addRowSpacing(uRow,uSpacing);
+	//((QGridLayout *)object())->addRowSpacing(uRow,uSpacing);
 	((QGridLayout *)object())->addItem(new QSpacerItem(0, uSpacing), uRow, 0);
 	return true;
 }

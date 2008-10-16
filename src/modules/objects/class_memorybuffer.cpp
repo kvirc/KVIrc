@@ -24,6 +24,7 @@
 //=============================================================================
 
 #include "class_memorybuffer.h"
+
 #include "kvi_error.h"
 #include "kvi_debug.h"
 #include "kvi_settings.h"
@@ -31,6 +32,7 @@
 #include "kvi_process.h"
 #include "kvi_fileutils.h"
 #include "kvi_file.h"
+
 #include <QFileInfo>
 
 /*
@@ -87,7 +89,7 @@ KVSO_CLASS_FUNCTION(memorybuffer,loadFromFile)
 		f.load(*m_pBuffer);
 		f.close();
 	}
-	else c->warning(__tr2qs_ctx("The file '%Q' does not exists","objects"),&szFileName);
+	else c->warning(__tr2qs_ctx("The file '%Q' does not exist","objects"),&szFileName);
 	return true;
 }
 KVSO_CLASS_FUNCTION(memorybuffer,saveToFile)

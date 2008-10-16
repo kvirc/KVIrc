@@ -212,7 +212,7 @@ KVSO_CLASS_FUNCTION(popupmenu,insertItem)
 	{
 		pix = g_pIconManager->getImage(szIcon);
 		if (pix) action=((QMenu *)widget())->addAction(*pix,szItem);
-		else c->warning(__tr2qs_ctx("pix '%Q' doesn't exists","objects"),&szIcon);
+		else c->warning(__tr2qs_ctx("Icon '%Q' doesn't exist","objects"),&szIcon);
 	}
 	else
 		action=((QMenu *)widget())->addAction(szItem);

@@ -310,7 +310,7 @@ KVSO_CLASS_FUNCTION(groupbox,setAlignment)
 			return true;
 		}
 	}
-	c->warning(__tr2qs_ctx("Unknown alignment: 'Q'","objets"),&szAlign);
+	c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objets"),&szAlign);
 	return true;
 }
 
@@ -343,9 +343,7 @@ KVSO_CLASS_FUNCTION(groupbox,setOrientation)
 	else
 	if(KviQString::equalCI(szMode, "Vertical"))
 		((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
-	else c->warning( __tr2qs_ctx("Unknown orientation: 'Q'","objects"),&szMode);
+	else c->warning( __tr2qs_ctx("Unknown orientation: '%Q'","objects"),&szMode);
 
 	return true;
 }
-
-

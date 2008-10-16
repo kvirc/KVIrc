@@ -300,7 +300,7 @@ KVSO_CLASS_FUNCTION(listwidget,insertWidgetItem)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hWid);
 	if(pObject==this) 
 	{
-		c->warning(__tr2qs_ctx("Can't insert the listwidget itelf!","objects"));
+		c->warning(__tr2qs_ctx("Can't insert the listwidget itself!","objects"));
 		return true;
 	}
 	if(!pObject->object()->isWidgetType())

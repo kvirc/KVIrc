@@ -218,7 +218,7 @@ KVSO_CLASS_FUNCTION(process,startProcess)
 
 	if(m_pProcess->state()==KviProcess::NotRunning)
 	{
-		c->warning( __tr2qs_ctx("Process could not be starded.","objects"));
+		c->warning( __tr2qs_ctx("Process could not be started.","objects"));
 	}
 	return true;
 }
