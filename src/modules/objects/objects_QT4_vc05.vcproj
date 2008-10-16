@@ -521,8 +521,8 @@
 					>
 					<Tool
 						Name="VCCustomBuildTool"
-						CommandLine="$(QTDIR)\bin\moc -o &quot;$(InputDir)\m_$(InputName).moc&quot; &quot;$(InputDir)\$(InputFileName)&quot;"
-						Outputs="$(InputDir)\m_$(InputName).moc"
+						CommandLine=""
+						Outputs=""
 					/>
 				</FileConfiguration>
 				<FileConfiguration

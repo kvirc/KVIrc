@@ -40,22 +40,22 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionsetTracking(KviKvsObjectFunctionCall *c);
+	bool setTracking(KviKvsObjectFunctionCall *c);
 
-	bool functionsetValue(KviKvsObjectFunctionCall *c);
-	bool functionsetMinValue(KviKvsObjectFunctionCall *c);
-	bool functionsetMaxValue(KviKvsObjectFunctionCall *c);
-	bool functionsetLineStep(KviKvsObjectFunctionCall *c);
-	bool functionsetPrefix(KviKvsObjectFunctionCall *c);
-	bool functionsetSuffix(KviKvsObjectFunctionCall *c);
-	bool functionvalue(KviKvsObjectFunctionCall *c);
-	bool functionminValue(KviKvsObjectFunctionCall *c);
-	bool functionmaxValue(KviKvsObjectFunctionCall *c);
-	bool functionlineStep(KviKvsObjectFunctionCall *c);
-	bool functionsetSpecialValueText(KviKvsObjectFunctionCall *c);
-	bool functionspecialValueText(KviKvsObjectFunctionCall *c);
+	bool setValue(KviKvsObjectFunctionCall *c);
+	bool setMinValue(KviKvsObjectFunctionCall *c);
+	bool setMaxValue(KviKvsObjectFunctionCall *c);
+	bool setLineStep(KviKvsObjectFunctionCall *c);
+	bool setPrefix(KviKvsObjectFunctionCall *c);
+	bool setSuffix(KviKvsObjectFunctionCall *c);
+	bool value(KviKvsObjectFunctionCall *c);
+	bool minValue(KviKvsObjectFunctionCall *c);
+	bool maxValue(KviKvsObjectFunctionCall *c);
+	bool lineStep(KviKvsObjectFunctionCall *c);
+	bool setSpecialValueText(KviKvsObjectFunctionCall *c);
+	bool specialValueText(KviKvsObjectFunctionCall *c);
 	
-	bool functionvalueChangedEvent(KviKvsObjectFunctionCall *c);
+	bool valueChangedEvent(KviKvsObjectFunctionCall *c);
 	
 protected slots:
 	void valueChanged(int);

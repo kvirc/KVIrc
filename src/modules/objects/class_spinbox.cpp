@@ -104,22 +104,22 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_spinbox,"spinbox","widget")
 
 
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"setValue", functionsetValue);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"setMinValue", functionsetMinValue);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"setMaxValue", functionsetMaxValue);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"setLineStep", functionsetLineStep);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"setSpecialValueText", functionsetSpecialValueText);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"value",functionvalue);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"minValue", functionminValue);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"maxValue", functionmaxValue);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"lineStep", functionlineStep);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"specialValueText", functionspecialValueText);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setValue);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setMinValue);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setMaxValue);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setLineStep);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setSpecialValueText);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,value);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,minValue);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,maxValue);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,lineStep);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,specialValueText);
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"setPrefix", functionsetPrefix);
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"setSuffix", functionsetSuffix);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setPrefix);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setSuffix);
 
 	
-	KVSO_REGISTER_HANDLER(KviKvsObject_spinbox,"valueChangedEvent", functionvalueChangedEvent);
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,valueChangedEvent);
 KVSO_END_REGISTERCLASS(KviKvsObject_spinbox)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_spinbox,KviKvsObject_widget)
@@ -140,114 +140,116 @@ bool KviKvsObject_spinbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 
 
 
-bool KviKvsObject_spinbox::functionsetValue(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,setValue)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iValue;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("value",KVS_PT_INT,0,iValue)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QSpinBox *)widget())->setValue(iValue);
+	((QSpinBox *)widget())->setValue(iValue);
 	return true;
 }
-bool KviKvsObject_spinbox::functionsetMinValue(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,setMinValue)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iMinvalue;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("min_value",KVS_PT_INT,0,iMinvalue)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QSpinBox *)widget())->setMinimum(iMinvalue);
+    ((QSpinBox *)widget())->setMinimum(iMinvalue);
 	return true;
 }
-bool KviKvsObject_spinbox::functionsetMaxValue(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,setMaxValue)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iMaxvalue;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("max_value",KVS_PT_INT,0,iMaxvalue)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QSpinBox *)widget())->setMaximum(iMaxvalue);
+    ((QSpinBox *)widget())->setMaximum(iMaxvalue);
 	return true;
 }
 
-bool KviKvsObject_spinbox::functionsetLineStep(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,setLineStep)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iLinestep;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("line_step",KVS_PT_INT,0,iLinestep)
 	KVSO_PARAMETERS_END(c)
-    if (widget()) ((QSpinBox *)widget())->setSingleStep(iLinestep);
+    ((QSpinBox *)widget())->setSingleStep(iLinestep);
 	return true;
 }
 
 
-bool KviKvsObject_spinbox::functionvalue(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,value)
 {
-	if (widget()) c->returnValue()->setInteger(((QSpinBox *)widget())->value());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(((QSpinBox *)widget())->value());
 	return true;
 }
 
-bool KviKvsObject_spinbox::functionminValue(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,minValue)
 {
-	if (widget()) c->returnValue()->setInteger(((QSpinBox *)widget())->minimum());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(((QSpinBox *)widget())->minimum());
 	return true;
 }
-bool KviKvsObject_spinbox::functionmaxValue(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,maxValue)
 {
-	if (widget()) c->returnValue()->setInteger(((QSpinBox *)widget())->maximum());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(((QSpinBox *)widget())->maximum());
 	return true;
 }
-bool KviKvsObject_spinbox::functionlineStep(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,lineStep)
 {
-	if (widget())
-	{
-			c->returnValue()->setInteger(((QSpinBox *)widget())->singleStep());
-	}
-	
-	return true;
-}
-
-
-bool KviKvsObject_spinbox::functionspecialValueText(KviKvsObjectFunctionCall *c)
-{
-	if (widget()) c->returnValue()->setString(((QSpinBox *)widget())->specialValueText());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(((QSpinBox *)widget())->singleStep());
 	return true;
 }
 
 
-bool KviKvsObject_spinbox::functionsetSpecialValueText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,specialValueText)
 {
-	
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setString(((QSpinBox *)widget())->specialValueText());
+	return true;
+}
+
+
+KVSO_CLASS_FUNCTION(spinbox,setSpecialValueText)
+{
+	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QSpinBox *)widget())->setSpecialValueText(szText);
+	((QSpinBox *)widget())->setSpecialValueText(szText);
 	return true;
 }
-bool KviKvsObject_spinbox::functionsetPrefix(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,setPrefix)
 {
-	
+	CHECK_INTERNAL_POINTER(widget())	
 	QString szPrefix;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szPrefix)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QSpinBox *)widget())->setPrefix(szPrefix);
+	((QSpinBox *)widget())->setPrefix(szPrefix);
 	return true;
 }
-bool KviKvsObject_spinbox::functionsetSuffix(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,setSuffix)
 {
-	
+	CHECK_INTERNAL_POINTER(widget())	
 	QString szSuffix;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szSuffix)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QSpinBox *)widget())->setSuffix(szSuffix);
+	((QSpinBox *)widget())->setSuffix(szSuffix);
 	return true;
 }
 
-bool KviKvsObject_spinbox::functionvalueChangedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(spinbox,valueChangedEvent)
 {
 	emitSignal("valueChanged",c,c->params());
 	return true;
