@@ -75,8 +75,8 @@ static QColor g_clrFind(0,0,0);
 static QFont g_fntNormal("Courier New",8);
 
 
-
-
+static bool bSemaphore=false;
+static bool bCompleterReady=false;
 
 
 KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
@@ -92,15 +92,26 @@ KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
 	m_pCompleter = 0;
 	QStringList szListFunctionsCommands;
 	QString tmp("kvscompleter.idx");
-
+	iModulesCount=0;
+	iIndex=0;
 	QString szPath;
 	g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,tmp);
+	
 	if(!KviFileUtils::fileExists(szPath))
 	{
-		m_pStartTimer = new QTimer();
-		m_pStartTimer->setInterval(500);
-		connect(m_pStartTimer,SIGNAL(timeout()),this,SLOT(asyncCompleterCreation()));
-		m_pStartTimer->start(500);
+		if (!bSemaphore){
+			bSemaphore=true;
+			m_pStartTimer = new QTimer();
+			m_pStartTimer->setInterval(1000);
+			connect(m_pStartTimer,SIGNAL(timeout()),this,SLOT(asyncCompleterCreation()));
+			m_pStartTimer->start(500);
+		}
+		else{
+			m_pStartTimer = new QTimer();
+			m_pStartTimer->setInterval(2000);
+			connect(m_pStartTimer,SIGNAL(timeout()),this,SLOT(checkReadyCompleter()));
+			m_pStartTimer->start(1000);
+		}
 	} else loadCompleterFromFile();
 }
 
@@ -109,12 +120,21 @@ KviScriptEditorWidget::~KviScriptEditorWidget()
 	if(m_pCompleter)
 		delete m_pCompleter;
 }
-
+void KviScriptEditorWidget::checkReadyCompleter()
+{
+	if(bCompleterReady)
+	{
+		m_pStartTimer->stop();
+		delete m_pStartTimer;
+		m_pStartTimer=0;
+		loadCompleterFromFile();
+	}
+}
 
 void KviScriptEditorWidget::asyncCompleterCreation()
 {
-	static int iIndex = 0;
-	static int iModulesCount = 0;
+	//static int iIndex = 0;
+	//static int iModulesCount = 0;
 	if(!iIndex)
 	{
 		m_pListCompletition = new QStringList();
@@ -130,10 +150,6 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 #endif
 		m_pListModulesNames = new QStringList(d.entryList(QDir::Files | QDir::Readable));
 		iModulesCount = m_pListModulesNames->count();
-	}
-	if (!m_pListModulesNames)
-	{
-		return;
 	}
 	QString szModuleName = m_pListModulesNames->at(iIndex);
 	iIndex++;
@@ -172,6 +188,7 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 		createCompleter(*m_pListCompletition);
 		iIndex = 0;
 		iModulesCount = 0;
+		bCompleterReady=true;
 		delete m_pListCompletition;
 		delete m_pListModulesNames;
 	}
@@ -545,7 +562,8 @@ KviScriptEditorSyntaxHighlighter::KviScriptEditorSyntaxHighlighter(KviScriptEdit
 	
 	// FIX-ME: "function ..." - "function internal ..."
 	// FIX-ME: "@$"
-	// FIX-ME: # comment
+	// FIX-ME: "\" escape char
+	// FIX-ME: comment multiline with empty line
 	updateSyntaxtTextFormat();
 
 	KviScriptHighlightingRule rule;
@@ -614,39 +632,28 @@ void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 {
 	if(szText.isEmpty()) return;
-	int start=0, lastsimplechar=-1;
+	int iIndexStart=0;
 
-	// skip tabulations
-	while(start < szText.size())
+	// skip tabulations and spaces
+	while(iIndexStart < szText.size())
 	{
-		if(szText.at(start).unicode()=='\t')
+		if(szText.at(iIndexStart).unicode()=='\t' || szText.at(iIndexStart).unicode()==' ')
 		{
-			start++;
+			iIndexStart++;
 		} else {
 			break;
 		}
 	}
-
+	if (iIndexStart == szText.size()) return;
 	// check 'commands'
-
-	while(start < szText.size())
-	{
-		if(	szText.at(start).unicode()=='$' ||
-			szText.at(start).unicode()=='{' ||
-			szText.at(start).unicode()=='}' )
+	int iCommandStart=iIndexStart;
+	if (szText.at(iIndexStart).unicode()!='$' && szText.at(iIndexStart).unicode()!='{' && szText.at(iIndexStart).unicode()!='}' && szText.at(iIndexStart).unicode()!='%') 
+    { 
+		while(iIndexStart<szText.size() && (szText.at(iIndexStart).isLetterOrNumber() || (szText.at(iIndexStart).unicode() == '.') || (szText.at(iIndexStart).unicode() == '_') || (szText.at(iIndexStart).unicode()== ':') ))
 		{
-			if(lastsimplechar > -1)
-				setFormat(0,lastsimplechar,keywordFormat);
-			break;
-		} else if( szText.at(start).unicode() &&
-				( szText.at(start).isLetterOrNumber() ||
-				  szText.at(start).unicode() == '.' ||
-				  szText.at(start).unicode() == '_' ||
-				  szText.at(start).unicode()== ':' ) )
-		{
-			lastsimplechar = start;
+			iIndexStart++; 
 		}
-		start++;
+ 	         setFormat(iCommandStart,iIndexStart-iCommandStart,keywordFormat); 
 	}
 
 	// code from QT4 example
@@ -656,13 +663,14 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 		QRegExp expression(rule.pattern);
 		QString sz=expression.pattern();
 
-	        index = szText.indexOf(expression,start);
-	        while (index >= 0)
+	    index = szText.indexOf(expression,iIndexStart);
+		
+	    while (index >= 0)
 		{
 			int length = expression.matchedLength();
-			setFormat(index, length, rule.format);
+			setFormat(index, length, rule.format);		
 			index = szText.indexOf(expression, index + length);
-        	}
+        }
 	}
 
 	setCurrentBlockState(0);
@@ -848,8 +856,8 @@ void KviScriptEditorImplementation::saveToFile()
 	QString szFileName;
 	if(KviFileDialog::askForSaveFileName(szFileName,
 		__tr2qs_ctx("Choose a Filename - KVIrc","editor"),
-		QString(),
-		QString(),false,true,true))
+		QString::null,
+		QString::null,false,true,true))
 	{
 		QString szBuffer = m_pEditor->toPlainText();
 
@@ -929,7 +937,7 @@ void KviScriptEditorImplementation::loadFromFile()
 	QString szFileName;
 	if(KviFileDialog::askForOpenFileName(szFileName,
 		__tr2qs_ctx("Load Script File - KVIrc","editor"),
-		QString(),KVI_FILTER_SCRIPT,false,true))
+		QString::null,KVI_FILTER_SCRIPT,false,true))
 	{
 		QString szBuffer;
 		if(KviFileUtils::loadFile(szFileName,szBuffer))
@@ -1046,3 +1054,4 @@ void KviScriptEditorReplaceDialog::slotNextFind()
 {
 	emit nextFind(m_pFindLineEdit->text());
 }
+

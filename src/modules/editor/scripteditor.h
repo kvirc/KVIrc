@@ -61,10 +61,12 @@ protected:
 	QStringList * m_pListCompletition;
 	QTimer      * m_pStartTimer;
 	QWidget     * m_pParent;
+	int iIndex,iModulesCount;
 	QString       m_szHelp;
 public:
 	KviScriptEditorSyntaxHighlighter * syntaxHighlighter(){return m_pSyntaxHighlighter;};
 	void createCompleter(QStringList &list);
+	
 	void loadCompleterFromFile();
 	QCompleter * completer() const { return m_pCompleter; };
 	QString textUnderCursor() const;
@@ -72,6 +74,7 @@ public:
 	//void find1();
 	bool contextSensitiveHelp() const;
 public slots:
+	void checkReadyCompleter();
 	void insertCompletion(const QString & szCompletion);
 	void slotFind();
 	void slotHelp();
