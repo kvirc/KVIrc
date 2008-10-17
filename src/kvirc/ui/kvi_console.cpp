@@ -635,12 +635,18 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 	QRegExp rgxHlite;
 	if(KVI_OPTION_BOOL(KviOption_boolAlwaysHighlightNick) && connection())
 	{
-		rgxHlite.setPattern(
-			// The second alternative in first parentheses may seem unnecessary, but regexp does not work without it
-			QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(
-				QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())
-			)
-		);
+		if(!szPattern.isEmpty())
+			rgxHlite.setPattern(
+				QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(
+					QRegExp::escape(szPattern), QRegExp::escape(connection()->userInfo()->nickName())
+				)
+			);
+		else
+			rgxHlite.setPattern(
+				QString("(?:\\s|^)%1(?:\\s|$)").arg(
+					QRegExp::escape(connection()->userInfo()->nickName())
+				)
+			);
 		rgxHlite.setCaseSensitive(false);
 		if(szStripMsg.contains(rgxHlite))
 			return triggerOnHighlight(wnd,type,nick,user,host,szMsg,connection()->userInfo()->nickName());
@@ -653,11 +659,18 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 		{
 			if((*it).isEmpty())
 				continue;
-			rgxHlite.setPattern(
-			QString("(?:[%1]|\\b|^)%2(?:[%1]|\\b|$)").arg(
-				QRegExp::escape(szPattern), QRegExp::escape(*it)
-				)
-			);
+			if(!szPattern.isEmpty())
+				rgxHlite.setPattern(
+				QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(
+					QRegExp::escape(szPattern), QRegExp::escape(*it)
+					)
+				);
+			else
+				rgxHlite.setPattern(
+				QString("(?:\\s|^)%1(?:\\s|$)").arg(
+					QRegExp::escape(*it)
+					)
+				);
 			rgxHlite.setCaseSensitive(false);
 			if(szStripMsg.contains(rgxHlite))
 			{
