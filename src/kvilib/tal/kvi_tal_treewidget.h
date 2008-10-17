@@ -47,6 +47,8 @@ public:
 	inline KviTalTreeWidgetItem* topLevelItem(int i) { return (KviTalTreeWidgetItem*) QTreeWidget::topLevelItem(i); }
 signals:
 	void currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *);
+	void selectionChanged();
+
 	void itemActivated(KviTalTreeWidgetItem *,int);
 	void itemChanged(KviTalTreeWidgetItem *,int);
 	void itemClicked(KviTalTreeWidgetItem *,int);
@@ -58,6 +60,7 @@ signals:
 	void itemPressed(KviTalTreeWidgetItem *,int);
 
 protected slots:
+	void redirect_selectionChanged();
 	void redirect_currentItemChanged(QTreeWidgetItem *pItemCurr,QTreeWidgetItem *pItemPrev);
 	void redirect_itemActivated(QTreeWidgetItem *pItem,int col);
 	void redirect_itemChanged(QTreeWidgetItem *pItem,int col);

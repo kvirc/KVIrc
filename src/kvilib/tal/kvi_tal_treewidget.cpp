@@ -39,6 +39,8 @@ KviTalTreeWidget::KviTalTreeWidget(QWidget * pParent)
 {
   	connect(this,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(redirect_currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	connect(this,SIGNAL(itemActivated(QTreeWidgetItem *,int)),this,SLOT(redirect_itemActivated(QTreeWidgetItem *,int)));
+	connect(this,SIGNAL(selectionChanged()),this,SLOT(redirect_selectionChanged()));
+
 	connect(this,SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(redirect_itemChanged(QTreeWidgetItem *,int)));
 	connect(this,SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(redirect_itemClicked(QTreeWidgetItem *,int)));
 	connect(this,SIGNAL(itemCollapsed(QTreeWidgetItem *)),this,SLOT(redirect_itemCollapsed(QTreeWidgetItem *)));
@@ -56,6 +58,10 @@ void KviTalTreeWidget::redirect_currentItemChanged(QTreeWidgetItem *pItemCurr,QT
 void KviTalTreeWidget::redirect_itemActivated(QTreeWidgetItem *pItem,int col)
 {
 	emit itemActivated((KviTalTreeWidgetItem *)pItem,col);
+}
+void KviTalTreeWidget::redirect_selectionChanged()
+{
+	emit selectionChanged();
 }
 
 void KviTalTreeWidget::redirect_itemChanged(QTreeWidgetItem *pItem,int col)
