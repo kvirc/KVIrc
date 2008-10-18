@@ -369,7 +369,8 @@ KviTreeWindowList::KviTreeWindowList()
 : KviWindowListBase()
 {
 	m_pTreeWidget = new KviTreeWindowListTreeWidget(this);
-	m_pTreeWidget->addColumn(__tr2qs("Window List"),135);
+	m_pTreeWidget->setHeaderLabel(__tr2qs("Window List"));
+	m_pTreeWidget->setColumnWidth(0,135);
 	setWidget(m_pTreeWidget);
 
 	//ad-hoc itemdelegate for this view

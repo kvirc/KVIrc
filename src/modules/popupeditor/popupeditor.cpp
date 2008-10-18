@@ -1029,7 +1029,7 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 	KviTalVBox * box = new KviTalVBox(spl);
 
 	m_pTreeWidget = new KviTalTreeWidget(box);
-	m_pTreeWidget->addColumn(__tr2qs("Popup"));
+	m_pTreeWidget->setHeaderLabel(__tr2qs("Popup"));
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pTreeWidget->header()->setSortIndicatorShown(true);
 

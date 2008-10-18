@@ -64,7 +64,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	QGridLayout * g = new QGridLayout(this);
 	
 	m_pTreeWidget = new KviTalTreeWidget(this);
-	m_pTreeWidget->addColumn(__tr2qs("Channel"));
+	m_pTreeWidget->setHeaderLabel(__tr2qs("Channel"));
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	g->addWidget(m_pTreeWidget,0,0,1,2);
@@ -161,7 +161,8 @@ void KviChannelsJoinWindow::fillListView()
 
 	m_pTreeWidget->header()->hide();
 
-	KviTalTreeWidgetItem * par = new KviTalTreeWidgetItem(m_pTreeWidget,__tr2qs("Recent Channels"));
+	KviTalTreeWidgetItem * par = new KviTalTreeWidgetItem(m_pTreeWidget);
+	par->setText(0,__tr2qs("Recent Channels"));
 	par->setExpanded(true);
 	KviTalTreeWidgetItem * chld;
 	
@@ -172,13 +173,15 @@ void KviChannelsJoinWindow::fillListView()
 		{
 			for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
 			{
-				chld = new KviTalTreeWidgetItem(par,*it);
+				chld = new KviTalTreeWidgetItem(par);
+				chld->setText(0,*it);
 				chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			}
 		}
 	}
 
-	par = new KviTalTreeWidgetItem(m_pTreeWidget,__tr2qs("Registered Channels"));
+	par = new KviTalTreeWidgetItem(m_pTreeWidget);
+	par->setText(0,__tr2qs("Registered Channels"));
 	par->setExpanded(true);
 
 	KviPointerHashTable<const char *,KviRegisteredChannelList> * d = g_pRegisteredChannelDataBase->channelDict();
@@ -187,7 +190,8 @@ void KviChannelsJoinWindow::fillListView()
 		KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*d);
 		while(it.current())
 		{
-			chld = new KviTalTreeWidgetItem(par,it.currentKey());
+			chld = new KviTalTreeWidgetItem(par);
+			chld->setText(0,it.currentKey());
 			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			++it;
 		}

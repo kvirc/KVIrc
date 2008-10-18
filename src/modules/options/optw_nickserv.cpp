@@ -276,10 +276,16 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 
 	if(rs && rs->rules())
 	{
+		KviTalTreeWidgetItem *it;
 		KviPointerList<KviNickServRule> * ll = rs->rules();
 		for(KviNickServRule * rule = ll->first();rule;rule = ll->next())
 		{
-			(void)new KviTalTreeWidgetItem(m_pNickServTreeWidget,rule->registeredNick(),rule->serverMask(),rule->nickServMask(),rule->messageRegexp(),rule->identifyCommand());
+			it = new KviTalTreeWidgetItem(m_pNickServTreeWidget);
+			it->setText(0,rule->registeredNick());
+			it->setText(1,rule->serverMask());
+			it->setText(2,rule->nickServMask());
+			it->setText(3,rule->messageRegexp());
+			it->setText(4,rule->identifyCommand());
 		}
 	}
 
@@ -313,7 +319,14 @@ void KviNickServOptionsWidget::addNickServRule()
 	KviNickServRule r;
 	KviNickServRuleEditor ed(this,true);
 	if(ed.editRule(&r))
-		(void)new KviTalTreeWidgetItem(m_pNickServTreeWidget,r.registeredNick(),r.serverMask(),r.nickServMask(),r.messageRegexp(),r.identifyCommand());
+	{
+		KviTalTreeWidgetItem* it = new KviTalTreeWidgetItem(m_pNickServTreeWidget);
+		it->setText(0,r.registeredNick());
+		it->setText(1,r.serverMask());
+		it->setText(2,r.nickServMask());
+		it->setText(3,r.messageRegexp());
+		it->setText(4,r.identifyCommand());
+	}
 }
 
 void KviNickServOptionsWidget::delNickServRule()

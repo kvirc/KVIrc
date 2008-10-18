@@ -175,7 +175,6 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 
 	// Controlling list view
 	m_pTreeWidget = new KviTalTreeWidget(vbox);
-	m_pTreeWidget->addColumn("");
 
 	m_pTreeWidget->header()->hide();
 	m_pTreeWidget->setRootIsDecorated(true);

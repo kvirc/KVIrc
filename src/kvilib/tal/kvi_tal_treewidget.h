@@ -42,8 +42,6 @@ public:
 	KviTalTreeWidget(QWidget * pParent);
 	virtual ~KviTalTreeWidget() {};
 public:
-	void addColumn(const QString label){ setHeaderLabel(label); };
-	void addColumn(const QString label, const int width ){ setHeaderLabel(label); setColumnWidth(0, width); };
 	inline KviTalTreeWidgetItem* topLevelItem(int i) { return (KviTalTreeWidgetItem*) QTreeWidget::topLevelItem(i); }
 signals:
 	void currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *);
@@ -87,46 +85,6 @@ public:
 	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent, KviTalTreeWidgetItem * preceding)
 	: QTreeWidgetItem(pParent, preceding) {};
 
-	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent,const QString &szLabel, const QString &szLabel1 = QString(), const QString &szLabel2 = QString(), const QString &szLabel3 = QString(), const QString &szLabel4 = QString())
-	: QTreeWidgetItem(pParent) {
-		setText(0,szLabel);
-		if(!szLabel1.isEmpty())
-		{
-			setText(1,szLabel1);
-			if(!szLabel2.isEmpty())
-			{
-				setText(2,szLabel2);
-				if(!szLabel3.isEmpty())
-				{
-					setText(3,szLabel3);
-					if(!szLabel4.isEmpty())
-					{
-						setText(4,szLabel4);
-					}
-				}
-			}
-		}
-	};
-	KviTalTreeWidgetItem(KviTalTreeWidget * pParent,const QString &szLabel, const QString &szLabel1 = QString(), const QString &szLabel2 = QString(), const QString &szLabel3 = QString(), const QString &szLabel4 = QString())
-	: QTreeWidgetItem(pParent) {
-		setText(0,szLabel);
-		if(!szLabel1.isEmpty())
-		{
-			setText(1,szLabel1);
-			if(!szLabel2.isEmpty())
-			{
-				setText(2,szLabel2);
-				if(!szLabel3.isEmpty())
-				{
-					setText(3,szLabel3);
-					if(!szLabel4.isEmpty())
-					{
-						setText(4,szLabel4);
-					}
-				}
-			}
-		}
-	};
 	virtual ~KviTalTreeWidgetItem() {};
 	int compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const
 	{

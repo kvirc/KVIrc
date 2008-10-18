@@ -219,8 +219,13 @@ void KviLinksWindow::endOfLinks()
 	m_pListView->setUpdatesEnabled(false);
 	for(KviLink *l=m_pLinkList->first();l;l=m_pLinkList->next()){
 		totalHosts++;
-		if(l->hops == 0)root = new KviTalTreeWidgetItem(m_pListView,QString(l->host.ptr()),QString("0"),QString(l->description.ptr()));
-		else {
+		if(l->hops == 0)
+		{
+			root = new KviTalTreeWidgetItem(m_pListView);
+			root->setText(0,QString(l->host.ptr()));
+			root->setText(1,QString("0"));
+			root->setText(2,QString(l->description.ptr()));
+		} else {
 			totalHops += l->hops;
 			if(l->hops < 4){
 				nearLinks++;
@@ -237,17 +242,26 @@ void KviLinksWindow::endOfLinks()
 			}
 			if(l->host.contains('*'))wildServers++;
 			it = insertLink(l);
-			if(!it){
+			if(!it)
+			{
 				output(KVI_OUT_SYSTEMERROR,__tr2qs("Broken link: Missing parent (%s) for %s (%d hops): %s (used /LINKS <mask> ?)"),
 					l->parent.ptr(),l->host.ptr(),l->hops,l->description.ptr());
 				brokenLinks++;
 				QString tmp;
 				KviQString::sprintf(tmp,__tr2qs("%s: Parent link %s"),l->description.ptr(),l->parent.ptr());
 				KviStr tmp2(KviStr::Format,"%d",l->hops);
-				if(root)it = new KviTalTreeWidgetItem(root,QString(l->host.ptr()),QString(tmp2.ptr()),tmp);
-				else {
+				if(root)
+				{
+					it = new KviTalTreeWidgetItem(root);
+					it->setText(0,QString(l->host.ptr()));
+					it->setText(1,QString(tmp2.ptr()));
+					it->setText(2,tmp);
+				} else {
 					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: No root link was sent by the server, the stats may be invalid."));
-					it = new KviTalTreeWidgetItem(m_pListView,QString(l->host.ptr()),QString(tmp2.ptr()),tmp);
+					it = new KviTalTreeWidgetItem(m_pListView);
+					it->setText(0,QString(l->host.ptr()));
+					it->setText(1,QString(tmp2.ptr()));
+					it->setText(2,tmp);
 				}
 			} else {
 				it = (KviTalTreeWidgetItem*) it->parent();
@@ -317,10 +331,15 @@ KviTalTreeWidgetItem * KviLinksWindow::insertLink(KviLink *l)
 	__range_valid(l->hops > 0);
 	KviTalTreeWidgetItem * i = getItemByHost(l->parent.ptr(),0);
 	KviTalTreeWidgetItem * it = 0;
-	if(!i)return 0;
-	else {
+	if(!i)
+	{
+		return 0;
+	} else {
 		KviStr hops(KviStr::Format,"%d",l->hops);
-		it = new KviTalTreeWidgetItem(i,QString(l->host.ptr()),QString(hops.ptr()),QString(l->description.ptr()));
+		it = new KviTalTreeWidgetItem(i);
+		it->setText(0,QString(l->host.ptr()));
+		it->setText(1,QString(hops.ptr()));
+		it->setText(2,QString(l->description.ptr()));
 		i->setExpanded(true);
 	}
 	return it;

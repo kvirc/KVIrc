@@ -693,11 +693,12 @@ void KviSoundSelector::setEnabled(bool bEnabled)
 }
 
 KviChanTreeViewItem::KviChanTreeViewItem(KviTalTreeWidget* pList,QString szChan,QString szPass)
-:KviTalTreeWidgetItem(pList,szChan)
+:KviTalTreeWidgetItem(pList)
 {
 	m_szPass=szPass;
 	QString mask;
 	mask.fill('*',szPass.length());
+	setText(0,szChan);
 	setText(1,mask);
 }
 

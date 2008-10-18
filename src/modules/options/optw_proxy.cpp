@@ -44,9 +44,10 @@
 
 
 KviProxyOptionsTreeWidgetItem::KviProxyOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,KviProxy * prx)
-: KviTalTreeWidgetItem(parent,prx->m_szHostname)
+: KviTalTreeWidgetItem(parent)
 {
 	debug("Creating item");
+	setText(0,prx->m_szHostname);
 	setIcon(0,QIcon(pm));
 	m_pProxyData = new KviProxy(*prx);
 }
@@ -66,7 +67,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 
 	m_pTreeWidget = new KviTalTreeWidget(this);
 	addWidgetToLayout(m_pTreeWidget,0,1,0,1);
-	m_pTreeWidget->addColumn(__tr2qs_ctx("Proxy","options"));
+	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("Proxy","options"));
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);

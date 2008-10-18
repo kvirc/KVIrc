@@ -69,9 +69,10 @@ class KviRawHandlerTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
 	KviRawHandlerTreeWidgetItem(KviTalTreeWidgetItem * par,const QString & name,const QString & buffer,bool bEnabled)
-	: KviTalTreeWidgetItem(par,name), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled) 
+	: KviTalTreeWidgetItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled) 
 	{
-		setEnabled(bEnabled); 
+		setText(0,name);
+		setEnabled(bEnabled);
 	};
 	~KviRawHandlerTreeWidgetItem() {};
 public:

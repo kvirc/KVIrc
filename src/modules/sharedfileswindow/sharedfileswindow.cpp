@@ -187,8 +187,9 @@ void KviSharedFileEditDialog::okClicked()
 
 
 KviSharedFilesTreeWidgetItem::KviSharedFilesTreeWidgetItem(KviTalTreeWidget * lv,KviSharedFile * f)
-: KviTalTreeWidgetItem(lv,f->name())
+: KviTalTreeWidgetItem(lv)
 {
+	setText(0,f->name());
 	setText(1,f->absFilePath());
 	setText(2,f->userMask());
 	if(f->expires())
