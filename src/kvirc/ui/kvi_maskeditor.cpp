@@ -58,7 +58,8 @@ int KviMaskItem::compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) c
 		if( ((KviMaskItem*)i)->mask()->uSetAt == m_Mask.uSetAt ) return  0;
 		if( ((KviMaskItem*)i)->mask()->uSetAt < m_Mask.uSetAt )  return  1;
 	}
-	return KviTalTreeWidgetItem::compare(i,col,ascending);
+
+	return text(col).localeAwareCompare(i->text(col));
 }
 
 KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEditor,KviChannel * pChannel)

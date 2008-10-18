@@ -25,24 +25,48 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_treewidget.h
+* \author Szymon Stefanek
+* \brief Toolkit Abstraction Layer class
+*/
+
 #include "kvi_settings.h"
-#include "kvi_qstring.h"
 
 #include <QTreeWidget>
-#include <QHeaderView>
 
 class KviTalTreeWidgetItem;
 
+/**
+* \class KviTalTreeWidget
+* \brief Toolkit Abstraction Layer: TreeWidget class
+*/
 
 class KVILIB_API KviTalTreeWidget : public QTreeWidget
 {
 	friend class KviTalTreeWidgetItem;
 	Q_OBJECT
 public:
+	/**
+	* \brief Constructs the treewidget object
+	* \param pParent The parent object
+	* \return KviTalTreeWidget
+	*/
 	KviTalTreeWidget(QWidget * pParent);
+
+	/**
+	* \brief Destroys the treewidget object
+	* \return KviTalTreeWidget
+	*/
 	virtual ~KviTalTreeWidget() {};
 public:
-	inline KviTalTreeWidgetItem* topLevelItem(int i) { return (KviTalTreeWidgetItem*) QTreeWidget::topLevelItem(i); }
+
+	/**
+	* \brief Returns the top level item at index iIndex
+	* \param iIndex Index of the wanted top level item
+	* \return KviTalTreeWidgetItem*
+	*/
+	inline KviTalTreeWidgetItem* topLevelItem(int iIndex) { return (KviTalTreeWidgetItem*) QTreeWidget::topLevelItem(iIndex); }
 signals:
 	void currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *);
 	void selectionChanged();
@@ -74,26 +98,57 @@ protected slots:
 class KVILIB_API KviTalTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviTalTreeWidgetItem()
-	: QTreeWidgetItem() {};
-	KviTalTreeWidgetItem(KviTalTreeWidget * pParent)
-	: QTreeWidgetItem(pParent) {};
-	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent)
-	: QTreeWidgetItem(pParent) {};
-	KviTalTreeWidgetItem(KviTalTreeWidget * pParent, KviTalTreeWidgetItem * preceding)
-	: QTreeWidgetItem(pParent, preceding) {};
-	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent, KviTalTreeWidgetItem * preceding)
-	: QTreeWidgetItem(pParent, preceding) {};
+	/**
+	* \brief Constructs a treewidgetitem object without a parent
+	* \return KviTalTreeWidgetItem
+	*/
+	KviTalTreeWidgetItem(): QTreeWidgetItem() {};
 
+	/**
+	* \brief Constructs a top-level treewidgetitem object
+	* \param pParent The parent TreeWidget
+	* \return KviTalTreeWidgetItem
+	*/
+	KviTalTreeWidgetItem(KviTalTreeWidget * pParent): QTreeWidgetItem(pParent) {};
+
+	/**
+	* \brief Constructs a child treewidgetitem object
+	* \param pParent The parent TreeWidgetItem
+	* \return KviTalTreeWidgetItem
+	*/
+	KviTalTreeWidgetItem(KviTalTreeWidgetItem * pParent): QTreeWidgetItem(pParent) {};
+
+	/**
+	* \brief Constructs a top-level treewidgetitem object, inserting it after an existing treewidgetitem
+	* \param pParent The parent TreeWidget
+	* \param pPreceding The already existing TreeWidgetItem you want the new item to be placed after.
+	* \return KviTalTreeWidgetItem
+	*/
+	KviTalTreeWidgetItem(KviTalTreeWidget * pParent, KviTalTreeWidgetItem * pPreceding): QTreeWidgetItem(pParent, pPreceding) {};
+
+	/**
+	* \brief Destroys the treewidgetitem object
+	* \return KviTalTreeWidgetItem
+	*/
 	virtual ~KviTalTreeWidgetItem() {};
-	int compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const
-	{
-		QString key=text(col);
-		return key.localeAwareCompare(i->text(col));
-	};
+
+	/**
+	* \brief Returns the Treewidget that contains the item
+	* \return KviTalTreeWidget
+	*/
 	inline KviTalTreeWidget* treeWidget() { return (KviTalTreeWidget*) QTreeWidgetItem::treeWidget(); };
+
+	/**
+	* \brief Returns the parent TreewidgetItem
+	* \return KviTalTreeWidgetItem
+	*/
 	inline KviTalTreeWidgetItem* parent() { return (KviTalTreeWidgetItem*) QTreeWidgetItem::parent(); }
-	inline KviTalTreeWidgetItem* child(int i) { return (KviTalTreeWidgetItem*) QTreeWidgetItem::child(i); }
+
+	/**
+	* \brief Returns the child TreewidgetItem at index iIndex
+	* \return KviTalTreeWidgetItem
+	*/
+	inline KviTalTreeWidgetItem* child(int iIndex) { return (KviTalTreeWidgetItem*) QTreeWidgetItem::child(iIndex); }
 };
 
 #endif // _KVI_TAL_TREEWIDGETW_H_

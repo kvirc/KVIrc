@@ -69,7 +69,6 @@ class KVILIB_API KviTalListWidgetText : public KviTalListWidgetItem
 public:
 	KviTalListWidgetText(KviTalListWidget* listbox, const QString & text=QString());
 	KviTalListWidgetText(const QString & text=QString());
-// 	KviTalListWidgetText(KviTalListWidget* listbox, const QString & text, KviTalListWidgetItem *after);
 	~KviTalListWidgetText();
 	
 	int height(const KviTalListWidget *) const;
@@ -91,10 +90,8 @@ class KVILIB_API KviTalListWidgetPixmap : public KviTalListWidgetItem
 public:
 	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &);
 	KviTalListWidgetPixmap(const QPixmap &);
-// 	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap & pix, KviTalListWidgetItem *after);
 	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &, const QString&);
 	KviTalListWidgetPixmap(const QPixmap &, const QString&);
-// 	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap & pix, const QString&, KviTalListWidgetItem *after);
 	~KviTalListWidgetPixmap();
 	
 	const QPixmap *pixmap() const { return &pm; }
