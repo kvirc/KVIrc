@@ -1669,6 +1669,10 @@ void KviInputEditor::completion(bool bShift)
 			return;
 		}
 	}
+	int iOffset;
+	if(KviQString::equalCI(m_szTextBuffer.left(5),"/help") || KviQString::equalCI(m_szTextBuffer.left(5),"/help.open")) iOffset=1;
+	else iOffset=0;
+	
 	KviPointerList<QString> tmp;
 	tmp.setAutoDelete(true);
 
@@ -1678,12 +1682,20 @@ void KviInputEditor::completion(bool bShift)
 
 	unsigned short uc = szWord[0].unicode();
 
-	if(uc == '/')
+
+	if(uc == '/' || iOffset)
 	{
-		if(bFirstWordInLine)
+		if(szWord[1-iOffset].unicode()=='$')
+		{
+			// function/identifer completion
+			szWord.remove(0,2-iOffset);
+			if(szWord.isEmpty()) return;
+			KviKvsKernel::instance()->completeFunction(szWord,&tmp);
+		}
+		else if(bFirstWordInLine || iOffset)
 		{
 			// command completion
-			szWord.remove(0,1);
+			szWord.remove(0,1-iOffset);
 			if(szWord.isEmpty())return;
 			KviKvsKernel::instance()->completeCommand(szWord,&tmp);
 			bIsCommand = true;
