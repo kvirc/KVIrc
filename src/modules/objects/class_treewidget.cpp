@@ -43,6 +43,7 @@
 #include <QEvent>
 #include <QDragEnterEvent>
 #include <QDropEvent>
+#include <QHeaderView>
 #include <QUrl>
 
 /*

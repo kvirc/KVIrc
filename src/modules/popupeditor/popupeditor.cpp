@@ -43,6 +43,7 @@
 
 #include <QMessageBox>
 #include <QDir>
+#include <QHeaderView>
 #include <QSplitter>
 #include <QLayout>
 #include <QLabel>
@@ -57,14 +58,14 @@ extern KviPopupEditorWindow * g_pPopupEditorWindow;
 
 //KviPopupEntryItem
 KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviTalTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t)
-: KviTalTreeWidgetItem(pTreeWidget,after)
+: KviTalTreeWidgetItem((KviTalTreeWidget*) pTreeWidget, (KviTalTreeWidgetItem*)after)
 {
 	m_type = t;
 	init();
 }
 
 KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviPopupTreeWidgetItem * parent,KviPopupTreeWidgetItem * after,Type t)
-: KviTalTreeWidgetItem(parent,after)
+: KviTalTreeWidgetItem((KviTalTreeWidget*) parent,(KviTalTreeWidgetItem*)after)
 {
 	m_type = t;
 	init();

@@ -43,6 +43,7 @@
 #include <QMessageBox>
 #include <QCursor>
 #include <QDateTime>
+#include <QHeaderView>
 #include <QTextStream>
 #include <QMouseEvent>
 

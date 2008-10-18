@@ -42,6 +42,7 @@
 #include <QToolTip>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QHeaderView>
 
 extern KviPointerList<KviLinksWindow> * g_pLinksWindowList;
 

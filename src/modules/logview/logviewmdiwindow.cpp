@@ -45,6 +45,7 @@
 #include <QFileInfo>
 #include <QDir>
 #include <QCursor>
+#include <QHeaderView>
 #include <QLayout>
 #include <QPushButton>
 #include <QProgressDialog>
