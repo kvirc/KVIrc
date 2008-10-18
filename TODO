@@ -1,50 +1,15 @@
 Update TODO file, if something is implemented, it should be removed in the TODO file.
 Mantain TODO file as clear as possible
 
-- Pragma should read this file :D
 - Events, events, events. There are lots of them pending (see TODO.Events).
 - Multiple identities (and identity associations for servers)
-- Port the speech module!
 - /timer as a module
 - It would be cool if KVIrc could to delete old log files automatically 
 	(configurable, of course), to avoid disk ocupation. For example, delete (or 
 	move to trash) 15-days old log files automatically (configurable by user).
 - html colored logs (with icons ? configurable with an option)
-- Check away status from the /WHO message ? (this would involve requesting WHO often)
-- Handle more uncommon channel modes in the channel mode box ?
   SHould get the available modes from RPL_ISUPPORT and show them in the box
-- On-line charset guessing:
-	KviWindow should have the possibility of setting a KVI_CHARSET_AUTO
-	The KviWindow::decodeText() should contain an algorithm that
-	would use the best "guess" charset based on the window output
-	history , the actually detected charset and the text to decode
-
-	/charset ISO-8859-15
-- When user clicks search in the help window there should be some kind of
-	notification when the search starts... The way it is now you can't tell if the
-	search button even worked, until the search process is finished
-- Channel mode-field
-	The channel mode field should be dynamical, it should be able to change width according to what it needs,
-	today it's way too long.
-- Userlist
-	The userlist should be dynamical after how many characters the server lets you use in a nickname, today it's
-	way too wide, this makes it look ugly.
-- Text-hints
-	Text hints doesn't dissapear after changing desktop under KDE, and you have to change back to the
-	desktop where KVIrc is to remove the hint.
 - CService support
 	We already have nickserv support, why not CService/X support? This should be much much easier to
 	implement as it's only on one net (Undernet), and with a static host and command that never changes, we
 	only need to specify password.
-- Option to save & restore sessions (session = opened irc connections, channels & queries)
-- Group messages:
-         * Add predefined groups
-         
-         As kvirc3 now supports the ability to send msg's to more than one person at
-         a time, I would have liked to see
-         a way of making predefined groups.  For example if I often send the same msg
-         to both user1, user3, user9 and
-         user31, then I would like to add these to a group called "Friends", and then
-         just do a "/gquery Friends hi :) what's up?"
-
-- Add commands for playing PCM WAV files (using the DCC voice code).
