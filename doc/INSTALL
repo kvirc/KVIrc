@@ -85,8 +85,8 @@ General notes for the installation of the 4.0 release of KVIrc
 
     On my system the output is:
 
-    # QMake version 2.01a
-    # Using Qt version 4.3.4 in /usr/lib/qt4/lib
+    QMake version 2.01a
+    Using Qt version 4.4.1 in /usr/lib/qt4/lib
 
 
     #
@@ -100,7 +100,7 @@ General notes for the installation of the 4.0 release of KVIrc
 
     On my system the ouput is:
 
-    # cmake version 2.4-patch 8
+    # cmake version 2.6-patch 1
 
 
     #
@@ -116,14 +116,14 @@ General notes for the installation of the 4.0 release of KVIrc
 
     The output on my system is:
 
-    # Reading specs from /usr/lib/gcc/i486-slackware-linux/4.2.3/specs
-    # Target: i486-slackware-linux
-    # Configured with: ../gcc-4.2.3/configure --prefix=/usr --enable-shared
-      --enable-languages=ada,c,c++,fortran,java,objc --enable-threads=posix
-      --enable-__cxa_atexit --disable-checking --with-gnu-ld --verbose
-      --with-arch=i486 --target=i486-slackware-linux --host=i486-slackware-linux
-    # Thread model: posix
-    # gcc version 4.2.3
+    Reading specs from /usr/lib/gcc/i486-slackware-linux/4.2.4/specs
+    Target: i486-slackware-linux
+    Configured with: ../gcc-4.2.4/configure --prefix=/usr --enable-shared
+    --enable-languages=ada,c,c++,fortran,java,objc --enable-threads=posix
+    --enable-__cxa_atexit --disable-checking --with-gnu-ld --verbose
+    --with-arch=i486 --target=i486-slackware-linux --host=i486-slackware-linux
+    Thread model: posix
+    gcc version 4.2.4
 
 
     #
@@ -293,6 +293,9 @@ General notes for the installation of the 4.0 release of KVIrc
     -DDEBUG
         Compiles the executable with debug symbols.
         Useful to report bugs.
+
+    -DWITH_DEBUG
+        Alias of -DDEBUG flag.
 
     -DVERBOSE
         Generate verbose output when compiling.
@@ -505,7 +508,7 @@ COMPILE_XSS_SUPPORT
 # 6. Compiling on MacOS X
 ###############################################################################
 
-    There is a detailed compilation and installation HOWTO for MacOSX systems
+    There is a detailed compilation and installation HOWTO for MacOS X systems
     located in the doc directory. It's named INSTALL-MacOS.txt
 
 ###############################################################################
