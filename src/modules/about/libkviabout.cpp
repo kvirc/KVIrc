@@ -56,6 +56,7 @@ static bool about_kvs_command_kvirc(KviKvsModuleCommandCall *)
 		g_pAboutDialog->show();
 	} else {
 		g_pAboutDialog->raise();
+		g_pAboutDialog->show();
 	}
 	return true;
 }
