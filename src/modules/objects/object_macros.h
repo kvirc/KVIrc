@@ -105,4 +105,21 @@ g_pKvs##__className##Class->registerFunctionHandler(#__szName,(KviKvsObjectFunct
 		c->error(__tr2qs_ctx("Internal error: no valid pointer for this object","objects")); \
 		return false; \
 	}
+#define CHECK_HOBJECT_IS_WIDGET(__pObject)\
+if (__pObject)\
+	{\
+		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));\
+		return true;\
+	}\
+	if (!__pObject->object())\
+	{\
+		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));\
+		return true;\
+	}\
+	if(!__pObject->object()->isWidgetType())\
+	{\
+		c->warning(__tr2qs_ctx("Widget object requires","objects"));\
+		return true;\
+	}
 #endif
+

@@ -61,10 +61,10 @@
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbar,"toolbar","object")
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbar,"addSeparator", functionaddSeparator)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbar,"setLabel", functionsetLabel)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbar,"label", functionlabel)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbar,"clear", functionclear)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbar,addSeparator)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbar,setLabel)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbar,label)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbar,clear)
 KVSO_END_REGISTERCLASS(KviKvsObject_toolbar)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_toolbar,KviKvsObject_widget)
@@ -80,7 +80,7 @@ bool KviKvsObject_toolbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 {
 	if (!parentObject())
 	{	
-		pContext->warning(__tr2qs("the toolbar cannot be a parent-widget!"));
+		pContext->warning(__tr2qs_ctx("the toolbar cannot be a parent-widget!","objects"));
 		return true;
 	}
 	if(parentObject()->inheritsClass("mainwindow"))
@@ -89,35 +89,38 @@ bool KviKvsObject_toolbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 	}
 	else
 	{
-		pContext->warning(__tr2qs("The parent-widget isn't a MainWindow."));
+		pContext->warning(__tr2qs_ctx("The parent-widget isn't a MainWindow.","objects"));
 	}
 	
 	return true;
 }
 
-bool KviKvsObject_toolbar::functionaddSeparator(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbar,addSeparator)
 {
-	if(widget()) ((KviTalToolBar *)widget())->addSeparator();
+	CHECK_INTERNAL_POINTER(widget())
+	((KviTalToolBar *)widget())->addSeparator();
 	return true;
 }
-bool KviKvsObject_toolbar::functionsetLabel(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbar,setLabel)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szLabel;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((KviTalToolBar *)widget())->setWindowTitle(szLabel);
+	((KviTalToolBar *)widget())->setWindowTitle(szLabel);
 	return true;
 }
-bool KviKvsObject_toolbar::functionlabel(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbar,label)
 {
-	if (widget()) c->returnValue()->setString(((KviTalToolBar *)widget())->windowTitle());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setString(((KviTalToolBar *)widget())->windowTitle());
 	return true;
 }
-bool KviKvsObject_toolbar::functionclear(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbar,clear)
 {
-	if (widget())
-		((KviTalToolBar *)object())->clear();
+	CHECK_INTERNAL_POINTER(widget())
+	((KviTalToolBar *)object())->clear();
 	return true;
 }
 

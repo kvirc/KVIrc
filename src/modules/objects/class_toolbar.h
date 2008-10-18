@@ -37,11 +37,11 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionaddSeparator(KviKvsObjectFunctionCall *c);
-	bool functionsetLabel(KviKvsObjectFunctionCall *c);
-	bool functionlabel(KviKvsObjectFunctionCall *c);
-	bool functionsetStretchableWidget(KviKvsObjectFunctionCall *c);
-	bool functionclear(KviKvsObjectFunctionCall *c);
+	bool addSeparator(KviKvsObjectFunctionCall *c);
+	bool setLabel(KviKvsObjectFunctionCall *c);
+	bool label(KviKvsObjectFunctionCall *c);
+	bool setStretchableWidget(KviKvsObjectFunctionCall *c);
+	bool clear(KviKvsObjectFunctionCall *c);
 };
 
 

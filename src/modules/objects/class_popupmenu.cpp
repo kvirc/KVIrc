@@ -312,22 +312,7 @@ KVSO_CLASS_FUNCTION(popupmenu,exec)
 		KVSO_PARAMETER("y",KVS_PT_UNSIGNEDINTEGER,0,iY)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
-		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs_ctx("Widget parameter is not a widget object","objects"));
-		return true;
-	}
-
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	((QMenu *)widget())->exec(((QWidget *)(pObject->object()))->mapToGlobal(QPoint(iX,iY)) );
 
 	return true;

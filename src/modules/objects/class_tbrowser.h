@@ -39,12 +39,12 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool function_setSource(KviKvsObjectFunctionCall *c);
-	bool function_forward(KviKvsObjectFunctionCall *c);
-	bool function_backward(KviKvsObjectFunctionCall *c);
-	bool function_home(KviKvsObjectFunctionCall *c);
-	bool function_reload(KviKvsObjectFunctionCall *c);
-	bool function_linkClickedEvent(KviKvsObjectFunctionCall *c);
+	bool setSource(KviKvsObjectFunctionCall *c);
+	bool forward(KviKvsObjectFunctionCall *c);
+	bool backward(KviKvsObjectFunctionCall *c);
+	bool home(KviKvsObjectFunctionCall *c);
+	bool reload(KviKvsObjectFunctionCall *c);
+	bool linkClickedEvent(KviKvsObjectFunctionCall *c);
 protected slots:
 	void anchorClicked(const QUrl &);
 };

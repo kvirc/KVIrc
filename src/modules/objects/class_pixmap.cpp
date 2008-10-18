@@ -110,7 +110,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_pixmap)
 KVSO_CLASS_FUNCTION(pixmap,fill)
 {
 	CHECK_INTERNAL_POINTER(m_pPixmap)
-	KviKvsObject *ob;
+	KviKvsObject *pObject;
 	kvs_int_t iXoffset,iYoffset;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -119,19 +119,10 @@ KVSO_CLASS_FUNCTION(pixmap,fill)
 		KVSO_PARAMETER("y_offset",KVS_PT_INT,0,iYoffset)
 	KVSO_PARAMETERS_END(c)
 	
-	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!ob)
-	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
-		return true;
-	}
-	if(!ob->object()->isWidgetType())
-	{
-		c->warning(__tr2qs("Widget object required"));
-		return true;
-	}
+	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	bPixmapModified=true;
-	m_pPixmap->fill(((QWidget *)(ob->object())),iXoffset,iYoffset);
+	m_pPixmap->fill(((QWidget *)(pObject->object())),iXoffset,iYoffset);
 	return true;
 }
 

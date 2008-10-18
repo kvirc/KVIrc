@@ -359,21 +359,7 @@ bool KviKvsObject_textedit::functionAddWidget(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!widget())return true;
-	if (!pObject)
-	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
-		return true;
-	}
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	((QTextEdit *)object())->addScrollBarWidget(((QWidget *)(pObject->object())),Qt::AlignLeft);
 	return true;
 }

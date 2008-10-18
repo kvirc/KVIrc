@@ -67,12 +67,12 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_textbrowser,"textbrowser","multilineedit")
-	KVSO_REGISTER_HANDLER(KviKvsObject_textbrowser,"setSource",function_setSource)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textbrowser,"forward",function_forward)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textbrowser,"backward",function_backward)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textbrowser,"home",function_home)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textbrowser,"reload",function_reload)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textbrowser,"linkClickedEvent",function_linkClickedEvent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,setSource)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,forward)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,backward)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,home)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,reload)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,linkClickedEvent)
 KVSO_END_REGISTERCLASS(KviKvsObject_textbrowser)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_textbrowser,KviKvsObject_textedit)
@@ -91,44 +91,49 @@ bool KviKvsObject_textbrowser::init(KviKvsRunTimeContext * pContext,KviKvsVarian
 	return true;
 }
 
-bool KviKvsObject_textbrowser::function_setSource(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(textbrowser,setSource)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szFile;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szFile)
 	KVSO_PARAMETERS_END(c)
 	if(!QFile::exists(szFile))
 	{
-		c->warning(__tr2qs("I can't find the specified file '%Q'."),&szFile);
+		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
 		return true;
 	}
 	QUrl url;
 	url.setPath(szFile);
-	if (widget()) ((QTextBrowser *)widget())->setSource(url);
+	((QTextBrowser *)widget())->setSource(url);
 	return true;
 }
 
-bool KviKvsObject_textbrowser::function_forward(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(textbrowser,forward)
 {
-	if (widget()) ((QTextBrowser *)widget())->forward();
+	CHECK_INTERNAL_POINTER(widget())
+	((QTextBrowser *)widget())->forward();
 	return true;
 }
 
-bool KviKvsObject_textbrowser::function_backward(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(textbrowser,backward)
 {
-	if (widget()) ((QTextBrowser *)widget())->backward();
+	CHECK_INTERNAL_POINTER(widget())
+	((QTextBrowser *)widget())->backward();
 	return true;
 }
 
-bool KviKvsObject_textbrowser::function_home(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(textbrowser,home)
 {
-	if (widget()) ((QTextBrowser *)widget())->home();
+	CHECK_INTERNAL_POINTER(widget())
+	((QTextBrowser *)widget())->home();
 	return true;
 }
 
-bool KviKvsObject_textbrowser::function_reload(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(textbrowser,reload)
 {
-	if (widget()) ((QTextBrowser *)widget())->reload();
+	CHECK_INTERNAL_POINTER(widget())
+	((QTextBrowser *)widget())->reload();
 	return true;
 }
 
@@ -138,7 +143,7 @@ void KviKvsObject_textbrowser::anchorClicked(const QUrl &url)
 	callFunction(this,"linkClickedEvent",0,&parms);
 }
 
-bool KviKvsObject_textbrowser::function_linkClickedEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(textbrowser,linkClickedEvent)
 {
 	emitSignal("linkClicked",c,c->params());
 	return true;

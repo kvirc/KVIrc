@@ -140,21 +140,7 @@ KVSO_CLASS_FUNCTION(hbox,setStretchFactor)
 		KVSO_PARAMETER("stretch",KVS_PT_UNSIGNEDINTEGER,0,uStretch)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
-		return true;
-	}
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	if(((KviKvsObject_widget *)pObject)->widget()->parentWidget() != widget())
 	{
 		c->warning(__tr2qs("The widget must be a child of this hbox"));
@@ -184,27 +170,12 @@ KVSO_CLASS_FUNCTION(hbox,setAlignment)
 		KVSO_PARAMETER("alignment",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,alignment)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
-		return true;
-	}
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	if(((KviKvsObject_widget *)pObject)->widget()->parentWidget() != widget())
 	{
 		c->warning(__tr2qs("The widget must be a child of this hbox"));
 		return true;
 	}
-
 	int align,sum=0;
 	for ( QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it )
 		{

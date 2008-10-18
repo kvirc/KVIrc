@@ -141,22 +141,7 @@ KVSO_CLASS_FUNCTION(vbox,setStretchFactor)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!widget())return true;
-	if (!pObject)
-	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
-		return true;
-	}
-
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	if(((KviKvsObject_widget *)pObject)->widget()->parentWidget() != widget())
 	{
 		c->warning(__tr2qs("The widget must be a child of this vbox"));
@@ -186,21 +171,7 @@ KVSO_CLASS_FUNCTION(vbox,setAlignment)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!widget())return true;
-	if (!pObject)
-	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
-		return true;
-	}
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	if(((KviKvsObject_widget *)pObject)->widget()->parentWidget() != widget())
 	{
 		c->warning(__tr2qs("The widget must be a child of this hbox"));

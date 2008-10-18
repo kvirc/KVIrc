@@ -38,20 +38,20 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionaddTab(KviKvsObjectFunctionCall *c);
-	bool functioninsertTab(KviKvsObjectFunctionCall *c);
-	bool functionsetTabToolTip(KviKvsObjectFunctionCall *c);
-	bool functionremoveTabToolTip(KviKvsObjectFunctionCall *c);
-	bool functionsetTabLabel(KviKvsObjectFunctionCall *c);
-	bool functionsetCurrentPage(KviKvsObjectFunctionCall *c);
-	bool functioncurrentPageIndex(KviKvsObjectFunctionCall *c);
-	bool functiontabLabel(KviKvsObjectFunctionCall *c);
-	bool functioncurrentTabLabel(KviKvsObjectFunctionCall *c);
-	bool functioncount(KviKvsObjectFunctionCall *c);
-	bool functionchangeTab(KviKvsObjectFunctionCall *c);
-	bool functionCurrentChangedEvent(KviKvsObjectFunctionCall *c);
-	bool functionremovePage(KviKvsObjectFunctionCall *c);
-	bool functionsetTabPosition(KviKvsObjectFunctionCall *c);
+	bool addTab(KviKvsObjectFunctionCall *c);
+	bool insertTab(KviKvsObjectFunctionCall *c);
+	bool setTabToolTip(KviKvsObjectFunctionCall *c);
+	bool removeTabToolTip(KviKvsObjectFunctionCall *c);
+	bool setTabLabel(KviKvsObjectFunctionCall *c);
+	bool setCurrentPage(KviKvsObjectFunctionCall *c);
+	bool currentPageIndex(KviKvsObjectFunctionCall *c);
+	bool tabLabel(KviKvsObjectFunctionCall *c);
+	bool currentTabLabel(KviKvsObjectFunctionCall *c);
+	bool count(KviKvsObjectFunctionCall *c);
+	bool changeTab(KviKvsObjectFunctionCall *c);
+	bool currentChangedEvent(KviKvsObjectFunctionCall *c);
+	bool removePage(KviKvsObjectFunctionCall *c);
+	bool setTabPosition(KviKvsObjectFunctionCall *c);
 
 protected slots:
 	void slotCurrentChanged(int);

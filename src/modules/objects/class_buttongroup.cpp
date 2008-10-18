@@ -82,22 +82,8 @@ KVSO_CLASS_FUNCTION(buttongroup,addButton)
 		KVSO_PARAMETER("button",KVS_PT_HOBJECT,0,hObject)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
-		return true;
-	}
-	if(pObject->inheritsClass("radiobutton") || pObject->inheritsClass("KviKvsObject"))
+	CHECK_HOBJECT_IS_WIDGET(pObject)
+	if(pObject->inheritsClass("radiobutton") || pObject->inheritsClass("checkbox"))
 	{
 		m_pButtonGroup->addButton(((QRadioButton *)(pObject->object())),m_iId);
 		c->returnValue()->setInteger(m_iId);

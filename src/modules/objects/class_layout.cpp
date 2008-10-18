@@ -156,21 +156,7 @@ KVSO_CLASS_FUNCTION(layout,addWidget)
 		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
-		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
-		return true;
-	}
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uRow,uCol);
 	return true;
 }
@@ -189,21 +175,7 @@ KVSO_CLASS_FUNCTION(layout,addMultiCellWidget)
 		KVSO_PARAMETER("end_column",KVS_PT_UNSIGNEDINTEGER,0,uEndCol)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
-		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
-		return true;
-	}
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	// { addWidget(w, fromRow, fromCol, (toRow < 0) ? -1 : toRow - fromRow + 1, (toCol < 0) ? -1 : toCol - fromCol + 1, _align); }
 	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uStartRow, uStartCol,(uEndRow < 0) ? -1 : uEndRow - uStartRow + 1, (uEndCol < 0) ? -1 : uEndCol - uStartCol + 1);
 	return true;
@@ -308,21 +280,7 @@ KVSO_CLASS_FUNCTION(layout,setAlignment)
 		KVSO_PARAMETER("alignment",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,alignment)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
-		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
-		return true;
-	}
-	if (!pObject->object())
-	{
-		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
-		return true;
-	}
-	if(!pObject->object()->isWidgetType())
-	{
-		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
-		return true;
-	}
+	CHECK_HOBJECT_IS_WIDGET(pObject)
 	int index=((QGridLayout *)widget())->indexOf(((QWidget *)(pObject->object())));
 	if(index ==-1)
 	{
