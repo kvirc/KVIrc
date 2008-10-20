@@ -52,6 +52,7 @@
 #include "kvi_out.h"
 #include "kvi_splash.h"
 #include "kvi_nickserv.h"
+#include "kvi_identityprofile.h"
 #include "kvi_xlib.h"
 #include "kvi_garbage.h"
 #include "kvi_texticonmanager.h"
@@ -398,7 +399,6 @@ void KviApp::setup()
 		g_pMediaManager->load(tmp);
 	g_pMediaManager->unlock();
 
-
 	KVI_SPLASH_SET_PROGRESS(82)
 
 	// registered user data base
@@ -426,6 +426,13 @@ void KviApp::setup()
 	g_pNickServRuleSet = new KviNickServRuleSet();
 	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_NICKSERVDATABASE))
 		g_pNickServRuleSet->load(tmp);
+
+	KVI_SPLASH_SET_PROGRESS(87)
+
+	// Identity profiles database
+	KviIdentityProfileSet::init();
+	if(getReadOnlyConfigPath(tmp,KVI_CONFIGFILE_PROFILESDATABASE))
+		KviIdentityProfileSet::instance()->load(tmp);
 
 	KVI_SPLASH_SET_PROGRESS(88)
 
@@ -587,6 +594,8 @@ KviApp::~KviApp()
 	delete g_pRegisteredChannelDataBase;
 	saveNickServ();
 	delete g_pNickServRuleSet;
+	saveIdentityProfiles();
+	KviIdentityProfileSet::done();
 	saveSharedFiles();
 	delete g_pSharedFilesManager;
 	saveAppEvents();
@@ -1274,65 +1283,65 @@ void KviApp::updateApplicationFont()
 
 void KviApp::loadRecentEntries()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_RECENT);
-	KviConfig cfg(tmp,KviConfig::Read);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_RECENT);
+	KviConfig cfg(szTmp,KviConfig::Read);
 	*g_pRecentTopicList = cfg.readStringListEntry("RecentTopicList",QStringList());
 	//*g_pBookmarkList = cfg.readStringListEntry("Bookmarks",QStringList());
 }
 
 void KviApp::saveRecentEntries()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_RECENT);
-	KviConfig cfg(tmp,KviConfig::Write);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_RECENT);
+	KviConfig cfg(szTmp,KviConfig::Write);
 	cfg.writeEntry("RecentTopicList",*g_pRecentTopicList);
 	//cfg.writeEntry("Bookmarks",*g_pBookmarkList);
 }
 
 void KviApp::saveAvatarCache()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_AVATARCACHE);
-	KviAvatarCache::instance()->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_AVATARCACHE);
+	KviAvatarCache::instance()->save(szTmp);
 }
 
 void KviApp::saveToolBars()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_CUSTOMTOOLBARS);
-	KviCustomToolBarManager::instance()->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_CUSTOMTOOLBARS);
+	KviCustomToolBarManager::instance()->save(szTmp);
 }
 
 void KviApp::savePopups()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_POPUPS);
-	KviKvs::savePopups(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_POPUPS);
+	KviKvs::savePopups(szTmp);
 }
 
 void KviApp::saveInputHistory()
 {
 	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))
 	{
-		QString tmp;
-		getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_INPUTHISTORY);
-		KviInputHistory::instance()->save(tmp);
+		QString szTmp;
+		getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_INPUTHISTORY);
+		KviInputHistory::instance()->save(szTmp);
 	}
 }
 
 void KviApp::saveAliases()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_ALIASES);
-	KviKvs::saveAliases(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_ALIASES);
+	KviKvs::saveAliases(szTmp);
 }
 
 void KviApp::saveScriptAddons()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_SCRIPTADDONS);
-	KviKvs::saveScriptAddons(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_SCRIPTADDONS);
+	KviKvs::saveScriptAddons(szTmp);
 }
 
 void KviApp::saveTextIcons()
@@ -1342,81 +1351,88 @@ void KviApp::saveTextIcons()
 
 void KviApp::saveAppEvents()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_EVENTS);
-	KviKvs::saveAppEvents(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_EVENTS);
+	KviKvs::saveAppEvents(szTmp);
 }
 
 void KviApp::saveRawEvents()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_RAWEVENTS);
-	KviKvs::saveRawEvents(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_RAWEVENTS);
+	KviKvs::saveRawEvents(szTmp);
 }
 
 void KviApp::saveMediaTypes()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_MEDIATYPES);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_MEDIATYPES);
 	g_pMediaManager->lock();
-	g_pMediaManager->save(tmp);
+	g_pMediaManager->save(szTmp);
 	g_pMediaManager->unlock();
 }
 
 void KviApp::saveIrcServerDataBase()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_SERVERDB);
-	g_pServerDataBase->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_SERVERDB);
+	g_pServerDataBase->save(szTmp);
 }
 
 void KviApp::saveProxyDataBase()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_PROXYDB);
-	g_pProxyDataBase->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_PROXYDB);
+	g_pProxyDataBase->save(szTmp);
 }
 
 void KviApp::saveRegisteredUsers()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_REGUSERDB);
-	g_pRegisteredUserDataBase->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_REGUSERDB);
+	g_pRegisteredUserDataBase->save(szTmp);
 }
 
 void KviApp::saveRegisteredChannels()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_REGCHANDB);
-	g_pRegisteredChannelDataBase->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_REGCHANDB);
+	g_pRegisteredChannelDataBase->save(szTmp);
 }
 
 void KviApp::saveNickServ()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_NICKSERVDATABASE);
-	g_pNickServRuleSet->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_NICKSERVDATABASE);
+	g_pNickServRuleSet->save(szTmp);
+}
+
+void KviApp::saveIdentityProfiles()
+{
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_PROFILESDATABASE);
+	KviIdentityProfileSet::instance()->save(szTmp);
 }
 
 void KviApp::saveSharedFiles()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_SHAREDFILES);
-	g_pSharedFilesManager->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_SHAREDFILES);
+	g_pSharedFilesManager->save(szTmp);
 }
 
 void KviApp::saveActions()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_USERACTIONS);
-	KviActionManager::instance()->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_USERACTIONS);
+	KviActionManager::instance()->save(szTmp);
 }
 
 void KviApp::saveIdentities()
 {
-	QString tmp;
-	getLocalKvircDirectory(tmp,Config,KVI_CONFIGFILE_IDENTITIES);
-	KviUserIdentityManager::instance()->save(tmp);
+	QString szTmp;
+	getLocalKvircDirectory(szTmp,Config,KVI_CONFIGFILE_IDENTITIES);
+	KviUserIdentityManager::instance()->save(szTmp);
 }
 
 void KviApp::saveConfiguration()
@@ -1436,6 +1452,7 @@ void KviApp::saveConfiguration()
 	saveRegisteredUsers();
 	saveRegisteredChannels();
 	saveNickServ();
+	saveIdentityProfiles();
 	saveSharedFiles();
 	savePopups();
 	saveToolBars();

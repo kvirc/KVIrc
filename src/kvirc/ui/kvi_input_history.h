@@ -50,8 +50,6 @@ class KVIRC_API KviInputHistory
 private:
 	static KviInputHistory * m_pSelf;
 	static unsigned int      m_uCount;
-
-	
 protected:
 	KviPointerList<QString> * m_pStringList;
 public:

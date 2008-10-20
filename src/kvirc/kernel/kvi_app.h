@@ -159,6 +159,7 @@ public:
 	void savePopups();
 	void saveAliases();
 	void saveNickServ();
+	void saveIdentityProfiles();
 	void saveTextIcons();
 	void saveRegisteredChannels();
 	void saveInputHistory();

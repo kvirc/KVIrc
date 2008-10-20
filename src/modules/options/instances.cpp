@@ -220,6 +220,11 @@ KviOptionsWidget * classKviIdentityAdvancedOptionsWidget_createInstanceProc(QWid
 	return new KviIdentityAdvancedOptionsWidget(parent);
 }
 
+KviOptionsWidget * classKviIdentityProfileOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviIdentityProfileOptionsWidget(parent);
+}
+
 KviOptionsWidget * classKviIgnoreOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviIgnoreOptionsWidget(parent);
@@ -545,6 +550,8 @@ static const char * g_szName_KviIdentityAvatarOptionsWidget = KVI_OPTIONS_WIDGET
 static const char * g_szClassName_KviIdentityAvatarOptionsWidget = "KviIdentityAvatarOptionsWidget";
 static const char * g_szName_KviIdentityAdvancedOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIdentityAdvancedOptionsWidget;
 static const char * g_szClassName_KviIdentityAdvancedOptionsWidget = "KviIdentityAdvancedOptionsWidget";
+static const char * g_szName_KviIdentityProfileOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIdentityProfileOptionsWidget;
+static const char * g_szClassName_KviIdentityProfileOptionsWidget = "KviIdentityProfileOptionsWidget";
 static const char * g_szName_KviIgnoreOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviIgnoreOptionsWidget;
 static const char * g_szClassName_KviIgnoreOptionsWidget = "KviIgnoreOptionsWidget";
 static const char * g_szName_KviInputLookOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviInputLookOptionsWidget;
@@ -1560,6 +1567,40 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		#endif
 		e1->szNameNoLocale = g_szName_KviIdentityAdvancedOptionsWidget;
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIdentityAdvancedOptionsWidget,"options");
+		e0->pChildList->append(e1);
+		e1->pChildList = 0;
+
+		e1 = new KviOptionsWidgetInstanceEntry;
+		e1->createProc = &classKviIdentityProfileOptionsWidget_createInstanceProc;
+		e1->pWidget = 0;
+		e1->szClassName = g_szClassName_KviIdentityProfileOptionsWidget;
+		e1->iIcon = KVI_OPTIONS_WIDGET_ICON_KviIdentityProfileOptionsWidget;
+		#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityProfileOptionsWidget
+		e1->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityProfileOptionsWidget;
+		#else
+		e1->iPriority = 0;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityProfileOptionsWidget
+		e1->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviIdentityProfileOptionsWidget;
+		e1->szKeywords = __tr2qs_ctx_no_xgettext(e1->szKeywordsNoLocale.toUtf8().data(),"options");;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_GROUP_KviIdentityProfileOptionsWidget
+		e1->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviIdentityProfileOptionsWidget;
+		#else
+		e1->szGroup = "general";
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityProfileOptionsWidget
+		e1->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviIdentityProfileOptionsWidget;
+		#else
+		e1->bIsContainer = false;
+		#endif
+		#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityProfileOptionsWidget
+		e1->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviIdentityProfileOptionsWidget;
+		#else
+		e1->bIsNotContained = false;
+		#endif
+		e1->szNameNoLocale = g_szName_KviIdentityProfileOptionsWidget;
+		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviIdentityProfileOptionsWidget,"options");
 		e0->pChildList->append(e1);
 		e1->pChildList = 0;
 

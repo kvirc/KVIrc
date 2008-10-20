@@ -36,8 +36,12 @@
 #include "kvi_fileextensions.h"
 #include "kvi_iconmanager.h"
 #include "kvi_http.h"
+#include "kvi_identityprofile.h"
 #include "kvi_tal_tooltip.h"
+#include "kvi_tal_hbox.h"
+#include "kvi_tal_treewidget.h"
 
+#include <QCheckBox>
 #include <QLineEdit>
 #include <QPushButton>
 #include <QLayout>
@@ -663,6 +667,305 @@ void KviIdentityAdvancedOptionsWidget::commit()
 	KVI_OPTION_STRING(KviOption_stringDefaultUserMode) = m_sModeStr.ptr();
 }
 
+KviIdentityProfileOptionsWidget::KviIdentityProfileOptionsWidget(QWidget * pParent)
+: KviOptionsWidget(pParent)
+{
+	setObjectName("identity_profiles_option_widget");
+
+	createLayout();
+	QGridLayout * pLayout = layout();
+
+	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
+	bool bEnabled = pSet ? (pSet->isEnabled() && !pSet->isEmpty()) : false;
+
+	m_pProfilesCheck = new QCheckBox(__tr2qs_ctx("Enable Network Profiles","options"),this);
+	KviTalToolTip::add(m_pProfilesCheck,__tr2qs_ctx("This check enables the use of network profiles","options"));
+	m_pProfilesCheck->setChecked(bEnabled);
+	pLayout->addWidget(m_pProfilesCheck,0,0,1,3);
+	connect(m_pProfilesCheck,SIGNAL(toggled(bool)),this,SLOT(toggleControls()));
+
+	// Profiles list
+	m_pTreeWidget = new KviTalTreeWidget(this);
+	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
+	m_pTreeWidget->setAllColumnsShowFocus(true);
+
+	QStringList labels;
+	labels.append(__tr2qs_ctx("Name","options"));
+	labels.append(__tr2qs_ctx("Network","options"));
+	labels.append(__tr2qs_ctx("Nickname","options"));
+	labels.append(__tr2qs_ctx("Alt. Nick","options"));
+	labels.append(__tr2qs_ctx("Username","options"));
+	labels.append(__tr2qs_ctx("Realname","options"));
+	m_pTreeWidget->setHeaderLabels(labels);
+
+	KviTalToolTip::add(m_pTreeWidget, \
+		__tr2qs_ctx("<center>This is a set of rules to use profiles." \
+			"KVIrc will use them to handle the user connection" \
+			"data before the data is sent to the IRC server.<br>" \
+			"This is useful if a user wants to use different data" \
+			"on different networks without changing them at every" \
+			"connection attempt.","options"));
+	pLayout->addWidget(m_pTreeWidget,1,0,1,3);
+	connect(m_pTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(toggleControls()));
+
+	// Buttons box
+	KviTalHBox * pBtnBox = new KviTalHBox(this);
+	pLayout->addWidget(pBtnBox,2,0);
+
+	m_pBtnAddProfile = new QPushButton(__tr2qs_ctx("Add Profile","options"),pBtnBox);
+	connect(m_pBtnAddProfile,SIGNAL(clicked()),this,SLOT(addProfileEntry()));
+
+	m_pBtnEditProfile = new QPushButton(__tr2qs_ctx("Edit Profile","options"),pBtnBox);
+	connect(m_pBtnEditProfile,SIGNAL(clicked()),this,SLOT(editProfileEntry()));
+
+	m_pBtnDelProfile = new QPushButton(__tr2qs_ctx("Delete Profile","options"),pBtnBox);
+	connect(m_pBtnDelProfile,SIGNAL(clicked()),this,SLOT(delProfileEntry()));
+
+	// Fill in the treewidget
+	if(pSet && pSet->profiles())
+	{
+		KviTalTreeWidgetItem * pItem;
+		KviPointerList<KviIdentityProfile> * pList = pSet->profiles();
+		for(KviIdentityProfile * pProfile = pList->first(); pProfile; pProfile = pList->next())
+		{
+			pItem = new KviTalTreeWidgetItem(m_pTreeWidget);
+			pItem->setText(0,pProfile->name());
+			pItem->setText(1,pProfile->network());
+			pItem->setText(2,pProfile->nick());
+			pItem->setText(3,pProfile->altNick());
+			pItem->setText(4,pProfile->userName());
+			pItem->setText(5,pProfile->realName());
+		}
+	}
+
+	toggleControls();
+}
+
+KviIdentityProfileOptionsWidget::~KviIdentityProfileOptionsWidget()
+{
+}
+
+void KviIdentityProfileOptionsWidget::toggleControls()
+{
+	bool bEnabled = m_pProfilesCheck->isChecked();
+	m_pTreeWidget->setEnabled(bEnabled);
+	m_pBtnAddProfile->setEnabled(bEnabled);
+
+	bEnabled = bEnabled && (m_pTreeWidget->topLevelItemCount()) && m_pTreeWidget->currentItem();
+	m_pBtnEditProfile->setEnabled(bEnabled);
+	m_pBtnDelProfile->setEnabled(bEnabled);
+}
+
+void KviIdentityProfileOptionsWidget::addProfileEntry()
+{
+	KviIdentityProfile profile;
+	KviIdentityProfileEditor editor(this);
+
+	if(editor.editProfile(&profile))
+	{
+		KviTalTreeWidgetItem * pItem = new KviTalTreeWidgetItem(m_pTreeWidget);
+		pItem->setText(0,profile.name());
+		pItem->setText(1,profile.network());
+		pItem->setText(2,profile.nick());
+		pItem->setText(3,profile.altNick());
+		pItem->setText(4,profile.userName());
+		pItem->setText(5,profile.realName());
+	}
+}
+
+void KviIdentityProfileOptionsWidget::editProfileEntry()
+{
+	debug("Edit profile entry");
+	KviTalTreeWidgetItem * pItem = (KviTalTreeWidgetItem *)m_pTreeWidget->currentItem();
+	if(!pItem)
+		return;
+
+	// Fill in the editor data
+	KviIdentityProfile profile;
+	profile.setName(pItem->text(0));
+	profile.setNetwork(pItem->text(1));
+	profile.setNick(pItem->text(2));
+	profile.setAltNick(pItem->text(3));
+	profile.setUserName(pItem->text(4));
+	profile.setRealName(pItem->text(5));
+
+	KviIdentityProfileEditor editor(this);
+	if(editor.editProfile(&profile))
+	{
+		pItem->setText(0,profile.name());
+		pItem->setText(1,profile.network());
+		pItem->setText(2,profile.nick());
+		pItem->setText(3,profile.altNick());
+		pItem->setText(4,profile.userName());
+		pItem->setText(5,profile.realName());
+	}
+}
+
+void KviIdentityProfileOptionsWidget::delProfileEntry()
+{
+	KviTalTreeWidgetItem * pItem = (KviTalTreeWidgetItem *)m_pTreeWidget->currentItem();
+	if(!pItem)
+		return;
+
+	delete pItem;
+	toggleControls();
+}
+
+void KviIdentityProfileOptionsWidget::commit()
+{
+	KviIdentityProfileSet::instance()->clear();
+	if(m_pTreeWidget->topLevelItemCount())
+	{
+		KviIdentityProfileSet::instance()->setEnabled(m_pProfilesCheck->isChecked());
+		KviTalTreeWidgetItem * pItem;
+		for(int i=0; i < m_pTreeWidget->topLevelItemCount(); i++)
+		{
+			pItem = (KviTalTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+
+			KviIdentityProfile * pProfile = new KviIdentityProfile();
+			pProfile->setName(pItem->text(0));
+			pProfile->setNetwork(pItem->text(1));
+			pProfile->setNick(pItem->text(2));
+			pProfile->setAltNick(pItem->text(3));
+			pProfile->setUserName(pItem->text(4));
+			pProfile->setRealName(pItem->text(5));
+
+			KviIdentityProfileSet::instance()->addProfile(pProfile);
+		}
+	}
+
+	KviOptionsWidget::commit();
+}
+
+KviIdentityProfileEditor::KviIdentityProfileEditor(QWidget * pParent)
+: QDialog(pParent)
+{
+	setObjectName("identity_profile_editor");
+	setWindowTitle(__tr2qs_ctx("Profile Editor - KVIrc","options"));
+
+	m_szName = __tr2qs_ctx("Profile Name","options");
+	m_szNetwork = __tr2qs_ctx("MyNetwork","options");
+	m_szNick = __tr2qs_ctx("MyNick","options");
+	m_szAltNick = __tr2qs_ctx("MyNick2","options");
+	m_szUserName = __tr2qs_ctx("MyUserName","options");
+	m_szRealName = __tr2qs_ctx("MyRealName","options");
+
+	QGridLayout * pLayout = new QGridLayout(this);
+
+	QLabel * pLabel = new QLabel(__tr2qs_ctx("Profile Name:","options"),this);
+	pLayout->addWidget(pLabel,0,0);
+
+	m_pNameEdit = new QLineEdit(this);
+	KviTalToolTip::add(m_pNameEdit,__tr2qs_ctx("Put here the name of the profile","options"));
+	pLayout->addWidget(m_pNameEdit,0,1,1,2);
+	connect(m_pNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
+
+	pLabel = new QLabel(__tr2qs_ctx("Network Name:","options"),this);
+	pLayout->addWidget(pLabel,1,0);
+
+	m_pNetworkEdit = new QLineEdit(this);
+	KviTalToolTip::add(m_pNetworkEdit,__tr2qs_ctx("Put here the name of the network","options"));
+	pLayout->addWidget(m_pNetworkEdit,1,1,1,2);
+	connect(m_pNetworkEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
+
+	pLabel = new QLabel(__tr2qs_ctx("Nickname:","options"),this);
+	pLayout->addWidget(pLabel,2,0);
+
+	m_pNickEdit = new QLineEdit(this);
+	KviTalToolTip::add(m_pNickEdit,__tr2qs_ctx("Put here the nickname you want to use","options"));
+	pLayout->addWidget(m_pNickEdit,2,1,1,2);
+	connect(m_pNickEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
+
+	pLabel = new QLabel(__tr2qs_ctx("Alternative Nickname:","options"),this);
+	pLayout->addWidget(pLabel,3,0);
+
+	m_pAltNickEdit = new QLineEdit(this);
+	KviTalToolTip::add(m_pAltNickEdit,__tr2qs_ctx("Put here the alternative nickname you want to use","options"));
+	pLayout->addWidget(m_pAltNickEdit,3,1,1,2);
+	connect(m_pAltNickEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
+
+	pLabel = new QLabel(__tr2qs_ctx("Username:","options"),this);
+	pLayout->addWidget(pLabel,4,0);
+
+	m_pUserNameEdit = new QLineEdit(this);
+	KviTalToolTip::add(m_pUserNameEdit,__tr2qs_ctx("Put here the username you want to use","options"));
+	pLayout->addWidget(m_pUserNameEdit,4,1,1,2);
+	connect(m_pUserNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
+
+	pLabel = new QLabel(__tr2qs_ctx("Realname:","options"),this);
+	pLayout->addWidget(pLabel,5,0);
+
+	m_pRealNameEdit = new QLineEdit(this);
+	KviTalToolTip::add(m_pRealNameEdit,__tr2qs_ctx("Put here the realname you want to use","options"));
+	pLayout->addWidget(m_pRealNameEdit,5,1,1,2);
+	connect(m_pRealNameEdit,SIGNAL(textChanged(const QString &)),this,SLOT(toggleButton(const QString &)));
+
+	KviTalHBox * pBox = new KviTalHBox(this);
+	pBox->setAlignment(Qt::AlignRight);
+	pLayout->addWidget(pBox,6,0);
+
+	QPushButton * p = new QPushButton(__tr2qs_ctx("Cancel","options"),pBox);
+	//p->setMinimumWidth(100);
+	connect(p,SIGNAL(clicked()),this,SLOT(reject()));
+
+	m_pBtnOk = new QPushButton(__tr2qs_ctx("OK","options"),pBox);
+	m_pBtnOk->setEnabled(false);
+	connect(m_pBtnOk,SIGNAL(clicked()),this,SLOT(accept()));
+
+	pLayout->setColumnStretch(1,1);
+	
+	setMinimumWidth(250);
+}
+
+KviIdentityProfileEditor::~KviIdentityProfileEditor()
+{
+}
+
+bool KviIdentityProfileEditor::editProfile(KviIdentityProfile * pProfile)
+{
+	// Fill in the fields
+	m_pNameEdit->setText(pProfile->name().isEmpty() ? QString(m_szName) : pProfile->name());
+	m_pNetworkEdit->setText(pProfile->network().isEmpty() ? QString(m_szNetwork) : pProfile->network());
+	m_pNickEdit->setText(pProfile->nick().isEmpty() ? QString(m_szNick) : pProfile->nick());
+	m_pAltNickEdit->setText(pProfile->altNick().isEmpty() ? QString(m_szAltNick) : pProfile->altNick());
+	m_pUserNameEdit->setText(pProfile->userName().isEmpty() ? QString(m_szUserName) : pProfile->userName());
+	m_pRealNameEdit->setText(pProfile->realName().isEmpty() ? QString(m_szRealName) : pProfile->realName());
+
+	// Ensure data
+	m_pNameEdit->selectAll();
+
+	// Show the dialog
+	if(exec() != QDialog::Accepted) return false;
+
+	// Store data in the object
+	pProfile->setName(m_pNameEdit->text());
+	pProfile->setNetwork(m_pNetworkEdit->text());
+	pProfile->setNick(m_pNickEdit->text());
+	pProfile->setAltNick(m_pAltNickEdit->text());
+	pProfile->setUserName(m_pUserNameEdit->text());
+	pProfile->setRealName(m_pRealNameEdit->text());
+
+	return true;
+}
+
+void KviIdentityProfileEditor::toggleButton(const QString & szText)
+{
+	bool bEnabled = true;
+
+	if(
+		(m_pNameEdit->text() == m_szName) ||
+		(m_pNetworkEdit->text() == m_szNetwork) ||
+		(m_pNickEdit->text() == m_szNick) ||
+		(m_pAltNickEdit->text() == m_szAltNick) ||
+		(m_pUserNameEdit->text() == m_szUserName) ||
+		(m_pRealNameEdit->text() == m_szRealName) ||
+		(szText.isEmpty())
+	)
+		bEnabled = false;
+	
+	m_pBtnOk->setEnabled(bEnabled);
+}
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_identity.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

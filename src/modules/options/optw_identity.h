@@ -8,6 +8,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2008 Elvio Basello (hellvis69 at netsons dot org)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -32,12 +33,14 @@
 #include "kvi_pixmap.h"
 
 #include <QDialog>
-#include <QCheckBox>
 
+class QCheckBox;
 class QLineEdit;
 class QPushButton;
 class QComboBox;
 class KviHttpRequest;
+class KviTalTreeWidget;
+class KviIdentityProfile;
 
 class KviNickAlternativesDialog : public QDialog
 {
@@ -99,6 +102,37 @@ protected slots:
 };
 
 
+
+
+class KviIdentityProfileEditor : public QDialog
+{
+	friend class KviIdentityProfileOptionsWidget;
+	Q_OBJECT
+public:
+	KviIdentityProfileEditor(QWidget * pParent);
+	~KviIdentityProfileEditor();
+protected:
+	QString       m_szName;
+	QString       m_szNetwork;
+	QString       m_szNick;
+	QString       m_szAltNick;
+	QString       m_szUserName;
+	QString       m_szRealName;
+	QLineEdit   * m_pNameEdit;
+	QLineEdit   * m_pNetworkEdit;
+	QLineEdit   * m_pNickEdit;
+	QLineEdit   * m_pAltNickEdit;
+	QLineEdit   * m_pUserNameEdit;
+	QLineEdit   * m_pRealNameEdit;
+	QPushButton * m_pBtnOk;
+public:
+	bool editProfile(KviIdentityProfile * pProfile);
+protected slots:
+	void toggleButton(const QString & szText);
+};
+
+
+
 #define KVI_OPTIONS_WIDGET_ICON_KviIdentityOptionsWidget KVI_SMALLICON_WHO
 #define KVI_OPTIONS_WIDGET_NAME_KviIdentityOptionsWidget __tr2qs_no_lookup("Identity")
 #define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityOptionsWidget 99998
@@ -135,7 +169,7 @@ protected:
 protected slots:
 	void setNickAlternatives();
 protected:
-	virtual void commit(void);
+	virtual void commit();
 };
 
 
@@ -160,7 +194,7 @@ protected:
 protected slots:
 	void chooseAvatar();
 protected:
-	virtual void commit(void);
+	virtual void commit();
 };
 
 
@@ -185,7 +219,34 @@ protected:
 	KviBoolSelector  * m_pWSelector;
 	KviBoolSelector  * m_pSSelector;
 protected:
-	virtual void commit(void);
+	virtual void commit();
 };
 
-#endif //!_OPTW_IDENTITY_H_
+
+#define KVI_OPTIONS_WIDGET_ICON_KviIdentityProfileOptionsWidget KVI_SMALLICON_REGUSERS
+#define KVI_OPTIONS_WIDGET_NAME_KviIdentityProfileOptionsWidget __tr2qs_no_lookup("Profiles")
+#define KVI_OPTIONS_WIDGET_PRIORITY_KviIdentityProfileOptionsWidget 60000
+#define KVI_OPTIONS_WIDGET_PARENT_KviIdentityProfileOptionsWidget KviIdentityOptionsWidget
+
+class KviIdentityProfileOptionsWidget : public KviOptionsWidget
+{
+	Q_OBJECT
+public:
+	KviIdentityProfileOptionsWidget(QWidget * pParent);
+	~KviIdentityProfileOptionsWidget();
+protected:
+	KviTalTreeWidget * m_pTreeWidget;
+	QCheckBox        * m_pProfilesCheck;
+	QPushButton      * m_pBtnAddProfile;
+	QPushButton      * m_pBtnEditProfile;
+	QPushButton      * m_pBtnDelProfile;
+public:
+	virtual void commit();
+protected slots:
+	void toggleControls();
+	void addProfileEntry();
+	void editProfileEntry();
+	void delProfileEntry();
+};
+
+#endif //_OPTW_IDENTITY_H_

@@ -88,12 +88,13 @@ SET(kvilib_SRCS
 	file/kvi_packagefile.cpp
 	irc/kvi_avatar.cpp
 	irc/kvi_avatarcache.cpp
+	irc/kvi_identityprofile.cpp
 	irc/kvi_ircmask.cpp
 	irc/kvi_ircserver.cpp
-	irc/kvi_network.cpp
 	irc/kvi_ircserverdb.cpp
 	irc/kvi_ircuserdb.cpp
 	irc/kvi_mirccntrl.cpp
+	irc/kvi_network.cpp
 	irc/kvi_nickserv.cpp
 	irc/kvi_useridentity.cpp
 	net/kvi_dns.cpp

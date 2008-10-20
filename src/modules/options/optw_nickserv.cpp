@@ -219,9 +219,10 @@ bool KviNickServRuleEditor::editRule(KviNickServRule * r)
 
 
 KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent,"nickserv_options_widget")
+: KviOptionsWidget(parent)
 {
 	createLayout();
+	setObjectName("nickserv_options_widget");
 	
 	QGridLayout * gl = layout();
 

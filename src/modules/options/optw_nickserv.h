@@ -51,11 +51,11 @@ public:
 	KviNickServRuleEditor(QWidget * par,bool bUseServerMaskField = false);
 	~KviNickServRuleEditor();
 protected:
-	QLineEdit * m_pRegisteredNickEdit;
-	QLineEdit * m_pNickServMaskEdit;
-	QLineEdit * m_pMessageRegexpEdit;
-	QLineEdit * m_pIdentifyCommandEdit;
-	QLineEdit * m_pServerMaskEdit;
+	QLineEdit   * m_pRegisteredNickEdit;
+	QLineEdit   * m_pNickServMaskEdit;
+	QLineEdit   * m_pMessageRegexpEdit;
+	QLineEdit   * m_pIdentifyCommandEdit;
+	QLineEdit   * m_pServerMaskEdit;
 	QPushButton * m_pOkButton;
 public:
 	bool editRule(KviNickServRule * r);
@@ -72,11 +72,11 @@ public:
 	KviNickServOptionsWidget(QWidget * parent);
 	~KviNickServOptionsWidget();
 protected:
-	KviTalTreeWidget             * m_pNickServTreeWidget;
-	QCheckBox             * m_pNickServCheck;
-	QPushButton           * m_pAddRuleButton;
-	QPushButton           * m_pDelRuleButton;
-	QPushButton           * m_pEditRuleButton;
+	KviTalTreeWidget * m_pNickServTreeWidget;
+	QCheckBox        * m_pNickServCheck;
+	QPushButton      * m_pAddRuleButton;
+	QPushButton      * m_pDelRuleButton;
+	QPushButton      * m_pEditRuleButton;
 protected slots:
 	void enableDisableNickServControls();
 	void addNickServRule();
@@ -86,4 +86,4 @@ public:
 	virtual void commit();
 };
 
-#endif //!_OPTW_NICKSERV_H_
+#endif //_OPTW_NICKSERV_H_
