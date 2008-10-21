@@ -1759,6 +1759,7 @@ void KviInputEditor::completion(bool bShift)
 		if(tmp.count() == 1)
 		{
 			szMatch = *(tmp.first());
+			if (szMatch.left(1)=='$')szMatch.remove(0,1); 
 			if(bIsCommand && szMatch.right(1)!='.')szMatch.append(' ');
 			else if(bIsFunction && szMatch.right(1)!='.')szMatch.append('(');
 			else if(bIsNick)
@@ -1774,6 +1775,7 @@ void KviInputEditor::completion(bool bShift)
 			QString * szTmp = tmp.first();
 			szMatch = *szTmp;
 			int iWLen = szWord.length();
+			if (szMatch.left(1)=='$')szMatch.remove(0,1); 
 			for(; szTmp; szTmp = tmp.next())
 			{
 				if(szTmp->length() < szMatch.length())
