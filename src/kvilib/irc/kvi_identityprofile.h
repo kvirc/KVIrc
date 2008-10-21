@@ -231,6 +231,13 @@ public:
 	KviPointerList<KviIdentityProfile> * profiles(){ return m_pProfiles; };
 
 	/**
+	* \brief Searches a profile. Returns true if the profile exists
+	* \param szProfile The name of the profile
+	* \return KviIdentityProfile *
+	*/
+	KviIdentityProfile * findProfile(const QString & szProfile);
+
+	/**
 	* \brief Clears the list
 	* \return void
 	*/

@@ -129,6 +129,7 @@ public:
 	bool editProfile(KviIdentityProfile * pProfile);
 protected slots:
 	void toggleButton(const QString & szText);
+	void okPressed();
 };
 
 

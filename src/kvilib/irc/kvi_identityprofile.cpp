@@ -141,6 +141,20 @@ void KviIdentityProfileSet::clear()
 	m_bEnabled = false;
 }
 
+KviIdentityProfile * KviIdentityProfileSet::findProfile(const QString & szProfile)
+{
+	if(!m_pProfiles) return 0;
+
+	KviIdentityProfile * pProfile;
+	for(pProfile = m_pProfiles->first(); pProfile; pProfile = m_pProfiles->next())
+	{
+		if(KviQString::matchStringCI(pProfile->name(),szProfile,false,true))
+			return pProfile;
+	}
+
+	return 0;
+}
+
 void KviIdentityProfileSet::copyFrom(const KviIdentityProfileSet & src)
 {
 	if(src.m_pProfiles)
