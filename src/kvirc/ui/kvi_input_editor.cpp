@@ -1677,6 +1677,7 @@ void KviInputEditor::completion(bool bShift)
 	tmp.setAutoDelete(true);
 
 	bool bIsCommand = false;
+	bool bIsFunction = false;
 	bool bIsDir = false;
 	bool bIsNick = false;
 
@@ -1691,6 +1692,7 @@ void KviInputEditor::completion(bool bShift)
 			szWord.remove(0,2-iOffset);
 			if(szWord.isEmpty()) return;
 			KviKvsKernel::instance()->completeFunction(szWord,&tmp);
+			bIsFunction = true;
 		}
 		else if(bFirstWordInLine || iOffset)
 		{
@@ -1710,6 +1712,7 @@ void KviInputEditor::completion(bool bShift)
 		szWord.remove(0,1);
 		if(szWord.isEmpty()) return;
 		KviKvsKernel::instance()->completeFunction(szWord,&tmp);
+		bIsFunction = true;
 	} else if(uc == '#' || uc == '&' || uc == '!')
 	{
 		if(m_pKviWindow)
@@ -1756,7 +1759,8 @@ void KviInputEditor::completion(bool bShift)
 		if(tmp.count() == 1)
 		{
 			szMatch = *(tmp.first());
-			if(bIsCommand)szMatch.append(' ');
+			if(bIsCommand && szMatch.right(1)!='.')szMatch.append(' ');
+			else if(bIsFunction && szMatch.right(1)!='.')szMatch.append('(');
 			else if(bIsNick)
 			{
 				if(!KVI_OPTION_STRING(KviOption_stringNickCompletionPostfix).isEmpty())

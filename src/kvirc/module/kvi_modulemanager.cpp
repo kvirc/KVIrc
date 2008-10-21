@@ -107,7 +107,12 @@ void KviModuleManager::completeModuleNames(const QString &path,const QString &wo
 		KviQString::cutToFirst(*modname,"kvi");
 		if(KviQString::equalCIN(word,*modname,word.length()))
 		{
-			KviQString::cutFromLast(*modname,".so");
+		//	KviQString::cutFromLast(*modname,".so");
+			#if defined(COMPILE_ON_WINDOWS)
+			KviQString::cutFromLast(*modname,"dll");
+			#else
+			KviQString::cutFromLast(*modname,"so");
+			#endif
 			if(!modname->isEmpty())
 				matches->append(modname);
 			else
