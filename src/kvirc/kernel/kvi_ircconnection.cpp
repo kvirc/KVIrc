@@ -65,6 +65,7 @@
 #include "kvi_kvs_script.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_useridentity.h"
+#include "kvi_identityprofile.h"
 
 #include <QTimer>
 #include <QTextCodec>
@@ -994,6 +995,17 @@ void KviIrcConnection::enableStartTlsSupport(bool bEnable)
 }
 #endif // COMPILE_SSL_SUPPORT
 
+void KviIrcConnection::useProfileData(KviIdentityProfileSet * pSet, const QString & szNetwork)
+{
+	KviIdentityProfile * pProfile = pSet->findNetwork(szNetwork);
+	if(!pProfile) return;
+
+	// Update connection data
+	m_pUserInfo->setNickName(pProfile->nick());
+	m_pUserInfo->setUserName(pProfile->userName());
+	m_pUserInfo->setRealName(pProfile->realName());
+}
+
 void KviIrcConnection::loginToIrcServer()
 {
 	debug("Loggin' in...");
@@ -1072,6 +1084,11 @@ void KviIrcConnection::loginToIrcServer()
 			m_pUserInfo->setRealName(KVI_OPTION_STRING(KviOption_stringRealname));
 		}
 	}
+
+	// Check for identity profiles
+	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
+	bool bProfilesEnabled = pSet ? (pSet->isEnabled() && !pSet->isEmpty()) : false;
+	if(bProfilesEnabled) useProfileData(pSet,pNet->name());
 
 	// FIXME: The server's encoding!
 	setupTextCodec();

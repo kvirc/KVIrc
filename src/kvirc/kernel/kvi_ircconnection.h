@@ -66,6 +66,7 @@ class KviLagMeter;
 class KviNotifyListManager;
 class KviDns;
 class KviUserIdentity;
+class KviIdentityProfileSet;
 
 
 /**
@@ -678,6 +679,17 @@ protected:
 	void trySTARTTLS();
 	void enableStartTlsSupport(bool bEnable);
 #endif
+
+	/**
+	* \brief Uses the profiles' data as connection data
+	*
+	* It checks if the identity profiles are enabled and updates the data
+	* of the connection if a profile rule matches the network name
+	* \param pSet The instance of the network identity profile set
+	* \param szNetwork The name of the network
+	* \return void
+	*/
+	void useProfileData(KviIdentityProfileSet * pSet, const QString & szNetwork);
 
 	/**
 	* \brief Logins to the irc server

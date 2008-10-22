@@ -4,10 +4,10 @@
 
 02 October 2008
    [CtrlAltCa]
-   - Splitted the huge monster kvi_ircview.h
+   - Splitted the huge monster KviIrcView
 
    [HelLViS69]
-   - Added the possiobility to load a part of a log into the channel/query buffer
+   - Added the possibility to load a part of a log into the channel/query buffer
 
 25 September 2008
    [Noldor]
@@ -15,11 +15,14 @@
 
 13 September 2008
    [HelLViS69]
-   - New event: added OnOutboundTraffic which triggers on all data sent to server
+   - New event: added OnOutboundTraffic which triggers on all data sent to the
+     server
+   - Splitted the monster KviInput
 
 08 September 2008
    [desowin]
-   - the KviMPRISInterface should be complete (implement everything that is used by KviMediaPlayerInterface and what's in MPRIS 1.0 spec)
+   - The KviMPRISInterface should be complete (implement everything that is used by
+     KviMediaPlayerInterface and what's in MPRIS 1.0 spec)
 
 03 September 2008
    [HelLViS69]

@@ -231,11 +231,18 @@ public:
 	KviPointerList<KviIdentityProfile> * profiles(){ return m_pProfiles; };
 
 	/**
-	* \brief Searches a profile. Returns true if the profile exists
-	* \param szProfile The name of the profile
+	* \brief Searches for a profile name. Returns true if the profile exists
+	* \param szName The name of the profile
 	* \return KviIdentityProfile *
 	*/
-	KviIdentityProfile * findProfile(const QString & szProfile);
+	KviIdentityProfile * findName(const QString & szName);
+
+	/**
+	* \brief Searches for a profile network. Returns true if the profile exists
+	* \param szNetwork The network name of the profile
+	* \return KviIdentityProfile *
+	*/
+	KviIdentityProfile * findNetwork(const QString & szNetwork);
 
 	/**
 	* \brief Clears the list

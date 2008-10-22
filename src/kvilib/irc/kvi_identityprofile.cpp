@@ -141,14 +141,28 @@ void KviIdentityProfileSet::clear()
 	m_bEnabled = false;
 }
 
-KviIdentityProfile * KviIdentityProfileSet::findProfile(const QString & szProfile)
+KviIdentityProfile * KviIdentityProfileSet::findName(const QString & szName)
 {
 	if(!m_pProfiles) return 0;
 
 	KviIdentityProfile * pProfile;
 	for(pProfile = m_pProfiles->first(); pProfile; pProfile = m_pProfiles->next())
 	{
-		if(KviQString::matchStringCI(pProfile->name(),szProfile,false,true))
+		if(KviQString::matchStringCI(pProfile->name(),szName,false,true))
+			return pProfile;
+	}
+
+	return 0;
+}
+
+KviIdentityProfile * KviIdentityProfileSet::findNetwork(const QString & szNetwork)
+{
+	if(!m_pProfiles) return 0;
+
+	KviIdentityProfile * pProfile;
+	for(pProfile = m_pProfiles->first(); pProfile; pProfile = m_pProfiles->next())
+	{
+		if(KviQString::matchStringCI(pProfile->network(),szNetwork,false,true))
 			return pProfile;
 	}
 

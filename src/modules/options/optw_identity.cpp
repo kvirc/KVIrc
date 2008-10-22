@@ -969,7 +969,7 @@ void KviIdentityProfileEditor::okPressed()
 {
 	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
 
-	if(pSet->findProfile(m_pNameEdit->text()))
+	if(pSet->findName(m_pNameEdit->text()))
 	{
 		QMessageBox::warning(this,__tr2qs_ctx("Invalid Profile Rule","options"),__tr2qs_ctx("There is already a profile with that name","options"),__tr2qs_ctx("OK","options"));
 		return;
