@@ -54,6 +54,7 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variantlist.h"
+#include "kvi_identityprofile.h"
 
 #include <QPixmap>
 #include <QDateTime>
@@ -815,53 +816,67 @@ void KviServerParser::parseNumericEndOfWho(KviIrcMessage *msg)
 void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 {
 	// ops...not logged in yet...
-	QString nextNick;
+	QString szNextNick;
 	unsigned int uNickCnt;
-	switch(msg->connection()->stateData()->loginNickIndex())
+
+	// Check for identity profiles
+	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();
+	bool bProfilesEnabled = pSet ? (pSet->isEnabled() && !pSet->isEmpty()) : false;
+	if(bProfilesEnabled)
 	{
-		case 0:
-			// used a server specific nickname
-			KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
-			if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())
-				KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
-			nextNick = KVI_OPTION_STRING(KviOption_stringNickname1);
-			uNickCnt = 1;
-		case 1:
-			// used the first nickname of the identity
-			KVI_OPTION_STRING(KviOption_stringNickname2).trimmed();
-			if(KVI_OPTION_STRING(KviOption_stringNickname2).isEmpty())
-				KVI_OPTION_STRING(KviOption_stringNickname2) = KVI_DEFAULT_NICKNAME2;
-			nextNick = KVI_OPTION_STRING(KviOption_stringNickname2);
-			uNickCnt = 2;
-		break;
-		case 2:
-			// used the second nickname of the identity
-			KVI_OPTION_STRING(KviOption_stringNickname3).trimmed();
-			if(KVI_OPTION_STRING(KviOption_stringNickname3).isEmpty())
-				KVI_OPTION_STRING(KviOption_stringNickname3) = KVI_DEFAULT_NICKNAME3;
-			nextNick = KVI_OPTION_STRING(KviOption_stringNickname3);
-			uNickCnt = 3;
-		break;
-		default:
+		KviIdentityProfile * pProfile = pSet->findNetwork(msg->connection()->networkName());
+		if(pProfile)
 		{
-			// used all the nicknames of the identity
-			// fall back to a random string...
-			nextNick = msg->safeParam(1);
-			nextNick.trimmed();
-			if(nextNick.isEmpty())nextNick = KVI_DEFAULT_NICKNAME1;
-			nextNick = nextNick.left(7);
-			QString num;
-			num.setNum(msg->connection()->stateData()->loginNickIndex());
-			nextNick.append(num);
-			uNickCnt = msg->connection()->stateData()->loginNickIndex() + 1;
+			szNextNick = pProfile->altNick();
+			uNickCnt = 1;
 		}
-		break;
+	} else {
+		switch(msg->connection()->stateData()->loginNickIndex())
+		{
+			case 0:
+				// used a server specific nickname
+				KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
+				if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())
+					KVI_OPTION_STRING(KviOption_stringNickname1) = KVI_DEFAULT_NICKNAME1;
+				szNextNick = KVI_OPTION_STRING(KviOption_stringNickname1);
+				uNickCnt = 1;
+			case 1:
+				// used the first nickname of the identity
+				KVI_OPTION_STRING(KviOption_stringNickname2).trimmed();
+				if(KVI_OPTION_STRING(KviOption_stringNickname2).isEmpty())
+					KVI_OPTION_STRING(KviOption_stringNickname2) = KVI_DEFAULT_NICKNAME2;
+				szNextNick = KVI_OPTION_STRING(KviOption_stringNickname2);
+				uNickCnt = 2;
+			break;
+			case 2:
+				// used the second nickname of the identity
+				KVI_OPTION_STRING(KviOption_stringNickname3).trimmed();
+				if(KVI_OPTION_STRING(KviOption_stringNickname3).isEmpty())
+					KVI_OPTION_STRING(KviOption_stringNickname3) = KVI_DEFAULT_NICKNAME3;
+				szNextNick = KVI_OPTION_STRING(KviOption_stringNickname3);
+				uNickCnt = 3;
+			break;
+			default:
+			{
+				// used all the nicknames of the identity
+				// fall back to a random string...
+				szNextNick = msg->safeParam(1);
+				szNextNick.trimmed();
+				if(szNextNick.isEmpty()) szNextNick = KVI_DEFAULT_NICKNAME1;
+				szNextNick = szNextNick.left(7);
+				QString num;
+				num.setNum(msg->connection()->stateData()->loginNickIndex());
+				szNextNick.append(num);
+				uNickCnt = msg->connection()->stateData()->loginNickIndex() + 1;
+			}
+			break;
+		}
 	}
 
 	QString szOldNick = msg->connection()->userInfo()->nickName();
-	msg->console()->notifyListView()->nickChange(szOldNick,nextNick);
+	msg->console()->notifyListView()->nickChange(szOldNick,szNextNick);
 
-	msg->connection()->userInfo()->setNickName(nextNick);
+	msg->connection()->userInfo()->setNickName(szNextNick);
 	msg->connection()->stateData()->setLoginNickIndex(uNickCnt);
 
 	if(uNickCnt > 7)
@@ -883,10 +898,10 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 		QString szWText = msg->connection()->decodeText(msg->safeTrailing());
 		msg->console()->output(KVI_OUT_NICKNAMEPROBLEM,
 			__tr2qs("No way to login as '\r!n\r%Q\r' (%d: %Q), trying '%Q'..."),
-				&szActual,msg->numeric(),&szWText,&nextNick);
+				&szActual,msg->numeric(),&szWText,&szNextNick);
 	}
 
-	KviQCString d = msg->connection()->encodeText(nextNick);
+	KviQCString d = msg->connection()->encodeText(szNextNick);
 	msg->connection()->sendFmtData("NICK %s",d.data());
 }
 
