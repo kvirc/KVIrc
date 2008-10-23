@@ -35,15 +35,17 @@
 // Tables used in $setAlignment , $alignment and in $setOrientation & $orientation
 
 const char * const align_tbl[] = {
-			"Left",
-			"Right",
-			"HCenter"
-			   };
+	"Left",
+	"Right",
+	"HCenter"
+};
+
 const int align_cod[] = {
-		Qt::AlignLeft,
-		Qt::AlignRight,
-		Qt::AlignHCenter
-			};
+	Qt::AlignLeft,
+	Qt::AlignRight,
+	Qt::AlignHCenter
+};
+
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 
 
@@ -310,7 +312,7 @@ KVSO_CLASS_FUNCTION(groupbox,setAlignment)
 			return true;
 		}
 	}
-	c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objets"),&szAlign);
+	c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objets"),&szAlign);
 	return true;
 }
 
@@ -343,7 +345,7 @@ KVSO_CLASS_FUNCTION(groupbox,setOrientation)
 	else
 	if(KviQString::equalCI(szMode, "Vertical"))
 		((KviTalGroupBox *)widget())->setOrientation(Qt::Horizontal);
-	else c->warning( __tr2qs_ctx("Unknown orientation: '%Q'","objects"),&szMode);
+	else c->warning( __tr2qs_ctx("Unknown orientation '%Q'","objects"),&szMode);
 
 	return true;
 }

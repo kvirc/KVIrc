@@ -80,7 +80,7 @@ bool KviKvsObject_toolbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 {
 	if (!parentObject())
 	{	
-		pContext->warning(__tr2qs_ctx("the toolbar cannot be a parent-widget!","objects"));
+		pContext->warning(__tr2qs_ctx("The toolbar cannot be a parent-widget!","objects"));
 		return true;
 	}
 	if(parentObject()->inheritsClass("mainwindow"))

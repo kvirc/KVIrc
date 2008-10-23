@@ -1255,7 +1255,7 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 			int i=0;
 			if (value.length()!=6)
 			{
-				c->warning(__tr2qs("A string of 6 digits hex is required"));
+				c->warning(__tr2qs("A string of 6 hex digits is required"));
 				return true;
 			}
 			QString buffer(value.mid(0,2));
@@ -1266,7 +1266,7 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 			iColB=buffer.toInt(&bOk2,16);
 			if (!bOk || !bOk1 || !bOk2)
 			{
-				c->warning(__tr2qs("Not an hex digits"));
+				c->warning(__tr2qs("Not an hex digit"));
 				return true;
 			}
 			if (widget())
@@ -1342,7 +1342,7 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 			int i=0;
 			if (value.length()!=6)
 			{
-				c->warning(__tr2qs("A string of 6 digits hex is required"));
+				c->warning(__tr2qs("A string of 6 hex digits is required"));
 				return true;
 			}
 			QString buffer(value.mid(0,2));

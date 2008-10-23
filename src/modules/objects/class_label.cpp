@@ -38,54 +38,52 @@
 
 // Tables used in $setAlignment & $alignment
 const char * const align_tbl[] = {
-			"Left", 
-			"Right",
-			"HCenter",
-			"VCenter",
-			"Center",
-			"Top",
-			"Bottom",
-			"WordBreak"
-			   };
-
-
+	"Left",
+	"Right",
+	"HCenter",
+	"VCenter",
+	"Center",
+	"Top",
+	"Bottom",
+	"WordBreak"
+};
 
 const int align_cod[] = {
-		Qt::AlignLeft,
-		Qt::AlignRight,
-	    Qt::AlignHCenter,
-	    Qt::AlignVCenter,
-	    Qt::AlignCenter,
-	 	Qt::AlignTop,
-	    Qt::AlignBottom,
-	    Qt::AlignJustify,
-	};
+	Qt::AlignLeft,
+	Qt::AlignRight,
+	Qt::AlignHCenter,
+	Qt::AlignVCenter,
+	Qt::AlignCenter,
+	Qt::AlignTop,
+	Qt::AlignBottom,
+	Qt::AlignJustify,
+};
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 		  
 // used in $frameStyle & $setFrameStyle
 const char * const frame_tbl[] = {
-				"NoFrame",
-				"Box",
-				"Panel",
-				"WinPanel",
-				"Hline",
-			// shadow styles
-				"Plain",
-				"Raised",
-				"Sunken"
-			   };
+	"NoFrame",
+	"Box",
+	"Panel",
+	"WinPanel",
+	"Hline",
+	// shadow styles
+	"Plain",
+	"Raised",
+	"Sunken"
+};
 
 const int frame_cod[] = {
-				QFrame::NoFrame,
-				QFrame::Box,
-				QFrame::Panel,
-				QFrame::WinPanel,
-				QFrame::HLine,
-				QFrame::Plain,
-				QFrame::Raised,
-				QFrame::Sunken
-			 };
+	QFrame::NoFrame,
+	QFrame::Box,
+	QFrame::Panel,
+	QFrame::WinPanel,
+	QFrame::HLine,
+	QFrame::Plain,
+	QFrame::Raised,
+	QFrame::Sunken
+};
 
 #define frame_num	(sizeof(frame_tbl) / sizeof(frame_tbl[0]))
 
@@ -223,6 +221,7 @@ KVSO_CLASS_FUNCTION(label,setText)
 	((QLabel *)widget())->setText(szText);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(label,text)
 {
 	CHECK_INTERNAL_POINTER(widget())	
@@ -237,7 +236,7 @@ KVSO_CLASS_FUNCTION(label,setMargin)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,iMargin)
 	KVSO_PARAMETERS_END(c)
-    ((QLabel *)widget())->setMargin(iMargin);
+	((QLabel *)widget())->setMargin(iMargin);
 	return true;
 }
 KVSO_CLASS_FUNCTION(label,margin)
@@ -289,12 +288,13 @@ KVSO_CLASS_FUNCTION(label,setAlignment)
 		if(align)
 			sum = sum | align;
 		else
-			c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objects"),&(*it));
+			c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objects"),&(*it));
 			
 	}
 	((QLabel *)widget())->setAlignment((Qt::Alignment)sum);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(label,alignment)
 {
 	CHECK_INTERNAL_POINTER(widget())	
@@ -311,6 +311,7 @@ KVSO_CLASS_FUNCTION(label,alignment)
 	c->returnValue()->setString(szAlignment);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(label,clear)
 {
 	CHECK_INTERNAL_POINTER(widget())	
@@ -341,13 +342,13 @@ KVSO_CLASS_FUNCTION(label,setFrameStyle)
 		if(framestyle)
 			sum = sum | framestyle;
 		else
-			c->warning(__tr2qs_ctx("Unknown style: '%Q'","objects"),&(*it));
+			c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&(*it));
 			
 	}
 	((QLabel *)widget())->setFrameStyle(sum);
 	return true;
-
 }
+
 KVSO_CLASS_FUNCTION(label,frameStyle)
 {
 	CHECK_INTERNAL_POINTER(widget())	
@@ -364,6 +365,7 @@ KVSO_CLASS_FUNCTION(label,frameStyle)
 	c->returnValue()->setString(szStyle);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(label,setImage)
 {
 	CHECK_INTERNAL_POINTER(widget())	

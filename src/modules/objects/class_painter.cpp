@@ -1441,7 +1441,7 @@ bool KviKvsObject_painter::functionsetBrushStyle(KviKvsObjectFunctionCall *c)
 		brush.setStyle(brushstyles_cod[j]);
 		m_pPainter->setBrush(brush);
 	}
-	else c->warning(__tr2qs("Unknown brushn style %Q"),&szStyle);
+	else c->warning(__tr2qs("Unknown brush style %Q"),&szStyle);
 	return true;
 }
 
@@ -1506,7 +1506,7 @@ bool KviKvsObject_painter::functionsetGradientColor(KviKvsObjectFunctionCall *c)
 	{
 		if(c->paramCount()<4)
 		{
-			c->error(__tr2qs("Color name or triplette rgb/hsv values required"));
+			c->error(__tr2qs("Color name or triplette RGB/HSV values required"));
 			return true;
 		}
 		if ( !var2->asInteger(iCol2)||!var3->asInteger(iCol3))
@@ -1670,7 +1670,4 @@ bool KviKvsObject_painter::functionresetPath(KviKvsObjectFunctionCall *c)
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_painter.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
-
-
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

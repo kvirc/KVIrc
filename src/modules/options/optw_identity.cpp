@@ -700,10 +700,10 @@ KviIdentityProfileOptionsWidget::KviIdentityProfileOptionsWidget(QWidget * pPare
 
 	KviTalToolTip::add(m_pTreeWidget, \
 		__tr2qs_ctx("<center>This is a set of rules to use profiles." \
-			"KVIrc will use them to handle the user connection" \
+			"KVIrc will use them to handle the user connection " \
 			"data before the data is sent to the IRC server.<br>" \
-			"This is useful if a user wants to use different data" \
-			"on different networks without changing them at every" \
+			"This is useful if a user wants to use different data " \
+			"on different networks without changing them at every " \
 			"connection attempt.","options"));
 	pLayout->addWidget(m_pTreeWidget,1,0,1,3);
 	connect(m_pTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(toggleControls()));

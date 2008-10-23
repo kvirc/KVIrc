@@ -876,7 +876,7 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 				int i=0;
 				if (value.length()!=6)
 				{
-						c->warning(__tr2qs("A string of 6 digits hex is required"));
+						c->warning(__tr2qs("A string of 6 hex digits is required"));
 						return true;
 				}
 				QString buffer(value.mid(0,2));
@@ -887,7 +887,7 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 				iColB=buffer.toInt(&bOk2,16);
 				if (!bOk || !bOk1 || !bOk2)
 				{
-					c->warning(__tr2qs("Not an hex digits"));
+					c->warning(__tr2qs("Not an hex digit"));
 				return true;
 				}
 	//		if (widget()) ((QTextEdit *)widget())->setColor(QColor(iColR,iColG,iColB));
@@ -1077,7 +1077,7 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 			int i=0;
 			if (value.length()!=6)
 			{
-					c->warning(__tr2qs("A string of 6 digits hex is required"));
+					c->warning(__tr2qs("A string of 6 hex digits is required"));
 					return true;
 			}
 			QString buffer(value.mid(0,2));
@@ -1088,7 +1088,7 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 			iColB=buffer.toInt(&bOk2,16);
 			if (!bOk || !bOk1 || !bOk2)
 			{
-				c->warning(__tr2qs("Not an hex digits"));
+				c->warning(__tr2qs("Not an hex digit"));
 				return true;
 			}
 			//if (widget()) ((QTextEdit *)widget())->setParagraphBackgroundColor(iParagraph,QColor(iColR,iColG,iColB));

@@ -509,7 +509,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 			KviFile *pFile=((KviKvsObject_file *)pObject)->pFile();
 			if (!pFile->isOpen()) 
 			{
-				c->warning(__tr2qs_ctx("File is not open !","objects"));
+				c->warning(__tr2qs_ctx("File is not open!","objects"));
 				return true;
 			}
 			if (!uLen) uLen=pFile->size();
@@ -702,7 +702,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 #ifndef COMPILE_IPV6_SUPPORT
 	if(m_bIPv6)
 	{
-		c->warning(__tr2qs("No IPV6 support in this executable"));
+		c->warning(__tr2qs("No IPv6 support in this executable"));
 		c->returnValue()->setBoolean(false);
 		reset();
 		return true;
@@ -724,7 +724,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 				m_bIPv6 = true;
 			} else {
 #else
-				c->warning(__tr2qs_ctx("Invalid IP address specified ('%Q')","objects"),&m_szLocalIp);
+				c->warning(__tr2qs_ctx("Invalid IP address specified (%Q)","objects"),&m_szLocalIp);
 				c->returnValue()->setBoolean(false);
 				reset();
 				return true;

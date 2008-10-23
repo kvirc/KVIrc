@@ -246,7 +246,7 @@ KVSO_CLASS_FUNCTION(file,open)
 			if(mod!=QIODevice::ReadOnly)
 				sum = sum | mod;
 			else
-				c->warning(__tr2qs_ctx("No such open mode: '%Q'","objects"),&modes.at(idx));
+				c->warning(__tr2qs_ctx("No such open mode '%Q'","objects"),&modes.at(idx));
 		}
 	}
 
@@ -318,19 +318,21 @@ KVSO_CLASS_FUNCTION(file,putch)
 	KVSO_PARAMETERS_END(c)
 	if (szChar.length()>1)c->warning(__tr2qs_ctx("Argument to long, using only first char","objects"));
 	const char *ch=szChar.toUtf8().data();
-	if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs_ctx("Write error occured !","objects"));
+	if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs_ctx("Write error occured!","objects"));
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,getch)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	char ch;
-	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occured !","objects"));	// c->error ?
+	if (!m_pFile->getChar(&ch)) c->warning(__tr2qs_ctx("Read error occured!","objects"));	// c->error ?
 	QString szChar = QChar(ch);
 	c->returnValue()->setString(szChar);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,unGetch)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -339,11 +341,12 @@ KVSO_CLASS_FUNCTION(file,unGetch)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("char",KVS_PT_STRING,0,szChar)
 	KVSO_PARAMETERS_END(c)
-	if (szChar.length()>1) c->warning(__tr2qs_ctx("Argument to long, using only first char","objects"));
+	if (szChar.length()>1) c->warning(__tr2qs_ctx("Argument too long, using only the first char","objects"));
 	const char *ch=szChar.toUtf8().data();
 	m_pFile->ungetChar(ch[0]);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,readBlock)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -384,6 +387,7 @@ KVSO_CLASS_FUNCTION(file,readBlock)
 	}
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,read)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -436,6 +440,7 @@ KVSO_CLASS_FUNCTION(file,read)
 	}
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,write)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -458,7 +463,6 @@ KVSO_CLASS_FUNCTION(file,write)
 	}
 	return true;
 }
-
 
 KVSO_CLASS_FUNCTION(file,writeBlock)
 {
@@ -522,6 +526,7 @@ KVSO_CLASS_FUNCTION(file,writeBlock)
 	}
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,readLine)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -531,6 +536,7 @@ KVSO_CLASS_FUNCTION(file,readLine)
 	c->returnValue()->setString(buffer);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,writeLine)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -543,6 +549,7 @@ KVSO_CLASS_FUNCTION(file,writeLine)
 	ts << szLine;
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,readHexBlock)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -574,6 +581,7 @@ KVSO_CLASS_FUNCTION(file,readHexBlock)
 	delete buff;
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,writeHexBlock)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -612,4 +620,3 @@ KVSO_CLASS_FUNCTION(file,writeHexBlock)
 	c->returnValue()->setInteger(uLen/2);
 	return true;
 }
-

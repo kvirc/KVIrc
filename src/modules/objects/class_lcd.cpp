@@ -139,7 +139,7 @@ KVSO_CLASS_FUNCTION(lcd,setMode)
 	else if(KviQString::equalCI(szMode, "DEC")) ((QLCDNumber *)widget())->setDecMode();
 	else if(KviQString::equalCI(szMode, "BIN")) ((QLCDNumber *)widget())->setBinMode();
 	else if(KviQString::equalCI(szMode, "OCT")) ((QLCDNumber *)widget())->setOctMode();
-	else c->warning( __tr2qs_ctx("Unknown mode: '%Q'","objects"),&szMode);
+	else c->warning( __tr2qs_ctx("Unknown mode '%Q'","objects"),&szMode);
 	return true;
 }
 
@@ -153,7 +153,7 @@ KVSO_CLASS_FUNCTION(lcd,setSegmentStyle)
 	if(KviQString::equalCI(szStyle, "Outline")) ((QLCDNumber *)widget())->setSegmentStyle(QLCDNumber::Outline);
 	else if(KviQString::equalCI(szStyle, "Filled")) ((QLCDNumber *)widget())->setSegmentStyle(QLCDNumber::Filled);
 	else if(KviQString::equalCI(szStyle, "Flat")) ((QLCDNumber *)widget())->setSegmentStyle(QLCDNumber::Flat);
-	else c->warning( __tr2qs_ctx("Unknown segment style: '%Q'","objects"),&szStyle);
+	else c->warning( __tr2qs_ctx("Unknown segment style '%Q'","objects"),&szStyle);
 	return true;
 }
 
@@ -178,6 +178,7 @@ KVSO_CLASS_FUNCTION(lcd,setSmallDecimalPoint)
 	((QLCDNumber *)widget())->setSmallDecimalPoint(bFlag);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(lcd,checkOverflow)
 {
 	CHECK_INTERNAL_POINTER(widget())	

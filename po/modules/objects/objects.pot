@@ -1,0 +1,831 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-10-23 19:11+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_lineedit.cpp:383
+msgid "Unknown echo mode '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_mainwindow.cpp:87
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1760
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_toolbutton.cpp:263
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/object_macros.h:111
+msgid "Widget parameter is not an object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_mainwindow.cpp:92
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1765
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_toolbutton.cpp:268
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/object_macros.h:116
+msgid "Widget parameter is not a valid object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_mainwindow.cpp:97
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:189
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:208
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:229
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:249
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:269
+msgid "Widget object required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_label.cpp:291
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1166
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_groupbox.cpp:315
+msgid "Unknown alignment '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_label.cpp:345
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1741
+msgid "Unknown style '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_toolbar.cpp:83
+msgid "The toolbar cannot be a parent-widget!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_toolbar.cpp:92
+msgid "The parent-widget isn't a MainWindow."
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:545
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1113
+msgid "The array passed as parameter must contain at least 4 elements"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:554
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1126
+msgid "One of the geometry array parameters is empty"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:559
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1131
+msgid "One of the geometry array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:565
+msgid " requires either an array as first parameter or four integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:571
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:605
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:649
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1146
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1289
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1376
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1602
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1660
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:903
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1104
+msgid "The first parameter didn't evaluate to an array nor an integer"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:581
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1578
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1636
+msgid "The array passed as parameter must contain at least 2 elements"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:588
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:623
+msgid "One of the array parameters is empty"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:593
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:628
+msgid "One of the array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:599
+msgid " requires either an array as first parameter or two integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:615
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1229
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1319
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:852
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1053
+msgid "The array passed as parameter must contain at least 3 elements"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:636
+msgid "The opacity value didn't evaluate to an integer"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:643
+msgid " requires either an array as first parameter or 3 integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:699
+msgid "Unknown orientation"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:846
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_button.cpp:125
+msgid "Pixmap parameter is not an object!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:851
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_button.cpp:131
+msgid "Object Pixmap required!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:874
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:930
+msgid "Color name or triplette rgb/hsv value required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:879
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:935
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1514
+msgid "One of the triplette parameters didn't evaluate to an integer"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1037
+msgid "Pixmap or Widget parameter is not an object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1045
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:766
+msgid "Widget or Pixmap required "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1109
+msgid "Invalid mode '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1138
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1866
+msgid "Pixmap parameter is not an object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1143
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1871
+msgid "Pixmap object required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1418
+msgid "Unknown pen style %Q"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1444
+msgid "Unknown brush style %Q"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1509
+msgid "Color name or triplette RGB/HSV values required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1141
+msgid ""
+"$setGeometry() requires either an array as first parameter or four integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1238
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1328
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:861
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1062
+msgid "One of the colors array parameters is empty"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1244
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1333
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:866
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1067
+msgid "One of the colors array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1258
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1345
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:879
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1080
+msgid "A string of 6 hex digits is required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1269
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:890
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1091
+msgid "Not an hex digit"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1284
+msgid ""
+"$setForegroundColor requires either an array as first parameter, one hex "
+"string or three integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1356
+msgid "Not an hex digits"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1371
+msgid ""
+"$setBackgroundColor requires either an array as first parameter, one hex "
+"string or three integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1585
+msgid "One of the move array parameters is empty"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1590
+msgid "One of the move array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1597
+msgid "$move() requires either an array as first parameter or two integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1643
+msgid "One of the resize array parameters is empty"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1648
+msgid "One of the resize array parameters didn't evaluate to an integer"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1655
+msgid "$resize() requires either an array as first parameter or two integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1689
+msgid "Invalid parameters"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1715
+msgid "Unknown widget flag '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1771
+msgid "No Layout associated to the widget "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1776
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:146
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:168
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_window.cpp:143
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_window.cpp:148
+msgid "Can't add a non-widget object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1800
+msgid "Parent must be a widget object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1876
+msgid "Null mask"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1901
+msgid "Unknown widget attribute '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1925
+msgid "Unknown Color Role '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1934
+msgid "Unknown Color Group '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:399
+msgid "No such line number"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:898
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1099
+msgid "$setColor requires either an array as first parameter or three integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1131
+msgid " I can't find the specified file '%Q'."
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1138
+msgid " I cannot read the file %Q'."
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_popupmenu.cpp:215
+msgid "Icon '%Q' doesn't exist"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:144
+msgid "Unknown aspect ratio: using default value IgnoreAspectRatio"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:148
+msgid "Unknown tranformation mode: using default value Fast"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:193
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tbrowser.cpp:103
+msgid "I can't find the specified file '%Q'."
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:211
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:428
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:499
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:367
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:487
+msgid "Buffer parameter is not an object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:216
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:433
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:372
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:508
+msgid "Buffer parameter is not a memorybuffer object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:262
+msgid "Destination parameter is not an object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:268
+msgid "Destination must be a pixmap object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:278
+msgid "Area dimensions are out of destination size "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:284
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:293
+msgid "Pixmap dimensions are out of destination size "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:301
+msgid "Offset width area is out of pixmap size "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:306
+msgid "Offset height area is out of pixmap size "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_hbox.cpp:146
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_hbox.cpp:176
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_vbox.cpp:177
+msgid "The widget must be a child of this hbox"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_hbox.cpp:195
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_vbox.cpp:197
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_layout.cpp:306
+msgid "Unknown alignment: '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:174
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:282
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:188
+msgid "No string parameter given - using empty string"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:177
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:194
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:191
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:209
+#, c-format
+msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:331
+msgid "Invalid insertion Policy '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_lcd.cpp:142
+msgid "Unknown mode '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_lcd.cpp:156
+msgid "Unknown segment style '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_process.cpp:221
+msgid "Process could not be started."
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_toolbutton.cpp:273
+msgid "Can't add a non - popupmenu  object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_toolbutton.cpp:315
+msgid "Unknown text position '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_slider.cpp:268
+msgid "Unknown tickmark '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_slider.cpp:282
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_groupbox.cpp:348
+msgid "Unknown orientation '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidget.cpp:397
+msgid "Invalid selection mode '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:272
+msgid "Invalid selection mode '%Q' assuming single"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:303
+msgid "Can't insert the listwidget itself!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:308
+msgid "Can't insert a non-widget object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:512
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:40
+msgid "File is not open!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:523
+msgid "Buffer parameter is not a memorybuffer or file object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:566
+msgid "No socket object specified"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:572
+msgid "Invalid socket object specified (it doesn't inherit from socket)"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:584
+msgid "There is no connection to accept!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:610
+msgid "The hex string lenght is not a multiple of 2"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:627
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:614
+msgid "The hex string is not correct!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:652
+#, c-format
+msgid "Value %d for port is out of range (values allowed are from 0 to 65535"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:657
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:688
+msgid "Another connection in progress"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:705
+msgid "No IPv6 support in this executable"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:727
+msgid "Invalid IP address specified (%Q)"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:748
+msgid "Socket creation failed"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:763
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:784
+msgid "Invalid socket address"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:771
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:792
+msgid "Bind failure"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:802
+msgid "Listen failure"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:864
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:869
+msgid "unknown"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:935
+msgid "Invalid IP address "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:941
+msgid "Invalid IP address (%Q)"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:963
+msgid "Failed to create the socket"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:975
+msgid "Failed to setup a nonblocking socket"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:996
+msgid "Connect failure: "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:1023
+msgid "Connect attempt timed out"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:1052
+msgid "Can't start the DNS thread"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:1198
+msgid ""
+"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:151
+msgid "Error in KVS class implementation: processing aborted"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:156
+msgid "Processing aborted"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:162
+#, c-format
+msgid "Error near line %d, column %d"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:164
+#, c-format
+msgid "Warning near line %d, column %d"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:315
+msgid "XML support not available in the Qt library"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:330
+msgid "Data parameter is not an object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:339
+msgid "Data parameter is not a memorybuffer object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:358
+msgid "Data is not a memorybuffer object or string"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:257
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:276
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:298
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:353
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:376
+msgid "Can't find the tab "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:395
+msgid "Unknown position 'Q%'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_vbox.cpp:147
+msgid "The widget must be a child of this vbox"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wrapper.cpp:148
+msgid ""
+"The window identifier preceeded by WinId must be the first object in the "
+"search path"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wrapper.cpp:164
+msgid "Failed to find one of the wrap path widgets (%Q::%Q)"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wrapper.cpp:173
+msgid "Failed to find the widget to wrap"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_layout.cpp:139
+msgid "The parent of a layout must be a widget!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_layout.cpp:266
+msgid "Invalid resize mode defaulting to Auto"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_layout.cpp:287
+msgid "The widget must be a child of this layout"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
+msgid "The listviewitem cannot be parentless"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:179
+msgid ""
+"The parent of the listwidgetitem must be either another listwidgetitem or a "
+"listwidget"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
+msgid "Unknown item flag: '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
+msgid "Pixmap object or image Id required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
+msgid ""
+"Error occured: the suitable file '%Q' is not of the correct format or it is "
+"not a valid icon number."
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_buttongroup.cpp:95
+msgid "Buttongroup supports only checkbox and radiobox object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_http.cpp:181
+msgid "Host '%Q' is not a valid url"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_http.cpp:247
+msgid "'%Q' is not a valid file path"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:102
+msgid "Can't add a null object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:109
+msgid ""
+"Invalid object handle passed as parameter (the object is no longer "
+"existing ?)"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:115
+msgid "Object in invalid state"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:121
+msgid "Can't set a non-widget object to be the main widget of a dock window"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:127
+msgid "The added widget is not a child of this dock window"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:193
+msgid "Invalid dock area specified"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:183
+msgid "Class '%Q' is not definited"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:257
+msgid "Inexisting target object for objects.connect"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:262
+msgid "Inexisting source object for objects.connect"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:267
+msgid "Inexisting target slot '%Q' for objects.connect"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:352
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:451
+msgid "The class '%Q' does not exist"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:409
+msgid "Object does not exists"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:553
+msgid "Inexisting class object for objects.name"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:596
+msgid "Inexisting target object for objects.disconnect"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:601
+msgid "Inexisting source object for objects.disconnect"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:647
+msgid "Source is not an object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:653
+msgid "Destination is not an object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:664
+msgid "Widget, Image or Pixmap required "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:674
+msgid "Widget or Pixmap required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:750
+msgid "One or more of background, foreground or destination aren't objects"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:756
+msgid "Pixmap objects required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:779
+msgid "Values for background are out of image size "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:784
+msgid "Values for foreground are out of image size "
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_memorybuffer.cpp:92
+msgid "The file '%Q' does not exist"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_memorybuffer.cpp:110
+msgid "Cannot open file '%Q' for writing"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:228
+msgid "Empty filename string"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:249
+msgid "No such open mode '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:319
+msgid "Argument to long, using only first char"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:321
+msgid "Write error occured!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:330
+msgid "Read error occured!"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:344
+msgid "Argument too long, using only the first char"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:419
+msgid "The incoming data doesn't an array"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:429
+msgid "The incoming data doesn't a Dictionary"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:439
+msgid "Unsupported datatype '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:478
+msgid "File is not open !"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:498
+msgid "The memoryBuffer object is empty: nothing will be saved"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:516
+msgid "Block parameter must been a string or a memorybufferobject"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:597
+msgid "Lenght of hex string is not multiple of 2"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/object_macros.h:105
+msgid "Internal error: no valid pointer for this object"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/object_macros.h:121
+msgid "Widget object requires"
+msgstr ""
