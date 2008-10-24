@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-23 22:30+0400\n"
-"PO-Revision-Date: 2008-10-23 19:10+0200\n"
+"PO-Revision-Date: 2008-10-24 21:18+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -18,11 +18,11 @@ msgstr ""
 
 #: src/modules/objects/class_multilineedit.cpp:1131
 msgid " I can't find the specified file '%Q'."
-msgstr ""
+msgstr "Non trovo il file '%Q' specificato."
 
 #: src/modules/objects/class_multilineedit.cpp:1138
 msgid " I cannot read the file %Q'."
-msgstr ""
+msgstr "Non posso leggere il file '%Q'."
 
 #: src/modules/objects/class_painter.cpp:643
 msgid " requires either an array as first parameter or 3 integers"
@@ -38,68 +38,69 @@ msgstr " richiede sia un array come primo parametro o due interi"
 
 #: src/modules/objects/class_widget.cpp:1597
 msgid "$move() requires either an array as first parameter or two integers"
-msgstr ""
+msgstr "$move() richiede sia un array come primo parametro o due interi"
 
 #: src/modules/objects/class_widget.cpp:1655
 msgid "$resize() requires either an array as first parameter or two integers"
-msgstr ""
+msgstr "$resize() richiede sia un array come primo parametro o due interi"
 
 #: src/modules/objects/class_widget.cpp:1371
 msgid ""
 "$setBackgroundColor requires either an array as first parameter, one hex "
 "string or three integers"
 msgstr ""
+"$setBackgroundColor richiede sia un array come primo parametro, una stringa esadecimale "
+"o tre interi"
 
 #: src/modules/objects/class_multilineedit.cpp:898
 #: src/modules/objects/class_multilineedit.cpp:1099
 msgid "$setColor requires either an array as first parameter or three integers"
-msgstr ""
+msgstr "$setColor richiede sia un array come primo parametro o tre interi"
 
 #: src/modules/objects/class_widget.cpp:1284
 msgid ""
 "$setForegroundColor requires either an array as first parameter, one hex "
 "string or three integers"
 msgstr ""
+"$setForegroundColor richiede sia un array come primo parametro, una stringa "
+"esadecimale o tre interi"
 
 #: src/modules/objects/class_widget.cpp:1141
-msgid ""
-"$setGeometry() requires either an array as first parameter or four integers"
-msgstr ""
-"$setGeometry() richiede sia un array come primo parametro o quattro interi"
+msgid "$setGeometry() requires either an array as first parameter or four integers"
+msgstr "$setGeometry() richiede sia un array come primo parametro o quattro interi"
 
 #: src/modules/objects/class_http.cpp:247
 msgid "'%Q' is not a valid file path"
-msgstr ""
+msgstr "'%Q' non è un percorso valido per il file"
 
 #: src/modules/objects/class_widget.cpp:1258
 #: src/modules/objects/class_widget.cpp:1345
 #: src/modules/objects/class_multilineedit.cpp:879
 #: src/modules/objects/class_multilineedit.cpp:1080
-#, fuzzy
 msgid "A string of 6 hex digits is required"
-msgstr "E' richiesta una stringa di 6 cifre"
+msgstr "E' richiesta una stringa di 6 cifre esadecimali"
 
 #: src/modules/objects/class_socket.cpp:657
 #: src/modules/objects/class_socket.cpp:688
 msgid "Another connection in progress"
-msgstr ""
+msgstr "Un'altra connessione in corso"
 
 #: src/modules/objects/class_pixmap.cpp:278
 msgid "Area dimensions are out of destination size "
-msgstr ""
+msgstr "Le dimensioni dell'area sono più grandi della grandezza di destinazione"
 
 #: src/modules/objects/class_file.cpp:319
 msgid "Argument to long, using only first char"
-msgstr ""
+msgstr "Argomento troppo lungo, uso solo il primo carattere"
 
 #: src/modules/objects/class_file.cpp:344
 msgid "Argument too long, using only the first char"
-msgstr ""
+msgstr "Argomento troppo lungo, uso solo il primo carattere"
 
 #: src/modules/objects/class_socket.cpp:771
 #: src/modules/objects/class_socket.cpp:792
 msgid "Bind failure"
-msgstr ""
+msgstr "Bind fallito"
 
 #: src/modules/objects/class_file.cpp:516
 msgid "Block parameter must been a string or a memorybufferobject"
@@ -668,8 +669,7 @@ msgid "There is no connection to accept!"
 msgstr ""
 
 #: src/modules/objects/class_socket.cpp:1198
-msgid ""
-"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1934
@@ -832,3 +832,4 @@ msgstr ""
 #: src/modules/objects/class_socket.cpp:869
 msgid "unknown"
 msgstr ""
+

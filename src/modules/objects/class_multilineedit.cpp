@@ -1128,14 +1128,14 @@ bool KviKvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETERS_END(c)
 	if ( !QFile::exists(szFile))
 	{
-		c->warning(__tr2qs(" I can't find the specified file '%Q'."),&szFile);
+		c->warning(__tr2qs("I can't find the specified file '%Q'."),&szFile);
         return true;
 	}
 
 	QFile file( szFile );
 	if ( !file.open( QIODevice::ReadOnly ) )
 	{
-		c->warning(__tr2qs(" I cannot read the file %Q'."),&szFile);
+		c->warning(__tr2qs("I cannot read the file '%Q'."),&szFile);
         return true;
 	}
 

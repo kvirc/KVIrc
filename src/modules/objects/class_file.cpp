@@ -316,7 +316,7 @@ KVSO_CLASS_FUNCTION(file,putch)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("char",KVS_PT_STRING,0,szChar)
 	KVSO_PARAMETERS_END(c)
-	if (szChar.length()>1)c->warning(__tr2qs_ctx("Argument to long, using only first char","objects"));
+	if (szChar.length()>1)c->warning(__tr2qs_ctx("Argument too long, using only first char","objects"));
 	const char *ch=szChar.toUtf8().data();
 	if (!m_pFile->putChar(ch[0])) c->warning(__tr2qs_ctx("Write error occured!","objects"));
 	return true;
@@ -513,7 +513,7 @@ KVSO_CLASS_FUNCTION(file,writeBlock)
 		else
 		{
 			if (!pVariantData->isString()){
-				c->warning(__tr2qs_ctx("Block parameter must been a string or a memorybufferobject","objects"));
+				c->warning(__tr2qs_ctx("Block parameter must been a string or a memorybuffer object","objects"));
 				return true;
 			}
 			QString szBlock;
