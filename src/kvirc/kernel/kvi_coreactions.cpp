@@ -777,6 +777,8 @@ void KviJoinChannelAction::popupAboutToShow()
 
 	m_pPopup->insertSeparator();
 	m_pPopup->insertItem(*(smallIcon()),__tr2qs("Other..."));
+	m_pPopup->insertSeparator();
+	m_pPopup->insertItem(__tr2qs("Clear Recent Channels List"));
 }
 
 void KviJoinChannelAction::popupActivated(int id)
@@ -784,13 +786,18 @@ void KviJoinChannelAction::popupActivated(int id)
 	KviConsole * c = g_pActiveWindow->console();
 	if(!c)return;
 
-	QString text = m_pPopup->text(id);
-	if(!text.isEmpty())
+	QString szItemText = m_pPopup->text(id);
+	if(!szItemText.isEmpty())
 	{
 		QString szText;
-		if(__tr2qs("Other...") == text)szText = "channelsjoin.open";
-		else {
-			szText = text;
+		if(szItemText == __tr2qs("Other..."))
+		{
+			szText = "channelsjoin.open";
+		} else if(szItemText == __tr2qs("Clear Recent Channels List"))
+		{
+			szText = "option stringlistRecentChannels";
+		} else {
+			szText = szItemText;
 			szText.prepend("join ");
 		}
 		KviKvsScript::run(szText,c);
@@ -862,6 +869,8 @@ void KviConnectToServerAction::popupAboutToShow()
 	g_pApp->fillRecentServersPopup(m_pPopup);
 	m_pPopup->insertSeparator();
 	m_pPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),__tr2qs("Other..."));
+	m_pPopup->insertSeparator();
+	m_pPopup->insertItem(__tr2qs("Clear Recent Servers List"));
 }
 
 void KviConnectToServerAction::popupActivated(int id)
@@ -869,15 +878,18 @@ void KviConnectToServerAction::popupActivated(int id)
 	KviConsole * c = g_pActiveWindow->console();
 	if(!c)return;
 
-	QString text = m_pPopup->text(id);
-	if(!text.isEmpty())
+	QString szItemText = m_pPopup->text(id);
+	if(!szItemText.isEmpty())
 	{
-		if(__tr2qs("Other...") == text)
+		if(szItemText == __tr2qs("Other..."))
 		{
 			activate();
+		} else if(szItemText == __tr2qs("Clear Recent Servers List"))
+		{
+			KviKvsScript::run("option stringlistRecentServers",c);
 		} else {
 			KviStr szCommand;
-			QString szText = text;
+			QString szText = szItemText;
 			if(KviIrcUrl::parse(szText.toUtf8().data(),szCommand,KVI_IRCURL_CONTEXT_THIS))
 			{
 				KviKvsScript::run(szCommand.ptr(),c);

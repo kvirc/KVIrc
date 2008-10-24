@@ -1849,6 +1849,11 @@ void KviApp::fillRecentServersPopup(KviTalPopupMenu * m)
 	m->clear();
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
 	{
+		/*
+		FIXME
+		HACK This hack removes the empty entry in the list
+		*/
+		if(*it == "") continue;
 		m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),*it);
 	}
 }
