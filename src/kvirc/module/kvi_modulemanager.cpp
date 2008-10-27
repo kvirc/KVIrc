@@ -181,7 +181,11 @@ bool KviModuleManager::loadModule(const QString &modName)
 #endif
 	szName=szName.toLower();
 
+#ifdef KVIRC_MODULES_DIR
+	KviQString::sprintf(tmp, "%s/%s", KVIRC_MODULES_DIR, szName.toUtf8().data());
+#else
 	g_pApp->getLocalKvircDirectory(tmp,KviApp::Plugins,szName);
+#endif
 	if(!KviFileUtils::fileExists(tmp))
 	{
 		g_pApp->getGlobalKvircDirectory(tmp,KviApp::Plugins,szName);
