@@ -156,6 +156,7 @@ KVSO_CLASS_FUNCTION(toolbutton,setImage)
 		((QToolButton *)widget())->setIcon(QIcon());
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,setUsesBigPixmap)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -163,15 +164,17 @@ KVSO_CLASS_FUNCTION(toolbutton,setUsesBigPixmap)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	((QToolButton *)widget())->setIconSize(bEnabled?QSize(32,32):QSize(22,22));
+	((QToolButton *)widget())->setIconSize(bEnabled ? QSize(32,32) : QSize(22,22));
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,usesBigPixmap)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((QToolButton *)widget())->iconSize().height() > 22);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,setUsesTextLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -182,12 +185,14 @@ KVSO_CLASS_FUNCTION(toolbutton,setUsesTextLabel)
 	((QToolButton *)widget())->setToolButtonStyle(bEnabled?Qt::ToolButtonTextUnderIcon : Qt::ToolButtonIconOnly);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,usesTextLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((QToolButton *)widget())->toolButtonStyle() != Qt::ToolButtonIconOnly);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,setAutoRaise)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -198,12 +203,14 @@ KVSO_CLASS_FUNCTION(toolbutton,setAutoRaise)
 	((QToolButton *)widget())->setAutoRaise(bEnabled);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,autoRaise)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((QToolButton *)widget())->autoRaise());
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,setOn)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -225,6 +232,7 @@ KVSO_CLASS_FUNCTION(toolbutton,setToggleButton)
 	((QToolButton *)widget())->setCheckable(bEnabled);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,toggle)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -244,12 +252,14 @@ KVSO_CLASS_FUNCTION(toolbutton,setTextLabel)
 	if (!szTip.isEmpty()) ((QToolButton *)widget())->setToolTip(szTip);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,textLabel)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setString(((QToolButton *)widget())->text());
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,setPopup)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -270,13 +280,14 @@ KVSO_CLASS_FUNCTION(toolbutton,setPopup)
 		return true;
 	}
 	if(!ob->inheritsClass("popupmenu"))
-    {
-		c->warning(__tr2qs_ctx("Can't add a non - popupmenu  object","objects"));
-        return TRUE;
-    }
+	{
+		c->warning(__tr2qs_ctx("Can't add a non-popupmenu object","objects"));
+		return true;
+	}
 	((QToolButton *)widget())->setMenu(((KviTalPopupMenu  *)(ob->object())));
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,openPopup)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -315,6 +326,7 @@ KVSO_CLASS_FUNCTION(toolbutton,setTextPosition)
 	else c->warning(__tr2qs_ctx("Unknown text position '%Q'","objects"),&szPos);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,textPosition)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -324,6 +336,7 @@ KVSO_CLASS_FUNCTION(toolbutton,textPosition)
 	c->returnValue()->setString(szPos);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(toolbutton,clickEvent)
 {
 	emitSignal("clicked",c);
@@ -338,6 +351,4 @@ void KviKvsObject_toolbutton::slotClicked()
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_toolbutton.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
-
-
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES
