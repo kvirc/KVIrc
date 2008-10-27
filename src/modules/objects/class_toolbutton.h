@@ -40,26 +40,26 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionsetImage(KviKvsObjectFunctionCall *c);
-	bool functionsetUsesBigPixmap(KviKvsObjectFunctionCall *c);
-	bool functionusesBigPixmap(KviKvsObjectFunctionCall *c);
-	bool functionsetUsesTextLabel(KviKvsObjectFunctionCall *c);
-	bool functionusesTextLabel(KviKvsObjectFunctionCall *c);
-	bool functionsetTextLabel(KviKvsObjectFunctionCall *c);
-	bool functiontextLabel(KviKvsObjectFunctionCall *c);
-	bool functionsetPopup(KviKvsObjectFunctionCall *c);
-	bool functionopenPopup(KviKvsObjectFunctionCall *c);
-	bool functionsetOn(KviKvsObjectFunctionCall *c);
-	bool functionsetToggleButton(KviKvsObjectFunctionCall *c);
-	bool functiontoggle(KviKvsObjectFunctionCall *c);
-//	bool functionsetPopupDelay(KviKvsObjectFunctionCall *c);
-//	bool functionpopupDelay(KviKvsObjectFunctionCall *c);
-	bool functionsetTextPosition(KviKvsObjectFunctionCall *c);
-	bool functiontextPosition(KviKvsObjectFunctionCall *c);
+	bool setImage(KviKvsObjectFunctionCall *c);
+	bool setUsesBigPixmap(KviKvsObjectFunctionCall *c);
+	bool usesBigPixmap(KviKvsObjectFunctionCall *c);
+	bool setUsesTextLabel(KviKvsObjectFunctionCall *c);
+	bool usesTextLabel(KviKvsObjectFunctionCall *c);
+	bool setTextLabel(KviKvsObjectFunctionCall *c);
+	bool textLabel(KviKvsObjectFunctionCall *c);
+	bool setPopup(KviKvsObjectFunctionCall *c);
+	bool openPopup(KviKvsObjectFunctionCall *c);
+	bool setOn(KviKvsObjectFunctionCall *c);
+	bool setToggleButton(KviKvsObjectFunctionCall *c);
+	bool toggle(KviKvsObjectFunctionCall *c);
+//	bool setPopupDelay(KviKvsObjectFunctionCall *c);
+//	bool popupDelay(KviKvsObjectFunctionCall *c);
+	bool setTextPosition(KviKvsObjectFunctionCall *c);
+	bool textPosition(KviKvsObjectFunctionCall *c);
 
-	bool function_setAutoRaise(KviKvsObjectFunctionCall *c);
-	bool function_autoRaise(KviKvsObjectFunctionCall *c);
-	bool function_clickEvent(KviKvsObjectFunctionCall *c);
+	bool setAutoRaise(KviKvsObjectFunctionCall *c);
+	bool autoRaise(KviKvsObjectFunctionCall *c);
+	bool clickEvent(KviKvsObjectFunctionCall *c);
 signals:
 	void clicked();
 protected slots:

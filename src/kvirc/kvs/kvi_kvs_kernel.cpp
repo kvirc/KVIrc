@@ -174,12 +174,12 @@ void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPointerLis
 			++it;
 		}
 
-		//KviPointerList<QString> lModules;
-		//lModules.setAutoDelete(true);
-		g_pModuleManager->completeModuleNames(szFunctionBegin,pMatches);
-		//QString szEmpty = "";
-		//for(QString * pszModuleName = lModules.first();pszModuleName;pszModuleName = lModules.next())
-		//	completeModuleFunction(*pszModuleName,szEmpty,pMatches);
+		KviPointerList<QString> lModules;
+		lModules.setAutoDelete(true);
+		g_pModuleManager->completeModuleNames(szFunctionBegin,&lModules);
+		QString szEmpty = "";
+		for(QString * pszModuleName = lModules.first();pszModuleName;pszModuleName = lModules.next())
+			completeModuleFunction(*pszModuleName,szEmpty,pMatches);
 
 		KviPointerList<QString> lAliases;
 		lAliases.setAutoDelete(true);
@@ -212,7 +212,7 @@ void KviKvsKernel::completeModuleFunction(const QString &szModuleName,const QStr
 		QString * pszMatch = new QString(*pszModuleMatch);
 		pszMatch->prepend(".");
 		pszMatch->prepend(szModuleName);
-		//pszMatch->prepend("$");
+		pszMatch->prepend("$");
 		pMatches->append(pszMatch);
 	}
 }

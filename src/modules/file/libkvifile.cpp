@@ -459,7 +459,7 @@ static bool file_kvs_fnc_size(KviKvsModuleFunctionCall * c)
 	return true;
 }
 /*
-	@doc: file.allSizese
+	@doc: file.allSizes
 	@type:
 		function
 	@title:

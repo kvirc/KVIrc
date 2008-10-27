@@ -99,30 +99,30 @@
 		Returns the time delay between pressing the button and the appearance of the associated popup menu in milliseconds.
 */ 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbutton,"toolbutton","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setImage", functionsetImage)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setUsesBigPixmap", functionsetUsesBigPixmap)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"usesBigPixmap", functionusesBigPixmap)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setUsesTextLabel", functionsetUsesTextLabel)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"usesTextLabel", functionusesTextLabel)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setAutoRaise", function_setAutoRaise)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"autoRaise", function_autoRaise)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setTextLabel", functionsetTextLabel)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"textLabel", functiontextLabel)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setPopup", functionsetPopup)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"openPopup", functionopenPopup)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setImage)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setUsesBigPixmap)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,usesBigPixmap)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setUsesTextLabel)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,usesTextLabel)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setAutoRaise)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,autoRaise)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setTextLabel)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,textLabel)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setPopup)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,openPopup)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setToggleButton", functionsetToggleButton)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"toggle", functiontoggle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setOn", functionsetOn)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setToggleButton)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,toggle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setOn)
 /*
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setPopupDelay", functionsetPopupDelay)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"popupDelay", functionpopupDelay)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,"setPopupDelay", functionsetPopupDelay)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,"popupDelay", functionpopupDelay)
 	*/
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"setTextPosition", functionsetTextPosition)
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"textPosition", functiontextPosition)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setTextPosition)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,textPosition)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_toolbutton,"clickEvent",function_clickEvent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,clickEvent)
 KVSO_END_REGISTERCLASS(KviKvsObject_toolbutton)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_toolbutton,KviKvsObject_widget)
@@ -141,13 +141,13 @@ bool KviKvsObject_toolbutton::init(KviKvsRunTimeContext * pContext,KviKvsVariant
 	return true;
 }
 
-bool KviKvsObject_toolbutton::functionsetImage(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setImage)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString icon;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("icon_id",KVS_PT_STRING,0,icon)
 	KVSO_PARAMETERS_END(c)
-	if (!widget()) return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
 	if(pix){
 			((QToolButton *)widget())->setIcon(QIcon(*pix));
@@ -156,102 +156,103 @@ bool KviKvsObject_toolbutton::functionsetImage(KviKvsObjectFunctionCall *c)
 		((QToolButton *)widget())->setIcon(QIcon());
 	return true;
 }
-bool KviKvsObject_toolbutton::functionsetUsesBigPixmap(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setUsesBigPixmap)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QToolButton *)widget())->setIconSize(bEnabled?QSize(32,32):QSize(22,22));
+	((QToolButton *)widget())->setIconSize(bEnabled?QSize(32,32):QSize(22,22));
 	return true;
 }
-bool KviKvsObject_toolbutton::functionusesBigPixmap(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,usesBigPixmap)
 {
-	if (widget())
-		c->returnValue()->setBoolean(((QToolButton *)widget())->iconSize().height() > 22);
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setBoolean(((QToolButton *)widget())->iconSize().height() > 22);
 	return true;
 }
-bool KviKvsObject_toolbutton::functionsetUsesTextLabel(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setUsesTextLabel)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QToolButton *)widget())->setToolButtonStyle(bEnabled?Qt::ToolButtonTextUnderIcon : Qt::ToolButtonIconOnly);
+	((QToolButton *)widget())->setToolButtonStyle(bEnabled?Qt::ToolButtonTextUnderIcon : Qt::ToolButtonIconOnly);
 	return true;
 }
-bool KviKvsObject_toolbutton::functionusesTextLabel(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,usesTextLabel)
 {
-	if (widget())
-		c->returnValue()->setBoolean(((QToolButton *)widget())->toolButtonStyle() != Qt::ToolButtonIconOnly);
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setBoolean(((QToolButton *)widget())->toolButtonStyle() != Qt::ToolButtonIconOnly);
 	return true;
 }
-bool KviKvsObject_toolbutton::function_setAutoRaise(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setAutoRaise)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QToolButton *)widget())->setAutoRaise(bEnabled);
+	((QToolButton *)widget())->setAutoRaise(bEnabled);
 	return true;
 }
-bool KviKvsObject_toolbutton::function_autoRaise(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,autoRaise)
 {
-	if(widget())
-		c->returnValue()->setBoolean(((QToolButton *)widget())->autoRaise());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setBoolean(((QToolButton *)widget())->autoRaise());
 	return true;
 }
-bool KviKvsObject_toolbutton::functionsetOn(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setOn)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QToolButton *)widget())->setChecked(bEnabled);
+	((QToolButton *)widget())->setChecked(bEnabled);
 	return true;
 }
 
-bool KviKvsObject_toolbutton::functionsetToggleButton(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setToggleButton)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QToolButton *)widget())->setCheckable(bEnabled);
+	((QToolButton *)widget())->setCheckable(bEnabled);
 	return true;
 }
-bool KviKvsObject_toolbutton::functiontoggle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,toggle)
 {
-	if (widget())
-		((QToolButton *)widget())->toggle();
+	CHECK_INTERNAL_POINTER(widget())
+	((QToolButton *)widget())->toggle();
 	return true;
 }
 
-bool KviKvsObject_toolbutton::functionsetTextLabel(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setTextLabel)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szLabel,szTip;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
 		KVSO_PARAMETER("tooltip",KVS_PT_STRING,KVS_PF_OPTIONAL,szTip)
 	KVSO_PARAMETERS_END(c)
-	if(!widget()) return true;
 	((QToolButton *)widget())->setText(szLabel);
 	if (!szTip.isEmpty()) ((QToolButton *)widget())->setToolTip(szTip);
 	return true;
 }
-bool KviKvsObject_toolbutton::functiontextLabel(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,textLabel)
 {
-	if (widget())
-		c->returnValue()->setString(((QToolButton *)widget())->text());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setString(((QToolButton *)widget())->text());
 	return true;
 }
-bool KviKvsObject_toolbutton::functionsetPopup(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setPopup)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -260,31 +261,30 @@ bool KviKvsObject_toolbutton::functionsetPopup(KviKvsObjectFunctionCall *c)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if (!ob)
 	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
+		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
 		return true;
 	}
 	if (!ob->object())
 	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
+		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
 		return true;
 	}
 	if(!ob->inheritsClass("popupmenu"))
     {
-		c->warning(__tr2qs("Can't add a non - popupmenu  object"));
+		c->warning(__tr2qs_ctx("Can't add a non - popupmenu  object","objects"));
         return TRUE;
     }
-	if(widget())
-		((QToolButton *)widget())->setMenu(((KviTalPopupMenu  *)(ob->object())));
+	((QToolButton *)widget())->setMenu(((KviTalPopupMenu  *)(ob->object())));
 	return true;
 }
-bool KviKvsObject_toolbutton::functionopenPopup(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,openPopup)
 {
-	if(widget())
-		((QToolButton *)widget())->showMenu();
+	CHECK_INTERNAL_POINTER(widget())
+	((QToolButton *)widget())->showMenu();
 	return true;
 }
 /*
-bool KviKvsObject_toolbutton::functionsetPopupDelay(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setPopupDelay)
 {
 	kvs_int_t uDelay;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -294,37 +294,37 @@ bool KviKvsObject_toolbutton::functionsetPopupDelay(KviKvsObjectFunctionCall *c)
 		  ((QToolButton *)widget())->setPopupDelay(uDelay);
 	return true;
 }
-bool KviKvsObject_toolbutton::functionpopupDelay(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,popupDelay)
 {
 	if (widget())
 		c->returnValue()->setInteger(((QToolButton *)widget())->popupDelay());
 	return true;
 }
 */
-bool KviKvsObject_toolbutton::functionsetTextPosition(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,setTextPosition)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szPos;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("position",KVS_PT_STRING,0,szPos)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
 	if(KviQString::equalCI(szPos,"BesideIcon"))
 			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
 	else if(KviQString::equalCI(szPos,"BelowIcon"))
 			((QToolButton *)widget())->setToolButtonStyle(Qt::ToolButtonTextUnderIcon);
-	else c->warning(__tr2qs("Unknown text position '%Q'"),&szPos);
+	else c->warning(__tr2qs_ctx("Unknown text position '%Q'","objects"),&szPos);
 	return true;
 }
-bool KviKvsObject_toolbutton::functiontextPosition(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,textPosition)
 {
-	if(!widget()) return true;
+	CHECK_INTERNAL_POINTER(widget())
 	QString szPos="BelowIcon";
 	if ((((QToolButton *)widget())->toolButtonStyle())==(Qt::ToolButtonTextBesideIcon))
 		szPos="BesideIcon";
 	c->returnValue()->setString(szPos);
 	return true;
 }
-bool KviKvsObject_toolbutton::function_clickEvent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(toolbutton,clickEvent)
 {
 	emitSignal("clicked",c);
 	return true;

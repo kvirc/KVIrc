@@ -106,7 +106,7 @@ g_pKvs##__className##Class->registerFunctionHandler(#__szName,(KviKvsObjectFunct
 		return false; \
 	}
 #define CHECK_HOBJECT_IS_WIDGET(__pObject)\
-if (__pObject)\
+if (!__pObject)\
 	{\
 		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));\
 		return true;\

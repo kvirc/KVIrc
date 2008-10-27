@@ -38,7 +38,7 @@
 #include "kvi_internalcmd.h"
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"
-#include "kvi_garbage.h"
+//#include "kvi_garbage.h"
 #include "kvi_malloc.h"
 #include "kvi_memmove.h"
 #include "kvi_debug.h"
@@ -56,7 +56,7 @@
 
 extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase            * g_pProxyDataBase;
-extern KVIRC_API KviGarbageCollector         * g_pGarbageCollector;
+//extern KVIRC_API KviGarbageCollector         * g_pGarbageCollector;
 
 
 
@@ -90,7 +90,8 @@ void KviIrcConnectionTargetResolver::cleanup()
 		{
 			// deleting a running dns may block
 			// thus garbage-collect it and delete later
-			g_pGarbageCollector->collect(m_pProxyDns);
+			//g_pGarbageCollector->collect(m_pProxyDns);
+			m_pProxyDns->deleteLater();
 		} else {
 			// can't block : just delete it
 			delete m_pProxyDns;
@@ -103,7 +104,8 @@ void KviIrcConnectionTargetResolver::cleanup()
 		{
 			// deleting a running dns may block
 			// thus garbage-collect it and delete later
-			g_pGarbageCollector->collect(m_pServerDns);
+			//g_pGarbageCollector->collect(m_pServerDns);
+			m_pServerDns->deleteLater();
 		} else {
 			// can't block : just delete it
 			delete m_pServerDns;

@@ -37,7 +37,7 @@
 #include "kvi_internalcmd.h"
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"
-#include "kvi_garbage.h"
+//#include "kvi_garbage.h"
 #include "kvi_malloc.h"
 #include "kvi_memmove.h"
 #include "kvi_ircconnection.h"
@@ -53,7 +53,7 @@
 
 extern KVIRC_API KviServerDataBase   * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase    * g_pProxyDataBase;
-extern KVIRC_API KviGarbageCollector * g_pGarbageCollector;
+//extern KVIRC_API KviGarbageCollector * g_pGarbageCollector;
 
 
 KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)

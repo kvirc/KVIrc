@@ -54,7 +54,7 @@
 #include "kvi_nickserv.h"
 #include "kvi_identityprofile.h"
 #include "kvi_xlib.h"
-#include "kvi_garbage.h"
+////#include "kvi_garbage.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_texticonwin.h"
 #include "kvi_historywin.h"
@@ -123,7 +123,7 @@ KVIRC_API KviPointerHashTable<QString,KviWindow>  * g_pGlobalWindowDict = 0;
 KVIRC_API KviMediaManager               * g_pMediaManager               = 0;
 KVIRC_API KviSharedFilesManager         * g_pSharedFilesManager         = 0;
 KVIRC_API KviNickServRuleSet            * g_pNickServRuleSet            = 0;
-KVIRC_API KviGarbageCollector           * g_pGarbageCollector           = 0;
+//KVIRC_API KviGarbageCollector           * g_pGarbageCollector           = 0;
 KVIRC_API KviCtcpPageDialog             * g_pCtcpPageDialog             = 0;
 KVIRC_API KviRegisteredChannelDataBase  * g_pRegisteredChannelDataBase  = 0;
 KVIRC_API KviHistoryWindowWidget        * g_pHistoryWindow              = 0;
@@ -453,7 +453,7 @@ void KviApp::setup()
 	g_pCryptEngineManager = new KviCryptEngineManager();
 #endif
 
-	g_pGarbageCollector = new KviGarbageCollector();
+	//g_pGarbageCollector = new KviGarbageCollector();
 
 	// and the input popup
 	g_pInputPopup = new KviTalPopupMenu();
@@ -548,7 +548,7 @@ KviApp::~KviApp()
 	g_pActiveWindow = 0; // .. but it should be already 0 anyway
 
 	// execute pending deletes (this may still contain some UI elements)
-	delete g_pGarbageCollector;
+	//delete g_pGarbageCollector;
 
 	if(!m_bSetupDone)return; // killed with IPC (nothing except the m_pFrameList was created yet)
 
@@ -700,13 +700,13 @@ QTextCodec * KviApp::defaultSrvCodec()
 	if(!c)debug("KviApp::defaultSrcCodec(): cannot find a suitable text codec for locale :/");
 	return c;
 }
-
+/*
 void KviApp::collectGarbage(QObject * garbage)
 {
 //	if(!g_pGarbageCollector)debug("Ops... no garbage collector ?");
 	g_pGarbageCollector->collect(garbage);
 }
-
+*/
 void KviApp::loadDefaultScript()
 {
 	QString cmd;

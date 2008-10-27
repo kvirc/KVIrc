@@ -23,8 +23,8 @@
 //=============================================================================
 
 
-#include "kvi_garbage.h"
-
+//#include "kvi_garbage.h"
+/*
 #include <QVariant>
 
 KviGarbageCollector::KviGarbageCollector()
@@ -145,4 +145,4 @@ void KviGarbageCollector::cleanup()
 		}
 	}
 }
-
+*/

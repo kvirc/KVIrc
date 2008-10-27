@@ -127,7 +127,7 @@ public:
 public:
 
 	//FIXME: obsolete. We can use QObject::deleteLater()
-	void collectGarbage(QObject * garbage);
+	//void collectGarbage(QObject * garbage);
 
 	void destroyFrame();
 	void setup();                                  // THIS SHOULD BE PRIVATE! (but is accessed from kvi_main.cpp)
@@ -176,6 +176,8 @@ public:
 	void listAvailableOptions(KviWindow *wnd);
 	bool getOptionString(const QString &optName,QString &buffer);
 	bool setOptionValue(const QString &optName,const QString &value);
+	bool setCommonOptionValue(const QString &optName,const QString &value);
+	
 	void optionResetUpdate(int flags);
 
 	// kvi_app_fs.cpp : Filesystem thingies
@@ -255,6 +257,7 @@ public:
 	void checkSuggestRestoreDefaultScript();
 
 	void loadDefaultScript();
+
 protected:
 	void buildRecentChannels();
 	void saveRecentChannels();

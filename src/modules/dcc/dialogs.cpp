@@ -96,14 +96,16 @@ void KviDccAcceptBox::acceptClicked()
 {
 	hide();
 	emit accepted(this,m_pDescriptor);
-	g_pApp->collectGarbage(this);
+	this->deleteLater();
+	//g_pApp->collectGarbage(this);
 }
 
 void KviDccAcceptBox::rejectClicked()
 {
 	hide();
 	emit rejected(this,m_pDescriptor);
-	g_pApp->collectGarbage(this);
+	this->deleteLater();
+	//g_pApp->collectGarbage(this);
 }
 
 void KviDccAcceptBox::closeEvent(QCloseEvent *e)
@@ -111,7 +113,8 @@ void KviDccAcceptBox::closeEvent(QCloseEvent *e)
 	hide();
 	e->ignore();
 	emit rejected(this,m_pDescriptor);
-	g_pApp->collectGarbage(this);
+	this->deleteLater();
+	//g_pApp->collectGarbage(this);
 }
 
 void KviDccAcceptBox::showEvent(QShowEvent *e)
@@ -173,7 +176,8 @@ void KviDccRenameBox::closeEvent(QCloseEvent *e)
 	if(m_pDescriptor)
 	{
 		emit cancelSelected(this,m_pDescriptor);
-		g_pApp->collectGarbage(this);
+		//g_pApp->collectGarbage(this);
+		this->deleteLater();
 	}
 }
 
@@ -188,14 +192,16 @@ void KviDccRenameBox::renameClicked()
 {
 	hide();
 	emit renameSelected(this,m_pDescriptor);
-	g_pApp->collectGarbage(this);
+	//g_pApp->collectGarbage(this);
+	this->deleteLater();
 }
 
 void KviDccRenameBox::overwriteClicked()
 {
 	hide();
 	emit overwriteSelected(this,m_pDescriptor);
-	g_pApp->collectGarbage(this);
+	//g_pApp->collectGarbage(this);
+	this->deleteLater();
 }
 
 void KviDccRenameBox::resumeClicked()
@@ -203,14 +209,16 @@ void KviDccRenameBox::resumeClicked()
 	hide();
 	m_pDescriptor->bResume = true;
 	emit overwriteSelected(this,m_pDescriptor);
-	g_pApp->collectGarbage(this);
+	this->deleteLater();
+	//g_pApp->collectGarbage(this);
 }
 
 void KviDccRenameBox::cancelClicked()
 {
 	hide();
 	emit cancelSelected(this,m_pDescriptor);
-	g_pApp->collectGarbage(this);
+	this->deleteLater();
+	//g_pApp->collectGarbage(this);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -52,7 +52,8 @@ KviKvsDnsObject::~KviKvsDnsObject()
 	QObject::disconnect(m_pDns,0,0,0);
 	if(m_pDns->isRunning())
 	{
-		g_pApp->collectGarbage(m_pDns);
+		//g_pApp->collectGarbage(m_pDns);
+		m_pDns->deleteLater();
 	} else {
 		delete m_pDns;
 	}

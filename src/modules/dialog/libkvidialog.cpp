@@ -71,12 +71,15 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	KviKvsCallbackObject("dialog.message",pWindow,szCode,pMagicParams,0)
 {
 	setWindowTitle(szCaption);
+	setAttribute(Qt::WA_DeleteOnClose,false);
 	setText(szText);
 	setIcon(QMessageBox::NoIcon);
 	QMessageBox::StandardButtons buttons;
-	if (!szButton0.isEmpty())  buttons=QMessageBox::Ok | QMessageBox::Default;
-	if (!szButton2.isEmpty()) buttons|=QMessageBox::Cancel | QMessageBox::Escape;
-	else if(!szButton1.isEmpty()) buttons|=QMessageBox::No | QMessageBox::Escape;
+	bool btn=false;
+	if (!szButton0.isEmpty()) {btn=true;buttons=QMessageBox::Ok | QMessageBox::Default;}
+	if (!szButton2.isEmpty()) {btn=true;buttons|=QMessageBox::Cancel | QMessageBox::Escape;}
+	else if(!szButton1.isEmpty()) {btn=true;buttons|=QMessageBox::No | QMessageBox::Escape;}
+	if (!btn) buttons=QMessageBox::Ok;
 	setStandardButtons(buttons);
 	g_pDialogModuleDialogList->append(this);
 
@@ -95,6 +98,7 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 
 KviKvsCallbackMessageBox::~KviKvsCallbackMessageBox()
 {
+	debug("Deleting");
 	g_pDialogModuleDialogList->removeRef(this);
 }
 
@@ -114,7 +118,6 @@ void KviKvsCallbackMessageBox::done(int code)
 	params.append(new KviKvsVariant(iVal));
 
 	execute(&params);
-
 	delete this;
 }
 
@@ -534,7 +537,8 @@ void KviKvsCallbackFileDialog::done(int code)
 	// ...so skip out of this call stack and ask KviApp to destroy us just
 	// when the control returns to the main loop.
 	// If the module is unloaded then , KviApp will notice it and will NOT delete the dialog
-	g_pApp->collectGarbage(this);
+	this->deleteLater();
+	//g_pApp->collectGarbage(this);
 
 	// calling dialog.unload here WILL lead to a sigsegv (this is SURE
 	// with a lot of qt versions that have the ugly file dialog "accept before this reference" bug)
@@ -660,8 +664,8 @@ void KviKvsCallbackImageDialog::done(int code)
 	// ...so skip out of this call stack and ask KviApp to destroy us just
 	// when the control returns to the main loop.
 	// If the module is unloaded then , KviApp will notice it and will NOT delete the dialog
-	g_pApp->collectGarbage(this);
-
+	//g_pApp->collectGarbage(this);
+	this->deleteLater();
 	// calling dialog.unload here WILL lead to a sigsegv (this is SURE
 	// with a lot of qt versions that have the ugly file dialog "accept before this reference" bug)
 	// to avoid it, we can execute the callback triggered by a timer...
@@ -869,7 +873,7 @@ static bool dialog_module_init(KviModule * m)
 {
 	g_pDialogModuleDialogList = new KviPointerList<QWidget>;
 	g_pDialogModuleDialogList->setAutoDelete(false);
-
+debug("registering comman");
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"message",dialog_kvs_cmd_message);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"textinput",dialog_kvs_cmd_textinput);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"file",dialog_kvs_cmd_file);

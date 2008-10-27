@@ -37,7 +37,7 @@
  * and much easier.
  */
 
-
+/*
 class KVILIB_API KviGarbageCollector : public QObject
 {
 	Q_OBJECT
@@ -56,5 +56,5 @@ protected slots:
 	void cleanup();
 	void garbageSuicide();
 };
-
+*/
 #endif //_KVI_GARBAGE_H_

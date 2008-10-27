@@ -53,7 +53,7 @@
 #include "kvi_internalcmd.h"
 #include "kvi_sparser.h"
 #include "kvi_themedlabel.h"
-#include "kvi_garbage.h"
+//#include "kvi_garbage.h"
 #include "kvi_modulemanager.h"
 #include "kvi_fileutils.h"
 #include "kvi_time.h"
@@ -93,7 +93,7 @@
 
 extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
-extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
+//extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
 
 KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 #ifdef COMPILE_ON_WINDOWS
