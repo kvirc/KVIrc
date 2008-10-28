@@ -649,7 +649,7 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 
 	if (m_uRemotePort>65535)
 	{
-		c->warning(__tr2qs_ctx("Value %d for port is out of range (values allowed are from 0 to 65535","objects"),m_uRemotePort);
+		c->warning(__tr2qs_ctx("Value %d for port is out of range (values allowed are from 0 to 65535)","objects"),m_uRemotePort);
 		return true;
 	}
 	if((m_sock != KVI_INVALID_SOCKET) || (m_iStatus != KVI_SCRIPT_SOCKET_STATUS_DISCONNECTED))

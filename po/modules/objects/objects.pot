@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 22:24+0100\n"
+"POT-Creation-Date: 2008-10-28 23:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,6 +40,7 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:229
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:249
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:269
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/object_macros.h:121
 msgid "Widget object required"
 msgstr ""
 
@@ -478,7 +479,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:652
 #, c-format
-msgid "Value %d for port is out of range (values allowed are from 0 to 65535"
+msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:657
@@ -585,12 +586,15 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:276
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:298
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:353
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:376
 msgid "Can't find the tab "
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:395
-msgid "Unknown position 'Q%'"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:376
+msgid "Can't find the tab"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:396
+msgid "Unknown position '%Q'"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_vbox.cpp:147
@@ -634,7 +638,7 @@ msgid ""
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
-msgid "Unknown item flag: '%Q'"
+msgid "Unknown item flag '%Q'"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
@@ -812,8 +816,4 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/object_macros.h:105
 msgid "Internal error: no valid pointer for this object"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/object_macros.h:121
-msgid "Widget object requires"
 msgstr ""

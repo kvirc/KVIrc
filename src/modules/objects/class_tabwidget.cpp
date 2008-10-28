@@ -373,7 +373,7 @@ KVSO_CLASS_FUNCTION(tabwidget,changeTab)
 	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
 	if (ctrl == -1) 
 	{
-		c->warning(__tr2qs_ctx("Can't find the tab ","objects"));
+		c->warning(__tr2qs_ctx("Can't find the tab","objects"));
 		return true;
 	}
 	QPixmap * pix = g_pIconManager->getImage(szIcon);
@@ -381,6 +381,7 @@ KVSO_CLASS_FUNCTION(tabwidget,changeTab)
 	((QTabWidget *)widget())->setTabText(ctrl,szLabel);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(tabwidget,setTabPosition)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -392,11 +393,9 @@ KVSO_CLASS_FUNCTION(tabwidget,setTabPosition)
 		((QTabWidget *)widget())->setTabPosition(QTabWidget::North);
 	else if(KviQString::equalCI(szPos,"Bottom"))
 		((QTabWidget *)widget())->setTabPosition(QTabWidget::South);
-	else c->warning( __tr2qs("Unknown position 'Q%'"),&szPos);
+	else c->warning( __tr2qs("Unknown position '%Q'"),&szPos);
 	return true;
 }
-
-
 
 KVSO_CLASS_FUNCTION(tabwidget,currentChangedEvent)
 {

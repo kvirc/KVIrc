@@ -118,7 +118,7 @@ if (!__pObject)\
 	}\
 	if(!__pObject->object()->isWidgetType())\
 	{\
-		c->warning(__tr2qs_ctx("Widget object requires","objects"));\
+		c->warning(__tr2qs_ctx("Widget object required","objects"));\
 		return true;\
 	}
 #endif

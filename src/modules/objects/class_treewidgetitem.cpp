@@ -282,7 +282,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setFlags)
 			sum = sum | flag;
 		}
 		else
-			c->warning(__tr2qs("Unknown item flag: '%Q'"),&itemflags.at(i));
+			c->warning(__tr2qs("Unknown item flag '%Q'"),&itemflags.at(i));
 	}
 	if(m_pTreeWidgetItem)
 		m_pTreeWidgetItem->setFlags((Qt::ItemFlags)sum);
