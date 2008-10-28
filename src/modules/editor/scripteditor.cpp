@@ -139,8 +139,15 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 	{
 		m_pListCompletition = new QStringList();
 		QString szPath;
+
+#ifdef KVIRC_MODULES_DIR
+		szPath = KVIRC_MODULES_DIR;
+#else
 		g_pApp->getGlobalKvircDirectory(szPath,KviApp::Plugins);
+#endif
+
 		QDir d(szPath);
+
 #if defined(COMPILE_ON_WINDOWS)
 		d.setNameFilters(QStringList("kvi*.dll"));
 #elif defined(COMPILE_ON_MINGW)
