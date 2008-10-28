@@ -40,23 +40,23 @@
 	{c->warning(__tr2qs_ctx("File is not open!","objects"));return true;}
 
 // needed for $open()
-const char * const mod_tbl[] =	{
-					"Raw",
-					"ReadOnly",
-					"WriteOnly",
-					"ReadWrite",
-					"Append",
-					"Truncate"
-				  };
+const char * const mod_tbl[] = {
+	"Raw",
+	"ReadOnly",
+	"WriteOnly",
+	"ReadWrite",
+	"Append",
+	"Truncate"
+};
 
 const QIODevice::OpenMode mod_cod[] = {
-				QIODevice::Unbuffered,
-				QIODevice::ReadOnly,
-				QIODevice::WriteOnly,
-				QIODevice::ReadWrite,
-				QIODevice::Append,
-				QIODevice::Truncate
-			};
+	QIODevice::Unbuffered,
+	QIODevice::ReadOnly,
+	QIODevice::WriteOnly,
+	QIODevice::ReadWrite,
+	QIODevice::Append,
+	QIODevice::Truncate
+};
 
 #define mod_num			(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
 
@@ -268,6 +268,7 @@ KVSO_CLASS_FUNCTION(file,close)
 	m_pFile->close();
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,flush)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -282,13 +283,13 @@ KVSO_CLASS_FUNCTION(file,size)
 	c->returnValue()->setInteger((kvs_int_t)(m_pFile->size()));
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,atEnd)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
 	c->returnValue()->setInteger((kvs_int_t)(m_pFile->atEnd()));
 	return true;
 }
-
 
 KVSO_CLASS_FUNCTION(file,where)
 {
@@ -297,6 +298,7 @@ KVSO_CLASS_FUNCTION(file,where)
 	c->returnValue()->setInteger((kvs_int_t)(m_pFile->pos()));
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(file,seek)
 {
 	CHECK_INTERNAL_POINTER(m_pFile)
@@ -416,7 +418,7 @@ KVSO_CLASS_FUNCTION(file,read)
 		if (pVar->isArray())
 			c->returnValue()->setArray(pVar->array());
 		else
-			c->warning(__tr2qs_ctx("The incoming data doesn't an array","objects"));
+			c->warning(__tr2qs_ctx("The incoming data isn't an array","objects"));
 	}
 	else if(KviQString::equalCI(szType, "Dict"))
 	{
@@ -426,7 +428,7 @@ KVSO_CLASS_FUNCTION(file,read)
 		if (pVar->isHash())
 			c->returnValue()->setHash(pVar->hash());
 		else
-			c->warning(__tr2qs_ctx("The incoming data doesn't a Dictionary","objects"));
+			c->warning(__tr2qs_ctx("The incoming data isn't a Dictionary","objects"));
 	}
 	else if(KviQString::equalCI(szType, "String"))
 	{
@@ -502,9 +504,7 @@ KVSO_CLASS_FUNCTION(file,writeBlock)
 				int rlen=m_pFile->write(pData,uLen);
 				c->returnValue()->setInteger(rlen);
 				//m_pFile->flush();
-			}
-			else
-			{
+			} else {
 				c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
 				return true;
 			}
@@ -513,7 +513,7 @@ KVSO_CLASS_FUNCTION(file,writeBlock)
 		else
 		{
 			if (!pVariantData->isString()){
-				c->warning(__tr2qs_ctx("Block parameter must been a string or a memorybuffer object","objects"));
+				c->warning(__tr2qs_ctx("Block parameter must be a string or a memorybuffer object","objects"));
 				return true;
 			}
 			QString szBlock;
@@ -570,11 +570,11 @@ KVSO_CLASS_FUNCTION(file,readHexBlock)
 		byte=(unsigned char)buff[i];
 		lsb=byte & 0x0f;
 		msb=byte>>4;
-		msb>9?msb+='7':msb+='0'; 
-		lsb>9?lsb+='7':lsb+='0'; 
-		str[index++]=msb; 
+		msb>9?msb+='7':msb+='0';
+		lsb>9?lsb+='7':lsb+='0';
+		str[index++]=msb;
 		str[index++]=lsb;
-	}		
+	}
 	str[index]='\0';
 	c->returnValue()->setString(str);
 	delete str;
@@ -592,7 +592,7 @@ KVSO_CLASS_FUNCTION(file,writeHexBlock)
 		KVSO_PARAMETER("text_block",KVS_PT_STRING,0,szBlock)
 		KVSO_PARAMETER("lenght",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
 	KVSO_PARAMETERS_END(c)
-	if (szBlock.length()%2) 
+	if (szBlock.length()%2)
 	{
 		c->warning(__tr2qs_ctx("Lenght of hex string is not multiple of 2","objects"));
 		return true;
@@ -607,10 +607,9 @@ KVSO_CLASS_FUNCTION(file,writeHexBlock)
 		
 		if (((msb>='A' && msb<='F')||(msb>='0' && msb<='9')) && ((lsb>='A' && lsb<='F')|| (lsb>='0' && lsb<='9')))
 		{
-					msb>='A'?msb-='7':msb-='0';
-					lsb>='A'?lsb-='7':lsb-='0';
-		}
-		else{
+			msb>='A'?msb-='7':msb-='0';
+			lsb>='A'?lsb-='7':lsb-='0';
+		} else{
 			c->warning(__tr2qs_ctx("The hex string is not correct!","objects"));
 			return true;
 		}

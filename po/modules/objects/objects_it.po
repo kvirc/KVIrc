@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 18:59+0100\n"
-"PO-Revision-Date: 2008-10-24 21:18+0200\n"
-"Last-Translator: Elvio Basello\n"
+"POT-Creation-Date: 2008-10-28 19:21+0100\n"
+"PO-Revision-Date: 2008-10-28 19:21+0100\n"
+"Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,10 +58,8 @@ msgstr ""
 "esadecimale o tre interi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1141
-msgid ""
-"$setGeometry() requires either an array as first parameter or four integers"
-msgstr ""
-"$setGeometry() richiede sia un array come primo parametro o quattro interi"
+msgid "$setGeometry() requires either an array as first parameter or four integers"
+msgstr "$setGeometry() richiede sia un array come primo parametro o quattro interi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_http.cpp:247
 msgid "'%Q' is not a valid file path"
@@ -81,15 +79,13 @@ msgstr "Un'altra connessione in corso"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:278
 msgid "Area dimensions are out of destination size "
-msgstr ""
-"Le dimensioni dell'area sono più grandi della grandezza di destinazione"
+msgstr "Le dimensioni dell'area sono più grandi della grandezza di destinazione"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:319
-#, fuzzy
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:321
 msgid "Argument too long, using only first char"
 msgstr "Argomento troppo lungo, uso solo il primo carattere"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:344
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:346
 msgid "Argument too long, using only the first char"
 msgstr "Argomento troppo lungo, uso solo il primo carattere"
 
@@ -99,12 +95,12 @@ msgid "Bind failure"
 msgstr "Bind fallito"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:516
-msgid "Block parameter must been a string or a memorybuffer object"
-msgstr ""
+msgid "Block parameter must be a string or a memorybuffer object"
+msgstr "Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:216
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:433
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:372
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:374
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:508
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr ""
@@ -116,8 +112,8 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:211
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:428
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:499
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:367
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:487
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:369
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:489
 msgid "Buffer parameter is not an object"
 msgstr ""
 
@@ -249,7 +245,7 @@ msgstr ""
 msgid "Failed to setup a nonblocking socket"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:478
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:480
 msgid "File is not open !"
 msgstr ""
 
@@ -541,7 +537,7 @@ msgstr ""
 msgid "Processing aborted"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:330
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:332
 msgid "Read error occured!"
 msgstr ""
 
@@ -599,7 +595,7 @@ msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr "Il primo parametro non viene valutato come array né come intero"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:627
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:614
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:613
 msgid "The hex string is not correct!"
 msgstr ""
 
@@ -607,19 +603,19 @@ msgstr ""
 msgid "The hex string lenght is not a multiple of 2"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:429
-msgid "The incoming data doesn't a Dictionary"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:431
+msgid "The incoming data isn't a Dictionary"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:419
-msgid "The incoming data doesn't an array"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:421
+msgid "The incoming data isn't an array"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
 msgid "The listviewitem cannot be parentless"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:498
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:500
 msgid "The memoryBuffer object is empty: nothing will be saved"
 msgstr ""
 
@@ -671,8 +667,7 @@ msgid "There is no connection to accept!"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:1198
-msgid ""
-"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1934
@@ -761,7 +756,7 @@ msgstr ""
 msgid "Unknown widget flag '%Q'"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:439
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"
 msgstr ""
 
@@ -823,7 +818,7 @@ msgstr "Il parametro widget non è un oggetto"
 msgid "Widget, Image or Pixmap required "
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:321
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:323
 msgid "Write error occured!"
 msgstr ""
 
@@ -836,5 +831,3 @@ msgstr ""
 msgid "unknown"
 msgstr ""
 
-#~ msgid " I can't find the specified file '%Q'."
-#~ msgstr "Non trovo il file '%Q' specificato."
