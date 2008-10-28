@@ -735,8 +735,15 @@ void KviApp::setupBegin()
 {
 	//We must do the setup...ask the user..
 	QString szSetupLib;
+
+#ifdef KVIRC_MODULES_DIR
+	szSetupLib = KVIRC_MODULES_DIR;
+#else
 	getGlobalKvircDirectory(szSetupLib,KviApp::Modules);
-	KviQString::ensureLastCharIs(szSetupLib,KVI_PATH_SEPARATOR_CHAR);
+#endif
+
+	KviQString::ensureLastCharIs(szSetupLib, KVI_PATH_SEPARATOR_CHAR);
+
 #if defined(COMPILE_ON_WINDOWS)
 	szSetupLib.append("kvisetup.dll");
 #elif defined(COMPILE_ON_MINGW)

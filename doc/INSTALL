@@ -305,7 +305,8 @@ General notes for the installation of the 4.0 release of KVIrc
 
     -DLIB_SUFFIX=suffix
         It will install libkvilib and kvirc modules under ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
-	 directory. It default to an empty suffix. Mainly used for 64 bit distros (-DLIB_SUFFIX=64).
+        directory. It defaults to an empty suffix. Mainly used for 64 bit distros
+        (-DLIB_SUFFIX=64).
 
     -DCOEXISTENCE
         Append version information to kvirc and libkvilib, so that different
