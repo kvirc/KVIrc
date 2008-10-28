@@ -1353,7 +1353,7 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 			iColB=buffer.toInt(&bOk2,16);
 			if (!bOk || !bOk1 || !bOk2)
 			{
-				c->warning(__tr2qs("Not an hex digits"));
+				c->warning(__tr2qs("Not an hex digit"));
 				return true;
 			}
 			if (widget())

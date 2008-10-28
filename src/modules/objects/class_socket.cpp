@@ -724,7 +724,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 				m_bIPv6 = true;
 			} else {
 #else
-				c->warning(__tr2qs_ctx("Invalid IP address specified (%Q)","objects"),&m_szLocalIp);
+				c->warning(__tr2qs_ctx("Invalid IP address (%Q)","objects"),&m_szLocalIp);
 				c->returnValue()->setBoolean(false);
 				reset();
 				return true;

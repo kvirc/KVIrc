@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 19:21+0100\n"
+"POT-Creation-Date: 2008-10-28 22:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -217,6 +217,7 @@ msgid "A string of 6 hex digits is required"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1269
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1356
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:890
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1091
 msgid "Not an hex digit"
@@ -226,10 +227,6 @@ msgstr ""
 msgid ""
 "$setForegroundColor requires either an array as first parameter, one hex "
 "string or three integers"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1356
-msgid "Not an hex digits"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1371
@@ -450,6 +447,7 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:512
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:40
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:480
 msgid "File is not open!"
 msgstr ""
 
@@ -493,7 +491,8 @@ msgid "No IPv6 support in this executable"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:727
-msgid "Invalid IP address specified (%Q)"
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:941
+msgid "Invalid IP address (%Q)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:748
@@ -521,10 +520,6 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:935
 msgid "Invalid IP address "
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:941
-msgid "Invalid IP address (%Q)"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:963
@@ -801,10 +796,6 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:480
-msgid "File is not open !"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:500

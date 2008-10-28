@@ -477,7 +477,7 @@ KVSO_CLASS_FUNCTION(file,writeBlock)
 			KVSO_PARAMETER("string_or_hobject",KVS_PT_VARIANT,0,pVariantData)
 			KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pFile->isOpen())c->warning(__tr2qs("File is not open !"));
+	if(!m_pFile->isOpen())c->warning(__tr2qs("File is not open!"));
 	else
 	{
 		if (pVariantData->isHObject())

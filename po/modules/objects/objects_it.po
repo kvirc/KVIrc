@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 19:21+0100\n"
-"PO-Revision-Date: 2008-10-28 19:21+0100\n"
+"POT-Creation-Date: 2008-10-28 22:24+0100\n"
+"PO-Revision-Date: 2008-10-28 22:25+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -103,11 +103,11 @@ msgstr "Il parametro di blocco deve essere una stringa o un oggetto memorybuffer
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:374
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:508
 msgid "Buffer parameter is not a memorybuffer object"
-msgstr ""
+msgstr "Il parametro buffer non è un oggetto memorybuffer"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:523
 msgid "Buffer parameter is not a memorybuffer or file object"
-msgstr ""
+msgstr "Il parametro buffer non è un oggetto memorybuffer o file"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:211
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:428
@@ -115,15 +115,15 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:369
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:489
 msgid "Buffer parameter is not an object"
-msgstr ""
+msgstr "Il parametro buffer non è un oggetto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_buttongroup.cpp:95
 msgid "Buttongroup supports only checkbox and radiobox object"
-msgstr ""
+msgstr "Il buttongroup supporta solo oggetti checkbox e radiobutton"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_toolbutton.cpp:284
 msgid "Can't add a non-popupmenu object"
-msgstr ""
+msgstr "Non posso aggiungere un oggetto non popupmenu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1776
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wizard.cpp:146
@@ -131,11 +131,11 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_window.cpp:143
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_window.cpp:148
 msgid "Can't add a non-widget object"
-msgstr ""
+msgstr "Non posso aggiungere un oggetto non widget"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:102
 msgid "Can't add a null object"
-msgstr ""
+msgstr "Non posso aggiungere un oggetto nullo"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:257
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:276
@@ -143,31 +143,33 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:353
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tabwidget.cpp:376
 msgid "Can't find the tab "
-msgstr ""
+msgstr "Non trovo la scheda"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:308
 msgid "Can't insert a non-widget object"
-msgstr ""
+msgstr "Non posso inserire un oggetto non widget"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:303
 msgid "Can't insert the listwidget itself!"
-msgstr ""
+msgstr "Non posso inserire la stessa listwidget!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:121
 msgid "Can't set a non-widget object to be the main widget of a dock window"
 msgstr ""
+"Non posso impostare un oggetto non widget come widget principale di una "
+"finestra dock"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:1052
 msgid "Can't start the DNS thread"
-msgstr ""
+msgstr "Non posso avviare il processo DNS"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_memorybuffer.cpp:110
 msgid "Cannot open file '%Q' for writing"
-msgstr ""
+msgstr "Non posso aprire il file '%Q' in scrittura"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:183
 msgid "Class '%Q' is not definited"
-msgstr ""
+msgstr "La classe '%Q' non è definita"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1509
 msgid "Color name or triplette RGB/HSV values required"
@@ -180,146 +182,141 @@ msgstr "Richiesto nome del colore o tripletta RGB/HSV"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:1023
 msgid "Connect attempt timed out"
-msgstr ""
+msgstr "Tentativo di connessione scaduto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:996
 msgid "Connect failure: "
-msgstr ""
+msgstr "Connessione fallita: "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:358
 msgid "Data is not a memorybuffer object or string"
-msgstr ""
+msgstr "I dati non sono un oggetto memorybuffer o una stringa"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:339
 msgid "Data parameter is not a memorybuffer object"
-msgstr ""
+msgstr "I dati non sono un oggetto memorybuffer"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:330
 msgid "Data parameter is not an object"
-msgstr ""
+msgstr "I dati non sono un oggetto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:653
 msgid "Destination is not an object"
-msgstr ""
+msgstr "La destinazione non è un oggetto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:268
 msgid "Destination must be a pixmap object"
-msgstr ""
+msgstr "La destinazione deve essere un oggetto pixmap"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:262
 msgid "Destination parameter is not an object"
-msgstr ""
+msgstr "Il parametro destinazione non è un oggetto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:228
 msgid "Empty filename string"
-msgstr ""
+msgstr "Nome del file vuoto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:151
 msgid "Error in KVS class implementation: processing aborted"
-msgstr ""
+msgstr "Errore nell'implementazione della classe KVS: processo annullato"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:162
 #, c-format
 msgid "Error near line %d, column %d"
-msgstr ""
+msgstr "Errore vicino alla riga %d, colonna %d"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
 msgid ""
 "Error occured: the suitable file '%Q' is not of the correct format or it is "
 "not a valid icon number."
 msgstr ""
+"Errore: il file '%Q' non è nel formato corretto o non è un valido numero di "
+"icona"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:963
 msgid "Failed to create the socket"
-msgstr ""
+msgstr "Creazione della socket fallita"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wrapper.cpp:164
 msgid "Failed to find one of the wrap path widgets (%Q::%Q)"
-msgstr ""
+msgstr "Una delle widget del percorso (%Q::%Q) non è stata trovata"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_wrapper.cpp:173
 msgid "Failed to find the widget to wrap"
-msgstr ""
+msgstr "La widget da agganciare non è stata trovata"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:975
 msgid "Failed to setup a nonblocking socket"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:480
-msgid "File is not open !"
-msgstr ""
+msgstr "Creazione della socket non bloccante fallita"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:512
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:40
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:480
 msgid "File is not open!"
-msgstr ""
+msgstr "Il file non è aperto!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_http.cpp:181
 msgid "Host '%Q' is not a valid url"
-msgstr ""
+msgstr "Host '%Q' non è un url valido"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1131
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:193
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tbrowser.cpp:103
 msgid "I can't find the specified file '%Q'."
-msgstr ""
+msgstr "Non trovo il file '%Q' specificato."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1138
-#, fuzzy
 msgid "I cannot read the file '%Q'."
 msgstr "Non posso leggere il file '%Q'."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_popupmenu.cpp:215
 msgid "Icon '%Q' doesn't exist"
-msgstr ""
+msgstr "L'icona '%Q' non esiste"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:553
 msgid "Inexisting class object for objects.name"
-msgstr ""
+msgstr "Oggetto classe inesistente per objects.name"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:262
 msgid "Inexisting source object for objects.connect"
-msgstr ""
+msgstr "Oggetto sorgente inesistente per objects.connect"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:601
 msgid "Inexisting source object for objects.disconnect"
-msgstr ""
+msgstr "Oggetto sorgente inesistente per objects.disconnect"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:257
 msgid "Inexisting target object for objects.connect"
-msgstr ""
+msgstr "Oggetto target inesistente per objects.connect"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:596
 msgid "Inexisting target object for objects.disconnect"
-msgstr ""
+msgstr "Oggetto target inesistente per objects.disconnect"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:267
 msgid "Inexisting target slot '%Q' for objects.connect"
-msgstr ""
+msgstr "Slot target '%Q' inesistente per objects.connect"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/object_macros.h:105
 msgid "Internal error: no valid pointer for this object"
-msgstr ""
+msgstr "Errore interno: nessun puntatore valido per questo oggetto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:935
 msgid "Invalid IP address "
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:941
-msgid "Invalid IP address (%Q)"
-msgstr ""
+msgstr "Indirizzo IP invalido "
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:727
-msgid "Invalid IP address specified (%Q)"
-msgstr ""
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:941
+msgid "Invalid IP address (%Q)"
+msgstr "Indirizzo IP invalido (%Q)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:193
 msgid "Invalid dock area specified"
-msgstr ""
+msgstr "Area dock invalida"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:331
 msgid "Invalid insertion Policy '%Q'"
-msgstr ""
+msgstr "Policy di inserimento '%Q' invalida"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1109
 msgid "Invalid mode '%Q'"
@@ -330,31 +327,33 @@ msgid ""
 "Invalid object handle passed as parameter (the object is no longer "
 "existing ?)"
 msgstr ""
+"Il gestore dell'oggetto passato come parametro è invalido (l'oggetto non "
+"esiste più?)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1689
 msgid "Invalid parameters"
-msgstr ""
+msgstr "Parametri invalidi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_layout.cpp:266
 msgid "Invalid resize mode defaulting to Auto"
-msgstr ""
+msgstr "Modo di ridimensionamento invalido, passo a Auto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidget.cpp:397
 msgid "Invalid selection mode '%Q'"
-msgstr ""
+msgstr "Modo di selezione '%Q' invalido"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:272
 msgid "Invalid selection mode '%Q' assuming single"
-msgstr ""
+msgstr "Modo di selezione '%Q' invalido, assumo single"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:763
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:784
 msgid "Invalid socket address"
-msgstr ""
+msgstr "Indirizzo socket invalido"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:572
 msgid "Invalid socket object specified (it doesn't inherit from socket)"
-msgstr ""
+msgstr "Oggetto socket invalido (non eredità dalla socket)"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:177
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:194
@@ -362,55 +361,52 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:209
 #, c-format
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
-msgstr ""
+msgstr "L'elemento indice [%d] è troppo grosso - passo a $count() - 1 [%d]"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:597
 msgid "Lenght of hex string is not multiple of 2"
-msgstr ""
+msgstr "La lunghezza della stringa esadecimale non è un multiplo di 2"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:802
 msgid "Listen failure"
-msgstr ""
+msgstr "Listen fallita"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:705
 msgid "No IPv6 support in this executable"
-msgstr ""
+msgstr "Non c'è il supporto IPv6 in questo eseguibile"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1771
 msgid "No Layout associated to the widget "
-msgstr ""
+msgstr "Non c'è Layout associato alla widget"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:566
 msgid "No socket object specified"
-msgstr ""
+msgstr "Nessun oggetto socket specificato"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:174
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_combobox.cpp:282
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_listwidget.cpp:188
 msgid "No string parameter given - using empty string"
-msgstr ""
+msgstr "Nessun parametro stringa dato - uso una stringa vuota"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:399
 msgid "No such line number"
-msgstr ""
+msgstr "Nessun numero di linea"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:249
 msgid "No such open mode '%Q'"
-msgstr ""
+msgstr "Nessun modo di apertura '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1269
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1356
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:890
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1091
 msgid "Not an hex digit"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1356
-msgid "Not an hex digits"
-msgstr ""
+msgstr "Non è una cifra esadecimale"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1876
 msgid "Null mask"
-msgstr ""
+msgstr "Maschera nulla"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:851
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_button.cpp:131
@@ -419,11 +415,11 @@ msgstr "Oggetto Pixmap richiesto!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/libkviobjects.cpp:409
 msgid "Object does not exists"
-msgstr ""
+msgstr "L'oggetto non esiste"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_dockwindow.cpp:115
 msgid "Object in invalid state"
-msgstr ""
+msgstr "L'oggetto non è valido"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:306
 msgid "Offset height area is out of pixmap size "
