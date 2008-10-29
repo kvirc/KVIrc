@@ -95,6 +95,7 @@
 #include <QTextCodec>
 #include <QMetaObject>
 #include <QTextDocument>
+#include <QDir>
 
 #ifdef COMPILE_SSL_SUPPORT
 	#include "kvi_ssl.h"
@@ -103,6 +104,7 @@
 #ifdef COMPILE_ON_WINDOWS
 	#include <QPluginLoader>
 #endif
+
 
 #include <stdlib.h> // rand & srand
 #include <time.h> // time() in srand()
@@ -223,6 +225,14 @@ void KviApp::setup()
 	KviStringConversion::init(m_szGlobalKvircDir,m_szLocalKvircDir);
 
 	g_pIconManager = new KviIconManager();
+// add KVIrc common dirs to QT searchpath
+	QString szPath;
+	getLocalKvircDirectory(szPath,None,"avatars");
+	QDir::addSearchPath("avatars",szPath);
+	getLocalKvircDirectory(szPath,None,"pics");
+	QDir::addSearchPath("pics",szPath);
+	getLocalKvircDirectory(szPath,None,"audio");
+	QDir::addSearchPath("audio",szPath);
 
 #ifdef COMPILE_ON_WINDOWS
 	//need to load image plugins:(
