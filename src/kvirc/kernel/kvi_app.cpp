@@ -95,6 +95,17 @@
 #include <QTextCodec>
 #include <QMetaObject>
 #include <QTextDocument>
+
+// HACK X11 defines Unsorted which conflicts with QDir's
+#ifdef Unsorted
+	#undef Unsorted
+#endif
+
+#ifdef None
+	#undef None
+#endif
+
+
 #include <QDir>
 
 #ifdef COMPILE_SSL_SUPPORT
@@ -225,7 +236,8 @@ void KviApp::setup()
 	KviStringConversion::init(m_szGlobalKvircDir,m_szLocalKvircDir);
 
 	g_pIconManager = new KviIconManager();
-// add KVIrc common dirs to QT searchpath
+
+	// add KVIrc common dirs to QT searchpath
 	QString szPath;
 	getLocalKvircDirectory(szPath,None,"avatars");
 	QDir::addSearchPath("avatars",szPath);
