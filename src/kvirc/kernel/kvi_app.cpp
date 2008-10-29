@@ -96,7 +96,11 @@
 #include <QMetaObject>
 #include <QTextDocument>
 
-// HACK X11 defines Unsorted which conflicts with QDir's
+/*
+HACK These 2 hacks are defined because X11 defines Unsorted and None
+which conflicts with QDir and KviApp::KvircSubdir
+DO NOT REMOVE THEM EVEN IF THEY ARE DEFINED ALSO IN kvi_app.h
+*/
 #ifdef Unsorted
 	#undef Unsorted
 #endif

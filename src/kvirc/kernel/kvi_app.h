@@ -69,6 +69,13 @@ typedef struct _KviPendingAvatarChange
 	QString      szHost;
 } KviPendingAvatarChange;
 
+#ifdef Unsorted
+	#undef Unsorted
+#endif
+#ifdef None
+	#undef None
+#endif
+
 class KVIRC_API KviApp : public KviTalApplication
 {
 	friend class KviFrame;
