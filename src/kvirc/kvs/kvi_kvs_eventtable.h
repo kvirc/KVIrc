@@ -228,6 +228,10 @@
 * \def KviEvent_OnDeUserOp Someone has given a user the -u flag
 * \def KviEvent_OnMeUserOp Someone has given the local user the +u flag
 * \def KviEvent_OnMeDeUserOp Someone has given the local user the -u flag
+* \def KviEvent_OnIrcOp Someone has given a user the +O flag
+* \def KviEvent_OnDeIrcOp Someone has given a user the -O flag
+* \def KviEvent_OnMeIrcOp Someone has given the local user the +O flag
+* \def KviEvent_OnMeDeIrcOp Someone has given the local user the -O flag
 */
 #define KviEvent_OnChannelModeChange        64
 #define KviEvent_OnUserMode                 65
@@ -274,6 +278,11 @@
 #define KviEvent_OnDeUserOp                106
 #define KviEvent_OnMeUserOp                107
 #define KviEvent_OnMeDeUserOp              108
+#define KviEvent_OnIrcOp                   109
+#define KviEvent_OnDeIrcOp                 110
+#define KviEvent_OnMeIrcOp                 111
+#define KviEvent_OnMeDeIrcOp               112
+
 
 // Services
 /**
@@ -281,9 +290,9 @@
 * \def KviEvent_OnNickServNotice A notice from NickServ has been received
 * \def KviEvent_OnNickServAuth Triggered when IRCd sets a registered user mode.
 */
-#define KviEvent_OnChanServNotice 109
-#define KviEvent_OnNickServNotice 110
-#define KviEvent_OnNickServAuth   111
+#define KviEvent_OnChanServNotice 113
+#define KviEvent_OnNickServNotice 114
+#define KviEvent_OnNickServAuth   115
 
 // CTCPs
 /**
@@ -306,24 +315,24 @@
 * \def KviEvent_OnDCCFileTransferSuccess Triggered when a DCC File transfer succeeds
 * \def KviEvent_OnDCCFileTransferFailed Triggered when a DCC File transfer fails
 */
-#define KviEvent_OnAction                              112
-#define KviEvent_OnMeAction                            113
-#define KviEvent_OnCTCPRequest                         114
-#define KviEvent_OnCTCPReply                           115
-#define KviEvent_OnCTCPFlood                           116
-#define KviEvent_OnDCCSessionCreated                   117
-#define KviEvent_OnDCCSessionDestroyed                 118
-#define KviEvent_OnDCCChatWindowCreated                119
-#define KviEvent_OnDCCChatConnectionInProgress         120
-#define KviEvent_OnDCCChatConnected                    121
-#define KviEvent_OnDCCChatMessage                      122
-#define KviEvent_OnDCCChatError                        123
-#define KviEvent_OnDCCChatDisconnected                 124
-#define KviEvent_OnDCCChatWindowClosing                125
-#define KviEvent_OnDCCFileTransferConnectionInProgress 126
-#define KviEvent_OnDCCFileTransferBegin                127
-#define KviEvent_OnDCCFileTransferSuccess              128
-#define KviEvent_OnDCCFileTransferFailed               129
+#define KviEvent_OnAction                              116
+#define KviEvent_OnMeAction                            117
+#define KviEvent_OnCTCPRequest                         118
+#define KviEvent_OnCTCPReply                           119
+#define KviEvent_OnCTCPFlood                           120
+#define KviEvent_OnDCCSessionCreated                   121
+#define KviEvent_OnDCCSessionDestroyed                 122
+#define KviEvent_OnDCCChatWindowCreated                123
+#define KviEvent_OnDCCChatConnectionInProgress         124
+#define KviEvent_OnDCCChatConnected                    125
+#define KviEvent_OnDCCChatMessage                      126
+#define KviEvent_OnDCCChatError                        127
+#define KviEvent_OnDCCChatDisconnected                 128
+#define KviEvent_OnDCCChatWindowClosing                129
+#define KviEvent_OnDCCFileTransferConnectionInProgress 130
+#define KviEvent_OnDCCFileTransferBegin                131
+#define KviEvent_OnDCCFileTransferSuccess              132
+#define KviEvent_OnDCCFileTransferFailed               133
 
 // Link clicks
 /**
@@ -339,19 +348,19 @@
 * \def KviEvent_OnChannelNickDefaultActionRequest Nicknames double click customization
 * \def KviEvent_OnQueryNickDefaultActionRequest Query double click customization
 */
-#define KviEvent_OnChannelNickLinkClick            130
-#define KviEvent_OnQueryNickLinkClick              131
-#define KviEvent_OnConsoleNickLinkClick            132
-#define KviEvent_OnHostLinkClick                   133
-#define KviEvent_OnURLLinkClick                    134
-#define KviEvent_OnChannelLinkClick                135
-#define KviEvent_OnServerLinkClick                 136
-#define KviEvent_OnTextViewDoubleClicked           137
-#define KviEvent_OnNickLinkDefaultActionRequest    138
-#define KviEvent_OnChannelNickDefaultActionRequest 139
-#define KviEvent_OnQueryNickDefaultActionRequest   140
+#define KviEvent_OnChannelNickLinkClick            134
+#define KviEvent_OnQueryNickLinkClick              135
+#define KviEvent_OnConsoleNickLinkClick            136
+#define KviEvent_OnHostLinkClick                   137
+#define KviEvent_OnURLLinkClick                    138
+#define KviEvent_OnChannelLinkClick                139
+#define KviEvent_OnServerLinkClick                 140
+#define KviEvent_OnTextViewDoubleClicked           141
+#define KviEvent_OnNickLinkDefaultActionRequest    142
+#define KviEvent_OnChannelNickDefaultActionRequest 143
+#define KviEvent_OnQueryNickDefaultActionRequest   144
 
 /** \def KVI_KVS_NUM_APP_EVENTS Defines the number of events */
-#define KVI_KVS_NUM_APP_EVENTS 141
+#define KVI_KVS_NUM_APP_EVENTS 145
 
 #endif //_KVI_KVS_EVENTTABLE_H_

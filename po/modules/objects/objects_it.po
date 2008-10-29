@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-10-28 23:05+0100\n"
-"PO-Revision-Date: 2008-10-28 23:07+0100\n"
+"PO-Revision-Date: 2008-10-28 23:10+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -426,11 +426,11 @@ msgstr "L'oggetto non è valido"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:306
 msgid "Offset height area is out of pixmap size "
-msgstr ""
+msgstr "L'altezza dell'area di offset è fuori dalle dimensioni della pixmap"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:301
 msgid "Offset width area is out of pixmap size "
-msgstr ""
+msgstr "La larghezza dell'area di offset è fuori dalle dimensioni della pixmap"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:593
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:628
@@ -698,7 +698,7 @@ msgstr "Allineamento '%Q' sconosciuto"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:144
 #, fuzzy
 msgid "Unknown aspect ratio: using default value IgnoreAspectRatio"
-msgstr "Proporzioni sconosciute: uso il valore IgnoreAspectRatio"
+msgstr "Proporzioni sconosciute: uso il valore predefinito IgnoreAspectRatio"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1444
 msgid "Unknown brush style %Q"
@@ -747,13 +747,14 @@ msgid "Unknown text position '%Q'"
 msgstr "Posizione del testo '%Q' sconosciuta"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_slider.cpp:268
+#, fuzzy
 msgid "Unknown tickmark '%Q'"
-msgstr ""
+msgstr "Tickmark '%Q' sconosciuto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:148
 #, fuzzy
 msgid "Unknown tranformation mode: using default value Fast"
-msgstr "Modo di trasformazione sconosciuto: uso il predefinito Fast"
+msgstr "Modo di trasformazione sconosciuto: uso il valore predefinito Fast"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1901
 msgid "Unknown widget attribute '%Q'"

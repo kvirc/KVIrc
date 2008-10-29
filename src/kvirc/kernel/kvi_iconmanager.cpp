@@ -344,7 +344,12 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"update", // 292
 	"notupdate", // 293
 	"failupdate", // 294
-	"unreadtext" // 295
+	"unreadtext", // 295
+	"ircop", // 296
+	"ircopaway", // 297
+	"deircop", // 298
+	"meircop", // 299
+	"medeircop" // 300
 };
 
 KviIconWidget::KviIconWidget()

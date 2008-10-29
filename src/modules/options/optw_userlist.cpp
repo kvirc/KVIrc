@@ -54,6 +54,7 @@ KviUserListLookForegroundOptionsWidget::KviUserListLookForegroundOptionsWidget(Q
 	KviTalGroupBox * g = addGroupBox(0,1,1,1,Qt::Horizontal,__tr2qs_ctx("Nickname Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorUserListViewNormalForeground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorUserListViewSelectionForeground);
+	addColorSelector(g,__tr2qs_ctx("IRC Op:","options"),KviOption_colorUserListViewIrcOpForeground);
 	addColorSelector(g,__tr2qs_ctx("Channel owner:","options"),KviOption_colorUserListViewChanOwnerForeground);
 	addColorSelector(g,__tr2qs_ctx("Channel admin:","options"),KviOption_colorUserListViewChanAdminForeground);
 	addColorSelector(g,__tr2qs_ctx("Op:","options"),KviOption_colorUserListViewOpForeground);
@@ -246,4 +247,4 @@ KviUserListFeaturesOptionsWidget::~KviUserListFeaturesOptionsWidget()
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_userlist.moc"
-#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+#endif //COMPILE_USE_STANDALONE_MOC_SOURCES

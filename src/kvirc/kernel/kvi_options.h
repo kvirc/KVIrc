@@ -471,8 +471,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_colorIrcViewMarkLine 53                                         /* look & feel::interface look::ircvew */
 #define KviOption_colorUserListViewAwayForeground 54                              /* look & feel::interface look::userlist */
 #define KviOption_colorUserListViewOwnForeground 55                              /* look & feel::interface look::userlist */
+#define KviOption_colorUserListViewIrcOpForeground 56                                /* look & feel::interface look::userlist */
 
-#define KVI_NUM_COLOR_OPTIONS 56
+#define KVI_NUM_COLOR_OPTIONS 57
 
 
 
@@ -616,7 +617,7 @@ namespace KviIdentdOutputMode {
 #define KVI_MSGTYPE_OPTIONS_PREFIX "msgtype"
 #define KVI_MSGTYPE_OPTIONS_PREFIX_LEN 7
 
-#define KVI_NUM_MSGTYPE_OPTIONS 137
+#define KVI_NUM_MSGTYPE_OPTIONS 141
 
 
 

@@ -77,11 +77,12 @@ typedef struct _KviUserListViewUserStats
 	unsigned int uActiveOp;  /**< active operators in the last 10 minutes */
 	unsigned int uHot;       /**< hot active users */
 	unsigned int uHotOp;     /**< hot operators */
+	unsigned int uIrcOp;     /**< total ircops */
+	unsigned int uChanOwner; /**< total channel owners */
+	unsigned int uChanAdmin; /**< total channel administrators */
 	unsigned int uOp;        /**< total operators */
 	unsigned int uHalfOp;    /**< total halfops */
 	unsigned int uVoiced;    /**< total voiced users */
-	unsigned int uChanAdmin; /**< total channel administrators */
-	unsigned int uChanOwner; /**< total channel owners */
 	unsigned int uUserOp;    /**< total userops (uops) */
 	int iAvgTemperature;     /**< average user temperature */
 } KviUserListViewUserStats;
@@ -254,11 +255,12 @@ protected:
 	KviUserListViewArea                           * m_pViewArea;
 	KviIrcUserDataBase                            * m_pIrcUserDataBase;
 	int                                             m_iSelectedCount;
-	int                                             m_iOpCount;
-	int                                             m_iVoiceCount;
-	int                                             m_iHalfOpCount;
-	int                                             m_iChanAdminCount;
+	int                                             m_iIrcOpCount;
 	int                                             m_iChanOwnerCount;
+	int                                             m_iChanAdminCount;
+	int                                             m_iOpCount;
+	int                                             m_iHalfOpCount;
+	int                                             m_iVoiceCount;
 	int                                             m_iUserOpCount;
 	int                                             m_iTotalHeight;
 	int                                             m_iFontHeight;
@@ -395,16 +397,10 @@ public:
 	int selectedCount(){ return m_iSelectedCount; };
 
 	/**
-	* \brief Returns the number of operators
+	* \brief Returns the number of ircops
 	* \return int
 	*/
-	int opCount(){ return m_iOpCount; };
-
-	/**
-	* \brief Returns the number of voices
-	* \return int
-	*/
-	int voiceCount(){ return m_iVoiceCount; };
+	int ircOpCount(){ return m_iIrcOpCount; };
 
 	/**
 	* \brief Returns the number of chan owners
@@ -419,10 +415,22 @@ public:
 	int chanAdminCount(){ return m_iChanAdminCount; };
 
 	/**
+	* \brief Returns the number of operators
+	* \return int
+	*/
+	int opCount(){ return m_iOpCount; };
+
+	/**
 	* \brief Returns the number of half operators
 	* \return int
 	*/
 	int halfOpCount(){ return m_iHalfOpCount; };
+
+	/**
+	* \brief Returns the number of voices
+	* \return int
+	*/
+	int voiceCount(){ return m_iVoiceCount; };
 
 	/**
 	* \brief Returns the number of user operators
@@ -544,6 +552,14 @@ public:
 	int flags(const QString & szNick);
 
 	/**
+	* \brief Returns true if the user is an ircop
+	* \param szNick The nick to moderate
+	* \param bAtLeast Whether the user is at least a chan owner
+	* \return bool
+	*/
+	bool isIrcOp(const QString & szNick, bool bAtLeast = false);
+
+	/**
 	* \brief Returns true if the user is a chan owner
 	* \param szNick The nick to moderate
 	* \param bAtLeast Whether the user is at least a chan owner
@@ -590,6 +606,14 @@ public:
 	* \return bool
 	*/
 	bool isUserOp(const QString & szNick, bool bAtLeast = false);
+
+	/**
+	* \brief Sets the ircop mode
+	* \param szNick The nick to moderate
+	* \param bIrcOp Whether to moderate the user
+	* \return bool
+	*/
+	bool setIrcOp(const QString & szNick, bool bIrcOp);
 
 	/**
 	* \brief Sets the chan owner mode

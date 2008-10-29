@@ -2862,6 +2862,106 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		"$1 = source username\n" \
 		"$2 = source hostname"),
 
+	/*
+		@doc: onircop
+		@type:
+			event
+		@title:
+			OnIrcOp
+		@short:
+			Someone has given a user the +O flag
+		@parameters:
+			$0 = source nick
+			$1 = source username
+			$2 = source host
+			$3 = ircopped nick
+		@window:
+			Channels window
+		@description:
+			Triggered when someone sets a +O (has made IrcOp) flag on a user of the active channel.
+		@seealso:
+			[event:ondeircop]OnDeIrcOp[/event]
+	*/
+	EVENT("OnIrcOp", \
+		"$0 = source nick\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname\n" \
+		"$3 = ircopped nick"),
+
+	/*
+		@doc: ondeircop
+		@type:
+			event
+		@title:
+			OnDeIrcOp
+		@short:
+			Someone has given a user the -O flag
+		@parameters:
+			$0 = source nick
+			$1 = source username
+			$2 = source host
+			$3 = deircopped nick
+		@window:
+			Channels window
+		@description:
+			Triggered when someone sets a -O (DeIrcOp) flag on a user in the active channel.
+		@seealso:
+			[event:onircop]OnIrcOp[/event]
+	*/
+	EVENT("OnDeIrcOp", \
+		"$0 = source nick\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname\n" \
+		"$3 = deircopped nick"),
+
+	/*
+		@doc: onmeircop
+		@type:
+			event
+		@title:
+			OnMeIrcOp
+		@short:
+			Someone has given the +O flag to the local user
+		@parameters:
+			$0 = source nick
+			$1 = source username
+			$2 = source host
+		@window:
+			Channels window
+		@description:
+			Triggered when someone sets a +O (has made IrcOp) flag on the local user in the active channel.
+		@seealso:
+			[event:onmedeircop]OnMeDeIrcOp[/event]
+	*/
+	EVENT("OnMeIrcOp", \
+		"$0 = source nick\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname"),
+
+	/*
+		@doc: onmedeircop
+		@type:
+			event
+		@title:
+			OnMeDeIrcOp
+		@short:
+			Someone has given the -O flag to the local user
+		@parameters:
+			$0 = source nick
+			$1 = source username
+			$2 = source host
+		@window:
+			Channels window
+		@description:
+			Triggered when someone sets a -O (DeIrcOp) flag on the local user in the active channel.
+		@seealso:
+			[event:onmeircop]OnMeIrcOp[/event]
+	*/
+	EVENT("OnMeDeIrcOp", \
+		"$0 = source nick\n" \
+		"$1 = source username\n" \
+		"$2 = source hostname"),
+
 	// Services
 	/*
 		@doc: onchanservnotice

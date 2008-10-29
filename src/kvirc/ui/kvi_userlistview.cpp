@@ -205,12 +205,13 @@ bool KviUserListEntry::color(QColor & color)
 		color = KVI_OPTION_COLOR(KviOption_colorUserListViewNormalForeground);
 		return true;
 	} else {
-		color = KVI_OPTION_COLOR((m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
+		color = KVI_OPTION_COLOR((m_iFlags & KVI_USERFLAG_IRCOP) ? \
+			KviOption_colorUserListViewIrcOpForeground : ((m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 			KviOption_colorUserListViewChanOwnerForeground : ((m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
 			KviOption_colorUserListViewChanAdminForeground : ((m_iFlags & KVI_USERFLAG_OP) ? \
 			KviOption_colorUserListViewOpForeground : ((m_iFlags & KVI_USERFLAG_HALFOP) ? \
 			KviOption_colorUserListViewHalfOpForeground : ((m_iFlags & KVI_USERFLAG_VOICE) ? \
-			KviOption_colorUserListViewVoiceForeground : KviOption_colorUserListViewUserOpForeground)))));
+			KviOption_colorUserListViewVoiceForeground : KviOption_colorUserListViewUserOpForeground))))));
 			return true;
 	}
 	return true;
@@ -594,84 +595,102 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 			iFlag = KVI_USERFLAG_CHANOWNER;
 			m_iChanOwnerCount++;
 		}
+
+		if(pUserEntry->m_iFlags & KVI_USERFLAG_IRCOP)
+		{
+			iFlag = KVI_USERFLAG_IRCOP;
+			m_iIrcOpCount++;
+		}
 	}
 
 	if(m_pHeadItem)
 	{
 		KviUserListEntry * pEntry = m_pHeadItem;
 
-		if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
+		if(!(pUserEntry->m_iFlags & KVI_USERFLAG_IRCOP))
 		{
-			// the new user is not a channel owner...
-			// skip the channel owners
-			while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
+			// the new user is not an ircop...
+			// skip the ircops
+			while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_IRCOP))
 			{
 				if(pEntry == m_pTopItem)
 					bGotTopItem = true;
 				pEntry = pEntry->m_pNext;
 			}
 
-			if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
+			if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
 			{
-				// the new user is not a channel admin...
-				// skip chan admins
-				while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
+				// the new user is not a channel owner...
+				// skip the channel owners
+				while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
 				{
 					if(pEntry == m_pTopItem)
 						bGotTopItem = true;
 					pEntry = pEntry->m_pNext;
 				}
 
-				// is operator ?
-				if(!(pUserEntry->m_iFlags & KVI_USERFLAG_OP))
+				if(!(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
 				{
-					// the new user is not an op...
-					// skip ops
-					while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_OP))
+					// the new user is not a channel admin...
+					// skip chan admins
+					while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN))
 					{
 						if(pEntry == m_pTopItem)
 							bGotTopItem = true;
 						pEntry = pEntry->m_pNext;
 					}
 
-					// is half oped ?
-					if(!(pUserEntry->m_iFlags & KVI_USERFLAG_HALFOP))
+					// is operator ?
+					if(!(pUserEntry->m_iFlags & KVI_USERFLAG_OP))
 					{
-						// nope , skip halfops
-						while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_HALFOP))
+						// the new user is not an op...
+						// skip ops
+						while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_OP))
 						{
 							if(pEntry == m_pTopItem)
 								bGotTopItem = true;
 							pEntry = pEntry->m_pNext;
 						}
 
-						// is voiced ?
-						if(!(pUserEntry->m_iFlags & KVI_USERFLAG_VOICE))
+						// is half oped ?
+						if(!(pUserEntry->m_iFlags & KVI_USERFLAG_HALFOP))
 						{
-							// nope , not voiced so skip voiced users
-							while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_VOICE))
+							// nope , skip halfops
+							while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_HALFOP))
 							{
 								if(pEntry == m_pTopItem)
 									bGotTopItem = true;
 								pEntry = pEntry->m_pNext;
 							}
 
-							// is userop'd?
-							if(!(pUserEntry->m_iFlags & KVI_USERFLAG_USEROP))
+							// is voiced ?
+							if(!(pUserEntry->m_iFlags & KVI_USERFLAG_VOICE))
 							{
-								// nope , skip userops
-								while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_USEROP))
+								// nope , not voiced so skip voiced users
+								while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_VOICE))
 								{
 									if(pEntry == m_pTopItem)
-	bGotTopItem = true;
+										bGotTopItem = true;
 									pEntry = pEntry->m_pNext;
 								}
-							} // else is userop, ops, halfops, and voiced are skipped
-						} // else it is voiced , ops and halfops are skipped
-					} // else it is halfop ,  ops are skipped
-				} // else it is op , chan admins are skipped
-			} // else it is chan admin , chan owners are skipped
-		} // else it is chan owner, so nothing to skip: the chan owners are first in the list
+
+								// is userop'd?
+								if(!(pUserEntry->m_iFlags & KVI_USERFLAG_USEROP))
+								{
+									// nope , skip userops
+									while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_USEROP))
+									{
+										if(pEntry == m_pTopItem)
+		bGotTopItem = true;
+										pEntry = pEntry->m_pNext;
+									}
+								} // else is userop, ops, halfops, and voiced are skipped
+							} // else it is voiced , ops and halfops are skipped
+						} // else it is halfop ,  ops are skipped
+					} // else it is op , chan admins are skipped
+				} // else it is chan admin , chan owners are skipped
+			} // else it is chan owner, ircops are skipped
+		} // else it is an ircop, so nothing to skip: the ircops are first in the list
 
 		// now strcmp within the current user-flag group...
 		while(pEntry && (KviQString::cmpCI(pEntry->m_szNick,pUserEntry->m_szNick,
@@ -764,6 +783,9 @@ KviUserListEntry * KviUserListView::join(const QString & szNick, const QString &
 			if(iFlags != pEntry->m_iFlags)
 			{
 //// FIXME: #warning "Maybe say to the channel that we're oped : and the op is guessed from the names reply"
+				if((iFlags & KVI_USERFLAG_IRCOP) != (pEntry->m_iFlags & KVI_USERFLAG_IRCOP))
+					setIrcOp(szNick,iFlags & KVI_USERFLAG_IRCOP);
+
 				if((iFlags & KVI_USERFLAG_CHANOWNER) != (pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER))
 					setChanOwner(szNick,iFlags & KVI_USERFLAG_CHANOWNER);
 
@@ -987,6 +1009,8 @@ int KviUserListView::getUserModeLevel(const QString & szNick)
 
 	if(pEntry->m_iFlags & KVI_USERFLAG_MODEMASK)
 	{
+		if(pEntry->m_iFlags & KVI_USERFLAG_IRCOP)
+			return 100;
 		if(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
 			return 60;
 		if(pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
@@ -1047,6 +1071,7 @@ int KviUserListView::flags(const QString & szNick)
 		return true; \
 	}
 
+SET_FLAG_FUNC(setIrcOp,KVI_USERFLAG_IRCOP)
 SET_FLAG_FUNC(setChanOwner,KVI_USERFLAG_CHANOWNER)
 SET_FLAG_FUNC(setChanAdmin,KVI_USERFLAG_CHANADMIN)
 SET_FLAG_FUNC(setOp,KVI_USERFLAG_OP)
@@ -1061,6 +1086,7 @@ SET_FLAG_FUNC(setVoice,KVI_USERFLAG_VOICE)
 		return pEntry ? (bAtLeast ? (pEntry->m_iFlags >= __flag) : (pEntry->m_iFlags & __flag)) : false; \
 	}
 
+GET_FLAG_FUNC(isIrcOp,KVI_USERFLAG_IRCOP)
 GET_FLAG_FUNC(isChanOwner,KVI_USERFLAG_CHANOWNER)
 GET_FLAG_FUNC(isChanAdmin,KVI_USERFLAG_CHANADMIN)
 GET_FLAG_FUNC(isOp,KVI_USERFLAG_OP)
@@ -1165,16 +1191,18 @@ bool KviUserListView::partInternal(const QString & szNick, bool bRemove)
 		}
 
 		// now just remove it
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_OP)
-			m_iOpCount--;
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_VOICE)
-			m_iVoiceCount--;
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_HALFOP)
-			m_iHalfOpCount--;
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
-			m_iChanAdminCount--;
+		if(pUserEntry->m_iFlags & KVI_USERFLAG_IRCOP)
+			m_iIrcOpCount--;
 		if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
 			m_iChanOwnerCount--;
+		if(pUserEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
+			m_iChanAdminCount--;
+		if(pUserEntry->m_iFlags & KVI_USERFLAG_OP)
+			m_iOpCount--;
+		if(pUserEntry->m_iFlags & KVI_USERFLAG_HALFOP)
+			m_iHalfOpCount--;
+		if(pUserEntry->m_iFlags & KVI_USERFLAG_VOICE)
+			m_iVoiceCount--;
 		if(pUserEntry->m_iFlags & KVI_USERFLAG_USEROP)
 			m_iUserOpCount--;
 		if(pUserEntry->m_bSelected)
@@ -1438,7 +1466,7 @@ void KviUserListView::userStats(KviUserListViewUserStats * pStats)
 			if(uTimeDiff < 10)
 			{
 				pStats->uActive++; // the user was alive in the last ~16 mins
-				if(pEntry->m_iFlags & (KVI_USERFLAG_OP | KVI_USERFLAG_CHANADMIN | KVI_USERFLAG_CHANOWNER))
+				if(pEntry->m_iFlags & (KVI_USERFLAG_OP | KVI_USERFLAG_CHANADMIN | KVI_USERFLAG_CHANOWNER | KVI_USERFLAG_IRCOP))
 				{
 					pStats->uActiveOp++;
 					if(pEntry->m_iTemperature > 0)
@@ -1453,23 +1481,28 @@ void KviUserListView::userStats(KviUserListViewUserStats * pStats)
 				pStats->iAvgTemperature += pEntry->m_iTemperature;
 			}
 		}
-		if(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
-			pStats->uChanOwner++;
+
+		if(pEntry->m_iFlags & KVI_USERFLAG_IRCOP)
+			pStats->uIrcOp++;
 		else {
-			if(pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
-				pStats->uChanAdmin++;
+			if(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER)
+				pStats->uChanOwner++;
 			else {
-				if(pEntry->m_iFlags & KVI_USERFLAG_OP)
-					pStats->uOp++;
+				if(pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN)
+					pStats->uChanAdmin++;
 				else {
-					if(pEntry->m_iFlags & KVI_USERFLAG_HALFOP)
-						pStats->uHalfOp++;
+					if(pEntry->m_iFlags & KVI_USERFLAG_OP)
+						pStats->uOp++;
 					else {
-						if(pEntry->m_iFlags & KVI_USERFLAG_VOICE)
-							pStats->uVoiced++;
+						if(pEntry->m_iFlags & KVI_USERFLAG_HALFOP)
+							pStats->uHalfOp++;
 						else {
-							if(pEntry->m_iFlags & KVI_USERFLAG_USEROP)
-								pStats->uUserOp++;
+							if(pEntry->m_iFlags & KVI_USERFLAG_VOICE)
+								pStats->uVoiced++;
+							else {
+								if(pEntry->m_iFlags & KVI_USERFLAG_USEROP)
+									pStats->uUserOp++;
+							}
 						}
 					}
 				}
@@ -1708,12 +1741,14 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 					{
 						pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewNormalForeground));
 					} else {
-						pClrFore = &(KVI_OPTION_COLOR((pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
+						pClrFore = &(KVI_OPTION_COLOR((pEntry->m_iFlags & KVI_USERFLAG_IRCOP) ? \
+							KviOption_colorUserListViewIrcOpForeground :
+							((pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 							KviOption_colorUserListViewChanOwnerForeground : ((pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
 							KviOption_colorUserListViewChanAdminForeground : ((pEntry->m_iFlags & KVI_USERFLAG_OP) ? \
 							KviOption_colorUserListViewOpForeground : ((pEntry->m_iFlags & KVI_USERFLAG_HALFOP) ? \
 							KviOption_colorUserListViewHalfOpForeground : ((pEntry->m_iFlags & KVI_USERFLAG_VOICE) ? \
-							KviOption_colorUserListViewVoiceForeground : KviOption_colorUserListViewUserOpForeground))))));
+							KviOption_colorUserListViewVoiceForeground : KviOption_colorUserListViewUserOpForeground)))))));
 					}
 				}
 			}
@@ -1894,21 +1929,23 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 					QPixmap * pIco = g_pIconManager->getSmallIcon( \
 											pEntry->globalData()->isAway() ? \
 												( \
-													(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
+													(pEntry->m_iFlags & KVI_USERFLAG_IRCOP) ? \
+													KVI_SMALLICON_IRCOPAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 													KVI_SMALLICON_CHANOWNERAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
 													KVI_SMALLICON_CHANADMINAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_OP) ? \
 													KVI_SMALLICON_OPAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_HALFOP) ? \
 													KVI_SMALLICON_HALFOPAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_VOICE) ? \
-													KVI_SMALLICON_VOICEAWAY : KVI_SMALLICON_USEROPAWAY))))
+													KVI_SMALLICON_VOICEAWAY : KVI_SMALLICON_USEROPAWAY)))))
 												) \
 											: \
 												( \
-													(pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
+													(pEntry->m_iFlags & KVI_USERFLAG_IRCOP) ? \
+													KVI_SMALLICON_IRCOP : ((pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 													KVI_SMALLICON_CHANOWNER : ((pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
 													KVI_SMALLICON_CHANADMIN : ((pEntry->m_iFlags & KVI_USERFLAG_OP) ? \
 													KVI_SMALLICON_OP : ((pEntry->m_iFlags & KVI_USERFLAG_HALFOP) ? \
 													KVI_SMALLICON_HALFOP : ((pEntry->m_iFlags & KVI_USERFLAG_VOICE) ? \
-													KVI_SMALLICON_VOICE : KVI_SMALLICON_USEROP)))) \
+													KVI_SMALLICON_VOICE : KVI_SMALLICON_USEROP))))) \
 												) \
 										);
 					p.drawPixmap(iTheX,iTheY+(fm.lineSpacing()-16/*size of small icon*/)/2,*pIco);

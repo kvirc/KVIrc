@@ -501,7 +501,8 @@ KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 	COLOR_OPTION("UserListViewChanOwnerForeground",81,87,111,KviOption_sectFlagUserListView),
 	COLOR_OPTION("IrcViewMarkLine",40,40,40,KviOption_sectFlagIrcView),
 	COLOR_OPTION("UserListViewAwayForeground",143,143,143,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewOwnForeground",255,255,0,KviOption_sectFlagUserListView)
+	COLOR_OPTION("UserListViewOwnForeground",255,255,0,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewIrcOpForeground",200,0,0,KviOption_sectFlagUserListView)
 };
 
 
@@ -831,7 +832,11 @@ KviMsgTypeOption g_msgtypeOptionsTable[KVI_NUM_MSGTYPE_OPTIONS]=
 	//         messages with higher level are rendered with more visible color (i.e. red)
 	//         messages with very high level might flash the tray and end up in the notifier
 	//         level 1 or 2 for standard torrent messages is ok
-	MSGTYPE_OPTION("BitTorrent",__tr_no_lookup("BitTorrent message"),KVI_SMALLICON_MULTIMEDIA,KVI_MSGTYPE_LEVEL_2)
+	MSGTYPE_OPTION("BitTorrent",__tr_no_lookup("BitTorrent message"),KVI_SMALLICON_MULTIMEDIA,KVI_MSGTYPE_LEVEL_2),
+	MSGTYPE_OPTION("IrcOp",__tr_no_lookup("IRC Op status set"),KVI_SMALLICON_IRCOP,KVI_MSGTYPE_LEVEL_5),
+	MSGTYPE_OPTION("DeIrcOp",__tr_no_lookup("IRC Op status unset"),KVI_SMALLICON_DEIRCOP,KVI_MSGTYPE_LEVEL_5),
+	MSGTYPE_OPTION("MeIrcOp",__tr_no_lookup("Own IRC Op status set"),KVI_SMALLICON_MEIRCOP,KVI_MSGTYPE_LEVEL_5),
+	MSGTYPE_OPTION("MeDeIrcOp",__tr_no_lookup("Own IRC Op status unset"),KVI_SMALLICON_MEDEIRCOP,KVI_MSGTYPE_LEVEL_5)
 };
 
 static const char * options_section_table[KVI_NUM_OPTION_SECT_FLAGS] =

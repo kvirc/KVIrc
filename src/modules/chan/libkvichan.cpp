@@ -1137,7 +1137,7 @@ static bool chan_kvs_fnc_users(KviKvsModuleFunctionCall * c)
 				}
 				if(bNone)
 				{
-					if(!(e->flags() & KVI_USERFLAG_MASK))goto check_mask;
+					if(!(e->flags() & KVI_USERFLAG_MODEMASK))goto check_mask;
 				}
 				goto next_item;
 			}
