@@ -1806,6 +1806,8 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 					}\
 				}\
 			break;
+
+			CHANUSER_MODE('O',setIrcOp,KviEvent_OnMeIrcOp,KviEvent_OnMeDeIrcOp,KviEvent_OnIrcOp,KviEvent_OnDeIrcOp,KVI_OUT_MEIRCOP,KVI_OUT_MEDEIRCOP,KVI_OUT_IRCOP,KVI_OUT_DEIRCOP)
 			CHANUSER_MODE('q',setChanOwner,KviEvent_OnMeChanOwner,KviEvent_OnMeDeChanOwner,KviEvent_OnChanOwner,KviEvent_OnDeChanOwner,KVI_OUT_MECHANOWNER,KVI_OUT_MEDECHANOWNER,KVI_OUT_CHANOWNER,KVI_OUT_DECHANOWNER)
 			CHANUSER_MODE('a',setChanAdmin,KviEvent_OnMeChanAdmin,KviEvent_OnMeDeChanAdmin,KviEvent_OnChanAdmin,KviEvent_OnDeChanAdmin,KVI_OUT_MECHANADMIN,KVI_OUT_MEDECHANADMIN,KVI_OUT_CHANADMIN,KVI_OUT_DECHANADMIN)
 			CHANUSER_MODE('o',setOp,KviEvent_OnMeOp,KviEvent_OnMeDeOp,KviEvent_OnOp,KviEvent_OnDeOp,KVI_OUT_MEOP,KVI_OUT_MEDEOP,KVI_OUT_OP,KVI_OUT_DEOP)

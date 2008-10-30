@@ -1574,6 +1574,7 @@ bool KviChannel::__name(bool bAtLeast) \
 	return m_pUserListView->__ulvname(connection()->currentNickName(),bAtLeast); \
 }
 
+IS_FNC(isMeIrcOp,isIrcOp)
 IS_FNC(isMeChanOwner,isChanOwner)
 IS_FNC(isMeChanAdmin,isChanAdmin)
 IS_FNC(isMeOp,isOp)

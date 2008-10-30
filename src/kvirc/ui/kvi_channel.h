@@ -608,6 +608,14 @@ public:
 	bool avatarChanged(const QString & szNick){ return m_pUserListView->avatarChanged(szNick); };
 
 	/**
+	* \brief Sets the ircop mode
+	* \param szNick The nick to moderate
+	* \param bIrcOp Whether to moderate the user
+	* \return bool
+	*/
+	bool setIrcOp(const QString & szNick, bool bIrcOp){ return m_pUserListView->setIrcOp(szNick,bIrcOp); };
+
+	/**
 	* \brief Sets the chan owner mode
 	* \param szNick The nick to moderate
 	* \param bChanOwner Whether to moderate the user
@@ -656,6 +664,14 @@ public:
 	bool setUserOp(const QString & szNick, bool bUserOp){ return m_pUserListView->setUserOp(szNick,bUserOp); };
 
 	/**
+	* \brief Returns true if the user is an ircop
+	* \param szNick The nickname of the user to check
+	* \param bAtLeast Whether the user is at least an ircop
+	* \return bool
+	*/
+	bool isIrcOp(const QString & szNick, bool bAtLeast = false){ return m_pUserListView->isIrcOp(szNick,bAtLeast); };
+
+	/**
 	* \brief Returns true if the user is a chan owner
 	* \param szNick The nickname of the user to check
 	* \param bAtLeast Whether the user is at least a chan owner
@@ -702,6 +718,13 @@ public:
 	* \return bool
 	*/
 	bool isUserOp(const QString & szNick, bool bAtLeast = false){ return m_pUserListView->isUserOp(szNick,bAtLeast); };
+
+	/**
+	* \brief Returns true if we are an ircop
+	* \param bAtLeast Whether we are at least an ircop
+	* \return bool
+	*/
+	bool isMeIrcOp(bool bAtLeast = false);
 
 	/**
 	* \brief Returns true if we are a chan owner
