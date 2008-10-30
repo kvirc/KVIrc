@@ -153,7 +153,7 @@ QString KviQuery::getInfoLabelTipText()
 			szMask += e->host();
 		else
 			szMask += "*";
- 
+
 		szTmp += "\n";
 
 		QString szChans;
@@ -768,15 +768,15 @@ void KviQuery::ownAction(const QString & szBuffer)
 
 		KviQCString szBuffer = encodeText(szTmpBuffer);
 
-		KviQCString sz = connection()->encodeText(windowName());
+		QString sz = windowName();
 		if(sz.isEmpty())
 			return;
 
-		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,QString(sz.data())))
+		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,sz))
 			return;
 
 		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",
-			sz.data(),0x01,szBuffer.data(),0x01))
+			connection()->encodeText(sz).data(),0x01,szBuffer.data(),0x01))
 			return;
 
 		output(KVI_OUT_ACTION,"\r!nc\r%Q\r %Q",&(connection()->currentNickName()),&szTmpBuffer);

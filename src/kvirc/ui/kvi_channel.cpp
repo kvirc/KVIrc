@@ -1252,15 +1252,15 @@ void KviChannel::ownAction(const QString & szBuffer)
 		szTmpBuffer = szBuffer;
 	}
 
-	KviQCString szName = connection()->encodeText(m_szName);
+	QString szName = m_szName;
 	KviQCString szData = encodeText(szTmpBuffer);
 	const char * d = szData.data();
 
 	if(!d)
 		return;
-	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,QString(szName.data())))
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,szName))
 		return;
-	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",szName.data(),0x01,d,0x01))
+	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",connection()->encodeText(szName).data(),0x01,d,0x01))
 		return;
 
 	QString szBuf = "\r!nc\r";
