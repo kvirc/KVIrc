@@ -93,15 +93,15 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
-		
-		
+
+
 	m_pListViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDELISTVIEW,KVI_SMALLICON_SHOWLISTVIEW,__tr2qs("Show User List"),buttonContainer(),true,"list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
-	
+
 #ifdef COMPILE_CRYPT_SUPPORT
 	createCryptControllerButton(m_pButtonGrid);
 #endif
-	
+
 	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,7,__tr2qs("Query Targets"),"user_list_view");
 
 	m_pInput   = new KviInput(this,m_pUserListView);
@@ -111,7 +111,7 @@ KviQuery::KviQuery(KviFrame * lpFrm,KviConsole * lpConsole,const QString &nick)
 
 	m_pIrcView->enableDnd(TRUE);
 	connect(m_pIrcView,SIGNAL(fileDropped(const char *)),this,SLOT(slotDndEvents(const char *)));
-	
+
 	updateCaption();
 }
 
@@ -144,43 +144,43 @@ QString KviQuery::getInfoLabelTipText()
 	{
 		QString tmp;
 		QString szMask;
-		if(e->hasUser()) 
+		if(e->hasUser())
 			szMask+=e->user();
-		else 
+		else
 			szMask+="*";
 		szMask+="@";
-		if(e->hasHost()) 
+		if(e->hasHost())
 			szMask+=e->host();
-		else 
+		else
 			szMask+="*";
 		tmp+="\n";
 		QString szChans;
 		connection()->getCommonChannels(m_szName,szChans,0);
 		if(console()->connection())
 		{
-		
+
 			txt = "<html>" \
 					"<body>" \
 						"<table width=\"100%\">";
-		
+
 			txt +=          START_TABLE_BOLD_ROW;
 			txt += __tr2qs("Query target:");
 			txt +=              END_TABLE_BOLD_ROW;
 			txt +=          "<tr><td>";
-		
+
 			if(e->hasRealName())
 				tmp=__tr2qs("%1 is %2 (%3)").arg(m_szName).arg(szMask).arg(KviMircCntrl::stripControlBytes(e->realName()));
 			else
 				tmp=__tr2qs("%1 is %2").arg(m_szName).arg(szMask);
-			
+
 			tmp.replace('&',"&amp;");
 			tmp.replace('<',"&lt;");
 			tmp.replace('>',"&gt;");
-			
+
 			txt += tmp;
-			
+
 			txt +=          "</td></tr>";
-			
+
 			if(e->hasServer())
 			{
 				txt+="<tr><td>";
@@ -190,24 +190,24 @@ QString KviQuery::getInfoLabelTipText()
 					txt+=__tr2qs("%1 is using irc server: %2").arg(m_szName).arg(e->server());
 				txt+="</td></tr>";
 			}
-			
+
 			if(e->isAway())
 			{
 				txt+="<tr><td>";
 				txt+=__tr2qs("%1 is probably away").arg(m_szName);
 				txt+="</td></tr>";
 			}
-			
+
 			txt+="<tr><td>";
 			tmp=__tr2qs("Common channels with %1: %2").arg(m_szName).arg(szChans);
-			
+
 			tmp.replace('&',"&amp;");
 			tmp.replace('<',"&lt;");
 			tmp.replace('>',"&gt;");
-			
+
 			txt+=tmp;
-			txt +="</td></tr>";	
-			
+			txt +="</td></tr>";
+
 			txt += "</table>" \
 				"</body>" \
 			"<html>";
@@ -229,14 +229,14 @@ QString KviQuery::getInfoLabelText()
 			QString szMask;
 			if(console()->connection())
 			{
-				if(e->hasUser()) 
+				if(e->hasUser())
 					szMask+=e->user();
-				else 
+				else
 					szMask+="*";
 				szMask+="@";
-				if(e->hasHost()) 
+				if(e->hasHost())
 					szMask+=e->host();
-				else 
+				else
 					szMask+="*";
 				if(e->hasRealName())
 					tmp=__tr2qs("Query with %1!%2 (%3)").arg(m_szName).arg(szMask).arg(KviMircCntrl::stripControlBytes(e->realName()));
@@ -260,7 +260,7 @@ QString KviQuery::getInfoLabelText()
 	return tmp;
 }
 void KviQuery::slotDndEvents(const char *file)
-{	
+{
 	KVS_TRIGGER_EVENT_1(KviEvent_OnQueryFileDropped,this,QString(file));
 }
 
@@ -380,7 +380,7 @@ KviUserListEntry * KviQuery::setTarget(const QString &nick,const QString &user,c
 
 	KVS_TRIGGER_EVENT_3(KviEvent_OnQueryTargetAdded,this,nick,user,host);
 	updateLabelText();
-	return e;	
+	return e;
 }
 
 void KviQuery::notifyCommonChannels(const QString &nick,const QString &user,const QString &host,int iChans,const QString &szChans)
@@ -580,13 +580,13 @@ void KviQuery::ownMessage(const QString &buffer)
 		outputNoFmt(KVI_OUT_SYSTEMWARNING,__tr2qs("This query has no active targets, no message sent"));
 		return;
 	}
-	
+
 	KviQCString szName = connection()->encodeText(windowName());
 	KviQCString szData = encodeText(buffer);
 
 	const char * d = szData.data();
 	if(!d)return;
-	
+
 #ifdef COMPILE_CRYPT_SUPPORT
 	if(cryptSessionInfo())
 	{
@@ -660,11 +660,11 @@ void KviQuery::ownAction(const QString &buffer)
 
 		KviQCString szBuffer = encodeText(szTmpBuffer);
 
-		KviQCString sz = connection()->encodeText(windowName());
+		QString sz = windowName();
 		if(sz.isEmpty())return;
-		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,QString(sz.data())))return;
+		if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,sz))return;
 		if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",
-			sz.data(),0x01,szBuffer.data(),0x01))return;
+			connection()->encodeText(windowName()).data(),0x01,szBuffer.data(),0x01))return;
 		output(KVI_OUT_ACTION,"\r!nc\r%Q\r %Q",&(connection()->currentNickName()),&szTmpBuffer);
 		m_pUserListView->userAction(connection()->currentNickName(),KVI_USERACTION_ACTION);
 	}

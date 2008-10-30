@@ -78,7 +78,7 @@
 #include "kvi_tal_popupmenu.h"
 #include "kvi_pointerhashtable.h"
 #include <qmessagebox.h>
-#include "kvi_tal_widgetstack.h" 
+#include "kvi_tal_widgetstack.h"
 
 #ifndef AVERAGE_CHANNEL_USERS
 	#define AVERAGE_CHANNEL_USERS 101
@@ -115,13 +115,13 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	// And create the widgets layout
 	// Button box
 	m_pButtonBox = new KviTalHBox(this);
-	
+
 	m_pTopSplitter = new QSplitter(Qt::Horizontal,m_pButtonBox);
 
 	m_pButtonBox->setStretchFactor(m_pTopSplitter,1);
-	
+
 	m_pButtonContainer = new KviTalHBox(m_pButtonBox);
-	
+
 	// Topic widget on the left
 	m_pTopicWidget = new KviTopicWidget(m_pTopSplitter,"topic_widget");
 
@@ -156,17 +156,17 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	m_pMessageView = 0;
 	// The userlist on the right
 	//m_pEditorsContainer= new KviToolWindowsContainer(m_pSplitter);
-	
-	
+
+
 	// and the related buttons
 	m_pDoubleViewButton = createToolButton(m_pButtonContainer,"double_view_button",KVI_SMALLICON_HIDEDOUBLEVIEW,KVI_SMALLICON_SHOWDOUBLEVIEW,__tr2qs("Split View"),false);
 	connect(m_pDoubleViewButton,SIGNAL(clicked()),this,SLOT(toggleDoubleView()));
-	
+
 	m_pListViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDELISTVIEW,KVI_SMALLICON_SHOWLISTVIEW,__tr2qs("User List"),buttonContainer(),true,"list_view_button");
 	connect(m_pListViewButton,SIGNAL(clicked()),this,SLOT(toggleListView()));
 	m_pBanEditorButton = new KviWindowToolPageButton(KVI_SMALLICON_UNBAN,KVI_SMALLICON_BAN,__tr2qs("Ban Editor"),buttonContainer(),false,"ban_editor_button");
 	connect(m_pBanEditorButton,SIGNAL(clicked()),this,SLOT(toggleBanEditor()));
-	
+
 	if(m_pConsole->connection()->serverInfo()->supportedListModes().contains('e'))
 	{
 		m_pBanExceptionEditorButton =new KviWindowToolPageButton(KVI_SMALLICON_BANUNEXCEPT,KVI_SMALLICON_BANEXCEPT,__tr2qs("Ban Exception Editor"),buttonContainer(),false,"ban_exception_editor_button");
@@ -184,7 +184,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	m_pModeEditorButton = new KviWindowToolPageButton(KVI_SMALLICON_CHANMODEHIDE,KVI_SMALLICON_CHANMODE,__tr2qs("Mode Editor"),buttonContainer(),false,"mode_editor_button");
 	connect(m_pModeEditorButton,SIGNAL(clicked()),this,SLOT(toggleModeEditor()));
 	m_pModeEditor = 0;
-	
+
 #ifdef COMPILE_CRYPT_SUPPORT
 	createCryptControllerButton(m_pButtonContainer);
 #endif
@@ -200,9 +200,9 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
 		m_pHideToolsButton->setPixmap(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png")));
-	
+
 	connect(m_pHideToolsButton,SIGNAL(clicked()),this,SLOT(toggleToolButtons()));
-	
+
 	m_pUserListView = new KviUserListView(m_pSplitter,m_pListViewButton,connection()->userDataBase(),this,
 								AVERAGE_CHANNEL_USERS,__tr2qs("User List"),"user_list_view");
 //	m_pEditorsContainer->addWidget(m_pUserListView);
@@ -222,7 +222,7 @@ KviChannel::KviChannel(KviFrame * lpFrm,KviConsole * lpConsole,const char * name
 	applyOptions();
 	m_joinTime = QDateTime::currentDateTime();
 	m_tLastReceivedWhoReply = (kvi_time_t)m_joinTime.toTime_t();
-	
+
 
 }
 
@@ -245,8 +245,8 @@ void KviChannel::toggleToolButtons()
 {
 	if(!buttonContainer()) return;
 	toggleButtonContainer();
-	QPixmap* pix= buttonContainer()->isVisible() ? 
-		g_pIconManager->getBigIcon("kvi_horizontal_left.png") : 
+	QPixmap* pix= buttonContainer()->isVisible() ?
+		g_pIconManager->getBigIcon("kvi_horizontal_left.png") :
 		g_pIconManager->getBigIcon("kvi_horizontal_right.png");
 	if(pix)
 		m_pHideToolsButton->setPixmap(*pix);
@@ -344,7 +344,7 @@ void KviChannel::loadProperties(KviConfig *cfg)
 	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));
 	//debug("SETTING DEFAULT SIZES");
 	def.clear();
-	
+
 	def.append((w * 60) / 100);
 	def.append((w * 40) / 100);
 	m_VertSplitterSizesList=cfg->readIntListEntry("VertSplitter",def);
@@ -395,7 +395,7 @@ void KviChannel::showDoubleView(bool bShow)
 		m_pMessageView->setMasterView(m_pIrcView);
 		m_pIrcView->splitMessagesTo(m_pMessageView);
 		m_pMessageView->show();
-	}	
+	}
 }
 
 void KviChannel::toggleDoubleView()
@@ -762,7 +762,7 @@ void KviChannel::getTaskBarTipText(QString &buffer)
 	buffer += end_of_fontboldrow;
 
 	buffer += start_of_row;
-	
+
 	QString op = __tr2qs("operator");
 	QString ops = __tr2qs("operators");
 
@@ -1069,7 +1069,7 @@ void KviChannel::ownMessage(const QString &buffer)
 	KviQCString szData = encodeText(buffer);
 	const char * d = szData.data();
 	if(!d)return;
-	
+
 #ifdef COMPILE_CRYPT_SUPPORT
 	if(cryptSessionInfo())
 	{
@@ -1128,7 +1128,7 @@ void KviChannel::ownMessage(const QString &buffer)
 void KviChannel::ownAction(const QString &buffer)
 {
 	if(!connection())return;
-	
+
 	QString szTmpBuffer;
 	//see bug ticket #220
 	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
@@ -1138,12 +1138,12 @@ void KviChannel::ownAction(const QString &buffer)
 		szTmpBuffer = buffer;
 	}
 
-	KviQCString szName = connection()->encodeText(m_szName);
+	QString szName = m_szName;
 	KviQCString szData = encodeText(szTmpBuffer);
 	const char * d = szData.data();
 	if(!d)return;
-	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,QString(szName.data())))return;
-	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",szName.data(),0x01,d,0x01))return;
+	if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnMeAction,this,szTmpBuffer,szName))return;
+	if(!connection()->sendFmtData("PRIVMSG %s :%cACTION %s%c",connection()->encodeText(szName).data(),0x01,d,0x01))return;
 	QString szBuffer = "\r!nc\r";
 	szBuffer += connection()->currentNickName();
 	szBuffer += "\r ";
@@ -1189,11 +1189,11 @@ bool KviChannel::activityMeter(unsigned int * puActivityValue,unsigned int * puA
 		dActionsPerMinute = 0;
 	} else {
 		kvi_time_t tNow = kvi_unixTime();
-	
+
 		KviChannelAction * a = m_pActionHistory->last();
-	
+
 		double dSpan = (double)(tNow - a->tTime);
-	
+
 		if(m_pActionHistory->count() < KVI_CHANNEL_ACTION_HISTORY_MAX_COUNT)
 		{
 			if(m_joinTime.secsTo(QDateTime::currentDateTime()) < KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN)
@@ -1205,12 +1205,12 @@ bool KviChannel::activityMeter(unsigned int * puActivityValue,unsigned int * puA
 				dSpan = KVI_CHANNEL_ACTION_HISTORY_MAX_TIMESPAN;
 			}
 		} // else the actions have been pushed out of the history because they were too much
-	
+
 		if(dSpan > 0.0)
 			dActionsPerMinute = (((double)(m_pActionHistory->count())) / (dSpan)) * 60.0;
 		else
 			dActionsPerMinute = (double)(m_pActionHistory->count()); // ???
-	
+
 		uHotActionPercent = (m_uActionHistoryHotActionCount * 100) / (m_pActionHistory->count());
 	}
 
@@ -1408,7 +1408,7 @@ void KviChannel::closeEvent(QCloseEvent *e)
 			tmp.replace(";","\\;");
 			tmp.replace("\n"," ");
 			KviKvsVariant vRet;
-			
+
 			if(KviKvsScript::evaluate(tmp,this,0,&vRet))vRet.asString(tmp);
 
 			KviQCString dat = encodeText(tmp);
@@ -1471,7 +1471,7 @@ void KviChannel::setMask(char flag, const QString &mask,bool bAdd,const QString 
 			editor = m_pInviteEditor;
 		break;
 	}
-			
+
 	internalMask(mask,bAdd,setBy,setAt,list,&editor);
 	m_pUserListView->setMaskEntries(flag,(int)list->count());
 }
@@ -1622,7 +1622,7 @@ bool KviChannel::eventFilter(QObject * o, QEvent * e)
 	if(e->type() == QEvent::FocusOut && o == m_pTopicWidget && \
 		m_pTopicWidget->isVisible())
 		m_pTopicWidget->deactivate();
-	
+
 	return KviWindow::eventFilter(o, e);
 }
 
