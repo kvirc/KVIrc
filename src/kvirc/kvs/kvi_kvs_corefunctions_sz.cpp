@@ -118,7 +118,7 @@ namespace KviKvsCoreFunctions
 			wnd = g_pApp->findWindow(winId.toUtf8().data());
 			if(!wnd)
 			{
-				KVSCF_pContext->warning(__tr2qs("Window with ID '%s' not found, returning empty string"),winId.toUtf8().data());
+				KVSCF_pContext->warning(__tr2qs_ctx("Window with ID '%s' not found, returning empty string","kvs"),winId.toUtf8().data());
 				KVSCF_pRetBuffer->setNothing();
 				return true;
 			}
@@ -128,7 +128,7 @@ namespace KviKvsCoreFunctions
 
 		if(wnd->type() != KVI_WINDOW_TYPE_CHANNEL)
 		{
-			KVSCF_pContext->warning(__tr2qs("The specified window is not a channel"));
+			KVSCF_pContext->warning(__tr2qs_ctx("The specified window is not a channel","kvs"));
 			KVSCF_pRetBuffer->setNothing();
 			return true;
 		}
@@ -251,7 +251,7 @@ namespace KviKvsCoreFunctions
 				else
 					KVSCF_pRetBuffer->setNothing();
 			} else {
-				KVSCF_pContext->warning(__tr2qs("This window has no associated IRC context"));
+				KVSCF_pContext->warning(__tr2qs_ctx("This window has no associated IRC context","kvs"));
 				KVSCF_pRetBuffer->setNothing();
 			}
 		}
@@ -390,7 +390,7 @@ namespace KviKvsCoreFunctions
 		KviKvsSwitchList * sl = KVSCF_pContext->aliasSwitchList();
 		if(!sl)
 		{
-			KVSCF_pContext->warning(__tr2qs("The $sw() function can be used only in aliases"));
+			KVSCF_pContext->warning(__tr2qs_ctx("The $sw() function can be used only in aliases","kvs"));
 			return true;
 		}
 
@@ -462,7 +462,7 @@ namespace KviKvsCoreFunctions
 			wnd = g_pApp->findWindow(winId.toUtf8().data());
 			if(!wnd)
 			{
-				KVSCF_pContext->warning(__tr2qs("Window with ID '%s' not found, returning empty string"),winId.toUtf8().data());
+				KVSCF_pContext->warning(__tr2qs_ctx("Window with ID '%s' not found, returning empty string","kvs"),winId.toUtf8().data());
 				KVSCF_pRetBuffer->setNothing();
 				return true;
 			}

@@ -240,7 +240,7 @@ namespace KviKvsCoreCallbackCommands
 
 		if(!vName || vName->isEmpty())
 		{
-			KVSCCC_pContext->error(__tr2qs("Missing alias name"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Missing alias name","kvs"));
 			return false;
 		}
 
@@ -251,7 +251,7 @@ namespace KviKvsCoreCallbackCommands
 		QRegExp re("[\\w:]+");
 		if(!re.exactMatch(szName))
 		{
-			KVSCCC_pContext->error(__tr2qs("Alias names can contain only letters, digits, underscores and '::' namespace separators"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Alias names can contain only letters, digits, underscores and '::' namespace separators","kvs"));
 			return false;
 		}
 		
@@ -260,13 +260,13 @@ namespace KviKvsCoreCallbackCommands
 		tmp.replace("::","@"); // @ is not allowed by the rule above
 		if(tmp.indexOf(":") != -1)
 		{
-			KVSCCC_pContext->error(__tr2qs("Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Stray ':' character in alias name: did you mean ...<namespace>::<name> ?","kvs"));
 			return false;
 		}
 
 		if(tmp.indexOf("@@") != -1)
 		{
-			KVSCCC_pContext->error(__tr2qs("Found an empty namespace in alias name"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Found an empty namespace in alias name","kvs"));
 			return false;
 		}
 
@@ -275,7 +275,7 @@ namespace KviKvsCoreCallbackCommands
 			if(!KviKvsAliasManager::instance()->remove(szName))
 			{
 				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs("The alias %Q is not existing"),&szName);
+					KVSCCC_pContext->warning(__tr2qs_ctx("The alias %Q is not existing","kvs"),&szName);
 			}
 		} else {
 			KviKvsScript * pScript = new KviKvsScript(*KVSCCC_pCallback);
@@ -434,7 +434,7 @@ namespace KviKvsCoreCallbackCommands
 		if(!KVSCCC_pWindow->buttonContainer())
 		{
 			if(!KVSCCC_pSwitches->find('q',"quiet"))
-				KVSCCC_pContext->warning(__tr2qs("The specified window has no button containers"));
+				KVSCCC_pContext->warning(__tr2qs_ctx("The specified window has no button containers","kvs"));
 			return true;
 		}
 
@@ -446,7 +446,7 @@ namespace KviKvsCoreCallbackCommands
 			if(pButton)delete pButton;
 			else {
 				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs("Window button '%Q' not found"),&szName);
+					KVSCCC_pContext->warning(__tr2qs_ctx("Window button '%Q' not found","kvs"),&szName);
 			}
 			return true;
 		}
@@ -474,7 +474,7 @@ namespace KviKvsCoreCallbackCommands
 				pButton->setButtonPixmap(*pix);
 			} else {
 				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs("Can't find the icon '%Q'"),&szIcon);
+					KVSCCC_pContext->warning(__tr2qs_ctx("Can't find the icon '%Q'","kvs"),&szIcon);
 			}
 		}
 	
@@ -531,7 +531,7 @@ namespace KviKvsCoreCallbackCommands
 			if(!KviKvsEventManager::instance()->isValidRawEvent(iNumber))
 			{
 				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs("No such event (%Q)"),&szEventName);
+					KVSCCC_pContext->warning(__tr2qs_ctx("No such event (%Q)","kvs"),&szEventName);
 				return true;
 			}
 		} else {
@@ -539,7 +539,7 @@ namespace KviKvsCoreCallbackCommands
 			if(!KviKvsEventManager::instance()->isValidAppEvent(iNumber))
 			{
 				if(!KVSCCC_pSwitches->find('q',"quiet"))
-					KVSCCC_pContext->warning(__tr2qs("No such event (%Q)"),&szEventName);
+					KVSCCC_pContext->warning(__tr2qs_ctx("No such event (%Q)","kvs"),&szEventName);
 				return true;
 			}
 		}
@@ -551,13 +551,13 @@ namespace KviKvsCoreCallbackCommands
 				if(!KviKvsEventManager::instance()->removeScriptRawHandler(iNumber,szHandlerName))
 				{
 					if(!KVSCCC_pSwitches->find('q',"quiet"))
-						KVSCCC_pContext->warning(__tr2qs("No handler '%Q' for raw numeric event '%d'"),&szHandlerName,iNumber);
+						KVSCCC_pContext->warning(__tr2qs_ctx("No handler '%Q' for raw numeric event '%d'","kvs"),&szHandlerName,iNumber);
 				}
 			} else {
 				if(!KviKvsEventManager::instance()->removeScriptAppHandler(iNumber,szHandlerName))
 				{
 					if(!KVSCCC_pSwitches->find('q',"quiet"))
-						KVSCCC_pContext->warning(__tr2qs("No handler '%Q' for event '%Q'"),&szHandlerName,&szEventName);
+						KVSCCC_pContext->warning(__tr2qs_ctx("No handler '%Q' for event '%Q'","kvs"),&szHandlerName,&szEventName);
 				}
 			}
 		} else {
@@ -935,7 +935,7 @@ namespace KviKvsCoreCallbackCommands
 		{
 			if(!(pPing->asInteger(iPingTime) && iPingTime > 0))
 			{
-				KVSCCC_pContext->warning(__tr2qs("The specified ping time is invalid: assuming zero (no ping)"));
+				KVSCCC_pContext->warning(__tr2qs_ctx("The specified ping time is invalid: assuming zero (no ping)","kvs"));
 				iPingTime = 0;
 			}
 		}
@@ -945,7 +945,7 @@ namespace KviKvsCoreCallbackCommands
 		{
 			if(!(pKill->asInteger(iMaxRunTime) && iMaxRunTime > 0))
 			{
-				KVSCCC_pContext->warning(__tr2qs("The specified maximum run time is invalid: assuming zero (infinite)"));
+				KVSCCC_pContext->warning(__tr2qs_ctx("The specified maximum run time is invalid: assuming zero (infinite)","kvs"));
 				iMaxRunTime = 0;
 			}
 		}
@@ -964,7 +964,7 @@ namespace KviKvsCoreCallbackCommands
 		KviKvsProcessAsyncOperation * op = new KviKvsProcessAsyncOperation(d);
 		if(!op->start())
 		{
-			if(KVSCCC_pSwitches->find('q',"quiet") == 0)KVSCCC_pContext->warning(__tr2qs("Failed to start the process"));
+			if(KVSCCC_pSwitches->find('q',"quiet") == 0)KVSCCC_pContext->warning(__tr2qs_ctx("Failed to start the process","kvs"));
 			delete op;
 		}
 	
@@ -1009,7 +1009,7 @@ namespace KviKvsCoreCallbackCommands
 		KviKvsObject * o = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 		if(!o)
 		{
-			KVSCCC_pContext->error(__tr2qs("The specified object does not exist"));
+			KVSCCC_pContext->error(__tr2qs_ctx("The specified object does not exist","kvs"));
 			return false;
 		}
 
@@ -1112,7 +1112,7 @@ namespace KviKvsCoreCallbackCommands
 
 		if(!vName || vName->isEmpty())
 		{
-			KVSCCC_pContext->error(__tr2qs("Missing timer name"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Missing timer name","kvs"));
 			return false;
 		}
 
@@ -1121,14 +1121,14 @@ namespace KviKvsCoreCallbackCommands
 
 		if(!vDelay)
 		{
-			KVSCCC_pContext->error(__tr2qs("Missing timeout delay"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Missing timeout delay","kvs"));
 			return false;
 		}
 
 		kvs_int_t iDelay;
 		if(!vDelay->asInteger(iDelay))
 		{
-			KVSCCC_pContext->error(__tr2qs("The timeout delay didn't evaluate to an integer"));
+			KVSCCC_pContext->error(__tr2qs_ctx("The timeout delay didn't evaluate to an integer","kvs"));
 			return false;
 		}
 
@@ -1151,7 +1151,7 @@ namespace KviKvsCoreCallbackCommands
 
 		if(!KviKvsTimerManager::instance()->addTimer(szName,lt,KVSCCC_pContext->window(),iDelay,new KviKvsScript(*KVSCCC_pCallback),l))
 		{
-			KVSCCC_pContext->error(__tr2qs("Unable to add the timer: insufficient system resources"));
+			KVSCCC_pContext->error(__tr2qs_ctx("Unable to add the timer: insufficient system resources","kvs"));
 			return false;
 		}
 

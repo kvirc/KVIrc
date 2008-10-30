@@ -250,7 +250,7 @@ namespace KviKvsCoreSimpleCommands
 			(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_QUERY) ||
 			(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CONSOLE)))
 		{
-			KVSCSC_pContext->warning(__tr2qs("The current window is not a channel, a query or a console"));
+			KVSCSC_pContext->warning(__tr2qs_ctx("The current window is not a channel, a query or a console","kvs"));
 			return false;
 		}
 
@@ -268,12 +268,12 @@ namespace KviKvsCoreSimpleCommands
 				(pWnd->context()->id() == pActive->context()->id()))
 			{
 				// Ok, found... send the warning
-				pWnd->outputNoFmt(KVI_OUT_SOCKETMESSAGE,__tr2qs("The following string was injected by the user:"));
+				pWnd->outputNoFmt(KVI_OUT_SOCKETMESSAGE,__tr2qs_ctx("The following string was injected by the user:","kvs"));
 			}
 		}
 
 		// Send the warning to the right console
-		pActive->console()->output(KVI_WINDOW_TYPE_SOCKETSPY,__tr2qs("The following string was injected by the user:"));
+		pActive->console()->output(KVI_WINDOW_TYPE_SOCKETSPY,__tr2qs_ctx("The following string was injected by the user:","kvs"));
 
 		// Encode the text for the socket
 		KviQCString szT = KVSCSC_pConnection->encodeText(szText);
@@ -408,7 +408,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(KVSCSC_pWindow->type() != KVI_WINDOW_TYPE_CHANNEL)
 		{
-			KVSCSC_pContext->warning(__tr2qs("The current window is not a channel"));
+			KVSCSC_pContext->warning(__tr2qs_ctx("The current window is not a channel","kvs"));
 			return false;
 		}
 
@@ -475,13 +475,13 @@ namespace KviKvsCoreSimpleCommands
 			if(!KviKvsTimerManager::instance()->deleteCurrentTimer())
 			{
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs("Timer name omitted but there is not current timer (this is not a timer callback)"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("Timer name omitted but there is not current timer (this is not a timer callback)","kvs"));
 			}
 		} else {
 			if(!KviKvsTimerManager::instance()->deleteTimer(szName))
 			{
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs("Can't kill the timer '%Q' since it is not running"),&szName);
+					KVSCSC_pContext->warning(__tr2qs_ctx("Can't kill the timer '%Q' since it is not running","kvs"),&szName);
 			}
 		}
 		return true;
@@ -569,7 +569,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KviPointerHashTableIterator<QString,KviKvsTimer> it(*pTimerDict);
 
-		KVSCSC_pContext->window()->outputNoFmt(KVI_OUT_VERBOSE,__tr2qs("List of active timers"));
+		KVSCSC_pContext->window()->outputNoFmt(KVI_OUT_VERBOSE,__tr2qs_ctx("List of active timers","kvs"));
 
 		unsigned int uCnt = 0;
 
@@ -580,22 +580,22 @@ namespace KviKvsCoreSimpleCommands
 			switch(pTimer->lifetime())
 			{
 				case KviKvsTimer::Persistent:
-					szLifetime = __tr2qs("Persistent");
+					szLifetime = __tr2qs_ctx("Persistent","kvs");
 				break;
 				case KviKvsTimer::WindowLifetime:
-					szLifetime = __tr2qs("WindowLifetime");
+					szLifetime = __tr2qs_ctx("WindowLifetime","kvs");
 				break;
 				case KviKvsTimer::SingleShot:
-					szLifetime = __tr2qs("SingleShot");
+					szLifetime = __tr2qs_ctx("SingleShot","kvs");
 				break;
 				default:
-					szLifetime = __tr2qs("Unknown");
+					szLifetime = __tr2qs_ctx("Unknown","kvs");
 				break;
 			}
 			QString szDelay;
 			szDelay.setNum(pTimer->delay());
 			QString szWindow;
-			szWindow = pTimer->window() ? pTimer->window()->id() : __tr2qs("None");
+			szWindow = pTimer->window() ? pTimer->window()->id() : __tr2qs_ctx("None","kvs");
 
 			KVSCSC_pContext->window()->output(KVI_OUT_VERBOSE,
 					"Timer \"%Q\": Lifetime: %Q, Delay: %Q, Window: %Q",
@@ -606,7 +606,7 @@ namespace KviKvsCoreSimpleCommands
 			++it;
 		}
 
-		KVSCSC_pContext->window()->output(KVI_OUT_VERBOSE,__tr2qs("Total: %u timers running"),uCnt);
+		KVSCSC_pContext->window()->output(KVI_OUT_VERBOSE,__tr2qs_ctx("Total: %u timers running","kvs"),uCnt);
 
 		return true;
 	}

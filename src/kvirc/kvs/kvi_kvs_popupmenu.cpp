@@ -108,7 +108,7 @@ bool KviKvsPopupMenuItem::evaluateCondition(KviKvsPopupMenuTopLevelData * pData)
 			pData->extendedRunTimeData()))
 	{
 		// broken condition
-		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs("Broken condition in menu setup: assuming false"));
+		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Broken condition in menu setup: assuming false","kvs"));
 		return false;
 	}
 	return vRet.asBoolean();
@@ -215,7 +215,7 @@ QPixmap * KviKvsPopupMenuItemWithTextAndIcon::evaluateIcon(KviKvsPopupMenuTopLev
 			pData->extendedRunTimeData()))
 	{
 		// broken text
-		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs("Broken icon parameter: ignoring"));
+		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Broken icon parameter: ignoring","kvs"));
 		return 0;
 	}
 
@@ -223,7 +223,7 @@ QPixmap * KviKvsPopupMenuItemWithTextAndIcon::evaluateIcon(KviKvsPopupMenuTopLev
 	vRet.asString(szRet);
 
 	QPixmap * p = g_pIconManager->getImage(szRet);
-	if(!p)pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs("Can't find the icon \"%Q\": ignoring"),&szRet);
+	if(!p)pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Can't find the icon \"%Q\": ignoring","kvs"),&szRet);
 	return p;
 }
 
@@ -239,7 +239,7 @@ QString KviKvsPopupMenuItemWithTextAndIcon::evaluateText(KviKvsPopupMenuTopLevel
 			pData->extendedRunTimeData()))
 	{
 		// broken text
-		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs("Broken text parameter: assuming empty string"));
+		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Broken text parameter: assuming empty string","kvs"));
 		return szRet;
 	}
 	vRet.asString(szRet);
@@ -481,7 +481,7 @@ void KviKvsPopupMenuItemExtMenu::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTop
 	{
 		if(source->isLocked())
 		{
-			pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs("Recursive definition detected for popup '%Q': ignoring"),&(pMenu->popupName()));
+			pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Recursive definition detected for popup '%Q': ignoring","kvs"),&(pMenu->popupName()));
 			return;
 		}
 		QString tmp;
@@ -495,7 +495,7 @@ void KviKvsPopupMenuItemExtMenu::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTop
 		else id = pMenu->insertItem(szText,m_pMenu);
 		pMenu->setItemParameter(id,iIdx);
 	} else {
-		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs("Can't find the external popup '%Q'; ignoring"),&m_szMenuName);
+		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Can't find the external popup '%Q'; ignoring","kvs"),&m_szMenuName);
 	}
 }
 
@@ -839,7 +839,7 @@ void KviKvsPopupMenu::executePrologues(KviKvsPopupMenuTopLevelData * pData)
 			KviKvsScript::PreserveParams,
 			pData->extendedRunTimeData()))
 		{
-			pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs("Broken prologue in popup menu '%Q': ignoring"),&m_szName);
+			pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Broken prologue in popup menu '%Q': ignoring","kvs"),&m_szName);
 		}
 	}
 }
@@ -854,7 +854,7 @@ void KviKvsPopupMenu::executeEpilogues(KviKvsPopupMenuTopLevelData * pData)
 			KviKvsScript::PreserveParams,
 			pData->extendedRunTimeData()))
 		{
-			pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs("Broken epilogue in popup menu '%Q': ignoring"),&m_szName);
+			pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Broken epilogue in popup menu '%Q': ignoring","kvs"),&m_szName);
 		}
 	}
 }

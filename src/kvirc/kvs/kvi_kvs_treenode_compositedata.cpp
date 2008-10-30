@@ -80,4 +80,3 @@ void KviKvsTreeNodeCompositeData::dump(const char * prefix)
 		p->dump(tmp.toUtf8().data());
 	}
 }
-

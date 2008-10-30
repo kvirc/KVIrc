@@ -43,7 +43,6 @@ void KviKvsTreeNodeSwitchList::contextDescription(QString &szBuffer)
 	szBuffer = "Switch List Evaluation";
 }
 
-
 void KviKvsTreeNodeSwitchList::dump(const char * prefix)
 {
 	qDebug("%s SwitchList",prefix);
@@ -101,7 +100,6 @@ void KviKvsTreeNodeSwitchList::addLong(const QString &szLongKey,KviKvsTreeNodeDa
 	m_pLongSwitchDict->replace(szLongKey,p);
 	p->setParent(this);
 }
-
 
 bool KviKvsTreeNodeSwitchList::evaluate(KviKvsRunTimeContext * c,KviKvsSwitchList * pSwList)
 {

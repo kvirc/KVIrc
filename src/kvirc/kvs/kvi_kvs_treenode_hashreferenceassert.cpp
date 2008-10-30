@@ -67,7 +67,7 @@ bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObje
 		{
 			QString szType;
 			pBuffer->getTypeName(szType);
-			c->error(this,__tr2qs("Hash reference assert failed: the variable evaluated to type '%Q'"),&szType);
+			c->error(this,__tr2qs_ctx("Hash reference assert failed: the variable evaluated to type '%Q'","kvs"),&szType);
 			return false;
 		}
 	}

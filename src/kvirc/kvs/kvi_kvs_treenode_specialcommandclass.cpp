@@ -93,7 +93,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 	KviKvsVariant * pClassName = l.first();
 	if(!pClassName)
 	{
-		c->error(this,__tr2qs("Missing class name"));
+		c->error(this,__tr2qs_ctx("Missing class name","kvs"));
 		return false;
 	}
 	KviKvsVariant * pBaseClassName = l.next();
@@ -106,7 +106,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 
 	if(szClassName.isEmpty())
 	{
-		c->error(this,__tr2qs("Missing class name"));
+		c->error(this,__tr2qs_ctx("Missing class name","kvs"));
 		return false;
 	}
 	
@@ -115,14 +115,14 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 	// avoid infinite recursion in loading the base class
 	if(KviQString::equalCI(szBaseClassName,szClassName))
 	{
-		c->error(__tr2qs("A class can't be a subclass of itself"));
+		c->error(__tr2qs_ctx("A class can't be a subclass of itself","kvs"));
 		return false;
 	}
 
 	KviKvsObjectClass * pBaseClass = KviKvsKernel::instance()->objectController()->lookupClass(szBaseClassName);
 	if(!pBaseClass)
 	{
-		c->error(this,__tr2qs("Couln't find base class named \"%Q\""),&szBaseClassName);
+		c->error(this,__tr2qs_ctx("Couln't find base class named \"%Q\"","kvs"),&szBaseClassName);
 		return false;
 	}
 	
@@ -132,7 +132,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 	{
 		if(KviQString::equalCI(pClass->name(),szClassName))
 		{
-			c->error(this,__tr2qs("Detected a loop in the inheritance tree of the base class \"%Q\": redefine that class first"),&szBaseClassName);
+			c->error(this,__tr2qs_ctx("Detected a loop in the inheritance tree of the base class \"%Q\": redefine that class first","kvs"),&szBaseClassName);
 			return false;
 		}
 		pClass = pClass->parentClass();
@@ -141,7 +141,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 	KviKvsObjectClass * pActualClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName,true);
 	if(pActualClass)
 	{
-		c->error(this,__tr2qs("Can't override the builtin class \"%Q\""),&szClassName);
+		c->error(this,__tr2qs_ctx("Can't override the builtin class \"%Q\"","kvs"),&szClassName);
 		return false;
 	}
 	pActualClass = new KviKvsObjectClass(pBaseClass,szClassName,0,false);

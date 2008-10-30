@@ -65,14 +65,14 @@ bool KviKvsTreeNodeModuleCallbackCommand::execute(KviKvsRunTimeContext * c)
 	if(!m)
 	{
 		QString szErr = g_pModuleManager->lastError();
-		c->error(this,__tr2qs("Module command call failed: can't load the module '%Q': %Q"),&m_szModuleName,&szErr);
+		c->error(this,__tr2qs_ctx("Module command call failed: can't load the module '%Q': %Q","kvs"),&m_szModuleName,&szErr);
 		return false;
 	}
 
 	KviKvsModuleCallbackCommandExecRoutine * proc = m->kvsFindCallbackCommand(m_szCmdName);
 	if(!proc)
 	{
-		c->error(this,__tr2qs("Module command call failed: the module '%Q' doesn't export a callback command named '%Q'"),&m_szModuleName,&m_szCmdName);
+		c->error(this,__tr2qs_ctx("Module command call failed: the module '%Q' doesn't export a callback command named '%Q'","kvs"),&m_szModuleName,&m_szCmdName);
 		return false;
 	}
 

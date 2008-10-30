@@ -130,9 +130,6 @@ QString KviKvsObjectScriptFunctionHandler::scriptHandlerCode()
 	return m_pHandler->code();
 }
 
-
-
-
 KviKvsObjectFunctionHandler * KviKvsObjectScriptFunctionHandler::clone()
 {
 	return new KviKvsObjectScriptFunctionHandler(*this);
@@ -143,4 +140,3 @@ bool KviKvsObjectScriptFunctionHandler::call(KviKvsObject * pObject,KviKvsObject
 	KviKvsExtendedRunTimeData rd(pObject);
 	return m_pHandler->run(pCall->window(),pCall->params(),pCall->returnValue(),KviKvsScript::PreserveParams,&rd);
 }
-

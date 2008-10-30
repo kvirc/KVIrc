@@ -863,7 +863,7 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 			if(KviKvsKernel::instance()->objectController()->lookupObject(hTarget) && it.current())
 			{
 				pOuterCall->warning(
-					__tr2qs("Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from object '%Q::%Q': disconnecting"),
+					__tr2qs_ctx("Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from object '%Q::%Q': disconnecting","kvs"),
 					&(s->szSlot),
 					&(s->pTargetObject->getClass()->name()),
 					&(s->pTargetObject->getName()),
@@ -881,7 +881,7 @@ int KviKvsObject::emitSignal(const QString &sigName,KviKvsObjectFunctionCall * p
 			 	// else destroyed in the call! (already disconnected)
 
 				pOuterCall->warning(
-					__tr2qs("Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"),
+					__tr2qs_ctx("Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'","kvs"),
 					&(sigName),
 					&(getClass()->name()),
 					&m_szName);
@@ -1025,13 +1025,13 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 	KviWindow * w = c->context()->window();
 
 	if(!bArray)
-		w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Listing Qt properties for object named \"%Q\" of KVS class %Q"),&m_szName,&(m_pClass->name()));
+		w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Listing Qt properties for object named \"%Q\" of KVS class %Q","kvs"),&m_szName,&(m_pClass->name()));
 	kvs_int_t cnt = 0;
 	if(m_pObject)
 	{
 		const QMetaObject *o = m_pObject->metaObject();
 		if(!bArray)
-			w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Properties for Qt class %s"),o->className());
+			w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Properties for Qt class %s","kvs"),o->className());
 			kvs_int_t idx = 0;
 			QMetaProperty prop = o->property(idx);
 			const QMetaProperty *p = &prop;
@@ -1043,7 +1043,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 				if(bArray)
 					KviQString::sprintf(szOut,"%Q, %Q",&szName,&szType);
 				else {
-					KviQString::sprintf(szOut,__tr2qs("Property: %c%Q%c, type %Q"),KVI_TEXT_BOLD,&szName,KVI_TEXT_BOLD,&szType);
+					KviQString::sprintf(szOut,__tr2qs_ctx("Property: %c%Q%c, type %Q","kvs"),KVI_TEXT_BOLD,&szName,KVI_TEXT_BOLD,&szType);
 					szOut.prepend(" ");
 				}
 				
@@ -1075,7 +1075,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 	if(bArray)
 		c->returnValue()->setArray(a);
 	else
-		w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("%d properties listed"),cnt);
+		w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("%d properties listed","kvs"),cnt);
 	return true;
 }
 
@@ -1093,28 +1093,28 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	if(!m_pObject)
 	{
 		// there are no Qt properties at all
-		c->warning(__tr2qs("The object named \"%Q\" of class %Q has no Qt properties"),&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("The object named \"%Q\" of class %Q has no Qt properties","kvs"),&m_szName,&(m_pClass->name()));
 		return true;
 	}
 
 	int idx = m_pObject->metaObject()->indexOfProperty(szName.toUtf8().data());
 	if(idx < 0)
 	{
-		c->warning(__tr2qs("No Qt property named \"%Q\" for object named \"%Q\" of class %Q"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("No Qt property named \"%Q\" for object named \"%Q\" of class %Q","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
 	if(!p)
 	{
-		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
 
 	QVariant vv = m_pObject->property(szName.toUtf8().data());
 	if(!vv.isValid())
 	{
-		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed and defined but the returned variant is not valid"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
 
@@ -1130,7 +1130,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 
 #define WRONG_TYPE(__therighttype) \
 	{ \
- 		c->warning(__tr2qs("The property is of type %s but the supplied argument can't be converted to that type (expecting \"%s\")"),p->type(),__therighttype); \
+ 		c->warning(__tr2qs_ctx("The property is of type %s but the supplied argument can't be converted to that type (expecting \"%s\")","kvs"),p->type(),__therighttype); \
 		return true; \
 	}
 
@@ -1265,7 +1265,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 				} else {
 					KviKvsObject * pix = KviKvsKernel::instance()->objectController()->lookupObject(v->hobject());
 					if(!pix->inherits("KviScriptPixmapObject"))
-						c->warning(__tr2qs("A pixmap object, an image_id or an image file path is required for this property"));
+						c->warning(__tr2qs_ctx("A pixmap object, an image_id or an image file path is required for this property","kvs"));
 					else {
 						QVariant pixv = pix->property("pixmap");
 						if(vv.type() == QVariant::Pixmap)
@@ -1286,14 +1286,14 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 						m_pObject->setProperty(szName.toUtf8().data(),QVariant(QIcon(*pPix)));
 				}
 				else
-					c->warning(__tr2qs("Can't find the requested image"));
+					c->warning(__tr2qs_ctx("Can't find the requested image","kvs"));
 			}
 		}
 		
 		break;
 	
 		default:
-			c->warning(__tr2qs("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type"),&szName,&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type","kvs"),&szName,&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
 		break;
 	}
@@ -1315,7 +1315,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		if (bNoerror) c->returnValue()->setString("No Qt properties");
 		else
 		{
-			c->warning(__tr2qs("The object named \"%Q\" of class %Q has no Qt properties"),&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("The object named \"%Q\" of class %Q has no Qt properties","kvs"),&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
 		}
 		return true;
@@ -1328,7 +1328,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			c->returnValue()->setString("No Qt properties");
 		else
 		{
-			c->warning(__tr2qs("No Qt property named \"%Q\" for object named \"%Q\" of class %Q"),&szName,&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("No Qt property named \"%Q\" for object named \"%Q\" of class %Q","kvs"),&szName,&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
 		}
 		return true;
@@ -1337,7 +1337,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	const QMetaProperty * p = &prop;
 	if(!p)
 	{
-		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		c->returnValue()->setNothing();
 		return true;
 	}
@@ -1345,7 +1345,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	QVariant v = m_pObject->property(szName.toUtf8().data());
 	if(!v.isValid())
 	{
-		c->warning(__tr2qs("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed and defined but the returned variant is not valid"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		c->returnValue()->setNothing();
 		return true;
 	}
@@ -1436,7 +1436,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			if (bNoerror) c->returnValue()->setString("Unsupported_data_type");
 			else
 			{
-				c->warning(__tr2qs("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type"),&szName,&m_szName,&(m_pClass->name()));
+				c->warning(__tr2qs_ctx("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type","kvs"),&szName,&m_szName,&(m_pClass->name()));
 				c->returnValue()->setNothing();
 			}
 		break;
@@ -1587,9 +1587,9 @@ bool KviKvsObject::callFunction(
 	if(!h)
 	{
 		if(classOverride.isEmpty())
-			pContext->error(__tr2qs("Cannot find object function $%Q for object named \"%Q\" of class %Q"),&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Cannot find object function $%Q for object named \"%Q\" of class %Q","kvs"),&fncName,&m_szName,&(getClass()->name()));
 		else
-			pContext->error(__tr2qs("Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q"),&classOverride,&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q","kvs"),&classOverride,&fncName,&m_szName,&(getClass()->name()));
 		return false;
 	}
 
@@ -1597,7 +1597,7 @@ bool KviKvsObject::callFunction(
 	{
 		if(pCaller != this)
 		{
-			pContext->error(__tr2qs("Cannot call internal object function $%Q (for object named \"%Q\" of class %Q) from this context"),&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Cannot call internal object function $%Q (for object named \"%Q\" of class %Q) from this context","kvs"),&fncName,&m_szName,&(getClass()->name()));
 			return false;
 		}
 	}

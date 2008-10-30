@@ -37,7 +37,6 @@ KviKvsTreeNodeExpression::~KviKvsTreeNodeExpression()
 {
 }
 
-
 void KviKvsTreeNodeExpression::contextDescription(QString &szBuffer)
 {
 	szBuffer = "Expression Evaluation";
@@ -216,7 +215,7 @@ bool KviKvsTreeNodeExpressionUnaryOperator::evaluateOperand(KviKvsRunTimeContext
 
 	if(!v.asNumber(m_nData))
 	{
-		c->error(this,__tr2qs("Operand of unary operator didn't evaluate to a number"));
+		c->error(this,__tr2qs_ctx("Operand of unary operator didn't evaluate to a number","kvs"));
 		return false;
 	}
 	return true;
@@ -365,14 +364,14 @@ bool KviKvsTreeNodeExpressionBinaryOperator::evaluateOperands(KviKvsRunTimeConte
 	if(!m_pLeft->evaluateReadOnly(c,&v1))return false;
 	if(!v1.asNumber(m_nLeft))
 	{
-		c->error(this,__tr2qs("Left operand didn't evaluate to a number"));
+		c->error(this,__tr2qs_ctx("Left operand didn't evaluate to a number","kvs"));
 		return false;
 	}
 	KviKvsVariant v2;
 	if(!m_pRight->evaluateReadOnly(c,&v2))return false;
 	if(!v2.asNumber(m_nRight))
 	{
-		c->error(this,__tr2qs("Right operand didn't evaluate to a number"));
+		c->error(this,__tr2qs_ctx("Right operand didn't evaluate to a number","kvs"));
 		return false;
 	}
 	return true;
@@ -497,7 +496,7 @@ bool KviKvsTreeNodeExpressionBinaryOperatorDivision::evaluateReadOnly(KviKvsRunT
 	{
 		if(m_nRight.integer() == 0)
 		{
-			c->error(this,__tr2qs("Division by zero"));
+			c->error(this,__tr2qs_ctx("Division by zero","kvs"));
 			return false;
 		}
 		if(m_nLeft.isInteger())pBuffer->setInteger(m_nLeft.integer() / m_nRight.integer());
@@ -505,7 +504,7 @@ bool KviKvsTreeNodeExpressionBinaryOperatorDivision::evaluateReadOnly(KviKvsRunT
 	} else {
 		if(m_nRight.real() == 0.0)
 		{
-			c->error(this,__tr2qs("Division by zero"));
+			c->error(this,__tr2qs_ctx("Division by zero","kvs"));
 			return false;
 		}
 		if(m_nLeft.isInteger())pBuffer->setReal(((kvs_real_t)(m_nLeft.integer())) / m_nRight.real());
@@ -525,7 +524,7 @@ bool KviKvsTreeNodeExpressionBinaryOperatorModulus::evaluateReadOnly(KviKvsRunTi
 	{
 		if(m_nRight.integer() == 0)
 		{
-			c->error(this,__tr2qs("Division by zero"));
+			c->error(this,__tr2qs_ctx("Division by zero","kvs"));
 			return false;
 		}
 		if(m_nLeft.isInteger())pBuffer->setInteger(m_nLeft.integer() % m_nRight.integer());
@@ -533,7 +532,7 @@ bool KviKvsTreeNodeExpressionBinaryOperatorModulus::evaluateReadOnly(KviKvsRunTi
 	} else {
 		if(m_nRight.real() == 0.0)
 		{
-			c->error(this,__tr2qs("Division by zero"));
+			c->error(this,__tr2qs_ctx("Division by zero","kvs"));
 			return false;
 		}
 		if(m_nLeft.isInteger())pBuffer->setReal(fmod(((kvs_real_t)(m_nLeft.integer())),m_nRight.real()));

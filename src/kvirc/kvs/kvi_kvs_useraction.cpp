@@ -89,7 +89,6 @@ KviKvsUserAction * KviKvsUserAction::createInstance(QObject * pParent,
 	return new KviKvsUserAction(pParent,szName,szScriptCode,szVisibleNameCode,szDescriptionCode,szCategory,szBigIcon,szSmallIcon,uFlags,szKeySequence);
 }
 
-
 void KviKvsUserAction::exportToKvs(QString &szBuffer)
 {
 	exportToKvs(szBuffer,m_szName,scriptCode(),visibleNameCode(),descriptionCode(),m_szCategory,m_szBigIcon,m_szSmallIcon,m_uFlags,m_szKeySequence);

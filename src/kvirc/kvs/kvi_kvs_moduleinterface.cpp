@@ -161,7 +161,7 @@ static bool default_module_kvs_cmd_unload(KviKvsModuleCommandCall *c)
 	{
 		if(!c->switches()->find('f',"force"))
 		{
-			c->warning(__tr2qs("Can't unload the module: it has locked itself in memory"));
+			c->warning(__tr2qs_ctx("Can't unload the module: it has locked itself in memory","kvs"));
 			return true;
 		}
 	}

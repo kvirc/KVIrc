@@ -64,14 +64,14 @@ bool KviKvsTreeNodeModuleFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c
 	if(!m)
 	{
 		QString szErr = g_pModuleManager->lastError();
-		c->error(this,__tr2qs("Module function call failed: can't load the module '%Q': %Q"),&m_szModuleName,&szErr);
+		c->error(this,__tr2qs_ctx("Module function call failed: can't load the module '%Q': %Q","kvs"),&m_szModuleName,&szErr);
 		return false;
 	}
 
 	KviKvsModuleFunctionExecRoutine * proc = m->kvsFindFunction(m_szFunctionName);
 	if(!proc)
 	{
-		c->error(this,__tr2qs("Module function call failed: the module '%Q' doesn't export a function named '%Q'"),&m_szModuleName,&m_szFunctionName);
+		c->error(this,__tr2qs_ctx("Module function call failed: the module '%Q' doesn't export a function named '%Q'","kvs"),&m_szModuleName,&m_szFunctionName);
 		return false;
 	}
 	

@@ -51,7 +51,7 @@ bool KviKvsTreeNodeExtendedScopeVariable::evaluateReadOnly(KviKvsRunTimeContext 
 {
 	if(!c->extendedScopeVariables())
 	{
-		c->error(this,__tr2qs("There are no extended scope variables in this scope"));
+		c->error(this,__tr2qs_ctx("There are no extended scope variables in this scope","kvs"));
 		return false;
 	}
 
@@ -69,7 +69,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeExtendedScopeVariable::evaluateReadWrit
 {
 	if(!c->extendedScopeVariables())
 	{
-		c->error(this,__tr2qs("There are no extended scope variables in this scope"));
+		c->error(this,__tr2qs_ctx("There are no extended scope variables in this scope","kvs"));
 		return false;
 	}
 

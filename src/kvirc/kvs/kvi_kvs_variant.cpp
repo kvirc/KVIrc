@@ -60,7 +60,6 @@ KviKvsVariant::KviKvsVariant(const char * szString)
 	m_pData->m_u.pString = new QString(QString::fromUtf8(szString));
 }
 
-
 KviKvsVariant::KviKvsVariant(KviKvsArray * pArray)
 {
 	m_pData = new KviKvsVariantData;
@@ -332,7 +331,6 @@ bool KviKvsVariant::asHObject(kvs_hobject_t &hObject) const
 	return false;
 }
 
-
 bool KviKvsVariant::asNumber(KviKvsNumber &n) const
 {
 	if(!m_pData)return false;
@@ -361,7 +359,6 @@ bool KviKvsVariant::asNumber(KviKvsNumber &n) const
 	}
 	return false;
 }
-
 
 void KviKvsVariant::castToNumber(KviKvsNumber &n) const
 {
@@ -550,7 +547,6 @@ void KviKvsVariant::castToInteger(kvs_int_t &iVal) const
 		break;
 	}
 }
-
 
 bool KviKvsVariant::asReal(kvs_real_t & dVal) const
 {
@@ -929,6 +925,7 @@ public:
 	}
 
 };
+
 void KviKvsVariant::serializeString(QString& buffer)
 {
 	buffer.replace('\\',"\\\\");
@@ -1063,8 +1060,6 @@ KviKvsVariant* KviKvsVariant::unserializeReal(const QChar** aux,QString& data)
 			(*aux)++;
 		}
 	}
-
-	
 
 	float value = data.toFloat();
 	if(!exponent.isNull())

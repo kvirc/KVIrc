@@ -148,7 +148,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(KVSCSC_pWindow->type() != KVI_WINDOW_TYPE_CHANNEL)
 		{
-			KVSCSC_pContext->warning(__tr2qs("This is not a channel"));
+			KVSCSC_pContext->warning(__tr2qs_ctx("This is not a channel","kvs"));
 			return true;
 		}
 

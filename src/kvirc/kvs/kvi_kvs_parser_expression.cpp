@@ -113,7 +113,7 @@ KviKvsTreeNodeExpressionBinaryOperator * KviKvsParser::parseExpressionBinaryOper
 				KVSP_skipChar;
 				return new KviKvsTreeNodeExpressionBinaryOperatorEqualTo(KVSP_curCharPointer);
 			} else {
-				error(KVSP_curCharPointer,__tr2qs("Unknown binary operator '=%q': did you mean '==' ?"),KVSP_curCharPointer);
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unknown binary operator '=%q': did you mean '==' ?","kvs"),KVSP_curCharPointer);
 			}
 		break;
 		case '!':
@@ -211,7 +211,7 @@ KviKvsTreeNodeExpressionBinaryOperator * KviKvsParser::parseExpressionBinaryOper
 		break;
 	}
 
-	error(KVSP_curCharPointer,__tr2qs("Unknown binary operator '%q'"),KVSP_curCharPointer);
+	error(KVSP_curCharPointer,__tr2qs_ctx("Unknown binary operator '%q'","kvs"),KVSP_curCharPointer);
 	return 0;
 }
 
@@ -295,7 +295,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperand(char terminator)
 		case 0:
 		case '\r':
 		case '\n':
-			error(KVSP_curCharPointer,__tr2qs("Unexpected end of script in expression"));
+			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in expression","kvs"));
 			return 0;
 		break;
 		case '(':
@@ -361,7 +361,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char termina
 			case 0:
 			case '\r':
 			case '\n':
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of script in expression"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in expression","kvs"));
 				delete pDataList;
 				return 0;
 			break;
@@ -441,7 +441,7 @@ KviKvsTreeNodeExpression * KviKvsParser::parseExpressionOperandCore(char termina
 						}
 					}
 				} else {
-					error(KVSP_curCharPointer,__tr2qs("Unexpected character %q (unicode %h) in expression. If it meant to be a string use the quotes."),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character %q (unicode %h) in expression. If it meant to be a string use the quotes.","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 					delete pDataList;
 					return 0;
 				}
@@ -456,7 +456,7 @@ postprocess_operand:
 	if(pDataList->count() == 0)
 	{
 		delete pDataList;
-		error(KVSP_curCharPointer,__tr2qs("Unexpected empty expression operand"));
+		error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected empty expression operand","kvs"));
 		return 0;
 	}
 

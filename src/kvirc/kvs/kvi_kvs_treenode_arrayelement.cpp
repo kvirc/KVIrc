@@ -62,13 +62,13 @@ bool KviKvsTreeNodeArrayElement::evaluateIndex(KviKvsRunTimeContext * c, kvs_int
 
 	if(!idx.asInteger(iVal))
 	{
-		c->error(this,__tr2qs("Array index didn't evaluate to an integer"));
+		c->error(this,__tr2qs_ctx("Array index didn't evaluate to an integer","kvs"));
 		return false;
 	}
 
 	if(iVal < 0)
 	{
-		c->error(this,__tr2qs("Array index evaluated to a negative integer (non negative integer expected)"));
+		c->error(this,__tr2qs_ctx("Array index evaluated to a negative integer (non negative integer expected)","kvs"));
 		return false;
 	}
 	return true;
@@ -96,7 +96,7 @@ bool KviKvsTreeNodeArrayElement::evaluateReadOnlyInObjectScope(KviKvsObject * o,
 		{
 			QString szType;
 			val.getTypeName(szType);
-			c->warning(this,__tr2qs("The argument of the [] subscript didn't evaluate to an array: automatic conversion from %Q supplied"),&szType);
+			c->warning(this,__tr2qs_ctx("The argument of the [] subscript didn't evaluate to an array: automatic conversion from %Q supplied","kvs"),&szType);
 		}
 		pBuffer->setNothing();
 		return true;
@@ -134,7 +134,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeArrayElement::evaluateReadWriteInObject
 		{
 			QString szType;
 			result->result()->getTypeName(szType);
-			c->warning(this,__tr2qs("The argument of the [] subscript didn't evaluate to an array: automatic conversion from type '%Q' supplied"),&szType);
+			c->warning(this,__tr2qs_ctx("The argument of the [] subscript didn't evaluate to an array: automatic conversion from type '%Q' supplied","kvs"),&szType);
 		}
 		result->result()->setArray(new KviKvsArray());
 	}

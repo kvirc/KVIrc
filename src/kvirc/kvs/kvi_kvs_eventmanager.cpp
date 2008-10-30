@@ -498,7 +498,7 @@ bool KviKvsEventManager::triggerHandlers(KviPointerList<KviKvsEventHandler> * pH
 						if(KVI_OPTION_BOOL(KviOption_boolDisableBrokenEventHandlers))
 						{
 							((KviKvsScriptEventHandler *)h)->setEnabled(false);
-							pWnd->output(KVI_OUT_PARSERERROR,__tr2qs("Event handler %Q is broken: disabling"),&(s->name()));
+							pWnd->output(KVI_OUT_PARSERERROR,__tr2qs_ctx("Event handler %Q is broken: disabling","kvs"),&(s->name()));
 						}
 					}
 					if(!bGotHalt)bGotHalt = (iRet & KviKvsScript::HaltEncountered);

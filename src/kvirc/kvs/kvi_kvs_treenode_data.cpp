@@ -80,25 +80,25 @@ bool KviKvsTreeNodeData::canReleaseResult()
 
 bool KviKvsTreeNodeData::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-	c->error(this,__tr2qs("Internal error: pure virtual evaluateReadOnly called"));
+	c->error(this,__tr2qs_ctx("Internal error: pure virtual evaluateReadOnly called","kvs"));
 	return false;
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeData::evaluateReadWrite(KviKvsRunTimeContext * c)
 {
-	c->error(this,__tr2qs("Internal error: trying to evaluate as read-write a read-only data location"));
+	c->error(this,__tr2qs_ctx("Internal error: trying to evaluate as read-write a read-only data location","kvs"));
 	return 0;
 }
 
 
 bool KviKvsTreeNodeData::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-	c->error(this,__tr2qs("Internal error: pure virtual evaluateReadOnlyInObjectScope called"));
+	c->error(this,__tr2qs_ctx("Internal error: pure virtual evaluateReadOnlyInObjectScope called","kvs"));
 	return false;
 }
 
 KviKvsRWEvaluationResult * KviKvsTreeNodeData::evaluateReadWriteInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c)
 {
-	c->error(this,__tr2qs("Internal error: trying to evaluate as read-write a read-only data location"));
+	c->error(this,__tr2qs_ctx("Internal error: trying to evaluate as read-write a read-only data location","kvs"));
 	return 0;
 }

@@ -72,4 +72,3 @@ void KviKvsSwitchList::addLong(const QString &szLongKey,KviKvsVariant * pVariant
 	}
 	m_pLongSwitchDict->replace(szLongKey,pVariant);
 }
-

@@ -212,7 +212,7 @@ bool KviKvsProcessAsyncOperation::trigger(CallbackEvent e,const QString &szData)
 		if(!iRet)
 		{
 			m_pData->pWnd->output(KVI_OUT_PARSERERROR,
-				__tr2qs("Error triggered from process callback handler: killing process"));
+				__tr2qs_ctx("Error triggered from process callback handler: killing process","kvs"));
 			return true;
 		}
 

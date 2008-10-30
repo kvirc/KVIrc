@@ -39,7 +39,6 @@ KviKvsTreeNodeExpressionReturn::~KviKvsTreeNodeExpressionReturn()
 	delete m_pExpression;
 }
 
-
 void KviKvsTreeNodeExpressionReturn::contextDescription(QString &szBuffer)
 {
 	szBuffer = "Expression Return Evaluation";

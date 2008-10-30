@@ -234,7 +234,7 @@ void KviKvsTimerManager::timerEvent(QTimerEvent *e)
 		// the timer may already have been scheduled for killing!
 		if(KVI_OPTION_BOOL(KviOption_boolKillBrokenTimers))
 		{
-			t->window()->output(KVI_OUT_PARSERERROR,__tr2qs("Timer '%Q' has a broken callback handler: killing the timer"),&(t->name()));
+			t->window()->output(KVI_OUT_PARSERERROR,__tr2qs_ctx("Timer '%Q' has a broken callback handler: killing the timer","kvs"),&(t->name()));
 			deleteTimer(t->id());
 		}
 		return;

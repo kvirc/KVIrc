@@ -239,7 +239,7 @@ namespace KviKvsCoreFunctions
  		if(!KVSCF_pContext->window()->console()->connection())  return KVSCF_pContext->warningNoIrcConnection();
 		if(!KVSCF_pContext->window()->console()->connection()->lagMeter())
 		{
-			KVSCF_pContext->warning(__tr2qs("Lag meter was not enabled"));
+			KVSCF_pContext->warning(__tr2qs_ctx("Lag meter was not enabled","kvs"));
 			return false;
 		}
 
@@ -548,7 +548,7 @@ namespace KviKvsCoreFunctions
 		{
 			if(!KviKvsEventManager::instance()->isValidRawEvent(iNumber))
 			{
-					KVSCF_pContext->warning(__tr2qs("No such event (%Q)"),&szEventName);
+					KVSCF_pContext->warning(__tr2qs_ctx("No such event (%Q)","kvs"),&szEventName);
 			} else {
 				h=KviKvsEventManager::instance()->findScriptRawHandler(iNumber,szHandlerName);
 			}
@@ -556,7 +556,7 @@ namespace KviKvsCoreFunctions
 			iNumber = KviKvsEventManager::instance()->findAppEventIndexByName(szEventName);
 			if(!KviKvsEventManager::instance()->isValidAppEvent(iNumber))
 			{
-					KVSCF_pContext->warning(__tr2qs("No such event (%Q)"),&szEventName);
+					KVSCF_pContext->warning(__tr2qs_ctx("No such event (%Q)","kvs"),&szEventName);
 			} else {
 				h=KviKvsEventManager::instance()->findScriptAppHandler(iNumber,szHandlerName);
 			}
@@ -564,7 +564,7 @@ namespace KviKvsCoreFunctions
 		if(h)
 			KVSCF_pRetBuffer->setBoolean(h->isEnabled());
 		else
-			KVSCF_pContext->warning(__tr2qs("No such event handler (%Q) for event %Q"),&szHandlerName,&szEventName);
+			KVSCF_pContext->warning(__tr2qs_ctx("No such event handler (%Q) for event %Q","kvs"),&szHandlerName,&szEventName);
 
 		return true;
 	}

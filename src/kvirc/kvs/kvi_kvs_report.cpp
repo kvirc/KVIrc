@@ -191,46 +191,46 @@ void KviKvsReport::report(KviKvsReport * r,KviWindow * pOutput)
 	{
 		case KviKvsReport::ParserWarning:
 			out = KVI_OUT_PARSERWARNING;
-			pOutput->output(out,__tr2qs("[KVS]%c Warning: %Q"),KVI_TEXT_BOLD,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Warning: %Q","kvs"),KVI_TEXT_BOLD,&(r->message()));
 		break;
 		case KviKvsReport::ParserError:
 			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out,__tr2qs("[KVS]%c Compilation Error: %Q"),KVI_TEXT_BOLD,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Compilation Error: %Q","kvs"),KVI_TEXT_BOLD,&(r->message()));
 		break;
 		case KviKvsReport::RunTimeWarning:
 			out = KVI_OUT_PARSERWARNING;
-			pOutput->output(out,__tr2qs("[KVS]%c Warning: %Q"),KVI_TEXT_BOLD,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Warning: %Q","kvs"),KVI_TEXT_BOLD,&(r->message()));
 		break;
 		case KviKvsReport::RunTimeError:
 			out = KVI_OUT_PARSERERROR;
-			pOutput->output(out,__tr2qs("[KVS]%c Runtime Error: %Q"),KVI_TEXT_BOLD,&(r->message()));
+			pOutput->output(out,__tr2qs_ctx("[KVS]%c Runtime Error: %Q","kvs"),KVI_TEXT_BOLD,&(r->message()));
 		break;
 	}
 	
 	if(r->location().isEmpty())
-		pOutput->output(out,__tr2qs("[KVS]   in script context \"%Q\""),&(r->context()));
+		pOutput->output(out,__tr2qs_ctx("[KVS]   in script context \"%Q\"","kvs"),&(r->context()));
 	else
-		pOutput->output(out,__tr2qs("[KVS]   in script context \"%Q\", %Q"),&(r->context()),&(r->location()));
+		pOutput->output(out,__tr2qs_ctx("[KVS]   in script context \"%Q\", %Q","kvs"),&(r->context()),&(r->location()));
 	
 	if(pOutput == KviDebugWindow::instance())
 	{
 		KviPointerList<QString> * l;
 		if(l = r->codeListing())
 		{
-			pOutput->outputNoFmt(out,__tr2qs("[KVS] Code listing:"));
+			pOutput->outputNoFmt(out,__tr2qs_ctx("[KVS] Code listing:","kvs"));
 			for(QString * s = l->first();s;s = l->next())
 				pOutput->output(out,"[KVS]   %Q",s);
 		}
 	
-		pOutput->output(out,__tr2qs("[KVS] Window:"));
+		pOutput->output(out,__tr2qs_ctx("[KVS] Window:","kvs"));
 			if(g_pApp->windowExists(r->window()))
 				pOutput->output(out,"[KVS]   %Q [id: %u]",&(r->window()->windowName()),r->window()->numericId());
 			else
-				pOutput->output(out,__tr2qs("[KVS]   Destroyed window with pointer %x"),r->window());
+				pOutput->output(out,__tr2qs_ctx("[KVS]   Destroyed window with pointer %x","kvs"),r->window());
 
 		if(l = r->callStack())
 		{
-			pOutput->outputNoFmt(out,__tr2qs("[KVS] Call stack:"));
+			pOutput->outputNoFmt(out,__tr2qs_ctx("[KVS] Call stack:","kvs"));
 			for(QString * s = l->first();s;s = l->next())
 				pOutput->output(out,"[KVS]   %Q",s);
 		}

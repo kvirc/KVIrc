@@ -192,7 +192,7 @@ namespace KviKvsCoreFunctions
 				{
 					KVSCF_pRetBuffer->setString(KVSCF_pContext->window()->localNick());
 				} else {
-					KVSCF_pContext->warning(__tr2qs("This window has no associated IRC context and is not a DCC chat"));
+					KVSCF_pContext->warning(__tr2qs_ctx("This window has no associated IRC context and is not a DCC chat","kvs"));
 					KVSCF_pRetBuffer->setNothing();
 				}
 			}
@@ -289,7 +289,7 @@ namespace KviKvsCoreFunctions
 		KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 		if(!pClass)
 		{
-			KVSCF_pContext->error(__tr2qs("Class \"%Q\" is not defined"),&szClassName);
+			KVSCF_pContext->error(__tr2qs_ctx("Class \"%Q\" is not defined","kvs"),&szClassName);
 			return false;
 		}
 
@@ -299,7 +299,7 @@ namespace KviKvsCoreFunctions
 			pParent = KviKvsKernel::instance()->objectController()->lookupObject(hParent);
 			if(!pParent)
 			{
-				KVSCF_pContext->error(__tr2qs("The specified parent object does not exist"));
+				KVSCF_pContext->error(__tr2qs_ctx("The specified parent object does not exist","kvs"));
 				return false;
 			}
 		} else {
@@ -426,7 +426,7 @@ namespace KviKvsCoreFunctions
 		QString tmp;
 		if(g_pApp->getOptionString(szOpt,tmp))KVSCF_pRetBuffer->setString(tmp);
 		else {
-			KVSCF_pContext->warning(__tr2qs("There is no option named '%Q'"),&szOpt);
+			KVSCF_pContext->warning(__tr2qs_ctx("There is no option named '%Q'","kvs"),&szOpt);
 			KVSCF_pRetBuffer->setNothing();
 		}
 		return true;
@@ -479,7 +479,7 @@ namespace KviKvsCoreFunctions
 			if(KVSCF_pParams->count() > 1)
 			{
 				KviConsole * cons = g_pApp->findConsole(uContextId);
-				if(!cons)KVSCF_pContext->warning(__tr2qs("No such IRC context (%u)"),uContextId);
+				if(!cons)KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)","kvs"),uContextId);
 				else {
 					if(cons->connection())
 						wnd = cons->connection()->findQuery(szName);
@@ -490,7 +490,7 @@ namespace KviKvsCoreFunctions
 				if(KVSCF_pContext->window()->connection())wnd = KVSCF_pContext->window()->connection()->findQuery(szName);
 				else {
 					if(!KVSCF_pContext->window()->console())
-						KVSCF_pContext->warning(__tr2qs("This window is not associated to an IRC context"));
+						KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context","kvs"));
 					wnd = 0;
 				}
 			}

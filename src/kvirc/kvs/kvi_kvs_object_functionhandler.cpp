@@ -44,7 +44,3 @@ QString KviKvsObjectFunctionHandler::scriptHandlerCode()
 {
 	return QString();
 }
-
-
-
-

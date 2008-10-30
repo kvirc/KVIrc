@@ -86,10 +86,10 @@ namespace KviKvsCoreSimpleCommands
 		if(KVSCSC_pSwitches->find('x',"allow-exec"))
 		{
 			// allow execution of commands
-			if(!KviUserInput::parse(szText,KVSCSC_pWindow,__tr2qs("say: injected commandline")))
+			if(!KviUserInput::parse(szText,KVSCSC_pWindow,__tr2qs_ctx("say: injected commandline","kvs")))
 			{
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs("Say parse error: Broken command"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("Say parse error: Broken command","kvs"));
 			}
 		} else {
 			KviUserInput::parseNonCommand(szText,KVSCSC_pWindow);
@@ -245,7 +245,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(!console)
 		{
-			KVSCSC_pContext->error(__tr2qs("Couldn't find a suitable IRC context for the connection, try using -n or -u"));
+			KVSCSC_pContext->error(__tr2qs_ctx("Couldn't find a suitable IRC context for the connection, try using -n or -u","kvs"));
 			return false;
 		}
 
@@ -254,7 +254,7 @@ namespace KviKvsCoreSimpleCommands
 			// just as hitting "connect"
 			if(console->connectionInProgress())
 			{
-				KVSCSC_pContext->error(__tr2qs("Another connection is already in progress in the selected IRC context"));
+				KVSCSC_pContext->error(__tr2qs_ctx("Another connection is already in progress in the selected IRC context","kvs"));
 				return false;
 			} else {
 				KviAsynchronousConnectionData * d = new KviAsynchronousConnectionData();
@@ -364,7 +364,7 @@ namespace KviKvsCoreSimpleCommands
 		{
 			if(!(KVSCSC_pWindow->frame()->mainMenuBar()->removeMenu(szVisibleText)))
 			{
-				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs("No menu bar item with text '%Q'"),&szPopupName);
+				if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("No menu bar item with text '%Q'","kvs"),&szPopupName);
 			}
 			return true;
 		}
@@ -378,7 +378,7 @@ namespace KviKvsCoreSimpleCommands
 				idx = iIdx;
 			else {
 				if(!KVSCSC_pSwitches->find('q',"quiet"))
-					KVSCSC_pContext->warning(__tr2qs("Invalid index specified: ignored"));
+					KVSCSC_pContext->warning(__tr2qs_ctx("Invalid index specified: ignored","kvs"));
 			}
 		}
 		KVSCSC_pWindow->frame()->mainMenuBar()->removeMenu(szVisibleText);
@@ -387,7 +387,7 @@ namespace KviKvsCoreSimpleCommands
 
 		if(p)KVSCSC_pWindow->frame()->mainMenuBar()->addMenu(szVisibleText,p,idx);
 		else {
-			if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs("The popup '%Q' is not defined"),&szPopupName);
+			if(!KVSCSC_pSwitches->find('q',"quiet"))KVSCSC_pContext->warning(__tr2qs_ctx("The popup '%Q' is not defined","kvs"),&szPopupName);
 		}
 
 		return true;
@@ -603,7 +603,7 @@ namespace KviKvsCoreSimpleCommands
 			if(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL)
 				szChannel = KVSCSC_pWindow->target();
 			else {
-				KVSCSC_pContext->error(__tr2qs("No target channel specified and the current window is not a channel"));
+				KVSCSC_pContext->error(__tr2qs_ctx("No target channel specified and the current window is not a channel","kvs"));
 				return false;
 			}
 		}
@@ -704,7 +704,7 @@ namespace KviKvsCoreSimpleCommands
 			return true;
 
 		if(KVSCSC_pSwitches->find('v',"verbose"))
-			KVSCSC_pContext->warning(__tr2qs("No catalogue %Q for the current language found"),&szCatalogue);
+			KVSCSC_pContext->warning(__tr2qs_ctx("No catalogue %Q for the current language found","kvs"),&szCatalogue);
 
 		return true;
 	}
@@ -743,7 +743,7 @@ namespace KviKvsCoreSimpleCommands
 		if(!KviLocale::unloadCatalogue(szCatalogue))
 		{
 			if(KVSCSC_pSwitches->find('v',"verbose"))
-				KVSCSC_pContext->warning(__tr2qs("The catalogue %Q was not loaded"),&szCatalogue);
+				KVSCSC_pContext->warning(__tr2qs_ctx("The catalogue %Q was not loaded","kvs"),&szCatalogue);
 		}
 		return true;
 	}
@@ -901,7 +901,7 @@ namespace KviKvsCoreSimpleCommands
 			if(KVSCSC_pWindow->type() == KVI_WINDOW_TYPE_CHANNEL)
 				szChannel = KVSCSC_pWindow->target();
 			else {
-				KVSCSC_pContext->error(__tr2qs("No target mask/channel specified and the current window is not a channel"));
+				KVSCSC_pContext->error(__tr2qs_ctx("No target mask/channel specified and the current window is not a channel","kvs"));
 				return false;
 			}
 		}

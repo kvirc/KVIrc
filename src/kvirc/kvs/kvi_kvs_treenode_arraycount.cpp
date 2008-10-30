@@ -66,7 +66,7 @@ bool KviKvsTreeNodeArrayCount::evaluateReadOnlyInObjectScope(KviKvsObject * o, K
 		{
 			QString szType;
 			val.getTypeName(szType);
-			c->warning(this,__tr2qs("The argument of the array count '#' operator didn't evaluate to an array: automatic conversion from type '%Q' supplied"),&szType);
+			c->warning(this,__tr2qs_ctx("The argument of the array count '#' operator didn't evaluate to an array: automatic conversion from type '%Q' supplied","kvs"),&szType);
 		}
 		pBuffer->setInteger(0);
 		return true;

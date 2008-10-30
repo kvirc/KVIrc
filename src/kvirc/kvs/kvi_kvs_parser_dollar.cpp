@@ -41,9 +41,9 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 
 	if(!KVSP_curCharIsFunctionStart)
 	{
-		if(KVSP_curCharUnicode == 0)warning(KVSP_curCharPointer,__tr2qs("Unexpected end of script after '$' function call prefix"));
-		else warning(KVSP_curCharPointer,__tr2qs("Unexpected character %q (unicode %x) after '$' function call prefix"),KVSP_curCharPointer,KVSP_curCharUnicode);
-		error(KVSP_curCharPointer,__tr2qs("Syntax error after '$' function call prefix. If you want to use a plain '$' in the code you need to escape it"));
+		if(KVSP_curCharUnicode == 0)warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script after '$' function call prefix","kvs"));
+		else warning(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character %q (unicode %x) after '$' function call prefix","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
+		error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error after '$' function call prefix. If you want to use a plain '$' in the code you need to escape it","kvs"));
 		return 0;
 	}
 
@@ -52,7 +52,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		// expression eval
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs("Invalid expression evaluation in object scope"));
+			error(KVSP_curCharPointer,__tr2qs_ctx("Invalid expression evaluation in object scope","kvs"));
 			return 0;
 		}
 
@@ -67,7 +67,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		// command block eval <--- senseless ???
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs("Invalid command evaluation in object scope"));
+			error(KVSP_curCharPointer,__tr2qs_ctx("Invalid command evaluation in object scope","kvs"));
 			return 0;
 		}
 
@@ -76,7 +76,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		{
 			if(error())return false;
 			// trigger an error anyway: this is abused syntax :D
-			error(KVSP_curCharPointer,__tr2qs("Empty instruction block for command evaluation"));
+			error(KVSP_curCharPointer,__tr2qs_ctx("Empty instruction block for command evaluation","kvs"));
 			return false;
 		}
 
@@ -90,7 +90,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs("Parameter identifiers are forbidden in object scope (after the '->' operator)"));
+			error(KVSP_curCharPointer,__tr2qs_ctx("Parameter identifiers are forbidden in object scope (after the '->' operator)","kvs"));
 			return 0;
 		}
 
@@ -136,7 +136,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 
 		if(iNum1 < iNum2)return new KviKvsTreeNodeMultipleParameterIdentifier(pDollarBegin,iNum1,iNum2);
 		else {
-			warning(pBegin,__tr2qs("Ending index of a multiple parameter identifier is lower or equal to the starting index. This will evaluate to a single parameter identifier."));
+			warning(pBegin,__tr2qs_ctx("Ending index of a multiple parameter identifier is lower or equal to the starting index. This will evaluate to a single parameter identifier.","kvs"));
 			return new KviKvsTreeNodeSingleParameterIdentifier(pDollarBegin,iNum1);
 		}
 	}
@@ -152,7 +152,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 	{
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs("Syntax error: invalid $$ ($this) function call in object scope"));
+			error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: invalid $$ ($this) function call in object scope","kvs"));
 			return 0;
 		}
 		// handle $$
@@ -177,16 +177,16 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		
 					if(!KVSP_curCharIsLetter)
 					{
-						warning(KVSP_curCharPointer - 1,__tr2qs("Stray '::' sequence or invalid following alias name"));
-						error(KVSP_curCharPointer,__tr2qs("Syntax error: malformed alias function call identifier"));
+						warning(KVSP_curCharPointer - 1,__tr2qs_ctx("Stray '::' sequence or invalid following alias name","kvs"));
+						error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: malformed alias function call identifier","kvs"));
 						return 0;
 					}
 		
 					KVSP_skipChar;
 					while(KVSP_curCharIsLetterOrNumber || (KVSP_curCharUnicode == '_'))KVSP_skipChar;
 				} else {
-					warning(KVSP_curCharPointer - 1,__tr2qs("Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"));
-					error(KVSP_curCharPointer,__tr2qs("Syntax error: malformed (alias?) function call identifier"));
+					warning(KVSP_curCharPointer - 1,__tr2qs_ctx("Stray ':' character: did you mean '...<namespace>::<alias_name>' ?","kvs"));
+					error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: malformed (alias?) function call identifier","kvs"));
 					return 0;
 				}
 			}

@@ -50,7 +50,6 @@ void KviKvsTreeNodeThisObjectFunctionCall::dump(const char * prefix)
 	m_pParams->dump(tmp.toUtf8().data());
 }
 
-
 bool KviKvsTreeNodeThisObjectFunctionCall::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
 	KviKvsVariantList l;

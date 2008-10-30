@@ -75,7 +75,7 @@ bool KviKvsTreeNodeRebindingSwitch::execute(KviKvsRunTimeContext * c)
 	vWindow.asString(szWinId);
 	if(szWinId.isEmpty())
 	{
-		c->warning(this,__tr2qs("Empty window identifier specified in the standard rebinding switch: no rebinding performed"));
+		c->warning(this,__tr2qs_ctx("Empty window identifier specified in the standard rebinding switch: no rebinding performed","kvs"));
 		pNewWindow = 0;
 	} else {
 		pNewWindow = g_pApp->findWindow(szWinId.toUtf8().data());
@@ -86,7 +86,7 @@ bool KviKvsTreeNodeRebindingSwitch::execute(KviKvsRunTimeContext * c)
 	if(pNewWindow)
 		c->setWindow(pNewWindow);
 	else
-		c->warning(this,__tr2qs("Invalid window specified in the standard rebinding switch: no rebinding performed"));
+		c->warning(this,__tr2qs_ctx("Invalid window specified in the standard rebinding switch: no rebinding performed","kvs"));
 	bool bRet = m_pChildCommand->execute(c);
 	c->setWindow(pOldWindow);
 	return bRet;

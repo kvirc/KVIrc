@@ -36,7 +36,6 @@ KviKvsTreeNodeIndirectData::~KviKvsTreeNodeIndirectData()
 	delete m_pSource;
 }
 
-
 bool KviKvsTreeNodeIndirectData::canEvaluateInObjectScope()
 {
 	return m_pSource->canEvaluateInObjectScope();

@@ -105,7 +105,7 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 	
 			KviKvsReport::findLineColAndListing(m_pScript->buffer(),pNode->location(),iLine,iCol,pCodeListing);
 			
-			KviQString::sprintf(szLocation,__tr2qs("line %d, near character %d"),iLine,iCol);
+			KviQString::sprintf(szLocation,__tr2qs_ctx("line %d, near character %d","kvs"),iLine,iCol);
 		}
 		
 		// create the call stack
@@ -182,19 +182,19 @@ void KviKvsRunTimeContext::warning(const QString &szMsgFmt,...)
 
 bool KviKvsRunTimeContext::errorNoIrcContext()
 {
-	error(m_pDefaultReportLocation,__tr2qs("This command can be used only in windows bound to an IRC context"));
+	error(m_pDefaultReportLocation,__tr2qs_ctx("This command can be used only in windows bound to an IRC context","kvs"));
 	return false;
 }
 
 bool KviKvsRunTimeContext::warningNoIrcConnection()
 {
-	warning(m_pDefaultReportLocation,__tr2qs("You're not connected to an IRC server"));
+	warning(m_pDefaultReportLocation,__tr2qs_ctx("You're not connected to an IRC server","kvs"));
 	return true;
 }
 
 bool KviKvsRunTimeContext::warningMissingParameter()
 {
-	warning(m_pDefaultReportLocation,__tr2qs("Missing parameter"));
+	warning(m_pDefaultReportLocation,__tr2qs_ctx("Missing parameter","kvs"));
 	return true;
 }
 

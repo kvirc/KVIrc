@@ -231,5 +231,3 @@ void KviKvsKernel::getAllFunctionsCommandsCore(QStringList *list)
 		++it2;
 	}
 }
-
-

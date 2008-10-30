@@ -54,7 +54,6 @@ void KviKvsTreeNodeScopeOperator::contextDescription(QString &szBuffer)
 	szBuffer = "Scope Operator";
 }
 
-
 void KviKvsTreeNodeScopeOperator::dump(const char * prefix)
 {
 	qDebug("%s ScopeOperator",prefix);
@@ -89,20 +88,20 @@ KviKvsObject * KviKvsTreeNodeScopeOperator::objectFromVariant(KviKvsRunTimeConte
 	kvs_hobject_t hObject;
 	if(!v->asHObject(hObject))
 	{
-		c->error(this,__tr2qs("The left side of the scope operator didn't evaluate as an object reference"));
+		c->error(this,__tr2qs_ctx("The left side of the scope operator didn't evaluate as an object reference","kvs"));
 		return 0;
 	}
 
 	if(hObject == (kvs_hobject_t)0)
 	{
-		c->error(this,__tr2qs("The left side of the scope operator evaluated to a null object reference"));
+		c->error(this,__tr2qs_ctx("The left side of the scope operator evaluated to a null object reference","kvs"));
 		return 0;
 	}
 
 	KviKvsObject * o = KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!o)
 	{
-		c->error(this,__tr2qs("The left side of the scope operator evaluated to an invalid object reference (object doesn't exist)"));
+		c->error(this,__tr2qs_ctx("The left side of the scope operator evaluated to an invalid object reference (object doesn't exist)","kvs"));
 		return 0;
 	}
 	return o;

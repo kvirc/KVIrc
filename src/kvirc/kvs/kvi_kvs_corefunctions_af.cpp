@@ -292,7 +292,7 @@ namespace KviKvsCoreFunctions
 				else
 					KVSCF_pRetBuffer->setNothing();
 			} else {
-				KVSCF_pContext->warning(__tr2qs("This window has no associated IRC context"));
+				KVSCF_pContext->warning(__tr2qs_ctx("This window has no associated IRC context","kvs"));
 				KVSCF_pRetBuffer->setNothing();
 			}
 		}
@@ -458,7 +458,7 @@ namespace KviKvsCoreFunctions
 			if(KVSCF_pParams->count() > 1)
 			{
 				KviConsole * cons = g_pApp->findConsole(uContextId);
-				if(!cons)KVSCF_pContext->warning(__tr2qs("No such IRC context (%u)"),uContextId);
+				if(!cons)KVSCF_pContext->warning(__tr2qs_ctx("No such IRC context (%u)","kvs"),uContextId);
 				else {
 					if(cons->connection())
 						wnd = cons->connection()->findChannel(szName);
@@ -469,7 +469,7 @@ namespace KviKvsCoreFunctions
 				if(KVSCF_pContext->window()->connection())wnd = KVSCF_pContext->window()->connection()->findChannel(szName);
 				else {
 					if(!KVSCF_pContext->window()->console())
-						KVSCF_pContext->warning(__tr2qs("This window is not associated to an IRC context"));
+						KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context","kvs"));
 					wnd = 0;
 				}
 			}
@@ -584,7 +584,7 @@ namespace KviKvsCoreFunctions
 			cons = g_pApp->findConsole(uContextId);
 		} else {
 			cons = KVSCF_pContext->window()->console();
-			if(!cons)KVSCF_pContext->warning(__tr2qs("This window is not associated to an IRC context"));
+			if(!cons)KVSCF_pContext->warning(__tr2qs_ctx("This window is not associated to an IRC context","kvs"));
 		}
 
 		KVSCF_pRetBuffer->setInteger((kvs_int_t)(cons ? cons->numericId() : 0));
@@ -832,7 +832,7 @@ namespace KviKvsCoreFunctions
 			if(tmp.lastCharIs('\n'))tmp.cutRight(1);
 			KVSCF_pRetBuffer->setString(QString(buf));
 		} else {
-			KVSCF_pContext->warning(__tr2qs("The specified format string wasn't accepted by the underlying system time formatting function"));
+			KVSCF_pContext->warning(__tr2qs_ctx("The specified format string wasn't accepted by the underlying system time formatting function","kvs"));
 		}
 
 		return true;

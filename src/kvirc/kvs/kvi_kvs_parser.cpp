@@ -92,9 +92,9 @@ void KviKvsParser::report(bool bError,const QChar * pLocation,const QString &szM
 
 		KviKvsReport::findLineColAndListing(m_pBuffer,pLocation,iLine,iCol,pCodeListing);
 		
-		KviQString::sprintf(szLocation,__tr2qs("line %d, near character %d"),iLine,iCol);
+		KviQString::sprintf(szLocation,__tr2qs_ctx("line %d, near character %d","kvs"),iLine,iCol);
 	} else {
-		szLocation = __tr2qs("beginning of input");
+		szLocation = __tr2qs_ctx("beginning of input","kvs");
 	}
 
 	KviKvsReport rep(bError ? KviKvsReport::ParserError : KviKvsReport::ParserWarning,m_pScript->name(),szMsg,szLocation,m_pWindow);
@@ -106,10 +106,10 @@ void KviKvsParser::report(bool bError,const QChar * pLocation,const QString &szM
 void KviKvsParser::errorBadChar(const QChar * pLocation,char cExpected,const char * szCommandName)
 {
 	if(pLocation->unicode())
-		error(pLocation,__tr2qs("Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %s\" for the command syntax"),
+		error(pLocation,__tr2qs_ctx("Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %s\" for the command syntax","kvs"),
 			pLocation,pLocation->unicode(),cExpected,szCommandName);
 	else
-		error(pLocation,__tr2qs("Found end of input where character '%c' was expected: see \"/help %s\" for the command syntax"),
+		error(pLocation,__tr2qs_ctx("Found end of input where character '%c' was expected: see \"/help %s\" for the command syntax","kvs"),
 			cExpected,szCommandName);
 }
 
@@ -143,7 +143,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parse(const QChar * pBuffer,int iFlags
 
 	if(!pBuffer)
 	{
-		error(0,__tr2qs("Empty script"));
+		error(0,__tr2qs_ctx("Empty script","kvs"));
 		return 0;
 	}
 	return parseInstructionList();
@@ -161,7 +161,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsExpression(const QChar * pBuffe
 
 	if(!pBuffer)
 	{
-		error(0,__tr2qs("Empty script"));
+		error(0,__tr2qs_ctx("Empty script","kvs"));
 		return 0;
 	}
 
@@ -182,7 +182,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 
 	if(!pBuffer)
 	{
-		error(0,__tr2qs("Empty script"));
+		error(0,__tr2qs_ctx("Empty script","kvs"));
 		return 0;
 	}
 
@@ -2618,7 +2618,7 @@ KviKvsTreeNodeVariable * KviKvsParser::parsePercent(bool bInObjScope)
 
 	if(!((KVSP_curCharIsLetterOrNumber) || (KVSP_curCharUnicode == '_')))
 	{
-		error(KVSP_curCharPointer,__tr2qs("Syntax error after '%' variable prefix. If you want to use a plain '%' in the code you need to escape it"));
+		error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error after '%' variable prefix. If you want to use a plain '%' in the code you need to escape it","kvs"));
 		return 0;
 	}
 
@@ -2635,7 +2635,7 @@ KviKvsTreeNodeVariable * KviKvsParser::parsePercent(bool bInObjScope)
 	{
 		if(bInObjScope)
 		{
-			error(KVSP_curCharPointer,__tr2qs("Objects have no extended scope variables"));
+			error(KVSP_curCharPointer,__tr2qs_ctx("Objects have no extended scope variables","kvs"));
 			return 0;
 		}
 		return new KviKvsTreeNodeExtendedScopeVariable(pBegin,szIdentifier);
@@ -2655,7 +2655,7 @@ KviKvsTreeNodeVariable * KviKvsParser::parsePercent(bool bInObjScope)
 	if(pIdBegin->category() & QChar::Letter_Uppercase)
 	{
 		//if(m_iFlags & Pedantic)
-		//	warning(pIdBegin,__tr2qs("Declaring global variables with an uppercase letter is deprecated. Global variables should be declared with 'global'"));
+		//	warning(pIdBegin,__tr2qs_ctx("Declaring global variables with an uppercase letter is deprecated. Global variables should be declared with 'global'","kvs"));
 		return new KviKvsTreeNodeGlobalVariable(pBegin,szIdentifier);
 	}
 
@@ -2695,7 +2695,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseInstruction()
 				return parseCommand();
 			} else {
 				// what the heck is this ?
-				error(KVSP_curCharPointer,__tr2qs("Found character '%q' (unicode %x) where an instruction was expected"),KVSP_curCharPointer,KVSP_curCharUnicode);
+				error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (unicode %x) where an instruction was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 				return 0;
 			}
 		break;
@@ -2728,8 +2728,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseInstructionBlock()
 		{
 			case 0:
 				delete b;
-				warning(pBegin,__tr2qs("Unterminated instruction block"));
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of script in instruction block (missing closing brace)"));
+				warning(pBegin,__tr2qs_ctx("Unterminated instruction block","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in instruction block (missing closing brace)","kvs"));
 				return 0;
 			break;
 			case '}':
@@ -2806,13 +2806,13 @@ KviKvsTreeNodeSwitchList * KviKvsParser::parseCommandSwitchList()
 				return sw;
 			} else {
 				delete sw;
-				warning(pBegin,__tr2qs("The dash after a command should be followed by a letter (switch), by a digit (negative number) or be escaped"));
+				warning(pBegin,__tr2qs_ctx("The dash after a command should be followed by a letter (switch), by a digit (negative number) or be escaped","kvs"));
 	
 				if(KVSP_curCharUnicode == 0)
 				{
-					error(KVSP_curCharPointer,__tr2qs("Unexpected character '%q' (unicode %x) after a switch dash"),KVSP_curCharPointer,KVSP_curCharUnicode);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (unicode %x) after a switch dash","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 				} else {
-					error(KVSP_curCharPointer,__tr2qs("Unexpected end of script after a switch dash"));
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script after a switch dash","kvs"));
 				}
 				return 0;
 			}
@@ -2837,7 +2837,7 @@ KviKvsTreeNodeSwitchList * KviKvsParser::parseCommandSwitchList()
 				// must be an error :(
 				if(error())
 				{
-					error(pBegin,__tr2qs("The above problem might be related to the switch dash and the following equal sign"));
+					error(pBegin,__tr2qs_ctx("The above problem might be related to the switch dash and the following equal sign","kvs"));
 					delete sw;
 					return 0;
 				} else {
@@ -2913,13 +2913,13 @@ KviPointerList<QString> * KviKvsParser::parseCommaSeparatedParameterListNoTree()
 		switch(KVSP_curCharUnicode)
 		{
 			case 0:
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of script in parameter list"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in parameter list","kvs"));
 				delete l;
 				return 0;
 			break;
 			case '\r':
 			case '\n':
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of line in parameter list"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in parameter list","kvs"));
 				delete l;
 				return 0;
 			break;
@@ -2980,13 +2980,13 @@ KviKvsTreeNodeDataList * KviKvsParser::parseCommaSeparatedParameterList()
 		switch(KVSP_curCharUnicode)
 		{
 			case 0:
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of script in parameter list"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in parameter list","kvs"));
 				delete l;
 				return 0;
 			break;
 			case '\r':
 			case '\n':
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of line in parameter list"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in parameter list","kvs"));
 				delete l;
 				return 0;
 			break;
@@ -3047,7 +3047,7 @@ KviKvsTreeNodeConstantData * KviKvsParser::__funcname() \
 
 #define LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR \
 				if(!_OUTPUT_MUTE) \
-					warning(KVSP_curCharPointer,__tr2qs("Nested character %q corresponding to expected terminator, this might confuse me a bit: it is a good idea to enclose it in quotes"),KVSP_curCharPointer); \
+					warning(KVSP_curCharPointer,__tr2qs_ctx("Nested character %q corresponding to expected terminator, this might confuse me a bit: it is a good idea to enclose it in quotes","kvs"),KVSP_curCharPointer); \
 				KVSP_skipChar; \
 				iNestedTerminators++; \
 				iLen++; \
@@ -3057,7 +3057,7 @@ KviKvsTreeNodeConstantData * KviKvsParser::__funcname() \
 				if(iNestedTerminators > 0) \
 				{ \
 					if(!_OUTPUT_MUTE) \
-						warning(KVSP_curCharPointer,__tr2qs("Skipping nested terminator character %q"),KVSP_curCharPointer); \
+						warning(KVSP_curCharPointer,__tr2qs_ctx("Skipping nested terminator character %q","kvs"),KVSP_curCharPointer); \
 					KVSP_skipChar; \
 					iNestedTerminators--; \
 					iLen++; \
@@ -3084,7 +3084,7 @@ KviKvsTreeNodeConstantData * KviKvsParser::__funcname() \
 				switch(KVSP_curCharUnicode) \
 				{ \
 					case 0: \
-						warning(KVSP_curCharPointer - 1,__tr2qs("Stray backslash at the end of the script")); \
+						warning(KVSP_curCharPointer - 1,__tr2qs_ctx("Stray backslash at the end of the script","kvs")); \
 						iLen = 0; \
 					break; \
 					case '\r': \
@@ -3241,14 +3241,14 @@ KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 		{
 			case 0:
 				delete l;
-				warning(pBegin,__tr2qs("Unterminated array index"));
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of script in array index (missing ']' character ?)"));
+				warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character ?)","kvs"));
 				return 0;
 			break;
 			case '\n':
 				delete l;
-				warning(pBegin,__tr2qs("Unterminated array index"));
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of line in array index (missing ']' character or unescaped newline)"));
+				warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in array index (missing ']' character or unescaped newline)","kvs"));
 				return 0;
 			break;
 			case ' ':
@@ -3257,17 +3257,17 @@ KviKvsTreeNodeData * KviKvsParser::parseArrayIndex()
 				if(KVSP_curCharUnicode != ']')
 				{
 					delete l;
-					warning(pBegin,__tr2qs("Unterminated array index"));
+					warning(pBegin,__tr2qs_ctx("Unterminated array index","kvs"));
 					switch(KVSP_curCharUnicode)
 					{
 						case 0:
-							error(KVSP_curCharPointer,__tr2qs("Unexpected end of script in array index (missing ']' character ?)"));
+							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in array index (missing ']' character ?)","kvs"));
 						break;
 						case '\n':
-							error(KVSP_curCharPointer,__tr2qs("Unexpected end of line in array index (missing ']' character or unescaped newline)"));
+							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in array index (missing ']' character or unescaped newline)","kvs"));
 						break;
 						default:
-							error(KVSP_curCharPointer,__tr2qs("Unexpected character '%q' (unicode %x) in array index: it should be already terminated"),KVSP_curCharPointer,KVSP_curCharUnicode);
+							error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (unicode %x) in array index: it should be already terminated","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
 						break;
 					}
 					return 0;
@@ -3350,15 +3350,15 @@ KviKvsTreeNodeData * KviKvsParser::parseHashKey()
 		{
 			case 0:
 				delete l;
-				warning(pBegin,__tr2qs("Unterminated hash key"));
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of script in hash key (missing '}' character ?)"));
+				warning(pBegin,__tr2qs_ctx("Unterminated hash key","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in hash key (missing '}' character ?)","kvs"));
 				return 0;
 			break;
 			case '\r':
 			case '\n':
 				delete l;
-				warning(pBegin,__tr2qs("Unterminated hash key"));
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of line in hash key (missing '}' character or unescaped newline)"));
+				warning(pBegin,__tr2qs_ctx("Unterminated hash key","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in hash key (missing '}' character or unescaped newline)","kvs"));
 				return 0;
 			break;
 			case ' ':
@@ -3636,15 +3636,15 @@ KviKvsTreeNodeData * KviKvsParser::parseStringParameter()
 		{
 			case 0:
 				delete l;
-				warning(pBegin,__tr2qs("Unterminated string constant"));
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of script in string constant (missing \" character ?)"));
+				warning(pBegin,__tr2qs_ctx("Unterminated string constant","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of script in string constant (missing \" character ?)","kvs"));
 				return 0;
 			break;
 			case '\r':
 			case '\n':
 				delete l;
-				warning(pBegin,__tr2qs("Unterminated string constant"));
-				error(KVSP_curCharPointer,__tr2qs("Unexpected end of line in string constant (missing \" character or unescaped newline)"));
+				warning(pBegin,__tr2qs_ctx("Unterminated string constant","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of line in string constant (missing \" character or unescaped newline)","kvs"));
 				return 0;
 			break;
 			case '$':

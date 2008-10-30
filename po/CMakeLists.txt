@@ -1,4 +1,4 @@
 # CMakeLists for po/
 
 # Find subdirs
-SUBDIRS(kvirc modules)
+SUBDIRS(core modules)

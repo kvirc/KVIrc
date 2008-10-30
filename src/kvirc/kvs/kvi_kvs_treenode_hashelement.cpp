@@ -66,7 +66,7 @@ bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kv
 
 	if(szKey.isEmpty())
 	{
-		c->warning(this,__tr2qs("Hash key evaluated to empty string: fix the script"));
+		c->warning(this,__tr2qs_ctx("Hash key evaluated to empty string: fix the script","kvs"));
 		pBuffer->setNothing();
 		return true;
 	}
@@ -85,7 +85,7 @@ bool KviKvsTreeNodeHashElement::evaluateReadOnlyInObjectScope(KviKvsObject *o,Kv
 		{
 			QString szType;
 			val.getTypeName(szType);
-			c->warning(this,__tr2qs("The argument of the {} subscript didn't evaluate to a hash: automatic conversion from type '%Q' supplied"),&szType);
+			c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash: automatic conversion from type '%Q' supplied","kvs"),&szType);
 		}
 		pBuffer->setNothing();
 		return true;
@@ -112,7 +112,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectS
 
 	if(szKey.isEmpty())
 	{
-		c->warning(this,__tr2qs("Hash key evaluated to empty string: fix the script"));
+		c->warning(this,__tr2qs_ctx("Hash key evaluated to empty string: fix the script","kvs"));
 	}
 
 	KviKvsRWEvaluationResult * result;
@@ -128,7 +128,7 @@ KviKvsRWEvaluationResult * KviKvsTreeNodeHashElement::evaluateReadWriteInObjectS
 		{
 			QString szType;
 			result->result()->getTypeName(szType);
-			c->warning(this,__tr2qs("The argument of the {} subscript didn't evaluate to a hash automatic conversion from %Q supplied"),&szType);
+			c->warning(this,__tr2qs_ctx("The argument of the {} subscript didn't evaluate to a hash automatic conversion from %Q supplied","kvs"),&szType);
 		}
 		result->result()->setHash(new KviKvsHash());
 	}

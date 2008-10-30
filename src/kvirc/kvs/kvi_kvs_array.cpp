@@ -224,4 +224,3 @@ void KviKvsArray::appendAsString(QString &szBuffer)
 		u++;
 	}
 }
-

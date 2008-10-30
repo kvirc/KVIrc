@@ -146,7 +146,6 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::contextDescription(QString &s
 	szBuffer = "Label \"match\" For Special Command \"switch\"";
 }
 
-
 void KviKvsTreeNodeSpecialCommandSwitchLabelMatch::dump(const char * prefix)
 {
 	qDebug("%s SpecialCommandSwitchLabelMatch",prefix);
@@ -197,7 +196,6 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::contextDescription(QString &
 {
 	szBuffer = "Label \"regexp\" For Special Command \"switch\"";
 }
-
 
 void KviKvsTreeNodeSpecialCommandSwitchLabelRegexp::dump(const char * prefix)
 {
@@ -250,7 +248,6 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::contextDescription(QString 
 	szBuffer = "Label \"default\" For Special Command \"switch\"";
 }
 
-
 void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::dump(const char * prefix)
 {
 	qDebug("%s SpecialCommandSwitchLabelDefault",prefix);
@@ -299,7 +296,6 @@ void KviKvsTreeNodeSpecialCommandSwitch::contextDescription(QString &szBuffer)
 {
 	szBuffer = "Special Command \"switch\"";
 }
-
 
 void KviKvsTreeNodeSpecialCommandSwitch::dump(const char * prefix)
 {

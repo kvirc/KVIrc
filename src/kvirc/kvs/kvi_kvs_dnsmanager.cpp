@@ -153,23 +153,23 @@ void KviKvsDnsManager::dnsLookupTerminated(KviDns * pDns)
 
 	} else {
 		QString szQuery = o->dns()->query();
-		o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs("DNS Lookup result for query \"%Q\""),&szQuery);
+		o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("DNS Lookup result for query \"%Q\"","kvs"),&szQuery);
 	
 		if(o->dns()->state() == KviDns::Failure)
 		{
 			QString szErr = KviError::getDescription(o->dns()->error());
-			o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs("Error: %Q"),&szErr);
+			o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("Error: %Q","kvs"),&szErr);
 		} else {
 			int idx = 1;
 			for(QString * h = o->dns()->hostnameList()->first();h;h = o->dns()->hostnameList()->next())
 			{
-				o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs("Hostname %d: %Q"),idx,h);
+				o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("Hostname %d: %Q","kvs"),idx,h);
 				idx++;
 			}
 			idx = 1;
 			for(QString * a = o->dns()->ipAddressList()->first();a;a = o->dns()->ipAddressList()->next())
 			{
-				o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs("IP address %d: %Q"),idx,a);
+				o->window()->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("IP address %d: %Q","kvs"),idx,a);
 				idx++;
 			}
 		}

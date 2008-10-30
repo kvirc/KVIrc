@@ -61,7 +61,7 @@ bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,
 	const KviKvsScript * s = KviKvsAliasManager::instance()->lookup(m_szFunctionName);
 	if(!s)
 	{
-		c->error(this,__tr2qs("Call to undefined function '%Q'"),&m_szFunctionName);
+		c->error(this,__tr2qs_ctx("Call to undefined function '%Q'","kvs"),&m_szFunctionName);
 		return false;
 	}
 
@@ -69,7 +69,7 @@ bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,
 
 	if(!copy.run(c->window(),&l,pBuffer,KviKvsScript::PreserveParams))
 	{
-		c->error(this,__tr2qs("Error in inner alias function call '%Q', called from this context"),&m_szFunctionName);
+		c->error(this,__tr2qs_ctx("Error in inner alias function call '%Q', called from this context","kvs"),&m_szFunctionName);
 		return false;
 	}
 	return true;

@@ -57,8 +57,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 
 		if(!KVSP_curCharIsLetter)
 		{
-			warning(KVSP_curCharPointer - 1,__tr2qs("Stray dot ('.') character or invalid following module command name"));
-			error(KVSP_curCharPointer,__tr2qs("Syntax error: malformed module command identifier"));
+			warning(KVSP_curCharPointer - 1,__tr2qs_ctx("Stray dot ('.') character or invalid following module command name","kvs"));
+			error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: malformed module command identifier","kvs"));
 			return 0;
 		}
 
@@ -82,16 +82,16 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 
 			if(!KVSP_curCharIsLetter)
 			{
-				warning(KVSP_curCharPointer - 1,__tr2qs("Stray '::' sequence or invalid following alias name"));
-				error(KVSP_curCharPointer,__tr2qs("Syntax error: malformed alias identifier"));
+				warning(KVSP_curCharPointer - 1,__tr2qs_ctx("Stray '::' sequence or invalid following alias name","kvs"));
+				error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: malformed alias identifier","kvs"));
 				return 0;
 			}
 
 			KVSP_skipChar;
 			while(KVSP_curCharIsLetterOrNumber || (KVSP_curCharUnicode == '_'))KVSP_skipChar;
 		} else {
-			warning(KVSP_curCharPointer - 1,__tr2qs("Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"));
-			error(KVSP_curCharPointer,__tr2qs("Syntax error: malformed (alias?) command identifier"));
+			warning(KVSP_curCharPointer - 1,__tr2qs_ctx("Stray ':' character: did you mean '...<namespace>::<alias_name>' ?","kvs"));
+			error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: malformed (alias?) command identifier","kvs"));
 			return 0;
 		}
 
@@ -235,8 +235,8 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 				// the single command implementations should take care of checking it
 				/*else {
 				
-					warning(pIdentifier,__tr2qs("Callback command called with an empty callback instruction"));
-					error(KVSP_curCharPointer,__tr2qs("Callback commands must have a callback instruction"));
+					warning(pIdentifier,__tr2qs_ctx("Callback command called with an empty callback instruction","kvs"));
+					error(KVSP_curCharPointer,__tr2qs_ctx("Callback commands must have a callback instruction","kvs"));
 					if(sw)delete sw;
 					delete dl;
 					return 0;
@@ -268,7 +268,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 				{
 					cmd = new KviKvsTreeNodeCoreCallbackCommand(pIdentifier,szIdentifier,dl,r,clbk);
 				} else {
-					error(KVSP_curCharPointer,__tr2qs("Unknown callback command \"%Q\""),&szIdentifier);
+					error(KVSP_curCharPointer,__tr2qs_ctx("Unknown callback command \"%Q\"","kvs"),&szIdentifier);
 					if(sw)delete sw;
 					if(pRebindData)delete pRebindData;
 					delete dl;
