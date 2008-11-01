@@ -173,7 +173,7 @@ protected:
 	int selectedCount();
 	QString nameForAutomaticAction(const QString &szTemplate);
 protected slots:
-	void currentItemChanged(KviTalTreeWidgetItem * it,KviTalTreeWidgetItem *prev);
+	void currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *prev);
 	void newAction();
 	void deleteActions();
 	void exportActions();

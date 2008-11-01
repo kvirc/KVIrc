@@ -62,7 +62,7 @@ public:
 protected:
 	void mousePressEvent (QMouseEvent *e);
 signals:
-	void rightButtonPressed(KviTalTreeWidgetItem *,QPoint);
+	void rightButtonPressed(QTreeWidgetItem *,QPoint);
 };
 
 class UrlDialog : public KviWindow
@@ -91,8 +91,8 @@ protected slots:
 	void close_slot();
 	void remove();
 	void findtext();
-	void dblclk_url(KviTalTreeWidgetItem *item, int);
-	void popup(KviTalTreeWidgetItem *item, const QPoint &p);
+	void dblclk_url(QTreeWidgetItem *item, int);
+	void popup(QTreeWidgetItem *item, const QPoint &p);
 	void sayToWin(QAction * act);
 };
 

@@ -358,7 +358,7 @@ public:
 	virtual void setEnabled(bool bEnabled);
 private slots:
 	void textChanged(const QString &str);
-	void selectionChanged();
+	void itemSelectionChanged();
 	void addClicked();
 	void removeClicked();
 };

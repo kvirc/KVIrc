@@ -83,7 +83,7 @@ private:
 	void fillProxyList();
 	void saveLastItem();
 protected slots:
-	void currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev);
+	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev);
 	void customContextMenuRequested(const QPoint &pnt);
 	void newProxy();
 	void removeCurrent();

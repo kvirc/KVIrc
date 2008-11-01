@@ -80,7 +80,7 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 	m_pTreeWidget->setHeaderLabels(columnLabels);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 	m_pTreeWidget->setRootIsDecorated(false);
-	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 
 	layout()->addWidget(m_pTreeWidget,0,0,1,3);
 //	layout()->addMultiCellWidget(m_pTreeWidget,0,0,0,2);
@@ -222,7 +222,7 @@ void KviMediaTypesOptionsWidget::setLineEdits()
 	m_pIcon->setText(m_pLastItem ? m_pLastItem->data()->szIcon.ptr() : "");
 }
 
-void KviMediaTypesOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev)
+void KviMediaTypesOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
 {
 	saveLastItem();
 	m_pLastItem = (KviMediaTypeTreeWidgetItem *)it;

@@ -216,8 +216,8 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	m_pTreeWidget->setSortingEnabled(false);
 
 	connect(m_pTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
-	connect(m_pTreeWidget,SIGNAL(itemPressed(KviTalTreeWidgetItem *, int)),
-		this,SLOT(itemPressed(KviTalTreeWidgetItem *, int)));
+	connect(m_pTreeWidget,SIGNAL(itemPressed(QTreeWidgetItem *, int)),
+		this,SLOT(itemPressed(QTreeWidgetItem *, int)));
 
 	
 
@@ -1077,9 +1077,9 @@ void KviPopupEditor::oneTimeSetup()
 		++it;
 	}
 
-	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
-	connect(m_pTreeWidget,SIGNAL(itemPressed(KviTalTreeWidgetItem *, int)),
-		this,SLOT(itemPressed(KviTalTreeWidgetItem *, int)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
+	connect(m_pTreeWidget,SIGNAL(itemPressed(QTreeWidgetItem *, int)),
+		this,SLOT(itemPressed(QTreeWidgetItem *, int)));
 }
 
 void KviPopupEditor::itemPressed(KviTalTreeWidgetItem * it, int)
@@ -1220,7 +1220,7 @@ void KviPopupEditor::saveLastEditedItem()
 	m_pLastEditedItem->setText(0,m->popupName());
 }
 
-void KviPopupEditor::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev)
+void KviPopupEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
 {
 	saveLastEditedItem();
 

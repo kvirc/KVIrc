@@ -180,7 +180,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSortingEnabled(false);
 
-	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem*, KviTalTreeWidgetItem *)),this,SLOT(treeWidgetItemSelectionChanged(KviTalTreeWidgetItem *, KviTalTreeWidgetItem *)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem*, QTreeWidgetItem *)),this,SLOT(treeWidgetItemSelectionChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
 
 	KviTalHBox * hbox = new KviTalHBox(vbox);
 	hbox->setSpacing(2);

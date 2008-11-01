@@ -132,7 +132,7 @@ protected:
 	virtual QSize sizeHint() const;
 protected slots:
 	void rightButtonClicked ( QTreeWidgetItem *, const QPoint &);
-	void itemSelected(KviTalTreeWidgetItem * it, KviTalTreeWidgetItem *);
+	void itemSelected(QTreeWidgetItem * it, QTreeWidgetItem *);
 	void deleteCurrent();
 	void applyFilter();
 };

@@ -1074,11 +1074,11 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
 		this,SLOT(customContextMenuRequested(const QPoint &)));
-	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),
-		this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),
+		this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 
-	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(KviTalTreeWidgetItem*, int )),
-		this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem*, int )));
+	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem*, int )),
+		this,SLOT(itemDoubleClicked(QTreeWidgetItem*, int )));
 
 	QString tiptxt = __tr2qs_ctx("<center>This is the list of available IRC servers.<br>" \
 			"Right-click on the list to add or remove servers and perform other actions.<br>"\
@@ -1320,12 +1320,12 @@ void KviServerOptionsWidget::fillServerList()
 	}
 }
 
-void KviServerOptionsWidget::itemDoubleClicked(KviTalTreeWidgetItem*, int )
+void KviServerOptionsWidget::itemDoubleClicked(QTreeWidgetItem*, int )
 {
 	detailsClicked();
 }
 
-void KviServerOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev)
+void KviServerOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
 {
 	saveLastItem();
 	m_pLastEditedItem = (KviServerOptionsTreeWidgetItem *)it;

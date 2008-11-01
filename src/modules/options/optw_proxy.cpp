@@ -72,8 +72,8 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
-	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),
-		this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),
+		this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
 			this,SLOT(customContextMenuRequested(const QPoint &)));
@@ -170,7 +170,7 @@ void KviProxyOptionsWidget::fillProxyList()
 	if(!(g_pProxyDataBase->currentProxy()))currentItemChanged(0,0);
 }
 
-void KviProxyOptionsWidget::currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev)
+void KviProxyOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
 {
 	if(m_pLastEditedItem)saveLastItem();
 	m_pLastEditedItem = (KviProxyOptionsTreeWidgetItem *)it;

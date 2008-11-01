@@ -101,7 +101,7 @@ void KviRegisteredUsersListView::mousePressEvent (QMouseEvent *e)
 {
 	if (e->button() == Qt::RightButton)
 	{
-		KviTalTreeWidgetItem *i= (KviTalTreeWidgetItem*)itemAt(e->pos());
+		QTreeWidgetItem *i= itemAt(e->pos());
 		if (i) emit rightButtonPressed(i,QCursor::pos());
 	}
 	KviTalTreeWidget::mousePressEvent(e);
@@ -221,8 +221,8 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	m_pListView = new KviRegisteredUsersListView(this);
 	m_pListView->setItemDelegate(new KviRegisteredUsersDialogItemDelegate());
 
-	connect(m_pListView,SIGNAL(itemPressed(KviTalTreeWidgetItem *,int)),this,SLOT(itemPressed(KviTalTreeWidgetItem *,int)));
-	connect(m_pListView,SIGNAL(itemDoubleClicked(KviTalTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem *, int)));
+	connect(m_pListView,SIGNAL(itemPressed(QTreeWidgetItem *,int)),this,SLOT(itemPressed(QTreeWidgetItem *,int)));
+	connect(m_pListView,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *, int)));
 
 	g->addWidget(m_pListView,0,0,2,2);
 
@@ -297,7 +297,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	g->setRowStretch(1,1);
 
 	connect(m_pListView,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
-	connect(m_pListView,SIGNAL(rightButtonPressed(KviTalTreeWidgetItem *, QPoint)),this,SLOT(listViewRightButtonClicked(KviTalTreeWidgetItem *, QPoint)));
+	connect(m_pListView,SIGNAL(rightButtonPressed(QTreeWidgetItem *, QPoint)),this,SLOT(rightButtonPressed(QTreeWidgetItem *, QPoint)));
 
 	fillList();
 
@@ -428,7 +428,7 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 }
 
 
-void KviRegisteredUsersDialog::listViewRightButtonClicked ( KviTalTreeWidgetItem * pItem, QPoint pnt)
+void KviRegisteredUsersDialog::rightButtonPressed ( QTreeWidgetItem * pItem, QPoint pnt)
 {
 	if(pItem)
 	{

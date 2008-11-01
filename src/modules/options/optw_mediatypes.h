@@ -75,7 +75,7 @@ private:
 	void enableOrDisable();
 	void setLineEdits();
 private slots:
-	void currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev);
+	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev);
 	void newMediaType();
 	void delMediaType();
 public:

@@ -199,7 +199,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	m_pMaskBox->setAllColumnsShowFocus(true);
 //	m_pMaskBox->setShowSortIndicator(true);
 	m_pMaskBox->setSortingEnabled(true);
-	connect(m_pMaskBox,SIGNAL(itemDoubleClicked ( KviTalTreeWidgetItem * )),this,SLOT(itemDoubleClicked( KviTalTreeWidgetItem * )));
+	connect(m_pMaskBox,SIGNAL(itemDoubleClicked ( QTreeWidgetItem * )),this,SLOT(itemDoubleClicked( QTreeWidgetItem * )));
 	g->addWidget(m_pMaskBox,3,0,1,2);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);

@@ -192,7 +192,7 @@ protected slots:
 	void importerDead();
 	void importServer(const KviServer & s,const QString &network);
 	void importPopupAboutToShow();
-	void currentItemChanged(KviTalTreeWidgetItem *cur,KviTalTreeWidgetItem *prev);
+	void currentItemChanged(QTreeWidgetItem *cur,QTreeWidgetItem *prev);
 	void customContextMenuRequested(const QPoint &pnt);
 	void newNetwork();
 	void removeCurrent();
@@ -200,7 +200,7 @@ protected slots:
 	void copyServer();
 	void pasteServer();
 	void clearList();
-	void itemDoubleClicked(KviTalTreeWidgetItem*, int );
+	void itemDoubleClicked(QTreeWidgetItem*, int );
 	void detailsClicked();
 	void connectCurrentClicked();
 	void recentServersPopupAboutToShow();

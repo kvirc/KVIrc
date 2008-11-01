@@ -73,12 +73,12 @@ protected slots:
 	void slotClicked(KviTalTreeWidgetItem *,int);
 	void slotCustomContextMenuRequested(const QPoint &pnt);
 	void slotSelectionChanged();
-	void slotCurrentChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *);
-	void slotItemActivated(KviTalTreeWidgetItem *,int col);
-	void slotOnItemEntered(KviTalTreeWidgetItem *,int col);
-	void slotItemExpanded(KviTalTreeWidgetItem *);
-	void slotItemCollapsed(KviTalTreeWidgetItem *);
-	void slotItemChanged(KviTalTreeWidgetItem *,int);
+	void slotCurrentChanged(QTreeWidgetItem *,QTreeWidgetItem *);
+	void slotItemActivated(QTreeWidgetItem *,int col);
+	void slotOnItemEntered(QTreeWidgetItem *,int col);
+	void slotItemExpanded(QTreeWidgetItem *);
+	void slotItemCollapsed(QTreeWidgetItem *);
+	void slotItemChanged(QTreeWidgetItem *,int);
 };
 
 class KviKvsTreeWidget : public KviTalTreeWidget

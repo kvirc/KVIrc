@@ -112,7 +112,7 @@ protected:
 	virtual void getBaseLogFileName(KviStr &buffer);
 protected slots:
 	void flush();
-	void itemDoubleClicked(KviTalTreeWidgetItem *it, int);
+	void itemDoubleClicked(QTreeWidgetItem *it, int);
 	void requestList();
 	void stoplistdownload();
 	void connectionStateChange();

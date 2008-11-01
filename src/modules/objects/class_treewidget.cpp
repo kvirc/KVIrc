@@ -245,15 +245,15 @@ bool KviKvsObject_treewidget::init(KviKvsRunTimeContext * pContext,KviKvsVariant
 	// hack for compatibility with "old" addColumn method;
 	((KviTalTreeWidget*) widget())->setColumnCount(0);
 	
-	connect(widget(),SIGNAL(itemClicked(KviTalTreeWidgetItem *,int)),this,SLOT(slotClicked(KviTalTreeWidgetItem *,int)));
+	connect(widget(),SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(slotClicked(QTreeWidgetItem *,int)));
 	connect(widget(),SIGNAL(itemSelectionChanged()),this,SLOT(slotSelectionChanged()));
-	connect(widget(),SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),this,SLOT(slotCurrentChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
-	connect(widget(),SIGNAL(itemActivated(KviTalTreeWidgetItem *,int)),this,SLOT(slotItemActivated(KviTalTreeWidgetItem *,int)));
-	connect(widget(),SIGNAL(itemEntered(KviTalTreeWidgetItem *,int)),this,SLOT(slotOnItemEntered(KviTalTreeWidgetItem *,int)));
-	connect(widget(),SIGNAL(itemExpanded(KviTalTreeWidgetItem *)),this,SLOT(slotItemExpanded(KviTalTreeWidgetItem *)));
-	connect(widget(),SIGNAL(itemCollapsed(KviTalTreeWidgetItem *)),this,SLOT(slotItemCollapsed(KviTalTreeWidgetItem *)));
-	//connect(widget(),SIGNAL(rightButtonClicked(KviTalTreeWidgetItem *,const QPoint &,int)),this,SLOT(slotRightButtonClicked(KviTalTreeWidgetItem *,const QPoint &,int)));
-	connect(widget(),SIGNAL(itemChanged(KviTalTreeWidgetItem *,int)),this,SLOT(slotItemChanged(KviTalTreeWidgetItem *,int)));
+	connect(widget(),SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(slotCurrentChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
+	connect(widget(),SIGNAL(itemActivated(QTreeWidgetItem *,int)),this,SLOT(slotItemActivated(QTreeWidgetItem *,int)));
+	connect(widget(),SIGNAL(itemEntered(QTreeWidgetItem *,int)),this,SLOT(slotOnItemEntered(QTreeWidgetItem *,int)));
+	connect(widget(),SIGNAL(itemExpanded(QTreeWidgetItem *)),this,SLOT(slotItemExpanded(QTreeWidgetItem *)));
+	connect(widget(),SIGNAL(itemCollapsed(QTreeWidgetItem *)),this,SLOT(slotItemCollapsed(QTreeWidgetItem *)));
+	//connect(widget(),SIGNAL(rightButtonClicked(QTreeWidgetItem *,const QPoint &,int)),this,SLOT(slotRightButtonClicked(QTreeWidgetItem *,const QPoint &,int)));
+	connect(widget(),SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(slotItemChanged(QTreeWidgetItem *,int)));
 	
 	widget()->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(widget(),SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(slotCustomContextMenuRequested(const QPoint &)));

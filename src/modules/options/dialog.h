@@ -80,7 +80,7 @@ private:
 	//KviOptionsTreeWidgetItem * showHiddenChildren(KviTalTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
 	//KviOptionsTreeWidgetItem * findItemByPage(KviOptionsTreeWidgetItem *it,KviOptionsWidget * pPage);
 private slots:
-	void treeWidgetItemSelectionChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *prev);
+	void treeWidgetItemSelectionChanged(QTreeWidgetItem* it, QTreeWidgetItem *prev);
 	void applyClicked();
 	void okClicked();
 	void cancelClicked();

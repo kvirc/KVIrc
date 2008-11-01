@@ -124,7 +124,7 @@ protected slots:
 	void contextNewPrologue();
 	void contextNewEpilogue();
 	void selectionChanged();
-	void itemPressed(KviTalTreeWidgetItem * item, int column);
+	void itemPressed(QTreeWidgetItem * item, int column);
 	void testPopup();
 	void testModeMenuItemClicked(KviKvsPopupMenuItem * it);
 };
@@ -161,7 +161,7 @@ public:
 	void commit();
 	void exportPopups(bool);
 protected slots:
-	void currentItemChanged(KviTalTreeWidgetItem *it,KviTalTreeWidgetItem *prev);
+	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev);
 	void newPopup();
 	void exportAll();
 	void exportSelected();

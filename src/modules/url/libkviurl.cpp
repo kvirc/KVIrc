@@ -92,7 +92,7 @@ void KviUrlDialogTreeWidget::mousePressEvent (QMouseEvent *e)
 {
 	if (e->button() == Qt::RightButton)
 	{
-		KviTalTreeWidgetItem *i= (KviTalTreeWidgetItem*)itemAt(e->pos());
+		QTreeWidgetItem *i= itemAt(e->pos());
 		if (i) emit rightButtonPressed(i,QCursor::pos());
 	}
 	KviTalTreeWidget::mousePressEvent(e);
@@ -165,8 +165,8 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *g_pList)
 	m_pUrlList->setColumnWidth(2,cfg.readIntEntry("Count",70));
 	m_pUrlList->setColumnWidth(3,cfg.readIntEntry("Timestamp",70));
 
-	connect(m_pUrlList,SIGNAL(itemDoubleClicked(KviTalTreeWidgetItem *, int)),SLOT(dblclk_url(KviTalTreeWidgetItem *, int)));
-	connect(m_pUrlList,SIGNAL(rightButtonPressed(KviTalTreeWidgetItem *, const QPoint &)),SLOT(popup(KviTalTreeWidgetItem *, const QPoint &)));
+	connect(m_pUrlList,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),SLOT(dblclk_url(QTreeWidgetItem *, int)));
+	connect(m_pUrlList,SIGNAL(rightButtonPressed(QTreeWidgetItem *, const QPoint &)),SLOT(popup(QTreeWidgetItem *, const QPoint &)));
 
 //	setFocusHandlerNoChildren(m_pUrlList);
 	m_pUrlList->setFocusPolicy(Qt::StrongFocus);

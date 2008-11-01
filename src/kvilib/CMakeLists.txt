@@ -39,7 +39,6 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_textedit.h
 	tal/kvi_tal_toolbar.h
 	tal/kvi_tal_tooltip.h
-	tal/kvi_tal_treewidget.h
 	tal/kvi_tal_vbox.h
 	tal/kvi_tal_wizard.h
 )
@@ -121,7 +120,6 @@ SET(kvilib_SRCS
 	tal/kvi_tal_textedit.cpp
 	tal/kvi_tal_toolbar.cpp
 	tal/kvi_tal_tooltip.cpp
-	tal/kvi_tal_treewidget.cpp
 	tal/kvi_tal_vbox.cpp
 	tal/kvi_tal_wizard.cpp
 )

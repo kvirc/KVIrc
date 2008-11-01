@@ -622,7 +622,7 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	m_pTreeWidget->setItemDelegate(itemDelegate);
 	//m_pTreeWidget->setShowSortIndicator(true);
 	m_pTreeWidget->setFocusPolicy(Qt::StrongFocus);
-	connect(m_pTreeWidget,SIGNAL(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)),this,SLOT(currentItemChanged(KviTalTreeWidgetItem *,KviTalTreeWidgetItem *)));
+	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 
 	m_pNewActionButton = new QPushButton(__tr2qs("New Action"),box);
 	connect(m_pNewActionButton,SIGNAL(clicked()),this,SLOT(newAction()));
@@ -797,7 +797,7 @@ bool KviActionEditor::actionExists(const QString &szName)
 }
 
 
-void KviActionEditor::currentItemChanged(KviTalTreeWidgetItem * i,KviTalTreeWidgetItem *prev)
+void KviActionEditor::currentItemChanged(QTreeWidgetItem * i,QTreeWidgetItem *prev)
 {
 	if(m_pSingleActionEditor->actionData())
 		m_pSingleActionEditor->commit();

@@ -48,7 +48,7 @@ public:
 protected:
 	void mousePressEvent (QMouseEvent *e);
 signals:
-	void rightButtonPressed(KviTalTreeWidgetItem *,QPoint);
+	void rightButtonPressed(QTreeWidgetItem *,QPoint);
 };
 
 class KviRegisteredUsersDialogItemDelegate : public QItemDelegate
@@ -132,15 +132,11 @@ public:
 	QPushButton * m_pExportButton;
 	QPushButton * m_pAddGroupButton;
 	QMultiHash<int, KviRegisteredUserGroup*> m_TmpDict;
-protected slots:
-	void itemPressed(KviTalTreeWidgetItem *it,int c);
-	void itemDoubleClicked(KviTalTreeWidgetItem *it, int);
 protected:
 	void fillList();
-protected:
-	virtual void closeEvent(QCloseEvent *);
 	void editItem(KviRegisteredUsersDialogItem * i);
 	void editGroup(KviRegisteredUserGroup* group);
+	virtual void closeEvent(QCloseEvent *);
 protected slots:
 	void cancelClicked();
 	void okClicked();
@@ -152,7 +148,9 @@ protected slots:
 	void exportClicked();
 	void addWizardClicked();
 	void addGroupClicked();
-	void listViewRightButtonClicked ( KviTalTreeWidgetItem *, QPoint);
+	void itemPressed(QTreeWidgetItem *it,int c);
+	void itemDoubleClicked(QTreeWidgetItem *it, int);
+	void rightButtonPressed ( QTreeWidgetItem *, QPoint);
 	void moveToGroupMenuClicked(int);
 };
 

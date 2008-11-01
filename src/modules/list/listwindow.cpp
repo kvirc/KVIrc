@@ -208,7 +208,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pTreeWidget->setAllColumnsShowFocus(TRUE);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
 
-	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(KviTalTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(KviTalTreeWidgetItem *, int)));
+	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *, int)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
