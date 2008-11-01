@@ -96,7 +96,6 @@
 #include "kvi_ircconnection.h"
 #include "kvi_mdimanager.h"
 #include "kvi_userinput.h"
-#include "kvi_doublebuffer.h"
 #include "kvi_qcstring.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_animatedpixmap.h"
@@ -1017,7 +1016,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	int rectWidth  = r.width();
 	if(rectWidth > widgetWidth)rectWidth = widgetWidth;
 
-	QPainter pa(this); // we use qt4 double buffering
+	QPainter pa(this);
 
 	SET_ANTI_ALIASING(pa);
 
