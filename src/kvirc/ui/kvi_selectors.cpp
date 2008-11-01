@@ -237,7 +237,7 @@ KviPixmapSelector::~KviPixmapSelector()
 }
 
 
-void KviPixmapSelector::checkBoxToggled(bool bEnabled)
+void KviPixmapSelector::checkBoxToggled(bool)
 {
 	setEnabled(isEnabled());
 }
@@ -774,7 +774,7 @@ void KviChannelListSelector::setEnabled(bool bEnabled)
 	m_pRemoveButton->setEnabled(bEnabled);
 }
 
-void KviChannelListSelector::textChanged(const QString &str)
+void KviChannelListSelector::textChanged(const QString &)
 {
 	m_pAddButton->setEnabled(!m_pChanLineEdit->text().isEmpty());
 }

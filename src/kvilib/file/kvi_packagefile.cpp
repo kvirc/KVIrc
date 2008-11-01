@@ -484,7 +484,7 @@ bool KviPackageWriter::pack(const QString &szFileName,kvi_u32_t uPackFlags)
 	return bRet;
 }
 
-bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t uPackFlags)
+bool KviPackageWriter::packInternal(const QString &szFileName,kvi_u32_t)
 {
 
 	KviFile f(szFileName);
@@ -597,7 +597,7 @@ KviPackageReader::~KviPackageReader()
 {
 }
 
-bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &szLocalFileName)
+bool KviPackageReader::readHeaderInternal(KviFile * pFile,const QString &)
 {
 	// read the PackageHeader
 

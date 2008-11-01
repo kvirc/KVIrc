@@ -36,8 +36,8 @@ public:
 	KviBasicIrcServerInfo(const QString & version = KviQString::empty);
 	virtual ~KviBasicIrcServerInfo();
 protected:
-	virtual const QString & getCustomChannelModeDescription(QChar mode) { return KviQString::empty; };
-	virtual const QString & getCustomUserModeDescription(QChar mode) { return KviQString::empty; };
+	virtual const QString & getCustomChannelModeDescription(QChar) { return KviQString::empty; };
+	virtual const QString & getCustomUserModeDescription(QChar) { return KviQString::empty; };
 private:
 	const QString & getBasicChannelModeDescription(QChar mode);
 	const QString & getBasicUserModeDescription(QChar mode);

@@ -55,7 +55,7 @@ public:
 protected:
 	virtual bool eventFilter(QObject * o,QEvent *e);
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual QSize sizeHint();
+	virtual QSize sizeHint() const;
 private:
 	void recreateChildren();
 };

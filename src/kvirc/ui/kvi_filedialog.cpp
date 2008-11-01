@@ -64,15 +64,18 @@ void KviFileDialog::goHome()
 }
 */
 
-bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool bShowHidden, bool bShowNative, QWidget * pParent)
-{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bShowNative, QWidget * pParent)
+{
 	if(bShowNative)
 	{
 		szBuffer = QFileDialog::getOpenFileName(pParent,szCaption,szInitial,szFilter);
 		KviFileUtils::adjustFilePath(szBuffer);
 		return !szBuffer.isEmpty();
 	}
+#else
+bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool, bool , QWidget * pParent)
+{
 #endif
 	KviFileDialog * pDialog = new KviFileDialog(szInitial,szFilter,pParent,"open_file_name_dialog",true);
 	pDialog->setWindowTitle(szCaption);
@@ -93,9 +96,9 @@ bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCap
 	return false;
 }
 
-bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool bShowHidden, bool bConfirmOverwrite, bool bShowNative, QWidget * pParent)
-{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bConfirmOverwrite, bool bShowNative, QWidget * pParent)
+{
 	if(bShowNative)
 	{
 		while(1)
@@ -127,6 +130,9 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 			}
 		}
 	}
+#else
+bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bConfirmOverwrite, bool , QWidget * pParent)
+{
 #endif
 
 	KviFileDialog * pDialog = new KviFileDialog(szInitial,szFilter,pParent,"save_file_name_dialog",true);
@@ -183,15 +189,17 @@ bool KviFileDialog::askForSaveFileName(QString & szBuffer, const QString & szCap
 	return false;
 }
 
-bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool bShowHidden, bool bShowNative, QWidget * pParent)
-{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bShowNative, QWidget * pParent)
+{
 	if(bShowNative)
 	{
 		szBuffer = QFileDialog::getExistingDirectory(pParent,szCaption,szInitial);
 		return !szBuffer.isEmpty();
 	}
 #else
+bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool , QWidget * pParent)
+{
 	#ifdef COMPILE_KDE_SUPPORT
 		// the KDE based dir selection dialog is now quite nice
 		szBuffer = KFileDialog::getExistingDirectory(szInitial,pParent,szCaption);
@@ -220,14 +228,17 @@ bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCa
 	return false;
 }
 
-bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool bShowHidden, bool bShowNative, QWidget * pParent)
-{
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool bShowNative, QWidget * pParent)
+{
 	if(bShowNative)
 	{
 		szBuffer = QFileDialog::getOpenFileNames(pParent,szCaption,szInitial,szFilter);
 		return (szBuffer.count() > 0);
 	}
+#else
+bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & szCaption, const QString & szInitial, const QString & szFilter, bool , bool , QWidget * pParent)
+{
 #endif
 
 	KviFileDialog * pDialog = new KviFileDialog(szInitial,szFilter,pParent,"open_file_names_dialog",true);

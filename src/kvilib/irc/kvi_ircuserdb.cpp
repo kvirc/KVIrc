@@ -263,7 +263,7 @@ void KviIrcUserDataBase::registeredUserChanged(const QString & user)
 	}
 }
 
-void KviIrcUserDataBase::registeredUserAdded(const QString & user)
+void KviIrcUserDataBase::registeredUserAdded(const QString &)
 {
 	KviPointerHashTableIterator<QString,KviIrcUserEntry> it( *m_pDict );
 	for( ; it.current(); ++it )

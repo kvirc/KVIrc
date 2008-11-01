@@ -172,7 +172,7 @@ QString KviTreeWindowListItem::key() const
 	QString ret;
 	if(m_pWindow->type()==KVI_WINDOW_TYPE_CONSOLE)
 	{
-		ret.sprintf("%d%d",m_pWindow->type(),m_pWindow->numericId());
+		ret.sprintf("%d%lu",m_pWindow->type(),m_pWindow->numericId());
 	} else {
 		ret.sprintf("%d%s",m_pWindow->type(),m_pWindow->windowName().toLower().toUtf8().data());
 	}
@@ -385,7 +385,7 @@ KviTreeWindowList::KviTreeWindowList()
 		iMin = KVI_OPTION_UINT(KviOption_uintTreeWindowListMinimumWidth);
 	setMinimumWidth(iMin);
 
-	if(KVI_OPTION_UINT(KviOption_uintTreeWindowListMaximumWidth) < iMin)
+	if(KVI_OPTION_UINT(KviOption_uintTreeWindowListMaximumWidth) < (unsigned int)iMin)
 		KVI_OPTION_UINT(KviOption_uintTreeWindowListMaximumWidth) = iMin;
 	int iMax = 600;
 	if(((unsigned int)iMax) > KVI_OPTION_UINT(KviOption_uintTreeWindowListMaximumWidth))
@@ -707,7 +707,7 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	p->drawText(cRect,Qt::AlignLeft | Qt::AlignVCenter,szText);
 }
 
-QSize KviTreeWindowListItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
+QSize KviTreeWindowListItemDelegate::sizeHint( const QStyleOptionViewItem &, const QModelIndex &) const
 {
 	KviTreeWindowListTreeWidget* treeWidget = (KviTreeWindowListTreeWidget*)parent();
 

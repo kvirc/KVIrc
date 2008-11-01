@@ -201,7 +201,7 @@ void KviTalPopupMenu::slottriggered(QAction * a)
 	return;
 }
 
-void KviTalPopupMenu::slotActionTriggered(bool toggled)
+void KviTalPopupMenu::slotActionTriggered(bool)
 {
 	QAction * action = (QAction *)sender();
 	slottriggered(action);

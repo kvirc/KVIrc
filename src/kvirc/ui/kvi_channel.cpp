@@ -536,7 +536,7 @@ void KviChannel::removeMasks(KviMaskEditor * ed, KviPointerList<KviMaskEntry> * 
 		szFlags.append(ed->flag());
 		uCount++;
 
-		if(uCount == connection()->serverInfo()->maxModeChanges())
+		if(uCount == (unsigned int) connection()->serverInfo()->maxModeChanges())
 		{
 			if(connection())
 			{
@@ -565,7 +565,7 @@ QPixmap * KviChannel::myIconPtr()
 	return g_pIconManager->getSmallIcon((m_iStateFlags & KVI_CHANNEL_STATE_DEADCHAN) ? KVI_SMALLICON_DEADCHANNEL : KVI_SMALLICON_CHANNEL);
 }
 
-void KviChannel::resizeEvent(QResizeEvent * e)
+void KviChannel::resizeEvent(QResizeEvent *)
 {
 	int iHeight = m_pInput->heightHint();
 	int iHeight2 = m_pTopicWidget->sizeHint().height();
@@ -1865,15 +1865,16 @@ void KviChannel::pasteLastLog()
 		unsigned int uLines = KVI_OPTION_UINT(KviOption_uintLinesToPasteOnChannelJoin);
 		unsigned int uStart = uCount - uLines - 1;
 
+/*
 		// Check if the log is smaller than the lines to print
 		if(uStart < 0)
 			uStart = 0;
-
+*/
 		QString szDummy = __tr2qs("Starting last log");
 		outputMessage(KVI_OUT_CHANPRIVMSG,szDummy);
 
 		// Scan the log file
-		for(int i = uStart; i < uCount; i++)
+		for(unsigned int i = uStart; i < uCount; i++)
 		{
 			QString szLine = QString(list.at(i));
 			szLine = szLine.section(' ',1);

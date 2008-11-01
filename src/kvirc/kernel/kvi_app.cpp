@@ -70,7 +70,6 @@
 #include "kvi_customtoolbarmanager.h"
 #include "kvi_fileutils.h"
 #include "kvi_time.h"
-#include "kvi_doublebuffer.h"
 #include "kvi_stringconversion.h"
 #include "kvi_useridentity.h"
 #include "kvi_ircview.h"
@@ -497,8 +496,6 @@ void KviApp::setup()
 
 	KVI_SPLASH_SET_PROGRESS(92)
 
-	KviDoubleBuffer::init();
-
 	QString szStylesheetFile;
 	getGlobalKvircDirectory(szStylesheetFile,Config,"style.css");
 	if(KviFileUtils::fileExists(szStylesheetFile))
@@ -645,7 +642,6 @@ KviApp::~KviApp()
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	destroyPseudoTransparency();
 #endif
-	KviDoubleBuffer::done();
 	if(m_pPendingAvatarChanges)delete m_pPendingAvatarChanges;
 	// Kill the thread manager.... all the slave threads should have been already terminated ...
 #ifdef COMPILE_SSL_SUPPORT
@@ -1941,11 +1937,6 @@ void KviApp::heartbeat(kvi_time_t tNow)
 		// FIXME: this has huge precision problems...
 		KVI_OPTION_UINT(KviOption_uintTotalConnectionTime)++;
 	}
-
-	// the line below is an approximation of (tNow / 120) == 0
-	// we don't need a really great precision here, so 128 is still ok
-	if(!(tNow & 0x7f))
-		KviDoubleBuffer::heartbeat();
 
 	if (pTm && !pTm->tm_hour && !pTm->tm_min && !pTm->tm_sec) {
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);

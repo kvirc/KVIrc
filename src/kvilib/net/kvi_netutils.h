@@ -54,7 +54,7 @@ public:
 	KviSockaddr(kvi_u32_t uPort,bool bIPv6,bool bUdp = false); // passive
 	~KviSockaddr();
 private:
-	void * m_pData; //addrinfo
+	struct addrinfo * m_pData;
 public:
 	struct sockaddr * socketAddress();
 	size_t addressLength();

@@ -218,11 +218,13 @@ void KviIrcViewToolWidget::filterEnableNone()
 
 }
 
-void KviIrcViewToolWidget::hideEvent ( QHideEvent * ){
+void KviIrcViewToolWidget::hideEvent ( QHideEvent * )
+{
 	m_pIrcView->toggleToolWidget();
 }
 
-void KviIrcViewToolWidget::closeEvent ( QCloseEvent * e ){
+void KviIrcViewToolWidget::closeEvent ( QCloseEvent * )
+{
 	m_pIrcView->toggleToolWidget();
 }
 

@@ -216,7 +216,7 @@ static DH * my_get_dh(int keylength)
 	return dh;
 }
 
-DH * my_ugly_dh_callback(SSL *s, int is_export, int keylength)
+DH * my_ugly_dh_callback(SSL *, int, int keylength)
 {
 	my_ssl_lock();
 	DH *dh = my_get_dh(keylength);
@@ -320,7 +320,7 @@ bool KviSSL::initSocket(kvi_socket_t fd)
 
 }
 
-static int cb(char *buf, int size, int rwflag, void *u)
+static int cb(char *buf, int size, int, void *u)
 {
 	KviStr * p = (KviStr *)u;
 	int len = p->len();

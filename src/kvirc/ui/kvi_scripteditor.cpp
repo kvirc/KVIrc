@@ -44,7 +44,7 @@ void KviScriptEditor::setText(const char * txt)
 	setText(KviQCString(txt));
 }
 
-void KviScriptEditor::setText(const KviQCString &txt)
+void KviScriptEditor::setText(const KviQCString &)
 {
 }
 
@@ -53,18 +53,18 @@ void KviScriptEditor::setText(const QString &txt)
 	setText(KviQCString(txt.toUtf8()));
 }
 
-void KviScriptEditor::setFindText(const QString &text)
+void KviScriptEditor::setFindText(const QString &)
 {
 }
-void KviScriptEditor::setInfoText(const QString &text)
-{
-}
-
-void KviScriptEditor::setFindLineeditReadOnly(bool b)
+void KviScriptEditor::setInfoText(const QString &)
 {
 }
 
-void KviScriptEditor::getText(KviQCString &txt)
+void KviScriptEditor::setFindLineeditReadOnly(bool)
+{
+}
+
+void KviScriptEditor::getText(KviQCString &)
 {
 }
 

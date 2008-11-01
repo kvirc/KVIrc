@@ -39,7 +39,7 @@
 QString KviOptionsWidget::m_szBasicTipStart; // empty decl
 QString KviOptionsWidget::m_szBasicTipEnd;
 
-KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool bSunken)
+KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool)
 : QFrame(parent), KviSelectorInterface()
 {
 	setObjectName(name);

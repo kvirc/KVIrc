@@ -1057,7 +1057,7 @@ void KviConsole::applyOptions()
 	resize(width() + 1,height() + 1);
 }
 
-void KviConsole::resizeEvent(QResizeEvent *e)
+void KviConsole::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pInput->heightHint();
 	int hght2 = m_pButtonBox->sizeHint().height();

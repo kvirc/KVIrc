@@ -162,7 +162,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 	// and fills the color values in the two bytes
 	//
 
-	if(charIdx >= szData.length())
+	if(charIdx >= (unsigned int) szData.length())
 	{
 		(*byte_1)=KVI_NOCHANGE;
 		(*byte_2)=KVI_NOCHANGE;
@@ -183,7 +183,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 	//Something interesting ok.
 	(*byte_1)=c - '0'; //store the code
 	charIdx++;
-	if(charIdx >= szData.length())
+	if(charIdx >= (unsigned int) szData.length())
 	{
 		(*byte_2)=KVI_NOCHANGE;
 		return charIdx;
@@ -202,7 +202,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 	{
 		(*byte_1)=(((*byte_1)*10)+(c-'0'))%16;
 		charIdx++;
-		if(charIdx >= szData.length())
+		if(charIdx >= (unsigned int) szData.length())
 		{
 			(*byte_2)=KVI_NOCHANGE;
 			return charIdx;
@@ -213,7 +213,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 	if(c == ',')
 	{
 		charIdx++;
-		if(charIdx >= szData.length())
+		if(charIdx >= (unsigned int) szData.length())
 		{
 			(*byte_2)=KVI_NOCHANGE;
 			return charIdx;
@@ -236,7 +236,7 @@ KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int 
 	//Background , a color code
 	(*byte_2)=c-'0';
 	charIdx++;
-	if(charIdx >= szData.length())return charIdx;
+	if(charIdx >= (unsigned int) szData.length())return charIdx;
 	c = szData[(int)charIdx].unicode();
 
 	if((c >= '0') && (c <='9'))

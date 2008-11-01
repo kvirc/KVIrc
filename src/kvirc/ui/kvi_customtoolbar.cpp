@@ -251,7 +251,7 @@ void KviCustomToolBar::dragEnterEvent(QDragEnterEvent * e)
 	} else e->ignore();
 }
 
-void KviCustomToolBar::dragMoveEvent(QDragMoveEvent * e)
+void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *)
 {
 	if(!m_pDraggedChild)
 		return;
@@ -259,7 +259,7 @@ void KviCustomToolBar::dragMoveEvent(QDragMoveEvent * e)
 	drag(m_pDraggedChild,mapFromGlobal(QCursor::pos()));
 }
 
-void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent * e)
+void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent *)
 {
 	if(m_pDraggedChild)
 	{
@@ -287,7 +287,6 @@ int KviCustomToolBar::dropIndexAt(const QPoint & pnt, QWidget * pExclude, int * 
 	// treating exclude as if it was going to be removed
 	// find also the exclude index if needed
 	QLayout * pLayout = layout();
-	QLayoutItem * i = 0;
 	if(piExcludeIdx)
 		*piExcludeIdx = -1;
 	int iIdx = 0;
@@ -303,8 +302,7 @@ int KviCustomToolBar::dropIndexAt(const QPoint & pnt, QWidget * pExclude, int * 
 	int iExcludeIdx = -1;
 	QPoint pntExclude;
 	QWidget * pWidget = 0;
-//	QLayoutItem *child;
-//	while((i = it.current()))
+
 	for (int i=0; i < pLayout->count(); i++)
 	{
 		if((pWidget = pLayout->itemAt(i)->widget()))
@@ -346,7 +344,6 @@ int KviCustomToolBar::dropIndexAt(const QPoint & pnt, QWidget * pExclude, int * 
 			}
 		}
 		iIdx++;
-		//++it;
 	}
 
 	if(!pMinDistW)
@@ -427,11 +424,11 @@ void KviCustomToolBar::drag(QWidget * pChild, const QPoint & pnt)
 {
 	int iMe = -1;
 	int iIdx = dropIndexAt(pnt,pChild,&iMe);
-	debug("DROP INDEX IS %d, ME IS %d",iIdx,iMe);
+// 	debug("DROP INDEX IS %d, ME IS %d",iIdx,iMe);
 	if(iIdx == iMe) return; // would move over itself
 
 	QWidget * pWidgetToMove = widgetAt(iIdx > iMe ? iIdx-1 : iIdx);
-	debug("SEARCHING FOR WIDGET TO MOVE AT %d AND FOUND %x (ME=%x)",iIdx > iMe ? iIdx-1 : iIdx,pWidgetToMove,pChild);
+// 	debug("SEARCHING FOR WIDGET TO MOVE AT %d AND FOUND %x (ME=%x)",iIdx > iMe ? iIdx-1 : iIdx,pWidgetToMove,pChild);
 	if(pWidgetToMove == pChild)
 		return; // hmmm
 
@@ -628,7 +625,7 @@ QSize KviCustomToolBarSeparator::sizeHint() const
 	else return QSize(0,iExtent);
 }
 
-void KviCustomToolBarSeparator::paintEvent(QPaintEvent * e)
+void KviCustomToolBarSeparator::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
 	QStyleOption opt;

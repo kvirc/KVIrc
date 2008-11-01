@@ -60,7 +60,7 @@ void KviColorWindow::popup(QWidget * pOwner)
 	show();
 }
 
-void KviColorWindow::paintEvent(QPaintEvent * e)
+void KviColorWindow::paintEvent(QPaintEvent *)
 {
 	static int clrIdx[16] = { 1,0,0,0,0,0,0,0,1,1,1,1,0,0,0,1 };
 	QPainter p(this);
@@ -96,8 +96,6 @@ void KviColorWindow::mousePressEvent(QMouseEvent * e)
 		if (e->x() > 36 && e->y() > 18)
 			iKey -= 2;
 
-		int iAscii = iKey + 48;
-
 		// FIXME: is this right? maybe it should be szStr.setNum(iAscii);
 		szStr.setNum(iKey);
 
@@ -122,7 +120,7 @@ void KviColorWindow::show()
 	QWidget::show();
 }
 
-void KviColorWindow::timerEvent(QTimerEvent * e)
+void KviColorWindow::timerEvent(QTimerEvent *)
 {
 	if(m_iTimerId != -1)
 		killTimer(m_iTimerId);

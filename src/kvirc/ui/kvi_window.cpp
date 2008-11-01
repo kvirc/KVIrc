@@ -326,7 +326,7 @@ bool KviWindow::highlightMeter(unsigned int *v)
 
 bool KviWindow::highlightMe(unsigned int v)
 {
-	if(v<0) v=0;
+// 	if(v<0) v=0;
 	if(v>5) v=5;
 	if(m_pWindowListItem)
 		m_pWindowListItem->highlight(v);
@@ -390,7 +390,7 @@ void KviWindow::destroyWindowListItem()
 	//	m_pWindowListItem = 0; // actually the WindowListItem destructor sets it
 }
 
-QPushButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn)
+QPushButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int,const QString & tooltip,bool bOn)
 {
 	QPushButton * b = new QPushButton(par);
 	b->setObjectName(nam);
@@ -403,7 +403,7 @@ QPushButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pix
 }
 
 // This is always defined...
-void KviWindow::createCryptControllerButton(QWidget * par)
+void KviWindow::createCryptControllerButton(QWidget *)
 {
 #ifdef COMPILE_CRYPT_SUPPORT
 	m_pCryptControllerButton = new KviWindowToolPageButton(KVI_SMALLICON_UNLOCKEDOFF,KVI_SMALLICON_UNLOCKED,__tr2qs("Crypting"),buttonContainer(),false,"crypt_controller_button");
@@ -1092,12 +1092,12 @@ void KviWindow::childEvent(QChildEvent *e)
 	QWidget::childEvent(e);
 }
 
-void KviWindow::wheelEvent(QWheelEvent *e)
+void KviWindow::wheelEvent(QWheelEvent *)
 {
 	/* NOTHING HERE FOR NOW (FIXME) */
 }
 
-void KviWindow::childrenTreeChanged(QWidget * widgetAdded)
+void KviWindow::childrenTreeChanged(QWidget *)
 {
 	//	if(widgetAdded && m_pFocusHandler)setFocusHandler(m_pFocusHandler,widgetAdded);
 	// FIXME: This might be useless

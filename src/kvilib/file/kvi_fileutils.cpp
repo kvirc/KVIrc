@@ -282,7 +282,7 @@ namespace KviFileUtils
 		if(!f.openForWriting(bAppend))return false;
 		KviQCString szTmp = KviQString::toUtf8(szData);
 		if(!szTmp.data())return true;
-		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((int)(szTmp.length())))return false;
+		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))return false;
 		return true;
 	}
 
@@ -298,7 +298,7 @@ namespace KviFileUtils
 		if(!f.openForWriting(bAppend))return false;
 		KviQCString szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
 		if(!szTmp.data())return true;
-		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((int)(szTmp.length())))return false;
+		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))return false;
 		return true;
 	}
 

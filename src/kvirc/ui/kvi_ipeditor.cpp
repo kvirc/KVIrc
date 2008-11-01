@@ -255,7 +255,7 @@ bool KviIpEditor::eventFilter(QObject * o,QEvent *e)
 			{
 				case Qt::Key_Right:
 					s = ((QLineEdit *)o)->text();
-					if(((unsigned int)cursorPos) == s.length())
+					if(cursorPos == s.length())
 					{
 						if(edIdx < edMax)
 						{
@@ -396,7 +396,7 @@ void KviIpEditor::resizeEvent(QResizeEvent *e)
 	if(e)QFrame::resizeEvent(e);
 }
 
-QSize KviIpEditor::sizeHint()
+QSize KviIpEditor::sizeHint() const
 {
 	if(m_pEdit[0])
 	{

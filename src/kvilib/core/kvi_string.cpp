@@ -42,7 +42,8 @@ kvi_wslen_t kvi_wstrlen(const kvi_wchar_t * str)
 	return (ptr - str);
 }
 
-
+/*
+WORKING CODE, COMMENTED OUT BECAUSE NOT USED AND GENERATES WARNINGS
 // %s = Latin1 char string (can't be null)
 // %d = signed int (short,char)
 // %u = unsigned int (short,char)
@@ -188,6 +189,7 @@ int kvi_wvsnprintf(kvi_wchar_t *buffer,kvi_wslen_t len,const kvi_wchar_t *fmt,kv
 {
 	WVSNPRINTF_BODY
 }
+*/
 
 bool kvi_qstringEqualCI(const QString &s1,const QString &s2)
 {
@@ -1074,7 +1076,7 @@ KviStr::KviStr(const char *bg,const char *end)
 	*(m_ptr + m_len)='\0';
 }
 
-KviStr::KviStr(KviFormatConstructorTag tag,const char *fmt,...)
+KviStr::KviStr(KviFormatConstructorTag,const char *fmt,...)
 {
 	m_ptr=(char *)kvi_malloc(256);
 	//First try
@@ -1396,7 +1398,7 @@ static unsigned char get_base64_idx(char base64)
 }
 
 
-int KviStr::base64ToBuffer(char ** buffer,bool bNullToNewlines)
+int KviStr::base64ToBuffer(char ** buffer,bool)
 {
 	*buffer = 0;
 	if((m_len == 0) || (m_len & 3))return -1; // this is an error
@@ -1556,7 +1558,7 @@ void KviStr::append(const char *str,int len)
 	*(m_ptr + m_len)='\0';
 }
 
-void KviStr::append(KviFormatConstructorTag tag,const char *fmt,...)
+void KviStr::append(KviFormatConstructorTag ,const char *fmt,...)
 {
 	int auxLen;
 	m_ptr=(char *)kvi_realloc(m_ptr,m_len + 256);

@@ -52,8 +52,8 @@ public:
 
 
 	// Missing functions in Qt 4.x
-	quint64 writeBlock(const char * data,quint64 uLen){ return write(data,uLen); };
-	quint64 readBlock(char * data,quint64 uLen){ return read(data,uLen); };
+	qint64 writeBlock(const char * data,quint64 uLen){ return write(data,uLen); };
+	qint64 readBlock(char * data,quint64 uLen){ return read(data,uLen); };
 
 	// This stuff loads and saves LITTLE ENDIAN DATA!
 	bool save(kvi_u64_t t);

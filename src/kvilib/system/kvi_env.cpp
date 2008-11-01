@@ -31,12 +31,14 @@
 
 #if !defined(COMPILE_ON_WINDOWS) && ! defined(COMPILE_ON_MINGW)
 
+#ifdef HAVE_SETENV
 bool kvi_setenv(const char * name,const char * value)
 {
-#ifdef HAVE_SETENV
 	return (setenv(name,value,1) == 0);
 #else
 	#ifdef HAVE_PUTENV
+bool kvi_setenv(const char * name,const char * value)
+{
 		int iLen1 = kvi_strLen(name);
 		int iLen2 = kvi_strLen(value);
 		char * buf = (char *)kvi_malloc(iLen1 + iLen2 + 2);
@@ -52,18 +54,22 @@ bool kvi_setenv(const char * name,const char * value)
 		}
 		return true;
 	#else
+bool kvi_setenv(const char *,const char *)
+{
 		// no setenv , no putenv.. what the hell of system is this ?
 		return false;
 	#endif
 #endif
 }
 
+#ifdef HAVE_UNSETENV
 void kvi_unsetenv(const char * name)
 {
-#ifdef HAVE_UNSETENV
 	unsetenv(name);
 #else
 	#ifdef HAVE_PUTENV
+void kvi_unsetenv(const char * name)
+{
 		int iLen1 = kvi_strLen(name);
 		char * buf = (char *)kvi_malloc(iLen1 + 1);
 		kvi_memmove(buf,name,iLen1);
@@ -81,6 +87,10 @@ void kvi_unsetenv(const char * name)
 				kvi_free(buf);
 			} // else this system sux
 		}
+	#else
+void kvi_unsetenv(const char *)
+{
+		// no setenv , no putenv.. what the hell of system is this ?
 	#endif
 #endif
 }

@@ -192,7 +192,7 @@ KviWindowListButton::~KviWindowListButton()
 	delete m_pTip; //not necessary ?
 }
 
-void KviWindowListButton::tipRequest(KviDynamicToolTip *,const QPoint &pnt)
+void KviWindowListButton::tipRequest(KviDynamicToolTip *,const QPoint &)
 {
 	if(KVI_OPTION_BOOL(KviOption_boolShowWindowListToolTips))
 	{
@@ -240,7 +240,7 @@ void KviWindowListButton::setActive(bool bActive)
 	update();
 }
 
-void KviWindowListButton::paintEvent(QPaintEvent * e)
+void KviWindowListButton::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
 	QStyleOption opt;
@@ -438,7 +438,7 @@ KviClassicWindowList::~KviClassicWindowList()
 	m_pButtonList = 0;
 }
 
-void KviClassicWindowList::orientationChangedSlot(Qt::Orientation o)
+void KviClassicWindowList::orientationChangedSlot(Qt::Orientation)
 {
 	doLayout();
 }
@@ -591,7 +591,7 @@ void KviClassicWindowList::doLayout()
 	}
 
 	if ((width() > height()) &&
-		(((unsigned int)rows) > m_pBase->height() / m_iButtonHeight ))
+		(rows > m_pBase->height() / m_iButtonHeight ))
 	{
 		rows = m_pBase->height() / m_iButtonHeight;
 	}
@@ -620,7 +620,7 @@ void KviClassicWindowList::doLayout()
 			if((btnInRow == btnsInRow) || (totCount == 1))theWidth = baseWidth - theX;
 		}
 
-		if( KVI_OPTION_BOOL(KviOption_boolClassicWindowListSetMaximumButtonWidth) && (theWidth > KVI_OPTION_UINT(KviOption_uintClassicWindowListMaximumButtonWidth)) && (width() > height())
+		if( KVI_OPTION_BOOL(KviOption_boolClassicWindowListSetMaximumButtonWidth) && ((unsigned int)theWidth > KVI_OPTION_UINT(KviOption_uintClassicWindowListMaximumButtonWidth)) && (width() > height())
 			)
 				theWidth = KVI_OPTION_UINT(KviOption_uintClassicWindowListMaximumButtonWidth);
 

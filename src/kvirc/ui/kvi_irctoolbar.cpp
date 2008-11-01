@@ -142,7 +142,7 @@ void KviToolBarGraphicalApplet::mousePressEvent(QMouseEvent * e)
 	}
 }
 
-void KviToolBarGraphicalApplet::mouseReleaseEvent(QMouseEvent * e)
+void KviToolBarGraphicalApplet::mouseReleaseEvent(QMouseEvent *)
 {
 	m_bResizeMode = false;
 }
@@ -220,7 +220,7 @@ void KviToolBarGraphicalApplet::drawContents(QPainter *)
 	// nothing here
 }
 
-void KviToolBarGraphicalApplet::resizeEvent(QResizeEvent *e)
+void KviToolBarGraphicalApplet::resizeEvent(QResizeEvent *)
 {
 	unsigned int uBufferW = g_pIccMemBuffer->width();
 	unsigned int uBufferH = g_pIccMemBuffer->height();

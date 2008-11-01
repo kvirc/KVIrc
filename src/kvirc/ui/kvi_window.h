@@ -264,8 +264,8 @@ public:
 	virtual void updateCaption();
 	virtual void applyOptions();
 	virtual void updateIcon();
-	virtual void ownMessage(const QString &text){};
-	virtual void ownAction(const QString &text){};
+	virtual void ownMessage(const QString &){};
+	virtual void ownAction(const QString &){};
 	virtual const QString & plainTextCaption(){ return m_szPlainTextCaption; };
 	virtual const QString & htmlActiveCaption(){ return m_szHtmlActiveCaption; };
 	virtual const QString & htmlInactiveCaption(){ return m_szHtmlInactiveCaption; };

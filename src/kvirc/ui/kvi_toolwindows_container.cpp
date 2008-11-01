@@ -99,7 +99,7 @@ void KviWindowToolWidget::unregisterSelf()
 	m_bHidden=0;
 }*/
 
-KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int pixoff, const QString & text, QWidget * parent,bool bOn, const char * name )
+KviWindowToolPageButton::KviWindowToolPageButton ( int pixon,int, const QString & text, QWidget * parent,bool bOn, const char *)
 :QToolButton(parent)
 {
 //	setFlat(true);

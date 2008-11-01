@@ -48,7 +48,7 @@ void KviTalToolTipHelper::toolTipDying()
 	m_pToolTip = 0;
 }
 
-bool KviTalToolTipHelper::eventFilter(QObject * pObject,QEvent * pEvent)
+bool KviTalToolTipHelper::eventFilter(QObject *,QEvent * pEvent)
 {
 	if((pEvent->type() == QEvent::ToolTip) && m_pToolTip)
 	{
@@ -86,7 +86,7 @@ void KviTalToolTip::add(QWidget * widget,const QString & text)
 	widget->setToolTip(text);
 }
 
-void KviTalToolTip::remove(QWidget * widget)
+void KviTalToolTip::remove(QWidget *)
 {
 
 	//QToolTip::remove(widget);
@@ -98,7 +98,7 @@ void KviTalToolTip::tip(const QRect & rect,const QString & text)
 	QToolTip::showText(m_pParent->mapToGlobal(rect.topLeft()),text);
 }
 
-void KviTalToolTip::maybeTip(const QPoint & p)
+void KviTalToolTip::maybeTip(const QPoint &)
 {
 	// does nothing here.. and in Qt 4.x will even fail to work
 }

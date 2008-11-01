@@ -335,9 +335,11 @@ static KviPointerHashTable<const char *,KviSmartTextCodec>   * g_pSmartCodecDict
 
 #include <stdio.h>
 
+/*
 #if HAVE_LIMITS_H || _LIBC
 	#include <limits.h>
 #endif
+*/
 
 // The magic number of the GNU message catalog format.
 #define KVI_LOCALE_MAGIC 0x950412de
@@ -998,7 +1000,7 @@ namespace KviLocale
 	}
 };
 
-KviTranslator::KviTranslator(QObject * par,const char * nam)
+KviTranslator::KviTranslator(QObject * par,const char *)
 : QTranslator(par)
 {
 }
@@ -1007,7 +1009,7 @@ KviTranslator::~KviTranslator()
 {
 }
 
-QString KviTranslator::translate(const char *context,const char * message,const char * comment) const
+QString KviTranslator::translate(const char *,const char * message,const char *) const
 {
 	// we ignore contexts and comments for qt translations
 	return g_pMainCatalogue->translateToQString(message);

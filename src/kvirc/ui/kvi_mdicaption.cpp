@@ -63,7 +63,7 @@ KviMdiCaptionButton::~KviMdiCaptionButton()
 {
 }
 
-void KviMdiCaptionButton::paintEvent(QPaintEvent *e)
+void KviMdiCaptionButton::paintEvent(QPaintEvent *)
 {
 	QPainter painter(this);
 	drawButton(&painter);
@@ -147,7 +147,7 @@ void KviMdiCaption::fontChange(const QFont &old)
 	((KviMdiChild *)parent())->resizeEvent(0);
 }
 
-void KviMdiCaption::mousePressEvent(QMouseEvent *e)
+void KviMdiCaption::mousePressEvent(QMouseEvent *)
 {
 	m_bMouseGrabbed = true;
 	m_lastMousePos = QCursor::pos();
@@ -193,7 +193,7 @@ void KviMdiCaption::mouseMoveEvent(QMouseEvent *)
 	}
 }
 
-void KviMdiCaption::mouseDoubleClickEvent(QMouseEvent *e)
+void KviMdiCaption::mouseDoubleClickEvent(QMouseEvent *)
 {
 	((KviMdiChild *)parent())->maximize();
 }
@@ -230,7 +230,7 @@ void KviMdiCaption::setFocusProxy(QWidget * w)
 	m_pCloseButton->setFocusProxy(w);
 }
 
-void KviMdiCaption::resizeEvent(QResizeEvent * e)
+void KviMdiCaption::resizeEvent(QResizeEvent *)
 {
 	int s = height() - 2;
 	m_pSystemButton->setGeometry(1,1,s,s);
@@ -247,7 +247,7 @@ void KviMdiCaption::resizeEvent(QResizeEvent * e)
 KviMenuBarToolButton::KviMenuBarToolButton(QWidget * par,const QPixmap &img, const char * name)
 : QToolButton(par)
 {
-	setProperty("name","name");
+	setProperty("name",name);
 	setIcon(img);
 	setAutoRaise(true);
 }

@@ -50,7 +50,7 @@ KviMaskItem::~KviMaskItem()
 {
 }
 
-int KviMaskItem::compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const
+int KviMaskItem::compare ( KviTalTreeWidgetItem * i, int col, bool) const
 {
 	if(col==2)
 	{
@@ -121,7 +121,7 @@ void KviMaskInputDialog::accept()
 	QDialog::accept();
 }
 
-KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPointerList<KviMaskEntry> * maskList,char flag,const char * nam)
+KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPointerList<KviMaskEntry> * maskList,char flag,const char *)
 : KviWindowToolWidget(par,button)
 {
 	bool isEnabled=1;

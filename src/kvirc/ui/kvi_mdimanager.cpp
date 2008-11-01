@@ -53,7 +53,7 @@
 #include <math.h>
 
 
-KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name)
+KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 : KviTalScrollView(parent)
 {
 	setFrameShape(NoFrame);
@@ -527,7 +527,7 @@ bool KviMdiManager::isInSDIMode()
 }
 
 
-void KviMdiManager::enterSDIMode(KviMdiChild *lpC)
+void KviMdiManager::enterSDIMode(KviMdiChild *)
 {
 	if(!m_pSdiCloseButton)
 	{

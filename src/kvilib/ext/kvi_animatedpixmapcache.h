@@ -32,8 +32,9 @@
 #include "kvi_settings.h"
 
 class KviAnimatedPixmapInterface {
-  public:
-    virtual void nextFrame() = 0;
+public:
+	 virtual void nextFrame() = 0;
+	 virtual ~KviAnimatedPixmapInterface() {};
 };
 
 class KVILIB_API KviAnimatedPixmapCache : public QObject {
@@ -83,11 +84,11 @@ public:
 		bool     resized;
 
 		Data(QString szFile) :
-			QList<FrameInfo> (), refs(0), resized(false), file(szFile) {
+			QList<FrameInfo> (), refs(0), file(szFile), resized(false) {
 		}
 
 		Data(Data& other) :
-			QList<FrameInfo> (other), refs(0), resized(false), file(other.file) {
+			QList<FrameInfo> (other), refs(0), file(other.file), resized(false) {
 				for(int i=0;i<count();i++)
 				{
 					this->operator [](i).detach();
@@ -116,7 +117,7 @@ protected:
 	void  internalSceduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
 	void  internalNotifyDelete(KviAnimatedPixmapInterface* receiver);
 protected slots:
-        void timerEvent();
+        virtual void timeoutEvent();
 public:
 	virtual ~KviAnimatedPixmapCache();
 

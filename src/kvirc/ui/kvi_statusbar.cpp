@@ -545,7 +545,7 @@ void KviStatusBar::mouseReleaseEvent(QMouseEvent * e)
 	}
 }
 
-void KviStatusBar::mouseDoubleClickEvent(QMouseEvent * e)
+void KviStatusBar::mouseDoubleClickEvent(QMouseEvent *)
 {
 	const QString szTitle = __tr2qs("Network informations");
 	QString szText, szUserModes, szAway;

@@ -35,7 +35,7 @@ KviAnimatedPixmapCache::KviAnimatedPixmapCache()
 {
 	g_pAnimatedCache = this;
 	m_animationTimer.setSingleShot(true);
-	connect(&m_animationTimer,SIGNAL(timeout()),this,SLOT(timerEvent()));
+	connect(&m_animationTimer,SIGNAL(timeout()),this,SLOT(timeoutEvent()));
 }
 
 KviAnimatedPixmapCache::~KviAnimatedPixmapCache() {
@@ -193,7 +193,7 @@ void  KviAnimatedPixmapCache::internalSceduleFrameChange(uint delay,KviAnimatedP
   m_timerMutex.unlock();
 }
 
-void KviAnimatedPixmapCache::timerEvent()
+void KviAnimatedPixmapCache::timeoutEvent()
 {
   /*
    * We are adding 15msecs to the current time. This MAY lead to the situation,
@@ -232,10 +232,12 @@ void KviAnimatedPixmapCache::timerEvent()
 	{
 		long long nextDelay = i.key();
 		uint delay = (uint) (nextDelay - KviTimeUtils::getCurrentTimeMills());
+/*
 		if (delay < 0)
 		{
 			delay = 0;
 		}
+*/
 		m_animationTimer.start(delay);
 	}
 //	m_timerMutex.unlock();

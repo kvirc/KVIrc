@@ -43,7 +43,6 @@
 #include "kvi_mdimanager.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_toolwindows_container.h"
-#include "kvi_doublebuffer.h"
 #include "kvi_stringconversion.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionserverinfo.h"
@@ -133,8 +132,8 @@ void KviUserListEntry::updateAvatarData()
 			if(KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
 					(
 						!KVI_OPTION_BOOL(KviOption_boolDoNotStretchAvatars) ||
-						(pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
-						(pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
+						((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
+						((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
 					)
 				)
 			{
@@ -230,8 +229,8 @@ void KviUserListEntry::recalcSize()
 			if(KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
 					(
 						!KVI_OPTION_BOOL(KviOption_boolDoNotStretchAvatars) ||
-						(pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
-						(pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
+						((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
+						((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
 					)
 				)
 			{
@@ -1376,7 +1375,7 @@ void KviUserListView::partAll()
 	triggerUpdate();
 }
 
-void KviUserListView::resizeEvent(QResizeEvent * e)
+void KviUserListView::resizeEvent(QResizeEvent *)
 {
 	int iHeight;
 	if(KVI_OPTION_BOOL(KviOption_boolShowUserListStatisticLabel))//G&N  2005
@@ -1662,10 +1661,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 
 	//debug("PAINT EVENT %d,%d,%d,%d",r.left(),r.top(),r.width(),r.height());
 
-	KviDoubleBuffer db(width(),height());
-	QPixmap * pMemBuffer = db.pixmap();
-
-	QPainter p(pMemBuffer);
+	QPainter p(this);
 	SET_ANTI_ALIASING(p);
 	p.setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 
@@ -1820,19 +1816,19 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 					if( KVI_OPTION_BOOL(KviOption_boolScaleAvatars) &&
 						(
 							!KVI_OPTION_BOOL(KviOption_boolDoNotStretchAvatars) ||
-							(pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
-							(pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
+							((unsigned int)pAv->size().width() > KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth)) ||
+							((unsigned int)pAv->size().height() > KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight))
 						)
 					) {
 						pPix = pAv->forSize(
 								KVI_OPTION_UINT(KviOption_uintAvatarScaleWidth),
 								KVI_OPTION_UINT(KviOption_uintAvatarScaleHeight)
 								)->pixmap();
-				
+
 					} else {
 						pPix = pAv->pixmap();
 					}
-					
+
 					p.drawPixmap(iAvatarAndTextX,iTheY,*pPix);
 					iTheY += pPix->height() + 1;
 				}
@@ -1970,21 +1966,9 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 		pEntry = pEntry->m_pNext;
 	}
 
-	//we really do not need any self-draw borders.
-	//if we will need it, we will draw a better one with system style
-
-	//p.setPen(colorGroup().dark());
-	//p.drawLine(0,0,wdth,0);
-	//p.drawLine(0,0,0,height());
-	//p.setPen(colorGroup().light());
-	//p.drawLine(1,height()-1,wdth,height()-1);
-	//p.drawLine(wdth - 1,1,wdth - 1,height());
-
-	QPainter qt4SuxBecauseOfThisAdditionalPainter(this);
-	qt4SuxBecauseOfThisAdditionalPainter.drawPixmap(r.left(),r.top(),r.width(),r.height(),*pMemBuffer,r.left(),r.top(),r.width(),r.height());
 }
 
-void KviUserListViewArea::resizeEvent(QResizeEvent * e)
+void KviUserListViewArea::resizeEvent(QResizeEvent *)
 {
 	int iScr = m_pScrollBar->sizeHint().width();
 	m_pScrollBar->setGeometry(width() - iScr,0,iScr,height());
@@ -2131,7 +2115,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 	}
 }
 
-void KviUserListViewArea::mouseDoubleClickEvent(QMouseEvent * e)
+void KviUserListViewArea::mouseDoubleClickEvent(QMouseEvent *)
 {
 	m_pListView->emitDoubleClick();
 }
@@ -2247,7 +2231,7 @@ void KviUserListViewArea::mouseMoveEvent(QMouseEvent * e)
 	}
 }
 
-void KviUserListViewArea::mouseReleaseEvent(QMouseEvent * e)
+void KviUserListViewArea::mouseReleaseEvent(QMouseEvent *)
 {
 	m_pLastEntryUnderMouse = 0;
 }

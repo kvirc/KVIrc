@@ -198,7 +198,8 @@ void KviUserIdentityManager::load(const QString &szFileName)
 	m_szDefaultIdentity = cfg.readQStringEntry("DefaultIdentity","");
 
 	KviConfigIterator it(*(cfg.dict()));
-	while(KviConfigGroup * grp = it.current())
+	KviConfigGroup * grp;
+	while( (grp = it.current()) )
 	{
 		if(!KviQString::equalCI(it.currentKey(),"KVIrc"))
 		{

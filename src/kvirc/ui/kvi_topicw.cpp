@@ -54,10 +54,7 @@
 
 extern KviTextIconWindowWidget * g_pTextIconWindow;
 extern KviColorWindow * g_pColorWindow;
-static int g_iInputFontCharWidth[256];
 
-
-// FIXME: #warning "The combo should disappear when it looses focus!...(how to do it ?)"
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -75,7 +72,7 @@ KviTopicListBoxItemDelegate::~KviTopicListBoxItemDelegate()
 {
 }
 
-QSize KviTopicListBoxItemDelegate::sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const
+QSize KviTopicListBoxItemDelegate::sizeHint(const QStyleOptionViewItem &,const QModelIndex &index) const
 {
 	KviTalListWidget* listWidget = (KviTalListWidget*)parent();
 	KviTopicListBoxItem* item = (KviTopicListBoxItem*) listWidget->item(index.row());
@@ -176,7 +173,7 @@ QString convertToHtml(const QString &text)
 
 	unsigned int idx = 0;
 
-	while(idx < text.length())
+	while(idx < (unsigned int)text.length())
 	{
 		unsigned short c = text[(int)idx].unicode();
 
@@ -192,7 +189,7 @@ QString convertToHtml(const QString &text)
 			)
 		{
 			idx++;
-			if(idx >= text.length())break;
+			if(idx >= (unsigned int)text.length())break;
 			else c = text[(int)idx].unicode();
 		}
 
@@ -276,7 +273,7 @@ QString convertToHtml(const QString &text)
 				++idx;
 
 				unsigned int icoStart = idx;
-				while((idx < text.length()) && (text[(int)idx].unicode() > 32))idx++;
+				while((idx < (unsigned int)text.length()) && (text[(int)idx].unicode() > 32))idx++;
 
 				KviStr lookupString = text.mid(icoStart,idx - icoStart);
 
@@ -320,13 +317,13 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 
 	unsigned int idx = 0;
 
-	while((idx < text.length()) && (curX < rect.width()))
+	while((idx < (unsigned int)text.length()) && (curX < rect.width()))
 	{
 		unsigned short c = text[(int)idx].unicode();
 
 		unsigned int start = idx;
 
-		while((idx < text.length()) &&
+		while((idx < (unsigned int)text.length()) &&
 				(c != KVI_TEXT_COLOR) &&
 				(c != KVI_TEXT_BOLD) &&
 				(c != KVI_TEXT_UNDERLINE) &&
@@ -423,7 +420,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 				++idx;
 
 				unsigned int icoStart = idx;
-				while((idx < text.length()) && (text[(int)idx].unicode() > 32))idx++;
+				while((idx < (unsigned int)text.length()) && (text[(int)idx].unicode() > 32))idx++;
 
 				KviStr lookupString = text.mid(icoStart,idx - icoStart);
 
@@ -442,7 +439,7 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 	}
 }
 
-void KviTopicWidget::paintEvent(QPaintEvent * e)
+void KviTopicWidget::paintEvent(QPaintEvent *)
 {
 	QPainter pa(this);
 	drawFrame(&pa);
@@ -716,7 +713,7 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 	return QFrame::eventFilter(object,e);
 }
 
-bool KviTopicWidget::handleKeyPressEvent(QKeyEvent * e)
+bool KviTopicWidget::handleKeyPressEvent(QKeyEvent *)
 {
 	return 1;
 }
@@ -790,8 +787,10 @@ void KviTopicWidget::historyClicked()
 	{
 		m_pCompletionBox->installEventFilter( this );
 		m_pCompletionBox->clear();
-		for ( QStringList::Iterator it = g_pRecentTopicList->begin(); it != g_pRecentTopicList->end(); ++it ) {
-			KviTopicListBoxItem* item=new KviTopicListBoxItem(m_pCompletionBox,*it);
+		KviTopicListBoxItem* item;
+		for ( QStringList::Iterator it = g_pRecentTopicList->begin(); it != g_pRecentTopicList->end(); ++it )
+		{
+			item = new KviTopicListBoxItem(m_pCompletionBox,*it);
 		}
 		m_pCompletionBox->resize(m_pInput->width(),6*m_pCompletionBox->fontMetrics().height()+20);
 		QPoint point=m_pInput->mapToGlobal(QPoint(0,0));
@@ -822,7 +821,7 @@ void KviTopicWidget::insertText(const QString &c)
 		m_pInput->insertText(c);
 }
 
-int KviTopicWidget::xCursorPostionCalculation(int xInd)
+int KviTopicWidget::xCursorPostionCalculation(int)
 {
 	return 0;
 }

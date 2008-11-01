@@ -57,8 +57,8 @@ protected:
 public:
 	KviWindow * kviWindow(){ return m_pWindow; };
 	virtual void captionChanged(){};
-	virtual void highlight(int iLevel = 1){};
-	virtual void setProgress(int progress){};
+	virtual void highlight(int){};
+	virtual void setProgress(int){};
 	virtual bool active(){ return false; };
 	virtual void unhighlight(){};
 	int progress(){ return m_iProgress; };
@@ -90,7 +90,7 @@ public:
 	virtual KviWindowListItem * nextItem(){ return 0; };
 	virtual KviWindowListItem * prevItem(void) { return 0; }
 	virtual KviWindowListItem * item(int number);
-	virtual bool setIterationPointer(KviWindowListItem * it){ return false; };
+	virtual bool setIterationPointer(KviWindowListItem *){ return false; };
 	virtual void switchWindow(bool bNext,bool bInContextOnly);
 	virtual void updatePseudoTransparency(){};
 	virtual void applyOptions(){};

@@ -29,7 +29,7 @@
 #include <QAbstractTextDocumentLayout>
 
 KviTalIconAndRichTextItemDelegate::KviTalIconAndRichTextItemDelegate(QAbstractItemView * pWidget)
-: QItemDelegate(pWidget), m_pDefaultPix(0), m_pParent(pWidget)
+: QItemDelegate(pWidget), m_pParent(pWidget), m_pDefaultPix(0)
 {
 }
 
@@ -84,7 +84,7 @@ void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleO
 	pPainter->restore();
 }
 
-QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const
+QSize KviTalIconAndRichTextItemDelegate::sizeHint(const QStyleOptionViewItem &, const QModelIndex & index) const
 {
 	QString szText = index.data(Qt::DisplayRole).toString();
 	QTextDocument doc;

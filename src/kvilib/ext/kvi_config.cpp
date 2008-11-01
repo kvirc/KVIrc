@@ -505,7 +505,7 @@ bool KviConfig::save()
 			group.hexEncodeWithTable(encode_table);
 
 			if(!f.putChar('['))return false;
-			if(f.writeBlock(group.ptr(),group.len()) < (int) group.len())return false;
+			if(f.writeBlock(group.ptr(),group.len()) < (unsigned int) group.len())return false;
 			if(f.writeBlock("]\n",2) < 2)return false;
 
 			KviConfigGroup * dict = (KviConfigGroup *)it.current();
@@ -519,9 +519,9 @@ bool KviConfig::save()
 				szName.hexEncodeWithTable(encode_table);
 				szValue.hexEncodeWhiteSpace();
 
-				if(f.writeBlock(szName.ptr(),szName.len()) < (int) szName.len())return false;
+				if(f.writeBlock(szName.ptr(),szName.len()) < (unsigned int) szName.len())return false;
 				if(!f.putChar('='))return false;
-				if(f.writeBlock(szValue.ptr(),szValue.len()) < (int) szValue.len())return false;
+				if(f.writeBlock(szValue.ptr(),szValue.len()) < (unsigned int) szValue.len())return false;
 				if(!f.putChar('\n'))return false;
 				++it2;
 			}

@@ -429,8 +429,6 @@ void KviServerParser::parseNumericNames(KviIrcMessage *msg)
 			// ^  +a is a weird mode: it also breaks nicknames on some networks!
 			// not a valid first char(s) of nickname, must be a mode prefix
 
-			bool bContinue = true;
-
 			while(pServerInfo->isSupportedModePrefix((unsigned char)(*aux)))
 			{
 				// leading umode flag(s)
@@ -817,7 +815,7 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 {
 	// ops...not logged in yet...
 	QString szNextNick;
-	unsigned int uNickCnt;
+	unsigned int uNickCnt = 0;
 
 	// Check for identity profiles
 	KviIdentityProfileSet * pSet = KviIdentityProfileSet::instance();

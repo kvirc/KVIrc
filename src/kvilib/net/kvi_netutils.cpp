@@ -569,10 +569,9 @@ namespace KviNetUtils
 		return true;
 	}
 
-	bool getInterfaceAddress(const QString &szInterfaceName,QString &szBuffer)
-	{
-
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
+	bool getInterfaceAddress(const QString &szInterfaceName,QString &)
+	{
 		struct sockaddr *sa;
 		struct sockaddr_in *sin;
 		struct ifreq ifr;
@@ -597,6 +596,8 @@ namespace KviNetUtils
 
 		// (this seems to work for AF_INET only anyway)
 #else //!COMPILE_GET_INTERFACE_ADDRESS
+	bool getInterfaceAddress(const QString &,QString &)
+	{
 		return false;
 #endif //!COMPILE_GET_INTERFACE_ADDRESS
 	}
@@ -695,7 +696,7 @@ KviSockaddr::KviSockaddr(const char * szIpAddress,kvi_u32_t uPort,bool bIPv6,boo
 	hints.ai_protocol = 0;
 	m_pData = 0;
 	KviStr szPort(KviStr::Format,"%u",uPort);
-	getaddrinfo(szIpAddress,szPort.ptr(),&hints,(struct addrinfo **)&m_pData);
+	getaddrinfo(szIpAddress,szPort.ptr(),&hints,&m_pData);
 }
 
 KviSockaddr::KviSockaddr(kvi_u32_t uPort,bool bIPv6,bool bUdp) // passive sockaddr
@@ -713,14 +714,14 @@ KviSockaddr::KviSockaddr(kvi_u32_t uPort,bool bIPv6,bool bUdp) // passive sockad
 	hints.ai_protocol = 0;
 	m_pData = 0;
 	KviStr szPort(KviStr::Format,"%u",uPort);
-	getaddrinfo(0,szPort.ptr(),&hints,(struct addrinfo **)&m_pData);
+	getaddrinfo(0,szPort.ptr(),&hints,&m_pData);
 }
 
 KviSockaddr::~KviSockaddr()
 {
 	if(m_pData)
 	{
-		freeaddrinfo((struct addrinfo *)m_pData);
+		freeaddrinfo(m_pData);
 		m_pData = 0;
 	}
 }
@@ -728,19 +729,19 @@ KviSockaddr::~KviSockaddr()
 struct sockaddr * KviSockaddr::socketAddress()
 {
 	if(!m_pData)return 0;
-	return ((struct addrinfo *)m_pData)->ai_addr;
+	return (m_pData)->ai_addr;
 }
 
 size_t KviSockaddr::addressLength()
 {
 	if(!m_pData)return 0;
-	return ((struct addrinfo *)m_pData)->ai_addrlen;
+	return (m_pData)->ai_addrlen;
 }
 
 int KviSockaddr::addressFamily()
 {
 	if(!m_pData)return 0;
-	return ((struct addrinfo *)m_pData)->ai_family;
+	return (m_pData)->ai_family;
 }
 
 bool KviSockaddr::isIPv6()
@@ -757,18 +758,18 @@ kvi_u32_t KviSockaddr::port()
 {
 	if(!m_pData)return 0;
 #ifdef COMPILE_IPV6_SUPPORT
-	switch(((struct addrinfo *)m_pData)->ai_family)
+	switch(m_pData->ai_family)
 	{
 		case AF_INET:
-			return ntohs(((struct sockaddr_in *)(((struct addrinfo *)m_pData)->ai_addr))->sin_port);
+			return ntohs(((struct sockaddr_in *)(m_pData->ai_addr))->sin_port);
 			break;
 		case AF_INET6:
-			return ntohs(((struct sockaddr_in6 *)(((struct addrinfo *)m_pData)->ai_addr))->sin6_port);
+			return ntohs(((struct sockaddr_in6 *)(m_pData->ai_addr))->sin6_port);
 			break;
 	}
 	return 0;
 #else
-	return ntohs(((struct sockaddr_in *)(((struct addrinfo *)m_pData)->ai_addr))->sin_port);
+	return ntohs(((struct sockaddr_in *)(m_pData->ai_addr))->sin_port);
 #endif
 }
 
@@ -779,15 +780,15 @@ bool KviSockaddr::getStringAddress(QString &szBuffer)
 	switch(((struct addrinfo *)m_pData)->ai_family)
 	{
 		case AF_INET:
-			return kvi_binaryIpToStringIp(((struct sockaddr_in *)(((struct addrinfo *)m_pData)->ai_addr))->sin_addr,szBuffer);
+			return kvi_binaryIpToStringIp(((struct sockaddr_in *)(m_pData->ai_addr))->sin_addr,szBuffer);
 			break;
 		case AF_INET6:
-			return kvi_binaryIpToStringIp_V6(((struct sockaddr_in6 *)(((struct addrinfo *)m_pData)->ai_addr))->sin6_addr,szBuffer);
+			return kvi_binaryIpToStringIp_V6(((struct sockaddr_in6 *)(m_pData->ai_addr))->sin6_addr,szBuffer);
 			break;
 	}
 
 	return false;
 #else
-	return kvi_binaryIpToStringIp(((struct sockaddr_in *)(((struct addrinfo *)m_pData)->ai_addr))->sin_addr,szBuffer);
+	return kvi_binaryIpToStringIp(((struct sockaddr_in *)(m_pData->ai_addr))->sin_addr,szBuffer);
 #endif
 }

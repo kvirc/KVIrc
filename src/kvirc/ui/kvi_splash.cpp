@@ -125,7 +125,7 @@ KviSplashScreen::~KviSplashScreen()
 	delete m_pOverlay;
 }
 
-void KviSplashScreen::showEvent(QShowEvent * e)
+void KviSplashScreen::showEvent(QShowEvent *)
 {
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
 	move((rect.width() - width())/2,(rect.height() - height())/2);
@@ -133,7 +133,7 @@ void KviSplashScreen::showEvent(QShowEvent * e)
 	m_creationTime = QTime::currentTime();
 }
 
-void KviSplashScreen::hideEvent(QHideEvent * e)
+void KviSplashScreen::hideEvent(QHideEvent *)
 {
 	suicide();
 }

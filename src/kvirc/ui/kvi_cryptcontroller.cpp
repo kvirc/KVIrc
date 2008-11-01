@@ -60,19 +60,13 @@
 	{
 	}
 
-
-
-
-	KviCryptController::KviCryptController(QWidget * par,KviWindowToolPageButton* button,const char * name,KviWindow * wnd,KviCryptSessionInfo * cur)
+	KviCryptController::KviCryptController(QWidget * par,KviWindowToolPageButton* button,const char *,KviWindow * wnd,KviCryptSessionInfo * cur)
 	: KviWindowToolWidget(par,button)
 	{
 // FIXME: #warning "Load the available modules here"
 
 		// Load the known encryption modules
 		(void)g_pModuleManager->loadModulesByCaps("crypt");
-//		(void)g_pModuleManager->getModule("koi2win");
-//		(void)g_pModuleManager->getModule("mircstrip");
-//		(void)g_pModuleManager->getModule("texturizer");
 
 		m_pWindow = wnd;
 

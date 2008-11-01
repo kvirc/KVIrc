@@ -558,7 +558,7 @@ QPixmap * KviQuery::myIconPtr()
 	return g_pIconManager->getSmallIcon(isDeadQuery() ? KVI_SMALLICON_DEADQUERY : KVI_SMALLICON_QUERY);
 }
 
-void KviQuery::resizeEvent(QResizeEvent * e)
+void KviQuery::resizeEvent(QResizeEvent *)
 {
 	int iHeight = m_pInput->heightHint();
 	int iHeight2 = m_pButtonBox->sizeHint().height();
@@ -860,16 +860,16 @@ void KviQuery::pasteLastLog()
 		unsigned int uCount = list.size();
 		unsigned int uLines = KVI_OPTION_UINT(KviOption_uintLinesToPasteOnQueryJoin);
 		unsigned int uStart = uCount - uLines - 1;
-
+/*
 		// Check if the log is smaller than the lines to print
 		if(uStart < 0)
 			uStart = 0;
-
+*/
 		QString szDummy = __tr2qs("Starting last log");
 		output(KVI_OUT_QUERYPRIVMSG,szDummy);
 
 		// Scan the log file
-		for(int i = uStart; i < uCount; i++)
+		for(unsigned int i = uStart; i < uCount; i++)
 		{
 			QString szLine = QString(list.at(i));
 			szLine = szLine.section(' ',1);

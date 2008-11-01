@@ -246,7 +246,7 @@ void KviHistoryWindow::itemSelected(QListWidgetItem * pItem)
 		m_pOwner->setText(pItem->text());
 }
 
-void KviHistoryWindow::hideEvent(QHideEvent * e)
+void KviHistoryWindow::hideEvent(QHideEvent *)
 {
 	if(m_iTimerId != -1)
 	{

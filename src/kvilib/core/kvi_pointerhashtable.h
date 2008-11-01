@@ -142,7 +142,7 @@ inline void kvi_hash_key_copy(const KviStr &szFrom,KviStr &szTo,bool)
 	szTo = szFrom;
 }
 
-inline void kvi_hash_key_destroy(KviStr &szKey,bool)
+inline void kvi_hash_key_destroy(KviStr &,bool)
 {
 }
 
@@ -166,7 +166,7 @@ inline void kvi_hash_key_copy(const int &iKeyFrom,int &iKeyTo,bool)
 	iKeyTo = iKeyFrom;
 }
 
-inline void kvi_hash_key_destroy(int &iKey,bool)
+inline void kvi_hash_key_destroy(int &,bool)
 {
 }
 
@@ -191,7 +191,7 @@ inline void kvi_hash_key_copy(const unsigned short &iKeyFrom,unsigned short &iKe
 	iKeyTo = iKeyFrom;
 }
 
-inline void kvi_hash_key_destroy(unsigned short &iKey,bool)
+inline void kvi_hash_key_destroy(unsigned short &,bool)
 {
 }
 
@@ -224,7 +224,7 @@ inline void kvi_hash_key_copy(void * const &pKeyFrom,void *&pKeyTo,bool)
 	pKeyTo = pKeyFrom;
 }
 
-inline void kvi_hash_key_destroy(void *iKey,bool)
+inline void kvi_hash_key_destroy(void *,bool)
 {
 }
 

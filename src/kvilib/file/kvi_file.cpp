@@ -55,7 +55,7 @@ bool KviFile::openForWriting(bool bAppend)
 bool KviFile::save(const QByteArray &bData)
 {
 	if(!save((kvi_u32_t)(bData.size())))return false;
-	return (writeBlock(bData.data(),bData.size()) == ((int)(bData.size())));
+	return (writeBlock(bData.data(),bData.size()) == ((unsigned int)(bData.size())));
 }
 
 bool KviFile::load(QByteArray &bData)
@@ -71,7 +71,7 @@ bool KviFile::save(const QString &szData)
 {
 	KviQCString c = KviQString::toUtf8(szData);
 	if(!save((kvi_u32_t)(c.length())))return false;
-	return (writeBlock(c.data(),c.length()) == ((int)(c.length())));
+	return (writeBlock(c.data(),c.length()) == ((unsigned int)(c.length())));
 }
 
 bool KviFile::load(QString &szData)
@@ -89,7 +89,7 @@ bool KviFile::load(QString &szData)
 bool KviFile::save(const KviStr &szData)
 {
 	if(!save((kvi_u32_t)(szData.len())))return false;
-	return (writeBlock(szData.ptr(),szData.len()) == (int) szData.len());
+	return (writeBlock(szData.ptr(),szData.len()) == (unsigned int) szData.len());
 }
 
 bool KviFile::load(KviStr &szData)

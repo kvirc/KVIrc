@@ -222,7 +222,7 @@ KviFrame::~KviFrame()
 	g_pFrame = 0;
 }
 
-int KviFrame::registerAccelerator(const QString &szKeySequence,QObject * recv,const char * slot)
+int KviFrame::registerAccelerator(const QString &szKeySequence,QObject *,const char *)
 {
 	QShortcut *sc=new QShortcut(QKeySequence(szKeySequence),this);
 	connect(sc,SIGNAL(activated()),this,SLOT(accelActivated()));
@@ -428,8 +428,7 @@ void KviFrame::accelActivated()
 	//KviAccel * acc = (KviAccel *)sender();
 
 	int keys = (int)(((QShortcut *)sender())->key());
-	KviWindowListItem *item = 0;
-	debug("accel");
+
 	switch(keys)
 	{
 		//case (Qt::Key_Left+Qt::ALT): switchToPrevWindow(); break;
@@ -1151,8 +1150,7 @@ void KviFrame::toolbarsPopupSelected(int id)
 	const QObject * o = sender();
 	if(!o)return;
 	if(!o->inherits("KviTalPopupMenu"))return;
-	const KviTalPopupMenu * p = (const KviTalPopupMenu *)o;
-	//((KviTalPopupMenu *)o)
+
 	int idext = ((KviTalPopupMenu *)o)->itemParameter(id);
 
 	KviCustomToolBarDescriptor * dd = KviCustomToolBarManager::instance()->findDescriptorByInternalId(idext);

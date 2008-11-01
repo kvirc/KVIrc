@@ -104,9 +104,9 @@ public:
 protected:
 	virtual void paintEvent(QPaintEvent *e);
 	
-	virtual void fillContextPopup(KviTalPopupMenu *p){};
-	virtual void loadState(const char * prefix,KviConfig *cfg){};
-	virtual void saveState(const char * prefix,KviConfig *cfg){};
+	virtual void fillContextPopup(KviTalPopupMenu *){};
+	virtual void loadState(const char *,KviConfig *){};
+	virtual void saveState(const char *,KviConfig *){};
 	virtual QString tipText(const QPoint &);
 };
 

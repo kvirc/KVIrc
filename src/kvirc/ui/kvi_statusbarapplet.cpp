@@ -559,7 +559,7 @@ KviStatusBarConnectionTimer::~KviStatusBarConnectionTimer()
 {
 }
 //g_pApp->topmostConnectedConsole()
-void KviStatusBarConnectionTimer::timerEvent(QTimerEvent * e)
+void KviStatusBarConnectionTimer::timerEvent(QTimerEvent *)
 {
 	if(m_bTotal)
 	{
@@ -786,7 +786,7 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer
 	}
 }
 
-void KviStatusBarUpdateIndicator::requestCompleted(bool status)
+void KviStatusBarUpdateIndicator::requestCompleted(bool)
 {
 	//qDebug("Data transfer terminated");
 	delete m_pHttpRequest;
@@ -816,7 +816,7 @@ void KviStatusBarUpdateIndicator::getNewVersion()
 	//qDebug("Command: %s",command.toUtf8().data());
 
 	// Open the download page for the platform we're using
-	int test = KviKvsScript::run(command,g_pActiveWindow);
+	KviKvsScript::run(command,g_pActiveWindow);
 	//qDebug("KviKvsScript returned: %d",test);
 }
 

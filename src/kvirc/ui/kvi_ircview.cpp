@@ -2356,7 +2356,7 @@ void KviIrcView::findClosestPositionInText(int xCursorPos,int yCursorPos,KviIrcV
 */
 
 
-KviIrcViewLine * KviIrcView::getVisibleLineAt(int xPos,int yPos)
+KviIrcViewLine * KviIrcView::getVisibleLineAt(int,int yPos)
 {
 	KviIrcViewLine * l = m_pCurLine;
 	int iTop = height() + m_iFontDescent - KVI_IRCVIEW_VERTICAL_BORDER;

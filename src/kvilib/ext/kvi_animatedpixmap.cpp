@@ -41,9 +41,9 @@ KviAnimatedPixmap::KviAnimatedPixmap(QString fileName)
 
 KviAnimatedPixmap::KviAnimatedPixmap(KviAnimatedPixmap* source)
 	:m_szFileName(source->m_szFileName),
+	m_lFrames(source->m_lFrames),
 	m_uCurrentFrameNumber(source->m_uCurrentFrameNumber),
-	m_bStarted(source->m_bStarted), //keep started state
-	m_lFrames(source->m_lFrames)
+	m_bStarted(source->m_bStarted) //keep started state
 {
 	m_lFrames->refs++;
 

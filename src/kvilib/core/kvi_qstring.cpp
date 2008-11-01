@@ -93,7 +93,7 @@ namespace KviQString
 	{
 		if(len == 0)return true; // assume equal
 		const QChar * c1 = sz1.unicode();
-		if(sz1.length() < len)return false;
+		if((unsigned)sz1.length() < len)return false;
 		const QChar * c1e = c1 + len;
 
 		if(!sz2)return !c1;
@@ -112,7 +112,7 @@ namespace KviQString
 	{
 		if(len == 0)return true; // assume equal
 		const QChar * c1 = sz1.unicode();
-		if(sz1.length() < len)return false;
+		if((unsigned)sz1.length() < len)return false;
 		const QChar * c1e = c1 + len;
 
 		if(!sz2)return !c1;
@@ -132,7 +132,7 @@ namespace KviQString
 	{
 		if(len == 0)return true; // assume equal
 		const QChar * c1 = sz1.unicode();
-		if(sz1.length() < len)return false;
+		if((unsigned)sz1.length() < len)return false;
 		const QChar * c1e = c1 + len;
 
 		if(!sz2)return !c1;
@@ -339,8 +339,8 @@ namespace KviQString
 	int cmpCIN(const QString &sz1,const QString &sz2,unsigned int len)
 	{
 		if(len == 0)return 0; // assume equal
-		unsigned int l1 = MY_MIN(len,sz1.length());
-		unsigned int l = MY_MIN(l1,sz2.length()); // FIXME: THIS IS NOT OK
+		unsigned int l1 = MY_MIN(len,(unsigned)sz1.length());
+		unsigned int l = MY_MIN(l1,(unsigned)sz2.length()); // FIXME: THIS IS NOT OK
 
 		const QChar * c1 = sz1.unicode();
 		const QChar * c2 = sz2.unicode();

@@ -115,7 +115,7 @@ QPixmap * KviDebugWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_BUG);
 }
 
-void KviDebugWindow::resizeEvent(QResizeEvent *e)
+void KviDebugWindow::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pInput->heightHint();
 	m_pSplitter->setGeometry(0,0,width(),height() - hght);

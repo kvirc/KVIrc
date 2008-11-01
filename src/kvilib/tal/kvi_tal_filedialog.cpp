@@ -28,7 +28,7 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char * pcName, bool bModal)
+KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char *, bool)
 : KFileDialog(KUrl(szDirName),szFilter,pParent)
 {
 	//clearWFlags(WDestructiveClose);
@@ -36,7 +36,7 @@ KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & sz
 
 #else // COMPILE_KDE_SUPPORT
 
-KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char * pcName, bool bModal)
+KviTalFileDialog::KviTalFileDialog(const QString & szDirName, const QString & szFilter, QWidget * pParent, const char *, bool bModal)
 : QFileDialog(pParent,"",szDirName,szFilter)
 {
 	setModal(bModal);

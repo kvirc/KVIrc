@@ -368,7 +368,7 @@ void KviInput::setFocus()
 	else m_pInputEditor->setFocus();
 }
 
-void KviInput::focusInEvent(QFocusEvent * e)
+void KviInput::focusInEvent(QFocusEvent *)
 {
 	// if we get a focus in event , redirect the focus to the children
 	if(m_pMultiLineEditor)m_pMultiLineEditor->setFocus();

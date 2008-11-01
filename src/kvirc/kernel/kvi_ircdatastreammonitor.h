@@ -38,9 +38,9 @@ protected:
 	KviIrcContext * m_pMyContext;
 public:
 	// message is null terminated
-	virtual void incomingMessage(const char * message){};
+	virtual void incomingMessage(const char *){};
 	// message is NOT null terminated! For proxy connections it might spit out binary data!
-	virtual void outgoingMessage(const char * message,int len){};
+	virtual void outgoingMessage(const char *,int){};
 	virtual void connectionInitiated(){};
 	virtual void connectionTerminated(){};
 	virtual void die(){ delete this; };

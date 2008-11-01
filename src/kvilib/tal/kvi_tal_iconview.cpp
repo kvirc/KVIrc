@@ -33,7 +33,7 @@
 #include <QAbstractTextDocumentLayout>
 #include <QStyle>
 
-KviTalIconView::KviTalIconView(QWidget * pParent, Qt::WFlags f)
+KviTalIconView::KviTalIconView(QWidget * pParent, Qt::WFlags)
 : QTableWidget(pParent)
 {
 	setSelectionMode(QAbstractItemView::SingleSelection);

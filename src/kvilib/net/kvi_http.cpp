@@ -695,6 +695,8 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 				case StoreToFile:
 					m_pFile->writeBlock((const char *)(data->data()),data->size());
 				break;
+				default:
+				break;
 			}
 
 			if(((m_uTotalSize > 0) && (m_uReceivedSize > m_uTotalSize)) || ((m_uMaxContentLength > 0) && (m_uReceivedSize > m_uMaxContentLength)))
@@ -727,13 +729,13 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 			{
 				// process the current chunk data
 				unsigned int uProcessSize = m_uRemainingChunkSize;
-				if(uProcessSize > m_pBuffer->size())uProcessSize = m_pBuffer->size();
+				if(uProcessSize > (unsigned int)m_pBuffer->size())uProcessSize = m_pBuffer->size();
 				m_uRemainingChunkSize -= uProcessSize;
 
 				switch(m_eProcessingType)
 				{
 					case Blocks:
-						if(m_pBuffer->size() == uProcessSize)
+						if((unsigned int)m_pBuffer->size() == uProcessSize)
 						{
 							// avoid copying to a new buffer
 							emit binaryData(*m_pBuffer);
@@ -745,7 +747,7 @@ void KviHttpRequest::processData(KviDataBuffer * data)
 						}
 					break;
 					case Lines:
-						if(m_pBuffer->size() == uProcessSize)
+						if((unsigned int)m_pBuffer->size() == uProcessSize)
 						{
 							// avoid copying to a new buffer
 							emitLines(m_pBuffer);

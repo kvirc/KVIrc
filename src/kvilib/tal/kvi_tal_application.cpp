@@ -27,7 +27,7 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 
-	KviTalApplication::KviTalApplication(int & iArgc, char ** ppcArgv)
+	KviTalApplication::KviTalApplication(int &, char **)
 	: KApplication()
 	{
 	}
