@@ -58,14 +58,14 @@ extern KviPopupEditorWindow * g_pPopupEditorWindow;
 
 //KviPopupEntryItem
 KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviTalTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t)
-: KviTalTreeWidgetItem((KviTalTreeWidget*) pTreeWidget, (KviTalTreeWidgetItem*)after)
+: KviTalTreeWidgetItem(pTreeWidget, after)
 {
 	m_type = t;
 	init();
 }
 
 KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviPopupTreeWidgetItem * parent,KviPopupTreeWidgetItem * after,Type t)
-: KviTalTreeWidgetItem((KviTalTreeWidget*) parent,(KviTalTreeWidgetItem*)after)
+: KviTalTreeWidgetItem(parent, after)
 {
 	m_type = t;
 	init();
@@ -364,7 +364,7 @@ void KviSinglePopupEditor::testModeMenuItemClicked(KviKvsPopupMenuItem * it)
 
 }
 
-void KviSinglePopupEditor::itemPressed(KviTalTreeWidgetItem * it, int)
+void KviSinglePopupEditor::itemPressed(QTreeWidgetItem * it, int)
 {
 	if (QApplication::mouseButtons() != Qt::RightButton)
 		return;
@@ -1082,7 +1082,7 @@ void KviPopupEditor::oneTimeSetup()
 		this,SLOT(itemPressed(QTreeWidgetItem *, int)));
 }
 
-void KviPopupEditor::itemPressed(KviTalTreeWidgetItem * it, int)
+void KviPopupEditor::itemPressed(QTreeWidgetItem * it, int)
 {
 	if (QApplication::mouseButtons() != Qt::RightButton)
 		return;

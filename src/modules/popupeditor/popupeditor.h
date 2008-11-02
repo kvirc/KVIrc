@@ -167,7 +167,7 @@ protected slots:
 	void exportSelected();
 	void exportCurrentPopup();
 	void removeCurrentPopup();
-	void itemPressed(KviTalTreeWidgetItem * item, int column);
+	void itemPressed(QTreeWidgetItem * item, int column);
 protected:
 	void showEvent(QShowEvent *e);
 	void getExportPopupBuffer(QString &buffer,KviMenuTreeWidgetItem * it);
