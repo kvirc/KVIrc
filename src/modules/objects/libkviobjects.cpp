@@ -180,7 +180,7 @@ static bool objects_kvs_cmd_killClass(KviKvsModuleCommandCall * c)
 			KviKvsKernel::instance()->objectController()->deleteClass(pClass); //Yahoo!!
 		}
 	}
-	else if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("Class '%Q' is not definited"),&szClass);
+	else if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("Class '%Q' is not defined"),&szClass);
 	return true;
 }
 
