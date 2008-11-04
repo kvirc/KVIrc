@@ -255,6 +255,7 @@ int parseArgs(ParseArgs * a)
 				a->szExecCommand.append("openurl ");
 				tmp.replaceAll("$",""); // the urls can't contain $ signs
 				tmp.replaceAll(";",""); // the urls can't contain ; signs
+				tmp.replaceAll("%",""); // the urls can't contain % signs
 				a->szExecCommand.append(tmp);
 			} else {
 				QString tmp = QString::fromLocal8Bit(p);
