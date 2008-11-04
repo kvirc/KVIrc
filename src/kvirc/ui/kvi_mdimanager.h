@@ -2,7 +2,7 @@
 #define _KVI_MDIMANAGER_H_
 //=============================================================================
 //
-//   File : kvi_mdimanager.h
+//   File : kvi+_mdimanager.h
 //   Creation date : Wed Jun 21 2000 17:28:04 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
@@ -24,6 +24,10 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_mdimanager.h
+* \brief The MDI-manager
+*/
 
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
@@ -32,6 +36,7 @@
 #include <QWidget>
 #include <QFrame>
 #include <QPixmap>
+#include <QMdiArea>
 
 #define KVI_MDICHILD_BORDER 4
 #define KVI_MDICHILD_SPACING 2
@@ -45,59 +50,85 @@
 	class KviMdiChild;
 #endif
 
-//class KviMdiCaptionButton;
 class KviFrame;
 class KviTalPopupMenu;
 class KviTalHBox;
 class KviSdiButtonBox;
-class KviMenuBarToolButton;
 
-class KVIRC_API KviMdiManager : public KviTalScrollView
+/**
+* \class KviMdiManager
+* \brief Handles all MDI windows
+* This MDI-manager is based on QMdiArea of Qt 4. It handles all docked windows and does their tiling.
+* Basicly all windows are managed by the KviFrame, which also gives the order to the MDI-manager to dock or undock a window.
+* What does that mean?
+* All windows in KVIrc are of the type QWidget which can be standalone windows. These are packed into a QMdiSubWindow and added to the MDI-manager.
+* So the KviMdiManager gets a KviMdiChild which will be set as main widget of our QMdiSubWindow. When it'll be undocked QMdiSubWindow will be removed and our KviWindow is "free" again.
+*/
+
+class KVIRC_API KviMdiManager : public QMdiArea
 {
 	friend class KviMdiChild;
 	friend class KviMdiCaption;
 	Q_OBJECT
 public:
-	KviMdiManager(QWidget * parent,KviFrame * pFrm,const char * name);
+	KviMdiManager(QWidget * parent,KviFrame * pFrm, const char * name);
 	~KviMdiManager();
 public:
-	KviMdiChild * topChild(){ return m_pZ->last(); };
+	/// Get the currently active window
+	KviMdiChild * topChild();
+
 	KviMdiChild * highestChildExcluding(KviMdiChild * pChild);
-	void manageChild(KviMdiChild * lpC,bool bCascade = true,QRect * setGeom = 0);
-	void setTopChild(KviMdiChild *lpC,bool bSetFocus);
+
+	/** Add an KviMdiChild to the area
+	* \param lpC The KviMdiChild
+	* \param bCascade Cascade window or not.
+	* \param setGeom Sets the windows geometry before shown
+	*/
+	void manageChild(KviMdiChild * lpC, bool bCascade = true, QRect * setGeom = 0);
+
+	/** Bring the KviMdiChild to the foreground
+	* \param lpC The KviMdiChild
+	* \param bSetFocus If set the KviMdiChild will get the keyboard focus
+	*/
+	void setTopChild(KviMdiChild * lpC, bool bSetFocus);
+
+	/** Show the KviMdiChild and bring it to the front
+	* \param lpC The KviMdiChild which will be shown.
+	*/
 	void showAndActivate(KviMdiChild * lpC);
-	KviTalPopupMenu * windowPopup(){ return m_pWindowPopup; };
+
+	KviTalPopupMenu * windowPopup() { return m_pWindowPopup; };
+
+	/// Move the focus the the top window
 	void focusTopChild();
-	void destroyChild(KviMdiChild *lpC,bool bFocusTopChild = true);
+
+	/** Remove and delete the subwindow
+	* \param lpC The KviMdiChild which will be destroyed.
+	* \param bFocusTopChild Defines if the next window which will appear afterwards will get the focus or not.
+	*/
+	void destroyChild(KviMdiChild * lpC, bool bFocusTopChild = true);
+
+	/// Get all visible subwindows
 	int getVisibleChildCount();
+
+	/// Check if we are in SDI mode
 	bool isInSDIMode();
+private:
+	bool m_bInSDIMode;
 protected:
-	KviPointerList<KviMdiChild>  * m_pZ; // topmost child is the last in the list
+	KviTalPopupMenu					* m_pWindowPopup;
+	KviTalPopupMenu					* m_pTileMethodPopup;
+	KviFrame						* m_pFrm;
 
-	KviMenuBarToolButton     * m_pSdiRestoreButton;
-	KviMenuBarToolButton     * m_pSdiMinimizeButton;
-	KviMenuBarToolButton     * m_pSdiCloseButton;
-	KviMenuBarToolButton     * m_pSdiIconButton;
-
-	KviTalHBox               * m_pSdiControls;
-	int                        m_iSdiIconItemId;
-	int                        m_iSdiRestoreItemId;
-	int                        m_iSdiMinimizeItemId;
-	int                        m_iSdiCloseItemId;
-
-	KviTalPopupMenu               * m_pWindowPopup;
-	KviTalPopupMenu               * m_pTileMethodPopup;
-	KviFrame                 * m_pFrm;
 protected:
 	void updateContentsSize();
-	//void childMaximized(KviMdiChild *lpC);
+	void childMaximized(KviMdiChild *lpC);
 	void childMinimized(KviMdiChild *lpC,bool bWasMaximized);
 	void childRestored(KviMdiChild *lpC,bool bWasMaximized);
 	void childMoved(KviMdiChild * lpC);
 	void maximizeChild(KviMdiChild * lpC);
-	virtual void focusInEvent(QFocusEvent *e);
+
 	virtual void mousePressEvent(QMouseEvent *e);
-	virtual void resizeEvent(QResizeEvent *e);
 	virtual void paintEvent(QPaintEvent * event);
 	virtual bool focusNextPrevChild(bool pNext);
 public slots:
@@ -107,7 +138,7 @@ public slots:
 	void expandVertical();
 	void expandHorizontal();
 	void minimizeAll();
-	// void restoreAll(); <-- this does nothing
+	void restoreAll(); //<-- this does nothing (not working?)
 	void tile();
 	void toggleAutoTile();
 
@@ -121,20 +152,13 @@ protected slots:
 	void menuActivated(int id);
 	void tileMethodMenuActivated(int id);
 	void fillWindowPopup();
-	void sdiMinimizeButtonDestroyed();
-	void sdiRestoreButtonDestroyed();
-	void sdiCloseButtonDestroyed();
-	void sdiIconButtonDestroyed();
 private:
 	void ensureNoMaximized();
 	void tileAllInternal(int maxWnds,bool bHorizontal);
 	QPoint getCascadePoint(int indexOfWindow);
-	void enterSDIMode(KviMdiChild *lpC);
-	void leaveSDIMode();
-	void updateSDIMode();
-signals:
-	void enteredSdiMode();
-	void leftSdiMode();
+//signals:
+//	void enteredSdiMode();
+//	void leftSdiMode();
 };
 
 #endif //_KVI_MDIMANAGER_H_

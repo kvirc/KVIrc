@@ -24,6 +24,12 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_window.h
+* \brief Contains the KviWindow class
+*/
+
+
 #include "kvi_app.h"
 #include "kvi_string.h"
 #include "kvi_qstring.h"
@@ -118,6 +124,11 @@ class KviTalHBox;
 #define KVI_ACTIVITY_VERYHOT 5
 #define KVI_ACTIVITY_FIRE 6
 
+/**
+* \class KviWindow
+* \brief Base class for all windows in KVIrc
+*/
+
 class KVIRC_API KviWindow : public QWidget
 {
 	friend class KviInput;
@@ -169,6 +180,7 @@ public:
 	// The global ID of this window: unique in the application
 	inline QString id(){ return QString("%1").arg(m_uId); };
 	inline unsigned long int numericId(){ return m_uId; };
+	KviTalPopupMenu * generatePopup();
 public:
 	// THIS is the function that should be used
 	inline const QString & windowName(){ return m_szName; };
@@ -262,6 +274,7 @@ public:
 //	virtual void getBaseLogFileName(KviStr &buffer);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void updateCaption();
+	void updateCaptionListItem();
 	virtual void applyOptions();
 	virtual void updateIcon();
 	virtual void ownMessage(const QString &){};

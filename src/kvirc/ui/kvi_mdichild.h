@@ -24,90 +24,173 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_mdichild.h
+* \brief MDI subwindow stuff
+*/
+
 #include "kvi_settings.h"
 #include "kvi_string.h"
 
 #include <QFrame>
 #include <QLabel>
+#include <QLabel>
+#include <QToolButton>
+#include <QMdiSubWindow>
+#include <QWidget>
+#include <QWindowStateChangeEvent>
+#include <QTimer>
+
+#include "kvi_tal_popupmenu.h"
 
 class KviMdiManager;
 class KviMdiChild;
-class KviMdiCaption;
-
 class QCursor;
 
-class KVIRC_API KviMdiChild : public QFrame
+/**
+* \class KviMdiChild
+* \brief Class of an MDI  window
+*/
+
+class KVIRC_API KviMdiChild : public QMdiSubWindow
 {
 	friend class KviMdiManager;
-	friend class KviMdiCaption;
 	Q_OBJECT
 public:
+	/**
+	* \brief Constructor
+	* \param par The mdi-manager the mdi-child belongs to.
+	* \param name The name of the mdi-child
+	*/
 	KviMdiChild(KviMdiManager* par,const char * name = 0);
 	~KviMdiChild();
 public:
-	enum MdiChildState { Maximized , Minimized , Normal };
+	enum MdiChildState { Maximized = 0 , Minimized , Normal };
 protected:
+	/// Contains the according KviMdiManager object.
 	KviMdiManager              * m_pManager;
-	KviMdiCaption              * m_pCaption;
 private:
-	int                          m_iResizeCorner;
-	int                          m_iLastCursorCorner;
-	bool                         m_bResizeMode;
-	QWidget                    * m_pClient;
-	MdiChildState                m_state;
-	QRect                        m_restoredGeometry;
-
-	QString                      m_szXmlActiveCaption;
-	QString                      m_szXmlInactiveCaption;
-	QString                      m_szPlainCaption;
+	/// The widget docked into our MDI window.
+	QWidget						* m_pClient;
+	/// Saves the geometry of the window for restoring it's position
+	QRect						  m_restoredGeometry;
+	/// Saves the last state of our window
+	MdiChildState				  m_State;
+	/// Saves the last state before window is minimized
+	MdiChildState				  m_LastState;
+	/// Contains the current window Icon
+	QPixmap						  m_pIcon;
+	/// XML-Version of active Caption.
+	QString						  m_szXmlActiveCaption;
+	/// XML-Version of inactive Caption.
+	QString						  m_szXmlInactiveCaption;
+	/// Caption as plain text.
+	QString						  m_szPlainCaption;
+	/// If window can be closed or not
+	bool						  m_bCloseEnabled;
+private:
+	void updateCaption();
 public:
+	/// Read the current geometry
 	QRect restoredGeometry();
-	void setRestoredGeometry(const QRect &r){ m_restoredGeometry = r; };
+
+	/// Set new geomentry
+	/// \param r The geometry the window will take when it will be restored
+	void setRestoredGeometry(const QRect &r);
+
+	/// Set the client widget which is shown in the subwindow
+	/// \param w The new client widget which is docked into our KviMdiChild
 	void setClient(QWidget * w);
-	QWidget * client(){ return m_pClient; };
+
+	/// Returns the currently in the window visible widget
+	QWidget * client() { return m_pClient; };
+
+	/// Removes the client widget
 	void unsetClient();
-	KviMdiCaption * captionLabel(){ return m_pCaption; };
-	MdiChildState state(){ return m_state; };
-	const QString & plainCaption(){ return m_szPlainCaption; };
-	const QString & xmlActiveCaption(){ return m_szXmlActiveCaption; };
-	const QString & xmlInactiveCaption(){ return m_szXmlInactiveCaption; };
+
+	/// Get the current window state
+	MdiChildState state();
+
+	/// Return plain text caption
+	const QString & plainCaption() { return m_szPlainCaption; };
+
+	/// Return xml-caption string for active caption
+	const QString & xmlActiveCaption() { return m_szXmlActiveCaption; };
+
+	/// Return xml-caption string for inactive caption
+	const QString & xmlInactiveCaption() { return m_szXmlInactiveCaption; };
+
+	/** Set the window title
+	*	\param plain Plain text of caption
+	*	\param xmlActive not used
+	*	\param xmlInactive not used
+	*/
 	void setWindowTitle(const QString & plain,const QString & xmlActive,const QString & xmlInactive);
-	virtual QSize sizeHint() const;
-	void setIcon(const QPixmap &pix);
+
+	/// Set the window icon
+	/// \param pix The new icon
+	void setIcon(QPixmap pix);
+
+	/// Return current window icon
 	const QPixmap * icon();
+
+	/// Enable or disable the close button
+	/// \param bEnable Activate/Deactivate close button
 	void enableClose(bool bEnable);
+
+	/// Return if close is enabled
 	bool closeEnabled();
+
+	/// Returns the current KviMdiManager of the subwindow
 	KviMdiManager * manager(){ return m_pManager; };
+
+	/// Activate this subwindow
 	void activate(bool bSetFocus);
-	void reloadImages();
+
+	/// Since Qt sometimes does not like changing window states while being in another event
+	void queuedMinimize();
+	/// Since Qt sometimes does not like changing window states while being in another event
+	void queuedRestore();
+	/// Since Qt sometimes does not like changing window states while being in another event
+	void queuedMaximize();
+
 public slots:
+	/// Maximize this window
 	void maximize();
+	/// Minimize this window
 	void minimize();
+	/// Restore it's latest postition/state
 	void restore();
+
+	// TODO: ???
 	void systemPopupSlot();
-	void closeRequest();
+
+	/// Event is used to catch minmize event of the KviMdiSubWindow
+	void windowStateChangedEvent( Qt::WindowStates oldState, Qt::WindowStates newState );
+private slots:
+	void updateSystemPopup();
 signals:
+	/// Signal is emitted when user clicks on the window icon
 	void systemPopupRequest(const QPoint & pnt);
+	/// Signal is used to minimize the window
+	void minimizeSignal();
+	void maximizeSignal();
+	void restoreSignal();
+	void hideSignal();
 protected:
+	// TODO: ???
 	virtual void setBackgroundRole(QPalette::ColorRole);
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void mousePressEvent(QMouseEvent *e);
-	virtual void mouseMoveEvent(QMouseEvent *e);
-	virtual void mouseReleaseEvent(QMouseEvent *e);
-	virtual void leaveEvent(QEvent *e);
+	// TODO: ???
 	virtual void focusInEvent(QFocusEvent *);
-	virtual void moveEvent(QMoveEvent *e);
-//	bool eventFilter(QObject *o,QEvent *e);
-	void emitSystemPopupRequest(const QPoint & pnt){ emit systemPopupRequest(pnt); };
-private:
-//	void linkChildren(QWidget *w);
-//	void unlinkChildren(QWidget *w);
-	QCursor getResizeCursor(int resizeCorner);
-	void resizeWindowOpaque(int resizeCorner);
-	int getResizeCorner(int ax,int ay);
-	void calculateMinimumSize(int &minWidth,int &minHeight);
-	void setResizeCursor(int resizeCorner);
-	void calculateResizeRect(int resizeCorner,QPoint mousePos,QRect &resizeRect,int minWidth,int minHeight);
+
+	/// Updates the widget background when moving
+	virtual void moveEvent(QMoveEvent * e);
+
+	/// Hook into close event to make user decisions possible
+	virtual void closeEvent(QCloseEvent * e);
+
+	// TODO: ???
+	void emitSystemPopupRequest(const QPoint & pnt) { emit systemPopupRequest(pnt); };
 };
 
 

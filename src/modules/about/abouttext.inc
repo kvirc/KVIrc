@@ -154,6 +154,25 @@ static const char * g_szAboutText = "" \
 "\"I'm not sure how i did it, but it works\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>TheXception</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"TheXception" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"kvirc@thexception.net" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"Bugfixing, german tutorials" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"everything is possible, it only needs its time.\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
 "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+3\"><b>Translators</b></font>" \
@@ -873,25 +892,6 @@ static const char * g_szAboutText = "" \
 "\"&lt;Grifisx&gt; You see things and you say \"Why?\" But I dream things\"" \
 "<br>" \
 "\"&lt;Grifisx&gt; that never were and I say...\"Why not?\"\"" \
-"</i></font></td></tr>" \
-"</table><br><br>" \
-"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
-"<tr><td align=\"center\">" \
-"<font color=\"#000000\" size=\"+2\"><b>TheXception</b></font>" \
-"</td></tr>" \
-"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
-"TheXception" \
-")</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
-"[" \
-"kvirc@thexception.net" \
-"]" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#303030\">" \
-"bugfixes, german tutorials" \
-"</font></td></tr>" \
-"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
-"\"everything is possible, it only needs its time.\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \

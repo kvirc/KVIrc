@@ -22,6 +22,11 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_window.cpp
+* \brief Contains the KviWindow class
+*/
+
 #define KVI_WINDOW_MIN_WIDTH 100
 #define KVI_WINDOW_MIN_HEIGHT 100
 
@@ -663,6 +668,11 @@ void KviWindow::updateCaption()
 		g_pFrame->updateCaption();
 }
 
+void KviWindow::updateCaptionListItem()
+{
+	if(m_pWindowListItem) m_pWindowListItem->captionChanged();
+}
+
 void KviWindow::createSystemTextEncodingPopup()
 {
 	if(!g_pMdiWindowSystemTextEncodingPopup)
@@ -731,7 +741,7 @@ void KviWindow::createSystemTextEncodingPopup()
 	connect(g_pMdiWindowSystemTextEncodingPopupStandard,SIGNAL(activated(int)),this,SLOT(systemTextEncodingPopupStandardActivated(int)));
 }
 
-void KviWindow::systemPopupRequest(const QPoint &pnt)
+KviTalPopupMenu * KviWindow::generatePopup()
 {
 	if(!g_pMdiWindowSystemMainPopup)
 		g_pMdiWindowSystemMainPopup = new KviTalPopupMenu();
@@ -778,6 +788,13 @@ void KviWindow::systemPopupRequest(const QPoint &pnt)
 	                                        __tr2qs("Sa&ve Window Properties"),this,SLOT(savePropertiesAsDefault()));
 
 	fillContextPopup(g_pMdiWindowSystemMainPopup);
+
+	return g_pMdiWindowSystemMainPopup;
+}
+
+void KviWindow::systemPopupRequest(const QPoint &pnt)
+{
+	generatePopup();
 
 	g_pMdiWindowSystemMainPopup->popup(pnt);
 }
@@ -874,7 +891,6 @@ void KviWindow::delayedClose()
 
 void KviWindow::closeEvent(QCloseEvent *e)
 {
-	debug("GOT CLOSE EVENT");
 	e->ignore();
 	g_pFrame->childWindowCloseRequest(this);
 }
@@ -1158,24 +1174,20 @@ void KviWindow::maximize()
 bool KviWindow::isMinimized()
 {
 	if(mdiParent())
+	{
 		return (mdiParent()->state() == KviMdiChild::Minimized);
-	else
-		return QWidget::isMinimized();
+	}
+	return QWidget::isMinimized();
 }
 
 bool KviWindow::isMaximized()
 {
 //	debug ("check maximized %s",mdiParent()->plainCaption().utf8().data());
 	if(mdiParent())
+	{
 		return (mdiParent()->state() == KviMdiChild::Maximized);
-	// Heh...how to check it ?
-	// Empirical check
-	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-
-	int wdth = (rect.width() * 75) / 100;
-	int hght = (rect.height() * 75) / 100;
-
-	return ((x() <= 1)&&(y() <= 1)&&(width() >= wdth)&&(height() >= hght));
+	}
+	return QWidget::isMaximized();
 }
 
 void KviWindow::restore()
@@ -1192,6 +1204,7 @@ void KviWindow::restore()
 
 QRect KviWindow::externalGeometry()
 {
+
 #ifndef COMPILE_ON_MAC
 	return mdiParent() ? mdiParent()->restoredGeometry() : frameGeometry();
 #else

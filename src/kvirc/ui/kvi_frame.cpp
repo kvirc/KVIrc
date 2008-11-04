@@ -113,8 +113,6 @@ KviFrame::KviFrame()
 	setUsesBigPixmaps(KVI_OPTION_BOOL(KviOption_boolUseBigIcons));
 
 	m_pMdi      = new KviMdiManager(m_pSplitter,this,"mdi_manager");
-	connect(m_pMdi,SIGNAL(enteredSdiMode()),this,SLOT(enteredSdiMode()));
-	connect(m_pMdi,SIGNAL(leftSdiMode()),this,SLOT(leftSdiMode()));
 
 	// This theoretically had to exists before KviMdiManager (that uses enterSdiMode)
 	m_pMenuBar   = new KviMenuBar(this,"main_menu_bar");
@@ -165,6 +163,8 @@ KviFrame::KviFrame()
 	installAccelerators(this);
 
 	layout()->setSizeConstraint(QLayout::SetNoConstraint);
+	connect(this, SIGNAL(signalDeleteWindow(KviWindow*)), this, SLOT(deleteWindow(KviWindow*)), Qt::QueuedConnection);
+	connect(this, SIGNAL(signalMaximizeMdiChildWindow(KviMdiChild*)), this, SLOT(maximizeMdiChildWindow(KviMdiChild*)), Qt::QueuedConnection);
 }
 
 KviFrame::~KviFrame()
@@ -222,7 +222,7 @@ KviFrame::~KviFrame()
 	g_pFrame = 0;
 }
 
-int KviFrame::registerAccelerator(const QString &szKeySequence,QObject *,const char *)
+int KviFrame::registerAccelerator(const QString &szKeySequence,QObject * recv,const char * slot)
 {
 	QShortcut *sc=new QShortcut(QKeySequence(szKeySequence),this);
 	connect(sc,SIGNAL(activated()),this,SLOT(accelActivated()));
@@ -548,9 +548,12 @@ void KviFrame::saveWindowProperties(KviWindow * wnd,const QString &szSection)
 
 	g_pWinPropertiesConfig->writeEntry("IsDocked",wnd->mdiParent());
 
-//	KviWindow * top = g_pActiveWindow;
-//	if(!top)top = wnd;
-//	g_pWinPropertiesConfig->writeEntry("IsMaximized",top->isMaximized());
+	if (wnd->mdiParent())
+	{
+		g_pWinPropertiesConfig->writeEntry("IsMaximized",wnd->mdiParent()->isMaximized());
+	} else {
+		g_pWinPropertiesConfig->writeEntry("IsMaximized",wnd->isMaximized());
+	}
 
 	g_pWinPropertiesConfig->writeEntry("WinRect",wnd->externalGeometry());
 
@@ -613,13 +616,22 @@ void KviFrame::closeWindow(KviWindow *wnd)
 
 	// and shut it down...
 	// KviWindow will call childWindowDestroyed() here
-	if(wnd->mdiParent()) {
+	if(wnd->mdiParent())
+	{
 		m_pMdi->destroyChild(wnd->mdiParent(),true);
-	} else {
-		delete wnd;
 	}
+	emit signalDeleteWindow(wnd);
 }
 
+void KviFrame::deleteWindow(KviWindow * wnd)
+{
+	delete wnd;
+}
+
+void KviFrame::maximizeMdiChildWindow(KviMdiChild * lpC)
+{
+		lpC->maximize();
+}
 
 void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 {
@@ -652,14 +664,7 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 		if(KVI_OPTION_BOOL(KviOption_boolWindowsRememberProperties))
 		{
 			bool bDocked    = g_pWinPropertiesConfig->readBoolEntry("IsDocked",true);
-			//bool bMaximized = g_pWinPropertiesConfig->readBoolEntry("IsMaximized",false);
-			bool bMaximized;
-
-			if(KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode))
-			{
-				bMaximized = true;
-				//KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode) = false;
-			} else bMaximized = false;
+			bool bMaximized = g_pWinPropertiesConfig->readBoolEntry("IsMaximized",false);
 
 			QRect rect      = g_pWinPropertiesConfig->readRectEntry("WinRect",QRect(10,10,500,380));
 
@@ -673,12 +678,14 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 				wnd->triggerCreationEvents();
 				if(bShow)
 				{
+					if(bMaximized) emit signalMaximizeMdiChildWindow(lpC);
+
 					m_pMdi->showAndActivate(lpC);
-					if(bMaximized)wnd->maximize();
+
 					// Handle the special case of this top level widget not being the active one.
 					// In this situation the child will not get the focusInEvent
 					// and thus will not call out childWindowActivated() method
-					if(!isActiveWindow())childWindowActivated(wnd);
+					if(!isActiveWindow()) childWindowActivated(wnd);
 				}
 			} else {
 				wnd->setGeometry(rect);
@@ -722,14 +729,17 @@ docking_done:
 	}
 }
 
-KviMdiChild * KviFrame::dockWindow(KviWindow *wnd,bool bShow,bool bCascade,QRect *setGeom)
+KviMdiChild * KviFrame::dockWindow(KviWindow * wnd, bool bShow, bool bCascade, QRect * setGeom)
 {
 	if(wnd->mdiParent())return wnd->mdiParent();
 	KviMdiChild * lpC = new KviMdiChild(m_pMdi,"");
 	lpC->setClient(wnd);
+	lpC->setGeometry(wnd->geometry());
+
 	wnd->youAreDocked();
 	m_pMdi->manageChild(lpC,bCascade,setGeom);
-	if(bShow)m_pMdi->showAndActivate(lpC);
+	if(bShow) m_pMdi->showAndActivate(lpC);
+
 	return lpC;
 }
 
@@ -739,6 +749,7 @@ void KviFrame::undockWindow(KviWindow *wnd)
 	KviMdiChild * lpC = wnd->mdiParent();
 	lpC->unsetClient();
 	m_pMdi->destroyChild(lpC,false);
+	wnd->show();
 	wnd->youAreUndocked();
 	wnd->raise();
 	wnd->setFocus();
@@ -925,16 +936,6 @@ void KviFrame::windowActivationChange(bool bOldActive)
 	} else {
 		if(g_pActiveWindow)g_pActiveWindow->lostUserFocus();
 	}
-}
-
-void KviFrame::enteredSdiMode()
-{
-	updateCaption();
-}
-
-void KviFrame::leftSdiMode()
-{
-	updateCaption();
 }
 
 #define KVI_DEFAULT_FRAME_CAPTION "KVIrc " KVI_VERSION " " KVI_RELEASE_NAME
@@ -1331,3 +1332,4 @@ void KviFrame::hideEvent ( QHideEvent * e)
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_frame.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
+

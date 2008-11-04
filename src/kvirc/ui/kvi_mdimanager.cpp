@@ -22,6 +22,10 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_mdimanager.cpp
+* \brief The MDI-manager
+*/
 
 
 #include "kvi_debug.h"
@@ -33,7 +37,6 @@
 #include "kvi_iconmanager.h"
 #include "kvi_frame.h"
 #include "kvi_menubar.h"
-#include "kvi_mdicaption.h"
 #include "kvi_app.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_tal_hbox.h"
@@ -44,6 +47,9 @@
 #include <QCursor>
 #include <QEvent>
 #include <QMouseEvent>
+#include <QLabel>
+#include <QToolButton>
+
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#include <QPixmap>
@@ -54,23 +60,11 @@
 
 
 KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
-: KviTalScrollView(parent)
+: QMdiArea(parent)
 {
 	setFrameShape(NoFrame);
-	m_pZ = new KviPointerList<KviMdiChild>;
-	m_pZ->setAutoDelete(true);
 
 	m_pFrm = pFrm;
-
-	m_iSdiIconItemId = 0;
-	m_iSdiCloseItemId = 0;
-	m_iSdiRestoreItemId = 0;
-	m_iSdiMinimizeItemId = 0;
-	m_pSdiIconButton = 0;
-	m_pSdiCloseButton = 0;
-	m_pSdiRestoreButton = 0;
-	m_pSdiMinimizeButton = 0;
-	m_pSdiControls = 0;
 
 	m_pWindowPopup = new KviTalPopupMenu(this);
 	connect(m_pWindowPopup,SIGNAL(activated(int)),this,SLOT(menuActivated(int)));
@@ -80,24 +74,18 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 
 	viewport()->setAutoFillBackground(false);
 //	setStaticBackground(true);
-	resizeContents(width(),height());
 
-	setFocusPolicy(Qt::NoFocus);
-	viewport()->setFocusPolicy(Qt::NoFocus);
+	//setFocusPolicy(Qt::NoFocus);
+	//viewport()->setFocusPolicy(Qt::NoFocus);
 	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
 }
 
 KviMdiManager::~KviMdiManager()
 {
-	delete m_pZ;
 }
 
 void KviMdiManager::reloadImages()
 {
-	for(KviMdiChild * c = m_pZ->first();c;c = m_pZ->next())
-	{
-		c->reloadImages();
-	}
 }
 
 bool KviMdiManager::focusNextPrevChild(bool bNext)
@@ -132,27 +120,9 @@ void KviMdiManager::manageChild(KviMdiChild * lpC,bool bCascade,QRect *setGeom)
 {
 	__range_valid(lpC);
 
-	m_pZ->insert(0,lpC); //hidden -> last in the Z order
+	QMdiSubWindow * w = this->addSubWindow((QMdiSubWindow*)lpC);
 
-	if(bCascade)
-	{
-		QPoint p = getCascadePoint(m_pZ->count()-1);
-		addChild(lpC,p.x(),p.y());
-	} else {
-		// FIXME: is this right ?
-		QPoint p = lpC->pos();
-		if(p.x() < 0)p.setX(0);
-		if(p.y() < 0)p.setY(0);
-		addChild(lpC,p.x(),p.y());
-
-		if(setGeom)
-		{
-			if(setGeom->left() < 0)setGeom->setLeft(0);
-			if(setGeom->top() < 0)setGeom->setTop(0);
-			moveChild(lpC,setGeom->x(),setGeom->y());
-			lpC->setGeometry(*setGeom);
-		}
-	}
+	if(isInSDIMode()) lpC->queuedMaximize();
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
@@ -164,108 +134,85 @@ void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
 
+KviMdiChild * KviMdiManager::topChild()
+{
+	return (KviMdiChild*)activeSubWindow();
+};
+
 void KviMdiManager::setTopChild(KviMdiChild *lpC,bool bSetFocus)
 {
 	__range_valid(lpC);
 	// The following check fails safely at startup....
-	//	__range_valid(lpC->isVisible() || lpC->testWState(WState_ForceHide));
 
-	KviMdiChild * pOldTop = m_pZ->last();
-	if(pOldTop != lpC)
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+
+	if (tmp.last()->inherits("KviMdiChild"))
 	{
-		m_pZ->setAutoDelete(false);
-
-		if(!m_pZ->removeRef(lpC))
-		{
-			m_pZ->setAutoDelete(true);
-			return; // no such child ?
-		}
-
-		// disable the labels of all the other children
-		//for(KviMdiChild *pC=m_pZ->first();pC;pC=m_pZ->next())
-		//{
-		//	pC->captionLabel()->setActive(false);
-		//}
-		KviMdiChild * pMaximizedChild = pOldTop;
-		if(pOldTop)
-		{
-			pOldTop->captionLabel()->setActive(false);
-			if(pOldTop->m_state != KviMdiChild::Maximized)pMaximizedChild=0;
-		}
-
-		m_pZ->setAutoDelete(true);
-		m_pZ->append(lpC);
-
-		if(pMaximizedChild)lpC->maximize(); //do not animate the change
-		lpC->raise();
-		if(pMaximizedChild)pMaximizedChild->restore();
+		KviMdiChild * oldlpC = (KviMdiChild *) tmp.last();
+		if (oldlpC && oldlpC->isMaximized()) lpC->queuedMaximize();
 	}
+
+	setActiveSubWindow((QMdiSubWindow*) lpC);
 
 	if(bSetFocus)
 	{
 		if(!lpC->hasFocus())
 		{
 			lpC->setFocus();
-			/*
-			if(topLevelWidget()->isActiveWindow())
-			{
-
-			}
-			*/
 		}
 	}
-}
 
-void KviMdiManager::focusInEvent(QFocusEvent *)
-{
-	focusTopChild();
 }
 
 void KviMdiManager::destroyChild(KviMdiChild *lpC,bool bFocusTopChild)
 {
-	bool bWasMaximized = lpC->state() == KviMdiChild::Maximized;
-	disconnect(lpC);
-	lpC->blockSignals(true);
-#ifdef _KVI_DEBUG_CHECK_RANGE_
-	//Report invalid results in a debug session
-	__range_valid(m_pZ->removeRef(lpC));
-#else
-	m_pZ->removeRef(lpC);
-#endif
-	if(bWasMaximized)
+	removeSubWindow(lpC);
+
+	if (lpC->isMaximized() && activeSubWindow())
 	{
-		KviMdiChild * c=topChild();
-		if(c)
-		{
-			if(c->state() != KviMdiChild::Minimized)c->maximize();
-			else {
-				// minimized top child...the last one
-				leaveSDIMode();
-			}
-		} else {
-			// SDI state change
-			leaveSDIMode();
-		}
+		if (!activeSubWindow()->inherits("KviMdiChild")) return;
+
+		KviMdiChild * tmp = (KviMdiChild *) activeSubWindow();
+		tmp->queuedMaximize();
 	}
+
 	if(bFocusTopChild)focusTopChild();
 
-	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
-	updateContentsSize();
+	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
 }
 
 KviMdiChild * KviMdiManager::highestChildExcluding(KviMdiChild * pChild)
 {
-	KviMdiChild * c = m_pZ->last();
-	while(c && (c == pChild))c = m_pZ->prev();
-	return c;
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+	QListIterator<QMdiSubWindow*> wl(tmp);
+	wl.toBack();
+
+	KviMdiChild * c;
+	while (wl.hasPrevious())
+	{
+			c = (KviMdiChild*) wl.previous();
+			if (!c->inherits("KviMdiChild")) continue;
+			if (c == pChild) continue;
+			return c;
+	}
+	return 0;
 }
 
 QPoint KviMdiManager::getCascadePoint(int indexOfWindow)
 {
 	QPoint pnt(0,0);
 	if(indexOfWindow==0)return pnt;
-	KviMdiChild *lpC=m_pZ->first();
-	int step=(lpC ? (lpC->captionLabel()->heightHint()+KVI_MDICHILD_BORDER) : 20);
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+
+	if (!tmp.last()->inherits("KviMdiChild"))
+	{
+		debug("QMdiSubWindow doesn't inherit from KviMdiChild!");
+		return pnt;
+	}
+
+	KviMdiChild * lpC = (KviMdiChild *) tmp.last();
+
+	int step=0;
 	int availableHeight=viewport()->height()-(lpC ? lpC->minimumSize().height() : KVI_MDICHILD_MIN_HEIGHT);
 	int availableWidth=viewport()->width()-(lpC ? lpC->minimumSize().width() : KVI_MDICHILD_MIN_WIDTH);
 	int ax=0;
@@ -282,351 +229,136 @@ QPoint KviMdiManager::getCascadePoint(int indexOfWindow)
 	return pnt;
 }
 
-void KviMdiManager::mousePressEvent(QMouseEvent *e)
+void KviMdiManager::mousePressEvent(QMouseEvent * e)
 {
 	//Popup the window menu
-	if(e->button() & Qt::RightButton)m_pWindowPopup->popup(mapToGlobal(e->pos()));
+	if(e->button() & Qt::RightButton) m_pWindowPopup->popup(mapToGlobal(e->pos()));
 }
 
 void KviMdiManager::childMoved(KviMdiChild *)
 {
-	updateContentsSize();
+
 }
 
 void KviMdiManager::maximizeChild(KviMdiChild * lpC)
 {
-	// the children must be moved once by the means of QScrollView::moveChild()
-	// so the QScrollView internal structures get updated with the negative
-	// position of the widget, otherwise, when restoring with moveChild()
-	// it will refuse to move it back to the original position
-	resizeContents(visibleWidth(),visibleHeight());
-	//// updateScrollBars();
-	g_pApp->sendPostedEvents();
-	if(g_pApp->closingDown())return;
-
-	moveChild(lpC,-KVI_MDICHILD_HIDDEN_EDGE,
-		-(KVI_MDICHILD_HIDDEN_EDGE + KVI_MDICHILD_SPACING + lpC->m_pCaption->heightHint()));
-
-	lpC->setGeometry(
-		-KVI_MDICHILD_HIDDEN_EDGE,
-		-(KVI_MDICHILD_HIDDEN_EDGE + KVI_MDICHILD_SPACING + lpC->m_pCaption->heightHint()),
-		viewport()->width() + (KVI_MDICHILD_HIDDEN_EDGE * 2), //KVI_MDICHILD_DOUBLE_HIDDEN_EDGE,
-		viewport()->height() + (KVI_MDICHILD_HIDDEN_EDGE * 2) + lpC->m_pCaption->heightHint() + KVI_MDICHILD_SPACING);
-
-	if(isInSDIMode())updateSDIMode();
-	else {
-		enterSDIMode(lpC);
-		// make sure that the child is focused
-		lpC->setFocus();
-	}
-
-	// fixme: we could hide all the other children now!
 }
 
-
-
-void KviMdiManager::resizeEvent(QResizeEvent *e)
-{
-	//If we have a maximized children at the top , adjust its size
-	KviTalScrollView::resizeEvent(e);
-	KviMdiChild *lpC=m_pZ->last();
-	if(lpC)
-	{
-		if(lpC->state()==KviMdiChild::Maximized)
-		{
-			// SDI mode
-			lpC->resize(viewport()->width() + (KVI_MDICHILD_HIDDEN_EDGE * 2),
-				viewport()->height() + lpC->m_pCaption->heightHint() + (KVI_MDICHILD_HIDDEN_EDGE * 2) + KVI_MDICHILD_SPACING);
-			return;
-		} else {
-			if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
-		}
-	}
-	updateContentsSize();
-}
-
-
-/*
 void KviMdiManager::childMaximized(KviMdiChild * lpC)
 {
-	if(lpC == m_pZ->last())
-	{
-		enterSDIMode(lpC);
-	}
-	updateContentsSize();
+		m_bInSDIMode = true;
 }
-*/
+
 
 void KviMdiManager::childMinimized(KviMdiChild * lpC,bool bWasMaximized)
 {
 	__range_valid(lpC);
-	if(m_pZ->findRef(lpC) == -1)return;
-	if(m_pZ->count() > 1)
+
+	if(subWindowList().count() > 1)
 	{
-		m_pZ->setAutoDelete(false);
-#ifdef _KVI_DEBUG_CHECK_RANGE_
-		//Report invalid results in a debug session
-		__range_valid(m_pZ->removeRef(lpC));
-#else
-		m_pZ->removeRef(lpC);
-#endif
-		m_pZ->setAutoDelete(true);
-		m_pZ->insert(0,lpC);
-		if(bWasMaximized)
+		if(!bWasMaximized)
 		{
-			// Need to maximize the top child
-			lpC = m_pZ->last();
-			if(!lpC)return; //??
-			if(lpC->state()==KviMdiChild::Minimized)
-			{
-				if(bWasMaximized)leaveSDIMode();
-				return;
-			}
-			lpC->maximize(); //do nrot animate the change
-		} else {
-			if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+			if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
 		}
 		focusTopChild();
 	} else {
 		// Unique window minimized...it won't loose the focus...!!
 		setFocus(); //Remove focus from the child
-		if(bWasMaximized)leaveSDIMode();
 	}
-	updateContentsSize();
 }
 
-void KviMdiManager::childRestored(KviMdiChild * lpC,bool bWasMaximized)
+void KviMdiManager::childRestored(KviMdiChild * lpC, bool bWasMaximized)
 {
 	if(bWasMaximized)
 	{
-		if(lpC != m_pZ->last())return; // do nothing in this case
-		leaveSDIMode();
-		updateContentsSize();
+		if(lpC != subWindowList().last()) return; // do nothing in this case
 	}
-	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
+	if (bWasMaximized) m_bInSDIMode = false;
 }
 
 void KviMdiManager::focusTopChild()
 {
-	KviMdiChild *lpC=m_pZ->last();
-	if(!lpC)return;
-	if(!lpC->isVisible())return;
-	//	if(lpC->state()==KviMdiChild::Minimized)return;
-	//	debug("Focusing top child %s",lpC->name());
-	//disable the labels of all the other children
-	for(KviMdiChild *pC=m_pZ->first();pC;pC=m_pZ->next())
+	if (!activeSubWindow()) return;
+	if (!activeSubWindow()->inherits("KviMdiChild")) return;
+
+	KviMdiChild * lpC;
+
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::ActivationHistoryOrder);
+	QListIterator<QMdiSubWindow*> wl(tmp);
+	wl.toBack();
+
+	while (wl.hasPrevious())
 	{
-		if(pC != lpC)
-			pC->captionLabel()->setActive(false);
+			lpC = (KviMdiChild*) wl.previous();
+			if (!lpC->inherits("KviMdiChild")) continue;
+
+			if (lpC->state() != KviMdiChild::Minimized)
+			{
+				break;
+			}
 	}
+
+	if(!lpC)return;
+	if(isInSDIMode()) lpC->queuedMaximize();
 	lpC->raise();
 	if(!lpC->hasFocus())lpC->setFocus();
 }
 
 void KviMdiManager::minimizeActiveChild()
 {
-	KviMdiChild * lpC = m_pZ->last();
-	if(!lpC)return;
-	if(lpC->state() != KviMdiChild::Minimized)lpC->minimize();
+	if (!activeSubWindow()->inherits("KviMdiChild")) return;
+
+	KviMdiChild * lpC = (KviMdiChild *) activeSubWindow();
+	if(lpC->state() != KviMdiChild::Minimized) lpC->minimize();
 }
 
 void KviMdiManager::restoreActiveChild()
 {
-	KviMdiChild * lpC = m_pZ->last();
-	if(!lpC)return;
+	if (!activeSubWindow()->inherits("KviMdiChild")) return;
+
+	KviMdiChild * lpC = (KviMdiChild *) activeSubWindow();
 	if(lpC->state() == KviMdiChild::Maximized)lpC->restore();
 }
 
 void KviMdiManager::closeActiveChild()
 {
-	KviMdiChild * lpC = m_pZ->last();
-	if(!lpC)return;
-	lpC->closeRequest();
+	if (!activeSubWindow()->inherits("KviMdiChild")) return;
+
+	KviMdiChild * lpC = (KviMdiChild *) activeSubWindow();
+	lpC->close();
 }
 
 void KviMdiManager::updateContentsSize()
 {
-	KviMdiChild * c = m_pZ->last();
-	if(c)
-	{
-		if(c->state() == KviMdiChild::Maximized)
-		{
-			return;
-		}
-	}
-
-	int fw = frameWidth() * 2;
-	int mx = width() - fw;
-	int my = height() - fw;
-
-	for(c = m_pZ->first();c;c = m_pZ->next())
-	{
-		if(c->isVisible())
-		{
-			int x = childX(c) + c->width();
-			if(x > mx)mx = x;
-			int y = childY(c) + c->height();
-			if(y > my)my = y;
-		}
-	}
-
-	resizeContents(mx,my);
-}
-
-
-void KviMdiManager::updateSDIMode()
-{
-
-	KviMdiChild * lpC = m_pZ->last();
-
-	if(m_pSdiCloseButton)
-		m_pSdiCloseButton->setEnabled(lpC ? lpC->closeEnabled() : false);
-
-// This would result in an addictional main menu bar entry on MacOSX which would trigger a popup menu and not
-// a submenu. Due to the optical reasons it is removed here.
-// The same popup is triggered by right clicking on the window name in the channel window list.
-#ifndef COMPILE_ON_MAC
-	KviMenuBar * b = m_pFrm->mainMenuBar();
-
-	const QPixmap * pix = lpC ? lpC->icon() : 0;
-	if(!pix)pix = g_pIconManager->getSmallIcon(KVI_SMALLICON_NONE);
-	else if(pix->isNull())pix = g_pIconManager->getSmallIcon(KVI_SMALLICON_NONE);
-
-	if(!m_pSdiIconButton)
-	{
-		m_pSdiIconButton = new KviMenuBarToolButton(b,*pix,"nonne");
-		connect(m_pSdiIconButton,SIGNAL(clicked()),this,SLOT(activeChildSystemPopup()));
-		// This is an obscure, undocumented and internal function in QT4 QMenuBar
-		// I won't be surprised if this disappears....
-		b->setCornerWidget(m_pSdiIconButton,Qt::TopLeftCorner);
-		m_pSdiIconButton->show();
-		connect(m_pSdiIconButton,SIGNAL(destroyed()),this,SLOT(sdiIconButtonDestroyed()));
-	} else {
-		m_pSdiIconButton->setIcon(QIcon(*pix));
-	}
-#endif //COMPILE_ON_MAC
 }
 
 void KviMdiManager::activeChildSystemPopup()
 {
-	KviMdiChild * lpC = m_pZ->last();
-	if(!lpC)return;
+	if (!activeSubWindow()->inherits("KviMdiChild")) return;
+
+	KviMdiChild * lpC = (KviMdiChild *) activeSubWindow();
+
 	QPoint pnt;
-	if(m_pSdiIconButton)
+	/*if(m_pSdiIconButton)
 	{
 		pnt = m_pSdiIconButton->mapToGlobal(QPoint(0,m_pSdiIconButton->height()));
 	} else {
 		pnt = QCursor::pos();
-	}
+	}*/
 	lpC->emitSystemPopupRequest(pnt);
 }
 
 bool KviMdiManager::isInSDIMode()
 {
-	return (m_pSdiCloseButton != 0);
+	return m_bInSDIMode;
 }
 
-
-void KviMdiManager::enterSDIMode(KviMdiChild *)
-{
-	if(!m_pSdiCloseButton)
-	{
-		KviMenuBar * b = m_pFrm->mainMenuBar();
-
-		QWidget * pButtonParent;
-
-		m_pSdiControls = new KviTalHBox(b);
-		m_pSdiControls->setMargin(0);
-		m_pSdiControls->setSpacing(2);
-		m_pSdiControls->setAutoFillBackground(false);
-		pButtonParent = m_pSdiControls;
-
-		m_pSdiMinimizeButton = new KviMenuBarToolButton(pButtonParent,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),"btnminimize");
-		connect(m_pSdiMinimizeButton,SIGNAL(clicked()),this,SLOT(minimizeActiveChild()));
-		connect(m_pSdiMinimizeButton,SIGNAL(destroyed()),this,SLOT(sdiMinimizeButtonDestroyed()));
-
-		m_pSdiRestoreButton = new KviMenuBarToolButton(pButtonParent,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),"btnrestore");
-		connect(m_pSdiRestoreButton,SIGNAL(clicked()),this,SLOT(restoreActiveChild()));
-		connect(m_pSdiRestoreButton,SIGNAL(destroyed()),this,SLOT(sdiRestoreButtonDestroyed()));
-
-		m_pSdiCloseButton = new KviMenuBarToolButton(pButtonParent,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)),"btnclose");
-		connect(m_pSdiCloseButton,SIGNAL(clicked()),this,SLOT(closeActiveChild()));
-		connect(m_pSdiCloseButton,SIGNAL(destroyed()),this,SLOT(sdiCloseButtonDestroyed()));
-
-		// This is an obscure, undocumented and internal function in QT4 QMenuBar
-		// I won't be surprised if this disappears....
-		b->setCornerWidget(m_pSdiControls,Qt::TopRightCorner);
-		// The show below SHOULD force a re-layout of the menubar..
-		// but it doesn't work when the KviFrame is still hidden (at startup)
-		// We handle this BUG in showEvent()
-		m_pSdiControls->show();
-		emit enteredSdiMode();
-
-		setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-		setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-	}
-
-	updateSDIMode();
-}
 void KviMdiManager::relayoutMenuButtons()
 {
-	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
-	// by resetting the corner widget
-	if(m_pSdiControls)
-	{
-		m_pFrm->mainMenuBar()->setCornerWidget(0,Qt::TopRightCorner);
-		m_pFrm->mainMenuBar()->setCornerWidget(m_pSdiControls,Qt::TopRightCorner);
-	}
-	// also force an activation of the top MdiChild since it probably didn't get it yet
+	// also force an activation of the top MdiChild since it probably didn't get it yet*/
 	KviMdiChild * c = topChild();
 	if(c) c->activate(false);
-}
-
-
-void KviMdiManager::sdiIconButtonDestroyed()
-{
-	m_iSdiIconItemId = 0;
-	m_pSdiIconButton = 0;
-}
-
-void KviMdiManager::sdiMinimizeButtonDestroyed()
-{
-	m_iSdiMinimizeItemId = 0;
-	m_pSdiMinimizeButton = 0;
-}
-
-void KviMdiManager::sdiRestoreButtonDestroyed()
-{
-	m_iSdiRestoreItemId = 0;
-	m_pSdiRestoreButton = 0;
-}
-
-void KviMdiManager::sdiCloseButtonDestroyed()
-{
-	m_iSdiCloseItemId = 0;
-	m_pSdiCloseButton = 0;
-}
-
-void KviMdiManager::leaveSDIMode()
-{
-	__range_valid(m_pSdiCloseButton);
-
-	if(m_pSdiControls)
-	{
-		delete m_pSdiControls;
-		m_pSdiControls = 0;
-	}
-	if(m_pSdiIconButton)
-	{
-		m_pSdiIconButton->hide(); // this will force a QMenuBar relayout
-		delete m_pSdiIconButton;
-		m_pSdiIconButton = 0;
-	}
-
-	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-
-	emit leftSdiMode();
 }
 
 #define KVI_TILE_METHOD_ANODINE 0
@@ -681,18 +413,31 @@ void KviMdiManager::fillWindowPopup()
 
 	m_pWindowPopup->insertSeparator();
 	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),(__tr2qs("Mi&nimize All")),this,SLOT(minimizeAll()));
-//    m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),(__tr2qs("&Restore all")),this,SLOT(restoreAll()));
-//
+    m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),(__tr2qs("&Restore all")),this,SLOT(restoreAll()));
+
 	m_pWindowPopup->insertSeparator();
-	int i=100;
+	int i = 100;
 	QString szItem;
 	QString szCaption;
-	for(KviMdiChild *lpC=m_pZ->first();lpC;lpC=m_pZ->next())
+	QList<QMdiSubWindow*> tmp = subWindowList(QMdiArea::StackingOrder);
+	QListIterator<QMdiSubWindow*> m_pZ(tmp);
+
+	KviMdiChild * lpC;
+
+	while (m_pZ.hasNext())
 	{
+		lpC = (KviMdiChild *) m_pZ.next();
+
+		if (!lpC->inherits("KviMdiChild"))
+		{
+			i++;
+			continue;
+		}
+
 		szItem.setNum(((uint)i)-99);
 		szItem+=". ";
 
-		szCaption = lpC->plainCaption();
+		szCaption = lpC->windowTitle();
 		if(szCaption.length() > 30)
 		{
 			QString trail = szCaption.right(12);
@@ -707,10 +452,17 @@ void KviMdiManager::fillWindowPopup()
 			szItem+=szCaption;
 			szItem+=")";
 		} else szItem+=szCaption;
+
 		const QPixmap * pix = lpC->icon();
-		if(pix && !(pix->isNull()))m_pWindowPopup->insertItem(*pix,szItem,i);
-		else m_pWindowPopup->insertItem(szItem,i);
-		m_pWindowPopup->setItemChecked(i,((uint)i)==(m_pZ->count()+99));
+
+		if (pix && !(pix->isNull()))
+		{
+			m_pWindowPopup->insertItem(*pix, szItem,i);
+		} else {
+			m_pWindowPopup->insertItem(szItem);
+		}
+
+		//m_pWindowPopup->setItemChecked(i, ((uint)i) == (m_pZ->count()+99) ); <- ????
 		i++;
 	}
 }
@@ -719,193 +471,106 @@ void KviMdiManager::menuActivated(int id)
 {
 	if(id<100)return;
 	id-=100;
-	__range_valid(((uint)id) < m_pZ->count());
-	KviMdiChild *lpC=m_pZ->at(id);
-	if(!lpC)return;
-	if(lpC->state()==KviMdiChild::Minimized)lpC->restore();
-	setTopChild(lpC,true);
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+
+	__range_valid(((uint)id) < tmp.count());
+
+	if (!tmp.at(id)->inherits("KviMdiChild")) return;
+	KviMdiChild * lpC = (KviMdiChild *) tmp.at(id);
+
+	if(!lpC) return;
+	if(lpC->state() == KviMdiChild::Minimized) lpC->restore();
+
+	setTopChild(lpC, true);
 }
 
 void KviMdiManager::ensureNoMaximized()
 {
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+
 	KviMdiChild * lpC;
 
-	for(lpC=m_pZ->first();lpC;lpC=m_pZ->next())
+	for(int i = 0; i < tmp.count(); i++)
 	{
-		if(lpC->state()==KviMdiChild::Maximized)lpC->restore();
+		if (tmp.at(i)->inherits("KviMdiChild"))
+		{
+			lpC = (KviMdiChild *) tmp.at(i);
+			if(lpC->state() == KviMdiChild::Maximized) lpC->restore();
+		}
 	}
 }
 
 void KviMdiManager::tileMethodMenuActivated(int id)
 {
 	int idx = m_pTileMethodPopup->itemParameter(id);
-	if(idx < 0)idx = 0;
-	if(idx >= KVI_NUM_TILE_METHODS)idx = KVI_TILE_METHOD_PRAGMA9VER;
+
+	if(idx < 0) idx = 0;
+	if(idx >= KVI_NUM_TILE_METHODS) idx = KVI_TILE_METHOD_PRAGMA9VER;
+
 	KVI_OPTION_UINT(KviOption_uintTileMethod) = idx;
-	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+
+	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
 }
 
 void KviMdiManager::cascadeWindows()
 {
-	ensureNoMaximized();
-	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
-	resizeContents(visibleWidth(),visibleHeight());
-	// updateScrollBars();
-	g_pApp->sendPostedEvents();
-	if(g_pApp->closingDown())return;
-
-	int idx=0;
-	KviPointerList<KviMdiChild> list;
-	list.copyFrom(m_pZ);
-
-	list.setAutoDelete(false);
-	while(!list.isEmpty())
-	{
-		KviMdiChild *lpC=list.first();
-		if(lpC->state() != KviMdiChild::Minimized)
-		{
-			QPoint p = getCascadePoint(idx);
-			moveChild(lpC,p.x(),p.y());
-			lpC->resize(lpC->sizeHint());
-			idx++;
-		}
-		list.removeFirst();
-	}
-	focusTopChild();
-	updateContentsSize();
 }
 
 void KviMdiManager::cascadeMaximized()
 {
-	ensureNoMaximized();
-	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
-	resizeContents(visibleWidth(),visibleHeight());
-	// updateScrollBars();
-	g_pApp->sendPostedEvents();
-	if(g_pApp->closingDown())return;
-
-	int idx=0;
-	KviPointerList<KviMdiChild> list;
-	list.copyFrom(m_pZ);
-
-	list.setAutoDelete(false);
-	while(!list.isEmpty())
-	{
-		KviMdiChild *lpC=list.first();
-		if(lpC->state() != KviMdiChild::Minimized)
-		{
-			QPoint pnt(getCascadePoint(idx));
-			moveChild(lpC,pnt.x(),pnt.y());
-			QSize curSize(viewport()->width() - pnt.x(),viewport()->height() - pnt.y());
-			if((lpC->minimumSize().width() > curSize.width()) ||
-				(lpC->minimumSize().height() > curSize.height()))lpC->resize(lpC->minimumSize());
-			else lpC->resize(curSize);
-			idx++;
-		}
-		list.removeFirst();
-	}
-	focusTopChild();
-	updateContentsSize();
 }
 
 void KviMdiManager::expandVertical()
 {
-	ensureNoMaximized();
-	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
-	resizeContents(visibleWidth(),visibleHeight());
-	// updateScrollBars();
-	g_pApp->sendPostedEvents();
-	if(g_pApp->closingDown())return;
-
-	KviPointerList<KviMdiChild> list;
-	list.copyFrom(m_pZ);
-
-	list.setAutoDelete(false);
-	while(!list.isEmpty())
-	{
-		KviMdiChild *lpC=list.first();
-		if(lpC->state() != KviMdiChild::Minimized)
-		{
-			moveChild(lpC,lpC->x(),0);
-			lpC->resize(lpC->width(),viewport()->height());
-		}
-		list.removeFirst();
-	}
-
-	focusTopChild();
-	updateContentsSize();
 }
 
 void KviMdiManager::expandHorizontal()
 {
-	ensureNoMaximized();
-	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
-	resizeContents(visibleWidth(),visibleHeight());
-	// updateScrollBars();
-	g_pApp->sendPostedEvents();
-	if(g_pApp->closingDown())return;
-
-	KviPointerList<KviMdiChild> list;
-	list.copyFrom(m_pZ);
-
-	list.setAutoDelete(false);
-	while(!list.isEmpty())
-	{
-		KviMdiChild *lpC=list.first();
-		if(lpC->state() != KviMdiChild::Minimized)
-		{
-			moveChild(lpC,0,lpC->y());
-			lpC->resize(viewport()->width(),lpC->height());
-		}
-		list.removeFirst();
-	}
-	focusTopChild();
-	updateContentsSize();
 }
 
 void KviMdiManager::minimizeAll()
 {
-	KviPointerList<KviMdiChild> list;
-	list.copyFrom(m_pZ);
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
 
-	list.setAutoDelete(false);
-	m_pFrm->setActiveWindow((KviWindow*)m_pFrm->firstConsole());
-	while(!list.isEmpty())
+	KviMdiChild * lpC;
+
+	for(int i = 0; i < tmp.count(); i++)
 	{
-		KviMdiChild *lpC=list.first();
-		if(lpC->state() != KviMdiChild::Minimized)lpC->minimize();
-		list.removeFirst();
+		if (tmp.at(i)->inherits("KviMdiChild"))
+		{
+			lpC = (KviMdiChild *) tmp.at(i);
+			if(lpC->state() == KviMdiChild::Minimized) lpC->minimize();
+		}
 	}
-	focusTopChild();
-	updateContentsSize();
 }
 
-/*
+
 void KviMdiManager::restoreAll()
 {
-	int idx=0;
-	KviPointerList<KviMdiChild> list;
-	list.copyFrom(m_pZ);
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
 
-	list.setAutoDelete(false);
-	while(!list.isEmpty())
+	KviMdiChild * lpC;
+
+	for(int i = 0; i < tmp.count(); i++)
 	{
-		KviMdiChild *lpC=list.first();
-		if(lpC->state() != KviMdiChild::Normal && (!(lpC->plainCaption()).contains("CONSOLE") ))
-		lpC->restore();
-		list.removeFirst();
+		if (tmp.at(i)->inherits("KviMdiChild"))
+		{
+			lpC = (KviMdiChild *) tmp.at(i);
+			if(lpC->state() == KviMdiChild::Normal) lpC->restore();
+		}
 	}
-	focusTopChild();
-	updateContentsSize();
 }
-*/
+
 
 int KviMdiManager::getVisibleChildCount()
 {
-	int cnt=0;
-	for(KviMdiChild *lpC=m_pZ->first();lpC;lpC=m_pZ->next())
+	QList<QMdiSubWindow *> l = subWindowList();
+
+	int cnt = 0;
+	int i = 0;
+	for(i = 0; i < l.count(); i++)
 	{
-		if(lpC->state() != KviMdiChild::Minimized)cnt++;
+		if(!l.at(i)->isHidden()) cnt++;
 	}
 	return cnt;
 }
@@ -942,144 +607,9 @@ void KviMdiManager::toggleAutoTile()
 
 void KviMdiManager::tileAllInternal(int maxWnds,bool bHorizontal)
 {
-	//NUM WINDOWS =           1,2,3,4,5,6,7,8,9
-	static int colstable[9]={ 1,1,1,2,2,2,3,3,3 }; //num columns
-	static int rowstable[9]={ 1,2,3,2,3,3,3,3,3 }; //num rows
-	static int lastwindw[9]={ 1,1,1,1,2,1,3,2,1 }; //last window multiplier
-	static int colrecall[9]={ 0,0,0,3,3,3,6,6,6 }; //adjust self
-	static int rowrecall[9]={ 0,0,0,0,4,4,4,4,4 }; //adjust self
-
-	int * pColstable = bHorizontal ? colstable : rowstable;
-	int * pRowstable = bHorizontal ? rowstable : colstable;
-	int * pColrecall = bHorizontal ? colrecall : rowrecall;
-	int * pRowrecall = bHorizontal ? rowrecall : colrecall;
-
-	ensureNoMaximized();
-	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
-	resizeContents(visibleWidth(),visibleHeight());
-	// updateScrollBars();
-	g_pApp->sendPostedEvents();
-	if(g_pApp->closingDown())return;
-
-	KviMdiChild *lpTop=topChild();
-	int numVisible=getVisibleChildCount();
-
-	if(numVisible<1)return;
-
-	int numToHandle=((numVisible > maxWnds) ? maxWnds : numVisible);
-	int xQuantum=viewport()->width()/pColstable[numToHandle-1];
-	if(xQuantum < ((lpTop->minimumSize().width() > KVI_MDICHILD_MIN_WIDTH) ? lpTop->minimumSize().width() : KVI_MDICHILD_MIN_WIDTH)){
-		if(pColrecall[numToHandle-1]==0)debug("Tile : Not enouh space");
-		else tileAllInternal(pColrecall[numToHandle-1],bHorizontal);
-		return;
-	}
-	int yQuantum=viewport()->height()/pRowstable[numToHandle-1];
-	if(yQuantum < ((lpTop->minimumSize().height() > KVI_MDICHILD_MIN_HEIGHT) ? lpTop->minimumSize().height() : KVI_MDICHILD_MIN_HEIGHT)){
-		if(pRowrecall[numToHandle-1]==0)debug("Tile : Not enough space");
-		else tileAllInternal(pRowrecall[numToHandle-1],bHorizontal);
-		return;
-	}
-	int curX=0;
-	int curY=0;
-	int curRow=1;
-	int curCol=1;
-	int curWin=1;
-
-	for(KviMdiChild * lpC=m_pZ->first();lpC;lpC=m_pZ->next())
-	{
-		if(lpC->state()!=KviMdiChild::Minimized)
-		{
-			if((curWin%numToHandle)==0)
-			{
-				moveChild(lpC,curX,curY);
-				lpC->resize(xQuantum * lastwindw[numToHandle-1],yQuantum);
-			} else {
-				moveChild(lpC,curX,curY);
-				lpC->resize(xQuantum,yQuantum);
-			}
-			//example : 12 windows : 3 cols 3 rows
-			if(curCol<pColstable[numToHandle-1])
-			{ //curCol<3
-				curX+=xQuantum; //add a column in the same row
-				curCol++;       //increase current column
-			} else {
-				curX=0;         //new row
-				curCol=1;       //column 1
-				if(curRow<pRowstable[numToHandle-1])
-				{ //curRow<3
-					curY+=yQuantum; //add a row
-					curRow++;       //
-				} else {
-					curY=0;         //restart from beginning
-					curRow=1;       //
-				}
-			}
-			curWin++;
-		}
-	}
-	if(lpTop)lpTop->setFocus();
-	updateContentsSize();
 }
 
 void KviMdiManager::tileAnodine()
 {
-	ensureNoMaximized();
-	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
-	resizeContents(visibleWidth(),visibleHeight());
-	// updateScrollBars();
-	g_pApp->sendPostedEvents();
-	if(g_pApp->closingDown())return;
-
-	KviMdiChild *lpTop=topChild();
-	int numVisible=getVisibleChildCount(); // count visible windows
-	if(numVisible<1)return;
-	int numCols=int(sqrt((double)numVisible)); // set columns to square root of visible count
-	// create an array to form grid layout
-	int *numRows=new int[numCols];
-	int numCurCol=0;
-	while(numCurCol<numCols)
-	{
-		numRows[numCurCol]=numCols; // create primary grid values
-		numCurCol++;
-	}
-	int numDiff=numVisible-(numCols*numCols); // count extra rows
-	int numCurDiffCol=numCols; // set column limiting for grid updates
-	while(numDiff>0)
-	{
-		numCurDiffCol--;
-		numRows[numCurDiffCol]++; // add extra rows to column grid
-		if(numCurDiffCol<1)numCurDiffCol=numCols; // rotate through the grid
-		numDiff--;
-	}
-	numCurCol=0;
-	int numCurRow=0;
-	int curX=0;
-	int curY=0;
-	// the following code will size everything based on my grid above
-	// there is no limit to the number of windows it will handle
-	// it's great when a kick-ass theory works!!!                      // Pragma :)
-	int xQuantum=viewport()->width()/numCols;
-	int yQuantum=viewport()->height()/numRows[numCurCol];
-
-	for(KviMdiChild * lpC=m_pZ->first();lpC;lpC=m_pZ->next())
-	{
-		if(lpC->state() != KviMdiChild::Minimized)
-		{
-			moveChild(lpC,curX,curY);
-			lpC->resize(xQuantum,yQuantum);
-			numCurRow++;
-			curY+=yQuantum;
-			if(numCurRow==numRows[numCurCol])
-			{
-				numCurRow=0;
-				numCurCol++;
-				curY=0;
-				curX+=xQuantum;
-				if(numCurCol!=numCols)yQuantum=viewport()->height()/numRows[numCurCol];
-			}
-		}
-	}
-	delete[] numRows;
-	if(lpTop)lpTop->setFocus();
-	updateContentsSize();
+	this->tileSubWindows();
 }

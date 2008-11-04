@@ -70,7 +70,7 @@ public:
 public:
 	void setPrevWindowState(Qt::WindowStates state) { m_uStoredWindowState = state; };
 	Qt::WindowStates getPrevWindowState() { return m_uStoredWindowState; };
-	
+
 	virtual void refresh(){};
 	virtual void die(){ delete this; };
 };
@@ -184,16 +184,16 @@ protected:
 
 	void createWindowList();
 	void recreateWindowList();
-		
+
 	KviMdiChild * dockWindow(KviWindow *wnd,bool bShow = true,bool bCascade = true,QRect * setGeom = 0);
 	void undockWindow(KviWindow *wnd);
-	
+
 	void closeWindow(KviWindow *wnd);
-	
+
 	// called by KviWindow
 	void childWindowCloseRequest(KviWindow *wnd);
 	void childWindowActivated(KviWindow *wnd);
-	
+
 	void childContextStateChange(KviIrcContext * c);
 	void childConnectionNickNameChange(KviIrcConnection * c);
 	void childConnectionAwayStateChange(KviIrcConnection * c);
@@ -201,7 +201,7 @@ protected:
 	void childConnectionLagChange(KviIrcConnection * c);
 	void childConnectionServerInfoChange(KviIrcConnection * c);
 	void childWindowSelectionStateChange(KviWindow * pWnd,bool bGotSelectionNow);
-	
+
 	virtual void closeEvent(QCloseEvent *e);
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void moveEvent(QMoveEvent *e);
@@ -211,21 +211,21 @@ protected:
 	void updatePseudoTransparency();
 
 	KviAccel * installAccelerators(QWidget * wnd);
-	
+
 	virtual void hideEvent ( QHideEvent * e);
 protected slots:
 	void switchToNextWindow();
 	void switchToPrevWindow();
 	void switchToNextWindowInContext();
 	void switchToPrevWindowInContext();
-	
+
 	void maximizeWindow();
 	void minimizeWindow();
 
 	void accelActivated();
-	void enteredSdiMode();
-	void leftSdiMode();
 	void toolbarsPopupSelected(int id);
+	void deleteWindow(KviWindow * wnd);
+	void maximizeMdiChildWindow(KviMdiChild * lpC);
 signals:
 	void activeWindowChanged();       // almost never 0.. but may be
 	void activeContextChanged();      // may be 0!
@@ -236,6 +236,8 @@ signals:
 	void activeConnectionServerInfoChanged();
 	void activeConnectionLagChanged();
 	void activeWindowSelectionStateChanged(bool bGotSelectionNow);
+	void signalDeleteWindow(KviWindow * wnd);
+	void signalMaximizeMdiChildWindow(KviMdiChild * lpC);
 protected:
 	void applyOptions();
 private:

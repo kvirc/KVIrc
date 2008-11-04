@@ -55,6 +55,7 @@
 #include <QDateTime>
 #include <QEvent>
 #include <QPaintEvent>
+#include <QMdiSubWindow>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -1639,20 +1640,6 @@ void KviUserListViewArea::scrollBarMoved(int iNewVal)
 void KviUserListViewArea::paintEvent(QPaintEvent * e)
 {
 	// update the scroll bar
-	// if the mdiManager is in SDI mode
-	// and this window is attacched but is not the toplevel one
-	// then it is hidden completely behind the other windows
-	// and we can avoid to paint it :)
-	if(!isVisible())
-		return;
-
-	if(g_pFrame->mdiManager()->isInSDIMode() &&
-		(m_pListView->window()->mdiParent() != g_pFrame->mdiManager()->topChild()) &&
-		(m_pListView->window()->mdiParent()))
-	{
-		return; // totally hidden behind other windows
-	}
-
 	int iWidth = width() - m_pScrollBar->width();
 
 	QRect r = e->rect();
