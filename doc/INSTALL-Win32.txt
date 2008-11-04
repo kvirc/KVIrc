@@ -13,29 +13,28 @@ Requisites:
       2000, preferably with service pack 4
       xp, preferably with at least service pack 2
       vista, preferably not :p
-      
+
       Notice: dos-based Windows operating system (95,98,98se,me) are not officially supported by KVIrc.
       Anyway, if you're still using such an old os, you've worst problems than this...
-      
+
   - CMake from Kitware:
       [Configuration tool; needed to compile KVIrc, mandatory]
       Download it from http://www.cmake.org
       The package you want is called "Windows (Win32 Installer) cmake-2.6.1-win32-x86.exe" (version number may vary).
-      You need at least version 2.4-patch8 to compile KVirc; version 2.6 will work well too. 
+      You need at least version 2.6 to compile KVirc.
 
   - Qt 4 from Trolltech:
       [Graphic library, mandatory]
       Download it from http://trolltech.com/developer/downloads/qt/windows
       The package you want is called "qt-win-opensource-4.4.1-mingw.exe" (version number may vary).
-      KVIrc has been tested with Qt 4.3 upwards; older versions may not work.
-      A good advice is to use at least Qt version 4.4.0 to get a working Phonon (aka multimedia) support.
+      You need at least Qt 4.4 upwards.
 
   - MinGW from the MinGW team:
       [Compiler; needed to compile KVIrc, mandatory]
       While installing Qt4, you will be asked to perform a minimal install of MinGW; you can simply answer 'yes' to get this installed.
       Anyway, this installs by default the old gcc3-based mingw, while the new gcc4-based is really preferable. So, you'd better set up mingw by yourself:
       Point your browset at: http://sourceforge.net/projects/mingw/ , follow the "download" link and get the "Automated MinGW Installer MinGW 5.1.4" (version number may vary) and the "GCC Version 4 Testing: gcc-4.3.0-20080502-mingw32-alpha" packages (version may vary). First execute the automated installer, then uncompress the gcc4 archive and copy it over the installation directory created by the installer (overwriting the old gcc3).
-  
+
   - OpenSSL compiled for Win32 from Shining Light Productions:
       [Enc/Decrypt library; needed to secure your irc sessions, optional]
       Download it from http://www.slproweb.com/products/Win32OpenSSL.html
@@ -52,12 +51,12 @@ Requisites:
       [Programming language; needed for documentation creation and optional scripting support, mandatory by now]
       Any win32 version will work; We advice you to use the version you can find at http://www.activestate.com/store/activeperl/download .
 
-  - Gnu GetText for Win32: 
+  - GNU GetText for Win32:
       [Localization library; needed to translate kvirc interface into your own language, optional]
       Any version will work; We advice you to use the version you can find at http://sourceforge.net/projects/gettext .
       The package you want is called "gettext-tools-0.13.1.bin.woe32.zip", "gettext-runtime-0.13.1.bin.woe32.zip" and "libiconv-1.9.1.bin.woe32.zip" (version numbers may vary).
 
-  - Phonon smplayer/vlc frontend for Mingw:
+  - Phonon smplayer/vlc frontend for MinGW:
       [Multimedia library; needed to play multimedia files using phonon, optional]
       (For the little story, the default Windows backend for Phonon is based on DirectShow 9 and MinGW is not capable of compiling DS9 code, that's why Trolltech doesn't ship Phonon with Qt-4.4 MinGW)
       Get it at http://code.google.com/p/phonon-vlc-mplayer/; it needs some tweaking to work;
@@ -65,10 +64,10 @@ Requisites:
 
 Further reccomended download if you plan to develop KVIrc:
 
-  - Gnu Debugger (gdb) for Win32:
+  - GNU Debugger (gdb) for Win32:
       [Dev Tool: Debugger; optional]
       Download if from the MinGW website.
-      
+
   - StraceNT (aka strace for Win32)
       [Dev Tool: tracer; optional]
       Download it from http://www.intellectualheaven.com/ .
