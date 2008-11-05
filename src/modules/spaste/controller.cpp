@@ -92,7 +92,25 @@ bool SPasteController::pasteClipboardInit(void)
 
 void SPasteController::pasteFile(void)
 {
+	QString line;
+	char data[1024];
+	if(m_pFile->readLine(data,sizeof(data)) != -1)
+	{
+		line = data;
+		if(line.isEmpty())
+			line = QChar(KVI_TEXT_RESET);
 
+		if(!g_pApp->windowExists(m_pWindow))
+		{
+			m_pFile->close();
+			delete this;
+		} else {
+			m_pWindow->ownMessage(line.toAscii());
+		}
+	} else { //File finished
+		m_pFile->close();
+		delete this;
+	}
 }
 
 void SPasteController::pasteClipboard(void)
