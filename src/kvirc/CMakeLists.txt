@@ -310,15 +310,6 @@ SET(kvirc_SRCS
 # After this call, files will be moc'ed to moc_kvi_*.cpp
 QT4_WRAP_CPP(kvirc_MOC_SRCS ${kvirc_MOC_HDRS})
 
-# Create bin
-IF(WANT_COEXISTENCE)
-	SET(KVIRC_BINARYNAME ${PACKAGE}${VERSION_MAJOR})
-	SET(KVILIB_BINARYNAME kvilib${VERSION_MAJOR})
-ELSE()
-	SET(KVIRC_BINARYNAME ${PACKAGE})
-	SET(KVILIB_BINARYNAME kvilib)
-ENDIF()
-
 IF(MINGW)
 	# resource compilation for mingw
 	ADD_CUSTOM_COMMAND(OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/win32_resource.o

@@ -1,12 +1,20 @@
 # CMakeLists for data/applnk
 
-FILE(GLOB files "${CMAKE_CURRENT_SOURCE_DIR}/*.desktop")
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/kvirc4.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/kvirc4.desktop)
 
 IF(UNIX)
 	IF(APPLE)
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/applnk/)
+		INSTALL(FILES
+			${CMAKE_CURRENT_BINARY_DIR}/kvirc4.desktop
+			DESTINATION
+			${CMAKE_INSTALL_PREFIX}/Contents/Resources/applnk/
+		)
 	ELSE()
 		# Assume linux
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications/)
+		INSTALL(FILES
+			${CMAKE_CURRENT_BINARY_DIR}/kvirc4.desktop
+			DESTINATION
+			${CMAKE_INSTALL_PREFIX}/share/applications/
+		)
 	ENDIF()
 ENDIF()
