@@ -1,5 +1,7 @@
 # CMakeLists for src/modules/lamerizer
 
+SUBDIRS(caps)
+
 SET(kvilamerizer_MOC_HDRS
 	libkvilamerizer.h
 )
