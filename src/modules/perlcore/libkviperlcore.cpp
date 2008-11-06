@@ -383,17 +383,17 @@ static bool perlcore_module_init(KviModule * m)
 #endif // !COMPILE_PERL_SUPPORT
 }
 
-static bool perlcore_module_cleanup(KviModule *m)
+static bool perlcore_module_cleanup(KviModule * m)
 {
 #ifdef COMPILE_PERL_SUPPORT
 	perlcore_destroy_all_interpreters();
 	delete g_pInterpreters;
-    g_pInterpreters = 0;
+	g_pInterpreters = 0;
 #endif // COMPILE_PERL_SUPPORT
 	return true;
 }
 
-static bool perlcore_module_can_unload(KviModule *m)
+static bool perlcore_module_can_unload(KviModule * m)
 {
 #ifdef COMPILE_PERL_SUPPORT
 	return (g_pInterpreters->count() == 0);
@@ -402,7 +402,7 @@ static bool perlcore_module_can_unload(KviModule *m)
 }
 
 KVIRC_MODULE(
-	"Perl",                                                 // module name
+	"PerlCore",                                                 // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)
 	"Perl scripting engine core",
