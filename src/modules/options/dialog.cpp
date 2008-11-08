@@ -632,18 +632,18 @@ void KviOptionsDialog::apply(bool bDialogAboutToClose)
 void KviOptionsDialog::okClicked()
 {
 	apply(true);
-	delete this;
+	deleteLater();
 }
 
 void KviOptionsDialog::cancelClicked()
 {
-	delete this;
+	deleteLater();
 }
 
 void KviOptionsDialog::closeEvent(QCloseEvent *e)
 {
 	e->ignore();
-	delete this;
+	deleteLater();
 }
 
 void KviOptionsDialog::recursiveCommit(KviOptionsTreeWidgetItem *it)
