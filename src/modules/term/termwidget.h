@@ -26,16 +26,16 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	#include <QFrame>
 	#include <QLabel>
 	#include <QPushButton>
 	#include "kvi_tal_hbox.h"
-	
+
 	#include "kparts/part.h"
-	
+
 	class KviFrame;
-	
+
 	class KviTermWidget : public QFrame
 	{
 		Q_OBJECT
@@ -44,7 +44,7 @@
 		KviTermWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone = false);
 		~KviTermWidget();
 	private:
-		KviTalHBox        * m_pHBox;
+		KviTalHBox   * m_pHBox;
 		QLabel       * m_pTitleLabel;
 		QPushButton  * m_pCloseButton;
 		KParts::Part * m_pKonsolePart;

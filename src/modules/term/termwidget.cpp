@@ -35,34 +35,35 @@
 #include <QToolTip>
 #include <QTimer>
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 
 	#include "klibloader.h"
 	#include "kparts/part.h"
 	#include "kparts/factory.h"
-	
-	extern KviModule            * g_pTermModule;
+	#include <kde_terminal_interface.h>
+
+	extern KviModule                     * g_pTermModule;
 	extern KviPointerList<KviTermWidget> * g_pTermWidgetList;
 	extern KviPointerList<KviTermWindow> * g_pTermWindowList;
-	extern KviStr                 g_szKonsoleLibraryName;
-	
-	KviTermWidget::KviTermWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
-	: QFrame(par,"term_widget")
+
+	KviTermWidget::KviTermWidget(QWidget * par,KviFrame *,bool bIsStandalone)
+	: QFrame(par)
 	{
+		setObjectName("term_widget");
 		if(bIsStandalone)g_pTermWidgetList->append(this);
 		m_bIsStandalone = bIsStandalone;
-	
+
 		m_pKonsolePart = 0;
 		m_pKonsoleWidget = 0;
-	
+
 		if(bIsStandalone)
 		{
 			m_pHBox = new KviTalHBox(this);
 			m_pTitleLabel = new QLabel(__tr2qs("Terminal emulator"),m_pHBox);
-			m_pTitleLabel->setFrameStyle(QFrame::Raised | QFrame::WinPanel);
+			m_pTitleLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 			m_pCloseButton = new QPushButton("",m_pHBox);
-			m_pCloseButton->setPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)));
-			QToolTip::add(m_pCloseButton,__tr2qs("Close this window"));
+			m_pCloseButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)));
+			m_pCloseButton->setToolTip(__tr2qs("Close this window"));
 			m_pHBox->setStretchFactor(m_pTitleLabel,2);
 			connect(m_pCloseButton,SIGNAL(clicked()),this,SLOT(closeClicked()));
 		} else {
@@ -70,68 +71,62 @@
 			m_pTitleLabel = 0;
 			m_pCloseButton = 0;
 		}
-	
+
 		setFrameStyle(QFrame::Sunken | QFrame::Panel);
-	
-		KParts::Factory * pKonsoleFactory = static_cast<KParts::Factory *>(
-				KLibLoader::self()->factory(g_szKonsoleLibraryName.ptr()));
-	
+
+		KPluginFactory *pKonsoleFactory = KPluginLoader("libkonsolepart").factory();
+
 		if(pKonsoleFactory)
 		{
-	//		debug("FACTORY %d",pKonsoleFactory);
-			m_pKonsolePart = static_cast<KParts::Part *>(pKonsoleFactory->createPart(
-					this,"terminal emulator",this,"the konsole part"));
-	
+			m_pKonsolePart = static_cast<KParts::ReadOnlyPart *>(pKonsoleFactory->create<QObject>(this, this));
+
 			if(m_pKonsolePart)
 			{
-	//			debug("PART %d",m_pKonsolePart);
+				// start the terminal
+				qobject_cast<TerminalInterface*>(m_pKonsolePart)->showShellInDir( QString() );
+
 				m_pKonsoleWidget = m_pKonsolePart->widget();
-				connect(m_pKonsoleWidget,SIGNAL(destroyed()),this,SLOT(konsoleDestroyed()));
-	//			debug("Widget %d",m_pKonsoleWidget);
+
+				setFocusProxy(m_pKonsoleWidget);
+				m_pKonsoleWidget->show();
+
+				connect ( m_pKonsolePart, SIGNAL(destroyed()), this, SLOT(konsoleDestroyed()) );
 			} else {
-				m_pKonsoleWidget = new QLabel(this,
-					__tr2qs("Can't create the terminal emulation part"));
+				m_pKonsoleWidget = new QLabel(__tr2qs("Can't create the terminal emulation part"), this);
 			}
-	
 		} else {
-			m_pKonsoleWidget = new QLabel(this,
-				__tr2qs("Can't retrieve the terminal emulation factory"));
+			m_pKonsoleWidget = new QLabel(__tr2qs("Can't retrieve the terminal emulation factory"), this);
 		}
 	}
-	
+
 	KviTermWidget::~KviTermWidget()
 	{
 		if(m_pKonsoleWidget)
 			disconnect(m_pKonsoleWidget,SIGNAL(destroyed()),this,SLOT(konsoleDestroyed()));
-	
+
 		if(m_bIsStandalone)g_pTermWidgetList->removeRef(this);
 		if(g_pTermWindowList->isEmpty() && g_pTermWidgetList->isEmpty())g_pTermModule->unlock();
-	
-	//	debug("DELETING KONSOLE WIDGET");
-	//	if(m_pKonsoleWidget)delete m_pKonsoleWidget; <--// Qt will delete it
-	//	debug("DELETING KONSOLE PART");
-	//	if(m_pKonsolePart)delete m_pKonsolePart; <--// the part will delete self when the widget will die
-	//	debug("KONSOLE PART DELETED");
 	}
-	
-	void KviTermWidget::resizeEvent(QResizeEvent *e)
+
+	void KviTermWidget::resizeEvent(QResizeEvent *)
 	{
 		int hght = 0;
 		if(m_bIsStandalone)
 		{
 			hght = m_pCloseButton->sizeHint().height();
 			m_pHBox->setGeometry(1,1,width() - 2,hght + 1);
-	
+
 		}
-		if(m_pKonsoleWidget)m_pKonsoleWidget->setGeometry(1,hght + 1,width() - 2,height() - (hght + 2));
+		if(m_pKonsoleWidget)
+			m_pKonsoleWidget->setGeometry(1,hght + 1,width() - 2,height() - (hght + 2));
 	}
-	
+
 	void KviTermWidget::closeClicked()
 	{
 		// this is called only in standalone  mode
 		delete this;
 	}
-	
+
 	void KviTermWidget::konsoleDestroyed()
 	{
 		m_pKonsoleWidget = 0;
@@ -139,26 +134,26 @@
 		hide();
 		QTimer::singleShot(0,this,SLOT(autoClose()));
 	}
-	
+
 	void KviTermWidget::autoClose()
 	{
 		if(m_bIsStandalone)delete this;
 		else ((KviWindow *)parent())->close();
 	}
-	
-	void KviTermWidget::changeTitle(int i,const QString& str)
+
+	void KviTermWidget::changeTitle(int,const QString& str)
 	{
 		if(m_bIsStandalone)m_pTitleLabel->setText(str);
 	}
-	
+
 	void KviTermWidget::notifySize(int,int)
 	{
 	}
-	
+
 	void KviTermWidget::changeColumns(int)
 	{
 	}
-	
+
 	QSize KviTermWidget::sizeHint() const
 	{
 		int hght = 0;
@@ -172,10 +167,12 @@
 		{
 			hght += m_pCloseButton->sizeHint().height();
 		}
-		
+
 		return QSize(wdth + 2,hght + 2);
 	}
-	
-	#include "termwidget.moc"
+
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+#include "termwidget.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
 
 #endif //COMPILE_KDE_SUPPORT

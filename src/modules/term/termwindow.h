@@ -26,12 +26,12 @@
 
 #include "kvi_settings.h"
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 	#include "kvi_window.h"
 	#include "kvi_string.h"
-	
+
 	class KviTermWidget;
-	
+
 	class KviTermWindow : public KviWindow
 	{
 		Q_OBJECT
