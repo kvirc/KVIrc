@@ -238,190 +238,190 @@ const char * const brushstyles_tbl[] = {
 		Sets the background mode of the painter to <bgMode>: valid values are:[br]
 		- Transparent	(that is the default value);[br]
 		- Opaque.[br]
-		!fn: $setOpacity(<opacity_factor:real>) [QT4 ONLY] 
+		!fn: $setOpacity(<opacity_factor:real>) [QT4 ONLY]
 		Sets the painter opacity that affects all painter operations (drawpixmap, drawtext...). Valid values range are from 0 (total transparency) to 1 (total opacity)[br]
 		You must invoke the [classfnc]$begin[/classfnc] before using it.
-		!fn: $setTextAntialiasing(<boolean>) [QT4 ONLY] 
+		!fn: $setTextAntialiasing(<boolean>) [QT4 ONLY]
 		Enable/disable antialias in text if possible.
 		You must call the [classfnc]$begin[/classfnc] before using it.
-		!fn: $setAntialiasing(<boolean>) [QT4 ONLY] 
+		!fn: $setAntialiasing(<boolean>) [QT4 ONLY]
 		Enable/disable antialias in edges of primitives if possible.
 		You must call the [classfnc]$begin[/classfnc] before using it.
-		!fn: $setSmoothPixmapTransform(<boolean>) [QT4 ONLY] 
+		!fn: $setSmoothPixmapTransform(<boolean>) [QT4 ONLY]
 		Enable/disable smooth bilinear pixmap transformation algorithm (such as bilinear).
 		You must call the [classfnc]$begin[/classfnc] before using it.
 		Example:[br]
 		[br]
-		class (hello,widget)[br] 
-		{[br] 
+		class (hello,widget)[br]
+		{[br]
 			constructor()[br]
-			{[br] 
-				$$->%sintbl[]= $array( 0, 38, 71, 92, 100, 92, 71, 38,0, -38, -71, -92, -100, -92, -71, -38);[br] 
-				$$->%index=0[br] 
-				$$->$starttimer( 30 );[br] 
-				$$->$resize(800,600 );[br] 
-				$$->%string=$0[br] 
-				$$->%waitfor=1;[br] 
-				$$->%nextanim=0[br] 
-				[br]
-				#zoom and rotation anim[br] 
-				$$->%Zoomindex=11[br] 
-				$$->%degree=0[br] 
-				$$->%Noanim=0[br] 
-				$$->%scrollright=-450[br] 
-				[br]
-				#anim effect init[br] 
-				$$->%xoffset=4[br] 
-				$$->%yoffset=3[br] 
-				$$->%xstart=270[br] 
-				$$->%ystart=200[br] 
-				$$->%b=0[br] 
-				$$->%yoffs=400[br] 
-				[br]
-				#parallax parameter[br] 
-				$$->%Off=400[br] 
-				$$->%roll=1[br] 
-			}[br]
-			timerevent()[br] 
 			{[br]
-				$$->%b = $(($$->%b + 1) & 15);[br] 
-				if ($$->%nextanim == 1)  $$->$repaint(1);[br] 
-				$$->$repaint(0);[br] 
-			}[br] 
-			drawAnim()[br] 
-			{[br] 
-				%P->$setFont(32,"times",bold);[br] 
-				%w=$(%P->$fontMetricsWidth($$->%string[$$->%index]) + 20);[br] 
-				%h=$(%P->$fontMetricsHeight * 2);[br] 
-				%pmx = $(($$->$width/2) -%w/2);[br] 
-				%pmy = $(($$->$height()/2) - %h/2);[br] 
-				%x = 10;[br] 
-				%y= $((%h/2) + $$->$fontDescent());[br] 
-				%i=0[br] 
-				while ( $str.mid("Grifisx/Noldor",%i,1) != "") [br] 
-				{[br] 
-					%i16 = $(($$->%b+%i) & 15);[br] 
+				$$->%sintbl[]= $array( 0, 38, 71, 92, 100, 92, 71, 38,0, -38, -71, -92, -100, -92, -71, -38);[br]
+				$$->%index=0[br]
+				$$->$starttimer( 30 );[br]
+				$$->$resize(800,600 );[br]
+				$$->%string=$0[br]
+				$$->%waitfor=1;[br]
+				$$->%nextanim=0[br]
+				[br]
+				#zoom and rotation anim[br]
+				$$->%Zoomindex=11[br]
+				$$->%degree=0[br]
+				$$->%Noanim=0[br]
+				$$->%scrollright=-450[br]
+				[br]
+				#anim effect init[br]
+				$$->%xoffset=4[br]
+				$$->%yoffset=3[br]
+				$$->%xstart=270[br]
+				$$->%ystart=200[br]
+				$$->%b=0[br]
+				$$->%yoffs=400[br]
+				[br]
+				#parallax parameter[br]
+				$$->%Off=400[br]
+				$$->%roll=1[br]
+			}[br]
+			timerevent()[br]
+			{[br]
+				$$->%b = $(($$->%b + 1) & 15);[br]
+				if ($$->%nextanim == 1)  $$->$repaint(1);[br]
+				$$->$repaint(0);[br]
+			}[br]
+			drawAnim()[br]
+			{[br]
+				%P->$setFont(32,"times",bold);[br]
+				%w=$(%P->$fontMetricsWidth($$->%string[$$->%index]) + 20);[br]
+				%h=$(%P->$fontMetricsHeight * 2);[br]
+				%pmx = $(($$->$width/2) -%w/2);[br]
+				%pmy = $(($$->$height()/2) - %h/2);[br]
+				%x = 10;[br]
+				%y= $((%h/2) + $$->$fontDescent());[br]
+				%i=0[br]
+				while ( $str.mid("Grifisx/Noldor",%i,1) != "") [br]
+				{[br]
+					%i16 = $(($$->%b+%i) & 15);[br]
 					%char=$str.mid("Grifisx/Noldor",%i,1)[br]
 					%P->$setPen($((15-%i16)*16),$((15-%i16)*16),$((15-%i16)*16) );[br]
 					%P->$drawText( $(%x+$$->%xstart),$($$->%ystart+%y-$$->%sintbl[%i16]*%h/800),%char,1,Auto);[br]
-					%x += %P->$fontMetricsWidth(%char);[br] 
-					%i++;[br] 
-				}[br] 
-			}[br] 
-			matrixeffect()[br] 
-			{[br] 
-				if (($$->%Zoomindex == 99) && ($$->%degree==360)) return %P->$drawPixmap($(400-32),$(300-32),"kvirc.png",0,0,-1,-1)[br] 
-				%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)[br] 
-				if ($$->%Zoomindex != 99) $$->%Zoomindex++;[br] 
-				%P->$rotate($$->%degree)[br] 
-				%P->$translate(400,300)[br] 
-				%P->$drawPixmap(-32,-32,"kvirc.png",0,0,-1,-1)[br] 
-				%P->$setFont(28,"times",bold);[br] 
-				%P->$reset()[br] 
-				if ($$->%scrollright >= 550) return[br] 
-				%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)[br] 
-				%P->$translate(400,350)[br] 
-				%P->$drawText($$->%scrollright,10,"Another cool class brought to you by...",-1,Auto)        [br] 
-				$$->%scrollright += 3;[br] 
-				%P->$reset()[br] 
-			}[br] 
-			nextanim()[br] 
-			{[br] 
-				%p=$new(painter)[br] 
-				%p->$setBackgroundMode(Opaque)[br] 
-				%p->$setBrush($rand(255),$rand(255),$rand(255))[br] 
-				%p->$begin($$)[br] 
-				%rand=$rand(5)[br] 
-				%p->$drawrect($rand(800),$rand(400),120,200)[br] 
-				%p->$drawArc($rand(800),$rand(400),120,200,20,$(16*20))[br] 
-				%p->$drawPie($rand(800),$rand(400),120,200,20,$(16*20))[br] 
-				%p->$drawChord($rand(800),$rand(400),120,200,20,$(16*20))[br] 
-				%p->$drawEllipse($rand(800),$rand(400),100,30)[br] 
-				%p->$end()[br] 
-				delete %p[br] 
-			}[br] 
-			paintEvent()[br] 
-			{[br] 
-				if ($$->%nextanim ==1) return $$->$nextanim()[br] 
-				# pixmap creation: every effect will be painted on it then copied on widget[br] 
-				%pixmap=$new(pixmap)[br] 
+					%x += %P->$fontMetricsWidth(%char);[br]
+					%i++;[br]
+				}[br]
+			}[br]
+			matrixeffect()[br]
+			{[br]
+				if (($$->%Zoomindex == 99) && ($$->%degree==360)) return %P->$drawPixmap($(400-32),$(300-32),"kvirc.png",0,0,-1,-1)[br]
+				%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)[br]
+				if ($$->%Zoomindex != 99) $$->%Zoomindex++;[br]
+				%P->$rotate($$->%degree)[br]
+				%P->$translate(400,300)[br]
+				%P->$drawPixmap(-32,-32,"kvirc.png",0,0,-1,-1)[br]
+				%P->$setFont(28,"times",bold);[br]
+				%P->$reset()[br]
+				if ($$->%scrollright >= 550) return[br]
+				%P->$scale(0.$$->%Zoomindex,0.$$->%Zoomindex)[br]
+				%P->$translate(400,350)[br]
+				%P->$drawText($$->%scrollright,10,"Another cool class brought to you by...",-1,Auto)        [br]
+				$$->%scrollright += 3;[br]
+				%P->$reset()[br]
+			}[br]
+			nextanim()[br]
+			{[br]
+				%p=$new(painter)[br]
+				%p->$setBackgroundMode(Opaque)[br]
+				%p->$setBrush($rand(255),$rand(255),$rand(255))[br]
+				%p->$begin($$)[br]
+				%rand=$rand(5)[br]
+				%p->$drawrect($rand(800),$rand(400),120,200)[br]
+				%p->$drawArc($rand(800),$rand(400),120,200,20,$(16*20))[br]
+				%p->$drawPie($rand(800),$rand(400),120,200,20,$(16*20))[br]
+				%p->$drawChord($rand(800),$rand(400),120,200,20,$(16*20))[br]
+				%p->$drawEllipse($rand(800),$rand(400),100,30)[br]
+				%p->$end()[br]
+				delete %p[br]
+			}[br]
+			paintEvent()[br]
+			{[br]
+				if ($$->%nextanim ==1) return $$->$nextanim()[br]
+				# pixmap creation: every effect will be painted on it then copied on widget[br]
+				%pixmap=$new(pixmap)[br]
 				%pixmap->$resize($$->$width(),$$->$height())[br]
 				[br]
-				# painter creation [br] 
-				%P=$new(painter);[br] 
-				%P->$begin(%pixmap);[br] 
-				$$->$drawanim[br] 
-				$$->$matrixeffect[br] 
-				%i=0[br] 
-				while (%i != 100)[br] 
-				{[br] 
-					%i16 = $(($$->%b+%i) & 15);[br] 
-					%P->$setPen($((15-%i16)*16),$((15-%i16)*16),$((15-%i16)*16) );[br] 
-					%P->$drawpoint($rand(800),$rand(600))[br] 
-					%i++[br] 
+				# painter creation [br]
+				%P=$new(painter);[br]
+				%P->$begin(%pixmap);[br]
+				$$->$drawanim[br]
+				$$->$matrixeffect[br]
+				%i=0[br]
+				while (%i != 100)[br]
+				{[br]
+					%i16 = $(($$->%b+%i) & 15);[br]
+					%P->$setPen($((15-%i16)*16),$((15-%i16)*16),$((15-%i16)*16) );[br]
+					%P->$drawpoint($rand(800),$rand(600))[br]
+					%i++[br]
 				}[br]
 				[br]
-				# sets the animations order to manage the parallax effect[br] 
-				%P->$end[br] 
-				objects.bitBlt $$ 0 0 %pixmap[br] 
-				delete %pixmap[br] 
+				# sets the animations order to manage the parallax effect[br]
+				%P->$end[br]
+				objects.bitBlt $$ 0 0 %pixmap[br]
+				delete %pixmap[br]
 				delete %P[br]
 				if (%Pauseflag == 1) return[br]
 				[br]
-				# manage the animations parameters[br] 
-				if (($$->%Off<=60) && ($$->%roll<182)) $$->%roll += 2;[br] 
-				if ($$->%roll>182) $$->%waitfor=0[br] 
-				if ($$->%Noanim != 1) $$->%degree += 16;[br] 
-				if ($$->%degree >= 360)[br] 
-				{[br] 
-					$$->%degree=0;[br] 
-					if ($$->%Zoomindex == 99) $$->%Noanim=1[br] 
-				} [br] 
+				# manage the animations parameters[br]
+				if (($$->%Off<=60) && ($$->%roll<182)) $$->%roll += 2;[br]
+				if ($$->%roll>182) $$->%waitfor=0[br]
+				if ($$->%Noanim != 1) $$->%degree += 16;[br]
+				if ($$->%degree >= 360)[br]
+				{[br]
+					$$->%degree=0;[br]
+					if ($$->%Zoomindex == 99) $$->%Noanim=1[br]
+				} [br]
 				if ($$->%Noanim != 1) return[br]
 				[br]
-				#sinusoid animation[br] 
-				if (($$->%xstart <1) && ($$->%xoffset == -4)) $$->%xoffset=4;[br] 
-				if (($$->%xstart >$($$->$width()-%P->$fontMetricsWidth("Grifisx/Noldor"))) && ($$->%xoffset == 4)) $$->%xoffset=-4;[br] 
-				if (($$->%ystart <1) && ($$->%yoffset == -3)) $$->%yoffset=3;[br] 
-				if (($$->%ystart >$($$->$height()-60)) && ($$->%yoffset == 3))   $$->%yoffset=-3;[br] 
-				$$->%xstart += $$->%xoffset;[br] 
-				$$->%ystart += $$->%yoffset;[br] 
-			}[br] 
-		}[br] 
-		[br]
-		%Hello=$new(hello)[br] 
-		%Hello->$setWindowTitle("Painter effects" );[br] 
-		%Hello->$setFont(28,"times",bold);[br] 
-		%Btn=$new(button,%Hello)[br] 
-		%Btn->$setmaximumwidth(80)[br] 
-		%Btn->$setmaximumheight(30)[br] 
-		%Btn->$setFont(8,"times",bold);[br] 
-		%Btn->$settext(Next)[br] 
-		[br]
-		privateimpl(%Btn,mousepressevent)[br] 
-		{[br] 
-			if ($$->$parent->%nextanim==0) [br] 
-			{[br] 
-				$$->$parent->%nextanim=1[br] 
-				$$->$settext(Prev)[br] 
-			} [br] 
-			else[br] 
-			{[br] 
-				$$->$parent->%nextanim=0[br] 
-				$$->$settext(Next)[br] 
+				#sinusoid animation[br]
+				if (($$->%xstart <1) && ($$->%xoffset == -4)) $$->%xoffset=4;[br]
+				if (($$->%xstart >$($$->$width()-%P->$fontMetricsWidth("Grifisx/Noldor"))) && ($$->%xoffset == 4)) $$->%xoffset=-4;[br]
+				if (($$->%ystart <1) && ($$->%yoffset == -3)) $$->%yoffset=3;[br]
+				if (($$->%ystart >$($$->$height()-60)) && ($$->%yoffset == 3))   $$->%yoffset=-3;[br]
+				$$->%xstart += $$->%xoffset;[br]
+				$$->%ystart += $$->%yoffset;[br]
 			}[br]
-		}[br] 
+		}[br]
 		[br]
-		%lay=$new(layout,%Hello)[br] 
-		%lay->$addwidget(%Btn,4,0)[br] 
-		%Hello->$setBackgroundColor("000000");[br] 
-		%Hello->$setmaximumwidth(800)[br] 
-		%Hello->$setminimumwidth(780)[br] 
-		%Hello->$setmaximumheight(600)[br] 
-		%Hello->$setminimumheight(600)[br] 
-		%Hello->$move(10,10)[br] 
-		%Hello->$show();[br] [br] 
-	
+		%Hello=$new(hello)[br]
+		%Hello->$setWindowTitle("Painter effects" );[br]
+		%Hello->$setFont(28,"times",bold);[br]
+		%Btn=$new(button,%Hello)[br]
+		%Btn->$setmaximumwidth(80)[br]
+		%Btn->$setmaximumheight(30)[br]
+		%Btn->$setFont(8,"times",bold);[br]
+		%Btn->$settext(Next)[br]
+		[br]
+		privateimpl(%Btn,mousepressevent)[br]
+		{[br]
+			if ($$->$parent->%nextanim==0) [br]
+			{[br]
+				$$->$parent->%nextanim=1[br]
+				$$->$settext(Prev)[br]
+			} [br]
+			else[br]
+			{[br]
+				$$->$parent->%nextanim=0[br]
+				$$->$settext(Next)[br]
+			}[br]
+		}[br]
+		[br]
+		%lay=$new(layout,%Hello)[br]
+		%lay->$addwidget(%Btn,4,0)[br]
+		%Hello->$setBackgroundColor("000000");[br]
+		%Hello->$setmaximumwidth(800)[br]
+		%Hello->$setminimumwidth(780)[br]
+		%Hello->$setmaximumheight(600)[br]
+		%Hello->$setminimumheight(600)[br]
+		%Hello->$move(10,10)[br]
+		%Hello->$show();[br] [br]
+
 */
 
 // ========================================================================
@@ -439,7 +439,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setPenStyle",functionsetPenStyle)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setBrushStyle",functionsetBrushStyle)
-	
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"fontAscent",functionfontAscent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"fontDescent",functionfontDescent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"fontMetricsHeight",functionfontMetricsHeight)
@@ -468,7 +468,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"scale",functionscaleMatrix)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"translate",functiontranslateMatrix)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"reset",functionresetMatrix)
-	
+
 	// painter state
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"save",functionsave)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"restore",functionrestore)
@@ -510,7 +510,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"begin",functionbegin)
 	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"end",functionend)
 
-	
+
 KVSO_END_REGISTERCLASS(KviKvsObject_painter)
 
 
@@ -521,7 +521,7 @@ KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_painter,KviKvsObject)
 	m_pDeviceObject=0;
 	m_pPainterPath=0;
 	m_pGradient=0;
-	
+
 KVSO_END_CONSTRUCTOR(KviKvsObject_painter)
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_painter)
@@ -824,7 +824,7 @@ bool KviKvsObject_painter::functiondrawChord(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 {
 	kvs_int_t iCol1,iCol2,iCol3,iOpacity;
-	
+
 	KviKvsVariant *var1,*var2,*var3;
 	QString szColorMode,szColor;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -835,11 +835,11 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter) return true;
-		
+
 	if(var1->isHObject())
 	{
 		kvs_hobject_t hObj;
-		var1->asHObject(hObj);	
+		var1->asHObject(hObj);
 		KviKvsObject *pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 		if (!pObject)
 		{
@@ -855,7 +855,7 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 	{
 		var1->asString(szColor);
 		if (c->paramCount()<2) iOpacity=255;
-		else 
+		else
 		{
 			if (!var2->asInteger(iOpacity))
 			{
@@ -886,7 +886,7 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 		else
 		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
 		m_pPainter->setBrush(col);
-		
+
 	}
 	return true;
 }
@@ -894,8 +894,8 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_painter::functionsetPen(KviKvsObjectFunctionCall *c)
 {
 	kvs_int_t iCol1,iCol2,iCol3,iOpacity;
-	
-	
+
+
 	QString szColorMode,szColor;
 	KviKvsVariant *var1,*var2,*var3;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -911,7 +911,7 @@ bool KviKvsObject_painter::functionsetPen(KviKvsObjectFunctionCall *c)
 	{
 		var1->asString(szColor);
 		if (c->paramCount()<2) iOpacity=255;
-		else 
+		else
 		{
 			if (!var2->asInteger(iOpacity))
 			{
@@ -942,7 +942,7 @@ bool KviKvsObject_painter::functionsetPen(KviKvsObjectFunctionCall *c)
 		else
 		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
 		m_pPainter->setPen(col);
-		
+
 	}
 
 	return true;
@@ -984,17 +984,17 @@ bool KviKvsObject_painter::functiondrawPoint(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_painter::functionfontDescent(KviKvsObjectFunctionCall * c)
 {
-	if(m_pPainter) 
+	if(m_pPainter)
 		c->returnValue()->setInteger(m_pPainter->fontMetrics().descent());
 	return true;
 }
 
 bool KviKvsObject_painter::functionfontAscent(KviKvsObjectFunctionCall * c)
 {
-	if(m_pPainter) 
+	if(m_pPainter)
 		c->returnValue()->setInteger(m_pPainter->fontMetrics().ascent());
 	return true;
-	
+
 }
 
 bool KviKvsObject_painter::functionfontMetricsWidth(KviKvsObjectFunctionCall * c)
@@ -1039,7 +1039,7 @@ bool KviKvsObject_painter::functionbegin(KviKvsObjectFunctionCall *c)
 	}
 	QPaintDevice * pd;
 	if(pObject->inheritsClass("pixmap"))pd=((KviKvsObject_pixmap *)pObject)->getPixmap();
-		
+
 	else if (pObject->inheritsClass("widget")) pd=((KviKvsObject_widget *)pObject)->widget();
 	else{
 		c->warning(__tr2qs("Widget or Pixmap required "));
@@ -1072,7 +1072,7 @@ void KviKvsObject_painter::detachDevice()
 	m_pDeviceObject = 0;
 }
 
-bool KviKvsObject_painter::functionend(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_painter::functionend(KviKvsObjectFunctionCall *)
 {
 	detachDevice();
 	return true;
@@ -1089,7 +1089,7 @@ bool KviKvsObject_painter::functionBeginPdf(KviKvsObjectFunctionCall *c)
 	m_pPrinter->setOutputFileName(szFileName);
 	m_pPainter->begin(m_pPrinter);
 	return true;
-} 
+}
 bool KviKvsObject_painter::functiondrawText(KviKvsObjectFunctionCall *c)
 {
 	QString szText,szMode;
@@ -1143,9 +1143,7 @@ bool KviKvsObject_painter::functiondrawPixmap(KviKvsObjectFunctionCall *c)
 		c->warning(__tr2qs("Pixmap object required"));
 		return true;
 	}
-	QPixmap * pm=((KviKvsObject_pixmap *)obj)->getPixmap();
-	//if (bTiled) m_pPainter->drawTiledPixmap(iX,iY,iEndx,iEndy,*((KviKvsObject_pixmap *)obj)->getPixmap(),iStartx,iStarty);
-	//else
+
 	m_pPainter->drawPixmap(QPointF(iX,iY),*((KviKvsObject_pixmap *)obj)->getPixmap(),QRect(iStartx,iStarty,iEndx,iEndy));
 	return true;
 }
@@ -1203,14 +1201,14 @@ bool KviKvsObject_painter::functionscaleMatrix(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter)return true;
 	PAINTER_SCALE(dScalex,dScaley);
-	
+
 	//m_pMatrix.scale(dScalex,dScaley);
 	//m_pPainter->setWorldMatrix(m_pMatrix);
 	//m_pPainter->scale(dScalex,dScaley);
 	return true;
 }
 
-bool KviKvsObject_painter::functionresetMatrix(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_painter::functionresetMatrix(KviKvsObjectFunctionCall *)
 {
 	if(!m_pPainter)return true;
 	//m_pMatrix.reset();
@@ -1263,7 +1261,7 @@ bool KviKvsObject_painter::functiondrawIcon(KviKvsObjectFunctionCall *c)
 {
 	QString szIcon,szState;
 	kvs_int_t iX,iY,iW,iH;
-	
+
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
 		KVSO_PARAMETER("y",KVS_PT_INT,0,iY)
@@ -1283,7 +1281,7 @@ bool KviKvsObject_painter::functiondrawIcon(KviKvsObjectFunctionCall *c)
 		return true;
 	}
 	QSize pixsize(pix->width(),pix->height());
-	
+
 	QIcon ico(*pix);
 	QIcon::Mode mode=QIcon::Normal;
 	if(!ico.isNull())
@@ -1291,7 +1289,7 @@ bool KviKvsObject_painter::functiondrawIcon(KviKvsObjectFunctionCall *c)
 		if (KviQString::equalCI(szState,"Disabled"))mode=QIcon::Disabled;
 		else if (KviQString::equalCI(szState,"Active"))mode=QIcon::Active;
 		else if (KviQString::equalCI(szState,"Selected"))mode=QIcon::Selected;
-		if (c->parameterCount()<5) 
+		if (c->parameterCount()<5)
 			m_pPainter->drawPixmap(iX,iY,ico.pixmap(pixsize,mode));
 		else
 			m_pPainter->drawPixmap(iX,iY,ico.pixmap(QSize(iW,iH),mode));
@@ -1301,9 +1299,9 @@ bool KviKvsObject_painter::functiondrawIcon(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_painter::functionsetOpacity(KviKvsObjectFunctionCall *c)
 {
-	if(!m_pPainter)return true; 
+	if(!m_pPainter)return true;
 	kvs_real_t dOpacity;
-		
+
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)
 	KVSO_PARAMETERS_END(c)
@@ -1313,8 +1311,8 @@ bool KviKvsObject_painter::functionsetOpacity(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_painter::functionsetTextAntialiasing(KviKvsObjectFunctionCall *c)
 {
-	if(!m_pPainter)return true; 
-	
+	if(!m_pPainter)return true;
+
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
@@ -1325,8 +1323,8 @@ bool KviKvsObject_painter::functionsetTextAntialiasing(KviKvsObjectFunctionCall 
 
 bool KviKvsObject_painter::functionsetAntialiasing(KviKvsObjectFunctionCall *c)
 {
-	if(!m_pPainter)return true; 
-	
+	if(!m_pPainter)return true;
+
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
@@ -1337,8 +1335,8 @@ bool KviKvsObject_painter::functionsetAntialiasing(KviKvsObjectFunctionCall *c)
 
 bool KviKvsObject_painter::functionsetSmoothPixmapTransform(KviKvsObjectFunctionCall *c)
 {
-	if(!m_pPainter)return true; 
-	
+	if(!m_pPainter)return true;
+
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
@@ -1379,14 +1377,14 @@ bool KviKvsObject_painter::functionsetPenCapStyle(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsave(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_painter::functionsave(KviKvsObjectFunctionCall *)
 {
 	if(m_pPainter)
 		m_pPainter->save();
     return true;
 }
 
-bool KviKvsObject_painter::functionrestore(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_painter::functionrestore(KviKvsObjectFunctionCall *)
 {
 	if(m_pPainter)
 		m_pPainter->restore();
@@ -1522,13 +1520,13 @@ bool KviKvsObject_painter::functionsetGradientColor(KviKvsObjectFunctionCall *c)
 		col.setRgb(iCol1,iCol2,iCol3,iOpacity);
 		if (!m_pGradient) m_pGradient=new(QLinearGradient);
 		m_pGradient->setColorAt(dAt,col);
-		
+
 	}
-	
+
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetGradientAsBrush(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_painter::functionsetGradientAsBrush(KviKvsObjectFunctionCall *)
 {
 	if (!m_pPainter) return true;
 	if (!m_pGradient) m_pGradient=new(QLinearGradient);
@@ -1536,7 +1534,7 @@ bool KviKvsObject_painter::functionsetGradientAsBrush(KviKvsObjectFunctionCall *
 	return true;
 }
 
-bool KviKvsObject_painter::functionclearGradient(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_painter::functionclearGradient(KviKvsObjectFunctionCall *)
 {
 	if (!m_pGradient) delete m_pGradient;
 	m_pGradient=0;
@@ -1575,7 +1573,7 @@ bool KviKvsObject_painter::functionfillRect(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pPainter) return true;
 	if (c->paramCount()<8) iOpacity=255;
-	
+
 	QColor col;
 	if(KviQString::equalCI(szColorMode, "HSV"))
 		col.setHsv(iCol1,iCol2,iCol3,iOpacity);
@@ -1612,7 +1610,7 @@ bool KviKvsObject_painter::functionheight(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_painter::functionpathMoveTo(KviKvsObjectFunctionCall *c)
 {
 	kvs_real_t dX,dY;
-	
+
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_REAL,0,dX)
 		KVSO_PARAMETER("y",KVS_PT_REAL,0,dY)
@@ -1625,7 +1623,7 @@ bool KviKvsObject_painter::functionpathMoveTo(KviKvsObjectFunctionCall *c)
 bool KviKvsObject_painter::functionpathLineTo(KviKvsObjectFunctionCall *c)
 {
 	kvs_real_t dX,dY;
-	
+
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_REAL,0,dX)
 		KVSO_PARAMETER("y",KVS_PT_REAL,0,dY)
@@ -1639,7 +1637,7 @@ bool KviKvsObject_painter::functionpathAddText(KviKvsObjectFunctionCall *c)
 {
 	kvs_real_t dX,dY;
 	QString szText;
-	
+
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_REAL,0,dX)
 		KVSO_PARAMETER("y",KVS_PT_REAL,0,dY)
@@ -1650,7 +1648,7 @@ bool KviKvsObject_painter::functionpathAddText(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawPath(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_painter::functiondrawPath(KviKvsObjectFunctionCall *)
 {
 	if (m_pPainter) m_pPainter->drawPath(*m_pPainterPath);
 	//delete m_pPainterPath;
@@ -1658,7 +1656,7 @@ bool KviKvsObject_painter::functiondrawPath(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionresetPath(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_painter::functionresetPath(KviKvsObjectFunctionCall *)
 {
 	if (m_pPainterPath){
 		delete m_pPainterPath;

@@ -146,8 +146,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 	//KVSP_skipChar;
 
 	bool bHasNamespaceNotInObjScopeSoMustBeAlias = false; // ;D
-	bool bIsThis = false;
-	
+
 	if(KVSP_curCharUnicode == '$')
 	{
 		if(bInObjScope)
@@ -164,24 +163,24 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 			while(KVSP_curCharUnicode == ':')
 			{
 				// check for namespaces
-	
+
 				// here we allow the syntax of the form
 				// <namespace>::{<namespace>::}<alias_name>
-		
+
 				bHasNamespaceNotInObjScopeSoMustBeAlias = true; // ;D
-		
+
 				KVSP_skipChar;
 				if(KVSP_curCharUnicode == ':')
 				{
 					KVSP_skipChar;
-		
+
 					if(!KVSP_curCharIsLetter)
 					{
 						warning(KVSP_curCharPointer - 1,__tr2qs_ctx("Stray '::' sequence or invalid following alias name","kvs"));
 						error(KVSP_curCharPointer,__tr2qs_ctx("Syntax error: malformed alias function call identifier","kvs"));
 						return 0;
 					}
-		
+
 					KVSP_skipChar;
 					while(KVSP_curCharIsLetterOrNumber || (KVSP_curCharUnicode == '_'))KVSP_skipChar;
 				} else {
@@ -223,10 +222,9 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 			// so the last :: is the delimiter of the function name
 			const QChar * pOriginalEndOfId1 = KVSP_curCharPointer;
 			const QChar * pEndOfId1 = pOriginalEndOfId1;
-			
+
 			while(KVSP_curCharUnicode == ':')
 			{
-				const QChar * pEndOfId1 = KVSP_curCharPointer;
 				// base class function call ?
 				KVSP_skipChar;
 				if(KVSP_curCharUnicode == ':')
@@ -255,7 +253,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 			{
 				// yes, that's fine: reset it
 				szIdentifier1.setUnicode(pBegin,pEndOfId1 - pBegin);
-			} 
+			}
 		}
 	}
 
@@ -291,7 +289,7 @@ KviKvsTreeNodeData * KviKvsParser::parseDollar(bool bInObjScope)
 		// module function call
 		return new KviKvsTreeNodeModuleFunctionCall(pDollarBegin,szIdentifier1,QString(pId2,iId2Len),l);
 	} else {
-		
+
 		if(bInObjScope)
 		{
 			// object function call (our parent will be a scope operator)

@@ -333,7 +333,7 @@ KviOptionsInstanceManager::~KviOptionsInstanceManager()
 	if(m_pInstanceTree)debug("Ops...KviOptionsInstanceManager::cleanup() not called ?");
 }
 
-void KviOptionsInstanceManager::cleanup(KviModule * m)
+void KviOptionsInstanceManager::cleanup(KviModule *)
 {
 	deleteInstanceTree(m_pInstanceTree);
 	m_pInstanceTree = 0;

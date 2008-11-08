@@ -159,7 +159,7 @@ void KviCustomToolBarDescriptor::registerToolBar(KviCustomToolBar * t)
 	m_pToolBar = t;
 }
 
-void KviCustomToolBarDescriptor::unregisterToolBar(KviCustomToolBar * t)
+void KviCustomToolBarDescriptor::unregisterToolBar(KviCustomToolBar *)
 {
 	m_pToolBar = 0;
 }

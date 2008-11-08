@@ -129,7 +129,7 @@ static bool sharedfileswindow_module_init(KviModule * m)
 	return true;
 }
 
-static bool sharedfileswindow_module_cleanup(KviModule *m)
+static bool sharedfileswindow_module_cleanup(KviModule *)
 {
 	if(g_pSharedFilesWindow)
 	{
@@ -139,7 +139,7 @@ static bool sharedfileswindow_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool sharedfileswindow_module_can_unload(KviModule *m)
+static bool sharedfileswindow_module_can_unload(KviModule *)
 {
 	return (!g_pSharedFilesWindow);
 }

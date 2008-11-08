@@ -37,7 +37,7 @@ KviKvsScriptWindowWindow::KviKvsScriptWindowWindow(KviFrame * pParent,const QStr
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTOBJECT,pParent,szName)
 {
 	m_pCentralWidget = 0;
-	
+
 }
 
 KviKvsScriptWindowWindow::~KviKvsScriptWindowWindow()
@@ -50,7 +50,7 @@ void KviKvsScriptWindowWindow::setCentralWidget(KviKvsObject_widget *o,QWidget *
 	m_pCentralWidget = w;
 }
 
-void KviKvsScriptWindowWindow::resizeEvent(QResizeEvent *e)
+void KviKvsScriptWindowWindow::resizeEvent(QResizeEvent *)
 {
 	if(m_pCentralWidget)
 		m_pCentralWidget->setGeometry(0,0,width(),height());
@@ -109,7 +109,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_window)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_window)
 
-bool KviKvsObject_window::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_window::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
 {
 	KviWindow * w = new KviKvsScriptWindowWindow(pContext->window()->frame(),getName());
 	setObject(w);

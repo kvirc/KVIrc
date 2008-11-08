@@ -170,7 +170,7 @@ void KviProxyOptionsWidget::fillProxyList()
 	if(!(g_pProxyDataBase->currentProxy()))currentItemChanged(0,0);
 }
 
-void KviProxyOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
+void KviProxyOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 {
 	if(m_pLastEditedItem)saveLastItem();
 	m_pLastEditedItem = (KviProxyOptionsTreeWidgetItem *)it;

@@ -48,7 +48,7 @@ QRect g_rectToolBarEditorDialogGeometry(0,0,0,0);
 */
 
 
-static bool toolbareditor_kvs_cmd_open(KviKvsModuleCommandCall * c)
+static bool toolbareditor_kvs_cmd_open(KviKvsModuleCommandCall *)
 {
 	KviCustomizeToolBarsDialog::display();
 	return true;
@@ -66,7 +66,7 @@ static bool toolbareditor_module_init(KviModule * m)
 	return true;
 }
 
-static bool toolbareditor_module_can_unload(KviModule * m)
+static bool toolbareditor_module_can_unload(KviModule *)
 {
 	return (!KviCustomizeToolBarsDialog::instance());
 }

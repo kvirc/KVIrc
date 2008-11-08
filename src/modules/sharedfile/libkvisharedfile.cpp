@@ -88,7 +88,7 @@ static bool sharedfile_kvs_cmd_add(KviKvsModuleCommandCall * c)
 
 	if(szUserMask.isEmpty())szUserMask="*!*@*";
 	KviIrcMask u(szUserMask);
-	
+
 	QString szm;
 	u.mask(szm);
 
@@ -181,7 +181,7 @@ static bool sharedfile_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		[cmd]sharedfile.add[/cmd], [cmd]sharedfile.list[/cmd], [cmd]sharedfile.remove[/cmd]
 */
 
-static bool sharedfile_kvs_cmd_clear(KviKvsModuleCommandCall * c)
+static bool sharedfile_kvs_cmd_clear(KviKvsModuleCommandCall *)
 {
 	g_pSharedFilesManager->clear();
 	return true;
@@ -256,12 +256,12 @@ static bool sharedfile_module_init(KviModule * m)
 	return true;
 }
 
-static bool sharedfile_module_can_unload(KviModule *m)
+static bool sharedfile_module_can_unload(KviModule *)
 {
 	return true;
 }
 
-static bool sharedfile_module_cleanup(KviModule *m)
+static bool sharedfile_module_cleanup(KviModule *)
 {
 	return true;
 }

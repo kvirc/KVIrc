@@ -54,7 +54,7 @@ extern KVIRC_API KviRegisteredChannelDataBase * g_pRegisteredChannelDataBase;
 		you can use regchan.add #kvirc IRCNet.
 		If you want to handle #kvirc on all the IRC networks then
 		you can use regchan.add #kvirc *[br]
-		Obviously if you register both #kvirc/IRCNet and #kvirc/*
+		Obviously if you register both #kvirc/IRCNet and #kvirc/ *
 		then #kvirc/IRCNet will be looked first.
 		If netmask is not passed a netmask of * is assumed.[br]
 	@examples:
@@ -138,13 +138,13 @@ static bool regchan_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		If <value> is an empty string the <property> is removed.[br]
 		If no match for <channel>/<network> is found in the database then
 		a warning is printed unless -q is used.[br]
-	@switches:	
+	@switches:
 		!fn: -q|--quiet
 		No warning on screen.
 		!fn: -e|--exactly
 		If -e is specified then <network> is not matched against the
 		netmasks in the database but is compared directly. This means
-		that <network> must be exactly the netmask used to register a channel.	
+		that <network> must be exactly the netmask used to register a channel.
 	@examples:
 		[example]
 			regchan.setproperty #kvirc openprojects autojoin true
@@ -231,7 +231,7 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 	@syntax:
 		<array> $regchan.list([<channel_mask:string>],[<network_mask:string>])
 	@description:
-		Returns an array of the channel@netmask entries in the registered 
+		Returns an array of the channel@netmask entries in the registered
 		channels database.[br]
 		Please note that <network_mask> is a wildcard string that will match
 		wildcard strings.[br]
@@ -399,11 +399,11 @@ static bool regchan_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"match",regchan_kvs_fnc_match);
 	KVSM_REGISTER_FUNCTION(m,"find",regchan_kvs_fnc_find);
 	KVSM_REGISTER_FUNCTION(m,"list",regchan_kvs_fnc_list);
-	
+
 	return true;
 }
 
-static bool regchan_module_cleanup(KviModule *m)
+static bool regchan_module_cleanup(KviModule *)
 {
 	return true;
 }

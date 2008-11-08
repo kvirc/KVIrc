@@ -925,7 +925,7 @@ static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spaci
 
 }
 
-static bool objects_module_can_unload(KviModule *m)
+static bool objects_module_can_unload(KviModule *)
 {
 	// Actually this object remains locked in memory
 	// FIXME: unlock when no more instances & derived classes!

@@ -313,7 +313,6 @@ jump_out:
 
 void KviThemeManagementDialog::installFromFile()
 {
-	int iThemeCount=0;
 	QString szFileName;
 	QString szError;
 
@@ -401,7 +400,7 @@ void KviThemeManagementDialog::closeEvent(QCloseEvent * e)
 	delete this;
 }
 
-void KviThemeManagementDialog::tipRequest(QListWidgetItem *it,const QPoint &pnt)
+void KviThemeManagementDialog::tipRequest(QListWidgetItem *,const QPoint &)
 {
 	// FIXME
 	/*

@@ -248,9 +248,9 @@ bool KviApp::checkFileAssociations()
 }
 
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 bool KviApp::checkUriAssociations(const char * proto)
 {
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 #define QUERY_BUFFER 2048
 	char* buffer;
 	DWORD len = QUERY_BUFFER;
@@ -337,15 +337,18 @@ bool KviApp::checkUriAssociations(const char * proto)
 	}
 
 	free(buffer);
+#else
+bool KviApp::checkUriAssociations(const char *)
+{
 #endif
 	return true;
 
 }
 
 
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 void KviApp::setupUriAssociations(const char * proto)
 {
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	HKEY hKey;
 	DWORD err;
 
@@ -377,7 +380,9 @@ void KviApp::setupUriAssociations(const char * proto)
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,key,0,0,0,KEY_WRITE,0,&hKey,0);
 	tmp=QString(appPath+" \"%1\"").toLocal8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
-
+#else
+void KviApp::setupUriAssociations(const char *)
+{
 #endif
 }
 

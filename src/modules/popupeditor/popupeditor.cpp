@@ -219,10 +219,10 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	connect(m_pTreeWidget,SIGNAL(itemPressed(QTreeWidgetItem *, int)),
 		this,SLOT(itemPressed(QTreeWidgetItem *, int)));
 
-	
+
 
 	m_pEditor = KviScriptEditor::createInstance(spl);
-	
+
 	g->addWidget(spl,1,0,1,3);
 
 	QLabel * l = new QLabel(__tr2qs("Text:"),this);
@@ -1045,7 +1045,7 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 	m_pLastEditedItem = 0;
 
 	m_pContextPopup = new KviTalPopupMenu(this);
-	
+
 	spl->setStretchFactor (0,20);
 	spl->setStretchFactor (1,80);
 
@@ -1220,7 +1220,7 @@ void KviPopupEditor::saveLastEditedItem()
 	m_pLastEditedItem->setText(0,m->popupName());
 }
 
-void KviPopupEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
+void KviPopupEditor::currentItemChanged(QTreeWidgetItem *it, QTreeWidgetItem *)
 {
 	saveLastEditedItem();
 
@@ -1243,7 +1243,7 @@ void KviPopupEditor::commit()
 
 	//KviKvsPopupManager::instance()->clear();
 
-	int count=0, topcount=m_pTreeWidget->topLevelItemCount();
+	int topcount=m_pTreeWidget->topLevelItemCount();
 
 	// Copy the original popup dict
 	KviPointerHashTable<QString,KviKvsPopupMenu> copy(*(KviKvsPopupManager::instance()->popupDict()));
@@ -1361,7 +1361,7 @@ QPixmap * KviPopupEditorWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP);
 }
 
-void KviPopupEditorWindow::resizeEvent(QResizeEvent *e)
+void KviPopupEditorWindow::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pBase->sizeHint().height();
 	m_pEditor->setGeometry(0,0,width(),height()- hght);
@@ -1390,12 +1390,12 @@ void KviPopupEditorWindow::fillCaptionBuffers()
 }
 
 
-void KviPopupEditorWindow::getConfigGroupName(KviStr &szName)
+void KviPopupEditorWindow::getConfigGroupName(QString &szName)
 {
 	szName = "popupeditor";
 }
 
-void KviPopupEditorWindow::saveProperties(KviConfig *cfg)
+void KviPopupEditorWindow::saveProperties(KviConfig *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR
@@ -1406,7 +1406,7 @@ void KviPopupEditorWindow::saveProperties(KviConfig *cfg)
 */
 }
 
-void KviPopupEditorWindow::loadProperties(KviConfig *cfg)
+void KviPopupEditorWindow::loadProperties(KviConfig *) // cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR

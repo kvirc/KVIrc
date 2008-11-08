@@ -720,14 +720,12 @@ KVSO_END_REGISTERCLASS(KviKvsObject_widget)
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_widget,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_widget)
-debug("destr");
-int tt=0;
 
 emit aboutToDie();
 //	if (webview) delete webview;
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
-bool KviKvsObject_widget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
+bool KviKvsObject_widget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	setObject(new KviKvsWidget(this,parentScriptWidget()));
 	widget()->setObjectName(getName());
@@ -971,7 +969,7 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 }
 
 
-bool KviKvsObject_widget::function_show(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_widget::function_show(KviKvsObjectFunctionCall *)
 {
 	if(!widget())return true; // should we warn here ?
 	QWidget *wid=widget();
@@ -1032,7 +1030,7 @@ bool KviKvsObject_widget::function_fontAscent(KviKvsObjectFunctionCall * c)
 
 }
 
-bool KviKvsObject_widget::function_repaint(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_widget::function_repaint(KviKvsObjectFunctionCall *)
 {
 	if(!widget()) return true;
 	widget()->repaint();
@@ -1187,7 +1185,7 @@ bool KviKvsObject_widget::function_mapFromGlobal(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_centerToScreen(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_widget::function_centerToScreen(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 	{
@@ -1209,16 +1207,16 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
 		KVSO_PARAMETER("blue",KVS_PT_INT,KVS_PF_OPTIONAL,iColB)
 	KVSO_PARAMETERS_END(c)
-	
+
 	if(pColArray->isString())
 	{
 		QString szColor;
 		pColArray->asString(szColor);
 		if (widget())
 		{
-			QPalette p = widget()->palette(); 
-			p.setColor(widget()->foregroundRole(), QColor(szColor)); 
-			widget()->setPalette(p); 
+			QPalette p = widget()->palette();
+			p.setColor(widget()->foregroundRole(), QColor(szColor));
+			widget()->setPalette(p);
 		}
 		return true;
 	}
@@ -1252,7 +1250,6 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 			bool bOk,bOk1,bOk2;
 			QString value;
 			pColArray->asString(value);
-			int i=0;
 			if (value.length()!=6)
 			{
 				c->warning(__tr2qs("A string of 6 hex digits is required"));
@@ -1271,9 +1268,9 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 			}
 			if (widget())
 			{
-				QPalette p = widget()->palette(); 
-				p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB)); 
-				widget()->setPalette(p); 
+				QPalette p = widget()->palette();
+				p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB));
+				widget()->setPalette(p);
 				return true;
 			}
 		}
@@ -1293,9 +1290,9 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 
 	if (widget())
 	{
-		QPalette p = widget()->palette(); 
-		p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB)); 
-		widget()->setPalette(p); 
+		QPalette p = widget()->palette();
+		p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB));
+		widget()->setPalette(p);
 	}
 	return true;
 }
@@ -1339,7 +1336,6 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 			bool bOk,bOk1,bOk2;
 			QString value;
 			pColArray->asString(value);
-			int i=0;
 			if (value.length()!=6)
 			{
 				c->warning(__tr2qs("A string of 6 hex digits is required"));
@@ -1358,9 +1354,9 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 			}
 			if (widget())
 			{
-				QPalette p = widget()->palette(); 
+				QPalette p = widget()->palette();
 				p.setColor(widget()->backgroundRole(), QColor(iColR,iColG,iColB));
-				widget()->setPalette(p); 
+				widget()->setPalette(p);
 			}
 			return true;
 		}
@@ -1379,9 +1375,9 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 	}
 	if (widget())
 	{
-		QPalette p = widget()->palette(); 
+		QPalette p = widget()->palette();
 		p.setColor(widget()->backgroundRole(), QColor(iColR,iColG,iColB));
-		widget()->setPalette(p); 
+		widget()->setPalette(p);
 	}
 	return true;
 }
@@ -1476,7 +1472,7 @@ bool KviKvsObject_widget::function_hasFocus(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_setFocus(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_widget::function_setFocus(KviKvsObjectFunctionCall *)
 {
 	if (widget())widget()->setFocus();
 	return true;
@@ -1791,7 +1787,7 @@ bool KviKvsObject_widget::function_reparent(KviKvsObjectFunctionCall *c)
 	if(!widget())    return true;
 	if(!ob)
 	{
-		setParent(0); 
+		setParent(0);
    		return true;
 	}
 	else
@@ -1800,8 +1796,8 @@ bool KviKvsObject_widget::function_reparent(KviKvsObjectFunctionCall *c)
 		c->warning(__tr("Parent must be a widget object"));
 		return true;
 	}
-		setParent(((QWidget *)(ob->object()))); 
-  	
+		setParent(((QWidget *)(ob->object())));
+
 //	widget()->reparent(((QWidget *)(ob->object())),QPoint(((QWidget *)(ob->object()))->x(),((QWidget *)(ob->object()))->y()));
 	return true;
 }
@@ -1975,9 +1971,9 @@ bool KviKvsObject_widget::function_insertIntoStatusBar(KviKvsObjectFunctionCall 
 	return true;
 }
 
-bool KviKvsObject_widget::function_removeFromStatusBar(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_widget::function_removeFromStatusBar(KviKvsObjectFunctionCall *)
 {
-	
+
 	if (widget()) g_pFrame->statusBar()->removeWidget(widget());
 	return true;
 }

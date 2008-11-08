@@ -1215,7 +1215,7 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 
-void KviApp::kdeRootPixmapChanged(int iDesktop)
+void KviApp::kdeRootPixmapChanged(int)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#ifdef COMPILE_KDE3_SUPPORT
@@ -1721,7 +1721,7 @@ KviWindow * KviApp::findWindowByCaption(const QString &windowCaption,int iContex
 	while(it.current())
 	{
 		if(KviQString::equalCI(windowCaption,it.current()->plainTextCaption()) &&
-			(iContextId==-1 || it.current()->context()->id() == iContextId))
+			(iContextId==-1 || it.current()->context()->id() == (uint) iContextId))
 				return it.current();
 		++it;
 	}
@@ -1769,7 +1769,7 @@ static void merge_to_stringlist_option(const QString &item,int iOption,int iMaxE
 			--it;
 		}
 	}
-	while(KVI_OPTION_STRINGLIST(iOption).count() >= (unsigned int)iMaxEntries)
+	while(KVI_OPTION_STRINGLIST(iOption).count() >= iMaxEntries)
 	{
 		KVI_OPTION_STRINGLIST(iOption).erase(KVI_OPTION_STRINGLIST(iOption).isEmpty()?KVI_OPTION_STRINGLIST(iOption).end():--KVI_OPTION_STRINGLIST(iOption).end());
 	}

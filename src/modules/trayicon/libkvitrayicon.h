@@ -56,10 +56,10 @@ protected:
 
 	QPixmap m_CurrentPixmap;
 	QTimer* m_pFlashingTimer;
-	int m_iConsoles;
-	int m_iChannels;
-	int m_iQueries;
-	int m_iOther;
+	unsigned int m_iConsoles;
+	unsigned int m_iChannels;
+	unsigned int m_iQueries;
+	unsigned int m_iOther;
 public:
 	KviFrame * frame(){ return m_pFrm; };
 public:

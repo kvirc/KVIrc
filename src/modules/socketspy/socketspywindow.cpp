@@ -63,7 +63,7 @@ QPixmap * KviSocketSpyWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SPY);
 }
 
-void KviSocketSpyWindow::resizeEvent(QResizeEvent *e)
+void KviSocketSpyWindow::resizeEvent(QResizeEvent *)
 {
 	m_pSplitter->setGeometry(0,0,width(),height());
 }
@@ -73,7 +73,7 @@ QSize KviSocketSpyWindow::sizeHint() const
 	return m_pIrcView->sizeHint();
 }
 
-void KviSocketSpyWindow::getBaseLogFileName(KviStr &buffer)
+void KviSocketSpyWindow::getBaseLogFileName(QString &buffer)
 {
 	buffer.sprintf("SOCKETSPY_%d",context()->id());
 }

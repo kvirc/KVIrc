@@ -191,7 +191,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setRootIsDecorated)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setAllColumnsShowFocus)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,clear)
-	//FIXME 
+	//FIXME
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectedItem",selectedItems)//<--- remove this
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,selectedItems)
 
@@ -205,23 +205,23 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,firstChild)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,selectionChangedEvent);
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,currentChangedEvent);
-	
+
 	// FIX-ME
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"returnPressedEvent",itemActivatedEvent);//<- remove me
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemActivatedEvent);
 	//
-	
+
 //	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,"spacePressedEvent",function_spacePressedEvent);
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,onItemEvent);
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemClickedEvent);
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemExpandedEvent);
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemCollapsedEvent);
-	
+
 	//FIXME
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemRenamedEvent",itemChangedEvent);//<- remove me
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemChangedEvent);
 	//
-	
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"rightButtonClickedEvent",customContextMenuRequestedEvent);
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,customContextMenuRequestedEvent);
 
@@ -238,13 +238,13 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_treewidget)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_treewidget)
 
-bool KviKvsObject_treewidget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_treewidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	setObject(new KviKvsTreeWidget(parentScriptWidget(),getName().toUtf8().data(),this),true);
-	
+
 	// hack for compatibility with "old" addColumn method;
 	((KviTalTreeWidget*) widget())->setColumnCount(0);
-	
+
 	connect(widget(),SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(slotClicked(QTreeWidgetItem *,int)));
 	connect(widget(),SIGNAL(itemSelectionChanged()),this,SLOT(slotSelectionChanged()));
 	connect(widget(),SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(slotCurrentChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
@@ -254,10 +254,10 @@ bool KviKvsObject_treewidget::init(KviKvsRunTimeContext * pContext,KviKvsVariant
 	connect(widget(),SIGNAL(itemCollapsed(QTreeWidgetItem *)),this,SLOT(slotItemCollapsed(QTreeWidgetItem *)));
 	//connect(widget(),SIGNAL(rightButtonClicked(QTreeWidgetItem *,const QPoint &,int)),this,SLOT(slotRightButtonClicked(QTreeWidgetItem *,const QPoint &,int)));
 	connect(widget(),SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(slotItemChanged(QTreeWidgetItem *,int)));
-	
+
 	widget()->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(widget(),SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(slotCustomContextMenuRequested(const QPoint &)));
-	
+
 	return true;
 }
 
@@ -407,7 +407,7 @@ KVSO_CLASS_FUNCTION(treewidget,setSorting)
 		KVSO_PARAMETER("sorting",KVS_PT_BOOLEAN,0,bEnables)
 	KVSO_PARAMETERS_END(c)
 	if (!widget())return true;
-	if (iCol<0) 
+	if (iCol<0)
 		((KviTalTreeWidget *)widget())->setSortingEnabled(false);
 	else
 		if(!bEnables) ((KviTalTreeWidget *)widget())->sortItems(iCol,Qt::DescendingOrder);
@@ -443,7 +443,7 @@ KVSO_CLASS_FUNCTION(treewidget,hideListViewHeader)
 
 KVSO_CLASS_FUNCTION(treewidget,showListViewHeader)
 {
-	((KviTalTreeWidget *)widget())->header()->show(); 
+	((KviTalTreeWidget *)widget())->header()->show();
 	return true;
 }
 
@@ -462,7 +462,7 @@ KVSO_CLASS_FUNCTION(treewidget,itemClickedEvent)
 void KviKvsObject_treewidget::slotClicked(KviTalTreeWidgetItem * i,int col)
 {
 	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
-	
+
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(i)),column);
 	callFunction(this,"itemClickedEvent",0,&params);
 }
@@ -502,7 +502,7 @@ void KviKvsObject_treewidget::slotCurrentChanged(KviTalTreeWidgetItem * i,KviTal
 KVSO_CLASS_FUNCTION(treewidget,itemActivatedEvent)
 {
 	//FIXME: compatibility
-	emitSignal("returnPressed",c,c->params());//<----remove me 
+	emitSignal("returnPressed",c,c->params());//<----remove me
 	//
 
 	emitSignal("itemActivated",c,c->params());
@@ -518,7 +518,7 @@ void KviKvsObject_treewidget::slotItemActivated(KviTalTreeWidgetItem * i,int col
 
 KVSO_CLASS_FUNCTION(treewidget,onItemEvent)
 {
-	
+
 	emitSignal("onItem",c,c->params());
 	return true;
 }
@@ -594,7 +594,7 @@ void KviKvsObject_treewidget::fileDropped(QString &szFile,KviTalTreeWidgetItem *
 	callFunction(this,"fileDroppedEvent",0,&params);
 }
 
-KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par,const char * name,KviKvsObject_treewidget *parent)
+KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par,const char *,KviKvsObject_treewidget *parent)
 :KviTalTreeWidget(par)
 {
 	m_pParentScript=parent;

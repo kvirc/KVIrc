@@ -41,7 +41,7 @@ private:
 	KviMediaType m_data;
 public:
 	void copyData(KviMediaType * t);
-	const KviMediaType * data(){ return &m_data; };
+	const KviMediaType * mydata(){ return &m_data; };
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_KviMediaTypesOptionsWidget KVI_SMALLICON_FILE

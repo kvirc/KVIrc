@@ -55,7 +55,7 @@
 		See also [classfnc]$MinValue[/classfnc]()
 		!fn: $setMaxValue(<max_value:integer>)
 		Sets the maximum value of the spin box.[br]
-		See also [classfnc]$maxValue[/classfnc]() 
+		See also [classfnc]$maxValue[/classfnc]()
 		!fn: $setLineStep(<line_step:integer>)
 		Sets the  line step: when the user uses the arrows to change the spin box's value the value will be
 		incremented/decremented by the amount of the line step.
@@ -118,7 +118,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_spinbox,"spinbox","widget")
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setPrefix);
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setSuffix);
 
-	
+
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,valueChangedEvent);
 KVSO_END_REGISTERCLASS(KviKvsObject_spinbox)
 
@@ -131,7 +131,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_spinbox)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_spinbox)
 
-bool KviKvsObject_spinbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_spinbox::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QSpinBox)
 	connect(widget(),SIGNAL(valueChanged(int)),this,SLOT(valueChanged(int)));
@@ -230,7 +230,7 @@ KVSO_CLASS_FUNCTION(spinbox,setSpecialValueText)
 }
 KVSO_CLASS_FUNCTION(spinbox,setPrefix)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szPrefix;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szPrefix)
@@ -240,7 +240,7 @@ KVSO_CLASS_FUNCTION(spinbox,setPrefix)
 }
 KVSO_CLASS_FUNCTION(spinbox,setSuffix)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szSuffix;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szSuffix)

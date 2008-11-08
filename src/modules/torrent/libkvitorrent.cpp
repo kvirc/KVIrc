@@ -838,7 +838,7 @@ static bool torrent_module_init(KviModule *m)
 
 	if (g_pFrame->mainStatusBar())
 		KviTorrentStatusBarApplet::selfRegister(g_pFrame->mainStatusBar());
-	
+
 
 	if(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) == "auto")
 	{
@@ -856,20 +856,19 @@ static bool torrent_module_init(KviModule *m)
 	return true;
 }
 
-static bool torrent_module_cleanup( KviModule * m )
+static bool torrent_module_cleanup(KviModule * )
 {
 	delete g_pDescriptorList;
 	return true;
 }
 
-static bool torrent_module_can_unload( KviModule * m )
+static bool torrent_module_can_unload(KviModule * )
 {
 	return true;
 }
 
-static bool torrent_module_ctrl(KviModule * m,const char * operation,void * param)
+static bool torrent_module_ctrl(KviModule *,const char *,void *) // KviModule * m,const char * operation,void * param)
 {
-	qDebug("torrent module ctrl");
 /*	if(kvi_strEqualCI(operation,"getAvailableMediaPlayers"))
 	{
 		// we expect param to be a pointer to QStringList

@@ -82,7 +82,7 @@ void KviTipFrame::setText(const QString &text)
 	update();
 }
 
-void KviTipFrame::paintEvent(QPaintEvent *e)
+void KviTipFrame::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
 	SET_ANTI_ALIASING(p);
@@ -169,7 +169,7 @@ bool KviTipWindow::openConfig(QString filename,bool bEnsureExists)
 	}
 
 	m_pConfig = new KviConfig(buffer,KviConfig::Read);
-	
+
 	return true;
 }
 
@@ -282,13 +282,13 @@ static bool tip_module_init(KviModule *m)
 	return true;
 }
 
-static bool tip_module_cleanup(KviModule *m)
+static bool tip_module_cleanup(KviModule *)
 {
 	if(g_pTipWindow)g_pTipWindow->close();
 	return true;
 }
 
-static bool tip_module_can_unload(KviModule *m)
+static bool tip_module_can_unload(KviModule *)
 {
 	return (g_pTipWindow == 0);
 }

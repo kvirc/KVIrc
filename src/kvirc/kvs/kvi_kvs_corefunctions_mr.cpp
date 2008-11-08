@@ -44,7 +44,7 @@
 namespace KviKvsCoreFunctions
 {
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/*
 		@doc: mask
 		@type:
@@ -123,7 +123,7 @@ namespace KviKvsCoreFunctions
 					u.setNick(szNick);
 					u.setUsername(e->user());
 					u.setHost(e->host());
-			
+
 					QString tmp;
 					u.mask(tmp,(KviIrcMask::MaskType)maskType);
 					KVSCF_pRetBuffer->setString(tmp);
@@ -305,7 +305,7 @@ namespace KviKvsCoreFunctions
 		} else {
 			pParent = 0;
 		}
-		
+
 		KviKvsObject * pObject = pClass->allocateInstance(pParent,szName,KVSCF_pContext,&vList);
 
 		// epilogue: set the return value
@@ -473,7 +473,7 @@ namespace KviKvsCoreFunctions
 			KVSCF_PARAMETER("context_id",KVS_PT_UINT,KVS_PF_OPTIONAL,uContextId)
 		KVSCF_PARAMETERS_END
 
-		KviWindow * wnd;
+		KviWindow * wnd = 0;
 		if(KVSCF_pParams->count() > 0)
 		{
 			if(KVSCF_pParams->count() > 1)
@@ -503,7 +503,7 @@ namespace KviKvsCoreFunctions
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/*
 		@doc: r
 		@type:

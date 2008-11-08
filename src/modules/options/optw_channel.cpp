@@ -97,19 +97,19 @@ KviChannelAdvancedOptionsWidget::KviChannelAdvancedOptionsWidget(QWidget * pPare
 	createLayout();
 
 	KviBoolSelector * b = addBoolSelector(0,0,4,0,__tr2qs_ctx("Log joined channels history","options"),KviOption_boolLogChannelHistory);
-	
+
 	addLabel(0,1,0,1,__tr2qs_ctx("Default ban mask:","options"));
-	
+
 	m_pBanTypeCombo = new QComboBox(this);
 	addWidgetToLayout(m_pBanTypeCombo,1,1,4,1);
-	
+
 	KviIrcMask hostmask("nick!user@machine.host.top");
 	KviIrcMask ipmask("nick!user@192.168.1.2");
 	QString tmp1;
 	QString tmp2;
 	for(int i=0;i<=26;i++)
 	{
-		
+
 		hostmask.mask(tmp1,(KviIrcMask::MaskType)i);
 		ipmask.mask(tmp2,(KviIrcMask::MaskType)i);
 		m_pBanTypeCombo->insertItem(m_pBanTypeCombo->count(),QString("%1 (%2)").arg(tmp1).arg(tmp2));
@@ -152,7 +152,7 @@ KviChannelAdvancedOptionsWidget::~KviChannelAdvancedOptionsWidget()
 void KviChannelAdvancedOptionsWidget::commit()
 {
 	KVI_OPTION_UINT(KviOption_uintDefaultBanType)=m_pBanTypeCombo->currentIndex();
-	if((KVI_OPTION_UINT(KviOption_uintDefaultBanType)<0 )|| (KVI_OPTION_UINT(KviOption_uintDefaultBanType)>26)) KVI_OPTION_UINT(KviOption_uintDefaultBanType)=7;
+	if((KVI_OPTION_UINT(KviOption_uintDefaultBanType)>26)) KVI_OPTION_UINT(KviOption_uintDefaultBanType)=7;
 	KviOptionsWidget::commit();
 }
 

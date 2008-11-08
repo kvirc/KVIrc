@@ -43,7 +43,7 @@ QDomNode XmlFunctions::getNode( const QDomNode &rootNode, const QString &path )
   QStringList pathItems = path.split( "/", QString::SkipEmptyParts );
   QDomNode    childNode = rootNode.namedItem( pathItems[0] );  // can be a null node
 
-  uint i = 1;
+  int i = 1;
   while( i < pathItems.count() )
   {
     if( childNode.isNull() )
@@ -80,7 +80,7 @@ QString XmlFunctions::getNodeAttribute( const QDomNode &node, const QString &att
 QDomNode XmlFunctions::getNodeChildByKey( const QDomNodeList &childNodes, const QString &keyTagName, const QString &keyValue )
 {
 
-  for( uint i = 0; i < childNodes.count(); i++ )
+  for( int i = 0; i < childNodes.count(); i++ )
   {
 //    kdDebug() << "node " << childNodes.item(i).nodeName() << "/" << keyTagName
 //              << "="     << childNodes.item(i).namedItem(keyTagName).toElement().text() << " == " << keyValue << "?" << endl;

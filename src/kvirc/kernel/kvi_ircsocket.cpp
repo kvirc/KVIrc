@@ -1188,7 +1188,7 @@ void KviIrcSocket::proxyHandleV4FinalReply(unsigned char cReply)
 	// I think I'll go sleep.... :)
 }
 
-void KviIrcSocket::proxyHandleHttpFinalReply(const char * pcBuffer, int iBufLen)
+void KviIrcSocket::proxyHandleHttpFinalReply(const char * pcBuffer, int)
 {
 	// Escape character is '^]'.
 	// CONNECT warszawa.irc.pl:6667 HTTP/1.0

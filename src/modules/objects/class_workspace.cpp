@@ -182,7 +182,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_workspace)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_workspace)
 
-bool KviKvsObject_workspace::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_workspace::init(KviKvsRunTimeContext * ,KviKvsVariantList *)
 {
 	SET_OBJECT(QWorkspace);
 	return true;
@@ -214,45 +214,44 @@ bool KviKvsObject_workspace::functionsetscrollBarsEnabled(KviKvsObjectFunctionCa
 	return true;
 }
 
-bool KviKvsObject_workspace::functioncascade(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_workspace::functioncascade(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QWorkspace *)widget())->cascade();
 	return true;
 }
 
-bool KviKvsObject_workspace::functiontile(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_workspace::functiontile(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QWorkspace *)widget())->tile();
 	return true;
 }
 
-bool KviKvsObject_workspace::functioncloseActiveWindow(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_workspace::functioncloseActiveWindow(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QWorkspace *)widget())->closeActiveWindow();
 	return true;
 }
 
-bool KviKvsObject_workspace::functioncloseAllWindows(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_workspace::functioncloseAllWindows(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QWorkspace *)widget())->closeAllWindows();
 	return true;
 }
 
-bool KviKvsObject_workspace::functionactivateNextWindow(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_workspace::functionactivateNextWindow(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QWorkspace *)widget())->activateNextWindow();
 	return true;
 }
 
-bool KviKvsObject_workspace::functionactivatePrevWindow(KviKvsObjectFunctionCall *c)
+bool KviKvsObject_workspace::functionactivatePrevWindow(KviKvsObjectFunctionCall *)
 {
-	if(widget()){
-			((QWorkspace *)widget())->activatePreviousWindow();
-	}
-		return true;
+	if(widget())
+		((QWorkspace *)widget())->activatePreviousWindow();
+	return true;
 }

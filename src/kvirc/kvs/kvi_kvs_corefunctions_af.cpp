@@ -973,10 +973,10 @@ namespace KviKvsCoreFunctions
 	#endif // COMPILE_SCRIPTTOOLBAR
 	#ifdef COMPILE_PHONON_SUPPORT
 			"Phonon",
-	#endif 
+	#endif
 	#ifdef COMPILE_WEBKIT_SUPPORT
 			"Webkit",
-	#endif 
+	#endif
 			"Qt4",
 			"KVS",
 			0
@@ -995,7 +995,6 @@ namespace KviKvsCoreFunctions
 			KVSCF_pRetBuffer->setBoolean(false);
 		} else {
 			KviKvsArray * a = new KviKvsArray();
-			int id = 0;
 			for(int i=0;feature_array[i];i++)a->set(i,new KviKvsVariant(QString(feature_array[i])));
 			KVSCF_pRetBuffer->setArray(a);
 		}

@@ -286,7 +286,6 @@ namespace KviKvsCoreSimpleCommands
 		kvs_int_t pitch    = -1;
 		kvs_int_t duration = -1;
 		bool bSync   = (KVSCSC_pSwitches->find('s',"sync") != 0);
-		bool bOk = false;
 
 		KviKvsVariant * pPitch = KVSCSC_pSwitches->find('p',"pitch");
 		if(pPitch)
@@ -968,7 +967,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KviKvsVariant * v;
 
-		if(v = KVSCSC_pSwitches->find('i',"color-set"))
+		if( (v = KVSCSC_pSwitches->find('i',"color-set")) )
 		{
 			kvs_int_t msgType;
 			if(v->asInteger(msgType))
@@ -978,7 +977,7 @@ namespace KviKvsCoreSimpleCommands
 			} else KVSCSC_pContext->warning(__tr2qs_ctx("Invalid color-set specification, using default","kvs"));
 		}
 
-		if(v = KVSCSC_pSwitches->find('w',"window"))
+		if( (v = KVSCSC_pSwitches->find('w',"window")) )
 		{
 			QString szWin;
 			v->asString(szWin);
@@ -994,12 +993,12 @@ namespace KviKvsCoreSimpleCommands
 		bool bPrefix = false;
 		bool bSuffix = false;
 
-		if(v = KVSCSC_pSwitches->find('p',"prefix"))
+		if( (v = KVSCSC_pSwitches->find('p',"prefix")) )
 		{
 			v->asString(szPrefix);
 			bPrefix = true;
 		}
-		if(v = KVSCSC_pSwitches->find('s',"suffix"))
+		if( (v = KVSCSC_pSwitches->find('s',"suffix")) )
 		{
 			v->asString(szSuffix);
 			bSuffix = true;

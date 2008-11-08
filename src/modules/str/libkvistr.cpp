@@ -1075,11 +1075,11 @@ static bool str_kvs_fnc_replacenocase(KviKvsModuleFunctionCall * c)
 static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 {
 	QString szString,szNewString;
-	int idx=0;
+	unsigned int idx=0;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 	KVSM_PARAMETERS_END(c)
-	
+
 	const char * const toReplace[]={
 		" ", "#", "$", "/", ":",
 		"<", "=", ">", "?", "@",
@@ -1094,7 +1094,7 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 		"%7B", "%7C", "%7D"
 	};
 
-	while(idx<sizeof(toReplace))
+	while(idx < sizeof(toReplace))
 	{
 		szNewString=szString.replace(toReplace[idx],newStr[idx],Qt::CaseInsensitive);
 		idx++;
@@ -1429,13 +1429,12 @@ static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
 	}
 
 	int idx = 0;
-	int cnt = 0;
+	unsigned int cnt = 0;
 	int begin;
 	int len = szString.length();
 	while (idx<len)
 	{
 		QChar szTmp = szString[idx].unicode();
-//		while (szTmp==sep)
 		while (sep.contains(szTmp))
 		{
 			idx++;
@@ -1452,7 +1451,7 @@ static bool str_kvs_fnc_token(KviKvsModuleFunctionCall * c)
 			c->returnValue()->setString(szString.mid(begin,idx-begin));
 			return true;
 		}
-		cnt ++;
+		cnt++;
 	}
 	return true;
 }
@@ -1965,7 +1964,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 	{
 		QChar * buffer = (QChar *)kvi_malloc(sizeof(QChar) * allocsize);
 		//QChar * p = (QChar *)s.unicode();
-	
+
 		//9999999999999999999999999999999\0
 		char numberBuffer[1024];
 		char *pNumBuf;
@@ -1973,31 +1972,31 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 		kvs_int_t argValue;
 		kvs_uint_t argUValue;
 		kvs_real_t argRValue;
-	
+
 		QChar * p = buffer;
-	
+
 	#define INCREMENT_MEM \
 		{ \
 			allocsize += MEMINCREMENT; \
 			buffer = (QChar *)kvi_realloc(buffer,sizeof(QChar) * allocsize); \
 			p = buffer + reallen; \
 		}
-	
+
 	#define INCREMENT_MEM_BY(numchars) \
 		{ \
 			allocsize += numchars + MEMINCREMENT; \
 			buffer = (QChar *)kvi_realloc(buffer,sizeof(QChar) * allocsize); \
 			p = buffer + reallen; \
 		}
-	
+
 		KviKvsVariant * pVar;
-	
+
 		pVar = vArgs.first();
 
 		for(; fmt->unicode() ; ++fmt)
 		{
 			if(reallen == allocsize)INCREMENT_MEM
-	
+
 			//copy up to a '?'
 			if(fmt->unicode() != '?')
 			{
@@ -2005,7 +2004,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 				reallen++;
 				continue;
 			}
-	
+
 			++fmt; //skip this '?'
 			switch(fmt->unicode())
 			{
@@ -2090,7 +2089,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 				case 'x': // hexadecimal unsigned integer
 				{
 					static char hexsmalldigits[]="0123456789abcdef";
-	
+
 					if(pVar)
 					{
 						if(!pVar->asInteger(argValue))
@@ -2103,7 +2102,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 						argValue = 0;
 					}
 					argUValue = (kvs_uint_t)argValue;
-	
+
 					//write the number in a temporary buffer
 					pNumBuf = numberBuffer;
 					do {
@@ -2165,13 +2164,13 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 					const QChar * save = fmt;
 					fmt++;
 					unsigned int uPrecision = 0;
-					
+
 					char fmtbuffer[8];
 					fmtbuffer[0] = '%';
 					fmtbuffer[1] = '.';
-	
+
 					int idx = 2;
-					
+
 					while((fmt->unicode() >= '0') && (fmt->unicode() <= '9') && (idx < 6))
 					{
 						uPrecision *= 10;
@@ -2182,7 +2181,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 					}
 					fmtbuffer[idx] = fmt->unicode();
 					fmtbuffer[idx+1] = 0;
-	
+
 					if(pVar)
 					{
 						if(!pVar->asReal(argRValue))
@@ -2239,7 +2238,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 				}
 			}
 		}
-	
+
 		s.setUnicode(buffer,reallen);
 		kvi_free(buffer);
 	}
@@ -2311,7 +2310,7 @@ static bool str_module_init(KviModule * m)
 	return true;
 }
 
-static bool str_module_cleanup(KviModule *m)
+static bool str_module_cleanup(KviModule *)
 {
 	return true;
 }

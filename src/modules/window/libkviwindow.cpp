@@ -1615,7 +1615,7 @@ static bool window_module_init(KviModule *m)
 	return true;
 }
 
-static bool window_module_cleanup(KviModule *m)
+static bool window_module_cleanup(KviModule *)
 {
 	while(KviUserWindow * w = g_pUserWindowList->first())
 		w->close();
@@ -1623,7 +1623,7 @@ static bool window_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool window_module_can_unload(KviModule *m)
+static bool window_module_can_unload(KviModule *)
 {
 	return g_pUserWindowList->isEmpty();
 }

@@ -708,14 +708,14 @@ static bool system_module_init(KviModule * m)
 	return true;
 }
 
-static bool system_module_cleanup(KviModule *m)
+static bool system_module_cleanup(KviModule *)
 {
 	g_pPluginManager->unloadAll();
 	delete g_pPluginManager;
 	return true;
 }
 
-static bool system_module_can_unload(KviModule *m)
+static bool system_module_can_unload(KviModule *)
 {
 	if(!g_pPluginManager->checkUnload()) return false;
 	return true;
@@ -725,8 +725,8 @@ KVIRC_MODULE(
 	"System",                                                 // module name
 	"4.0.0",                                                // module version
 	"Copyright	(C) 2001 Szymon Stefanek (pragma at kvirc dot net)" \
-	"			(C) 2005 Tonino Imbesi (grifisx at barmes dot org)"\
-	"			(C) 2005 Alessandro Carbone (elfonol at gmail dot com)",// author & (C)
+	"		(C) 2005 Tonino Imbesi (grifisx at barmes dot org)"\
+	"		(C) 2005 Alessandro Carbone (elfonol at gmail dot com)",// author & (C)
 	"System informations module",
 	system_module_init,
 	system_module_can_unload,

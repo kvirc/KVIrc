@@ -462,7 +462,7 @@ void KviIrcContextDisplayAction::setup()
 	connect(g_pFrame,SIGNAL(activeConnectionLagChanged()),this,SLOT(activeContextStateChanged()));
 }
 
-bool KviIrcContextDisplayAction::addToPopupMenu(KviTalPopupMenu *p)
+bool KviIrcContextDisplayAction::addToPopupMenu(KviTalPopupMenu *)
 {
 	// QT4SUX: Widgets can be no longer added to popup menus.. what about labels ?
 	return true;
@@ -1124,7 +1124,7 @@ void KviIrcToolsAction::popupAboutToShow()
 	if(a)a->addToPopupMenu(m_pPopup);
 }
 
-void KviIrcToolsAction::popupActivated(int id)
+void KviIrcToolsAction::popupActivated(int)
 {
 }
 
@@ -1162,6 +1162,6 @@ void KviIrcOperationsAction::popupAboutToShow()
 	if(a)a->addToPopupMenu(m_pPopup);
 }
 
-void KviIrcOperationsAction::popupActivated(int id)
+void KviIrcOperationsAction::popupActivated(int)
 {
 }

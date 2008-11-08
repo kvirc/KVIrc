@@ -56,16 +56,16 @@ KviIrcConnectionServerInfo::~KviIrcConnectionServerInfo()
 void KviIrcConnectionServerInfo::setSupportedChannelModes(const QString &szSupportedChannelModes)
 {
 	int pos=-1;
-	
+
 	pos=szSupportedChannelModes.indexOf(',');
 	if(pos>=0) m_szListModes=szSupportedChannelModes.left(pos);
-	
+
 	pos=szSupportedChannelModes.lastIndexOf(',');
 	if(pos>=0) m_szPlainModes=szSupportedChannelModes.right(szSupportedChannelModes.length()+pos-1);
-	
+
 	m_szSupportedChannelModes = szSupportedChannelModes;
 	m_bSupportsModesIe = (szSupportedChannelModes.contains('e') && szSupportedChannelModes.contains('I'));
-	
+
 	QChar* aux=(QChar*)szSupportedChannelModes.utf16();
 	while(aux->unicode())
 	{
@@ -88,16 +88,16 @@ void KviIrcConnectionServerInfo::buildModePrefixTable()
 	const QChar * cPrefix = KviQString::nullTerminatedArray(m_szSupportedModePrefixes);
 	const QChar * cFlag = KviQString::nullTerminatedArray(m_szSupportedModeFlags);
 	if(!cPrefix || !cFlag)return; // eh ?
-	
+
 	m_uPrefixes=qMin(m_szSupportedModePrefixes.length(),m_szSupportedModePrefixes.length());
 	m_pModePrefixTable=(kvi_u32_t*)kvi_malloc(sizeof(kvi_u32_t)*3*m_uPrefixes);
-	
+
 	unsigned short uPrefix,uFlag;
-	
+
 	// Pragma: FIXME: The whole mode handling needs rethinking!
 	// Alexey: FIXED: rethinked:)
 	// Pragma: LOL :DDDD
-	int i=0;
+	unsigned int i=0;
 	while( (uPrefix = cPrefix->unicode()) && (uFlag = cFlag->unicode()) && i<m_uPrefixes*3)
 	{
 		m_pModePrefixTable[i]=uPrefix;
@@ -129,7 +129,7 @@ void KviIrcConnectionServerInfo::buildModePrefixTable()
 bool KviIrcConnectionServerInfo::isSupportedModePrefix(QChar c)
 {
 	if(!m_pModePrefixTable) return false;
-	for(int i=0;i<m_uPrefixes;i++)
+	for(unsigned int i=0;i<m_uPrefixes;i++)
 	{
 		if(m_pModePrefixTable[i*3]==c.unicode()) return true;
 	}
@@ -139,7 +139,7 @@ bool KviIrcConnectionServerInfo::isSupportedModePrefix(QChar c)
 bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c)
 {
 	if(!m_pModePrefixTable) return false;
-	for(int i=0;i<m_uPrefixes;i++)
+	for(unsigned int i=0;i<m_uPrefixes;i++)
 	{
 		if(m_pModePrefixTable[(i*3)+1]==c.unicode()) return true;
 	}
@@ -149,7 +149,7 @@ bool KviIrcConnectionServerInfo::isSupportedModeFlag(QChar c)
 QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag)
 {
 	if(!m_pModePrefixTable) return QChar(0);
-	for(int i=0;i<m_uPrefixes;i++)
+	for(unsigned int i=0;i<m_uPrefixes;i++)
 	{
 		if(m_pModePrefixTable[i*3+2] & flag) return QChar(m_pModePrefixTable[i*3]);
 	}
@@ -159,7 +159,7 @@ QChar KviIrcConnectionServerInfo::modePrefixChar(kvi_u32_t flag)
 QChar KviIrcConnectionServerInfo::modeFlagChar(kvi_u32_t flag)
 {
 	if(!m_pModePrefixTable) return QChar(0);
-	for(int i=0;i<m_uPrefixes;i++)
+	for(unsigned int i=0;i<m_uPrefixes;i++)
 	{
 		if(m_pModePrefixTable[i*3+2] & flag ) return QChar(m_pModePrefixTable[i*3+1]);
 	}
@@ -169,7 +169,7 @@ QChar KviIrcConnectionServerInfo::modeFlagChar(kvi_u32_t flag)
 kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromPrefixChar(QChar c)
 {
 	if(!m_pModePrefixTable) return 0;
-	for(int i=0;i<m_uPrefixes;i++)
+	for(unsigned int i=0;i<m_uPrefixes;i++)
 	{
 		if(m_pModePrefixTable[i*3]==c.unicode()) return m_pModePrefixTable[i*3+2];
 	}
@@ -179,7 +179,7 @@ kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromPrefixChar(QChar c)
 kvi_u32_t KviIrcConnectionServerInfo::modeFlagFromModeChar(QChar c)
 {
 	if(!m_pModePrefixTable) return 0;
-	for(int i=0;i<m_uPrefixes;i++)
+	for(unsigned int i=0;i<m_uPrefixes;i++)
 	{
 		if(m_pModePrefixTable[i*3+1]==c.unicode()) return m_pModePrefixTable[i*3+2];
 	}

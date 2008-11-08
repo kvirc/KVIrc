@@ -28,7 +28,6 @@
 #include "kvi_locale.h"
 #include "kvi_channel.h"
 
-//-------------------------------------------------
 /*
 	@doc: tmphighlight.add
 	@type:
@@ -47,12 +46,10 @@
 		[fnc]$tmphighlight.remove[/fnc]
 		[fnc]$tmphighlight.ishighlighted[/fnc]
 */
-//-------------------------------------------
-// tmphighlight.add
-//-------------------------------------------
+
 static bool tmphighlight_kvs_cmd_add(KviKvsModuleCommandCall * c)
 {
-	
+
 	QString szNick;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
@@ -63,12 +60,12 @@ static bool tmphighlight_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;
 	}
-	
+
 	((KviChannel *)c->window())->addHighlightedUser(szNick);
 
 	return true;
 }
-//-------------------------------------------------
+
 /*
 	@doc: tmphighlight.remove
 	@type:
@@ -86,9 +83,6 @@ static bool tmphighlight_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		[fnc]$tmphighlight.add[/fnc]
 		[fnc]$tmphighlight.ishighlighted[/fnc]
 */
-//-------------------------------------------
-// tmphighlight.remove
-//-------------------------------------------
 
 static bool tmphighlight_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 {
@@ -106,7 +100,7 @@ static bool tmphighlight_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 	((KviChannel *)c->window())->removeHighlightedUser(szNick);
 	return true;
 }
-//-------------------------------------------------
+
 /*
 	@doc: tmphighlight.ishighlighted
 	@type:
@@ -124,9 +118,6 @@ static bool tmphighlight_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 		[fnc]$tmphighlight.remove[/fnc]
 
 */
-//-------------------------------------------
-// tmphighlight.ishighlighted
-//-------------------------------------------
 
 static bool tmphighlight_kvs_fnc_ishighlighted(KviKvsModuleFunctionCall * c)
 {
@@ -144,7 +135,6 @@ static bool tmphighlight_kvs_fnc_ishighlighted(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
-//-------------------------------------------------    
 static bool tmphighlight_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"add",tmphighlight_kvs_cmd_add);
@@ -153,21 +143,21 @@ static bool tmphighlight_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"isHighLighted",tmphighlight_kvs_fnc_ishighlighted);
 	return true;
 }
-//-------------------------------------------------
-static bool tmphighlight_module_cleanup(KviModule *m)
+
+static bool tmphighlight_module_cleanup(KviModule *)
 {
 	return true;
 }
-//-------------------------------------------------
-static bool tmphighlight_module_can_unload(KviModule *m)
+
+static bool tmphighlight_module_can_unload(KviModule *)
 {
 	return true;
 }
-//-------------------------------------------------
+
 KVIRC_MODULE(
-	"TmpHighlight",                                                 // module name
-	"4.0.0",                                                // module version
-	"          (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)", // author & (C)
+	"TmpHighlight",                               // module name
+	"4.0.0",                                      // module version
+	"(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)", // author & (C)
 	"Temporal Highlightining of channel users",
 	tmphighlight_module_init,
 	tmphighlight_module_can_unload,

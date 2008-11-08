@@ -73,7 +73,7 @@
 		!fn: <string> $currentTabLabel()
 		Returns the label of the current tab.
 		!fn: $removePage(<tab_widget:object>)
-		Remove the page <tab_widget>. 
+		Remove the page <tab_widget>.
 		!fn: $setTabPosition(<tab_position:string>)
 		Sets TabPosition. Valid parameters are : Top, Bottom.
 		!fn: <integer> $count()
@@ -88,11 +88,11 @@
 			%Tabwidget->$setToolTip("Example of TabWidget class")
 			%Tabwidget->$setMargin(30)
 			%Tabwidget->$setTabPosition(Top)
-			
+
 			# Now we'll create the new widgets and put they in to the main tabwidget.
 			%firsttab=$new(widget,%Tabwidget)
 			%secondtab=$new(widget,%Tabwidget)
-			
+
 			# Now we'll create the item to put in to tab's pages.
 			%layoutfirsttab=$new(layout,%firsttab)
 			%labelbt=$new(label,%firsttab)
@@ -103,17 +103,17 @@
 			%buttontb->$settext("To &Botton")
 			%buttontt=$new(button,%firsttab)
 			%buttontt->$settext("To &Top")
-			
+
 			# Now we'll give a layout to all items.
 			# This also allows to use privateimpl without making buttons global variables
 			%layoutfirsttab->$addwidget(%labelbt,0,0)
 			%layoutfirsttab->$addwidget(%labeltt,0,1)
 			%layoutfirsttab->$addwidget(%buttontb,1,0)
 			%layoutfirsttab->$addwidget(%buttontt,1,1)
-			
+
 			# Add the page to the main tab.
 			%Tabwidget->$addTab(%firsttab,Top&Button,33)
-			
+
 			# Implementing the action to do when the user click the buttons.
 			privateimpl(%buttontb,mousepressevent)
 			{
@@ -123,7 +123,7 @@
 			{
 				%Tabwidget->$setTabPosition(Top)
 			}
-			
+
 			# We do the same work  with the second tab's page.
 			%layoutsecondtab=$new(layout,%secondtab)
 			%labelwp=$new(label,%secondtab)
@@ -135,8 +135,8 @@
 			%labelgen->$setalignment("Center")
 			%layoutsecondtab->$addwidget(%labelgen,1,0)
 			%Tabwidget->$addTab(%secondtab,&About,50)
-			
-			# Let's show our example. 
+
+			# Let's show our example.
 			%Tabwidget->$show()
 		[/example]
 	@signals:
@@ -146,7 +146,7 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tabwidget,"tabwidget","widget")
-	
+
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,addTab)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,insertTab)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,setTabToolTip)
@@ -178,7 +178,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_tabwidget)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_tabwidget)
 
-bool KviKvsObject_tabwidget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_tabwidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QTabWidget)
 	connect(widget(),SIGNAL(currentChanged(int)),this,SLOT(slotCurrentChanged(int)));
@@ -202,7 +202,7 @@ KVSO_CLASS_FUNCTION(tabwidget,addTab)
 	if(pix){
 		((QTabWidget *)widget())->addTab(((QWidget *)(pObject->object())),QIcon(*pix),szLabel);
 	}
-	else((QTabWidget *)widget())->addTab(((QWidget *)(pObject->object())),szLabel);	
+	else((QTabWidget *)widget())->addTab(((QWidget *)(pObject->object())),szLabel);
 	return true;
 }
 
@@ -225,7 +225,7 @@ KVSO_CLASS_FUNCTION(tabwidget,insertTab)
 	if(pix){
 			((QTabWidget *)widget())->insertTab(iIndex,(QWidget *)(pObject->object()),QIcon(*pix),szLabel);
 	}
-	else ((QTabWidget *)widget())->insertTab(iIndex,((QWidget *)(pObject->object())),szLabel);	
+	else ((QTabWidget *)widget())->insertTab(iIndex,((QWidget *)(pObject->object())),szLabel);
 	return true;
 }
 
@@ -252,7 +252,7 @@ KVSO_CLASS_FUNCTION(tabwidget,setTabToolTip)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
-	if (ctrl == -1) 
+	if (ctrl == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ","objects"));
 		return true;
@@ -293,7 +293,7 @@ KVSO_CLASS_FUNCTION(tabwidget,setTabLabel)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
-	if (ctrl == -1) 
+	if (ctrl == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ","objects"));
 		return true;
@@ -348,7 +348,7 @@ KVSO_CLASS_FUNCTION(tabwidget,removePage)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
-	if (ctrl == -1) 
+	if (ctrl == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab ","objects"));
 		return true;
@@ -371,7 +371,7 @@ KVSO_CLASS_FUNCTION(tabwidget,changeTab)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	int ctrl = ((QTabWidget *)widget())->indexOf (((QWidget *)(pObject->object())));
-	if (ctrl == -1) 
+	if (ctrl == -1)
 	{
 		c->warning(__tr2qs_ctx("Can't find the tab","objects"));
 		return true;

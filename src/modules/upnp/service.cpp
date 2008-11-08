@@ -51,12 +51,12 @@ namespace UPnP
 
 // The constructor for information services
 Service::Service(const QString &hostname, int port, const QString &informationUrl)
-: m_szInformationUrl(informationUrl)
+: m_iPendingRequests(0)
+, m_szBaseXmlPrefix("s")
 , m_szHostname(hostname)
 , m_iPort(port)
-, m_iPendingRequests(0)
-, m_szBaseXmlPrefix("s")
 {
+	m_szInformationUrl = informationUrl;
 	m_pHttp = new QHttp(hostname, port);
 	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
 
@@ -71,9 +71,9 @@ Service::Service(const ServiceParameters &params)
 , m_iPendingRequests(0)
 , m_szServiceId(params.serviceId)
 , m_szServiceType(params.serviceType)
+, m_szBaseXmlPrefix("s")
 , m_szHostname(params.hostname)
 , m_iPort(params.port)
-, m_szBaseXmlPrefix("s")
 {
 	m_pHttp = new QHttp(params.hostname, params.port);
 	connect(m_pHttp, SIGNAL( requestFinished(int,bool) ) , this, SLOT( slotRequestFinished(int,bool) ) );
@@ -292,7 +292,7 @@ void Service::slotRequestFinished(int id, bool error)
 							// It's possible to pass the entire QDomNode object to the gotActionResponse()
 							// function, but this is somewhat nicer, and reduces code boat in the subclasses
 							QDomNodeList children = resultNode.childNodes();
-							for(uint i = 0; i < children.count(); i++)
+							for(int i = 0; i < children.count(); i++)
 							{
 								QString key = children.item(i).nodeName();
 								resultValues[ key ] = children.item(i).toElement().text();

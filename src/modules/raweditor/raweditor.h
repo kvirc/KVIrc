@@ -58,18 +58,18 @@ public:
 public:
 	void setEnabled(bool bEnabled)
 	{
-		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENT))); 
-			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENTNOHANDLERS))); 
+		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENT)));
+			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENTNOHANDLERS)));
 			((KviRawTreeWidget*)treeWidget())->updateItem(this);
 	};
-	virtual QString text(int col) const { return m_szName; };
+	virtual QString text(int) const { return m_szName; };
 };
 
 class KviRawHandlerTreeWidgetItem : public KviTalTreeWidgetItem
 {
 public:
 	KviRawHandlerTreeWidgetItem(KviTalTreeWidgetItem * par,const QString & name,const QString & buffer,bool bEnabled)
-	: KviTalTreeWidgetItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled) 
+	: KviTalTreeWidgetItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled)
 	{
 		setText(0,name);
 		setEnabled(bEnabled);
@@ -78,8 +78,8 @@ public:
 public:
 	void setEnabled(bool bEnabled)
 	{
-		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER))); 
-			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLERDISABLED))); 
+		if (bEnabled) setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER)));
+			else setIcon(0,QIcon(*g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLERDISABLED)));
 			((KviRawTreeWidget*)treeWidget())->updateItem(this);
 	};
 	QString m_szName;
@@ -133,7 +133,7 @@ protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getConfigGroupName(KviStr &szName);
+	virtual void getConfigGroupName(QString &szName);
 	virtual void saveProperties(KviConfig *);
 	virtual void loadProperties(KviConfig *);
 protected slots:

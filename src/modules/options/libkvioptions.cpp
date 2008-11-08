@@ -60,7 +60,7 @@ extern int g_iOptionWidgetInstances;
 		events and user preferences.
 */
 
-static bool options_kvs_cmd_save(KviKvsModuleCommandCall * c)
+static bool options_kvs_cmd_save(KviKvsModuleCommandCall *)
 {
 	g_pApp->saveOptions();
 	return true;
@@ -291,7 +291,7 @@ static bool options_module_cleanup(KviModule *m)
 	KviPointerList<KviOptionsDialog> l;
 	l.setAutoDelete(false);
 	KviOptionsDialog * d;
-	while(d = it.current())
+	while( (d = it.current()) )
 	{
 		l.append(d);
 		++it;
@@ -307,7 +307,7 @@ static bool options_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool options_module_can_unload(KviModule *m)
+static bool options_module_can_unload(KviModule *)
 {
 	return ((g_pOptionsDialogDict->isEmpty()) && (g_iOptionWidgetInstances == 0));
 }

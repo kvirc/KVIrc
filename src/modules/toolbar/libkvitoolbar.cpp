@@ -82,7 +82,7 @@ static bool toolbar_kvs_cmd_create(KviKvsModuleCommandCall * c)
 		c->error(__tr2qs("Internal error: call a head-shrinker"));
 		return false;
 	}
-*/	
+*/
 	if(szLabel.isEmpty())szLabel = "$tr(Unnamed)";
 
 	KviCustomToolBarDescriptor * d = KviCustomToolBarManager::instance()->find(szId);
@@ -93,10 +93,10 @@ static bool toolbar_kvs_cmd_create(KviKvsModuleCommandCall * c)
 	} else {
 		d = KviCustomToolBarManager::instance()->create(szId,szLabel);
 	}
-	
+
 	if(!szIconId.isEmpty())
 		d->setIconId(szIconId);
-	
+
 	return true;
 }
 
@@ -572,16 +572,16 @@ static bool toolbar_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"remove",toolbar_kvs_cmd_removeitem)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",toolbar_kvs_cmd_show)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"hide",toolbar_kvs_cmd_hide)
-	
+
 	KVSM_REGISTER_FUNCTION(m,"exists",toolbar_kvs_fnc_exists)
 	KVSM_REGISTER_FUNCTION(m,"isVisible",toolbar_kvs_fnc_isVisible)
 	KVSM_REGISTER_FUNCTION(m,"list",toolbar_kvs_fnc_list)
 	KVSM_REGISTER_FUNCTION(m,"items",toolbar_kvs_fnc_items)
-	
+
 	return true;
 }
 
-static bool toolbar_module_cleanup(KviModule *m)
+static bool toolbar_module_cleanup(KviModule *)
 {
 	return true;
 }

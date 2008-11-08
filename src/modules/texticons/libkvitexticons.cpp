@@ -65,9 +65,9 @@ static bool texticons_kvs_fnc_get(KviKvsModuleFunctionCall * c)
 		}
 	} else {
 		KviKvsHash* hash = new KviKvsHash();
-		
+
 		KviPointerHashTableIterator<QString,KviTextIcon> it(*(g_pTextIconManager->textIconDict()));
-		
+
 		while(KviTextIcon * i = it.current())
 		{
 			if(i->id()!=-1)
@@ -122,7 +122,7 @@ static bool texticons_kvs_cmd_set(KviKvsModuleCommandCall * c)
 			pIcon=g_pTextIconManager->lookupTextIcon(szName);
 			if(!pIcon) return false;
 		}
-		
+
 		bool bOk;
 		unsigned int iResult=szIcon.toUInt(&bOk);
 		if(bOk)
@@ -138,12 +138,12 @@ static bool texticons_kvs_cmd_set(KviKvsModuleCommandCall * c)
 static bool texticons_module_init(KviModule * m)
 {
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"set",texticons_kvs_cmd_set);
-	
+
 	KVSM_REGISTER_FUNCTION(m,"get",texticons_kvs_fnc_get);
 	return true;
 }
 
-static bool texticons_module_cleanup(KviModule *m)
+static bool texticons_module_cleanup(KviModule *)
 {
 	return true;
 }

@@ -282,7 +282,7 @@ KviOptionsDialog::~KviOptionsDialog()
 void KviOptionsDialog::showEvent(QShowEvent *e)
 {
 	QRect r = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-		
+
 	int w = r.width();
 	int h = r.height();
 
@@ -296,7 +296,7 @@ void KviOptionsDialog::showEvent(QShowEvent *e)
 	} else {
 		if(ww < 770)ww = 770;
 	}
-	
+
 	setGeometry((w - ww) / 2,(h - wh) / 2,ww,wh);
 
 	QDialog::showEvent(e);
@@ -533,7 +533,7 @@ void KviOptionsDialog::fillTreeWidget(KviTalTreeWidgetItem * p,KviPointerList<Kv
 	}
 }
 
-void KviOptionsDialog::treeWidgetItemSelectionChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *prev)
+void KviOptionsDialog::treeWidgetItemSelectionChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *)
 {
 	if(it)
 	{
@@ -597,7 +597,7 @@ KviOptionsTreeWidgetItem * KviOptionsDialog::findItemByPage(KviOptionsTreeWidget
 	return 0;
 }
 */
-void KviOptionsDialog::pageWantsToSwitchToAdvancedPage(KviOptionsWidget * pPage)
+void KviOptionsDialog::pageWantsToSwitchToAdvancedPage(KviOptionsWidget *)
 {
 	// unused
 }

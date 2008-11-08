@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : libkvispaste.cpp
-//   Creation date : Thu Dec 27 2002 17:13:12 GMT by Juanjo Álvarez
+//   Creation date : Thu Dec 27 2002 17:13:12 GMT by Juanjo ï¿½lvarez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Juanjo Álvarez (juanjux@yahoo.es)
+//   Copyright (C) 2002 Juanjo ï¿½lvarez (juanjux@yahoo.es)
 //   Copyright (C) 2002-2008 Szymon Stefanek (kvirc@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -68,7 +68,7 @@ static KviWindow * spaste_kvs_find_window(QString &win, KviKvsModuleCommandCall 
 	c->warning(__tr2qs("The specified window (%Q) is not a channel/query/DCC chat"),&win);
 	return 0;
 }
-//-------------------------------------------------
+
 /*
 	@doc: spaste.file
 	@type:
@@ -89,9 +89,6 @@ static KviWindow * spaste_kvs_find_window(QString &win, KviKvsModuleCommandCall 
 		[cmd]spaste.list[/cmd],
 		[cmd]spaste.setdelay[/cmd]
 */
-//-------------------------------------------
-// spaste.file
-//-------------------------------------------
 
 static bool spaste_kvs_cmd_file(KviKvsModuleCommandCall * c)
 {
@@ -258,9 +255,6 @@ static bool spaste_kvs_cmd_stop(KviKvsModuleCommandCall * c)
 		[cmd]spaste.stop[/cmd],
 		[cmd]spaste.setdelay[/cmd]
 */
-//--------------------------------------------------
-// spaste.list
-//--------------------------------------------------
 
 static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 {
@@ -294,11 +288,6 @@ static bool spaste_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		[cmd]spaste.stop[/cmd],
 		[cmd]spaste.list[/cmd]
 */
-//-------------------------------------------------
-// spaste.setdelay
-//-------------------------------------------------
-
-
 static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
 {
 	kvs_int_t delay;
@@ -309,7 +298,6 @@ static bool spaste_kvs_cmd_setdelay(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-//-------------------------------------------------
 static bool spaste_module_init(KviModule * m)
 {
 	g_pControllerList = new KviPointerList<SPasteController>;
@@ -322,8 +310,8 @@ static bool spaste_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"list",spaste_kvs_cmd_list);
 	return true;
 }
-//-------------------------------------------------
-static bool spaste_module_cleanup(KviModule *m)
+
+static bool spaste_module_cleanup(KviModule *)
 {
 	while(g_pControllerList->first()) delete g_pControllerList->first();
 	delete g_pControllerList;
@@ -331,16 +319,16 @@ static bool spaste_module_cleanup(KviModule *m)
 
 	return true;
 }
-//-------------------------------------------------
-static bool spaste_module_can_unload(KviModule *m)
+
+static bool spaste_module_can_unload(KviModule *)
 {
 	return (g_pControllerList->isEmpty());
 }
-//-------------------------------------------------
+
 KVIRC_MODULE(
 	"SPaste",                                                 // module name
 	"4.0.0",                                                // module version
-	"          (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)", // author & (C)
+	"(C) 2002 Juanjo Alvarez (juanjux@yahoo.es)", // author & (C)
 	"Delayed paste commands",
 	spaste_module_init,
 	spaste_module_can_unload,

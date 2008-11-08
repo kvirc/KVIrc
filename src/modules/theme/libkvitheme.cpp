@@ -142,7 +142,7 @@ static bool theme_kvs_cmd_screenshot(KviKvsModuleCommandCall * c)
 		Shows the theme theme management editor
 */
 
-static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
+static bool theme_kvs_cmd_dialog(KviKvsModuleCommandCall *)
 {
 	KviThemeManagementDialog::display();
 	return true;
@@ -174,7 +174,7 @@ static bool theme_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool theme_module_can_unload(KviModule * m)
+static bool theme_module_can_unload(KviModule *)
 {
 	return (!KviThemeManagementDialog::instance());
 }

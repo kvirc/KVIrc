@@ -45,7 +45,7 @@
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		The pixmap class is an off-screen, pixel-based paint device.		
+		The pixmap class is an off-screen, pixel-based paint device.
 	@functions:
 		!fn: $fill(<widget:object>,<x_offset:integer>,<y:offset>)
 		Fills the pixmap with the widget's background color or pixmap.[br]
@@ -61,7 +61,7 @@
 		Transformation type values:
 		- Fast: fast transformation but less quality.
 		- Smooth: more quality using bilinear filtering.
-		!fn: $rotate(<a:real>) 
+		!fn: $rotate(<a:real>)
 		Rotates the pixmap by a degrees.
 		!fn: $load(<file_name:string>)
 		Load a pixmap from the <file>.
@@ -90,7 +90,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_pixmap,"pixmap","object")
 KVSO_END_REGISTERCLASS(KviKvsObject_pixmap)
 
 
-KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_pixmap,KviKvsObject)	
+KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_pixmap,KviKvsObject)
 	m_pPixmap=new QPixmap();
 	m_pImage=new QImage();
 	bPixmapModified=false;
@@ -99,11 +99,11 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_pixmap)
 
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_pixmap)
-	
+
 	emit aboutToDie();
 	delete m_pPixmap;
 	if (m_pImage) delete m_pImage;
-	
+
 KVSO_END_CONSTRUCTOR(KviKvsObject_pixmap)
 
 
@@ -118,7 +118,7 @@ KVSO_CLASS_FUNCTION(pixmap,fill)
 		KVSO_PARAMETER("x_offset",KVS_PT_INT,0,iXoffset)
 		KVSO_PARAMETER("y_offset",KVS_PT_INT,0,iYoffset)
 	KVSO_PARAMETERS_END(c)
-	
+
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	bPixmapModified=true;
@@ -151,7 +151,7 @@ KVSO_CLASS_FUNCTION(pixmap,scale)
 	bPixmapModified=true;
 	return true;
 }
-  
+
 KVSO_CLASS_FUNCTION(pixmap,rotate)
 {
 	CHECK_INTERNAL_POINTER(m_pPixmap)
@@ -227,13 +227,13 @@ KVSO_CLASS_FUNCTION(pixmap,loadFromMemoryBuffer)
 KVSO_CLASS_FUNCTION(pixmap,height)
 {
 	CHECK_INTERNAL_POINTER(m_pPixmap)
-	c->returnValue()->setInteger(m_pPixmap->height());	
+	c->returnValue()->setInteger(m_pPixmap->height());
 	return true;
 }
 KVSO_CLASS_FUNCTION(pixmap,width)
 {
 	CHECK_INTERNAL_POINTER(m_pPixmap)
-	c->returnValue()->setInteger(m_pPixmap->width());	
+	c->returnValue()->setInteger(m_pPixmap->width());
 	return true;
 }
 // maybe DEPRECATED?
@@ -246,9 +246,9 @@ KVSO_CLASS_FUNCTION(pixmap,setOpacity)
 
 	KviKvsObject * pObDest;
 	kvs_hobject_t hObject;
-		
+
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)	
+		KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)
 		KVSO_PARAMETER("destination",KVS_PT_HOBJECT,0,hObject)
 		KVSO_PARAMETER("x_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uXoffset)
 		KVSO_PARAMETER("y_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uYoffset)
@@ -273,12 +273,13 @@ KVSO_CLASS_FUNCTION(pixmap,setOpacity)
 	if (bPixmapModified) {
 		*m_pImage=m_pPixmap->toImage();
 	}
-	if (uWidth>buffer->width() || uHeight>buffer->height())
+	if (uWidth > (uint) buffer->width() || uHeight > (uint) buffer->height())
 	{
 			c->warning(__tr2qs_ctx("Area dimensions are out of destination size ","objects"));
 			return true;
 	}
-	if (!uWidth){
+	if (!uWidth)
+	{
 		if(m_pImage->width()>buffer->width())
 		{
 			c->warning(__tr2qs_ctx("Pixmap dimensions are out of destination size ","objects"));
@@ -295,13 +296,12 @@ KVSO_CLASS_FUNCTION(pixmap,setOpacity)
 		}
 	}
 
-
-if(uXoffset+uWidth>m_pImage->width())
+	if(uXoffset + uWidth > (uint) m_pImage->width())
 	{
 		c->warning(__tr2qs_ctx("Offset width area is out of pixmap size ","objects"));
 		return true;
 	}
-	if( uYoffset+uHeight>m_pImage->height())
+	if(uYoffset + uHeight > (uint) m_pImage->height())
 	{
 		c->warning(__tr2qs_ctx("Offset height area is out of pixmap size ","objects"));
 		return true;
@@ -310,7 +310,7 @@ if(uXoffset+uWidth>m_pImage->width())
 //	buffer->setAlphaBuffer(true);
 	int iHedge=uHeight?uHeight:m_pImage->height();
 	int iWedge=uWidth?uWidth:m_pImage->width();
-		
+
 	for(int y = uYoffset;y<iHedge;y++)
 	{
 		QRgb * dst = (QRgb *)buffer->scanLine(y);
@@ -334,9 +334,9 @@ if(uXoffset+uWidth>m_pImage->width())
 }
 
 
-QPixmap * KviKvsObject_pixmap::getPixmap() 
+QPixmap * KviKvsObject_pixmap::getPixmap()
 {
-	if (bImageModified) 
+	if (bImageModified)
 	{
 		m_pPixmap->fromImage(*m_pImage);
 		bImageModified=false;
@@ -345,12 +345,12 @@ QPixmap * KviKvsObject_pixmap::getPixmap()
 }
 QImage * KviKvsObject_pixmap::getImage()
 {
-	if (bPixmapModified) 
+	if (bPixmapModified)
 	{
 		*m_pImage=m_pPixmap->toImage();
 		bPixmapModified=false;
 	}
-	
+
 	return m_pImage;
 }
 

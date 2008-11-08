@@ -76,22 +76,22 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_toolbar)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_toolbar)
 
-bool KviKvsObject_toolbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_toolbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
 {
 	if (!parentObject())
-	{	
+	{
 		pContext->warning(__tr2qs_ctx("The toolbar cannot be a parent-widget!","objects"));
 		return true;
 	}
 	if(parentObject()->inheritsClass("mainwindow"))
-	{ 
+	{
 		setObject(new KviTalToolBar(getName(), ((KviTalMainWindow *)parentScriptWidget())), true);
 	}
 	else
 	{
 		pContext->warning(__tr2qs_ctx("The parent-widget isn't a MainWindow.","objects"));
 	}
-	
+
 	return true;
 }
 

@@ -70,7 +70,7 @@ KviIrcLink::KviIrcLink(KviIrcConnection * pConnection)
 	m_pReadBuffer    = 0;            // incoming data buffer
 	m_uReadBufferLen = 0;            // incoming data buffer length
 	m_uReadPackets   = 0;            // total packets read per session
-	
+
 	m_eState = Idle;
 }
 
@@ -123,7 +123,7 @@ void KviIrcLink::createSocket(const QString & szLinkFilterName)
 
 	if(szLinkFilterName.isEmpty())
 		return;
-	
+
 	if(KviQString::equalCI(szLinkFilterName,"irc"))
 		return;
 
@@ -402,6 +402,8 @@ void KviIrcLink::socketStateChange()
 		break;
 		case KviIrcSocket::ProxyFinalHttp:
 			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Sent connection request, waiting for \"HTTP 200\" acknowledgement"));
+		break;
+		default:
 		break;
 	}
 }

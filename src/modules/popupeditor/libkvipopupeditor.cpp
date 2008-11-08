@@ -65,12 +65,12 @@ static bool popupeditor_module_init(KviModule * m)
 	return true;
 }
 
-static bool popupeditor_module_can_unload(KviModule * m)
+static bool popupeditor_module_can_unload(KviModule *)
 {
 	return (g_pPopupEditorWindow == 0);
 }
 
-static bool popupeditor_module_cleanup(KviModule *m)
+static bool popupeditor_module_cleanup(KviModule *)
 {
 	if(g_pPopupEditorWindow)delete g_pPopupEditorWindow;
 	g_pPopupEditorWindow = 0;

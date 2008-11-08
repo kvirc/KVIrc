@@ -107,7 +107,7 @@ KviSharedFileEditDialog::KviSharedFileEditDialog(QWidget * par,KviSharedFile * f
 
 	g->setRowStretch(4,1);
 	g->setColumnStretch(0,1);
-	
+
 	if(f)
 	{
 		m_pShareNameEdit->setText(f->name());
@@ -123,7 +123,7 @@ KviSharedFileEditDialog::KviSharedFileEditDialog(QWidget * par,KviSharedFile * f
 		m_pExpireDateTimeEdit->setDateTime(QDateTime::currentDateTime());
 		m_pExpireDateTimeEdit->setEnabled(false);
 	}
-	
+
 }
 
 KviSharedFileEditDialog::~KviSharedFileEditDialog()
@@ -164,7 +164,7 @@ void KviSharedFileEditDialog::okClicked()
 					__tr2qs_ctx("OK","sharedfileswindow"));
 		return;
 	}
-	
+
 	if(szName.isEmpty())
 	{
 		QMessageBox::warning(this,__tr2qs_ctx("Invalid share name","sharedfileswindow"),
@@ -172,7 +172,7 @@ void KviSharedFileEditDialog::okClicked()
 			__tr2qs_ctx("OK","sharedfileswindow"));
 		return;
 	}
-	
+
 	QFileInfo f(szPath);
 	if(!(f.exists() && f.isFile() && f.isReadable()))
 	{
@@ -494,7 +494,7 @@ void KviSharedFilesWindow::rightButtonPressed(KviTalTreeWidgetItem *it,const QPo
 
 	id = m_pContextPopup->insertItem(__tr2qs_ctx("Clear terminated","filetransferwindow"),this,SLOT(clearTerminated()));
 	m_pContextPopup->setItemEnabled(id,bHaveTerminated);
-	
+
 	id = m_pContextPopup->insertItem(__tr2qs_ctx("Clear all","filetransferwindow"),this,SLOT(clearAll()));
 	m_pContextPopup->setItemEnabled(id,it);
 
@@ -676,7 +676,7 @@ void KviSharedFilesWindow::clearTerminated()
 	KviSharedFilesManager::instance()->killTerminatedTransfers();
 }
 */
-void KviSharedFilesWindow::getBaseLogFileName(KviStr &buffer)
+void KviSharedFilesWindow::getBaseLogFileName(QString &buffer)
 {
 	buffer.sprintf("SHAREDFILES");
 }
@@ -686,7 +686,7 @@ QPixmap * KviSharedFilesWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SHAREDFILES);
 }
 
-void KviSharedFilesWindow::resizeEvent(QResizeEvent *e)
+void KviSharedFilesWindow::resizeEvent(QResizeEvent *)
 {
 	//int h = m_pInput->heightHint();
 	m_pSplitter->setGeometry(0,0,width(),height());

@@ -80,11 +80,11 @@ KVIMODULEEXPORTFUNC void setup_finish()
 			KVI_OPTION_STRING(KviOption_stringQuitMessage) = KVI_DEFAULT_QUIT_MESSAGE;
 		// We deserve to change the user's part message in something nice :)
 		KVI_OPTION_STRING(KviOption_stringPartMessage) = KVI_DEFAULT_PART_MESSAGE;
-	
+
 		// FIXME: Should we also change these ?
 		// #define KVI_DEFAULT_CTCP_USERINFO_REPLY "I'm too lazy to edit this field."
 		// #define KVI_DEFAULT_AWAY_MESSAGE "I'm off to see the wizard."
-	
+
 		// Apply the choosen default theme
 		QString szDir;
 /*		switch(g_iThemeToApply)
@@ -99,11 +99,11 @@ KVIMODULEEXPORTFUNC void setup_finish()
 			break;
 			// default: no theme
 		}*/
-		
+
 		g_pApp->getGlobalKvircDirectory(szDir,KviApp::Themes,"silverirc");
 		KviThemeInfo out;
 		KviTheme::load(szDir,out);
-		
+
 		if(!szMircServers.isEmpty())
 		{
 			g_pServerDataBase->importFromMircIni(szMircServers,szMircIni,
@@ -130,18 +130,18 @@ KVIMODULEEXPORTFUNC void setup_finish()
 	}
 }
 
-static bool setup_module_init(KviModule *m)
+static bool setup_module_init(KviModule *)
 {
 	bNeedToApplyDefaults=true;
 	return true;
 }
 
-static bool setup_module_cleanup(KviModule *m)
+static bool setup_module_cleanup(KviModule *)
 {
 	return true;
 }
 
-static bool setup_module_can_unload(KviModule *m)
+static bool setup_module_can_unload(KviModule *)
 {
 	return true; // can be always unloaded...this module does basically nothing
 }

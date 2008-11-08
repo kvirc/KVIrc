@@ -51,7 +51,7 @@ KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList = 0;
 
 static bool socketspy_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
-	if(!c->window()->console())return c->context()->errorNoIrcContext();	
+	if(!c->window()->console())return c->context()->errorNoIrcContext();
 	KviSocketSpyWindow *w = new KviSocketSpyWindow(c->window()->frame(),c->window()->console());
 	c->window()->frame()->addWindow(w);
 	return true;
@@ -66,7 +66,7 @@ static bool socketspy_module_init(KviModule * m)
 	return true;
 }
 
-static bool socketspy_module_cleanup(KviModule *m)
+static bool socketspy_module_cleanup(KviModule *)
 {
 	while(g_pSocketSpyWindowList->first())g_pSocketSpyWindowList->first()->die();
 	delete g_pSocketSpyWindowList;
@@ -74,7 +74,7 @@ static bool socketspy_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool socketspy_module_can_unload(KviModule *m)
+static bool socketspy_module_can_unload(KviModule *)
 {
 	return (g_pSocketSpyWindowList->isEmpty());
 }

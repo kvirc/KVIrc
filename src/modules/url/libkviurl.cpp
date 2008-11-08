@@ -77,7 +77,7 @@ void url_module_help();
 
 #define KVI_URL_EXTENSION_NAME "URL module extenstion"
 
-static KviModuleExtension * url_extension_alloc(KviModuleExtensionAllocStruct * s)
+static KviModuleExtension * url_extension_alloc(KviModuleExtensionAllocStruct *)
 {
 	urllist();
 	return 0;
@@ -128,7 +128,7 @@ QPixmap * KviUrlAction::smallIcon()
 
 // ---------------------------- CLASS URLDIALOG ------------------------begin //
 
-UrlDialog::UrlDialog(KviPointerList<KviUrl> *g_pList)
+UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 :KviWindow(KVI_WINDOW_TYPE_TOOL,g_pFrame,"URL List")
 {
 	m_pMenuBar = new KviTalMenuBar(this,"url menu");
@@ -286,7 +286,7 @@ void UrlDialog::popup(KviTalTreeWidgetItem *item, const QPoint &point)
 // 	p.insertItem(__tr2qs("&Find Text"),this,SLOT(findtext()));
 	p.insertSeparator();
 	m_pListPopup = new KviTalPopupMenu(0,"list");
-	int i=0;
+
 	for(KviWindow *w=g_pFrame->windowList()->first();w;w=g_pFrame->windowList()->next())
 	{
 		if ((w->type() == KVI_WINDOW_TYPE_CHANNEL) ||
@@ -661,7 +661,7 @@ void loadBanList()
 
   */
 
-static bool url_kvs_cmd_list(KviKvsModuleCommandCall * c)
+static bool url_kvs_cmd_list(KviKvsModuleCommandCall *)
 {
 	urllist();
 	return true;
@@ -721,7 +721,7 @@ bool urllist()
 		<HR>
 */
 
-static bool url_kvs_cmd_config(KviKvsModuleCommandCall * c)
+static bool url_kvs_cmd_config(KviKvsModuleCommandCall *)
 {
 	if (!g_pConfigDialog) g_pConfigDialog = new ConfigDialog();
 	return true;
@@ -853,7 +853,7 @@ static bool url_module_init(KviModule *m)
 	return true;
 }
 
-static bool url_module_cleanup(KviModule *m)
+static bool url_module_cleanup(KviModule *)
 {
 	KviConfig cfg(szConfigPath,KviConfig::Read);
 	cfg.setGroup("ConfigDialog");
@@ -879,7 +879,7 @@ static bool url_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool url_module_can_unload(KviModule *m)
+static bool url_module_can_unload(KviModule *)
 {
 	// FIXME: really ugly :/
 	return false;

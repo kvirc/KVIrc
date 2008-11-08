@@ -162,7 +162,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_treewidgetitem)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_treewidgetitem)
 
-bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
 {
 	if (!parentObject())
 	{
@@ -277,7 +277,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setFlags)
 			}
 		}
 		if(flag){
-			if (flag==Qt::ItemIsUserCheckable) 
+			if (flag==Qt::ItemIsUserCheckable)
 					m_pTreeWidgetItem->setCheckState(0,Qt::Unchecked);
 			sum = sum | flag;
 		}
@@ -286,7 +286,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setFlags)
 	}
 	if(m_pTreeWidgetItem)
 		m_pTreeWidgetItem->setFlags((Qt::ItemFlags)sum);
-	
+
 	return true;
 }
 /*

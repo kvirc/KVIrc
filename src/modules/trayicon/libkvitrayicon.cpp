@@ -172,7 +172,7 @@ static const char * idlemsgs[NIDLEMSGS]=
 	__tr("idle idle idle idle!")
 };
 
-void KviTrayIcon::tipRequest(KviDynamicToolTip *tip,const QPoint &pnt)
+void KviTrayIcon::tipRequest(KviDynamicToolTip *,const QPoint &)
 {
 	QString tmp;
 
@@ -430,7 +430,7 @@ void KviTrayIcon::grabActivityInfo()
 	{
 		if(KVI_OPTION_BOOL(KviOption_boolUseLevelBasedTrayNotification))
 		{
-			int iLevel = b->highlightLevel();
+			unsigned int iLevel = b->highlightLevel();
 			switch(b->kviWindow()->type())
 			{
 				case KVI_WINDOW_TYPE_CONSOLE:
@@ -447,7 +447,7 @@ void KviTrayIcon::grabActivityInfo()
 				break;
 			}
 		} else {
-			int iLevel=0;
+			unsigned int iLevel=0;
 			if(b->kviWindow()->view())
 			{
 				if(b->kviWindow()->view()->haveUnreadedHighlightedMessages())
@@ -671,7 +671,7 @@ static bool trayicon_module_init(KviModule * m)
 	return true;
 }
 
-static bool trayicon_module_cleanup(KviModule *m)
+static bool trayicon_module_cleanup(KviModule *)
 {
 	while(g_pTrayIconList->first())delete g_pTrayIconList->first();
 	delete g_pTrayIconList;

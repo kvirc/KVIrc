@@ -136,7 +136,7 @@ static bool term_module_init(KviModule * m)
 	return true;
 }
 
-static bool term_module_cleanup(KviModule *m)
+static bool term_module_cleanup(KviModule *)
 {
 #ifdef COMPILE_KDE3_SUPPORT
 	while(g_pTermWidgetList->first())delete g_pTermWidgetList->first();

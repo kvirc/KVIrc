@@ -45,14 +45,14 @@ static const char * const mod_tbl[] = {
 	"AutoText",
 	"LogText"
 };
-
+/*
 static int mod_cod[] = {
 	Qt::PlainText,
 	Qt::RichText,
 	Qt::AutoText,
 	Qt::LogText
 };
-
+*/
 #define mod_num		(sizeof(mod_tbl) / sizeof(mod_tbl[0]))
 
 
@@ -344,7 +344,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_textedit)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_textedit)
 
-bool KviKvsObject_textedit::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
+bool KviKvsObject_textedit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QTextEdit);
 	return true;
@@ -363,7 +363,7 @@ bool KviKvsObject_textedit::functionAddWidget(KviKvsObjectFunctionCall * c)
 	((QTextEdit *)object())->addScrollBarWidget(((QWidget *)(pObject->object())),Qt::AlignLeft);
 	return true;
 }
-bool KviKvsObject_textedit::functionInsertTable(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionInsertTable(KviKvsObjectFunctionCall *)
 {
 	if(widget()){
 		QTextCursor cur= ((QTextEdit *)widget())->textCursor();
@@ -439,8 +439,8 @@ bool KviKvsObject_textedit::functionInsertAt(KviKvsObjectFunctionCall * c)
 		KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-	if(iLine < 0 || iCol < 0 || iLine > ((QTextEdit *)widget())->document()->blockCount())
-			c->warning("No such line number");
+	if(iLine > (uint) ((QTextEdit *)widget())->document()->blockCount())
+		c->warning("No such line number");
 	//else
 	//	((QTextEdit *)widget())->insertAt(szInsert,iLine,iCol);
 	return true;
@@ -533,7 +533,7 @@ bool KviKvsObject_textedit::functionsetWrapPolicy(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionWordWrap(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionWordWrap(KviKvsObjectFunctionCall *)
 {
 	/*
 	if(widget())
@@ -592,21 +592,21 @@ bool KviKvsObject_textedit::functionAppend(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
-bool KviKvsObject_textedit::functionCopy(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionCopy(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QTextEdit *)widget())->copy();
 	return true;
 }
 
-bool KviKvsObject_textedit::functionCut(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionCut(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QTextEdit *)widget())->cut();
 	return true;
 }
 
-bool KviKvsObject_textedit::functionPaste(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionPaste(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QTextEdit *)widget())->paste();
@@ -712,21 +712,21 @@ bool KviKvsObject_textedit::functionzoomTo(KviKvsObjectFunctionCall * c)
 */
 
 //-> Undo & Redo functions
-bool KviKvsObject_textedit::functionundo(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionundo(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QTextEdit *)widget())->undo();
 	return true;
 }
 
-bool KviKvsObject_textedit::functionredo(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionredo(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QTextEdit *)widget())->redo();
 	return true;
 }
 
-bool KviKvsObject_textedit::functionclear(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionclear(KviKvsObjectFunctionCall *)
 {
 	if(widget())
 		((QTextEdit *)widget())->clear();
@@ -873,7 +873,6 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 				bool bOk,bOk1,bOk2;
 				QString value;
 				pColArray->asString(value);
-				int i=0;
 				if (value.length()!=6)
 				{
 						c->warning(__tr2qs("A string of 6 hex digits is required"));
@@ -996,7 +995,7 @@ bool KviKvsObject_textedit::functionsetOverwriteMode(KviKvsObjectFunctionCall * 
 	return true;
 }
 
-bool KviKvsObject_textedit::functiontextFormat(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functiontextFormat(KviKvsObjectFunctionCall *)
 {
 	if(!widget())return true;
 	/*
@@ -1074,7 +1073,6 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 			bool bOk,bOk1,bOk2;
 			QString value;
 			pColArray->asString(value);
-			int i=0;
 			if (value.length()!=6)
 			{
 					c->warning(__tr2qs("A string of 6 hex digits is required"));
@@ -1205,7 +1203,7 @@ bool KviKvsObject_textedit::functionsetVerticalAlignment(KviKvsObjectFunctionCal
 	return true;
 }
 
-bool KviKvsObject_textedit::functionparagraphs(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionparagraphs(KviKvsObjectFunctionCall *)
 {
 	//if(widget())
 	//	c->returnValue()->setInteger(((QTextEdit *)widget())->paragraphs());
@@ -1253,7 +1251,7 @@ bool KviKvsObject_textedit::functionparagraphLength(KviKvsObjectFunctionCall * c
 	return true;
 }
 
-bool KviKvsObject_textedit::functionselectAll(KviKvsObjectFunctionCall * c)
+bool KviKvsObject_textedit::functionselectAll(KviKvsObjectFunctionCall *)
 {
 	if (widget())
 		((QTextEdit *)widget())->selectAll();

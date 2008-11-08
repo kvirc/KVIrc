@@ -50,27 +50,27 @@ extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 {
 	QString szProxy, szProtocol;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("proxy",KVS_PT_STRING,0,szProxy)
 	KVSM_PARAMETERS_END(c)
-	
+
 	if(szProxy.isEmpty())
 	{
 		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter","proxydb"));
 		return false;
 	}
-	
+
 	KviProxy * pProxy = new KviProxy();
 	pProxy->setHostname(szProxy);
-	
+
 	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
 	if(!pRecord)
 	{
 		c->error(__tr2qs_ctx("The specified proxy does not exist","proxydb"));
 		return false;
 	}
-	
+
 	switch(pProxy->protocol())
 	{
 		case KviProxy::Socks4:
@@ -85,7 +85,7 @@ static bool proxydb_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 	}
 
 	c->returnValue()->setString(szProtocol);
-	
+
 	return true;
 }
 
@@ -346,27 +346,27 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 	QString szProxy, szPort;
 	unsigned int uPort;
 	bool bOk;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("proxy",KVS_PT_STRING,0,szProxy)
 		KVSM_PARAMETER("port",KVS_PT_STRING,0,szPort)
 	KVSM_PARAMETERS_END(c)
-	
+
 	if(szProxy.isEmpty())
 	{
 		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter","proxydb"));
 		return false;
 	}
-	
+
 	if(szPort.isEmpty())
 	{
 		c->error(__tr2qs_ctx("You must provide the port number as parameter","proxydb"));
 		return false;
 	}
-	
+
 	KviProxy * pProxy = new KviProxy();
 	pProxy->setHostname(szProxy);
-	
+
 	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
 	if(!pRecord)
 	{
@@ -374,12 +374,12 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 		c->error(__tr2qs_ctx("The specified proxy does not exist","proxydb"));
 		return false;
 	}
-	
+
 	uPort = szPort.toInt(&bOk);
 	if(!bOk) uPort = 1080;
 	pProxy->setPort(uPort);
 	debug("PROXYDB Port: %d",uPort);
-	
+
 	return true;
 }
 
@@ -417,28 +417,27 @@ static bool proxydb_kvs_cmd_setPort(KviKvsModuleCommandCall * c)
 static bool proxydb_kvs_cmd_setIp(KviKvsModuleCommandCall * c)
 {
 	QString szProxy, szIp;
-	bool bOk;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("proxy",KVS_PT_STRING,0,szProxy)
 		KVSM_PARAMETER("ip",KVS_PT_STRING,0,szIp)
 	KVSM_PARAMETERS_END(c)
-	
+
 	if(szProxy.isEmpty())
 	{
 		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter","proxydb"));
 		return false;
 	}
-	
+
 	if(szIp.isEmpty())
 	{
 		c->error(__tr2qs_ctx("You must provide the IP as parameter","proxydb"));
 		return false;
 	}
-	
+
 	KviProxy * pProxy = new KviProxy();
 	pProxy->setHostname(szProxy);
-	
+
 	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
 	if(!pRecord)
 	{
@@ -456,7 +455,7 @@ static bool proxydb_kvs_cmd_setIp(KviKvsModuleCommandCall * c)
 	}
 
 	pProxy->setIp(szIp);
-	
+
 	return true;
 }
 
@@ -487,21 +486,21 @@ static bool proxydb_kvs_cmd_setIPv6(KviKvsModuleCommandCall * c)
 {
 	QString szProxy;
 	bool bIPv6;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("proxy",KVS_PT_STRING,0,szProxy)
 		KVSM_PARAMETER("ipv6",KVS_PT_BOOLEAN,0,bIPv6)
 	KVSM_PARAMETERS_END(c)
-	
+
 	if(szProxy.isEmpty())
 	{
 		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter","proxydb"));
 		return false;
 	}
-	
+
 	KviProxy * pProxy = new KviProxy();
 	pProxy->setHostname(szProxy);
-	
+
 	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
 	if(!pRecord)
 	{
@@ -509,9 +508,9 @@ static bool proxydb_kvs_cmd_setIPv6(KviKvsModuleCommandCall * c)
 		c->error(__tr2qs_ctx("The specified proxy does not exist","proxydb"));
 		return false;
 	}
-	
+
 	pProxy->setIPv6(bIPv6);
-	
+
 	return true;
 }
 
@@ -542,27 +541,27 @@ static bool proxydb_kvs_cmd_setIPv6(KviKvsModuleCommandCall * c)
 static bool proxydb_kvs_cmd_setProtocol(KviKvsModuleCommandCall * c)
 {
 	QString szProxy, szProtocol;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("proxy",KVS_PT_STRING,0,szProxy)
 		KVSM_PARAMETER("protocol",KVS_PT_STRING,0,szProtocol)
 	KVSM_PARAMETERS_END(c)
-	
+
 	if(szProxy.isEmpty())
 	{
 		c->error(__tr2qs_ctx("You must provide the proxy hostname as parameter","proxydb"));
 		return false;
 	}
-	
+
 	if(szProtocol.isEmpty())
 	{
 		c->error(__tr2qs_ctx("You must provide the protocol as parameter","proxydb"));
 		return false;
 	}
-	
+
 	KviProxy * pProxy = new KviProxy();
 	pProxy->setHostname(szProxy);
-	
+
 	KviProxy * pRecord = g_pProxyDataBase->findProxy(pProxy,true);
 	if(!pRecord)
 	{
@@ -718,7 +717,7 @@ static bool proxydb_module_init(KviModule * m)
 	return true;
 }
 
-static bool proxydb_module_cleanup(KviModule *m)
+static bool proxydb_module_cleanup(KviModule *)
 {
 	return true;
 }

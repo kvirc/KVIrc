@@ -124,7 +124,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_wizard)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_wizard)
 
-bool KviKvsObject_wizard::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_wizard::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	setObject(new KviKvsMdmWizard(parentScriptWidget(), getName().toUtf8().data(),this), true);
 
@@ -150,7 +150,7 @@ KVSO_CLASS_FUNCTION(wizard,addPage)
 	return true;
 }
 KVSO_CLASS_FUNCTION(wizard,insertPage)
-{	
+{
 	CHECK_INTERNAL_POINTER(widget())
 
 	KviKvsObject *ob;
@@ -174,7 +174,7 @@ KVSO_CLASS_FUNCTION(wizard,insertPage)
 
 
 KVSO_CLASS_FUNCTION(wizard,setTitle)
-{	
+{
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *ob;
 	QString szTitle;

@@ -67,11 +67,11 @@
 		in the document, user abort etc...).
 		If this function return $false then you can call $lastError() to
 		obtain a descriptive error message.
-		
+
 		!fn: <string> $lastError()
 		Returns the last error occured inside the parser.
 		You will typically call this function when $parse() above returns $false.
-	
+
 		!fn: <boolean> $onDocumentStart()
 		This function is called when the document parsing starts.
 		You can reimplement it in order to handle this notification.
@@ -85,18 +85,18 @@
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-		
+
 		!fn: <boolean> $onElementStart(<qualified_name:string>,<attributes:hash>,<namespace:string>,<local_name:string>)
 		This function is called when an element opening tag is encountered.
 		The <qualified_name> of the tag is passed as the first parameter.
 		The <attributes> are passed in the form of a hash with attribute
-		values indexed by their names. 
+		values indexed by their names.
 		When the <qualified_name> contains a namespace then it is also reported
 		in the splitted <namespace> <local_name> pair.
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-		
+
 		!fn: <boolean> $onElementEnd(<qualified_name:string>,<namespace:string>,<local_name:string>)
 		This function is called when an element closing tag is encountered.
 		The <qualified_name> of the tag is passed as the first parameter.
@@ -112,14 +112,14 @@
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-		
+
 		!fn: <boolean> $onWarning(<message:string>)
 		This function is called when the parser generates a recoverable error.
 		The error <message> is passed as the first parameter.
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.
 		The default implementation does nothing besides returning $true.
-		
+
 		!fn: <boolean> $onError(<message:string>)
 		This function is called when the parser generates an unrecoverable error.
 		The error <message> is passed as the first parameter.
@@ -178,7 +178,7 @@ public:
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
-	
+
 	virtual bool endDocument()
 	{
 		KviKvsVariant ret;
@@ -186,7 +186,7 @@ public:
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
-	
+
 	virtual bool startElement(const QString &szNamespaceUri,const QString &szLocalName,const QString &szQualifiedName,const QXmlAttributes &attrs)
 	{
 		KviKvsVariant ret;
@@ -204,7 +204,7 @@ public:
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
-	
+
 	virtual bool endElement(const QString &szNamespaceUri,const QString &szLocalName,const QString &szQualifiedName)
 	{
 		KviKvsVariant ret;
@@ -217,7 +217,7 @@ public:
 			return kvsCodeFailure();
 		return handleKvsCallReturnValue(&ret);
 	}
-	
+
 	virtual bool characters(const QString &szChars)
 	{
 		KviKvsVariant ret;
@@ -266,8 +266,8 @@ public:
 		m_pReader->fatalError(szMsg);
 		return true;
 	}
-	
-	virtual QString errorString()
+
+	virtual QString errorString() const
 	{
 		return m_szErrorString;
 	}
@@ -318,7 +318,7 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 	m_szLastError = "";
 	KviXmlHandler handler(this);
 	QXmlInputSource source;
-		
+
 	if (pVariantData->isHObject())
 	{
 		KviKvsObject * pObject;

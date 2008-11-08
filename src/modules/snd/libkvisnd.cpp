@@ -317,7 +317,7 @@ bool KviSoundPlayer::playQt(const QString &szFileName)
 	return true;
 }
 
-bool KviSoundPlayer::playNull(const QString &szFileName)
+bool KviSoundPlayer::playNull(const QString &)
 {
 	// null sound system
 	return true;
@@ -402,7 +402,7 @@ void KviSoundThread::run()
 				sampleFormat = -1;
 
 				afGetVirtualSampleFormat(file, AF_DEFAULT_TRACK, &sampleFormat, &sampleWidth);
-				
+
 				if(sampleFormat == -1)
 				{
 					debug("libaudiofile couldn't find the sample format for file %s",m_szFileName.utf8().data());
@@ -765,19 +765,19 @@ static bool snd_module_init(KviModule * m)
 	return true;
 }
 
-static bool snd_module_cleanup(KviModule *m)
+static bool snd_module_cleanup(KviModule *)
 {
 	delete g_pSoundPlayer;
 	g_pSoundPlayer = 0;
 	return true;
 }
 
-static bool snd_module_can_unload(KviModule *m)
+static bool snd_module_can_unload(KviModule *)
 {
 	return !(g_pSoundPlayer->havePlayingSounds());
 }
 
-static bool snd_module_ctrl(KviModule * m,const char * operation,void * param)
+static bool snd_module_ctrl(KviModule *,const char * operation,void * param)
 {
 	if(kvi_strEqualCI(operation,"getAvailableSoundSystems"))
 	{

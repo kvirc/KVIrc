@@ -33,7 +33,7 @@ KviKvsObjectFunctionHandler * KviKvsObjectStandardTrueReturnFunctionHandler::clo
 	return new KviKvsObjectStandardTrueReturnFunctionHandler();
 }
 
-bool KviKvsObjectStandardTrueReturnFunctionHandler::call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall)
+bool KviKvsObjectStandardTrueReturnFunctionHandler::call(KviKvsObject *,KviKvsObjectFunctionCall * pCall)
 {
 	pCall->returnValue()->setBoolean(true);
 	return true;
@@ -46,7 +46,7 @@ KviKvsObjectFunctionHandler * KviKvsObjectStandardFalseReturnFunctionHandler::cl
 	return new KviKvsObjectStandardFalseReturnFunctionHandler();
 }
 
-bool KviKvsObjectStandardFalseReturnFunctionHandler::call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall)
+bool KviKvsObjectStandardFalseReturnFunctionHandler::call(KviKvsObject *,KviKvsObjectFunctionCall * pCall)
 {
 	pCall->returnValue()->setBoolean(false);
 	return true;
@@ -59,7 +59,7 @@ KviKvsObjectFunctionHandler * KviKvsObjectStandardNothingReturnFunctionHandler::
 	return new KviKvsObjectStandardNothingReturnFunctionHandler();
 }
 
-bool KviKvsObjectStandardNothingReturnFunctionHandler::call(KviKvsObject * pObject,KviKvsObjectFunctionCall * pCall)
+bool KviKvsObjectStandardNothingReturnFunctionHandler::call(KviKvsObject *,KviKvsObjectFunctionCall * pCall)
 {
 	pCall->returnValue()->setNothing();
 	return true;

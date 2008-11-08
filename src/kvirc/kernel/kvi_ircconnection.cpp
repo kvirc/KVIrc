@@ -899,7 +899,7 @@ void KviIrcConnection::userInfoReceived(const QString & szUserName, const QStrin
 	}
 }
 
-void KviIrcConnection::hostNameLookupTerminated(KviDns * pDns)
+void KviIrcConnection::hostNameLookupTerminated(KviDns *)
 {
 	if(!m_pLocalhostDns)
 	{

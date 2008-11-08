@@ -120,7 +120,7 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 	if( !pParams ) return false;
 
 	QWidget *pWidget = 0;
-	int i=0;
+	unsigned int i=0;
 	while(i!=pParams->count())
 	{
 		QString szClass;
@@ -139,7 +139,7 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		}
 		debug ("szClass %s",szClass.toUtf8().data());
 		debug ("szName %s",szName.toUtf8().data());
-		debug ("s %s",s.data());
+		debug ("s %s",s.toUtf8().data());
 
 		if(KviQString::equalCI(szClass,"WinId"))
 		{
@@ -207,7 +207,7 @@ QWidget *KviKvsObject_wrapper::findWidgetToWrap(const QString szClass, const QSt
 	if( !list.count() ) return 0;
 	for(int idx=0;idx<list.count();idx++)
 	{
-		if( list.at(idx)->isWidgetType() ) 
+		if( list.at(idx)->isWidgetType() )
 		{
 			QWidget *w = (QWidget *)list.at(idx);
 			if (KviQString::equalCI(w->metaObject()->className(),szClass) &&KviQString::equalCI(w->objectName(),szName))return w;

@@ -48,7 +48,7 @@
 		!fn: $settext(<text:string>)
 		Sets the text that will appear in the radiobutton.
 		!fn: <boolean> $isChecked()
-		Returns 1 (TRUE) if the radio button is checked; otherwise returns 0 (FALSE). 
+		Returns 1 (TRUE) if the radio button is checked; otherwise returns 0 (FALSE).
 		!fn: $setChecked(<bChecked:boolean>)
 		Sets whether the radio button is checked to check.
 		!fn: $setPixmap(<image_id>)
@@ -59,7 +59,7 @@
 		The default implementation emits the toggled(<bool>) signal.
 		!sg: $toggled()
 		This signal is emitted by the default implementation of [classfnc]$toggleEvent[/classfnc]().[br]
-		
+
 
 */
 
@@ -83,7 +83,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_radiobutton)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_radiobutton)
 
-bool KviKvsObject_radiobutton::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_radiobutton::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QRadioButton)
 	connect(widget(),SIGNAL(toggled(bool)),this,SLOT(toggled(bool)));

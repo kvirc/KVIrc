@@ -84,7 +84,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_textbrowser)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_textbrowser)
 
-bool KviKvsObject_textbrowser::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_textbrowser::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QTextBrowser);
 	connect(obj,SIGNAL(anchorClicked(const QUrl &)),this,SLOT(anchorClicked(const QUrl &)));

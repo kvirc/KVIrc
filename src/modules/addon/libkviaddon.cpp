@@ -57,7 +57,7 @@ QRect g_rectManagementDialogGeometry(0,0,0,0);
 		<boolean> $addon.exists(<id:string>[,<version:string>])
 	@description:
 		Returns 1 if the addon with the specified <id> is currently installed
-		and 0 otherwise. If <version> is specified then any addon with 
+		and 0 otherwise. If <version> is specified then any addon with
 		a version lower than <version> is ignored (so you can effectively
 		check if a greater or equal version is present).
 */
@@ -146,7 +146,7 @@ static bool addon_kvs_cmd_list(KviKvsModuleCommandCall * c)
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("%cAddon id %Q, version %Q%c"),KVI_TEXT_BOLD,&(a->name()),&(a->version()),KVI_TEXT_BOLD);
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Name: %Q"),&(a->visibleName()));
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Description: %Q"),&(a->description()));
-	
+
 		++it;
 		cnt++;
 	}
@@ -338,7 +338,7 @@ static bool addon_kvs_cmd_setconfigurecallback(KviKvsModuleCallbackCommandCall *
 		if(!c->switches()->find('q',"quiet"))
 			c->warning(__tr2qs("The addon \"%1\" does not exist").arg(szName));
 	}
-	
+
 	return true;
 }
 
@@ -385,7 +385,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		if(!c->switches()->find('q',"quiet"))
 			c->warning(__tr2qs("The addon \"%1\" does not exist").arg(szName));
 	}
-	
+
 	return true;
 }
 
@@ -505,7 +505,7 @@ static bool addon_kvs_cmd_sethelpcallback(KviKvsModuleCallbackCommandCall * c)
 		[cmd]addon.sethelpcallback[/cmd], [cmd]addon.help[/cmd]
 	@examples:
 		[example]
-		
+
 		[/example]
 */
 
@@ -602,7 +602,7 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 		Shows the addon addon management editor
 */
 
-static bool addon_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
+static bool addon_kvs_cmd_dialog(KviKvsModuleCommandCall *)
 {
 	KviScriptManagementDialog::display();
 	return true;
@@ -625,7 +625,7 @@ static bool addon_kvs_cmd_dialog(KviKvsModuleCommandCall * c)
 static bool addon_kvs_cmd_install(KviKvsModuleCommandCall * c)
 {
 	QString szAddonPackFile;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("package_path",KVS_PT_STRING,0,szAddonPackFile)
 	KVSM_PARAMETERS_END(c)
@@ -651,7 +651,7 @@ static bool addon_module_init(KviModule *m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"uninstall",addon_kvs_cmd_uninstall);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"configure",addon_kvs_cmd_configure);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"help",addon_kvs_cmd_help);
-	
+
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"setconfigurecallback",addon_kvs_cmd_setconfigurecallback);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"sethelpcallback",addon_kvs_cmd_sethelpcallback);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"register",addon_kvs_cmd_register);
@@ -676,7 +676,7 @@ static bool addon_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool addon_module_can_unload(KviModule * m)
+static bool addon_module_can_unload(KviModule *)
 {
 	return (!KviScriptManagementDialog::instance());
 }

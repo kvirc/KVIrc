@@ -40,7 +40,7 @@ protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(KviStr &buffer);
+	virtual void getBaseLogFileName(QString &buffer);
 	virtual void applyOptions();
 public:
 	virtual QSize sizeHint() const;

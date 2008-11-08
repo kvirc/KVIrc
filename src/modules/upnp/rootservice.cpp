@@ -184,7 +184,7 @@ void RootService::addDeviceServices(const QDomNode &device)
 
 	// Find all embedded device nodes
 	QDomNodeList embeddedDevices = device.namedItem("deviceList").childNodes();
-	for(uint i = 0; i < embeddedDevices.count(); i++)
+	for(int i = 0; i < embeddedDevices.count(); i++)
 	{
 		if(embeddedDevices.item(i).nodeName() != "device") continue;
 		addDeviceServices(embeddedDevices.item(i));

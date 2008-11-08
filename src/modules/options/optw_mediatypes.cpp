@@ -61,7 +61,7 @@ void KviMediaTypeTreeWidgetItem::copyData(KviMediaType * t)
 	copyMediaType(&m_data,t);
 	setText(0,m_data.szFileMask.ptr());
 	setText(1,m_data.szIanaType.ptr());
-	setText(2,m_data.szDescription.ptr());	
+	setText(2,m_data.szDescription.ptr());
 }
 
 KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
@@ -212,17 +212,17 @@ void KviMediaTypesOptionsWidget::enableOrDisable()
 
 void KviMediaTypesOptionsWidget::setLineEdits()
 {
-	m_pDescription->setText(m_pLastItem ? m_pLastItem->data()->szDescription.ptr() : "");
-	m_pIanaType->setText(m_pLastItem ? m_pLastItem->data()->szIanaType.ptr() : "");
-	m_pFileMask->setText(m_pLastItem ? m_pLastItem->data()->szFileMask.ptr() : "");
-	m_pSavePath->setText(m_pLastItem ? m_pLastItem->data()->szSavePath.ptr() : "");
-	m_pCommandline->setText(m_pLastItem ? m_pLastItem->data()->szCommandline.ptr() : "");
-	m_pMagicBytes->setText(m_pLastItem ? m_pLastItem->data()->szMagicBytes.ptr() : "");
-	m_pRemoteExecCommandline->setText(m_pLastItem ? m_pLastItem->data()->szRemoteExecCommandline.ptr() : "");
-	m_pIcon->setText(m_pLastItem ? m_pLastItem->data()->szIcon.ptr() : "");
+	m_pDescription->setText(m_pLastItem ? m_pLastItem->mydata()->szDescription.ptr() : "");
+	m_pIanaType->setText(m_pLastItem ? m_pLastItem->mydata()->szIanaType.ptr() : "");
+	m_pFileMask->setText(m_pLastItem ? m_pLastItem->mydata()->szFileMask.ptr() : "");
+	m_pSavePath->setText(m_pLastItem ? m_pLastItem->mydata()->szSavePath.ptr() : "");
+	m_pCommandline->setText(m_pLastItem ? m_pLastItem->mydata()->szCommandline.ptr() : "");
+	m_pMagicBytes->setText(m_pLastItem ? m_pLastItem->mydata()->szMagicBytes.ptr() : "");
+	m_pRemoteExecCommandline->setText(m_pLastItem ? m_pLastItem->mydata()->szRemoteExecCommandline.ptr() : "");
+	m_pIcon->setText(m_pLastItem ? m_pLastItem->mydata()->szIcon.ptr() : "");
 }
 
-void KviMediaTypesOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
+void KviMediaTypesOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 {
 	saveLastItem();
 	m_pLastItem = (KviMediaTypeTreeWidgetItem *)it;
@@ -264,7 +264,7 @@ void KviMediaTypesOptionsWidget::commit()
 	{
 		it=(KviMediaTypeTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		KviMediaType * t = new KviMediaType;
-		copyMediaType(t,it->data());
+		copyMediaType(t,it->mydata());
 		g_pMediaManager->insertMediaType(t);
 	//	it = (KviMediaTypeTreeWidgetItem *)it->nextSibling();
 	}

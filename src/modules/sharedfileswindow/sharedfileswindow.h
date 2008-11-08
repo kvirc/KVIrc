@@ -35,7 +35,7 @@
 #include <QDialog>
 #include <QCheckBox>
 
-class QGridLayout; 
+class QGridLayout;
 class QDateTimeEdit;
 class QLabel;
 class QLineEdit;
@@ -95,7 +95,7 @@ protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(KviStr &buffer);
+	virtual void getBaseLogFileName(QString &buffer);
 public:
 	virtual QSize sizeHint() const;
 protected slots:

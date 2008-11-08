@@ -55,16 +55,16 @@
 		See also [classfnc]$settotalSteps[/classfnc]()
 		!fn: $settotalSteps(<total_steps:uinteger>)
 		The progress bar uses the concept of steps; you give it the total number of steps
-		and the number of steps completed so far and it will display the percentage of steps that have been completed. 
-		See also [classfnc]$setProgress[/classfnc]() 
+		and the number of steps completed so far and it will display the percentage of steps that have been completed.
+		See also [classfnc]$setProgress[/classfnc]()
 		!fn: $reset()
-		Reset the progress bar. 
+		Reset the progress bar.
 		!fn: $setPercentageVisible(<bVisible,boolean>)
 		Sets whether the current progress value is displayed.
-		See also [classfnc]$isPercentageVisible[/classfnc]() 
+		See also [classfnc]$isPercentageVisible[/classfnc]()
 		!fn: <boolean> $ispercentageVisible()
 		This property holds whether the current progress value is displayed.
-		See also [classfnc]$setPercentageVisible[/classfnc]() 
+		See also [classfnc]$setPercentageVisible[/classfnc]()
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_progressbar,"progressbar","widget")
@@ -85,8 +85,8 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_progressbar)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_progressbar)
 
-bool KviKvsObject_progressbar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
-{	
+bool KviKvsObject_progressbar::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+{
 	SET_OBJECT (QProgressBar)
 	return true;
 }

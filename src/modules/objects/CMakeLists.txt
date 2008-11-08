@@ -32,7 +32,6 @@ SET(kviobjects_MOC_HDRS
 	class_widget.h
 	class_window.h
 	class_wizard.h
-	class_xmlreader.h
 )
 
 SET(kviobjects_SRCS

@@ -97,7 +97,7 @@
 		A good value is 100.
 		!fn:<integer> $pupupDelay()
 		Returns the time delay between pressing the button and the appearance of the associated popup menu in milliseconds.
-*/ 
+*/
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbutton,"toolbutton","widget")
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setImage)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbutton,setUsesBigPixmap)
@@ -134,7 +134,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_toolbutton)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_toolbutton)
 
-bool KviKvsObject_toolbutton::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_toolbutton::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QToolButton);
 	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));

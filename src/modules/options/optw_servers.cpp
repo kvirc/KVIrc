@@ -1325,7 +1325,7 @@ void KviServerOptionsWidget::itemDoubleClicked(QTreeWidgetItem*, int )
 	detailsClicked();
 }
 
-void KviServerOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
+void KviServerOptionsWidget::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 {
 	saveLastItem();
 	m_pLastEditedItem = (KviServerOptionsTreeWidgetItem *)it;

@@ -188,7 +188,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_popupmenu)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_popupmenu)
 
-bool KviKvsObject_popupmenu::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_popupmenu::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	identifier=0;
 	SET_OBJECT(QMenu)
@@ -206,8 +206,7 @@ KVSO_CLASS_FUNCTION(popupmenu,insertItem)
 		KVSO_PARAMETER("icon_id",KVS_PT_STRING,KVS_PF_OPTIONAL,szIcon)
 	KVSO_PARAMETERS_END(c)
 	QPixmap *pix = 0;
-	int id=0;
-	QAction * action;
+	QAction * action = 0;
 	if(!szIcon.isEmpty())
 	{
 		pix = g_pIconManager->getImage(szIcon);
@@ -230,10 +229,10 @@ KVSO_CLASS_FUNCTION(popupmenu,setTitle)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	((QMenu *)widget())->setTitle(szTitle);
-	
+
 	return true;
 }
-/*
+
 KVSO_CLASS_FUNCTION(popupmenu,insertWidget)
 {
 	KviKvsObject *pObject;
@@ -362,8 +361,7 @@ void KviKvsObject_popupmenu::slottriggered(QAction *a)
 {
 	QHashIterator<int, QAction *> i(actionsDict);
 	kvs_int_t count=0;
-	bool found=false;
-	while (i.hasNext()) 
+	while (i.hasNext())
 	{
 		i.next();
 		if (i.value()!= a) count++;

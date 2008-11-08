@@ -717,7 +717,6 @@ void KviIrcContext::connectionTerminated()
 			if(KVI_OPTION_BOOL(KviOption_boolRejoinChannelsAfterReconnect))
 			{
 				// FIXME: THIS SHOULD BE A KviIrcConnection FUNCTION
-				int idx = 0;
 				KviChannel * c;
 				QString szChannels,szProtectedChannels,szPasswords,szCurPass,szCurChan;
 				// first only chans without key, in groups of 4

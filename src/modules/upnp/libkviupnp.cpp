@@ -117,7 +117,7 @@ static bool upnp_kvs_cmd_addPortMapping(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("port",KVS_PT_INT,0,iPort)
 	KVSM_PARAMETERS_END(c)
 
-	if(pSw = c->switches()->find('a',"fake-address"))
+	if( (pSw = c->switches()->find('a',"fake-address")) )
 	{
 		pSw->asString(szLocalIp);
 	} else {
@@ -174,7 +174,7 @@ static bool upnp_kvs_cmd_delPortMapping(KviKvsModuleCommandCall * c)
 	@seealso:
 		[fnc]$upnp.isGatewayAvailable[/fnc]
 */
-static bool upnp_kvs_cmd_refresh(KviKvsModuleCommandCall * c)
+static bool upnp_kvs_cmd_refresh(KviKvsModuleCommandCall *)
 {
 	if(g_pManager)
 		delete g_pManager;
@@ -185,7 +185,7 @@ static bool upnp_kvs_cmd_refresh(KviKvsModuleCommandCall * c)
 	return true;
 }
 
-static bool upnp_module_init(KviModule * m)
+static bool upnp_module_init(KviModule *m)
 {
 	if(g_pManager)
 		delete g_pManager;
@@ -202,14 +202,14 @@ static bool upnp_module_init(KviModule * m)
 	return true;
 }
 
-static bool upnp_module_cleanup(KviModule *m)
+static bool upnp_module_cleanup(KviModule *)
 {
 	delete g_pManager;
 	g_pManager = 0;
 	return true;
 }
 
-static bool upnp_module_can_unload(KviModule *m)
+static bool upnp_module_can_unload(KviModule *)
 {
 	// if a gateway is available, don't unload me
 	return !g_pManager->isGatewayAvailable();

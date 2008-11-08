@@ -697,7 +697,7 @@ KviKvsObject::~KviKvsObject()
 	if(m_pFunctionHandlers)delete m_pFunctionHandlers;
 }
 
-bool KviKvsObject::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	return true;
 }
@@ -1046,13 +1046,13 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 					KviQString::sprintf(szOut,__tr2qs_ctx("Property: %c%Q%c, type %Q","kvs"),KVI_TEXT_BOLD,&szName,KVI_TEXT_BOLD,&szType);
 					szOut.prepend(" ");
 				}
-				
+
 				if(p->isEnumType())
 				{
 					szOut += ", enum(";
 					szOut += ")";
 				}
-				
+
 
 				// FIXME: QT4 Need to read better the docs and check the changes: there seem to be too many
 				//        for me to fix now. Actually I need to get the whole executable working...
@@ -1289,9 +1289,9 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 					c->warning(__tr2qs_ctx("Can't find the requested image","kvs"));
 			}
 		}
-		
+
 		break;
-	
+
 		default:
 			c->warning(__tr2qs_ctx("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type","kvs"),&szName,&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
@@ -1545,7 +1545,7 @@ void KviKvsObject::objectDestroyed()
 	die();
 }
 
-bool KviKvsObject::eventFilter(QObject *o,QEvent *e)
+bool KviKvsObject::eventFilter(QObject *,QEvent *)
 {
 	return false; // do not stop
 }

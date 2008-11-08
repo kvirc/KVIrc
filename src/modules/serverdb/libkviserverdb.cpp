@@ -93,7 +93,6 @@ static bool serverdb_kvs_fnc_networkExists(KviKvsModuleFunctionCall * c)
 static bool serverdb_kvs_fnc_serverExists(KviKvsModuleFunctionCall * c)
 {
 	QString szServer, szNetwork;
-	bool bCheckAllNets = true;
 
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("server_name",KVS_PT_STRING,0,szServer)
@@ -1341,7 +1340,7 @@ static bool serverdb_module_init(KviModule * m)
 	return true;
 }
 
-static bool serverdb_module_cleanup(KviModule *m)
+static bool serverdb_module_cleanup(KviModule *)
 {
 	return true;
 }

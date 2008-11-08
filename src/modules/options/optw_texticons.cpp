@@ -35,7 +35,7 @@
 #include <QCursor>
 #include <QHeaderView>
 
-KviTextIconTableItem::KviTextIconTableItem(QTableWidget * t,KviTextIcon * icon)
+KviTextIconTableItem::KviTextIconTableItem(QTableWidget *,KviTextIcon * icon)
 : QTableWidgetItem(QString(),Qt::ItemIsEditable)
 {
 	if(icon)

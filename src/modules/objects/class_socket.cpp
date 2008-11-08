@@ -333,7 +333,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_socket)
 	m_pOutBuffer=0;
 	m_pFlushTimer=0;
 
-	
+
 	if(m_pInBuffer)kvi_free(m_pInBuffer);
 	if(m_pDelayTimer)delete m_pDelayTimer;
 	if(m_pDns)delete m_pDns;
@@ -463,14 +463,14 @@ KVSO_CLASS_FUNCTION(socket,readHex)
 	char * str = new char[(uLen*2) + 1];
 	int index=0;
 	unsigned char byte,msb,lsb=0;
-	for (int i=0;i<uLen;i++)
+	for (unsigned int i=0;i<uLen;i++)
 	{
 		byte=(unsigned char)m_pInBuffer[i];
 		lsb=byte & 0x0f;
 		msb=byte>>4;
-		msb>9?msb+='7':msb+='0'; 
-		lsb>9?lsb+='7':lsb+='0'; 
-		str[index++]=msb; 
+		msb>9?msb+='7':msb+='0';
+		lsb>9?lsb+='7':lsb+='0';
+		str[index++]=msb;
 		str[index++]=lsb;
 	}
 	str[index]='\0';
@@ -507,7 +507,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 		else if (pObject->inheritsClass("file"))
 		{
 			KviFile *pFile=((KviKvsObject_file *)pObject)->pFile();
-			if (!pFile->isOpen()) 
+			if (!pFile->isOpen())
 			{
 				c->warning(__tr2qs_ctx("File is not open!","objects"));
 				return true;
@@ -523,7 +523,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 			c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer or file object","objects"));
 			return true;
 		}
-		
+
 	}
 	else
 	{
@@ -605,7 +605,7 @@ KVSO_CLASS_FUNCTION(socket,writeHex)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("hex_string",KVS_PT_STRING,0,m_szHex)
 	KVSO_PARAMETERS_END(c)
-	if (m_szHex.length()%2) 
+	if (m_szHex.length()%2)
 	{
 		c->warning(__tr2qs_ctx("The hex string lenght is not a multiple of 2","objects"));
 		return true;
@@ -672,7 +672,7 @@ KVSO_CLASS_FUNCTION(socket,functionConnect)
 		m_iStatus = KVI_SCRIPT_SOCKET_STATUS_CONNECTING;
 		delayedConnect();
 	} else {
-		debug ("connectinhg on ip %s port %d",m_szRemoteIp.toUtf8().data(),m_uRemotePort);
+		debug ("connectinhg on ip %s port %d",m_szRemoteIp.toUtf8().data(),(int) m_uRemotePort);
 		m_iStatus = KVI_SCRIPT_SOCKET_STATUS_DNS;
 		delayedLookupRemoteIp();
 	}
@@ -1187,7 +1187,7 @@ void KviKvsObject_socket::readNotifierFired(int)
 	// readLength > 0
 	m_uInDataLen += readLength;
 
-	
+
 	unsigned int uOldConnectionId = m_uConnectionId;
 	callFunction(this,"dataAvailableEvent",new KviKvsVariantList(new KviKvsVariant((kvs_int_t)readLength)));
 	if(m_uConnectionId == uOldConnectionId)

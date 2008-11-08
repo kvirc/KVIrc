@@ -64,12 +64,12 @@ static bool raweditor_module_init(KviModule * m)
 	return true;
 }
 
-static bool raweditor_module_can_unload(KviModule * m)
+static bool raweditor_module_can_unload(KviModule *)
 {
 	return (g_pRawEditorWindow == 0);
 }
 
-static bool raweditor_module_cleanup(KviModule *m)
+static bool raweditor_module_cleanup(KviModule *)
 {
 	if(g_pRawEditorWindow)delete g_pRawEditorWindow;
 	g_pRawEditorWindow = 0;

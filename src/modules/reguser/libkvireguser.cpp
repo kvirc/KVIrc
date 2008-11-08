@@ -177,12 +177,12 @@ static bool reguser_kvs_cmd_edit(KviKvsModuleCommandCall * c)
 
 static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 {
-	QString szName; 
+	QString szName;
 	QString szMask;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) 
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask) 
-	KVSM_PARAMETERS_END(c) 
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
+		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
+	KVSM_PARAMETERS_END(c)
 	if(szName.isEmpty())
 	{
 		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
@@ -258,11 +258,11 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 
 static bool reguser_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 {
-	QString szName; 
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) 
-	KVSM_PARAMETERS_END(c) 
-	
+	QString szName;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
+	KVSM_PARAMETERS_END(c)
+
 	if(szName.isEmpty())
 	{
 		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
@@ -319,13 +319,13 @@ static bool reguser_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 
 static bool reguser_kvs_cmd_addmask(KviKvsModuleCommandCall * c)
 {
-	QString szName; 
+	QString szName;
 	QString szMask;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) 
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask) 
-	KVSM_PARAMETERS_END(c) 
-	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
+		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
+	KVSM_PARAMETERS_END(c)
+
 	if(szName.isEmpty())
 	{
 		c->warning(__tr2qs("No name specified"));
@@ -393,10 +393,10 @@ static bool reguser_kvs_cmd_addmask(KviKvsModuleCommandCall * c)
 static bool reguser_kvs_cmd_delmask(KviKvsModuleCommandCall * c)
 {
 	QString szMask;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask) 
-	KVSM_PARAMETERS_END(c) 
-	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
+	KVSM_PARAMETERS_END(c)
+
 	if(szMask.isEmpty())
 	{
 		c->warning(__tr2qs("No mask specified"));
@@ -425,7 +425,7 @@ static bool reguser_kvs_cmd_delmask(KviKvsModuleCommandCall * c)
 	@syntax:
 		reguser.setIgnoreEnabled [-q] <name:string> <isEnabled:bool>
 	@description:
-		
+
 	@examples:
 		[example]
 			reguser.setproperty "Alexey" $true
@@ -441,11 +441,11 @@ static bool reguser_kvs_cmd_setIgnoreEnabled(KviKvsModuleCommandCall * c)
 {
 	QString szName;
 	bool bEnabled;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) 
-		KVSM_PARAMETER("isEnabled",KVS_PT_BOOL,0,bEnabled) 
-	KVSM_PARAMETERS_END(c) 
-	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
+		KVSM_PARAMETER("isEnabled",KVS_PT_BOOL,0,bEnabled)
+	KVSM_PARAMETERS_END(c)
+
 	if(szName.isEmpty())
 	{
 		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
@@ -507,10 +507,10 @@ static bool reguser_kvs_cmd_setIgnoreEnabled(KviKvsModuleCommandCall * c)
 static bool reguser_kvs_cmd_setIgnoreFlags(KviKvsModuleCommandCall * c)
 {
 	QString szName;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName) 
-	KVSM_PARAMETERS_END(c) 
-	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
+	KVSM_PARAMETERS_END(c)
+
 	if(szName.isEmpty())
 	{
 		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
@@ -577,9 +577,7 @@ static bool reguser_kvs_fnc_getIgnoreFlags(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
 	KVSM_PARAMETERS_END(c)
-	
-	KviKvsArray* pArray = new KviKvsArray();
-	int aid=0;
+
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(u)
 	{
@@ -596,7 +594,7 @@ static bool reguser_kvs_fnc_getIgnoreFlags(KviKvsModuleFunctionCall * c)
 		if(u->ignoreFlags() & KviRegisteredUser::Dcc)
 			szFlags+='d';
 		c->returnValue()->setString(szFlags);
-		
+
 	}
 	return true;
 }
@@ -631,14 +629,12 @@ static bool reguser_kvs_fnc_isIgnoreEnabled(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
 	KVSM_PARAMETERS_END(c)
-	
-	KviKvsArray* pArray = new KviKvsArray();
-	int aid=0;
+
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(u)
 	{
 		c->returnValue()->setBoolean(u->ignoreEnagled());
-		
+
 	}
 	return true;
 }
@@ -683,12 +679,12 @@ static bool reguser_kvs_cmd_setproperty(KviKvsModuleCommandCall * c)
 	QString szName;
 	QString szProperty;
 	QString szValue;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szName) 
-		KVSM_PARAMETER("property",KVS_PT_STRING,0,szProperty) 
-		KVSM_PARAMETER("value",KVS_PT_STRING,KVS_PF_OPTIONAL,szValue) 
-	KVSM_PARAMETERS_END(c) 
-	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szName)
+		KVSM_PARAMETER("property",KVS_PT_STRING,0,szProperty)
+		KVSM_PARAMETER("value",KVS_PT_STRING,KVS_PF_OPTIONAL,szValue)
+	KVSM_PARAMETERS_END(c)
+
 	if(szName.isEmpty())
 	{
 		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
@@ -740,17 +736,15 @@ static bool reguser_kvs_cmd_setproperty(KviKvsModuleCommandCall * c)
 
 static bool reguser_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 {
-	QString szMask; 
-	
+	QString szMask;
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("user_mask",KVS_PT_STRING,KVS_PF_OPTIONAL,szMask)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviIrcMask mask(szMask);
 	KviKvsArray* pArray = new KviKvsArray();
 	int aid=0;
-	
-	int cnt = 0;
 
 	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
 	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
@@ -799,9 +793,9 @@ static bool reguser_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 {
 	QString szMask;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("mask",KVS_PT_STRING,KVS_PF_OPTIONAL,szMask) 
-	KVSM_PARAMETERS_END(c) 
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("mask",KVS_PT_STRING,KVS_PF_OPTIONAL,szMask)
+	KVSM_PARAMETERS_END(c)
 
 	KviIrcMask mask(szMask);
 	c->window()->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Registered users database dump:"));
@@ -875,7 +869,7 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 static bool reguser_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 {
 	QString szMask;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("user_mask",KVS_PT_STRING,0,szMask)
 	KVSM_PARAMETERS_END(c)
@@ -913,7 +907,7 @@ static bool reguser_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 static bool reguser_kvs_fnc_exactMatch(KviKvsModuleFunctionCall * c)
 {
 	QString szMask;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("user_mask",KVS_PT_STRING,0,szMask)
 	KVSM_PARAMETERS_END(c)
@@ -1018,7 +1012,7 @@ static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("name",KVS_PT_STRING,0,szName)
 		KVSM_PARAMETER("N",KVS_PT_STRING,KVS_PF_OPTIONAL,szN)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviKvsArray* pArray = new KviKvsArray();
 	int aid=0;
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
@@ -1030,7 +1024,6 @@ static bool reguser_kvs_fnc_mask(KviKvsModuleFunctionCall * c)
 			KviIrcMask * m = u->maskList()->at(n.toInt());
 			if(m) c->returnValue()->setString(m->nick()+"!"+m->user()+"@"+m->host());
 		} else {
-			int id=0;
 			for(KviIrcMask * m = u->maskList()->first();m;m = u->maskList()->next())
 			{
 				pArray->set(aid,new KviKvsVariant(QString(m->nick()+"!"+m->user()+"@"+m->host())));
@@ -1081,7 +1074,7 @@ static bool reguser_kvs_fnc_property(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("user_name",KVS_PT_STRING,0,szName)
 		KVSM_PARAMETER("property_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szProperty)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(u)
 	{
@@ -1134,7 +1127,7 @@ static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("user_mask",KVS_PT_STRING,0,szMask)
 		KVSM_PARAMETER("property_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szProperty)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviIrcMask mask(szMask);
 	//FIXME: it crashes kvirc
 	//KviRegisteredUser * u = c->context()->connection()->userDataBase()->registeredUser(mask.nick(),mask.user(),mask.host());
@@ -1172,9 +1165,9 @@ static bool reguser_kvs_fnc_matchProperty(KviKvsModuleFunctionCall * c)
 static bool reguser_kvs_cmd_wizard(KviKvsModuleCommandCall * c)
 {
 	QString szMask;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("mask",KVS_PT_STRING,KVS_PF_OPTIONAL,szMask) 
-	KVSM_PARAMETERS_END(c) 
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("mask",KVS_PT_STRING,KVS_PF_OPTIONAL,szMask)
+	KVSM_PARAMETERS_END(c)
 
 	KviRegistrationWizard * w = new KviRegistrationWizard(szMask);
 	w->show();
@@ -1197,7 +1190,7 @@ static bool reguser_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"wizard",reguser_kvs_cmd_wizard);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setIgnoreEnabled",reguser_kvs_cmd_setIgnoreEnabled);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setIgnoreFlags",reguser_kvs_cmd_setIgnoreFlags);
-	
+
 	KVSM_REGISTER_FUNCTION(m,"match",reguser_kvs_fnc_match);
 	KVSM_REGISTER_FUNCTION(m,"list",reguser_kvs_fnc_list);
 	KVSM_REGISTER_FUNCTION(m,"exactMatch",reguser_kvs_fnc_exactMatch);
@@ -1210,7 +1203,7 @@ static bool reguser_module_init(KviModule * m)
 	return true;
 }
 
-static bool reguser_module_cleanup(KviModule *m)
+static bool reguser_module_cleanup(KviModule *)
 {
 	if(g_pRegisteredUsersDialog)delete g_pRegisteredUsersDialog;
 	g_pRegisteredUsersDialog = 0;

@@ -77,7 +77,7 @@ QPixmap * KviUserWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(m_iIcon);
 }
 
-void KviUserWindow::resizeEvent(QResizeEvent *e)
+void KviUserWindow::resizeEvent(QResizeEvent *)
 {
 	if(m_pInput)
 	{

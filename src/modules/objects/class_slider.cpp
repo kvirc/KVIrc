@@ -131,7 +131,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_slider)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_slider)
 
-bool KviKvsObject_slider::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_slider::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QSlider)
 	connect(widget(),SIGNAL(valueChanged(int)),this,SLOT(valueChanged(int)));
