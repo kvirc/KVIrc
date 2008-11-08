@@ -27,14 +27,11 @@ SET(kviobjects_MOC_HDRS
 	class_spinbox.h
 	class_tabwidget.h
 	class_tbrowser.h
-	class_toolbar.h
 	class_toolbutton.h
 	class_treewidget.h
-	class_treewidgetitem.h
 	class_widget.h
 	class_window.h
 	class_wizard.h
-	class_wrapper.h
 	class_xmlreader.h
 )
 

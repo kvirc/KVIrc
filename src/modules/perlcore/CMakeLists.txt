@@ -18,10 +18,6 @@ ELSE()
 	LIST(APPEND LIBS -lperl58)
 ENDIF()
 
-SET(kviperlcore_MOC_HDRS
-	perlcoreinterface.h
-)
-
 SET(kviperlcore_SRCS
 	libkviperlcore.cpp
 )
