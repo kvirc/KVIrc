@@ -384,7 +384,7 @@ static bool context_module_init(KviModule * m)
 	return true;
 }
 
-static bool context_module_cleanup(KviModule *m)
+static bool context_module_cleanup(KviModule *)
 {
 	return true;
 }

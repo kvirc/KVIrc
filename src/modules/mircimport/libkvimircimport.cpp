@@ -199,7 +199,7 @@ void KviRemoteMircServerImportWizard::closeEvent(QCloseEvent *)
 	m_pFilter->die();
 }
 
-void KviRemoteMircServerImportWizard::done(int r)
+void KviRemoteMircServerImportWizard::done(int)
 {
 	m_pFilter->die();
 }
@@ -332,7 +332,7 @@ static bool mircimport_module_init(KviModule * m)
 	return true;
 }
 
-static bool mircimport_module_cleanup(KviModule *m)
+static bool mircimport_module_cleanup(KviModule *)
 {
 	if(g_pMircServersIniImport)delete g_pMircServersIniImport;
 	if(g_pRemoteMircServersIniImport)delete g_pRemoteMircServersIniImport;
@@ -342,7 +342,7 @@ static bool mircimport_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool mircimport_module_can_unload(KviModule * m)
+static bool mircimport_module_can_unload(KviModule *)
 {
 	return ((!g_pMircServersIniImport) && (!g_pRemoteMircServersIniImport));
 }

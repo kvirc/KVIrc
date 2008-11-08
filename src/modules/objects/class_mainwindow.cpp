@@ -67,7 +67,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_mainwindow)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_mainwindow)
 
-bool KviKvsObject_mainwindow::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_mainwindow::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	setObject(new KviTalMainWindow(parentScriptWidget(), getName().toUtf8().data()), true);
 	return true;
@@ -98,7 +98,7 @@ KVSO_CLASS_FUNCTION(mainwindow,setCentralWidget)
         return TRUE;
     }
 	((KviTalMainWindow *)widget())->setCentralWidget(((QWidget  *)(pObject->object())));
-	return true;	
+	return true;
 }
 //FIX ME
 KVSO_CLASS_FUNCTION(mainwindow,setDockEnabled)
@@ -129,6 +129,6 @@ KVSO_CLASS_FUNCTION(mainwindow,isDockEnabled)
 		KVSO_PARAMETER("dock_area",KVS_PT_STRING,0,szDockarea)
 	KVSO_PARAMETERS_END(c)
    c->returnValue()->setBoolean(bFlag);
-	return true;		
+	return true;
 
 }

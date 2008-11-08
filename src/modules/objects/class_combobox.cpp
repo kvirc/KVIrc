@@ -133,7 +133,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_combobox)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_combobox)
 
-bool KviKvsObject_combobox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_combobox::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QComboBox);
 	connect (((QComboBox *)widget()),SIGNAL(activated( int )),this,SLOT(slotActivated( int )));

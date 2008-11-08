@@ -131,7 +131,7 @@ KviKvsPopupMenuItemSeparator::~KviKvsPopupMenuItemSeparator()
 {
 }
 
-void KviKvsPopupMenuItemSeparator::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLevelData * pData,int iIdx)
+void KviKvsPopupMenuItemSeparator::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLevelData * pData,int)
 {
 	if(!evaluateCondition(pData))return;
 	pMenu->insertSeparator();
@@ -310,7 +310,7 @@ void KviKvsPopupMenuItemLabel::clear()
 	}
 }
 
-void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLevelData * pData,int iIdx)
+void KviKvsPopupMenuItemLabel::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTopLevelData * pData,int)
 {
 	if(!evaluateCondition(pData))return;
 	QString szText = evaluateText(pData);

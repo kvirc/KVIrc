@@ -51,14 +51,14 @@
 		You can use one of the $read* functions to obtain the data.
 
 		!fn: $connect(<host:string>,<remote_port:integer>)
-		Connects to the FTP server host using port port.The command is scheduled, and its execution is performed asynchronously. 
+		Connects to the FTP server host using port port.The command is scheduled, and its execution is performed asynchronously.
 		The function returns a unique identifier which is passed by commandStarted() and commandFinished().[br]
 		!fn: $abort()
 		!fn: $login
 		!fn: $get
 		!fn: $cd
 		!fn: $list
-		!fn: 
+		!fn:
 		*/
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_ftp,"ftp","object")
@@ -166,7 +166,7 @@ KVSO_CLASS_FUNCTION(ftp,abort)
 	m_pFtp->abort();
 	return true;
 }
-//signals & slots 
+//signals & slots
 KVSO_CLASS_FUNCTION(ftp,commandFinishedEvent)
 {
 	emitSignal("commandFinished",c,c->params());
@@ -175,21 +175,21 @@ KVSO_CLASS_FUNCTION(ftp,commandFinishedEvent)
 
 void KviKvsObject_ftp::slotCommandFinished ( int id, bool error )
 {
-	QString status=""; 
+	QString status="";
 	if (m_pFtp->currentCommand()==QFtp::Get){
-		status="Finished to load"; 
+		status="Finished to load";
 		m_pFile->close();
 		delete m_pFile;
 	}
-	else if (m_pFtp->currentCommand()==QFtp:: ConnectToHost) status="connected"; 
-	else if (m_pFtp->currentCommand()==QFtp:: Login) status="logged"; 
-	else if (m_pFtp->currentCommand()==QFtp:: Cd) status="entered"; 
-	else if (m_pFtp->currentCommand()==QFtp:: List) status="listCompleted"; 
+	else if (m_pFtp->currentCommand()==QFtp:: ConnectToHost) status="connected";
+	else if (m_pFtp->currentCommand()==QFtp:: Login) status="logged";
+	else if (m_pFtp->currentCommand()==QFtp:: Cd) status="entered";
+	else if (m_pFtp->currentCommand()==QFtp:: List) status="listCompleted";
 	callFunction(this,"commandFinishedEvent",0,new KviKvsVariantList(new KviKvsVariant((kvs_int_t) id),
 		new KviKvsVariant(status),new KviKvsVariant(error)));
 }
 
-void KviKvsObject_ftp::slotCommandStarted ( int id )
+void KviKvsObject_ftp::slotCommandStarted ( int )
 {
 }
 
@@ -204,21 +204,21 @@ KVSO_CLASS_FUNCTION(ftp,dataTransferProgressEvent)
 	emitSignal("dataTransferProgress",c,c->params());
 	return true;
 }
-void KviKvsObject_ftp::slotDone ( bool error )
+void KviKvsObject_ftp::slotDone ( bool )
 {
 }
 
 void KviKvsObject_ftp::slotListInfo ( const QUrlInfo & i )
 {
 	callFunction(this,"listInfoEvent",0,new KviKvsVariantList(new KviKvsVariant(i.name())));
-	
+
 }
 KVSO_CLASS_FUNCTION(ftp,listInfoEvent)
 {
 	emitSignal("listInfo",c,c->params());
 	return true;
 }
-void KviKvsObject_ftp::slotRawCommandReply ( int replyCode, const QString & detail )
+void KviKvsObject_ftp::slotRawCommandReply ( int, const QString &)
 {
 }
 

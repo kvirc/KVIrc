@@ -73,7 +73,7 @@ static bool list_module_init(KviModule * m)
 	return true;
 }
 
-static bool list_module_cleanup(KviModule *m)
+static bool list_module_cleanup(KviModule *)
 {
 	while(g_pListWindowList->first())g_pListWindowList->first()->die();
 	delete g_pListWindowList;
@@ -81,7 +81,7 @@ static bool list_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool list_module_can_unload(KviModule *m)
+static bool list_module_can_unload(KviModule *)
 {
 	return (g_pListWindowList->isEmpty());
 }

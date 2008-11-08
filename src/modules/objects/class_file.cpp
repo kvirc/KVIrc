@@ -159,17 +159,17 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_file,"file","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"isOpen",isOpen)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"close",close)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"flush",flush)
-	
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"size",size)
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"atEnd",atEnd)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"where",where)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"seek",seek)
-	
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"putch",putch)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"getch",getch)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"ungetch",unGetch)
-	
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"readBlock",readBlock)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"writeBlock", writeBlock)
 
@@ -182,7 +182,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_file,"file","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"write",write)
 	KVSO_REGISTER_HANDLER(KviKvsObject_file,"read",read)
 
-	
+
 KVSO_END_REGISTERCLASS(KviKvsObject_file)
 
 
@@ -222,7 +222,7 @@ KVSO_CLASS_FUNCTION(file,open)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("file_mode",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,modes)
 	KVSO_PARAMETERS_END(c)
-	
+
 	if(m_pFile->fileName().isEmpty())
 	{
 		c->warning(__tr2qs_ctx("Empty filename string","objects"));
@@ -451,7 +451,7 @@ KVSO_CLASS_FUNCTION(file,write)
 	KVSO_PARAMETERS_BEGIN(c)
 			KVSO_PARAMETER("variant_data",KVS_PT_VARIANT,0,pVariantData)
 	KVSO_PARAMETERS_END(c)
-	if (pVariantData->isInteger()) 
+	if (pVariantData->isInteger())
 	{
 		kvs_int_t num;
 		pVariantData->asInteger(num);
@@ -508,7 +508,7 @@ KVSO_CLASS_FUNCTION(file,writeBlock)
 				c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
 				return true;
 			}
-		
+
 		}
 		else
 		{
@@ -597,14 +597,14 @@ KVSO_CLASS_FUNCTION(file,writeHexBlock)
 		c->warning(__tr2qs_ctx("Lenght of hex string is not multiple of 2","objects"));
 		return true;
 	}
-	if (uLen>(szBlock.length()/2)|| !uLen) uLen=szBlock.length();
+	if (uLen>((uint)szBlock.length()/2)|| !uLen) uLen=szBlock.length();
 	else uLen*=2;
 	unsigned char byte,lsb,msb;
-	for(int i=0;i<uLen;i+=2)
+	for(unsigned int i=0;i<uLen;i+=2)
 	{
 		msb=szBlock.at(i).toAscii();
 		lsb=szBlock.at(i+1).toAscii();
-		
+
 		if (((msb>='A' && msb<='F')||(msb>='0' && msb<='9')) && ((lsb>='A' && lsb<='F')|| (lsb>='0' && lsb<='9')))
 		{
 			msb>='A'?msb-='7':msb-='0';

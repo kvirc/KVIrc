@@ -82,9 +82,7 @@ protected:
 	virtual void fillCaptionBuffers();
 	virtual void applyOptions();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(KviStr &buffer);
-//	virtual void setProperties(KviWindowProperty *p);
-//	virtual void saveProperties();
+	virtual void getBaseLogFileName(QString &buffer);
 protected slots:
 	void showHostPopup(QTreeWidgetItem *i,const QPoint &p);
 	void hostPopupClicked(int id);

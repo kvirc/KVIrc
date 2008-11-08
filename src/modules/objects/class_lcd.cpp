@@ -61,7 +61,7 @@
 		Sets the lcd number value.
 		!fn: <boolean> $checkOverflow()
 		Returns TRUE if num is too big to be displayed in its entirety;
-		otherwise returns FALSE. 
+		otherwise returns FALSE.
 		!fn: $setSmallDecimalPoint(<bflag:boolean>)
 		Sets the the decimal point style, valid bool values are 1 or 0.
 		!fn: <boolean> $checkOverflow(<number:integer>)
@@ -69,7 +69,7 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_lcd,"lcdnumber","widget")
-	
+
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,displayStr)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,displayInt)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,displayDouble)
@@ -89,7 +89,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_lcd)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_lcd)
 
-bool KviKvsObject_lcd::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_lcd::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QLCDNumber)
 	return true;
@@ -97,7 +97,7 @@ bool KviKvsObject_lcd::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *p
 
 KVSO_CLASS_FUNCTION(lcd,displayInt)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iDigit;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("number",KVS_PT_INT,0,iDigit)
@@ -108,7 +108,7 @@ KVSO_CLASS_FUNCTION(lcd,displayInt)
 
 KVSO_CLASS_FUNCTION(lcd,displayStr)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("number",KVS_PT_STRING,0,szText)
@@ -119,7 +119,7 @@ KVSO_CLASS_FUNCTION(lcd,displayStr)
 
 KVSO_CLASS_FUNCTION(lcd,displayDouble)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_real_t dDigit;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("number",KVS_PT_DOUBLE,0,dDigit)
@@ -130,7 +130,7 @@ KVSO_CLASS_FUNCTION(lcd,displayDouble)
 
 KVSO_CLASS_FUNCTION(lcd,setMode)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("mode",KVS_PT_STRING,0,szMode)
@@ -145,7 +145,7 @@ KVSO_CLASS_FUNCTION(lcd,setMode)
 
 KVSO_CLASS_FUNCTION(lcd,setSegmentStyle)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szStyle;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("style",KVS_PT_STRING,0,szStyle)
@@ -159,7 +159,7 @@ KVSO_CLASS_FUNCTION(lcd,setSegmentStyle)
 
 KVSO_CLASS_FUNCTION(lcd,setNumDigits)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_real_t digit;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("digit",KVS_PT_DOUBLE,0,digit)
@@ -170,7 +170,7 @@ KVSO_CLASS_FUNCTION(lcd,setNumDigits)
 
 KVSO_CLASS_FUNCTION(lcd,setSmallDecimalPoint)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bflag",KVS_PT_BOOLEAN,0,bFlag)
@@ -181,7 +181,7 @@ KVSO_CLASS_FUNCTION(lcd,setSmallDecimalPoint)
 
 KVSO_CLASS_FUNCTION(lcd,checkOverflow)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_real_t iDigit;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("digit",KVS_PT_DOUBLE,0,iDigit)

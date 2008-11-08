@@ -271,7 +271,7 @@ QPixmap * KviHelpWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_MDIHELP);
 }
 
-void KviHelpWindow::resizeEvent(QResizeEvent *e)
+void KviHelpWindow::resizeEvent(QResizeEvent *)
 {
 	m_pSplitter->setGeometry(0,0,width(),height());
 }

@@ -33,7 +33,7 @@
 static QTextCodec * mediaplayer_get_codec()
 {
 	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toUtf8().data());
-	if(!c)c = QTextCodec::codecForLocale(); 
+	if(!c)c = QTextCodec::codecForLocale();
 	return c;
 
 }
@@ -91,7 +91,7 @@ QString KviMediaPlayerInterface::getLocalFile()
 	return QString();
 }
 
-QString KviMediaPlayerInterface::amipEval(const QString &cmd)
+QString KviMediaPlayerInterface::amipEval(const QString &)
 {
 	return QString();
 }
@@ -147,19 +147,19 @@ QString KviMediaPlayerInterface::album()
 	return pCodec->toUnicode(KviQCString(mp3.id3.album));
 }
 
-bool KviMediaPlayerInterface::playMrl(const QString &mrl)
+bool KviMediaPlayerInterface::playMrl(const QString &)
 {
 	notImplemented();
 	return false;
 }
 
-bool KviMediaPlayerInterface::amipExec(const QString &cmd)
+bool KviMediaPlayerInterface::amipExec(const QString &)
 {
 	notImplemented();
 	return false;
 }
 
-bool KviMediaPlayerInterface::setVol(kvs_int_t &iVol)
+bool KviMediaPlayerInterface::setVol(kvs_int_t &)
 {
 	notImplemented();
 	return false;
@@ -177,7 +177,7 @@ bool KviMediaPlayerInterface::mute()
 	return false;
 }
 
-bool KviMediaPlayerInterface::jumpTo(int &iPos)
+bool KviMediaPlayerInterface::jumpTo(int &)
 {
 	notImplemented();
 	return false;
@@ -213,7 +213,7 @@ int KviMediaPlayerInterface::getPlayListPos()
 	return -1;
 }
 
-bool KviMediaPlayerInterface::setPlayListPos(int &iPos)
+bool KviMediaPlayerInterface::setPlayListPos(int &)
 {
 	notImplemented();
 	return false;
@@ -225,13 +225,13 @@ int KviMediaPlayerInterface::getListLength()
 	return -1;
 }
 
-int KviMediaPlayerInterface::getEqData(int &ival)
+int KviMediaPlayerInterface::getEqData(int &)
 {
 	notImplemented();
 	return -1;
 }
 
-bool KviMediaPlayerInterface::setEqData(int &iPos, int &iVal)
+bool KviMediaPlayerInterface::setEqData(int &, int &)
 {
 	notImplemented();
 	return false;
@@ -249,13 +249,13 @@ bool KviMediaPlayerInterface::getShuffle()
 	return false;
 }
 
-bool KviMediaPlayerInterface::setRepeat(bool &bVal)
+bool KviMediaPlayerInterface::setRepeat(bool &)
 {
 	notImplemented();
-	return false;	
+	return false;
 }
 
-bool KviMediaPlayerInterface::setShuffle(bool &bVal)
+bool KviMediaPlayerInterface::setShuffle(bool &)
 {
 	notImplemented();
 	return false;

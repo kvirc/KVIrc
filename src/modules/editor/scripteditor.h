@@ -66,7 +66,7 @@ protected:
 public:
 	KviScriptEditorSyntaxHighlighter * syntaxHighlighter(){return m_pSyntaxHighlighter;};
 	void createCompleter(QStringList &list);
-	
+
 	void loadCompleterFromFile();
 	QCompleter * completer() const { return m_pCompleter; };
 	QString textUnderCursor() const;
@@ -135,7 +135,7 @@ private:
 	QTextCharFormat functionFormat;
     QTextCharFormat commentFormat;
 
-	
+
 };
 
 class KviScriptEditorImplementation : public KviScriptEditor
@@ -152,6 +152,7 @@ protected:
 	QLabel                * m_pRowColLabel;
 	int                     m_lastCursorPos;
 public:
+	virtual void setText(const char * txt);
 	virtual void setText(const QString & szText);
 	virtual void setText(const KviQCString & szText);
 	virtual void getText(QString & szText);

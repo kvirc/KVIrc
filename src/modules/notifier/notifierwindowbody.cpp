@@ -72,7 +72,7 @@ void KviNotifierWindowBody::loadImages()
 		m_pixIconPrev_clicked = *p;
 
 	m_pixIconPrev = m_pixIconPrev_off;
-	
+
 	if((p = g_pIconManager->getPixmap("notifier_icon_body_next_off.png")))
 		m_pixIconNext_off = *p;
 	if((p = g_pIconManager->getPixmap("notifier_icon_body_next_on.png")))
@@ -90,13 +90,13 @@ void KviNotifierWindowBody::loadImages()
 		m_pixIconWrite_clicked = *p;
 
 	m_pixIconWrite = m_pixIconWrite_off;
-	
+
 	needToRedraw();
-	
+
 	m_prevIconState = WDG_ICON_OFF;
 	m_nextIconState = WDG_ICON_OFF;
 	m_writeIconState = WDG_ICON_OFF;
-	
+
 }
 
 void KviNotifierWindowBody::setWidth(int w)
@@ -121,18 +121,18 @@ void KviNotifierWindowBody::recalculatePositions()
 	m_rctWriteIcon.setX(m_textRect.x()+m_textRect.width());
 	m_rctWriteIcon.setY(m_pnt.y()+m_textRect.height()-m_pixIconWrite.height());
 	m_rctWriteIcon.setWidth(m_pixIconWrite.width());
-	m_rctWriteIcon.setHeight(m_pixIconWrite.height());	
+	m_rctWriteIcon.setHeight(m_pixIconWrite.height());
 
 	m_rctPrevIcon.setX(m_textRect.x()+m_textRect.width());
 	m_rctPrevIcon.setY(m_pnt.y()+2); //FIXME: Maybe the spacing should be calculated?
 	m_rctPrevIcon.setWidth(m_pixIconPrev.width());
 	m_rctPrevIcon.setHeight(m_pixIconPrev.height());
-	
+
 	m_rctNextIcon.setX(m_textRect.x()+m_textRect.width());
 	m_rctNextIcon.setY(m_pnt.y()+m_textRect.height()-m_pixIconNext.height()-m_pixIconWrite.height());
 	m_rctNextIcon.setWidth(m_pixIconNext.width());
 	m_rctNextIcon.setHeight(m_pixIconNext.height());
-	
+
 	needToRedraw();
 }
 
@@ -145,7 +145,7 @@ void KviNotifierWindowBody::setPrevIcon(int state)
 				case WDG_ICON_OFF: m_pixIconPrev = m_pixIconPrev_off; break;
 				case WDG_ICON_CLICKED: m_pixIconPrev = m_pixIconPrev_clicked; break;
 			};
-	
+
 			m_prevIconState=state;
 			needToRedraw();
 		}
@@ -160,7 +160,7 @@ void KviNotifierWindowBody::setNextIcon(int state)
 				case WDG_ICON_OFF: m_pixIconNext = m_pixIconNext_off; break;
 				case WDG_ICON_CLICKED: m_pixIconNext = m_pixIconNext_clicked; break;
 			};
-	
+
 			needToRedraw();
 			m_nextIconState=state;
 		}
@@ -174,7 +174,7 @@ void KviNotifierWindowBody::setWriteIcon(int state)
 				case WDG_ICON_ON: m_pixIconWrite = m_pixIconWrite_on; break;
 				case WDG_ICON_OFF: m_pixIconWrite = m_pixIconWrite_off; break;
 				case WDG_ICON_CLICKED: m_pixIconWrite = m_pixIconWrite_clicked; break;};
-	
+
 			needToRedraw();
 			m_writeIconState=state;
 		}
@@ -183,23 +183,23 @@ void KviNotifierWindowBody::setWriteIcon(int state)
 void KviNotifierWindowBody::draw(QPainter * p)
 {
 	if (m_bNeedToRedraw) {
-	
+
 		p->fillRect(QRect(m_pnt,m_rct.size()),m_mac_bkgColor);
-		
+
 		// Autotiled borders
 		p->drawTiledPixmap(m_pnt.x(), m_pnt.y(), m_pixSX.width(), m_rct.height() - m_pixDWNSX.height() - m_pixKVIrcSX.height(), m_pixSX);
 		p->drawTiledPixmap(m_pnt.x() + m_rct.width() - m_pixDX.width(), m_pnt.y(),m_pixDX.width(), m_rct.height() - m_pixDWNDX.height(), m_pixDX);
 		p->drawTiledPixmap(m_pnt.x() + m_pixKVIrcDWN.width() + m_pixDWNSX.width(), m_pnt.y() + m_rct.height() - m_pixDWN.height(),  m_rct.width() - m_pixKVIrcDWN.width() - m_pixDWNSX.width() - m_pixDWNDX.width(), m_pixDWN.height(), m_pixDWN);
-	
+
 		// Bottom corners
 		p->drawPixmap(m_pnt.x(), m_pnt.y() + m_rct.height() - m_pixDWNSX.height(), m_pixDWNSX);
 		p->drawPixmap(m_pnt.x() + m_rct.width() - m_pixDWNSX.width(), m_pnt.y() + m_rct.height() - m_pixDWNDX.height(), m_pixDWNDX);
-		
+
 		// KVIrc image
 		p->drawPixmap(m_pnt.x(), m_pnt.y() + m_rct.height() - m_pixKVIrcSX.height() - m_pixDWNSX.height(), m_pixKVIrcSX);
 		p->drawPixmap(m_pnt.x() + m_pixKVIrcSX.width(), m_pnt.y() + m_rct.height() - m_pixKVIrcDWN.height(), m_pixKVIrcDWN);
 		p->drawPixmap(m_pnt.x() + m_pixKVIrcSX.width(), m_pnt.y() + m_rct.height() - m_pixKVIrc.height() - m_pixKVIrcDWN.height(), m_pixKVIrc, 0, 0, m_pixKVIrc.width(), m_pixKVIrc.height());
-		
+
 		// Draw Icons
 		p->drawPixmap(m_rctPrevIcon.x(), m_rctPrevIcon.y(), m_pixIconPrev);
 		p->drawPixmap(m_rctNextIcon.x(), m_rctNextIcon.y(), m_pixIconNext);
@@ -209,17 +209,17 @@ void KviNotifierWindowBody::draw(QPainter * p)
 	}
 }
 
-void KviNotifierWindowBody::mouseMoveEvent(QMouseEvent * e)
+void KviNotifierWindowBody::mouseMoveEvent(QMouseEvent *)
 {
 
 }
 
-void KviNotifierWindowBody::mousePressEvent(QMouseEvent * e)
+void KviNotifierWindowBody::mousePressEvent(QMouseEvent *)
 {
 
 }
 
-void KviNotifierWindowBody::mouseReleaseEvent(QMouseEvent * e)
+void KviNotifierWindowBody::mouseReleaseEvent(QMouseEvent *)
 {
 
 }

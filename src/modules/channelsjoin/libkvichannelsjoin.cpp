@@ -48,7 +48,7 @@ QRect                   g_rectChannelsJoinGeometry;
 	@description:
 		Shows a dialog that allows the user to enter channels in a visual manner.[br]
 		This command is exported by the "channelsjoin" module.
- 
+
 */
 
 static bool channelsjoin_kvs_cmd_open(KviKvsModuleCommandCall * c)
@@ -56,7 +56,7 @@ static bool channelsjoin_kvs_cmd_open(KviKvsModuleCommandCall * c)
 	if(!g_pChannelsWindow)g_pChannelsWindow = new KviChannelsJoinWindow(c->window()->frame(),"channelsjoin");
 
 	g_pChannelsWindow->setConsole(c->window()->console());
-	
+
 	g_pChannelsWindow->show();
 	g_pChannelsWindow->raise();
 	g_pChannelsWindow->setFocus();
@@ -71,7 +71,7 @@ static bool channelsjoin_module_init(KviModule * m)
 	KviConfig cfg(fName,KviConfig::Read);
 
 	g_rectChannelsJoinGeometry = cfg.readRectEntry("geometry",QRect(30,30,320,410));
-	
+
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"open",channelsjoin_kvs_cmd_open);
 	return true;
 }
@@ -83,13 +83,13 @@ static bool channelsjoin_module_cleanup(KviModule *m)
 	KviConfig cfg(fName,KviConfig::Write);
 
 	cfg.writeEntry("geometry",g_rectChannelsJoinGeometry);
-	
+
 	if (g_pChannelsWindow)delete g_pChannelsWindow;
 	g_pChannelsWindow = 0;
 	return true;
 }
 
-static bool channelsjoin_module_can_unload(KviModule *m)
+static bool channelsjoin_module_can_unload(KviModule *)
 {
 	return (!g_pChannelsWindow);
 }
@@ -97,7 +97,7 @@ static bool channelsjoin_module_can_unload(KviModule *m)
 KVIRC_MODULE(
 	"ChannelsJoin",
 	"4.0.0",
-	"Copyright (C) 2001-2006 Juan Jos��varez (juanjux@yahoo.es), Alexey (wizard@opendoor.ru)",
+	"Copyright (C) 2001-2006 Juanjo Alvarez (juanjux@yahoo.es), Alexey (wizard@opendoor.ru)",
 	"Window to join channels in a GUI",
 	channelsjoin_module_init,
 	channelsjoin_module_can_unload,

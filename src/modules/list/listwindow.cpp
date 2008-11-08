@@ -87,7 +87,7 @@ KviChannelTreeWidgetItem::~KviChannelTreeWidgetItem()
 	delete m_pData;
 }
 
-int KviChannelTreeWidgetItem::width ( const QFontMetrics & fm, const KviTalTreeWidget * lv, int column ) const
+int KviChannelTreeWidgetItem::width ( const QFontMetrics & fm, const KviTalTreeWidget * , int column ) const
 {
 	debug("width request");
 	QString szText;
@@ -108,8 +108,6 @@ int KviChannelTreeWidgetItem::width ( const QFontMetrics & fm, const KviTalTreeW
 void KviChannelTreeWidgetItemDelegate::paint( QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
 	KviChannelTreeWidgetItem *item=static_cast<KviChannelTreeWidgetItem *>(index.internalPointer());
-
-	KviTalTreeWidget* lv = (KviTalTreeWidget *)parent();
 
 	if (option.state & QStyle::State_Selected)
 		p->fillRect(option.rect, option.palette.brush( QPalette::Highlight ) );
@@ -229,7 +227,7 @@ KviListWindow::~KviListWindow()
 	delete m_pItemList;
 }
 
-void KviListWindow::getBaseLogFileName(KviStr &buffer)
+void KviListWindow::getBaseLogFileName(QString &buffer)
 {
 	buffer.sprintf("LIST_%d",context()->id());
 }
@@ -281,7 +279,7 @@ QPixmap * KviListWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST);
 }
 
-void KviListWindow::resizeEvent(QResizeEvent *e)
+void KviListWindow::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pTopSplitter->sizeHint().height();
 	m_pTopSplitter->setGeometry(0,0,width(),hght);

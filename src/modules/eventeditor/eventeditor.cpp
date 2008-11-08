@@ -359,7 +359,7 @@ void KviEventEditor::saveLastEditedItem()
 	m_pLastEditedItem->m_szBuffer = tmp;
 }
 
-void KviEventEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *prev)
+void KviEventEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *)
 {
 	__range_valid(m_bOneTimeSetupDone);
 	saveLastEditedItem();
@@ -371,7 +371,7 @@ void KviEventEditor::currentItemChanged(QTreeWidgetItem * it,QTreeWidgetItem *pr
 		m_pEditor->setEnabled(false);
 		return;
 	}
-	
+
 	if(it->parent())
 	{
 		m_pLastEditedItem = (KviEventHandlerTreeWidgetItem *)it;
@@ -549,7 +549,7 @@ QPixmap * KviEventEditorWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_EVENT);
 }
 
-void KviEventEditorWindow::resizeEvent(QResizeEvent *e)
+void KviEventEditorWindow::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pBase->sizeHint().height();
 	m_pEditor->setGeometry(0,0,width(),height()- hght);
@@ -577,12 +577,12 @@ void KviEventEditorWindow::fillCaptionBuffers()
 	m_szHtmlInactiveCaption += p3;
 }
 
-void KviEventEditorWindow::getConfigGroupName(KviStr &szName)
+void KviEventEditorWindow::getConfigGroupName(QString &szName)
 {
 	szName = "eventeditor";
 }
 
-void KviEventEditorWindow::saveProperties(KviConfig *cfg)
+void KviEventEditorWindow::saveProperties(KviConfig *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR
@@ -593,7 +593,7 @@ void KviEventEditorWindow::saveProperties(KviConfig *cfg)
 */
 }
 
-void KviEventEditorWindow::loadProperties(KviConfig *cfg)
+void KviEventEditorWindow::loadProperties(KviConfig *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR

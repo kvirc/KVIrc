@@ -109,7 +109,7 @@ protected:
 	virtual void fillCaptionBuffers();
 	virtual void applyOptions();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(KviStr &buffer);
+	virtual void getBaseLogFileName(QString &buffer);
 	KviFileTransferItem * findItem(KviFileTransfer * t);
 	void fillTransferView();
 	KviFileTransfer * selectedTransfer();

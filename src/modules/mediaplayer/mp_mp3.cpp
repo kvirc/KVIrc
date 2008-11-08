@@ -30,7 +30,7 @@
 //   This file is based in part on:
 //
 //   * MP3Info 0.5 by Ricardo Cerqueira <rmc@rccn.net>
-//   * MP3Stat 0.9 by Ed Sweetman <safemode@voicenet.com> and 
+//   * MP3Stat 0.9 by Ed Sweetman <safemode@voicenet.com> and
 //                    Johannes Overmann <overmann@iname.com>
 //
 //   There has been also a remarkable work by Cristopher Tieckle (Crissi)
@@ -198,19 +198,14 @@ void resetmp3infoStruct(mp3info *i)
 
 int get_mp3_info(mp3info *mp3)
 {
-	int frame_type[15]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-	float seconds=0,total_rate=0;
-	int frames=0,frame_types=0,frames_so_far=0;
-	int l,vbr_median=-1;
-	int bitrate,lastrate;
-	int counter=0;
+	int l,bitrate,lastrate,counter=0;
 //	mp3header header;
 
 	int sample_pos,data_start=0;
 
 	QFile fi(mp3->filename);
 	mp3->datasize=fi.size();//filestat.st_size;
-  
+
 	get_id3(mp3);
 
 	if(get_first_header(mp3,0L))
@@ -226,14 +221,14 @@ int get_mp3_info(mp3info *mp3)
 			} else {
 				bitrate=-1;
 			}
-		
+
 			if(bitrate != lastrate)
 			{
 				mp3->vbr=1;
 			}
 			lastrate=bitrate;
 			counter++;
-			
+
 		}
 		mp3->frames=(mp3->datasize-data_start)/(l=frame_length(&mp3->header));
 		mp3->seconds = (int)((float)(frame_length(&mp3->header)*mp3->frames)/
@@ -244,12 +239,12 @@ int get_mp3_info(mp3info *mp3)
 	return 0;
 }
 
-int get_first_header(mp3info *mp3, long startpos) 
+int get_first_header(mp3info *mp3, long startpos)
 {
 	int k, l=0,c;
 	mp3header h, h2;
 	long valid_start=0;
-	
+
 	fseek(mp3->file,startpos,SEEK_SET);
 	while(1)
 	{
@@ -317,8 +312,8 @@ int get_header(FILE *file,mp3header *header)
 	header->copyright=(buffer[3] >> 3) & 0x1;
 	header->original=(buffer[3] >> 2) & 0x1;
 	header->emphasis=(buffer[3]) & 0x3;
-	
-	return ((fl=frame_length(header)) >= MIN_FRAME_SIZE ? fl : 0); 
+
+	return ((fl=frame_length(header)) >= MIN_FRAME_SIZE ? fl : 0);
 }
 
 int frame_length(mp3header *header)
@@ -397,7 +392,7 @@ int get_id3(mp3info *mp3)
 		} else {
 			fread(fbuf,1,3,mp3->file); fbuf[3] = '\0';
 			mp3->id3.genre[0]=255;
-			
+
 			if(!strcmp((const char *)"TAG",(const char *)fbuf))
 			{
 				mp3->id3_isvalid=1;
@@ -447,19 +442,19 @@ char *unpad(char *string)
 	return string;
 }
 
-bool scan_mp3_file(QString& szFileName,mp3info * i)
+bool scan_mp3_file(QString& ,mp3info * i)
 {
 	//memset(i,0,sizeof(mp3info));
 	resetmp3infoStruct(i);
-	
+
 
 	i->filename = "text";
 	i->file = fopen(QTextCodec::codecForLocale()->fromUnicode(i->filename).data(),"rb");
 	if(!i->file)return false;
-	
+
 	get_mp3_info(i);
-	
+
 	fclose(i->file);
-	
+
 	return (i->id3_isvalid);
 }

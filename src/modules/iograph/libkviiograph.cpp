@@ -61,7 +61,7 @@ QPixmap * KviIOGraphWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SAYICON);
 }
 
-void KviIOGraphWindow::resizeEvent(QResizeEvent *e)
+void KviIOGraphWindow::resizeEvent(QResizeEvent *)
 {
 	m_pIOGraph->setGeometry(0,0,width(),height());
 }
@@ -129,7 +129,7 @@ KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
 
 	m_maxRate = 1;
 
-	int iMax = qMax(m_uLastSentBytes, m_uLastRecvBytes);
+	unsigned int iMax = qMax(m_uLastSentBytes, m_uLastRecvBytes);
 	while(iMax > m_maxRate)
 		m_maxRate*=2;
 
@@ -147,7 +147,7 @@ KviIOGraphWidget::KviIOGraphWidget(QWidget * par)
 	startTimer(1000);
 }
 
-void KviIOGraphWidget::timerEvent(QTimerEvent *e)
+void KviIOGraphWidget::timerEvent(QTimerEvent *)
 {
 	kvi_u64_t sB = g_uOutgoingTraffic;
 	kvi_u64_t rB = g_uIncomingTraffic;
@@ -156,14 +156,14 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *e)
 	unsigned int rDiff = rB - m_uLastRecvBytes;
 
 	printf("%d\n",sDiff);
-	int iMax = qMax(sDiff, rDiff);
+	unsigned int iMax = qMax(sDiff, rDiff);
 	while(iMax > m_maxRate)
 		m_maxRate*=2;
 
 	m_uLastSentBytes = sB;
 	m_uLastRecvBytes = rB;
 
-	
+
 	m_sendRates.prepend(sDiff);
 	if(m_sendRates.count()>(KVI_IOGRAPH_NUMBER_POINTS+1))
 		m_sendRates.removeLast();
@@ -174,7 +174,7 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *e)
 	update();
 }
 
-void KviIOGraphWidget::paintEvent(QPaintEvent * e)
+void KviIOGraphWidget::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
 
@@ -324,7 +324,7 @@ static bool iograph_module_init(KviModule *m)
 	return true;
 }
 
-static bool iograph_module_cleanup(KviModule *m)
+static bool iograph_module_cleanup(KviModule *)
 {
 	if(g_pIOGraphWindow)
 	{
@@ -334,7 +334,7 @@ static bool iograph_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool iograph_module_can_unload(KviModule *m)
+static bool iograph_module_can_unload(KviModule *)
 {
 	return (!g_pIOGraphWindow);
 }

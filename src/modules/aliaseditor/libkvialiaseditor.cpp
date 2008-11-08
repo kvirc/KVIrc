@@ -68,12 +68,12 @@ static bool aliaseditor_module_init(KviModule * m)
 	return true;
 }
 
-static bool aliaseditor_module_can_unload(KviModule * m)
+static bool aliaseditor_module_can_unload(KviModule * )
 {
 	return (g_pAliasEditorWindow == 0);
 }
 
-static bool aliaseditor_module_cleanup(KviModule *m)
+static bool aliaseditor_module_cleanup(KviModule *)
 {
 	if(g_pAliasEditorWindow)delete g_pAliasEditorWindow;
 	g_pAliasEditorWindow = 0;

@@ -174,7 +174,7 @@ static bool chan_kvs_fnc_isdead(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the topic of the channel specified by <window_id>.[br]
-		The topic is returned as it is known form at the call time: this means that 
+		The topic is returned as it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get an empty string (the topic is not yet known).[br]
 		This function works also on dead channels altough the topic returned is the last
@@ -208,7 +208,7 @@ static bool chan_kvs_fnc_topic(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the author of the topic of the channel specified by <window_id>.[br]
-		The topic author nickname is returned if it is known form at the call time: this means that 
+		The topic author nickname is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get an empty string (the topic is not yet known).[br]
 		This function works also on dead channels altough the information returned is the last
@@ -242,7 +242,7 @@ static bool chan_kvs_fnc_topicsetby(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the set time of the topic of the channel specified by <window_id>.[br]
-		The topic set time is returned if it is known form at the call time: this means that 
+		The topic set time is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get an empty string (the topic is not yet known).[br]
 		This function works also on dead channels altough the information returned is the last
@@ -275,7 +275,7 @@ static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the number of users on the channel specified by <window_id>.[br]
-		The number of users is returned if it is known form at the call time: this means that 
+		The number of users is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -307,7 +307,7 @@ static bool chan_kvs_fnc_usercount(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the number of owners users on the channel specified by <window_id>.[br]
-		The number of owners is returned if it is known form at the call time: this means that 
+		The number of owners is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -339,7 +339,7 @@ static bool chan_kvs_fnc_ownercount(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the number of administrator users on the channel specified by <window_id>.[br]
-		The number of administrators is returned if it is known form at the call time: this means that 
+		The number of administrators is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -372,7 +372,7 @@ static bool chan_kvs_fnc_admincount(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the number of op users on the channel specified by <window_id>.[br]
-		The number of ops is returned if it is known form at the call time: this means that 
+		The number of ops is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -404,7 +404,7 @@ static bool chan_kvs_fnc_opcount(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the number of voiced users on the channel specified by <window_id>.[br]
-		The number of voiced users is returned if it is known form at the call time: this means that 
+		The number of voiced users is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -436,7 +436,7 @@ static bool chan_kvs_fnc_voicecount(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the number of half-operator users on the channel specified by <window_id>.[br]
-		The number of half-operator users is returned if it is known form at the call time: this means that 
+		The number of half-operator users is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -468,7 +468,7 @@ static bool chan_kvs_fnc_halfopcount(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and an empty string is returned.[br]
 		The second form returns the number of user-operator users on the channel specified by <window_id>.[br]
-		The number of user-operator users is returned if it is known form at the call time: this means that 
+		The number of user-operator users is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -500,7 +500,7 @@ static bool chan_kvs_fnc_useropcount(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and 0 is returned.[br]
 		The second form returns the number entries in the ban list of the channel specified by <window_id>.[br]
-		The number of ban list entries is returned if it is known form at the call time: this means that 
+		The number of ban list entries is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -532,7 +532,7 @@ static bool chan_kvs_fnc_bancount(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and 0 is returned.[br]
 		The second form returns the number entries in the ban exception list of the channel specified by <window_id>.[br]
-		The number of ban exception list entries is returned if it is known form at the call time: this means that 
+		The number of ban exception list entries is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -564,7 +564,7 @@ static bool chan_kvs_fnc_banexceptioncount(KviKvsModuleFunctionCall * c)
 		is a channel at all). If the current window is not a channel, a warning is printed
 		and 0 is returned.[br]
 		The second form returns the number entries in the invite list of the channel specified by <window_id>.[br]
-		The number of invite list entries is returned if it is known form at the call time: this means that 
+		The number of invite list entries is returned if it is known form at the call time: this means that
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
@@ -1008,7 +1008,7 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 	KviChannel * ch = chan_kvs_find_channel(c,szId);
 	kvs_int_t limit=0;
 	QString lim;
-	if (ch) 
+	if (ch)
 	{
 		if(ch->hasChannelLimit())
 		{
@@ -1041,7 +1041,7 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 		"ovhn" are mode flags: the users are added to the array only if they are channel administrators ('a'), operators ('o'),
 		voiced users ('v'), half-operators ('h'), user-operators ('u') or unflagged ('n') users. (Unflagged means not operators, not
 		voiced and not half-operators). If none of the "ovhun" flags are used, KVIrc behaves like all five were passed.[br]
-		The flag 'm' causes the entire user masks to be added to the 
+		The flag 'm' causes the entire user masks to be added to the
 		array entries, as known by KVIrc at the moment of this function call.[br]
 		The flag 'i' causes KVIrc to invert the match and add only the users that do NOT match [mask].[br]
 		Please note that on really large channels this function may be time consuming (especially if [mask] is used):
@@ -1074,7 +1074,7 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 			%test[] = $chan.users(,*!*@*.edu,vim)
 			echo %test[]
 		[/example]
-		
+
 */
 
 static bool chan_kvs_fnc_users(KviKvsModuleFunctionCall * c)
@@ -1615,7 +1615,7 @@ static bool chan_module_init(KviModule * m)
 	return true;
 }
 
-static bool chan_module_cleanup(KviModule *m)
+static bool chan_module_cleanup(KviModule *)
 {
 	return true;
 }

@@ -68,7 +68,7 @@ extern KviAliasEditorWindow * g_pAliasEditorWindow;
 extern KviModule * g_pAliasEditorModule;
 
 KviAliasEditorTreeWidgetItem::KviAliasEditorTreeWidgetItem(QTreeWidget * pTreeWidget,Type eType,const QString &szName)
-: QTreeWidgetItem(pTreeWidget), m_eType(eType), m_pParentNamespaceItem(0), KviHeapObject()
+: QTreeWidgetItem(pTreeWidget), KviHeapObject(), m_eType(eType), m_pParentNamespaceItem(0)
 {
 	setName(szName);
 }
@@ -82,7 +82,7 @@ KviAliasEditorTreeWidgetItem::KviAliasEditorTreeWidgetItem(KviAliasNamespaceTree
 
 
 
-QString KviAliasEditorTreeWidgetItem::key(int column,bool bAsc) const
+QString KviAliasEditorTreeWidgetItem::key(int, bool) const
 {
 	QString ret;
 	if(m_eType == Namespace)ret = "1";
@@ -499,7 +499,7 @@ bool KviAliasEditor::itemExistsRecursive(QTreeWidgetItem *pSearchFor,QTreeWidget
 		if(pSearchFor == pSearchAt->child(i))return true;
 		else
 		{
-			if (pSearchAt->child(i)->childCount())	
+			if (pSearchAt->child(i)->childCount())
 			{
 				if (itemExistsRecursive(pSearchFor,pSearchAt->child(i))) return true;
 			}
@@ -725,7 +725,7 @@ void KviAliasEditor::exportSelectionInSinglesFiles(KviPointerList<KviAliasTreeWi
 	}
 
 	if(!m_szDir.endsWith(QString(KVI_PATH_SEPARATOR)))m_szDir += KVI_PATH_SEPARATOR;
-	
+
 	bool bReplaceAll=false;
 
 	for(KviAliasTreeWidgetItem * it = l->first();it;it = l->next())
@@ -1010,7 +1010,7 @@ void KviAliasEditor::removeItemChildren(KviAliasEditorTreeWidgetItem *it)
 		delete it->child(i);
 	}
 }
-bool KviAliasEditor::removeItem(KviAliasEditorTreeWidgetItem *it,bool * pbYesToAll,bool bDeleteEmptyTree)
+bool KviAliasEditor::removeItem(KviAliasEditorTreeWidgetItem *it,bool * pbYesToAll,bool)
 {
 	if(!it)return true;
 	QString szMsg;
@@ -1232,23 +1232,9 @@ void KviAliasEditor::openParentItems(QTreeWidgetItem * it)
 	}
 }
 
-void KviAliasEditor::selectOneItem(QTreeWidgetItem * it,QTreeWidgetItem *pStartFrom)
-{
-	/*
-	if(!pStartFrom)return;
-	if(pStartFrom == it)pStartFrom->setSelected(true);
-	else pStartFrom->setSelected(false);
-	selectOneItem(it,pStartFrom->firstChild());
-	selectOneItem(it,pStartFrom->nextSibling());
-	*/
-
-
-}
-
 void KviAliasEditor::activateItem(QTreeWidgetItem * it)
 {
 	openParentItems(it);
-	//selectOneItem(it,m_pTreeWidget->child(0));
 	m_pTreeWidget->setCurrentItem(it);
 }
 
@@ -1435,7 +1421,7 @@ void KviAliasEditor::saveLastEditedItem()
 	((KviAliasTreeWidgetItem *)m_pLastEditedItem)->setBuffer(newCode);
 }
 
-void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev)
+void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 {
 	saveLastEditedItem();
 
@@ -1614,14 +1600,14 @@ QPixmap * KviAliasEditorWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS);
 }
 
-void KviAliasEditorWindow::resizeEvent(QResizeEvent *e)
+void KviAliasEditorWindow::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pBase->sizeHint().height();
 	m_pEditor->setGeometry(0,0,width(),height()- hght);
 	m_pBase->setGeometry(0,height() - hght,width(),hght);
 }
 
-void KviAliasEditorWindow::getConfigGroupName(KviStr &szName)
+void KviAliasEditorWindow::getConfigGroupName(QString &szName)
 {
 	szName = "aliaseditor";
 }

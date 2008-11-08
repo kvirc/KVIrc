@@ -127,7 +127,7 @@ protected:
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual QSize sizeHint() const;
 	virtual bool event(QEvent *e);
-	virtual void getBaseLogFileName(KviStr &buffer);
+	virtual void getBaseLogFileName(QString &buffer);
 	void startTalking();
 	void stopTalking();
 	void startConnection();
@@ -158,7 +158,7 @@ CODEC DEFINITION
 	Sample endianness = le/be
 
 	Sample compressor = name
-	
+
 	<rate>:<bits>:<endianness>:<compressor>
 
 	8000:16:le:null
@@ -214,7 +214,7 @@ public:
 	KviVoiceAudioEncoder();
 	~KviVoiceAudioEncoder();
 public:
-	
+
 };
 
 class KviVoiceAudioDecoder
@@ -317,10 +317,10 @@ public:
 	~KviVoiceConference();
 public:
 	KviPointerList<KviVoiceLink> * m_pLinks;
-	KviPointerHashTable<QString,KviVoiceLink> * 
+	KviPointerHashTable<QString,KviVoiceLink> *
 	SOCKET m_hUdpSocket;
 	QString m_szLastError;
-	
+
 	unsigned int m_uLocalAudioSampleRate; // samples/sec
 	unsigned int m_uLocalAudioSampleSize; // bits
 	unsigned int m_uLocalAudioEndianness; // 0 = le, 1 = be
@@ -403,7 +403,7 @@ void KviVoiceConference::conferenceThread()
 // should be played consecutively.
 // Each packet in a chunk has an ordinal
 // Chunks must be relatively short in order
-//   to allow a remote end that looses a packet to 
+//   to allow a remote end that looses a packet to
 //   synchronize after a short period of time
 //   The maximum number of packets in a chunk is 65535 (but a chunk should be no more than 24-32 KBytes in size
 //   and in general they should be as small as possible, even one packet per chunk, if the codec allows it)

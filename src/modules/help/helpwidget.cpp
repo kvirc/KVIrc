@@ -44,7 +44,7 @@ extern Index        * g_pDocIndex;
 extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
 extern KviPointerList<KviHelpWidget> * g_pHelpWidgetList;
 
-KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame * lpFrm,bool bIsStandalone)
+KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame *,bool bIsStandalone)
 : QWidget(par)
 {
 	setObjectName("help_widget");
@@ -103,7 +103,7 @@ void KviHelpWidget::showIndex()
 	m_pTextBrowser->setSource(QUrl::fromLocalFile(dirHelp.absoluteFilePath("index.html")));
 }
 
-void KviHelpWidget::resizeEvent(QResizeEvent *e)
+void KviHelpWidget::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pToolBar->sizeHint().height();
 	if(hght < 40)hght = 40;

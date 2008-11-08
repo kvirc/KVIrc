@@ -110,7 +110,7 @@ static bool language_module_init(KviModule * m)
 	return true;
 }
 
-static bool language_module_cleanup(KviModule *m)
+static bool language_module_cleanup(KviModule *)
 {
 	return true;
 }

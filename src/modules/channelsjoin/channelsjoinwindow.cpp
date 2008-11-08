@@ -62,7 +62,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	m_pConsole = 0;
 
 	QGridLayout * g = new QGridLayout(this);
-	
+
 	m_pTreeWidget = new KviTalTreeWidget(this);
 	m_pTreeWidget->setHeaderLabel(__tr2qs("Channel"));
 	m_pTreeWidget->setRootIsDecorated(true);
@@ -78,7 +78,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	szMsg.append(":");
 	QLabel * l = new QLabel(szMsg,m_pGroupBox);
 
-	m_pChannelEdit = new QLineEdit(m_pGroupBox); 
+	m_pChannelEdit = new QLineEdit(m_pGroupBox);
 	connect(m_pChannelEdit,SIGNAL(returnPressed()), this, SLOT(editReturnPressed()));
 	connect(m_pChannelEdit,SIGNAL(textChanged(const QString &)),this,SLOT(editTextChanged(const QString &)));
 
@@ -119,7 +119,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 /*
 	KviTalHBox * hb = new KviTalHBox(this);
 	hb->setSpacing(4);
-	
+
 	QPushButton * namesButton = new QPushButton("/names", hb);
 	connect(namesButton,SIGNAL(clicked()),this,SLOT(namesClicked()));
 	QPushButton * whoButton = new QPushButton("/who", hb);
@@ -165,7 +165,7 @@ void KviChannelsJoinWindow::fillListView()
 	par->setText(0,__tr2qs("Recent Channels"));
 	par->setExpanded(true);
 	KviTalTreeWidgetItem * chld;
-	
+
 	if(m_pConsole)
 	{
 		QStringList * pList = g_pApp->getRecentChannels(m_pConsole->currentNetworkName());
@@ -198,7 +198,7 @@ void KviChannelsJoinWindow::fillListView()
 	}
 }
 
-void KviChannelsJoinWindow::itemClicked(QTreeWidgetItem * it, int index)
+void KviChannelsJoinWindow::itemClicked(QTreeWidgetItem * it, int)
 {
 	if(!it)
 		return;

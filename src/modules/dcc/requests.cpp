@@ -1088,7 +1088,7 @@ static void dccModuleParseDccCanvas(KviDccRequest *dcc)
 #endif
 }
 
-static void dccModuleParseDccList(KviDccRequest *dcc)
+static void dccModuleParseDccList(KviDccRequest *)
 {
 	// DCC LIST <mask> <ipaddr> <port>
 	// FIXME!

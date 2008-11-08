@@ -287,7 +287,7 @@ QPixmap * KviDccChat::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_DCCMSG);
 }
 
-void KviDccChat::getBaseLogFileName(KviStr &buffer)
+void KviDccChat::getBaseLogFileName(QString &buffer)
 {
 	buffer.sprintf("%s_%s_%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 }
@@ -476,7 +476,7 @@ bool KviDccChat::event(QEvent *e)
 	return KviWindow::event(e);
 }
 
-void KviDccChat::resizeEvent(QResizeEvent *e)
+void KviDccChat::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pInput->heightHint();
 	int hght2 = m_pTopSplitter->sizeHint().height();

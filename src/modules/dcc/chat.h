@@ -77,7 +77,7 @@ protected:
 protected:
 	virtual const QString & target();
 	virtual void fillCaptionBuffers();
-	virtual void getBaseLogFileName(KviStr &buffer);
+	virtual void getBaseLogFileName(QString &buffer);
 	virtual QPixmap * myIconPtr();
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual QSize sizeHint() const;

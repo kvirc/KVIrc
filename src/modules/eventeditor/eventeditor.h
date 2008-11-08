@@ -61,7 +61,7 @@ public:
 public:
 	const int & cursorPosition(){return m_cPos; };
 	void setCursorPosition(const int &cPos){debug ("set cursor to %d",cPos); m_cPos = cPos; };
-	
+
 	void setName(const QString &szName);
 	QString name() const { return m_szName; };
 	void setEnabled(const bool bEnabled);
@@ -125,7 +125,7 @@ protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getConfigGroupName(KviStr &szName);
+	virtual void getConfigGroupName(QString &szName);
 	virtual void saveProperties(KviConfig *);
 	virtual void loadProperties(KviConfig *);
 protected slots:

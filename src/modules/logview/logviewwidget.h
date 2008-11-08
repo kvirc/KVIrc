@@ -66,7 +66,7 @@ class KviLogListViewLog : public KviLogListViewItem
 public:
 	KviLogListViewLog(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
 	~KviLogListViewLog() {};
-	virtual QString key ( int column, bool ascending ) const { return text(column); };
+	virtual QString key ( int column, bool) const { return text(column); };
 	virtual QString fileName() const { return m_pFileData->fileName(); };
 };
 

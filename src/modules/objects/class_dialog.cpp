@@ -66,7 +66,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_dialog)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_dialog)
 
-bool KviKvsObject_dialog::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_dialog::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	QWidget * w = g_pApp->activeModalWidget();
 	if(!w)w = g_pFrame;

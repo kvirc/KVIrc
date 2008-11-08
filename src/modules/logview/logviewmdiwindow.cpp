@@ -197,7 +197,7 @@ QPixmap * KviLogViewMDIWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_LOG);
 }
 
-void KviLogViewMDIWindow::resizeEvent(QResizeEvent *e)
+void KviLogViewMDIWindow::resizeEvent(QResizeEvent *)
 {
 	m_pSplitter->setGeometry(0,0,width(),height());
 }
@@ -232,7 +232,7 @@ void KviLogViewMDIWindow::setupItemList()
 	KviLogFile *pFile;
 	//m_logList.begin();
 	KviLogListViewItem *pLastCategory=0;
-	KviLogListViewItemFolder *pLastGroupItem;
+	KviLogListViewItemFolder *pLastGroupItem=0;
 	QString szLastGroup;
 	QString szCurGroup;
 	const bool bShowChannel=m_pShowChannelsCheck->isChecked();
@@ -338,7 +338,6 @@ void KviLogViewMDIWindow::cacheFileList()
 
 void KviLogViewMDIWindow::itemSelected(KviTalTreeWidgetItem * it,KviTalTreeWidgetItem *)
 {
-	bool bCompressed=0;
 	//A parent node
 	m_pIrcView->clearBuffer();
 	if(!it || !it->parent() || !(((KviLogListViewItem *)it)->m_pFileData) )

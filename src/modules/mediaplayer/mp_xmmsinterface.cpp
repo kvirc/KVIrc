@@ -149,7 +149,7 @@ void * KviXmmsInterface::lookupSymbol(const char * szSymbolName)
 }
 
 
-int KviXmmsInterface::detect(bool bStart)
+int KviXmmsInterface::detect(bool)
 {
 	void * sym = lookupSymbol("xmms_remote_play");
 	return sym ? 80 : 0;
@@ -191,7 +191,7 @@ bool KviXmmsInterface::quit()
 	XMMS_SIMPLE_CALL("xmms_remote_quit")
 }
 
-bool KviXmmsInterface::jumpTo(kvs_int_t &iPos)
+bool KviXmmsInterface::jumpTo(int &iPos)
 {
 	void (*sym)(int,int) = (void (*)(int,int))lookupSymbol("xmms_remote_jump_to_time");
 	if(!sym)return false;

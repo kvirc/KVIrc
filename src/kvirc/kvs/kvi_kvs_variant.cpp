@@ -402,7 +402,7 @@ void KviKvsVariant::castToArray(KviKvsArrayCast *c) const
 		c->set(new KviKvsArray(),true);
 		return;
 	}
-	
+
 	switch(m_pData->m_eType)
 	{
 		case KviKvsVariantData::Array:
@@ -440,7 +440,7 @@ void KviKvsVariant::convertToArray()
 		setArray(new KviKvsArray());
 		return;
 	}
-	
+
 	switch(m_pData->m_eType)
 	{
 		case KviKvsVariantData::Array:
@@ -622,18 +622,18 @@ void KviKvsVariant::dump(const char * prefix) const
 {
 	if(!m_pData)
 	{
-		debug("%s Nothing [this=0x%lx]",prefix,this);
+		debug("%s Nothing [this=0x%lx]",prefix,(long unsigned int) this);
 		return;
 	}
 	switch(m_pData->m_eType)
 	{
-		case KviKvsVariantData::String: debug("%s String(%s) [this=0x%lx]",prefix,m_pData->m_u.pString->toUtf8().data(),this); break;
-		case KviKvsVariantData::Array: debug("%s Array(ptr=0x%lx) [this=0x%lx]",prefix,m_pData->m_u.pArray,this); break;
-		case KviKvsVariantData::Hash: debug("%s Hash(ptr=0x%lx,dict=0x%lx) [this=0x%lx]",prefix,m_pData->m_u.pHash,m_pData->m_u.pHash->dict(),this); break;
-		case KviKvsVariantData::Integer:  debug("%s Integer(%d) [this=0x%lx]",prefix,m_pData->m_u.iInteger,this); break;
-		case KviKvsVariantData::Real: debug("%s Real(%f) [this=0x%lx]",prefix,*(m_pData->m_u.pReal),this); break;
-		case KviKvsVariantData::Boolean: debug("%s Boolean(%s) [this=0x%lx]",prefix,m_pData->m_u.bBoolean ? "true" : "false",this); break;
-		case KviKvsVariantData::HObject: debug("%s HObject(%lx) [this=0x%lx]",prefix,m_pData->m_u.hObject,this); break;
+		case KviKvsVariantData::String: debug("%s String(%s) [this=0x%lx]",prefix,m_pData->m_u.pString->toUtf8().data(),(long unsigned int)this); break;
+		case KviKvsVariantData::Array: debug("%s Array(ptr=0x%lx) [this=0x%lx]",prefix,(long unsigned int)m_pData->m_u.pArray,(long unsigned int)this); break;
+		case KviKvsVariantData::Hash: debug("%s Hash(ptr=0x%lx,dict=0x%lx) [this=0x%lx]",prefix,(long unsigned int)m_pData->m_u.pHash,(long unsigned int)m_pData->m_u.pHash->dict(),(long unsigned int)this); break;
+		case KviKvsVariantData::Integer:  debug("%s Integer(%d) [this=0x%lx]",prefix,m_pData->m_u.iInteger,(long unsigned int)this); break;
+		case KviKvsVariantData::Real: debug("%s Real(%f) [this=0x%lx]",prefix,*(m_pData->m_u.pReal),(long unsigned int)this); break;
+		case KviKvsVariantData::Boolean: debug("%s Boolean(%s) [this=0x%lx]",prefix,m_pData->m_u.bBoolean ? "true" : "false",(long unsigned int)this); break;
+		case KviKvsVariantData::HObject: debug("%s HObject(%lx) [this=0x%lx]",prefix,(long unsigned int)m_pData->m_u.hObject,(long unsigned int)this); break;
 		default: /* make gcc happy */ break;
 	}
 }
@@ -766,7 +766,7 @@ public:
 			return v2->m_pData->m_u.bBoolean ? CMP_OTHERGREATER : CMP_EQUAL;
 		return v2->m_pData->m_u.bBoolean ? CMP_EQUAL : CMP_THISGREATER;
 	}
-	
+
 	static inline int compare_integer_hash(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v1->m_pData->m_u.iInteger == 0)
@@ -852,7 +852,7 @@ public:
 		}
 		return CMP_THISGREATER;
 	}
-	
+
 	static inline int compare_string_hobject(const KviKvsVariant * v1,const KviKvsVariant * v2)
 	{
 		if(v2->m_pData->m_u.hObject == (kvs_hobject_t)0)
@@ -865,7 +865,7 @@ public:
 				if(dReal == 0)return CMP_EQUAL;
 			}
 		}
-		
+
 		return CMP_THISGREATER;
 	}
 
@@ -1223,7 +1223,7 @@ KviKvsVariant* KviKvsVariant::unserializeHash(const QChar** aux)
 			return 0;
 		}
 		(*aux)++;
-		
+
 
 		//getting element
 		pElement = unserialize(aux);
@@ -1361,7 +1361,7 @@ KviKvsVariant* KviKvsVariant::unserialize(const QString& data)
 	KviKvsVariant* pResult = 0;
 
 	const QChar * aux = (const QChar *)data.constData();
-	
+
 	pResult = unserialize(&aux);
 
 	if(aux->unicode())
@@ -1515,6 +1515,8 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther,bool bPreferNumeric) con
 				case KviKvsVariantData::HObject:
 					return KviKvsVariantComparison::compare_string_hobject(this,pOther);
 				break;
+				default:
+				break;
 			}
 		break;
 		case KviKvsVariantData::Hash:
@@ -1542,6 +1544,8 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther,bool bPreferNumeric) con
 				case KviKvsVariantData::HObject:
 					return -1 * KviKvsVariantComparison::compare_hobject_hash(pOther,this);
 				break;
+				default:
+				break;
 			}
 		break;
 		case KviKvsVariantData::Array:
@@ -1566,6 +1570,8 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther,bool bPreferNumeric) con
 				break;
 				case KviKvsVariantData::HObject:
 					return -1 * KviKvsVariantComparison::compare_hobject_array(pOther,this);
+				break;
+				default:
 				break;
 			}
 		break;
@@ -1594,6 +1600,8 @@ int KviKvsVariant::compare(const KviKvsVariant * pOther,bool bPreferNumeric) con
 				break;
 				case KviKvsVariantData::HObject:
 					return KviKvsVariantComparison::compare_boolean_hobject(this,pOther);
+				break;
+				default:
 				break;
 			}
 		break;

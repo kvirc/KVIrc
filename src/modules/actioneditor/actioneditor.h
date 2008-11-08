@@ -192,7 +192,7 @@ protected:
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getConfigGroupName(KviStr &szName);
+	virtual void getConfigGroupName(QString &szName);
 	virtual void saveProperties(KviConfig *);
 	virtual void loadProperties(KviConfig *);
 protected slots:

@@ -59,7 +59,7 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup::dump(const char * prefix
 	qDebug("%s",x.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
+bool KviKvsTreeNodeSpecialCommandDefpopupLabelExtpopup::execute(KviKvsRunTimeContext *,KviKvsPopupMenu * p)
 {
 	p->addExtPopup(m_szItemName,m_szName,m_szText,m_szIcon,m_szCondition);
 	return true;
@@ -95,7 +95,7 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelItem::dump(const char * prefix)
 	qDebug("%s",x.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandDefpopupLabelItem::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
+bool KviKvsTreeNodeSpecialCommandDefpopupLabelItem::execute(KviKvsRunTimeContext *,KviKvsPopupMenu * p)
 {
 	p->addItem(m_szItemName,m_szInstruction,m_szText,m_szIcon,m_szCondition);
 	return true;
@@ -126,7 +126,7 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelLabel::dump(const char * prefix)
 	qDebug("%s",x.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandDefpopupLabelLabel::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
+bool KviKvsTreeNodeSpecialCommandDefpopupLabelLabel::execute(KviKvsRunTimeContext *,KviKvsPopupMenu * p)
 {
 	p->addLabel(m_szItemName,m_szText,m_szIcon,m_szCondition);
 	return true;
@@ -147,7 +147,7 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::dump(const char * prefi
 	debug("%s",tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
+bool KviKvsTreeNodeSpecialCommandDefpopupLabelSeparator::execute(KviKvsRunTimeContext *,KviKvsPopupMenu * p)
 {
 	p->addSeparator(m_szItemName,m_szCondition);
 	return true;
@@ -168,7 +168,7 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::dump(const char * prefix
 	debug("%s",tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
+bool KviKvsTreeNodeSpecialCommandDefpopupLabelEpilogue::execute(KviKvsRunTimeContext *,KviKvsPopupMenu * p)
 {
 	p->addEpilogue(m_szItemName,m_szInstruction);
 	return true;
@@ -189,7 +189,7 @@ void KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::dump(const char * prefix
 	debug("%s",tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::execute(KviKvsRunTimeContext * c,KviKvsPopupMenu * p)
+bool KviKvsTreeNodeSpecialCommandDefpopupLabelPrologue::execute(KviKvsRunTimeContext *,KviKvsPopupMenu * p)
 {
 	p->addPrologue(m_szItemName,m_szInstruction);
 	return true;

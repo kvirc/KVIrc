@@ -81,7 +81,7 @@ KVSO_END_DESTRUCTOR(KviKvsObject_dockwindow)
 
 #define _pDockWindow ((QT_DOCK_WINDOW *)widget())
 
-bool KviKvsObject_dockwindow::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
+bool KviKvsObject_dockwindow::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	QDockWidget * pWidget = new QDockWidget(g_pFrame);
 	pWidget->setObjectName(getName());

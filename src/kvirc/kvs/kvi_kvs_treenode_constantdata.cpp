@@ -52,7 +52,7 @@ bool KviKvsTreeNodeConstantData::convertStringConstantToNumeric()
 			m_pValue->setInteger(iVal);
 			return true;
 		}
-		
+
 		kvs_real_t dVal;
 		if(m_pValue->asReal(dVal))
 		{
@@ -71,7 +71,7 @@ void KviKvsTreeNodeConstantData::dump(const char * prefix)
 	m_pValue->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeConstantData::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeConstantData::evaluateReadOnly(KviKvsRunTimeContext *,KviKvsVariant * pBuffer)
 {
 	pBuffer->copyFrom(m_pValue);
 	return true;

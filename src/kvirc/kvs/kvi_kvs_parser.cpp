@@ -91,7 +91,7 @@ void KviKvsParser::report(bool bError,const QChar * pLocation,const QString &szM
 		int iLine,iCol;
 
 		KviKvsReport::findLineColAndListing(m_pBuffer,pLocation,iLine,iCol,pCodeListing);
-		
+
 		KviQString::sprintf(szLocation,__tr2qs_ctx("line %d, near character %d","kvs"),iLine,iCol);
 	} else {
 		szLocation = __tr2qs_ctx("beginning of input","kvs");
@@ -220,7 +220,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 // <string parameter body> ::= <anything except '"' or null>...
 // <command terminator> ::= ';' | '\n' | '\0'
 
-// <data> ::= 
+// <data> ::=
 // <data_reference> ::= <function_call> | <structured_data>
 // <structured_data> ::= <data_structure> | <variable> | <pointer_data>
 // <data_structure> ::= <array> | <hash>
@@ -392,7 +392,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		of IRC commands like [cmd]msg[/cmd]. It is almost unavoidable (read: the cost for
 		avoiding it is too high). Note that using '|' or any other character as command terminator
 		will NOT solve the problem: if the terminator is too difficult to type it will annoy the
-		scripters (and me), if it is too easy then there will be always someone that wants to use it 
+		scripters (and me), if it is too easy then there will be always someone that wants to use it
 		at the end (or in the middle) of a command with the original meaning.
 		The solution is to escape the ';' character:
 		[example]
@@ -588,7 +588,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		maybe one day I'll implement it).[br]
 		Starting from version 3.0.0 kvirc supports also C++ single line and C multiline comments.[br]
 		A C++ comment starts with two slashes '//' and terminates with a newline.
-		A multiline C comment starts with '/*' and ends at the first '* /' encountered.
+		A multiline C comment starts with '/ *' and ends at the first '* /' encountered.
 		Since KVIrc has no pre-processor, the C/C++ comments usually can't be placed in the middle of a command:
 		they must start where a command would start and end before the begin of another command.[br]
 		[/p]
@@ -617,7 +617,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		adjust the tab size to match their taste. I personally prefer 4 character tabs
 		while most text/code editors usually come with 8 characters as default.
 		[/p]
-		
+
 		[big]And now ?[/big]
 		[p]
 		You're now ready to really start experimenting with KVS. You can take
@@ -792,7 +792,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				[cmd]kick[/cmd] $0 %reason
 			}
 		[/example]
-		The example above will first check the validity of the <nickname> passed to kb: 
+		The example above will first check the validity of the <nickname> passed to kb:
 		if no nickname was passed , it will warn the user and stop.
 		The next step will be the "ban <nickname>" call. Another enchancement is the "default reason":
 		we first assign the remaining parameters ($1- means "from $1 to the end") to a temporary variable,
@@ -838,8 +838,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		Is a perfectly valid call.... it's just that it will have no visible results
 		(just because a command call implies ignoring the return value.
-		In fact there is no difference al all between function-aliases and normal-aliases: 
-		the caller makes the difference: by calling an alias as a command the return value 
+		In fact there is no difference al all between function-aliases and normal-aliases:
+		the caller makes the difference: by calling an alias as a command the return value
 		just disappears in hyperspace, by calling an alias as a function , the return value
 		is propagated (and in fact "used").
 		(There are some "nice" exceptions to this rule...but you don't need to care about it, for now).
@@ -1015,7 +1015,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			The [b]logical name[/b] is a property of some kind of windows.
 			It usually corresponds to the first part of the window caption.
 			For example, for channel windows it is the channel name, for
-			queries it is the list of the targets. For some other windows 
+			queries it is the list of the targets. For some other windows
 			the logical name corresponds to the caption text. This will be discussed later.[br]
 			The [b]type identifier[/b] describes the properties of a certain window.
 			For channel windows the type identifier is "channel" , for query windows is "query" ,
@@ -1194,7 +1194,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				[cmd]kick[/cmd] $0 %reason
 			}
 		[/example]
-		The example above will first check the validity of the <nickname> passed to kb: 
+		The example above will first check the validity of the <nickname> passed to kb:
 		if no nickname was passed , it will warn the user and stop.
 		The next step will be the "ban <nickname>" call. Another enchancement is the "default reason":
 		we first assign the remaining parameters ($1- means "from $1 to the end") to a temporary variable,
@@ -1240,8 +1240,8 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 		Is a perfectly valid call.... it's just that it will have no visible results
 		(just because a command call implies ignoring the return value.
-		In fact there is no difference al all between function-aliases and normal-aliases: 
-		the caller makes the difference: by calling an alias as a command the return value 
+		In fact there is no difference al all between function-aliases and normal-aliases:
+		the caller makes the difference: by calling an alias as a command the return value
 		just disappears in hyperspace, by calling an alias as a function , the return value
 		is propagated (and in fact "used").
 		(There are some "nice" exceptions to this rule...but you don't need to care about it, for now).
@@ -1571,7 +1571,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[br]
 		<entity> indicates a ENTITY THAT CAN APPEAR EXACTLY ONE TIME.[br]
 		[<entity>] indicates an OPTIONAL ENTITY.[br]
-		{<entity>} indicates an ENTITY THAT CAN APPEAR ONE OR MORE TIMES.[br] 
+		{<entity>} indicates an ENTITY THAT CAN APPEAR ONE OR MORE TIMES.[br]
 		'entity' indicates a LITERAL ENTITY: written exactly as it is.[br]
 		<entity1>|<entity2> indicates mutually exclusive choices.[br]
 		The mutually exclusive choices are often separated in two or more
@@ -1640,7 +1640,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[tr]
 		[td]<simple command>[/td]
 		[td][<module name>'.']<command name>[<switch list>]{<space>}<command dependant part>[/td]
-		[/tr]	
+		[/tr]
 		[tr]
 		[td]<lvalue command>[/td]
 		[td]<variable>[<space>]<operation>[/td]
@@ -1733,7 +1733,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 	@type:
 		language
 	@keyterms:
-		global variable, global variables, local variable, local variables, 
+		global variable, global variables, local variable, local variables,
 		variables, variable, array, hash, dictionary, global variables, local variables,variable evaluation,
 		associative arrays, scalars, data types, percent sign, extended scope
 	@title:
@@ -1837,7 +1837,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[p]
 		The scalars are simple variables containing a single value (a string or an integer).
 		[/p]
-		
+
 		[example]
 			[comment]# %a is a scalar variable[/comment]
 			%a = "This is a string"
@@ -1847,7 +1847,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 
 		[subtitle]Arrays[/subtitle]
-		
+
 		[p]
 		Arrays are collections of items indexed by integers. The array items
 		are selected by placing the index in square brackets just after the array name.
@@ -1856,7 +1856,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[example]
 			%arrayName[index]
 		[/example]
-		
+
 		[p]
 		An easy way to create an array is to use the [fnc]$array[/fnc] function.
 		[/p]
@@ -1923,7 +1923,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Be aware that [cmd]foreach[/cmd] will NOT iterate over unset items in the
 		array unless you use the -a switch.
 		[/p]
-		
+
 		[example]
 			%Array[0]=Pippo
 			%Array[1]=Pluto
@@ -1931,7 +1931,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%Array[5]=Prova
 			[cmd]foreach[/cmd](%item,%Array)[cmd]echo[/cmd] Got Item: %item
 		[/example]
-		
+
 		[p]
 		Note that the items 3 and 4 are simply skipped.
 		[/p]
@@ -1960,13 +1960,13 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 				echo "KEY:" %key "VALUE:" %a{%key};
 			}
 		[/example]
-		
+
 		[p]
 		Note that in the example above %a refers to the whole hash while %a{%i} refers
 		to one of its elements, in particular the one with the key %key.
 		You also create a hash by explicitly assigning to one of its elements:
 		[/p]
-		
+
 		[example]
 			%a{"MyKey"} = "MyValue"
 		[/example]
@@ -1982,7 +1982,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		KVS is not strictly typed: any variable can assume different type identities at different times,
 		even in the same script.
 		[/p]
-		
+
 		[example]
 			[comment]# %a is a scalar[/comment]
 			%a = "This is a string"
@@ -1991,7 +1991,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			[comment]# %a becomes a hash with two values[/comment]
 			%a = $hash("key1","value1","key2","value2");
 		[/example]
-		
+
 		[p]
 		In literature this kind of variable is called [b]variant[/b] and this is the
 		term that you will find all around the documentation when an explicit
@@ -2003,7 +2003,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		of arrays, hashes of arrays of hashes and any other multidimensional combination you like.
 		However remember that hash keys are strings and not variants so you can't use an array as hash key.
 		[/p]
-		
+
 		[example]
 			[comment]# here we eat 256 locations of memory at once :)[/comment]
 			%a[16][16] = 10
@@ -2017,23 +2017,23 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		For example, when you put an array in a place where a scalar is requested, KVIrc
 		automatically transforms it to a scalar string by joining all the items with a comma.
 		[/p]
-		
+
 		[example]
 			%a = $array("element1","element2","element3");
 			echo %a; [comment]# echo expects its arguments to be scalar[/comment]
 		[/example]
-		
+
 		[p]
 		Conversely, when you put a scalar in place of an array, KVIrc automatically
 		transforms it to an array with a single item. In this way a function like
 		[fnc]$sort[/fnc] works also with a scalar.
 		[/p]
-		
+
 		[p]
 		In literature the conversions between data types are called [b]casts[/b]. When
 		the conversion is automatic the cast is said to be [b]implicit[/b].
 		[/p]
-		
+
 		[p]
 		KVS handles also the other possible implicit casts: scalar->hash,hash->scalar,array->hash,hash->array.
 		Experiment with it.
@@ -2045,40 +2045,40 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		Internally KVS is implicitly typed: the "scalar" data type is in fact
 		a set of types that KVIrc manages silently. The types are: integer, string, real, boolean and hobject.
 		[/p]
-		
+
 		[p]
 		Integers are non-floating point numbers. Their allowable range depends on the underlying
 		platform integer size: usually 32 or 64 bit.
 		[/p]
-		
+
 		[p]
 		Reals are floating point numbers. Their allowable range and precision depends on the underlying
 		platform.
 		[/p]
-		
+
 		[p]
 		Booleans are either true or false values.
 		[/p]
-		
+
 		[p]
 		Hobject stands for Handle to Object and it is a sort of a C++ pointer.
 		Detailed description of objects is in [doc:objects]this document[/doc].
 		[/p]
-		
+
 		[p]
 		Basically anything else fails in the "string" category.
 		[/p]
-		
+
 		[p]
 		In most cases KVS manages all the conversions between data types automatically.
 		For example an integer becomes a true boolean when it's non zero and a false boolean
 		otherwise, a real becomes an integer by truncating it's fractional part...
 		[/p]
-		
+
 		[p]
 		You can find out the type of a specified variable by using the [fnc]$typeof[/fnc]() function.
 		[/p]
-		
+
 		[example]
 			%a = 1
 			echo $typeof(%a)
@@ -2089,24 +2089,24 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%a = "test"
 			echo $typeof(%a)
 		[/example]
-		
+
 		[p]
 		There is also another subtle type of scalar called "nothing". It stands for an empty (unset) variable.
 		[/p]
-		
+
 		[example]
 			%a = $nothing
 			echo $typeof(%a)
 		[/example]
-		
+
 		[p]
 		Nothing is something in between a data type and a special value for all the other data types:
-		it rappresents absence of information. 
+		it rappresents absence of information.
 		This may look a bit confusing but realize that all the unreferenced KVS variable are in fact of type "nothing":
 		they just don't exist. This means that you can use [fnc]$nothing[/fnc]() to effectively
 		unset a variable.
 		[p]
-		
+
 		[p]
 		Again, when possible, the conversion between nothing and the other data types is
 		performed automatically. Nothing becomes an empty string, a null object handle or an empty array.
@@ -2114,18 +2114,18 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 
 
 		[title]Explicit casts[/title]
-		
+
 		[p]
 		You can make explicit conversions between some data types by using the casting functions.
 		[fnc]$integer[/fnc]() will attempt to convert the variant parameter to an integer, [fnc]$real[/fnc]()
 		will cast to a floating point value, [fnc]$boolean[/fnc]() will convert to a
-		true/false value, [fnc]$string[/fnc]() will explicitly convert to a string, 
+		true/false value, [fnc]$string[/fnc]() will explicitly convert to a string,
 		[fnc]$array[/fnc]() will convert to an array and [fnc]$hash[/fnc] will return
 		a dictionary. By assigning the special [fnc]$nothing[/fnc]() value you will
 		convert to the nothing data type (or simply unset the variable).
 		The only explicit conversion that is not possible is to hobject.
 		[/p]
-		
+
 		[p]
 		As stated several times in this document, KVS tries to manage the casts automatically
 		so you usually don't need to care about it. The explicit casts are provided for
@@ -2142,12 +2142,12 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		not care about it and just leave the KVS engine to do his cleaning job but it's still worth
 		knowing that you actually can force KVIrc to free the memory used by a variable.
 		[/p]
-		
+
 		[p]
 		The first method to explicitly destroy a variable is to call [cmd]unset[/cmd] on it.
 		[cmd]unset[/cmd] in fact accepts a list of variables so you can destroy more variables at once.
 		[/p]
-		
+
 		[example]
 			%a = [fnc]$array[/fnc]("data","for","a","really","huge","array","of","items")
 			%b = 10
@@ -2167,7 +2167,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			%a = ""; [comment]# %a is in fact unset[/comment]
 			%b = ; [comment]# syntactically this is just the same as above[/comment]
 		[/example]
-		
+
 		[p]
 		Note that because of mutability of variables (explained above) you can use the empty string
 		assignment also to free arrays and hashes.
@@ -2194,7 +2194,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/p]
 
 		[title]Variable evaluation[/title]
-		
+
 		[p]
 		A variable can appear in every place where a parameter
 		is expected: so after the command name, after a switch or inside
@@ -2282,7 +2282,7 @@ bool KviKvsParser::skipSpacesAndNewlines()
 	{
 		KVSP_skipChar;
 	}
-	
+
 	switch(KVSP_curCharUnicode)
 	{
 		case '\\':
@@ -2416,11 +2416,11 @@ KviKvsTreeNodeData * KviKvsParser::parsePercentOrDollar(bool bInObjScope)
 		// this is @
 		static QString szStrayAtRoutineName("@");
 		static QString szMightBeStrayAtOrThisRoutineName("@?");
-		
+
 		pBegin = KVSP_curCharPointer;
-		
+
 		KVSP_skipChar;
-		
+
 		if(bInObjScope || ((KVSP_curCharUnicode != '$') && (KVSP_curCharUnicode != '%')))
 		{
 			// we're sure this is just a stray @
@@ -2482,20 +2482,20 @@ KviKvsTreeNodeData * KviKvsParser::parsePercentOrDollar(bool bInObjScope)
 					return new KviKvsTreeNodeArrayReferenceAssert(pBegin,r);
 				}
 			}
-	
+
 			KviKvsTreeNodeExpression * e = parseExpression(']');
 			if(!e)
 			{
 				delete r;
 				return 0;
 			}
-			
+
 			r = new KviKvsTreeNodeArrayElement(pBegin,r,e);
 		} else {
 			// hash key
 			KVSP_skipChar;
 			skipSpaces();
-	
+
 			if(KVSP_curCharUnicode == '}')
 			{
 				// entire hash ?
@@ -2507,7 +2507,7 @@ KviKvsTreeNodeData * KviKvsParser::parsePercentOrDollar(bool bInObjScope)
 				}
 				return new KviKvsTreeNodeHashReferenceAssert(pBegin,r);
 			}
-	
+
 			KviKvsTreeNodeData * i = parseHashKey();
 			if(!i)
 			{
@@ -2515,11 +2515,11 @@ KviKvsTreeNodeData * KviKvsParser::parsePercentOrDollar(bool bInObjScope)
 				delete r;
 				return 0;
 			}
-	
+
 			KVSP_ASSERT(KVSP_curCharUnicode == '}');
-	
+
 			KVSP_skipChar;
-	
+
 			r = new KviKvsTreeNodeHashElement(pBegin,r,i);
 		}
 	}
@@ -2585,7 +2585,7 @@ handle_scope_operator:
 		delete r;
 		return 0;
 	}
-	
+
 	if(!r2->canEvaluateInObjectScope())
 	{
 		// ops... it really wasn't
@@ -2640,10 +2640,10 @@ KviKvsTreeNodeVariable * KviKvsParser::parsePercent(bool bInObjScope)
 		}
 		return new KviKvsTreeNodeExtendedScopeVariable(pBegin,szIdentifier);
 	}
-	
+
 	if(bInObjScope)
 		return new KviKvsTreeNodeObjectField(pBegin,szIdentifier);
-	
+
 	if(m_pGlobals)
 	{
 		if(m_pGlobals->find(szIdentifier))return new KviKvsTreeNodeGlobalVariable(pBegin,szIdentifier);
@@ -2666,7 +2666,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseInstruction()
 {
 	switch(KVSP_curCharUnicode)
 	{
-		case '#': 
+		case '#':
 		case '/':
 			(void)parseComment(); // this will return 0 anyway
 			return 0;
@@ -2777,9 +2777,9 @@ KviKvsTreeNodeSwitchList * KviKvsParser::parseCommandSwitchList()
 	{
 		const QChar * pBegin = KVSP_curCharPointer;
 		KVSP_skipChar;
-		
+
 		bool bLong = false;
-		
+
 		if(KVSP_curCharUnicode == '-')
 		{
 			// long switch
@@ -2807,7 +2807,7 @@ KviKvsTreeNodeSwitchList * KviKvsParser::parseCommandSwitchList()
 			} else {
 				delete sw;
 				warning(pBegin,__tr2qs_ctx("The dash after a command should be followed by a letter (switch), by a digit (negative number) or be escaped","kvs"));
-	
+
 				if(KVSP_curCharUnicode == 0)
 				{
 					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected character '%q' (unicode %x) after a switch dash","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
@@ -2947,7 +2947,7 @@ KviPointerList<QString> * KviKvsParser::parseCommaSeparatedParameterListNoTree()
 				QString * s = new QString(pBegin,KVSP_curCharPointer - pBegin);
 				s->trimmed();
 				l->append(s);
-				
+
 				switch(KVSP_curCharUnicode)
 				{
 					case ',':
@@ -3009,7 +3009,7 @@ KviKvsTreeNodeDataList * KviKvsParser::parseCommaSeparatedParameterList()
 					return 0;
 				}
 				l->addItem(p);
-				
+
 				switch(KVSP_curCharUnicode)
 				{
 					case ',':
@@ -3395,7 +3395,7 @@ KviKvsTreeNodeData * KviKvsParser::parseHashKey()
 			break;
 			case '"':
 			{
-				// string 
+				// string
 				KviKvsTreeNodeData * p = parseStringParameter();
 				if(!p)
 				{

@@ -198,7 +198,7 @@ static bool help_module_init(KviModule * m)
 	return true;
 }
 
-static bool help_module_cleanup(KviModule *m)
+static bool help_module_cleanup(KviModule *)
 {
 	if(g_pDocIndex) delete g_pDocIndex;
 	while(g_pHelpWidgetList->first())delete g_pHelpWidgetList->first();
@@ -210,7 +210,7 @@ static bool help_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool help_module_can_unload(KviModule *m)
+static bool help_module_can_unload(KviModule *)
 {
 	return (g_pHelpWidgetList->isEmpty() && g_pHelpWindowList->isEmpty());
 }

@@ -66,12 +66,12 @@ static bool eventeditor_module_init(KviModule * m)
 	return true;
 }
 
-static bool eventeditor_module_can_unload(KviModule * m)
+static bool eventeditor_module_can_unload(KviModule *)
 {
 	return (g_pEventEditorWindow == 0);
 }
 
-static bool eventeditor_module_cleanup(KviModule *m)
+static bool eventeditor_module_cleanup(KviModule *)
 {
 	if(g_pEventEditorWindow)delete g_pEventEditorWindow;
 	g_pEventEditorWindow = 0;

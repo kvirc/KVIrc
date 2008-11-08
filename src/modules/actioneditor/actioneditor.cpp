@@ -797,7 +797,7 @@ bool KviActionEditor::actionExists(const QString &szName)
 }
 
 
-void KviActionEditor::currentItemChanged(QTreeWidgetItem * i,QTreeWidgetItem *prev)
+void KviActionEditor::currentItemChanged(QTreeWidgetItem * i,QTreeWidgetItem *)
 {
 	if(m_pSingleActionEditor->actionData())
 		m_pSingleActionEditor->commit();
@@ -910,14 +910,14 @@ QPixmap * KviActionEditorWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_SCRIPTACTION);
 }
 
-void KviActionEditorWindow::resizeEvent(QResizeEvent *e)
+void KviActionEditorWindow::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pBase->sizeHint().height();
 	m_pEditor->setGeometry(0,0,width(),height()- hght);
 	m_pBase->setGeometry(0,height() - hght,width(),hght);
 }
 
-void KviActionEditorWindow::getConfigGroupName(KviStr &szName)
+void KviActionEditorWindow::getConfigGroupName(QString &szName)
 {
 	szName = "actioneditor";
 }

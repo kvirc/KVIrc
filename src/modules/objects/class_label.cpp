@@ -60,7 +60,7 @@ const int align_cod[] = {
 };
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
-		  
+
 // used in $frameStyle & $setFrameStyle
 const char * const frame_tbl[] = {
 	"NoFrame",
@@ -110,7 +110,7 @@ const int frame_cod[] = {
 		The text can contain limited html tags.
 		See also [classfnc]$text[/classfnc]().
 		!fn: <string> $text()
-		Returns the text currently displayed by the label. 
+		Returns the text currently displayed by the label.
 		See also [classfnc]$setText[/classfnc]().
 		!fn: <integer> $margin()
 		Returns current value of margin for this label (default is 0).
@@ -119,14 +119,14 @@ const int frame_cod[] = {
 		Sets margin width / height to <margin>.
 		See also [classfnc]$margin[/classfnc]().
 		!fn: <string> $alignment()
-		Returns a string containing alignment flags that are set for 
+		Returns a string containing alignment flags that are set for
 		this label. The flags are separated by commas. An example output
 		could look like this:[br]
 		[pre]Bottom, Right[/pre][br]
 		See [classfnc]$setAlignment[/classfnc]() for explanation of all
 		alignment flags.
 		!fn: $setAlignment(<flag1:string>, <flag2:string>, ...)
-		This function sets alignment flags, given as parameters, for 
+		This function sets alignment flags, given as parameters, for
 		this label. Valid flags are:
 		[pre]
 		Right     - Text is aligned to right border[br]
@@ -138,11 +138,11 @@ const int frame_cod[] = {
 		Center    - Equals HCenter + VCenter[br]
 		WordBreak - Enables automatic word breaking[br]
 		[/pre]
-		It is obvious that you can not set for example [i]Right[/i] 
-		and [i]Left[/i] simoultaneously - this will [b]NOT[/b] 
+		It is obvious that you can not set for example [i]Right[/i]
+		and [i]Left[/i] simoultaneously - this will [b]NOT[/b]
 		result in an error message - this will simply not work :)
 		!fn: $clear()
-		Clears the label. Equal to calling 
+		Clears the label. Equal to calling
 		[classfnc]$setText[/classfnc]("")
 		!fn: $frameStyle()
 		Returns a string containing this label's frame-style flags,
@@ -158,13 +158,13 @@ const int frame_cod[] = {
 		[pre]
 		NoFrame     - draw no frame. You shouldn't specify a shadow when
 		using this.[br]
-		Box         - draws a rectangular box. Its borders can be 
+		Box         - draws a rectangular box. Its borders can be
 		[i]Raised[/i] or [i]Sunken[/i][br]
-		Panel       - draws a rectangular panel which can be 
+		Panel       - draws a rectangular panel which can be
 		[i]Raised[/i] or [i]Sunken[/i][br]
 		WinPanel    - similar to [i]Panel[/i], but is more in Win95
 		style[br]
-		Hline        - draws a horizontal line that frames nothing (useful as separator) 
+		Hline        - draws a horizontal line that frames nothing (useful as separator)
 		[/pre]
 		Valid shadow flags are:[br]
 		[pre]
@@ -175,7 +175,7 @@ const int frame_cod[] = {
 		the parent widget[br]
 		[/pre]
 		!fn: $setImage(<image_id>)
-		Sets the image to be displayed on this label. 
+		Sets the image to be displayed on this label.
 		Giving empty argument clears the pixmap[br]
 		See the [doc:image_id]image identifier[/doc] documentation for
 		the explaination of the <image_id> parameter.
@@ -205,7 +205,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_label)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_label)
 
-bool KviKvsObject_label::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_label::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QLabel)
 	return true;
@@ -213,7 +213,7 @@ bool KviKvsObject_label::init(KviKvsRunTimeContext * pContext,KviKvsVariantList 
 
 KVSO_CLASS_FUNCTION(label,setText)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
@@ -224,14 +224,14 @@ KVSO_CLASS_FUNCTION(label,setText)
 
 KVSO_CLASS_FUNCTION(label,text)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setString(((QLabel *)widget())->text());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(label,setMargin)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iMargin;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,iMargin)
@@ -241,7 +241,7 @@ KVSO_CLASS_FUNCTION(label,setMargin)
 }
 KVSO_CLASS_FUNCTION(label,margin)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QLabel *)widget())->margin());
 	return true;
 }
@@ -254,7 +254,7 @@ bool KviKvsObject_label::functionSetAutoResize(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	 return true;
-	
+
 }
 
 // FIX ME
@@ -267,7 +267,7 @@ bool KviKvsObject_label::functionAutoResize(KviKvsObjectFunctionCall *c)
 
 KVSO_CLASS_FUNCTION(label,setAlignment)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QStringList alignment;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("alignment",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,alignment)
@@ -275,7 +275,7 @@ KVSO_CLASS_FUNCTION(label,setAlignment)
 	int align,sum=0;
 	for ( QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it )
 	{
-	
+
 		align = 0;
 		for(unsigned int j = 0; j < align_num; j++)
 		{
@@ -289,7 +289,7 @@ KVSO_CLASS_FUNCTION(label,setAlignment)
 			sum = sum | align;
 		else
 			c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objects"),&(*it));
-			
+
 	}
 	((QLabel *)widget())->setAlignment((Qt::Alignment)sum);
 	return true;
@@ -297,7 +297,7 @@ KVSO_CLASS_FUNCTION(label,setAlignment)
 
 KVSO_CLASS_FUNCTION(label,alignment)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	int mode = ((QLabel *)widget())->alignment();
 	QString szAlignment="";
 	for(unsigned int i = 0; i < align_num; i++)
@@ -314,14 +314,14 @@ KVSO_CLASS_FUNCTION(label,alignment)
 
 KVSO_CLASS_FUNCTION(label,clear)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	((QLabel *)widget())->clear();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(label,setFrameStyle)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QStringList style;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("style",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,style)
@@ -343,7 +343,7 @@ KVSO_CLASS_FUNCTION(label,setFrameStyle)
 			sum = sum | framestyle;
 		else
 			c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&(*it));
-			
+
 	}
 	((QLabel *)widget())->setFrameStyle(sum);
 	return true;
@@ -351,7 +351,7 @@ KVSO_CLASS_FUNCTION(label,setFrameStyle)
 
 KVSO_CLASS_FUNCTION(label,frameStyle)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	int mode = ((QLabel *)widget())->frameStyle();
 	QString szStyle="";
 	for(unsigned int i = 0; i < frame_num; i++)
@@ -368,7 +368,7 @@ KVSO_CLASS_FUNCTION(label,frameStyle)
 
 KVSO_CLASS_FUNCTION(label,setImage)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString icon;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("icon",KVS_PT_STRING,0,icon)

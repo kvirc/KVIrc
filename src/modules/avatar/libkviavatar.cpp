@@ -560,7 +560,7 @@ static bool avatar_module_init(KviModule * m)
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"query",avatar_kvs_cmd_query);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"set",avatar_kvs_cmd_set);
-	KVSM_REGISTER_SIMPLE_COMMAND(m,"unset",avatar_kvs_cmd_set);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"unset",avatar_kvs_cmd_unset);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"notify",avatar_kvs_cmd_notify);
 
 	KVSM_REGISTER_FUNCTION(m,"name",avatar_kvs_fnc_name);
@@ -569,12 +569,12 @@ static bool avatar_module_init(KviModule * m)
 	return true;
 }
 
-static bool avatar_module_can_unload(KviModule *m)
+static bool avatar_module_can_unload(KviModule *)
 {
 	return g_pAvatarSelectionDialogList->isEmpty();
 }
 
-static bool avatar_module_cleanup(KviModule *m)
+static bool avatar_module_cleanup(KviModule *)
 {
 	while(KviAsyncAvatarSelectionDialog * d = g_pAvatarSelectionDialogList->first())
 		delete d;

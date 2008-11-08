@@ -1706,18 +1706,18 @@ static bool mediaplayer_module_init( KviModule * m )
 	return true;
 }
 
-static bool mediaplayer_module_cleanup( KviModule * m )
+static bool mediaplayer_module_cleanup( KviModule * )
 {
 	delete g_pDescriptorList;
 	return true;
 }
 
-static bool mediaplayer_module_can_unload( KviModule * m )
+static bool mediaplayer_module_can_unload( KviModule * )
 {
 	return true;
 }
 
-static bool mediaplayer_module_ctrl(KviModule * m,const char * operation,void * param)
+static bool mediaplayer_module_ctrl(KviModule *,const char * operation,void * param)
 {
 	if(kvi_strEqualCI(operation,"getAvailableMediaPlayers"))
 	{

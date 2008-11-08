@@ -271,7 +271,6 @@ public:
 	// Interesting overridables:
 	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual void getConfigGroupName(QString &buf);
-//	virtual void getBaseLogFileName(KviStr &buffer);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void updateCaption();
 	void updateCaptionListItem();

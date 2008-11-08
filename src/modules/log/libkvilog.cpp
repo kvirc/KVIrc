@@ -86,11 +86,11 @@
 
 static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 {
-	QString szFile; 
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szFile) 
-	KVSM_PARAMETERS_END(c) 
-	
+	QString szFile;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("filename",KVS_PT_STRING,KVS_PF_OPTIONAL,szFile)
+	KVSM_PARAMETERS_END(c)
+
 	KviWindow * pWnd = c->window();
 	if(c->hasSwitch('w',"window"))
 	{
@@ -112,12 +112,12 @@ static bool log_kvs_cmd_start(KviKvsModuleCommandCall * c)
 
 	if(pWnd->view())
 	{
-		
+
 		if(szFile.isEmpty())
 		{
 			pWnd->getDefaultLogFileName(szFile);
 		}
-		if(!pWnd->view()->startLogging(szFile,c->hasSwitch('p',"log-buffer"))) 
+		if(!pWnd->view()->startLogging(szFile,c->hasSwitch('p',"log-buffer")))
 			c->warning(__tr2qs("Can't log to file %Q"),&szFile);
 	} else {
 		c->warning(__tr2qs("This window has no logging capabilities"));
@@ -260,13 +260,13 @@ static bool log_kvs_fnc_file(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szWindow)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviWindow * wnd = c->window();
 
 	if(!szWindow.isEmpty())
 	{
 		wnd = g_pApp->findWindow(szWindow);
-		if(!wnd) 
+		if(!wnd)
 		{
 			c->warning(__tr2qs("Window with id '%Q' not found, returning empty string"),&szWindow);
 			return true;
@@ -283,12 +283,12 @@ static bool log_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"start",log_kvs_cmd_start);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"stop",log_kvs_cmd_stop);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"flush",log_kvs_cmd_flush);
-	
+
 	KVSM_REGISTER_FUNCTION(m,"file",log_kvs_fnc_file);
 	return true;
 }
 
-static bool log_module_cleanup(KviModule *m)
+static bool log_module_cleanup(KviModule *)
 {
 	return true;
 }

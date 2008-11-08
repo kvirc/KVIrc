@@ -222,7 +222,7 @@ KviFrame::~KviFrame()
 	g_pFrame = 0;
 }
 
-int KviFrame::registerAccelerator(const QString &szKeySequence,QObject * recv,const char * slot)
+int KviFrame::registerAccelerator(const QString &szKeySequence,QObject *,const char *)
 {
 	QShortcut *sc=new QShortcut(QKeySequence(szKeySequence),this);
 	connect(sc,SIGNAL(activated()),this,SLOT(accelActivated()));

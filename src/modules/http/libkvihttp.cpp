@@ -122,10 +122,10 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 
 	if(c->switches()->find('q',"quiet"))
 		hft->setNotifyCompletion(false);
-	
+
 	if(c->switches()->find('y',"no-output"))
 		hft->setNoOutput(true);
-		
+
 	if(!szCallback.isEmpty())
 		hft->setCompletionCallback(szCallback);
 
@@ -168,7 +168,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		Don't show the savefile dialog but determine automatically a file name.
 		The file is put in the KVIrc incoming directory and the file name
 		is the processed url.[br]
-		
+
 		!sw: -e=<existing_file_action> | --existing-file-action=<existing_file_action>
 		Specifies the action to be taken when the local file already exists.[br]
 		The action can be one of "i","e","o" or "r".[br]
@@ -178,7 +178,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		"o" causes the existing file to be overwritten and "r" will attempt to resume
 		a interrupted transfer.[br]
 		The default is to rename the incoming file.[br]
-		
+
 		!sw: -m=<max_content_length> | --max-len=<max_content_length>
 		Causes content longer than <max_content_length> to be discarded.[br]
 		This is mainly to prevent you from automatically downloading 300 MB files
@@ -188,7 +188,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		If the Content-length header is missing then the transfer is interrupted when
 		the received data length exceeds <max_content_length>.[br]
 		-m=0 means "accept any content length" (which is the default).[br]
-		
+
 		!sw: -o=<content_offset> | --offset=<content_offset>
 		Causes the download to start from position <content offset>.[br]
 		This can be used to download only a part of the file starting at byte <content_offset>.[br]
@@ -198,13 +198,13 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		and -e=r then the file will be resumed, the transfer will start at the specified offset
 		and the received stream will be appended to the existing file.(avoid it unless you know what you're doing:
 		it's easy to download broken files).[br]
-		
+
 		!sw: -h | --head
 		Causes the connection to use the HTTP HEAD method that effectively
 		does not transfer real data. The server sends only the response headers.
 		This might be used in conjunction with the -v option to print the headers to the
 		active window.[br]
-		
+
 		!sw: -w=<flags> | --winctrl
 		This switch controls the creation and visualization of the transfer window.
 		<flags> can be any combination of 'm','n' and 'h'.
@@ -212,19 +212,19 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 		Note that with 'h' the user has no possibility to interact with the transfer.
 		The flag 'm' causes the transfer window to be created as "minimized". 'm' does nothing
 		if the window alread exists. The flag 'n' causes the window to be NOT activated (brought to top).
-		
+
 		!sw: -i=<magic identifier> | --identifier=<magic identifier>
 		This identifier is passed as $3 parameter to the [event]OnHTTPGetTerminated[/event]
 		when this transfer terminates. If this switch is not present then an empty string is used.
 		With [cmd]http.asyngGet[/cmd] this parameter is passed to the callback command instead.
-		
+
 		!sw: -p=<post data> | --post-data=<post data>
 		The request is sent in form of a POST request. <post data> is the urlencoded payload of
 		the request. -p is incompatible with -h.
-		
+
 		!sw: -q | --quiet
 		Do not notify download completion in the notifier window nor in the console.
-		
+
 		!sw: -y | --no-output
 		Supress any output in the file transfer window. This will effectively disable
 		the file transfer window highlighting (so the user will not be alerted by a failed
@@ -297,13 +297,13 @@ static bool http_module_init(KviModule * m)
 	return true;
 }
 
-static bool http_module_cleanup(KviModule *m)
+static bool http_module_cleanup(KviModule *)
 {
 	KviHttpFileTransfer::done();
 	return true;
 }
 
-static bool http_module_can_unload(KviModule *m)
+static bool http_module_can_unload(KviModule *)
 {
 	return (KviHttpFileTransfer::runningTransfers() == 0);
 }

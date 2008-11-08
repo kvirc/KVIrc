@@ -787,7 +787,7 @@ const QString & KviDccVoice::target()
 	return m_szTarget;
 }
 
-void KviDccVoice::getBaseLogFileName(KviStr &buffer)
+void KviDccVoice::getBaseLogFileName(QString &buffer)
 {
 	buffer.sprintf("dccvoice_%s_%s_%s",m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szLocalFileName.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 }
@@ -886,7 +886,7 @@ void KviDccVoice::updateInfo()
 	}
 }
 
-void KviDccVoice::resizeEvent(QResizeEvent *e)
+void KviDccVoice::resizeEvent(QResizeEvent *)
 {
 	int hght2 = m_pHBox->sizeHint().height();
 	m_pHBox->setGeometry(0,0,width(),hght2);

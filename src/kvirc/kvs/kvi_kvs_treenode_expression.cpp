@@ -148,7 +148,7 @@ void KviKvsTreeNodeExpressionConstantOperand::dump(const char * prefix)
 	m_pConstant->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeExpressionConstantOperand::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeExpressionConstantOperand::evaluateReadOnly(KviKvsRunTimeContext *,KviKvsVariant * pBuffer)
 {
 	pBuffer->copyFrom(m_pConstant);
 	return true;
@@ -473,7 +473,7 @@ PREIMPLEMENT_BINARY_OPERATOR(KviKvsTreeNodeExpressionBinaryOperatorMultiplicatio
 
 bool KviKvsTreeNodeExpressionBinaryOperatorMultiplication::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-	if(!evaluateOperands(c))return false;	
+	if(!evaluateOperands(c))return false;
 	if(m_nLeft.isInteger())
 	{
 		if(m_nRight.isInteger())pBuffer->setInteger(m_nLeft.integer() * m_nRight.integer());
@@ -518,7 +518,7 @@ PREIMPLEMENT_BINARY_OPERATOR(KviKvsTreeNodeExpressionBinaryOperatorModulus,"Expr
 
 bool KviKvsTreeNodeExpressionBinaryOperatorModulus::evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
 {
-	if(!evaluateOperands(c))return false;	
+	if(!evaluateOperands(c))return false;
 
 	if(m_nRight.isInteger())
 	{

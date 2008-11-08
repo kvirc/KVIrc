@@ -54,7 +54,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 	@description:
 		Adds a message to the notifier window.
 		The notifier window is shown (if not already visible)
-		unless the -q switch is present. 
+		unless the -q switch is present.
 		The new message becomes the current message of the notifier
 		unless the user is already typing in the input window
 		and the typed message would be directed to a different window.
@@ -72,7 +72,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 	@switches:
 		!sw: -n | --noanim
 		Do not animate
-		!sw: -w | --windowid 
+		!sw: -w | --windowid
 		Causes the message gets attacched to the specified window and
 		the user is able to type commands in that window after
 		showing up the notifier input. If the "=&lt;window_id&gt;" part
@@ -90,7 +90,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 		Obviously -n has no meaning if -q is used.[br]
 		!sw: -t | --timeout
 		Set the message lifetime to <timeout>
-		Obviously this option has no meaning if the window is not going to be shown. 
+		Obviously this option has no meaning if the window is not going to be shown.
 		The timeout may be overriddent by new messages but only in the future.
 		If the timeout expires and is not overridden by any new message
 		then the window will be automatically hidden.
@@ -121,12 +121,12 @@ static bool notifier_kvs_cmd_message(KviKvsModuleCommandCall * c)
 
 	if(!g_pNotifierWindow)
 		g_pNotifierWindow = new KviNotifierWindow();
-		
+
 	QString szIco="";
 	QString szWnd="";
-	
+
 	KviWindow * pWnd = c->window();
-	
+
 	if(c->hasSwitch('w',"window_id"))
 	{
 		c->switches()->getAsStringIfExisting('w',"window_id",szWnd);
@@ -244,7 +244,7 @@ static bool notifier_kvs_cmd_show(KviKvsModuleCommandCall * c)
 		There is also a global option that allows forcibly disabling
 		the notifier forever, this option could be overridden with [cmd]option[/cmd]
 		instead.. but again [b]DON'T do it[/b] :)[br]
-		
+
 */
 
 static bool notifier_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)
@@ -260,7 +260,7 @@ static bool notifier_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)
 
 static bool notifier_module_init(KviModule * m)
 {
-	
+
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"message",notifier_kvs_cmd_message);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"show",notifier_kvs_cmd_show);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"hide",notifier_kvs_cmd_hide);
@@ -269,7 +269,7 @@ static bool notifier_module_init(KviModule * m)
 	return true;
 }
 
-static bool notifier_module_cleanup(KviModule *m)
+static bool notifier_module_cleanup(KviModule *)
 {
 	if(g_pNotifierWindow)
 	{
@@ -279,7 +279,7 @@ static bool notifier_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool notifier_module_can_unload(KviModule *m)
+static bool notifier_module_can_unload(KviModule *)
 {
 	return (!g_pNotifierWindow);
 }

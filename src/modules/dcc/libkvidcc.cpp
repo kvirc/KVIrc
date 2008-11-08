@@ -118,7 +118,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		d->szLocalHost  = d->console()->connection()->userInfo()->hostName();
 	}
 
-	if(pSw = c->switches()->find('i',"ip"))
+	if( (pSw = c->switches()->find('i',"ip")) )
 	{
 		pSw->asString(d->szListenIp);
 		if(!(d->szListenIp.contains('.') || d->szListenIp.contains(':')))
@@ -142,13 +142,13 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		d->szListenIp=tmp;
 	}
 
-	if(pSw = c->switches()->find('p',"port"))
+	if( (pSw = c->switches()->find('p',"port")) )
 	{
 		pSw->asString(d->szListenPort); // fixme!
 	}
 	else d->szListenPort = "0"; // any port is ok
 
-	if(pSw = c->switches()->find('a',"fake-address"))
+	if( (pSw = c->switches()->find('a',"fake-address")) )
 	{
 		pSw->asString(d->szFakeIp);
 	}
@@ -160,7 +160,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		}
 	}
 
-	if(pSw = c->switches()->find('f',"fake-port"))
+	if( (pSw = c->switches()->find('f',"fake-port")) )
 	{
 		pSw->asString(d->szFakePort);
 	}
@@ -198,7 +198,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		!sw: -n | --no-ctcp
 		Do NOT send the CTCP request to the target user, you will have to do it manually,
 		or the remote user will have to connect manually (for example by using dcc.chat -c).[br]
-		
+
 		!sw: -c | --connect
 		Attempt to CONNECT to the remote host specified as <interface> and <port>,
 		instead of listening (active connection instead of a passive one).
@@ -220,7 +220,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		-i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.[br]
 		-i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).[br]
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
-		
+
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
 		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
@@ -229,7 +229,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real IP address of the listening
 		interface.[br]
-		
+
 		!sw: -f=<fake port> | --fake-port=<fake port>
 		Send the <fake port> as target port for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real port of the listening socket.
@@ -445,7 +445,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		d->bActive      = false;
 		d->bSendRequest = !c->switches()->find('n',"no-ctcp");
 	}
-	
+
 	//c->window()->output(0,"%Q %Q %Q",&(d->szIp),&(d->szPort),&(d->szListenIp));
 	d->triggerCreationEvent();
 	g_pDccBroker->executeChat(0,d);
@@ -500,7 +500,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		Assume that the transfer was successful when the whole file has been sent,
 		then close the socket.[br]
 		This is called a "blind" DCC send.[br]
-		
+
 		!sw: -t | -tdcc
 		Emulate the TDCC protocol: Use the TDCC CTCP message (DCC TSEND) for requesting the connection
 		and assume that no acknowledges are sent. Wait for the remote end to close the connection.[br]
@@ -516,7 +516,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		!sw: -n | --no-ctcp
 		Do NOT send the CTCP request to the target user, you will have to do it manually,
 		or the remote user will have to connect manually (for example by using dcc.recv -c).[br]
-		
+
 		!sw: -c | --connect
 		Attempt to CONNECT to the remote host specified as <interface> and <port>,
 		instead of listening (active connection instead of a passive one).
@@ -538,7 +538,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		-i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.[br]
 		-i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).[br]
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
-		
+
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
 		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
@@ -547,7 +547,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real IP address of the listening
 		interface.[br]
-		
+
 		!sw: -f=<fake port> | --fake-port=<fake port>
 		Send the <fake port> as target port for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real port of the listening socket.
@@ -618,7 +618,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 	QString szTmp;
 	KviKvsVariant * pSw = 0;
 
-	if(pSw = c->switches()->find('g',"get"))
+	if( (pSw = c->switches()->find('g',"get")) )
 	{
 		d->szFileName = QFileInfo(szFileName).fileName();
 
@@ -704,7 +704,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		Assume that the transfer was successful when the whole file has been sent,
 		then close the socket.[br]
 		This is called a "blind" DCC send.[br]
-		
+
 		!sw: -t | -tdcc
 		Emulate the TDCC protocol: Use the TDCC CTCP message (DCC TSEND) for requesting the connection
 		and assume that no acknowledges are sent. Wait for the remote end to close the connection.[br]
@@ -720,7 +720,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		!sw: -n | --no-ctcp
 		Do NOT send the CTCP request to the target user, you will have to do it manually,
 		or the remote user will have to connect manually (for example by using dcc.recv -c).[br]
-		
+
 		!sw: -i=<interface> | --ip=<interface>
 		Bind the local listening socket to the specified <interface> (which is an IP address, IPv4 or IPv6).
 		If this switch is NOT specified, the socket is bound to the interface of
@@ -732,7 +732,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		-i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.[br]
 		-i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).[br]
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
-		
+
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
 		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
@@ -741,7 +741,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real IP address of the listening
 		interface.[br]
-		
+
 		!sw: -f=<fake port> | --fake-port=<fake port>
 		Send the <fake port> as target port for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real port of the listening socket.
@@ -813,7 +813,7 @@ static bool dcc_kvs_cmd_recv(KviKvsModuleCommandCall * c)
 	d->szFileSize.setNum(uSize);
 
 	d->bActive           = false; // we have to listen!
-	d->bResume           = false; 
+	d->bResume           = false;
 	d->bRecvFile         = true;  // we have to receive the file!
 	d->bSendRequest      = !c->switches()->find('n',"no-ctcp");
 	d->bNoAcks           = d->bIsTdcc || c->switches()->find('b',"blind");
@@ -1000,11 +1000,11 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		!sw: -g=<codec> | --codec=<codec>
 		Use the codec specified as parameter.
 		Actually the supported codecs are "null","adpcm" and "gsm".
-		
+
 		!sw: -h=<rate> | --sample-rate=<rate>
 		Use the sample rate specified by <rage>.
 		Valid sample rates are 8000, 11025, 22050 and 44100 Hz.
-		
+
 		!sw: -m[=<boolean>] | --minimize[=<boolean>]
 		If the -m switch is passed, the default boolCreateMinimizedDccSend option
 		is overridden with the <boolean> parameter passed. So actually
@@ -1016,7 +1016,7 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		!sw: -n | --no-ctcp
 		Do NOT send the CTCP request to the target user, you will have to do it manually,
 		or the remote user will have to connect manually (for example by using dcc.recv -c).[br]
-		
+
 		!sw: -c | --connect
 		Attempt to CONNECT to the remote host specified as <interface> and <port>,
 		instead of listening (active connection instead of a passive one).
@@ -1038,7 +1038,7 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		-i=3ffe:1001::1: this will bind to the IPv6 interface with the specified address.[br]
 		-i=ppp0: this will bind to the IPv4 address of the interface ppp0 (if supported by the underlying system).[br]
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
-		
+
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
 		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
@@ -1047,7 +1047,7 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real IP address of the listening
 		interface.[br]
-		
+
 		!sw: -f=<fake port> | --fake-port=<fake port>
 		Send the <fake port> as target port for the remote client in the requesting CTCP message.
 		If this switch is not given, the CTCP will contain the real port of the listening socket.
@@ -2582,7 +2582,7 @@ static bool dcc_kvs_fnc_session(KviKvsModuleFunctionCall * c)
 	@description:
 		The first form returns an array with all the currently existing dcc session
 		identifiers. The second form returns an array with the session types specified
-		in <filter> which may be a combination of the flags 'u' (for file upload), 
+		in <filter> which may be a combination of the flags 'u' (for file upload),
 		'd' (for file download) and 'c' (for dcc chat). To select all the file transfers
 		please use the combination 'ud'.[br]
 		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
@@ -2604,7 +2604,7 @@ static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)
 	KviPointerHashTableIterator<int,KviDccDescriptor> it(*dict);
 
 	int idx = 0;
-	
+
 	if(szFlags.isEmpty())
 	{
 		// all
@@ -2737,7 +2737,7 @@ static bool dcc_module_init(KviModule * m)
 	return true;
 }
 
-static bool dcc_module_cleanup(KviModule *m)
+static bool dcc_module_cleanup(KviModule *)
 {
 	delete g_pDccBroker;
 	g_pDccBroker = 0;
@@ -2748,7 +2748,7 @@ static bool dcc_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool dcc_module_can_unload(KviModule *m)
+static bool dcc_module_can_unload(KviModule *)
 {
 	return g_pDccBroker ? g_pDccBroker->canUnload() : true;
 }

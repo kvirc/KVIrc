@@ -96,7 +96,7 @@ KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
 	iIndex=0;
 	QString szPath;
 	g_pApp->getLocalKvircDirectory(szPath,KviApp::ConfigPlugins,tmp);
-	
+
 	if(!KviFileUtils::fileExists(szPath))
 	{
 		if (!bSemaphore){
@@ -350,7 +350,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
     static QString eow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-="); // end of word
     bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
     QString completionPrefix = textUnderCursor();
-	if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 || eow.contains(e->text().right(1)))) 
+	if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 || eow.contains(e->text().right(1))))
 	{
     	m_pCompleter->popup()->hide();
 		return;
@@ -409,7 +409,7 @@ void KviScriptEditorWidget::mouseReleaseEvent(QMouseEvent * e)
 		QRect r = cursorRect();
 		QTextCursor cur = cursorForPosition(e->pos());
 	//	cur.select(
-	
+
 
 	//completelistbox->hide();
 	if (e->button() == Qt::RightButton)
@@ -443,7 +443,7 @@ void KviScriptEditorWidget::mouseReleaseEvent(QMouseEvent * e)
 				szBuffer = *(pList->at(0));
 		}
 
-		for (int i=0; i < pList->count(); i++)
+		for (unsigned int i=0; i < pList->count(); i++)
 			QString str = *(pList->at(i));
 
 		KviKvsKernel::instance()->freeCompletionResult(pList);
@@ -566,7 +566,7 @@ KviScriptEditorSyntaxHighlighter::KviScriptEditorSyntaxHighlighter(KviScriptEdit
 : QSyntaxHighlighter(pWidget),m_pTextEdit(pWidget)
 {
 	// code adpated from QT4 example
-	
+
 	// FIX-ME: "function ..." - "function internal ..."
 	// FIX-ME: "@$"
 	// FIX-ME: "\" escape char
@@ -574,7 +574,7 @@ KviScriptEditorSyntaxHighlighter::KviScriptEditorSyntaxHighlighter(KviScriptEdit
 	updateSyntaxtTextFormat();
 
 	KviScriptHighlightingRule rule;
-	
+
 	rule.pattern=QRegExp("([=()[\\]!\"?<>;:.,+-])+");
 	rule.format=punctuationFormat;
 	highlightingRules.append(rule);
@@ -602,12 +602,12 @@ KviScriptEditorSyntaxHighlighter::KviScriptEditorSyntaxHighlighter(KviScriptEdit
 
 	commentStartExpression = QRegExp("/\\*");
     commentEndExpression = QRegExp("\\*/");
-	
+
 }
 
 KviScriptEditorSyntaxHighlighter::~KviScriptEditorSyntaxHighlighter()
 {
-	
+
 }
 void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 {
@@ -616,15 +616,15 @@ void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 
 	keywordFormat.setForeground(g_clrKeyword);
 	keywordFormat.setFont(g_fntNormal);
-	
+
 	functionFormat.setForeground(g_clrFunction);
 	functionFormat.setFont(g_fntNormal);
 
-	
+
 	variableFormat.setForeground(g_clrVariable);
 	variableFormat.setFont(g_fntNormal);
 
-	
+
 	bracketFormat.setForeground(g_clrBracket);
 	bracketFormat.setFont(g_fntNormal);
 
@@ -654,28 +654,28 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	if (iIndexStart == szText.size()) return;
 	// check 'commands'
 	int iCommandStart=iIndexStart;
-	if (szText.at(iIndexStart).unicode()!='$' && szText.at(iIndexStart).unicode()!='{' && szText.at(iIndexStart).unicode()!='}' && szText.at(iIndexStart).unicode()!='%') 
-    { 
+	if (szText.at(iIndexStart).unicode()!='$' && szText.at(iIndexStart).unicode()!='{' && szText.at(iIndexStart).unicode()!='}' && szText.at(iIndexStart).unicode()!='%')
+    {
 		while(iIndexStart<szText.size() && (szText.at(iIndexStart).isLetterOrNumber() || (szText.at(iIndexStart).unicode() == '.') || (szText.at(iIndexStart).unicode() == '_') || (szText.at(iIndexStart).unicode()== ':') ))
 		{
-			iIndexStart++; 
+			iIndexStart++;
 		}
- 	         setFormat(iCommandStart,iIndexStart-iCommandStart,keywordFormat); 
+ 	         setFormat(iCommandStart,iIndexStart-iCommandStart,keywordFormat);
 	}
 
 	// code from QT4 example
 	int index=0;
-	foreach (KviScriptHighlightingRule rule, highlightingRules) 
+	foreach (KviScriptHighlightingRule rule, highlightingRules)
 	{
 		QRegExp expression(rule.pattern);
 		QString sz=expression.pattern();
 
 	    index = szText.indexOf(expression,iIndexStart);
-		
+
 	    while (index >= 0)
 		{
 			int length = expression.matchedLength();
-			setFormat(index, length, rule.format);		
+			setFormat(index, length, rule.format);
 			index = szText.indexOf(expression, index + length);
         }
 	}
@@ -684,8 +684,8 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 
 	int startIndex = 0;
 	if (previousBlockState() != 1) startIndex = szText.indexOf(commentStartExpression);
-	
-	while (startIndex >= 0) 
+
+	while (startIndex >= 0)
 	{
 		int endIndex = szText.indexOf(commentEndExpression, startIndex);
 		int commentLength;
@@ -714,7 +714,7 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 			index = szText.indexOf(regFind, index + length);
 		}
 	}
-	
+
 }
 
 
@@ -734,7 +734,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	m_pFindLineEdit->setPalette(p);
 
 	m_pEditor = new KviScriptEditorWidget(this);
-	
+
 	g->addWidget(m_pEditor, 0, 0, 1,4);
 	g->setRowStretch(0,1);
 
@@ -808,7 +808,7 @@ void KviScriptEditorImplementation::slotFind()
 	emit find(m_pFindLineEdit->text());
 }
 
-void KviScriptEditorImplementation::slotNextFind(const QString & szText)
+void KviScriptEditorImplementation::slotNextFind(const QString &) //szText
 {
 //	emit nextFind(const QString & szText);
 }
@@ -846,7 +846,7 @@ void KviScriptEditorImplementation::setFocus()
 	m_pEditor->setFocus();
 }
 
-void KviScriptEditorImplementation::focusInEvent(QFocusEvent * e)
+void KviScriptEditorImplementation::focusInEvent(QFocusEvent *)
 {
 	m_pEditor->setFocus();
 }
@@ -878,6 +878,11 @@ void KviScriptEditorImplementation::saveToFile()
 				KviQString::sprintf(szTmp,__tr2qs_ctx("Can't open the file %s for writing.","editor"),&szFileName));
 		}
 	}
+}
+
+void KviScriptEditorImplementation::setText(const char * txt)
+{
+	setText(KviQCString(txt));
 }
 
 void KviScriptEditorImplementation::setText(const KviQCString & szText)
@@ -972,7 +977,7 @@ void KviScriptEditorImplementation::configureColors()
 	}
 }
 
-KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, const char * name)
+KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, const char *)
 : QDialog(parent)
 {
 	m_pParent = parent;
@@ -1004,7 +1009,7 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, con
 	m_pReplaceLineEdit->setObjectName("replacelineedit");
 	pLayout->addWidget(m_pReplaceLineEdit,1,1);
 
-	
+
 	m_pFindLineEdit->setFocus();
 
 	m_pCheckReplaceAll = new QCheckBox(this);

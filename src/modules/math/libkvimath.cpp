@@ -451,7 +451,7 @@ static bool math_module_init(KviModule * m)
 	return true;
 }
 
-static bool math_module_cleanup(KviModule *m)
+static bool math_module_cleanup(KviModule *)
 {
 	return true;
 }

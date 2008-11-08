@@ -47,7 +47,7 @@
 		[class]object[/class]
 		[class]button[/class]
 	@description:
-		This widget provides a push button 
+		This widget provides a push button
 	@functions:
 		!fn: $setText([<text:string>])
 		Set the button text.[br]
@@ -83,7 +83,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_button)
 
 KVSO_END_DESTRUCTOR(KviKvsObject_button)
 
-bool KviKvsObject_button::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_button::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QPushButton);
 	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
@@ -118,7 +118,7 @@ KVSO_CLASS_FUNCTION(button,setImage)
 	if(icon.isHObject())
 	{
 		kvs_hobject_t hObj;
-		icon.asHObject(hObj);	
+		icon.asHObject(hObj);
 		KviKvsObject *pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 		if (!pObject)
 		{
@@ -127,7 +127,7 @@ KVSO_CLASS_FUNCTION(button,setImage)
 		}
 		if(pObject->inheritsClass("pixmap"))
 			((QPushButton *)widget())->setIcon(QIcon(*((KviKvsObject_pixmap *)pObject)->getPixmap()));
-		else{ 
+		else{
 			c->warning(__tr2qs_ctx("Object Pixmap required!","object"));
 		}
 		return true;

@@ -85,13 +85,13 @@
 
 static void dumpChildObjects(KviWindow *pWnd, QObject *parent, const char *spacing, bool bWidgetsOnly, KviKvsArray *n, int &idx);
 
-static bool objects_module_cleanup(KviModule *m)
+static bool objects_module_cleanup(KviModule *)
 {
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be unregistered before the base ones.
-	
+
 	KviKvsObject_memorybuffer::unregisterSelf();
-	
+
 	KviKvsObject_process::unregisterSelf();
 	KviKvsObject_ftp::unregisterSelf();
 	KviKvsObject_http::unregisterSelf();
@@ -487,7 +487,7 @@ static bool objects_kvs_fnc_classes(KviKvsModuleFunctionCall * c)
 
 	KviKvsArray * pArry = new KviKvsArray();
 	c->returnValue()->setArray(pArry);
-	int uIdx=0;
+
 	KviPointerHashTableIterator<QString,KviKvsObjectClass> it(*KviKvsKernel::instance()->objectController()->classDict());
 	KviPointerHashTable<QString,bool> *classdict=new KviPointerHashTable<QString,bool>;
 	classdict->setAutoDelete(false);
@@ -654,7 +654,6 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	QImage  * imgSource=0;
 	QPaintDevice  * pdSource = 0;
 
 	if(obSrc->inheritsClass("pixmap")) pdSource =((KviKvsObject_pixmap *)obSrc)->getPixmap();
@@ -795,11 +794,9 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		QRgb * fgn = (QRgb *)img_fore->scanLine(y+iFoY);
 		fgn += iFoX;
 		double dRemaining = 1.0 - dBlend;
-		int a=0;
+
 		while(dst < end)
 		{
-
-
 			*dst = qRgba(
 				(int)((qRed(*bkg) * dRemaining) + (qRed(*fgn) * dBlend)),
 				(int)((qGreen(*bkg) * dRemaining) + (qGreen(*fgn) * dBlend)),
@@ -811,8 +808,6 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 			bkg++;
 			fgn++;
 		}
-
-
 	}
 	QPainter p(pdDest);
 	QRect rect(iDesX,iDesY,buffer.width(),buffer.height());

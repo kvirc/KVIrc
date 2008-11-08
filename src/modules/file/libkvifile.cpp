@@ -479,7 +479,7 @@ static bool file_kvs_fnc_allSizes(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("directory",KVS_PT_NONEMPTYSTRING,0,szDir)
 	KVSM_PARAMETERS_END(c)
 	KviFileUtils::adjustFilePath(szDir);
-	
+
 	QDir d(szDir);
 	if(!d.exists())
 	{
@@ -845,7 +845,7 @@ static bool file_kvs_fnc_readLines(KviKvsModuleFunctionCall * c)
 	}
 
 	f.close();
-	
+
 	c->returnValue()->setArray(a);
 
 	return true;
@@ -903,7 +903,6 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 	KviFileUtils::adjustFilePath(szFile);
 
 	KviFile f(szFile);
-	int iFlags = QIODevice::WriteOnly;
 
 	if(!f.openForWriting(c->switches()->find('a',"append")))
 	{
@@ -1231,7 +1230,7 @@ static bool file_module_init(KviModule * m)
 	return true;
 }
 
-static bool file_module_cleanup(KviModule *m)
+static bool file_module_cleanup(KviModule *)
 {
 	return true;
 }

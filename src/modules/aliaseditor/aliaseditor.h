@@ -156,11 +156,10 @@ protected slots:
 protected:
 	void recursiveCollapseNamespaces(KviAliasEditorTreeWidgetItem * it);
 	void recursiveSearchReplace(const QString &szSearch,KviAliasEditorTreeWidgetItem * it,bool bReplace=false,const QString &szReplace="n");
-	
+
 	void recursiveCommit(KviAliasEditorTreeWidgetItem * it);
 	void getExportAliasBuffer(QString &buffer,KviAliasTreeWidgetItem * it);
 	void oneTimeSetup();
-	void selectOneItem(QTreeWidgetItem * it,QTreeWidgetItem *pStartFrom);
 	void saveLastEditedItem();
 	void getUniqueItemName(KviAliasEditorTreeWidgetItem *item,QString &buffer,KviAliasEditorTreeWidgetItem::Type eType);
 	void appendSelectedItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l);
@@ -208,7 +207,7 @@ protected:
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getConfigGroupName(KviStr &szName);
+	virtual void getConfigGroupName(QString &szName);
 	virtual void saveProperties(KviConfig *);
 	virtual void loadProperties(KviConfig *);
 protected slots:

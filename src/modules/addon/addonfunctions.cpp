@@ -54,11 +54,10 @@ namespace KviAddonFunctions
 		QString * pValue;
 		QString szErr;
 		bool bInstall;
-		QByteArray * pByteArray;
 		KviHtmlDialogData hd;
 
 		const char * check_fields[] = { "Name", "Version", "Author", "Description", "Date", "Application" };
-	
+
 		// check if it is a valid addon file
 		KviPackageReader r;
 		if(!r.readHeader(szAddonPackageFileName))
@@ -67,15 +66,15 @@ namespace KviAddonFunctions
 			KviQString::sprintf(szError,__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %Q","addon"),&szErr);
 			return false;
 		}
-	
+
 		pInfoFields = r.stringInfoFields();
-	
+
 		pValue = pInfoFields->find("PackageType");
 		if(!pValue)return notAValidAddonPackage(szError);
 		pValue = pInfoFields->find("AddonPackVersion");
 		if(!pValue)return notAValidAddonPackage(szError);
 		if(!KviQString::equalCI(*pValue,KVI_CURRENT_ADDONS_ENGINE_VERSION))return notAValidAddonPackage(szError);
-		
+
 		// make sure the default fields exist
 		for(int i=0;i<6;i++)
 		{
@@ -106,9 +105,9 @@ namespace KviAddonFunctions
 		QString szWarnings;
 		QString szDetails = "<html><body bgcolor=\"#ffffff\">";
 		QString szTmp;
-		
+
 		bool bValid = true;
-	
+
 		QString szAddonName;
 		QString szAddonVersion;
 		QString szAddonDescription;
@@ -202,7 +201,7 @@ namespace KviAddonFunctions
 
 		hd.addHtmlResource("addon_dialog_details",szDetails);
 		hd.addHtmlResource("addon_dialog_main",hd.szHtmlText);
-	
+
 		QString beginCenter = "<center>";
 		QString endCenter = "</center>";
 
@@ -219,20 +218,9 @@ namespace KviAddonFunctions
 		hd.iFlags = KviHtmlDialogData::ForceMinimumSize;
 
 		bInstall = KviHtmlDialog::display(pDialogParent,&hd) == 2;
-		
+
 		if(bInstall)
 		{
-
-/*
-[02:25:41] <Pragma> (occhio a non cancellare niente di importante eh... bisogna sempre fare attenzione a fare i delete)
-[02:25:50] <Pragma> ed occhio anche agli attacchi
-[02:26:02] <Pragma> quando parsi dei file esterni che potrebbero essere forgiati
-[02:26:19] <Pragma> pensa sempre 3 volte a cosa potrebbe succedere
-[02:26:41] <Pragma> tipo se dentro il pacchetto ti ci mettono un path tipo "../../etc/passwd"
-[02:27:03] <Pragma> qui magari bisogna intervienire pure sullo spacchettatore eh
-[02:27:10] <Pragma> guarda un pò insomma
-[02:27:22] <Pragma> la gente co ste cose ci va a nozze
-*/
 			// Create a random extraction dir
 			QString szTmpPath, szUnpackPath;
 			QString szRandomDir = createRandomDir();

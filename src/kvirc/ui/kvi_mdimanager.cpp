@@ -117,11 +117,11 @@ void KviMdiManager::paintEvent(QPaintEvent * event)
 	}
 }
 
-void KviMdiManager::manageChild(KviMdiChild * lpC,bool bCascade,QRect *setGeom)
+void KviMdiManager::manageChild(KviMdiChild * lpC, bool, QRect *)
 {
 	__range_valid(lpC);
 
-	QMdiSubWindow * w = this->addSubWindow((QMdiSubWindow*)lpC);
+	addSubWindow((QMdiSubWindow*)lpC);
 
 	if(isInSDIMode()) lpC->queuedMaximize();
 
@@ -241,17 +241,17 @@ void KviMdiManager::childMoved(KviMdiChild *)
 
 }
 
-void KviMdiManager::maximizeChild(KviMdiChild * lpC)
+void KviMdiManager::maximizeChild(KviMdiChild *)
 {
 }
 
-void KviMdiManager::childMaximized(KviMdiChild * lpC)
+void KviMdiManager::childMaximized(KviMdiChild *)
 {
-		m_bInSDIMode = true;
+	m_bInSDIMode = true;
 }
 
 
-void KviMdiManager::childMinimized(KviMdiChild * lpC,bool bWasMaximized)
+void KviMdiManager::childMinimized(KviMdiChild * lpC, bool bWasMaximized)
 {
 	__range_valid(lpC);
 
@@ -283,7 +283,7 @@ void KviMdiManager::focusTopChild()
 	if (!activeSubWindow()) return;
 	if (!activeSubWindow()->inherits("KviMdiChild")) return;
 
-	KviMdiChild * lpC;
+	KviMdiChild * lpC = 0;
 
 	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::ActivationHistoryOrder);
 	QListIterator<QMdiSubWindow*> wl(tmp);
@@ -606,7 +606,7 @@ void KviMdiManager::toggleAutoTile()
 }
 
 
-void KviMdiManager::tileAllInternal(int maxWnds,bool bHorizontal)
+void KviMdiManager::tileAllInternal(int, bool) //int maxWnds,bool bHorizontal
 {
 }
 

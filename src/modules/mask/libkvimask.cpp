@@ -181,7 +181,7 @@ static bool mask_module_init(KviModule * m)
 	return true;
 }
 
-static bool mask_module_cleanup(KviModule *m)
+static bool mask_module_cleanup(KviModule *)
 {
 	return true;
 }

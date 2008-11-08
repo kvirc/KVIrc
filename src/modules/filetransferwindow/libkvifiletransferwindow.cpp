@@ -131,7 +131,7 @@ static bool filetransferwindow_module_init(KviModule * m)
 	return true;
 }
 
-static bool filetransferwindow_module_cleanup(KviModule *m)
+static bool filetransferwindow_module_cleanup(KviModule *)
 {
 	if(g_pFileTransferWindow)
 	{
@@ -141,7 +141,7 @@ static bool filetransferwindow_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool filetransferwindow_module_can_unload(KviModule *m)
+static bool filetransferwindow_module_can_unload(KviModule *)
 {
 	return (!g_pFileTransferWindow);
 }

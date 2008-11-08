@@ -33,7 +33,7 @@
 
 // Tables used in $setAlignment & $alignment
 const char * const align_tbl[] = {
-			"Left", 
+			"Left",
 			"Right",
 			"HCenter",
 			"VCenter",
@@ -95,8 +95,8 @@ const int align_cod[] = {
 		!fn: $setMargin(<margin:uint>)
 		Sets the dimension of the layout margin : the distance from the border to the outermost child widget edges.
 		!fn: $setAlignment(<flag1:string>, <flag2:string>, ...)
-		Sets the alignment for widget w to  flags, given as parameters. 
-		Valid flags are:Right,Left,Top,Bottom,HCenter,VCenter,Center  
+		Sets the alignment for widget w to  flags, given as parameters.
+		Valid flags are:Right,Left,Top,Bottom,HCenter,VCenter,Center
 		!fn: $setResizeMode(<resize_mode:string>)
 		Sets the resize mode of the parent widget in relation to this layout.
 		<mode> can be one of:[br]
@@ -130,7 +130,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_layout)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_layout)
 
-bool KviKvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *)
 {
 	QWidget * w = parentScriptWidget();
 
@@ -163,7 +163,7 @@ KVSO_CLASS_FUNCTION(layout,addWidget)
 
 KVSO_CLASS_FUNCTION(layout,addMultiCellWidget)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	kvs_uint_t uStartCol,uStartRow,uEndCol,uEndRow;
@@ -177,13 +177,13 @@ KVSO_CLASS_FUNCTION(layout,addMultiCellWidget)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	// { addWidget(w, fromRow, fromCol, (toRow < 0) ? -1 : toRow - fromRow + 1, (toCol < 0) ? -1 : toCol - fromCol + 1, _align); }
-	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uStartRow, uStartCol,(uEndRow < 0) ? -1 : uEndRow - uStartRow + 1, (uEndCol < 0) ? -1 : uEndCol - uStartCol + 1);
+	((QGridLayout *)object())->addWidget(((QWidget *)(pObject->object())),uStartRow, uStartCol, uEndRow - uStartRow + 1, uEndCol - uStartCol + 1);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(layout,setRowStretch)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uRow,uStretch;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
@@ -195,7 +195,7 @@ KVSO_CLASS_FUNCTION(layout,setRowStretch)
 
 KVSO_CLASS_FUNCTION(layout,setColumnStretch)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uCol,uStretch;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
@@ -207,7 +207,7 @@ KVSO_CLASS_FUNCTION(layout,setColumnStretch)
 
 KVSO_CLASS_FUNCTION(layout,setMargin)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uMargin;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("margin",KVS_PT_UNSIGNEDINTEGER,0,uMargin)
@@ -218,7 +218,7 @@ KVSO_CLASS_FUNCTION(layout,setMargin)
 
 KVSO_CLASS_FUNCTION(layout,setSpacing)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("spacing",KVS_PT_UNSIGNEDINTEGER,0,uSpacing)
@@ -229,7 +229,7 @@ KVSO_CLASS_FUNCTION(layout,setSpacing)
 
 KVSO_CLASS_FUNCTION(layout,addRowSpacing)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uSpacing,uRow;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
@@ -242,7 +242,7 @@ KVSO_CLASS_FUNCTION(layout,addRowSpacing)
 
 KVSO_CLASS_FUNCTION(layout,addColSpacing)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uSpacing,uCol;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
@@ -254,7 +254,7 @@ KVSO_CLASS_FUNCTION(layout,addColSpacing)
 
 KVSO_CLASS_FUNCTION(layout,setResizeMode)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("resize_mode",KVS_PT_STRING,0,szMode)
@@ -271,7 +271,7 @@ KVSO_CLASS_FUNCTION(layout,setResizeMode)
 
 KVSO_CLASS_FUNCTION(layout,setAlignment)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QStringList alignment;
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
@@ -304,7 +304,7 @@ KVSO_CLASS_FUNCTION(layout,setAlignment)
 			sum = sum | align;
 		else
 			c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objects"),&(*it));
-		
+
 	}
 	if (widget()) ((QGridLayout *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;

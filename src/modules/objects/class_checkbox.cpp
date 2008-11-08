@@ -77,7 +77,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_checkbox)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_checkbox)
 
-bool KviKvsObject_checkbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_checkbox::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	QCheckBox  * cb = new QCheckBox(parentScriptWidget());
 	cb->setObjectName(getName().toUtf8().data());

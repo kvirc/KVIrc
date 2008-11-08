@@ -64,12 +64,12 @@ static bool codetester_module_init(KviModule * m)
 	return true;
 }
 
-static bool codetester_module_can_unload(KviModule * m)
+static bool codetester_module_can_unload(KviModule *)
 {
 	return (g_pCodeTesterWindowList->count() == 0);
 }
 
-static bool codetester_module_cleanup(KviModule *m)
+static bool codetester_module_cleanup(KviModule *)
 {
 	while(KviCodeTesterWindow * w = g_pCodeTesterWindowList->first())
 	{

@@ -95,7 +95,7 @@
 		!fn: <index:integer> $onItemEvent()
 		This function is called by KVIrc when the current item pointed by the mouse changes and gives in $0 the item index.
 		!fn: <array:x,y,width,height> $itemRect(<item:index>)
-		Returns the rectangle on the screen that item occupies, or an invalid rectangle if item is 0 or is not currently visible. 
+		Returns the rectangle on the screen that item occupies, or an invalid rectangle if item is 0 or is not currently visible.
 
 		@signals:
 		!sg: <string> $currentItemChanged()
@@ -145,7 +145,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_listwidget)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_listwidget)
 
-bool KviKvsObject_listwidget::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_listwidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QListWidget)
 	obj->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -188,7 +188,7 @@ KVSO_CLASS_FUNCTION(listwidget,changeItem)
 	if (szText.isEmpty()) c->warning(__tr2qs_ctx("No string parameter given - using empty string","objects"));
 	if(iIndex >= (cnt = ((QListWidget *)widget())->count()))
 	{
-		c->warning(__tr2qs("Item index [%d] is too big - defaulting to " 
+		c->warning(__tr2qs("Item index [%d] is too big - defaulting to "
 			"$count() - 1 [%d]"), iIndex, cnt);
 		iIndex = cnt - 1;
 	}
@@ -298,7 +298,7 @@ KVSO_CLASS_FUNCTION(listwidget,insertWidgetItem)
 		KVSO_PARAMETER("index",KVS_PT_INT,0,iIndex)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hWid);
-	if(pObject==this) 
+	if(pObject==this)
 	{
 		c->warning(__tr2qs_ctx("Can't insert the listwidget itself!","objects"));
 		return true;
@@ -391,7 +391,7 @@ KVSO_CLASS_FUNCTION(listwidget,itemEnteredEvent)
 }
 
 //slots
-void KviKvsObject_listwidget::currentItemChanged(QListWidgetItem *currentItem,QListWidgetItem *previousItem)
+void KviKvsObject_listwidget::currentItemChanged(QListWidgetItem *currentItem,QListWidgetItem *)
 {
 	if (!currentItem) callFunction(this,"currentItemChangeEvent",0,0);
 	else
@@ -403,7 +403,6 @@ void KviKvsObject_listwidget::currentItemChanged(QListWidgetItem *currentItem,QL
 }
 void KviKvsObject_listwidget::selectionChanged()
 {
-	KviKvsVariantList *params=0;
 	callFunction(this,"selectionChangeEvent",0,0);
 }
 

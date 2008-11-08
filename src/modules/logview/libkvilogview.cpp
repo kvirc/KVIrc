@@ -99,7 +99,7 @@ static KviModuleExtension * logview_extension_alloc(KviModuleExtensionAllocStruc
 				}
 			}
 		}
-	
+
 		g_pLogViewWindow = new KviLogViewMDIWindow(s->pDescriptor,g_pFrame);
 		g_pFrame->addWindow(g_pLogViewWindow,!bCreateMinimized);
 		if(bCreateMinimized)g_pLogViewWindow->minimize();
@@ -140,14 +140,14 @@ static bool logview_module_init(KviModule * m)
 	return true;
 }
 
-static bool logview_module_cleanup(KviModule * m)
+static bool logview_module_cleanup(KviModule *)
 {
 	if(g_pLogViewWindow)delete g_pLogViewWindow;
 	g_pLogViewWindow = 0;
 	return true;
 }
 
-static bool logview_module_can_unload(KviModule *m)
+static bool logview_module_can_unload(KviModule *)
 {
 	return (!g_pLogViewWindow);
 }

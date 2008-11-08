@@ -345,6 +345,8 @@ void KviNotifierWindow::doShow(bool bDoAnimate)
 				startAutoHideTimer();
 			}
 		break;
+		default:
+		break;
 	}
 }
 
@@ -511,16 +513,18 @@ void KviNotifierWindow::doHide(bool bDoAnimate)
 			#endif
 		}
 		break;
+		default:
+		break;
 	}
 }
 
-void KviNotifierWindow::showEvent(QShowEvent *e)
+void KviNotifierWindow::showEvent(QShowEvent *)
 {
 	computeRect();
 	setGeometry(m_wndRect); // w_win = w_wndRect
 }
 
-void KviNotifierWindow::hideEvent(QHideEvent * e)
+void KviNotifierWindow::hideEvent(QHideEvent *)
 {
 	if (m_bCrashShowWorkAround) return;
 	stopBlinkTimer();
@@ -625,7 +629,7 @@ static void blend_images(QImage &buffer,QImage &background,QImage &foreground,do
 	}
 }
 
-void KviNotifierWindow::paintEvent(QPaintEvent * e)
+void KviNotifierWindow::paintEvent(QPaintEvent *)
 {
 
 	redrawWindow();
@@ -1080,7 +1084,7 @@ bool KviNotifierWindow::checkResizing(QPoint e)
 	return m_bResizing;
 }
 
-void KviNotifierWindow::resize(QPoint p, bool up)
+void KviNotifierWindow::resize(QPoint , bool)
 {
 	//QPoint aux = mapToGlobal(p);
 
@@ -1169,7 +1173,7 @@ inline void KviNotifierWindow::setCursor(int cur)
 		if(QApplication::overrideCursor()) QApplication::restoreOverrideCursor();
 }
 
-void KviNotifierWindow::enterEvent(QEvent * e)
+void KviNotifierWindow::enterEvent(QEvent *)
 {
 	if(!m_pShowHideTimer) {
 		m_pShowHideTimer = new QTimer();
@@ -1179,7 +1183,7 @@ void KviNotifierWindow::enterEvent(QEvent * e)
 	m_pShowHideTimer->start(40);
 }
 
-void KviNotifierWindow::leaveEvent(QEvent * e)
+void KviNotifierWindow::leaveEvent(QEvent *)
 {
 	// Leaving the widget area, restore default cursor
 	m_pWndBorder->resetIcons();

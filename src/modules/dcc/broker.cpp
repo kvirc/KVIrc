@@ -428,9 +428,9 @@ void KviDccBroker::activeCanvasManage(KviDccDescriptor * dcc)
 }
 #endif
 
+#ifdef COMPILE_DCC_CANVAS
 void KviDccBroker::activeCanvasExecute(KviDccBox *box,KviDccDescriptor * dcc)
 {
-#ifdef COMPILE_DCC_CANVAS
 	if(box)box->forgetDescriptor();
 
 	if(!g_pApp->windowExists(dcc->console()))
@@ -451,6 +451,9 @@ void KviDccBroker::activeCanvasExecute(KviDccBox *box,KviDccDescriptor * dcc)
 	if(bMinimized)cnv->minimize();
 
 	m_pDccWindowList->append(cnv);
+#else
+void KviDccBroker::activeCanvasExecute(KviDccBox *,KviDccDescriptor *)
+{
 #endif
 }
 
@@ -592,8 +595,8 @@ void KviDccBroker::chooseSaveFileName(KviDccBox *box,KviDccDescriptor *dcc)
 			}
 			g_pMediaManager->unlock();
 		}
-	
-		if(dcc->szLocalFileName.isEmpty()) 
+
+		if(dcc->szLocalFileName.isEmpty())
 		{
 			g_pApp->getLocalKvircDirectory(dcc->szLocalFileName,KviApp::Incoming);
 			if(KVI_OPTION_BOOL(KviOption_boolSortReceivedByDccFilesByNicks))
@@ -642,7 +645,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 	if(fi.exists() && (fi.size() > 0)) // 0 byte files are senseless for us
 	{
 		dcc->szLocalFileSize.setNum(fi.size());
-		
+
 		bool bOk;
 		int iRemoteSize = dcc->szFileSize.toInt(&bOk);
 		if(!bOk)iRemoteSize = -1;
@@ -654,7 +657,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 		{
 			QString tmp;
 			bool bDisableResume = false;
-			
+
 			if((iRemoteSize > -1) || // remote size is unknown
 				(iRemoteSize > ((int)(fi.size())))) // or it is larger than the actual size on disk
 			{
@@ -745,7 +748,7 @@ void KviDccBroker::renameDccSendFile(KviDccBox *box,KviDccDescriptor * dcc)
 				szOrig.ptr(),&(dcc->szLocalFileName));
 		}
 	}
-	
+
 	dcc->szLocalFileSize = "0"; // 0 for sure
 
 	recvFileExecute(0,dcc);
@@ -817,7 +820,7 @@ void KviDccBroker::sendFileExecute(KviDccBox * box,KviDccDescriptor *dcc)
 		delete dcc;
 		return;
 	}
-	
+
 	dcc->szFileName = dcc->szLocalFileName;
 	dcc->szFileName = QFileInfo(dcc->szFileName).fileName();
 

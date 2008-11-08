@@ -59,15 +59,8 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 	const QString &szButton2,
 	const QString &szCode,
 	KviKvsVariantList * pMagicParams,
-	KviWindow * pWindow,bool modal)
-: QMessageBox(0)/*
-	szCaption,
-	szText,
-	QMessageBox::NoIcon,
-	szButton0.isEmpty() ? QMessageBox::NoButton : QMessageBox::Ok | QMessageBox::Default,
-	szButton1.isEmpty() ? QMessageBox::NoButton : (szButton2.isEmpty() ? QMessageBox::No | QMessageBox::Escape : QMessageBox::No),
-	szButton2.isEmpty() ? QMessageBox::NoButton : QMessageBox::Cancel | QMessageBox::Escape,
-	0,0,modal)*/ ,
+	KviWindow * pWindow,bool)
+: QMessageBox(0),
 	KviKvsCallbackObject("dialog.message",pWindow,szCode,pMagicParams,0)
 {
 	setWindowTitle(szCaption);
@@ -107,7 +100,7 @@ void KviKvsCallbackMessageBox::done(int code)
 	QMessageBox::done(code);
 
 	kvs_int_t iVal = 0;
-	
+
 	switch(code)
 	{
 		case QMessageBox::No: iVal = 1; break;
@@ -152,11 +145,11 @@ void KviKvsCallbackMessageBox::done(int code)
 		<magic1>,<magic2>... are the magic parameters: evaluated at dialog.message call time and passed
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
-		it will appear above its parent widget and block its input until it's closed.[br] 
+		it will appear above its parent widget and block its input until it's closed.[br]
 		Once the dialog has been shown , the user will click one of the buttons. At this point the dialog
 		is hidden and the <callback_command> is executed passing the number of the button clicked
 		as $0 and the magic parameters as positional parameters $1 , $2 , $3....[br]
-		Please note that if the user closes the window with the window manager close button , 
+		Please note that if the user closes the window with the window manager close button ,
 		the action is interpreted as a button2 click (that is usually sth as "Cancel").[br]
 	@examples:
 		[example]
@@ -361,7 +354,7 @@ void KviKvsCallbackTextInput::done(int code)
 	}
 
 	QString txt;
-	
+
 	if(m_bMultiLine)
 	{
 		txt = ((QTextEdit *)m_pEdit)->toPlainText();
@@ -424,7 +417,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		If the -d switch is used , the initial text input value is set to <default text>.[br]
 		If the -i switch is used , the dialog displays also the icon <icon> , just on the left ot the <info_text>[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
-		it will appear above its parent widget and block its input until it's closed.[br] 
+		it will appear above its parent widget and block its input until it's closed.[br]
 		In that case <icon> is an [doc:image_id]image identifier[/doc] (can be a relative or absolute
 		path to an image file or a signed number (in that case it defines an internal KVIrc image).[br]
 		<magic1>,<magic2>... are the magic parameters: evaluated at dialog.textinput call time and passed
@@ -432,7 +425,7 @@ void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
 		Once the dialog has been shown , the user will click one of the buttons. At this point the dialog
 		is hidden and the <callback_command> is executed passing the text input value in $1, the number of the button clicked
 		as $0, and the magic parameters as positional parameters $2 , $3 , $4....[br]
-		Please note that if the user closes the window with the window manager close button , 
+		Please note that if the user closes the window with the window manager close button ,
 		the action is interpreted as a button2 click (that is usually sth as "Cancel").[br]
 	@examples:
 		[example]
@@ -572,12 +565,12 @@ void KviKvsCallbackFileDialog::done(int code)
 		<initial_selection> can be a directory or filename that will be initially selected in the dialog.[br]
 		Only files matching <file_filter> are selectable. If filter is an empty string, all files are selectable.[br]
 		In the filter string multiple filters can be specified separated by either two semicolons next to each
-		other or separated by newlines. To add two filters, one to show all C++ files and one to show all 
-		header files, the filter string could look like "C++ Files (*.cpp *.cc *.C *.cxx *.c++);;Header Files (*.h *.hxx *.h++)" 
+		other or separated by newlines. To add two filters, one to show all C++ files and one to show all
+		header files, the filter string could look like "C++ Files (*.cpp *.cc *.C *.cxx *.c++);;Header Files (*.h *.hxx *.h++)"
 		<magic1>,<magic2>... are the magic parameters: evaluated at dialog.message call time and passed
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
-		it will appear above its parent widget and block its input until it's closed.[br] 
+		it will appear above its parent widget and block its input until it's closed.[br]
 		Once the dialog has been shown , the user will select an EXISTING file and click either
 		Ok or Cancel. At this point the dialog is hidden and the <callback_command> is executed passing the selected file(s) as $0
 		and the magic parameters as positional parameters $1 , $2 , $3....[br]
@@ -703,7 +696,7 @@ void KviKvsCallbackImageDialog::done(int code)
 		<magic1>,<magic2>... are the magic parameters: evaluated at dialog.image call time and passed
 		to the <callback_command> as positional parameters.[br]
 		If the -b or -modal switch is specified the dialog will have non-blocking modal behaviour:
-		it will appear above its parent widget and block its input until it's closed.[br] 
+		it will appear above its parent widget and block its input until it's closed.[br]
 		Once the dialog has been shown , the user will select an EXISTING file and click either
 		Ok or Cancel. At this point the dialog is hidden and the <callback_command> is executed passing the selected file(s) as $0
 		and the magic parameters as positional parameters $1 , $2 , $3....[br]
@@ -779,7 +772,7 @@ static bool dialog_kvs_fnc_yesno(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("caption",KVS_PT_STRING,0,szCaption)
 		KVSM_PARAMETER("text",KVS_PT_STRING,0,szText)
 	KVSM_PARAMETERS_END(c)
-	
+
 	c->enterBlockingSection();
 	bool yes=KviMessageBox::yesNo(szCaption,szText); // this will happily crash on quit ?
 	if(!c->leaveBlockingSection())return true; // just die
@@ -869,11 +862,11 @@ static bool dialog_module_fnc_textline(KviModule *m,KviCommand *c,KviParameterLi
 		That's REAL programming.
 */
 
-static bool dialog_module_init(KviModule * m)
+static bool dialog_module_init(KviModule *m)
 {
 	g_pDialogModuleDialogList = new KviPointerList<QWidget>;
 	g_pDialogModuleDialogList->setAutoDelete(false);
-debug("registering comman");
+
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"message",dialog_kvs_cmd_message);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"textinput",dialog_kvs_cmd_textinput);
 	KVSM_REGISTER_CALLBACK_COMMAND(m,"file",dialog_kvs_cmd_file);
@@ -883,7 +876,7 @@ debug("registering comman");
 	return true;
 }
 
-static bool dialog_module_cleanup(KviModule *m)
+static bool dialog_module_cleanup(KviModule *)
 {
 	// Here we get a tragedy if g_iLocalEventLoops > 0!
 	while(g_pDialogModuleDialogList->first())delete g_pDialogModuleDialogList->first();
@@ -892,7 +885,7 @@ static bool dialog_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool dialog_module_can_unload(KviModule *m)
+static bool dialog_module_can_unload(KviModule *)
 {
 	return g_pDialogModuleDialogList->isEmpty();
 }

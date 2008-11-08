@@ -60,7 +60,7 @@ QDataStream &operator<<( QDataStream &s, const Document &l )
 	return s;
 }
 
-Index::Index( const QString &dp, const QString &hp )
+Index::Index( const QString &dp, const QString & )
 : QObject( 0), dict( 8999 ), docPath( dp )
 {
 	alreadyHaveDocList = FALSE;
@@ -68,7 +68,7 @@ Index::Index( const QString &dp, const QString &hp )
 	connect(qApp,SIGNAL(lastWindowClosed()),this,SLOT(setLastWinClosed()));
 }
 
-Index::Index( const QStringList &dl, const QString &hp )
+Index::Index( const QStringList &dl, const QString & )
 : QObject( 0), dict( 8999 )
 {
 	docList = dl;
@@ -99,17 +99,17 @@ int Index::makeIndex()
 	dict.clear();
 	QStringList::Iterator it = docList.begin();
 
-// 	QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 0, docList.count() );
-// 	pProgressDialog->setWindowTitle(__tr2qs("KVIrc"));
-// 	pProgressDialog->setMinimumDuration(500);
-// 	pProgressDialog->setWindowModality(Qt::WindowModal);
+	QProgressDialog* pProgressDialog = new QProgressDialog( __tr2qs("Indexing help files"), __tr2qs("Cancel"), 0, docList.count() );
+	pProgressDialog->setWindowTitle(__tr2qs("KVIrc"));
+	pProgressDialog->setMinimumDuration(500);
+	pProgressDialog->setWindowModality(Qt::WindowModal);
 	for ( int i = 0; it != docList.end(); ++it, ++i ) {
-// 		if (lastWindowClosed ||pProgressDialog->wasCanceled())
-// 			break;
+		if (lastWindowClosed ||pProgressDialog->wasCanceled())
+			break;
 		parseDocument( *it, i );
-// 		pProgressDialog->setValue(i);
+		pProgressDialog->setValue(i);
 	}
-// 	delete pProgressDialog;
+	delete pProgressDialog;
 	return 0;
 }
 
@@ -162,7 +162,7 @@ void Index::parseDocument( const QString &filename, int docNum )
 	QChar c = buf[0];
 	int j = 0;
 	int i = 0;
-	while ( (uint)j < text.length() ) {
+	while ( j < text.length() ) {
 		if ( c == '<' || c == '&' ) {
 			valid = FALSE;
 			if ( i > 1 ) insertInDict( QString(str,i), docNum );
@@ -497,7 +497,7 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 	QChar c = buf[0];
 	int j = 0;
 	int i = 0;
-	while ( (uint)j < text.length() ) {
+	while ( j < text.length() ) {
 		if ( c == '<' || c == '&' ) {
 			valid = FALSE;
 			if ( i > 1 ) buildMiniDict( QString(str,i) );
@@ -543,12 +543,12 @@ bool Index::searchForPattern( const QStringList &patterns, const QStringList &wo
 		wordLst = tmp.split( ' ');
 		a = miniDict[ wordLst[0] ]->positions;
 
-		for ( int j = 1; j < (int)wordLst.count(); ++j ) {
+		for ( int j = 1; j < wordLst.count(); ++j ) {
 			b = miniDict[ wordLst[j] ]->positions;
 			aIt = a.begin();
 
 			while ( aIt != a.end() ) {
-				if ( b.indexOf( *aIt + 1 ) != b.at(b.count()-1) ) {
+				if ( (uint) b.indexOf( *aIt + 1 ) != b.at(b.count()-1) ) {
 					(*aIt)++;
 					++aIt;
 				} else {

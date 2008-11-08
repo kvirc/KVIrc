@@ -99,7 +99,7 @@ QPixmap * KviCodeTesterWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_BOMB);
 }
 
-void KviCodeTesterWindow::resizeEvent(QResizeEvent *e)
+void KviCodeTesterWindow::resizeEvent(QResizeEvent *)
 {
 	m_pTester->setGeometry(0,0,width(),height());
 }
@@ -125,12 +125,12 @@ void KviCodeTesterWindow::fillCaptionBuffers()
 	m_szHtmlInactiveCaption += p3;
 }
 
-void KviCodeTesterWindow::getConfigGroupName(KviStr &szName)
+void KviCodeTesterWindow::getConfigGroupName(QString &szName)
 {
 	szName = "codetester";
 }
 
-void KviCodeTesterWindow::saveProperties(KviConfig *cfg)
+void KviCodeTesterWindow::saveProperties(KviConfig *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR
@@ -141,7 +141,7 @@ void KviCodeTesterWindow::saveProperties(KviConfig *cfg)
 */
 }
 
-void KviCodeTesterWindow::loadProperties(KviConfig *cfg)
+void KviCodeTesterWindow::loadProperties(KviConfig *) //cfg
 {
 /*
 #ifdef COMPILE_SCRIPTTOOLBAR

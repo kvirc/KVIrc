@@ -33,7 +33,7 @@
 #include <QSslError>
 
 const char * const ssl_errors_tbl[] = {
-		"NoError",	
+		"NoError",
 		"UnableToGetIssuerCertificate",
 		"UnableToDecryptCertificateSignature",
 		"UnableToDecodeIssuerPublicKey",
@@ -43,19 +43,19 @@ const char * const ssl_errors_tbl[] = {
 		"InvalidNotBeforeField",
 		"InvalidNotAfterField",
 		"SelfSignedCertificate",
-		"SelfSignedCertificateInChain",	
-		"UnableToGetLocalIssuerCertificate",	
+		"SelfSignedCertificateInChain",
+		"UnableToGetLocalIssuerCertificate",
 		"UnableToVerifyFirstCertificate",
 		"CertificateRevoked",
-		"InvalidCaCertificate",	
+		"InvalidCaCertificate",
 		"PathLengthExceeded",
-		"InvalidPurpose",	
-		"CertificateUntrusted",	
-		"CertificateRejected",	
-		"SubjectIssuerMismatch",	
+		"InvalidPurpose",
+		"CertificateUntrusted",
+		"CertificateRejected",
+		"SubjectIssuerMismatch",
 		"AuthorityIssuerSerialNumberMismatch",
-		"NoPeerCertificate",	
-		"HostNameMismatch",	
+		"NoPeerCertificate",
+		"HostNameMismatch",
 		"UnspecifiedError",
 		"NoSslSupport"
 	};
@@ -106,7 +106,7 @@ const char * const ssl_errors_tbl[] = {
 		!sg: $sslErrors(
 		!sg: $stateChanged(
 		!sg: $responseHeaderReceived(
-		
+
 
 		*/
 
@@ -121,7 +121,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_http,"http","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"readAll",functionReadAll)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"errorString",functionErrorString)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"setFollowRedirect",functionFollowRedirect)
-	
+
 	// events
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"doneEvent",functionDoneEvent)
 	KVSO_REGISTER_HANDLER(KviKvsObject_http,"requestFinishedEvent",functionRequestFinishedEvent)
@@ -144,7 +144,7 @@ KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_http,KviKvsObject)
 	m_bEnableForceRedirect=false;
 	connect(m_pHttp,SIGNAL(requestFinished(int,bool)),this,SLOT(slotRequestFinished(int,bool)));
 	connect(m_pHttp,SIGNAL(done(bool)),this,SLOT(slotDone(bool)));
-	
+
 	connect(m_pHttp,SIGNAL(requestStarted(int)),this,SLOT(slotRequestStarted(int)));
 	connect(m_pHttp,SIGNAL(dataSendProgress(int,int)),this,SLOT(slotDataSendProgress(int,int)));
 	connect(m_pHttp,SIGNAL(dataReadProgress(int,int)),this,SLOT(slotDataReadProgress(int,int)));
@@ -258,7 +258,7 @@ bool  KviKvsObject_http::functionGet(KviKvsObjectFunctionCall *c)
 }
 bool  KviKvsObject_http::functionPost(KviKvsObjectFunctionCall *c)
 {
-	CHECK_INTERNAL_POINTER(m_pHttp)	
+	CHECK_INTERNAL_POINTER(m_pHttp)
 	QString szPath,szDest,szData;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("remote_path",KVS_PT_STRING,0,szPath)
@@ -280,20 +280,20 @@ bool  KviKvsObject_http::functionPost(KviKvsObjectFunctionCall *c)
 }
 bool  KviKvsObject_http::functionAbort(KviKvsObjectFunctionCall *c)
 {
-	CHECK_INTERNAL_POINTER(m_pHttp)	
+	CHECK_INTERNAL_POINTER(m_pHttp)
 	m_bAbort=true;
 	m_pHttp->abort();
 	return true;
 }
 bool  KviKvsObject_http::functionReadAll(KviKvsObjectFunctionCall *c)
 {
-	CHECK_INTERNAL_POINTER(m_pHttp)	
+	CHECK_INTERNAL_POINTER(m_pHttp)
 	c->returnValue()->setString(m_pHttp->readAll());
 	return true;
 }
 bool  KviKvsObject_http::functionErrorString(KviKvsObjectFunctionCall *c)
 {
-	CHECK_INTERNAL_POINTER(m_pHttp)	
+	CHECK_INTERNAL_POINTER(m_pHttp)
 	c->returnValue()->setString(m_pHttp->errorString());
 	return true;
 }
@@ -306,7 +306,7 @@ bool KviKvsObject_http::functionFollowRedirect(KviKvsObjectFunctionCall *c)
 	m_bEnableForceRedirect=bEnabled;
 	return true;
 }
-//signals & slots 
+//signals & slots
 
 bool KviKvsObject_http::functionRequestFinishedEvent(KviKvsObjectFunctionCall *c)
 {
@@ -316,12 +316,12 @@ bool KviKvsObject_http::functionRequestFinishedEvent(KviKvsObjectFunctionCall *c
 
 void KviKvsObject_http::slotRequestFinished ( int id, bool error )
 {
-	
-    if (m_bAbort) 
+
+    if (m_bAbort)
 	{
 		m_bAbort=false;
 		QHashIterator<int,QFile *> t(getDict);
-		while (t.hasNext()) 
+		while (t.hasNext())
 		{
 			t.next();
 			int key=t.key();
@@ -339,7 +339,7 @@ void KviKvsObject_http::slotRequestFinished ( int id, bool error )
 		pFile->close();
 		getDict.remove(id);
 		int res=m_pHttp->lastResponse().statusCode();
-		if ((m_pHttp->lastResponse().statusCode()==301 || m_pHttp->lastResponse().statusCode()==302 || m_pHttp->lastResponse().statusCode()==307) && m_bEnableForceRedirect)
+		if ((res==301 || res==302 || res==307) && m_bEnableForceRedirect)
 			redirect(name,m_pHttp->lastResponse());
 		delete pFile;
 	}
@@ -420,10 +420,10 @@ void KviKvsObject_http::slotResponseHeaderReceived(const QHttpResponseHeader &r)
 		default: szResponse=r.reasonPhrase();
 			m_bAbort=true;
 	}
-	
+
 	callFunction(this,"responseHeaderReceivedEvent",0,new KviKvsVariantList(
 		new KviKvsVariant(szResponse)));
-	
+
 }
 void KviKvsObject_http::slotReadyRead(const QHttpResponseHeader &r)
 {
@@ -466,7 +466,7 @@ bool KviKvsObject_http::functionStateChangedEvent(KviKvsObjectFunctionCall *c)
 
 #ifndef QT_NO_OPENSSL
 
-bool  KviKvsObject_http::functionIgnoreSslErrors(KviKvsObjectFunctionCall *c)
+bool  KviKvsObject_http::functionIgnoreSslErrors(KviKvsObjectFunctionCall *)
 {
 	if (m_pHttp) m_pHttp->ignoreSslErrors();
 	return true;

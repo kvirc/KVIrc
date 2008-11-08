@@ -112,10 +112,10 @@ bool KviKvsTreeNodeSpecialCommandSwitchLabelCase::execute(KviKvsRunTimeContext *
 		// string comparision, case insensitive
 		QString reg;
 		v.asString(reg);
-	
+
 		QString val;
 		pRealParameter->asString(val);
-	
+
 		if(reg.toLower() != val.toLower())return true;
 	}
 
@@ -256,7 +256,7 @@ void KviKvsTreeNodeSpecialCommandSwitchLabelDefault::dump(const char * prefix)
 	if(m_pInstruction)m_pInstruction->dump(tmp.toUtf8().data());
 }
 
-bool KviKvsTreeNodeSpecialCommandSwitchLabelDefault::execute(KviKvsRunTimeContext * c,KviKvsVariant * pRealParameter)
+bool KviKvsTreeNodeSpecialCommandSwitchLabelDefault::execute(KviKvsRunTimeContext * c,KviKvsVariant *)
 {
 	if(m_pInstruction)
 	{

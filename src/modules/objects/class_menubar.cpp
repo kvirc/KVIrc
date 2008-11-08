@@ -40,7 +40,7 @@
 		[class]object[/class]
 		[class]widget[/class]
 	@description:
-		
+
 	@functions:
 		!fn: <integer> $insertItem(<text:string>)
 		Returns an integer that identifies the inserted item.
@@ -59,7 +59,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_menubar)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_menubar)
 
-bool KviKvsObject_menubar::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_menubar::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QMenuBar)
 	return true;

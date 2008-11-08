@@ -42,7 +42,7 @@ static bool editor_module_init(KviModule * m)
 	return true;
 }
 
-static bool editor_module_cleanup(KviModule *m)
+static bool editor_module_cleanup(KviModule *)
 {
 	while(g_pScriptEditorWindowList->first())
 	{
@@ -67,7 +67,7 @@ static bool editor_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool editor_module_can_unload(KviModule *m)
+static bool editor_module_can_unload(KviModule *)
 {
 	return ((g_pScriptEditorWindowList == 0) || (g_pScriptEditorWindowList->count() == 0));
 }

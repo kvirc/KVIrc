@@ -81,16 +81,16 @@ static int g_iNextConfigId = 0;
 
 static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 {
-	QString szFile; 
+	QString szFile;
 	QString szMode;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("filename",KVS_PT_STRING,0,szFile)
 		KVSM_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviConfig::FileMode fileMode;
-	
+
 	if(szMode.contains('r'))
 	{
 		if(szMode.contains('w'))fileMode = KviConfig::ReadWrite;
@@ -99,10 +99,10 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		if(szMode.contains('w'))fileMode = KviConfig::Write;
 		else fileMode = KviConfig::ReadWrite;
 	}
-	
+
 	KviFileUtils::adjustFilePath(szFile);
 	QString szAbsFile;
-	
+
 	if(KviFileUtils::isAbsolutePath(szFile))szAbsFile = szFile;
 	else g_pApp->getLocalKvircDirectory(szAbsFile,KviApp::ConfigScripts,szFile,true);
 
@@ -150,11 +150,11 @@ static bool config_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 static bool config_kvs_fnc_id(KviKvsModuleFunctionCall * c)
 {
 	QString szFile;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("file",KVS_PT_STRING,0,szFile)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviFileUtils::adjustFilePath(szFile);
 
 	QString szAbsFile;
@@ -174,7 +174,7 @@ static bool config_kvs_fnc_id(KviKvsModuleFunctionCall * c)
 	}
 
 	c->returnValue()->setString("0");
-	
+
 	return true;
 }
 
@@ -203,15 +203,15 @@ static bool config_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 	QString szId;
 	QString szKey;
 	QString szDefault;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 		KVSM_PARAMETER("key",KVS_PT_STRING,0,szKey)
 		KVSM_PARAMETER("default",KVS_PT_STRING,KVS_PF_OPTIONAL,szDefault)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		c->returnValue()->setString(cfg->readEntry(szKey,szDefault));
@@ -241,13 +241,13 @@ static bool config_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 static bool config_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		c->returnValue()->setString(cfg->group());
@@ -279,13 +279,13 @@ static bool config_kvs_fnc_section(KviKvsModuleFunctionCall * c)
 static bool config_kvs_fnc_readonly(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		c->returnValue()->setBoolean(cfg->readOnly());
@@ -317,13 +317,13 @@ static bool config_kvs_fnc_readonly(KviKvsModuleFunctionCall * c)
 static bool config_kvs_fnc_filename(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		c->returnValue()->setString(cfg->fileName());
@@ -353,14 +353,14 @@ static bool config_kvs_fnc_hassection(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
 	QString szSect;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szSect)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		c->returnValue()->setBoolean(cfg->hasGroup(szSect));
@@ -390,13 +390,13 @@ static bool config_kvs_fnc_hassection(KviKvsModuleFunctionCall * c)
 static bool config_kvs_fnc_sectionlist(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		KviConfigIterator it(*(cfg->dict()));
@@ -434,13 +434,13 @@ static bool config_kvs_fnc_sectionlist(KviKvsModuleFunctionCall * c)
 static bool config_kvs_fnc_keylist(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
-	
+
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		KviConfigGroup * d = cfg->dict()->find(cfg->group());
@@ -450,7 +450,7 @@ static bool config_kvs_fnc_keylist(KviKvsModuleFunctionCall * c)
 
 		KviKvsArray* pArray = new KviKvsArray();
 		int id=0;
-		
+
 		while(it.current())
 		{
 			pArray->set(id++, new KviKvsVariant(it.currentKey()));
@@ -483,10 +483,10 @@ static bool config_kvs_fnc_filelist(KviKvsModuleFunctionCall * c)
 {
 	KVSM_PARAMETERS_BEGIN(c)
 	KVSM_PARAMETERS_END(c)
-	
+
 	KviKvsArray* pArray = new KviKvsArray();
 	int id=0;
-	
+
 	KviPointerHashTableIterator<QString,KviConfig> it(*g_pConfigDict);
 	while(it.current())
 	{
@@ -523,12 +523,12 @@ static bool config_kvs_fnc_filelist(KviKvsModuleFunctionCall * c)
 static bool config_kvs_cmd_close(KviKvsModuleCommandCall * c)
 {
 	QString szId;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId) 
-	KVSM_PARAMETERS_END(c) 
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
+	KVSM_PARAMETERS_END(c)
 
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		if(cfg->dirty() && cfg->readOnly())
@@ -536,12 +536,12 @@ static bool config_kvs_cmd_close(KviKvsModuleCommandCall * c)
 			if(!c->hasSwitch('q',"quiet"))
 				c->warning(__tr2qs("The config file '%Q' has been changed but is opened as read-only: changes will be lost"),&cfg->fileName());
 		}
-		g_pConfigDict->remove(szId); 
+		g_pConfigDict->remove(szId);
 	} else {
 		if(!c->hasSwitch('q',"quiet"))
 			c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
 	}
-	
+
 	return true;
 }
 
@@ -570,12 +570,12 @@ static bool config_kvs_cmd_close(KviKvsModuleCommandCall * c)
 static bool config_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 {
 	QString szId;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId) 
-	KVSM_PARAMETERS_END(c) 
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
+	KVSM_PARAMETERS_END(c)
 
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		if(cfg->readOnly())
@@ -585,7 +585,7 @@ static bool config_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 	} else {
 		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
 	}
-	
+
 	return true;
 }
 
@@ -614,19 +614,19 @@ static bool config_kvs_cmd_flush(KviKvsModuleCommandCall * c)
 static bool config_kvs_cmd_clear(KviKvsModuleCommandCall * c)
 {
 	QString szId;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId) 
-	KVSM_PARAMETERS_END(c) 
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
+	KVSM_PARAMETERS_END(c)
 
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		cfg->clear();
 	} else {
 		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
 	}
-	
+
 	return true;
 }
 
@@ -657,20 +657,20 @@ static bool config_kvs_cmd_clearsection(KviKvsModuleCommandCall * c)
 {
 	QString szId;
 	QString szSect;
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId) 
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 		KVSM_PARAMETER("section",KVS_PT_STRING,0,szSect)
-	KVSM_PARAMETERS_END(c) 
+	KVSM_PARAMETERS_END(c)
 
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		cfg->clearGroup(szSect);
 	} else {
 		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
 	}
-	
+
 	return true;
 }
 
@@ -705,22 +705,22 @@ static bool config_kvs_cmd_write(KviKvsModuleCommandCall * c)
 	QString szId;
 	QString szKey;
 	QString szVal;
-	
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId) 
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 		KVSM_PARAMETER("key",KVS_PT_STRING,0,szKey)
 		KVSM_PARAMETER("value",KVS_PT_STRING,0,szVal)
-	KVSM_PARAMETERS_END(c) 
+	KVSM_PARAMETERS_END(c)
 
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		cfg->writeEntry(szKey,szVal);
 	} else {
 		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
 	}
-	
+
 	return true;
 }
 
@@ -749,21 +749,21 @@ static bool config_kvs_cmd_setsection(KviKvsModuleCommandCall * c)
 {
 	QString szId;
 	QString szSect;
-	
-	KVSM_PARAMETERS_BEGIN(c) 
-		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId) 
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("id",KVS_PT_STRING,0,szId)
 		KVSM_PARAMETER("section",KVS_PT_STRING,0,szSect)
-	KVSM_PARAMETERS_END(c) 
+	KVSM_PARAMETERS_END(c)
 
 	KviConfig * cfg = g_pConfigDict->find(szId);
-	
+
 	if(cfg)
 	{
 		cfg->setGroup(szSect);
 	} else {
 		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
 	}
-	
+
 	return true;
 }
 
@@ -803,7 +803,7 @@ static bool config_kvs_cmd_setsection(KviKvsModuleCommandCall * c)
 		It is not a good idea to keep a config file open forever: a good approach
 		is to keep settings in memory variables and write them all at once when it comes to
 		write settings: you open the config file , write all your values and close the file.[br]
-		You can obviously keep the config file open for some time but remember that 
+		You can obviously keep the config file open for some time but remember that
 		no change is written to the disk until [cmd]config.flush[/cmd] or [cmd]config.close[/cmd] is called.[br]
 		You write entries by using [cmd]config.write[/cmd] and read them by using [fnc]$config.read[/fnc]().[br]
 		You can change the "current" config section by using [cmd]config.setsection[/cmd].[br]
@@ -841,7 +841,7 @@ static bool config_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"filelist",config_kvs_fnc_filelist);
 	KVSM_REGISTER_FUNCTION(m,"filename",config_kvs_fnc_filename);
 	KVSM_REGISTER_FUNCTION(m,"readonly",config_kvs_fnc_readonly);
-	
+
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"close",config_kvs_cmd_close);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"flush",config_kvs_cmd_flush);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"clear",config_kvs_cmd_clear);
@@ -852,14 +852,14 @@ static bool config_module_init(KviModule * m)
 	return true;
 }
 
-static bool config_module_cleanup(KviModule *m)
+static bool config_module_cleanup(KviModule *)
 {
 	delete g_pConfigDict;
 	g_pConfigDict = 0;
 	return true;
 }
 
-static bool config_module_can_unload(KviModule *m)
+static bool config_module_can_unload(KviModule *)
 {
 	return g_pConfigDict->isEmpty();
 }

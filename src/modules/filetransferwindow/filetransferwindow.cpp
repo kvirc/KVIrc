@@ -98,7 +98,7 @@ void KviFileTransferItem::displayUpdate()
 	tableWidget()->model()->setData(tableWidget()->model()->index(row(),2), dummy, Qt::DisplayRole);
 }
 
-QString KviFileTransferItem::key(int column,bool bAcending) const
+QString KviFileTransferItem::key(int,bool) const
 {
 	QString ret;
 	ret.setNum(m_pTransfer->id());
@@ -183,8 +183,6 @@ void KviFileTransferWidget::paintEvent(QPaintEvent * event)
 	QPainter *p = new QPainter(viewport());
 	QStyleOptionViewItem option = viewOptions();
 	QRect rect = event->rect();
-	KviFileTransferItem* item;
-	int r, c;
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(g_pShadedChildGlobalDesktopBackground)
@@ -227,17 +225,11 @@ void KviFileTransferItemDelegate::paint(QPainter * p, const QStyleOptionViewItem
 	transfer->displayPaint(p, index.column(), option.rect);
 }
 
-QSize KviFileTransferItemDelegate::sizeHint( const QStyleOptionViewItem & option, const QModelIndex & index ) const
+QSize KviFileTransferItemDelegate::sizeHint(const QStyleOptionViewItem &, const QModelIndex &) const
 {
 	// FIXME fixed width
 	return QSize(((KviFileTransferWidget*)parent())->viewport()->size().width(), 68);
 }
-/*
-void KviFileTransferItem::setHeight(int h)
-{
-	KviTalTableWidgetItem::setHeight(m_pTransfer->displayHeight(g_pFileTransferWindow->lineSpacing()));
-}
-*/
 
 KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,KviFrame * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"file transfer window",0) , KviModuleExtension(d)
@@ -262,9 +254,11 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	m_pItemDelegate = new KviFileTransferItemDelegate(m_pTableWidget);
 	m_pTableWidget->setItemDelegate(m_pItemDelegate);
 
+/*
+ * TODO
 	KviDynamicToolTip * tp = new KviDynamicToolTip(m_pTableWidget->viewport());
-	//TODO
-	//connect(tp,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+	connect(tp,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+*/
 
 	QFontMetrics fm(font());
 	m_iLineSpacing = fm.lineSpacing();
@@ -364,8 +358,11 @@ void KviFileTransferWindow::transferUnregistering(KviFileTransfer * t)
 {
 	KviFileTransferItem * it = findItem(t);
 	//t->setDisplayItem(0);
-	if(it)delete it;
-    it = 0;
+	if(it)
+	{
+		delete it;
+		it = 0;
+	}
 }
 
 void KviFileTransferWindow::doubleClicked(KviFileTransferItem *it,const QPoint &)
@@ -781,7 +778,7 @@ void KviFileTransferWindow::clearTerminated()
 	KviFileTransferManager::instance()->killTerminatedTransfers();
 }
 
-void KviFileTransferWindow::getBaseLogFileName(KviStr &buffer)
+void KviFileTransferWindow::getBaseLogFileName(QString &buffer)
 {
 	buffer.sprintf("FILETRANSFER");
 }
@@ -791,7 +788,7 @@ QPixmap * KviFileTransferWindow::myIconPtr()
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_FILETRANSFER);
 }
 
-void KviFileTransferWindow::resizeEvent(QResizeEvent *e)
+void KviFileTransferWindow::resizeEvent(QResizeEvent *)
 {
 	m_pSplitter->setGeometry(0,0,width(),height());
 }

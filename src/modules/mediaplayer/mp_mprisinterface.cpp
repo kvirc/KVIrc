@@ -70,7 +70,7 @@ KviMPRISInterface::~KviMPRISInterface()
 {
 }
 
-int KviMPRISInterface::detect(bool bStart)
+int KviMPRISInterface::detect(bool)
 {
 	QDBusReply<QStringList> reply = QDBusConnection::sessionBus().interface()->registeredServiceNames();
 	if (!reply.isValid())		/* something fishy with dbus, it won't work */

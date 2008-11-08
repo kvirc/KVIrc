@@ -179,10 +179,10 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_groupbox)
 
 KVSO_END_CONSTRUCTOR(KviKvsObject_groupbox)
 
-bool KviKvsObject_groupbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
+bool KviKvsObject_groupbox::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	KviTalGroupBox *groupbox=new KviTalGroupBox(getName(),parentScriptWidget());
-	
+
 	groupbox->setOrientation(Qt::Horizontal);
 	groupbox->setObjectName(getName());
 	setObject(groupbox,true);

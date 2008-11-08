@@ -48,7 +48,7 @@ public:
 		: QItemDelegate(pWidget) {};
 	~KviChannelTreeWidgetItemDelegate(){};
 	void paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-	
+
 };
 class KviChannelTreeWidgetItemData
 {
@@ -109,7 +109,7 @@ protected:
 	virtual void fillCaptionBuffers();
 	virtual void applyOptions();
 	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(KviStr &buffer);
+	virtual void getBaseLogFileName(QString &buffer);
 protected slots:
 	void flush();
 	void itemDoubleClicked(QTreeWidgetItem *it, int);

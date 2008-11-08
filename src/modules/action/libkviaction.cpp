@@ -280,36 +280,36 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		Specifies that the action needs an IRC context to be executed.
 		When the current window does not belong to an IRC context
 		the action is automatically disabled
-		
+
 		!sw: -c | --bind-to-connection
 		Specifies that the action needs an IRC connection to be executed.
 		When the current window has no associated IRC connection
 		the action is automatically disabled.
 		This switch implies -i.
-		
+
 		!sw: -l | --enable-at-login
 		Specifies that the action needs to be enabled at login time, that is
 		when a link to the server has been estabilished but the login
 		operations haven't been carried out yet (and thus there is no real IRC connection).
 		This switch requires -c to work.
-		
+
 		!sw: -w=<window_types> | --window-types=<window_type>
 		Causes the action to be enabled only when the active window
 		is one of the specified types. <window_types> may be any combination
 		of the letters 'q' (query), 'c' (channel), 'x' (console), 'd' (dccchat).
 		If this switch is omitted then the action is enabled in all the windows.[br]
-		
+
 		!sw: -s | --selected-only
 		Specifies that the action will be activated only if the active window
 		has selected users in the userlist. This switch requires -w with a combination
 		of flags 'q','c' and 'x' (it doesn't work for dcc chat).
-		
+
 		!sw: -t=<category> | --category=<category>
 		Causes the action to belong to the specified category.
 		<category> can be one of "irc","scripting","settings","gui","channel","tools" and "generic".
 		If this switch is omitted the "generic" category is automatically assumed.
 		The actions failing in the "tools" category will appear in the "Tools" KVIrc menu too.
-		
+
 		!sw: -k=<key sequence> | --key-sequence=<key sequence>
 		Specifies that the action will be activated also by the <key sequence>
 		which is a string formed from up to four keyboard codes separated by
@@ -356,7 +356,7 @@ static bool action_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 		[cmd]action.destroy[/cmd], [cmd]action.trigger[/cmd]
 	@examples:
 		[example]
-		
+
 		[/example]
 */
 
@@ -381,14 +381,14 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 	QString szCategory,szWindows,szKeySequence;
 
 	int iFlags = 0;
-	
+
 	if(c->switches()->find('i',"bind-to-context"))iFlags |= KviAction::NeedsContext;
 	if(c->switches()->find('c',"bind-to-connection"))iFlags |= KviAction::NeedsConnection | KviAction::NeedsContext;
 	if(c->switches()->find('l',"enable-at-login"))
 	{
 		if(iFlags & KviAction::NeedsConnection)
 			iFlags |= KviAction::EnableAtLogin;
-		else 
+		else
 			c->warning(__tr2qs("The switch -l requires -c"));
 	}
 	c->switches()->getAsStringIfExisting('t',"category",szCategory);
@@ -405,11 +405,11 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 	{
 		if(iFlags & (KviAction::WindowChannel | KviAction::WindowConsole | KviAction::WindowQuery))
 			iFlags |= KviAction::WindowOnlyIfUsersSelected;
-		else 
+		else
 			c->warning(__tr2qs("The switch -s requires -w with a combination of flags 'c','x' and 'q'"));
 	}
 	c->switches()->getAsStringIfExisting('k',"key-sequence",szKeySequence);
-	
+
 
 	KviAction * old = KviActionManager::instance()->getAction(szName);
 	if(old)
@@ -461,7 +461,7 @@ static bool action_kvs_cmd_create(KviKvsModuleCallbackCommandCall * c)
 */
 
 static bool action_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("action_name",KVS_PT_NONEMPTYSTRING,0,szName)
@@ -486,7 +486,7 @@ static bool action_kvs_fnc_exists(KviKvsModuleFunctionCall * c)
 */
 
 static bool action_kvs_fnc_isEnabled(KviKvsModuleFunctionCall * c)
-{ 
+{
 	QString szName;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("action_name",KVS_PT_NONEMPTYSTRING,0,szName)
@@ -516,7 +516,7 @@ static bool action_module_init(KviModule *m)
 	return true;
 }
 
-static bool action_module_cleanup(KviModule *m)
+static bool action_module_cleanup(KviModule *)
 {
 	return true;
 }

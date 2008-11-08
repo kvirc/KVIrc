@@ -546,9 +546,6 @@ void KviNotifierWindowTabs::draw(QPainter * p)
 
 	int closeIcon_X = m_rct.width() - m_rctCloseTabIcon.width();
 	int nextIcon_X = closeIcon_X  - m_pixIconTabNext_out.width();
-	int prevIcon_X = m_rct.x();
-
-	int tmpTabsWidth = 0;
 
 	m_pPainter->drawPixmap(0,0,m_pixSX);
 	m_pPainter->drawPixmap(m_rct.width()-m_pixDX.width(),0,m_pixDX);

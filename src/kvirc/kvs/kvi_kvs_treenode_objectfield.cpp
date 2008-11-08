@@ -53,7 +53,7 @@ bool KviKvsTreeNodeObjectField::canEvaluateInObjectScope()
 	return true;
 }
 
-bool KviKvsTreeNodeObjectField::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer)
+bool KviKvsTreeNodeObjectField::evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext *,KviKvsVariant * pBuffer)
 {
 	KviKvsVariant * v = o->dataContainer()->find(m_szIdentifier);
 	if(v)pBuffer->copyFrom(v);
@@ -61,7 +61,7 @@ bool KviKvsTreeNodeObjectField::evaluateReadOnlyInObjectScope(KviKvsObject * o,K
 	return true;
 }
 
-KviKvsRWEvaluationResult * KviKvsTreeNodeObjectField::evaluateReadWriteInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c)
+KviKvsRWEvaluationResult * KviKvsTreeNodeObjectField::evaluateReadWriteInObjectScope(KviKvsObject * o,KviKvsRunTimeContext *)
 {
 	return new KviKvsHashElement(0,o->dataContainer()->get(m_szIdentifier),o->dataContainer(),m_szIdentifier);
 }

@@ -217,7 +217,7 @@ KVSO_BEGIN_DESTRUCTOR(KviKvsObject_lineedit)
 KVSO_END_CONSTRUCTOR(KviKvsObject_lineedit)
 
 
-bool KviKvsObject_lineedit::init(KviKvsRunTimeContext * pContext,KviKvsVariantList * pParams)
+bool KviKvsObject_lineedit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QLineEdit)
 	connect(widget(),SIGNAL(returnPressed()),this,SLOT(slotreturnPressed()));
@@ -228,14 +228,14 @@ bool KviKvsObject_lineedit::init(KviKvsRunTimeContext * pContext,KviKvsVariantLi
 
 KVSO_CLASS_FUNCTION(lineedit,text)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setString(((QLineEdit *)widget())->text());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lineedit,setText)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
@@ -245,7 +245,7 @@ KVSO_CLASS_FUNCTION(lineedit,setText)
 }
 KVSO_CLASS_FUNCTION(lineedit,setInputValidator)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szReg;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("reg_expression",KVS_PT_STRING,0,szReg)
@@ -255,14 +255,14 @@ KVSO_CLASS_FUNCTION(lineedit,setInputValidator)
 }
 KVSO_CLASS_FUNCTION(lineedit,maxLength)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QLineEdit *)widget())->maxLength());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lineedit,setMaxLength)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iMaxlen;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("maxlen",KVS_PT_UNSIGNEDINTEGER,0,iMaxlen)
@@ -273,14 +273,14 @@ KVSO_CLASS_FUNCTION(lineedit,setMaxLength)
 
 KVSO_CLASS_FUNCTION(lineedit,frame)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(((QLineEdit *)widget())->hasFrame());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lineedit,setFrame)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	bool bFrame;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bframe",KVS_PT_BOOL,0,bFrame)
@@ -291,14 +291,14 @@ KVSO_CLASS_FUNCTION(lineedit,setFrame)
 
 KVSO_CLASS_FUNCTION(lineedit,cursorPosition)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setInteger(((QLineEdit *)widget())->cursorPosition());
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lineedit,setCursorPosition)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t iPos;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("position",KVS_PT_UNSIGNEDINTEGER,0,iPos)
@@ -309,14 +309,14 @@ KVSO_CLASS_FUNCTION(lineedit,setCursorPosition)
 
 KVSO_CLASS_FUNCTION(lineedit,selectAll)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	((QLineEdit *)widget())->selectAll();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lineedit,setSelection)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_uint_t uStart,uLen;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("start",KVS_PT_UNSIGNEDINTEGER,0,uStart)
@@ -328,28 +328,28 @@ KVSO_CLASS_FUNCTION(lineedit,setSelection)
 
 KVSO_CLASS_FUNCTION(lineedit,copy)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	((QLineEdit *)widget())->copy();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lineedit,cut)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	((QLineEdit *)widget())->cut();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lineedit,paste)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	((QLineEdit *)widget())->paste();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(lineedit,echoMode)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	int mode = ((QLineEdit *)widget())->echoMode();
 	QString szEchomode="";
 	for(unsigned int i = 0; i < mode_num; i++)
@@ -366,7 +366,7 @@ KVSO_CLASS_FUNCTION(lineedit,echoMode)
 
 KVSO_CLASS_FUNCTION(lineedit,setEchoMode)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("mode",KVS_PT_STRING,0,szMode)
@@ -386,7 +386,7 @@ KVSO_CLASS_FUNCTION(lineedit,setEchoMode)
 
 KVSO_CLASS_FUNCTION(lineedit,clear)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	((QLineEdit *)widget())->clear();
 	return true;
 }
@@ -394,7 +394,7 @@ KVSO_CLASS_FUNCTION(lineedit,clear)
 //-| Grifisx & Noldor |-Start:
 KVSO_CLASS_FUNCTION(lineedit,dragAndDrop)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
@@ -405,7 +405,7 @@ KVSO_CLASS_FUNCTION(lineedit,dragAndDrop)
 
 KVSO_CLASS_FUNCTION(lineedit,setReadOnly)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bReadonly",KVS_PT_BOOL,0,bEnabled)
@@ -416,7 +416,7 @@ KVSO_CLASS_FUNCTION(lineedit,setReadOnly)
 
 KVSO_CLASS_FUNCTION(lineedit,setInputMask)
 {
-	CHECK_INTERNAL_POINTER(widget())	
+	CHECK_INTERNAL_POINTER(widget())
 	QString szMask;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("mask",KVS_PT_STRING,0,szMask)

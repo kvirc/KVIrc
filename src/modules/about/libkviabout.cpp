@@ -72,14 +72,14 @@ static bool about_module_init(KviModule * m)
 	return true;
 }
 
-static bool about_module_cleanup(KviModule *m)
+static bool about_module_cleanup(KviModule *)
 {
 	if(g_pAboutDialog)delete g_pAboutDialog;
 	g_pAboutDialog = 0;
 	return true;
 }
 
-static bool about_module_can_unload(KviModule * m)
+static bool about_module_can_unload(KviModule *)
 {
 	return (!g_pAboutDialog);
 }

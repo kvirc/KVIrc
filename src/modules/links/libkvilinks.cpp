@@ -86,7 +86,7 @@ static bool links_module_init(KviModule * m)
 	return true;
 }
 
-static bool links_module_cleanup(KviModule *m)
+static bool links_module_cleanup(KviModule *)
 {
 	while(g_pLinksWindowList->first())g_pLinksWindowList->first()->die();
 	delete g_pLinksWindowList;
@@ -94,7 +94,7 @@ static bool links_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool links_module_can_unload(KviModule *m)
+static bool links_module_can_unload(KviModule *)
 {
 	return (g_pLinksWindowList->isEmpty());
 }

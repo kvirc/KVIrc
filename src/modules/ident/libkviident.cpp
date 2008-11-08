@@ -278,7 +278,7 @@ void KviIdentDaemon::run()
 			m_sock6 = KVI_INVALID_SOCKET;
 			goto ipv6_failure;
 		}
-	
+
 		if(!kvi_socket_bind(m_sock6,sa6.socketAddress(),((int)(sa6.addressLength()))))
 		{
 			postMessage(__tr("Can't start the ident service on IPv6 : bind() failed"),0);
@@ -287,7 +287,7 @@ void KviIdentDaemon::run()
 			goto ipv6_failure;
 
 		}
-	
+
 		if(!kvi_socket_listen(m_sock6,128))
 		{
 			postMessage(__tr("Can't start the ident service on IPv6 : listen() failed"),0);
@@ -444,16 +444,16 @@ ipv6_failure:
 
 			for(r = m_pRequestList->first();r;r = m_pRequestList->next())
 			{
-	
+
 				int idx = r->m_szData.findFirstIdx('\n');
-	
+
 				if(idx != -1)
 				{
 					// Ok...parse the request
 					KviStr szReq = r->m_szData.left(idx);
 					r->m_szData.cutLeft(idx + 1);
 					szReq.trimmed();
-	
+
 					if(szReq.hasData())
 					{
 						postMessage(__tr("Identd processing request"),r,szReq.ptr());
@@ -466,16 +466,16 @@ ipv6_failure:
 							KviStr reply(KviStr::Format,"%s : USERID : UNIX : %s\r\n",szReq.ptr(),m_szUser.ptr());
 							kvi_socket_write(r->m_sock,reply.ptr(),reply.len());
 						}
-	
+
 						dying.append(r);
-	
+
 					} else {
-	
+
 						postMessage(__tr("Empty request (EOT ?)"),r,szReq.ptr());
-	
+
 						dying.append(r);
 					}
-	
+
 				} else {
 					//				debug("Data is : (%s)",r->m_szData.ptr());
 					if(r->m_szData.len() > 1024)
@@ -485,7 +485,7 @@ ipv6_failure:
 						postMessage(__tr("Dropping connection (request too long)"),r);
 					}
 				}
-	
+
 			}
 		}
 
@@ -544,7 +544,7 @@ exit_thread:
 		any other ident daemon running on your machine.[br]
 */
 
-static bool ident_kvs_cmd_start(KviKvsModuleCommandCall * c)
+static bool ident_kvs_cmd_start(KviKvsModuleCommandCall *)
 {
 	if(!g_iIdentDaemonRunningUsers)
 		startIdentService();
@@ -568,7 +568,7 @@ static bool ident_kvs_cmd_start(KviKvsModuleCommandCall * c)
 		[cmd]ident.start[/cmd]
 */
 
-static bool ident_kvs_cmd_stop(KviKvsModuleCommandCall * c)
+static bool ident_kvs_cmd_stop(KviKvsModuleCommandCall *)
 {
 	if(g_iIdentDaemonRunningUsers) g_iIdentDaemonRunningUsers--;
 	if(!g_iIdentDaemonRunningUsers) stopIdentService();
@@ -583,7 +583,7 @@ static bool ident_module_init(KviModule *m)
 	return true;
 }
 
-static bool ident_module_cleanup(KviModule *m)
+static bool ident_module_cleanup(KviModule *)
 {
 	stopIdentService();
 	delete g_pIdentSentinel;
@@ -592,7 +592,7 @@ static bool ident_module_cleanup(KviModule *m)
 	return true;
 }
 
-static bool ident_module_can_unload(KviModule *m)
+static bool ident_module_can_unload(KviModule *)
 {
 	return !g_pIdentDaemon;
 }

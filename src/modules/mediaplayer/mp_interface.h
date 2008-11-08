@@ -68,9 +68,9 @@ public:
 	virtual bool stop() = 0;
 	// pause playback now (do NOT toggle pause, just pause), return false only on communication failure
 	virtual bool pause() = 0;
-	
+
 	// current media related
-	
+
 	// currently played media: it should include AT least the title
 	// but may also include other informations.
 	// this string MUST be non-empty when the player is playing something.
@@ -83,7 +83,7 @@ public:
 	// empty if player is not playing (or in the tragic case that the player
 	// can't determine the url).
 	virtual QString mrl() = 0;
-	
+
 	// optional interface
 
 	// this should play the specified mrl
@@ -157,7 +157,7 @@ public:
 	virtual int getPlayListPos();
 	// set the position in the playlist
 	virtual bool setPlayListPos(int &iPos);
-	// return the list's length 
+	// return the list's length
 	virtual int getListLength();
 	// return the Eq(number) value
 	virtual int getEqData(int &i_val);

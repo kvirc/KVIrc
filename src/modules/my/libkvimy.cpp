@@ -50,7 +50,7 @@ Idle* g_pIdle;
 	{ \
 		wnd = g_pApp->findConsole(uiWnd); \
 		if(!wnd)c->warning(__tr2qs("No such irc context (%d)"),uiWnd); \
-	} 	
+	}
 /*
 	@doc: my.nick
 	@type:
@@ -95,7 +95,7 @@ static bool my_kvs_fnc_nick(KviKvsModuleFunctionCall * c)
 		Starts a global idle hook. Allows to detect a global user idle time
 */
 
-static bool my_kvs_cmd_startIdleTimer(KviKvsModuleCommandCall * c)
+static bool my_kvs_cmd_startIdleTimer(KviKvsModuleCommandCall *)
 {
 	if(!g_pIdle)
 		g_pIdle = new Idle();
@@ -117,7 +117,7 @@ static bool my_kvs_cmd_startIdleTimer(KviKvsModuleCommandCall * c)
 		Stops a global idle hook. Allows to detect a global user idle time
 */
 
-static bool my_kvs_cmd_stopIdleTimer(KviKvsModuleCommandCall * c)
+static bool my_kvs_cmd_stopIdleTimer(KviKvsModuleCommandCall *)
 {
 	if(!g_pIdle) return true;
 	g_pIdle->stop();
@@ -141,7 +141,7 @@ static bool my_kvs_cmd_stopIdleTimer(KviKvsModuleCommandCall * c)
 
 static bool my_kvs_fnc_globalIdle(KviKvsModuleFunctionCall * c)
 {
-	if(g_pIdle) 
+	if(g_pIdle)
 	{
 		c->returnValue()->setInteger(g_pIdle->secondsIdle());
 	} else {
@@ -286,7 +286,7 @@ static bool my_kvs_fnc_ip(KviKvsModuleFunctionCall * c)
 
 static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 {
-	
+
 	GET_KVS_CONSOLE
 	if(wnd)
 	{
@@ -316,7 +316,7 @@ static bool my_kvs_fnc_serverIsIPV6(KviKvsModuleFunctionCall * c)
 
 static bool my_kvs_fnc_serverIsSSL(KviKvsModuleFunctionCall * c)
 {
-	
+
 	GET_KVS_CONSOLE
 	if(wnd)
 	{
@@ -398,13 +398,14 @@ static bool my_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"umode",my_kvs_fnc_umode);
 	KVSM_REGISTER_FUNCTION(m,"serverIsSSL",my_kvs_fnc_serverIsSSL);
 	KVSM_REGISTER_FUNCTION(m,"serverIsIPV6",my_kvs_fnc_serverIsIPV6);
+	KVSM_REGISTER_FUNCTION(m,"globalIdle",my_kvs_fnc_globalIdle);
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"stopIdleTimer",my_kvs_cmd_stopIdleTimer);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"startIdleTimer",my_kvs_cmd_startIdleTimer);
 	return true;
 }
 
-static bool my_module_cleanup(KviModule *m)
+static bool my_module_cleanup(KviModule *)
 {
 	if(g_pIdle)
 		delete g_pIdle;
