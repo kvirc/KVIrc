@@ -294,9 +294,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pToolTip = new KviIrcViewToolTip(this);
 
 	// Create the scroll bar
-/*int minValue, int maxValue, int lineStep, int pageStep,
-                int value, Qt::Orientation, QWidget *parent=0, const char* name = 0);
-*/
 	m_pScrollBar = new QScrollBar(Qt::Vertical,this);
 	m_pScrollBar->setMaximum(0);
 	m_pScrollBar->setMinimum(0);
@@ -304,6 +301,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pScrollBar->setPageStep(10);
 	m_pScrollBar->setValue(0);
 	m_pScrollBar->setObjectName("irc_view_scrollbar");
+	m_pScrollBar->setAutoFillBackground(true);
 	m_pScrollBar->setTracking(true);
 	m_pScrollBar->show();
 	m_pScrollBar->setFocusProxy(this);
@@ -311,6 +309,7 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 
 	m_pToolsButton = new QToolButton(this);
 	m_pToolsButton->setObjectName("btntools");
+	m_pToolsButton->setAutoFillBackground(true);
 
 	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
 	m_pToolsButton->setAutoRaise(true);
