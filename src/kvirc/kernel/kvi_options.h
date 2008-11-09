@@ -312,17 +312,16 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseSystemUrlHandlers 218 /* Windoze only*/
 #define KviOption_boolScaleAvatarsOnLoad 219
 #define KviOption_boolNotifierFading 220 /* interface::notifier */
-#define KviOption_boolUseAntiAliasing 221 /* qt4 only! */
-#define KviOption_boolPickRandomIpAddressForRoundRobinServers 222
-#define KviOption_boolPrependAvatarInfoToRealname 223
-#define KviOption_boolEnableAnimatedAvatars 224
-#define KviOption_boolEnableAnimatedSmiles 225
-#define KviOption_boolPlaceNickWithNonAlphaCharsAtEnd 226
-#define KviOption_boolUseStartTlsIfAvailable 227
-#define KviOption_boolPasteLastLogOnChannelJoin 228                /* channel */
-#define KviOption_boolPasteLastLogOnQueryJoin 229                  /* query */
+#define KviOption_boolPickRandomIpAddressForRoundRobinServers 221
+#define KviOption_boolPrependAvatarInfoToRealname 222
+#define KviOption_boolEnableAnimatedAvatars 223
+#define KviOption_boolEnableAnimatedSmiles 224
+#define KviOption_boolPlaceNickWithNonAlphaCharsAtEnd 225
+#define KviOption_boolUseStartTlsIfAvailable 226
+#define KviOption_boolPasteLastLogOnChannelJoin 227                /* channel */
+#define KviOption_boolPasteLastLogOnQueryJoin 228                  /* query */
 
-#define KVI_NUM_BOOL_OPTIONS 230
+#define KVI_NUM_BOOL_OPTIONS 229
 
 
 
@@ -674,8 +673,8 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 	#define START_TABLE_NORMAL_ROW "<tr><td>"
 
 	#define SET_ANTI_ALIASING(p) \
-	(p).setRenderHint(QPainter::Antialiasing, KVI_OPTION_BOOL(KviOption_boolUseAntiAliasing)); \
-	(p).setRenderHint(QPainter::TextAntialiasing, KVI_OPTION_BOOL(KviOption_boolUseAntiAliasing));
+	(p).setRenderHint(QPainter::Antialiasing); \
+	(p).setRenderHint(QPainter::TextAntialiasing);
 
 
 #if defined(_KVI_OPTIONS_CPP_) || defined(_WANT_OPTION_FLAGS_)
