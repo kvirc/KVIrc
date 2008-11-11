@@ -1972,7 +1972,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[/example]
 
 		[p]
-		You may have already noticed that the [fnc]$key[/fnc]() function returns
+		You may have already noticed that the [fnc]$keys[/fnc]() function returns
 		the array of the hash keys: it is useful to iterate over the hash items.
 		[/p]
 
