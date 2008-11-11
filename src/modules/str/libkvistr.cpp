@@ -2034,7 +2034,7 @@ static bool str_kvs_fnc_printf(KviKvsModuleFunctionCall * c)
 						c->warning(__tr2qs("Missing argument for ?d escape sequence, 0 assumed"));
 						argValue = 0;
 					}
-					argValue = 0;
+
 					if(argValue < 0)
 					{ //negative integer
 						*p++ = '-';
