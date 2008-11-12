@@ -767,8 +767,7 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 
 	connect(m_pFindLineEdit,SIGNAL(returnPressed()),m_pEditor,SLOT(slotFind()));
 	connect(m_pFindLineEdit,SIGNAL(returnPressed()),this,SLOT(slotFind()));
-	connect(m_pEditor,SIGNAL(keyPressed()),this,SLOT(updateRowColLabel()));
-	connect(m_pEditor,SIGNAL(textChanged()),this,SLOT(updateRowColLabel()));
+	connect(m_pEditor,SIGNAL(cursorPositionChanged()),this,SLOT(updateRowColLabel()));
 	connect(m_pEditor,SIGNAL(selectionChanged()),this,SLOT(updateRowColLabel()));
 	m_lastCursorPos = 0;
 }
@@ -927,7 +926,6 @@ void KviScriptEditorImplementation::updateRowColLabel()
 {
 	if(m_lastCursorPos==m_pEditor->textCursor().position())
 		return;
-
 	int iRow = m_pEditor->textCursor().blockNumber();
 	int iCol = m_pEditor->textCursor().columnNumber();
 	QString szTmp;

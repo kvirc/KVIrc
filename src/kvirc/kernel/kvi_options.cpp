@@ -1237,7 +1237,6 @@ void KviApp::listAvailableOptions(KviWindow *wnd)
 }
 
 //using namespace KviStringConversion;
-
 bool KviApp::getOptionString(const QString &optName,QString &buffer)
 {
 
@@ -1327,8 +1326,46 @@ void KviApp::optionResetUpdate(int flags)
 		g_pApp->buildRecentChannels();
 	}
 }
-
 bool KviApp::setOptionValue(const QString &optName,const QString &value)
+{
+	if (!setCommonOptionValue(optName,value)) return false;
+	if(KviQString::equalCI(optName,"stringlistRecentChannels"))
+	{
+		buildRecentChannels();
+		return true;
+	}
+	// The pixmap options have special treating
+	if(KviQString::equalCIN(optName,KVI_PIXMAP_OPTIONS_PREFIX,KVI_PIXMAP_OPTIONS_PREFIX_LEN))
+	{
+		// We lookup the image path (so we allow also relative paths for this option type)
+		QString szVal = value;
+		szVal.trimmed();
+		QString szBuffer;
+		if(!szVal.isEmpty())
+		{
+			findImage(szBuffer,szVal);
+		} else {
+			szBuffer = szVal;
+		}
+
+		for(int i=0;i < KVI_NUM_PIXMAP_OPTIONS;i++)
+		{
+			if(KviQString::equalCI(optName,g_pixmapOptionsTable[i].name))
+			{
+				if(!KviStringConversion::fromString(szBuffer,g_pixmapOptionsTable[i].option))return false;
+				optionResetUpdate(g_pixmapOptionsTable[i].flags);
+				return true;
+			}
+		}
+		return false;
+	}
+
+	return false;
+
+
+}
+
+bool KviApp::setCommonOptionValue(const QString &optName,const QString &value)
 {
 
 	#define SET_OPTION_VALUE(__numOpt,__table,__prefix,__prefixLen) \
@@ -1358,35 +1395,6 @@ bool KviApp::setOptionValue(const QString &optName,const QString &value)
 	SET_OPTION_VALUE(KVI_NUM_FONT_OPTIONS,g_fontOptionsTable,KVI_FONT_OPTIONS_PREFIX,KVI_FONT_OPTIONS_PREFIX_LEN)
 	SET_OPTION_VALUE(KVI_NUM_MSGTYPE_OPTIONS,g_msgtypeOptionsTable,KVI_MSGTYPE_OPTIONS_PREFIX,KVI_MSGTYPE_OPTIONS_PREFIX_LEN)
 
-	if(KviQString::equalCI(optName,"stringlistRecentChannels"))
-		buildRecentChannels();
-	// The pixmap options have special treating
-	if(KviQString::equalCIN(optName,KVI_PIXMAP_OPTIONS_PREFIX,KVI_PIXMAP_OPTIONS_PREFIX_LEN))
-	{
-		// We lookup the image path (so we allow also relative paths for this option type)
-		QString szVal = value;
-		szVal.trimmed();
-		QString szBuffer;
-		if(!szVal.isEmpty())
-		{
-			findImage(szBuffer,szVal);
-		} else {
-			szBuffer = szVal;
-		}
-
-		for(int i=0;i < KVI_NUM_PIXMAP_OPTIONS;i++)
-		{
-			if(KviQString::equalCI(optName,g_pixmapOptionsTable[i].name))
-			{
-				if(!KviStringConversion::fromString(szBuffer,g_pixmapOptionsTable[i].option))return false;
-				optionResetUpdate(g_pixmapOptionsTable[i].flags);
-				return true;
-			}
-		}
-		return false;
-	}
-
-	return false;
-
 	#undef SET_OPTION_VALUE
+	return true;
 }

@@ -626,6 +626,8 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 
 KviKvsObject::~KviKvsObject()
 {
+	debug("deleting object %s",this->m_szName.toUtf8().data());
+	callFunction(this,"destructor");
 	m_bInDelayedDeath = true;
 	while(m_pChildList->first())delete m_pChildList->first();
 	delete m_pChildList;
@@ -1100,21 +1102,21 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	int idx = m_pObject->metaObject()->indexOfProperty(szName.toUtf8().data());
 	if(idx < 0)
 	{
-		c->warning(__tr2qs_ctx("No Qt property named \"%Q\" for object named \"%Q\" of class %Q","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("No Qt property named '%Q' for object named '%Q' of class '%Q'","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
 	QMetaProperty prop = m_pObject->metaObject()->property(idx);
 	const QMetaProperty * p = &prop;
 	if(!p)
 	{
-		c->warning(__tr2qs_ctx("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
 
 	QVariant vv = m_pObject->property(szName.toUtf8().data());
 	if(!vv.isValid())
 	{
-		c->warning(__tr2qs_ctx("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q'of class '%Q': the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		return true;
 	}
 

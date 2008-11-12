@@ -29,7 +29,7 @@
 #include "class_treewidgetitem.h"
 #include "object_macros.h"
 
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 class KviKvsObject_treewidget : public KviKvsObject_widget
 {
@@ -39,7 +39,7 @@ public:
 
 public:
 	QWidget * widget() { return (QWidget *)object(); };
-	void fileDropped(QString &,KviTalTreeWidgetItem *);
+	void fileDropped(QString &,QTreeWidgetItem *);
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
@@ -47,6 +47,7 @@ protected:
 	bool setColumnText(KviKvsObjectFunctionCall *c);
 	bool takeItem(KviKvsObjectFunctionCall *c);
 	bool setSorting(KviKvsObjectFunctionCall *c);
+	bool setSortingEnabled(KviKvsObjectFunctionCall *c);
 	bool setRootIsDecorated(KviKvsObjectFunctionCall *c);
 	bool clear(KviKvsObjectFunctionCall *c);
 	bool setAllColumnsShowFocus(KviKvsObjectFunctionCall *c);
@@ -70,7 +71,7 @@ protected:
 	bool setHeaderLabels(KviKvsObjectFunctionCall *c);
 	bool setColumnCount(KviKvsObjectFunctionCall *c);
 protected slots:
-	void slotClicked(KviTalTreeWidgetItem *,int);
+	void slotClicked(QTreeWidgetItem *,int);
 	void slotCustomContextMenuRequested(const QPoint &pnt);
 	void slotSelectionChanged();
 	void slotCurrentChanged(QTreeWidgetItem *,QTreeWidgetItem *);

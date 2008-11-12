@@ -112,26 +112,29 @@ bool KviKvsObject_vbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *
 
 KVSO_CLASS_FUNCTION(vbox,setMargin)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iMargin;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("margin",KVS_PT_INT,0,iMargin)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((KviTalVBox *)widget())->setMargin(iMargin);
+	((KviTalVBox *)widget())->setMargin(iMargin);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(vbox,setSpacing)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iSpacing;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("spacing",KVS_PT_INT,0,iSpacing)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) ((KviTalVBox *)widget())->setSpacing(iSpacing);
+	((KviTalVBox *)widget())->setSpacing(iSpacing);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(vbox,setStretchFactor)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
 	kvs_uint_t uStretch;
@@ -140,11 +143,11 @@ KVSO_CLASS_FUNCTION(vbox,setStretchFactor)
 		KVSO_PARAMETER("stretch",KVS_PT_UNSIGNEDINTEGER,0,uStretch)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!widget())return true;
+	return true;
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	if(((KviKvsObject_widget *)pObject)->widget()->parentWidget() != widget())
 	{
-		c->warning(__tr2qs("The widget must be a child of this vbox"));
+		c->warning(__tr2qs_ctx("The widget must be a child of this vbox","objects"));
 		return true;
 	}
 	((KviTalVBox *)widget())->setStretchFactor(((QWidget *)(pObject->object())),uStretch);
@@ -152,16 +155,17 @@ KVSO_CLASS_FUNCTION(vbox,setStretchFactor)
 }
 KVSO_CLASS_FUNCTION(vbox,addStretch)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iStretch;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("stretch",KVS_PT_INT,0,iStretch)
 	KVSO_PARAMETERS_END(c)
-	
-	if (widget())((KviTalVBox *)widget())->addStretch(iStretch);
+	((KviTalVBox *)widget())->addStretch(iStretch);
 	return true;
 }
 KVSO_CLASS_FUNCTION(vbox,setAlignment)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QStringList alignment;
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
@@ -170,11 +174,10 @@ KVSO_CLASS_FUNCTION(vbox,setAlignment)
 		KVSO_PARAMETER("alignment",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,alignment)
 	KVSO_PARAMETERS_END(c)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!widget())return true;
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	if(((KviKvsObject_widget *)pObject)->widget()->parentWidget() != widget())
 	{
-		c->warning(__tr2qs("The widget must be a child of this hbox"));
+		c->warning(__tr2qs_ctx("The widget must be a child of this hbox","objects"));
 		return true;
 	}
 
@@ -194,7 +197,7 @@ KVSO_CLASS_FUNCTION(vbox,setAlignment)
 			if(align)
 				sum = sum | align;
 			else
-				c->warning(__tr2qs("Unknown alignment: '%Q'"),&(*it));
+				c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objects"),&(*it));
 			
 		}
 	if (widget()) ((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);

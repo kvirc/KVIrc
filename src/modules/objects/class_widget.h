@@ -119,7 +119,6 @@ protected:
 	bool function_windowTitle(KviKvsObjectFunctionCall *c);
 	bool function_x(KviKvsObjectFunctionCall *);
 	bool function_y(KviKvsObjectFunctionCall *);
-
 #ifdef COMPILE_WEBKIT_SUPPORT
 	bool function_setWebView(KviKvsObjectFunctionCall *c);
 #endif

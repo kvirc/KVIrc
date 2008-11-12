@@ -29,7 +29,8 @@
 #include "kvi_debug.h"
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
+
 
 // FIXME: fix the doc (function QT4 renamed)
 // OLD:
@@ -75,10 +76,11 @@
 		!fn: $addColumn(<text_label:string> <width:unsigned integer>)
 		Adds a width pixels wide column with the column header label to the list view.
 
-		!fn: $setSorting(<column:integer>,<bAscending:boolean>)
-		Sets the list view to be sorted by column column in ascending order if ascending is 1 or descending order if it is FALSE.
-		If column is -1, sorting is disabled and the user cannot sort columns by clicking on the column headers
-
+		!fn: $setSorting(<column:integer>,<sort_order:string>)
+		Sets the list view to be sorted by column in ascending order if sort_order is "ascending" or descending order if it is "descending".
+		!fn: $setSortingEnabled(<bEnabled:boolean>)
+		If <bEnabled> is true, user sorting is enabled for the tree. The default value is false.
+		In order to avoid performance issues, it is recommended that sorting is enabled after inserting the items into the tree.
 		!fn: $hideListViewHeader()
 		Hide the treewidget column header.
 
@@ -188,6 +190,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setColumnCount)
 
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setSorting)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setSortingEnabled)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setRootIsDecorated)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setAllColumnsShowFocus)
 	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,clear)
@@ -243,7 +246,7 @@ bool KviKvsObject_treewidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	setObject(new KviKvsTreeWidget(parentScriptWidget(),getName().toUtf8().data(),this),true);
 
 	// hack for compatibility with "old" addColumn method;
-	((KviTalTreeWidget*) widget())->setColumnCount(0);
+	((QTreeWidget*) widget())->setColumnCount(0);
 
 	connect(widget(),SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(slotClicked(QTreeWidgetItem *,int)));
 	connect(widget(),SIGNAL(itemSelectionChanged()),this,SLOT(slotSelectionChanged()));
@@ -268,7 +271,7 @@ KVSO_CLASS_FUNCTION(treewidget,setHeaderLabels)
 		KVSO_PARAMETER("labels",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,columns)
 	KVSO_PARAMETERS_END(c)
 	if (widget()){
-		((KviTalTreeWidget *)object())->setHeaderLabels(columns);
+		((QTreeWidget *)object())->setHeaderLabels(columns);
 	}
     return true;
 }
@@ -282,7 +285,7 @@ KVSO_CLASS_FUNCTION(treewidget,setColumnText)
 		KVSO_PARAMETER("column",KVS_PT_INT,0,iCol)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
 	KVSO_PARAMETERS_END(c)
-	QTreeWidgetItem *header=((KviTalTreeWidget *)widget())->headerItem();
+	QTreeWidgetItem *header=((QTreeWidget *)widget())->headerItem();
 	header->setText(iCol,szLabel);
 	return true;
 }
@@ -296,12 +299,12 @@ KVSO_CLASS_FUNCTION(treewidget,addColumn)
 		KVSO_PARAMETER("label",KVS_PT_STRING,0,szLabel)
 		KVSO_PARAMETER("width",KVS_PT_INT,0,iW)
 	KVSO_PARAMETERS_END(c)
-	int col=((KviTalTreeWidget *)widget())->columnCount();
-	QTreeWidgetItem *header=((KviTalTreeWidget *)widget())->headerItem();
+	int col=((QTreeWidget *)widget())->columnCount();
+	QTreeWidgetItem *header=((QTreeWidget *)widget())->headerItem();
 	header->setText(col,szLabel);
-	((KviTalTreeWidget *)widget())->setColumnWidth(col,iW);
+	((QTreeWidget *)widget())->setColumnWidth(col,iW);
 	col++;
-	((KviTalTreeWidget *)widget())->setColumnCount(col);
+	((QTreeWidget *)widget())->setColumnCount(col);
 	//col++;
 	return true;
 }
@@ -313,14 +316,14 @@ KVSO_CLASS_FUNCTION(treewidget,setAcceptDrops)
 		KVSO_PARAMETER("bEnable",KVS_PT_BOOLEAN,0,bEnable)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((KviTalTreeWidget *)object())->setAcceptDrops(bEnable);
+		((QTreeWidget *)object())->setAcceptDrops(bEnable);
 	return true;
 }
 */
 KVSO_CLASS_FUNCTION(treewidget,clear)
 {
 	if (widget())
-		((KviTalTreeWidget *)object())->clear();
+		((QTreeWidget *)object())->clear();
 	return true;
 }
 
@@ -328,11 +331,11 @@ KVSO_CLASS_FUNCTION(treewidget,selectedItems)
 {
 	if(widget())
 	{
-		QList<QTreeWidgetItem *> list=((KviTalTreeWidget *)widget())->selectedItems();
+		QList<QTreeWidgetItem *> list=((QTreeWidget *)widget())->selectedItems();
 		KviKvsArray * pArray = new KviKvsArray();
 		c->returnValue()->setArray(pArray);
 		for (int i=0;i<list.count();i++)
-			pArray->set(i,new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle((KviTalTreeWidgetItem*)list.at(i))));
+			pArray->set(i,new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle((QTreeWidgetItem*)list.at(i))));
 	}
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
@@ -342,7 +345,7 @@ KVSO_CLASS_FUNCTION(treewidget,selectedItems)
 KVSO_CLASS_FUNCTION(treewidget,firstChild)
 {
 	if(widget())
-		c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle((KviTalTreeWidgetItem*)((KviTalTreeWidget *)widget())->topLevelItem(0)));
+		c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle((QTreeWidgetItem*)((QTreeWidget *)widget())->topLevelItem(0)));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
@@ -351,7 +354,7 @@ KVSO_CLASS_FUNCTION(treewidget,firstChild)
 KVSO_CLASS_FUNCTION(treewidget,currentItem)
 {
 	if(widget())
-		c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle((KviTalTreeWidgetItem*)((KviTalTreeWidget *)widget())->currentItem()));
+		c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle((QTreeWidgetItem*)((QTreeWidget *)widget())->currentItem()));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
@@ -365,7 +368,7 @@ KVSO_CLASS_FUNCTION(treewidget,setColumnText)
 		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
 		KVSO_PARAMETERS_END(c)
-	if (widget())((KviTalTreeWidget *)widget())->setColumnText(uCol,szText);
+	if (widget())((QTreeWidget *)widget())->setColumnText(uCol,szText);
     return true;
 }
 */
@@ -375,7 +378,7 @@ KVSO_CLASS_FUNCTION(treewidget,setColumnCount)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
 	KVSO_PARAMETERS_END(c)
-	if (widget())((KviTalTreeWidget *)widget())->setColumnCount(uCol);
+	if (widget())((QTreeWidget *)widget())->setColumnCount(uCol);
 	return true;
 }
 
@@ -387,13 +390,13 @@ KVSO_CLASS_FUNCTION(treewidget,setSelectionMode)
 		KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
 	if(KviQString::equalCI(szMode,"NoSelection"))
-		((KviTalTreeWidget *)widget())->setSelectionMode(QAbstractItemView::NoSelection);
+		((QTreeWidget *)widget())->setSelectionMode(QAbstractItemView::NoSelection);
 	else if(KviQString::equalCI(szMode,"Multi"))
-		((KviTalTreeWidget *)widget())->setSelectionMode(KviTalTreeWidget::MultiSelection);
+		((QTreeWidget *)widget())->setSelectionMode(QTreeWidget::MultiSelection);
 	else if(KviQString::equalCI(szMode,"Extended"))
-		((KviTalTreeWidget *)widget())->setSelectionMode(KviTalTreeWidget::ExtendedSelection);
+		((QTreeWidget *)widget())->setSelectionMode(QTreeWidget::ExtendedSelection);
 	else if(KviQString::equalCI(szMode,"Single"))
-		((KviTalTreeWidget *)widget())->setSelectionMode(KviTalTreeWidget::SingleSelection);
+		((QTreeWidget *)widget())->setSelectionMode(QTreeWidget::SingleSelection);
 	else c->warning(__tr2qs("Invalid selection mode '%Q'"),&szMode);
 	return true;
 }
@@ -401,17 +404,25 @@ KVSO_CLASS_FUNCTION(treewidget,setSelectionMode)
 KVSO_CLASS_FUNCTION(treewidget,setSorting)
 {
 	kvs_int_t iCol;
-	bool bEnables;
+	QString szOrder;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("column",KVS_PT_INT,0,iCol)
-		KVSO_PARAMETER("sorting",KVS_PT_BOOLEAN,0,bEnables)
+		KVSO_PARAMETER("sort_order",KVS_PT_STRING,0,szOrder)
 	KVSO_PARAMETERS_END(c)
 	if (!widget())return true;
-	if (iCol<0)
-		((KviTalTreeWidget *)widget())->setSortingEnabled(false);
-	else
-		if(!bEnables) ((KviTalTreeWidget *)widget())->sortItems(iCol,Qt::DescendingOrder);
-			else ((KviTalTreeWidget *)widget())->sortItems(iCol,Qt::AscendingOrder);
+	if (KviQString::equalCI(szOrder,"ascending")) ((QTreeWidget *)widget())->sortItems(iCol,Qt::AscendingOrder);
+	else if (KviQString::equalCI(szOrder,"descending")) ((QTreeWidget *)widget())->sortItems(iCol,Qt::DescendingOrder);
+	else c->warning(__tr2qs_ctx("Unknown 'Q' sort order: switching to ascending order","objects"),&szOrder);
+	return true;
+}
+KVSO_CLASS_FUNCTION(treewidget,setSortingEnabled)
+{
+	bool bEnables;
+	KVSO_PARAMETERS_BEGIN(c)
+			KVSO_PARAMETER("bEnables",KVS_PT_BOOLEAN,0,bEnables)
+	KVSO_PARAMETERS_END(c)
+	if (!widget())return true;
+	((QTreeWidget *)widget())->setSortingEnabled(bEnables);
 	return true;
 }
 
@@ -421,7 +432,7 @@ KVSO_CLASS_FUNCTION(treewidget,setRootIsDecorated)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) 	((KviTalTreeWidget *)widget())->setRootIsDecorated(bEnabled);
+	if (widget()) 	((QTreeWidget *)widget())->setRootIsDecorated(bEnabled);
 	return true;
 }
 
@@ -431,25 +442,25 @@ KVSO_CLASS_FUNCTION(treewidget,setAllColumnsShowFocus)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bAllColumnsShowFocus",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if (widget())((KviTalTreeWidget *)widget())->setAllColumnsShowFocus(bEnabled);
+	if (widget())((QTreeWidget *)widget())->setAllColumnsShowFocus(bEnabled);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(treewidget,hideListViewHeader)
 {
-	((KviTalTreeWidget *)widget())->header()->hide();
+	((QTreeWidget *)widget())->header()->hide();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(treewidget,showListViewHeader)
 {
-	((KviTalTreeWidget *)widget())->header()->show();
+	((QTreeWidget *)widget())->header()->show();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(treewidget,listViewHeaderIsVisible)
 {
-	c->returnValue()->setBoolean(((KviTalTreeWidget *)widget())->header()->isVisible());
+	c->returnValue()->setBoolean(((QTreeWidget *)widget())->header()->isVisible());
 	return true;
 }
 
@@ -459,7 +470,7 @@ KVSO_CLASS_FUNCTION(treewidget,itemClickedEvent)
 	return true;
 }
 
-void KviKvsObject_treewidget::slotClicked(KviTalTreeWidgetItem * i,int col)
+void KviKvsObject_treewidget::slotClicked(QTreeWidgetItem * i,int col)
 {
 	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
 
@@ -475,9 +486,9 @@ KVSO_CLASS_FUNCTION(treewidget,selectionChangedEvent)
 
 void KviKvsObject_treewidget::slotSelectionChanged()
 {
-	if (((KviTalTreeWidget *)widget())->selectionMode()==KviTalTreeWidget::SingleSelection)
+	if (((QTreeWidget *)widget())->selectionMode()==QTreeWidget::SingleSelection)
 	{
-		KviTalTreeWidgetItem *it=(KviTalTreeWidgetItem *) ((KviTalTreeWidget *)widget())->currentItem();
+		QTreeWidgetItem *it=(QTreeWidgetItem *) ((QTreeWidget *)widget())->currentItem();
 		KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(it)));
 		callFunction(this,"selectionChangedEvent",0,&params);
 	}
@@ -493,7 +504,7 @@ KVSO_CLASS_FUNCTION(treewidget,currentChangedEvent)
 	return true;
 }
 
-void KviKvsObject_treewidget::slotCurrentChanged(KviTalTreeWidgetItem * i,KviTalTreeWidgetItem *prev)
+void KviKvsObject_treewidget::slotCurrentChanged(QTreeWidgetItem * i,QTreeWidgetItem *prev)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(i)),new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(prev)));
 	callFunction(this,"currentChangedEvent",0,&params);
@@ -509,7 +520,7 @@ KVSO_CLASS_FUNCTION(treewidget,itemActivatedEvent)
 	return true;
 }
 
-void KviKvsObject_treewidget::slotItemActivated(KviTalTreeWidgetItem * i,int col)
+void KviKvsObject_treewidget::slotItemActivated(QTreeWidgetItem * i,int col)
 {
 	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(i)),column);
@@ -523,7 +534,7 @@ KVSO_CLASS_FUNCTION(treewidget,onItemEvent)
 	return true;
 }
 
-void KviKvsObject_treewidget::slotOnItemEntered(KviTalTreeWidgetItem * i,int col)
+void KviKvsObject_treewidget::slotOnItemEntered(QTreeWidgetItem * i,int col)
 {
 	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
 
@@ -537,7 +548,7 @@ KVSO_CLASS_FUNCTION(treewidget,itemExpandedEvent)
 	return true;
 }
 
-void KviKvsObject_treewidget::slotItemExpanded(KviTalTreeWidgetItem * i)
+void KviKvsObject_treewidget::slotItemExpanded(QTreeWidgetItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(i)));
 	callFunction(this,"itemExpandedEvent",0,&params);
@@ -549,7 +560,7 @@ KVSO_CLASS_FUNCTION(treewidget,itemCollapsedEvent)
 	return true;
 }
 
-void KviKvsObject_treewidget::slotItemCollapsed(KviTalTreeWidgetItem * i)
+void KviKvsObject_treewidget::slotItemCollapsed(QTreeWidgetItem * i)
 {
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(i)));
 	callFunction(this,"itemCollapsedEvent",0,&params);
@@ -566,7 +577,7 @@ void KviKvsObject_treewidget::slotCustomContextMenuRequested(const QPoint &pnt)
 {
 	KviKvsVariant *xpos=new KviKvsVariant((kvs_int_t)pnt.x());
 	KviKvsVariant *ypos=new KviKvsVariant((kvs_int_t)pnt.y());
-	KviTalTreeWidgetItem *it=(KviTalTreeWidgetItem *) ((KviTalTreeWidget *)widget())->itemAt(pnt);
+	QTreeWidgetItem *it=(QTreeWidgetItem *) ((QTreeWidget *)widget())->itemAt(pnt);
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(it)),xpos,ypos);
 	callFunction(this,"customContextMenuRequestedEvent",0,&params);
 }
@@ -580,14 +591,14 @@ KVSO_CLASS_FUNCTION(treewidget,itemChangedEvent)
 	return true;
 }
 
-void KviKvsObject_treewidget::slotItemChanged(KviTalTreeWidgetItem *item,int col)
+void KviKvsObject_treewidget::slotItemChanged(QTreeWidgetItem *item,int col)
 {
 	KviKvsVariant *column=new KviKvsVariant((kvs_int_t)col);
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(item)),column);
 	callFunction(this,"itemChangedEvent",0,&params);
 }
 
-void KviKvsObject_treewidget::fileDropped(QString &szFile,KviTalTreeWidgetItem *item)
+void KviKvsObject_treewidget::fileDropped(QString &szFile,QTreeWidgetItem *item)
 {
 	KviKvsVariant *file=new KviKvsVariant(szFile);
 	KviKvsVariantList params(new KviKvsVariant(KviKvsObject_treewidgetitem::itemToHandle(item)),file);
@@ -595,7 +606,7 @@ void KviKvsObject_treewidget::fileDropped(QString &szFile,KviTalTreeWidgetItem *
 }
 
 KviKvsTreeWidget::KviKvsTreeWidget(QWidget * par,const char *,KviKvsObject_treewidget *parent)
-:KviTalTreeWidget(par)
+:QTreeWidget(par)
 {
 	m_pParentScript=parent;
 	setAcceptDrops(true);
@@ -639,7 +650,7 @@ void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 					if(path[0] != '/')path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				#endif
-			//	KviTalTreeWidgetItem *i = itemAt( contentsToViewport(e->pos()) );
+			//	QTreeWidgetItem *i = itemAt( contentsToViewport(e->pos()) );
 			//	m_pParentScript->fileDropped(path,i);
 			}
 		}

@@ -1207,19 +1207,7 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
 		KVSO_PARAMETER("blue",KVS_PT_INT,KVS_PF_OPTIONAL,iColB)
 	KVSO_PARAMETERS_END(c)
-
-	if(pColArray->isString())
-	{
-		QString szColor;
-		pColArray->asString(szColor);
-		if (widget())
-		{
-			QPalette p = widget()->palette();
-			p.setColor(widget()->foregroundRole(), QColor(szColor));
-			widget()->setPalette(p);
-		}
-		return true;
-	}
+	
 	if(pColArray->isArray())
 	{
 		if(pColArray->array()->size() < 3)
@@ -1245,40 +1233,42 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 	}
 	else
 	{
+		QColor color;	
 		if (c->params()->count()==1)
 		{
-			bool bOk,bOk1,bOk2;
-			QString value;
-			pColArray->asString(value);
-			if (value.length()!=6)
-			{
-				c->warning(__tr2qs("A string of 6 hex digits is required"));
-				return true;
-			}
-			QString buffer(value.mid(0,2));
-			iColR=buffer.toInt(&bOk,16);
-			buffer=value.mid(2,2);
-			iColG=buffer.toInt(&bOk1,16);
-			buffer=value.mid(4,2);
-			iColB=buffer.toInt(&bOk2,16);
-			if (!bOk || !bOk1 || !bOk2)
-			{
-				c->warning(__tr2qs("Not an hex digit"));
-				return true;
-			}
-			if (widget())
-			{
-				QPalette p = widget()->palette();
-				p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB));
-				widget()->setPalette(p);
-				return true;
-			}
+				if(pColArray->isString())
+				{
+					QString szColor;
+					pColArray->asString(szColor);
+					// maybe a color name?
+					color.setNamedColor(szColor);
+					if (!color.isValid())
+					{
+						// itsn't a color name: let try with an hex triplette 
+						color.setNamedColor("#"+szColor);
+						if (!color.isValid())
+						{
+							c->warning(__tr2qs("Not a valid color !"));
+							return true;
+						}
+					}
+				}
+				else {
+					c->warning(__tr2qs("Not a valid color !"));
+					return true;
+				}		
+				if (widget())
+				{
+					QPalette p = widget()->palette();
+					p.setColor(widget()->foregroundRole(), color);
+					widget()->setPalette(p);
+					return true;
+				}
 		}
 
 		if(c->params()->count() < 3)
 		{
-
-			c->error(__tr2qs("$setForegroundColor requires either an array as first parameter, one hex string or three integers"));
+			c->error(__tr2qs("$setForegroundColor requires either an array as first parameter, one hex string or color name, or three integers"));
 			return false;
 		}
 		if(!pColArray->asInteger(iColR))
@@ -1304,7 +1294,7 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 	kvs_int_t iColR,iColG,iColB;
 
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("hex_rgb_array_or_red",KVS_PT_VARIANT,0,pColArray)
+		KVSO_PARAMETER("name_hex_rgb_array_or_red",KVS_PT_VARIANT,0,pColArray)
 		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
 		KVSO_PARAMETER("blue",KVS_PT_INT,KVS_PF_OPTIONAL,iColB)
 	KVSO_PARAMETERS_END(c)
@@ -1325,46 +1315,51 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 			c->error(__tr2qs("One of the colors array parameters is empty"));
 			return false;
 		}
+
 		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
 		{
 			c->error(__tr2qs("One of the colors array parameters didn't evaluate to an integer"));
 			return false;
 		}
-	} else {
+	}
+	else
+	{
+		QColor color;	
 		if (c->params()->count()==1)
 		{
-			bool bOk,bOk1,bOk2;
-			QString value;
-			pColArray->asString(value);
-			if (value.length()!=6)
-			{
-				c->warning(__tr2qs("A string of 6 hex digits is required"));
-				return true;
-			}
-			QString buffer(value.mid(0,2));
-			iColR=buffer.toInt(&bOk,16);
-			buffer=value.mid(2,2);
-			iColG=buffer.toInt(&bOk1,16);
-			buffer=value.mid(4,2);
-			iColB=buffer.toInt(&bOk2,16);
-			if (!bOk || !bOk1 || !bOk2)
-			{
-				c->warning(__tr2qs("Not an hex digit"));
-				return true;
-			}
-			if (widget())
-			{
-				QPalette p = widget()->palette();
-				p.setColor(widget()->backgroundRole(), QColor(iColR,iColG,iColB));
-				widget()->setPalette(p);
-			}
-			return true;
+				if(pColArray->isString())
+				{
+					QString szColor;
+					pColArray->asString(szColor);
+					// maybe a color name?
+					color.setNamedColor(szColor);
+					if (!color.isValid())
+					{
+						// itsn't a color name: let try with an hex triplette 
+						color.setNamedColor("#"+szColor);
+						if (!color.isValid())
+						{
+							c->warning(__tr2qs("Not a valid color !"));
+							return true;
+						}
+					}
+				}
+				else {
+					c->warning(__tr2qs("Not a valid color !"));
+					return true;
+				}		
+				if (widget())
+				{
+					QPalette p = widget()->palette();
+					p.setColor(widget()->backgroundRole(), color);
+					widget()->setPalette(p);
+					return true;
+				}
 		}
 
 		if(c->params()->count() < 3)
 		{
-
-			c->error(__tr2qs("$setBackgroundColor requires either an array as first parameter, one hex string or three integers"));
+			c->error(__tr2qs("$setBackgroundColor requires either an array as first parameter, one hex string or color name, or three integers"));
 			return false;
 		}
 		if(!pColArray->asInteger(iColR))
@@ -1373,6 +1368,7 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 			return false;
 		}
 	}
+
 	if (widget())
 	{
 		QPalette p = widget()->palette();

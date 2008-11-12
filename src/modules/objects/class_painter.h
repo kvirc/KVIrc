@@ -46,74 +46,74 @@ protected:
 	QLinearGradient *m_pGradient;
 	QPainterPath *m_pPainterPath;
 public:
-	bool functionSetFont(KviKvsObjectFunctionCall *c);
-	bool functionSetFontSize(KviKvsObjectFunctionCall *c);
+	bool setFont(KviKvsObjectFunctionCall *c);
+	bool setFontSize(KviKvsObjectFunctionCall *c);
 	
-	bool functionfontAscent(KviKvsObjectFunctionCall *c);
-	bool functionfontDescent(KviKvsObjectFunctionCall *c);
-	bool functionfontMetricsWidth(KviKvsObjectFunctionCall *c);
-	bool functionfontMetricsHeight(KviKvsObjectFunctionCall *c);
-	bool functionsetBrush(KviKvsObjectFunctionCall *c);
-	bool functionsetPen(KviKvsObjectFunctionCall *c);
-	bool functionsetBackGroundMode(KviKvsObjectFunctionCall *c);
+	bool fontAscent(KviKvsObjectFunctionCall *c);
+	bool fontDescent(KviKvsObjectFunctionCall *c);
+	bool fontMetricsWidth(KviKvsObjectFunctionCall *c);
+	bool fontMetricsHeight(KviKvsObjectFunctionCall *c);
+	bool setBrush(KviKvsObjectFunctionCall *c);
+	bool setPen(KviKvsObjectFunctionCall *c);
+	bool setBackGroundMode(KviKvsObjectFunctionCall *c);
 
-	bool functiondrawRect(KviKvsObjectFunctionCall *c);
-	bool functiondrawWinFocusRect(KviKvsObjectFunctionCall *c);
-	bool functiondrawLine(KviKvsObjectFunctionCall *c);
-	bool functiondrawRoundRect(KviKvsObjectFunctionCall *c);
-	bool functiondrawPoint(KviKvsObjectFunctionCall *c);
-	bool functiondrawArc(KviKvsObjectFunctionCall *c);
-	bool functiondrawChord(KviKvsObjectFunctionCall *c);
-	bool functiondrawPie(KviKvsObjectFunctionCall *c);
-	bool functiondrawEllipse(KviKvsObjectFunctionCall *c);
+	bool drawRect(KviKvsObjectFunctionCall *c);
+	bool drawWinFocusRect(KviKvsObjectFunctionCall *c);
+	bool drawLine(KviKvsObjectFunctionCall *c);
+	bool drawRoundRect(KviKvsObjectFunctionCall *c);
+	bool drawPoint(KviKvsObjectFunctionCall *c);
+	bool drawArc(KviKvsObjectFunctionCall *c);
+	bool drawChord(KviKvsObjectFunctionCall *c);
+	bool drawPie(KviKvsObjectFunctionCall *c);
+	bool drawEllipse(KviKvsObjectFunctionCall *c);
 
-	bool functiondrawText(KviKvsObjectFunctionCall *c);
-	bool functiondrawPixmap(KviKvsObjectFunctionCall *c);
+	bool drawText(KviKvsObjectFunctionCall *c);
+	bool drawPixmap(KviKvsObjectFunctionCall *c);
 	
 
-	bool functionbegin(KviKvsObjectFunctionCall *c);
-	bool functionend(KviKvsObjectFunctionCall *c);
-	bool functionsave(KviKvsObjectFunctionCall *c);
-	bool functionrestore(KviKvsObjectFunctionCall *c);
+	bool begin(KviKvsObjectFunctionCall *c);
+	bool end(KviKvsObjectFunctionCall *c);
+	bool save(KviKvsObjectFunctionCall *c);
+	bool restore(KviKvsObjectFunctionCall *c);
 
 
-	bool functionscaleMatrix(KviKvsObjectFunctionCall *c);
-	bool functionshearMatrix(KviKvsObjectFunctionCall *c);
-	bool functionrotateMatrix(KviKvsObjectFunctionCall *c);
-	bool functionresetMatrix(KviKvsObjectFunctionCall *c);
-	bool functiontranslateMatrix(KviKvsObjectFunctionCall *c);
-	bool functionsetPenStyle(KviKvsObjectFunctionCall *c);
-	bool functionsetBrushStyle(KviKvsObjectFunctionCall *c);
+	bool scale(KviKvsObjectFunctionCall *c);
+	bool shear(KviKvsObjectFunctionCall *c);
+	bool rotate(KviKvsObjectFunctionCall *c);
+	bool reset(KviKvsObjectFunctionCall *c);
+	bool translate(KviKvsObjectFunctionCall *c);
+	bool setPenStyle(KviKvsObjectFunctionCall *c);
+	bool setBrushStyle(KviKvsObjectFunctionCall *c);
 
 // QT4
-	bool functionsetOpacity(KviKvsObjectFunctionCall *c);
-	bool functionsetSmoothPixmapTransform(KviKvsObjectFunctionCall *c);
-	bool functionsetTextAntialiasing(KviKvsObjectFunctionCall *c);
-	bool functionsetAntialiasing(KviKvsObjectFunctionCall *c);
-	bool functionsetGradientStart(KviKvsObjectFunctionCall *c);
-	bool functionsetGradientStop(KviKvsObjectFunctionCall *c);
-	bool functionsetGradientColor(KviKvsObjectFunctionCall *c);
-	bool functionsetGradientAsBrush(KviKvsObjectFunctionCall *c);
-	bool functionclearGradient(KviKvsObjectFunctionCall *c);
+	bool setOpacity(KviKvsObjectFunctionCall *c);
+	bool setSmoothPixmapTransform(KviKvsObjectFunctionCall *c);
+	bool setTextAntialiasing(KviKvsObjectFunctionCall *c);
+	bool setAntialiasing(KviKvsObjectFunctionCall *c);
+	bool setGradientStart(KviKvsObjectFunctionCall *c);
+	bool setGradientStop(KviKvsObjectFunctionCall *c);
+	bool setGradientColor(KviKvsObjectFunctionCall *c);
+	bool setGradientAsBrush(KviKvsObjectFunctionCall *c);
+	bool clearGradient(KviKvsObjectFunctionCall *c);
 
-	bool functiondrawIcon(KviKvsObjectFunctionCall *c);
-	bool functiondrawHtmlText(KviKvsObjectFunctionCall *c);
-	bool functionhtmlTextSize(KviKvsObjectFunctionCall *c);
-	bool functionfillRect(KviKvsObjectFunctionCall *c);
-	bool functionsetPenWidth(KviKvsObjectFunctionCall *c);
-	bool functioncolorNames(KviKvsObjectFunctionCall *c);
-	bool functionpathMoveTo(KviKvsObjectFunctionCall *c);
-	bool functionpathLineTo(KviKvsObjectFunctionCall *c);
-	bool functiondrawPath(KviKvsObjectFunctionCall *c);
-	bool functionsetPenJoinStyle(KviKvsObjectFunctionCall *c);
-	bool functionsetPenCapStyle(KviKvsObjectFunctionCall *c);
-	bool functionpathAddText(KviKvsObjectFunctionCall *c);
-	bool functionresetPath(KviKvsObjectFunctionCall *c);
+	bool drawIcon(KviKvsObjectFunctionCall *c);
+	bool drawHtmlText(KviKvsObjectFunctionCall *c);
+	bool htmlTextSize(KviKvsObjectFunctionCall *c);
+	bool fillRect(KviKvsObjectFunctionCall *c);
+	bool setPenWidth(KviKvsObjectFunctionCall *c);
+	bool colorNames(KviKvsObjectFunctionCall *c);
+	bool pathMoveTo(KviKvsObjectFunctionCall *c);
+	bool pathLineTo(KviKvsObjectFunctionCall *c);
+	bool drawPath(KviKvsObjectFunctionCall *c);
+	bool setPenJoinStyle(KviKvsObjectFunctionCall *c);
+	bool setPenCapStyle(KviKvsObjectFunctionCall *c);
+	bool pathAddText(KviKvsObjectFunctionCall *c);
+	bool resetPath(KviKvsObjectFunctionCall *c);
 
-	bool functionBeginPdf(KviKvsObjectFunctionCall *c);
+	bool beginPdf(KviKvsObjectFunctionCall *c);
 	
-	bool functionwidth(KviKvsObjectFunctionCall *c);
-	bool functionheight(KviKvsObjectFunctionCall *c);
+	bool painterDeviceWidth(KviKvsObjectFunctionCall *c);
+	bool painterDeviceHeight(KviKvsObjectFunctionCall *c);
 
 
 protected:

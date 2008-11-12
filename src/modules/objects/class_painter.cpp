@@ -428,87 +428,91 @@ const char * const brushstyles_tbl[] = {
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 
 	// Fonts
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setFont",functionSetFont)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setFontSize",functionSetFontSize)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setFont)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setFontSize)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fontAscent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fontDescent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fontMetricsHeight)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fontMetricsWidth)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setBrush",functionsetBrush)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setPen",functionsetPen)
-
-
-
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setPenStyle",functionsetPenStyle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setBrushStyle",functionsetBrushStyle)
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"fontAscent",functionfontAscent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"fontDescent",functionfontDescent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"fontMetricsHeight",functionfontMetricsHeight)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"fontMetricsWidth",functionfontMetricsWidth)
 	// Draws
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setBackGroundMode",functionsetBackGroundMode)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawRect",functiondrawRect)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawLine",functiondrawLine)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawRoundRect",functiondrawRoundRect)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawWinFocusRect",functiondrawWinFocusRect)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawPoint",functiondrawPoint)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawArc",functiondrawArc)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawEllipse",functiondrawEllipse)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawPie",functiondrawPie)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawChord",functiondrawChord)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawRect)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawLine)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawRoundRect)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawWinFocusRect)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawPoint)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawArc)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawEllipse)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawPie)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawChord)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fillRect)
+
+	// Text & Pixmap & Icons
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawText)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawPixmap)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawIcon)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawHtmlText)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,htmlTextSize)
 
 
-	// Text & Pixmap
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawText",functiondrawText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawPixmap",functiondrawPixmap)
+	// Matrix Operation
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,rotate)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,shear)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,scale)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,translate)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,reset)
+
+	
+
+	// ??
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setOpacity)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setTextAntialiasing)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setAntialiasing)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setSmoothPixmapTransform)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setBackGroundMode)
+
+	
+
+	// QPainterPath stuff
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawPath)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,resetPath)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,pathAddText)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,pathMoveTo)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,pathLineTo)
+	
+	// Pen
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPenJoinStyle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPenCapStyle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPenWidth)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPenStyle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPen)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,colorNames)
 
 
-	// MAtrix Operation
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"rotate",functionrotateMatrix)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"shear",functionshearMatrix)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"scale",functionscaleMatrix)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"translate",functiontranslateMatrix)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"reset",functionresetMatrix)
+	// Brush
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setBrush)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setBrushStyle)
+
+
+	// Gradients
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setGradientStart)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setGradientStop)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setGradientColor)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setGradientAsBrush)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,clearGradient)
 
 	// painter state
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"save",functionsave)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"restore",functionrestore)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,save)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,restore)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"beginPdf",functionBeginPdf)// FIXME: needs doc!
-//bool KviKvsObject_painter::functionBeginPdf(KviKvsObjectFunctionCall *c)
-//QT4
+	// painter device
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,painterDeviceWidth)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,painterDeviceHeight)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,begin)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,end)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setOpacity",functionsetOpacity)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setTextAntialiasing",functionsetTextAntialiasing)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setAntialiasing",functionsetAntialiasing)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setSmoothPixmapTransform",functionsetSmoothPixmapTransform)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setGradientStart",functionsetGradientStart)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setGradientFinalStop",functionsetGradientStop)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setGradientColor",functionsetGradientColor)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setGradientAsBrush",functionsetGradientAsBrush)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"clearGradient",functionclearGradient)
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setPenWidth",functionsetPenWidth)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawIcon",functiondrawIcon)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawHtmlText",functiondrawHtmlText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"htmlTextSize",functionhtmlTextSize)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"fillRect",functionfillRect)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"colorNames",functioncolorNames)
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"drawPath",functiondrawPath)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"resetPath",functionresetPath)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"pathAddText",functionpathAddText)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"pathMoveTo",functionpathMoveTo)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"pathLineTo",functionpathLineTo)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setPenJoinStyle",functionsetPenJoinStyle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"setPenCapStyle",functionsetPenCapStyle)
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"painterDeviceWidth",functionwidth)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"painterDeviceHeight",functionheight)
-
-//
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"begin",functionbegin)
-	KVSO_REGISTER_HANDLER(KviKvsObject_painter,"end",functionend)
+	// extra
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,beginPdf)// FIXME: needs doc!
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_painter)
@@ -542,7 +546,7 @@ if(__pXOrArray->isArray())\
 	{\
 		if(__pXOrArray->array()->size() < 4)\
 		{\
-			c->error(__tr2qs("The array passed as parameter must contain at least 4 elements"));\
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 4 elements","objects"));\
 			return false;\
 		}\
 		KviKvsVariant * pX = __pXOrArray->array()->at(0);\
@@ -551,24 +555,24 @@ if(__pXOrArray->isArray())\
 		KviKvsVariant * pH = __pXOrArray->array()->at(3);\
 		if(!(pX && pY && pW && pH))\
 		{\
-			c->error(__tr2qs("One of the geometry array parameters is empty"));\
+			c->error(__tr2qs_ctx("One of the geometry array parameters is empty","objects"));\
 			return false;\
 		}\
 		if(!(pX->asInteger(iX) && pY->asInteger(__iY) && pW->asInteger(__iW) && pH->asInteger(__iH)))\
 		{\
-			c->error(__tr2qs("One of the geometry array parameters didn't evaluate to an integer"));\
+			c->error(__tr2qs_ctx("One of the geometry array parameters didn't evaluate to an integer","objects"));\
 			return false;\
 		}\
 	} else {\
 		if(c->params()->count() < 4)\
 		{\
-			QString error=function+__tr2qs(" requires either an array as first parameter or four integers");\
+			QString error=function+__tr2qs_ctx(" requires either an array as first parameter or four integers","objects");\
 			c->error(error);\
 			return false;\
 		}\
 		if(!__pXOrArray->asInteger(iX))\
 		{\
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));\
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));\
 			return false;\
 		}\
 	}\
@@ -578,31 +582,31 @@ if(__pXOrArray->isArray())\
 	{\
 		if(__pXOrArray->array()->size() < 2)\
 		{\
-			c->error(__tr2qs("The array passed as parameter must contain at least 2 elements"));\
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 2 elements","objects"));\
 			return false;\
 		}\
 		KviKvsVariant * pX = __pXOrArray->array()->at(0);\
 		KviKvsVariant * pY = __pXOrArray->array()->at(1);\
 		if(!(pX && pY ))\
 		{\
-			c->error(__tr2qs("One of the array parameters is empty"));\
+			c->error(__tr2qs_ctx("One of the array parameters is empty","objects"));\
 			return false;\
 		}\
 		if(!(pX->asInteger(iX) && pY->asInteger(__iY)))\
 		{\
-			c->error(__tr2qs("One of the array parameters didn't evaluate to an integer"));\
+			c->error(__tr2qs_ctx("One of the array parameters didn't evaluate to an integer","objects"));\
 			return false;\
 		}\
 	} else {\
 		if(c->params()->count() < 2)\
 		{\
-			QString error=function+__tr2qs(" requires either an array as first parameter or two integers");\
+			QString error=function+__tr2qs_ctx(" requires either an array as first parameter or two integers","objects");\
 			c->error(error);\
 			return false;\
 		}\
 		if(!__pXOrArray->asInteger(iX))\
 		{\
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));\
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));\
 			return false;\
 		}\
 	}\
@@ -612,7 +616,7 @@ if(__pCol1OrArray->isArray())\
 	{\
 		if(__pCol1OrArray->array()->size() < 3)\
 		{\
-			c->error(__tr2qs("The array passed as parameter must contain at least 3 elements"));\
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements","objects"));\
 			return false;\
 		}\
 		KviKvsVariant * c1 = __pCol1OrArray->array()->at(0);\
@@ -620,12 +624,12 @@ if(__pCol1OrArray->isArray())\
 		KviKvsVariant * c3 = __pCol1OrArray->array()->at(2);\
 		if(!(c1 && c2 && c3))\
 		{\
-			c->error(__tr2qs("One of the array parameters is empty"));\
+			c->error(__tr2qs_ctx("One of the array parameters is empty","objects"));\
 			return false;\
 		}\
 		if(!(c1->asInteger(iCol1) && c2->asInteger(__iCol2) && c3->asInteger(__iCol3)))\
 		{\
-			c->error(__tr2qs("One of the array parameters didn't evaluate to an integer"));\
+			c->error(__tr2qs_ctx("One of the array parameters didn't evaluate to an integer","objects"));\
 			return false;\
 		}\
 		if(__pCol1OrArray->array()->size() > 3)\
@@ -633,26 +637,27 @@ if(__pCol1OrArray->isArray())\
 			KviKvsVariant * c4 = __pCol1OrArray->array()->at(3);\
 			if(!(c4->asInteger(__iOpacity)))\
 			{\
-				c->error(__tr2qs("The opacity value didn't evaluate to an integer"));\
+				c->error(__tr2qs_ctx("The opacity value didn't evaluate to an integer","objects"));\
 				return false;\
 			}\
 		}\
 	} else {\
 		if(c->params()->count() < 3)\
 		{\
-			QString error=function+__tr2qs(" requires either an array as first parameter or 3 integers");\
+			QString error=function+__tr2qs_ctx(" requires either an array as first parameter or 3 integers","objects");\
 			c->error(error);\
 			return false;\
 		}\
 		if(!__pCol1OrArray->asInteger(iCol1))\
 		{\
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));\
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));\
 			return false;\
 		}\
 	}\
 
-bool KviKvsObject_painter::functionSetFont(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setFont)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	QString szFamily,szStyle;
 	kvs_int_t uSize;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -660,7 +665,6 @@ bool KviKvsObject_painter::functionSetFont(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("family",KVS_PT_STRING,0,szFamily)
 		KVSO_PARAMETER("style",KVS_PT_STRING,0,szStyle)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pPainter)return true;
 	QFont font=m_pPainter->font();
 	font.setFamily(szFamily);
 	font.setPointSize(uSize);
@@ -674,34 +678,35 @@ bool KviKvsObject_painter::functionSetFont(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionSetFontSize(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setFontSize)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	kvs_uint_t uSize;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("size",KVS_PT_UNSIGNEDINTEGER,0,uSize)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pPainter)return true;
 	QFont font=m_pPainter->font();
 	font.setPointSize(uSize);
 	m_pPainter->setFont(font);
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetBackGroundMode(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setBackGroundMode)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("background mode",KVS_PT_STRING,0,szMode)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pPainter)return true;
 	if(KviQString::equalCI(szMode,"Transparent")) m_pPainter->setBackgroundMode(Qt::TransparentMode);
 	else if(KviQString::equalCI(szMode,"Opaque")) m_pPainter->setBackgroundMode(Qt::OpaqueMode);
-	else c->warning( __tr2qs("Unknown orientation"));
+	else c->warning( __tr2qs_ctx("Unknown '%Q' background mode","objects"),&szMode);
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawLine(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawLine)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iX,iY,iX1,iY1;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -716,8 +721,9 @@ bool KviKvsObject_painter::functiondrawLine(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawRect(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawRect)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iX,iY,iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -728,12 +734,13 @@ bool KviKvsObject_painter::functiondrawRect(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	QString function="$drawRect";
 	KVSO_PARAMETERS_PAINTER(pXOrArray,iY,iW,iH)
-	if(m_pPainter)	m_pPainter->drawRect(iX,iY,iW,iH);
+	m_pPainter->drawRect(iX,iY,iW,iH);
 	return true;
 }
 //FIXME: REMOVE functiondrawWinFocusRect
-bool KviKvsObject_painter::functiondrawWinFocusRect(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawWinFocusRect)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iX,iY,iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -744,12 +751,12 @@ bool KviKvsObject_painter::functiondrawWinFocusRect(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	QString function="$drawWinFocusRect";
 	KVSO_PARAMETERS_PAINTER(pXOrArray,iY,iW,iH)
-
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawEllipse(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawEllipse)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iX,iY,iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -760,12 +767,13 @@ bool KviKvsObject_painter::functiondrawEllipse(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	QString function="$drawEllipse";
 	KVSO_PARAMETERS_PAINTER(pXOrArray,iY,iW,iH)
-	if(m_pPainter)	m_pPainter->drawEllipse(iX,iY,iW,iH);
+	m_pPainter->drawEllipse(iX,iY,iW,iH);
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawRoundRect(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawRoundRect)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iXrnd,iYrnd,iX,iY,iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -778,13 +786,13 @@ bool KviKvsObject_painter::functiondrawRoundRect(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	QString function="$drawRoundRect";
 	KVSO_PARAMETERS_PAINTER(pXOrArray,iY,iW,iH)
-	if(m_pPainter)
-		m_pPainter->drawRoundRect(iX,iY,iW,iH,iXrnd,iYrnd);
+	m_pPainter->drawRoundRect(iX,iY,iW,iH,iXrnd,iYrnd);
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawArc(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawArc)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iSangle,iLena,iX,iY,iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -797,13 +805,13 @@ bool KviKvsObject_painter::functiondrawArc(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	QString function="$drawArc";
 	KVSO_PARAMETERS_PAINTER(pXOrArray,iY,iW,iH)
-	if(m_pPainter)
-		m_pPainter->drawArc(iX,iY,iW,iH,iSangle,iLena);
+	m_pPainter->drawArc(iX,iY,iW,iH,iSangle,iLena);
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawChord(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawChord)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iSangle,iLena,iX,iY,iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -816,15 +824,14 @@ bool KviKvsObject_painter::functiondrawChord(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	QString function="$drawChord";
 	KVSO_PARAMETERS_PAINTER(pXOrArray,iY,iW,iH)
-	if(m_pPainter)
-		m_pPainter->drawChord(iX,iY,iW,iH,iSangle,iLena);
+	m_pPainter->drawChord(iX,iY,iW,iH,iSangle,iLena);
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setBrush)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	kvs_int_t iCol1,iCol2,iCol3,iOpacity;
-
 	KviKvsVariant *var1,*var2,*var3;
 	QString szColorMode,szColor;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -834,8 +841,6 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("color_mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szColorMode)
 		KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pPainter) return true;
-
 	if(var1->isHObject())
 	{
 		kvs_hobject_t hObj;
@@ -843,12 +848,12 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 		KviKvsObject *pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 		if (!pObject)
 		{
-			c->warning(__tr2qs("Pixmap parameter is not an object!"));
+			c->warning(__tr2qs_ctx("Pixmap parameter is not an object!","objects"));
 			return true;
 		}
 		if(pObject->inheritsClass("pixmap"))
 			m_pPainter->setBrush(*((KviKvsObject_pixmap *)pObject)->getPixmap());
-		else c->warning(__tr2qs("Object Pixmap required!"));
+		else c->warning(__tr2qs_ctx("Object Pixmap required!","objects"));
 		return true;
 	}
 	if (!var1->asInteger(iCol1))
@@ -859,7 +864,7 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 		{
 			if (!var2->asInteger(iOpacity))
 			{
-				c->warning("The opacity parameter didn't evaluate to integer");
+				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
 				return true;
 			}
 		}
@@ -871,12 +876,12 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 	{
 		if(c->paramCount()<3)
 		{
-			c->error(__tr2qs("Color name or triplette rgb/hsv value required"));
+			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs("One of the triplette parameters didn't evaluate to an integer"));\
+			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
 		if (c->paramCount()<5) iOpacity=255;
@@ -891,11 +896,10 @@ bool KviKvsObject_painter::functionsetBrush(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetPen(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setPen)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	kvs_int_t iCol1,iCol2,iCol3,iOpacity;
-
-
 	QString szColorMode,szColor;
 	KviKvsVariant *var1,*var2,*var3;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -905,8 +909,6 @@ bool KviKvsObject_painter::functionsetPen(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("color_mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szColorMode)
 		KVSO_PARAMETER("opacity",KVS_PT_INT,KVS_PF_OPTIONAL,iOpacity)
 	KVSO_PARAMETERS_END(c)
-	if(!m_pPainter) return true;
-
 	if (!var1->asInteger(iCol1))
 	{
 		var1->asString(szColor);
@@ -915,7 +917,7 @@ bool KviKvsObject_painter::functionsetPen(KviKvsObjectFunctionCall *c)
 		{
 			if (!var2->asInteger(iOpacity))
 			{
-				c->warning("The opacity parameter didn't evaluate to integer");
+				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
 				return true;
 			}
 		}
@@ -927,12 +929,12 @@ bool KviKvsObject_painter::functionsetPen(KviKvsObjectFunctionCall *c)
 	{
 		if(c->paramCount()<3)
 		{
-			c->error(__tr2qs("Color name or triplette rgb/hsv value required"));
+			c->error(__tr2qs_ctx("Color name or triplette rgb/hsv value required","objects"));
 			return true;
 		}
 		if (!var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs("One of the triplette parameters didn't evaluate to an integer"));\
+			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
 		if (c->paramCount()<5) iOpacity=255;
@@ -948,8 +950,9 @@ bool KviKvsObject_painter::functionsetPen(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawPie(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawPie)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iSangle,iLena,iX,iY,iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -962,13 +965,13 @@ bool KviKvsObject_painter::functiondrawPie(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	QString function="$drawPie";
 	KVSO_PARAMETERS_PAINTER(pXOrArray,iY,iW,iH)
-	if(m_pPainter)
-		m_pPainter->drawPie(iX,iY,iW,iH,iSangle,iLena);
+	m_pPainter->drawPie(iX,iY,iW,iH,iSangle,iLena);
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawPoint(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawPoint)
 {
+	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iX,iY;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -977,19 +980,18 @@ bool KviKvsObject_painter::functiondrawPoint(KviKvsObjectFunctionCall *c)
 	KVSO_PARAMETERS_END(c)
 	QString function="$drawPoint";
 	KVSO_2ARRAYPARAMETERS(pXOrArray,iY)
-	if(m_pPainter)
-		m_pPainter->drawPoint(iX,iY);
+	m_pPainter->drawPoint(iX,iY);
 	return true;
 }
 
-bool KviKvsObject_painter::functionfontDescent(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(painter,fontDescent)
 {
 	if(m_pPainter)
 		c->returnValue()->setInteger(m_pPainter->fontMetrics().descent());
 	return true;
 }
 
-bool KviKvsObject_painter::functionfontAscent(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(painter,fontAscent)
 {
 	if(m_pPainter)
 		c->returnValue()->setInteger(m_pPainter->fontMetrics().ascent());
@@ -997,7 +999,7 @@ bool KviKvsObject_painter::functionfontAscent(KviKvsObjectFunctionCall * c)
 
 }
 
-bool KviKvsObject_painter::functionfontMetricsWidth(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(painter,fontMetricsWidth)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1007,23 +1009,23 @@ bool KviKvsObject_painter::functionfontMetricsWidth(KviKvsObjectFunctionCall * c
 	{
 		if (m_pPainter->isActive())
 			c->returnValue()->setInteger(m_pPainter->fontMetrics().width(szText));
-		else c->warning("$fontMetricsWidth: the painter is not active!");
+		else c->warning(__tr2qs_ctx("$fontMetricsWidth: the painter is not active!","objects"));
 	}
 		return true;
 }
 
-bool KviKvsObject_painter::functionfontMetricsHeight(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(painter,fontMetricsHeight)
 {
 	if(m_pPainter)
 	{
 		if (m_pPainter->isActive())
 			c->returnValue()->setInteger(m_pPainter->fontMetrics().height());
-		else c->warning("$fontMetricsHeight: the painter is not active!");
+		else c->warning(__tr2qs_ctx("$fontMetricsHeight: the painter is not active!","objects"));
 	}
 	return true;
 }
 
-bool KviKvsObject_painter::functionbegin(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,begin)
 {
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
@@ -1034,7 +1036,7 @@ bool KviKvsObject_painter::functionbegin(KviKvsObjectFunctionCall *c)
 	if(!m_pPainter)return true;
 	if (!pObject)
 	{
-		c->warning(__tr2qs("Pixmap or Widget parameter is not an object"));
+		c->warning(__tr2qs_ctx("Pixmap or Widget parameter is not an object","objects"));
 		return true;
 	}
 	QPaintDevice * pd;
@@ -1042,7 +1044,7 @@ bool KviKvsObject_painter::functionbegin(KviKvsObjectFunctionCall *c)
 
 	else if (pObject->inheritsClass("widget")) pd=((KviKvsObject_widget *)pObject)->widget();
 	else{
-		c->warning(__tr2qs("Widget or Pixmap required "));
+		c->warning(__tr2qs_ctx("Widget or Pixmap required ","objects"));
 		return true;
 	}
 	attachDevice(pObject,pd);
@@ -1072,12 +1074,12 @@ void KviKvsObject_painter::detachDevice()
 	m_pDeviceObject = 0;
 }
 
-bool KviKvsObject_painter::functionend(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(painter,end)
 {
 	detachDevice();
 	return true;
 }
-bool KviKvsObject_painter::functionBeginPdf(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,beginPdf)
 {
 	QString szFileName;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1090,7 +1092,7 @@ bool KviKvsObject_painter::functionBeginPdf(KviKvsObjectFunctionCall *c)
 	m_pPainter->begin(m_pPrinter);
 	return true;
 }
-bool KviKvsObject_painter::functiondrawText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawText)
 {
 	QString szText,szMode;
 	kvs_int_t iX,iY;
@@ -1106,7 +1108,7 @@ bool KviKvsObject_painter::functiondrawText(KviKvsObjectFunctionCall *c)
 		else if(KviQString::equalCI(szMode,"LTR"))m_pPainter->setLayoutDirection(Qt::LeftToRight);
 		else
 		{
-				c->warning(__tr2qs("Invalid mode '%Q'"),&szMode);
+				c->warning(__tr2qs_ctx("Invalid mode '%Q'","objects"),&szMode);
 				return true;
 		}
 	}
@@ -1114,7 +1116,7 @@ bool KviKvsObject_painter::functiondrawText(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawPixmap(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawPixmap)
 {
 	kvs_real_t iX,iY;
 	kvs_int_t iStartx,iStarty,iEndx,iEndy;
@@ -1135,12 +1137,12 @@ bool KviKvsObject_painter::functiondrawPixmap(KviKvsObjectFunctionCall *c)
 	if(!m_pPainter)return true;
 	if (!obj)
 	{
-		c->warning(__tr2qs("Pixmap parameter is not an object"));
+		c->warning(__tr2qs_ctx("Pixmap parameter is not an object","objects"));
 		return true;
 	}
 	if (!obj->inheritsClass("pixmap"))
 	{
-		c->warning(__tr2qs("Pixmap object required"));
+		c->warning(__tr2qs_ctx("Pixmap object required","objects"));
 		return true;
 	}
 
@@ -1148,7 +1150,7 @@ bool KviKvsObject_painter::functiondrawPixmap(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionrotateMatrix(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,rotate)
 {
 	kvs_real_t dAngle;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1159,7 +1161,7 @@ bool KviKvsObject_painter::functionrotateMatrix(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functiontranslateMatrix(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,translate)
 {
 	kvs_real_t dXtrasl,dYtrasl;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1177,7 +1179,7 @@ bool KviKvsObject_painter::functiontranslateMatrix(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionshearMatrix(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,shear)
 {
 	kvs_real_t dShearh,dShearv;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1192,7 +1194,7 @@ bool KviKvsObject_painter::functionshearMatrix(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionscaleMatrix(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,scale)
 {
 	kvs_real_t dScalex,dScaley;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1208,7 +1210,7 @@ bool KviKvsObject_painter::functionscaleMatrix(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionresetMatrix(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(painter,reset)
 {
 	if(!m_pPainter)return true;
 	//m_pMatrix.reset();
@@ -1217,7 +1219,7 @@ bool KviKvsObject_painter::functionresetMatrix(KviKvsObjectFunctionCall *)
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawHtmlText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawHtmlText)
 {
 	QString szText;
 	kvs_int_t iX,iY,iW,iH;
@@ -1240,7 +1242,7 @@ bool KviKvsObject_painter::functiondrawHtmlText(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionhtmlTextSize(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,htmlTextSize)
 {
 	QString szText;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1257,7 +1259,7 @@ bool KviKvsObject_painter::functionhtmlTextSize(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawIcon(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,drawIcon)
 {
 	QString szIcon,szState;
 	kvs_int_t iX,iY,iW,iH;
@@ -1267,11 +1269,11 @@ bool KviKvsObject_painter::functiondrawIcon(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("y",KVS_PT_INT,0,iY)
 
 		KVSO_PARAMETER("icon",KVS_PT_STRING,0,szIcon)
-
+		KVSO_PARAMETER("state",KVS_PT_STRING,KVS_PF_OPTIONAL,szState)
 		KVSO_PARAMETER("w",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
 		KVSO_PARAMETER("h",KVS_PT_INT,KVS_PF_OPTIONAL,iH)
 
-		KVSO_PARAMETER("state",KVS_PT_STRING,KVS_PF_OPTIONAL,szState)
+		
 	KVSO_PARAMETERS_END(c)
 	if (!m_pPainter) return true;
 	QPixmap *pix=g_pIconManager->getImage(szIcon);
@@ -1286,7 +1288,8 @@ bool KviKvsObject_painter::functiondrawIcon(KviKvsObjectFunctionCall *c)
 	QIcon::Mode mode=QIcon::Normal;
 	if(!ico.isNull())
 	{
-		if (KviQString::equalCI(szState,"Disabled"))mode=QIcon::Disabled;
+		if (KviQString::equalCI(szState,"Disabled"))
+			mode=QIcon::Disabled;
 		else if (KviQString::equalCI(szState,"Active"))mode=QIcon::Active;
 		else if (KviQString::equalCI(szState,"Selected"))mode=QIcon::Selected;
 		if (c->parameterCount()<5)
@@ -1297,7 +1300,7 @@ bool KviKvsObject_painter::functiondrawIcon(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetOpacity(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setOpacity)
 {
 	if(!m_pPainter)return true;
 	kvs_real_t dOpacity;
@@ -1309,7 +1312,7 @@ bool KviKvsObject_painter::functionsetOpacity(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetTextAntialiasing(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setTextAntialiasing)
 {
 	if(!m_pPainter)return true;
 
@@ -1321,7 +1324,7 @@ bool KviKvsObject_painter::functionsetTextAntialiasing(KviKvsObjectFunctionCall 
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetAntialiasing(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setAntialiasing)
 {
 	if(!m_pPainter)return true;
 
@@ -1333,7 +1336,7 @@ bool KviKvsObject_painter::functionsetAntialiasing(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetSmoothPixmapTransform(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setSmoothPixmapTransform)
 {
 	if(!m_pPainter)return true;
 
@@ -1345,7 +1348,7 @@ bool KviKvsObject_painter::functionsetSmoothPixmapTransform(KviKvsObjectFunction
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetPenJoinStyle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setPenJoinStyle)
 {
 	QString szStyle;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1361,7 +1364,7 @@ bool KviKvsObject_painter::functionsetPenJoinStyle(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetPenCapStyle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setPenCapStyle)
 {
 	QString szStyle;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1377,21 +1380,21 @@ bool KviKvsObject_painter::functionsetPenCapStyle(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsave(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(painter,save)
 {
 	if(m_pPainter)
 		m_pPainter->save();
     return true;
 }
 
-bool KviKvsObject_painter::functionrestore(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(painter,restore)
 {
 	if(m_pPainter)
 		m_pPainter->restore();
     return true;
 }
 
-bool KviKvsObject_painter::functionsetPenStyle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setPenStyle)
 {
 	QString szStyle;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1413,11 +1416,11 @@ bool KviKvsObject_painter::functionsetPenStyle(KviKvsObjectFunctionCall *c)
 		pen.setStyle(penstyles_cod[j]);
 		m_pPainter->setPen(pen);
 	}
-	else c->warning(__tr2qs("Unknown pen style %Q"),&szStyle);
+	else c->warning(__tr2qs_ctx("Unknown pen style '%Q'","objects"),&szStyle);
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetBrushStyle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setBrushStyle)
 {
 	QString szStyle;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1439,11 +1442,11 @@ bool KviKvsObject_painter::functionsetBrushStyle(KviKvsObjectFunctionCall *c)
 		brush.setStyle(brushstyles_cod[j]);
 		m_pPainter->setBrush(brush);
 	}
-	else c->warning(__tr2qs("Unknown brush style %Q"),&szStyle);
+	else c->warning(__tr2qs_ctx("Unknown brush style '%Q'","objects"),&szStyle);
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetGradientStart(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setGradientStart)
 {
 	kvs_real_t dX,dY;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1455,7 +1458,7 @@ bool KviKvsObject_painter::functionsetGradientStart(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetGradientStop(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setGradientStop)
 {
 	kvs_real_t dX,dY;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1467,7 +1470,7 @@ bool KviKvsObject_painter::functionsetGradientStop(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetGradientColor(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setGradientColor)
 {
 	kvs_real_t dAt;
 	kvs_int_t iCol1,iCol2,iCol3,iOpacity;
@@ -1491,7 +1494,7 @@ bool KviKvsObject_painter::functionsetGradientColor(KviKvsObjectFunctionCall *c)
 		{
 			if (!var2->asInteger(iOpacity))
 			{
-				c->warning("The opacity parameter didn't evaluate to integer");
+				c->warning(__tr2qs_ctx("The opacity parameter didn't evaluate to integer","objects"));
 				return true;
 			}
 		}
@@ -1504,12 +1507,12 @@ bool KviKvsObject_painter::functionsetGradientColor(KviKvsObjectFunctionCall *c)
 	{
 		if(c->paramCount()<4)
 		{
-			c->error(__tr2qs("Color name or triplette RGB/HSV values required"));
+			c->error(__tr2qs_ctx("Color name or triplette RGB/HSV values required","objects"));
 			return true;
 		}
 		if ( !var2->asInteger(iCol2)||!var3->asInteger(iCol3))
 		{
-			c->error(__tr2qs("One of the triplette parameters didn't evaluate to an integer"));\
+			c->error(__tr2qs_ctx("One of the triplette parameters didn't evaluate to an integer","objects"));\
 				return true;
 		}
 		if (c->paramCount()<5) iOpacity=255;
@@ -1526,7 +1529,7 @@ bool KviKvsObject_painter::functionsetGradientColor(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetGradientAsBrush(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(painter,setGradientAsBrush)
 {
 	if (!m_pPainter) return true;
 	if (!m_pGradient) m_pGradient=new(QLinearGradient);
@@ -1534,14 +1537,14 @@ bool KviKvsObject_painter::functionsetGradientAsBrush(KviKvsObjectFunctionCall *
 	return true;
 }
 
-bool KviKvsObject_painter::functionclearGradient(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(painter,clearGradient)
 {
 	if (!m_pGradient) delete m_pGradient;
 	m_pGradient=0;
 	return true;
 }
 
-bool KviKvsObject_painter::functionsetPenWidth(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,setPenWidth)
 {
 	kvs_real_t iWidth;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1554,7 +1557,7 @@ bool KviKvsObject_painter::functionsetPenWidth(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionfillRect(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,fillRect)
 {
 	kvs_int_t iX,iY,iW,iH;
 	kvs_int_t iCol1,iCol2,iCol3,iOpacity;
@@ -1583,7 +1586,7 @@ bool KviKvsObject_painter::functionfillRect(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functioncolorNames(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,colorNames)
 {
 	QStringList color=QColor::colorNames();
 	KviKvsArray * a = new KviKvsArray();
@@ -1595,19 +1598,19 @@ bool KviKvsObject_painter::functioncolorNames(KviKvsObjectFunctionCall *c)
 	c->returnValue()->setArray(a);
 	return true;
 }
-bool KviKvsObject_painter::functionwidth(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,painterDeviceWidth)
 {
 	kvs_int_t width=m_pPainter->device()->width();
 	c->returnValue()->setInteger(width);
 	return true;
 }
-bool KviKvsObject_painter::functionheight(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,painterDeviceHeight)
 {
 	kvs_int_t height=m_pPainter->device()->height();
 	c->returnValue()->setInteger(height);
 	return true;
 }
-bool KviKvsObject_painter::functionpathMoveTo(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,pathMoveTo)
 {
 	kvs_real_t dX,dY;
 
@@ -1620,7 +1623,7 @@ bool KviKvsObject_painter::functionpathMoveTo(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionpathLineTo(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,pathLineTo)
 {
 	kvs_real_t dX,dY;
 
@@ -1633,7 +1636,7 @@ bool KviKvsObject_painter::functionpathLineTo(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functionpathAddText(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(painter,pathAddText)
 {
 	kvs_real_t dX,dY;
 	QString szText;
@@ -1648,7 +1651,7 @@ bool KviKvsObject_painter::functionpathAddText(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_painter::functiondrawPath(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(painter,drawPath)
 {
 	if (m_pPainter) m_pPainter->drawPath(*m_pPainterPath);
 	//delete m_pPainterPath;
@@ -1656,7 +1659,7 @@ bool KviKvsObject_painter::functiondrawPath(KviKvsObjectFunctionCall *)
 	return true;
 }
 
-bool KviKvsObject_painter::functionresetPath(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(painter,resetPath)
 {
 	if (m_pPainterPath){
 		delete m_pPainterPath;
