@@ -145,7 +145,7 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		{
 			if(pWidget)
 			{
-				pContext->warning(__tr2qs("The window identifier preceeded by WinId must be the first object in the search path"));
+				pContext->warning(__tr2qs("The window identifier preceded by WinId must be the first object in the search path"));
 				return false;
 			} else {
 				pWidget = g_pApp->findWindow(szName);
