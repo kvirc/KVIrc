@@ -143,7 +143,7 @@ KVSO_CLASS_FUNCTION(wizard,addPage)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
+		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
 		return true;
 	}
 	((KviTalWizard *)widget())->addPage(((QWidget *)(ob->object())),szLabel);
@@ -165,7 +165,7 @@ KVSO_CLASS_FUNCTION(wizard,insertPage)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
+		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
 		return true;
 	}
 	((KviTalWizard *)widget())->insertPage(((QWidget *)(ob->object())),szLabel,uIndex);
@@ -186,7 +186,7 @@ KVSO_CLASS_FUNCTION(wizard,setTitle)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Widget object required"));
+		c->warning(__tr2qs_ctx("Widget object required","objects"));
 		return true;
 	}
 	((KviTalWizard *)widget())->setPageTitle(((QWidget *)(ob->object())),szTitle);
@@ -205,7 +205,7 @@ KVSO_CLASS_FUNCTION(wizard,setBackEnabled)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Widget object required"));
+		c->warning(__tr2qs_ctx("Widget object required","objects"));
 		return true;
 	}
 	((KviTalWizard *)widget())->setBackEnabled(((QWidget *)(ob->object())),bEnabled);
@@ -226,7 +226,7 @@ KVSO_CLASS_FUNCTION(wizard,setNextEnabled)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Widget object required"));
+		c->warning(__tr2qs_ctx("Widget object required","objects"));
 		return true;
 	}
 	((KviTalWizard *)widget())->setNextEnabled(((QWidget *)(ob->object())),bEnabled);
@@ -246,7 +246,7 @@ KVSO_CLASS_FUNCTION(wizard,setFinishEnabled)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Widget object required"));
+		c->warning(__tr2qs_ctx("Widget object required","objects"));
 		return true;
 	}
 	((KviTalWizard *)widget())->setFinishEnabled(((QWidget *)(ob->object())),bEnabled);
@@ -266,7 +266,7 @@ KVSO_CLASS_FUNCTION(wizard,setHelpEnabled)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Widget object required"));
+		c->warning(__tr2qs_ctx("Widget object required","objects"));
 		return true;
 	}
 	((KviTalWizard *)widget())->setHelpEnabled(((QWidget *)(ob->object())),bEnabled);
