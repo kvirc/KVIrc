@@ -1,14 +1,5 @@
 # CMakeLists for src/modules/perlcore
 
-# From qmake
-#win32{
-#	LIBS += -lperl58
-#}
-#
-#mac {
-#	LIBS += -lperl -L$(PERLDIR)/CORE/
-#}
-
 IF(UNIX)
 	IF(APPLE)
 		LIST(APPEND LIBS -lperl)

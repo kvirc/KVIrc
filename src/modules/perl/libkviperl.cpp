@@ -554,13 +554,13 @@ static bool perl_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 */
 
 static bool perl_kvs_fnc_isAvailable(KviKvsModuleFunctionCall * c)
-{ 
+{
 #ifdef COMPILE_PERL_SUPPORT
 	g_pPerlCoreModule = g_pModuleManager->getModule("perlcore");
 	c->returnValue()->setBoolean(g_pPerlCoreModule ? true : false);
-#else //!COMPILE_PERL_SUPPORT
+#else // COMPILE_PERL_SUPPORT
 	c->returnValue()->setBoolean(false);
-#endif //!COMPILE_PERL_SUPPORT
+#endif // COMPILE_PERL_SUPPORT
 	return true;
 }
 
