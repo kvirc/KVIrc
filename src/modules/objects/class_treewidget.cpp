@@ -397,7 +397,7 @@ KVSO_CLASS_FUNCTION(treewidget,setSelectionMode)
 		((QTreeWidget *)widget())->setSelectionMode(QTreeWidget::ExtendedSelection);
 	else if(KviQString::equalCI(szMode,"Single"))
 		((QTreeWidget *)widget())->setSelectionMode(QTreeWidget::SingleSelection);
-	else c->warning(__tr2qs("Invalid selection mode '%Q'"),&szMode);
+	else c->warning(__tr2qs_ctx("Invalid selection mode '%Q'","objects"),&szMode);
 	return true;
 }
 

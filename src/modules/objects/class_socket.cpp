@@ -702,7 +702,7 @@ KVSO_CLASS_FUNCTION(socket,listen)
 #ifndef COMPILE_IPV6_SUPPORT
 	if(m_bIPv6)
 	{
-		c->warning(__tr2qs("No IPv6 support in this executable"));
+		c->warning(__tr2qs_ctx("No IPv6 support in this executable","objects"));
 		c->returnValue()->setBoolean(false);
 		reset();
 		return true;
@@ -960,7 +960,7 @@ debug ("Socket created");
 	{
 		unsigned int uOldConnectionId = m_uConnectionId;
 		callFunction(this,"connectFailedEvent",new KviKvsVariantList(
-			new KviKvsVariant(__tr2qs("Failed to create the socket"))));
+			new KviKvsVariant(__tr2qs_ctx("Failed to create the socket","objects"))));
 		if(m_uConnectionId == uOldConnectionId)reset();
 		// else it has already been called!
 		return;

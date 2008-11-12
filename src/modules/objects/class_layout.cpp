@@ -136,10 +136,12 @@ bool KviKvsObject_layout::init(KviKvsRunTimeContext * pContext,KviKvsVariantList
 
 	if(!w)
 	{
-		pContext->warning(__tr2qs("The parent of a layout must be a widget!"));
+		pContext->warning(__tr2qs_ctx("The parent of a layout must be a widget!","objects"));
 		return false;
 	}
 	setObject(new QGridLayout(w));
+	((QGridLayout *)object())->setVerticalSpacing(0);
+	((QGridLayout *)object())->setHorizontalSpacing(0);
 	setObjectName(getName());
 	return true;
 }
@@ -309,4 +311,6 @@ KVSO_CLASS_FUNCTION(layout,setAlignment)
 	if (widget()) ((QGridLayout *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;
 }
-
+#ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
+#include "m_class_layout.moc"
+#endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

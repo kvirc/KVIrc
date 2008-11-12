@@ -145,7 +145,7 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		{
 			if(pWidget)
 			{
-				pContext->warning(__tr2qs("The window identifier preceded by WinId must be the first object in the search path"));
+				pContext->warning(__tr2qs_ctx("The window identifier preceded by WinId must be the first object in the search path","objects"));
 				return false;
 			} else {
 				pWidget = g_pApp->findWindow(szName);
@@ -161,7 +161,7 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		}
 		if( !pWidget )
 		{
-			pContext->warning(__tr2qs("Failed to find one of the wrap path widgets (%Q::%Q)"),&szClass,&szName);
+			pContext->warning(__tr2qs_ctx("Failed to find one of the wrap path widgets ('%Q'::'%Q')","objects"),&szClass,&szName);
 			return false;
 		}
 	}
@@ -170,7 +170,7 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 	}
 	if( !pWidget )
 	{
-		pContext->warning(__tr2qs("Failed to find the widget to wrap"));
+		pContext->warning(__tr2qs_ctx("Failed to find the widget to wrap","objects"));
 		return false;
 	}
 	setObject(pWidget,false);

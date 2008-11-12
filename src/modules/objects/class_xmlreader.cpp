@@ -148,20 +148,20 @@ public:
 private:
 	bool kvsCodeFailure()
 	{
-		m_szErrorString = __tr2qs("Error in KVS class implementation: processing aborted");
+		m_szErrorString = __tr2qs_ctx("Error in KVS class implementation: processing aborted","objects");
 		return false;
 	}
 	bool kvsCodeAbort()
 	{
-		m_szErrorString = __tr2qs("Processing aborted");
+		m_szErrorString = __tr2qs_ctx("Processing aborted","objects");
 		return false;
 	}
 	void decodeException(QString &szMsg,bool bError,const QXmlParseException &exception)
 	{
 		if(bError)
-			KviQString::sprintf(szMsg,__tr2qs("Error near line %d, column %d"),exception.lineNumber(),exception.columnNumber());
+			KviQString::sprintf(szMsg,__tr2qs_ctx("Error near line %d, column %d","objects"),exception.lineNumber(),exception.columnNumber());
 		else
-			KviQString::sprintf(szMsg,__tr2qs("Warning near line %d, column %d"),exception.lineNumber(),exception.columnNumber());
+			KviQString::sprintf(szMsg,__tr2qs_ctx("Warning near line %d, column %d","objects"),exception.lineNumber(),exception.columnNumber());
 		szMsg += ": ";
 		szMsg += exception.message();
 	}
@@ -312,7 +312,7 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 			KVSO_PARAMETER("string_or_memorybuffer_object",KVS_PT_VARIANT,0,pVariantData)
 	KVSO_PARAMETERS_END(c)
 	#ifdef QT_NO_XML
-	fatalError(__tr2qs("XML support not available in the Qt library"));
+	fatalError(__tr2qs_ctx("XML support not available in the Qt library"));
 	c->returnValue()->setBoolean(false);
 	#else
 	m_szLastError = "";
@@ -327,7 +327,7 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 		pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 		if (!pObject)
 		{
-			c->warning(__tr2qs("Data parameter is not an object"));
+			c->warning(__tr2qs_ctx("Data parameter is not an object","objects"));
 			return true;
 		}
 		if (pObject->inheritsClass("memorybuffer"))
@@ -336,7 +336,7 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 		}
 		else
 		{
-			c->warning(__tr2qs("Data parameter is not a memorybuffer object"));
+			c->warning(__tr2qs_ctx("Data parameter is not a memorybuffer object","objects"));
 			return true;
 		}
 	}
@@ -355,7 +355,7 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 	}
 	else
 	{
-		c->warning(__tr2qs("Data is not a memorybuffer object or string"));
+		c->warning(__tr2qs_ctx("Data is not a memorybuffer object or string","objects"));
 		return true;
 	}
 	QXmlSimpleReader reader;

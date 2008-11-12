@@ -141,11 +141,11 @@ KVSO_CLASS_FUNCTION(pixmap,scale)
 	if (KviQString::equalCI(szAspectRatio,"IgnoreAspectRatio")) ratio=Qt::IgnoreAspectRatio;
 	else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatio")) ratio=Qt::KeepAspectRatio;
 	else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatioByExpanding")) ratio=Qt::KeepAspectRatioByExpanding;
-	else if (!szAspectRatio.isEmpty())c->warning(__tr2qs("Unknown aspect ratio: using default value IgnoreAspectRatio"));
+	else if (!szAspectRatio.isEmpty())c->warning(__tr2qs_ctx("Unknown aspect ratio: using default value IgnoreAspectRatio","objects"));
 	Qt::TransformationMode tmode=Qt::FastTransformation;
 	if (KviQString::equalCI(szTransformation,"Fast")) tmode=Qt::FastTransformation;
 	else if (KviQString::equalCI(szTransformation,"Smooth")) tmode=Qt::SmoothTransformation;
-	else if (!szAspectRatio.isEmpty())c->warning(__tr2qs("Unknown tranformation mode: using default value Fast"));
+	else if (!szAspectRatio.isEmpty())c->warning(__tr2qs_ctx("Unknown tranformation mode: using default value Fast","objects"));
 
 	*m_pPixmap = m_pPixmap->scaled(iScaleW, iScaleH,ratio,tmode);
 	bPixmapModified=true;

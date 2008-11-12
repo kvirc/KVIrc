@@ -190,7 +190,7 @@ KVSO_CLASS_FUNCTION(dockwindow,dock)
 	else if(szDock.indexOf('b',Qt::CaseInsensitive) != -1)g_pFrame->addDockWidget(Qt::BottomDockWidgetArea,_pDockWindow);
 	else if(szDock.indexOf('f',Qt::CaseInsensitive) != -1)_pDockWindow->setFloating(true);
 	else if(szDock.indexOf('m',Qt::CaseInsensitive) != -1)qDebug("Sorry: no support for minimized dock widgets in Qt4");
-	else c->warning(__tr2qs("Invalid dock area specified"));
+	else c->warning(__tr2qs_ctx("Invalid dock area specified","objects"));
 	return true;
 }
 

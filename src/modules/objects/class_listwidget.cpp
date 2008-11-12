@@ -188,8 +188,8 @@ KVSO_CLASS_FUNCTION(listwidget,changeItem)
 	if (szText.isEmpty()) c->warning(__tr2qs_ctx("No string parameter given - using empty string","objects"));
 	if(iIndex >= (cnt = ((QListWidget *)widget())->count()))
 	{
-		c->warning(__tr2qs("Item index [%d] is too big - defaulting to "
-			"$count() - 1 [%d]"), iIndex, cnt);
+		c->warning(__tr2qs_ctx("Item index [%d] is too big - defaulting to "
+			"$count() - 1 [%d]","objects"), iIndex, cnt);
 		iIndex = cnt - 1;
 	}
 	((QListWidget *)widget())->item(iIndex)->setText(szText);

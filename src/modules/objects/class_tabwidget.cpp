@@ -393,7 +393,7 @@ KVSO_CLASS_FUNCTION(tabwidget,setTabPosition)
 		((QTabWidget *)widget())->setTabPosition(QTabWidget::North);
 	else if(KviQString::equalCI(szPos,"Bottom"))
 		((QTabWidget *)widget())->setTabPosition(QTabWidget::South);
-	else c->warning( __tr2qs("Unknown position '%Q'"),&szPos);
+	else c->warning( __tr2qs_ctx("Unknown position '%Q'","objects"),&szPos);
 	return true;
 }
 

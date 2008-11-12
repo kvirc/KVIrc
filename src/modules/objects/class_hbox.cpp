@@ -143,7 +143,7 @@ KVSO_CLASS_FUNCTION(hbox,setStretchFactor)
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	if(((KviKvsObject_widget *)pObject)->widget()->parentWidget() != widget())
 	{
-		c->warning(__tr2qs("The widget must be a child of this hbox"));
+		c->warning(__tr2qs_ctx("The widget must be a child of this hbox","objects"));
 		return true;
 	}
 	((KviTalHBox *)widget())->setStretchFactor(((QWidget *)(pObject->object())),uStretch);
@@ -173,7 +173,7 @@ KVSO_CLASS_FUNCTION(hbox,setAlignment)
 	CHECK_HOBJECT_IS_WIDGET(pObject)
 	if(((KviKvsObject_widget *)pObject)->widget()->parentWidget() != widget())
 	{
-		c->warning(__tr2qs("The widget must be a child of this hbox"));
+		c->warning(__tr2qs_ctx("The widget must be a child of this hbox","objects"));
 		return true;
 	}
 	int align,sum=0;
@@ -192,7 +192,7 @@ KVSO_CLASS_FUNCTION(hbox,setAlignment)
 			if(align)
 				sum = sum | align;
 			else
-				c->warning(__tr2qs("Unknown alignment: '%Q'"),&(*it));
+				c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objects"),&(*it));
 
 		}
 	if (widget()) ((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);

@@ -180,7 +180,7 @@ static bool objects_kvs_cmd_killClass(KviKvsModuleCommandCall * c)
 			KviKvsKernel::instance()->objectController()->deleteClass(pClass); //Yahoo!!
 		}
 	}
-	else if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("Class '%Q' is not defined"),&szClass);
+	else if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("Class '%Q' is not defined","objects"),&szClass);
 	return true;
 }
 
@@ -254,17 +254,17 @@ static bool objects_kvs_cmd_connect(KviKvsModuleCommandCall * c)
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
 	if(!obTrg)
 	{
-		c->warning(__tr2qs("Inexisting target object for objects.connect"));
+		c->warning(__tr2qs_ctx("Inexisting target object for objects.connect","objects"));
 		return true;
 	}
 	if(!obSrc)
 	{
-		c->warning(__tr2qs("Inexisting source object for objects.connect"));
+		c->warning(__tr2qs_ctx("Inexisting source object for objects.connect","objects"));
 		return true;
 	}
 	if(!obSrc->connectSignal(szSignal,obTrg,szSlot))
 	{
-		c->warning(__tr2qs("Inexisting target slot '%Q' for objects.connect"),&szSlot);
+		c->warning(__tr2qs_ctx("Inexisting target slot '%Q' for objects.connect","objects"),&szSlot);
 		return true;
 	}
 	return true;
@@ -349,7 +349,7 @@ static bool objects_kvs_fnc_instances(KviKvsModuleFunctionCall * c)
 	if(!pClass)
 	{
 		if(!szFlags.contains(QChar('q')))
-			c->warning(__tr2qs("The class '%Q' does not exist"),&szClassName);
+			c->warning(__tr2qs_ctx("The class '%Q' does not exist","objects"),&szClassName);
 		return true;
 	}
 	KviPointerHashTable<void *,KviKvsObject> * od = KviKvsKernel::instance()->objectController()->objectDict();
@@ -406,7 +406,7 @@ static bool objects_kvs_fnc_variables(KviKvsModuleFunctionCall * c)
 	KviKvsObject *ob=KviKvsKernel::instance()->objectController()->lookupObject(hObj);
 	if (!ob)
 	{
-		c->warning(__tr2qs("Object does not exists"));
+		c->warning(__tr2qs_ctx("Object does not exists","objects"));
 		return true;
 	}
 	KviPointerHashTableIterator<QString,KviKvsVariant> it(* ob->dataContainer()->dict());
@@ -448,7 +448,7 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 	KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 	if(!pClass)
 	{
-		c->warning(__tr2qs("The class '%Q' does not exist"),&szClassName);
+		c->warning(__tr2qs_ctx("The class '%Q' does not exist","objects"),&szClassName);
 		return true;
 	}
 
@@ -550,7 +550,7 @@ static bool objects_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 	obSrcClass = KviKvsKernel::instance()->objectController()->lookupObject(hClass);
 	if(!obSrcClass)
 	{
-		c->warning(__tr2qs("Inexisting class object for objects.name"));
+		c->warning(__tr2qs_ctx("Inexisting class object for objects.name","objects"));
 		return true;
 	}
 
@@ -593,12 +593,12 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
 	if(!obTrg)
 	{
-		c->warning(__tr2qs("Inexisting target object for objects.disconnect"));
+		c->warning(__tr2qs_ctx("Inexisting target object for objects.disconnect","objects"));
 		return true;
 	}
 	if(!obSrc)
 	{
-		c->warning(__tr2qs("Inexisting source object for objects.disconnect"));
+		c->warning(__tr2qs_ctx("Inexisting source object for objects.disconnect","objects"));
 		return true;
 	}
 	obSrc->disconnectSignal(szSignal,obTrg,szSlot);
@@ -644,13 +644,13 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 	obSrc=KviKvsKernel::instance()->objectController()->lookupObject(hSrc);
 	if (!obSrc)
 	{
-			c->warning(__tr2qs("Source is not an object"));
+			c->warning(__tr2qs_ctx("Source is not an object","objects"));
 		return true;
 	}
 	obDst=KviKvsKernel::instance()->objectController()->lookupObject(hDst);
 	if (!obDst)
 	{
-			c->warning(__tr2qs("Destination is not an object"));
+			c->warning(__tr2qs_ctx("Destination is not an object","objects"));
 		return true;
 	}
 
@@ -660,7 +660,7 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 	else if (obSrc->inheritsClass("widget")) pdSource=((KviKvsObject_widget *)obSrc)->widget();
 	if (!pdSource)
 	{
-		c->warning(__tr2qs("Widget, Image or Pixmap required "));
+		c->warning(__tr2qs_ctx("Widget, Image or Pixmap required ","objects"));
 		return true;
 	}
 	QPaintDevice  * pdDest = 0;
@@ -670,7 +670,7 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 	else if (obDst->inheritsClass("widget")) pdDest=((KviKvsObject_widget *)obDst)->widget();
 	if (!pdDest)
 	{
-		c->warning(__tr2qs("Widget or Pixmap required"));
+		c->warning(__tr2qs_ctx("Widget or Pixmap required","objects"));
 		return true;
 	}
 	if(obDst->inheritsClass("pixmap")){
@@ -746,13 +746,13 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 	obDest=KviKvsKernel::instance()->objectController()->lookupObject(hDest);
 	if (!obFor || !obBck || !obDest)
 	{
-		c->warning(__tr2qs("One or more of background, foreground or destination aren't objects"));
+		c->warning(__tr2qs_ctx("One or more of background, foreground or destination aren't objects","objects"));
 		return true;
 	}
 
 	if (!obBck->inheritsClass("pixmap") || !obFor->inherits("KviKvsObject_pixmap"))
 	{
-		c->warning(__tr2qs("Pixmap objects required"));
+		c->warning(__tr2qs_ctx("Pixmap objects required","objects"));
 		return true;
 	}
 
@@ -762,7 +762,7 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 
 	if (!pdDest)
 	{
-		c->warning(__tr2qs("Widget or Pixmap required "));
+		c->warning(__tr2qs_ctx("Widget or Pixmap required ","objects"));
 		return true;
 	}
 
@@ -775,12 +775,12 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 	// check size
 	if ((iBkX+uW>img_back->width())||(iBkY+uH>img_back->height()))
 	{
-		c->warning(__tr2qs("Values for background are out of image size "));
+		c->warning(__tr2qs_ctx("Values for background are out of image size ","objects"));
 		return true;
 	}
 	if ((iFoX+uW>img_fore->width())||(iFoY+uH>img_fore->height()))
 	{
-		c->warning(__tr2qs("Values for foreground are out of image size "));
+		c->warning(__tr2qs_ctx("Values for foreground are out of image size ","objects"));
 		return true;
 	}
 	QImage buffer;

@@ -140,12 +140,12 @@ KVSO_CLASS_FUNCTION(window,setCentralWidget)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
+		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
 		return true;
 	}
 	if(!ob->inheritsClass("widget"))
 	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
+		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
 		return true;
 	}
 	((KviKvsScriptWindowWindow *)widget())->setCentralWidget((KviKvsObject_widget *)ob,((KviKvsObject_widget *)ob)->widget());
