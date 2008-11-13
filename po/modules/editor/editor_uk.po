@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 18:59+0100\n"
+"POT-Creation-Date: 2008-11-13 01:59+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
 
-#: src/modules/editor/scripteditor.cpp:1017
+#: src/modules/editor/scripteditor.cpp:1020
 #, fuzzy
 msgid "&Cancel"
 msgstr "Скасування"
@@ -39,11 +39,11 @@ msgid "&Open..."
 msgstr "&Відкрити..."
 
 #: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1022
+#: src/modules/editor/scripteditor.cpp:1025
 msgid "&Replace"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:1012
+#: src/modules/editor/scripteditor.cpp:1015
 msgid "&Replace in all Aliases"
 msgstr ""
 
@@ -59,12 +59,12 @@ msgstr "Тло:"
 msgid "Brackets:"
 msgstr "Дужки:"
 
-#: src/modules/editor/scripteditor.cpp:960
+#: src/modules/editor/scripteditor.cpp:963
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Неможливо відкрити файл %s на читання."
 
-#: src/modules/editor/scripteditor.cpp:878
+#: src/modules/editor/scripteditor.cpp:877
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Неможливо відкрити файл %s на запис."
@@ -73,7 +73,7 @@ msgstr "Неможливо відкрити файл %s на запис."
 msgid "Cancel"
 msgstr "Скасування"
 
-#: src/modules/editor/scripteditor.cpp:865
+#: src/modules/editor/scripteditor.cpp:864
 msgid "Choose a Filename - KVIrc"
 msgstr "Виберіть ім'я файлу - KVIrc"
 
@@ -114,7 +114,7 @@ msgstr "Функції:"
 msgid "Keywords:"
 msgstr "Ключові слова:"
 
-#: src/modules/editor/scripteditor.cpp:946
+#: src/modules/editor/scripteditor.cpp:949
 msgid "Load Script File - KVIrc"
 msgstr "Завантажити файл скрипта - KVIrc"
 
@@ -122,7 +122,7 @@ msgstr "Завантажити файл скрипта - KVIrc"
 msgid "Normal text:"
 msgstr "Звичайний текст:"
 
-#: src/modules/editor/scripteditor.cpp:959
+#: src/modules/editor/scripteditor.cpp:962
 msgid "Open Failed - KVIrc"
 msgstr "Помилка відкриття - KVIrc"
 
@@ -134,16 +134,16 @@ msgstr "Переваги"
 msgid "Punctuation:"
 msgstr "Розділові знаки:"
 
-#: src/modules/editor/scripteditor.cpp:1000
+#: src/modules/editor/scripteditor.cpp:1003
 msgid "Replace with"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:929
+#: src/modules/editor/scripteditor.cpp:932
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Рядків: %d Колонок:%d"
 
-#: src/modules/editor/scripteditor.cpp:877
+#: src/modules/editor/scripteditor.cpp:876
 msgid "Save Failed - KVIrc"
 msgstr "Помилка запису - KVIrc"
 
@@ -151,6 +151,6 @@ msgstr "Помилка запису - KVIrc"
 msgid "Variables:"
 msgstr "Змінні:"
 
-#: src/modules/editor/scripteditor.cpp:990
+#: src/modules/editor/scripteditor.cpp:993
 msgid "Word to Find"
 msgstr ""

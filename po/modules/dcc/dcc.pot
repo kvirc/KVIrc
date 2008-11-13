@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-01 15:14+0100\n"
+"POT-Creation-Date: 2008-11-13 01:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -601,7 +601,7 @@ msgid "&Insert"
 msgstr ""
 
 #: src/modules/dcc/broker.cpp:161
-#: src/modules/dcc/broker.cpp:778
+#: src/modules/dcc/broker.cpp:781
 msgid "Choose Files to Send - KVIrc"
 msgstr ""
 
@@ -610,7 +610,7 @@ msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr ""
 
 #: src/modules/dcc/broker.cpp:201
-#: src/modules/dcc/broker.cpp:815
+#: src/modules/dcc/broker.cpp:818
 msgid "Can't open file %Q for reading"
 msgstr ""
 
@@ -633,7 +633,7 @@ msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
 msgstr ""
 
 #: src/modules/dcc/broker.cpp:290
-#: src/modules/dcc/broker.cpp:541
+#: src/modules/dcc/broker.cpp:544
 msgid "DCC %1 Request - KVIrc"
 msgstr ""
 
@@ -659,19 +659,19 @@ msgstr ""
 msgid "DCC CANVAS request"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:500
+#: src/modules/dcc/broker.cpp:503
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:513
+#: src/modules/dcc/broker.cpp:516
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:526
+#: src/modules/dcc/broker.cpp:529
 msgid ""
 "<center><b>Note:</b></center>The file appears to be an avatar that you have "
 "requested. You should not change its filename. Save it in a location where "
@@ -682,33 +682,33 @@ msgid ""
 "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:554
+#: src/modules/dcc/broker.cpp:557
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:615
+#: src/modules/dcc/broker.cpp:618
 msgid "Choose Files to Save - KVIrc"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:628
+#: src/modules/dcc/broker.cpp:631
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:662
+#: src/modules/dcc/broker.cpp:665
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
 "file, or<br><b>resume</b> an incomplete download?"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:674
+#: src/modules/dcc/broker.cpp:677
 msgid ""
 "The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
 "you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
 "the new file ?"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:744
+#: src/modules/dcc/broker.cpp:747
 msgid "File %s exists, auto-renaming to %Q"
 msgstr ""
 

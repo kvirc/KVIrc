@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-01 15:14+0100\n"
+"POT-Creation-Date: 2008-11-13 01:59+0100\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -18,7 +18,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: src/modules/options/optw_dcc.cpp:277 src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72
 msgid " bytes"
 msgstr " bajtů"
 
@@ -39,7 +40,8 @@ msgstr " min"
 
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
-#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_dcc.cpp:268
 #: src/modules/options/optw_connection.cpp:151
 msgid " msec"
@@ -94,7 +96,8 @@ msgstr "&Nová Proxy"
 msgid "&New Server"
 msgstr "&Nový server"
 
-#: src/modules/options/optw_servers.cpp:336 src/modules/options/dialog.cpp:228
+#: src/modules/options/optw_servers.cpp:336
+#: src/modules/options/dialog.cpp:228
 #: src/modules/options/optw_identity.cpp:232
 #: src/modules/options/container.cpp:64
 msgid "&OK"
@@ -1567,9 +1570,12 @@ msgstr "Profil"
 msgid "Add Rule"
 msgstr "Přidat pravidlo"
 
-#: src/modules/options/optw_connection.h:45 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_irc.h:57 src/modules/options/optw_identity.h:203
+#: src/modules/options/optw_connection.h:45
+#: src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102
+#: src/modules/options/optw_channel.h:64
+#: src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_identity.h:203
 msgid "Advanced"
 msgstr "Pokročilé"
 
@@ -1694,7 +1700,8 @@ msgstr "Připojit k VERSION odezvě:"
 msgid "Auto flush logs every"
 msgstr "Auto flush logů každý"
 
-#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68
+#: src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Autodetekce"
 
@@ -1706,7 +1713,8 @@ msgstr "Automatická detekce"
 msgid "Automatically Log"
 msgstr "Automaticky logovat"
 
-#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Automaticky přijmout"
@@ -1862,7 +1870,8 @@ msgstr "Cache IP adresy"
 #: src/modules/options/optw_servers.cpp:342
 #: src/modules/options/optw_servers.cpp:826
 #: src/modules/options/optw_nickserv.cpp:128
-#: src/modules/options/dialog.cpp:243 src/modules/options/optw_identity.cpp:95
+#: src/modules/options/dialog.cpp:243
+#: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/optw_identity.cpp:906
 #: src/modules/options/container.cpp:72
@@ -1871,7 +1880,8 @@ msgstr "Zrušit"
 
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
-#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:144
@@ -1969,11 +1979,13 @@ msgstr "Smazat seznam"
 msgid "Close in tray"
 msgstr "Zavřít v panelu"
 
-#: src/modules/options/dialog.cpp:230 src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:230
+#: src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Zavře tento dialog a provede všechny změny."
 
-#: src/modules/options/dialog.cpp:245 src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:245
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Zavře tento dialog, bez provedení změn."
 
@@ -1990,7 +2002,8 @@ msgid "Commit all changes immediately."
 msgstr "Provede všechny změny okamžitě."
 
 #: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_proxy.cpp:106 src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_proxy.cpp:106
+#: src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
 msgid "Configuration"
 msgstr "Nastavení"
@@ -2452,10 +2465,12 @@ msgid "Gender:"
 msgstr "Pohlaví:"
 
 #: src/modules/options/optw_servers.cpp:212
-#: src/modules/options/optw_messages.cpp:74 src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_messages.cpp:74
+#: src/modules/options/optw_dcc.h:45
 #: src/modules/options/optw_dcc.h:88
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_channel.h:52
+#: src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_identity.h:154
 msgid "General"
 msgstr "Hlavní"
@@ -2666,7 +2681,8 @@ msgstr "Neaktivní text (Primární)"
 msgid "Inactive Text (Secondary)"
 msgstr "Neaktivní text (Sekundární)"
 
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33
+#: src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr "Vstup"
 
@@ -3244,7 +3260,8 @@ msgstr "Otervřít Query pro"
 msgid "Open all minimized"
 msgstr "Otevřít vše minimalizovaně"
 
-#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307
+#: src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Otevřít minimalizovaně při auto-příjmu"
 
@@ -3907,7 +3924,8 @@ msgstr "Řadit okna podle názvu"
 msgid "Sound"
 msgstr "Zvuk"
 
-#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60
+#: src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "Zvukový systém"
 
@@ -3932,7 +3950,8 @@ msgstr "Použít SSL protokol"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Testovat"
 
@@ -4127,14 +4146,6 @@ msgid ""
 "font setting"
 msgstr ""
 
-#: src/modules/options/optw_protection.cpp:41
-msgid ""
-"This section contains irc protection tools<br><p>like<b> flood, ignore, "
-"antispam. </b> </p>"
-msgstr ""
-"Tato sekce obsahuje irc ochranné nástroje<br><p>jako<b> flood, ignore, "
-"antispam. </b> </p>"
-
 #: src/modules/options/optw_tools.cpp:40
 msgid ""
 "This section contains irc tools<br><p>like<b> away, lag and logging system. "
@@ -4159,7 +4170,8 @@ msgstr ""
 
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
-#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:141
@@ -4560,7 +4572,8 @@ msgstr "[Neznámý typ média]"
 msgid "authentication,identify"
 msgstr "autentifikace,identifikace"
 
-#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235
+#: src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bajtů/sek"
 
@@ -4652,7 +4665,8 @@ msgid "theme,colors,messages,output"
 msgstr "motiv,barvy,zprávy,výstup"
 
 #: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
+#: src/modules/options/optw_ircview.h:37
+#: src/modules/options/optw_ircview.h:51
 msgid "theme,colors,output"
 msgstr "motiv,barvy,výstup"
 
@@ -12099,6 +12113,13 @@ msgstr "během:"
 
 #~ msgid "This query has no active targets, no message sent"
 #~ msgstr "Toto query nemá aktivní cíle, zpráva neposlána"
+
+#~ msgid ""
+#~ "This section contains irc protection tools<br><p>like<b> flood, ignore, "
+#~ "antispam. </b> </p>"
+#~ msgstr ""
+#~ "Tato sekce obsahuje irc ochranné nástroje<br><p>jako<b> flood, ignore, "
+#~ "antispam. </b> </p>"
 
 #~ msgid "This server supports the CODEPAGE command, it will be used"
 #~ msgstr "Tento server podporuje CODEPAGE příkaz, bude použit"

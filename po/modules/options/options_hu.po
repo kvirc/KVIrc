@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-01 15:14+0100\n"
+"POT-Creation-Date: 2008-11-13 01:59+0100\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,7 +16,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/options/optw_dcc.cpp:277 src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72
 msgid " bytes"
 msgstr " bájt"
 
@@ -37,7 +38,8 @@ msgstr " perc"
 
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
-#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_dcc.cpp:268
 #: src/modules/options/optw_connection.cpp:151
 msgid " msec"
@@ -92,7 +94,8 @@ msgstr "Új Proxy"
 msgid "&New Server"
 msgstr "Új szerver"
 
-#: src/modules/options/optw_servers.cpp:336 src/modules/options/dialog.cpp:228
+#: src/modules/options/optw_servers.cpp:336
+#: src/modules/options/dialog.cpp:228
 #: src/modules/options/optw_identity.cpp:232
 #: src/modules/options/container.cpp:64
 msgid "&OK"
@@ -1583,9 +1586,12 @@ msgstr "Profil"
 msgid "Add Rule"
 msgstr "Szabály Hozzáadása"
 
-#: src/modules/options/optw_connection.h:45 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_irc.h:57 src/modules/options/optw_identity.h:203
+#: src/modules/options/optw_connection.h:45
+#: src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102
+#: src/modules/options/optw_channel.h:64
+#: src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_identity.h:203
 msgid "Advanced"
 msgstr "Haladó"
 
@@ -1709,7 +1715,8 @@ msgstr "Hozzáfűzés a VERZIÓ válaszhoz: "
 msgid "Auto flush logs every"
 msgstr "Naplófájlok mentése minden"
 
-#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68
+#: src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Auto-Felismerés"
 
@@ -1721,7 +1728,8 @@ msgstr "Automatikus felismerés"
 msgid "Automatically Log"
 msgstr "Automatikus Naplózás"
 
-#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Automatikus fogadás"
@@ -1877,7 +1885,8 @@ msgstr "Ip cím tárolása"
 #: src/modules/options/optw_servers.cpp:342
 #: src/modules/options/optw_servers.cpp:826
 #: src/modules/options/optw_nickserv.cpp:128
-#: src/modules/options/dialog.cpp:243 src/modules/options/optw_identity.cpp:95
+#: src/modules/options/dialog.cpp:243
+#: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/optw_identity.cpp:906
 #: src/modules/options/container.cpp:72
@@ -1886,7 +1895,8 @@ msgstr "Mégsem"
 
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
-#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:144
@@ -1983,11 +1993,13 @@ msgstr "Lista Törlése"
 msgid "Close in tray"
 msgstr "Bezárásnál a KVIrcet tegye a tálcára"
 
-#: src/modules/options/dialog.cpp:230 src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:230
+#: src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Párbeszédablak bezárása, összes változás érvényesítése."
 
-#: src/modules/options/dialog.cpp:245 src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:245
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Párbeszédablak bezárása, összes változás elvetése."
 
@@ -2004,7 +2016,8 @@ msgid "Commit all changes immediately."
 msgstr "Minden változás alkalmazása azonnal."
 
 #: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_proxy.cpp:106 src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_proxy.cpp:106
+#: src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
 msgid "Configuration"
 msgstr "Beállítások"
@@ -2467,10 +2480,12 @@ msgid "Gender:"
 msgstr "Nem:"
 
 #: src/modules/options/optw_servers.cpp:212
-#: src/modules/options/optw_messages.cpp:74 src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_messages.cpp:74
+#: src/modules/options/optw_dcc.h:45
 #: src/modules/options/optw_dcc.h:88
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_channel.h:52
+#: src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_identity.h:154
 msgid "General"
 msgstr "Általános"
@@ -2687,7 +2702,8 @@ msgstr "Inaktív Szöveg (Elsődleges)"
 msgid "Inactive Text (Secondary)"
 msgstr "Inaktív szöveg (Másodlagos)"
 
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33
+#: src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr "Bevitel"
 
@@ -3268,7 +3284,8 @@ msgstr "Privát nyitása"
 msgid "Open all minimized"
 msgstr "Minden kicsinyített megnyitása"
 
-#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307
+#: src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Megnyitás a háttérben automatikus fogadásnál"
 
@@ -3926,7 +3943,8 @@ msgstr "Ablakok rendezése név szerint"
 msgid "Sound"
 msgstr "Hangok"
 
-#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60
+#: src/modules/options/optw_sound.h:47
 msgid "Sound System"
 msgstr "Hangrendszer"
 
@@ -3951,7 +3969,8 @@ msgstr "SSL protokol használata"
 msgid "TIME"
 msgstr "IDŐ"
 
-#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Teszt"
 
@@ -4156,14 +4175,6 @@ msgid ""
 "font setting"
 msgstr ""
 
-#: src/modules/options/optw_protection.cpp:41
-msgid ""
-"This section contains irc protection tools<br><p>like<b> flood, ignore, "
-"antispam. </b> </p>"
-msgstr ""
-"Ebben a részben találod a védő eszközöket<br><p> mint például<b> flood, "
-"mellőzés, spamszűrés.</b> </p>"
-
 #: src/modules/options/optw_tools.cpp:40
 msgid ""
 "This section contains irc tools<br><p>like<b> away, lag and logging system. "
@@ -4190,7 +4201,8 @@ msgstr ""
 
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
-#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:141
@@ -4605,7 +4617,8 @@ msgstr "[Ismeretlen Médiatípus]"
 msgid "authentication,identify"
 msgstr "azonosítás,auth"
 
-#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235
+#: src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bájt/mp"
 
@@ -4697,7 +4710,8 @@ msgid "theme,colors,messages,output"
 msgstr "megjelenés,színek,üzenetek,kimenet"
 
 #: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
+#: src/modules/options/optw_ircview.h:37
+#: src/modules/options/optw_ircview.h:51
 msgid "theme,colors,output"
 msgstr "megjelenés,színek,kimenet"
 
@@ -4789,6 +4803,13 @@ msgstr "időn belül:"
 
 #~ msgid "Taskbar Alert"
 #~ msgstr "Figyelmeztetés a Tálcán"
+
+#~ msgid ""
+#~ "This section contains irc protection tools<br><p>like<b> flood, ignore, "
+#~ "antispam. </b> </p>"
+#~ msgstr ""
+#~ "Ebben a részben találod a védő eszközöket<br><p> mint például<b> flood, "
+#~ "mellőzés, spamszűrés.</b> </p>"
 
 #~ msgid "Tree Taskbar"
 #~ msgstr "Fa lista"

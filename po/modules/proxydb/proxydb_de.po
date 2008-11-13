@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: proxydb_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 18:59+0100\n"
+"POT-Creation-Date: 2008-11-13 01:59+0100\n"
 "PO-Revision-Date: 2008-08-03 19:20+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -17,12 +17,12 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/proxydb/libkviproxydb.cpp:454
+#: src/modules/proxydb/libkviproxydb.cpp:453
 msgid "The specified IP is not valid"
 msgstr "Die angegebene IP ist nicht gültig"
 
 #: src/modules/proxydb/libkviproxydb.cpp:311
-#: src/modules/proxydb/libkviproxydb.cpp:578
+#: src/modules/proxydb/libkviproxydb.cpp:577
 msgid "The specified protocol does not exist"
 msgstr "Das angegebene Protokoll existiert nicht"
 
@@ -33,14 +33,14 @@ msgstr "Der angegebene Proxy existiert bereits"
 #: src/modules/proxydb/libkviproxydb.cpp:70
 #: src/modules/proxydb/libkviproxydb.cpp:113
 #: src/modules/proxydb/libkviproxydb.cpp:374
-#: src/modules/proxydb/libkviproxydb.cpp:446
-#: src/modules/proxydb/libkviproxydb.cpp:509
-#: src/modules/proxydb/libkviproxydb.cpp:570
-#: src/modules/proxydb/libkviproxydb.cpp:614
+#: src/modules/proxydb/libkviproxydb.cpp:445
+#: src/modules/proxydb/libkviproxydb.cpp:508
+#: src/modules/proxydb/libkviproxydb.cpp:569
+#: src/modules/proxydb/libkviproxydb.cpp:613
 msgid "The specified proxy does not exist"
 msgstr "Der angegebene Proxy existiert nicht"
 
-#: src/modules/proxydb/libkviproxydb.cpp:435
+#: src/modules/proxydb/libkviproxydb.cpp:434
 msgid "You must provide the IP as parameter"
 msgstr "Die IP muss als Parameter angegeben werden"
 
@@ -48,17 +48,17 @@ msgstr "Die IP muss als Parameter angegeben werden"
 msgid "You must provide the port number as parameter"
 msgstr "Die Port-Nummer muss als Parameter angegeben werden"
 
-#: src/modules/proxydb/libkviproxydb.cpp:559
+#: src/modules/proxydb/libkviproxydb.cpp:558
 msgid "You must provide the protocol as parameter"
 msgstr "Das Protokoll muss als Parameter angegeben werden"
 
 #: src/modules/proxydb/libkviproxydb.cpp:60
 #: src/modules/proxydb/libkviproxydb.cpp:103
 #: src/modules/proxydb/libkviproxydb.cpp:357
-#: src/modules/proxydb/libkviproxydb.cpp:429
-#: src/modules/proxydb/libkviproxydb.cpp:498
-#: src/modules/proxydb/libkviproxydb.cpp:553
-#: src/modules/proxydb/libkviproxydb.cpp:597
+#: src/modules/proxydb/libkviproxydb.cpp:428
+#: src/modules/proxydb/libkviproxydb.cpp:497
+#: src/modules/proxydb/libkviproxydb.cpp:552
+#: src/modules/proxydb/libkviproxydb.cpp:596
 msgid "You must provide the proxy hostname as parameter"
 msgstr "Es muss der Hostname des Proxys als Parameter angegeben werden"
 
@@ -66,6 +66,6 @@ msgstr "Es muss der Hostname des Proxys als Parameter angegeben werden"
 msgid "You must provide the proxy name as parameter"
 msgstr "Der Proxy-Name muss als Parameter angegeben werden"
 
-#: src/modules/proxydb/libkviproxydb.cpp:603
+#: src/modules/proxydb/libkviproxydb.cpp:602
 msgid "You must provide the value as parameter"
 msgstr "Der Wert muss als Parameter angegeben werden"

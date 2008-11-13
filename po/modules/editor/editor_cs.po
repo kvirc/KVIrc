@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 18:59+0100\n"
+"POT-Creation-Date: 2008-11-13 01:59+0100\n"
 "PO-Revision-Date: 2005-11-24 19:14+0100\n"
 "Last-Translator: Dušan Hokův <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/editor/scripteditor.cpp:1017
+#: src/modules/editor/scripteditor.cpp:1020
 #, fuzzy
 msgid "&Cancel"
 msgstr "Zrušit"
@@ -35,11 +35,11 @@ msgid "&Open..."
 msgstr "&Otevřít..."
 
 #: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1022
+#: src/modules/editor/scripteditor.cpp:1025
 msgid "&Replace"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:1012
+#: src/modules/editor/scripteditor.cpp:1015
 msgid "&Replace in all Aliases"
 msgstr ""
 
@@ -55,12 +55,12 @@ msgstr "Pozadí:"
 msgid "Brackets:"
 msgstr "Závorky:"
 
-#: src/modules/editor/scripteditor.cpp:960
+#: src/modules/editor/scripteditor.cpp:963
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Nelze otevřít soubor %s pro čtení."
 
-#: src/modules/editor/scripteditor.cpp:878
+#: src/modules/editor/scripteditor.cpp:877
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Nelze otevřít soubor %s pro zápis."
@@ -69,7 +69,7 @@ msgstr "Nelze otevřít soubor %s pro zápis."
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/modules/editor/scripteditor.cpp:865
+#: src/modules/editor/scripteditor.cpp:864
 msgid "Choose a Filename - KVIrc"
 msgstr "Vyberte soubor - KVIrc"
 
@@ -110,7 +110,7 @@ msgstr "Funkce:"
 msgid "Keywords:"
 msgstr "Klíčová slova:"
 
-#: src/modules/editor/scripteditor.cpp:946
+#: src/modules/editor/scripteditor.cpp:949
 msgid "Load Script File - KVIrc"
 msgstr "Otevřít soubor skriptu - KVIrc"
 
@@ -118,7 +118,7 @@ msgstr "Otevřít soubor skriptu - KVIrc"
 msgid "Normal text:"
 msgstr "Normální text:"
 
-#: src/modules/editor/scripteditor.cpp:959
+#: src/modules/editor/scripteditor.cpp:962
 msgid "Open Failed - KVIrc"
 msgstr "Otevření selhalo - KVIrc"
 
@@ -130,16 +130,16 @@ msgstr "Předvolby"
 msgid "Punctuation:"
 msgstr "Interpunkce:"
 
-#: src/modules/editor/scripteditor.cpp:1000
+#: src/modules/editor/scripteditor.cpp:1003
 msgid "Replace with"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:929
+#: src/modules/editor/scripteditor.cpp:932
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Řádek: %d Sloupec: %d"
 
-#: src/modules/editor/scripteditor.cpp:877
+#: src/modules/editor/scripteditor.cpp:876
 msgid "Save Failed - KVIrc"
 msgstr "Uložení selhalo - KVIrc"
 
@@ -147,6 +147,6 @@ msgstr "Uložení selhalo - KVIrc"
 msgid "Variables:"
 msgstr "Proměnné:"
 
-#: src/modules/editor/scripteditor.cpp:990
+#: src/modules/editor/scripteditor.cpp:993
 msgid "Word to Find"
 msgstr ""

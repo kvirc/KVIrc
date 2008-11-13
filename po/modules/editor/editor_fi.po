@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-28 18:59+0100\n"
+"POT-Creation-Date: 2008-11-13 01:59+0100\n"
 "PO-Revision-Date: 2007-11-21 18:00+0200\n"
 "Last-Translator: Santeri Piippo <aleksanteri4028@gmail.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/editor/scripteditor.cpp:1017
+#: src/modules/editor/scripteditor.cpp:1020
 #, fuzzy
 msgid "&Cancel"
 msgstr "Peruuta"
@@ -34,11 +34,11 @@ msgid "&Open..."
 msgstr "&Avaa..."
 
 #: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1022
+#: src/modules/editor/scripteditor.cpp:1025
 msgid "&Replace"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:1012
+#: src/modules/editor/scripteditor.cpp:1015
 msgid "&Replace in all Aliases"
 msgstr ""
 
@@ -54,12 +54,12 @@ msgstr "Tausta:"
 msgid "Brackets:"
 msgstr "Hakasulkeet:"
 
-#: src/modules/editor/scripteditor.cpp:960
+#: src/modules/editor/scripteditor.cpp:963
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Ei voitu avata tiedostoa %s luettavaksi."
 
-#: src/modules/editor/scripteditor.cpp:878
+#: src/modules/editor/scripteditor.cpp:877
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Ei voitu avata tidostoa %s kirjoitettavaksi."
@@ -68,7 +68,7 @@ msgstr "Ei voitu avata tidostoa %s kirjoitettavaksi."
 msgid "Cancel"
 msgstr "Peruuta"
 
-#: src/modules/editor/scripteditor.cpp:865
+#: src/modules/editor/scripteditor.cpp:864
 msgid "Choose a Filename - KVIrc"
 msgstr "Valitse tiedostonimi - KVIrc"
 
@@ -109,7 +109,7 @@ msgstr "Funktiot:"
 msgid "Keywords:"
 msgstr "Avainsanat:"
 
-#: src/modules/editor/scripteditor.cpp:946
+#: src/modules/editor/scripteditor.cpp:949
 msgid "Load Script File - KVIrc"
 msgstr "Lataa skriptitiedosto - KVIrc"
 
@@ -117,7 +117,7 @@ msgstr "Lataa skriptitiedosto - KVIrc"
 msgid "Normal text:"
 msgstr "Normaali teksti:"
 
-#: src/modules/editor/scripteditor.cpp:959
+#: src/modules/editor/scripteditor.cpp:962
 msgid "Open Failed - KVIrc"
 msgstr "Avaus epäonnistui - KVIrc"
 
@@ -129,16 +129,16 @@ msgstr "Asetukset"
 msgid "Punctuation:"
 msgstr "Välimerkit:"
 
-#: src/modules/editor/scripteditor.cpp:1000
+#: src/modules/editor/scripteditor.cpp:1003
 msgid "Replace with"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:929
+#: src/modules/editor/scripteditor.cpp:932
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Rivi: %d Merkki: %d"
 
-#: src/modules/editor/scripteditor.cpp:877
+#: src/modules/editor/scripteditor.cpp:876
 msgid "Save Failed - KVIrc"
 msgstr "Tallennus epäonnistui - KVIrc"
 
@@ -146,6 +146,6 @@ msgstr "Tallennus epäonnistui - KVIrc"
 msgid "Variables:"
 msgstr "Muuttujat:"
 
-#: src/modules/editor/scripteditor.cpp:990
+#: src/modules/editor/scripteditor.cpp:993
 msgid "Word to Find"
 msgstr ""

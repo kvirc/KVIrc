@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-01 15:14+0100\n"
+"POT-Creation-Date: 2008-11-13 01:59+0100\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -14,7 +14,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.9.5\n"
 
-#: src/modules/options/optw_dcc.cpp:277 src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72
 #, fuzzy
 msgid " bytes"
 msgstr "0 bajtova"
@@ -38,7 +39,8 @@ msgstr "odgovoreno"
 
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
-#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_dcc.cpp:268
 #: src/modules/options/optw_connection.cpp:151
 msgid " msec"
@@ -101,7 +103,8 @@ msgstr "Iskačući meni"
 msgid "&New Server"
 msgstr "Mreža/Server"
 
-#: src/modules/options/optw_servers.cpp:336 src/modules/options/dialog.cpp:228
+#: src/modules/options/optw_servers.cpp:336
+#: src/modules/options/dialog.cpp:228
 #: src/modules/options/optw_identity.cpp:232
 #: src/modules/options/container.cpp:64
 #, fuzzy
@@ -1475,9 +1478,12 @@ msgstr "Uvod"
 msgid "Add Rule"
 msgstr "Dodaj zabranu (ban)"
 
-#: src/modules/options/optw_connection.h:45 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_irc.h:57 src/modules/options/optw_identity.h:203
+#: src/modules/options/optw_connection.h:45
+#: src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102
+#: src/modules/options/optw_channel.h:64
+#: src/modules/options/optw_irc.h:57
+#: src/modules/options/optw_identity.h:203
 #, fuzzy
 msgid "Advanced"
 msgstr "Napredno ..."
@@ -1622,7 +1628,8 @@ msgstr ""
 msgid "Auto flush logs every"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68
+#: src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr ""
 
@@ -1635,7 +1642,8 @@ msgstr "Automatski prihvati"
 msgid "Automatically Log"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 #, fuzzy
 msgid "Automatically accept"
@@ -1818,7 +1826,8 @@ msgstr "Keširaj IP adresu"
 #: src/modules/options/optw_servers.cpp:342
 #: src/modules/options/optw_servers.cpp:826
 #: src/modules/options/optw_nickserv.cpp:128
-#: src/modules/options/dialog.cpp:243 src/modules/options/optw_identity.cpp:95
+#: src/modules/options/dialog.cpp:243
+#: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/optw_identity.cpp:906
 #: src/modules/options/container.cpp:72
@@ -1827,7 +1836,8 @@ msgstr "Poništi"
 
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
-#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
 #: src/modules/options/optw_userlist.cpp:144
@@ -1942,11 +1952,13 @@ msgstr "Isprazni listu"
 msgid "Close in tray"
 msgstr "M&inimizuj"
 
-#: src/modules/options/dialog.cpp:230 src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:230
+#: src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:245 src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:245
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr ""
 
@@ -1965,7 +1977,8 @@ msgid "Commit all changes immediately."
 msgstr "Izvrši promene"
 
 #: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_proxy.cpp:106 src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_proxy.cpp:106
+#: src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
 #, fuzzy
 msgid "Configuration"
@@ -2474,10 +2487,12 @@ msgid "Gender:"
 msgstr "Generalne opcije"
 
 #: src/modules/options/optw_servers.cpp:212
-#: src/modules/options/optw_messages.cpp:74 src/modules/options/optw_dcc.h:45
+#: src/modules/options/optw_messages.cpp:74
+#: src/modules/options/optw_dcc.h:45
 #: src/modules/options/optw_dcc.h:88
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_channel.h:52
+#: src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_identity.h:154
 #, fuzzy
 msgid "General"
@@ -2712,7 +2727,8 @@ msgstr ""
 msgid "Inactive Text (Secondary)"
 msgstr ""
 
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
+#: src/modules/options/optw_input.h:33
+#: src/modules/options/optw_input.h:51
 msgid "Input"
 msgstr ""
 
@@ -3363,7 +3379,8 @@ msgstr ""
 msgid "Open all minimized"
 msgstr "Kreiraj minimizirano"
 
-#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307
+#: src/modules/options/optw_dcc.cpp:329
 #, fuzzy
 msgid "Open minimized when auto-accepted"
 msgstr "Napravi minimizirano kad automatski-prihvataš"
@@ -4098,7 +4115,8 @@ msgstr ""
 msgid "Sound"
 msgstr "Pošalji"
 
-#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60
+#: src/modules/options/optw_sound.h:47
 #, fuzzy
 msgid "Sound System"
 msgstr "Muzički sistem"
@@ -4127,7 +4145,8 @@ msgstr "Korišćenje IpV6 protokola"
 msgid "TIME"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
 #, fuzzy
 msgid "Test"
 msgstr "Tester"
@@ -4310,12 +4329,6 @@ msgid ""
 "font setting"
 msgstr ""
 
-#: src/modules/options/optw_protection.cpp:41
-msgid ""
-"This section contains irc protection tools<br><p>like<b> flood, ignore, "
-"antispam. </b> </p>"
-msgstr ""
-
 #: src/modules/options/optw_tools.cpp:40
 msgid ""
 "This section contains irc tools<br><p>like<b> away, lag and logging system. "
@@ -4338,7 +4351,8 @@ msgstr ""
 
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
-#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
 #: src/modules/options/optw_userlist.cpp:141
@@ -4786,7 +4800,8 @@ msgstr "Nepoznat tip medija"
 msgid "authentication,identify"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235
+#: src/modules/options/optw_dcc.cpp:241
 #, fuzzy
 msgid "bytes/sec"
 msgstr "0 bajtova/sek"
@@ -4886,7 +4901,8 @@ msgid "theme,colors,messages,output"
 msgstr ""
 
 #: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
+#: src/modules/options/optw_ircview.h:37
+#: src/modules/options/optw_ircview.h:51
 msgid "theme,colors,output"
 msgstr ""
 
