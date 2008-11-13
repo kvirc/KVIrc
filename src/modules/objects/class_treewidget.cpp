@@ -412,7 +412,7 @@ KVSO_CLASS_FUNCTION(treewidget,setSorting)
 	if (!widget())return true;
 	if (KviQString::equalCI(szOrder,"ascending")) ((QTreeWidget *)widget())->sortItems(iCol,Qt::AscendingOrder);
 	else if (KviQString::equalCI(szOrder,"descending")) ((QTreeWidget *)widget())->sortItems(iCol,Qt::DescendingOrder);
-	else c->warning(__tr2qs_ctx("Unknown 'Q' sort order: switching to ascending order","objects"),&szOrder);
+	else c->warning(__tr2qs_ctx("Unknown '%Q' sort order: switching to ascending order","objects"),&szOrder);
 	return true;
 }
 KVSO_CLASS_FUNCTION(treewidget,setSortingEnabled)
