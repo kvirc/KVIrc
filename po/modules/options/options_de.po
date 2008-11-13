@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-01 15:14+0100\n"
-"PO-Revision-Date: 2008-10-15 00:45+0200\n"
+"PO-Revision-Date: 2008-11-13 01:37+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -114,8 +114,7 @@ msgstr "3D-Gitter"
 
 #: src/modules/options/optw_textencoding.cpp:84
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
+msgstr "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
 #: src/modules/options/optw_urlhandlers.cpp:76
 msgid "<b>file://</b> handler command:"
@@ -247,8 +246,7 @@ msgstr ""
 "auf \"<b>Hinzufügen</b>\" klicken</center>"
 
 #: src/modules/options/optw_servers.cpp:1173
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -742,7 +740,7 @@ msgid ""
 "the user connection data before the data is sent to the IRC server.<br>This "
 "is useful if a user wants to use different data on different networks "
 "without changing them at every connection attempt."
-msgstr ""
+msgstr "<center>Dies ist ein Satz Regeln, um die Profile zu nutzen. KVIrc wird diese nutzen, um die Benutzerverbindungsdaten zu bearbeiten, bevor sie zum IRC-Server gesendet werden.<br>Dies ist nützlich, wenn ein Benutzer verschiedene Daten bei verschiedenen Netzwerken nutzen möchte, ohne sie bei jedem Verbindungsversuch ändern zu müssen."
 
 #: src/modules/options/optw_servers.cpp:581
 msgid ""
@@ -939,8 +937,7 @@ msgstr ""
 "liegen</center>"
 
 #: src/modules/options/optw_servers.cpp:1147
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -1633,9 +1630,8 @@ msgid "Add"
 msgstr "Hinzufügen"
 
 #: src/modules/options/optw_identity.cpp:715
-#, fuzzy
 msgid "Add Profile"
-msgstr "Profil"
+msgstr "Profil hinzufügen"
 
 #: src/modules/options/optw_servers.cpp:302
 #: src/modules/options/optw_nickserv.cpp:264
@@ -1711,9 +1707,8 @@ msgid "Allow up to:"
 msgstr "Erlauben bis:"
 
 #: src/modules/options/optw_identity.cpp:696
-#, fuzzy
 msgid "Alt. Nick"
-msgstr "Alt. Nick 1:"
+msgstr "Alt. Nick"
 
 #: src/modules/options/optw_identity.cpp:72
 msgid "Alt. Nickname 1:"
@@ -1728,9 +1723,8 @@ msgid "Alt. Nickname 3:"
 msgstr "Alt. Nick 3:"
 
 #: src/modules/options/optw_identity.cpp:878
-#, fuzzy
 msgid "Alternative Nickname:"
-msgstr "Alt. Nick 1:"
+msgstr "Alternativer Nickname:"
 
 #: src/modules/options/optw_identity.cpp:313
 msgid "Alternatives..."
@@ -2193,9 +2187,8 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: src/modules/options/optw_identity.cpp:721
-#, fuzzy
 msgid "Delete Profile"
-msgstr "Regel löschen"
+msgstr "Profil löschen"
 
 #: src/modules/options/optw_servers.cpp:311
 #: src/modules/options/optw_nickserv.cpp:272
@@ -2291,9 +2284,8 @@ msgid "Echo channel topic"
 msgstr "Channel-Thema ausgeben"
 
 #: src/modules/options/optw_identity.cpp:718
-#, fuzzy
 msgid "Edit Profile"
-msgstr "Profil"
+msgstr "Profil bearbeiten"
 
 #: src/modules/options/optw_servers.cpp:307
 #: src/modules/options/optw_nickserv.cpp:268
@@ -2313,9 +2305,8 @@ msgid "Enable Ignore For"
 msgstr "Ignorieren aktivieren für"
 
 #: src/modules/options/optw_identity.cpp:681
-#, fuzzy
 msgid "Enable Network Profiles"
-msgstr "Netzwerkeigenschaften"
+msgstr "Netzwerkprofile aktivieren"
 
 #: src/modules/options/optw_servers.cpp:274
 #: src/modules/options/optw_nickserv.cpp:232
@@ -2352,8 +2343,7 @@ msgstr "Lagmeter aktivieren"
 
 #: src/modules/options/optw_tray.cpp:46
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Aktiviere die level-bezogene Benachrichtigung (keine meldungstyp-bezogene)"
+msgstr "Aktiviere die level-bezogene Benachrichtigung (keine meldungstyp-bezogene)"
 
 #: src/modules/options/optw_notify.cpp:123
 msgid "Enable notifier window fade effect"
@@ -2652,9 +2642,8 @@ msgid "IRC"
 msgstr "IRC"
 
 #: src/modules/options/optw_userlist.cpp:57
-#, fuzzy
 msgid "IRC Op:"
-msgstr "IRC"
+msgstr "IRC Op:"
 
 #: src/modules/options/optw_notify.cpp:86
 msgid "ISON delay (in seconds)"
@@ -2757,9 +2746,8 @@ msgid "Invalid NickServ Rule"
 msgstr "Ungültige NickServ-Regel"
 
 #: src/modules/options/optw_identity.cpp:974
-#, fuzzy
 msgid "Invalid Profile Rule"
-msgstr "Ungültige NickServ-Regel"
+msgstr "Ungültige Profil-Regel"
 
 #: src/modules/options/optw_servers.cpp:539
 #: src/modules/options/optw_identity.cpp:635
@@ -3051,27 +3039,24 @@ msgid "Mute"
 msgstr "Still"
 
 #: src/modules/options/optw_identity.cpp:846
-#, fuzzy
 msgid "MyNetwork"
-msgstr "Netzwerk"
+msgstr "MeinNetzwerk"
 
 #: src/modules/options/optw_identity.cpp:847
 msgid "MyNick"
-msgstr ""
+msgstr "MeinNick"
 
 #: src/modules/options/optw_identity.cpp:848
 msgid "MyNick2"
-msgstr ""
+msgstr "MeinNick2"
 
 #: src/modules/options/optw_identity.cpp:850
-#, fuzzy
 msgid "MyRealName"
-msgstr "Wirklicher Name:"
+msgstr "MeinWirklicherName"
 
 #: src/modules/options/optw_identity.cpp:849
-#, fuzzy
 msgid "MyUserName"
-msgstr "Benutzername:"
+msgstr "MeinBenutzername"
 
 #: src/modules/options/optw_identity.cpp:693
 msgid "Name"
@@ -3090,9 +3075,8 @@ msgid "Network Interfaces"
 msgstr "Netzwerkschnittstellen"
 
 #: src/modules/options/optw_identity.cpp:862
-#, fuzzy
 msgid "Network Name:"
-msgstr "Netzwerk:"
+msgstr "Netzwerkname:"
 
 #: src/modules/options/optw_dcc.cpp:72
 msgid "Network Properties"
@@ -3497,24 +3481,20 @@ msgid "Profile"
 msgstr "Profil"
 
 #: src/modules/options/optw_identity.cpp:843
-#, fuzzy
 msgid "Profile Editor - KVIrc"
-msgstr "Datei existiert bereits - KVIrc"
+msgstr "Profileditor - KVIrc"
 
 #: src/modules/options/optw_identity.cpp:845
-#, fuzzy
 msgid "Profile Name"
-msgstr "Profil"
+msgstr "Profilname"
 
 #: src/modules/options/optw_identity.cpp:854
-#, fuzzy
 msgid "Profile Name:"
-msgstr "Profil"
+msgstr "Profilname:"
 
 #: src/modules/options/optw_identity.h:228
-#, fuzzy
 msgid "Profiles"
-msgstr "Profil"
+msgstr "Profile"
 
 #: src/modules/options/optw_windowlist.cpp:96
 #: src/modules/options/optw_windowlist.cpp:254
@@ -3556,33 +3536,31 @@ msgstr "Proxy:"
 
 #: src/modules/options/optw_identity.cpp:882
 msgid "Put here the alternative nickname you want to use"
-msgstr ""
+msgstr "Schreibe hier die alternativen Nicknames, die Sie benutzen möchten"
 
 #: src/modules/options/optw_identity.cpp:866
-#, fuzzy
 msgid "Put here the name of the network"
-msgstr "Bitte die Eigenschaften für die neue Werkzeugleiste angeben"
+msgstr "Schreiben Sie hier den Namen des Netzwerkes"
 
 #: src/modules/options/optw_identity.cpp:858
 msgid "Put here the name of the profile"
-msgstr ""
+msgstr "Schreiben Sie hier den Namen des Profils"
 
 #: src/modules/options/optw_nickserv.cpp:59
 msgid "Put here the nickname that you have registered with NickServ"
 msgstr "Hier den bei NickServ registrierten Nick eingeben"
 
 #: src/modules/options/optw_identity.cpp:874
-#, fuzzy
 msgid "Put here the nickname you want to use"
-msgstr "Hier den bei NickServ registrierten Nick eingeben"
+msgstr "Schreiben Sie hier den Nickname, den Sie nutzen möchten"
 
 #: src/modules/options/optw_identity.cpp:898
 msgid "Put here the realname you want to use"
-msgstr ""
+msgstr "Schreiben Sie hier den Realnamen, den Sie nutzen möchten"
 
 #: src/modules/options/optw_identity.cpp:890
 msgid "Put here the username you want to use"
-msgstr ""
+msgstr "Schreiben Sie hier den Benutzernamen, den Sie nutzen möchten"
 
 #: src/modules/options/optw_query.h:30
 msgid "Query"
@@ -3619,12 +3597,10 @@ msgid "Real name:"
 msgstr "Wirklicher Name:"
 
 #: src/modules/options/optw_identity.cpp:698
-#, fuzzy
 msgid "Realname"
-msgstr "Wirklicher Name:"
+msgstr "Wirklicher Name"
 
 #: src/modules/options/optw_identity.cpp:894
-#, fuzzy
 msgid "Realname:"
 msgstr "Wirklicher Name:"
 
@@ -4024,8 +4000,7 @@ msgstr ""
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -4055,12 +4030,11 @@ msgstr "Themeneinstellungen"
 
 #: src/modules/options/optw_identity.cpp:974
 msgid "There is already a profile with that name"
-msgstr ""
+msgstr "Es gibt bereits ein Profil mit diesem Namen"
 
 #: src/modules/options/optw_sound.cpp:97
 msgid "This allows you to select encoding of mp3 tags."
-msgstr ""
-"Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
+msgstr "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
 #: src/modules/options/optw_sound.cpp:120
 msgid "This allows you to select encoding of winamp messages."
@@ -4087,7 +4061,7 @@ msgstr "Dies aktiviert die automatische Indentifikation mit NickServ"
 
 #: src/modules/options/optw_identity.cpp:682
 msgid "This check enables the use of network profiles"
-msgstr ""
+msgstr "Dies ermöglicht die Nutzung von Netzwerkprofilen"
 
 #: src/modules/options/dialog.cpp:123
 msgid ""
@@ -4106,8 +4080,7 @@ msgid "This executable has no SSL support."
 msgstr "Diese Version von KVIrc hat keine SSL-Unterstützung"
 
 #: src/modules/options/optw_identity.cpp:330
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
@@ -4388,8 +4361,7 @@ msgstr "UTC-Zeit für Zeitstempel benutzen"
 
 #: src/modules/options/optw_away.cpp:47
 msgid "Use automatic nickname ([5 letters]AWAY)"
-msgstr ""
-"Automatisch gernerierten \"Abwesend\"-Nick benutzen ([5 Buchstaben]AWAY)"
+msgstr "Automatisch gernerierten \"Abwesend\"-Nick benutzen ([5 Buchstaben]AWAY)"
 
 #: src/modules/options/optw_identity.cpp:474
 msgid "Use avatar"
@@ -4505,9 +4477,8 @@ msgid "Userlist"
 msgstr "Benutzerliste"
 
 #: src/modules/options/optw_identity.cpp:697
-#, fuzzy
 msgid "Username"
-msgstr "Benutzername:"
+msgstr "Benutzername"
 
 #: src/modules/options/optw_servers.cpp:129
 #: src/modules/options/optw_servers.cpp:499
@@ -14015,3 +13986,4 @@ msgstr "in:"
 
 #~ msgid "z: Recipient for oper wallop messages"
 #~ msgstr "z: Empfänger für oper wallop-Nachrichten"
+
