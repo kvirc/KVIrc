@@ -711,7 +711,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"shortCutEvent")
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,"setWebView",function_setWebView)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setWebView)
 #endif
 KVSO_END_REGISTERCLASS(KviKvsObject_widget)
 
