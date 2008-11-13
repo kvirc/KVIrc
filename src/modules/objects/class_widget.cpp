@@ -1820,7 +1820,7 @@ KVSO_CLASS_FUNCTION(widget,setBackgroundImage)
 	}
 	else
 	{
-		c->warning("The pixmap is not valid","objects");
+		c->warning(__tr2qs_ctx("The pixmap is not valid","objects"));
 		return true;
 	}
 	return true;
