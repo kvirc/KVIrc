@@ -620,76 +620,76 @@ const Qt::WindowType widgettypes_cod[] = {
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"reparent",function_reparent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,reparent)
 	// apparence
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"show",function_show)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"hide",function_hide)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"update",function_update)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,show)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,hide)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,update)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"repaint",function_repaint)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"isTopLevel",function_isTopLevel)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"isVisible",function_isVisible)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"raise",function_raise)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"lower",function_lower)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setEnabled",function_setEnabled)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"isEnabled",function_isEnabled)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMouseTracking",function_setMouseTracking)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setCaption",function_setWindowTitle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setWindowTitle",function_setWindowTitle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"windowTitle",function_windowTitle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"caption",function_windowTitle)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"hasFocus",function_hasFocus)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setFocus",function_setFocus)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setToolTip",function_setToolTip)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setWFlags",function_setWFlags)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setIcon",function_setWindowIcon)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,repaint)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,isTopLevel)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,isVisible)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,raise)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,lower)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setEnabled)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,isEnabled)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setMouseTracking)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setWindowTitle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setWindowTitle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,windowTitle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,windowTitle)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,hasFocus)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setFocus)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setToolTip)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setWFlags)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setWindowIcon)
 	// fonts
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontDescent",function_fontDescent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontAscent",function_fontAscent)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontMetricsWidth",function_fontMetricsWidth)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"fontMetricsHeight",function_fontMetricsHeight)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setFont",function_setFont)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,fontDescent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,fontAscent)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,fontMetricsWidth)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,fontMetricsHeight)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setFont)
 	// geometry
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"screenResolution",function_screenResolution)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"centerToScreen",function_centerToScreen)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"geometry",function_geometry)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setGeometry",function_setGeometry)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"mapToGlobal",function_mapToGlobal)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"mapFromGlobal",function_mapFromGlobal)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"y",function_y)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"x",function_x)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,screenResolution)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,centerToScreen)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,geometry)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setGeometry)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,mapToGlobal)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,mapFromGlobal)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,y)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,x)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"globalCursorX",function_globalCursorX)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"globalCursorY",function_globalCursorY)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,globalCursorX)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,globalCursorY)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"width",function_width)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"height",function_height)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMinimumWidth",function_setMinimumWidth)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMinimumHeight",function_setMinimumHeight)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMaximumWidth",function_setMaximumWidth)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMaximumHeight",function_setMaximumHeight)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"move",function_move)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"sizeHint",function_sizeHint)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"resize",function_resize)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,width)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,height)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setMinimumWidth)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setMinimumHeight)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setMaximumWidth)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setMaximumHeight)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,move)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,sizeHint)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,resize)
 
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setFocusPolicy",function_setFocusPolicy)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"addWidgetToWrappedLayout",function_addWidgetToWrappedLayout)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setFocusPolicy)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,addWidgetToWrappedLayout)
 
 	// colors and image
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setForegroundColor",function_setPaletteForeground)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setBackgroundColor",function_setBackgroundColor)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setBackgroundImage",function_setBackgroundImage)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"backgroundColor",function_backgroundColor)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"foregroundColor",function_foregroundColor)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setMask",function_setMask)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setAttribute",function_setAttribute)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"colorPalette",function_colorPalette)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setStyleSheet",function_setStyleSheet)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setKeyShortcut",function_setKeyShortcut)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setPaletteForeground)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setBackgroundColor)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setBackgroundImage)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,backgroundColor)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,foregroundColor)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setMask)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setAttribute)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,colorPalette)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setStyleSheet)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,setKeyShortcut)
 
 	// statusbar
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"insertIntoStatusBar",function_insertIntoStatusBar)
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"removeFromStatusBar",function_removeFromStatusBar)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,insertIntoStatusBar)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,removeFromStatusBar)
 	// events
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mousePressEvent")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"mouseReleaseEvent")
@@ -711,9 +711,8 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_widget,"shortCutEvent")
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-	KVSO_REGISTER_HANDLER(KviKvsObject_widget,"setWebView",function_setWebView)
+	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_widget,"setWebView",function_setWebView)
 #endif
-
 KVSO_END_REGISTERCLASS(KviKvsObject_widget)
 
 
@@ -969,16 +968,17 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 }
 
 
-bool KviKvsObject_widget::function_show(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(widget,show)
 {
-	if(!widget())return true; // should we warn here ?
-	QWidget *wid=widget();
+	CHECK_INTERNAL_POINTER(widget())
+ 	QWidget *wid=widget();
 	wid->show();
 	return true;
 }
 
-bool KviKvsObject_widget::function_update(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,update)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iX,iY,iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_INT,KVS_PF_OPTIONAL,iX)
@@ -986,43 +986,42 @@ bool KviKvsObject_widget::function_update(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("w",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
 		KVSO_PARAMETER("h",KVS_PT_INT,KVS_PF_OPTIONAL,iH)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true; // should we warn here ?
 	if (iW || iH) widget()->update(QRect(iX,iY,iW,iH));
 	else
 	widget()->update();
 	return true;
 }
 
-bool KviKvsObject_widget::function_setEnabled(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setEnabled)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
 	widget()->setEnabled(bEnabled);
 	return true;
 }
 
-bool KviKvsObject_widget::function_isEnabled(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,isEnabled)
 {
-	if(!widget()) return true;
+	CHECK_INTERNAL_POINTER(widget())
 	c->returnValue()->setBoolean(widget()->isEnabled());
 	return true;
 }
 
-bool KviKvsObject_widget::function_fontDescent(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(widget,fontDescent)
 {
-	if(!widget()) return true;
+	CHECK_INTERNAL_POINTER(widget())
 	QFontMetrics fm = widget()->fontMetrics();
 	int d = fm.descent();
 	c->returnValue()->setInteger(d);
 	return true;
 }
 
-bool KviKvsObject_widget::function_fontAscent(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(widget,fontAscent)
 {
-	if(!widget()) return true;
+	CHECK_INTERNAL_POINTER(widget())
 	QFontMetrics fm = widget()->fontMetrics();
 	int d = fm.ascent();
 	c->returnValue()->setInteger(d);
@@ -1030,45 +1029,46 @@ bool KviKvsObject_widget::function_fontAscent(KviKvsObjectFunctionCall * c)
 
 }
 
-bool KviKvsObject_widget::function_repaint(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(widget,repaint)
 {
-	if(!widget()) return true;
+	CHECK_INTERNAL_POINTER(widget())
 	widget()->repaint();
 	return true;
 }
 
-bool KviKvsObject_widget::function_fontMetricsWidth(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(widget,fontMetricsWidth)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString m_szStr;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("string",KVS_PT_STRING,0,m_szStr)
 	KVSO_PARAMETERS_END(c)
-	if(!widget()) return true;
 	c->returnValue()->setInteger(widget()->fontMetrics().width(m_szStr));
 	return true;
 }
 
-bool KviKvsObject_widget::function_fontMetricsHeight(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(widget,fontMetricsHeight)
 {
-	if(!widget())return true;
+	CHECK_INTERNAL_POINTER(widget())
 	int fm = widget()->fontMetrics().height();
 	c->returnValue()->setInteger(fm);
 	return true;
 }
 
-bool KviKvsObject_widget::function_screenResolution(KviKvsObjectFunctionCall * c)
+KVSO_CLASS_FUNCTION(widget,screenResolution)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsArray * a = new KviKvsArray();
 	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-
 	a->set(0,new KviKvsVariant((kvs_int_t)rect.width()));
 	a->set(1,new KviKvsVariant((kvs_int_t)rect.height()));
 	c->returnValue()->setArray(a);
 	return true;
 }
 
-bool KviKvsObject_widget::function_geometry(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,geometry)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QRect r = widget() ? widget()->geometry() : QRect(0,0,0,0);
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0,new KviKvsVariant((kvs_int_t)r.x()));
@@ -1079,8 +1079,9 @@ bool KviKvsObject_widget::function_geometry(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_setGeometry(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setGeometry)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsVariant * pXOrArray;
 	kvs_int_t iX,iY,iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1095,7 +1096,7 @@ bool KviKvsObject_widget::function_setGeometry(KviKvsObjectFunctionCall *c)
 	// $setGeometry(x,y,w,h) OR $setGeometry($array(x,y,w,h))
 
 	// For this purpose we ask the parameter processing engine
-	// to return the first parameter as variant and we manually check its data typoe
+	// to return the first parameter as variant and we manually check its data type
 	// We also set the following three parameters as optional
 	// so the user can either pass one or four parameters.
 
@@ -1108,7 +1109,7 @@ bool KviKvsObject_widget::function_setGeometry(KviKvsObjectFunctionCall *c)
 		// make sure it has at least 4 elements
 		if(pXOrArray->array()->size() < 4)
 		{
-			c->error(__tr2qs("The array passed as parameter must contain at least 4 elements"));
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 4 elements","objects"));
 			return false;
 		}
 		// we must also manually extract the data from the array
@@ -1121,12 +1122,12 @@ bool KviKvsObject_widget::function_setGeometry(KviKvsObjectFunctionCall *c)
 		// no parameter was set in that place
 		if(!(pX && pY && pW && pH))
 		{
-			c->error(__tr2qs("One of the geometry array parameters is empty"));
+			c->error(__tr2qs_ctx("One of the geometry array parameters is empty","objects"));
 			return false;
 		}
 		if(!(pX->asInteger(iX) && pY->asInteger(iY) && pW->asInteger(iW) && pH->asInteger(iH)))
 		{
-			c->error(__tr2qs("One of the geometry array parameters didn't evaluate to an integer"));
+			c->error(__tr2qs_ctx("One of the geometry array parameters didn't evaluate to an integer","objects"));
 			return false;
 		}
 		// ok: the params are correct
@@ -1136,26 +1137,25 @@ bool KviKvsObject_widget::function_setGeometry(KviKvsObjectFunctionCall *c)
 		// Also make sure that we really have 4 parameters
 		if(c->params()->count() < 4)
 		{
-			c->error(__tr2qs("$setGeometry() requires either an array as first parameter or four integers"));
+			c->error(__tr2qs_ctx("$setGeometry() requires either an array as first parameter or four integers","objects"));
 			return false;
 		}
 		if(!pXOrArray->asInteger(iX))
 		{
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
 			return false;
 		}
 		// ok: the params are correct
 	}
 
-	if(widget())
-		widget()->setGeometry(iX,iY,iW,iH);
+	widget()->setGeometry(iX,iY,iW,iH);
 
 	return true;
 }
 
-bool KviKvsObject_widget::function_mapToGlobal(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,mapToGlobal)
 {
-	if(!widget())return true;
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iX,iY;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
@@ -1169,9 +1169,9 @@ bool KviKvsObject_widget::function_mapToGlobal(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_mapFromGlobal(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,mapFromGlobal)
 {
-	if(!widget())return true;
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iX,iY;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x",KVS_PT_INT,0,iX)
@@ -1185,34 +1185,29 @@ bool KviKvsObject_widget::function_mapFromGlobal(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_centerToScreen(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(widget,centerToScreen)
 {
-	if(widget())
-	{
-		QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
-		widget()->move((rect.width() - widget()->width())/2,(rect.height() - widget()->height())/2);
-	}
-
+	CHECK_INTERNAL_POINTER(widget())
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	widget()->move((rect.width() - widget()->width())/2,(rect.height() - widget()->height())/2);
 	return true;
 }
 
-bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setPaletteForeground)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsVariant * pColArray;
-
 	kvs_int_t iColR,iColG,iColB;
-
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("hex_rgb_array_or_red",KVS_PT_VARIANT,0,pColArray)
 		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
 		KVSO_PARAMETER("blue",KVS_PT_INT,KVS_PF_OPTIONAL,iColB)
 	KVSO_PARAMETERS_END(c)
-	
 	if(pColArray->isArray())
 	{
 		if(pColArray->array()->size() < 3)
 		{
-			c->error(__tr2qs("The array passed as parameter must contain at least 3 elements"));
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements","objects"));
 			return false;
 		}
 		KviKvsVariant * pColR = pColArray->array()->at(0);
@@ -1221,13 +1216,13 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 
 		if(!(pColR && pColG && pColB))
 		{
-			c->error(__tr2qs("One of the colors array parameters is empty"));
+			c->error(__tr2qs_ctx("One of the colors array parameters is empty","objects"));
 			return false;
 		}
 
 		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
 		{
-			c->error(__tr2qs("One of the colors array parameters didn't evaluate to an integer"));
+			c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer","objects"));
 			return false;
 		}
 	}
@@ -1248,62 +1243,53 @@ bool KviKvsObject_widget::function_setPaletteForeground(KviKvsObjectFunctionCall
 						color.setNamedColor("#"+szColor);
 						if (!color.isValid())
 						{
-							c->warning(__tr2qs("Not a valid color !"));
+							c->warning(__tr2qs_ctx("Not a valid color !","objects"));
 							return true;
 						}
 					}
 				}
 				else {
-					c->warning(__tr2qs("Not a valid color !"));
+					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
 					return true;
 				}		
-				if (widget())
-				{
-					QPalette p = widget()->palette();
-					p.setColor(widget()->foregroundRole(), color);
-					widget()->setPalette(p);
-					return true;
-				}
+				QPalette p = widget()->palette();
+				p.setColor(widget()->foregroundRole(), color);
+				widget()->setPalette(p);
+				return true;
 		}
-
 		if(c->params()->count() < 3)
 		{
-			c->error(__tr2qs("$setForegroundColor requires either an array as first parameter, one hex string or color name, or three integers"));
+			c->error(__tr2qs_ctx("$setForegroundColor requires either an array as first parameter, one hex string or color name, or three integers","objects"));
 			return false;
 		}
 		if(!pColArray->asInteger(iColR))
 		{
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
 			return false;
 		}
 	}
 
-	if (widget())
-	{
-		QPalette p = widget()->palette();
-		p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB));
-		widget()->setPalette(p);
-	}
+	QPalette p = widget()->palette();
+	p.setColor(widget()->foregroundRole(), QColor(iColR,iColG,iColB));
+	widget()->setPalette(p);
 	return true;
 }
 
-bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setBackgroundColor)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsVariant * pColArray;
-
 	kvs_int_t iColR,iColG,iColB;
-
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("name_hex_rgb_array_or_red",KVS_PT_VARIANT,0,pColArray)
 		KVSO_PARAMETER("green",KVS_PT_INT,KVS_PF_OPTIONAL,iColG)
 		KVSO_PARAMETER("blue",KVS_PT_INT,KVS_PF_OPTIONAL,iColB)
 	KVSO_PARAMETERS_END(c)
-
 	if(pColArray->isArray())
 	{
 		if(pColArray->array()->size() < 3)
 		{
-			c->error(__tr2qs("The array passed as parameter must contain at least 3 elements"));
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements","objects"));
 			return false;
 		}
 		KviKvsVariant * pColR = pColArray->array()->at(0);
@@ -1312,13 +1298,13 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 
 		if(!(pColR && pColG && pColB))
 		{
-			c->error(__tr2qs("One of the colors array parameters is empty"));
+			c->error(__tr2qs_ctx("One of the colors array parameters is empty","objects"));
 			return false;
 		}
 
 		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
 		{
-			c->error(__tr2qs("One of the colors array parameters didn't evaluate to an integer"));
+			c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer","objects"));
 			return false;
 		}
 	}
@@ -1339,48 +1325,41 @@ bool KviKvsObject_widget::function_setBackgroundColor(KviKvsObjectFunctionCall *
 						color.setNamedColor("#"+szColor);
 						if (!color.isValid())
 						{
-							c->warning(__tr2qs("Not a valid color !"));
+							c->warning(__tr2qs_ctx("Not a valid color !","objects"));
 							return true;
 						}
 					}
 				}
 				else {
-					c->warning(__tr2qs("Not a valid color !"));
+					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
 					return true;
 				}		
-				if (widget())
-				{
-					QPalette p = widget()->palette();
-					p.setColor(widget()->backgroundRole(), color);
-					widget()->setPalette(p);
-					return true;
-				}
+				QPalette p = widget()->palette();
+				p.setColor(widget()->backgroundRole(), color);
+				widget()->setPalette(p);
+				return true;
 		}
-
 		if(c->params()->count() < 3)
 		{
-			c->error(__tr2qs("$setBackgroundColor requires either an array as first parameter, one hex string or color name, or three integers"));
+			c->error(__tr2qs_ctx("$setBackgroundColor requires either an array as first parameter, one hex string or color name, or three integers","objects"));
 			return false;
 		}
 		if(!pColArray->asInteger(iColR))
 		{
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
 			return false;
 		}
 	}
 
-	if (widget())
-	{
-		QPalette p = widget()->palette();
-		p.setColor(widget()->backgroundRole(), QColor(iColR,iColG,iColB));
-		widget()->setPalette(p);
-	}
+	QPalette p = widget()->palette();
+	p.setColor(widget()->backgroundRole(), QColor(iColR,iColG,iColB));
+	widget()->setPalette(p);
 	return true;
 }
 
-bool KviKvsObject_widget::function_backgroundColor(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,backgroundColor)
 {
-	if(!widget())return true;
+	CHECK_INTERNAL_POINTER(widget())
 	QColor col = widget()->palette().color(widget()->backgroundRole());
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0,new KviKvsVariant((kvs_int_t)col.red()));
@@ -1390,9 +1369,9 @@ bool KviKvsObject_widget::function_backgroundColor(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_foregroundColor(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,foregroundColor)
 {
-	if(!widget())return true;
+	CHECK_INTERNAL_POINTER(widget())
 	QColor col = widget()->palette().color(widget()->foregroundRole());
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0,new KviKvsVariant((kvs_int_t)col.red()));
@@ -1402,9 +1381,9 @@ bool KviKvsObject_widget::function_foregroundColor(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_parentWidget(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,parentWidget)
 {
-	if(!widget())return true;
+	CHECK_INTERNAL_POINTER(widget())
 	if(parentScriptWidget()) c->returnValue()->setHObject(parentObject()->handle());
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
@@ -1412,76 +1391,87 @@ bool KviKvsObject_widget::function_parentWidget(KviKvsObjectFunctionCall *c)
 
 }
 
-bool KviKvsObject_widget::function_setMouseTracking(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setMouseTracking)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) widget()->setMouseTracking(bEnabled);
+	widget()->setMouseTracking(bEnabled);
 	return true;
 }
 
-bool KviKvsObject_widget::function_setWindowTitle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setWindowTitle)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szWindowTitle;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("title",KVS_PT_STRING,0,szWindowTitle)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) widget()->setWindowTitle(szWindowTitle);
+	widget()->setWindowTitle(szWindowTitle);
 	return true;
 }
 
-bool KviKvsObject_widget::function_windowTitle(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,windowTitle)
 {
-	if(widget()) c->returnValue()->setString(widget()->windowTitle().toUtf8().data());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setString(widget()->windowTitle().toUtf8().data());
 	return true;
 }
 
-bool KviKvsObject_widget::function_isTopLevel(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,isTopLevel)
 {
-	if(widget()) c->returnValue()->setBoolean(widget()->isTopLevel());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setBoolean(widget()->isTopLevel());
 	return true;
 }
 
-bool KviKvsObject_widget::function_isVisible(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,isVisible)
 {
-	if(widget()) c->returnValue()->setBoolean(widget()->isVisible());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setBoolean(widget()->isVisible());
 	return true;
 }
 
-bool KviKvsObject_widget::function_raise(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(widget,raise)
 {
-	if(widget()) widget()->raise();
+	CHECK_INTERNAL_POINTER(widget())
+	widget()->raise();
 	return true;
 }
 
-bool KviKvsObject_widget::function_lower(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(widget,lower)
 {
-	if(widget())widget()->lower();
+	CHECK_INTERNAL_POINTER(widget())
+	widget()->lower();
 	return true;
 }
 
-bool KviKvsObject_widget::function_hasFocus(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,hasFocus)
 {
-	if(widget())  c->returnValue()->setBoolean(widget()->hasFocus());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setBoolean(widget()->hasFocus());
 	return true;
 }
 
-bool KviKvsObject_widget::function_setFocus(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(widget,setFocus)
 {
-	if (widget())widget()->setFocus();
+	CHECK_INTERNAL_POINTER(widget())
+	widget()->setFocus();
 	return true;
 }
 
-bool KviKvsObject_widget::function_hide(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(widget,hide)
 {
-	if(widget())widget()->hide();
+	CHECK_INTERNAL_POINTER(widget())
+	widget()->hide();
 	return true;
 }
 
-bool KviKvsObject_widget::function_setToolTip(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setToolTip)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szTooltip;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("tooltip",KVS_PT_STRING,0,szTooltip)
@@ -1490,74 +1480,82 @@ bool KviKvsObject_widget::function_setToolTip(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_x(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,x)
 {
-	if(widget()) c->returnValue()->setInteger(widget()->x());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(widget()->x());
 	return true;
 }
 
-bool KviKvsObject_widget::function_y(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,y)
 {
-	if(widget())c->returnValue()->setInteger(widget()->y());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(widget()->y());
 	return true;
 }
 
-bool KviKvsObject_widget::function_width(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,width)
 {
-	if(widget())c->returnValue()->setInteger(widget()->width());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(widget()->width());
 	return true;
 }
 
-bool KviKvsObject_widget::function_height(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,height)
 {
-	if(widget())c->returnValue()->setInteger(widget()->height());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(widget()->height());
 	return true;
 }
 
-bool KviKvsObject_widget::function_setMinimumWidth(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setMinimumWidth)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iW;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("w",KVS_PT_INT,0,iW)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) widget()->setMinimumWidth(iW);
+	widget()->setMinimumWidth(iW);
 	return true;
 }
 
-bool KviKvsObject_widget::function_setMinimumHeight(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setMinimumHeight)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iH;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("h",KVS_PT_INT,0,iH)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) widget()->setMinimumHeight(iH);
+	widget()->setMinimumHeight(iH);
 	return true;
 }
 
-bool KviKvsObject_widget::function_setMaximumWidth(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setMaximumWidth)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iW;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("w",KVS_PT_INT,0,iW)
 	KVSO_PARAMETERS_END(c)
-	if (widget()) widget()->setMaximumWidth(iW);
+	widget()->setMaximumWidth(iW);
 	return true;
 }
 
-bool KviKvsObject_widget::function_setMaximumHeight(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setMaximumHeight)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iH;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("h",KVS_PT_INT,0,iH)
 	KVSO_PARAMETERS_END(c)
-	if(widget()) widget()->setMaximumHeight(iH);
+	widget()->setMaximumHeight(iH);
 	return true;
 }
 
-bool KviKvsObject_widget::function_move(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,move)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iX,iY;
-
 	KviKvsVariant * pXOrArray;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("x_or_array",KVS_PT_VARIANT,0,pXOrArray)
@@ -1567,44 +1565,42 @@ bool KviKvsObject_widget::function_move(KviKvsObjectFunctionCall *c)
 	{
 		if(pXOrArray->array()->size() < 2)
 		{
-			c->error(__tr2qs("The array passed as parameter must contain at least 2 elements"));
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 2 elements","objects"));
 			return false;
 		}
 		KviKvsVariant * pX = pXOrArray->array()->at(0);
 		KviKvsVariant * pY = pXOrArray->array()->at(1);
 		if(!(pX && pY))
 		{
-			c->error(__tr2qs("One of the move array parameters is empty"));
+			c->error(__tr2qs_ctx("One of the move array parameters is empty","objects"));
 			return false;
 		}
 		if(!(pX->asInteger(iX) && pY->asInteger(iY)))
 		{
-			c->error(__tr2qs("One of the move array parameters didn't evaluate to an integer"));
+			c->error(__tr2qs_ctx("One of the move array parameters didn't evaluate to an integer","objects"));
 			return false;
 		}
 		// ok: the params are correct
 	} else {
 		if(c->params()->count() < 2)
 		{
-			c->error(__tr2qs("$move() requires either an array as first parameter or two integers"));
+			c->error(__tr2qs_ctx("$move() requires either an array as first parameter or two integers","objects"));
 			return false;
 		}
 		if(!pXOrArray->asInteger(iX))
 		{
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
 			return false;
 		}
 		// ok: the params are correct
 	}
-
-	if(!widget())return true;
 	widget()->move(QPoint(iX,iY));
 	return true;
 }
 
-bool KviKvsObject_widget::function_sizeHint(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,sizeHint)
 {
-	if(!widget())return true;
+	CHECK_INTERNAL_POINTER(widget())
 	QSize sizehint =widget()->sizeHint();
 	KviKvsArray * a = new KviKvsArray();
 	a->set(0,new KviKvsVariant((kvs_int_t)sizehint.width()));
@@ -1613,8 +1609,9 @@ bool KviKvsObject_widget::function_sizeHint(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_resize(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,resize)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsVariant * pWOrArray;
 	kvs_int_t iW,iH;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1625,48 +1622,46 @@ bool KviKvsObject_widget::function_resize(KviKvsObjectFunctionCall *c)
 	{
 		if(pWOrArray->array()->size() < 2)
 		{
-			c->error(__tr2qs("The array passed as parameter must contain at least 2 elements"));
+			c->error(__tr2qs_ctx("The array passed as parameter must contain at least 2 elements","objects"));
 			return false;
 		}
 		KviKvsVariant * pW = pWOrArray->array()->at(0);
 		KviKvsVariant * pH = pWOrArray->array()->at(1);
 		if(!(pW && pH))
 		{
-			c->error(__tr2qs("One of the resize array parameters is empty"));
+			c->error(__tr2qs_ctx("One of the resize array parameters is empty","objects"));
 			return false;
 		}
 		if(!(pW->asInteger(iW) && pH->asInteger(iH)))
 		{
-			c->error(__tr2qs("One of the resize array parameters didn't evaluate to an integer"));
+			c->error(__tr2qs_ctx("One of the resize array parameters didn't evaluate to an integer","objects"));
 			return false;
 		}
 		// ok: the params are correct
 	} else {
 		if(c->params()->count() < 2)
 		{
-			c->error(__tr2qs("$resize() requires either an array as first parameter or two integers"));
+			c->error(__tr2qs_ctx("$resize() requires either an array as first parameter or two integers","objects"));
 			return false;
 		}
 		if(!pWOrArray->asInteger(iW))
 		{
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));
+			c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
 			return false;
 		}
 		// ok: the params are correct
 	}
-
-	if(!widget())return true;
 	widget()->resize(QSize(iW,iH));
 	return true;
 }
 
-bool KviKvsObject_widget::function_setFocusPolicy(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setFocusPolicy)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szMode;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("focus",KVS_PT_STRING,0,szMode)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
 	if(KviQString::equalCI(szMode,"TabFocus"))
 		widget()->setFocusPolicy(QT_WIDGET_TABFOCUS);
 	else
@@ -1678,17 +1673,17 @@ bool KviKvsObject_widget::function_setFocusPolicy(KviKvsObjectFunctionCall *c)
 	else
 	if(KviQString::equalCI(szMode,"NoFocus"))
 		widget()->setFocusPolicy(QT_WIDGET_NOFOCUS);
-	else c->warning(__tr2qs("Invalid parameters"));
+	else c->warning(__tr2qs_ctx("Invalid parameters","objects"));
 	return true;
 }
 
-bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setWFlags)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QStringList wflags;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget_flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,wflags)
 	KVSO_PARAMETERS_END(c)
-	if (!widget()) return true;
 	Qt::WindowFlags flag,sum=0;
 	for ( QStringList::Iterator it = wflags.begin(); it != wflags.end(); ++it )
 	{
@@ -1704,15 +1699,15 @@ bool KviKvsObject_widget::function_setWFlags(KviKvsObjectFunctionCall *c)
 		if(flag)
 			sum = sum | flag;
 		else
-			c->warning(__tr2qs("Unknown widget flag '%Q'"),&(*it));
+			c->warning(__tr2qs_ctx("Unknown widget flag '%Q'","objects"),&(*it));
 	}
-
 	widget()->setWindowFlags(sum);
 	return true;
 }
 
-bool KviKvsObject_widget::function_setFont(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setFont)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szFamily,szStyle;
 	kvs_int_t uSize;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1720,7 +1715,6 @@ bool KviKvsObject_widget::function_setFont(KviKvsObjectFunctionCall *c)
 		KVSO_PARAMETER("family",KVS_PT_STRING,0,szFamily)
 		KVSO_PARAMETER("style",KVS_PT_STRING,0,szStyle)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
 	QFont font=widget()->font();
 	font.setFamily(szFamily);
 	font.setPointSize(uSize);
@@ -1730,13 +1724,14 @@ bool KviKvsObject_widget::function_setFont(KviKvsObjectFunctionCall *c)
 	else if(KviQString::equalCI(szStyle,"overline")) font.setOverline(TRUE);
 	else if(KviQString::equalCI(szStyle,"strikeout"))font.setStrikeOut(TRUE);
 	else if(KviQString::equalCI(szStyle,"fixedpitch")) font.setFixedPitch(TRUE);
-	else c->warning(__tr2qs("Unknown style '%Q'"),&szStyle);
+	else c->warning(__tr2qs_ctx("Unknown style '%Q'","objects"),&szStyle);
 	widget()->setFont(font);
 	return true;
 }
 
-bool KviKvsObject_widget::function_addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,addWidgetToWrappedLayout)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *ob;
 	kvs_int_t uCol,uRow;
 	kvs_hobject_t hObject;
@@ -1746,34 +1741,34 @@ bool KviKvsObject_widget::function_addWidgetToWrappedLayout(KviKvsObjectFunction
 		KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
 	KVSO_PARAMETERS_END(c)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!widget())return true;
 	if (!ob)
 	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
+		c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
 		return true;
 	}
 	if (!ob->object())
 	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
+		c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
 		return true;
 	}
 	QLayout *lay=widget()->layout();
 	if (!lay)
 	{
-		c->warning(__tr2qs("No Layout associated to the widget "));
+		c->warning(__tr2qs_ctx("No Layout associated to the widget ","objects"));
 		return true;
 	}
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
+		c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
 		return true;
 	}
 	lay->addWidget(((QWidget *)(ob->object())));
 	return true;
 }
 //FIXME
-bool KviKvsObject_widget::function_reparent(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,reparent)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *ob;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
@@ -1789,35 +1784,34 @@ bool KviKvsObject_widget::function_reparent(KviKvsObjectFunctionCall *c)
 	else
 	if(!ob->object()->isWidgetType())
 	{
-		c->warning(__tr("Parent must be a widget object"));
+		c->warning(__tr2qs_ctx("Parent must be a widget object","objects"));
 		return true;
 	}
-		setParent(((QWidget *)(ob->object())));
+	setParent(((QWidget *)(ob->object())));
 
 //	widget()->reparent(((QWidget *)(ob->object())),QPoint(((QWidget *)(ob->object()))->x(),((QWidget *)(ob->object()))->y()));
 	return true;
 }
 
-bool KviKvsObject_widget::function_setWindowIcon(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setWindowIcon)
 {
-
+	CHECK_INTERNAL_POINTER(widget())
 	QString icon;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("icon",KVS_PT_STRING,0,icon)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
 	QPixmap * pix = g_pIconManager->getImage(icon);
 	if(pix)widget()->setWindowIcon(QIcon(*pix));
 	return true;
 }
 
-bool KviKvsObject_widget::function_setBackgroundImage(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setBackgroundImage)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString image;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("image",KVS_PT_STRING,0,image)
 	KVSO_PARAMETERS_END(c)
-	if(!widget())return true;
 	QPixmap * pix = g_pIconManager->getImage(image);
 	if(pix){
 		QPalette palette=widget()->palette();
@@ -1826,59 +1820,61 @@ bool KviKvsObject_widget::function_setBackgroundImage(KviKvsObjectFunctionCall *
 	}
 	else
 	{
-		c->warning("The pixmap is not valid");
+		c->warning("The pixmap is not valid","objects");
 		return true;
 	}
 	return true;
 }
 
-bool KviKvsObject_widget::function_globalCursorX(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,globalCursorX)
 {
-	if(widget())c->returnValue()->setInteger(QCursor::pos().x());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(QCursor::pos().x());
 	return true;
 }
 
-bool KviKvsObject_widget::function_globalCursorY(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,globalCursorY)
 {
-	if(widget())c->returnValue()->setInteger(QCursor::pos().y());
+	CHECK_INTERNAL_POINTER(widget())
+	c->returnValue()->setInteger(QCursor::pos().y());
 	return true;
 }
 
-bool KviKvsObject_widget::function_setMask(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setMask)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *obj;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("pixmap",KVS_PT_HOBJECT,0,hObject)
 	KVSO_PARAMETERS_END(c)
 	obj=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if(!widget())return true;
 	if (!obj)
 	{
-		c->warning(__tr2qs("Pixmap parameter is not an object"));
+		c->warning(__tr2qs_ctx("Pixmap parameter is not an object","objects"));
 		return true;
 	}
 	if (!obj->inheritsClass("pixmap"))
 	{
-		c->warning(__tr2qs("Pixmap object required"));
+		c->warning(__tr2qs_ctx("Pixmap object required","objects"));
 		return true;
 	}
 	QPixmap * pm=((KviKvsObject_pixmap *)obj)->getPixmap();
 	QBitmap mask(pm->mask());
-	if (mask.isNull()) c->warning(__tr2qs("Null mask"));
+	if (mask.isNull()) c->warning(__tr2qs_ctx("Null mask","objects"));
 	widget()->setMask(mask);
 	return true;
 }
 
-bool KviKvsObject_widget::function_setAttribute(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setAttribute)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString attribute;
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("widget_atribute",KVS_PT_STRING,0,attribute)
 		KVSO_PARAMETER("bool_flag",KVS_PT_BOOLEAN,0,bFlag)
 	KVSO_PARAMETERS_END(c)
-	if (!widget()) return true;
 	bool found=false;
 	unsigned int j = 0;
 	for(; j < widgetattributes_num; j++)
@@ -1890,18 +1886,18 @@ bool KviKvsObject_widget::function_setAttribute(KviKvsObjectFunctionCall *c)
 		}
 	}
 	if(found)widget()->setAttribute(widgetattributes_cod[j],bFlag);
-	else c->warning(__tr2qs("Unknown widget attribute '%Q'"),&attribute);
+	else c->warning(__tr2qs_ctx("Unknown widget attribute '%Q'","objects"),&attribute);
 	return true;
 }
 
-bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,colorPalette)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szColorRole,szColorGroup;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("color_role",KVS_PT_STRING,0,szColorRole)
 		KVSO_PARAMETER("color_group",KVS_PT_STRING,0,szColorGroup)
 	KVSO_PARAMETERS_END(c)
-	if (!widget()) return true;
 	bool found=false;
 	unsigned int j = 0;
 	for(; j < colorrole_num; j++)
@@ -1914,7 +1910,7 @@ bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
 	}
 	if(!found)
 	{
-		c->warning(__tr2qs("Unknown Color Role '%Q'"),&szColorRole);
+		c->warning(__tr2qs_ctx("Unknown Color Role '%Q'","objects"),&szColorRole);
 		return true;
 	}
 	QPalette::ColorGroup cg;
@@ -1923,7 +1919,7 @@ bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
 	else if (KviQString::equalCI(szColorGroup,"Inactive")) cg=QPalette::Inactive;
 	else
 	{
-		c->warning(__tr2qs("Unknown Color Group '%Q'"),&szColorGroup);
+		c->warning(__tr2qs_ctx("Unknown Color Group '%Q'","objects"),&szColorGroup);
 		return true;
 	}
 	QColor col=widget()->palette().color(cg,colorrole_cod[j]);
@@ -1935,53 +1931,55 @@ bool KviKvsObject_widget::function_colorPalette(KviKvsObjectFunctionCall *c)
 	return true;
 }
 
-bool KviKvsObject_widget::function_setStyleSheet(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setStyleSheet)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szStyleSheet;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("style_sheet",KVS_PT_STRING,0,szStyleSheet)
 	KVSO_PARAMETERS_END(c)
-	if(widget())widget()->setStyleSheet(szStyleSheet);
+	widget()->setStyleSheet(szStyleSheet);
 	return true;
 }
 
-bool KviKvsObject_widget::function_setKeyShortcut(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setKeyShortcut)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szKey;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("key",KVS_PT_STRING,0,szKey)
 	KVSO_PARAMETERS_END(c)
 	szKey.prepend("&");
-	if (widget())c->returnValue()->setInteger((kvs_int_t)widget()->grabShortcut(QKeySequence::mnemonic(szKey)));
+	c->returnValue()->setInteger((kvs_int_t)widget()->grabShortcut(QKeySequence::mnemonic(szKey)));
 	return true;
 }
 
-bool KviKvsObject_widget::function_insertIntoStatusBar(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,insertIntoStatusBar)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	kvs_int_t iIndex;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
 	KVSO_PARAMETERS_END(c)
-	if (widget())
-		g_pFrame->statusBar()->insertPermanentWidget(iIndex,widget());
+	g_pFrame->statusBar()->insertPermanentWidget(iIndex,widget());
 	return true;
 }
 
-bool KviKvsObject_widget::function_removeFromStatusBar(KviKvsObjectFunctionCall *)
+KVSO_CLASS_FUNCTION(widget,removeFromStatusBar)
 {
-
-	if (widget()) g_pFrame->statusBar()->removeWidget(widget());
+	CHECK_INTERNAL_POINTER(widget())
+	g_pFrame->statusBar()->removeWidget(widget());
 	return true;
 }
 
 #ifdef COMPILE_WEBKIT_SUPPORT
-bool KviKvsObject_widget::function_setWebView(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(widget,setWebView)
 {
+	CHECK_INTERNAL_POINTER(widget())
 	QString szUrl;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("text",KVS_PT_STRING,0,szUrl)
 	KVSO_PARAMETERS_END(c)
-
 	m_pWebview = new QWebView(widget());
 	m_pWebview->load(QUrl(szUrl));
 	m_pWebview->show();

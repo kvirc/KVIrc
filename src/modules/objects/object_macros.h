@@ -89,8 +89,7 @@ g_pKvs##__className##Class->registerFunctionHandler(#__szName,(KviKvsObjectFunct
 
 #define KVSO_BEGIN_DESTRUCTOR(__className) \
 	__className::~__className() \
-	{\
-	//callFunction(this,"destructor");
+	{
 
 
 #define KVSO_END_DESTRUCTOR(__className) \

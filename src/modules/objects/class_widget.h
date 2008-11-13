@@ -53,74 +53,74 @@ protected:
 	// ok, it is clear that we're messing with the naming conventions for the
 	// object classes :D
 	// let's try to use this one:
-	// function_isEnabled
-	// function_setEnabled..
+	// isEnabled
+	// setEnabled..
 	// ... etc
 	// so the name of the C++ function matches exactly the name of the KVS function at this point
 	
 	// let's also try to keep alphabetic order for the functions here.. so one can find them quickly
 
-	bool function_addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c);
-	bool function_backgroundColor(KviKvsObjectFunctionCall *c);
-	bool function_centerToScreen(KviKvsObjectFunctionCall *c);
-	bool function_colorPalette(KviKvsObjectFunctionCall *c);
-	bool function_fontAscent(KviKvsObjectFunctionCall * c);
-	bool function_fontDescent(KviKvsObjectFunctionCall * c);
-	bool function_fontMetricsHeight(KviKvsObjectFunctionCall * c);
-	bool function_fontMetricsWidth(KviKvsObjectFunctionCall * c);
-	bool function_foregroundColor(KviKvsObjectFunctionCall *c);
-	bool function_geometry(KviKvsObjectFunctionCall *c);
-	bool function_globalCursorX(KviKvsObjectFunctionCall *c);
-	bool function_globalCursorY(KviKvsObjectFunctionCall *c);
-	bool function_hasFocus(KviKvsObjectFunctionCall *c);
-	bool function_height(KviKvsObjectFunctionCall *);
-	bool function_hide(KviKvsObjectFunctionCall *);
-	bool function_isEnabled(KviKvsObjectFunctionCall *c);
-	bool function_isTopLevel(KviKvsObjectFunctionCall *c);
-	bool function_isVisible(KviKvsObjectFunctionCall *c);
-	bool function_loadInterface(KviKvsObjectFunctionCall *c);
-	bool function_lower(KviKvsObjectFunctionCall *);
-	bool function_mapFromGlobal(KviKvsObjectFunctionCall *c);
-	bool function_mapToGlobal(KviKvsObjectFunctionCall *c);
-	bool function_move(KviKvsObjectFunctionCall *c);
-	bool function_parentWidget(KviKvsObjectFunctionCall *c);
-	bool function_raise(KviKvsObjectFunctionCall *);
-	bool function_repaint(KviKvsObjectFunctionCall *c);
-	bool function_insertIntoStatusBar(KviKvsObjectFunctionCall *c);
-	bool function_removeFromStatusBar(KviKvsObjectFunctionCall *c);
-	bool function_reparent(KviKvsObjectFunctionCall *c);
-	bool function_resize(KviKvsObjectFunctionCall *c);
-	bool function_screenResolution(KviKvsObjectFunctionCall * c);
-	bool function_setAttribute(KviKvsObjectFunctionCall *c);
-	bool function_setBackgroundColor(KviKvsObjectFunctionCall *c);
-	bool function_setBackgroundImage(KviKvsObjectFunctionCall *c);
-	bool function_setEnabled(KviKvsObjectFunctionCall *c);
-	bool function_setFocus(KviKvsObjectFunctionCall *c);
-	bool function_setFocusPolicy(KviKvsObjectFunctionCall *c);
-	bool function_setFont(KviKvsObjectFunctionCall *c);
-	bool function_setGeometry(KviKvsObjectFunctionCall *c);
-	bool function_setKeyShortcut(KviKvsObjectFunctionCall *c);
-	bool function_setMask(KviKvsObjectFunctionCall *c);
-	bool function_setMaximumHeight(KviKvsObjectFunctionCall *c);
-	bool function_setMaximumWidth(KviKvsObjectFunctionCall *c);
-	bool function_setMinimumHeight(KviKvsObjectFunctionCall *c);
-	bool function_setMinimumWidth(KviKvsObjectFunctionCall *c);
-	bool function_setMouseTracking(KviKvsObjectFunctionCall *c);
-	bool function_setPaletteForeground(KviKvsObjectFunctionCall *c);
-	bool function_setStyleSheet(KviKvsObjectFunctionCall *c);
-	bool function_setToolTip(KviKvsObjectFunctionCall *);
-	bool function_setWindowIcon(KviKvsObjectFunctionCall *c);
-	bool function_setWindowTitle(KviKvsObjectFunctionCall *c);
-	bool function_setWFlags(KviKvsObjectFunctionCall *c);
-	bool function_show(KviKvsObjectFunctionCall *c);
-	bool function_sizeHint(KviKvsObjectFunctionCall *c);
-	bool function_update(KviKvsObjectFunctionCall *c);
-	bool function_width(KviKvsObjectFunctionCall *);
-	bool function_windowTitle(KviKvsObjectFunctionCall *c);
-	bool function_x(KviKvsObjectFunctionCall *);
-	bool function_y(KviKvsObjectFunctionCall *);
+	bool addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c);
+	bool backgroundColor(KviKvsObjectFunctionCall *c);
+	bool centerToScreen(KviKvsObjectFunctionCall *c);
+	bool colorPalette(KviKvsObjectFunctionCall *c);
+	bool fontAscent(KviKvsObjectFunctionCall * c);
+	bool fontDescent(KviKvsObjectFunctionCall * c);
+	bool fontMetricsHeight(KviKvsObjectFunctionCall * c);
+	bool fontMetricsWidth(KviKvsObjectFunctionCall * c);
+	bool foregroundColor(KviKvsObjectFunctionCall *c);
+	bool geometry(KviKvsObjectFunctionCall *c);
+	bool globalCursorX(KviKvsObjectFunctionCall *c);
+	bool globalCursorY(KviKvsObjectFunctionCall *c);
+	bool hasFocus(KviKvsObjectFunctionCall *c);
+	bool height(KviKvsObjectFunctionCall *);
+	bool hide(KviKvsObjectFunctionCall *);
+	bool isEnabled(KviKvsObjectFunctionCall *c);
+	bool isTopLevel(KviKvsObjectFunctionCall *c);
+	bool isVisible(KviKvsObjectFunctionCall *c);
+	bool loadInterface(KviKvsObjectFunctionCall *c);
+	bool lower(KviKvsObjectFunctionCall *);
+	bool mapFromGlobal(KviKvsObjectFunctionCall *c);
+	bool mapToGlobal(KviKvsObjectFunctionCall *c);
+	bool move(KviKvsObjectFunctionCall *c);
+	bool parentWidget(KviKvsObjectFunctionCall *c);
+	bool raise(KviKvsObjectFunctionCall *);
+	bool repaint(KviKvsObjectFunctionCall *c);
+	bool insertIntoStatusBar(KviKvsObjectFunctionCall *c);
+	bool removeFromStatusBar(KviKvsObjectFunctionCall *c);
+	bool reparent(KviKvsObjectFunctionCall *c);
+	bool resize(KviKvsObjectFunctionCall *c);
+	bool screenResolution(KviKvsObjectFunctionCall * c);
+	bool setAttribute(KviKvsObjectFunctionCall *c);
+	bool setBackgroundColor(KviKvsObjectFunctionCall *c);
+	bool setBackgroundImage(KviKvsObjectFunctionCall *c);
+	bool setEnabled(KviKvsObjectFunctionCall *c);
+	bool setFocus(KviKvsObjectFunctionCall *c);
+	bool setFocusPolicy(KviKvsObjectFunctionCall *c);
+	bool setFont(KviKvsObjectFunctionCall *c);
+	bool setGeometry(KviKvsObjectFunctionCall *c);
+	bool setKeyShortcut(KviKvsObjectFunctionCall *c);
+	bool setMask(KviKvsObjectFunctionCall *c);
+	bool setMaximumHeight(KviKvsObjectFunctionCall *c);
+	bool setMaximumWidth(KviKvsObjectFunctionCall *c);
+	bool setMinimumHeight(KviKvsObjectFunctionCall *c);
+	bool setMinimumWidth(KviKvsObjectFunctionCall *c);
+	bool setMouseTracking(KviKvsObjectFunctionCall *c);
+	bool setPaletteForeground(KviKvsObjectFunctionCall *c);
+	bool setStyleSheet(KviKvsObjectFunctionCall *c);
+	bool setToolTip(KviKvsObjectFunctionCall *);
+	bool setWindowIcon(KviKvsObjectFunctionCall *c);
+	bool setWindowTitle(KviKvsObjectFunctionCall *c);
+	bool setWFlags(KviKvsObjectFunctionCall *c);
+	bool show(KviKvsObjectFunctionCall *c);
+	bool sizeHint(KviKvsObjectFunctionCall *c);
+	bool update(KviKvsObjectFunctionCall *c);
+	bool width(KviKvsObjectFunctionCall *);
+	bool windowTitle(KviKvsObjectFunctionCall *c);
+	bool x(KviKvsObjectFunctionCall *);
+	bool y(KviKvsObjectFunctionCall *);
 #ifdef COMPILE_WEBKIT_SUPPORT
-	bool function_setWebView(KviKvsObjectFunctionCall *c);
+	bool setWebView(KviKvsObjectFunctionCall *c);
 #endif
 
 signals:
