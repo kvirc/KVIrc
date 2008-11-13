@@ -29,28 +29,28 @@
 #include "kvi_tal_hbox.h"
 
 const char * const align_tbl[] = {
-			"Left",
-			"Right",
-			"HCenter",
-			"VCenter",
-			"Center",
-			"Top",
-			"Bottom",
-			"WordBreak"
-			   };
+	"Left",
+	"Right",
+	"HCenter",
+	"VCenter",
+	"Center",
+	"Top",
+	"Bottom",
+	"WordBreak"
+};
 
 
 
 const int align_cod[] = {
-		Qt::AlignLeft,
-		Qt::AlignRight,
-	    Qt::AlignHCenter,
-	    Qt::AlignVCenter,
-	    Qt::AlignCenter,
-	 	Qt::AlignTop,
-	    Qt::AlignBottom,
-	    Qt::AlignJustify,
-	};
+	Qt::AlignLeft,
+	Qt::AlignRight,
+	Qt::AlignHCenter,
+	Qt::AlignVCenter,
+	Qt::AlignCenter,
+	Qt::AlignTop,
+	Qt::AlignBottom,
+	Qt::AlignJustify,
+};
 
 #define align_num	(sizeof(align_tbl) / sizeof(align_tbl[0]))
 
@@ -149,6 +149,7 @@ KVSO_CLASS_FUNCTION(hbox,setStretchFactor)
 	((KviTalHBox *)widget())->setStretchFactor(((QWidget *)(pObject->object())),uStretch);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(hbox,addStretch)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -159,6 +160,7 @@ KVSO_CLASS_FUNCTION(hbox,addStretch)
 	((KviTalHBox *)widget())->addStretch(iStretch);
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(hbox,setAlignment)
 {
 	CHECK_INTERNAL_POINTER(widget())
@@ -192,10 +194,9 @@ KVSO_CLASS_FUNCTION(hbox,setAlignment)
 			if(align)
 				sum = sum | align;
 			else
-				c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objects"),&(*it));
+				c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objects"),&(*it));
 
 		}
-	if (widget()) ((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
+	((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;
 }
-
