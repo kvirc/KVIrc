@@ -2457,6 +2457,8 @@ KviKvsTreeNodeData * KviKvsParser::parsePercentOrDollar(bool bInObjScope)
 
 		skipSpaces();
 
+		pBegin = KVSP_curCharPointer;
+
 		goto handle_scope_operator;
 	}
 
