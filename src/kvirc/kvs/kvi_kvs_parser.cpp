@@ -2482,7 +2482,7 @@ KviKvsTreeNodeData * KviKvsParser::parsePercentOrDollar(bool bInObjScope)
 		r = new KviKvsTreeNodeCoreFunctionCall(pBegin,szMightBeStrayAtOrThisRoutineName,pRoutine,new KviKvsTreeNodeDataList(pBegin));
 
 		skipSpaces();
-
+		pBegin = KVSP_curCharPointer;
 		goto handle_scope_operator;
 	}
 
