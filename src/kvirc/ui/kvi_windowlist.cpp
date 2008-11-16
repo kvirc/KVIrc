@@ -395,6 +395,7 @@ void KviWindowListButton::unhighlight()
 	if(m_iHighlightLevel < 1)return;
 	m_iHighlightLevel = 0;
 	if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
+	update();
 }
 
 void KviWindowListButton::highlight(int iLevel)
@@ -403,6 +404,7 @@ void KviWindowListButton::highlight(int iLevel)
 	if(m_bActive && g_pFrame->isActiveWindow())return;
 	m_iHighlightLevel = iLevel;
 	if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
+	update();
 	if(m_bActive)return;
 }
 
