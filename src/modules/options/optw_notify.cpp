@@ -120,7 +120,7 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 	tip += "</center>";
 	mergeTip(b,tip);
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Enable notifier window flashing","options"),KviOption_boolNotifierFlashing);
-	addBoolSelector(0,2,0,2,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
+	KviBoolSelector * b2 = addBoolSelector(0,2,0,2,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
 
 	KviTalGroupBox *g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
 	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
@@ -130,6 +130,20 @@ KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
 		addUIntSelector(g,__tr2qs_ctx("Default auto hiding time for messages (0 to disable)","options"),
 				KviOption_uintNotifierAutoHideTime,
 				0,86400,30,KVI_OPTION_BOOL(KviOption_boolEnableNotifier)),
+		SLOT(setEnabled(bool)));
+
+	connect(b2,
+		SIGNAL(toggled(bool)),
+		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while active (mouseover)","options"),
+				KviOption_uintNotifierActiveTransparency,
+				0,100,90,KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
+		SLOT(setEnabled(bool)));
+
+	connect(b2,
+		SIGNAL(toggled(bool)),
+		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while inactive","options"),
+				KviOption_uintNotifierInactiveTransparency,
+				0,100,40,KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
 		SLOT(setEnabled(bool)));
 
 	addRowSpacer(0,4,0,4);
