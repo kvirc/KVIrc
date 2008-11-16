@@ -442,7 +442,7 @@ void KviMessageColorsOptionsWidget::saveLastItem()
 	if(!m_pLastItem)return;
 
 	int curIt = m_pForeListWidget->currentRow();
-	if(curIt)
+	if(curIt >= 0) //quite useless
 	{
 		//qDebug("Setting fore %d",curIt);
 		KviMessageColorListWidgetItem * fore = (KviMessageColorListWidgetItem *)m_pForeListWidget->item(curIt);
@@ -450,7 +450,7 @@ void KviMessageColorsOptionsWidget::saveLastItem()
 		if(fore)m_pLastItem->msgType()->setFore(fore->m_iClrIdx);
 	}
 	curIt = m_pBackListWidget->currentRow();
-	if(curIt)
+	if(curIt >= 0) //quite useless
 	{
 		KviMessageColorListWidgetItem * back = (KviMessageColorListWidgetItem *)m_pBackListWidget->item(curIt);
 		if(back)m_pLastItem->msgType()->setBack(back->m_iClrIdx);
