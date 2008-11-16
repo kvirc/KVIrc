@@ -1871,10 +1871,6 @@ void KviApp::fillRecentServersPopup(KviTalPopupMenu * m)
 	m->clear();
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentServers).end(); ++it)
 	{
-		/*
-		FIXME
-		HACK This hack removes the empty entry in the list
-		*/
 		if(*it == "") continue;
 		m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SERVER)),*it);
 	}
@@ -1887,6 +1883,7 @@ void KviApp::fillRecentNicknamesPopup(KviTalPopupMenu * m,KviConsole * pConsole)
 	bool bAlreadyFound = false;
 	for(QStringList::Iterator it = KVI_OPTION_STRINGLIST(KviOption_stringlistRecentNicknames).begin(); it != KVI_OPTION_STRINGLIST(KviOption_stringlistRecentNicknames).end(); ++it)
 	{
+		if(*it == "") continue;
 		id = m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICK)),*it);
 		if(!pConsole->isConnected())m->setItemEnabled(id,false);
 		else {
@@ -1909,6 +1906,7 @@ void KviApp::fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsole * pConsole)
 	{
 		for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
 		{
+			if(*it == "") continue;
 			id = m->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)),*it);
 			if(!pConsole->isConnected())m->setItemEnabled(id,false);
 			else {

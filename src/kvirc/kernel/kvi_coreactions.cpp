@@ -828,6 +828,9 @@ void KviChangeNickAction::popupAboutToShow()
 
 	m_pPopup->insertSeparator();
 	m_pPopup->insertItem(*(smallIcon()),__tr2qs("Other..."));
+
+	m_pPopup->insertSeparator();
+	m_pPopup->insertItem(*(smallIcon()),__tr2qs("Clear Recent Nicks List"));
 }
 
 void KviChangeNickAction::popupActivated(int id)
@@ -842,6 +845,9 @@ void KviChangeNickAction::popupActivated(int id)
 		if(__tr2qs("Other...") == text)
 		{
 			activate();
+		} else if(__tr2qs("Clear Recent Nicks List") == text)
+		{
+			KviKvsScript::run("option stringlistRecentNicknames",c);
 		} else {
 			szText = text;
 			szText.prepend("nick ");

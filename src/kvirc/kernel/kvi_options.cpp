@@ -1328,12 +1328,15 @@ void KviApp::optionResetUpdate(int flags)
 }
 bool KviApp::setOptionValue(const QString &optName,const QString &value)
 {
-	if (!setCommonOptionValue(optName,value)) return false;
+	if (!setCommonOptionValue(optName,value))
+		return false;
+
 	if(KviQString::equalCI(optName,"stringlistRecentChannels"))
 	{
 		buildRecentChannels();
 		return true;
 	}
+
 	// The pixmap options have special treating
 	if(KviQString::equalCIN(optName,KVI_PIXMAP_OPTIONS_PREFIX,KVI_PIXMAP_OPTIONS_PREFIX_LEN))
 	{
@@ -1360,9 +1363,7 @@ bool KviApp::setOptionValue(const QString &optName,const QString &value)
 		return false;
 	}
 
-	return false;
-
-
+	return true;
 }
 
 bool KviApp::setCommonOptionValue(const QString &optName,const QString &value)
