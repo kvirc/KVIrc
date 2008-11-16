@@ -225,8 +225,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		g->addWidget(tl,0,1);
 	} else {
 		QLabel * tl = new QLabel(szLabel,this);
-		g->addWidget(tl,0,0,0,2);
-	//	g->addMultiCellWidget(tl,0,0,0,1);
+		g->addWidget(tl,0,0,1,2);
 	}
 
 	g->setColumnStretch(1,1);
@@ -241,12 +240,10 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		m_pEdit = new QLineEdit(this);
 		((QLineEdit *)m_pEdit)->setText(szDefaultText);
 	}
-	g->addWidget(m_pEdit,1,1,0,1);
-//	g->addMultiCellWidget(m_pEdit,1,1,0,1);
+	g->addWidget(m_pEdit,1,1,1,1);
 
 	KviTalHBox * box = new KviTalHBox(this);
-	g->addWidget(box,2,2,0,0);
-//	g->addMultiCellWidget(box,2,2,0,1);
+	g->addWidget(box,2,1,1,2);
 
 	m_iEscapeButton = 0;
 	m_iDefaultButton = 0;
