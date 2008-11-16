@@ -60,6 +60,7 @@
 #include <QComboBox>
 #include <QButtonGroup>
 #include <QInputDialog>
+#include <QHeaderView>
 #include <QIcon>
 
 
@@ -1067,6 +1068,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pTreeWidget->setColumnWidth(0,150);
 	m_pTreeWidget->setColumnWidth(1,150);
 
+	m_pTreeWidget->setSortingEnabled(true);
 	m_pTreeWidget->setHeaderLabels(columLabels);
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
