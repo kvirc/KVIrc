@@ -8,16 +8,6 @@ PLEASE KEEP THIS FILE UPDATED!
 
 src/kvirc/ui:
 	kvi_statusbar.cpp (QT4 ported but still some bugs)
-	kvi_mdichild.cpp (bug in resize)
-		All MDI stuff will be reworked to use Qt subsystem
-		See branches/kvirc/qt-mdi/
 src/modules
 	theme <-done, needs fixing (dynamic tooltip)
-
-
-Note: some code depends on kde3-only functionality, like dcop:
-src/kvilib/ext/kvi_dcophelper.*
-src/modules/torrent/*  <-- adaptable, but by now supports only dcop communication
-
-By now, this code has been excluded using the bogus "#ifdef COMPILE_KDE3_SUPPORT" directive, while
-the working code for kde4 uses #ifdef COMPILE_KDE_SUPPORT
+	torrent <- has to be finished (when ktorrent dbus interface will stabilize)

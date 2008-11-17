@@ -198,7 +198,7 @@ The source tree
 |   |   |-- mediaplayer   the media player module
 |   |   |                 This is an interface to some multimedia programs
 |   |   |                 (amarok, audacious, juk, xmms, winamp) and libs
-|   |   |                 (amip, DCOP). This replaces the old mp3player
+|   |   |                 (amip, DBus). This replaces the old mp3player
 |   |   |                 module. You'll need to satisfy some dependencies
 |   |   |                 to enable support for a specific program/library,
 |   |   |                 by example on unix libxmms.so is
