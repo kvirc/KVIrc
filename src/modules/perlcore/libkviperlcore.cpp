@@ -59,6 +59,9 @@
 // anyway, once you struggled for a couple of days with all that
 // stuff then you start getting things done... and it rox :)
 
+// Note for kvirc4: perl embedding has changed between perl 5.8 and perl 5.10.
+// This version should work nice with both, but warranty is 5.10-only.
+
 #ifdef COMPILE_PERL_SUPPORT
 	#include <EXTERN.h>
 	#include <perl.h>
@@ -84,6 +87,9 @@
 #ifdef COMPILE_PERL_SUPPORT
 
 #include "perlcoreinterface.h"
+
+// This should be able to be rewritten in the form:
+// static PerlInterpreter *m_pInterpreter
 
 // people ... are you mad ? ... what the heck is "my_perl" ?
 #define my_perl m_pInterpreter
@@ -120,6 +126,10 @@ KviPerlInterpreter::~KviPerlInterpreter()
 // It SHOULD be mentioned somewhere that
 // this function is in DynaLoader.a in the perl
 // distribution and you MUST link it statically.
+
+// Update: it is no more needed as of perl 5.10, since it is
+// included in the standard libperl interface.
+
 extern "C" void boot_DynaLoader(pTHX_ CV* cv);
 
 extern "C" void xs_init(pTHX)
