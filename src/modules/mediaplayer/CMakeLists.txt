@@ -2,8 +2,6 @@
 
 SET(kvimediaplayer_SRCS
 	libkvimediaplayer.cpp
-	mp_amarokinterface.cpp
-	mp_dcopinterface.cpp
 	mp_interface.cpp
 	mp_jukinterface.cpp
 	mp_mp3.cpp

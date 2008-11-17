@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "mp_interface.h"
-#include "mp_amarokinterface.h"
 #include "mp_amipinterface.h"
 #include "mp_mprisinterface.h"
 #include "mp_jukinterface.h"
@@ -1489,7 +1488,8 @@ MP_KVS_FUNCTION(status)
 		scripts). The module has replaced the old mediaplayer module which after
 		years of development had developed some design flaws and needed a complete rewrite.
 		At the moment of writing the supported players are: xmms (unix), audacious (unix), winamp (windows),
-		amarok (kde) and juk (kde). You choose the player interface by either setting
+		every player supported by the amip project (windows), every player using the mpris interface
+		(amarok2, juk under kde). You choose the player interface by either setting
 		the option in the settings dialog, by manually setting [cmd]option[/cmd] stringPreferredMediaPlayer
 		or by running [cmd]mediaplayer.detect[/cmd] that will guess the media player interface for you.[br]
 		If you're going to use the Winamp media player then you must install the "gen_kvirc.dll" plugin
@@ -1621,7 +1621,6 @@ static bool mediaplayer_module_init( KviModule * m )
 #endif
 
 #ifdef COMPILE_KDE3_SUPPORT
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAmarokInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviJukInterface));
 #endif
 
