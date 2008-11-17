@@ -432,45 +432,40 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 		call to programmaticaly test if the remote application is running.
 	@examples:
 		[example]
-			echo $system.dcop("kdesktop","KBackgroundIface","currentWallpaper(int)","int=0")
-			echo $system.dcop("kdesktop","KScreensaverIface","lock()")
-			# we can also ignore the return value in several ways
-			%dummy = $system.dcop("kicker","kicker","showKMenu()")
-			$system.dcop("kdesktop","KScreensaverIface","save()")
-			$system.dcop("kicker","Panel","addBrowserButton(QString)","QString=/")
-			# runtime test if a call would work (i.e. , kicker is running at all, parameters are right etc...)
-			if($system.dcop("?kicker","kicker","showKMenu()"))echo "Can't make dcop calls to kicker!"
+			#get a string list of torrents currently in queue in ktorrent
+			echo $system.dbus("org.ktorrent.ktorrent","/KTorrent", "org.ktorrent.KTorrent","torrents")
+			#stop a torrent in ktorrent by its name
+			echo $system.dbus("org.ktorrent.ktorrent","/KTorrent", "org.ktorrent.KTorrent","stop","QString=Torrent Name")
+			#start the kde task manager
+			echo $system.dbus("org.freedesktop.ScreenSaver","/App", "org.kde.krunner.App","showTaskManager")
+			#get the clipboard contents using dbus
+			echo $system.dbus("org.kde.klipper","/klipper", "org.kde.klipper.klipper","getClipboardContents")
 		[/example]
 */
 
 static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 {
-	bool bTestMode = false;
-
-	KviQCString szApp,szObj,szFun;
+	QString szService, szPath, szInterface, szMethod;
 	QStringList parms;
 
 	KVSM_PARAMETERS_BEGIN(c)
-		KVSM_PARAMETER("service",KVS_PT_NONEMPTYCSTRING,0,szService)
-		KVSM_PARAMETER("path",KVS_PT_NONEMPTYCSTRING,0,szPath)
-		KVSM_PARAMETER("interface",KVS_PT_NONEMPTYCSTRING,0,szInterface)
-		KVSM_PARAMETER("method",KVS_PT_NONEMPTYCSTRING,0,szMethod)
+		KVSM_PARAMETER("service",KVS_PT_NONEMPTYSTRING,0,szService)
+		KVSM_PARAMETER("path",KVS_PT_NONEMPTYSTRING,0,szPath)
+		KVSM_PARAMETER("interface",KVS_PT_NONEMPTYSTRING,0,szInterface)
+		KVSM_PARAMETER("method",KVS_PT_NONEMPTYSTRING,0,szMethod)
 		KVSM_PARAMETER("parameter_list",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,parms)
 	KVSM_PARAMETERS_END(c)
-/*
-	if((szApp.data()) && (szApp.length() > 1))
+
+#ifdef COMPILE_KDE_SUPPORT
+
+	QDBusInterface remoteApp(szService, szPath, szInterface);
+	if(!remoteApp.isValid())
 	{
-		if(*(szApp.data()) == '?')
-		{
-			bTestMode = true;
-			szApp.remove(0,1);
-		}
+			c->warning(__tr2qs("Invalid DBus interface"));
+			return false;		
 	}
 
-#ifdef COMPILE_KDE3_SUPPORT
-
-	QByteArray ba;
-	QDataStream ds(ba, IO_WriteOnly);
+	QList<QVariant> ds;
 
 	for ( QStringList::Iterator it = parms.begin(); it != parms.end(); ++it )
 	{
@@ -478,7 +473,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 
 		if(tmp.isEmpty())
 		{
-			c->warning(__tr2qs("Invalid DCOP parameter syntax"));
+			c->warning(__tr2qs("Invalid DBus parameter syntax"));
 			return false;
 		}
 
@@ -517,57 +512,42 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 			}
 			ds << uii;
 		} else {
-			c->warning(__tr2qs("Unsupported DCOP parameter type %s"),tmp.ptr());
+			c->warning(__tr2qs("Unsupported DBus parameter type %s"),tmp.ptr());
 			return false;
 		}
 	}
 
-	QByteArray rba;
-	KviQCString szRetType;
-
-	bool bRet = g_pApp->dcopClient()->call(szApp,szObj,szFun,ba,szRetType,rba);
-
-	if(!bRet)
+	QDBusMessage reply = remoteApp.callWithArgumentList(QDBus::Block, szMethod, ds);
+	
+	if (reply.type() == QDBusMessage::ErrorMessage)
 	{
-		if(!bTestMode)
-			c->warning(__tr2qs("DCOP call failed"));
-		c->returnValue()->setInteger(0);
-	} else {
-		if(bTestMode)
-			c->returnValue()->setInteger(1);
-		else {
-			QDataStream ret(rba, IO_ReadOnly);
-			if(szRetType == "bool")
+		QDBusError err = reply;
+		c->warning(__tr2qs("The DBus call returned an error \"%s\": %s"),qPrintable(err.name()), qPrintable(err.message()));
+		return false;
+	}
+
+	QString szRetType;
+	foreach (QVariant v, reply.arguments()) {
+		switch(v.type())
+		{
+			case QVariant::Bool:
+				c->returnValue()->setInteger(v.toBool() ? 1 : 0);
+				break;
+			case QVariant::String:
+				c->returnValue()->setString(v.toString());
+				break;
+			case QVariant::ByteArray:
+				c->returnValue()->setString(v.toByteArray().data());
+				break;
+			case QVariant::UInt:
+				c->returnValue()->setInteger(v.toUInt());
+				break;
+			case QVariant::Int:
+				c->returnValue()->setInteger(v.toInt());
+				break;
+			case QVariant::StringList:
 			{
-				bool bqw;
-				ret >> bqw;
-				c->returnValue()->setInteger(bqw ? 1 : 0);
-			} else if(szRetType == "QString")
-			{
-				QString szz;
-				ret >> szz;
-				c->returnValue()->setString(szz);
-			} else if(szRetType == "QCString")
-			{
-				KviQCString sss;
-				ret >> sss;
-				c->returnValue()->setString(sss.data());
-			} else if((szRetType == "uint") || (szRetType == "unsigned int") || (szRetType == "Q_UINT32"))
-			{
-				unsigned int ui3;
-				ret >> ui3;
-				c->returnValue()->setInteger(ui3);
-			} else if((szRetType == "int") || (szRetType == "long"))
-			{
-				int iii;
-				ret >> iii;
-				c->returnValue()->setInteger(iii);
-			} else if(szRetType == "QCStringList")
-			{
-			} else if(szRetType == "QStringList")
-			{
-				QStringList csl;
-				ret >> csl;
+				QStringList csl(v.toStringList());
 				KviKvsArray * arry = new KviKvsArray();
 				int idx = 0;
 				for(QStringList::Iterator iter = csl.begin();iter != csl.end();++iter)
@@ -576,17 +556,21 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 					idx++;
 				}
 				c->returnValue()->setArray(arry);
-			} else {
-				c->returnValue()->setString(szRetType.data());
+				break;
 			}
+			case QVariant::Invalid:
+				//method returns void
+				c->returnValue()->setString("");
+				break;
+			default:
+				c->warning(__tr2qs("Unsupported DBus call return type %s"),v.typeName());
+				break;
 		}
 	}
+
 #else
-	if(!bTestMode)
-		c->warning(__tr2qs("DCOP calls are available only when KDE support is compiled in"));
-	c->returnValue()->setInteger(0);
+		c->warning(__tr2qs("DBus calls are available only when KDE support is compiled in"));
 #endif
-*/
 	return true;
 }
 
