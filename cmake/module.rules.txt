@@ -10,14 +10,11 @@ ENDIF()
 ADD_LIBRARY(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
 
 IF(WIN32)
-	#mingw needs these flags for linking
-	IF(MINGW)
-		SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc")
-	ENDIF()
 	IF(MSVC)
 		TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
 	ELSE()
-		#mingw, others need to link against kvirc
+		#mingw needs these flags for linking
+		SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc")
 		TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
 	ENDIF()
 ELSE()

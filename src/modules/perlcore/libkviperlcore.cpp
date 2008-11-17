@@ -65,7 +65,7 @@
 	#include <XSUB.h>
 
 	#include "ppport.h"
-	
+
 	#include "kvi_kvs_runtimecontext.h"
 
 	static KviKvsRunTimeContext * g_pCurrentKvsContext = 0;
@@ -223,12 +223,12 @@ bool KviPerlInterpreter::execute(
 		szError = __tr2qs_ctx("Internal error: perl interpreter not initialized","perl");
 		return false;
 	}
-	
+
 	g_lWarningList.clear();
 
 	KviQCString szUtf8 = szCode.toUtf8();
 	PERL_SET_CONTEXT(m_pInterpreter);
-	
+
 	// clear the _ array
 	AV * pArgs = get_av("_",1);
 	SV * pArg = av_shift(pArgs);
@@ -322,7 +322,7 @@ static void perlcore_destroy_interpreter(const QString &szContextName)
 static void perlcore_destroy_all_interpreters()
 {
 	KviPointerHashTableIterator<QString,KviPerlInterpreter> it(*g_pInterpreters);
-	
+
 	while(it.current())
 	{
 		KviPerlInterpreter * i = it.current();

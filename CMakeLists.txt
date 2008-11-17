@@ -523,15 +523,27 @@ ENDIF()
 
 
 # Check for Perl support
-# FIXME: This shouldn't be required (we should be able to live without it) (note: needed for user documentation generation)
-FIND_PACKAGE(Perl REQUIRED)
+# (note: needed for user documentation generation)
+FIND_PACKAGE(Perl)
 OPTION(WANT_PERL "Compile Perl Support" ON)
 IF(WITHOUT_PERL)
 	SET(WANT_PERL OFF)
 ENDIF()
 IF(WANT_PERL)
-	SET(COMPILE_PERL_SUPPORT 1)
-	SET(CMAKE_STATUS_PERL_SUPPORT "Yes")
+	IF(PERL_FOUND)
+		SET(COMPILE_PERL_SUPPORT 1)
+		SET(CMAKE_STATUS_PERL_SUPPORT "Yes")
+
+		EXECUTE_PROCESS(COMMAND ${PERL_EXECUTABLE} -MExtUtils::Embed -e ldopts
+		OUTPUT_VARIABLE PERL_LINK_FLAGS
+		)
+
+		STRING(REGEX REPLACE "(\r?\n)+$" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
+
+		LIST(APPEND LIBS ${PERL_LINK_FLAGS})
+	ELSE()
+		SET(CMAKE_STATUS_PERL_SUPPORT "No")
+	ENDIF()
 ELSE()
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_PERL)
 	SET(CMAKE_STATUS_PERL_SUPPORT "User disabled")

@@ -31,17 +31,13 @@ SUBDIRS(
 	mask math mediaplayer mircimport my
 	notifier
 	objects options
-	popupeditor proxydb
+	perl perlcore popupeditor proxydb
 	raweditor regchan reguser
 	serverdb setup sharedfile sharedfileswindow snd socketspy spaste str system
 	texticons term theme tip tmphighlight toolbar toolbareditor torrent trayicon
 	upnp
 	url
 	window
-
-
-	# modules to deprecate ?
-	# perl, perlcore
 
 	# forgotten ?
 	# offer

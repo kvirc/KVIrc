@@ -1,14 +1,5 @@
 # CMakeLists for src/modules/perlcore
 
-IF(UNIX)
-	IF(APPLE)
-		LIST(APPEND LIBS -lperl)
-	ENDIF()
-ELSE()
-	# Assume windows
-	LIST(APPEND LIBS -lperl58)
-ENDIF()
-
 SET(kviperlcore_SRCS
 	libkviperlcore.cpp
 )
@@ -17,4 +8,13 @@ SET(kviperlcore_SRCS
 QT4_WRAP_CPP(kviperlcore_MOC_SRCS ${kviperlcore_MOC_HDRS})
 
 SET(kvi_module_name kviperlcore)
+
+EXECUTE_PROCESS(COMMAND ${PERL_EXECUTABLE} -MExtUtils::Embed -e ccopts
+	OUTPUT_VARIABLE PERL_COMPILE_FLAGS
+)
+
+STRING(REGEX REPLACE "(\r?\n)+$" "" PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS}")
+
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+
+SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
