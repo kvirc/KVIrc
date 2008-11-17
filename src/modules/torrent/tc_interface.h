@@ -42,7 +42,7 @@ public:
 
 	// returns number of torrents in client
 	virtual int count()=0;
-	
+
 /*
 	// path of torrent file
 	virtual QCString getTorrentFile(int i)=0;
@@ -69,7 +69,7 @@ public:
 /*
 	// remove torrent from client
 	virtual bool removeTorrent(int i)=0;
-	
+
 	virtual bool addTorrent(const QCString &mrl);
 */
 	// returns state of torrent number i (Stopped, Stalled, Seeding, Downloading)
@@ -100,7 +100,7 @@ public:
 
 protected:
 	QString	m_lastError;
-	static KviTorrentInterface *m_selected; 
+	static KviTorrentInterface *m_selected;
 };
 
 class KviTorrentInterfaceDescriptor

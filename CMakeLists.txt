@@ -358,7 +358,7 @@ ENDIF()
 # Check for KDE4
 ############################################################################
 
-OPTION(WANT_KDE4 "Whether to use KDE4 support (experimental)" OFF)
+OPTION(WANT_KDE4 "Whether to use KDE4 support" ON)
 IF(WITH_KDE4)
 	SET(WANT_KDE4 ON)
 ENDIF()

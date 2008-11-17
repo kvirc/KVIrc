@@ -3,13 +3,13 @@
 
 //=============================================================================
 //
-//   DCOP interface for KTorrent client.
+//   DBus interface for KTorrent client.
 //
-//   File : tc_ktorrentdcopinterface.h
-//   Creation date : Fri Jan 1 15:42:25 2007 GMT by Alexander Stillich
+//   File : tc_ktorrentdbusinterface.h
+//   Creation date : Mod Nov 17 13:46:00 2008 GMT by Fabio Bas
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2007-2008 Alexander Stillich (torque at pltn dot org)
+//   Copyright (C) 2008 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -30,21 +30,23 @@
 
 #include "tc_interface.h"
 
-#ifdef COMPILE_KDE3_SUPPORT
+#ifdef COMPILE_KDE_SUPPORT
 
-	#include <kvi_dcophelper.h>
-	
-	// DCOP interface to KTorrent. this has 'DCOP' in its name
-	// because in kde4 there will be a D-BUS interface.
-	class KviKTorrentDCOPInterface : public KviTorrentInterface,
-					private KviDCOPHelper
+	#include <QtDBus/QtDBus>
+
+	class KviKTorrentDBusInterface : public KviTorrentInterface
 	{
 		Q_OBJECT
-	
+
 	public:
-		KviKTorrentDCOPInterface();
-		virtual ~KviKTorrentDCOPInterface();
+		KviKTorrentDBusInterface();
+		virtual ~KviKTorrentDBusInterface();
+
 		virtual int detect();
+
+		virtual bool startAll();
+		virtual bool stopAll();
+
 		virtual int count();
 		virtual bool start(int i);
 		virtual bool stop(int i);
@@ -55,21 +57,19 @@
 		virtual QString fileName(int i, int file);
 		virtual QString filePriority(int i, int file);
 		virtual bool setFilePriority(int i, int file, const QString &prio);
-	
-		virtual bool startAll();
-		virtual bool stopAll();
-	
+
 		virtual int maxUploadSpeed();
 		virtual int maxDownloadSpeed();
-	
+
 		virtual bool setMaxUploadSpeed(int kbytes_per_sec);
 		virtual bool setMaxDownloadSpeed(int kbytes_per_sec);
-	
+
 		virtual float speedUp();
 		virtual float speedDown();
-	
+
 		virtual float trafficUp();
 		virtual float trafficDown();
+/*
 	private slots:
 		// polls client and extracts information.
 		// this is done because the order of torrents returned changes
@@ -105,15 +105,16 @@
 			int peers;
 			bool operator<(const TorrentInfo &ti) { return name < ti.name; }
 		};
-	
-		QValueList<TorrentInfo>	m_ti;
-	
-	private:
-		bool makeTorrentInfo(TorrentInfo &ti, const KviQCStringList &ret);
-	};
-	
-	TORR_DECLARE_DESCRIPTOR(KviKTorrentDCOPInterface)
 
-#endif // COMPILE_KDE3_SUPPORT
+		QValueList<TorrentInfo>	m_ti;
+*/
+	private:
+//		bool makeTorrentInfo(TorrentInfo &ti, const KviQCStringList &ret);
+		bool findRunningApp();
+	};
+
+	TORR_DECLARE_DESCRIPTOR(KviKTorrentDBusInterface)
+
+#endif // COMPILE_KDE_SUPPORT
 
 #endif // _TC_KTORRENTDCOPINTERFACE_H_

@@ -2,12 +2,13 @@
 
 SET(kvitorrent_MOC_HDRS
 	tc_statusbarapplet.h
+	tc_ktorrentdbusinterface.h
 )
 
 SET(kvitorrent_SRCS
 	libkvitorrent.cpp
 	tc_statusbarapplet.cpp
-	tc_ktorrentdcopinterface.cpp
+	tc_ktorrentdbusinterface.cpp
 	tc_interface.cpp
 )
 

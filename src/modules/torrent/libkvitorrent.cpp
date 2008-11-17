@@ -24,7 +24,7 @@
 
 
 #include "tc_interface.h"
-#include "tc_ktorrentdcopinterface.h"
+#include "tc_ktorrentdbusinterface.h"
 #include "tc_statusbarapplet.h"
 
 #include "kvi_module.h"
@@ -830,8 +830,8 @@ static bool torrent_module_init(KviModule *m)
 	g_pDescriptorList = new KviPointerList<KviTorrentInterfaceDescriptor>;
 	g_pDescriptorList->setAutoDelete(true);
 
-#ifdef COMPILE_KDE3_SUPPORT
-	g_pDescriptorList->append(new KviKTorrentDCOPInterfaceDescriptor);
+#ifdef COMPILE_KDE_SUPPORT
+	g_pDescriptorList->append(new KviKTorrentDBusInterfaceDescriptor);
 #endif // COMPILE_KDE_SUPPORT
 
 	KviTorrentInterface::select(0);
@@ -891,7 +891,8 @@ static bool torrent_module_ctrl(KviModule *,const char *,void *) // KviModule * 
 KVIRC_MODULE(
 	"Torrent",
 	"4.0.0",
-	"Copyright (C) 2007 Alexander Stillich (torque at pltn dot org)",
+	"Copyright (C) 2007 Alexander Stillich (torque at pltn dot org)" \
+	"              2008 Fabio Bas (ctrlaltca at gmail dot com)",
 	"Interface to various torrent clients",
 	torrent_module_init,
 	torrent_module_can_unload,
