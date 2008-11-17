@@ -359,8 +359,8 @@ ENDIF()
 ############################################################################
 
 OPTION(WANT_KDE4 "Whether to use KDE4 support" ON)
-IF(WITH_KDE4)
-	SET(WANT_KDE4 ON)
+IF(WITHOUT_KDE4)
+	SET(WANT_KDE4 OFF)
 ENDIF()
 IF(WANT_KDE4)
 	FIND_PACKAGE(KDE4)
@@ -382,7 +382,7 @@ IF(WANT_KDE4)
 		SET(CMAKE_STATUS_KDE4_SUPPORT "Not available")
 	ENDIF()
 ELSE()
-	SET(CMAKE_STATUS_KDE4_SUPPORT "No")
+	SET(CMAKE_STATUS_KDE4_SUPPORT "User disabled")
 ENDIF()
 
 ############################################################################
@@ -545,6 +545,26 @@ IF(WANT_PERL)
 ELSE()
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_PERL)
 	SET(CMAKE_STATUS_PERL_SUPPORT "User disabled")
+ENDIF()
+
+# Check for Python support
+OPTION(WANT_PYTHON "Compile Python Support" ON)
+IF(WITHOUT_PYTHON)
+	SET(WANT_PYTHON OFF)
+ENDIF()
+IF(WANT_PYTHON)
+	FIND_PACKAGE(PythonLibs)
+	IF(PYTHONLIBS_FOUND)
+		#INCLUDE_DIRECTORIES(${PYTHON_LIBRARIES})
+		#LIST(APPEND LIBS ${PYTHON_INCLUDE_PATH})
+		SET(COMPILE_PYTHON_SUPPORT 1)
+		SET(CMAKE_STATUS_PYTHON_SUPPORT "Yes")
+	ELSE()
+		SET(CMAKE_STATUS_PYTHON_SUPPORT "No")
+	ENDIF()
+ELSE()
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_PYTHON)
+	SET(CMAKE_STATUS_PYTHON_SUPPORT "User disabled")
 ENDIF()
 
 ############################################################################
@@ -853,11 +873,11 @@ IF(WITH_PACKAGES)
 	SET (CPACK_PACKAGE_VENDOR "KVIrc team")
 	SET (CPACK_DEBIAN_PACKAGE_SECTION "net")
 	SET (CPACK_DEBIAN_PACKAGE_DESCRIPTION "Extensible crossplatform download manager
-	 A highly configurable graphical IRC client with an MDI interface,
- built-in scripting language, support for IRC DCC, drag & drop file
- browsing, and much more. KVIrc uses the KDE widget set, can be extended
- using its own scripting language, integrates with KDE, and supports
- custom plugins.")
+	A highly configurable graphical IRC client with an MDI interface,
+	built-in scripting language, support for IRC DCC, drag & drop file
+	browsing, and much more. KVIrc uses the KDE widget set, can be extended
+	using its own scripting language, integrates with KDE, and supports
+	custom plugins.")
 	SET (CPACK_DEBIAN_PACKAGE_DEPENDS "libqt4-core (>= 4.4.0), libqt4-gui (>= 4.4.0),  libacl1 (>= 2.2.11-1), libart-2.0-2 (>= 2.3.18), libattr1 (>= 2.4.41-1), libaudio2, libaudiofile0 (>= 0.2.3-4), libc6 (>= 2.7-1), libesd0 (>= 0.2.35) | libesd-alsa0 (>= 0.2.35), libfam0, libfontconfig1 (>= 2.4.0), libfreetype6 (>= 2.3.5), libgcc1 (>= 1:4.1.1-21), libice6 (>= 1:1.0.0), libidn11 (>= 0.5.18), libjpeg62, libperl5.10 (>= 5.10.0), libpng12-0 (>= 1.2.13-4), libsm6, libssl0.9.8 (>= 0.9.8f-5), libstdc++6 (>= 4.1.1-21), libx11-6, libxcursor1 (>> 1.1.2), libxext6, libxft2 (>> 2.1.1), libxi6, libxinerama1, libxrandr2 (>= 2:1.2.0), libxrender1, libxt6, zlib1g (>= 1:1.1.4)")
 	SET (CPACK_PACKAGE_DESCRIPTION_FILE	"${CMAKE_CURRENT_SOURCE_DIR}/README")
 	SET (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
@@ -1022,6 +1042,7 @@ MESSAGE(STATUS "  Crypt Support And Engines   : ${CMAKE_STATUS_CRYPT_SUPPORT}")
 MESSAGE(STATUS "  IPv6 Support                : ${CMAKE_STATUS_IPV6_SUPPORT}")
 MESSAGE(STATUS "  Pseudo-Transparency Support : ${CMAKE_STATUS_TRANSPARENCY_SUPPORT}")
 MESSAGE(STATUS "  Perl Support                : ${CMAKE_STATUS_PERL_SUPPORT}")
+MESSAGE(STATUS "  Python Support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
 MESSAGE(STATUS "  IPC Support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
 #MESSAGE(STATUS "  System memmove Support      : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT}")
 MESSAGE(STATUS "  GSM Support                 : ${CMAKE_STATUS_GSM_SUPPORT}")

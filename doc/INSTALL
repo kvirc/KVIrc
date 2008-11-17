@@ -333,13 +333,13 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITHOUT_QTWEBKIT
         Disable Qt-WebKit support.
 
-    -DWITH_KDE4
-        Compile KDE4 support. It will look for the KDE4 headers and libraries
-        and if found it will enable the KDE4 support.
-
     -DWITH_AUDIOFILE
         Compile Audiofile support. It will look for Audiofile headers and libraries
         and if found it will enable the Audiofile support.
+
+    -DWITHOUT_KDE4
+        Compile KDE4 support. It will look for the KDE4 headers and libraries
+        and if found it will enable the KDE4 support.
 
     -DWITHOUT_SSL
         Disables the secure socket layer support. The SSL support is
@@ -372,7 +372,11 @@ General notes for the installation of the 4.0 release of KVIrc
 
     -DWITHOUT_PERL
         Forcibly disable perl support.
-        You will not able to make perl scripts
+        You will not be able to make perl scripts
+
+    -DWITHOUT_PYTHON
+        Forcibly disable python support.
+        You will not be able to make python scripts
 
     -DWITHOUT_IPC
         Disables support for inter-process communication.
