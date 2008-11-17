@@ -27,7 +27,6 @@
 #include "mp_interface.h"
 #include "mp_amipinterface.h"
 #include "mp_mprisinterface.h"
-#include "mp_jukinterface.h"
 #include "mp_winampinterface.h"
 #include "mp_xmmsinterface.h"
 #include "mp_xmms2interface.h"
@@ -1619,11 +1618,6 @@ static bool mediaplayer_module_init( KviModule * m )
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAmipInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviWinampInterface));
 #endif
-
-#ifdef COMPILE_KDE3_SUPPORT
-	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviJukInterface));
-#endif
-
 	g_pMPInterface = 0;
 
 	if(KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) == "auto")
