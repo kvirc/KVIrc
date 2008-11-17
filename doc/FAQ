@@ -6,12 +6,11 @@
 
 2. COMPILATION 
 
-2.1 I can't compile kvirc from cvs, what's wrong?
+2.1 I can't compile kvirc from svn, what's wrong?
 2.2 Internal Compiler Errors ?
 2.3 On Mandrake 10.0 (or other) KVIrc fails to start
     saying that it can't find libkvisetup.so.
 2.4 I got 'amarokInterface.cpp:29:31: amarokInterface.moc: No such file or directory'. Whats going wrong?
-2.5 Configure complains about a missing libdl.so but I seem to have it
 
 
 3. INSTALLATION 
@@ -65,12 +64,10 @@
 
 7. CRASHES
 
-7.1 KVIrc crashes when the multiline text input is opened (obsolete)
-7.2 What the heck is a gdb stack trace and how do I get it ?
-7.3 KVIrc hangs up, but doesn't crash. How do i report debug informations ?
-7.4 KVIrc exits by itself or simply "disappears" without any apparent reason.
-7.5 KVIrc dies randomly and "Alarm Clock" is printed in the console
-7.6 KVIrc dies when using alias(identify){ identify password; }
+7.1 What the heck is a gdb stack trace and how do I get it ?
+7.2 KVIrc hangs up, but doesn't crash. How do i report debug informations ?
+7.3 KVIrc exits by itself or simply "disappears" without any apparent reason.
+7.4 KVIrc dies when using alias(identify){ identify password; }
 
 --------------------------------------------------------------------------------
 1. PROJECT RELATED QUESTIONS
@@ -111,7 +108,7 @@
    archive: many problems have been solved there.
    If you still can't get it to work please either subscribe to the KVIrc
    mailing list (see www.kvirc.net) and report the problem there or join #kvirc
-   on IRCNet and ask the channel members for a hint.
+   on Freenode and ask the channel members for a hint.
 
 
 2.2 Internal Compiler Errors ?
@@ -150,38 +147,6 @@
 2.4 I got 'amarokInterface.cpp:29:31: amarokInterface.moc: No such file or directory'. Whats going wrong?
 
     You have to install qt3 devel tools which include uic and moc. If installed, be sure that uic and moc are in PATH.
-
-
-2.5 Configure complains about a missing libdl.so but I seem to have it
-
-  The most common causes are two:
-
-  1) You have libdl.so.X (where X is usually a number or a set of numbers) but not libdl.so
-
-  You need to do a symbolic link from libdl.so.X to libdl.so. You do it by entering the directory
-  where libdl.so.X is and issuing a ln -s command, for example:
-
-  # cd /lib
-  # ls libdl*
-  # ln -s libdl.so.2 libdl.so
-
-  Then try to ./configure again
-
-  2) You don't have a c++ compiler installed
-
-  The libdl test is the first ./configure test made with a c++ compiler.
-  The confirmation for this error can be found in the config.log file
-  where you can find lines similar to the following:
-
-  configure:21637: g++ -o conftest    conftest.cc -rdynamic -ldl >&5
-  ./configure: line 1: g++: command not found
-  configure:21643: $? = 127
-  configure: failed program was:
-  ...
-
-  Your distribution probably ships the c++ frontend to gcc in a package
-  separated from gcc itself. The package might be also named g++.
-  Look it up on your installation CD and install it, then ./configure again.
 
 -------------------------------------------------------------------------------
 3. INSTALLATION
@@ -608,16 +573,15 @@
   want to get back the original behaviour (default script) you can choose
   "Scripting/Restore default script" from the KVIrc menu.
   (WARNING: It will erase any script modification you have made!)
-  Update: starting with the cvs of 2005.01.17, KVIrc should be able to
-  detect such situations and automatically suggest the re-installation of the
-  default script.
+  KVIrc should be able to detect such situations and automatically suggest the
+  re-installation of the default script.
 
 6.3 Does KVIrc support Themes? 
 
-  Yes, KVIrc now has introduced a Theme Manager. You can find it in the Option dialog.
+  Yes, KVIrc has introduced a Theme Manager. You can find it in the Option dialog.
   From there you can change the way KVIrc looks: fonts, colors, windows behaviour, 
   icons, taskbars, and so on. 
-  Once you have changed the theme, you can save it, archive it (tar.bz2 or zip) and share with your friends, 
+  Once you have changed the theme, you can export it and share with your friends, 
   or send it to the KVIrc staff to see it published on the web site. 
 
 
@@ -636,6 +600,7 @@
       run "C:\\path\\to\\your\\browser.exe" "$0"
 
   as url handler for the protocol you're interested in (maybe in all).
+  Please note the double backslashes (a single backslash is an escaping character)
 
   Suepahfly suggests to use
 
@@ -648,17 +613,7 @@
 7. CRASH
 -------------------------------------------------------------------------------
 
-7.1 KVIrc crashes when the multiline text input is opened (obsolete)
-
-  If you have installed a new version of KVIrc over a previous installation
-  br if you have changed the Qt libraries that KVIrc is linked to then
-  it might be caused by a broken multiline text editor config.
-  Try removing $HOME/.kvircssexeditorrc and starting KVIrc again.
-  Update: this problem has been completely removed during late 2004 developments
-  by completely rewriting the multiline input.
-
-
-7.2 What the heck is a gdb stack trace and how do I get it ?
+7.1 What the heck is a gdb stack trace and how do I get it ?
 
   A gdb stack trace is a "photography" of the state of the KVIrc internals
   taken when a certain event has occured. The most common event
@@ -667,7 +622,7 @@
   crash cause in the program sources.
   To obtain a gdb stack trace you must:
 
-  - Compile KVIrc with the --enable-debug ./configure option.
+  - Compile KVIrc with 'cmake -DDEBUG=1' option.
     Without this switch the stack trace is USELESS.
   - Have a working installation of gdb (the gnu debugger)
     This is usually available on your distribution cd
@@ -680,31 +635,25 @@
     a signal received by the program. Write then:
     # (gdb) bt
     The text you see is the stack trace you wanted :)
-    Copy+Paste+Send it to pragma at kvirc dot net or the mailing list.
+    Copy+Paste and create a new bug ticket in the web bugtracker
+    (you can find a link on the kvirc website).
 
 
-7.3 KVIrc hangs up, but doesn't crash. How do i report debug informations ?
+7.2 KVIrc hangs up, but doesn't crash. How do i report debug informations ?
 
-  Use gdb to get a stack trace as in answer to question 7.2.
+  Use gdb to get a stack trace as in answer to question 7.1.
   Since your KVIrc doesn't crash you will have to interrupt the execution
   manually while it is hung up. You can do it by pressing CTRL+C in gdb.
 
 
-7.4 KVIrc exits by itself or simply "disappears" without any apparent reason.
+7.3 KVIrc exits by itself or simply "disappears" without any apparent reason.
 
   Yes. It probably crashed but you haven't noticed that.
   We NEED a gdb stack trace or a working procedure to reproduce the
   behaviour in order to hunt it.
 
 
-7.5 KVIrc dies randomly and "Alarm Clock" is printed in the console
-
-  Try recompiling kvirc by adding the --with-ignore-sigalarm switch to
-  ./configure. (Note: the reason of the incoming SIGALARM signals
-  on certain systems is acually unknown. Please send hints to pragma at kvirc dot net).
-
-
-7.6 KVIrc dies when using alias(identify){ identify password; };
+7.4 KVIrc dies when using alias(identify){ identify password; };
 
   This is infinite recursion: a programming error.
   Take a look at http://en.wikipedia.org/wiki/Infinite_loop , learn

@@ -7,7 +7,8 @@ os simply they're still the old unchecked kvirc3 files.
 PLEASE KEEP THIS FILE UPDATED!
 
 src/kvirc/ui:
-	kvi_statusbar.cpp (QT4 ported but still some bugs)
+	kvi_statusbar.cpp (ported to QT4, bug reordering applets using the mouse is bugged)
 src/modules
-	theme <-done, needs fixing (dynamic tooltip)
-	torrent <- has to be finished (when ktorrent dbus interface will stabilize)
+	addons <- done, needs graphical fixing
+	theme <- done, needs graphical fixing
+	torrent <- has yet to be finished (when ktorrent dbus interface will stabilize)
