@@ -27,7 +27,6 @@
 
 void KviKvsRunTimeCall::warning(const QString &szFmt,...)
 {
-	debug ("warning %s",szFmt.toUtf8().data());
 	kvi_va_list va;
 	kvi_va_start_by_reference(va,szFmt);
 	m_pContext->report(false,m_pContext->defaultReportLocation(),szFmt,va);
