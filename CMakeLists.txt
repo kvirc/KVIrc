@@ -520,16 +520,14 @@ ELSE()
 	SET(CMAKE_STATUS_TRANSPARENCY_SUPPORT "User disabled")
 ENDIF()
 
-
-
 # Check for Perl support
 # (note: needed for user documentation generation)
-FIND_PACKAGE(Perl)
 OPTION(WANT_PERL "Compile Perl Support" ON)
 IF(WITHOUT_PERL)
 	SET(WANT_PERL OFF)
 ENDIF()
 IF(WANT_PERL)
+	FIND_PACKAGE(Perl)
 	IF(PERL_FOUND)
 		SET(COMPILE_PERL_SUPPORT 1)
 		SET(CMAKE_STATUS_PERL_SUPPORT "Yes")
