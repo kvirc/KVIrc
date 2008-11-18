@@ -71,6 +71,7 @@ ENDIF()
 
 # Set var to link with, for later use
 SET(LIBS)
+SET(ADDITIONAL_LINK_FLAGS)
 
 # Install path
 IF(UNIX)
@@ -535,10 +536,11 @@ IF(WANT_PERL)
 		EXECUTE_PROCESS(COMMAND ${PERL_EXECUTABLE} -MExtUtils::Embed -e ldopts
 		OUTPUT_VARIABLE PERL_LINK_FLAGS
 		)
-
+                #remove new line characters
 		STRING(REGEX REPLACE "(\r?\n)+$" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
-
-		LIST(APPEND LIBS ${PERL_LINK_FLAGS})
+		SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PERL_LINK_FLAGS}")
+                #remove leading and trailing spaces (string strip)
+		STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 	ELSE()
 		SET(CMAKE_STATUS_PERL_SUPPORT "No")
 	ENDIF()
@@ -715,6 +717,13 @@ ENDIF()
 IF(MINGW)
         ADD_DEFINITIONS(-DMINGW -DCOMPILE_USE_STANDALONE_MOC_SOURCES -mwindows)
         LIST(APPEND LIBS -lshlwapi)
+	IF(WANT_DEBUG)
+                SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} -Wl,--enable-auto-import,--enable-runtime-pseudo-reloc")
+        ELSE()
+                SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} -Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -mwindows")
+	ENDIF()
+        #remove leading and trailing spaces (string strip)
+        STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 ENDIF()
 
 IF(MSVC)

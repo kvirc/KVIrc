@@ -14,12 +14,13 @@ IF(WIN32)
 		TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
 	ELSE()
 		#mingw needs these flags for linking
-		SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES LINK_FLAGS "-Wl,--enable-auto-import,--enable-runtime-pseudo-reloc")
 		TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
 	ENDIF()
 ELSE()
 	TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
 ENDIF()
+
+SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 
 IF(UNIX)
 	IF(APPLE)

@@ -13,7 +13,10 @@ EXECUTE_PROCESS(COMMAND ${PERL_EXECUTABLE} -MExtUtils::Embed -e ccopts
 	OUTPUT_VARIABLE PERL_COMPILE_FLAGS
 )
 
-STRING(REGEX REPLACE "(\r?\n)+$" "" PERL_COMPILE_FLAGS "${PERL_COMPILE_FLAGS}")
+#remove new line characters
+STRING(REGEX REPLACE "(\r?\n)+$" "" PERL_COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
+#remove leading and trailing spaces (string strip)
+STRING(REGEX REPLACE "(^( )+|( )+$)" "" PERL_COMPILE_FLAGS ${PERL_COMPILE_FLAGS})
 
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
 
