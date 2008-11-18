@@ -304,7 +304,7 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITHOUT_QTWEBKIT
         Disable Qt-WebKit support.
 
-    -DWITH_AUDIOFILE
+    -DWITHOUT_AUDIOFILE
         Compile Audiofile support. It will look for Audiofile headers and libraries
         and if found it will enable the Audiofile support.
 
