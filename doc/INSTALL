@@ -258,7 +258,7 @@ General notes for the installation of the 4.0 release of KVIrc
     For example, to install in /usr instead of /usr/local and disable Phonon
     support, the command would be:
 
-    # cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_PHONON=OFF ..
+    # cmake -DCMAKE_INSTALL_PREFIX=/usr --DWITHOUT_PHONON=1 ..
 
     Here's a list with explainations:
 
@@ -295,11 +295,11 @@ General notes for the installation of the 4.0 release of KVIrc
     -DUSE_PCH
         Use pre-compiled headers
 
+    -DWITHOUT_PHONON
+        Disable Phonon support.
+
     -DWITHOUT_QTDBUS
         Disable Qt-DBus support.
-
-    -DWITHOUT_QTPHONON
-        Disable Qt-Phonon support.
 
     -DWITHOUT_QTWEBKIT
         Disable Qt-WebKit support.
