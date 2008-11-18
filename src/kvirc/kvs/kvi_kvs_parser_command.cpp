@@ -127,20 +127,40 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 
 	if(!bHasNamespaceSoMustBeAlias)
 	{
-		// perl.begin has a *really* half special parsing routine
-		if(iIdentifierLen == 4)
+		// We're lookin' for interpreters like perl and python
+		// perl.begin and python.begin have a *really* half special
+		// parsing routine
+		if((iIdentifierLen == 4) || (iIdentifierLen == 6))
 		{
 			if(pIdentifier->toLower().unicode() == 'p')
 			{
+				// Set the interpreter name
+				QString szInterpreter;
 				if(KviQString::equalCI(szIdentifier,"perl"))
+				{
+					szInterpreter = "perl";
+				} else if(KviQString::equalCI(szIdentifier,"python"))
+				{
+					szInterpreter = "python";
+				}
+
+				if((szInterpreter == "perl") || (szInterpreter == "python"))
 				{
 					if(pSecondPart)
 					{
 						QString szSecondPart(pSecondPart,iSecondPartLen);
 						if(KviQString::equalCI(szSecondPart,"begin"))
 						{
-							// yep, that's perl.begin
-							cmd = parseSpecialCommandPerlBegin();
+							if(szInterpreter == "perl")
+							{
+								// yep, that's perl.begin
+								cmd = parseSpecialCommandPerlBegin();
+							} else if(szInterpreter == "python")
+							{
+								// yep, that's python.begin
+								cmd = parseSpecialCommandPythonBegin();
+							}
+
 							if(!cmd)
 							{
 								// might be an error , but might be not...
@@ -165,7 +185,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 			}
 		}
 
-		if(!pSecondPart) 
+		if(!pSecondPart)
 		{
 			// is this a special command ?
 

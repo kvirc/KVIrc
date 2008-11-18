@@ -224,6 +224,9 @@ private:
 	// stops after the perl.end statement
 	KviKvsTreeNodeCommand                    * parseSpecialCommandPerlBegin();
 	// returns 0 only in case of error
+	// stops after the perl.end statement
+	KviKvsTreeNodeCommand                    * parseSpecialCommandPythonBegin();
+	// returns 0 only in case of error
 	// and stops after the end of the help command
 	KviKvsTreeNodeCommand                    * parseSpecialCommandHelp();
 

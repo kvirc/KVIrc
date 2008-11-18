@@ -31,88 +31,101 @@
 #include "kvi_locale.h"
 #include "kvi_cmdformatter.h"
 
+/*
+in fact this is not a fully special command
+it is special only in the sense of parsing.
+Once parsed, the command is routed to the perl module
+with the interpreter code as FIRST parameter and the other parameters
+of the command following.
+the help page for perl.begin is in the perl module
+the help page for python.begin is in the python module
 
-KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandPerlBegin()
-{
-	// in fact this is not a fully special command
-	// it is special only in the sense of parsing.
-	// Once parsed, the command is routed to the perl module
-	// with the perl code as FIRST parameter and the other parameters
-	// of the command following.
-	// the help page for perl.begin is in the perl module
-
-	// perl.begin(context) <perl code> perl.end
-	// 
-	
-	const QChar * pBegin = KVSP_curCharPointer;
-
-	skipSpaces();
-	KviKvsTreeNodeDataList * dl;
-	if(KVSP_curCharUnicode == '(')
-	{	
-		dl = parseCommaSeparatedParameterList();
-		if(!dl)return 0;
-	} else {
-		dl = new KviKvsTreeNodeDataList(pBegin);
+perl.begin(context) <perl code> perl.end
+python.begin <python code> python.end
+*/
+#define IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(__name) \
+	KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommand##__name##Begin() \
+	{ \
+		const QChar * pBegin = KVSP_curCharPointer; \
+		\
+		skipSpaces(); \
+		KviKvsTreeNodeDataList * dl; \
+		if(KVSP_curCharUnicode == '(') \
+		{ \
+			dl = parseCommaSeparatedParameterList(); \
+			if(!dl) return 0; \
+		} else { \
+			dl = new KviKvsTreeNodeDataList(pBegin); \
+		} \
+		\
+		if(!KVSP_curCharIsEndOfBuffer) KVSP_skipChar; \
+		\
+		if(!skipSpacesAndNewlines()) \
+		{ \
+			delete dl; \
+			return 0; \
+		} \
+		\
+		/* allow a ';' after [interpreter].begin */ \
+		if(KVSP_curCharIsEndOfCommand && !KVSP_curCharIsEndOfBuffer) \
+		{ \
+			KVSP_skipChar; \
+			if(!skipSpacesAndNewlines()) \
+			{ \
+				delete dl; \
+				return 0; \
+			} \
+		} \
+		\
+		const QChar * pInterpreterBegin = KVSP_curCharPointer; \
+		QString szName; \
+		szName.sprintf("%s",#__name); \
+		szName = szName.toLower(); \
+		\
+		/* now look for [interpreter].end[terminator] */ \
+		static QString szInterpreterEnd(szName); \
+		szInterpreterEnd += ".end"; \
+		const QChar * pInterpreterEnd; \
+		for(;;) \
+		{ \
+			while(KVSP_curCharUnicode && (KVSP_curCharUnicode != 'p') && (KVSP_curCharUnicode != 'P')) \
+				KVSP_skipChar; \
+			if(KVSP_curCharIsEndOfBuffer) \
+			{ \
+				delete dl; \
+				QString szErr = "Unexpected end of command buffer while looking for the "; \
+				szErr += szInterpreterEnd; \
+				szErr += " statement"; \
+				\
+				error(KVSP_curCharPointer,__tr2qs_ctx(szErr.toUtf8().data(),"kvs")); \
+				return 0; \
+			} \
+			pInterpreterEnd = KVSP_curCharPointer; \
+			\
+			if(KviQString::equalCIN(szInterpreterEnd,KVSP_curCharPointer,8)) \
+			{ \
+				KVSP_skipNChars(8); \
+				if(KVSP_curCharIsEndOfCommand || (KVSP_curCharUnicode == ' ') || (KVSP_curCharUnicode == '\t')) \
+				{ \
+					/* yeah! */ \
+					QString szInterpreter(pInterpreterBegin,pInterpreterEnd - pInterpreterBegin); \
+					dl->prependItem(new KviKvsTreeNodeConstantData(pInterpreterBegin,new KviKvsVariant(szInterpreter))); \
+					while(!KVSP_curCharIsEndOfCommand) KVSP_skipChar; \
+					if(!KVSP_curCharIsEndOfBuffer) KVSP_skipChar; \
+					break; \
+				} else { \
+					KVSP_backNChars(7); \
+				} \
+			} else { \
+				KVSP_skipChar; \
+			} \
+		} \
+		\
+		return new KviKvsTreeNodeModuleSimpleCommand(pBegin,szName,"begin",dl); \
 	}
-	
-	//while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
-	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
-	
-	if(!skipSpacesAndNewlines())
-	{
-		delete dl;
-		return 0;
-	}
-	
-	// allow a ';' after perl.begin
-	if(KVSP_curCharIsEndOfCommand && !KVSP_curCharIsEndOfBuffer)
-	{
-		KVSP_skipChar;
-		if(!skipSpacesAndNewlines())
-		{
-			delete dl;
-			return 0;
-		}
-	}
-	
-	const QChar * pPerlBegin = KVSP_curCharPointer;
 
-	// now look for perl.end[terminator]
-	static QString szPerlEnd("perl.end");
-	const QChar * pPerlEnd;
-	for(;;)
-	{
-		while(KVSP_curCharUnicode && (KVSP_curCharUnicode != 'p') && (KVSP_curCharUnicode != 'P'))
-			KVSP_skipChar;
-		if(KVSP_curCharIsEndOfBuffer)
-		{
-			delete dl;
-			error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of command buffer while looking for the \"perl.end\" statement","kvs"));
-			return 0;
-		}
-		pPerlEnd = KVSP_curCharPointer;
-		if(KviQString::equalCIN(szPerlEnd,KVSP_curCharPointer,8))
-		{
-			KVSP_skipNChars(8);
-			if(KVSP_curCharIsEndOfCommand || (KVSP_curCharUnicode == ' ') || (KVSP_curCharUnicode == '\t'))
-			{
-				// yeah!
-				QString szPerl(pPerlBegin,pPerlEnd - pPerlBegin);
-				dl->prependItem(new KviKvsTreeNodeConstantData(pPerlBegin,new KviKvsVariant(szPerl)));
-				while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
-				if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
-				break;
-			} else {
-				KVSP_backNChars(7);
-			}
-		} else {
-			KVSP_skipChar;
-		}
-	}
-
-	return new KviKvsTreeNodeModuleSimpleCommand(pBegin,"perl","begin",dl);
-}
+IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(Perl)
+IMPLEMENT_EXTERNAL_INTERPRETER_BEGIN(Python)
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandBreak()
 {
@@ -601,7 +614,6 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 	return pClass;
 }
 
-
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandWhile()
 {
 	/*
@@ -804,9 +816,6 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 
 	return new KviKvsTreeNodeSpecialCommandDo(pBegin,e,i);
 }
-
-
-
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandIf()
 {
@@ -1150,8 +1159,6 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 	return new KviKvsTreeNodeSpecialCommandFor(pForBegin,i1,e,i2,loop);
 }
 
-
-
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 {
 	/*
@@ -1267,7 +1274,6 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 
 	return new KviKvsTreeNodeSpecialCommandForeach(pForeachBegin,d,l,loop);
 }
-
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 {
@@ -1646,8 +1652,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 				} \
 			}
 
-
-
 		if((szLabelLow == "prologue") || (szLabelLow == "epilogue"))
 		{
 			/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1854,7 +1858,6 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 	return pPopup;
 }
 
-
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 {
 	// FIXME: This SHOULD be renamed to popup.create (NOT popup.define!)
@@ -1975,7 +1978,6 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDefpopup()
 
 	return new KviKvsTreeNodeSpecialCommandDefpopup(pBegin,pPopupName,pMainPopup);
 }
-
 
 KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandHelp()
 {
