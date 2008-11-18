@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 01:59+0100\n"
+"POT-Creation-Date: 2008-11-18 16:45+0100\n"
 "PO-Revision-Date: 2008-01-17 02:20+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Hrvatski <en@li.org>\n"
@@ -43,14 +43,6 @@ msgstr ""
 "Sučelje za AMIP plug-in.\n"
 "Možete ga downloadati sa http://amip.tools-for.net.\n"
 "Za korištenje ovog sučelja morate instalirati AMIP plug-in za vaš player."
-
-#: src/modules/mediaplayer/mp_amarokinterface.cpp:42
-msgid "An interface to the AmaroK KDE media player."
-msgstr "Sučelje za Amarok KDE media player"
-
-#: src/modules/mediaplayer/mp_jukinterface.cpp:44
-msgid "An interface to the Juk KDE media player."
-msgstr "Sučelje za Juk KDE media player."
 
 #: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
 msgid ""
@@ -112,7 +104,7 @@ msgstr "Ne mogu pronaći znak %s u %Q"
 msgid "Can't load the player library (%Q)"
 msgstr "Ne mogu učitati bazu playera (%Q)"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:103
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
 msgid "Choosing media player interface \"%Q\""
 msgstr "Odabirem media player \"%Q\""
 
@@ -120,42 +112,42 @@ msgstr "Odabirem media player \"%Q\""
 msgid "Function not implemented"
 msgstr "Funkcija nije implementirana"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:136
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:573
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:596
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:638
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:677
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1185
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1321
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1365
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1553
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1596
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:571
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:636
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:675
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
 msgid "Last interface error: "
 msgstr "Posljednja greška sucelja:"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:116
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
 msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:75
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
 msgid ""
 "Not sure about the results, trying a second, more agressive detection pass"
 msgstr "Nesiguni rezultati, pokušavam agresivniju detekciju"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:106
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Čini se da nema korisnih media playera na ovom računalu"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:135
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:572
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:595
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:637
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:676
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1184
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1320
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1364
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1551
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1594
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "Odabrani media player nije uspio izvršiti traženu funkciju"
@@ -169,7 +161,13 @@ msgstr ""
 "Winamp pluginovi nisu ispravno instalirani. Provjerite /help mediaplayer."
 "nowplaying"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:67
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:93
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Pokušavam media player \"%Q\": score %d"
+
+#~ msgid "An interface to the AmaroK KDE media player."
+#~ msgstr "Sučelje za Amarok KDE media player"
+
+#~ msgid "An interface to the Juk KDE media player."
+#~ msgstr "Sučelje za Juk KDE media player."

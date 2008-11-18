@@ -161,7 +161,7 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		}
 		if( !pWidget )
 		{
-			pContext->warning(__tr2qs_ctx("Failed to find one of the wrap path widgets ('%Q'::'%Q')","objects"),&szClass,&szName);
+			pContext->warning(__tr2qs_ctx("Failed to find one of the wrap path widgets ('%Q::%Q')","objects"),&szClass,&szName);
 			return false;
 		}
 	}

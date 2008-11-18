@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_nl\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
+"POT-Creation-Date: 2008-11-18 15:53+0100\n"
 "PO-Revision-Date: 2008-11-06 20:56+0100\n"
 "Last-Translator: Stijn <stijn.geuens@mobistarmail.be>\n"
 "Language-Team: nederlands <nl@li.org>\n"
@@ -878,7 +878,7 @@ msgstr "Gevorderd..."
 msgid "All Files"
 msgstr "Alle bestanden"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:975
+#: src/kvirc/kernel/kvi_coreactions.cpp:981
 msgid "Allows entering and leaving away state"
 msgstr "Laat het invoeren en verlaten van de weg status toe"
 
@@ -1021,7 +1021,7 @@ msgstr "Weg boodschap"
 msgid "Away since"
 msgstr "Weg sinds"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:974
+#: src/kvirc/kernel/kvi_coreactions.cpp:980
 msgid "Away/Back"
 msgstr "Weg/Terug"
 
@@ -1462,8 +1462,14 @@ msgstr "Wis buffer"
 msgid "Clear Recent Channels List"
 msgstr "Accepteren"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:873
-#: src/kvirc/kernel/kvi_coreactions.cpp:887
+#: src/kvirc/kernel/kvi_coreactions.cpp:833
+#: src/kvirc/kernel/kvi_coreactions.cpp:848
+#, fuzzy
+msgid "Clear Recent Nicks List"
+msgstr "Accepteren"
+
+#: src/kvirc/kernel/kvi_coreactions.cpp:879
+#: src/kvirc/kernel/kvi_coreactions.cpp:893
 msgid "Clear Recent Servers List"
 msgstr ""
 
@@ -1563,7 +1569,7 @@ msgstr "Bevestiging - KVirc"
 msgid "Connect"
 msgstr "Verbinden"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:858
+#: src/kvirc/kernel/kvi_coreactions.cpp:864
 msgid "Connect To"
 msgstr "Verbinden met"
 
@@ -1924,7 +1930,7 @@ msgstr "End van de LIST"
 msgid "End of merged output"
 msgstr "Einde van de samengevoegde uitvoer"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1042
+#: src/kvirc/kernel/kvi_coreactions.cpp:1048
 msgid "Enter Away Mode"
 msgstr "Bevestig weg-modus"
 
@@ -2544,7 +2550,7 @@ msgstr "Ongeldig proxy adres"
 msgid "Invalid target address"
 msgstr "Ongeldig doel adres"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:928
+#: src/kvirc/kernel/kvi_coreactions.cpp:934
 msgid "Invisible (+i)"
 msgstr "Onzichtbaar (+i)"
 
@@ -2577,11 +2583,11 @@ msgstr "Alleen uitnodigen"
 msgid "Invite unexception matching my mask"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1136
+#: src/kvirc/kernel/kvi_coreactions.cpp:1142
 msgid "Irc Actions"
 msgstr "Irc Acties"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1104
+#: src/kvirc/kernel/kvi_coreactions.cpp:1110
 msgid "Irc Tools"
 msgstr "Irc Hulpmiddelen"
 
@@ -2733,7 +2739,7 @@ msgstr "Grote ionen"
 msgid "Last checked %d mins %d secs ago"
 msgstr "Laatste test %d min %d sec geleden"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1043
+#: src/kvirc/kernel/kvi_coreactions.cpp:1049
 msgid "Leave Away Mode"
 msgstr "Verlaat de weg-mode"
 
@@ -3513,9 +3519,9 @@ msgstr "Oriëntatie"
 #: src/kvirc/kernel/kvi_coreactions.cpp:779
 #: src/kvirc/kernel/kvi_coreactions.cpp:793
 #: src/kvirc/kernel/kvi_coreactions.cpp:830
-#: src/kvirc/kernel/kvi_coreactions.cpp:842
-#: src/kvirc/kernel/kvi_coreactions.cpp:871
-#: src/kvirc/kernel/kvi_coreactions.cpp:884
+#: src/kvirc/kernel/kvi_coreactions.cpp:845
+#: src/kvirc/kernel/kvi_coreactions.cpp:877
+#: src/kvirc/kernel/kvi_coreactions.cpp:890
 msgid "Other..."
 msgstr "Andere..."
 
@@ -4150,7 +4156,7 @@ msgstr "Server FOUT: %Q"
 msgid "Server Message of the Day"
 msgstr "Server Boodschap van de dag"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:926
+#: src/kvirc/kernel/kvi_coreactions.cpp:932
 msgid "Server Notices (+s)"
 msgstr "Server Notities (+s)"
 
@@ -4311,11 +4317,11 @@ msgstr "Toon een dialoog naar alle kanalen"
 msgid "Shows a popup menu that allows quickly changing the nickname"
 msgstr "Popup om snel van nicknaam te veranderen"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:907
+#: src/kvirc/kernel/kvi_coreactions.cpp:913
 msgid "Shows a popup menu that allows quickly changing user modes"
 msgstr "Popup om snel de gebruiker statussen aan te passen"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:859
+#: src/kvirc/kernel/kvi_coreactions.cpp:865
 msgid "Shows a popup menu that allows quickly connecting to a server"
 msgstr "Popup om snel te verbinden met een server"
 
@@ -4323,11 +4329,11 @@ msgstr "Popup om snel te verbinden met een server"
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
 msgstr "Popup om snel een kanaal te kiezen"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1137
+#: src/kvirc/kernel/kvi_coreactions.cpp:1143
 msgid "Shows a popup menu with some IRC Actions"
 msgstr "Popup met IRC acties"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1105
+#: src/kvirc/kernel/kvi_coreactions.cpp:1111
 msgid "Shows a popup menu with some IRC Tools"
 msgstr "Popup met IRC gereedschappen"
 
@@ -5206,7 +5212,7 @@ msgstr "Gebruik de versleuteling"
 msgid "User List"
 msgstr "Gebruikers lijst"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:906
+#: src/kvirc/kernel/kvi_coreactions.cpp:912
 msgid "User Mode"
 msgstr "Gebruikers mode"
 
@@ -5346,7 +5352,7 @@ msgstr ""
 "cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cWeg%c: %Q, %cEchte naam"
 "%c: %Q"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:924
+#: src/kvirc/kernel/kvi_coreactions.cpp:930
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
 

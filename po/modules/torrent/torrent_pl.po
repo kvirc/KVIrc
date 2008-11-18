@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
+"POT-Creation-Date: 2008-11-18 16:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Translate Toolkit 1.2-beta2\n"
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -24,11 +24,6 @@ msgstr ""
 
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
-msgstr ""
-
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
-#, c-format
-msgid "Index out of range: %d [0-%d]!"
 msgstr ""
 
 #: src/modules/torrent/libkvitorrent.cpp:719

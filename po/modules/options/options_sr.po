@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:15+0100\n"
+"POT-Creation-Date: 2008-11-18 16:45+0100\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -82,7 +82,7 @@ msgstr "Primeni"
 msgid "&Browse..."
 msgstr "Pregledaj..."
 
-#: src/modules/options/optw_servers.cpp:1448
+#: src/modules/options/optw_servers.cpp:1450
 #, fuzzy
 msgid "&Copy Server"
 msgstr "Kopiraj server"
@@ -96,19 +96,19 @@ msgstr "&Novi"
 msgid "&New Proxy"
 msgstr "Iskačući meni"
 
-#: src/modules/options/optw_servers.cpp:1445
+#: src/modules/options/optw_servers.cpp:1447
 #, fuzzy
 msgid "&New Server"
 msgstr "Mreža/Server"
 
-#: src/modules/options/optw_servers.cpp:336
+#: src/modules/options/optw_servers.cpp:337
 #: src/modules/options/optw_identity.cpp:232
 #: src/modules/options/dialog.cpp:228 src/modules/options/container.cpp:64
 #, fuzzy
 msgid "&OK"
 msgstr "OK"
 
-#: src/modules/options/optw_servers.cpp:1450
+#: src/modules/options/optw_servers.cpp:1452
 #, fuzzy
 msgid "&Paste Server"
 msgstr "Prenesi server"
@@ -159,7 +159,7 @@ msgid ""
 "file transfers.<br><br></p>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1167
+#: src/modules/options/optw_servers.cpp:1169
 #, fuzzy
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
@@ -227,7 +227,7 @@ msgid ""
 "someone else on a particular IRC network.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:224
+#: src/modules/options/optw_servers.cpp:225
 msgid ""
 "<center>Here you can set a list of channels to be joined automatically after "
 "a connection to a server in this network has been established. To add a "
@@ -235,14 +235,14 @@ msgid ""
 "center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:779
+#: src/modules/options/optw_servers.cpp:780
 msgid ""
 "<center>Here you can set a list of channels to be joined automatically after "
 "a connection to this server has been established. To add a channel, type its "
 "name in the text input below and click \"<b>Add</b>\".</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1173
+#: src/modules/options/optw_servers.cpp:1175
 #, fuzzy
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
@@ -250,7 +250,7 @@ msgstr ""
 "<center>Pritisnite ovo dugme za konektovanje na trenutno izabran server u "
 "trenutnom IRC kontekstu</center>"
 
-#: src/modules/options/optw_servers.cpp:532
+#: src/modules/options/optw_servers.cpp:533
 msgid ""
 "<center>If this is enabled, the global initial <b>user mode</b> (configured "
 "from the identity dialog) will be used. If disabled, you can configure an "
@@ -304,7 +304,7 @@ msgstr ""
 "<center>Ako označite ovu opciju , videćete ovaj dijalog svaki put kad "
 "pokrenete KVIrc</center>"
 
-#: src/modules/options/optw_servers.cpp:1188
+#: src/modules/options/optw_servers.cpp:1190
 #, fuzzy
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
@@ -331,7 +331,7 @@ msgstr ""
 "<center>Ako označite ovu opciju , videćete ovaj dijalog svaki put kad "
 "pokrenete KVIrc</center>"
 
-#: src/modules/options/optw_servers.cpp:511
+#: src/modules/options/optw_servers.cpp:512
 #, fuzzy
 msgid ""
 "<center>If this server requires a password, put it in this field, otherwise "
@@ -398,7 +398,7 @@ msgstr ""
 msgid "<center>Please wait while the avatar is being downloaded</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:116
+#: src/modules/options/optw_servers.cpp:117
 #, fuzzy
 msgid "<center>Put here a brief description of the network.</center>"
 msgstr ""
@@ -418,7 +418,7 @@ msgid ""
 "you have problems.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:795
+#: src/modules/options/optw_servers.cpp:796
 #, fuzzy
 msgid ""
 "<center>The following commands will be executed after a connection has been "
@@ -433,7 +433,7 @@ msgstr ""
 "izvršiti ovu<br>sekvencu komandi.<br>Ovo je prvenstveno korisno za bouncere</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:240
+#: src/modules/options/optw_servers.cpp:241
 #, fuzzy
 msgid ""
 "<center>The following commands will be executed after a connection to a "
@@ -448,7 +448,7 @@ msgstr ""
 "izvršiti ovu<br>sekvencu komandi.<br>Ovo je prvenstveno korisno za bouncere</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:259
+#: src/modules/options/optw_servers.cpp:260
 #, fuzzy
 msgid ""
 "<center>The following commands will be executed after a successful login to "
@@ -462,7 +462,7 @@ msgstr ""
 "izvršiti ovu<br>sekvencu komandi.<br>Ovo je prvenstveno korisno za bouncere</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:814
+#: src/modules/options/optw_servers.cpp:815
 #, fuzzy
 msgid ""
 "<center>The following commands will be executed after a successful login to "
@@ -476,7 +476,7 @@ msgstr ""
 "izvršiti ovu<br>sekvencu komandi.<br>Ovo je prvenstveno korisno za bouncere</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:171
+#: src/modules/options/optw_servers.cpp:172
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used as the default for text messages."
@@ -485,7 +485,7 @@ msgid ""
 "dialog.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:159
+#: src/modules/options/optw_servers.cpp:160
 msgid ""
 "<center>This box allows you to choose the preferred encoding for the servers "
 "in this network. This encoding will be used for server specific needs, like "
@@ -494,7 +494,7 @@ msgid ""
 "the \"Encoding\" page of the options dialog.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:669
+#: src/modules/options/optw_servers.cpp:670
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used as the default for text messages.If you "
@@ -502,7 +502,7 @@ msgid ""
 "network that this server belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:657
+#: src/modules/options/optw_servers.cpp:658
 msgid ""
 "<center>This box allows you to choose the preferred encoding for this "
 "server. This encoding will be used for server specific needs, like "
@@ -511,7 +511,7 @@ msgid ""
 "belongs to.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1184
+#: src/modules/options/optw_servers.cpp:1186
 #, fuzzy
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
@@ -520,7 +520,7 @@ msgstr ""
 "<center>Ovo dugme prikazuje listu najčešće korišćenih servera, omogućava Vam "
 "da brzo ih brzo pronađete u listi</center>"
 
-#: src/modules/options/optw_servers.cpp:621
+#: src/modules/options/optw_servers.cpp:622
 #, fuzzy
 msgid ""
 "<center>This check identifies IPv6 servers.<br>If enabled, KVIrc will "
@@ -531,7 +531,7 @@ msgstr ""
 "pokušati da koristi IPV6 protokol (naravno Vaš kernel <b>mora imati</b> "
 "upotrebljiv IPV6 stek i Vi <b>morate imati</b> IPV6 konekciju). </center>"
 
-#: src/modules/options/optw_servers.cpp:636
+#: src/modules/options/optw_servers.cpp:637
 msgid ""
 "<center>This check marks the server as dynamically supporting the "
 "<b>Transport Layer Security</b> protocol. If you enable the proper global "
@@ -539,7 +539,7 @@ msgid ""
 "server.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:627
+#: src/modules/options/optw_servers.cpp:628
 #, fuzzy
 msgid ""
 "<center>This check will cause the connection to use the <b>Secure Socket "
@@ -550,7 +550,7 @@ msgstr ""
 "Nivo Priključka (SSL)</b><br>podršku. Očigledno server takođe mora imati "
 "podršku za SSL :-)</center>"
 
-#: src/modules/options/optw_servers.cpp:603
+#: src/modules/options/optw_servers.cpp:604
 #, fuzzy
 msgid ""
 "<center>This check will enable <b>IP address caching</b> for this server:"
@@ -572,7 +572,7 @@ msgid ""
 "how much lag (latency) the server has.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:739
+#: src/modules/options/optw_servers.cpp:740
 msgid ""
 "<center>This field allows you to specify a really unique id for this server. "
 "You will then be able to use /server -x &lt;this_id&gt; to make the "
@@ -593,14 +593,14 @@ msgid ""
 "center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:729
+#: src/modules/options/optw_servers.cpp:730
 msgid ""
 "<center>This field specifies the name of a module that exports a link filter "
 "for this type of server.<br>For plain IRC connections, you don't need any "
 "link filters; this is used for incompatible protocols.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:485
+#: src/modules/options/optw_servers.cpp:486
 #, fuzzy
 msgid ""
 "<center>This is a brief description of this server. This field has no "
@@ -633,7 +633,7 @@ msgstr ""
 "KVIrc konfiguracionom fajlu. <br>Desni klik za dodavanje/uklanjanje pravila."
 "</center>"
 
-#: src/modules/options/optw_servers.cpp:295
+#: src/modules/options/optw_servers.cpp:296
 #, fuzzy
 msgid ""
 "<center>This is a list of NickServ identification rules. KVIrc will use them "
@@ -662,7 +662,7 @@ msgid ""
 "without changing them at every connection attempt."
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:581
+#: src/modules/options/optw_servers.cpp:582
 #, fuzzy
 msgid ""
 "<center>This is the <b>IP address</b> of this server, it is here for caching "
@@ -677,7 +677,7 @@ msgstr ""
 "KVIrc će je koristiti kao \"keširan rezultat\" i izbeći ponovni pregled "
 "servera za njegovom IP adresom.</center>"
 
-#: src/modules/options/optw_servers.cpp:747
+#: src/modules/options/optw_servers.cpp:748
 msgid ""
 "<center>This is the <b>proxy</b> that KVIrc will use to connect to this "
 "server.\n"
@@ -687,7 +687,7 @@ msgid ""
 "menu.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:133
+#: src/modules/options/optw_servers.cpp:134
 #, fuzzy
 msgid ""
 "<center>This is the <b>username</b> that KVIrc will use to login to servers "
@@ -701,7 +701,7 @@ msgstr ""
 "predefinisano korisničko ime navedeno u \"Identitet\" jezičku u opcijama.</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:502
+#: src/modules/options/optw_servers.cpp:503
 #, fuzzy
 msgid ""
 "<center>This is the <b>username</b> that KVIrc will use to login to this "
@@ -766,7 +766,7 @@ msgid ""
 "requesting user.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:572
+#: src/modules/options/optw_servers.cpp:573
 msgid ""
 "<center>This is the default <b>port</b> that this server will be contacted "
 "on.<br>Usually <b>6667</b> is OK.</center>"
@@ -796,7 +796,7 @@ msgstr ""
 "Ovo je lažna adresa koja će biti poslata sa svim DCC zahtevima ako uključite "
 "gornju opciju"
 
-#: src/modules/options/optw_servers.cpp:1083
+#: src/modules/options/optw_servers.cpp:1085
 #, fuzzy
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
@@ -839,7 +839,7 @@ msgstr ""
 "automatski zahtevani.(Pogledajte opciju ispod)<br>Rezonska vrednost može "
 "biti 1024000 Bajtova=100 KB</center>"
 
-#: src/modules/options/optw_servers.cpp:1147
+#: src/modules/options/optw_servers.cpp:1149
 #, fuzzy
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
@@ -1040,7 +1040,7 @@ msgstr ""
 "dobra ideja.<br>Avatari će biti sačuvani u KVIrc lokalnom direktorijumu<br> "
 "i automatski podešeni za izvornog korisnika (vlasnika).</center>"
 
-#: src/modules/options/optw_servers.cpp:203
+#: src/modules/options/optw_servers.cpp:204
 #, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to automatically connect to this "
@@ -1060,7 +1060,7 @@ msgstr ""
 "primi INVITE poruku za taj kanal.<br>Imajte na umu da ovo može pomoći "
 "spamerima da vam dosađuju :-)</center>"
 
-#: src/modules/options/optw_servers.cpp:648
+#: src/modules/options/optw_servers.cpp:649
 #, fuzzy
 msgid ""
 "<center>This option will cause KVIrc to connect to the IRC server when it is "
@@ -1313,7 +1313,7 @@ msgid ""
 "center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:143
+#: src/modules/options/optw_servers.cpp:144
 #, fuzzy
 msgid ""
 "<center>You can specify a \"special\" <b>nickname</b> that will be used to "
@@ -1326,7 +1326,7 @@ msgstr ""
 "(veoma čest slučaj), predefinisan nadimak (definisan u \"identity\" tab-u) "
 "će biti korišćen. </center>"
 
-#: src/modules/options/optw_servers.cpp:518
+#: src/modules/options/optw_servers.cpp:519
 #, fuzzy
 msgid ""
 "<center>You can specify a \"special\" <b>nickname</b> that will be used to "
@@ -1340,7 +1340,7 @@ msgstr ""
 "(veoma čest slučaj), predefinisan nadimak (definisan u \"identity\" tab-u) "
 "će biti korišćen. </center>"
 
-#: src/modules/options/optw_servers.cpp:149
+#: src/modules/options/optw_servers.cpp:150
 #, fuzzy
 msgid ""
 "<center>You can specify a \"special\" <b>real name</b> that will be used to "
@@ -1353,7 +1353,7 @@ msgstr ""
 "(često korišćen slučaj), predefinisano \"stvarno ime\" (definisano u "
 "\"identity\" tab-u) će biti korišćeno.</center>"
 
-#: src/modules/options/optw_servers.cpp:525
+#: src/modules/options/optw_servers.cpp:526
 #, fuzzy
 msgid ""
 "<center>You can specify a \"special\" <b>real name</b> that will be used to "
@@ -1434,7 +1434,7 @@ msgstr ""
 msgid "Active Background"
 msgstr "Aktivna pozadina"
 
-#: src/modules/options/optw_servers.cpp:1143
+#: src/modules/options/optw_servers.cpp:1145
 #, fuzzy
 msgid "Active Configuration"
 msgstr "&Sačuvaj podešavanja"
@@ -1470,7 +1470,7 @@ msgid "Add Profile"
 msgstr "Uvod"
 
 #: src/modules/options/optw_nickserv.cpp:264
-#: src/modules/options/optw_servers.cpp:302
+#: src/modules/options/optw_servers.cpp:303
 #, fuzzy
 msgid "Add Rule"
 msgstr "Dodaj zabranu (ban)"
@@ -1489,7 +1489,7 @@ msgstr "Napredno ..."
 msgid "Advanced configuration"
 msgstr "&Sačuvaj podešavanja"
 
-#: src/modules/options/optw_servers.cpp:1165
+#: src/modules/options/optw_servers.cpp:1167
 #, fuzzy
 msgid "Advanced..."
 msgstr "Napredno ..."
@@ -1812,13 +1812,13 @@ msgstr "CTCP Page"
 msgid "CTCP Replies"
 msgstr "odgovoreno"
 
-#: src/modules/options/optw_servers.cpp:600
+#: src/modules/options/optw_servers.cpp:601
 msgid "Cache IP address"
 msgstr "Keširaj IP adresu"
 
 #: src/modules/options/optw_nickserv.cpp:128
-#: src/modules/options/optw_servers.cpp:342
-#: src/modules/options/optw_servers.cpp:826
+#: src/modules/options/optw_servers.cpp:343
+#: src/modules/options/optw_servers.cpp:827
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/optw_identity.cpp:906
@@ -1881,8 +1881,8 @@ msgstr "Mod kanala"
 msgid "Channel windows"
 msgstr "&Naslaži prozore"
 
-#: src/modules/options/optw_servers.cpp:222
-#: src/modules/options/optw_servers.cpp:778
+#: src/modules/options/optw_servers.cpp:223
+#: src/modules/options/optw_servers.cpp:779
 msgid "Channels to join automatically upon connect:"
 msgstr ""
 
@@ -1933,7 +1933,7 @@ msgstr "Izaberi..."
 msgid "Classic Window List"
 msgstr "Lista prozora"
 
-#: src/modules/options/optw_servers.cpp:1455
+#: src/modules/options/optw_servers.cpp:1457
 #, fuzzy
 msgid "Clear List"
 msgstr "Isprazni listu"
@@ -1978,7 +1978,7 @@ msgstr "&Sačuvaj podešavanja"
 msgid "Confirm quit with active connections"
 msgstr "Ne mogu da zahtevam listu: nema aktivne konekcije"
 
-#: src/modules/options/optw_servers.cpp:1169
+#: src/modules/options/optw_servers.cpp:1171
 #, fuzzy
 msgid "Connect &Now"
 msgstr "Poveži se"
@@ -1988,17 +1988,17 @@ msgstr "Poveži se"
 msgid "Connect timeout:"
 msgstr "Konektovanje isteklo"
 
-#: src/modules/options/optw_servers.cpp:199
+#: src/modules/options/optw_servers.cpp:200
 #, fuzzy
 msgid "Connect to this network at startup"
 msgstr "Isteklo je vreme za povezivanje"
 
-#: src/modules/options/optw_servers.cpp:643
+#: src/modules/options/optw_servers.cpp:644
 #, fuzzy
 msgid "Connect to this server at startup"
 msgstr "Isteklo je vreme za povezivanje"
 
-#: src/modules/options/optw_servers.cpp:768
+#: src/modules/options/optw_servers.cpp:769
 #: src/modules/options/optw_connection.h:32
 msgid "Connection"
 msgstr "Konekcija"
@@ -2022,7 +2022,7 @@ msgstr "Poveži se"
 msgid "Control char color"
 msgstr "Boja kontrolnog znaka"
 
-#: src/modules/options/optw_servers.cpp:1120
+#: src/modules/options/optw_servers.cpp:1122
 #, fuzzy
 msgid "Copy Server"
 msgstr "Kopiraj server"
@@ -2072,7 +2072,7 @@ msgstr ""
 msgid "DashLine"
 msgstr "&Linija"
 
-#: src/modules/options/optw_servers.cpp:751
+#: src/modules/options/optw_servers.cpp:752
 #, fuzzy
 msgid "Default"
 msgstr "predefinisano"
@@ -2120,23 +2120,23 @@ msgid "Delete Profile"
 msgstr "Obriši ovo pravilo"
 
 #: src/modules/options/optw_nickserv.cpp:272
-#: src/modules/options/optw_servers.cpp:311
+#: src/modules/options/optw_servers.cpp:312
 #, fuzzy
 msgid "Delete Rule"
 msgstr "Obriši ovo pravilo"
 
-#: src/modules/options/optw_servers.cpp:1066
+#: src/modules/options/optw_servers.cpp:1067
 #: src/modules/options/optw_mediatypes.cpp:79
 msgid "Description"
 msgstr "Opis"
 
-#: src/modules/options/optw_servers.cpp:110
-#: src/modules/options/optw_servers.cpp:479
+#: src/modules/options/optw_servers.cpp:111
+#: src/modules/options/optw_servers.cpp:480
 #: src/modules/options/optw_mediatypes.cpp:88
 msgid "Description:"
 msgstr "Opis:"
 
-#: src/modules/options/optw_servers.cpp:752
+#: src/modules/options/optw_servers.cpp:753
 #, fuzzy
 msgid "Direct connection"
 msgstr "nema konekcije"
@@ -2230,7 +2230,7 @@ msgid "Edit Profile"
 msgstr "Uvod"
 
 #: src/modules/options/optw_nickserv.cpp:268
-#: src/modules/options/optw_servers.cpp:307
+#: src/modules/options/optw_servers.cpp:308
 #, fuzzy
 msgid "Edit Rule"
 msgstr "Izmeni"
@@ -2255,7 +2255,7 @@ msgid "Enable Network Profiles"
 msgstr "Podešavanja"
 
 #: src/modules/options/optw_nickserv.cpp:232
-#: src/modules/options/optw_servers.cpp:274
+#: src/modules/options/optw_servers.cpp:275
 #, fuzzy
 msgid "Enable NickServ Identification"
 msgstr "Omogući automatsku NickServ identifikaciju"
@@ -2475,7 +2475,7 @@ msgstr "Boja ispisa"
 msgid "Gender:"
 msgstr "Generalne opcije"
 
-#: src/modules/options/optw_servers.cpp:212
+#: src/modules/options/optw_servers.cpp:213
 #: src/modules/options/optw_messages.cpp:74 src/modules/options/optw_dcc.h:45
 #: src/modules/options/optw_dcc.h:88 src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_interfacelookglobal.h:33
@@ -2598,7 +2598,7 @@ msgstr "Dupli klik za postavljanje<br>"
 msgid "ID3 tags' encoding"
 msgstr "Tekstualni editor"
 
-#: src/modules/options/optw_servers.cpp:577
+#: src/modules/options/optw_servers.cpp:578
 #: src/modules/options/optw_proxy.cpp:115
 #, fuzzy
 msgid "IP address:"
@@ -2630,7 +2630,7 @@ msgstr ""
 msgid "Icon"
 msgstr "Ikona"
 
-#: src/modules/options/optw_servers.cpp:732
+#: src/modules/options/optw_servers.cpp:733
 #, fuzzy
 msgid "Id:"
 msgstr "Id"
@@ -2647,12 +2647,12 @@ msgstr "Ident korisničko ime"
 
 #: src/modules/options/optw_nickserv.cpp:89
 #: src/modules/options/optw_nickserv.cpp:247
-#: src/modules/options/optw_servers.cpp:289
+#: src/modules/options/optw_servers.cpp:290
 #, fuzzy
 msgid "Identify Command"
 msgstr "Komanda predstavljanja"
 
-#: src/modules/options/optw_servers.cpp:556
+#: src/modules/options/optw_servers.cpp:557
 #: src/modules/options/optw_interfacefeatures.cpp:61
 #: src/modules/options/optw_identity.h:138
 msgid "Identity"
@@ -2687,8 +2687,8 @@ msgstr ""
 msgid "Image width:"
 msgstr "Minimalna širina"
 
-#: src/modules/options/optw_servers.cpp:1138
-#: src/modules/options/optw_servers.cpp:1457
+#: src/modules/options/optw_servers.cpp:1140
+#: src/modules/options/optw_servers.cpp:1459
 #, fuzzy
 msgid "Import List"
 msgstr "Uvezi"
@@ -2739,7 +2739,7 @@ msgstr "Pogrešan ID tajmera"
 msgid "Invalid Profile Rule"
 msgstr "Pogrešan ID tajmera"
 
-#: src/modules/options/optw_servers.cpp:539
+#: src/modules/options/optw_servers.cpp:540
 #: src/modules/options/optw_identity.cpp:635
 #, fuzzy
 msgid "Invisible (+i)"
@@ -2750,8 +2750,8 @@ msgstr "i (nevidljivost)"
 msgid "Invite messages"
 msgstr "poruka pozivanja"
 
-#: src/modules/options/optw_servers.cpp:230
-#: src/modules/options/optw_servers.cpp:784
+#: src/modules/options/optw_servers.cpp:231
+#: src/modules/options/optw_servers.cpp:785
 #: src/modules/options/optw_interfacefeatures.cpp:63
 #, fuzzy
 msgid "Join Channels"
@@ -2841,7 +2841,7 @@ msgstr ""
 msgid "Limits"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:696
+#: src/modules/options/optw_servers.cpp:697
 #, fuzzy
 msgid "Link filter:"
 msgstr "Slušanje neuspešno"
@@ -3105,7 +3105,7 @@ msgstr "Naziv"
 msgid "Network"
 msgstr "Mreža"
 
-#: src/modules/options/optw_servers.cpp:96
+#: src/modules/options/optw_servers.cpp:97
 #, fuzzy
 msgid "Network Details"
 msgstr "Podešavanja"
@@ -3125,7 +3125,7 @@ msgstr "Mreža"
 msgid "Network Properties"
 msgstr "Podešavanja"
 
-#: src/modules/options/optw_servers.cpp:1348
+#: src/modules/options/optw_servers.cpp:1350
 msgid "Network:"
 msgstr "Mreža"
 
@@ -3134,9 +3134,9 @@ msgstr "Mreža"
 msgid "New Media Type"
 msgstr "Nov tip medija"
 
-#: src/modules/options/optw_servers.cpp:1097
-#: src/modules/options/optw_servers.cpp:1441
-#: src/modules/options/optw_servers.cpp:1567
+#: src/modules/options/optw_servers.cpp:1099
+#: src/modules/options/optw_servers.cpp:1443
+#: src/modules/options/optw_servers.cpp:1569
 msgid "New Network"
 msgstr "Nova Mreža"
 
@@ -3149,7 +3149,7 @@ msgstr "Proxy"
 msgid "New Query opened"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1103
+#: src/modules/options/optw_servers.cpp:1105
 #, fuzzy
 msgid "New Server"
 msgstr "Mreža/Server"
@@ -3167,7 +3167,7 @@ msgstr "akcija izbacivanja"
 msgid "Nick completion postfix string"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:334
+#: src/modules/options/optw_servers.cpp:335
 #: src/modules/options/optw_nickserv.h:41
 #, fuzzy
 msgid "NickServ"
@@ -3180,19 +3180,19 @@ msgstr "NickServ identifikaciona pravila"
 
 #: src/modules/options/optw_nickserv.cpp:63
 #: src/modules/options/optw_nickserv.cpp:245
-#: src/modules/options/optw_servers.cpp:287
+#: src/modules/options/optw_servers.cpp:288
 #, fuzzy
 msgid "NickServ Mask"
 msgstr "NickServ maska"
 
 #: src/modules/options/optw_nickserv.cpp:246
-#: src/modules/options/optw_servers.cpp:288
+#: src/modules/options/optw_servers.cpp:289
 #, fuzzy
 msgid "NickServ Request Mask"
 msgstr "NickServ maska"
 
 #: src/modules/options/optw_nickserv.cpp:243
-#: src/modules/options/optw_servers.cpp:286
+#: src/modules/options/optw_servers.cpp:287
 #: src/modules/options/optw_identity.cpp:695
 msgid "Nickname"
 msgstr "Nadimak"
@@ -3212,8 +3212,8 @@ msgstr "Nadimak 1"
 msgid "Nickname alternatives"
 msgstr "Nadimak 4"
 
-#: src/modules/options/optw_servers.cpp:138
-#: src/modules/options/optw_servers.cpp:513
+#: src/modules/options/optw_servers.cpp:139
+#: src/modules/options/optw_servers.cpp:514
 #: src/modules/options/optw_identity.cpp:303
 #: src/modules/options/optw_identity.cpp:870
 msgid "Nickname:"
@@ -3224,7 +3224,7 @@ msgstr "Nickname (nadimak):"
 msgid "Nicknames"
 msgstr "Nadimak"
 
-#: src/modules/options/optw_servers.cpp:1358
+#: src/modules/options/optw_servers.cpp:1360
 msgid "No selection"
 msgstr "Bez izbora"
 
@@ -3252,6 +3252,14 @@ msgstr "Normalni mod"
 msgid "Notifier"
 msgstr "Lista obaveštenja"
 
+#: src/modules/options/optw_notify.cpp:137
+msgid "Notifier window opacity while active (mouseover)"
+msgstr ""
+
+#: src/modules/options/optw_notify.cpp:144
+msgid "Notifier window opacity while inactive"
+msgstr ""
+
 #: src/modules/options/optw_dcc.cpp:186
 #, fuzzy
 msgid "Notify completion in console"
@@ -3268,7 +3276,7 @@ msgstr ""
 
 #: src/modules/options/optw_nickserv.cpp:133
 #: src/modules/options/optw_nickserv.cpp:154
-#: src/modules/options/optw_servers.cpp:820
+#: src/modules/options/optw_servers.cpp:821
 #: src/modules/options/optw_identity.cpp:910
 #: src/modules/options/optw_identity.cpp:974
 msgid "OK"
@@ -3299,8 +3307,8 @@ msgstr "obaveštenje kanala"
 msgid "On Chat Request"
 msgstr "DCC %s zahtev"
 
-#: src/modules/options/optw_servers.cpp:245
-#: src/modules/options/optw_servers.cpp:800
+#: src/modules/options/optw_servers.cpp:246
+#: src/modules/options/optw_servers.cpp:801
 #, fuzzy
 msgid "On Connect"
 msgstr "Poveži se"
@@ -3320,8 +3328,8 @@ msgstr "Direktorijum za svlačenje"
 msgid "On Incoming File"
 msgstr "Dolazeći saobraćaj"
 
-#: src/modules/options/optw_servers.cpp:263
-#: src/modules/options/optw_servers.cpp:818
+#: src/modules/options/optw_servers.cpp:264
+#: src/modules/options/optw_servers.cpp:819
 #, fuzzy
 msgid "On Login"
 msgstr "odlazeće"
@@ -3336,13 +3344,13 @@ msgstr "Automatski zakači na neočekivano odkačinjanje"
 msgid "On Voice Request"
 msgstr "voiced korisnici"
 
-#: src/modules/options/optw_servers.cpp:1494
+#: src/modules/options/optw_servers.cpp:1496
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1511
+#: src/modules/options/optw_servers.cpp:1513
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3434,12 +3442,12 @@ msgstr "Stariji fade faktor"
 msgid "Part message:"
 msgstr "poruka izlaska"
 
-#: src/modules/options/optw_servers.cpp:507
+#: src/modules/options/optw_servers.cpp:508
 #: src/modules/options/optw_proxy.cpp:119
 msgid "Password:"
 msgstr "Lozinka:"
 
-#: src/modules/options/optw_servers.cpp:1127
+#: src/modules/options/optw_servers.cpp:1129
 #, fuzzy
 msgid "Paste Server"
 msgstr "Prenesi server"
@@ -3499,7 +3507,7 @@ msgstr "lista obaveštenja ulasci"
 msgid "Popup the notifier window on highlighted messages"
 msgstr "ignorisana poruka korisnika"
 
-#: src/modules/options/optw_servers.cpp:563
+#: src/modules/options/optw_servers.cpp:564
 #: src/modules/options/optw_proxy.cpp:113
 msgid "Port:"
 msgstr "Port:"
@@ -3598,8 +3606,8 @@ msgstr "Uvod"
 msgid "Progress bar color:"
 msgstr "Linija progresa"
 
-#: src/modules/options/optw_servers.cpp:126
-#: src/modules/options/optw_servers.cpp:496
+#: src/modules/options/optw_servers.cpp:127
+#: src/modules/options/optw_servers.cpp:497
 msgid "Properties"
 msgstr "Podešavanja"
 
@@ -3626,7 +3634,7 @@ msgstr "Proxy"
 msgid "Proxy Hosts"
 msgstr "proksi host"
 
-#: src/modules/options/optw_servers.cpp:743
+#: src/modules/options/optw_servers.cpp:744
 #, fuzzy
 msgid "Proxy server:"
 msgstr "irc server"
@@ -3695,13 +3703,13 @@ msgstr "Ukloni"
 msgid "Re&move Proxy"
 msgstr "Ukloni proksi"
 
-#: src/modules/options/optw_servers.cpp:1446
+#: src/modules/options/optw_servers.cpp:1448
 #, fuzzy
 msgid "Re&move Server"
 msgstr "Ukloni server"
 
-#: src/modules/options/optw_servers.cpp:146
-#: src/modules/options/optw_servers.cpp:522
+#: src/modules/options/optw_servers.cpp:147
+#: src/modules/options/optw_servers.cpp:523
 #: src/modules/options/optw_identity.cpp:323
 #, fuzzy
 msgid "Real name:"
@@ -3755,12 +3763,12 @@ msgstr "Prozor nije pronađen"
 msgid "Remote open command:"
 msgstr "Daljinska izvršna komanda"
 
-#: src/modules/options/optw_servers.cpp:1442
+#: src/modules/options/optw_servers.cpp:1444
 #, fuzzy
 msgid "Remove Network"
 msgstr "Ukloni mrežu"
 
-#: src/modules/options/optw_servers.cpp:1110
+#: src/modules/options/optw_servers.cpp:1112
 #, fuzzy
 msgid "Remove Network/Server"
 msgstr "Ukloni mrežu"
@@ -3884,17 +3892,17 @@ msgstr "Ne mogu da dobijem adresu interfejsa %s"
 msgid "Send unknown commands as /RAW"
 msgstr "Posalji nepoznatu komandu kao /RAW"
 
-#: src/modules/options/optw_servers.cpp:1065
+#: src/modules/options/optw_servers.cpp:1066
 msgid "Server"
 msgstr "Server"
 
-#: src/modules/options/optw_servers.cpp:470
+#: src/modules/options/optw_servers.cpp:471
 #, fuzzy
 msgid "Server Details"
 msgstr "Detalji servera"
 
-#: src/modules/options/optw_servers.cpp:154
-#: src/modules/options/optw_servers.cpp:652
+#: src/modules/options/optw_servers.cpp:155
+#: src/modules/options/optw_servers.cpp:653
 #, fuzzy
 msgid "Server Encoding:"
 msgstr "serverov ping"
@@ -3910,7 +3918,7 @@ msgstr "Server"
 msgid "Server notices"
 msgstr "obaveštenje servera"
 
-#: src/modules/options/optw_servers.cpp:543
+#: src/modules/options/optw_servers.cpp:544
 #: src/modules/options/optw_identity.cpp:636
 #, fuzzy
 msgid "Server notices (+s)"
@@ -3921,8 +3929,8 @@ msgstr "s (Obaveštenja servera)"
 msgid "Server replies"
 msgstr "serverov ping"
 
-#: src/modules/options/optw_servers.cpp:1144
-#: src/modules/options/optw_servers.cpp:1345
+#: src/modules/options/optw_servers.cpp:1146
+#: src/modules/options/optw_servers.cpp:1347
 msgid "Server:"
 msgstr "Server:"
 
@@ -4043,7 +4051,7 @@ msgstr "Prikazi pingove servera"
 msgid "Show the CTCP replies in the active window"
 msgstr "nema spoljnih poruka"
 
-#: src/modules/options/optw_servers.cpp:1186
+#: src/modules/options/optw_servers.cpp:1188
 #, fuzzy
 msgid "Show this dialog at startup"
 msgstr "Pokaži ovaj dijalog za servere uvek kada se pokrene KVIrc"
@@ -4120,7 +4128,7 @@ msgstr "Pošalji"
 msgid "Strip colors in logs"
 msgstr "uske boje"
 
-#: src/modules/options/optw_servers.cpp:634
+#: src/modules/options/optw_servers.cpp:635
 #, fuzzy
 msgid "Supports STARTTLS protocol"
 msgstr "Korišćenje IpV6 protokola"
@@ -4140,8 +4148,8 @@ msgstr "Tester"
 msgid "Text"
 msgstr "Tekst:"
 
-#: src/modules/options/optw_servers.cpp:166
-#: src/modules/options/optw_servers.cpp:664
+#: src/modules/options/optw_servers.cpp:167
+#: src/modules/options/optw_servers.cpp:665
 #, fuzzy
 msgid "Text Encoding:"
 msgstr "Tekstualni editor"
@@ -4214,7 +4222,7 @@ msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr ""
 
 #: src/modules/options/optw_nickserv.cpp:235
-#: src/modules/options/optw_servers.cpp:278
+#: src/modules/options/optw_servers.cpp:279
 msgid "This check enables the automatic identification with NickServ"
 msgstr ""
 
@@ -4434,7 +4442,7 @@ msgstr "Neuspešno pisanje u fajl %s"
 msgid "Unknown protocol handler command:"
 msgstr "Nepoznata komanda"
 
-#: src/modules/options/optw_servers.cpp:1375
+#: src/modules/options/optw_servers.cpp:1377
 msgid "UnknownNet"
 msgstr "NepoznataMreža"
 
@@ -4453,7 +4461,7 @@ msgstr ""
 msgid "Use \"smart\" notify list manager"
 msgstr "Koristi \"inteligentan\" upravljač liste obaveštenja"
 
-#: src/modules/options/optw_servers.cpp:611
+#: src/modules/options/optw_servers.cpp:612
 #: src/modules/options/optw_proxy.cpp:129
 #, fuzzy
 msgid "Use IPv6 protocol"
@@ -4471,8 +4479,8 @@ msgstr ""
 msgid "Use Language Encoding"
 msgstr "Koristi mašinu za šifrovanje"
 
-#: src/modules/options/optw_servers.cpp:680
 #: src/modules/options/optw_servers.cpp:681
+#: src/modules/options/optw_servers.cpp:682
 #, fuzzy
 msgid "Use Network Encoding"
 msgstr "Koristi mašinu za šifrovanje"
@@ -4485,13 +4493,13 @@ msgstr ""
 msgid "Use SSL private key"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:624
+#: src/modules/options/optw_servers.cpp:625
 #, fuzzy
 msgid "Use SSL protocol"
 msgstr "Korišćenje IpV6 protokola"
 
-#: src/modules/options/optw_servers.cpp:182
 #: src/modules/options/optw_servers.cpp:183
+#: src/modules/options/optw_servers.cpp:184
 #, fuzzy
 msgid "Use System Encoding"
 msgstr "Koristi mašinu za šifrovanje"
@@ -4521,7 +4529,7 @@ msgstr ""
 msgid "Use custom alert level"
 msgstr "Nivo upozorenja"
 
-#: src/modules/options/optw_servers.cpp:531
+#: src/modules/options/optw_servers.cpp:532
 #, fuzzy
 msgid "Use default user mode"
 msgstr "Mogući modovi korisnika:"
@@ -4615,7 +4623,7 @@ msgstr "Preopširno ignorisanje: (pokaži ignorisane poruke u konzoli)"
 msgid "Use workaround for firewall"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:528
+#: src/modules/options/optw_servers.cpp:529
 #: src/modules/options/optw_identity.cpp:634
 #, fuzzy
 msgid "User Mode"
@@ -4643,8 +4651,8 @@ msgstr "Lista korisnika"
 msgid "Username"
 msgstr "Korisničko ime"
 
-#: src/modules/options/optw_servers.cpp:129
-#: src/modules/options/optw_servers.cpp:499
+#: src/modules/options/optw_servers.cpp:130
+#: src/modules/options/optw_servers.cpp:500
 #: src/modules/options/optw_identity.cpp:316
 #: src/modules/options/optw_identity.cpp:886
 #: src/modules/options/optw_proxy.cpp:117
@@ -4690,7 +4698,7 @@ msgstr "Naslov"
 msgid "Volume slider controls PCM, not Master"
 msgstr "Klizač jačine tona kontroliše PCM, ne glavnu jačinu"
 
-#: src/modules/options/optw_servers.cpp:547
+#: src/modules/options/optw_servers.cpp:548
 #: src/modules/options/optw_identity.cpp:637
 #, fuzzy
 msgid "Wallops (+w)"
@@ -4817,7 +4825,7 @@ msgstr ""
 msgid "file,audio,video,programs"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1588
+#: src/modules/options/optw_servers.cpp:1590
 msgid "irc.unknown.net"
 msgstr "irc.nepoznat.net"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
+"POT-Creation-Date: 2008-11-18 16:45+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -860,7 +860,7 @@ msgstr "Lisäkonfiguraatio..."
 msgid "All Files"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:975
+#: src/kvirc/kernel/kvi_coreactions.cpp:981
 msgid "Allows entering and leaving away state"
 msgstr "Sallii siirtymisen ja poistumisen poissaolotilaan/tilasta"
 
@@ -1003,7 +1003,7 @@ msgstr ""
 msgid "Away since"
 msgstr "Poissa"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:974
+#: src/kvirc/kernel/kvi_coreactions.cpp:980
 msgid "Away/Back"
 msgstr "Pois/Takaisin"
 
@@ -1440,8 +1440,14 @@ msgstr "Tyhjennä ikkuna"
 msgid "Clear Recent Channels List"
 msgstr "Hae kanavalista"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:873
-#: src/kvirc/kernel/kvi_coreactions.cpp:887
+#: src/kvirc/kernel/kvi_coreactions.cpp:833
+#: src/kvirc/kernel/kvi_coreactions.cpp:848
+#, fuzzy
+msgid "Clear Recent Nicks List"
+msgstr "Hae kanavalista"
+
+#: src/kvirc/kernel/kvi_coreactions.cpp:879
+#: src/kvirc/kernel/kvi_coreactions.cpp:893
 msgid "Clear Recent Servers List"
 msgstr ""
 
@@ -1542,7 +1548,7 @@ msgstr "Varmistus - KVIrc"
 msgid "Connect"
 msgstr "Yhdistä"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:858
+#: src/kvirc/kernel/kvi_coreactions.cpp:864
 msgid "Connect To"
 msgstr "Yhdistä palvelimeen"
 
@@ -1907,7 +1913,7 @@ msgstr ""
 msgid "End of merged output"
 msgstr "Liitetyn sisällön loppu"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1042
+#: src/kvirc/kernel/kvi_coreactions.cpp:1048
 msgid "Enter Away Mode"
 msgstr "Siirry poissaolotilaan"
 
@@ -2522,7 +2528,7 @@ msgstr ""
 msgid "Invalid target address"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:928
+#: src/kvirc/kernel/kvi_coreactions.cpp:934
 msgid "Invisible (+i)"
 msgstr "Näkymätön (+i)"
 
@@ -2554,11 +2560,11 @@ msgstr "Kutsupakko"
 msgid "Invite unexception matching my mask"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1136
+#: src/kvirc/kernel/kvi_coreactions.cpp:1142
 msgid "Irc Actions"
 msgstr "IRC -toiminnot"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1104
+#: src/kvirc/kernel/kvi_coreactions.cpp:1110
 msgid "Irc Tools"
 msgstr "IRC -työkalut"
 
@@ -2710,7 +2716,7 @@ msgstr ""
 msgid "Last checked %d mins %d secs ago"
 msgstr "Viimeksi tarkistettiin %d minuuttia, %d sekuntia sitten"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1043
+#: src/kvirc/kernel/kvi_coreactions.cpp:1049
 msgid "Leave Away Mode"
 msgstr "Poistu poissaolotilasta"
 
@@ -3449,9 +3455,9 @@ msgstr "Sijoitus"
 #: src/kvirc/kernel/kvi_coreactions.cpp:779
 #: src/kvirc/kernel/kvi_coreactions.cpp:793
 #: src/kvirc/kernel/kvi_coreactions.cpp:830
-#: src/kvirc/kernel/kvi_coreactions.cpp:842
-#: src/kvirc/kernel/kvi_coreactions.cpp:871
-#: src/kvirc/kernel/kvi_coreactions.cpp:884
+#: src/kvirc/kernel/kvi_coreactions.cpp:845
+#: src/kvirc/kernel/kvi_coreactions.cpp:877
+#: src/kvirc/kernel/kvi_coreactions.cpp:890
 msgid "Other..."
 msgstr "Muu..."
 
@@ -4082,7 +4088,7 @@ msgstr "Palvelimen VIRHE: %Q"
 msgid "Server Message of the Day"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:926
+#: src/kvirc/kernel/kvi_coreactions.cpp:932
 msgid "Server Notices (+s)"
 msgstr "Palvelinhuomatukset (+s)"
 
@@ -4241,11 +4247,11 @@ msgstr "Näyttää ikkunan joka sallii sinun liittyä kanaville"
 msgid "Shows a popup menu that allows quickly changing the nickname"
 msgstr "Näyttää ponnahdusvalikon joka sallii nopeasti tunnuksen vaihdon"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:907
+#: src/kvirc/kernel/kvi_coreactions.cpp:913
 msgid "Shows a popup menu that allows quickly changing user modes"
 msgstr "Näyttää ponnahdusvalikon joka sallii käyttäjämoodien nopean vaihdon"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:859
+#: src/kvirc/kernel/kvi_coreactions.cpp:865
 msgid "Shows a popup menu that allows quickly connecting to a server"
 msgstr "Näyttää ponnahdusvalikon joka sallii nopean yhdistämisen palvelimeen"
 
@@ -4255,11 +4261,11 @@ msgstr ""
 "Näyttää ponnahdusvalikon joka sallii nopeasti valitsemaan kanavan "
 "liityttäväksi"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1137
+#: src/kvirc/kernel/kvi_coreactions.cpp:1143
 msgid "Shows a popup menu with some IRC Actions"
 msgstr "Näyttää ponnahdusvalikon IRC -toiminnoilla"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1105
+#: src/kvirc/kernel/kvi_coreactions.cpp:1111
 msgid "Shows a popup menu with some IRC Tools"
 msgstr "Näyttää ponnahdusvalikon IRC -työkaluilla"
 
@@ -5107,7 +5113,7 @@ msgstr "Käytä salauskoneistoa"
 msgid "User List"
 msgstr "Käyttäjälista"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:906
+#: src/kvirc/kernel/kvi_coreactions.cpp:912
 msgid "User Mode"
 msgstr "Käyttäjämoodi"
 
@@ -5244,7 +5250,7 @@ msgid ""
 "%c: %Q"
 msgstr "/WHO-"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:924
+#: src/kvirc/kernel/kvi_coreactions.cpp:930
 msgid "Wallops (+w)"
 msgstr "Wallopit (+w)"
 

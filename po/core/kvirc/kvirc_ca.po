@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
+"POT-Creation-Date: 2008-11-18 16:45+0100\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Catal�<ca@li.org>\n"
@@ -885,7 +885,7 @@ msgstr "Avan�t ..."
 msgid "All Files"
 msgstr "Tots els arxius"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:975
+#: src/kvirc/kernel/kvi_coreactions.cpp:981
 #, fuzzy
 msgid "Allows entering and leaving away state"
 msgstr "Permet entrar i sortir del estat absent"
@@ -1030,7 +1030,7 @@ msgstr "Missatge d'abs�cia"
 msgid "Away since"
 msgstr "Aussent des de"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:974
+#: src/kvirc/kernel/kvi_coreactions.cpp:980
 msgid "Away/Back"
 msgstr "Absentar-se/Tornar"
 
@@ -1483,8 +1483,14 @@ msgstr "Netejar Buffer"
 msgid "Clear Recent Channels List"
 msgstr "Canals Recents"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:873
-#: src/kvirc/kernel/kvi_coreactions.cpp:887
+#: src/kvirc/kernel/kvi_coreactions.cpp:833
+#: src/kvirc/kernel/kvi_coreactions.cpp:848
+#, fuzzy
+msgid "Clear Recent Nicks List"
+msgstr "Canals Recents"
+
+#: src/kvirc/kernel/kvi_coreactions.cpp:879
+#: src/kvirc/kernel/kvi_coreactions.cpp:893
 msgid "Clear Recent Servers List"
 msgstr ""
 
@@ -1594,7 +1600,7 @@ msgstr "Confirmaci�- KVIrc"
 msgid "Connect"
 msgstr "Connectar"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:858
+#: src/kvirc/kernel/kvi_coreactions.cpp:864
 msgid "Connect To"
 msgstr "Connectar a"
 
@@ -1972,7 +1978,7 @@ msgstr "Fi de LIST"
 msgid "End of merged output"
 msgstr "Final de sortida barrejada"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1042
+#: src/kvirc/kernel/kvi_coreactions.cpp:1048
 msgid "Enter Away Mode"
 msgstr "Entrar en Mode Absent"
 
@@ -2630,7 +2636,7 @@ msgstr "Adre� de proxy no v�ida"
 msgid "Invalid target address"
 msgstr "Adre� de dest�no v�ida"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:928
+#: src/kvirc/kernel/kvi_coreactions.cpp:934
 msgid "Invisible (+i)"
 msgstr "Invisible (+i)"
 
@@ -2663,11 +2669,11 @@ msgstr "Nom�per invitaci"
 msgid "Invite unexception matching my mask"
 msgstr "Invitaci�sense excepci�concorda amb la meva m�cara"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1136
+#: src/kvirc/kernel/kvi_coreactions.cpp:1142
 msgid "Irc Actions"
 msgstr "Accions IRC"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1104
+#: src/kvirc/kernel/kvi_coreactions.cpp:1110
 msgid "Irc Tools"
 msgstr "Eines d'IRC"
 
@@ -2824,7 +2830,7 @@ msgstr "Icones Grans"
 msgid "Last checked %d mins %d secs ago"
 msgstr "�tima comprobaci�realitzada fa %d min %d segs"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1043
+#: src/kvirc/kernel/kvi_coreactions.cpp:1049
 msgid "Leave Away Mode"
 msgstr "Abandonar el Mode Absent"
 
@@ -3623,9 +3629,9 @@ msgstr "Orientaci"
 #: src/kvirc/kernel/kvi_coreactions.cpp:779
 #: src/kvirc/kernel/kvi_coreactions.cpp:793
 #: src/kvirc/kernel/kvi_coreactions.cpp:830
-#: src/kvirc/kernel/kvi_coreactions.cpp:842
-#: src/kvirc/kernel/kvi_coreactions.cpp:871
-#: src/kvirc/kernel/kvi_coreactions.cpp:884
+#: src/kvirc/kernel/kvi_coreactions.cpp:845
+#: src/kvirc/kernel/kvi_coreactions.cpp:877
+#: src/kvirc/kernel/kvi_coreactions.cpp:890
 msgid "Other..."
 msgstr "Altres..."
 
@@ -4271,7 +4277,7 @@ msgstr "[ERROR SSL]: %Q"
 msgid "Server Message of the Day"
 msgstr "Missatge del Dia del servidor"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:926
+#: src/kvirc/kernel/kvi_coreactions.cpp:932
 msgid "Server Notices (+s)"
 msgstr "Not�ies del Servidor (+s)"
 
@@ -4436,11 +4442,11 @@ msgstr "Mostra un di�eg que et permet unir-te a canals"
 msgid "Shows a popup menu that allows quickly changing the nickname"
 msgstr "Mostra un men emergent que permet canviar r�idament el nick"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:907
+#: src/kvirc/kernel/kvi_coreactions.cpp:913
 msgid "Shows a popup menu that allows quickly changing user modes"
 msgstr "Mostra un men emergent que permet canviar r�idament els modes d'usuari"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:859
+#: src/kvirc/kernel/kvi_coreactions.cpp:865
 msgid "Shows a popup menu that allows quickly connecting to a server"
 msgstr "Mostra un men emergent que permet connectar-se r�idament a un servidor"
 
@@ -4449,11 +4455,11 @@ msgid "Shows a popup menu that allows quickly selecting a channel to join"
 msgstr ""
 "Mostra un men emergent que permet seleccionar r�idament un canal per unir-se"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1137
+#: src/kvirc/kernel/kvi_coreactions.cpp:1143
 msgid "Shows a popup menu with some IRC Actions"
 msgstr "Mostra un men emergent amb algunes accions IRC"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1105
+#: src/kvirc/kernel/kvi_coreactions.cpp:1111
 msgid "Shows a popup menu with some IRC Tools"
 msgstr "Mostra un men emergent amb algunes eines d'IRC"
 
@@ -5364,7 +5370,7 @@ msgstr "Utilitzar el motor de xifrat"
 msgid "User List"
 msgstr "Llista d'Usuaris"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:906
+#: src/kvirc/kernel/kvi_coreactions.cpp:912
 msgid "User Mode"
 msgstr "Mode d'usuari"
 
@@ -5505,7 +5511,7 @@ msgstr ""
 "cServidor%c: \r!s\r%Q\r, %cSalts%c: %d, %cFlags%c: %Q, %cAusents%c: %Q, %"
 "cNom real%c: %Q"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:924
+#: src/kvirc/kernel/kvi_coreactions.cpp:930
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
 

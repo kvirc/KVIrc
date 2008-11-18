@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
+"POT-Creation-Date: 2008-11-18 16:45+0100\n"
 "PO-Revision-Date: 2008-02-14 02:10+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -854,7 +854,7 @@ msgstr "Dodatno..."
 msgid "All Files"
 msgstr "Sve Datoteke"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:975
+#: src/kvirc/kernel/kvi_coreactions.cpp:981
 msgid "Allows entering and leaving away state"
 msgstr "Omogućuje ulazak i izlazak iz statusa odsutnosti"
 
@@ -996,7 +996,7 @@ msgstr ""
 msgid "Away since"
 msgstr "Odsutan od"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:974
+#: src/kvirc/kernel/kvi_coreactions.cpp:980
 msgid "Away/Back"
 msgstr "Away/Back"
 
@@ -1432,8 +1432,14 @@ msgstr "Isprazni Međuspremnik"
 msgid "Clear Recent Channels List"
 msgstr "Nedavne Sobe"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:873
-#: src/kvirc/kernel/kvi_coreactions.cpp:887
+#: src/kvirc/kernel/kvi_coreactions.cpp:833
+#: src/kvirc/kernel/kvi_coreactions.cpp:848
+#, fuzzy
+msgid "Clear Recent Nicks List"
+msgstr "Nedavne Sobe"
+
+#: src/kvirc/kernel/kvi_coreactions.cpp:879
+#: src/kvirc/kernel/kvi_coreactions.cpp:893
 msgid "Clear Recent Servers List"
 msgstr ""
 
@@ -1534,7 +1540,7 @@ msgstr "Potvrda - KVIrc"
 msgid "Connect"
 msgstr "Spoji"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:858
+#: src/kvirc/kernel/kvi_coreactions.cpp:864
 msgid "Connect To"
 msgstr "Spoji se na"
 
@@ -1896,7 +1902,7 @@ msgstr ""
 msgid "End of merged output"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1042
+#: src/kvirc/kernel/kvi_coreactions.cpp:1048
 msgid "Enter Away Mode"
 msgstr "Idi Away"
 
@@ -2510,7 +2516,7 @@ msgstr "Neispravna proxy adresa"
 msgid "Invalid target address"
 msgstr "Neispravna adresa odredišta"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:928
+#: src/kvirc/kernel/kvi_coreactions.cpp:934
 msgid "Invisible (+i)"
 msgstr "Nevidljiv (+i)"
 
@@ -2542,11 +2548,11 @@ msgstr ""
 msgid "Invite unexception matching my mask"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1136
+#: src/kvirc/kernel/kvi_coreactions.cpp:1142
 msgid "Irc Actions"
 msgstr "Irc Akcije"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1104
+#: src/kvirc/kernel/kvi_coreactions.cpp:1110
 msgid "Irc Tools"
 msgstr "Irc Alati"
 
@@ -2698,7 +2704,7 @@ msgstr "Velike Ikone"
 msgid "Last checked %d mins %d secs ago"
 msgstr "Zadnja provjera prije %d minuta %d sekundi"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1043
+#: src/kvirc/kernel/kvi_coreactions.cpp:1049
 msgid "Leave Away Mode"
 msgstr "Povratak"
 
@@ -3430,9 +3436,9 @@ msgstr "Orijentacija"
 #: src/kvirc/kernel/kvi_coreactions.cpp:779
 #: src/kvirc/kernel/kvi_coreactions.cpp:793
 #: src/kvirc/kernel/kvi_coreactions.cpp:830
-#: src/kvirc/kernel/kvi_coreactions.cpp:842
-#: src/kvirc/kernel/kvi_coreactions.cpp:871
-#: src/kvirc/kernel/kvi_coreactions.cpp:884
+#: src/kvirc/kernel/kvi_coreactions.cpp:845
+#: src/kvirc/kernel/kvi_coreactions.cpp:877
+#: src/kvirc/kernel/kvi_coreactions.cpp:890
 msgid "Other..."
 msgstr "Ostalo..."
 
@@ -4058,7 +4064,7 @@ msgstr ""
 msgid "Server Message of the Day"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:926
+#: src/kvirc/kernel/kvi_coreactions.cpp:932
 msgid "Server Notices (+s)"
 msgstr "Obavijesti Servera (s)"
 
@@ -4221,12 +4227,12 @@ msgstr "Prikazuje dijaloški okvir za ulazak u sobe"
 msgid "Shows a popup menu that allows quickly changing the nickname"
 msgstr "Prikazuje popup izbornik koji omogućuje brzu promjenu nadimka"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:907
+#: src/kvirc/kernel/kvi_coreactions.cpp:913
 msgid "Shows a popup menu that allows quickly changing user modes"
 msgstr ""
 "Prikazuje popup izbornik koji omogućuje brzu izmjenu korisničkih modova"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:859
+#: src/kvirc/kernel/kvi_coreactions.cpp:865
 msgid "Shows a popup menu that allows quickly connecting to a server"
 msgstr "Prikazuje popup izbornik koji omogućuje brzu konekciju na server"
 
@@ -4234,11 +4240,11 @@ msgstr "Prikazuje popup izbornik koji omogućuje brzu konekciju na server"
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
 msgstr "Prikazuje popup izbornik za brzi odabir kanala za ulazak"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1137
+#: src/kvirc/kernel/kvi_coreactions.cpp:1143
 msgid "Shows a popup menu with some IRC Actions"
 msgstr "Prikazuje popup izbornik s IRC Akcijama"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1105
+#: src/kvirc/kernel/kvi_coreactions.cpp:1111
 msgid "Shows a popup menu with some IRC Tools"
 msgstr "Prikazuje popup izbornik s IRC Alatima"
 
@@ -5074,7 +5080,7 @@ msgstr "Koristi pogon za kriptiranje"
 msgid "User List"
 msgstr "Lista Korisnika"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:906
+#: src/kvirc/kernel/kvi_coreactions.cpp:912
 msgid "User Mode"
 msgstr "Korisnički Modovi"
 
@@ -5209,7 +5215,7 @@ msgid ""
 "%c: %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:924
+#: src/kvirc/kernel/kvi_coreactions.cpp:930
 msgid "Wallops (+w)"
 msgstr ""
 

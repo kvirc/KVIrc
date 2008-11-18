@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
+"POT-Creation-Date: 2008-11-18 16:44+0100\n"
 "PO-Revision-Date: 2008-08-01 07:48+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -28,11 +28,6 @@ msgstr ""
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "E escolher o interface do cliente torrent \"%Q\""
-
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
-#, c-format
-msgid "Index out of range: %d [0-%d]!"
-msgstr "Índice fora de alcance: %d [0-%d]!"
 
 #: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
@@ -73,3 +68,6 @@ msgstr "A tentar o interface do cliente torrent \"%Q\": pontuação %d"
 #: src/modules/torrent/libkvitorrent.cpp:711
 msgid "Using client interface \"%Q\"."
 msgstr "A usar o interface do cliente \"%Q\"."
+
+#~ msgid "Index out of range: %d [0-%d]!"
+#~ msgstr "Índice fora de alcance: %d [0-%d]!"

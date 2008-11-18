@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
+"POT-Creation-Date: 2008-11-18 16:44+0100\n"
 "PO-Revision-Date: 2008-02-26 08:37+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -27,11 +27,6 @@ msgstr ""
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Torrent kliens interfészének kiválasztása: \"%Q\""
-
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
-#, c-format
-msgid "Index out of range: %d [0-%d]!"
-msgstr "Az index értékhatáron túli: %d [0-%d]!"
 
 #: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
@@ -72,3 +67,6 @@ msgstr " \"%Q\" tesztelése: %d pont"
 #: src/modules/torrent/libkvitorrent.cpp:711
 msgid "Using client interface \"%Q\"."
 msgstr "Kliens interfészének kiválasztása: \"%Q\""
+
+#~ msgid "Index out of range: %d [0-%d]!"
+#~ msgstr "Az index értékhatáron túli: %d [0-%d]!"

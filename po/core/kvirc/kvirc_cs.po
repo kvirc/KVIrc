@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
+"POT-Creation-Date: 2008-11-18 16:45+0100\n"
 "PO-Revision-Date: 2007-12-17 11:31+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -873,7 +873,7 @@ msgstr "Pokročilé..."
 msgid "All Files"
 msgstr "Všechny soubory"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:975
+#: src/kvirc/kernel/kvi_coreactions.cpp:981
 msgid "Allows entering and leaving away state"
 msgstr "Umožní vstup a opuštění pryč módu"
 
@@ -1015,7 +1015,7 @@ msgstr "Pryč zpráva"
 msgid "Away since"
 msgstr "Pryč od"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:974
+#: src/kvirc/kernel/kvi_coreactions.cpp:980
 msgid "Away/Back"
 msgstr "Pryč/Návrat"
 
@@ -1453,8 +1453,14 @@ msgstr "Smazat buffer"
 msgid "Clear Recent Channels List"
 msgstr "Poslední kanály"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:873
-#: src/kvirc/kernel/kvi_coreactions.cpp:887
+#: src/kvirc/kernel/kvi_coreactions.cpp:833
+#: src/kvirc/kernel/kvi_coreactions.cpp:848
+#, fuzzy
+msgid "Clear Recent Nicks List"
+msgstr "Poslední kanály"
+
+#: src/kvirc/kernel/kvi_coreactions.cpp:879
+#: src/kvirc/kernel/kvi_coreactions.cpp:893
 msgid "Clear Recent Servers List"
 msgstr ""
 
@@ -1555,7 +1561,7 @@ msgstr "Potvrzení - KVIrc"
 msgid "Connect"
 msgstr "Připojit"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:858
+#: src/kvirc/kernel/kvi_coreactions.cpp:864
 msgid "Connect To"
 msgstr "Připojit k"
 
@@ -1918,7 +1924,7 @@ msgstr "Konec SEZNAMU"
 msgid "End of merged output"
 msgstr "Konec spojeného výstupu"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1042
+#: src/kvirc/kernel/kvi_coreactions.cpp:1048
 msgid "Enter Away Mode"
 msgstr "Vstoupit do Pryč módu"
 
@@ -2536,7 +2542,7 @@ msgstr "Neplatná adresa proxy"
 msgid "Invalid target address"
 msgstr "Neplatná cílová adresa"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:928
+#: src/kvirc/kernel/kvi_coreactions.cpp:934
 msgid "Invisible (+i)"
 msgstr "Neviditelný (+i)"
 
@@ -2568,11 +2574,11 @@ msgstr "Jen na pozvání"
 msgid "Invite unexception matching my mask"
 msgstr "Pozvánka bez výjimky na mojí masku"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1136
+#: src/kvirc/kernel/kvi_coreactions.cpp:1142
 msgid "Irc Actions"
 msgstr "IRC Akce"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1104
+#: src/kvirc/kernel/kvi_coreactions.cpp:1110
 msgid "Irc Tools"
 msgstr "IRC Nástroje"
 
@@ -2724,7 +2730,7 @@ msgstr "Velké ikony"
 msgid "Last checked %d mins %d secs ago"
 msgstr "Naposledy zjišťováno před %d min %d sek"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1043
+#: src/kvirc/kernel/kvi_coreactions.cpp:1049
 msgid "Leave Away Mode"
 msgstr "Opustit Pryč mód"
 
@@ -3504,9 +3510,9 @@ msgstr "Orientace"
 #: src/kvirc/kernel/kvi_coreactions.cpp:779
 #: src/kvirc/kernel/kvi_coreactions.cpp:793
 #: src/kvirc/kernel/kvi_coreactions.cpp:830
-#: src/kvirc/kernel/kvi_coreactions.cpp:842
-#: src/kvirc/kernel/kvi_coreactions.cpp:871
-#: src/kvirc/kernel/kvi_coreactions.cpp:884
+#: src/kvirc/kernel/kvi_coreactions.cpp:845
+#: src/kvirc/kernel/kvi_coreactions.cpp:877
+#: src/kvirc/kernel/kvi_coreactions.cpp:890
 msgid "Other..."
 msgstr "Ostatní..."
 
@@ -4134,7 +4140,7 @@ msgstr "Serverová CHYBA: %Q"
 msgid "Server Message of the Day"
 msgstr "Zpráva dne serveru"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:926
+#: src/kvirc/kernel/kvi_coreactions.cpp:932
 msgid "Server Notices (+s)"
 msgstr "Oznámení serveru (+s)"
 
@@ -4293,11 +4299,11 @@ msgstr "Zobrazí dialog, který umožňuje příchod do kanálů"
 msgid "Shows a popup menu that allows quickly changing the nickname"
 msgstr "Zobrazí dialog, který umožňuje ryhlou změnu přezdívky"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:907
+#: src/kvirc/kernel/kvi_coreactions.cpp:913
 msgid "Shows a popup menu that allows quickly changing user modes"
 msgstr "Zobrazí dialog, který umožňuje ryhlou změnu uživatelských módů"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:859
+#: src/kvirc/kernel/kvi_coreactions.cpp:865
 msgid "Shows a popup menu that allows quickly connecting to a server"
 msgstr "Zobrazí dialog, který umožňuje ryhlé připojení k serveru"
 
@@ -4305,11 +4311,11 @@ msgstr "Zobrazí dialog, který umožňuje ryhlé připojení k serveru"
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
 msgstr "Zobrazí dialog, který umožňuje rychlý příchod do kanálů"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1137
+#: src/kvirc/kernel/kvi_coreactions.cpp:1143
 msgid "Shows a popup menu with some IRC Actions"
 msgstr "Zobrazit popup menu s IRC akcemi"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1105
+#: src/kvirc/kernel/kvi_coreactions.cpp:1111
 msgid "Shows a popup menu with some IRC Tools"
 msgstr "Zobrazit popup menu s IRC nástroji"
 
@@ -5179,7 +5185,7 @@ msgstr "Použít šifrování"
 msgid "User List"
 msgstr "Seznam uživatelů"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:906
+#: src/kvirc/kernel/kvi_coreactions.cpp:912
 msgid "User Mode"
 msgstr "Uživatelský mód"
 
@@ -5319,7 +5325,7 @@ msgstr ""
 "cServer%c: \r!s\r%Q\r, %cHopů%c: %d, %cFlagy%c: %Q, %cPryč%c: %Q, %cSkutečné "
 "jméno%c: %Q"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:924
+#: src/kvirc/kernel/kvi_coreactions.cpp:930
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
 

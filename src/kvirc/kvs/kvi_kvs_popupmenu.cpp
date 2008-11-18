@@ -223,7 +223,7 @@ QPixmap * KviKvsPopupMenuItemWithTextAndIcon::evaluateIcon(KviKvsPopupMenuTopLev
 	vRet.asString(szRet);
 
 	QPixmap * p = g_pIconManager->getImage(szRet);
-	if(!p)pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Can't find the icon \"%Q\": ignoring","kvs"),&szRet);
+	if(!p)pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Can't find the icon '%Q': ignoring","kvs"),&szRet);
 	return p;
 }
 
@@ -495,7 +495,7 @@ void KviKvsPopupMenuItemExtMenu::fill(KviKvsPopupMenu * pMenu,KviKvsPopupMenuTop
 		else id = pMenu->insertItem(szText,m_pMenu);
 		pMenu->setItemParameter(id,iIdx);
 	} else {
-		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Can't find the external popup '%Q'; ignoring","kvs"),&m_szMenuName);
+		pData->window()->output(KVI_OUT_PARSERWARNING,__tr2qs_ctx("Can't find the external popup '%Q': ignoring","kvs"),&m_szMenuName);
 	}
 }
 

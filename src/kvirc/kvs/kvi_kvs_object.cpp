@@ -1027,7 +1027,7 @@ bool KviKvsObject::function_listProperties(KviKvsObjectFunctionCall * c)
 	KviWindow * w = c->context()->window();
 
 	if(!bArray)
-		w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Listing Qt properties for object named \"%Q\" of KVS class %Q","kvs"),&m_szName,&(m_pClass->name()));
+		w->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Listing Qt properties for object named '%Q' of KVS class %Q","kvs"),&m_szName,&(m_pClass->name()));
 	kvs_int_t cnt = 0;
 	if(m_pObject)
 	{
@@ -1095,7 +1095,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 	if(!m_pObject)
 	{
 		// there are no Qt properties at all
-		c->warning(__tr2qs_ctx("The object named \"%Q\" of class %Q has no Qt properties","kvs"),&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("The object named '%Q' of class '%Q' has no Qt properties","kvs"),&m_szName,&(m_pClass->name()));
 		return true;
 	}
 
@@ -1132,7 +1132,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 
 #define WRONG_TYPE(__therighttype) \
 	{ \
- 		c->warning(__tr2qs_ctx("The property is of type %s but the supplied argument can't be converted to that type (expecting \"%s\")","kvs"),p->type(),__therighttype); \
+ 		c->warning(__tr2qs_ctx("The property is of type %s but the supplied argument can't be converted to that type (expecting '%s')","kvs"),p->type(),__therighttype); \
 		return true; \
 	}
 
@@ -1295,7 +1295,7 @@ bool KviKvsObject::function_setProperty(KviKvsObjectFunctionCall * c)
 		break;
 
 		default:
-			c->warning(__tr2qs_ctx("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type","kvs"),&szName,&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type","kvs"),&szName,&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
 		break;
 	}
@@ -1317,7 +1317,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 		if (bNoerror) c->returnValue()->setString("No Qt properties");
 		else
 		{
-			c->warning(__tr2qs_ctx("The object named \"%Q\" of class %Q has no Qt properties","kvs"),&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("The object named '%Q' of class '%Q' has no Qt properties","kvs"),&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
 		}
 		return true;
@@ -1330,7 +1330,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			c->returnValue()->setString("No Qt properties");
 		else
 		{
-			c->warning(__tr2qs_ctx("No Qt property named \"%Q\" for object named \"%Q\" of class %Q","kvs"),&szName,&m_szName,&(m_pClass->name()));
+			c->warning(__tr2qs_ctx("No Qt property named '%Q' for object named '%Q' of class '%Q'","kvs"),&szName,&m_szName,&(m_pClass->name()));
 			c->returnValue()->setNothing();
 		}
 		return true;
@@ -1339,7 +1339,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	const QMetaProperty * p = &prop;
 	if(!p)
 	{
-		c->warning(__tr2qs_ctx("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed but it doesn't really exist","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		c->returnValue()->setNothing();
 		return true;
 	}
@@ -1347,7 +1347,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 	QVariant v = m_pObject->property(szName.toUtf8().data());
 	if(!v.isValid())
 	{
-		c->warning(__tr2qs_ctx("Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
+		c->warning(__tr2qs_ctx("Can't find property named '%Q' for object named '%Q' of class '%Q': the property is indexed and defined but the returned variant is not valid","kvs"),&szName,&m_szName,&(m_pClass->name()));
 		c->returnValue()->setNothing();
 		return true;
 	}
@@ -1438,7 +1438,7 @@ bool KviKvsObject::function_property(KviKvsObjectFunctionCall * c)
 			if (bNoerror) c->returnValue()->setString("Unsupported_data_type");
 			else
 			{
-				c->warning(__tr2qs_ctx("Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported data type","kvs"),&szName,&m_szName,&(m_pClass->name()));
+				c->warning(__tr2qs_ctx("Property '%Q' for object named '%Q' of class '%Q' has an unsupported data type","kvs"),&szName,&m_szName,&(m_pClass->name()));
 				c->returnValue()->setNothing();
 			}
 		break;
@@ -1589,9 +1589,9 @@ bool KviKvsObject::callFunction(
 	if(!h)
 	{
 		if(classOverride.isEmpty())
-			pContext->error(__tr2qs_ctx("Cannot find object function $%Q for object named \"%Q\" of class %Q","kvs"),&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Cannot find object function $%Q for object named '%Q' of class '%Q'","kvs"),&fncName,&m_szName,&(getClass()->name()));
 		else
-			pContext->error(__tr2qs_ctx("Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q","kvs"),&classOverride,&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Cannot find object function $%Q::%Q for object named '%Q' of class '%Q'","kvs"),&classOverride,&fncName,&m_szName,&(getClass()->name()));
 		return false;
 	}
 
@@ -1599,7 +1599,7 @@ bool KviKvsObject::callFunction(
 	{
 		if(pCaller != this)
 		{
-			pContext->error(__tr2qs_ctx("Cannot call internal object function $%Q (for object named \"%Q\" of class %Q) from this context","kvs"),&fncName,&m_szName,&(getClass()->name()));
+			pContext->error(__tr2qs_ctx("Cannot call internal object function $%Q (for object named '%Q' of class '%Q') from this context","kvs"),&fncName,&m_szName,&(getClass()->name()));
 			return false;
 		}
 	}

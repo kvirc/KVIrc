@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
-"PO-Revision-Date: 2008-10-23 18:16+0200\n"
+"POT-Creation-Date: 2008-11-18 15:53+0100\n"
+"PO-Revision-Date: 2008-11-18 15:57+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -37,8 +37,7 @@ msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] è entrato in \r!c\r%Q\r"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:316
-msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
+msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
 msgstr ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] è entrato in \r!c\r%Q\r [implicito +%c cambio "
 "modo utente]"
@@ -510,9 +509,8 @@ msgid "&Restore"
 msgstr "&Ripristina"
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:417
-#, fuzzy
 msgid "&Restore all"
-msgstr "&Ripristina"
+msgstr "&Ripristina tutto"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:184
 msgid "&Save As..."
@@ -654,8 +652,7 @@ msgstr "modifica modo -v"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1682
 msgid ": No such nickname in the user database, ignoring the change"
-msgstr ""
-": questo nickname non è nel database degli utenti, ignoro i cambiamenti."
+msgstr ": questo nickname non è nel database degli utenti, ignoro i cambiamenti."
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1674
 msgid ": No valid local copy of avatar available, ignoring"
@@ -664,8 +661,7 @@ msgstr ": nessuna copia locale dell'Avatar disponibile; ignoro."
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1657
 #, c-format
 msgid ": No valid local copy of avatar available, requesting one (DCC GET %s)"
-msgstr ""
-": nessuna copia locale dell'Avatar disponibile; invio richiesta (DCC GET %s)"
+msgstr ": nessuna copia locale dell'Avatar disponibile; invio richiesta (DCC GET %s)"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1642
 #, c-format
@@ -683,8 +679,7 @@ msgstr ""
 "trasferimento HTTP, ignoro."
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1669
-msgid ""
-": No valid local copy of avatar available; flood limit exceeded, ignoring"
+msgid ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
 ": nessuna copia locale dell'Avatar disponibile; limite di Flood raggiunto, "
 "ignoro."
@@ -879,7 +874,7 @@ msgstr "Avanzate..."
 msgid "All Files"
 msgstr "Tutti i file"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:975
+#: src/kvirc/kernel/kvi_coreactions.cpp:981
 msgid "Allows entering and leaving away state"
 msgstr "Permette di entrare ed uscire dallo stato di Away"
 
@@ -900,10 +895,8 @@ msgid "Allows you to configure the servers and eventually to connect to them"
 msgstr "Permette di configurare i Server ed eventualmente di collegarti"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:540
-msgid ""
-"Allows you to connect to a server or to terminate the current connection"
-msgstr ""
-"Permette di collegarti ad un Server o di terminare la connessione corrente"
+msgid "Allows you to connect to a server or to terminate the current connection"
+msgstr "Permette di collegarti ad un Server o di terminare la connessione corrente"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:127
 msgid "Allows you to manage the script-based addons"
@@ -1022,7 +1015,7 @@ msgstr "Messaggio di Away"
 msgid "Away since"
 msgstr "Away da"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:974
+#: src/kvirc/kernel/kvi_coreactions.cpp:980
 msgid "Away/Back"
 msgstr "Away/Ritorno"
 
@@ -1460,14 +1453,18 @@ msgstr "Pulisci Buffer"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:781
 #: src/kvirc/kernel/kvi_coreactions.cpp:796
-#, fuzzy
 msgid "Clear Recent Channels List"
-msgstr "Scarica Lista dei Canali"
+msgstr "Pulisci La Lista Dei Canali Recenti"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:873
-#: src/kvirc/kernel/kvi_coreactions.cpp:887
+#: src/kvirc/kernel/kvi_coreactions.cpp:833
+#: src/kvirc/kernel/kvi_coreactions.cpp:848
+msgid "Clear Recent Nicks List"
+msgstr "Pulisci La Lista Dei Nick Recenti"
+
+#: src/kvirc/kernel/kvi_coreactions.cpp:879
+#: src/kvirc/kernel/kvi_coreactions.cpp:893
 msgid "Clear Recent Servers List"
-msgstr ""
+msgstr "Pulisci La Lista Dei Server Recenti"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:666
 msgid "Click to open this link"
@@ -1565,7 +1562,7 @@ msgstr "Conferma - KVIrc"
 msgid "Connect"
 msgstr "Connetti"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:858
+#: src/kvirc/kernel/kvi_coreactions.cpp:864
 msgid "Connect To"
 msgstr "Connetti a"
 
@@ -1658,8 +1655,7 @@ msgstr "Creazione pacchetto..."
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:267
 msgid "Crypt: Can't create an engine instance: crypting disabled"
-msgstr ""
-"Crittografia: non posso creare un'istanza del metodo: cifratura disabilitata"
+msgstr "Crittografia: non posso creare un'istanza del metodo: cifratura disabilitata"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:278
 #, c-format
@@ -1667,8 +1663,7 @@ msgid "Crypt: Can't initialize the engine :%s"
 msgstr "Crittografia: impossibile inizializzare il sistema :%s"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:286
-msgid ""
-"Crypt: You have to enable encryption and/or decryption for the engine to work"
+msgid "Crypt: You have to enable encryption and/or decryption for the engine to work"
 msgstr ""
 "Crittografia: devi abilitare la cifratura e/o la decifratura affinchì il "
 "sistema funzioni"
@@ -1809,8 +1804,7 @@ msgid "Double-click to edit..."
 msgstr "Doppio click per modificare..."
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:690
-msgid ""
-"Double-click to look up this hostname<br>Right-click to view other options"
+msgid "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
 "Doppio click per risolvere il nome dell'host<br>tasto destro per vedere le "
 "altre opzioni"
@@ -1821,8 +1815,7 @@ msgstr "Doppio click per aprire questo link"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:717
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
-msgstr ""
-"Doppio click per leggere il MOTD<br>tasto destro per vedere le altre opzioni"
+msgstr "Doppio click per leggere il MOTD<br>tasto destro per vedere le altre opzioni"
 
 #: src/kvirc/ui/kvi_topicw.cpp:559
 msgid "Double-click to set..."
@@ -1929,7 +1922,7 @@ msgstr "Fine del log"
 msgid "End of merged output"
 msgstr "Fine dell'Output unificato"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1042
+#: src/kvirc/kernel/kvi_coreactions.cpp:1048
 msgid "Enter Away Mode"
 msgstr "Entra nella modalità Away"
 
@@ -2036,8 +2029,7 @@ msgstr "Impossibile impostare il Socket in modalità non bloccante"
 
 #: src/kvilib/net/kvi_http.cpp:425
 msgid "Failed to rename the existing file, please rename manually and retry"
-msgstr ""
-"Fallito nel rinominare il file esistente, rinominalo manualmente e riprova"
+msgstr "Fallito nel rinominare il file esistente, rinominalo manualmente e riprova"
 
 #: src/kvirc/kernel/kvi_options.cpp:1072 src/kvirc/kernel/kvi_options.cpp:1107
 msgid "Failed to save one of the theme images"
@@ -2346,14 +2338,12 @@ msgid "IRC Context related actions"
 msgstr "Azione legate al Contesto IRC"
 
 #: src/kvirc/kernel/kvi_options.cpp:835
-#, fuzzy
 msgid "IRC Op status set"
-msgstr "Impostato lo stato di Admin del canale"
+msgstr "Impostato lo stato di IRC Op"
 
 #: src/kvirc/kernel/kvi_options.cpp:836
-#, fuzzy
 msgid "IRC Op status unset"
-msgstr "Rimosso lo stato di Admin del canale"
+msgstr "Rimosso lo stato di IRC Op"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:371
 msgid "IRC server"
@@ -2556,7 +2546,7 @@ msgstr "Indirizzo Proxy non valido"
 msgid "Invalid target address"
 msgstr "Destinazione dell'indirizzo non valida"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:928
+#: src/kvirc/kernel/kvi_coreactions.cpp:934
 msgid "Invisible (+i)"
 msgstr "Invisibile (+i)"
 
@@ -2588,11 +2578,11 @@ msgstr "Solo invito"
 msgid "Invite unexception matching my mask"
 msgstr "La limitazione d'invito combacia con la mia maschera"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1136
+#: src/kvirc/kernel/kvi_coreactions.cpp:1142
 msgid "Irc Actions"
 msgstr "Azioni IRC"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1104
+#: src/kvirc/kernel/kvi_coreactions.cpp:1110
 msgid "Irc Tools"
 msgstr "Strumenti IRC"
 
@@ -2745,7 +2735,7 @@ msgstr "Icone grandi"
 msgid "Last checked %d mins %d secs ago"
 msgstr "Ultimo controllo %d min %d sec fa"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1043
+#: src/kvirc/kernel/kvi_coreactions.cpp:1049
 msgid "Leave Away Mode"
 msgstr "Esci dalla modalità Away"
 
@@ -2884,8 +2874,7 @@ msgstr "Attività media"
 
 #: src/kvirc/kernel/kvi_options.cpp:1233
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
-msgstr ""
-"Opzioni dei colori dei messaggi (image_id, primo piano, sfondo, log (0/1))"
+msgstr "Opzioni dei colori dei messaggi (image_id, primo piano, sfondo, log (0/1))"
 
 #: src/kvirc/ui/kvi_window.cpp:764
 msgid "Mi&nimize"
@@ -3104,8 +3093,7 @@ msgstr "Nessun messaggio esterno"
 
 #: src/kvilib/net/kvi_http.cpp:141
 msgid "No filename specified for the \"StoreToFile\" processing type"
-msgstr ""
-"Nessun nome di file specificato per il processo di tipo \"StoreToFile\""
+msgstr "Nessun nome di file specificato per il processo di tipo \"StoreToFile\""
 
 #: src/kvilib/core/kvi_error.cpp:72
 msgid "No host to resolve"
@@ -3128,8 +3116,7 @@ msgid "No request"
 msgstr "Nessuna richiesta"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:486
-msgid ""
-"No servers available. Check the options dialog or use the /SERVER command"
+msgid "No servers available. Check the options dialog or use the /SERVER command"
 msgstr ""
 "Nessun Server disponibile. Controlla nella finestra delle opzioni o usa il "
 "comando /SERVER"
@@ -3264,8 +3251,7 @@ msgstr "Notify list: aggiunta voce da controllare per %Q"
 #: src/kvirc/kernel/kvi_notifylist.cpp:851
 #, c-format
 msgid "Notify list: Broken USERHOST reply from the server? (%s)"
-msgstr ""
-"Notify List: ricevuta una risposta USERHOST malfunzionante dal Server? (%s)"
+msgstr "Notify List: ricevuta una risposta USERHOST malfunzionante dal Server? (%s)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:504
 #: src/kvirc/kernel/kvi_notifylist.cpp:973
@@ -3366,8 +3352,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:741
 msgid "Notify list: Unexpected inconsistency, userhost list is empty!"
-msgstr ""
-"Notify List: inconsistenza inaspettata, la lista degli Userhost è vuota!"
+msgstr "Notify List: inconsistenza inaspettata, la lista degli Userhost è vuota!"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:271
 msgid "O: Local IRC operator (LOCOP)"
@@ -3523,9 +3508,9 @@ msgstr "Orientamento"
 #: src/kvirc/kernel/kvi_coreactions.cpp:779
 #: src/kvirc/kernel/kvi_coreactions.cpp:793
 #: src/kvirc/kernel/kvi_coreactions.cpp:830
-#: src/kvirc/kernel/kvi_coreactions.cpp:842
-#: src/kvirc/kernel/kvi_coreactions.cpp:871
-#: src/kvirc/kernel/kvi_coreactions.cpp:884
+#: src/kvirc/kernel/kvi_coreactions.cpp:845
+#: src/kvirc/kernel/kvi_coreactions.cpp:877
+#: src/kvirc/kernel/kvi_coreactions.cpp:890
 msgid "Other..."
 msgstr "Altro..."
 
@@ -3538,14 +3523,12 @@ msgid "Outgoing ICQ user-message"
 msgstr "Messaggio utente ICQ in uscita"
 
 #: src/kvirc/kernel/kvi_options.cpp:837
-#, fuzzy
 msgid "Own IRC Op status set"
-msgstr "Stato di Amministratore del canale impostato"
+msgstr "Stato di IRC Op impostato"
 
 #: src/kvirc/kernel/kvi_options.cpp:838
-#, fuzzy
 msgid "Own IRC Op status unset"
-msgstr "Stato di Amministratore del canale non impostato"
+msgstr "Stato di IRC Op non impostato"
 
 #: src/kvirc/kernel/kvi_options.cpp:815
 msgid "Own chan admin status set"
@@ -3866,33 +3849,27 @@ msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:211
 msgid "Received a join message for an unknown channel, possible desync"
-msgstr ""
-"Ricevuto mesasggio di entrata per un Canale sconosciuto, possibile asincronia"
+msgstr "Ricevuto mesasggio di entrata per un Canale sconosciuto, possibile asincronia"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:605
 msgid "Received a kick message for an unknown channel, possible desync"
-msgstr ""
-"Ricevuto messaggio di kick per un Canale sconosciuto, possibile asincronia"
+msgstr "Ricevuto messaggio di kick per un Canale sconosciuto, possibile asincronia"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1671
 msgid "Received a mode change for an unknown channel, possible desync"
-msgstr ""
-"Ricevuto cambio di modo per un Canale sconosciuto, possibile asincronia"
+msgstr "Ricevuto cambio di modo per un Canale sconosciuto, possibile asincronia"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:365
 msgid "Received a part message for an unknown channel, possible desync"
-msgstr ""
-"Ricevuto mesasggio di uscita per un Canale sconosciuto, possibile asincronia"
+msgstr "Ricevuto mesasggio di uscita per un Canale sconosciuto, possibile asincronia"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1403
 msgid "Received a topic message for an unknown channel, possible desync"
-msgstr ""
-"Ricevuto messaggio di Topic per un canale sconosciuto, possibile asincronia"
+msgstr "Ricevuto messaggio di Topic per un canale sconosciuto, possibile asincronia"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1580
 msgid "Received an invite message directed to another nick, possible desync"
-msgstr ""
-"Ricevuto un messaggio di Invito diretto a qualcun'altro, possibile asincronia"
+msgstr "Ricevuto un messaggio di Invito diretto a qualcun'altro, possibile asincronia"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:100
 msgid "Received ping from \r!s\r%Q\r (PING %Q), replied pong"
@@ -4117,13 +4094,11 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_irclink.cpp:398
 msgid "Sent auth method request, waiting for acknowledgement"
-msgstr ""
-"Inviata richiesta del metodo di autenticazione, aspetto il riconoscimento"
+msgstr "Inviata richiesta del metodo di autenticazione, aspetto il riconoscimento"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:404
 msgid "Sent connection request, waiting for \"HTTP 200\" acknowledgement"
-msgstr ""
-"Inviata richiesta di connessione, aspetto il riconoscimento \"HTTP 200\""
+msgstr "Inviata richiesta di connessione, aspetto il riconoscimento \"HTTP 200\""
 
 #: src/kvirc/kernel/kvi_irclink.cpp:392
 msgid "Sent connection request, waiting for acknowledgement"
@@ -4172,7 +4147,7 @@ msgstr "ERRORE del SERVER: %Q"
 msgid "Server Message of the Day"
 msgstr "'MOTD - Message of the Day' del Server"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:926
+#: src/kvirc/kernel/kvi_coreactions.cpp:932
 msgid "Server Notices (+s)"
 msgstr "Notice del Server (+s)"
 
@@ -4330,11 +4305,11 @@ msgstr "Mostra una finestra che ti permette di entrare nei canali"
 msgid "Shows a popup menu that allows quickly changing the nickname"
 msgstr "Mostra un popup che permette di cambiare rapidamente il nickname"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:907
+#: src/kvirc/kernel/kvi_coreactions.cpp:913
 msgid "Shows a popup menu that allows quickly changing user modes"
 msgstr "Mostra un popup che permette di cambiare rapidamente i modi utente"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:859
+#: src/kvirc/kernel/kvi_coreactions.cpp:865
 msgid "Shows a popup menu that allows quickly connecting to a server"
 msgstr "Mostra un popup che permette di collegarsi rapidamente ad un Server"
 
@@ -4344,11 +4319,11 @@ msgstr ""
 "Mostra un popup che permette di selezionare rapidamente il canale in cui "
 "entrare"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1137
+#: src/kvirc/kernel/kvi_coreactions.cpp:1143
 msgid "Shows a popup menu with some IRC Actions"
 msgstr "Mostra un menu popup con alcune azioni per IRC"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:1105
+#: src/kvirc/kernel/kvi_coreactions.cpp:1111
 msgid "Shows a popup menu with some IRC Tools"
 msgstr "Mostra un menu popup con alcuni strumenti per IRC"
 
@@ -4479,15 +4454,13 @@ msgid "Sorting"
 msgstr "Ordinamento"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1225
-msgid ""
-"Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
+msgid "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
 msgstr ""
 "Spam Notice da \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (parola di Spam corrispondente "
 "\"%Q\")"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:859
-msgid ""
-"Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
+msgid "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
 "Messaggio privato di Spam da \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (parola di Spam "
 "corrispondente \"%s\")"
@@ -4743,8 +4716,7 @@ msgid "The server seems to have changed the idea about the local hostname"
 msgstr "Sembra che il Server abbia cambiato idea sull'Hostname locale"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:706
-msgid ""
-"The server seems to support the WATCH notify list method, will try to use it"
+msgid "The server seems to support the WATCH notify list method, will try to use it"
 msgstr ""
 "Questo Server sembra supportare il metodo Watch per la Notify List, provo ad "
 "usarlo."
@@ -4874,8 +4846,7 @@ msgid "This module has no version informations: refusing to load it"
 msgstr "Questo Modulo non ha informazioni sulla versione: non caricato"
 
 #: src/kvirc/module/kvi_modulemanager.cpp:222
-msgid ""
-"This module was compiled for a different KVIrc version and can't be loaded"
+msgid "This module was compiled for a different KVIrc version and can't be loaded"
 msgstr ""
 "Questo modulo è stato compilato per una differente versione di KVIrc e non "
 "puà² essere caricato"
@@ -4886,8 +4857,7 @@ msgstr "Questa opzione è anche disponibile come"
 
 #: src/kvirc/ui/kvi_query.cpp:580 src/kvirc/ui/kvi_query.cpp:754
 msgid "This query has no active targets, no message sent"
-msgstr ""
-"Questa Query non ha nessun destinatario attivo, nessun messaggio inviato"
+msgstr "Questa Query non ha nessun destinatario attivo, nessun messaggio inviato"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:270
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:304
@@ -5017,8 +4987,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:358
 msgid "Unable to look up the server hostname: Can't start the DNS slave"
-msgstr ""
-"Impossibile risolvere l'Hostname del Server: impossibile avviare lo slave DNS"
+msgstr "Impossibile risolvere l'Hostname del Server: impossibile avviare lo slave DNS"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1775
 msgid "Unable to process the above request: Cannot load DCC module (%Q)"
@@ -5033,8 +5002,7 @@ msgstr ""
 #: src/kvirc/kernel/kvi_ircconnection.cpp:890
 #: src/kvirc/kernel/kvi_ircconnection.cpp:917
 msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
-msgstr ""
-"Impossibile risolvere l'Hostname locale come è visto dal Server IRC: %Q"
+msgstr "Impossibile risolvere l'Hostname locale come è visto dal Server IRC: %Q"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:914
 msgid ""
@@ -5235,7 +5203,7 @@ msgstr "Usa il sistema crittografico"
 msgid "User List"
 msgstr "Lista utenti"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:906
+#: src/kvirc/kernel/kvi_coreactions.cpp:912
 msgid "User Mode"
 msgstr "Modi utente"
 
@@ -5249,8 +5217,7 @@ msgstr "Azioni utenti"
 
 #: src/kvirc/ui/kvi_input.cpp:145
 msgid "User friendly commandline mode<br>See also /help commandline"
-msgstr ""
-"Modalità  linea di comando User Friendly<br>vedi anche /help commandline"
+msgstr "Modalità  linea di comando User Friendly<br>vedi anche /help commandline"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:594
 msgid "User mode for \r!n\r%Q\r is %s"
@@ -5262,8 +5229,7 @@ msgstr "Modo User-Deop cambiato"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:259
 msgid "User-operators OR Auditorium: /NAMES and /WHO show only ops"
-msgstr ""
-"Utente operatore O Auditorium: /NAMES e /WHO mostrano solo gli Operatori"
+msgstr "Utente operatore O Auditorium: /NAMES e /WHO mostrano solo gli Operatori"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:586
 msgid "Username"
@@ -5373,7 +5339,7 @@ msgstr ""
 "%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAssente%c: %Q, %cNome Vero%c: "
 "%Q"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:924
+#: src/kvirc/kernel/kvi_coreactions.cpp:930
 msgid "Wallops (+w)"
 msgstr "Wallops (+w)"
 
@@ -5383,8 +5349,7 @@ msgstr "Messaggio Wallop"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:811
 msgid "We can accept auth method 0 (no auth)"
-msgstr ""
-"Possiamo accettare il metodo di autenticazione 0 (nessuna autenticazione)"
+msgstr "Possiamo accettare il metodo di autenticazione 0 (nessuna autenticazione)"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:819
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
@@ -5563,15 +5528,12 @@ msgstr "[%s]: [ERRORE SLL]: %s"
 
 #: src/kvirc/kernel/kvi_sslmaster.cpp:117
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
-msgstr ""
-"[%s]: [ERRORE SSL]: errore I/O file mentre cercavo di usare il certificato %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
+msgstr "[%s]: [ERRORE SSL]: errore I/O file mentre cercavo di usare il certificato %s"
 
 #: src/kvirc/kernel/kvi_sslmaster.cpp:140
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
 msgstr ""
 "[%s]: [ERRORE SSL]: errore I/O file mentre cercavo di usare il file di "
 "chiave privata %s"
@@ -5740,8 +5702,7 @@ msgid "[Server parser]: %s"
 msgstr "[Server Parser]: %s"
 
 #: src/kvirc/sparser/kvi_sparser.cpp:132
-msgid ""
-"[Server parser]: Encountered problems while parsing the following message:"
+msgid "[Server parser]: Encountered problems while parsing the following message:"
 msgstr ""
 "[Server Parser]: incontrati problemi durante il Parsing del seguente "
 "messaggio:"
@@ -5971,8 +5932,7 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:695
 msgid "registration mask changed, or nickname is being used by someone else"
-msgstr ""
-"maschera di registrazione è cambiata o qualcun'altro sta usando il suo nick)"
+msgstr "maschera di registrazione è cambiata o qualcun'altro sta usando il suo nick)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1260
 msgid "removed from watch list"
@@ -6054,1333 +6014,3 @@ msgstr "y: spia :)"
 msgid "z: Recipient for oper wallop messages"
 msgstr "z: destinatario dei messaggi Wallop per Operatori"
 
-#~ msgid "%d properties listed"
-#~ msgstr "%d proprietà  elencate"
-
-#~ msgid "'unset' command used without a variable list"
-#~ msgstr "Comando 'unset' utilizzato senza una lista di variabili"
-
-#~ msgid "/me can be used only in channels, queries and DCC chat windows"
-#~ msgstr ""
-#~ "/me può essere usato solo nei Canali, nelle Query e nelle finestre di DCC "
-#~ "Chat"
-
-#~ msgid "A class can't be a subclass of itself"
-#~ msgstr "Una classe non può essere una sottoclasse di se stessa"
-
-#~ msgid ""
-#~ "A pixmap object, an image_id or an image file path is required for this "
-#~ "property"
-#~ msgstr ""
-#~ "Un Oggetto Pixmap, un image_id o il percorso ad un'immagine è richiesto "
-#~ "per questa proprietà "
-
-#~ msgid "A popup menu cannot be popped up twice"
-#~ msgstr "Un menu popup non può essere mostrato due volte"
-
-#~ msgid ""
-#~ "Alias names can contain only letters, digits, underscores and '::' "
-#~ "namespace separators"
-#~ msgstr ""
-#~ "I nomi degli Alias posso contenere solo lettere, numeri, underscore e "
-#~ "separatori di Namespace '::'"
-
-#~ msgid ""
-#~ "Another connection is already in progress in the selected IRC context"
-#~ msgstr "Un'altra connessione è già  in corso nel Contesto IRC selezionato"
-
-#~ msgid "Array index didn't evaluate to an integer"
-#~ msgstr "L'indice dell'Array non è un numero intero"
-
-#~ msgid ""
-#~ "Array index evaluated to a negative integer (non negative integer "
-#~ "expected)"
-#~ msgstr ""
-#~ "L'indice dell'Array utilizza un numero intero negativo (atteso un numero "
-#~ "intero non negativo)"
-
-#~ msgid "Array reference assert failed: the variable evaluated to type '%Q'"
-#~ msgstr "Riferimento all'array fallito: la variabile è di tipo '%Q'"
-
-#~ msgid "Broken condition in menu setup: assuming false"
-#~ msgstr "Condizione non valida nella configurazione del menu: presumo falso"
-
-#~ msgid "Broken epilogue in popup menu '%Q': ignoring"
-#~ msgstr "Epilogo non valido nel menu popup '%Q': ignoro"
-
-#~ msgid "Broken icon parameter: ignoring"
-#~ msgstr "Parametro icona non valido: ignoro"
-
-#~ msgid "Broken prologue in popup menu '%Q': ignoring"
-#~ msgstr "Prologo non valido nel menu popup '%Q': ignoro"
-
-#~ msgid ""
-#~ "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' "
-#~ "from object '%Q::%Q': disconnecting"
-#~ msgstr ""
-#~ "Slot '%Q' non corretto nell'Oggetto di destinazione '%Q::%Q' durante "
-#~ "l'emissione del segnale '%Q' dall'Oggetto '%Q::%Q': disconnetto"
-
-#~ msgid "Broken text parameter: assuming empty string"
-#~ msgstr "Parametro testo non valido: presumo sia una stringa vuota"
-
-#~ msgid "Call to undefined command '%Q'"
-#~ msgstr "Chiamata ad un comando non definito '%Q'"
-
-#~ msgid "Call to undefined function '%Q'"
-#~ msgstr "Chiamata ad una funzione non definita '%Q'"
-
-#~ msgid "Can't delete a null object reference"
-#~ msgstr "Impossibile cancellare il riferimento ad un Oggetto nullo"
-
-#~ msgid "Can't delete an inexisting object"
-#~ msgstr "Impossibile cancellare un Oggetto non esistente"
-
-#~ msgid ""
-#~ "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
-#~ "property is indexed and defined but the returned variant is not valid"
-#~ msgstr ""
-#~ "Impossibile trovare la proprietà  \"%Q\" dell'oggetto di nome \"%Q\" "
-#~ "della classe %Q: la proprietà  elencata è indicizzata e definita ma il "
-#~ "valore di ritorno non è valido"
-
-#~ msgid ""
-#~ "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
-#~ "property is indexed but it doesn't really exist"
-#~ msgstr ""
-#~ "Impossibile trovare la proprietà  \"%Q\" dell'oggetto di nome \"%Q\" "
-#~ "della classe %Q: la proprietà  è elencata ma non è in realtà  non esiste"
-
-#~ msgid "Can't find the external popup '%Q'; ignoring"
-#~ msgstr "Impossibile trovare il popup esterno '%Q': ignoro"
-
-#~ msgid "Can't find the icon \"%Q\": ignoring"
-#~ msgstr "Impossibile trovare l'icona \"%Q\": ignoro"
-
-#~ msgid "Can't find the icon '%Q'"
-#~ msgstr "Impossibile trovare l'icona '%Q'"
-
-#~ msgid "Can't find the requested image"
-#~ msgstr "Impossibile trovare l'immagine richiesta"
-
-#~ msgid "Can't kill the timer '%Q' since it is not running"
-#~ msgstr "Non posso terminare il timer '%Q' poichì non è in esecuzione"
-
-#~ msgid "Can't override the builtin class \"%Q\""
-#~ msgstr "Impossibile l'override della casse interna \"%Q\""
-
-#~ msgid "Can't unload the module: it has locked itself in memory"
-#~ msgstr "Impossibile scaricare il modulo: bloccato in memoria"
-
-#~ msgid ""
-#~ "Cannot call internal object function $%Q (for object named \"%Q\" of "
-#~ "class %Q) from this context"
-#~ msgstr ""
-#~ "Impossibile eseguire la chiamata alla funzione interna dell'Oggetto $%Q "
-#~ "(per l'Oggetto di nome \"%Q\" della Classe %Q) da questo contesto"
-
-#~ msgid "Cannot find object function $%Q for object named \"%Q\" of class %Q"
-#~ msgstr ""
-#~ "Impossibile trovare la funzione $%Q per l'Oggetto di nome \"%Q\" della "
-#~ "Classe %Q"
-
-#~ msgid ""
-#~ "Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q"
-#~ msgstr ""
-#~ "Impossibile trovare la funzione $%Q::%Q dell'Oggetto di nome \"%Q\" della "
-#~ "Classe %Q"
-
-#~ msgid "Choose a file to parse"
-#~ msgstr "Scegli un file da utilizzare"
-
-#~ msgid "Class \"%Q\" is not defined"
-#~ msgstr "La classe %Q non è definita"
-
-#~ msgid ""
-#~ "Couldn't find a suitable IRC context for the connection, try using -n or -"
-#~ "u"
-#~ msgstr ""
-#~ "Impossibile trovare un Contesto IRC utilizzabile per la connessione, "
-#~ "prova usando i parametri -n o -u"
-
-#~ msgid "Couln't find base class named \"%Q\""
-#~ msgstr "Impossibile trovare la classe di base \"%Q\""
-
-#~ msgid "DNS Lookup result for query \"%Q\""
-#~ msgstr "Risultato della richiesta DNS \"%Q\""
-
-#~ msgid ""
-#~ "Detected a loop in the inheritance tree of the base class \"%Q\": "
-#~ "redefine that class first"
-#~ msgstr ""
-#~ "Loop rilevato nell'albero di ereditarietà  della classe base \"%Q\": "
-#~ "prima ridefinisci la classe"
-
-#~ msgid "Empty infinite 'for' loop: fix the script"
-#~ msgstr "Ciclo vuoto infinito 'for': correggi lo Script"
-
-#~ msgid "Empty instruction block for command evaluation"
-#~ msgstr "Blocco di istruzioni vuoto per la valutazione del comando"
-
-#~ msgid "Empty script"
-#~ msgstr "Script vuoto"
-
-#~ msgid "Empty target specified"
-#~ msgstr "La destinazione specificata è vuota"
-
-#~ msgid ""
-#~ "Empty window identifier specified in the standard rebinding switch: no "
-#~ "rebinding performed"
-#~ msgstr ""
-#~ "Identificatore di finestra vuoto specificato nello switch di rebind: "
-#~ "nessun rebind eseguito"
-
-#~ msgid ""
-#~ "Ending index of a multiple parameter identifier is lower or equal to the "
-#~ "starting index. This will evaluate to a single parameter identifier."
-#~ msgstr ""
-#~ "L'indice finale dell'identificatore del parametro multiplo è minore o "
-#~ "uguale all'indice di partenza. Sarà  interpretato come un identificatore "
-#~ "di parametro singolo."
-
-#~ msgid "Error in inner alias command call '%Q', called from this context"
-#~ msgstr ""
-#~ "Errore nella chiamata interna dell'alias '%Q', eseguita da questo contesto"
-
-#~ msgid "Error in inner alias function call '%Q', called from this context"
-#~ msgstr ""
-#~ "Errore nella chiamata interna dell'Alias '%Q', richiamata da questo "
-#~ "contesto"
-
-#~ msgid "Error triggered from process callback handler: killing process"
-#~ msgstr ""
-#~ "Errore generato dal gestore della callback del processo: uccido il "
-#~ "processo"
-
-#~ msgid "Error: %Q"
-#~ msgstr "Errore: %Q"
-
-#~ msgid "Event handler %Q is broken: disabling"
-#~ msgstr "Il gestore dell'Evento %Q non è valido: disabilitato"
-
-#~ msgid "Failed to load the file '%Q' for parsing"
-#~ msgstr "Fallito il caricamento del file '%Q' da utilizzare"
-
-#~ msgid "Failed to send an unknown command as /raw"
-#~ msgstr "Impossibile inviare un comando sconosciuto come /raw"
-
-#~ msgid "Failed to start the process"
-#~ msgstr "Fallito nell'avviare il processo"
-
-#~ msgid ""
-#~ "Found 'break' label where a 'case','match','regexp' or 'default' label "
-#~ "was expected"
-#~ msgstr ""
-#~ "Trovata l'etichetta 'break' dove erano attese le etichette 'case', "
-#~ "'match', 'regexp' o 'default'"
-
-#~ msgid "Found an empty namespace in alias name"
-#~ msgstr "Trovato un Namespace vuoto nel nome dell'Alias"
-
-#~ msgid ""
-#~ "Found char %q (unicode %x) while looking for the terminating ')' in 'for' "
-#~ "command"
-#~ msgstr ""
-#~ "Trovato carattere %q (unicode %x) durante la ricerca della parentesi "
-#~ "chiusa ')' nel comando 'for'"
-
-#~ msgid ""
-#~ "Found character %q (unicode %x) where a 'case','match','regexp','default' "
-#~ "or 'break' label was expected"
-#~ msgstr ""
-#~ "Trovato carattere %q (unicode %x) dove erano attese le etichette 'case', "
-#~ "'match', 'regexp', 'default' o 'break'"
-
-#~ msgid ""
-#~ "Found character %q (unicode %x) where a "
-#~ "'prologue','separator','label','popup','item','extpopup' or 'epilogue' "
-#~ "label was expected"
-#~ msgstr ""
-#~ "Trovato carattere %q (unicode %x) dove era attesa un'etichetta di "
-#~ "'prologo','separatore','etichetta','popup','elemento','extpopup'"
-
-#~ msgid "Found character %q (unicode %x) where a 'while' keyword was expected"
-#~ msgstr ""
-#~ "Trovato carattere %q (unicode %x) dove era attesa la parola chiave 'while'"
-
-#~ msgid "Found character %q (unicode %x) where a function name was expected"
-#~ msgstr ""
-#~ "Trovato carattere '%q' (unicode %x) dove era atteso il nome di una "
-#~ "funzione"
-
-#~ msgid "Found character %q (unicode %x) where a variable was expected"
-#~ msgstr "Trovato carattere %q (unicode %x) dove era attesa una variabile"
-
-#~ msgid ""
-#~ "Found character %q (unicode %x) where an open parenthesis was expected"
-#~ msgstr ""
-#~ "Trovato carattere %q (unicode %x) dove era attesa una parentesi aperta"
-
-#~ msgid ""
-#~ "Found character '%q' (unicode %x) where '%' or '$' was expected: see /"
-#~ "help foreach for the command syntax"
-#~ msgstr ""
-#~ "Trovato carattere '%q' (unicode %x) dove era atteso '%' o '$': usa il "
-#~ "comando /HELP foreach per la sintassi corretta"
-
-#~ msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
-#~ msgstr ""
-#~ "Trovato un carattere '%q' (unicode %x) dove era attesa uno slash '/'"
-
-#~ msgid "Found character '%q' (unicode %x) where an instruction was expected"
-#~ msgstr "Trovato carattere '%q' (unicode %x) dove era attesa una istruzione"
-
-#~ msgid ""
-#~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %"
-#~ "s\" for the command syntax"
-#~ msgstr ""
-#~ "Trovato il carattere '%q' (unicode 0x%x) dove era atteso %c: vedi \"/help "
-#~ "%s\" per la sintassi del comando"
-
-#~ msgid ""
-#~ "Found empty 'foreach' execution block: maybe you need to fix your script ?"
-#~ msgstr "Trovato un blocco 'foreach' vuoto: forse devi correggere lo Script?"
-
-#~ msgid "Found empty epilogue block: maybe you need to fix the script?"
-#~ msgstr "Blocco di epilogo vuoto: forse devi correggere lo Script?"
-
-#~ msgid ""
-#~ "Found empty instruction for popup item: maybe you need to fix the script?"
-#~ msgstr ""
-#~ "Istruzione vuota per l'elemento 'popup': forse devi correggere lo script?"
-
-#~ msgid "Found empty prologue block: maybe you need to fix the script?"
-#~ msgstr "Blocco di prologo vuoto: forse devi correggere lo Script?"
-
-#~ msgid ""
-#~ "Found end of input where character '%c' was expected: see \"/help %s\" "
-#~ "for the command syntax"
-#~ msgstr ""
-#~ "Fine dell'input dove era atteso il carattere '%c': vedi \"/help %s\" per "
-#~ "la sintassi del comando"
-
-#~ msgid ""
-#~ "Found token '%Q' where a 'case','match','regexp','default' or 'break' "
-#~ "label was expected"
-#~ msgstr ""
-#~ "Trovata la voce '%Q' dove era attesa l'etichetta 'case', 'match', "
-#~ "'regexp', 'default' o 'break'"
-
-#~ msgid ""
-#~ "Found token '%Q' where a "
-#~ "'prologue','separator','label','popup','item','extpopup' or 'epilogue' "
-#~ "label was expected"
-#~ msgstr ""
-#~ "Trovata voce '%Q' dove era attesa un'etichetta di "
-#~ "'prologo','separatore','etichetta','popup','elemento','extpopup','epilogo'"
-
-#~ msgid "Garbage string after the expression in 'do' command: ignored"
-#~ msgstr "Stringa spazzatura dopo l'espressione nel comando 'do': ignorata"
-
-#~ msgid "Hash key evaluated to empty string: fix the script"
-#~ msgstr "La chiave Hash è una stringa vuota: correggi lo Script"
-
-#~ msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
-#~ msgstr "Riferimento all'hash fallito: la variabile è di tipo '%Q'"
-
-#~ msgid "Hostname %d: %Q"
-#~ msgstr "Nome Host %d: %Q"
-
-#~ msgid "IP address %d: %Q"
-#~ msgstr "Indirizzo IP %d: %Q"
-
-#~ msgid "Inexisting popup \"%Q\""
-#~ msgstr "Popup inesistente \"%Q\""
-
-#~ msgid "Internal error: pure virtual evaluateReadOnly called"
-#~ msgstr "Errore Interno: chiamata virtuale pura a evaluateReadOnly"
-
-#~ msgid "Internal error: pure virtual evaluateReadOnlyInObjectScope called"
-#~ msgstr ""
-#~ "Errore Interno: chiamata virtuale pura a evaluateReadOnly nella "
-#~ "visibilità  dell'oggetto"
-
-#~ msgid ""
-#~ "Internal error: trying to evaluate as read-write a read-only data location"
-#~ msgstr ""
-#~ "Errore interno: tentativo di utilizzare in modalità lettura-scrittura una "
-#~ "locazione dati in sola lettura"
-
-#~ msgid "Invalid IRC url (%Q)"
-#~ msgstr "Url IRC non valido (%Q)"
-
-#~ msgid "Invalid color-set specification, using default"
-#~ msgstr "Set di colori non valido, utilizzo il set predefinito"
-
-#~ msgid "Invalid command evaluation in object scope"
-#~ msgstr "Valutazione comando non valida nella visibilità  dell'oggetto"
-
-#~ msgid "Invalid data type for parameter \"%s\""
-#~ msgstr "Tipo di dato non valido per il parametro \"%s\""
-
-#~ msgid "Invalid duration value: using default"
-#~ msgstr "Valore della durata non valido: utilizzo il valore di default"
-
-#~ msgid "Invalid expression evaluation in object scope"
-#~ msgstr "Valutazione espressione non valida nella visibilità  dell'oggetto"
-
-#~ msgid "Invalid index specified: ignored"
-#~ msgstr "Indice specificato non valido: ignorato"
-
-#~ msgid "Invalid pitch value: using default"
-#~ msgstr "Valore del pitch non valido: utilizzo il valore di default"
-
-#~ msgid "Invalid syntax for screen coordinates, using cursor position"
-#~ msgstr ""
-#~ "Sintassi non valida per le coordinate dello schermo, uso la posizione del "
-#~ "cursore"
-
-#~ msgid ""
-#~ "Invalid window specified in the standard rebinding switch: no rebinding "
-#~ "performed"
-#~ msgstr ""
-#~ "Identificatore di finestra invalido nello switch di rebind:nessun rebind "
-#~ "eseguito"
-
-#~ msgid "It's not allowed to return values in the constructor"
-#~ msgstr "Non è permesso ritornare valori nel costruttore"
-
-#~ msgid "Lag meter was not enabled"
-#~ msgstr "Misuratore Lag disabilitato"
-
-#~ msgid "Left operand didn't evaluate to a number"
-#~ msgstr "L'operando sinistro non è un numero"
-
-#~ msgid "List of active timers"
-#~ msgstr "Lista dei timer attivi"
-
-#~ msgid "Listing Qt properties for object named \"%Q\" of KVS class %Q"
-#~ msgstr ""
-#~ "Elenco proprietà  Qt per l'Oggetto di nome \"%Q\" della Classe KVS %Q"
-
-#~ msgid "Missing alias name"
-#~ msgstr "Nome dell'Alias mancante"
-
-#~ msgid "Missing channel list"
-#~ msgstr "Manca la Lista dei Canali"
-
-#~ msgid "Missing class name"
-#~ msgstr "Nome classe mancante"
-
-#~ msgid "Missing non-optional parameter \"%s\""
-#~ msgstr "Parametro obbligatorio mancante \"%s\""
-
-#~ msgid "Missing parameter"
-#~ msgstr "Manca il parametro"
-
-#~ msgid "Missing right operand for operator '"
-#~ msgstr "Operando destro mancante per l'operatore '"
-
-#~ msgid "Missing right operand for operator '+='"
-#~ msgstr "Operando destro mancante per l'operatore '+='"
-
-#~ msgid "Missing right operand for operator '-='"
-#~ msgstr "Operando destro mancante per l'operatore '-='"
-
-#~ msgid "Missing right operand for operator '.='"
-#~ msgstr "Operando destro mancante per l'operatore '.='"
-
-#~ msgid "Missing right operand for operator '<+'"
-#~ msgstr "Operando destro mancante per l'operatore '<+'"
-
-#~ msgid "Missing right operand for operator '<,'"
-#~ msgstr "Operando destro mancante per l'operatore '<,'"
-
-#~ msgid "Missing right operand for operator '<<'"
-#~ msgstr "Operando destro mancante per l'operatore '<<'"
-
-#~ msgid "Missing right operand for operator '<<='"
-#~ msgstr "Operando destro mancante per l'operatore '<<='"
-
-#~ msgid "Missing right operand for operator '>>='"
-#~ msgstr "Operando destro mancante per l'operatore '>>='"
-
-#~ msgid "Missing right side operand for the binding operator '=~'"
-#~ msgstr "Operando destro mancante per l'operazione '=~'"
-
-#~ msgid "Missing timeout delay"
-#~ msgstr "Manca il tempo di scadenza"
-
-#~ msgid "Missing timer name"
-#~ msgstr "Manca il nome del Timer"
-
-#~ msgid "Module command call failed: can't load the module '%Q': %Q"
-#~ msgstr ""
-#~ "Chiamata al comando del modulo fallita: impossibile caricare il modulo '%"
-#~ "Q': %Q"
-
-#~ msgid "Module command call failed: can't load the module 'snd'"
-#~ msgstr ""
-#~ "Chiamata al comando del modulo fallita: impossibile caricare il modulo "
-#~ "'snd'"
-
-#~ msgid ""
-#~ "Module command call failed: the module '%Q' doesn't export a callback "
-#~ "command named '%Q'"
-#~ msgstr ""
-#~ "Chiamata al comando del modulo fallita: il modulo '%Q' non esporta una "
-#~ "richiamata con nome '%Q'"
-
-#~ msgid ""
-#~ "Module command call failed: the module '%Q' doesn't export a command "
-#~ "named '%Q'"
-#~ msgstr ""
-#~ "Chiamata al comando del modulo fallita: il modulo '%Q' non esporta un "
-#~ "comando chiamato '%Q'"
-
-#~ msgid ""
-#~ "Module command call failed: the module 'snd' doesn't export a command "
-#~ "named 'play'"
-#~ msgstr ""
-#~ "Chiamata al comando del modulo fallita: il modulo 'snd' non esporta un "
-#~ "comando chiamato 'play'"
-
-#~ msgid "Module function call failed: can't load the module '%Q': %Q"
-#~ msgstr ""
-#~ "Chiamata alla funzione del modulo fallita: impossibile caricare il modulo "
-#~ "'%Q': %Q"
-
-#~ msgid ""
-#~ "Module function call failed: the module '%Q' doesn't export a function "
-#~ "named '%Q'"
-#~ msgstr ""
-#~ "Chiamata alla funzione del modulo fallita:'%Q' non esporta una funzione "
-#~ "chiamata '%Q'"
-
-#~ msgid ""
-#~ "Nested character %q corresponding to expected terminator, this might "
-#~ "confuse me a bit: it is a good idea to enclose it in quotes"
-#~ msgstr ""
-#~ "Il carattere %q inserito corrisponde al terminatore aspettato; questo "
-#~ "potrebbe conforndemi un po': è una buona idea metterlo tra virgolette"
-
-#~ msgid "No Qt property named \"%Q\" for object named \"%Q\" of class %Q"
-#~ msgstr ""
-#~ "Nessuna proprietà  Qt di nome \"%Q\" per l'oggetto di nome \"%Q\" della "
-#~ "classe %Q"
-
-#~ msgid "No button with type %Q named %Q"
-#~ msgstr "Nessun bottone di tipo %Q chiamato %Q"
-
-#~ msgid "No catalogue %Q for the current language found"
-#~ msgstr "Nessun catalogo %Q trovato per il linguaggio corrente"
-
-#~ msgid "No commandline specified for this type of url (%Q)"
-#~ msgstr "Nessuna linea di comando specificata per questo tipo di Url (%Q)"
-
-#~ msgid "No handler '%Q' for event '%Q'"
-#~ msgstr "Nessun gestore '%Q' per l'Evento '%Q'"
-
-#~ msgid "No handler '%Q' for raw numeric event '%d'"
-#~ msgstr "Nessun gestore '%Q' per l'Evento RAW numerico '%d'"
-
-#~ msgid "No menu bar item with text '%Q'"
-#~ msgstr "Nessun elemento della barra del menu con testo '%Q'"
-
-#~ msgid "No such IRC context (%u)"
-#~ msgstr "Nessun Contesto IRC (%u)"
-
-#~ msgid "No such event (%Q)"
-#~ msgstr "Evento inesistente (%Q)"
-
-#~ msgid "No such event handler (%Q) for event %Q"
-#~ msgstr "Nessun gestore (%Q)  per l'Evento %Q"
-
-#~ msgid "No target channel specified and the current window is not a channel"
-#~ msgstr "Nessun canale specificato e la finestra corrente non è un canale"
-
-#~ msgid ""
-#~ "No target mask/channel specified and the current window is not a channel"
-#~ msgstr "Nessun canale specificato e la finestra corrente non è un canale"
-
-#~ msgid "None"
-#~ msgstr "Nessuno"
-
-#~ msgid "Objects have no extended scope variables"
-#~ msgstr "Gli Oggetti non hanno variabili con visibilità  estesa"
-
-#~ msgid "Operand of unary operator didn't evaluate to a number"
-#~ msgstr "L'operando dell'operatore unario non è un numero"
-
-#~ msgid ""
-#~ "Option setting error: Unknown option or invalid value for option type"
-#~ msgstr ""
-#~ "Settaggio delle opzioni fallito: opzione sconosciuta o valore non valido "
-#~ "per il tipo di opzione"
-
-#~ msgid ""
-#~ "Parameter identifiers are forbidden in object scope (after the '->' "
-#~ "operator)"
-#~ msgstr ""
-#~ "Gli identificatori di parametro sono proibiti nella visibilità  di un "
-#~ "oggetto (dopo l'operatore '-->')"
-
-#~ msgid "Persistent"
-#~ msgstr "Persistente"
-
-#~ msgid "Popup %Q is not defined"
-#~ msgstr "Il popup %Q non è definito"
-
-#~ msgid ""
-#~ "Popup menu self-modification is not allowed (the popup is probably open)"
-#~ msgstr ""
-#~ "L'auto-modifica del popup menu non è consentita (il popup è probabilmente "
-#~ "aperto)"
-
-#~ msgid "Properties for Qt class %s"
-#~ msgstr "Proprietà  della Classe Qt %s"
-
-#~ msgid ""
-#~ "Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported "
-#~ "data type"
-#~ msgstr ""
-#~ "La proprietà  \"%Q\" per l'Oggetto di nome \"%Q\" della Classe %Q ha un "
-#~ "tipo di dato non supportato"
-
-#~ msgid "Property: %c%Q%c, type %Q"
-#~ msgstr "Proprietà  %c%Q%c, tipo %Q"
-
-#~ msgid "Recursive definition detected for popup '%Q': ignoring"
-#~ msgstr "Definizione ricorsiva rilevata nel popup '%Q': ignoro"
-
-#~ msgid "Right operand didn't evaluate to a number"
-#~ msgstr "L'operando destro non è un numero"
-
-#~ msgid "Say parse error: Broken command"
-#~ msgstr "Errore Parser Say: comando spezzato"
-
-#~ msgid "Senseless empty switch command: fix the script"
-#~ msgstr "Comando Switch vuoto: correggi lo Script"
-
-#~ msgid "SingleShot"
-#~ msgstr "Colpo Singolo"
-
-#~ msgid "Skipping nested terminator character %q"
-#~ msgstr "Salto il carattere di terminazione %q"
-
-#~ msgid ""
-#~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::%"
-#~ "Q'"
-#~ msgstr ""
-#~ "Slot dell'Oggetto di destinazione distrutto durante l'emissione del "
-#~ "segnale '%Q' dall'Oggetto '%Q::%Q'"
-
-#~ msgid ""
-#~ "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-#~ msgstr ""
-#~ "Carattere ':' disperso nel nome dell'Alias: forse intendevi... "
-#~ "<namespace>::<nome>?"
-
-#~ msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
-#~ msgstr "Carattere ':' indefinito: intendi '...<namespace>::<alias_name>' ?"
-
-#~ msgid "Stray '::' sequence or invalid following alias name"
-#~ msgstr "Sequenza '::' indefinita o Alias del modulo non valido"
-
-#~ msgid "Stray backslash at the end of the script"
-#~ msgstr "Backslash vagante alla fine dello script"
-
-#~ msgid "Stray dot ('.') character or invalid following module command name"
-#~ msgstr ""
-#~ "Carattere punto ('.') indefinito o nome comando del modulo non valido"
-
-#~ msgid ""
-#~ "Syntax error after '$' function call prefix. If you want to use a plain "
-#~ "'$' in the code you need to escape it"
-#~ msgstr ""
-#~ "Errori di sintassi dopo il prefisso '$' di chiamata a funzione. Se vuoi "
-#~ "usare il carattere '$' nel codice devi utilizzare i caratteri di escape"
-
-#~ msgid ""
-#~ "Syntax error after '%' variable prefix. If you want to use a plain '%' in "
-#~ "the code you need to escape it"
-#~ msgstr ""
-#~ "Errore di sintassi dopo il prefisso '%' della variabile. Se vuoi usare il "
-#~ "carattere '%' nel codice devi utilizzare i caratteri di escape"
-
-#~ msgid "Syntax error: confused by earlier errors: bailing out"
-#~ msgstr "Errore di sintassi: troppi errori precedenti - rischio elevato"
-
-#~ msgid "Syntax error: invalid $$ ($this) function call in object scope"
-#~ msgstr ""
-#~ "Errore di sintassi: chiamata di funzione $$ ($this) invalida nello scope "
-#~ "dell'oggeto"
-
-#~ msgid "Syntax error: malformed (alias?) command identifier"
-#~ msgstr "Errore di sintassi: identificatore (Alias?) del comando maldefinito"
-
-#~ msgid "Syntax error: malformed (alias?) function call identifier"
-#~ msgstr ""
-#~ "Errore di sintassi: identificatore (alias?) della chiamata alla funzione "
-#~ "maldefinito"
-
-#~ msgid "Syntax error: malformed alias function call identifier"
-#~ msgstr ""
-#~ "Errore di sintassi: alias dell'identificatore della chiamata alla "
-#~ "funzione maldefinito"
-
-#~ msgid "Syntax error: malformed alias identifier"
-#~ msgstr "Errore di sintassi: identificatore di Alias maldefinito"
-
-#~ msgid "Syntax error: malformed module command identifier"
-#~ msgstr ""
-#~ "Errore di sintassi: identificatore del comando del modulo maldefinito"
-
-#~ msgid "The $sw() function can be used only in aliases"
-#~ msgstr "La funzione $sw() può essere utilizzata solo negli alias"
-
-#~ msgid "The 'defpopup' command needs an expression enclosed in parenthesis"
-#~ msgstr ""
-#~ "Il comando 'defpopup' necessita di un'espressione chiusa tra parentesi"
-
-#~ msgid "The 'for' command needs an expression enclosed in parenthesis"
-#~ msgstr "Il comando 'for' necessita di un'espressione chiusa tra parentesi"
-
-#~ msgid ""
-#~ "The 'foreach' command expects a comma separated list of iteration data "
-#~ "items after the first parameter"
-#~ msgstr ""
-#~ "Il comando 'foreach' necessita di una lista di oggetti per l'iterazione "
-#~ "dopo il primo parametro, separata da virgole"
-
-#~ msgid ""
-#~ "The 'foreach' command expects a writeable iteration variable as first "
-#~ "parameter"
-#~ msgstr ""
-#~ "Il comando 'foreach' necessita di una variabile dell'iterazione "
-#~ "scrivibile come primo parametro"
-
-#~ msgid "The 'foreach' command needs an expression enclosed in parenthesis"
-#~ msgstr ""
-#~ "Il comando 'foreach' necessita di un'espressione chiusa tra parentesi"
-
-#~ msgid "The 'global' command needs a variable list"
-#~ msgstr "Il comando 'global' necessita di una lista di variabili"
-
-#~ msgid "The 'if' command needs an expression enclosed in parenthesis"
-#~ msgstr "Il comando 'if' necessita di un'espressione chiusa tra parentesi"
-
-#~ msgid "The 'switch' command needs an expression enclosed in parenthesis"
-#~ msgstr ""
-#~ "Il comando 'switch' ha bisogno di un'espressione chiusa tra parentesi"
-
-#~ msgid "The 'unset' command needs a variable list"
-#~ msgstr "Il comando 'unset' necessita di una lista di variabili"
-
-#~ msgid ""
-#~ "The 'while' block of the 'do' command needs an expression enclosed in "
-#~ "parenthesis"
-#~ msgstr ""
-#~ "Il blocco 'while' del comando 'do' necessita di un'espressione chiusa tra "
-#~ "parentesi"
-
-#~ msgid ""
-#~ "The above problem might be related to the switch dash and the following "
-#~ "equal sign"
-#~ msgstr ""
-#~ "Il problema sopra può essere relativo al trattino dello switch e al segno "
-#~ "di uguale seguente"
-
-#~ msgid "The alias %Q is not existing"
-#~ msgstr "L'Alias %Q non esiste"
-
-#~ msgid ""
-#~ "The argument of the -w switch did not evaluate to a valid window id: "
-#~ "using default"
-#~ msgstr ""
-#~ "L'argomento dell'opzione '-w' non utilizza un identificativo della "
-#~ "finestra valido: utilizzo quello predefinito"
-
-#~ msgid ""
-#~ "The argument of the [] subscript didn't evaluate to an array: automatic "
-#~ "conversion from %Q supplied"
-#~ msgstr ""
-#~ "L'argomento del blocco [] non è un Array: fornita conversione automatica "
-#~ "da %Q"
-
-#~ msgid ""
-#~ "The argument of the [] subscript didn't evaluate to an array: automatic "
-#~ "conversion from type '%Q' supplied"
-#~ msgstr ""
-#~ "L'argomento del blocco [] non è un Array: fornita conversione automatica "
-#~ "dal tipo '%Q'"
-
-#~ msgid ""
-#~ "The argument of the array count '#' operator didn't evaluate to an array: "
-#~ "automatic conversion from type '%Q' supplied"
-#~ msgstr ""
-#~ "L'argomento dell'operatore contatore Array '#' non utilizza un Array: "
-#~ "fornita conversione automatica dal tipo '%Q'"
-
-#~ msgid ""
-#~ "The argument of the hash count '#' operator didn't evaluate to a hash: "
-#~ "automatic conversion from type '%Q' supplied"
-#~ msgstr ""
-#~ "L'argomento dell'operatore contatore hash '#' non è un hash: fornita "
-#~ "conversione automatica dal tipo '%Q'"
-
-#~ msgid ""
-#~ "The argument of the i switch did not evaluate to a number: using default"
-#~ msgstr ""
-#~ "L'argomento dell'opzione 'i' non utilizza un numero: utilizzo quello "
-#~ "predefinito"
-
-#~ msgid ""
-#~ "The argument of the {} subscript didn't evaluate to a hash automatic "
-#~ "conversion from %Q supplied"
-#~ msgstr ""
-#~ "L'argomento del blocco {} non è un Hash: fornita conversione automatica "
-#~ "da %Q"
-
-#~ msgid ""
-#~ "The argument of the {} subscript didn't evaluate to a hash: automatic "
-#~ "conversion from type '%Q' supplied"
-#~ msgstr ""
-#~ "L'argomento del blocco {} non è un Hash: fornita conversione automatica "
-#~ "dal tipo '%Q'"
-
-#~ msgid "The catalogue %Q was not loaded"
-#~ msgstr "Il catalogo %Q non è stato caricato"
-
-#~ msgid "The commandline for this url type seems to be broken (%Q)"
-#~ msgstr ""
-#~ "La linea di comando per questo tipo di Url sembra non funzionare (%Q)"
-
-#~ msgid "The current window is not a channel"
-#~ msgstr "La finestra corrente non è un canale"
-
-#~ msgid "The current window is not a channel, a query or a console"
-#~ msgstr "La finestra corrente non è un canale, una query o una console"
-
-#~ msgid ""
-#~ "The dash after a command should be followed by a letter (switch), by a "
-#~ "digit (negative number) or be escaped"
-#~ msgstr ""
-#~ "Il trattino dopo un comando dovrebbe essere seguito da una lettera "
-#~ "(switch), da un numero (numero negativo) o tra caratteri di escape"
-
-#~ msgid "The following string was injected by the user:"
-#~ msgstr "La stringa seguente è stata iniettata dall'utente:"
-
-#~ msgid ""
-#~ "The last if command in the buffer has no conditional instructions: it's "
-#~ "senseless"
-#~ msgstr ""
-#~ "L'ultimo comando 'if' nel Buffer non ha istruzioni condizionali: "
-#~ "l'istruzione non ha senso"
-
-#~ msgid ""
-#~ "The last while command in the buffer has no conditional instructions: "
-#~ "it's senseless"
-#~ msgstr ""
-#~ "L'ultimo comando 'while' nel Buffer non ha istruzioni condizionali: "
-#~ "l'istruzione non ha senso"
-
-#~ msgid "The left side of operator '%=' didn't evaluate to a number"
-#~ msgstr "Il membro sinistro dell'operatore '%=' non è un numero"
-
-#~ msgid "The left side of operator '&=' didn't evaluate to an integer"
-#~ msgstr "Il membro sinistro dell'operatore '&=' non è un numero intero"
-
-#~ msgid "The left side of operator '*=' didn't evaluate to a number"
-#~ msgstr "Il membro sinistro dell'operatore '*=' non è un numero"
-
-#~ msgid "The left side of operator '+=' didn't evaluate to a number"
-#~ msgstr "Il membro sinistro dell'operatore '+=' non è un numero "
-
-#~ msgid "The left side of operator '-=' didn't evaluate to a number"
-#~ msgstr "Il membro sinistro dell'operatore '-=' non è un numero"
-
-#~ msgid "The left side of operator '/=' didn't evaluate to a number"
-#~ msgstr "Il membro sinistro dell'operatore '/=' non è un numero"
-
-#~ msgid "The left side of operator '<<=' didn't evaluate to an integer"
-#~ msgstr "Il membro sinistro dell'operatore '<<=' non è un numero intero"
-
-#~ msgid "The left side of operator '>>=' didn't evaluate to an integer"
-#~ msgstr "Il membro sinistro dell'operatore '>>=' non è un numero intero"
-
-#~ msgid "The left side of operator '^=' didn't evaluate to an integer"
-#~ msgstr ""
-#~ "Il membro sinistro dell'operatore '^=' non utilizza un numero intero"
-
-#~ msgid "The left side of operator '|=' didn't evaluate to an integer"
-#~ msgstr "Il membro sinistro dell'operatore '|=' non è un numero intero"
-
-#~ msgid ""
-#~ "The left side of the scope operator didn't evaluate as an object reference"
-#~ msgstr ""
-#~ "Il membro sinistro dell'operatore di visibilità  non è un riferimento ad "
-#~ "un Oggetto"
-
-#~ msgid ""
-#~ "The left side of the scope operator evaluated to a null object reference"
-#~ msgstr ""
-#~ "Il membro sinistro dell'operatore di visibilità   è un riferimento ad un "
-#~ "Oggetto nullo"
-
-#~ msgid ""
-#~ "The left side of the scope operator evaluated to an invalid object "
-#~ "reference (object doesn't exist)"
-#~ msgstr ""
-#~ "Il membro sinistro dell'operatore di visibilità   è un riferimento ad un "
-#~ "Oggetto non valido (l'Oggetto non esiste)"
-
-#~ msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
-#~ msgstr "L'elemento del menu con ID \"%Q\" non esiste nel popup \"%Q\""
-
-#~ msgid "The object named \"%Q\" of class %Q has no Qt properties"
-#~ msgstr "L'oggetto di nome \"%Q\" della classe %Q non ha proprietà  Qt"
-
-#~ msgid "The popup '%Q' is not defined"
-#~ msgstr "Il popup '%Q' non è definito"
-
-#~ msgid ""
-#~ "The popup '%s' is actually locked: 'self-modifications' are not allowed"
-#~ msgstr ""
-#~ "Il menu a comparsa '%s' è attualmente bloccato: le 'auto-modifiche' non "
-#~ "sono permesse"
-
-#~ msgid ""
-#~ "The property is of type %s but the supplied argument can't be converted "
-#~ "to that type (expecting \"%s\")"
-#~ msgstr ""
-#~ "La proprietà  di tipo %s ma l'argomento passato non puà² essere "
-#~ "convertito a quel tipo (atteso \"%s\")"
-
-#~ msgid ""
-#~ "The regular expression matched a zero-length substring: this is not valid "
-#~ "in the s/// operator, skipping"
-#~ msgstr ""
-#~ "L'espressione regolare corrisponde ad una sottostringa di lunghezza zero: "
-#~ "questo non è possibile con l'operatore s///, ignoro"
-
-#~ msgid "The right side of operator '%=' didn't evaluate to a number"
-#~ msgstr "Il membro destro dell'operatore '%=' non è un numero"
-
-#~ msgid "The right side of operator '&=' didn't evaluate to an integer"
-#~ msgstr "Il membro destro dell'operatore '&=' non è un numero intero"
-
-#~ msgid "The right side of operator '*=' didn't evaluate to a number"
-#~ msgstr "il membro destro dell'operatore '*=' non è un numero"
-
-#~ msgid "The right side of operator '+=' didn't evaluate to a number"
-#~ msgstr "Il membro destro dell'operatore '+=' non è un numero "
-
-#~ msgid "The right side of operator '-=' didn't evaluate to a number"
-#~ msgstr "Il membro destro dell'operatore '-=' non è un numero"
-
-#~ msgid "The right side of operator '/=' didn't evaluate to a number"
-#~ msgstr "Il membro destro dell'operatore '/=' non è un numero"
-
-#~ msgid "The right side of operator '<<=' didn't evaluate to an integer"
-#~ msgstr "Il membro destro dell'operatore '<<=' non è un numero intero"
-
-#~ msgid "The right side of operator '>>=' didn't evaluate to an integer"
-#~ msgstr "Il membro destro dell'operatore '>>=' non è un numero intero"
-
-#~ msgid "The right side of operator '^=' didn't evaluate to an integer"
-#~ msgstr "Il membro destro dell'operatore '^=' non è un numero intero"
-
-#~ msgid "The right side of operator '|=' didn't evaluate to an integer"
-#~ msgstr "Il membro destro dell'operatore '|=' non è un numero intero"
-
-#~ msgid ""
-#~ "The specified format string wasn't accepted by the underlying system time "
-#~ "formatting function"
-#~ msgstr ""
-#~ "Il formato specificato non è accettata dalla funzione di formattazione "
-#~ "dell'orario di sistema"
-
-#~ msgid "The specified maximum run time is invalid: assuming zero (infinite)"
-#~ msgstr "Il tempo massimo di esecuzione non è valido: presumo 0 (infinito)"
-
-#~ msgid "The specified object does not exist"
-#~ msgstr "L'Oggetto specificato non esiste"
-
-#~ msgid "The specified parent object does not exist"
-#~ msgstr "L'oggetto padre specificato non esiste"
-
-#~ msgid "The specified ping time is invalid: assuming zero (no ping)"
-#~ msgstr ""
-#~ "Il tempo del PING specificato non è valido: prendo zero (nessun PING)"
-
-#~ msgid "The specified window has no button containers"
-#~ msgstr "La finestra specificata non ha un contenitore per i pulsanti"
-
-#~ msgid "The specified window is not a channel"
-#~ msgstr "La finestra specificata non è un canale"
-
-#~ msgid "The target variable didn't evaluate to an integer or real value"
-#~ msgstr "La variabile data non è un numero intero o un valore reale"
-
-#~ msgid "The timeout delay didn't evaluate to an integer"
-#~ msgstr "Il tempo di scadenza non è un numero intero"
-
-#~ msgid "The while command needs an expression enclosed in parenthesis"
-#~ msgstr "Il comando 'while' necessita di un'espressione chiusa tra parentesi"
-
-#~ msgid "There are no extended scope variables in this scope"
-#~ msgstr "In questo blocco non ci sono Variabili estese"
-
-#~ msgid "There is no option named '%Q'"
-#~ msgstr "Nessuna opzione chiamata '%Q'"
-
-#~ msgid "This command can be used only in windows bound to an IRC context"
-#~ msgstr ""
-#~ "Questo comando può essere usato solo su finestre associate ad un IRC "
-#~ "context"
-
-#~ msgid "This is not a channel"
-#~ msgstr "Questo non è un Canale"
-
-#~ msgid ""
-#~ "This looks a lot like an object handle dereferencing operator '->' but in "
-#~ "fact it isn't. Maybe you forgot a '$' just after ?"
-#~ msgstr ""
-#~ "Gestore di Oggetto atto a deferenziare l'operatore '->' non lo è. Forse "
-#~ "hai dimenticato un '$' subito dopo?"
-
-#~ msgid "This window has no associated IRC context"
-#~ msgstr "Questa finestra non ha un Contesto IRC associato"
-
-#~ msgid "This window has no associated IRC context and is not a DCC chat"
-#~ msgstr ""
-#~ "Questa finestra non ha un Contesto IRC associato e non è una DCC Chat"
-
-#~ msgid "This window is not associated to an IRC context"
-#~ msgstr "Questa finestra non è associata ad alcun Contesto IRC"
-
-#~ msgid "Timer '%Q' has a broken callback handler: killing the timer"
-#~ msgstr ""
-#~ "Il Timer '%Q' ha un gestore della richiamata non valido: termino il Timer."
-
-#~ msgid ""
-#~ "Timer name omitted but there is not current timer (this is not a timer "
-#~ "callback)"
-#~ msgstr ""
-#~ "Nome timer omesso ma non esiste un timer corrente (questa non è la "
-#~ "richiamata di un timer)"
-
-#~ msgid "Total: %u timers running"
-#~ msgstr "Totale: %u timer in esecuzione"
-
-#~ msgid "Trailing garbage at the end of the break command: ignored"
-#~ msgstr ""
-#~ "Stralci di caratteri spazzatura al termine del comando 'break': ignorati"
-
-#~ msgid "Trailing garbage at the end of the continue command: ignored"
-#~ msgstr ""
-#~ "Stralci di caratteri spazzatura al termine del comando 'continue': "
-#~ "ignorati"
-
-#~ msgid "Trailing garbage ignored after operator '++'"
-#~ msgstr "Stralci di caratteri spazzatura ignorati dopo l'operatore '++'"
-
-#~ msgid "Trailing garbage ignored after operator '--'"
-#~ msgstr "Stralci di caratteri spazzatura ignorati dopo l'operatore '--'"
-
-#~ msgid "Unable to add the timer: insufficient system resources"
-#~ msgstr "Non posso aggiungere il Timer: risorse di sistema insufficenti"
-
-#~ msgid "Unexpected (and senseless) read-only data evaluation"
-#~ msgstr "Inattesa valutazione di dati in sola lettura"
-
-#~ msgid ""
-#~ "Unexpected character %q (unicode %h) in expression. If it meant to be a "
-#~ "string use the quotes."
-#~ msgstr ""
-#~ "Carattere inaspettato %q (unicode %h) nell'espressione: se è una stringa "
-#~ "usa gli apici"
-
-#~ msgid "Unexpected character %q (unicode %x) after '$' function call prefix"
-#~ msgstr ""
-#~ "Carattere inaspettato %q (unicode %x) dopo il prefisso '$' di chiamata a "
-#~ "funzione"
-
-#~ msgid "Unexpected character '%q' (unicode %x)"
-#~ msgstr "Carattere inatteso '%q' (unicode %x)"
-
-#~ msgid ""
-#~ "Unexpected character '%q' (unicode %x) after a slash (it is a typo or a "
-#~ "malformed comment begin ?)"
-#~ msgstr ""
-#~ "Inatteso carattere '%q' (unicode %x) dopo uno 'slash' (errore di "
-#~ "scrittura o inizio di commento malformato?)"
-
-#~ msgid "Unexpected character '%q' (unicode %x) after a switch dash"
-#~ msgstr ""
-#~ "Carattere inspettato '%q' (unicode %x) dopo il trattino dello switch"
-
-#~ msgid ""
-#~ "Unexpected character '%q' (unicode %x) after a void function call: end of "
-#~ "instruction expected"
-#~ msgstr ""
-#~ "Carattere inatteso '%q' (unicode %x) dopo una chiamata ad una funzione "
-#~ "'void': attesa fine dell'istruzione"
-
-#~ msgid ""
-#~ "Unexpected empty <name> field in extpopup parameters. See /help defpopup "
-#~ "for the syntax"
-#~ msgstr ""
-#~ "Inaspettato campo <nome> vuoto nei parametri di 'extpopup'. Usa il "
-#~ "comando /HELP defpopup per la sintassi corretta"
-
-#~ msgid ""
-#~ "Unexpected empty <text> field in extpopup parameters. See /help defpopup "
-#~ "for the syntax"
-#~ msgstr ""
-#~ "Inaspettato campo <testo> vuoto nei parametri di 'extpopup'. Usa il "
-#~ "comando /HELP defpopup per la sintassi corretta"
-
-#~ msgid ""
-#~ "Unexpected empty <text> field in label parameters. See /help defpopup for "
-#~ "the syntax"
-#~ msgstr ""
-#~ "Inaspettato campo <testo> vuoto nei parametri dell'etichetta. Usa il "
-#~ "comando /HELP defpopup per la sintassi corretta"
-
-#~ msgid "Unexpected empty expression operand"
-#~ msgstr "Operando di espressione vuoto insaspettato"
-
-#~ msgid ""
-#~ "Unexpected end of 'foreach' parameters: at least one iteration data "
-#~ "argument must be given"
-#~ msgstr ""
-#~ "Fine inattesa dei parametri di 'foreach': deve essere specificato almeno "
-#~ "un argomento per l'iterazione dei dati"
-
-#~ msgid "Unexpected end of buffer in class definition"
-#~ msgstr "Inattesa fine del Buffer nella definizione della Classe"
-
-#~ msgid "Unexpected end of buffer in defpopup block"
-#~ msgstr "Fine inaspettata del Buffer nel blocco di 'defpopup'"
-
-#~ msgid "Unexpected end of buffer in function parameter list reminder"
-#~ msgstr "Inattesa fine del Buffer nella lista dei parametri di funzione"
-
-#~ msgid "Unexpected end of buffer in switch condition block"
-#~ msgstr "Fine inattesa del Buffer nel blocco 'switch'"
-
-#~ msgid ""
-#~ "Unexpected end of buffer while looking for the closing ')' in the 'for' "
-#~ "command"
-#~ msgstr ""
-#~ "Inattesa fine del Buffer durante la ricerca della parentesi chiusa ')' "
-#~ "nel comando 'for'"
-
-#~ msgid ""
-#~ "Unexpected end of command after the 'do' command block: expected 'while' "
-#~ "keyword"
-#~ msgstr ""
-#~ "Inattesa fine del comando dopo il blocco del comando 'do': attesa la "
-#~ "parola chiave 'while'"
-
-#~ msgid ""
-#~ "Unexpected end of command buffer while looking for the \"perl.end\" "
-#~ "statement"
-#~ msgstr ""
-#~ "Inattesa fine del Buffer durante la ricerca della sintassi \"perl.end\""
-
-#~ msgid ""
-#~ "Unexpected end of command in binding operation, at least one slash is "
-#~ "missing"
-#~ msgstr ""
-#~ "Inattesa fine del comando durante l'operazione di binding, almeno uno "
-#~ "'slash' mancante"
-
-#~ msgid ""
-#~ "Unexpected end of command in binding operation, at least two slashes are "
-#~ "missing"
-#~ msgstr ""
-#~ "Inattesa fine del comando durante l'operazione di binding, almeno due "
-#~ "'slash' mancanti"
-
-#~ msgid ""
-#~ "Unexpected end of line in hash key (missing '}' character or unescaped "
-#~ "newline)"
-#~ msgstr ""
-#~ "Fine inaspettata della riga nella chiave hash (carattere '}' mancante o "
-#~ "nuova riga senza carattere di escape)"
-
-#~ msgid "Unexpected end of line in parameter list"
-#~ msgstr "Fine inaspettata della riga nella lista dei parametri"
-
-#~ msgid ""
-#~ "Unexpected end of line in string constant (missing \" character or "
-#~ "unescaped newline)"
-#~ msgstr ""
-#~ "Fine inaspettata della riga in un costante stringa ( carattere \" "
-#~ "mancante o nuova riga senza carattere di escape)"
-
-#~ msgid "Unexpected end of script after '$' function call prefix"
-#~ msgstr ""
-#~ "Fine inaspettata dello script dopo il prefisso '$' di chiamata a funzione"
-
-#~ msgid "Unexpected end of script after a switch dash"
-#~ msgstr "Fine inaspettata dello script dopo il trattino dello switch"
-
-#~ msgid ""
-#~ "Unexpected end of script after a variable reference: expected operator"
-#~ msgstr ""
-#~ "Inattesa fine dello Script dopo il riferimento ad una variabile: atteso "
-#~ "un operatore"
-
-#~ msgid "Unexpected end of script in expression"
-#~ msgstr "Fine inaspettata dello script nell'espressione"
-
-#~ msgid "Unexpected end of script in hash key (missing '}' character ?)"
-#~ msgstr ""
-#~ "Fine inaspettata dello script nella chiave hash (carattere '}' mancante ?)"
-
-#~ msgid ""
-#~ "Unexpected end of script in instruction block (missing closing brace)"
-#~ msgstr ""
-#~ "Fine inaspettata dello script nel blocco di istruzioni (parentesi di "
-#~ "chiusura mancante)"
-
-#~ msgid "Unexpected end of script in multiline comment"
-#~ msgstr "Inattesa fine dello Script in un commento multiplo"
-
-#~ msgid "Unexpected end of script in parameter list"
-#~ msgstr "Fine inaspettata dell script nella lista dei parametri"
-
-#~ msgid "Unexpected end of script in string constant (missing \" character ?)"
-#~ msgstr ""
-#~ "Fine inaspettata dello script nella costante stringa (carattere \" "
-#~ "mancante ?)"
-
-#~ msgid ""
-#~ "Unexpected end of script while looking for the instruction block of the "
-#~ "if command"
-#~ msgstr ""
-#~ "Inattesa fine dello Script durante la ricerca del blocco di istruzioni "
-#~ "del comando 'if'"
-
-#~ msgid ""
-#~ "Unexpected end of script while looking for the instruction block of the "
-#~ "while command"
-#~ msgstr ""
-#~ "Inattesa fine dello Script durante la ricerca del blocco di istruzioni "
-#~ "del comando 'while'"
-
-#~ msgid "Unexpected function call as 'foreach' iteration variable"
-#~ msgstr ""
-#~ "Inattesa chiamata alla funzione come variabile dell'iterazione 'foreach'"
-
-#~ msgid "Unexpected read-only variable as 'foreach' iteration variable"
-#~ msgstr ""
-#~ "Inattesa variabile in sola lettura come variabile dell'iterazione "
-#~ "'foreach'"
-
-#~ msgid "Unknown binary operator '%q'"
-#~ msgstr "Operatore binario sconosciuto '%q'"
-
-#~ msgid "Unknown binary operator '=%q': did you mean '==' ?"
-#~ msgstr "Operatore binario sconosciuto '=%q': intendevi '==' ?"
-
-#~ msgid "Unknown binding operation '%Q'"
-#~ msgstr "Operazione di binding sconosciuta '%Q'"
-
-#~ msgid "Unknown callback command \"%Q\""
-#~ msgstr "Comando di richiamata sconosciuto \"%Q\""
-
-#~ msgid "Unterminated c-style multiline comment"
-#~ msgstr "Commento multilinea in stile C non terminato"
-
-#~ msgid "Unterminated hash key"
-#~ msgstr "Chiave hash non terminata"
-
-#~ msgid "Unterminated instruction block"
-#~ msgstr "Inattesa fine del blocco di istruzioni"
-
-#~ msgid "Unterminated string constant"
-#~ msgstr "Costante stringa non terminata"
-
-#~ msgid "Window '%Q' not found, using current one"
-#~ msgstr "Finestra '%Q' non trovata, utilizzo la finestra corrente"
-
-#~ msgid "Window button '%Q' not found"
-#~ msgstr "Pulsante '%Q' della finestra non trovato"
-
-#~ msgid "Window with ID '%s' not found, returning empty string"
-#~ msgstr "Finestra con ID '%s' non trovata, restituisco una stringa vuota"
-
-#~ msgid "Window with id %Q not found: no rebinding performed"
-#~ msgstr "Finestra con ID %Q non trovata: rebind non eseguito"
-
-#~ msgid "WindowLifetime"
-#~ msgstr "Durata della Finestra"
-
-#~ msgid "You don't appear to be on channel %s"
-#~ msgstr "Non sei nel Canale %s"
-
-#~ msgid "You're not connected to an IRC server"
-#~ msgstr "Non sei connesso ad un server IRC"
-
-#~ msgid "[KVS]   Destroyed window with pointer %x"
-#~ msgstr "[KVS]   Distrutta la finestra con puntatore %x"
-
-#~ msgid "[KVS]   in script context \"%Q\""
-#~ msgstr "[KVS]   nel contesto dello Script \"%Q\""
-
-#~ msgid "[KVS]   in script context \"%Q\", %Q"
-#~ msgstr "[KVS]   nel contesto dello Script \"%Q\", %Q"
-
-#~ msgid "[KVS] Call stack:"
-#~ msgstr "[KVS] Stack della chiamata:"
-
-#~ msgid "[KVS] Code listing:"
-#~ msgstr "[KVS] Elenco codice:"
-
-#~ msgid "[KVS] Window:"
-#~ msgstr "[KVS] Finestra:"
-
-#~ msgid "[KVS]%c Compilation Error: %Q"
-#~ msgstr "[KVS]%c Errore di compilazione: %Q"
-
-#~ msgid "[KVS]%c Runtime Error: %Q"
-#~ msgstr "[KVS]%c Errore Runtime: %Q"
-
-#~ msgid "[KVS]%c Warning: %Q"
-#~ msgstr "[KVS]%c Attenzione: %Q"
-
-#~ msgid "[RAW]: %Q"
-#~ msgstr "[RAW]: %Q"
-
-#~ msgid "beginning of input"
-#~ msgstr "inizio input"
-
-#~ msgid "found empty string where type '%s' was expected"
-#~ msgstr "trovata stringa vuota dove era atteso il tipo '%s'"
-
-#~ msgid "found empty string while a non empty one was expected"
-#~ msgstr "trovata stringa vuota mentre era attesa un stringa non vuota"
-
-#~ msgid ""
-#~ "found signed integer \"%d\" where type 'unsigned integer' was expected"
-#~ msgstr ""
-#~ "trovato intero con segno \"%d\" dove era atteso il tipo 'intero senza "
-#~ "segno'"
-
-#~ msgid "found string value \"%Q\" where type '%s' was expected"
-#~ msgstr "trovato valore stringa \"%Q\" dove era atteso il tipo '%s'"
-
-#~ msgid "found type %Q where type '%s' was expected"
-#~ msgstr "trovato il tipo %Q dove era atteso il tipo '%s'"
-
-#~ msgid "line %d, near character %d"
-#~ msgstr "linea %d , vicino al carattere %d"
-
-#~ msgid "say: injected commandline"
-#~ msgstr "say: linea di comando introdotta"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: torrent\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:14+0100\n"
+"POT-Creation-Date: 2008-11-18 16:44+0100\n"
 "PO-Revision-Date: 2008-01-12 03:57+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Hrvatski <en@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:42
+#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
@@ -27,11 +27,6 @@ msgstr ""
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
 msgstr "Odabiranje sučelja za torrent klijent \"%Q\""
-
-#: src/modules/torrent/tc_ktorrentdcopinterface.cpp:58
-#, c-format
-msgid "Index out of range: %d [0-%d]!"
-msgstr "Indeks izvan dometa: %d [0-%d]!"
 
 #: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
@@ -70,3 +65,6 @@ msgstr "Pokušavam torrent sučelje za klijenta \"%Q\": score %d "
 #: src/modules/torrent/libkvitorrent.cpp:711
 msgid "Using client interface \"%Q\"."
 msgstr "Koristim klijent sućelje \"%Q\"."
+
+#~ msgid "Index out of range: %d [0-%d]!"
+#~ msgstr "Indeks izvan dometa: %d [0-%d]!"

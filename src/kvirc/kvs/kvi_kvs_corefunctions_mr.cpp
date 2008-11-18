@@ -289,7 +289,7 @@ namespace KviKvsCoreFunctions
 		KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName);
 		if(!pClass)
 		{
-			KVSCF_pContext->error(__tr2qs_ctx("Class \"%Q\" is not defined","kvs"),&szClassName);
+			KVSCF_pContext->error(__tr2qs_ctx("Class '%Q' is not defined","kvs"),&szClassName);
 			return false;
 		}
 
