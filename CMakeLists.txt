@@ -546,7 +546,6 @@ IF(WANT_PERL)
                 # Remove new line characters
 		STRING(REGEX REPLACE "(\r?\n)+$" "" PERL_LINK_FLAGS "${PERL_LINK_FLAGS}")
 		SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PERL_LINK_FLAGS}")
-
                 # Remove leading and trailing spaces (string strip)
 		STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 	ELSE()
@@ -1046,6 +1045,11 @@ MARK_AS_ADVANCED(FORCE LIBRARY_OUTPUT_PATH)
 MARK_AS_ADVANCED(FORCE CMAKE_BACKWARDS_COMPATIBILITY)
 MARK_AS_ADVANCED(FORCE EXECUTABLE_OUTPUT_PATH)
 
+###############################################################################
+# ADD LINK FLAGS TO LIBS: THIS HAVE TO BE DONE AT LAST
+###############################################################################
+
+LIST(APPEND LIBS "${ADDITIONAL_LINK_FLAGS}")
 ###############################################################################
 # FINAL OUTPUT
 ###############################################################################
