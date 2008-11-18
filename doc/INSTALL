@@ -309,8 +309,7 @@ General notes for the installation of the 4.0 release of KVIrc
         and if found it will enable the Audiofile support.
 
     -DWITHOUT_KDE4
-        Compile KDE4 support. It will look for the KDE4 headers and libraries
-        and if found it will enable the KDE4 support.
+        Disable KDE4 support.
 
     -DWITHOUT_SSL
         Disables the secure socket layer support. The SSL support is
