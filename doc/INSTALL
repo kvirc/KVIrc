@@ -255,10 +255,10 @@ General notes for the installation of the 4.0 release of KVIrc
     The CMake rules support some flags. If you don't specify them, CMake will
     try to make a good environment for you :)
     To use these flags, you have to pass a bool value or a string.
-    For example, to install in /usr instead of /usr/local and enable Phonon
+    For example, to install in /usr instead of /usr/local and disable Phonon
     support, the command would be:
 
-    # cmake -DCMAKE_INSTALL_PREFIX=/usr -DCOMPILE_PHONON_SUPPORT=1 ..
+    # cmake -DCMAKE_INSTALL_PREFIX=/usr -DWANT_PHONON=OFF ..
 
     Here's a list with explainations:
 
@@ -367,10 +367,10 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITHOUT_DOXYGEN
         Disables docs generation through Doxygen
 
-    -DWITHOUT_SYSTEM_MEMMOVE 
-        This will disable the use of the system memmove() memcpy() and 
-        memset() functions and enable the bundled implementations. Use 
-        it if you have undefined references to these functions while 
+    -DWITHOUT_SYSTEM_MEMMOVE
+        This will disable the use of the system memmove() memcpy() and
+        memset() functions and enable the bundled implementations. Use
+        it if you have undefined references to these functions while
         compiling.
 
     -DWITHOUT_GSM
@@ -378,10 +378,10 @@ General notes for the installation of the 4.0 release of KVIrc
         disable the DCC VOICE gsm codec but might help when the
         compilation stops complaining of something related to GSM :)
 
-    -DWITH_ix86_ASM 
-        KVIrc contains some ix86 assembly routines that *could* performs 
-        some things faster (this is not always true, depends on the compiler). 
-        You might want to try it if your kvirc seems to be really slow... 
+    -DWITH_ix86_ASM
+        KVIrc contains some ix86 assembly routines that *could* performs
+        some things faster (this is not always true, depends on the compiler).
+        You might want to try it if your kvirc seems to be really slow...
 
     -DWITHOUT_DCC_VOICE
         Explicitly disable the DCC VOICE sound support. This might help
