@@ -892,7 +892,20 @@ void KviWindow::delayedClose()
 void KviWindow::closeEvent(QCloseEvent *e)
 {
 	e->ignore();
-	g_pFrame->childWindowCloseRequest(this);
+	if(g_pFrame)
+	{
+		g_pFrame->childWindowCloseRequest(this);
+	} else {
+		/* In kvi_app destructor, g_pFrame gets deleted before modules gets unloaded.
+		 * So if a module tries to destroy a kviwindow while it gets unloaded, we end up here,
+		 * having to delete this window without the help of g_pFrame.
+		 * So we have 3 choices:
+		 * 1) delete this => will just print a qt warning "don't delete things on their event handler"
+		 * 2) deleteLater() => will tipically create an infinite recursion in the module unload routine
+		 * 3) do nothing => same as #2
+		 */ 
+		delete this;
+	}
 }
 
 void KviWindow::updateIcon()
