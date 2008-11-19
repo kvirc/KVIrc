@@ -47,6 +47,7 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 	#include <kcmdlineargs.h>
+	#include <kaboutdata.h>
 #endif
 
 #define KVI_ARGS_RETCODE_OK 0
@@ -319,7 +320,8 @@ int main(int argc,char ** argv)
 	if(retCode != KVI_ARGS_RETCODE_OK)return ((retCode == KVI_ARGS_RETCODE_ERROR) ? (-1) : 0);
 
 #ifdef COMPILE_KDE_SUPPORT
-	KCmdLineArgs::init(argc,argv,"kvirc","noway",ki18n("KVIrc"),KVI_VERSION);
+	KAboutData * about = new KAboutData("kvirc","kvirc",ki18n("KVIrc"),KVI_VERSION);
+	KCmdLineArgs::init(about);
 #endif
 	// Need to have the X socket open before IPC startup
 	KviApp * theApp = new KviApp(argc,argv);
