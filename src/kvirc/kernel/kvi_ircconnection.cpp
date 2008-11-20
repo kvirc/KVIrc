@@ -427,6 +427,7 @@ void KviIrcConnection::partAllChannels()
 	for(KviChannel * c = m_pChannelList->first(); c; c = m_pChannelList->next())
 	{
 		c->close();
+		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
 	}
 }
 
@@ -435,6 +436,7 @@ void KviIrcConnection::closeAllChannels()
 	while(m_pChannelList->first())
 	{
 		m_pChannelList->first()->close();
+		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
 	}
 }
 
@@ -443,6 +445,7 @@ void KviIrcConnection::closeAllQueries()
 	while(m_pQueryList->first())
 	{
 		m_pQueryList->first()->close();
+		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
 	}
 }
 

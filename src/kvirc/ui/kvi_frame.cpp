@@ -620,7 +620,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 		m_pMdi->destroyChild(wnd->mdiParent(),true);
 	}
 	
-	delete wnd;
+	wnd->deleteLater();
 }
 
 void KviFrame::maximizeMdiChildWindow(KviMdiChild * lpC)
