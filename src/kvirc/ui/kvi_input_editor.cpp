@@ -242,12 +242,12 @@ void KviInputEditor::drawContents(QPainter * p)
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapToGlobal(rect.topLeft());
-		p->drawTiledPixmap(0,0,iWidgetWidth,iWidgetHeight,*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
+		p->drawTiledPixmap(1,1,iWidgetWidth,iWidgetHeight,*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
 	} else {
 #endif
 		QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapInputBackground).pixmap();
 
-		p->fillRect(0,0,iWidgetWidth,iWidgetHeight,KVI_OPTION_COLOR(KviOption_colorInputBackground));
+		p->fillRect(1,1,iWidgetWidth,iWidgetHeight,KVI_OPTION_COLOR(KviOption_colorInputBackground));
 		if(pPix)
 			KviPixmapUtils::drawPixmapWithPainter(p,pPix,KVI_OPTION_UINT(KviOption_uintInputPixmapAlign),rect,iWidgetWidth,iWidgetHeight);
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -269,7 +269,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 	int iCharIdx      = m_iFirstVisibleChar;
 
-	p->setClipRect(0,0,iWidgetWidth,iWidgetHeight);
+	p->setClipRect(4,4,iWidgetWidth,iWidgetHeight);
 
 	//Control the selection state
 	if((m_iSelectionEnd < m_iSelectionBegin) || (m_iSelectionEnd == -1) || (m_iSelectionBegin == -1))
