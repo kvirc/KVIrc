@@ -134,7 +134,7 @@ extern "C" void boot_DynaLoader(pTHX_ CV* cv);
 
 extern "C" void xs_init(pTHX)
 {
-	char *file = __FILE__;
+	const char * file = __FILE__;
 	// boot up the DynaLoader
 	newXS("DynaLoader::boot_DynaLoader",boot_DynaLoader,file);
 	// now bootstrap the KVIrc module
@@ -163,8 +163,8 @@ bool KviPerlInterpreter::init()
 	PERL_SET_CONTEXT(m_pInterpreter);
 	PL_perl_destruct_level = 1;
 	perl_construct(m_pInterpreter);
-	char * daArgs[] = { "yo", "-e", "0", "-w" };
-	perl_parse(m_pInterpreter,xs_init,4,daArgs,NULL);
+	const char * daArgs[] = { "yo", "-e", "0", "-w" };
+	perl_parse(m_pInterpreter,xs_init,4,(char **)daArgs,NULL);
 	QString szInitCode;
 
 	// this part of the code seems to be unnecessary
