@@ -163,7 +163,6 @@ KviFrame::KviFrame()
 	installAccelerators(this);
 
 	layout()->setSizeConstraint(QLayout::SetNoConstraint);
-	connect(this, SIGNAL(signalDeleteWindow(KviWindow*)), this, SLOT(deleteWindow(KviWindow*)), Qt::QueuedConnection);
 	connect(this, SIGNAL(signalMaximizeMdiChildWindow(KviMdiChild*)), this, SLOT(maximizeMdiChildWindow(KviMdiChild*)), Qt::QueuedConnection);
 }
 
@@ -620,11 +619,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 	{
 		m_pMdi->destroyChild(wnd->mdiParent(),true);
 	}
-	emit signalDeleteWindow(wnd);
-}
-
-void KviFrame::deleteWindow(KviWindow * wnd)
-{
+	
 	delete wnd;
 }
 
