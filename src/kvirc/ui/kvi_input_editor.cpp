@@ -269,7 +269,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 	int iCharIdx      = m_iFirstVisibleChar;
 
-	p->setClipRect(4,4,iWidgetWidth,iWidgetHeight);
+	p->setClipRect(1,1,iWidgetWidth,iWidgetHeight);
 
 	//Control the selection state
 	if((m_iSelectionEnd < m_iSelectionBegin) || (m_iSelectionEnd == -1) || (m_iSelectionBegin == -1))
