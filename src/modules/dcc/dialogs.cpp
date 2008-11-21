@@ -125,7 +125,7 @@ KviDccRenameBox::KviDccRenameBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 	vb->addWidget(l);
 
 	QHBoxLayout *hb = new QHBoxLayout(4);
-	vb->addLayout(hb,Qt::AlignCenter);	
+	vb->addLayout(hb,Qt::AlignCenter);
 
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Rename","dcc"),this);
 	hb->addWidget(btn);
@@ -167,8 +167,8 @@ void KviDccRenameBox::closeEvent(QCloseEvent *e)
 
 void KviDccRenameBox::showEvent(QShowEvent *e)
 {
-	move((g_pApp->desktop()->width() - width()) >> 1,
-		(g_pApp->desktop()->height() - height()) >> 1);
+	QRect rect = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen());
+	move((rect.width() - width())/2,(rect.height() - height())/2);
 	QWidget::showEvent(e);
 }
 
