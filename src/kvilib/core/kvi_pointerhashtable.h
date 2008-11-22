@@ -83,6 +83,9 @@ inline bool kvi_hash_key_equal(const char * szKey1,const char * szKey2,bool bCas
 			szKey2++;
 		}
 	}
+	//check if one of the strings is a substring of the other (like "perl" and "perlcore")
+	if(*szKey1 || *szKey2)
+		return false;
 	return true;
 }
 
