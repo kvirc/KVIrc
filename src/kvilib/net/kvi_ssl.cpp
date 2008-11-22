@@ -304,9 +304,11 @@ bool KviSSL::initContext(Method m)
 	if(m_pSSL)return false;
 	m_pSSLCtx = SSL_CTX_new(m == Client ? SSLv23_client_method() : SSLv23_server_method());
 	if(!m_pSSLCtx)return false;
-	// FIXME: this should be configurable ?
+	// we want all ciphers to be available here, except insecure ones, orderer by strength;
+	// ADH are moved to the end since they are less secure, but they don't need a certificate
+	// (so we can use secure dcc without a cert)
 	// NOTE: see bug ticket #155
-	SSL_CTX_set_cipher_list(m_pSSLCtx,"ALL:!ADH:!EXP:!SSLv2@STRENGTH");
+	SSL_CTX_set_cipher_list(m_pSSLCtx,"ALL:!eNULL:!EXP:!SSLv2:+ADH@STRENGTH");
 	SSL_CTX_set_tmp_dh_callback(m_pSSLCtx,my_ugly_dh_callback);
 	return true;
 }
