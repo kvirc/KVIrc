@@ -134,7 +134,7 @@ extern "C" void boot_DynaLoader(pTHX_ CV* cv);
 
 extern "C" void xs_init(pTHX)
 {
-	const char * file = __FILE__;
+	char * file = (char *)__FILE__;
 	// boot up the DynaLoader
 	newXS("DynaLoader::boot_DynaLoader",boot_DynaLoader,file);
 	// now bootstrap the KVIrc module
