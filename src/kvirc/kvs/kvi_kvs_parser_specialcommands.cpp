@@ -83,7 +83,7 @@ python.begin <python code> python.end
 		szName = szName.toLower(); \
 		\
 		/* now look for [interpreter].end[terminator] */ \
-		static QString szInterpreterEnd(szName); \
+		QString szInterpreterEnd(szName); \
 		szInterpreterEnd += ".end"; \
 		const QChar * pInterpreterEnd; \
 		for(;;) \
@@ -102,9 +102,9 @@ python.begin <python code> python.end
 			} \
 			pInterpreterEnd = KVSP_curCharPointer; \
 			\
-			if(KviQString::equalCIN(szInterpreterEnd,KVSP_curCharPointer,8)) \
+			if(KviQString::equalCIN(szInterpreterEnd,KVSP_curCharPointer,szInterpreterEnd.size())) \
 			{ \
-				KVSP_skipNChars(8); \
+				KVSP_skipNChars(szInterpreterEnd.size()); \
 				if(KVSP_curCharIsEndOfCommand || (KVSP_curCharUnicode == ' ') || (KVSP_curCharUnicode == '\t')) \
 				{ \
 					/* yeah! */ \
@@ -114,7 +114,7 @@ python.begin <python code> python.end
 					if(!KVSP_curCharIsEndOfBuffer) KVSP_skipChar; \
 					break; \
 				} else { \
-					KVSP_backNChars(7); \
+					KVSP_backNChars(szInterpreterEnd.size()-1); \
 				} \
 			} else { \
 				KVSP_skipChar; \
