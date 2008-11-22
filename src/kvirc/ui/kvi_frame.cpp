@@ -561,6 +561,14 @@ void KviFrame::saveWindowProperties(KviWindow * wnd,const QString &szSection)
 
 void KviFrame::closeWindow(KviWindow *wnd)
 {
+	if (wnd->inherits("KviConsole"))
+	{
+		if (consoleCount() <= 1)
+		{
+			KVS_TRIGGER_EVENT_0(KviEvent_OnFrameWindowDestroyed,wnd);
+			KVS_TRIGGER_EVENT_0(KviEvent_OnKVIrcShutdown,wnd);
+		}
+	}
 	// notify the destruction
 	wnd->triggerDestructionEvents();
 
@@ -781,7 +789,7 @@ unsigned int KviFrame::consoleCount()
 	unsigned int count = 0;
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
 	{
-		if(wnd->type() == KVI_WINDOW_TYPE_CONSOLE)count++;
+		if (wnd) if(wnd->type() == KVI_WINDOW_TYPE_CONSOLE) count++;
 	}
 	return count;
 }

@@ -188,12 +188,6 @@ KviConsole::~KviConsole()
 
 	KVS_TRIGGER_EVENT_0(KviEvent_OnIrcContextDestroyed,this);
 
-	if(g_pFrame->consoleCount() <= 1)
-	{
-		KVS_TRIGGER_EVENT_0(KviEvent_OnFrameWindowDestroyed,this);
-		KVS_TRIGGER_EVENT_0(KviEvent_OnKVIrcShutdown,this);
-	}
-
 	//if(m_pLastIrcServer)delete m_pLastIrcServer;
 
 	delete m_pContext;
