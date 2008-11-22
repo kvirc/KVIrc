@@ -189,7 +189,7 @@ const Qt::WindowType widgettypes_cod[] = {
 		Hides this widget (and conseguently all the children).
 		See also [classfnc]$show[/classfnc]() and [classfnc]$isVisible[/classfnc].
 		!fn: $repaint()
-		Repaints the widget directly by calling [classfnc]$paintEvent[/classfnc]() immediately.[br]
+		Repaints the widget directly by calling [classfnc]$paintEvent[/classfnc]() immediately.
 		!fn: $update([<x:ingeter>,<y:integer>,<width:integer>,<height:integer>])
 		Updates enterily the widget or a rectangle.
 		This function does not cause an immediate [classfnc]$paintEvent[/classfnc](); instead it schedules a paint event for processing when KVIrc returns to the main event loop.
@@ -401,29 +401,24 @@ const Qt::WindowType widgettypes_cod[] = {
 		For some kind of widgets, setting a background pixmap may have no effect or
 		have strange results. Experiment with it.
 		To unset the background image call [classfnc]$setBackgroundColor[/classfnc]
-		!fn: $setFont(<size>,<family>,<style>)[br]
+		!fn: $setFont(<size>,<family>,<style>)
 		Set the font's size, family and stile, valid flag for style are:[br]
-		[pre]
-		italic     [br]
-		bold     [br]
-		underline      [br]
-		overline    [br]
-		strikeout  [br]
-		fixedpitch  [br]
-		[/pre]
+			italic, bold, underline, overline, strikeout, fixedpitch  [br]
+		If you just want to set a style without altering the preset font size and family, you can use $setFont() like this:[br]
+			%widget->$setFont(0,0,"bold")
 		!fn: $setWFlags(<flag1>, <flag2>, ...)
 		This function sets widget flags, given as parameters.
 		Valid flags are:
 		[pre]
-		TopLevel		- indicates that this widget is a top-level widget[br]
-		Dialog		- indicates that this widget is a top-level window that should be decorated as a dialog[br]
-		Desktop		- indicates that this widget is the desktop[br]
-		Popup		- indicates that this widget is a popup top-level window[br]
-		Title			- gives the window a title bar[br]
-		StaysOnTop	- window stays on top [br]
-		SysMenu		- add a windows system menu[br]
-		Minimize		- add a minimize button for the sysmenu style[br]
-		Maximize		- add a maximixe button for the sysmenu style[br]
+		TopLevel        - indicates that this widget is a top-level widget[br]
+		Dialog          - indicates that this widget is a top-level window that should be decorated as a dialog[br]
+		Desktop         - indicates that this widget is the desktop[br]
+		Popup           - indicates that this widget is a popup top-level window[br]
+		Title           - gives the window a title bar[br]
+		StaysOnTop      - window stays on top [br]
+		SysMenu         - add a windows system menu[br]
+		Minimize        - add a minimize button for the sysmenu style[br]
+		Maximize        - add a maximixe button for the sysmenu style[br]
 		[/pre]
 		!fn: $centerToScreen()
 		Centers the window on the screen (useful only for toplevel widgets).[br]
