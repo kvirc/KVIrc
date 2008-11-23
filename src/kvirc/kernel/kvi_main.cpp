@@ -63,7 +63,6 @@ int parseArgs(ParseArgs * a)
 	KviStr szServer;
 	KviStr szPort;
 	int idx;
-	bool strictExternalMode = false;
 
 	if(a->argc < 2)return KVI_ARGS_RETCODE_OK;
 
