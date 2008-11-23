@@ -63,6 +63,7 @@ int parseArgs(ParseArgs * a)
 	KviStr szServer;
 	KviStr szPort;
 	int idx;
+	bool strictExternalMode = false;
 
 	if(a->argc < 2)return KVI_ARGS_RETCODE_OK;
 
@@ -231,6 +232,28 @@ int parseArgs(ParseArgs * a)
 			// Qt apps are supposed to handle the params to these switches, but we'll skip arg for now
 			idx++;
 			continue;
+		}
+
+		if(kvi_strEqualCI("-external",p))
+		{
+			idx++;
+			if(idx >= a->argc)
+			{
+				debug("Option --external requires n irc:// url");
+				return KVI_ARGS_RETCODE_ERROR;
+			}
+			p = a->argv[idx];
+			if(kvi_strEqualCIN(p,"irc://",6) || kvi_strEqualCIN(p,"irc6://",7) || kvi_strEqualCIN(p,"ircs://",7) || kvi_strEqualCIN(p,"ircs6://",8))
+			{
+				KviStr tmp = QString::fromLocal8Bit(p);
+				a->szExecCommand ="openurl ";
+				tmp.replaceAll("$",""); // the urls can't contain $ signs
+				tmp.replaceAll(";",""); // the urls can't contain ; signs
+				tmp.replaceAll("%",""); // the urls can't contain % signs
+				a->szExecCommand.append(tmp);
+				return KVI_ARGS_RETCODE_OK;
+			}
+			return KVI_ARGS_RETCODE_ERROR;
 		}
 
 		if(*p != '-')

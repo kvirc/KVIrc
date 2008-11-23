@@ -385,7 +385,7 @@ void KviApp::setupUriAssociations(char * proto)
 	
 	key=storedKey+"\\Shell\\open\\command";
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,key,0,0,0,KEY_WRITE,0,&hKey,0);
-	tmp=QString(appPath+" \"%1\"").local8Bit();
+	tmp=QString(appPath+" --external \"%1\"").local8Bit();
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)tmp.data(),tmp.length());
 
 #endif
