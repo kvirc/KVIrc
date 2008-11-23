@@ -506,9 +506,7 @@ protected:
 	virtual void mouseReleaseEvent(QMouseEvent * e);
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dropEvent(QDropEvent * e);
-	virtual void inputMethodStartEvent(QInputMethodEvent * e);
-	virtual void inputMethodComposeEvent(QInputMethodEvent * e);
-	virtual void inputMethodEndEvent(QInputMethodEvent * e);
+	virtual void inputMethodEvent(QInputMethodEvent * e) ;
 	virtual void paintEvent(QPaintEvent * e);
 };
 

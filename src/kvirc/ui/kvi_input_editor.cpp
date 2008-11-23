@@ -1142,59 +1142,38 @@ void KviInputEditor::internalCursorLeft(bool bShift)
 	if(m_iFirstVisibleChar > m_iCursorPosition) m_iFirstVisibleChar--;
 }
 
-// remember the text before and after the cursor at this point, and put them
-// before and after the text inserted by IM in InputMethodEndEvent.
-//    hagabaka
-void KviInputEditor::inputMethodStartEvent(QInputMethodEvent * e)
+void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 {
+	if (m_bReadOnly) {
+		e->ignore();
+		return;
+	}
+
 	removeSelected();
-	m_iIMStart = m_iIMSelectionBegin = m_iCursorPosition;
-	m_iIMLength = 0;
-	m_bIMComposing = true;
-	e->accept();
+
+	int c = m_iCursorPosition;
+	if (e->replacementStart() <= 0)
+		c += e->commitString().length() + qMin(-e->replacementStart(), e->replacementLength());
+
+	m_iCursorPosition += e->replacementStart();
+
+	// insert commit string
+	if (e->replacementLength()) {
+		m_iIMSelectionBegin = m_iCursorPosition;
+		m_iIMLength = e->replacementLength();
+		removeSelected();
+	}
+	if (!e->commitString().isEmpty())
+	{
+		m_bIMComposing = false;
+		insertText(e->commitString());
+	} else {
+		m_bIMComposing = true;
+	}
+
+	m_iCursorPosition = c;
+	update();
 }
-
-// Whenever the IM's preedit changes, update the visuals and internal data. refer to <http://doc.trolltech.com/3.3/QInputMethodEvent.html> */
-//    hagabaka
-void KviInputEditor::inputMethodComposeEvent(QInputMethodEvent * e)
-{
-	// replace the old pre-edit string with e->text()
-	m_bUpdatesEnabled = false;
-
-	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
-
-	// update selection inside the pre-edit
-	m_iIMSelectionBegin = m_iIMStart + e->replacementStart();
-	m_iIMSelectionLength = e->replacementLength();
-	moveCursorTo(m_iIMSelectionBegin);
-
-	// repaint
-	m_bUpdatesEnabled = true;
-	repaintWithCursorOn();
-	e->accept();
-}
-
-// Input method is done; put its resulting text to where the preedit area was
-//    hagabaka
-void KviInputEditor::inputMethodEndEvent(QInputMethodEvent * e)
-{
-	// replace the preedit area with the IM result text
-	m_bUpdatesEnabled = false;
-
-	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
-
-	// move cursor to after the IM result text
-	moveCursorTo(m_iIMStart + m_iIMLength);
-
-	// repaint
-	m_bUpdatesEnabled = true;
-	repaintWithCursorOn();
-
-	// reset data
-	m_bIMComposing = false;
-	e->accept();
-}
-
 // FIXME According to <http://www.kde.gr.jp/~asaki/how-to-support-input-method.html>, if the XIM
 //  style used is OverTheTop, code needs to be added in keyPressEvent handler */
 //    hagabaka
