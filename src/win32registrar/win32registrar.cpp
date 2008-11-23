@@ -38,7 +38,7 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)(_T("Open with KVIrc")),strlen("Open with KVIrc")*2);
 	
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,_T("irc\\Shell\\open\\command"),0,0,0,KEY_WRITE,0,&hKey,0);
-	wsprintf(szBuffer,_T("%s \"%%1\""),szModuleName);
+	wsprintf(szBuffer,_T("%s --external \"%%1\""),szModuleName);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)szBuffer,wcslen(szBuffer)*2);
 
 	//IRCS://
@@ -56,7 +56,7 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)(_T("Open with KVIrc")),strlen("Open with KVIrc")*2);
 	
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,_T("ircs\\Shell\\open\\command"),0,0,0,KEY_WRITE,0,&hKey,0);
-	wsprintf(szBuffer,_T("%s \"%%1\""),szModuleName);
+	wsprintf(szBuffer,_T("%s --external \"%%1\""),szModuleName);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)szBuffer,wcslen(szBuffer)*2);
 
 	//IRC6://
@@ -74,7 +74,7 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)(_T("Open with KVIrc")),strlen("Open with KVIrc")*2);
 	
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,_T("irc6\\Shell\\open\\command"),0,0,0,KEY_WRITE,0,&hKey,0);
-	wsprintf(szBuffer,_T("%s \"%%1\""),szModuleName);
+	wsprintf(szBuffer,_T("%s --external \"%%1\""),szModuleName);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)szBuffer,wcslen(szBuffer)*2);
 
 	//IRCS6://
@@ -92,7 +92,7 @@ int APIENTRY WinMain(HINSTANCE hInst, HINSTANCE hPrevInstance,
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)(_T("Open with KVIrc")),strlen("Open with KVIrc")*2);
 	
 	RegCreateKeyEx(HKEY_CLASSES_ROOT,_T("ircs6\\Shell\\open\\command"),0,0,0,KEY_WRITE,0,&hKey,0);
-	wsprintf(szBuffer,_T("%s \"%%1\""),szModuleName);
+	wsprintf(szBuffer,_T("%s --external \"%%1\""),szModuleName);
 	RegSetValueEx( hKey,0,0,REG_SZ,(LPBYTE)szBuffer,wcslen(szBuffer)*2);
 
 //KVS
