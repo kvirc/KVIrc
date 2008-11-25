@@ -2,7 +2,6 @@
 
 SET(kvitorrent_MOC_HDRS
 	tc_statusbarapplet.h
-	tc_ktorrentdbusinterface.h
 )
 
 SET(kvitorrent_SRCS
