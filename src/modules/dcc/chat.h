@@ -24,14 +24,15 @@
 //
 //=============================================================================
 
-#include "window.h"
 #include "descriptor.h"
 #include "thread.h"
+#include "window.h"
 
-#include "kvi_window.h"
-#include "kvi_string.h"
 #include "kvi_databuffer.h"
 #include "kvi_pointerlist.h"
+#include "kvi_themedlabel.h"
+#include "kvi_string.h"
+#include "kvi_window.h"
 
 #ifdef COMPILE_SSL_SUPPORT
 	class KviSSL;
@@ -69,11 +70,14 @@ class KviDccChat : public KviDccWindow
 public:
 	KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
 	~KviDccChat();
+	QFrame * buttonContainer() { return (QFrame*)m_pButtonContainer; };
 protected:
 	KviDccChatThread       * m_pSlaveThread;
-	QSplitter              * m_pTopSplitter;
 	QString                  m_szTarget;
 	QString                  m_szLocalNick;
+	KviThemedLabel         * m_pLabel;
+	KviTalHBox             * m_pButtonBox;
+	KviTalHBox             * m_pButtonContainer;
 protected:
 	virtual const QString & target();
 	virtual void fillCaptionBuffers();

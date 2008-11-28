@@ -79,6 +79,14 @@ event(OnQueryWindowCreated,default)
 	}
 }
 
+event(OnDCCChatWindowCreated,default)
+{
+	button(w,Logging,119,Logging)
+	{
+		popup -p=$0,$1 logging;
+	}
+}
+
 event(OnChannelNickLinkClick,default)
 {
 	if($0 != "") window.insertInInputText $window $0$option(stringNickCompletionPostfix);
