@@ -99,6 +99,8 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	m_pHistory             = new KviPointerList<QString>;
 	m_pHistory->setAutoDelete(true);
 	m_bReadOnly = FALSE;
+	undoState = 0;
+	separator = FALSE;
 
 	setAttribute(Qt::WA_InputMethodEnabled, true);
 
@@ -693,13 +695,16 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 				QLabel * pLabel = new QLabel(szLabel,g_pInputPopup);
 				pLabel->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 				pLabel->setMargin(5);
-				// FIXME: This does NOT work under Qt 4.x (they seem to consider it as bad UI design)
 
 				delete pLabel;
 			}
 		}
 
-		int iId = g_pInputPopup->insertItem(__tr2qs("Cu&t") + ACCEL_KEY(X),this,SLOT(cut()));
+		int iId = g_pInputPopup->insertItem(__tr2qs("&Undo") + ACCEL_KEY(Z),this,SLOT(undo()));
+		g_pInputPopup->setItemEnabled(iId,isUndoAvailable());
+		iId = g_pInputPopup->insertItem(__tr2qs("&Redo") + ACCEL_KEY(Y),this,SLOT(redo()));
+		g_pInputPopup->setItemEnabled(iId,isRedoAvailable());
+		iId = g_pInputPopup->insertItem(__tr2qs("Cu&t") + ACCEL_KEY(X),this,SLOT(cut()));
 		g_pInputPopup->setItemEnabled(iId,hasSelection());
 		iId = g_pInputPopup->insertItem(__tr2qs("&Copy") + ACCEL_KEY(C),this,SLOT(copyToClipboard()));
 		g_pInputPopup->setItemEnabled(iId,hasSelection());
@@ -822,6 +827,10 @@ void KviInputEditor::moveCursorTo(int iIdx, bool bRepaint)
 void KviInputEditor::removeSelected()
 {
 	if(!hasSelection()) return;
+
+	addCommand(Command(SetSelection, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd));
+	addCommand (Command(DeleteSelection, m_iCursorPosition, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin), -1, -1));
+
 	m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
 	moveCursorTo(m_iSelectionBegin,false);
 	selectOneChar(-1);
@@ -834,6 +843,10 @@ void KviInputEditor::cut()
 	QClipboard * pClip = QApplication::clipboard();
 	if(!pClip) return;
 	pClip->setText(m_szTextBuffer.mid(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1),QClipboard::Clipboard);
+
+	addCommand(Command(SetSelection, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd));
+	addCommand (Command(DeleteSelection, m_iCursorPosition, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin), -1, -1));
+
 	m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
 	moveCursorTo(m_iSelectionBegin,false);
 	selectOneChar(-1);
@@ -854,6 +867,7 @@ void KviInputEditor::insertText(const QString & szTxt)
 
 	if(szText.indexOf('\n') == -1)
 	{
+		addCommand(Command(Insert, m_iCursorPosition, szText, -1, -1));
 		m_szTextBuffer.insert(m_iCursorPosition,szText);
 		m_szTextBuffer.truncate(m_iMaxBufferSize);
 		moveCursorTo(m_iCursorPosition + szText.length());
@@ -1174,9 +1188,7 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 	m_iCursorPosition = c;
 	update();
 }
-// FIXME According to <http://www.kde.gr.jp/~asaki/how-to-support-input-method.html>, if the XIM
-//  style used is OverTheTop, code needs to be added in keyPressEvent handler */
-//    hagabaka
+
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
 {
 	// disable the keyPress handling when IM is in composition.
@@ -1321,6 +1333,12 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			break;
 			case Qt::Key_V:
 				if(!m_bReadOnly) pasteClipboardWithConfirmation();
+			break;
+			case Qt::Key_Z:
+				if(!m_bReadOnly) undo();
+			break;
+			case Qt::Key_Y:
+				if(!m_bReadOnly) redo();
 			break;
 			//case Qt::Key_Backspace:
 			case Qt::Key_W:
@@ -1914,6 +1932,9 @@ void KviInputEditor::insertChar(QChar c)
 	}
 	selectOneChar(-1);
 	m_szTextBuffer.insert(m_iCursorPosition,c);
+
+	addCommand(Command(Insert, m_iCursorPosition, c, -1, -1));
+
 	moveRightFirstVisibleCharToShowCursor();
 	m_iCursorPosition++;
 	repaintWithCursorOn();
@@ -1950,6 +1971,7 @@ void KviInputEditor::repaintWithCursorOn()
 
 void KviInputEditor::selectOneChar(int iPos)
 {
+	separate();
 	m_iSelectionBegin = iPos;
 	m_iSelectionEnd   = iPos;
 }
@@ -2015,6 +2037,101 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx, bool bContentsCoords)
 
 	return iCurXPos;
 }
+
+void KviInputEditor::undo(int iUntil)
+{
+	if (!isUndoAvailable())
+		return;
+	selectOneChar(-1);
+	while (undoState && undoState > iUntil)
+	{
+		Command& cmd = history[--undoState];
+		switch (cmd.type) {
+			case Insert:
+				m_szTextBuffer.remove(cmd.pos, cmd.us.size());
+				moveCursorTo(cmd.pos);
+				break;
+			case SetSelection:
+				m_iSelectionBegin = cmd.selStart;
+				m_iSelectionEnd   = cmd.selEnd;
+				moveCursorTo(cmd.pos);
+				break;
+			case Remove:
+			case RemoveSelection:
+				m_szTextBuffer.insert(cmd.pos, cmd.us);
+				moveCursorTo(cmd.pos + cmd.us.size());
+				break;
+			case Delete:
+			case DeleteSelection:
+				m_szTextBuffer.insert(cmd.pos, cmd.us);
+				moveCursorTo(cmd.pos);
+				break;
+			case Separator:
+				continue;
+		}
+		if (iUntil < 0 && undoState)
+		{
+			Command& next = history[undoState-1];
+			if (next.type != cmd.type && next.type < RemoveSelection && (cmd.type < RemoveSelection || next.type == Separator))
+				break;
+		}
+	}
+}
+
+void KviInputEditor::redo()
+{
+	if (!isRedoAvailable())
+		return;
+	selectOneChar(-1);
+	while (undoState < (int)history.size())
+	{
+		Command& cmd = history[undoState++];
+		switch (cmd.type)
+		{
+			case Insert:
+				m_szTextBuffer.insert(cmd.pos, cmd.us);
+				moveCursorTo(cmd.pos+cmd.us.size());
+				break;
+			case SetSelection:
+				m_iSelectionBegin = cmd.selStart;
+				m_iSelectionEnd   = cmd.selEnd;
+				moveCursorTo(cmd.pos);
+				break;
+			case Remove:
+			case Delete:
+			case RemoveSelection:
+			case DeleteSelection:
+				m_szTextBuffer.remove(cmd.pos, cmd.us.size());
+				moveCursorTo(cmd.pos);
+				break;
+			case Separator:
+				m_iSelectionBegin = cmd.selStart;
+				m_iSelectionEnd   = cmd.selEnd;
+				moveCursorTo(cmd.pos);
+				break;
+		}
+		if (undoState < (int)history.size())
+		{
+			Command& next = history[undoState];
+			if (next.type != cmd.type && cmd.type < RemoveSelection && next.type != Separator
+				&& (next.type < RemoveSelection || cmd.type == Separator))
+				break;
+		}
+	}
+}
+
+void KviInputEditor::addCommand(const Command& cmd)
+{
+    if (separator && undoState && history[undoState-1].type != Separator) {
+        history.resize(undoState + 2);
+        history[undoState++] = Command(Separator, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd);
+    } else {
+        history.resize(undoState + 1);
+    }
+    separator = false;
+    history[undoState++] = cmd;
+}
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_input_editor.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
@@ -2098,6 +2215,8 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx, bool bContentsCoords)
 		Ctrl+U: Inserts the 'underline' mIRC text control character<br>
 		Ctrl+O: Inserts the 'reset' mIRC text control character<br>
 		Ctrl+P: Inserts the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line<br>
+		Ctrl+Z: Undo the last action<br>
+		Ctrl+Y: Redo the last undoed action<br>
 		Ctrl+C: Copies the selected text to clipboard<br>
 		Ctrl+X: Cuts the selected text<br>
 		Ctrl+V: Pastes the clipboard contents (same as middle mouse click)<br>

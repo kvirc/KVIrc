@@ -146,6 +146,19 @@ protected:
 	QWidget                 * m_pInputParent;
 	KviTalPopupMenu         * m_pIconMenu;
 	bool                      m_bReadOnly;
+
+	// undo/redo handling
+	enum CommandType { Separator, Insert, Remove, Delete, RemoveSelection, DeleteSelection, SetSelection };
+	struct Command {
+		inline Command() {}
+		inline Command(CommandType t, int p, QString c, int ss, int se) : type(t),us(c),pos(p),selStart(ss),selEnd(se) {}
+		uint type : 4;
+		QString us;
+		int pos, selStart, selEnd;
+	};
+	QVector<Command>          history;
+	int                       undoState;
+	bool                      separator;
 public:
 	/**
 	* \brief Returns the height of the editor
@@ -403,6 +416,32 @@ private:
 	* \return void
 	*/
 	void internalCursorLeft(bool bShift);
+
+	/**
+	* \brief Returns true is there are some action in the undo stack
+	* \return bool
+	*/
+	inline bool isUndoAvailable() const { return !m_bReadOnly && undoState; }
+
+	/**
+	* \brief Returns true is there are some action in the redo stack
+	* \return bool
+	*/
+	inline bool isRedoAvailable() const { return !m_bReadOnly && undoState < (int)history.size(); }
+
+	/**
+	* \brief Inserts an action separator in the undo stack
+	* \return void
+	*/
+	inline void separate() { separator = true; }
+
+	/**
+	* \brief Inserts one action in the undo stack
+	* \param cmd The command struct representing the action
+	* \return void
+	*/
+	void addCommand(const Command& cmd);
+
 public slots:
 	/**
 	* \brief Opens the icon popup with icon description
@@ -437,6 +476,19 @@ public slots:
 	* \return void
 	*/
 	void cut();
+
+	/**
+	* \brief Undo the last action
+	* \param iUntil Undo all actions up to the one with id iUntil
+	* \return void
+	*/
+	void undo(int iUntil = -1);
+
+	/**
+	* \brief Redo the last undo-ed action
+	* \return void
+	*/
+	void redo();
 
 	/**
 	* \brief Pastes the text to the system clipboard
