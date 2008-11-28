@@ -149,15 +149,12 @@ extern "C" void xs_init(pTHX)
 bool KviPerlInterpreter::init()
 {
 	if(m_pInterpreter)done();
-	int daArgc = 4;
-	char * daArgs[] = { "yo", "-e", "0", "-w" };
-	char ** daEnv=NULL;
-	PERL_SYS_INIT3(&daArgc,(char ***)&daArgs,&daEnv);
 	m_pInterpreter = perl_alloc();
 	if(!m_pInterpreter)return false;
 	PERL_SET_CONTEXT(m_pInterpreter);
 	PL_perl_destruct_level = 1;
 	perl_construct(m_pInterpreter);
+	char * daArgs[] = { "yo", "-e", "0", "-w" };
 	perl_parse(m_pInterpreter,xs_init,4,daArgs,NULL);
 	QString szInitCode;
 
@@ -202,7 +199,6 @@ void KviPerlInterpreter::done()
 	PL_perl_destruct_level = 1;
 	perl_destruct(m_pInterpreter);
 	perl_free(m_pInterpreter);
-	PERL_SYS_TERM();
 	m_pInterpreter = 0;
 }
 
