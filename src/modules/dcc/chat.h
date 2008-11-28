@@ -69,11 +69,14 @@ class KviDccChat : public KviDccWindow
 public:
 	KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name);
 	~KviDccChat();
+	QFrame * buttonContainer() { return m_pButtonContainer; };
 protected:
 	KviDccChatThread       * m_pSlaveThread;
-	QSplitter              * m_pTopSplitter;
 	QString                  m_szTarget;
 	QString                  m_szLocalNick;
+	KviThemedLabel         * m_pLabel;
+	KviTalHBox             * m_pButtonBox;
+	KviTalHBox             * m_pButtonContainer;
 protected:
 	virtual const QString & target();
 	virtual void fillCaptionBuffers();

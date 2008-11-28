@@ -89,18 +89,28 @@ extern KviDccBroker * g_pDccBroker;
 KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 : KviDccWindow(KVI_WINDOW_TYPE_DCCCHAT,pFrm,name,dcc)
 {
-	m_pTopSplitter = new QSplitter(Qt::Horizontal,this,"top_splitter");
-	KviThemedLabel * dummy;
-	dummy = new KviThemedLabel(m_pTopSplitter,"dummy_label");
-	KviTalVBox * box = new KviTalVBox(m_pTopSplitter);
+	m_pButtonBox = new KviTalHBox(this);
+
+	m_pLabel = new KviThemedLabel(m_pButtonBox,"dcc_chat_label");
+	m_pLabel->setAutoHeight(1);
+	m_pLabel->setText(name);
+	m_pButtonBox->setStretchFactor(m_pLabel,1);
+
+	m_pButtonContainer= new KviTalHBox(m_pButtonBox);
+	createTextEncodingButton(m_pButtonContainer);
+
+#ifdef COMPILE_USE_QT4
+	m_pSplitter = new QSplitter(Qt::Horizontal,this,"main_splitter");
+#else
+	m_pSplitter = new QSplitter(QSplitter::Horizontal,this,"main_splitter");
+#endif
+	m_pIrcView = new KviIrcView(m_pSplitter,pFrm,this);
+	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 
 #ifdef COMPILE_CRYPT_SUPPORT
-	createCryptControllerButton(box);
+	createCryptControllerButton(m_pButtonContainer);
 #endif
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this,"splitter");
-	m_pIrcView  = new KviIrcView(m_pSplitter,pFrm,this);
-	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
 	m_pInput    = new KviInput(this);
 
 	//setFocusHandler(m_pInput,this);
@@ -482,8 +492,8 @@ bool KviDccChat::event(QEvent *e)
 void KviDccChat::resizeEvent(QResizeEvent *e)
 {
 	int hght = m_pInput->heightHint();
-	int hght2 = m_pTopSplitter->sizeHint().height();
-	m_pTopSplitter->setGeometry(0,0,width(),hght2);
+	int hght2 = m_pButtonBox->sizeHint().height();
+	m_pButtonBox->setGeometry(0,0,width(),hght2);
 	m_pSplitter->setGeometry(0,hght2,width(),height() - (hght + hght2));
 	m_pInput->setGeometry(0,height() - hght,width(),hght);
 }
