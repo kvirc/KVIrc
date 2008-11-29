@@ -272,7 +272,7 @@ static bool my_kvs_fnc_ip(KviKvsModuleFunctionCall * c)
 	@type:
 		function
 	@title:
-		$my.serverIsSSL
+		$my.serverIsIPV6
 	@short:
 		Returns 1 if the current server connection use IPV6.
 	@syntax:

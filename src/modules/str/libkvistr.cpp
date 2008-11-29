@@ -1655,13 +1655,17 @@ static bool str_kvs_fnc_join(KviKvsModuleFunctionCall * c)
 		<array> $str.grep(<match:string>,<strings:array>[,<flags:string>])
 	@description:
 		Returns an array with the elements of <strings> which match the string <match>.
-		<flags> can be any combination of the characters 's','w' and 'r'.[br]
+		<flags> can be any combination of the characters 's','w','r' and 'p'.[br]
 		If the  flag 'w' is specified then <match> is assumed to be a wildcard regular
 		expression (with * and ? wildcards). If the flag 'r' is specified
 		then <match> is assumed to be a standard regular expression. If none of
 		'w' and 'r' is specified then <match> is treated as a simple string to be
 		searched in each element of the <strings> array. 'r' takes precedence over 'w'.
 		If the flag 's' is specified the matches are case sensitive.[br]
+		If the flag 'p' is specified the returned array will contain at its index 0
+		the text that matched the full pattern, and in the following array indexes
+		the captured texts that matched each parenthesized subpattern.[br]
+		The 'p' flag has effect only if used toghether with the 'r' flag.[br]
 		Note that since almost any other variable type can be automatically cast
 		to an array, then you can use this function also on scalars or hashes.
 	@examples:
@@ -1695,6 +1699,7 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 
 	bool bCaseSensitive = szFlags.indexOf('s',0,Qt::CaseInsensitive) != -1;
 	bool bRegexp = szFlags.indexOf('r',0,Qt::CaseInsensitive) != -1;
+	bool bSubPatterns = szFlags.indexOf('p',0,Qt::CaseInsensitive) != -1;
 	bool bWild = szFlags.indexOf('w',0,Qt::CaseInsensitive) != -1;
 	int idx = 0;
 	int cnt = a->size();
@@ -1712,8 +1717,17 @@ static bool str_kvs_fnc_grep(KviKvsModuleFunctionCall * c)
 				v->asString(sz);
 				if(re.indexIn(sz) != -1)
 				{
-					n->set(i,new KviKvsVariant(sz));
-					i++;
+					if(bSubPatterns)
+					{
+						for (int j = 0; j < re.capturedTexts().size(); ++j)
+						{
+							n->set(i,new KviKvsVariant(re.capturedTexts().at(i)));
+							i++;
+						}
+					} else {
+						n->set(i,new KviKvsVariant(sz));
+						i++;
+					}
 				}
 			}
 			idx++;
