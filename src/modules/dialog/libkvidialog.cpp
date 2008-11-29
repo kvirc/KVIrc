@@ -63,8 +63,8 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 : QMessageBox(0),
 	KviKvsCallbackObject("dialog.message",pWindow,szCode,pMagicParams,0)
 {
+	setObjectName("dialog_message");
 	setWindowTitle(szCaption);
-	setAttribute(Qt::WA_DeleteOnClose,false);
 	setText(szText);
 	setIcon(QMessageBox::NoIcon);
 	QMessageBox::StandardButtons buttons;
@@ -91,7 +91,6 @@ KviKvsCallbackMessageBox::KviKvsCallbackMessageBox(
 
 KviKvsCallbackMessageBox::~KviKvsCallbackMessageBox()
 {
-	debug("Deleting");
 	g_pDialogModuleDialogList->removeRef(this);
 }
 
@@ -111,7 +110,7 @@ void KviKvsCallbackMessageBox::done(int code)
 	params.append(new KviKvsVariant(iVal));
 
 	execute(&params);
-	delete this;
+	deleteLater();
 }
 
 
@@ -206,6 +205,7 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 		KviWindow * pWindow,bool modal)
 	: QDialog(), KviKvsCallbackObject("dialog.textinput",pWindow,szCode,pMagicParams,0)
 {
+	setObjectName("dialog_textinput");
 	g_pDialogModuleDialogList->append(this);
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)));
 	setModal(modal);
@@ -367,7 +367,7 @@ void KviKvsCallbackTextInput::done(int code)
 
 	//QDialog::done(code);
 
-	delete this;
+	deleteLater();
 }
 
 void KviKvsCallbackTextInput::showEvent(QShowEvent *e)
@@ -484,6 +484,7 @@ KviKvsCallbackFileDialog::KviKvsCallbackFileDialog(
 {
 	g_pDialogModuleDialogList->append(this);
 	setWindowTitle(szCaption);
+	setObjectName("dialog_file");
 }
 
 KviKvsCallbackFileDialog::~KviKvsCallbackFileDialog()
@@ -522,19 +523,8 @@ void KviKvsCallbackFileDialog::done(int code)
 
 	hide(); // ensure we're hidden
 
-	// ugly workaround for the Qt filedialog "destructive accept() before this reference" bug
-	// we can't delete ourselves in this moment.... :(((
-	// ...so skip out of this call stack and ask KviApp to destroy us just
-	// when the control returns to the main loop.
-	// If the module is unloaded then , KviApp will notice it and will NOT delete the dialog
-	this->deleteLater();
-	//g_pApp->collectGarbage(this);
-
-	// calling dialog.unload here WILL lead to a sigsegv (this is SURE
-	// with a lot of qt versions that have the ugly file dialog "accept before this reference" bug)
-	// to avoid it, we can execute the callback triggered by a timer...
-	// ... umpf ...
 	execute(&params);
+	deleteLater();
 }
 
 /*
@@ -628,6 +618,7 @@ KviKvsCallbackImageDialog::KviKvsCallbackImageDialog(
 	: KviImageDialog(0,szCaption,iType,0,szInitialSelection,iMaxSize,modal), KviKvsCallbackObject("dialog.image",pWindow,szCode,pMagicParams,0)
 {
 	g_pDialogModuleDialogList->append(this);
+	setObjectName("dialog_image");
 }
 
 KviKvsCallbackImageDialog::~KviKvsCallbackImageDialog()
@@ -649,18 +640,8 @@ void KviKvsCallbackImageDialog::done(int code)
 
 	hide(); // ensure we're hidden
 
-	// ugly workaround for the Qt filedialog "destructive accept() before this reference" bug
-	// we can't delete ourselves in this moment.... :(((
-	// ...so skip out of this call stack and ask KviApp to destroy us just
-	// when the control returns to the main loop.
-	// If the module is unloaded then , KviApp will notice it and will NOT delete the dialog
-	//g_pApp->collectGarbage(this);
-	this->deleteLater();
-	// calling dialog.unload here WILL lead to a sigsegv (this is SURE
-	// with a lot of qt versions that have the ugly file dialog "accept before this reference" bug)
-	// to avoid it, we can execute the callback triggered by a timer...
-	// ... umpf ...
 	execute(&params);
+	deleteLater();
 }
 
 
@@ -702,7 +683,7 @@ void KviKvsCallbackImageDialog::done(int code)
 		[example]
 			dialog.image(f,Choose an image file,/home/pragma/,"256000")
 			{
-				if("$0" != "")run kview $0
+				if("$0" != "")run okular $0
 			}
 		[/example]
 */
