@@ -80,7 +80,7 @@ KviCtcpFloodProtectionOptionsWidget::KviCtcpFloodProtectionOptionsWidget(QWidget
 
 	createLayout();
 
-	KviBoolSelector * b = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use flood protection (recommended)","options"),KviOption_boolUseCtcpFloodProtection);
+	KviBoolSelector * b = addBoolSelector(0,0,1,0,__tr2qs_ctx("Use flood protection for CTCP requests (recommended)","options"),KviOption_boolUseCtcpFloodProtection);
 	mergeTip(b,__tr2qs_ctx("<center>This option makes KVIrc only respond to a limited number of CTCP requests within a specified time interval, to prevent \"flooding\" CTCP messages.</center>","options"));
 
 	KviUIntSelector * u = addUIntSelector(0,1,0,1,__tr2qs_ctx("Allow up to:","options"),KviOption_uintMaxCtcpRequests,0,10000,3,KVI_OPTION_BOOL(KviOption_boolUseCtcpFloodProtection));
@@ -93,7 +93,7 @@ KviCtcpFloodProtectionOptionsWidget::KviCtcpFloodProtectionOptionsWidget(QWidget
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></center>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
-	KviTalGroupBox * g = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Ignored Requests","options"));
+	KviTalGroupBox * g = addGroupBox(0,2,1,2,Qt::Horizontal,__tr2qs_ctx("Ignored Ctcp Requests","options"));
 	addBoolSelector(g,__tr2qs_ctx("PING","options"),KviOption_boolIgnoreCtcpPing);
 	addBoolSelector(g,__tr2qs_ctx("FINGER","options"),KviOption_boolIgnoreCtcpFinger);
 	addBoolSelector(g,__tr2qs_ctx("CLIENTINFO","options"),KviOption_boolIgnoreCtcpClientinfo);
