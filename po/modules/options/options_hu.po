@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-18 16:45+0100\n"
+"POT-Creation-Date: 2008-11-30 18:59+0100\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_dcc.cpp:277 src/modules/options/optw_avatar.cpp:72
 msgid " bytes"
 msgstr " bájt"
 
@@ -37,9 +37,9 @@ msgstr " perc"
 
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
+#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_dcc.cpp:268
 #: src/modules/options/optw_connection.cpp:151
-#: src/modules/options/optw_dcc.cpp:268 src/modules/options/optw_lag.cpp:45
-#: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr "miliszek"
 
@@ -52,11 +52,11 @@ msgstr " sor"
 msgid " requests"
 msgstr "kérés"
 
-#: src/modules/options/optw_avatar.cpp:96
 #: src/modules/options/optw_ctcpfloodprotection.cpp:92
+#: src/modules/options/optw_dcc.cpp:140
 #: src/modules/options/optw_connection.cpp:85
 #: src/modules/options/optw_connection.cpp:149
-#: src/modules/options/optw_dcc.cpp:140
+#: src/modules/options/optw_avatar.cpp:96
 msgid " sec"
 msgstr " mp"
 
@@ -92,9 +92,9 @@ msgstr "Új Proxy"
 msgid "&New Server"
 msgstr "Új szerver"
 
-#: src/modules/options/optw_servers.cpp:337
+#: src/modules/options/optw_servers.cpp:337 src/modules/options/dialog.cpp:228
 #: src/modules/options/optw_identity.cpp:232
-#: src/modules/options/dialog.cpp:228 src/modules/options/container.cpp:64
+#: src/modules/options/container.cpp:64
 msgid "&OK"
 msgstr "&Ok"
 
@@ -1578,15 +1578,14 @@ msgstr "Hozzáadás"
 msgid "Add Profile"
 msgstr "Profil"
 
-#: src/modules/options/optw_nickserv.cpp:264
 #: src/modules/options/optw_servers.cpp:303
+#: src/modules/options/optw_nickserv.cpp:264
 msgid "Add Rule"
 msgstr "Szabály Hozzáadása"
 
-#: src/modules/options/optw_dcc.h:58 src/modules/options/optw_dcc.h:102
-#: src/modules/options/optw_irc.h:57 src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_identity.h:203
-#: src/modules/options/optw_connection.h:45
+#: src/modules/options/optw_connection.h:45 src/modules/options/optw_dcc.h:58
+#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_channel.h:64
+#: src/modules/options/optw_irc.h:57 src/modules/options/optw_identity.h:203
 msgid "Advanced"
 msgstr "Haladó"
 
@@ -1794,8 +1793,8 @@ msgstr "Távol:"
 msgid "Background"
 msgstr "Háttér"
 
-#: src/modules/options/optw_userlist.cpp:126
 #: src/modules/options/optw_windowlist.cpp:118
+#: src/modules/options/optw_userlist.cpp:126
 msgid "Background Colors"
 msgstr "Háttér Színek"
 
@@ -1819,8 +1818,8 @@ msgid "Background image"
 msgstr "Háttér kép"
 
 #: src/modules/options/optw_ircview.cpp:54
-#: src/modules/options/optw_userlist.cpp:131
 #: src/modules/options/optw_windowlist.cpp:122
+#: src/modules/options/optw_userlist.cpp:131
 msgid "Background image:"
 msgstr "Háttér kép: "
 
@@ -1845,9 +1844,9 @@ msgid "Blend color:"
 msgstr "Keverés színe: "
 
 #: src/modules/options/optw_ircview.cpp:71
-#: src/modules/options/optw_userlist.cpp:148
-#: src/modules/options/optw_windowlist.cpp:139
 #: src/modules/options/optw_input.cpp:63
+#: src/modules/options/optw_windowlist.cpp:139
+#: src/modules/options/optw_userlist.cpp:148
 msgid "Bottom"
 msgstr "Lent"
 
@@ -1875,23 +1874,23 @@ msgstr "CTCP Válaszok"
 msgid "Cache IP address"
 msgstr "Ip cím tárolása"
 
-#: src/modules/options/optw_nickserv.cpp:128
 #: src/modules/options/optw_servers.cpp:343
 #: src/modules/options/optw_servers.cpp:827
-#: src/modules/options/optw_identity.cpp:95
+#: src/modules/options/optw_nickserv.cpp:128
+#: src/modules/options/dialog.cpp:243 src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/dialog.cpp:243 src/modules/options/container.cpp:72
+#: src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "Mégsem"
 
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
-#: src/modules/options/optw_userlist.cpp:144
-#: src/modules/options/optw_userlist.cpp:149
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_userlist.cpp:144
+#: src/modules/options/optw_userlist.cpp:149
 msgid "Center"
 msgstr "Közép"
 
@@ -2005,9 +2004,8 @@ msgid "Commit all changes immediately."
 msgstr "Minden változás alkalmazása azonnal."
 
 #: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_proxy.cpp:106
+#: src/modules/options/optw_proxy.cpp:106 src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
-#: src/modules/options/optw_lag.cpp:43
 msgid "Configuration"
 msgstr "Beállítások"
 
@@ -2142,8 +2140,8 @@ msgstr "Törlés"
 msgid "Delete Profile"
 msgstr "Szabály törlése"
 
-#: src/modules/options/optw_nickserv.cpp:272
 #: src/modules/options/optw_servers.cpp:312
+#: src/modules/options/optw_nickserv.cpp:272
 msgid "Delete Rule"
 msgstr "Szabály törlése"
 
@@ -2240,8 +2238,8 @@ msgstr "Csatorna topic kiírása"
 msgid "Edit Profile"
 msgstr "Profil"
 
-#: src/modules/options/optw_nickserv.cpp:268
 #: src/modules/options/optw_servers.cpp:308
+#: src/modules/options/optw_nickserv.cpp:268
 msgid "Edit Rule"
 msgstr "Szabály Szerkesztése"
 
@@ -2262,8 +2260,8 @@ msgstr "Mellőzés engedélyezése "
 msgid "Enable Network Profiles"
 msgstr "Hálózati Tulajdonságok"
 
-#: src/modules/options/optw_nickserv.cpp:232
 #: src/modules/options/optw_servers.cpp:275
+#: src/modules/options/optw_nickserv.cpp:232
 msgid "Enable NickServ Identification"
 msgstr "NickServ Azonosítás engedélyezése"
 
@@ -2388,8 +2386,8 @@ msgid "Failed to start the download"
 msgstr "Letöltés megkezdése sikertelen"
 
 #: src/modules/options/optw_windowlist.h:98
-#: src/modules/options/optw_ircview.h:70
 #: src/modules/options/optw_userlist.h:103
+#: src/modules/options/optw_ircview.h:70
 msgid "Features"
 msgstr "Lehetőségek"
 
@@ -2422,15 +2420,15 @@ msgid "Flood Protection"
 msgstr "Flood Védelem"
 
 #: src/modules/options/optw_topiclabel.cpp:36
-#: src/modules/options/optw_interfacelookglobal.cpp:196
 #: src/modules/options/optw_input.cpp:38
+#: src/modules/options/optw_interfacelookglobal.cpp:196
 msgid "Font"
 msgstr "Betűtípus"
 
 #: src/modules/options/optw_ircview.cpp:51
-#: src/modules/options/optw_userlist.cpp:52
 #: src/modules/options/optw_windowlist.cpp:84
 #: src/modules/options/optw_windowlist.cpp:245
+#: src/modules/options/optw_userlist.cpp:52
 msgid "Font:"
 msgstr "Betűtípus: "
 
@@ -2470,9 +2468,9 @@ msgstr "Nem:"
 
 #: src/modules/options/optw_servers.cpp:213
 #: src/modules/options/optw_messages.cpp:74 src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88 src/modules/options/optw_irc.h:43
+#: src/modules/options/optw_dcc.h:88
 #: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_channel.h:52
+#: src/modules/options/optw_channel.h:52 src/modules/options/optw_irc.h:43
 #: src/modules/options/optw_identity.h:154
 msgid "General"
 msgstr "Általános"
@@ -2571,8 +2569,8 @@ msgid "Horizontal Alignment:"
 msgstr "Vízszintes elhelyezés:"
 
 #: src/modules/options/optw_ircview.cpp:56
-#: src/modules/options/optw_windowlist.cpp:124
 #: src/modules/options/optw_input.cpp:48
+#: src/modules/options/optw_windowlist.cpp:124
 msgid "Horizontal align:"
 msgstr "Vízszintes elhelyezés:"
 
@@ -2626,9 +2624,9 @@ msgstr "Azonosító Szolgáltatás"
 msgid "Ident username:"
 msgstr "Azonosító felhasználónév: "
 
+#: src/modules/options/optw_servers.cpp:290
 #: src/modules/options/optw_nickserv.cpp:89
 #: src/modules/options/optw_nickserv.cpp:247
-#: src/modules/options/optw_servers.cpp:290
 msgid "Identify Command"
 msgstr "Azonosító Parancs"
 
@@ -2651,7 +2649,8 @@ msgid "Ignore requests if no avatar is set"
 msgstr "Kérés mellőzése, ha nincs avatar beállítva"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:96
-msgid "Ignored Requests"
+#, fuzzy
+msgid "Ignored Ctcp Requests"
 msgstr "Mellőzött Kérések"
 
 #: src/modules/options/optw_avatar.cpp:52
@@ -2779,9 +2778,9 @@ msgid "Languages:"
 msgstr "Beszélt nyelvek:"
 
 #: src/modules/options/optw_ircview.cpp:65
-#: src/modules/options/optw_userlist.cpp:142
-#: src/modules/options/optw_windowlist.cpp:133
 #: src/modules/options/optw_input.cpp:57
+#: src/modules/options/optw_windowlist.cpp:133
+#: src/modules/options/optw_userlist.cpp:142
 msgid "Left"
 msgstr "Bal"
 
@@ -3103,19 +3102,19 @@ msgstr "NickServ"
 msgid "NickServ Authentication Rule"
 msgstr "NickServ Azonosítási Szabály"
 
+#: src/modules/options/optw_servers.cpp:288
 #: src/modules/options/optw_nickserv.cpp:63
 #: src/modules/options/optw_nickserv.cpp:245
-#: src/modules/options/optw_servers.cpp:288
 msgid "NickServ Mask"
 msgstr "NickServ Maszkja"
 
-#: src/modules/options/optw_nickserv.cpp:246
 #: src/modules/options/optw_servers.cpp:289
+#: src/modules/options/optw_nickserv.cpp:246
 msgid "NickServ Request Mask"
 msgstr "NickServ maszkja"
 
-#: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_servers.cpp:287
+#: src/modules/options/optw_nickserv.cpp:243
 #: src/modules/options/optw_identity.cpp:695
 msgid "Nickname"
 msgstr "Név"
@@ -3155,11 +3154,11 @@ msgstr "Nincs ilyen opció lap osztály név%Q"
 msgid "Normal"
 msgstr "Normál"
 
-#: src/modules/options/optw_userlist.cpp:55
-#: src/modules/options/optw_userlist.cpp:127
 #: src/modules/options/optw_windowlist.cpp:88
 #: src/modules/options/optw_windowlist.cpp:119
 #: src/modules/options/optw_windowlist.cpp:247
+#: src/modules/options/optw_userlist.cpp:55
+#: src/modules/options/optw_userlist.cpp:127
 msgid "Normal:"
 msgstr "Normál: "
 
@@ -3187,16 +3186,16 @@ msgstr "Értesítés befejezéskor az értesítőben"
 msgid "Notify failed DCC handshakes to the remote end"
 msgstr "Távoli kliens értesítésítése DCC kézfogás sikertelenségéről"
 
+#: src/modules/options/optw_servers.cpp:821
 #: src/modules/options/optw_nickserv.cpp:133
 #: src/modules/options/optw_nickserv.cpp:154
-#: src/modules/options/optw_servers.cpp:821
 #: src/modules/options/optw_identity.cpp:910
 #: src/modules/options/optw_identity.cpp:974
 msgid "OK"
 msgstr "OK"
 
-#: src/modules/options/optw_identity.cpp:98
 #: src/modules/options/optw_textencoding.cpp:160
+#: src/modules/options/optw_identity.cpp:98
 msgid "Ok"
 msgstr "Ok"
 
@@ -3440,13 +3439,13 @@ msgstr "Privát kulcs helye: "
 msgid "Private key password:"
 msgstr "Privát kulcs jelszava: "
 
-#: src/modules/options/optw_query.cpp:43
 #: src/modules/options/optw_antispam.cpp:40
+#: src/modules/options/optw_query.cpp:43
 msgid "Private messages"
 msgstr "Privát üzenetekre"
 
-#: src/modules/options/optw_query.cpp:50
 #: src/modules/options/optw_antispam.cpp:42
+#: src/modules/options/optw_query.cpp:50
 msgid "Private notices"
 msgstr "Privát értesítőkre"
 
@@ -3659,9 +3658,9 @@ msgid "Restrict alert"
 msgstr "Szigorú figyelmeztettés"
 
 #: src/modules/options/optw_ircview.cpp:66
-#: src/modules/options/optw_userlist.cpp:143
-#: src/modules/options/optw_windowlist.cpp:134
 #: src/modules/options/optw_input.cpp:58
+#: src/modules/options/optw_windowlist.cpp:134
+#: src/modules/options/optw_userlist.cpp:143
 msgid "Right"
 msgstr "Jobb"
 
@@ -3709,10 +3708,10 @@ msgstr "Szkript Motor"
 msgid "Select message levels to notify"
 msgstr "Üzenet szint kiválasztása értesítéshez"
 
-#: src/modules/options/optw_userlist.cpp:56
-#: src/modules/options/optw_userlist.cpp:128
 #: src/modules/options/optw_windowlist.cpp:89
 #: src/modules/options/optw_windowlist.cpp:120
+#: src/modules/options/optw_userlist.cpp:56
+#: src/modules/options/optw_userlist.cpp:128
 msgid "Selected:"
 msgstr "Kiválasztott: "
 
@@ -4049,8 +4048,8 @@ msgstr ""
 msgid "This allows you to select the sound system to be used with KVIrc."
 msgstr "Ezzel kiválaszhatod a KVIrc által használt hangrendszert"
 
-#: src/modules/options/optw_nickserv.cpp:235
 #: src/modules/options/optw_servers.cpp:279
+#: src/modules/options/optw_nickserv.cpp:235
 msgid "This check enables the automatic identification with NickServ"
 msgstr "Ezzel engedélyezheted az automatikus NickServ azonosítást"
 
@@ -4192,11 +4191,11 @@ msgstr ""
 
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
-#: src/modules/options/optw_userlist.cpp:141
-#: src/modules/options/optw_userlist.cpp:146
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_userlist.cpp:141
+#: src/modules/options/optw_userlist.cpp:146
 msgid "Tile"
 msgstr "Rendezés"
 
@@ -4221,9 +4220,9 @@ msgid "Tools"
 msgstr "Eszközök"
 
 #: src/modules/options/optw_ircview.cpp:70
-#: src/modules/options/optw_userlist.cpp:147
-#: src/modules/options/optw_windowlist.cpp:138
 #: src/modules/options/optw_input.cpp:62
+#: src/modules/options/optw_windowlist.cpp:138
+#: src/modules/options/optw_userlist.cpp:147
 msgid "Top"
 msgstr "Fent"
 
@@ -4372,7 +4371,8 @@ msgid "Use flat buttons"
 msgstr "Sima gombok használata"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:83
-msgid "Use flood protection (recommended)"
+#, fuzzy
+msgid "Use flood protection for CTCP requests (recommended)"
 msgstr "Flood védelem használata (ajánlott)"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:41
@@ -4465,9 +4465,9 @@ msgstr "Felhasználónév:"
 
 #: src/modules/options/optw_servers.cpp:130
 #: src/modules/options/optw_servers.cpp:500
+#: src/modules/options/optw_proxy.cpp:117
 #: src/modules/options/optw_identity.cpp:316
 #: src/modules/options/optw_identity.cpp:886
-#: src/modules/options/optw_proxy.cpp:117
 msgid "Username:"
 msgstr "Felhasználónév:"
 
@@ -4488,8 +4488,8 @@ msgid "Vertical Alignment:"
 msgstr "Függőleges elhelyezés:"
 
 #: src/modules/options/optw_ircview.cpp:60
-#: src/modules/options/optw_windowlist.cpp:128
 #: src/modules/options/optw_input.cpp:52
+#: src/modules/options/optw_windowlist.cpp:128
 msgid "Vertical align:"
 msgstr "Függőleges elhelyezés:"
 

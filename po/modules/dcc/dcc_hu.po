@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-13 02:15+0100\n"
+"POT-Creation-Date: 2008-11-30 18:59+0100\n"
 "PO-Revision-Date: 2007-10-27 23:04+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -210,7 +210,7 @@ msgstr "Aktuális codec: %s"
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Passzív DCC %1 kapcsolat létrehozása"
 
-#: src/modules/dcc/chat.cpp:158
+#: src/modules/dcc/chat.cpp:161
 #, c-format
 msgid "Attempting a passive DCC %s connection"
 msgstr "Próbálkozás passzív DCC %s kapcsolat létrehozására"
@@ -227,7 +227,7 @@ msgstr "Passzív DCC VOICE kapcsolat létrehozása"
 msgid "Attempting an active DCC %1 connection"
 msgstr "Aktív DCC %1 kapcsolat létrehozása"
 
-#: src/modules/dcc/chat.cpp:167
+#: src/modules/dcc/chat.cpp:170
 #, c-format
 msgid "Attempting an active DCC %s connection"
 msgstr "Próbálkozás aktív DCC %s kapcsolat létrehozására"
@@ -290,11 +290,11 @@ msgstr "Nincs megfelelő helyi IPv4 cím"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Nem lehet DCC %Q kérést küldeni %Q: felé, IRC kapcsolat megszakadt"
 
-#: src/modules/dcc/send.cpp:1846 src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1846
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/modules/dcc/chat.cpp:299 src/modules/dcc/chat.cpp:394
+#: src/modules/dcc/chat.cpp:302 src/modules/dcc/chat.cpp:397
 msgid "Cannot send data: No active connection"
 msgstr "Nem lehet adatot küldeni: Nincs aktív kapcsolat"
 
@@ -323,7 +323,7 @@ msgstr "Sávszélesség beállítása DCC %1 átvitelhez"
 msgid "Connected to %1:%2"
 msgstr "Kapcsolódva %1:%2"
 
-#: src/modules/dcc/chat.cpp:527 src/modules/dcc/voice.cpp:916
+#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:530
 #: src/modules/dcc/canvas.cpp:283
 msgid "Connected to %Q:%Q"
 msgstr "Kapcsolódva %Q:%Q"
@@ -332,7 +332,7 @@ msgstr "Kapcsolódva %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Kapcsolódás a %1 hosthoz %2 porton keresztül"
 
-#: src/modules/dcc/chat.cpp:181 src/modules/dcc/voice.cpp:756
+#: src/modules/dcc/voice.cpp:756 src/modules/dcc/chat.cpp:184
 #: src/modules/dcc/canvas.cpp:109
 msgid "Contacting host %Q on port %Q"
 msgstr "Kapcsolódás %Q -ra/re %Q porton keresztül"
@@ -345,11 +345,11 @@ msgstr "DCC %1 Kérés - KVIrc"
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 kérés nem lett elküldve, manuális kapcsolódás szükséges"
 
-#: src/modules/dcc/chat.cpp:499
+#: src/modules/dcc/chat.cpp:502
 msgid "DCC %Q failed: %Q"
 msgstr "DCC %Q sikertelen: %Q"
 
-#: src/modules/dcc/chat.cpp:235
+#: src/modules/dcc/chat.cpp:238
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q kérés küldése sikertelen, manuális kapcsolat szükséges"
 
@@ -394,7 +394,7 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Adatátvitel megszakítva 30 másodperce, kapcsolat zárása"
 
-#: src/modules/dcc/chat.cpp:409 src/modules/dcc/voice.cpp:824
+#: src/modules/dcc/voice.cpp:824 src/modules/dcc/chat.cpp:412
 msgid "ERROR: %Q"
 msgstr "HIBA: %Q"
 
@@ -493,7 +493,7 @@ msgstr "Feltöltési sávszélesség korlátozása "
 msgid "Listening on interface %1 port %2"
 msgstr "Hallgatózás %1 eszközön %2 porton keresztül"
 
-#: src/modules/dcc/chat.cpp:183 src/modules/dcc/voice.cpp:759
+#: src/modules/dcc/voice.cpp:759 src/modules/dcc/chat.cpp:186
 #: src/modules/dcc/canvas.cpp:85
 msgid "Listening on interface %Q port %Q"
 msgstr "Hallgatózás %Q eszközön, %Q porton"
@@ -502,12 +502,12 @@ msgstr "Hallgatózás %Q eszközön, %Q porton"
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:529 src/modules/dcc/voice.cpp:918
+#: src/modules/dcc/voice.cpp:918 src/modules/dcc/chat.cpp:532
 #: src/modules/dcc/canvas.cpp:285
 msgid "Local end is %Q:%Q"
 msgstr "Local end is %Q:%Q"
 
-#: src/modules/dcc/chat.cpp:243 src/modules/dcc/send.cpp:1563
+#: src/modules/dcc/chat.cpp:246 src/modules/dcc/send.cpp:1563
 msgid "Low-level transport connection established"
 msgstr "Alacsony szintű adatátviteli kapcsolat létrejött"
 
@@ -571,7 +571,7 @@ msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 "DCC %1 kérés küldése %2 felé, várakozás a távoli kliens kapcsolódására..."
 
-#: src/modules/dcc/chat.cpp:232
+#: src/modules/dcc/chat.cpp:235
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
 msgstr ""
 "DCC %Q kérés elküldve %Q -nak/nek, várakozás a távoli kliens "
@@ -609,7 +609,7 @@ msgstr "Slot korlát elérve (%u slot a %u -ból/ből)"
 msgid "Spd:"
 msgstr "Seb:"
 
-#: src/modules/dcc/chat.cpp:244 src/modules/dcc/send.cpp:1564
+#: src/modules/dcc/chat.cpp:247 src/modules/dcc/send.cpp:1564
 msgid "Starting Secure Socket Layer handshake"
 msgstr "SSL kézfogás megkezdése"
 
@@ -696,7 +696,7 @@ msgstr "A kapcsolat célja: <b>%1</b> <b>%2</b> porton keresztül <br>"
 msgid "The connection will be secured using SSL.<br>"
 msgstr "A kapcsolat titkosítva SSL segítségével.<br>"
 
-#: src/modules/dcc/chat.cpp:341
+#: src/modules/dcc/chat.cpp:344
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
@@ -729,7 +729,7 @@ msgstr ""
 "<br><b>felülírni</b> a már létezőt, vagy<br> <b>automatikusan átnevezni</b> "
 "az új fájlt?"
 
-#: src/modules/dcc/chat.cpp:453
+#: src/modules/dcc/chat.cpp:456
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
@@ -737,12 +737,12 @@ msgstr ""
 "A következő üzenet valószínűleg titkosított, de a titkosító motor nem tudja "
 "visszafejteni: %Q"
 
-#: src/modules/dcc/chat.cpp:210 src/modules/dcc/send.cpp:1504
+#: src/modules/dcc/chat.cpp:213 src/modules/dcc/send.cpp:1504
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr "A helyi IP cím privát, de nincs IRC szerver, ami meghatározná"
 
-#: src/modules/dcc/chat.cpp:207 src/modules/dcc/send.cpp:1501
+#: src/modules/dcc/chat.cpp:210 src/modules/dcc/send.cpp:1501
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
@@ -752,7 +752,7 @@ msgstr "A helyi IP privát cím, de az IRC szerver által nem lehet meghatározn
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "A helyi IP magáncím, meghatárizás az IRC szerverrel: %1"
 
-#: src/modules/dcc/chat.cpp:205
+#: src/modules/dcc/chat.cpp:208
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "A helyi IP magáncím, meghatározás az IRC-szerver által: %s"
@@ -938,7 +938,7 @@ msgstr ""
 msgid "[SSL ERROR]: %1"
 msgstr "[SSL HIBA]: %1"
 
-#: src/modules/dcc/chat.cpp:252
+#: src/modules/dcc/chat.cpp:255
 #, c-format
 msgid "[SSL ERROR]: %s"
 msgstr "[SSL HIBA]: %s"
@@ -947,13 +947,13 @@ msgstr "[SSL HIBA]: %s"
 msgid "bytes/sec"
 msgstr "bájt/másodperc "
 
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
-#: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
-#: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
-#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
-#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/marshal.cpp:444 src/modules/dcc/marshal.cpp:474
-#: src/modules/dcc/marshal.cpp:479 src/modules/dcc/requests.cpp:136
+#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:408
+#: src/modules/dcc/libkvidcc.cpp:443 src/modules/dcc/libkvidcc.cpp:642
+#: src/modules/dcc/libkvidcc.cpp:666 src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:805 src/modules/dcc/libkvidcc.cpp:1121
+#: src/modules/dcc/libkvidcc.cpp:1171 src/modules/dcc/requests.cpp:136
 #: src/modules/dcc/requests.cpp:137 src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/marshal.cpp:444
+#: src/modules/dcc/marshal.cpp:474 src/modules/dcc/marshal.cpp:479
 msgid "unknown"
 msgstr "ismertelen"

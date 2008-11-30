@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-18 16:45+0100\n"
+"POT-Creation-Date: 2008-11-30 18:58+0100\n"
 "PO-Revision-Date: 2008-07-06 22:08+0400\n"
 "Last-Translator: Voker57 <voker57@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -122,8 +122,8 @@ msgstr "\r!nс\r%Q\r [%Q@\r!h\r%Q\r] только что покинул \r!c\r%Q
 msgid " (%1 hops)"
 msgstr " (%1 прыжков)"
 
-#: src/kvirc/ui/kvi_channel.cpp:1046 src/kvirc/ui/kvi_console.cpp:1110
-#: src/kvirc/ui/kvi_query.cpp:456
+#: src/kvirc/ui/kvi_query.cpp:456 src/kvirc/ui/kvi_console.cpp:1104
+#: src/kvirc/ui/kvi_channel.cpp:1046
 msgid " on "
 msgstr " на "
 
@@ -166,7 +166,7 @@ msgstr ""
 msgid "%1 bytes"
 msgstr "байты"
 
-#: src/kvirc/ui/kvi_console.cpp:370
+#: src/kvirc/ui/kvi_console.cpp:364
 msgid "%1 hops"
 msgstr "%1 прыжков"
 
@@ -364,7 +364,7 @@ msgstr "%c\r!s\r%s\r%c's время %Q"
 msgid "%d"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:1787
+#: src/kvirc/ui/kvi_input_editor.cpp:1784
 msgid "%d matches: %Q"
 msgstr "%d соответствует: %Q"
 
@@ -417,8 +417,8 @@ msgstr "%u с"
 msgid "&Add to Custom Colors"
 msgstr "&Добавить к пользовательским цветам"
 
-#: src/kvirc/ui/kvi_frame.cpp:1003 src/kvirc/ui/kvi_console.cpp:520
-#: src/kvirc/ui/kvi_console.cpp:554
+#: src/kvirc/ui/kvi_frame.cpp:1006 src/kvirc/ui/kvi_console.cpp:514
+#: src/kvirc/ui/kvi_console.cpp:548
 msgid "&Always"
 msgstr "&Всегда"
 
@@ -450,7 +450,7 @@ msgstr "О&тмена"
 msgid "&Cascade Windows"
 msgstr "Окна &каскадом"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:704
+#: src/kvirc/ui/kvi_input_editor.cpp:709
 msgid "&Copy"
 msgstr "&Копировать"
 
@@ -502,8 +502,8 @@ msgstr "&Загрузить из..."
 msgid "&Location:"
 msgstr "&Расположение:"
 
-#: src/kvirc/ui/kvi_frame.cpp:1003 src/kvirc/ui/kvi_console.cpp:522
-#: src/kvirc/ui/kvi_console.cpp:556
+#: src/kvirc/ui/kvi_frame.cpp:1006 src/kvirc/ui/kvi_console.cpp:516
+#: src/kvirc/ui/kvi_console.cpp:550
 msgid "&No"
 msgstr "&Нет"
 
@@ -515,7 +515,7 @@ msgstr "&Ok"
 msgid "&Other..."
 msgstr "&Другой..."
 
-#: src/kvirc/ui/kvi_input_editor.cpp:706
+#: src/kvirc/ui/kvi_input_editor.cpp:711
 msgid "&Paste"
 msgstr "&Вставить"
 
@@ -529,6 +529,11 @@ msgstr "&Выход"
 
 #: src/kvilib/system/kvi_locale.cpp:1032
 msgid "&Red"
+msgstr "&Красный"
+
+#: src/kvirc/ui/kvi_input_editor.cpp:705
+#, fuzzy
+msgid "&Redo"
 msgstr "&Красный"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:122
@@ -576,6 +581,11 @@ msgstr "&Инструменты"
 msgid "&Underline"
 msgstr "&Подчёркивание"
 
+#: src/kvirc/ui/kvi_input_editor.cpp:703
+#, fuzzy
+msgid "&Undo"
+msgstr "&Отделить"
+
 #: src/kvirc/ui/kvi_window.cpp:756
 msgid "&Undock"
 msgstr "&Отделить"
@@ -584,8 +594,8 @@ msgstr "&Отделить"
 msgid "&Window"
 msgstr "&Окна"
 
-#: src/kvirc/ui/kvi_frame.cpp:1003 src/kvirc/ui/kvi_console.cpp:521
-#: src/kvirc/ui/kvi_console.cpp:555
+#: src/kvirc/ui/kvi_frame.cpp:1006 src/kvirc/ui/kvi_console.cpp:515
+#: src/kvirc/ui/kvi_console.cpp:549
 msgid "&Yes"
 msgstr "&Да"
 
@@ -617,7 +627,7 @@ msgstr "(Внутренний DNS) Не поддерживаемое семей�
 msgid "(DNS Internal) Unsupported socket type"
 msgstr "(Внутренний DNS) Неподдерживаемый тип сокета"
 
-#: src/kvirc/ui/kvi_console.cpp:344
+#: src/kvirc/ui/kvi_console.cpp:338
 msgid "(Matched by"
 msgstr "Соответственно"
 
@@ -1004,11 +1014,11 @@ msgstr "Попытка использования прокси %s на порт�
 msgid "Attempting to rejoin \r!c\r%Q\r..."
 msgstr "Попытка вернуться \r!c\r%Q\r..."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1378
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1381
 msgid "Auto-joining network specific channels"
 msgstr "Автовход на специфичные для сети каналы"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1412
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1415
 msgid "Auto-joining server specific channels"
 msgstr "Автовход на специфичные для сервера каналы"
 
@@ -1230,12 +1240,12 @@ msgstr "Невозможно открыть файл \"%s\" для записи"
 msgid "Can't open file for appending"
 msgstr "Не могу открыть файл для дозаписи"
 
-#: src/kvilib/core/kvi_error.cpp:143 src/kvilib/file/kvi_packagefile.cpp:679
-#: src/kvilib/file/kvi_packagefile.cpp:932
+#: src/kvilib/file/kvi_packagefile.cpp:679
+#: src/kvilib/file/kvi_packagefile.cpp:932 src/kvilib/core/kvi_error.cpp:143
 msgid "Can't open file for reading"
 msgstr "Не могу открыть файл для чтения"
 
-#: src/kvilib/core/kvi_error.cpp:140 src/kvilib/file/kvi_packagefile.cpp:493
+#: src/kvilib/file/kvi_packagefile.cpp:493 src/kvilib/core/kvi_error.cpp:140
 msgid "Can't open file for writing"
 msgstr "Не могу открыть файл на запись"
 
@@ -1248,11 +1258,11 @@ msgstr "Не могу открыть файл фильтра %Q на запис�
 msgid "Can't open the filter file %s for reading."
 msgstr "Не могу открыть файл фильтра %s на чтение."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:765
+#: src/kvirc/kernel/kvi_ircconnection.cpp:768
 msgid "Can't resolve local host address, using default 127.0.0.1"
 msgstr "Не могу определить локальный адрес, использую 127.0.0.1"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:758
+#: src/kvirc/kernel/kvi_ircconnection.cpp:761
 msgid "Can't resolve local host address, using user supplied one (%Q)"
 msgstr ""
 "Не могу определить локальный адрес, использую только предоставленный "
@@ -1270,14 +1280,13 @@ msgstr "Не могу отправить файл нулевого размер�
 msgid "Can't setup a listening socket : bind failed"
 msgstr "Не могу запустить прослушивание сокета: Ошибка связи"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:889
+#: src/kvirc/kernel/kvi_ircconnection.cpp:892
 msgid "Can't start the DNS slave thread"
 msgstr "Не могу запустить вторичную нить DNS"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:181
 #: src/kvilib/file/kvi_packagefile.cpp:142
-#: src/kvilib/system/kvi_locale.cpp:1027 src/kvirc/ui/kvi_maskeditor.cpp:88
-#: src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/kvilib/tal/kvi_tal_wizard.cpp:181 src/kvilib/system/kvi_locale.cpp:1027
+#: src/kvirc/ui/kvi_maskeditor.cpp:88 src/kvirc/ui/kvi_imagedialog.cpp:154
 msgid "Cancel"
 msgstr "О&тмена"
 
@@ -1475,7 +1484,7 @@ msgstr "Выберите фоновое изображение..."
 msgid "Chunk header too long: exceeded 4096 bytes"
 msgstr "Заголовок слишком длинный, превышает 4096 байт"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:722
+#: src/kvirc/ui/kvi_input_editor.cpp:727
 msgid "Clear"
 msgstr "Очистить"
 
@@ -1505,16 +1514,16 @@ msgstr ""
 msgid "Click to open this link"
 msgstr "Двойной клик для открытия ссылки"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:680
+#: src/kvirc/ui/kvi_input_editor.cpp:682
 msgid "Clipboard"
 msgstr "Буфер обмена"
 
-#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_ctcppagedialog.cpp:62
-#: src/kvirc/ui/kvi_window.cpp:776
+#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_window.cpp:776
+#: src/kvirc/ui/kvi_ctcppagedialog.cpp:62
 msgid "Close"
 msgstr "Закрыть"
 
-#: src/kvirc/ui/kvi_console.cpp:234
+#: src/kvirc/ui/kvi_console.cpp:228
 msgid "Close All Queries"
 msgstr "Закрыть все приваты"
 
@@ -1589,8 +1598,8 @@ msgstr "Конфигурация темы..."
 msgid "Confirm Multiline Message"
 msgstr "Подтвердить многострочное сообщение"
 
-#: src/kvirc/ui/kvi_frame.cpp:1003 src/kvirc/ui/kvi_console.cpp:517
-#: src/kvirc/ui/kvi_console.cpp:552
+#: src/kvirc/ui/kvi_frame.cpp:1006 src/kvirc/ui/kvi_console.cpp:511
+#: src/kvirc/ui/kvi_console.cpp:546
 msgid "Confirmation - KVIrc"
 msgstr "Подтверждение - KVIrc"
 
@@ -1606,7 +1615,7 @@ msgstr "Подключиться к"
 msgid "Connect/Disconnect"
 msgstr "Подключиться/Отключиться"
 
-#: src/kvirc/ui/kvi_console.cpp:1224
+#: src/kvirc/ui/kvi_console.cpp:1218
 msgid "Connected since"
 msgstr "Подключен с"
 
@@ -1627,7 +1636,7 @@ msgstr "Ошибка при попытке соединения [%s]"
 msgid "Connection established, sending request"
 msgstr "Соединение установлено, отсылаю запрос"
 
-#: src/kvirc/ui/kvi_console.cpp:1083 src/kvirc/ui/kvi_statusbar.cpp:701
+#: src/kvirc/ui/kvi_console.cpp:1077 src/kvirc/ui/kvi_statusbar.cpp:701
 msgid "Connection in progress..."
 msgstr "Соединяемся..."
 
@@ -1656,12 +1665,12 @@ msgstr "Подключение к HTTP прокси завершилась не�
 msgid "Connection timed out"
 msgstr "Закончилось время соединения"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:554
+#: src/kvirc/kernel/kvi_ircconnection.cpp:557
 msgid "Connection to server established"
 msgstr "Соединение с сервером установлено"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:536
-#: src/kvirc/kernel/kvi_ircconnection.cpp:545
+#: src/kvirc/kernel/kvi_ircconnection.cpp:539
+#: src/kvirc/kernel/kvi_ircconnection.cpp:548
 msgid "Connection to server lost"
 msgstr "Соединение с сервером утеряно"
 
@@ -1715,7 +1724,7 @@ msgstr "Шифрование"
 msgid "Cryptography/text transformation"
 msgstr "Криптографическое/текстовое преобразование"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:702
+#: src/kvirc/ui/kvi_input_editor.cpp:707
 msgid "Cu&t"
 msgstr "Вы&резать"
 
@@ -1723,8 +1732,8 @@ msgstr "Вы&резать"
 msgid "Current IRC URI"
 msgstr "Текущий IRC URI"
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:90
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1274
+#: src/kvirc/kernel/kvi_sslmaster.cpp:90
 msgid "Current transmission cipher"
 msgstr "Текущий шифр передачи"
 
@@ -1732,7 +1741,7 @@ msgstr "Текущий шифр передачи"
 msgid "Customize Toolbars..."
 msgstr "Пользовательские панели инструментов..."
 
-#: src/kvirc/ui/kvi_frame.cpp:1141
+#: src/kvirc/ui/kvi_frame.cpp:1144
 msgid "Customize..."
 msgstr "Настроить..."
 
@@ -1955,7 +1964,7 @@ msgstr "Окончание канала %Q для \r!c\r%Q\r"
 msgid "End of help about %Q"
 msgstr "Конец WHO списка для %Q"
 
-#: src/kvirc/ui/kvi_channel.cpp:1889 src/kvirc/ui/kvi_query.cpp:884
+#: src/kvirc/ui/kvi_query.cpp:884 src/kvirc/ui/kvi_channel.cpp:1889
 #, fuzzy
 msgid "End of log"
 msgstr "Конец LIST"
@@ -1984,29 +1993,29 @@ msgstr "Ошибка сжатия потока"
 msgid "Execute Script..."
 msgstr "Выполнить сценарий..."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1217
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1220
 #, fuzzy
 msgid "Executing scheduled identity specific \"on connect\" commands"
 msgstr "Выполнение запланированной \"при соединении\" с сетью команды"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1309
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1312
 #, fuzzy
 msgid "Executing scheduled identity specific \"on login\" commands"
 msgstr "Запуск команды \"при входе\" в сеть"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1199
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1202
 msgid "Executing scheduled network specific \"on connect\" commands"
 msgstr "Выполнение запланированной \"при соединении\" с сетью команды"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1291
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1294
 msgid "Executing scheduled network specific \"on login\" commands"
 msgstr "Запуск команды \"при входе\" в сеть"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1208
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1211
 msgid "Executing scheduled server specific \"on connect\" commands"
 msgstr "Выполнение запланированной \"при соединении\" с сервером команды"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1300
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1303
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr "Запуск команды \"при входе\" на сервер"
 
@@ -2054,7 +2063,7 @@ msgstr "Не могу подключиться: %Q"
 msgid "Failed to initialize the SSL context"
 msgstr "Не могу запустить заданную шифровальную машину: %Q"
 
-#: src/kvirc/ui/kvi_console.cpp:994
+#: src/kvirc/ui/kvi_console.cpp:988
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
 msgstr "Ошибка загрузки аватара с именем \"%Q\" и локальным путём \"%Q\""
 
@@ -2115,7 +2124,7 @@ msgstr "Ошибка записи в файл фильтра %Q (Ошибка IO
 msgid "Feature not available"
 msgstr "Эта возможность не доступна"
 
-#: src/kvirc/ui/kvi_console.cpp:329
+#: src/kvirc/ui/kvi_console.cpp:323
 msgid "Female"
 msgstr "Женский"
 
@@ -2230,7 +2239,7 @@ msgstr "Полный путь"
 msgid "GUI"
 msgstr "Интерфейс"
 
-#: src/kvirc/ui/kvi_console.cpp:327
+#: src/kvirc/ui/kvi_console.cpp:321
 msgid "Gender:"
 msgstr "Пол:"
 
@@ -2302,7 +2311,7 @@ msgstr "Броузер помощи (&окно)"
 msgid "Help Index"
 msgstr "Индекс справки"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:849
+#: src/kvirc/kernel/kvi_ircconnection.cpp:852
 msgid ""
 "Here goes your \"broken bouncer hack\": The server has changed the hostname "
 "but I'll ignore the IP address change"
@@ -2474,19 +2483,19 @@ msgstr "Проигнорировано приватное сообщение о�
 msgid "Impossible to change nick if not authenticated with NickServ"
 msgstr "Невозможно сменить ник если не идентифицирован на NickServ"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:948
+#: src/kvirc/kernel/kvi_ircconnection.cpp:951
 msgid ""
 "Impossible to send CAP END command to the IRC server. Your connection will "
 "NOT be encrypted"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:937
+#: src/kvirc/kernel/kvi_ircconnection.cpp:940
 msgid ""
 "Impossible to send CAP LS command to the IRC server. Your connection will "
 "NOT be encrypted"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:975
+#: src/kvirc/kernel/kvi_ircconnection.cpp:978
 msgid ""
 "Impossible to send STARTTLS command to the IRC server. Your connection will "
 "NOT be encrypted"
@@ -2509,7 +2518,7 @@ msgstr "в процессе..."
 msgid "Input History Disabled"
 msgstr "История ввода не активирована"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:755
+#: src/kvirc/ui/kvi_input_editor.cpp:760
 msgid "Insert Icon"
 msgstr "Вставить иконку"
 
@@ -2533,7 +2542,7 @@ msgstr "Недостаточно ресурсов для завершения о
 msgid "Integer parameter expected"
 msgstr "Ожидается аргумент целое число"
 
-#: src/kvilib/core/kvi_error.cpp:52 src/kvilib/file/kvi_packagefile.cpp:571
+#: src/kvilib/file/kvi_packagefile.cpp:571 src/kvilib/core/kvi_error.cpp:52
 msgid "Internal error"
 msgstr "Внутренняя ошибка"
 
@@ -2721,7 +2730,7 @@ msgstr "Пакет темы KVIrc"
 msgid "KVIrc WWW"
 msgstr "KVIrc в интернете"
 
-#: src/kvirc/ui/kvi_console.cpp:455
+#: src/kvirc/ui/kvi_console.cpp:449
 msgid ""
 "KVIrc can accept only irc://, irc6://, ircs:// or irc6s:// URL's\n"
 "Your URL is invalid. Check spelling and try again"
@@ -2835,23 +2844,23 @@ msgstr "Загрузка модуля '%s' (%s)"
 msgid "Local IP"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:771
+#: src/kvirc/kernel/kvi_ircconnection.cpp:774
 msgid "Local host address is %Q"
 msgstr "Локальный адрес %Q"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:921
+#: src/kvirc/kernel/kvi_ircconnection.cpp:924
 msgid "Local hostname as seen by the IRC server resolved to %Q"
 msgstr "IRC сервер видит нас как %Q"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1103
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1106
 msgid "Logging in as %Q!%Q :%Q"
 msgstr "Вошел как %Q!%Q :%Q"
 
-#: src/kvirc/ui/kvi_console.cpp:1086 src/kvirc/ui/kvi_statusbar.cpp:707
+#: src/kvirc/ui/kvi_console.cpp:1080 src/kvirc/ui/kvi_statusbar.cpp:707
 msgid "Login in progress..."
 msgstr "Вход в сеть..."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1281
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1284
 msgid "Login operations complete, happy ircing!"
 msgstr "Подключение прошло успешно, добро пожаловать в IRC!"
 
@@ -2868,7 +2877,7 @@ msgstr "Определение IP для адреса %s"
 msgid "Looking up host %Q..."
 msgstr "Определяю адрес %Q..."
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:896
+#: src/kvirc/kernel/kvi_ircconnection.cpp:899
 msgid "Looking up the local hostname as seen by the IRC server (%Q)"
 msgstr "Определение локального адреса через IRC сервер (%Q)"
 
@@ -2895,7 +2904,7 @@ msgstr "Установлена низкоуровневая связь [%s (%s:%
 msgid "Ma&ximize"
 msgstr "Раз&вернуть"
 
-#: src/kvirc/ui/kvi_console.cpp:329
+#: src/kvirc/ui/kvi_console.cpp:323
 msgid "Male"
 msgstr "Мужской"
 
@@ -3142,7 +3151,7 @@ msgstr "Тема канала не установлена"
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Нет общих каналов для \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
-#: src/kvirc/ui/kvi_irctoolbar.cpp:281 src/kvirc/ui/kvi_console.cpp:1080
+#: src/kvirc/ui/kvi_irctoolbar.cpp:281 src/kvirc/ui/kvi_console.cpp:1074
 msgid "No connection"
 msgstr "Не подключен"
 
@@ -3162,7 +3171,7 @@ msgstr "Невозможно определить IP адрес"
 msgid "No kicks able (unless U-Line)"
 msgstr "Нельзя кикнуть (за исключением U-Line)"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:1791
+#: src/kvirc/ui/kvi_input_editor.cpp:1788
 msgid "No matches"
 msgstr "Не соответствует"
 
@@ -3418,8 +3427,8 @@ msgstr "Список уведомлений: Неожиданное против
 msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: Локальный оператор IRC (LOCOP)"
 
-#: src/kvilib/system/kvi_locale.cpp:1026
-#: src/kvirc/ui/kvi_cryptcontroller.cpp:128 src/kvirc/ui/kvi_htmldialog.cpp:92
+#: src/kvilib/system/kvi_locale.cpp:1026 src/kvirc/ui/kvi_htmldialog.cpp:92
+#: src/kvirc/ui/kvi_cryptcontroller.cpp:128
 msgid "OK"
 msgstr "Ok"
 
@@ -3431,12 +3440,12 @@ msgstr "Octet поток (неизвестный)"
 msgid "Often used directories"
 msgstr "Часто используемые каталоги"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_ircview.cpp:2132
-#: src/kvirc/ui/kvi_imagedialog.cpp:158
+#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_imagedialog.cpp:158
+#: src/kvirc/ui/kvi_ircview.cpp:2132
 msgid "Ok"
 msgstr "Ок"
 
-#: src/kvirc/ui/kvi_console.cpp:356
+#: src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
 msgstr "На <b>"
 
@@ -3458,7 +3467,7 @@ msgstr ""
 "доступны.\n"
 "Если у вас такие проблемы, лучше смените сервер."
 
-#: src/kvirc/ui/kvi_console.cpp:1238
+#: src/kvirc/ui/kvi_console.cpp:1232
 msgid "Online for"
 msgstr "В сети в течение"
 
@@ -3632,7 +3641,7 @@ msgstr "Ошибка синтаксического анализатора"
 msgid "Parser warning"
 msgstr "Предупреждение синтаксического анализатора"
 
-#: src/kvirc/ui/kvi_console.cpp:232
+#: src/kvirc/ui/kvi_console.cpp:226
 msgid "Part All Channels"
 msgstr "Выйти со всех каналов"
 
@@ -3645,11 +3654,11 @@ msgstr "Сообщение о покидании"
 msgid "Partial socket write: packet broken into smaller pieces."
 msgstr "Не полная запись сокета: пакет разбит на более мелкие куски."
 
-#: src/kvirc/ui/kvi_input_editor.cpp:713
+#: src/kvirc/ui/kvi_input_editor.cpp:718
 msgid "Paste &File"
 msgstr "Вставить файл"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:708
+#: src/kvirc/ui/kvi_input_editor.cpp:713
 msgid "Paste (Slowly)"
 msgstr "Вставить (медленно)"
 
@@ -3702,7 +3711,7 @@ msgstr "Приватный"
 msgid "Private Text Encoding"
 msgstr "Кодировка приватов"
 
-#: src/kvirc/ui/kvi_console.cpp:380
+#: src/kvirc/ui/kvi_console.cpp:374
 msgid "Probably Away"
 msgstr "Возможно отошел"
 
@@ -3964,7 +3973,7 @@ msgstr "Перенаправлено на полный канал"
 msgid "Registered"
 msgstr "Зарегистрированный"
 
-#: src/kvirc/ui/kvi_console.cpp:338
+#: src/kvirc/ui/kvi_console.cpp:332
 msgid "Registered as"
 msgstr "Зарегистрирован как"
 
@@ -4113,7 +4122,7 @@ msgstr "Безопасное подключение"
 msgid "Secure proxy connection"
 msgstr "Подключение к безопасному прокси"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:725
+#: src/kvirc/ui/kvi_input_editor.cpp:730
 msgid "Select All"
 msgstr "Выбрать всё"
 
@@ -4141,7 +4150,7 @@ msgstr "Выбор"
 msgid "Self modification not allowed"
 msgstr "Автомодификация не допустима"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1120
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1123
 #, c-format
 msgid "Sending %s as password"
 msgstr "Отправка %s как пароля"
@@ -4246,7 +4255,7 @@ msgstr ""
 msgid "Server hostname resolved to %Q"
 msgstr "Адрес сервера %s"
 
-#: src/kvirc/ui/kvi_console.cpp:1250
+#: src/kvirc/ui/kvi_console.cpp:1244
 msgid "Server idle for"
 msgstr "На сервере отсутствует активность в течение"
 
@@ -4282,7 +4291,7 @@ msgstr "С&бросить все"
 msgid "Set at"
 msgstr "Дата"
 
-#: src/kvirc/ui/kvi_topicw.cpp:539 src/kvirc/ui/kvi_maskeditor.cpp:194
+#: src/kvirc/ui/kvi_maskeditor.cpp:194 src/kvirc/ui/kvi_topicw.cpp:539
 msgid "Set by"
 msgstr "Установил"
 
@@ -4294,7 +4303,7 @@ msgstr "Дата установки"
 msgid "Setting away nickname (%Q)"
 msgstr "Установка ника в режиме Отошёл (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1320
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1323
 msgid "Setting configured user mode"
 msgstr "Настройка конфигурации пользовательского режима"
 
@@ -4310,7 +4319,7 @@ msgstr "Установка прервана"
 msgid "Short View"
 msgstr "Краткое представление"
 
-#: src/kvirc/ui/kvi_frame.cpp:1097 src/kvirc/ui/kvi_frame.cpp:1113
+#: src/kvirc/ui/kvi_frame.cpp:1100 src/kvirc/ui/kvi_frame.cpp:1116
 msgid "Show %1"
 msgstr "Показать %1"
 
@@ -4565,7 +4574,7 @@ msgstr "Стандартные"
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Запуск соединения SSL"
 
-#: src/kvirc/ui/kvi_channel.cpp:1873 src/kvirc/ui/kvi_query.cpp:868
+#: src/kvirc/ui/kvi_query.cpp:868 src/kvirc/ui/kvi_channel.cpp:1873
 #, fuzzy
 msgid "Starting last log"
 msgstr "Запуск списка уведомлений"
@@ -4574,7 +4583,7 @@ msgstr "Запуск списка уведомлений"
 msgid "Starting notify list"
 msgstr "Запуск списка уведомлений"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:720
+#: src/kvirc/ui/kvi_input_editor.cpp:725
 msgid "Stop Paste"
 msgstr "Остановить вставку"
 
@@ -4717,8 +4726,8 @@ msgstr ""
 "Появилось следующее шифрованное сообщение, но криптовальная машина не может "
 "его декодировать: %Q"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:864
-#: src/kvirc/kernel/kvi_ircconnection.cpp:874
+#: src/kvirc/kernel/kvi_ircconnection.cpp:867
+#: src/kvirc/kernel/kvi_ircconnection.cpp:877
 msgid "The local IP address as seen by the IRC server is %Q"
 msgstr "Локальный IP адрес видимый IRC сервером %Q"
 
@@ -4765,7 +4774,7 @@ msgstr ""
 msgid "The server didn't provide a certificate"
 msgstr "Сервер не имеет сертификата"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:992
+#: src/kvirc/kernel/kvi_ircconnection.cpp:995
 msgid ""
 "The server does not support STARTTLS command. Your connection will NOT be "
 "encrypted"
@@ -4777,16 +4786,16 @@ msgid ""
 "nickname manually"
 msgstr "Сервер отклоняет вход по всем никам, вы должны послать ник вручную"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1270
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1273
 #, c-format
 msgid "The server refused the suggested nickname (%s) and named you %s instead"
 msgstr "Сервер отклонил предложенный вами ник (%s) и назвал вас %s"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:822
+#: src/kvirc/kernel/kvi_ircconnection.cpp:825
 msgid "The server seems to have changed the idea about the local hostname"
 msgstr "Сервер кажется хочет изменить хостмаску"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:706
+#: src/kvirc/kernel/kvi_ircconnection.cpp:709
 msgid ""
 "The server seems to support the WATCH notify list method, will try to use it"
 msgstr ""
@@ -4873,7 +4882,7 @@ msgstr "Действие \"%1\" не существует"
 msgid "Theme information file is not valid"
 msgstr "Файл назначения существует: файл не переименован"
 
-#: src/kvirc/ui/kvi_frame.cpp:999
+#: src/kvirc/ui/kvi_frame.cpp:1002
 msgid "There are active connections, are you sure you wish to "
 msgstr "Имеются активные соединения, вы действительно хотите "
 
@@ -4971,7 +4980,7 @@ msgstr "Имена для \r!c\r%Q\r: %Q"
 msgid "Tip: %Q"
 msgstr "Ссылка: %Q"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:86 src/kvirc/ui/kvi_menubar.cpp:183
+#: src/kvirc/ui/kvi_menubar.cpp:183 src/kvirc/ui/kvi_toolbar.cpp:86
 #, fuzzy
 msgid "Toolbars"
 msgstr "&Инструменты"
@@ -5075,13 +5084,13 @@ msgstr ""
 msgid "Unable to process the above request: DCC module may be broken"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:890
-#: src/kvirc/kernel/kvi_ircconnection.cpp:917
+#: src/kvirc/kernel/kvi_ircconnection.cpp:893
+#: src/kvirc/kernel/kvi_ircconnection.cpp:920
 #, fuzzy
 msgid "Unable to resolve the local hostname as seen by the IRC server: %Q"
 msgstr "Определение локального адреса через IRC сервер (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:914
+#: src/kvirc/kernel/kvi_ircconnection.cpp:917
 #, fuzzy
 msgid ""
 "Unable to resolve the local hostname as seen by the IRC server: %Q, using "
@@ -5147,23 +5156,23 @@ msgstr ""
 msgid "Unhandled server reply"
 msgstr ""
 
-#: src/kvirc/ui/kvi_console.cpp:242
+#: src/kvirc/ui/kvi_console.cpp:236
 #, fuzzy
 msgid "Unhighlight All Channels"
 msgstr "Выйти со всех каналов"
 
-#: src/kvirc/ui/kvi_console.cpp:244
+#: src/kvirc/ui/kvi_console.cpp:238
 #, fuzzy
 msgid "Unhighlight All Queries"
 msgstr "Закрыть все приваты"
 
-#: src/kvirc/ui/kvi_console.cpp:239
+#: src/kvirc/ui/kvi_console.cpp:233
 #, fuzzy
 msgid "Unhighlight All Windows"
 msgstr "Свернуть все окна"
 
-#: src/kvilib/net/kvi_ssl.cpp:581 src/kvilib/net/kvi_ssl.cpp:611
-#: src/kvilib/net/kvi_ssl.cpp:634 src/kvirc/kernel/kvi_theme.cpp:86
+#: src/kvilib/net/kvi_ssl.cpp:583 src/kvilib/net/kvi_ssl.cpp:613
+#: src/kvilib/net/kvi_ssl.cpp:636 src/kvirc/kernel/kvi_theme.cpp:86
 #: src/kvirc/ui/kvi_topicw.cpp:149
 #, fuzzy
 msgid "Unknown"
@@ -5276,7 +5285,7 @@ msgstr ""
 msgid "Update missing"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1510
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1513
 #, fuzzy
 msgid "Updating away state for channel %Q"
 msgstr "Не могу отослать текст на канал %Q"
@@ -5368,42 +5377,42 @@ msgstr "Не найден IP адрес сервера: %Q"
 msgid "Using filtered IRC protocol: Link filter is \"%Q\""
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1059
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1062
 #, fuzzy
 msgid "Using network specific nickname (%Q)"
 msgstr "Автовход на специфичные для сети каналы"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1082
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1085
 #, fuzzy
 msgid "Using network specific real name (%Q)"
 msgstr "Автовход на специфичные для сети каналы"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1026
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1029
 #, fuzzy
 msgid "Using network specific username (%Q)"
 msgstr "Автовход на специфичные для сети каналы"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1046
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1049
 #, fuzzy
 msgid "Using reconnect specific nickname (%Q)"
 msgstr "Восстановление ника (%Q)"
 
-#: src/kvirc/ui/kvi_console.cpp:365
+#: src/kvirc/ui/kvi_console.cpp:359
 #, fuzzy
 msgid "Using server <b>%1</b>"
 msgstr ", использует сервер %1"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1052
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1055
 #, fuzzy
 msgid "Using server specific nickname (%Q)"
 msgstr "Автовход на специфичные для сервера каналы"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1076
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1079
 #, fuzzy
 msgid "Using server specific real name (%Q)"
 msgstr "Автовход на специфичные для сервера каналы"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1021
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1024
 #, fuzzy
 msgid "Using server specific username (%Q)"
 msgstr "Автовход на специфичные для сервера каналы"
@@ -5560,19 +5569,19 @@ msgstr ""
 msgid "You have been paged by"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1229
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1232
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1477
 msgid "You have changed your nickname to %Q"
 msgstr ""
 
-#: src/kvirc/ui/kvi_console.cpp:518
+#: src/kvirc/ui/kvi_console.cpp:512
 msgid ""
 "You have just attempted to close a console window with an active connection "
 "inside.\n"
 "Are you sure you wish to terminate the connection?"
 msgstr ""
 
-#: src/kvirc/ui/kvi_console.cpp:553
+#: src/kvirc/ui/kvi_console.cpp:547
 msgid ""
 "You have just attempted to close the last console window.\n"
 "Are you sure you wish to quit KVIrc?"
@@ -5606,7 +5615,7 @@ msgstr ""
 msgid "You're not an operator: You may not change channel modes"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:823
+#: src/kvirc/kernel/kvi_ircconnection.cpp:826
 msgid ""
 "You're probably using a broken bouncer or maybe something weird is happening "
 "on the IRC server"
@@ -5675,8 +5684,8 @@ msgstr ""
 msgid "[Entering away status]: %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:598
-#: src/kvirc/kernel/kvi_ircconnection.cpp:627
+#: src/kvirc/kernel/kvi_ircconnection.cpp:601
+#: src/kvirc/kernel/kvi_ircconnection.cpp:630
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr ""
 
@@ -5853,7 +5862,7 @@ msgid "autojoining"
 msgstr ""
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:364 src/kvirc/ui/kvi_irctoolbar.cpp:372
-#: src/kvirc/ui/kvi_console.cpp:1098 src/kvirc/ui/kvi_console.cpp:1105
+#: src/kvirc/ui/kvi_console.cpp:1092 src/kvirc/ui/kvi_console.cpp:1099
 #, fuzzy
 msgid "away"
 msgstr "режим Отошёл не включен"
@@ -5877,7 +5886,7 @@ msgstr "байты"
 msgid "c: Recipient for cconn messages"
 msgstr ""
 
-#: src/kvirc/ui/kvi_console.cpp:1165
+#: src/kvirc/ui/kvi_console.cpp:1159
 #, fuzzy
 msgid "channel"
 msgstr "Канал"
@@ -5907,7 +5916,7 @@ msgstr "Тихий или владелец канала"
 msgid "channel owners"
 msgstr "Режимы канала"
 
-#: src/kvirc/ui/kvi_console.cpp:1166
+#: src/kvirc/ui/kvi_console.cpp:1160
 #, fuzzy
 msgid "channels"
 msgstr "Канал"
@@ -5993,12 +6002,12 @@ msgstr ""
 msgid "k: Recipient for server kill messages"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:690
+#: src/kvirc/ui/kvi_input_editor.cpp:692
 #, fuzzy
 msgid "line break"
 msgstr "В сети в течение"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:690
+#: src/kvirc/ui/kvi_input_editor.cpp:692
 msgid "line breaks"
 msgstr ""
 
@@ -6047,15 +6056,15 @@ msgstr "Приватный"
 msgid "proxy host"
 msgstr ""
 
-#: src/kvirc/ui/kvi_console.cpp:1168
+#: src/kvirc/ui/kvi_console.cpp:1162
 msgid "queries"
 msgstr ""
 
-#: src/kvirc/ui/kvi_console.cpp:1167
+#: src/kvirc/ui/kvi_console.cpp:1161
 msgid "query"
 msgstr ""
 
-#: src/kvirc/ui/kvi_frame.cpp:1000
+#: src/kvirc/ui/kvi_frame.cpp:1003
 #, fuzzy
 msgid "quit KVIrc?"
 msgstr "Выход из KVIrc"
