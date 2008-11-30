@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-30 18:59+0100\n"
-"PO-Revision-Date: 2008-11-13 19:44+0100\n"
+"PO-Revision-Date: 2008-11-30 20:02+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -39,13 +39,11 @@ msgstr "$fontMetricsWidth: Der Painter ist nicht aktiv!"
 
 #: src/modules/objects/class_widget.cpp:1582
 msgid "$move() requires either an array as first parameter or two integers"
-msgstr ""
-"$move() benötigt entweder ein Array als ersten Parameter oder zwei Integer"
+msgstr "$move() benötigt entweder ein Array als ersten Parameter oder zwei Integer"
 
 #: src/modules/objects/class_widget.cpp:1639
 msgid "$resize() requires either an array as first parameter or two integers"
-msgstr ""
-"$resize() benötigt entweder ein Array als ersten Parameter oder zwei Integer"
+msgstr "$resize() benötigt entweder ein Array als ersten Parameter oder zwei Integer"
 
 #: src/modules/objects/class_widget.cpp:1339
 msgid ""
@@ -58,8 +56,7 @@ msgstr ""
 #: src/modules/objects/class_multilineedit.cpp:897
 #: src/modules/objects/class_multilineedit.cpp:1097
 msgid "$setColor requires either an array as first parameter or three integers"
-msgstr ""
-"$setColor benötigt entweder ein Array als ersten Parameter oder drei Integer"
+msgstr "$setColor benötigt entweder ein Array als ersten Parameter oder drei Integer"
 
 #: src/modules/objects/class_widget.cpp:1257
 msgid ""
@@ -70,8 +67,7 @@ msgstr ""
 "Hex-Zeichenkette oder Farbnamen, oder drei Integer"
 
 #: src/modules/objects/class_widget.cpp:1135
-msgid ""
-"$setGeometry() requires either an array as first parameter or four integers"
+msgid "$setGeometry() requires either an array as first parameter or four integers"
 msgstr ""
 "$setGeometry() benötigt entweder ein Array alt ersten Parameter oder vier "
 "Integer"
@@ -109,8 +105,7 @@ msgstr "\"Bind\" fehlgeschlagen"
 
 #: src/modules/objects/class_file.cpp:516
 msgid "Block parameter must be a string or a memorybuffer object"
-msgstr ""
-"Blockparameter muss eine Zeichenkette oder ein memorybuffer-Objekt sein"
+msgstr "Blockparameter muss eine Zeichenkette oder ein memorybuffer-Objekt sein"
 
 #: src/modules/objects/class_pixmap.cpp:216
 #: src/modules/objects/class_file.cpp:374
@@ -255,9 +250,8 @@ msgid "Failed to create the socket"
 msgstr "Erstellung des Sockets fehlgeschlagen"
 
 #: src/modules/objects/class_wrapper.cpp:164
-#, fuzzy
 msgid "Failed to find one of the wrap path widgets ('%Q::%Q')"
-msgstr "Konnte eines der \"Wrap-Path-Widgets\" ('%Q'::'%Q') nicht finden"
+msgstr "Konnte eines der \"Wrap-Path-Widgets\" ('%Q::%Q') nicht finden"
 
 #: src/modules/objects/class_wrapper.cpp:173
 msgid "Failed to find the widget to wrap"
@@ -455,8 +449,7 @@ msgstr "Abstandsbreite ist außerhalb der Pixmap-Größe"
 #: src/modules/objects/class_painter.cpp:597
 #: src/modules/objects/class_painter.cpp:632
 msgid "One of the array parameters didn't evaluate to an integer"
-msgstr ""
-"Einer der Array-Parameter konnte nicht zu einem Integer ausgewertet werden"
+msgstr "Einer der Array-Parameter konnte nicht zu einem Integer ausgewertet werden"
 
 #: src/modules/objects/class_painter.cpp:592
 #: src/modules/objects/class_painter.cpp:627
@@ -515,8 +508,7 @@ msgstr "Einer der Resize-Array-Parameter ist leer"
 #: src/modules/objects/class_painter.cpp:937
 #: src/modules/objects/class_painter.cpp:1504
 msgid "One of the triplette parameters didn't evaluate to an integer"
-msgstr ""
-"Einer der Tripel-Parameter konnte nicht zu einem Integer ausgewertet werden"
+msgstr "Einer der Tripel-Parameter konnte nicht zu einem Integer ausgewertet werden"
 
 #: src/modules/objects/libkviobjects.cpp:749
 msgid "One or more of background, foreground or destination aren't objects"
@@ -586,8 +578,7 @@ msgstr "Das hinzugefügte Widget ist kein Kind dieses Dock-Fensters"
 #: src/modules/objects/class_widget.cpp:1563
 #: src/modules/objects/class_widget.cpp:1620
 msgid "The array passed as parameter must contain at least 2 elements"
-msgstr ""
-"Das als Parameter übergebene Array muss mindestens 2 Elemente beinhalten"
+msgstr "Das als Parameter übergebene Array muss mindestens 2 Elemente beinhalten"
 
 #: src/modules/objects/class_painter.cpp:619
 #: src/modules/objects/class_multilineedit.cpp:852
@@ -595,14 +586,12 @@ msgstr ""
 #: src/modules/objects/class_widget.cpp:1205
 #: src/modules/objects/class_widget.cpp:1287
 msgid "The array passed as parameter must contain at least 3 elements"
-msgstr ""
-"Das als Parameter übergebene Array muss mindestens 3 Elemente beinhalten"
+msgstr "Das als Parameter übergebene Array muss mindestens 3 Elemente beinhalten"
 
 #: src/modules/objects/class_painter.cpp:549
 #: src/modules/objects/class_widget.cpp:1107
 msgid "The array passed as parameter must contain at least 4 elements"
-msgstr ""
-"Das als Paramter übergebene Array muss mindestens 4 Elemente beinhalten"
+msgstr "Das als Paramter übergebene Array muss mindestens 4 Elemente beinhalten"
 
 #: src/modules/objects/libkviobjects.cpp:352
 #: src/modules/objects/libkviobjects.cpp:451
@@ -681,7 +670,7 @@ msgstr "Das Eltern-Widget ist kein Hauptfenster."
 
 #: src/modules/objects/class_widget.cpp:1818
 msgid "The pixmap is not valid"
-msgstr ""
+msgstr "Die Pixmap ist ungültig"
 
 #: src/modules/objects/class_toolbar.cpp:83
 msgid "The toolbar cannot be a parent-widget!"
@@ -714,20 +703,16 @@ msgid "There is no connection to accept!"
 msgstr "Es gibt keine Verbindung zu akzeptieren!"
 
 #: src/modules/objects/class_socket.cpp:1198
-msgid ""
-"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
-msgstr ""
-"Zu viele unbearbeitete ankommende Daten (wird dieses Socket nicht gemanaged?)"
+msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgstr "Zu viele unbearbeitete ankommende Daten (wird dieses Socket nicht gemanaged?)"
 
 #: src/modules/objects/class_painter.cpp:703
 msgid "Unknown '%Q' background mode"
 msgstr "Unbekannter '%Q' Hintergrundmodus"
 
 #: src/modules/objects/class_treewidget.cpp:415
-#, fuzzy
 msgid "Unknown '%Q' sort order: switching to ascending order"
-msgstr ""
-"Unbekannte '%Q' Sortierreihenfolge: Wechsle zur aufsteigenden Reihenfolge"
+msgstr "Unbekannte '%Q' Sortierreihenfolge: Wechsle zur aufsteigenden Reihenfolge"
 
 #: src/modules/objects/class_widget.cpp:1917
 msgid "Unknown Color Group '%Q'"
@@ -884,3 +869,4 @@ msgstr "XML-Unterstützung ist nicht verfügbar in der Qt-Bibliothek"
 #: src/modules/objects/class_socket.cpp:869
 msgid "unknown"
 msgstr "unbekannt"
+

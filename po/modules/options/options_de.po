@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2008-11-30 18:59+0100\n"
-"PO-Revision-Date: 2008-11-13 01:37+0100\n"
+"PO-Revision-Date: 2008-11-30 20:18+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -114,8 +114,7 @@ msgstr "3D-Gitter"
 
 #: src/modules/options/optw_textencoding.cpp:84
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
+msgstr "<b>Beachte:</b> KVIrc muss neu gestartet werden, um die Sprache zu ändern"
 
 #: src/modules/options/optw_urlhandlers.cpp:76
 msgid "<b>file://</b> handler command:"
@@ -247,8 +246,7 @@ msgstr ""
 "auf \"<b>Hinzufügen</b>\" klicken</center>"
 
 #: src/modules/options/optw_servers.cpp:1175
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 "<center>Diesen Knopf klicken, um zum aktuell ausgewählten Server zu "
 "verbinden</center>"
@@ -944,8 +942,7 @@ msgstr ""
 "liegen</center>"
 
 #: src/modules/options/optw_servers.cpp:1149
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 "<center>Dies ist der  Name des aktuell ausgewählten Servers oder Netzwerkes."
 "</center>"
@@ -2351,8 +2348,7 @@ msgstr "Lagmeter aktivieren"
 
 #: src/modules/options/optw_tray.cpp:46
 msgid "Enable level-based message notification (not a message-type based)"
-msgstr ""
-"Aktiviere die level-bezogene Benachrichtigung (keine meldungstyp-bezogene)"
+msgstr "Aktiviere die level-bezogene Benachrichtigung (keine meldungstyp-bezogene)"
 
 #: src/modules/options/optw_notify.cpp:123
 msgid "Enable notifier window fade effect"
@@ -2699,9 +2695,8 @@ msgid "Ignore requests if no avatar is set"
 msgstr "Anfragen ignorieren, wenn kein Avatar gesetzt ist"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:96
-#, fuzzy
 msgid "Ignored Ctcp Requests"
-msgstr "Anfragen ignorieren"
+msgstr "CTCP-Anfragen ignoriert"
 
 #: src/modules/options/optw_avatar.cpp:52
 #: src/modules/options/optw_avatar.cpp:61
@@ -3205,11 +3200,11 @@ msgstr "Benachrichtiger"
 
 #: src/modules/options/optw_notify.cpp:137
 msgid "Notifier window opacity while active (mouseover)"
-msgstr ""
+msgstr "Benachrichtigungsfensterdeckkraft während Aktivität (MouseOver)"
 
 #: src/modules/options/optw_notify.cpp:144
 msgid "Notifier window opacity while inactive"
-msgstr ""
+msgstr "Benachrichtigungsfensterdeckkraft während Inaktivität"
 
 #: src/modules/options/optw_dcc.cpp:186
 msgid "Notify completion in console"
@@ -4018,8 +4013,7 @@ msgstr ""
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
+msgstr "Die NickServ-Maske darf nicht leer sein!<br>Es muss wenigstens * dort stehen."
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -4053,8 +4047,7 @@ msgstr "Es gibt bereits ein Profil mit diesem Namen"
 
 #: src/modules/options/optw_sound.cpp:97
 msgid "This allows you to select encoding of mp3 tags."
-msgstr ""
-"Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
+msgstr "Dies erlaubt das Auswählen der Kodierung der mp3-Beschreibungen (Tags)."
 
 #: src/modules/options/optw_sound.cpp:120
 msgid "This allows you to select encoding of winamp messages."
@@ -4100,8 +4093,7 @@ msgid "This executable has no SSL support."
 msgstr "Diese Version von KVIrc hat keine SSL-Unterstützung"
 
 #: src/modules/options/optw_identity.cpp:330
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Dieses Feld ist optional und wird als Teil der CTCP-USERINFO-Antwort "
 "angezeigt."
@@ -4374,8 +4366,7 @@ msgstr "UTC-Zeit für Zeitstempel benutzen"
 
 #: src/modules/options/optw_away.cpp:47
 msgid "Use automatic nickname ([5 letters]AWAY)"
-msgstr ""
-"Automatisch gernerierten \"Abwesend\"-Nick benutzen ([5 Buchstaben]AWAY)"
+msgstr "Automatisch gernerierten \"Abwesend\"-Nick benutzen ([5 Buchstaben]AWAY)"
 
 #: src/modules/options/optw_identity.cpp:474
 msgid "Use avatar"
@@ -4406,9 +4397,8 @@ msgid "Use flat buttons"
 msgstr "Flache Schaltflächen benutzen"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:83
-#, fuzzy
 msgid "Use flood protection for CTCP requests (recommended)"
-msgstr "Überflutungsbegrenzung benutzen (empfohlen)"
+msgstr "Überflutungsbegrenzung für CTCP-Anfragen benutzen (empfohlen)"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:41
 msgid "Use global application font"
@@ -4796,3 +4786,4 @@ msgstr "Benutzerliste,Channel"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid "within:"
 msgstr "in:"
+
