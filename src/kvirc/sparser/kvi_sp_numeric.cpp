@@ -682,6 +682,7 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 	QString szNick = msg->connection()->decodeText(msg->safeParam(5));
 	QString szFlag = msg->connection()->decodeText(msg->safeParam(6));
 	bool bAway = szFlag.indexOf('G') != -1;
+	bool bIrcOp = szFlag.indexOf('*') != -1;
 
 	KviStr trailing = msg->safeTrailing();
 	KviStr hops = trailing.getToken(' ');
@@ -700,6 +701,8 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 		e->setHost(szHost);
 		e->setServer(szServ);
 		e->setAway(bAway);
+		e->setIrcOp(bIrcOp);
+
 		KviQuery * q = msg->connection()->findQuery(szNick);
 		if(q) q->updateLabelText();
 		//no avatar? check for a cached one

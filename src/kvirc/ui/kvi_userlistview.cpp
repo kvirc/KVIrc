@@ -179,7 +179,7 @@ void KviUserListEntry::updateAvatarData()
 bool KviUserListEntry::color(QColor & color)
 {
 	//
-	// FIXME: Unused ?
+	// Used in KviIrcView::getTextLine
 	//
 	KviRegisteredUser * pRegisteredUser = m_pListView->m_pKviWindow->connection()->userDataBase()->registeredUser(m_szNick);
 	if(pRegisteredUser)
@@ -205,7 +205,7 @@ bool KviUserListEntry::color(QColor & color)
 		color = KVI_OPTION_COLOR(KviOption_colorUserListViewNormalForeground);
 		return true;
 	} else {
-		color = KVI_OPTION_COLOR((m_iFlags & KVI_USERFLAG_IRCOP) ? \
+		color = KVI_OPTION_COLOR((globalData()->isIrcOp()) ? \
 			KviOption_colorUserListViewIrcOpForeground : ((m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 			KviOption_colorUserListViewChanOwnerForeground : ((m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
 			KviOption_colorUserListViewChanAdminForeground : ((m_iFlags & KVI_USERFLAG_OP) ? \
@@ -597,12 +597,13 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 			iFlag = KVI_USERFLAG_CHANOWNER;
 			m_iChanOwnerCount++;
 		}
+	}
 
-		if(pUserEntry->m_iFlags & KVI_USERFLAG_IRCOP)
-		{
-			iFlag = KVI_USERFLAG_IRCOP;
-			m_iIrcOpCount++;
-		}
+	//FIXME this should probably be handled in a different way (place)
+	if(pUserEntry->globalData()->isIrcOp())
+	{
+		iFlag = KVI_USERFLAG_IRCOP;
+		m_iIrcOpCount++;
 	}
 
 	if(m_pHeadItem)
@@ -683,7 +684,7 @@ void KviUserListView::insertUserEntry(const QString & szNnick, KviUserListEntry 
 									while(pEntry && (pEntry->m_iFlags & KVI_USERFLAG_USEROP))
 									{
 										if(pEntry == m_pTopItem)
-		bGotTopItem = true;
+											bGotTopItem = true;
 										pEntry = pEntry->m_pNext;
 									}
 								} // else is userop, ops, halfops, and voiced are skipped
@@ -1726,7 +1727,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 					{
 						pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewNormalForeground));
 					} else {
-						pClrFore = &(KVI_OPTION_COLOR((pEntry->m_iFlags & KVI_USERFLAG_IRCOP) ? \
+						pClrFore = &(KVI_OPTION_COLOR((pEntry->globalData()->isIrcOp()) ? \
 							KviOption_colorUserListViewIrcOpForeground :
 							((pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 							KviOption_colorUserListViewChanOwnerForeground : ((pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
@@ -1914,7 +1915,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 					QPixmap * pIco = g_pIconManager->getSmallIcon( \
 											pEntry->globalData()->isAway() ? \
 												( \
-													(pEntry->m_iFlags & KVI_USERFLAG_IRCOP) ? \
+													(pEntry->globalData()->isIrcOp()) ? \
 													KVI_SMALLICON_IRCOPAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 													KVI_SMALLICON_CHANOWNERAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
 													KVI_SMALLICON_CHANADMINAWAY : ((pEntry->m_iFlags & KVI_USERFLAG_OP) ? \
@@ -1924,7 +1925,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 												) \
 											: \
 												( \
-													(pEntry->m_iFlags & KVI_USERFLAG_IRCOP) ? \
+													(pEntry->globalData()->isIrcOp()) ? \
 													KVI_SMALLICON_IRCOP : ((pEntry->m_iFlags & KVI_USERFLAG_CHANOWNER) ? \
 													KVI_SMALLICON_CHANOWNER : ((pEntry->m_iFlags & KVI_USERFLAG_CHANADMIN) ? \
 													KVI_SMALLICON_CHANADMIN : ((pEntry->m_iFlags & KVI_USERFLAG_OP) ? \

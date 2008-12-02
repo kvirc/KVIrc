@@ -39,6 +39,7 @@
 * \def KVI_USERFLAG_OP Defines the op user
 * \def KVI_USERFLAG_CHANADMIN Defines the chanadmin user
 * \def KVI_USERFLAG_CHANOWNER Defines the chanowner user
+* \def KVI_USERFLAG_IRCOP Defines the ircop user
 * \def KVI_USERFLAG_MODEMASK Defines the flags for the user
 */
 
@@ -97,6 +98,7 @@ protected:
 	Gender      m_eGender;
 	
 	bool        m_bAway;
+	bool        m_bIrcOp;
 
 	KviAvatar * m_pAvatar;
 
@@ -173,6 +175,13 @@ public:
 	void setAway(bool bAway) { m_bAway = bAway; };
 
 	/**
+	* \brief Sets the irc operator state of the user
+	* \param bIrcOp The ircop state
+	* \return void
+	*/
+	void setIrcOp(bool bIrcOp) { m_bIrcOp = bIrcOp; };
+
+	/**
 	* \brief Sets the avatar of the user
 	* \param av The avatar
 	* \return void
@@ -191,6 +200,12 @@ public:
 	* \return bool
 	*/
 	bool isAway() const { return m_bAway; };
+
+	/**
+	* \brief Returns true if the user is an irc operator
+	* \return bool
+	*/
+	bool isIrcOp() const { return m_bIrcOp; };
 
 	/**
 	* \brief Returns true if the user has the username set
