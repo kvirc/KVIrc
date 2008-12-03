@@ -62,6 +62,7 @@ public:
 
 class KviDccMarshal;
 class QSplitter;
+class KviThemedLabel;
 
 class KviDccChat : public KviDccWindow
 {
