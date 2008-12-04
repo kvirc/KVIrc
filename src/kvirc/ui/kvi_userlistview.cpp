@@ -366,8 +366,16 @@ void KviUserListView::applyOptions()
 	}*/
 	setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontUserListView));
+
 	m_iFontHeight = fm.lineSpacing();
+	m_pViewArea->m_pScrollBar->setSingleStep(m_iFontHeight);
+
 	KviUserListEntry * pEntry = m_pHeadItem;
+
+	//reset scrollarea position and scrollbar position
+	m_pTopItem = m_pHeadItem;
+	m_pViewArea->m_pScrollBar->setValue(0);
+
 	m_iTotalHeight = 0;
 	while(pEntry)
 	{
