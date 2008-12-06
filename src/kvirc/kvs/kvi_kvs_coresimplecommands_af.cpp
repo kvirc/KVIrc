@@ -799,14 +799,14 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			echo
 		@syntax:
-			echo [-d] [-w=<window_id>] [-i=<icon_number>] [-n] <text>
+			echo [-d] [-w=<window_id>] [-i=<color_set>] [-n] <text>
 		@short:
 			Outputs text to a KVirc window
 		@switches:
 			!sw: -w=<window_id> | --window=<window_id>
-			Causes the output to be redirected to the window specified by &lt;window_id&gt
-			!sw: -i=<icon_number> | --icon=<icon_number>
-			Causes the output to use the icon & color scheme specified by &lt;icon_number&gt
+			Causes the output to be redirected to the window specified by &lt;window_id&gt;
+			!sw: -i=<color_set> | --color-set=<color_set>
+			Causes the message to use the specified icon scheme (icon and colors).
 			!sw: -n | --no-timestamp
 			Disables the message timestamping
 			!sw: -d | --debug
@@ -815,7 +815,7 @@ namespace KviKvsCoreSimpleCommands
 			Outputs the &lt;text&gt; to the current window.[br]
 			If the 'w' switch is present , outputs the &lt;text&gt;
 			to the specified window instead of the current one.
-			The <window_id&> parameter is the [doc:window_naming_conventions]global ID[/doc] of the window
+			The <window_id> parameter is the [doc:window_naming_conventions]global ID[/doc] of the window
 			that has to be used.[br]
 			If the 'i' switch is given , it uses the specified
 			icon scheme (icon and colors) , otherwise it uses
@@ -853,7 +853,7 @@ namespace KviKvsCoreSimpleCommands
 			{
 				QString szWnd;
 				v->asString(szWnd);
-	//#warning "FIXME: the window database is not unicode! (we even could keep integer window id's at this point!)"
+				//#warning "FIXME: the window database is not unicode! (we even could keep integer window id's at this point!)"
 				pWnd = g_pApp->findWindow(szWnd.utf8().data());
 				if(!pWnd)
 				{
@@ -862,7 +862,7 @@ namespace KviKvsCoreSimpleCommands
 				}
 			}
 				
-			if((v = KVSCSC_pSwitches->find('i',"icon")))
+			if((v = KVSCSC_pSwitches->find('i',"color-set")))
 			{
 				if(!v->asInteger(iMsgType))
 				{
