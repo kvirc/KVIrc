@@ -54,7 +54,9 @@ static bool tmphighlight_kvs_cmd_add(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
 	KVSM_PARAMETERS_END(c)
-	if( ( !c->window()->console()) || c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+	if( !c->window()->console() )return c->context()->errorNoIrcContext();
+	if( c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+
 	if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
 	{
 		c->warning(__tr2qs("Current window is not a channel"));
@@ -90,8 +92,10 @@ static bool tmphighlight_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
 	KVSM_PARAMETERS_END(c)
-	if( ( !c->window()->console()) || c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
-		if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
+	if( !c->window()->console() )return c->context()->errorNoIrcContext();
+	if( c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+
+	if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
 	{
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;
@@ -125,8 +129,10 @@ static bool tmphighlight_kvs_fnc_ishighlighted(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
 	KVSM_PARAMETERS_END(c)
-	if( ( !c->window()->console()) || c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
-		if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
+	if( !c->window()->console() )return c->context()->errorNoIrcContext();
+	if( c->window()->console()->isNotConnected() )return c->context()->errorNoIrcContext();
+
+	if(!c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)
 	{
 		c->warning(__tr2qs("Current window is not a channel"));
 		return false;

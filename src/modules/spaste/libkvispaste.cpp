@@ -158,6 +158,7 @@ static bool spaste_kvs_cmd_clipboard(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	KviWindow * window = spaste_kvs_find_window(szWindow,c);
 	if(!window)return false;
+	if(window->console()->isNotConnected())return false;
 
 	SPasteController * controller = spaste_find_controller(window);
 	if(!controller)controller = new SPasteController(window,++ctrlId);
