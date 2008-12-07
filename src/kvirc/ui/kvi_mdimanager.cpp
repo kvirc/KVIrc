@@ -78,6 +78,8 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 
 	//setFocusPolicy(Qt::NoFocus);
 	//viewport()->setFocusPolicy(Qt::NoFocus);
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
 }
 
