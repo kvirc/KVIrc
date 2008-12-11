@@ -631,6 +631,8 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 	if (g_pApp->closingDown()) return;
 
 	KviMdiChild * lpTop = topChild();
+	if (!lpTop) return;
+
 	int numVisible = getVisibleChildCount();
 
 	if (numVisible < 1) return;
