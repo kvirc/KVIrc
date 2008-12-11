@@ -243,9 +243,9 @@ void KviMdiManager::childMoved(KviMdiChild *)
 
 }
 
-void KviMdiManager::maximizeChild(KviMdiChild *)
+/*void KviMdiManager::maximizeChild(KviMdiChild *)
 {
-}
+}*/
 
 void KviMdiManager::childMaximized(KviMdiChild *)
 {

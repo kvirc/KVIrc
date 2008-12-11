@@ -96,8 +96,11 @@ public:
 private:
 	bool m_bInSDIMode;
 protected:
+	/// Holds the specialized window popup
 	KviTalPopupMenu * m_pWindowPopup;
+	/// Holds the tiling popup
 	KviTalPopupMenu * m_pTileMethodPopup;
+	/// The frame where this KviMdiManager belongs to
 	KviFrame        * m_pFrm;
 public:
 	/**
@@ -168,19 +171,84 @@ public:
 	*/
 	bool isInSDIMode();
 protected:
+	/**
+	 * \brief Reorders widgets on KviMdiChild
+	 * \return void
+	 * \deprecated Was used by old MDI system
+	 */
 	void updateContentsSize();
-	void childMaximized(KviMdiChild * lpC);
-	void childMinimized(KviMdiChild * lpC, bool bWasMaximized);
-	void childRestored(KviMdiChild * lpC, bool bWasMaximized);
-	void childMoved(KviMdiChild * lpC);
-	void maximizeChild(KviMdiChild * lpC);
 
+	/**
+	 * \brief This has to be called if a KviMdiChild gets maximized
+	 * \param lpC The target KviMdiChild
+	 * \return void
+	 *
+	 * This updates if we are in SDI or in MDI mode.
+	 */
+	void childMaximized(KviMdiChild * lpC);
+
+	/**
+	 * \brief This has to be called if a KviMdiChild gets minimized
+	 * \param lpC The target KviMdiChild
+	 * \param bWasMaximized Tell the KviMdiManager if the KviMdiChild was maximized before minimizing
+	 * \return void
+	 *
+	 * Focus the next availiable window
+	 */
+	void childMinimized(KviMdiChild * lpC, bool bWasMaximized);
+
+	/**
+	 * \brief This has to be called if a KviMdiChild gets restored
+	 * \param lpC The target KviMdiChild
+	 * \param bWasMaximized Tell the KviMdiManager if the KviMdiChild was maximized before restoring
+	 * \return void
+	 *
+	 * Update SDI/MDI mode. In this case we leave SDI mode.
+	 */
+	void childRestored(KviMdiChild * lpC, bool bWasMaximized);
+
+	/**
+	 *  \brief This has to be called if a KviMdiChild has been moved
+	 *  \param lpC The target KviMdiChild
+	 *  \return void
+	 *  \deprecated Was used by old MDI system
+	 */
+	void childMoved(KviMdiChild * lpC);
+	
+	/**
+	 * \brief Open the window popup menu
+	 */
 	virtual void mousePressEvent(QMouseEvent * e);
+
+	/**
+	 * \brief Repaints the transparent backgrounds if activated
+	 */
 	virtual void paintEvent(QPaintEvent * e);
+
+	/**
+	 * \brief Passes this to the toplevel window
+	 */
 	virtual bool focusNextPrevChild(bool pNext);
 private:
+	/**
+	 * \brief Make sure that no KviMdiChild is maximized
+	 * \return void
+	 *
+	 * Goes trough all KviMdiChild objects and checks for maximized mode and restores that windows
+	 */
 	void ensureNoMaximized();
+
+	/**
+	 * \brief The internal member which provides the tiling methods
+	 * \param maxWnds The maximum number of windows
+	 * \param bHorizontal If the windows will be tiled horizontal or vertical
+	 * \return void
+	 */
 	void tileAllInternal(int maxWnds,bool bHorizontal);
+	/**
+	 * \brief
+	 * \return QPoint
+	 */
 	QPoint getCascadePoint(int indexOfWindow);
 public slots:
 	void relayoutMenuButtons();
@@ -202,9 +270,6 @@ protected slots:
 	void menuActivated(int id);
 	void tileMethodMenuActivated(int id);
 	void fillWindowPopup();
-//signals:
-//	void enteredSdiMode();
-//	void leftSdiMode();
 };
 
 #endif //_KVI_MDIMANAGER_H_

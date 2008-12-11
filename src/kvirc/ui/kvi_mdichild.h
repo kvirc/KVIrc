@@ -125,6 +125,7 @@ public:
 	* \brief Sets the client widget which is shown in the subwindow
 	* \param w The new client widget which is docked into our KviMdiChild
 	* \return void
+	* \warning  The widget has to inherit of KviWindow!
 	*/
 	void setClient(QWidget * w);
 
@@ -143,6 +144,8 @@ public:
 	/**
 	* \brief Gets the current window state
 	* \return MdiChildState
+	*
+	* For details see the MdiChildState declaration
 	*/
 	MdiChildState state();
 
@@ -190,6 +193,8 @@ public:
 	* \brief Enables or disables the close button
 	* \param bEnable Activate/Deactivate close button
 	* \return void
+	*
+	* This does not remove the close button, it'll remove the buttons function
 	*/
 	void enableClose(bool bEnable);
 
@@ -207,6 +212,7 @@ public:
 
 	/**
 	* \brief Activates this subwindow
+	* \param bSetFocus Sets if the input line gets the focus
 	* \return void
 	*/
 	void activate(bool bSetFocus);
@@ -215,7 +221,7 @@ public:
 	* \brief Enqueue minimize status
 	*
 	* Since Qt sometimes does not like changing window states while being in
-	* another event
+	* another event, we need tell Qt to minimize it as soon as possible.
 	* \return void
 	*/
 	void queuedMinimize();
@@ -224,7 +230,7 @@ public:
 	* \brief Enqueue restore status
 	*
 	* Since Qt sometimes does not like changing window states while being in
-	* another event
+	* another event, we need tell Qt to restore it as soon as possible.
 	* \return void
 	*/
 	void queuedRestore();
@@ -233,7 +239,7 @@ public:
 	* \brief Enqueue maximize status
 	*
 	* Since Qt sometimes does not like changing window states while being in
-	* another event
+	* another event, we need tell Qt to maximize it as soon as possible.
 	* \return void
 	*/
 	void queuedMaximize();
