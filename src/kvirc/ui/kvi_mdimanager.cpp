@@ -243,10 +243,6 @@ void KviMdiManager::childMoved(KviMdiChild *)
 
 }
 
-/*void KviMdiManager::maximizeChild(KviMdiChild *)
-{
-}*/
-
 void KviMdiManager::childMaximized(KviMdiChild *)
 {
 	m_bInSDIMode = true;
