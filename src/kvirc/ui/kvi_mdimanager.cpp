@@ -608,8 +608,96 @@ void KviMdiManager::toggleAutoTile()
 }
 
 
-void KviMdiManager::tileAllInternal(int, bool) //int maxWnds,bool bHorizontal
+void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds,bool bHorizontal
 {
+	
+	//NUM WINDOWS =           1,2,3,4,5,6,7,8,9
+	static int colstable[9]={ 1,1,1,2,2,2,3,3,3 }; //num columns
+	static int rowstable[9]={ 1,2,3,2,3,3,3,3,3 }; //num rows
+	static int lastwindw[9]={ 1,1,1,1,2,1,3,2,1 }; //last window multiplier
+	static int colrecall[9]={ 0,0,0,3,3,3,6,6,6 }; //adjust self
+	static int rowrecall[9]={ 0,0,0,0,4,4,4,4,4 }; //adjust self
+
+	int * pColstable = bHorizontal ? colstable : rowstable;
+	int * pRowstable = bHorizontal ? rowstable : colstable;
+	int * pColrecall = bHorizontal ? colrecall : rowrecall;
+	int * pRowrecall = bHorizontal ? rowrecall : colrecall;
+
+	ensureNoMaximized();
+	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
+	//resizeContents(visibleWidth(),visibleHeight());
+	// updateScrollBars();
+	//g_pApp->sendPostedEvents();
+	if (g_pApp->closingDown()) return;
+
+	KviMdiChild * lpTop = topChild();
+	int numVisible = getVisibleChildCount();
+
+	if (numVisible < 1) return;
+
+	int numToHandle = ((numVisible > maxWnds) ? maxWnds : numVisible);
+	int xQuantum = viewport()->width() / pColstable[numToHandle-1];
+
+	if(xQuantum < ((lpTop->minimumSize().width() > KVI_MDICHILD_MIN_WIDTH) ? lpTop->minimumSize().width() : KVI_MDICHILD_MIN_WIDTH))
+	{
+		if (pColrecall[numToHandle-1] == 0) debug("Tile : Not enouh space");
+			else tileAllInternal(pColrecall[numToHandle-1], bHorizontal);
+		return;
+	}
+
+	int yQuantum = viewport()->height() / pRowstable[numToHandle-1];
+
+	if(yQuantum < ((lpTop->minimumSize().height() > KVI_MDICHILD_MIN_HEIGHT) ? lpTop->minimumSize().height() : KVI_MDICHILD_MIN_HEIGHT))
+	{
+		if (pRowrecall[numToHandle-1] == 0) debug("Tile : Not enough space");
+			else tileAllInternal(pRowrecall[numToHandle-1], bHorizontal);
+		return;
+	}
+
+	int curX = 0;
+	int curY = 0;
+	int curRow = 1;
+	int curCol = 1;
+	int curWin = 1;
+	
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+
+	for(int i = 0; i < tmp.count(); i++)
+	{
+		KviMdiChild * lpC = (KviMdiChild*) tmp.at(i);
+
+		if(lpC->state()!=KviMdiChild::Minimized)
+		{
+			if((curWin%numToHandle)==0)
+			{
+				lpC->move(curX, curY);
+				lpC->resize(xQuantum * lastwindw[numToHandle-1], yQuantum);
+			} else {
+				lpC->move(curX, curY);
+				lpC->resize(xQuantum, yQuantum);
+			}
+			//example : 12 windows : 3 cols 3 rows
+			if (curCol < pColstable[numToHandle-1])
+			{ //curCol < 3
+				curX += xQuantum; //add a column in the same row
+				curCol++;       //increase current column
+			} else {
+				curX = 0;         //new row
+				curCol = 1;       //column 1
+				if (curRow < pRowstable[numToHandle-1])
+				{ //curRow < 3
+					curY += yQuantum; //add a row
+					curRow++;
+				} else {
+					curY = 0;         //restart from beginning
+					curRow = 1;
+				}
+			}
+			curWin++;
+		}
+	}
+	if(lpTop)lpTop->setFocus();
+	updateContentsSize();
 }
 
 void KviMdiManager::tileAnodine()
