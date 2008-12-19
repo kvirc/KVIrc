@@ -641,13 +641,13 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 	if(box)box->forgetDescriptor();
 
 	// Check if file exists
-	QFile fi(dcc->szLocalFileName);
+	QFileInfo fi(dcc->szLocalFileName);
 	if(fi.exists() && (fi.size() > 0)) // 0 byte files are senseless for us
 	{
 		dcc->szLocalFileSize.setNum(fi.size());
 		
 		bool bOk;
-		unsigned long iRemoteSize = dcc->szFileSize.toULong(&bOk);
+		int iRemoteSize = dcc->szFileSize.toInt(&bOk);
 		if(!bOk)iRemoteSize = -1;
 
 		// FIXME: Files downloaded succesfully shouldn't be resumed
@@ -659,7 +659,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 			bool bDisableResume = false;
 			
 			if((iRemoteSize > -1) || // remote size is unknown
-				(iRemoteSize > (fi.size()))) // or it is larger than the actual size on disk
+				(iRemoteSize > ((int)(fi.size())))) // or it is larger than the actual size on disk
 			{
 				tmp = __tr2qs_ctx( \
 							"The file '<b>%1</b>' already exists " \
@@ -697,7 +697,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 			// auto resume ?
 			if(KVI_OPTION_BOOL(KviOption_boolAutoResumeDccSendWhenAutoAccepted) &&
 				(iRemoteSize > -1) && // only if the remote size is really known
-				(iRemoteSize > (fi.size())) && // only if the remote size is larger than the local size
+				(iRemoteSize > ((int)(fi.size()))) && // only if the remote size is larger than the local size
 				(!KviDccFileTransfer::nonFailedTransferWithLocalFileName(dcc->szLocalFileName.utf8().data()))) // only if there is no transfer with this local file name yet
 			{
 				// yep, auto resume...
