@@ -25,6 +25,7 @@
 //
 //=============================================================================
 
+#include <QFont>
 #include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_qstring.h"
@@ -103,6 +104,7 @@ protected:
 #ifndef COMPILE_NO_IPC
 	KviIpcSentinel                * m_pIpcSentinel;
 #endif
+	QFont				defaultFont;
 public:
 	// setup stuff (accessed from kvi_main.cpp: consider private othwerise)
 	QString	          m_szConfigFile;        // setup
@@ -177,7 +179,7 @@ public:
 	bool getOptionString(const QString &optName,QString &buffer);
 	bool setOptionValue(const QString &optName,const QString &value);
 	bool setCommonOptionValue(const QString &optName,const QString &value);
-	
+
 	void optionResetUpdate(int flags);
 
 	// kvi_app_fs.cpp : Filesystem thingies

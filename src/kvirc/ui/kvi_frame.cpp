@@ -627,7 +627,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 	{
 		m_pMdi->destroyChild(wnd->mdiParent(),true);
 	}
-	
+
 	wnd->deleteLater();
 }
 

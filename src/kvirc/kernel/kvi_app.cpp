@@ -54,7 +54,6 @@
 #include "kvi_nickserv.h"
 #include "kvi_identityprofile.h"
 #include "kvi_xlib.h"
-////#include "kvi_garbage.h"
 #include "kvi_texticonmanager.h"
 #include "kvi_texticonwin.h"
 #include "kvi_historywin.h"
@@ -200,6 +199,7 @@ KviApp::KviApp(int &argc,char ** argv)
 	m_pIpcSentinel          = 0;
 #endif
 	m_iHeartbeatTimerId     = -1;
+	defaultFont             = font();
 	// next step is setup()
 	m_bSetupDone = false;
 	kvi_socket_flushTrafficCounters();
@@ -1297,10 +1297,18 @@ void KviApp::updateApplicationFont()
 {
 	if(KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont))
 	{
-		if(font() != KVI_OPTION_FONT(KviOption_fontApplication))
 			setFont(KVI_OPTION_FONT(KviOption_fontApplication));
+			if(g_pFrame)
+			{
+				g_pFrame->setFont(font());
+			}
+	} else {
+			setFont(defaultFont);
+			if(g_pFrame)
+			{
+				g_pFrame->setFont(defaultFont);
+			}
 	}
-	// FIXME: #warning "And what if this option is turned off ?...a reboot only"
 }
 
 void KviApp::loadRecentEntries()
