@@ -71,8 +71,6 @@ extern KviTalPopupMenu         * g_pInputPopup;
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-QFontMetrics * g_pLastFontMetrics = 0;
-
 KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 : QWidget(pPar)
 {
@@ -401,9 +399,6 @@ void KviInput::insertText(const QString & szText)
 
 void KviInput::applyOptions()
 {
-	if(g_pLastFontMetrics) delete g_pLastFontMetrics;
-	g_pLastFontMetrics = 0;
-
 	if(KVI_OPTION_BOOL(KviOption_boolEnableInputHistory))//G&N mar 2005
 	{
 		QIcon is1;

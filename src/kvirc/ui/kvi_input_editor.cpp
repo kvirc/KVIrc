@@ -55,9 +55,7 @@
 #include <QKeyEvent>
 #include <QDragEnterEvent>
 
-
-// from kvi_input.cpp
-extern QFontMetrics            * g_pLastFontMetrics;
+QFontMetrics * g_pLastFontMetrics = 0;
 
 // from kvi_app.cpp
 extern KviTalPopupMenu         * g_pInputPopup;
@@ -115,7 +113,8 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 
 	setCursor(Qt::IBeamCursor);
 
-	setFont(KVI_OPTION_FONT(KviOption_fontInput));
+	//set the font and font metrics
+	applyOptions();
 }
 
 KviInputEditor::~KviInputEditor()
@@ -136,7 +135,7 @@ KviInputEditor::~KviInputEditor()
 
 void KviInputEditor::recalcFontMetrics()
 {
-	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontInput));
+	QFontMetrics fm(font());
 	unsigned short u;
 	for(u=1; u<32; u++)
 	{
@@ -155,8 +154,16 @@ void KviInputEditor::recalcFontMetrics()
 
 void KviInputEditor::applyOptions()
 {
+	//set the font
 	setFont(KVI_OPTION_FONT(KviOption_fontInput));
+
+	//then, let font metrics be updated in lazy fashion
+	if(g_pLastFontMetrics) delete g_pLastFontMetrics;
+	g_pLastFontMetrics = 0;
+
 	g_bInputFontMetricsDirty = true;
+
+	//not that lazy, since we force an update :)
 	update();
 }
 
@@ -206,7 +213,7 @@ QSize KviInputEditor::sizeHint() const
 {
 	//grabbed from qlineedit.cpp
 	ensurePolished();
-	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontInput));
+	QFontMetrics fm(font());
 	int h = qMax(fm.lineSpacing(), 14) + 2*2; /* innerMargin */
 	int w = fm.width( 'x' ) * 17; // "some"
 	int m = frameWidth() * 2;
@@ -1037,10 +1044,10 @@ void KviInputEditor::handleDragSelection()
 	if(pnt.x() <= 0)
 	{
 		//Left side dragging
-		if(m_iFirstVisibleChar > 0) m_iFirstVisibleChar--;
+		if(m_iFirstVisibleChar > 0)
+			m_iFirstVisibleChar--;
 		m_iCursorPosition = m_iFirstVisibleChar;
-	} else if(pnt.x() >= width())
-	{
+	} else if(pnt.x() >= width()) {
 		//Right side dragging...add a single character to the selection on the right
 		if(m_iCursorPosition < ((int)(m_szTextBuffer.length())))
 		{
@@ -1057,7 +1064,7 @@ void KviInputEditor::handleDragSelection()
 		if(m_iCursorPosition > m_iSelectionAnchorChar)
 		{
 			m_iSelectionBegin = m_iSelectionAnchorChar;
-				m_iSelectionEnd   = m_iCursorPosition-1;
+			m_iSelectionEnd   = m_iCursorPosition-1;
 		} else {
 			m_iSelectionBegin = m_iCursorPosition;
 			m_iSelectionEnd   = m_iSelectionAnchorChar-1;
@@ -1943,11 +1950,11 @@ void KviInputEditor::insertChar(QChar c)
 void KviInputEditor::moveRightFirstVisibleCharToShowCursor()
 {
 	// :)
-	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontInput));
+	QFontMetrics fm(font());
 
 	QChar c = m_szTextBuffer.at(m_iCursorPosition);
 
-	m_iLastCursorXPosition += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
+	m_iLastCursorXPosition += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);
 
 	while(m_iLastCursorXPosition >= contentsRect().width()-2*KVI_INPUT_MARGIN)
 	{
@@ -1982,23 +1989,24 @@ int KviInputEditor::charIndexFromXPosition(int iXPos)
 	int iCurChar = m_iFirstVisibleChar;
 	int iBufLen  = m_szTextBuffer.length();
 
-	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontInput));
+	QFontMetrics fm(font());
 	while(iCurChar < iBufLen)
 	{
 		QChar c = m_szTextBuffer.at(iCurChar);
+		int iWidthCh = (c.unicode() < 32) ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);
 
-		int iWidthCh;
-		if (c.unicode() < 32)
-			iWidthCh=fm.width(getSubstituteChar(c.unicode())) + 3 ;
-		else
-		iWidthCh=fm.width(c);
-
-		if(iXPos < (iCurXPos+(iWidthCh/2))) return iCurChar;
-		else if(iXPos < (iCurXPos+iWidthCh)) return (iCurChar+1);
+		if(iXPos < (iCurXPos+(iWidthCh/2)))
 		{
-			iCurXPos += iWidthCh;
-			iCurChar++;
+			return iCurChar;
+		} else {
+			if(iXPos < (iCurXPos+iWidthCh))
+			{
+				return (iCurChar+1);
+			}
 		}
+
+		iCurXPos += iWidthCh;
+		iCurChar++;
 	}
 	return iCurChar;
 }
@@ -2024,8 +2032,9 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx, bool bContentsCoords)
 	// FIXME: this could use fm.width(m_szTextBuffer,chIdx)
 	int iCurXPos = bContentsCoords ? KVI_INPUT_MARGIN : frameWidth()+KVI_INPUT_MARGIN;
 	int iCurChar = m_iFirstVisibleChar;
-	//debug("%i",g_pLastFontMetrics);
-	if(!g_pLastFontMetrics) g_pLastFontMetrics = new QFontMetrics(KVI_OPTION_FONT(KviOption_fontInput));
+
+	if(!g_pLastFontMetrics)
+		g_pLastFontMetrics = new QFontMetrics(font());
 	while(iCurChar < iChIdx)
 	{
 		QChar c = m_szTextBuffer.at(iCurChar);
