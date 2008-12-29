@@ -438,6 +438,7 @@ void KviIrcView::enableDnd(bool bEnable)
 void KviIrcView::clearBuffer()
 {
 	emptyBuffer(true);
+	m_pScrollBar->setRange(0,m_iNumLines);
 }
 
 bool KviIrcView::saveBuffer(const char *filename)

@@ -103,7 +103,7 @@ KviPointerList<KviUserWindow> * g_pUserWindowList = 0;
 	@short:
 		Clears the output a window
 	@syntax:
-		window.clearOutput [-f] [-q] [window_id]
+		window.clearOutput [-q] [window_id]
 	@switches:
 		!sw: -q | --quiet
 		Don't warn if the specified window doesn't exist. Just continue silently.
@@ -121,11 +121,11 @@ static bool window_kvs_cmd_clearOutput(KviKvsModuleCommandCall * c)
 	GET_KVS_WINDOW_ID
 	if(pWnd)
 	{
-		if(pWnd->view())pWnd->view()->emptyBuffer(true);
+		if(pWnd->view())pWnd->view()->clearBuffer();
 		if(pWnd->type() == KVI_WINDOW_TYPE_CHANNEL)
 		{
 			KviChannel *chan = (KviChannel *)pWnd;
-			if(chan->messageView()) chan->messageView()->emptyBuffer(true);
+			if(chan->messageView()) chan->messageView()->clearBuffer();
 		}
 	}
 	return true;
