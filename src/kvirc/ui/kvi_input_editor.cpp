@@ -859,8 +859,7 @@ void KviInputEditor::insertText(const QString & szTxt)
 	QString szText = szTxt; // crop away constness
 	if(szText.isEmpty())return;
 
-	//szText.replaceAll('\t'," "); //Do not paste tabs
-	//szText.replace(QRegExp("\t")," "); // do not paste tabs
+	szText.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
 
 	m_bUpdatesEnabled = false;
 	removeSelected();

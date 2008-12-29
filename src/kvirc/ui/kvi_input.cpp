@@ -172,7 +172,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pIconButton->setAutoRaise(true);
 	m_pHistoryButton->setAutoRaise(true);
 	m_pHideToolsButton->setAutoRaise(true);
-	
+
 	m_pLayout->addWidget(m_pHideToolsButton,0);
 	m_pLayout->addWidget(m_pButtonContainer,0);
 	m_pLayout->addWidget(m_pInputEditor,10000);
@@ -278,6 +278,7 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 							}
 						}
 					}
+					szText.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
 					KviUserInput::parse(szText,m_pWindow,QString(),m_pCommandlineModeButton->isChecked());
 					m_pMultiLineEditor->setText("");
 				}
@@ -307,7 +308,8 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		m_pLayout->removeWidget(m_pMultiLineEditor);
 		KviScriptEditor::destroyInstance(m_pMultiLineEditor);
 		m_pMultiLineEditor = 0;
-		szTmp.replace(QRegExp("[\a\f\n\r\t\v]"), QString(" "));
+		szTmp.replace(QRegExp("[\a\f\n\r\v]"), QString(" "));
+		szTmp.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
 		m_pInputEditor->setText(szTmp);
 		m_pInputEditor->show();
 		m_pWindow->childrenTreeChanged(0);
@@ -382,7 +384,6 @@ int KviInput::heightHint() const
 
 void KviInput::setText(const QString & szText)
 {
-	// FIXME: Latin1 -> QString ?
 	if(m_pMultiLineEditor)
 		m_pMultiLineEditor->setText(szText);
 	else m_pInputEditor->setText(szText);
@@ -426,7 +427,6 @@ void KviInput::setFocusProxy(QWidget *)
 	/* do nothing */
 }
 
-//const QString & KviInput::text()
 QString KviInput::text()
 {
 	QString szText;

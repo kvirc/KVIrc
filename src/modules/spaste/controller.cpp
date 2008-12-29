@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : controller.h
-//   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo Álvarez
+//   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo Alvarez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Juanjo Álvarez (juanjux@yahoo.es)
+//   Copyright (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)
 //   Copyright (C) 2002-2008 Szymon Stefanek (kvirc@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -100,6 +100,8 @@ void SPasteController::pasteFile(void)
 		if(line.isEmpty())
 			line = QChar(KVI_TEXT_RESET);
 
+		line.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
+
 		if(!g_pApp->windowExists(m_pWindow))
 		{
 			m_pFile->close();
@@ -118,10 +120,19 @@ void SPasteController::pasteClipboard(void)
 	if(m_clipBuffIterator != m_pClipBuff->end())
 	{
 		if(!g_pApp->windowExists(m_pWindow))
+		{
 		  	delete this;
-		else {
-			if((*m_clipBuffIterator).isEmpty())(*m_clipBuffIterator) = QChar(KVI_TEXT_RESET);
-			m_pWindow->ownMessage((*m_clipBuffIterator).toAscii()); // <-- not good :/
+		} else {
+			QString line;
+			if((*m_clipBuffIterator).isEmpty())
+			{
+				line = QChar(KVI_TEXT_RESET);
+			} else {
+				line = *m_clipBuffIterator;
+			}
+
+			line.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
+			m_pWindow->ownMessage(line);
 			++m_clipBuffIterator;
 		}
 	} else delete this;//Clipboard finished

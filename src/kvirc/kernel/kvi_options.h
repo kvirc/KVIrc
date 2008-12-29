@@ -576,8 +576,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintDaysIntervalToPasteOnChannelJoin 70         /* channel */
 #define KviOption_uintLinesToPasteOnQueryJoin 71                  /* query */
 #define KviOption_uintDaysIntervalToPasteOnQueryJoin 72           /* query */
+#define KviOption_uintSpacesToExpandTabulationInput 73           /* number of spaces used in tabulation expansion in the inputbar */
 
-#define KVI_NUM_UINT_OPTIONS 73
+#define KVI_NUM_UINT_OPTIONS 74
 
 namespace KviIdentdOutputMode {
 	enum Mode {

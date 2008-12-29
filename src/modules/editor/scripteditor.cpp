@@ -343,24 +343,25 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 // Adapted from QT4 QCompleter example
 	bool isShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
 	if (!m_pCompleter || !isShortcut) // dont process the shortcut when we have a completer
-         QTextEdit::keyPressEvent(e);
+		QTextEdit::keyPressEvent(e);
 	const bool ctrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
-    if (!m_pCompleter || (ctrlOrShift && e->text().isEmpty()))
-         return;
-    static QString eow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-="); // end of word
-    bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
-    QString completionPrefix = textUnderCursor();
+	if (!m_pCompleter || (ctrlOrShift && e->text().isEmpty()))
+		return;
+	static QString eow("~!@#$%^&*()_+{}|:\"<>?,/;'[]\\-="); // end of word
+	bool hasModifier = (e->modifiers() != Qt::NoModifier) && !ctrlOrShift;
+	QString completionPrefix = textUnderCursor();
 	if (!isShortcut && (hasModifier || e->text().isEmpty()|| completionPrefix.length() < 3 || eow.contains(e->text().right(1))))
 	{
-    	m_pCompleter->popup()->hide();
+		m_pCompleter->popup()->hide();
 		return;
-    }
-    if (completionPrefix != m_pCompleter->completionPrefix()) {
-        m_pCompleter->setCompletionPrefix(completionPrefix);
-         m_pCompleter->popup()->setCurrentIndex(m_pCompleter->completionModel()->index(0, 0));
-     }
-    QRect cr = cursorRect();
-    cr.setWidth(m_pCompleter->popup()->sizeHintForColumn(0)+ m_pCompleter->popup()->verticalScrollBar()->sizeHint().width());
+	}
+	if (completionPrefix != m_pCompleter->completionPrefix())
+	{
+		m_pCompleter->setCompletionPrefix(completionPrefix);
+		m_pCompleter->popup()->setCurrentIndex(m_pCompleter->completionModel()->index(0, 0));
+	}
+	QRect cr = cursorRect();
+	cr.setWidth(m_pCompleter->popup()->sizeHintForColumn(0)+ m_pCompleter->popup()->verticalScrollBar()->sizeHint().width());
 	m_pCompleter->complete(cr);
 }
 
