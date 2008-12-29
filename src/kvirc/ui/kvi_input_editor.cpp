@@ -114,6 +114,8 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 	connect(m_pIconMenu,SIGNAL(activated(int)),this,SLOT(iconPopupActivated(int)));
 
 	setCursor(Qt::IBeamCursor);
+
+	setFont(KVI_OPTION_FONT(KviOption_fontInput));
 }
 
 KviInputEditor::~KviInputEditor()
@@ -153,6 +155,7 @@ void KviInputEditor::recalcFontMetrics()
 
 void KviInputEditor::applyOptions()
 {
+	setFont(KVI_OPTION_FONT(KviOption_fontInput));
 	g_bInputFontMetricsDirty = true;
 	update();
 }
@@ -229,8 +232,6 @@ void KviInputEditor::drawContents(QPainter * p)
 	QRect rect = contentsRect();
 	int iWidgetWidth  = rect.width();
 	int iWidgetHeight = rect.height();
-
-	p->setFont(KVI_OPTION_FONT(KviOption_fontInput));
 
 	QFontMetrics fm(p->fontMetrics());
 
