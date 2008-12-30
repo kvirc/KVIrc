@@ -54,7 +54,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	m_szKey = key;
 	m_szLimit = limit;
 	bool isEnabled=1;
-	
+
 	QObject * w = parent();
 	while(w)
 	{
@@ -64,13 +64,13 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 			if(!( chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanOwner() || chan->isMeChanAdmin() || chan->connection()->userInfo()->hasUserMode('o') || chan->connection()->userInfo()->hasUserMode('O') ) )  isEnabled=0;
 			break;
 		}
-	w = w->parent();
+		w = w->parent();
 	}
-	
+
 	QGridLayout *pMasterLayout = new QGridLayout(this);
 
 	setFocusPolicy(Qt::ClickFocus);
-	
+
 	KviTalScrollView *pScrollView = new KviTalScrollView(this);
 	pScrollView->viewport()->setBackgroundRole(QPalette::Background);
 	pMasterLayout->addWidget(pScrollView,0,0);
@@ -79,7 +79,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	QPushButton * b;
 	if(isEnabled) b = new QPushButton(__tr2qs("&Apply"),this);
 	else b = new QPushButton(__tr2qs("Close"),this);
-	
+
 	pMasterLayout->addWidget(b,1,0);
 	connect(b,SIGNAL(clicked()),this,SLOT(commit()));
 
@@ -105,7 +105,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	m_pCheckBoxes = new KviPointerList<QCheckBox>;
 	m_pCheckBoxes->setAutoDelete(false);
 
-	
+
 	// first che basic checkable modes pstnmi
 	QString szModes = "pstnmi";
 

@@ -903,7 +903,7 @@ void KviWindow::closeEvent(QCloseEvent *e)
 		 * 1) delete this => will just print a qt warning "don't delete things on their event handler"
 		 * 2) deleteLater() => will tipically create an infinite recursion in the module unload routine
 		 * 3) do nothing => same as #2
-		 */ 
+		 */
 		delete this;
 	}
 }

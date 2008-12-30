@@ -87,7 +87,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pHideToolsButton->setObjectName("hide_container_button");
 
 	m_pHideToolsButton->setIconSize(QSize(22,22));
-	m_pHideToolsButton->setFixedWidth(10);
+	m_pHideToolsButton->setFixedWidth(16);
 
 	if(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))
 		m_pHideToolsButton->setIcon(QIcon(*(g_pIconManager->getBigIcon("kvi_horizontal_left.png"))));

@@ -144,7 +144,7 @@ void KviModeWidget::editorReturnPressed()
 	if(!szNewModes.isEmpty()) mode+=QString("+"+szNewModes);
 	if(!mode.isEmpty())
 	{
-		KviQCString chan = m_pChannel->connection()->encodeText(m_pChannel->objectName());
+		KviQCString chan = m_pChannel->connection()->encodeText(m_pChannel->target());
 		m_pChannel->connection()->sendFmtData("MODE %s %s",chan.data(),mode.toUtf8().data());
 	}
 	reset();
@@ -156,7 +156,7 @@ void KviModeWidget::editorTextChanged( const QString & text)
 	QString szText=text;
 	for(i=0;i<szText.length();i++)
 	{
-		if( !m_pChannel->connection()->serverInfo()->supportedPlainModes().contains(szText[i]) || 
+		if( !m_pChannel->connection()->serverInfo()->supportedPlainModes().contains(szText[i]) ||
 			szText.indexOf(szText[i])<i,Qt::CaseInsensitive )
 			szText.remove(i,1);
 	}
