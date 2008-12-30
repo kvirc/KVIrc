@@ -36,8 +36,9 @@
 
 #include <QWidget>
 #include <QToolButton>
+#include <QLabel>
 
-class QHBoxLayout;
+class QGridLayout;
 class KviUserListView;
 class KviWindow;
 class KviInputEditor;
@@ -75,7 +76,8 @@ public:
 	QToolButton     * m_pIconButton;
 	QToolButton     * m_pCommandlineModeButton;
 	QToolButton     * m_pHideToolsButton;
-	QHBoxLayout     * m_pLayout;
+	QGridLayout     * m_pLayout;
+	QLabel          * m_pHelpLabel;
 public:
 	/**
 	* \brief Sets the focus to the input line

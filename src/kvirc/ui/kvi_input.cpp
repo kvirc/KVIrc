@@ -75,8 +75,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 : QWidget(pPar)
 {
 	setObjectName("input_widget");
-	m_pLayout=new QHBoxLayout(this);
-	m_pLayout->setDirection(QBoxLayout::RightToLeft);
+	m_pLayout=new QGridLayout(this);
 
 	m_pLayout->setMargin(0);
 	m_pLayout->setSpacing(0);
@@ -171,9 +170,9 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	m_pHistoryButton->setAutoRaise(true);
 	m_pHideToolsButton->setAutoRaise(true);
 
-	m_pLayout->addWidget(m_pHideToolsButton,0);
-	m_pLayout->addWidget(m_pButtonContainer,0);
-	m_pLayout->addWidget(m_pInputEditor,10000);
+	m_pLayout->addWidget(m_pHideToolsButton,0,2,2,1);
+	m_pLayout->addWidget(m_pButtonContainer,0,1,2,1);
+	m_pLayout->addWidget(m_pInputEditor,0,0,2,1);
 }
 
 KviInput::~KviInput()
@@ -304,8 +303,14 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		QString szTmp;
 		m_pMultiLineEditor->getText(szTmp);
 		m_pLayout->removeWidget(m_pMultiLineEditor);
+		m_pLayout->removeWidget(m_pHelpLabel);
+
 		KviScriptEditor::destroyInstance(m_pMultiLineEditor);
 		m_pMultiLineEditor = 0;
+
+		delete m_pHelpLabel;
+		m_pHelpLabel = 0;
+
 		szTmp.replace(QRegExp("[\a\f\n\r\v]"), QString(" "));
 		szTmp.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
 		m_pInputEditor->setText(szTmp);
@@ -315,13 +320,17 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 		m_pMultiEditorButton->setChecked(false);
 	} else {
 		if(!bOn) return;
-		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
-		QString szText = __tr2qs("<Ctrl+Return>; submits, <Ctrl+Backspace>; hides this editor");
-		m_pMultiLineEditor->setFindText(szText);
-		m_pMultiLineEditor->setFindLineeditReadOnly(true);
-		m_pMultiLineEditor->setText(m_pInputEditor->text());
 		m_pInputEditor->hide();
-		m_pLayout->addWidget(m_pMultiLineEditor);
+
+		m_pHelpLabel = new QLabel();
+		m_pHelpLabel->setIndent(5); // we only want a left margin here
+		m_pHelpLabel->setText(__tr2qs("<Ctrl+Return>; submits, <Ctrl+Backspace>; hides this editor"));
+		m_pLayout->addWidget(m_pHelpLabel,0,0,1,1);
+
+		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
+		m_pMultiLineEditor->setText(m_pInputEditor->text());
+		m_pLayout->addWidget(m_pMultiLineEditor,1,0,1,1);
+
 		m_pWindow->childrenTreeChanged(m_pMultiLineEditor);
 		m_pMultiLineEditor->setFocus();
 		m_pMultiEditorButton->setChecked(true);

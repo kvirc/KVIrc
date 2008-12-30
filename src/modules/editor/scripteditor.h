@@ -162,7 +162,6 @@ public:
 	virtual void setFocus();
 	virtual bool isModified();
 	int getCursor(){return m_pEditor->textCursor().position();};
-	void setFindLineEditReadOnly(bool b);
 	void setCursorPosition(int iPos);
 	int cursor(){ return m_lastCursorPos; };
 	QLineEdit * findLineEdit(){ return m_pFindLineEdit; };

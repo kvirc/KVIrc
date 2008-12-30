@@ -918,11 +918,6 @@ void KviScriptEditorImplementation::setFindText(const QString & szText)
 	m_pEditor->slotFind();
 }
 
-void KviScriptEditorImplementation::setFindLineEditReadOnly(bool b)
-{
-	m_pFindLineEdit->setReadOnly(b);
-}
-
 void KviScriptEditorImplementation::updateRowColLabel()
 {
 	if(m_lastCursorPos==m_pEditor->textCursor().position())
