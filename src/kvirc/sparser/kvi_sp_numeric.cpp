@@ -2048,13 +2048,7 @@ void KviServerParser::parseNumericStartTls(KviIrcMessage * msg)
 			debug("STARTTLS OK");
 			bEnable = true;
 			break;
-		case 671:
-			if(msg->connection()->context()->state() == KviIrcContext::Connected)
-			{
-				//some servers use this same numeric to indicate RPL_WHOISSECURE
-				parseNumericWhoisOther(msg);
-				return;
-			}
+		case 691:
 			debug("STARTTLS FAIL");
 			bEnable = false;
 			break;

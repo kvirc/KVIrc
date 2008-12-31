@@ -332,17 +332,17 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	PTM(parseNumericStats)                         , // 242 RPL_STATSUPTIME
 	PTM(parseNumericStats)                         , // 243 RPL_STATSOLINE
 	PTM(parseNumericStats)                         , // 244 RPL_STATSHLINE
-	PTM(parseNumericStats)                         , // 245 RPL_STATSSLINE 
+	PTM(parseNumericStats)                         , // 245 RPL_STATSSLINE
 	PTM(parseNumericStats)                         , // 246 RPL_STATSPING RPL_STATSTLINE
-	PTM(parseNumericStats)                         , // 247 RPL_STATSBLINE_I RPL_STATSGLINE RPL_STATSXLINE 
-	PTM(parseNumericStats)                         , // 248 RPL_STATSDEFINE RPL_STATSULINE   
+	PTM(parseNumericStats)                         , // 247 RPL_STATSBLINE_I RPL_STATSGLINE RPL_STATSXLINE
+	PTM(parseNumericStats)                         , // 248 RPL_STATSDEFINE RPL_STATSULINE
 	PTM(parseNumericStats)                         , // 249 RPL_STATSDEBUG
 	PTM(parseNumericStats)                         , // 250 RPL_STATSCONN RPL_STATSDLINE_I
 	PTM(parseNumericStats)                         , // 251 RPL_LUSERCLIENT
 	PTM(parseNumericStats)                         , // 252 RPL_LUSEROP
 	PTM(parseNumericStats)                         , // 253 RPL_LUSERUNKNOWN
 	PTM(parseNumericStats)                         , // 254 RPL_LUSERCHANNELS
-	PTM(parseNumericStats)                         , // 255 RPL_LUSERME  
+	PTM(parseNumericStats)                         , // 255 RPL_LUSERME
 	PTM(parseNumericServerAdminInfoTitle)          , // 256 RPL_ADMINME
 	PTM(parseNumericServerAdminInfoServerName)     , // 257 RPL_ADMINLOC1
 	PTM(parseNumericServerAdminInfoAdminName)      , // 258 RPL_ADMINLOC2
@@ -758,7 +758,7 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 668
 	0,                                               // 669
 	PTM(parseNumericStartTls)                      , // 670 RPL_STARTTLSOK
-	PTM(parseNumericStartTls)                      , // 671 RPL_STARTTLSFAIL
+	PTM(parseNumericWhoisOther)                    , // 671 RPL_WHOISSECURE
 	0,                                               // 672
 	0,                                               // 673
 	0,                                               // 674
@@ -778,7 +778,7 @@ messageParseProc KviServerParser::m_numericParseProcTable[1000]=
 	0,                                               // 688
 	0,                                               // 689
 	0,                                               // 690
-	0,                                               // 691
+	PTM(parseNumericStartTls)                      , // 691 RPL_STARTTLSFAIL
 	0,                                               // 692
 	0,                                               // 693
 	0,                                               // 694
