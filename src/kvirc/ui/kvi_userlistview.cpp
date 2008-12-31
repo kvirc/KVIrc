@@ -200,7 +200,7 @@ bool KviUserListEntry::color(QColor & color)
 		}
 	}
 
-	if(m_iFlags == 0)
+	if(m_iFlags == 0 && !globalData()->isIrcOp())
 	{
 		color = KVI_OPTION_COLOR(KviOption_colorUserListViewNormalForeground);
 		return true;
@@ -1731,7 +1731,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 
 				if(!pClrFore)
 				{
-					if(pEntry->m_iFlags == 0)
+					if(pEntry->m_iFlags == 0 && !pEntry->globalData()->isIrcOp())
 					{
 						pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewNormalForeground));
 					} else {
@@ -1918,7 +1918,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			if(bShowIcons)
 			{
 				//p.drawRect(iTheX,iTheY + 2,18,e->m_iHeight - 4);
-				if(pEntry->m_iFlags != 0)
+				if(pEntry->m_iFlags != 0 || pEntry->globalData()->isIrcOp())
 				{
 					QPixmap * pIco = g_pIconManager->getSmallIcon( \
 											pEntry->globalData()->isAway() ? \
