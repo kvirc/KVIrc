@@ -1645,7 +1645,6 @@ void KviServerOptionsWidget::removeCurrent()
 	if(m_pLastEditedItem)
 	{
 		QTreeWidgetItem * it = m_pTreeWidget->itemAbove(m_pLastEditedItem);
-		if(!it)it = m_pTreeWidget->topLevelItemCount()>0 ? m_pTreeWidget->itemBelow(m_pLastEditedItem) : m_pTreeWidget->itemBelow(m_pLastEditedItem);
 
 		int index = m_pTreeWidget->indexOfTopLevelItem(m_pLastEditedItem);
 		if(index > -1)
