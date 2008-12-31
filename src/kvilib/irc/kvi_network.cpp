@@ -86,10 +86,15 @@ void KviNetwork::copyFrom(const KviNetwork &src)
 	if(m_pNickServRuleSet)delete m_pNickServRuleSet;
 	if(src.m_pNickServRuleSet)m_pNickServRuleSet = new KviNickServRuleSet(*(src.m_pNickServRuleSet));
 	else m_pNickServRuleSet = 0;
+/*
+	// We don't copy the server list, since this function is called in KviServerOptionsWidget::commit()
+	// to recreate the server list from scratch; copying the original servers will mean duplicate servers
+	// (see bug ticket #300)
 	for (KviServer *s = src.m_pServerList->first(); s; s = src.m_pServerList->next())
 	{
 		m_pServerList->append(new KviServer(*s));
 	}
+*/
 }
 
 void KviNetwork::insertServer(KviServer *srv)
