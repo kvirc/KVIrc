@@ -105,13 +105,13 @@ void KviMaskInputDialog::accept()
 	if(m_szOldMask.isEmpty()) 
 	{
 		m_pChannel->connection()->sendFmtData("MODE %s +%c %s",
-			m_pChannel->connection()->encodeText(m_pChannel->objectName()).data(),
+			m_pChannel->connection()->encodeText(m_pChannel->target()).data(),
 			m_pEditor->flag(),
 			m_pChannel->connection()->encodeText(m_pEdit->text()).data()
 			);
 	} else {
 		m_pChannel->connection()->sendFmtData("MODE %s -%c+%c %s %s",
-			m_pChannel->connection()->encodeText(m_pChannel->objectName()).data(),
+			m_pChannel->connection()->encodeText(m_pChannel->target()).data(),
 			m_pEditor->flag(),
 			m_pEditor->flag(),
 			m_pChannel->connection()->encodeText(m_szOldMask).data(),

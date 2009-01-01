@@ -329,14 +329,14 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 				QString toPart;
 				for(KviChannel * c = pConsole->connection()->channelList()->first();c;c = pConsole->connection()->channelList()->next())
 				{
-					tmp=c->objectName();
+					tmp=c->target();
 					if(c->hasChannelKey()) {
 						tmp.append("?");
 						tmp.append(c->channelKey());
 					}
 					if(!parts.chanList.removeAll(tmp))
 					{
-						toPart.append(c->objectName());
+						toPart.append(c->target());
 						toPart.append(",");
 					}
 				}

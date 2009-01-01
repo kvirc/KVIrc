@@ -463,7 +463,7 @@ void KviConsole::updateUri()
 			KviChannel * last =connection()->channelList()->last();
 			for(KviChannel * c = connection()->channelList()->first();c;c = connection()->channelList()->next())
 			{
-				uri.append(c->objectName().toLatin1());
+				uri.append(c->target());
 				if(c->hasChannelKey()) {
 					uri.append("?");
 					uri.append(c->channelKey());
