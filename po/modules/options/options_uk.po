@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 11:28+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -2003,7 +2003,7 @@ msgstr "Закрити цей діалог, забувши про всі змі�
 msgid "Color Set"
 msgstr "Набір квітів"
 
-#: src/modules/options/optw_input.cpp:150
+#: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
 msgstr "Дружній режим командного рядка"
 
@@ -2357,6 +2357,10 @@ msgstr "Показувати спливаючу підказку по вікна
 #: src/modules/options/optw_highlighting.cpp:55
 msgid "Enable word highlighting"
 msgstr "Включити підсвічування слів"
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
+msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:61
 msgid "External CTCP replies"
@@ -3095,11 +3099,11 @@ msgstr "Новий сервер"
 msgid "New message in inactive query"
 msgstr "Нове повідомлення"
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
 msgstr "Завершення ніка"
 
-#: src/modules/options/optw_input.cpp:148
+#: src/modules/options/optw_input.cpp:151
 msgid "Nick completion postfix string"
 msgstr "Закінчення при завершенні ніка"
 
@@ -4359,7 +4363,7 @@ msgstr "Використати автоматичний Нік [5 букв]AWAY"
 msgid "Use avatar"
 msgstr "Використати аватар"
 
-#: src/modules/options/optw_input.cpp:147
+#: src/modules/options/optw_input.cpp:150
 msgid "Use bash-like nick completion"
 msgstr "Використати bash-стиль завершення ников"
 
@@ -4425,7 +4429,7 @@ msgstr "Використати WATCH метод якщо можливо"
 msgid "Use the WATCH method if available"
 msgstr "Використати WATCH метод якщо можливо"
 
-#: src/modules/options/optw_input.cpp:149
+#: src/modules/options/optw_input.cpp:152
 msgid "Use the completion postfix string for the first word only"
 msgstr "Використати це закінчення тільки якщо Нік - перше слово"
 

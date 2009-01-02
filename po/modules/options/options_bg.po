@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bg\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 11:28+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: 2004-06-01 21:36+0300\n"
 "Last-Translator: Атанас Мавров <bugar@developer.bg>\n"
 "Language-Team: Bulgarian <dict@linux.zonebg.com>\n"
@@ -1572,7 +1572,7 @@ msgstr ""
 msgid "Color Set"
 msgstr ""
 
-#: src/modules/options/optw_input.cpp:150
+#: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
 msgstr ""
 
@@ -1914,6 +1914,10 @@ msgstr ""
 
 #: src/modules/options/optw_highlighting.cpp:55
 msgid "Enable word highlighting"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
 msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:61
@@ -2629,11 +2633,11 @@ msgstr ""
 msgid "New message in inactive query"
 msgstr ""
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
 msgstr ""
 
-#: src/modules/options/optw_input.cpp:148
+#: src/modules/options/optw_input.cpp:151
 msgid "Nick completion postfix string"
 msgstr ""
 
@@ -3821,7 +3825,7 @@ msgstr ""
 msgid "Use avatar"
 msgstr ""
 
-#: src/modules/options/optw_input.cpp:147
+#: src/modules/options/optw_input.cpp:150
 msgid "Use bash-like nick completion"
 msgstr ""
 
@@ -3885,7 +3889,7 @@ msgstr ""
 msgid "Use the WATCH method if available"
 msgstr ""
 
-#: src/modules/options/optw_input.cpp:149
+#: src/modules/options/optw_input.cpp:152
 msgid "Use the completion postfix string for the first word only"
 msgstr ""
 

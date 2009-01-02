@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 11:28+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: 2008-08-01 07:46+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
@@ -2034,7 +2034,7 @@ msgstr "Fecha esta caixa de diálogo, rejeitando todas as alterações."
 msgid "Color Set"
 msgstr "Conjunto de Cores"
 
-#: src/modules/options/optw_input.cpp:150
+#: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
 msgstr "Linha de comandos em modo amigável por predefinição"
 
@@ -2387,6 +2387,10 @@ msgstr "Activar Dicas das Janelas"
 #: src/modules/options/optw_highlighting.cpp:55
 msgid "Enable word highlighting"
 msgstr "Activar destaque de palavras"
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
+msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:61
 msgid "External CTCP replies"
@@ -3122,11 +3126,11 @@ msgstr "Novo Servidor"
 msgid "New message in inactive query"
 msgstr "Nova mensagem em privado inactivo"
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
 msgstr "Completação da alcunha"
 
-#: src/modules/options/optw_input.cpp:148
+#: src/modules/options/optw_input.cpp:151
 msgid "Nick completion postfix string"
 msgstr "Testo de sufixo para completar a alcunha"
 
@@ -4386,7 +4390,7 @@ msgstr "Usar alcunha gerada automaticamente ([5 letras] AWAY)"
 msgid "Use avatar"
 msgstr "Usar Avatar"
 
-#: src/modules/options/optw_input.cpp:147
+#: src/modules/options/optw_input.cpp:150
 msgid "Use bash-like nick completion"
 msgstr "Usar completação tipo bash da alcunha"
 
@@ -4452,7 +4456,7 @@ msgstr "Usar método WATCH se disponível"
 msgid "Use the WATCH method if available"
 msgstr "Usar método WATCH se disponível"
 
-#: src/modules/options/optw_input.cpp:149
+#: src/modules/options/optw_input.cpp:152
 msgid "Use the completion postfix string for the first word only"
 msgstr "Usar texto de sufixo para completar apenas para a primeira palavra"
 

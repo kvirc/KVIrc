@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 11:28+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: 2008-03-06 18:30+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -2047,7 +2047,7 @@ msgstr "Fermer la boîte de dialogue en oubliant tous les changements."
 msgid "Color Set"
 msgstr "Jeu de couleurs"
 
-#: src/modules/options/optw_input.cpp:150
+#: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
 msgstr "Mode de ligne de commande pratique par défaut"
 
@@ -2401,6 +2401,10 @@ msgstr "Activer les bulles d'aide"
 #: src/modules/options/optw_highlighting.cpp:55
 msgid "Enable word highlighting"
 msgstr "Activer le surlignage de mots (\"highlight\")"
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
+msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:61
 msgid "External CTCP replies"
@@ -3138,11 +3142,11 @@ msgstr "Nouveau Serveur"
 msgid "New message in inactive query"
 msgstr "Nouveau message dans un privé inactif"
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
 msgstr "Message de pseudo"
 
-#: src/modules/options/optw_input.cpp:148
+#: src/modules/options/optw_input.cpp:151
 msgid "Nick completion postfix string"
 msgstr "Chaîne du postfix de complétion de pseudo"
 
@@ -4406,7 +4410,7 @@ msgstr "Utiliser un pseudo automatique ([5 lettres]AWAY)"
 msgid "Use avatar"
 msgstr "Utiliser un avatar"
 
-#: src/modules/options/optw_input.cpp:147
+#: src/modules/options/optw_input.cpp:150
 msgid "Use bash-like nick completion"
 msgstr "Utiliser la complétion de pseudo de type bash"
 
@@ -4472,7 +4476,7 @@ msgstr "Utiliser la méthode WATCH si disponible"
 msgid "Use the WATCH method if available"
 msgstr "Utiliser la méthode WATCH si disponible"
 
-#: src/modules/options/optw_input.cpp:149
+#: src/modules/options/optw_input.cpp:152
 msgid "Use the completion postfix string for the first word only"
 msgstr ""
 "Utilise la chaîne du postfix de complétion de pseudo pour le premier mot "

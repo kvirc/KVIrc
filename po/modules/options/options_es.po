@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 11:28+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: 2006-01-15 22:32+0100\n"
 "Last-Translator: Jose Luis Sanchez <jsanchezv@teleline.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -2036,7 +2036,7 @@ msgstr "Cerrar el diálogo, descartando todos los cambios."
 msgid "Color Set"
 msgstr "Colores"
 
-#: src/modules/options/optw_input.cpp:150
+#: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
 msgstr ""
 
@@ -2396,6 +2396,10 @@ msgstr "Activar tooltips de ventana"
 #: src/modules/options/optw_highlighting.cpp:55
 msgid "Enable word highlighting"
 msgstr "Activar resaltado de palabras"
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
+msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:61
 msgid "External CTCP replies"
@@ -3137,11 +3141,11 @@ msgstr "Nuevo Servidor"
 msgid "New message in inactive query"
 msgstr ""
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
 msgstr "Completado de Nick"
 
-#: src/modules/options/optw_input.cpp:148
+#: src/modules/options/optw_input.cpp:151
 msgid "Nick completion postfix string"
 msgstr "Cadena postfija para completado de nick"
 
@@ -4427,7 +4431,7 @@ msgstr "Usar nick de ausencia autogenerado [5 letras]AWAY) "
 msgid "Use avatar"
 msgstr "Usar avatar"
 
-#: src/modules/options/optw_input.cpp:147
+#: src/modules/options/optw_input.cpp:150
 msgid "Use bash-like nick completion"
 msgstr "Usar completado de nick al estilo bash"
 
@@ -4494,7 +4498,7 @@ msgstr "Usar el método \"WATCH\" si está disponible"
 msgid "Use the WATCH method if available"
 msgstr "Usar el método \"WATCH\" si está disponible"
 
-#: src/modules/options/optw_input.cpp:149
+#: src/modules/options/optw_input.cpp:152
 msgid "Use the completion postfix string for the first word only"
 msgstr "Usar la cadena postfija en el completado solo para la primera palabra"
 

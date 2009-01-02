@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 11:28+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: 2005-05-26 22:52+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
@@ -2040,7 +2040,7 @@ msgstr "Fecha esta caixa de diÃ¡logo, rejeitando todas as alteraÃ§Ãµes."
 msgid "Color Set"
 msgstr "Cores"
 
-#: src/modules/options/optw_input.cpp:150
+#: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
 msgstr ""
 
@@ -2405,6 +2405,10 @@ msgstr "Habilitar dicas de janela"
 #: src/modules/options/optw_highlighting.cpp:55
 msgid "Enable word highlighting"
 msgstr "Habilitar destaque de palavras"
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
+msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:61
 msgid "External CTCP replies"
@@ -3148,11 +3152,11 @@ msgstr "Novo Servidor"
 msgid "New message in inactive query"
 msgstr ""
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
 msgstr "Complemento de Apelido"
 
-#: src/modules/options/optw_input.cpp:148
+#: src/modules/options/optw_input.cpp:151
 msgid "Nick completion postfix string"
 msgstr "String de sufixo para o complemento de apelido"
 
@@ -4439,7 +4443,7 @@ msgstr "Usar apelido gerado automaticamente ([5 letras] AWAY)"
 msgid "Use avatar"
 msgstr "Usar avatar"
 
-#: src/modules/options/optw_input.cpp:147
+#: src/modules/options/optw_input.cpp:150
 msgid "Use bash-like nick completion"
 msgstr "Usar complemento de apelido no estilo bash"
 
@@ -4506,7 +4510,7 @@ msgstr "Usar o mÃ©todo WATCH se disponÃ­vel"
 msgid "Use the WATCH method if available"
 msgstr "Usar o mÃ©todo WATCH se disponÃ­vel"
 
-#: src/modules/options/optw_input.cpp:149
+#: src/modules/options/optw_input.cpp:152
 msgid "Use the completion postfix string for the first word only"
 msgstr "Usar a string de sufixo somente para o complemento da primeira palavra"
 

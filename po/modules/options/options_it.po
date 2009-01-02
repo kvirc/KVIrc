@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-30 18:59+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: 2008-11-18 16:43+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -2031,7 +2031,7 @@ msgstr "Chiudi questa finestra, scartando tutti i cambiamenti."
 msgid "Color Set"
 msgstr "Set di colori"
 
-#: src/modules/options/optw_input.cpp:150
+#: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
 msgstr "Linea di comando in modalità user-friendly di default"
 
@@ -2377,6 +2377,10 @@ msgstr "Attiva suggerimenti della finestra"
 #: src/modules/options/optw_highlighting.cpp:55
 msgid "Enable word highlighting"
 msgstr "Attiva evidenziazione parole"
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
+msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:61
 msgid "External CTCP replies"
@@ -3104,11 +3108,11 @@ msgstr "Nuovo Server"
 msgid "New message in inactive query"
 msgstr "Nuovo messaggio nella query inattiva"
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
 msgstr "Completamento nick"
 
-#: src/modules/options/optw_input.cpp:148
+#: src/modules/options/optw_input.cpp:151
 msgid "Nick completion postfix string"
 msgstr "Caratteri aggiunti alla fine del completamento nick"
 
@@ -4358,7 +4362,7 @@ msgstr "Usa nickname automatico ([prime 5 lettere ]AWAY)"
 msgid "Use avatar"
 msgstr "Usa Avatar"
 
-#: src/modules/options/optw_input.cpp:147
+#: src/modules/options/optw_input.cpp:150
 msgid "Use bash-like nick completion"
 msgstr "Usa il completamento dei nick in stile bash"
 
@@ -4423,7 +4427,7 @@ msgstr "Usa il protocollo di sicurezza STARTTLS se disponibile"
 msgid "Use the WATCH method if available"
 msgstr "Usa il metodo WATCH se disponibile"
 
-#: src/modules/options/optw_input.cpp:149
+#: src/modules/options/optw_input.cpp:152
 msgid "Use the completion postfix string for the first word only"
 msgstr "Aggiungi i caratteri dopo il completamento solo per la prima parola"
 

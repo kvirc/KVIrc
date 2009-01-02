@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 11:28+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -1995,7 +1995,7 @@ msgstr "Párbeszédablak bezárása, összes változás elvetése."
 msgid "Color Set"
 msgstr "Paletta"
 
-#: src/modules/options/optw_input.cpp:150
+#: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
 msgstr "A parancssor felhasználóbarát alapértelmezetten"
 
@@ -2350,6 +2350,10 @@ msgstr "Ablak tippek engedélyezése"
 #: src/modules/options/optw_highlighting.cpp:55
 msgid "Enable word highlighting"
 msgstr "Szó kiemelés engedélyezése"
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
+msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:61
 msgid "External CTCP replies"
@@ -3085,11 +3089,11 @@ msgstr "Új Szerver"
 msgid "New message in inactive query"
 msgstr "Új üzenet inaktív Privát ablakban"
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
 msgstr "Név kiegészítés"
 
-#: src/modules/options/optw_input.cpp:148
+#: src/modules/options/optw_input.cpp:151
 msgid "Nick completion postfix string"
 msgstr "Névkiegészítés után beszúrandó"
 
@@ -4346,7 +4350,7 @@ msgstr "Automatikus Név használata ([5 karakter]AWAY)"
 msgid "Use avatar"
 msgstr "Avatar használata"
 
-#: src/modules/options/optw_input.cpp:147
+#: src/modules/options/optw_input.cpp:150
 msgid "Use bash-like nick completion"
 msgstr "Bash-szerű Névkiegészítés"
 
@@ -4412,7 +4416,7 @@ msgstr "Használd a WATCH eljárást, ha elérhető"
 msgid "Use the WATCH method if available"
 msgstr "Használd a WATCH eljárást, ha elérhető"
 
-#: src/modules/options/optw_input.cpp:149
+#: src/modules/options/optw_input.cpp:152
 msgid "Use the completion postfix string for the first word only"
 msgstr "Névkiegészítés utáni szöveg csak az első név után"
 

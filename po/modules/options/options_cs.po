@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 11:28+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1981,7 +1981,7 @@ msgstr "Zavře tento dialog, bez provedení změn."
 msgid "Color Set"
 msgstr "Sada barev"
 
-#: src/modules/options/optw_input.cpp:150
+#: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
 msgstr ""
 
@@ -2335,6 +2335,10 @@ msgstr "Povolit oknům tipy"
 #: src/modules/options/optw_highlighting.cpp:55
 msgid "Enable word highlighting"
 msgstr "Povolit zvýrazňování slov"
+
+#: src/modules/options/optw_input.cpp:147
+msgid "Expand tabulations in input using this amount of spaces:"
+msgstr ""
 
 #: src/modules/options/optw_ircoutput.cpp:61
 msgid "External CTCP replies"
@@ -3060,11 +3064,11 @@ msgstr "Nový Server"
 msgid "New message in inactive query"
 msgstr "Nové zprávy v neaktivním query"
 
-#: src/modules/options/optw_input.cpp:146
+#: src/modules/options/optw_input.cpp:149
 msgid "Nick completion"
 msgstr "Doplňování přezdívek"
 
-#: src/modules/options/optw_input.cpp:148
+#: src/modules/options/optw_input.cpp:151
 msgid "Nick completion postfix string"
 msgstr "Postfix řetězec pro doplňování přezdívky"
 
@@ -4316,7 +4320,7 @@ msgstr "Použít automatickou přezdívku ([5 znaků]AWAY)"
 msgid "Use avatar"
 msgstr "Použít avatar"
 
-#: src/modules/options/optw_input.cpp:147
+#: src/modules/options/optw_input.cpp:150
 msgid "Use bash-like nick completion"
 msgstr "Použít doplňování přezdívek jako v bashi"
 
@@ -4382,7 +4386,7 @@ msgstr "Použít WATCH, pokud je dostupné"
 msgid "Use the WATCH method if available"
 msgstr "Použít WATCH, pokud je dostupné"
 
-#: src/modules/options/optw_input.cpp:149
+#: src/modules/options/optw_input.cpp:152
 msgid "Use the completion postfix string for the first word only"
 msgstr "Použít doplňovací postfix řetězec pouze pro první slovo"
 

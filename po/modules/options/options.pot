@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-12-15 11:28+0100\n"
+"POT-Creation-Date: 2009-01-02 18:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2102,23 +2102,27 @@ msgid "Hide input toolbuttons by default"
 msgstr ""
 
 #: src/modules/options/optw_input.cpp:146
-msgid "Nick completion"
+msgid "Commandline in user-friendly mode by default"
 msgstr ""
 
 #: src/modules/options/optw_input.cpp:147
-msgid "Use bash-like nick completion"
-msgstr ""
-
-#: src/modules/options/optw_input.cpp:148
-msgid "Nick completion postfix string"
+msgid "Expand tabulations in input using this amount of spaces:"
 msgstr ""
 
 #: src/modules/options/optw_input.cpp:149
-msgid "Use the completion postfix string for the first word only"
+msgid "Nick completion"
 msgstr ""
 
 #: src/modules/options/optw_input.cpp:150
-msgid "Commandline in user-friendly mode by default"
+msgid "Use bash-like nick completion"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:151
+msgid "Nick completion postfix string"
+msgstr ""
+
+#: src/modules/options/optw_input.cpp:152
+msgid "Use the completion postfix string for the first word only"
 msgstr ""
 
 #: src/modules/options/optw_tools.cpp:40
