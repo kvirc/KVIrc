@@ -124,27 +124,6 @@ bool KviMPRISInterface::quit()
 	MPRIS_SIMPLE_CALL("/", "Quit")
 }
 
-KviMediaPlayerInterface::PlayerStatus KviMPRISInterface::status()
-{
-	QDBusInterface dbus_iface(m_szServiceName, "/Player",
-				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
-	if (!dbus_iface.isValid())
-		return KviMediaPlayerInterface::Unknown;
-
-	QList<QVariant> argumentList;
-	QDBusReply<MPRISPlayerStatus> reply = dbus_iface.callWithArgumentList(QDBus::Block, "GetStatus", argumentList);
-
-	if (!reply.isValid())
-		return KviMediaPlayerInterface::Unknown;
-
-	switch (reply.value().Play) {
-		case 0: return KviMediaPlayerInterface::Playing;
-		case 1: return KviMediaPlayerInterface::Paused;
-		case 2: return KviMediaPlayerInterface::Stopped;
-		default: return KviMediaPlayerInterface::Unknown;
-	}
-}
-
 #define MPRIS_CALL_METHOD(__method, __return_if_fail) \
 	QDBusInterface dbus_iface(m_szServiceName, "/Player", \
 				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus()); \
@@ -181,6 +160,25 @@ KviMediaPlayerInterface::PlayerStatus KviMPRISInterface::status()
                 debug("Error: %s\n%s\n", qPrintable(err.name()), qPrintable(err.message())); \
                 return __return_if_fail; \
         }
+
+KviMediaPlayerInterface::PlayerStatus KviMPRISInterface::status()
+{
+	MPRIS_CALL_METHOD("GetStatus", KviMediaPlayerInterface::Unknown)
+
+	MPRISPlayerStatus status;
+
+	if(reply.arguments().isEmpty())
+		return KviMediaPlayerInterface::Unknown;
+
+	status = qdbus_cast<MPRISPlayerStatus>(reply.arguments().first());
+
+	switch (status.Play) {
+		case 0: return KviMediaPlayerInterface::Playing;
+		case 1: return KviMediaPlayerInterface::Paused;
+		case 2: return KviMediaPlayerInterface::Stopped;
+		default: return KviMediaPlayerInterface::Unknown;
+	}
+}
 
 QString KviMPRISInterface::nowPlaying()
 {
