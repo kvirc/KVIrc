@@ -87,7 +87,7 @@ KviTextIcon::KviTextIcon(KviTextIcon * pIcon)
 	m_szFileName = pIcon->m_szFileName;
 	if (pIcon->m_pAnimatedPixmap)
 	{
-		m_pAnimatedPixmap = new KviAnimatedPixmap(m_pAnimatedPixmap);
+		m_pAnimatedPixmap = new KviAnimatedPixmap(pIcon->m_pAnimatedPixmap);
 	} else {
 		m_pAnimatedPixmap = 0;
 	}
