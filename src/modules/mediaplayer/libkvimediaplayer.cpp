@@ -1448,8 +1448,8 @@ MP_KVS_FUNCTION(amipEval)
 MP_KVS_FUNCTION(status)
 {
 
-	KVSM_PARAMETERS_BEGIN(c)
-	KVSM_PARAMETERS_END(c)
+// 	KVSM_PARAMETERS_BEGIN(c)
+// 	KVSM_PARAMETERS_END(c)
 
 	MP_KVS_FAIL_ON_NO_INTERFACE
 	KviMediaPlayerInterface::PlayerStatus eStat = g_pMPInterface->status();

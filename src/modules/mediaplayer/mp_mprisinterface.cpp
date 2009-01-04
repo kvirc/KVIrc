@@ -131,7 +131,13 @@ KviMediaPlayerInterface::PlayerStatus KviMPRISInterface::status()
 	if (!dbus_iface.isValid())
 		return KviMediaPlayerInterface::Unknown;
 
-	QDBusReply<MPRISPlayerStatus> reply = dbus_iface.call(QDBus::Block, "GetStatus");
+	QDBusMessage msg = dbus_iface.call(QDBus::Block, "GetStatus");
+
+
+	if(msg.type() != QDBusMessage::ReplyMessage)
+		return KviMediaPlayerInterface::Unknown;
+
+	QDBusReply<MPRISPlayerStatus> reply = msg;
 
 	if (!reply.isValid())
 		return KviMediaPlayerInterface::Unknown;
