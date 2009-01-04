@@ -53,6 +53,7 @@
     time to detect a disconnection and reconnect.
 5.11 I'm in a LAN and KVIrc uses a wrong IP address in dcc transfers
 
+
 6. APPAREANCE
 
 6.1 On Windows KVIrc seems to slow-down sometimes, what's wrong ?
@@ -68,6 +69,12 @@
 7.2 KVIrc hangs up, but doesn't crash. How do i report debug informations ?
 7.3 KVIrc exits by itself or simply "disappears" without any apparent reason.
 7.4 KVIrc dies when using alias(identify){ identify password; }
+
+
+8. SCRIPTING / ADDONS
+
+8.1 Trying to load a script i get a "can't load the module 'script'" error.
+
 
 --------------------------------------------------------------------------------
 1. PROJECT RELATED QUESTIONS
@@ -659,3 +666,21 @@
   Take a look at http://en.wikipedia.org/wiki/Infinite_loop , learn
   that once for all and fix your script.
 
+
+
+-------------------------------------------------------------------------------
+8. SCRIPTING / ADDONS
+-------------------------------------------------------------------------------
+
+8.1 Trying to load a script i get a "can't load the module 'script'" error.
+  Full version of the error (this is for linux, may vary on windows/other os):
+  ---
+  [KVS] Runtime Error: Module command call failed: can't load the module 'script':
+  QLibrary::load_sys: Cannot load /usr/local/share/kvirc/4.0/modules/libkviscript.so
+  (/usr/local/share/kvirc/4.0/modules/libkviscript.so: no such file or directory)
+  ---
+  The script you are trying to load is calling an old KVIrc interface. Probably the
+  script was created for kvirc <= 3.2, and has not been updated to work on newer
+  versions. The "script" module interface has been renamed to "addon" between 3.2.0.99
+  and 3.2.4; the new "addon" module exports all the old "script" interfaces, so
+  converting the script should be quite easy.
