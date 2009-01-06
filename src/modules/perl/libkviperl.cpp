@@ -586,7 +586,7 @@ static bool perl_module_cleanup(KviModule *m)
 	return true;
 }
 
-KVIRC_MODULE(
+KVIRC_MODULE_EXTERN(
 	"Perl",                                                 // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)

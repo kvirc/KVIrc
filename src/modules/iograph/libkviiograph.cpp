@@ -187,16 +187,16 @@ void KviIOGraphWidget::paintEvent(QPaintEvent *)
 
 	for(int i=0;i<=KVI_IOGRAPH_HORIZ_SEGMENTS;i++)
 	{
-		p.drawLine(0, c, width(), c);
+		p.drawLine(0, (int)c, width(), (int)c);
 		if(i>0)
-			p.drawText(2,c,KviQString::makeSizeReadable(m_maxRate * (KVI_IOGRAPH_HORIZ_SEGMENTS - i) / KVI_IOGRAPH_HORIZ_SEGMENTS));
+			p.drawText(2,(int)c,KviQString::makeSizeReadable(m_maxRate * (KVI_IOGRAPH_HORIZ_SEGMENTS - i) / KVI_IOGRAPH_HORIZ_SEGMENTS));
 		c+=sh;
 	}
 
 	c=1;
 	for(int i=0;i<=KVI_IOGRAPH_VERT_SEGMENTS;i++)
 	{
-		p.drawLine(c, 0, c, height());
+		p.drawLine((int)c, 0, (int)c, height());
 		c+=sw;
 	}
 

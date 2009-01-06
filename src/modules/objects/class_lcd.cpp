@@ -164,7 +164,7 @@ KVSO_CLASS_FUNCTION(lcd,setNumDigits)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("digit",KVS_PT_DOUBLE,0,digit)
 	KVSO_PARAMETERS_END(c)
-	((QLCDNumber *)widget())->setNumDigits(digit);
+	((QLCDNumber *)widget())->setNumDigits((int)digit);
 	return true;
 }
 

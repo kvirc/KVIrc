@@ -403,7 +403,11 @@ int KviWinampInterface::getVol()
 {
 	int ret = -1;
 	HWND hWinamp = find_winamp(this);
-	if(hWinamp)ret = SendMessage(hWinamp,WM_USER,-666,IPC_SETVOLUME);
+#if defined(COMPILE_ON_MINGW)
+	if(hWinamp)ret = SendMessage(hWinamp,WM_USER,666,IPC_SETVOLUME);
+#else
+        if(hWinamp)ret = SendMessage(hWinamp,WM_USER,-666,IPC_SETVOLUME);
+#endif
 	return ret;
 }
 

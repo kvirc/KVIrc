@@ -411,7 +411,7 @@ static bool perlcore_module_can_unload(KviModule * m)
 	return true;
 }
 
-KVIRC_MODULE(
+KVIRC_MODULE_EXTERN(
 	"PerlCore",                                                 // module name
 	"4.0.0",                                                // module version
 	"Copyright (C) 2008 Szymon Stefanek (pragma at kvirc dot net)", // author & (C)

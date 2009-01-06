@@ -41,9 +41,9 @@ void KviNotifierWindowProgressBar::draw(QPainter *p)
 	p->fillRect(
 		QRect(
 			m_rect.x()+1,
-			m_rect.y()+1 + m_rect.height() * (1 - m_dProgress),
+			(int) (m_rect.y()+1 + m_rect.height() * (1 - m_dProgress)),
 			m_rect.width() - 2,
-			(m_rect.height() - 2) * m_dProgress
+			(int) ((m_rect.height() - 2) * m_dProgress)
 			),
 		QColor(175, 28, 95)
 		);

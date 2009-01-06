@@ -43,7 +43,7 @@
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	#define KVIMODULEEXPORT extern "C" __declspec(dllexport)
-	#define KVIMODULEEXPORTDATA KVIMODULEEXPORT
+	#define KVIMODULEEXPORTDATA
 	#define KVIMODULEEXPORTFUNC KVIMODULEEXPORT
 #else
 	#define KVIMODULEEXPORT extern "C"
@@ -125,6 +125,20 @@ typedef struct _KviModuleInfo
 		_cleanup_routine \
 	};
 
+#define KVIRC_MODULE_EXTERN(_szModuleName,_szVersion,_szCopyright,_szDescription,_init_routine,_can_unload,_ctrl_routine,_cleanup_routine) \
+	\
+	KVIMODULEEXPORT KviModuleInfo KVIrc_module_info= \
+	{ \
+		KVI_VERSION, \
+		_szModuleName, \
+		_szVersion, \
+		_szCopyright, \
+		_szDescription, \
+		_init_routine, \
+		_can_unload, \
+		_ctrl_routine, \
+		_cleanup_routine \
+	};
 
 class KVIRC_API KviModule : public KviKvsModuleInterface
 {

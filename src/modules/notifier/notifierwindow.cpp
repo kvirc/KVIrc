@@ -703,7 +703,7 @@ void KviNotifierWindow::redrawText()
 	KviNotifierMessage * m = cur;
 	while(m && (y > m_pWndBody->textRect().y()))
 	{
-		int iHeight = m->text()->size().height();
+		int iHeight = (int) m->text()->size().height();
 		if(iHeight < 18)iHeight = 18;
 		y -= iHeight;
 		if(m->historic())
