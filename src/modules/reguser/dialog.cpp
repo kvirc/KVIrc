@@ -200,7 +200,7 @@ QSize KviRegisteredUsersDialogItemDelegate::sizeHint( const QStyleOptionViewItem
 		//users
 // 		KviRegisteredUsersDialogItem *it=(KviRegisteredUsersDialogItem*)item;
 
-		return QSize(300, (int) LVI_ICON_SIZE+2.0*LVI_BORDER);
+		return QSize(300, LVI_ICON_SIZE+2*LVI_BORDER);
 	}
 }
 

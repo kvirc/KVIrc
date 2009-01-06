@@ -41,10 +41,11 @@
 
 #define KVIRC_VERSION_RELEASE "${CMAKE_KVIRC_VERSION_RELEASE}"
 #define KVIRC_VERSION_BRANCH "${CMAKE_KVIRC_VERSION_BRANCH}"
-#define KVIRC_RESOURCES_DIR "${CMAKE_KVIRC_RESOURCES_DIR}"
 
-// KVIrc detects the modules directory on macs by itself
-#ifndef Q_OS_MACX
+// KVIrc detects the modules directory on macs/win32 by itself
+// this seems to be used on linux only
+#if !(defined(Q_OS_MACX) || defined(MINGW))
+#define KVIRC_RESOURCES_DIR "${CMAKE_KVIRC_RESOURCES_DIR}"
 #define KVIRC_MODULES_DIR "${CMAKE_KVIRC_MODULES_DIR}"
 #endif
 
