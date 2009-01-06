@@ -744,7 +744,7 @@ void KviIrcSocket::proxyLoginV4()
 	kvi_memmove((void *)(pcBufToSend + 4),(void *)&host,4);
 	kvi_memmove((void *)(pcBufToSend + 8),(void *)(szUserAndPass.ptr()),szUserAndPass.len());
 
-	pcBufToSend[iLen-1] = NULL;
+	pcBufToSend[iLen-1] = 0; //NULL
 
 	// send it into hyperspace...
 	setState(ProxyFinalV4);
