@@ -2,10 +2,8 @@
 
 SUBDIRS(caps)
 
-SET(kvirijndael__MOC_HDRS
+SET(kvirijndael_MOC_HDRS
 	libkvirijndael.h
-	rijndael.h
-	ablowfish.h
 )
 
 SET(kvirijndael_SRCS

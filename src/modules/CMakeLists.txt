@@ -32,7 +32,7 @@ SUBDIRS(
 	notifier
 	objects options
 	perl perlcore popupeditor proxydb
-	raweditor regchan reguser
+	raweditor regchan reguser rijndael
 	serverdb setup sharedfile sharedfileswindow snd socketspy spaste str system
 	texticons term theme tip tmphighlight toolbar toolbareditor torrent trayicon
 	upnp
@@ -42,10 +42,3 @@ SUBDIRS(
 	# forgotten ?
 	# offer
 )
-
-# this is currently broken on MINGW because of some virtual functions
-# messing up linker's brain
-
-IF(NOT MINGW)
-	ADD_SUBDIRECTORY(rijndael)
-ENDIF()
