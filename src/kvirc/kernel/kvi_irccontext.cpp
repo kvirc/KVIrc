@@ -155,53 +155,41 @@ void KviIrcContext::unregisterDataStreamMonitor(KviIrcDataStreamMonitor *m)
 
 void KviIrcContext::closeAllDeadChannels()
 {
-	while(m_pDeadChannels)
+	if(!m_pDeadChannels)return;
+	for(KviChannel * c = m_pDeadChannels->first();c;c = m_pDeadChannels->next())
 	{
-		KviChannel * c = m_pDeadChannels->first();
-		if(c)
-		{
-			m_pFrame->closeWindow(c);
-			QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
-		} else {
-			// ops....
-			delete m_pDeadChannels;
-			m_pDeadChannels = 0;
-		}
+		__range_valid(c->isDeadChan());
+
+		m_pFrame->closeWindow(c);
+		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
 	}
+	delete m_pDeadChannels;
+	m_pDeadChannels = 0;
 }
 
 void KviIrcContext::closeAllDeadQueries()
 {
-	while(m_pDeadQueries)
+	if(!m_pDeadQueries)return;
+	for(KviQuery * q = m_pDeadQueries->first();q;q = m_pDeadQueries->next())
 	{
-		KviQuery * q = m_pDeadQueries->first();
-		if(q)
-		{
-			m_pFrame->closeWindow(q);
-			QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
-		} else {
-			// ops....
-			delete m_pDeadQueries;
-			m_pDeadQueries = 0;
-		}
+		__range_valid(q->isDeadQuery());
+		m_pFrame->closeWindow(q);
+		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
 	}
+	delete m_pDeadQueries;
+	m_pDeadQueries = 0;
 }
 
 void KviIrcContext::closeAllContextWindows()
 {
-	while(m_pContextWindows)
+	if(!m_pContextWindows)return;
+	for(KviWindow * w = m_pContextWindows->first();w;w = m_pContextWindows->next())
 	{
-		KviWindow * w = m_pContextWindows->first();
-		if(w)
-		{
-			m_pFrame->closeWindow(w);
-			QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
-		} else {
-			// ops...
-			delete m_pContextWindows;
-			m_pContextWindows = 0;
-		}
+		m_pFrame->closeWindow(w);
+		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
 	}
+	delete m_pContextWindows;
+	m_pContextWindows = 0;
 }
 
 KviChannel * KviIrcContext::findDeadChannel(const QString &name)
