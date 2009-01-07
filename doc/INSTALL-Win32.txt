@@ -26,14 +26,17 @@ Requisites:
   - Qt 4 from Trolltech:
       [Graphic library, mandatory]
       Download it from http://trolltech.com/developer/downloads/qt/windows
-      The package you want is called "qt-win-opensource-4.4.1-mingw.exe" (version number may vary).
+      The package you want is called "qt-win-opensource-4.4.3-mingw.exe" (version number may vary).
       You need at least Qt 4.4 upwards.
 
   - MinGW from the MinGW team:
       [Compiler; needed to compile KVIrc, mandatory]
       While installing Qt4, you will be asked to perform a minimal install of MinGW; you can simply answer 'yes' to get this installed.
-      Anyway, this installs by default the old gcc3-based mingw, while the new gcc4-based is really preferable. So, you'd better set up mingw by yourself:
-      Point your browset at: http://sourceforge.net/projects/mingw/ , follow the "download" link and get the "Automated MinGW Installer MinGW 5.1.4" (version number may vary) and the "GCC Version 4 Testing: gcc-4.3.0-20080502-mingw32-alpha" packages (version may vary). First execute the automated installer, then uncompress the gcc4 archive and copy it over the installation directory created by the installer (overwriting the old gcc3).
+      MinGW is still based on the 3.x brach of gcc; if you want to test the new gcc4 (it should create faster executables), follow these
+      instructions:
+      Point your browset at: http://sourceforge.net/projects/mingw/ , follow the "download" link and get the "Automated MinGW Installer MinGW 5.1.4" (version number may vary) and the "GCC Version 4 Testing: gcc-4.3.0-20080502-mingw32-alpha" packages (version may vary). First execute the automated installer, then uncompress the gcc4 archive and copy it over the installation directory created by the installer (overwriting the old gcc3). You can also use TDM's GCC/mingw32 Builds (these unofficial mingw packages ships with gcc4 included) you can find here: http://www.tdragon.net/recentgcc/.
+      Beware that the current Qt version (4.4.3) is packing some old win32api headers, that brakes compilation with gcc4. You can read more info about
+      this issue here: http://www.qtcentre.org/forum/f-installation-and-deployment-5/t-building-qt-443-with-gcc-432-on-windows-xp-16697.html
 
   - OpenSSL compiled for Win32 from Shining Light Productions:
       [Enc/Decrypt library; needed to secure your irc sessions, optional]
