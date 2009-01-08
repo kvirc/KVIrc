@@ -1020,10 +1020,13 @@ void KviFrame::closeEvent(QCloseEvent *e)
 		}
 	}
 
-	e->accept();
+	e->ignore();
 
-	if(g_pApp)
-		g_pApp->destroyFrame();
+	if (g_pApp)
+	{
+		// Go down clean!
+		g_pApp->quit();
+	}
 }
 
 void KviFrame::resizeEvent(QResizeEvent *e)
