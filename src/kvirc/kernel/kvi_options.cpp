@@ -638,7 +638,7 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("DaysIntervalToPasteOnChannelJoin",10,KviOption_sectFlagLogging),
 	UINT_OPTION("LinesToPasteOnQueryJoin",10,KviOption_sectFlagLogging),
 	UINT_OPTION("DaysIntervalToPasteOnQueryJoin",10,KviOption_sectFlagLogging),
-	UINT_OPTION("SpacesToExpandTabulationInput",8,KviOption_sectFlagInput)
+	UINT_OPTION("SpacesToExpandTabulationInput",4,KviOption_sectFlagInput)
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \
