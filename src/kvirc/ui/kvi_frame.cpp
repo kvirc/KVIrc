@@ -633,7 +633,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 
 void KviFrame::maximizeMdiChildWindow(KviMdiChild * lpC)
 {
-		lpC->maximize();
+	lpC->maximize();
 }
 
 void KviFrame::addWindow(KviWindow *wnd,bool bShow)

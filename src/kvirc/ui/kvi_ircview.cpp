@@ -301,7 +301,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	m_pScrollBar->setPageStep(10);
 	m_pScrollBar->setValue(0);
 	m_pScrollBar->setObjectName("irc_view_scrollbar");
-	m_pScrollBar->setAutoFillBackground(true);
 	m_pScrollBar->setTracking(true);
 	m_pScrollBar->show();
 	m_pScrollBar->setFocusProxy(this);
@@ -309,7 +308,6 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 
 	m_pToolsButton = new QToolButton(this);
 	m_pToolsButton->setObjectName("btntools");
-	m_pToolsButton->setAutoFillBackground(true);
 
 	QIcon is1(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUPMENU)));
 	m_pToolsButton->setAutoRaise(true);
@@ -1004,7 +1002,6 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	int rectHeight = r.height();
 	int rectBottom = rectTop + rectHeight;
 	int rectWidth  = r.width();
-	if(rectWidth > widgetWidth)rectWidth = widgetWidth;
 
 	QPainter pa(this);
 
