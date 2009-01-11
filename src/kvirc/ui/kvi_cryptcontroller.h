@@ -64,7 +64,7 @@
 		int m_iFlags;
 	};
 
-	
+
 	class KVIRC_API KviCryptController : public KviWindowToolWidget
 	{
 		Q_OBJECT
@@ -90,7 +90,7 @@
 		KviCryptSessionInfo  * m_pSessionInfo;
 	private slots:
 		void enableCheckToggled(bool bChecked);
-		void engineHighlighted(KviTalListWidgetItem *it);
+		void engineHighlighted(QListWidgetItem *it, QListWidgetItem *);
 		void okClicked();
 	public:
 		KviCryptSessionInfo * getNewSessionInfo();

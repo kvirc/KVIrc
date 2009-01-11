@@ -148,7 +148,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 
 
 	// and the related buttons
-	m_pDoubleViewButton = createToolButton(m_pButtonContainer,"double_view_button",KVI_SMALLICON_HIDEDOUBLEVIEW,KVI_SMALLICON_SHOWDOUBLEVIEW,__tr2qs("Split View"),false);
+	m_pDoubleViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDEDOUBLEVIEW,KVI_SMALLICON_SHOWDOUBLEVIEW,__tr2qs("Split View"),buttonContainer(),false,"double_view_button");
 	connect(m_pDoubleViewButton,SIGNAL(clicked()),this,SLOT(toggleDoubleView()));
 
 	m_pListViewButton = new KviWindowToolPageButton(KVI_SMALLICON_HIDELISTVIEW,KVI_SMALLICON_SHOWLISTVIEW,__tr2qs("User List"),buttonContainer(),true,"list_view_button");
@@ -182,7 +182,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 
 	m_pHideToolsButton = new QToolButton(m_pButtonBox);
 	m_pHideToolsButton->setObjectName("hide_container_button");
-
+	m_pHideToolsButton->setAutoRaise(true);
 	m_pHideToolsButton->setIconSize(QSize(22,22));
 	m_pHideToolsButton->setFixedWidth(16);
 
@@ -396,7 +396,14 @@ void KviChannel::showDoubleView(bool bShow)
 
 void KviChannel::toggleDoubleView()
 {
-	showDoubleView(!m_pMessageView);
+	if(m_pMessageView)
+	{
+		showDoubleView(false);
+		if(m_pDoubleViewButton->isChecked())m_pDoubleViewButton->setChecked(false);
+	} else {
+		showDoubleView(true);
+		if(!(m_pDoubleViewButton->isChecked()))m_pDoubleViewButton->setChecked(true);
+	}
 }
 
 void KviChannel::toggleListView()

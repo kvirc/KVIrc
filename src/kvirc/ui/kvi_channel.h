@@ -179,7 +179,7 @@ public:
 protected:
 	QSplitter                            * m_pTopSplitter;
 	QSplitter                            * m_pVertSplitter;
-	QPushButton                          * m_pDoubleViewButton;
+	QToolButton                          * m_pDoubleViewButton;
 	KviWindowToolPageButton              * m_pListViewButton;
 	KviWindowToolPageButton              * m_pBanEditorButton;
 	KviWindowToolPageButton              * m_pBanExceptionEditorButton;
@@ -535,7 +535,7 @@ public:
 	* \return void
 	*/
 	void partMessageSent(bool bCloseOnPart = true, bool bShowMessage = true);
-	
+
 	/**
 	* \brief Colors the icon who tells how much activity there is
 	* \param puActivityValue The value of the activity

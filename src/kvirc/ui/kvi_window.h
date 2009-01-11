@@ -167,7 +167,7 @@ protected: // almost private: don't touch :D
 	KviCryptController                  * m_pCryptController;
 	KviCryptSessionInfo                 * m_pCryptSessionInfo;
 #endif
-	QPushButton                         * m_pTextEncodingButton;
+	QToolButton                         * m_pTextEncodingButton;
 	QToolButton                         * m_pHideToolsButton;
 	QWidget                             * m_pLastFocusedChild;
 	KviAccel                            * m_pAccel;
@@ -372,7 +372,7 @@ protected:
 	void createTextEncodingButton(QWidget * par);
 	void createSystemTextEncodingPopup();
 
-	QPushButton * createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn);
+	QToolButton * createToolButton(QWidget * par,const char * nam,int pixon,int pixoff,const QString & tooltip,bool bOn);
 	// This is called by KviInput: actually it links the widgetAdded
 	virtual void childrenTreeChanged(QWidget * widgetAdded);
 

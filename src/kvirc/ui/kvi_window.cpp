@@ -121,7 +121,7 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 	m_pLastFocusedChild     = 0;
 	m_pTextCodec            = 0; // will be set by loadProperties
 	m_pTextEncodingButton   = 0;
-	m_pHideToolsButton	= 0;
+	m_pHideToolsButton      = 0;
 //	m_pEditorsContainer     = 0;
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -395,13 +395,12 @@ void KviWindow::destroyWindowListItem()
 	//	m_pWindowListItem = 0; // actually the WindowListItem destructor sets it
 }
 
-QPushButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int,const QString & tooltip,bool bOn)
+QToolButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int,const QString & tooltip,bool bOn)
 {
-	QPushButton * b = new QPushButton(par);
+	QToolButton * b = new QToolButton(par);
 	b->setObjectName(nam);
-	b->setFlat(true);
 	b->setIcon(QIcon(*(g_pIconManager->getSmallIcon(pixon))));
-
+	b->setAutoRaise(true);
 	KviTalToolTip::add(b,tooltip);
 	b->setChecked(bOn);
 	return b;

@@ -741,13 +741,13 @@ void KviTopicWidget::deactivate()
 	popDownListBox();
 	if(m_pInput)
 	{
-		delete m_pInput;
+		m_pInput->deleteLater();
 		m_pInput = 0;
-		delete m_pHistory;
+		m_pHistory->deleteLater();
 		m_pHistory = 0;
-		delete m_pAccept;
+		m_pAccept->deleteLater();
 		m_pAccept = 0;
-		delete m_pDiscard;
+		m_pDiscard->deleteLater();
 		m_pDiscard = 0;
 	}
 

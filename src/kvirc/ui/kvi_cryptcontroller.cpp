@@ -38,9 +38,9 @@
 	#include "kvi_memmove.h"
 	#include "kvi_toolwindows_container.h"
 	#include "kvi_pointerhashtable.h"
-	
+
 	#include <QLayout>
-	
+
 	// kvi_app.cpp
 	extern KVIRC_API KviCryptEngineManager * g_pCryptEngineManager;
 	extern KVIRC_API KviModuleManager      * g_pModuleManager;
@@ -89,21 +89,22 @@
 		connect(m_pEnableCheck,SIGNAL(toggled(bool)),this,SLOT(enableCheckToggled(bool)));
 
 		m_pListBox = new KviTalListWidget(this);
-		connect(m_pListBox,SIGNAL(highlighted(KviTalListWidgetItem *)),this,SLOT(engineHighlighted(KviTalListWidgetItem *)));
+		connect(m_pListBox,SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)),this,SLOT(engineHighlighted(QListWidgetItem *, QListWidgetItem *)));
 		g->addWidget(m_pListBox,3,0,6,1);
-	
+
 		m_pDescriptionLabel = new QLabel(this);
+		m_pDescriptionLabel->setWordWrap(true);
 		m_pDescriptionLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 		m_pDescriptionLabel->setAlignment(Qt::AlignTop | Qt::AlignLeft);
 		g->addWidget(m_pDescriptionLabel,3,1,1,3);
-	
+
 		m_pAuthorLabel = new QLabel(this);
 		m_pAuthorLabel->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 		g->addWidget(m_pAuthorLabel,4,1,1,3);
-	
+
 		m_pEnableEncrypt = new QCheckBox(__tr2qs("Enable encryption"),this);
 		g->addWidget(m_pEnableEncrypt,5,1,1,3);
-	
+
 		m_pEncryptKeyLabel = new QLabel(__tr2qs("Encrypt key:"),this);
 		g->addWidget(m_pEncryptKeyLabel,6,1);
 
@@ -114,8 +115,8 @@
 		g->addWidget(m_pEncryptHexKeyCheck,6,3);
 
 		m_pEnableDecrypt = new QCheckBox(__tr2qs("Enable decryption"),this);
-		g->addWidget(m_pEnableDecrypt,7,1,1,3);	
-	
+		g->addWidget(m_pEnableDecrypt,7,1,1,3);
+
 		m_pDecryptKeyLabel = new QLabel(__tr2qs("Decrypt key:"),this);
 		g->addWidget(m_pDecryptKeyLabel,8,1);
 
@@ -139,12 +140,11 @@
 
 		if(cur)
 		{
-			KviTalListWidgetItem * it = (KviTalListWidgetItem *)m_pListBox->findItems(QString(cur->szEngineName),Qt::MatchFixedString).first();
+			QListWidgetItem * it = m_pListBox->findItems(QString(cur->szEngineName),Qt::MatchFixedString).first();
 			if(it)
 			{
 				m_pEnableCheck->setChecked(true);
 				m_pListBox->setCurrentItem(it);
-				engineHighlighted(it);
 				m_pEnableEncrypt->setChecked(cur->bDoEncrypt);
 				m_pEnableDecrypt->setChecked(cur->bDoDecrypt);
 			} else enableWidgets(false);
@@ -183,7 +183,7 @@
 		noEnginesAvailable();
 	}
 
-	void KviCryptController::engineHighlighted(KviTalListWidgetItem *it)
+	void KviCryptController::engineHighlighted(QListWidgetItem *it, QListWidgetItem *)
 	{
 		if(it)
 		{
