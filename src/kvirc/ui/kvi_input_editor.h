@@ -73,10 +73,10 @@ class KviTalPopupMenu;
 */
 class KVIRC_API KviInputEditor : public QFrame
 {
-	// friend class KviUserParser;
 	//Q_PROPERTY( int KviProperty_FocusOwner READ heightHint )
 	Q_PROPERTY( int TransparencyCapable READ heightHint )
 	Q_OBJECT
+	friend class KviTopicWidget; // it uses home()
 public:
 	/**
 	* \brief Constructs the input editor object

@@ -57,8 +57,6 @@ public:
 	~KviTopicListBoxItem();
 public:
 	virtual int width(const KviTalListWidget * pList) const;
-//protected:
-	//virtual void paint ( QPainter * p );
 };
 
 class KVIRC_API KviTopicWidget : public QFrame
@@ -115,7 +113,7 @@ public:
 	virtual QSize sizeHint() const;
 	void applyOptions();
 
-	static void paintColoredText(QPainter * p, QString szText, const QPalette & palette, const QRect & rectz = QRect());
+	static void paintColoredText(QPainter * p, QString szText, const QPalette & palette, const QRect & rect);
 protected slots:
 	void acceptClicked();
 	void discardClicked();

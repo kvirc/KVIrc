@@ -294,30 +294,20 @@ QString convertToHtml(const QString &text)
 	return result;
 }
 
-void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rectz)
+void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rect)
 {
 	QFontMetrics fm(p->font());
-	QRect rect;
 	bool curBold      = false;
 	bool curUnderline = false;
 	unsigned char curFore      = KVI_LABEL_DEF_FORE; //default fore
 	unsigned char curBack      = KVI_LABEL_DEF_BACK; //default back
-	int baseline;
-
-	if(rectz.isNull())
-	{
-		rect = p->window();
-		baseline = ((rect.height() + fm.ascent() - fm.descent() + 1) >> 1);
-	} else {
-		rect = rectz;
-		baseline = rect.top() + rect.height() - fm.descent();
-	}
+	int baseline = rect.top() + rect.height() - fm.descent();
 
 	int curX = rect.x() + 2; //2 is the margin
-
+	int maxX = rect.width() - 4; // 4 is 2*margin
 	unsigned int idx = 0;
 
-	while((idx < (unsigned int)text.length()) && (curX < rect.width()))
+	while((idx < (unsigned int)text.length()) && (curX < maxX))
 	{
 		unsigned short c = text[(int)idx].unicode();
 
@@ -443,7 +433,8 @@ void KviTopicWidget::paintEvent(QPaintEvent *)
 {
 	QPainter pa(this);
 	drawFrame(&pa);
-	drawContents(&pa);
+	if(m_pInput == 0)
+		drawContents(&pa);
 }
 
 void KviTopicWidget::drawContents(QPainter *p)
@@ -465,10 +456,11 @@ void KviTopicWidget::drawContents(QPainter *p)
 	}
 #endif
 	QPalette colorGroup;
-	//colorGroup()
 	colorGroup.setColor(QPalette::Text,KVI_OPTION_COLOR(KviOption_colorLabelForeground));
 	colorGroup.setColor(QPalette::Background,KVI_OPTION_COLOR(KviOption_colorLabelBackground));
-	paintColoredText(p,m_szTopic,colorGroup);
+	//this ensures the painter won't cover the frame margins with text
+	p->setClipRect(contentsRect());
+	paintColoredText(p,m_szTopic,colorGroup,contentsRect());
 }
 
 void KviTopicWidget::setTopic(const QString & topic)
@@ -599,6 +591,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 	if(m_pInput == 0)
 	{
 		m_pInput=new KviInputEditor(this,0);
+		m_pInput->setObjectName("topicw_inputeditor");
 		m_pInput->setReadOnly(!bCanEdit);
 		m_pInput->setMaxBufferSize(maxlen);
 		m_pInput->setGeometry(0,0,width() - (height() << 2)+height(),height());
@@ -608,6 +601,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		m_pInput->installEventFilter(this);
 
 		m_pHistory = new QPushButton(this);
+		m_pHistory->setObjectName("topicw_historybutton");
 		m_pHistory->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TIME))));
 		m_pHistory->setGeometry(width() - (height() << 2)+height(),0,height(),height());
 		KviTalToolTip::add(m_pHistory,__tr2qs("History"));
@@ -615,6 +609,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		connect(m_pHistory,SIGNAL(clicked()),this,SLOT(historyClicked()));
 
 		m_pAccept = new QPushButton(this);
+		m_pAccept->setObjectName("topicw_acceptbutton");
 		m_pAccept->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT))));
 		m_pAccept->setGeometry(width() - (height() << 1),0,height(),height());
 		m_pAccept->setEnabled(bCanEdit);
@@ -623,12 +618,14 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		connect(m_pAccept,SIGNAL(clicked()),this,SLOT(acceptClicked()));
 
 		m_pDiscard = new QPushButton(this);
+		m_pDiscard->setObjectName("topicw_discardbutton");
 		m_pDiscard->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD))));
 		m_pDiscard->setGeometry(width() - height(),0,height(),height());
 		KviTalToolTip::add(m_pDiscard,__tr2qs("Discard Changes"));
 		m_pDiscard->show();
 		connect(m_pDiscard,SIGNAL(clicked()),this,SLOT(discardClicked()));
 
+		m_pInput->home();
 		m_pInput->show();
 		m_pInput->setFocus();
 	}
