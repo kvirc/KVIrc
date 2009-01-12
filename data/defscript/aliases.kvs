@@ -92,10 +92,12 @@ alias(ms)
 alias(gnotice)
 {
 	# Global notice
-
-	#Check null notice
-	if(!$0){
-		echo $tr("Usage"): /gnotice [-waohvq] <$tr("message")>
+	
+	# Check channel validity
+	%szChan = $0
+	if(!%szChan)
+	{
+		echo $tr("Usage"): /gnotice [-mwaohvq] <$tr("channel")> <$tr("message")>
 		echo $tr("-m: send a message instead of a notice")
 		echo $tr("-w: send notice to all channel owners")
 		echo $tr("-a: send notice to all channel admins")
@@ -105,26 +107,36 @@ alias(gnotice)
 		echo $tr("-q: quiet mode")
 		halt
 	}
-
-	# Detect message type
-	if($sw(m)) %cmd="msg"
-	else %cmd="notice"
-
-	# Check for quiet message
-	if($sw(q)) %cmd=$str.append(%cmd," -q")
-
-	# Check null switches
-	if((!$sw(w))&&(!$sw(a))&&(!$sw(o))&&(!$sw(h))&&(!$sw(v))){
-		eval %cmd $chan.name($active) $0-
+	
+	# Check the message validity
+	%szMsg = $1-
+	if($str.length(%szMsg) == 0)
+	{
+		echo $tr("Parameter message missing")
+		echo $tr("Type /gnotice for help")
 		halt
 	}
-
+	
+	# Detect message type
+	if($sw(m,message)) %szCmd = "msg"
+	else %szCmd = "notice"
+	
+	# Check for quiet message
+	if($sw(q,quiet)) %szCmd = $str.append(%szCmd," -q")
+	
+	# Check null switches
+	if((!$sw(w,owners)) && (!$sw(a,admins)) && (!$sw(o,ops)) && (!$sw(h,halfops)) && (!$sw(v,voices)))
+	{
+		eval %szCmd %szChan %szMsg
+		halt
+	}
+	
 	# Check switches passed
-	if($sw(w)) eval %cmd \~$chan.name($active) $0-
-	if($sw(a)) eval %cmd \!$chan.name($active) $0-
-	if($sw(o)) eval %cmd \@$chan.name($active) $0-
-	if($sw(h)) eval %cmd \%$chan.name($active) $0-
-	if($sw(v)) eval %cmd \+$chan.name($active) $0-
+	if($sw(w,owners)) eval %szCmd \~%szChan %szMsg
+	if($sw(a,admins)) eval %szCmd \!%szChan %szMsg
+	if($sw(o,ops)) eval %szCmd \@%szChan %szMsg
+	if($sw(h,halfops)) eval %szCmd \%%szChan %szMsg
+	if($sw(v,voices)) eval %szCmd \+%szChan %szMsg
 }
 
 alias(wallop)
