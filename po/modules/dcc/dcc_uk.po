@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-02 18:28+0100\n"
+"POT-Creation-Date: 2009-01-12 21:53+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -22,98 +22,102 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1:2);\n"
 
-#: src/modules/dcc/requests.cpp:857
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:857
 msgid "\"any\""
 msgstr "\"будь-який\""
 
-#: src/modules/dcc/send.cpp:1242
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1242
 msgid "%1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1231 src/modules/dcc/send.cpp:1238
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1231
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1238
 #, fuzzy
 msgid "%1 of %2 (%3%)"
 msgstr "%1 до %2 байт (%3%)"
 
-#: src/modules/dcc/requests.cpp:692
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:692
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
 msgstr "%Q [%Q@%Q] готовий одержати файл \"%s\""
 
-#: src/modules/dcc/dialogs.cpp:75
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/dialogs.cpp:75
 msgid "&Accept"
 msgstr "&Прийняти"
 
-#: src/modules/dcc/canvaswidget.cpp:1482
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1482
 msgid "&Chord"
 msgstr "&Хорда"
 
-#: src/modules/dcc/canvaswidget.cpp:1480
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1480
 msgid "&Ellipse"
 msgstr "&Еліпс"
 
-#: src/modules/dcc/canvaswidget.cpp:1489
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1489
 msgid "&Hexagon"
 msgstr "&Шестикутник"
 
-#: src/modules/dcc/canvaswidget.cpp:1495
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1495
 msgid "&Insert"
 msgstr "&Вставити"
 
-#: src/modules/dcc/canvaswidget.cpp:1492
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1492
 msgid "&Item"
 msgstr "&Пункт"
 
-#: src/modules/dcc/canvaswidget.cpp:1478
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1478
 msgid "&Line"
 msgstr "&Лінія"
 
-#: src/modules/dcc/canvaswidget.cpp:1488
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1488
 msgid "&Pentagon"
 msgstr "&П'ятикутник"
 
-#: src/modules/dcc/canvaswidget.cpp:1481
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1481
 #, fuzzy
 msgid "&Pie"
 msgstr "&Pie"
 
-#: src/modules/dcc/canvaswidget.cpp:1493
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1493
 msgid "&Polygons"
 msgstr "&Багатокутники"
 
-#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1479
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1487
 msgid "&Rectangle"
 msgstr "&Прямокутник"
 
-#: src/modules/dcc/dialogs.cpp:80
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/dialogs.cpp:80
 msgid "&Reject"
 msgstr "&Відкинути"
 
-#: src/modules/dcc/dialogs.cpp:145
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/dialogs.cpp:145
 msgid "&Rename"
 msgstr "&Перейменувати"
 
-#: src/modules/dcc/canvaswidget.cpp:1484
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1484
 msgid "&Rich text (html)"
 msgstr "&Rich текст (html)"
 
-#: src/modules/dcc/canvaswidget.cpp:1491
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1491
 msgid "&Shape"
 msgstr "&Форма"
 
-#: src/modules/dcc/canvaswidget.cpp:1486
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvaswidget.cpp:1486
 msgid "&Triangle"
 msgstr "&Трикутник"
 
-#: src/modules/dcc/requests.cpp:772 src/modules/dcc/requests.cpp:942
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:772
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:942
 msgid "(unknown)"
 msgstr "(невідомо)"
 
-#: src/modules/dcc/libkvidcc.cpp:434 src/modules/dcc/libkvidcc.cpp:657
-#: src/modules/dcc/libkvidcc.cpp:1159
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:434
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:657
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:1159
 msgid "-c requires -i and -p"
 msgstr "-c потрібно -i і -p"
 
-#: src/modules/dcc/broker.cpp:270
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:270
 msgid ""
 "<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
 "mode.<br>"
@@ -121,7 +125,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> запит <b>Direct Client Connection</b> в <b>%4</b> режимі."
 "<br>"
 
-#: src/modules/dcc/broker.cpp:411
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:411
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
 "<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
@@ -130,7 +134,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> запит <br><b>Direct Client Connection</b> в <b>CANVAS</b> "
 "режимі<br>Метою з'єднання є хост <b>%4</b> через порт <b>%5</b><br>"
 
-#: src/modules/dcc/broker.cpp:341
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:341
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
@@ -139,7 +143,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> запит <br><b>Direct Client Connection</b> в <b>VOICE</b> "
 "режимі<br> Метою з'єднання є хост <b>%4</b> через порт <b>%5</b><br>"
 
-#: src/modules/dcc/broker.cpp:503
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:503
 #, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
@@ -148,7 +152,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> хоче вислати вам файл '<b>%4</b>', розміром <b>%5</b> "
 "байт<br>Метою з'єднання є хост <b>%6</b> через порт <b>%7</b><br>"
 
-#: src/modules/dcc/broker.cpp:516
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:516
 #, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
@@ -157,7 +161,7 @@ msgstr ""
 "<b>%1 [%2@%3]</b> хоче вислати вам файл '<b>%4</b>', розміром <b>%5</b> "
 "байт<br> Ви будете пасивною стороною з'єднання<br>"
 
-#: src/modules/dcc/broker.cpp:529
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:529
 msgid ""
 "<center><b>Note:</b></center>The file appears to be an avatar that you have "
 "requested. You should not change its filename. Save it in a location where "
@@ -175,24 +179,26 @@ msgstr ""
 "можете указати KVIrc щоб він автоматично приймав вхідні аватари встановивши "
 "опцію <tt>boolAutoAcceptIncomingAvatars</tt> в true.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:634 src/modules/dcc/requests.cpp:449
-#: src/modules/dcc/requests.cpp:739
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:634
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:449
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:739
 msgid "<unknown size>"
 msgstr "<невідомий розмір>"
 
-#: src/modules/dcc/send.cpp:937
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:937
 msgid "Abort"
 msgstr "Перервати"
 
-#: src/modules/dcc/send.cpp:908 src/modules/dcc/send.cpp:919
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:908
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:919
 msgid "Aborted"
 msgstr "Перервано"
 
-#: src/modules/dcc/send.cpp:1787
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1787
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Запит RESUME прийнятий, передача починається з позиції %1"
 
-#: src/modules/dcc/requests.cpp:958
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:958
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
@@ -200,7 +206,7 @@ msgstr ""
 "Приймаю запит файлу з %Q [%Q@%Q] для '%s' (реальний файл: %Q), пропоную DCC %"
 "Q"
 
-#: src/modules/dcc/requests.cpp:901
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:901
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %s since we can't accept incoming connections (user option)"
@@ -208,59 +214,59 @@ msgstr ""
 "Приймаю запит файлу з %Q [%Q@%Q] для '%s' (реальний файл: %Q), пропоную DCC %"
 "s оскільки ми не можемо приймати вхідні з'єднання (опція користувача)"
 
-#: src/modules/dcc/voice.cpp:936
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:936
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr "Поточний використовуваний кодек - '%s'"
 
-#: src/modules/dcc/send.cpp:811
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:811
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Спроба пасивного DCC %1 з'єднання"
 
-#: src/modules/dcc/chat.cpp:161
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:161
 #, c-format
 msgid "Attempting a passive DCC %s connection"
 msgstr "Спроба пасивного DCC %s з'єднання"
 
-#: src/modules/dcc/canvas.cpp:80
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvas.cpp:80
 msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Спроба пасивного DCC CANVAS з'єднання"
 
-#: src/modules/dcc/voice.cpp:741
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:741
 msgid "Attempting a passive DCC VOICE connection"
 msgstr "Спроба пасивного з'єднання DCC VOICE"
 
-#: src/modules/dcc/send.cpp:815
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:815
 msgid "Attempting an active DCC %1 connection"
 msgstr "Спроба активного DCC %1 з'єднання"
 
-#: src/modules/dcc/chat.cpp:170
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:170
 #, c-format
 msgid "Attempting an active DCC %s connection"
 msgstr "Спроба активного DCC %s з'єднання"
 
-#: src/modules/dcc/canvas.cpp:106
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvas.cpp:106
 msgid "Attempting an active DCC CANVAS connection"
 msgstr "Спроба активного DCC CANVAS з'єднання"
 
-#: src/modules/dcc/voice.cpp:746
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:746
 msgid "Attempting an active DCC VOICE connection"
 msgstr "Спроба активного з'єднання DCC VOICE"
 
-#: src/modules/dcc/broker.cpp:557
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:557
 #, fuzzy
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
 msgstr "Автоматичний прийом DCC %Q запиту з %Q! %Q@%Q для файлу %Q"
 
-#: src/modules/dcc/broker.cpp:631
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:631
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
 msgstr "Автозбереження DCC %Q файлу %Q як \r![!dbl]play $0\r%Q\r"
 
-#: src/modules/dcc/send.cpp:1270
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1270
 msgid "Avg:"
 msgstr "У середньому:"
 
-#: src/modules/dcc/utils.cpp:142
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/utils.cpp:142
 #, c-format
 msgid ""
 "Can't listen on default interface '%s': fix it in the options dialog, "
@@ -269,11 +275,12 @@ msgstr ""
 "Не можу слухати інтерфейс '%s': виправте його в діалозі опцій, або виключите "
 "опцію (тоді ймовірно dcc буде працювати)"
 
-#: src/modules/dcc/broker.cpp:201 src/modules/dcc/broker.cpp:818
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:201
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:818
 msgid "Can't open file %Q for reading"
 msgstr "Неможливо відкрити файл %Q на читання"
 
-#: src/modules/dcc/requests.cpp:534
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:534
 #, c-format
 msgid ""
 "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
@@ -281,7 +288,7 @@ msgstr ""
 "Не можу виконати DCC RECV: Передача не ініційована для файлу %s через порт  %"
 "s "
 
-#: src/modules/dcc/requests.cpp:573
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:573
 #, c-format
 msgid ""
 "Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
@@ -290,108 +297,115 @@ msgstr ""
 "Не можу виконати DCC SEND: Передача не ініційована для файлу %s через порт  %"
 "s або невірний підсумковий розмір"
 
-#: src/modules/dcc/utils.cpp:124
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/utils.cpp:124
 msgid "Can't retrieve a suitable local IPV4 address"
 msgstr "Не можу знайти придатний локальний IPV4 адреса"
 
-#: src/modules/dcc/broker.cpp:191
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:191
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Неможливо відіслати DCC %Q запит в %Q: IRC з'єднання закрите"
 
-#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1846
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/dialogs.cpp:158
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1846
 msgid "Cancel"
 msgstr "Скасування"
 
-#: src/modules/dcc/chat.cpp:302 src/modules/dcc/chat.cpp:397
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:302
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:397
 msgid "Cannot send data: No active connection"
 msgstr "Неможливо відіслати дані: Немає активних з'єднань"
 
-#: src/modules/dcc/broker.cpp:618
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:618
 #, fuzzy
 msgid "Choose Files to Save - KVIrc"
 msgstr "Виберіть файл для передачі - KVIrc"
 
-#: src/modules/dcc/broker.cpp:161 src/modules/dcc/broker.cpp:781
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:161
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:781
 msgid "Choose Files to Send - KVIrc"
 msgstr "Виберіть файл для передачі - KVIrc"
 
-#: src/modules/dcc/requests.cpp:96
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:96
 #, c-format
 msgid "Concurrent transfer limit reached (%u of %u transfers running)"
 msgstr ""
 "Кількість паралельних передач досяглася ліміту (%u з %u передач запущена)"
 
-#: src/modules/dcc/send.cpp:929
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:929
 msgid "Configure Bandwidth..."
 msgstr "Конфігурування пропускної здатності..."
 
-#: src/modules/dcc/send.cpp:1815
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1815
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr "Конфігурування пропускної здатності для DCC передачі %1"
 
-#: src/modules/dcc/send.cpp:1676
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1676
 msgid "Connected to %1:%2"
 msgstr "Підключення до%1:%2"
 
-#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:530
-#: src/modules/dcc/canvas.cpp:283
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:916
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:530
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvas.cpp:283
 msgid "Connected to %Q:%Q"
 msgstr "Підключення до %Q:%Q"
 
-#: src/modules/dcc/send.cpp:1469
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1469
 msgid "Contacting host %1 on port %2"
 msgstr "Підключення до хосту %1 на порт %2"
 
-#: src/modules/dcc/voice.cpp:756 src/modules/dcc/chat.cpp:184
-#: src/modules/dcc/canvas.cpp:109
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:756
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:184
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvas.cpp:109
 msgid "Contacting host %Q on port %Q"
 msgstr "Підключення до хосту %Q на порт %Q"
 
-#: src/modules/dcc/broker.cpp:290 src/modules/dcc/broker.cpp:544
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:290
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:544
 msgid "DCC %1 Request - KVIrc"
 msgstr "Запит DCC %1 - KVIrc"
 
-#: src/modules/dcc/send.cpp:1552
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1552
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 запит не відісланий, очікую ручного з'єднання"
 
-#: src/modules/dcc/chat.cpp:502
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:502
 msgid "DCC %Q failed: %Q"
 msgstr "Помилка DCC %Q: %Q"
 
-#: src/modules/dcc/chat.cpp:238
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:238
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q запит не відісланий, очікую ручного з'єднання"
 
-#: src/modules/dcc/send.cpp:1614
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1614
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr "DCC %s передача з %Q@%Q:%Q завершена: \r![!dbl]play $0\r%s\r"
 
-#: src/modules/dcc/broker.cpp:417
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:417
 msgid "DCC CANVAS request"
 msgstr "Запит DCC CANVAS"
 
-#: src/modules/dcc/canvas.cpp:102
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvas.cpp:102
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "DCC CANVAS запит не відісланий: очікую ручного з'єднання"
 
-#: src/modules/dcc/voice.cpp:907 src/modules/dcc/canvas.cpp:278
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:907
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvas.cpp:278
 msgid "DCC Failed: %Q"
 msgstr "Помилка DCC: %Q"
 
-#: src/modules/dcc/broker.cpp:347
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:347
 msgid "DCC VOICE request"
 msgstr "Запит DCC VOICE"
 
-#: src/modules/dcc/voice.cpp:778
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:778
 msgid "DCC VOICE request not sent: awaiting manual connections"
 msgstr "Запит DCC VOICE не відісланий: очікується ручне з'єднання"
 
-#: src/modules/dcc/libkvidcc.cpp:1114
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:1114
 msgid "DCC VOICE support not enabled at compilation time"
 msgstr "Підтримка DCC VOICE не включена під час компіляції"
 
-#: src/modules/dcc/send.cpp:362
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:362
 msgid ""
 "Data transfer terminated, waiting 30 seconds for the peer to close the "
 "connection..."
@@ -399,27 +413,28 @@ msgstr ""
 "Передача даних завершена, очікую 30 сек. щоб співрозмовник закрив "
 "з'єднання..."
 
-#: src/modules/dcc/send.cpp:369
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:369
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Передача даних завершилася 30 сек. назад, закриваю з'єднання"
 
-#: src/modules/dcc/voice.cpp:824 src/modules/dcc/chat.cpp:412
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:824
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:412
 msgid "ERROR: %Q"
 msgstr "ПОМИЛКА: %Q"
 
-#: src/modules/dcc/broker.cpp:747
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:747
 msgid "File %s exists, auto-renaming to %Q"
 msgstr "Файл %s існує, автоматичне перейменування в %Q"
 
-#: src/modules/dcc/dialogs.cpp:165
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/dialogs.cpp:165
 msgid "File Already Exists - KVIrc"
 msgstr "Файл уже існує - KVIrc"
 
-#: src/modules/dcc/send.cpp:1127
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1127
 msgid "From: "
 msgstr "Від: "
 
-#: src/modules/dcc/voice.cpp:171
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:171
 msgid ""
 "Half duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
@@ -427,204 +442,209 @@ msgstr ""
 "Виявлена напівдуплексна звукова карта, ви не зможете говорити й слухати "
 "одночасно."
 
-#: src/modules/dcc/requests.cpp:79
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:79
 msgid "Ignoring"
 msgstr "Ігнорувати"
 
-#: src/modules/dcc/requests.cpp:79
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:79
 msgid "Ignoring and notifying failure"
 msgstr "Ігнорування й повідомлення про помилку"
 
-#: src/modules/dcc/voice.cpp:656
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:656
 msgid "Input buffer"
 msgstr "Вхідний буфер"
 
-#: src/modules/dcc/voice.cpp:882
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:882
 #, c-format
 msgid "Input buffer: %d bytes"
 msgstr "Вхідний буфер: %d байт"
 
-#: src/modules/dcc/send.cpp:1778
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1778
 msgid "Internal error in RESUME request"
 msgstr "Внутрішня помилка в запиті RESUME"
 
-#: src/modules/dcc/requests.cpp:196
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:196
 #, c-format
 msgid "Invalid IP address %s"
 msgstr "Недійсний IP адреса %s"
 
-#: src/modules/dcc/requests.cpp:175
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:175
 #, c-format
 msgid "Invalid IP address in old format %s"
 msgstr "Недійсний IP адреса в старому форматі %s"
 
-#: src/modules/dcc/requests.cpp:638
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:638
 #, c-format
 msgid "Invalid RECV request: Position %u is is larger than file size"
 msgstr "Недійсний RECV запит: Позиція %u більше розміру файлу"
 
-#: src/modules/dcc/send.cpp:1783
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1783
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr "Недійсний RESUME запит: позиція %1 більше чим розмір файлу"
 
-#: src/modules/dcc/libkvidcc.cpp:1148
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:1148
 msgid "Invalid codec specified, defaulting to 'adpcm'"
 msgstr "Недійсний кодек, приймається за замовчуванням 'adpcm'"
 
-#: src/modules/dcc/requests.cpp:158
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:158
 #, c-format
 msgid "Invalid port number %s"
 msgstr "Недійсний номер порту %s"
 
-#: src/modules/dcc/requests.cpp:560
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:560
 #, c-format
 msgid "Invalid resume position argument '%s'"
 msgstr "Недійсний аргумент підсумкової позиції '%s'"
 
-#: src/modules/dcc/libkvidcc.cpp:1132
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:1132
 msgid "Invalid sample rate specified, defaulting to 8000"
 msgstr "Недійсна швидкість, приймається за замовчуванням 8000"
 
-#: src/modules/dcc/requests.cpp:327
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:327
 msgid "It seems that I haven't requested this dcc chat"
 msgstr "Схоже, що ви не запитували цей dcc чат"
 
-#: src/modules/dcc/send.cpp:1818
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1818
 msgid "Limit download bandwidth to"
 msgstr "Межа при завантаженні"
 
-#: src/modules/dcc/send.cpp:1818
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1818
 msgid "Limit upload bandwidth to"
 msgstr "Межа при передачі"
 
-#: src/modules/dcc/send.cpp:1476
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1476
 msgid "Listening on interface %1 port %2"
 msgstr "Прослуховування інтерфейсу %1 на порту %2"
 
-#: src/modules/dcc/voice.cpp:759 src/modules/dcc/chat.cpp:186
-#: src/modules/dcc/canvas.cpp:85
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:759
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:186
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvas.cpp:85
 msgid "Listening on interface %Q port %Q"
 msgstr "Прослуховування на інтерфейсі %Q порту %Q"
 
-#: src/modules/dcc/send.cpp:1677
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1677
 msgid "Local end is %1:%2"
 msgstr "Локальне закінчення %1:%2"
 
-#: src/modules/dcc/voice.cpp:918 src/modules/dcc/chat.cpp:532
-#: src/modules/dcc/canvas.cpp:285
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:918
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:532
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvas.cpp:285
 msgid "Local end is %Q:%Q"
 msgstr "Локальне закінчення %Q:%Q"
 
-#: src/modules/dcc/chat.cpp:246 src/modules/dcc/send.cpp:1563
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:246
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1563
 msgid "Low-level transport connection established"
 msgstr "Установлене з'єднання по низькорівневому транспорті"
 
-#: src/modules/dcc/requests.cpp:856
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:856
 msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
 msgstr "Немає файлу з ім'ям '%s' (розміром %s) доступного для %Q [%Q@%Q]"
 
-#: src/modules/dcc/requests.cpp:778 src/modules/dcc/requests.cpp:928
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:778
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:928
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr ""
 "Не підходящий інтерфейс для прослуховування, намагаюся продовжити в будь-"
 "якому випадку..."
 
-#: src/modules/dcc/libkvidcc.cpp:139
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:139
 msgid "No suitable interfaces to listen on, use -i"
 msgstr "Інтерфейс непридатний для прослуховування, використайте -i"
 
-#: src/modules/dcc/send.cpp:1841
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1841
 msgid "OK"
 msgstr "Ок"
 
-#: src/modules/dcc/voice.cpp:270
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:270
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
 msgstr ""
 "Упс... не можу протестувати можливості звукової карти... очікуються "
 "проблеми..."
 
-#: src/modules/dcc/voice.cpp:658
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:658
 msgid "Output buffer"
 msgstr "Вихідний буфер"
 
-#: src/modules/dcc/voice.cpp:884
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:884
 #, c-format
 msgid "Output buffer: %d bytes"
 msgstr "Вихідний буфер: %d байт"
 
-#: src/modules/dcc/dialogs.cpp:149
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/dialogs.cpp:149
 msgid "Over&write"
 msgstr "Пе&реписати"
 
-#: src/modules/dcc/send.cpp:1747
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1747
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME прийнятий, передача починається з позиції %1"
 
-#: src/modules/dcc/dialogs.cpp:153
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/dialogs.cpp:153
 msgid "Re&sume"
 msgstr "&Докачка"
 
-#: src/modules/dcc/send.cpp:931
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:931
 msgid "Resend DCC"
 msgstr "Повторне відправлення DCC"
 
-#: src/modules/dcc/send.cpp:933
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:933
 msgid "Resend RevDCC"
 msgstr "Повторне відправлення RevDCC"
 
-#: src/modules/dcc/send.cpp:932
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:932
 msgid "Resend TDCC"
 msgstr "Повторне відправлення TDCC"
 
-#: src/modules/dcc/send.cpp:1550
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1550
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr "Відісланий DCC %1 запит %2, очікую з'єднання від вилученого клієнта..."
 
-#: src/modules/dcc/chat.cpp:235
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:235
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
 msgstr ""
 "Відправлення DCC %Q запиту %Q, очікую з'єднання від вилученого клієнта..."
 
-#: src/modules/dcc/canvas.cpp:100
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/canvas.cpp:100
 msgid ""
 "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
 msgstr ""
 "Відісланий DCC CANVAS запит %Q, очікую з'єднання від вилученого клієнта..."
 
-#: src/modules/dcc/send.cpp:841
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:841
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "Відісланий DCC RESUME запит %1, очікую ACCEPT"
 
-#: src/modules/dcc/voice.cpp:776
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:776
 msgid ""
 "Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr ""
 "Відісланий DCC VOICE (%s) запит %Q, очікую з'єднання вилученого клієнта..."
 
-#: src/modules/dcc/send.cpp:752
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:752
 msgid "Setting up the connection"
 msgstr "Установка з'єднання"
 
-#: src/modules/dcc/requests.cpp:113
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:113
 #, c-format
 msgid "Slot limit reached (%u slots of %u)"
 msgstr "Досягнуть ліміт слотів (%u слотів з %u)"
 
-#: src/modules/dcc/send.cpp:1255
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1255
 msgid "Spd:"
 msgstr "Швидкість:"
 
-#: src/modules/dcc/chat.cpp:247 src/modules/dcc/send.cpp:1564
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:247
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1564
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Запуск з'єднання через SSL"
 
-#: src/modules/dcc/send.cpp:729
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:729
 #, c-format
 msgid "TRANSFER %d"
 msgstr "ПЕРЕДАЧА %d"
 
-#: src/modules/dcc/requests.cpp:1015
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:1015
 #, c-format
 msgid ""
 "The above request appears to be broken: Invalid sample-rate '%s', defaulting "
@@ -632,7 +652,7 @@ msgid ""
 msgstr ""
 "Зазначений запит битий: Недійсне значення '%s', приймаю по умовчанню 8000"
 
-#: src/modules/dcc/requests.cpp:992
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:992
 msgid ""
 "The above request cannot be accepted: DCC VOICE support not enabled at "
 "compilation time "
@@ -640,20 +660,21 @@ msgstr ""
 "Неможливо прийняти зазначений запит: Підтримка DCC VOICE не включена в час "
 "компіляції"
 
-#: src/modules/dcc/requests.cpp:1002
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:1002
 #, c-format
 msgid "The above request cannot be accepted: Unsupported codec '%s'"
 msgstr "Неможливо прийняти зазначений запит: Непідтримуваний кодек '%s'"
 
-#: src/modules/dcc/requests.cpp:598
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:598
 msgid ""
 "The above request has resume file size missing, assuming a resume file size "
 "of 0"
 msgstr ""
 "У зазначеному запиті відсутній розмір файлу, приймаю підсумковий розмір 0"
 
-#: src/modules/dcc/requests.cpp:457 src/modules/dcc/requests.cpp:608
-#: src/modules/dcc/requests.cpp:747
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:457
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:608
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:747
 msgid ""
 "The above request is broken: The filename contains path components, "
 "stripping the leading path and trying to continue"
@@ -661,7 +682,7 @@ msgstr ""
 "Зазначений запит є битим: Ім'я файлу містить компоненти шляху, видаляю їх і "
 "намагаюся продовжити"
 
-#: src/modules/dcc/requests.cpp:447
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:447
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number, trying to continue"
@@ -669,7 +690,7 @@ msgstr ""
 "Зазначений запит є битим: Четвертий параметр повинен бути розміром файлу але "
 "він не є беззнаковим числом, намагаюся продовжити"
 
-#: src/modules/dcc/requests.cpp:737
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:737
 msgid ""
 "The above request is broken: The fourth parameter should be the file size "
 "but does not appear to be an unsigned number; trying to continue"
@@ -677,7 +698,7 @@ msgstr ""
 "Зазначений запит є битим: Четвертий параметр повинен бути розміром файлу але "
 "він не є беззнаковим числом, намагаюся продовжити"
 
-#: src/modules/dcc/requests.cpp:263
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:263
 #, c-format
 msgid ""
 "The above request is broken: The second parameter is '%s' and should be "
@@ -686,21 +707,21 @@ msgstr ""
 "Зазначений запит є битим: Другий параметр '%s' повинен бути 'chat', "
 "намагаюся продовжити"
 
-#: src/modules/dcc/requests.cpp:326
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:326
 msgid ""
 "The above request is broken: it looks like a zero port tag acknowledge but I "
 "have either never seen this tag or it was sent more than 120 seconds ago"
 msgstr ""
 
-#: src/modules/dcc/broker.cpp:285
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:285
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
 msgstr "Підключення до хосту <b>%1</b> на порт <b>%2</b><br>"
 
-#: src/modules/dcc/broker.cpp:275
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:275
 msgid "The connection will be secured using SSL.<br>"
 msgstr "З'єднання буде використати SSL.<br>"
 
-#: src/modules/dcc/chat.cpp:344
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:344
 #, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
@@ -709,12 +730,13 @@ msgstr ""
 "Крипто машина не здатна зашифрувати поточне повідомлення(%Q): %s, ніякі дані "
 "не відіслані"
 
-#: src/modules/dcc/libkvidcc.cpp:1577 src/modules/dcc/libkvidcc.cpp:2542
-#: src/modules/dcc/libkvidcc.cpp:2562
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:1577
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:2542
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:2562
 msgid "The current window has no associated DCC session"
 msgstr "Поточне вікно не асоціюється з DCC сесією"
 
-#: src/modules/dcc/broker.cpp:665
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:665
 #, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
@@ -725,7 +747,7 @@ msgstr ""
 "<br><b>переписати</b> існуючий файл,<br> <b>автоматично перейменувати</b> "
 "новий файл, або<br><b>продовжити</b> незавершене завантаження?"
 
-#: src/modules/dcc/broker.cpp:677
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:677
 msgid ""
 "The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
 "you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
@@ -734,7 +756,7 @@ msgstr ""
 "Файл більшого розміру '<b>%1</b>' уже існує<br>Ви хочете <br><b>переписати</"
 "b> існуючий файл, або<br> <b>автоматично перейменувати</b> новий файл?"
 
-#: src/modules/dcc/chat.cpp:456
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:456
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
@@ -743,93 +765,95 @@ msgstr ""
 "Наступне повідомлення зашифроване, але криптовальна машина не може його "
 "розшифрувати: %s"
 
-#: src/modules/dcc/chat.cpp:213 src/modules/dcc/send.cpp:1504
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:213
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1504
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "Локальний IP адреса є приватним і немає IRC сервера для його визначення"
 
-#: src/modules/dcc/chat.cpp:210 src/modules/dcc/send.cpp:1501
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:210
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1501
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr ""
 "Локальний IP адреса є приватним і його неможливо визначити на IRC сервері"
 
-#: src/modules/dcc/send.cpp:1499
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1499
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "Локальний IP адреса є приватним, визначаю з IRC сервера: %1"
 
-#: src/modules/dcc/chat.cpp:208
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:208
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "Локальний IP адреса є приватним, визначення з IRC сервера: %s"
 
-#: src/modules/dcc/requests.cpp:698
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:698
 #, c-format
 msgid "The remote client is listening on interface %s and port %s"
 msgstr "Вилучений клієнт прослуховує інтерфейс %s на порту %s"
 
-#: src/modules/dcc/libkvidcc.cpp:1582
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:1582
 msgid "The specified parameter is not a valid DCC identifier"
 msgstr "Заданий параметр не є дійсним ідентифікатором DCC"
 
-#: src/modules/dcc/libkvidcc.cpp:2553
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:2553
 msgid "The specified window identifier is not valid"
 msgstr "Заданий ідентифікатор вікна недійсний"
 
-#: src/modules/dcc/libkvidcc.cpp:1662
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:1662
 msgid "This DCC session is not a DCC transfer session"
 msgstr ""
 
-#: src/modules/dcc/libkvidcc.cpp:890
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:890
 msgid "This executable has been built without SSL support, -s switch ignored"
 msgstr "Ця зборка програми не має підтримки SSL, ключ -s зігнорований"
 
-#: src/modules/dcc/requests.cpp:275
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:275
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC CHAT is not available"
 msgstr ""
 "Ця зборка програми не має підтримки SSL, SSL розширення DCC CHAT не доступно"
 
-#: src/modules/dcc/requests.cpp:844
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:844
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC GET is not available"
 msgstr ""
 "Ця зборка програми не має підтримки SSL, SSL розширення DCC GET не доступно"
 
-#: src/modules/dcc/requests.cpp:622
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:622
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RECV is not available"
 msgstr ""
 "Ця зборка програми не має підтримки SSL, SSL розширення DCC RECV не доступно"
 
-#: src/modules/dcc/requests.cpp:761
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:761
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC RSEND is not available"
 msgstr ""
 "Ця зборка програми не має підтримки SSL, SSL розширення DCC RSEND не доступно"
 
-#: src/modules/dcc/requests.cpp:471
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:471
 msgid ""
 "This executable has been compiled without SSL support, the SSL extension to "
 "DCC SEND is not available"
 msgstr ""
 "Ця зборка програми не має підтримки SSL, SSL розширення DCC SEND не доступно"
 
-#: src/modules/dcc/libkvidcc.cpp:960
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:960
 msgid "This executable has no SSL support, -s switch ignored"
 msgstr "Ця зборка не підтримує SSL, ключ -s зігнорований"
 
-#: src/modules/dcc/libkvidcc.cpp:172
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:172
 msgid "This executable was built without SSL support, -s switch ignored"
 msgstr "Ця зборка програми не має підтримки SSL, ключ -s зігнорований"
 
-#: src/modules/dcc/libkvidcc.cpp:91
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:91
 msgid ""
 "This window has no associated IRC context (an IRC context is required unless "
 "-c or -n are passed)"
@@ -837,45 +861,46 @@ msgstr ""
 "Це вікно не асоціюється з IRC контекстом (IRC контекст потрібно при -c або -"
 "n)"
 
-#: src/modules/dcc/send.cpp:1128
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1128
 msgid "To: "
 msgstr "Кому: "
 
-#: src/modules/dcc/requests.cpp:122
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:122
 msgid "Too many pending connections"
 msgstr "Занадто багато незавершених з'єднань"
 
-#: src/modules/dcc/send.cpp:1340
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1340
 msgid "Transfer Log"
 msgstr "Журнал передачі"
 
-#: src/modules/dcc/send.cpp:1629
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1629
 msgid "Transfer completed"
 msgstr "Передача завершена"
 
-#: src/modules/dcc/send.cpp:918 src/modules/dcc/send.cpp:1589
-#: src/modules/dcc/send.cpp:1667
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:918
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1589
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1667
 msgid "Transfer failed: "
 msgstr "Помилка передачі: "
 
-#: src/modules/dcc/send.cpp:1721
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1721
 msgid "Transferring data"
 msgstr "Передача даних"
 
-#: src/modules/dcc/libkvidcc.cpp:129
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:129
 msgid "Unable to get address of interface %Q"
 msgstr "Неможливо одержати адресу інтерфейсу %Q"
 
-#: src/modules/dcc/requests.cpp:77
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:77
 msgid "Unable to process the above request: %Q, %Q"
 msgstr "Не можу обробити зазначений запит: %Q, %Q"
 
-#: src/modules/dcc/requests.cpp:1159
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:1159
 #, c-format
 msgid "Unknown DCC type '%s'"
 msgstr "Невідомий DCC тип '%s'"
 
-#: src/modules/dcc/requests.cpp:705
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:705
 msgid ""
 "Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
 "to send the file (or double-click on the socket)"
@@ -883,12 +908,12 @@ msgstr ""
 "Використається %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%"
 "s  %Q\r%c для відправлення файлу (або подвійний клич на сокете)"
 
-#: src/modules/dcc/voice.cpp:1020
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:1020
 #, c-format
 msgid "Volume: %i"
 msgstr "Гучність: %i"
 
-#: src/modules/dcc/send.cpp:261
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:261
 msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
@@ -896,15 +921,15 @@ msgstr ""
 "ПОПЕРЕДЖЕННЯ: Ігнорування даних після оголошення кінця файлу й закриття "
 "з'єднання"
 
-#: src/modules/dcc/send.cpp:597
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:597
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr "ПОПЕРЕДЖЕННЯ: Отримані дані в DCC TSEND, це не зізнається"
 
-#: src/modules/dcc/send.cpp:260
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:260
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr "ПОПЕРЕДЖЕННЯ: Співрозмовник посилає якісь дані після кінця файлу"
 
-#: src/modules/dcc/voice.cpp:163
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:163
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
 "half-duplex soundcard , use the DCC VOICE option to force half-duplex "
@@ -914,7 +939,7 @@ msgstr ""
 "це напівдуплексна карта, використайте опцію DCC VOICE щоб форсувати "
 "напівдуплексний алгоритм."
 
-#: src/modules/dcc/voice.cpp:212
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/voice.cpp:212
 #, c-format
 msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
@@ -923,37 +948,45 @@ msgstr ""
 "ПОПЕРЕДЖЕННЯ: не можу встановити запитане значення швидкості (%d): устрій "
 "використає найближче підходяще (%d)"
 
-#: src/modules/dcc/broker.cpp:281
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/broker.cpp:281
 msgid "You will be the passive side of the connection.<br>"
 msgstr "Ви будете пасивною стороною зв'язку<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:104
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:104
 msgid ""
 "You're not connected to a server (an active connection is required unless -c "
 "or -n are passed)"
 msgstr "Ви не підключені до сервера (активне з'єднання потрібно при -c або -n)"
 
-#: src/modules/dcc/send.cpp:1571
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1571
 msgid "[SSL ERROR]: %1"
 msgstr "[ПОМИЛКА SSL]: %1"
 
-#: src/modules/dcc/chat.cpp:255
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/chat.cpp:255
 #, c-format
 msgid "[SSL ERROR]: %s"
 msgstr "[ПОМИЛКА SSL]: %s"
 
-#: src/modules/dcc/send.cpp:1837
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/send.cpp:1837
 msgid "bytes/sec"
 msgstr "байт/сек"
 
-#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:408
-#: src/modules/dcc/libkvidcc.cpp:443 src/modules/dcc/libkvidcc.cpp:642
-#: src/modules/dcc/libkvidcc.cpp:666 src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:805 src/modules/dcc/libkvidcc.cpp:1121
-#: src/modules/dcc/libkvidcc.cpp:1171 src/modules/dcc/requests.cpp:136
-#: src/modules/dcc/requests.cpp:137 src/modules/dcc/requests.cpp:138
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/marshal.cpp:444
-#: src/modules/dcc/marshal.cpp:474 src/modules/dcc/marshal.cpp:479
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:111
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:408
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:443
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:642
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:666
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:803
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:805
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:1121
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/libkvidcc.cpp:1171
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:136
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:137
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/requests.cpp:138
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/descriptor.cpp:65
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/marshal.cpp:444
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/marshal.cpp:474
+#: /home/mr/Projekte/kvirc/trunk/src/modules/dcc/marshal.cpp:479
 msgid "unknown"
 msgstr "невідомий"
 
