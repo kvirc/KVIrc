@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.10.2\n"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_mprisinterface.cpp:455
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:455
 #, fuzzy
 msgid ""
 "An interface to Amarok2.\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Інтерфейс до популярного в UNIX медіаплеєру xmms.\n"
 "Ви можете завантажити його з http://www.xmms.org\n"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_mprisinterface.cpp:431
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:431
 #, fuzzy
 msgid ""
 "An interface to BMPx.\n"
@@ -37,14 +37,14 @@ msgstr ""
 "Інтерфейс до популярного в UNIX медіаплеєру xmms.\n"
 "Ви можете завантажити його з http://www.xmms.org\n"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_amipinterface.cpp:108
+#: src/modules/mediaplayer/mp_amipinterface.cpp:108
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net.\n"
 "To use this interface you must install AMIP plug-in for your player."
 msgstr ""
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
 #, fuzzy
 msgid ""
 "An interface to the popular UNIX audacious media player.\n"
@@ -53,7 +53,7 @@ msgstr ""
 "Інтерфейс до популярного в UNIX медіаплеєру xmms.\n"
 "Ви можете завантажити його з http://www.xmms.org\n"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
 msgid ""
 "An interface to the popular UNIX xmms media player.\n"
 "Download it from http://www.xmms.org\n"
@@ -61,7 +61,7 @@ msgstr ""
 "Інтерфейс до популярного в UNIX медіаплеєру xmms.\n"
 "Ви можете завантажити його з http://www.xmms.org\n"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_mprisinterface.cpp:320
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:320
 #, fuzzy
 msgid ""
 "An interface to the popular audacious media player.\n"
@@ -70,7 +70,7 @@ msgstr ""
 "Інтерфейс до популярного в UNIX медіаплеєру xmms.\n"
 "Ви можете завантажити його з http://www.xmms.org\n"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_winampinterface.cpp:194
+#: src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
@@ -84,7 +84,7 @@ msgstr ""
 "плагін gen_kvirc.dll, якому можна знайти в папці з дистрибутивом KVIrc в "
 "папку плагінів Winamp і запустити знову Winamp."
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#: src/modules/mediaplayer/mp_xmms2interface.cpp:33
 #, fuzzy
 msgid ""
 "An interface to the xmms2 media player.\n"
@@ -93,72 +93,72 @@ msgstr ""
 "Інтерфейс до популярного в UNIX медіаплеєру xmms.\n"
 "Ви можете завантажити його з http://www.xmms.org\n"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_winampinterface.cpp:184
+#: src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
 msgstr "Не можу знайти запущене вікно winamp"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_xmmsinterface.cpp:145
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
 #, fuzzy
 msgid "Can't find symbol %s in %Q"
 msgstr "Не знайдений символ %s в libxmms.so"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_xmmsinterface.cpp:136
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
 #, fuzzy
 msgid "Can't load the player library (%Q)"
 msgstr "Не можу завантажити бібліотеку xmms (libxmms.so)"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:101
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
 msgid "Choosing media player interface \"%Q\""
 msgstr "Обраний інтерфейс медіаплеєра \"%Q\""
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_interface.cpp:43
+#: src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
 msgstr ""
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:134
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:571
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:594
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:636
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:675
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1183
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1319
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1363
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1552
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1595
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:571
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:636
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:675
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
 msgid "Last interface error: "
 msgstr "Остання помилка інтерфейсу:"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:114
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
 msgstr "Інтерфейс медіаплеєра не обраний. Спробуйте /mediaplayer.detect"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:73
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
 msgid ""
 "Not sure about the results, trying a second, more agressive detection pass"
 msgstr ""
 "Не впевнений у результаті, почекайте секунду, більше агресивний спосіб "
 "виявлення"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:104
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Здається на цій машині немає підходящих медіаплеєрів"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:133
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:570
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:593
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:635
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:674
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1182
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1318
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1362
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1551
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:1594
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1551
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1594
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "Обраний інтерфейс медіаплеєра не зміг виконати необхідну функцію"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_winampinterface.cpp:316
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/mp_winampinterface.cpp:350
+#: src/modules/mediaplayer/mp_winampinterface.cpp:316
+#: src/modules/mediaplayer/mp_winampinterface.cpp:350
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
@@ -166,8 +166,8 @@ msgstr ""
 "Плагін для winamp не був установлений належним чином. Перевірте /help "
 "mediaplayer. nowplaying"
 
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:65
-#: /home/mr/Projekte/kvirc/trunk/src/modules/mediaplayer/libkvimediaplayer.cpp:91
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Шукаю інтерфейс медіаплеєра \"%Q\": score %d"
 
