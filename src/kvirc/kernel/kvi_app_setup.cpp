@@ -573,10 +573,10 @@ void KviApp::findGlobalKvircDirectory()
 	#ifdef COMPILE_ON_MAC
 		m_szGlobalKvircDir = applicationDirPath();
 		m_szGlobalKvircDir+= "/../Resources/";
-		if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
+	#else
+		m_szGlobalKvircDir = KVIRC_RESOURCES_DIR;
 	#endif //COMPILE_ON_MAC
 
-	m_szGlobalKvircDir = KVIRC_RESOURCES_DIR;
 	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 
 /*
