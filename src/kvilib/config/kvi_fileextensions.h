@@ -61,9 +61,9 @@
 #define KVI_FILTER_THEME "KVIrc Theme (*.kvt)"
 #define KVI_FILTER_ADDON "KVIrc Addon (*.kva)"
 // Provided for convenience
-#define KVI_FILTER_SCRIPTS "KVIrc Script and Addon (*.kvs *.kva)"
+#define KVI_FILTER_SCRIPTS "KVIrc Script and Addon (*.kvs; *.kva)"
 #define KVI_FILTER_INI "INI File (*.ini)"
-#define KVI_FILTER_IMAGE "Image File (*.png *.jpg *.jpeg *.bmp *.gif *.xpm)"
+#define KVI_FILTER_IMAGE "Image File (*.png; *.jpg; *.jpeg; *.bmp; *.gif; *.xpm)"
 #define KVI_FILTER_UI "User Interface File (*.ui)"
 
 #endif //_KVI_FILEEXTENSIONS_H_
