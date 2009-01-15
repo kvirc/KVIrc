@@ -647,7 +647,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 		dcc->szLocalFileSize.setNum(fi.size());
 
 		bool bOk;
-		int iRemoteSize = dcc->szFileSize.toInt(&bOk);
+		unsigned long iRemoteSize = dcc->szFileSize.toULong(&bOk);
 		if(!bOk)iRemoteSize = -1;
 
 		// FIXME: Files downloaded succesfully shouldn't be resumed
@@ -659,7 +659,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 			bool bDisableResume = false;
 
 			if((iRemoteSize > -1) || // remote size is unknown
-				(iRemoteSize > ((int)(fi.size())))) // or it is larger than the actual size on disk
+				(iRemoteSize > ((unsigned long)(fi.size())))) // or it is larger than the actual size on disk
 			{
 				tmp = __tr2qs_ctx( \
 							"The file '<b>%1</b>' already exists " \
