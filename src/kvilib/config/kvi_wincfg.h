@@ -154,7 +154,7 @@
 #define PACKAGE "kvirc"
 
 /* Version number of package */
-#define VERSION "3.4.2"
+#define VERSION "3.4.3"
 
 #define VERSION_BRANCH "3.4"
 

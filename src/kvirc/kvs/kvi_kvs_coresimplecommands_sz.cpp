@@ -581,7 +581,7 @@ namespace KviKvsCoreSimpleCommands
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].
 		@examples:
 			[example]
-			topic #kvirc KVIrc 3.4.2 has been released!
+			topic #kvirc KVIrc 3.4.3 has been released!
 			[/example]
 	*/
 

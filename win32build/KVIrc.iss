@@ -4,7 +4,7 @@
 [Setup]
 
 AppName=KVIrc
-AppVerName=KVIrc 3.4.2 "Shiny"
+AppVerName=KVIrc 3.4.3 "Shiny"
 AppId=KVIrc
 AppPublisher=Szymon Stefanek and The KVIrc Development Team
 AppPublisherURL=http://www.kvirc.net

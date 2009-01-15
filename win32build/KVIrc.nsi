@@ -6,7 +6,7 @@
 !include "LogicLib.nsh"
 
 Name "KVIrc"
-!define VERSION '3.4.2'
+!define VERSION '3.4.3'
 !define RELEASE_NAME 'Shiny'
 !define /date RELEASE_VERSION '%Y%m%d'
 !define URL_ABOUT 'http://www.kvirc.net/'
