@@ -658,7 +658,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 			QString tmp;
 			bool bDisableResume = false;
 
-			if((iRemoteSize > -1) || // remote size is unknown
+			if((bOk) || // remote size is unknown
 				(iRemoteSize > ((unsigned long)(fi.size())))) // or it is larger than the actual size on disk
 			{
 				tmp = __tr2qs_ctx( \
@@ -696,8 +696,8 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 		} else {
 			// auto resume ?
 			if(KVI_OPTION_BOOL(KviOption_boolAutoResumeDccSendWhenAutoAccepted) &&
-				(iRemoteSize > -1) && // only if the remote size is really known
-				(iRemoteSize > ((int)(fi.size()))) && // only if the remote size is larger than the local size
+				(bOk) && // only if the remote size is really known
+				(iRemoteSize > ((unsigned long)(fi.size()))) && // only if the remote size is larger than the local size
 				(!KviDccFileTransfer::nonFailedTransferWithLocalFileName(dcc->szLocalFileName.toUtf8().data()))) // only if there is no transfer with this local file name yet
 			{
 				// yep, auto resume...
