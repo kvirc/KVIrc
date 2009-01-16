@@ -154,7 +154,6 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIcon::Normal,QIcon::Off);
 	m_pMultiEditorButton->setIcon(is2);
 	QString szTip = __tr2qs("Multi-line Editor<br>&lt;Alt+Backspace&gt;");
-	szTip += " - &lt;Ctrl+Backspace&gt;";
 	KviTalToolTip::add(m_pMultiEditorButton,szTip);
 
 	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multilineEditorButtonToggled(bool)));
@@ -324,7 +323,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 
 		m_pHelpLabel = new QLabel();
 		m_pHelpLabel->setIndent(5); // we only want a left margin here
-		m_pHelpLabel->setText(__tr2qs("<Ctrl+Return>; submits, <Ctrl+Backspace>; hides this editor"));
+		m_pHelpLabel->setText(__tr2qs("<Ctrl+Return>; submits, <Alt+Backspace>; hides this editor"));
 		m_pLayout->addWidget(m_pHelpLabel,0,0,1,1);
 
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);

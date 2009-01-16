@@ -1223,7 +1223,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 		return;
 	}
 
-	if((e->modifiers() & Qt::AltModifier) || (e->modifiers() & Qt::ControlModifier))
+	if((e->modifiers() & Qt::AltModifier))
 	{
 		switch(e->key())
 		{
@@ -1347,8 +1347,8 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			case Qt::Key_Y:
 				if(!m_bReadOnly) redo();
 			break;
-			//case Qt::Key_Backspace:
-			case Qt::Key_W:
+			case Qt::Key_Backspace:
+				//delete last word
 				if(m_iCursorPosition > 0 && !m_bReadOnly && !hasSelection())
 				{
 					// skip whitespace
