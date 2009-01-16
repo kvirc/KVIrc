@@ -63,9 +63,9 @@
 //---------------------------------------------------------------------------------
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_checkbox,"checkbox","button")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_checkbox,setChecked)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_checkbox,isChecked)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_checkbox,toggleEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_checkbox,setChecked)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_checkbox,isChecked)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_checkbox,toggleEvent)
 KVSO_END_REGISTERCLASS(KviKvsObject_checkbox)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_checkbox,KviKvsObject_button)

@@ -103,23 +103,23 @@
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_slider,"slider","widget")
 
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,setTracking);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,setValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,setMinValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,setMaxValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,setLineStep);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,setPageStep);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,setTickInterval);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,value);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,minValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,maxValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,lineStep);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,pageStep);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,setTickmarks);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,setOrientation);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,setTracking);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,setValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,setMinValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,setMaxValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,setLineStep);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,setPageStep);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,setTickInterval);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,value);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,minValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,maxValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,lineStep);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,pageStep);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,setTickmarks);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,setOrientation);
 
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_slider,valueChangedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_slider,valueChangedEvent);
 KVSO_END_REGISTERCLASS(KviKvsObject_slider)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_slider,KviKvsObject_widget)

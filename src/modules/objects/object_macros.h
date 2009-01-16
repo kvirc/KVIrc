@@ -45,7 +45,7 @@
 	g_pKvs##__className##Class->registerFunctionHandler(__szName,(KviKvsObjectFunctionHandlerProc)(KVI_PTR2MEMBER(__className::__proc)));
 
 // TEST
-#define KVSO_REGISTER_HANDLER_NEW(__className,__szName) \
+#define KVSO_REGISTER_HANDLER_BY_NAME(__className,__szName) \
 g_pKvs##__className##Class->registerFunctionHandler(#__szName,(KviKvsObjectFunctionHandlerProc)(KVI_PTR2MEMBER(__className::__szName)));
 
 #define KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(__className,__szName) \

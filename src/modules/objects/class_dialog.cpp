@@ -54,7 +54,7 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_dialog,"dialog","widget")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dialog,setModal)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dialog,setModal)
 KVSO_END_REGISTERCLASS(KviKvsObject_dialog)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_dialog,KviKvsObject_widget)

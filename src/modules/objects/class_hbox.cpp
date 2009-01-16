@@ -84,11 +84,11 @@ const int align_cod[] = {
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_hbox,"hbox","widget")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,setMargin)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,setSpacing)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,setStretchFactor )
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,addStretch )
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_hbox,setAlignment )
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_hbox,setMargin)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_hbox,setSpacing)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_hbox,setStretchFactor )
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_hbox,addStretch )
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_hbox,setAlignment )
 KVSO_END_REGISTERCLASS(KviKvsObject_hbox)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_hbox,KviKvsObject_widget)

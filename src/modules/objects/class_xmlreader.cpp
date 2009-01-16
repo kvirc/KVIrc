@@ -277,8 +277,8 @@ public:
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_xmlreader,"xmlreader","object")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_xmlreader,lastError)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_xmlreader,parse)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_xmlreader,lastError)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_xmlreader,parse)
 
 	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KviKvsObject_xmlreader,"onDocumentStart")
 	KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KviKvsObject_xmlreader,"onDocumentEnd")

@@ -55,8 +55,8 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_buttongroup,"buttongroup","object")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_buttongroup,addButton)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_buttongroup,checkedButton)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_buttongroup,addButton)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_buttongroup,checkedButton)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_buttongroup)
 

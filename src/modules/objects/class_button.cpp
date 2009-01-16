@@ -67,10 +67,10 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_button,"button","widget")
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_button,setText)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_button,text)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_button,clickEvent)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_button,setImage)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_button,setText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_button,text)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_button,clickEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_button,setImage)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_button)
 

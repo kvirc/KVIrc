@@ -75,17 +75,17 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_pixmap,"pixmap","object")
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,fill)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,resize)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,load)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,loadFromMemoryBuffer)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,fill)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,resize)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,load)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,loadFromMemoryBuffer)
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,height)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,height)
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,width)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,setOpacity)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,scale)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_pixmap,rotate)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,width)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,setOpacity)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,scale)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,rotate)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_pixmap)
 

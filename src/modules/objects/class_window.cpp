@@ -96,8 +96,8 @@ void KviKvsScriptWindowWindow::centralWidgetDestroyed()
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_window,"window","widget")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_window,setWindowTitle)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_window,setCentralWidget)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_window,setWindowTitle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_window,setCentralWidget)
 KVSO_END_REGISTERCLASS(KviKvsObject_window)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_window,KviKvsObject_widget)

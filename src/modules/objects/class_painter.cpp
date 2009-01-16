@@ -428,91 +428,91 @@ const char * const brushstyles_tbl[] = {
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 
 	// Fonts
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setFont)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setFontSize)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fontAscent)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fontDescent)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fontMetricsHeight)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fontMetricsWidth)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setFont)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setFontSize)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,fontAscent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,fontDescent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,fontMetricsHeight)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,fontMetricsWidth)
 
 	// Draws
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawRect)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawLine)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawRoundRect)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawWinFocusRect)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawPoint)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawArc)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawEllipse)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawPie)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawChord)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,fillRect)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawRect)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawLine)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawRoundRect)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawWinFocusRect)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawPoint)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawArc)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawEllipse)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawPie)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawChord)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,fillRect)
 
 	// Text & Pixmap & Icons
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawText)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawPixmap)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawIcon)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawHtmlText)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,htmlTextSize)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawPixmap)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawIcon)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawHtmlText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,htmlTextSize)
 
 
 	// Matrix Operation
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,rotate)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,shear)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,scale)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,translate)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,reset)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,rotate)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,shear)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,scale)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,translate)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,reset)
 
 	
 
 	// ??
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setOpacity)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setTextAntialiasing)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setAntialiasing)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setSmoothPixmapTransform)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setBackGroundMode)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setOpacity)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setTextAntialiasing)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setAntialiasing)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setSmoothPixmapTransform)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setBackGroundMode)
 
 	
 
 	// QPainterPath stuff
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,drawPath)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,resetPath)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,pathAddText)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,pathMoveTo)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,pathLineTo)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawPath)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,resetPath)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,pathAddText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,pathMoveTo)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,pathLineTo)
 	
 	// Pen
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPenJoinStyle)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPenCapStyle)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPenWidth)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPenStyle)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setPen)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,colorNames)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setPenJoinStyle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setPenCapStyle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setPenWidth)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setPenStyle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setPen)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,colorNames)
 
 
 	// Brush
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setBrush)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setBrushStyle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setBrush)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setBrushStyle)
 
 
 	// Gradients
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setGradientStart)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setGradientStop)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setGradientColor)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,setGradientAsBrush)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,clearGradient)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setGradientStart)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setGradientStop)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setGradientColor)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setGradientAsBrush)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,clearGradient)
 
 	// painter state
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,save)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,restore)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,save)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,restore)
 
 	// painter device
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,painterDeviceWidth)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,painterDeviceHeight)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,begin)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,end)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,painterDeviceWidth)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,painterDeviceHeight)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,begin)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,end)
 
 	// extra
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_painter,beginPdf)// FIXME: needs doc!
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,beginPdf)// FIXME: needs doc!
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_painter)

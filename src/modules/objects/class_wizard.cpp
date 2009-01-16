@@ -93,21 +93,21 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_wizard,"wizard","widget")
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,addPage)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,insertPage)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,setTitle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,addPage)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,insertPage)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,setTitle)
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,setBackEnabled);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,setNextEnabled);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,setFinishEnabled);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,setHelpEnabled);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,setBackEnabled);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,setNextEnabled);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,setFinishEnabled);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,setHelpEnabled);
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,setBackBtnText);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,setNextBtnText);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,setFinishBtnText);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,setHelpBtnText);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,nextClickedEvent);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_wizard,backClickedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,setBackBtnText);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,setNextBtnText);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,setFinishBtnText);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,setHelpBtnText);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,nextClickedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_wizard,backClickedEvent);
 
 
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_wizard,"acceptEvent")

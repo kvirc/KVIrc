@@ -64,11 +64,11 @@
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_dockwindow,"dockwindow","widget")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,addWidget)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,resizeEnabled)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,setResizeEnabled)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,setAllowedDockAreas)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_dockwindow,dock)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,addWidget)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,resizeEnabled)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,setResizeEnabled)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,setAllowedDockAreas)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,dock)
 KVSO_END_REGISTERCLASS(KviKvsObject_dockwindow)
 
 

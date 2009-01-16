@@ -130,22 +130,22 @@ const char * const itemflags_tbl[] = {
 //===========================================================================================
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidgetitem,"listviewitem","object")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setText)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,text)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setPixmap);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setRenameEnabled);
-	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"setEnabled",function_setEnabled);
-	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"isEnabled",function_isEnabled);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setOpen);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,isOpen);
-	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"setCheckable",function_setCheckable);
-	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"isCheckable",function_isCheckable);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setChecked);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,isChecked);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,firstChild);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,setFlags);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,text)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setPixmap);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setRenameEnabled);
+	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"setEnabled",function_setEnabled);
+	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"isEnabled",function_isEnabled);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setOpen);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isOpen);
+	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"setCheckable",function_setCheckable);
+	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"isCheckable",function_isCheckable);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setChecked);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isChecked);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,firstChild);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setFlags);
 
-	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidgetitem,"nextSibling",function_nextSibling);
+	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"nextSibling",function_nextSibling);
 KVSO_END_REGISTERCLASS(KviKvsObject_treewidgetitem)
 
 

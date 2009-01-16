@@ -63,14 +63,14 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_ftp,"ftp","object")
 	KVSO_REGISTER_HANDLER(KviKvsObject_ftp,"connect",functionConnect)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,abort)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,login)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,get)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,cd)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,list)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,commandFinishedEvent)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,listInfoEvent)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_ftp,dataTransferProgressEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,abort)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,login)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,get)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,cd)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,list)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,commandFinishedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,listInfoEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_ftp,dataTransferProgressEvent)
 KVSO_END_REGISTERCLASS(KviKvsObject_ftp)
 
 
@@ -82,7 +82,6 @@ KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_ftp,KviKvsObject)
 	connect(m_pFtp,SIGNAL(dataTransferProgress(qint64,qint64)),this,SLOT(slotDataTransferProgress(qint64,qint64)));
 	connect(m_pFtp,SIGNAL(done(bool)),this,SLOT(slotDone(bool)));
 	connect(m_pFtp,SIGNAL(listInfo(const QUrlInfo)),this,SLOT(slotListInfo(const QUrlInfo)));
-	connect(m_pFtp,SIGNAL(rawCommandReply(int,QString)),this,SLOT(slotRawCommandReplay(int,QString)));
 	connect(m_pFtp,SIGNAL(readyRead()),this,SLOT(slotReadyRead()));
 	connect(m_pFtp,SIGNAL(stateChanged(int)),this,SLOT(slotStateChanged(int)));
 KVSO_END_CONSTRUCTOR(KviKvsObject_ftp)
@@ -217,9 +216,6 @@ KVSO_CLASS_FUNCTION(ftp,listInfoEvent)
 {
 	emitSignal("listInfo",c,c->params());
 	return true;
-}
-void KviKvsObject_ftp::slotRawCommandReply ( int, const QString &)
-{
 }
 
 void KviKvsObject_ftp::slotReadyRead ()

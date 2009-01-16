@@ -67,12 +67,12 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_textbrowser,"textbrowser","multilineedit")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,setSource)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,forward)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,backward)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,home)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,reload)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_textbrowser,linkClickedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_textbrowser,setSource)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_textbrowser,forward)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_textbrowser,backward)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_textbrowser,home)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_textbrowser,reload)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_textbrowser,linkClickedEvent)
 KVSO_END_REGISTERCLASS(KviKvsObject_textbrowser)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_textbrowser,KviKvsObject_textedit)

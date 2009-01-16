@@ -58,8 +58,8 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_memorybuffer,"memorybuffer","object")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_memorybuffer,loadFromFile);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_memorybuffer,saveToFile);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_memorybuffer,loadFromFile);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_memorybuffer,saveToFile);
 KVSO_END_REGISTERCLASS(KviKvsObject_memorybuffer)
 
 

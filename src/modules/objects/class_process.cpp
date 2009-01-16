@@ -161,21 +161,21 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_process,"process","object")
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,addArgument);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,startProcess);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,readStdout);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,readStderr);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,writeToStdin);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,closekill);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,kill);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,tryTerminate);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,closeStdin);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,isRunning);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,normalExit);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,addArgument);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,startProcess);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,readStdout);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,readStderr);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,writeToStdin);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,closekill);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,kill);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,tryTerminate);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,closeStdin);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,isRunning);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,normalExit);
 
   // Events
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,readyReadStdoutEvent);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_process,readyReadStderrEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,readyReadStdoutEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_process,readyReadStderrEvent);
 
   KVSO_END_REGISTERCLASS(KviKvsObject_process)
 

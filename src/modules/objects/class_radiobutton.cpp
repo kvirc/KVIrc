@@ -66,11 +66,11 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_radiobutton,"radiobutton","widget")
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_radiobutton,setText)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_radiobutton,setChecked)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_radiobutton,isChecked)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_radiobutton,setImage)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_radiobutton,toggleEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_radiobutton,setText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_radiobutton,setChecked)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_radiobutton,isChecked)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_radiobutton,setImage)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_radiobutton,toggleEvent)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_radiobutton)
 

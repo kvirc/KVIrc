@@ -48,185 +48,188 @@
 #include <QUrl>
 
 /*
-	@doc: treewidget
-	@keyterms:
-		treewidget widget class
-	@title:
-		treewidget class
-	@type:
-		class
-	@short:
-		A treewidget class
-	@inherits:
-		[class]widget[/class]
-	@description:
-		It can display and control a hierarchy of multi-column items, and provides the ability to add new items at any time.
-		The items are added by creating children [class]treewidgetitem[/class] objects: simply allocating them with $new
-		will add the items to the treewidget and simply deleting them will remove them.
-		Allocating a [class]treewidgetitem[/class] item2 as a child of item1 will insert it to the same treewidget creating
-		a subtree of items spannig from item1. The subtree can be opened or closed by a simple click either
-		on the parent item or on the little plus sign on the side of it (when [classfnc:treewidget]$setRootIsDecorated[/classfnc]
-		is set to $true. The treewidget can be in Single, Multi, Extended or NoSelection selection mode.
-		In single selection mode there can be only one selected item at a time and the selected item is also
-		the current item (this mode is the default). In Multi and Extended selection mode there can be multiple selected items
-		and the current item is one of them. The difference between Multi and Extended is in the way
-		that items can be selected by the mouse actions: experiment with the two modes :).
-		The NoSelection mode has obviously no selection at all.
-	@functions:
-		!fn: $addColumn(<text_label:string> <width:unsigned integer>)
-		Adds a width pixels wide column with the column header label to the list view.
+        @doc: listview
+        @keyterms:
+                listview widget class
+        @title:
+                listview widget class
+        @type:
+                class
+        @short:
+                A listview widget class
+        @inherits:
+                [class]widget[/class]
+        @description:
+                It can display and control a hierarchy of multi-column items, and provides the ability to add new items at any time.
+                The items are added by creating children [class]listviewitem[/class] objects: simply allocating them with $new
+                will add the items to the listview and simply deleting them will remove them.
+                Allocating a [class]listviewtitem[/class] item2 as a child of item1 will insert it to the same listview creating
+                a subtree of items spannig from item1. The subtree can be opened or closed by a simple click either
+                on the parent item or on the little plus sign on the side of it (when [classfnc:listview]$setRootIsDecorated[/classfnc]
+                is set to $true. The listview can be in Single, Multi, Extended or NoSelection selection mode.
+                In single selection mode there can be only one selected item at a time and the selected item is also
+                the current item (this mode is the default). In Multi and Extended selection mode there can be multiple selected items
+                and the current item is one of them. The difference between Multi and Extended is in the way
+                that items can be selected by the mouse actions: experiment with the two modes :).
+                The NoSelection mode has obviously no selection at all.
+        @functions:
+                !fn: $addColumn(<text_label:string> <width:unsigned integer>)
+                Adds a width pixels wide column with the column header label to the list view.
 
-		!fn: $setSorting(<column:integer>,<sort_order:string>)
-		Sets the list view to be sorted by column in ascending order if sort_order is "ascending" or descending order if it is "descending".
-		!fn: $setSortingEnabled(<bEnabled:boolean>)
-		If <bEnabled> is true, user sorting is enabled for the tree. The default value is false.
-		In order to avoid performance issues, it is recommended that sorting is enabled after inserting the items into the tree.
-		!fn: $hideListViewHeader()
-		Hide the treewidget column header.
+                !fn: $setSorting(<column:integer>,<sort_order:string>)
+                Sets the list view to be sorted by column in ascending order if sort_order is "ascending" or descending order if it is "descending".
+                !fn: $setSortingEnabled(<bEnabled:boolean>)
+                If <bEnabled> is true, user sorting is enabled for the tree. The default value is false.
+                In order to avoid performance issues, it is recommended that sorting is enabled after inserting the items into the tree.
+                !fn: $hideListViewHeader()
+                Hide the listview column header.
 
-		!fn: $showListViewHeader()
-		Show the treewidget column header.
+                !fn: $showListViewHeader()
+                Show the listview column header.
 
-		!fn: <boolean> $isListViewHeaderVisible()
-		Returns '1' if the treewidget header is currently visible. Otherwise this function returns '0'.
+                !fn: <boolean> $isListViewHeaderVisible()
+                Returns '1' if the listview header is currently visible. Otherwise this function returns '0'.
 
-		!fn: $setAllColumnsShowFocus(<bAllColumnsShowFocus:boolean>)
-		When the argument is $true, causes the treewidget to display the focus and selection
-		by highlighting all the columns of the item. When the argument is $false then
-		only the first column is selected/highlighted.
+                !fn: $setAllColumnsShowFocus(<bAllColumnsShowFocus:boolean>)
+                When the argument is $true, causes the listview to display the focus and selection
+                by highlighting all the columns of the item. When the argument is $false then
+                only the first column is selected/highlighted.
 
-		!fn: $setSelectionMode(<mode:string>)
-		Sets the selection mode for this treewidget. <mode> can be one of "Single","NoSelection","Multi" or "Extended".
+                !fn: $setSelectionMode(<mode:string>)
+                Sets the selection mode for this listview. <mode> can be one of "Single","NoSelection","Multi" or "Extended".
 
-		!fn: <treewidgetitem> $selectedItem()
-		Returns the currently selected [class]treewidgetitem[/class] or $null if no items are selected.
-		This function works only if the list view is in single selection mode.
+                !fn: <listviewitem> $selectedItem()
+                Returns the currently selected [class]listviewitem[/class] or $null if no items are selected.
+                This function works only if the list view is in single selection mode.
 
-		!fn: <treewidgetitem> $currentItem()
-		Returns the current [class]treewidgetitem[/class] or $null if no item is current at the moment.
+                !fn: <listviewitem> $currentItem()
+                Returns the current [class]listviewitem[/class] or $null if no item is current at the moment.
 
-		!fn: <treewidgetitem> $firstChild()
-		Returns the first child [class]treewidgetitem[/class] of this treewidget or $null if there are no items at all.
+                !fn: <listviewitem> $firstChild()
+                Returns the first child [class]listviewitem[/class] of this listview or $null if there are no items at all.
 
-		!fn: $clickEvent(<item:object>)
-		This function is called when the user clicks in the list view.
-		In its argument the [class]treewidgetitem[/class] object clicked or 0 if the user didn't click on an item.[br]
-		The default implementation emits the [classfnc]$clicked[/classfnc]() signal.
+                !fn: $clickEvent(<item:object>)
+                This function is called when the user clicks in the list view.
+                In its argument the [class]listviewitem[/class] object clicked or 0 if the user didn't click on an item.[br]
+                The default implementation emits the [classfnc]$clicked[/classfnc]() signal.
 
-		!fn: $selectionChangedEvent(<item:object>)
-		This event handle whenever the set of selected items has changed.
-		The argument is the newly selected item if the treewidget is in single selection mode.[br]
-		When the treewidget is in Multi or Extended selection mode then item is always $null.[br]
-		The default implementation emits the [classfnc]$selectionChanged[/classfnc]() signal.
+                !fn: $selectionChangedEvent(<item:object>)
+                This event handle whenever the set of selected items has changed.
+                The argument is the newly selected item if the listview is in single selection mode.[br]
+                When the listview is in Multi or Extended selection mode then item is always $null.[br]
+                The default implementation emits the [classfnc]$selectionChanged[/classfnc]() signal.
 
-		!fn: $currentChangedEvent(<item:object>)
-		This event are called whenever the current item has changed.
-		In its argument is the newly selected item or 0 if the change made no item current.[br]
-		The default implementation emits the [classfnc]$currentChanged[/classfnc]() signal.
+                !fn: $currentChangedEvent(<item:object>)
+                This event are called whenever the current item has changed.
+                In its argument is the newly selected item or 0 if the change made no item current.[br]
+                The default implementation emits the [classfnc]$currentChanged[/classfnc]() signal.
 
-		!fn: $returnPressedEvent(<item:object>)
-		This function is called by the framework when the enter key is pressed.[br]
-		In its arument the currrent item.[br]
-		The default implementation emits the [classfnc]$returnPressed[/classfnc]() signal.
+                !fn: $returnPressedEvent(<item:object>)
+                This function is called by the framework when the enter key is pressed.[br]
+                In its arument the currrent item.[br]
+                The default implementation emits the [classfnc]$returnPressed[/classfnc]() signal.
 
-		!fn: $spacePressedEvent(<item:object>)
-		This function is called by the framework when the space key is pressed.[br]
-		In its arument the currrent item.[br]
-		The default implementation emits the [classfnc]$spacePressed[/classfnc]() signal.
+                !fn: $spacePressedEvent(<item:object>)
+                This function is called by the framework when the space key is pressed.[br]
+                In its arument the currrent item.[br]
+                The default implementation emits the [classfnc]$spacePressed[/classfnc]() signal.
 
-		!fn: $onItemEvent(<item:object)
-		This event is called by framwork when the user moves the mouse cursor onto item.
-		The default implementation emits the [classfnc]$onItem[/classfnc]() signal.
+                !fn: $onItemEvent(<item:object)
+                This event is called by framwork when the user moves the mouse cursor onto item.
+                The default implementation emits the [classfnc]$onItem[/classfnc]() signal.
 
-		!fn: $itemExpandedEvent(<item:object>)
-		This event is called when an item has been expanded, i.e. when the children of item are shown.
-		The default implementation emits the [classfnc]$expanded[/classfnc]() signal.
+                !fn: $itemExpandedEvent(<item:object>)
+                This event is called when an item has been expanded, i.e. when the children of item are shown.
+                The default implementation emits the [classfnc]$expanded[/classfnc]() signal.
 
-		!fn: $itemCollapsedEvent(<item:object>)
-		This event is called when an item has been collapsed, i.e. when the children of item are hidden.
-		The default implementation emits the [classfnc]$collapsed[/classfnc]() signal.
+                !fn: $itemCollapsedEvent(<item:object>)
+                This event is called when an item has been collapsed, i.e. when the children of item are hidden.
+                The default implementation emits the [classfnc]$collapsed[/classfnc]() signal.
 
-		!fn: $itemRenamedEvent(<item:object>,<col:integer>,<text:string>)
-		This event is called when the item has been renamed in text, e.g. by in in-place renaming, in column col.[br]
-		The default implementation emits the [classfnc]$itemRenamed[/classfnc]() signal.
+                !fn: $itemRenamedEvent(<item:object>,<col:integer>,<text:string>)
+                This event is called when the item has been renamed in text, e.g. by in in-place renaming, in column col.[br]
+                The default implementation emits the [classfnc]$itemRenamed[/classfnc]() signal.
 
-		!fn: $rightButtonClickEvent(<item:object>,<x:integer>,>y:integer>)
-		This signal is emitted when the right button is clicked.[br]
-		The arguments are the relevant item (may be 0), the point in global coordinates and the relevant column (or -1 if the click was outside the list).
-		The default implementation emits the [classfnc]$rightButtonClicked[/classfnc]() signal.
-	@signals:
-		!sg: $clicked()
-		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
-		!sg: $selectionChanged()
-		This signal is emitted by the default implementation of [classfnc]$selectionChangedEvent[/classfnc]().
-		!sg: $currentChanged()
-		This signal is emitted by the default implementation of [classfnc]$currentChangedEvent[/classfnc]().
-		!sg: $returnPressed()
-		This signal is emitted by the default implementation of [classfnc]$returnPressedEvent[/classfnc]().
-		!sg: $spacePressed()
-		This signal is emitted by the default implementation of [classfnc]$spacePredssedEvent[/classfnc]().
-		!sg: $onItem()
-		This signal is emitted by the default implementation of [classfnc]$onItemEvent[/classfnc]().
-		!sg: $itemExpanded()
-		This signal is emitted by the default implementation of [classfnc]$itemExpandedEvent[/classfnc]().
-		!sg: $itemCollapsed()
-		This signal is emitted by the default implementation of [classfnc]$itemCollapsedEvent[/classfnc]().
-		!sg: $itemRenamed()
-		This signal is emitted by the default implementation of [classfnc]$itemRenamedEvent[/classfnc]().
-		!sg: $rightButtonClicked()
-		This signal is emitted by the default implementation of [classfnc]$rightButtonClickedEvent[/classfnc]().
+                !fn: $rightButtonClickEvent(<item:object>,<x:integer>,>y:integer>)
+                This signal is emitted when the right button is clicked.[br]
+                The arguments are the relevant item (may be 0), the point in global coordinates and the relevant column (or -1 if the click was outside the list).
+                The default implementation emits the [classfnc]$rightButtonClicked[/classfnc]() signal.
+        @signals:
+                !sg: $clicked()
+                This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
+                !sg: $selectionChanged()
+                This signal is emitted by the default implementation of [classfnc]$selectionChangedEvent[/classfnc]().
+                !sg: $currentChanged()
+                This signal is emitted by the default implementation of [classfnc]$currentChangedEvent[/classfnc]().
+                !sg: $returnPressed()
+                This signal is emitted by the default implementation of [classfnc]$returnPressedEvent[/classfnc]().
+                !sg: $spacePressed()
+                This signal is emitted by the default implementation of [classfnc]$spacePredssedEvent[/classfnc]().
+                !sg: $onItem()
+                This signal is emitted by the default implementation of [classfnc]$onItemEvent[/classfnc]().
+                !sg: $itemExpanded()
+                This signal is emitted by the default implementation of [classfnc]$itemExpandedEvent[/classfnc]().
+                !sg: $itemCollapsed()
+                This signal is emitted by the default implementation of [classfnc]$itemCollapsedEvent[/classfnc]().
+                !sg: $itemRenamed()
+                This signal is emitted by the default implementation of [classfnc]$itemRenamedEvent[/classfnc]().
+                !sg: $rightButtonClicked()
+                This signal is emitted by the default implementation of [classfnc]$rightButtonClickedEvent[/classfnc]().
 
 
 */
+
+
 
 //---------------------------------------------------------------------------------
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setHeaderLabels)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,addColumn)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setHeaderLabels)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,addColumn)
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setColumnText)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setColumnCount)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setColumnText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setColumnCount)
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setSorting)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setSortingEnabled)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setRootIsDecorated)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setAllColumnsShowFocus)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,clear)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setSorting)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setSortingEnabled)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setRootIsDecorated)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setAllColumnsShowFocus)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,clear)
 	//FIXME
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectedItem",selectedItems)//<--- remove this
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,selectedItems)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,selectedItems)
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,currentItem)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,setSelectionMode)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,listViewHeaderIsVisible)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,currentItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setSelectionMode)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,listViewHeaderIsVisible)
 
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,hideListViewHeader)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,showListViewHeader)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,firstChild)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,selectionChangedEvent);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,currentChangedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,hideListViewHeader)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,showListViewHeader)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,firstChild)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,selectionChangedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,currentChangedEvent);
 
 	// FIX-ME
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"returnPressedEvent",itemActivatedEvent);//<- remove me
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemActivatedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemActivatedEvent);
 	//
 
-//	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,"spacePressedEvent",function_spacePressedEvent);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,onItemEvent);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemClickedEvent);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemExpandedEvent);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemCollapsedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,onItemEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemClickedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemExpandedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemCollapsedEvent);
 
 	//FIXME
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemRenamedEvent",itemChangedEvent);//<- remove me
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,itemChangedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemChangedEvent);
 	//
 
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"rightButtonClickedEvent",customContextMenuRequestedEvent);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_treewidget,customContextMenuRequestedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,customContextMenuRequestedEvent);
+
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setAcceptDrops);
 
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_treewidget,"fileDroppedEvent")
 
@@ -255,9 +258,7 @@ bool KviKvsObject_treewidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 	connect(widget(),SIGNAL(itemEntered(QTreeWidgetItem *,int)),this,SLOT(slotOnItemEntered(QTreeWidgetItem *,int)));
 	connect(widget(),SIGNAL(itemExpanded(QTreeWidgetItem *)),this,SLOT(slotItemExpanded(QTreeWidgetItem *)));
 	connect(widget(),SIGNAL(itemCollapsed(QTreeWidgetItem *)),this,SLOT(slotItemCollapsed(QTreeWidgetItem *)));
-	//connect(widget(),SIGNAL(rightButtonClicked(QTreeWidgetItem *,const QPoint &,int)),this,SLOT(slotRightButtonClicked(QTreeWidgetItem *,const QPoint &,int)));
 	connect(widget(),SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(slotItemChanged(QTreeWidgetItem *,int)));
-
 	widget()->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(widget(),SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(slotCustomContextMenuRequested(const QPoint &)));
 
@@ -308,7 +309,7 @@ KVSO_CLASS_FUNCTION(treewidget,addColumn)
 	//col++;
 	return true;
 }
-/*
+
 KVSO_CLASS_FUNCTION(treewidget,setAcceptDrops)
 {
 	bool bEnable;
@@ -319,7 +320,7 @@ KVSO_CLASS_FUNCTION(treewidget,setAcceptDrops)
 		((QTreeWidget *)object())->setAcceptDrops(bEnable);
 	return true;
 }
-*/
+
 KVSO_CLASS_FUNCTION(treewidget,clear)
 {
 	if (widget())
@@ -629,6 +630,7 @@ void KviKvsTreeWidget::dragEnterEvent( QDragEnterEvent * e )
 		e->ignore();
 		return;
 	}
+        e->accept();
 }
 
 void KviKvsTreeWidget::dropEvent(QDropEvent * e)

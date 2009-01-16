@@ -104,22 +104,22 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_spinbox,"spinbox","widget")
 
 
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setMinValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setMaxValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setLineStep);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setSpecialValueText);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,value);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,minValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,maxValue);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,lineStep);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,specialValueText);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,setValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,setMinValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,setMaxValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,setLineStep);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,setSpecialValueText);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,value);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,minValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,maxValue);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,lineStep);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,specialValueText);
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setPrefix);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,setSuffix);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,setPrefix);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,setSuffix);
 
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_spinbox,valueChangedEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_spinbox,valueChangedEvent);
 KVSO_END_REGISTERCLASS(KviKvsObject_spinbox)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_spinbox,KviKvsObject_widget)

@@ -61,10 +61,10 @@
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbar,"toolbar","object")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbar,addSeparator)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbar,setLabel)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbar,label)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_toolbar,clear)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbar,addSeparator)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbar,setLabel)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbar,label)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbar,clear)
 KVSO_END_REGISTERCLASS(KviKvsObject_toolbar)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_toolbar,KviKvsObject_widget)

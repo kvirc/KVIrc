@@ -147,23 +147,23 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tabwidget,"tabwidget","widget")
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,addTab)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,insertTab)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,setTabToolTip)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,removeTabToolTip)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,setTabLabel)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,changeTab)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,setCurrentPage)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,currentPageIndex)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,tabLabel)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,currentTabLabel)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,addTab)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,insertTab)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,setTabToolTip)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,removeTabToolTip)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,setTabLabel)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,changeTab)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,setCurrentPage)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,currentPageIndex)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,tabLabel)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,currentTabLabel)
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,count)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,removePage)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,setTabPosition)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,count)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,removePage)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,setTabPosition)
 
 	// events
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_tabwidget,currentChangedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tabwidget,currentChangedEvent)
 
 
 

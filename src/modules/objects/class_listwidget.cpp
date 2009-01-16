@@ -107,28 +107,28 @@
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_listwidget,"listbox","widget")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,insertItem)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,insertWidgetItem)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,changeItem)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,removeItem)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,clear)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,count)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,currentText)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,currentItem)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,textAt);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,itemAt);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,itemRect);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,setCurrentItem);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,insertItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,insertWidgetItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,changeItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,removeItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,clear)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,count)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,currentText)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,currentItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,textAt);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,itemAt);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,itemRect);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setCurrentItem);
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,selectedItems)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,setSelected)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,isSelected)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,selectedItems)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setSelected)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,isSelected)
 
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,setSelectionMode);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,selectionMode);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,currentItemChangeEvent);
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_listwidget,itemEnteredEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,setSelectionMode);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,selectionMode);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,currentItemChangeEvent);
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_listwidget,itemEnteredEvent);
 
 
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_listwidget,"selectionChangeEvent")

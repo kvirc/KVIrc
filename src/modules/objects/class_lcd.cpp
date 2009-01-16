@@ -70,14 +70,14 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_lcd,"lcdnumber","widget")
 
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,displayStr)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,displayInt)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,displayDouble)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,setMode)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,setSegmentStyle)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,setNumDigits)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,setSmallDecimalPoint)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_lcd,checkOverflow)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lcd,displayStr)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lcd,displayInt)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lcd,displayDouble)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lcd,setMode)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lcd,setSegmentStyle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lcd,setNumDigits)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lcd,setSmallDecimalPoint)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lcd,checkOverflow)
 KVSO_END_REGISTERCLASS(KviKvsObject_lcd)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_lcd,KviKvsObject_widget)

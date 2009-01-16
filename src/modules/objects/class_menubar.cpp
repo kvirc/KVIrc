@@ -47,7 +47,7 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_menubar,"menubar","widget")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_menubar,insertItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_menubar,insertItem)
 KVSO_END_REGISTERCLASS(KviKvsObject_menubar)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_menubar,KviKvsObject_widget)

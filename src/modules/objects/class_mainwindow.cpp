@@ -52,9 +52,9 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_mainwindow,"mainwindow","widget")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_mainwindow,setCentralWidget)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_mainwindow,setDockEnabled)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_mainwindow,isDockEnabled)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_mainwindow,setCentralWidget)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_mainwindow,setDockEnabled)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_mainwindow,isDockEnabled)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_mainwindow)
 

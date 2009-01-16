@@ -166,16 +166,16 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_popupmenu,"popupmenu","widget")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_popupmenu,insertItem)
-	//KVSO_REGISTER_HANDLER_NEW(KviKvsObject_popupmenu,"insertWidget", functioninsertWidget)
-//	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_popupmenu,"setTitle", functionsetTitle)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_popupmenu,exec)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_popupmenu,insertSeparator)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_popupmenu,removeItem)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,insertItem)
+	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,"insertWidget", functioninsertWidget)
+//	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,"setTitle", functionsetTitle)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,exec)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,insertSeparator)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,removeItem)
 
 	// events
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_popupmenu,highlightedEvent)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_popupmenu,activatedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,highlightedEvent)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_popupmenu,activatedEvent)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_popupmenu)
 

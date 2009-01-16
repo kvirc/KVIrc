@@ -68,12 +68,12 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_progressbar,"progressbar","widget")
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,setProgress)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,setFormat)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,setTotalSteps)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,reset)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,setPercentageVisible)
-	KVSO_REGISTER_HANDLER_NEW(KviKvsObject_progressbar,percentageVisible)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_progressbar,setProgress)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_progressbar,setFormat)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_progressbar,setTotalSteps)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_progressbar,reset)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_progressbar,setPercentageVisible)
+	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_progressbar,percentageVisible)
 KVSO_END_REGISTERCLASS(KviKvsObject_progressbar)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_progressbar,KviKvsObject_widget)
