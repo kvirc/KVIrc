@@ -17,10 +17,10 @@ For further details look at http://doc.trolltech.com/qq/qq09-mac-deployment.html
 #########################
 
 1. Apple Xcode
-Any version should work as long as it supports Mac OS X 10.4 and higher. If you want the latest version, you have to register at http://developer.apple.com (it's free), download XCode and  follow the install instructions in the documentation.
+Any version should work as long as it supports Mac OS X 10.4 and higher. If you want the latest version, you have to register at http://developer.apple.com (it's free), download XCode and follow the install instructions in the documentation.
 
 2. QT-MAC
-I suggest to download and install the latest binary package from http://www.qtsoftware.com/downloads/opensource/appdev/mac-os-cpp. Hint: If you do not want do do deep debugging of Qt, you do NOT need the debugging libraries. Of course you can donwload the sources and build Qt yourself. Read the documentation and build a Framework (not the standard Unix-like library version) in that case.
+I suggest to download and install the latest binary package from http://www.qtsoftware.com/downloads/opensource/appdev/mac-os-cpp. Hint: If you do not want to do deep debugging of Qt, you do NOT need the debugging libraries. Of course you can donwload the sources and build Qt yourself. Read the documentation and build a Framework (not the standard Unix-like library version) in that case.
 
 3. GNU gettext
 Get the latest sources from your favourite GNU mirror. This step is optional but you will lose the localisation support.
@@ -38,7 +38,7 @@ Open a terminal window
 # make install
 
 4. CMake
-Get the latest version of the automatic build system  from http://www.cmake.org. Again it's up to you if you want the easily installable binary package or read the documentation and compile by yourself.
+Get the latest version of the automatic build system from http://www.cmake.org. Again it's up to you if you want the easily installable binary package or read the documentation and compile by yourself.
 
 5. Make sure that gettext and CMake are accessible from your $PATH!
 
