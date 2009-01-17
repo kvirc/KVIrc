@@ -1,167 +1,76 @@
-Thomas Kalla, 29.06.2006
+Thomas Kalla, 17.09.2009
 #########################
 
-This document contains step-by-step instructions for compiling kvirc on a MacOS X system.
-I compiled several versions of kvirc (beginning with 3.0.0 up to recent CVS) on a Powerbook G4, 1.5GHz, 512 MB RAM and MacOS X 10.3.3-9.
+This document contains step-by-step instructions for compiling KVIrc4 from SVN sources on a Mac OS X system. Due to changed prerequisites and compilation system, this compilation howto does not apply to older versions of KVirc.
 
 
 All this has worked fine several times for me. I've been using KVirc on Mac since May 2004 without any crashes & faults. Only the sound interface does not work, but I have no use for it within an IRC client. However, I cannot guarantee that this instructions will work for you as they do for me and I'm not responsible for any problems or damage you may encounter after following them. You should always understand what you are doing!
 
 
+IMPORTANT: Installing KVIrc "the usual way" like on other popular Unix-like OSes with files spread across several directories does not work and is unsupported. The provided compilation system builds a typical "Bundle" for Mac OS X. A bundle is "just" a special directory structure on Mac systems which contains the application binary, dependant libraries, plugins, modules and other resources.
 
-IMPORTANT: These instructions refer to Qt/Mac. If you want Qt/X11 which is included in Fink you are on your own. There is no support for the latter and most probably you don't get a working build. 
+For further details look at http://doc.trolltech.com/qq/qq09-mac-deployment.html and the documentation on http://developer.apple.com, please.
 
 
 #########################
-Compilation with QT-MAC
+      Prerequisites
 #########################
 
-IMPORTANT: When compiled with QT-MAC, kvirc has to be run out of a bundle! Otherwise the application won't dispatch the keyboard events correctly and will be pretty unusable for you.
-
-A bundle is "just" a special directory structure on Mac systems which contains the application binary, dependant libraries, plugins, modules and other resources. So all we have to do is to run configure with proper paths and relink the binary, libraries and modules with relative paths after the compilation.
-
-For details look at http://doc.trolltech.com/qq/qq09-mac-deployment.html and the documentation on http://developer.apple.com, please.
-
-Prerequisites:
-
-1. Apple XCode
-Get the latest version from Apple. I've been using only V1.5 for building with QT-MAC
+1. Apple Xcode
+Any version should work as long as it supports Mac OS X 10.4 and higher. If you want the latest version, you have to register at http://developer.apple.com (it's free), download XCode and  follow the install instructions in the documentation.
 
 2. QT-MAC
-Get the latest V3.*-version from Trolltech.
+I suggest to download and install the latest binary package from http://www.qtsoftware.com/downloads/opensource/appdev/mac-os-cpp. Hint: If you do not want do do deep debugging of Qt, you do NOT need the debugging libraries. Of course you can donwload the sources and build Qt yourself. Read the documentation and build a Framework (not the standard Unix-like library version) in that case.
 
 3. GNU gettext
-Get the latest sources from your favourite GNU mirror.
+Get the latest sources from your favourite GNU mirror. This step is optional but you will lose the localisation support.
 
-Prerequisites installation:
-
-1) Install XCode
-If not included on your Panther install media or if you want the latest version, you have to register at http://developer.apple.com (it's free), download XCode and  follow the install instructions in the documentation.
-
-2) Install QT-MAC
-You have to compile QT yourself. As far as I know there are no compiled binaries avaiable. Download and unpack the sources and follow the documentation.
-
-I used V3.3.4
-
-Add the following two lines to your ~/.profile file, otherwise the compilation if Qt may fail.
-
-export QTDIR=/Developer/qt-mac-free-3.3.4
-export DYLD_FALLBACK_LIBRARY_PATH=$QTDIR/lib
-
-
-Open a terminal window
-# cd /Developer
-# tar -xjf <your_path_to_the_sources>/qt-mac-free-3.3.4.tar.bz2
-# cd qt-mac-free-3.3.4
-# ./configure -thread -qt-gif -fast -no-exceptions -debug
-# make sub-tools
-
-(If you don't want to build with debug information, remove the "-debug" switch in te configure line. You may also want to change "QMAKE_CFLAGS_RELEASE = -Os" in the mkspec/macx-g++/qmake.conf file to -O2. If you want the tutorial and examples, run "make" instead of "make sub-tools")
-
-3) Install GNU gettext
-If you want non-english locales, you need GNU gettext.
 If you already installed Fink, you already have gettext so you may skip this step.
 
-I used V0.14.5
+Below, sample instruction follow for version 0.17 used by me:
 
 Open a terminal window
 # cd /Developer
-# tar -xzf <your_path_to_the_sources>/gettext-0.14.5.tar.gz
-# cd gettext-0.14.5
+# tar -xzf <your_path_to_the_sources>/gettext-0.17.tar.gz
+# cd gettext-0.17
 # ./configure
 # make
 # make install
 
+4. CMake
+Get the latest version of the automatic build system  from http://www.cmake.org. Again it's up to you if you want the easily installable binary package or read the documentation and compile by yourself.
+
+5. Make sure that gettext and CMake are accessible from your $PATH!
+
 
 #########################
-KVirc installation:
+   KVIrc installation
+#########################
 
 
-1) Get the KVirc sources:
+1) Get the KVIrc sources:
 
-IMOPRTANT: Only the CVS sources compile cleanly with QT-MAC for now!
+# svn co https://svn.kvirc.de/svn/trunk/kvirc
 
-# cvs -d:pserver:anonymous@cvs.kvirc.net:/cvs login
+2) Build! :-)
 
-You will be asked for a password: just hit return.
+Two IMPORTANT hints before you start:
 
-# cvs -z3 -d:pserver:anonymous@cvs.kvirc.net:/cvs co kvirccvs
+* If you want to use Perl (Documentation and Modules) you have to build a universal binary. This is due to Cmake overriding your architecture values by the ones found in 'ldflags' returned by calling "perl -V".
+* If you want python support than you cannot build for an older Mac OS X version, i.e. the value of $MACOSX_DEPLOYMENT_TARGET has to match the value used by Apple when they built the python package.
 
-Run autogen:
-# cd kvirccvs/kvirc
-# ./autogen.sh
+I suggest an "out-of-source" build:
 
-
-2) Run configure
-
-The application bundle will be built in the kvirc sources directory.
-Feel free to remove --enable-debug if you don't want to have a debuggable build and use addictional options like --enable-optimisation=2 or --with-big-channels.
-
-# ./configure --enable-pipes --enable-debug --exec-prefix=$(pwd)/KVirc.app/Contents/Resources --prefix=$(pwd)/KVirc.app/Contents --bindir=$(pwd)/KVirc.app/Contents/MacOS --libdir=$(pwd)/KVirc.app/Contents/Frameworks --datadir=$(pwd)//KVirc.app/Contents/Resources --disable-x-support 
-
-
-3) Run make
-
-CAUTION!!! Because of a problem with libtool you have to remove or rename the file libqt-mt.la (or libqt.la if you compiled QT without threads). It is located in $QTDIR/lib/. Otherwise the compilation will stop with a link error.
-
-# mv $QTDIR/lib/libqt-mt.la $QTDIR/lib/libqt-mt.la.bak
-
-Now run make and relax :-)
-
+# mkdir kvirc-build
+# cmake <path-to-kvirc-src-dir>
 # make
-
-(A debuggable, non-optimized build takes about 40 minutes on my PowerBook.)
-
-
-4) Run make install
-
 # make install
 
+Instead cmake you may also consider to call ccmake which provides a nice gui for the options.
 
-5) Relinking
+The result is a KVIrc.app bundle within the build directory.
 
-KVirc and its modules depend on libkvilib and libqt which are not in the dynamic linker search path by default. The paths set during the compilation are absolute paths and have to be changed to be realtive to the executable path.
-
-The following commands do this for libkvilib:
-
-# install_name_tool -id @executable_path/../Frameworks/libkvilib.4.dylib $(pwd)/KVirc.app/Contents/Frameworks/libkvilib.4.dylib
-# install_name_tool -change $(pwd)/KVirc.app/Contents/Frameworks/libkvilib.4.dylib @executable_path/../Frameworks/libkvilib.4.dylib $(pwd)/KVirc.app/Contents/MacOS/kvirc
-# find $(pwd)/KVirc.app/Contents -name '*.so' | xargs -n1 install_name_tool -change $(pwd)/KVirc.app/Contents/Frameworks/libkvilib.4.dylib @executable_path/../Frameworks/libkvilib.4.dylib
-
-Now you have to decide whether you want to include libqt within the bundle or not. This is useful if you consider to share your bundle with your friends and they don't want to compile QT themselves.
-
-
-a) You don't want to include libqt within the bundle
-
-Make sure the dynamic linker is able to find libqt. The easiest way is to make symlinks in the /usr/lib directory.
-
-# ln -sf $QTDIR/lib/libqt-mt.4.dylib /usr/lib
-# ln -sf $QTDIR/lib/libqui.1.dylib /usr/lib
-
-
-b) You want to include libqt within the bundle
-
-Copy libqt into the bundle:
-
-# cp $QTDIR/lib/libqt-mt.4.dylib $(pwd)/KVirc.app/Contents/Frameworks/
-
-Relinking commands for libqt:
-
-# install_name_tool -id @executable_path/../Frameworks/libqt-mt.4.dylib $(pwd)/KVirc.app/Contents/Frameworks/libqt-mt.4.dylib
-# install_name_tool -change libqt-mt.4.dylib @executable_path/../Frameworks/libqt-mt.4.dylib $(pwd)/KVirc.app/Contents/MacOS/kvirc
-# install_name_tool -change libqt-mt.4.dylib @executable_path/../Frameworks/libqt-mt.4.dylib $(pwd)/KVirc.app/Contents/Frameworks/libkvilib.4.dylib
-# find $(pwd)/KVirc.app/Contents -name '*.so' | xargs -n1 install_name_tool -change libqt-mt.4.dylib @executable_path/../Frameworks/libqt-mt.4.dylib
-
-6) Cleaning up
-
-The bundle is funtional but is looks better with a nice icon :-)
-Copy the icon file from the data/resources_mac directory to the resources directory and the Info.plist file to the contents directory
-
-# cp data/resources_mac/kvirc.icns $(pwd)/KVirc.app/Contents/Resources
-# cp data/resources_mac/Info.plist $(pwd)/KVirc.app/Contents
-
-
-7) Enjoy :-)
+3) Enjoy :-)
 
 Open Finder, move your bundle into a better location (e.g. /Applications), and double click to start.
 
