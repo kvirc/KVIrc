@@ -1561,7 +1561,7 @@ void KviApp::createFrame()
 
 void KviApp::destroyFrame()
 {
-	if(g_pFrame)delete g_pFrame;
+	if(g_pFrame) g_pFrame->deleteLater();
 	g_pActiveWindow = 0;
 	quit();
 }

@@ -215,7 +215,9 @@ KviFrame::~KviFrame()
 	// the really last thing to do : close all the windows
 	while(m_pWinList->first())
 		closeWindow(m_pWinList->first());
-	delete m_pWinList;
+
+	//We can't delete this here because kviwindows are using deleteLater()
+	//delete m_pWinList
 
 //	delete m_pAccel;
 	g_pFrame = 0;
@@ -1020,13 +1022,10 @@ void KviFrame::closeEvent(QCloseEvent *e)
 		}
 	}
 
-	e->ignore();
+	e->accept();
 
-	if (g_pApp)
-	{
-		// Go down clean!
-		g_pApp->quit();
-	}
+	if(g_pApp)
+		g_pApp->destroyFrame();
 }
 
 void KviFrame::resizeEvent(QResizeEvent *e)
