@@ -1765,7 +1765,7 @@ void KviServerParser::parseCtcpRequestDcc(KviCtcpMessage *msg)
 				&decoded,&(msg->pSource->nick()),
 				&(msg->pSource->user()),&(msg->pSource->host()),
 				msg->szTag.toUtf8().data(),
-				msg->msg->console()->decodeText(aux.ptr()).data());
+				msg->msg->console()->decodeText(aux).toUtf8().data());
 		}
 
 		KviModule * m = g_pModuleManager->getModule("dcc");
