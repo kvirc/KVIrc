@@ -216,8 +216,7 @@ KviFrame::~KviFrame()
 	while(m_pWinList->first())
 		closeWindow(m_pWinList->first());
 
-	//We can't delete this here because kviwindows are using deleteLater()
-	//delete m_pWinList
+	delete m_pWinList;
 
 //	delete m_pAccel;
 	g_pFrame = 0;
@@ -630,7 +629,7 @@ void KviFrame::closeWindow(KviWindow *wnd)
 		m_pMdi->destroyChild(wnd->mdiParent(),true);
 	}
 
-	wnd->deleteLater();
+	delete wnd;
 }
 
 void KviFrame::maximizeMdiChildWindow(KviMdiChild * lpC)

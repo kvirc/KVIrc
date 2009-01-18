@@ -155,41 +155,50 @@ void KviIrcContext::unregisterDataStreamMonitor(KviIrcDataStreamMonitor *m)
 
 void KviIrcContext::closeAllDeadChannels()
 {
-	if(!m_pDeadChannels)return;
-	for(KviChannel * c = m_pDeadChannels->first();c;c = m_pDeadChannels->next())
+	while(m_pDeadChannels)
 	{
-		__range_valid(c->isDeadChan());
-
-		m_pFrame->closeWindow(c);
-		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
+		KviChannel * c = m_pDeadChannels->first();
+		if(c)
+		{
+			m_pFrame->closeWindow(c);
+		} else {
+			// ops....
+			delete m_pDeadChannels;
+			m_pDeadChannels = 0;
+		}
 	}
-	delete m_pDeadChannels;
-	m_pDeadChannels = 0;
 }
 
 void KviIrcContext::closeAllDeadQueries()
 {
-	if(!m_pDeadQueries)return;
-	for(KviQuery * q = m_pDeadQueries->first();q;q = m_pDeadQueries->next())
+	while(m_pDeadQueries)
 	{
-		__range_valid(q->isDeadQuery());
-		m_pFrame->closeWindow(q);
-		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
+		KviQuery * q = m_pDeadQueries->first();
+		if(q)
+		{
+			m_pFrame->closeWindow(q);
+		} else {
+			// ops....
+			delete m_pDeadQueries;
+			m_pDeadQueries = 0;
+		}
 	}
-	delete m_pDeadQueries;
-	m_pDeadQueries = 0;
 }
 
 void KviIrcContext::closeAllContextWindows()
 {
-	if(!m_pContextWindows)return;
-	for(KviWindow * w = m_pContextWindows->first();w;w = m_pContextWindows->next())
+	while(m_pContextWindows)
 	{
-		m_pFrame->closeWindow(w);
-		QApplication::processEvents(QEventLoop::ExcludeSocketNotifiers & QEventLoop::ExcludeUserInputEvents);
+		KviWindow * w = m_pContextWindows->first();
+		if(w)
+		{
+			m_pFrame->closeWindow(w);
+		} else {
+			// ops...
+			delete m_pContextWindows;
+			m_pContextWindows = 0;
+		}
 	}
-	delete m_pContextWindows;
-	m_pContextWindows = 0;
 }
 
 KviChannel * KviIrcContext::findDeadChannel(const QString &name)
