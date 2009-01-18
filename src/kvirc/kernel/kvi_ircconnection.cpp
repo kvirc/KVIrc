@@ -1012,7 +1012,6 @@ void KviIrcConnection::useProfileData(KviIdentityProfileSet * pSet, const QStrin
 
 void KviIrcConnection::loginToIrcServer()
 {
-	debug("Loggin' in...");
 	KviServer * pServer = target()->server();
 	KviNetwork * pNet = target()->network();
 

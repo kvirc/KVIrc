@@ -803,8 +803,8 @@ KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &
 		if(KviQString::equalCIN("http://",szName,7))
 		{
 			szN = szName;
-			szP = szName;
-			urlToCachedFileName(szP);
+			urlToCachedFileName(szN);
+			g_pApp->getLocalKvircDirectory(szP,KviApp::Avatars,szN);
 		} else {
 			szN = KviFileUtils::extractFileName(szName);
 			g_pApp->getLocalKvircDirectory(szP,KviApp::Avatars,szName);

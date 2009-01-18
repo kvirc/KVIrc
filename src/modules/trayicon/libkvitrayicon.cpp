@@ -111,7 +111,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TRAYICON)),__tr2qs("Un&dock"),this,SLOT(executeInternalCommand(bool)));
 	id->setData(KVI_INTERNALCOMMAND_TRAYICON_HIDE);
 
-	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITAPP)),__tr2qs("&Quit"),g_pFrame,SLOT(close()),QKeySequence(Qt::CTRL + Qt::Key_Q));
+	id = m_pContextPopup->addAction(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITAPP)),__tr2qs("&Quit"),g_pApp,SLOT(quit()),QKeySequence(Qt::CTRL + Qt::Key_Q));
 
 	connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(fillContextPopup()));
 
