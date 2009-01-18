@@ -429,7 +429,7 @@ bool KviIconWidget::eventFilter(QObject * o,QEvent *e)
 				{
 					QDrag *drobj = new QDrag(this);
 					QMimeData *mimeData = new QMimeData;
-				
+
 					mimeData->setText(o->objectName());
 					mimeData->setImageData(*pix);
 					drobj->setMimeData(mimeData);
@@ -807,7 +807,7 @@ KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &
 			g_pApp->getLocalKvircDirectory(szP,KviApp::Avatars,szN);
 		} else {
 			szN = KviFileUtils::extractFileName(szName);
-			g_pApp->getLocalKvircDirectory(szP,KviApp::Avatars,szName);
+			g_pApp->getLocalKvircDirectory(szP,KviApp::Avatars,szN);
 		}
 	} else if(szName.isEmpty())
 	{
