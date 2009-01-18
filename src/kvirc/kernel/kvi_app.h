@@ -127,10 +127,6 @@ public:
 	};
 
 public:
-
-	//FIXME: obsolete. We can use QObject::deleteLater()
-	//void collectGarbage(QObject * garbage);
-
 	void destroyFrame();
 	void setup();                                  // THIS SHOULD BE PRIVATE! (but is accessed from kvi_main.cpp)
 

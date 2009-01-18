@@ -48,7 +48,7 @@ KviMenuBar::KviMenuBar(KviFrame * par,const char * name)
 
 	m_iNumDefaultItems = 0;
 	m_pDefaultItemId = 0;
-	
+
 	KviTalPopupMenu * pop = new KviTalPopupMenu(this,"KVIrc");
 	connect(pop,SIGNAL(aboutToShow()),this,SLOT(setupMainPopup()));
 #ifndef COMPILE_ON_MAC
@@ -126,7 +126,7 @@ void KviMenuBar::setupHelpPopup()
 	help->insertSeparator();
 
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC)),__tr2qs("About &KVIrc"));
-	
+
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_ABOUT_ABOUTKVIRC);
 	help->insertSeparator();
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HOMEPAGE)),__tr2qs("KVIrc Home&page"));
@@ -176,16 +176,16 @@ void KviMenuBar::actionTriggered(int id)
 
 void KviMenuBar::setupSettingsPopup()
 {
-	
+
 	KviTalPopupMenu * opt = (KviTalPopupMenu *)sender();
 	opt->clear();
-	
+
 	opt->insertItem(__tr2qs("Toolbars"),m_pToolbarsPopup);
 
 	int id = opt->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_STATUSBAR)),__tr2qs("Show StatusBar"),m_pFrm,SLOT(toggleStatusBar()));
 	opt->setItemChecked(id,m_pFrm->mainStatusBar());
 
-	
+
 	opt->insertSeparator();
 	// FIXME: #warning "Toggle these items on the fly ?"
 	ACTION_POPUP_ITEM(KVI_COREACTION_GENERALOPTIONS,opt)
@@ -195,7 +195,7 @@ void KviMenuBar::setupSettingsPopup()
 	ACTION_POPUP_ITEM(KVI_COREACTION_SERVEROPTIONS,opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_TOOLBAREDITOR,opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_EDITREGUSERS,opt)
-	
+
 	opt->insertSeparator();
 	opt->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)),__tr2qs("&Save Configuration"),g_pApp,SLOT(saveConfiguration()));
 }
@@ -243,12 +243,12 @@ void KviMenuBar::setupMainPopup()
 		int id = main->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TRAYICON)),__tr2qs("Show &Dock Icon"),m_pFrm,SLOT(executeInternalCommand(int)));
 		main->setItemParameter(id,KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 	}
-	
-// Qt/Mac creates a Quit item on its own
+
+// Qt/Mac creates a Quit item on its own <= this is bad
 #ifndef COMPILE_ON_MAC
 	main->insertSeparator();
 
-	main->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITAPP)),__tr2qs("&Quit"),g_pApp,SLOT(quit()));
+	main->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUITAPP)),__tr2qs("&Quit"),g_pFrame,SLOT(close()));
 #endif //COMPILE_ON_MAC
 }
 

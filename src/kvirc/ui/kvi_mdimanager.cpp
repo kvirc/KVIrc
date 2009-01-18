@@ -606,7 +606,7 @@ void KviMdiManager::toggleAutoTile()
 
 void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds,bool bHorizontal
 {
-	
+
 	//NUM WINDOWS =           1,2,3,4,5,6,7,8,9
 	static int colstable[9]={ 1,1,1,2,2,2,3,3,3 }; //num columns
 	static int rowstable[9]={ 1,2,3,2,3,3,3,3,3 }; //num rows
@@ -657,7 +657,7 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 	int curRow = 1;
 	int curCol = 1;
 	int curWin = 1;
-	
+
 	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
 
 	for(int i = 0; i < tmp.count(); i++)

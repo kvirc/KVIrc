@@ -138,7 +138,6 @@ KVIRC_API KviPointerHashTable<QString,KviWindow>  * g_pGlobalWindowDict = 0;
 KVIRC_API KviMediaManager               * g_pMediaManager               = 0;
 KVIRC_API KviSharedFilesManager         * g_pSharedFilesManager         = 0;
 KVIRC_API KviNickServRuleSet            * g_pNickServRuleSet            = 0;
-//KVIRC_API KviGarbageCollector           * g_pGarbageCollector           = 0;
 KVIRC_API KviCtcpPageDialog             * g_pCtcpPageDialog             = 0;
 KVIRC_API KviRegisteredChannelDataBase  * g_pRegisteredChannelDataBase  = 0;
 KVIRC_API KviHistoryWindowWidget        * g_pHistoryWindow              = 0;
@@ -722,13 +721,7 @@ QTextCodec * KviApp::defaultSrvCodec()
 	if(!c)debug("KviApp::defaultSrcCodec(): cannot find a suitable text codec for locale :/");
 	return c;
 }
-/*
-void KviApp::collectGarbage(QObject * garbage)
-{
-//	if(!g_pGarbageCollector)debug("Ops... no garbage collector ?");
-	g_pGarbageCollector->collect(garbage);
-}
-*/
+
 void KviApp::loadDefaultScript()
 {
 	QString cmd;
@@ -740,25 +733,6 @@ void KviApp::loadDefaultScript()
 #endif
 	KviKvsScript::run(cmd,g_pFrame->firstConsole());
 }
-
-// 07.01.2005 06:01: Got this curious gcc error while writing
-//                   the functions below...
-//                   The problem is gone by simply typing make again.
-//                   Memory/Disk transfer error ?
-//
-// if g++ -DHAVE_CONFIG_H -I. -I. -I../../../src  -I/usr/build/kvirccvs/kvirc/src/kvilib/include/ -I/usr/build/kvirccvs/kvirc/src/kvirc/include/ -I/opt/qt/include -I/usr/X11R6/include -I/usr/X11R6/include -I/opt/kde/include -D_REENTRANT -DREENTRANT  -I/usr/X11R6/include -DGLOBAL_KVIRC_DIR=\"/usr/local/share/kvirc/3.0.1.99\"   -g -MT kvi_ircconnection.o -MD -MP -MF ".deps/kvi_ircconnection.Tpo"
-//  -c -o kvi_ircconnection.o `test -f '../kernel/kvi_ircconnection.cpp' || echo './'`../kernel/kvi_ircconnection.cpp;
-// then mv -f ".deps/kvi_ircconnection.Tpo" ".deps/kvi_ircconnection.Po";
-// else rm -f ".deps/kvi_ircconnection.Tpo"; exit 1;
-// fi
-// /opt/qt/include/qstringlist.h:62: sorry, not implemented: `
-//   expr_with_file_location' not supported by dump_decl
-// /opt/qt/include/qstringlist.h: In function `<declaration error>':
-// /opt/qt/include/qstringlist.h:62: internal error: Segmentation fault
-// Please submit a full bug report,
-// with preprocessed source if appropriate.
-// See <URL:http://bugzilla.redhat.com/bugzilla/> for instructions.
-
 
 void KviApp::checkSuggestRestoreDefaultScript()
 {
