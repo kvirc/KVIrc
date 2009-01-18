@@ -82,25 +82,24 @@ void KviTalToolTip::helperDying()
 
 void KviTalToolTip::add(QWidget * widget,const QString & text)
 {
-//	QToolTip::add(widget,text);
 	widget->setToolTip(text);
 }
 
-void KviTalToolTip::remove(QWidget *)
+void KviTalToolTip::remove(QWidget *widget)
 {
 
-	//QToolTip::remove(widget);
+	widget->setToolTip("");
 }
 
 void KviTalToolTip::tip(const QRect & rect,const QString & text)
 {
 //	debug("TOOL TIP AT %d,%d",rect.topLeft().x(),rect.topLeft().y());
-	QToolTip::showText(m_pParent->mapToGlobal(rect.topLeft()),text);
+	QToolTip::showText(m_pParent->mapToGlobal(rect.bottomLeft()),text);
 }
 
 void KviTalToolTip::maybeTip(const QPoint &)
 {
-	// does nothing here.. and in Qt 4.x will even fail to work
+	// does nothing here..
 }
 
 #ifndef COMPILE_ON_WINDOWS
