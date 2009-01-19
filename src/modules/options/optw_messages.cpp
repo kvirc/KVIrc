@@ -68,9 +68,6 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 	setObjectName("privmsg_options_widget");
 	createLayout();
 
-	KviBoolSelector * b1;
-	KviBoolSelector * b2;
-
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("General","options"));
 
 	addBoolSelector(g,__tr2qs_ctx("Show message icons","options"),KviOption_boolIrcViewShowImages);
@@ -79,9 +76,20 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Nicknames","options"));
 
-	b1 = addBoolSelector(g,__tr2qs_ctx("\"Smart\" nickname colors","options"),KviOption_boolColorNicks);
-	b2 = addBoolSelector(g,__tr2qs_ctx("Use same colors as in the userlist","options"),KviOption_boolUseUserListColorsAsNickColors,!KVI_OPTION_BOOL(KviOption_boolColorNicks));
-	connect(b1,SIGNAL(toggled(bool)),b2,SLOT(setNotEnabled(bool)));
+	m_pUseSmartColorSelector = addBoolSelector(g,__tr2qs_ctx("\"Smart\" nickname colors","options"),KviOption_boolColorNicks);
+
+	KviTalHBox * hb = new KviTalHBox(g);
+	hb->setSpacing(4);
+	m_pSpecialSmartColorSelector = addBoolSelector(hb,__tr2qs_ctx("Use specified colors for own nick:","options"),KviOption_boolUseSpecifiedSmartColorForOwnNick,KVI_OPTION_BOOL(KviOption_boolColorNicks));
+
+	m_pSmartColorSelector = addMircTextColorSelector(hb,"",KviOption_uintUserIrcViewOwnForeground,KviOption_uintUserIrcViewOwnBackground,KVI_OPTION_BOOL(KviOption_boolColorNicks) && KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick));
+
+	connect(m_pSpecialSmartColorSelector,SIGNAL(toggled(bool)),this,SLOT(enableDisableSmartColorSelector(bool)));
+	connect(m_pUseSmartColorSelector,SIGNAL(toggled(bool)),m_pSpecialSmartColorSelector,SLOT(setEnabled(bool)));
+
+	KviBoolSelector * b2 = addBoolSelector(g,__tr2qs_ctx("Use same colors as in the userlist","options"),KviOption_boolUseUserListColorsAsNickColors,!KVI_OPTION_BOOL(KviOption_boolColorNicks));
+	connect(m_pUseSmartColorSelector,SIGNAL(toggled(bool)),b2,SLOT(setNotEnabled(bool)));
+
 	addBoolSelector(g,__tr2qs_ctx("Show nicknames in bold","options"),KviOption_boolBoldedNicks);
 	addBoolSelector(g,__tr2qs_ctx("Show user and host","options"),KviOption_boolShowUserAndHostInPrivmsgView);
 	addBoolSelector(g,__tr2qs_ctx("Show channel mode prefix","options"),KviOption_boolShowChannelUserFlagInPrivmsgView);
@@ -109,6 +117,11 @@ KviPrivmsgOptionsWidget::KviPrivmsgOptionsWidget(QWidget * parent)
 		addStringSelector(vb,__tr2qs_ctx("Postfix:","options"),KviOption_stringExtendedPrivmsgPostfix,KVI_OPTION_BOOL(KviOption_boolUseExtendedPrivmsgView)),
 		SLOT(setEnabled(bool)));
 	addRowSpacer(0,3,0,3);
+}
+
+void KviPrivmsgOptionsWidget::enableDisableSmartColorSelector(bool)
+{
+	m_pSmartColorSelector->setEnabled(m_pUseSmartColorSelector->isChecked() && m_pUseSmartColorSelector->isChecked());
 }
 
 KviPrivmsgOptionsWidget::~KviPrivmsgOptionsWidget()

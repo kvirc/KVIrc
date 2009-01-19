@@ -753,17 +753,34 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 
 	if(KVI_OPTION_BOOL(KviOption_boolColorNicks))
 	{
-		int sum = 0;
-		int i = nick.length();
-		const QChar * aux = nick.unicode();
-		// FIXME: Shouldn't this be case insensitive ?
-		while(i > 0)
+		if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick) && \
+		(QString::compare(nick,connection()->userInfo()->nickName(),Qt::CaseSensitive)==0))
 		{
-			sum += aux->unicode();
-			aux++;
-			i--;
+			QString szOwnColor;
+			int back = KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnBackground);
+			if(back==KVI_TRANSPARENT)
+			{
+				KviQString::sprintf(szOwnColor,"%d", \
+					KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground));
+			} else {
+				KviQString::sprintf(szOwnColor,"%d,%d", \
+					KVI_OPTION_UINT(KviOption_uintUserIrcViewOwnForeground), \
+					back);
+			}
+			szNick.prepend(szOwnColor);
+		} else {
+			int sum = 0;
+			int i = nick.length();
+			const QChar * aux = nick.unicode();
+			// FIXME: Shouldn't this be case insensitive ?
+			while(i > 0)
+			{
+				sum += aux->unicode();
+				aux++;
+				i--;
+			}
+			szNick.prepend(g_nickColors[sum % KVI_NUM_NICK_COLORS]);
 		}
-		szNick.prepend(g_nickColors[sum % KVI_NUM_NICK_COLORS]);
 		szNick.prepend(KVI_TEXT_COLOR);
 		szNick.append(KVI_TEXT_COLOR);
 	}

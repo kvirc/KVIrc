@@ -63,6 +63,12 @@ class KviPrivmsgOptionsWidget : public KviOptionsWidget
 public:
 	KviPrivmsgOptionsWidget(QWidget * parent);
 	~KviPrivmsgOptionsWidget();
+public:
+	KviBoolSelector * m_pUseSmartColorSelector;
+	KviBoolSelector * m_pSpecialSmartColorSelector;
+	KviMircTextColorSelector * m_pSmartColorSelector;
+protected slots:
+	void enableDisableSmartColorSelector(bool);
 };
 
 #define KVI_OPTIONS_WIDGET_ICON_KviTimestampOptionsWidget KVI_SMALLICON_TIME

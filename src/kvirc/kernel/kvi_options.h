@@ -320,8 +320,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseStartTlsIfAvailable 226
 #define KviOption_boolPasteLastLogOnChannelJoin 227                /* channel */
 #define KviOption_boolPasteLastLogOnQueryJoin 228                  /* query */
-
-#define KVI_NUM_BOOL_OPTIONS 229
+#define KviOption_boolUseSpecifiedSmartColorForOwnNick 229 /* interface::ircview */
+#define KVI_NUM_BOOL_OPTIONS 230
 
 
 
@@ -471,7 +471,6 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_colorUserListViewAwayForeground 54                              /* look & feel::interface look::userlist */
 #define KviOption_colorUserListViewOwnForeground 55                              /* look & feel::interface look::userlist */
 #define KviOption_colorUserListViewIrcOpForeground 56                                /* look & feel::interface look::userlist */
-
 #define KVI_NUM_COLOR_OPTIONS 57
 
 
@@ -577,8 +576,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintLinesToPasteOnQueryJoin 71                  /* query */
 #define KviOption_uintDaysIntervalToPasteOnQueryJoin 72           /* query */
 #define KviOption_uintSpacesToExpandTabulationInput 73           /* number of spaces used in tabulation expansion in the inputbar */
-
-#define KVI_NUM_UINT_OPTIONS 74
+#define KviOption_uintUserIrcViewOwnForeground 74                /* look & feel::ircview */
+#define KviOption_uintUserIrcViewOwnBackground 75                /* look & feel::ircview */
+#define KVI_NUM_UINT_OPTIONS 76
 
 namespace KviIdentdOutputMode {
 	enum Mode {

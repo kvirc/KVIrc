@@ -607,7 +607,7 @@ KviMircTextColorSelector::KviMircTextColorSelector(QWidget * par,const QString &
 	{
 		QPixmap tmp(120,16);
 		tmp.fill(KVI_OPTION_MIRCCOLOR(i));
-		int id = m_pForePopup->insertItem(tmp,QString("x"));
+		int id = m_pBackPopup->insertItem(tmp,QString("x"));
 		m_pBackPopup->setItemParameter(id,i);
 	}
 	m_pContextPopup->insertItem(__tr2qs("Background"),m_pBackPopup);
