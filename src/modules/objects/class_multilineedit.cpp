@@ -150,8 +150,6 @@ static int mod_cod[] = {
 		Zooms in on the text by making the base font size range points larger.
 		!fn: $zoomOut(<zoom_range:integer>)
 		Zooms out on the text by making the base font size range points smaller.
-		!fn: $zoomTo(<zoom_size:integer>)
-		Zooms the text by making the base font size <size> points.
 		!fn: $undo()
 		Undoes the last operation.
 		!fn: $redo()
@@ -160,8 +158,6 @@ static int mod_cod[] = {
 		Deletes all the text in the multiline edit.
 		!fn: $setUndoRedoEnabled(<bUndoRedo:boolean>)
 		Sets whether undo/redo is enabled to the bool value.
-		!fn: $setUndoDepth(<undo_depth:integer>)
-		Sets the depth of the undo history to x.
 		!fn: <boolean> $isUndoRedoEnabled()
 		Returns 1 (TRUE) if undo/redo is enabled; otherwise returns 0 (FALSE).
 		!fn: <integer> $undoDepth()
@@ -249,24 +245,28 @@ static int mod_cod[] = {
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_textedit,"multilineedit","widget")
 KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 
-	/*
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"textLine", functionTextLine)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertLine", functionInsertLine)
+/*	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertLine", functionInsertLine)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"removeLine", functionRemoveLine)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertAt", functionInsertAt)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"numLines", functionNumLines)
+	
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setCursorPosition", functionSetCursorPosition)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"cursorPosition", functionCursorPosition)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"atBeginning", functionAtBeginning)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"atEnd", functionAtEnd)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setWordWrap", functionSetWordWrap)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"wordWrap", functionWordWrap)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"text", functionText)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"length", functionLength);
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setMaxLines", functionSetMaxLines)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"maxLines", functionMaxLines)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insert", functionInsert)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"indent", functionundoDepth)
+
+	
 	*/
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"atEnd", functionAtEnd)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"numLines", functionNumLines)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"atBeginning", functionAtBeginning)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"cursorPosition", functionCursorPosition)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"text", functionText)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insert", functionInsert)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"maxLines", functionMaxLines)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setMaxLines", functionSetMaxLines)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"append", functionAppend)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"copy", functionCopy)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"cut", functionCut)
@@ -275,39 +275,35 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	//->Set Style
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setFamily" , functionsetFamily)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setItalic", functionsetItalic)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setBold", functionsetBold)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setBold", functionsetBold)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setUnderline", functionsetUnderline)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"italic", functionitalic)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"bold", functionbold)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"bold", functionbold)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"underline", functionunderline)
 
 	//->Zoom In, Out, To
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomIn", functionzoomIn)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomOut", functionzoomOut)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomTo", functionzoomTo)
-
+	
 	//->Undo & Redo
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"undo", functionundo)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"redo", functionredo)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"del", functiondel)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"clear", functionclear)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setUndoRedoEnabled", functionsetUndoRedoEnabled)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setUndoDepth", functionsetUndoDepth)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"isUndoRedoEnabled", functionsetUndoRedoEnabled)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"undoDepth", functionundoDepth)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"indent", functionundoDepth)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"isUndoAvailable", functionisUndoAvailable)
-	//KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"isUndoRedoAvailable", functionisRedoAvailable)
+
+
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"isUndoRedoEnabled", functionisUndoRedoEnabled)
 
 	//->Text color & others
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setText", functionsetText)
 	/*
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setPointSize", functionsetPointSize)
+	
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setColor", functionsetColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setModified" , functionsetModified)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setLinkUnderline" , functionsetLinkUnderline)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setOverwriteMode" , functionsetOverwriteMode)
 	*/
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setPointSize", functionsetPointSize)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setReadOnly",functionSetReadOnly)
 	/*
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setTextFormat" , functionsetTextFormat)
@@ -324,13 +320,15 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"paragraphLength" , functionparagraphLength)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertParagraph" , functioninsertParagraph)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"removeParagraph" , functionremoveParagraph)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"lines" , functionlines)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"lineOfChar" , functionlineOfChar)
+	
+	
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"linesOfParagraph" , functionlinesOfParagraph)
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"selectAll" , functionselectAll)
+	
 	*/
-
-	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertTable",functionInsertTable)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"lineOfChar" , functionlineOfChar)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"lines" ,functionlines)
+	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"selectAll" ,functionselectAll)
+//	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertTable",functionInsertTable)
 KVSO_END_REGISTERCLASS(KviKvsObject_textedit)
 
 
@@ -396,7 +394,7 @@ bool KviKvsObject_textedit::functionTextLine(KviKvsObjectFunctionCall * c)
 		KVSO_PARAMETER("line",KVS_PT_INT,0,iBlock)
 	KVSO_PARAMETERS_END(c)
 	if(!widget())return true;
-	if(iBlock > ((QTextEdit *)widget())->document()->blockCount() || iBlock < 0) c->warning(__tr2qs("No such line number"));
+	if(iBlock > ((QTextEdit *)widget())->document()->blockCount() || iBlock < 0) c->warning(__tr2qs_ctx("No such line '%d'","objects"),&iBlock);
 	else
 		c->returnValue()->setString(((QTextEdit *)widget())->document()->findBlockByNumber(iBlock).text());
 
@@ -498,17 +496,16 @@ bool KviKvsObject_textedit::functionSetWordWrap(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("word_wrap",KVS_PT_STRING,0,szWrap)
 	KVSO_PARAMETERS_END(c)
-	/*
+
 	if(KviQString::equalCI(szWrap,"NoWrap"))
-		((QTextEdit *)widget())->setWordWrap(QTextEdit::NoWrap);
+		((QTextEdit *)widget())->setLineWrapColumnOrWidth(QTextEdit::NoWrap);
 	else if(KviQString::equalCI(szWrap,"WidgetWidth"))
-		((QTextEdit *)widget())->setWordWrap(QTextEdit::WidgetWidth);
+		((QTextEdit *)widget())->setLineWrapColumnOrWidth(QTextEdit::WidgetWidth);
 	else if(KviQString::equalCI(szWrap,"FixedPixelWidth"))
-		((QTextEdit *)widget())->setWordWrap(QTextEdit::FixedPixelWidth);
+		((QTextEdit *)widget())->setLineWrapColumnOrWidth(QTextEdit::FixedPixelWidth);
 	else if(KviQString::equalCI(szWrap,"FixedColumnWidth"))
-		((QTextEdit *)widget())->setWordWrap(QTextEdit::FixedColumnWidth);
+		((QTextEdit *)widget())->setLineWrapColumnOrWidth(QTextEdit::FixedColumnWidth);
 	else c->warning(__tr2qs("Unknown word wrap '%Q'"),&szWrap);
-	*/
 	return true;
 }
 
@@ -519,17 +516,17 @@ bool KviKvsObject_textedit::functionsetWrapPolicy(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("wrap_policy",KVS_PT_STRING,0,szPolicy)
 	KVSO_PARAMETERS_END(c)
-	/*
-	if(KviQString::equalCI(szPolicy,"AtWhiteSpace)"))
-		((QTextEdit *)widget())->setWrapPolicy(QTextEdit::AtWhiteSpace);
+
+/*	if(KviQString::equalCI(szPolicy,"AtWhiteSpace)"))
+		((QTextEdit *)widget())->setWordWrapMode(QTextEdit::AtWhiteSpace);
 	else if(KviQString::equalCI(szPolicy,"Anywhere"))
-		((QTextEdit *)widget())->setWrapPolicy(QTextEdit::Anywhere);
+		((QTextEdit *)widget())->setWordWrapMode(QTextEdit::Anywhere);
 	else if(KviQString::equalCI(szPolicy,"AtWordBoundary"))
-		((QTextEdit *)widget())->setWrapPolicy(QTextEdit::AtWordBoundary);
-	else if(KviQString::equalCI(szPolicy,"AtWordOrDocumentBoundary"))
-		((QTextEdit *)widget())->setWrapPolicy(QTextEdit::AtWordOrDocumentBoundary);
+		((QTextEdit *)widget())->setWordWrapMode(QTextOption::WordWrap);
+	else if(KviQString::equalCI(szPolicy,"AtWordBoundaryOrAnywhere"))
+		((QTextEdit *)widget())->setWordWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
 	else c->warning(__tr2qs("Unknown wrap policy'%Q'"),&szPolicy);
-	*/
+*/	
 	return true;
 }
 
@@ -698,18 +695,7 @@ bool KviKvsObject_textedit::functionzoomOut(KviKvsObjectFunctionCall * c)
 	return true;
 }
 
-/*
-bool KviKvsObject_textedit::functionzoomTo(KviKvsObjectFunctionCall * c)
-{
-	kvs_int_t iZoom;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("zoom_size",KVS_PT_INT,0,iZoom)
-	KVSO_PARAMETERS_END(c)
-	if (widget())
-		((QTextEdit *)object())->zoomTo(iZoom);
-	return true;
-}
-*/
+
 
 //-> Undo & Redo functions
 bool KviKvsObject_textedit::functionundo(KviKvsObjectFunctionCall *)
@@ -767,39 +753,6 @@ bool KviKvsObject_textedit::functionisUndoRedoEnabled(KviKvsObjectFunctionCall *
 	return true;
 }
 
-/*
-bool KviKvsObject_textedit::functionisUndoAvailable(KviKvsObjectFunctionCall * c)
-{
-	if(widget())
-		c->returnValue()->setBoolean(((QTextEdit *)widget())->isUndoAvailable());
-	return true;
-}
-
-bool KviKvsObject_textedit::functionisRedoAvailable(KviKvsObjectFunctionCall * c)
-{
-	if(widget())
-		c->returnValue()->setBoolean(((QTextEdit *)widget())->isRedoAvailable());
-	return true;
-}
-
-bool KviKvsObject_textedit::functionsetUndoDepth(KviKvsObjectFunctionCall * c)
-{
-	kvs_int_t iDepth;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("undo_depth",KVS_PT_UNSIGNEDINTEGER,0,iDepth)
-	KVSO_PARAMETERS_END(c)
-	if (widget())
-		((QTextEdit *)object())->setUndoDepth(iDepth);
-	return true;
-}
-
-bool KviKvsObject_textedit::functionundoDepth(KviKvsObjectFunctionCall * c)
-{
-	if(widget())
-		c->returnValue()->setInteger(((QTextEdit *)widget())->undoDepth());
-	return true;
-}
-*/
 
 //-->Text & Color & Family
 // Findme
@@ -909,12 +862,12 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 
 bool KviKvsObject_textedit::functionsetPointSize(KviKvsObjectFunctionCall * c)
 {
-	kvs_uint_t uPointSize;
+	kvs_real_t dPointSize;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("point_size",KVS_PT_UNSIGNEDINTEGER,0,uPointSize)
+		KVSO_PARAMETER("point_size",KVS_PT_REAL,0,dPointSize)
 	KVSO_PARAMETERS_END(c)
 	if (widget())
-		((QTextEdit *)widget())->setFontPointSize(uPointSize);
+		((QTextEdit *)widget())->setFontPointSize(dPointSize);
 	return true;
 }
 

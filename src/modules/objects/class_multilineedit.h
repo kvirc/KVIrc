@@ -68,16 +68,13 @@ protected:
 	bool functionunderline(KviKvsObjectFunctionCall *c);
 	bool functionzoomIn(KviKvsObjectFunctionCall *c);
     bool functionzoomOut(KviKvsObjectFunctionCall *c);
-    bool functionzoomTo(KviKvsObjectFunctionCall *c);
 	bool functionundo(KviKvsObjectFunctionCall *c);
     bool functionredo(KviKvsObjectFunctionCall *c);
     bool functiondel(KviKvsObjectFunctionCall *c);
     bool functionclear(KviKvsObjectFunctionCall *c);
     bool functionindent(KviKvsObjectFunctionCall *c);
     bool functionsetUndoRedoEnabled(KviKvsObjectFunctionCall *c);
-    bool functionsetUndoDepth(KviKvsObjectFunctionCall *c);
     bool functionisUndoRedoEnabled(KviKvsObjectFunctionCall *c);
-    bool functionundoDepth(KviKvsObjectFunctionCall *c);
 	
 	bool functionsetText(KviKvsObjectFunctionCall *c);
     bool functionsetHtmlText(KviKvsObjectFunctionCall *c);
