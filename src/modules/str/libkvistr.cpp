@@ -956,7 +956,12 @@ static bool str_kvs_fnc_stripright(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
 	KVSM_PARAMETERS_END(c)
 	int iIdx = 0;
-	while(szString.at(szString.length() - (iIdx+1)).isSpace()) iIdx++;
+        if (szString.isEmpty()) return true;
+        while(szString.at(szString.length() - (iIdx+1)).isSpace())
+        {
+            iIdx++;
+            if (szString.length() - (iIdx+1)<0) break;
+        }
 	if(iIdx > 0)szString.remove(szString.length() - iIdx,iIdx);
 	c->returnValue()->setString(szString);
 	return true;
