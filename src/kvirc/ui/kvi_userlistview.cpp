@@ -1657,11 +1657,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 	if(r.right() > iWidth)
 		r.setRight(iWidth);
 
-	//debug("PAINT EVENT %d,%d,%d,%d",r.left(),r.top(),r.width(),r.height());
-
 	QPainter p(this);
-	SET_ANTI_ALIASING(p);
-	p.setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
 
 	QFontMetrics fm(p.fontMetrics());
 
@@ -1669,16 +1665,18 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 	if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapToGlobal(QPoint(r.left(),r.top()));
-		p.drawTiledPixmap(r.left(),r.top(),r.width(),r.height(),*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
+		p.drawTiledPixmap(r.left(),r.top(),width(),r.height(),*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
 	} else {
 #endif
 		QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapUserListViewBackground).pixmap();
-		p.fillRect(r.left(),r.top(),r.width(),r.height(),KVI_OPTION_COLOR(KviOption_colorUserListViewBackground));
+		p.fillRect(r.left(),r.top(),width(),r.height(),KVI_OPTION_COLOR(KviOption_colorUserListViewBackground));
 		if(pPix)
 			KviPixmapUtils::drawPixmapWithPainter(&p,pPix,KVI_OPTION_UINT(KviOption_uintUserListPixmapAlign),r,width(),height());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
+
+	p.setClipRect(r);
 
 	KviUserListEntry * pEntry = m_pListView->m_pTopItem;
 
@@ -1705,7 +1703,7 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 			{
 				QColor col = KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionBackground);
 				col.setAlpha(150);
-				p.fillRect(0,iTheY,iWidth,pEntry->m_iHeight,col);
+				p.fillRect(0,iTheY,width(),pEntry->m_iHeight,col);
 				pClrFore = &(KVI_OPTION_COLOR(KviOption_colorUserListViewSelectionForeground));
 			} else if(KVI_OPTION_BOOL(KviOption_boolUseDifferentColorForOwnNick) && m_pListView->m_pKviWindow->connection())
 			{
