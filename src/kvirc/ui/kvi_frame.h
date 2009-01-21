@@ -107,7 +107,7 @@ protected:
 	KviIrcContext                         * m_pActiveContext;                // the context of the m_pActiveWindow
 	// other
 	KviDockExtension                      * m_pDockExtension;                // the frame's dock extension: this should be prolly moved ?
-	//KviAccel                              * m_pAccel;                        // the global accelelrator
+	KviAccel                              * m_pAccel;                        // the global accelelrator
 public:
 	// the mdi manager: handles mdi children
 	KviMdiManager * mdiManager(){ return m_pMdi; };

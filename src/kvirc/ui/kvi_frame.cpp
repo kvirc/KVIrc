@@ -158,7 +158,7 @@ KviFrame::KviFrame()
 	applyOptions();
 
 
-	//m_pAccel = new KviAccel(this);
+	m_pAccel = new KviAccel(this);
 
 	installAccelerators(this);
 
@@ -425,8 +425,6 @@ KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 
 void KviFrame::accelActivated()
 {
-	//KviAccel * acc = (KviAccel *)sender();
-
 	int keys = (int)(((QShortcut *)sender())->key());
 
 	switch(keys)
