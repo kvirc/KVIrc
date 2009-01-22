@@ -319,7 +319,7 @@ protected slots:
 	* \param pcFile The file dropped in the query
 	* \return void
 	*/
-	void slotDndEvents(const char * pcFile);
+        void slotDndEvents(const QString &pcFile);
 };
 
 #endif //_KVI_CHANNEL_H_

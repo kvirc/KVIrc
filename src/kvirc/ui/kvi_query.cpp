@@ -106,7 +106,7 @@ KviQuery::KviQuery(KviFrame * lpFrm, KviConsole * lpConsole, const QString & szN
 	// FIXME: #warning "Maybe tell the user all that we know about the remote szEnd(s)....channels..."
 
 	m_pIrcView->enableDnd(TRUE);
-	connect(m_pIrcView,SIGNAL(fileDropped(const char *)),this,SLOT(slotDndEvents(const char *)));
+        connect(m_pIrcView,SIGNAL(fileDropped(const QString &)),this,SLOT(slotDndEvents(const QString &)));
 
 	updateCaption();
 }
@@ -269,9 +269,9 @@ QString KviQuery::getInfoLabelText()
 	return szTmp;
 }
 
-void KviQuery::slotDndEvents(const char * pcFile)
+void KviQuery::slotDndEvents(const QString &pcFile)
 {
-	KVS_TRIGGER_EVENT_1(KviEvent_OnQueryFileDropped,this,QString(pcFile));
+        KVS_TRIGGER_EVENT_1(KviEvent_OnQueryFileDropped,this,pcFile);
 }
 
 void KviQuery::triggerCreationEvents()
