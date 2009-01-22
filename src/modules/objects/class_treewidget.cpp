@@ -108,6 +108,9 @@
                 !fn: <listviewitem> $firstChild()
                 Returns the first child [class]listviewitem[/class] of this listview or $null if there are no items at all.
 
+                !fn: setAcceptDrops(<benabled:boolean>)
+                If <bEnabled> is true, user can drop files for this listview. The default value is true.
+
                 !fn: $clickEvent(<item:object>)
                 This function is called when the user clicks in the list view.
                 In its argument the [class]listviewitem[/class] object clicked or 0 if the user didn't click on an item.[br]
