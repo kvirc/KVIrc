@@ -93,6 +93,7 @@ protected:
 protected:
 	void dropEvent(QDropEvent * e);
 	void dragEnterEvent(QDragEnterEvent * e);
+        void dragMoveEvent( QDragMoveEvent * e );
 };
 
 #endif // _CLASS_TREEWIDGET_H_

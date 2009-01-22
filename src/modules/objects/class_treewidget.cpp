@@ -623,14 +623,17 @@ KviKvsTreeWidget::~KviKvsTreeWidget()
 
 void KviKvsTreeWidget::dragEnterEvent( QDragEnterEvent * e )
 {
-	debug("Drag enter event");
-	if(!e->mimeData()->hasUrls())
+        if(!e->mimeData()->hasUrls())
 	{
-		debug("Ignore drag");
-		e->ignore();
+            e->ignore();
 		return;
 	}
-        e->accept();
+        e->acceptProposedAction();
+}
+
+void KviKvsTreeWidget::dragMoveEvent( QDragMoveEvent * e )
+{
+        // ?#!
 }
 
 void KviKvsTreeWidget::dropEvent(QDropEvent * e)
@@ -652,8 +655,8 @@ void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 					if(path[0] != '/')path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				#endif
-			//	QTreeWidgetItem *i = itemAt( contentsToViewport(e->pos()) );
-			//	m_pParentScript->fileDropped(path,i);
+                                QTreeWidgetItem *i = itemAt( e->pos() );
+                                m_pParentScript->fileDropped(path,i);
 			}
 		}
 	}
