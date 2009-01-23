@@ -157,10 +157,7 @@ KviFrame::KviFrame()
 
 	applyOptions();
 
-
-	m_pAccel = new KviAccel(this);
-
-	installAccelerators(this);
+	installAccelerators();
 
 	layout()->setSizeConstraint(QLayout::SetNoConstraint);
 	connect(this, SIGNAL(signalMaximizeMdiChildWindow(KviMdiChild*)), this, SLOT(maximizeMdiChildWindow(KviMdiChild*)), Qt::QueuedConnection);
@@ -218,24 +215,7 @@ KviFrame::~KviFrame()
 
 	delete m_pWinList;
 
-//	delete m_pAccel;
 	g_pFrame = 0;
-}
-
-int KviFrame::registerAccelerator(const QString &szKeySequence,QObject *,const char *)
-{
-	QShortcut *sc=new QShortcut(QKeySequence(szKeySequence),this);
-	connect(sc,SIGNAL(activated()),this,SLOT(accelActivated()));
-	return sc->id();
-	//int id = m_pAccel->insertItem(szKeySequence);
-	//m_pAccel->connectItem(id,recv,slot);
-	//return id;
-}
-
-void KviFrame::unregisterAccelerator(int id)
-{
-	//m_pAccel->removeItem(id);
-	releaseShortcut(id);
 }
 
 void KviFrame::registerModuleExtensionToolBar(KviMexToolBar * t)
@@ -349,29 +329,17 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		</example>
 */
 
-KviAccel * KviFrame::installAccelerators(QWidget * wnd)
+void KviFrame::installAccelerators()
 {
+	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT) , this, SLOT(switchToPrevWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT), this, SLOT(switchToNextWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Up + Qt::CTRL), this, SLOT(maximizeWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Down + Qt::CTRL), this, SLOT(minimizeWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Escape +Qt::CTRL), this, SLOT(minimizeWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT + Qt::SHIFT), this, SLOT(switchToPrevWindowInContext()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT + Qt::SHIFT), this, SLOT(switchToNextWindowInContext()), 0, Qt::ApplicationShortcut);
 
-
-	QWidget * pParent = wnd ? (QWidget *)wnd : (QWidget *)this;
-	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT),pParent,SLOT(switchToPrevWindow()));
-	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT),pParent,SLOT(switchToNextWindow()));
-	new QShortcut(QKeySequence(Qt::Key_Up + Qt::CTRL),pParent,SLOT(maximizeWindow()));
-	new QShortcut(QKeySequence(Qt::Key_Down + Qt::CTRL),pParent,SLOT(minimizeWindow()));
-	new QShortcut(QKeySequence(Qt::Key_Escape +Qt::CTRL),pParent,SLOT(minimizeWindow()));
-	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT + Qt::SHIFT),pParent,SLOT(switchToPrevWindowInContext()));
-	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT + Qt::SHIFT),pParent,SLOT(switchToNextWindowInContext()));
-
-	KviAccel *ac = new KviAccel(pParent);
 	static int accel_table[] = {
-	/*	Qt::Key_Left + Qt::ALT ,    // prev window
-		Qt::Key_Right + Qt::ALT ,   // next window
-		Qt::Key_Up + Qt::CTRL ,      // maximize window
-		Qt::Key_Down + Qt::CTRL ,    // minimize window
-		Qt::Key_Escape +Qt::CTRL,         // minimize window
-		Qt::Key_Left + Qt::ALT + Qt::SHIFT ,  // prev window in context
-		Qt::Key_Right + Qt::ALT + Qt::SHIFT,  // next window in context
-*/
 		Qt::Key_F4 + Qt::CTRL ,     // close current window
 		Qt::Key_1 + Qt::CTRL ,       // script accels...
 		Qt::Key_2 + Qt::CTRL ,
@@ -395,97 +363,30 @@ KviAccel * KviFrame::installAccelerators(QWidget * wnd)
 		Qt::Key_F10 ,
 		Qt::Key_F11 ,
 		Qt::Key_F12 ,
-/*		Qt::Key_F1 + Qt::SHIFT ,       // window select...
-		Qt::Key_F2 + Qt::SHIFT ,
-		Qt::Key_F3 + Qt::SHIFT ,
-		Qt::Key_F4 + Qt::SHIFT ,
-		Qt::Key_F5 + Qt::SHIFT ,
-		Qt::Key_F6 + Qt::SHIFT ,
-		Qt::Key_F7 + Qt::SHIFT ,
-		Qt::Key_F8 + Qt::SHIFT ,
-		Qt::Key_F9 + Qt::SHIFT ,
-		Qt::Key_F10 + Qt::SHIFT ,
-		Qt::Key_F11 + Qt::SHIFT ,
-		Qt::Key_F12 + Qt::SHIFT ,*/
 		0
 	};
 
-	int i=0;
-	int keys;
+	int i=0, keys=0;
 	while((keys = accel_table[i]))
 	{
-		new QShortcut(keys,pParent,SLOT(accelActivated()));
-	//	ac->insertItem(keys);
+		new QShortcut(keys, this, SLOT(accelActivated()), 0, Qt::ApplicationShortcut);
 		i++;
 	}
-
-//	connect(ac,SIGNAL(activated(int)),this,SLOT(accelActivated(int)));
-	return ac;
 }
 
 void KviFrame::accelActivated()
 {
 	int keys = (int)(((QShortcut *)sender())->key());
+	printf("accel activated %s\n",(((QShortcut *)sender())->key()).toString().toUtf8().data());
 
 	switch(keys)
 	{
-		//case (Qt::Key_Left+Qt::ALT): switchToPrevWindow(); break;
-		//case (Qt::Key_Right+Qt::ALT): switchToNextWindow(); break;
-		//case (Qt::Key_Up+Qt::CTRL): maximizeWindow(); break;
-		//case (Qt::Key_Escape+Qt::CTRL):
-		//case (Qt::Key_Down+Qt::CTRL): minimizeWindow(); break;
-		//case (Qt::Key_Left+Qt::ALT+Qt::SHIFT): switchToPrevWindowInContext(); break;
-		//case (Qt::Key_Right+Qt::ALT+Qt::SHIFT): switchToNextWindowInContext(); break;
-		case (Qt::Key_F4+Qt::CTRL):	if(g_pActiveWindow)g_pActiveWindow->close(); break;
-// 		case (Qt::Key_F1): g_pApp->contextSensitiveHelp(); break;
-/*		case(Qt::Key_F1 + SHIFT):
-			item = m_pWindowList->item(0);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F2 + SHIFT):
-			item = m_pWindowList->item(1);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F3 + SHIFT):
-			item = m_pWindowList->item(2);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F4 + SHIFT):
-			item = m_pWindowList->item(3);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F5 + SHIFT):
-			item = m_pWindowList->item(4);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F6 + SHIFT):
-			item = m_pWindowList->item(5);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F7 + SHIFT):
-			item = m_pWindowList->item(6);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F8 + SHIFT):
-			item = m_pWindowList->item(7);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F9 + SHIFT):
-			item = m_pWindowList->item(8);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F10 + SHIFT):
-			item = m_pWindowList->item(9);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F11 + SHIFT):
-			item = m_pWindowList->item(10);
-			if(item) setActiveWindow(item->window());
-			break;
-		case(Qt::Key_F12 + SHIFT):
-			item = m_pWindowList->item(11);
-			if(item) setActiveWindow(item->window());
-			break;*/
+		case (Qt::Key_F4+Qt::CTRL):
+		{
+			if(g_pActiveWindow)
+				g_pActiveWindow->close();
+		}
+		break;
 		default:
 		{
 			KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed,g_pActiveWindow,(QString)(((QShortcut *)sender())->key()));

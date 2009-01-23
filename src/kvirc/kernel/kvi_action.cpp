@@ -65,16 +65,18 @@ bool KviAction::isKviUserActionNeverOverrideThis()
 void KviAction::registerAccelerator()
 {
 	if(!m_szKeySequence.isEmpty())
-		m_iAccelId = g_pFrame->registerAccelerator(m_szKeySequence,this,SLOT(activate()));
+	{
+		m_pAccel = new QShortcut(m_szKeySequence,g_pFrame,SLOT(accelActivated()),SLOT(accelActivated()));
+	}
 }
 
 void KviAction::unregisterAccelerator()
 {
-	if(m_iAccelId != 0)
+	if(m_pAccel != 0)
 	{
 		if(g_pFrame)
-			g_pFrame->unregisterAccelerator(m_iAccelId);
-		m_iAccelId = 0;
+			g_pFrame->releaseShortcut(m_pAccel->id());
+		m_pAccel = 0;
 	}
 }
 
@@ -84,7 +86,7 @@ void KviAction::setEnabled(bool bEnabled)
 		m_uInternalFlags |= KVI_ACTION_FLAG_ENABLED;
 	else
 		m_uInternalFlags &= ~KVI_ACTION_FLAG_ENABLED;
-	
+
 	if(m_pWidgetList)
 	{
 		if(bEnabled)
@@ -188,7 +190,7 @@ void KviAction::activeWindowChanged()
 			return;
 		}
 	}
-	
+
 	if(m_uFlags & NeedsConnection)
 	{
 		switch(g_pFrame->activeContext()->state())
@@ -201,7 +203,7 @@ void KviAction::activeWindowChanged()
 				}
 			break;
 			case KviIrcContext::Connected:
-				// this is ok 
+				// this is ok
 			break;
 			default:
 				if(isEnabled())setEnabled(false);

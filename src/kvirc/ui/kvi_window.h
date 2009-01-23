@@ -35,7 +35,6 @@
 #include "kvi_qstring.h"
 #include "kvi_qcstring.h"
 #include "kvi_settings.h"
-#include "kvi_accel.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
 #include "kvi_input.h"
@@ -170,7 +169,6 @@ protected: // almost private: don't touch :D
 	QToolButton                         * m_pTextEncodingButton;
 	QToolButton                         * m_pHideToolsButton;
 	QWidget                             * m_pLastFocusedChild;
-	KviAccel                            * m_pAccel;
 	static const char                   * m_typeTable[KVI_WINDOW_NUM_TYPES + 1];
 	// text encoding and decoding
 	//unsigned int                          m_uTextEncoding;

@@ -29,10 +29,11 @@
 
 #include <QObject>
 #include <QString>
+#include <QShortcut>
 
 // The action name is INTERNAL: it should be never shown to the user
 // if it contains a dot then the part before the dot is considered to
-// be a module name to be loaded when the 
+// be a module name to be loaded when the
 
 // Known categories are: general (or empty), irc, script
 //
@@ -78,7 +79,7 @@ protected:
 	unsigned short int m_uInternalFlags;
 	unsigned int m_uFlags;
 	QString m_szKeySequence;
-	int     m_iAccelId;
+	QShortcut * m_pAccel;
 public:
 	enum Flags {
 		NeedsContext = 1,
@@ -112,7 +113,7 @@ public:
 		m_uInternalFlags(KVI_ACTION_FLAG_ENABLED),
 		m_uFlags(uFlags),
 		m_szKeySequence(szKeySequence),
-		m_iAccelId(0) {}
+		m_pAccel(0) {}
 	virtual ~KviAction();
 public:
 	static int validateFlags(int iFlagsToValidate);

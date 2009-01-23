@@ -51,8 +51,6 @@ class KviIrcConnection;
 class KviStatusBar;
 class KviTalPopupMenu;
 
-#include "kvi_accel.h"
-
 #ifdef COMPILE_ON_WINDOWS
 	// MSCV has problems with KviPointerList<KviWindow> otherwise
 	#include "kvi_window.h"
@@ -107,7 +105,6 @@ protected:
 	KviIrcContext                         * m_pActiveContext;                // the context of the m_pActiveWindow
 	// other
 	KviDockExtension                      * m_pDockExtension;                // the frame's dock extension: this should be prolly moved ?
-	KviAccel                              * m_pAccel;                        // the global accelelrator
 public:
 	// the mdi manager: handles mdi children
 	KviMdiManager * mdiManager(){ return m_pMdi; };
@@ -167,8 +164,6 @@ public:
 	// Helper to fill the toolbars popup
 	// it is used by KviToolBar and KviMenuBar
 	void fillToolBarsPopup(KviTalPopupMenu * p);
-	int registerAccelerator(const QString &szKeySequence,QObject * recv,const char * slot);
-	void unregisterAccelerator(int id);
 public slots:
 	void newConsole();
 	void executeInternalCommand(int index);
@@ -209,8 +204,7 @@ protected:
 	virtual void windowActivationChange(bool bOldActive);
 
 	void updatePseudoTransparency();
-
-	KviAccel * installAccelerators(QWidget * wnd);
+	void installAccelerators();
 
 	virtual void hideEvent ( QHideEvent * e);
 protected slots:

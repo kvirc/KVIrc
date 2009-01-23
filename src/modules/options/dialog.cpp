@@ -31,7 +31,6 @@
 #include "kvi_iconmanager.h"
 #include "kvi_module.h"
 #include "kvi_pointerhashtable.h"
-#include "kvi_accel.h"
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_popupmenu.h"

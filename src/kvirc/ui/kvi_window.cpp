@@ -130,7 +130,6 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 	m_pCryptSessionInfo = 0;
 #endif
 
-	m_pAccel = 0;
 	m_pWindowListItem = 0;
 
 	setMinimumSize(KVI_WINDOW_MIN_WIDTH,KVI_WINDOW_MIN_HEIGHT);
@@ -919,11 +918,6 @@ void KviWindow::updateIcon()
 
 void KviWindow::youAreDocked()
 {
-	if(m_pAccel)
-	{
-		delete m_pAccel;
-		m_pAccel = 0;
-	}
 	((KviMdiChild *)parent())->setIcon(*myIconPtr());
 	updateCaption();
 	connect(((KviMdiChild *)parent()),SIGNAL(systemPopupRequest(const QPoint &)),this,SLOT(systemPopupRequest(const QPoint &)));
@@ -931,7 +925,6 @@ void KviWindow::youAreDocked()
 
 void KviWindow::youAreUndocked()
 {
-	m_pAccel = g_pFrame->installAccelerators(this);
 	setWindowIcon(QIcon(*myIconPtr()));
 	updateCaption();
 }
