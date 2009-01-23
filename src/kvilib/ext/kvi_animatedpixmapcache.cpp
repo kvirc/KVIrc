@@ -184,6 +184,7 @@ void  KviAnimatedPixmapCache::internalSceduleFrameChange(uint delay,KviAnimatedP
 
 	if(needTimerChange)
 	{
+		m_animationTimer.stop();
 		m_animationTimer.start(delay);
 	}
 
@@ -213,7 +214,7 @@ void KviAnimatedPixmapCache::timeoutEvent()
 	*/
 	long long now = KviTimeUtils::getCurrentTimeMills() + 3;
 
-//	m_timerMutex.lock();
+	//m_timerMutex.lock();
 
 	QMultiMap<long long, KviAnimatedPixmapInterface*>::iterator i =
 			m_timerData.begin();
@@ -225,19 +226,20 @@ void KviAnimatedPixmapCache::timeoutEvent()
 		i = m_timerData.erase(i);
 	}
 
+	// m_timerMutex.unlock();
+
 	if (i != m_timerData.end())
 	{
 		long long nextDelay = i.key();
 		uint delay = (uint) (nextDelay - KviTimeUtils::getCurrentTimeMills());
-/*
-		if (delay < 0)
+
+		if ((int) delay < 0)
 		{
 			delay = 0;
 		}
-*/
+
 		m_animationTimer.start(delay);
 	}
-//	m_timerMutex.unlock();
 }
 
 void  KviAnimatedPixmapCache::sceduleFrameChange(uint when,KviAnimatedPixmapInterface* receiver)

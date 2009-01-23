@@ -82,7 +82,6 @@ void KviAnimatedPixmap::nextFrame()
 	m_uCurrentFrameNumber++;
 	//Ensure, that we are not out of bounds
 	m_uCurrentFrameNumber %= m_lFrames->count();
-
 	emit(frameChanged());
 
 	//run timer again

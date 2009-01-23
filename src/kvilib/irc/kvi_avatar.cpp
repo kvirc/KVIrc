@@ -133,11 +133,10 @@ KviAnimatedPixmap * KviAvatar::forSize(const QSize& size)
 	{
 		return m_scaledPixmapsCache[size];
 	}
-
 	KviAnimatedPixmap* scaledPixmap = new KviAnimatedPixmap(m_pPixmap);
 	scaledPixmap->resize(size,Qt::KeepAspectRatio);
 
-	m_scaledPixmapsCache.insert(scaledPixmap->size(),scaledPixmap);
+	m_scaledPixmapsCache.insert(size,scaledPixmap);
 	return scaledPixmap;
 }
 
