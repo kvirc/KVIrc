@@ -228,13 +228,13 @@ void KviAnimatedPixmapCache::timeoutEvent()
 	if (i != m_timerData.end())
 	{
 		long long nextDelay = i.key();
-		int delay = (int) (nextDelay - KviTimeUtils::getCurrentTimeMills());
-
+		uint delay = (uint) (nextDelay - KviTimeUtils::getCurrentTimeMills());
+/*
 		if (delay < 0)
 		{
 			delay = 0;
 		}
-
+*/
 		m_animationTimer.start(delay);
 	}
 //	m_timerMutex.unlock();
