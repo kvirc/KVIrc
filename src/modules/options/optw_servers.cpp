@@ -1069,6 +1069,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pTreeWidget->setColumnWidth(1,150);
 
 	m_pTreeWidget->setSortingEnabled(true);
+        m_pTreeWidget->sortByColumn(0,Qt::AscendingOrder);
 	m_pTreeWidget->setHeaderLabels(columLabels);
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
