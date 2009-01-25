@@ -242,7 +242,6 @@ void register_core_actions(KviActionManager * m)
 		KviKvsAction::NeedsConnection | KviKvsAction::NeedsContext,
 		"Ctrl+Alt+J");
 
-
 	SCRIPT_ACTION(
 		KVI_COREACTION_ACTIONEDITOR,
 		"actioneditor.open",

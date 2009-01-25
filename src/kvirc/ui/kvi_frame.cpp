@@ -377,8 +377,6 @@ void KviFrame::installAccelerators()
 void KviFrame::accelActivated()
 {
 	int keys = (int)(((QShortcut *)sender())->key());
-	printf("accel activated %s\n",(((QShortcut *)sender())->key()).toString().toUtf8().data());
-
 	switch(keys)
 	{
 		case (Qt::Key_F4+Qt::CTRL):

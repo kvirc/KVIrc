@@ -66,7 +66,10 @@ void KviAction::registerAccelerator()
 {
 	if(!m_szKeySequence.isEmpty())
 	{
-		m_pAccel = new QShortcut(m_szKeySequence,g_pFrame,SLOT(accelActivated()),SLOT(accelActivated()));
+		m_pAccel = new QShortcut(m_szKeySequence,g_pFrame,0 ,0 , Qt::ApplicationShortcut);
+		connect(m_pAccel,SIGNAL(activated()),this,SLOT(activate()));
+		//no way to have Ctrl+Alt+Key events fired as no-ambiguous, probably qt bug
+		connect(m_pAccel,SIGNAL(activatedAmbiguously()),this,SLOT(activate()));
 	}
 }
 
@@ -426,7 +429,6 @@ QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
 
 void KviAction::activate()
 {
-	debug ("emits activated in action");
 	if(isEnabled())
 		emit activated();
 }
