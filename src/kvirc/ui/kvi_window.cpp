@@ -248,7 +248,7 @@ void KviWindow::demandAttention()
 		FlashWindowEx(&fwi);
 #else
 	#ifdef COMPILE_KDE_SUPPORT
-		#if (KDE_VERSION_MAJOR >= 3) && (KDE_VERSION_MINOR >= 2)
+		#if (KDE_VERSION_MAJOR == 3) && (KDE_VERSION_MINOR >= 2)
 			KWin::demandAttention(winId(),true);
 		#endif
 	#endif
