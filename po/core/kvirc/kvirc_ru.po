@@ -14,15 +14,14 @@ msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-12 21:53+0100\n"
-"PO-Revision-Date: 2008-07-06 22:08+0400\n"
-"Last-Translator: Voker57 <voker57@gmail.com>\n"
+"PO-Revision-Date: 2009-01-26 19:19+0300\n"
+"Last-Translator: Alexey Uzhva <alexey /a/tt/ uzhva /d/o/t/ ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
-"10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
@@ -49,12 +48,8 @@ msgstr ""
 "10<=4 && (n%100<10 || n%100>=20) ? 1: 2);\n"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:686
-msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@"
-"\r!h\r%Q\r]: %Q"
-msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] кикнут на \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q"
-"\r]: %Q"
+msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] кикнут на \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1422
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
@@ -65,18 +60,12 @@ msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] зашел на \r!c\r%Q\r "
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:316
-msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
-msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] зашел на \r!c\r%Q\r [implicit +%c umode change]"
+msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] зашел на \r!c\r%Q\r [implicit +%c umode change]"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:698
-msgid ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%Q"
-"\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] только что был кикнут на \r!c\r%Q\r by \r!n\r%Q\r "
-"[%Q@\r!h\r%Q\r]: %Q"
+msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] только что был кикнут на \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:334
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
@@ -148,19 +137,19 @@ msgstr "### Журналирование завершено %s ###"
 
 #: src/kvilib/core/kvi_qstring.cpp:167
 msgid "%1 GB"
-msgstr ""
+msgstr "%1 ГБ"
 
 #: src/kvilib/core/kvi_qstring.cpp:158
 msgid "%1 KB"
-msgstr ""
+msgstr "%1 КБ"
 
 #: src/kvilib/core/kvi_qstring.cpp:162
 msgid "%1 MB"
-msgstr ""
+msgstr "%1 МБ"
 
 #: src/kvilib/core/kvi_qstring.cpp:171
 msgid "%1 TB"
-msgstr ""
+msgstr "%1 ТБ"
 
 #: src/kvilib/core/kvi_qstring.cpp:154
 #, fuzzy
@@ -200,12 +189,8 @@ msgid "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
 msgstr "%Q %Q%c запрос от \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1030
-msgid ""
-"%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit "
-"exceeded)"
-msgstr ""
-"%Q %Q%c запрос от \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), проигнорирован (сработала "
-"защита от флуда)"
+msgid "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), ignored (flood limit exceeded)"
+msgstr "%Q %Q%c запрос от \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), проигнорирован (сработала защита от флуда)"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1130
 msgid "%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"
@@ -363,7 +348,7 @@ msgstr "%c\r!s\r%s\r%c's время %Q"
 #: src/kvirc/kernel/kvi_irccontext.cpp:596
 #, c-format
 msgid "%d"
-msgstr ""
+msgstr "%d"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:1791
 msgid "%d matches: %Q"
@@ -717,14 +702,11 @@ msgid ": No valid local copy of avatar available, requesting one (HTTP GET %s)"
 msgstr ":Аватар не найден в кэше, скачиваем его (HTTP GET %s)"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1649
-msgid ""
-": No valid local copy of avatar available; failed to start an HTTP transfer, "
-"ignoring"
+msgid ": No valid local copy of avatar available; failed to start an HTTP transfer, ignoring"
 msgstr ": Аватар не найден в кэше. Не могу открыть HTTP соединение."
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1669
-msgid ""
-": No valid local copy of avatar available; flood limit exceeded, ignoring"
+msgid ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ": Аватар не найден в кэше, превышен лимит флуда, проигнорировано"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:170
@@ -737,20 +719,12 @@ msgid "<Ctrl+Return>; submits, <Alt+Backspace>; hides this editor"
 msgstr "<Ctrl+Return> отправить,   <Alt+Backspace> скрыть этот редактор"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:794
-msgid ""
-"<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
-"<br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
-msgstr ""
-"<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): "
-"<br><nowrap>+%Q (%u пользователей)<hr>%Q</nowrap>"
+msgid "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): <br><nowrap>+%Q (%u users)<hr>%Q</nowrap>"
+msgstr "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>): <br><nowrap>+%Q (%u пользователей)<hr>%Q</nowrap>"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:800
-msgid ""
-"<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-"
-"click to join %Q<br>Right click to view other options"
-msgstr ""
-"<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)"
-"<hr>Двойной клик для захода на %Q<br>Клик правой кнопкой - другие опции"
+msgid "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Double-click to join %Q<br>Right click to view other options"
+msgstr "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)<hr>Двойной клик для захода на %Q<br>Клик правой кнопкой - другие опции"
 
 #: src/kvirc/ui/kvi_channel.cpp:1664
 msgid "<b>Channel mode:</b>"
@@ -770,35 +744,8 @@ msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Клик на средней кнопке:</b><br>%Q"
 
 #: src/kvirc/kernel/kvi_app.cpp:796
-msgid ""
-"<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
-"your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
-"seem to miss some of the features that the default KVIrc script provides."
-"This may happen because you have upgraded to an unstable cvs version, "
-"because you have accidentally deleted or damaged your configuration files, "
-"because you have installed an incomplete script or because you have hit a "
-"bug in KVIrc.<br><br>I can repeat the installation of the default script in "
-"order to restore the missing features.<br><b>Do you want the default script "
-"to be restored ?</b><br><br><font size=\"-1\">Hint: If you're a scripter and "
-"have intentionally removed some of the scripting features then you may "
-"safely click on \"No and Don't Ask Me Again\", otherwise it might be a good "
-"idea to click \"Yes\". If you still want to choose \"No\" you can always "
-"restore the default script by choosing the appropriate entry from the "
-"\"Scripting\" menu.</font>"
-msgstr ""
-"<b>Упс...</b><br><br><b>Есть некоторые причины полагать, что ваша "
-"инсталляция KVIrc не полная.</b><br><br>Я могу ошибаться, но у вас кажется "
-"отсутствуют некоторые возможности которые предоставляются сценариями KVIrc "
-"по умолчанию. Это может произойти, если вы обновили нестабильную cvs-версию, "
-"если вы случайно удалили или изменили ваши конфигурационные файлы, если вы "
-"не полностью установили сценарии или если вы нашли баг в KVIrc.<br><br>Я "
-"могу повторить установку сценариев по умолчанию, чтобы восстановить "
-"потерянные возможности.<br><b>Вы хотите восстановить сценарии по умолчанию ?"
-"</b><br><br><font size=\"-1\">Совет: если вы пишите сценарии и умышлено "
-"удалили некоторые сценарии, вы можете щёлкнуть на  \"Нет и больше меня не "
-"спрашивать\", в противном случае лучше сказать \"Да\". Если вы всё таки "
-"хотите ответить \"Нет\" вы всегда сможете восстановить сценарии по умолчанию "
-"выбрав соответствующий пункт в меню \"Сценарии\".</font>"
+msgid "<b>Ooops...</b><br><br><b>There are some reasons that make me think that your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you seem to miss some of the features that the default KVIrc script provides.This may happen because you have upgraded to an unstable cvs version, because you have accidentally deleted or damaged your configuration files, because you have installed an incomplete script or because you have hit a bug in KVIrc.<br><br>I can repeat the installation of the default script in order to restore the missing features.<br><b>Do you want the default script to be restored ?</b><br><br><font size=\"-1\">Hint: If you're a scripter and have intentionally removed some of the scripting features then you may safely click on \"No and Don't Ask Me Again\", otherwise it might be a good idea to click \"Yes\". If you still want to choose \"No\" you can always restore the default script by choosing the appropriate entry from the \"Scripting\" menu.</font>"
+msgstr "<b>Упс...</b><br><br><b>Есть некоторые причины полагать, что ваша инсталляция KVIrc не полная.</b><br><br>Я могу ошибаться, но у вас кажется отсутствуют некоторые возможности которые предоставляются сценариями KVIrc по умолчанию. Это может произойти, если вы обновили нестабильную cvs-версию, если вы случайно удалили или изменили ваши конфигурационные файлы, если вы не полностью установили сценарии или если вы нашли баг в KVIrc.<br><br>Я могу повторить установку сценариев по умолчанию, чтобы восстановить потерянные возможности.<br><b>Вы хотите восстановить сценарии по умолчанию ?</b><br><br><font size=\"-1\">Совет: если вы пишите сценарии и умышлено удалили некоторые сценарии, вы можете щёлкнуть на  \"Нет и больше меня не спрашивать\", в противном случае лучше сказать \"Да\". Если вы всё таки хотите ответить \"Нет\" вы всегда сможете восстановить сценарии по умолчанию выбрав соответствующий пункт в меню \"Сценарии\".</font>"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:304
 msgid "<b>Right click</b> to add/remove applets"
@@ -809,12 +756,8 @@ msgid "<b>Right-click:</b><br>%Q"
 msgstr "<b>Клик на правой кнопке:</b><br>%Q"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:292
-msgid ""
-"<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around<br><b>Right "
-"click</b> to see the other options"
-msgstr ""
-"<b>Shift+Перетаскивание</b> или <b>Ctrl+Перетаскивание</b>для перемещения "
-"апплета.<br><b>Клик правой кнопкой</b> для других опций"
+msgid "<b>Shift+Drag</b> or <b>Ctrl+Drag</b> to move the applet around<br><b>Right click</b> to see the other options"
+msgstr "<b>Shift+Перетаскивание</b> или <b>Ctrl+Перетаскивание</b>для перемещения апплета.<br><b>Клик правой кнопкой</b> для других опций"
 
 #: src/kvirc/ui/kvi_channel.cpp:1680
 #, c-format
@@ -940,8 +883,7 @@ msgid "Allows you to configure the servers and eventually to connect to them"
 msgstr "Позволяет вам сконфигурировать сервера и подключиться к ним"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:540
-msgid ""
-"Allows you to connect to a server or to terminate the current connection"
+msgid "Allows you to connect to a server or to terminate the current connection"
 msgstr "Позволяет вам подключиться к серверу или закрыть текущее соединение"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:127
@@ -1122,12 +1064,8 @@ msgstr "Прослушиваю локальный адрес %s"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:354
 #, c-format
-msgid ""
-"Binding to local address %s failed: the kernel will choose the correct "
-"interface"
-msgstr ""
-"Не могу привязаться к локальному адресу %s : ядро попытается выбрать "
-"правильный интерфейс"
+msgid "Binding to local address %s failed: the kernel will choose the correct interface"
+msgstr "Не могу привязаться к локальному адресу %s : ядро попытается выбрать правильный интерфейс"
 
 #: src/kvirc/kernel/kvi_options.cpp:835
 #, fuzzy
@@ -1274,9 +1212,7 @@ msgstr "Не могу определить локальный адрес, исп
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:761
 msgid "Can't resolve local host address, using user supplied one (%Q)"
-msgstr ""
-"Не могу определить локальный адрес, использую только предоставленный "
-"пользователем (%Q)"
+msgstr "Не могу определить локальный адрес, использую только предоставленный пользователем (%Q)"
 
 #: src/kvilib/core/kvi_error.cpp:137
 msgid "Can't resolve the localhost name"
@@ -1520,7 +1456,7 @@ msgstr "Получить список каналов"
 #: src/kvirc/kernel/kvi_coreactions.cpp:879
 #: src/kvirc/kernel/kvi_coreactions.cpp:893
 msgid "Clear Recent Servers List"
-msgstr ""
+msgstr "Очистить историю серверов"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:666
 #, fuzzy
@@ -1717,8 +1653,7 @@ msgstr "Создаю пакет..."
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:267
 msgid "Crypt: Can't create an engine instance: crypting disabled"
-msgstr ""
-"Шифрование: Не возможно создать криптовальный образец: криптование выключено"
+msgstr "Шифрование: Не возможно создать криптовальный образец: криптование выключено"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:278
 #, c-format
@@ -1726,11 +1661,8 @@ msgid "Crypt: Can't initialize the engine :%s"
 msgstr "Шифрование: Не возможно инициализировать :%s"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:286
-msgid ""
-"Crypt: You have to enable encryption and/or decryption for the engine to work"
-msgstr ""
-"Шифрование: Вы должны включить машину шифрования и/или дешифрования для "
-"работы"
+msgid "Crypt: You have to enable encryption and/or decryption for the engine to work"
+msgstr "Шифрование: Вы должны включить машину шифрования и/или дешифрования для работы"
 
 #: src/kvirc/ui/kvi_window.cpp:413
 msgid "Crypting"
@@ -1873,10 +1805,8 @@ msgid "Double-click to edit..."
 msgstr "Двойной клик для редактирования..."
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:690
-msgid ""
-"Double-click to look up this hostname<br>Right-click to view other options"
-msgstr ""
-"Двойной клик для определения IP этого<br>Клик на правой кнопке - другие опции"
+msgid "Double-click to look up this hostname<br>Right-click to view other options"
+msgstr "Двойной клик для определения IP этого<br>Клик на правой кнопке - другие опции"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:668
 msgid "Double-click to open this link"
@@ -1895,9 +1825,7 @@ msgid "Double-click to set<br>"
 msgstr "Двойной клик для установки<br>"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:402
-msgid ""
-"Drag the applet while holding the Shift or Ctrl key to move it to the "
-"desired position"
+msgid "Drag the applet while holding the Shift or Ctrl key to move it to the desired position"
 msgstr "Перетащить апплет можно при нажатой клавише Shift или Ctrl"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:125
@@ -2107,9 +2035,7 @@ msgstr "Невозможно подключить сокет в не-блочн�
 
 #: src/kvilib/net/kvi_http.cpp:425
 msgid "Failed to rename the existing file, please rename manually and retry"
-msgstr ""
-"Не могу переименовать существующий файл, переименуйте вручную и попробуйте "
-"снова"
+msgstr "Не могу переименовать существующий файл, переименуйте вручную и попробуйте снова"
 
 #: src/kvirc/kernel/kvi_options.cpp:1073
 #: src/kvirc/kernel/kvi_options.cpp:1108
@@ -2126,8 +2052,7 @@ msgstr "Ошибка загрузки выбранной картинки"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:166
 msgid "Failed to set the encoding to %Q: mapping not available."
-msgstr ""
-"Невозможно установить кодировку %Q: данные об этой кодировке не доступны"
+msgstr "Невозможно установить кодировку %Q: данные об этой кодировке не доступны"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:142
 msgid "Failed to set up the link filter \"%Q\", will try with plain IRC"
@@ -2191,9 +2116,8 @@ msgid "Filter"
 msgstr "Фильтр"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:178
-#, fuzzy
 msgid "Filter:"
-msgstr "&Фильтр:"
+msgstr "Фильтр:"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:146
 msgid "Find"
@@ -2335,12 +2259,8 @@ msgid "Help Index"
 msgstr "Индекс справки"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:852
-msgid ""
-"Here goes your \"broken bouncer hack\": The server has changed the hostname "
-"but I'll ignore the IP address change"
-msgstr ""
-"Здесь идёт ваш \"broken bouncer hack\": Сервер изменил имя хоста но я "
-"проигнорировал изменение IP адреса"
+msgid "Here goes your \"broken bouncer hack\": The server has changed the hostname but I'll ignore the IP address change"
+msgstr "Здесь идёт ваш \"broken bouncer hack\": Сервер изменил имя хоста но я проигнорировал изменение IP адреса"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:114
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:126
@@ -2461,12 +2381,8 @@ msgid "If this server is an IPv6 one, try /server -i %Q"
 msgstr "Если это IPv6 сервер, используйте /server -i %s"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:195
-msgid ""
-"If you dont want to encrypt a particular text line then just start it with "
-"the CTRL+P prefix"
-msgstr ""
-"Если вы не хотите зашифровать конкретную строку, тогда запускайте с "
-"префиксом CTRL+P"
+msgid "If you dont want to encrypt a particular text line then just start it with the CTRL+P prefix"
+msgstr "Если вы не хотите зашифровать конкретную строку, тогда запускайте с префиксом CTRL+P"
 
 #: src/kvirc/kernel/kvi_options.cpp:804
 msgid "Ignored user message"
@@ -2507,21 +2423,15 @@ msgid "Impossible to change nick if not authenticated with NickServ"
 msgstr "Невозможно сменить ник если не идентифицирован на NickServ"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:951
-msgid ""
-"Impossible to send CAP END command to the IRC server. Your connection will "
-"NOT be encrypted"
+msgid "Impossible to send CAP END command to the IRC server. Your connection will NOT be encrypted"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:940
-msgid ""
-"Impossible to send CAP LS command to the IRC server. Your connection will "
-"NOT be encrypted"
+msgid "Impossible to send CAP LS command to the IRC server. Your connection will NOT be encrypted"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:978
-msgid ""
-"Impossible to send STARTTLS command to the IRC server. Your connection will "
-"NOT be encrypted"
+msgid "Impossible to send STARTTLS command to the IRC server. Your connection will NOT be encrypted"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:249
@@ -2530,8 +2440,7 @@ msgstr "Невозможно говорить и менять ник если н
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:261
 msgid "Impossible to use both 7-bit and 8-bit letters in nicknames"
-msgstr ""
-"Невозможно использовать одновременно 7-ми и 8-ми битные символы в никах"
+msgstr "Невозможно использовать одновременно 7-ми и 8-ми битные символы в никах"
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:392
 msgid "In progress..."
@@ -2869,7 +2778,7 @@ msgstr "Загрузка модуля '%s' (%s)"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:594
 msgid "Local IP"
-msgstr ""
+msgstr "Локальный IP"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:774
 msgid "Local host address is %Q"
@@ -2955,9 +2864,7 @@ msgstr "Редактор маски - KVirc"
 #: src/kvirc/kernel/kvi_irccontext.cpp:626
 #, c-format
 msgid "Maximum number of reconnect attempts reached (%d): giving up"
-msgstr ""
-"Достигнуто максимальное количество попыток переподключения (%d): "
-"останавливаемся"
+msgstr "Достигнуто максимальное количество попыток переподключения (%d): останавливаемся"
 
 #: src/kvirc/ui/kvi_channel.cpp:967
 msgid "Medium activity"
@@ -3217,10 +3124,8 @@ msgid "No request"
 msgstr "Нет запроса"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:474
-msgid ""
-"No servers available. Check the options dialog or use the /SERVER command"
-msgstr ""
-"Нет доступных серверов. Проверьте настройки или используйте команду /SERVER"
+msgid "No servers available. Check the options dialog or use the /SERVER command"
+msgstr "Нет доступных серверов. Проверьте настройки или используйте команду /SERVER"
 
 #: src/kvilib/core/kvi_error.cpp:113
 msgid "No such file"
@@ -3317,31 +3222,16 @@ msgid "Notify list leaves"
 msgstr "Список уведомлений покинут"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:699
-msgid ""
-"Notify list: \r!n\r%Q\r appears to be online, but the mask [%Q@\r!h\r%Q\r] "
-"does not match (registration mask does not match, or nickname is being used "
-"by someone else)"
-msgstr ""
-"Список уведомлений: \r!n\r%Q\r  в онлайне, но маска [%Q@\r!h\r%Q\r] не "
-"соответствует ( маска не соответствует, или ник используется кем то ещё)"
+msgid "Notify list: \r!n\r%Q\r appears to be online, but the mask [%Q@\r!h\r%Q\r] does not match (registration mask does not match, or nickname is being used by someone else)"
+msgstr "Список уведомлений: \r!n\r%Q\r  в онлайне, но маска [%Q@\r!h\r%Q\r] не соответствует ( маска не соответствует, или ник используется кем то ещё)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1205
-msgid ""
-"Notify list: \r!n\r%Q\r appears to be online, but the mask [%Q@\r!h\r%Q\r] "
-"does not match (watch: registration mask does not match, or nickname is "
-"being used by someone else)"
-msgstr ""
-"Список уведомлений: \r!n\r%Q\r появился в онлайн, но маска [%Q@\r!h\r%Q\r] "
-"не соответствует (наблюдение:маска не соответствует, или ник уже "
-"используется)"
+msgid "Notify list: \r!n\r%Q\r appears to be online, but the mask [%Q@\r!h\r%Q\r] does not match (watch: registration mask does not match, or nickname is being used by someone else)"
+msgstr "Список уведомлений: \r!n\r%Q\r появился в онлайн, но маска [%Q@\r!h\r%Q\r] не соответствует (наблюдение:маска не соответствует, или ник уже используется)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:875
-msgid ""
-"Notify list: \r!n\r%Q\r appears to have gone offline before USERHOST reply "
-"was received, will recheck in the next loop"
-msgstr ""
-"Список уведомлений: \r!n\r%Q\r ушёл в оффлайне прежде, чем был получен ответ "
-"от USERHOST, будет перепроверен в следующем цикле"
+msgid "Notify list: \r!n\r%Q\r appears to have gone offline before USERHOST reply was received, will recheck in the next loop"
+msgstr "Список уведомлений: \r!n\r%Q\r ушёл в оффлайне прежде, чем был получен ответ от USERHOST, будет перепроверен в следующем цикле"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1279
 msgid "Notify list: \r!n\r%Q\r is offline (watch)"
@@ -3368,29 +3258,17 @@ msgid "Notify list: Checking userhost for: %Q"
 msgstr "Список уведомлений: Проверка хоста для: %Q"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:548
-msgid ""
-"Notify list: Hey! You've used ISON behind my back? (I might be confused "
-"now...)"
-msgstr ""
-"Список уведомлений: Эй! Вы использовали ISON за моей спиной? (Я могу теперь "
-"запутаться...)"
+msgid "Notify list: Hey! You've used ISON behind my back? (I might be confused now...)"
+msgstr "Список уведомлений: Эй! Вы использовали ISON за моей спиной? (Я могу теперь запутаться...)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:846
-msgid ""
-"Notify list: Hey! You've used USERHOST behind my back? (I might be confused "
-"now...)"
-msgstr ""
-"Список уведомлений: Эй! Вы использовали USERHOST за моей спиной? (Я могу "
-"запутаться...)"
+msgid "Notify list: Hey! You've used USERHOST behind my back? (I might be confused now...)"
+msgstr "Список уведомлений: Эй! Вы использовали USERHOST за моей спиной? (Я могу запутаться...)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:466
 #, c-format
-msgid ""
-"Notify list: ISON delay (%d sec) is too short, resetting to something more "
-"reasonable (5 sec)"
-msgstr ""
-"Список уведомлений: задержка ISON (%d сек) слишком мала, установите более "
-"разумное значение (5 сек)"
+msgid "Notify list: ISON delay (%d sec) is too short, resetting to something more reasonable (5 sec)"
+msgstr "Список уведомлений: задержка ISON (%d сек) слишком мала, установите более разумное значение (5 сек)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:377
 msgid "Notify list: No users to check for, quitting"
@@ -3406,54 +3284,30 @@ msgstr "Список уведомлений: Остановлено наблюд
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:423
 #, c-format
-msgid ""
-"Notify list: Timeout (%d sec) is too short, resetting to something more "
-"reasonable (15 sec)"
-msgstr ""
-"Список уведомлений: Времени (%d сек) слишком мало, установите более разумное "
-"значение (15 сек)"
+msgid "Notify list: Timeout (%d sec) is too short, resetting to something more reasonable (15 sec)"
+msgstr "Список уведомлений: Времени (%d сек) слишком мало, установите более разумное значение (15 сек)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1028
 #, c-format
-msgid ""
-"Notify list: Timeout (%d sec) is too short, resetting to something more "
-"reasonable (5 sec)"
-msgstr ""
-"Список уведомлений: Таймаут (%d сек) слишком мал, установите более разумное "
-"значение (5 сек)"
+msgid "Notify list: Timeout (%d sec) is too short, resetting to something more reasonable (5 sec)"
+msgstr "Список уведомлений: Таймаут (%d сек) слишком мал, установите более разумное значение (5 сек)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:725
 #, c-format
-msgid ""
-"Notify list: USERHOST delay (%d sec) is too short, resetting to something "
-"more reasonable (5 sec)"
-msgstr ""
-"Список уведомлений: задержка USERHOST (%d сек) слишком мала, установите "
-"более разумное значение (5 сек)"
+msgid "Notify list: USERHOST delay (%d sec) is too short, resetting to something more reasonable (5 sec)"
+msgstr "Список уведомлений: задержка USERHOST (%d сек) слишком мала, установите более разумное значение (5 сек)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:711
-msgid ""
-"Notify list: Unexpected inconsistency, expected \r!n\r%Q\r in the registered "
-"user DB"
-msgstr ""
-"Список уведомлений: Неожиданное противоречие, предположительно \r!n\r%Q\r "
-"зарегистрирован в базе данных пользователей"
+msgid "Notify list: Unexpected inconsistency, expected \r!n\r%Q\r in the registered user DB"
+msgstr "Список уведомлений: Неожиданное противоречие, предположительно \r!n\r%Q\r зарегистрирован в базе данных пользователей"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:704
-msgid ""
-"Notify list: Unexpected inconsistency, registered user DB modified? "
-"(restarting)"
-msgstr ""
-"Список уведомлений: Неожиданное противоречие, регистрация пользователя в "
-"базе изменилась? (перезапуск)"
+msgid "Notify list: Unexpected inconsistency, registered user DB modified? (restarting)"
+msgstr "Список уведомлений: Неожиданное противоречие, регистрация пользователя в базе изменилась? (перезапуск)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1212
-msgid ""
-"Notify list: Unexpected inconsistency, registered user DB modified? (watch: "
-"restarting)"
-msgstr ""
-"Список уведомлений: Неожиданное противоречие, база пользователей изменилась? "
-"(наблюдение: перезапуск)"
+msgid "Notify list: Unexpected inconsistency, registered user DB modified? (watch: restarting)"
+msgstr "Список уведомлений: Неожиданное противоречие, база пользователей изменилась? (наблюдение: перезапуск)"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:741
 msgid "Notify list: Unexpected inconsistency, userhost list is empty!"
@@ -3491,18 +3345,15 @@ msgstr "На <b>"
 #, c-format
 msgid ""
 "One or more standard mode flags are missing in the server available modes.\n"
-"This is caused either by a non RFC1459-compliant IRC daemon or a broken "
-"server reply.\n"
+"This is caused either by a non RFC1459-compliant IRC daemon or a broken server reply.\n"
 "Server umodes seem to be '%s' and channel modes seem to be '%s'.\n"
 "Ignoring this reply and assuming that the basic set of modes is available.\n"
 "If you have strange problems, try changing the server."
 msgstr ""
 "Один или несколько флагов стандартных режимов недоступны.\n"
-"Это вызвано или несовместимым с RFC1459 IRC демоном или битым ответом "
-"сервера.\n"
+"Это вызвано или несовместимым с RFC1459 IRC демоном или битым ответом сервера.\n"
 " Сервер не может предоставить режим '%s' и канал предоставляет '%s'.\n"
-"Эти ответы проигнорированы и сделано допущение, что основные режимы "
-"доступны.\n"
+"Эти ответы проигнорированы и сделано допущение, что основные режимы доступны.\n"
 "Если у вас такие проблемы, лучше смените сервер."
 
 #: src/kvirc/ui/kvi_console.cpp:1232
@@ -3518,12 +3369,8 @@ msgid "Only registered nicks can join"
 msgstr "Для входа требуется зарегистрировать ник"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:482
-msgid ""
-"Ooops.. you've hit a bug in the servers database... I have found a server "
-"but not a network..."
-msgstr ""
-"Упс.. Вы допустили ошибку в базе данных серверов... Я нашёл сервер, но не "
-"сеть..."
+msgid "Ooops.. you've hit a bug in the servers database... I have found a server but not a network..."
+msgstr "Упс.. Вы допустили ошибку в базе данных серверов... Я нашёл сервер, но не сеть..."
 
 #: src/kvirc/ui/kvi_menubar.cpp:316
 msgid "Open &Terminal"
@@ -3787,15 +3634,11 @@ msgstr "Прокси ответило: "
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1048
 msgid "Proxy response: Auth method OK: using method 0 (no auth)"
-msgstr ""
-"Прокси ответило: Аутентификация прошла успешно,использовался метод 0 (без "
-"аутентификации)"
+msgstr "Прокси ответило: Аутентификация прошла успешно,использовался метод 0 (без аутентификации)"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1056
 msgid "Proxy response: Auth method OK: using method 2 (user/pass)"
-msgstr ""
-"Прокси ответило: Аутентификация прошла успешно, использовался метод 2 (логин/"
-"пароль)"
+msgstr "Прокси ответило: Аутентификация прошла успешно, использовался метод 2 (логин/пароль)"
 
 #: src/kvilib/core/kvi_error.cpp:120
 msgid "Proxy response: No acceptable auth method: request rejected"
@@ -3960,34 +3803,27 @@ msgstr "Получен битый RPL_WHOISIDLE, не могу определи�
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:211
 msgid "Received a join message for an unknown channel, possible desync"
-msgstr ""
-"Получено JOIN-сообщение для неизвестного канала. Возможно, рассинхронизация"
+msgstr "Получено JOIN-сообщение для неизвестного канала. Возможно, рассинхронизация"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:605
 msgid "Received a kick message for an unknown channel, possible desync"
-msgstr ""
-"получено сообщение о кике от неизвестного канала, возможна рассинхронизация"
+msgstr "получено сообщение о кике от неизвестного канала, возможна рассинхронизация"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1671
 msgid "Received a mode change for an unknown channel, possible desync"
-msgstr ""
-"Получено изменение режима от неизвестного канала, возможна рассинхронизация"
+msgstr "Получено изменение режима от неизвестного канала, возможна рассинхронизация"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:365
 msgid "Received a part message for an unknown channel, possible desync"
-msgstr ""
-"Получена часть сообщения от неизвестного канала, возможна рассинхронизация"
+msgstr "Получена часть сообщения от неизвестного канала, возможна рассинхронизация"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1403
 msgid "Received a topic message for an unknown channel, possible desync"
-msgstr ""
-"Получено сообщение с темой от неизвестного канала, возможна рассинхронизация"
+msgstr "Получено сообщение с темой от неизвестного канала, возможна рассинхронизация"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1580
 msgid "Received an invite message directed to another nick, possible desync"
-msgstr ""
-"Полученное сообщение о приглашение предназначено другому нику, возможна "
-"рассинхронизация"
+msgstr "Полученное сообщение о приглашение предназначено другому нику, возможна рассинхронизация"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:100
 msgid "Received ping from \r!s\r%Q\r (PING %Q), replied pong"
@@ -4044,7 +3880,7 @@ msgstr "Удалить %Q"
 
 #: src/kvirc/ui/kvi_menubar.cpp:147
 msgid "Report a Bug / Propose Improvements"
-msgstr ""
+msgstr "Сообщить об ошибке / Высказать пожелание"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2088
 msgid "Reset Temporary Background"
@@ -4243,9 +4079,8 @@ msgid "Separator"
 msgstr "Разделитель"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:578
-#, fuzzy
 msgid "Server"
-msgstr "Пинг сервера"
+msgstr "Сервер"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:444
 #, fuzzy
@@ -4254,9 +4089,7 @@ msgstr "Сервер %s имеет ник: %s"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:198
 msgid "Server %Q version %S supporting user modes '%S' and channel modes '%S'"
-msgstr ""
-"Сервер %Q версии %S поддерживает пользовательские режимы '%S' и режимы "
-"канала '%S'"
+msgstr "Сервер %Q версии %S поддерживает пользовательские режимы '%S' и режимы канала '%S'"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:153
 msgid "Server ERROR: %Q"
@@ -4390,9 +4223,7 @@ msgstr "Показать историю<br>&lt;Ctrl+PageUp&gt;"
 
 #: src/kvirc/ui/kvi_input.cpp:130
 msgid "Show Icons Popup<br>&lt;Ctrl+I&gt;<br>See also /help texticons"
-msgstr ""
-"Показать всплывающего меню с иконками<br>&lt;Ctrl+I&gt;<br>Смотри также /"
-"help texticons"
+msgstr "Показать всплывающего меню с иконками<br>&lt;Ctrl+I&gt;<br>Смотри также /help texticons"
 
 #: src/kvilib/system/kvi_locale.cpp:1069
 msgid "Show Preview"
@@ -4433,8 +4264,7 @@ msgstr "Показывает всплывающее меню, позволяющ
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:913
 msgid "Shows a popup menu that allows quickly changing user modes"
-msgstr ""
-"Показывает всплывающее меню, позволяющее быстро изменять режимы пользователя"
+msgstr "Показывает всплывающее меню, позволяющее быстро изменять режимы пользователя"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:865
 msgid "Shows a popup menu that allows quickly connecting to a server"
@@ -4442,8 +4272,7 @@ msgstr "Показывает всплывающее меню, позволяющ
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:763
 msgid "Shows a popup menu that allows quickly selecting a channel to join"
-msgstr ""
-"Показывает всплывающее меню, позволяющее быстро выбрать канал и зайти на него"
+msgstr "Показывает всплывающее меню, позволяющее быстро выбрать канал и зайти на него"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:1143
 msgid "Shows a popup menu with some IRC Actions"
@@ -4471,9 +4300,7 @@ msgstr "Показывает окно позволяющее редактиро�
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:294
 msgid "Shows a window that allows editing raw scripting events"
-msgstr ""
-"Показывает окно позволяющее редактировать обработчики событий, вызываемых "
-"при получении определенных данных сервером"
+msgstr "Показывает окно позволяющее редактировать обработчики событий, вызываемых при получении определенных данных сервером"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:272
 msgid "Shows a window that allows editing script events"
@@ -4481,8 +4308,7 @@ msgstr "Показывает окно позволяющее редактиро�
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:226
 msgid "Shows a window that allows editing script toolbars"
-msgstr ""
-"Показывает окно позволяющее редактировать сценарии панелей инструментов"
+msgstr "Показывает окно позволяющее редактировать сценарии панелей инструментов"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:182
 msgid "Shows a window that allows listing the network channels"
@@ -4490,9 +4316,7 @@ msgstr "Показывает окно, позволяющее получить �
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:160
 msgid "Shows a window that allows monitoring the socket traffic"
-msgstr ""
-"Показывает окно позволяющее наблюдать за данные, которыми KVirc обменивается "
-"с IRC сервером"
+msgstr "Показывает окно позволяющее наблюдать за данные, которыми KVirc обменивается с IRC сервером"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:171
 msgid "Shows a window that allows viewing the network links"
@@ -4563,9 +4387,7 @@ msgid "Socket warning"
 msgstr "Предупреждение сокета"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:886
-msgid ""
-"Something really weird is happening: the server is refusing all the login "
-"nicknames..."
+msgid "Something really weird is happening: the server is refusing all the login nicknames..."
 msgstr "Происходит что то странное: сервер отклоняет вход со всеми никами..."
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:247
@@ -4581,18 +4403,12 @@ msgid "Sorting"
 msgstr "Сортировка"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1225
-msgid ""
-"Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
-msgstr ""
-"Спам извещение от \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (совпадает со спам-словом "
-"\"%Q\")"
+msgid "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
+msgstr "Спам извещение от \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (совпадает со спам-словом \"%Q\")"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:859
-msgid ""
-"Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
-msgstr ""
-"Спам сообщение от \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (совпадает со спам-словом "
-"\"%s\")"
+msgid "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
+msgstr "Спам сообщение от \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (совпадает со спам-словом \"%s\")"
 
 #: src/kvirc/kernel/kvi_options.cpp:767
 msgid "Spam report"
@@ -4702,12 +4518,8 @@ msgid "The SOCKSv4 protocol lacks IPv6 support"
 msgstr "В протоколе SOCKSV4 нет поддержки IpV6"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:640
-msgid ""
-"The connection attempt failed while using a cached IP address for the "
-"current server"
-msgstr ""
-"Ошибка при попытке подключения с использованием кеша IP адресов текущего "
-"сервера"
+msgid "The connection attempt failed while using a cached IP address for the current server"
+msgstr "Ошибка при попытке подключения с использованием кеша IP адресов текущего сервера"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:783
 msgid "The connection terminated unexpectedly. Trying to reconnect..."
@@ -4715,20 +4527,12 @@ msgstr "Соединение неожиданно разорвалось. Пыт
 
 #: src/kvirc/ui/kvi_channel.cpp:1142
 #, fuzzy
-msgid ""
-"The crypto engine was unable to encrypt the current message (%Q): %Q, no "
-"data sent to the server"
-msgstr ""
-"Криптовальная машина не в состоянии зашифровать текущее сообщение (%Q): %s, "
-"данные не отосланы на сервер"
+msgid "The crypto engine was unable to encrypt the current message (%Q): %Q, no data sent to the server"
+msgstr "Криптовальная машина не в состоянии зашифровать текущее сообщение (%Q): %s, данные не отосланы на сервер"
 
 #: src/kvirc/ui/kvi_query.cpp:642
-msgid ""
-"The crypto engine was unable to encrypt the current message (%Q): %s, no "
-"data sent to the server"
-msgstr ""
-"Криптовальная машина не в состоянии зашифровать текущее сообщение (%Q): %s, "
-"данные не отосланы на сервер"
+msgid "The crypto engine was unable to encrypt the current message (%Q): %s, no data sent to the server"
+msgstr "Криптовальная машина не в состоянии зашифровать текущее сообщение (%Q): %s, данные не отосланы на сервер"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:263
 msgid "The current network is %Q"
@@ -4751,9 +4555,7 @@ msgstr "CTCP ACTION имеет неопознанную цель %Q"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1111
 #, c-format
-msgid ""
-"The following CTCP PING reply has a broken time identifier \"%S\", don't "
-"trust the displayed time"
+msgid "The following CTCP PING reply has a broken time identifier \"%S\", don't trust the displayed time"
 msgstr "Ответ PING CTCP имеет битый идентификатор времени \"%S\""
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1077
@@ -4769,12 +4571,8 @@ msgid "The following CTCP request has unrecognized target %Q"
 msgstr "Запрос CTCP имеет неопознанную цель %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:726
-msgid ""
-"The following message appears to be encrypted, but the crypto engine failed "
-"to decode it: %Q"
-msgstr ""
-"Появилось следующее шифрованное сообщение, но криптовальная машина не может "
-"его декодировать: %Q"
+msgid "The following message appears to be encrypted, but the crypto engine failed to decode it: %Q"
+msgstr "Появилось следующее шифрованное сообщение, но криптовальная машина не может его декодировать: %Q"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:867
 #: src/kvirc/kernel/kvi_ircconnection.cpp:877
@@ -4782,30 +4580,20 @@ msgid "The local IP address as seen by the IRC server is %Q"
 msgstr "Локальный IP адрес видимый IRC сервером %Q"
 
 #: src/kvilib/file/kvi_packagefile.cpp:695
-msgid ""
-"The package contains compressed data but this executable does not support "
-"compression"
+msgid "The package contains compressed data but this executable does not support compression"
 msgstr "Пакет содержит сжатые данные, но эта сборка не поддерживает сжатие"
 
 #: src/kvilib/file/kvi_packagefile.cpp:619
-msgid ""
-"The package has an invalid version number, it might have been created by a "
-"newer KVIrc"
-msgstr ""
-"Пакет имеет не верный номер версии. Возможно, он создан более новой версией "
-"KVIrc"
+msgid "The package has an invalid version number, it might have been created by a newer KVIrc"
+msgstr "Пакет имеет не верный номер версии. Возможно, он создан более новой версией KVIrc"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:641
 msgid "The problem *might* be caused by an updated DNS entry"
 msgstr "Проблема *возможно* вызвана обновлением DNS"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1502
-msgid ""
-"The recent nickname change from \r!n\r%Q\r to \r!n\r%Q\r caused a query "
-"collision: merging output"
-msgstr ""
-"Недавнее изменение ника у \r!n\r%Q\r to \r!n\r%Q\r является причиной "
-"противоречия окнах приватов: слияние вывода"
+msgid "The recent nickname change from \r!n\r%Q\r to \r!n\r%Q\r caused a query collision: merging output"
+msgstr "Недавнее изменение ника у \r!n\r%Q\r to \r!n\r%Q\r является причиной противоречия окнах приватов: слияние вывода"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:838
 msgid "The remote server replied with "
@@ -4813,27 +4601,19 @@ msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1157
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1174
-msgid ""
-"The scheduled NickServ identification command appears to be broken, please "
-"change the setting"
-msgstr ""
-"Плановая идентификация NickServ не прошла, пожалуйста откорректируйте "
-"настройки"
+msgid "The scheduled NickServ identification command appears to be broken, please change the setting"
+msgstr "Плановая идентификация NickServ не прошла, пожалуйста откорректируйте настройки"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1264
 msgid "The server didn't provide a certificate"
 msgstr "Сервер не имеет сертификата"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:995
-msgid ""
-"The server does not support STARTTLS command. Your connection will NOT be "
-"encrypted"
+msgid "The server does not support STARTTLS command. Your connection will NOT be encrypted"
 msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:891
-msgid ""
-"The server is refusing all the login nicknames: giving up, you must send the "
-"nickname manually"
+msgid "The server is refusing all the login nicknames: giving up, you must send the nickname manually"
 msgstr "Сервер отклоняет вход по всем никам, вы должны послать ник вручную"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1273
@@ -4846,36 +4626,23 @@ msgid "The server seems to have changed the idea about the local hostname"
 msgstr "Сервер кажется хочет изменить хостмаску"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:709
-msgid ""
-"The server seems to support the WATCH notify list method, will try to use it"
-msgstr ""
-"Сервер кажется поддерживает метод WATCH списка уведомлений, пытаюсь это "
-"использовать"
+msgid "The server seems to support the WATCH notify list method, will try to use it"
+msgstr "Сервер кажется поддерживает метод WATCH списка уведомлений, пытаюсь это использовать"
 
 #: src/kvilib/irc/kvi_ircserverdb.cpp:188
-msgid ""
-"The server specification seems to be in the id:<string> form but the "
-"identifier coulnd't be found in the database"
-msgstr ""
-"Спецификация сервера, кажется, находится в id:<string> но идентификатор не "
-"найден в базе данных"
+msgid "The server specification seems to be in the id:<string> form but the identifier coulnd't be found in the database"
+msgstr "Спецификация сервера, кажется, находится в id:<string> но идентификатор не найден в базе данных"
 
 #: src/kvilib/irc/kvi_ircserverdb.cpp:166
-msgid ""
-"The server specification seems to be in the net:<string> but the network "
-"couln't be found in the database"
-msgstr ""
-"Спецификация сервера, кажется, находится в net:<string> но сеть не найдена в "
-"базе данных"
+msgid "The server specification seems to be in the net:<string> but the network couln't be found in the database"
+msgstr "Спецификация сервера, кажется, находится в net:<string> но сеть не найдена в базе данных"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:498
 msgid "The specified bind address (%Q) is not valid"
 msgstr "Связующий адрес (%Q) не действителен"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:503
-msgid ""
-"The specified bind address (%Q) is not valid (the interface it refers to "
-"might be down)"
+msgid "The specified bind address (%Q) is not valid (the interface it refers to might be down)"
 msgstr "Связующий адрес (%Q) не действителен (возможно его интерфейс выключен)"
 
 #: src/kvilib/irc/kvi_ircserverdb.cpp:113
@@ -4889,9 +4656,7 @@ msgstr "IPv4 адрес (%s) не действительный"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:559
 #, c-format
-msgid ""
-"The system-wide IPv4 bind address (%s) is not valid (the interface it refers "
-"to might be down)"
+msgid "The system-wide IPv4 bind address (%s) is not valid (the interface it refers to might be down)"
 msgstr "IPv6 адрес (%s) не действительный (возможно его интерфейс выключен)"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:523
@@ -4901,26 +4666,16 @@ msgstr "IPv6 адрес (%s) не действительный"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:530
 #, c-format
-msgid ""
-"The system-wide IPv6 bind address (%s) is not valid (the interface it refers "
-"to might be down)"
+msgid "The system-wide IPv6 bind address (%s) is not valid (the interface it refers to might be down)"
 msgstr "IPv6 адрес (%s) не действительный (возможно его интерфейс выключен)"
 
 #: src/kvirc/ui/kvi_query.cpp:335
-msgid ""
-"The target of this query has changed from \r!n\r%Q\r [%Q@\r!h\r%Q\r] to \r!n"
-"\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr ""
-"Цель привата изменена с \r!n\r%Q\r [%Q@\r!h\r%Q\r] на \r!n\r%Q\r [%Q@\r!h\r%Q"
-"\r]"
+msgid "The target of this query has changed from \r!n\r%Q\r [%Q@\r!h\r%Q\r] to \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
+msgstr "Цель привата изменена с \r!n\r%Q\r [%Q@\r!h\r%Q\r] на \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1493
-msgid ""
-"The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h"
-"\r%Q\r] changed his nickname to \r!n\r%Q\r"
-msgstr ""
-"Цель привата была утеряна и обнаружилась когда \r!n\r%Q\r [%Q@\r!h\r%Q\r] "
-"сменил свой ник на \r!n\r%Q\r"
+msgid "The target of this query was lost and has been found when \r!n\r%Q\r [%Q@\r!h\r%Q\r] changed his nickname to \r!n\r%Q\r"
+msgstr "Цель привата была утеряна и обнаружилась когда \r!n\r%Q\r [%Q@\r!h\r%Q\r] сменил свой ник на \r!n\r%Q\r"
 
 #: src/kvirc/kernel/kvi_theme.cpp:57
 #, fuzzy
@@ -4950,34 +4705,24 @@ msgstr "KVirc собран без поддержки SSL"
 
 #: src/kvirc/kernel/kvi_theme.cpp:68
 #, fuzzy
-msgid ""
-"This KVIrc executable is too old for this theme (minimum theme engine "
-"version required is %Q while this theme engine has version %s)"
-msgstr ""
-"Установлен KVIrc слишком старой версии. Минимальная требуемая версия для "
-"этого скрипта %Q"
+msgid "This KVIrc executable is too old for this theme (minimum theme engine version required is %Q while this theme engine has version %s)"
+msgstr "Установлен KVIrc слишком старой версии. Минимальная требуемая версия для этого скрипта %Q"
 
 #: src/kvilib/core/kvi_error.cpp:163
 msgid "This executable has been compiled without SSL support"
 msgstr "Эта сборка программы не поддерживает SSL"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:440
-msgid ""
-"This is the first connection in this IRC context: using the global server "
-"setting"
-msgstr ""
-"Это первое подключение в данном IRC контексте: использую глобальные "
-"настройки серверов"
+msgid "This is the first connection in this IRC context: using the global server setting"
+msgstr "Это первое подключение в данном IRC контексте: использую глобальные настройки серверов"
 
 #: src/kvirc/module/kvi_modulemanager.cpp:213
 msgid "This module has no version informations: refusing to load it"
 msgstr "В этом модуле нет информации о версии: отказываюсь загрузить"
 
 #: src/kvirc/module/kvi_modulemanager.cpp:222
-msgid ""
-"This module was compiled for a different KVIrc version and can't be loaded"
-msgstr ""
-"Этот модуль скомпилирован для другой версии KVIrc и не может быть загружен"
+msgid "This module was compiled for a different KVIrc version and can't be loaded"
+msgstr "Этот модуль скомпилирован для другой версии KVIrc и не может быть загружен"
 
 #: src/kvirc/ui/kvi_optionswidget.cpp:49
 msgid "This option is also available as"
@@ -4995,8 +4740,7 @@ msgstr "Сервер поддерживает команду CODEPAGE , она �
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:245
 msgid "This server supports the WATCH notify list method, it will be used"
-msgstr ""
-"Сервер поддерживает метод списка извещений WATCH , он будет использоваться"
+msgstr "Сервер поддерживает метод списка извещений WATCH , он будет использоваться"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:320
 #, c-format
@@ -5013,9 +4757,8 @@ msgid "Tile Met&hod"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:395
-#, fuzzy
 msgid "Tile windows"
-msgstr "&Замостить окна"
+msgstr "Замостить окна"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:396
 msgid "Tiles the MDI windows with the currently selected tile method"
@@ -5033,14 +4776,12 @@ msgstr "Ссылка: %Q"
 
 #: src/kvirc/ui/kvi_menubar.cpp:183
 #: src/kvirc/ui/kvi_toolbar.cpp:86
-#, fuzzy
 msgid "Toolbars"
-msgstr "&Инструменты"
+msgstr "Панели инструментов"
 
 #: src/kvirc/kernel/kvi_actionmanager.cpp:69
-#, fuzzy
 msgid "Tools"
-msgstr "&Инструменты"
+msgstr "Инструменты"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:90
 msgid "Top"
@@ -5072,7 +4813,7 @@ msgstr "Сообщение о входе"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:560
 msgid "Topic was set by %Q"
-msgstr ""
+msgstr "Топик установлен %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:559
 msgid "Topic was set by %Q on %Q"
@@ -5144,9 +4885,7 @@ msgstr "Определение локального адреса через IRC 
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:917
 #, fuzzy
-msgid ""
-"Unable to resolve the local hostname as seen by the IRC server: %Q, using "
-"previously resolved %Q"
+msgid "Unable to resolve the local hostname as seen by the IRC server: %Q, using previously resolved %Q"
 msgstr "IRC сервер видит нас как %Q"
 
 #: src/kvilib/net/kvi_http.cpp:189
@@ -5247,9 +4986,8 @@ msgid "Unknown command"
 msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:51
-#, fuzzy
 msgid "Unknown error"
-msgstr ": Неизвестный пользовательский режим"
+msgstr "Неизвестная ошибка"
 
 #: src/kvilib/core/kvi_error.cpp:58
 #, fuzzy
@@ -5361,23 +5099,20 @@ msgstr "Ошибка криптовальной машины"
 
 #: src/kvirc/ui/kvi_channel.cpp:154
 #: src/kvirc/ui/kvi_channel.cpp:194
-#, fuzzy
 msgid "User List"
-msgstr "Показать список пользователей"
+msgstr "Список пользователей"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:912
 msgid "User Mode"
 msgstr ""
 
 #: src/kvirc/ui/kvi_statusbar.cpp:598
-#, fuzzy
 msgid "User Modes"
-msgstr "Показать список пользователей"
+msgstr "Режимы пользователя"
 
 #: src/kvirc/kernel/kvi_options.cpp:726
-#, fuzzy
 msgid "User action"
-msgstr "Общие действия"
+msgstr "Действия пользователя"
 
 #: src/kvirc/ui/kvi_input.cpp:142
 msgid "User friendly commandline mode<br>See also /help commandline"
@@ -5399,7 +5134,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_statusbar.cpp:586
 msgid "Username"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: src/kvirc/kernel/kvi_options.cpp:818
 #, fuzzy
@@ -5509,10 +5244,7 @@ msgid "WALLOPS from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "CTCP ACTION от \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:756
-msgid ""
-"WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
-"cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name"
-"%c: %Q"
+msgid "WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name%c: %Q"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:930
@@ -5531,9 +5263,7 @@ msgstr ""
 #: src/kvirc/kernel/kvi_ircsocket.cpp:819
 #, fuzzy
 msgid "We can accept auth method 0 (no auth) or 2 (user/pass)"
-msgstr ""
-"Прокси ответило: Аутентификация прошла успешно, использовался метод 2 (логин/"
-"пароль)"
+msgstr "Прокси ответило: Аутентификация прошла успешно, использовался метод 2 (логин/пароль)"
 
 #: src/kvirc/kernel/kvi_options.cpp:746
 #, fuzzy
@@ -5568,9 +5298,8 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_windowlist.cpp:61
 #: src/kvirc/ui/kvi_windowlist_tree.cpp:372
-#, fuzzy
 msgid "Window List"
-msgstr "&Окна"
+msgstr "Окна"
 
 #: src/kvilib/file/kvi_packagefile.cpp:522
 msgid "Writing informational fields"
@@ -5590,18 +5319,15 @@ msgstr "Считываю заголовок пакета..."
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:753
 #: src/kvirc/ui/kvi_input.cpp:260
 #: src/kvirc/ui/kvi_statusbar.cpp:570
-#, fuzzy
 msgid "Yes"
-msgstr "&Да"
+msgstr "Да"
 
 #: src/kvirc/ui/kvi_input.cpp:259
 msgid "Yes, always"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_app.cpp:832
-msgid ""
-"You are about to restore the default script.<br>This will erase any script "
-"changes you have made.<br>Do you wish to proceed?"
+msgid "You are about to restore the default script.<br>This will erase any script changes you have made.<br>Do you wish to proceed?"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_userinput.cpp:140
@@ -5619,9 +5345,7 @@ msgstr ""
 #: src/kvirc/sparser/kvi_sp_literal.cpp:642
 #, fuzzy
 msgid "You have been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] кикнут на \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q"
-"\r]: %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] кикнут на \r!c\r%Q\r by \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/ui/kvi_ctcppagedialog.cpp:102
 msgid "You have been paged by"
@@ -5634,8 +5358,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_console.cpp:512
 msgid ""
-"You have just attempted to close a console window with an active connection "
-"inside.\n"
+"You have just attempted to close a console window with an active connection inside.\n"
 "Are you sure you wish to terminate the connection?"
 msgstr ""
 
@@ -5661,12 +5384,7 @@ msgid "You have set user mode %s"
 msgstr ""
 
 #: src/kvirc/ui/kvi_input.cpp:253
-msgid ""
-"You're about to send a message with %1 lines of text.<br><br>There is "
-"nothing wrong with it, this warning is<br>here to prevent you from "
-"accidentally sending<br>a really large message just because you didn't edit "
-"it<br>properly after pasting text from the clipboard.<br><br>Do you want the "
-"message to be sent?"
+msgid "You're about to send a message with %1 lines of text.<br><br>There is nothing wrong with it, this warning is<br>here to prevent you from accidentally sending<br>a really large message just because you didn't edit it<br>properly after pasting text from the clipboard.<br><br>Do you want the message to be sent?"
 msgstr ""
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:752
@@ -5674,9 +5392,7 @@ msgid "You're not an operator: You may not change channel modes"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:826
-msgid ""
-"You're probably using a broken bouncer or maybe something weird is happening "
-"on the IRC server"
+msgid "You're probably using a broken bouncer or maybe something weird is happening on the IRC server"
 msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1957
@@ -5691,11 +5407,11 @@ msgstr "Сообщение игнорируемого пользователя"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2084
 msgid "Zoom In"
-msgstr ""
+msgstr "Увеличить"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2085
 msgid "Zoom Out"
-msgstr ""
+msgstr "Уменьшить"
 
 #: src/kvirc/kernel/kvi_sslmaster.cpp:124
 #: src/kvirc/kernel/kvi_sslmaster.cpp:147
@@ -5705,14 +5421,12 @@ msgstr ""
 
 #: src/kvirc/kernel/kvi_sslmaster.cpp:117
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the certificate file %s"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_sslmaster.cpp:140
 #, c-format
-msgid ""
-"[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
+msgid "[%s]: [SSL ERROR]: File I/O error while trying to use the private key file %s"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_sslmaster.cpp:114
@@ -5763,7 +5477,7 @@ msgstr "ОШИБКА Сервера: %Q"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:192
 msgid "[PROXY]: %Q"
-msgstr ""
+msgstr "[ПРОКСИ]: %Q"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:215
 #, fuzzy
@@ -5772,11 +5486,11 @@ msgstr "ОШИБКА Сервера: %Q"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:220
 msgid "[SOCKET WARNING]: %Q"
-msgstr ""
+msgstr "[ПРЕДУПРЕЖДЕНИЕ СОКЕТА]: %Q"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:210
 msgid "[SOCKET]: %Q"
-msgstr ""
+msgstr "[СОКЕТ]: %Q"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:182
 #, fuzzy
@@ -5892,8 +5606,7 @@ msgid "[Server parser]: %s"
 msgstr "Этот сервер поддерживает: %s"
 
 #: src/kvirc/sparser/kvi_sparser.cpp:132
-msgid ""
-"[Server parser]: Encountered problems while parsing the following message:"
+msgid "[Server parser]: Encountered problems while parsing the following message:"
 msgstr ""
 
 #: src/kvirc/sparser/kvi_sparser.cpp:134
@@ -6140,9 +5853,7 @@ msgid "quit KVIrc?"
 msgstr "Выход из KVIrc"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:274
-msgid ""
-"r: User with restricted connection (or recipient for messages about rejected "
-"bots)"
+msgid "r: User with restricted connection (or recipient for messages about rejected bots)"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1200
@@ -6243,87 +5954,65 @@ msgstr ""
 
 #~ msgid "%d properties listed"
 #~ msgstr "%d свойств"
-
 #~ msgid "'unset' command used without a variable list"
 #~ msgstr "команда 'unset' используется без списка переменных"
-
 #~ msgid "/me can be used only in channels, queries and DCC chat windows"
 #~ msgstr ""
 #~ "/me может быть использовано только в окнах каналов, приватов и DCC чатов"
-
 #~ msgid "A class can't be a subclass of itself"
 #~ msgstr "Класс не может быть своим подклассом"
-
 #~ msgid ""
 #~ "A pixmap object, an image_id or an image file path is required for this "
 #~ "property"
 #~ msgstr ""
 #~ "Объект pixmap, image_id или файл изображения требуется для этого свойства"
-
 #~ msgid "A popup menu cannot be popped up twice"
 #~ msgstr "Всплывающее меню не может быть показано дважды"
-
 #~ msgid ""
 #~ "Alias names can contain only letters, digits, underscores and '::' "
 #~ "namespace separators"
 #~ msgstr ""
 #~ "Имя алиаса может содержать только цифры, буквы, нижние подчеркивания и "
 #~ "'::' как разделитель пространств имен"
-
 #~ msgid ""
 #~ "Another connection is already in progress in the selected IRC context"
 #~ msgstr "Другое соединение уже запущено в заданном IRC контексте"
-
 #~ msgid "Array index didn't evaluate to an integer"
 #~ msgstr "Индекс массива не определяется как целое число"
-
 #~ msgid ""
 #~ "Array index evaluated to a negative integer (non negative integer "
 #~ "expected)"
 #~ msgstr ""
 #~ "Индекс массива определяется как отрицательное число (а должно быть "
 #~ "положительное)"
-
 #~ msgid "Array reference assert failed: the variable evaluated to type '%Q'"
 #~ msgstr "Ошибка в ссылке массива: переменная определена как типа '%Q'"
-
 #~ msgid "Backward compatibility action for toolbar.define"
 #~ msgstr "Действие обратной совместимости для toolbar.define"
-
 #~ msgid "Broken condition in menu setup: assuming false"
 #~ msgstr "Битое условие в установке меню: принимается ложь"
-
 #~ msgid "Broken epilogue in popup menu '%Q': ignoring"
 #~ msgstr "Битое окончание во всплывающего меню '%Q': проигнорировано"
-
 #~ msgid "Broken icon parameter: ignoring"
 #~ msgstr "Битый аргумент иконки: проигнорировано"
-
 #~ msgid "Broken prologue in popup menu '%Q': ignoring"
 #~ msgstr "Битое начало во всплывающего меню '%Q': проигнорировано"
-
 #~ msgid ""
 #~ "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' "
 #~ "from object '%Q::%Q': disconnecting"
 #~ msgstr ""
 #~ "Битый слот '%Q' в целевом объекте '%Q::%Q' при посылании сигнала '%Q' из "
 #~ "объекта '%Q::%Q': отключен"
-
 #~ msgid "Broken text parameter: assuming empty string"
 #~ msgstr "Битый аргумент текста: очевидно пустая строка"
-
 #~ msgid "Call to undefined command '%Q'"
 #~ msgstr "Вызываемая команда '%Q' не определена"
-
 #~ msgid "Call to undefined function '%Q'"
 #~ msgstr "Обращение к неопределённой функции '%Q'"
-
 #~ msgid "Can't delete a null object reference"
 #~ msgstr "Невозможно удалить ссылку на нулевой объект"
-
 #~ msgid "Can't delete an inexisting object"
 #~ msgstr "Невозможно удалить несуществующий объект"
-
 #~ msgid ""
 #~ "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
 #~ "property is indexed and defined but the returned variant is not valid"
@@ -6331,87 +6020,67 @@ msgstr ""
 #~ "Невозможно найти свойство с именем \"%Q\" для объекта \"%Q\" класса %Q: "
 #~ "свойство приндексировано и определено, но возвращаемое значение не "
 #~ "действительно"
-
 #~ msgid ""
 #~ "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
 #~ "property is indexed but it doesn't really exist"
 #~ msgstr ""
 #~ "Невозможно найти свойство с именем \"%Q\" для объекта \"%Q\" класса %Q: "
 #~ "свойство проиндексировано, но в действительности не существует"
-
 #~ msgid "Can't find the external popup '%Q'; ignoring"
 #~ msgstr "Не найдено всплывающее меню '%Q': проигнорировано"
-
 #~ msgid "Can't find the icon \"%Q\": ignoring"
 #~ msgstr "Не могу найти иконку \"%Q\": проигнорировано"
-
 #~ msgid "Can't find the icon '%Q'"
 #~ msgstr "Не найдена иконка '%Q"
-
 #~ msgid "Can't find the requested image"
 #~ msgstr "Немогу найти запрошенное изображение"
-
 #~ msgid "Can't kill the timer '%Q' since it is not running"
 #~ msgstr "Не могу убить таймер '%Q' так как он не запущен"
-
 #~ msgid "Can't override the builtin class \"%Q\""
 #~ msgstr "Невозможно отменить встроенный класс \"%Q\""
-
 #~ msgid "Can't unload the module: it has locked itself in memory"
 #~ msgstr "Невозможно выгрузить модуль: модуль заблокировал свою память"
-
 #~ msgid ""
 #~ "Cannot call internal object function $%Q (for object named \"%Q\" of "
 #~ "class %Q) from this context"
 #~ msgstr ""
 #~ "Не могу найти объект функции $%Q для объекта с именем \"%Q\" класса %Qиз "
 #~ "этого контекста"
-
 #~ msgid "Cannot find object function $%Q for object named \"%Q\" of class %Q"
 #~ msgstr ""
 #~ "Не могу найти объект функции $%Q для объекта с именем \"%Q\" класса %Q"
-
 #~ msgid ""
 #~ "Cannot find object function $%Q::%Q for object named \"%Q\" of class %Q"
 #~ msgstr ""
 #~ "Не могу найти объект функции $%Q::%Q для объекта с именем \"%Q\" класса %Q"
-
 #~ msgid "Choose a file to parse"
 #~ msgstr "Выберите файл грамматического разбора"
-
 #~ msgid "Class \"%Q\" is not defined"
 #~ msgstr "Класс %Q не определён"
-
 #~ msgid ""
 #~ "Couldn't find a suitable IRC context for the connection, try using -n or -"
 #~ "u"
 #~ msgstr ""
 #~ "Невозможно найти подходящий IRC контекст для соединения, используйте -n "
 #~ "или -u"
-
 #~ msgid "Couln't find base class named \"%Q\""
 #~ msgstr "Не найдено имя базового класса \"%Q\""
 
 #, fuzzy
 #~ msgid "DNS Lookup result for query \"%Q\""
 #~ msgstr "Результат DNS-запроса для \"%s\""
-
 #~ msgid ""
 #~ "Detected a loop in the inheritance tree of the base class \"%Q\": "
 #~ "redefine that class first"
 #~ msgstr ""
 #~ "Обнаружен бесконечный цикл в дереве наследования основного класса \"%Q\": "
 #~ "сначала определите этот класс"
-
 #~ msgid "Empty infinite 'for' loop: fix the script"
 #~ msgstr "Пустой бесконечный цикл 'for': исправьте сценарий"
-
 #~ msgid "Empty instruction block for command evaluation"
 #~ msgstr "Пустой блок инструкций для оценки команды"
-
 #~ msgid "Empty script"
 #~ msgstr "Сценарий пуст"
-
 #~ msgid "Empty target specified"
 #~ msgstr "Определена пустая цель"
 
@@ -6422,7 +6091,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Пустой идентификатор окна указан в стандартном переключателе: "
 #~ "переключение не произведено"
-
 #~ msgid ""
 #~ "Ending index of a multiple parameter identifier is lower or equal to the "
 #~ "starting index. This will evaluate to a single parameter identifier."
@@ -6430,55 +6098,42 @@ msgstr ""
 #~ "Конечный индекс в множестве идентификаторов параметра меньше или равен "
 #~ "начальному индексу. Это принимается как единственный идентификатор "
 #~ "параметра."
-
 #~ msgid "Error in inner alias command call '%Q', called from this context"
 #~ msgstr "Ошибка в псевдониме при обращении к '%Q', вызов из этого контекста"
-
 #~ msgid "Error in inner alias function call '%Q', called from this context"
 #~ msgstr ""
 #~ "Ошибка в псевдониме при обращении к функции '%Q', вызов из этого контекста"
-
 #~ msgid "Error triggered from process callback handler: killing process"
 #~ msgstr "Ошибка запуска процесса из обработчика: процесс убит"
-
 #~ msgid "Error: %Q"
 #~ msgstr "Ошибка: %Q"
-
 #~ msgid "Event handler %Q is broken: disabling"
 #~ msgstr "Обработчик события %Q битый: выключено"
-
 #~ msgid "Failed to load the file '%Q' for parsing"
 #~ msgstr "Ошибка загрузки файла '%Q' для грамматического разбора"
-
 #~ msgid "Failed to send an unknown command as /raw"
 #~ msgstr "Ошибка при отправке неизвестной команды как /RAW"
-
 #~ msgid "Failed to start the process"
 #~ msgstr "Ошибка при запуске процесса"
-
 #~ msgid ""
 #~ "Found 'break' label where a 'case','match','regexp' or 'default' label "
 #~ "was expected"
 #~ msgstr ""
 #~ "Найден 'break' там где ожидается 'case','match','regexp' или 'default'"
-
 #~ msgid "Found an empty namespace in alias name"
 #~ msgstr "Найдено пустое пространство имен в имени алиаса"
-
 #~ msgid ""
 #~ "Found char %q (unicode %x) while looking for the terminating ')' in 'for' "
 #~ "command"
 #~ msgstr ""
 #~ "Найден символ %q (уникод %x) при поиске закрывающей скобки ')' в команде "
 #~ "'for'"
-
 #~ msgid ""
 #~ "Found character %q (unicode %x) where a 'case','match','regexp','default' "
 #~ "or 'break' label was expected"
 #~ msgstr ""
 #~ "Найден символ %q (уникод %x) там где ожидается "
 #~ "'case','match','regexp','default' или 'break'"
-
 #~ msgid ""
 #~ "Found character %q (unicode %x) where a "
 #~ "'prologue','separator','label','popup','item','extpopup' or 'epilogue' "
@@ -6486,77 +6141,62 @@ msgstr ""
 #~ msgstr ""
 #~ "Найден символ %q (уникод %x) там где ожидается "
 #~ "prologue','separator','label','popup','item','extpopup' или 'epilogue'"
-
 #~ msgid "Found character %q (unicode %x) where a 'while' keyword was expected"
 #~ msgstr ""
 #~ "Найден символ %q (уникод %x) там где ожидается ключевое слово 'while'"
-
 #~ msgid "Found character %q (unicode %x) where a function name was expected"
 #~ msgstr "Найден символ '%q' (уникод %x) там где ожидалась инструкция"
-
 #~ msgid "Found character %q (unicode %x) where a variable was expected"
 #~ msgstr "Найден символ %q (уникод %x) там где ожидалась переменная"
-
 #~ msgid ""
 #~ "Found character %q (unicode %x) where an open parenthesis was expected"
 #~ msgstr "Найден символ %q (уникод %x) там где ожидается открытие скобок"
-
 #~ msgid ""
 #~ "Found character '%q' (unicode %x) where '%' or '$' was expected: see /"
 #~ "help foreach for the command syntax"
 #~ msgstr ""
 #~ "Найден символ '%q' (уникод %x) там где ожидался '%' или '$' : смотри /"
 #~ "help foreach для справки по синтаксису"
-
 #~ msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
 #~ msgstr "Найден символ '%q' (уникод %x) там где ожидался слеш '/'"
-
 #~ msgid "Found character '%q' (unicode %x) where an instruction was expected"
 #~ msgstr "Найден символ '%q' (уникод %x) там где ожидалась инструкция"
-
 #~ msgid ""
 #~ "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %"
 #~ "s\" for the command syntax"
 #~ msgstr ""
 #~ "Найденный символ '%q' (уникод 0x%x) где ожидался '%c': смотри \"/help %s"
 #~ "\" для помощи по синтаксису команды"
-
 #~ msgid ""
 #~ "Found empty 'foreach' execution block: maybe you need to fix your script ?"
 #~ msgstr ""
 #~ "Найден пустой исполняемый блок для 'foreach' : может вам нужно поправить "
 #~ "скрипт?"
-
 #~ msgid "Found empty epilogue block: maybe you need to fix the script?"
 #~ msgstr ""
 #~ "Бессмысленный пустой заключительный блок: может вам нужно исправить "
 #~ "скрипт?"
-
 #~ msgid ""
 #~ "Found empty instruction for popup item: maybe you need to fix the script?"
 #~ msgstr ""
 #~ "Бессмысленная пустая инструкция в пункте всплывающего меню: может вам "
 #~ "нужно исправить сценарий?"
-
 #~ msgid "Found empty prologue block: maybe you need to fix the script?"
 #~ msgstr ""
 #~ "Бессмысленный пустой предварительный блок: может вам надо поправить "
 #~ "сценарий?"
-
 #~ msgid ""
 #~ "Found end of input where character '%c' was expected: see \"/help %s\" "
 #~ "for the command syntax"
 #~ msgstr ""
 #~ "Найден конец строки где ожидается символ '%c': смотри \"/help %s\" для "
 #~ "справки по синтаксису команды"
-
 #~ msgid ""
 #~ "Found token '%Q' where a 'case','match','regexp','default' or 'break' "
 #~ "label was expected"
 #~ msgstr ""
 #~ "Найден знак '%Q' там где ожидается 'case','match','regexp','default' или "
 #~ "'break'"
-
 #~ msgid ""
 #~ "Found token '%Q' where a "
 #~ "'prologue','separator','label','popup','item','extpopup' or 'epilogue' "
@@ -6564,208 +6204,151 @@ msgstr ""
 #~ msgstr ""
 #~ "Найден знак '%Q' там где ожидается "
 #~ "'prologue','separator','label','popup','item','extpopup' или 'epilogue'"
-
 #~ msgid "Garbage string after the expression in 'do' command: ignored"
 #~ msgstr "Неправильная строка после выражения в команде 'do': проигнорировано"
-
 #~ msgid "Hash key evaluated to empty string: fix the script"
 #~ msgstr "Хеш ключ является пустой строкой: исправьте сценарий"
-
 #~ msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 #~ msgstr "Ошибочная ссылка на хеш: переменная определена как типа '%Q'"
-
 #~ msgid "Hostname %d: %Q"
 #~ msgstr "Адрес %d: %Q"
-
 #~ msgid "IP address %d: %Q"
 #~ msgstr "IP адрес %d: %Q"
-
 #~ msgid "Inexisting popup \"%Q\""
 #~ msgstr "В существующем всплывающем меню \"%Q\""
-
 #~ msgid "Internal error: pure virtual evaluateReadOnly called"
 #~ msgstr "Внутренняя ошибка: вызов чистой виртуальной evaluateReadOnly"
-
 #~ msgid "Internal error: pure virtual evaluateReadOnlyInObjectScope called"
 #~ msgstr ""
 #~ "Внутренняя ошибка: pure virtual evaluateReadOnlyInObjectScope called"
-
 #~ msgid ""
 #~ "Internal error: trying to evaluate as read-write a read-only data location"
 #~ msgstr ""
 #~ "Внутренняя ошибка: попытка использовать данные в режиме чтение-запись "
 #~ "которые доступны только на чтение"
-
 #~ msgid "Invalid IRC url (%Q)"
 #~ msgstr "Недействительный url IRC (%Q)"
-
 #~ msgid "Invalid color-set specification, using default"
 #~ msgstr ""
 #~ "Недействительное определение цвета, используется значение по умолчанию"
-
 #~ msgid "Invalid command evaluation in object scope"
 #~ msgstr "Недействительна оценка команды в области объекта"
-
 #~ msgid "Invalid data type for parameter \"%s\""
 #~ msgstr "Недействительный тип даты для параметра \"%s\""
-
 #~ msgid "Invalid duration value: using default"
 #~ msgstr ""
 #~ "Недействительное значение продолжительности: используется умолчательное"
-
 #~ msgid "Invalid expression evaluation in object scope"
 #~ msgstr "Недействительна оценка выражения в области объекта"
-
 #~ msgid "Invalid index specified: ignored"
 #~ msgstr "Неверно определён индекс: проигнорировано"
-
 #~ msgid "Invalid pitch value: using default"
 #~ msgstr "Недействительное значение тона: используется умолчательное"
-
 #~ msgid "Invalid syntax for screen coordinates, using cursor position"
 #~ msgstr ""
 #~ "Недействительный синтаксис координат экрана, используется позиция курсора"
-
 #~ msgid "Lag meter was not enabled"
 #~ msgstr "Измерение задержки не включено"
-
 #~ msgid "Left operand didn't evaluate to a number"
 #~ msgstr "Левый операнд не определён как число"
 
 #, fuzzy
 #~ msgid "List of active timers"
 #~ msgstr "активные пользователи"
-
 #~ msgid "Listing Qt properties for object named \"%Q\" of KVS class %Q"
 #~ msgstr "Список QT-свойств для объекта \"%Q\" KVS класса %Q"
-
 #~ msgid "Missing alias name"
 #~ msgstr "Отсутствует имя псевдонима"
-
 #~ msgid "Missing channel list"
 #~ msgstr "Утерян список каналов"
-
 #~ msgid "Missing class name"
 #~ msgstr "Пропущено имя класса"
-
 #~ msgid "Missing non-optional parameter \"%s\""
 #~ msgstr "Отсутствует обязательный параметр \"%s\""
-
 #~ msgid "Missing parameter"
 #~ msgstr "Параметр отсутствует"
-
 #~ msgid "Missing right operand for operator '"
 #~ msgstr "Отсутствует правый операнд для оператора '"
-
 #~ msgid "Missing right operand for operator '+='"
 #~ msgstr "Отсутствует правый операнд для оператора '+='"
-
 #~ msgid "Missing right operand for operator '-='"
 #~ msgstr "Отсутствует правый операнд для оператора '-='"
-
 #~ msgid "Missing right operand for operator '.='"
 #~ msgstr "Отсутствует правый операнд для оператора '.='"
-
 #~ msgid "Missing right operand for operator '<+'"
 #~ msgstr "Отсутствует правый операнд для оператора '<+'"
-
 #~ msgid "Missing right operand for operator '<,'"
 #~ msgstr "Отсутствует правый операнд для оператора '<,'"
-
 #~ msgid "Missing right operand for operator '<<'"
 #~ msgstr "Отсутствует правый операнд для оператора '<<'"
-
 #~ msgid "Missing right operand for operator '<<='"
 #~ msgstr "Отсутствует правый операнд для оператора '<<='"
-
 #~ msgid "Missing right operand for operator '>>='"
 #~ msgstr "Отсутствует правый операнд для оператора '>>='"
-
 #~ msgid "Missing right side operand for the binding operator '=~'"
 #~ msgstr "Отсутствует крайний правый операнд для оператора '=~'"
-
 #~ msgid "Missing timeout delay"
 #~ msgstr "Отсутствует задержка времени"
-
 #~ msgid "Missing timer name"
 #~ msgstr "Отсутствует имя таймера"
-
 #~ msgid "Module command call failed: can't load the module '%Q': %Q"
 #~ msgstr "Ошибка команды вызова модуля: не возможно загрузить модуль '%Q': %Q"
-
 #~ msgid "Module command call failed: can't load the module 'snd'"
 #~ msgstr "Ошибка команды вызова модуля: не возможно загрузить модуль 'snd'"
-
 #~ msgid ""
 #~ "Module command call failed: the module '%Q' doesn't export a callback "
 #~ "command named '%Q'"
 #~ msgstr ""
 #~ "Ошибка команды вызова модуля: модуль '%Q' не может предоставить команду с "
 #~ "именем '%Q'"
-
 #~ msgid ""
 #~ "Module command call failed: the module '%Q' doesn't export a command "
 #~ "named '%Q'"
 #~ msgstr ""
 #~ "Ошибка команды вызова модуля: модуль '%Q' не может предоставить команду с "
 #~ "именем '%Q'"
-
 #~ msgid ""
 #~ "Module command call failed: the module 'snd' doesn't export a command "
 #~ "named 'play'"
 #~ msgstr ""
 #~ "Ошибка команды вызова модуля: модуль 'snd' не может предоставить команду "
 #~ "с именем 'play'"
-
 #~ msgid "Module function call failed: can't load the module '%Q': %Q"
 #~ msgstr ""
 #~ "Ошибка обращения к функциональному модулю: не могу загрузить модуль '%Q': "
 #~ "%Q"
-
 #~ msgid ""
 #~ "Module function call failed: the module '%Q' doesn't export a function "
 #~ "named '%Q'"
 #~ msgstr ""
 #~ "Ошибка обращения к функциональному модулю: модуль '%Q' не предоставляет "
 #~ "функцию с именем '%Q'"
-
 #~ msgid ""
 #~ "Nested character %q corresponding to expected terminator, this might "
 #~ "confuse me a bit: it is a good idea to enclose it in quotes"
 #~ msgstr ""
 #~ "Вложенный символ %q соответствует ожидаемому признаку окончания, лучше "
 #~ "заключать это в кавычки"
-
 #~ msgid "No Qt property named \"%Q\" for object named \"%Q\" of class %Q"
 #~ msgstr "Нет QT-свойства с именем \"%Q\" для объекта \"%Q\" класса %Q"
-
 #~ msgid "No button with type %Q named %Q"
 #~ msgstr "Нет кнопки типа %Q с именем %Q"
-
 #~ msgid "No catalogue %Q for the current language found"
 #~ msgstr "Каталог текущего языка %Q не найден"
-
 #~ msgid "No commandline specified for this type of url (%Q)"
 #~ msgstr "Не определена для типа url (%Q)"
-
 #~ msgid "No handler '%Q' for event '%Q'"
 #~ msgstr "Нет обработчика '%Q' для события '%Q'"
-
 #~ msgid "No handler '%Q' for raw numeric event '%d'"
 #~ msgstr "Нет обработчика '%Q' для заготовки события с номером '%d'"
-
 #~ msgid "No menu bar item with text '%Q'"
 #~ msgstr "Нет пункта меню с текстом '%Q'"
-
 #~ msgid "No such IRC context (%u)"
 #~ msgstr "Нет такого контекста IRC (%u)"
-
 #~ msgid "No such event (%Q)"
 #~ msgstr "Нет такого события (%Q)"
-
 #~ msgid "No such event handler (%Q) for event %Q"
 #~ msgstr "Нет обработчика '%Q для события '%Q"
-
 #~ msgid "No target channel specified and the current window is not a channel"
 #~ msgstr "Не задан канал, и текущее окно не является окном канала"
 
@@ -6777,96 +6360,74 @@ msgstr ""
 #, fuzzy
 #~ msgid "None"
 #~ msgstr "(Ничего)"
-
 #~ msgid "Notify list: Checking for:%Q"
 #~ msgstr "Список уведомлений: Проверка для:%Q"
-
 #~ msgid "Objects have no extended scope variables"
 #~ msgstr "Объект не имеет расширенных значений"
-
 #~ msgid "Operand of unary operator didn't evaluate to a number"
 #~ msgstr "Операнд унарного оператора не определён как число"
-
 #~ msgid ""
 #~ "Option setting error: Unknown option or invalid value for option type"
 #~ msgstr ""
 #~ "Ошибка опции настроек: Неизвестная опция или недействительное значение "
 #~ "для опции этого типа"
-
 #~ msgid ""
 #~ "Parameter identifiers are forbidden in object scope (after the '->' "
 #~ "operator)"
 #~ msgstr ""
 #~ "Идентификаторы параметров запрещены в области объекта (после оператора '-"
 #~ ">')"
-
 #~ msgid "Popup %Q is not defined"
 #~ msgstr "Всплывающее меню %Q не определено"
-
 #~ msgid ""
 #~ "Popup menu self-modification is not allowed (the popup is probably open)"
 #~ msgstr ""
 #~ "Самомодификация всплывающего меню не допускается (всплывающее меню "
 #~ "вероятно открыто)"
-
 #~ msgid "Properties for Qt class %s"
 #~ msgstr "Свойства QT-класса %s"
-
 #~ msgid ""
 #~ "Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported "
 #~ "data type"
 #~ msgstr ""
 #~ "Свойство \"%Q\" для объекта \"%Q\" класса %Q имеет не поддерживаемый тип "
 #~ "даты"
-
 #~ msgid "Property: %c%Q%c, type %Q"
 #~ msgstr "Свойство: %c%Q%c, тип %Q"
-
 #~ msgid "Recursive definition detected for popup '%Q': ignoring"
 #~ msgstr ""
 #~ "Рекурсивное определение обнаружено для всплывающего меню '%Q': "
 #~ "проигнорировано"
-
 #~ msgid "Right operand didn't evaluate to a number"
 #~ msgstr "Правый операнд не определён как число"
-
 #~ msgid "Say parse error: Broken command"
 #~ msgstr "Ошибка грамматического разбора: Битая команда"
-
 #~ msgid "Senseless empty switch command: fix the script"
 #~ msgstr "Бессмысленная пустая команда: исправьте сценарий"
-
 #~ msgid "Skipping nested terminator character %q"
 #~ msgstr "Пропуск вложенного символа окончания %q"
-
 #~ msgid ""
 #~ "Slot target object destroyed while emitting signal '%Q' from object '%Q::%"
 #~ "Q'"
 #~ msgstr ""
 #~ "Слот целевого объекта разрушился при испускании сигнала '%Q' из объекта '%"
 #~ "Q::%Q'"
-
 #~ msgid ""
 #~ "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 #~ msgstr "':' в имени алиаса. Может быть вы имели ввиду <namespace>::<name> ?"
-
 #~ msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 #~ msgstr ""
 #~ "Символ ':' не на своём месте: он должен быть в середине выражения ."
 #~ "<namespace>::<alias_name>'"
-
 #~ msgid "Stray '::' sequence or invalid following alias name"
 #~ msgstr ""
 #~ "Потерянная последовательность '::' или недопустимое последующее имя алиаса"
-
 #~ msgid "Stray backslash at the end of the script"
 #~ msgstr "Лишний обратный слеш в конце сценария"
-
 #~ msgid "Stray dot ('.') character or invalid following module command name"
 #~ msgstr ""
 #~ "Лишняя точка ('.'), символ или недействительное последующее имя команды "
 #~ "модуля"
-
 #~ msgid ""
 #~ "Syntax error after '$' function call prefix. If you want to use a plain "
 #~ "'$' in the code you need to escape it"
@@ -6874,7 +6435,6 @@ msgstr ""
 #~ "Синтаксическая ошибка после префикса функции '$'. Если вы хотите "
 #~ "использовать просто символ '$' в вашем коде - используйте escape-"
 #~ "последовательность"
-
 #~ msgid ""
 #~ "Syntax error after '%' variable prefix. If you want to use a plain '%' in "
 #~ "the code you need to escape it"
@@ -6882,325 +6442,245 @@ msgstr ""
 #~ "Синтаксическая ошибка в начале переменной '%'. Если вы хотите "
 #~ "использовать просто '%' в вашем коде, вам нужно использовать escape-"
 #~ "последовательность"
-
 #~ msgid "Syntax error: confused by earlier errors: bailing out"
 #~ msgstr ""
 #~ "Синтаксическая ошибка: обусловлена более ранними ошибками: bailing out"
-
 #~ msgid "Syntax error: invalid $$ ($this) function call in object scope"
 #~ msgstr ""
 #~ "Синтаксическая ошибка: недействительный $$ ($this) вызов функции в "
 #~ "пределах объекта"
-
 #~ msgid "Syntax error: malformed (alias?) command identifier"
 #~ msgstr "Синтаксическая ошибка: неверный (алиас?) идентификатор команды"
-
 #~ msgid "Syntax error: malformed (alias?) function call identifier"
 #~ msgstr ""
 #~ "Синтаксическая ошибка: неверный (алиас?) идентификатор вызова функции"
-
 #~ msgid "Syntax error: malformed alias function call identifier"
 #~ msgstr "Синтаксическая ошибка: неверный идентификатор вызова функции"
-
 #~ msgid "Syntax error: malformed alias identifier"
 #~ msgstr "Синтаксическая ошибка: неверно сформировано имя алиаса"
-
 #~ msgid "Syntax error: malformed module command identifier"
 #~ msgstr ""
 #~ "Синтаксическая ошибка: неверно сформированный командный идентификатор "
 #~ "модуля"
-
 #~ msgid "Taskbar"
 #~ msgstr "Панель задач(панель списка окон)"
-
 #~ msgid "The $sw() function can be used only in aliases"
 #~ msgstr "Функция $sw() может использоваться только в псевдонимах"
-
 #~ msgid "The 'defpopup' command needs an expression enclosed in parenthesis"
 #~ msgstr "Команде 'defpopup' требуется выражение в круглых скобках"
-
 #~ msgid "The 'for' command needs an expression enclosed in parenthesis"
 #~ msgstr "Команде 'for' требуется выражение в круглых скобках"
-
 #~ msgid ""
 #~ "The 'foreach' command expects a comma separated list of iteration data "
 #~ "items after the first parameter"
 #~ msgstr ""
 #~ "Команда 'foreach' ожидает запятую, разделяющую список пунктов данных "
 #~ "итерации после первого аргумента"
-
 #~ msgid ""
 #~ "The 'foreach' command expects a writeable iteration variable as first "
 #~ "parameter"
 #~ msgstr ""
 #~ "Команда 'foreach' ожидает для записи переменную итерации как первый "
 #~ "аргумент"
-
 #~ msgid "The 'foreach' command needs an expression enclosed in parenthesis"
 #~ msgstr "Команде 'foreach' требуется выражение в круглых скобках"
-
 #~ msgid "The 'global' command needs a variable list"
 #~ msgstr "Команде 'global' нужен список переменных"
-
 #~ msgid "The 'if' command needs an expression enclosed in parenthesis"
 #~ msgstr "Команде 'if' требуется выражение в круглых скобках"
-
 #~ msgid "The 'switch' command needs an expression enclosed in parenthesis"
 #~ msgstr "Команде 'switch' требуется выражение в круглых скобках"
-
 #~ msgid "The 'unset' command needs a variable list"
 #~ msgstr "Команда 'unset' требует список переменных"
-
 #~ msgid ""
 #~ "The 'while' block of the 'do' command needs an expression enclosed in "
 #~ "parenthesis"
 #~ msgstr "Блоку 'while' команды 'do' требуется выражение в круглых скобках"
-
 #~ msgid ""
 #~ "The above problem might be related to the switch dash and the following "
 #~ "equal sign"
 #~ msgstr ""
 #~ "Указанная проблема могла быть обусловлена тире и следующим знаком "
 #~ "равенства"
-
 #~ msgid "The alias %Q is not existing"
 #~ msgstr "Псевдоним %Q не существует"
-
 #~ msgid ""
 #~ "The argument of the -w switch did not evaluate to a valid window id: "
 #~ "using default"
 #~ msgstr ""
 #~ "Аргумент ключа -w не является действительным ID окна: используется "
 #~ "дефолтный"
-
 #~ msgid ""
 #~ "The argument of the [] subscript didn't evaluate to an array: automatic "
 #~ "conversion from %Q supplied"
 #~ msgstr ""
 #~ "Аргумент с индексом [] не определяется как массив: автоматически "
 #~ "преобразовано в %Q"
-
 #~ msgid ""
 #~ "The argument of the [] subscript didn't evaluate to an array: automatic "
 #~ "conversion from type '%Q' supplied"
 #~ msgstr ""
 #~ "Аргумент с индексом [] не определяется как массив: автоматически "
 #~ "преобразовано в тип %Q"
-
 #~ msgid ""
 #~ "The argument of the array count '#' operator didn't evaluate to an array: "
 #~ "automatic conversion from type '%Q' supplied"
 #~ msgstr ""
 #~ "Аргумент счёта массива '#' не определяется как массив: автоматически "
 #~ "преобразовано в тип %Q"
-
 #~ msgid ""
 #~ "The argument of the hash count '#' operator didn't evaluate to a hash: "
 #~ "automatic conversion from type '%Q' supplied"
 #~ msgstr ""
 #~ "Аргумент счёта хеша не определяется как хеш: автоматически преобразовано "
 #~ "в тип %Q"
-
 #~ msgid ""
 #~ "The argument of the i switch did not evaluate to a number: using default"
 #~ msgstr "Аргумент ключа i не является числом: используется по умолчанию"
-
 #~ msgid ""
 #~ "The argument of the {} subscript didn't evaluate to a hash automatic "
 #~ "conversion from %Q supplied"
 #~ msgstr ""
 #~ "Аргумент с {} не определяется как хеш: автоматически преобразовано в %Q"
-
 #~ msgid ""
 #~ "The argument of the {} subscript didn't evaluate to a hash: automatic "
 #~ "conversion from type '%Q' supplied"
 #~ msgstr ""
 #~ "Аргумент с {} не определяется как хеш: автоматически преобразовано в тип %"
 #~ "Q"
-
 #~ msgid "The catalogue %Q was not loaded"
 #~ msgstr "Каталог %Q не загружен"
-
 #~ msgid "The commandline for this url type seems to be broken (%Q)"
 #~ msgstr "Команда для этого типа url кажется битая (%Q)"
-
 #~ msgid "The current window is not a channel"
 #~ msgstr "Текущее окно не является каналом"
 
 #, fuzzy
 #~ msgid "The current window is not a channel, a query or a console"
 #~ msgstr "Текущее окно не является каналом"
-
 #~ msgid ""
 #~ "The dash after a command should be followed by a letter (switch), by a "
 #~ "digit (negative number) or be escaped"
 #~ msgstr ""
 #~ "Черта после команды должна сопровождаться буквой (ключ), цифрой "
 #~ "(отрицательное число) или escaped"
-
 #~ msgid ""
 #~ "The last if command in the buffer has no conditional instructions: it's "
 #~ "senseless"
 #~ msgstr ""
 #~ "Последняя команда в буфере не имеет условных инструкций: это бессмысленно"
-
 #~ msgid ""
 #~ "The last while command in the buffer has no conditional instructions: "
 #~ "it's senseless"
 #~ msgstr ""
 #~ "Последняя команда в буфере не имеет условной инструкции: это бессмысленно"
-
 #~ msgid "The left side of operator '%=' didn't evaluate to a number"
 #~ msgstr "Левая часть оператора '%=' не является числом"
-
 #~ msgid "The left side of operator '&=' didn't evaluate to an integer"
 #~ msgstr "Левая часть оператора '&=' не является целым числом"
-
 #~ msgid "The left side of operator '*=' didn't evaluate to a number"
 #~ msgstr "Левая часть оператора '*=' не является числом"
-
 #~ msgid "The left side of operator '+=' didn't evaluate to a number"
 #~ msgstr "Левая часть оператора '+=' не является числом"
-
 #~ msgid "The left side of operator '-=' didn't evaluate to a number"
 #~ msgstr "Левая часть оператора '-=' не является числом"
-
 #~ msgid "The left side of operator '/=' didn't evaluate to a number"
 #~ msgstr "Левая часть оператора '/=' не является числом"
-
 #~ msgid "The left side of operator '<<=' didn't evaluate to an integer"
 #~ msgstr "Левая часть оператора '<<=' не является целым числом"
-
 #~ msgid "The left side of operator '>>=' didn't evaluate to an integer"
 #~ msgstr "Левая часть оператора '>>=' не является целым числом"
-
 #~ msgid "The left side of operator '^=' didn't evaluate to an integer"
 #~ msgstr "Левая часть оператора '^=' не является целым числом"
-
 #~ msgid "The left side of operator '|=' didn't evaluate to an integer"
 #~ msgstr "Левая часть оператора '|=' не является целым числом"
-
 #~ msgid ""
 #~ "The left side of the scope operator didn't evaluate as an object reference"
 #~ msgstr "В левой части оператора не задана ссылка на объект"
-
 #~ msgid ""
 #~ "The left side of the scope operator evaluated to a null object reference"
 #~ msgstr "В левой части оператора задана нулевая ссылка на объект"
-
 #~ msgid ""
 #~ "The left side of the scope operator evaluated to an invalid object "
 #~ "reference (object doesn't exist)"
 #~ msgstr ""
 #~ "В левой части оператора задана недействительная ссылка на объект (объект "
 #~ "не существует)"
-
 #~ msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
 #~ msgstr "Пункт меню с ID \"%Q\" не существует во всплывающем меню \"%Q\""
-
 #~ msgid "The object named \"%Q\" of class %Q has no Qt properties"
 #~ msgstr "Объект \"%Q\" класса %Q не является Qt-свойством"
-
 #~ msgid "The popup '%Q' is not defined"
 #~ msgstr "Всплывающее меню '%Q' не определено"
-
 #~ msgid ""
 #~ "The popup '%s' is actually locked: 'self-modifications' are not allowed"
 #~ msgstr ""
 #~ "Всплывающее меню '%s' фактически заблокировано: самомодификация не "
 #~ "допустима"
-
 #~ msgid ""
 #~ "The property is of type %s but the supplied argument can't be converted "
 #~ "to that type (expecting \"%s\")"
 #~ msgstr ""
 #~ "Свойство имеет тип %s, но предоставляемый аргумент не может быть приведён "
 #~ "этому типу (ожидается \"%s\")"
-
 #~ msgid ""
 #~ "The regular expression matched a zero-length substring: this is not valid "
 #~ "in the s/// operator, skipping"
 #~ msgstr ""
 #~ "Регулярное выражение содержит подстроку нулевой длинны: это "
 #~ "недействительно в операторе s/// , пропущено"
-
 #~ msgid "The right side of operator '%=' didn't evaluate to a number"
 #~ msgstr "Правая часть оператора '%=' не является числом"
-
 #~ msgid "The right side of operator '&=' didn't evaluate to an integer"
 #~ msgstr "Правая часть оператора '&=' не является целым числом"
-
 #~ msgid "The right side of operator '*=' didn't evaluate to a number"
 #~ msgstr "Правая часть оператора '*=' не является числом"
-
 #~ msgid "The right side of operator '+=' didn't evaluate to a number"
 #~ msgstr "Правая часть оператора '+=' не является числом"
-
 #~ msgid "The right side of operator '-=' didn't evaluate to a number"
 #~ msgstr "Правая часть оператора '-=' не является числом"
-
 #~ msgid "The right side of operator '/=' didn't evaluate to a number"
 #~ msgstr "Правая часть оператора '/=' не является числом"
-
 #~ msgid "The right side of operator '<<=' didn't evaluate to an integer"
 #~ msgstr "Правая часть оператора '<<=' не является целым числом"
-
 #~ msgid "The right side of operator '>>=' didn't evaluate to an integer"
 #~ msgstr "Правая часть оператора '>>=' не является целым числом"
-
 #~ msgid "The right side of operator '^=' didn't evaluate to an integer"
 #~ msgstr "Правая часть оператора '^=' не является целым числом"
-
 #~ msgid "The right side of operator '|=' didn't evaluate to an integer"
 #~ msgstr "Правая часть оператора '|=' не является целым числом"
-
 #~ msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 #~ msgstr ""
 #~ "Заданное максимальное время выполнения не действительно: принимается 0 "
 #~ "(бесконечно)"
-
 #~ msgid "The specified object does not exist"
 #~ msgstr "Указанный объект не существует"
-
 #~ msgid "The specified parent object does not exist"
 #~ msgstr "Заданный родительский объект не существует"
-
 #~ msgid "The specified ping time is invalid: assuming zero (no ping)"
 #~ msgstr "Заданное время пинга не действительно: принимается 0 (без пинга)"
-
 #~ msgid "The specified window has no button containers"
 #~ msgstr "Заданное окно не имеет контейнеров с кнопками"
-
 #~ msgid "The specified window is not a channel"
 #~ msgstr "Заданное окно не является каналом"
-
 #~ msgid "The target variable didn't evaluate to an integer or real value"
 #~ msgstr "Целевая переменная не определена как целое или реальное значение"
-
 #~ msgid "The timeout delay didn't evaluate to an integer"
 #~ msgstr "Таймаут не является целым числом"
-
 #~ msgid "The while command needs an expression enclosed in parenthesis"
 #~ msgstr "Команде while необходимо выражение в круглых скобках"
-
 #~ msgid "There are no extended scope variables in this scope"
 #~ msgstr "Нет переменных расширенной области в этой области"
-
 #~ msgid "There is no option named '%Q'"
 #~ msgstr "Нет опции с именем '%Q"
-
 #~ msgid "This command can be used only in windows bound to an IRC context"
 #~ msgstr "Эта команда может быть использована только в IRC контексте"
-
 #~ msgid "This is not a channel"
 #~ msgstr "Это не канал"
-
 #~ msgid "This window has no associated IRC context"
 #~ msgstr "Это окно не ассоциировано с контекстом IRC"
-
 #~ msgid "This window has no associated IRC context and is not a DCC chat"
 #~ msgstr "Это окно не связано с контекстом IRC и не является DCC чатом"
-
 #~ msgid "This window is not associated to an IRC context"
 #~ msgstr "Это окно не ассоциировано с контекстом IRC"
 
@@ -7263,3 +6743,4 @@ msgstr ""
 #, fuzzy
 #~ msgid "taskbar"
 #~ msgstr "Панель задач(панель списка окон)"
+
