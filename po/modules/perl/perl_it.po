@@ -1,3 +1,4 @@
+# translation of perl_it.po to Italian
 # translation of perl_it.po to
 # translation of perl_it.po
 # KVIrc Perl module Italian translation file
@@ -14,18 +15,18 @@ msgstr ""
 "Project-Id-Version: perl_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-27 20:25+0100\n"
-"PO-Revision-Date: 2006-02-16 01:12+0100\n"
-"Last-Translator: Nate Grey <nate@entropica.info>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2009-01-27 21:09+0100\n"
+"Last-Translator: \n"
+"Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.1\n"
+"X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/perlcore/libkviperlcore.cpp:236
 msgid "Internal error: perl interpreter not initialized"
-msgstr ""
+msgstr "Errore interno: interprete perl non inizializzato"
 
 #: src/modules/perl/libkviperl.cpp:477 src/modules/perl/libkviperl.cpp:481
 msgid "Perl execution error:"
@@ -33,15 +34,13 @@ msgstr "Errore nell'esecuzione perl:"
 
 #: src/modules/perl/libkviperl.cpp:47
 msgid "The perlcore module can't be loaded: perl support not available"
-msgstr ""
-"Impossibile caricare il module perlcode: il supporto perl non è disponibile"
+msgstr "Impossibile caricare il module perlcode: il supporto perl non è disponibile"
 
 #: src/modules/perl/libkviperl.cpp:460 src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"
-msgstr ""
-"Il modulo perlcore non ha eseguito il codice: il supporto perl è sbagliato"
+msgstr "Il modulo perlcore non ha eseguito il codice: il supporto perl è sbagliato"
 
 #: src/modules/perl/libkviperl.cpp:61
 msgid "This KVIrc executable has been compiled without perl scripting support"
@@ -50,3 +49,4 @@ msgstr "Questo eseguibile KVIrc è stato compilato senza il supporto perl"
 #: src/modules/perl/libkviperl.cpp:48
 msgid "To see more details about loading failure try /perlcore.load"
 msgstr "Per altri dettagli sul fallimento del caricamento prova /perlcore.load"
+
