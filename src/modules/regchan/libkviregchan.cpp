@@ -209,7 +209,7 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 			KviPointerHashTableIterator<const char *,KviStr> pit(*(ch->propertyDict()));
 			while(KviStr * s = pit.current())
 			{
-				c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("   Property: %s=%s"),pit.currentKey(),s->ptr());
+				c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("    Property: %s=%s"),pit.currentKey(),s->ptr());
 				++pit;
 			}
 		}

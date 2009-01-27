@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-27 14:59+0100\n"
-"PO-Revision-Date: 2008-11-18 16:42+0100\n"
+"PO-Revision-Date: 2009-01-27 16:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -61,10 +61,8 @@ msgstr ""
 "esadecimale, un nome di colore o tre interi"
 
 #: src/modules/objects/class_widget.cpp:1135
-msgid ""
-"$setGeometry() requires either an array as first parameter or four integers"
-msgstr ""
-"$setGeometry() richiede sia un array come primo parametro o quattro interi"
+msgid "$setGeometry() requires either an array as first parameter or four integers"
+msgstr "$setGeometry() richiede sia un array come primo parametro o quattro interi"
 
 #: src/modules/objects/class_http.cpp:247
 msgid "'%Q' is not a valid file path"
@@ -77,8 +75,7 @@ msgstr "Un'altra connessione in corso"
 
 #: src/modules/objects/class_pixmap.cpp:278
 msgid "Area dimensions are out of destination size "
-msgstr ""
-"Le dimensioni dell'area sono più grandi della grandezza di destinazione"
+msgstr "Le dimensioni dell'area sono più grandi della grandezza di destinazione"
 
 #: src/modules/objects/class_file.cpp:321
 msgid "Argument too long, using only first char"
@@ -95,8 +92,7 @@ msgstr "Bind fallito"
 
 #: src/modules/objects/class_file.cpp:516
 msgid "Block parameter must be a string or a memorybuffer object"
-msgstr ""
-"Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
+msgstr "Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
 
 #: src/modules/objects/class_pixmap.cpp:216
 #: src/modules/objects/class_file.cpp:374
@@ -380,9 +376,9 @@ msgid "No string parameter given - using empty string"
 msgstr "Nessun parametro stringa dato - uso una stringa vuota"
 
 #: src/modules/objects/class_multilineedit.cpp:397
-#, fuzzy, c-format
+#, c-format
 msgid "No such line '%d'"
-msgstr "Nessun numero di linea"
+msgstr "Nessuna linea '%d'"
 
 #: src/modules/objects/class_file.cpp:249
 msgid "No such open mode '%Q'"
@@ -460,8 +456,7 @@ msgstr "Uno dei parametri dell'array move è vuoto"
 
 #: src/modules/objects/class_widget.cpp:1632
 msgid "One of the resize array parameters didn't evaluate to an integer"
-msgstr ""
-"Uno dei parametri dell'array ridimensionamento non viene valutato come intero"
+msgstr "Uno dei parametri dell'array ridimensionamento non viene valutato come intero"
 
 #: src/modules/objects/class_widget.cpp:1627
 msgid "One of the resize array parameters is empty"
@@ -644,8 +639,7 @@ msgid "There is no connection to accept!"
 msgstr "Non ci sono connessioni da accettare!"
 
 #: src/modules/objects/class_socket.cpp:1198
-msgid ""
-"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""
 "Troppi dati non processati in arrivo (hai lasciato la socket senza "
 "controllo?)"
@@ -804,45 +798,3 @@ msgstr "Errore in scrittura!"
 msgid "XML support not available in the Qt library"
 msgstr "Il supporto XML non è disponibile nella libreria Qt"
 
-#~ msgid ""
-#~ "$setColor requires either an array as first parameter or three integers"
-#~ msgstr "$setColor richiede sia un array come primo parametro o tre interi"
-
-#~ msgid "A string of 6 hex digits is required"
-#~ msgstr "E' richiesta una stringa di 6 cifre esadecimali"
-
-#~ msgid ""
-#~ "Error occured: the suitable file '%Q' is not of the correct format or it "
-#~ "is not a valid icon number."
-#~ msgstr ""
-#~ "Errore: il file '%Q' non è nel formato corretto o non è un valido numero "
-#~ "di icona"
-
-#~ msgid "I cannot read the file '%Q'."
-#~ msgstr "Non posso leggere il file '%Q'."
-
-#~ msgid "Not an hex digit"
-#~ msgstr "Non è una cifra esadecimale"
-
-#~ msgid "Pixmap object or image Id required"
-#~ msgstr "Oggetto pixmap o id immagine richiesto"
-
-#~ msgid "The listviewitem cannot be parentless"
-#~ msgstr "L'elemento della listview non può essere senza padre"
-
-#~ msgid ""
-#~ "The parent of the listwidgetitem must be either another listwidgetitem or "
-#~ "a listwidget"
-#~ msgstr ""
-#~ "Il padre di un oggetto di una listwidget deve essere o un altro elemento "
-#~ "della listwidget o una listwidget"
-
-#~ msgid "Unknown item flag '%Q'"
-#~ msgstr "Flag elemento '%Q' sconosciuta"
-
-#, fuzzy
-#~ msgid "Unknown word wrap '%Q'"
-#~ msgstr "Gruppo Colore '%Q' sconosciuto"
-
-#~ msgid "unknown"
-#~ msgstr "sconosciuto"

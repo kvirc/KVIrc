@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-27 14:59+0100\n"
-"PO-Revision-Date: 2008-11-18 16:43+0100\n"
+"PO-Revision-Date: 2009-01-27 16:31+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -119,8 +119,7 @@ msgstr "Griglia 3D"
 
 #: src/modules/options/optw_textencoding.cpp:84
 msgid "<b>Note:</b> You need to restart KVirc to apply a language changing"
-msgstr ""
-"<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
+msgstr "<b>Nota:</b>La nuova lingua sarà applicata al prossimo riavvio di KVIrc"
 
 #: src/modules/options/optw_urlhandlers.cpp:76
 msgid "<b>file://</b> handler command:"
@@ -250,10 +249,8 @@ msgstr ""
 "\"<b>Aggiungi</b>\".</center>"
 
 #: src/modules/options/optw_servers.cpp:1176
-msgid ""
-"<center>Hit this button to connect to the currently selected server.</center>"
-msgstr ""
-"<center>Premi questo pulsante per connetterti al server selezionato.</center>"
+msgid "<center>Hit this button to connect to the currently selected server.</center>"
+msgstr "<center>Premi questo pulsante per connetterti al server selezionato.</center>"
 
 #: src/modules/options/optw_servers.cpp:533
 msgid ""
@@ -931,8 +928,7 @@ msgstr ""
 "(100 KB)</center>"
 
 #: src/modules/options/optw_servers.cpp:1150
-msgid ""
-"<center>This is the name of the currently selected server or network</center>"
+msgid "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Questo è il nome del server o della rete selezionato.</center>"
 
 #: src/modules/options/optw_lag.cpp:64
@@ -2319,7 +2315,7 @@ msgstr "Attiva evidenziazione parole"
 
 #: src/modules/options/optw_input.cpp:147
 msgid "Expand tabulations in input using this amount of spaces:"
-msgstr ""
+msgstr "Espandi le tabulazioni dell'input usando questo numero di spazi:"
 
 #: src/modules/options/optw_ircoutput.cpp:61
 msgid "External CTCP replies"
@@ -2580,9 +2576,8 @@ msgid "Ignore requests if no avatar is set"
 msgstr "Ignora la richiesta se non hai impostato nessun avatar"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:96
-#, fuzzy
 msgid "Ignored Ctcp Requests"
-msgstr "Richieste Ignorate"
+msgstr "Richieste CTCP Ignorate"
 
 #: src/modules/options/optw_avatar.cpp:52
 #: src/modules/options/optw_avatar.cpp:61
@@ -3033,8 +3028,7 @@ msgstr "Normale:"
 
 #: src/modules/options/optw_notify.cpp:137
 msgid "Notifier window opacity while active (mouseover)"
-msgstr ""
-"Opacità della finestra di notifica mentre è attiva (passaggio del mouse)"
+msgstr "Opacità della finestra di notifica mentre è attiva (passaggio del mouse)"
 
 #: src/modules/options/optw_notify.cpp:144
 msgid "Notifier window opacity while inactive"
@@ -3789,13 +3783,11 @@ msgstr "Il comando di identificazione non può essere vuoto!"
 
 #: src/modules/options/optw_nickserv.cpp:180
 msgid "The Message Regexp can't be empty!<br>You must put at least * there."
-msgstr ""
-"L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
+msgstr "L'espressione regolare non può essere vuota!<br>Ci devi mettere almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:172
 msgid "The NickServ mask can't be empty!<br>You must put at least * there."
-msgstr ""
-"La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
+msgstr "La maschera del NickServ non può essere vuota!<br>Devi metterci almeno *"
 
 #: src/modules/options/optw_nickserv.cpp:158
 msgid "The Nickname field can't be empty!"
@@ -3875,8 +3867,7 @@ msgid "This executable has no SSL support."
 msgstr "Questo eseguibile non ha il supporto SSL"
 
 #: src/modules/options/optw_identity.cpp:330
-msgid ""
-"This field is optional and will appear as part of the CTCP USERINFO reply."
+msgid "This field is optional and will appear as part of the CTCP USERINFO reply."
 msgstr ""
 "Questo campo è opzionale e apparirà come parte della risposta di un CTCP "
 "USERINFO"
@@ -4151,9 +4142,8 @@ msgid "Use flat buttons"
 msgstr "Usa pulsanti piatti"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:83
-#, fuzzy
 msgid "Use flood protection for CTCP requests (recommended)"
-msgstr "Usa protezione flood (raccomandato)"
+msgstr "Usa protezione flood per le richieste CTCP (raccomandato)"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:41
 msgid "Use global application font"
@@ -4180,9 +4170,8 @@ msgid "Use special color for timestamps"
 msgstr "Usa colore speciale per i timestamps"
 
 #: src/modules/options/optw_messages.cpp:83
-#, fuzzy
 msgid "Use specified colors for own nick:"
-msgstr "Usa colori differenti per i propri nick:"
+msgstr "Usa colori specifici per il proprio nick:"
 
 #: src/modules/options/optw_urlhandlers.cpp:69
 msgid "Use system URL handlers"
@@ -4376,290 +4365,3 @@ msgstr "senza nome"
 msgid "within:"
 msgstr "in:"
 
-#~ msgid "Advanced"
-#~ msgstr "Avanzate"
-
-#~ msgid "Alert/Highlight"
-#~ msgstr "Avvisa per i messaggi evidenziati"
-
-#~ msgid "Anti-spam"
-#~ msgstr "Anti-spam"
-
-#~ msgid "Avatar"
-#~ msgstr "Avatar"
-
-#~ msgid "Avatars"
-#~ msgstr "Avatar"
-
-#~ msgid "Away"
-#~ msgstr "Away"
-
-#~ msgid "CTCP"
-#~ msgstr "CTCP"
-
-#~ msgid "Channel"
-#~ msgstr "Canale"
-
-#~ msgid "Chat"
-#~ msgstr "Chat"
-
-#~ msgid "Classic Window List"
-#~ msgstr "Lista Finestre Classica"
-
-#~ msgid "Color Set"
-#~ msgstr "Set di colori"
-
-#~ msgid "Contacts"
-#~ msgstr "Contatti"
-
-#~ msgid "DCC"
-#~ msgstr "DCC"
-
-#~ msgid "Emoticon"
-#~ msgstr "Emoticon"
-
-#~ msgid "Features"
-#~ msgstr "Caratteristiche"
-
-#~ msgid "File Transfer"
-#~ msgstr "Trasferimento File"
-
-#~ msgid "Flood Protection"
-#~ msgstr "Protezione Flood"
-
-#~ msgid "Foreground"
-#~ msgstr "Primo piano"
-
-#~ msgid "General options"
-#~ msgstr "Opzioni Generali"
-
-#~ msgid "Highlight"
-#~ msgstr "Evidenziazione"
-
-#~ msgid "IRC"
-#~ msgstr "IRC"
-
-#~ msgid "Ident Service"
-#~ msgstr "Servizio Ident"
-
-#~ msgid "Ignore"
-#~ msgstr "Ignora"
-
-#~ msgid "Input"
-#~ msgstr "Ingresso"
-
-#~ msgid "Interface"
-#~ msgstr "Interfaccia"
-
-#~ msgid "Labels"
-#~ msgstr "Etichette"
-
-#~ msgid "Lag"
-#~ msgstr "Lag"
-
-#~ msgid "Language"
-#~ msgstr "Lingua"
-
-#~ msgid "Logging"
-#~ msgstr "Logging"
-
-#~ msgid "Look"
-#~ msgstr "Aspetto"
-
-#~ msgid "Marker"
-#~ msgstr "Segnalatore Ultima Riga"
-
-#~ msgid "Media Types"
-#~ msgstr "Tipi di File"
-
-#~ msgid "Message Colors"
-#~ msgstr "Colori Messaggio"
-
-#~ msgid "Message Style"
-#~ msgstr "Stile Messaggio"
-
-#~ msgid "Nickname Grid"
-#~ msgstr "Griglia Nickname"
-
-#~ msgid "Notifier"
-#~ msgstr "Notificatore"
-
-#~ msgid "Output"
-#~ msgstr "Uscita"
-
-#~ msgid "Profiles"
-#~ msgstr "Profili"
-
-#~ msgid "Protection"
-#~ msgstr "Protezione"
-
-#~ msgid "Proxy Hosts"
-#~ msgstr "Proxy"
-
-#~ msgid "Query"
-#~ msgstr "Query"
-
-#~ msgid "SSL"
-#~ msgstr "SSL"
-
-#~ msgid "Scripting Engine"
-#~ msgstr "Motore di Scripting"
-
-#~ msgid "Socket"
-#~ msgstr "Socket"
-
-#~ msgid "Sound"
-#~ msgstr "Sistema sonoro"
-
-#~ msgid "Sounds"
-#~ msgstr "Sistema sonoro"
-
-#~ msgid "Text"
-#~ msgstr "Testo"
-
-#~ msgid "Text icons"
-#~ msgstr "Icone del testo"
-
-#~ msgid "Timestamp"
-#~ msgstr "Orario"
-
-#~ msgid "ToolBar Applets"
-#~ msgstr "Applet della Barra degli Strumenti"
-
-#~ msgid "Tools"
-#~ msgstr "Strumenti"
-
-#~ msgid "Transparency"
-#~ msgstr "Trasparenza"
-
-#~ msgid "Tray icon"
-#~ msgstr "Icona del vassoio di sistema"
-
-#~ msgid "Tree Window List"
-#~ msgstr "Lista Finestre ad Albero"
-
-#~ msgid "URL handlers"
-#~ msgstr "Gestore URL"
-
-#~ msgid "Userlist"
-#~ msgstr "Lista Utenti"
-
-#~ msgid "Verbosity And Output"
-#~ msgstr "Verbosità Messaggi"
-
-#~ msgid "Voice"
-#~ msgstr "Voice"
-
-#~ msgid "Window Captions"
-#~ msgstr "Caption Finestra"
-
-#~ msgid "Window List"
-#~ msgstr "Lista Finestre"
-
-#~ msgid "Window List Alert"
-#~ msgstr "Livello d'Allerta delle Finestre"
-
-#~ msgid "Workspace"
-#~ msgstr "Area di lavoro"
-
-#~ msgid "authentication,identify"
-#~ msgstr "autenticazione,identificazione"
-
-#~ msgid "chat"
-#~ msgstr "chat"
-
-#~ msgid "connection"
-#~ msgstr "connessione"
-
-#~ msgid "connection,servers"
-#~ msgstr "connessione,server"
-
-#~ msgid "ctcp,flood"
-#~ msgstr "ctcp,flood"
-
-#~ msgid "debug"
-#~ msgstr "debug"
-
-#~ msgid "file,audio,video,programs"
-#~ msgstr "file,audio,video,programmi"
-
-#~ msgid "language,encoding,charset,codepage"
-#~ msgstr "lingua,codifica,charset"
-
-#~ msgid "notify,buddy,buddies,friends"
-#~ msgstr "notifica,contatto,contatti,amici"
-
-#~ msgid "popup"
-#~ msgstr "popup"
-
-#~ msgid "protection"
-#~ msgstr "protezione"
-
-#~ msgid "save,output"
-#~ msgstr "salva,uscita"
-
-#~ msgid "scripting,kvs,debug"
-#~ msgstr "scripting,kvs,debug"
-
-#~ msgid "smileys,emoticons"
-#~ msgstr "faccine,emoticon"
-
-#~ msgid "sound,events"
-#~ msgstr "souno,eventi"
-
-#~ msgid "sound,xmms,audio,play,amarok"
-#~ msgstr "suono,xmms,audio,play,amarok"
-
-#~ msgid "theme"
-#~ msgstr "tema"
-
-#~ msgid "theme,background"
-#~ msgstr "tema,fondo"
-
-#~ msgid "theme,colors,messages,output"
-#~ msgstr "temi,colori,messaggi"
-
-#~ msgid "theme,colors,output"
-#~ msgstr "tema,colori,uscita"
-
-#~ msgid "theme,colors,text"
-#~ msgstr "tema,colori,testo"
-
-#~ msgid "theme,mdi"
-#~ msgstr "tema,mdi"
-
-#~ msgid "theme,privmsg,output,format"
-#~ msgstr "tema,privmsg,uscita,formattazione"
-
-#~ msgid "theme,toolbar"
-#~ msgstr "tema,barra degli strumenti"
-
-#~ msgid "theme,topic"
-#~ msgstr "tema,topic"
-
-#~ msgid "theme,userlist,channel"
-#~ msgstr "tema,lista utenti,canale"
-
-#~ msgid "theme,userlist,channel,background"
-#~ msgstr "tema,lista utenti,canale,sfondo"
-
-#~ msgid "theme,userlist,channel,colors"
-#~ msgstr "tema,lista utenti,canale,colori"
-
-#~ msgid "theme,userlist,channel,grid"
-#~ msgstr "tema,lista utenti,canale,griglia"
-
-#~ msgid "time,ping"
-#~ msgstr "ora,ping"
-
-#~ msgid "time,timestamp"
-#~ msgstr "Orario"
-
-#~ msgid "tray,TRAYICON"
-#~ msgstr "tray,TRAYICON"
-
-#~ msgid "url,programs"
-#~ msgstr "url,programmi"
-
-#~ msgid "userlist,channel"
-#~ msgstr "lista utenti,canale"
