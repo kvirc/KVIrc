@@ -120,6 +120,7 @@ KviScriptEditorWidget::~KviScriptEditorWidget()
 	if(m_pCompleter)
 		delete m_pCompleter;
 }
+
 void KviScriptEditorWidget::checkReadyCompleter()
 {
 	if(bCompleterReady)
@@ -247,8 +248,6 @@ void KviScriptEditorWidget::insertCompletion(const QString & szCompletion)
 	setTextCursor(tc);
 }
 
-
-
 void KviScriptEditorWidget::contextMenuEvent(QContextMenuEvent * e)
 {
 	QMenu * pMenu = createStandardContextMenu();
@@ -266,7 +265,7 @@ void KviScriptEditorWidget::slotFind()
 
 void KviScriptEditorWidget::slotReplace()
 {
-	KviScriptEditorReplaceDialog * pDialog = new KviScriptEditorReplaceDialog(this,__tr("Find & Replace"));
+	KviScriptEditorReplaceDialog * pDialog = new KviScriptEditorReplaceDialog(this,__tr2qs_ctx("Find & Replace","editor"));
 	connect(pDialog,SIGNAL(replaceAll(const QString &,const QString &)),m_pParent,SLOT(slotReplaceAll(const QString &,const QString &)));
 	connect(pDialog,SIGNAL(initFind()),m_pParent,SLOT(slotInitFind()));
 	connect(pDialog,SIGNAL(nextFind(const QString &)),m_pParent,SLOT(slotNextFind(const QString &)));
@@ -519,7 +518,7 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 	box->setSpacing(0);
 	KviFontSelector * f = new KviFontSelector(box,__tr2qs_ctx("Font:","editor"),&g_fntNormal,true);
 	m_pSelectorInterfaceList->append(f);
-	KviTalGroupBox * gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Colors" ),box);
+	KviTalGroupBox * gbox = new KviTalGroupBox(Qt::Horizontal,__tr2qs_ctx("Colors","editor"),box);
 	gbox->setInsideSpacing(0);
 	KviColorSelector * s = addColorSelector(gbox,__tr2qs_ctx("Background:","editor"),&g_clrBackground,true);
 	s = addColorSelector(gbox,__tr2qs_ctx("Normal text:","editor"),&g_clrNormalText,true);
@@ -533,7 +532,7 @@ KviScriptEditorWidgetColorOptions::KviScriptEditorWidgetColorOptions(QWidget * p
 
 	KviTalHBox * hbox = new KviTalHBox(box);
 
-	QPushButton * b = new QPushButton(__tr2qs_ctx("&OK","editor"),hbox);
+	QPushButton * b = new QPushButton(__tr2qs_ctx("OK","editor"),hbox);
 	b->setDefault(true);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
 
@@ -602,14 +601,13 @@ KviScriptEditorSyntaxHighlighter::KviScriptEditorSyntaxHighlighter(KviScriptEdit
 	highlightingRules.append(rule);
 
 	commentStartExpression = QRegExp("/\\*");
-    commentEndExpression = QRegExp("\\*/");
-
+	commentEndExpression = QRegExp("\\*/");
 }
 
 KviScriptEditorSyntaxHighlighter::~KviScriptEditorSyntaxHighlighter()
 {
-
 }
+
 void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 {
 	punctuationFormat.setForeground(g_clrPunctuation);
@@ -634,7 +632,6 @@ void KviScriptEditorSyntaxHighlighter::updateSyntaxtTextFormat()
 
 	findFormat.setForeground(g_clrFind);
 	findFormat.setFont(g_fntNormal);
-
 }
 
 void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
@@ -656,12 +653,12 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 	// check 'commands'
 	int iCommandStart=iIndexStart;
 	if (szText.at(iIndexStart).unicode()!='$' && szText.at(iIndexStart).unicode()!='{' && szText.at(iIndexStart).unicode()!='}' && szText.at(iIndexStart).unicode()!='%')
-    {
+	{
 		while(iIndexStart<szText.size() && (szText.at(iIndexStart).isLetterOrNumber() || (szText.at(iIndexStart).unicode() == '.') || (szText.at(iIndexStart).unicode() == '_') || (szText.at(iIndexStart).unicode()== ':') ))
 		{
 			iIndexStart++;
 		}
- 	         setFormat(iCommandStart,iIndexStart-iCommandStart,keywordFormat);
+		setFormat(iCommandStart,iIndexStart-iCommandStart,keywordFormat);
 	}
 
 	// code from QT4 example
@@ -671,14 +668,14 @@ void KviScriptEditorSyntaxHighlighter::highlightBlock(const QString & szText)
 		QRegExp expression(rule.pattern);
 		QString sz=expression.pattern();
 
-	    index = szText.indexOf(expression,iIndexStart);
+		index = szText.indexOf(expression,iIndexStart);
 
-	    while (index >= 0)
+		while (index >= 0)
 		{
 			int length = expression.matchedLength();
 			setFormat(index, length, rule.format);
 			index = szText.indexOf(expression, index + length);
-        }
+		}
 	}
 
 	setCurrentBlockState(0);
@@ -757,9 +754,9 @@ KviScriptEditorImplementation::KviScriptEditorImplementation(QWidget * par)
 	g->setColumnStretch(2,10);
 	g->addWidget(m_pFindLineEdit,1,2);
 
-	QLabel *lab= new QLabel("find",this);
-	lab->setText(tr("Find"));
-	g->addWidget(lab,1,1);
+	QLabel * pLab = new QLabel(this);
+	pLab->setText(__tr2qs_ctx("Find","editor"));
+	g->addWidget(pLab,1,1);
 
 	m_pRowColLabel = new QLabel("0",this);
 	m_pRowColLabel->setFrameStyle(QFrame::Sunken | QFrame::Panel);
@@ -986,17 +983,16 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, con
 
 	QLabel * m_pFindLabel = new QLabel(this);
 	m_pFindLabel->setObjectName("findlabel");
-	m_pFindLabel->setText(tr("Word to Find"));
+	m_pFindLabel->setText(__tr2qs_ctx("Word to Find","editor"));
 	pLayout->addWidget(m_pFindLabel,0,0);
 
 	m_pFindLineEdit = new QLineEdit(this);
 	m_pFindLineEdit->setObjectName("findlineedit");
 	pLayout->addWidget(m_pFindLineEdit,0,1);
 
-
 	QLabel * m_pReplaceLabel = new QLabel(this);
 	m_pReplaceLabel->setObjectName("replacelabel");
-	m_pReplaceLabel->setText(tr("Replace with"));
+	m_pReplaceLabel->setText(__tr2qs_ctx("Replace with","editor"));
 	pLayout->addWidget(m_pReplaceLabel,1,0);
 
 	m_pReplaceLineEdit = new QLineEdit(this);
@@ -1008,17 +1004,17 @@ KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, con
 
 	m_pCheckReplaceAll = new QCheckBox(this);
 	m_pCheckReplaceAll->setObjectName("replaceAll");
-	m_pCheckReplaceAll->setText(tr("&Replace in all Aliases"));
+	m_pCheckReplaceAll->setText(__tr2qs_ctx("&Replace in all Aliases","editor"));
 	pLayout->addWidget(m_pCheckReplaceAll,2,0);
 
 	QPushButton * pCancelButton = new QPushButton(this);
 	pCancelButton->setObjectName("cancelButton");
-	pCancelButton->setText(tr("&Cancel"));
+	pCancelButton->setText(__tr2qs_ctx("&Cancel","editor"));
 	pLayout->addWidget(pCancelButton,3,0);
 
 	m_pReplaceButton = new QPushButton(this);
 	m_pReplaceButton->setObjectName("replacebutton");
-	m_pReplaceButton->setText(tr("&Replace"));
+	m_pReplaceButton->setText(__tr2qs_ctx("&Replace","editor"));
 	m_pReplaceButton->setEnabled(false);
 	pLayout->addWidget(m_pReplaceButton,3,1);
 
@@ -1060,4 +1056,3 @@ void KviScriptEditorReplaceDialog::slotNextFind()
 {
 	emit nextFind(m_pFindLineEdit->text());
 }
-

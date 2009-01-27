@@ -23,10 +23,7 @@
 //=============================================================================
 
 
-
 #include "aliaseditor.h"
-
-
 
 #include "kvi_iconmanager.h"
 #include "kvi_options.h"
@@ -218,7 +215,7 @@ KviAliasEditorTreeWidget::KviAliasEditorTreeWidget(QWidget * par)
 : QTreeWidget(par)
 {
 	setColumnCount (1);
-	setHeaderLabel(__tr2qs("Alias"));
+	setHeaderLabel(__tr2qs_ctx("Alias","editor"));
 	setSelectionMode(QAbstractItemView::ExtendedSelection);
 	setSortingEnabled(true);
 	setRootIsDecorated(true);
@@ -258,12 +255,12 @@ KviAliasEditor::KviAliasEditor(QWidget * par)
 	KviTalHBox * hbox = new KviTalHBox(box);
 	hbox->setSpacing(0);
 	hbox->setMargin(0);
-	m_pNameLabel = new QLabel(__tr2qs("No item selected"),hbox);
-	m_pRenameButton = new QPushButton(__tr2qs("Rename"),hbox);
+	m_pNameLabel = new QLabel(__tr2qs_ctx("No item selected","editor"),hbox);
+	m_pRenameButton = new QPushButton(__tr2qs_ctx("Rename","editor"),hbox);
 	m_pRenameButton->setEnabled(false);
 	connect(m_pRenameButton,SIGNAL(clicked()),this,SLOT(renameItem()));
 	hbox->setStretchFactor(m_pNameLabel,2);
-	m_pRenameButton->setToolTip(__tr2qs("Edit the alias or namespace name"));
+	m_pRenameButton->setToolTip(__tr2qs_ctx("Edit the alias or namespace name","editor"));
 	m_pEditor = KviScriptEditor::createInstance(box);
 	m_pEditor->setFocus();
 	connect(m_pEditor,SIGNAL(find(const QString &)),this,SLOT(slotFindWord(const QString &)));
@@ -450,9 +447,9 @@ void KviAliasEditor::itemRenamed(QTreeWidgetItem *it,int col)
 	QString szNam = buildFullItemName((KviAliasEditorTreeWidgetItem *)it);
 	QString szLabelText;
 	if(((KviAliasEditorTreeWidgetItem *)it)->isNamespace())
-		szLabelText = __tr2qs("Namespace");
+		szLabelText = __tr2qs_ctx("Namespace","editor");
 	else
-		szLabelText = __tr2qs("Alias");
+		szLabelText = __tr2qs_ctx("Alias","editor");
 	szLabelText += ": <b>";
 	szLabelText += szNam;
 	szLabelText += "</b>";
@@ -518,12 +515,12 @@ void KviAliasEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
-			__tr2qs("Add Alias"),
+			__tr2qs_ctx("Add Alias","editor"),
 			this,SLOT(newAlias()));
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ALIAS)),
-			__tr2qs("Add Namespace"),
+			__tr2qs_ctx("Add Namespace","editor"),
 			this,SLOT(newNamespace()));
 
 	bool bHasItems = m_pTreeWidget->topLevelItemCount();
@@ -533,7 +530,7 @@ void KviAliasEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
 
 	id = m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
-			__tr2qs("Remove Selected"),
+			__tr2qs_ctx("Remove Selected","editor"),
 			this,SLOT(removeSelectedItems()));
 	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
@@ -541,20 +538,20 @@ void KviAliasEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
-			__tr2qs("Export Selected..."),
+			__tr2qs_ctx("Export Selected...","editor"),
 			this,SLOT(exportSelected()));
 	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
-			__tr2qs("Export Selected in singles files..."),
+			__tr2qs_ctx("Export Selected in singles files...","editor"),
 			this,SLOT(exportSelectedSepFiles()));
 
 	m_pContextPopup->setItemEnabled(id,bHasSelected);
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
-			__tr2qs("Export All..."),
+			__tr2qs_ctx("Export All...","editor"),
 			this,SLOT(exportAll()));
 	m_pContextPopup->setItemEnabled(id,bHasItems);
 
@@ -562,13 +559,13 @@ void KviAliasEditor::itemPressed(QTreeWidgetItem *it,QPoint pnt)
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_SEARCH)),
-			__tr2qs("Find In Aliases..."),
+			__tr2qs_ctx("Find In Aliases...","editor"),
 			this,SLOT(slotFind()));
 	m_pContextPopup->setItemEnabled(id,bHasItems);
 
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NAMESPACE)),
-			__tr2qs("Collapse All Namespaces"),
+			__tr2qs_ctx("Collapse All Namespaces","editor"),
 			this,SLOT(slotCollapseNamespaces()));
 
 	m_pContextPopup->setItemEnabled(id,bHasItems);
@@ -606,11 +603,11 @@ void KviAliasEditor::slotFind()
 	bool bOk;
 
 	QString szSearch = QInputDialog::getText(this,
-					__tr2qs("Find In Aliases"),
-					__tr2qs("Please enter the text to be searched for. The matching aliases will be highlighted."),
-					QLineEdit::Normal,
-					"",
-					&bOk);
+		__tr2qs_ctx("Find In Aliases","editor"),
+		__tr2qs_ctx("Please enter the text to be searched for. The matching aliases will be highlighted.","editor"),
+		QLineEdit::Normal,
+		"",
+		&bOk);
 
 
 	g_pAliasEditorModule->unlock();
@@ -713,13 +710,13 @@ void KviAliasEditor::exportSelectionInSinglesFiles(KviPointerList<KviAliasTreeWi
 	if (!l->first())
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs("Alias Export"),__tr2qs("There is no selection!"),__tr2qs("Ok"));
+		QMessageBox::warning(this,__tr2qs_ctx("Alias Export","editor"),__tr2qs_ctx("There is no selection!","editor"),__tr2qs_ctx("Ok","editor"));
 		g_pAliasEditorModule->unlock();
 		return;
 	}
 	g_pAliasEditorModule->lock();
 
-	if(!KviFileDialog::askForDirectoryName(m_szDir,__tr2qs("Choose a Directory - KVIrc"),m_szDir)){
+	if(!KviFileDialog::askForDirectoryName(m_szDir,__tr2qs_ctx("Choose a Directory - KVIrc","editor"),m_szDir)){
 		g_pAliasEditorModule->unlock();
 		return;
 	}
@@ -740,8 +737,8 @@ void KviAliasEditor::exportSelectionInSinglesFiles(KviPointerList<KviAliasTreeWi
 		if (KviFileUtils::fileExists(szCompletePath) && !bReplaceAll)
 		{
 				QString szMsg;
-				KviQString::sprintf(szMsg,__tr2qs("The file \"%Q\" exists. Do you want to replace it ?"),&szFileName);
-				int ret = QMessageBox::question(this,__tr2qs("Replace file"),szMsg,__tr2qs("Yes"),__tr2qs("Yes to All"),__tr2qs("No"));
+				KviQString::sprintf(szMsg,__tr2qs_ctx("The file \"%Q\" exists. Do you want to replace it ?","editor"),&szFileName);
+				int ret = QMessageBox::question(this,__tr2qs_ctx("Replace file","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
 				if (ret!=2){
 					KviFileUtils::writeFile(szCompletePath,tmp);
 					if (ret==1)	bReplaceAll=true;
@@ -787,7 +784,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	if(out.isEmpty())
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs("Alias Export"),__tr2qs("The exported file would be empty: cowardly refusing to write it"),__tr2qs("Ok"));
+		QMessageBox::warning(this,__tr2qs_ctx("Alias Export","editor"),__tr2qs_ctx("The exported file would be empty: cowardly refusing to write it","editor"),__tr2qs_ctx("Ok","editor"));
 		g_pAliasEditorModule->unlock();
 		return;
 	}
@@ -806,7 +803,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	else szNameFile="aliases";
 	szName += szNameFile;
 	szName += ".kvs";
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,"*.kvs",false,true,true))
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",false,true,true))
 	{
 		g_pAliasEditorModule->unlock();
 		return;
@@ -817,7 +814,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	if(!KviFileUtils::writeFile(szFile,out))
 	{
 		g_pAliasEditorModule->lock();
-		QMessageBox::warning(this,__tr2qs("Write Failed - KVIrc"),__tr2qs("Unable to write to the alias file."),__tr2qs("Ok"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the alias file.","editor"),__tr2qs_ctx("Ok","editor"));
 		g_pAliasEditorModule->unlock();
 	}
 }
@@ -843,6 +840,7 @@ void KviAliasEditor::loadProperties(KviConfig *cfg)
 	if(!it)it = findNamespaceItem(tmp);
 	if(it)activateItem(it);
 }
+
 void KviAliasEditor::appendAliasItems(KviPointerList<KviAliasTreeWidgetItem> * l,bool bSelectedOnly)
 {
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
@@ -874,6 +872,7 @@ void KviAliasEditor::appendAliasItems(KviPointerList<KviAliasTreeWidgetItem> * l
 	}
 
 }
+
 void KviAliasEditor::appendAliasItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,bool bSelectedOnly)
 {
 	for (int i=0;i<pStartFrom->childCount();i++)
@@ -906,7 +905,6 @@ void KviAliasEditor::appendAliasItemsRecursive(KviPointerList<KviAliasTreeWidget
 
 }
 
-
 void KviAliasEditor::appendNamespaceItems(KviPointerList<KviAliasTreeWidgetItem> * l,bool bSelectedOnly)
 {
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
@@ -938,6 +936,7 @@ void KviAliasEditor::appendNamespaceItems(KviPointerList<KviAliasTreeWidgetItem>
 	}
 
 }
+
 void KviAliasEditor::appendNamespaceItemsRecursive(KviPointerList<KviAliasTreeWidgetItem> * l,QTreeWidgetItem * pStartFrom,bool bSelectedOnly)
 {
 	for (int i=0;i<pStartFrom->childCount();i++)
@@ -986,6 +985,7 @@ void KviAliasEditor::appendSelectedItemsRecursive(KviPointerList<KviAliasEditorT
 		}
 	}
 }
+
 void KviAliasEditor::appendSelectedItems(KviPointerList<KviAliasEditorTreeWidgetItem> * l)
 {
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
@@ -1010,6 +1010,7 @@ void KviAliasEditor::removeItemChildren(KviAliasEditorTreeWidgetItem *it)
 		delete it->child(i);
 	}
 }
+
 bool KviAliasEditor::removeItem(KviAliasEditorTreeWidgetItem *it,bool * pbYesToAll,bool)
 {
 	if(!it)return true;
@@ -1019,15 +1020,15 @@ bool KviAliasEditor::removeItem(KviAliasEditorTreeWidgetItem *it,bool * pbYesToA
 	if(!*pbYesToAll)
 	{
 		if(it->isAlias())
-			KviQString::sprintf(szMsg,__tr2qs("Do you really want to remove the alias \"%Q\" ?"),&szName);
+			KviQString::sprintf(szMsg,__tr2qs_ctx("Do you really want to remove the alias \"%Q\" ?","editor"),&szName);
 		else {
-			KviQString::sprintf(szMsg,__tr2qs("Do you really want to remove the namespace \"%Q\" ?"),&szName);
+			KviQString::sprintf(szMsg,__tr2qs_ctx("Do you really want to remove the namespace \"%Q\" ?","editor"),&szName);
 			szMsg += "<br>";
-			szMsg += __tr2qs("Please note that all the children items will be deleted too.");
+			szMsg += __tr2qs_ctx("Please note that all the children items will be deleted too.","editor");
 		}
 
 		g_pAliasEditorModule->lock();
-		int ret = QMessageBox::question(this,__tr2qs("Remove item"),szMsg,__tr2qs("Yes"),__tr2qs("Yes to All"),__tr2qs("No"));
+		int ret = QMessageBox::question(this,__tr2qs_ctx("Remove item","editor"),szMsg,__tr2qs_ctx("Yes","editor"),__tr2qs_ctx("Yes to All","editor"),__tr2qs_ctx("No","editor"));
 		g_pAliasEditorModule->unlock();
 		switch(ret)
 		{
@@ -1106,9 +1107,9 @@ QString KviAliasEditor::askForAliasName(const QString &szAction,const QString &s
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::warning(this,
-						__tr2qs("Missing Alias Name"),
-						__tr2qs("You must specify a valid name for the alias"),
-						__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Missing Alias Name","editor"),
+				__tr2qs_ctx("You must specify a valid name for the alias","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			continue;
 		}
@@ -1119,9 +1120,9 @@ QString KviAliasEditor::askForAliasName(const QString &szAction,const QString &s
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-						__tr2qs("Bad Alias Name"),
-						__tr2qs("Alias names can contain only letters, digits, underscores and '::' namespace separators"),
-						__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Bad Alias Name","editor"),
+				__tr2qs_ctx("Alias names can contain only letters, digits, underscores and '::' namespace separators","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1133,9 +1134,9 @@ QString KviAliasEditor::askForAliasName(const QString &szAction,const QString &s
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-					__tr2qs("Bad Alias Name"),
-					__tr2qs("Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"),
-					__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Bad Alias Name","editor"),
+				__tr2qs_ctx("Stray ':' character in alias name: did you mean ...<namespace>::<name> ?","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1144,9 +1145,9 @@ QString KviAliasEditor::askForAliasName(const QString &szAction,const QString &s
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-					__tr2qs("Bad Alias Name"),
-					__tr2qs("Found an empty namespace in alias name"),
-					__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Bad Alias Name","editor"),
+				__tr2qs_ctx("Found an empty namespace in alias name","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1174,9 +1175,9 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::warning(this,
-						__tr2qs("Missing Namespace Name"),
-						__tr2qs("You must specify a valid name for the namespace"),
-						__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Missing Namespace Name","editor"),
+				__tr2qs_ctx("You must specify a valid name for the namespace","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			continue;
 		}
@@ -1187,9 +1188,9 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-						__tr2qs("Bad Namespace Name"),
-						__tr2qs("Namespace names can contain only letters, digits, underscores and '::' namespace separators"),
-						__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Bad Namespace Name","editor"),
+				__tr2qs_ctx("Namespace names can contain only letters, digits, underscores and '::' namespace separators","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1201,9 +1202,9 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-					__tr2qs("Bad Namespace Name"),
-					__tr2qs("Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"),
-					__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Bad Namespace Name","editor"),
+				__tr2qs_ctx("Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1212,9 +1213,9 @@ QString KviAliasEditor::askForNamespaceName(const QString &szAction,const QStrin
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-					__tr2qs("Bad Namespace Name"),
-					__tr2qs("Found an empty namespace in namespace name"),
-					__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Bad Namespace Name","editor"),
+				__tr2qs_ctx("Found an empty namespace in namespace name","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			szNewName = "";
 			continue;
@@ -1247,7 +1248,7 @@ void KviAliasEditor::newAlias()
 			m_pLastClickedItem = m_pLastClickedItem->parentNamespaceItem();
 	}
 
-	QString szNewName = askForAliasName(__tr2qs("Add Alias"),__tr2qs("Please enter the name for the new alias"),"myfunction");
+	QString szNewName = askForAliasName(__tr2qs_ctx("Add Alias","editor"),__tr2qs_ctx("Please enter the name for the new alias","editor"),"myfunction");
 	if(szNewName.isEmpty())return;
 
 	getUniqueItemName(m_pLastClickedItem,szNewName,KviAliasEditorTreeWidgetItem::Alias);
@@ -1272,7 +1273,7 @@ void KviAliasEditor::newNamespace()
 	}
 
 
-	QString szNewName = askForNamespaceName(__tr2qs("Add Namespace"),__tr2qs("Please enter the name for the new namespace"),"mynamespace");
+	QString szNewName = askForNamespaceName(__tr2qs_ctx("Add Namespace","editor"),__tr2qs_ctx("Please enter the name for the new namespace","editor"),"mynamespace");
 	if(szNewName.isEmpty())return;
 
 	getUniqueItemName(m_pLastClickedItem,szNewName,KviAliasEditorTreeWidgetItem::Namespace);
@@ -1339,9 +1340,9 @@ void KviAliasEditor::renameItem()
 	bool bAlias = m_pLastEditedItem->isAlias();
 
 	if(bAlias)
-		szNewName = askForAliasName(__tr2qs("Rename Alias"),__tr2qs("Please enter the new name for the alias"),szName);
+		szNewName = askForAliasName(__tr2qs_ctx("Rename Alias","editor"),__tr2qs_ctx("Please enter the new name for the alias","editor"),szName);
 	else
-		szNewName = askForNamespaceName(__tr2qs("Rename Namespace"),__tr2qs("Please enter the new name for the namespace"),szName);
+		szNewName = askForNamespaceName(__tr2qs_ctx("Rename Namespace","editor"),__tr2qs_ctx("Please enter the new name for the namespace","editor"),szName);
 	if(szNewName.isEmpty())return;
 
 	if(szName == szNewName)return;
@@ -1353,9 +1354,9 @@ void KviAliasEditor::renameItem()
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs("Alias already exists"),
-				__tr2qs("This name is already in use. Please choose another one."),
-				__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Alias already exists","editor"),
+				__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			return;
 		}
@@ -1365,9 +1366,9 @@ void KviAliasEditor::renameItem()
 		{
 			g_pAliasEditorModule->lock();
 			QMessageBox::information(this,
-				__tr2qs("Namespace already exists"),
-				__tr2qs("This name is already in use. Please choose another one."),
-				__tr2qs("Ok, Let me try again..."));
+				__tr2qs_ctx("Namespace already exists","editor"),
+				__tr2qs_ctx("This name is already in use. Please choose another one.","editor"),
+				__tr2qs_ctx("Ok, Let me try again...","editor"));
 			g_pAliasEditorModule->unlock();
 			return;
 		}
@@ -1429,7 +1430,7 @@ void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 
 	if(!m_pLastEditedItem)
 	{
-		m_pNameLabel->setText(__tr2qs("No item selected"));
+		m_pNameLabel->setText(__tr2qs_ctx("No item selected","editor"));
 		m_pRenameButton->setEnabled(false);
 		m_pEditor->setText("");
 		m_pEditor->setEnabled(false);
@@ -1439,7 +1440,7 @@ void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 	QString szNam = buildFullItemName(m_pLastEditedItem);
 	if(m_pLastEditedItem->isNamespace())
 	{
-		QString szLabelText = __tr2qs("Namespace");
+		QString szLabelText = __tr2qs_ctx("Namespace","editor");
 		szLabelText += ": <b>";
 		szLabelText += szNam;
 		szLabelText += "</b>";
@@ -1450,7 +1451,7 @@ void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 		return;
 	}
 
-	QString szLabelText = __tr2qs("Alias");
+	QString szLabelText = __tr2qs_ctx("Alias","editor");
 	szLabelText += ": <b>";
 	szLabelText += szNam;
 	szLabelText += "</b>";
@@ -1549,24 +1550,24 @@ KviAliasEditorWindow::KviAliasEditorWindow(KviFrame * lpFrm)
 {
 	g_pAliasEditorWindow = this;
 
-	setFixedCaption(__tr2qs("Alias Editor"));
+	setFixedCaption(__tr2qs_ctx("Alias Editor","editor"));
 
 	m_pEditor = new KviAliasEditor(this);
 
 	m_pBase = new QWidget(this);
 	QGridLayout * g = new QGridLayout(m_pBase);
 
-	QPushButton * btn = new QPushButton(__tr2qs("&OK"),m_pBase);
+	QPushButton * btn = new QPushButton(__tr2qs_ctx("&OK","editor"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,1);
 
-	btn = new QPushButton(__tr2qs("&Apply"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("&Apply","editor"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,2);
 
-	btn = new QPushButton(__tr2qs("Cancel"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g->addWidget(btn,0,3);

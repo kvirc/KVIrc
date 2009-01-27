@@ -76,28 +76,28 @@ void KviPopupTreeWidgetItem::init()
 	switch(m_type)
 	{
 		case Item:
-			setText(1,__tr2qs("Item"));
+			setText(1,__tr2qs_ctx("Item","editor"));
 		break;
 		case Menu:
-			setText(1,__tr2qs("Submenu"));
+			setText(1,__tr2qs_ctx("Submenu","editor"));
 		break;
 		case ExtMenu:
-			setText(1,__tr2qs("External Menu"));
+			setText(1,__tr2qs_ctx("External Menu","editor"));
 		break;
 		case Separator:
 			setText(0,"-----------------------");
-			setText(1,__tr2qs("Separator"));
+			setText(1,__tr2qs_ctx("Separator","editor"));
 		break;
 		case Label:
-			setText(1,__tr2qs("Label"));
+			setText(1,__tr2qs_ctx("Label","editor"));
 		break;
 		case Epilogue:
-			setText(0,__tr2qs("### Epilogue ###"));
-			setText(1,__tr2qs("Epilogue"));
+			setText(0,__tr2qs_ctx("### Epilogue ###","editor"));
+			setText(1,__tr2qs_ctx("Epilogue","editor"));
 		break;
 		case Prologue:
-			setText(0,__tr2qs("### Prologue ###"));
-			setText(1,__tr2qs("Prologue"));
+			setText(0,__tr2qs_ctx("### Prologue ###","editor"));
+			setText(1,__tr2qs_ctx("Prologue","editor"));
 		break;
 		default:
 		break;
@@ -192,11 +192,11 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 
 
 	m_pNameEditor = new QLineEdit(this);
-	m_pNameEditor->setToolTip(__tr2qs("Popup name"));
+	m_pNameEditor->setToolTip(__tr2qs_ctx("Popup name","editor"));
 
 	g->addWidget(m_pNameEditor,0,0,1,2);
 
-	m_pMenuButton = new QPushButton(__tr2qs("Test"),this);
+	m_pMenuButton = new QPushButton(__tr2qs_ctx("Test","editor"),this);
 	g->addWidget(m_pMenuButton,0,2);
 	connect(m_pMenuButton,SIGNAL(clicked()),this,SLOT(testPopup()));
 	QSplitter * spl = new QSplitter(Qt::Vertical,this);
@@ -206,7 +206,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	m_pTreeWidget = new KviTalTreeWidget(spl);
 	m_pTreeWidget->setColumnCount(2);
 	QStringList labels;
-	labels << __tr2qs("Item") << __tr2qs("Type");
+	labels << __tr2qs_ctx("Item","editor") << __tr2qs_ctx("Type","editor");
 	m_pTreeWidget->setHeaderLabels(labels);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTreeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -225,49 +225,49 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 
 	g->addWidget(spl,1,0,1,3);
 
-	QLabel * l = new QLabel(__tr2qs("Text:"),this);
+	QLabel * l = new QLabel(__tr2qs_ctx("Text:","editor"),this);
 	g->addWidget(l,2,0);
 
 	m_pTextEditor = new QLineEdit(this);
 	m_pTextEditor->setToolTip(
-		__tr2qs("<center><b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.</center>"));
+		__tr2qs_ctx("<center><b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.</center>","editor"));
 	g->addWidget(m_pTextEditor,2,1,1,2);
 
-	l = new QLabel(__tr2qs("Condition:"),this);
+	l = new QLabel(__tr2qs_ctx("Condition:"),this);
 	l->setMargin(2);
 	g->addWidget(l,3,0);
 
 	m_pConditionEditor = new QLineEdit(this);
 	m_pConditionEditor->setToolTip(
-		__tr2qs("<center><b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.</center>"));
+		__tr2qs_ctx("<center><b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.</center>","editor"));
 	g->addWidget(m_pConditionEditor,3,1,1,2);
 
-	l = new QLabel(__tr2qs("Icon:"),this);
+	l = new QLabel(__tr2qs_ctx("Icon:"),this);
 	l->setMargin(2);
 	g->addWidget(l,4,0);
 
 	m_pIconEditor = new QLineEdit(this);
 	m_pIconEditor->setToolTip(
-		__tr2qs("<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.</center>"));
+		__tr2qs_ctx("<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute path or a relative path.<br>Portable scripts should never use absolute paths.</center>","editor"));
 	g->addWidget(m_pIconEditor,4,1,1,2);
 
-	l = new QLabel(__tr2qs("External menu:"),this);
+	l = new QLabel(__tr2qs_ctx("External menu:","editor"),this);
 	l->setMargin(2);
 	g->addWidget(l,5,0);
 
 	m_pExtNameEditor = new QLineEdit(this);
 	m_pExtNameEditor->setToolTip(
-		__tr2qs("<center><b>External menu name</b><br>This allows to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>"));
+		__tr2qs_ctx("<center><b>External menu name</b><br>This allows to nest externally defined popup menus. The popup menu with the specified name will be looked up at menu setup time.</center>","editor"));
 	g->addWidget(m_pExtNameEditor,5,1,1,2);
 
-	l = new QLabel(__tr2qs("Item Id:"),this);
+	l = new QLabel(__tr2qs_ctx("Item Id:","editor"),this);
 	l->setMargin(2);
 	g->addWidget(l,6,0);
 
 
 	m_pIdEditor = new QLineEdit(this);
 	m_pIdEditor->setToolTip(
-		__tr2qs("<center><b>Item id</b><br>This will allow you to use delpopupitem later.</center>"));
+		__tr2qs_ctx("<center><b>Item id</b><br>This will allow you to use delpopupitem later.</center>","editor"));
 	g->addWidget(m_pIdEditor,6,1,1,2);
 	g->setColumnStretch(1,1);
 	g->setRowStretch(1,1);
@@ -380,84 +380,69 @@ void KviSinglePopupEditor::itemPressed(QTreeWidgetItem * it, int)
 		bIsMenu = ((KviPopupTreeWidgetItem *)it)->m_type == KviPopupTreeWidgetItem::Menu;
 	}
 
-	m_pContextPopup->insertItem(__tr2qs("New Separator Below"),this,SLOT(contextNewSeparatorBelow()));
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Separator Below","editor"),this,SLOT(contextNewSeparatorBelow()));
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New Separator Above"),this,SLOT(contextNewSeparatorAbove())),
-		it);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Separator Above","editor"),this,SLOT(contextNewSeparatorAbove())),it);
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New Separator Inside"),this,SLOT(contextNewSeparatorInside())),
-		it && bIsMenu);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Separator Inside","editor"),this,SLOT(contextNewSeparatorInside())),it && bIsMenu);
 
 	m_pContextPopup->insertSeparator();
 
-	m_pContextPopup->insertItem(__tr2qs("New Label Below"),this,SLOT(contextNewLabelBelow()));
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Label Below","editor"),this,SLOT(contextNewLabelBelow()));
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New Label Above"),this,SLOT(contextNewLabelAbove())),
-		it);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Label Above","editor"),this,SLOT(contextNewLabelAbove())),it);
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New Label Inside"),this,SLOT(contextNewLabelInside())),
-		it && bIsMenu);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Label Inside","editor"),this,SLOT(contextNewLabelInside())),it && bIsMenu);
 
 	m_pContextPopup->insertSeparator();
 
-	m_pContextPopup->insertItem(__tr2qs("New Item Below"),this,SLOT(contextNewItemBelow()));
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Item Below","editor"),this,SLOT(contextNewItemBelow()));
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New Item Above"),this,SLOT(contextNewItemAbove())),
-		it);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Item Above","editor"),this,SLOT(contextNewItemAbove())),it);
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New Item Inside"),this,SLOT(contextNewItemInside())),
-		it && bIsMenu);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Item Inside","editor"),this,SLOT(contextNewItemInside())),it && bIsMenu);
 
 	m_pContextPopup->insertSeparator();
 
-	m_pContextPopup->insertItem(__tr2qs("New Menu Below"),this,SLOT(contextNewMenuBelow()));
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Menu Below","editor"),this,SLOT(contextNewMenuBelow()));
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New Menu Above"),this,SLOT(contextNewMenuAbove())),
-		it);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Menu Above","editor"),this,SLOT(contextNewMenuAbove())),it);
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New Menu Inside"),this,SLOT(contextNewMenuInside())),
-		it && bIsMenu);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New Menu Inside","editor"),this,SLOT(contextNewMenuInside())),it && bIsMenu);
 
-		m_pContextPopup->insertSeparator();
+	m_pContextPopup->insertSeparator();
 
-	m_pContextPopup->insertItem(__tr2qs("New External Menu Below"),this,SLOT(contextNewExtMenuBelow()));
+	m_pContextPopup->insertItem(__tr2qs_ctx("New External Menu Below","editor"),this,SLOT(contextNewExtMenuBelow()));
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New External Menu Above"),this,SLOT(contextNewExtMenuAbove())),
-		it);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New External Menu Above","editor"),this,SLOT(contextNewExtMenuAbove())),it);
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(__tr2qs("New External Menu Inside"),this,SLOT(contextNewExtMenuInside())),
-		it && bIsMenu);
+	m_pContextPopup->insertItem(__tr2qs_ctx("New External Menu Inside","editor"),this,SLOT(contextNewExtMenuInside())),it && bIsMenu);
 
 	m_pContextPopup->insertSeparator();
 
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),
-			__tr2qs("Cu&t"),
-			this,SLOT(contextCut())),
-		it);
+	m_pContextPopup->insertItem(
+		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),
+		__tr2qs_ctx("Cu&t","editor"),
+		this,SLOT(contextCut())),it);
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_COPY)),
-			__tr2qs("&Copy"),
-			this,SLOT(contextCopy())),
-		it);
+	m_pContextPopup->insertItem(
+		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_COPY)),
+		__tr2qs_ctx("&Copy","editor"),
+		this,SLOT(contextCopy())),it);
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),
-			__tr2qs("&Paste Below"),this,SLOT(contextPasteBelow())),
+	m_pContextPopup->insertItem(
+		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),
+		__tr2qs_ctx("&Paste Below","editor"),this,SLOT(contextPasteBelow())),
 		m_pClipboard);
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),
-			__tr2qs("Paste Above"),this,SLOT(contextPasteAbove())),
-		it && m_pClipboard);
+	m_pContextPopup->insertItem(
+		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),
+		__tr2qs_ctx("Paste Above","editor"),this,SLOT(contextPasteAbove())),it && m_pClipboard);
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(
-			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),
-			__tr2qs("Paste Inside"),this,SLOT(contextPasteInside())),
-		it && bIsMenu && m_pClipboard);
-
+	m_pContextPopup->insertItem(
+		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PASTE)),
+		__tr2qs_ctx("Paste Inside","editor"),this,SLOT(contextPasteInside())),it && bIsMenu && m_pClipboard);
 
 	bool bSeparatorInserted = false;
 
@@ -467,7 +452,7 @@ void KviSinglePopupEditor::itemPressed(QTreeWidgetItem * it, int)
 		bSeparatorInserted = true;
 		m_pContextPopup->insertItem(
 				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROLOGUE)),
-				__tr2qs("New Menu Prologue"),this,SLOT(contextNewPrologue()));
+				__tr2qs_ctx("New Menu Prologue","editor"),this,SLOT(contextNewPrologue()));
 //	}
 
 //	if(!findEpilogue(parentMenu))
@@ -475,7 +460,7 @@ void KviSinglePopupEditor::itemPressed(QTreeWidgetItem * it, int)
 		if(!bSeparatorInserted)m_pContextPopup->insertSeparator();
 		m_pContextPopup->insertItem(
 				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EPILOGUE)),
-				__tr2qs("New Menu Epilogue"),this,SLOT(contextNewEpilogue()));
+				__tr2qs_ctx("New Menu Epilogue","editor"),this,SLOT(contextNewEpilogue()));
 //	}
 
 	m_pContextPopup->popup(QCursor::pos());
@@ -555,7 +540,6 @@ void KviSinglePopupEditor::contextNewExtMenuInside()
 {
 	createNewItemInsideLastSelected(KviPopupTreeWidgetItem::ExtMenu);
 }
-
 
 void KviSinglePopupEditor::contextNewLabelBelow()
 {
@@ -663,7 +647,6 @@ void KviSinglePopupEditor::contextPasteAbove()
 	KviPopupTreeWidgetItem * par = m_pLastSelectedItem ? (KviPopupTreeWidgetItem *)m_pLastSelectedItem->parent() : 0;
 	KviPopupTreeWidgetItem * above = m_pLastSelectedItem ? (KviPopupTreeWidgetItem *)m_pTreeWidget->itemAbove(m_pLastSelectedItem) : 0;
 	populateMenu(m_pClipboard,par,above);
-
 }
 
 void KviSinglePopupEditor::contextPasteInside()
@@ -1030,13 +1013,13 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 	KviTalVBox * box = new KviTalVBox(spl);
 
 	m_pTreeWidget = new KviTalTreeWidget(box);
-	m_pTreeWidget->setHeaderLabel(__tr2qs("Popup"));
+	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("Popup","editor"));
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pTreeWidget->header()->setSortIndicatorShown(true);
 
-	QPushButton * pb = new QPushButton(__tr2qs("&Export All To..."),box);
+	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All To...","editor"),box);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAll()));
-	QPushButton * gn = new QPushButton(__tr2qs("&Export selected To..."),box);
+	QPushButton * gn = new QPushButton(__tr2qs_ctx("&Export selected To...","editor"),box);
 	connect(gn,SIGNAL(clicked()),this,SLOT(exportSelected()));
 
 	m_pEditor = new KviSinglePopupEditor(spl);
@@ -1093,22 +1076,20 @@ void KviPopupEditor::itemPressed(QTreeWidgetItem * it, int)
 
 	m_pContextPopup->insertItem(
 		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)),
-		__tr2qs("&New Popup"),
+		__tr2qs_ctx("&New Popup","editor"),
 		this,SLOT(newPopup()));
 
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(
-				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
-				__tr2qs("Re&move Popup"),
-				this,SLOT(removeCurrentPopup())),
-	it);
+	m_pContextPopup->insertItem(
+		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
+		__tr2qs_ctx("Re&move Popup","editor"),
+		this,SLOT(removeCurrentPopup())),it);
 
 	m_pContextPopup->setItemEnabled(
-		m_pContextPopup->insertItem(
-				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
-				__tr2qs("&Export Popup To..."),
-				this,SLOT(exportCurrentPopup())),
-	it);
+	m_pContextPopup->insertItem(
+		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+		__tr2qs_ctx("&Export Popup To...","editor"),
+		this,SLOT(exportCurrentPopup())),it);
 
 	m_pContextPopup->popup(QCursor::pos());
 }
@@ -1126,14 +1107,14 @@ void KviPopupEditor::exportCurrentPopup()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
 
 	QString szOut;
 	m_pLastEditedItem->popup()->generateDefPopup(szOut);
 
 	if(!KviFileUtils::writeFile(szFile,szOut))
 	{
-		QMessageBox::warning(this,__tr2qs("Write Failed - KVIrc"),__tr2qs("Unable to write to the popup file."),__tr2qs("Ok"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the popup file.","editor"),__tr2qs_ctx("Ok","editor"));
 	}
 }
 
@@ -1176,11 +1157,11 @@ void KviPopupEditor::exportPopups(bool bSelectedOnly)
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{
-		QMessageBox::warning(this,__tr2qs("Write Failed - KVIrc"),__tr2qs("Unable to write to the alias file."),__tr2qs("Ok"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the alias file.","editor"),__tr2qs_ctx("Ok","editor"));
 	}
 }
 
@@ -1277,7 +1258,7 @@ void KviPopupEditor::getUniquePopupName(KviMenuTreeWidgetItem *item,QString &buf
 {
 	__range_valid(m_bOneTimeSetupDone);
 
-	if(buffer.isEmpty())buffer = __tr2qs("unnamed");
+	if(buffer.isEmpty())buffer = __tr2qs_ctx("unnamed");
 	QString newName = buffer;
 
 	bool bFound = true;
@@ -1317,17 +1298,17 @@ KviPopupEditorWindow::KviPopupEditorWindow(KviFrame * lpFrm)
 	m_pBase = new QWidget(this);
 	QGridLayout * g = new QGridLayout(m_pBase);
 
-	QPushButton * btn = new QPushButton(__tr2qs("&OK"),m_pBase);
+	QPushButton * btn = new QPushButton(__tr2qs_ctx("&OK","editor"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,1);
 
-	btn = new QPushButton(__tr2qs("&Apply"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("&Apply","editor"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,2);
 
-	btn = new QPushButton(__tr2qs("Cancel"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g->addWidget(btn,0,3);
@@ -1370,7 +1351,7 @@ void KviPopupEditorWindow::resizeEvent(QResizeEvent *)
 
 void KviPopupEditorWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = __tr2qs("Popup Editor");
+	m_szPlainTextCaption = __tr2qs_ctx("Popup Editor","editor");
 
 	static QString p1("<nobr><font color=\"");
 	static QString p2("\"><b>");

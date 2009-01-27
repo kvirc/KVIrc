@@ -54,11 +54,11 @@ KviCodeTester::KviCodeTester(QWidget * par)
 	m_pEditor = KviScriptEditor::createInstance(this);
 	g->addWidget(m_pEditor,0,0,1,4);
 	//g->addMultiCellWidget(m_pEditor,0,0,0,3);
-	m_pExecuteButton = new QPushButton(__tr2qs("&Execute"),this);
+	m_pExecuteButton = new QPushButton(__tr2qs_ctx("&Execute","editor"),this);
 	g->addWidget(m_pExecuteButton,1,3);
 	connect(m_pExecuteButton,SIGNAL(clicked()),this,SLOT(execute()));
 
-	m_pModeLabel = new QLabel(__tr("Params:"),this);
+	m_pModeLabel = new QLabel(__tr2qs_ctx("Params:","editor"),this);
 	g->addWidget(m_pModeLabel,1,1);
 	m_pParams = new QLineEdit(this);
 	g->addWidget(m_pParams,1,2);
@@ -106,7 +106,7 @@ void KviCodeTesterWindow::resizeEvent(QResizeEvent *)
 
 void KviCodeTesterWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = __tr2qs("Script Tester");
+	m_szPlainTextCaption = __tr2qs_ctx("Script Tester","editor");
 
 	static QString p1("<nobr><font color=\"");
 	static QString p2("\"><b>");

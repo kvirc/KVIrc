@@ -100,17 +100,17 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	QGridLayout * g = new QGridLayout(this);
 
-	QLabel * l = new QLabel(__tr2qs("Name:"),this);
+	QLabel * l = new QLabel(__tr2qs_ctx("Name:","editor"),this);
 	g->addWidget(l,0,0);
 	m_pNameEdit = new QLineEdit(this);
 	g->addWidget(m_pNameEdit,0,1);
-	m_pNameEdit->setToolTip(__tr2qs("Internal unique name for the action"));
+	m_pNameEdit->setToolTip(__tr2qs_ctx("Internal unique name for the action","editor"));
 
-	l = new QLabel(__tr2qs("Label:"),this);
+	l = new QLabel(__tr2qs_ctx("Label:","editor"),this);
 	g->addWidget(l,1,0);
 	m_pVisibleNameEdit = new QLineEdit(this);
 	g->addWidget(m_pVisibleNameEdit,1,1);
-	m_pVisibleNameEdit->setToolTip(__tr2qs("Visible name for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"));
+	m_pVisibleNameEdit->setToolTip(__tr2qs_ctx("Visible name for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here","editor"));
 
 
 	QTabWidget * tw = new QTabWidget(this);
@@ -123,29 +123,29 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	m_pScriptEditor = KviScriptEditor::createInstance(tab);
 	gl->addWidget(m_pScriptEditor,0,0);
-	m_pScriptEditor->setToolTip(__tr2qs("Action code"));
+	m_pScriptEditor->setToolTip(__tr2qs_ctx("Action code","editor"));
 
-	tw->addTab(tab,__tr2qs("Code"));
+	tw->addTab(tab,__tr2qs_ctx("Code","editor"));
 
 	// properties tab
 	tab = new QWidget(tw);
 	gl = new QGridLayout(tab);
 
-	l = new QLabel(__tr2qs("Category:"),tab);
+	l = new QLabel(__tr2qs_ctx("Category:","editor"),tab);
 	gl->addWidget(l,0,0);
 	m_pCategoryCombo = new QComboBox(tab);
 	gl->addWidget(m_pCategoryCombo,0,1,1,3);
 	//gl->addMultiCellWidget(m_pCategoryCombo,0,0,1,3);
-	m_pCategoryCombo->setToolTip(__tr2qs("Choose the category that best fits for this action"));
+	m_pCategoryCombo->setToolTip(__tr2qs_ctx("Choose the category that best fits for this action","editor"));
 
-	l = new QLabel(__tr2qs("Description:"),tab);
+	l = new QLabel(__tr2qs_ctx("Description:","editor"),tab);
 	gl->addWidget(l,1,0);
 	m_pDescriptionEdit = new QLineEdit(tab);
 	gl->addWidget(m_pDescriptionEdit,1,1,1,3);
 //	gl->addMultiCellWidget(m_pDescriptionEdit,1,1,1,3);
-	m_pDescriptionEdit->setToolTip(__tr2qs("Visible short description for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here"));
+	m_pDescriptionEdit->setToolTip(__tr2qs_ctx("Visible short description for this action.<br>This string will be displayed to the user so it is a good idea to use $tr() here","editor"));
 
-	l = new QLabel(__tr2qs("Small Icon:"),tab);
+	l = new QLabel(__tr2qs_ctx("Small Icon:","editor"),tab);
 	gl->addWidget(l,2,0);
 	m_pSmallIconEdit = new QLineEdit(tab);
 	gl->addWidget(m_pSmallIconEdit,2,1);
@@ -153,13 +153,13 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	m_pSmallIconButton->setMinimumSize(QSize(20,20));
 	connect(m_pSmallIconButton,SIGNAL(clicked()),this,SLOT(chooseSmallIcon()));
 	gl->addWidget(m_pSmallIconButton,2,2);
-	QString s= __tr2qs("The small icon associated to this action.<br>" \
+	QString s= __tr2qs_ctx("The small icon associated to this action.<br>" \
 				"It will appear at least in the popup menus when this action is inserted.<br>" \
-				"It should be 16x16 pixels.");
+				"It should be 16x16 pixels.","editor");
 	m_pSmallIconEdit->setToolTip(s);
 	m_pSmallIconButton->setToolTip(s);
 
-	l = new QLabel(__tr2qs("Big Icon:"),tab);
+	l = new QLabel(__tr2qs_ctx("Big Icon:","editor"),tab);
 	gl->addWidget(l,3,0);
 	m_pBigIconEdit = new QLineEdit(tab);
 	gl->addWidget(m_pBigIconEdit,3,1);
@@ -169,22 +169,22 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	connect(m_pBigIconButton,SIGNAL(clicked()),this,SLOT(chooseBigIcon()));
 	gl->addWidget(m_pBigIconButton,3,2,2,2);
 //	gl->addMultiCellWidget(m_pBigIconButton,3,4,2,3);
-	s = __tr2qs("The big icon associated to this action.<br>" \
+	s = __tr2qs_ctx("The big icon associated to this action.<br>" \
 				"It will appear at least in the toolbar buttons when this action is inserted.<br>" \
-				"It should be 32x32 pixels.");
+				"It should be 32x32 pixels.","editor");
 	m_pBigIconEdit->setToolTip(s);
 	m_pBigIconButton->setToolTip(s);
 
-	l = new QLabel(__tr2qs("Key Sequence:"),tab);
+	l = new QLabel(__tr2qs_ctx("Key Sequence:","editor"),tab);
 	gl->addWidget(l,4,0,2,1);
 //	gl->addMultiCellWidget(l,4,5,0,0);
 	m_pKeySequenceEdit = new QLineEdit(tab);
 	gl->addWidget(m_pKeySequenceEdit,4,1,2,1);
 //	gl->addMultiCellWidget(m_pKeySequenceEdit,4,5,1,1);
-	m_pKeySequenceEdit->setToolTip(__tr2qs("Optional keyboard sequence that will activate this action.<br>" \
+	m_pKeySequenceEdit->setToolTip(__tr2qs_ctx("Optional keyboard sequence that will activate this action.<br>" \
 		"The sequence should be expressed as a string of up to four key codes separated by commas " \
 		"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>" \
-		"Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."));
+		"Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ...","editor"));
 
 	l = new QLabel(tab);
 	gl->addWidget(l,6,0,1,4);
@@ -194,7 +194,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl->setRowStretch(6,1);
 
 
-	tw->addTab(tab,__tr2qs("Properties"));
+	tw->addTab(tab,__tr2qs_ctx("Properties","editor"));
 
 
 
@@ -203,10 +203,10 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl = new QGridLayout(tab);
 
 
-	m_pNeedsContextCheck = new QCheckBox(__tr2qs("Needs IRC Context"),tab);
+	m_pNeedsContextCheck = new QCheckBox(__tr2qs_ctx("Needs IRC Context","editor"),tab);
 	connect(m_pNeedsContextCheck,SIGNAL(toggled(bool)),this,SLOT(needsContextCheckToggled(bool)));
-	m_pNeedsContextCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
-						"the active window belongs to an irc context"));
+	m_pNeedsContextCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
+						"the active window belongs to an irc context","editor"));
 	gl->addWidget(m_pNeedsContextCheck,0,0,1,4);
 
 
@@ -214,10 +214,10 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	l->setMinimumWidth(40);
 	gl->addWidget(l,1,0);
 
-	m_pNeedsConnectionCheck = new QCheckBox(__tr2qs("Needs IRC Connection"),tab);
+	m_pNeedsConnectionCheck = new QCheckBox(__tr2qs_ctx("Needs IRC Connection","editor"),tab);
 	connect(m_pNeedsConnectionCheck,SIGNAL(toggled(bool)),this,SLOT(needsConnectionCheckToggled(bool)));
-	m_pNeedsConnectionCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
-						"the active window has an active IRC connection"));
+	m_pNeedsConnectionCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
+						"the active window has an active IRC connection","editor"));
 	gl->addWidget(m_pNeedsConnectionCheck,1,1,1,3);
 
 
@@ -225,54 +225,54 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	l->setMinimumWidth(40);
 	gl->addWidget(l,2,1);
 
-	m_pEnableAtLoginCheck = new QCheckBox(__tr2qs("Enable at Login"),tab);
-	m_pEnableAtLoginCheck->setToolTip(__tr2qs("Check this option if this action should be enabled also during " \
-						"the login operations (so when the logical IRC connection hasn't been estabilished yet)"));
+	m_pEnableAtLoginCheck = new QCheckBox(__tr2qs_ctx("Enable at Login","editor"),tab);
+	m_pEnableAtLoginCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled also during " \
+						"the login operations (so when the logical IRC connection hasn't been estabilished yet)","editor"));
 	gl->addWidget(m_pEnableAtLoginCheck,2,2,1,2);
 
-	m_pSpecificWindowsCheck = new QCheckBox(__tr2qs("Enable Only in Specified Windows"),tab);
+	m_pSpecificWindowsCheck = new QCheckBox(__tr2qs_ctx("Enable Only in Specified Windows","editor"),tab);
 	connect(m_pSpecificWindowsCheck,SIGNAL(toggled(bool)),this,SLOT(specificWindowsCheckToggled(bool)));
-	m_pSpecificWindowsCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
-						"the active window is of a specified type"));
+	m_pSpecificWindowsCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
+		"the active window is of a specified type","editor"));
 	gl->addWidget(m_pSpecificWindowsCheck,3,0,1,4);
 
 
-	m_pWindowConsoleCheck = new QCheckBox(__tr2qs("Enable in Console Windows"),tab);
-	m_pWindowConsoleCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
-						"the active window is a console"));
+	m_pWindowConsoleCheck = new QCheckBox(__tr2qs_ctx("Enable in Console Windows","editor"),tab);
+	m_pWindowConsoleCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
+		"the active window is a console","editor"));
 	connect(m_pWindowConsoleCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addWidget(m_pWindowConsoleCheck,4,1,1,3);
 
-	m_pConsoleOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
-	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
-						"selected users in the active window"));
+	m_pConsoleOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only If There Are Selected Users","editor"),tab);
+	m_pConsoleOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are " \
+		"selected users in the active window","editor"));
 	gl->addWidget(m_pConsoleOnlyIfUsersSelectedCheck,5,2,1,2);
 
-	m_pWindowChannelCheck = new QCheckBox(__tr2qs("Enable in Channel Windows"),tab);
-	m_pWindowChannelCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
-						"the active window is a channel"));
+	m_pWindowChannelCheck = new QCheckBox(__tr2qs_ctx("Enable in Channel Windows","editor"),tab);
+	m_pWindowChannelCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
+		"the active window is a channel","editor"));
 	connect(m_pWindowChannelCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addWidget(m_pWindowChannelCheck,6,1,1,3);
 
-	m_pChannelOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
-	m_pChannelOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
-						"selected users in the active window"));
+	m_pChannelOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only If There Are Selected Users","editor"),tab);
+	m_pChannelOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are " \
+		"selected users in the active window","editor"));
 	gl->addWidget(m_pChannelOnlyIfUsersSelectedCheck,7,2,1,2);
 
-	m_pWindowQueryCheck = new QCheckBox(__tr2qs("Enable in Query Windows"),tab);
-	m_pWindowQueryCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
-						"the active window is a query"));
+	m_pWindowQueryCheck = new QCheckBox(__tr2qs_ctx("Enable in Query Windows","editor"),tab);
+	m_pWindowQueryCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
+		"the active window is a query","editor"));
 	connect(m_pWindowQueryCheck,SIGNAL(toggled(bool)),this,SLOT(channelQueryOrConsoleWindowCheckToggled(bool)));
 	gl->addWidget(m_pWindowQueryCheck,8,1,1,3);
 
-	m_pQueryOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs("Only If There Are Selected Users"),tab);
-	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs("This will enable the action only if there are " \
-						"selected users in the active window"));
+	m_pQueryOnlyIfUsersSelectedCheck = new QCheckBox(__tr2qs_ctx("Only If There Are Selected Users","editor"),tab);
+	m_pQueryOnlyIfUsersSelectedCheck->setToolTip(__tr2qs_ctx("This will enable the action only if there are " \
+		"selected users in the active window","editor"));
 	gl->addWidget(m_pQueryOnlyIfUsersSelectedCheck,9,2,1,2);
 
-	m_pWindowDccChatCheck = new QCheckBox(__tr2qs("Enable in DCC Chat Windows"),tab);
-	m_pWindowDccChatCheck->setToolTip(__tr2qs("Check this option if this action should be enabled only when " \
-						"the active window is a dcc chat"));
+	m_pWindowDccChatCheck = new QCheckBox(__tr2qs_ctx("Enable in DCC Chat Windows","editor"),tab);
+	m_pWindowDccChatCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
+		"the active window is a dcc chat","editor"));
 	gl->addWidget(m_pWindowDccChatCheck,10,1,1,2);
 
 	l = new QLabel(tab);
@@ -280,7 +280,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl->setColumnStretch(3,1);
 	gl->setRowStretch(11,1);
 
-	tw->addTab(tab,__tr2qs("Flags"));
+	tw->addTab(tab,__tr2qs_ctx("Flags","editor"));
 	tw->setCurrentIndex(0);
 
 	g->setRowStretch(2,1);
@@ -583,7 +583,7 @@ KviActionEditorTreeView::KviActionEditorTreeView(QWidget * pParent)
 : KviTalTreeWidget(pParent)
 {
 	setColumnCount (1);
-	setHeaderLabel(__tr2qs("Action"));
+	setHeaderLabel(__tr2qs_ctx("Action","editor"));
 	setSelectionMode(QAbstractItemView::ExtendedSelection);
 	setSortingEnabled(true);
 	int iWidth = viewport()->width();
@@ -624,13 +624,13 @@ KviActionEditor::KviActionEditor(QWidget * par)
 	m_pTreeWidget->setFocusPolicy(Qt::StrongFocus);
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 
-	m_pNewActionButton = new QPushButton(__tr2qs("New Action"),box);
+	m_pNewActionButton = new QPushButton(__tr2qs_ctx("New Action","editor"),box);
 	connect(m_pNewActionButton,SIGNAL(clicked()),this,SLOT(newAction()));
 
-	m_pDeleteActionsButton = new QPushButton(__tr2qs("Delete Actions"),box);
+	m_pDeleteActionsButton = new QPushButton(__tr2qs_ctx("Delete Actions","editor"),box);
 	connect(m_pDeleteActionsButton,SIGNAL(clicked()),this,SLOT(deleteActions()));
 
-	m_pExportActionsButton = new QPushButton(__tr2qs("Export Actions..."),box);
+	m_pExportActionsButton = new QPushButton(__tr2qs_ctx("Export Actions...","editor"),box);
 	connect(m_pExportActionsButton,SIGNAL(clicked()),this,SLOT(exportActions()));
 
 	box->setSpacing(1);
@@ -689,7 +689,7 @@ void KviActionEditor::exportActions()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,QString(),true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,QString(),true,true,true))return;
 
 	QString szCode;
 
@@ -714,7 +714,7 @@ void KviActionEditor::exportActions()
 
 	if(!KviFileUtils::writeFile(szFile,szCode))
 	{
-		QMessageBox::warning(this,__tr2qs("Write Failed - KVIrc"),__tr2qs("Unable to write to the actions file."),__tr2qs("OK"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the actions file.","editor"),__tr2qs_ctx("OK","editor"));
 	}
 }
 
@@ -761,9 +761,9 @@ QString KviActionEditor::nameForAutomaticAction(const QString &szTemplate)
 
 void KviActionEditor::newAction()
 {
-	QString szName = nameForAutomaticAction(__tr2qs("My Action"));
-	QString szVis = __tr2qs("My Action");
-	QString szDes = __tr2qs("Put here a short description of your action");
+	QString szName = nameForAutomaticAction(__tr2qs_ctx("My Action","editor"));
+	QString szVis = __tr2qs_ctx("My Action","editor");
+	QString szDes = __tr2qs_ctx("Put here a short description of your action","editor");
 
 	szVis.prepend("$tr(\"");
 	szVis.append("\")");
@@ -795,7 +795,6 @@ bool KviActionEditor::actionExists(const QString &szName)
 	}
 	return false;
 }
-
 
 void KviActionEditor::currentItemChanged(QTreeWidgetItem * i,QTreeWidgetItem *)
 {
@@ -855,26 +854,26 @@ KviActionEditorWindow::KviActionEditorWindow(KviFrame * lpFrm)
 : KviWindow(KVI_WINDOW_TYPE_SCRIPTEDITOR,lpFrm,"actioneditor",0)
 {
 	g_pActionEditorWindow = this;
-	setFixedCaption(__tr2qs("Action Editor"));
+	setFixedCaption(__tr2qs_ctx("Action Editor","editor"));
 
 	m_pEditor = new KviActionEditor(this);
 
 	m_pBase = new QWidget(this);
 	QGridLayout * g = new QGridLayout(m_pBase);
 
-	QPushButton * btn = new QPushButton(__tr2qs("OK"),m_pBase);
+	QPushButton * btn = new QPushButton(__tr2qs_ctx("OK","editor"),m_pBase);
 	btn->setMinimumWidth(80);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,1);
 
-	btn = new QPushButton(__tr2qs("Apply"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("Apply","editor"),m_pBase);
 	btn->setMinimumWidth(80);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,2);
 
-	btn = new QPushButton(__tr2qs("Cancel"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),m_pBase);
 	btn->setMinimumWidth(80);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
@@ -921,7 +920,6 @@ void KviActionEditorWindow::getConfigGroupName(QString &szName)
 {
 	szName = "actioneditor";
 }
-
 
 void KviActionEditorWindow::saveProperties(KviConfig *cfg)
 {

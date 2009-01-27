@@ -61,7 +61,7 @@ KviTrashcanLabel::KviTrashcanLabel(QWidget * p)
 : QLabel(p)
 {
 	setPixmap(*(g_pIconManager->getBigIcon("kvi_bigicon_trashcan.png")));
-	KviTalToolTip::add(this,__tr2qs("Drop here the icons from the toolbars to remove them"));
+	KviTalToolTip::add(this,__tr2qs_ctx("Drop here the icons from the toolbars to remove them","editor"));
 	setFrameStyle(QFrame::Sunken | QFrame::WinPanel);
 	setAcceptDrops(true);
 	setAlignment(Qt::AlignCenter);
@@ -130,7 +130,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	m_szOriginalId = szId;
 	m_szLabel = szLabel;
 
-	setWindowTitle(__tr2qs("ToolBar Properties"));
+	setWindowTitle(__tr2qs_ctx("ToolBar Properties","editor"));
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR))));
 	
 	QGridLayout * g = new QGridLayout(this);
@@ -139,7 +139,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	g->addWidget(l,0,0,1,6);
 //	g->addMultiCellWidget(l,0,0,0,5);
 
-	l = new QLabel(__tr2qs("Label") + ":",this);
+	l = new QLabel(__tr2qs_ctx("Label","editor") + ":",this);
 	g->addWidget(l,1,0);
 
 	m_pLabelEdit = new QLineEdit(this);
@@ -148,7 +148,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	m_pLabelEdit->setText(szLabel);
 	connect(m_pLabelEdit,SIGNAL(textChanged(const QString &)),this,SLOT(labelTextChanged(const QString &)));
 	
-	l = new QLabel(__tr2qs("Icon") + ":",this);
+	l = new QLabel(__tr2qs_ctx("Icon","editor") + ":",this);
 	g->addWidget(l,2,0);
 	
 	m_pIconEdit = new QLineEdit(this);
@@ -167,7 +167,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	m_pAdvanced = new QWidget(this);
 	QGridLayout * ag = new QGridLayout(m_pAdvanced);
 
-	l = new QLabel(__tr2qs("Id") + ":",m_pAdvanced);
+	l = new QLabel(__tr2qs_ctx("Id","editor") + ":",m_pAdvanced);
 	l->setMinimumWidth(100);
 	ag->addWidget(l,0,0);
 
@@ -183,18 +183,18 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 
 	m_pLabelEdit->setFocus();
 	
-	QPushButton * pb = new QPushButton(__tr2qs("OK"),this);
+	QPushButton * pb = new QPushButton(__tr2qs_ctx("OK","editor"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(okClicked()));
 	pb->setMinimumWidth(80);
 	g->addWidget(pb,4,4,1,2);
 	//g->addMultiCellWidget(pb,4,4,4,5);
 	
-	pb = new QPushButton(__tr2qs("Cancel"),this);
+	pb = new QPushButton(__tr2qs_ctx("Cancel","editor"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
 	pb->setMinimumWidth(80);
 	g->addWidget(pb,4,3);
 	
-	m_pAdvancedButton = new QPushButton(__tr2qs("Advanced..."),this);
+	m_pAdvancedButton = new QPushButton(__tr2qs_ctx("Advanced...","editor"),this);
 	connect(m_pAdvancedButton,SIGNAL(clicked()),this,SLOT(advancedClicked()));
 	m_pAdvancedButton->setMinimumWidth(100);
 	g->addWidget(m_pAdvancedButton,4,0,1,2);
@@ -225,7 +225,7 @@ void KviCustomToolBarPropertiesDialog::iconSelected(const QString &szIconId)
 
 void KviCustomToolBarPropertiesDialog::iconButtonClicked()
 {
-	KviImageDialog * dlg = new KviImageDialog(this,__tr2qs("Please choose the icon for the ToolBar"));
+	KviImageDialog * dlg = new KviImageDialog(this,__tr2qs_ctx("Please choose the icon for the ToolBar","editor"));
 	if(dlg->exec() != QDialog::Accepted)
 	{
 		delete dlg;
@@ -249,7 +249,7 @@ void KviCustomToolBarPropertiesDialog::okClicked()
 {
 	if(m_szLabel.isEmpty())
 	{
-		QMessageBox::information(this,__tr2qs("Invalid ToolBar Label"),__tr2qs("The ToolBar Label can't be empty!"),__tr2qs("OK"));
+		QMessageBox::information(this,__tr2qs_ctx("Invalid ToolBar Label","editor"),__tr2qs_ctx("The ToolBar Label can't be empty!","editor"),__tr2qs_ctx("OK","editor"));
 		return;
 	}
 	
@@ -262,11 +262,11 @@ void KviCustomToolBarPropertiesDialog::okClicked()
 	{
 		if(m_szId != m_szOriginalId)
 		{
-			if(QMessageBox::information(this,__tr2qs("Duplicate ToolBar Id"),
-				__tr2qs("The specified ToolBar Id already exists.<br>" \
+			if(QMessageBox::information(this,__tr2qs_ctx("Duplicate ToolBar Id","editor"),
+				__tr2qs_ctx("The specified ToolBar Id already exists.<br>" \
 					"Would you like KVIrc to assign it automatically (so it doesn't "
-					"collide with any other toolbar) or you prefer to do it manually ?"),
-				__tr2qs("Manually"),__tr2qs("Automatically")) == 0)return;
+					"collide with any other toolbar) or you prefer to do it manually ?","editor"),
+				__tr2qs_ctx("Manually","editor"),__tr2qs_ctx("Automatically","editor")) == 0)return;
 			m_szId = KviCustomToolBarManager::instance()->idForNewToolBar(m_szLabel);
 		}
 	}
@@ -281,10 +281,10 @@ void KviCustomToolBarPropertiesDialog::advancedClicked()
 	if(m_pAdvanced->isVisible())
 	{
 		m_pAdvanced->hide();
-		m_pAdvancedButton->setText(__tr2qs("Advanced..."));
+		m_pAdvancedButton->setText(__tr2qs_ctx("Advanced...","editor"));
 	} else {
 		m_pAdvanced->show();
-		m_pAdvancedButton->setText(__tr2qs("Hide Advanced"));
+		m_pAdvancedButton->setText(__tr2qs_ctx("Hide Advanced","editor"));
 	}
 
 }
@@ -294,8 +294,8 @@ KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
 : QDialog(p)//,"" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
 {
 	setObjectName("Toolbar_editor");
-	debug("TOol bar editor");
-	setWindowTitle(__tr2qs("Customize Toolbars"));
+	debug("Toolbar editor");
+	setWindowTitle(__tr2qs_ctx("Customize Toolbars","editor"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
 
 	m_pInstance = this;
@@ -305,15 +305,15 @@ KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
 	g->addWidget(m_pDrawer,0,0,7,1);
 //	g->addMultiCellWidget(m_pDrawer,0,6,0,0);
 
-	QPushButton * b = new QPushButton(__tr2qs("New ToolBar"),this);
+	QPushButton * b = new QPushButton(__tr2qs_ctx("New ToolBar","editor"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(newToolBar()));
 	g->addWidget(b,0,1);
 
-	m_pDeleteToolBarButton = new QPushButton(__tr2qs("Delete ToolBar"),this);
+	m_pDeleteToolBarButton = new QPushButton(__tr2qs_ctx("Delete ToolBar","editor"),this);
 	connect(m_pDeleteToolBarButton,SIGNAL(clicked()),this,SLOT(deleteToolBar()));
 	g->addWidget(m_pDeleteToolBarButton,1,1);
 
-	m_pRenameToolBarButton = new QPushButton(__tr2qs("Edit ToolBar"),this);
+	m_pRenameToolBarButton = new QPushButton(__tr2qs_ctx("Edit ToolBar","editor"),this);
 	connect(m_pRenameToolBarButton,SIGNAL(clicked()),this,SLOT(renameToolBar()));
 	g->addWidget(m_pRenameToolBarButton,2,1);
 
@@ -321,14 +321,14 @@ KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	g->addWidget(f,3,1);
 	
-	m_pExportToolBarButton = new QPushButton(__tr2qs("Export ToolBar"),this);
+	m_pExportToolBarButton = new QPushButton(__tr2qs_ctx("Export ToolBar","editor"),this);
 	connect(m_pExportToolBarButton,SIGNAL(clicked()),this,SLOT(exportToolBar()));
 	g->addWidget(m_pExportToolBarButton,4,1);
 
 	KviTrashcanLabel * t = new KviTrashcanLabel(this);
 	g->addWidget(t,6,1);
 
-	b = new QPushButton(__tr2qs("Close"),this);
+	b = new QPushButton(__tr2qs_ctx("Close","editor"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(closeClicked()));
 	g->addWidget(b,7,1);
 
@@ -380,10 +380,10 @@ void KviCustomizeToolBarsDialog::deleteToolBar()
 	KviCustomToolBar * t = KviActionManager::currentToolBar();
 	if(!t)return;
 	if(QMessageBox::question(this,
-			__tr2qs("Confirm ToolBar Deletion"),
-			__tr2qs("Do you really want to delete toolbar \"%1\" ?").arg(t->windowTitle()),
-			__tr2qs("No"),
-			__tr2qs("Yes")) == 0)return;
+			__tr2qs_ctx("Confirm ToolBar Deletion","editor"),
+			__tr2qs_ctx("Do you really want to delete toolbar \"%1\" ?","editor").arg(t->windowTitle()),
+			__tr2qs_ctx("No","editor"),
+			__tr2qs_ctx("Yes","editor")) == 0)return;
 	KviCustomToolBarManager::instance()->destroyDescriptor(t->descriptor()->id());
 }
 
@@ -399,16 +399,16 @@ void KviCustomizeToolBarsDialog::exportToolBar()
 	
 	QString szFile;
 	
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
 
 	QString szCode;
 
 	int ret = QMessageBox::question(this,
-			__tr2qs("ToolBar Export"),
-			__tr2qs("Do you want the associated actions to be exported with the toolbar ?"),
-			__tr2qs("Yes"),
-			__tr2qs("No"),
-			__tr2qs("Cancel"));
+			__tr2qs_ctx("ToolBar Export","editor"),
+			__tr2qs_ctx("Do you want the associated actions to be exported with the toolbar ?","editor"),
+			__tr2qs_ctx("Yes","editor"),
+			__tr2qs_ctx("No","editor"),
+			__tr2qs_ctx("Cancel","editor"));
 
 	if(ret == 2)return;
 
@@ -461,7 +461,7 @@ void KviCustomizeToolBarsDialog::exportToolBar()
 
 	if(!KviFileUtils::writeFile(szFile,szCode))
 	{
-		QMessageBox::warning(this,__tr2qs("Write Failed - KVIrc"),__tr2qs("Unable to write to the toolbar file."),__tr2qs("OK"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the toolbar file.","editor"),__tr2qs_ctx("OK","editor"));
 	}
 }
 
@@ -471,7 +471,7 @@ void KviCustomizeToolBarsDialog::renameToolBar()
 	if(!t)return;
 
 	KviCustomToolBarPropertiesDialog * dlg = new KviCustomToolBarPropertiesDialog(this,
-		__tr2qs("Please specify the properties for the toolbar \"%1\"").arg(t->windowTitle()),
+		__tr2qs_ctx("Please specify the properties for the toolbar \"%1\"","editor").arg(t->windowTitle()),
 		t->descriptor()->id(),
 		t->descriptor()->labelCode(),
 		t->descriptor()->iconId());
@@ -497,9 +497,9 @@ void KviCustomizeToolBarsDialog::renameToolBar()
 void KviCustomizeToolBarsDialog::newToolBar()
 {
 	KviCustomToolBarPropertiesDialog * dlg = new KviCustomToolBarPropertiesDialog(this,
-		__tr2qs("Please specify the properties for the new toolbar"),
-		KviCustomToolBarManager::instance()->idForNewToolBar(__tr2qs("My ToolBar")),
-		__tr2qs("My ToolBar"));
+		__tr2qs_ctx("Please specify the properties for the new toolbar","editor"),
+		KviCustomToolBarManager::instance()->idForNewToolBar(__tr2qs_ctx("My ToolBar","editor")),
+		__tr2qs_ctx("My ToolBar","editor"));
 
 	dlg->show();
 	if(dlg->exec() != QDialog::Accepted)

@@ -62,7 +62,6 @@ static bool toolbareditor_module_init(KviModule * m)
 	KviConfig cfg(szBuf,KviConfig::Read);
 	g_rectToolBarEditorDialogGeometry = cfg.readRectEntry("EditorGeometry",QRect(10,10,390,440));
 
-
 	return true;
 }
 
