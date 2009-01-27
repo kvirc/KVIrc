@@ -91,7 +91,7 @@ KviRawEditor::KviRawEditor(QWidget * par)
 
 
 	m_pTreeWidget->setColumnCount(1);
-	m_pTreeWidget->setHeaderLabel(__tr2qs("Raw Event"));
+	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("Raw Event","editor"));
 
 //	m_pTreeWidget->setMultiSelection(false);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -103,12 +103,12 @@ KviRawEditor::KviRawEditor(QWidget * par)
 
 	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),this,SLOT(customContextMenuRequested(const QPoint &)));
 
-	QPushButton * pb = new QPushButton(__tr2qs("&Export All To..."),boxi);
+	QPushButton * pb = new QPushButton(__tr2qs_ctx("&Export All To...","editor"),boxi);
 	connect(pb,SIGNAL(clicked()),this,SLOT(exportAllEvents()));
 
 	KviTalVBox * box = new KviTalVBox(spl);
 	m_pNameEditor = new QLineEdit(box);
-	m_pNameEditor->setToolTip(__tr2qs("Edit the raw event handler name."));
+	m_pNameEditor->setToolTip(__tr2qs_ctx("Edit the raw event handler name.","editor"));
 	m_pEditor = KviScriptEditor::createInstance(box);
 
 	m_bOneTimeSetupDone = false;
@@ -145,10 +145,7 @@ void KviRawEditor::oneTimeSetup()
 			it->setExpanded(true);
 		}
 	}
-
-
 }
-
 
 void KviRawEditor::customContextMenuRequested(const QPoint &pos)
 {
@@ -163,24 +160,24 @@ void KviRawEditor::customContextMenuRequested(const QPoint &pos)
 			if(!(((KviRawHandlerTreeWidgetItem *)it)->m_bEnabled))
 				m_pContextPopup->insertItem(
 					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER)),
-					__tr2qs("&Enable Handler"),this,SLOT(toggleCurrentHandlerEnabled()));
+					__tr2qs_ctx("&Enable Handler","editor"),this,SLOT(toggleCurrentHandlerEnabled()));
 			else
 				m_pContextPopup->insertItem(
 					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLERDISABLED)),
-					__tr2qs("&Disable Handler"),this,SLOT(toggleCurrentHandlerEnabled()));
+					__tr2qs_ctx("&Disable Handler","editor"),this,SLOT(toggleCurrentHandlerEnabled()));
 
 			m_pContextPopup->insertItem(
 					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
-					__tr2qs("Re&move Handler"),
+					__tr2qs_ctx("Re&move Handler","editor"),
 					this,SLOT(removeCurrentHandler()));
 			m_pContextPopup->insertItem(
 					*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
-					__tr2qs("&Export Handler To..."),
+					__tr2qs_ctx("&Export Handler To...","editor"),
 					this,SLOT(exportCurrentHandler()));
 		} else {
 			m_pContextPopup->insertItem(
 				*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HANDLER)),
-				__tr2qs("&New Handler"),
+				__tr2qs_ctx("&New Handler","editor"),
 				this,SLOT(addHandlerForCurrentRaw()));
 		}
 	}
@@ -188,7 +185,7 @@ void KviRawEditor::customContextMenuRequested(const QPoint &pos)
 	m_pContextPopup->insertSeparator();
 	m_pContextPopup->insertItem(
 			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RAWEVENT)),
-			__tr2qs("&Add Raw Event..."),
+			__tr2qs_ctx("&Add Raw Event...","editor"),
 			this,SLOT(addRaw()));
 
 	m_pContextPopup->popup(mapToGlobal(pos));
@@ -199,7 +196,7 @@ void KviRawEditor::getUniqueHandlerName(KviRawTreeWidgetItem *it,QString &buffer
 	__range_valid(m_bOneTimeSetupDone);
 
 	QString newName = buffer;
-	if(newName.isEmpty())newName = __tr2qs("unnamed");
+	if(newName.isEmpty())newName = __tr2qs_ctx("unnamed","editor");
 
 	bool bFound = true;
 	int idx = 1;
@@ -229,7 +226,7 @@ void KviRawEditor::addRaw()
 {
 	bool bOk = false;
 
-	int iIdx = QInputDialog::getInteger(this,__tr2qs("New Raw Event"),__tr2qs("Enter the numeric code of the message (0-999)"),0,0,999,1,&bOk);
+	int iIdx = QInputDialog::getInteger(this,__tr2qs_ctx("New Raw Event","editor"),__tr2qs_ctx("Enter the numeric code of the message (0-999)","editor"),0,0,999,1,&bOk);
 
 	if(!bOk)return;
 
@@ -261,7 +258,7 @@ void KviRawEditor::addHandlerForCurrentRaw()
 	{
 		if(it->parent() == 0)
 		{
-			QString buffer = __tr2qs("default");
+			QString buffer = __tr2qs_ctx("default","editor");
 			getUniqueHandlerName((KviRawTreeWidgetItem *)it,buffer);
 			KviTalTreeWidgetItem * ch = new KviRawHandlerTreeWidgetItem(it,buffer,"",true);
 			it->setExpanded(true);
@@ -419,14 +416,14 @@ void KviRawEditor::exportCurrentHandler()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
 
 	QString szOut;
 	getExportEventBuffer(szOut,m_pLastEditedItem);
 
 	if(!KviFileUtils::writeFile(szFile,szOut))
 	{
-		QMessageBox::warning(this,__tr2qs("Write Failed - KVIrc"),__tr2qs("Unable to write to the raw event file."),__tr2qs("&OK"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the raw event file.","editor"),__tr2qs_ctx("&OK","editor"));
 	}
 }
 
@@ -462,11 +459,11 @@ void KviRawEditor::exportAllEvents()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose a Filename - KVIrc"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{
-		QMessageBox::warning(this,__tr2qs("Write Failed - KVIrc"),__tr2qs("Unable to write to the raw events file."),__tr2qs("Ok"));
+		QMessageBox::warning(this,__tr2qs_ctx("Write Failed - KVIrc","editor"),__tr2qs_ctx("Unable to write to the raw events file.","editor"),__tr2qs_ctx("Ok","editor"));
 	}
 }
 
@@ -481,17 +478,17 @@ KviRawEditorWindow::KviRawEditorWindow(KviFrame * lpFrm)
 	m_pBase = new QWidget(this);
 	QGridLayout * g = new QGridLayout(m_pBase);
 
-	QPushButton * btn = new QPushButton(__tr2qs("&OK"),m_pBase);
+	QPushButton * btn = new QPushButton(__tr2qs_ctx("&OK","editor"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,1);
 
-	btn = new QPushButton(__tr2qs("&Apply"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("&Apply","editor"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	g->addWidget(btn,0,2);
 
-	btn = new QPushButton(__tr2qs("Cancel"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),m_pBase);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	g->addWidget(btn,0,3);
@@ -534,7 +531,7 @@ void KviRawEditorWindow::resizeEvent(QResizeEvent *)
 
 void KviRawEditorWindow::fillCaptionBuffers()
 {
-	m_szPlainTextCaption = __tr2qs("Raw Editor");
+	m_szPlainTextCaption = __tr2qs_ctx("Raw Editor","editor");
 
 	static QString p1("<nobr><font color=\"");
 	static QString p2("\"><b>");

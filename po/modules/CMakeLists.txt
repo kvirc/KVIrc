@@ -13,6 +13,7 @@ SUBDIRS(
 	options
 	perl
 	proxydb
+	register
 	serverdb
 	sharedfileswindow
 	theme

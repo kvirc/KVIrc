@@ -185,7 +185,7 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 	if(szName.isEmpty())
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("No name specified","register"));
 		return true;
 	}
 
@@ -205,7 +205,7 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 		{
 			u = g_pRegisteredUserDataBase->findUserByName(szName);
 		} else {
-			if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("User already registered: found exact name match"));
+			if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("User already registered: found exact name match","register"));
 		}
 	}
 
@@ -218,7 +218,7 @@ static bool reguser_kvs_cmd_add(KviKvsModuleCommandCall * c)
 			u = g_pRegisteredUserDataBase->addMask(u,m);
 			if(u != 0)
 			{
-				if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("Mask %Q is already used to identify user %s"),&szMask,u->name().toUtf8().data());
+				if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("Mask %Q is already used to identify user %s","register"),&szMask,u->name().toUtf8().data());
 			}
 		}
 	}
@@ -265,13 +265,13 @@ static bool reguser_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 
 	if(szName.isEmpty())
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("No name specified","register"));
 		return true;
 	}
 
 	if(!(g_pRegisteredUserDataBase->removeUser(szName)))
 	{
-		c->warning(__tr2qs("User not found (%Q)"),&szName);
+		c->warning(__tr2qs_ctx("User not found (%Q)","register"),&szName);
 	} else {
 		if(c->hasSwitch('n',"restartnotifylists"))g_pApp->restartNotifyLists();
 	}
@@ -328,20 +328,20 @@ static bool reguser_kvs_cmd_addmask(KviKvsModuleCommandCall * c)
 
 	if(szName.isEmpty())
 	{
-		c->warning(__tr2qs("No name specified"));
+		c->warning(__tr2qs_ctx("No name specified","register"));
 		return true;
 	}
 
 	if(szMask.isEmpty())
 	{
-		c->warning(__tr2qs("No mask specified"));
+		c->warning(__tr2qs_ctx("No mask specified","register"));
 		return true;
 	}
 
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(!u)
 	{
-		c->warning(__tr2qs("User %Q not found"),&szName);
+		c->warning(__tr2qs_ctx("User %Q not found","register"),&szName);
 		return true;
 	}
 
@@ -351,7 +351,7 @@ static bool reguser_kvs_cmd_addmask(KviKvsModuleCommandCall * c)
 
 	u = g_pRegisteredUserDataBase->addMask(u,mk);
 
-	if(u != 0)c->warning(__tr2qs("Mask %Q already used to identify user %Q"),&szMask,&(u->name()));
+	if(u != 0)c->warning(__tr2qs_ctx("Mask %Q already used to identify user %Q","register"),&szMask,&(u->name()));
 	return true;
 }
 
@@ -399,14 +399,14 @@ static bool reguser_kvs_cmd_delmask(KviKvsModuleCommandCall * c)
 
 	if(szMask.isEmpty())
 	{
-		c->warning(__tr2qs("No mask specified"));
+		c->warning(__tr2qs_ctx("No mask specified","register"));
 		return true;
 	}
 
 	KviIrcMask mk(szMask);
 	if(!g_pRegisteredUserDataBase->removeMask(mk))
 	{
-		c->warning(__tr2qs("Mask %Q not found"),&szMask);
+		c->warning(__tr2qs_ctx("Mask %Q not found","register"),&szMask);
 	}
 
 	return true;
@@ -448,14 +448,14 @@ static bool reguser_kvs_cmd_setIgnoreEnabled(KviKvsModuleCommandCall * c)
 
 	if(szName.isEmpty())
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("No name specified","register"));
 		return true;
 	}
 
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(!u)
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("User %Q not found"),&szName);
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("User %Q not found","register"),&szName);
 	} else {
 		u->setIgnoreEnabled(bEnabled);
 	}
@@ -513,14 +513,14 @@ static bool reguser_kvs_cmd_setIgnoreFlags(KviKvsModuleCommandCall * c)
 
 	if(szName.isEmpty())
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("No name specified","register"));
 		return true;
 	}
 
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(!u)
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("User %Q not found"),&szName);
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("User %Q not found","register"),&szName);
 	} else {
 		int iIgnoreFlags=0;
 		if(c->hasSwitch('p',"query"))
@@ -687,20 +687,20 @@ static bool reguser_kvs_cmd_setproperty(KviKvsModuleCommandCall * c)
 
 	if(szName.isEmpty())
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No name specified"));
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("No name specified","register"));
 		return true;
 	}
 
 	if(szProperty.isEmpty())
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No property specified"));
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("No property specified","register"));
 		return true;
 	}
 
 	KviRegisteredUser * u = g_pRegisteredUserDataBase->findUserByName(szName);
 	if(!u)
 	{
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("User %Q not found"),&szName);
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("User %Q not found","register"),&szName);
 	} else {
 		u->setProperty(szProperty,szValue);
 		if(c->hasSwitch('n',"restartnotifylists"))g_pApp->restartNotifyLists();
@@ -798,7 +798,7 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 	KVSM_PARAMETERS_END(c)
 
 	KviIrcMask mask(szMask);
-	c->window()->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Registered users database dump:"));
+	c->window()->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Registered users database dump:","register"));
 
 	int count = 0;
 
@@ -809,15 +809,15 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 		KviPointerList<KviIrcMask> * ml = u->maskList();
 		if(u->matches(mask) || (ml->count() == 0))
 		{
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs(" User: %c%Q"),KVI_TEXT_BOLD,&(u->name()));
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx(" User: %c%Q","register"),KVI_TEXT_BOLD,&(u->name()));
 
 			if(ml->count() == 0)
 			{
-				c->window()->output(KVI_OUT_SYSTEMWARNING,__tr2qs("    Warning: this user has no registration masks"));
+				c->window()->output(KVI_OUT_SYSTEMWARNING,__tr2qs_ctx("    Warning: this user has no registration masks","register"));
 			} else {
 				for(KviIrcMask * m = ml->first();m;m = ml->next())
 				{
-					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("    Mask: %Q!%Q@%Q"),&(m->nick()),&(m->user()),&(m->host()));
+					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    Mask: %Q!%Q@%Q","register"),&(m->nick()),&(m->user()),&(m->host()));
 				}
 			}
 
@@ -828,16 +828,16 @@ static bool reguser_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 				while(pdit.current())
 				{
 					QString key = pdit.currentKey();
-					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("    Property: %Q=%Q"),&(key),pdit.current());
+					c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    Property: %Q=%Q","register"),&(key),pdit.current());
 					++pdit;
 				}
-			} else c->window()->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("    No properties"));
+			} else c->window()->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    No properties","register"));
 			count++;
 		}
 		++it;
 	}
 
-	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Total: %d matching users (of %d in the database)"),count,d->count());
+	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Total: %d matching users (of %d in the database)","register"),count,d->count());
 	return true;
 }
 

@@ -74,7 +74,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	QFrame * f;
 
 //    resize( 490, 456 ); 
-	setWindowTitle(__tr2qs("User Registration Wizard - KVIrc"));
+	setWindowTitle(__tr2qs_ctx("User Registration Wizard - KVIrc","register"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
 
 	setSizeGripEnabled( TRUE );
@@ -85,7 +85,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	m_pPage1Layout->setMargin(8);
 
 	m_pLabel1 = new QLabel(m_pPage1);
-	m_pLabel1->setText(__tr2qs("<p>Welcome to the user registration wizard.<br>This process allows you to add an IRC user to the database and set properties for that user. KVIrc will be (hopefully) able to recognize the user, add him to the notify list, and display the associated avatar.<br><br>First of all, you must insert an <b>entry name or real name</b> for the user you're going to register. The name will be used to identify the database entry and has no specific requirements, it can be a given name, nickname, or just some text to remind you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n</p>" ));
+	m_pLabel1->setText(__tr2qs_ctx("<p>Welcome to the user registration wizard.<br>This process allows you to add an IRC user to the database and set properties for that user. KVIrc will be (hopefully) able to recognize the user, add him to the notify list, and display the associated avatar.<br><br>First of all, you must insert an <b>entry name or real name</b> for the user you're going to register. The name will be used to identify the database entry and has no specific requirements, it can be a given name, nickname, or just some text to remind you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n</p>","register"));
 	m_pLabel1->setWordWrap(true);
 
 	m_pPage1Layout->addWidget(m_pLabel1, 0, 0);
@@ -94,7 +94,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	//m_pEditRealName->setAlignment(int(QLineEdit::AlignHCenter));
 
 	m_pPage1Layout->addWidget(m_pEditRealName,1,0);
-	addPage( m_pPage1,__tr2qs("Step 1: Entry Name"));
+	addPage( m_pPage1,__tr2qs_ctx("Step 1: Entry Name","register"));
 
 	if(mask.nick() != "*")m_pEditRealName->setText(mask.nick());
 
@@ -109,7 +109,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	m_pPage2Layout->setMargin( 8 );
 
 	m_pLabel2 = new QLabel( m_pPage2);
-	m_pLabel2->setText(__tr2qs("<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A mask must be in the following form:<br><b>nickname!username@hostname</b><br>and can contain wildcard characters '*' and '?'. Be careful in choosing the masks, as they are the only way to verify the identity of a registered user.<br><br>You can enter at most two masks here, if you wish to add more masks, use the \"<b>Edit</b>\" button in the Registered Users dialog. You must enter at least one mask.</p>"));
+	m_pLabel2->setText(__tr2qs_ctx("<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A mask must be in the following form:<br><b>nickname!username@hostname</b><br>and can contain wildcard characters '*' and '?'. Be careful in choosing the masks, as they are the only way to verify the identity of a registered user.<br><br>You can enter at most two masks here, if you wish to add more masks, use the \"<b>Edit</b>\" button in the Registered Users dialog. You must enter at least one mask.</p>","register"));
 	m_pLabel2->setWordWrap(true);
 
 	m_pPage2Layout->addWidget(m_pLabel2,0,0,1,5);
@@ -168,7 +168,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	TextLabel10_3_2->setAlignment(Qt::AlignCenter);
 	m_pPage2Layout->addWidget(TextLabel10_3_2,2,3);
 
-	addPage(m_pPage2,__tr2qs("Step 2: Mask Selection"));
+	addPage(m_pPage2,__tr2qs_ctx("Step 2: Mask Selection","register"));
 
 
 
@@ -180,7 +180,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	m_pPage3Layout->setMargin(8);
 
 	m_pLabel3 = new QLabel(m_pPage3);
-	m_pLabel3->setText(__tr2qs("<p>If you want to store an avatar image for this user, you can set it here. KVIrc will show the avatar in the userlist next to the user's nickname.<br>An avatar can be in any supported image format (PNG is recommended). Keep in mind that KVIrc stores avatars in memory and has to resize them to fit in the userlist, thus it's better to use small, low-resolution images.</p>"));
+	m_pLabel3->setText(__tr2qs_ctx("<p>If you want to store an avatar image for this user, you can set it here. KVIrc will show the avatar in the userlist next to the user's nickname.<br>An avatar can be in any supported image format (PNG is recommended). Keep in mind that KVIrc stores avatars in memory and has to resize them to fit in the userlist, thus it's better to use small, low-resolution images.</p>","register"));
 	m_pLabel3->setWordWrap(true);
 	m_pPage3Layout->addWidget(m_pLabel3,0,0);
 
@@ -189,12 +189,12 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	m_pPage3Layout->addWidget(f,1,0);
 
 	m_pAvatar = new KviPixmap();
-	m_pAvatarSelector = new KviPixmapSelector(m_pPage3,__tr2qs("Store an avatar for this user"),m_pAvatar,true);
+	m_pAvatarSelector = new KviPixmapSelector(m_pPage3,__tr2qs_ctx("Store an avatar for this user","register"),m_pAvatar,true);
 	m_pPage3Layout->addWidget(m_pAvatarSelector,2,0);
 
 	m_pPage3Layout->setRowStretch(0,1);
 
-	addPage(m_pPage3,__tr2qs( "Step 3: Avatar Selection"));
+	addPage(m_pPage3,__tr2qs_ctx("Step 3: Avatar Selection","register"));
 
 
 
@@ -205,7 +205,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	m_pPage4Layout->setMargin(8);
 
 	m_pLabel4 = new QLabel(m_pPage4);
-	m_pLabel4->setText(__tr2qs("<p>If you want to be notified when this user is online or goes offline, you must specify the list of nicknames that KVIrc will look for.<br><br>You can enter at most two nicknames here, if you wish to add more nicknames, use the \"<b>Edit</b>\" button in the Registered Users dialog.</p>"));
+	m_pLabel4->setText(__tr2qs_ctx("<p>If you want to be notified when this user is online or goes offline, you must specify the list of nicknames that KVIrc will look for.<br><br>You can enter at most two nicknames here, if you wish to add more nicknames, use the \"<b>Edit</b>\" button in the Registered Users dialog.</p>","register"));
 	m_pLabel4->setWordWrap(true);
 	m_pPage4Layout->addWidget(m_pLabel4,0,0,1,2);
 
@@ -215,17 +215,17 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	m_pPage4Layout->addWidget(f,1,0,1,2);
 
 	m_pNotifyCheck = new QCheckBox(m_pPage4);
-	m_pNotifyCheck->setText(__tr2qs("Add this user to the notify list"));
+	m_pNotifyCheck->setText(__tr2qs_ctx("Add this user to the notify list","register"));
 	m_pNotifyCheck->setChecked(false);
 	connect(m_pNotifyCheck,SIGNAL(toggled(bool)),this,SLOT(notifyCheckToggled(bool)));
 	m_pPage4Layout->addWidget(m_pNotifyCheck,2,0,1,2);
 
 	m_pNotifyNickLabel1 = new QLabel(m_pPage4);
-	m_pNotifyNickLabel1->setText(__tr2qs("Nickname:"));
+	m_pNotifyNickLabel1->setText(__tr2qs_ctx("Nickname:","register"));
 	m_pPage4Layout->addWidget(m_pNotifyNickLabel1,3,0);
 
 	m_pNotifyNickLabel2 = new QLabel(m_pPage4);
-	m_pNotifyNickLabel2->setText(__tr2qs("Nickname 2:"));
+	m_pNotifyNickLabel2->setText(__tr2qs_ctx("Nickname 2:","register"));
 	m_pPage4Layout->addWidget(m_pNotifyNickLabel2,4,0);
 
 	m_pNotifyNickEdit1 = new QLineEdit(m_pPage4);
@@ -239,7 +239,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 
 	m_pPage4Layout->setRowStretch(0,1);
 
-	addPage(m_pPage4,__tr2qs("Step 4: Notify List"));
+	addPage(m_pPage4,__tr2qs_ctx("Step 4: Notify List","register"));
 
 
 
@@ -251,11 +251,11 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	m_pPage5Layout->setMargin(8);
 
 	m_pTextLabel5 = new QLabel(m_pPage5);
-	m_pTextLabel5->setText(__tr2qs("<p>That's it. The user registration has been completed.<br><br>Click \"<b>Finish</b>\" to close this dialog.</p>"));
+	m_pTextLabel5->setText(__tr2qs_ctx("<p>That's it. The user registration has been completed.<br><br>Click \"<b>Finish</b>\" to close this dialog.</p>","register"));
 	m_pTextLabel5->setWordWrap(true);
 	m_pPage5Layout->addWidget(m_pTextLabel5,0,0);
 
-	addPage(m_pPage5,__tr2qs("Registration Complete"));
+	addPage(m_pPage5,__tr2qs_ctx("Registration Complete","register"));
 
 	setFinishEnabled(m_pPage5,true);
 	QString dummy;

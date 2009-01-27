@@ -117,7 +117,7 @@ static bool regchan_kvs_cmd_remove(KviKvsModuleCommandCall * c)
 	{
 		g_pRegisteredChannelDataBase->remove(ch);
 	} else {
-		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("No such channel/netmask entry in the database"));
+		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs_ctx("No such channel/netmask entry in the database","register"));
 	}
 	return true;
 }
@@ -174,7 +174,7 @@ static bool regchan_kvs_cmd_setProperty(KviKvsModuleCommandCall * c)
 			ch->removeProperty(szProperty.toUtf8().data());
 		}
 	} else {
-		if(!c->hasSwitch('q',"quiet")) c->warning(__tr2qs("No such channel/netmask entry in the database"));
+		if(!c->hasSwitch('q',"quiet")) c->warning(__tr2qs_ctx("No such channel/netmask entry in the database","register"));
 	}
 	return true;
 }
@@ -194,7 +194,7 @@ static bool regchan_kvs_cmd_setProperty(KviKvsModuleCommandCall * c)
 
 static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 {
-	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Registered channel list:"));
+	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Registered channel list:","register"));
 
 	int tot = 0;
 
@@ -204,19 +204,19 @@ static bool regchan_kvs_cmd_showlist(KviKvsModuleCommandCall * c)
 		for(KviRegisteredChannel * ch = l->first();ch;ch = l->next())
 		{
 			tot++;
-			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Channel: %c%s@%s"),
+			c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Channel: %c%s@%s","register"),
 				KVI_TEXT_BOLD,ch->name().ptr(),ch->netMask().ptr());
 			KviPointerHashTableIterator<const char *,KviStr> pit(*(ch->propertyDict()));
 			while(KviStr * s = pit.current())
 			{
-				c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("    Property: %s=%s"),pit.currentKey(),s->ptr());
+				c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("    Property: %s=%s","register"),pit.currentKey(),s->ptr());
 				++pit;
 			}
 		}
 		++it;
 	}
 
-	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Total %d channels"),tot);
+	c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs_ctx("Total %d channels","register"),tot);
 	return true;
 }
 

@@ -78,7 +78,7 @@ KviRegisteredUsersListView::KviRegisteredUsersListView(QWidget * par)
 	setColumnCount(2);
 
 	QStringList labels;
-	labels << __tr2qs("Name") << __tr2qs("Flags");
+	labels << __tr2qs_ctx("Name","register") << __tr2qs_ctx("Flags","register");
 	setHeaderLabels(labels);
 	setColumnWidth(0,360);
 	setColumnWidth(1,20);
@@ -90,11 +90,11 @@ KviRegisteredUsersListView::KviRegisteredUsersListView(QWidget * par)
 	setRootIsDecorated(TRUE);
 	setSortingEnabled(true);
 
-	setToolTip(__tr2qs("<center>This is the list of registered users. " \
+	setToolTip(__tr2qs_ctx("<center>This is the list of registered users. " \
 		"KVIrc can automatically recognize and associate properties to them.<br>" \
 		"Use the buttons on the right to add, edit and remove entries. " \
 		"The \"notify\" column allows you to quickly add users to the notify list. " \
-		"Notify list fine-tuning can be performed by editing the entry properties.</center>"));
+		"Notify list fine-tuning can be performed by editing the entry properties.</center>","register"));
 }
 
 void KviRegisteredUsersListView::mousePressEvent (QMouseEvent *e)
@@ -117,9 +117,9 @@ KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalTreeWidgetItem 
 	szTmp = m_pUser->getProperty("notify");
 	if(szTmp.isEmpty())
 	{
-		t += __tr2qs("Notify disabled");
+		t += __tr2qs_ctx("Notify disabled","register");
 	} else {
-		t += __tr2qs("Notify as: ");
+		t += __tr2qs_ctx("Notify as: ","register");
 		t += szTmp;
 
 	}
@@ -128,9 +128,9 @@ KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalTreeWidgetItem 
 	szTmp = m_pUser->getProperty("comment");
 	if(szTmp.isEmpty())
 	{
-		t += __tr2qs("No comment set");
+		t += __tr2qs_ctx("No comment set","register");
 	} else {
-		t += __tr2qs("Comment: ");
+		t += __tr2qs_ctx("Comment: ","register");
 		t += m_pUser->getProperty("comment");
 	}
 	t += "</font></nobr>";
@@ -213,7 +213,7 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	g_pLocalRegisteredUserDataBase->copyFrom(g_pRegisteredUserDataBase);
 
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_REGUSERS)));
-	setWindowTitle(__tr2qs("Registered Users - KVIrc"));
+	setWindowTitle(__tr2qs_ctx("Registered Users - KVIrc","register"));
 
 	QGridLayout * g = new QGridLayout(this);
 
@@ -230,48 +230,48 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	vbox->setSpacing(4);
 	g->addWidget(vbox,0,2);
 
-	m_pWizardAddButton = new QPushButton(__tr2qs("Add (Wizard)..."),vbox);
+	m_pWizardAddButton = new QPushButton(__tr2qs_ctx("Add (Wizard)...","register"),vbox);
 	connect(m_pWizardAddButton,SIGNAL(clicked()),this,SLOT(addWizardClicked()));
-	m_pWizardAddButton->setToolTip(__tr2qs("Add a registered user by means of a user-friendly wizard."));
+	m_pWizardAddButton->setToolTip(__tr2qs_ctx("Add a registered user by means of a user-friendly wizard.","register"));
 	m_pWizardAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEMBYWIZARD)));
 
 
-	m_pAddButton = new QPushButton(__tr2qs("&Add..."),vbox);
+	m_pAddButton = new QPushButton(__tr2qs_ctx("&Add...","register"),vbox);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
-	m_pAddButton->setToolTip(__tr2qs("Open the edit dialog to create a new user entry."));
+	m_pAddButton->setToolTip(__tr2qs_ctx("Open the edit dialog to create a new user entry.","register"));
 	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 
-	m_pAddGroupButton = new QPushButton(__tr2qs("&Add Group..."),vbox);
+	m_pAddGroupButton = new QPushButton(__tr2qs_ctx("&Add Group...","register"),vbox);
 	connect(m_pAddGroupButton,SIGNAL(clicked()),this,SLOT(addGroupClicked()));
-	m_pAddGroupButton->setToolTip(__tr2qs("Adds a new group"));
+	m_pAddGroupButton->setToolTip(__tr2qs_ctx("Adds a new group","register"));
 	m_pAddGroupButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 
-	m_pRemoveButton = new QPushButton(__tr2qs("Re&move"),vbox);
+	m_pRemoveButton = new QPushButton(__tr2qs_ctx("Re&move","register"),vbox);
 	connect(m_pRemoveButton,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveButton->setEnabled(false);
-	m_pRemoveButton->setToolTip(__tr2qs("Remove the currently selected entries."));
+	m_pRemoveButton->setToolTip(__tr2qs_ctx("Remove the currently selected entries.","register"));
 	m_pRemoveButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 
 
-	m_pEditButton = new QPushButton(__tr2qs("&Edit..."),vbox);
+	m_pEditButton = new QPushButton(__tr2qs_ctx("&Edit...","register"),vbox);
 	connect(m_pEditButton,SIGNAL(clicked()),this,SLOT(editClicked()));
 	m_pEditButton->setEnabled(false);
-	m_pEditButton->setToolTip(__tr2qs("Edit the first selected entry."));
+	m_pEditButton->setToolTip(__tr2qs_ctx("Edit the first selected entry.","register"));
 	m_pEditButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITITEM)));
 
 	QFrame * f = new QFrame(vbox);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 
-	m_pExportButton = new QPushButton(__tr("Export To..."),vbox);
+	m_pExportButton = new QPushButton(__tr2qs_ctx("Export To...","register"),vbox);
 	m_pExportButton->setEnabled(false);
 	connect(m_pExportButton,SIGNAL(clicked()),this,SLOT(exportClicked()));
-	m_pExportButton->setToolTip(__tr2qs("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button."));
+	m_pExportButton->setToolTip(__tr2qs_ctx("Export the selected entries to a file.<br>All the data associated with the selected registered users will be exported.<br>You (or anyone else) can later import the entries by using the \"Import\" button.","register"));
 	m_pExportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)));
 
 
-	m_pImportButton = new QPushButton(__tr("Import From..."),vbox);
+	m_pImportButton = new QPushButton(__tr2qs_ctx("Import From...","register"),vbox);
 	connect(m_pImportButton,SIGNAL(clicked()),this,SLOT(importClicked()));
-	m_pImportButton->setToolTip(__tr2qs("Import entries from a file exported earlier by the \"export\" function of this dialog."));
+	m_pImportButton->setToolTip(__tr2qs_ctx("Import entries from a file exported earlier by the \"export\" function of this dialog.","register"));
 	m_pImportButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)));
 
 
@@ -282,12 +282,12 @@ KviRegisteredUsersDialog::KviRegisteredUsersDialog(QWidget * par)
 	QPushButton * b;
 
 
-	b = new QPushButton(__tr2qs("&OK"),hbox);
+	b = new QPushButton(__tr2qs_ctx("&OK","register"),hbox);
 	connect(b,SIGNAL(clicked()),this,SLOT(okClicked()));
 	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
 	//b->setMinimumWidth(120);
 
-	b = new QPushButton(__tr2qs("Cancel"),hbox);
+	b = new QPushButton(__tr2qs_ctx("Cancel","register"),hbox);
 	connect(b,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	b->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
 	//b->setMinimumWidth(120);
@@ -392,7 +392,7 @@ void KviRegisteredUsersDialog::addGroupClicked()
 {
 	bool ok;
 	QString text = QInputDialog::getText( this,
-		"KVIrc", __tr("Group name:"), QLineEdit::Normal,
+		"KVIrc", __tr2qs_ctx("Group name:","register"), QLineEdit::Normal,
 		QString(), &ok );
 	if ( ok && !text.isEmpty() ) {
 		g_pLocalRegisteredUserDataBase->addGroup(text);
@@ -405,7 +405,7 @@ void KviRegisteredUsersDialog::editGroup(KviRegisteredUserGroup* group)
 	bool ok;
 
 	QString text = QInputDialog::getText( this,
-		"KVIrc", __tr("Group name:"), QLineEdit::Normal,
+		"KVIrc", __tr2qs_ctx("Group name:","register"), QLineEdit::Normal,
 		group->name(), &ok );
 	if ( ok && !text.isEmpty() ) {
 		QString szOldGroup=group->name();
@@ -448,7 +448,7 @@ void KviRegisteredUsersDialog::rightButtonPressed ( QTreeWidgetItem * pItem, QPo
 			connect(groups,SIGNAL(activated ( int )),this,SLOT(moveToGroupMenuClicked(int)));
 
 			KviTalPopupMenu *mainPopup = new KviTalPopupMenu;
-			mainPopup->insertItem(__tr("Move to group"),groups);
+			mainPopup->insertItem(__tr2qs_ctx("Move to group","register"),groups);
 			mainPopup->exec(pnt);
 		}
 	}
@@ -489,15 +489,15 @@ void KviRegisteredUsersDialog::fillList()
 	for(KviRegisteredUser * u = d->first();u;u = d->next())
 	{
 		if(u->group().isEmpty())
-			u->setGroup(__tr("Default"));
+			u->setGroup(__tr2qs_ctx("Default","register"));
 		if(groupItems.find(u->group()))
 			item = new KviRegisteredUsersDialogItem(groupItems.find(u->group()),u);
-		else if(groupItems.find(__tr("Default")))
-			item = new KviRegisteredUsersDialogItem(groupItems.find(__tr("Default")),u);
+		else if(groupItems.find(__tr2qs_ctx("Default","register")))
+			item = new KviRegisteredUsersDialogItem(groupItems.find(__tr2qs_ctx("Default","register")),u);
 		else { //should never be called
-			KviRegisteredUserGroup* pGroup = g_pLocalRegisteredUserDataBase->addGroup(__tr("Default"));
+			KviRegisteredUserGroup* pGroup = g_pLocalRegisteredUserDataBase->addGroup(__tr2qs_ctx("Default","register"));
 			KviRegisteredUsersGroupItem* pCur = new KviRegisteredUsersGroupItem(m_pListView,pGroup);
-			groupItems.insert(__tr("Default"),pCur);
+			groupItems.insert(__tr2qs_ctx("Default","register"),pCur);
 			item = new KviRegisteredUsersDialogItem(pCur,u);
 		}
 	}
@@ -680,20 +680,20 @@ void KviRegisteredUsersDialog::exportClicked()
 
 	if(nEntries < 1)
 	{
-		KviMessageBox::warning(__tr("No entries selected."));
+		KviMessageBox::warning(__tr2qs_ctx("No entries selected.","register"));
 		return;
 	}
 
 	QString buffer;
 
-	if(!KviFileDialog::askForSaveFileName(buffer,__tr("Choose a Filename - KVIrc"),0,0,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(buffer,__tr2qs_ctx("Choose a Filename - KVIrc","register"),0,0,true,true))return;
 
 	if(!g_pRegisteredUsersDialog)return; // we have been deleted!
 
 	KviFile f(buffer);
 	if(!f.open(QIODevice::WriteOnly | QIODevice::Truncate))
 	{
-		KviMessageBox::warning(__tr("Can't open file %Q for writing."),&buffer);
+		KviMessageBox::warning(__tr2qs_ctx("Can't open file %Q for writing.","register"),&buffer);
 		return;
 	}
 
@@ -772,7 +772,7 @@ void KviRegisteredUsersDialog::exportClicked()
 
 
 write_error:
-	KviMessageBox::warning(__tr("Can't export the registered users database: Write error."));
+	KviMessageBox::warning(__tr2qs_ctx("Can't export the registered users database: Write error.","register"));
 	f.close();
 	return;
 
@@ -786,14 +786,14 @@ void KviRegisteredUsersDialog::importClicked()
 	//KviStr buffer;
 	QString buffer;
 
-	if(!KviFileDialog::askForOpenFileName(buffer,__tr("Choose a Filename - KVIrc")))return;
+	if(!KviFileDialog::askForOpenFileName(buffer,__tr2qs_ctx("Choose a Filename - KVIrc","register")))return;
 
 	if(!g_pRegisteredUsersDialog)return; // we have been deleted!
 
 	KviFile f(buffer);
 	if(!f.open(QIODevice::ReadOnly))
 	{
-		KviMessageBox::warning(__tr2qs("Can't open file %s for reading."),&buffer);
+		KviMessageBox::warning(__tr2qs_ctx("Can't open file %s for reading.","register"),&buffer);
 		return;
 	}
 
@@ -804,14 +804,14 @@ void KviRegisteredUsersDialog::importClicked()
 
 	if(hf.magic != KVI_REGUSER_DB_FILE_MAGIC)
 	{
-		KviMessageBox::warning(__tr2qs("The file %s doesn't appear to be a valid registered users database."),&buffer);
+		KviMessageBox::warning(__tr2qs_ctx("The file %s doesn't appear to be a valid registered users database.","register"),&buffer);
 		f.close();
 		return;
 	}
 
 	if(hf.version != KVI_REGUSER_DB_FILE_VERSION)
 	{
-		KviMessageBox::warning(__tr2qs("The file %s contains an invalid registered users database version."),&buffer);
+		KviMessageBox::warning(__tr2qs_ctx("The file %s contains an invalid registered users database version.","register"),&buffer);
 		f.close();
 		return;
 	}
@@ -879,7 +879,7 @@ void KviRegisteredUsersDialog::importClicked()
 
 
 read_error:
-	KviMessageBox::warning(__tr("Can't import the registered users database: Read error."));
+	KviMessageBox::warning(__tr2qs_ctx("Can't import the registered users database: Read error.","register"));
 	f.close();
 	return;
 
