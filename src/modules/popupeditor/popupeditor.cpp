@@ -233,7 +233,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 		__tr2qs_ctx("<center><b>Visible text</b><br>May contain identifiers that will be evaluated at popup call time.<br>For labels, this text can contain also limited HTML tags.</center>","editor"));
 	g->addWidget(m_pTextEditor,2,1,1,2);
 
-	l = new QLabel(__tr2qs_ctx("Condition:"),this);
+	l = new QLabel(__tr2qs_ctx("Condition:","editor"),this);
 	l->setMargin(2);
 	g->addWidget(l,3,0);
 
@@ -242,7 +242,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 		__tr2qs_ctx("<center><b>Boolean condition</b><br>Will be evaluated at popup call time in order to decide if this entry has to be shown.<br>An empty condition evaluates to true.</center>","editor"));
 	g->addWidget(m_pConditionEditor,3,1,1,2);
 
-	l = new QLabel(__tr2qs_ctx("Icon:"),this);
+	l = new QLabel(__tr2qs_ctx("Icon:","editor"),this);
 	l->setMargin(2);
 	g->addWidget(l,4,0);
 
@@ -1258,7 +1258,7 @@ void KviPopupEditor::getUniquePopupName(KviMenuTreeWidgetItem *item,QString &buf
 {
 	__range_valid(m_bOneTimeSetupDone);
 
-	if(buffer.isEmpty())buffer = __tr2qs_ctx("unnamed");
+	if(buffer.isEmpty())buffer = __tr2qs_ctx("unnamed","editor");
 	QString newName = buffer;
 
 	bool bFound = true;
