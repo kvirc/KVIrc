@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 14:59+0100\n"
+"POT-Creation-Date: 2009-01-27 20:25+0100\n"
 "PO-Revision-Date: 2007-12-17 11:31+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -17,25 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-
-#: src/modules/eventeditor/eventeditor.cpp:394
-#, c-format
-msgid ""
-"\n"
-"\n"
-"\tEvent:\n"
-"\t\t%s\n"
-"\n"
-"\tParameters:\n"
-"%s"
-msgstr ""
-"\n"
-"\n"
-"\tUdálost:\n"
-"\t\t%s\n"
-"\n"
-"\tParametry:\n"
-"%s"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:686
 msgid ""
@@ -107,47 +88,18 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] rovna odešel z \r!c\r%Q\r"
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] zrovna odešel z \r!c\r%Q\r: %Q"
 
-#: src/modules/reguser/libkvireguser.cpp:820
-msgid "    Mask: %Q!%Q@%Q"
-msgstr "    Maska: %Q!%Q@%Q"
-
-#: src/modules/reguser/libkvireguser.cpp:834
-msgid "    No properties"
-msgstr "    Bez vlastností"
-
-#: src/modules/reguser/libkvireguser.cpp:831
-msgid "    Property: %Q=%Q"
-msgstr "    Vlastnost: %Q=%Q"
-
-#: src/modules/reguser/libkvireguser.cpp:816
-msgid "    Warning: this user has no registration masks"
-msgstr "    Upozornění: tento uživatel nemá registrační masky"
-
-#: src/modules/regchan/libkviregchan.cpp:212
-#, c-format
-msgid "   Property: %s=%s"
-msgstr "   Vlastnost: %s=%s"
-
 #: src/kvirc/ui/kvi_query.cpp:255
 msgid " (%1 hops)"
 msgstr " (%1 hopů)"
 
-#: src/modules/reguser/libkvireguser.cpp:812
-msgid " User: %c%Q"
-msgstr " Uživatel: %c%Q"
-
-#: src/kvirc/ui/kvi_query.cpp:456 src/kvirc/ui/kvi_console.cpp:1121
-#: src/kvirc/ui/kvi_channel.cpp:1053
+#: src/kvirc/ui/kvi_channel.cpp:1053 src/kvirc/ui/kvi_console.cpp:1121
+#: src/kvirc/ui/kvi_query.cpp:456
 msgid " on "
 msgstr " na "
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:212
 msgid "### End of existing data buffer."
 msgstr "### Konec existujícího data bufferu."
-
-#: src/modules/popupeditor/popupeditor.cpp:95
-msgid "### Epilogue ###"
-msgstr "### Závěr ###"
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:208
 msgid "### Existing data buffer:"
@@ -162,10 +114,6 @@ msgstr "### Logovací relace spuštěna v %s ###"
 #, fuzzy
 msgid "### Log session terminated at %1 ###"
 msgstr "### Logovací relace ukončena v %s ###"
-
-#: src/modules/popupeditor/popupeditor.cpp:99
-msgid "### Prologue ###"
-msgstr "### Úvod ###"
 
 #: src/modules/objects/class_multilineedit.cpp:850
 #: src/modules/objects/class_multilineedit.cpp:1050
@@ -504,31 +452,15 @@ msgstr "&O aplikaci KVIrc"
 msgid "&Add Ban"
 msgstr "&Přidat Ban"
 
-#: src/modules/reguser/dialog.cpp:244
-msgid "&Add Group..."
-msgstr "&Přidat Skupinu..."
-
-#: src/modules/raweditor/raweditor.cpp:191
-msgid "&Add Raw Event..."
-msgstr "&Přidat Raw událost..."
-
 #: src/kvilib/system/kvi_locale.cpp:1036
 msgid "&Add to Custom Colors"
 msgstr "&Přidat k vlastním barvám"
-
-#: src/modules/reguser/dialog.cpp:239 src/modules/reguser/edituser.cpp:371
-msgid "&Add..."
-msgstr "&Přidat..."
 
 #: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:514
 #: src/kvirc/ui/kvi_console.cpp:548
 msgid "&Always"
 msgstr "&Vždy"
 
-#: src/modules/eventeditor/eventeditor.cpp:512
-#: src/modules/raweditor/raweditor.cpp:489
-#: src/modules/aliaseditor/aliaseditor.cpp:1564
-#: src/modules/popupeditor/popupeditor.cpp:1325
 #: src/kvirc/ui/kvi_modeeditor.cpp:80
 msgid "&Apply"
 msgstr "&Použít"
@@ -545,14 +477,13 @@ msgstr "&Automatický náhled"
 msgid "&Basic colors"
 msgstr "&Základní barvy"
 
+#: src/kvirc/ui/kvi_selectors.cpp:304 src/modules/setup/setupwizard.cpp:243
+#: src/modules/setup/setupwizard.cpp:257 src/modules/setup/setupwizard.cpp:285
 #: src/modules/avatar/libkviavatar.cpp:93
-#: src/modules/setup/setupwizard.cpp:243 src/modules/setup/setupwizard.cpp:257
-#: src/modules/setup/setupwizard.cpp:285 src/kvirc/ui/kvi_selectors.cpp:304
 msgid "&Browse..."
 msgstr "&Procházet..."
 
-#: src/kvilib/system/kvi_locale.cpp:1089 src/modules/url/libkviurl.cpp:390
-#: src/modules/editor/scripteditor.cpp:1016
+#: src/modules/url/libkviurl.cpp:390 src/kvilib/system/kvi_locale.cpp:1089
 msgid "&Cancel"
 msgstr "&Zrušit"
 
@@ -572,7 +503,6 @@ msgstr "&Nastavit"
 msgid "&Configure KVIrc..."
 msgstr "&Konfigurovat KVIrc..."
 
-#: src/modules/popupeditor/popupeditor.cpp:442
 #: src/kvirc/ui/kvi_input_editor.cpp:717
 msgid "&Copy"
 msgstr "&Kopírovat"
@@ -585,54 +515,13 @@ msgstr "&Vlastní barvy"
 msgid "&Define Custom Colors >>"
 msgstr "&Definovat vlastní barvy >>"
 
-#: src/modules/eventeditor/eventeditor.cpp:202
-#: src/modules/raweditor/raweditor.cpp:170
-msgid "&Disable Handler"
-msgstr "&Zakázat handler"
-
 #: src/kvirc/ui/kvi_window.cpp:757
 msgid "&Dock"
 msgstr "&Dokovat"
 
-#: src/modules/reguser/edituser.cpp:380
-msgid "&Edit"
-msgstr "&Upravit"
-
 #: src/kvilib/system/kvi_locale.cpp:1055
 msgid "&Edit Bookmarks"
 msgstr "Upravit &záložky"
-
-#: src/modules/reguser/dialog.cpp:256
-msgid "&Edit..."
-msgstr "&Upravit..."
-
-#: src/modules/eventeditor/eventeditor.cpp:198
-#: src/modules/raweditor/raweditor.cpp:166
-msgid "&Enable Handler"
-msgstr "&Povolit handler"
-
-#: src/modules/codetester/codetester.cpp:57
-msgid "&Execute"
-msgstr "&Spustit"
-
-#: src/modules/eventeditor/eventeditor.cpp:105
-#: src/modules/raweditor/raweditor.cpp:106
-#: src/modules/popupeditor/popupeditor.cpp:1037
-msgid "&Export All To..."
-msgstr "&Exportovat vše jako..."
-
-#: src/modules/eventeditor/eventeditor.cpp:210
-#: src/modules/raweditor/raweditor.cpp:178
-msgid "&Export Handler To..."
-msgstr "&Exportovat handler do..."
-
-#: src/modules/popupeditor/popupeditor.cpp:1109
-msgid "&Export Popup To..."
-msgstr "&Exportovat Popup do..."
-
-#: src/modules/popupeditor/popupeditor.cpp:1039
-msgid "&Export selected To..."
-msgstr "&Exportovat vybrané do..."
 
 #: src/kvilib/system/kvi_locale.cpp:1086
 msgid "&Filter:"
@@ -682,40 +571,18 @@ msgstr "&Umístění:"
 msgid "&Module"
 msgstr "&Modul"
 
-#: src/modules/reguser/edituser.cpp:101
-msgid "&New"
-msgstr "&Nový"
-
-#: src/modules/eventeditor/eventeditor.cpp:215
-#: src/modules/raweditor/raweditor.cpp:183
-msgid "&New Handler"
-msgstr "&Nový handler"
-
-#: src/modules/popupeditor/popupeditor.cpp:1096
-msgid "&New Popup"
-msgstr "&Nový Popup"
-
 #: src/modules/setup/setupwizard.cpp:85
 msgid "&Next >"
 msgstr "&Další >"
 
+#: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:516
+#: src/kvirc/ui/kvi_console.cpp:550 src/modules/addon/managementdialog.cpp:266
 #: src/modules/setup/setupwizard.cpp:747
-#: src/modules/addon/managementdialog.cpp:266 src/kvirc/ui/kvi_frame.cpp:906
-#: src/kvirc/ui/kvi_console.cpp:516 src/kvirc/ui/kvi_console.cpp:550
 msgid "&No"
 msgstr "&Ne"
 
+#: src/modules/url/libkviurl.cpp:396 src/modules/avatar/libkviavatar.cpp:103
 #: src/kvilib/system/kvi_locale.cpp:1088
-#: src/modules/avatar/libkviavatar.cpp:103
-#: src/modules/eventeditor/eventeditor.cpp:454
-#: src/modules/eventeditor/eventeditor.cpp:507
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:484
-#: src/modules/aliaseditor/aliaseditor.cpp:1559
-#: src/modules/url/libkviurl.cpp:396
-#: src/modules/popupeditor/popupeditor.cpp:1320
-#: src/modules/reguser/dialog.cpp:285 src/modules/reguser/edituser.cpp:113
-#: src/modules/reguser/edituser.cpp:274 src/modules/reguser/edituser.cpp:487
 msgid "&OK"
 msgstr "&OK"
 
@@ -727,16 +594,12 @@ msgstr "&Ostatní..."
 msgid "&Paste"
 msgstr "&Vložit"
 
-#: src/modules/popupeditor/popupeditor.cpp:448
-msgid "&Paste Below"
-msgstr "&Vložit dolů"
-
 #: src/kvilib/system/kvi_locale.cpp:1084
 msgid "&Preview"
 msgstr "Ná&hled"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:114
 #: src/kvirc/ui/kvi_menubar.cpp:251
+#: src/modules/trayicon/libkvitrayicon.cpp:114
 msgid "&Quit"
 msgstr "&Konec"
 
@@ -758,7 +621,7 @@ msgstr "Registrovat"
 msgid "&Regular expression"
 msgstr "&Regulérní výraz"
 
-#: src/modules/url/libkviurl.cpp:285 src/modules/reguser/edituser.cpp:105
+#: src/modules/url/libkviurl.cpp:285
 msgid "&Remove"
 msgstr "&Odebrat"
 
@@ -766,14 +629,9 @@ msgstr "&Odebrat"
 msgid "&Remove Selected"
 msgstr "&Odebrat vybrané"
 
-#: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1021
+#: src/modules/editor/scripteditor.cpp:255
 msgid "&Replace"
 msgstr "&Nahradit"
-
-#: src/modules/editor/scripteditor.cpp:1011
-msgid "&Replace in all Aliases"
-msgstr "&Nahradit ve všech aliasech"
 
 #: src/kvirc/ui/kvi_window.cpp:768
 msgid "&Restore"
@@ -837,9 +695,9 @@ msgstr "&Odpoutat"
 msgid "&Window"
 msgstr "&Okno"
 
+#: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:515
+#: src/kvirc/ui/kvi_console.cpp:549 src/modules/addon/managementdialog.cpp:266
 #: src/modules/setup/setupwizard.cpp:747
-#: src/modules/addon/managementdialog.cpp:266 src/kvirc/ui/kvi_frame.cpp:906
-#: src/kvirc/ui/kvi_console.cpp:515 src/kvirc/ui/kvi_console.cpp:549
 msgid "&Yes"
 msgstr "&Ano"
 
@@ -880,9 +738,9 @@ msgstr "Maska:"
 msgid "(None)"
 msgstr "(Žádné)"
 
+#: src/kvirc/ui/kvi_channel.cpp:1640 src/kvirc/sparser/kvi_sp_numeric.cpp:609
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:646
 #: src/modules/links/linkswindow.cpp:315
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:609
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:646 src/kvirc/ui/kvi_channel.cpp:1640
 msgid "(Unknown)"
 msgstr "(Neznámý)"
 
@@ -1097,54 +955,6 @@ msgstr ""
 "znaky jako <b>c&lt;n</b> nebo <b>c&gt;n</b> kde <b>n</b> je minimum, nebo "
 "maximum uživatelů na kanálu.</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:242
-msgid ""
-"<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
-"order to decide if this entry has to be shown.<br>An empty condition "
-"evaluates to true.</center>"
-msgstr ""
-"<center><b>Booleovská podmínka</b><br>Bude vyhodnocena v době volání popup v "
-"pořadí jakém je tento záznam zobrazen.<br>Prázdná podmínka je vyhodnocena "
-"jako true.</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:260
-msgid ""
-"<center><b>External menu name</b><br>This allows to nest externally defined "
-"popup menus. The popup menu with the specified name will be looked up at "
-"menu setup time.</center>"
-msgstr ""
-"<center><b>Název externího menu</b><br>Toto umožňuje vkládat externě "
-"definované popup menu. Popup menu se specifickým jménem bude hledáno při "
-"nastavování menu.</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:251
-msgid ""
-"<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
-"path or a relative path.<br>Portable scripts should never use absolute paths."
-"</center>"
-msgstr ""
-"<center><b>Identifikátor ikony</b><br>Může být ID interní ikony, absolutní, "
-"nebo relativní cesta.<br>Přenosné skripty by neměly nikdy používat absolutní "
-"cesty.</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:270
-msgid ""
-"<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
-"center>"
-msgstr ""
-"<center><b>Položka id</b><br>To vám umožní používat delpopupitem později.</"
-"center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:233
-msgid ""
-"<center><b>Visible text</b><br>May contain identifiers that will be "
-"evaluated at popup call time.<br>For labels, this text can contain also "
-"limited HTML tags.</center>"
-msgstr ""
-"<center><b>Viditelný text</b><br>Může obsahovat identifikátory, které budou "
-"provedeny při zavolání popup.<br>Pro návěstí může také obsahovat i "
-"limitované HTML tagy.</center>"
-
 #: src/modules/mircimport/libkvimircimport.cpp:151
 msgid ""
 "<center><b>Welcome!</b><br><br>This wizard will guide you in the process of "
@@ -1162,48 +972,6 @@ msgid ""
 msgstr ""
 "<center>Zde můžete měnit URL, ze které bude stahován seznam. V mnoha "
 "případech je výchozi URL přijatelná.</center>"
-
-#: src/modules/reguser/dialog.cpp:93
-msgid ""
-"<center>This is the list of registered users. KVIrc can automatically "
-"recognize and associate properties to them.<br>Use the buttons on the right "
-"to add, edit and remove entries. The \"notify\" column allows you to quickly "
-"add users to the notify list. Notify list fine-tuning can be performed by "
-"editing the entry properties.</center>"
-msgstr ""
-"<center>Toto je seznam registrovaných uživatelů. KVIrc k nim umí automaticky "
-"rozpoznávat a přiřazovat vlastnosti.<br>Použijte tlačítka vpravo pro "
-"přidání, úpravu, nebo vymazání záznamů. Kolonka \"oznámit\" umožňuje rychle "
-"přidat uživatele do oznamovacího seznamu. Vylepšení oznamovacího seznamu "
-"může být provedeno pomocí editování možností položky.</center>"
-
-#: src/modules/reguser/edituser.cpp:260
-msgid ""
-"<center>This the <b>hostname</b> that will match this user. <b>*</b> will "
-"match any hostname.</center>"
-msgstr ""
-"<center>Toto je <b>název hostitele</b>, který bude přiřazen k uživateli. "
-"<b>*</b> znamená jakéhokoliv hostitele.</center>"
-
-#: src/modules/reguser/edituser.cpp:242
-msgid ""
-"<center>This the <b>nickname</b> that will match this user, default value is "
-"the registered name.</center>"
-msgstr ""
-"<center>Toto je <b>přezdívka</b>, která je přiřazena k uživateli, výchozí "
-"hodnota je zaregistrované jméno.</center>"
-
-#: src/modules/reguser/edituser.cpp:251
-msgid ""
-"<center>This the <b>username</b> that will match this user. <b>*</b> will "
-"match any username.</center>"
-msgstr ""
-"<center>Toto je <b>uživatelské jméno</b>, které je přiřazeno k uživateli. "
-"<b>*</b> znamená jakékoliv uživatelské jméno.</center>"
-
-#: src/modules/reguser/edituser.cpp:401
-msgid "<center>You can enter a space separated list of nicknames.</center>"
-msgstr "<center>Můžete zadat seznam přezdívek oddělený mezerami.</center>"
 
 #: src/modules/list/listwindow.cpp:299
 #, c-format
@@ -1260,24 +1028,6 @@ msgstr ""
 "Budete mít možnost zachovat starou konfiguraci.</p><p>Klikněte na "
 "\"<b>Další</b>\" pro pokračování.</p>"
 
-#: src/modules/reguser/wizard.cpp:112
-msgid ""
-"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
-"mask must be in the following form:<br><b>nickname!username@hostname</"
-"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
-"choosing the masks, as they are the only way to verify the identity of a "
-"registered user.<br><br>You can enter at most two masks here, if you wish to "
-"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
-"dialog. You must enter at least one mask.</p>"
-msgstr ""
-"<p>Registrovaný uživatel je identifikován jednou, nebo více <b>IRC maskami</"
-"b>.<br>Maska musí být v následujícím formátu:<br><b>přezdívka!"
-"uživatelskéjméno@hostitel</b><br>a může obsahovat zástupné znaky jako '*' a "
-"'?'. Buďte opatrní ve výběru masky, protože je to jediná cesta, jak "
-"identifikovat registrovaného uživatele.<br><br>Můžete zde napsat nejvýše 2 "
-"masky. Pokud si jich přejete zadat více, použijte tlačítko \"<b>Upravit</b>"
-"\" v dialogu Registrovaní Uživatelé. Musíte vložit nejméně jednu masku.</p>"
-
 #: src/modules/setup/setupwizard.cpp:185
 msgid ""
 "<p>All of the files in this distribution are covered by the GPL. In human "
@@ -1301,34 +1051,6 @@ msgid ""
 "just click \"<b>Next</b>\" and go to the next screen.</p>"
 msgstr ""
 
-#: src/modules/reguser/wizard.cpp:208
-msgid ""
-"<p>If you want to be notified when this user is online or goes offline, you "
-"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
-"enter at most two nicknames here, if you wish to add more nicknames, use the "
-"\"<b>Edit</b>\" button in the Registered Users dialog.</p>"
-msgstr ""
-"<p>Pokud chcete být upozorněni, když se uživatel připojí, nebo odpojí, "
-"musíte zadat seznam přezdívek, které bude KVIrc kontrolovat.<br><br>Můžete "
-"zde zadat nejvíce dvě přezdívky. Pokud si přejete zadat více přezdívek, "
-"použijte tlačítko \"<b>Upravit</b>\" v dialogu Registrovaní Uživatelé.</p>"
-
-#: src/modules/reguser/wizard.cpp:183
-msgid ""
-"<p>If you want to store an avatar image for this user, you can set it here. "
-"KVIrc will show the avatar in the userlist next to the user's nickname."
-"<br>An avatar can be in any supported image format (PNG is recommended). "
-"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
-"fit in the userlist, thus it's better to use small, low-resolution images.</"
-"p>"
-msgstr ""
-"<p>Pokud chcete uložit avatar pro tohoto uživatele, můžete to nastavit tady. "
-"KVIrc může zobrazit avatar v seznamu uživatelů u přezdívky uživatele."
-"<br>Avatar může být v jakémkoliv podporovaném formátu obrázku (PNG je "
-"doporučeno). Nezapomínejte, že KVIrc ukládá avatary do paměti a teprve pak "
-"je upravuje, aby pasovaly do seznamu uživatelů, takže je lepší používat "
-"menší obrázky s nízkým rozlišením.</p>"
-
 #: src/modules/setup/setupwizard.cpp:222
 msgid ""
 "<p>Please choose a folder for KVIrc to store its settings and other data, "
@@ -1345,37 +1067,6 @@ msgstr ""
 "takže pokud nevíte, jenom klikněte na \"<b>Další</b>\".<br><br>Pokud máte "
 "nainstalovanou předchozí verzi KVIrc, můžete vybrat existující adresář a "
 "vaše konfigurace bude zachována.</p>"
-
-#: src/modules/reguser/wizard.cpp:254
-msgid ""
-"<p>That's it. The user registration has been completed.<br><br>Click "
-"\"<b>Finish</b>\" to close this dialog.</p>"
-msgstr ""
-"<p>To je ono. Registrace uživatele byla dokončena.<br><br>Klikněte na "
-"\"<b>Dokončit<b>\" pro zavření tohoto dialogu.</p>"
-
-#: src/modules/reguser/wizard.cpp:88
-msgid ""
-"<p>Welcome to the user registration wizard.<br>This process allows you to "
-"add an IRC user to the database and set properties for that user. KVIrc will "
-"be (hopefully) able to recognize the user, add him to the notify list, and "
-"display the associated avatar.<br><br>First of all, you must insert an "
-"<b>entry name or real name</b> for the user you're going to register. The "
-"name will be used to identify the database entry and has no specific "
-"requirements, it can be a given name, nickname, or just some text to remind "
-"you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
-"</p>"
-msgstr ""
-"<p>Vítejte v průvodci pro registraci.<br>Tento průvodce vám umožní přidat "
-"IRC uživatele, přidat ho do databáze a nastavit možnosti. KVIrc bude "
-"(doufejme) schopno rozpoznat uživatele, přidat ho do seznamu oznamování a "
-"zobrazit přiřazeného avatara.<br><br>Nejdříve ze všeho musíte vepsat "
-"<b>jméno záznamu, nebo skutečné jméno</b> uživatele, kterého se chystáte "
-"registrovat. Jméno, které bude identifikovat záznam v databázi, nemá žádné "
-"speciální požadavky. Může to být jméno, přezdívka, nebo to může být text "
-"připomínající vaši skutečnou osobu.<br>Například: \"George W Bush\", \"Dubya"
-"\".\n"
-"</p>"
 
 #: src/modules/setup/setupwizard.cpp:744
 msgid ""
@@ -1433,18 +1124,6 @@ msgstr "Udělat snímek obrazovky"
 msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr "Udělá snímek obrazovky hlavního okna KVIrc"
 
-#: src/modules/actioneditor/actioneditor.cpp:586
-msgid "Action"
-msgstr "Akce"
-
-#: src/modules/actioneditor/actioneditor.cpp:858
-msgid "Action Editor"
-msgstr "Editor akcí"
-
-#: src/modules/actioneditor/actioneditor.cpp:126
-msgid "Action code"
-msgstr "Kód Akce"
-
 #: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
 msgstr "Akce příbuzné nastavení"
@@ -1473,18 +1152,9 @@ msgstr "Aktivní vyjímky pozvání"
 msgid "Acts as a separator for other items: performs no action"
 msgstr "Chová se jako oddělovač položek: neprovádí žádnou akci"
 
-#: src/modules/url/libkviurl.cpp:484 src/kvirc/ui/kvi_maskeditor.cpp:213
+#: src/kvirc/ui/kvi_maskeditor.cpp:213 src/modules/url/libkviurl.cpp:484
 msgid "Add"
 msgstr "Přidat"
-
-#: src/modules/reguser/dialog.cpp:233
-msgid "Add (Wizard)..."
-msgstr "Přidat (Průvodce)..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:521
-#: src/modules/aliaseditor/aliaseditor.cpp:1250
-msgid "Add Alias"
-msgstr "Přidat Alias"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:355
 msgid "Add Applet"
@@ -1493,20 +1163,6 @@ msgstr "Přidat applet"
 #: src/kvilib/system/kvi_locale.cpp:1054
 msgid "Add Bookmark"
 msgstr "Přidat k záložkám"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:526
-#: src/modules/aliaseditor/aliaseditor.cpp:1275
-msgid "Add Namespace"
-msgstr "Přidat jmenný prostor"
-
-#: src/modules/reguser/dialog.cpp:235
-msgid "Add a registered user by means of a user-friendly wizard."
-msgstr ""
-"Přidá registrovaného uživatele pomocí uživatelsky přívětivého průvodce."
-
-#: src/modules/reguser/wizard.cpp:218
-msgid "Add this user to the notify list"
-msgstr "Přidat tohoto uživatele do seznamu oznamování"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1526
 msgid "Added %d sec file offer for file %Q (%Q) to recipient %Q"
@@ -1524,12 +1180,6 @@ msgstr "Adresa se již používá"
 msgid "Address:"
 msgstr "Adresa:"
 
-#: src/modules/reguser/dialog.cpp:246
-msgid "Adds a new group"
-msgstr "Přidá novou skupinu"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:197
-#: src/modules/toolbareditor/toolbareditor.cpp:284
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
 msgid "Advanced..."
 msgstr "Pokročilé..."
@@ -1538,41 +1188,9 @@ msgstr "Pokročilé..."
 msgid "Age:"
 msgstr "Věk:"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:221
-#: src/modules/aliaseditor/aliaseditor.cpp:455
-#: src/modules/aliaseditor/aliaseditor.cpp:1453
-msgid "Alias"
-msgstr "Alias"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1552
-msgid "Alias Editor"
-msgstr "Editor aliasů"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-msgid "Alias Export"
-msgstr "Export aliasu"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1356
-msgid "Alias already exists"
-msgstr "Alias již existuje"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1123
-#, fuzzy
-msgid ""
-"Alias names can contain only letters, digits, underscores and '::' namespace "
-"separators"
-msgstr ""
-"Jmenné prostory mohou obsahovat pouze písmena, číslice, podtržítka a '::' "
-"oddělovače jmenného prostoru"
-
 #: src/kvilib/system/kvi_locale.cpp:1087
 msgid "All Files"
 msgstr "Všechny soubory"
-
-#: src/modules/reguser/edituser.cpp:441
-msgid "All Properties..."
-msgstr "Všechny vlastnosti..."
 
 #: src/modules/setup/setupwizard.cpp:300
 msgid "All settings in shared program folder (portable)"
@@ -1663,10 +1281,6 @@ msgstr "Probíhá jiné spojení"
 msgid "Application Folders"
 msgstr "Složky aplikace"
 
-#: src/modules/actioneditor/actioneditor.cpp:871
-msgid "Apply"
-msgstr "Použít"
-
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:193
 msgid "Apply to all IRC Contexts"
 msgstr "Použít na všechny IRC kontexty"
@@ -1704,10 +1318,6 @@ msgstr "Auto-příchod do kanálů pro tuto síť"
 msgid "Auto-joining server specific channels"
 msgstr "Auto-příchod do kanálů pro tento server"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
-msgid "Automatically"
-msgstr "Automaticky"
-
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:178
 msgid "Available channel modes:"
 msgstr "Dostupné módy kanálu:"
@@ -1715,10 +1325,6 @@ msgstr "Dostupné módy kanálu:"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:160
 msgid "Available user modes:"
 msgstr "Dostupné módy uživatele:"
-
-#: src/modules/reguser/edituser.cpp:426
-msgid "Avatar"
-msgstr "Avatar"
 
 #: src/kvirc/kernel/kvi_options.cpp:730
 msgid "Avatar change"
@@ -1733,8 +1339,8 @@ msgstr "Stažení avataru selhalo pro %Q!%Q@%Q a url %Q: %Q"
 msgid "Average hops: ~%d.%d"
 msgstr "Průměrně hopů: ~%d.%d"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:98
 #: src/kvirc/ui/kvi_statusbar.cpp:602
+#: src/modules/trayicon/libkvitrayicon.cpp:98
 msgid "Away"
 msgstr "Pryč"
 
@@ -1777,18 +1383,6 @@ msgstr "Zpátky všude"
 #: src/kvirc/ui/kvi_selectors.cpp:613
 msgid "Background"
 msgstr "Pozadí"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1122
-#: src/modules/aliaseditor/aliaseditor.cpp:1136
-#: src/modules/aliaseditor/aliaseditor.cpp:1147
-msgid "Bad Alias Name"
-msgstr "Špatné jméno aliasu"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1190
-#: src/modules/aliaseditor/aliaseditor.cpp:1204
-#: src/modules/aliaseditor/aliaseditor.cpp:1215
-msgid "Bad Namespace Name"
-msgstr "Špatné jméno jmenného prostoru"
 
 #: src/kvilib/core/kvi_error.cpp:90
 msgid "Bad file descriptor"
@@ -1833,10 +1427,6 @@ msgstr "Ban na moji masku"
 #: src/kvirc/kernel/kvi_options.cpp:804
 msgid "Ban unexception matching my mask"
 msgstr "Ban s výjimkou na mojí masku odstraněn"
-
-#: src/modules/actioneditor/actioneditor.cpp:162
-msgid "Big Icon:"
-msgstr "Velká ikona:"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:350
 #, c-format
@@ -1986,10 +1576,6 @@ msgstr "Nelze vytvořit naslouchací soket : vázání selhalo"
 msgid "Can't evaluate creation time"
 msgstr "Nelze spočítat čas vytvoření"
 
-#: src/modules/reguser/dialog.cpp:775
-msgid "Can't export the registered users database: Write error."
-msgstr "Nelze exportovat databázi registrovaných uživatelů: Chyba zápisu."
-
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:265
 msgid "Can't find the proxy IP address: %Q"
 msgstr "Nelze nalézt IP adresu proxy: %Q"
@@ -2001,10 +1587,6 @@ msgstr "Nelze nalézt IP adresu serveru: %Q"
 #: src/modules/chan/libkvichan.cpp:50
 msgid "Can't find the window with id '%Q'"
 msgstr "Nelze nalézt okno s id '%Q'"
-
-#: src/modules/reguser/dialog.cpp:882
-msgid "Can't import the registered users database: Read error."
-msgstr "Nelze importovat databázi registrovaných uživatelů: Chyba čtení."
 
 #: src/kvilib/core/kvi_error.cpp:116
 msgid "Can't kill a builtin class"
@@ -2018,25 +1600,16 @@ msgstr "Nelze logovat do souboru %Q"
 msgid "Can't open file \"%Q\" for writing"
 msgstr "Nelze otevřít soubor \"%Q\" pro zápis"
 
-#: src/modules/reguser/dialog.cpp:696
-msgid "Can't open file %Q for writing."
-msgstr "Nelze otevřít soubor %Q pro zápis."
-
-#: src/modules/reguser/dialog.cpp:796
-#, c-format
-msgid "Can't open file %s for reading."
-msgstr "Nelze otevřít soubor %s pro čtení."
-
 #: src/kvilib/core/kvi_error.cpp:139
 msgid "Can't open file for appending"
 msgstr "Nelze otevřít soubor pro připojování"
 
-#: src/kvilib/file/kvi_packagefile.cpp:679
-#: src/kvilib/file/kvi_packagefile.cpp:932 src/kvilib/core/kvi_error.cpp:143
+#: src/kvilib/core/kvi_error.cpp:143 src/kvilib/file/kvi_packagefile.cpp:679
+#: src/kvilib/file/kvi_packagefile.cpp:932
 msgid "Can't open file for reading"
 msgstr "Nelze otevřít soubor pro čtení"
 
-#: src/kvilib/file/kvi_packagefile.cpp:493 src/kvilib/core/kvi_error.cpp:140
+#: src/kvilib/core/kvi_error.cpp:140 src/kvilib/file/kvi_packagefile.cpp:493
 msgid "Can't open file for writing"
 msgstr "Nelze otevřít soubor pro zápis"
 
@@ -2135,21 +1708,12 @@ msgstr "Nelze vytvořit naslouchací soket : vázání selhalo"
 msgid "Can't start the ident service on IPv6 : socket() failed"
 msgstr "Nelze vytvořit naslouchací soket : vázání selhalo"
 
-#: src/kvilib/file/kvi_packagefile.cpp:142
-#: src/kvilib/tal/kvi_tal_wizard.cpp:181 src/kvilib/system/kvi_locale.cpp:1027
-#: src/modules/toolbareditor/toolbareditor.cpp:192
-#: src/modules/toolbareditor/toolbareditor.cpp:411
+#: src/kvirc/ui/kvi_maskeditor.cpp:88 src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/modules/help/index.cpp:102 src/modules/setup/setupwizard.cpp:87
 #: src/modules/avatar/libkviavatar.cpp:108
-#: src/modules/actioneditor/actioneditor.cpp:877
-#: src/modules/setup/setupwizard.cpp:87
-#: src/modules/eventeditor/eventeditor.cpp:517
-#: src/modules/raweditor/raweditor.cpp:494
-#: src/modules/aliaseditor/aliaseditor.cpp:1569
-#: src/modules/popupeditor/popupeditor.cpp:1330
-#: src/modules/reguser/dialog.cpp:290 src/modules/reguser/edituser.cpp:117
-#: src/modules/reguser/edituser.cpp:278 src/modules/reguser/edituser.cpp:486
-#: src/modules/help/index.cpp:102 src/kvirc/ui/kvi_maskeditor.cpp:88
-#: src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/kvilib/tal/kvi_tal_wizard.cpp:181
+#: src/kvilib/file/kvi_packagefile.cpp:142
+#: src/kvilib/system/kvi_locale.cpp:1027
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -2209,10 +1773,6 @@ msgstr "Case , match , regexp , default nebo break klíčová slova očekávána
 msgid "Case Insensitive"
 msgstr "Nerozlišovat velikost"
 
-#: src/modules/actioneditor/actioneditor.cpp:134
-msgid "Category:"
-msgstr "Kategorie:"
-
 #: src/modules/action/libkviaction.cpp:66
 msgid "Category: %Q"
 msgstr "Kategorie: %Q"
@@ -2250,10 +1810,10 @@ msgstr "Změnit přezdívku"
 msgid "Changed text encoding to %Q"
 msgstr "Kódování textu změněno na %Q"
 
+#: src/kvirc/kernel/kvi_actionmanager.cpp:68
+#: src/modules/list/listwindow.cpp:201
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:67
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:76
-#: src/modules/list/listwindow.cpp:201
-#: src/kvirc/kernel/kvi_actionmanager.cpp:68
 msgid "Channel"
 msgstr "Kanál"
 
@@ -2353,11 +1913,6 @@ msgstr "Téma kanálu:"
 msgid "Channel was created at %Q"
 msgstr "Kanál byl vytvořen v %Q"
 
-#: src/modules/regchan/libkviregchan.cpp:207
-#, c-format
-msgid "Channel: %c%s@%s"
-msgstr "Kanál: %c%s@%s"
-
 #: src/modules/list/listwindow.cpp:417
 msgid "Channels list download finished"
 msgstr "Stažení seznamu kanálů dokončeno"
@@ -2370,70 +1925,6 @@ msgstr "Znakové zařízení"
 #, fuzzy
 msgid "Check on startup"
 msgstr "Stav spojení"
-
-#: src/modules/actioneditor/actioneditor.cpp:229
-msgid ""
-"Check this option if this action should be enabled also during the login "
-"operations (so when the logical IRC connection hasn't been estabilished yet)"
-msgstr ""
-"Zakrtněte tuto volbu, pokud má být tato akce povolena, také během "
-"přihlašovacích operací (dokud není navázáno IRC spojení)"
-
-#: src/modules/actioneditor/actioneditor.cpp:208
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window belongs to an irc context"
-msgstr ""
-"Zakrtněte tuto volbu, pokud má být tato akce povolena, když aktivní okno "
-"patří do irc kontextu"
-
-#: src/modules/actioneditor/actioneditor.cpp:219
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window has an active IRC connection"
-msgstr ""
-"Zakrtněte tuto volbu, pokud má být tato akce povolena, když má aktivní okno "
-"aktivní IRC spojení"
-
-#: src/modules/actioneditor/actioneditor.cpp:252
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a channel"
-msgstr ""
-"Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní okno "
-"kanál"
-
-#: src/modules/actioneditor/actioneditor.cpp:241
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a console"
-msgstr ""
-"Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní okno "
-"konzole"
-
-#: src/modules/actioneditor/actioneditor.cpp:274
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a dcc chat"
-msgstr ""
-"Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní okno "
-"dcc chat"
-
-#: src/modules/actioneditor/actioneditor.cpp:263
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a query"
-msgstr ""
-"Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní okno "
-"query"
-
-#: src/modules/actioneditor/actioneditor.cpp:235
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is of a specified type"
-msgstr ""
-"Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní okno "
-"zvoleného typu"
 
 #: src/modules/avatar/libkviavatar.cpp:69
 msgid "Choose Avatar - KVIrc"
@@ -2451,7 +1942,6 @@ msgstr "Zvolte dočasné písmo..."
 msgid "Choose a Configuration Folder - KVIrc Setup"
 msgstr "Vyberte adresář konfigurace - KVIrc Nastavení"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:722
 #: src/kvirc/ui/kvi_selectors.cpp:367
 msgid "Choose a Directory - KVIrc"
 msgstr "Zvolte adresář - KVIrc"
@@ -2464,24 +1954,11 @@ msgstr "Vyberte adresář pro stahování - KVIrc Nastavení"
 msgid "Choose a File - KVIrc"
 msgstr "Vyberte soubor - KVIrc"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:402
-#: src/modules/actioneditor/actioneditor.cpp:692
-#: src/modules/eventeditor/eventeditor.cpp:447
-#: src/modules/eventeditor/eventeditor.cpp:488
-#: src/modules/raweditor/raweditor.cpp:422
-#: src/modules/raweditor/raweditor.cpp:465
-#: src/modules/aliaseditor/aliaseditor.cpp:809
-#: src/modules/popupeditor/popupeditor.cpp:1129
-#: src/modules/popupeditor/popupeditor.cpp:1179
-#: src/modules/reguser/dialog.cpp:689 src/modules/reguser/dialog.cpp:789
-msgid "Choose a Filename - KVIrc"
-msgstr "Vyberte název souboru - KVIrc"
-
 #: src/modules/mircimport/libkvimircimport.cpp:125
 msgid "Choose a servers.ini file"
 msgstr "Zvolte soubor servers.ini"
 
-#: src/modules/avatar/libkviavatar.cpp:148 src/kvirc/ui/kvi_selectors.cpp:258
+#: src/kvirc/ui/kvi_selectors.cpp:258 src/modules/avatar/libkviavatar.cpp:148
 msgid "Choose an Image File - KVIrc"
 msgstr "Vyberte soubor obrázku - KVIrc"
 
@@ -2500,10 +1977,6 @@ msgstr "Zvolte obrázek ..."
 #: src/kvirc/ui/kvi_ircview.cpp:2125
 msgid "Choose the background image..."
 msgstr "Zvolte obrázek pozadí ..."
-
-#: src/modules/actioneditor/actioneditor.cpp:139
-msgid "Choose the category that best fits for this action"
-msgstr "Vyberte kategorii, do které nejlépe spadá tato akce"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:138
 msgid "Choose the file to share"
@@ -2551,13 +2024,11 @@ msgstr "Schránka"
 msgid "Clo&se"
 msgstr "Za&vřít"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:331
+#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_ctcppagedialog.cpp:62
+#: src/kvirc/ui/kvi_window.cpp:774 src/modules/tip/libkvitip.cpp:121
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:114
 #: src/modules/addon/managementdialog.cpp:179
-#: src/modules/tip/libkvitip.cpp:121
 #: src/modules/theme/managementdialog.cpp:194
-#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_window.cpp:774
-#: src/kvirc/ui/kvi_ctcppagedialog.cpp:62
 msgid "Close"
 msgstr "Zavřít"
 
@@ -2573,14 +2044,6 @@ msgstr "Blízkých linků (1 <= hopů <= 3): %d (~%d.%d %)"
 msgid "Close this window"
 msgstr "Zavřít toto okno"
 
-#: src/modules/actioneditor/actioneditor.cpp:128
-msgid "Code"
-msgstr "Kód"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:571
-msgid "Collapse All Namespaces"
-msgstr "Sbalit všechny jmenné prostory"
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:234
 msgid "Color free (no ANSI colors)"
 msgstr "Bez barev (žádné ANSI barvy)"
@@ -2589,21 +2052,9 @@ msgstr "Bez barev (žádné ANSI barvy)"
 msgid "Color options (#RRGGBB)"
 msgstr "Barevné možnosti (#RRGGBB)"
 
-#: src/modules/editor/scripteditor.cpp:522
-msgid "Colors"
-msgstr "Barvy"
-
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:975
 msgid "Command syntax %Q: %Q"
 msgstr "Syntaxe příkazu %Q: %Q"
-
-#: src/modules/reguser/edituser.cpp:348
-msgid "Comment:"
-msgstr "Komentář:"
-
-#: src/modules/reguser/dialog.cpp:133
-msgid "Comment: "
-msgstr "Komentář:"
 
 #: src/kvirc/ui/kvi_topicw.cpp:617
 msgid "Commit Changes"
@@ -2634,10 +2085,6 @@ msgstr "Chyba inicializace kompresní knihovny"
 #: src/kvilib/file/kvi_packagefile.cpp:416
 msgid "Compression library internal error"
 msgstr "Interní chyba kompresní knihovny"
-
-#: src/modules/popupeditor/popupeditor.cpp:236
-msgid "Condition:"
-msgstr "Podmínka:"
 
 #: src/modules/list/listwindow.cpp:336
 msgid "Configuration files (*.kvc)"
@@ -2670,10 +2117,6 @@ msgstr "Konfigurovat téma..."
 #: src/kvirc/ui/kvi_input.cpp:251
 msgid "Confirm Multiline Message"
 msgstr "Potvrdit víceřádkouvou zprávu"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:383
-msgid "Confirm ToolBar Deletion"
-msgstr "Potvrďte smazání lišty"
 
 #: src/modules/addon/managementdialog.cpp:266
 msgid "Confirm addon uninstallation"
@@ -2772,7 +2215,7 @@ msgstr "Kontaktuji hostitele %Q na portu %u"
 msgid "Context"
 msgstr "Kontext"
 
-#: src/modules/editor/scripteditor.cpp:255
+#: src/modules/editor/scripteditor.cpp:254
 msgid "Context sensitive help"
 msgstr "Kontextově citlivá nápověda"
 
@@ -2858,7 +2301,6 @@ msgstr ""
 msgid "Cryptography/text transformation"
 msgstr "Šifrování/transformace textu"
 
-#: src/modules/popupeditor/popupeditor.cpp:436
 #: src/kvirc/ui/kvi_input_editor.cpp:715
 msgid "Cu&t"
 msgstr "Vyj&mout"
@@ -2867,8 +2309,8 @@ msgstr "Vyj&mout"
 msgid "Current IRC URI"
 msgstr "Současné IRC URI"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1274
 #: src/kvirc/kernel/kvi_sslmaster.cpp:90
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1274
 msgid "Current transmission cipher"
 msgstr "Současná přenosová šifra"
 
@@ -2877,10 +2319,6 @@ msgstr "Současná přenosová šifra"
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:137
 msgid "Current window is not a channel"
 msgstr "Toto okno není kanál"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:298
-msgid "Customize Toolbars"
-msgstr "Upravit nástrojové lišty"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:225
 msgid "Customize Toolbars..."
@@ -2929,9 +2367,7 @@ msgid "Decrypt key:"
 msgstr "Dešifrovací klíč:"
 
 #: src/kvilib/ext/kvi_regusersdb.cpp:683 src/kvilib/ext/kvi_regusersdb.cpp:684
-#: src/kvilib/irc/kvi_useridentity.cpp:175 src/modules/reguser/dialog.cpp:492
-#: src/modules/reguser/dialog.cpp:495 src/modules/reguser/dialog.cpp:496
-#: src/modules/reguser/dialog.cpp:498 src/modules/reguser/dialog.cpp:500
+#: src/kvilib/irc/kvi_useridentity.cpp:175
 msgid "Default"
 msgstr "Výchozí"
 
@@ -2939,24 +2375,12 @@ msgstr "Výchozí"
 msgid "Delete"
 msgstr "Smazat"
 
-#: src/modules/actioneditor/actioneditor.cpp:630
-msgid "Delete Actions"
-msgstr "Smazat Akce"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:312
-msgid "Delete ToolBar"
-msgstr "Smazat nástrojovou lištu"
-
 #: src/modules/links/linkswindow.cpp:486
 msgid "Description"
 msgstr "Popis"
 
-#: src/modules/actioneditor/actioneditor.cpp:141
-msgid "Description:"
-msgstr "Popis:"
-
-#: src/modules/action/libkviaction.cpp:67
 #: src/modules/addon/libkviaddon.cpp:148
+#: src/modules/action/libkviaction.cpp:67
 msgid "Description: %Q"
 msgstr "Popis: %Q"
 
@@ -3004,7 +2428,7 @@ msgstr "Adresář"
 msgid "Discard Changes"
 msgstr "Zahodit změny"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:614 src/kvirc/ui/kvi_menubar.cpp:231
+#: src/kvirc/ui/kvi_menubar.cpp:231 src/kvirc/kernel/kvi_coreactions.cpp:614
 msgid "Disconnect"
 msgstr "Odpojit"
 
@@ -3032,25 +2456,9 @@ msgstr "Nerušit... sleduji TV"
 msgid "Do not overwrite folder? - KVIrc"
 msgstr "Nepřepisovat adresář? - KVIrc"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:384
-msgid "Do you really want to delete toolbar \"%1\" ?"
-msgstr "Opravdu chcete smazat nástrojovou lištu \"%1\" ?"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1022
-msgid "Do you really want to remove the alias \"%Q\" ?"
-msgstr "Opravdu chcete smazat alias \"%Q\" ?"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1024
-msgid "Do you really want to remove the namespace \"%Q\" ?"
-msgstr "Opravdu chcete smazat jmenný prostor \"%Q\" ?"
-
 #: src/modules/addon/managementdialog.cpp:262
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Opravdu chcete odinstalovat rozšíření \"%1\" ?"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:408
-msgid "Do you want the associated actions to be exported with the toolbar ?"
-msgstr "Chcete asociované akce exportovat s nástrojovou lištou?"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:833
 #, fuzzy
@@ -3121,10 +2529,6 @@ msgstr ""
 msgid "Dreaded License Agreement"
 msgstr "Obávané licenční ujednání"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:64
-msgid "Drop here the icons from the toolbars to remove them"
-msgstr "Přetáhnutím ikon z nástrojové lišty sem je odstraníte"
-
 #: src/modules/ident/libkviident.cpp:485
 msgid "Dropping connection (request too long)"
 msgstr "Přerušuji spojení (požadavek příliš dlouhý)"
@@ -3132,10 +2536,6 @@ msgstr "Přerušuji spojení (požadavek příliš dlouhý)"
 #: src/modules/trayicon/libkvitrayicon.cpp:157
 msgid "Dum de dum de dum..."
 msgstr "Dum de dum de dum..."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:265
-msgid "Duplicate ToolBar Id"
-msgstr "Duplicitní Id lišty"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:125
 msgid "E&xtended regexp."
@@ -3161,26 +2561,6 @@ msgstr "Upravit Popupy..."
 msgid "Edit Raw Events..."
 msgstr "Upravit Raw události..."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:316
-msgid "Edit ToolBar"
-msgstr "Upravit nástrojovou lištu"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:266
-msgid "Edit the alias or namespace name"
-msgstr "Upravit jméno aliasu nebo jmenného prostoru"
-
-#: src/modules/eventeditor/eventeditor.cpp:116
-msgid "Edit the event handler name."
-msgstr "Upravit název handleru události."
-
-#: src/modules/reguser/dialog.cpp:259
-msgid "Edit the first selected entry."
-msgstr "Upravit první vybraný záznam."
-
-#: src/modules/raweditor/raweditor.cpp:111
-msgid "Edit the raw event handler name."
-msgstr "Upravit název handleru raw události."
-
 #: src/kvilib/system/kvi_locale.cpp:1043
 msgid "Effects"
 msgstr "Efekty"
@@ -3198,17 +2578,9 @@ msgstr "oznamování"
 msgid "Empty request (EOT ?)"
 msgstr "Prázdný požadavek (EOT ?)"
 
-#: src/modules/actioneditor/actioneditor.cpp:233
-msgid "Enable Only in Specified Windows"
-msgstr "Povolit pouze v určených oknech"
-
 #: src/modules/url/libkviurl.cpp:446
 msgid "Enable URL ban list"
 msgstr "Povolit seznam URL banů"
-
-#: src/modules/actioneditor/actioneditor.cpp:228
-msgid "Enable at Login"
-msgstr "Povolit při přihlášení"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:117
 msgid "Enable decryption"
@@ -3217,26 +2589,6 @@ msgstr "Povolit dešifrování"
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:105
 msgid "Enable encryption"
 msgstr "Povolit šifrování"
-
-#: src/modules/reguser/edituser.cpp:454
-msgid "Enable ignore for this user"
-msgstr "Povolit ignorování pro tohoto uživatele"
-
-#: src/modules/actioneditor/actioneditor.cpp:251
-msgid "Enable in Channel Windows"
-msgstr "Povolit v Oknech kanálů"
-
-#: src/modules/actioneditor/actioneditor.cpp:240
-msgid "Enable in Console Windows"
-msgstr "Povolit v okně Konzole"
-
-#: src/modules/actioneditor/actioneditor.cpp:273
-msgid "Enable in DCC Chat Windows"
-msgstr "Povolit v DCC Chat oknech"
-
-#: src/modules/actioneditor/actioneditor.cpp:262
-msgid "Enable in Query Windows"
-msgstr "Povolit v Query oknech"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:108
 msgid "Encrypt key:"
@@ -3283,7 +2635,7 @@ msgstr "Konec kánalu %Q pro \r!c\r%Q\r"
 msgid "End of help about %Q"
 msgstr "Konec nápovědy o %Q"
 
-#: src/kvirc/ui/kvi_query.cpp:884 src/kvirc/ui/kvi_channel.cpp:1896
+#: src/kvirc/ui/kvi_channel.cpp:1896 src/kvirc/ui/kvi_query.cpp:884
 #, fuzzy
 msgid "End of log"
 msgstr "Konec SEZNAMU"
@@ -3299,14 +2651,6 @@ msgstr "Nástroj není inicializován"
 #: src/kvirc/kernel/kvi_coreactions.cpp:1047
 msgid "Enter Away Mode"
 msgstr "Vstoupit do Pryč módu"
-
-#: src/modules/raweditor/raweditor.cpp:232
-msgid "Enter the numeric code of the message (0-999)"
-msgstr "Zadejte číselný kód zprávy (0-999)"
-
-#: src/modules/popupeditor/popupeditor.cpp:96
-msgid "Epilogue"
-msgstr "Závěr"
 
 #: src/modules/rijndael/libkvirijndael.cpp:165
 msgid "Error 0: Success ?"
@@ -3336,14 +2680,6 @@ msgstr "Chyba během komprese souboru"
 #: src/modules/system/plugin.cpp:241
 msgid "Error while loading plugin."
 msgstr "Chyba při nahrávání pluginu."
-
-#: src/modules/eventeditor/eventeditor.cpp:168
-msgid "Event"
-msgstr "Akce"
-
-#: src/modules/eventeditor/eventeditor.cpp:561
-msgid "Event Editor"
-msgstr "Editor událostí"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:163
 msgid "Everything is all right"
@@ -3384,48 +2720,6 @@ msgstr "Rozšířit &Horizontálně"
 #: src/kvirc/ui/kvi_mdimanager.cpp:410
 msgid "Expand &Vertically"
 msgstr "Rozšířit &Vertikálně"
-
-#: src/modules/actioneditor/actioneditor.cpp:633
-msgid "Export Actions..."
-msgstr "Exportovat Akce..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:557
-msgid "Export All..."
-msgstr "Exportovat vše..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:550
-msgid "Export Selected in singles files..."
-msgstr "Exportovat vybrané v samostatných souborech..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:544
-msgid "Export Selected..."
-msgstr "Exportovat vybrané..."
-
-#: src/modules/reguser/dialog.cpp:265
-msgid "Export To..."
-msgstr "Exportovat do..."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:324
-msgid "Export ToolBar"
-msgstr "Exportovat nástrojovou lištu"
-
-#: src/modules/reguser/dialog.cpp:268
-msgid ""
-"Export the selected entries to a file.<br>All the data associated with the "
-"selected registered users will be exported.<br>You (or anyone else) can "
-"later import the entries by using the \"Import\" button."
-msgstr ""
-"Exportuje vybrané položky do souboru.<br>Všechna data asociovaná s vybranými "
-"registrovanými uživateli budou exportována.<br>Později můžete (vy, nebo "
-"kdokoliv jiný) importovat záznamy pomocí tlačítka \"Importovat\"."
-
-#: src/modules/popupeditor/popupeditor.cpp:85
-msgid "External Menu"
-msgstr "Externí Menu"
-
-#: src/modules/popupeditor/popupeditor.cpp:254
-msgid "External menu:"
-msgstr "Externí menu:"
 
 #: src/modules/file/libkvifile.cpp:83
 msgid "Failed to copy from %Q to %Q"
@@ -3546,7 +2840,7 @@ msgstr "Selhal zápis do souboru %Q: cíl nemůže být otevřen"
 msgid "Feature not available"
 msgstr "Funkce není dostupná"
 
-#: src/modules/setup/setupwizard.cpp:394 src/kvirc/ui/kvi_console.cpp:323
+#: src/kvirc/ui/kvi_console.cpp:323 src/modules/setup/setupwizard.cpp:394
 msgid "Female"
 msgstr "Žena"
 
@@ -3602,41 +2896,22 @@ msgstr "Filtr"
 msgid "Filter:"
 msgstr "Filtr:"
 
-#: src/modules/editor/scripteditor.cpp:761
 #: src/kvirc/ui/kvi_ircviewtools.cpp:146
 msgid "Find"
 msgstr "Hledat"
 
-#: src/modules/editor/scripteditor.cpp:269
-#, fuzzy
-msgid "Find & Replace"
-msgstr "Najít & Nahradit"
-
 #: src/kvirc/ui/kvi_ircviewtools.cpp:133
 msgid "Find &Prev."
 msgstr "Hledat &Předchozí"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:609
-msgid "Find In Aliases"
-msgstr "Hledat v aliasech"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:565
-msgid "Find In Aliases..."
-msgstr "Hledat v aliasech..."
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:91
 #, fuzzy
 msgid "Find Text"
 msgstr "&Hledat text"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:234 src/modules/setup/setupwizard.cpp:86
+#: src/modules/setup/setupwizard.cpp:86 src/kvilib/tal/kvi_tal_wizard.cpp:234
 msgid "Finish"
 msgstr "Hotovo"
-
-#: src/modules/actioneditor/actioneditor.cpp:283
-#: src/modules/reguser/dialog.cpp:81
-msgid "Flags"
-msgstr "Flagy"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:96
 msgid "Flat"
@@ -3679,14 +2954,6 @@ msgstr "Normální"
 msgid "Forward"
 msgstr "Vpřed"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1148
-msgid "Found an empty namespace in alias name"
-msgstr "Nalezen prázdný jmenný prostor v názvu aliasu"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1216
-msgid "Found an empty namespace in namespace name"
-msgstr "Nalezen prázdný jmenný prostor v názvu jmenného prostoru"
-
 #: src/modules/help/helpwindow.cpp:181 src/modules/help/helpwindow.cpp:190
 msgid "Full Text Search"
 msgstr "Fulltextové vyhledávání"
@@ -3699,7 +2966,7 @@ msgstr "Celá cesta"
 msgid "GUI"
 msgstr "GUI"
 
-#: src/modules/setup/setupwizard.cpp:388 src/kvirc/ui/kvi_console.cpp:321
+#: src/kvirc/ui/kvi_console.cpp:321 src/modules/setup/setupwizard.cpp:388
 msgid "Gender:"
 msgstr "Pohlaví:"
 
@@ -3747,10 +3014,6 @@ msgstr "Zjistit Linky sítě"
 msgid "Global idle timer must be started before using $my.globalIdle function"
 msgstr ""
 
-#: src/modules/reguser/dialog.cpp:395 src/modules/reguser/dialog.cpp:408
-msgid "Group name:"
-msgstr "Název skupiny:"
-
 #: src/kvirc/kernel/kvi_options.cpp:786
 msgid "Half-deop mode change"
 msgstr "Změna módu na polodeop"
@@ -3767,7 +3030,7 @@ msgstr "Změna módu na poloop"
 msgid "Header too long: exceeded 4096 bytes"
 msgstr "Hlavička příliš dlouhá: přesahuje 4096 bajtů"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:193 src/kvirc/kernel/kvi_options.cpp:831
+#: src/kvirc/kernel/kvi_options.cpp:831 src/kvilib/tal/kvi_tal_wizard.cpp:193
 msgid "Help"
 msgstr "Nápověda"
 
@@ -3807,10 +3070,6 @@ msgstr "Hej... jsi si jist, že tvoje síť funguje?"
 #: src/kvirc/ui/kvi_menubar.cpp:240
 msgid "Hide &Dock Icon"
 msgstr "Schovat &Dokovací ikonu"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:287
-msgid "Hide Advanced"
-msgstr "Schovat pokročilé"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2080
 msgid "Hide Find Window"
@@ -3934,10 +3193,6 @@ msgstr "IRC server"
 msgid "IRC-Op only channel"
 msgstr "pouze IRC-Op kanál"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:151
-msgid "Icon"
-msgstr "Ikona"
-
 #: src/kvirc/ui/kvi_toolbar.cpp:98
 msgid "Icon Size"
 msgstr "Velikost ikon"
@@ -3945,14 +3200,6 @@ msgstr "Velikost ikon"
 #: src/kvirc/kernel/kvi_iconmanager.cpp:371
 msgid "Icon Table"
 msgstr "Tabulka ikon"
-
-#: src/modules/popupeditor/popupeditor.cpp:245
-msgid "Icon:"
-msgstr "Ikona:"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:170
-msgid "Id"
-msgstr "Id"
 
 #: src/kvirc/kernel/kvi_options.cpp:784
 msgid "Ident message"
@@ -3975,7 +3222,7 @@ msgstr "Identd zpracovává požadavek"
 msgid "Identd socket error : dropping connection"
 msgstr "Identd přijímá spojení"
 
-#: src/modules/setup/setupwizard.cpp:417 src/modules/reguser/edituser.cpp:388
+#: src/modules/setup/setupwizard.cpp:417
 msgid "Identity"
 msgstr "Identita"
 
@@ -3989,38 +3236,6 @@ msgid ""
 "the CTRL+P prefix"
 msgstr ""
 "Pokud nechcete zašifrovat textového řádku, začntěte jej s CTRL+P prefixem"
-
-#: src/modules/reguser/edituser.cpp:484
-msgid "Ignore"
-msgstr "Ignorování"
-
-#: src/modules/reguser/edituser.cpp:478
-msgid "Ignore DCCs"
-msgstr "Ignorovat DCC"
-
-#: src/modules/reguser/edituser.cpp:466
-msgid "Ignore channel-messages"
-msgstr "Ignorovat kanálové zprávy"
-
-#: src/modules/reguser/edituser.cpp:472
-msgid "Ignore ctcp-messages"
-msgstr "Ignorovat ctcp zprávy"
-
-#: src/modules/reguser/edituser.cpp:456
-msgid "Ignore features"
-msgstr "Ignorovat vlastnosti"
-
-#: src/modules/reguser/edituser.cpp:475
-msgid "Ignore invites"
-msgstr "Ignorovat pozvání"
-
-#: src/modules/reguser/edituser.cpp:469
-msgid "Ignore notice-messages"
-msgstr "Ingorovat oznámení"
-
-#: src/modules/reguser/edituser.cpp:463
-msgid "Ignore query-messages"
-msgstr "Ingorovat soukromé zprávy"
 
 #: src/kvirc/kernel/kvi_options.cpp:807
 msgid "Ignored user message"
@@ -4055,18 +3270,6 @@ msgstr "Ignoruje se pozvání od \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
 #: src/kvirc/sparser/kvi_sp_literal.cpp:792
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Ignoruje se query-PRIVMSG od \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-
-#: src/modules/reguser/dialog.cpp:272
-msgid "Import From..."
-msgstr "Importovat z..."
-
-#: src/modules/reguser/dialog.cpp:274
-msgid ""
-"Import entries from a file exported earlier by the \"export\" function of "
-"this dialog."
-msgstr ""
-"Importuje záznamy ze souboru exportovaného pomocí funkce \"export\" v tomto "
-"dialogu."
 
 #: src/modules/mircimport/libkvimircimport.cpp:326
 msgid "Import from http://www.mirc.co.uk/servers.ini"
@@ -4138,14 +3341,6 @@ msgstr "Vstupní historie vypnuta"
 msgid "Insert Icon"
 msgstr "Vložit Ikonu"
 
-#: src/modules/reguser/edituser.cpp:232
-msgid ""
-"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
-"and '?'."
-msgstr ""
-"Vložte masku pro tohoto uživatele.<br>Může obsahovat zástupné znaky '*' a "
-"'?'."
-
 #: src/kvirc/kernel/kvi_app_setup.cpp:481
 msgid "Install Package"
 msgstr "Nainstalovat balíček"
@@ -4166,7 +3361,7 @@ msgstr "Nedostatek zdrojů pro dokončení operace"
 msgid "Integer parameter expected"
 msgstr "Očekáván parametr typu integer"
 
-#: src/kvilib/file/kvi_packagefile.cpp:571 src/kvilib/core/kvi_error.cpp:52
+#: src/kvilib/core/kvi_error.cpp:52 src/kvilib/file/kvi_packagefile.cpp:571
 msgid "Internal error"
 msgstr "Interní chyba"
 
@@ -4176,14 +3371,10 @@ msgstr "Interní chyba"
 msgid "Internal error: I'm not in the user database ?"
 msgstr "Interní chyba: Nejsem v databázi uživatelů ?"
 
-#: src/modules/action/libkviaction.cpp:377
 #: src/modules/addon/libkviaddon.cpp:529
+#: src/modules/action/libkviaction.cpp:377
 msgid "Internal error: call a head-shrinker"
 msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:107
-msgid "Internal unique name for the action"
-msgstr "Interní unikátní název této akce"
 
 #: src/modules/system/libkvisystem.cpp:464
 #, fuzzy
@@ -4207,10 +3398,6 @@ msgstr "Neplatná IP adresa"
 #: src/modules/window/libkviwindow.cpp:1028
 msgid "Invalid IRC context id '%Q'"
 msgstr "Neplatný IRC kontext id '%Q'"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-msgid "Invalid ToolBar Label"
-msgstr "Neplatný název lišty"
 
 #: src/kvilib/net/kvi_http.cpp:160
 msgid "Invalid URL: Missing hostname"
@@ -4340,15 +3527,6 @@ msgstr "Irc kontext barevné možnosti (#RRGGBB)"
 msgid "It's so cold here..."
 msgstr "Je tu příliš zima..."
 
-#: src/modules/popupeditor/popupeditor.cpp:79
-#: src/modules/popupeditor/popupeditor.cpp:209
-msgid "Item"
-msgstr "Položka"
-
-#: src/modules/popupeditor/popupeditor.cpp:263
-msgid "Item Id:"
-msgstr "Id položky:"
-
 #: src/kvirc/kernel/kvi_coreactions.cpp:761
 msgid "Join Channel"
 msgstr "Přijít do kanálu"
@@ -4468,22 +3646,9 @@ msgstr "Síťové jádro selhalo"
 msgid "Key"
 msgstr "Klíč"
 
-#: src/modules/actioneditor/actioneditor.cpp:178
-msgid "Key Sequence:"
-msgstr "Kombinace kláves:"
-
 #: src/kvirc/kernel/kvi_options.cpp:768
 msgid "Kick action"
 msgstr "Vykopnutí"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:142
-#: src/modules/popupeditor/popupeditor.cpp:92
-msgid "Label"
-msgstr "Návěstí"
-
-#: src/modules/actioneditor/actioneditor.cpp:109
-msgid "Label:"
-msgstr "Návěstí:"
 
 #: src/modules/action/libkviaction.cpp:65
 msgid "Label: %Q"
@@ -4688,7 +3853,7 @@ msgstr "Ma&ximalizovat"
 msgid "Make KVIrc default IRC client"
 msgstr "Nastavit KVIrc jako výchozí IRC klient"
 
-#: src/modules/setup/setupwizard.cpp:395 src/kvirc/ui/kvi_console.cpp:323
+#: src/kvirc/ui/kvi_console.cpp:323 src/modules/setup/setupwizard.cpp:395
 msgid "Male"
 msgstr "Muž"
 
@@ -4708,37 +3873,13 @@ msgstr "Spravovat skriptová rozšíření"
 msgid "Manage Themes..."
 msgstr "Spravovat témata..."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
-msgid "Manually"
-msgstr "Ručně"
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:193
 msgid "Mask"
 msgstr "Maska"
 
-#: src/modules/reguser/libkvireguser.cpp:354
-msgid "Mask %Q already used to identify user %Q"
-msgstr "Maska %Q je již použita u uživatele %Q"
-
-#: src/modules/reguser/libkvireguser.cpp:221
-msgid "Mask %Q is already used to identify user %s"
-msgstr "Maska %Q je již použita u uživatele %s"
-
-#: src/modules/reguser/libkvireguser.cpp:409
-msgid "Mask %Q not found"
-msgstr "Maska %Q nenalezena"
-
-#: src/modules/reguser/edituser.cpp:228
-msgid "Mask Editor"
-msgstr "Editor masek"
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:73
 msgid "Mask editor - KVirc"
 msgstr "Editor masek - KVIrc"
-
-#: src/modules/reguser/edituser.cpp:358
-msgid "Masks:"
-msgstr "Masky:"
 
 #: src/modules/links/linkswindow.cpp:312
 #, c-format
@@ -4815,14 +3956,6 @@ msgstr "Minimalizuje všechny viditelné MDI okna"
 msgid "Mirccolor options (#RRGGBB)"
 msgstr "Mirc barvy možnosti (#RRGGBB)"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1109
-msgid "Missing Alias Name"
-msgstr "Chybí jméno aliasu"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1177
-msgid "Missing Namespace Name"
-msgstr "Chybí jméno jmenného prostoru"
-
 #: src/kvirc/kernel/kvi_options.cpp:985
 msgid "Missing absolute directory for the theme information"
 msgstr "Chybí absulutní adresář pro informace o motivu"
@@ -4889,10 +4022,6 @@ msgstr "Moderovaný"
 msgid "Modulo by zero"
 msgstr "Zbytek po dělení nulou"
 
-#: src/modules/reguser/dialog.cpp:451
-msgid "Move to group"
-msgstr "Přesunout do skupiny"
-
 #: src/kvirc/ui/kvi_input.cpp:156
 msgid "Multi-line Editor<br>&lt;Alt+Backspace&gt;"
 msgstr "Víceřádkový Editor<br>&lt;Alt+Backspace&gt;"
@@ -4913,25 +4042,9 @@ msgstr "Vícenásobné operace pro číselné operátory nejsou povoleny"
 msgid "Multiple user mode change"
 msgstr "Hromadná změna módu"
 
-#: src/modules/actioneditor/actioneditor.cpp:764
-#: src/modules/actioneditor/actioneditor.cpp:765
-msgid "My Action"
-msgstr "Moje Akce"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:501
-#: src/modules/toolbareditor/toolbareditor.cpp:502
-msgid "My ToolBar"
-msgstr "Vlastní nástrojová lišta"
-
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:77
-#: src/modules/reguser/dialog.cpp:81
 msgid "Name"
 msgstr "Jméno"
-
-#: src/modules/actioneditor/actioneditor.cpp:103
-#: src/modules/reguser/edituser.cpp:342
-msgid "Name:"
-msgstr "Jméno:"
 
 #: src/modules/addon/libkviaddon.cpp:147
 msgid "Name: %Q"
@@ -4940,31 +4053,6 @@ msgstr "Jméno: %Q"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:471
 msgid "Names for \r!c\r%Q\r: %Q"
 msgstr "Jména v \r!c\r%Q\r: %Q"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:453
-#: src/modules/aliaseditor/aliaseditor.cpp:1442
-msgid "Namespace"
-msgstr "Jmenný prostor"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1368
-msgid "Namespace already exists"
-msgstr "Jmenný prostor již existuje"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1191
-msgid ""
-"Namespace names can contain only letters, digits, underscores and '::' "
-"namespace separators"
-msgstr ""
-"Jmenné prostory mohou obsahovat pouze písmena, číslice, podtržítka a '::' "
-"oddělovače jmenného prostoru"
-
-#: src/modules/actioneditor/actioneditor.cpp:217
-msgid "Needs IRC Connection"
-msgstr "Vyžaduje IRC spojení"
-
-#: src/modules/actioneditor/actioneditor.cpp:206
-msgid "Needs IRC Context"
-msgstr "Vyžaduje IRC kontext"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:389
 msgid "Negotiating relay information"
@@ -4975,7 +4063,7 @@ msgstr "Vyjednávájí se přenosové informace"
 msgid "Netsplit detected: %s"
 msgstr "Detekován Netsplit: %s"
 
-#: src/kvilib/system/kvi_locale.cpp:1076 src/kvirc/ui/kvi_statusbar.cpp:574
+#: src/kvirc/ui/kvi_statusbar.cpp:574 src/kvilib/system/kvi_locale.cpp:1076
 msgid "Network"
 msgstr "Síť"
 
@@ -4992,10 +4080,6 @@ msgstr "Síť je nedostupná"
 msgid "New &Connection To"
 msgstr "Nové &Připojení k"
 
-#: src/modules/actioneditor/actioneditor.cpp:627
-msgid "New Action"
-msgstr "Nová Akce"
-
 #: src/kvilib/system/kvi_locale.cpp:1056
 msgid "New Bookmark Folder..."
 msgstr "Nová složka záložek..."
@@ -5008,85 +4092,9 @@ msgstr "Nový adresář"
 msgid "New Directory..."
 msgstr "Nový adresář..."
 
-#: src/modules/popupeditor/popupeditor.cpp:425
-msgid "New External Menu Above"
-msgstr "Nové externí menu nahoře"
-
-#: src/modules/popupeditor/popupeditor.cpp:423
-msgid "New External Menu Below"
-msgstr "Nové externí menu dole"
-
-#: src/modules/popupeditor/popupeditor.cpp:428
-msgid "New External Menu Inside"
-msgstr "Nové externí menu uvnitř"
-
 #: src/kvirc/kernel/kvi_coreactions.cpp:418
 msgid "New IRC Context"
 msgstr "Nový IRC kontext"
-
-#: src/modules/popupeditor/popupeditor.cpp:405
-msgid "New Item Above"
-msgstr "Nová položka nahoře"
-
-#: src/modules/popupeditor/popupeditor.cpp:403
-msgid "New Item Below"
-msgstr "Nová položka dole"
-
-#: src/modules/popupeditor/popupeditor.cpp:408
-msgid "New Item Inside"
-msgstr "Nová položka uvnitř"
-
-#: src/modules/popupeditor/popupeditor.cpp:395
-msgid "New Label Above"
-msgstr "Nové návěstí nahoře"
-
-#: src/modules/popupeditor/popupeditor.cpp:393
-msgid "New Label Below"
-msgstr "Nové návěstí dole"
-
-#: src/modules/popupeditor/popupeditor.cpp:398
-msgid "New Label Inside"
-msgstr "Nové návěstí uvnitř"
-
-#: src/modules/popupeditor/popupeditor.cpp:415
-msgid "New Menu Above"
-msgstr "Nové menu nahoře"
-
-#: src/modules/popupeditor/popupeditor.cpp:413
-msgid "New Menu Below"
-msgstr "Nové menu dole"
-
-#: src/modules/popupeditor/popupeditor.cpp:478
-msgid "New Menu Epilogue"
-msgstr "Nový závěr menu"
-
-#: src/modules/popupeditor/popupeditor.cpp:418
-msgid "New Menu Inside"
-msgstr "Nové menu uvnitř"
-
-#: src/modules/popupeditor/popupeditor.cpp:470
-msgid "New Menu Prologue"
-msgstr "Nový úvod menu"
-
-#: src/modules/raweditor/raweditor.cpp:232
-msgid "New Raw Event"
-msgstr "Nová Raw událost"
-
-#: src/modules/popupeditor/popupeditor.cpp:385
-msgid "New Separator Above"
-msgstr "Nový oddělovač nahoře"
-
-#: src/modules/popupeditor/popupeditor.cpp:383
-msgid "New Separator Below"
-msgstr "Nový oddělovač dole"
-
-#: src/modules/popupeditor/popupeditor.cpp:388
-msgid "New Separator Inside"
-msgstr "Nový oddělovač uvnitř"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:308
-msgid "New ToolBar"
-msgstr "Nová nástrojová lišta"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:77
 msgid "New mask must match an *!*@* expression"
@@ -5118,24 +4126,16 @@ msgstr "NickServ požaduje autorizaci, provádí se plánovaný příkaz"
 msgid "Nickname"
 msgstr "Přezdívka"
 
-#: src/modules/reguser/wizard.cpp:228
-msgid "Nickname 2:"
-msgstr "Přezdívka 2:"
-
 #: src/kvirc/kernel/kvi_options.cpp:753
 msgid "Nickname problem"
 msgstr "Problém přezdívky"
 
-#: src/modules/setup/setupwizard.cpp:339 src/modules/reguser/wizard.cpp:224
+#: src/modules/setup/setupwizard.cpp:339
 msgid "Nickname:"
 msgstr "Přezdívka:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:385
-#: src/modules/toolbareditor/toolbareditor.cpp:410
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:785
 #: src/kvirc/ui/kvi_input.cpp:260 src/kvirc/ui/kvi_statusbar.cpp:572
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:785
 msgid "No"
 msgstr "Ne"
 
@@ -5163,10 +4163,6 @@ msgstr "Ne a již se neptat"
 msgid "No channel topic is set"
 msgstr "Nenastaveno téma"
 
-#: src/modules/reguser/dialog.cpp:131
-msgid "No comment set"
-msgstr "Komentář nebyl zadán"
-
 #: src/kvirc/ui/kvi_query.cpp:408
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Žádné společné kanály s \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
@@ -5178,10 +4174,6 @@ msgstr "Nepřipojeno"
 #: src/modules/window/libkviwindow.cpp:1515
 msgid "No encrypt key specified: can't allocate engine"
 msgstr ""
-
-#: src/modules/reguser/dialog.cpp:683
-msgid "No entries selected."
-msgstr "Nebyl vybrán žádný záznam."
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:241
 msgid "No external messages"
@@ -5195,37 +4187,13 @@ msgstr "Žádný název souboru nebyl určen pro \"StoreToFile\" typ zpracován�
 msgid "No host to resolve"
 msgstr "žádný hostitel pro zjištění"
 
-#: src/modules/eventeditor/eventeditor.cpp:369
-#: src/modules/aliaseditor/aliaseditor.cpp:261
-#: src/modules/aliaseditor/aliaseditor.cpp:1432
-msgid "No item selected"
-msgstr "Nebyla vybrána žádná položka"
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:252
 msgid "No kicks able (unless U-Line)"
 msgstr "Není možné vykopnutí (dokud je U-Line)"
 
-#: src/modules/reguser/libkvireguser.cpp:337
-#: src/modules/reguser/libkvireguser.cpp:402
-msgid "No mask specified"
-msgstr "Neurčena žádná maska"
-
 #: src/kvirc/ui/kvi_input_editor.cpp:1795
 msgid "No matches"
 msgstr "Žádné záznamy"
-
-#: src/modules/reguser/libkvireguser.cpp:188
-#: src/modules/reguser/libkvireguser.cpp:268
-#: src/modules/reguser/libkvireguser.cpp:331
-#: src/modules/reguser/libkvireguser.cpp:451
-#: src/modules/reguser/libkvireguser.cpp:516
-#: src/modules/reguser/libkvireguser.cpp:690
-msgid "No name specified"
-msgstr "Nebylo určeno jméno"
-
-#: src/modules/reguser/libkvireguser.cpp:696
-msgid "No property specified"
-msgstr "Neurčená vlastnost"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:504
 msgid "No proxy hosts available, resuming direct connection"
@@ -5245,11 +4213,6 @@ msgstr ""
 #: src/modules/mircimport/libkvimircimport.cpp:251
 msgid "No servers imported"
 msgstr "Žádný server nebyl importován"
-
-#: src/modules/regchan/libkviregchan.cpp:120
-#: src/modules/regchan/libkviregchan.cpp:177
-msgid "No such channel/netmask entry in the database"
-msgstr "Žádný záznam kanálu/masky v databázi"
 
 #: src/kvilib/core/kvi_error.cpp:113
 msgid "No such file"
@@ -5348,14 +4311,6 @@ msgstr "Není známo nic o %Q (žádné spojení)"
 #: src/kvirc/ui/kvi_console.cpp:144 src/kvirc/ui/kvi_console.cpp:147
 msgid "Notify List"
 msgstr "Seznam Oznamování"
-
-#: src/modules/reguser/dialog.cpp:122
-msgid "Notify as: "
-msgstr "Oznámit jako:"
-
-#: src/modules/reguser/dialog.cpp:120
-msgid "Notify disabled"
-msgstr "Oznamování vypnuto"
 
 #: src/kvirc/kernel/kvi_options.cpp:760
 msgid "Notify list joins"
@@ -5510,14 +4465,6 @@ msgid "Notify list: Unexpected inconsistency, userhost list is empty!"
 msgstr ""
 "Seznam Oznamování: Neočekávaná nekonzistence, seznam userhost je prázdný!"
 
-#: src/modules/reguser/edituser.cpp:397
-msgid "Notify nicknames:"
-msgstr "Oznamovat přezdívky:"
-
-#: src/modules/reguser/edituser.cpp:394
-msgid "Notify when user is online"
-msgstr "Oznámit, když je uživatel online"
-
 #: src/modules/avatar/libkviavatar.cpp:412
 msgid "Notifying avatar '%Q' to %Q"
 msgstr "Oznamuji avatar '%Q' pro %Q"
@@ -5526,13 +4473,8 @@ msgstr "Oznamuji avatar '%Q' pro %Q"
 msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: Lokální IRC operátor (LOCOP)"
 
+#: src/kvirc/ui/kvi_cryptcontroller.cpp:129 src/kvirc/ui/kvi_htmldialog.cpp:92
 #: src/kvilib/system/kvi_locale.cpp:1026
-#: src/modules/toolbareditor/toolbareditor.cpp:186
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-#: src/modules/actioneditor/actioneditor.cpp:717
-#: src/modules/actioneditor/actioneditor.cpp:865
-#: src/kvirc/ui/kvi_htmldialog.cpp:92 src/kvirc/ui/kvi_cryptcontroller.cpp:129
 msgid "OK"
 msgstr "OK"
 
@@ -5544,30 +4486,10 @@ msgstr "Datový proud (neznámý)"
 msgid "Often used directories"
 msgstr "Často používané adresáře"
 
-#: src/modules/eventeditor/eventeditor.cpp:492
-#: src/modules/raweditor/raweditor.cpp:469
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1136
-#: src/modules/popupeditor/popupeditor.cpp:1183
-#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_imagedialog.cpp:158
-#: src/kvirc/ui/kvi_ircview.cpp:2130
+#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_ircview.cpp:2130
+#: src/kvirc/ui/kvi_imagedialog.cpp:158
 msgid "Ok"
 msgstr "Ok"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1111
-#: src/modules/aliaseditor/aliaseditor.cpp:1124
-#: src/modules/aliaseditor/aliaseditor.cpp:1138
-#: src/modules/aliaseditor/aliaseditor.cpp:1149
-#: src/modules/aliaseditor/aliaseditor.cpp:1179
-#: src/modules/aliaseditor/aliaseditor.cpp:1192
-#: src/modules/aliaseditor/aliaseditor.cpp:1206
-#: src/modules/aliaseditor/aliaseditor.cpp:1217
-#: src/modules/aliaseditor/aliaseditor.cpp:1358
-#: src/modules/aliaseditor/aliaseditor.cpp:1370
-msgid "Ok, Let me try again..."
-msgstr "Ok, Zkusíme to znovu..."
 
 #: src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
@@ -5610,12 +4532,6 @@ msgstr "Online"
 msgid "Only 7-bit letters in nicknames allowed"
 msgstr "Povoleny pouze 7mi bitové znaky v přezdívce"
 
-#: src/modules/actioneditor/actioneditor.cpp:246
-#: src/modules/actioneditor/actioneditor.cpp:257
-#: src/modules/actioneditor/actioneditor.cpp:268
-msgid "Only If There Are Selected Users"
-msgstr "Pouze pokud jsou vybráni uživatelé"
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:251
 msgid "Only registered nicks can join"
 msgstr "Pouze registrovaní mohou přijít"
@@ -5649,10 +4565,6 @@ msgstr "Chybí počáteční závorka"
 msgid "Open parenthesis expected"
 msgstr "Očekávána počáteční závorka"
 
-#: src/modules/reguser/dialog.cpp:241
-msgid "Open the edit dialog to create a new user entry."
-msgstr "Otevře upravovací dialog pro vytvoření nového uživatelského záznamu."
-
 #: src/kvirc/kernel/kvi_app_setup.cpp:315
 #: src/kvirc/kernel/kvi_app_setup.cpp:376
 msgid "Open with KVIrc"
@@ -5682,8 +4594,8 @@ msgstr "Časový limit operace vypršel"
 msgid "Operation timed out (while selecting for read)"
 msgstr "Časový limit operace vypršel (při označování pro čtení)"
 
-#: src/modules/iograph/libkviiograph.cpp:261
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
+#: src/modules/iograph/libkviiograph.cpp:261
 msgid "Ops.. internal error"
 msgstr "Oops.. interní chyba"
 
@@ -5735,19 +4647,6 @@ msgstr ""
 "Oops...to vypadá, že máte poškozenou distribuci.\n"
 "Setup modul neexportuje funkci \"setup_finish\".\n"
 "Zkouším pokračovat i tak..."
-
-#: src/modules/actioneditor/actioneditor.cpp:184
-msgid ""
-"Optional keyboard sequence that will activate this action.<br>The sequence "
-"should be expressed as a string of up to four key codes separated by commas "
-"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta"
-"\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
-"Ctrl+C\" ..."
-msgstr ""
-"Volitelná kombinace kláves, která spustí tuto akci.<br>Kombinace by měla být "
-"spojením max. čtyř kláves oddělených čárkami případně kombinovány s "
-"přepínači \"Ctrl\",\"Shift\",\"Alt\" a \"Meta\".<br>Příklady použitelných "
-"kombinací jsou \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
 #: src/kvirc/ui/kvi_toolbar.cpp:88
 msgid "Orientation"
@@ -5821,10 +4720,6 @@ msgstr "Balíček úspěšně uložen "
 msgid "Packaging file %Q"
 msgstr "Balíčkuji soubor %Q"
 
-#: src/modules/codetester/codetester.cpp:61
-msgid "Params:"
-msgstr "Parametry:"
-
 #: src/kvilib/system/kvi_locale.cpp:1048
 msgid "Parent Directory"
 msgstr "Nadřazený adresář"
@@ -5862,14 +4757,6 @@ msgstr "Vložit &Soubor"
 msgid "Paste (Slowly)"
 msgstr "Vložit (pomalu)"
 
-#: src/modules/popupeditor/popupeditor.cpp:453
-msgid "Paste Above"
-msgstr "Vložit nahoru"
-
-#: src/modules/popupeditor/popupeditor.cpp:458
-msgid "Paste Inside"
-msgstr "Vložit dovnitř"
-
 #: src/kvirc/kernel/kvi_sslmaster.cpp:83
 msgid "Peer X509 certificate"
 msgstr "X509 ceritifikát"
@@ -5901,36 +4788,6 @@ msgstr ""
 "máte pochybnosti, tak napište první věc, která vás napadne. Budete moci jí "
 "změnit později v nastavení Identita, nebo pomocí příkazu /NICK."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:228
-msgid "Please choose the icon for the ToolBar"
-msgstr "Prosím vyberte ikonu pro nástrojovou lištu"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1250
-msgid "Please enter the name for the new alias"
-msgstr "Prosím zadejte název pro nový alias"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1275
-msgid "Please enter the name for the new namespace"
-msgstr "Prosím zadejte jméno pro nový jmenný prostor"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1342
-msgid "Please enter the new name for the alias"
-msgstr "Prosím zadejte nový název pro alias"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1344
-msgid "Please enter the new name for the namespace"
-msgstr "Prosím zadejte nové jméno jmenného prostoru"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:610
-msgid ""
-"Please enter the text to be searched for. The matching aliases will be "
-"highlighted."
-msgstr "Prosím zadejte text pro hledání. Nalezené aliasy budou zvýrazněny."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1026
-msgid "Please note that all the children items will be deleted too."
-msgstr ""
-
 #: src/modules/avatar/libkviavatar.cpp:73
 msgid ""
 "Please select an avatar image. The full path to a local file or an image on "
@@ -5946,14 +4803,6 @@ msgstr ""
 #: src/modules/addon/managementdialog.cpp:283
 msgid "Please select the addon installation file"
 msgstr "Prosím vyberte instalační soubor rozšíření"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:500
-msgid "Please specify the properties for the new toolbar"
-msgstr "Prosím zadejte vlastnosti pro novou nástrojovou lištu"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:474
-msgid "Please specify the properties for the toolbar \"%1\""
-msgstr "Prosím určete vlastnosti pro nástrojovou lištu \"%1\""
 
 #: src/modules/mircimport/libkvimircimport.cpp:169
 msgid "Please wait while the list is being downloaded"
@@ -5990,18 +4839,6 @@ msgstr ""
 "Tento nástroj funguje v ECB módu jako výchozí:\n"
 "pokud chcete použít CBC mód, musíte označit \n"
 "vaše klíče prefixem \"cbc\".\n"
-
-#: src/modules/popupeditor/popupeditor.cpp:1033
-msgid "Popup"
-msgstr "Popup"
-
-#: src/modules/popupeditor/popupeditor.cpp:1373
-msgid "Popup Editor"
-msgstr "Editor Popupů"
-
-#: src/modules/popupeditor/popupeditor.cpp:195
-msgid "Popup name"
-msgstr "Název Popupu"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2265 src/kvirc/ui/kvi_ircview.cpp:2318
 #, c-format
@@ -6061,26 +4898,9 @@ msgstr "Zpracovává se seznam: %Q"
 msgid "Profile"
 msgstr "Profil"
 
-#: src/modules/popupeditor/popupeditor.cpp:100
-msgid "Prologue"
-msgstr "Úvod"
-
-#: src/modules/actioneditor/actioneditor.cpp:197
-#: src/modules/reguser/edituser.cpp:448
-msgid "Properties"
-msgstr "Vlastnosti"
-
 #: src/kvilib/system/kvi_locale.cpp:1082
 msgid "Properties..."
 msgstr "Vlastnosti..."
-
-#: src/modules/reguser/edituser.cpp:90
-msgid "Property"
-msgstr "Vlastnost"
-
-#: src/modules/reguser/edituser.cpp:78
-msgid "Property Editor"
-msgstr "Editor vlastností"
 
 #: src/kvilib/net/kvi_http.cpp:793
 msgid "Protocol error: invalid chunk size"
@@ -6179,10 +4999,6 @@ msgstr "Proxy odezva: cílová data OK požadavek přijmut"
 msgid "Proxy said something about: \n"
 msgstr "Proxy říká něco o: \n"
 
-#: src/modules/actioneditor/actioneditor.cpp:766
-msgid "Put here a short description of your action"
-msgstr "Zde vložte krátký popis vaší akce"
-
 #: src/kvirc/ui/kvi_query.cpp:101
 msgid "Query Targets"
 msgstr "Query cíle"
@@ -6239,32 +5055,14 @@ msgstr "Opouštěcí zpráva při netsplitu"
 msgid "Quits KVIrc closing all the current connections"
 msgstr "Ukončí KVIrc uzavřením všech současných spojení"
 
-#: src/modules/raweditor/raweditor.cpp:537
-msgid "Raw Editor"
-msgstr "Editor Raw"
-
-#: src/modules/raweditor/raweditor.cpp:94
-msgid "Raw Event"
-msgstr "Raw událost"
-
 #: src/kvirc/kernel/kvi_options.cpp:709
 msgid "Raw data to server"
 msgstr "Raw data k serveru"
 
-#: src/modules/reguser/dialog.cpp:249 src/modules/reguser/edituser.cpp:375
 #: src/kvirc/ui/kvi_selectors.cpp:385 src/kvirc/ui/kvi_selectors.cpp:731
 #: src/kvirc/ui/kvi_maskeditor.cpp:205
 msgid "Re&move"
 msgstr "Ode&brat"
-
-#: src/modules/eventeditor/eventeditor.cpp:206
-#: src/modules/raweditor/raweditor.cpp:174
-msgid "Re&move Handler"
-msgstr "S&mazat handler"
-
-#: src/modules/popupeditor/popupeditor.cpp:1102
-msgid "Re&move Popup"
-msgstr "S&mazat Popup"
 
 #: src/modules/file/libkvifile.cpp:740
 msgid "Read error for file %Q"
@@ -6373,34 +5171,14 @@ msgstr "Registrovaný"
 msgid "Registered Channels"
 msgstr "Registrované kanály"
 
-#: src/modules/reguser/edituser.cpp:336
-msgid "Registered User Entry"
-msgstr "Záznam registrovaného uživatele"
-
-#: src/modules/reguser/dialog.cpp:216
-msgid "Registered Users - KVIrc"
-msgstr "Registrovaní uživatelé - KVIrc"
-
 #: src/kvirc/ui/kvi_console.cpp:332
 msgid "Registered as"
 msgstr "Registrován jako"
-
-#: src/modules/regchan/libkviregchan.cpp:197
-msgid "Registered channel list:"
-msgstr "Seznam registrovaných kanálů:"
 
 #: src/kvirc/kernel/kvi_lagmeter.cpp:186
 #, c-format
 msgid "Registered lag check with reliability %u (%s)"
 msgstr "Registrována kontrola lagu se spolehlivostí %u (%s)"
-
-#: src/modules/reguser/libkvireguser.cpp:801
-msgid "Registered users database dump:"
-msgstr "Výpis databáze registrovaných uživatelů:"
-
-#: src/modules/reguser/wizard.cpp:258
-msgid "Registration Complete"
-msgstr "Registrace dokončena"
 
 #: src/kvilib/system/kvi_locale.cpp:1051
 msgid "Reload"
@@ -6423,39 +5201,6 @@ msgstr "Průvodce importem mIRC souboru servers.ini"
 #: src/kvirc/ui/kvi_statusbar.cpp:343
 msgid "Remove %Q"
 msgstr "Odebrat %Q"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:536
-msgid "Remove Selected"
-msgstr "Odebrat vybrané"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-msgid "Remove item"
-msgstr "Odebrat položku"
-
-#: src/modules/reguser/dialog.cpp:252
-msgid "Remove the currently selected entries."
-msgstr "Odebere právě vybrané záznamy."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:262
-msgid "Rename"
-msgstr "Přejmenovat"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1342
-msgid "Rename Alias"
-msgstr "Přejmenovat Alias"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1344
-msgid "Rename Namespace"
-msgstr "Přejmenovat jmenný prostor"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#, fuzzy
-msgid "Replace file"
-msgstr "Nahradit"
-
-#: src/modules/editor/scripteditor.cpp:999
-msgid "Replace with"
-msgstr "Nahradit"
 
 #: src/kvirc/ui/kvi_menubar.cpp:147
 #, fuzzy
@@ -6560,7 +5305,6 @@ msgstr "Skri&pty"
 msgid "Script"
 msgstr "Skript"
 
-#: src/modules/codetester/codetester.cpp:109
 #: src/kvirc/kernel/kvi_coreactions.cpp:303
 msgid "Script Tester"
 msgstr "Tester skriptu"
@@ -6585,7 +5329,7 @@ msgstr "Akce příbuzné skriptování"
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
-#: src/modules/help/helpwindow.cpp:100 src/kvirc/kernel/kvi_options.cpp:810
+#: src/kvirc/kernel/kvi_options.cpp:810 src/modules/help/helpwindow.cpp:100
 msgid "Search"
 msgstr "Hledat"
 
@@ -6702,9 +5446,8 @@ msgstr "Posláno užívatelské jméno a heslo, čeká se na potvrzení"
 msgid "Separate Directories"
 msgstr "Oddělit adresáře"
 
-#: src/modules/popupeditor/popupeditor.cpp:89
-#: src/kvirc/kernel/kvi_coreactions.cpp:508
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:649
+#: src/kvirc/kernel/kvi_coreactions.cpp:508
 msgid "Separator"
 msgstr "Oddělovač"
 
@@ -6798,7 +5541,7 @@ msgstr "Nastavit žá&dný"
 msgid "Set at"
 msgstr "Nastaveno"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:194 src/kvirc/ui/kvi_topicw.cpp:531
+#: src/kvirc/ui/kvi_topicw.cpp:531 src/kvirc/ui/kvi_maskeditor.cpp:194
 msgid "Set by"
 msgstr "Nastavil"
 
@@ -7017,10 +5760,6 @@ msgstr "Pomalu vložit ID:%d Okno:%Q"
 msgid "Small (22x22)"
 msgstr "Malé (22x22)"
 
-#: src/modules/actioneditor/actioneditor.cpp:148
-msgid "Small Icon:"
-msgstr "Malá ikona:"
-
 #: src/kvilib/system/kvi_locale.cpp:1081
 msgid "Small Icons"
 msgstr "Malé ikony"
@@ -7131,9 +5870,9 @@ msgstr "Rozdělit pohled"
 msgid "Split message"
 msgstr "Split zpráva"
 
+#: src/modules/mircimport/libkvimircimport.cpp:100
 #: src/kvilib/irc/kvi_ircserverdb.cpp:290
 #: src/kvilib/irc/kvi_ircserverdb.cpp:293
-#: src/modules/mircimport/libkvimircimport.cpp:100
 msgid "Standalone Servers"
 msgstr "Samostatné servery"
 
@@ -7160,7 +5899,7 @@ msgstr "Obnovuje se přímé spojení se serverem"
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr "Obnovuje se přímé spojení se serverem"
 
-#: src/kvirc/ui/kvi_query.cpp:868 src/kvirc/ui/kvi_channel.cpp:1880
+#: src/kvirc/ui/kvi_channel.cpp:1880 src/kvirc/ui/kvi_query.cpp:868
 #, fuzzy
 msgid "Starting last log"
 msgstr "Zahajuji vypisování seznamu oznamování"
@@ -7168,22 +5907,6 @@ msgstr "Zahajuji vypisování seznamu oznamování"
 #: src/kvirc/kernel/kvi_notifylist.cpp:946
 msgid "Starting notify list"
 msgstr "Zahajuji vypisování seznamu oznamování"
-
-#: src/modules/reguser/wizard.cpp:97
-msgid "Step 1: Entry Name"
-msgstr "Krok 1: Zadání jména"
-
-#: src/modules/reguser/wizard.cpp:171
-msgid "Step 2: Mask Selection"
-msgstr "Krok 2: Výběr masky"
-
-#: src/modules/reguser/wizard.cpp:197
-msgid "Step 3: Avatar Selection"
-msgstr "Krok 3: Výběr avataru"
-
-#: src/modules/reguser/wizard.cpp:242
-msgid "Step 4: Notify List"
-msgstr "Krok 4: Seznam oznamování"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:733
 msgid "Stop Paste"
@@ -7197,28 +5920,9 @@ msgstr "Zastavit stahování seznamu"
 msgid "Stopping the list download..."
 msgstr "Zastavuje se stahování seznamu..."
 
-#: src/modules/reguser/wizard.cpp:192
-msgid "Store an avatar for this user"
-msgstr "Uložit avatar pro tohoto uživatele"
-
 #: src/modules/setup/setupwizard.cpp:235
 msgid "Store configuration in folder"
 msgstr "Uložit konfiguraci v adresáři"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1137
-#, fuzzy
-msgid ""
-"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr ""
-"Znak ':' ve jménu jmenného prostoru: mysleli jste ...<jmenný_prostor>::"
-"<jméno> ?"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1205
-msgid ""
-"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr ""
-"Znak ':' ve jménu jmenného prostoru: mysleli jste ...<jmenný_prostor>::"
-"<jméno> ?"
 
 #: src/kvilib/net/kvi_http.cpp:705 src/kvilib/net/kvi_http.cpp:847
 msgid "Stream exceeded expected length"
@@ -7244,11 +5948,7 @@ msgstr "Možnosti řetězce (hodnota řetězce)"
 msgid "Strip colors"
 msgstr "Odstranit barvy"
 
-#: src/modules/popupeditor/popupeditor.cpp:82
-msgid "Submenu"
-msgstr "Submenu"
-
-#: src/kvirc/kernel/kvi_coreactions.cpp:336 src/kvirc/ui/kvi_menubar.cpp:145
+#: src/kvirc/ui/kvi_menubar.cpp:145 src/kvirc/kernel/kvi_coreactions.cpp:336
 msgid "Subscribe to the Mailing List"
 msgstr "Přihlásit se do Mailing listu"
 
@@ -7284,10 +5984,6 @@ msgstr "Terminál"
 msgid "Terminal emulator"
 msgstr "Emulátor terminálu"
 
-#: src/modules/popupeditor/popupeditor.cpp:199
-msgid "Test"
-msgstr "Testovat"
-
 #: src/modules/options/optw_texticons.cpp:80
 #, fuzzy
 msgid "Text"
@@ -7301,10 +5997,6 @@ msgstr "Kódo&vání textu"
 msgid "Text Encoding Server message"
 msgstr "Kódování textu serverové zprávy"
 
-#: src/modules/popupeditor/popupeditor.cpp:228
-msgid "Text:"
-msgstr "Text:"
-
 #: src/modules/system/libkvisystem.cpp:525
 #, c-format
 msgid "The DBus call returned an error \"%s\": %s"
@@ -7314,10 +6006,6 @@ msgstr ""
 #, fuzzy
 msgid "The SOCKSv4 protocol lacks IPv6 support"
 msgstr "Protokol SOCKSV4 postrádá podporu IPv6"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-msgid "The ToolBar Label can't be empty!"
-msgstr "Název lišty nemůže být prázdný!"
 
 #: src/modules/action/libkviaction.cpp:115
 #: src/modules/action/libkviaction.cpp:161
@@ -7365,14 +6053,6 @@ msgstr "Rozšíření \"%1\" nemá nastaven help callback"
 #: src/modules/objects/class_multilineedit.cpp:1005
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr "Pole zadané jako parametr musí obsahovat nejméně 3 elementy"
-
-#: src/modules/actioneditor/actioneditor.cpp:172
-msgid ""
-"The big icon associated to this action.<br>It will appear at least in the "
-"toolbar buttons when this action is inserted.<br>It should be 32x32 pixels."
-msgstr ""
-"Velká ikona asociovaná s touto akcí.<br>Objeví se mezi tlačítky nástrojové "
-"lišty, když je tato akce vložena.<br>Měla by být 32x32 pixelů."
 
 #: src/modules/help/helpwindow.cpp:191
 msgid "The closing quotation mark is missing."
@@ -7452,28 +6132,10 @@ msgstr ""
 msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-msgid "The exported file would be empty: cowardly refusing to write it"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:743
-msgid "The file \"%Q\" exists. Do you want to replace it ?"
-msgstr "Soubor \"%Q\" existuje. Chcete jej nahradit?"
-
 #: src/kvirc/ui/kvi_filedialog.cpp:120 src/kvirc/ui/kvi_filedialog.cpp:165
 #, c-format
 msgid "The file %s already exists.<br>Do you wish to overwrite it?"
 msgstr "Soubor %s již existuje.<br>Chcete jej přepsat?"
-
-#: src/modules/reguser/dialog.cpp:814
-#, c-format
-msgid "The file %s contains an invalid registered users database version."
-msgstr "Soubor %s obsahuje neplatnou verzi databáze registrovaných uživatelů."
-
-#: src/modules/reguser/dialog.cpp:807
-#, c-format
-msgid "The file %s doesn't appear to be a valid registered users database."
-msgstr "Soubor %s nevypadá jako platná databáze registrovaných uživatelů."
 
 #: src/kvilib/file/kvi_packagefile.cpp:610
 msgid "The file specified is not a valid KVIrc package"
@@ -7642,14 +6304,6 @@ msgstr ""
 "Specifikace serveru vypadá jako by byla v síti:<string> ale síť nelze nalézt "
 "v databázi"
 
-#: src/modules/actioneditor/actioneditor.cpp:156
-msgid ""
-"The small icon associated to this action.<br>It will appear at least in the "
-"popup menus when this action is inserted.<br>It should be 16x16 pixels."
-msgstr ""
-"Malá ikona asociovaná s touto akcí.<br>Objeví se v popup menu, když bude "
-"tato akce vložena.<br>Měla by být 16x16 pixelů."
-
 #: src/modules/window/libkviwindow.cpp:1135
 msgid "The specified IRC context is not valid: creating a context free window"
 msgstr "Určený IRC kontext je neplatný: vytváří okno bez kontextu"
@@ -7657,16 +6311,6 @@ msgstr "Určený IRC kontext je neplatný: vytváří okno bez kontextu"
 #: src/modules/addon/libkviaddon.cpp:544
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr "Zadaná verze KVIrc \"%Q\" má neplatný řetězec verze"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:266
-msgid ""
-"The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
-"it automatically (so it doesn't collide with any other toolbar) or you "
-"prefer to do it manually ?"
-msgstr ""
-"Zadaná nástrojová lišta již existuje.<br>Chcete aby ji KVIrc přiřadilo "
-"automaticky (pokud nebude kolidovat s žádnou jinou lištou) nebo raději "
-"ručně ?"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:498
 msgid "The specified bind address (%Q) is not valid"
@@ -7811,11 +6455,6 @@ msgstr "Jsou zde aktivní spojení, opravdu chcete "
 msgid "There is no $this pointer in this scope (unexpected @)"
 msgstr "V tomto poli není žádný $this ukazatel (neočekávaný @)"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#, fuzzy
-msgid "There is no selection!"
-msgstr "Zde není výběr!"
-
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
 msgstr "Tato verze KVIrc nemá podporu IPv6"
@@ -7870,11 +6509,6 @@ msgid ""
 "This module was compiled for a different KVIrc version and can't be loaded"
 msgstr "Tento modul byl kompilován pro jinou verzi KVIrc a nemůže být načten"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1357
-#: src/modules/aliaseditor/aliaseditor.cpp:1369
-msgid "This name is already in use. Please choose another one."
-msgstr "Jméno se již používá. Prosím vyberte jiné."
-
 #: src/kvirc/ui/kvi_optionswidget.cpp:49
 msgid "This option is also available as"
 msgstr "Tato volba je také dostupná jako"
@@ -7904,14 +6538,6 @@ msgstr "Tento server podporuje: %s"
 #: src/modules/trayicon/libkvitrayicon.cpp:170
 msgid "This silence is freaking me out!"
 msgstr "To ticho mě deptá!"
-
-#: src/modules/actioneditor/actioneditor.cpp:247
-#: src/modules/actioneditor/actioneditor.cpp:258
-#: src/modules/actioneditor/actioneditor.cpp:269
-msgid ""
-"This will enable the action only if there are selected users in the active "
-"window"
-msgstr "Toto povolí akci, pouze pokud jsou vybraní uživatelé v aktivním okně"
 
 #: src/modules/my/libkvimy.cpp:47
 msgid "This window has no associated irc context"
@@ -7953,15 +6579,7 @@ msgstr "Tip pro %Q: %Q"
 msgid "Tip: %Q"
 msgstr "Tip: %Q"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:407
-msgid "ToolBar Export"
-msgstr "Export Nástrojové lišty"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:133
-msgid "ToolBar Properties"
-msgstr "Vlastnosti Nástrojové lišty"
-
-#: src/kvirc/ui/kvi_menubar.cpp:183 src/kvirc/ui/kvi_toolbar.cpp:86
+#: src/kvirc/ui/kvi_toolbar.cpp:86 src/kvirc/ui/kvi_menubar.cpp:183
 msgid "Toolbars"
 msgstr "Nástrojové lišty"
 
@@ -8005,11 +6623,6 @@ msgstr "Téma nastavil %Q"
 msgid "Topic was set by %Q on %Q"
 msgstr "Téma nastavil %Q v %Q"
 
-#: src/modules/regchan/libkviregchan.cpp:219
-#, c-format
-msgid "Total %d channels"
-msgstr "Celkem %d kanálů"
-
 #: src/modules/links/linkswindow.cpp:302
 msgid "Total hosts in the network"
 msgstr "Celkem hostitelů v síti"
@@ -8028,11 +6641,6 @@ msgstr "Celkem linků: %d"
 msgid "Total: %d addons installed"
 msgstr "Celkem: %d rozšíření nainstalováno"
 
-#: src/modules/reguser/libkvireguser.cpp:840
-#, c-format
-msgid "Total: %d matching users (of %d in the database)"
-msgstr "Celkem: %d nalezeno uživatelů (z %d v databázi)"
-
 #: src/kvirc/ui/kvi_selectors.cpp:604
 msgid "Transparent"
 msgstr "Průhledné"
@@ -8040,10 +6648,6 @@ msgstr "Průhledné"
 #: src/kvirc/kernel/kvi_irccontext.cpp:651
 msgid "Try reconnecting with caching disabled"
 msgstr "Zkuste znovu připojení se zakázaným cache"
-
-#: src/modules/popupeditor/popupeditor.cpp:209
-msgid "Type"
-msgstr "Typ"
 
 #: src/kvilib/core/kvi_error.cpp:148
 msgid "UNUSED"
@@ -8144,39 +6748,6 @@ msgstr "Nelze spustit vyhledávání v DNS"
 msgid "Unable to start the request slave thread"
 msgstr "Nelze spustit požadované slave vlákno"
 
-#: src/modules/actioneditor/actioneditor.cpp:717
-msgid "Unable to write to the actions file."
-msgstr "Nelze zapisovat do souboru akcí."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1183
-msgid "Unable to write to the alias file."
-msgstr "Nelze zapisovat do souboru aliasů."
-
-#: src/modules/eventeditor/eventeditor.cpp:454
-msgid "Unable to write to the event file."
-msgstr "Nelze zapisovat do souboru událostí."
-
-#: src/modules/eventeditor/eventeditor.cpp:492
-msgid "Unable to write to the events file."
-msgstr "Nelze zapisovat do souboru událostí."
-
-#: src/modules/popupeditor/popupeditor.cpp:1136
-msgid "Unable to write to the popup file."
-msgstr "Nelze zapisovat do popup souboru."
-
-#: src/modules/raweditor/raweditor.cpp:429
-msgid "Unable to write to the raw event file."
-msgstr "Nelze zapisovat do souboru raw událostí."
-
-#: src/modules/raweditor/raweditor.cpp:469
-msgid "Unable to write to the raw events file."
-msgstr "Nelze zapisovat do souboru raw událostí."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-msgid "Unable to write to the toolbar file."
-msgstr "Nelze zapisovat do souboru nástrojových lišt."
-
 #: src/kvirc/kernel/kvi_options.cpp:802
 msgid "Unban matching my mask"
 msgstr "Ban na mojí masku odstraněn"
@@ -8241,9 +6812,9 @@ msgstr "Nezvýrazňovat žádná okna"
 msgid "Uninstalling existing addon version %Q"
 msgstr "Odinstalovává se existující rozšíření verze %Q"
 
-#: src/kvilib/net/kvi_ssl.cpp:583 src/kvilib/net/kvi_ssl.cpp:613
-#: src/kvilib/net/kvi_ssl.cpp:636 src/modules/upnp/rootservice.cpp:172
-#: src/kvirc/kernel/kvi_theme.cpp:86 src/kvirc/ui/kvi_topicw.cpp:149
+#: src/kvirc/ui/kvi_topicw.cpp:149 src/kvirc/kernel/kvi_theme.cpp:86
+#: src/modules/upnp/rootservice.cpp:172 src/kvilib/net/kvi_ssl.cpp:583
+#: src/kvilib/net/kvi_ssl.cpp:613 src/kvilib/net/kvi_ssl.cpp:636
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -8267,8 +6838,8 @@ msgstr "Neznámý příkaz"
 msgid "Unknown engine error"
 msgstr "Neznámá chyba enginu"
 
-#: src/kvilib/core/kvi_error.cpp:51
 #: src/modules/rijndael/libkvirijndael.cpp:173
+#: src/kvilib/core/kvi_error.cpp:51
 msgid "Unknown error"
 msgstr "Neznámá chyba"
 
@@ -8404,10 +6975,6 @@ msgstr "Aktualizace pryč stavu pro kanál %Q"
 msgid "Use Default Encoding"
 msgstr "Použít výchozí kódování"
 
-#: src/modules/reguser/edituser.cpp:433
-msgid "Use custom color in userlist"
-msgstr "Použít vlastní barvu v seznamu uživatelů"
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:182
 msgid "Use doubleclick to edit item"
 msgstr "Použijte dvojklik pro úpravy"
@@ -8424,13 +6991,6 @@ msgstr "Použít adresář nastavení z předchozí instalace"
 msgid "Use the crypt engine"
 msgstr "Použít šifrování"
 
-#: src/modules/reguser/libkvireguser.cpp:344
-#: src/modules/reguser/libkvireguser.cpp:458
-#: src/modules/reguser/libkvireguser.cpp:523
-#: src/modules/reguser/libkvireguser.cpp:703
-msgid "User %Q not found"
-msgstr "Uživatel %Q nenalezen"
-
 #: src/kvirc/ui/kvi_channel.cpp:154 src/kvirc/ui/kvi_channel.cpp:194
 msgid "User List"
 msgstr "Seznam uživatelů"
@@ -8444,17 +7004,9 @@ msgstr "Uživatelský mód"
 msgid "User Modes"
 msgstr "Uživatelský mód"
 
-#: src/modules/reguser/wizard.cpp:77
-msgid "User Registration Wizard - KVIrc"
-msgstr "Průvodce registrací uživatele - KVIrc"
-
 #: src/kvirc/kernel/kvi_options.cpp:729
 msgid "User action"
 msgstr "Uživatelské akce"
-
-#: src/modules/reguser/libkvireguser.cpp:208
-msgid "User already registered: found exact name match"
-msgstr "Uživatel je již registrován: nalezen shodný záznam"
 
 #: src/kvirc/ui/kvi_input.cpp:142
 msgid "User friendly commandline mode<br>See also /help commandline"
@@ -8463,10 +7015,6 @@ msgstr ""
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:594
 msgid "User mode for \r!n\r%Q\r is %s"
 msgstr "Uživatelský mód \r!n\r%Q\r je %s"
-
-#: src/modules/reguser/libkvireguser.cpp:274
-msgid "User not found (%Q)"
-msgstr "Uživatel nenalezen (%Q)"
 
 #: src/kvirc/kernel/kvi_options.cpp:822
 msgid "User-deop mode change"
@@ -8557,10 +7105,6 @@ msgstr "Použito uživatelské jméno pro tento server (%Q)"
 msgid "Valid name but the host has no IP address"
 msgstr "Platné jméno, ale hostitel nemá IP adresu"
 
-#: src/modules/reguser/edituser.cpp:91
-msgid "Value"
-msgstr "Hodnota"
-
 #: src/kvilib/core/kvi_error.cpp:160
 msgid "Variable expected"
 msgstr "Chybí proměnná"
@@ -8584,22 +7128,6 @@ msgstr "Velmi nízká aktivita"
 #: src/modules/url/libkviurl.cpp:822
 msgid "View URL list"
 msgstr "Zobrazit seznam URL"
-
-#: src/modules/actioneditor/actioneditor.cpp:113
-msgid ""
-"Visible name for this action.<br>This string will be displayed to the user "
-"so it is a good idea to use $tr() here"
-msgstr ""
-"Zobarený název pro tuto akci.<br>Tento řetězec bude zobrazen uživateli a "
-"proto je dobré použít funkci $tr()"
-
-#: src/modules/actioneditor/actioneditor.cpp:146
-msgid ""
-"Visible short description for this action.<br>This string will be displayed "
-"to the user so it is a good idea to use $tr() here"
-msgstr ""
-"Zobrazený krátký popis pro tuto akci.<br>Tento řetězec bude zobrazen "
-"uživateli, proto je dobré použít zde funkci $tr()"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:231
 msgid "Voiced users"
@@ -8627,9 +7155,9 @@ msgstr "Wallops (+w)"
 msgid "Wallops message"
 msgstr "Wallops zpráva"
 
-#: src/modules/mircimport/libkvimircimport.cpp:116
 #: src/modules/url/libkviurl.cpp:233 src/modules/url/libkviurl.cpp:312
 #: src/modules/url/libkviurl.cpp:497
+#: src/modules/mircimport/libkvimircimport.cpp:116
 msgid "Warning - KVIrc"
 msgstr "Upozornění - KVIrc"
 
@@ -8718,22 +7246,6 @@ msgstr "Okno s ID '%Q' nenalezeno"
 msgid "Window with id '%Q' not found, returning empty string"
 msgstr "Okno s id '%Q' nenalezeno, vrací prázdný řetězec"
 
-#: src/modules/editor/scripteditor.cpp:989
-msgid "Word to Find"
-msgstr "Hledané slovo"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-#: src/modules/actioneditor/actioneditor.cpp:717
-#: src/modules/eventeditor/eventeditor.cpp:454
-#: src/modules/eventeditor/eventeditor.cpp:492
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:469
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1136
-#: src/modules/popupeditor/popupeditor.cpp:1183
-msgid "Write Failed - KVIrc"
-msgstr "Zápis selhal - KVIrc"
-
 #: src/kvilib/file/kvi_packagefile.cpp:522
 msgid "Writing informational fields"
 msgstr "Zapisují se informační políčka"
@@ -8746,19 +7258,10 @@ msgstr "Zapisuji data balíčku"
 msgid "Writing package header"
 msgstr "Zapisuje se hlavička balíčku"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:386
-#: src/modules/toolbareditor/toolbareditor.cpp:409
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:786
 #: src/kvirc/ui/kvi_input.cpp:259 src/kvirc/ui/kvi_statusbar.cpp:570
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:786
 msgid "Yes"
 msgstr "Ano"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-msgid "Yes to All"
-msgstr "Ano všem"
 
 #: src/kvirc/ui/kvi_input.cpp:258
 msgid "Yes, always"
@@ -8838,14 +7341,6 @@ msgstr "Odešel jste z kanálu \r!c\r%Q\r: %Q"
 #, c-format
 msgid "You have set user mode %s"
 msgstr "Nastavil jste si uživatelský mód %s"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1110
-msgid "You must specify a valid name for the alias"
-msgstr "Musíte určit platné jméno pro alias"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1178
-msgid "You must specify a valid name for the namespace"
-msgstr "Musíte určit platné jméno pro jmenný prostor"
 
 #: src/kvirc/ui/kvi_input.cpp:252
 msgid ""
@@ -9185,11 +7680,6 @@ msgstr "připojení"
 msgid "d: Obscure 'DEBUG' flag"
 msgstr "d: Skrytý 'DEBUG' flag"
 
-#: src/modules/eventeditor/eventeditor.cpp:266
-#: src/modules/raweditor/raweditor.cpp:264
-msgid "default"
-msgstr "výchozí"
-
 #: src/kvirc/ui/kvi_imagedialog.cpp:271
 msgid "directory"
 msgstr "adresář"
@@ -9275,10 +7765,6 @@ msgstr "volání listen() selhalo"
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:282
 msgid "n: Recipient for nick changes"
 msgstr "n: Příjemce pro změny přezdívek"
-
-#: src/modules/eventeditor/eventeditor.cpp:390
-msgid "none"
-msgstr "žádný"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1584
 msgid "notification"
@@ -9368,12 +7854,6 @@ msgstr "neznámý"
 msgid "unmatched watch list entry"
 msgstr "neexistující záznam watch seznamu"
 
-#: src/modules/eventeditor/eventeditor.cpp:228
-#: src/modules/raweditor/raweditor.cpp:202
-#: src/modules/popupeditor/popupeditor.cpp:1280
-msgid "unnamed"
-msgstr "nepojmenovaný"
-
 #: src/kvirc/ui/kvi_channel.cpp:928
 msgid "user total"
 msgstr "uživatel celkem"
@@ -9431,6 +7911,35 @@ msgstr "y: Špión :)"
 msgid "z: Recipient for oper wallop messages"
 msgstr "z: Příjemce pro oper wallop zprávy"
 
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\tEvent:\n"
+#~ "\t\t%s\n"
+#~ "\n"
+#~ "\tParameters:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\tUdálost:\n"
+#~ "\t\t%s\n"
+#~ "\n"
+#~ "\tParametry:\n"
+#~ "%s"
+
+#~ msgid "    Mask: %Q!%Q@%Q"
+#~ msgstr "    Maska: %Q!%Q@%Q"
+
+#~ msgid "    No properties"
+#~ msgstr "    Bez vlastností"
+
+#~ msgid "    Property: %Q=%Q"
+#~ msgstr "    Vlastnost: %Q=%Q"
+
+#~ msgid "    Warning: this user has no registration masks"
+#~ msgstr "    Upozornění: tento uživatel nemá registrační masky"
+
 #~ msgid "   %s"
 #~ msgstr "   %s"
 
@@ -9443,6 +7952,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "   Parent command stack depth: %d frames"
 #~ msgstr "   Hloubka zásobníku zdrojového příkazu: %d rámců"
 
+#~ msgid "   Property: %s=%s"
+#~ msgstr "   Vlastnost: %s=%s"
+
 #~ msgid " I can't find the specified file %s."
 #~ msgstr " Nelze nalézt zadaný soubor %s."
 
@@ -9454,6 +7966,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid " I cannot read the file."
 #~ msgstr " Nelze číst tento soubor."
+
+#~ msgid " User: %c%Q"
+#~ msgstr " Uživatel: %c%Q"
 
 #~ msgid " lines"
 #~ msgstr " řádků"
@@ -9481,6 +7996,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "\"any\""
 #~ msgstr "\"libovolný\""
+
+#~ msgid "### Epilogue ###"
+#~ msgstr "### Závěr ###"
+
+#~ msgid "### Prologue ###"
+#~ msgstr "### Úvod ###"
 
 #~ msgid "$begin() function MUST take 1 parmeter."
 #~ msgstr "$begin() funkce MUSÍ brát 1 parametr."
@@ -9539,6 +8060,15 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "%s plays '%s' to %s"
 #~ msgstr "%s přehrává '%s' uživateli %s"
 
+#~ msgid "&Add Group..."
+#~ msgstr "&Přidat Skupinu..."
+
+#~ msgid "&Add Raw Event..."
+#~ msgstr "&Přidat Raw událost..."
+
+#~ msgid "&Add..."
+#~ msgstr "&Přidat..."
+
 #~ msgid "&Administrator"
 #~ msgstr "&Administrátor"
 
@@ -9563,8 +8093,35 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "&Deowner"
 #~ msgstr "&Nevlastník"
 
+#~ msgid "&Disable Handler"
+#~ msgstr "&Zakázat handler"
+
 #~ msgid "&Don't apply any theme"
 #~ msgstr "&Nepoužít žádné téma"
+
+#~ msgid "&Edit"
+#~ msgstr "&Upravit"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Upravit..."
+
+#~ msgid "&Enable Handler"
+#~ msgstr "&Povolit handler"
+
+#~ msgid "&Execute"
+#~ msgstr "&Spustit"
+
+#~ msgid "&Export All To..."
+#~ msgstr "&Exportovat vše jako..."
+
+#~ msgid "&Export Handler To..."
+#~ msgstr "&Exportovat handler do..."
+
+#~ msgid "&Export Popup To..."
+#~ msgstr "&Exportovat Popup do..."
+
+#~ msgid "&Export selected To..."
+#~ msgstr "&Exportovat vybrané do..."
 
 #~ msgid "&Fancy Theme"
 #~ msgstr "&Fancy téma"
@@ -9599,8 +8156,17 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "&Minimalist Theme"
 #~ msgstr "&Minimalistické téma"
 
+#~ msgid "&New"
+#~ msgstr "&Nový"
+
 #~ msgid "&New Alias"
 #~ msgstr "&Nový Alias"
+
+#~ msgid "&New Handler"
+#~ msgstr "&Nový handler"
+
+#~ msgid "&New Popup"
+#~ msgstr "&Nový Popup"
 
 #~ msgid "&New Proxy"
 #~ msgstr "&Nová Proxy"
@@ -9614,6 +8180,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "&Part"
 #~ msgstr "&Odejít"
 
+#~ msgid "&Paste Below"
+#~ msgstr "&Vložit dolů"
+
 #~ msgid "&Paste Server"
 #~ msgstr "&Vložit server"
 
@@ -9622,6 +8191,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "&Registration"
 #~ msgstr "&Registrace"
+
+#~ msgid "&Replace in all Aliases"
+#~ msgstr "&Nahradit ve všech aliasech"
 
 #~ msgid "&Replace(WIP)"
 #~ msgstr "&Nahradit(WIP)"
@@ -9704,6 +8276,40 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "<b>mailto:</b> handler command:"
 #~ msgstr "<b>mailto:</b> handler příkaz:"
 
+#~ msgid ""
+#~ "<center><b>Boolean condition</b><br>Will be evaluated at popup call time "
+#~ "in order to decide if this entry has to be shown.<br>An empty condition "
+#~ "evaluates to true.</center>"
+#~ msgstr ""
+#~ "<center><b>Booleovská podmínka</b><br>Bude vyhodnocena v době volání "
+#~ "popup v pořadí jakém je tento záznam zobrazen.<br>Prázdná podmínka je "
+#~ "vyhodnocena jako true.</center>"
+
+#~ msgid ""
+#~ "<center><b>External menu name</b><br>This allows to nest externally "
+#~ "defined popup menus. The popup menu with the specified name will be "
+#~ "looked up at menu setup time.</center>"
+#~ msgstr ""
+#~ "<center><b>Název externího menu</b><br>Toto umožňuje vkládat externě "
+#~ "definované popup menu. Popup menu se specifickým jménem bude hledáno při "
+#~ "nastavování menu.</center>"
+
+#~ msgid ""
+#~ "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
+#~ "path or a relative path.<br>Portable scripts should never use absolute "
+#~ "paths.</center>"
+#~ msgstr ""
+#~ "<center><b>Identifikátor ikony</b><br>Může být ID interní ikony, "
+#~ "absolutní, nebo relativní cesta.<br>Přenosné skripty by neměly nikdy "
+#~ "používat absolutní cesty.</center>"
+
+#~ msgid ""
+#~ "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
+#~ "center>"
+#~ msgstr ""
+#~ "<center><b>Položka id</b><br>To vám umožní používat delpopupitem později."
+#~ "</center>"
+
 #, fuzzy
 #~ msgid ""
 #~ "<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client "
@@ -9715,6 +8321,15 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "center><br><br><p><b>Client-To-Client Protocol</b> (CTCP) slouží pro "
 #~ "přenos speciálních řídících zpráv přes IRC spojení. Tyto zprávy mohou "
 #~ "požadovat informace od klientů nebo vyjednat přenosy souborů.</p>"
+
+#~ msgid ""
+#~ "<center><b>Visible text</b><br>May contain identifiers that will be "
+#~ "evaluated at popup call time.<br>For labels, this text can contain also "
+#~ "limited HTML tags.</center>"
+#~ msgstr ""
+#~ "<center><b>Viditelný text</b><br>Může obsahovat identifikátory, které "
+#~ "budou provedeny při zavolání popup.<br>Pro návěstí může také obsahovat i "
+#~ "limitované HTML tagy.</center>"
 
 #~ msgid "<center>Click here to edit advanced options for this entry</center>"
 #~ msgstr ""
@@ -10308,6 +8923,20 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "seznamu lze přidávat a odebírat proxy servery.</center>"
 
 #~ msgid ""
+#~ "<center>This is the list of registered users. KVIrc can automatically "
+#~ "recognize and associate properties to them.<br>Use the buttons on the "
+#~ "right to add, edit and remove entries. The \"notify\" column allows you "
+#~ "to quickly add users to the notify list. Notify list fine-tuning can be "
+#~ "performed by editing the entry properties.</center>"
+#~ msgstr ""
+#~ "<center>Toto je seznam registrovaných uživatelů. KVIrc k nim umí "
+#~ "automaticky rozpoznávat a přiřazovat vlastnosti.<br>Použijte tlačítka "
+#~ "vpravo pro přidání, úpravu, nebo vymazání záznamů. Kolonka \"oznámit\" "
+#~ "umožňuje rychle přidat uživatele do oznamovacího seznamu. Vylepšení "
+#~ "oznamovacího seznamu může být provedeno pomocí editování možností položky."
+#~ "</center>"
+
+#~ msgid ""
 #~ "<center>This is the maximum number of concurrent DCC sessions and it "
 #~ "includes all the DCC types (send,chat,recv...). KVIrc will refuse the "
 #~ "requests when this limit is reached.</center>"
@@ -10685,6 +9314,27 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "sem můžete umístit jméno skriptu.</center>"
 
 #~ msgid ""
+#~ "<center>This the <b>hostname</b> that will match this user. <b>*</b> will "
+#~ "match any hostname.</center>"
+#~ msgstr ""
+#~ "<center>Toto je <b>název hostitele</b>, který bude přiřazen k uživateli. "
+#~ "<b>*</b> znamená jakéhokoliv hostitele.</center>"
+
+#~ msgid ""
+#~ "<center>This the <b>nickname</b> that will match this user, default value "
+#~ "is the registered name.</center>"
+#~ msgstr ""
+#~ "<center>Toto je <b>přezdívka</b>, která je přiřazena k uživateli, výchozí "
+#~ "hodnota je zaregistrované jméno.</center>"
+
+#~ msgid ""
+#~ "<center>This the <b>username</b> that will match this user. <b>*</b> will "
+#~ "match any username.</center>"
+#~ msgstr ""
+#~ "<center>Toto je <b>uživatelské jméno</b>, které je přiřazeno k uživateli. "
+#~ "<b>*</b> znamená jakékoliv uživatelské jméno.</center>"
+
+#~ msgid ""
 #~ "<center>Use a user's last known avatar by default (only for users that "
 #~ "are registered).</center>"
 #~ msgstr ""
@@ -10717,6 +9367,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "<br>Tato metoda je exkluzivní alternativa k \"fixní adrese\" nahoře."
 #~ "<br>To znamená úpravu adresy automaticky pokud jsou splněny určité "
 #~ "podmínky (např. IRC server neumí maskovat hostitele).</center>"
+
+#~ msgid "<center>You can enter a space separated list of nicknames.</center>"
+#~ msgstr "<center>Můžete zadat seznam přezdívek oddělený mezerami.</center>"
 
 #~ msgid ""
 #~ "<center>You can specify a \"special\" <b>nickname</b> that will be used "
@@ -10818,6 +9471,24 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "pro nakonfigurování KVIrc.</p><p>Prosím klikněte na tlačítko "
 #~ "\"<b>Dokončit</b>\" pro uložení vašich nastavení a spuštění KVIrc.</p>"
 
+#~ msgid ""
+#~ "<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
+#~ "mask must be in the following form:<br><b>nickname!username@hostname</"
+#~ "b><br>and can contain wildcard characters '*' and '?'. Be careful in "
+#~ "choosing the masks, as they are the only way to verify the identity of a "
+#~ "registered user.<br><br>You can enter at most two masks here, if you wish "
+#~ "to add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
+#~ "dialog. You must enter at least one mask.</p>"
+#~ msgstr ""
+#~ "<p>Registrovaný uživatel je identifikován jednou, nebo více <b>IRC "
+#~ "maskami</b>.<br>Maska musí být v následujícím formátu:<br><b>přezdívka!"
+#~ "uživatelskéjméno@hostitel</b><br>a může obsahovat zástupné znaky jako '*' "
+#~ "a '?'. Buďte opatrní ve výběru masky, protože je to jediná cesta, jak "
+#~ "identifikovat registrovaného uživatele.<br><br>Můžete zde napsat nejvýše "
+#~ "2 masky. Pokud si jich přejete zadat více, použijte tlačítko "
+#~ "\"<b>Upravit</b>\" v dialogu Registrovaní Uživatelé. Musíte vložit "
+#~ "nejméně jednu masku.</p>"
+
 #~ msgid "<p>Author: %1</p>"
 #~ msgstr "<p>Autor: %1</p>"
 
@@ -10841,6 +9512,34 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "uvedený motiv, aby bylo zachováno vaše původní vizuální nastavení."
 #~ "<br><br>Pokud nevíte co vybrat, vyberte výchozí.</p>"
 
+#~ msgid ""
+#~ "<p>If you want to be notified when this user is online or goes offline, "
+#~ "you must specify the list of nicknames that KVIrc will look for."
+#~ "<br><br>You can enter at most two nicknames here, if you wish to add more "
+#~ "nicknames, use the \"<b>Edit</b>\" button in the Registered Users dialog."
+#~ "</p>"
+#~ msgstr ""
+#~ "<p>Pokud chcete být upozorněni, když se uživatel připojí, nebo odpojí, "
+#~ "musíte zadat seznam přezdívek, které bude KVIrc kontrolovat."
+#~ "<br><br>Můžete zde zadat nejvíce dvě přezdívky. Pokud si přejete zadat "
+#~ "více přezdívek, použijte tlačítko \"<b>Upravit</b>\" v dialogu "
+#~ "Registrovaní Uživatelé.</p>"
+
+#~ msgid ""
+#~ "<p>If you want to store an avatar image for this user, you can set it "
+#~ "here. KVIrc will show the avatar in the userlist next to the user's "
+#~ "nickname.<br>An avatar can be in any supported image format (PNG is "
+#~ "recommended). Keep in mind that KVIrc stores avatars in memory and has to "
+#~ "resize them to fit in the userlist, thus it's better to use small, low-"
+#~ "resolution images.</p>"
+#~ msgstr ""
+#~ "<p>Pokud chcete uložit avatar pro tohoto uživatele, můžete to nastavit "
+#~ "tady. KVIrc může zobrazit avatar v seznamu uživatelů u přezdívky "
+#~ "uživatele.<br>Avatar může být v jakémkoliv podporovaném formátu obrázku "
+#~ "(PNG je doporučeno). Nezapomínejte, že KVIrc ukládá avatary do paměti a "
+#~ "teprve pak je upravuje, aby pasovaly do seznamu uživatelů, takže je lepší "
+#~ "používat menší obrázky s nízkým rozlišením.</p>"
+
 #~ msgid "<p>If you're unsure just say \"Yes\"</p>"
 #~ msgstr "<p>Pokud nevíte, tak zvolte \"Ano\"</p>"
 
@@ -10859,6 +9558,13 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "<p>Instalátor nyní může nastavit KVIrc jako výchozí aplikaci pro irc:// a "
 #~ "irc6:// url.</p><p>Chcete použít toto nastavení?</p>"
 
+#~ msgid ""
+#~ "<p>That's it. The user registration has been completed.<br><br>Click "
+#~ "\"<b>Finish</b>\" to close this dialog.</p>"
+#~ msgstr ""
+#~ "<p>To je ono. Registrace uživatele byla dokončena.<br><br>Klikněte na "
+#~ "\"<b>Dokončit<b>\" pro zavření tohoto dialogu.</p>"
+
 #~ msgid "<p>The active theme settings</p>"
 #~ msgstr "<p>Nastavení aktivního téma</p>"
 
@@ -10867,6 +9573,29 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "<p>Version: %1</p>"
 #~ msgstr "<p>Verze: %1</p>"
+
+#~ msgid ""
+#~ "<p>Welcome to the user registration wizard.<br>This process allows you to "
+#~ "add an IRC user to the database and set properties for that user. KVIrc "
+#~ "will be (hopefully) able to recognize the user, add him to the notify "
+#~ "list, and display the associated avatar.<br><br>First of all, you must "
+#~ "insert an <b>entry name or real name</b> for the user you're going to "
+#~ "register. The name will be used to identify the database entry and has no "
+#~ "specific requirements, it can be a given name, nickname, or just some "
+#~ "text to remind you of the real person.<br>Examples: \"George W Bush\", "
+#~ "\"Dubya\".\n"
+#~ "</p>"
+#~ msgstr ""
+#~ "<p>Vítejte v průvodci pro registraci.<br>Tento průvodce vám umožní přidat "
+#~ "IRC uživatele, přidat ho do databáze a nastavit možnosti. KVIrc bude "
+#~ "(doufejme) schopno rozpoznat uživatele, přidat ho do seznamu oznamování a "
+#~ "zobrazit přiřazeného avatara.<br><br>Nejdříve ze všeho musíte vepsat "
+#~ "<b>jméno záznamu, nebo skutečné jméno</b> uživatele, kterého se chystáte "
+#~ "registrovat. Jméno, které bude identifikovat záznam v databázi, nemá "
+#~ "žádné speciální požadavky. Může to být jméno, přezdívka, nebo to může být "
+#~ "text připomínající vaši skutečnou osobu.<br>Například: \"George W Bush\", "
+#~ "\"Dubya\".\n"
+#~ "</p>"
 
 #~ msgid ""
 #~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
@@ -10938,6 +9667,15 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Accept broken RESUME (mIRC file.ext)"
 #~ msgstr "Přijímat poškozené RESUME (mIRC soubor.ext)"
 
+#~ msgid "Action"
+#~ msgstr "Akce"
+
+#~ msgid "Action Editor"
+#~ msgstr "Editor akcí"
+
+#~ msgid "Action code"
+#~ msgstr "Kód Akce"
+
 #~ msgid "Active Background"
 #~ msgstr "Aktivní pozadí"
 
@@ -10953,14 +9691,33 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Active Text (Secondary)"
 #~ msgstr "Aktivní text (Sekundární)"
 
+#~ msgid "Add (Wizard)..."
+#~ msgstr "Přidat (Průvodce)..."
+
+#~ msgid "Add Alias"
+#~ msgstr "Přidat Alias"
+
+#~ msgid "Add Namespace"
+#~ msgstr "Přidat jmenný prostor"
+
 #~ msgid "Add Rule"
 #~ msgstr "Přidat pravidlo"
+
+#~ msgid "Add a registered user by means of a user-friendly wizard."
+#~ msgstr ""
+#~ "Přidá registrovaného uživatele pomocí uživatelsky přívětivého průvodce."
+
+#~ msgid "Add this user to the notify list"
+#~ msgstr "Přidat tohoto uživatele do seznamu oznamování"
 
 #~ msgid "Add to Notify"
 #~ msgstr "Přidat k Oznamování"
 
 #~ msgid "Added %d secs file offer for file %s (%s) and receiver %s"
 #~ msgstr "Přidána %d sek nabídka pro soubor %s (%s) a příjemce %s"
+
+#~ msgid "Adds a new group"
+#~ msgstr "Přidá novou skupinu"
 
 #~ msgid "Advanced"
 #~ msgstr "Pokročilé"
@@ -10994,6 +9751,29 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Alert/Highlight"
 #~ msgstr "Výstrahy/Zvýraznění"
+
+#~ msgid "Alias"
+#~ msgstr "Alias"
+
+#~ msgid "Alias Editor"
+#~ msgstr "Editor aliasů"
+
+#~ msgid "Alias Export"
+#~ msgstr "Export aliasu"
+
+#~ msgid "Alias already exists"
+#~ msgstr "Alias již existuje"
+
+#, fuzzy
+#~ msgid ""
+#~ "Alias names can contain only letters, digits, underscores and '::' "
+#~ "namespace separators"
+#~ msgstr ""
+#~ "Jmenné prostory mohou obsahovat pouze písmena, číslice, podtržítka a '::' "
+#~ "oddělovače jmenného prostoru"
+
+#~ msgid "All Properties..."
+#~ msgstr "Všechny vlastnosti..."
 
 #~ msgid "Allow up to:"
 #~ msgstr "Bude li více než:"
@@ -11029,6 +9809,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Append to VERSION reply:"
 #~ msgstr "Připojit k VERSION odezvě:"
 
+#~ msgid "Apply"
+#~ msgstr "Použít"
+
 #~ msgid "Argument length is 0 - empty string"
 #~ msgstr "Délka argumentu je 0 - prázdný řetězec"
 
@@ -11053,6 +9836,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Auto-detect"
 #~ msgstr "Autodetekce"
 
+#~ msgid "Automatically"
+#~ msgstr "Automaticky"
+
 #~ msgid "Automatically Log"
 #~ msgstr "Automaticky logovat"
 
@@ -11076,6 +9862,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Automatically unload unused modules"
 #~ msgstr "Automaticky mazat z paměti nepoužité moduly"
+
+#~ msgid "Avatar"
+#~ msgstr "Avatar"
 
 #~ msgid "Avatar Download - KVIrc"
 #~ msgstr "Stažení Avataru - KVIrc"
@@ -11129,11 +9918,20 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Backward compatibility action for toolbar.define"
 #~ msgstr "Zpětná kompatibilita akcí pro toolbar.define"
 
+#~ msgid "Bad Alias Name"
+#~ msgstr "Špatné jméno aliasu"
+
+#~ msgid "Bad Namespace Name"
+#~ msgstr "Špatné jméno jmenného prostoru"
+
 #~ msgid "Ban"
 #~ msgstr "Ban"
 
 #~ msgid "Basic Properties"
 #~ msgstr "Základní vlastnosti"
+
+#~ msgid "Big Icon:"
+#~ msgstr "Velká ikona:"
 
 #~ msgid "Bind IPv4 connections to:"
 #~ msgstr "Vázat IPv4 spojení k:"
@@ -11226,6 +10024,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Can't delete an inexisting object"
 #~ msgstr "Nelze smazat neexistující objekt"
+
+#~ msgid "Can't export the registered users database: Write error."
+#~ msgstr "Nelze exportovat databázi registrovaných uživatelů: Chyba zápisu."
 
 #~ msgid "Can't fill non-widget object"
 #~ msgstr "Nelze zaplnit ne-widget objekt"
@@ -11320,11 +10121,20 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Can't find the window with id '%s'"
 #~ msgstr "Nelze nalézt okno s id '%s'"
 
+#~ msgid "Can't import the registered users database: Read error."
+#~ msgstr "Nelze importovat databázi registrovaných uživatelů: Chyba čtení."
+
 #~ msgid "Can't kill the timer '%Q' since it is not running"
 #~ msgstr "Nelze zabít časovač '%Q', dokud neběží"
 
 #~ msgid "Can't log to file %s"
 #~ msgstr "Nelze logovat do souboru %s"
+
+#~ msgid "Can't open file %Q for writing."
+#~ msgstr "Nelze otevřít soubor %Q pro zápis."
+
+#~ msgid "Can't open file %s for reading."
+#~ msgstr "Nelze otevřít soubor %s pro čtení."
 
 #~ msgid "Can't open the file \"%s\" for reading"
 #~ msgstr "Nelze otevřít soubor \"%s\" pro čtení"
@@ -11403,6 +10213,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Cannot open install.kvs for writing."
 #~ msgstr "Nelze otevřít soubor %s pro zápis."
 
+#~ msgid "Category:"
+#~ msgstr "Kategorie:"
+
 #~ msgid "Certificate"
 #~ msgstr "Certifikát"
 
@@ -11436,6 +10249,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Channel windows"
 #~ msgstr "Okna kanálů"
 
+#~ msgid "Channel: %c%s@%s"
+#~ msgstr "Kanál: %c%s@%s"
+
 #~ msgid "Channels"
 #~ msgstr "Kanály"
 
@@ -11454,6 +10270,63 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Check interval (in seconds)"
 #~ msgstr "Interval kontrol (v sekundách)"
 
+#~ msgid ""
+#~ "Check this option if this action should be enabled also during the login "
+#~ "operations (so when the logical IRC connection hasn't been estabilished "
+#~ "yet)"
+#~ msgstr ""
+#~ "Zakrtněte tuto volbu, pokud má být tato akce povolena, také během "
+#~ "přihlašovacích operací (dokud není navázáno IRC spojení)"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window belongs to an irc context"
+#~ msgstr ""
+#~ "Zakrtněte tuto volbu, pokud má být tato akce povolena, když aktivní okno "
+#~ "patří do irc kontextu"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window has an active IRC connection"
+#~ msgstr ""
+#~ "Zakrtněte tuto volbu, pokud má být tato akce povolena, když má aktivní "
+#~ "okno aktivní IRC spojení"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is a channel"
+#~ msgstr ""
+#~ "Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní "
+#~ "okno kanál"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is a console"
+#~ msgstr ""
+#~ "Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní "
+#~ "okno konzole"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is a dcc chat"
+#~ msgstr ""
+#~ "Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní "
+#~ "okno dcc chat"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is a query"
+#~ msgstr ""
+#~ "Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní "
+#~ "okno query"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is of a specified type"
+#~ msgstr ""
+#~ "Zakrtněte tuto volbu, pokud má být tato akce povolena, když je aktivní "
+#~ "okno zvoleného typu"
+
 #~ msgid "Child window opacity:"
 #~ msgstr "Neprůsvitnost podřízeného okna:"
 
@@ -11466,6 +10339,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Choose Log Filename"
 #~ msgstr "Vyberte soubor logu"
 
+#~ msgid "Choose a Filename - KVIrc"
+#~ msgstr "Vyberte název souboru - KVIrc"
+
 #~ msgid "Choose a Filename - KVIrc "
 #~ msgstr "Vyberte název souboru - KVIrc "
 
@@ -11477,6 +10353,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Choose from built-in server list"
 #~ msgstr "Vyberte si z vestavěného seznamu serverů"
+
+#~ msgid "Choose the category that best fits for this action"
+#~ msgstr "Vyberte kategorii, do které nejlépe spadá tato akce"
 
 #~ msgid "Choose..."
 #~ msgstr "Vyberte..."
@@ -11508,14 +10387,35 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Close this dialog, discarding all changes."
 #~ msgstr "Zavře tento dialog, bez provedení změn."
 
+#~ msgid "Code"
+#~ msgstr "Kód"
+
+#~ msgid "Collapse All Namespaces"
+#~ msgstr "Sbalit všechny jmenné prostory"
+
+#~ msgid "Colors"
+#~ msgstr "Barvy"
+
+#~ msgid "Comment:"
+#~ msgstr "Komentář:"
+
+#~ msgid "Comment: "
+#~ msgstr "Komentář:"
+
 #~ msgid "Commit all changes immediately."
 #~ msgstr "Provede všechny změny okamžitě."
+
+#~ msgid "Condition:"
+#~ msgstr "Podmínka:"
 
 #~ msgid "Config file:"
 #~ msgstr "Konfigurační soubor:"
 
 #~ msgid "Configure ban mask..."
 #~ msgstr "Konfigurovat masku banu..."
+
+#~ msgid "Confirm ToolBar Deletion"
+#~ msgstr "Potvrďte smazání lišty"
 
 #~ msgid "Confirm quit with active connections"
 #~ msgstr "Potvrzovat ukončení při aktivním spojení"
@@ -11583,6 +10483,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Custom nickname:"
 #~ msgstr "Vlastní přezdívka:"
 
+#~ msgid "Customize Toolbars"
+#~ msgstr "Upravit nástrojové lišty"
+
 #~ msgid "D&evoice"
 #~ msgstr "D&evoice"
 
@@ -11638,8 +10541,17 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Delay between attempts:"
 #~ msgstr "Prodleva mezi pokusy:"
 
+#~ msgid "Delete Actions"
+#~ msgstr "Smazat Akce"
+
 #~ msgid "Delete Rule"
 #~ msgstr "Smazat pravidlo"
+
+#~ msgid "Delete ToolBar"
+#~ msgstr "Smazat nástrojovou lištu"
+
+#~ msgid "Description:"
+#~ msgstr "Popis:"
 
 #~ msgid "Destination  parameter is not an object"
 #~ msgstr "Cílový parametr není objekt"
@@ -11683,6 +10595,18 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Do not update the away list"
 #~ msgstr "Neaktualizovat pryč seznam"
 
+#~ msgid "Do you really want to delete toolbar \"%1\" ?"
+#~ msgstr "Opravdu chcete smazat nástrojovou lištu \"%1\" ?"
+
+#~ msgid "Do you really want to remove the alias \"%Q\" ?"
+#~ msgstr "Opravdu chcete smazat alias \"%Q\" ?"
+
+#~ msgid "Do you really want to remove the namespace \"%Q\" ?"
+#~ msgstr "Opravdu chcete smazat jmenný prostor \"%Q\" ?"
+
+#~ msgid "Do you want the associated actions to be exported with the toolbar ?"
+#~ msgstr "Chcete asociované akce exportovat s nástrojovou lištou?"
+
 #~ msgid "Doesn't a popupmenu object"
 #~ msgstr "Není popupmenu objekt"
 
@@ -11707,6 +10631,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Draw some emoticons (smileys) as pictures"
 #~ msgstr "Kreslit některé emotikony (smajlíky) jako obrázky"
 
+#~ msgid "Drop here the icons from the toolbars to remove them"
+#~ msgstr "Přetáhnutím ikon z nástrojové lišty sem je odstraníte"
+
+#~ msgid "Duplicate ToolBar Id"
+#~ msgstr "Duplicitní Id lišty"
+
 #~ msgid "Echo channel topic"
 #~ msgstr "Vypsat téma kanálu"
 
@@ -11715,6 +10645,21 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Edit Rule"
 #~ msgstr "Upravit pravidlo"
+
+#~ msgid "Edit ToolBar"
+#~ msgstr "Upravit nástrojovou lištu"
+
+#~ msgid "Edit the alias or namespace name"
+#~ msgstr "Upravit jméno aliasu nebo jmenného prostoru"
+
+#~ msgid "Edit the event handler name."
+#~ msgstr "Upravit název handleru události."
+
+#~ msgid "Edit the first selected entry."
+#~ msgstr "Upravit první vybraný záznam."
+
+#~ msgid "Edit the raw event handler name."
+#~ msgstr "Upravit název handleru raw události."
 
 #~ msgid "Empty command block for timer '%s', timer not started"
 #~ msgstr "Prázdný příkazový blok pro časovač '%s', časovač nespuštěn"
@@ -11751,14 +10696,35 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Enable NickServ Identification"
 #~ msgstr "Povolit identifikaci NickServ"
 
+#~ msgid "Enable Only in Specified Windows"
+#~ msgstr "Povolit pouze v určených oknech"
+
 #~ msgid "Enable URL highlighting"
 #~ msgstr "Povolit zvýrazňování URL"
+
+#~ msgid "Enable at Login"
+#~ msgstr "Povolit při přihlášení"
 
 #~ msgid "Enable fake transparency"
 #~ msgstr "Povolit falešnou průhlednost"
 
 #~ msgid "Enable ident service (bad practice on UNIX!)"
 #~ msgstr "Povolit ident službu (špatné na UNIXu!)"
+
+#~ msgid "Enable ignore for this user"
+#~ msgstr "Povolit ignorování pro tohoto uživatele"
+
+#~ msgid "Enable in Channel Windows"
+#~ msgstr "Povolit v Oknech kanálů"
+
+#~ msgid "Enable in Console Windows"
+#~ msgstr "Povolit v okně Konzole"
+
+#~ msgid "Enable in DCC Chat Windows"
+#~ msgstr "Povolit v DCC Chat oknech"
+
+#~ msgid "Enable in Query Windows"
+#~ msgstr "Povolit v Query oknech"
 
 #~ msgid "Enable lag meter"
 #~ msgstr "Povolit měření lagu"
@@ -11797,6 +10763,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Enter a kick/ban reason"
 #~ msgstr "Zadejte kick/ban důvod"
 
+#~ msgid "Enter the numeric code of the message (0-999)"
+#~ msgstr "Zadejte číselný kód zprávy (0-999)"
+
+#~ msgid "Epilogue"
+#~ msgstr "Závěr"
+
 #~ msgid "Error in KVS class implementation: processing aborted"
 #~ msgstr "Chyba v implementaci třídy KVS: zpracování přerušeno"
 
@@ -11834,6 +10806,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Error:not enough parameters!"
 #~ msgstr "Chyba: nedostatek parametrů!"
 
+#~ msgid "Event"
+#~ msgstr "Akce"
+
+#~ msgid "Event Editor"
+#~ msgstr "Editor událostí"
+
 #~ msgid "Event handler %Q is broken: disabling"
 #~ msgstr "Handler události %Q je poškozen: zakazuji jej"
 
@@ -11843,8 +10821,42 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Experienced user"
 #~ msgstr "Zkušený uživatel"
 
+#~ msgid "Export Actions..."
+#~ msgstr "Exportovat Akce..."
+
+#~ msgid "Export All..."
+#~ msgstr "Exportovat vše..."
+
+#~ msgid "Export Selected in singles files..."
+#~ msgstr "Exportovat vybrané v samostatných souborech..."
+
+#~ msgid "Export Selected..."
+#~ msgstr "Exportovat vybrané..."
+
+#~ msgid "Export To..."
+#~ msgstr "Exportovat do..."
+
+#~ msgid "Export ToolBar"
+#~ msgstr "Exportovat nástrojovou lištu"
+
+#~ msgid ""
+#~ "Export the selected entries to a file.<br>All the data associated with "
+#~ "the selected registered users will be exported.<br>You (or anyone else) "
+#~ "can later import the entries by using the \"Import\" button."
+#~ msgstr ""
+#~ "Exportuje vybrané položky do souboru.<br>Všechna data asociovaná s "
+#~ "vybranými registrovanými uživateli budou exportována.<br>Později můžete "
+#~ "(vy, nebo kdokoliv jiný) importovat záznamy pomocí tlačítka \"Importovat"
+#~ "\"."
+
 #~ msgid "External CTCP replies"
 #~ msgstr "Vnější CTCP odezvy"
+
+#~ msgid "External Menu"
+#~ msgstr "Externí Menu"
+
+#~ msgid "External menu:"
+#~ msgstr "Externí menu:"
 
 #~ msgid "External messages"
 #~ msgstr "Vnější zprávy"
@@ -11949,8 +10961,21 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "File pattern:"
 #~ msgstr "Vzorek souboru:"
 
+#, fuzzy
+#~ msgid "Find & Replace"
+#~ msgstr "Najít & Nahradit"
+
+#~ msgid "Find In Aliases"
+#~ msgstr "Hledat v aliasech"
+
+#~ msgid "Find In Aliases..."
+#~ msgstr "Hledat v aliasech..."
+
 #~ msgid "Finish Setup"
 #~ msgstr "Dokončit instalaci"
+
+#~ msgid "Flags"
+#~ msgstr "Flagy"
 
 #~ msgid "Flash system taskbar on new query message"
 #~ msgstr "Blikající systémová lišta při nové query zprávě"
@@ -12000,6 +11025,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgstr ""
 #~ "Nalezeno návěstí 'break' na místě, kde jsou 'case','match','regexp' nebo "
 #~ "'default' návěstí očekávána"
+
+#~ msgid "Found an empty namespace in alias name"
+#~ msgstr "Nalezen prázdný jmenný prostor v názvu aliasu"
+
+#~ msgid "Found an empty namespace in namespace name"
+#~ msgstr "Nalezen prázdný jmenný prostor v názvu jmenného prostoru"
 
 #~ msgid ""
 #~ "Found char %q (unicode %x) while looking for the terminating ')' in 'for' "
@@ -12122,6 +11153,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Grid type:"
 #~ msgstr "Typ mřížky:"
 
+#~ msgid "Group name:"
+#~ msgstr "Název skupiny:"
+
 #~ msgid "Guess address from IRC server if unroutable"
 #~ msgstr "Zjistit adresu z IRC serveru, když je neroutovatelná"
 
@@ -12152,6 +11186,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Hey ! You wanna know my echo mode or what ?"
 #~ msgstr "Hej ! Chceš znát můj echo mód nebo co ?"
+
+#~ msgid "Hide Advanced"
+#~ msgstr "Schovat pokročilé"
 
 #, fuzzy
 #~ msgid "Hide avatars in userlist"
@@ -12200,6 +11237,15 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "ISON delay (in seconds)"
 #~ msgstr "ISON prodleva (v sekundách)"
 
+#~ msgid "Icon"
+#~ msgstr "Ikona"
+
+#~ msgid "Icon:"
+#~ msgstr "Ikona:"
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
 #~ msgid "Id:"
 #~ msgstr "Id:"
 
@@ -12221,18 +11267,42 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Ig&nore"
 #~ msgstr "Ig&norování"
 
+#~ msgid "Ignore"
+#~ msgstr "Ignorování"
+
+#~ msgid "Ignore DCCs"
+#~ msgstr "Ignorovat DCC"
+
 #~ msgid "Ignore as"
 #~ msgstr "Ignorovat jako"
 
 #~ msgid "Ignore as..."
 #~ msgstr "Ignorovat jako..."
 
+#~ msgid "Ignore channel-messages"
+#~ msgstr "Ignorovat kanálové zprávy"
+
+#~ msgid "Ignore ctcp-messages"
+#~ msgstr "Ignorovat ctcp zprávy"
+
 #, fuzzy
 #~ msgid "Ignore everything"
 #~ msgstr "Ignorované požadavky"
 
+#~ msgid "Ignore features"
+#~ msgstr "Ignorovat vlastnosti"
+
+#~ msgid "Ignore invites"
+#~ msgstr "Ignorovat pozvání"
+
 #~ msgid "Ignore module versions (dangerous)"
 #~ msgstr "Ignorovat verze modulů (nebezpečné)"
+
+#~ msgid "Ignore notice-messages"
+#~ msgstr "Ingorovat oznámení"
+
+#~ msgid "Ignore query-messages"
+#~ msgstr "Ingorovat soukromé zprávy"
 
 #~ msgid "Ignore requests if no avatar is set"
 #~ msgstr "Ignorovat požadavky pokud není avatar nastaven"
@@ -12258,8 +11328,18 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Image width:"
 #~ msgstr "Šířka obrázku:"
 
+#~ msgid "Import From..."
+#~ msgstr "Importovat z..."
+
 #~ msgid "Import List"
 #~ msgstr "Importovat seznam"
+
+#~ msgid ""
+#~ "Import entries from a file exported earlier by the \"export\" function of "
+#~ "this dialog."
+#~ msgstr ""
+#~ "Importuje záznamy ze souboru exportovaného pomocí funkce \"export\" v "
+#~ "tomto dialogu."
 
 #~ msgid "Inactive Background"
 #~ msgstr "Neaktivní pozadí"
@@ -12298,6 +11378,13 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Input buffer: %d bytes"
 #~ msgstr "Vstupní buffer: %d bajtů"
 
+#~ msgid ""
+#~ "Insert a mask for this user.<br>It can contain the wildcard characters "
+#~ "'*' and '?'."
+#~ msgstr ""
+#~ "Vložte masku pro tohoto uživatele.<br>Může obsahovat zástupné znaky '*' a "
+#~ "'?'."
+
 #~ msgid "Install Addon..."
 #~ msgstr "Instalovat rozšíření..."
 
@@ -12323,6 +11410,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgstr ""
 #~ "Interní chyba: pokus o vyhodnocení lokace na čtení-zápis, lokace je jen "
 #~ "pro čtení"
+
+#~ msgid "Internal unique name for the action"
+#~ msgstr "Interní unikátní název této akce"
 
 #~ msgid "Invalid  bgMode: valid values are Transparent and Opaque"
 #~ msgstr "Neplatný  bgMode: platné hodnoty jsou Transparent a Opaque"
@@ -12353,6 +11443,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Invalid Parameters"
 #~ msgstr "Neplatné Parametry"
+
+#~ msgid "Invalid ToolBar Label"
+#~ msgstr "Neplatný název lišty"
 
 #~ msgid "Invalid XCor or YCor range:[min=0] [max=99]"
 #~ msgstr "Neplatný XCor nebo YCor rozsah:[min=0] [max=99]"
@@ -12563,6 +11656,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Invalid zoom value (%s)"
 #~ msgstr "Nesprávná hodnota přiblížení (%s)"
 
+#~ msgid "Item"
+#~ msgstr "Položka"
+
+#~ msgid "Item Id:"
+#~ msgstr "Id položky:"
+
 #~ msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 #~ msgstr ""
 #~ "Index položky [%d] je příliš velký - nastavuje se výchozí na $count() - 1 "
@@ -12583,6 +11682,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Keep queries open"
 #~ msgstr "Nechat query otevřené"
 
+#~ msgid "Key Sequence:"
+#~ msgstr "Kombinace kláves:"
+
 #~ msgid "Kick Reason"
 #~ msgstr "Důvod Vykopnutí"
 
@@ -12594,6 +11696,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Kill broken timers"
 #~ msgstr "Ukončit poškozené časovače"
+
+#~ msgid "Label"
+#~ msgstr "Návěstí"
+
+#~ msgid "Label:"
+#~ msgstr "Návěstí:"
 
 #~ msgid "Labels"
 #~ msgstr "Návěstí"
@@ -12759,8 +11867,20 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Magic bytes:"
 #~ msgstr "Magické bajty:"
 
+#~ msgid "Manually"
+#~ msgstr "Ručně"
+
 #~ msgid "Mark Line:"
 #~ msgstr "Označ řádek:"
+
+#~ msgid "Mask %Q already used to identify user %Q"
+#~ msgstr "Maska %Q je již použita u uživatele %Q"
+
+#~ msgid "Mask %Q is already used to identify user %s"
+#~ msgstr "Maska %Q je již použita u uživatele %s"
+
+#~ msgid "Mask %Q not found"
+#~ msgstr "Maska %Q nenalezena"
 
 #~ msgid "Mask %s already used to identify user %s"
 #~ msgstr "Maska %s je již použita u uživatele %s"
@@ -12771,8 +11891,14 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Mask %s not found"
 #~ msgstr "Maska %s nenalezena"
 
+#~ msgid "Mask Editor"
+#~ msgstr "Editor masek"
+
 #~ msgid "Mask for"
 #~ msgstr "Maska pro"
+
+#~ msgid "Masks:"
+#~ msgstr "Masky:"
 
 #~ msgid "Maximum attempts (0: unlimited):"
 #~ msgstr "Maximálně pokusů (0: nekonečně):"
@@ -12836,6 +11962,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Minimum width:"
 #~ msgstr "Minimální šířka:"
+
+#~ msgid "Missing Alias Name"
+#~ msgstr "Chybí jméno aliasu"
+
+#~ msgid "Missing Namespace Name"
+#~ msgstr "Chybí jméno jmenného prostoru"
 
 #~ msgid "Missing alias name"
 #~ msgstr "Chybí jméno aliasu"
@@ -12972,11 +12104,17 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "More Addons..."
 #~ msgstr "Další rozšíření..."
 
+#~ msgid "Move to group"
+#~ msgstr "Přesunout do skupiny"
+
 #~ msgid "Multiple Users"
 #~ msgstr "Více uživatelů"
 
 #~ msgid "Mute"
 #~ msgstr "Ztlumený"
+
+#~ msgid "My Action"
+#~ msgstr "Moje Akce"
 
 #, fuzzy
 #~ msgid "My Custom Servers"
@@ -12984,6 +12122,31 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "My Experience level"
 #~ msgstr "Úroveň mých zkušeností"
+
+#~ msgid "My ToolBar"
+#~ msgstr "Vlastní nástrojová lišta"
+
+#~ msgid "Name:"
+#~ msgstr "Jméno:"
+
+#~ msgid "Namespace"
+#~ msgstr "Jmenný prostor"
+
+#~ msgid "Namespace already exists"
+#~ msgstr "Jmenný prostor již existuje"
+
+#~ msgid ""
+#~ "Namespace names can contain only letters, digits, underscores and '::' "
+#~ "namespace separators"
+#~ msgstr ""
+#~ "Jmenné prostory mohou obsahovat pouze písmena, číslice, podtržítka a '::' "
+#~ "oddělovače jmenného prostoru"
+
+#~ msgid "Needs IRC Connection"
+#~ msgstr "Vyžaduje IRC spojení"
+
+#~ msgid "Needs IRC Context"
+#~ msgstr "Vyžaduje IRC kontext"
 
 #~ msgid "Negative file index supplied !"
 #~ msgstr "Dodán negativní index souboru !"
@@ -13000,8 +12163,53 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Network:"
 #~ msgstr "Síť:"
 
+#~ msgid "New Action"
+#~ msgstr "Nová Akce"
+
+#~ msgid "New External Menu Above"
+#~ msgstr "Nové externí menu nahoře"
+
+#~ msgid "New External Menu Below"
+#~ msgstr "Nové externí menu dole"
+
+#~ msgid "New External Menu Inside"
+#~ msgstr "Nové externí menu uvnitř"
+
+#~ msgid "New Item Above"
+#~ msgstr "Nová položka nahoře"
+
+#~ msgid "New Item Below"
+#~ msgstr "Nová položka dole"
+
+#~ msgid "New Item Inside"
+#~ msgstr "Nová položka uvnitř"
+
+#~ msgid "New Label Above"
+#~ msgstr "Nové návěstí nahoře"
+
+#~ msgid "New Label Below"
+#~ msgstr "Nové návěstí dole"
+
+#~ msgid "New Label Inside"
+#~ msgstr "Nové návěstí uvnitř"
+
 #~ msgid "New Media Type"
 #~ msgstr "Nový typ média"
+
+#~ msgid "New Menu Above"
+#~ msgstr "Nové menu nahoře"
+
+#~ msgid "New Menu Below"
+#~ msgstr "Nové menu dole"
+
+#~ msgid "New Menu Epilogue"
+#~ msgstr "Nový závěr menu"
+
+#~ msgid "New Menu Inside"
+#~ msgstr "Nové menu uvnitř"
+
+#~ msgid "New Menu Prologue"
+#~ msgstr "Nový úvod menu"
 
 #~ msgid "New Network"
 #~ msgstr "Nová Síť"
@@ -13009,11 +12217,26 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "New Proxy"
 #~ msgstr "Nová Proxy"
 
+#~ msgid "New Raw Event"
+#~ msgstr "Nová Raw událost"
+
 #~ msgid "New Script Tester"
 #~ msgstr "Tester nového skriptu"
 
+#~ msgid "New Separator Above"
+#~ msgstr "Nový oddělovač nahoře"
+
+#~ msgid "New Separator Below"
+#~ msgstr "Nový oddělovač dole"
+
+#~ msgid "New Separator Inside"
+#~ msgstr "Nový oddělovač uvnitř"
+
 #~ msgid "New Server"
 #~ msgstr "Nový Server"
+
+#~ msgid "New ToolBar"
+#~ msgstr "Nová nástrojová lišta"
 
 #~ msgid "Newbie"
 #~ msgstr "Nováček"
@@ -13035,6 +12258,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "NickServ Request Mask"
 #~ msgstr "NickServ Maska požadavku"
+
+#~ msgid "Nickname 2:"
+#~ msgstr "Přezdívka 2:"
 
 #~ msgid "Nickname Colors"
 #~ msgstr "Barvy přezdívek"
@@ -13072,8 +12298,14 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "No commandline specified for this type of url (%s)"
 #~ msgstr "Není určena příkazová řádka pro tento typ url (%s)"
 
+#~ msgid "No comment set"
+#~ msgstr "Komentář nebyl zadán"
+
 #~ msgid "No destination specified"
 #~ msgstr "Nebyl určen cíl"
+
+#~ msgid "No entries selected."
+#~ msgstr "Nebyl vybrán žádný záznam."
 
 #~ msgid ""
 #~ "No environment variable found, please don't use the %% in the request"
@@ -13107,11 +12339,20 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "No index specified"
 #~ msgstr "Nebyl určen index"
 
+#~ msgid "No item selected"
+#~ msgstr "Nebyla vybrána žádná položka"
+
 #~ msgid "No link text specified"
 #~ msgstr "Nebyl určen text odkazu"
 
+#~ msgid "No mask specified"
+#~ msgstr "Neurčena žádná maska"
+
 #~ msgid "No menu bar item with text '%Q'"
 #~ msgstr "Žádná položka menu s textem '%Q'"
+
+#~ msgid "No name specified"
+#~ msgstr "Nebylo určeno jméno"
 
 #~ msgid "No netmask specified"
 #~ msgstr "Nebyla určena maska sítě"
@@ -13127,6 +12368,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "No property name specified"
 #~ msgstr "Neurčeno jméno vlastnosti"
+
+#~ msgid "No property specified"
+#~ msgstr "Neurčená vlastnost"
 
 #~ msgid "No selection"
 #~ msgstr "Žádný výběr"
@@ -13165,6 +12409,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "No such QT property (%s)"
 #~ msgstr "Žádná QT vlastnost (%s)"
+
+#~ msgid "No such channel/netmask entry in the database"
+#~ msgstr "Žádný záznam kanálu/masky v databázi"
 
 #~ msgid "No such event (%Q)"
 #~ msgstr "Žádná událost (%Q)"
@@ -13269,6 +12516,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Notify Avatar"
 #~ msgstr "Oznámit Avatar"
 
+#~ msgid "Notify as: "
+#~ msgstr "Oznámit jako:"
+
 #~ msgid "Notify avatar"
 #~ msgstr "Oznámit Avatar"
 
@@ -13278,11 +12528,20 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Notify completion in notifier"
 #~ msgstr "Oznámit dokončení v oznamovači"
 
+#~ msgid "Notify disabled"
+#~ msgstr "Oznamování vypnuto"
+
 #~ msgid "Notify failed DCC handshakes to the remote end"
 #~ msgstr "Oznámit selhanou DCC komunikaci vzdálenému konci"
 
 #~ msgid "Notify list: Checking for:%Q"
 #~ msgstr "Seznam Oznamování: Kontroluje se: %Q"
+
+#~ msgid "Notify nicknames:"
+#~ msgstr "Oznamovat přezdívky:"
+
+#~ msgid "Notify when user is online"
+#~ msgstr "Oznámit, když je uživatel online"
 
 #~ msgid "Novice"
 #~ msgstr "Nováček"
@@ -13310,6 +12569,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Objects have no extended scope variables"
 #~ msgstr "Objekt nemá žádné rozšířené proměnné rozsahu"
+
+#~ msgid "Ok, Let me try again..."
+#~ msgstr "Ok, Zkusíme to znovu..."
 
 #~ msgid "Ok, let me try again..."
 #~ msgstr "Ok, zkusíme to znovu..."
@@ -13366,6 +12628,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "One of the resize array parameters is empty"
 #~ msgstr "Jeden z parametrů změny velikosti pole je prázdný"
 
+#~ msgid "Only If There Are Selected Users"
+#~ msgstr "Pouze pokud jsou vybráni uživatelé"
+
 #~ msgid "Oops... no such property: %s"
 #~ msgstr "Oops... žádná vlastnost: %s"
 
@@ -13401,6 +12666,10 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Open minimized when auto-accepted"
 #~ msgstr "Otevřít minimalizovaně při auto-příjmu"
 
+#~ msgid "Open the edit dialog to create a new user entry."
+#~ msgstr ""
+#~ "Otevře upravovací dialog pro vytvoření nového uživatelského záznamu."
+
 #~ msgid "Operand of unary operator didn't evaluate to a number"
 #~ msgstr "Operand jednočlenného operátoru nelze vyhodnotit jako číslo"
 
@@ -13411,6 +12680,18 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid ""
 #~ "Option setting error: Unknown option or invalid value for option type"
 #~ msgstr "Chyba nastavení: Neznámá volba nebo neplatná hodnota pro tento typ"
+
+#~ msgid ""
+#~ "Optional keyboard sequence that will activate this action.<br>The "
+#~ "sequence should be expressed as a string of up to four key codes "
+#~ "separated by commas eventually combined with the modifiers \"Ctrl\","
+#~ "\"Shift\",\"Alt\" and \"Meta\".<br>Examples of such sequences are \"Ctrl+X"
+#~ "\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
+#~ msgstr ""
+#~ "Volitelná kombinace kláves, která spustí tuto akci.<br>Kombinace by měla "
+#~ "být spojením max. čtyř kláves oddělených čárkami případně kombinovány s "
+#~ "přepínači \"Ctrl\",\"Shift\",\"Alt\" a \"Meta\".<br>Příklady použitelných "
+#~ "kombinací jsou \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
 #~ msgid "Options"
 #~ msgstr "Možnosti"
@@ -13452,6 +12733,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "Identifikátory parametru jsou zakázány v rozsahu objektu (za '->' "
 #~ "operátorem)"
 
+#~ msgid "Params:"
+#~ msgstr "Parametry:"
+
 #~ msgid "Paranoic"
 #~ msgstr "Paranoidní"
 
@@ -13469,6 +12753,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Password:"
 #~ msgstr "Heslo:"
+
+#~ msgid "Paste Above"
+#~ msgstr "Vložit nahoru"
+
+#~ msgid "Paste Inside"
+#~ msgstr "Vložit dovnitř"
 
 #~ msgid "Paste Server"
 #~ msgstr "Vložit Server"
@@ -13506,8 +12796,43 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Plain Grid"
 #~ msgstr "Obyčejná mřížka"
 
+#~ msgid "Please choose the icon for the ToolBar"
+#~ msgstr "Prosím vyberte ikonu pro nástrojovou lištu"
+
+#~ msgid "Please enter the name for the new alias"
+#~ msgstr "Prosím zadejte název pro nový alias"
+
+#~ msgid "Please enter the name for the new namespace"
+#~ msgstr "Prosím zadejte jméno pro nový jmenný prostor"
+
+#~ msgid "Please enter the new name for the alias"
+#~ msgstr "Prosím zadejte nový název pro alias"
+
+#~ msgid "Please enter the new name for the namespace"
+#~ msgstr "Prosím zadejte nové jméno jmenného prostoru"
+
+#~ msgid ""
+#~ "Please enter the text to be searched for. The matching aliases will be "
+#~ "highlighted."
+#~ msgstr "Prosím zadejte text pro hledání. Nalezené aliasy budou zvýrazněny."
+
+#~ msgid "Please specify the properties for the new toolbar"
+#~ msgstr "Prosím zadejte vlastnosti pro novou nástrojovou lištu"
+
+#~ msgid "Please specify the properties for the toolbar \"%1\""
+#~ msgstr "Prosím určete vlastnosti pro nástrojovou lištu \"%1\""
+
+#~ msgid "Popup"
+#~ msgstr "Popup"
+
 #~ msgid "Popup %Q is not defined"
 #~ msgstr "Popup %Q není definován"
+
+#~ msgid "Popup Editor"
+#~ msgstr "Editor Popupů"
+
+#~ msgid "Popup name"
+#~ msgstr "Název Popupu"
 
 #~ msgid "Popup notifier on new query message"
 #~ msgstr "Zobrazit oznamovač při nové query zprávě"
@@ -13563,17 +12888,29 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Progress bar color:"
 #~ msgstr "Barva ukazatele průběhu:"
 
+#~ msgid "Prologue"
+#~ msgstr "Úvod"
+
+#~ msgid "Properties"
+#~ msgstr "Vlastnosti"
+
 #~ msgid "Properties class: %c%s%c"
 #~ msgstr "Třída vlastností: %c%s%c"
 
 #~ msgid "Properties for Qt class %s"
 #~ msgstr "Vlastnosti Qt třídy %s"
 
+#~ msgid "Property"
+#~ msgstr "Vlastnost"
+
 #~ msgid ""
 #~ "Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported "
 #~ "data type"
 #~ msgstr ""
 #~ "Vlastnost \"%Q\" pro objekt \"%Q\" ze třídy %Q má nepodporovaný datový typ"
+
+#~ msgid "Property Editor"
+#~ msgstr "Editor vlastností"
 
 #~ msgid "Property: %c%Q%c, type %Q"
 #~ msgstr "Vlastnost: %c%Q%c, typ %Q"
@@ -13596,6 +12933,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Proxy:"
 #~ msgstr "Proxy:"
 
+#~ msgid "Put here a short description of your action"
+#~ msgstr "Zde vložte krátký popis vaší akce"
+
 #~ msgid "Put here the nickname that you have registered with NickServ"
 #~ msgstr "Sem vložte přezdívku, kterou máte registrovanou s NickServ"
 
@@ -13611,8 +12951,20 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Quiet"
 #~ msgstr "Tichý"
 
+#~ msgid "Raw Editor"
+#~ msgstr "Editor Raw"
+
+#~ msgid "Raw Event"
+#~ msgstr "Raw událost"
+
 #~ msgid "Raw event handler %s::%Q is broken: disabling"
 #~ msgstr "Handler Raw události %s::%Q je poškozen: vypínám"
+
+#~ msgid "Re&move Handler"
+#~ msgstr "S&mazat handler"
+
+#~ msgid "Re&move Popup"
+#~ msgstr "S&mazat Popup"
 
 #~ msgid "Re&move Proxy"
 #~ msgstr "Ode&brat proxy"
@@ -13652,8 +13004,23 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Registered NickName"
 #~ msgstr "Registrovaná přezdívka"
 
+#~ msgid "Registered User Entry"
+#~ msgstr "Záznam registrovaného uživatele"
+
 #~ msgid "Registered Users"
 #~ msgstr "Registrovaní uživatelé"
+
+#~ msgid "Registered Users - KVIrc"
+#~ msgstr "Registrovaní uživatelé - KVIrc"
+
+#~ msgid "Registered channel list:"
+#~ msgstr "Seznam registrovaných kanálů:"
+
+#~ msgid "Registered users database dump:"
+#~ msgstr "Výpis databáze registrovaných uživatelů:"
+
+#~ msgid "Registration Complete"
+#~ msgstr "Registrace dokončena"
 
 #~ msgid "Rejoin channel"
 #~ msgstr "Znovu přijít do kanálu"
@@ -13682,11 +13049,36 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Remove Proxy"
 #~ msgstr "Odebrat proxy"
 
+#~ msgid "Remove Selected"
+#~ msgstr "Odebrat vybrané"
+
 #~ msgid "Remove from Notify"
 #~ msgstr "Odebrat z Oznamování"
 
+#~ msgid "Remove item"
+#~ msgstr "Odebrat položku"
+
+#~ msgid "Remove the currently selected entries."
+#~ msgstr "Odebere právě vybrané záznamy."
+
+#~ msgid "Rename"
+#~ msgstr "Přejmenovat"
+
+#~ msgid "Rename Alias"
+#~ msgstr "Přejmenovat Alias"
+
+#~ msgid "Rename Namespace"
+#~ msgstr "Přejmenovat jmenný prostor"
+
 #~ msgid "Reopen queries after reconnect"
 #~ msgstr "Znovu otevřít query po znovupřipojení"
+
+#, fuzzy
+#~ msgid "Replace file"
+#~ msgstr "Nahradit"
+
+#~ msgid "Replace with"
+#~ msgstr "Nahradit"
 
 #~ msgid "Report a Bug"
 #~ msgstr "Nahlásit Chybu"
@@ -13912,6 +13304,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgstr ""
 #~ "Cílový slot objektu rozbit při vysílání signálu '%Q' z objektu '%Q::%Q'"
 
+#~ msgid "Small Icon:"
+#~ msgstr "Malá ikona:"
+
 #~ msgid "Smart"
 #~ msgstr "Smart"
 
@@ -13945,6 +13340,18 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Starting up the engine..."
 #~ msgstr "Spouští se engine..."
 
+#~ msgid "Step 1: Entry Name"
+#~ msgstr "Krok 1: Zadání jména"
+
+#~ msgid "Step 2: Mask Selection"
+#~ msgstr "Krok 2: Výběr masky"
+
+#~ msgid "Step 3: Avatar Selection"
+#~ msgstr "Krok 3: Výběr avataru"
+
+#~ msgid "Step 4: Notify List"
+#~ msgstr "Krok 4: Seznam oznamování"
+
 #~ msgid "Stop Highlighting"
 #~ msgstr "Zastavit zvýrazňování"
 
@@ -13953,6 +13360,23 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Stop Logging"
 #~ msgstr "Zastavit logování"
+
+#~ msgid "Store an avatar for this user"
+#~ msgstr "Uložit avatar pro tohoto uživatele"
+
+#, fuzzy
+#~ msgid ""
+#~ "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+#~ msgstr ""
+#~ "Znak ':' ve jménu jmenného prostoru: mysleli jste ...<jmenný_prostor>::"
+#~ "<jméno> ?"
+
+#~ msgid ""
+#~ "Stray ':' character in namespace name: did you mean ...<namespace>::"
+#~ "<name> ?"
+#~ msgstr ""
+#~ "Znak ':' ve jménu jmenného prostoru: mysleli jste ...<jmenný_prostor>::"
+#~ "<jméno> ?"
 
 #, fuzzy
 #~ msgid "Stray '::' sequence or invalid following alias name"
@@ -13963,6 +13387,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Stray dot ('.') character or invalid following module command name"
 #~ msgstr "Zbloudilý znak tečka ('.') nebo neplatný název následujícího modulu"
+
+#~ msgid "Submenu"
+#~ msgstr "Submenu"
 
 #~ msgid ""
 #~ "Syntax error after '$' function call prefix. If you want to use a plain "
@@ -14011,11 +13438,17 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Taskbar Alert"
 #~ msgstr "Výstraha lišty"
 
+#~ msgid "Test"
+#~ msgstr "Testovat"
+
 #~ msgid "Text icons"
 #~ msgstr "Textové ikony"
 
 #~ msgid "Text/Alert Colors"
 #~ msgstr "Barvy textu výstrah"
+
+#~ msgid "Text:"
+#~ msgstr "Text:"
 
 #~ msgid "The $sw() function can be used only in aliases"
 #~ msgstr "Funkce $sw() může být použita jen v aliasech"
@@ -14082,6 +13515,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "The Nickname field can't contain spaces!"
 #~ msgstr "Přezdívka nemůže obsahovat mezery!"
+
+#~ msgid "The ToolBar Label can't be empty!"
+#~ msgstr "Název lišty nemůže být prázdný!"
 
 #~ msgid ""
 #~ "The above problem might be related to the switch dash and the following "
@@ -14159,6 +13595,14 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "The array passed as parameter must contain at least 4 elements"
 #~ msgstr "Pole zadané jako parametr musí obsahovat nejméně 4 elementy"
 
+#~ msgid ""
+#~ "The big icon associated to this action.<br>It will appear at least in the "
+#~ "toolbar buttons when this action is inserted.<br>It should be 32x32 "
+#~ "pixels."
+#~ msgstr ""
+#~ "Velká ikona asociovaná s touto akcí.<br>Objeví se mezi tlačítky "
+#~ "nástrojové lišty, když je tato akce vložena.<br>Měla by být 32x32 pixelů."
+
 #~ msgid "The catalogue %Q was not loaded"
 #~ msgstr "Katalog %Q nebyl načten"
 
@@ -14200,6 +13644,16 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "The default script has been successfully installed."
 #~ msgstr "Výchozí skript byl úspěšně nainstalován."
+
+#~ msgid "The file \"%Q\" exists. Do you want to replace it ?"
+#~ msgstr "Soubor \"%Q\" existuje. Chcete jej nahradit?"
+
+#~ msgid "The file %s contains an invalid registered users database version."
+#~ msgstr ""
+#~ "Soubor %s obsahuje neplatnou verzi databáze registrovaných uživatelů."
+
+#~ msgid "The file %s doesn't appear to be a valid registered users database."
+#~ msgstr "Soubor %s nevypadá jako platná databáze registrovaných uživatelů."
 
 #~ msgid "The file '%s' is not readable"
 #~ msgstr "Soubor '%s' je nečitelný"
@@ -14360,11 +13814,28 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "The right side of operator '|=' didn't evaluate to an integer"
 #~ msgstr "Pravou stranu operátoru '|=' nelze vyhodnotit na celé číslo"
 
+#~ msgid ""
+#~ "The small icon associated to this action.<br>It will appear at least in "
+#~ "the popup menus when this action is inserted.<br>It should be 16x16 "
+#~ "pixels."
+#~ msgstr ""
+#~ "Malá ikona asociovaná s touto akcí.<br>Objeví se v popup menu, když bude "
+#~ "tato akce vložena.<br>Měla by být 16x16 pixelů."
+
 #~ msgid "The source object '%s' is not existing"
 #~ msgstr "Zdrojový objekt '%s' neexistuje"
 
 #~ msgid "The specified KVIrc version \"%s\" is not a valid version string"
 #~ msgstr "Zadaná verze KVIrc \"%s\" má neplatný řetězec verze"
+
+#~ msgid ""
+#~ "The specified ToolBar Id already exists.<br>Would you like KVIrc to "
+#~ "assign it automatically (so it doesn't collide with any other toolbar) or "
+#~ "you prefer to do it manually ?"
+#~ msgstr ""
+#~ "Zadaná nástrojová lišta již existuje.<br>Chcete aby ji KVIrc přiřadilo "
+#~ "automaticky (pokud nebude kolidovat s žádnou jinou lištou) nebo raději "
+#~ "ručně ?"
 
 #~ msgid "The specified UNIX time is not valid (%s)"
 #~ msgstr "Zadaný UNIXový čas je neplatný (%s)"
@@ -14461,6 +13932,10 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "There is no option named '%Q'"
 #~ msgstr "Zde není žádná možnost '%Q'"
+
+#, fuzzy
+#~ msgid "There is no selection!"
+#~ msgstr "Zde není výběr!"
 
 #~ msgid ""
 #~ "This KVIrc executable is too old to run this addon (minimum version "
@@ -14569,6 +14044,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "poslána když chce NickServ abyste se autetntifikovali. Můžete použít "
 #~ "zástupné znaky * a ?."
 
+#~ msgid "This name is already in use. Please choose another one."
+#~ msgstr "Jméno se již používá. Prosím vyberte jiné."
+
 #~ msgid "This object is not a toolbutton item!"
 #~ msgstr "Tento objekt není tlačítko nástrojové lišty!"
 
@@ -14608,6 +14086,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgstr ""
 #~ "Tato tabulka obsahuje asociace textu a ikon.<br>KVirc je používá k "
 #~ "zobrazení pomocí CTRL+I escape sekvence a také smajlíků."
+
+#~ msgid ""
+#~ "This will enable the action only if there are selected users in the "
+#~ "active window"
+#~ msgstr ""
+#~ "Toto povolí akci, pouze pokud jsou vybraní uživatelé v aktivním okně"
 
 #~ msgid "This window has no associated IRC context"
 #~ msgstr "Toto okno nemá asociován IRC kontext"
@@ -14650,11 +14134,23 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "ToolBar Applets"
 #~ msgstr "Aplety Nástrojové lišty"
 
+#~ msgid "ToolBar Export"
+#~ msgstr "Export Nástrojové lišty"
+
+#~ msgid "ToolBar Properties"
+#~ msgstr "Vlastnosti Nástrojové lišty"
+
 #~ msgid "Topic for \r!c\r%Q\r was set by \r!n\r%Q\r!%Q@\r!h\r%Q\r"
 #~ msgstr "Téma pro \r!c\r%Q\r nastavil \r!n\r%Q\r!%Q@\r!h\r%Q\r"
 
 #~ msgid "Torrent Client"
 #~ msgstr "Torrent klient"
+
+#~ msgid "Total %d channels"
+#~ msgstr "Celkem %d kanálů"
+
+#~ msgid "Total: %d matching users (of %d in the database)"
+#~ msgstr "Celkem: %d nalezeno uživatelů (z %d v databázi)"
 
 #~ msgid "Track last read text line"
 #~ msgstr "Sledovat poslední přečtený řádek"
@@ -14686,6 +14182,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Trigger event if lag exceeds:"
 #~ msgstr "Spustit událost pokud lag překročí:"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
 
 #~ msgid "URL Handlers"
 #~ msgstr "URL Handlery"
@@ -14725,6 +14224,30 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Unable to play sound '%s'"
 #~ msgstr "Nelze přehrát zvuk '%s'"
+
+#~ msgid "Unable to write to the actions file."
+#~ msgstr "Nelze zapisovat do souboru akcí."
+
+#~ msgid "Unable to write to the alias file."
+#~ msgstr "Nelze zapisovat do souboru aliasů."
+
+#~ msgid "Unable to write to the event file."
+#~ msgstr "Nelze zapisovat do souboru událostí."
+
+#~ msgid "Unable to write to the events file."
+#~ msgstr "Nelze zapisovat do souboru událostí."
+
+#~ msgid "Unable to write to the popup file."
+#~ msgstr "Nelze zapisovat do popup souboru."
+
+#~ msgid "Unable to write to the raw event file."
+#~ msgstr "Nelze zapisovat do souboru raw událostí."
+
+#~ msgid "Unable to write to the raw events file."
+#~ msgstr "Nelze zapisovat do souboru raw událostí."
+
+#~ msgid "Unable to write to the toolbar file."
+#~ msgstr "Nelze zapisovat do souboru nástrojových lišt."
 
 #~ msgid "Unexpected (and senseless) read-only data evaluation"
 #~ msgstr "Neočekávané (a nesmyslné) vyhodnocení dat jen pro čtení"
@@ -15066,6 +14589,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Use bash-like nick completion"
 #~ msgstr "Použít doplňování přezdívek jako v bashi"
 
+#~ msgid "Use custom color in userlist"
+#~ msgstr "Použít vlastní barvu v seznamu uživatelů"
+
 #~ msgid "Use default user mode"
 #~ msgstr "Použít výchozí nastavení"
 
@@ -15114,6 +14640,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Use workaround for firewall"
 #~ msgstr "Použít podporu pro firewall"
 
+#~ msgid "User %Q not found"
+#~ msgstr "Uživatel %Q nenalezen"
+
 #~ msgid "User %s not found"
 #~ msgstr "Uživatel %s nenalezen"
 
@@ -15126,8 +14655,17 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "User Operator"
 #~ msgstr "Uživatel-operátor"
 
+#~ msgid "User Registration Wizard - KVIrc"
+#~ msgstr "Průvodce registrací uživatele - KVIrc"
+
+#~ msgid "User already registered: found exact name match"
+#~ msgstr "Uživatel je již registrován: nalezen shodný záznam"
+
 #~ msgid "User input exits away mode"
 #~ msgstr "Vstup uživatele zruší pryč mód"
+
+#~ msgid "User not found (%Q)"
+#~ msgstr "Uživatel nenalezen (%Q)"
 
 #~ msgid "User not found (%s)"
 #~ msgstr "Uživatel nenalezen (%s)"
@@ -15143,6 +14681,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "VERSION"
 #~ msgstr "VERSION"
+
+#~ msgid "Value"
+#~ msgstr "Hodnota"
 
 #~ msgid ""
 #~ "Value %d for port is out of range (values allowed are from 0 to 65535"
@@ -15168,6 +14709,20 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #, fuzzy
 #~ msgid "Version"
 #~ msgstr "Verze:"
+
+#~ msgid ""
+#~ "Visible name for this action.<br>This string will be displayed to the "
+#~ "user so it is a good idea to use $tr() here"
+#~ msgstr ""
+#~ "Zobarený název pro tuto akci.<br>Tento řetězec bude zobrazen uživateli a "
+#~ "proto je dobré použít funkci $tr()"
+
+#~ msgid ""
+#~ "Visible short description for this action.<br>This string will be "
+#~ "displayed to the user so it is a good idea to use $tr() here"
+#~ msgstr ""
+#~ "Zobrazený krátký popis pro tuto akci.<br>Tento řetězec bude zobrazen "
+#~ "uživateli, proto je dobré použít zde funkci $tr()"
 
 #~ msgid "Voice"
 #~ msgstr "Voice"
@@ -15270,11 +14825,17 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "With..."
 #~ msgstr "s..."
 
+#~ msgid "Word to Find"
+#~ msgstr "Hledané slovo"
+
 #~ msgid "Words considered spam:"
 #~ msgstr "Slova považovaná za spam:"
 
 #~ msgid "Words to highlight:"
 #~ msgstr "Zvýrazňovat slova:"
+
+#~ msgid "Write Failed - KVIrc"
+#~ msgstr "Zápis selhal - KVIrc"
 
 #~ msgid "Write error occured !"
 #~ msgstr "Vyskytla se chyba při zápisu !"
@@ -15285,6 +14846,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "XML support not available in the Qt library"
 #~ msgstr "XML podpora není dostupná v Qt knihovně"
 
+#~ msgid "Yes to All"
+#~ msgstr "Ano všem"
+
 #~ msgid "You don't appear to be on channel %s"
 #~ msgstr "Nevypadáto, že jste v kanále %s"
 
@@ -15293,6 +14857,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "You must choose a theme name!"
 #~ msgstr "Musíte si vybrat název téma!"
+
+#~ msgid "You must specify a valid name for the alias"
+#~ msgstr "Musíte určit platné jméno pro alias"
+
+#~ msgid "You must specify a valid name for the namespace"
+#~ msgstr "Musíte určit platné jméno pro jmenný prostor"
 
 #~ msgid "You must use DNS in an IRC context"
 #~ msgstr "Musíte použít DNS v IRC kontextu"
@@ -15359,6 +14929,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "bytes/sec"
 #~ msgstr "bajtů/sek"
+
+#~ msgid "default"
+#~ msgstr "výchozí"
 
 #~ msgid "defpopup: internal error"
 #~ msgstr "defpopup: interní chyba"
@@ -15431,6 +15004,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "missing parameter"
 #~ msgstr "chybí parametr"
 
+#~ msgid "none"
+#~ msgstr "žádný"
+
 #~ msgid "o (Operators)"
 #~ msgstr "o (Operátoři)"
 
@@ -15458,6 +15034,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "u (Uptime)"
 #~ msgstr "u (Uptime)"
+
+#~ msgid "unnamed"
+#~ msgstr "nepojmenovaný"
 
 #~ msgid "within:"
 #~ msgstr "během:"

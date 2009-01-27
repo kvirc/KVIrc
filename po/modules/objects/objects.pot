@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 14:59+0100\n"
+"POT-Creation-Date: 2009-01-27 20:25+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,102 +16,20 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/modules/objects/class_tabwidget.cpp:257
-#: src/modules/objects/class_tabwidget.cpp:276
-#: src/modules/objects/class_tabwidget.cpp:298
-#: src/modules/objects/class_tabwidget.cpp:353
-msgid "Can't find the tab "
-msgstr ""
-
-#: src/modules/objects/class_tabwidget.cpp:376
-msgid "Can't find the tab"
-msgstr ""
-
-#: src/modules/objects/class_tabwidget.cpp:396
-msgid "Unknown position '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_http.cpp:181
-msgid "Host '%Q' is not a valid url"
-msgstr ""
-
-#: src/modules/objects/class_http.cpp:247
-msgid "'%Q' is not a valid file path"
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:144
-msgid "Unknown aspect ratio: using default value IgnoreAspectRatio"
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:148
-msgid "Unknown tranformation mode: using default value Fast"
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:193
-#: src/modules/objects/class_tbrowser.cpp:103
-msgid "I can't find the specified file '%Q'."
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:211
-#: src/modules/objects/class_file.cpp:369
-#: src/modules/objects/class_file.cpp:489
-#: src/modules/objects/class_socket.cpp:428
-#: src/modules/objects/class_socket.cpp:499
-msgid "Buffer parameter is not an object"
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:216
-#: src/modules/objects/class_file.cpp:374
-#: src/modules/objects/class_file.cpp:508
-#: src/modules/objects/class_socket.cpp:433
-msgid "Buffer parameter is not a memorybuffer object"
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:262
-msgid "Destination parameter is not an object"
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:268
-msgid "Destination must be a pixmap object"
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:278
-msgid "Area dimensions are out of destination size "
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:285
-#: src/modules/objects/class_pixmap.cpp:294
-msgid "Pixmap dimensions are out of destination size "
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:301
-msgid "Offset width area is out of pixmap size "
-msgstr ""
-
-#: src/modules/objects/class_pixmap.cpp:306
-msgid "Offset height area is out of pixmap size "
-msgstr ""
-
-#: src/modules/objects/class_button.cpp:125
-#: src/modules/objects/class_painter.cpp:851
-msgid "Pixmap parameter is not an object!"
-msgstr ""
-
-#: src/modules/objects/class_button.cpp:131
-#: src/modules/objects/class_painter.cpp:856
-msgid "Object Pixmap required!"
+#: src/modules/objects/class_lineedit.cpp:383
+msgid "Unknown echo mode '%Q'"
 msgstr ""
 
 #: src/modules/objects/class_mainwindow.cpp:87
-#: src/modules/objects/class_toolbutton.cpp:274
 #: src/modules/objects/class_widget.cpp:1741
+#: src/modules/objects/class_toolbutton.cpp:274
 #: src/modules/objects/object_macros.h:110
 msgid "Widget parameter is not an object"
 msgstr ""
 
 #: src/modules/objects/class_mainwindow.cpp:92
-#: src/modules/objects/class_toolbutton.cpp:279
 #: src/modules/objects/class_widget.cpp:1746
+#: src/modules/objects/class_toolbutton.cpp:279
 #: src/modules/objects/object_macros.h:115
 msgid "Widget parameter is not a valid object"
 msgstr ""
@@ -126,8 +44,23 @@ msgstr ""
 msgid "Widget object required"
 msgstr ""
 
-#: src/modules/objects/class_lineedit.cpp:383
-msgid "Unknown echo mode '%Q'"
+#: src/modules/objects/class_label.cpp:291
+#: src/modules/objects/class_hbox.cpp:197
+#: src/modules/objects/class_groupbox.cpp:315
+msgid "Unknown alignment '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_label.cpp:345
+#: src/modules/objects/class_widget.cpp:1722
+msgid "Unknown style '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_toolbar.cpp:83
+msgid "The toolbar cannot be a parent-widget!"
+msgstr ""
+
+#: src/modules/objects/class_toolbar.cpp:92
+msgid "The parent-widget isn't a MainWindow."
 msgstr ""
 
 #: src/modules/objects/class_painter.cpp:549
@@ -198,6 +131,16 @@ msgstr ""
 msgid "Unknown '%Q' background mode"
 msgstr ""
 
+#: src/modules/objects/class_painter.cpp:851
+#: src/modules/objects/class_button.cpp:125
+msgid "Pixmap parameter is not an object!"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:856
+#: src/modules/objects/class_button.cpp:131
+msgid "Object Pixmap required!"
+msgstr ""
+
 #: src/modules/objects/class_painter.cpp:867
 #: src/modules/objects/class_painter.cpp:920
 #: src/modules/objects/class_painter.cpp:1486
@@ -256,402 +199,6 @@ msgstr ""
 
 #: src/modules/objects/class_painter.cpp:1499
 msgid "Color name or triplette RGB/HSV values required"
-msgstr ""
-
-#: src/modules/objects/class_toolbar.cpp:83
-msgid "The toolbar cannot be a parent-widget!"
-msgstr ""
-
-#: src/modules/objects/class_toolbar.cpp:92
-msgid "The parent-widget isn't a MainWindow."
-msgstr ""
-
-#: src/modules/objects/class_treewidget.cpp:404
-msgid "Invalid selection mode '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_treewidget.cpp:419
-msgid "Unknown '%Q' sort order: switching to ascending order"
-msgstr ""
-
-#: src/modules/objects/class_groupbox.cpp:315
-#: src/modules/objects/class_hbox.cpp:197
-#: src/modules/objects/class_label.cpp:291
-msgid "Unknown alignment '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_groupbox.cpp:348
-#: src/modules/objects/class_slider.cpp:282
-msgid "Unknown orientation '%Q'"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:183
-msgid "Class '%Q' is not defined"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:257
-msgid "Inexisting target object for objects.connect"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:262
-msgid "Inexisting source object for objects.connect"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:267
-msgid "Inexisting target slot '%Q' for objects.connect"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:352
-#: src/modules/objects/libkviobjects.cpp:451
-msgid "The class '%Q' does not exist"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:409
-msgid "Object does not exists"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:553
-msgid "Inexisting class object for objects.name"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:596
-msgid "Inexisting target object for objects.disconnect"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:601
-msgid "Inexisting source object for objects.disconnect"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:647
-msgid "Source is not an object"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:653
-msgid "Destination is not an object"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:663
-msgid "Widget, Image or Pixmap required "
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:673
-msgid "Widget or Pixmap required"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:749
-msgid "One or more of background, foreground or destination aren't objects"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:755
-msgid "Pixmap objects required"
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:778
-msgid "Values for background are out of image size "
-msgstr ""
-
-#: src/modules/objects/libkviobjects.cpp:783
-msgid "Values for foreground are out of image size "
-msgstr ""
-
-#: src/modules/objects/class_window.cpp:143
-#: src/modules/objects/class_window.cpp:148
-#: src/modules/objects/class_wizard.cpp:146
-#: src/modules/objects/class_wizard.cpp:168
-#: src/modules/objects/class_widget.cpp:1757
-msgid "Can't add a non-widget object"
-msgstr ""
-
-#: src/modules/objects/class_dockwindow.cpp:102
-msgid "Can't add a null object"
-msgstr ""
-
-#: src/modules/objects/class_dockwindow.cpp:109
-msgid ""
-"Invalid object handle passed as parameter (the object is no longer "
-"existing ?)"
-msgstr ""
-
-#: src/modules/objects/class_dockwindow.cpp:115
-msgid "Object in invalid state"
-msgstr ""
-
-#: src/modules/objects/class_dockwindow.cpp:121
-msgid "Can't set a non-widget object to be the main widget of a dock window"
-msgstr ""
-
-#: src/modules/objects/class_dockwindow.cpp:127
-msgid "The added widget is not a child of this dock window"
-msgstr ""
-
-#: src/modules/objects/class_dockwindow.cpp:193
-msgid "Invalid dock area specified"
-msgstr ""
-
-#: src/modules/objects/class_hbox.cpp:146
-#: src/modules/objects/class_hbox.cpp:178
-#: src/modules/objects/class_vbox.cpp:180
-msgid "The widget must be a child of this hbox"
-msgstr ""
-
-#: src/modules/objects/class_combobox.cpp:173
-#: src/modules/objects/class_combobox.cpp:281
-#: src/modules/objects/class_listwidget.cpp:188
-msgid "No string parameter given - using empty string"
-msgstr ""
-
-#: src/modules/objects/class_combobox.cpp:176
-#: src/modules/objects/class_combobox.cpp:193
-#: src/modules/objects/class_listwidget.cpp:191
-#: src/modules/objects/class_listwidget.cpp:209
-#, c-format
-msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
-msgstr ""
-
-#: src/modules/objects/class_combobox.cpp:330
-msgid "Invalid insertion Policy '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_toolbutton.cpp:284
-msgid "Can't add a non-popupmenu object"
-msgstr ""
-
-#: src/modules/objects/class_toolbutton.cpp:326
-msgid "Unknown text position '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_process.cpp:221
-msgid "Process could not be started."
-msgstr ""
-
-#: src/modules/objects/class_vbox.cpp:150
-msgid "The widget must be a child of this vbox"
-msgstr ""
-
-#: src/modules/objects/class_vbox.cpp:200
-#: src/modules/objects/class_layout.cpp:308
-msgid "Unknown alignment: '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_listwidget.cpp:272
-msgid "Invalid selection mode '%Q' assuming single"
-msgstr ""
-
-#: src/modules/objects/class_listwidget.cpp:303
-msgid "Can't insert the listwidget itself!"
-msgstr ""
-
-#: src/modules/objects/class_listwidget.cpp:308
-msgid "Can't insert a non-widget object"
-msgstr ""
-
-#: src/modules/objects/class_layout.cpp:139
-msgid "The parent of a layout must be a widget!"
-msgstr ""
-
-#: src/modules/objects/class_layout.cpp:268
-msgid "Invalid resize mode defaulting to Auto"
-msgstr ""
-
-#: src/modules/objects/class_layout.cpp:289
-msgid "The widget must be a child of this layout"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:40
-#: src/modules/objects/class_file.cpp:480
-#: src/modules/objects/class_socket.cpp:512
-msgid "File is not open!"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:228
-msgid "Empty filename string"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:249
-msgid "No such open mode '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:321
-msgid "Argument too long, using only first char"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:323
-msgid "Write error occured!"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:332
-msgid "Read error occured!"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:346
-msgid "Argument too long, using only the first char"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:421
-msgid "The incoming data isn't an array"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:431
-msgid "The incoming data isn't a Dictionary"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:441
-msgid "Unsupported datatype '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:500
-msgid "The memoryBuffer object is empty: nothing will be saved"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:516
-msgid "Block parameter must be a string or a memorybuffer object"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:597
-msgid "Lenght of hex string is not multiple of 2"
-msgstr ""
-
-#: src/modules/objects/class_file.cpp:613
-#: src/modules/objects/class_socket.cpp:627
-msgid "The hex string is not correct!"
-msgstr ""
-
-#: src/modules/objects/class_label.cpp:345
-#: src/modules/objects/class_widget.cpp:1722
-msgid "Unknown style '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_buttongroup.cpp:95
-msgid "Buttongroup supports only checkbox and radiobox object"
-msgstr ""
-
-#: src/modules/objects/class_slider.cpp:268
-msgid "Unknown tickmark '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_memorybuffer.cpp:97
-msgid "The file '%Q' does not exist"
-msgstr ""
-
-#: src/modules/objects/class_memorybuffer.cpp:115
-msgid "Cannot open file '%Q' for writing"
-msgstr ""
-
-#: src/modules/objects/class_lcd.cpp:142
-msgid "Unknown mode '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_lcd.cpp:156
-msgid "Unknown segment style '%Q'"
-msgstr ""
-
-#: src/modules/objects/class_multilineedit.cpp:397
-#, c-format
-msgid "No such line '%d'"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:523
-msgid "Buffer parameter is not a memorybuffer or file object"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:566
-msgid "No socket object specified"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:572
-msgid "Invalid socket object specified (it doesn't inherit from socket)"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:584
-msgid "There is no connection to accept!"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:610
-msgid "The hex string lenght is not a multiple of 2"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:652
-#, c-format
-msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:657
-#: src/modules/objects/class_socket.cpp:688
-msgid "Another connection in progress"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:705
-msgid "No IPv6 support in this executable"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:727
-#: src/modules/objects/class_socket.cpp:941
-msgid "Invalid IP address (%Q)"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:748
-msgid "Socket creation failed"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:763
-#: src/modules/objects/class_socket.cpp:784
-msgid "Invalid socket address"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:771
-#: src/modules/objects/class_socket.cpp:792
-msgid "Bind failure"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:802
-msgid "Listen failure"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:935
-msgid "Invalid IP address "
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:963
-msgid "Failed to create the socket"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:975
-msgid "Failed to setup a nonblocking socket"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:996
-msgid "Connect failure: "
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:1023
-msgid "Connect attempt timed out"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:1052
-msgid "Can't start the DNS thread"
-msgstr ""
-
-#: src/modules/objects/class_socket.cpp:1198
-msgid ""
-"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
-msgstr ""
-
-#: src/modules/objects/class_popupmenu.cpp:214
-msgid "Icon '%Q' doesn't exist"
-msgstr ""
-
-#: src/modules/objects/class_wrapper.cpp:148
-msgid ""
-"The window identifier preceded by WinId must be the first object in the "
-"search path"
-msgstr ""
-
-#: src/modules/objects/class_wrapper.cpp:164
-msgid "Failed to find one of the wrap path widgets ('%Q::%Q')"
-msgstr ""
-
-#: src/modules/objects/class_wrapper.cpp:173
-msgid "Failed to find the widget to wrap"
 msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1135
@@ -724,6 +271,14 @@ msgstr ""
 msgid "No Layout associated to the widget "
 msgstr ""
 
+#: src/modules/objects/class_widget.cpp:1757
+#: src/modules/objects/class_wizard.cpp:146
+#: src/modules/objects/class_wizard.cpp:168
+#: src/modules/objects/class_window.cpp:143
+#: src/modules/objects/class_window.cpp:148
+msgid "Can't add a non-widget object"
+msgstr ""
+
 #: src/modules/objects/class_widget.cpp:1782
 msgid "Parent must be a widget object"
 msgstr ""
@@ -746,6 +301,238 @@ msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1917
 msgid "Unknown Color Group '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_multilineedit.cpp:397
+#, c-format
+msgid "No such line '%d'"
+msgstr ""
+
+#: src/modules/objects/class_popupmenu.cpp:214
+msgid "Icon '%Q' doesn't exist"
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:144
+msgid "Unknown aspect ratio: using default value IgnoreAspectRatio"
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:148
+msgid "Unknown tranformation mode: using default value Fast"
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:193
+#: src/modules/objects/class_tbrowser.cpp:103
+msgid "I can't find the specified file '%Q'."
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:211
+#: src/modules/objects/class_socket.cpp:428
+#: src/modules/objects/class_socket.cpp:499
+#: src/modules/objects/class_file.cpp:369
+#: src/modules/objects/class_file.cpp:489
+msgid "Buffer parameter is not an object"
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:216
+#: src/modules/objects/class_socket.cpp:433
+#: src/modules/objects/class_file.cpp:374
+#: src/modules/objects/class_file.cpp:508
+msgid "Buffer parameter is not a memorybuffer object"
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:262
+msgid "Destination parameter is not an object"
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:268
+msgid "Destination must be a pixmap object"
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:278
+msgid "Area dimensions are out of destination size "
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:285
+#: src/modules/objects/class_pixmap.cpp:294
+msgid "Pixmap dimensions are out of destination size "
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:301
+msgid "Offset width area is out of pixmap size "
+msgstr ""
+
+#: src/modules/objects/class_pixmap.cpp:306
+msgid "Offset height area is out of pixmap size "
+msgstr ""
+
+#: src/modules/objects/class_hbox.cpp:146
+#: src/modules/objects/class_hbox.cpp:178
+#: src/modules/objects/class_vbox.cpp:180
+msgid "The widget must be a child of this hbox"
+msgstr ""
+
+#: src/modules/objects/class_combobox.cpp:173
+#: src/modules/objects/class_combobox.cpp:281
+#: src/modules/objects/class_listwidget.cpp:188
+msgid "No string parameter given - using empty string"
+msgstr ""
+
+#: src/modules/objects/class_combobox.cpp:176
+#: src/modules/objects/class_combobox.cpp:193
+#: src/modules/objects/class_listwidget.cpp:191
+#: src/modules/objects/class_listwidget.cpp:209
+#, c-format
+msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
+msgstr ""
+
+#: src/modules/objects/class_combobox.cpp:330
+msgid "Invalid insertion Policy '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_lcd.cpp:142
+msgid "Unknown mode '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_lcd.cpp:156
+msgid "Unknown segment style '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_process.cpp:221
+msgid "Process could not be started."
+msgstr ""
+
+#: src/modules/objects/class_toolbutton.cpp:284
+msgid "Can't add a non-popupmenu object"
+msgstr ""
+
+#: src/modules/objects/class_toolbutton.cpp:326
+msgid "Unknown text position '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_slider.cpp:268
+msgid "Unknown tickmark '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_slider.cpp:282
+#: src/modules/objects/class_groupbox.cpp:348
+msgid "Unknown orientation '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_treewidget.cpp:404
+msgid "Invalid selection mode '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_treewidget.cpp:419
+msgid "Unknown '%Q' sort order: switching to ascending order"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:272
+msgid "Invalid selection mode '%Q' assuming single"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:303
+msgid "Can't insert the listwidget itself!"
+msgstr ""
+
+#: src/modules/objects/class_listwidget.cpp:308
+msgid "Can't insert a non-widget object"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:512
+#: src/modules/objects/class_file.cpp:40
+#: src/modules/objects/class_file.cpp:480
+msgid "File is not open!"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:523
+msgid "Buffer parameter is not a memorybuffer or file object"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:566
+msgid "No socket object specified"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:572
+msgid "Invalid socket object specified (it doesn't inherit from socket)"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:584
+msgid "There is no connection to accept!"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:610
+msgid "The hex string lenght is not a multiple of 2"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:627
+#: src/modules/objects/class_file.cpp:613
+msgid "The hex string is not correct!"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:652
+#, c-format
+msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:657
+#: src/modules/objects/class_socket.cpp:688
+msgid "Another connection in progress"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:705
+msgid "No IPv6 support in this executable"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:727
+#: src/modules/objects/class_socket.cpp:941
+msgid "Invalid IP address (%Q)"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:748
+msgid "Socket creation failed"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:763
+#: src/modules/objects/class_socket.cpp:784
+msgid "Invalid socket address"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:771
+#: src/modules/objects/class_socket.cpp:792
+msgid "Bind failure"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:802
+msgid "Listen failure"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:935
+msgid "Invalid IP address "
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:963
+msgid "Failed to create the socket"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:975
+msgid "Failed to setup a nonblocking socket"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:996
+msgid "Connect failure: "
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:1023
+msgid "Connect attempt timed out"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:1052
+msgid "Can't start the DNS thread"
+msgstr ""
+
+#: src/modules/objects/class_socket.cpp:1198
+msgid ""
+"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""
 
 #: src/modules/objects/class_xmlreader.cpp:151
@@ -780,6 +567,219 @@ msgstr ""
 
 #: src/modules/objects/class_xmlreader.cpp:358
 msgid "Data is not a memorybuffer object or string"
+msgstr ""
+
+#: src/modules/objects/class_tabwidget.cpp:257
+#: src/modules/objects/class_tabwidget.cpp:276
+#: src/modules/objects/class_tabwidget.cpp:298
+#: src/modules/objects/class_tabwidget.cpp:353
+msgid "Can't find the tab "
+msgstr ""
+
+#: src/modules/objects/class_tabwidget.cpp:376
+msgid "Can't find the tab"
+msgstr ""
+
+#: src/modules/objects/class_tabwidget.cpp:396
+msgid "Unknown position '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_vbox.cpp:150
+msgid "The widget must be a child of this vbox"
+msgstr ""
+
+#: src/modules/objects/class_vbox.cpp:200
+#: src/modules/objects/class_layout.cpp:308
+msgid "Unknown alignment: '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_wrapper.cpp:148
+msgid ""
+"The window identifier preceded by WinId must be the first object in the "
+"search path"
+msgstr ""
+
+#: src/modules/objects/class_wrapper.cpp:164
+msgid "Failed to find one of the wrap path widgets ('%Q::%Q')"
+msgstr ""
+
+#: src/modules/objects/class_wrapper.cpp:173
+msgid "Failed to find the widget to wrap"
+msgstr ""
+
+#: src/modules/objects/class_layout.cpp:139
+msgid "The parent of a layout must be a widget!"
+msgstr ""
+
+#: src/modules/objects/class_layout.cpp:268
+msgid "Invalid resize mode defaulting to Auto"
+msgstr ""
+
+#: src/modules/objects/class_layout.cpp:289
+msgid "The widget must be a child of this layout"
+msgstr ""
+
+#: src/modules/objects/class_buttongroup.cpp:95
+msgid "Buttongroup supports only checkbox and radiobox object"
+msgstr ""
+
+#: src/modules/objects/class_http.cpp:181
+msgid "Host '%Q' is not a valid url"
+msgstr ""
+
+#: src/modules/objects/class_http.cpp:247
+msgid "'%Q' is not a valid file path"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:102
+msgid "Can't add a null object"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:109
+msgid ""
+"Invalid object handle passed as parameter (the object is no longer "
+"existing ?)"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:115
+msgid "Object in invalid state"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:121
+msgid "Can't set a non-widget object to be the main widget of a dock window"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:127
+msgid "The added widget is not a child of this dock window"
+msgstr ""
+
+#: src/modules/objects/class_dockwindow.cpp:193
+msgid "Invalid dock area specified"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:183
+msgid "Class '%Q' is not defined"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:257
+msgid "Inexisting target object for objects.connect"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:262
+msgid "Inexisting source object for objects.connect"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:267
+msgid "Inexisting target slot '%Q' for objects.connect"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:352
+#: src/modules/objects/libkviobjects.cpp:451
+msgid "The class '%Q' does not exist"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:409
+msgid "Object does not exists"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:553
+msgid "Inexisting class object for objects.name"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:596
+msgid "Inexisting target object for objects.disconnect"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:601
+msgid "Inexisting source object for objects.disconnect"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:647
+msgid "Source is not an object"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:653
+msgid "Destination is not an object"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:663
+msgid "Widget, Image or Pixmap required "
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:673
+msgid "Widget or Pixmap required"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:749
+msgid "One or more of background, foreground or destination aren't objects"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:755
+msgid "Pixmap objects required"
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:778
+msgid "Values for background are out of image size "
+msgstr ""
+
+#: src/modules/objects/libkviobjects.cpp:783
+msgid "Values for foreground are out of image size "
+msgstr ""
+
+#: src/modules/objects/class_memorybuffer.cpp:97
+msgid "The file '%Q' does not exist"
+msgstr ""
+
+#: src/modules/objects/class_memorybuffer.cpp:115
+msgid "Cannot open file '%Q' for writing"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:228
+msgid "Empty filename string"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:249
+msgid "No such open mode '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:321
+msgid "Argument too long, using only first char"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:323
+msgid "Write error occured!"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:332
+msgid "Read error occured!"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:346
+msgid "Argument too long, using only the first char"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:421
+msgid "The incoming data isn't an array"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:431
+msgid "The incoming data isn't a Dictionary"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:441
+msgid "Unsupported datatype '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:500
+msgid "The memoryBuffer object is empty: nothing will be saved"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:516
+msgid "Block parameter must be a string or a memorybuffer object"
+msgstr ""
+
+#: src/modules/objects/class_file.cpp:597
+msgid "Lenght of hex string is not multiple of 2"
 msgstr ""
 
 #: src/modules/objects/object_macros.h:104

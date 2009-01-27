@@ -7,32 +7,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 14:59+0100\n"
+"POT-Creation-Date: 2009-01-27 20:25+0100\n"
 "PO-Revision-Date: 2007-12-19 10:23+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team: Ukrainian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/eventeditor/eventeditor.cpp:394
-#, fuzzy, c-format
-msgid ""
-"\n"
-"\n"
-"\tEvent:\n"
-"\t\t%s\n"
-"\n"
-"\tParameters:\n"
-"%s"
-msgstr ""
-"\n"
-"\n"
-"\tсобытие:\n"
-"\t\t%s\n"
-"\n"
-"\tпараметры:\n"
-" %s"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:686
 msgid ""
@@ -104,48 +85,18 @@ msgstr "\r!nс\r%Q\r [%Q@\r!h\r%Q\r] тільки що покинув \r!c\r%Q\r
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
 msgstr "\r!nс\r%Q\r [%Q@\r!h\r%Q\r] тільки що покинув \r!c\r%Q\r: %Q"
 
-#: src/modules/reguser/libkvireguser.cpp:820
-#, fuzzy
-msgid "    Mask: %Q!%Q@%Q"
-msgstr "    Маска: %Q! %Q@%Q"
-
-#: src/modules/reguser/libkvireguser.cpp:834
-msgid "    No properties"
-msgstr "    Немає властивостей"
-
-#: src/modules/reguser/libkvireguser.cpp:831
-msgid "    Property: %Q=%Q"
-msgstr "    Властивість: %Q=%Q"
-
-#: src/modules/reguser/libkvireguser.cpp:816
-msgid "    Warning: this user has no registration masks"
-msgstr "    Попередження: цей користувач не має реєстраційної маски"
-
-#: src/modules/regchan/libkviregchan.cpp:212
-#, c-format
-msgid "   Property: %s=%s"
-msgstr "   Властивість: %s=%s"
-
 #: src/kvirc/ui/kvi_query.cpp:255
 msgid " (%1 hops)"
 msgstr " (%1 стрибків)"
 
-#: src/modules/reguser/libkvireguser.cpp:812
-msgid " User: %c%Q"
-msgstr " Користувач: %c%Q"
-
-#: src/kvirc/ui/kvi_query.cpp:456 src/kvirc/ui/kvi_console.cpp:1121
-#: src/kvirc/ui/kvi_channel.cpp:1053
+#: src/kvirc/ui/kvi_channel.cpp:1053 src/kvirc/ui/kvi_console.cpp:1121
+#: src/kvirc/ui/kvi_query.cpp:456
 msgid " on "
 msgstr " на "
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:212
 msgid "### End of existing data buffer."
 msgstr "### Кінець існуючого буфера даних."
-
-#: src/modules/popupeditor/popupeditor.cpp:95
-msgid "### Epilogue ###"
-msgstr "### Епілог ###"
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:208
 msgid "### Existing data buffer:"
@@ -160,10 +111,6 @@ msgstr "### Журналювання почато %s ###"
 #, fuzzy
 msgid "### Log session terminated at %1 ###"
 msgstr "### Журналювання завершено %s ###"
-
-#: src/modules/popupeditor/popupeditor.cpp:99
-msgid "### Prologue ###"
-msgstr "### Пролог ###"
 
 #: src/modules/objects/class_multilineedit.cpp:850
 #: src/modules/objects/class_multilineedit.cpp:1050
@@ -507,31 +454,15 @@ msgstr "&Про KVIrc"
 msgid "&Add Ban"
 msgstr "&Додати бан"
 
-#: src/modules/reguser/dialog.cpp:244
-msgid "&Add Group..."
-msgstr "&Додати групу..."
-
-#: src/modules/raweditor/raweditor.cpp:191
-msgid "&Add Raw Event..."
-msgstr "&Додати заготівлю події..."
-
 #: src/kvilib/system/kvi_locale.cpp:1036
 msgid "&Add to Custom Colors"
 msgstr "&Додати до користувальницьких квітів"
-
-#: src/modules/reguser/dialog.cpp:239 src/modules/reguser/edituser.cpp:371
-msgid "&Add..."
-msgstr "&Додати..."
 
 #: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:514
 #: src/kvirc/ui/kvi_console.cpp:548
 msgid "&Always"
 msgstr "&Завжди"
 
-#: src/modules/eventeditor/eventeditor.cpp:512
-#: src/modules/raweditor/raweditor.cpp:489
-#: src/modules/aliaseditor/aliaseditor.cpp:1564
-#: src/modules/popupeditor/popupeditor.cpp:1325
 #: src/kvirc/ui/kvi_modeeditor.cpp:80
 msgid "&Apply"
 msgstr "&Застосувати"
@@ -548,14 +479,13 @@ msgstr "&Автоматичний предпросмотр"
 msgid "&Basic colors"
 msgstr "&Базові кольори"
 
+#: src/kvirc/ui/kvi_selectors.cpp:304 src/modules/setup/setupwizard.cpp:243
+#: src/modules/setup/setupwizard.cpp:257 src/modules/setup/setupwizard.cpp:285
 #: src/modules/avatar/libkviavatar.cpp:93
-#: src/modules/setup/setupwizard.cpp:243 src/modules/setup/setupwizard.cpp:257
-#: src/modules/setup/setupwizard.cpp:285 src/kvirc/ui/kvi_selectors.cpp:304
 msgid "&Browse..."
 msgstr "&Вибрати..."
 
-#: src/kvilib/system/kvi_locale.cpp:1089 src/modules/url/libkviurl.cpp:390
-#: src/modules/editor/scripteditor.cpp:1016
+#: src/modules/url/libkviurl.cpp:390 src/kvilib/system/kvi_locale.cpp:1089
 msgid "&Cancel"
 msgstr "С&касування"
 
@@ -575,7 +505,6 @@ msgstr "&Конфігурація"
 msgid "&Configure KVIrc..."
 msgstr "&Настроїти KVirc..."
 
-#: src/modules/popupeditor/popupeditor.cpp:442
 #: src/kvirc/ui/kvi_input_editor.cpp:717
 msgid "&Copy"
 msgstr "&Копіювати"
@@ -588,54 +517,13 @@ msgstr "&Користувальницькі кольори"
 msgid "&Define Custom Colors >>"
 msgstr "&Визначите користувальницькі кольори >>"
 
-#: src/modules/eventeditor/eventeditor.cpp:202
-#: src/modules/raweditor/raweditor.cpp:170
-msgid "&Disable Handler"
-msgstr "В&иключити оброблювач"
-
 #: src/kvirc/ui/kvi_window.cpp:757
 msgid "&Dock"
 msgstr "&Дока"
 
-#: src/modules/reguser/edituser.cpp:380
-msgid "&Edit"
-msgstr "&Редагувати"
-
 #: src/kvilib/system/kvi_locale.cpp:1055
 msgid "&Edit Bookmarks"
 msgstr "&Редагувати закладки"
-
-#: src/modules/reguser/dialog.cpp:256
-msgid "&Edit..."
-msgstr "&Редагувати..."
-
-#: src/modules/eventeditor/eventeditor.cpp:198
-#: src/modules/raweditor/raweditor.cpp:166
-msgid "&Enable Handler"
-msgstr "&Включити оброблювач"
-
-#: src/modules/codetester/codetester.cpp:57
-msgid "&Execute"
-msgstr "&Виконати"
-
-#: src/modules/eventeditor/eventeditor.cpp:105
-#: src/modules/raweditor/raweditor.cpp:106
-#: src/modules/popupeditor/popupeditor.cpp:1037
-msgid "&Export All To..."
-msgstr "&Експортувати все в..."
-
-#: src/modules/eventeditor/eventeditor.cpp:210
-#: src/modules/raweditor/raweditor.cpp:178
-msgid "&Export Handler To..."
-msgstr "&Експорт оброблювача в..."
-
-#: src/modules/popupeditor/popupeditor.cpp:1109
-msgid "&Export Popup To..."
-msgstr "&Експортувати спливаюче меню в..."
-
-#: src/modules/popupeditor/popupeditor.cpp:1039
-msgid "&Export selected To..."
-msgstr "&Експортувати виділене в..."
 
 #: src/kvilib/system/kvi_locale.cpp:1086
 msgid "&Filter:"
@@ -685,40 +573,18 @@ msgstr "&Розташування:"
 msgid "&Module"
 msgstr "&Модуль"
 
-#: src/modules/reguser/edituser.cpp:101
-msgid "&New"
-msgstr "&Новий"
-
-#: src/modules/eventeditor/eventeditor.cpp:215
-#: src/modules/raweditor/raweditor.cpp:183
-msgid "&New Handler"
-msgstr "&Новий оброблювач"
-
-#: src/modules/popupeditor/popupeditor.cpp:1096
-msgid "&New Popup"
-msgstr "&Нове спливаюче меню"
-
 #: src/modules/setup/setupwizard.cpp:85
 msgid "&Next >"
 msgstr "&Далі >"
 
+#: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:516
+#: src/kvirc/ui/kvi_console.cpp:550 src/modules/addon/managementdialog.cpp:266
 #: src/modules/setup/setupwizard.cpp:747
-#: src/modules/addon/managementdialog.cpp:266 src/kvirc/ui/kvi_frame.cpp:906
-#: src/kvirc/ui/kvi_console.cpp:516 src/kvirc/ui/kvi_console.cpp:550
 msgid "&No"
 msgstr "&Ні"
 
+#: src/modules/url/libkviurl.cpp:396 src/modules/avatar/libkviavatar.cpp:103
 #: src/kvilib/system/kvi_locale.cpp:1088
-#: src/modules/avatar/libkviavatar.cpp:103
-#: src/modules/eventeditor/eventeditor.cpp:454
-#: src/modules/eventeditor/eventeditor.cpp:507
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:484
-#: src/modules/aliaseditor/aliaseditor.cpp:1559
-#: src/modules/url/libkviurl.cpp:396
-#: src/modules/popupeditor/popupeditor.cpp:1320
-#: src/modules/reguser/dialog.cpp:285 src/modules/reguser/edituser.cpp:113
-#: src/modules/reguser/edituser.cpp:274 src/modules/reguser/edituser.cpp:487
 msgid "&OK"
 msgstr "&Ok"
 
@@ -730,16 +596,12 @@ msgstr "&Іншої..."
 msgid "&Paste"
 msgstr "&Вставити"
 
-#: src/modules/popupeditor/popupeditor.cpp:448
-msgid "&Paste Below"
-msgstr "&Вставити знизу"
-
 #: src/kvilib/system/kvi_locale.cpp:1084
 msgid "&Preview"
 msgstr "&Попередній перегляд"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:114
 #: src/kvirc/ui/kvi_menubar.cpp:251
+#: src/modules/trayicon/libkvitrayicon.cpp:114
 msgid "&Quit"
 msgstr "&Вихід"
 
@@ -761,7 +623,7 @@ msgstr "Зареєструвати"
 msgid "&Regular expression"
 msgstr "&Регулярне вираження"
 
-#: src/modules/url/libkviurl.cpp:285 src/modules/reguser/edituser.cpp:105
+#: src/modules/url/libkviurl.cpp:285
 msgid "&Remove"
 msgstr "&Видалити"
 
@@ -769,14 +631,9 @@ msgstr "&Видалити"
 msgid "&Remove Selected"
 msgstr "&Видалити обране"
 
-#: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1021
+#: src/modules/editor/scripteditor.cpp:255
 msgid "&Replace"
 msgstr "Заміна"
-
-#: src/modules/editor/scripteditor.cpp:1011
-msgid "&Replace in all Aliases"
-msgstr "Замінити у всіх аліасах"
 
 #: src/kvirc/ui/kvi_window.cpp:768
 msgid "&Restore"
@@ -840,9 +697,9 @@ msgstr "&Відокремити"
 msgid "&Window"
 msgstr "&Вікна"
 
+#: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:515
+#: src/kvirc/ui/kvi_console.cpp:549 src/modules/addon/managementdialog.cpp:266
 #: src/modules/setup/setupwizard.cpp:747
-#: src/modules/addon/managementdialog.cpp:266 src/kvirc/ui/kvi_frame.cpp:906
-#: src/kvirc/ui/kvi_console.cpp:515 src/kvirc/ui/kvi_console.cpp:549
 msgid "&Yes"
 msgstr "&Так"
 
@@ -882,9 +739,9 @@ msgstr "Відповідно"
 msgid "(None)"
 msgstr "(Нічого)"
 
+#: src/kvirc/ui/kvi_channel.cpp:1640 src/kvirc/sparser/kvi_sp_numeric.cpp:609
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:646
 #: src/modules/links/linkswindow.cpp:315
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:609
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:646 src/kvirc/ui/kvi_channel.cpp:1640
 msgid "(Unknown)"
 msgstr "(Невідомий)"
 
@@ -1097,52 +954,6 @@ msgstr ""
 "також рядка типу <b>c&lt;n</b> або <b>c&gt;n</b> де <b>n</b> - мінімальне "
 "або максимальна кількість користувачів на каналі</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:242
-msgid ""
-"<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
-"order to decide if this entry has to be shown.<br>An empty condition "
-"evaluates to true.</center>"
-msgstr ""
-"<center><b>Булево умова</b><br>Буде визначати чи показувати спливаюче меню "
-"під час виклику<br>Порожня умова приймається за істину</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:260
-msgid ""
-"<center><b>External menu name</b><br>This allows to nest externally defined "
-"popup menus. The popup menu with the specified name will be looked up at "
-"menu setup time.</center>"
-msgstr ""
-"<center><b>Ім'я зовнішнього меню</b><br>Це дозволить вставити зовнішнє "
-"спливаюче меню. Меню із цим ім'ям буде шукатися під час установки</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:251
-msgid ""
-"<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
-"path or a relative path.<br>Portable scripts should never use absolute paths."
-"</center>"
-msgstr ""
-"<center><b>Ідентифікатор іконки</b><br>Може бути внутрішнім ID іконки, "
-"абсолютним або відносним шляхом.<br>Стерпні сценарії не повинні містити "
-"абсолютних шляхів</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:270
-msgid ""
-"<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
-"center>"
-msgstr ""
-"<center><b>ID Пункту</b><br>Це дозволить вам використати delpopupitem "
-"пізніше.</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:233
-msgid ""
-"<center><b>Visible text</b><br>May contain identifiers that will be "
-"evaluated at popup call time.<br>For labels, this text can contain also "
-"limited HTML tags.</center>"
-msgstr ""
-"<center><b>Видимий текст</b><br>Може містити ідентифікатори які визначені "
-"при виклику спливаючі меню.<br>Цей текст також може містити деякі HTML теги</"
-"center>"
-
 #: src/modules/mircimport/libkvimircimport.cpp:151
 msgid ""
 "<center><b>Welcome!</b><br><br>This wizard will guide you in the process of "
@@ -1160,48 +971,6 @@ msgid ""
 msgstr ""
 "<center>Тут ви можете змінити URL з якого буде завантажений список. Для "
 "більшості випадків можна залишити запропоноване значення</center>"
-
-#: src/modules/reguser/dialog.cpp:93
-msgid ""
-"<center>This is the list of registered users. KVIrc can automatically "
-"recognize and associate properties to them.<br>Use the buttons on the right "
-"to add, edit and remove entries. The \"notify\" column allows you to quickly "
-"add users to the notify list. Notify list fine-tuning can be performed by "
-"editing the entry properties.</center>"
-msgstr ""
-"<center>Це список зареєстрованих користувачів. KVIrc може автоматично "
-"дізнаватися й асоціювати з ними властивості<br>Використайте кнопки праворуч "
-"для додавання, видалення й редагування пунктів. Стовпчик \"Повідомлення\" "
-"дозволяє вам швидко додавати користувачів у список повідомлень. Тонке "
-"настроювання списку виконується при редагуванні властивостей.</center>"
-
-#: src/modules/reguser/edituser.cpp:260
-msgid ""
-"<center>This the <b>hostname</b> that will match this user. <b>*</b> will "
-"match any hostname.</center>"
-msgstr ""
-"<center>Це <b>хост</b> відповідному цьому користувачеві. <b>*</b> буде "
-"відповідати кожному хосту.</center>"
-
-#: src/modules/reguser/edituser.cpp:242
-msgid ""
-"<center>This the <b>nickname</b> that will match this user, default value is "
-"the registered name.</center>"
-msgstr ""
-"<center>Це <b>Нік</b> відповідному цьому користувачеві, є зареєстрованим і "
-"використається по умовчанню</center>"
-
-#: src/modules/reguser/edituser.cpp:251
-msgid ""
-"<center>This the <b>username</b> that will match this user. <b>*</b> will "
-"match any username.</center>"
-msgstr ""
-"<center>Це <b>Нік</b> відповідному цьому користувачеві. <b>*</b> буде "
-"відповідати будь-якому імені користувача</center>"
-
-#: src/modules/reguser/edituser.cpp:401
-msgid "<center>You can enter a space separated list of nicknames.</center>"
-msgstr "<center>Ви можете ввести через пробіл список ніків.</center>"
 
 #: src/modules/list/listwindow.cpp:299
 #, c-format
@@ -1258,24 +1027,6 @@ msgstr ""
 "турбуйтеся. У вас буде можливість зберегти попередню конфігурацію</"
 "p><p>Кликніть на \"<b>Далі</b>\" щоб продовжитися</p>"
 
-#: src/modules/reguser/wizard.cpp:112
-msgid ""
-"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
-"mask must be in the following form:<br><b>nickname!username@hostname</"
-"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
-"choosing the masks, as they are the only way to verify the identity of a "
-"registered user.<br><br>You can enter at most two masks here, if you wish to "
-"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
-"dialog. You must enter at least one mask.</p>"
-msgstr ""
-"<p>Зареєстрований користувач ідентифікується по однієї або декількох "
-"<b>маскам IRC</b>.<br>Маска повинна бути наступного виду: <br><b>Нік!"
-"ім'я@хост</b><br> і може містити символи шаблонів '*' і '?'. Будьте уважні "
-"при виборі маски, тому що вона єдиний спосіб ідентифікувати "
-"користувача<br><br>Тут ви можете визначити не більше двох масок, якщо вам "
-"потрібно більше використайте кнопку \"<b>Редагувати</b>\" у діалозі "
-"реєстрації користувачів. Ви повинні визначити хоча б одну маску</p>"
-
 #: src/modules/setup/setupwizard.cpp:185
 msgid ""
 "<p>All of the files in this distribution are covered by the GPL. In human "
@@ -1299,35 +1050,6 @@ msgid ""
 "just click \"<b>Next</b>\" and go to the next screen.</p>"
 msgstr ""
 
-#: src/modules/reguser/wizard.cpp:208
-msgid ""
-"<p>If you want to be notified when this user is online or goes offline, you "
-"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
-"enter at most two nicknames here, if you wish to add more nicknames, use the "
-"\"<b>Edit</b>\" button in the Registered Users dialog.</p>"
-msgstr ""
-"<p>Якщо ви хочете одержувати повідомлення коли користувач з'являється в "
-"онлайне або йде в оффлайн, ви повинні визначити тут список ніків які буде "
-"шукати KVIrc<br><br>Тут ви можете визначити не більше двох ніків, якщо вам "
-"потрібно більше використайте кнопку \"<b>Редагувати</b>\" в діалозі "
-"реєстрації користувачів</p>"
-
-#: src/modules/reguser/wizard.cpp:183
-msgid ""
-"<p>If you want to store an avatar image for this user, you can set it here. "
-"KVIrc will show the avatar in the userlist next to the user's nickname."
-"<br>An avatar can be in any supported image format (PNG is recommended). "
-"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
-"fit in the userlist, thus it's better to use small, low-resolution images.</"
-"p>"
-msgstr ""
-"<p>Якщо ви хочете асоціювати із цим користувачем аватар, ви можете зробити "
-"це тут. KVIrc буде показувати цей аватар у списку користувачів поруч з ніком."
-"<br>У якості аватарів підтримуються будь-які формати картинок "
-"(рекомендується PNG). Майте через, що KVIrc завантажує аватари на згадку й "
-"там їх масштабує щоб помістити в список користувачів, тому краще вибирати "
-"картинки невеликих розмірів з низьким дозволом</p>"
-
 #: src/modules/setup/setupwizard.cpp:222
 msgid ""
 "<p>Please choose a folder for KVIrc to store its settings and other data, "
@@ -1345,37 +1067,6 @@ msgstr ""
 "\"<b>Далі</b>\".<br><br>Якщо у вас була встановлена попередня версія KVIrc, "
 "ви можете вибрати існуючий каталог настроювань, і ваша конфігурація буде "
 "збережена</p>"
-
-#: src/modules/reguser/wizard.cpp:254
-msgid ""
-"<p>That's it. The user registration has been completed.<br><br>Click "
-"\"<b>Finish</b>\" to close this dialog.</p>"
-msgstr ""
-"<p>Реєстрація користувача завершена<br><br>Клацніть на \"<b>Готово</b>\" для "
-"закриття цього діалогу</p>"
-
-#: src/modules/reguser/wizard.cpp:88
-msgid ""
-"<p>Welcome to the user registration wizard.<br>This process allows you to "
-"add an IRC user to the database and set properties for that user. KVIrc will "
-"be (hopefully) able to recognize the user, add him to the notify list, and "
-"display the associated avatar.<br><br>First of all, you must insert an "
-"<b>entry name or real name</b> for the user you're going to register. The "
-"name will be used to identify the database entry and has no specific "
-"requirements, it can be a given name, nickname, or just some text to remind "
-"you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
-"</p>"
-msgstr ""
-"<p>Ласкаво просимо в майстер реєстрації користувача<br>Ця процедура "
-"дозволить вам додати користувача IRC до бази даних і визначити властивості "
-"цього користувача. KVIrc зможе ідентифікувати користувача, додати його у "
-"список повідомлень і покаже пов'язаний з ним аватар.<br><br>Насамперед ви "
-"повинні <b>увести реальне ім'я</b> для користувача якого ви намагаєтеся "
-"зареєструвати. Це ім'я буде використатися для ідентифікації в базі даних і "
-"не має ніяких специфічних вимог, воно може бути просто відверненим ім'ям, "
-"ніком або яким-небудь текстом який буде нагадувати вам про це "
-"людині<br>Наприклад: \"Вася Пупкін\", \"Брітні Спірс\".\n"
-"</p>"
 
 #: src/modules/setup/setupwizard.cpp:744
 msgid ""
@@ -1435,18 +1126,6 @@ msgstr ""
 msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr ""
 
-#: src/modules/actioneditor/actioneditor.cpp:586
-msgid "Action"
-msgstr "Дія"
-
-#: src/modules/actioneditor/actioneditor.cpp:858
-msgid "Action Editor"
-msgstr "Редактор дій"
-
-#: src/modules/actioneditor/actioneditor.cpp:126
-msgid "Action code"
-msgstr "Код дії"
-
 #: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
 msgstr "Дії, пов'язані з настроюваннями"
@@ -1475,18 +1154,9 @@ msgstr "Активні виключення із запрошень"
 msgid "Acts as a separator for other items: performs no action"
 msgstr "Це роздільник для інших пунктів: ніяка дія не виконується"
 
-#: src/modules/url/libkviurl.cpp:484 src/kvirc/ui/kvi_maskeditor.cpp:213
+#: src/kvirc/ui/kvi_maskeditor.cpp:213 src/modules/url/libkviurl.cpp:484
 msgid "Add"
 msgstr "Додати"
-
-#: src/modules/reguser/dialog.cpp:233
-msgid "Add (Wizard)..."
-msgstr "Додати (Майстер)..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:521
-#: src/modules/aliaseditor/aliaseditor.cpp:1250
-msgid "Add Alias"
-msgstr "Додати аліас"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:355
 msgid "Add Applet"
@@ -1495,19 +1165,6 @@ msgstr "Додати апплет"
 #: src/kvilib/system/kvi_locale.cpp:1054
 msgid "Add Bookmark"
 msgstr "Додати закладку"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:526
-#: src/modules/aliaseditor/aliaseditor.cpp:1275
-msgid "Add Namespace"
-msgstr "Додати простір імен"
-
-#: src/modules/reguser/dialog.cpp:235
-msgid "Add a registered user by means of a user-friendly wizard."
-msgstr "Додайте реєстрацію користувача за допомогою дружнього майстра."
-
-#: src/modules/reguser/wizard.cpp:218
-msgid "Add this user to the notify list"
-msgstr "Додати цього користувача в список повідомлень"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1526
 msgid "Added %d sec file offer for file %Q (%Q) to recipient %Q"
@@ -1525,12 +1182,6 @@ msgstr "Адреса вже використається"
 msgid "Address:"
 msgstr "Адреса:"
 
-#: src/modules/reguser/dialog.cpp:246
-msgid "Adds a new group"
-msgstr "Додати нову групу"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:197
-#: src/modules/toolbareditor/toolbareditor.cpp:284
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
 msgid "Advanced..."
 msgstr "Додатково..."
@@ -1539,41 +1190,9 @@ msgstr "Додатково..."
 msgid "Age:"
 msgstr "Вік:"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:221
-#: src/modules/aliaseditor/aliaseditor.cpp:455
-#: src/modules/aliaseditor/aliaseditor.cpp:1453
-msgid "Alias"
-msgstr "Аліас"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1552
-msgid "Alias Editor"
-msgstr "Редактор аліасов"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-msgid "Alias Export"
-msgstr "Експорт аліаса"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1356
-#, fuzzy
-msgid "Alias already exists"
-msgstr "Адреса вже використається"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1123
-msgid ""
-"Alias names can contain only letters, digits, underscores and '::' namespace "
-"separators"
-msgstr ""
-"Ім'я аліаса може містити тільки цифри, букви, нижні підкреслення й '::' як "
-"роздільник просторів імен"
-
 #: src/kvilib/system/kvi_locale.cpp:1087
 msgid "All Files"
 msgstr "Всі файли"
-
-#: src/modules/reguser/edituser.cpp:441
-msgid "All Properties..."
-msgstr "Всі властивості..."
 
 #: src/modules/setup/setupwizard.cpp:300
 msgid "All settings in shared program folder (portable)"
@@ -1664,10 +1283,6 @@ msgstr "Запускається наступне з'єднання"
 msgid "Application Folders"
 msgstr "Каталоги додатка"
 
-#: src/modules/actioneditor/actioneditor.cpp:871
-msgid "Apply"
-msgstr "Застосувати"
-
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:193
 msgid "Apply to all IRC Contexts"
 msgstr "Застосувати до всім IRC контекстам"
@@ -1705,10 +1320,6 @@ msgstr "Автовхід на специфічні для мережі кана�
 msgid "Auto-joining server specific channels"
 msgstr "Автовхід на специфічні для сервера канали"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
-msgid "Automatically"
-msgstr "Автоматично"
-
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:178
 msgid "Available channel modes:"
 msgstr "Доступні режими каналу:"
@@ -1716,10 +1327,6 @@ msgstr "Доступні режими каналу:"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:160
 msgid "Available user modes:"
 msgstr "Доступні користувальницькі режими:"
-
-#: src/modules/reguser/edituser.cpp:426
-msgid "Avatar"
-msgstr "Аватар"
 
 #: src/kvirc/kernel/kvi_options.cpp:730
 msgid "Avatar change"
@@ -1735,8 +1342,8 @@ msgstr "Помилка завантаження аватара для %Q! %Q@%Q 
 msgid "Average hops: ~%d.%d"
 msgstr "Середня кількість стрибків: ~%d. %d"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:98
 #: src/kvirc/ui/kvi_statusbar.cpp:602
+#: src/modules/trayicon/libkvitrayicon.cpp:98
 msgid "Away"
 msgstr "відійшов"
 
@@ -1779,18 +1386,6 @@ msgstr "Повернутися скрізь"
 #: src/kvirc/ui/kvi_selectors.cpp:613
 msgid "Background"
 msgstr "Тло"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1122
-#: src/modules/aliaseditor/aliaseditor.cpp:1136
-#: src/modules/aliaseditor/aliaseditor.cpp:1147
-msgid "Bad Alias Name"
-msgstr "Некоректне ім'я аліаса"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1190
-#: src/modules/aliaseditor/aliaseditor.cpp:1204
-#: src/modules/aliaseditor/aliaseditor.cpp:1215
-msgid "Bad Namespace Name"
-msgstr "Некоректне ім'я для простору імен"
 
 #: src/kvilib/core/kvi_error.cpp:90
 msgid "Bad file descriptor"
@@ -1835,10 +1430,6 @@ msgstr "Бан по моїй масці"
 #: src/kvirc/kernel/kvi_options.cpp:804
 msgid "Ban unexception matching my mask"
 msgstr "Зняте виключення з відповідає моїй масці"
-
-#: src/modules/actioneditor/actioneditor.cpp:162
-msgid "Big Icon:"
-msgstr "Більша іконка:"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:350
 #, c-format
@@ -1992,11 +1583,6 @@ msgstr "Не можу запустити прослуховування соке
 msgid "Can't evaluate creation time"
 msgstr "Не можливо визначити час створення"
 
-#: src/modules/reguser/dialog.cpp:775
-msgid "Can't export the registered users database: Write error."
-msgstr ""
-"Неможливо експортувати базу дані реєстрації користувачів: Помилка запису."
-
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:265
 msgid "Can't find the proxy IP address: %Q"
 msgstr "Не знайдений IP адреса проксі: %Q"
@@ -2008,10 +1594,6 @@ msgstr "Не знайдений IP адреса сервера: %Q"
 #: src/modules/chan/libkvichan.cpp:50
 msgid "Can't find the window with id '%Q'"
 msgstr "Неможливо знайти вікно з ID '%Q'"
-
-#: src/modules/reguser/dialog.cpp:882
-msgid "Can't import the registered users database: Read error."
-msgstr "Не можу імпортувати базу реєстрації користувачів: Помилка читання."
 
 #: src/kvilib/core/kvi_error.cpp:116
 msgid "Can't kill a builtin class"
@@ -2026,25 +1608,16 @@ msgstr "Не можу записати балку у файл %Q"
 msgid "Can't open file \"%Q\" for writing"
 msgstr "Неможливо відкрити файл \"%s\" для запису"
 
-#: src/modules/reguser/dialog.cpp:696
-msgid "Can't open file %Q for writing."
-msgstr "Не можу відкрити файл %Q для запису."
-
-#: src/modules/reguser/dialog.cpp:796
-#, c-format
-msgid "Can't open file %s for reading."
-msgstr "Не можу відкрити файл %s для читання."
-
 #: src/kvilib/core/kvi_error.cpp:139
 msgid "Can't open file for appending"
 msgstr "Не можу відкрити файл для дозаписи"
 
-#: src/kvilib/file/kvi_packagefile.cpp:679
-#: src/kvilib/file/kvi_packagefile.cpp:932 src/kvilib/core/kvi_error.cpp:143
+#: src/kvilib/core/kvi_error.cpp:143 src/kvilib/file/kvi_packagefile.cpp:679
+#: src/kvilib/file/kvi_packagefile.cpp:932
 msgid "Can't open file for reading"
 msgstr "Не можу відкрити файл для читання"
 
-#: src/kvilib/file/kvi_packagefile.cpp:493 src/kvilib/core/kvi_error.cpp:140
+#: src/kvilib/core/kvi_error.cpp:140 src/kvilib/file/kvi_packagefile.cpp:493
 msgid "Can't open file for writing"
 msgstr "Не можу відкрити файл на запис"
 
@@ -2145,21 +1718,12 @@ msgstr "Не можу запустити прослуховування соке
 msgid "Can't start the ident service on IPv6 : socket() failed"
 msgstr "Не можу запустити прослуховування сокета: Помилка зв'язку"
 
-#: src/kvilib/file/kvi_packagefile.cpp:142
-#: src/kvilib/tal/kvi_tal_wizard.cpp:181 src/kvilib/system/kvi_locale.cpp:1027
-#: src/modules/toolbareditor/toolbareditor.cpp:192
-#: src/modules/toolbareditor/toolbareditor.cpp:411
+#: src/kvirc/ui/kvi_maskeditor.cpp:88 src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/modules/help/index.cpp:102 src/modules/setup/setupwizard.cpp:87
 #: src/modules/avatar/libkviavatar.cpp:108
-#: src/modules/actioneditor/actioneditor.cpp:877
-#: src/modules/setup/setupwizard.cpp:87
-#: src/modules/eventeditor/eventeditor.cpp:517
-#: src/modules/raweditor/raweditor.cpp:494
-#: src/modules/aliaseditor/aliaseditor.cpp:1569
-#: src/modules/popupeditor/popupeditor.cpp:1330
-#: src/modules/reguser/dialog.cpp:290 src/modules/reguser/edituser.cpp:117
-#: src/modules/reguser/edituser.cpp:278 src/modules/reguser/edituser.cpp:486
-#: src/modules/help/index.cpp:102 src/kvirc/ui/kvi_maskeditor.cpp:88
-#: src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/kvilib/tal/kvi_tal_wizard.cpp:181
+#: src/kvilib/file/kvi_packagefile.cpp:142
+#: src/kvilib/system/kvi_locale.cpp:1027
 msgid "Cancel"
 msgstr "С&касування"
 
@@ -2219,10 +1783,6 @@ msgstr "Очікуються ключові слова Case , match , regexp , d
 msgid "Case Insensitive"
 msgstr "Не враховувати регістр"
 
-#: src/modules/actioneditor/actioneditor.cpp:134
-msgid "Category:"
-msgstr "Категорія:"
-
 #: src/modules/action/libkviaction.cpp:66
 msgid "Category: %Q"
 msgstr "Категорія: %Q"
@@ -2260,10 +1820,10 @@ msgstr "Змінити Нік"
 msgid "Changed text encoding to %Q"
 msgstr "кодування тексту змінене на %Q"
 
+#: src/kvirc/kernel/kvi_actionmanager.cpp:68
+#: src/modules/list/listwindow.cpp:201
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:67
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:76
-#: src/modules/list/listwindow.cpp:201
-#: src/kvirc/kernel/kvi_actionmanager.cpp:68
 msgid "Channel"
 msgstr "Канал"
 
@@ -2365,11 +1925,6 @@ msgstr "Тема каналу:"
 msgid "Channel was created at %Q"
 msgstr "Канал створений %Q"
 
-#: src/modules/regchan/libkviregchan.cpp:207
-#, c-format
-msgid "Channel: %c%s@%s"
-msgstr "Канал: %c%s@%s"
-
 #: src/modules/list/listwindow.cpp:417
 msgid "Channels list download finished"
 msgstr "Завершене відновлення списку каналів"
@@ -2382,70 +1937,6 @@ msgstr "Символьний устрій"
 #, fuzzy
 msgid "Check on startup"
 msgstr "Статус з'єднання"
-
-#: src/modules/actioneditor/actioneditor.cpp:229
-msgid ""
-"Check this option if this action should be enabled also during the login "
-"operations (so when the logical IRC connection hasn't been estabilished yet)"
-msgstr ""
-"Включите цю опцію якщо дія повинне бути доступно вже під час входу (коли IRC "
-"з'єднання ще не встановлене)."
-
-#: src/modules/actioneditor/actioneditor.cpp:208
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window belongs to an irc context"
-msgstr ""
-"Включите цю опцію якщо дія повинне бути доступно тільки у випадку коли "
-"активне вікно належить IRC контексту."
-
-#: src/modules/actioneditor/actioneditor.cpp:219
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window has an active IRC connection"
-msgstr ""
-"Включите цю опцію якщо дія повинне бути доступно тільки у випадку коли "
-"активне вікно має активне IRC з'єднання."
-
-#: src/modules/actioneditor/actioneditor.cpp:252
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a channel"
-msgstr ""
-"Включите цю опцію якщо дія повинне бути доступно тільки в активному вікні "
-"каналу"
-
-#: src/modules/actioneditor/actioneditor.cpp:241
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a console"
-msgstr ""
-"Включите цю опцію якщо дія повинне бути доступно тільки в активному вікні "
-"термінала"
-
-#: src/modules/actioneditor/actioneditor.cpp:274
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a dcc chat"
-msgstr ""
-"Включите цю опцію якщо дія повинне бути доступно тільки в активному вікні "
-"DCC чата"
-
-#: src/modules/actioneditor/actioneditor.cpp:263
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a query"
-msgstr ""
-"Включите цю опцію якщо дія повинне бути доступно тільки в активному вікні "
-"привата"
-
-#: src/modules/actioneditor/actioneditor.cpp:235
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is of a specified type"
-msgstr ""
-"Включите цю опцію якщо дія повинне бути доступно тільки в активних вікнах "
-"заданих типів."
 
 #: src/modules/avatar/libkviavatar.cpp:69
 msgid "Choose Avatar - KVIrc"
@@ -2463,7 +1954,6 @@ msgstr "Виберіть тимчасовий шрифт..."
 msgid "Choose a Configuration Folder - KVIrc Setup"
 msgstr "Виберіть каталог конфігурації - Установник KVIrc"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:722
 #: src/kvirc/ui/kvi_selectors.cpp:367
 msgid "Choose a Directory - KVIrc"
 msgstr "Виберіть каталог - KVIrc"
@@ -2476,24 +1966,11 @@ msgstr "Виберіть каталог для накачувань - Устан
 msgid "Choose a File - KVIrc"
 msgstr "Виберіть файл - KVIrc"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:402
-#: src/modules/actioneditor/actioneditor.cpp:692
-#: src/modules/eventeditor/eventeditor.cpp:447
-#: src/modules/eventeditor/eventeditor.cpp:488
-#: src/modules/raweditor/raweditor.cpp:422
-#: src/modules/raweditor/raweditor.cpp:465
-#: src/modules/aliaseditor/aliaseditor.cpp:809
-#: src/modules/popupeditor/popupeditor.cpp:1129
-#: src/modules/popupeditor/popupeditor.cpp:1179
-#: src/modules/reguser/dialog.cpp:689 src/modules/reguser/dialog.cpp:789
-msgid "Choose a Filename - KVIrc"
-msgstr "Виберіть ім'я файлу - KVIrc"
-
 #: src/modules/mircimport/libkvimircimport.cpp:125
 msgid "Choose a servers.ini file"
 msgstr "Виберіть servers.ini файл"
 
-#: src/modules/avatar/libkviavatar.cpp:148 src/kvirc/ui/kvi_selectors.cpp:258
+#: src/kvirc/ui/kvi_selectors.cpp:258 src/modules/avatar/libkviavatar.cpp:148
 msgid "Choose an Image File - KVIrc"
 msgstr "Виберіть файл картинки - KVIrc"
 
@@ -2513,10 +1990,6 @@ msgstr "Виберіть зображення ..."
 #: src/kvirc/ui/kvi_ircview.cpp:2125
 msgid "Choose the background image..."
 msgstr "Виберіть фонове зображення..."
-
-#: src/modules/actioneditor/actioneditor.cpp:139
-msgid "Choose the category that best fits for this action"
-msgstr "Виберіть категорію, найбільш придатну для цієї дії"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:138
 msgid "Choose the file to share"
@@ -2565,13 +2038,11 @@ msgstr "Буфер обміну"
 msgid "Clo&se"
 msgstr "За&крити"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:331
+#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_ctcppagedialog.cpp:62
+#: src/kvirc/ui/kvi_window.cpp:774 src/modules/tip/libkvitip.cpp:121
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:114
 #: src/modules/addon/managementdialog.cpp:179
-#: src/modules/tip/libkvitip.cpp:121
 #: src/modules/theme/managementdialog.cpp:194
-#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_window.cpp:774
-#: src/kvirc/ui/kvi_ctcppagedialog.cpp:62
 msgid "Close"
 msgstr "Закрити"
 
@@ -2588,14 +2059,6 @@ msgstr "Близькі сервера (1 <= стрибків <= 3): %d (~%d. %d 
 msgid "Close this window"
 msgstr "Закрити це вікно"
 
-#: src/modules/actioneditor/actioneditor.cpp:128
-msgid "Code"
-msgstr "Код"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:571
-msgid "Collapse All Namespaces"
-msgstr "Згорнути всі простори імен"
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:234
 msgid "Color free (no ANSI colors)"
 msgstr "Вільні кольори (без квітів ANSI)"
@@ -2604,22 +2067,9 @@ msgstr "Вільні кольори (без квітів ANSI)"
 msgid "Color options (#RRGGBB)"
 msgstr "Опція кольорів (#RRGGBB)"
 
-#: src/modules/editor/scripteditor.cpp:522
-msgid "Colors"
-msgstr "Кольори"
-
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:975
 msgid "Command syntax %Q: %Q"
 msgstr ""
-
-#: src/modules/reguser/edituser.cpp:348
-msgid "Comment:"
-msgstr "Коментар:"
-
-#: src/modules/reguser/dialog.cpp:133
-#, fuzzy
-msgid "Comment: "
-msgstr "Коментар:"
 
 #: src/kvirc/ui/kvi_topicw.cpp:617
 msgid "Commit Changes"
@@ -2651,10 +2101,6 @@ msgstr "Помилка ініціалізації бібліотеки стис�
 #, fuzzy
 msgid "Compression library internal error"
 msgstr "Упс.. внутрішня помилка"
-
-#: src/modules/popupeditor/popupeditor.cpp:236
-msgid "Condition:"
-msgstr "Умова:"
 
 #: src/modules/list/listwindow.cpp:336
 #, fuzzy
@@ -2688,10 +2134,6 @@ msgstr "Конфігурація теми..."
 #: src/kvirc/ui/kvi_input.cpp:251
 msgid "Confirm Multiline Message"
 msgstr "Підтвердити многострокове повідомлення"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:383
-msgid "Confirm ToolBar Deletion"
-msgstr "Підтвердите видалення панелі інструментів"
 
 #: src/modules/addon/managementdialog.cpp:266
 msgid "Confirm addon uninstallation"
@@ -2791,7 +2233,7 @@ msgstr "Підключення до сервера %s на порт %u"
 msgid "Context"
 msgstr "Контекст"
 
-#: src/modules/editor/scripteditor.cpp:255
+#: src/modules/editor/scripteditor.cpp:254
 msgid "Context sensitive help"
 msgstr "Контекстна підказка"
 
@@ -2878,7 +2320,6 @@ msgstr ""
 msgid "Cryptography/text transformation"
 msgstr "Криптографічне/текстове перетворення"
 
-#: src/modules/popupeditor/popupeditor.cpp:436
 #: src/kvirc/ui/kvi_input_editor.cpp:715
 msgid "Cu&t"
 msgstr "Ви&різати"
@@ -2887,8 +2328,8 @@ msgstr "Ви&різати"
 msgid "Current IRC URI"
 msgstr "Поточний IRC URI"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1274
 #: src/kvirc/kernel/kvi_sslmaster.cpp:90
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1274
 msgid "Current transmission cipher"
 msgstr "Поточний шифр передачі"
 
@@ -2897,10 +2338,6 @@ msgstr "Поточний шифр передачі"
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:137
 msgid "Current window is not a channel"
 msgstr "Поточне вікно не є каналом"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:298
-msgid "Customize Toolbars"
-msgstr "Користувальницькі панелі інструментів"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:225
 msgid "Customize Toolbars..."
@@ -2949,9 +2386,7 @@ msgid "Decrypt key:"
 msgstr "Ключ для розшифровки:"
 
 #: src/kvilib/ext/kvi_regusersdb.cpp:683 src/kvilib/ext/kvi_regusersdb.cpp:684
-#: src/kvilib/irc/kvi_useridentity.cpp:175 src/modules/reguser/dialog.cpp:492
-#: src/modules/reguser/dialog.cpp:495 src/modules/reguser/dialog.cpp:496
-#: src/modules/reguser/dialog.cpp:498 src/modules/reguser/dialog.cpp:500
+#: src/kvilib/irc/kvi_useridentity.cpp:175
 msgid "Default"
 msgstr "За замовчуванням"
 
@@ -2959,24 +2394,12 @@ msgstr "За замовчуванням"
 msgid "Delete"
 msgstr "Видалити"
 
-#: src/modules/actioneditor/actioneditor.cpp:630
-msgid "Delete Actions"
-msgstr "Видалити дії"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:312
-msgid "Delete ToolBar"
-msgstr "Видалити панель інструментів"
-
 #: src/modules/links/linkswindow.cpp:486
 msgid "Description"
 msgstr "Опис"
 
-#: src/modules/actioneditor/actioneditor.cpp:141
-msgid "Description:"
-msgstr "Опис:"
-
-#: src/modules/action/libkviaction.cpp:67
 #: src/modules/addon/libkviaddon.cpp:148
+#: src/modules/action/libkviaction.cpp:67
 msgid "Description: %Q"
 msgstr "Опис: %Q"
 
@@ -3025,7 +2448,7 @@ msgstr "Каталог"
 msgid "Discard Changes"
 msgstr "Скасувати зміни"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:614 src/kvirc/ui/kvi_menubar.cpp:231
+#: src/kvirc/ui/kvi_menubar.cpp:231 src/kvirc/kernel/kvi_coreactions.cpp:614
 msgid "Disconnect"
 msgstr "Відключитися"
 
@@ -3054,25 +2477,9 @@ msgstr "Не заважайте... дивлюся телевізор"
 msgid "Do not overwrite folder? - KVIrc"
 msgstr "Не перезаписувати папку? - KVIrc"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:384
-msgid "Do you really want to delete toolbar \"%1\" ?"
-msgstr "Ви дійсно хочете видалити панель інструментів \"%1\" ?"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1022
-msgid "Do you really want to remove the alias \"%Q\" ?"
-msgstr "Ви дійсно хочете видалити аліас \"%Q\"?"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1024
-msgid "Do you really want to remove the namespace \"%Q\" ?"
-msgstr "Ви дійсно хочете видалити простір імен \"%Q\"?"
-
 #: src/modules/addon/managementdialog.cpp:262
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Ви дійсно хочете видалити доповнення \"%1\" ?"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:408
-msgid "Do you want the associated actions to be exported with the toolbar ?"
-msgstr "Ви хочете експортувати дії, пов'язані з панеллю інструментів ?"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:833
 #, fuzzy
@@ -3142,10 +2549,6 @@ msgstr "Перетягнути аплет можна при натиснутій
 msgid "Dreaded License Agreement"
 msgstr "Жахлива ліцензійна угода"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:64
-msgid "Drop here the icons from the toolbars to remove them"
-msgstr "Перетягнете сюди іконки з панелі інструментів щоб видалити їх"
-
 #: src/modules/ident/libkviident.cpp:485
 msgid "Dropping connection (request too long)"
 msgstr ""
@@ -3153,10 +2556,6 @@ msgstr ""
 #: src/modules/trayicon/libkvitrayicon.cpp:157
 msgid "Dum de dum de dum..."
 msgstr "Там тара там тирим бум бум..."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:265
-msgid "Duplicate ToolBar Id"
-msgstr "Дублікат Id панелі інструментів"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:125
 msgid "E&xtended regexp."
@@ -3182,26 +2581,6 @@ msgstr "Редагувати спливаючі меню..."
 msgid "Edit Raw Events..."
 msgstr "Редагувати низькорівневі події..."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:316
-msgid "Edit ToolBar"
-msgstr "Редагувати панель інструментів"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:266
-msgid "Edit the alias or namespace name"
-msgstr "Редагувати ім'я аліаса або простору імен."
-
-#: src/modules/eventeditor/eventeditor.cpp:116
-msgid "Edit the event handler name."
-msgstr "Редагування імені оброблювача події."
-
-#: src/modules/reguser/dialog.cpp:259
-msgid "Edit the first selected entry."
-msgstr "Редагувати перший обраний пункт."
-
-#: src/modules/raweditor/raweditor.cpp:111
-msgid "Edit the raw event handler name."
-msgstr "Редагування імені оброблювача події."
-
 #: src/kvilib/system/kvi_locale.cpp:1043
 msgid "Effects"
 msgstr "Ефекти"
@@ -3219,17 +2598,9 @@ msgstr "повідомлення"
 msgid "Empty request (EOT ?)"
 msgstr ""
 
-#: src/modules/actioneditor/actioneditor.cpp:233
-msgid "Enable Only in Specified Windows"
-msgstr "Доступно тільки в заданих вікнах"
-
 #: src/modules/url/libkviurl.cpp:446
 msgid "Enable URL ban list"
 msgstr "Включити URL бан аркуш"
-
-#: src/modules/actioneditor/actioneditor.cpp:228
-msgid "Enable at Login"
-msgstr "Доступно при вході"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:117
 msgid "Enable decryption"
@@ -3238,26 +2609,6 @@ msgstr "Включити дешифрацію"
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:105
 msgid "Enable encryption"
 msgstr "Включити криптовання"
-
-#: src/modules/reguser/edituser.cpp:454
-msgid "Enable ignore for this user"
-msgstr "Ігнорувати цього користувача"
-
-#: src/modules/actioneditor/actioneditor.cpp:251
-msgid "Enable in Channel Windows"
-msgstr "У вікнах каналів"
-
-#: src/modules/actioneditor/actioneditor.cpp:240
-msgid "Enable in Console Windows"
-msgstr "У вікнах терміналів"
-
-#: src/modules/actioneditor/actioneditor.cpp:273
-msgid "Enable in DCC Chat Windows"
-msgstr "У вікнах DCC Чатів"
-
-#: src/modules/actioneditor/actioneditor.cpp:262
-msgid "Enable in Query Windows"
-msgstr "У вікнах приватів"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:108
 msgid "Encrypt key:"
@@ -3305,7 +2656,7 @@ msgstr "Закінчення каналу %Q для \r!c\r%Q\r"
 msgid "End of help about %Q"
 msgstr "Кінець WHO списку для %Q"
 
-#: src/kvirc/ui/kvi_query.cpp:884 src/kvirc/ui/kvi_channel.cpp:1896
+#: src/kvirc/ui/kvi_channel.cpp:1896 src/kvirc/ui/kvi_query.cpp:884
 #, fuzzy
 msgid "End of log"
 msgstr "Кінець LIST"
@@ -3321,14 +2672,6 @@ msgstr "Машина не ініціалізована"
 #: src/kvirc/kernel/kvi_coreactions.cpp:1047
 msgid "Enter Away Mode"
 msgstr "Увійти в режим Відійшов"
-
-#: src/modules/raweditor/raweditor.cpp:232
-msgid "Enter the numeric code of the message (0-999)"
-msgstr "Уведіть числовий код повідомлення (0-999)"
-
-#: src/modules/popupeditor/popupeditor.cpp:96
-msgid "Epilogue"
-msgstr "Епілог"
 
 #: src/modules/rijndael/libkvirijndael.cpp:165
 msgid "Error 0: Success ?"
@@ -3356,14 +2699,6 @@ msgstr "Помилка стиску потоку"
 #, fuzzy
 msgid "Error while loading plugin."
 msgstr "Помилка завантаження модуля"
-
-#: src/modules/eventeditor/eventeditor.cpp:168
-msgid "Event"
-msgstr "Подія"
-
-#: src/modules/eventeditor/eventeditor.cpp:561
-msgid "Event Editor"
-msgstr "Редактор подій"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:163
 msgid "Everything is all right"
@@ -3406,48 +2741,6 @@ msgstr "Розтягти по &горизонталі"
 #: src/kvirc/ui/kvi_mdimanager.cpp:410
 msgid "Expand &Vertically"
 msgstr "Розтягти по &вертикалі"
-
-#: src/modules/actioneditor/actioneditor.cpp:633
-msgid "Export Actions..."
-msgstr "Експортувати дії..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:557
-msgid "Export All..."
-msgstr "&Експортувати все..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:550
-msgid "Export Selected in singles files..."
-msgstr "Експортувати виділене в отдельыне файли..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:544
-msgid "Export Selected..."
-msgstr "&Експортувати виділене..."
-
-#: src/modules/reguser/dialog.cpp:265
-msgid "Export To..."
-msgstr "Експортувати в..."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:324
-msgid "Export ToolBar"
-msgstr "Експорт панелі інструментів"
-
-#: src/modules/reguser/dialog.cpp:268
-msgid ""
-"Export the selected entries to a file.<br>All the data associated with the "
-"selected registered users will be exported.<br>You (or anyone else) can "
-"later import the entries by using the \"Import\" button."
-msgstr ""
-"Експортувати обрані дані в файл.<br>Всі дані пов'язані з обраними "
-"реєстраціями користувачів будуть експортовані<br> Ви (або хто-небудь ще) "
-"можете пізніше імпортувати ці дані використовуючи кнопку \"Імпорт\"."
-
-#: src/modules/popupeditor/popupeditor.cpp:85
-msgid "External Menu"
-msgstr "Зовнішнє меню"
-
-#: src/modules/popupeditor/popupeditor.cpp:254
-msgid "External menu:"
-msgstr "Зовнішнє меню:"
 
 #: src/modules/file/libkvifile.cpp:83
 msgid "Failed to copy from %Q to %Q"
@@ -3576,7 +2869,7 @@ msgstr "Помилка запису у файл %Q: файл не може бу�
 msgid "Feature not available"
 msgstr "Ця можливість не доступна"
 
-#: src/modules/setup/setupwizard.cpp:394 src/kvirc/ui/kvi_console.cpp:323
+#: src/kvirc/ui/kvi_console.cpp:323 src/modules/setup/setupwizard.cpp:394
 msgid "Female"
 msgstr "Жіночий"
 
@@ -3633,41 +2926,22 @@ msgstr "Фільтр"
 msgid "Filter:"
 msgstr "&Фільтр:"
 
-#: src/modules/editor/scripteditor.cpp:761
 #: src/kvirc/ui/kvi_ircviewtools.cpp:146
 msgid "Find"
 msgstr "Знайти"
 
-#: src/modules/editor/scripteditor.cpp:269
-#, fuzzy
-msgid "Find & Replace"
-msgstr "Знайти й замінити"
-
 #: src/kvirc/ui/kvi_ircviewtools.cpp:133
 msgid "Find &Prev."
 msgstr "Знайти &попередній"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:609
-msgid "Find In Aliases"
-msgstr "Знайти в аліасах"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:565
-msgid "Find In Aliases..."
-msgstr "Знайти в аліасах..."
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:91
 #, fuzzy
 msgid "Find Text"
 msgstr "&Знайти текст"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:234 src/modules/setup/setupwizard.cpp:86
+#: src/modules/setup/setupwizard.cpp:86 src/kvilib/tal/kvi_tal_wizard.cpp:234
 msgid "Finish"
 msgstr "Готово"
-
-#: src/modules/actioneditor/actioneditor.cpp:283
-#: src/modules/reguser/dialog.cpp:81
-msgid "Flags"
-msgstr "Прапори"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:96
 msgid "Flat"
@@ -3710,14 +2984,6 @@ msgstr "Уперед"
 msgid "Forward"
 msgstr "Уперед"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1148
-msgid "Found an empty namespace in alias name"
-msgstr "Знайдене порожній простір імен в імені аліаса"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1216
-msgid "Found an empty namespace in namespace name"
-msgstr "Знайдена порожній рядок в імені простору імен"
-
 #: src/modules/help/helpwindow.cpp:181 src/modules/help/helpwindow.cpp:190
 msgid "Full Text Search"
 msgstr "Пошук у тексті"
@@ -3730,7 +2996,7 @@ msgstr "Повний шлях"
 msgid "GUI"
 msgstr "Інтерфейс"
 
-#: src/modules/setup/setupwizard.cpp:388 src/kvirc/ui/kvi_console.cpp:321
+#: src/kvirc/ui/kvi_console.cpp:321 src/modules/setup/setupwizard.cpp:388
 msgid "Gender:"
 msgstr "Стать:"
 
@@ -3780,10 +3046,6 @@ msgstr ""
 "Загальний таймер простою очевидно початий перед використанням функції $my."
 "globalIdle"
 
-#: src/modules/reguser/dialog.cpp:395 src/modules/reguser/dialog.cpp:408
-msgid "Group name:"
-msgstr "Ім'я групи:"
-
 #: src/kvirc/kernel/kvi_options.cpp:786
 msgid "Half-deop mode change"
 msgstr "Зміна режиму не стат-оператор"
@@ -3800,7 +3062,7 @@ msgstr "Зміна режиму стат-оператор"
 msgid "Header too long: exceeded 4096 bytes"
 msgstr "Заголовок занадто довгий, перевищує 4096 байт"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:193 src/kvirc/kernel/kvi_options.cpp:831
+#: src/kvirc/kernel/kvi_options.cpp:831 src/kvilib/tal/kvi_tal_wizard.cpp:193
 msgid "Help"
 msgstr "&Довідка"
 
@@ -3840,10 +3102,6 @@ msgstr "Эй... це ваша мережа те?"
 #: src/kvirc/ui/kvi_menubar.cpp:240
 msgid "Hide &Dock Icon"
 msgstr "Сховати &іконку в треє"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:287
-msgid "Hide Advanced"
-msgstr "Сховати додаткові настроювання"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2080
 msgid "Hide Find Window"
@@ -3967,10 +3225,6 @@ msgstr "IRC серверу"
 msgid "IRC-Op only channel"
 msgstr "Канал тільки для операторів"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:151
-msgid "Icon"
-msgstr "Іконка"
-
 #: src/kvirc/ui/kvi_toolbar.cpp:98
 msgid "Icon Size"
 msgstr "Розмір іконок"
@@ -3978,14 +3232,6 @@ msgstr "Розмір іконок"
 #: src/kvirc/kernel/kvi_iconmanager.cpp:371
 msgid "Icon Table"
 msgstr "Таблиця Іконок"
-
-#: src/modules/popupeditor/popupeditor.cpp:245
-msgid "Icon:"
-msgstr "Іконка:"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:170
-msgid "Id"
-msgstr "Id"
 
 #: src/kvirc/kernel/kvi_options.cpp:784
 msgid "Ident message"
@@ -4007,7 +3253,7 @@ msgstr "Identd обробляє запит"
 msgid "Identd socket error : dropping connection"
 msgstr "помилка сокета Identd, закриваю з'єднання"
 
-#: src/modules/setup/setupwizard.cpp:417 src/modules/reguser/edituser.cpp:388
+#: src/modules/setup/setupwizard.cpp:417
 msgid "Identity"
 msgstr "Ідентифікація"
 
@@ -4023,39 +3269,6 @@ msgid ""
 msgstr ""
 "Якщо ви не хочете зашифрувати конкретний рядок, тоді запускайте з префіксом "
 "CTRL+P"
-
-#: src/modules/reguser/edituser.cpp:484
-msgid "Ignore"
-msgstr "Ігнор"
-
-#: src/modules/reguser/edituser.cpp:478
-msgid "Ignore DCCs"
-msgstr "Ігнорувати DCC"
-
-#: src/modules/reguser/edituser.cpp:466
-msgid "Ignore channel-messages"
-msgstr "Ігнорувати повідомлення в каналі"
-
-#: src/modules/reguser/edituser.cpp:472
-msgid "Ignore ctcp-messages"
-msgstr "Ігнорувати CTCP"
-
-#: src/modules/reguser/edituser.cpp:456
-#, fuzzy
-msgid "Ignore features"
-msgstr "Ігнорувати як"
-
-#: src/modules/reguser/edituser.cpp:475
-msgid "Ignore invites"
-msgstr "Ігнорувати запрошення"
-
-#: src/modules/reguser/edituser.cpp:469
-msgid "Ignore notice-messages"
-msgstr "Ігнорувати повідомлення"
-
-#: src/modules/reguser/edituser.cpp:463
-msgid "Ignore query-messages"
-msgstr "Ігнорувати приватні повідомлення"
 
 #: src/kvirc/kernel/kvi_options.cpp:807
 msgid "Ignored user message"
@@ -4090,18 +3303,6 @@ msgstr "Зігнороване запрошення від \r!nс\r%Q\r [%Q@\r!h
 #: src/kvirc/sparser/kvi_sp_literal.cpp:792
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Зігнороване приватне повідомлення від \r!nс\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-
-#: src/modules/reguser/dialog.cpp:272
-msgid "Import From..."
-msgstr "Імпортувати з..."
-
-#: src/modules/reguser/dialog.cpp:274
-msgid ""
-"Import entries from a file exported earlier by the \"export\" function of "
-"this dialog."
-msgstr ""
-"Імпортувати дані з файлу які були раніше експортовані функцією \"Експорт\" "
-"цього діалогу."
 
 #: src/modules/mircimport/libkvimircimport.cpp:326
 msgid "Import from http://www.mirc.co.uk/servers.ini"
@@ -4173,14 +3374,6 @@ msgstr "Історія уведення не активована"
 msgid "Insert Icon"
 msgstr "Вставити іконку"
 
-#: src/modules/reguser/edituser.cpp:232
-msgid ""
-"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
-"and '?'."
-msgstr ""
-"Вставте маску для цього користувача<br>Вона може містити символи шаблонів "
-"'*' і '?'."
-
 #: src/kvirc/kernel/kvi_app_setup.cpp:481
 msgid "Install Package"
 msgstr "Установити пакет"
@@ -4201,7 +3394,7 @@ msgstr "Недостатньо ресурсів для завершення оп
 msgid "Integer parameter expected"
 msgstr "Очікується аргумент ціле число"
 
-#: src/kvilib/file/kvi_packagefile.cpp:571 src/kvilib/core/kvi_error.cpp:52
+#: src/kvilib/core/kvi_error.cpp:52 src/kvilib/file/kvi_packagefile.cpp:571
 msgid "Internal error"
 msgstr "Внутрішня помилка"
 
@@ -4211,14 +3404,10 @@ msgstr "Внутрішня помилка"
 msgid "Internal error: I'm not in the user database ?"
 msgstr "Внутрішня помилка: Це не база даних користувачів?"
 
-#: src/modules/action/libkviaction.cpp:377
 #: src/modules/addon/libkviaddon.cpp:529
+#: src/modules/action/libkviaction.cpp:377
 msgid "Internal error: call a head-shrinker"
 msgstr "Внутрішня помилка"
-
-#: src/modules/actioneditor/actioneditor.cpp:107
-msgid "Internal unique name for the action"
-msgstr "Внутрішнє унікальне ім'я дії"
 
 #: src/modules/system/libkvisystem.cpp:464
 #, fuzzy
@@ -4242,10 +3431,6 @@ msgstr "Невірний IP адреса"
 #: src/modules/window/libkviwindow.cpp:1028
 msgid "Invalid IRC context id '%Q'"
 msgstr "Невірний IRC контекст '%Q'"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-msgid "Invalid ToolBar Label"
-msgstr "Невірна мітка панелі інструментів"
 
 #: src/kvilib/net/kvi_http.cpp:160
 msgid "Invalid URL: Missing hostname"
@@ -4376,15 +3561,6 @@ msgstr "Опція контекстних кольорів IRC (#RRGGBB)"
 msgid "It's so cold here..."
 msgstr "Як тут холодно..."
 
-#: src/modules/popupeditor/popupeditor.cpp:79
-#: src/modules/popupeditor/popupeditor.cpp:209
-msgid "Item"
-msgstr "Пункт"
-
-#: src/modules/popupeditor/popupeditor.cpp:263
-msgid "Item Id:"
-msgstr "Id пункту:"
-
 #: src/kvirc/kernel/kvi_coreactions.cpp:761
 msgid "Join Channel"
 msgstr "Увійти на канал"
@@ -4502,22 +3678,9 @@ msgstr "Паніка мережного ядра"
 msgid "Key"
 msgstr "Ключ"
 
-#: src/modules/actioneditor/actioneditor.cpp:178
-msgid "Key Sequence:"
-msgstr "Комбінація клавіш:"
-
 #: src/kvirc/kernel/kvi_options.cpp:768
 msgid "Kick action"
 msgstr "Дія кікнуть"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:142
-#: src/modules/popupeditor/popupeditor.cpp:92
-msgid "Label"
-msgstr "Мітка"
-
-#: src/modules/actioneditor/actioneditor.cpp:109
-msgid "Label:"
-msgstr "Мітка:"
 
 #: src/modules/action/libkviaction.cpp:65
 msgid "Label: %Q"
@@ -4723,7 +3886,7 @@ msgstr "Раз&повернути"
 msgid "Make KVIrc default IRC client"
 msgstr "Зробити KVIrc IRC клієнтом за замовчуванням"
 
-#: src/modules/setup/setupwizard.cpp:395 src/kvirc/ui/kvi_console.cpp:323
+#: src/kvirc/ui/kvi_console.cpp:323 src/modules/setup/setupwizard.cpp:395
 msgid "Male"
 msgstr "Чоловічий"
 
@@ -4743,37 +3906,13 @@ msgstr "Керування Скріптовими доповненнями"
 msgid "Manage Themes..."
 msgstr "Керування темами..."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
-msgid "Manually"
-msgstr "Вручну"
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:193
 msgid "Mask"
 msgstr "Маска"
 
-#: src/modules/reguser/libkvireguser.cpp:354
-msgid "Mask %Q already used to identify user %Q"
-msgstr "Маска %Q уже використається для ідентифікації користувача %Q"
-
-#: src/modules/reguser/libkvireguser.cpp:221
-msgid "Mask %Q is already used to identify user %s"
-msgstr "Маска %Q уже є в користувача %s"
-
-#: src/modules/reguser/libkvireguser.cpp:409
-msgid "Mask %Q not found"
-msgstr "Маска %Q не знайдена"
-
-#: src/modules/reguser/edituser.cpp:228
-msgid "Mask Editor"
-msgstr "Редактор маски"
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:73
 msgid "Mask editor - KVirc"
 msgstr "Редактор маски - KVirc"
-
-#: src/modules/reguser/edituser.cpp:358
-msgid "Masks:"
-msgstr "Маска:"
 
 #: src/modules/links/linkswindow.cpp:312
 #, c-format
@@ -4853,14 +3992,6 @@ msgstr "Мінімізувати всі поточні видимі MDI вікн
 msgid "Mirccolor options (#RRGGBB)"
 msgstr "Опція кольорів IRC (#RRGGBB)"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1109
-msgid "Missing Alias Name"
-msgstr "Не задане ім'я аліаса"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1177
-msgid "Missing Namespace Name"
-msgstr "Відсутнє ім'я простору імен"
-
 #: src/kvirc/kernel/kvi_options.cpp:985
 msgid "Missing absolute directory for the theme information"
 msgstr ""
@@ -4927,10 +4058,6 @@ msgstr "Модеруємий"
 msgid "Modulo by zero"
 msgstr "Нуль по модулі"
 
-#: src/modules/reguser/dialog.cpp:451
-msgid "Move to group"
-msgstr "Перемістити в групу"
-
 #: src/kvirc/ui/kvi_input.cpp:156
 #, fuzzy
 msgid "Multi-line Editor<br>&lt;Alt+Backspace&gt;"
@@ -4952,25 +4079,9 @@ msgstr "Множинні операції не підтримуються для
 msgid "Multiple user mode change"
 msgstr "Зміна режиму декількох користувачів"
 
-#: src/modules/actioneditor/actioneditor.cpp:764
-#: src/modules/actioneditor/actioneditor.cpp:765
-msgid "My Action"
-msgstr "Моя дія"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:501
-#: src/modules/toolbareditor/toolbareditor.cpp:502
-msgid "My ToolBar"
-msgstr "Моя панель інструментів"
-
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:77
-#: src/modules/reguser/dialog.cpp:81
 msgid "Name"
 msgstr "Ім'я"
-
-#: src/modules/actioneditor/actioneditor.cpp:103
-#: src/modules/reguser/edituser.cpp:342
-msgid "Name:"
-msgstr "Ім'я:"
 
 #: src/modules/addon/libkviaddon.cpp:147
 msgid "Name: %Q"
@@ -4979,32 +4090,6 @@ msgstr "Ім'я: %Q"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:471
 msgid "Names for \r!c\r%Q\r: %Q"
 msgstr "Імена для \r!c\r%Q\r: %Q"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:453
-#: src/modules/aliaseditor/aliaseditor.cpp:1442
-msgid "Namespace"
-msgstr "Простір імен"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1368
-#, fuzzy
-msgid "Namespace already exists"
-msgstr "Адреса вже використається"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1191
-msgid ""
-"Namespace names can contain only letters, digits, underscores and '::' "
-"namespace separators"
-msgstr ""
-"Назва простору імен може містити тільки букви, цифри, нижні підкреслення й "
-"роздільник просторів імен '::'"
-
-#: src/modules/actioneditor/actioneditor.cpp:217
-msgid "Needs IRC Connection"
-msgstr "Потрібно IRC з'єднання"
-
-#: src/modules/actioneditor/actioneditor.cpp:206
-msgid "Needs IRC Context"
-msgstr "Потрібно IRC контекст"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:389
 msgid "Negotiating relay information"
@@ -5015,7 +4100,7 @@ msgstr "Домовлятися про обмін інформацією"
 msgid "Netsplit detected: %s"
 msgstr "Виявлений обрив мережі: %s"
 
-#: src/kvilib/system/kvi_locale.cpp:1076 src/kvirc/ui/kvi_statusbar.cpp:574
+#: src/kvirc/ui/kvi_statusbar.cpp:574 src/kvilib/system/kvi_locale.cpp:1076
 msgid "Network"
 msgstr "Мережа"
 
@@ -5032,10 +4117,6 @@ msgstr "Мережа не доступна"
 msgid "New &Connection To"
 msgstr "Нове &підключення до"
 
-#: src/modules/actioneditor/actioneditor.cpp:627
-msgid "New Action"
-msgstr "Нова дія"
-
 #: src/kvilib/system/kvi_locale.cpp:1056
 msgid "New Bookmark Folder..."
 msgstr "Новий каталог закладок..."
@@ -5048,85 +4129,9 @@ msgstr "Новий каталог"
 msgid "New Directory..."
 msgstr "Новий каталог..."
 
-#: src/modules/popupeditor/popupeditor.cpp:425
-msgid "New External Menu Above"
-msgstr "Нове зовнішнє меню вгорі"
-
-#: src/modules/popupeditor/popupeditor.cpp:423
-msgid "New External Menu Below"
-msgstr "Нове зовнішнє меню внизу"
-
-#: src/modules/popupeditor/popupeditor.cpp:428
-msgid "New External Menu Inside"
-msgstr "Нове зовнішнє меню по середині"
-
 #: src/kvirc/kernel/kvi_coreactions.cpp:418
 msgid "New IRC Context"
 msgstr "Новий IRC контекст"
-
-#: src/modules/popupeditor/popupeditor.cpp:405
-msgid "New Item Above"
-msgstr "Новий пункт угорі"
-
-#: src/modules/popupeditor/popupeditor.cpp:403
-msgid "New Item Below"
-msgstr "Новий пункт унизу"
-
-#: src/modules/popupeditor/popupeditor.cpp:408
-msgid "New Item Inside"
-msgstr "Новий пункт по середині"
-
-#: src/modules/popupeditor/popupeditor.cpp:395
-msgid "New Label Above"
-msgstr "Нова мітка вгорі"
-
-#: src/modules/popupeditor/popupeditor.cpp:393
-msgid "New Label Below"
-msgstr "Нова мітка внизу"
-
-#: src/modules/popupeditor/popupeditor.cpp:398
-msgid "New Label Inside"
-msgstr "Нова мітка по середині"
-
-#: src/modules/popupeditor/popupeditor.cpp:415
-msgid "New Menu Above"
-msgstr "Нове меню вгорі"
-
-#: src/modules/popupeditor/popupeditor.cpp:413
-msgid "New Menu Below"
-msgstr "Нове меню внизу"
-
-#: src/modules/popupeditor/popupeditor.cpp:478
-msgid "New Menu Epilogue"
-msgstr "Нове епілог меню"
-
-#: src/modules/popupeditor/popupeditor.cpp:418
-msgid "New Menu Inside"
-msgstr "Нове меню по середині"
-
-#: src/modules/popupeditor/popupeditor.cpp:470
-msgid "New Menu Prologue"
-msgstr "Нове пролог меню"
-
-#: src/modules/raweditor/raweditor.cpp:232
-msgid "New Raw Event"
-msgstr "Нова заготівля події"
-
-#: src/modules/popupeditor/popupeditor.cpp:385
-msgid "New Separator Above"
-msgstr "Новий роздільник угорі"
-
-#: src/modules/popupeditor/popupeditor.cpp:383
-msgid "New Separator Below"
-msgstr "Новий роздільник унизу"
-
-#: src/modules/popupeditor/popupeditor.cpp:388
-msgid "New Separator Inside"
-msgstr "Новий роздільник по середині"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:308
-msgid "New ToolBar"
-msgstr "Нова панель інструментів"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:77
 msgid "New mask must match an *!*@* expression"
@@ -5160,25 +4165,17 @@ msgstr "NickServ запросив аутентификацію, запущена
 msgid "Nickname"
 msgstr "Нік:"
 
-#: src/modules/reguser/wizard.cpp:228
-msgid "Nickname 2:"
-msgstr "2-й Нік:"
-
 #: src/kvirc/kernel/kvi_options.cpp:753
 msgid "Nickname problem"
 msgstr "Проблема з ніком"
 
-#: src/modules/setup/setupwizard.cpp:339 src/modules/reguser/wizard.cpp:224
+#: src/modules/setup/setupwizard.cpp:339
 #, fuzzy
 msgid "Nickname:"
 msgstr "Нік:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:385
-#: src/modules/toolbareditor/toolbareditor.cpp:410
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:785
 #: src/kvirc/ui/kvi_input.cpp:260 src/kvirc/ui/kvi_statusbar.cpp:572
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:785
 msgid "No"
 msgstr "Ні"
 
@@ -5206,11 +4203,6 @@ msgstr "Немає й більше мене не запитувати"
 msgid "No channel topic is set"
 msgstr "Тема каналу не встановлена"
 
-#: src/modules/reguser/dialog.cpp:131
-#, fuzzy
-msgid "No comment set"
-msgstr "Немає контексту IRC"
-
 #: src/kvirc/ui/kvi_query.cpp:408
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Немає загальних каналів для \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
@@ -5222,10 +4214,6 @@ msgstr "Не підключений"
 #: src/modules/window/libkviwindow.cpp:1515
 msgid "No encrypt key specified: can't allocate engine"
 msgstr "Не заданий ключ для шифрування: не можу стартувати движок шифрування"
-
-#: src/modules/reguser/dialog.cpp:683
-msgid "No entries selected."
-msgstr "Нічого не обрано."
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:241
 msgid "No external messages"
@@ -5239,37 +4227,13 @@ msgstr "Немає відповідного файлу"
 msgid "No host to resolve"
 msgstr "Неможливо визначити IP адреса"
 
-#: src/modules/eventeditor/eventeditor.cpp:369
-#: src/modules/aliaseditor/aliaseditor.cpp:261
-#: src/modules/aliaseditor/aliaseditor.cpp:1432
-msgid "No item selected"
-msgstr "Нічого не обрано"
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:252
 msgid "No kicks able (unless U-Line)"
 msgstr "Не можна кікнуть (за винятком U-Line)"
 
-#: src/modules/reguser/libkvireguser.cpp:337
-#: src/modules/reguser/libkvireguser.cpp:402
-msgid "No mask specified"
-msgstr "Маска не визначена"
-
 #: src/kvirc/ui/kvi_input_editor.cpp:1795
 msgid "No matches"
 msgstr "Не відповідає"
-
-#: src/modules/reguser/libkvireguser.cpp:188
-#: src/modules/reguser/libkvireguser.cpp:268
-#: src/modules/reguser/libkvireguser.cpp:331
-#: src/modules/reguser/libkvireguser.cpp:451
-#: src/modules/reguser/libkvireguser.cpp:516
-#: src/modules/reguser/libkvireguser.cpp:690
-msgid "No name specified"
-msgstr "Ім'я не визначене"
-
-#: src/modules/reguser/libkvireguser.cpp:696
-msgid "No property specified"
-msgstr "Не визначена властивість"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:504
 msgid "No proxy hosts available, resuming direct connection"
@@ -5289,11 +4253,6 @@ msgstr ""
 #: src/modules/mircimport/libkvimircimport.cpp:251
 msgid "No servers imported"
 msgstr "Сервера не імпортовані"
-
-#: src/modules/regchan/libkviregchan.cpp:120
-#: src/modules/regchan/libkviregchan.cpp:177
-msgid "No such channel/netmask entry in the database"
-msgstr "Не знайдені канал/маска в базі"
 
 #: src/kvilib/core/kvi_error.cpp:113
 msgid "No such file"
@@ -5391,16 +4350,6 @@ msgstr "Нічого не відомо про %Q (немає з'єднання)"
 
 #: src/kvirc/ui/kvi_console.cpp:144 src/kvirc/ui/kvi_console.cpp:147
 msgid "Notify List"
-msgstr "Список повідомлень"
-
-#: src/modules/reguser/dialog.cpp:122
-#, fuzzy
-msgid "Notify as: "
-msgstr "Список повідомлень"
-
-#: src/modules/reguser/dialog.cpp:120
-#, fuzzy
-msgid "Notify disabled"
 msgstr "Список повідомлень"
 
 #: src/kvirc/kernel/kvi_options.cpp:760
@@ -5553,14 +4502,6 @@ msgstr ""
 msgid "Notify list: Unexpected inconsistency, userhost list is empty!"
 msgstr "Список повідомлень: Несподіване протиріччя, список хостов порожній!"
 
-#: src/modules/reguser/edituser.cpp:397
-msgid "Notify nicknames:"
-msgstr "Повідомлення ніків:"
-
-#: src/modules/reguser/edituser.cpp:394
-msgid "Notify when user is online"
-msgstr "Повідомляти коли користувач в онлайне"
-
 #: src/modules/avatar/libkviavatar.cpp:412
 msgid "Notifying avatar '%Q' to %Q"
 msgstr "Повідомлення про аватаре '%Q' для %Q"
@@ -5569,13 +4510,8 @@ msgstr "Повідомлення про аватаре '%Q' для %Q"
 msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: Локальний оператор IRC (LOCOP)"
 
+#: src/kvirc/ui/kvi_cryptcontroller.cpp:129 src/kvirc/ui/kvi_htmldialog.cpp:92
 #: src/kvilib/system/kvi_locale.cpp:1026
-#: src/modules/toolbareditor/toolbareditor.cpp:186
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-#: src/modules/actioneditor/actioneditor.cpp:717
-#: src/modules/actioneditor/actioneditor.cpp:865
-#: src/kvirc/ui/kvi_htmldialog.cpp:92 src/kvirc/ui/kvi_cryptcontroller.cpp:129
 msgid "OK"
 msgstr "Ok"
 
@@ -5587,30 +4523,10 @@ msgstr "Octet потік (невідомий)"
 msgid "Often used directories"
 msgstr "Часто використовувані каталоги"
 
-#: src/modules/eventeditor/eventeditor.cpp:492
-#: src/modules/raweditor/raweditor.cpp:469
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1136
-#: src/modules/popupeditor/popupeditor.cpp:1183
-#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_imagedialog.cpp:158
-#: src/kvirc/ui/kvi_ircview.cpp:2130
+#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_ircview.cpp:2130
+#: src/kvirc/ui/kvi_imagedialog.cpp:158
 msgid "Ok"
 msgstr "Ок"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1111
-#: src/modules/aliaseditor/aliaseditor.cpp:1124
-#: src/modules/aliaseditor/aliaseditor.cpp:1138
-#: src/modules/aliaseditor/aliaseditor.cpp:1149
-#: src/modules/aliaseditor/aliaseditor.cpp:1179
-#: src/modules/aliaseditor/aliaseditor.cpp:1192
-#: src/modules/aliaseditor/aliaseditor.cpp:1206
-#: src/modules/aliaseditor/aliaseditor.cpp:1217
-#: src/modules/aliaseditor/aliaseditor.cpp:1358
-#: src/modules/aliaseditor/aliaseditor.cpp:1370
-msgid "Ok, Let me try again..."
-msgstr "Добре, давайте спробую ще раз..."
 
 #: src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
@@ -5651,12 +4567,6 @@ msgstr "У мережі протягом"
 msgid "Only 7-bit letters in nicknames allowed"
 msgstr "Тільки 7-ми бітні букви в ніках можуть бути використані"
 
-#: src/modules/actioneditor/actioneditor.cpp:246
-#: src/modules/actioneditor/actioneditor.cpp:257
-#: src/modules/actioneditor/actioneditor.cpp:268
-msgid "Only If There Are Selected Users"
-msgstr "Тільки якщо є обрані користувачі"
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:251
 msgid "Only registered nicks can join"
 msgstr "Для входу потрібно зареєструвати Нік"
@@ -5691,10 +4601,6 @@ msgstr "Очікується відкриття дужок"
 msgid "Open parenthesis expected"
 msgstr "Очікується ключове слово"
 
-#: src/modules/reguser/dialog.cpp:241
-msgid "Open the edit dialog to create a new user entry."
-msgstr "Відкрийте діалог редагування щоб створити нового користувача."
-
 #: src/kvirc/kernel/kvi_app_setup.cpp:315
 #: src/kvirc/kernel/kvi_app_setup.cpp:376
 msgid "Open with KVIrc"
@@ -5724,8 +4630,8 @@ msgstr "Час операції минув"
 msgid "Operation timed out (while selecting for read)"
 msgstr "Час операції минув (при читанні)"
 
-#: src/modules/iograph/libkviiograph.cpp:261
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
+#: src/modules/iograph/libkviiograph.cpp:261
 msgid "Ops.. internal error"
 msgstr "Упс.. внутрішня помилка"
 
@@ -5778,20 +4684,6 @@ msgstr ""
 "Упс... схоже у вас битий дистрибутив.\n"
 "Модуль установки не може експортувати \"setup_finish\" функцію.\n"
 "Намагаюся продовжити..."
-
-#: src/modules/actioneditor/actioneditor.cpp:184
-msgid ""
-"Optional keyboard sequence that will activate this action.<br>The sequence "
-"should be expressed as a string of up to four key codes separated by commas "
-"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta"
-"\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
-"Ctrl+C\" ..."
-msgstr ""
-"Необов'язкова комбінація клавіш яка активує це дія<br> Комбінація повинна "
-"бути визначена як рядок утримуюча до чотирьох клавіш, об'єднаних з "
-"модифікаторами \"Ctrl\",\"Shift\",\"Alt\" і \"Meta\". Якщо ви задаєте кілька "
-"комбінацій, їх потрібно розділити комами<br>Приклади таких комбінацій: \"Ctrl"
-"+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
 #: src/kvirc/ui/kvi_toolbar.cpp:88
 msgid "Orientation"
@@ -5865,10 +4757,6 @@ msgstr "Пакет успішно збережений"
 msgid "Packaging file %Q"
 msgstr "Упаковую файл %Q"
 
-#: src/modules/codetester/codetester.cpp:61
-msgid "Params:"
-msgstr "Параметри:"
-
 #: src/kvilib/system/kvi_locale.cpp:1048
 msgid "Parent Directory"
 msgstr "Батьківський каталог"
@@ -5906,14 +4794,6 @@ msgstr "Вставити файл"
 msgid "Paste (Slowly)"
 msgstr "Вставити (повільно)"
 
-#: src/modules/popupeditor/popupeditor.cpp:453
-msgid "Paste Above"
-msgstr "Вставити зверху"
-
-#: src/modules/popupeditor/popupeditor.cpp:458
-msgid "Paste Inside"
-msgstr "Вставити по середині"
-
 #: src/kvirc/kernel/kvi_sslmaster.cpp:83
 msgid "Peer X509 certificate"
 msgstr "Сертифікат ідентичний X509"
@@ -5946,38 +4826,6 @@ msgstr ""
 "голову. Ви зможете змінити його пізніше в настроюваннях, або ввівши команду /"
 "NICK ."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:228
-msgid "Please choose the icon for the ToolBar"
-msgstr "Будь ласка виберіть іконку для панелі інструментів"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1250
-msgid "Please enter the name for the new alias"
-msgstr "Будь ласка введіть ім'я нового аліаса"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1275
-msgid "Please enter the name for the new namespace"
-msgstr "Будь ласка введіть ім'я нового простору імен"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1342
-msgid "Please enter the new name for the alias"
-msgstr "Будь ласка введіть нове ім'я аліаса"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1344
-msgid "Please enter the new name for the namespace"
-msgstr "Будь ласка, уведіть нову назву простору імен"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:610
-msgid ""
-"Please enter the text to be searched for. The matching aliases will be "
-"highlighted."
-msgstr ""
-"Будь ласка, уведіть текст, якому потрібно знайти. Аліасы, що містять цей "
-"текст будуть підсвічені."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1026
-msgid "Please note that all the children items will be deleted too."
-msgstr "Будь ласка врахуйте, що всі дочірні елементи будуть теж вилучені."
-
 #: src/modules/avatar/libkviavatar.cpp:73
 msgid ""
 "Please select an avatar image. The full path to a local file or an image on "
@@ -5993,14 +4841,6 @@ msgstr ""
 #: src/modules/addon/managementdialog.cpp:283
 msgid "Please select the addon installation file"
 msgstr "Будь ласка, укажіть настановний файл доповнення"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:500
-msgid "Please specify the properties for the new toolbar"
-msgstr "Будь ласка визначите властивості для нової панелі інструментів"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:474
-msgid "Please specify the properties for the toolbar \"%1\""
-msgstr "Будь ласка визначите властивості для панелі інструментів \"%1\""
 
 #: src/modules/mircimport/libkvimircimport.cpp:169
 msgid "Please wait while the list is being downloaded"
@@ -6036,18 +4876,6 @@ msgstr ""
 "Машина працює в режимі ECB за замовчуванням:\n"
 "якщо ви хочете працювати з CBC режимом, ви повинні\n"
 "використати ключ(і) \"cbc:\".\n"
-
-#: src/modules/popupeditor/popupeditor.cpp:1033
-msgid "Popup"
-msgstr "Спливаюче меню"
-
-#: src/modules/popupeditor/popupeditor.cpp:1373
-msgid "Popup Editor"
-msgstr "Редактор спливаючих меню"
-
-#: src/modules/popupeditor/popupeditor.cpp:195
-msgid "Popup name"
-msgstr "Ім'я спливаючого меню"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2265 src/kvirc/ui/kvi_ircview.cpp:2318
 #, c-format
@@ -6107,26 +4935,9 @@ msgstr "Обробка списку: %Q"
 msgid "Profile"
 msgstr "Профіль"
 
-#: src/modules/popupeditor/popupeditor.cpp:100
-msgid "Prologue"
-msgstr "Пролог"
-
-#: src/modules/actioneditor/actioneditor.cpp:197
-#: src/modules/reguser/edituser.cpp:448
-msgid "Properties"
-msgstr "Властивості"
-
 #: src/kvilib/system/kvi_locale.cpp:1082
 msgid "Properties..."
 msgstr "Властивості..."
-
-#: src/modules/reguser/edituser.cpp:90
-msgid "Property"
-msgstr "Властивості"
-
-#: src/modules/reguser/edituser.cpp:78
-msgid "Property Editor"
-msgstr "Редактор властивостей"
 
 #: src/kvilib/net/kvi_http.cpp:793
 msgid "Protocol error: invalid chunk size"
@@ -6231,10 +5042,6 @@ msgstr "Проксі відповіли: Дані отримані, запит �
 msgid "Proxy said something about: \n"
 msgstr "Проксі сказало щось у роді: \n"
 
-#: src/modules/actioneditor/actioneditor.cpp:766
-msgid "Put here a short description of your action"
-msgstr "Укажіть тут короткий опис вашої дії"
-
 #: src/kvirc/ui/kvi_query.cpp:101
 msgid "Query Targets"
 msgstr "Мети приватів"
@@ -6293,32 +5100,14 @@ msgstr "Повідомлення про вихід через втрату ме�
 msgid "Quits KVIrc closing all the current connections"
 msgstr "Вихід з KVIrc із закриттям всіх поточних з'єднань"
 
-#: src/modules/raweditor/raweditor.cpp:537
-msgid "Raw Editor"
-msgstr "Редактор заготівель"
-
-#: src/modules/raweditor/raweditor.cpp:94
-msgid "Raw Event"
-msgstr "Заготівлі подій"
-
 #: src/kvirc/kernel/kvi_options.cpp:709
 msgid "Raw data to server"
 msgstr "Вихідні дані сервера"
 
-#: src/modules/reguser/dialog.cpp:249 src/modules/reguser/edituser.cpp:375
 #: src/kvirc/ui/kvi_selectors.cpp:385 src/kvirc/ui/kvi_selectors.cpp:731
 #: src/kvirc/ui/kvi_maskeditor.cpp:205
 msgid "Re&move"
 msgstr "&Видалити"
-
-#: src/modules/eventeditor/eventeditor.cpp:206
-#: src/modules/raweditor/raweditor.cpp:174
-msgid "Re&move Handler"
-msgstr "В&идалити оброблювач"
-
-#: src/modules/popupeditor/popupeditor.cpp:1102
-msgid "Re&move Popup"
-msgstr "В&идалити спливаюче меню"
 
 #: src/modules/file/libkvifile.cpp:740
 msgid "Read error for file %Q"
@@ -6433,34 +5222,14 @@ msgstr "Зареєстрований"
 msgid "Registered Channels"
 msgstr "Зареєстровані канали"
 
-#: src/modules/reguser/edituser.cpp:336
-msgid "Registered User Entry"
-msgstr "Реєстрація користувача"
-
-#: src/modules/reguser/dialog.cpp:216
-msgid "Registered Users - KVIrc"
-msgstr "Реєстрація користувачів - KVIrc"
-
 #: src/kvirc/ui/kvi_console.cpp:332
 msgid "Registered as"
 msgstr "Зареєстрований як"
-
-#: src/modules/regchan/libkviregchan.cpp:197
-msgid "Registered channel list:"
-msgstr "Зареєстрований список каналів:"
 
 #: src/kvirc/kernel/kvi_lagmeter.cpp:186
 #, c-format
 msgid "Registered lag check with reliability %u (%s)"
 msgstr "Визначена гарантована затримка %u (%s)"
-
-#: src/modules/reguser/libkvireguser.cpp:801
-msgid "Registered users database dump:"
-msgstr "Дамп бази зареєстрованих користувачів:"
-
-#: src/modules/reguser/wizard.cpp:258
-msgid "Registration Complete"
-msgstr "Реєстрація завершена"
 
 #: src/kvilib/system/kvi_locale.cpp:1051
 msgid "Reload"
@@ -6483,40 +5252,6 @@ msgstr "Майстер вилученого імпорту mIRC servers.ini"
 #: src/kvirc/ui/kvi_statusbar.cpp:343
 msgid "Remove %Q"
 msgstr "Видалити %Q"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:536
-msgid "Remove Selected"
-msgstr "&Видалити обране"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-msgid "Remove item"
-msgstr "Видалити елемент"
-
-#: src/modules/reguser/dialog.cpp:252
-msgid "Remove the currently selected entries."
-msgstr "Видалити поточний обраний пункт."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:262
-#, fuzzy
-msgid "Rename"
-msgstr "Сьогодення ім'я:"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1342
-msgid "Rename Alias"
-msgstr "Перейменувати аліас"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1344
-msgid "Rename Namespace"
-msgstr "Перейменувати простір імен"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#, fuzzy
-msgid "Replace file"
-msgstr "Замінити на"
-
-#: src/modules/editor/scripteditor.cpp:999
-msgid "Replace with"
-msgstr "Замінити на"
 
 #: src/kvirc/ui/kvi_menubar.cpp:147
 msgid "Report a Bug / Propose Improvements"
@@ -6620,7 +5355,6 @@ msgstr "З&ценарії"
 msgid "Script"
 msgstr "Скріпт"
 
-#: src/modules/codetester/codetester.cpp:109
 #: src/kvirc/kernel/kvi_coreactions.cpp:303
 msgid "Script Tester"
 msgstr "Тестер сценаріїв"
@@ -6645,7 +5379,7 @@ msgstr "Дії, зв'язані зі сценаріями"
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
-#: src/modules/help/helpwindow.cpp:100 src/kvirc/kernel/kvi_options.cpp:810
+#: src/kvirc/kernel/kvi_options.cpp:810 src/modules/help/helpwindow.cpp:100
 msgid "Search"
 msgstr "Пошук"
 
@@ -6762,9 +5496,8 @@ msgstr "Відіслані ім'я користувача й пароль, оч�
 msgid "Separate Directories"
 msgstr "Відокремити каталоги"
 
-#: src/modules/popupeditor/popupeditor.cpp:89
-#: src/kvirc/kernel/kvi_coreactions.cpp:508
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:649
+#: src/kvirc/kernel/kvi_coreactions.cpp:508
 msgid "Separator"
 msgstr "Роздільник"
 
@@ -6864,7 +5597,7 @@ msgstr "З&кинути всі"
 msgid "Set at"
 msgstr "Дата"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:194 src/kvirc/ui/kvi_topicw.cpp:531
+#: src/kvirc/ui/kvi_topicw.cpp:531 src/kvirc/ui/kvi_maskeditor.cpp:194
 msgid "Set by"
 msgstr "Установив"
 
@@ -7092,10 +5825,6 @@ msgstr "Повільна вставка ID:%d Вікно:%s"
 msgid "Small (22x22)"
 msgstr "Маленькі (22x22)"
 
-#: src/modules/actioneditor/actioneditor.cpp:148
-msgid "Small Icon:"
-msgstr "Маленька іконка:"
-
 #: src/kvilib/system/kvi_locale.cpp:1081
 msgid "Small Icons"
 msgstr "Маленькі іконки"
@@ -7206,9 +5935,9 @@ msgstr "Розділити вид"
 msgid "Split message"
 msgstr "Розщеплене повідомлення"
 
+#: src/modules/mircimport/libkvimircimport.cpp:100
 #: src/kvilib/irc/kvi_ircserverdb.cpp:290
 #: src/kvilib/irc/kvi_ircserverdb.cpp:293
-#: src/modules/mircimport/libkvimircimport.cpp:100
 msgid "Standalone Servers"
 msgstr "Одиночні сервера"
 
@@ -7235,7 +5964,7 @@ msgstr "Стартую Identd сервіс (Ip4)"
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr "Стартую Identd сервіс (Ip4)"
 
-#: src/kvirc/ui/kvi_query.cpp:868 src/kvirc/ui/kvi_channel.cpp:1880
+#: src/kvirc/ui/kvi_channel.cpp:1880 src/kvirc/ui/kvi_query.cpp:868
 #, fuzzy
 msgid "Starting last log"
 msgstr "Запуск списку повідомлень"
@@ -7243,22 +5972,6 @@ msgstr "Запуск списку повідомлень"
 #: src/kvirc/kernel/kvi_notifylist.cpp:946
 msgid "Starting notify list"
 msgstr "Запуск списку повідомлень"
-
-#: src/modules/reguser/wizard.cpp:97
-msgid "Step 1: Entry Name"
-msgstr "Крок 1: Виберіть ім'я"
-
-#: src/modules/reguser/wizard.cpp:171
-msgid "Step 2: Mask Selection"
-msgstr "Крок 2: Вибір маски"
-
-#: src/modules/reguser/wizard.cpp:197
-msgid "Step 3: Avatar Selection"
-msgstr "Крок 3: Вибір аватара"
-
-#: src/modules/reguser/wizard.cpp:242
-msgid "Step 4: Notify List"
-msgstr "Крок 4: Список повідомлень"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:733
 msgid "Stop Paste"
@@ -7272,25 +5985,9 @@ msgstr "Зупинити завантаження списку"
 msgid "Stopping the list download..."
 msgstr "Завершуємо завантаження списку.."
 
-#: src/modules/reguser/wizard.cpp:192
-msgid "Store an avatar for this user"
-msgstr "Використати аватар для цього користувача"
-
 #: src/modules/setup/setupwizard.cpp:235
 msgid "Store configuration in folder"
 msgstr "Зберігати конфігурацію в каталозі"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1137
-msgid ""
-"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr "':' в імені аліаса. Може бути ви мали через <namespace>::<name> ?"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1205
-msgid ""
-"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr ""
-"Одиночний символ ':' знайдений. Може бути ви мали через ...<namespace>::"
-"<name> ?"
 
 #: src/kvilib/net/kvi_http.cpp:705 src/kvilib/net/kvi_http.cpp:847
 msgid "Stream exceeded expected length"
@@ -7316,11 +6013,7 @@ msgstr "Строкова опція (значення string)"
 msgid "Strip colors"
 msgstr "Вирізати кольори"
 
-#: src/modules/popupeditor/popupeditor.cpp:82
-msgid "Submenu"
-msgstr "Підміню"
-
-#: src/kvirc/kernel/kvi_coreactions.cpp:336 src/kvirc/ui/kvi_menubar.cpp:145
+#: src/kvirc/ui/kvi_menubar.cpp:145 src/kvirc/kernel/kvi_coreactions.cpp:336
 msgid "Subscribe to the Mailing List"
 msgstr "Підписатися на список розсилання"
 
@@ -7356,10 +6049,6 @@ msgstr "Консоль"
 msgid "Terminal emulator"
 msgstr "Емулятор термінала"
 
-#: src/modules/popupeditor/popupeditor.cpp:199
-msgid "Test"
-msgstr "Тест"
-
 #: src/modules/options/optw_texticons.cpp:80
 #, fuzzy
 msgid "Text"
@@ -7373,10 +6062,6 @@ msgstr "&Кодування тексту"
 msgid "Text Encoding Server message"
 msgstr "Повідомлення сервера про кодування"
 
-#: src/modules/popupeditor/popupeditor.cpp:228
-msgid "Text:"
-msgstr "Текст:"
-
 #: src/modules/system/libkvisystem.cpp:525
 #, c-format
 msgid "The DBus call returned an error \"%s\": %s"
@@ -7386,10 +6071,6 @@ msgstr ""
 #, fuzzy
 msgid "The SOCKSv4 protocol lacks IPv6 support"
 msgstr "У протоколі SOCKSV4 немає підтримки Ip6"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-msgid "The ToolBar Label can't be empty!"
-msgstr "Мітка панелі інструментів не може бути порожній!"
 
 #: src/modules/action/libkviaction.cpp:115
 #: src/modules/action/libkviaction.cpp:161
@@ -7437,15 +6118,6 @@ msgstr "Дія \"%1\" не має допомоги"
 #: src/modules/objects/class_multilineedit.cpp:1005
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr "Масив, переданий як параметр, повинен мати як мінімум 3 елементи"
-
-#: src/modules/actioneditor/actioneditor.cpp:172
-msgid ""
-"The big icon associated to this action.<br>It will appear at least in the "
-"toolbar buttons when this action is inserted.<br>It should be 32x32 pixels."
-msgstr ""
-"Більша іконка, асоційована із цим дією<br>Вона буде показуватися принаймні "
-"на кнопках панелі інструментів при вставці цієї дії.<br>Повинна бути 32х32 "
-"пикселя."
 
 #: src/modules/help/helpwindow.cpp:191
 msgid "The closing quotation mark is missing."
@@ -7527,29 +6199,10 @@ msgstr "Ключ був декодирован не правильної шес�
 msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr "Ключ був кодирован не правильної шестнадцатеричной рядком"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-#, fuzzy
-msgid "The exported file would be empty: cowardly refusing to write it"
-msgstr "Експортований файл буде порожнім: скасовую запис у нього"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:743
-msgid "The file \"%Q\" exists. Do you want to replace it ?"
-msgstr "Файл \"%Q\" існує<br>Хочете переписати його?"
-
 #: src/kvirc/ui/kvi_filedialog.cpp:120 src/kvirc/ui/kvi_filedialog.cpp:165
 #, c-format
 msgid "The file %s already exists.<br>Do you wish to overwrite it?"
 msgstr "Файл %s існує<br>Хочете переписати його?"
-
-#: src/modules/reguser/dialog.cpp:814
-#, c-format
-msgid "The file %s contains an invalid registered users database version."
-msgstr "Файл %s містить базу даних користувачів недійсної версії."
-
-#: src/modules/reguser/dialog.cpp:807
-#, c-format
-msgid "The file %s doesn't appear to be a valid registered users database."
-msgstr "Файл %s не є дійсною базою реєстрації користувачів."
 
 #: src/kvilib/file/kvi_packagefile.cpp:610
 #, fuzzy
@@ -7718,14 +6371,6 @@ msgstr ""
 "Специфікація сервера, здається, перебуває в net:<string> але мережа не "
 "знайдена в базі даних"
 
-#: src/modules/actioneditor/actioneditor.cpp:156
-msgid ""
-"The small icon associated to this action.<br>It will appear at least in the "
-"popup menus when this action is inserted.<br>It should be 16x16 pixels."
-msgstr ""
-"Маленька іконка, асоційована із цим дією<br>Вона буде показуватися принаймні "
-"в спливаючим меню при вставці цієї дії.<br>Повинна бути 16х16 пікселей."
-
 #: src/modules/window/libkviwindow.cpp:1135
 msgid "The specified IRC context is not valid: creating a context free window"
 msgstr ""
@@ -7734,16 +6379,6 @@ msgstr ""
 #: src/modules/addon/libkviaddon.cpp:544
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr "Задана версія KVirc \"%Q\" не є коректної"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:266
-msgid ""
-"The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
-"it automatically (so it doesn't collide with any other toolbar) or you "
-"prefer to do it manually ?"
-msgstr ""
-"Заданий Id панелі інструментів уже існує<br> Ви хочете щоб KVIrc призначив "
-"його автоматично (при цьому будуть виключені протиріччя з іншими панелями) "
-"або зробите це вручну?"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:498
 msgid "The specified bind address (%Q) is not valid"
@@ -7885,11 +6520,6 @@ msgstr "Є активні з'єднання, ви дійсно хочете "
 msgid "There is no $this pointer in this scope (unexpected @)"
 msgstr "Немає покажчика $this (несподіваний @)"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#, fuzzy
-msgid "There is no selection!"
-msgstr "З'єднання не прийняте!"
-
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
 msgstr "KVirc зібраний без підтримки IPV6"
@@ -7946,11 +6576,6 @@ msgid ""
 msgstr ""
 "Цей модуль скомпільований для іншої версії KVIrc і не може бути завантажений"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1357
-#: src/modules/aliaseditor/aliaseditor.cpp:1369
-msgid "This name is already in use. Please choose another one."
-msgstr ""
-
 #: src/kvirc/ui/kvi_optionswidget.cpp:49
 msgid "This option is also available as"
 msgstr "Ця опція також доступна як"
@@ -7981,15 +6606,6 @@ msgstr "Цей сервер підтримує: %s"
 #: src/modules/trayicon/libkvitrayicon.cpp:170
 msgid "This silence is freaking me out!"
 msgstr "Ця дивна тиша!"
-
-#: src/modules/actioneditor/actioneditor.cpp:247
-#: src/modules/actioneditor/actioneditor.cpp:258
-#: src/modules/actioneditor/actioneditor.cpp:269
-msgid ""
-"This will enable the action only if there are selected users in the active "
-"window"
-msgstr ""
-"Це зробить доступним дію тільки якщо є обрані користувачі в активному вікні"
 
 #: src/modules/my/libkvimy.cpp:47
 msgid "This window has no associated irc context"
@@ -8034,15 +6650,7 @@ msgstr "Тема каналу \r!c\r%Q\r - %Q"
 msgid "Tip: %Q"
 msgstr "Список: %Q"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:407
-msgid "ToolBar Export"
-msgstr "Експорт панелі інструментів"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:133
-msgid "ToolBar Properties"
-msgstr "Властивості панелі інструментів"
-
-#: src/kvirc/ui/kvi_menubar.cpp:183 src/kvirc/ui/kvi_toolbar.cpp:86
+#: src/kvirc/ui/kvi_toolbar.cpp:86 src/kvirc/ui/kvi_menubar.cpp:183
 msgid "Toolbars"
 msgstr "Панелі інструментів"
 
@@ -8086,11 +6694,6 @@ msgstr "Тема встановлена %Q"
 msgid "Topic was set by %Q on %Q"
 msgstr "Тема встановлена %Q на %Q"
 
-#: src/modules/regchan/libkviregchan.cpp:219
-#, c-format
-msgid "Total %d channels"
-msgstr "Усього %d каналів"
-
 #: src/modules/links/linkswindow.cpp:302
 msgid "Total hosts in the network"
 msgstr "Загальна кількість серверів у мережі"
@@ -8109,11 +6712,6 @@ msgstr "Усього з'єднань: %d"
 msgid "Total: %d addons installed"
 msgstr "Усього встановлено %d доповнень"
 
-#: src/modules/reguser/libkvireguser.cpp:840
-#, c-format
-msgid "Total: %d matching users (of %d in the database)"
-msgstr "Разом: %d користувачів (%d у базі даних)"
-
 #: src/kvirc/ui/kvi_selectors.cpp:604
 msgid "Transparent"
 msgstr "Прозорість"
@@ -8121,10 +6719,6 @@ msgstr "Прозорість"
 #: src/kvirc/kernel/kvi_irccontext.cpp:651
 msgid "Try reconnecting with caching disabled"
 msgstr "Спробуйте підключитися з виключеним кешированням"
-
-#: src/modules/popupeditor/popupeditor.cpp:209
-msgid "Type"
-msgstr "Тип"
 
 #: src/kvilib/core/kvi_error.cpp:148
 msgid "UNUSED"
@@ -8226,39 +6820,6 @@ msgstr "Не можу запустити пошук DNS"
 msgid "Unable to start the request slave thread"
 msgstr "Неможливо відіслати запит вторинної нитки"
 
-#: src/modules/actioneditor/actioneditor.cpp:717
-msgid "Unable to write to the actions file."
-msgstr "Неможливо зберегти файл із діями."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1183
-msgid "Unable to write to the alias file."
-msgstr "Неможливо зберегти файл аліасов."
-
-#: src/modules/eventeditor/eventeditor.cpp:454
-msgid "Unable to write to the event file."
-msgstr "Не можу записати подію у файл."
-
-#: src/modules/eventeditor/eventeditor.cpp:492
-msgid "Unable to write to the events file."
-msgstr "Не можу записати події у файл."
-
-#: src/modules/popupeditor/popupeditor.cpp:1136
-msgid "Unable to write to the popup file."
-msgstr "Не можу записати спливаюче меню у файл."
-
-#: src/modules/raweditor/raweditor.cpp:429
-msgid "Unable to write to the raw event file."
-msgstr "Не можу записати подію у файл."
-
-#: src/modules/raweditor/raweditor.cpp:469
-msgid "Unable to write to the raw events file."
-msgstr "Не можу записати події у файл."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-msgid "Unable to write to the toolbar file."
-msgstr "Неможливо зберегти панель інструментів у файл."
-
 #: src/kvirc/kernel/kvi_options.cpp:802
 msgid "Unban matching my mask"
 msgstr "Снять бан по моїй масці"
@@ -8324,9 +6885,9 @@ msgstr "Зняти підсвічування із всіх вікон"
 msgid "Uninstalling existing addon version %Q"
 msgstr "Видалення наявного доповнення версії %Q"
 
-#: src/kvilib/net/kvi_ssl.cpp:583 src/kvilib/net/kvi_ssl.cpp:613
-#: src/kvilib/net/kvi_ssl.cpp:636 src/modules/upnp/rootservice.cpp:172
-#: src/kvirc/kernel/kvi_theme.cpp:86 src/kvirc/ui/kvi_topicw.cpp:149
+#: src/kvirc/ui/kvi_topicw.cpp:149 src/kvirc/kernel/kvi_theme.cpp:86
+#: src/modules/upnp/rootservice.cpp:172 src/kvilib/net/kvi_ssl.cpp:583
+#: src/kvilib/net/kvi_ssl.cpp:613 src/kvilib/net/kvi_ssl.cpp:636
 msgid "Unknown"
 msgstr "Невідомий"
 
@@ -8350,8 +6911,8 @@ msgstr "Невідома команда"
 msgid "Unknown engine error"
 msgstr "Невідома помилка"
 
-#: src/kvilib/core/kvi_error.cpp:51
 #: src/modules/rijndael/libkvirijndael.cpp:173
+#: src/kvilib/core/kvi_error.cpp:51
 msgid "Unknown error"
 msgstr "Невідома помилка"
 
@@ -8487,10 +7048,6 @@ msgstr "Обновляю away списки для каналу %Q"
 msgid "Use Default Encoding"
 msgstr "Використати кодування за замовчуванням"
 
-#: src/modules/reguser/edituser.cpp:433
-msgid "Use custom color in userlist"
-msgstr "Використати інші кольори в списку користувачів"
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:182
 msgid "Use doubleclick to edit item"
 msgstr "Подвійний клич для редагування"
@@ -8507,13 +7064,6 @@ msgstr "Використати вже існуючу папку"
 msgid "Use the crypt engine"
 msgstr "Використання криптовальной машини"
 
-#: src/modules/reguser/libkvireguser.cpp:344
-#: src/modules/reguser/libkvireguser.cpp:458
-#: src/modules/reguser/libkvireguser.cpp:523
-#: src/modules/reguser/libkvireguser.cpp:703
-msgid "User %Q not found"
-msgstr "Користувач %Q не знайдений"
-
 #: src/kvirc/ui/kvi_channel.cpp:154 src/kvirc/ui/kvi_channel.cpp:194
 msgid "User List"
 msgstr "Список користувачів"
@@ -8527,17 +7077,9 @@ msgstr "Режим користувача"
 msgid "User Modes"
 msgstr "Режим користувача"
 
-#: src/modules/reguser/wizard.cpp:77
-msgid "User Registration Wizard - KVIrc"
-msgstr "Майстер реєстрації користувача - KVIrc"
-
 #: src/kvirc/kernel/kvi_options.cpp:729
 msgid "User action"
 msgstr "Дія користувача"
-
-#: src/modules/reguser/libkvireguser.cpp:208
-msgid "User already registered: found exact name match"
-msgstr "Користувач уже зареєстрований: виявлене таке ж ім'я"
 
 #: src/kvirc/ui/kvi_input.cpp:142
 msgid "User friendly commandline mode<br>See also /help commandline"
@@ -8548,10 +7090,6 @@ msgstr ""
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:594
 msgid "User mode for \r!n\r%Q\r is %s"
 msgstr "Режим каналу \r!n\r%Q\r - %s"
-
-#: src/modules/reguser/libkvireguser.cpp:274
-msgid "User not found (%Q)"
-msgstr "Користувач не знайдений (%Q)"
 
 #: src/kvirc/kernel/kvi_options.cpp:822
 msgid "User-deop mode change"
@@ -8643,10 +7181,6 @@ msgstr "Використовуване специфічне ім'я для се�
 msgid "Valid name but the host has no IP address"
 msgstr "Ім'я хоста вірно, але для нього немає IP адреси"
 
-#: src/modules/reguser/edituser.cpp:91
-msgid "Value"
-msgstr "Значення"
-
 #: src/kvilib/core/kvi_error.cpp:160
 msgid "Variable expected"
 msgstr "Очікується змінна"
@@ -8670,22 +7204,6 @@ msgstr "Дуже низька активність"
 #: src/modules/url/libkviurl.cpp:822
 msgid "View URL list"
 msgstr "Показати список URL"
-
-#: src/modules/actioneditor/actioneditor.cpp:113
-msgid ""
-"Visible name for this action.<br>This string will be displayed to the user "
-"so it is a good idea to use $tr() here"
-msgstr ""
-"Видиме ім'я для цього дії<br>Цей рядок буде показана користувачеві, гарною "
-"ідеєю буде використання тут $tr()"
-
-#: src/modules/actioneditor/actioneditor.cpp:146
-msgid ""
-"Visible short description for this action.<br>This string will be displayed "
-"to the user so it is a good idea to use $tr() here"
-msgstr ""
-"Видимий короткий опис цього дії<br>Цей рядок буде показана користувачеві, "
-"гарною ідеєю буде використання тут $tr()"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:231
 msgid "Voiced users"
@@ -8714,9 +7232,9 @@ msgstr "Wallops (+w)"
 msgid "Wallops message"
 msgstr "Повідомлення Wallops"
 
-#: src/modules/mircimport/libkvimircimport.cpp:116
 #: src/modules/url/libkviurl.cpp:233 src/modules/url/libkviurl.cpp:312
 #: src/modules/url/libkviurl.cpp:497
+#: src/modules/mircimport/libkvimircimport.cpp:116
 msgid "Warning - KVIrc"
 msgstr "Увага - KVIrc"
 
@@ -8807,22 +7325,6 @@ msgstr "Вікно з ID '%Q' не знайдено"
 msgid "Window with id '%Q' not found, returning empty string"
 msgstr "Вікно з ID '%Q' не знайдено, повертається порожній рядок"
 
-#: src/modules/editor/scripteditor.cpp:989
-msgid "Word to Find"
-msgstr "Слово для пошуку"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-#: src/modules/actioneditor/actioneditor.cpp:717
-#: src/modules/eventeditor/eventeditor.cpp:454
-#: src/modules/eventeditor/eventeditor.cpp:492
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:469
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1136
-#: src/modules/popupeditor/popupeditor.cpp:1183
-msgid "Write Failed - KVIrc"
-msgstr "Помилка запису - KVIrc"
-
 #: src/kvilib/file/kvi_packagefile.cpp:522
 msgid "Writing informational fields"
 msgstr "Записую інформацію"
@@ -8835,19 +7337,10 @@ msgstr "Записую дані"
 msgid "Writing package header"
 msgstr "Записую заголовок пакета"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:386
-#: src/modules/toolbareditor/toolbareditor.cpp:409
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:786
 #: src/kvirc/ui/kvi_input.cpp:259 src/kvirc/ui/kvi_statusbar.cpp:570
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:786
 msgid "Yes"
 msgstr "Так"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-msgid "Yes to All"
-msgstr "Так для всіх"
 
 #: src/kvirc/ui/kvi_input.cpp:258
 msgid "Yes, always"
@@ -8926,14 +7419,6 @@ msgstr "Ви залишаєте канал \r!c\r%Q\r: %Q"
 #, c-format
 msgid "You have set user mode %s"
 msgstr "У вас установлений режим %s"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1110
-msgid "You must specify a valid name for the alias"
-msgstr "Ви повинні вказати коректне ім'я аліаса"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1178
-msgid "You must specify a valid name for the namespace"
-msgstr "Ви повинні визначити коректне ім'я для простору імен"
 
 #: src/kvirc/ui/kvi_input.cpp:252
 msgid ""
@@ -9277,11 +7762,6 @@ msgstr "підключення"
 msgid "d: Obscure 'DEBUG' flag"
 msgstr "d: можливо 'DEBUG' прапор"
 
-#: src/modules/eventeditor/eventeditor.cpp:266
-#: src/modules/raweditor/raweditor.cpp:264
-msgid "default"
-msgstr "за замовчуванням"
-
 #: src/kvirc/ui/kvi_imagedialog.cpp:271
 msgid "directory"
 msgstr "каталог"
@@ -9367,10 +7847,6 @@ msgstr "Помилка звертання до listen()"
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:282
 msgid "n: Recipient for nick changes"
 msgstr "n: Одержувати відомості про зміни ніка"
-
-#: src/modules/eventeditor/eventeditor.cpp:390
-msgid "none"
-msgstr "ні"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1584
 msgid "notification"
@@ -9462,12 +7938,6 @@ msgstr "невідомий"
 msgid "unmatched watch list entry"
 msgstr "неузгоджений вхід у список спостереження"
 
-#: src/modules/eventeditor/eventeditor.cpp:228
-#: src/modules/raweditor/raweditor.cpp:202
-#: src/modules/popupeditor/popupeditor.cpp:1280
-msgid "unnamed"
-msgstr "без імені"
-
 #: src/kvirc/ui/kvi_channel.cpp:928
 msgid "user total"
 msgstr "користувача всього"
@@ -9525,8 +7995,51 @@ msgstr "y: Шпигун :)"
 msgid "z: Recipient for oper wallop messages"
 msgstr "z: Одержувач повідомлень wallop"
 
+#, fuzzy
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\tEvent:\n"
+#~ "\t\t%s\n"
+#~ "\n"
+#~ "\tParameters:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\tсобытие:\n"
+#~ "\t\t%s\n"
+#~ "\n"
+#~ "\tпараметры:\n"
+#~ " %s"
+
+#, fuzzy
+#~ msgid "    Mask: %Q!%Q@%Q"
+#~ msgstr "    Маска: %Q! %Q@%Q"
+
+#~ msgid "    No properties"
+#~ msgstr "    Немає властивостей"
+
+#~ msgid "    Property: %Q=%Q"
+#~ msgstr "    Властивість: %Q=%Q"
+
+#~ msgid "    Warning: this user has no registration masks"
+#~ msgstr "    Попередження: цей користувач не має реєстраційної маски"
+
+#~ msgid "   Property: %s=%s"
+#~ msgstr "   Властивість: %s=%s"
+
 #~ msgid " I can't find the specified file '%Q'."
 #~ msgstr "Не можу знайти файл %Q"
+
+#~ msgid " User: %c%Q"
+#~ msgstr " Користувач: %c%Q"
+
+#~ msgid "### Epilogue ###"
+#~ msgstr "### Епілог ###"
+
+#~ msgid "### Prologue ###"
+#~ msgstr "### Пролог ###"
 
 #~ msgid "$move() requires either an array as first parameter or two integers"
 #~ msgstr ""
@@ -9563,6 +8076,15 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "%d properties listed"
 #~ msgstr "%d властивостей"
 
+#~ msgid "&Add Group..."
+#~ msgstr "&Додати групу..."
+
+#~ msgid "&Add Raw Event..."
+#~ msgstr "&Додати заготівлю події..."
+
+#~ msgid "&Add..."
+#~ msgstr "&Додати..."
+
 #~ msgid "&Administrator"
 #~ msgstr "Адміністратор"
 
@@ -9583,6 +8105,33 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "&Deowner"
 #~ msgstr "Зняти прапор власніка"
+
+#~ msgid "&Disable Handler"
+#~ msgstr "В&иключити оброблювач"
+
+#~ msgid "&Edit"
+#~ msgstr "&Редагувати"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Редагувати..."
+
+#~ msgid "&Enable Handler"
+#~ msgstr "&Включити оброблювач"
+
+#~ msgid "&Execute"
+#~ msgstr "&Виконати"
+
+#~ msgid "&Export All To..."
+#~ msgstr "&Експортувати все в..."
+
+#~ msgid "&Export Handler To..."
+#~ msgstr "&Експорт оброблювача в..."
+
+#~ msgid "&Export Popup To..."
+#~ msgstr "&Експортувати спливаюче меню в..."
+
+#~ msgid "&Export selected To..."
+#~ msgstr "&Експортувати виділене в..."
 
 #~ msgid "&Findnext"
 #~ msgstr "Знайти &наступний"
@@ -9611,17 +8160,32 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "&Kick/Ban"
 #~ msgstr "Кікбан"
 
+#~ msgid "&New"
+#~ msgstr "&Новий"
+
+#~ msgid "&New Handler"
+#~ msgstr "&Новий оброблювач"
+
+#~ msgid "&New Popup"
+#~ msgstr "&Нове спливаюче меню"
+
 #~ msgid "&Op"
 #~ msgstr "&Оператор"
 
 #~ msgid "&Part"
 #~ msgstr "&Вийти з каналу"
 
+#~ msgid "&Paste Below"
+#~ msgstr "&Вставити знизу"
+
 #~ msgid "&Query"
 #~ msgstr "Приват"
 
 #~ msgid "&Registration"
 #~ msgstr "Реєстрація"
+
+#~ msgid "&Replace in all Aliases"
+#~ msgstr "Замінити у всіх аліасах"
 
 #~ msgid "&Replace(WIP)"
 #~ msgstr "Заміна(WIP)"
@@ -9651,6 +8215,161 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgstr "<b><font color=\"#EAEAEA\" size=\"-1\">Знайти текст</font></b>"
 
 #~ msgid ""
+#~ "<center><b>Boolean condition</b><br>Will be evaluated at popup call time "
+#~ "in order to decide if this entry has to be shown.<br>An empty condition "
+#~ "evaluates to true.</center>"
+#~ msgstr ""
+#~ "<center><b>Булево умова</b><br>Буде визначати чи показувати спливаюче "
+#~ "меню під час виклику<br>Порожня умова приймається за істину</center>"
+
+#~ msgid ""
+#~ "<center><b>External menu name</b><br>This allows to nest externally "
+#~ "defined popup menus. The popup menu with the specified name will be "
+#~ "looked up at menu setup time.</center>"
+#~ msgstr ""
+#~ "<center><b>Ім'я зовнішнього меню</b><br>Це дозволить вставити зовнішнє "
+#~ "спливаюче меню. Меню із цим ім'ям буде шукатися під час установки</center>"
+
+#~ msgid ""
+#~ "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
+#~ "path or a relative path.<br>Portable scripts should never use absolute "
+#~ "paths.</center>"
+#~ msgstr ""
+#~ "<center><b>Ідентифікатор іконки</b><br>Може бути внутрішнім ID іконки, "
+#~ "абсолютним або відносним шляхом.<br>Стерпні сценарії не повинні містити "
+#~ "абсолютних шляхів</center>"
+
+#~ msgid ""
+#~ "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
+#~ "center>"
+#~ msgstr ""
+#~ "<center><b>ID Пункту</b><br>Це дозволить вам використати delpopupitem "
+#~ "пізніше.</center>"
+
+#~ msgid ""
+#~ "<center><b>Visible text</b><br>May contain identifiers that will be "
+#~ "evaluated at popup call time.<br>For labels, this text can contain also "
+#~ "limited HTML tags.</center>"
+#~ msgstr ""
+#~ "<center><b>Видимий текст</b><br>Може містити ідентифікатори які визначені "
+#~ "при виклику спливаючі меню.<br>Цей текст також може містити деякі HTML "
+#~ "теги</center>"
+
+#~ msgid ""
+#~ "<center>This is the list of registered users. KVIrc can automatically "
+#~ "recognize and associate properties to them.<br>Use the buttons on the "
+#~ "right to add, edit and remove entries. The \"notify\" column allows you "
+#~ "to quickly add users to the notify list. Notify list fine-tuning can be "
+#~ "performed by editing the entry properties.</center>"
+#~ msgstr ""
+#~ "<center>Це список зареєстрованих користувачів. KVIrc може автоматично "
+#~ "дізнаватися й асоціювати з ними властивості<br>Використайте кнопки "
+#~ "праворуч для додавання, видалення й редагування пунктів. Стовпчик "
+#~ "\"Повідомлення\" дозволяє вам швидко додавати користувачів у список "
+#~ "повідомлень. Тонке настроювання списку виконується при редагуванні "
+#~ "властивостей.</center>"
+
+#~ msgid ""
+#~ "<center>This the <b>hostname</b> that will match this user. <b>*</b> will "
+#~ "match any hostname.</center>"
+#~ msgstr ""
+#~ "<center>Це <b>хост</b> відповідному цьому користувачеві. <b>*</b> буде "
+#~ "відповідати кожному хосту.</center>"
+
+#~ msgid ""
+#~ "<center>This the <b>nickname</b> that will match this user, default value "
+#~ "is the registered name.</center>"
+#~ msgstr ""
+#~ "<center>Це <b>Нік</b> відповідному цьому користувачеві, є зареєстрованим "
+#~ "і використається по умовчанню</center>"
+
+#~ msgid ""
+#~ "<center>This the <b>username</b> that will match this user. <b>*</b> will "
+#~ "match any username.</center>"
+#~ msgstr ""
+#~ "<center>Це <b>Нік</b> відповідному цьому користувачеві. <b>*</b> буде "
+#~ "відповідати будь-якому імені користувача</center>"
+
+#~ msgid "<center>You can enter a space separated list of nicknames.</center>"
+#~ msgstr "<center>Ви можете ввести через пробіл список ніків.</center>"
+
+#~ msgid ""
+#~ "<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
+#~ "mask must be in the following form:<br><b>nickname!username@hostname</"
+#~ "b><br>and can contain wildcard characters '*' and '?'. Be careful in "
+#~ "choosing the masks, as they are the only way to verify the identity of a "
+#~ "registered user.<br><br>You can enter at most two masks here, if you wish "
+#~ "to add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
+#~ "dialog. You must enter at least one mask.</p>"
+#~ msgstr ""
+#~ "<p>Зареєстрований користувач ідентифікується по однієї або декількох "
+#~ "<b>маскам IRC</b>.<br>Маска повинна бути наступного виду: <br><b>Нік!"
+#~ "ім'я@хост</b><br> і може містити символи шаблонів '*' і '?'. Будьте "
+#~ "уважні при виборі маски, тому що вона єдиний спосіб ідентифікувати "
+#~ "користувача<br><br>Тут ви можете визначити не більше двох масок, якщо вам "
+#~ "потрібно більше використайте кнопку \"<b>Редагувати</b>\" у діалозі "
+#~ "реєстрації користувачів. Ви повинні визначити хоча б одну маску</p>"
+
+#~ msgid ""
+#~ "<p>If you want to be notified when this user is online or goes offline, "
+#~ "you must specify the list of nicknames that KVIrc will look for."
+#~ "<br><br>You can enter at most two nicknames here, if you wish to add more "
+#~ "nicknames, use the \"<b>Edit</b>\" button in the Registered Users dialog."
+#~ "</p>"
+#~ msgstr ""
+#~ "<p>Якщо ви хочете одержувати повідомлення коли користувач з'являється в "
+#~ "онлайне або йде в оффлайн, ви повинні визначити тут список ніків які буде "
+#~ "шукати KVIrc<br><br>Тут ви можете визначити не більше двох ніків, якщо "
+#~ "вам потрібно більше використайте кнопку \"<b>Редагувати</b>\" в діалозі "
+#~ "реєстрації користувачів</p>"
+
+#~ msgid ""
+#~ "<p>If you want to store an avatar image for this user, you can set it "
+#~ "here. KVIrc will show the avatar in the userlist next to the user's "
+#~ "nickname.<br>An avatar can be in any supported image format (PNG is "
+#~ "recommended). Keep in mind that KVIrc stores avatars in memory and has to "
+#~ "resize them to fit in the userlist, thus it's better to use small, low-"
+#~ "resolution images.</p>"
+#~ msgstr ""
+#~ "<p>Якщо ви хочете асоціювати із цим користувачем аватар, ви можете "
+#~ "зробити це тут. KVIrc буде показувати цей аватар у списку користувачів "
+#~ "поруч з ніком.<br>У якості аватарів підтримуються будь-які формати "
+#~ "картинок (рекомендується PNG). Майте через, що KVIrc завантажує аватари "
+#~ "на згадку й там їх масштабує щоб помістити в список користувачів, тому "
+#~ "краще вибирати картинки невеликих розмірів з низьким дозволом</p>"
+
+#~ msgid ""
+#~ "<p>That's it. The user registration has been completed.<br><br>Click "
+#~ "\"<b>Finish</b>\" to close this dialog.</p>"
+#~ msgstr ""
+#~ "<p>Реєстрація користувача завершена<br><br>Клацніть на \"<b>Готово</b>\" "
+#~ "для закриття цього діалогу</p>"
+
+#~ msgid ""
+#~ "<p>Welcome to the user registration wizard.<br>This process allows you to "
+#~ "add an IRC user to the database and set properties for that user. KVIrc "
+#~ "will be (hopefully) able to recognize the user, add him to the notify "
+#~ "list, and display the associated avatar.<br><br>First of all, you must "
+#~ "insert an <b>entry name or real name</b> for the user you're going to "
+#~ "register. The name will be used to identify the database entry and has no "
+#~ "specific requirements, it can be a given name, nickname, or just some "
+#~ "text to remind you of the real person.<br>Examples: \"George W Bush\", "
+#~ "\"Dubya\".\n"
+#~ "</p>"
+#~ msgstr ""
+#~ "<p>Ласкаво просимо в майстер реєстрації користувача<br>Ця процедура "
+#~ "дозволить вам додати користувача IRC до бази даних і визначити "
+#~ "властивості цього користувача. KVIrc зможе ідентифікувати користувача, "
+#~ "додати його у список повідомлень і покаже пов'язаний з ним аватар."
+#~ "<br><br>Насамперед ви повинні <b>увести реальне ім'я</b> для користувача "
+#~ "якого ви намагаєтеся зареєструвати. Це ім'я буде використатися для "
+#~ "ідентифікації в базі даних і не має ніяких специфічних вимог, воно може "
+#~ "бути просто відверненим ім'ям, ніком або яким-небудь текстом який буде "
+#~ "нагадувати вам про це людині<br>Наприклад: \"Вася Пупкін\", \"Брітні Спірс"
+#~ "\".\n"
+#~ "</p>"
+
+#~ msgid ""
 #~ "A pixmap object, an image_id or an image file path is required for this "
 #~ "property"
 #~ msgstr ""
@@ -9659,8 +8378,58 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "A popup menu cannot be popped up twice"
 #~ msgstr "Спливаюче меню не може бути показане двічі"
 
+#~ msgid "Action"
+#~ msgstr "Дія"
+
+#~ msgid "Action Editor"
+#~ msgstr "Редактор дій"
+
+#~ msgid "Action code"
+#~ msgstr "Код дії"
+
+#~ msgid "Add (Wizard)..."
+#~ msgstr "Додати (Майстер)..."
+
+#~ msgid "Add Alias"
+#~ msgstr "Додати аліас"
+
+#~ msgid "Add Namespace"
+#~ msgstr "Додати простір імен"
+
+#~ msgid "Add a registered user by means of a user-friendly wizard."
+#~ msgstr "Додайте реєстрацію користувача за допомогою дружнього майстра."
+
+#~ msgid "Add this user to the notify list"
+#~ msgstr "Додати цього користувача в список повідомлень"
+
 #~ msgid "Add to Notify"
 #~ msgstr "Додати в повідомлення"
+
+#~ msgid "Adds a new group"
+#~ msgstr "Додати нову групу"
+
+#~ msgid "Alias"
+#~ msgstr "Аліас"
+
+#~ msgid "Alias Editor"
+#~ msgstr "Редактор аліасов"
+
+#~ msgid "Alias Export"
+#~ msgstr "Експорт аліаса"
+
+#, fuzzy
+#~ msgid "Alias already exists"
+#~ msgstr "Адреса вже використається"
+
+#~ msgid ""
+#~ "Alias names can contain only letters, digits, underscores and '::' "
+#~ "namespace separators"
+#~ msgstr ""
+#~ "Ім'я аліаса може містити тільки цифри, букви, нижні підкреслення й '::' "
+#~ "як роздільник просторів імен"
+
+#~ msgid "All Properties..."
+#~ msgstr "Всі властивості..."
 
 #~ msgid "Always Highlight"
 #~ msgstr "Завжди подсвічувати"
@@ -9671,6 +8440,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid ""
 #~ "Another connection is already in progress in the selected IRC context"
 #~ msgstr "Інше з'єднання вже запущене в заданому IRC контексті"
+
+#~ msgid "Apply"
+#~ msgstr "Застосувати"
 
 #~ msgid "Argument to long, using only first char"
 #~ msgstr "Аргумент занадто довгий, використається тільки перший символ"
@@ -9687,14 +8459,29 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Array reference assert failed: the variable evaluated to type '%Q'"
 #~ msgstr "Помилка в посиланні масиву: змінна визначена як типу '%Q'"
 
+#~ msgid "Automatically"
+#~ msgstr "Автоматично"
+
+#~ msgid "Avatar"
+#~ msgstr "Аватар"
+
 #~ msgid "Backward compatibility action for toolbar.define"
 #~ msgstr "Дія зворотної сумісності для toolbar.define"
+
+#~ msgid "Bad Alias Name"
+#~ msgstr "Некоректне ім'я аліаса"
+
+#~ msgid "Bad Namespace Name"
+#~ msgstr "Некоректне ім'я для простору імен"
 
 #~ msgid "Ban"
 #~ msgstr "Бан"
 
 #~ msgid "Basic Properties"
 #~ msgstr "Основні параметри"
+
+#~ msgid "Big Icon:"
+#~ msgstr "Більша іконка:"
 
 #~ msgid "Bind failure"
 #~ msgstr "Помилка зв'язування"
@@ -9742,6 +8529,10 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Can't delete an inexisting object"
 #~ msgstr "Неможливо видалити неіснуючий об'єкт"
 
+#~ msgid "Can't export the registered users database: Write error."
+#~ msgstr ""
+#~ "Неможливо експортувати базу дані реєстрації користувачів: Помилка запису."
+
 #~ msgid ""
 #~ "Can't find property named \"%Q\" for object named \"%Q\" of class %Q: the "
 #~ "property is indexed and defined but the returned variant is not valid"
@@ -9772,8 +8563,17 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Can't find the tab "
 #~ msgstr "Не знайдена закладка "
 
+#~ msgid "Can't import the registered users database: Read error."
+#~ msgstr "Не можу імпортувати базу реєстрації користувачів: Помилка читання."
+
 #~ msgid "Can't kill the timer '%Q' since it is not running"
 #~ msgstr "Не можу вбити таймер '%Q' тому що він не запущений"
+
+#~ msgid "Can't open file %Q for writing."
+#~ msgstr "Не можу відкрити файл %Q для запису."
+
+#~ msgid "Can't open file %s for reading."
+#~ msgstr "Не можу відкрити файл %s для читання."
 
 #~ msgid "Can't override the builtin class \"%Q\""
 #~ msgstr "Неможливо скасувати убудований клас \"%Q\""
@@ -9800,6 +8600,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgstr ""
 #~ "Не можу знайти об'єкт функції $%Q::%Q для об'єкта з ім'ям \"%Q\" класу %Q"
 
+#~ msgid "Category:"
+#~ msgstr "Категорія:"
+
 #~ msgid "Channel Administrator"
 #~ msgstr "Адміністратор каналу"
 
@@ -9809,11 +8612,71 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Channel Owner"
 #~ msgstr "Хазяїн каналу"
 
+#~ msgid "Channel: %c%s@%s"
+#~ msgstr "Канал: %c%s@%s"
+
 #~ msgid "Channels"
 #~ msgstr "Канали"
 
 #~ msgid "Chat with"
 #~ msgstr "Чат з"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled also during the login "
+#~ "operations (so when the logical IRC connection hasn't been estabilished "
+#~ "yet)"
+#~ msgstr ""
+#~ "Включите цю опцію якщо дія повинне бути доступно вже під час входу (коли "
+#~ "IRC з'єднання ще не встановлене)."
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window belongs to an irc context"
+#~ msgstr ""
+#~ "Включите цю опцію якщо дія повинне бути доступно тільки у випадку коли "
+#~ "активне вікно належить IRC контексту."
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window has an active IRC connection"
+#~ msgstr ""
+#~ "Включите цю опцію якщо дія повинне бути доступно тільки у випадку коли "
+#~ "активне вікно має активне IRC з'єднання."
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is a channel"
+#~ msgstr ""
+#~ "Включите цю опцію якщо дія повинне бути доступно тільки в активному вікні "
+#~ "каналу"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is a console"
+#~ msgstr ""
+#~ "Включите цю опцію якщо дія повинне бути доступно тільки в активному вікні "
+#~ "термінала"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is a dcc chat"
+#~ msgstr ""
+#~ "Включите цю опцію якщо дія повинне бути доступно тільки в активному вікні "
+#~ "DCC чата"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is a query"
+#~ msgstr ""
+#~ "Включите цю опцію якщо дія повинне бути доступно тільки в активному вікні "
+#~ "привата"
+
+#~ msgid ""
+#~ "Check this option if this action should be enabled only when the active "
+#~ "window is of a specified type"
+#~ msgstr ""
+#~ "Включите цю опцію якщо дія повинне бути доступно тільки в активних вікнах "
+#~ "заданих типів."
 
 #~ msgid "Choose"
 #~ msgstr "Вибрати"
@@ -9824,6 +8687,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Choose Log Filename"
 #~ msgstr "Виберете ім'я файлу журналу"
 
+#~ msgid "Choose a Filename - KVIrc"
+#~ msgstr "Виберіть ім'я файлу - KVIrc"
+
 #~ msgid "Choose a file to parse"
 #~ msgstr "Виберіть файл граматичного розбору"
 
@@ -9832,6 +8698,9 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Choose from built-in server list"
 #~ msgstr "Вибрати з убудованого списку серверів"
+
+#~ msgid "Choose the category that best fits for this action"
+#~ msgstr "Виберіть категорію, найбільш придатну для цієї дії"
 
 #~ msgid "Class \"%Q\" is not defined"
 #~ msgstr "Клас %Q не визначений"
@@ -9842,11 +8711,33 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Clear Default"
 #~ msgstr "Скасувати умовчання"
 
+#~ msgid "Code"
+#~ msgstr "Код"
+
+#~ msgid "Collapse All Namespaces"
+#~ msgstr "Згорнути всі простори імен"
+
+#~ msgid "Colors"
+#~ msgstr "Кольори"
+
+#~ msgid "Comment:"
+#~ msgstr "Коментар:"
+
+#, fuzzy
+#~ msgid "Comment: "
+#~ msgstr "Коментар:"
+
+#~ msgid "Condition:"
+#~ msgstr "Умова:"
+
 #~ msgid "Config file:"
 #~ msgstr "Файл конфігурації:"
 
 #~ msgid "Configure ban mask..."
 #~ msgstr "Конфігурація маски бана..."
+
+#~ msgid "Confirm ToolBar Deletion"
+#~ msgstr "Підтвердите видалення панелі інструментів"
 
 #~ msgid "Connect attempt timed out"
 #~ msgstr "Закінчився час спроб з'єднання"
@@ -9876,6 +8767,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Ctrl+Q"
 #~ msgstr "Ctrl+Q"
 
+#~ msgid "Customize Toolbars"
+#~ msgstr "Користувальницькі панелі інструментів"
+
 #~ msgid "D&evoice"
 #~ msgstr "Зняти прапор войса"
 
@@ -9889,6 +8783,15 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "DNS for"
 #~ msgstr "DNS для"
 
+#~ msgid "Delete Actions"
+#~ msgstr "Видалити дії"
+
+#~ msgid "Delete ToolBar"
+#~ msgstr "Видалити панель інструментів"
+
+#~ msgid "Description:"
+#~ msgstr "Опис:"
+
 #, fuzzy
 #~ msgid "Destination  parameter is not an object"
 #~ msgstr "Параметр Widget не є об'єктом"
@@ -9901,11 +8804,44 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Destination must be a pixmap object"
 #~ msgstr "Параметр Widget не є об'єктом"
 
+#~ msgid "Do you really want to delete toolbar \"%1\" ?"
+#~ msgstr "Ви дійсно хочете видалити панель інструментів \"%1\" ?"
+
+#~ msgid "Do you really want to remove the alias \"%Q\" ?"
+#~ msgstr "Ви дійсно хочете видалити аліас \"%Q\"?"
+
+#~ msgid "Do you really want to remove the namespace \"%Q\" ?"
+#~ msgstr "Ви дійсно хочете видалити простір імен \"%Q\"?"
+
+#~ msgid "Do you want the associated actions to be exported with the toolbar ?"
+#~ msgstr "Ви хочете експортувати дії, пов'язані з панеллю інструментів ?"
+
 #~ msgid "Doesn't a widget object"
 #~ msgstr "Це не об'єкт виджета"
 
+#~ msgid "Drop here the icons from the toolbars to remove them"
+#~ msgstr "Перетягнете сюди іконки з панелі інструментів щоб видалити їх"
+
+#~ msgid "Duplicate ToolBar Id"
+#~ msgstr "Дублікат Id панелі інструментів"
+
 #~ msgid "Edit Registration"
 #~ msgstr "Редагувати реєстрацію"
+
+#~ msgid "Edit ToolBar"
+#~ msgstr "Редагувати панель інструментів"
+
+#~ msgid "Edit the alias or namespace name"
+#~ msgstr "Редагувати ім'я аліаса або простору імен."
+
+#~ msgid "Edit the event handler name."
+#~ msgstr "Редагування імені оброблювача події."
+
+#~ msgid "Edit the first selected entry."
+#~ msgstr "Редагувати перший обраний пункт."
+
+#~ msgid "Edit the raw event handler name."
+#~ msgstr "Редагування імені оброблювача події."
 
 #~ msgid "Empty filename string"
 #~ msgstr "Порожнє ім'я файлу"
@@ -9926,6 +8862,27 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Enable Ignore"
 #~ msgstr "&Включити оброблювач"
 
+#~ msgid "Enable Only in Specified Windows"
+#~ msgstr "Доступно тільки в заданих вікнах"
+
+#~ msgid "Enable at Login"
+#~ msgstr "Доступно при вході"
+
+#~ msgid "Enable ignore for this user"
+#~ msgstr "Ігнорувати цього користувача"
+
+#~ msgid "Enable in Channel Windows"
+#~ msgstr "У вікнах каналів"
+
+#~ msgid "Enable in Console Windows"
+#~ msgstr "У вікнах терміналів"
+
+#~ msgid "Enable in DCC Chat Windows"
+#~ msgstr "У вікнах DCC Чатів"
+
+#~ msgid "Enable in Query Windows"
+#~ msgstr "У вікнах приватів"
+
 #~ msgid ""
 #~ "Ending index of a multiple parameter identifier is lower or equal to the "
 #~ "starting index. This will evaluate to a single parameter identifier."
@@ -9938,6 +8895,12 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Enter a kick/ban reason"
 #~ msgstr "Уведіть причину кікбана"
+
+#~ msgid "Enter the numeric code of the message (0-999)"
+#~ msgstr "Уведіть числовий код повідомлення (0-999)"
+
+#~ msgid "Epilogue"
+#~ msgstr "Епілог"
 
 #~ msgid "Error in KVS class implementation: processing aborted"
 #~ msgstr "Помилка в KVS класі реалізації: обробка перервана."
@@ -9960,8 +8923,47 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Error: %Q"
 #~ msgstr "Помилка: %Q"
 
+#~ msgid "Event"
+#~ msgstr "Подія"
+
+#~ msgid "Event Editor"
+#~ msgstr "Редактор подій"
+
 #~ msgid "Event handler %Q is broken: disabling"
 #~ msgstr "Оброблювач події %Q битий: виключене"
+
+#~ msgid "Export Actions..."
+#~ msgstr "Експортувати дії..."
+
+#~ msgid "Export All..."
+#~ msgstr "&Експортувати все..."
+
+#~ msgid "Export Selected in singles files..."
+#~ msgstr "Експортувати виділене в отдельыне файли..."
+
+#~ msgid "Export Selected..."
+#~ msgstr "&Експортувати виділене..."
+
+#~ msgid "Export To..."
+#~ msgstr "Експортувати в..."
+
+#~ msgid "Export ToolBar"
+#~ msgstr "Експорт панелі інструментів"
+
+#~ msgid ""
+#~ "Export the selected entries to a file.<br>All the data associated with "
+#~ "the selected registered users will be exported.<br>You (or anyone else) "
+#~ "can later import the entries by using the \"Import\" button."
+#~ msgstr ""
+#~ "Експортувати обрані дані в файл.<br>Всі дані пов'язані з обраними "
+#~ "реєстраціями користувачів будуть експортовані<br> Ви (або хто-небудь ще) "
+#~ "можете пізніше імпортувати ці дані використовуючи кнопку \"Імпорт\"."
+
+#~ msgid "External Menu"
+#~ msgstr "Зовнішнє меню"
+
+#~ msgid "External menu:"
+#~ msgstr "Зовнішнє меню:"
 
 #~ msgid "Failed to execute command '%Q'"
 #~ msgstr "Помилка при запуску команди '%Q'"
@@ -9990,6 +8992,19 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "File is not open!"
 #~ msgstr "Файл не відкритий!"
 
+#, fuzzy
+#~ msgid "Find & Replace"
+#~ msgstr "Знайти й замінити"
+
+#~ msgid "Find In Aliases"
+#~ msgstr "Знайти в аліасах"
+
+#~ msgid "Find In Aliases..."
+#~ msgstr "Знайти в аліасах..."
+
+#~ msgid "Flags"
+#~ msgstr "Прапори"
+
 #~ msgid "Flush Log File"
 #~ msgstr "Записати дані в логфайл негайно"
 
@@ -9998,6 +9013,12 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ "was expected"
 #~ msgstr ""
 #~ "Знайдений 'break' там де очікується 'case','match','regexp' або 'default'"
+
+#~ msgid "Found an empty namespace in alias name"
+#~ msgstr "Знайдене порожній простір імен в імені аліаса"
+
+#~ msgid "Found an empty namespace in namespace name"
+#~ msgstr "Знайдена порожній рядок в імені простору імен"
 
 #~ msgid ""
 #~ "Found char %q (unicode %x) while looking for the terminating ')' in 'for' "
@@ -10100,6 +9121,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Garbage string after the expression in 'do' command: ignored"
 #~ msgstr "Неправильний рядок після вираження в команді 'do': зігнорований"
 
+#~ msgid "Group name:"
+#~ msgstr "Ім'я групи:"
+
 #~ msgid "Half Operator"
 #~ msgstr "Стат-оператор"
 
@@ -10111,6 +9135,9 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 #~ msgstr "Помилкове посилання на хеш: змінна визначена як типу '%Q'"
+
+#~ msgid "Hide Advanced"
+#~ msgstr "Сховати додаткові настроювання"
 
 #~ msgid "Highlight as"
 #~ msgstr "Подсвічувати як"
@@ -10124,8 +9151,23 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "IP address %d: %Q"
 #~ msgstr "IP адреса %d: %Q"
 
+#~ msgid "Icon"
+#~ msgstr "Іконка"
+
+#~ msgid "Icon:"
+#~ msgstr "Іконка:"
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
 #~ msgid "Ig&nore"
 #~ msgstr "Ігнор"
+
+#~ msgid "Ignore"
+#~ msgstr "Ігнор"
+
+#~ msgid "Ignore DCCs"
+#~ msgstr "Ігнорувати DCC"
 
 #~ msgid "Ignore as"
 #~ msgstr "Ігнорувати як"
@@ -10134,11 +9176,47 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Ignore as..."
 #~ msgstr "Ігнорувати як"
 
+#~ msgid "Ignore channel-messages"
+#~ msgstr "Ігнорувати повідомлення в каналі"
+
+#~ msgid "Ignore ctcp-messages"
+#~ msgstr "Ігнорувати CTCP"
+
+#, fuzzy
+#~ msgid "Ignore features"
+#~ msgstr "Ігнорувати як"
+
+#~ msgid "Ignore invites"
+#~ msgstr "Ігнорувати запрошення"
+
+#~ msgid "Ignore notice-messages"
+#~ msgstr "Ігнорувати повідомлення"
+
+#~ msgid "Ignore query-messages"
+#~ msgstr "Ігнорувати приватні повідомлення"
+
+#~ msgid "Import From..."
+#~ msgstr "Імпортувати з..."
+
+#~ msgid ""
+#~ "Import entries from a file exported earlier by the \"export\" function of "
+#~ "this dialog."
+#~ msgstr ""
+#~ "Імпортувати дані з файлу які були раніше експортовані функцією \"Експорт"
+#~ "\" цього діалогу."
+
 #~ msgid "Include Existing Buffer"
 #~ msgstr "Включаючи поточний буффер"
 
 #~ msgid "Inexisting popup \"%Q\""
 #~ msgstr "В існуючому спливаючому меню \"%Q\""
+
+#~ msgid ""
+#~ "Insert a mask for this user.<br>It can contain the wildcard characters "
+#~ "'*' and '?'."
+#~ msgstr ""
+#~ "Вставте маску для цього користувача<br>Вона може містити символи шаблонів "
+#~ "'*' і '?'."
 
 #~ msgid "Install Addon..."
 #~ msgstr "Установити доповнення..."
@@ -10156,11 +9234,17 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ "Внутрішня помилка: спроба використати дані в режимі читання-запис які "
 #~ "доступні тільки на читання"
 
+#~ msgid "Internal unique name for the action"
+#~ msgstr "Внутрішнє унікальне ім'я дії"
+
 #~ msgid "Invalid IP address specified ('%Q')"
 #~ msgstr "Заданий невірний IP адреса('Q')"
 
 #~ msgid "Invalid IRC url (%Q)"
 #~ msgstr "Недійсний url IRC (%Q)"
+
+#~ msgid "Invalid ToolBar Label"
+#~ msgstr "Невірна мітка панелі інструментів"
 
 #~ msgid "Invalid color-set specification, using default"
 #~ msgstr ""
@@ -10230,12 +9314,21 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgstr ""
 #~ "Недійсний синтаксис координат екрана, використається позиція курсору"
 
+#~ msgid "Item"
+#~ msgstr "Пункт"
+
+#~ msgid "Item Id:"
+#~ msgstr "Id пункту:"
+
 #~ msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 #~ msgstr ""
 #~ "Індекс елемента [%d] занадто великий - повинен бути $count() - 1 [%d]"
 
 #~ msgid "K&ick"
 #~ msgstr "Кік"
+
+#~ msgid "Key Sequence:"
+#~ msgstr "Комбінація клавіш:"
 
 #~ msgid "Kick Reason"
 #~ msgstr "Причина кіка"
@@ -10245,6 +9338,12 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Kick/Ban Reason"
 #~ msgstr "Причина кікбана"
+
+#~ msgid "Label"
+#~ msgstr "Мітка"
+
+#~ msgid "Label:"
+#~ msgstr "Мітка:"
 
 #~ msgid "Lag is"
 #~ msgstr "Затримка "
@@ -10274,11 +9373,35 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Logging to"
 #~ msgstr "Журналирую в"
 
+#~ msgid "Manually"
+#~ msgstr "Вручну"
+
+#~ msgid "Mask %Q already used to identify user %Q"
+#~ msgstr "Маска %Q уже використається для ідентифікації користувача %Q"
+
+#~ msgid "Mask %Q is already used to identify user %s"
+#~ msgstr "Маска %Q уже є в користувача %s"
+
+#~ msgid "Mask %Q not found"
+#~ msgstr "Маска %Q не знайдена"
+
+#~ msgid "Mask Editor"
+#~ msgstr "Редактор маски"
+
 #~ msgid "Mask for"
 #~ msgstr "Маска для"
 
+#~ msgid "Masks:"
+#~ msgstr "Маска:"
+
 #~ msgid "Media type of file %s matched to '%s' but no commandline specified"
 #~ msgstr "Медіа тип для файлу %s прив'язаний до %s але немає команди"
+
+#~ msgid "Missing Alias Name"
+#~ msgstr "Не задане ім'я аліаса"
+
+#~ msgid "Missing Namespace Name"
+#~ msgstr "Відсутнє ім'я простору імен"
 
 #~ msgid "Missing alias name"
 #~ msgstr "Відсутнє ім'я псевдоніма"
@@ -10386,8 +9509,40 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "More Addons..."
 #~ msgstr "Ще доповнення..."
 
+#~ msgid "Move to group"
+#~ msgstr "Перемістити в групу"
+
 #~ msgid "Multiple Users"
 #~ msgstr "Трохи користувачів"
+
+#~ msgid "My Action"
+#~ msgstr "Моя дія"
+
+#~ msgid "My ToolBar"
+#~ msgstr "Моя панель інструментів"
+
+#~ msgid "Name:"
+#~ msgstr "Ім'я:"
+
+#~ msgid "Namespace"
+#~ msgstr "Простір імен"
+
+#, fuzzy
+#~ msgid "Namespace already exists"
+#~ msgstr "Адреса вже використається"
+
+#~ msgid ""
+#~ "Namespace names can contain only letters, digits, underscores and '::' "
+#~ "namespace separators"
+#~ msgstr ""
+#~ "Назва простору імен може містити тільки букви, цифри, нижні підкреслення "
+#~ "й роздільник просторів імен '::'"
+
+#~ msgid "Needs IRC Connection"
+#~ msgstr "Потрібно IRC з'єднання"
+
+#~ msgid "Needs IRC Context"
+#~ msgstr "Потрібно IRC контекст"
 
 #~ msgid ""
 #~ "Nested character %q corresponding to expected terminator, this might "
@@ -10396,8 +9551,71 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ "Вкладений символ %q відповідає очікуваній ознаці закінчення, краще "
 #~ "укладати це в лапки"
 
+#~ msgid "New Action"
+#~ msgstr "Нова дія"
+
+#~ msgid "New External Menu Above"
+#~ msgstr "Нове зовнішнє меню вгорі"
+
+#~ msgid "New External Menu Below"
+#~ msgstr "Нове зовнішнє меню внизу"
+
+#~ msgid "New External Menu Inside"
+#~ msgstr "Нове зовнішнє меню по середині"
+
+#~ msgid "New Item Above"
+#~ msgstr "Новий пункт угорі"
+
+#~ msgid "New Item Below"
+#~ msgstr "Новий пункт унизу"
+
+#~ msgid "New Item Inside"
+#~ msgstr "Новий пункт по середині"
+
+#~ msgid "New Label Above"
+#~ msgstr "Нова мітка вгорі"
+
+#~ msgid "New Label Below"
+#~ msgstr "Нова мітка внизу"
+
+#~ msgid "New Label Inside"
+#~ msgstr "Нова мітка по середині"
+
+#~ msgid "New Menu Above"
+#~ msgstr "Нове меню вгорі"
+
+#~ msgid "New Menu Below"
+#~ msgstr "Нове меню внизу"
+
+#~ msgid "New Menu Epilogue"
+#~ msgstr "Нове епілог меню"
+
+#~ msgid "New Menu Inside"
+#~ msgstr "Нове меню по середині"
+
+#~ msgid "New Menu Prologue"
+#~ msgstr "Нове пролог меню"
+
+#~ msgid "New Raw Event"
+#~ msgstr "Нова заготівля події"
+
 #~ msgid "New Script Tester"
 #~ msgstr "Новий тестер сценаріїв"
+
+#~ msgid "New Separator Above"
+#~ msgstr "Новий роздільник угорі"
+
+#~ msgid "New Separator Below"
+#~ msgstr "Новий роздільник унизу"
+
+#~ msgid "New Separator Inside"
+#~ msgstr "Новий роздільник по середині"
+
+#~ msgid "New ToolBar"
+#~ msgstr "Нова панель інструментів"
+
+#~ msgid "Nickname 2:"
+#~ msgstr "2-й Нік:"
 
 #~ msgid "No IPV6 support in this executable"
 #~ msgstr "Немає підтримки IPV6 у цій зборці програми"
@@ -10417,6 +9635,13 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "No commandline specified for this type of url (%Q)"
 #~ msgstr "Не визначена для типу url (%Q)"
 
+#, fuzzy
+#~ msgid "No comment set"
+#~ msgstr "Немає контексту IRC"
+
+#~ msgid "No entries selected."
+#~ msgstr "Нічого не обрано."
+
 #~ msgid ""
 #~ "No environment variable found, please don't use the %% in the request"
 #~ msgstr "Ніякий змінної не найденно, будь ласка не використайте %% "
@@ -10430,8 +9655,20 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "No idea on how to play file %s (no media type match)"
 #~ msgstr "Неможливо відтворити файл %s (немає відповідного медіа типу)"
 
+#~ msgid "No item selected"
+#~ msgstr "Нічого не обрано"
+
+#~ msgid "No mask specified"
+#~ msgstr "Маска не визначена"
+
 #~ msgid "No menu bar item with text '%Q'"
 #~ msgstr "Немає пункту меню з текстом '%Q'"
+
+#~ msgid "No name specified"
+#~ msgstr "Ім'я не визначене"
+
+#~ msgid "No property specified"
+#~ msgstr "Не визначена властивість"
 
 #~ msgid "No socket object specified"
 #~ msgstr "Не визначений об'єкт сокета"
@@ -10441,6 +9678,9 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "No such IRC context (%u)"
 #~ msgstr "Немає такого контексту IRC (%u)"
+
+#~ msgid "No such channel/netmask entry in the database"
+#~ msgstr "Не знайдені канал/маска в базі"
 
 #~ msgid "No such event (%Q)"
 #~ msgstr "Немає такої події (%Q)"
@@ -10484,11 +9724,25 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Notify Avatar"
 #~ msgstr "Повідомити про зміну аватара"
 
+#, fuzzy
+#~ msgid "Notify as: "
+#~ msgstr "Список повідомлень"
+
 #~ msgid "Notify avatar"
 #~ msgstr "Повідомити про зміну аватара"
 
+#, fuzzy
+#~ msgid "Notify disabled"
+#~ msgstr "Список повідомлень"
+
 #~ msgid "Notify list: Checking for:%Q"
 #~ msgstr "Список повідомлень: Перевірка для:%Q"
+
+#~ msgid "Notify nicknames:"
+#~ msgstr "Повідомлення ніків:"
+
+#~ msgid "Notify when user is online"
+#~ msgstr "Повідомляти коли користувач в онлайне"
 
 #~ msgid "Now you should specify an IRC server, to be connected to it"
 #~ msgstr ""
@@ -10506,6 +9760,9 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Objects have no extended scope variables"
 #~ msgstr "Об'єкт не має розширених значень"
+
+#~ msgid "Ok, Let me try again..."
+#~ msgstr "Добре, давайте спробую ще раз..."
 
 #, fuzzy
 #~ msgid "Ok, let me try again..."
@@ -10538,8 +9795,14 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "One of the resize array parameters is empty"
 #~ msgstr "Один з параметрів масива порожній"
 
+#~ msgid "Only If There Are Selected Users"
+#~ msgstr "Тільки якщо є обрані користувачі"
+
 #~ msgid "Open irc:// or irc6:// URL"
 #~ msgstr "Відкрити irc:// або irc6:// посилання"
+
+#~ msgid "Open the edit dialog to create a new user entry."
+#~ msgstr "Відкрийте діалог редагування щоб створити нового користувача."
 
 #~ msgid "Operand of unary operator didn't evaluate to a number"
 #~ msgstr "Операнд унарного оператора не визначене як число"
@@ -10549,6 +9812,19 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgstr ""
 #~ "Помилка опції настроювань: Невідома опція або недійсне значення для опції "
 #~ "цього типу"
+
+#~ msgid ""
+#~ "Optional keyboard sequence that will activate this action.<br>The "
+#~ "sequence should be expressed as a string of up to four key codes "
+#~ "separated by commas eventually combined with the modifiers \"Ctrl\","
+#~ "\"Shift\",\"Alt\" and \"Meta\".<br>Examples of such sequences are \"Ctrl+X"
+#~ "\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
+#~ msgstr ""
+#~ "Необов'язкова комбінація клавіш яка активує це дія<br> Комбінація повинна "
+#~ "бути визначена як рядок утримуюча до чотирьох клавіш, об'єднаних з "
+#~ "модифікаторами \"Ctrl\",\"Shift\",\"Alt\" і \"Meta\". Якщо ви задаєте "
+#~ "кілька комбінацій, їх потрібно розділити комами<br>Приклади таких "
+#~ "комбінацій: \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
 #~ msgid "Options"
 #~ msgstr "Настроювання"
@@ -10563,8 +9839,17 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ "Ідентифікатори параметрів заборонені в області об'єкта (після оператора '-"
 #~ ">')"
 
+#~ msgid "Params:"
+#~ msgstr "Параметри:"
+
 #~ msgid "Parent must be a widget object"
 #~ msgstr "Батько повинен бути widget-об'єктом"
+
+#~ msgid "Paste Above"
+#~ msgstr "Вставити зверху"
+
+#~ msgid "Paste Inside"
+#~ msgstr "Вставити по середині"
 
 #~ msgid "Pixmap object required"
 #~ msgstr "Потрібно Pixmap об’єкт"
@@ -10579,14 +9864,54 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Pixmap parameter is not an object"
 #~ msgstr "Параметр Pixmap не є об'єктом"
 
+#~ msgid "Please choose the icon for the ToolBar"
+#~ msgstr "Будь ласка виберіть іконку для панелі інструментів"
+
+#~ msgid "Please enter the name for the new alias"
+#~ msgstr "Будь ласка введіть ім'я нового аліаса"
+
+#~ msgid "Please enter the name for the new namespace"
+#~ msgstr "Будь ласка введіть ім'я нового простору імен"
+
+#~ msgid "Please enter the new name for the alias"
+#~ msgstr "Будь ласка введіть нове ім'я аліаса"
+
+#~ msgid "Please enter the new name for the namespace"
+#~ msgstr "Будь ласка, уведіть нову назву простору імен"
+
+#~ msgid ""
+#~ "Please enter the text to be searched for. The matching aliases will be "
+#~ "highlighted."
+#~ msgstr ""
+#~ "Будь ласка, уведіть текст, якому потрібно знайти. Аліасы, що містять цей "
+#~ "текст будуть підсвічені."
+
+#~ msgid "Please note that all the children items will be deleted too."
+#~ msgstr "Будь ласка врахуйте, що всі дочірні елементи будуть теж вилучені."
+
+#~ msgid "Please specify the properties for the new toolbar"
+#~ msgstr "Будь ласка визначите властивості для нової панелі інструментів"
+
+#~ msgid "Please specify the properties for the toolbar \"%1\""
+#~ msgstr "Будь ласка визначите властивості для панелі інструментів \"%1\""
+
+#~ msgid "Popup"
+#~ msgstr "Спливаюче меню"
+
 #~ msgid "Popup %Q is not defined"
 #~ msgstr "Спливаюче меню %Q не визначено"
+
+#~ msgid "Popup Editor"
+#~ msgstr "Редактор спливаючих меню"
 
 #~ msgid ""
 #~ "Popup menu self-modification is not allowed (the popup is probably open)"
 #~ msgstr ""
 #~ "Самомодифікація спливаючого меню не допускається (спливаюче меню ймовірно "
 #~ "відкрито)"
+
+#~ msgid "Popup name"
+#~ msgstr "Ім'я спливаючого меню"
 
 #~ msgid "Port:"
 #~ msgstr "Порт:"
@@ -10597,8 +9922,17 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Processing aborted"
 #~ msgstr "Обробка перервана"
 
+#~ msgid "Prologue"
+#~ msgstr "Пролог"
+
+#~ msgid "Properties"
+#~ msgstr "Властивості"
+
 #~ msgid "Properties for Qt class %s"
 #~ msgstr "Властивості QT-класу %s"
+
+#~ msgid "Property"
+#~ msgstr "Властивості"
 
 #~ msgid ""
 #~ "Property \"%Q\" for object named \"%Q\" of class %Q has an unsupported "
@@ -10607,11 +9941,29 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ "Властивість \"%Q\" для об'єкта \"%Q\" класу %Q має не підтримуваний тип "
 #~ "дати"
 
+#~ msgid "Property Editor"
+#~ msgstr "Редактор властивостей"
+
 #~ msgid "Property: %c%Q%c, type %Q"
 #~ msgstr "Властивість: %c%Q%c, тип %Q"
 
+#~ msgid "Put here a short description of your action"
+#~ msgstr "Укажіть тут короткий опис вашої дії"
+
 #~ msgid "Quick Registration"
 #~ msgstr "Швидка реєстрація"
+
+#~ msgid "Raw Editor"
+#~ msgstr "Редактор заготівель"
+
+#~ msgid "Raw Event"
+#~ msgstr "Заготівлі подій"
+
+#~ msgid "Re&move Handler"
+#~ msgstr "В&идалити оброблювач"
+
+#~ msgid "Re&move Popup"
+#~ msgstr "В&идалити спливаюче меню"
 
 #~ msgid "Read error occured !"
 #~ msgstr "Відбулася помилка читання!"
@@ -10622,8 +9974,49 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Register as"
 #~ msgstr "Зареєструвати як"
 
+#~ msgid "Registered User Entry"
+#~ msgstr "Реєстрація користувача"
+
+#~ msgid "Registered Users - KVIrc"
+#~ msgstr "Реєстрація користувачів - KVIrc"
+
+#~ msgid "Registered channel list:"
+#~ msgstr "Зареєстрований список каналів:"
+
+#~ msgid "Registered users database dump:"
+#~ msgstr "Дамп бази зареєстрованих користувачів:"
+
+#~ msgid "Registration Complete"
+#~ msgstr "Реєстрація завершена"
+
+#~ msgid "Remove Selected"
+#~ msgstr "&Видалити обране"
+
 #~ msgid "Remove from Notify"
 #~ msgstr "Видалити з повідомлень"
+
+#~ msgid "Remove item"
+#~ msgstr "Видалити елемент"
+
+#~ msgid "Remove the currently selected entries."
+#~ msgstr "Видалити поточний обраний пункт."
+
+#, fuzzy
+#~ msgid "Rename"
+#~ msgstr "Сьогодення ім'я:"
+
+#~ msgid "Rename Alias"
+#~ msgstr "Перейменувати аліас"
+
+#~ msgid "Rename Namespace"
+#~ msgstr "Перейменувати простір імен"
+
+#, fuzzy
+#~ msgid "Replace file"
+#~ msgstr "Замінити на"
+
+#~ msgid "Replace with"
+#~ msgstr "Замінити на"
 
 #~ msgid "Report a Bug"
 #~ msgstr "Повідомити про помилку"
@@ -10679,6 +10072,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ "Слот цільового об'єкта зруйнувався при випущенні сигналу '%Q' з об'єкта '%"
 #~ "Q:: %Q'"
 
+#~ msgid "Small Icon:"
+#~ msgstr "Маленька іконка:"
+
 #~ msgid "Smart"
 #~ msgstr "Швидко"
 
@@ -10692,6 +10088,18 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Start Highlighting (Local)"
 #~ msgstr "Включити локальне підсвічування"
 
+#~ msgid "Step 1: Entry Name"
+#~ msgstr "Крок 1: Виберіть ім'я"
+
+#~ msgid "Step 2: Mask Selection"
+#~ msgstr "Крок 2: Вибір маски"
+
+#~ msgid "Step 3: Avatar Selection"
+#~ msgstr "Крок 3: Вибір аватара"
+
+#~ msgid "Step 4: Notify List"
+#~ msgstr "Крок 4: Список повідомлень"
+
 #~ msgid "Stop Highlighting"
 #~ msgstr "Відключити підсвічування"
 
@@ -10700,6 +10108,20 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Stop Logging"
 #~ msgstr "Зупинити Журналювання"
+
+#~ msgid "Store an avatar for this user"
+#~ msgstr "Використати аватар для цього користувача"
+
+#~ msgid ""
+#~ "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+#~ msgstr "':' в імені аліаса. Може бути ви мали через <namespace>::<name> ?"
+
+#~ msgid ""
+#~ "Stray ':' character in namespace name: did you mean ...<namespace>::"
+#~ "<name> ?"
+#~ msgstr ""
+#~ "Одиночний символ ':' знайдений. Може бути ви мали через ...<namespace>::"
+#~ "<name> ?"
 
 #~ msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 #~ msgstr ""
@@ -10715,6 +10137,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Stray dot ('.') character or invalid following module command name"
 #~ msgstr ""
 #~ "Зайва крапка ('.'), символ або недійсне наступне ім'я команди модуля"
+
+#~ msgid "Submenu"
+#~ msgstr "Підміню"
 
 #~ msgid ""
 #~ "Syntax error after '$' function call prefix. If you want to use a plain "
@@ -10765,6 +10190,12 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Taskbar"
 #~ msgstr "Панель завдань(панель списку вікон)"
 
+#~ msgid "Test"
+#~ msgstr "Тест"
+
+#~ msgid "Text:"
+#~ msgstr "Текст:"
+
 #~ msgid "The $sw() function can be used only in aliases"
 #~ msgstr "Функція $sw() може використатися тільки в псевдонімах"
 
@@ -10806,6 +10237,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ "The 'while' block of the 'do' command needs an expression enclosed in "
 #~ "parenthesis"
 #~ msgstr "Блоку 'while' команди 'do' потрібне вираження в круглих дужках"
+
+#~ msgid "The ToolBar Label can't be empty!"
+#~ msgstr "Мітка панелі інструментів не може бути порожній!"
 
 #~ msgid ""
 #~ "The above problem might be related to the switch dash and the following "
@@ -10870,6 +10304,15 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "The array passed as parameter must contain at least 4 elements"
 #~ msgstr "Масив, переданий як параметр, повинен мати як мінімум 4 елементи"
 
+#~ msgid ""
+#~ "The big icon associated to this action.<br>It will appear at least in the "
+#~ "toolbar buttons when this action is inserted.<br>It should be 32x32 "
+#~ "pixels."
+#~ msgstr ""
+#~ "Більша іконка, асоційована із цим дією<br>Вона буде показуватися "
+#~ "принаймні на кнопках панелі інструментів при вставці цієї дії.<br>Повинна "
+#~ "бути 32х32 пикселя."
+
 #~ msgid "The catalogue %Q was not loaded"
 #~ msgstr "Каталог %Q не завантажений"
 
@@ -10896,6 +10339,19 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "The default script has been successfully installed."
 #~ msgstr "Скріпт за замовчуванням був успішно встановлений"
+
+#, fuzzy
+#~ msgid "The exported file would be empty: cowardly refusing to write it"
+#~ msgstr "Експортований файл буде порожнім: скасовую запис у нього"
+
+#~ msgid "The file \"%Q\" exists. Do you want to replace it ?"
+#~ msgstr "Файл \"%Q\" існує<br>Хочете переписати його?"
+
+#~ msgid "The file %s contains an invalid registered users database version."
+#~ msgstr "Файл %s містить базу даних користувачів недійсної версії."
+
+#~ msgid "The file %s doesn't appear to be a valid registered users database."
+#~ msgstr "Файл %s не є дійсною базою реєстрації користувачів."
 
 #~ msgid ""
 #~ "The last if command in the buffer has no conditional instructions: it's "
@@ -11016,6 +10472,24 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "The right side of operator '|=' didn't evaluate to an integer"
 #~ msgstr "Права частина оператора '|=' не є цілим числом"
 
+#~ msgid ""
+#~ "The small icon associated to this action.<br>It will appear at least in "
+#~ "the popup menus when this action is inserted.<br>It should be 16x16 "
+#~ "pixels."
+#~ msgstr ""
+#~ "Маленька іконка, асоційована із цим дією<br>Вона буде показуватися "
+#~ "принаймні в спливаючим меню при вставці цієї дії.<br>Повинна бути 16х16 "
+#~ "пікселей."
+
+#~ msgid ""
+#~ "The specified ToolBar Id already exists.<br>Would you like KVIrc to "
+#~ "assign it automatically (so it doesn't collide with any other toolbar) or "
+#~ "you prefer to do it manually ?"
+#~ msgstr ""
+#~ "Заданий Id панелі інструментів уже існує<br> Ви хочете щоб KVIrc "
+#~ "призначив його автоматично (при цьому будуть виключені протиріччя з "
+#~ "іншими панелями) або зробите це вручну?"
+
 #~ msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 #~ msgstr ""
 #~ "Заданий максимальний час виконання не дійсно: приймається 0 (нескінченно)"
@@ -11060,6 +10534,10 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "There is no option named '%Q'"
 #~ msgstr "Немає опції з ім'ям '%Q"
 
+#, fuzzy
+#~ msgid "There is no selection!"
+#~ msgstr "З'єднання не прийняте!"
+
 #~ msgid "This command can be used only in windows bound to an IRC context"
 #~ msgstr "Ця команда може бути використана тільки в IRC контексті"
 
@@ -11068,6 +10546,13 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "This is not a channel window"
 #~ msgstr "Це не вікно каналу"
+
+#~ msgid ""
+#~ "This will enable the action only if there are selected users in the "
+#~ "active window"
+#~ msgstr ""
+#~ "Це зробить доступним дію тільки якщо є обрані користувачі в активному "
+#~ "вікні"
 
 #~ msgid "This window has no associated IRC context"
 #~ msgstr "Це вікно не асоційоване з контекстом IRC"
@@ -11095,6 +10580,18 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgstr ""
 #~ "Занадто багато неопрацьованих вхідних даних (ви залишили цей сокет?)"
 
+#~ msgid "ToolBar Export"
+#~ msgstr "Експорт панелі інструментів"
+
+#~ msgid "ToolBar Properties"
+#~ msgstr "Властивості панелі інструментів"
+
+#~ msgid "Total %d channels"
+#~ msgstr "Усього %d каналів"
+
+#~ msgid "Total: %d matching users (of %d in the database)"
+#~ msgstr "Разом: %d користувачів (%d у базі даних)"
+
 #~ msgid "Trailing garbage at the end of the break command: ignored"
 #~ msgstr "Сміття наприкінці команди: зігнороване"
 
@@ -11109,11 +10606,38 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Trailing garbage ignored after operator '--'"
 #~ msgstr "Інше сміття зігнороване після оператора '-і'"
 
+#~ msgid "Type"
+#~ msgstr "Тип"
+
 #~ msgid "URL:"
 #~ msgstr "URL:"
 
 #~ msgid "Unable to add the timer: insufficient system resources"
 #~ msgstr "Не можу додати таймер: недостатньо системних ресурсів"
+
+#~ msgid "Unable to write to the actions file."
+#~ msgstr "Неможливо зберегти файл із діями."
+
+#~ msgid "Unable to write to the alias file."
+#~ msgstr "Неможливо зберегти файл аліасов."
+
+#~ msgid "Unable to write to the event file."
+#~ msgstr "Не можу записати подію у файл."
+
+#~ msgid "Unable to write to the events file."
+#~ msgstr "Не можу записати події у файл."
+
+#~ msgid "Unable to write to the popup file."
+#~ msgstr "Не можу записати спливаюче меню у файл."
+
+#~ msgid "Unable to write to the raw event file."
+#~ msgstr "Не можу записати подію у файл."
+
+#~ msgid "Unable to write to the raw events file."
+#~ msgstr "Не можу записати події у файл."
+
+#~ msgid "Unable to write to the toolbar file."
+#~ msgstr "Неможливо зберегти панель інструментів у файл."
 
 #~ msgid "Unexpected (and senseless) read-only data evaluation"
 #~ msgstr "Несподівані (і безглузді) дані тільки для читання"
@@ -11393,11 +10917,29 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Usage:"
 #~ msgstr "Використання:"
 
+#~ msgid "Use custom color in userlist"
+#~ msgstr "Використати інші кольори в списку користувачів"
+
 #~ msgid "Use server config"
 #~ msgstr "Використати заздалегідь певну конфігурацію"
 
+#~ msgid "User %Q not found"
+#~ msgstr "Користувач %Q не знайдений"
+
 #~ msgid "User Operator"
 #~ msgstr "Користувач-оператор"
+
+#~ msgid "User Registration Wizard - KVIrc"
+#~ msgstr "Майстер реєстрації користувача - KVIrc"
+
+#~ msgid "User already registered: found exact name match"
+#~ msgstr "Користувач уже зареєстрований: виявлене таке ж ім'я"
+
+#~ msgid "User not found (%Q)"
+#~ msgstr "Користувач не знайдений (%Q)"
+
+#~ msgid "Value"
+#~ msgstr "Значення"
 
 #~ msgid ""
 #~ "Value %d for port is out of range (values allowed are from 0 to 65535"
@@ -11410,6 +10952,20 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Values for foreground are out of image size "
 #~ msgstr "Значення для переднього плану більше розміру зображення"
+
+#~ msgid ""
+#~ "Visible name for this action.<br>This string will be displayed to the "
+#~ "user so it is a good idea to use $tr() here"
+#~ msgstr ""
+#~ "Видиме ім'я для цього дії<br>Цей рядок буде показана користувачеві, "
+#~ "гарною ідеєю буде використання тут $tr()"
+
+#~ msgid ""
+#~ "Visible short description for this action.<br>This string will be "
+#~ "displayed to the user so it is a good idea to use $tr() here"
+#~ msgstr ""
+#~ "Видимий короткий опис цього дії<br>Цей рядок буде показана користувачеві, "
+#~ "гарною ідеєю буде використання тут $tr()"
 
 #~ msgid "Voice"
 #~ msgstr "Войс"
@@ -11464,17 +11020,32 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "With..."
 #~ msgstr "із причиною..."
 
+#~ msgid "Word to Find"
+#~ msgstr "Слово для пошуку"
+
+#~ msgid "Write Failed - KVIrc"
+#~ msgstr "Помилка запису - KVIrc"
+
 #~ msgid "Write error occured !"
 #~ msgstr "Відбулася помилка запису!"
 
 #~ msgid "XML support not available in the Qt library"
 #~ msgstr "XML підтримка не можлива в бібліотеці Qt"
 
+#~ msgid "Yes to All"
+#~ msgstr "Так для всіх"
+
 #~ msgid "You don't appear to be on channel %s"
 #~ msgstr "Ви не перебуваєте на каналі %s"
 
 #~ msgid "You must be connected to a server"
 #~ msgstr "Ви повинні бути підключені до сервера"
+
+#~ msgid "You must specify a valid name for the alias"
+#~ msgstr "Ви повинні вказати коректне ім'я аліаса"
+
+#~ msgid "You must specify a valid name for the namespace"
+#~ msgstr "Ви повинні визначити коректне ім'я для простору імен"
 
 #~ msgid "You must use DNS in an IRC context"
 #~ msgstr "Ви повинні використати DNS у контексті IRC"
@@ -11517,6 +11088,9 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "beginning of input"
 #~ msgstr "Початок уведення"
+
+#~ msgid "default"
+#~ msgstr "за замовчуванням"
 
 #~ msgid "found empty string where type '%s' was expected"
 #~ msgstr "знайдена порожній рядок там де очікується тип '%s'"
@@ -11570,6 +11144,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "milliseconds"
 #~ msgstr "мілісекунд"
 
+#~ msgid "none"
+#~ msgstr "ні"
+
 #~ msgid "o (Operators)"
 #~ msgstr "o (Оператори)"
 
@@ -11591,6 +11168,9 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "u (Uptime)"
 #~ msgstr "u (Аптайм)"
+
+#~ msgid "unnamed"
+#~ msgstr "без імені"
 
 #~ msgid "y (y-Lines)"
 #~ msgstr "y (y-лінії)"

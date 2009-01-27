@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 14:59+0100\n"
+"POT-Creation-Date: 2009-01-27 20:25+0100\n"
 "PO-Revision-Date: 2008-11-30 19:18+0100\n"
 "Last-Translator: Markus Rennings <markus@rennings.net>\n"
 "Language-Team: German <de@li.org>\n"
@@ -21,18 +21,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
-
-#: src/modules/eventeditor/eventeditor.cpp:394
-#, c-format
-msgid ""
-"\n"
-"\n"
-"\tEvent:\n"
-"\t\t%s\n"
-"\n"
-"\tParameters:\n"
-"%s"
-msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:686
 msgid ""
@@ -106,48 +94,18 @@ msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] hat gerade \r!c\r%Q\r verlassen"
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
 msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] hat gerade \r!c\r%Q\r verlassen: %Q"
 
-#: src/modules/reguser/libkvireguser.cpp:820
-msgid "    Mask: %Q!%Q@%Q"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:834
-#, fuzzy
-msgid "    No properties"
-msgstr "Eigenschaften..."
-
-#: src/modules/reguser/libkvireguser.cpp:831
-msgid "    Property: %Q=%Q"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:816
-msgid "    Warning: this user has no registration masks"
-msgstr ""
-
-#: src/modules/regchan/libkviregchan.cpp:212
-#, c-format
-msgid "   Property: %s=%s"
-msgstr ""
-
 #: src/kvirc/ui/kvi_query.cpp:255
 msgid " (%1 hops)"
 msgstr " (%1 Sprünge entfernt)"
 
-#: src/modules/reguser/libkvireguser.cpp:812
-msgid " User: %c%Q"
-msgstr ""
-
-#: src/kvirc/ui/kvi_query.cpp:456 src/kvirc/ui/kvi_console.cpp:1121
-#: src/kvirc/ui/kvi_channel.cpp:1053
+#: src/kvirc/ui/kvi_channel.cpp:1053 src/kvirc/ui/kvi_console.cpp:1121
+#: src/kvirc/ui/kvi_query.cpp:456
 msgid " on "
 msgstr " auf "
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:212
 msgid "### End of existing data buffer."
 msgstr "### Ende des existierenden Datenpuffers."
-
-#: src/modules/popupeditor/popupeditor.cpp:95
-msgid "### Epilogue ###"
-msgstr ""
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:208
 msgid "### Existing data buffer:"
@@ -160,10 +118,6 @@ msgstr "### Log-Sitzung gestartet am %1 ###"
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:50
 msgid "### Log session terminated at %1 ###"
 msgstr "### Log-Sitzung beendet am %1 ###"
-
-#: src/modules/popupeditor/popupeditor.cpp:99
-msgid "### Prologue ###"
-msgstr ""
 
 #: src/modules/objects/class_multilineedit.cpp:850
 #: src/modules/objects/class_multilineedit.cpp:1050
@@ -504,34 +458,15 @@ msgstr "Über &KVIrc"
 msgid "&Add Ban"
 msgstr "Lesezeichen hinzufügen"
 
-#: src/modules/reguser/dialog.cpp:244
-#, fuzzy
-msgid "&Add Group..."
-msgstr "&Laden von ..."
-
-#: src/modules/raweditor/raweditor.cpp:191
-#, fuzzy
-msgid "&Add Raw Event..."
-msgstr "RAW-Ereignisse bearbeiten..."
-
 #: src/kvilib/system/kvi_locale.cpp:1036
 msgid "&Add to Custom Colors"
 msgstr "Zu den benutzerdefinierten Farben &hinzufügen"
-
-#: src/modules/reguser/dialog.cpp:239 src/modules/reguser/edituser.cpp:371
-#, fuzzy
-msgid "&Add..."
-msgstr "Erweitert ..."
 
 #: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:514
 #: src/kvirc/ui/kvi_console.cpp:548
 msgid "&Always"
 msgstr "&Immer"
 
-#: src/modules/eventeditor/eventeditor.cpp:512
-#: src/modules/raweditor/raweditor.cpp:489
-#: src/modules/aliaseditor/aliaseditor.cpp:1564
-#: src/modules/popupeditor/popupeditor.cpp:1325
 #: src/kvirc/ui/kvi_modeeditor.cpp:80
 msgid "&Apply"
 msgstr "An&wenden"
@@ -548,14 +483,13 @@ msgstr "&Automatische Vorschau"
 msgid "&Basic colors"
 msgstr "&Basisfarben"
 
+#: src/kvirc/ui/kvi_selectors.cpp:304 src/modules/setup/setupwizard.cpp:243
+#: src/modules/setup/setupwizard.cpp:257 src/modules/setup/setupwizard.cpp:285
 #: src/modules/avatar/libkviavatar.cpp:93
-#: src/modules/setup/setupwizard.cpp:243 src/modules/setup/setupwizard.cpp:257
-#: src/modules/setup/setupwizard.cpp:285 src/kvirc/ui/kvi_selectors.cpp:304
 msgid "&Browse..."
 msgstr "&Auswählen..."
 
-#: src/kvilib/system/kvi_locale.cpp:1089 src/modules/url/libkviurl.cpp:390
-#: src/modules/editor/scripteditor.cpp:1016
+#: src/modules/url/libkviurl.cpp:390 src/kvilib/system/kvi_locale.cpp:1089
 msgid "&Cancel"
 msgstr "&Abbrechen"
 
@@ -578,7 +512,6 @@ msgstr "Konfigurieren"
 msgid "&Configure KVIrc..."
 msgstr "KVIrc konfigurieren..."
 
-#: src/modules/popupeditor/popupeditor.cpp:442
 #: src/kvirc/ui/kvi_input_editor.cpp:717
 msgid "&Copy"
 msgstr "&Kopieren"
@@ -591,58 +524,13 @@ msgstr "Eigene Far&ben"
 msgid "&Define Custom Colors >>"
 msgstr "Eigene Farben &definieren >>"
 
-#: src/modules/eventeditor/eventeditor.cpp:202
-#: src/modules/raweditor/raweditor.cpp:170
-msgid "&Disable Handler"
-msgstr ""
-
 #: src/kvirc/ui/kvi_window.cpp:757
 msgid "&Dock"
 msgstr "I&n Kontrollleiste einbinden"
 
-#: src/modules/reguser/edituser.cpp:380
-#, fuzzy
-msgid "&Edit"
-msgstr "&Beenden"
-
 #: src/kvilib/system/kvi_locale.cpp:1055
 msgid "&Edit Bookmarks"
 msgstr "Lesezeichen be&arbeiten"
-
-#: src/modules/reguser/dialog.cpp:256
-#, fuzzy
-msgid "&Edit..."
-msgstr "Ereignisse bearbeiten..."
-
-#: src/modules/eventeditor/eventeditor.cpp:198
-#: src/modules/raweditor/raweditor.cpp:166
-#, fuzzy
-msgid "&Enable Handler"
-msgstr "Entschlüsselung aktivieren"
-
-#: src/modules/codetester/codetester.cpp:57
-msgid "&Execute"
-msgstr ""
-
-#: src/modules/eventeditor/eventeditor.cpp:105
-#: src/modules/raweditor/raweditor.cpp:106
-#: src/modules/popupeditor/popupeditor.cpp:1037
-msgid "&Export All To..."
-msgstr ""
-
-#: src/modules/eventeditor/eventeditor.cpp:210
-#: src/modules/raweditor/raweditor.cpp:178
-msgid "&Export Handler To..."
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:1109
-#, fuzzy
-msgid "&Export Popup To..."
-msgstr "Aufklappmenüs bearbeiten..."
-
-#: src/modules/popupeditor/popupeditor.cpp:1039
-msgid "&Export selected To..."
-msgstr ""
 
 #: src/kvilib/system/kvi_locale.cpp:1086
 msgid "&Filter:"
@@ -694,41 +582,19 @@ msgstr "&Ort:"
 msgid "&Module"
 msgstr ""
 
-#: src/modules/reguser/edituser.cpp:101
-msgid "&New"
-msgstr ""
-
-#: src/modules/eventeditor/eventeditor.cpp:215
-#: src/modules/raweditor/raweditor.cpp:183
-msgid "&New Handler"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:1096
-msgid "&New Popup"
-msgstr ""
-
 #: src/modules/setup/setupwizard.cpp:85
 #, fuzzy
 msgid "&Next >"
 msgstr "&Nächster"
 
+#: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:516
+#: src/kvirc/ui/kvi_console.cpp:550 src/modules/addon/managementdialog.cpp:266
 #: src/modules/setup/setupwizard.cpp:747
-#: src/modules/addon/managementdialog.cpp:266 src/kvirc/ui/kvi_frame.cpp:906
-#: src/kvirc/ui/kvi_console.cpp:516 src/kvirc/ui/kvi_console.cpp:550
 msgid "&No"
 msgstr "&Nein"
 
+#: src/modules/url/libkviurl.cpp:396 src/modules/avatar/libkviavatar.cpp:103
 #: src/kvilib/system/kvi_locale.cpp:1088
-#: src/modules/avatar/libkviavatar.cpp:103
-#: src/modules/eventeditor/eventeditor.cpp:454
-#: src/modules/eventeditor/eventeditor.cpp:507
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:484
-#: src/modules/aliaseditor/aliaseditor.cpp:1559
-#: src/modules/url/libkviurl.cpp:396
-#: src/modules/popupeditor/popupeditor.cpp:1320
-#: src/modules/reguser/dialog.cpp:285 src/modules/reguser/edituser.cpp:113
-#: src/modules/reguser/edituser.cpp:274 src/modules/reguser/edituser.cpp:487
 msgid "&OK"
 msgstr "&OK"
 
@@ -740,17 +606,12 @@ msgstr "&Andere ..."
 msgid "&Paste"
 msgstr "&Einfügen"
 
-#: src/modules/popupeditor/popupeditor.cpp:448
-#, fuzzy
-msgid "&Paste Below"
-msgstr "Einfügen (langsam)"
-
 #: src/kvilib/system/kvi_locale.cpp:1084
 msgid "&Preview"
 msgstr "&Vorschau"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:114
 #: src/kvirc/ui/kvi_menubar.cpp:251
+#: src/modules/trayicon/libkvitrayicon.cpp:114
 msgid "&Quit"
 msgstr "&Beenden"
 
@@ -771,7 +632,7 @@ msgstr "Registriert"
 msgid "&Regular expression"
 msgstr "&Regulärer Ausdruck"
 
-#: src/modules/url/libkviurl.cpp:285 src/modules/reguser/edituser.cpp:105
+#: src/modules/url/libkviurl.cpp:285
 #, fuzzy
 msgid "&Remove"
 msgstr "&Löschen"
@@ -780,13 +641,8 @@ msgstr "&Löschen"
 msgid "&Remove Selected"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1021
+#: src/modules/editor/scripteditor.cpp:255
 msgid "&Replace"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:1011
-msgid "&Replace in all Aliases"
 msgstr ""
 
 #: src/kvirc/ui/kvi_window.cpp:768
@@ -851,9 +707,9 @@ msgstr "&Loslösen"
 msgid "&Window"
 msgstr "&Fenster"
 
+#: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:515
+#: src/kvirc/ui/kvi_console.cpp:549 src/modules/addon/managementdialog.cpp:266
 #: src/modules/setup/setupwizard.cpp:747
-#: src/modules/addon/managementdialog.cpp:266 src/kvirc/ui/kvi_frame.cpp:906
-#: src/kvirc/ui/kvi_console.cpp:515 src/kvirc/ui/kvi_console.cpp:549
 msgid "&Yes"
 msgstr "&Ja"
 
@@ -895,9 +751,9 @@ msgstr "(Passt auf"
 msgid "(None)"
 msgstr ""
 
+#: src/kvirc/ui/kvi_channel.cpp:1640 src/kvirc/sparser/kvi_sp_numeric.cpp:609
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:646
 #: src/modules/links/linkswindow.cpp:315
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:609
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:646 src/kvirc/ui/kvi_channel.cpp:1640
 msgid "(Unknown)"
 msgstr "(Unbekannt)"
 
@@ -1120,40 +976,6 @@ msgid ""
 "maximum of users on the channel.</center>"
 msgstr ""
 
-#: src/modules/popupeditor/popupeditor.cpp:242
-msgid ""
-"<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
-"order to decide if this entry has to be shown.<br>An empty condition "
-"evaluates to true.</center>"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:260
-msgid ""
-"<center><b>External menu name</b><br>This allows to nest externally defined "
-"popup menus. The popup menu with the specified name will be looked up at "
-"menu setup time.</center>"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:251
-msgid ""
-"<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
-"path or a relative path.<br>Portable scripts should never use absolute paths."
-"</center>"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:270
-msgid ""
-"<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
-"center>"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:233
-msgid ""
-"<center><b>Visible text</b><br>May contain identifiers that will be "
-"evaluated at popup call time.<br>For labels, this text can contain also "
-"limited HTML tags.</center>"
-msgstr ""
-
 #: src/modules/mircimport/libkvimircimport.cpp:151
 msgid ""
 "<center><b>Welcome!</b><br><br>This wizard will guide you in the process of "
@@ -1165,37 +987,6 @@ msgstr ""
 msgid ""
 "<center>Here you can modify the URL that the list will be downloaded from. "
 "In most cases the default URL is acceptable.</center>"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:93
-msgid ""
-"<center>This is the list of registered users. KVIrc can automatically "
-"recognize and associate properties to them.<br>Use the buttons on the right "
-"to add, edit and remove entries. The \"notify\" column allows you to quickly "
-"add users to the notify list. Notify list fine-tuning can be performed by "
-"editing the entry properties.</center>"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:260
-msgid ""
-"<center>This the <b>hostname</b> that will match this user. <b>*</b> will "
-"match any hostname.</center>"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:242
-msgid ""
-"<center>This the <b>nickname</b> that will match this user, default value is "
-"the registered name.</center>"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:251
-msgid ""
-"<center>This the <b>username</b> that will match this user. <b>*</b> will "
-"match any username.</center>"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:401
-msgid "<center>You can enter a space separated list of nicknames.</center>"
 msgstr ""
 
 #: src/modules/list/listwindow.cpp:299
@@ -1240,17 +1031,6 @@ msgid ""
 "p><p>Click \"<b>Next</b>\" to proceed.</p>"
 msgstr ""
 
-#: src/modules/reguser/wizard.cpp:112
-msgid ""
-"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
-"mask must be in the following form:<br><b>nickname!username@hostname</"
-"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
-"choosing the masks, as they are the only way to verify the identity of a "
-"registered user.<br><br>You can enter at most two masks here, if you wish to "
-"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
-"dialog. You must enter at least one mask.</p>"
-msgstr ""
-
 #: src/modules/setup/setupwizard.cpp:185
 msgid ""
 "<p>All of the files in this distribution are covered by the GPL. In human "
@@ -1268,24 +1048,6 @@ msgid ""
 "just click \"<b>Next</b>\" and go to the next screen.</p>"
 msgstr ""
 
-#: src/modules/reguser/wizard.cpp:208
-msgid ""
-"<p>If you want to be notified when this user is online or goes offline, you "
-"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
-"enter at most two nicknames here, if you wish to add more nicknames, use the "
-"\"<b>Edit</b>\" button in the Registered Users dialog.</p>"
-msgstr ""
-
-#: src/modules/reguser/wizard.cpp:183
-msgid ""
-"<p>If you want to store an avatar image for this user, you can set it here. "
-"KVIrc will show the avatar in the userlist next to the user's nickname."
-"<br>An avatar can be in any supported image format (PNG is recommended). "
-"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
-"fit in the userlist, thus it's better to use small, low-resolution images.</"
-"p>"
-msgstr ""
-
 #: src/modules/setup/setupwizard.cpp:222
 msgid ""
 "<p>Please choose a folder for KVIrc to store its settings and other data, "
@@ -1295,25 +1057,6 @@ msgid ""
 "<br><br>If you had a previous version of KVIrc installed, you can choose the "
 "existing directory for the settings, and your configuration will be "
 "preserved.</p>"
-msgstr ""
-
-#: src/modules/reguser/wizard.cpp:254
-msgid ""
-"<p>That's it. The user registration has been completed.<br><br>Click "
-"\"<b>Finish</b>\" to close this dialog.</p>"
-msgstr ""
-
-#: src/modules/reguser/wizard.cpp:88
-msgid ""
-"<p>Welcome to the user registration wizard.<br>This process allows you to "
-"add an IRC user to the database and set properties for that user. KVIrc will "
-"be (hopefully) able to recognize the user, add him to the notify list, and "
-"display the associated avatar.<br><br>First of all, you must insert an "
-"<b>entry name or real name</b> for the user you're going to register. The "
-"name will be used to identify the database entry and has no specific "
-"requirements, it can be a given name, nickname, or just some text to remind "
-"you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
-"</p>"
 msgstr ""
 
 #: src/modules/setup/setupwizard.cpp:744
@@ -1371,20 +1114,6 @@ msgstr "Bildschirmfoto aufzeichnen"
 msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr "Bildschirmfoto des KVIrc-Hauptmenüs aufzeichnen"
 
-#: src/modules/actioneditor/actioneditor.cpp:586
-#, fuzzy
-msgid "Action"
-msgstr "IRC-Aktionen"
-
-#: src/modules/actioneditor/actioneditor.cpp:858
-#, fuzzy
-msgid "Action Editor"
-msgstr "Bannausnahmen-Editor"
-
-#: src/modules/actioneditor/actioneditor.cpp:126
-msgid "Action code"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
 msgstr "Aktionen bezüglich den Einstellungen"
@@ -1413,19 +1142,9 @@ msgstr "Aktive Einladungsausnahmen"
 msgid "Acts as a separator for other items: performs no action"
 msgstr "Agiert als Trenner für andere Elemente: führt keine Aktion aus"
 
-#: src/modules/url/libkviurl.cpp:484 src/kvirc/ui/kvi_maskeditor.cpp:213
+#: src/kvirc/ui/kvi_maskeditor.cpp:213 src/modules/url/libkviurl.cpp:484
 msgid "Add"
 msgstr "Hinzufügen"
-
-#: src/modules/reguser/dialog.cpp:233
-msgid "Add (Wizard)..."
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:521
-#: src/modules/aliaseditor/aliaseditor.cpp:1250
-#, fuzzy
-msgid "Add Alias"
-msgstr "Applet hinzufügen"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:355
 msgid "Add Applet"
@@ -1434,20 +1153,6 @@ msgstr "Applet hinzufügen"
 #: src/kvilib/system/kvi_locale.cpp:1054
 msgid "Add Bookmark"
 msgstr "Lesezeichen hinzufügen"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:526
-#: src/modules/aliaseditor/aliaseditor.cpp:1275
-msgid "Add Namespace"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:235
-msgid "Add a registered user by means of a user-friendly wizard."
-msgstr ""
-
-#: src/modules/reguser/wizard.cpp:218
-#, fuzzy
-msgid "Add this user to the notify list"
-msgstr "Keine Benutzer in der Benachrichtigungsliste"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1526
 msgid "Added %d sec file offer for file %Q (%Q) to recipient %Q"
@@ -1470,12 +1175,6 @@ msgstr "Die Adresse ist bereits in Benutzung"
 msgid "Address:"
 msgstr "Adresse:"
 
-#: src/modules/reguser/dialog.cpp:246
-msgid "Adds a new group"
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:197
-#: src/modules/toolbareditor/toolbareditor.cpp:284
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
 msgid "Advanced..."
 msgstr "Erweitert ..."
@@ -1484,42 +1183,9 @@ msgstr "Erweitert ..."
 msgid "Age:"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:221
-#: src/modules/aliaseditor/aliaseditor.cpp:455
-#: src/modules/aliaseditor/aliaseditor.cpp:1453
-#, fuzzy
-msgid "Alias"
-msgstr "&Immer"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1552
-#, fuzzy
-msgid "Alias Editor"
-msgstr "Bann-Editor"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-msgid "Alias Export"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1356
-#, fuzzy
-msgid "Alias already exists"
-msgstr "Die Adresse ist bereits in Benutzung"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1123
-msgid ""
-"Alias names can contain only letters, digits, underscores and '::' namespace "
-"separators"
-msgstr ""
-
 #: src/kvilib/system/kvi_locale.cpp:1087
 msgid "All Files"
 msgstr "Alle Dateien"
-
-#: src/modules/reguser/edituser.cpp:441
-#, fuzzy
-msgid "All Properties..."
-msgstr "Eigenschaften..."
 
 #: src/modules/setup/setupwizard.cpp:300
 msgid "All settings in shared program folder (portable)"
@@ -1615,11 +1281,6 @@ msgstr "Eine andere Verbindung ist gerade im Aufbau"
 msgid "Application Folders"
 msgstr ""
 
-#: src/modules/actioneditor/actioneditor.cpp:871
-#, fuzzy
-msgid "Apply"
-msgstr "An&wenden"
-
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:193
 msgid "Apply to all IRC Contexts"
 msgstr "Auf alle IRC-Kontexte anwenden"
@@ -1658,10 +1319,6 @@ msgstr "Netzwerkspezifische Channel werden nun automatisch betreten"
 msgid "Auto-joining server specific channels"
 msgstr "Serverspezifische Channel werden nun automatisch betreten"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
-msgid "Automatically"
-msgstr ""
-
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:178
 msgid "Available channel modes:"
 msgstr "Verfügbare Channel-Modi:"
@@ -1669,11 +1326,6 @@ msgstr "Verfügbare Channel-Modi:"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:160
 msgid "Available user modes:"
 msgstr "Verfügbare Benutzermodi:"
-
-#: src/modules/reguser/edituser.cpp:426
-#, fuzzy
-msgid "Avatar"
-msgstr "Avataränderung"
 
 #: src/kvirc/kernel/kvi_options.cpp:730
 msgid "Avatar change"
@@ -1688,8 +1340,8 @@ msgstr "Der Avatardownload für %Q!%Q@%Q und URL %Q ist fehlgeschlagen: %Q."
 msgid "Average hops: ~%d.%d"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:98
 #: src/kvirc/ui/kvi_statusbar.cpp:602
+#: src/modules/trayicon/libkvitrayicon.cpp:98
 msgid "Away"
 msgstr "Abwesend"
 
@@ -1735,18 +1387,6 @@ msgstr ""
 msgid "Background"
 msgstr "Hintergrund"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1122
-#: src/modules/aliaseditor/aliaseditor.cpp:1136
-#: src/modules/aliaseditor/aliaseditor.cpp:1147
-msgid "Bad Alias Name"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1190
-#: src/modules/aliaseditor/aliaseditor.cpp:1204
-#: src/modules/aliaseditor/aliaseditor.cpp:1215
-msgid "Bad Namespace Name"
-msgstr ""
-
 #: src/kvilib/core/kvi_error.cpp:90
 msgid "Bad file descriptor"
 msgstr "Der Dateideskriptor ist fehlerhaft."
@@ -1791,11 +1431,6 @@ msgstr "Der Bann passt auf meine Maske"
 #: src/kvirc/kernel/kvi_options.cpp:804
 msgid "Ban unexception matching my mask"
 msgstr "Der Bann passt auf meine Maske"
-
-#: src/modules/actioneditor/actioneditor.cpp:162
-#, fuzzy
-msgid "Big Icon:"
-msgstr "Große Symbole"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:350
 #, c-format
@@ -1945,10 +1580,6 @@ msgstr ""
 msgid "Can't evaluate creation time"
 msgstr "Erstellungszeit kann nicht ermittelt werden"
 
-#: src/modules/reguser/dialog.cpp:775
-msgid "Can't export the registered users database: Write error."
-msgstr ""
-
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:265
 msgid "Can't find the proxy IP address: %Q"
 msgstr "IP-Adresse des Proxys kann nicht gefunden werden: %Q"
@@ -1961,10 +1592,6 @@ msgstr "Server-IP-Adresse kann nicht gefunden werden: %Q"
 #, fuzzy
 msgid "Can't find the window with id '%Q'"
 msgstr "IP-Adresse des Proxys kann nicht gefunden werden: %Q"
-
-#: src/modules/reguser/dialog.cpp:882
-msgid "Can't import the registered users database: Read error."
-msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:116
 msgid "Can't kill a builtin class"
@@ -1979,26 +1606,16 @@ msgstr "Channel-Thema ist: %Q"
 msgid "Can't open file \"%Q\" for writing"
 msgstr "Die Datei \"%Q\" kann nicht schreibend geöffnet werden"
 
-#: src/modules/reguser/dialog.cpp:696
-#, fuzzy
-msgid "Can't open file %Q for writing."
-msgstr "Die Datei \"%Q\" kann nicht schreibend geöffnet werden"
-
-#: src/modules/reguser/dialog.cpp:796
-#, fuzzy, c-format
-msgid "Can't open file %s for reading."
-msgstr "Die Datei kann nicht zum Lesen geöffnet werden"
-
 #: src/kvilib/core/kvi_error.cpp:139
 msgid "Can't open file for appending"
 msgstr "Die Datei kann nicht zum Datenanhängen geöffnet werden"
 
-#: src/kvilib/file/kvi_packagefile.cpp:679
-#: src/kvilib/file/kvi_packagefile.cpp:932 src/kvilib/core/kvi_error.cpp:143
+#: src/kvilib/core/kvi_error.cpp:143 src/kvilib/file/kvi_packagefile.cpp:679
+#: src/kvilib/file/kvi_packagefile.cpp:932
 msgid "Can't open file for reading"
 msgstr "Die Datei kann nicht zum Lesen geöffnet werden"
 
-#: src/kvilib/file/kvi_packagefile.cpp:493 src/kvilib/core/kvi_error.cpp:140
+#: src/kvilib/core/kvi_error.cpp:140 src/kvilib/file/kvi_packagefile.cpp:493
 msgid "Can't open file for writing"
 msgstr "Die Datei kann nicht zum Schreiben geöffnet werden"
 
@@ -2106,21 +1723,12 @@ msgstr ""
 msgid "Can't start the ident service on IPv6 : socket() failed"
 msgstr ""
 
-#: src/kvilib/file/kvi_packagefile.cpp:142
-#: src/kvilib/tal/kvi_tal_wizard.cpp:181 src/kvilib/system/kvi_locale.cpp:1027
-#: src/modules/toolbareditor/toolbareditor.cpp:192
-#: src/modules/toolbareditor/toolbareditor.cpp:411
+#: src/kvirc/ui/kvi_maskeditor.cpp:88 src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/modules/help/index.cpp:102 src/modules/setup/setupwizard.cpp:87
 #: src/modules/avatar/libkviavatar.cpp:108
-#: src/modules/actioneditor/actioneditor.cpp:877
-#: src/modules/setup/setupwizard.cpp:87
-#: src/modules/eventeditor/eventeditor.cpp:517
-#: src/modules/raweditor/raweditor.cpp:494
-#: src/modules/aliaseditor/aliaseditor.cpp:1569
-#: src/modules/popupeditor/popupeditor.cpp:1330
-#: src/modules/reguser/dialog.cpp:290 src/modules/reguser/edituser.cpp:117
-#: src/modules/reguser/edituser.cpp:278 src/modules/reguser/edituser.cpp:486
-#: src/modules/help/index.cpp:102 src/kvirc/ui/kvi_maskeditor.cpp:88
-#: src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/kvilib/tal/kvi_tal_wizard.cpp:181
+#: src/kvilib/file/kvi_packagefile.cpp:142
+#: src/kvilib/system/kvi_locale.cpp:1027
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -2179,10 +1787,6 @@ msgstr ""
 msgid "Case Insensitive"
 msgstr "Groß-/Kleinschreibung nicht beachten"
 
-#: src/modules/actioneditor/actioneditor.cpp:134
-msgid "Category:"
-msgstr ""
-
 #: src/modules/action/libkviaction.cpp:66
 msgid "Category: %Q"
 msgstr ""
@@ -2220,10 +1824,10 @@ msgstr "Nick ändern"
 msgid "Changed text encoding to %Q"
 msgstr "Die Textkodierung wurde auf %Q geändert"
 
+#: src/kvirc/kernel/kvi_actionmanager.cpp:68
+#: src/modules/list/listwindow.cpp:201
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:67
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:76
-#: src/modules/list/listwindow.cpp:201
-#: src/kvirc/kernel/kvi_actionmanager.cpp:68
 msgid "Channel"
 msgstr "Channel"
 
@@ -2325,11 +1929,6 @@ msgstr "Channel-Thema:"
 msgid "Channel was created at %Q"
 msgstr "Der Channel wurde am %Q erstellt"
 
-#: src/modules/regchan/libkviregchan.cpp:207
-#, fuzzy, c-format
-msgid "Channel: %c%s@%s"
-msgstr "Channel-Passwort"
-
 #: src/modules/list/listwindow.cpp:417
 msgid "Channels list download finished"
 msgstr ""
@@ -2341,54 +1940,6 @@ msgstr "Zeichenorientiertes Gerät"
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:689
 msgid "Check on startup"
 msgstr "Beim Starten prüfen"
-
-#: src/modules/actioneditor/actioneditor.cpp:229
-msgid ""
-"Check this option if this action should be enabled also during the login "
-"operations (so when the logical IRC connection hasn't been estabilished yet)"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:208
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window belongs to an irc context"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:219
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window has an active IRC connection"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:252
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a channel"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:241
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a console"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:274
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a dcc chat"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:263
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a query"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:235
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is of a specified type"
-msgstr ""
 
 #: src/modules/avatar/libkviavatar.cpp:69
 #, fuzzy
@@ -2408,7 +1959,6 @@ msgstr "Temporäre Schriftart auswählen ..."
 msgid "Choose a Configuration Folder - KVIrc Setup"
 msgstr "Verzeichnis auswählen - KVIrc"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:722
 #: src/kvirc/ui/kvi_selectors.cpp:367
 msgid "Choose a Directory - KVIrc"
 msgstr "Verzeichnis auswählen - KVIrc"
@@ -2422,25 +1972,11 @@ msgstr "Datei auswählen - KVIrc"
 msgid "Choose a File - KVIrc"
 msgstr "Datei auswählen - KVIrc"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:402
-#: src/modules/actioneditor/actioneditor.cpp:692
-#: src/modules/eventeditor/eventeditor.cpp:447
-#: src/modules/eventeditor/eventeditor.cpp:488
-#: src/modules/raweditor/raweditor.cpp:422
-#: src/modules/raweditor/raweditor.cpp:465
-#: src/modules/aliaseditor/aliaseditor.cpp:809
-#: src/modules/popupeditor/popupeditor.cpp:1129
-#: src/modules/popupeditor/popupeditor.cpp:1179
-#: src/modules/reguser/dialog.cpp:689 src/modules/reguser/dialog.cpp:789
-#, fuzzy
-msgid "Choose a Filename - KVIrc"
-msgstr "Datei auswählen - KVIrc"
-
 #: src/modules/mircimport/libkvimircimport.cpp:125
 msgid "Choose a servers.ini file"
 msgstr ""
 
-#: src/modules/avatar/libkviavatar.cpp:148 src/kvirc/ui/kvi_selectors.cpp:258
+#: src/kvirc/ui/kvi_selectors.cpp:258 src/modules/avatar/libkviavatar.cpp:148
 msgid "Choose an Image File - KVIrc"
 msgstr "Bilddatei auswählen - KVIrc"
 
@@ -2461,10 +1997,6 @@ msgstr "Bilddatei auswählen ..."
 #: src/kvirc/ui/kvi_ircview.cpp:2125
 msgid "Choose the background image..."
 msgstr "Hintergrund-Bilddatei auswählen ..."
-
-#: src/modules/actioneditor/actioneditor.cpp:139
-msgid "Choose the category that best fits for this action"
-msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:138
 #, fuzzy
@@ -2511,13 +2043,11 @@ msgstr "Zwischenablage"
 msgid "Clo&se"
 msgstr "Schließen"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:331
+#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_ctcppagedialog.cpp:62
+#: src/kvirc/ui/kvi_window.cpp:774 src/modules/tip/libkvitip.cpp:121
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:114
 #: src/modules/addon/managementdialog.cpp:179
-#: src/modules/tip/libkvitip.cpp:121
 #: src/modules/theme/managementdialog.cpp:194
-#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_window.cpp:774
-#: src/kvirc/ui/kvi_ctcppagedialog.cpp:62
 msgid "Close"
 msgstr "Schließen"
 
@@ -2534,16 +2064,6 @@ msgstr ""
 msgid "Close this window"
 msgstr "Gestaffelte Fenster"
 
-#: src/modules/actioneditor/actioneditor.cpp:128
-#, fuzzy
-msgid "Code"
-msgstr "Schließen"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:571
-#, fuzzy
-msgid "Collapse All Namespaces"
-msgstr "Alle Anfragen schliessen"
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:234
 msgid "Color free (no ANSI colors)"
 msgstr "Farbfrei (keine ANSI-Farben)"
@@ -2552,22 +2072,9 @@ msgstr "Farbfrei (keine ANSI-Farben)"
 msgid "Color options (#RRGGBB)"
 msgstr "Farboptionen (#RRGGBB)"
 
-#: src/modules/editor/scripteditor.cpp:522
-#, fuzzy
-msgid "Colors"
-msgstr "Schließen"
-
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:975
 msgid "Command syntax %Q: %Q"
 msgstr "Befehlssyntax %Q: %Q"
-
-#: src/modules/reguser/edituser.cpp:348
-msgid "Comment:"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:133
-msgid "Comment: "
-msgstr ""
 
 #: src/kvirc/ui/kvi_topicw.cpp:617
 msgid "Commit Changes"
@@ -2598,11 +2105,6 @@ msgstr "Die Initialisierung der Komprimierungsbibliothek ist fehlgeschlagen"
 #: src/kvilib/file/kvi_packagefile.cpp:416
 msgid "Compression library internal error"
 msgstr "Es ist ein interner Fehler in der Komprimierungsbibliothek aufgetreten"
-
-#: src/modules/popupeditor/popupeditor.cpp:236
-#, fuzzy
-msgid "Condition:"
-msgstr "Verbindung"
 
 #: src/modules/list/listwindow.cpp:336
 #, fuzzy
@@ -2636,10 +2138,6 @@ msgstr "Thema konfigurieren..."
 #: src/kvirc/ui/kvi_input.cpp:251
 msgid "Confirm Multiline Message"
 msgstr "Mehrzeilige Nachricht bestätigen"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:383
-msgid "Confirm ToolBar Deletion"
-msgstr ""
 
 #: src/modules/addon/managementdialog.cpp:266
 msgid "Confirm addon uninstallation"
@@ -2739,7 +2237,7 @@ msgstr "Der Host %Q wird am Port %u kontaktiert"
 msgid "Context"
 msgstr "IRC-Kontext"
 
-#: src/modules/editor/scripteditor.cpp:255
+#: src/modules/editor/scripteditor.cpp:254
 #, fuzzy
 msgid "Context sensitive help"
 msgstr "G&roß-/Kleinschreibung beachten"
@@ -2819,7 +2317,6 @@ msgstr ""
 msgid "Cryptography/text transformation"
 msgstr "Verschlüsselung-/Textumwandlung"
 
-#: src/modules/popupeditor/popupeditor.cpp:436
 #: src/kvirc/ui/kvi_input_editor.cpp:715
 msgid "Cu&t"
 msgstr "Au&sschneiden"
@@ -2828,8 +2325,8 @@ msgstr "Au&sschneiden"
 msgid "Current IRC URI"
 msgstr "Derzeitiger IRC-URI (Uniform Ressource Identifier)"
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1274
 #: src/kvirc/kernel/kvi_sslmaster.cpp:90
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1274
 msgid "Current transmission cipher"
 msgstr "Aktuelle Übertragungsverschlüsselung"
 
@@ -2839,11 +2336,6 @@ msgstr "Aktuelle Übertragungsverschlüsselung"
 #, fuzzy
 msgid "Current window is not a channel"
 msgstr "Konnte den Text nicht zum Channel senden"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:298
-#, fuzzy
-msgid "Customize Toolbars"
-msgstr "Werkzeugleisten anpassen...."
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:225
 msgid "Customize Toolbars..."
@@ -2891,9 +2383,7 @@ msgid "Decrypt key:"
 msgstr "Entschlüsselungsschlüssel:"
 
 #: src/kvilib/ext/kvi_regusersdb.cpp:683 src/kvilib/ext/kvi_regusersdb.cpp:684
-#: src/kvilib/irc/kvi_useridentity.cpp:175 src/modules/reguser/dialog.cpp:492
-#: src/modules/reguser/dialog.cpp:495 src/modules/reguser/dialog.cpp:496
-#: src/modules/reguser/dialog.cpp:498 src/modules/reguser/dialog.cpp:500
+#: src/kvilib/irc/kvi_useridentity.cpp:175
 msgid "Default"
 msgstr "Voreinstellungen"
 
@@ -2901,28 +2391,13 @@ msgstr "Voreinstellungen"
 msgid "Delete"
 msgstr "Löschen"
 
-#: src/modules/actioneditor/actioneditor.cpp:630
-#, fuzzy
-msgid "Delete Actions"
-msgstr "Auswahl"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:312
-#, fuzzy
-msgid "Delete ToolBar"
-msgstr "Farbe(n) auswählen"
-
 #: src/modules/links/linkswindow.cpp:486
 #, fuzzy
 msgid "Description"
 msgstr "Skripte"
 
-#: src/modules/actioneditor/actioneditor.cpp:141
-#, fuzzy
-msgid "Description:"
-msgstr "Skripte"
-
-#: src/modules/action/libkviaction.cpp:67
 #: src/modules/addon/libkviaddon.cpp:148
+#: src/modules/action/libkviaction.cpp:67
 msgid "Description: %Q"
 msgstr ""
 
@@ -2971,7 +2446,7 @@ msgstr "Verzeichnis"
 msgid "Discard Changes"
 msgstr "Änderungen verwerfen"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:614 src/kvirc/ui/kvi_menubar.cpp:231
+#: src/kvirc/ui/kvi_menubar.cpp:231 src/kvirc/kernel/kvi_coreactions.cpp:614
 msgid "Disconnect"
 msgstr "Trennen"
 
@@ -3001,24 +2476,8 @@ msgstr ""
 msgid "Do not overwrite folder? - KVIrc"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:384
-msgid "Do you really want to delete toolbar \"%1\" ?"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1022
-msgid "Do you really want to remove the alias \"%Q\" ?"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1024
-msgid "Do you really want to remove the namespace \"%Q\" ?"
-msgstr ""
-
 #: src/modules/addon/managementdialog.cpp:262
 msgid "Do you really want to uninstall the addon \"%1\" ?"
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:408
-msgid "Do you want the associated actions to be exported with the toolbar ?"
 msgstr ""
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:833
@@ -3091,20 +2550,12 @@ msgstr ""
 msgid "Dreaded License Agreement"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:64
-msgid "Drop here the icons from the toolbars to remove them"
-msgstr ""
-
 #: src/modules/ident/libkviident.cpp:485
 msgid "Dropping connection (request too long)"
 msgstr ""
 
 #: src/modules/trayicon/libkvitrayicon.cpp:157
 msgid "Dum de dum de dum..."
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:265
-msgid "Duplicate ToolBar Id"
 msgstr ""
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:125
@@ -3131,27 +2582,6 @@ msgstr "Aufklappmenüs bearbeiten..."
 msgid "Edit Raw Events..."
 msgstr "RAW-Ereignisse bearbeiten..."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:316
-#, fuzzy
-msgid "Edit ToolBar"
-msgstr "Lesezeichen be&arbeiten"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:266
-msgid "Edit the alias or namespace name"
-msgstr ""
-
-#: src/modules/eventeditor/eventeditor.cpp:116
-msgid "Edit the event handler name."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:259
-msgid "Edit the first selected entry."
-msgstr ""
-
-#: src/modules/raweditor/raweditor.cpp:111
-msgid "Edit the raw event handler name."
-msgstr ""
-
 #: src/kvilib/system/kvi_locale.cpp:1043
 msgid "Effects"
 msgstr "Effekte"
@@ -3169,18 +2599,9 @@ msgstr "Benachrichtigung"
 msgid "Empty request (EOT ?)"
 msgstr ""
 
-#: src/modules/actioneditor/actioneditor.cpp:233
-msgid "Enable Only in Specified Windows"
-msgstr ""
-
 #: src/modules/url/libkviurl.cpp:446
 msgid "Enable URL ban list"
 msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:228
-#, fuzzy
-msgid "Enable at Login"
-msgstr "Entschlüsselung aktivieren"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:117
 msgid "Enable decryption"
@@ -3189,27 +2610,6 @@ msgstr "Entschlüsselung aktivieren"
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:105
 msgid "Enable encryption"
 msgstr "Verschlüsselung aktivieren"
-
-#: src/modules/reguser/edituser.cpp:454
-msgid "Enable ignore for this user"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:251
-msgid "Enable in Channel Windows"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:240
-msgid "Enable in Console Windows"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:273
-msgid "Enable in DCC Chat Windows"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:262
-#, fuzzy
-msgid "Enable in Query Windows"
-msgstr "Entschlüsselung aktivieren"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:108
 msgid "Encrypt key:"
@@ -3256,7 +2656,7 @@ msgstr "Ende der Kanal %Q für \r!c\r%Q\r"
 msgid "End of help about %Q"
 msgstr "Ende der Hilfseinträge über %Q"
 
-#: src/kvirc/ui/kvi_query.cpp:884 src/kvirc/ui/kvi_channel.cpp:1896
+#: src/kvirc/ui/kvi_channel.cpp:1896 src/kvirc/ui/kvi_query.cpp:884
 msgid "End of log"
 msgstr "Ende des Logs"
 
@@ -3271,14 +2671,6 @@ msgstr ""
 #: src/kvirc/kernel/kvi_coreactions.cpp:1047
 msgid "Enter Away Mode"
 msgstr "Abwesend-Modus setzen"
-
-#: src/modules/raweditor/raweditor.cpp:232
-msgid "Enter the numeric code of the message (0-999)"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:96
-msgid "Epilogue"
-msgstr ""
 
 #: src/modules/rijndael/libkvirijndael.cpp:165
 msgid "Error 0: Success ?"
@@ -3306,15 +2698,6 @@ msgstr "Es ist ein Fehler während des Datenstromkomprimierens aufgetreten"
 #, fuzzy
 msgid "Error while loading plugin."
 msgstr "Fehler beim Laden des Moduls"
-
-#: src/modules/eventeditor/eventeditor.cpp:168
-msgid "Event"
-msgstr ""
-
-#: src/modules/eventeditor/eventeditor.cpp:561
-#, fuzzy
-msgid "Event Editor"
-msgstr "Bann-Editor"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:163
 msgid "Everything is all right"
@@ -3355,46 +2738,6 @@ msgstr "&Horizontal ausdehnen"
 #: src/kvirc/ui/kvi_mdimanager.cpp:410
 msgid "Expand &Vertically"
 msgstr "&Vertikal ausdehnen"
-
-#: src/modules/actioneditor/actioneditor.cpp:633
-#, fuzzy
-msgid "Export Actions..."
-msgstr "Aktionen bearbeiten..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:557
-msgid "Export All..."
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:550
-msgid "Export Selected in singles files..."
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:544
-msgid "Export Selected..."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:265
-msgid "Export To..."
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:324
-msgid "Export ToolBar"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:268
-msgid ""
-"Export the selected entries to a file.<br>All the data associated with the "
-"selected registered users will be exported.<br>You (or anyone else) can "
-"later import the entries by using the \"Import\" button."
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:85
-msgid "External Menu"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:254
-msgid "External menu:"
-msgstr ""
 
 #: src/modules/file/libkvifile.cpp:83
 msgid "Failed to copy from %Q to %Q"
@@ -3528,7 +2871,7 @@ msgstr ""
 msgid "Feature not available"
 msgstr "Diese Fähigkeit ist nicht verfügbar"
 
-#: src/modules/setup/setupwizard.cpp:394 src/kvirc/ui/kvi_console.cpp:323
+#: src/kvirc/ui/kvi_console.cpp:323 src/modules/setup/setupwizard.cpp:394
 msgid "Female"
 msgstr "weiblich"
 
@@ -3584,42 +2927,21 @@ msgstr "Filter"
 msgid "Filter:"
 msgstr "Filter:"
 
-#: src/modules/editor/scripteditor.cpp:761
 #: src/kvirc/ui/kvi_ircviewtools.cpp:146
 msgid "Find"
 msgstr "Suchen"
-
-#: src/modules/editor/scripteditor.cpp:269
-msgid "Find & Replace"
-msgstr ""
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:133
 msgid "Find &Prev."
 msgstr "Zur &vorherigen Fundstelle springen"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:609
-#, fuzzy
-msgid "Find In Aliases"
-msgstr "Aliasse bearbeiten..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:565
-#, fuzzy
-msgid "Find In Aliases..."
-msgstr "Aliasse bearbeiten..."
-
 #: src/kvirc/ui/kvi_ircviewtools.cpp:91
 msgid "Find Text"
 msgstr "Text suchen"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:234 src/modules/setup/setupwizard.cpp:86
+#: src/modules/setup/setupwizard.cpp:86 src/kvilib/tal/kvi_tal_wizard.cpp:234
 msgid "Finish"
 msgstr "Abschließen"
-
-#: src/modules/actioneditor/actioneditor.cpp:283
-#: src/modules/reguser/dialog.cpp:81
-#, fuzzy
-msgid "Flags"
-msgstr "Flach"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:96
 msgid "Flat"
@@ -3663,14 +2985,6 @@ msgstr "Format"
 msgid "Forward"
 msgstr "Vorwärts"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1148
-msgid "Found an empty namespace in alias name"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1216
-msgid "Found an empty namespace in namespace name"
-msgstr ""
-
 #: src/modules/help/helpwindow.cpp:181 src/modules/help/helpwindow.cpp:190
 msgid "Full Text Search"
 msgstr ""
@@ -3683,7 +2997,7 @@ msgstr "Ganzer Pfad"
 msgid "GUI"
 msgstr "Grafische Benutzeroberfläche"
 
-#: src/modules/setup/setupwizard.cpp:388 src/kvirc/ui/kvi_console.cpp:321
+#: src/kvirc/ui/kvi_console.cpp:321 src/modules/setup/setupwizard.cpp:388
 msgid "Gender:"
 msgstr "Geschlecht:"
 
@@ -3731,10 +3045,6 @@ msgstr "Netzwerkverbindungen holen"
 msgid "Global idle timer must be started before using $my.globalIdle function"
 msgstr ""
 
-#: src/modules/reguser/dialog.cpp:395 src/modules/reguser/dialog.cpp:408
-msgid "Group name:"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:786
 msgid "Half-deop mode change"
 msgstr "Halb-Deop-Modusänderung"
@@ -3751,7 +3061,7 @@ msgstr "Halb-Op-Modusänderung"
 msgid "Header too long: exceeded 4096 bytes"
 msgstr "Der Header ist zu lang: Er überschritt 4096 Byte"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:193 src/kvirc/kernel/kvi_options.cpp:831
+#: src/kvirc/kernel/kvi_options.cpp:831 src/kvilib/tal/kvi_tal_wizard.cpp:193
 msgid "Help"
 msgstr "&Hilfe"
 
@@ -3792,11 +3102,6 @@ msgstr ""
 #: src/kvirc/ui/kvi_menubar.cpp:240
 msgid "Hide &Dock Icon"
 msgstr "&Docksymbol ausblenden"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:287
-#, fuzzy
-msgid "Hide Advanced"
-msgstr "Erweitert ..."
 
 #: src/kvirc/ui/kvi_ircview.cpp:2080
 msgid "Hide Find Window"
@@ -3916,11 +3221,6 @@ msgstr "IRC-Server"
 msgid "IRC-Op only channel"
 msgstr "Channel nur für IRC-OPs"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:151
-#, fuzzy
-msgid "Icon"
-msgstr "Symbolgröße"
-
 #: src/kvirc/ui/kvi_toolbar.cpp:98
 msgid "Icon Size"
 msgstr "Symbolgröße"
@@ -3928,14 +3228,6 @@ msgstr "Symbolgröße"
 #: src/kvirc/kernel/kvi_iconmanager.cpp:371
 msgid "Icon Table"
 msgstr "Symboltabelle"
-
-#: src/modules/popupeditor/popupeditor.cpp:245
-msgid "Icon:"
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:170
-msgid "Id"
-msgstr ""
 
 #: src/kvirc/kernel/kvi_options.cpp:784
 msgid "Ident message"
@@ -3958,7 +3250,7 @@ msgstr ""
 msgid "Identd socket error : dropping connection"
 msgstr ""
 
-#: src/modules/setup/setupwizard.cpp:417 src/modules/reguser/edituser.cpp:388
+#: src/modules/setup/setupwizard.cpp:417
 msgid "Identity"
 msgstr ""
 
@@ -3973,44 +3265,6 @@ msgid ""
 msgstr ""
 "Wenn eine Textzeile nicht verschlüsselt werden soll, lassen Sie diese mit "
 "Strg + P beginnen"
-
-#: src/modules/reguser/edituser.cpp:484
-#, fuzzy
-msgid "Ignore"
-msgstr "ignoriert"
-
-#: src/modules/reguser/edituser.cpp:478
-msgid "Ignore DCCs"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:466
-#, fuzzy
-msgid "Ignore channel-messages"
-msgstr "Ignorierte Benutzernachricht"
-
-#: src/modules/reguser/edituser.cpp:472
-#, fuzzy
-msgid "Ignore ctcp-messages"
-msgstr "Ignorierte Benutzernachricht"
-
-#: src/modules/reguser/edituser.cpp:456
-#, fuzzy
-msgid "Ignore features"
-msgstr "Ignorierte Benutzernachricht"
-
-#: src/modules/reguser/edituser.cpp:475
-msgid "Ignore invites"
-msgstr ""
-
-#: src/modules/reguser/edituser.cpp:469
-#, fuzzy
-msgid "Ignore notice-messages"
-msgstr "Ignorierte Benutzernachricht"
-
-#: src/modules/reguser/edituser.cpp:463
-#, fuzzy
-msgid "Ignore query-messages"
-msgstr "Ignorierte Benutzernachricht"
 
 #: src/kvirc/kernel/kvi_options.cpp:807
 msgid "Ignored user message"
@@ -4045,17 +3299,6 @@ msgstr "Ignoriere Einladung von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]"
 #: src/kvirc/sparser/kvi_sp_literal.cpp:792
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Ignoriere Anfragen-PRIVMSG von \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-
-#: src/modules/reguser/dialog.cpp:272
-#, fuzzy
-msgid "Import From..."
-msgstr "&Laden von ..."
-
-#: src/modules/reguser/dialog.cpp:274
-msgid ""
-"Import entries from a file exported earlier by the \"export\" function of "
-"this dialog."
-msgstr ""
 
 #: src/modules/mircimport/libkvimircimport.cpp:326
 msgid "Import from http://www.mirc.co.uk/servers.ini"
@@ -4140,12 +3383,6 @@ msgstr "Eingabeverlauf deaktiviert"
 msgid "Insert Icon"
 msgstr "Piktogramm (Icon) einfügen"
 
-#: src/modules/reguser/edituser.cpp:232
-msgid ""
-"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
-"and '?'."
-msgstr ""
-
 #: src/kvirc/kernel/kvi_app_setup.cpp:481
 msgid "Install Package"
 msgstr "Paket Installieren"
@@ -4167,7 +3404,7 @@ msgstr ""
 msgid "Integer parameter expected"
 msgstr "Es wurde ein Ganzzahl-Parameter erwartet"
 
-#: src/kvilib/file/kvi_packagefile.cpp:571 src/kvilib/core/kvi_error.cpp:52
+#: src/kvilib/core/kvi_error.cpp:52 src/kvilib/file/kvi_packagefile.cpp:571
 msgid "Internal error"
 msgstr "Interner Fehler"
 
@@ -4177,13 +3414,9 @@ msgstr "Interner Fehler"
 msgid "Internal error: I'm not in the user database ?"
 msgstr ""
 
-#: src/modules/action/libkviaction.cpp:377
 #: src/modules/addon/libkviaddon.cpp:529
+#: src/modules/action/libkviaction.cpp:377
 msgid "Internal error: call a head-shrinker"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:107
-msgid "Internal unique name for the action"
 msgstr ""
 
 #: src/modules/system/libkvisystem.cpp:464
@@ -4209,11 +3442,6 @@ msgstr "Die IP-Adresse ist ungültig"
 #, fuzzy
 msgid "Invalid IRC context id '%Q'"
 msgstr "Die IRC-Kontext-ID ist ungültig"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-#, fuzzy
-msgid "Invalid ToolBar Label"
-msgstr "Der Port ist ungültig"
 
 #: src/kvilib/net/kvi_http.cpp:160
 msgid "Invalid URL: Missing hostname"
@@ -4348,15 +3576,6 @@ msgstr "IRC-Kontext-Farboptionen (#RRGGBB)"
 msgid "It's so cold here..."
 msgstr ""
 
-#: src/modules/popupeditor/popupeditor.cpp:79
-#: src/modules/popupeditor/popupeditor.cpp:209
-msgid "Item"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:263
-msgid "Item Id:"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_coreactions.cpp:761
 msgid "Join Channel"
 msgstr "Channel betreten"
@@ -4479,22 +3698,9 @@ msgstr "Kernel-Netzwerk-Panik"
 msgid "Key"
 msgstr "Passwort"
 
-#: src/modules/actioneditor/actioneditor.cpp:178
-msgid "Key Sequence:"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:768
 msgid "Kick action"
 msgstr "Kick-Aktion"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:142
-#: src/modules/popupeditor/popupeditor.cpp:92
-msgid "Label"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:109
-msgid "Label:"
-msgstr ""
 
 #: src/modules/action/libkviaction.cpp:65
 msgid "Label: %Q"
@@ -4704,7 +3910,7 @@ msgstr "Ma&ximieren"
 msgid "Make KVIrc default IRC client"
 msgstr ""
 
-#: src/modules/setup/setupwizard.cpp:395 src/kvirc/ui/kvi_console.cpp:323
+#: src/kvirc/ui/kvi_console.cpp:323 src/modules/setup/setupwizard.cpp:395
 msgid "Male"
 msgstr "männlich"
 
@@ -4725,40 +3931,13 @@ msgstr "Erlaubt Ihnen die Verwaltung von skriptbasierten AddOns"
 msgid "Manage Themes..."
 msgstr "Themen verwalten..."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
-msgid "Manually"
-msgstr ""
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:193
 msgid "Mask"
 msgstr "Maske"
 
-#: src/modules/reguser/libkvireguser.cpp:354
-msgid "Mask %Q already used to identify user %Q"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:221
-msgid "Mask %Q is already used to identify user %s"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:409
-#, fuzzy
-msgid "Mask %Q not found"
-msgstr "Der Host wurde nicht gefunden."
-
-#: src/modules/reguser/edituser.cpp:228
-#, fuzzy
-msgid "Mask Editor"
-msgstr "Bann-Editor"
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:73
 msgid "Mask editor - KVirc"
 msgstr "Maskeneditor - KVIrc"
-
-#: src/modules/reguser/edituser.cpp:358
-#, fuzzy
-msgid "Masks:"
-msgstr "Maske"
 
 #: src/modules/links/linkswindow.cpp:312
 #, c-format
@@ -4836,16 +4015,6 @@ msgstr "Minimiert alle aktuell sichtbaren MDI-Fenster"
 msgid "Mirccolor options (#RRGGBB)"
 msgstr "mIRC-Farboptionen (#RRGGBB)"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1109
-#, fuzzy
-msgid "Missing Alias Name"
-msgstr "Sie haben keinen Variablennamen angegeben"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1177
-#, fuzzy
-msgid "Missing Namespace Name"
-msgstr "Sie haben keinen Variablennamen angegeben"
-
 #: src/kvirc/kernel/kvi_options.cpp:985
 msgid "Missing absolute directory for the theme information"
 msgstr "Das absolute Verzeichnis für die Themen-Informationen fehlt"
@@ -4912,10 +4081,6 @@ msgstr "Moderiert"
 msgid "Modulo by zero"
 msgstr "Modulo von Null"
 
-#: src/modules/reguser/dialog.cpp:451
-msgid "Move to group"
-msgstr ""
-
 #: src/kvirc/ui/kvi_input.cpp:156
 msgid "Multi-line Editor<br>&lt;Alt+Backspace&gt;"
 msgstr "Mehrzeiliger Editor<br>&lt;Alt+Rücktaste&gt;"
@@ -4936,28 +4101,9 @@ msgstr "Numerische Operatoren unterstützen nicht mehrere Operationen"
 msgid "Multiple user mode change"
 msgstr "Multiple Benutzermodiänderungen"
 
-#: src/modules/actioneditor/actioneditor.cpp:764
-#: src/modules/actioneditor/actioneditor.cpp:765
-#, fuzzy
-msgid "My Action"
-msgstr "IRC-Aktionen"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:501
-#: src/modules/toolbareditor/toolbareditor.cpp:502
-#, fuzzy
-msgid "My ToolBar"
-msgstr "Werkzeugleisten"
-
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:77
-#: src/modules/reguser/dialog.cpp:81
 #, fuzzy
 msgid "Name"
-msgstr "Nach Name"
-
-#: src/modules/actioneditor/actioneditor.cpp:103
-#: src/modules/reguser/edituser.cpp:342
-#, fuzzy
-msgid "Name:"
 msgstr "Nach Name"
 
 #: src/modules/addon/libkviaddon.cpp:147
@@ -4968,31 +4114,6 @@ msgstr ""
 msgid "Names for \r!c\r%Q\r: %Q"
 msgstr "Namen für \r!c\r%Q\r: %Q"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:453
-#: src/modules/aliaseditor/aliaseditor.cpp:1442
-msgid "Namespace"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1368
-msgid "Namespace already exists"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1191
-msgid ""
-"Namespace names can contain only letters, digits, underscores and '::' "
-"namespace separators"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:217
-#, fuzzy
-msgid "Needs IRC Connection"
-msgstr "Neuer IRC-Kontext"
-
-#: src/modules/actioneditor/actioneditor.cpp:206
-#, fuzzy
-msgid "Needs IRC Context"
-msgstr "Neuer IRC-Kontext"
-
 #: src/kvirc/kernel/kvi_irclink.cpp:389
 msgid "Negotiating relay information"
 msgstr "Relay-Informationen werden ausgehandelt"
@@ -5002,7 +4123,7 @@ msgstr "Relay-Informationen werden ausgehandelt"
 msgid "Netsplit detected: %s"
 msgstr "Netzwerktrennung wurde erkannt: %s"
 
-#: src/kvilib/system/kvi_locale.cpp:1076 src/kvirc/ui/kvi_statusbar.cpp:574
+#: src/kvirc/ui/kvi_statusbar.cpp:574 src/kvilib/system/kvi_locale.cpp:1076
 msgid "Network"
 msgstr "Netzwerk"
 
@@ -5018,11 +4139,6 @@ msgstr "Das Netzwerk ist nicht erreichbar"
 msgid "New &Connection To"
 msgstr "Neue &Verbindung zu"
 
-#: src/modules/actioneditor/actioneditor.cpp:627
-#, fuzzy
-msgid "New Action"
-msgstr "IRC-Aktionen"
-
 #: src/kvilib/system/kvi_locale.cpp:1056
 msgid "New Bookmark Folder..."
 msgstr "Neues Lesezeichenverzeichnis..."
@@ -5035,90 +4151,9 @@ msgstr "Neues Verzeichnis"
 msgid "New Directory..."
 msgstr "Neues Verzeichnis..."
 
-#: src/modules/popupeditor/popupeditor.cpp:425
-msgid "New External Menu Above"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:423
-msgid "New External Menu Below"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:428
-msgid "New External Menu Inside"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_coreactions.cpp:418
 msgid "New IRC Context"
 msgstr "Neuer IRC-Kontext"
-
-#: src/modules/popupeditor/popupeditor.cpp:405
-msgid "New Item Above"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:403
-msgid "New Item Below"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:408
-msgid "New Item Inside"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:395
-msgid "New Label Above"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:393
-msgid "New Label Below"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:398
-msgid "New Label Inside"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:415
-msgid "New Menu Above"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:413
-msgid "New Menu Below"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:478
-msgid "New Menu Epilogue"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:418
-msgid "New Menu Inside"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:470
-msgid "New Menu Prologue"
-msgstr ""
-
-#: src/modules/raweditor/raweditor.cpp:232
-#, fuzzy
-msgid "New Raw Event"
-msgstr "RAW-Ereignisse bearbeiten..."
-
-#: src/modules/popupeditor/popupeditor.cpp:385
-#, fuzzy
-msgid "New Separator Above"
-msgstr "Trenner"
-
-#: src/modules/popupeditor/popupeditor.cpp:383
-#, fuzzy
-msgid "New Separator Below"
-msgstr "Trenner"
-
-#: src/modules/popupeditor/popupeditor.cpp:388
-#, fuzzy
-msgid "New Separator Inside"
-msgstr "Trenner"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:308
-#, fuzzy
-msgid "New ToolBar"
-msgstr "Werkzeugleisten"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:77
 msgid "New mask must match an *!*@* expression"
@@ -5149,26 +4184,17 @@ msgstr "NickServ fragt nach Authentifizierung: führe geplanten Befehl aus"
 msgid "Nickname"
 msgstr "Nickname"
 
-#: src/modules/reguser/wizard.cpp:228
-#, fuzzy
-msgid "Nickname 2:"
-msgstr "Nickname"
-
 #: src/kvirc/kernel/kvi_options.cpp:753
 msgid "Nickname problem"
 msgstr "Nickname Problem"
 
-#: src/modules/setup/setupwizard.cpp:339 src/modules/reguser/wizard.cpp:224
+#: src/modules/setup/setupwizard.cpp:339
 #, fuzzy
 msgid "Nickname:"
 msgstr "Nickname"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:385
-#: src/modules/toolbareditor/toolbareditor.cpp:410
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:785
 #: src/kvirc/ui/kvi_input.cpp:260 src/kvirc/ui/kvi_statusbar.cpp:572
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:785
 msgid "No"
 msgstr "Nein"
 
@@ -5196,11 +4222,6 @@ msgstr "Nein, und nicht wieder nachfragen"
 msgid "No channel topic is set"
 msgstr "Es ist kein Channel-Thema gesetzt"
 
-#: src/modules/reguser/dialog.cpp:131
-#, fuzzy
-msgid "No comment set"
-msgstr "Kein IRC-Kontext"
-
 #: src/kvirc/ui/kvi_query.cpp:408
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Sie haben keine gemeinsamen Channels mit \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
@@ -5211,10 +4232,6 @@ msgstr "Keine Verbindung"
 
 #: src/modules/window/libkviwindow.cpp:1515
 msgid "No encrypt key specified: can't allocate engine"
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:683
-msgid "No entries selected."
 msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:241
@@ -5230,38 +4247,13 @@ msgstr ""
 msgid "No host to resolve"
 msgstr "Es wurde keine Hostadresse zum Auflösen angegeben"
 
-#: src/modules/eventeditor/eventeditor.cpp:369
-#: src/modules/aliaseditor/aliaseditor.cpp:261
-#: src/modules/aliaseditor/aliaseditor.cpp:1432
-#, fuzzy
-msgid "No item selected"
-msgstr "Nicht verbunden"
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:252
 msgid "No kicks able (unless U-Line)"
 msgstr "Kein Herauswerfen möglich (außer für Inhaber einer U-Line)"
 
-#: src/modules/reguser/libkvireguser.cpp:337
-#: src/modules/reguser/libkvireguser.cpp:402
-msgid "No mask specified"
-msgstr ""
-
 #: src/kvirc/ui/kvi_input_editor.cpp:1795
 msgid "No matches"
 msgstr "Keine Übereinstimmungen"
-
-#: src/modules/reguser/libkvireguser.cpp:188
-#: src/modules/reguser/libkvireguser.cpp:268
-#: src/modules/reguser/libkvireguser.cpp:331
-#: src/modules/reguser/libkvireguser.cpp:451
-#: src/modules/reguser/libkvireguser.cpp:516
-#: src/modules/reguser/libkvireguser.cpp:690
-msgid "No name specified"
-msgstr ""
-
-#: src/modules/reguser/libkvireguser.cpp:696
-msgid "No property specified"
-msgstr ""
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:504
 msgid "No proxy hosts available, resuming direct connection"
@@ -5281,11 +4273,6 @@ msgstr ""
 
 #: src/modules/mircimport/libkvimircimport.cpp:251
 msgid "No servers imported"
-msgstr ""
-
-#: src/modules/regchan/libkviregchan.cpp:120
-#: src/modules/regchan/libkviregchan.cpp:177
-msgid "No such channel/netmask entry in the database"
 msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:113
@@ -5384,16 +4371,6 @@ msgstr "Es ist nichts bekannt über %Q (keine bestehende Verbindung)"
 
 #: src/kvirc/ui/kvi_console.cpp:144 src/kvirc/ui/kvi_console.cpp:147
 msgid "Notify List"
-msgstr "Benachrichtigungsliste"
-
-#: src/modules/reguser/dialog.cpp:122
-#, fuzzy
-msgid "Notify as: "
-msgstr "Benachrichtigungsliste"
-
-#: src/modules/reguser/dialog.cpp:120
-#, fuzzy
-msgid "Notify disabled"
 msgstr "Benachrichtigungsliste"
 
 #: src/kvirc/kernel/kvi_options.cpp:760
@@ -5555,16 +4532,6 @@ msgstr ""
 "Benachrichtigungsliste: unerwaretete Inkonsistenz: Die userhost-Liste ist "
 "leer!"
 
-#: src/modules/reguser/edituser.cpp:397
-#, fuzzy
-msgid "Notify nicknames:"
-msgstr "Benachrichtigungsliste"
-
-#: src/modules/reguser/edituser.cpp:394
-#, fuzzy
-msgid "Notify when user is online"
-msgstr "Ein Benutzer in der Benachrichtigungsliste hat den Channel betreten"
-
 #: src/modules/avatar/libkviavatar.cpp:412
 msgid "Notifying avatar '%Q' to %Q"
 msgstr ""
@@ -5573,13 +4540,8 @@ msgstr ""
 msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: lokaler IRC-Operator (LOCOP)"
 
+#: src/kvirc/ui/kvi_cryptcontroller.cpp:129 src/kvirc/ui/kvi_htmldialog.cpp:92
 #: src/kvilib/system/kvi_locale.cpp:1026
-#: src/modules/toolbareditor/toolbareditor.cpp:186
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-#: src/modules/actioneditor/actioneditor.cpp:717
-#: src/modules/actioneditor/actioneditor.cpp:865
-#: src/kvirc/ui/kvi_htmldialog.cpp:92 src/kvirc/ui/kvi_cryptcontroller.cpp:129
 msgid "OK"
 msgstr "OK"
 
@@ -5591,30 +4553,10 @@ msgstr "Acht-Bit-Datenstrom (unbekannt)"
 msgid "Often used directories"
 msgstr "Häufig benutzte Verzeichnisse"
 
-#: src/modules/eventeditor/eventeditor.cpp:492
-#: src/modules/raweditor/raweditor.cpp:469
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1136
-#: src/modules/popupeditor/popupeditor.cpp:1183
-#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_imagedialog.cpp:158
-#: src/kvirc/ui/kvi_ircview.cpp:2130
+#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_ircview.cpp:2130
+#: src/kvirc/ui/kvi_imagedialog.cpp:158
 msgid "Ok"
 msgstr "OK"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1111
-#: src/modules/aliaseditor/aliaseditor.cpp:1124
-#: src/modules/aliaseditor/aliaseditor.cpp:1138
-#: src/modules/aliaseditor/aliaseditor.cpp:1149
-#: src/modules/aliaseditor/aliaseditor.cpp:1179
-#: src/modules/aliaseditor/aliaseditor.cpp:1192
-#: src/modules/aliaseditor/aliaseditor.cpp:1206
-#: src/modules/aliaseditor/aliaseditor.cpp:1217
-#: src/modules/aliaseditor/aliaseditor.cpp:1358
-#: src/modules/aliaseditor/aliaseditor.cpp:1370
-msgid "Ok, Let me try again..."
-msgstr ""
 
 #: src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
@@ -5656,12 +4598,6 @@ msgstr "Online seit"
 msgid "Only 7-bit letters in nicknames allowed"
 msgstr "Es sind nur 7-Bit-Buchstaben in Nicks erlaubt"
 
-#: src/modules/actioneditor/actioneditor.cpp:246
-#: src/modules/actioneditor/actioneditor.cpp:257
-#: src/modules/actioneditor/actioneditor.cpp:268
-msgid "Only If There Are Selected Users"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:251
 msgid "Only registered nicks can join"
 msgstr "Nur registrierte Nicks können den Channel betreten"
@@ -5693,10 +4629,6 @@ msgstr "Es wurde eine geschweifte öffnende Klammer erwartet"
 msgid "Open parenthesis expected"
 msgstr "Es wurde eine runde öffnende Klammer erwartet"
 
-#: src/modules/reguser/dialog.cpp:241
-msgid "Open the edit dialog to create a new user entry."
-msgstr ""
-
 #: src/kvirc/kernel/kvi_app_setup.cpp:315
 #: src/kvirc/kernel/kvi_app_setup.cpp:376
 msgid "Open with KVIrc"
@@ -5726,8 +4658,8 @@ msgstr "Zeitüberschreitung bei dem Vorgang"
 msgid "Operation timed out (while selecting for read)"
 msgstr "Zeitüberschreitung bei dem Vorgang (während des Auswählens zum Lesen)"
 
-#: src/modules/iograph/libkviiograph.cpp:261
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
+#: src/modules/iograph/libkviiograph.cpp:261
 #, fuzzy
 msgid "Ops.. internal error"
 msgstr "Interner Fehler"
@@ -5785,15 +4717,6 @@ msgstr ""
 "Ups... es scheint, als wenn diese Distribution fehlerhaft ist.\n"
 "Das Einrichtungsmodul exportiert die \"setup_finish\"-Funktion nicht.\n"
 "Es wird versucht, trotzdem fortzusetzen..."
-
-#: src/modules/actioneditor/actioneditor.cpp:184
-msgid ""
-"Optional keyboard sequence that will activate this action.<br>The sequence "
-"should be expressed as a string of up to four key codes separated by commas "
-"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta"
-"\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
-"Ctrl+C\" ..."
-msgstr ""
 
 #: src/kvirc/ui/kvi_toolbar.cpp:88
 msgid "Orientation"
@@ -5864,10 +4787,6 @@ msgstr ""
 msgid "Packaging file %Q"
 msgstr "Verpackungsdatei %Q"
 
-#: src/modules/codetester/codetester.cpp:61
-msgid "Params:"
-msgstr ""
-
 #: src/kvilib/system/kvi_locale.cpp:1048
 msgid "Parent Directory"
 msgstr "Übergeordnetes Verzeichnis"
@@ -5905,16 +4824,6 @@ msgstr "&Datei einfügen"
 msgid "Paste (Slowly)"
 msgstr "Einfügen (langsam)"
 
-#: src/modules/popupeditor/popupeditor.cpp:453
-#, fuzzy
-msgid "Paste Above"
-msgstr "&Datei einfügen"
-
-#: src/modules/popupeditor/popupeditor.cpp:458
-#, fuzzy
-msgid "Paste Inside"
-msgstr "&Datei einfügen"
-
 #: src/kvirc/kernel/kvi_sslmaster.cpp:83
 msgid "Peer X509 certificate"
 msgstr "Peer X509-Zertifikat"
@@ -5941,36 +4850,6 @@ msgid ""
 "command."
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:228
-msgid "Please choose the icon for the ToolBar"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1250
-msgid "Please enter the name for the new alias"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1275
-msgid "Please enter the name for the new namespace"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1342
-msgid "Please enter the new name for the alias"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1344
-msgid "Please enter the new name for the namespace"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:610
-msgid ""
-"Please enter the text to be searched for. The matching aliases will be "
-"highlighted."
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1026
-msgid "Please note that all the children items will be deleted too."
-msgstr ""
-
 #: src/modules/avatar/libkviavatar.cpp:73
 msgid ""
 "Please select an avatar image. The full path to a local file or an image on "
@@ -5981,14 +4860,6 @@ msgstr ""
 
 #: src/modules/addon/managementdialog.cpp:283
 msgid "Please select the addon installation file"
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:500
-msgid "Please specify the properties for the new toolbar"
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:474
-msgid "Please specify the properties for the toolbar \"%1\""
 msgstr ""
 
 #: src/modules/mircimport/libkvimircimport.cpp:169
@@ -6014,20 +4885,6 @@ msgid ""
 "if you want to use CBC mode you must prefix\n"
 "your key(s) with \"cbc:\".\n"
 msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:1033
-msgid "Popup"
-msgstr ""
-
-#: src/modules/popupeditor/popupeditor.cpp:1373
-#, fuzzy
-msgid "Popup Editor"
-msgstr "Modus-Editor"
-
-#: src/modules/popupeditor/popupeditor.cpp:195
-#, fuzzy
-msgid "Popup name"
-msgstr "Der Aufklappsmenü-Name fehlt"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2265 src/kvirc/ui/kvi_ircview.cpp:2318
 #, c-format
@@ -6088,29 +4945,9 @@ msgstr ""
 msgid "Profile"
 msgstr ""
 
-#: src/modules/popupeditor/popupeditor.cpp:100
-msgid "Prologue"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:197
-#: src/modules/reguser/edituser.cpp:448
-#, fuzzy
-msgid "Properties"
-msgstr "Eigenschaften..."
-
 #: src/kvilib/system/kvi_locale.cpp:1082
 msgid "Properties..."
 msgstr "Eigenschaften..."
-
-#: src/modules/reguser/edituser.cpp:90
-#, fuzzy
-msgid "Property"
-msgstr "Eigenschaften..."
-
-#: src/modules/reguser/edituser.cpp:78
-#, fuzzy
-msgid "Property Editor"
-msgstr "Modus-Editor"
 
 #: src/kvilib/net/kvi_http.cpp:793
 msgid "Protocol error: invalid chunk size"
@@ -6216,10 +5053,6 @@ msgstr "Proxy-Antwort: Zieldaten OK: Anfrage gewährt"
 msgid "Proxy said something about: \n"
 msgstr "Proxy sagte etwas über: \n"
 
-#: src/modules/actioneditor/actioneditor.cpp:766
-msgid "Put here a short description of your action"
-msgstr ""
-
 #: src/kvirc/ui/kvi_query.cpp:101
 msgid "Query Targets"
 msgstr "Anfragenziele"
@@ -6276,35 +5109,13 @@ msgstr "Verlassen bei Netzwerktrennungs-Nachricht"
 msgid "Quits KVIrc closing all the current connections"
 msgstr "KVIrc beenden und alle zur Zeit geöffneten Verbindungen schließen"
 
-#: src/modules/raweditor/raweditor.cpp:537
-#, fuzzy
-msgid "Raw Editor"
-msgstr "Bann-Editor"
-
-#: src/modules/raweditor/raweditor.cpp:94
-#, fuzzy
-msgid "Raw Event"
-msgstr "RAW-Ereignisse bearbeiten..."
-
 #: src/kvirc/kernel/kvi_options.cpp:709
 msgid "Raw data to server"
 msgstr "RAW-Daten an den Server"
 
-#: src/modules/reguser/dialog.cpp:249 src/modules/reguser/edituser.cpp:375
 #: src/kvirc/ui/kvi_selectors.cpp:385 src/kvirc/ui/kvi_selectors.cpp:731
 #: src/kvirc/ui/kvi_maskeditor.cpp:205
 msgid "Re&move"
-msgstr "&Löschen"
-
-#: src/modules/eventeditor/eventeditor.cpp:206
-#: src/modules/raweditor/raweditor.cpp:174
-#, fuzzy
-msgid "Re&move Handler"
-msgstr "&Löschen"
-
-#: src/modules/popupeditor/popupeditor.cpp:1102
-#, fuzzy
-msgid "Re&move Popup"
 msgstr "&Löschen"
 
 #: src/modules/file/libkvifile.cpp:740
@@ -6429,38 +5240,14 @@ msgstr "Registriert"
 msgid "Registered Channels"
 msgstr "Registriert als"
 
-#: src/modules/reguser/edituser.cpp:336
-#, fuzzy
-msgid "Registered User Entry"
-msgstr "Registriert als"
-
-#: src/modules/reguser/dialog.cpp:216
-#, fuzzy
-msgid "Registered Users - KVIrc"
-msgstr "Registriert als"
-
 #: src/kvirc/ui/kvi_console.cpp:332
 msgid "Registered as"
-msgstr "Registriert als"
-
-#: src/modules/regchan/libkviregchan.cpp:197
-#, fuzzy
-msgid "Registered channel list:"
 msgstr "Registriert als"
 
 #: src/kvirc/kernel/kvi_lagmeter.cpp:186
 #, c-format
 msgid "Registered lag check with reliability %u (%s)"
 msgstr "Bemerke Lagprüfung mit Zuverlässigkeit %u (%s)"
-
-#: src/modules/reguser/libkvireguser.cpp:801
-msgid "Registered users database dump:"
-msgstr ""
-
-#: src/modules/reguser/wizard.cpp:258
-#, fuzzy
-msgid "Registration Complete"
-msgstr "Einloggoperationen abgeschlossen"
 
 #: src/kvilib/system/kvi_locale.cpp:1051
 msgid "Reload"
@@ -6483,41 +5270,6 @@ msgstr ""
 #: src/kvirc/ui/kvi_statusbar.cpp:343
 msgid "Remove %Q"
 msgstr "%Q löschen"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:536
-msgid "Remove Selected"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#, fuzzy
-msgid "Remove item"
-msgstr "%Q löschen"
-
-#: src/modules/reguser/dialog.cpp:252
-msgid "Remove the currently selected entries."
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:262
-#, fuzzy
-msgid "Rename"
-msgstr "Benutzername"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1342
-msgid "Rename Alias"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1344
-msgid "Rename Namespace"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#, fuzzy
-msgid "Replace file"
-msgstr "Update fehlgeschlagen"
-
-#: src/modules/editor/scripteditor.cpp:999
-msgid "Replace with"
-msgstr ""
 
 #: src/kvirc/ui/kvi_menubar.cpp:147
 msgid "Report a Bug / Propose Improvements"
@@ -6626,7 +5378,6 @@ msgstr "&Skripte"
 msgid "Script"
 msgstr "Skript"
 
-#: src/modules/codetester/codetester.cpp:109
 #: src/kvirc/kernel/kvi_coreactions.cpp:303
 msgid "Script Tester"
 msgstr "Skripttester"
@@ -6652,7 +5403,7 @@ msgstr "Aktionen bezüglich der Skripte"
 msgid "Scroll up to read from the last read line"
 msgstr "Hochscrollen, um nach der zuletzt gelesenen Zeile weiter zu lesen"
 
-#: src/modules/help/helpwindow.cpp:100 src/kvirc/kernel/kvi_options.cpp:810
+#: src/kvirc/kernel/kvi_options.cpp:810 src/modules/help/helpwindow.cpp:100
 msgid "Search"
 msgstr "Suchen"
 
@@ -6780,9 +5531,8 @@ msgstr "Benutzername und Passwort wurden gesendet, warte auf Bestätigung..."
 msgid "Separate Directories"
 msgstr "Verzeichnisse gesondert anzeigen"
 
-#: src/modules/popupeditor/popupeditor.cpp:89
-#: src/kvirc/kernel/kvi_coreactions.cpp:508
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:649
+#: src/kvirc/kernel/kvi_coreactions.cpp:508
 msgid "Separator"
 msgstr "Trenner"
 
@@ -6878,7 +5628,7 @@ msgstr "&Nichts setzen"
 msgid "Set at"
 msgstr "Gesetzt um"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:194 src/kvirc/ui/kvi_topicw.cpp:531
+#: src/kvirc/ui/kvi_topicw.cpp:531 src/kvirc/ui/kvi_maskeditor.cpp:194
 msgid "Set by"
 msgstr "Gesetzt von"
 
@@ -7105,11 +5855,6 @@ msgstr ""
 msgid "Small (22x22)"
 msgstr "Klein (22x22)"
 
-#: src/modules/actioneditor/actioneditor.cpp:148
-#, fuzzy
-msgid "Small Icon:"
-msgstr "Kleine Symbole"
-
 #: src/kvilib/system/kvi_locale.cpp:1081
 msgid "Small Icons"
 msgstr "Kleine Symbole"
@@ -7223,9 +5968,9 @@ msgstr "Getrennte Anzeige"
 msgid "Split message"
 msgstr "Netzwerktrennungs-Nachricht"
 
+#: src/modules/mircimport/libkvimircimport.cpp:100
 #: src/kvilib/irc/kvi_ircserverdb.cpp:290
 #: src/kvilib/irc/kvi_ircserverdb.cpp:293
-#: src/modules/mircimport/libkvimircimport.cpp:100
 msgid "Standalone Servers"
 msgstr "Alleinstehende Server"
 
@@ -7249,30 +5994,13 @@ msgstr ""
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:868 src/kvirc/ui/kvi_channel.cpp:1880
+#: src/kvirc/ui/kvi_channel.cpp:1880 src/kvirc/ui/kvi_query.cpp:868
 msgid "Starting last log"
 msgstr "Letztes Log starten"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:946
 msgid "Starting notify list"
 msgstr "Benachrichtigungsliste starten"
-
-#: src/modules/reguser/wizard.cpp:97
-msgid "Step 1: Entry Name"
-msgstr ""
-
-#: src/modules/reguser/wizard.cpp:171
-msgid "Step 2: Mask Selection"
-msgstr ""
-
-#: src/modules/reguser/wizard.cpp:197
-msgid "Step 3: Avatar Selection"
-msgstr ""
-
-#: src/modules/reguser/wizard.cpp:242
-#, fuzzy
-msgid "Step 4: Notify List"
-msgstr "Benachrichtigungsliste"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:733
 msgid "Stop Paste"
@@ -7286,24 +6014,10 @@ msgstr ""
 msgid "Stopping the list download..."
 msgstr ""
 
-#: src/modules/reguser/wizard.cpp:192
-msgid "Store an avatar for this user"
-msgstr ""
-
 #: src/modules/setup/setupwizard.cpp:235
 #, fuzzy
 msgid "Store configuration in folder"
 msgstr "KVIrc-Konfigurationsdatei"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1137
-msgid ""
-"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1205
-msgid ""
-"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr ""
 
 #: src/kvilib/net/kvi_http.cpp:705 src/kvilib/net/kvi_http.cpp:847
 msgid "Stream exceeded expected length"
@@ -7331,11 +6045,7 @@ msgstr "Zeichenkettenoptionen (Zeichenkettenwert)"
 msgid "Strip colors"
 msgstr "Farben entfernen"
 
-#: src/modules/popupeditor/popupeditor.cpp:82
-msgid "Submenu"
-msgstr ""
-
-#: src/kvirc/kernel/kvi_coreactions.cpp:336 src/kvirc/ui/kvi_menubar.cpp:145
+#: src/kvirc/ui/kvi_menubar.cpp:145 src/kvirc/kernel/kvi_coreactions.cpp:336
 msgid "Subscribe to the Mailing List"
 msgstr "Mailing-Liste abbonnieren"
 
@@ -7373,10 +6083,6 @@ msgstr "&Terminal öffnen..."
 msgid "Terminal emulator"
 msgstr ""
 
-#: src/modules/popupeditor/popupeditor.cpp:199
-msgid "Test"
-msgstr ""
-
 #: src/modules/options/optw_texticons.cpp:80
 #, fuzzy
 msgid "Text"
@@ -7390,11 +6096,6 @@ msgstr "Text&kodierung"
 msgid "Text Encoding Server message"
 msgstr "Textkodierungs-Servermeldung"
 
-#: src/modules/popupeditor/popupeditor.cpp:228
-#, fuzzy
-msgid "Text:"
-msgstr "&Nächster"
-
 #: src/modules/system/libkvisystem.cpp:525
 #, c-format
 msgid "The DBus call returned an error \"%s\": %s"
@@ -7403,10 +6104,6 @@ msgstr ""
 #: src/kvilib/core/kvi_error.cpp:117
 msgid "The SOCKSv4 protocol lacks IPv6 support"
 msgstr "Das SOCKSv4-Protokoll hat keine IPv6-Unterstützung"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-msgid "The ToolBar Label can't be empty!"
-msgstr ""
 
 #: src/modules/action/libkviaction.cpp:115
 #: src/modules/action/libkviaction.cpp:161
@@ -7456,12 +6153,6 @@ msgstr ""
 #: src/modules/objects/class_multilineedit.cpp:805
 #: src/modules/objects/class_multilineedit.cpp:1005
 msgid "The array passed as parameter must contain at least 3 elements"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:172
-msgid ""
-"The big icon associated to this action.<br>It will appear at least in the "
-"toolbar buttons when this action is inserted.<br>It should be 32x32 pixels."
 msgstr ""
 
 #: src/modules/help/helpwindow.cpp:191
@@ -7545,29 +6236,10 @@ msgstr ""
 msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-msgid "The exported file would be empty: cowardly refusing to write it"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:743
-#, fuzzy
-msgid "The file \"%Q\" exists. Do you want to replace it ?"
-msgstr "Die Datei %s existiert bereits.<br>Soll sie überschrieben werden?"
-
 #: src/kvirc/ui/kvi_filedialog.cpp:120 src/kvirc/ui/kvi_filedialog.cpp:165
 #, c-format
 msgid "The file %s already exists.<br>Do you wish to overwrite it?"
 msgstr "Die Datei %s existiert bereits.<br>Soll sie überschrieben werden?"
-
-#: src/modules/reguser/dialog.cpp:814
-#, c-format
-msgid "The file %s contains an invalid registered users database version."
-msgstr ""
-
-#: src/modules/reguser/dialog.cpp:807
-#, c-format
-msgid "The file %s doesn't appear to be a valid registered users database."
-msgstr ""
 
 #: src/kvilib/file/kvi_packagefile.cpp:610
 msgid "The file specified is not a valid KVIrc package"
@@ -7749,12 +6421,6 @@ msgstr ""
 "Die Serverspezifikation scheint im \"net:<string>\"-Fomat zu sein, jedoch "
 "konnte das Netzwerk nicht in der Datenbank gefunden werden."
 
-#: src/modules/actioneditor/actioneditor.cpp:156
-msgid ""
-"The small icon associated to this action.<br>It will appear at least in the "
-"popup menus when this action is inserted.<br>It should be 16x16 pixels."
-msgstr ""
-
 #: src/modules/window/libkviwindow.cpp:1135
 msgid "The specified IRC context is not valid: creating a context free window"
 msgstr ""
@@ -7763,13 +6429,6 @@ msgstr ""
 #, fuzzy
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr "Die angegebene Bindungsadresse (%Q) ist ungültig"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:266
-msgid ""
-"The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
-"it automatically (so it doesn't collide with any other toolbar) or you "
-"prefer to do it manually ?"
-msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:498
 msgid "The specified bind address (%Q) is not valid"
@@ -7923,10 +6582,6 @@ msgstr ""
 "Es gibt keinen $this-Zeiger in diesem Gültigkeitsbereich (unerwartetes @ "
 "gefunden)"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-msgid "There is no selection!"
-msgstr ""
-
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
 msgstr "Diese Version von KVIrc hat keine IPv6-Unterstützung einkompiliert"
@@ -7986,11 +6641,6 @@ msgstr ""
 "Dieses Modul wurde für eine andere Version von KVIrc kompiliert und kann "
 "daher nicht geladen werden."
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1357
-#: src/modules/aliaseditor/aliaseditor.cpp:1369
-msgid "This name is already in use. Please choose another one."
-msgstr ""
-
 #: src/kvirc/ui/kvi_optionswidget.cpp:49
 msgid "This option is also available as"
 msgstr "Diese Option is auch verfügbar als"
@@ -8022,14 +6672,6 @@ msgstr "Der Server unterstützt: %s"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:170
 msgid "This silence is freaking me out!"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:247
-#: src/modules/actioneditor/actioneditor.cpp:258
-#: src/modules/actioneditor/actioneditor.cpp:269
-msgid ""
-"This will enable the action only if there are selected users in the active "
-"window"
 msgstr ""
 
 #: src/modules/my/libkvimy.cpp:47
@@ -8072,16 +6714,7 @@ msgstr "Tipp für %Q: %Q"
 msgid "Tip: %Q"
 msgstr "Tipp: %Q"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:407
-msgid "ToolBar Export"
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:133
-#, fuzzy
-msgid "ToolBar Properties"
-msgstr "Eigenschaften..."
-
-#: src/kvirc/ui/kvi_menubar.cpp:183 src/kvirc/ui/kvi_toolbar.cpp:86
+#: src/kvirc/ui/kvi_toolbar.cpp:86 src/kvirc/ui/kvi_menubar.cpp:183
 msgid "Toolbars"
 msgstr "Werkzeugleisten"
 
@@ -8126,11 +6759,6 @@ msgstr "Das Thema wurde von %Q gesetzt"
 msgid "Topic was set by %Q on %Q"
 msgstr "Das Thema wurde von %Q am %Q gesetzt"
 
-#: src/modules/regchan/libkviregchan.cpp:219
-#, fuzzy, c-format
-msgid "Total %d channels"
-msgstr "Toter Channel"
-
 #: src/modules/links/linkswindow.cpp:302
 msgid "Total hosts in the network"
 msgstr ""
@@ -8149,11 +6777,6 @@ msgstr ""
 msgid "Total: %d addons installed"
 msgstr ""
 
-#: src/modules/reguser/libkvireguser.cpp:840
-#, c-format
-msgid "Total: %d matching users (of %d in the database)"
-msgstr ""
-
 #: src/kvirc/ui/kvi_selectors.cpp:604
 msgid "Transparent"
 msgstr "Transparent"
@@ -8161,10 +6784,6 @@ msgstr "Transparent"
 #: src/kvirc/kernel/kvi_irccontext.cpp:651
 msgid "Try reconnecting with caching disabled"
 msgstr "Versuchen Sie mit ausgeschalteter Zwischenspeicherung neu zu verbinden"
-
-#: src/modules/popupeditor/popupeditor.cpp:209
-msgid "Type"
-msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:148
 msgid "UNUSED"
@@ -8280,45 +6899,6 @@ msgstr "Die DNS-Anfrage kann nicht gestartet werden"
 msgid "Unable to start the request slave thread"
 msgstr "Der angeforderte Arbeits-Thread kann nicht gestartet werden"
 
-#: src/modules/actioneditor/actioneditor.cpp:717
-#, fuzzy
-msgid "Unable to write to the actions file."
-msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1183
-msgid "Unable to write to the alias file."
-msgstr ""
-
-#: src/modules/eventeditor/eventeditor.cpp:454
-#, fuzzy
-msgid "Unable to write to the event file."
-msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#: src/modules/eventeditor/eventeditor.cpp:492
-#, fuzzy
-msgid "Unable to write to the events file."
-msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#: src/modules/popupeditor/popupeditor.cpp:1136
-#, fuzzy
-msgid "Unable to write to the popup file."
-msgstr "Die DNS-Anfrage kann nicht gestartet werden"
-
-#: src/modules/raweditor/raweditor.cpp:429
-#, fuzzy
-msgid "Unable to write to the raw event file."
-msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#: src/modules/raweditor/raweditor.cpp:469
-#, fuzzy
-msgid "Unable to write to the raw events file."
-msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-msgid "Unable to write to the toolbar file."
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:802
 msgid "Unban matching my mask"
 msgstr "Der Unbann passt auf meine Maske"
@@ -8383,9 +6963,9 @@ msgstr "Hervorhebung aller Fenster aufheben"
 msgid "Uninstalling existing addon version %Q"
 msgstr ""
 
-#: src/kvilib/net/kvi_ssl.cpp:583 src/kvilib/net/kvi_ssl.cpp:613
-#: src/kvilib/net/kvi_ssl.cpp:636 src/modules/upnp/rootservice.cpp:172
-#: src/kvirc/kernel/kvi_theme.cpp:86 src/kvirc/ui/kvi_topicw.cpp:149
+#: src/kvirc/ui/kvi_topicw.cpp:149 src/kvirc/kernel/kvi_theme.cpp:86
+#: src/modules/upnp/rootservice.cpp:172 src/kvilib/net/kvi_ssl.cpp:583
+#: src/kvilib/net/kvi_ssl.cpp:613 src/kvilib/net/kvi_ssl.cpp:636
 msgid "Unknown"
 msgstr "Unbekannt"
 
@@ -8410,8 +6990,8 @@ msgstr "Unbekanntes Kommando"
 msgid "Unknown engine error"
 msgstr "Unbekannter Fehler"
 
-#: src/kvilib/core/kvi_error.cpp:51
 #: src/modules/rijndael/libkvirijndael.cpp:173
+#: src/kvilib/core/kvi_error.cpp:51
 msgid "Unknown error"
 msgstr "Unbekannter Fehler"
 
@@ -8548,10 +7128,6 @@ msgstr "Die Abwesenheitsinformationen für den Channel %Q werden aktualisiert"
 msgid "Use Default Encoding"
 msgstr "Standardkodierung benutzen"
 
-#: src/modules/reguser/edituser.cpp:433
-msgid "Use custom color in userlist"
-msgstr ""
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:182
 msgid "Use doubleclick to edit item"
 msgstr "Klicken Sie doppelt, um das Element zu bearbeiten"
@@ -8568,14 +7144,6 @@ msgstr ""
 msgid "Use the crypt engine"
 msgstr "Verschlüsselungsroutine benutzen"
 
-#: src/modules/reguser/libkvireguser.cpp:344
-#: src/modules/reguser/libkvireguser.cpp:458
-#: src/modules/reguser/libkvireguser.cpp:523
-#: src/modules/reguser/libkvireguser.cpp:703
-#, fuzzy
-msgid "User %Q not found"
-msgstr "Der Host wurde nicht gefunden."
-
 #: src/kvirc/ui/kvi_channel.cpp:154 src/kvirc/ui/kvi_channel.cpp:194
 msgid "User List"
 msgstr "Benutzerliste"
@@ -8588,17 +7156,9 @@ msgstr "Benutzermodus"
 msgid "User Modes"
 msgstr "Benutzermodi"
 
-#: src/modules/reguser/wizard.cpp:77
-msgid "User Registration Wizard - KVIrc"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:729
 msgid "User action"
 msgstr "Benutzeraktion"
-
-#: src/modules/reguser/libkvireguser.cpp:208
-msgid "User already registered: found exact name match"
-msgstr ""
 
 #: src/kvirc/ui/kvi_input.cpp:142
 msgid "User friendly commandline mode<br>See also /help commandline"
@@ -8608,11 +7168,6 @@ msgstr ""
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:594
 msgid "User mode for \r!n\r%Q\r is %s"
 msgstr "Der Benutzermodus für \r!n\r%Q\r ist %s"
-
-#: src/modules/reguser/libkvireguser.cpp:274
-#, fuzzy
-msgid "User not found (%Q)"
-msgstr "Der Host wurde nicht gefunden."
 
 #: src/kvirc/kernel/kvi_options.cpp:822
 msgid "User-deop mode change"
@@ -8703,11 +7258,6 @@ msgid "Valid name but the host has no IP address"
 msgstr ""
 "Der Hostname ist zwar gültig, doch der Host hat keine zugewiesene IP-Adresse"
 
-#: src/modules/reguser/edituser.cpp:91
-#, fuzzy
-msgid "Value"
-msgstr "männlich"
-
 #: src/kvilib/core/kvi_error.cpp:160
 msgid "Variable expected"
 msgstr "Es wurde eine Variable erwartet"
@@ -8730,18 +7280,6 @@ msgstr "Sehr niedrige Aktivität"
 
 #: src/modules/url/libkviurl.cpp:822
 msgid "View URL list"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:113
-msgid ""
-"Visible name for this action.<br>This string will be displayed to the user "
-"so it is a good idea to use $tr() here"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:146
-msgid ""
-"Visible short description for this action.<br>This string will be displayed "
-"to the user so it is a good idea to use $tr() here"
 msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:231
@@ -8770,9 +7308,9 @@ msgstr "Rundsendenachrichten (+w)"
 msgid "Wallops message"
 msgstr "Rundsendenachricht"
 
-#: src/modules/mircimport/libkvimircimport.cpp:116
 #: src/modules/url/libkviurl.cpp:233 src/modules/url/libkviurl.cpp:312
 #: src/modules/url/libkviurl.cpp:497
+#: src/modules/mircimport/libkvimircimport.cpp:116
 #, fuzzy
 msgid "Warning - KVIrc"
 msgstr "Bestätigung - KVIrc"
@@ -8868,23 +7406,6 @@ msgstr ""
 msgid "Window with id '%Q' not found, returning empty string"
 msgstr ""
 
-#: src/modules/editor/scripteditor.cpp:989
-msgid "Word to Find"
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-#: src/modules/actioneditor/actioneditor.cpp:717
-#: src/modules/eventeditor/eventeditor.cpp:454
-#: src/modules/eventeditor/eventeditor.cpp:492
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:469
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1136
-#: src/modules/popupeditor/popupeditor.cpp:1183
-#, fuzzy
-msgid "Write Failed - KVIrc"
-msgstr "Datei auswählen - KVIrc"
-
 #: src/kvilib/file/kvi_packagefile.cpp:522
 msgid "Writing informational fields"
 msgstr "Informative Felder werden geschrieben"
@@ -8897,20 +7418,10 @@ msgstr "Der Paketinhalt wird geschrieben"
 msgid "Writing package header"
 msgstr "Die Paket-Kopfinformationen werden geschrieben"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:386
-#: src/modules/toolbareditor/toolbareditor.cpp:409
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:786
 #: src/kvirc/ui/kvi_input.cpp:259 src/kvirc/ui/kvi_statusbar.cpp:570
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:786
 msgid "Yes"
 msgstr "Ja"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#, fuzzy
-msgid "Yes to All"
-msgstr "&Alles setzen"
 
 #: src/kvirc/ui/kvi_input.cpp:258
 msgid "Yes, always"
@@ -8991,14 +7502,6 @@ msgstr "Sie haben den Channel \r!c\r%Q\r verlassen: %Q"
 #, c-format
 msgid "You have set user mode %s"
 msgstr "Sie haben den Benutzermodus %s gesetzt"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1110
-msgid "You must specify a valid name for the alias"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1178
-msgid "You must specify a valid name for the namespace"
-msgstr ""
 
 #: src/kvirc/ui/kvi_input.cpp:252
 msgid ""
@@ -9347,12 +7850,6 @@ msgstr "Verbindung"
 msgid "d: Obscure 'DEBUG' flag"
 msgstr "d: obskures 'DEBUG'-Flag"
 
-#: src/modules/eventeditor/eventeditor.cpp:266
-#: src/modules/raweditor/raweditor.cpp:264
-#, fuzzy
-msgid "default"
-msgstr "Voreinstellungen"
-
 #: src/kvirc/ui/kvi_imagedialog.cpp:271
 msgid "directory"
 msgstr "Verzeichnis"
@@ -9438,10 +7935,6 @@ msgstr "Der listen()-Aufruf ist fehlgeschlagen"
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:282
 msgid "n: Recipient for nick changes"
 msgstr "n: Empfänger für Nickname-Änderungen"
-
-#: src/modules/eventeditor/eventeditor.cpp:390
-msgid "none"
-msgstr ""
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1584
 msgid "notification"
@@ -9536,12 +8029,6 @@ msgstr "(unbekannt)"
 msgid "unmatched watch list entry"
 msgstr "nicht passender Beobachtungslisteneintrag"
 
-#: src/modules/eventeditor/eventeditor.cpp:228
-#: src/modules/raweditor/raweditor.cpp:202
-#: src/modules/popupeditor/popupeditor.cpp:1280
-msgid "unnamed"
-msgstr ""
-
 #: src/kvirc/ui/kvi_channel.cpp:928
 msgid "user total"
 msgstr "Benutzer gesamt"
@@ -9597,3 +8084,439 @@ msgstr "y: überwachen :)"
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:276
 msgid "z: Recipient for oper wallop messages"
 msgstr "z: Empfänger für oper wallop-Nachrichten"
+
+#, fuzzy
+#~ msgid "    No properties"
+#~ msgstr "Eigenschaften..."
+
+#, fuzzy
+#~ msgid "&Add Group..."
+#~ msgstr "&Laden von ..."
+
+#, fuzzy
+#~ msgid "&Add Raw Event..."
+#~ msgstr "RAW-Ereignisse bearbeiten..."
+
+#, fuzzy
+#~ msgid "&Add..."
+#~ msgstr "Erweitert ..."
+
+#, fuzzy
+#~ msgid "&Edit"
+#~ msgstr "&Beenden"
+
+#, fuzzy
+#~ msgid "&Edit..."
+#~ msgstr "Ereignisse bearbeiten..."
+
+#, fuzzy
+#~ msgid "&Enable Handler"
+#~ msgstr "Entschlüsselung aktivieren"
+
+#, fuzzy
+#~ msgid "&Export Popup To..."
+#~ msgstr "Aufklappmenüs bearbeiten..."
+
+#, fuzzy
+#~ msgid "&Paste Below"
+#~ msgstr "Einfügen (langsam)"
+
+#, fuzzy
+#~ msgid "Action"
+#~ msgstr "IRC-Aktionen"
+
+#, fuzzy
+#~ msgid "Action Editor"
+#~ msgstr "Bannausnahmen-Editor"
+
+#, fuzzy
+#~ msgid "Add Alias"
+#~ msgstr "Applet hinzufügen"
+
+#, fuzzy
+#~ msgid "Add this user to the notify list"
+#~ msgstr "Keine Benutzer in der Benachrichtigungsliste"
+
+#, fuzzy
+#~ msgid "Alias"
+#~ msgstr "&Immer"
+
+#, fuzzy
+#~ msgid "Alias Editor"
+#~ msgstr "Bann-Editor"
+
+#, fuzzy
+#~ msgid "Alias already exists"
+#~ msgstr "Die Adresse ist bereits in Benutzung"
+
+#, fuzzy
+#~ msgid "All Properties..."
+#~ msgstr "Eigenschaften..."
+
+#, fuzzy
+#~ msgid "Apply"
+#~ msgstr "An&wenden"
+
+#, fuzzy
+#~ msgid "Avatar"
+#~ msgstr "Avataränderung"
+
+#, fuzzy
+#~ msgid "Big Icon:"
+#~ msgstr "Große Symbole"
+
+#, fuzzy
+#~ msgid "Can't open file %Q for writing."
+#~ msgstr "Die Datei \"%Q\" kann nicht schreibend geöffnet werden"
+
+#, fuzzy
+#~ msgid "Can't open file %s for reading."
+#~ msgstr "Die Datei kann nicht zum Lesen geöffnet werden"
+
+#, fuzzy
+#~ msgid "Channel: %c%s@%s"
+#~ msgstr "Channel-Passwort"
+
+#, fuzzy
+#~ msgid "Choose a Filename - KVIrc"
+#~ msgstr "Datei auswählen - KVIrc"
+
+#, fuzzy
+#~ msgid "Code"
+#~ msgstr "Schließen"
+
+#, fuzzy
+#~ msgid "Collapse All Namespaces"
+#~ msgstr "Alle Anfragen schliessen"
+
+#, fuzzy
+#~ msgid "Colors"
+#~ msgstr "Schließen"
+
+#, fuzzy
+#~ msgid "Condition:"
+#~ msgstr "Verbindung"
+
+#, fuzzy
+#~ msgid "Customize Toolbars"
+#~ msgstr "Werkzeugleisten anpassen...."
+
+#, fuzzy
+#~ msgid "Delete Actions"
+#~ msgstr "Auswahl"
+
+#, fuzzy
+#~ msgid "Delete ToolBar"
+#~ msgstr "Farbe(n) auswählen"
+
+#, fuzzy
+#~ msgid "Description:"
+#~ msgstr "Skripte"
+
+#, fuzzy
+#~ msgid "Edit ToolBar"
+#~ msgstr "Lesezeichen be&arbeiten"
+
+#, fuzzy
+#~ msgid "Enable at Login"
+#~ msgstr "Entschlüsselung aktivieren"
+
+#, fuzzy
+#~ msgid "Enable in Query Windows"
+#~ msgstr "Entschlüsselung aktivieren"
+
+#, fuzzy
+#~ msgid "Event Editor"
+#~ msgstr "Bann-Editor"
+
+#, fuzzy
+#~ msgid "Export Actions..."
+#~ msgstr "Aktionen bearbeiten..."
+
+#, fuzzy
+#~ msgid "Find In Aliases"
+#~ msgstr "Aliasse bearbeiten..."
+
+#, fuzzy
+#~ msgid "Find In Aliases..."
+#~ msgstr "Aliasse bearbeiten..."
+
+#, fuzzy
+#~ msgid "Flags"
+#~ msgstr "Flach"
+
+#, fuzzy
+#~ msgid "Hide Advanced"
+#~ msgstr "Erweitert ..."
+
+#, fuzzy
+#~ msgid "Icon"
+#~ msgstr "Symbolgröße"
+
+#, fuzzy
+#~ msgid "Ignore"
+#~ msgstr "ignoriert"
+
+#, fuzzy
+#~ msgid "Ignore channel-messages"
+#~ msgstr "Ignorierte Benutzernachricht"
+
+#, fuzzy
+#~ msgid "Ignore ctcp-messages"
+#~ msgstr "Ignorierte Benutzernachricht"
+
+#, fuzzy
+#~ msgid "Ignore features"
+#~ msgstr "Ignorierte Benutzernachricht"
+
+#, fuzzy
+#~ msgid "Ignore notice-messages"
+#~ msgstr "Ignorierte Benutzernachricht"
+
+#, fuzzy
+#~ msgid "Ignore query-messages"
+#~ msgstr "Ignorierte Benutzernachricht"
+
+#, fuzzy
+#~ msgid "Import From..."
+#~ msgstr "&Laden von ..."
+
+#, fuzzy
+#~ msgid "Invalid ToolBar Label"
+#~ msgstr "Der Port ist ungültig"
+
+#, fuzzy
+#~ msgid "Mask %Q not found"
+#~ msgstr "Der Host wurde nicht gefunden."
+
+#, fuzzy
+#~ msgid "Mask Editor"
+#~ msgstr "Bann-Editor"
+
+#, fuzzy
+#~ msgid "Masks:"
+#~ msgstr "Maske"
+
+#, fuzzy
+#~ msgid "Missing Alias Name"
+#~ msgstr "Sie haben keinen Variablennamen angegeben"
+
+#, fuzzy
+#~ msgid "Missing Namespace Name"
+#~ msgstr "Sie haben keinen Variablennamen angegeben"
+
+#, fuzzy
+#~ msgid "My Action"
+#~ msgstr "IRC-Aktionen"
+
+#, fuzzy
+#~ msgid "My ToolBar"
+#~ msgstr "Werkzeugleisten"
+
+#, fuzzy
+#~ msgid "Name:"
+#~ msgstr "Nach Name"
+
+#, fuzzy
+#~ msgid "Needs IRC Connection"
+#~ msgstr "Neuer IRC-Kontext"
+
+#, fuzzy
+#~ msgid "Needs IRC Context"
+#~ msgstr "Neuer IRC-Kontext"
+
+#, fuzzy
+#~ msgid "New Action"
+#~ msgstr "IRC-Aktionen"
+
+#, fuzzy
+#~ msgid "New Raw Event"
+#~ msgstr "RAW-Ereignisse bearbeiten..."
+
+#, fuzzy
+#~ msgid "New Separator Above"
+#~ msgstr "Trenner"
+
+#, fuzzy
+#~ msgid "New Separator Below"
+#~ msgstr "Trenner"
+
+#, fuzzy
+#~ msgid "New Separator Inside"
+#~ msgstr "Trenner"
+
+#, fuzzy
+#~ msgid "New ToolBar"
+#~ msgstr "Werkzeugleisten"
+
+#, fuzzy
+#~ msgid "Nickname 2:"
+#~ msgstr "Nickname"
+
+#, fuzzy
+#~ msgid "No comment set"
+#~ msgstr "Kein IRC-Kontext"
+
+#, fuzzy
+#~ msgid "No item selected"
+#~ msgstr "Nicht verbunden"
+
+#, fuzzy
+#~ msgid "Notify as: "
+#~ msgstr "Benachrichtigungsliste"
+
+#, fuzzy
+#~ msgid "Notify disabled"
+#~ msgstr "Benachrichtigungsliste"
+
+#, fuzzy
+#~ msgid "Notify nicknames:"
+#~ msgstr "Benachrichtigungsliste"
+
+#, fuzzy
+#~ msgid "Notify when user is online"
+#~ msgstr "Ein Benutzer in der Benachrichtigungsliste hat den Channel betreten"
+
+#, fuzzy
+#~ msgid "Paste Above"
+#~ msgstr "&Datei einfügen"
+
+#, fuzzy
+#~ msgid "Paste Inside"
+#~ msgstr "&Datei einfügen"
+
+#, fuzzy
+#~ msgid "Popup Editor"
+#~ msgstr "Modus-Editor"
+
+#, fuzzy
+#~ msgid "Popup name"
+#~ msgstr "Der Aufklappsmenü-Name fehlt"
+
+#, fuzzy
+#~ msgid "Properties"
+#~ msgstr "Eigenschaften..."
+
+#, fuzzy
+#~ msgid "Property"
+#~ msgstr "Eigenschaften..."
+
+#, fuzzy
+#~ msgid "Property Editor"
+#~ msgstr "Modus-Editor"
+
+#, fuzzy
+#~ msgid "Raw Editor"
+#~ msgstr "Bann-Editor"
+
+#, fuzzy
+#~ msgid "Raw Event"
+#~ msgstr "RAW-Ereignisse bearbeiten..."
+
+#, fuzzy
+#~ msgid "Re&move Handler"
+#~ msgstr "&Löschen"
+
+#, fuzzy
+#~ msgid "Re&move Popup"
+#~ msgstr "&Löschen"
+
+#, fuzzy
+#~ msgid "Registered User Entry"
+#~ msgstr "Registriert als"
+
+#, fuzzy
+#~ msgid "Registered Users - KVIrc"
+#~ msgstr "Registriert als"
+
+#, fuzzy
+#~ msgid "Registered channel list:"
+#~ msgstr "Registriert als"
+
+#, fuzzy
+#~ msgid "Registration Complete"
+#~ msgstr "Einloggoperationen abgeschlossen"
+
+#, fuzzy
+#~ msgid "Remove item"
+#~ msgstr "%Q löschen"
+
+#, fuzzy
+#~ msgid "Rename"
+#~ msgstr "Benutzername"
+
+#, fuzzy
+#~ msgid "Replace file"
+#~ msgstr "Update fehlgeschlagen"
+
+#, fuzzy
+#~ msgid "Small Icon:"
+#~ msgstr "Kleine Symbole"
+
+#, fuzzy
+#~ msgid "Step 4: Notify List"
+#~ msgstr "Benachrichtigungsliste"
+
+#, fuzzy
+#~ msgid "Text:"
+#~ msgstr "&Nächster"
+
+#, fuzzy
+#~ msgid "The file \"%Q\" exists. Do you want to replace it ?"
+#~ msgstr "Die Datei %s existiert bereits.<br>Soll sie überschrieben werden?"
+
+#, fuzzy
+#~ msgid "ToolBar Properties"
+#~ msgstr "Eigenschaften..."
+
+#, fuzzy
+#~ msgid "Total %d channels"
+#~ msgstr "Toter Channel"
+
+#, fuzzy
+#~ msgid "Unable to write to the actions file."
+#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
+
+#, fuzzy
+#~ msgid "Unable to write to the event file."
+#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
+
+#, fuzzy
+#~ msgid "Unable to write to the events file."
+#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
+
+#, fuzzy
+#~ msgid "Unable to write to the popup file."
+#~ msgstr "Die DNS-Anfrage kann nicht gestartet werden"
+
+#, fuzzy
+#~ msgid "Unable to write to the raw event file."
+#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
+
+#, fuzzy
+#~ msgid "Unable to write to the raw events file."
+#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
+
+#, fuzzy
+#~ msgid "User %Q not found"
+#~ msgstr "Der Host wurde nicht gefunden."
+
+#, fuzzy
+#~ msgid "User not found (%Q)"
+#~ msgstr "Der Host wurde nicht gefunden."
+
+#, fuzzy
+#~ msgid "Value"
+#~ msgstr "männlich"
+
+#, fuzzy
+#~ msgid "Write Failed - KVIrc"
+#~ msgstr "Datei auswählen - KVIrc"
+
+#, fuzzy
+#~ msgid "Yes to All"
+#~ msgstr "&Alles setzen"
+
+#, fuzzy
+#~ msgid "default"
+#~ msgstr "Voreinstellungen"

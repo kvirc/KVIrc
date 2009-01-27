@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: perl_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 20:25+0100\n"
 "PO-Revision-Date: 2005-02-16 19:46+0200\n"
 "Last-Translator: Valeriy Girchenko <valeragir@mail.ru>\n"
 "Language-Team: russian\n"
@@ -21,8 +21,11 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/modules/perl/libkviperl.cpp:477
-#: src/modules/perl/libkviperl.cpp:481
+#: src/modules/perlcore/libkviperlcore.cpp:236
+msgid "Internal error: perl interpreter not initialized"
+msgstr ""
+
+#: src/modules/perl/libkviperl.cpp:477 src/modules/perl/libkviperl.cpp:481
 msgid "Perl execution error:"
 msgstr "Ошибка выполнения perl:"
 
@@ -30,8 +33,7 @@ msgstr "Ошибка выполнения perl:"
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr "Не возможно загрузить модуль perlcore: поддержка perl не доступна"
 
-#: src/modules/perl/libkviperl.cpp:460
-#: src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:460 src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"

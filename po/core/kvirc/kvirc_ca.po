@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 14:59+0100\n"
+"POT-Creation-Date: 2009-01-27 20:25+0100\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Catal�<ca@li.org>\n"
@@ -14,25 +14,6 @@ msgstr ""
 "X-Generator: KBabel 1.2\n"
 "X-Poedit-Language: Catalan\n"
 "X-Poedit-Country: ANDORRA\n"
-
-#: src/modules/eventeditor/eventeditor.cpp:394
-#, c-format
-msgid ""
-"\n"
-"\n"
-"\tEvent:\n"
-"\t\t%s\n"
-"\n"
-"\tParameters:\n"
-"%s"
-msgstr ""
-"\n"
-"\n"
-"\tEvent:\n"
-"\t\t%s\n"
-"\n"
-"\tPar�etres:\n"
-"%s"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:686
 msgid ""
@@ -111,48 +92,19 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] s'acaba de marxar \r!c\r%Q\r"
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
 msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] s'acaba de marxar \r!c\r%Q\r: %Q"
 
-#: src/modules/reguser/libkvireguser.cpp:820
-msgid "    Mask: %Q!%Q@%Q"
-msgstr "    M�cara: %Q!%Q@%Q"
-
-#: src/modules/reguser/libkvireguser.cpp:834
-msgid "    No properties"
-msgstr "    Sense propietates"
-
-#: src/modules/reguser/libkvireguser.cpp:831
-msgid "    Property: %Q=%Q"
-msgstr "    Propietat: %Q=%Q"
-
-#: src/modules/reguser/libkvireguser.cpp:816
-msgid "    Warning: this user has no registration masks"
-msgstr "    Atenci� aquest usuari no t�m�cares de registre"
-
-#: src/modules/regchan/libkviregchan.cpp:212
-#, c-format
-msgid "   Property: %s=%s"
-msgstr "   Propietat: %s=%s"
-
 #: src/kvirc/ui/kvi_query.cpp:255
 #, fuzzy
 msgid " (%1 hops)"
 msgstr "%1 salts"
 
-#: src/modules/reguser/libkvireguser.cpp:812
-msgid " User: %c%Q"
-msgstr "Usuari: %c%Q"
-
-#: src/kvirc/ui/kvi_query.cpp:456 src/kvirc/ui/kvi_console.cpp:1121
-#: src/kvirc/ui/kvi_channel.cpp:1053
+#: src/kvirc/ui/kvi_channel.cpp:1053 src/kvirc/ui/kvi_console.cpp:1121
+#: src/kvirc/ui/kvi_query.cpp:456
 msgid " on "
 msgstr " en "
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:212
 msgid "### End of existing data buffer."
 msgstr "### Fi del buffer de dades existent."
-
-#: src/modules/popupeditor/popupeditor.cpp:95
-msgid "### Epilogue ###"
-msgstr "### Ep�eg ###"
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:208
 msgid "### Existing data buffer:"
@@ -167,10 +119,6 @@ msgstr "### Sessi�de registre iniciada a les %s ###"
 #, fuzzy
 msgid "### Log session terminated at %1 ###"
 msgstr "### Sessi�de registre acabada a les %s ###"
-
-#: src/modules/popupeditor/popupeditor.cpp:99
-msgid "### Prologue ###"
-msgstr "### Pr�eg ###"
 
 #: src/modules/objects/class_multilineedit.cpp:850
 #: src/modules/objects/class_multilineedit.cpp:1050
@@ -519,32 +467,15 @@ msgstr "&Sobre KVIrc"
 msgid "&Add Ban"
 msgstr "&Afegir Prohibici"
 
-#: src/modules/reguser/dialog.cpp:244
-#, fuzzy
-msgid "&Add Group..."
-msgstr "&Afegir..."
-
-#: src/modules/raweditor/raweditor.cpp:191
-msgid "&Add Raw Event..."
-msgstr "&Afegir Events Raw..."
-
 #: src/kvilib/system/kvi_locale.cpp:1036
 msgid "&Add to Custom Colors"
 msgstr "&Afegir Colors Personalitzats"
-
-#: src/modules/reguser/dialog.cpp:239 src/modules/reguser/edituser.cpp:371
-msgid "&Add..."
-msgstr "&Afegir..."
 
 #: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:514
 #: src/kvirc/ui/kvi_console.cpp:548
 msgid "&Always"
 msgstr "Sempre"
 
-#: src/modules/eventeditor/eventeditor.cpp:512
-#: src/modules/raweditor/raweditor.cpp:489
-#: src/modules/aliaseditor/aliaseditor.cpp:1564
-#: src/modules/popupeditor/popupeditor.cpp:1325
 #: src/kvirc/ui/kvi_modeeditor.cpp:80
 msgid "&Apply"
 msgstr "&Aplicar"
@@ -561,14 +492,13 @@ msgstr "Previsualitzaci�&Autom�ica"
 msgid "&Basic colors"
 msgstr "Colors &b�ics"
 
+#: src/kvirc/ui/kvi_selectors.cpp:304 src/modules/setup/setupwizard.cpp:243
+#: src/modules/setup/setupwizard.cpp:257 src/modules/setup/setupwizard.cpp:285
 #: src/modules/avatar/libkviavatar.cpp:93
-#: src/modules/setup/setupwizard.cpp:243 src/modules/setup/setupwizard.cpp:257
-#: src/modules/setup/setupwizard.cpp:285 src/kvirc/ui/kvi_selectors.cpp:304
 msgid "&Browse..."
 msgstr "Navegar..."
 
-#: src/kvilib/system/kvi_locale.cpp:1089 src/modules/url/libkviurl.cpp:390
-#: src/modules/editor/scripteditor.cpp:1016
+#: src/modules/url/libkviurl.cpp:390 src/kvilib/system/kvi_locale.cpp:1089
 msgid "&Cancel"
 msgstr "&Cancellar"
 
@@ -588,7 +518,6 @@ msgstr "&Configurar"
 msgid "&Configure KVIrc..."
 msgstr "&Configurar KVIrc..."
 
-#: src/modules/popupeditor/popupeditor.cpp:442
 #: src/kvirc/ui/kvi_input_editor.cpp:717
 msgid "&Copy"
 msgstr "&Copiar"
@@ -601,55 +530,13 @@ msgstr "&Colors personalitzats"
 msgid "&Define Custom Colors >>"
 msgstr "&Definir Colors Personalitzats >>"
 
-#: src/modules/eventeditor/eventeditor.cpp:202
-#: src/modules/raweditor/raweditor.cpp:170
-msgid "&Disable Handler"
-msgstr "&Desactivar Manipulador"
-
 #: src/kvirc/ui/kvi_window.cpp:757
 msgid "&Dock"
 msgstr "Anclar"
 
-#: src/modules/reguser/edituser.cpp:380
-msgid "&Edit"
-msgstr "&Editar"
-
 #: src/kvilib/system/kvi_locale.cpp:1055
 msgid "&Edit Bookmarks"
 msgstr "&Editar Marcadors"
-
-#: src/modules/reguser/dialog.cpp:256
-msgid "&Edit..."
-msgstr "&Editar..."
-
-#: src/modules/eventeditor/eventeditor.cpp:198
-#: src/modules/raweditor/raweditor.cpp:166
-msgid "&Enable Handler"
-msgstr "Activar Manipulador"
-
-#: src/modules/codetester/codetester.cpp:57
-msgid "&Execute"
-msgstr "&Executar"
-
-#: src/modules/eventeditor/eventeditor.cpp:105
-#: src/modules/raweditor/raweditor.cpp:106
-#: src/modules/popupeditor/popupeditor.cpp:1037
-msgid "&Export All To..."
-msgstr "&Exportar Tots a..."
-
-#: src/modules/eventeditor/eventeditor.cpp:210
-#: src/modules/raweditor/raweditor.cpp:178
-msgid "&Export Handler To..."
-msgstr "&Exportar Manipulador A..."
-
-#: src/modules/popupeditor/popupeditor.cpp:1109
-msgid "&Export Popup To..."
-msgstr "&Exportar men emergent a..."
-
-#: src/modules/popupeditor/popupeditor.cpp:1039
-#, fuzzy
-msgid "&Export selected To..."
-msgstr "&Exportar Tots a..."
 
 #: src/kvilib/system/kvi_locale.cpp:1086
 msgid "&Filter:"
@@ -699,40 +586,18 @@ msgstr "&Localitzaci�"
 msgid "&Module"
 msgstr "&M�ul"
 
-#: src/modules/reguser/edituser.cpp:101
-msgid "&New"
-msgstr "&Nou"
-
-#: src/modules/eventeditor/eventeditor.cpp:215
-#: src/modules/raweditor/raweditor.cpp:183
-msgid "&New Handler"
-msgstr "&Nou Manipulador"
-
-#: src/modules/popupeditor/popupeditor.cpp:1096
-msgid "&New Popup"
-msgstr "&Nou men emergent"
-
 #: src/modules/setup/setupwizard.cpp:85
 msgid "&Next >"
 msgstr "Sege&nt >"
 
+#: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:516
+#: src/kvirc/ui/kvi_console.cpp:550 src/modules/addon/managementdialog.cpp:266
 #: src/modules/setup/setupwizard.cpp:747
-#: src/modules/addon/managementdialog.cpp:266 src/kvirc/ui/kvi_frame.cpp:906
-#: src/kvirc/ui/kvi_console.cpp:516 src/kvirc/ui/kvi_console.cpp:550
 msgid "&No"
 msgstr "&No"
 
+#: src/modules/url/libkviurl.cpp:396 src/modules/avatar/libkviavatar.cpp:103
 #: src/kvilib/system/kvi_locale.cpp:1088
-#: src/modules/avatar/libkviavatar.cpp:103
-#: src/modules/eventeditor/eventeditor.cpp:454
-#: src/modules/eventeditor/eventeditor.cpp:507
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:484
-#: src/modules/aliaseditor/aliaseditor.cpp:1559
-#: src/modules/url/libkviurl.cpp:396
-#: src/modules/popupeditor/popupeditor.cpp:1320
-#: src/modules/reguser/dialog.cpp:285 src/modules/reguser/edituser.cpp:113
-#: src/modules/reguser/edituser.cpp:274 src/modules/reguser/edituser.cpp:487
 msgid "&OK"
 msgstr "&Acceptar"
 
@@ -744,16 +609,12 @@ msgstr "Altres..."
 msgid "&Paste"
 msgstr "&Enganxar"
 
-#: src/modules/popupeditor/popupeditor.cpp:448
-msgid "&Paste Below"
-msgstr "Enganxar Sota"
-
 #: src/kvilib/system/kvi_locale.cpp:1084
 msgid "&Preview"
 msgstr "&Previsualitzar"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:114
 #: src/kvirc/ui/kvi_menubar.cpp:251
+#: src/modules/trayicon/libkvitrayicon.cpp:114
 msgid "&Quit"
 msgstr "Sortir"
 
@@ -775,7 +636,7 @@ msgstr "Registrar"
 msgid "&Regular expression"
 msgstr "Expressi�&regular"
 
-#: src/modules/url/libkviurl.cpp:285 src/modules/reguser/edituser.cpp:105
+#: src/modules/url/libkviurl.cpp:285
 msgid "&Remove"
 msgstr "Elimina&r"
 
@@ -783,15 +644,10 @@ msgstr "Elimina&r"
 msgid "&Remove Selected"
 msgstr "Elimina&r Seleccionades"
 
-#: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1021
+#: src/modules/editor/scripteditor.cpp:255
 #, fuzzy
 msgid "&Replace"
 msgstr "Respostes"
-
-#: src/modules/editor/scripteditor.cpp:1011
-msgid "&Replace in all Aliases"
-msgstr ""
 
 #: src/kvirc/ui/kvi_window.cpp:768
 msgid "&Restore"
@@ -855,9 +711,9 @@ msgstr "Treure anclatje"
 msgid "&Window"
 msgstr "Finestra"
 
+#: src/kvirc/ui/kvi_frame.cpp:906 src/kvirc/ui/kvi_console.cpp:515
+#: src/kvirc/ui/kvi_console.cpp:549 src/modules/addon/managementdialog.cpp:266
 #: src/modules/setup/setupwizard.cpp:747
-#: src/modules/addon/managementdialog.cpp:266 src/kvirc/ui/kvi_frame.cpp:906
-#: src/kvirc/ui/kvi_console.cpp:515 src/kvirc/ui/kvi_console.cpp:549
 msgid "&Yes"
 msgstr "&S"
 
@@ -899,9 +755,9 @@ msgstr "Coincidents amb"
 msgid "(None)"
 msgstr "(Cap)"
 
+#: src/kvirc/ui/kvi_channel.cpp:1640 src/kvirc/sparser/kvi_sp_numeric.cpp:609
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:646
 #: src/modules/links/linkswindow.cpp:315
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:609
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:646 src/kvirc/ui/kvi_channel.cpp:1640
 msgid "(Unknown)"
 msgstr "(Desconegut)"
 
@@ -1111,54 +967,6 @@ msgstr ""
 "(*kvirc*),i cadenes com a <b>c&lt;n</b> o <b>c&gt;n</b> on <b>n</b> � el "
 "nmero m�im o m�im d'usuaris al canal.</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:242
-msgid ""
-"<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
-"order to decide if this entry has to be shown.<br>An empty condition "
-"evaluates to true.</center>"
-msgstr ""
-"<center><b>Condici�L�ica</b><br>Ser�avaluada en el moment de la crida al men "
-"emergent per a decidir si ha de mostrar-se aquesta opci�<br>Una "
-"condici�buida s'avalua com a certa.</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:260
-msgid ""
-"<center><b>External menu name</b><br>This allows to nest externally defined "
-"popup menus. The popup menu with the specified name will be looked up at "
-"menu setup time.</center>"
-msgstr ""
-"<center><b>Nom de men extern</b><br>Aix�permet animar mens emergents "
-"definits externament. El men amb el nom especificat ser�buscat en el moment "
-"de la configuraci�del mateix.</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:251
-msgid ""
-"<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
-"path or a relative path.<br>Portable scripts should never use absolute paths."
-"</center>"
-msgstr ""
-"<center><b>Identificador d'Icona</b><br>Pot ser un id d'icona interna, una "
-"ruta absoluta o una relativa.<br>Els scripts portables mai haurien d'emprar "
-"rutes absolutes.</center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:270
-msgid ""
-"<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
-"center>"
-msgstr ""
-"<center><b>id Element</b><br>Aix�et permetr�emprar delpopupitem m� tard.</"
-"center>"
-
-#: src/modules/popupeditor/popupeditor.cpp:233
-msgid ""
-"<center><b>Visible text</b><br>May contain identifiers that will be "
-"evaluated at popup call time.<br>For labels, this text can contain also "
-"limited HTML tags.</center>"
-msgstr ""
-"<center><b>Text Visible</b><br>Pot contenir identificadors que seran "
-"avaluats en el moment de la crida al men emergent.<br>Per a etiquetes, "
-"aquest text pot contenir tamb�alguns marcadors html.</center>"
-
 #: src/modules/mircimport/libkvimircimport.cpp:151
 msgid ""
 "<center><b>Welcome!</b><br><br>This wizard will guide you in the process of "
@@ -1176,48 +984,6 @@ msgid ""
 msgstr ""
 "<center>Aqu�pots modificar la URL des de la que ser�descarregada la llista. "
 "Generalment, la URL per defecte � aceptable.</center>"
-
-#: src/modules/reguser/dialog.cpp:93
-msgid ""
-"<center>This is the list of registered users. KVIrc can automatically "
-"recognize and associate properties to them.<br>Use the buttons on the right "
-"to add, edit and remove entries. The \"notify\" column allows you to quickly "
-"add users to the notify list. Notify list fine-tuning can be performed by "
-"editing the entry properties.</center>"
-msgstr ""
-"<center>Aquesta � la llista d'usuaris registrats. KVIrc pot recon�xer i "
-"associar-li propietats de forma autom�ica.<br>Empra els botons de la dreta "
-"per a afegir, editar o borra entrades.<br>La columna \"notificar\" et permet "
-"afegir usuaris a la llista de notificacions r�idament. L'ajust de la llista "
-"de notificacions pot fer-se editant l'entrada de propietats.</center>"
-
-#: src/modules/reguser/edituser.cpp:260
-msgid ""
-"<center>This the <b>hostname</b> that will match this user. <b>*</b> will "
-"match any hostname.</center>"
-msgstr ""
-"<center>Aquests � el <b>nom de m�uina</b> que coincidir�amb aquest usuari. "
-"<b>*</b> coincidir�amb qualsevol nom de m�uina.</center>"
-
-#: src/modules/reguser/edituser.cpp:242
-msgid ""
-"<center>This the <b>nickname</b> that will match this user, default value is "
-"the registered name.</center>"
-msgstr ""
-"<center>Aquest � el <b>nick</b> que coincidir�amb aquest usuari, el valor "
-"per defecte � el nom registrat.</center>"
-
-#: src/modules/reguser/edituser.cpp:251
-msgid ""
-"<center>This the <b>username</b> that will match this user. <b>*</b> will "
-"match any username.</center>"
-msgstr ""
-"<center>Aquest � el <b>nom d'usuari</b> que coincidir�amb aquest usuari. "
-"<b>*</b> coincidir�amb qualsevol nom d'usuari.</center>"
-
-#: src/modules/reguser/edituser.cpp:401
-msgid "<center>You can enter a space separated list of nicknames.</center>"
-msgstr "<center>Pot entrar una llista de nicks separats per espais.</center>"
 
 #: src/modules/list/listwindow.cpp:299
 #, c-format
@@ -1274,24 +1040,6 @@ msgstr ""
 "KVIrc no es preocupi, tindr�oportunitat de preservar la seva "
 "confiuraci�anterior.</p><p>Premi \"<b>Segent</b>\" per a continuar.</p>"
 
-#: src/modules/reguser/wizard.cpp:112
-msgid ""
-"<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
-"mask must be in the following form:<br><b>nickname!username@hostname</"
-"b><br>and can contain wildcard characters '*' and '?'. Be careful in "
-"choosing the masks, as they are the only way to verify the identity of a "
-"registered user.<br><br>You can enter at most two masks here, if you wish to "
-"add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
-"dialog. You must enter at least one mask.</p>"
-msgstr ""
-"<p>Un usuari registrat � identificat per una o m� <b>m�cares d'IRC</b>."
-"<br>Una m�cara ha de complir amb el segent format:<br><b>nick!"
-"nom_usuari@m�uina</b><br>i pot contenir els comodins '*' y '?'.Sigui cuidad� "
-"al escollir les m�cares: s� l'nic m�ode per a verificar la identitat d'un "
-"usuari registrat.<br><br>Pot introduir fins a dues m�cares; si dessitja "
-"afegir-ne m�, utilitzi el bot�\"<b>Editar</b>\" en el di�eg d'Usuaris "
-"Registrats. Ha de posar com a m�im una m�cara.</p>"
-
 #: src/modules/setup/setupwizard.cpp:185
 msgid ""
 "<p>All of the files in this distribution are covered by the GPL. In human "
@@ -1314,34 +1062,6 @@ msgid ""
 "just click \"<b>Next</b>\" and go to the next screen.</p>"
 msgstr ""
 
-#: src/modules/reguser/wizard.cpp:208
-msgid ""
-"<p>If you want to be notified when this user is online or goes offline, you "
-"must specify the list of nicknames that KVIrc will look for.<br><br>You can "
-"enter at most two nicknames here, if you wish to add more nicknames, use the "
-"\"<b>Edit</b>\" button in the Registered Users dialog.</p>"
-msgstr ""
-"<p>Si dessitja ser avisat quan aquest usuari es connecti o desconnecti, ha "
-"d'especificar la llista de nicks a la que ho buscar�KVIrc<br><br>Pot "
-"introduir fins a dos nicks aqu� si dessitja afegir-ne m�, empri el bot�"
-"\"<b>Editar</b>\" al Di�eg d'Usuaris Registrats.</p>"
-
-#: src/modules/reguser/wizard.cpp:183
-msgid ""
-"<p>If you want to store an avatar image for this user, you can set it here. "
-"KVIrc will show the avatar in the userlist next to the user's nickname."
-"<br>An avatar can be in any supported image format (PNG is recommended). "
-"Keep in mind that KVIrc stores avatars in memory and has to resize them to "
-"fit in the userlist, thus it's better to use small, low-resolution images.</"
-"p>"
-msgstr ""
-"<p>Si vol emmagatzemar una imatge d'avatar per a aquest usuari, pot posar-la "
-"aqu� KVIrc el mostrar�juntament amb el nick a la finestra d'usuaris.<br>Un "
-"avatar pot estar en qualsevol format d'imatge reconegut (es recomana PNG). "
-"Recordi que KVIrc mant�els avatar en mem�ia i t�que redimensionar-los per a "
-"encaixar-los a la llista d'usuaris, de manera que � millor emprar petites "
-"imatges de baixa resoluci�</p>"
-
 #: src/modules/setup/setupwizard.cpp:222
 msgid ""
 "<p>Please choose a folder for KVIrc to store its settings and other data, "
@@ -1359,37 +1079,6 @@ msgstr ""
 "aix� nom� premi \"<b>Segent</b>\".<br><br>Si t�installada una versi�anterior "
 "de KVIrc pot escollir els directoris existents i la seva "
 "configuraci�ser�preservada.</p>"
-
-#: src/modules/reguser/wizard.cpp:254
-msgid ""
-"<p>That's it. The user registration has been completed.<br><br>Click "
-"\"<b>Finish</b>\" to close this dialog.</p>"
-msgstr ""
-"<p>Aix�� tot. El registre d'usuari s'ha realitzat correctament.<br><br>Premi "
-"\"Finalitzar\" per a tancar aquest di�eg.</p>"
-
-#: src/modules/reguser/wizard.cpp:88
-msgid ""
-"<p>Welcome to the user registration wizard.<br>This process allows you to "
-"add an IRC user to the database and set properties for that user. KVIrc will "
-"be (hopefully) able to recognize the user, add him to the notify list, and "
-"display the associated avatar.<br><br>First of all, you must insert an "
-"<b>entry name or real name</b> for the user you're going to register. The "
-"name will be used to identify the database entry and has no specific "
-"requirements, it can be a given name, nickname, or just some text to remind "
-"you of the real person.<br>Examples: \"George W Bush\", \"Dubya\".\n"
-"</p>"
-msgstr ""
-"<p>Benvingut a l'assistent d'usuaris registrats.<br>Aquest proc� li permet "
-"afegir un usuari IRC a la base de dades de KVIrc i configurar algunes de les "
-"seves propietats. KVirc ser�capa�(afortunadament) de recon�xer l'usuari, "
-"afegir-lo a la llista de notificacions, mostrar el seu avatar associat, "
-"etc...<br><br>Primerament, ha d'escriure el <b>nom de l'entrada o el nom "
-"real</b>de l'usuari que anir�a registrar. El nom ser�emprat per a "
-"identificar l'entrada de la base de dades i no t�cap requeriment espec�ic, "
-"pot ser un nom, un nick o nom� un text que li recordi a la persona."
-"<br>Exemples: \"Carla Arola\", \"Cari\".\n"
-"</p>"
 
 #: src/modules/setup/setupwizard.cpp:744
 msgid ""
@@ -1447,21 +1136,6 @@ msgstr ""
 msgid "Acquires a Screenshot of the KVIrc main window"
 msgstr ""
 
-#: src/modules/actioneditor/actioneditor.cpp:586
-#, fuzzy
-msgid "Action"
-msgstr "Accions IRC"
-
-#: src/modules/actioneditor/actioneditor.cpp:858
-#, fuzzy
-msgid "Action Editor"
-msgstr "Editor d'�ies"
-
-#: src/modules/actioneditor/actioneditor.cpp:126
-#, fuzzy
-msgid "Action code"
-msgstr "Directoris de l'Aplicaci"
-
 #: src/kvirc/kernel/kvi_actionmanager.cpp:65
 msgid "Actions related to settings"
 msgstr "Accions relacionades amb la configuraci"
@@ -1490,19 +1164,9 @@ msgstr "Excepcions a Invitaci�Actives"
 msgid "Acts as a separator for other items: performs no action"
 msgstr "Actua com un separador per a altres elements: no realitza cap acci"
 
-#: src/modules/url/libkviurl.cpp:484 src/kvirc/ui/kvi_maskeditor.cpp:213
+#: src/kvirc/ui/kvi_maskeditor.cpp:213 src/modules/url/libkviurl.cpp:484
 msgid "Add"
 msgstr "Afegir"
-
-#: src/modules/reguser/dialog.cpp:233
-msgid "Add (Wizard)..."
-msgstr "Afegir (assistent)..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:521
-#: src/modules/aliaseditor/aliaseditor.cpp:1250
-#, fuzzy
-msgid "Add Alias"
-msgstr "�ies"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:355
 msgid "Add Applet"
@@ -1511,20 +1175,6 @@ msgstr "Afegir Applet"
 #: src/kvilib/system/kvi_locale.cpp:1054
 msgid "Add Bookmark"
 msgstr "Afegir Marcador"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:526
-#: src/modules/aliaseditor/aliaseditor.cpp:1275
-#, fuzzy
-msgid "Add Namespace"
-msgstr "Tipus de missatge"
-
-#: src/modules/reguser/dialog.cpp:235
-msgid "Add a registered user by means of a user-friendly wizard."
-msgstr "Afegir un usuari registrat per mitj�d'un amigable assistent."
-
-#: src/modules/reguser/wizard.cpp:218
-msgid "Add this user to the notify list"
-msgstr "Afegir aquest usuari a la llista de notificacions"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1526
 msgid "Added %d sec file offer for file %Q (%Q) to recipient %Q"
@@ -1544,12 +1194,6 @@ msgstr "Adre� ja en s"
 msgid "Address:"
 msgstr "Adre� IP:"
 
-#: src/modules/reguser/dialog.cpp:246
-msgid "Adds a new group"
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:197
-#: src/modules/toolbareditor/toolbareditor.cpp:284
 #: src/kvirc/ui/kvi_optionswidget.cpp:673
 msgid "Advanced..."
 msgstr "Avan�t ..."
@@ -1559,40 +1203,9 @@ msgstr "Avan�t ..."
 msgid "Age:"
 msgstr "Mode d'us"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:221
-#: src/modules/aliaseditor/aliaseditor.cpp:455
-#: src/modules/aliaseditor/aliaseditor.cpp:1453
-msgid "Alias"
-msgstr "�ies"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1552
-msgid "Alias Editor"
-msgstr "Editor d'�ies"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-#, fuzzy
-msgid "Alias Export"
-msgstr "Editor d'�ies"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1356
-#, fuzzy
-msgid "Alias already exists"
-msgstr "Adre� ja en s"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1123
-msgid ""
-"Alias names can contain only letters, digits, underscores and '::' namespace "
-"separators"
-msgstr ""
-
 #: src/kvilib/system/kvi_locale.cpp:1087
 msgid "All Files"
 msgstr "Tots els arxius"
-
-#: src/modules/reguser/edituser.cpp:441
-msgid "All Properties..."
-msgstr "Totes les propietats..."
 
 #: src/modules/setup/setupwizard.cpp:300
 msgid "All settings in shared program folder (portable)"
@@ -1685,11 +1298,6 @@ msgstr "Una altre connexi�en progr�"
 msgid "Application Folders"
 msgstr "Directoris de l'Aplicaci"
 
-#: src/modules/actioneditor/actioneditor.cpp:871
-#, fuzzy
-msgid "Apply"
-msgstr "&Aplicar"
-
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:193
 #, fuzzy
 msgid "Apply to all IRC Contexts"
@@ -1728,10 +1336,6 @@ msgstr "Entrenant autom�icament en canals espec�ics de la xarxa"
 msgid "Auto-joining server specific channels"
 msgstr "Entrant autom�icament en canals espec�ics del servidor"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
-msgid "Automatically"
-msgstr "Autom�icament"
-
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:178
 msgid "Available channel modes:"
 msgstr "Modes de canal disponibles:"
@@ -1739,10 +1343,6 @@ msgstr "Modes de canal disponibles:"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:160
 msgid "Available user modes:"
 msgstr "Modes d'usuari disponibles:"
-
-#: src/modules/reguser/edituser.cpp:426
-msgid "Avatar"
-msgstr "Avatar"
 
 #: src/kvirc/kernel/kvi_options.cpp:730
 msgid "Avatar change"
@@ -1757,8 +1357,8 @@ msgstr "Fallida la desc�rega de l'avatar per a %Q!%Q@%Q i url %Q: %Q"
 msgid "Average hops: ~%d.%d"
 msgstr "Salts promig: ~%d.%d"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:98
 #: src/kvirc/ui/kvi_statusbar.cpp:602
+#: src/modules/trayicon/libkvitrayicon.cpp:98
 msgid "Away"
 msgstr "Absent"
 
@@ -1803,20 +1403,6 @@ msgstr ""
 #: src/kvirc/ui/kvi_selectors.cpp:613
 msgid "Background"
 msgstr "Fons"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1122
-#: src/modules/aliaseditor/aliaseditor.cpp:1136
-#: src/modules/aliaseditor/aliaseditor.cpp:1147
-#, fuzzy
-msgid "Bad Alias Name"
-msgstr "Falta el nom de l'�ies"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1190
-#: src/modules/aliaseditor/aliaseditor.cpp:1204
-#: src/modules/aliaseditor/aliaseditor.cpp:1215
-#, fuzzy
-msgid "Bad Namespace Name"
-msgstr "Falta el nom del cron�etre"
 
 #: src/kvilib/core/kvi_error.cpp:90
 msgid "Bad file descriptor"
@@ -1863,11 +1449,6 @@ msgstr "Prohibir concordant amb la meva m�cara"
 #: src/kvirc/kernel/kvi_options.cpp:804
 msgid "Ban unexception matching my mask"
 msgstr "Prohibici�sense excepci�concorda amb la meva m�cara"
-
-#: src/modules/actioneditor/actioneditor.cpp:162
-#, fuzzy
-msgid "Big Icon:"
-msgstr "Icona:"
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:350
 #, c-format
@@ -2020,12 +1601,6 @@ msgstr "No puc configurar un socket en escolta: fallida en l'enlla�(bind)"
 msgid "Can't evaluate creation time"
 msgstr "No puc avaluar la data de creaci"
 
-#: src/modules/reguser/dialog.cpp:775
-msgid "Can't export the registered users database: Write error."
-msgstr ""
-"No s'ha pogut exportar la base de dades d'usuaris registrats. Error "
-"d'escriptura."
-
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:265
 msgid "Can't find the proxy IP address: %Q"
 msgstr "No he pogut trobar l'adre� IP del proxy: %Q"
@@ -2038,12 +1613,6 @@ msgstr "No puc trobar l'adre� IP del servidor: %Q"
 #, fuzzy
 msgid "Can't find the window with id '%Q'"
 msgstr "No he pogut trobar la finestra amb id '%s'"
-
-#: src/modules/reguser/dialog.cpp:882
-msgid "Can't import the registered users database: Read error."
-msgstr ""
-"No s'ha pogut importar la base de dades d'usuaris registrats. Error de "
-"lectura."
 
 #: src/kvilib/core/kvi_error.cpp:116
 msgid "Can't kill a builtin class"
@@ -2059,26 +1628,16 @@ msgstr "No puc grabar el registre a l'arxiu %s"
 msgid "Can't open file \"%Q\" for writing"
 msgstr "No puc obrir l'arxiu \"%s\" en mode escriptura"
 
-#: src/modules/reguser/dialog.cpp:696
-#, fuzzy
-msgid "Can't open file %Q for writing."
-msgstr "No puc obrir l'arxiu \"%s\" en mode escriptura"
-
-#: src/modules/reguser/dialog.cpp:796
-#, c-format
-msgid "Can't open file %s for reading."
-msgstr "No puc obrir l'arxiu %s per a lectura."
-
 #: src/kvilib/core/kvi_error.cpp:139
 msgid "Can't open file for appending"
 msgstr "No puc obrir l'arxiu per afegir"
 
-#: src/kvilib/file/kvi_packagefile.cpp:679
-#: src/kvilib/file/kvi_packagefile.cpp:932 src/kvilib/core/kvi_error.cpp:143
+#: src/kvilib/core/kvi_error.cpp:143 src/kvilib/file/kvi_packagefile.cpp:679
+#: src/kvilib/file/kvi_packagefile.cpp:932
 msgid "Can't open file for reading"
 msgstr "No puc obrir l'arxiu per a lectura"
 
-#: src/kvilib/file/kvi_packagefile.cpp:493 src/kvilib/core/kvi_error.cpp:140
+#: src/kvilib/core/kvi_error.cpp:140 src/kvilib/file/kvi_packagefile.cpp:493
 msgid "Can't open file for writing"
 msgstr "No puc obrir l'arxiu per a escriptura"
 
@@ -2185,21 +1744,12 @@ msgstr "No puc configurar un socket en escolta: fallida en l'enlla�(bind)"
 msgid "Can't start the ident service on IPv6 : socket() failed"
 msgstr "No puc configurar un socket en escolta: fallida en l'enlla�(bind)"
 
-#: src/kvilib/file/kvi_packagefile.cpp:142
-#: src/kvilib/tal/kvi_tal_wizard.cpp:181 src/kvilib/system/kvi_locale.cpp:1027
-#: src/modules/toolbareditor/toolbareditor.cpp:192
-#: src/modules/toolbareditor/toolbareditor.cpp:411
+#: src/kvirc/ui/kvi_maskeditor.cpp:88 src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/modules/help/index.cpp:102 src/modules/setup/setupwizard.cpp:87
 #: src/modules/avatar/libkviavatar.cpp:108
-#: src/modules/actioneditor/actioneditor.cpp:877
-#: src/modules/setup/setupwizard.cpp:87
-#: src/modules/eventeditor/eventeditor.cpp:517
-#: src/modules/raweditor/raweditor.cpp:494
-#: src/modules/aliaseditor/aliaseditor.cpp:1569
-#: src/modules/popupeditor/popupeditor.cpp:1330
-#: src/modules/reguser/dialog.cpp:290 src/modules/reguser/edituser.cpp:117
-#: src/modules/reguser/edituser.cpp:278 src/modules/reguser/edituser.cpp:486
-#: src/modules/help/index.cpp:102 src/kvirc/ui/kvi_maskeditor.cpp:88
-#: src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/kvilib/tal/kvi_tal_wizard.cpp:181
+#: src/kvilib/file/kvi_packagefile.cpp:142
+#: src/kvilib/system/kvi_locale.cpp:1027
 msgid "Cancel"
 msgstr "Cancellar"
 
@@ -2264,11 +1814,6 @@ msgstr "S'esperava una paraula clau case, match, regexp, default o break"
 msgid "Case Insensitive"
 msgstr "No distingeix majs/mins"
 
-#: src/modules/actioneditor/actioneditor.cpp:134
-#, fuzzy
-msgid "Category:"
-msgstr "Categoria: %Q"
-
 #: src/modules/action/libkviaction.cpp:66
 msgid "Category: %Q"
 msgstr "Categoria: %Q"
@@ -2306,10 +1851,10 @@ msgstr "Canviar Nick"
 msgid "Changed text encoding to %Q"
 msgstr "Canvidada la codificaci�de text a %Q"
 
+#: src/kvirc/kernel/kvi_actionmanager.cpp:68
+#: src/modules/list/listwindow.cpp:201
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:67
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:76
-#: src/modules/list/listwindow.cpp:201
-#: src/kvirc/kernel/kvi_actionmanager.cpp:68
 msgid "Channel"
 msgstr "Canal"
 
@@ -2413,11 +1958,6 @@ msgstr "Tema del canal:"
 msgid "Channel was created at %Q"
 msgstr "El canal va ser creat el %Q"
 
-#: src/modules/regchan/libkviregchan.cpp:207
-#, c-format
-msgid "Channel: %c%s@%s"
-msgstr "Canal: %c%s@%s"
-
 #: src/modules/list/listwindow.cpp:417
 msgid "Channels list download finished"
 msgstr ""
@@ -2430,54 +1970,6 @@ msgstr "Dispositiu de car�ters"
 #, fuzzy
 msgid "Check on startup"
 msgstr "Estat de la connexi"
-
-#: src/modules/actioneditor/actioneditor.cpp:229
-msgid ""
-"Check this option if this action should be enabled also during the login "
-"operations (so when the logical IRC connection hasn't been estabilished yet)"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:208
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window belongs to an irc context"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:219
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window has an active IRC connection"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:252
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a channel"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:241
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a console"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:274
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a dcc chat"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:263
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is a query"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:235
-msgid ""
-"Check this option if this action should be enabled only when the active "
-"window is of a specified type"
-msgstr ""
 
 #: src/modules/avatar/libkviavatar.cpp:69
 msgid "Choose Avatar - KVIrc"
@@ -2495,7 +1987,6 @@ msgstr "Triar Font Temporal..."
 msgid "Choose a Configuration Folder - KVIrc Setup"
 msgstr "Trii un Directori de Configuraci�- Assistent de KVIrc"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:722
 #: src/kvirc/ui/kvi_selectors.cpp:367
 msgid "Choose a Directory - KVIrc"
 msgstr "Seleccioni un Directori - KVIrc"
@@ -2508,24 +1999,11 @@ msgstr "Trii un directori per als arxius descarregats - Assistent de KVIrc"
 msgid "Choose a File - KVIrc"
 msgstr "Trii un Arxiu - KVIrc"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:402
-#: src/modules/actioneditor/actioneditor.cpp:692
-#: src/modules/eventeditor/eventeditor.cpp:447
-#: src/modules/eventeditor/eventeditor.cpp:488
-#: src/modules/raweditor/raweditor.cpp:422
-#: src/modules/raweditor/raweditor.cpp:465
-#: src/modules/aliaseditor/aliaseditor.cpp:809
-#: src/modules/popupeditor/popupeditor.cpp:1129
-#: src/modules/popupeditor/popupeditor.cpp:1179
-#: src/modules/reguser/dialog.cpp:689 src/modules/reguser/dialog.cpp:789
-msgid "Choose a Filename - KVIrc"
-msgstr "Esculli un nom d'arxiu - KVIrc"
-
 #: src/modules/mircimport/libkvimircimport.cpp:125
 msgid "Choose a servers.ini file"
 msgstr "Escolli un arxiu servers.ini"
 
-#: src/modules/avatar/libkviavatar.cpp:148 src/kvirc/ui/kvi_selectors.cpp:258
+#: src/kvirc/ui/kvi_selectors.cpp:258 src/modules/avatar/libkviavatar.cpp:148
 msgid "Choose an Image File - KVIrc"
 msgstr "Trii un Arxiu d'Imatge - KVIrc"
 
@@ -2546,10 +2024,6 @@ msgstr "Escull imatge..."
 #: src/kvirc/ui/kvi_ircview.cpp:2125
 msgid "Choose the background image..."
 msgstr "Triar la imatge de fons..."
-
-#: src/modules/actioneditor/actioneditor.cpp:139
-msgid "Choose the category that best fits for this action"
-msgstr ""
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:138
 msgid "Choose the file to share"
@@ -2598,13 +2072,11 @@ msgstr "Portapapers"
 msgid "Clo&se"
 msgstr "Tancar"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:331
+#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_ctcppagedialog.cpp:62
+#: src/kvirc/ui/kvi_window.cpp:774 src/modules/tip/libkvitip.cpp:121
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:114
 #: src/modules/addon/managementdialog.cpp:179
-#: src/modules/tip/libkvitip.cpp:121
 #: src/modules/theme/managementdialog.cpp:194
-#: src/kvirc/ui/kvi_modeeditor.cpp:81 src/kvirc/ui/kvi_window.cpp:774
-#: src/kvirc/ui/kvi_ctcppagedialog.cpp:62
 msgid "Close"
 msgstr "Tancar"
 
@@ -2620,16 +2092,6 @@ msgstr "Enlla�s propers (1 <= salts <= 3): %d (~%d.%d %)"
 msgid "Close this window"
 msgstr "Tancar la finestra"
 
-#: src/modules/actioneditor/actioneditor.cpp:128
-#, fuzzy
-msgid "Code"
-msgstr "Tancar"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:571
-#, fuzzy
-msgid "Collapse All Namespaces"
-msgstr "Tancar Tots els Privats"
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:234
 msgid "Color free (no ANSI colors)"
 msgstr "Llibre de colors (sense colors ANSI)"
@@ -2638,23 +2100,9 @@ msgstr "Llibre de colors (sense colors ANSI)"
 msgid "Color options (#RRGGBB)"
 msgstr "Opcions de color (#RRGGBB)"
 
-#: src/modules/editor/scripteditor.cpp:522
-msgid "Colors"
-msgstr "Colors"
-
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:975
 msgid "Command syntax %Q: %Q"
 msgstr ""
-
-#: src/modules/reguser/edituser.cpp:348
-#, fuzzy
-msgid "Comment:"
-msgstr "Contador"
-
-#: src/modules/reguser/dialog.cpp:133
-#, fuzzy
-msgid "Comment: "
-msgstr "Contador"
 
 #: src/kvirc/ui/kvi_topicw.cpp:617
 msgid "Commit Changes"
@@ -2688,10 +2136,6 @@ msgstr "Realitzant primeres inicialitzacions..."
 #, fuzzy
 msgid "Compression library internal error"
 msgstr "Ups... error intern"
-
-#: src/modules/popupeditor/popupeditor.cpp:236
-msgid "Condition:"
-msgstr "Condici�"
 
 #: src/modules/list/listwindow.cpp:336
 #, fuzzy
@@ -2731,10 +2175,6 @@ msgstr "Configurar Servidors"
 #, fuzzy
 msgid "Confirm Multiline Message"
 msgstr "Missatge multim�ia"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:383
-msgid "Confirm ToolBar Deletion"
-msgstr "Confirmar l'Esborrat de la Barra d'Eines"
 
 #: src/modules/addon/managementdialog.cpp:266
 msgid "Confirm addon uninstallation"
@@ -2834,7 +2274,7 @@ msgstr "Contactant amb %s en el port %u"
 msgid "Context"
 msgstr "Context"
 
-#: src/modules/editor/scripteditor.cpp:255
+#: src/modules/editor/scripteditor.cpp:254
 #, fuzzy
 msgid "Context sensitive help"
 msgstr "No distingeix m&ajs/mins"
@@ -2925,7 +2365,6 @@ msgstr ""
 msgid "Cryptography/text transformation"
 msgstr "Transformaci�Criptogr�ica/textual"
 
-#: src/modules/popupeditor/popupeditor.cpp:436
 #: src/kvirc/ui/kvi_input_editor.cpp:715
 msgid "Cu&t"
 msgstr "&Tallar"
@@ -2934,8 +2373,8 @@ msgstr "&Tallar"
 msgid "Current IRC URI"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_ircsocket.cpp:1274
 #: src/kvirc/kernel/kvi_sslmaster.cpp:90
+#: src/kvirc/kernel/kvi_ircsocket.cpp:1274
 msgid "Current transmission cipher"
 msgstr "Xifrat de la transmissi�actual"
 
@@ -2944,10 +2383,6 @@ msgstr "Xifrat de la transmissi�actual"
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:137
 msgid "Current window is not a channel"
 msgstr "La finestra actual no � una canal"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:298
-msgid "Customize Toolbars"
-msgstr "Barres d'Eines personalitzades"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:225
 #, fuzzy
@@ -2997,9 +2432,7 @@ msgid "Decrypt key:"
 msgstr "Clau de desxifrat"
 
 #: src/kvilib/ext/kvi_regusersdb.cpp:683 src/kvilib/ext/kvi_regusersdb.cpp:684
-#: src/kvilib/irc/kvi_useridentity.cpp:175 src/modules/reguser/dialog.cpp:492
-#: src/modules/reguser/dialog.cpp:495 src/modules/reguser/dialog.cpp:496
-#: src/modules/reguser/dialog.cpp:498 src/modules/reguser/dialog.cpp:500
+#: src/kvilib/irc/kvi_useridentity.cpp:175
 msgid "Default"
 msgstr "Per defecte"
 
@@ -3007,25 +2440,12 @@ msgstr "Per defecte"
 msgid "Delete"
 msgstr "Esborrar"
 
-#: src/modules/actioneditor/actioneditor.cpp:630
-#, fuzzy
-msgid "Delete Actions"
-msgstr "Selecci"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:312
-msgid "Delete ToolBar"
-msgstr "Borrar Barra d'Eines"
-
 #: src/modules/links/linkswindow.cpp:486
 msgid "Description"
 msgstr "Descripci"
 
-#: src/modules/actioneditor/actioneditor.cpp:141
-msgid "Description:"
-msgstr "Descripci�"
-
-#: src/modules/action/libkviaction.cpp:67
 #: src/modules/addon/libkviaddon.cpp:148
+#: src/modules/action/libkviaction.cpp:67
 msgid "Description: %Q"
 msgstr "Descripci� %Q"
 
@@ -3074,7 +2494,7 @@ msgstr "Directori"
 msgid "Discard Changes"
 msgstr "Descartar Canvis"
 
-#: src/kvirc/kernel/kvi_coreactions.cpp:614 src/kvirc/ui/kvi_menubar.cpp:231
+#: src/kvirc/ui/kvi_menubar.cpp:231 src/kvirc/kernel/kvi_coreactions.cpp:614
 msgid "Disconnect"
 msgstr "Desconnectar"
 
@@ -3102,28 +2522,10 @@ msgstr "No molestar... veient la televissi"
 msgid "Do not overwrite folder? - KVIrc"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:384
-msgid "Do you really want to delete toolbar \"%1\" ?"
-msgstr "Realment vol borra la barra d'eines \"%1\" ?"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1022
-#, fuzzy
-msgid "Do you really want to remove the alias \"%Q\" ?"
-msgstr "Realment vol borra la barra d'eines \"%1\" ?"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1024
-#, fuzzy
-msgid "Do you really want to remove the namespace \"%Q\" ?"
-msgstr "Realment vol borra la barra d'eines \"%1\" ?"
-
 #: src/modules/addon/managementdialog.cpp:262
 #, fuzzy
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Realment vol borra la barra d'eines \"%1\" ?"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:408
-msgid "Do you want the associated actions to be exported with the toolbar ?"
-msgstr ""
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:833
 #, fuzzy
@@ -3198,10 +2600,6 @@ msgstr ""
 msgid "Dreaded License Agreement"
 msgstr "Temut Acord de Llic�cia"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:64
-msgid "Drop here the icons from the toolbars to remove them"
-msgstr "Deixar aqu�les icones des de la barra d'eines per a eliminar-los"
-
 #: src/modules/ident/libkviident.cpp:485
 msgid "Dropping connection (request too long)"
 msgstr ""
@@ -3209,10 +2607,6 @@ msgstr ""
 #: src/modules/trayicon/libkvitrayicon.cpp:157
 msgid "Dum de dum de dum..."
 msgstr "Dum de dum de dum..."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:265
-msgid "Duplicate ToolBar Id"
-msgstr "Id de la Barra d'Eines duplicada"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:125
 msgid "E&xtended regexp."
@@ -3243,28 +2637,6 @@ msgstr "Mens emergents..."
 msgid "Edit Raw Events..."
 msgstr "Events &Raw..."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:316
-msgid "Edit ToolBar"
-msgstr "Editar Barra d'Eines"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:266
-#, fuzzy
-msgid "Edit the alias or namespace name"
-msgstr "Editar �ies."
-
-#: src/modules/eventeditor/eventeditor.cpp:116
-msgid "Edit the event handler name."
-msgstr "Editar el nom del manipulador d'events."
-
-#: src/modules/reguser/dialog.cpp:259
-msgid "Edit the first selected entry."
-msgstr "Aquest bot�permetr�editar la primera entrada triada."
-
-#: src/modules/raweditor/raweditor.cpp:111
-#, fuzzy
-msgid "Edit the raw event handler name."
-msgstr "Editar el nom del manipulador d'events."
-
 #: src/kvilib/system/kvi_locale.cpp:1043
 msgid "Effects"
 msgstr "Efectes"
@@ -3282,19 +2654,9 @@ msgstr "notificaci"
 msgid "Empty request (EOT ?)"
 msgstr ""
 
-#: src/modules/actioneditor/actioneditor.cpp:233
-#, fuzzy
-msgid "Enable Only in Specified Windows"
-msgstr "Finestres de privats"
-
 #: src/modules/url/libkviurl.cpp:446
 msgid "Enable URL ban list"
 msgstr "Activar la llista d'URL prohibides"
-
-#: src/modules/actioneditor/actioneditor.cpp:228
-#, fuzzy
-msgid "Enable at Login"
-msgstr "Activar xifrat"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:117
 msgid "Enable decryption"
@@ -3303,31 +2665,6 @@ msgstr "Activar desxifrat"
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:105
 msgid "Enable encryption"
 msgstr "Activar xifrat"
-
-#: src/modules/reguser/edituser.cpp:454
-#, fuzzy
-msgid "Enable ignore for this user"
-msgstr "Activar Ignorar Per a"
-
-#: src/modules/actioneditor/actioneditor.cpp:251
-#, fuzzy
-msgid "Enable in Channel Windows"
-msgstr "Finestres de canal"
-
-#: src/modules/actioneditor/actioneditor.cpp:240
-#, fuzzy
-msgid "Enable in Console Windows"
-msgstr "Finestres de consola"
-
-#: src/modules/actioneditor/actioneditor.cpp:273
-#, fuzzy
-msgid "Enable in DCC Chat Windows"
-msgstr "Finestres de transfer�cies DCC"
-
-#: src/modules/actioneditor/actioneditor.cpp:262
-#, fuzzy
-msgid "Enable in Query Windows"
-msgstr "Finestres de privats"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:108
 msgid "Encrypt key:"
@@ -3375,7 +2712,7 @@ msgstr "Fi del canal %Q per a \r!c\r%Q\r"
 msgid "End of help about %Q"
 msgstr "Fi de llista WHO per a %Q"
 
-#: src/kvirc/ui/kvi_query.cpp:884 src/kvirc/ui/kvi_channel.cpp:1896
+#: src/kvirc/ui/kvi_channel.cpp:1896 src/kvirc/ui/kvi_query.cpp:884
 #, fuzzy
 msgid "End of log"
 msgstr "Fi de LIST"
@@ -3391,14 +2728,6 @@ msgstr "Motor no inicialitzat"
 #: src/kvirc/kernel/kvi_coreactions.cpp:1047
 msgid "Enter Away Mode"
 msgstr "Entrar en Mode Absent"
-
-#: src/modules/raweditor/raweditor.cpp:232
-msgid "Enter the numeric code of the message (0-999)"
-msgstr "Introdueix el codi num�ic del missatge (0-999)"
-
-#: src/modules/popupeditor/popupeditor.cpp:96
-msgid "Epilogue"
-msgstr "Ep�eg"
 
 #: src/modules/rijndael/libkvirijndael.cpp:165
 msgid "Error 0: Success ?"
@@ -3426,14 +2755,6 @@ msgstr ""
 #, fuzzy
 msgid "Error while loading plugin."
 msgstr "Error en carregar el m�ul"
-
-#: src/modules/eventeditor/eventeditor.cpp:168
-msgid "Event"
-msgstr "Event"
-
-#: src/modules/eventeditor/eventeditor.cpp:561
-msgid "Event Editor"
-msgstr "Editor d'Events"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:163
 msgid "Everything is all right"
@@ -3482,53 +2803,6 @@ msgstr "Expandir &Horitzontalment"
 #: src/kvirc/ui/kvi_mdimanager.cpp:410
 msgid "Expand &Vertically"
 msgstr "Expandir &Verticalment"
-
-#: src/modules/actioneditor/actioneditor.cpp:633
-#, fuzzy
-msgid "Export Actions..."
-msgstr "Exportar a..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:557
-#, fuzzy
-msgid "Export All..."
-msgstr "&Exportar Tots a..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:550
-#, fuzzy
-msgid "Export Selected in singles files..."
-msgstr "&Exportar Tots a..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:544
-#, fuzzy
-msgid "Export Selected..."
-msgstr "&Exportar Tots a..."
-
-#: src/modules/reguser/dialog.cpp:265
-msgid "Export To..."
-msgstr "Exportar a..."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:324
-#, fuzzy
-msgid "Export ToolBar"
-msgstr "Editar Barra d'Eines"
-
-#: src/modules/reguser/dialog.cpp:268
-msgid ""
-"Export the selected entries to a file.<br>All the data associated with the "
-"selected registered users will be exported.<br>You (or anyone else) can "
-"later import the entries by using the \"Import\" button."
-msgstr ""
-"Exporta les entrades triades a un arxiu.<br>Totes les dades associades als "
-"usuaris registrats triats seran exportades.<br>Vost� o qualsevol altre, pot "
-"importar les entrades m� tard emprant el bot�\"Importar\"."
-
-#: src/modules/popupeditor/popupeditor.cpp:85
-msgid "External Menu"
-msgstr "Men Extern"
-
-#: src/modules/popupeditor/popupeditor.cpp:254
-msgid "External menu:"
-msgstr "Men extern:"
 
 #: src/modules/file/libkvifile.cpp:83
 #, fuzzy
@@ -3667,7 +2941,7 @@ msgstr ""
 msgid "Feature not available"
 msgstr "Funcionalitat no disponible"
 
-#: src/modules/setup/setupwizard.cpp:394 src/kvirc/ui/kvi_console.cpp:323
+#: src/kvirc/ui/kvi_console.cpp:323 src/modules/setup/setupwizard.cpp:394
 msgid "Female"
 msgstr ""
 
@@ -3729,44 +3003,22 @@ msgstr "Filtre"
 msgid "Filter:"
 msgstr "&Filtre:"
 
-#: src/modules/editor/scripteditor.cpp:761
 #: src/kvirc/ui/kvi_ircviewtools.cpp:146
 msgid "Find"
 msgstr "Buscar"
 
-#: src/modules/editor/scripteditor.cpp:269
-#, fuzzy
-msgid "Find & Replace"
-msgstr "Respostes"
-
 #: src/kvirc/ui/kvi_ircviewtools.cpp:133
 msgid "Find &Prev."
 msgstr "Buscar Anterior"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:609
-#, fuzzy
-msgid "Find In Aliases"
-msgstr "&Alies..."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:565
-#, fuzzy
-msgid "Find In Aliases..."
-msgstr "&Alies..."
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:91
 #, fuzzy
 msgid "Find Text"
 msgstr "Buscar Text"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:234 src/modules/setup/setupwizard.cpp:86
+#: src/modules/setup/setupwizard.cpp:86 src/kvilib/tal/kvi_tal_wizard.cpp:234
 msgid "Finish"
 msgstr "Acabar"
-
-#: src/modules/actioneditor/actioneditor.cpp:283
-#: src/modules/reguser/dialog.cpp:81
-#, fuzzy
-msgid "Flags"
-msgstr "Pla"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:96
 msgid "Flat"
@@ -3812,14 +3064,6 @@ msgstr "Normal"
 msgid "Forward"
 msgstr "Endavant"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1148
-msgid "Found an empty namespace in alias name"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1216
-msgid "Found an empty namespace in namespace name"
-msgstr ""
-
 #: src/modules/help/helpwindow.cpp:181 src/modules/help/helpwindow.cpp:190
 msgid "Full Text Search"
 msgstr ""
@@ -3832,7 +3076,7 @@ msgstr "Ruta completa"
 msgid "GUI"
 msgstr "IGU"
 
-#: src/modules/setup/setupwizard.cpp:388 src/kvirc/ui/kvi_console.cpp:321
+#: src/kvirc/ui/kvi_console.cpp:321 src/modules/setup/setupwizard.cpp:388
 #, fuzzy
 msgid "Gender:"
 msgstr "Gen�ic"
@@ -3881,11 +3125,6 @@ msgstr "Obtenir Enlla�s de Xarxa"
 msgid "Global idle timer must be started before using $my.globalIdle function"
 msgstr ""
 
-#: src/modules/reguser/dialog.cpp:395 src/modules/reguser/dialog.cpp:408
-#, fuzzy
-msgid "Group name:"
-msgstr "Nom de men emergent"
-
 #: src/kvirc/kernel/kvi_options.cpp:786
 msgid "Half-deop mode change"
 msgstr "Canvi de mode treure semioperador"
@@ -3902,7 +3141,7 @@ msgstr "Canvi de mode semioperador"
 msgid "Header too long: exceeded 4096 bytes"
 msgstr "Cap�lera molt llarga: Excedeix els 4096 bytes"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:193 src/kvirc/kernel/kvi_options.cpp:831
+#: src/kvirc/kernel/kvi_options.cpp:831 src/kvilib/tal/kvi_tal_wizard.cpp:193
 #, fuzzy
 msgid "Help"
 msgstr "Ajuda"
@@ -3943,10 +3182,6 @@ msgstr "Eh... Est� segur de que la xarxa funciona?"
 #: src/kvirc/ui/kvi_menubar.cpp:240
 msgid "Hide &Dock Icon"
 msgstr "Amagar Icona &d'Anclatje"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:287
-msgid "Hide Advanced"
-msgstr "Amagar Avan�t"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2080
 msgid "Hide Find Window"
@@ -4073,10 +3308,6 @@ msgstr "Servidor IRC"
 msgid "IRC-Op only channel"
 msgstr "Canal nom� per a IRC-Op"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:151
-msgid "Icon"
-msgstr "Icona"
-
 #: src/kvirc/ui/kvi_toolbar.cpp:98
 msgid "Icon Size"
 msgstr "Mida d'Icona"
@@ -4084,14 +3315,6 @@ msgstr "Mida d'Icona"
 #: src/kvirc/kernel/kvi_iconmanager.cpp:371
 msgid "Icon Table"
 msgstr "Taula d'Icones"
-
-#: src/modules/popupeditor/popupeditor.cpp:245
-msgid "Icon:"
-msgstr "Icona:"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:170
-msgid "Id"
-msgstr "Id"
 
 #: src/kvirc/kernel/kvi_options.cpp:784
 msgid "Ident message"
@@ -4116,7 +3339,7 @@ msgstr "Enviar una adre� fixa en les peticions"
 msgid "Identd socket error : dropping connection"
 msgstr "connexi�segura"
 
-#: src/modules/setup/setupwizard.cpp:417 src/modules/reguser/edituser.cpp:388
+#: src/modules/setup/setupwizard.cpp:417
 msgid "Identity"
 msgstr "Identitat"
 
@@ -4130,45 +3353,6 @@ msgid ""
 "If you dont want to encrypt a particular text line then just start it with "
 "the CTRL+P prefix"
 msgstr ""
-
-#: src/modules/reguser/edituser.cpp:484
-msgid "Ignore"
-msgstr "Ignorar"
-
-#: src/modules/reguser/edituser.cpp:478
-#, fuzzy
-msgid "Ignore DCCs"
-msgstr "Ignorar com a"
-
-#: src/modules/reguser/edituser.cpp:466
-#, fuzzy
-msgid "Ignore channel-messages"
-msgstr "Missatges privat/canal"
-
-#: src/modules/reguser/edituser.cpp:472
-#, fuzzy
-msgid "Ignore ctcp-messages"
-msgstr "Missatge d'usuari ignorat"
-
-#: src/modules/reguser/edituser.cpp:456
-#, fuzzy
-msgid "Ignore features"
-msgstr "Ignorar com a"
-
-#: src/modules/reguser/edituser.cpp:475
-#, fuzzy
-msgid "Ignore invites"
-msgstr "Ignorar com a"
-
-#: src/modules/reguser/edituser.cpp:469
-#, fuzzy
-msgid "Ignore notice-messages"
-msgstr "Missatge d'usuari ignorat"
-
-#: src/modules/reguser/edituser.cpp:463
-#, fuzzy
-msgid "Ignore query-messages"
-msgstr "Missatge d'usuari ignorat"
 
 #: src/kvirc/kernel/kvi_options.cpp:807
 msgid "Ignored user message"
@@ -4208,18 +3392,6 @@ msgstr "Ignorant PRIVMSG de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 #, fuzzy
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Ignorant PRIVMSG de \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
-
-#: src/modules/reguser/dialog.cpp:272
-msgid "Import From..."
-msgstr "Importar Des de..."
-
-#: src/modules/reguser/dialog.cpp:274
-msgid ""
-"Import entries from a file exported earlier by the \"export\" function of "
-"this dialog."
-msgstr ""
-"Importa les entrades des d'un arxiu exportat per la funci�\"Exportar\" "
-"d'aquest di�eg."
 
 #: src/modules/mircimport/libkvimircimport.cpp:326
 msgid "Import from http://www.mirc.co.uk/servers.ini"
@@ -4292,14 +3464,6 @@ msgstr ""
 msgid "Insert Icon"
 msgstr "Acci�d'usuari"
 
-#: src/modules/reguser/edituser.cpp:232
-msgid ""
-"Insert a mask for this user.<br>It can contain the wildcard characters '*' "
-"and '?'."
-msgstr ""
-"Insereix una m�cara per aquest usuari.<br>Aquesta pot contenir '*' i '?' com "
-"a car�ters comod�"
-
 #: src/kvirc/kernel/kvi_app_setup.cpp:481
 msgid "Install Package"
 msgstr ""
@@ -4320,7 +3484,7 @@ msgstr "Recursos insuficients per a completar l'operaci"
 msgid "Integer parameter expected"
 msgstr "S'esperava un par�etre enter"
 
-#: src/kvilib/file/kvi_packagefile.cpp:571 src/kvilib/core/kvi_error.cpp:52
+#: src/kvilib/core/kvi_error.cpp:52 src/kvilib/file/kvi_packagefile.cpp:571
 msgid "Internal error"
 msgstr "Error intern"
 
@@ -4330,15 +3494,10 @@ msgstr "Error intern"
 msgid "Internal error: I'm not in the user database ?"
 msgstr "Error intern: no estic a la base de dades d'usuari?"
 
-#: src/modules/action/libkviaction.cpp:377
 #: src/modules/addon/libkviaddon.cpp:529
+#: src/modules/action/libkviaction.cpp:377
 msgid "Internal error: call a head-shrinker"
 msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:107
-#, fuzzy
-msgid "Internal unique name for the action"
-msgstr "Si us plau, trii la icona per a la Barra d'Eines"
 
 #: src/modules/system/libkvisystem.cpp:464
 #, fuzzy
@@ -4363,10 +3522,6 @@ msgstr "Adre� IP no v�ida"
 #, fuzzy
 msgid "Invalid IRC context id '%Q'"
 msgstr "Id '%s' de context d'IRC no v�id"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-msgid "Invalid ToolBar Label"
-msgstr "Etiqueta de Barra d'Eines no v�ida"
 
 #: src/kvilib/net/kvi_http.cpp:160
 msgid "Invalid URL: Missing hostname"
@@ -4498,16 +3653,6 @@ msgstr "Opcions de color de context Irc (#RRGGBB)"
 msgid "It's so cold here..."
 msgstr "Fa tant de fred aqu�.."
 
-#: src/modules/popupeditor/popupeditor.cpp:79
-#: src/modules/popupeditor/popupeditor.cpp:209
-msgid "Item"
-msgstr "Element"
-
-#: src/modules/popupeditor/popupeditor.cpp:263
-#, fuzzy
-msgid "Item Id:"
-msgstr "Element"
-
 #: src/kvirc/kernel/kvi_coreactions.cpp:761
 msgid "Join Channel"
 msgstr "Unir-se a un Canal"
@@ -4631,23 +3776,9 @@ msgstr "Error greu en el nucli de xarxa"
 msgid "Key"
 msgstr "Clau"
 
-#: src/modules/actioneditor/actioneditor.cpp:178
-msgid "Key Sequence:"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_options.cpp:768
 msgid "Kick action"
 msgstr "Acci�expulsar"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:142
-#: src/modules/popupeditor/popupeditor.cpp:92
-msgid "Label"
-msgstr "Etiqueta"
-
-#: src/modules/actioneditor/actioneditor.cpp:109
-#, fuzzy
-msgid "Label:"
-msgstr "Etiqueta"
 
 #: src/modules/action/libkviaction.cpp:65
 msgid "Label: %Q"
@@ -4853,7 +3984,7 @@ msgstr "Ma&ximitzat"
 msgid "Make KVIrc default IRC client"
 msgstr ""
 
-#: src/modules/setup/setupwizard.cpp:395 src/kvirc/ui/kvi_console.cpp:323
+#: src/kvirc/ui/kvi_console.cpp:323 src/modules/setup/setupwizard.cpp:395
 #, fuzzy
 msgid "Male"
 msgstr "Valor"
@@ -4877,41 +4008,14 @@ msgstr "Carregant icones..."
 msgid "Manage Themes..."
 msgstr "Configurar Servidors"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
-msgid "Manually"
-msgstr "Manualment"
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:193
 msgid "Mask"
 msgstr "M�cara"
-
-#: src/modules/reguser/libkvireguser.cpp:354
-#, fuzzy
-msgid "Mask %Q already used to identify user %Q"
-msgstr "M�cara %s ja emprada per a identificar a l'usuari %s"
-
-#: src/modules/reguser/libkvireguser.cpp:221
-#, fuzzy
-msgid "Mask %Q is already used to identify user %s"
-msgstr "La m�cara %s ja s'empra per a identificar a l'usuari %s"
-
-#: src/modules/reguser/libkvireguser.cpp:409
-#, fuzzy
-msgid "Mask %Q not found"
-msgstr "M�cara %s no trobada"
-
-#: src/modules/reguser/edituser.cpp:228
-msgid "Mask Editor"
-msgstr "Editor de M�cares"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:73
 #, fuzzy
 msgid "Mask editor - KVirc"
 msgstr "Editor de M�cares"
-
-#: src/modules/reguser/edituser.cpp:358
-msgid "Masks:"
-msgstr "M�cares:"
 
 #: src/modules/links/linkswindow.cpp:312
 #, c-format
@@ -4988,16 +4092,6 @@ msgstr "Minimitza totes les finestres MDI actualment visibles"
 msgid "Mirccolor options (#RRGGBB)"
 msgstr "Opcions de color Mirc (#RRGGBB)"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1109
-#, fuzzy
-msgid "Missing Alias Name"
-msgstr "Falta el nom de l'�ies"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1177
-#, fuzzy
-msgid "Missing Namespace Name"
-msgstr "Falta el nom del cron�etre"
-
 #: src/kvirc/kernel/kvi_options.cpp:985
 msgid "Missing absolute directory for the theme information"
 msgstr ""
@@ -5066,10 +4160,6 @@ msgstr "Moderat"
 msgid "Modulo by zero"
 msgstr "M�ul per zero"
 
-#: src/modules/reguser/dialog.cpp:451
-msgid "Move to group"
-msgstr ""
-
 #: src/kvirc/ui/kvi_input.cpp:156
 #, fuzzy
 msgid "Multi-line Editor<br>&lt;Alt+Backspace&gt;"
@@ -5091,26 +4181,9 @@ msgstr "Els operadors num�ics no suporten operacions mltiples"
 msgid "Multiple user mode change"
 msgstr "Canvi mltiple del mode d'usuari"
 
-#: src/modules/actioneditor/actioneditor.cpp:764
-#: src/modules/actioneditor/actioneditor.cpp:765
-#, fuzzy
-msgid "My Action"
-msgstr "Accions IRC"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:501
-#: src/modules/toolbareditor/toolbareditor.cpp:502
-msgid "My ToolBar"
-msgstr "La meva Barra d'Eines"
-
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:77
-#: src/modules/reguser/dialog.cpp:81
 msgid "Name"
 msgstr "Nom"
-
-#: src/modules/actioneditor/actioneditor.cpp:103
-#: src/modules/reguser/edituser.cpp:342
-msgid "Name:"
-msgstr "Nom:"
 
 #: src/modules/addon/libkviaddon.cpp:147
 #, fuzzy
@@ -5121,33 +4194,6 @@ msgstr "Nom:"
 msgid "Names for \r!c\r%Q\r: %Q"
 msgstr "Noms per a \r!c\r%Q\r: %Q"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:453
-#: src/modules/aliaseditor/aliaseditor.cpp:1442
-#, fuzzy
-msgid "Namespace"
-msgstr "Tipus de missatge"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1368
-#, fuzzy
-msgid "Namespace already exists"
-msgstr "Adre� ja en s"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1191
-msgid ""
-"Namespace names can contain only letters, digits, underscores and '::' "
-"namespace separators"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:217
-#, fuzzy
-msgid "Needs IRC Connection"
-msgstr "Nou Context d'IRC"
-
-#: src/modules/actioneditor/actioneditor.cpp:206
-#, fuzzy
-msgid "Needs IRC Context"
-msgstr "Nou Context d'IRC"
-
 #: src/kvirc/kernel/kvi_irclink.cpp:389
 msgid "Negotiating relay information"
 msgstr "Negociant informacio de retransmissi"
@@ -5157,7 +4203,7 @@ msgstr "Negociant informacio de retransmissi"
 msgid "Netsplit detected: %s"
 msgstr "Netsplit detectat: %s"
 
-#: src/kvilib/system/kvi_locale.cpp:1076 src/kvirc/ui/kvi_statusbar.cpp:574
+#: src/kvirc/ui/kvi_statusbar.cpp:574 src/kvilib/system/kvi_locale.cpp:1076
 msgid "Network"
 msgstr "Xarxa"
 
@@ -5174,11 +4220,6 @@ msgstr "La xarxa � inaccessible"
 msgid "New &Connection To"
 msgstr "Nova &Connexi�a"
 
-#: src/modules/actioneditor/actioneditor.cpp:627
-#, fuzzy
-msgid "New Action"
-msgstr "Acci�d'usuari"
-
 #: src/kvilib/system/kvi_locale.cpp:1056
 msgid "New Bookmark Folder..."
 msgstr "Nou Directori de Marcadors..."
@@ -5191,85 +4232,9 @@ msgstr "Nou Directori"
 msgid "New Directory..."
 msgstr "Nou Directori..."
 
-#: src/modules/popupeditor/popupeditor.cpp:425
-msgid "New External Menu Above"
-msgstr "Nou Men Extern Sobre"
-
-#: src/modules/popupeditor/popupeditor.cpp:423
-msgid "New External Menu Below"
-msgstr "Nou Men Extern Sota"
-
-#: src/modules/popupeditor/popupeditor.cpp:428
-msgid "New External Menu Inside"
-msgstr "Nou Men Extern Dintre"
-
 #: src/kvirc/kernel/kvi_coreactions.cpp:418
 msgid "New IRC Context"
 msgstr "Nou Context d'IRC"
-
-#: src/modules/popupeditor/popupeditor.cpp:405
-msgid "New Item Above"
-msgstr "Nou Element Sobre"
-
-#: src/modules/popupeditor/popupeditor.cpp:403
-msgid "New Item Below"
-msgstr "Nou Element Sota"
-
-#: src/modules/popupeditor/popupeditor.cpp:408
-msgid "New Item Inside"
-msgstr "Nou Element Dintre"
-
-#: src/modules/popupeditor/popupeditor.cpp:395
-msgid "New Label Above"
-msgstr "Nova Etiqueta Sobre"
-
-#: src/modules/popupeditor/popupeditor.cpp:393
-msgid "New Label Below"
-msgstr "Nova Etiqueta Sota"
-
-#: src/modules/popupeditor/popupeditor.cpp:398
-msgid "New Label Inside"
-msgstr "Nova Etiqueta Dintre"
-
-#: src/modules/popupeditor/popupeditor.cpp:415
-msgid "New Menu Above"
-msgstr "Nou Men Sobre"
-
-#: src/modules/popupeditor/popupeditor.cpp:413
-msgid "New Menu Below"
-msgstr "Nou Men Sota"
-
-#: src/modules/popupeditor/popupeditor.cpp:478
-msgid "New Menu Epilogue"
-msgstr "Nou Ep�eg de Men"
-
-#: src/modules/popupeditor/popupeditor.cpp:418
-msgid "New Menu Inside"
-msgstr "Nou Men Dintre"
-
-#: src/modules/popupeditor/popupeditor.cpp:470
-msgid "New Menu Prologue"
-msgstr "Nou Pr�eg de Men"
-
-#: src/modules/raweditor/raweditor.cpp:232
-msgid "New Raw Event"
-msgstr "Nou Event Raw"
-
-#: src/modules/popupeditor/popupeditor.cpp:385
-msgid "New Separator Above"
-msgstr "Nou Separador Sobre"
-
-#: src/modules/popupeditor/popupeditor.cpp:383
-msgid "New Separator Below"
-msgstr "Nou Separador Sota"
-
-#: src/modules/popupeditor/popupeditor.cpp:388
-msgid "New Separator Inside"
-msgstr "Nou Separador Dintre"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:308
-msgid "New ToolBar"
-msgstr "Nova Barra d'Eines"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:77
 msgid "New mask must match an *!*@* expression"
@@ -5302,24 +4267,16 @@ msgstr "NickServ demana autentificaci� executant comanda programada"
 msgid "Nickname"
 msgstr "Nick"
 
-#: src/modules/reguser/wizard.cpp:228
-msgid "Nickname 2:"
-msgstr "Nick 2:"
-
 #: src/kvirc/kernel/kvi_options.cpp:753
 msgid "Nickname problem"
 msgstr "Problema amb el nick"
 
-#: src/modules/setup/setupwizard.cpp:339 src/modules/reguser/wizard.cpp:224
+#: src/modules/setup/setupwizard.cpp:339
 msgid "Nickname:"
 msgstr "Nick:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:385
-#: src/modules/toolbareditor/toolbareditor.cpp:410
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:785
 #: src/kvirc/ui/kvi_input.cpp:260 src/kvirc/ui/kvi_statusbar.cpp:572
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:785
 msgid "No"
 msgstr "No"
 
@@ -5349,11 +4306,6 @@ msgstr ""
 msgid "No channel topic is set"
 msgstr "No s'ha posat tema de canal"
 
-#: src/modules/reguser/dialog.cpp:131
-#, fuzzy
-msgid "No comment set"
-msgstr "No s'ha especificat una comanda"
-
 #: src/kvirc/ui/kvi_query.cpp:408
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "No hi ha canals comuns per a \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
@@ -5365,10 +4317,6 @@ msgstr "Sense connexi"
 #: src/modules/window/libkviwindow.cpp:1515
 msgid "No encrypt key specified: can't allocate engine"
 msgstr ""
-
-#: src/modules/reguser/dialog.cpp:683
-msgid "No entries selected."
-msgstr "No hi ha entrades triades."
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:241
 msgid "No external messages"
@@ -5384,38 +4332,13 @@ msgstr ""
 msgid "No host to resolve"
 msgstr "No hi ha tal m�uina"
 
-#: src/modules/eventeditor/eventeditor.cpp:369
-#: src/modules/aliaseditor/aliaseditor.cpp:261
-#: src/modules/aliaseditor/aliaseditor.cpp:1432
-#, fuzzy
-msgid "No item selected"
-msgstr "No hi ha entrades triades."
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:252
 msgid "No kicks able (unless U-Line)"
 msgstr "No es permeten expulsions (a menys que es posi una U-Line)"
 
-#: src/modules/reguser/libkvireguser.cpp:337
-#: src/modules/reguser/libkvireguser.cpp:402
-msgid "No mask specified"
-msgstr "M�cara no especificada"
-
 #: src/kvirc/ui/kvi_input_editor.cpp:1795
 msgid "No matches"
 msgstr "Sense coincid�cies"
-
-#: src/modules/reguser/libkvireguser.cpp:188
-#: src/modules/reguser/libkvireguser.cpp:268
-#: src/modules/reguser/libkvireguser.cpp:331
-#: src/modules/reguser/libkvireguser.cpp:451
-#: src/modules/reguser/libkvireguser.cpp:516
-#: src/modules/reguser/libkvireguser.cpp:690
-msgid "No name specified"
-msgstr "No s'ha especificat nom"
-
-#: src/modules/reguser/libkvireguser.cpp:696
-msgid "No property specified"
-msgstr "No s'ha especificat propietat"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:504
 msgid "No proxy hosts available, resuming direct connection"
@@ -5435,12 +4358,6 @@ msgstr ""
 #: src/modules/mircimport/libkvimircimport.cpp:251
 msgid "No servers imported"
 msgstr "No s'ha importat cap servidor"
-
-#: src/modules/regchan/libkviregchan.cpp:120
-#: src/modules/regchan/libkviregchan.cpp:177
-msgid "No such channel/netmask entry in the database"
-msgstr ""
-"No existeix una entrada per a aquest canal/m�cara de xarxa a la base de dades"
 
 #: src/kvilib/core/kvi_error.cpp:113
 msgid "No such file"
@@ -5539,16 +4456,6 @@ msgstr "No s�res sobre %Q (no hi ha connexi�"
 
 #: src/kvirc/ui/kvi_console.cpp:144 src/kvirc/ui/kvi_console.cpp:147
 msgid "Notify List"
-msgstr "Llista de Notificacions"
-
-#: src/modules/reguser/dialog.cpp:122
-#, fuzzy
-msgid "Notify as: "
-msgstr "Llista de Notificacions"
-
-#: src/modules/reguser/dialog.cpp:120
-#, fuzzy
-msgid "Notify disabled"
 msgstr "Llista de Notificacions"
 
 #: src/kvirc/kernel/kvi_options.cpp:760
@@ -5707,14 +4614,6 @@ msgstr ""
 "Llista de notificaci� Inconsist�cia inesperada, i la llista d'usuaris-"
 "m�uines est�buida!"
 
-#: src/modules/reguser/edituser.cpp:397
-msgid "Notify nicknames:"
-msgstr "Notificar nicks:"
-
-#: src/modules/reguser/edituser.cpp:394
-msgid "Notify when user is online"
-msgstr "Notificar quan l'usuari estigui connectat"
-
 #: src/modules/avatar/libkviavatar.cpp:412
 #, fuzzy
 msgid "Notifying avatar '%Q' to %Q"
@@ -5724,13 +4623,8 @@ msgstr "Notificant avatar '%s' a %s"
 msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: Operador d'IRC local (LOCOP)"
 
+#: src/kvirc/ui/kvi_cryptcontroller.cpp:129 src/kvirc/ui/kvi_htmldialog.cpp:92
 #: src/kvilib/system/kvi_locale.cpp:1026
-#: src/modules/toolbareditor/toolbareditor.cpp:186
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-#: src/modules/actioneditor/actioneditor.cpp:717
-#: src/modules/actioneditor/actioneditor.cpp:865
-#: src/kvirc/ui/kvi_htmldialog.cpp:92 src/kvirc/ui/kvi_cryptcontroller.cpp:129
 msgid "OK"
 msgstr "Acceptar"
 
@@ -5742,30 +4636,10 @@ msgstr "Flux de bytes (desconegut)"
 msgid "Often used directories"
 msgstr "Directoris usats m� freqentment"
 
-#: src/modules/eventeditor/eventeditor.cpp:492
-#: src/modules/raweditor/raweditor.cpp:469
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1136
-#: src/modules/popupeditor/popupeditor.cpp:1183
-#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_imagedialog.cpp:158
-#: src/kvirc/ui/kvi_ircview.cpp:2130
+#: src/kvirc/ui/kvi_maskeditor.cpp:83 src/kvirc/ui/kvi_ircview.cpp:2130
+#: src/kvirc/ui/kvi_imagedialog.cpp:158
 msgid "Ok"
 msgstr "Acceptar"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1111
-#: src/modules/aliaseditor/aliaseditor.cpp:1124
-#: src/modules/aliaseditor/aliaseditor.cpp:1138
-#: src/modules/aliaseditor/aliaseditor.cpp:1149
-#: src/modules/aliaseditor/aliaseditor.cpp:1179
-#: src/modules/aliaseditor/aliaseditor.cpp:1192
-#: src/modules/aliaseditor/aliaseditor.cpp:1206
-#: src/modules/aliaseditor/aliaseditor.cpp:1217
-#: src/modules/aliaseditor/aliaseditor.cpp:1358
-#: src/modules/aliaseditor/aliaseditor.cpp:1370
-msgid "Ok, Let me try again..."
-msgstr ""
 
 #: src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
@@ -5809,12 +4683,6 @@ msgstr "Conectat durant"
 msgid "Only 7-bit letters in nicknames allowed"
 msgstr ""
 
-#: src/modules/actioneditor/actioneditor.cpp:246
-#: src/modules/actioneditor/actioneditor.cpp:257
-#: src/modules/actioneditor/actioneditor.cpp:268
-msgid "Only If There Are Selected Users"
-msgstr ""
-
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:251
 msgid "Only registered nicks can join"
 msgstr "Nom� poden unir-se els nicks registrats"
@@ -5846,10 +4714,6 @@ msgstr "S'esperava la clau d'apertura"
 #: src/kvilib/core/kvi_error.cpp:114
 msgid "Open parenthesis expected"
 msgstr "S'esperava par�tesis d'apertura"
-
-#: src/modules/reguser/dialog.cpp:241
-msgid "Open the edit dialog to create a new user entry."
-msgstr "Obrir el di�eg d'edici�per a crear una nova entrada d'usuari."
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:315
 #: src/kvirc/kernel/kvi_app_setup.cpp:376
@@ -5885,8 +4749,8 @@ msgid "Operation timed out (while selecting for read)"
 msgstr ""
 "Ha expirat  el temps per a l'operaci�(mentre es feia un select de lectura)"
 
-#: src/modules/iograph/libkviiograph.cpp:261
 #: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
+#: src/modules/iograph/libkviiograph.cpp:261
 msgid "Ops.. internal error"
 msgstr "Ups... error intern"
 
@@ -5939,15 +4803,6 @@ msgstr ""
 "Ups... sembla que tens una distribuci�defectuosa.\n"
 "El m�ul de configuraci�no exporta la funci�\"setup_finish\".\n"
 "Intentant continuar de totes formes..."
-
-#: src/modules/actioneditor/actioneditor.cpp:184
-msgid ""
-"Optional keyboard sequence that will activate this action.<br>The sequence "
-"should be expressed as a string of up to four key codes separated by commas "
-"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta"
-"\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
-"Ctrl+C\" ..."
-msgstr ""
 
 #: src/kvirc/ui/kvi_toolbar.cpp:88
 msgid "Orientation"
@@ -6022,10 +4877,6 @@ msgstr "Tema guardat satisfactoriament a"
 msgid "Packaging file %Q"
 msgstr ""
 
-#: src/modules/codetester/codetester.cpp:61
-msgid "Params:"
-msgstr "Par�etres:"
-
 #: src/kvilib/system/kvi_locale.cpp:1048
 msgid "Parent Directory"
 msgstr "Directori Pare"
@@ -6064,14 +4915,6 @@ msgstr "Enganxar Dintre"
 msgid "Paste (Slowly)"
 msgstr "Enganxar (lentament)"
 
-#: src/modules/popupeditor/popupeditor.cpp:453
-msgid "Paste Above"
-msgstr "Enganxar Sobre"
-
-#: src/modules/popupeditor/popupeditor.cpp:458
-msgid "Paste Inside"
-msgstr "Enganxar Dintre"
-
 #: src/kvirc/kernel/kvi_sslmaster.cpp:83
 msgid "Peer X509 certificate"
 msgstr "Certificat X509 de l'altre part"
@@ -6106,40 +4949,6 @@ msgstr ""
 "en ment. Podr�canviar-ho m� tard a les propietats del di�eg identitat, o amb "
 "la comanda /NICK."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:228
-msgid "Please choose the icon for the ToolBar"
-msgstr "Si us plau, trii la icona per a la Barra d'Eines"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1250
-#, fuzzy
-msgid "Please enter the name for the new alias"
-msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1275
-#, fuzzy
-msgid "Please enter the name for the new namespace"
-msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1342
-#, fuzzy
-msgid "Please enter the new name for the alias"
-msgstr "Si us plau, trii la icona per a la Barra d'Eines"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1344
-#, fuzzy
-msgid "Please enter the new name for the namespace"
-msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:610
-msgid ""
-"Please enter the text to be searched for. The matching aliases will be "
-"highlighted."
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1026
-msgid "Please note that all the children items will be deleted too."
-msgstr ""
-
 #: src/modules/avatar/libkviavatar.cpp:73
 msgid ""
 "Please select an avatar image. The full path to a local file or an image on "
@@ -6155,14 +4964,6 @@ msgstr ""
 #: src/modules/addon/managementdialog.cpp:283
 msgid "Please select the addon installation file"
 msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:500
-msgid "Please specify the properties for the new toolbar"
-msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:474
-msgid "Please specify the properties for the toolbar \"%1\""
-msgstr "Per favor, especifiqui les propietats de la barra d'eines \"%1\""
 
 #: src/modules/mircimport/libkvimircimport.cpp:169
 msgid "Please wait while the list is being downloaded"
@@ -6199,18 +5000,6 @@ msgstr ""
 "l'emprar�per al xifrat i desxifrat.\n"
 "Llegeixis la documentaci�del m�ul rijndael\n"
 "per a obtenir m� informaci�sobre l'algoritme emprat.\n"
-
-#: src/modules/popupeditor/popupeditor.cpp:1033
-msgid "Popup"
-msgstr "Men emergent"
-
-#: src/modules/popupeditor/popupeditor.cpp:1373
-msgid "Popup Editor"
-msgstr "Editor de mens emergents"
-
-#: src/modules/popupeditor/popupeditor.cpp:195
-msgid "Popup name"
-msgstr "Nom de men emergent"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2265 src/kvirc/ui/kvi_ircview.cpp:2318
 #, c-format
@@ -6273,26 +5062,9 @@ msgstr "Processant llista: %Q"
 msgid "Profile"
 msgstr "Pr�eg"
 
-#: src/modules/popupeditor/popupeditor.cpp:100
-msgid "Prologue"
-msgstr "Pr�eg"
-
-#: src/modules/actioneditor/actioneditor.cpp:197
-#: src/modules/reguser/edituser.cpp:448
-msgid "Properties"
-msgstr "Propietats"
-
 #: src/kvilib/system/kvi_locale.cpp:1082
 msgid "Properties..."
 msgstr "Propietats..."
-
-#: src/modules/reguser/edituser.cpp:90
-msgid "Property"
-msgstr "Propietat"
-
-#: src/modules/reguser/edituser.cpp:78
-msgid "Property Editor"
-msgstr "Editor de Propietats"
 
 #: src/kvilib/net/kvi_http.cpp:793
 msgid "Protocol error: invalid chunk size"
@@ -6395,11 +5167,6 @@ msgstr "Resposta del proxy: dest�de dades OK: Acc� perm�"
 msgid "Proxy said something about: \n"
 msgstr "El proxy ha dit alguna cosa de \""
 
-#: src/modules/actioneditor/actioneditor.cpp:766
-#, fuzzy
-msgid "Put here a short description of your action"
-msgstr "<center>Posi aqu�una breu descripci�de la xarxa.</center>"
-
 #: src/kvirc/ui/kvi_query.cpp:101
 msgid "Query Targets"
 msgstr "Destins per a Privats"
@@ -6457,32 +5224,14 @@ msgstr "Sortir amb el missatge de netsplit"
 msgid "Quits KVIrc closing all the current connections"
 msgstr "Sortir de KVIrc tancant totes les connexions actuals"
 
-#: src/modules/raweditor/raweditor.cpp:537
-msgid "Raw Editor"
-msgstr "Editor Raw"
-
-#: src/modules/raweditor/raweditor.cpp:94
-msgid "Raw Event"
-msgstr "Events Raw"
-
 #: src/kvirc/kernel/kvi_options.cpp:709
 msgid "Raw data to server"
 msgstr "Dades raw al servidor"
 
-#: src/modules/reguser/dialog.cpp:249 src/modules/reguser/edituser.cpp:375
 #: src/kvirc/ui/kvi_selectors.cpp:385 src/kvirc/ui/kvi_selectors.cpp:731
 #: src/kvirc/ui/kvi_maskeditor.cpp:205
 msgid "Re&move"
 msgstr "Eli&minar"
-
-#: src/modules/eventeditor/eventeditor.cpp:206
-#: src/modules/raweditor/raweditor.cpp:174
-msgid "Re&move Handler"
-msgstr "Eli&minar Manipulador"
-
-#: src/modules/popupeditor/popupeditor.cpp:1102
-msgid "Re&move Popup"
-msgstr "Eli&minar men emergent"
 
 #: src/modules/file/libkvifile.cpp:740
 #, fuzzy
@@ -6597,34 +5346,14 @@ msgstr "Registrat"
 msgid "Registered Channels"
 msgstr "Canals Registrats"
 
-#: src/modules/reguser/edituser.cpp:336
-msgid "Registered User Entry"
-msgstr "Entrada d'Usuaris Registrats"
-
-#: src/modules/reguser/dialog.cpp:216
-msgid "Registered Users - KVIrc"
-msgstr "Usuaris registrats - KVIrc"
-
 #: src/kvirc/ui/kvi_console.cpp:332
 msgid "Registered as"
 msgstr "Registrat com a"
-
-#: src/modules/regchan/libkviregchan.cpp:197
-msgid "Registered channel list:"
-msgstr "Llista de canals registrats:"
 
 #: src/kvirc/kernel/kvi_lagmeter.cpp:186
 #, c-format
 msgid "Registered lag check with reliability %u (%s)"
 msgstr "Comprobaci�de retr� registrada amb fiabilitat %u (%s)"
-
-#: src/modules/reguser/libkvireguser.cpp:801
-msgid "Registered users database dump:"
-msgstr "Volcat d'usuaris registrats de la base de dades."
-
-#: src/modules/reguser/wizard.cpp:258
-msgid "Registration Complete"
-msgstr "Registre completat"
 
 #: src/kvilib/system/kvi_locale.cpp:1051
 msgid "Reload"
@@ -6647,45 +5376,6 @@ msgstr "Assistent d'Importaci�remota de servers.ini de mIRC"
 #: src/kvirc/ui/kvi_statusbar.cpp:343
 msgid "Remove %Q"
 msgstr "Treure %Q"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:536
-#, fuzzy
-msgid "Remove Selected"
-msgstr "Elimina&r Seleccionades"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#, fuzzy
-msgid "Remove item"
-msgstr "Treure %Q"
-
-#: src/modules/reguser/dialog.cpp:252
-msgid "Remove the currently selected entries."
-msgstr "Borrar les entrades actualment triades."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:262
-#, fuzzy
-msgid "Rename"
-msgstr "Nom real:"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1342
-#, fuzzy
-msgid "Rename Alias"
-msgstr "Eli&minar �ies"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1344
-#, fuzzy
-msgid "Rename Namespace"
-msgstr "Tipus de missatge"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#, fuzzy
-msgid "Replace file"
-msgstr "Respostes"
-
-#: src/modules/editor/scripteditor.cpp:999
-#, fuzzy
-msgid "Replace with"
-msgstr "Respostes"
 
 #: src/kvirc/ui/kvi_menubar.cpp:147
 msgid "Report a Bug / Propose Improvements"
@@ -6793,7 +5483,6 @@ msgstr "Scri&pting"
 msgid "Script"
 msgstr "Script"
 
-#: src/modules/codetester/codetester.cpp:109
 #: src/kvirc/kernel/kvi_coreactions.cpp:303
 msgid "Script Tester"
 msgstr "Comprovador d'Script"
@@ -6819,7 +5508,7 @@ msgstr "Accions relacionades amb els scripts"
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
-#: src/modules/help/helpwindow.cpp:100 src/kvirc/kernel/kvi_options.cpp:810
+#: src/kvirc/kernel/kvi_options.cpp:810 src/modules/help/helpwindow.cpp:100
 msgid "Search"
 msgstr "Cerca"
 
@@ -6936,9 +5625,8 @@ msgstr "Enviats usuari i clau, esperant confirmaci"
 msgid "Separate Directories"
 msgstr "Separar Directoris"
 
-#: src/modules/popupeditor/popupeditor.cpp:89
-#: src/kvirc/kernel/kvi_coreactions.cpp:508
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:649
+#: src/kvirc/kernel/kvi_coreactions.cpp:508
 msgid "Separator"
 msgstr "Separador"
 
@@ -7037,7 +5725,7 @@ msgstr "&No Triar Res"
 msgid "Set at"
 msgstr "Posat el"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:194 src/kvirc/ui/kvi_topicw.cpp:531
+#: src/kvirc/ui/kvi_topicw.cpp:531 src/kvirc/ui/kvi_maskeditor.cpp:194
 msgid "Set by"
 msgstr "Posat per"
 
@@ -7267,11 +5955,6 @@ msgstr "Enganxat lent ID:%d Finestra:%s"
 msgid "Small (22x22)"
 msgstr "Petit (22x22)"
 
-#: src/modules/actioneditor/actioneditor.cpp:148
-#, fuzzy
-msgid "Small Icon:"
-msgstr "Icones Petites"
-
 #: src/kvilib/system/kvi_locale.cpp:1081
 msgid "Small Icons"
 msgstr "Icones Petites"
@@ -7387,9 +6070,9 @@ msgstr "Dividir Vista"
 msgid "Split message"
 msgstr "Missatge de divisi"
 
+#: src/modules/mircimport/libkvimircimport.cpp:100
 #: src/kvilib/irc/kvi_ircserverdb.cpp:290
 #: src/kvilib/irc/kvi_ircserverdb.cpp:293
-#: src/modules/mircimport/libkvimircimport.cpp:100
 #, fuzzy
 msgid "Standalone Servers"
 msgstr "Colors Est�dard"
@@ -7417,7 +6100,7 @@ msgstr "Continuant connexi�directa al servidor"
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr "Continuant connexi�directa al servidor"
 
-#: src/kvirc/ui/kvi_query.cpp:868 src/kvirc/ui/kvi_channel.cpp:1880
+#: src/kvirc/ui/kvi_channel.cpp:1880 src/kvirc/ui/kvi_query.cpp:868
 #, fuzzy
 msgid "Starting last log"
 msgstr "Iniciant la llista de notificaci"
@@ -7425,22 +6108,6 @@ msgstr "Iniciant la llista de notificaci"
 #: src/kvirc/kernel/kvi_notifylist.cpp:946
 msgid "Starting notify list"
 msgstr "Iniciant la llista de notificaci"
-
-#: src/modules/reguser/wizard.cpp:97
-msgid "Step 1: Entry Name"
-msgstr "Pas 1: Nom Entrada"
-
-#: src/modules/reguser/wizard.cpp:171
-msgid "Step 2: Mask Selection"
-msgstr "Pas 2: Selecci�de m�cara"
-
-#: src/modules/reguser/wizard.cpp:197
-msgid "Step 3: Avatar Selection"
-msgstr "Pas 3: Selecci�de l'Avatar"
-
-#: src/modules/reguser/wizard.cpp:242
-msgid "Step 4: Notify List"
-msgstr "Pas 4: Llista de Notificacions"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:733
 #, fuzzy
@@ -7457,24 +6124,10 @@ msgstr "Descarrega la Llista"
 msgid "Stopping the list download..."
 msgstr "Descarrega la Llista"
 
-#: src/modules/reguser/wizard.cpp:192
-msgid "Store an avatar for this user"
-msgstr "Emmagatzemar un avatar per aquest usuari"
-
 #: src/modules/setup/setupwizard.cpp:235
 #, fuzzy
 msgid "Store configuration in folder"
 msgstr "<b>Guardar la configuraci�al directori:</b>"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1137
-msgid ""
-"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1205
-msgid ""
-"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr ""
 
 #: src/kvilib/net/kvi_http.cpp:705 src/kvilib/net/kvi_http.cpp:847
 msgid "Stream exceeded expected length"
@@ -7500,11 +6153,7 @@ msgstr "Opcions de cadena (valor de la cadena)"
 msgid "Strip colors"
 msgstr "Treure colors"
 
-#: src/modules/popupeditor/popupeditor.cpp:82
-msgid "Submenu"
-msgstr "Submen"
-
-#: src/kvirc/kernel/kvi_coreactions.cpp:336 src/kvirc/ui/kvi_menubar.cpp:145
+#: src/kvirc/ui/kvi_menubar.cpp:145 src/kvirc/kernel/kvi_coreactions.cpp:336
 msgid "Subscribe to the Mailing List"
 msgstr "Subscriure's a la Llista de Correu"
 
@@ -7540,10 +6189,6 @@ msgstr "Terminal"
 msgid "Terminal emulator"
 msgstr "Emulador de terminal"
 
-#: src/modules/popupeditor/popupeditor.cpp:199
-msgid "Test"
-msgstr "Prova"
-
 #: src/modules/options/optw_texticons.cpp:80
 #, fuzzy
 msgid "Text"
@@ -7558,10 +6203,6 @@ msgstr "Codificaci�de Text"
 msgid "Text Encoding Server message"
 msgstr "Missatge d'error al unir-se"
 
-#: src/modules/popupeditor/popupeditor.cpp:228
-msgid "Text:"
-msgstr "Text:"
-
 #: src/modules/system/libkvisystem.cpp:525
 #, c-format
 msgid "The DBus call returned an error \"%s\": %s"
@@ -7571,10 +6212,6 @@ msgstr ""
 #, fuzzy
 msgid "The SOCKSv4 protocol lacks IPv6 support"
 msgstr "El protocol SOCKSV4 no t�suport IPv6"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-msgid "The ToolBar Label can't be empty!"
-msgstr "L'etiqueta de la Barra d'Eines no pot estar buida!"
 
 #: src/modules/action/libkviaction.cpp:115
 #: src/modules/action/libkviaction.cpp:161
@@ -7627,12 +6264,6 @@ msgstr "L'acci�\"%1\" no existeix"
 #: src/modules/objects/class_multilineedit.cpp:805
 #: src/modules/objects/class_multilineedit.cpp:1005
 msgid "The array passed as parameter must contain at least 3 elements"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:172
-msgid ""
-"The big icon associated to this action.<br>It will appear at least in the "
-"toolbar buttons when this action is inserted.<br>It should be 32x32 pixels."
 msgstr ""
 
 #: src/modules/help/helpwindow.cpp:191
@@ -7719,31 +6350,10 @@ msgstr ""
 msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:790
-msgid "The exported file would be empty: cowardly refusing to write it"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:743
-#, fuzzy
-msgid "The file \"%Q\" exists. Do you want to replace it ?"
-msgstr "El arxiu %s ja existeix.<br>Sobreescriure-ho?"
-
 #: src/kvirc/ui/kvi_filedialog.cpp:120 src/kvirc/ui/kvi_filedialog.cpp:165
 #, c-format
 msgid "The file %s already exists.<br>Do you wish to overwrite it?"
 msgstr "El arxiu %s ja existeix.<br>Sobreescriure-ho?"
-
-#: src/modules/reguser/dialog.cpp:814
-#, c-format
-msgid "The file %s contains an invalid registered users database version."
-msgstr ""
-"L'arxiu %s cont�una versi�no v�ida de la base de dades d'usuaris registrats."
-
-#: src/modules/reguser/dialog.cpp:807
-#, c-format
-msgid "The file %s doesn't appear to be a valid registered users database."
-msgstr ""
-"L'arxiu %s no semblar ser una base de dades d'usuaris registrats v�ida."
 
 #: src/kvilib/file/kvi_packagefile.cpp:610
 #, fuzzy
@@ -7916,12 +6526,6 @@ msgid ""
 "couln't be found in the database"
 msgstr ""
 
-#: src/modules/actioneditor/actioneditor.cpp:156
-msgid ""
-"The small icon associated to this action.<br>It will appear at least in the "
-"popup menus when this action is inserted.<br>It should be 16x16 pixels."
-msgstr ""
-
 #: src/modules/window/libkviwindow.cpp:1135
 msgid "The specified IRC context is not valid: creating a context free window"
 msgstr ""
@@ -7931,16 +6535,6 @@ msgstr ""
 #, fuzzy
 msgid "The specified KVIrc version \"%Q\" is not a valid version string"
 msgstr "El temps UNIX especificat no � v�id (%s)"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:266
-msgid ""
-"The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
-"it automatically (so it doesn't collide with any other toolbar) or you "
-"prefer to do it manually ?"
-msgstr ""
-"L'Id de la Barra d'Eines especificada existeix.<br>Vol que KVIrc assigni un "
-"autom�icament (per a que no coincideixi amb alguna altre barra d'eines) o "
-"vols fer-ho manualment?"
 
 #: src/kvirc/kernel/kvi_ircconnectiontargetresolver.cpp:498
 msgid "The specified bind address (%Q) is not valid"
@@ -8094,11 +6688,6 @@ msgstr "Existeixen connexions actives, est�segur que dessitja "
 msgid "There is no $this pointer in this scope (unexpected @)"
 msgstr "No hi ha un punter $this en aquest �bit (@ inesperat)"
 
-#: src/modules/aliaseditor/aliaseditor.cpp:716
-#, fuzzy
-msgid "There is no selection!"
-msgstr "No hi ha connexi�que acceptar!"
-
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
 msgstr "Aquest executable de KVirc no t�suport IPv6"
@@ -8149,11 +6738,6 @@ msgid ""
 "This module was compiled for a different KVIrc version and can't be loaded"
 msgstr ""
 
-#: src/modules/aliaseditor/aliaseditor.cpp:1357
-#: src/modules/aliaseditor/aliaseditor.cpp:1369
-msgid "This name is already in use. Please choose another one."
-msgstr ""
-
 #: src/kvirc/ui/kvi_optionswidget.cpp:49
 msgid "This option is also available as"
 msgstr "Aquesta opci�tamb�est�disponible com a"
@@ -8184,14 +6768,6 @@ msgstr "El servidor suporta: %s"
 #: src/modules/trayicon/libkvitrayicon.cpp:170
 msgid "This silence is freaking me out!"
 msgstr "Aquest silenci m'est�tornant boig!"
-
-#: src/modules/actioneditor/actioneditor.cpp:247
-#: src/modules/actioneditor/actioneditor.cpp:258
-#: src/modules/actioneditor/actioneditor.cpp:269
-msgid ""
-"This will enable the action only if there are selected users in the active "
-"window"
-msgstr ""
 
 #: src/modules/my/libkvimy.cpp:47
 msgid "This window has no associated irc context"
@@ -8235,16 +6811,7 @@ msgstr "El tema per a \r!c\r%Q\r �: %Q"
 msgid "Tip: %Q"
 msgstr "Llista: %Q"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:407
-#, fuzzy
-msgid "ToolBar Export"
-msgstr "Applets de Barra d'eines"
-
-#: src/modules/toolbareditor/toolbareditor.cpp:133
-msgid "ToolBar Properties"
-msgstr "Propietats de la Barra d'Eines"
-
-#: src/kvirc/ui/kvi_menubar.cpp:183 src/kvirc/ui/kvi_toolbar.cpp:86
+#: src/kvirc/ui/kvi_toolbar.cpp:86 src/kvirc/ui/kvi_menubar.cpp:183
 msgid "Toolbars"
 msgstr "Barres d'eines"
 
@@ -8294,11 +6861,6 @@ msgstr "El tema va ser posat per \r!n\r%Q\r!%Q@\r!h\r%Q\r"
 msgid "Topic was set by %Q on %Q"
 msgstr "El tema va ser posat per \r!n\r%Q\r!%Q@\r!h\r%Q\r el %Q"
 
-#: src/modules/regchan/libkviregchan.cpp:219
-#, c-format
-msgid "Total %d channels"
-msgstr "Total %d canals"
-
 #: src/modules/links/linkswindow.cpp:302
 msgid "Total hosts in the network"
 msgstr "Total de m�uines a la xarxa"
@@ -8317,11 +6879,6 @@ msgstr "Enlla�s totals: %d"
 msgid "Total: %d addons installed"
 msgstr "Total m�uines llistades"
 
-#: src/modules/reguser/libkvireguser.cpp:840
-#, c-format
-msgid "Total: %d matching users (of %d in the database)"
-msgstr "Total: %d usuaris coincidents (de %d a la base de dades)"
-
 #: src/kvirc/ui/kvi_selectors.cpp:604
 msgid "Transparent"
 msgstr "Transparent"
@@ -8329,10 +6886,6 @@ msgstr "Transparent"
 #: src/kvirc/kernel/kvi_irccontext.cpp:651
 msgid "Try reconnecting with caching disabled"
 msgstr "Intenta reconectar amb la cach�desactivada"
-
-#: src/modules/popupeditor/popupeditor.cpp:209
-msgid "Type"
-msgstr "Tipus"
 
 #: src/kvilib/core/kvi_error.cpp:148
 msgid "UNUSED"
@@ -8444,43 +6997,6 @@ msgstr "No puc iniciar la cerca DNS"
 msgid "Unable to start the request slave thread"
 msgstr "No s'ha pogut iniciar el fil esclau de peticions"
 
-#: src/modules/actioneditor/actioneditor.cpp:717
-#, fuzzy
-msgid "Unable to write to the actions file."
-msgstr "No ha estat possible escriure en l'arxiu d'�ies."
-
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1183
-msgid "Unable to write to the alias file."
-msgstr "No ha estat possible escriure en l'arxiu d'�ies."
-
-#: src/modules/eventeditor/eventeditor.cpp:454
-msgid "Unable to write to the event file."
-msgstr "No ha estat possible escriure en l'arxiu d'events."
-
-#: src/modules/eventeditor/eventeditor.cpp:492
-msgid "Unable to write to the events file."
-msgstr "No ha estat possible escriure en l'arxiu d'events."
-
-#: src/modules/popupeditor/popupeditor.cpp:1136
-msgid "Unable to write to the popup file."
-msgstr "Impossible escriure en l'arxiu de men emergent."
-
-#: src/modules/raweditor/raweditor.cpp:429
-#, fuzzy
-msgid "Unable to write to the raw event file."
-msgstr "No ha estat possible escriure en l'arxiu d'events."
-
-#: src/modules/raweditor/raweditor.cpp:469
-#, fuzzy
-msgid "Unable to write to the raw events file."
-msgstr "No ha estat possible escriure en l'arxiu d'events."
-
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-#, fuzzy
-msgid "Unable to write to the toolbar file."
-msgstr "No ha estat possible escriure en l'arxiu d'�ies."
-
 #: src/kvirc/kernel/kvi_options.cpp:802
 msgid "Unban matching my mask"
 msgstr "Desbanejar concordant amb la meva m�cara"
@@ -8546,9 +7062,9 @@ msgstr "Treure ressaltat de totes les finestres"
 msgid "Uninstalling existing addon version %Q"
 msgstr ""
 
-#: src/kvilib/net/kvi_ssl.cpp:583 src/kvilib/net/kvi_ssl.cpp:613
-#: src/kvilib/net/kvi_ssl.cpp:636 src/modules/upnp/rootservice.cpp:172
-#: src/kvirc/kernel/kvi_theme.cpp:86 src/kvirc/ui/kvi_topicw.cpp:149
+#: src/kvirc/ui/kvi_topicw.cpp:149 src/kvirc/kernel/kvi_theme.cpp:86
+#: src/modules/upnp/rootservice.cpp:172 src/kvilib/net/kvi_ssl.cpp:583
+#: src/kvilib/net/kvi_ssl.cpp:613 src/kvilib/net/kvi_ssl.cpp:636
 msgid "Unknown"
 msgstr "Desconegut"
 
@@ -8575,8 +7091,8 @@ msgstr "Comanda desconeguda"
 msgid "Unknown engine error"
 msgstr "Error desconegut"
 
-#: src/kvilib/core/kvi_error.cpp:51
 #: src/modules/rijndael/libkvirijndael.cpp:173
+#: src/kvilib/core/kvi_error.cpp:51
 msgid "Unknown error"
 msgstr "Error desconegut"
 
@@ -8716,11 +7232,6 @@ msgstr "No s'ha posat tema per al canal \r!c\r%Q\r"
 msgid "Use Default Encoding"
 msgstr "Emprar Codificaci�per Defecte"
 
-#: src/modules/reguser/edituser.cpp:433
-#, fuzzy
-msgid "Use custom color in userlist"
-msgstr "Emprar un nivell d'alerta personalitzat"
-
 #: src/kvirc/ui/kvi_maskeditor.cpp:182
 #, fuzzy
 msgid "Use doubleclick to edit item"
@@ -8739,14 +7250,6 @@ msgstr ""
 msgid "Use the crypt engine"
 msgstr "Utilitzar el motor de xifrat"
 
-#: src/modules/reguser/libkvireguser.cpp:344
-#: src/modules/reguser/libkvireguser.cpp:458
-#: src/modules/reguser/libkvireguser.cpp:523
-#: src/modules/reguser/libkvireguser.cpp:703
-#, fuzzy
-msgid "User %Q not found"
-msgstr "Usuari %s no trobat"
-
 #: src/kvirc/ui/kvi_channel.cpp:154 src/kvirc/ui/kvi_channel.cpp:194
 msgid "User List"
 msgstr "Llista d'Usuaris"
@@ -8760,17 +7263,9 @@ msgstr "Mode d'usuari"
 msgid "User Modes"
 msgstr "Mode d'usuari"
 
-#: src/modules/reguser/wizard.cpp:77
-msgid "User Registration Wizard - KVIrc"
-msgstr "Assistent de Registre d'Usuaris - KVIrc"
-
 #: src/kvirc/kernel/kvi_options.cpp:729
 msgid "User action"
 msgstr "Acci�d'usuari"
-
-#: src/modules/reguser/libkvireguser.cpp:208
-msgid "User already registered: found exact name match"
-msgstr "Usuari ja registrat: s'ha trobat coincid�cia exacta amb el nom"
 
 #: src/kvirc/ui/kvi_input.cpp:142
 msgid "User friendly commandline mode<br>See also /help commandline"
@@ -8779,11 +7274,6 @@ msgstr ""
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:594
 msgid "User mode for \r!n\r%Q\r is %s"
 msgstr "Mode d'usuari per a \r!n\r%Q\r � %s"
-
-#: src/modules/reguser/libkvireguser.cpp:274
-#, fuzzy
-msgid "User not found (%Q)"
-msgstr "Usuari no trobat (%s)"
 
 #: src/kvirc/kernel/kvi_options.cpp:822
 msgid "User-deop mode change"
@@ -8875,10 +7365,6 @@ msgstr "Utilitzant el nom d'usuari especific del servidor (%Q)"
 msgid "Valid name but the host has no IP address"
 msgstr "Nom v�id per�la m�uina no t�adre� IP"
 
-#: src/modules/reguser/edituser.cpp:91
-msgid "Value"
-msgstr "Valor"
-
 #: src/kvilib/core/kvi_error.cpp:160
 msgid "Variable expected"
 msgstr "S'esperava una variable"
@@ -8903,18 +7389,6 @@ msgstr "Activitat molt baixa"
 #, fuzzy
 msgid "View URL list"
 msgstr "Mostrar Llista d'URL"
-
-#: src/modules/actioneditor/actioneditor.cpp:113
-msgid ""
-"Visible name for this action.<br>This string will be displayed to the user "
-"so it is a good idea to use $tr() here"
-msgstr ""
-
-#: src/modules/actioneditor/actioneditor.cpp:146
-msgid ""
-"Visible short description for this action.<br>This string will be displayed "
-"to the user so it is a good idea to use $tr() here"
-msgstr ""
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:231
 msgid "Voiced users"
@@ -8942,9 +7416,9 @@ msgstr "Wallops (+w)"
 msgid "Wallops message"
 msgstr "Missatge a wallops"
 
-#: src/modules/mircimport/libkvimircimport.cpp:116
 #: src/modules/url/libkviurl.cpp:233 src/modules/url/libkviurl.cpp:312
 #: src/modules/url/libkviurl.cpp:497
+#: src/modules/mircimport/libkvimircimport.cpp:116
 msgid "Warning - KVIrc"
 msgstr "Advert�cia - KVIrc"
 
@@ -9038,22 +7512,6 @@ msgstr "Finestra amb ID '%s' no trobada"
 msgid "Window with id '%Q' not found, returning empty string"
 msgstr "Finestra amb id '%s' no trobada, retornant la cadena buida"
 
-#: src/modules/editor/scripteditor.cpp:989
-msgid "Word to Find"
-msgstr ""
-
-#: src/modules/toolbareditor/toolbareditor.cpp:464
-#: src/modules/actioneditor/actioneditor.cpp:717
-#: src/modules/eventeditor/eventeditor.cpp:454
-#: src/modules/eventeditor/eventeditor.cpp:492
-#: src/modules/raweditor/raweditor.cpp:429
-#: src/modules/raweditor/raweditor.cpp:469
-#: src/modules/aliaseditor/aliaseditor.cpp:820
-#: src/modules/popupeditor/popupeditor.cpp:1136
-#: src/modules/popupeditor/popupeditor.cpp:1183
-msgid "Write Failed - KVIrc"
-msgstr "Errada d'Escriptura - KVIrc"
-
 #: src/kvilib/file/kvi_packagefile.cpp:522
 msgid "Writing informational fields"
 msgstr ""
@@ -9066,20 +7524,10 @@ msgstr ""
 msgid "Writing package header"
 msgstr ""
 
-#: src/modules/toolbareditor/toolbareditor.cpp:386
-#: src/modules/toolbareditor/toolbareditor.cpp:409
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:786
 #: src/kvirc/ui/kvi_input.cpp:259 src/kvirc/ui/kvi_statusbar.cpp:570
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/kernel/kvi_app.cpp:786
 msgid "Yes"
 msgstr "S"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:744
-#: src/modules/aliaseditor/aliaseditor.cpp:1030
-#, fuzzy
-msgid "Yes to All"
-msgstr "Tri&ar Tot"
 
 #: src/kvirc/ui/kvi_input.cpp:258
 msgid "Yes, always"
@@ -9159,15 +7607,6 @@ msgstr "Has abandonat el canal \r!c\r%Q\r: %Q"
 #, c-format
 msgid "You have set user mode %s"
 msgstr "T�posat el mode d'usuari %s"
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1110
-msgid "You must specify a valid name for the alias"
-msgstr ""
-
-#: src/modules/aliaseditor/aliaseditor.cpp:1178
-#, fuzzy
-msgid "You must specify a valid name for the namespace"
-msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
 
 #: src/kvirc/ui/kvi_input.cpp:252
 msgid ""
@@ -9511,11 +7950,6 @@ msgstr "connexi"
 msgid "d: Obscure 'DEBUG' flag"
 msgstr "d: Flag de 'DEPURACI� obscura"
 
-#: src/modules/eventeditor/eventeditor.cpp:266
-#: src/modules/raweditor/raweditor.cpp:264
-msgid "default"
-msgstr "per defecte"
-
 #: src/kvirc/ui/kvi_imagedialog.cpp:271
 msgid "directory"
 msgstr "directori"
@@ -9601,10 +8035,6 @@ msgstr "crida listen() fallida"
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:282
 msgid "n: Recipient for nick changes"
 msgstr "n: Receptor de canvis de nick"
-
-#: src/modules/eventeditor/eventeditor.cpp:390
-msgid "none"
-msgstr "res"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1584
 msgid "notification"
@@ -9697,12 +8127,6 @@ msgstr "desconegut"
 msgid "unmatched watch list entry"
 msgstr "entrada de la llista de vigil�cia no coincident"
 
-#: src/modules/eventeditor/eventeditor.cpp:228
-#: src/modules/raweditor/raweditor.cpp:202
-#: src/modules/popupeditor/popupeditor.cpp:1280
-msgid "unnamed"
-msgstr "sense nom"
-
 #: src/kvirc/ui/kvi_channel.cpp:928
 msgid "user total"
 msgstr "usuari total"
@@ -9760,6 +8184,35 @@ msgstr "y: Espia :)"
 msgid "z: Recipient for oper wallop messages"
 msgstr "z: Destinatari de missatges oper wallop"
 
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "\tEvent:\n"
+#~ "\t\t%s\n"
+#~ "\n"
+#~ "\tParameters:\n"
+#~ "%s"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "\tEvent:\n"
+#~ "\t\t%s\n"
+#~ "\n"
+#~ "\tPar�etres:\n"
+#~ "%s"
+
+#~ msgid "    Mask: %Q!%Q@%Q"
+#~ msgstr "    M�cara: %Q!%Q@%Q"
+
+#~ msgid "    No properties"
+#~ msgstr "    Sense propietates"
+
+#~ msgid "    Property: %Q=%Q"
+#~ msgstr "    Propietat: %Q=%Q"
+
+#~ msgid "    Warning: this user has no registration masks"
+#~ msgstr "    Atenci� aquest usuari no t�m�cares de registre"
+
 #~ msgid "   %s"
 #~ msgstr "   %s"
 
@@ -9771,6 +8224,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "   Parent command stack depth: %d frames"
 #~ msgstr "   Profunditat de la pila de comandes del pare: %d quadros"
+
+#~ msgid "   Property: %s=%s"
+#~ msgstr "   Propietat: %s=%s"
 
 #, fuzzy
 #~ msgid " I can't find the specified file %s."
@@ -9787,6 +8243,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid " I cannot read the file."
 #~ msgstr "No puc obrir aquest arxiu"
+
+#~ msgid " User: %c%Q"
+#~ msgstr "Usuari: %c%Q"
 
 #~ msgid " lines"
 #~ msgstr " l�ies"
@@ -9813,6 +8272,12 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "\"Smart\" nickname colors"
 #~ msgstr "Colorejat \"intelligent\" de nicks"
 
+#~ msgid "### Epilogue ###"
+#~ msgstr "### Ep�eg ###"
+
+#~ msgid "### Prologue ###"
+#~ msgstr "### Pr�eg ###"
+
 #~ msgid "$sw expects a switch letter as parameter"
 #~ msgstr "$sw espera una lletra de canvi com a par�etre"
 
@@ -9835,6 +8300,16 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "%s plays '%s' to %s"
 #~ msgstr "%s reprodueix '%s' per a %s"
+
+#, fuzzy
+#~ msgid "&Add Group..."
+#~ msgstr "&Afegir..."
+
+#~ msgid "&Add Raw Event..."
+#~ msgstr "&Afegir Events Raw..."
+
+#~ msgid "&Add..."
+#~ msgstr "&Afegir..."
 
 #~ msgid "&Administrator"
 #~ msgstr "&Administrador"
@@ -9860,11 +8335,39 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "&Deowner"
 #~ msgstr "Treure propietari"
 
+#~ msgid "&Disable Handler"
+#~ msgstr "&Desactivar Manipulador"
+
 #~ msgid "&Don't apply any theme"
 #~ msgstr "&No aplicar cap tema"
 
+#~ msgid "&Edit"
+#~ msgstr "&Editar"
+
+#~ msgid "&Edit..."
+#~ msgstr "&Editar..."
+
+#~ msgid "&Enable Handler"
+#~ msgstr "Activar Manipulador"
+
+#~ msgid "&Execute"
+#~ msgstr "&Executar"
+
 #~ msgid "&Export Alias To..."
 #~ msgstr "&Exportar �ies a..."
+
+#~ msgid "&Export All To..."
+#~ msgstr "&Exportar Tots a..."
+
+#~ msgid "&Export Handler To..."
+#~ msgstr "&Exportar Manipulador A..."
+
+#~ msgid "&Export Popup To..."
+#~ msgstr "&Exportar men emergent a..."
+
+#, fuzzy
+#~ msgid "&Export selected To..."
+#~ msgstr "&Exportar Tots a..."
 
 #~ msgid "&Fancy Theme"
 #~ msgstr "Tema &Capritx�"
@@ -9900,11 +8403,20 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "&Minimalist Theme"
 #~ msgstr "Tema &Minimalista"
 
+#~ msgid "&New"
+#~ msgstr "&Nou"
+
 #~ msgid "&New Alias"
 #~ msgstr "&Nou �ies"
 
+#~ msgid "&New Handler"
+#~ msgstr "&Nou Manipulador"
+
 #~ msgid "&New IRC Context"
 #~ msgstr "&Nou Context d'IRC"
+
+#~ msgid "&New Popup"
+#~ msgstr "&Nou men emergent"
 
 #~ msgid "&New Proxy"
 #~ msgstr "&Nou Proxy"
@@ -9920,6 +8432,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "&Part"
 #~ msgstr "&Partir"
+
+#~ msgid "&Paste Below"
+#~ msgstr "Enganxar Sota"
 
 #~ msgid "&Paste Server"
 #~ msgstr "Enganxar Servidor"
@@ -9996,6 +8511,40 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "<b>mailto:</b> handler command:"
 #~ msgstr "<b>mailto:</b> comanda manipuladora:"
 
+#~ msgid ""
+#~ "<center><b>Boolean condition</b><br>Will be evaluated at popup call time "
+#~ "in order to decide if this entry has to be shown.<br>An empty condition "
+#~ "evaluates to true.</center>"
+#~ msgstr ""
+#~ "<center><b>Condici�L�ica</b><br>Ser�avaluada en el moment de la crida al "
+#~ "men emergent per a decidir si ha de mostrar-se aquesta opci�<br>Una "
+#~ "condici�buida s'avalua com a certa.</center>"
+
+#~ msgid ""
+#~ "<center><b>External menu name</b><br>This allows to nest externally "
+#~ "defined popup menus. The popup menu with the specified name will be "
+#~ "looked up at menu setup time.</center>"
+#~ msgstr ""
+#~ "<center><b>Nom de men extern</b><br>Aix�permet animar mens emergents "
+#~ "definits externament. El men amb el nom especificat ser�buscat en el "
+#~ "moment de la configuraci�del mateix.</center>"
+
+#~ msgid ""
+#~ "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
+#~ "path or a relative path.<br>Portable scripts should never use absolute "
+#~ "paths.</center>"
+#~ msgstr ""
+#~ "<center><b>Identificador d'Icona</b><br>Pot ser un id d'icona interna, "
+#~ "una ruta absoluta o una relativa.<br>Els scripts portables mai haurien "
+#~ "d'emprar rutes absolutes.</center>"
+
+#~ msgid ""
+#~ "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
+#~ "center>"
+#~ msgstr ""
+#~ "<center><b>id Element</b><br>Aix�et permetr�emprar delpopupitem m� tard.</"
+#~ "center>"
+
 #, fuzzy
 #~ msgid ""
 #~ "<center><b>Settings for CTCP.</b></center><p>The <b>Client-To-Client "
@@ -10008,6 +8557,15 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ "per a transmetre missatges de control especials sobre una connexi�IRC. "
 #~ "Aquests missatges poden solicitar informaci�de clients o negociar "
 #~ "transfer�cies d'arxius.</p>"
+
+#~ msgid ""
+#~ "<center><b>Visible text</b><br>May contain identifiers that will be "
+#~ "evaluated at popup call time.<br>For labels, this text can contain also "
+#~ "limited HTML tags.</center>"
+#~ msgstr ""
+#~ "<center><b>Text Visible</b><br>Pot contenir identificadors que seran "
+#~ "avaluats en el moment de la crida al men emergent.<br>Per a etiquetes, "
+#~ "aquest text pot contenir tamb�alguns marcadors html.</center>"
 
 #~ msgid "<center>Click here to edit advanced options for this entry</center>"
 #~ msgstr ""
@@ -10656,6 +9214,20 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ "el bot�dret a la llista per a afegir o eliminar proxies.</center>"
 
 #~ msgid ""
+#~ "<center>This is the list of registered users. KVIrc can automatically "
+#~ "recognize and associate properties to them.<br>Use the buttons on the "
+#~ "right to add, edit and remove entries. The \"notify\" column allows you "
+#~ "to quickly add users to the notify list. Notify list fine-tuning can be "
+#~ "performed by editing the entry properties.</center>"
+#~ msgstr ""
+#~ "<center>Aquesta � la llista d'usuaris registrats. KVIrc pot recon�xer i "
+#~ "associar-li propietats de forma autom�ica.<br>Empra els botons de la "
+#~ "dreta per a afegir, editar o borra entrades.<br>La columna \"notificar\" "
+#~ "et permet afegir usuaris a la llista de notificacions r�idament. L'ajust "
+#~ "de la llista de notificacions pot fer-se editant l'entrada de propietats."
+#~ "</center>"
+
+#~ msgid ""
 #~ "<center>This is the mask that NickServ must match to be correctly "
 #~ "identified as the NickServ service. This usually will be something like "
 #~ "<b>NickServ!service@services.dalnet</b>.<br>You can use wildcards for "
@@ -11066,6 +9638,27 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ "exemple, pots posar un nom d'script aqu�</center>"
 
 #~ msgid ""
+#~ "<center>This the <b>hostname</b> that will match this user. <b>*</b> will "
+#~ "match any hostname.</center>"
+#~ msgstr ""
+#~ "<center>Aquests � el <b>nom de m�uina</b> que coincidir�amb aquest "
+#~ "usuari. <b>*</b> coincidir�amb qualsevol nom de m�uina.</center>"
+
+#~ msgid ""
+#~ "<center>This the <b>nickname</b> that will match this user, default value "
+#~ "is the registered name.</center>"
+#~ msgstr ""
+#~ "<center>Aquest � el <b>nick</b> que coincidir�amb aquest usuari, el valor "
+#~ "per defecte � el nom registrat.</center>"
+
+#~ msgid ""
+#~ "<center>This the <b>username</b> that will match this user. <b>*</b> will "
+#~ "match any username.</center>"
+#~ msgstr ""
+#~ "<center>Aquest � el <b>nom d'usuari</b> que coincidir�amb aquest usuari. "
+#~ "<b>*</b> coincidir�amb qualsevol nom d'usuari.</center>"
+
+#~ msgid ""
 #~ "<center>Use a user's last known avatar by default (only for users that "
 #~ "are registered).</center>"
 #~ msgstr ""
@@ -11099,6 +9692,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ "una alternativa a l'\"adre� fixa\" anterior.<br> Pot esbrinar l'adre� "
 #~ "correcta autom�icament si es compleixen certes condicions (p.e., el "
 #~ "servidor IRC no emmascara los noms de m�uina).</center>"
+
+#~ msgid "<center>You can enter a space separated list of nicknames.</center>"
+#~ msgstr ""
+#~ "<center>Pot entrar una llista de nicks separats per espais.</center>"
 
 #~ msgid ""
 #~ "<center>You can specify a \"special\" <b>nickname</b> that will be used "
@@ -11204,6 +9801,23 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ "bot�\"<b>Finalitzar</b>\" per a guardar les seves prefer�cies i iniciar "
 #~ "KVIrc.</p>"
 
+#~ msgid ""
+#~ "<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
+#~ "mask must be in the following form:<br><b>nickname!username@hostname</"
+#~ "b><br>and can contain wildcard characters '*' and '?'. Be careful in "
+#~ "choosing the masks, as they are the only way to verify the identity of a "
+#~ "registered user.<br><br>You can enter at most two masks here, if you wish "
+#~ "to add more masks, use the \"<b>Edit</b>\" button in the Registered Users "
+#~ "dialog. You must enter at least one mask.</p>"
+#~ msgstr ""
+#~ "<p>Un usuari registrat � identificat per una o m� <b>m�cares d'IRC</b>."
+#~ "<br>Una m�cara ha de complir amb el segent format:<br><b>nick!"
+#~ "nom_usuari@m�uina</b><br>i pot contenir els comodins '*' y '?'.Sigui "
+#~ "cuidad� al escollir les m�cares: s� l'nic m�ode per a verificar la "
+#~ "identitat d'un usuari registrat.<br><br>Pot introduir fins a dues "
+#~ "m�cares; si dessitja afegir-ne m�, utilitzi el bot�\"<b>Editar</b>\" en "
+#~ "el di�eg d'Usuaris Registrats. Ha de posar com a m�im una m�cara.</p>"
+
 #~ msgid "<p>Author: %1</p>"
 #~ msgstr "<p>Autor: %1</p>"
 
@@ -11227,6 +9841,33 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ "aplicar cap tema per a preservar les seves configuracions visuals actuals."
 #~ "<br><br>Si no sap que escollir, trii la configuraci�per defecte.</p>"
 
+#~ msgid ""
+#~ "<p>If you want to be notified when this user is online or goes offline, "
+#~ "you must specify the list of nicknames that KVIrc will look for."
+#~ "<br><br>You can enter at most two nicknames here, if you wish to add more "
+#~ "nicknames, use the \"<b>Edit</b>\" button in the Registered Users dialog."
+#~ "</p>"
+#~ msgstr ""
+#~ "<p>Si dessitja ser avisat quan aquest usuari es connecti o desconnecti, "
+#~ "ha d'especificar la llista de nicks a la que ho buscar�KVIrc<br><br>Pot "
+#~ "introduir fins a dos nicks aqu� si dessitja afegir-ne m�, empri el bot�"
+#~ "\"<b>Editar</b>\" al Di�eg d'Usuaris Registrats.</p>"
+
+#~ msgid ""
+#~ "<p>If you want to store an avatar image for this user, you can set it "
+#~ "here. KVIrc will show the avatar in the userlist next to the user's "
+#~ "nickname.<br>An avatar can be in any supported image format (PNG is "
+#~ "recommended). Keep in mind that KVIrc stores avatars in memory and has to "
+#~ "resize them to fit in the userlist, thus it's better to use small, low-"
+#~ "resolution images.</p>"
+#~ msgstr ""
+#~ "<p>Si vol emmagatzemar una imatge d'avatar per a aquest usuari, pot posar-"
+#~ "la aqu� KVIrc el mostrar�juntament amb el nick a la finestra d'usuaris."
+#~ "<br>Un avatar pot estar en qualsevol format d'imatge reconegut (es "
+#~ "recomana PNG). Recordi que KVIrc mant�els avatar en mem�ia i t�que "
+#~ "redimensionar-los per a encaixar-los a la llista d'usuaris, de manera que "
+#~ "� millor emprar petites imatges de baixa resoluci�</p>"
+
 #~ msgid "<p>If you're unsure just say \"Yes\"</p>"
 #~ msgstr "<p>Si no est�segur, senzillament contesti \"S\"</p>"
 
@@ -11245,6 +9886,13 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ "per a les urls irc:// e irc6://.</p><p>Vols que s'apliquin aquests canvis?"
 #~ "</p>"
 
+#~ msgid ""
+#~ "<p>That's it. The user registration has been completed.<br><br>Click "
+#~ "\"<b>Finish</b>\" to close this dialog.</p>"
+#~ msgstr ""
+#~ "<p>Aix�� tot. El registre d'usuari s'ha realitzat correctament."
+#~ "<br><br>Premi \"Finalitzar\" per a tancar aquest di�eg.</p>"
+
 #~ msgid "<p>The active theme settings</p>"
 #~ msgstr "<p>Configuraci�del tema actiu</p>"
 
@@ -11253,6 +9901,29 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "<p>Version: %1</p>"
 #~ msgstr "<p>Versi� %1</p>"
+
+#~ msgid ""
+#~ "<p>Welcome to the user registration wizard.<br>This process allows you to "
+#~ "add an IRC user to the database and set properties for that user. KVIrc "
+#~ "will be (hopefully) able to recognize the user, add him to the notify "
+#~ "list, and display the associated avatar.<br><br>First of all, you must "
+#~ "insert an <b>entry name or real name</b> for the user you're going to "
+#~ "register. The name will be used to identify the database entry and has no "
+#~ "specific requirements, it can be a given name, nickname, or just some "
+#~ "text to remind you of the real person.<br>Examples: \"George W Bush\", "
+#~ "\"Dubya\".\n"
+#~ "</p>"
+#~ msgstr ""
+#~ "<p>Benvingut a l'assistent d'usuaris registrats.<br>Aquest proc� li "
+#~ "permet afegir un usuari IRC a la base de dades de KVIrc i configurar "
+#~ "algunes de les seves propietats. KVirc ser�capa�(afortunadament) de "
+#~ "recon�xer l'usuari, afegir-lo a la llista de notificacions, mostrar el "
+#~ "seu avatar associat, etc...<br><br>Primerament, ha d'escriure el <b>nom "
+#~ "de l'entrada o el nom real</b>de l'usuari que anir�a registrar. El nom "
+#~ "ser�emprat per a identificar l'entrada de la base de dades i no t�cap "
+#~ "requeriment espec�ic, pot ser un nom, un nick o nom� un text que li "
+#~ "recordi a la persona.<br>Exemples: \"Carla Arola\", \"Cari\".\n"
+#~ "</p>"
 
 #~ msgid ""
 #~ "<table width=\"100%\"><tr><td bgcolor=\"#303030\"><center><h1><font color="
@@ -11313,6 +9984,18 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Accept broken RESUME (mIRC file.ext)"
 #~ msgstr "Acceptar RESUME erroni (mIRC arxiu.ext)"
 
+#, fuzzy
+#~ msgid "Action"
+#~ msgstr "Accions IRC"
+
+#, fuzzy
+#~ msgid "Action Editor"
+#~ msgstr "Editor d'�ies"
+
+#, fuzzy
+#~ msgid "Action code"
+#~ msgstr "Directoris de l'Aplicaci"
+
 #~ msgid "Active Background"
 #~ msgstr "Fons Actiu:"
 
@@ -11328,8 +10011,25 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Active Text (Secondary)"
 #~ msgstr "Text Actiu (Secundari)"
 
+#~ msgid "Add (Wizard)..."
+#~ msgstr "Afegir (assistent)..."
+
+#, fuzzy
+#~ msgid "Add Alias"
+#~ msgstr "�ies"
+
+#, fuzzy
+#~ msgid "Add Namespace"
+#~ msgstr "Tipus de missatge"
+
 #~ msgid "Add Rule"
 #~ msgstr "Afegir Regla"
+
+#~ msgid "Add a registered user by means of a user-friendly wizard."
+#~ msgstr "Afegir un usuari registrat per mitj�d'un amigable assistent."
+
+#~ msgid "Add this user to the notify list"
+#~ msgstr "Afegir aquest usuari a la llista de notificacions"
 
 #~ msgid "Add to Notify"
 #~ msgstr "Afegir per a Notificar"
@@ -11371,6 +10071,23 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Alert/Highlight"
 #~ msgstr "Alerta/Ressaltat"
 
+#~ msgid "Alias"
+#~ msgstr "�ies"
+
+#~ msgid "Alias Editor"
+#~ msgstr "Editor d'�ies"
+
+#, fuzzy
+#~ msgid "Alias Export"
+#~ msgstr "Editor d'�ies"
+
+#, fuzzy
+#~ msgid "Alias already exists"
+#~ msgstr "Adre� ja en s"
+
+#~ msgid "All Properties..."
+#~ msgstr "Totes les propietats..."
+
 #~ msgid "Allow up to:"
 #~ msgstr "Permetre fins:"
 
@@ -11406,6 +10123,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Append to VERSION reply:"
 #~ msgstr "Afegir a la resposta VERSION:"
 
+#, fuzzy
+#~ msgid "Apply"
+#~ msgstr "&Aplicar"
+
 #~ msgid "Argument length is 0 - empty string"
 #~ msgstr "La longitud de l'argument � 0 - cadena buida"
 
@@ -11433,6 +10154,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Auto-detect"
 #~ msgstr "Detectar autom�icament"
 
+#~ msgid "Automatically"
+#~ msgstr "Autom�icament"
+
 #~ msgid "Automatically Log"
 #~ msgstr "Grabar registre autom�icament"
 
@@ -11457,6 +10181,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid "Automatically unload unused modules"
 #~ msgstr "Tancar autom�icament al finalitzar"
+
+#~ msgid "Avatar"
+#~ msgstr "Avatar"
 
 #~ msgid "Avatar Download - KVIrc"
 #~ msgstr "Desc�rega d'Avatar - KVIrc"
@@ -11513,12 +10240,24 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Backward compatibility action for toolbar.define"
 #~ msgstr "Compatibilitat cap enrere per a toolbar.define"
 
+#, fuzzy
+#~ msgid "Bad Alias Name"
+#~ msgstr "Falta el nom de l'�ies"
+
+#, fuzzy
+#~ msgid "Bad Namespace Name"
+#~ msgstr "Falta el nom del cron�etre"
+
 #~ msgid "Ban"
 #~ msgstr "Prohibit"
 
 #, fuzzy
 #~ msgid "Basic Properties"
 #~ msgstr "Propietats"
+
+#, fuzzy
+#~ msgid "Big Icon:"
+#~ msgstr "Icona:"
 
 #~ msgid "Bind IPv4 connections to:"
 #~ msgstr "Unir connexions IPv4 a:"
@@ -11617,6 +10356,11 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid "Can't delete an inexisting object"
 #~ msgstr "No puc afegir un objecte no-widget"
+
+#~ msgid "Can't export the registered users database: Write error."
+#~ msgstr ""
+#~ "No s'ha pogut exportar la base de dades d'usuaris registrats. Error "
+#~ "d'escriptura."
 
 #, fuzzy
 #~ msgid "Can't fill non-widget object"
@@ -11721,6 +10465,11 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Can't find the window with id '%s'"
 #~ msgstr "No he pogut trobar la finestra amb id '%s'"
 
+#~ msgid "Can't import the registered users database: Read error."
+#~ msgstr ""
+#~ "No s'ha pogut importar la base de dades d'usuaris registrats. Error de "
+#~ "lectura."
+
 #~ msgid "Can't kill the timer '%Q' since it is not running"
 #~ msgstr "No puc parar el cron�etre '%Q' perqu�no est�funcionant"
 
@@ -11729,6 +10478,13 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Can't log to file %s"
 #~ msgstr "No puc grabar el registre a l'arxiu %s"
+
+#, fuzzy
+#~ msgid "Can't open file %Q for writing."
+#~ msgstr "No puc obrir l'arxiu \"%s\" en mode escriptura"
+
+#~ msgid "Can't open file %s for reading."
+#~ msgstr "No puc obrir l'arxiu %s per a lectura."
 
 #~ msgid "Can't open the file \"%s\" for reading"
 #~ msgstr "No puc obrir l'arxiu \"%s\" per a lectura"
@@ -11802,6 +10558,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Cannot open install.kvs for writing."
 #~ msgstr "No puc obrir l'arxiu \"%s\" en mode escriptura"
 
+#, fuzzy
+#~ msgid "Category:"
+#~ msgstr "Categoria: %Q"
+
 #~ msgid "Certificate"
 #~ msgstr "Certificat"
 
@@ -11835,6 +10595,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Channel windows"
 #~ msgstr "Finestres de canal"
 
+#~ msgid "Channel: %c%s@%s"
+#~ msgstr "Canal: %c%s@%s"
+
 #~ msgid "Channels"
 #~ msgstr "Canals"
 
@@ -11864,6 +10627,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Choose Log Filename"
 #~ msgstr "Escull un Nom d'Arxiu de Registre"
+
+#~ msgid "Choose a Filename - KVIrc"
+#~ msgstr "Esculli un nom d'arxiu - KVIrc"
 
 #~ msgid "Choose a Filename - KVIrc "
 #~ msgstr "Trii un nom d'arxiu - KVIrc"
@@ -11908,8 +10674,30 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Close this dialog, discarding all changes."
 #~ msgstr "Tancar di�eg, descartant tots els canvis."
 
+#, fuzzy
+#~ msgid "Code"
+#~ msgstr "Tancar"
+
+#, fuzzy
+#~ msgid "Collapse All Namespaces"
+#~ msgstr "Tancar Tots els Privats"
+
+#~ msgid "Colors"
+#~ msgstr "Colors"
+
+#, fuzzy
+#~ msgid "Comment:"
+#~ msgstr "Contador"
+
+#, fuzzy
+#~ msgid "Comment: "
+#~ msgstr "Contador"
+
 #~ msgid "Commit all changes immediately."
 #~ msgstr "Gravar tots els canvis immediatament."
+
+#~ msgid "Condition:"
+#~ msgstr "Condici�"
 
 #, fuzzy
 #~ msgid "Config file:"
@@ -11921,6 +10709,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid "Configure ban mask..."
 #~ msgstr "Configurar Servidors"
+
+#~ msgid "Confirm ToolBar Deletion"
+#~ msgstr "Confirmar l'Esborrat de la Barra d'Eines"
 
 #~ msgid "Confirm quit with active connections"
 #~ msgstr "Confirmar sortida amb connexions actives"
@@ -11986,6 +10777,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Custom nickname:"
 #~ msgstr "Nick personalitzat:"
 
+#~ msgid "Customize Toolbars"
+#~ msgstr "Barres d'Eines personalitzades"
+
 #~ msgid "D&evoice"
 #~ msgstr "Treure Veu"
 
@@ -12040,8 +10834,18 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Delay between attempts:"
 #~ msgstr "Espera entre intents:"
 
+#, fuzzy
+#~ msgid "Delete Actions"
+#~ msgstr "Selecci"
+
 #~ msgid "Delete Rule"
 #~ msgstr "Borrar Regla"
+
+#~ msgid "Delete ToolBar"
+#~ msgstr "Borrar Barra d'Eines"
+
+#~ msgid "Description:"
+#~ msgstr "Descripci�"
 
 #, fuzzy
 #~ msgid "Destination  parameter is not an object"
@@ -12085,6 +10889,17 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Do not update the away list"
 #~ msgstr "No demanar llista de prohibits"
 
+#~ msgid "Do you really want to delete toolbar \"%1\" ?"
+#~ msgstr "Realment vol borra la barra d'eines \"%1\" ?"
+
+#, fuzzy
+#~ msgid "Do you really want to remove the alias \"%Q\" ?"
+#~ msgstr "Realment vol borra la barra d'eines \"%1\" ?"
+
+#, fuzzy
+#~ msgid "Do you really want to remove the namespace \"%Q\" ?"
+#~ msgstr "Realment vol borra la barra d'eines \"%1\" ?"
+
 #, fuzzy
 #~ msgid "Doesn't a widget object"
 #~ msgstr "No puc afegir un objecte no-widget"
@@ -12107,6 +10922,12 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Draw some emoticons (smileys) as pictures"
 #~ msgstr "Dibuixar algunes emoticones (smileys) gr�icament"
 
+#~ msgid "Drop here the icons from the toolbars to remove them"
+#~ msgstr "Deixar aqu�les icones des de la barra d'eines per a eliminar-los"
+
+#~ msgid "Duplicate ToolBar Id"
+#~ msgstr "Id de la Barra d'Eines duplicada"
+
 #~ msgid "Echo channel topic"
 #~ msgstr "Mostra el tema del canal"
 
@@ -12115,6 +10936,23 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Edit Rule"
 #~ msgstr "Editar Regla"
+
+#~ msgid "Edit ToolBar"
+#~ msgstr "Editar Barra d'Eines"
+
+#, fuzzy
+#~ msgid "Edit the alias or namespace name"
+#~ msgstr "Editar �ies."
+
+#~ msgid "Edit the event handler name."
+#~ msgstr "Editar el nom del manipulador d'events."
+
+#~ msgid "Edit the first selected entry."
+#~ msgstr "Aquest bot�permetr�editar la primera entrada triada."
+
+#, fuzzy
+#~ msgid "Edit the raw event handler name."
+#~ msgstr "Editar el nom del manipulador d'events."
 
 #~ msgid "Empty command block for timer '%s', timer not started"
 #~ msgstr ""
@@ -12148,8 +10986,16 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Enable NickServ Identification"
 #~ msgstr "Activar identificaci�NickServ"
 
+#, fuzzy
+#~ msgid "Enable Only in Specified Windows"
+#~ msgstr "Finestres de privats"
+
 #~ msgid "Enable URL highlighting"
 #~ msgstr "Activar ressaltat d'URLs"
+
+#, fuzzy
+#~ msgid "Enable at Login"
+#~ msgstr "Activar xifrat"
 
 #~ msgid "Enable automatic NickServ identification"
 #~ msgstr "Activar identificaci�NickServ autom�ica"
@@ -12159,6 +11005,26 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Enable ident service (bad practice on UNIX!)"
 #~ msgstr "Activar servei ident (mala pr�tica en UNIX!)"
+
+#, fuzzy
+#~ msgid "Enable ignore for this user"
+#~ msgstr "Activar Ignorar Per a"
+
+#, fuzzy
+#~ msgid "Enable in Channel Windows"
+#~ msgstr "Finestres de canal"
+
+#, fuzzy
+#~ msgid "Enable in Console Windows"
+#~ msgstr "Finestres de consola"
+
+#, fuzzy
+#~ msgid "Enable in DCC Chat Windows"
+#~ msgstr "Finestres de transfer�cies DCC"
+
+#, fuzzy
+#~ msgid "Enable in Query Windows"
+#~ msgstr "Finestres de privats"
 
 #~ msgid "Enable lag meter"
 #~ msgstr "Activar mesurador de retr�"
@@ -12197,6 +11063,12 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Enter a kick/ban reason"
 #~ msgstr "Introdueixi la ra�del kick/ban"
 
+#~ msgid "Enter the numeric code of the message (0-999)"
+#~ msgstr "Introdueix el codi num�ic del missatge (0-999)"
+
+#~ msgid "Epilogue"
+#~ msgstr "Ep�eg"
+
 #~ msgid "Error in command: %c%c%Q"
 #~ msgstr "Error en comanda: %c%c%Q"
 
@@ -12232,6 +11104,12 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Error:not enough parameters!"
 #~ msgstr "No hi ha suficients par�etres"
 
+#~ msgid "Event"
+#~ msgstr "Event"
+
+#~ msgid "Event Editor"
+#~ msgstr "Editor d'Events"
+
 #~ msgid "Event handler %Q is broken: disabling"
 #~ msgstr "El manipulador d'events %Q � erroni: deshabilitat"
 
@@ -12242,8 +11120,46 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Experienced user"
 #~ msgstr "usuari amb veu"
 
+#, fuzzy
+#~ msgid "Export Actions..."
+#~ msgstr "Exportar a..."
+
+#, fuzzy
+#~ msgid "Export All..."
+#~ msgstr "&Exportar Tots a..."
+
+#, fuzzy
+#~ msgid "Export Selected in singles files..."
+#~ msgstr "&Exportar Tots a..."
+
+#, fuzzy
+#~ msgid "Export Selected..."
+#~ msgstr "&Exportar Tots a..."
+
+#~ msgid "Export To..."
+#~ msgstr "Exportar a..."
+
+#, fuzzy
+#~ msgid "Export ToolBar"
+#~ msgstr "Editar Barra d'Eines"
+
+#~ msgid ""
+#~ "Export the selected entries to a file.<br>All the data associated with "
+#~ "the selected registered users will be exported.<br>You (or anyone else) "
+#~ "can later import the entries by using the \"Import\" button."
+#~ msgstr ""
+#~ "Exporta les entrades triades a un arxiu.<br>Totes les dades associades "
+#~ "als usuaris registrats triats seran exportades.<br>Vost� o qualsevol "
+#~ "altre, pot importar les entrades m� tard emprant el bot�\"Importar\"."
+
 #~ msgid "External CTCP replies"
 #~ msgstr "Contestacions CTCP externes"
+
+#~ msgid "External Menu"
+#~ msgstr "Men Extern"
+
+#~ msgid "External menu:"
+#~ msgstr "Men extern:"
 
 #~ msgid "External messages"
 #~ msgstr "Missatges externs"
@@ -12348,8 +11264,24 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "File pattern:"
 #~ msgstr "Patr�d'arxiu:"
 
+#, fuzzy
+#~ msgid "Find & Replace"
+#~ msgstr "Respostes"
+
+#, fuzzy
+#~ msgid "Find In Aliases"
+#~ msgstr "&Alies..."
+
+#, fuzzy
+#~ msgid "Find In Aliases..."
+#~ msgstr "&Alies..."
+
 #~ msgid "Finish Setup"
 #~ msgstr "Finalitzar Assistent"
+
+#, fuzzy
+#~ msgid "Flags"
+#~ msgstr "Pla"
 
 #~ msgid "Flash system taskbar on new query message"
 #~ msgstr "Destell a la barra de feines des sistema amb els nous privats"
@@ -12533,6 +11465,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Grid type:"
 #~ msgstr "Tipus de reixa:"
 
+#, fuzzy
+#~ msgid "Group name:"
+#~ msgstr "Nom de men emergent"
+
 #~ msgid "Guess address from IRC server if unroutable"
 #~ msgstr "Imaginar adre� des del servidor IRC si no � rutable"
 
@@ -12561,6 +11497,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Hey ! You wanna know my echo mode or what ?"
 #~ msgstr "Eh! Vols con�xer el meu mode d'eco o qu�"
+
+#~ msgid "Hide Advanced"
+#~ msgstr "Amagar Avan�t"
 
 #, fuzzy
 #~ msgid "Hide avatars in userlist"
@@ -12607,6 +11546,15 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "ISON delay (in seconds)"
 #~ msgstr "Retr� ISON (en segons)"
 
+#~ msgid "Icon"
+#~ msgstr "Icona"
+
+#~ msgid "Icon:"
+#~ msgstr "Icona:"
+
+#~ msgid "Id"
+#~ msgstr "Id"
+
 #, fuzzy
 #~ msgid "Id:"
 #~ msgstr "Id"
@@ -12635,6 +11583,13 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Ig&nore"
 #~ msgstr "Ig&norar"
 
+#~ msgid "Ignore"
+#~ msgstr "Ignorar"
+
+#, fuzzy
+#~ msgid "Ignore DCCs"
+#~ msgstr "Ignorar com a"
+
 #~ msgid "Ignore as"
 #~ msgstr "Ignorar com a"
 
@@ -12643,8 +11598,32 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr "Ignorar com a"
 
 #, fuzzy
+#~ msgid "Ignore channel-messages"
+#~ msgstr "Missatges privat/canal"
+
+#, fuzzy
+#~ msgid "Ignore ctcp-messages"
+#~ msgstr "Missatge d'usuari ignorat"
+
+#, fuzzy
 #~ msgid "Ignore everything"
 #~ msgstr "Ignorar Peticions"
+
+#, fuzzy
+#~ msgid "Ignore features"
+#~ msgstr "Ignorar com a"
+
+#, fuzzy
+#~ msgid "Ignore invites"
+#~ msgstr "Ignorar com a"
+
+#, fuzzy
+#~ msgid "Ignore notice-messages"
+#~ msgstr "Missatge d'usuari ignorat"
+
+#, fuzzy
+#~ msgid "Ignore query-messages"
+#~ msgstr "Missatge d'usuari ignorat"
 
 #~ msgid "Ignore requests if no avatar is set"
 #~ msgstr "Ignorar peticions si no hi ha un avatar seleccionat"
@@ -12662,8 +11641,18 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Image width:"
 #~ msgstr "Amplada de la imatge:"
 
+#~ msgid "Import From..."
+#~ msgstr "Importar Des de..."
+
 #~ msgid "Import List"
 #~ msgstr "Importar Llista"
+
+#~ msgid ""
+#~ "Import entries from a file exported earlier by the \"export\" function of "
+#~ "this dialog."
+#~ msgstr ""
+#~ "Importa les entrades des d'un arxiu exportat per la funci�\"Exportar\" "
+#~ "d'aquest di�eg."
 
 #~ msgid "Inactive Background"
 #~ msgstr "Fons Inactiu:"
@@ -12700,6 +11689,13 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Input"
 #~ msgstr "Entrada"
 
+#~ msgid ""
+#~ "Insert a mask for this user.<br>It can contain the wildcard characters "
+#~ "'*' and '?'."
+#~ msgstr ""
+#~ "Insereix una m�cara per aquest usuari.<br>Aquesta pot contenir '*' i '?' "
+#~ "com a car�ters comod�"
+
 #~ msgid "Interface"
 #~ msgstr "Interf�ie"
 
@@ -12724,6 +11720,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr ""
 #~ "Error intern: intentant avaluar una posici�de dades de nom� lectura com a "
 #~ "de lectura-escriptura"
+
+#, fuzzy
+#~ msgid "Internal unique name for the action"
+#~ msgstr "Si us plau, trii la icona per a la Barra d'Eines"
 
 #, fuzzy
 #~ msgid "Invalid  parameter"
@@ -12757,6 +11757,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid "Invalid Parameters"
 #~ msgstr "Par�etre no v�id"
+
+#~ msgid "Invalid ToolBar Label"
+#~ msgstr "Etiqueta de Barra d'Eines no v�ida"
 
 #, fuzzy
 #~ msgid "Invalid color-set specification, using default"
@@ -12996,6 +11999,13 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Invalid zoom value (%s)"
 #~ msgstr "Marge no v�id (%s)"
 
+#~ msgid "Item"
+#~ msgstr "Element"
+
+#, fuzzy
+#~ msgid "Item Id:"
+#~ msgstr "Element"
+
 #~ msgid "K&ick"
 #~ msgstr "Kickejar"
 
@@ -13022,6 +12032,13 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Kill broken timers"
 #~ msgstr "Matar temporitzadors trencats"
+
+#~ msgid "Label"
+#~ msgstr "Etiqueta"
+
+#, fuzzy
+#~ msgid "Label:"
+#~ msgstr "Etiqueta"
 
 #~ msgid "Labels"
 #~ msgstr "Etiquetes"
@@ -13181,6 +12198,21 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Magic bytes:"
 #~ msgstr "Bytes m�ics:"
 
+#~ msgid "Manually"
+#~ msgstr "Manualment"
+
+#, fuzzy
+#~ msgid "Mask %Q already used to identify user %Q"
+#~ msgstr "M�cara %s ja emprada per a identificar a l'usuari %s"
+
+#, fuzzy
+#~ msgid "Mask %Q is already used to identify user %s"
+#~ msgstr "La m�cara %s ja s'empra per a identificar a l'usuari %s"
+
+#, fuzzy
+#~ msgid "Mask %Q not found"
+#~ msgstr "M�cara %s no trobada"
+
 #~ msgid "Mask %s already used to identify user %s"
 #~ msgstr "M�cara %s ja emprada per a identificar a l'usuari %s"
 
@@ -13190,8 +12222,14 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Mask %s not found"
 #~ msgstr "M�cara %s no trobada"
 
+#~ msgid "Mask Editor"
+#~ msgstr "Editor de M�cares"
+
 #~ msgid "Mask for"
 #~ msgstr "M�cara per a"
+
+#~ msgid "Masks:"
+#~ msgstr "M�cares:"
 
 #~ msgid "Maximum attempts (0: unlimited):"
 #~ msgstr "Nombre m�im d'intents (0: ilimitats):"
@@ -13259,6 +12297,14 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Minimum width:"
 #~ msgstr "Amplada m�ima:"
+
+#, fuzzy
+#~ msgid "Missing Alias Name"
+#~ msgstr "Falta el nom de l'�ies"
+
+#, fuzzy
+#~ msgid "Missing Namespace Name"
+#~ msgstr "Falta el nom del cron�etre"
 
 #~ msgid "Missing alias name"
 #~ msgstr "Falta el nom de l'�ies"
@@ -13430,8 +12476,34 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr "Callat"
 
 #, fuzzy
+#~ msgid "My Action"
+#~ msgstr "Accions IRC"
+
+#, fuzzy
 #~ msgid "My Custom Servers"
 #~ msgstr "Copiar Servidor"
+
+#~ msgid "My ToolBar"
+#~ msgstr "La meva Barra d'Eines"
+
+#~ msgid "Name:"
+#~ msgstr "Nom:"
+
+#, fuzzy
+#~ msgid "Namespace"
+#~ msgstr "Tipus de missatge"
+
+#, fuzzy
+#~ msgid "Namespace already exists"
+#~ msgstr "Adre� ja en s"
+
+#, fuzzy
+#~ msgid "Needs IRC Connection"
+#~ msgstr "Nou Context d'IRC"
+
+#, fuzzy
+#~ msgid "Needs IRC Context"
+#~ msgstr "Nou Context d'IRC"
 
 #~ msgid "Negative file index supplied !"
 #~ msgstr "S'ha proporcionat un �dex d'arxiu negatiu !"
@@ -13448,8 +12520,54 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Network:"
 #~ msgstr "Xarxa:"
 
+#, fuzzy
+#~ msgid "New Action"
+#~ msgstr "Acci�d'usuari"
+
+#~ msgid "New External Menu Above"
+#~ msgstr "Nou Men Extern Sobre"
+
+#~ msgid "New External Menu Below"
+#~ msgstr "Nou Men Extern Sota"
+
+#~ msgid "New External Menu Inside"
+#~ msgstr "Nou Men Extern Dintre"
+
+#~ msgid "New Item Above"
+#~ msgstr "Nou Element Sobre"
+
+#~ msgid "New Item Below"
+#~ msgstr "Nou Element Sota"
+
+#~ msgid "New Item Inside"
+#~ msgstr "Nou Element Dintre"
+
+#~ msgid "New Label Above"
+#~ msgstr "Nova Etiqueta Sobre"
+
+#~ msgid "New Label Below"
+#~ msgstr "Nova Etiqueta Sota"
+
+#~ msgid "New Label Inside"
+#~ msgstr "Nova Etiqueta Dintre"
+
 #~ msgid "New Media Type"
 #~ msgstr "Nou Tipus de Medi"
+
+#~ msgid "New Menu Above"
+#~ msgstr "Nou Men Sobre"
+
+#~ msgid "New Menu Below"
+#~ msgstr "Nou Men Sota"
+
+#~ msgid "New Menu Epilogue"
+#~ msgstr "Nou Ep�eg de Men"
+
+#~ msgid "New Menu Inside"
+#~ msgstr "Nou Men Dintre"
+
+#~ msgid "New Menu Prologue"
+#~ msgstr "Nou Pr�eg de Men"
 
 #~ msgid "New Network"
 #~ msgstr "Nova Xarxa"
@@ -13457,12 +12575,27 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "New Proxy"
 #~ msgstr "Nou Proxy"
 
+#~ msgid "New Raw Event"
+#~ msgstr "Nou Event Raw"
+
 #, fuzzy
 #~ msgid "New Script Tester"
 #~ msgstr "Comprovador d'Script"
 
+#~ msgid "New Separator Above"
+#~ msgstr "Nou Separador Sobre"
+
+#~ msgid "New Separator Below"
+#~ msgstr "Nou Separador Sota"
+
+#~ msgid "New Separator Inside"
+#~ msgstr "Nou Separador Dintre"
+
 #~ msgid "New Server"
 #~ msgstr "Nou Servidor"
+
+#~ msgid "New ToolBar"
+#~ msgstr "Nova Barra d'Eines"
 
 #~ msgid "New code tester"
 #~ msgstr "Comprovador de codi nou"
@@ -13487,6 +12620,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "NickServ mask:"
 #~ msgstr "M�cara NickServ:"
+
+#~ msgid "Nickname 2:"
+#~ msgstr "Nick 2:"
 
 #~ msgid "Nickname Colors"
 #~ msgstr "Colors del Nick"
@@ -13522,8 +12658,15 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr "No s'ha especificat l�ia de comandes per a aquest tipus d'url (%s)"
 
 #, fuzzy
+#~ msgid "No comment set"
+#~ msgstr "No s'ha especificat una comanda"
+
+#, fuzzy
 #~ msgid "No destination specified"
 #~ msgstr "No s'ha especificat nom"
+
+#~ msgid "No entries selected."
+#~ msgstr "No hi ha entrades triades."
 
 #~ msgid "No environment variable name given"
 #~ msgstr "No es troba la variable d'entorn donada"
@@ -13557,12 +12700,22 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr "No s'ha especificat �dex"
 
 #, fuzzy
+#~ msgid "No item selected"
+#~ msgstr "No hi ha entrades triades."
+
+#, fuzzy
 #~ msgid "No link text specified"
 #~ msgstr "No s'ha especificat �dex"
+
+#~ msgid "No mask specified"
+#~ msgstr "M�cara no especificada"
 
 #, fuzzy
 #~ msgid "No menu bar item with text '%Q'"
 #~ msgstr "No existeix l'element de men amb el text '%s'"
+
+#~ msgid "No name specified"
+#~ msgstr "No s'ha especificat nom"
 
 #~ msgid "No netmask specified"
 #~ msgstr "M�cara no especificada"
@@ -13578,6 +12731,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "No property name specified"
 #~ msgstr "Propietat no especificada"
+
+#~ msgid "No property specified"
+#~ msgstr "No s'ha especificat propietat"
 
 #~ msgid "No selection"
 #~ msgstr "Sense selecci"
@@ -13615,6 +12771,11 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid "No such QT property (%s)"
 #~ msgstr "No existeix l'objecte (%s)"
+
+#~ msgid "No such channel/netmask entry in the database"
+#~ msgstr ""
+#~ "No existeix una entrada per a aquest canal/m�cara de xarxa a la base de "
+#~ "dades"
 
 #, fuzzy
 #~ msgid "No such event (%Q)"
@@ -13722,6 +12883,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Notify Avatar"
 #~ msgstr "Notificar Avatar"
 
+#, fuzzy
+#~ msgid "Notify as: "
+#~ msgstr "Llista de Notificacions"
+
 #~ msgid "Notify avatar"
 #~ msgstr "Notificar Avatar"
 
@@ -13732,11 +12897,21 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Notify completion in notifier"
 #~ msgstr "Notificar finalitzaci�a consola"
 
+#, fuzzy
+#~ msgid "Notify disabled"
+#~ msgstr "Llista de Notificacions"
+
 #~ msgid "Notify failed DCC handshakes to the remote end"
 #~ msgstr "Notificar al altre extrem les negociacions de DCC fallides"
 
 #~ msgid "Notify list: Checking for:%Q"
 #~ msgstr "Llista de notificaci� Comprovant:%Q"
+
+#~ msgid "Notify nicknames:"
+#~ msgstr "Notificar nicks:"
+
+#~ msgid "Notify when user is online"
+#~ msgstr "Notificar quan l'usuari estigui connectat"
 
 #, fuzzy
 #~ msgid "Novice"
@@ -13839,6 +13014,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Open minimized when auto-accepted"
 #~ msgstr "Obrir minimitzada quan s'accepti autom�icament"
 
+#~ msgid "Open the edit dialog to create a new user entry."
+#~ msgstr "Obrir el di�eg d'edici�per a crear una nova entrada d'usuari."
+
 #~ msgid "Operand of unary operator didn't evaluate to a number"
 #~ msgstr "L'operador unari no avalua a un nmero"
 
@@ -13891,6 +13069,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ "Els identificadors dels par�etres estan prohibits en l'�bit de l'objecte "
 #~ "(despr� de l'operador '->')"
 
+#~ msgid "Params:"
+#~ msgstr "Par�etres:"
+
 #~ msgid "Paranoic"
 #~ msgstr "Paranoic"
 
@@ -13910,6 +13091,12 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Password:"
 #~ msgstr "Clau:"
 
+#~ msgid "Paste Above"
+#~ msgstr "Enganxar Sobre"
+
+#~ msgid "Paste Inside"
+#~ msgstr "Enganxar Dintre"
+
 #~ msgid "Paste Server"
 #~ msgstr "Enganxar Servidor"
 
@@ -13923,8 +13110,42 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Plain Grid"
 #~ msgstr "Reixa Plana"
 
+#~ msgid "Please choose the icon for the ToolBar"
+#~ msgstr "Si us plau, trii la icona per a la Barra d'Eines"
+
+#, fuzzy
+#~ msgid "Please enter the name for the new alias"
+#~ msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
+
+#, fuzzy
+#~ msgid "Please enter the name for the new namespace"
+#~ msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
+
+#, fuzzy
+#~ msgid "Please enter the new name for the alias"
+#~ msgstr "Si us plau, trii la icona per a la Barra d'Eines"
+
+#, fuzzy
+#~ msgid "Please enter the new name for the namespace"
+#~ msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
+
+#~ msgid "Please specify the properties for the new toolbar"
+#~ msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
+
+#~ msgid "Please specify the properties for the toolbar \"%1\""
+#~ msgstr "Per favor, especifiqui les propietats de la barra d'eines \"%1\""
+
+#~ msgid "Popup"
+#~ msgstr "Men emergent"
+
 #~ msgid "Popup %Q is not defined"
 #~ msgstr "El men emergent %Q no est�definit"
+
+#~ msgid "Popup Editor"
+#~ msgstr "Editor de mens emergents"
+
+#~ msgid "Popup name"
+#~ msgstr "Nom de men emergent"
 
 #~ msgid "Popup notifier on new query message"
 #~ msgstr "Mostrar notificador amb els missatges privats"
@@ -13978,6 +13199,18 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Progress bar color:"
 #~ msgstr "Color de la barra de progr�:"
 
+#~ msgid "Prologue"
+#~ msgstr "Pr�eg"
+
+#~ msgid "Properties"
+#~ msgstr "Propietats"
+
+#~ msgid "Property"
+#~ msgstr "Propietat"
+
+#~ msgid "Property Editor"
+#~ msgstr "Editor de Propietats"
+
 #, fuzzy
 #~ msgid "Property: %c%Q%c, type %Q"
 #~ msgstr "   Propietat: %s=%s"
@@ -14003,6 +13236,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Proxy:"
 #~ msgstr "Proxy:"
 
+#, fuzzy
+#~ msgid "Put here a short description of your action"
+#~ msgstr "<center>Posi aqu�una breu descripci�de la xarxa.</center>"
+
 #~ msgid "Put here the nickname that you have registered with NickServ"
 #~ msgstr "Posa aqu�el nick que tens registrat amb NickServ"
 
@@ -14018,8 +13255,20 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Quiet"
 #~ msgstr "Discret"
 
+#~ msgid "Raw Editor"
+#~ msgstr "Editor Raw"
+
+#~ msgid "Raw Event"
+#~ msgstr "Events Raw"
+
 #~ msgid "Raw event handler %s::%Q is broken: disabling"
 #~ msgstr "El manipulador d'events raw %s::%Q � erroni: deshabilitant"
+
+#~ msgid "Re&move Handler"
+#~ msgstr "Eli&minar Manipulador"
+
+#~ msgid "Re&move Popup"
+#~ msgstr "Eli&minar men emergent"
 
 #~ msgid "Re&move Proxy"
 #~ msgstr "Eli&minar Proxy"
@@ -14062,8 +13311,23 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Registered NickName"
 #~ msgstr "Nick Registrat"
 
+#~ msgid "Registered User Entry"
+#~ msgstr "Entrada d'Usuaris Registrats"
+
 #~ msgid "Registered Users"
 #~ msgstr "Usuaris Registrats"
+
+#~ msgid "Registered Users - KVIrc"
+#~ msgstr "Usuaris registrats - KVIrc"
+
+#~ msgid "Registered channel list:"
+#~ msgstr "Llista de canals registrats:"
+
+#~ msgid "Registered users database dump:"
+#~ msgstr "Volcat d'usuaris registrats de la base de dades."
+
+#~ msgid "Registration Complete"
+#~ msgstr "Registre completat"
 
 #~ msgid "Rejoin channel"
 #~ msgstr "Reentrada al canal"
@@ -14090,11 +13354,42 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Remove Proxy"
 #~ msgstr "Eliminar Proxy"
 
+#, fuzzy
+#~ msgid "Remove Selected"
+#~ msgstr "Elimina&r Seleccionades"
+
 #~ msgid "Remove from Notify"
 #~ msgstr "Treure de Notificar"
 
+#, fuzzy
+#~ msgid "Remove item"
+#~ msgstr "Treure %Q"
+
+#~ msgid "Remove the currently selected entries."
+#~ msgstr "Borrar les entrades actualment triades."
+
+#, fuzzy
+#~ msgid "Rename"
+#~ msgstr "Nom real:"
+
+#, fuzzy
+#~ msgid "Rename Alias"
+#~ msgstr "Eli&minar �ies"
+
+#, fuzzy
+#~ msgid "Rename Namespace"
+#~ msgstr "Tipus de missatge"
+
 #~ msgid "Reopen queries after reconnect"
 #~ msgstr "Reobrir els privats despr� de reconectar"
+
+#, fuzzy
+#~ msgid "Replace file"
+#~ msgstr "Respostes"
+
+#, fuzzy
+#~ msgid "Replace with"
+#~ msgstr "Respostes"
 
 #~ msgid "Report a Bug"
 #~ msgstr "Informar d'un Bug"
@@ -14324,6 +13619,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ "Slot '%s' erroni en l'objecte de dest�'%s' mentres s'emetia la senyal '%"
 #~ "s' des de l'objecte '%s': desconectant"
 
+#, fuzzy
+#~ msgid "Small Icon:"
+#~ msgstr "Icones Petites"
+
 #~ msgid "Smart"
 #~ msgstr "Intelligent"
 
@@ -14353,6 +13652,18 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Starting up the engine..."
 #~ msgstr "Iniciant el motor..."
 
+#~ msgid "Step 1: Entry Name"
+#~ msgstr "Pas 1: Nom Entrada"
+
+#~ msgid "Step 2: Mask Selection"
+#~ msgstr "Pas 2: Selecci�de m�cara"
+
+#~ msgid "Step 3: Avatar Selection"
+#~ msgstr "Pas 3: Selecci�de l'Avatar"
+
+#~ msgid "Step 4: Notify List"
+#~ msgstr "Pas 4: Llista de Notificacions"
+
 #~ msgid "Stop Highlighting"
 #~ msgstr "Parar Ressaltat"
 
@@ -14361,6 +13672,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Stop Logging"
 #~ msgstr "Aturar el Registre"
+
+#~ msgid "Store an avatar for this user"
+#~ msgstr "Emmagatzemar un avatar per aquest usuari"
 
 #, fuzzy
 #~ msgid "Stray '::' sequence or invalid following alias name"
@@ -14373,6 +13687,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Stray dot ('.') character or invalid following module command name"
 #~ msgstr ""
 #~ "Car�ter punt ('.') sobrant o segueix un nom de comanda del m�ul no v�ida"
+
+#~ msgid "Submenu"
+#~ msgstr "Submen"
 
 #~ msgid ""
 #~ "Syntax error after '$' function call prefix. If you want to use a plain "
@@ -14425,11 +13742,17 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Taskbar Alert"
 #~ msgstr "Barra de Feines d'Alertes"
 
+#~ msgid "Test"
+#~ msgstr "Prova"
+
 #~ msgid "Text icons"
 #~ msgstr "Icones de text"
 
 #~ msgid "Text/Alert Colors"
 #~ msgstr "Colors de Text/Alertes"
+
+#~ msgid "Text:"
+#~ msgstr "Text:"
 
 #~ msgid "The $sw() function can be used only in aliases"
 #~ msgstr "La funci�$sw() nom� pot emprar-se amb �ies"
@@ -14506,6 +13829,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "The Nickname field can't contain spaces!"
 #~ msgstr "El camp del nick no pot contenir espais!"
+
+#~ msgid "The ToolBar Label can't be empty!"
+#~ msgstr "L'etiqueta de la Barra d'Eines no pot estar buida!"
 
 #~ msgid ""
 #~ "The above problem might be related to the switch dash and the following "
@@ -14633,6 +13959,19 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "The default script has been successfully installed."
 #~ msgstr "L'script per defecte ha estat installat satisfactoriament."
+
+#, fuzzy
+#~ msgid "The file \"%Q\" exists. Do you want to replace it ?"
+#~ msgstr "El arxiu %s ja existeix.<br>Sobreescriure-ho?"
+
+#~ msgid "The file %s contains an invalid registered users database version."
+#~ msgstr ""
+#~ "L'arxiu %s cont�una versi�no v�ida de la base de dades d'usuaris "
+#~ "registrats."
+
+#~ msgid "The file %s doesn't appear to be a valid registered users database."
+#~ msgstr ""
+#~ "L'arxiu %s no semblar ser una base de dades d'usuaris registrats v�ida."
 
 #, fuzzy
 #~ msgid "The file '%s' is not readable"
@@ -14784,6 +14123,15 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "The specified KVIrc version \"%s\" is not a valid version string"
 #~ msgstr "El temps UNIX especificat no � v�id (%s)"
 
+#~ msgid ""
+#~ "The specified ToolBar Id already exists.<br>Would you like KVIrc to "
+#~ "assign it automatically (so it doesn't collide with any other toolbar) or "
+#~ "you prefer to do it manually ?"
+#~ msgstr ""
+#~ "L'Id de la Barra d'Eines especificada existeix.<br>Vol que KVIrc assigni "
+#~ "un autom�icament (per a que no coincideixi amb alguna altre barra "
+#~ "d'eines) o vols fer-ho manualment?"
+
 #~ msgid "The specified UNIX time is not valid (%s)"
 #~ msgstr "El temps UNIX especificat no � v�id (%s)"
 
@@ -14872,6 +14220,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid "There is no option named '%Q'"
 #~ msgstr "No existeix l'opci�anomenada '%s'"
+
+#, fuzzy
+#~ msgid "There is no selection!"
+#~ msgstr "No hi ha connexi�que acceptar!"
 
 #~ msgid "This check enables the automatic identification with NickServ"
 #~ msgstr "Aquesta casella habilita la identificaci�autom�ica amb NickServ"
@@ -15022,8 +14374,21 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "ToolBar Applets"
 #~ msgstr "Applets de Barra d'eines"
 
+#, fuzzy
+#~ msgid "ToolBar Export"
+#~ msgstr "Applets de Barra d'eines"
+
+#~ msgid "ToolBar Properties"
+#~ msgstr "Propietats de la Barra d'Eines"
+
 #~ msgid "Topic for \r!c\r%Q\r was set by \r!n\r%Q\r!%Q@\r!h\r%Q\r"
 #~ msgstr "El tema per a \r!c\r%Q\r ser posat per \r!n\r%Q\r!%Q@\r!h\r%Q\r"
+
+#~ msgid "Total %d channels"
+#~ msgstr "Total %d canals"
+
+#~ msgid "Total: %d matching users (of %d in the database)"
+#~ msgstr "Total: %d usuaris coincidents (de %d a la base de dades)"
 
 #~ msgid "Track last read text line"
 #~ msgstr "Marcar l'ltima l�ia de text llegida"
@@ -15055,6 +14420,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Trigger event if lag exceeds:"
 #~ msgstr "Disparar event si el retr� excedeix de:"
+
+#~ msgid "Type"
+#~ msgstr "Tipus"
 
 #~ msgid "URL Handlers"
 #~ msgstr "Manipuladors d'URL"
@@ -15095,6 +14463,34 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Unable to play sound '%s'"
 #~ msgstr "No � possible reproduir el so '%s'"
+
+#, fuzzy
+#~ msgid "Unable to write to the actions file."
+#~ msgstr "No ha estat possible escriure en l'arxiu d'�ies."
+
+#~ msgid "Unable to write to the alias file."
+#~ msgstr "No ha estat possible escriure en l'arxiu d'�ies."
+
+#~ msgid "Unable to write to the event file."
+#~ msgstr "No ha estat possible escriure en l'arxiu d'events."
+
+#~ msgid "Unable to write to the events file."
+#~ msgstr "No ha estat possible escriure en l'arxiu d'events."
+
+#~ msgid "Unable to write to the popup file."
+#~ msgstr "Impossible escriure en l'arxiu de men emergent."
+
+#, fuzzy
+#~ msgid "Unable to write to the raw event file."
+#~ msgstr "No ha estat possible escriure en l'arxiu d'events."
+
+#, fuzzy
+#~ msgid "Unable to write to the raw events file."
+#~ msgstr "No ha estat possible escriure en l'arxiu d'events."
+
+#, fuzzy
+#~ msgid "Unable to write to the toolbar file."
+#~ msgstr "No ha estat possible escriure en l'arxiu d'�ies."
 
 #~ msgid "Unexpected (and senseless) read-only data evaluation"
 #~ msgstr "Evaluaci�de dades de nom� lectura inesperada (i sense sentit)"
@@ -15467,6 +14863,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Use bash-like nick completion"
 #~ msgstr "Emprar completat de nick a l'estil bash"
 
+#, fuzzy
+#~ msgid "Use custom color in userlist"
+#~ msgstr "Emprar un nivell d'alerta personalitzat"
+
 #~ msgid "Use default user mode"
 #~ msgstr "Mode d'usuari per defecte"
 
@@ -15518,6 +14918,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Use workaround for firewall"
 #~ msgstr "Emprar rodeig per a tallafocs"
 
+#, fuzzy
+#~ msgid "User %Q not found"
+#~ msgstr "Usuari %s no trobat"
+
 #~ msgid "User %s not found"
 #~ msgstr "Usuari %s no trobat"
 
@@ -15528,8 +14932,18 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "User Operator"
 #~ msgstr "Usuari Operador"
 
+#~ msgid "User Registration Wizard - KVIrc"
+#~ msgstr "Assistent de Registre d'Usuaris - KVIrc"
+
+#~ msgid "User already registered: found exact name match"
+#~ msgstr "Usuari ja registrat: s'ha trobat coincid�cia exacta amb el nom"
+
 #~ msgid "User input exits away mode"
 #~ msgstr "L'entrada de text surt del mode absent"
+
+#, fuzzy
+#~ msgid "User not found (%Q)"
+#~ msgstr "Usuari no trobat (%s)"
 
 #~ msgid "User not found (%s)"
 #~ msgstr "Usuari no trobat (%s)"
@@ -15545,6 +14959,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "VERSION"
 #~ msgstr "VERSION"
+
+#~ msgid "Value"
+#~ msgstr "Valor"
 
 #~ msgid "Variable %s evaluated to '%s' in operator %s (not a number)"
 #~ msgstr "Variable %s avaluada com a '%s' en l'operador %s (no � un nmero)"
@@ -15651,6 +15068,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Words to highlight:"
 #~ msgstr "Paraules a ressaltar:"
 
+#~ msgid "Write Failed - KVIrc"
+#~ msgstr "Errada d'Escriptura - KVIrc"
+
 #~ msgid "Write error occured !"
 #~ msgstr "Ha succe� un error d'escriptura !"
 
@@ -15661,6 +15081,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "XML support not available in the Qt library"
 #~ msgstr "La mitja de retr� no est�disponible encara"
 
+#, fuzzy
+#~ msgid "Yes to All"
+#~ msgstr "Tri&ar Tot"
+
 #~ msgid "You don't appear to be on channel %s"
 #~ msgstr "Vost�no es troba en el canal %s"
 
@@ -15669,6 +15093,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "You must choose a theme name!"
 #~ msgstr "Ha d'escollir un nom de tema!"
+
+#, fuzzy
+#~ msgid "You must specify a valid name for the namespace"
+#~ msgstr "Per favor, especifiqui les propietats de la nova barra d'eines"
 
 #~ msgid "You must use DNS in an IRC context"
 #~ msgstr "Has d'emprar DNS en un context IRC"
@@ -15723,6 +15151,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "compilation warning"
 #~ msgstr "av�de compilaci"
+
+#~ msgid "default"
+#~ msgstr "per defecte"
 
 #~ msgid "defpopup: internal error"
 #~ msgstr "defpopup: error intern"
@@ -15790,6 +15221,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "missing parameter"
 #~ msgstr "Falta par�etre"
 
+#~ msgid "none"
+#~ msgstr "res"
+
 #~ msgid "o (Operators)"
 #~ msgstr "o (Operadors)"
 
@@ -15821,6 +15255,9 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "u (Uptime)"
 #~ msgstr "u (Temps de Funcionament)"
+
+#~ msgid "unnamed"
+#~ msgstr "sense nom"
 
 #~ msgid "within:"
 #~ msgstr "cada:"

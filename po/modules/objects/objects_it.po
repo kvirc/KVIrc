@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 14:59+0100\n"
+"POT-Creation-Date: 2009-01-27 20:25+0100\n"
 "PO-Revision-Date: 2009-01-27 16:29+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -61,8 +61,10 @@ msgstr ""
 "esadecimale, un nome di colore o tre interi"
 
 #: src/modules/objects/class_widget.cpp:1135
-msgid "$setGeometry() requires either an array as first parameter or four integers"
-msgstr "$setGeometry() richiede sia un array come primo parametro o quattro interi"
+msgid ""
+"$setGeometry() requires either an array as first parameter or four integers"
+msgstr ""
+"$setGeometry() richiede sia un array come primo parametro o quattro interi"
 
 #: src/modules/objects/class_http.cpp:247
 msgid "'%Q' is not a valid file path"
@@ -75,7 +77,8 @@ msgstr "Un'altra connessione in corso"
 
 #: src/modules/objects/class_pixmap.cpp:278
 msgid "Area dimensions are out of destination size "
-msgstr "Le dimensioni dell'area sono più grandi della grandezza di destinazione"
+msgstr ""
+"Le dimensioni dell'area sono più grandi della grandezza di destinazione"
 
 #: src/modules/objects/class_file.cpp:321
 msgid "Argument too long, using only first char"
@@ -92,12 +95,13 @@ msgstr "Bind fallito"
 
 #: src/modules/objects/class_file.cpp:516
 msgid "Block parameter must be a string or a memorybuffer object"
-msgstr "Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
+msgstr ""
+"Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
 
 #: src/modules/objects/class_pixmap.cpp:216
+#: src/modules/objects/class_socket.cpp:433
 #: src/modules/objects/class_file.cpp:374
 #: src/modules/objects/class_file.cpp:508
-#: src/modules/objects/class_socket.cpp:433
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr "Il parametro buffer non è un oggetto memorybuffer"
 
@@ -106,10 +110,10 @@ msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr "Il parametro buffer non è un oggetto memorybuffer o file"
 
 #: src/modules/objects/class_pixmap.cpp:211
-#: src/modules/objects/class_file.cpp:369
-#: src/modules/objects/class_file.cpp:489
 #: src/modules/objects/class_socket.cpp:428
 #: src/modules/objects/class_socket.cpp:499
+#: src/modules/objects/class_file.cpp:369
+#: src/modules/objects/class_file.cpp:489
 msgid "Buffer parameter is not an object"
 msgstr "Il parametro buffer non è un oggetto"
 
@@ -121,11 +125,11 @@ msgstr "Il buttongroup supporta solo oggetti checkbox e radiobutton"
 msgid "Can't add a non-popupmenu object"
 msgstr "Non posso aggiungere un oggetto non popupmenu"
 
-#: src/modules/objects/class_window.cpp:143
-#: src/modules/objects/class_window.cpp:148
+#: src/modules/objects/class_widget.cpp:1757
 #: src/modules/objects/class_wizard.cpp:146
 #: src/modules/objects/class_wizard.cpp:168
-#: src/modules/objects/class_widget.cpp:1757
+#: src/modules/objects/class_window.cpp:143
+#: src/modules/objects/class_window.cpp:148
 msgid "Can't add a non-widget object"
 msgstr "Non posso aggiungere un oggetto non widget"
 
@@ -240,9 +244,9 @@ msgstr "La widget da agganciare non è stata trovata"
 msgid "Failed to setup a nonblocking socket"
 msgstr "Creazione della socket non bloccante fallita"
 
+#: src/modules/objects/class_socket.cpp:512
 #: src/modules/objects/class_file.cpp:40
 #: src/modules/objects/class_file.cpp:480
-#: src/modules/objects/class_socket.cpp:512
 msgid "File is not open!"
 msgstr "Il file non è aperto!"
 
@@ -395,8 +399,8 @@ msgstr "Colore non valido!"
 msgid "Null mask"
 msgstr "Maschera nulla"
 
-#: src/modules/objects/class_button.cpp:131
 #: src/modules/objects/class_painter.cpp:856
+#: src/modules/objects/class_button.cpp:131
 msgid "Object Pixmap required!"
 msgstr "Oggetto Pixmap richiesto!"
 
@@ -456,7 +460,8 @@ msgstr "Uno dei parametri dell'array move è vuoto"
 
 #: src/modules/objects/class_widget.cpp:1632
 msgid "One of the resize array parameters didn't evaluate to an integer"
-msgstr "Uno dei parametri dell'array ridimensionamento non viene valutato come intero"
+msgstr ""
+"Uno dei parametri dell'array ridimensionamento non viene valutato come intero"
 
 #: src/modules/objects/class_widget.cpp:1627
 msgid "One of the resize array parameters is empty"
@@ -499,8 +504,8 @@ msgstr "Pixmap o il parametro Widget non è un oggetto"
 msgid "Pixmap parameter is not an object"
 msgstr "Il parametro pixmap non è un oggetto"
 
-#: src/modules/objects/class_button.cpp:125
 #: src/modules/objects/class_painter.cpp:851
+#: src/modules/objects/class_button.cpp:125
 msgid "Pixmap parameter is not an object!"
 msgstr "Il parametro pixmap non è un oggetto!"
 
@@ -565,8 +570,8 @@ msgstr "Il file '%Q' non esiste"
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr "Il primo parametro non viene valutato come array né come intero"
 
-#: src/modules/objects/class_file.cpp:613
 #: src/modules/objects/class_socket.cpp:627
+#: src/modules/objects/class_file.cpp:613
 msgid "The hex string is not correct!"
 msgstr "La stringa esadecimale non è corretta!"
 
@@ -639,7 +644,8 @@ msgid "There is no connection to accept!"
 msgstr "Non ci sono connessioni da accettare!"
 
 #: src/modules/objects/class_socket.cpp:1198
-msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgid ""
+"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""
 "Troppi dati non processati in arrivo (hai lasciato la socket senza "
 "controllo?)"
@@ -660,9 +666,9 @@ msgstr "Gruppo Colore '%Q' sconosciuto"
 msgid "Unknown Color Role '%Q'"
 msgstr "Ruolo Colore '%Q' sconosciuto"
 
-#: src/modules/objects/class_groupbox.cpp:315
-#: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_label.cpp:291
+#: src/modules/objects/class_hbox.cpp:197
+#: src/modules/objects/class_groupbox.cpp:315
 msgid "Unknown alignment '%Q'"
 msgstr "Allineamento '%Q' sconosciuto"
 
@@ -687,8 +693,8 @@ msgstr "Modo echo '%Q' sconosciuto"
 msgid "Unknown mode '%Q'"
 msgstr "Modo '%Q' sconosciuto"
 
-#: src/modules/objects/class_groupbox.cpp:348
 #: src/modules/objects/class_slider.cpp:282
+#: src/modules/objects/class_groupbox.cpp:348
 msgid "Unknown orientation '%Q'"
 msgstr "Orientamento '%Q' sconosciuto"
 
@@ -773,15 +779,15 @@ msgid "Widget or Pixmap required "
 msgstr "Widget o Pixmap richiesti"
 
 #: src/modules/objects/class_mainwindow.cpp:92
-#: src/modules/objects/class_toolbutton.cpp:279
 #: src/modules/objects/class_widget.cpp:1746
+#: src/modules/objects/class_toolbutton.cpp:279
 #: src/modules/objects/object_macros.h:115
 msgid "Widget parameter is not a valid object"
 msgstr "Il parametro widget non è un oggetto valido"
 
 #: src/modules/objects/class_mainwindow.cpp:87
-#: src/modules/objects/class_toolbutton.cpp:274
 #: src/modules/objects/class_widget.cpp:1741
+#: src/modules/objects/class_toolbutton.cpp:274
 #: src/modules/objects/object_macros.h:110
 msgid "Widget parameter is not an object"
 msgstr "Il parametro widget non è un oggetto"
@@ -797,4 +803,3 @@ msgstr "Errore in scrittura!"
 #: src/modules/objects/class_xmlreader.cpp:315
 msgid "XML support not available in the Qt library"
 msgstr "Il supporto XML non è disponibile nella libreria Qt"
-
