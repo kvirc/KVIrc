@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: filetransferwindow_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Santeri Piippo\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,11 +82,6 @@ msgstr "Paikallis&tiedosto"
 msgid "MS-DOS Prompt at Location"
 msgstr "MS-DOS -komentotulkki kohteeseen"
 
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:123
-#, fuzzy
-msgid "Manage File &Transfers"
-msgstr "Tiedostosiirrot"
-
 #: src/modules/filetransferwindow/filetransferwindow.cpp:602
 #: src/modules/filetransferwindow/filetransferwindow.cpp:770
 msgid "No"
@@ -105,10 +100,6 @@ msgstr "Avaa &sijainti"
 #: src/modules/filetransferwindow/filetransferwindow.cpp:461
 msgid "Open &With"
 msgstr "Avaa &ohjelmalla..."
-
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
-msgid "Ops.. internal error"
-msgstr ""
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:137
 msgid "Progress"
@@ -131,3 +122,7 @@ msgstr "Tyyppi"
 #: src/modules/filetransferwindow/filetransferwindow.cpp:770
 msgid "Yes"
 msgstr "Kyllä"
+
+#, fuzzy
+#~ msgid "Manage File &Transfers"
+#~ msgstr "Tiedostosiirrot"

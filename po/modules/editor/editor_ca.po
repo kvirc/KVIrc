@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2005-02-24 23:23+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -16,11 +16,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
 "X-Generator: KBabel 1.2\n"
-
-#: src/modules/editor/scripteditor.cpp:1016
-#, fuzzy
-msgid "&Cancel"
-msgstr "Cancel·lar"
 
 #: src/modules/editor/scripteditor.cpp:752
 msgid "&Configure Editor..."
@@ -33,15 +28,6 @@ msgstr "&Acceptar"
 #: src/modules/editor/scripteditor.cpp:749
 msgid "&Open..."
 msgstr "&Obrir..."
-
-#: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1021
-msgid "&Replace"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:1011
-msgid "&Replace in all Aliases"
-msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:750
 msgid "&Save As..."
@@ -73,25 +59,9 @@ msgstr "Cancel·lar"
 msgid "Choose a Filename - KVIrc"
 msgstr "Esculli un Nom d'Arxiu - KVIrc"
 
-#: src/modules/editor/scripteditor.cpp:522
-msgid "Colors"
-msgstr ""
-
 #: src/modules/editor/scripteditor.cpp:527
 msgid "Comments:"
 msgstr "Comentaris:"
-
-#: src/modules/editor/scripteditor.cpp:255
-msgid "Context sensitive help"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:761
-msgid "Find"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:269
-msgid "Find & Replace"
-msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:532
 msgid "Find:"
@@ -129,10 +99,6 @@ msgstr "Preferències"
 msgid "Punctuation:"
 msgstr "Puntuació:"
 
-#: src/modules/editor/scripteditor.cpp:999
-msgid "Replace with"
-msgstr ""
-
 #: src/modules/editor/scripteditor.cpp:928
 #, c-format
 msgid "Row: %d Col: %d"
@@ -146,6 +112,6 @@ msgstr "Ha fallat la Gravació - KVIrc"
 msgid "Variables:"
 msgstr "Variables:"
 
-#: src/modules/editor/scripteditor.cpp:989
-msgid "Word to Find"
-msgstr ""
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "Cancel·lar"

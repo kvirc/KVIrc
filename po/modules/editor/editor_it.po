@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 01:08+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2008-08-03 16:46+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -19,10 +19,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
-
-#: src/modules/editor/scripteditor.cpp:1016
-msgid "&Cancel"
-msgstr "Annulla"
 
 #: src/modules/editor/scripteditor.cpp:752
 msgid "&Configure Editor..."
@@ -35,15 +31,6 @@ msgstr "&OK"
 #: src/modules/editor/scripteditor.cpp:749
 msgid "&Open..."
 msgstr "&Apri..."
-
-#: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1021
-msgid "&Replace"
-msgstr "Sostituisci"
-
-#: src/modules/editor/scripteditor.cpp:1011
-msgid "&Replace in all Aliases"
-msgstr "Sostituisci in tutti gli Alias"
 
 #: src/modules/editor/scripteditor.cpp:750
 msgid "&Save As..."
@@ -75,25 +62,9 @@ msgstr "Annulla"
 msgid "Choose a Filename - KVIrc"
 msgstr "Scegli un Nome - KVIrc"
 
-#: src/modules/editor/scripteditor.cpp:522
-msgid "Colors"
-msgstr "Colori"
-
 #: src/modules/editor/scripteditor.cpp:527
 msgid "Comments:"
 msgstr "Commenti:"
-
-#: src/modules/editor/scripteditor.cpp:255
-msgid "Context sensitive help"
-msgstr "Aiuto Contestuale"
-
-#: src/modules/editor/scripteditor.cpp:761
-msgid "Find"
-msgstr "Trova"
-
-#: src/modules/editor/scripteditor.cpp:269
-msgid "Find & Replace"
-msgstr "Trova & Sostituisci"
 
 #: src/modules/editor/scripteditor.cpp:532
 msgid "Find:"
@@ -131,10 +102,6 @@ msgstr "Preferenze"
 msgid "Punctuation:"
 msgstr "Punteggiatura:"
 
-#: src/modules/editor/scripteditor.cpp:999
-msgid "Replace with"
-msgstr "Sostituisci con"
-
 #: src/modules/editor/scripteditor.cpp:928
 #, c-format
 msgid "Row: %d Col: %d"
@@ -148,13 +115,36 @@ msgstr "Impossibile Salvare - KVIrc"
 msgid "Variables:"
 msgstr "Variabili:"
 
-#: src/modules/editor/scripteditor.cpp:989
-msgid "Word to Find"
-msgstr "Parola da Trovare"
+#~ msgid "&Cancel"
+#~ msgstr "Annulla"
 
 #, fuzzy
 #~ msgid "&Find Next(WIP)"
 #~ msgstr "Trova Successivo"
 
+#~ msgid "&Replace"
+#~ msgstr "Sostituisci"
+
+#~ msgid "&Replace in all Aliases"
+#~ msgstr "Sostituisci in tutti gli Alias"
+
 #~ msgid "&Replace(WIP)"
 #~ msgstr "Sostituisci (WIP)"
+
+#~ msgid "Colors"
+#~ msgstr "Colori"
+
+#~ msgid "Context sensitive help"
+#~ msgstr "Aiuto Contestuale"
+
+#~ msgid "Find"
+#~ msgstr "Trova"
+
+#~ msgid "Find & Replace"
+#~ msgstr "Trova & Sostituisci"
+
+#~ msgid "Replace with"
+#~ msgstr "Sostituisci con"
+
+#~ msgid "Word to Find"
+#~ msgstr "Parola da Trovare"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 01:08+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2008-11-18 16:43+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -1621,12 +1621,6 @@ msgstr "Aggiungi Profilo"
 msgid "Add Rule"
 msgstr "Aggiungi Regola"
 
-#: src/modules/options/optw_connection.h:45 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_irc.h:57 src/modules/options/optw_identity.h:203
-msgid "Advanced"
-msgstr "Avanzate"
-
 #: src/modules/options/optw_notify.cpp:60
 #: src/modules/options/optw_notify.cpp:125
 msgid "Advanced configuration"
@@ -1681,10 +1675,6 @@ msgstr "Avvisa dei messaggi di query"
 msgid "Alert level:"
 msgstr "Livello di allerta:"
 
-#: src/modules/options/optw_highlighting.h:30
-msgid "Alert/Highlight"
-msgstr "Avvisa per i messaggi evidenziati"
-
 #: src/modules/options/optw_ctcpfloodprotection.cpp:86
 msgid "Allow up to:"
 msgstr "Permetti al massimo:"
@@ -1728,10 +1718,6 @@ msgstr "Apri tutte le query minimizzate"
 #: src/modules/options/optw_dcc.cpp:194
 msgid "Always open transfer window as minimized"
 msgstr "Apri sempre la finestra di trasferimento minimizzata"
-
-#: src/modules/options/optw_antispam.h:30
-msgid "Anti-spam"
-msgstr "Anti-spam"
 
 #: src/modules/options/optw_ctcp.cpp:53
 msgid "Append to SOURCE reply:"
@@ -1786,10 +1772,6 @@ msgstr "Riprendi automaticamente lo scaricamento quando auto-accettata"
 msgid "Automatically unload unused modules"
 msgstr "Scarica automaticamente i moduli non utilizzati"
 
-#: src/modules/options/optw_identity.h:178
-msgid "Avatar"
-msgstr "Avatar"
-
 #: src/modules/options/optw_identity.cpp:120
 msgid "Avatar Download - KVIrc"
 msgstr "Scarica Avatar - KVIrc"
@@ -1806,14 +1788,6 @@ msgstr "L'avatar potrebbe essere troppo grosso - KVIrc"
 msgid "Avatar offer timeout:"
 msgstr "Tempo di scadenza dell'offerta dell'avatar:"
 
-#: src/modules/options/optw_avatar.h:32
-msgid "Avatars"
-msgstr "Avatar"
-
-#: src/modules/options/optw_away.h:30
-msgid "Away"
-msgstr "Away"
-
 #: src/modules/options/optw_away.cpp:43
 msgid "Away Nickname"
 msgstr "Nickname Away"
@@ -1824,8 +1798,6 @@ msgstr "Away:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_interfacelookglobal.cpp:198
-#: src/modules/options/optw_windowlist.h:79
-#: src/modules/options/optw_userlist.h:46
 msgid "Background"
 msgstr "Sfondo"
 
@@ -1898,10 +1870,6 @@ msgstr "Compatibilità con i Bug"
 msgid "CLIENTINFO"
 msgstr "CLIENTINFO"
 
-#: src/modules/options/optw_ctcp.h:30
-msgid "CTCP"
-msgstr "CTCP"
-
 #: src/modules/options/optw_ctcp.cpp:47
 msgid "CTCP Replies"
 msgstr "Risposte CTCP"
@@ -1950,10 +1918,6 @@ msgstr "Avvisi ChanServ e NickServ"
 msgid "Change nickname on away"
 msgstr "Cambia nick quando entri in modalità away"
 
-#: src/modules/options/optw_channel.h:36
-msgid "Channel"
-msgstr "Canale"
-
 #: src/modules/options/optw_userlist.cpp:59
 msgid "Channel admin:"
 msgstr "Admin del Canale:"
@@ -1970,10 +1934,6 @@ msgstr "Finestre di Canale"
 #: src/modules/options/optw_servers.cpp:779
 msgid "Channels to join automatically upon connect:"
 msgstr "Canali in cui entrare automaticamente una volta connesso:"
-
-#: src/modules/options/optw_dcc.h:115
-msgid "Chat"
-msgstr "Chat"
 
 #: src/modules/options/optw_notify.cpp:65
 msgid "Check USERHOST for online users"
@@ -2007,10 +1967,6 @@ msgstr "Scegli un Immagine - KVIrc"
 msgid "Choose..."
 msgstr "Scegli..."
 
-#: src/modules/options/optw_windowlist.h:112
-msgid "Classic Window List"
-msgstr "Lista Finestre Classica"
-
 #: src/modules/options/optw_servers.cpp:1458
 msgid "Clear List"
 msgstr "Pulisci Lista"
@@ -2026,10 +1982,6 @@ msgstr "Chiudi questa finestra, confermando tutti i cambiamenti."
 #: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Chiudi questa finestra, scartando tutti i cambiamenti."
-
-#: src/modules/options/optw_messages.h:189
-msgid "Color Set"
-msgstr "Set di colori"
 
 #: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
@@ -2066,7 +2018,6 @@ msgid "Connect to this server at startup"
 msgstr "Connetti a questo server all'avvio"
 
 #: src/modules/options/optw_servers.cpp:769
-#: src/modules/options/optw_connection.h:32
 msgid "Connection"
 msgstr "Connessione"
 
@@ -2077,10 +2028,6 @@ msgstr "Console"
 #: src/modules/options/optw_logging.cpp:44
 msgid "Console windows"
 msgstr "Finestre di Console"
-
-#: src/modules/options/optw_notify.h:30
-msgid "Contacts"
-msgstr "Contatti"
 
 #: src/modules/options/optw_input.cpp:43
 msgid "Control char color"
@@ -2102,10 +2049,6 @@ msgstr "Colore del cursore"
 #, c-format
 msgid "Custom nickname (%%nick%% means a current nick):"
 msgstr "Nickname (%%nick%% significa nick corrente):"
-
-#: src/modules/options/optw_dcc.h:30
-msgid "DCC"
-msgstr "DCC"
 
 #: src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
@@ -2275,10 +2218,6 @@ msgstr "Modifica Profilo"
 msgid "Edit Rule"
 msgstr "Modifica Regola"
 
-#: src/modules/options/optw_texticons.cpp:81
-msgid "Emoticon"
-msgstr "Emoticon"
-
 #: src/modules/options/optw_antispam.cpp:39
 msgid "Enable Anti-spam For"
 msgstr "Attiva Anti-Spam Per"
@@ -2416,19 +2355,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Impossibile iniziare lo scaricamento"
 
-#: src/modules/options/optw_windowlist.h:98
-#: src/modules/options/optw_userlist.h:103
-#: src/modules/options/optw_ircview.h:70
-msgid "Features"
-msgstr "Caratteristiche"
-
 #: src/modules/options/optw_identity.cpp:376
 msgid "Female"
 msgstr "Femmina"
-
-#: src/modules/options/optw_dcc.h:74
-msgid "File Transfer"
-msgstr "Trasferimento File"
 
 #: src/modules/options/optw_mediatypes.cpp:100
 msgid "File pattern:"
@@ -2449,10 +2378,6 @@ msgstr ""
 #: src/modules/options/optw_notify.cpp:51
 msgid "Flash window when users are going online"
 msgstr "Fai lampeggiare la finestra quando gli utenti sono online"
-
-#: src/modules/options/optw_ctcpfloodprotection.h:30
-msgid "Flood Protection"
-msgstr "Protezione Flood"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
@@ -2483,11 +2408,6 @@ msgstr "Forza l'uscita immediata"
 msgid "Force language:"
 msgstr "Forza lingua:"
 
-#: src/modules/options/optw_windowlist.h:64
-#: src/modules/options/optw_userlist.h:67
-msgid "Foreground"
-msgstr "Primo piano"
-
 #: src/modules/options/optw_topiclabel.cpp:37
 #: src/modules/options/optw_input.cpp:40
 msgid "Foreground color"
@@ -2502,21 +2422,13 @@ msgid "Gender:"
 msgstr "Sesso"
 
 #: src/modules/options/optw_servers.cpp:213
-#: src/modules/options/optw_messages.cpp:71 src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88
-#: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_irc.h:43
-#: src/modules/options/optw_identity.h:154
+#: src/modules/options/optw_messages.cpp:71
 msgid "General"
 msgstr "Generale"
 
 #: src/modules/options/dialog.cpp:114
 msgid "General Preferences"
 msgstr "Impostazioni Generali"
-
-#: src/modules/options/optw_generalopt.h:30
-msgid "General options"
-msgstr "Opzioni Generali"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:44
 msgid "Global application font:"
@@ -2585,10 +2497,6 @@ msgstr "Nascondi i pulsanti di input come default"
 msgid "Highest port:"
 msgstr "Porta alta:"
 
-#: src/modules/options/optw_highlighting.h:44
-msgid "Highlight"
-msgstr "Evidenziazione"
-
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight messages containing my nickname"
 msgstr "Evidenzia i messaggi contenenti il mio nickname"
@@ -2632,10 +2540,6 @@ msgstr "Lo stack IP tratta l'IPv4 come parte dello spazio dei nomi IPv6"
 msgid "IPv6 Settings"
 msgstr "Impostazioni IPV6"
 
-#: src/modules/options/optw_irc.h:30
-msgid "IRC"
-msgstr "IRC"
-
 #: src/modules/options/optw_userlist.cpp:57
 msgid "IRC Op:"
 msgstr "IRC Op:"
@@ -2652,10 +2556,6 @@ msgstr "Icona"
 msgid "Id:"
 msgstr "Id:"
 
-#: src/modules/options/optw_connection.h:91
-msgid "Ident Service"
-msgstr "Servizio Ident"
-
 #: src/modules/options/optw_connection.cpp:222
 msgid "Ident username:"
 msgstr "Ident username:"
@@ -2668,13 +2568,8 @@ msgstr "Comando di Identificazione"
 
 #: src/modules/options/optw_servers.cpp:557
 #: src/modules/options/optw_interfacefeatures.cpp:61
-#: src/modules/options/optw_identity.h:138
 msgid "Identity"
 msgstr "Identità"
-
-#: src/modules/options/optw_ignore.h:32
-msgid "Ignore"
-msgstr "Ignora"
 
 #: src/modules/options/optw_uparser.cpp:47
 msgid "Ignore module versions (dangerous)"
@@ -2723,14 +2618,6 @@ msgstr "Testo Inattivo (Primario)"
 #: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Text (Secondary)"
 msgstr "Testo Inattivo (Secondario)"
-
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
-msgid "Input"
-msgstr "Ingresso"
-
-#: src/modules/options/optw_interfacefeatures.h:32
-msgid "Interface"
-msgstr "Interfaccia"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
@@ -2791,21 +2678,9 @@ msgstr "Mantieni aperte le finestre delle query"
 msgid "Kill broken timers"
 msgstr "Uccidi timer corrotti"
 
-#: src/modules/options/optw_topiclabel.h:32
-msgid "Labels"
-msgstr "Etichette"
-
-#: src/modules/options/optw_lag.h:31
-msgid "Lag"
-msgstr "Lag"
-
 #: src/modules/options/optw_lag.cpp:44
 msgid "Lag meter heartbeat:"
 msgstr "Intervallo di misurazione del lag:"
-
-#: src/modules/options/optw_textencoding.h:32
-msgid "Language"
-msgstr "Lingua"
 
 #: src/modules/options/optw_identity.cpp:394
 msgid "Languages:"
@@ -2874,14 +2749,6 @@ msgstr "Log dei canali joinati"
 msgid "Log this"
 msgstr "Logga questo:"
 
-#: src/modules/options/optw_logging.h:30
-msgid "Logging"
-msgstr "Logging"
-
-#: src/modules/options/optw_ircview.h:50
-msgid "Look"
-msgstr "Aspetto"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:199
 msgid "Low-Contrast Foreground"
 msgstr "Colore in primo piano a basso contrasto"
@@ -2913,10 +2780,6 @@ msgid ""
 msgstr ""
 "Molti settaggi hanno dei tooltip che possono essere mostrati tenendo il "
 "cursore del mouse sopra la loro etichetta per qualche secondo."
-
-#: src/modules/options/optw_ircview.h:84
-msgid "Marker"
-msgstr "Segnalatore Ultima Riga"
 
 #: src/modules/options/optw_ircview.cpp:179
 msgid "Marker color:"
@@ -2966,21 +2829,9 @@ msgstr "Sono stato kickato"
 msgid "Media Player"
 msgstr "Lettore Multimediale"
 
-#: src/modules/options/optw_mediatypes.h:48
-msgid "Media Types"
-msgstr "Tipi di File"
-
-#: src/modules/options/optw_messages.h:96
-msgid "Message Colors"
-msgstr "Colori Messaggio"
-
 #: src/modules/options/optw_nickserv.cpp:76
 msgid "Message Regexp"
 msgstr "Regexp per il messaggio"
-
-#: src/modules/options/optw_messages.h:54
-msgid "Message Style"
-msgstr "Stile Messaggio"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Mid-Contrast Foreground"
@@ -3117,7 +2968,6 @@ msgid "Nick completion postfix string"
 msgstr "Caratteri aggiunti alla fine del completamento nick"
 
 #: src/modules/options/optw_servers.cpp:335
-#: src/modules/options/optw_nickserv.h:41
 msgid "NickServ"
 msgstr "NickServ"
 
@@ -3145,10 +2995,6 @@ msgstr "Nickname"
 #: src/modules/options/optw_userlist.cpp:54
 msgid "Nickname Colors"
 msgstr "Colore Nickname"
-
-#: src/modules/options/optw_userlist.h:83
-msgid "Nickname Grid"
-msgstr "Griglia Nickname"
 
 #: src/modules/options/optw_identity.cpp:60
 msgid "Nickname alternatives"
@@ -3184,10 +3030,6 @@ msgstr "Normale"
 #: src/modules/options/optw_userlist.cpp:127
 msgid "Normal:"
 msgstr "Normale:"
-
-#: src/modules/options/optw_notify.h:44
-msgid "Notifier"
-msgstr "Notificatore"
 
 #: src/modules/options/optw_notify.cpp:137
 msgid "Notifier window opacity while active (mouseover)"
@@ -3316,10 +3158,6 @@ msgstr "Altro:"
 #: src/modules/options/optw_connection.cpp:150
 msgid "Outgoing data queue flush timeout:"
 msgstr "Tempo svuotamento coda dati in uscita:"
-
-#: src/modules/options/optw_ircview.h:36
-msgid "Output"
-msgstr "Uscita"
 
 #: src/modules/options/optw_connection.cpp:198
 msgid "Output identd messages to:"
@@ -3497,10 +3335,6 @@ msgstr "Nome Profilo"
 msgid "Profile Name:"
 msgstr "Nome Profilo:"
 
-#: src/modules/options/optw_identity.h:228
-msgid "Profiles"
-msgstr "Profili"
-
 #: src/modules/options/optw_windowlist.cpp:96
 #: src/modules/options/optw_windowlist.cpp:254
 msgid "Progress bar color:"
@@ -3510,10 +3344,6 @@ msgstr "Colore Barra di Avanzamento:"
 #: src/modules/options/optw_servers.cpp:497
 msgid "Properties"
 msgstr "Proprietà"
-
-#: src/modules/options/optw_protection.h:32
-msgid "Protection"
-msgstr "Protezione"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
 msgid "Protocol handler"
@@ -3525,10 +3355,6 @@ msgstr "Protocollo:"
 
 #: src/modules/options/optw_proxy.cpp:70
 msgid "Proxy"
-msgstr "Proxy"
-
-#: src/modules/options/optw_proxy.h:53
-msgid "Proxy Hosts"
 msgstr "Proxy"
 
 #: src/modules/options/optw_servers.cpp:744
@@ -3566,10 +3392,6 @@ msgstr "Inserisci il nome vero che vuoi usare"
 #: src/modules/options/optw_identity.cpp:890
 msgid "Put here the username you want to use"
 msgstr "Inserisci il nome utente che vuoi usare"
-
-#: src/modules/options/optw_query.h:30
-msgid "Query"
-msgstr "Query"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
@@ -3684,10 +3506,6 @@ msgstr "Destra"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_connection.h:59
-msgid "SSL"
-msgstr "SSL"
-
 #: src/modules/options/optw_messages.cpp:402
 msgid "Save As..."
 msgstr "Salva Come.."
@@ -3715,10 +3533,6 @@ msgstr "Scala nella lista utenti"
 #: src/modules/options/optw_avatar.cpp:56
 msgid "Scaling on load (and in user tooltips)"
 msgstr "Scala al caricamento (e nelle tooltip utente)"
-
-#: src/modules/options/optw_uparser.h:30
-msgid "Scripting Engine"
-msgstr "Motore di Scripting"
 
 #: src/modules/options/optw_tray.cpp:48
 msgid "Select message levels to notify"
@@ -3792,7 +3606,6 @@ msgid "Server:"
 msgstr "Server:"
 
 #: src/modules/options/optw_interfacefeatures.cpp:62
-#: src/modules/options/optw_servers.h:151
 msgid "Servers"
 msgstr "Server"
 
@@ -3924,10 +3737,6 @@ msgstr "Anti-spam silenzioso (nessun avvertimento)"
 msgid "Single click"
 msgstr "Click singolo"
 
-#: src/modules/options/optw_connection.h:76
-msgid "Socket"
-msgstr "Socket"
-
 #: src/modules/options/optw_ircview.cpp:192
 msgid "SolidLine"
 msgstr "Linea continua"
@@ -3940,21 +3749,13 @@ msgstr "Ordina i file salvati creando sottodirectory col nick"
 msgid "Sort windows by name"
 msgstr "Elenca le finestre per nome"
 
-#: src/modules/options/optw_sound.h:33
-msgid "Sound"
-msgstr "Sistema sonoro"
-
-#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60
 msgid "Sound System"
 msgstr "Sistema sonoro"
 
 #: src/modules/options/optw_dcc.cpp:335
 msgid "Sound device:"
 msgstr "Dispositivo del suono:"
-
-#: src/modules/options/optw_sound.h:82
-msgid "Sounds"
-msgstr "Sistema sonoro"
 
 #: src/modules/options/optw_logging.cpp:48
 msgid "Strip colors in logs"
@@ -3972,19 +3773,10 @@ msgstr "TIME"
 msgid "Test"
 msgstr "Test"
 
-#: src/modules/options/optw_texticons.cpp:80
-#: src/modules/options/optw_messages.h:39
-msgid "Text"
-msgstr "Testo"
-
 #: src/modules/options/optw_servers.cpp:167
 #: src/modules/options/optw_servers.cpp:665
 msgid "Text Encoding:"
 msgstr "Codifica Testo:"
-
-#: src/modules/options/optw_texticons.h:39
-msgid "Text icons"
-msgstr "Icone del testo"
 
 #: src/modules/options/optw_windowlist.cpp:86
 #: src/modules/options/optw_windowlist.cpp:246
@@ -4219,21 +4011,9 @@ msgstr "Affianca"
 msgid "Timeout Values"
 msgstr "Valore Tempo Massimo"
 
-#: src/modules/options/optw_messages.h:75
-msgid "Timestamp"
-msgstr "Orario"
-
 #: src/modules/options/optw_messages.cpp:151
 msgid "Timestamp format:"
 msgstr "Formato del timestamp"
-
-#: src/modules/options/optw_interfacelookglobal.h:101
-msgid "ToolBar Applets"
-msgstr "Applet della Barra degli Strumenti"
-
-#: src/modules/options/optw_tools.h:33
-msgid "Tools"
-msgstr "Strumenti"
 
 #: src/modules/options/optw_ircview.cpp:70
 #: src/modules/options/optw_input.cpp:62
@@ -4246,10 +4026,6 @@ msgstr "Sopra"
 msgid "Track last read text line"
 msgstr "Traccia l'ultima riga letta"
 
-#: src/modules/options/optw_interfacelookglobal.h:48
-msgid "Transparency"
-msgstr "Trasparenza"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:106
 #: src/modules/options/optw_interfacelookglobal.cpp:112
 msgid "Transparency blend image:"
@@ -4259,14 +4035,6 @@ msgstr "Immagine da sfumare:"
 msgid "Transparent"
 msgstr "Trasparente"
 
-#: src/modules/options/optw_tray.h:32
-msgid "Tray icon"
-msgstr "Icona del vassoio di sistema"
-
-#: src/modules/options/optw_windowlist.h:48
-msgid "Tree Window List"
-msgstr "Lista Finestre ad Albero"
-
 #: src/modules/options/optw_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
 msgstr "Esegui evento specifico se il lag supera il limite di:"
@@ -4274,10 +4042,6 @@ msgstr "Esegui evento specifico se il lag supera il limite di:"
 #: src/modules/options/optw_dcc.cpp:249
 msgid "Tweaks"
 msgstr "Ritocchi"
-
-#: src/modules/options/optw_urlhandlers.h:32
-msgid "URL handlers"
-msgstr "Gestore URL"
 
 #: src/modules/options/optw_notify.cpp:92
 msgid "USERHOST delay (in seconds)"
@@ -4473,10 +4237,6 @@ msgstr "Prefisso e suffisso definiti dall'utente"
 msgid "User-op:"
 msgstr "User-op:"
 
-#: src/modules/options/optw_userlist.h:32
-msgid "Userlist"
-msgstr "Lista Utenti"
-
 #: src/modules/options/optw_identity.cpp:697
 msgid "Username"
 msgstr "Nome utente"
@@ -4497,10 +4257,6 @@ msgstr "VERSION"
 msgid "Verbose"
 msgstr "Dettagliato"
 
-#: src/modules/options/optw_ircoutput.h:33
-msgid "Verbosity And Output"
-msgstr "Verbosità Messaggi"
-
 #: src/modules/options/optw_userlist.cpp:137
 msgid "Vertical Alignment:"
 msgstr "Allineamento verticale:"
@@ -4510,10 +4266,6 @@ msgstr "Allineamento verticale:"
 #: src/modules/options/optw_windowlist.cpp:128
 msgid "Vertical align:"
 msgstr "Allineamento verticale:"
-
-#: src/modules/options/optw_dcc.h:128
-msgid "Voice"
-msgstr "Voice"
 
 #: src/modules/options/optw_userlist.cpp:62
 msgid "Voice:"
@@ -4552,18 +4304,6 @@ msgstr "Risposte whois"
 msgid "Winamp messages ecoding"
 msgstr "Codifica Messaggi di Winamp"
 
-#: src/modules/options/optw_interfacelookglobal.h:75
-msgid "Window Captions"
-msgstr "Caption Finestra"
-
-#: src/modules/options/optw_windowlist.h:34
-msgid "Window List"
-msgstr "Lista Finestre"
-
-#: src/modules/options/optw_highlighting.h:57
-msgid "Window List Alert"
-msgstr "Livello d'Allerta delle Finestre"
-
 #: src/modules/options/optw_highlighting.cpp:59
 msgid "Word splitters:"
 msgstr "Separatori di parola:"
@@ -4575,10 +4315,6 @@ msgstr "Parole considerate Spam:"
 #: src/modules/options/optw_highlighting.cpp:57
 msgid "Words to highlight:"
 msgstr "Parole da evidenziare:"
-
-#: src/modules/options/optw_interfacelookglobal.h:88
-msgid "Workspace"
-msgstr "Area di lavoro"
 
 #: src/modules/options/optw_identity.cpp:390
 msgid ""
@@ -4620,167 +4356,310 @@ msgstr "[PREFISSO]nickname[!user@host][SUFFISSO] messaggio"
 msgid "[Unknown Media Type]"
 msgstr "[Tipo di File Sconosciuto]"
 
-#: src/modules/options/optw_nickserv.h:43
-msgid "authentication,identify"
-msgstr "autenticazione,identificazione"
-
 #: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bytes/sec"
-
-#: src/modules/options/optw_query.h:32
-msgid "chat"
-msgstr "chat"
-
-#: src/modules/options/optw_servers.h:152
-msgid "connection"
-msgstr "connessione"
-
-#: src/modules/options/optw_proxy.h:55
-msgid "connection,servers"
-msgstr "connessione,server"
-
-#: src/modules/options/optw_protection.h:35
-msgid "ctcp,flood"
-msgstr "ctcp,flood"
-
-#: src/modules/options/optw_ircoutput.h:35
-msgid "debug"
-msgstr "debug"
 
 #: src/modules/options/optw_textencoding.cpp:88
 msgid "en"
 msgstr "en"
 
-#: src/modules/options/optw_mediatypes.h:50
-msgid "file,audio,video,programs"
-msgstr "file,audio,video,programmi"
-
 #: src/modules/options/optw_servers.cpp:1591
 msgid "irc.unknown.net"
 msgstr "irc.unknown.net"
-
-#: src/modules/options/optw_textencoding.h:35
-msgid "language,encoding,charset,codepage"
-msgstr "lingua,codifica,charset"
-
-#: src/modules/options/optw_notify.h:32
-msgid "notify,buddy,buddies,friends"
-msgstr "notifica,contatto,contatti,amici"
-
-#: src/modules/options/optw_notify.h:45
-msgid "popup"
-msgstr "popup"
-
-#: src/modules/options/optw_ignore.h:34
-msgid "protection"
-msgstr "protezione"
-
-#: src/modules/options/optw_logging.h:31
-msgid "save,output"
-msgstr "salva,uscita"
-
-#: src/modules/options/optw_uparser.h:31
-msgid "scripting,kvs,debug"
-msgstr "scripting,kvs,debug"
-
-#: src/modules/options/optw_texticons.h:41
-msgid "smileys,emoticons"
-msgstr "faccine,emoticon"
-
-#: src/modules/options/optw_sound.h:84
-msgid "sound,events"
-msgstr "souno,eventi"
-
-#: src/modules/options/optw_sound.h:49
-msgid "sound,xmms,audio,play,amarok"
-msgstr "suono,xmms,audio,play,amarok"
-
-#: src/modules/options/optw_windowlist.h:36
-#: src/modules/options/optw_windowlist.h:50
-#: src/modules/options/optw_windowlist.h:66
-#: src/modules/options/optw_windowlist.h:81
-#: src/modules/options/optw_windowlist.h:100
-#: src/modules/options/optw_windowlist.h:115
-#: src/modules/options/optw_interfacelookglobal.h:34
-msgid "theme"
-msgstr "tema"
-
-#: src/modules/options/optw_interfacelookglobal.h:49
-msgid "theme,background"
-msgstr "tema,fondo"
-
-#: src/modules/options/optw_messages.h:97
-#: src/modules/options/optw_messages.h:190
-msgid "theme,colors,messages,output"
-msgstr "temi,colori,messaggi"
-
-#: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
-msgid "theme,colors,output"
-msgstr "tema,colori,uscita"
-
-#: src/modules/options/optw_input.h:34
-msgid "theme,colors,text"
-msgstr "tema,colori,testo"
-
-#: src/modules/options/optw_interfacelookglobal.h:76
-#: src/modules/options/optw_interfacelookglobal.h:89
-msgid "theme,mdi"
-msgstr "tema,mdi"
-
-#: src/modules/options/optw_messages.h:58
-msgid "theme,privmsg,output,format"
-msgstr "tema,privmsg,uscita,formattazione"
-
-#: src/modules/options/optw_interfacelookglobal.h:102
-msgid "theme,toolbar"
-msgstr "tema,barra degli strumenti"
-
-#: src/modules/options/optw_topiclabel.h:33
-msgid "theme,topic"
-msgstr "tema,topic"
-
-#: src/modules/options/optw_userlist.h:33
-msgid "theme,userlist,channel"
-msgstr "tema,lista utenti,canale"
-
-#: src/modules/options/optw_userlist.h:47
-msgid "theme,userlist,channel,background"
-msgstr "tema,lista utenti,canale,sfondo"
-
-#: src/modules/options/optw_userlist.h:68
-msgid "theme,userlist,channel,colors"
-msgstr "tema,lista utenti,canale,colori"
-
-#: src/modules/options/optw_userlist.h:84
-msgid "theme,userlist,channel,grid"
-msgstr "tema,lista utenti,canale,griglia"
-
-#: src/modules/options/optw_lag.h:33
-msgid "time,ping"
-msgstr "ora,ping"
-
-#: src/modules/options/optw_messages.h:79
-msgid "time,timestamp"
-msgstr "Orario"
-
-#: src/modules/options/optw_tray.h:34
-msgid "tray,TRAYICON"
-msgstr "tray,TRAYICON"
 
 #: src/modules/options/optw_texticons.cpp:214
 msgid "unnamed"
 msgstr "senza nome"
 
-#: src/modules/options/optw_urlhandlers.h:35
-msgid "url,programs"
-msgstr "url,programmi"
-
-#: src/modules/options/optw_userlist.h:104
-msgid "userlist,channel"
-msgstr "lista utenti,canale"
-
 #: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid "within:"
 msgstr "in:"
+
+#~ msgid "Advanced"
+#~ msgstr "Avanzate"
+
+#~ msgid "Alert/Highlight"
+#~ msgstr "Avvisa per i messaggi evidenziati"
+
+#~ msgid "Anti-spam"
+#~ msgstr "Anti-spam"
+
+#~ msgid "Avatar"
+#~ msgstr "Avatar"
+
+#~ msgid "Avatars"
+#~ msgstr "Avatar"
+
+#~ msgid "Away"
+#~ msgstr "Away"
+
+#~ msgid "CTCP"
+#~ msgstr "CTCP"
+
+#~ msgid "Channel"
+#~ msgstr "Canale"
+
+#~ msgid "Chat"
+#~ msgstr "Chat"
+
+#~ msgid "Classic Window List"
+#~ msgstr "Lista Finestre Classica"
+
+#~ msgid "Color Set"
+#~ msgstr "Set di colori"
+
+#~ msgid "Contacts"
+#~ msgstr "Contatti"
+
+#~ msgid "DCC"
+#~ msgstr "DCC"
+
+#~ msgid "Emoticon"
+#~ msgstr "Emoticon"
+
+#~ msgid "Features"
+#~ msgstr "Caratteristiche"
+
+#~ msgid "File Transfer"
+#~ msgstr "Trasferimento File"
+
+#~ msgid "Flood Protection"
+#~ msgstr "Protezione Flood"
+
+#~ msgid "Foreground"
+#~ msgstr "Primo piano"
+
+#~ msgid "General options"
+#~ msgstr "Opzioni Generali"
+
+#~ msgid "Highlight"
+#~ msgstr "Evidenziazione"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "Ident Service"
+#~ msgstr "Servizio Ident"
+
+#~ msgid "Ignore"
+#~ msgstr "Ignora"
+
+#~ msgid "Input"
+#~ msgstr "Ingresso"
+
+#~ msgid "Interface"
+#~ msgstr "Interfaccia"
+
+#~ msgid "Labels"
+#~ msgstr "Etichette"
+
+#~ msgid "Lag"
+#~ msgstr "Lag"
+
+#~ msgid "Language"
+#~ msgstr "Lingua"
+
+#~ msgid "Logging"
+#~ msgstr "Logging"
+
+#~ msgid "Look"
+#~ msgstr "Aspetto"
+
+#~ msgid "Marker"
+#~ msgstr "Segnalatore Ultima Riga"
+
+#~ msgid "Media Types"
+#~ msgstr "Tipi di File"
+
+#~ msgid "Message Colors"
+#~ msgstr "Colori Messaggio"
+
+#~ msgid "Message Style"
+#~ msgstr "Stile Messaggio"
+
+#~ msgid "Nickname Grid"
+#~ msgstr "Griglia Nickname"
+
+#~ msgid "Notifier"
+#~ msgstr "Notificatore"
+
+#~ msgid "Output"
+#~ msgstr "Uscita"
+
+#~ msgid "Profiles"
+#~ msgstr "Profili"
+
+#~ msgid "Protection"
+#~ msgstr "Protezione"
+
+#~ msgid "Proxy Hosts"
+#~ msgstr "Proxy"
+
+#~ msgid "Query"
+#~ msgstr "Query"
+
+#~ msgid "SSL"
+#~ msgstr "SSL"
+
+#~ msgid "Scripting Engine"
+#~ msgstr "Motore di Scripting"
+
+#~ msgid "Socket"
+#~ msgstr "Socket"
+
+#~ msgid "Sound"
+#~ msgstr "Sistema sonoro"
+
+#~ msgid "Sounds"
+#~ msgstr "Sistema sonoro"
+
+#~ msgid "Text"
+#~ msgstr "Testo"
+
+#~ msgid "Text icons"
+#~ msgstr "Icone del testo"
+
+#~ msgid "Timestamp"
+#~ msgstr "Orario"
+
+#~ msgid "ToolBar Applets"
+#~ msgstr "Applet della Barra degli Strumenti"
+
+#~ msgid "Tools"
+#~ msgstr "Strumenti"
+
+#~ msgid "Transparency"
+#~ msgstr "Trasparenza"
+
+#~ msgid "Tray icon"
+#~ msgstr "Icona del vassoio di sistema"
+
+#~ msgid "Tree Window List"
+#~ msgstr "Lista Finestre ad Albero"
+
+#~ msgid "URL handlers"
+#~ msgstr "Gestore URL"
+
+#~ msgid "Userlist"
+#~ msgstr "Lista Utenti"
+
+#~ msgid "Verbosity And Output"
+#~ msgstr "Verbosità Messaggi"
+
+#~ msgid "Voice"
+#~ msgstr "Voice"
+
+#~ msgid "Window Captions"
+#~ msgstr "Caption Finestra"
+
+#~ msgid "Window List"
+#~ msgstr "Lista Finestre"
+
+#~ msgid "Window List Alert"
+#~ msgstr "Livello d'Allerta delle Finestre"
+
+#~ msgid "Workspace"
+#~ msgstr "Area di lavoro"
+
+#~ msgid "authentication,identify"
+#~ msgstr "autenticazione,identificazione"
+
+#~ msgid "chat"
+#~ msgstr "chat"
+
+#~ msgid "connection"
+#~ msgstr "connessione"
+
+#~ msgid "connection,servers"
+#~ msgstr "connessione,server"
+
+#~ msgid "ctcp,flood"
+#~ msgstr "ctcp,flood"
+
+#~ msgid "debug"
+#~ msgstr "debug"
+
+#~ msgid "file,audio,video,programs"
+#~ msgstr "file,audio,video,programmi"
+
+#~ msgid "language,encoding,charset,codepage"
+#~ msgstr "lingua,codifica,charset"
+
+#~ msgid "notify,buddy,buddies,friends"
+#~ msgstr "notifica,contatto,contatti,amici"
+
+#~ msgid "popup"
+#~ msgstr "popup"
+
+#~ msgid "protection"
+#~ msgstr "protezione"
+
+#~ msgid "save,output"
+#~ msgstr "salva,uscita"
+
+#~ msgid "scripting,kvs,debug"
+#~ msgstr "scripting,kvs,debug"
+
+#~ msgid "smileys,emoticons"
+#~ msgstr "faccine,emoticon"
+
+#~ msgid "sound,events"
+#~ msgstr "souno,eventi"
+
+#~ msgid "sound,xmms,audio,play,amarok"
+#~ msgstr "suono,xmms,audio,play,amarok"
+
+#~ msgid "theme"
+#~ msgstr "tema"
+
+#~ msgid "theme,background"
+#~ msgstr "tema,fondo"
+
+#~ msgid "theme,colors,messages,output"
+#~ msgstr "temi,colori,messaggi"
+
+#~ msgid "theme,colors,output"
+#~ msgstr "tema,colori,uscita"
+
+#~ msgid "theme,colors,text"
+#~ msgstr "tema,colori,testo"
+
+#~ msgid "theme,mdi"
+#~ msgstr "tema,mdi"
+
+#~ msgid "theme,privmsg,output,format"
+#~ msgstr "tema,privmsg,uscita,formattazione"
+
+#~ msgid "theme,toolbar"
+#~ msgstr "tema,barra degli strumenti"
+
+#~ msgid "theme,topic"
+#~ msgstr "tema,topic"
+
+#~ msgid "theme,userlist,channel"
+#~ msgstr "tema,lista utenti,canale"
+
+#~ msgid "theme,userlist,channel,background"
+#~ msgstr "tema,lista utenti,canale,sfondo"
+
+#~ msgid "theme,userlist,channel,colors"
+#~ msgstr "tema,lista utenti,canale,colori"
+
+#~ msgid "theme,userlist,channel,grid"
+#~ msgstr "tema,lista utenti,canale,griglia"
+
+#~ msgid "time,ping"
+#~ msgstr "ora,ping"
+
+#~ msgid "time,timestamp"
+#~ msgstr "Orario"
+
+#~ msgid "tray,TRAYICON"
+#~ msgstr "tray,TRAYICON"
+
+#~ msgid "url,programs"
+#~ msgstr "url,programmi"
+
+#~ msgid "userlist,channel"
+#~ msgstr "lista utenti,canale"

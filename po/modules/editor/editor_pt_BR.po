@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_pt_BR\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2004-11-15 02:17+0000\n"
 "Last-Translator: \n"
 "Language-Team:  <pt@li.org>\n"
@@ -16,11 +16,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.3.1\n"
-
-#: src/modules/editor/scripteditor.cpp:1016
-#, fuzzy
-msgid "&Cancel"
-msgstr "Cancelar"
 
 #: src/modules/editor/scripteditor.cpp:752
 msgid "&Configure Editor..."
@@ -33,15 +28,6 @@ msgstr "&Aceitar"
 #: src/modules/editor/scripteditor.cpp:749
 msgid "&Open..."
 msgstr "&Abrir..."
-
-#: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1021
-msgid "&Replace"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:1011
-msgid "&Replace in all Aliases"
-msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:750
 msgid "&Save As..."
@@ -73,25 +59,9 @@ msgstr "Cancelar"
 msgid "Choose a Filename - KVIrc"
 msgstr "Escolha um Nome de Arquivo - KVIrc"
 
-#: src/modules/editor/scripteditor.cpp:522
-msgid "Colors"
-msgstr ""
-
 #: src/modules/editor/scripteditor.cpp:527
 msgid "Comments:"
 msgstr "Comentários:"
-
-#: src/modules/editor/scripteditor.cpp:255
-msgid "Context sensitive help"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:761
-msgid "Find"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:269
-msgid "Find & Replace"
-msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:532
 msgid "Find:"
@@ -129,10 +99,6 @@ msgstr "Preferências"
 msgid "Punctuation:"
 msgstr "Pontuação:"
 
-#: src/modules/editor/scripteditor.cpp:999
-msgid "Replace with"
-msgstr ""
-
 #: src/modules/editor/scripteditor.cpp:928
 #, c-format
 msgid "Row: %d Col: %d"
@@ -146,6 +112,6 @@ msgstr "Falha ao Salvar - KVIrc"
 msgid "Variables:"
 msgstr "Variáveis:"
 
-#: src/modules/editor/scripteditor.cpp:989
-msgid "Word to Find"
-msgstr ""
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "Cancelar"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 01:08+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -1583,12 +1583,6 @@ msgstr "Profil"
 msgid "Add Rule"
 msgstr "Szabály Hozzáadása"
 
-#: src/modules/options/optw_connection.h:45 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_irc.h:57 src/modules/options/optw_identity.h:203
-msgid "Advanced"
-msgstr "Haladó"
-
 #: src/modules/options/optw_notify.cpp:60
 #: src/modules/options/optw_notify.cpp:125
 msgid "Advanced configuration"
@@ -1643,10 +1637,6 @@ msgstr "Figyelmeztetés Privát üzenetnél"
 msgid "Alert level:"
 msgstr "Figyelmeztetési szint: "
 
-#: src/modules/options/optw_highlighting.h:30
-msgid "Alert/Highlight"
-msgstr "Figyelmeztetés/Kiemelés"
-
 #: src/modules/options/optw_ctcpfloodprotection.cpp:86
 msgid "Allow up to:"
 msgstr "Engedélyezés:"
@@ -1692,10 +1682,6 @@ msgstr "Új privátok megnyitása a háttérben"
 #: src/modules/options/optw_dcc.cpp:194
 msgid "Always open transfer window as minimized"
 msgstr "Átviteli ablak megnyitása mindig minimalizálva"
-
-#: src/modules/options/optw_antispam.h:30
-msgid "Anti-spam"
-msgstr "Spamszűrés"
 
 #: src/modules/options/optw_ctcp.cpp:53
 msgid "Append to SOURCE reply:"
@@ -1750,10 +1736,6 @@ msgstr "Automatikus folytatás automatikus fogadásnál"
 msgid "Automatically unload unused modules"
 msgstr "Nem használt modulok kilövése"
 
-#: src/modules/options/optw_identity.h:178
-msgid "Avatar"
-msgstr "Avatar"
-
 #: src/modules/options/optw_identity.cpp:120
 msgid "Avatar Download - KVIrc"
 msgstr "Avatar Letöltés - KVIrc"
@@ -1770,14 +1752,6 @@ msgstr "Az avatar mérete túl nagy - KVIrc"
 msgid "Avatar offer timeout:"
 msgstr "Avatar kérés időtúllépése"
 
-#: src/modules/options/optw_avatar.h:32
-msgid "Avatars"
-msgstr "Avatarok"
-
-#: src/modules/options/optw_away.h:30
-msgid "Away"
-msgstr "Távol"
-
 #: src/modules/options/optw_away.cpp:43
 msgid "Away Nickname"
 msgstr "Távol üzemmódnál használt Név"
@@ -1788,8 +1762,6 @@ msgstr "Távol:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_interfacelookglobal.cpp:198
-#: src/modules/options/optw_windowlist.h:79
-#: src/modules/options/optw_userlist.h:46
 msgid "Background"
 msgstr "Háttér"
 
@@ -1862,10 +1834,6 @@ msgstr "Hiba Kompatibilitás"
 msgid "CLIENTINFO"
 msgstr "CLIENTINFO"
 
-#: src/modules/options/optw_ctcp.h:30
-msgid "CTCP"
-msgstr "CTCP"
-
 #: src/modules/options/optw_ctcp.cpp:47
 msgid "CTCP Replies"
 msgstr "CTCP Válaszok"
@@ -1914,10 +1882,6 @@ msgstr "ChanServ és NickServ értesítőket"
 msgid "Change nickname on away"
 msgstr "Név változtatása Távol üzemmódban"
 
-#: src/modules/options/optw_channel.h:36
-msgid "Channel"
-msgstr "Csatorna"
-
 #: src/modules/options/optw_userlist.cpp:59
 msgid "Channel admin:"
 msgstr "Csatorna admin:"
@@ -1934,10 +1898,6 @@ msgstr "Csatorna ablakok"
 #: src/modules/options/optw_servers.cpp:779
 msgid "Channels to join automatically upon connect:"
 msgstr "Csatornák, amire automatikusan fellép kapcsolódáskor:"
-
-#: src/modules/options/optw_dcc.h:115
-msgid "Chat"
-msgstr "Beszélgetés"
 
 #: src/modules/options/optw_notify.cpp:65
 msgid "Check USERHOST for online users"
@@ -1971,10 +1931,6 @@ msgstr "Képfájl kiválasztása - KVIrc"
 msgid "Choose..."
 msgstr "Kiválaszás..."
 
-#: src/modules/options/optw_windowlist.h:112
-msgid "Classic Window List"
-msgstr ""
-
 #: src/modules/options/optw_servers.cpp:1458
 msgid "Clear List"
 msgstr "Lista Törlése"
@@ -1990,10 +1946,6 @@ msgstr "Párbeszédablak bezárása, összes változás érvényesítése."
 #: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Párbeszédablak bezárása, összes változás elvetése."
-
-#: src/modules/options/optw_messages.h:189
-msgid "Color Set"
-msgstr "Paletta"
 
 #: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
@@ -2030,7 +1982,6 @@ msgid "Connect to this server at startup"
 msgstr "Kapcsolódás indításkor"
 
 #: src/modules/options/optw_servers.cpp:769
-#: src/modules/options/optw_connection.h:32
 msgid "Connection"
 msgstr "Kapcsolat"
 
@@ -2041,10 +1992,6 @@ msgstr "Konzol"
 #: src/modules/options/optw_logging.cpp:44
 msgid "Console windows"
 msgstr "Konzol ablakok"
-
-#: src/modules/options/optw_notify.h:30
-msgid "Contacts"
-msgstr "Kapcsolatok"
 
 #: src/modules/options/optw_input.cpp:43
 msgid "Control char color"
@@ -2069,10 +2016,6 @@ msgstr "Kurzor színe"
 #, c-format
 msgid "Custom nickname (%%nick%% means a current nick):"
 msgstr "Választott nicknév (%%nick%%) jelenti az aktuális nevet): "
-
-#: src/modules/options/optw_dcc.h:30
-msgid "DCC"
-msgstr "DCC"
 
 #: src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
@@ -2243,10 +2186,6 @@ msgstr "Profil"
 msgid "Edit Rule"
 msgstr "Szabály Szerkesztése"
 
-#: src/modules/options/optw_texticons.cpp:81
-msgid "Emoticon"
-msgstr ""
-
 #: src/modules/options/optw_antispam.cpp:39
 msgid "Enable Anti-spam For"
 msgstr "Spamszűrő engedélyezése"
@@ -2389,19 +2328,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Letöltés megkezdése sikertelen"
 
-#: src/modules/options/optw_windowlist.h:98
-#: src/modules/options/optw_userlist.h:103
-#: src/modules/options/optw_ircview.h:70
-msgid "Features"
-msgstr "Lehetőségek"
-
 #: src/modules/options/optw_identity.cpp:376
 msgid "Female"
 msgstr "Nő"
-
-#: src/modules/options/optw_dcc.h:74
-msgid "File Transfer"
-msgstr "Fájl Átvitel"
 
 #: src/modules/options/optw_mediatypes.cpp:100
 msgid "File pattern:"
@@ -2418,10 +2347,6 @@ msgstr "A rendszer tálcája villogjon kiemelt üzenetnél"
 #: src/modules/options/optw_notify.cpp:51
 msgid "Flash window when users are going online"
 msgstr "Az ablak villogjon, ha egy felhasználó elérhető lesz"
-
-#: src/modules/options/optw_ctcpfloodprotection.h:30
-msgid "Flood Protection"
-msgstr "Flood Védelem"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
@@ -2452,11 +2377,6 @@ msgstr "Azonnali kilépés"
 msgid "Force language:"
 msgstr "Megadott nyelv:"
 
-#: src/modules/options/optw_windowlist.h:64
-#: src/modules/options/optw_userlist.h:67
-msgid "Foreground"
-msgstr "Előtér"
-
 #: src/modules/options/optw_topiclabel.cpp:37
 #: src/modules/options/optw_input.cpp:40
 msgid "Foreground color"
@@ -2471,21 +2391,13 @@ msgid "Gender:"
 msgstr "Nem:"
 
 #: src/modules/options/optw_servers.cpp:213
-#: src/modules/options/optw_messages.cpp:71 src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88
-#: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_irc.h:43
-#: src/modules/options/optw_identity.h:154
+#: src/modules/options/optw_messages.cpp:71
 msgid "General"
 msgstr "Általános"
 
 #: src/modules/options/dialog.cpp:114
 msgid "General Preferences"
 msgstr "Általános Beállítások"
-
-#: src/modules/options/optw_generalopt.h:30
-msgid "General options"
-msgstr "Általános beállítások"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:44
 msgid "Global application font:"
@@ -2552,10 +2464,6 @@ msgstr "Beviteli eszközgombok rejtése alapértelmezettként"
 msgid "Highest port:"
 msgstr "Legnagyobb port:"
 
-#: src/modules/options/optw_highlighting.h:44
-msgid "Highlight"
-msgstr "Figyelmeztetés / Kiemelés"
-
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight messages containing my nickname"
 msgstr "Üzenetek kiemelése, amik a Nevemet tartalmazzák"
@@ -2599,10 +2507,6 @@ msgstr "IP"
 msgid "IPv6 Settings"
 msgstr "IPv6 Beállítások"
 
-#: src/modules/options/optw_irc.h:30
-msgid "IRC"
-msgstr "IRC"
-
 #: src/modules/options/optw_userlist.cpp:57
 #, fuzzy
 msgid "IRC Op:"
@@ -2620,10 +2524,6 @@ msgstr "Ikon"
 msgid "Id:"
 msgstr "Azonosító:"
 
-#: src/modules/options/optw_connection.h:91
-msgid "Ident Service"
-msgstr "Azonosító Szolgáltatás"
-
 #: src/modules/options/optw_connection.cpp:222
 msgid "Ident username:"
 msgstr "Azonosító felhasználónév: "
@@ -2636,13 +2536,8 @@ msgstr "Azonosító Parancs"
 
 #: src/modules/options/optw_servers.cpp:557
 #: src/modules/options/optw_interfacefeatures.cpp:61
-#: src/modules/options/optw_identity.h:138
 msgid "Identity"
 msgstr "Azonosító"
-
-#: src/modules/options/optw_ignore.h:32
-msgid "Ignore"
-msgstr "Mellőzés"
 
 #: src/modules/options/optw_uparser.cpp:47
 msgid "Ignore module versions (dangerous)"
@@ -2691,14 +2586,6 @@ msgstr "Inaktív Szöveg (Elsődleges)"
 #: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Text (Secondary)"
 msgstr "Inaktív szöveg (Másodlagos)"
-
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
-msgid "Input"
-msgstr "Bevitel"
-
-#: src/modules/options/optw_interfacefeatures.h:32
-msgid "Interface"
-msgstr "Eszközök"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
@@ -2761,21 +2648,9 @@ msgstr "Privátok nyitvatartása"
 msgid "Kill broken timers"
 msgstr "Hibás időzítők (timers) kilövése"
 
-#: src/modules/options/optw_topiclabel.h:32
-msgid "Labels"
-msgstr "Címkék"
-
-#: src/modules/options/optw_lag.h:31
-msgid "Lag"
-msgstr "Lag"
-
 #: src/modules/options/optw_lag.cpp:44
 msgid "Lag meter heartbeat:"
 msgstr "Lagmérés időköze:"
-
-#: src/modules/options/optw_textencoding.h:32
-msgid "Language"
-msgstr "Nyelv"
 
 #: src/modules/options/optw_identity.cpp:394
 msgid "Languages:"
@@ -2844,14 +2719,6 @@ msgstr "Csatornák naplózása, amihez csatlakoztál"
 msgid "Log this"
 msgstr "Logold"
 
-#: src/modules/options/optw_logging.h:30
-msgid "Logging"
-msgstr "Naplózás"
-
-#: src/modules/options/optw_ircview.h:50
-msgid "Look"
-msgstr "Kinézet"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:199
 msgid "Low-Contrast Foreground"
 msgstr "Alacsony kontrasztú Előtér"
@@ -2883,11 +2750,6 @@ msgid ""
 msgstr ""
 "Rengeteg beállításnak van saját segítség opciója, amit pár másodpercig az "
 "egérkurzor felette hagyásával jeleníthetsz meg."
-
-#: src/modules/options/optw_ircview.h:84
-#, fuzzy
-msgid "Marker"
-msgstr "Sor Jelzése"
 
 #: src/modules/options/optw_ircview.cpp:179
 #, fuzzy
@@ -2940,21 +2802,9 @@ msgstr "Ki lettél rúgva"
 msgid "Media Player"
 msgstr "Médialejátszó"
 
-#: src/modules/options/optw_mediatypes.h:48
-msgid "Media Types"
-msgstr "Média Típusok"
-
-#: src/modules/options/optw_messages.h:96
-msgid "Message Colors"
-msgstr "Üzenet Színek"
-
 #: src/modules/options/optw_nickserv.cpp:76
 msgid "Message Regexp"
 msgstr "Message Regexp"
-
-#: src/modules/options/optw_messages.h:54
-msgid "Message Style"
-msgstr "Üzenet Stílus"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Mid-Contrast Foreground"
@@ -3098,7 +2948,6 @@ msgid "Nick completion postfix string"
 msgstr "Névkiegészítés után beszúrandó"
 
 #: src/modules/options/optw_servers.cpp:335
-#: src/modules/options/optw_nickserv.h:41
 msgid "NickServ"
 msgstr "NickServ"
 
@@ -3126,10 +2975,6 @@ msgstr "Név"
 #: src/modules/options/optw_userlist.cpp:54
 msgid "Nickname Colors"
 msgstr "Név színek"
-
-#: src/modules/options/optw_userlist.h:83
-msgid "Nickname Grid"
-msgstr "Név rács"
 
 #: src/modules/options/optw_identity.cpp:60
 msgid "Nickname alternatives"
@@ -3165,10 +3010,6 @@ msgstr "Normál"
 #: src/modules/options/optw_userlist.cpp:127
 msgid "Normal:"
 msgstr "Normál: "
-
-#: src/modules/options/optw_notify.h:44
-msgid "Notifier"
-msgstr "Értesítő"
 
 #: src/modules/options/optw_notify.cpp:137
 msgid "Notifier window opacity while active (mouseover)"
@@ -3296,10 +3137,6 @@ msgstr "Egyéb:"
 #: src/modules/options/optw_connection.cpp:150
 msgid "Outgoing data queue flush timeout:"
 msgstr "Kimenő adatírási időtúllépés:"
-
-#: src/modules/options/optw_ircview.h:36
-msgid "Output"
-msgstr "Kimenet"
 
 #: src/modules/options/optw_connection.cpp:198
 msgid "Output identd messages to:"
@@ -3480,11 +3317,6 @@ msgstr "Profil"
 msgid "Profile Name:"
 msgstr "Profil"
 
-#: src/modules/options/optw_identity.h:228
-#, fuzzy
-msgid "Profiles"
-msgstr "Profil"
-
 #: src/modules/options/optw_windowlist.cpp:96
 #: src/modules/options/optw_windowlist.cpp:254
 msgid "Progress bar color:"
@@ -3494,10 +3326,6 @@ msgstr "Folyamatjelző sáv színe:"
 #: src/modules/options/optw_servers.cpp:497
 msgid "Properties"
 msgstr "Tulajdonságok"
-
-#: src/modules/options/optw_protection.h:32
-msgid "Protection"
-msgstr "Védelem"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
 #, fuzzy
@@ -3511,10 +3339,6 @@ msgstr "Protokoll:"
 #: src/modules/options/optw_proxy.cpp:70
 msgid "Proxy"
 msgstr "Proxy"
-
-#: src/modules/options/optw_proxy.h:53
-msgid "Proxy Hosts"
-msgstr "Proxy Hosztok"
 
 #: src/modules/options/optw_servers.cpp:744
 msgid "Proxy server:"
@@ -3552,10 +3376,6 @@ msgstr ""
 #: src/modules/options/optw_identity.cpp:890
 msgid "Put here the username you want to use"
 msgstr ""
-
-#: src/modules/options/optw_query.h:30
-msgid "Query"
-msgstr "Privát"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
@@ -3672,10 +3492,6 @@ msgstr "Jobb"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_connection.h:59
-msgid "SSL"
-msgstr "SSL"
-
 #: src/modules/options/optw_messages.cpp:402
 msgid "Save As..."
 msgstr "Mentés mint..."
@@ -3703,10 +3519,6 @@ msgstr "Átméretezés felhasználólistában"
 #: src/modules/options/optw_avatar.cpp:56
 msgid "Scaling on load (and in user tooltips)"
 msgstr "Átméretezés felhasználólistában"
-
-#: src/modules/options/optw_uparser.h:30
-msgid "Scripting Engine"
-msgstr "Szkript Motor"
 
 #: src/modules/options/optw_tray.cpp:48
 msgid "Select message levels to notify"
@@ -3781,7 +3593,6 @@ msgid "Server:"
 msgstr "Szerver: "
 
 #: src/modules/options/optw_interfacefeatures.cpp:62
-#: src/modules/options/optw_servers.h:151
 msgid "Servers"
 msgstr "Szerverek"
 
@@ -3919,10 +3730,6 @@ msgstr "Csöndes spamszűrés (figyelmeztetés nélkül)"
 msgid "Single click"
 msgstr ""
 
-#: src/modules/options/optw_connection.h:76
-msgid "Socket"
-msgstr "Socket"
-
 #: src/modules/options/optw_ircview.cpp:192
 msgid "SolidLine"
 msgstr ""
@@ -3935,21 +3742,13 @@ msgstr "Mentett fájlok rendezése Nevek szerint (alkönyvtárakkal)"
 msgid "Sort windows by name"
 msgstr "Ablakok rendezése név szerint"
 
-#: src/modules/options/optw_sound.h:33
-msgid "Sound"
-msgstr "Hangok"
-
-#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60
 msgid "Sound System"
 msgstr "Hangrendszer"
 
 #: src/modules/options/optw_dcc.cpp:335
 msgid "Sound device:"
 msgstr "Hangeszköz: "
-
-#: src/modules/options/optw_sound.h:82
-msgid "Sounds"
-msgstr "Hangok"
 
 #: src/modules/options/optw_logging.cpp:48
 msgid "Strip colors in logs"
@@ -3968,20 +3767,11 @@ msgstr "IDŐ"
 msgid "Test"
 msgstr "Teszt"
 
-#: src/modules/options/optw_texticons.cpp:80
-#: src/modules/options/optw_messages.h:39
-msgid "Text"
-msgstr "Szöveg"
-
 #: src/modules/options/optw_servers.cpp:167
 #: src/modules/options/optw_servers.cpp:665
 #, fuzzy
 msgid "Text Encoding:"
 msgstr "Kódolás:"
-
-#: src/modules/options/optw_texticons.h:39
-msgid "Text icons"
-msgstr "Szöveges ikonok"
 
 #: src/modules/options/optw_windowlist.cpp:86
 #: src/modules/options/optw_windowlist.cpp:246
@@ -4207,21 +3997,9 @@ msgstr "Rendezés"
 msgid "Timeout Values"
 msgstr "Időtúllépés értékek "
 
-#: src/modules/options/optw_messages.h:75
-msgid "Timestamp"
-msgstr "Időbélyeg"
-
 #: src/modules/options/optw_messages.cpp:151
 msgid "Timestamp format:"
 msgstr "Időbélyeg formátum:"
-
-#: src/modules/options/optw_interfacelookglobal.h:101
-msgid "ToolBar Applets"
-msgstr "Eszköztár Appletek"
-
-#: src/modules/options/optw_tools.h:33
-msgid "Tools"
-msgstr "Eszközök"
 
 #: src/modules/options/optw_ircview.cpp:70
 #: src/modules/options/optw_input.cpp:62
@@ -4234,10 +4012,6 @@ msgstr "Fent"
 msgid "Track last read text line"
 msgstr "Utolsó olvasott sor követése"
 
-#: src/modules/options/optw_interfacelookglobal.h:48
-msgid "Transparency"
-msgstr "Átlátszóság"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:106
 #: src/modules/options/optw_interfacelookglobal.cpp:112
 msgid "Transparency blend image:"
@@ -4247,14 +4021,6 @@ msgstr "Átlátszóra keverendő kép:"
 msgid "Transparent"
 msgstr "Átlátszó"
 
-#: src/modules/options/optw_tray.h:32
-msgid "Tray icon"
-msgstr "Tálca ikon"
-
-#: src/modules/options/optw_windowlist.h:48
-msgid "Tree Window List"
-msgstr ""
-
 #: src/modules/options/optw_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
 msgstr "Esemény, ha a lag meghaladja: "
@@ -4262,10 +4028,6 @@ msgstr "Esemény, ha a lag meghaladja: "
 #: src/modules/options/optw_dcc.cpp:249
 msgid "Tweaks"
 msgstr "Tuning"
-
-#: src/modules/options/optw_urlhandlers.h:32
-msgid "URL handlers"
-msgstr "URL kezelők"
 
 #: src/modules/options/optw_notify.cpp:92
 msgid "USERHOST delay (in seconds)"
@@ -4463,10 +4225,6 @@ msgstr "Felhasználó által megadott elő és utótag"
 msgid "User-op:"
 msgstr "Felhasználó-Op:"
 
-#: src/modules/options/optw_userlist.h:32
-msgid "Userlist"
-msgstr "Felhasználólista"
-
 #: src/modules/options/optw_identity.cpp:697
 #, fuzzy
 msgid "Username"
@@ -4488,10 +4246,6 @@ msgstr "VERZIÓ"
 msgid "Verbose"
 msgstr "Beszédes"
 
-#: src/modules/options/optw_ircoutput.h:33
-msgid "Verbosity And Output"
-msgstr "Beszédesség és Kimenet"
-
 #: src/modules/options/optw_userlist.cpp:137
 msgid "Vertical Alignment:"
 msgstr "Függőleges elhelyezés:"
@@ -4501,10 +4255,6 @@ msgstr "Függőleges elhelyezés:"
 #: src/modules/options/optw_windowlist.cpp:128
 msgid "Vertical align:"
 msgstr "Függőleges elhelyezés:"
-
-#: src/modules/options/optw_dcc.h:128
-msgid "Voice"
-msgstr "Hang"
 
 #: src/modules/options/optw_userlist.cpp:62
 msgid "Voice:"
@@ -4542,19 +4292,6 @@ msgstr "Whois válaszok"
 msgid "Winamp messages ecoding"
 msgstr "Winamp üzenetek kódolása"
 
-#: src/modules/options/optw_interfacelookglobal.h:75
-msgid "Window Captions"
-msgstr "Ablak feliratok"
-
-#: src/modules/options/optw_windowlist.h:34
-#, fuzzy
-msgid "Window List"
-msgstr "Ablak feliratok"
-
-#: src/modules/options/optw_highlighting.h:57
-msgid "Window List Alert"
-msgstr ""
-
 #: src/modules/options/optw_highlighting.cpp:59
 msgid "Word splitters:"
 msgstr "Szó elválasztók:"
@@ -4566,10 +4303,6 @@ msgstr "Spamot tartalmazó szavak: "
 #: src/modules/options/optw_highlighting.cpp:57
 msgid "Words to highlight:"
 msgstr "Kiemelendő szavak:"
-
-#: src/modules/options/optw_interfacelookglobal.h:88
-msgid "Workspace"
-msgstr "Munkaterület"
 
 #: src/modules/options/optw_identity.cpp:390
 msgid ""
@@ -4612,179 +4345,85 @@ msgstr "[ELŐTAG]név[!felhasználónév@hoszt][UTÓTAG] üzenet"
 msgid "[Unknown Media Type]"
 msgstr "[Ismeretlen Médiatípus]"
 
-#: src/modules/options/optw_nickserv.h:43
-msgid "authentication,identify"
-msgstr "azonosítás,auth"
-
 #: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bájt/mp"
-
-#: src/modules/options/optw_query.h:32
-msgid "chat"
-msgstr "beszélgetés"
-
-#: src/modules/options/optw_servers.h:152
-msgid "connection"
-msgstr "kapcsolat"
-
-#: src/modules/options/optw_proxy.h:55
-msgid "connection,servers"
-msgstr "kapcsolat,szerverek"
-
-#: src/modules/options/optw_protection.h:35
-msgid "ctcp,flood"
-msgstr "ctcp,flood,árasztás"
-
-#: src/modules/options/optw_ircoutput.h:35
-msgid "debug"
-msgstr "debug"
 
 #: src/modules/options/optw_textencoding.cpp:88
 msgid "en"
 msgstr "en"
 
-#: src/modules/options/optw_mediatypes.h:50
-msgid "file,audio,video,programs"
-msgstr "fájl,audió,videó,programok"
-
 #: src/modules/options/optw_servers.cpp:1591
 msgid "irc.unknown.net"
 msgstr "irc.ismeretlen.net"
-
-#: src/modules/options/optw_textencoding.h:35
-msgid "language,encoding,charset,codepage"
-msgstr "nyelv,kódolás,karakter,karakterkészlet,kódlap"
-
-#: src/modules/options/optw_notify.h:32
-msgid "notify,buddy,buddies,friends"
-msgstr "értesítés,barát,barátok,haver"
-
-#: src/modules/options/optw_notify.h:45
-msgid "popup"
-msgstr "popup"
-
-#: src/modules/options/optw_ignore.h:34
-msgid "protection"
-msgstr "védelem"
-
-#: src/modules/options/optw_logging.h:31
-msgid "save,output"
-msgstr "mentés,kimenet"
-
-#: src/modules/options/optw_uparser.h:31
-msgid "scripting,kvs,debug"
-msgstr "szkript,kvs,hibakeresés"
-
-#: src/modules/options/optw_texticons.h:41
-msgid "smileys,emoticons"
-msgstr "mosoly,hangulatjelek"
-
-#: src/modules/options/optw_sound.h:84
-msgid "sound,events"
-msgstr "hangok,események"
-
-#: src/modules/options/optw_sound.h:49
-msgid "sound,xmms,audio,play,amarok"
-msgstr "hang,xmms,audio,lejátszás,amarok"
-
-#: src/modules/options/optw_windowlist.h:36
-#: src/modules/options/optw_windowlist.h:50
-#: src/modules/options/optw_windowlist.h:66
-#: src/modules/options/optw_windowlist.h:81
-#: src/modules/options/optw_windowlist.h:100
-#: src/modules/options/optw_windowlist.h:115
-#: src/modules/options/optw_interfacelookglobal.h:34
-msgid "theme"
-msgstr "megjelenés"
-
-#: src/modules/options/optw_interfacelookglobal.h:49
-msgid "theme,background"
-msgstr "megjelenés,háttér"
-
-#: src/modules/options/optw_messages.h:97
-#: src/modules/options/optw_messages.h:190
-msgid "theme,colors,messages,output"
-msgstr "megjelenés,színek,üzenetek,kimenet"
-
-#: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
-msgid "theme,colors,output"
-msgstr "megjelenés,színek,kimenet"
-
-#: src/modules/options/optw_input.h:34
-msgid "theme,colors,text"
-msgstr "megjelenés,színek,szöveg"
-
-#: src/modules/options/optw_interfacelookglobal.h:76
-#: src/modules/options/optw_interfacelookglobal.h:89
-msgid "theme,mdi"
-msgstr "megjelenés,mdi"
-
-#: src/modules/options/optw_messages.h:58
-msgid "theme,privmsg,output,format"
-msgstr "kinézet, üzenet, kimenet, formátum"
-
-#: src/modules/options/optw_interfacelookglobal.h:102
-msgid "theme,toolbar"
-msgstr "megjelenés,eszköztár"
-
-#: src/modules/options/optw_topiclabel.h:33
-msgid "theme,topic"
-msgstr "megjelenés,topic,téma"
-
-#: src/modules/options/optw_userlist.h:33
-msgid "theme,userlist,channel"
-msgstr "megjelenés,felhasználólista,csatorna"
-
-#: src/modules/options/optw_userlist.h:47
-msgid "theme,userlist,channel,background"
-msgstr "kinézet,felhasználólista,csatorna,háttér"
-
-#: src/modules/options/optw_userlist.h:68
-msgid "theme,userlist,channel,colors"
-msgstr "megjelenés,felhasználólista,csatorna,szín"
-
-#: src/modules/options/optw_userlist.h:84
-msgid "theme,userlist,channel,grid"
-msgstr "megjelenés,felhasználólista,csatorna,rács"
-
-#: src/modules/options/optw_lag.h:33
-msgid "time,ping"
-msgstr "idő,ping"
-
-#: src/modules/options/optw_messages.h:79
-msgid "time,timestamp"
-msgstr "idő, időbélyeg"
-
-#: src/modules/options/optw_tray.h:34
-msgid "tray,TRAYICON"
-msgstr ""
 
 #: src/modules/options/optw_texticons.cpp:214
 msgid "unnamed"
 msgstr "névtelen"
 
-#: src/modules/options/optw_urlhandlers.h:35
-msgid "url,programs"
-msgstr "url,programok,cím,webcím,web"
-
-#: src/modules/options/optw_userlist.h:104
-msgid "userlist,channel"
-msgstr "felhasználólista,csatorna"
-
 #: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid "within:"
 msgstr "időn belül:"
 
+#~ msgid "Advanced"
+#~ msgstr "Haladó"
+
+#~ msgid "Alert/Highlight"
+#~ msgstr "Figyelmeztetés/Kiemelés"
+
+#~ msgid "Anti-spam"
+#~ msgstr "Spamszűrés"
+
+#~ msgid "Avatar"
+#~ msgstr "Avatar"
+
+#~ msgid "Avatars"
+#~ msgstr "Avatarok"
+
+#~ msgid "Away"
+#~ msgstr "Távol"
+
+#~ msgid "CTCP"
+#~ msgstr "CTCP"
+
+#~ msgid "Channel"
+#~ msgstr "Csatorna"
+
+#~ msgid "Chat"
+#~ msgstr "Beszélgetés"
+
 #~ msgid "Classic Taskbar"
 #~ msgstr "Klasszikus lista"
+
+#~ msgid "Color Set"
+#~ msgstr "Paletta"
+
+#~ msgid "Contacts"
+#~ msgstr "Kapcsolatok"
+
+#~ msgid "DCC"
+#~ msgstr "DCC"
 
 #~ msgid "Do not update the away list"
 #~ msgstr "Ne frissítse a Távollét listát"
 
+#~ msgid "Features"
+#~ msgstr "Lehetőségek"
+
+#~ msgid "File Transfer"
+#~ msgstr "Fájl Átvitel"
+
+#~ msgid "Flood Protection"
+#~ msgstr "Flood Védelem"
+
 #~ msgid "Forcibly and completely disable the notifier"
 #~ msgstr "Az értesítő Popup teljes letiltása"
+
+#~ msgid "Foreground"
+#~ msgstr "Előtér"
+
+#~ msgid "General options"
+#~ msgstr "Általános beállítások"
 
 #~ msgid "Hide avatars"
 #~ msgstr "Avatarok rejtése"
@@ -4792,14 +4431,103 @@ msgstr "időn belül:"
 #~ msgid "Hide users label"
 #~ msgstr "Felhasználók elrejtése"
 
+#~ msgid "Highlight"
+#~ msgstr "Figyelmeztetés / Kiemelés"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "Ident Service"
+#~ msgstr "Azonosító Szolgáltatás"
+
+#~ msgid "Ignore"
+#~ msgstr "Mellőzés"
+
+#~ msgid "Input"
+#~ msgstr "Bevitel"
+
+#~ msgid "Interface"
+#~ msgstr "Eszközök"
+
+#~ msgid "Labels"
+#~ msgstr "Címkék"
+
+#~ msgid "Lag"
+#~ msgstr "Lag"
+
+#~ msgid "Language"
+#~ msgstr "Nyelv"
+
+#~ msgid "Logging"
+#~ msgstr "Naplózás"
+
+#~ msgid "Look"
+#~ msgstr "Kinézet"
+
+#, fuzzy
+#~ msgid "Marker"
+#~ msgstr "Sor Jelzése"
+
+#~ msgid "Media Types"
+#~ msgstr "Média Típusok"
+
+#~ msgid "Message Colors"
+#~ msgstr "Üzenet Színek"
+
+#~ msgid "Message Style"
+#~ msgstr "Üzenet Stílus"
+
 #~ msgid "Message Type"
 #~ msgstr "Üzenet Típus"
+
+#~ msgid "Nickname Grid"
+#~ msgstr "Név rács"
+
+#~ msgid "Notifier"
+#~ msgstr "Értesítő"
+
+#~ msgid "Output"
+#~ msgstr "Kimenet"
+
+#, fuzzy
+#~ msgid "Profiles"
+#~ msgstr "Profil"
+
+#~ msgid "Protection"
+#~ msgstr "Védelem"
+
+#~ msgid "Proxy Hosts"
+#~ msgstr "Proxy Hosztok"
+
+#~ msgid "Query"
+#~ msgstr "Privát"
+
+#~ msgid "SSL"
+#~ msgstr "SSL"
+
+#~ msgid "Scripting Engine"
+#~ msgstr "Szkript Motor"
+
+#~ msgid "Socket"
+#~ msgstr "Socket"
+
+#~ msgid "Sound"
+#~ msgstr "Hangok"
+
+#~ msgid "Sounds"
+#~ msgstr "Hangok"
 
 #~ msgid "Taskbar"
 #~ msgstr "Tálca"
 
 #~ msgid "Taskbar Alert"
 #~ msgstr "Figyelmeztetés a Tálcán"
+
+#~ msgid "Text"
+#~ msgstr "Szöveg"
+
+#~ msgid "Text icons"
+#~ msgstr "Szöveges ikonok"
 
 #~ msgid ""
 #~ "This section contains irc protection tools<br><p>like<b> flood, ignore, "
@@ -4808,11 +4536,147 @@ msgstr "időn belül:"
 #~ "Ebben a részben találod a védő eszközöket<br><p> mint például<b> flood, "
 #~ "mellőzés, spamszűrés.</b> </p>"
 
+#~ msgid "Timestamp"
+#~ msgstr "Időbélyeg"
+
+#~ msgid "ToolBar Applets"
+#~ msgstr "Eszköztár Appletek"
+
+#~ msgid "Tools"
+#~ msgstr "Eszközök"
+
+#~ msgid "Transparency"
+#~ msgstr "Átlátszóság"
+
+#~ msgid "Tray icon"
+#~ msgstr "Tálca ikon"
+
 #~ msgid "Tree Taskbar"
 #~ msgstr "Fa lista"
+
+#~ msgid "URL handlers"
+#~ msgstr "URL kezelők"
 
 #~ msgid "Use tree taskbar"
 #~ msgstr "Fa struktúra használata"
 
+#~ msgid "Userlist"
+#~ msgstr "Felhasználólista"
+
+#~ msgid "Verbosity And Output"
+#~ msgstr "Beszédesség és Kimenet"
+
+#~ msgid "Voice"
+#~ msgstr "Hang"
+
+#~ msgid "Window Captions"
+#~ msgstr "Ablak feliratok"
+
+#, fuzzy
+#~ msgid "Window List"
+#~ msgstr "Ablak feliratok"
+
+#~ msgid "Workspace"
+#~ msgstr "Munkaterület"
+
+#~ msgid "authentication,identify"
+#~ msgstr "azonosítás,auth"
+
+#~ msgid "chat"
+#~ msgstr "beszélgetés"
+
+#~ msgid "connection"
+#~ msgstr "kapcsolat"
+
+#~ msgid "connection,servers"
+#~ msgstr "kapcsolat,szerverek"
+
+#~ msgid "ctcp,flood"
+#~ msgstr "ctcp,flood,árasztás"
+
+#~ msgid "debug"
+#~ msgstr "debug"
+
+#~ msgid "file,audio,video,programs"
+#~ msgstr "fájl,audió,videó,programok"
+
+#~ msgid "language,encoding,charset,codepage"
+#~ msgstr "nyelv,kódolás,karakter,karakterkészlet,kódlap"
+
+#~ msgid "notify,buddy,buddies,friends"
+#~ msgstr "értesítés,barát,barátok,haver"
+
+#~ msgid "popup"
+#~ msgstr "popup"
+
+#~ msgid "protection"
+#~ msgstr "védelem"
+
+#~ msgid "save,output"
+#~ msgstr "mentés,kimenet"
+
+#~ msgid "scripting,kvs,debug"
+#~ msgstr "szkript,kvs,hibakeresés"
+
+#~ msgid "smileys,emoticons"
+#~ msgstr "mosoly,hangulatjelek"
+
+#~ msgid "sound,events"
+#~ msgstr "hangok,események"
+
+#~ msgid "sound,xmms,audio,play,amarok"
+#~ msgstr "hang,xmms,audio,lejátszás,amarok"
+
+#~ msgid "theme"
+#~ msgstr "megjelenés"
+
+#~ msgid "theme,background"
+#~ msgstr "megjelenés,háttér"
+
+#~ msgid "theme,colors,messages,output"
+#~ msgstr "megjelenés,színek,üzenetek,kimenet"
+
+#~ msgid "theme,colors,output"
+#~ msgstr "megjelenés,színek,kimenet"
+
+#~ msgid "theme,colors,text"
+#~ msgstr "megjelenés,színek,szöveg"
+
+#~ msgid "theme,mdi"
+#~ msgstr "megjelenés,mdi"
+
+#~ msgid "theme,privmsg,output,format"
+#~ msgstr "kinézet, üzenet, kimenet, formátum"
+
+#~ msgid "theme,toolbar"
+#~ msgstr "megjelenés,eszköztár"
+
+#~ msgid "theme,topic"
+#~ msgstr "megjelenés,topic,téma"
+
+#~ msgid "theme,userlist,channel"
+#~ msgstr "megjelenés,felhasználólista,csatorna"
+
+#~ msgid "theme,userlist,channel,background"
+#~ msgstr "kinézet,felhasználólista,csatorna,háttér"
+
+#~ msgid "theme,userlist,channel,colors"
+#~ msgstr "megjelenés,felhasználólista,csatorna,szín"
+
+#~ msgid "theme,userlist,channel,grid"
+#~ msgstr "megjelenés,felhasználólista,csatorna,rács"
+
+#~ msgid "time,ping"
+#~ msgstr "idő,ping"
+
+#~ msgid "time,timestamp"
+#~ msgstr "idő, időbélyeg"
+
 #~ msgid "tray,dockwidget"
 #~ msgstr "tálca,dockwidget"
+
+#~ msgid "url,programs"
+#~ msgstr "url,programok,cím,webcím,web"
+
+#~ msgid "userlist,channel"
+#~ msgstr "felhasználólista,csatorna"

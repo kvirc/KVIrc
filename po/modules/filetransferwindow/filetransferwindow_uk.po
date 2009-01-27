@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: about_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -86,11 +86,6 @@ msgstr "Локальний &файл"
 msgid "MS-DOS Prompt at Location"
 msgstr "Відкрити командний рядок у папці файлу"
 
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:123
-#, fuzzy
-msgid "Manage File &Transfers"
-msgstr "Передачі файлів"
-
 #: src/modules/filetransferwindow/filetransferwindow.cpp:602
 #: src/modules/filetransferwindow/filetransferwindow.cpp:770
 msgid "No"
@@ -109,10 +104,6 @@ msgstr "Відкрити &папку"
 #: src/modules/filetransferwindow/filetransferwindow.cpp:461
 msgid "Open &With"
 msgstr "Відкрити &як"
-
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
-msgid "Ops.. internal error"
-msgstr ""
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:137
 msgid "Progress"
@@ -135,3 +126,7 @@ msgstr "Тип"
 #: src/modules/filetransferwindow/filetransferwindow.cpp:770
 msgid "Yes"
 msgstr "Так"
+
+#, fuzzy
+#~ msgid "Manage File &Transfers"
+#~ msgstr "Передачі файлів"

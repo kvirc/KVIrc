@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVirc 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 01:08+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2001-09-11 00:28+0200\n"
 "Last-Translator: Krzysztof Godlewski <kgod@poczta.onet.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -1174,12 +1174,6 @@ msgstr "Dodaj nowy serwer proxy"
 msgid "Add Rule"
 msgstr "Dodaj nowy serwer proxy"
 
-#: src/modules/options/optw_connection.h:45 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_irc.h:57 src/modules/options/optw_identity.h:203
-msgid "Advanced"
-msgstr ""
-
 #: src/modules/options/optw_notify.cpp:60
 #: src/modules/options/optw_notify.cpp:125
 #, fuzzy
@@ -1236,11 +1230,6 @@ msgstr ""
 msgid "Alert level:"
 msgstr ""
 
-#: src/modules/options/optw_highlighting.h:30
-#, fuzzy
-msgid "Alert/Highlight"
-msgstr "M&inimalizuj"
-
 #: src/modules/options/optw_ctcpfloodprotection.cpp:86
 msgid "Allow up to:"
 msgstr ""
@@ -1289,10 +1278,6 @@ msgstr ""
 
 #: src/modules/options/optw_dcc.cpp:194
 msgid "Always open transfer window as minimized"
-msgstr ""
-
-#: src/modules/options/optw_antispam.h:30
-msgid "Anti-spam"
 msgstr ""
 
 #: src/modules/options/optw_ctcp.cpp:53
@@ -1348,11 +1333,6 @@ msgstr ""
 msgid "Automatically unload unused modules"
 msgstr ""
 
-#: src/modules/options/optw_identity.h:178
-#, fuzzy
-msgid "Avatar"
-msgstr "Obraz Avatar"
-
 #: src/modules/options/optw_identity.cpp:120
 msgid "Avatar Download - KVIrc"
 msgstr ""
@@ -1372,15 +1352,6 @@ msgstr "Wybierz pliki do wysłania"
 msgid "Avatar offer timeout:"
 msgstr "Obraz Avatar"
 
-#: src/modules/options/optw_avatar.h:32
-#, fuzzy
-msgid "Avatars"
-msgstr "Obraz Avatar"
-
-#: src/modules/options/optw_away.h:30
-msgid "Away"
-msgstr ""
-
 #: src/modules/options/optw_away.cpp:43
 #, fuzzy
 msgid "Away Nickname"
@@ -1392,8 +1363,6 @@ msgstr ""
 
 #: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_interfacelookglobal.cpp:198
-#: src/modules/options/optw_windowlist.h:79
-#: src/modules/options/optw_userlist.h:46
 msgid "Background"
 msgstr ""
 
@@ -1469,10 +1438,6 @@ msgstr ""
 msgid "CLIENTINFO"
 msgstr ""
 
-#: src/modules/options/optw_ctcp.h:30
-msgid "CTCP"
-msgstr ""
-
 #: src/modules/options/optw_ctcp.cpp:47
 msgid "CTCP Replies"
 msgstr ""
@@ -1524,10 +1489,6 @@ msgstr "Serwery"
 msgid "Change nickname on away"
 msgstr "Ostatnie &nicki"
 
-#: src/modules/options/optw_channel.h:36
-msgid "Channel"
-msgstr "Kanał"
-
 #: src/modules/options/optw_userlist.cpp:59
 #, fuzzy
 msgid "Channel admin:"
@@ -1546,10 +1507,6 @@ msgstr "Ułóż kaskadują&co"
 #: src/modules/options/optw_servers.cpp:223
 #: src/modules/options/optw_servers.cpp:779
 msgid "Channels to join automatically upon connect:"
-msgstr ""
-
-#: src/modules/options/optw_dcc.h:115
-msgid "Chat"
 msgstr ""
 
 #: src/modules/options/optw_notify.cpp:65
@@ -1587,11 +1544,6 @@ msgstr ""
 msgid "Choose..."
 msgstr ""
 
-#: src/modules/options/optw_windowlist.h:112
-#, fuzzy
-msgid "Classic Window List"
-msgstr "Ułóż kaskadują&co"
-
 #: src/modules/options/optw_servers.cpp:1458
 #, fuzzy
 msgid "Clear List"
@@ -1609,11 +1561,6 @@ msgstr ""
 #: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr ""
-
-#: src/modules/options/optw_messages.h:189
-#, fuzzy
-msgid "Color Set"
-msgstr "Zamknij"
 
 #: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
@@ -1656,7 +1603,6 @@ msgid "Connect to this server at startup"
 msgstr "Połączenie przerwane"
 
 #: src/modules/options/optw_servers.cpp:769
-#: src/modules/options/optw_connection.h:32
 msgid "Connection"
 msgstr "Połączenie"
 
@@ -1669,11 +1615,6 @@ msgstr "Zamknij"
 #, fuzzy
 msgid "Console windows"
 msgstr "Okno &terminala"
-
-#: src/modules/options/optw_notify.h:30
-#, fuzzy
-msgid "Contacts"
-msgstr "Połącz"
 
 #: src/modules/options/optw_input.cpp:43
 msgid "Control char color"
@@ -1696,10 +1637,6 @@ msgstr ""
 #: src/modules/options/optw_away.cpp:55
 #, c-format
 msgid "Custom nickname (%%nick%% means a current nick):"
-msgstr ""
-
-#: src/modules/options/optw_dcc.h:30
-msgid "DCC"
 msgstr ""
 
 #: src/modules/options/optw_logging.cpp:43
@@ -1884,10 +1821,6 @@ msgstr ""
 msgid "Edit Rule"
 msgstr ""
 
-#: src/modules/options/optw_texticons.cpp:81
-msgid "Emoticon"
-msgstr ""
-
 #: src/modules/options/optw_antispam.cpp:39
 msgid "Enable Anti-spam For"
 msgstr ""
@@ -2031,20 +1964,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr ""
 
-#: src/modules/options/optw_windowlist.h:98
-#: src/modules/options/optw_userlist.h:103
-#: src/modules/options/optw_ircview.h:70
-msgid "Features"
-msgstr ""
-
 #: src/modules/options/optw_identity.cpp:376
 msgid "Female"
 msgstr ""
-
-#: src/modules/options/optw_dcc.h:74
-#, fuzzy
-msgid "File Transfer"
-msgstr "Nowe o&kno"
 
 #: src/modules/options/optw_mediatypes.cpp:100
 msgid "File pattern:"
@@ -2061,11 +1983,6 @@ msgstr ""
 #: src/modules/options/optw_notify.cpp:51
 msgid "Flash window when users are going online"
 msgstr ""
-
-#: src/modules/options/optw_ctcpfloodprotection.h:30
-#, fuzzy
-msgid "Flood Protection"
-msgstr "Brak połączenia"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
@@ -2097,11 +2014,6 @@ msgstr ""
 msgid "Force language:"
 msgstr ""
 
-#: src/modules/options/optw_windowlist.h:64
-#: src/modules/options/optw_userlist.h:67
-msgid "Foreground"
-msgstr ""
-
 #: src/modules/options/optw_topiclabel.cpp:37
 #: src/modules/options/optw_input.cpp:40
 msgid "Foreground color"
@@ -2117,22 +2029,13 @@ msgid "Gender:"
 msgstr "Ogólne"
 
 #: src/modules/options/optw_servers.cpp:213
-#: src/modules/options/optw_messages.cpp:71 src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88
-#: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_irc.h:43
-#: src/modules/options/optw_identity.h:154
+#: src/modules/options/optw_messages.cpp:71
 msgid "General"
 msgstr "Ogólne"
 
 #: src/modules/options/dialog.cpp:114
 msgid "General Preferences"
 msgstr ""
-
-#: src/modules/options/optw_generalopt.h:30
-#, fuzzy
-msgid "General options"
-msgstr "O&gólne opcje"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:44
 msgid "Global application font:"
@@ -2195,11 +2098,6 @@ msgstr ""
 msgid "Highest port:"
 msgstr "Serwer:"
 
-#: src/modules/options/optw_highlighting.h:44
-#, fuzzy
-msgid "Highlight"
-msgstr "M&inimalizuj"
-
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight messages containing my nickname"
 msgstr ""
@@ -2248,10 +2146,6 @@ msgstr ""
 msgid "IPv6 Settings"
 msgstr ""
 
-#: src/modules/options/optw_irc.h:30
-msgid "IRC"
-msgstr ""
-
 #: src/modules/options/optw_userlist.cpp:57
 msgid "IRC Op:"
 msgstr ""
@@ -2268,11 +2162,6 @@ msgstr ""
 msgid "Id:"
 msgstr ""
 
-#: src/modules/options/optw_connection.h:91
-#, fuzzy
-msgid "Ident Service"
-msgstr "Ostatnie &serwery"
-
 #: src/modules/options/optw_connection.cpp:222
 #, fuzzy
 msgid "Ident username:"
@@ -2286,13 +2175,8 @@ msgstr ""
 
 #: src/modules/options/optw_servers.cpp:557
 #: src/modules/options/optw_interfacefeatures.cpp:61
-#: src/modules/options/optw_identity.h:138
 msgid "Identity"
 msgstr "Tożsamość"
-
-#: src/modules/options/optw_ignore.h:32
-msgid "Ignore"
-msgstr ""
 
 #: src/modules/options/optw_uparser.cpp:47
 msgid "Ignore module versions (dangerous)"
@@ -2343,15 +2227,6 @@ msgstr ""
 #: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Text (Secondary)"
 msgstr ""
-
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
-msgid "Input"
-msgstr ""
-
-#: src/modules/options/optw_interfacefeatures.h:32
-#, fuzzy
-msgid "Interface"
-msgstr "Interfejs"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
@@ -2419,20 +2294,8 @@ msgstr ""
 msgid "Kill broken timers"
 msgstr ""
 
-#: src/modules/options/optw_topiclabel.h:32
-msgid "Labels"
-msgstr ""
-
-#: src/modules/options/optw_lag.h:31
-msgid "Lag"
-msgstr ""
-
 #: src/modules/options/optw_lag.cpp:44
 msgid "Lag meter heartbeat:"
-msgstr ""
-
-#: src/modules/options/optw_textencoding.h:32
-msgid "Language"
 msgstr ""
 
 #: src/modules/options/optw_identity.cpp:394
@@ -2505,15 +2368,6 @@ msgstr "Za&rejestrowani użytkownicy"
 msgid "Log this"
 msgstr ""
 
-#: src/modules/options/optw_logging.h:30
-#, fuzzy
-msgid "Logging"
-msgstr "Tekst nie odnaleziony"
-
-#: src/modules/options/optw_ircview.h:50
-msgid "Look"
-msgstr "Wygląd"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:199
 msgid "Low-Contrast Foreground"
 msgstr ""
@@ -2543,11 +2397,6 @@ msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr ""
-
-#: src/modules/options/optw_ircview.h:84
-#, fuzzy
-msgid "Marker"
-msgstr "Wklej"
 
 #: src/modules/options/optw_ircview.cpp:179
 msgid "Marker color:"
@@ -2600,24 +2449,9 @@ msgstr ""
 msgid "Media Player"
 msgstr "Typy plików"
 
-#: src/modules/options/optw_mediatypes.h:48
-#, fuzzy
-msgid "Media Types"
-msgstr "Typy plików"
-
-#: src/modules/options/optw_messages.h:96
-#, fuzzy
-msgid "Message Colors"
-msgstr "Ostatnie &nicki"
-
 #: src/modules/options/optw_nickserv.cpp:76
 #, fuzzy
 msgid "Message Regexp"
-msgstr "Typy plików"
-
-#: src/modules/options/optw_messages.h:54
-#, fuzzy
-msgid "Message Style"
 msgstr "Typy plików"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:200
@@ -2773,7 +2607,6 @@ msgid "Nick completion postfix string"
 msgstr ""
 
 #: src/modules/options/optw_servers.cpp:335
-#: src/modules/options/optw_nickserv.h:41
 msgid "NickServ"
 msgstr ""
 
@@ -2802,11 +2635,6 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:54
 #, fuzzy
 msgid "Nickname Colors"
-msgstr "Ostatnie &nicki"
-
-#: src/modules/options/optw_userlist.h:83
-#, fuzzy
-msgid "Nickname Grid"
 msgstr "Ostatnie &nicki"
 
 #: src/modules/options/optw_identity.cpp:60
@@ -2845,10 +2673,6 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:55
 #: src/modules/options/optw_userlist.cpp:127
 msgid "Normal:"
-msgstr ""
-
-#: src/modules/options/optw_notify.h:44
-msgid "Notifier"
 msgstr ""
 
 #: src/modules/options/optw_notify.cpp:137
@@ -2979,11 +2803,6 @@ msgstr ""
 #: src/modules/options/optw_connection.cpp:150
 msgid "Outgoing data queue flush timeout:"
 msgstr ""
-
-#: src/modules/options/optw_ircview.h:36
-#, fuzzy
-msgid "Output"
-msgstr "Kontrola wyjścia"
 
 #: src/modules/options/optw_connection.cpp:198
 #, fuzzy
@@ -3167,10 +2986,6 @@ msgstr ""
 msgid "Profile Name:"
 msgstr ""
 
-#: src/modules/options/optw_identity.h:228
-msgid "Profiles"
-msgstr ""
-
 #: src/modules/options/optw_windowlist.cpp:96
 #: src/modules/options/optw_windowlist.cpp:254
 msgid "Progress bar color:"
@@ -3180,11 +2995,6 @@ msgstr ""
 #: src/modules/options/optw_servers.cpp:497
 msgid "Properties"
 msgstr ""
-
-#: src/modules/options/optw_protection.h:32
-#, fuzzy
-msgid "Protection"
-msgstr "Brak połączenia"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
 #, fuzzy
@@ -3198,11 +3008,6 @@ msgstr "Protokół:"
 #: src/modules/options/optw_proxy.cpp:70
 msgid "Proxy"
 msgstr ""
-
-#: src/modules/options/optw_proxy.h:53
-#, fuzzy
-msgid "Proxy Hosts"
-msgstr "Serwery Proxy"
 
 #: src/modules/options/optw_servers.cpp:744
 #, fuzzy
@@ -3241,10 +3046,6 @@ msgstr ""
 
 #: src/modules/options/optw_identity.cpp:890
 msgid "Put here the username you want to use"
-msgstr ""
-
-#: src/modules/options/optw_query.h:30
-msgid "Query"
 msgstr ""
 
 #: src/modules/options/optw_logging.cpp:41
@@ -3377,10 +3178,6 @@ msgstr ""
 msgid "SOURCE"
 msgstr ""
 
-#: src/modules/options/optw_connection.h:59
-msgid "SSL"
-msgstr ""
-
 #: src/modules/options/optw_messages.cpp:402
 msgid "Save As..."
 msgstr ""
@@ -3413,11 +3210,6 @@ msgstr "Obraz Avatar"
 #, fuzzy
 msgid "Scaling on load (and in user tooltips)"
 msgstr "Obraz Avatar"
-
-#: src/modules/options/optw_uparser.h:30
-#, fuzzy
-msgid "Scripting Engine"
-msgstr "Skrypty"
 
 #: src/modules/options/optw_tray.cpp:48
 msgid "Select message levels to notify"
@@ -3499,7 +3291,6 @@ msgid "Server:"
 msgstr "Serwer:"
 
 #: src/modules/options/optw_interfacefeatures.cpp:62
-#: src/modules/options/optw_servers.h:151
 #, fuzzy
 msgid "Servers"
 msgstr "Serwer:"
@@ -3648,11 +3439,6 @@ msgstr ""
 msgid "Single click"
 msgstr ""
 
-#: src/modules/options/optw_connection.h:76
-#, fuzzy
-msgid "Socket"
-msgstr "Serwer:"
-
 #: src/modules/options/optw_ircview.cpp:192
 msgid "SolidLine"
 msgstr ""
@@ -3665,12 +3451,7 @@ msgstr ""
 msgid "Sort windows by name"
 msgstr ""
 
-#: src/modules/options/optw_sound.h:33
-#, fuzzy
-msgid "Sound"
-msgstr "Wewnętrzny błąd"
-
-#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60
 #, fuzzy
 msgid "Sound System"
 msgstr "Wewnętrzny błąd"
@@ -3678,11 +3459,6 @@ msgstr "Wewnętrzny błąd"
 #: src/modules/options/optw_dcc.cpp:335
 msgid "Sound device:"
 msgstr ""
-
-#: src/modules/options/optw_sound.h:82
-#, fuzzy
-msgid "Sounds"
-msgstr "Wewnętrzny błąd"
 
 #: src/modules/options/optw_logging.cpp:48
 msgid "Strip colors in logs"
@@ -3701,21 +3477,10 @@ msgstr ""
 msgid "Test"
 msgstr ""
 
-#: src/modules/options/optw_texticons.cpp:80
-#: src/modules/options/optw_messages.h:39
-#, fuzzy
-msgid "Text"
-msgstr "Wygląd tekstu"
-
 #: src/modules/options/optw_servers.cpp:167
 #: src/modules/options/optw_servers.cpp:665
 #, fuzzy
 msgid "Text Encoding:"
-msgstr "Wygląd tekstu"
-
-#: src/modules/options/optw_texticons.h:39
-#, fuzzy
-msgid "Text icons"
 msgstr "Wygląd tekstu"
 
 #: src/modules/options/optw_windowlist.cpp:86
@@ -3896,23 +3661,9 @@ msgstr ""
 msgid "Timeout Values"
 msgstr ""
 
-#: src/modules/options/optw_messages.h:75
-msgid "Timestamp"
-msgstr ""
-
 #: src/modules/options/optw_messages.cpp:151
 msgid "Timestamp format:"
 msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.h:101
-#, fuzzy
-msgid "ToolBar Applets"
-msgstr "&Narzędzia"
-
-#: src/modules/options/optw_tools.h:33
-#, fuzzy
-msgid "Tools"
-msgstr "&Narzędzia"
 
 #: src/modules/options/optw_ircview.cpp:70
 #: src/modules/options/optw_input.cpp:62
@@ -3925,11 +3676,6 @@ msgstr ""
 msgid "Track last read text line"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.h:48
-#, fuzzy
-msgid "Transparency"
-msgstr "Transport"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:106
 #: src/modules/options/optw_interfacelookglobal.cpp:112
 msgid "Transparency blend image:"
@@ -3940,16 +3686,6 @@ msgstr ""
 msgid "Transparent"
 msgstr "Transport"
 
-#: src/modules/options/optw_tray.h:32
-#, fuzzy
-msgid "Tray icon"
-msgstr "Wygląd tekstu"
-
-#: src/modules/options/optw_windowlist.h:48
-#, fuzzy
-msgid "Tree Window List"
-msgstr "Okno &terminala"
-
 #: src/modules/options/optw_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
 msgstr ""
@@ -3957,11 +3693,6 @@ msgstr ""
 #: src/modules/options/optw_dcc.cpp:249
 msgid "Tweaks"
 msgstr ""
-
-#: src/modules/options/optw_urlhandlers.h:32
-#, fuzzy
-msgid "URL handlers"
-msgstr "Usuń"
 
 #: src/modules/options/optw_notify.cpp:92
 msgid "USERHOST delay (in seconds)"
@@ -4166,11 +3897,6 @@ msgstr ""
 msgid "User-op:"
 msgstr ""
 
-#: src/modules/options/optw_userlist.h:32
-#, fuzzy
-msgid "Userlist"
-msgstr "Wyczyść"
-
 #: src/modules/options/optw_identity.cpp:697
 #, fuzzy
 msgid "Username"
@@ -4192,10 +3918,6 @@ msgstr ""
 msgid "Verbose"
 msgstr ""
 
-#: src/modules/options/optw_ircoutput.h:33
-msgid "Verbosity And Output"
-msgstr ""
-
 #: src/modules/options/optw_userlist.cpp:137
 #, fuzzy
 msgid "Vertical Alignment:"
@@ -4205,10 +3927,6 @@ msgstr "Nieznane wyrównanie: %s"
 #: src/modules/options/optw_input.cpp:52
 #: src/modules/options/optw_windowlist.cpp:128
 msgid "Vertical align:"
-msgstr ""
-
-#: src/modules/options/optw_dcc.h:128
-msgid "Voice"
 msgstr ""
 
 #: src/modules/options/optw_userlist.cpp:62
@@ -4244,20 +3962,6 @@ msgstr "Pokazuj pingi od serwera"
 msgid "Winamp messages ecoding"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.h:75
-#, fuzzy
-msgid "Window Captions"
-msgstr "Nieznany operator"
-
-#: src/modules/options/optw_windowlist.h:34
-#, fuzzy
-msgid "Window List"
-msgstr "&Okno"
-
-#: src/modules/options/optw_highlighting.h:57
-msgid "Window List Alert"
-msgstr ""
-
 #: src/modules/options/optw_highlighting.cpp:59
 msgid "Word splitters:"
 msgstr ""
@@ -4268,10 +3972,6 @@ msgstr ""
 
 #: src/modules/options/optw_highlighting.cpp:57
 msgid "Words to highlight:"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.h:88
-msgid "Workspace"
 msgstr ""
 
 #: src/modules/options/optw_identity.cpp:390
@@ -4304,174 +4004,21 @@ msgstr ""
 msgid "[Unknown Media Type]"
 msgstr ""
 
-#: src/modules/options/optw_nickserv.h:43
-msgid "authentication,identify"
-msgstr ""
-
 #: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
-msgstr ""
-
-#: src/modules/options/optw_query.h:32
-msgid "chat"
-msgstr ""
-
-#: src/modules/options/optw_servers.h:152
-#, fuzzy
-msgid "connection"
-msgstr "Połączenie"
-
-#: src/modules/options/optw_proxy.h:55
-#, fuzzy
-msgid "connection,servers"
-msgstr "Połączenie przerwane"
-
-#: src/modules/options/optw_protection.h:35
-msgid "ctcp,flood"
-msgstr ""
-
-#: src/modules/options/optw_ircoutput.h:35
-msgid "debug"
 msgstr ""
 
 #: src/modules/options/optw_textencoding.cpp:88
 msgid "en"
 msgstr ""
 
-#: src/modules/options/optw_mediatypes.h:50
-msgid "file,audio,video,programs"
-msgstr ""
-
 #: src/modules/options/optw_servers.cpp:1591
 msgid "irc.unknown.net"
-msgstr ""
-
-#: src/modules/options/optw_textencoding.h:35
-msgid "language,encoding,charset,codepage"
-msgstr ""
-
-#: src/modules/options/optw_notify.h:32
-msgid "notify,buddy,buddies,friends"
-msgstr ""
-
-#: src/modules/options/optw_notify.h:45
-msgid "popup"
-msgstr ""
-
-#: src/modules/options/optw_ignore.h:34
-#, fuzzy
-msgid "protection"
-msgstr "Brak połączenia"
-
-#: src/modules/options/optw_logging.h:31
-msgid "save,output"
-msgstr ""
-
-#: src/modules/options/optw_uparser.h:31
-msgid "scripting,kvs,debug"
-msgstr ""
-
-#: src/modules/options/optw_texticons.h:41
-msgid "smileys,emoticons"
-msgstr ""
-
-#: src/modules/options/optw_sound.h:84
-msgid "sound,events"
-msgstr ""
-
-#: src/modules/options/optw_sound.h:49
-msgid "sound,xmms,audio,play,amarok"
-msgstr ""
-
-#: src/modules/options/optw_windowlist.h:36
-#: src/modules/options/optw_windowlist.h:50
-#: src/modules/options/optw_windowlist.h:66
-#: src/modules/options/optw_windowlist.h:81
-#: src/modules/options/optw_windowlist.h:100
-#: src/modules/options/optw_windowlist.h:115
-#: src/modules/options/optw_interfacelookglobal.h:34
-msgid "theme"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.h:49
-#, fuzzy
-msgid "theme,background"
-msgstr "Akcje"
-
-#: src/modules/options/optw_messages.h:97
-#: src/modules/options/optw_messages.h:190
-msgid "theme,colors,messages,output"
-msgstr ""
-
-#: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
-msgid "theme,colors,output"
-msgstr ""
-
-#: src/modules/options/optw_input.h:34
-msgid "theme,colors,text"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.h:76
-#: src/modules/options/optw_interfacelookglobal.h:89
-msgid "theme,mdi"
-msgstr ""
-
-#: src/modules/options/optw_messages.h:58
-msgid "theme,privmsg,output,format"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.h:102
-msgid "theme,toolbar"
-msgstr ""
-
-#: src/modules/options/optw_topiclabel.h:33
-msgid "theme,topic"
-msgstr ""
-
-#: src/modules/options/optw_userlist.h:33
-msgid "theme,userlist,channel"
-msgstr ""
-
-#: src/modules/options/optw_userlist.h:47
-#, fuzzy
-msgid "theme,userlist,channel,background"
-msgstr "Akcje"
-
-#: src/modules/options/optw_userlist.h:68
-#, fuzzy
-msgid "theme,userlist,channel,colors"
-msgstr "Anuluj"
-
-#: src/modules/options/optw_userlist.h:84
-#, fuzzy
-msgid "theme,userlist,channel,grid"
-msgstr "Akcje"
-
-#: src/modules/options/optw_lag.h:33
-msgid "time,ping"
-msgstr ""
-
-#: src/modules/options/optw_messages.h:79
-msgid "time,timestamp"
-msgstr ""
-
-#: src/modules/options/optw_tray.h:34
-msgid "tray,TRAYICON"
 msgstr ""
 
 #: src/modules/options/optw_texticons.cpp:214
 msgid "unnamed"
 msgstr ""
-
-#: src/modules/options/optw_urlhandlers.h:35
-msgid "url,programs"
-msgstr ""
-
-#: src/modules/options/optw_userlist.h:104
-#, fuzzy
-msgid "userlist,channel"
-msgstr "Anuluj"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid "within:"
@@ -4871,6 +4418,10 @@ msgstr ""
 #~ msgstr "Ostatnie &kanały"
 
 #, fuzzy
+#~ msgid "Alert/Highlight"
+#~ msgstr "M&inimalizuj"
+
+#, fuzzy
 #~ msgid "Alias Export"
 #~ msgstr "&Narzędzia"
 
@@ -4916,6 +4467,10 @@ msgstr ""
 #~ msgstr "Znajdowanie hosta %s..."
 
 #, fuzzy
+#~ msgid "Avatar"
+#~ msgstr "Obraz Avatar"
+
+#, fuzzy
 #~ msgid "Avatar Handling"
 #~ msgstr "Obraz Avatar"
 
@@ -4925,6 +4480,10 @@ msgstr ""
 
 #~ msgid "Avatar protocol"
 #~ msgstr "Protokół Avatar"
+
+#, fuzzy
+#~ msgid "Avatars"
+#~ msgstr "Obraz Avatar"
 
 #, fuzzy
 #~ msgid "Away since"
@@ -5179,6 +4738,9 @@ msgstr ""
 #~ msgid "Changed text encoding to %Q"
 #~ msgstr "Wybierz pliki do wysłania"
 
+#~ msgid "Channel"
+#~ msgstr "Kanał"
+
 #, fuzzy
 #~ msgid "Channel Administrator"
 #~ msgstr "Anuluj"
@@ -5290,6 +4852,10 @@ msgstr ""
 #~ msgid "Choose the file to share"
 #~ msgstr "Wybierz pliki do wysłania"
 
+#, fuzzy
+#~ msgid "Classic Window List"
+#~ msgstr "Ułóż kaskadują&co"
+
 #~ msgid "Clear"
 #~ msgstr "Wyczyść"
 
@@ -5303,6 +4869,10 @@ msgstr ""
 
 #, fuzzy
 #~ msgid "Code"
+#~ msgstr "Zamknij"
+
+#, fuzzy
+#~ msgid "Color Set"
 #~ msgstr "Zamknij"
 
 #~ msgid "Commit"
@@ -5419,6 +4989,10 @@ msgstr ""
 #, fuzzy
 #~ msgid "Contacting host %s on port %u"
 #~ msgstr "Próba nawiązania połączenia z %s (%u) na porcie %u"
+
+#, fuzzy
+#~ msgid "Contacts"
+#~ msgstr "Połącz"
 
 #, fuzzy
 #~ msgid "Context"
@@ -5662,6 +5236,10 @@ msgstr ""
 #~ msgid "Failed to start the get request: %s"
 #~ msgstr "Wybierz pliki do wysłania"
 
+#, fuzzy
+#~ msgid "File Transfer"
+#~ msgstr "Nowe o&kno"
+
 #~ msgid "File is not open !"
 #~ msgstr "Plik nie jest otwarty !"
 
@@ -5687,6 +5265,10 @@ msgstr ""
 #, fuzzy
 #~ msgid "Finish Setup"
 #~ msgstr "Znajdź"
+
+#, fuzzy
+#~ msgid "Flood Protection"
+#~ msgstr "Brak połączenia"
 
 #, fuzzy
 #~ msgid "Flooded with messages"
@@ -5742,6 +5324,10 @@ msgstr ""
 #~ "Found end of input where character '%c' was expected: see \"/help %s\" "
 #~ "for the command syntax"
 #~ msgstr "Niespodziewany znak"
+
+#, fuzzy
+#~ msgid "General options"
+#~ msgstr "O&gólne opcje"
 
 #, fuzzy
 #~ msgid "Generic"
@@ -5818,6 +5404,10 @@ msgstr ""
 #~ msgstr "Obraz Avatar"
 
 #, fuzzy
+#~ msgid "Highlight"
+#~ msgstr "M&inimalizuj"
+
+#, fuzzy
 #~ msgid "Highlighted text"
 #~ msgstr "M&inimalizuj"
 
@@ -5891,6 +5481,10 @@ msgstr ""
 #~ msgstr "Tożsamość"
 
 #, fuzzy
+#~ msgid "Ident Service"
+#~ msgstr "Ostatnie &serwery"
+
+#, fuzzy
 #~ msgid "Ident message"
 #~ msgstr "Interfejs"
 
@@ -5899,6 +5493,10 @@ msgstr ""
 
 #~ msgid "Index %u out of range"
 #~ msgstr "Indeks %u poza zakresem"
+
+#, fuzzy
+#~ msgid "Interface"
+#~ msgstr "Interfejs"
 
 #~ msgid "Internal error"
 #~ msgstr "Wewnętrzny błąd"
@@ -6209,12 +5807,19 @@ msgstr ""
 #~ msgstr "Usuń"
 
 #, fuzzy
+#~ msgid "Logging"
+#~ msgstr "Tekst nie odnaleziony"
+
+#, fuzzy
 #~ msgid "Login in progress..."
 #~ msgstr "logowanie się..."
 
 #, fuzzy
 #~ msgid "Login operations completed"
 #~ msgstr "Nieznany operator"
+
+#~ msgid "Look"
+#~ msgstr "Wygląd"
 
 #~ msgid "Looking up host %Q..."
 #~ msgstr "Znajdowanie hosta %Q..."
@@ -6244,6 +5849,10 @@ msgstr ""
 #~ msgstr "&Maksymalizuj"
 
 #, fuzzy
+#~ msgid "Marker"
+#~ msgstr "Wklej"
+
+#, fuzzy
 #~ msgid "Mask %Q not found"
 #~ msgstr "Tekst nie odnaleziony"
 
@@ -6254,6 +5863,18 @@ msgstr ""
 #, fuzzy
 #~ msgid "Mask for"
 #~ msgstr "&Narzędzia"
+
+#, fuzzy
+#~ msgid "Media Types"
+#~ msgstr "Typy plików"
+
+#, fuzzy
+#~ msgid "Message Colors"
+#~ msgstr "Ostatnie &nicki"
+
+#, fuzzy
+#~ msgid "Message Style"
+#~ msgstr "Typy plików"
 
 #, fuzzy
 #~ msgid "Message Type"
@@ -6459,6 +6080,10 @@ msgstr ""
 #, fuzzy
 #~ msgid "NickServ mask:"
 #~ msgstr "Tryb &użytkownika"
+
+#, fuzzy
+#~ msgid "Nickname Grid"
+#~ msgstr "Ostatnie &nicki"
 
 #, fuzzy
 #~ msgid "No IRC context"
@@ -6678,6 +6303,10 @@ msgstr ""
 #~ msgstr "Wybierz pliki do wysłania"
 
 #, fuzzy
+#~ msgid "Output"
+#~ msgstr "Kontrola wyjścia"
+
+#, fuzzy
 #~ msgid "Output verosity"
 #~ msgstr "Kontrola wyjścia"
 
@@ -6759,6 +6388,14 @@ msgstr ""
 #, fuzzy
 #~ msgid "Property Editor"
 #~ msgstr "Nieznany operator"
+
+#, fuzzy
+#~ msgid "Protection"
+#~ msgstr "Brak połączenia"
+
+#, fuzzy
+#~ msgid "Proxy Hosts"
+#~ msgstr "Serwery Proxy"
 
 #, fuzzy
 #~ msgid "Proxy connection"
@@ -6951,6 +6588,10 @@ msgstr ""
 #~ msgstr "Nieznany operator"
 
 #~ msgid "Scripting"
+#~ msgstr "Skrypty"
+
+#, fuzzy
+#~ msgid "Scripting Engine"
 #~ msgstr "Skrypty"
 
 #, fuzzy
@@ -7189,6 +6830,10 @@ msgstr ""
 #~ msgstr "Wklej"
 
 #, fuzzy
+#~ msgid "Socket"
+#~ msgstr "Serwer:"
+
+#, fuzzy
 #~ msgid "Socket error"
 #~ msgstr "&Szpieg gniazda"
 
@@ -7197,8 +6842,16 @@ msgstr ""
 #~ msgstr "Centrum &skryptów"
 
 #, fuzzy
+#~ msgid "Sound"
+#~ msgstr "Wewnętrzny błąd"
+
+#, fuzzy
 #~ msgid "Sound file '%Q' not found"
 #~ msgstr "Tekst nie odnaleziony"
+
+#, fuzzy
+#~ msgid "Sounds"
+#~ msgstr "Wewnętrzny błąd"
 
 #, fuzzy
 #~ msgid "Spam report"
@@ -7250,6 +6903,14 @@ msgstr ""
 #, fuzzy
 #~ msgid "Terminal"
 #~ msgstr "Okno &terminala"
+
+#, fuzzy
+#~ msgid "Text"
+#~ msgstr "Wygląd tekstu"
+
+#, fuzzy
+#~ msgid "Text icons"
+#~ msgstr "Wygląd tekstu"
 
 #, fuzzy
 #~ msgid "The action parameter didn't evaluate to an index"
@@ -7393,11 +7054,19 @@ msgstr ""
 #~ msgstr "Ułożenie sąsiadujące : za mało miejsca"
 
 #, fuzzy
+#~ msgid "ToolBar Applets"
+#~ msgstr "&Narzędzia"
+
+#, fuzzy
 #~ msgid "ToolBar Export"
 #~ msgstr "&Narzędzia"
 
 #, fuzzy
 #~ msgid "Toolbars"
+#~ msgstr "&Narzędzia"
+
+#, fuzzy
+#~ msgid "Tools"
 #~ msgstr "&Narzędzia"
 
 #, fuzzy
@@ -7432,16 +7101,32 @@ msgstr ""
 #~ msgid "Total: %d addons installed"
 #~ msgstr "Nieprawidłowy indeks (%s)"
 
+#, fuzzy
+#~ msgid "Transparency"
+#~ msgstr "Transport"
+
 #~ msgid "Transport"
 #~ msgstr "Transport"
+
+#, fuzzy
+#~ msgid "Tray icon"
+#~ msgstr "Wygląd tekstu"
 
 #, fuzzy
 #~ msgid "Tree Taskbar"
 #~ msgstr "Tryb &użytkownika"
 
 #, fuzzy
+#~ msgid "Tree Window List"
+#~ msgstr "Okno &terminala"
+
+#, fuzzy
 #~ msgid "URL Module Configuration"
 #~ msgstr "Zapi&sz ustawienia"
+
+#, fuzzy
+#~ msgid "URL handlers"
+#~ msgstr "Usuń"
 
 #, fuzzy
 #~ msgid "Unable to create theme files directory."
@@ -7821,6 +7506,10 @@ msgstr ""
 #~ msgstr "Pokazuj skrócone zmiany trybów"
 
 #, fuzzy
+#~ msgid "Userlist"
+#~ msgstr "Wyczyść"
+
+#, fuzzy
 #~ msgid "Userop mode change"
 #~ msgstr "Pokazuj skrócone zmiany trybów"
 
@@ -7883,6 +7572,14 @@ msgstr ""
 #, fuzzy
 #~ msgid "Window %Q not found"
 #~ msgstr "Tekst nie odnaleziony"
+
+#, fuzzy
+#~ msgid "Window Captions"
+#~ msgstr "Nieznany operator"
+
+#, fuzzy
+#~ msgid "Window List"
+#~ msgstr "&Okno"
 
 #, fuzzy
 #~ msgid "Window button '%Q' not found"
@@ -7982,6 +7679,14 @@ msgstr ""
 #~ msgstr "Anuluj"
 
 #, fuzzy
+#~ msgid "connection"
+#~ msgstr "Połączenie"
+
+#, fuzzy
+#~ msgid "connection,servers"
+#~ msgstr "Połączenie przerwane"
+
+#, fuzzy
 #~ msgid "defpopup: internal error"
 #~ msgstr "Wewnętrzny błąd"
 
@@ -8063,6 +7768,10 @@ msgstr ""
 #~ msgstr "Nieznany operator"
 
 #, fuzzy
+#~ msgid "protection"
+#~ msgstr "Brak połączenia"
+
+#, fuzzy
 #~ msgid "proxy host"
 #~ msgstr "Serwery Proxy"
 
@@ -8082,6 +7791,22 @@ msgstr ""
 #~ msgid "t (Connection stats ?)"
 #~ msgstr "Połączenie przerwane"
 
+#, fuzzy
+#~ msgid "theme,background"
+#~ msgstr "Akcje"
+
+#, fuzzy
+#~ msgid "theme,userlist,channel,background"
+#~ msgstr "Akcje"
+
+#, fuzzy
+#~ msgid "theme,userlist,channel,colors"
+#~ msgstr "Anuluj"
+
+#, fuzzy
+#~ msgid "theme,userlist,channel,grid"
+#~ msgstr "Akcje"
+
 #~ msgid "unknown"
 #~ msgstr "nieznany"
 
@@ -8092,3 +7817,7 @@ msgstr ""
 #, fuzzy
 #~ msgid "user-operators"
 #~ msgstr "Nieznany operator"
+
+#, fuzzy
+#~ msgid "userlist,channel"
+#~ msgstr "Anuluj"

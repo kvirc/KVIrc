@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <FI@li.org>\n"
@@ -41,10 +41,6 @@ msgstr "Tekijä"
 #: src/modules/theme/libkvitheme.cpp:109
 msgid "Choose a file to save the screenshot to"
 msgstr "Valitse tiedosto mihin kuvakaappaus tallennetaan"
-
-#: src/modules/theme/managementdialog.cpp:194
-msgid "Close"
-msgstr ""
 
 #: src/modules/theme/themefunctions.cpp:116
 #: src/modules/theme/themefunctions.cpp:313
@@ -235,11 +231,6 @@ msgstr "Paketin nimi:"
 msgid "Package Path"
 msgstr "Paketin polku"
 
-#: src/modules/theme/packthemedialog.cpp:470
-#, fuzzy
-msgid "Package saved succesfully"
-msgstr "Teema asennettu kansioon "
-
 #: src/modules/theme/packthemedialog.cpp:447
 #: src/modules/theme/packthemedialog.cpp:459
 msgid "Packaging failed"
@@ -407,3 +398,7 @@ msgstr "Sinun nimi tähän"
 #: src/modules/theme/managementdialog.cpp:86
 msgid "by"
 msgstr "tekijänä"
+
+#, fuzzy
+#~ msgid "Package saved succesfully"
+#~ msgstr "Teema asennettu kansioon "

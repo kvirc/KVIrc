@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: filetransferwindow_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2008-02-26 07:58+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -82,11 +82,6 @@ msgstr "Helyi Fájl"
 msgid "MS-DOS Prompt at Location"
 msgstr "MS-DOS Promt az adott helyen"
 
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:123
-#, fuzzy
-msgid "Manage File &Transfers"
-msgstr "Fájl Átvitelek"
-
 #: src/modules/filetransferwindow/filetransferwindow.cpp:602
 #: src/modules/filetransferwindow/filetransferwindow.cpp:770
 msgid "No"
@@ -105,10 +100,6 @@ msgstr "Hely megnyitása"
 #: src/modules/filetransferwindow/filetransferwindow.cpp:461
 msgid "Open &With"
 msgstr "Megnyitás ezzel..."
-
-#: src/modules/filetransferwindow/libkvifiletransferwindow.cpp:114
-msgid "Ops.. internal error"
-msgstr ""
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:137
 msgid "Progress"
@@ -130,3 +121,7 @@ msgstr "Típus"
 #: src/modules/filetransferwindow/filetransferwindow.cpp:770
 msgid "Yes"
 msgstr "Igen"
+
+#, fuzzy
+#~ msgid "Manage File &Transfers"
+#~ msgstr "Fájl Átvitelek"

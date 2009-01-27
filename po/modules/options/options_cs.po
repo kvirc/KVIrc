@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 01:08+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1567,12 +1567,6 @@ msgstr "Profil"
 msgid "Add Rule"
 msgstr "Přidat pravidlo"
 
-#: src/modules/options/optw_connection.h:45 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_irc.h:57 src/modules/options/optw_identity.h:203
-msgid "Advanced"
-msgstr "Pokročilé"
-
 #: src/modules/options/optw_notify.cpp:60
 #: src/modules/options/optw_notify.cpp:125
 msgid "Advanced configuration"
@@ -1628,10 +1622,6 @@ msgstr "Výstraha pro query zprávy"
 msgid "Alert level:"
 msgstr "Úroveň výstrahy:"
 
-#: src/modules/options/optw_highlighting.h:30
-msgid "Alert/Highlight"
-msgstr "Výstrahy/Zvýraznění"
-
 #: src/modules/options/optw_ctcpfloodprotection.cpp:86
 msgid "Allow up to:"
 msgstr "Bude li více než:"
@@ -1677,10 +1667,6 @@ msgstr "Vždy otevřít query minimalizovaně"
 #: src/modules/options/optw_dcc.cpp:194
 msgid "Always open transfer window as minimized"
 msgstr "Vždy otevřít okno přenosu minimalizovaně"
-
-#: src/modules/options/optw_antispam.h:30
-msgid "Anti-spam"
-msgstr "Anti-spam"
 
 #: src/modules/options/optw_ctcp.cpp:53
 msgid "Append to SOURCE reply:"
@@ -1735,10 +1721,6 @@ msgstr "Automaticky navázat při auto-příjmu"
 msgid "Automatically unload unused modules"
 msgstr "Automaticky mazat z paměti nepoužité moduly"
 
-#: src/modules/options/optw_identity.h:178
-msgid "Avatar"
-msgstr "Avatar"
-
 #: src/modules/options/optw_identity.cpp:120
 msgid "Avatar Download - KVIrc"
 msgstr "Stažení Avataru - KVIrc"
@@ -1755,14 +1737,6 @@ msgstr "Avatar je možná příliš velký - KVIrc"
 msgid "Avatar offer timeout:"
 msgstr "Prodleva nabídky avataru:"
 
-#: src/modules/options/optw_avatar.h:32
-msgid "Avatars"
-msgstr "Avatary"
-
-#: src/modules/options/optw_away.h:30
-msgid "Away"
-msgstr "Pryč"
-
 #: src/modules/options/optw_away.cpp:43
 msgid "Away Nickname"
 msgstr "Pryč přezdívka"
@@ -1773,8 +1747,6 @@ msgstr "Pryč:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_interfacelookglobal.cpp:198
-#: src/modules/options/optw_windowlist.h:79
-#: src/modules/options/optw_userlist.h:46
 msgid "Background"
 msgstr "Pozadí"
 
@@ -1847,10 +1819,6 @@ msgstr "Bug kompatibilita"
 msgid "CLIENTINFO"
 msgstr "CLIENTINFO"
 
-#: src/modules/options/optw_ctcp.h:30
-msgid "CTCP"
-msgstr "CTCP"
-
 #: src/modules/options/optw_ctcp.cpp:47
 msgid "CTCP Replies"
 msgstr "CTCP Odezvy"
@@ -1899,10 +1867,6 @@ msgstr "ChanServ a NickServ oznámení"
 msgid "Change nickname on away"
 msgstr "Změnit přezdívku při pryč"
 
-#: src/modules/options/optw_channel.h:36
-msgid "Channel"
-msgstr "Kanál"
-
 #: src/modules/options/optw_userlist.cpp:59
 msgid "Channel admin:"
 msgstr "Admin kanálu:"
@@ -1919,10 +1883,6 @@ msgstr "Okna kanálů"
 #: src/modules/options/optw_servers.cpp:779
 msgid "Channels to join automatically upon connect:"
 msgstr "Kanály pro automatický příchod po připojení:"
-
-#: src/modules/options/optw_dcc.h:115
-msgid "Chat"
-msgstr "Chat"
 
 #: src/modules/options/optw_notify.cpp:65
 msgid "Check USERHOST for online users"
@@ -1956,11 +1916,6 @@ msgstr "Vyberte soubor obrázku - KVIrc"
 msgid "Choose..."
 msgstr "Vyberte..."
 
-#: src/modules/options/optw_windowlist.h:112
-#, fuzzy
-msgid "Classic Window List"
-msgstr "Seznam oken"
-
 #: src/modules/options/optw_servers.cpp:1458
 msgid "Clear List"
 msgstr "Smazat seznam"
@@ -1976,10 +1931,6 @@ msgstr "Zavře tento dialog a provede všechny změny."
 #: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Zavře tento dialog, bez provedení změn."
-
-#: src/modules/options/optw_messages.h:189
-msgid "Color Set"
-msgstr "Sada barev"
 
 #: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
@@ -2016,7 +1967,6 @@ msgid "Connect to this server at startup"
 msgstr "Připojit k tomuto serveru po spuštění"
 
 #: src/modules/options/optw_servers.cpp:769
-#: src/modules/options/optw_connection.h:32
 msgid "Connection"
 msgstr "Spojení"
 
@@ -2027,10 +1977,6 @@ msgstr "Konzole"
 #: src/modules/options/optw_logging.cpp:44
 msgid "Console windows"
 msgstr "Konzole okna"
-
-#: src/modules/options/optw_notify.h:30
-msgid "Contacts"
-msgstr "Kontakty"
 
 #: src/modules/options/optw_input.cpp:43
 msgid "Control char color"
@@ -2052,10 +1998,6 @@ msgstr "Barva kurzoru"
 #, c-format
 msgid "Custom nickname (%%nick%% means a current nick):"
 msgstr ""
-
-#: src/modules/options/optw_dcc.h:30
-msgid "DCC"
-msgstr "DCC"
 
 #: src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
@@ -2227,11 +2169,6 @@ msgstr "Profil"
 msgid "Edit Rule"
 msgstr "Upravit pravidlo"
 
-#: src/modules/options/optw_texticons.cpp:81
-#, fuzzy
-msgid "Emoticon"
-msgstr "oznamování"
-
 #: src/modules/options/optw_antispam.cpp:39
 msgid "Enable Anti-spam For"
 msgstr "Povolit Anti-spam pro"
@@ -2374,19 +2311,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Stahování selhalo"
 
-#: src/modules/options/optw_windowlist.h:98
-#: src/modules/options/optw_userlist.h:103
-#: src/modules/options/optw_ircview.h:70
-msgid "Features"
-msgstr "Vlastnosti"
-
 #: src/modules/options/optw_identity.cpp:376
 msgid "Female"
 msgstr "Žena"
-
-#: src/modules/options/optw_dcc.h:74
-msgid "File Transfer"
-msgstr "Přenos souboru"
 
 #: src/modules/options/optw_mediatypes.cpp:100
 msgid "File pattern:"
@@ -2403,10 +2330,6 @@ msgstr "Blikající systémová lišta při zvýrazněných zprávách"
 #: src/modules/options/optw_notify.cpp:51
 msgid "Flash window when users are going online"
 msgstr "Blikající okno, když je uživatel online"
-
-#: src/modules/options/optw_ctcpfloodprotection.h:30
-msgid "Flood Protection"
-msgstr "Ochrana před zahlcením"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
@@ -2437,11 +2360,6 @@ msgstr "Provést opuštění okamžitě"
 msgid "Force language:"
 msgstr ""
 
-#: src/modules/options/optw_windowlist.h:64
-#: src/modules/options/optw_userlist.h:67
-msgid "Foreground"
-msgstr "Popředí"
-
 #: src/modules/options/optw_topiclabel.cpp:37
 #: src/modules/options/optw_input.cpp:40
 msgid "Foreground color"
@@ -2456,21 +2374,13 @@ msgid "Gender:"
 msgstr "Pohlaví:"
 
 #: src/modules/options/optw_servers.cpp:213
-#: src/modules/options/optw_messages.cpp:71 src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88
-#: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_irc.h:43
-#: src/modules/options/optw_identity.h:154
+#: src/modules/options/optw_messages.cpp:71
 msgid "General"
 msgstr "Hlavní"
 
 #: src/modules/options/dialog.cpp:114
 msgid "General Preferences"
 msgstr "Hlavní předvolby"
-
-#: src/modules/options/optw_generalopt.h:30
-msgid "General options"
-msgstr "Hlavní možnosti"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:44
 msgid "Global application font:"
@@ -2530,10 +2440,6 @@ msgstr ""
 msgid "Highest port:"
 msgstr "Vyšší port:"
 
-#: src/modules/options/optw_highlighting.h:44
-msgid "Highlight"
-msgstr "Zvýraznění"
-
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight messages containing my nickname"
 msgstr "Zvýrazňovat zprávy obsahující vlastní přezdívku"
@@ -2578,10 +2484,6 @@ msgstr "IP stack považuje IPv4 jako součást jmenného prostoru IPv6"
 msgid "IPv6 Settings"
 msgstr "IPv6 nastavení"
 
-#: src/modules/options/optw_irc.h:30
-msgid "IRC"
-msgstr "IRC"
-
 #: src/modules/options/optw_userlist.cpp:57
 #, fuzzy
 msgid "IRC Op:"
@@ -2599,10 +2501,6 @@ msgstr "Ikona"
 msgid "Id:"
 msgstr "Id:"
 
-#: src/modules/options/optw_connection.h:91
-msgid "Ident Service"
-msgstr "Ident služba"
-
 #: src/modules/options/optw_connection.cpp:222
 msgid "Ident username:"
 msgstr "Ident:"
@@ -2615,13 +2513,8 @@ msgstr "Příkaz identifikace"
 
 #: src/modules/options/optw_servers.cpp:557
 #: src/modules/options/optw_interfacefeatures.cpp:61
-#: src/modules/options/optw_identity.h:138
 msgid "Identity"
 msgstr "Identita"
-
-#: src/modules/options/optw_ignore.h:32
-msgid "Ignore"
-msgstr "Ignorování"
 
 #: src/modules/options/optw_uparser.cpp:47
 msgid "Ignore module versions (dangerous)"
@@ -2670,14 +2563,6 @@ msgstr "Neaktivní text (Primární)"
 #: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Text (Secondary)"
 msgstr "Neaktivní text (Sekundární)"
-
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
-msgid "Input"
-msgstr "Vstup"
-
-#: src/modules/options/optw_interfacefeatures.h:32
-msgid "Interface"
-msgstr "Rozhraní"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
@@ -2740,21 +2625,9 @@ msgstr "Nechat query otevřené"
 msgid "Kill broken timers"
 msgstr "Ukončit poškozené časovače"
 
-#: src/modules/options/optw_topiclabel.h:32
-msgid "Labels"
-msgstr "Návěstí"
-
-#: src/modules/options/optw_lag.h:31
-msgid "Lag"
-msgstr "Lag"
-
 #: src/modules/options/optw_lag.cpp:44
 msgid "Lag meter heartbeat:"
 msgstr "Měřič lagu tlukot:"
-
-#: src/modules/options/optw_textencoding.h:32
-msgid "Language"
-msgstr "Jazyk"
 
 #: src/modules/options/optw_identity.cpp:394
 msgid "Languages:"
@@ -2823,14 +2696,6 @@ msgstr "Logovat historii příchodů do kanálů"
 msgid "Log this"
 msgstr "Logovat"
 
-#: src/modules/options/optw_logging.h:30
-msgid "Logging"
-msgstr "Logování"
-
-#: src/modules/options/optw_ircview.h:50
-msgid "Look"
-msgstr "Vzhled"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:199
 msgid "Low-Contrast Foreground"
 msgstr "Málo kontrastní popředí"
@@ -2860,11 +2725,6 @@ msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr ""
-
-#: src/modules/options/optw_ircview.h:84
-#, fuzzy
-msgid "Marker"
-msgstr "Parser"
 
 #: src/modules/options/optw_ircview.cpp:179
 #, fuzzy
@@ -2917,21 +2777,9 @@ msgstr "Byl(a) jsem vykopnut(a)"
 msgid "Media Player"
 msgstr "Přehrávač médií"
 
-#: src/modules/options/optw_mediatypes.h:48
-msgid "Media Types"
-msgstr "Typy médií"
-
-#: src/modules/options/optw_messages.h:96
-msgid "Message Colors"
-msgstr "Barvy zpráv"
-
 #: src/modules/options/optw_nickserv.cpp:76
 msgid "Message Regexp"
 msgstr "Regexp zprávy"
-
-#: src/modules/options/optw_messages.h:54
-msgid "Message Style"
-msgstr "Styl zprávy"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Mid-Contrast Foreground"
@@ -3073,7 +2921,6 @@ msgid "Nick completion postfix string"
 msgstr "Postfix řetězec pro doplňování přezdívky"
 
 #: src/modules/options/optw_servers.cpp:335
-#: src/modules/options/optw_nickserv.h:41
 msgid "NickServ"
 msgstr "NickServ"
 
@@ -3101,10 +2948,6 @@ msgstr "Přezdívka"
 #: src/modules/options/optw_userlist.cpp:54
 msgid "Nickname Colors"
 msgstr "Barvy přezdívek"
-
-#: src/modules/options/optw_userlist.h:83
-msgid "Nickname Grid"
-msgstr "Mřížka přezdívky"
 
 #: src/modules/options/optw_identity.cpp:60
 msgid "Nickname alternatives"
@@ -3141,10 +2984,6 @@ msgstr "Normální"
 #: src/modules/options/optw_userlist.cpp:127
 msgid "Normal:"
 msgstr "Normální:"
-
-#: src/modules/options/optw_notify.h:44
-msgid "Notifier"
-msgstr "Oznamovač"
 
 #: src/modules/options/optw_notify.cpp:137
 msgid "Notifier window opacity while active (mouseover)"
@@ -3272,10 +3111,6 @@ msgstr "Ostatní:"
 #: src/modules/options/optw_connection.cpp:150
 msgid "Outgoing data queue flush timeout:"
 msgstr "Prodleva fronty odchozích dat:"
-
-#: src/modules/options/optw_ircview.h:36
-msgid "Output"
-msgstr "Výstup"
 
 #: src/modules/options/optw_connection.cpp:198
 msgid "Output identd messages to:"
@@ -3455,11 +3290,6 @@ msgstr "Profil"
 msgid "Profile Name:"
 msgstr "Profil"
 
-#: src/modules/options/optw_identity.h:228
-#, fuzzy
-msgid "Profiles"
-msgstr "Profil"
-
 #: src/modules/options/optw_windowlist.cpp:96
 #: src/modules/options/optw_windowlist.cpp:254
 msgid "Progress bar color:"
@@ -3469,10 +3299,6 @@ msgstr "Barva ukazatele průběhu:"
 #: src/modules/options/optw_servers.cpp:497
 msgid "Properties"
 msgstr "Vlastnosti"
-
-#: src/modules/options/optw_protection.h:32
-msgid "Protection"
-msgstr "Ochrana"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
 #, fuzzy
@@ -3486,10 +3312,6 @@ msgstr "Protokol:"
 #: src/modules/options/optw_proxy.cpp:70
 msgid "Proxy"
 msgstr "Proxy"
-
-#: src/modules/options/optw_proxy.h:53
-msgid "Proxy Hosts"
-msgstr "Proxy hostitelé"
 
 #: src/modules/options/optw_servers.cpp:744
 msgid "Proxy server:"
@@ -3528,10 +3350,6 @@ msgstr ""
 #: src/modules/options/optw_identity.cpp:890
 msgid "Put here the username you want to use"
 msgstr ""
-
-#: src/modules/options/optw_query.h:30
-msgid "Query"
-msgstr "Query"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
@@ -3648,10 +3466,6 @@ msgstr "Vpravo"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_connection.h:59
-msgid "SSL"
-msgstr "SSL"
-
 #: src/modules/options/optw_messages.cpp:402
 msgid "Save As..."
 msgstr "Uložit jako..."
@@ -3683,10 +3497,6 @@ msgstr "Zahajuji vypisování seznamu oznamování"
 #, fuzzy
 msgid "Scaling on load (and in user tooltips)"
 msgstr "Zahajuji vypisování seznamu oznamování"
-
-#: src/modules/options/optw_uparser.h:30
-msgid "Scripting Engine"
-msgstr "Skriptovací nástroj"
 
 #: src/modules/options/optw_tray.cpp:48
 msgid "Select message levels to notify"
@@ -3761,7 +3571,6 @@ msgid "Server:"
 msgstr "Server:"
 
 #: src/modules/options/optw_interfacefeatures.cpp:62
-#: src/modules/options/optw_servers.h:151
 msgid "Servers"
 msgstr "Servery"
 
@@ -3900,10 +3709,6 @@ msgstr "Tichý anti-spam (bez upozornění)"
 msgid "Single click"
 msgstr "Jednoduché hodiny"
 
-#: src/modules/options/optw_connection.h:76
-msgid "Socket"
-msgstr "Soket"
-
 #: src/modules/options/optw_ircview.cpp:192
 msgid "SolidLine"
 msgstr ""
@@ -3916,21 +3721,13 @@ msgstr ""
 msgid "Sort windows by name"
 msgstr "Řadit okna podle názvu"
 
-#: src/modules/options/optw_sound.h:33
-msgid "Sound"
-msgstr "Zvuk"
-
-#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60
 msgid "Sound System"
 msgstr "Zvukový systém"
 
 #: src/modules/options/optw_dcc.cpp:335
 msgid "Sound device:"
 msgstr "Zvukové zařízení:"
-
-#: src/modules/options/optw_sound.h:82
-msgid "Sounds"
-msgstr "Zvuky"
 
 #: src/modules/options/optw_logging.cpp:48
 msgid "Strip colors in logs"
@@ -3949,20 +3746,11 @@ msgstr "TIME"
 msgid "Test"
 msgstr "Testovat"
 
-#: src/modules/options/optw_texticons.cpp:80
-#: src/modules/options/optw_messages.h:39
-msgid "Text"
-msgstr "Text"
-
 #: src/modules/options/optw_servers.cpp:167
 #: src/modules/options/optw_servers.cpp:665
 #, fuzzy
 msgid "Text Encoding:"
 msgstr "Kódo&vání textu"
-
-#: src/modules/options/optw_texticons.h:39
-msgid "Text icons"
-msgstr "Textové ikony"
 
 #: src/modules/options/optw_windowlist.cpp:86
 #: src/modules/options/optw_windowlist.cpp:246
@@ -4176,21 +3964,9 @@ msgstr "Dlaždice"
 msgid "Timeout Values"
 msgstr "Prodlevy"
 
-#: src/modules/options/optw_messages.h:75
-msgid "Timestamp"
-msgstr "Měření času"
-
 #: src/modules/options/optw_messages.cpp:151
 msgid "Timestamp format:"
 msgstr "Formát měření času:"
-
-#: src/modules/options/optw_interfacelookglobal.h:101
-msgid "ToolBar Applets"
-msgstr "Aplety Nástrojové lišty"
-
-#: src/modules/options/optw_tools.h:33
-msgid "Tools"
-msgstr "Nástroje"
 
 #: src/modules/options/optw_ircview.cpp:70
 #: src/modules/options/optw_input.cpp:62
@@ -4203,10 +3979,6 @@ msgstr "Nahoře"
 msgid "Track last read text line"
 msgstr "Sledovat poslední přečtený řádek"
 
-#: src/modules/options/optw_interfacelookglobal.h:48
-msgid "Transparency"
-msgstr "Průhlednost"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:106
 #: src/modules/options/optw_interfacelookglobal.cpp:112
 msgid "Transparency blend image:"
@@ -4216,15 +3988,6 @@ msgstr "Obrázek míchaný průhledností:"
 msgid "Transparent"
 msgstr "Průhledné"
 
-#: src/modules/options/optw_tray.h:32
-msgid "Tray icon"
-msgstr "Ikona panelu"
-
-#: src/modules/options/optw_windowlist.h:48
-#, fuzzy
-msgid "Tree Window List"
-msgstr "Seznam oken"
-
 #: src/modules/options/optw_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
 msgstr "Spustit událost pokud lag překročí:"
@@ -4232,10 +3995,6 @@ msgstr "Spustit událost pokud lag překročí:"
 #: src/modules/options/optw_dcc.cpp:249
 msgid "Tweaks"
 msgstr "Vylepšení"
-
-#: src/modules/options/optw_urlhandlers.h:32
-msgid "URL handlers"
-msgstr "URL handlery"
 
 #: src/modules/options/optw_notify.cpp:92
 msgid "USERHOST delay (in seconds)"
@@ -4433,10 +4192,6 @@ msgstr "Uživatelem definovaný prefix a postfix"
 msgid "User-op:"
 msgstr "Uživ. op:"
 
-#: src/modules/options/optw_userlist.h:32
-msgid "Userlist"
-msgstr "Uživatelé"
-
 #: src/modules/options/optw_identity.cpp:697
 #, fuzzy
 msgid "Username"
@@ -4458,10 +4213,6 @@ msgstr "VERSION"
 msgid "Verbose"
 msgstr "Hlasitý"
 
-#: src/modules/options/optw_ircoutput.h:33
-msgid "Verbosity And Output"
-msgstr "Upovídanost a Výstup"
-
 #: src/modules/options/optw_userlist.cpp:137
 msgid "Vertical Alignment:"
 msgstr "Vertikální zarovnání:"
@@ -4471,10 +4222,6 @@ msgstr "Vertikální zarovnání:"
 #: src/modules/options/optw_windowlist.cpp:128
 msgid "Vertical align:"
 msgstr "Vertikální zarovnání:"
-
-#: src/modules/options/optw_dcc.h:128
-msgid "Voice"
-msgstr "Voice"
 
 #: src/modules/options/optw_userlist.cpp:62
 msgid "Voice:"
@@ -4508,19 +4255,6 @@ msgstr "Whois odezvy"
 msgid "Winamp messages ecoding"
 msgstr "Kódování Winamp zpráv"
 
-#: src/modules/options/optw_interfacelookglobal.h:75
-msgid "Window Captions"
-msgstr "Popisky oken"
-
-#: src/modules/options/optw_windowlist.h:34
-msgid "Window List"
-msgstr "Seznam oken"
-
-#: src/modules/options/optw_highlighting.h:57
-#, fuzzy
-msgid "Window List Alert"
-msgstr "Seznam oken"
-
 #: src/modules/options/optw_highlighting.cpp:59
 msgid "Word splitters:"
 msgstr "Rozdělovače slov:"
@@ -4532,10 +4266,6 @@ msgstr "Slova považovaná za spam:"
 #: src/modules/options/optw_highlighting.cpp:57
 msgid "Words to highlight:"
 msgstr "Zvýrazňovat slova:"
-
-#: src/modules/options/optw_interfacelookglobal.h:88
-msgid "Workspace"
-msgstr "Pracovní plocha"
 
 #: src/modules/options/optw_identity.cpp:390
 msgid ""
@@ -4567,166 +4297,21 @@ msgstr "[PREFIX]přezdívka[!uživatel@hostitel][POSTFIX] zpráva"
 msgid "[Unknown Media Type]"
 msgstr "[Neznámý typ média]"
 
-#: src/modules/options/optw_nickserv.h:43
-msgid "authentication,identify"
-msgstr "autentifikace,identifikace"
-
 #: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bajtů/sek"
-
-#: src/modules/options/optw_query.h:32
-msgid "chat"
-msgstr "chat"
-
-#: src/modules/options/optw_servers.h:152
-msgid "connection"
-msgstr "připojení"
-
-#: src/modules/options/optw_proxy.h:55
-msgid "connection,servers"
-msgstr "připojení,servery"
-
-#: src/modules/options/optw_protection.h:35
-msgid "ctcp,flood"
-msgstr "ctcp,zahlcení"
-
-#: src/modules/options/optw_ircoutput.h:35
-msgid "debug"
-msgstr "ladění"
 
 #: src/modules/options/optw_textencoding.cpp:88
 msgid "en"
 msgstr "en"
 
-#: src/modules/options/optw_mediatypes.h:50
-msgid "file,audio,video,programs"
-msgstr "soubor,audio,video,programy"
-
 #: src/modules/options/optw_servers.cpp:1591
 msgid "irc.unknown.net"
 msgstr "irc.neznama.sit"
 
-#: src/modules/options/optw_textencoding.h:35
-msgid "language,encoding,charset,codepage"
-msgstr "jazyk,kódování,znaková sada,kódová stránka"
-
-#: src/modules/options/optw_notify.h:32
-msgid "notify,buddy,buddies,friends"
-msgstr "oznámení,přítel,přátelé,kamarádi"
-
-#: src/modules/options/optw_notify.h:45
-msgid "popup"
-msgstr "popup"
-
-#: src/modules/options/optw_ignore.h:34
-msgid "protection"
-msgstr "ochrana"
-
-#: src/modules/options/optw_logging.h:31
-msgid "save,output"
-msgstr "ukládání,výstup"
-
-#: src/modules/options/optw_uparser.h:31
-msgid "scripting,kvs,debug"
-msgstr "skriptování,kvs,ladění"
-
-#: src/modules/options/optw_texticons.h:41
-msgid "smileys,emoticons"
-msgstr "smajlíky,emotikony"
-
-#: src/modules/options/optw_sound.h:84
-msgid "sound,events"
-msgstr "zvuk,události"
-
-#: src/modules/options/optw_sound.h:49
-msgid "sound,xmms,audio,play,amarok"
-msgstr "zvuk,xmms,audio,přehrávání,amarok"
-
-#: src/modules/options/optw_windowlist.h:36
-#: src/modules/options/optw_windowlist.h:50
-#: src/modules/options/optw_windowlist.h:66
-#: src/modules/options/optw_windowlist.h:81
-#: src/modules/options/optw_windowlist.h:100
-#: src/modules/options/optw_windowlist.h:115
-#: src/modules/options/optw_interfacelookglobal.h:34
-msgid "theme"
-msgstr "motiv"
-
-#: src/modules/options/optw_interfacelookglobal.h:49
-msgid "theme,background"
-msgstr "motiv,pozadí"
-
-#: src/modules/options/optw_messages.h:97
-#: src/modules/options/optw_messages.h:190
-msgid "theme,colors,messages,output"
-msgstr "motiv,barvy,zprávy,výstup"
-
-#: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
-msgid "theme,colors,output"
-msgstr "motiv,barvy,výstup"
-
-#: src/modules/options/optw_input.h:34
-msgid "theme,colors,text"
-msgstr "motiv,barvy,text"
-
-#: src/modules/options/optw_interfacelookglobal.h:76
-#: src/modules/options/optw_interfacelookglobal.h:89
-msgid "theme,mdi"
-msgstr "motiv,mdi"
-
-#: src/modules/options/optw_messages.h:58
-msgid "theme,privmsg,output,format"
-msgstr "motiv,soukromé zprávy,výstup,formát"
-
-#: src/modules/options/optw_interfacelookglobal.h:102
-msgid "theme,toolbar"
-msgstr "motiv,nástrojová lišta"
-
-#: src/modules/options/optw_topiclabel.h:33
-msgid "theme,topic"
-msgstr "motiv,téma"
-
-#: src/modules/options/optw_userlist.h:33
-msgid "theme,userlist,channel"
-msgstr "motiv,seznam přezdívek,kanál"
-
-#: src/modules/options/optw_userlist.h:47
-msgid "theme,userlist,channel,background"
-msgstr "motiv,seznam přezdívek,kanál,pozadí"
-
-#: src/modules/options/optw_userlist.h:68
-msgid "theme,userlist,channel,colors"
-msgstr "motiv,seznam přezdívek,kanál,barvy"
-
-#: src/modules/options/optw_userlist.h:84
-msgid "theme,userlist,channel,grid"
-msgstr "motiv,seznam přezdívek,kanál,mřížka"
-
-#: src/modules/options/optw_lag.h:33
-msgid "time,ping"
-msgstr "čas,ping"
-
-#: src/modules/options/optw_messages.h:79
-msgid "time,timestamp"
-msgstr "čas, měření času"
-
-#: src/modules/options/optw_tray.h:34
-msgid "tray,TRAYICON"
-msgstr ""
-
 #: src/modules/options/optw_texticons.cpp:214
 msgid "unnamed"
 msgstr "nepojmenovaný"
-
-#: src/modules/options/optw_urlhandlers.h:35
-msgid "url,programs"
-msgstr "url,programy"
-
-#: src/modules/options/optw_userlist.h:104
-msgid "userlist,channel"
-msgstr "seznam uživatelů,kanál"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid "within:"
@@ -6072,6 +5657,12 @@ msgstr "během:"
 #~ msgid "Address already in use"
 #~ msgstr "Adresa se již používá"
 
+#~ msgid "Advanced"
+#~ msgstr "Pokročilé"
+
+#~ msgid "Alert/Highlight"
+#~ msgstr "Výstrahy/Zvýraznění"
+
 #~ msgid "Alias"
 #~ msgstr "Alias"
 
@@ -6157,6 +5748,9 @@ msgstr "během:"
 #~ "Another connection is already in progress in the selected IRC context"
 #~ msgstr "Probíhá jiné spojení ve vybraném IRC kontextu"
 
+#~ msgid "Anti-spam"
+#~ msgstr "Anti-spam"
+
 #~ msgid "Application Folders"
 #~ msgstr "Složky aplikace"
 
@@ -6220,6 +5814,9 @@ msgstr "během:"
 #~ msgid "Available user modes:"
 #~ msgstr "Dostupné módy uživatele:"
 
+#~ msgid "Avatar"
+#~ msgstr "Avatar"
+
 #, fuzzy
 #~ msgid "Avatar Handling"
 #~ msgstr "Změna avataru"
@@ -6230,8 +5827,14 @@ msgstr "během:"
 #~ msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 #~ msgstr "Stažení avataru selhalo pro %Q!%Q@%Q a url %Q: %Q"
 
+#~ msgid "Avatars"
+#~ msgstr "Avatary"
+
 #~ msgid "Average hops: ~%d.%d"
 #~ msgstr "Průměrně hopů: ~%d.%d"
+
+#~ msgid "Away"
+#~ msgstr "Pryč"
 
 #~ msgid "Away Indicator"
 #~ msgstr "Pryč indikátor"
@@ -6400,6 +6003,9 @@ msgstr "během:"
 
 #~ msgid "C&ase sensitive"
 #~ msgstr "R&ozlišovat velikost"
+
+#~ msgid "CTCP"
+#~ msgstr "CTCP"
 
 #~ msgid "CTCP ACTION from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 #~ msgstr "CTCP ACTION od %Q [%Q@%Q]: %Q"
@@ -6794,6 +6400,9 @@ msgstr "během:"
 #~ msgid "Changed text encoding to %Q"
 #~ msgstr "Kódování textu změněno na %Q"
 
+#~ msgid "Channel"
+#~ msgstr "Kanál"
+
 #~ msgid "Channel \r!c\r%Q\r was created at %Q"
 #~ msgstr "Kanál \r!c\r%Q\r byl vytvořen v %Q"
 
@@ -6871,6 +6480,9 @@ msgstr "během:"
 
 #~ msgid "Char device"
 #~ msgstr "Znakové zařízení"
+
+#~ msgid "Chat"
+#~ msgstr "Chat"
 
 #~ msgid "Chat with"
 #~ msgstr "Chat s"
@@ -6991,6 +6603,10 @@ msgstr "během:"
 #~ msgid "Classic Taskbar"
 #~ msgstr "Klasická lišta"
 
+#, fuzzy
+#~ msgid "Classic Window List"
+#~ msgstr "Seznam oken"
+
 #~ msgid "Clear"
 #~ msgstr "Smazat"
 
@@ -7017,6 +6633,9 @@ msgstr "během:"
 
 #~ msgid "Code"
 #~ msgstr "Kód"
+
+#~ msgid "Color Set"
+#~ msgstr "Sada barev"
 
 #~ msgid "Color free (no ANSI colors)"
 #~ msgstr "Bez barev (žádné ANSI barvy)"
@@ -7128,6 +6747,9 @@ msgstr "během:"
 
 #~ msgid "Contacting host %s on port %u"
 #~ msgstr "Kontakt hostitele %s na portu %u"
+
+#~ msgid "Contacts"
+#~ msgstr "Kontakty"
 
 #~ msgid "Context"
 #~ msgstr "Kontext"
@@ -7243,6 +6865,9 @@ msgstr "během:"
 
 #~ msgid "D&evoice"
 #~ msgstr "D&evoice"
+
+#~ msgid "DCC"
+#~ msgstr "DCC"
 
 #~ msgid "DCC VOICE support not enabled at compilation time"
 #~ msgstr "DCC VOICE podpora nebyla povolena při kompilaci"
@@ -7477,6 +7102,10 @@ msgstr "během:"
 #~ msgid ""
 #~ "Either the source doesn't exist or the destination can not be created"
 #~ msgstr "Buď neexistuje zdroj, nebo nemůže být vytvořen cíl"
+
+#, fuzzy
+#~ msgid "Emoticon"
+#~ msgstr "oznamování"
 
 #~ msgid "Empty command block for timer '%s', timer not started"
 #~ msgstr "Prázdný příkazový blok pro časovač '%s', časovač nespuštěn"
@@ -7826,11 +7455,17 @@ msgstr "během:"
 #~ msgid "Feature not available"
 #~ msgstr "Funkce není dostupná"
 
+#~ msgid "Features"
+#~ msgstr "Vlastnosti"
+
 #~ msgid "Fifo"
 #~ msgstr "Fifo"
 
 #~ msgid "File I/O error"
 #~ msgstr "Chyba I/O souboru"
+
+#~ msgid "File Transfer"
+#~ msgstr "Přenos souboru"
 
 #~ msgid "File download failed"
 #~ msgstr "Stažení souboru selhalo"
@@ -7884,6 +7519,9 @@ msgstr "během:"
 #~ msgid "Flat"
 #~ msgstr "Plochá"
 
+#~ msgid "Flood Protection"
+#~ msgstr "Ochrana před zahlcením"
+
 #~ msgid "Flooded with messages"
 #~ msgstr "Flooder se zprávami"
 
@@ -7911,6 +7549,9 @@ msgstr "během:"
 
 #~ msgid "Forcibly and completely disable the notifier"
 #~ msgstr "Nuceně a kompletně vypnout oznamovač"
+
+#~ msgid "Foreground"
+#~ msgstr "Popředí"
 
 #~ msgid "Forward"
 #~ msgstr "Vpřed"
@@ -8033,6 +7674,9 @@ msgstr "během:"
 #~ msgid "Garbage string after the expression in 'do' command: ignored"
 #~ msgstr "Řetězec s odpadem za výrazem v příkazu 'do' : ignorováno"
 
+#~ msgid "General options"
+#~ msgstr "Hlavní možnosti"
+
 #~ msgid "Generic"
 #~ msgstr "Obecný"
 
@@ -8146,6 +7790,9 @@ msgstr "během:"
 #~ msgid "High activity"
 #~ msgstr "Vysoká aktivita"
 
+#~ msgid "Highlight"
+#~ msgstr "Zvýraznění"
+
 #~ msgid "Highlight as"
 #~ msgstr "Zvýrazňovat jako"
 
@@ -8195,6 +7842,9 @@ msgstr "během:"
 #~ msgid "IP address %d: %s"
 #~ msgstr "IP adresa %d: %s"
 
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
 #~ msgid "IRC Channel related actions"
 #~ msgstr "Akce příbuzné IRC kanálu"
 
@@ -8225,6 +7875,9 @@ msgstr "během:"
 #~ msgid "Id"
 #~ msgstr "Id"
 
+#~ msgid "Ident Service"
+#~ msgstr "Ident služba"
+
 #~ msgid "Ident message"
 #~ msgstr "Ident zpráva"
 
@@ -8242,6 +7895,9 @@ msgstr "během:"
 
 #~ msgid "Ig&nore"
 #~ msgstr "Ig&norování"
+
+#~ msgid "Ignore"
+#~ msgstr "Ignorování"
 
 #~ msgid "Ignore as"
 #~ msgstr "Ignorovat jako"
@@ -8308,6 +7964,9 @@ msgstr "během:"
 #~ msgid "Initiating startup sequence..."
 #~ msgstr "Inicializuje se spouštěcí sekvence..."
 
+#~ msgid "Input"
+#~ msgstr "Vstup"
+
 #~ msgid "Input History Disabled"
 #~ msgstr "Vstupní historie vypnuta"
 
@@ -8332,6 +7991,9 @@ msgstr "během:"
 
 #~ msgid "Integer parameter expected"
 #~ msgstr "Očekáván parametr typu integer"
+
+#~ msgid "Interface"
+#~ msgstr "Rozhraní"
 
 #~ msgid "Internal call stack:"
 #~ msgstr "Interní volání zásobníku:"
@@ -8755,6 +8417,12 @@ msgstr "během:"
 #~ msgid "Label: %Q"
 #~ msgstr "Návěstí: %Q"
 
+#~ msgid "Labels"
+#~ msgstr "Návěstí"
+
+#~ msgid "Lag"
+#~ msgstr "Lag"
+
 #~ msgid "Lag Indicator"
 #~ msgstr "Lag indikátor"
 
@@ -8781,6 +8449,9 @@ msgstr "během:"
 
 #~ msgid "Lag: ?.??"
 #~ msgstr "Lag: ?.??"
+
+#~ msgid "Language"
+#~ msgstr "Jazyk"
 
 #~ msgid "Large (32x32)"
 #~ msgstr "Velké (32x32)"
@@ -8936,6 +8607,9 @@ msgstr "během:"
 #~ msgid "Log To..."
 #~ msgstr "Logovat do..."
 
+#~ msgid "Logging"
+#~ msgstr "Logování"
+
 #~ msgid "Logging in as %Q!%Q :%Q"
 #~ msgstr "Přihlášení jako %Q!%Q :%Q"
 
@@ -8950,6 +8624,9 @@ msgstr "během:"
 
 #~ msgid "Login operations completed"
 #~ msgstr "Přihlašovací operace dokončeny"
+
+#~ msgid "Look"
+#~ msgstr "Vzhled"
 
 #~ msgid "Looking up host %Q..."
 #~ msgstr "Zjišťuje se hostitel %Q..."
@@ -8997,6 +8674,10 @@ msgstr "během:"
 #~ msgid "Mark Line:"
 #~ msgstr "Označ řádek:"
 
+#, fuzzy
+#~ msgid "Marker"
+#~ msgstr "Parser"
+
 #~ msgid "Mask"
 #~ msgstr "Maska"
 
@@ -9042,11 +8723,20 @@ msgstr "během:"
 #~ msgid "Maximum number of rows:"
 #~ msgstr "Maximální počet řádků:"
 
+#~ msgid "Media Types"
+#~ msgstr "Typy médií"
+
 #~ msgid "Media type of file %s matched to '%s' but no commandline specified"
 #~ msgstr "Typ multimédia %s souhlasí s '%s' ale namá určen příkazový řádek"
 
 #~ msgid "Medium activity"
 #~ msgstr "Střední aktivita"
+
+#~ msgid "Message Colors"
+#~ msgstr "Barvy zpráv"
+
+#~ msgid "Message Style"
+#~ msgstr "Styl zprávy"
 
 #~ msgid "Message Type"
 #~ msgstr "Typ zprávy"
@@ -9403,6 +9093,9 @@ msgstr "během:"
 #~ msgid "Nickname 2:"
 #~ msgstr "Přezdívka 2:"
 
+#~ msgid "Nickname Grid"
+#~ msgstr "Mřížka přezdívky"
+
 #~ msgid "Nickname problem"
 #~ msgstr "Problém přezdívky"
 
@@ -9734,6 +9427,9 @@ msgstr "během:"
 
 #~ msgid "Nothing to write"
 #~ msgstr "Není co zapisovat"
+
+#~ msgid "Notifier"
+#~ msgstr "Oznamovač"
 
 #~ msgid "Notify"
 #~ msgstr "Oznamování"
@@ -10087,6 +9783,9 @@ msgstr "během:"
 #~ msgid "Outgoing traffic"
 #~ msgstr "Odchozí provoz"
 
+#~ msgid "Output"
+#~ msgstr "Výstup"
+
 #, fuzzy
 #~ msgid "Output Style"
 #~ msgstr "Výstup"
@@ -10315,6 +10014,10 @@ msgstr "během:"
 #~ msgid "Processing list: %Q"
 #~ msgstr "Zpracovává se seznam: %Q"
 
+#, fuzzy
+#~ msgid "Profiles"
+#~ msgstr "Profil"
+
 #~ msgid "Properties class: %c%s%c"
 #~ msgstr "Třída vlastností: %c%s%c"
 
@@ -10342,8 +10045,14 @@ msgstr "během:"
 #~ msgid "Property: %c%s%c, type: %s"
 #~ msgstr "Vlastnost: %c%s%c, typ: %s"
 
+#~ msgid "Protection"
+#~ msgstr "Ochrana"
+
 #~ msgid "Proxy %s has a nickname: %s"
 #~ msgstr "Proxy %s má přezdívku: %s"
+
+#~ msgid "Proxy Hosts"
+#~ msgstr "Proxy hostitelé"
 
 #~ msgid "Proxy connection"
 #~ msgstr "Proxy spojení"
@@ -10413,6 +10122,9 @@ msgstr "během:"
 
 #~ msgid "Put here a short description of your action"
 #~ msgstr "Zde vložte krátký popis vaší akce"
+
+#~ msgid "Query"
+#~ msgstr "Query"
 
 #~ msgid "Query Targets"
 #~ msgstr "Query cíle"
@@ -10668,6 +10380,9 @@ msgstr "během:"
 #~ msgid "Right operand of operator %s evaluated to '%s' (not a number)"
 #~ msgstr "Pravý operand operátoru %s vyhodnocen na '%s' (není číslo)"
 
+#~ msgid "SSL"
+#~ msgstr "SSL"
+
 #~ msgid "SSL message"
 #~ msgstr "SSL zpráva"
 
@@ -10725,6 +10440,9 @@ msgstr "během:"
 
 #~ msgid "Scripting"
 #~ msgstr "Skriptování"
+
+#~ msgid "Scripting Engine"
+#~ msgstr "Skriptovací nástroj"
 
 #~ msgid "Scripting related actions"
 #~ msgstr "Akce příbuzné skriptování"
@@ -11065,6 +10783,9 @@ msgstr "během:"
 #~ msgid "Smart"
 #~ msgstr "Smart"
 
+#~ msgid "Socket"
+#~ msgstr "Soket"
+
 #~ msgid "Socket Spy [IRC Context %u]"
 #~ msgstr "Soket špión [IRC kontext %u]"
 
@@ -11105,6 +10826,9 @@ msgstr "během:"
 #~ msgid "Sorting"
 #~ msgstr "Třídění"
 
+#~ msgid "Sound"
+#~ msgstr "Zvuk"
+
 #~ msgid "Sound file '%Q' not found"
 #~ msgstr "Zvukový soubor '%Q' nenalezen"
 
@@ -11113,6 +10837,9 @@ msgstr "během:"
 
 #~ msgid "Sound system detected to: %s"
 #~ msgstr "Zvukový systém detekován jako: %s"
+
+#~ msgid "Sounds"
+#~ msgstr "Zvuky"
 
 #~ msgid ""
 #~ "Spam notice from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%Q\")"
@@ -11289,6 +11016,12 @@ msgstr "během:"
 
 #~ msgid "Terminal emulator"
 #~ msgstr "Emulátor terminálu"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "Text icons"
+#~ msgstr "Textové ikony"
 
 #~ msgid "Text:"
 #~ msgstr "Text:"
@@ -12174,6 +11907,9 @@ msgstr "během:"
 #~ "Vynecháno jméno časovače, ale žádný současný časovač není (toto není "
 #~ "zpětné volání časovače)"
 
+#~ msgid "Timestamp"
+#~ msgstr "Měření času"
+
 #~ msgid "Timestamp color"
 #~ msgstr "Barva měření času"
 
@@ -12187,6 +11923,9 @@ msgstr "během:"
 #~ "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 #~ msgstr "Příliš nezpracovaných příchozích dat (opuštěný soket neřízený ?)"
 
+#~ msgid "ToolBar Applets"
+#~ msgstr "Aplety Nástrojové lišty"
+
 #~ msgid "ToolBar Export"
 #~ msgstr "Export Nástrojové lišty"
 
@@ -12195,6 +11934,9 @@ msgstr "během:"
 
 #~ msgid "Toolbars"
 #~ msgstr "Nástrojové lišty"
+
+#~ msgid "Tools"
+#~ msgstr "Nástroje"
 
 #~ msgid "Topic"
 #~ msgstr "Téma"
@@ -12247,11 +11989,21 @@ msgstr "během:"
 #~ msgid "Trailing garbage ignored after operator '--'"
 #~ msgstr "Ignorován odpad za operátorem '--'"
 
+#~ msgid "Transparency"
+#~ msgstr "Průhlednost"
+
 #~ msgid "Transport"
 #~ msgstr "Transport"
 
+#~ msgid "Tray icon"
+#~ msgstr "Ikona panelu"
+
 #~ msgid "Tree Taskbar"
 #~ msgstr "Stromová lišta"
+
+#, fuzzy
+#~ msgid "Tree Window List"
+#~ msgstr "Seznam oken"
 
 #~ msgid "Try reconnecting with caching disabled"
 #~ msgstr "Zkuste znovu připojení se zakázaným cache"
@@ -12279,6 +12031,9 @@ msgstr "během:"
 
 #~ msgid "URL foreground"
 #~ msgstr "URL popředí"
+
+#~ msgid "URL handlers"
+#~ msgstr "URL handlery"
 
 #~ msgid "USERHOST info: %Q"
 #~ msgstr "USERHOST info: %Q"
@@ -12848,6 +12603,9 @@ msgstr "během:"
 #~ msgstr ""
 #~ "Uživatelé-operátoři NEBO Auditorium: /NAMES a /WHO zobrazí pouze operátory"
 
+#~ msgid "Userlist"
+#~ msgstr "Uživatelé"
+
 #~ msgid "Userop mode change"
 #~ msgstr "Změna uživatel-op módu"
 
@@ -12917,6 +12675,9 @@ msgstr "během:"
 #~ msgid "Verbose/Debug"
 #~ msgstr "Upovídaný/Ladění"
 
+#~ msgid "Verbosity And Output"
+#~ msgstr "Upovídanost a Výstup"
+
 #~ msgid "Version:"
 #~ msgstr "Verze:"
 
@@ -12939,6 +12700,9 @@ msgstr "během:"
 #~ msgstr ""
 #~ "Zobrazený krátký popis pro tuto akci.<br>Tento řetězec bude zobrazen "
 #~ "uživateli, proto je dobré použít zde funkci $tr()"
+
+#~ msgid "Voice"
+#~ msgstr "Voice"
 
 #~ msgid "Voice Chat"
 #~ msgstr "Hlasový Chat"
@@ -13038,6 +12802,16 @@ msgstr "během:"
 #~ msgid "Window '%s' not found, using current one"
 #~ msgstr "Okno '%s' nenalezeno, použito jedno současné"
 
+#~ msgid "Window Captions"
+#~ msgstr "Popisky oken"
+
+#~ msgid "Window List"
+#~ msgstr "Seznam oken"
+
+#, fuzzy
+#~ msgid "Window List Alert"
+#~ msgstr "Seznam oken"
+
 #~ msgid "Window button '%Q' not found"
 #~ msgstr "Tlačítko okna '%Q' nenalezeno"
 
@@ -13082,6 +12856,9 @@ msgstr "během:"
 
 #~ msgid "Word to Find"
 #~ msgstr "Hledané slovo"
+
+#~ msgid "Workspace"
+#~ msgstr "Pracovní plocha"
 
 #~ msgid "Write Failed - KVIrc"
 #~ msgstr "Zápis selhal - KVIrc"
@@ -13405,6 +13182,9 @@ msgstr "během:"
 #~ msgid "are talking"
 #~ msgstr "mluví"
 
+#~ msgid "authentication,identify"
+#~ msgstr "autentifikace,identifikace"
+
 #~ msgid "autojoining"
 #~ msgstr "autopříchod"
 
@@ -13447,12 +13227,27 @@ msgstr "během:"
 #~ msgid "channels"
 #~ msgstr "kanálů"
 
+#~ msgid "chat"
+#~ msgstr "chat"
+
 #, fuzzy
 #~ msgid "commandline"
 #~ msgstr "Nebyl určen příkazový řádek"
 
+#~ msgid "connection"
+#~ msgstr "připojení"
+
+#~ msgid "connection,servers"
+#~ msgstr "připojení,servery"
+
+#~ msgid "ctcp,flood"
+#~ msgstr "ctcp,zahlcení"
+
 #~ msgid "d: Obscure 'DEBUG' flag"
 #~ msgstr "d: Skrytý 'DEBUG' flag"
+
+#~ msgid "debug"
+#~ msgstr "ladění"
 
 #~ msgid "default"
 #~ msgstr "výchozí"
@@ -13468,6 +13263,9 @@ msgstr "během:"
 
 #~ msgid "f: Recipient for full server notices"
 #~ msgstr "f: Příjemce pro plná oznámení serveru"
+
+#~ msgid "file,audio,video,programs"
+#~ msgstr "soubor,audio,video,programy"
 
 #~ msgid "found empty string where type '%s' was expected"
 #~ msgstr "nalezen prázdný řetězec, byl očekáván typ '%s'"
@@ -13555,6 +13353,9 @@ msgstr "během:"
 #~ msgid "l (Connections)"
 #~ msgstr "l (Spojení)"
 
+#~ msgid "language,encoding,charset,codepage"
+#~ msgstr "jazyk,kódování,znaková sada,kódová stránka"
+
 #~ msgid "line %d, near character %d"
 #~ msgstr "řádek %d, poblíž znaku %d"
 
@@ -13586,6 +13387,9 @@ msgstr "během:"
 #~ msgid "none"
 #~ msgstr "žádný"
 
+#~ msgid "notify,buddy,buddies,friends"
+#~ msgstr "oznámení,přítel,přátelé,kamarádi"
+
 #~ msgid "o (Operators)"
 #~ msgstr "o (Operátoři)"
 
@@ -13607,11 +13411,17 @@ msgstr "během:"
 #~ msgid "pix '%Q' doesn't exists"
 #~ msgstr "pix '%Q' neexistuje"
 
+#~ msgid "popup"
+#~ msgstr "popup"
+
 #~ msgid "possible watch list desync"
 #~ msgstr "možná desynchronizace watch seznamu"
 
 #~ msgid "private"
 #~ msgstr "privátní"
+
+#~ msgid "protection"
+#~ msgstr "ochrana"
 
 #~ msgid "proxy host"
 #~ msgstr "proxy hostitel"
@@ -13653,14 +13463,74 @@ msgstr "během:"
 #~ msgid "said something recently"
 #~ msgstr "řekl něco naposledy"
 
+#~ msgid "save,output"
+#~ msgstr "ukládání,výstup"
+
+#~ msgid "scripting,kvs,debug"
+#~ msgstr "skriptování,kvs,ladění"
+
 #~ msgid "secure connection"
 #~ msgstr "zabezpečené spojení"
+
+#~ msgid "smileys,emoticons"
+#~ msgstr "smajlíky,emotikony"
+
+#~ msgid "sound,events"
+#~ msgstr "zvuk,události"
+
+#~ msgid "sound,xmms,audio,play,amarok"
+#~ msgstr "zvuk,xmms,audio,přehrávání,amarok"
 
 #~ msgid "t (Connection stats ?)"
 #~ msgstr "t (Statistiky spojení ?)"
 
 #~ msgid "the toolbar cannot be a parent-widget!"
 #~ msgstr "Nástrojová lišta nemůže být rodičovský widget!"
+
+#~ msgid "theme"
+#~ msgstr "motiv"
+
+#~ msgid "theme,background"
+#~ msgstr "motiv,pozadí"
+
+#~ msgid "theme,colors,messages,output"
+#~ msgstr "motiv,barvy,zprávy,výstup"
+
+#~ msgid "theme,colors,output"
+#~ msgstr "motiv,barvy,výstup"
+
+#~ msgid "theme,colors,text"
+#~ msgstr "motiv,barvy,text"
+
+#~ msgid "theme,mdi"
+#~ msgstr "motiv,mdi"
+
+#~ msgid "theme,privmsg,output,format"
+#~ msgstr "motiv,soukromé zprávy,výstup,formát"
+
+#~ msgid "theme,toolbar"
+#~ msgstr "motiv,nástrojová lišta"
+
+#~ msgid "theme,topic"
+#~ msgstr "motiv,téma"
+
+#~ msgid "theme,userlist,channel"
+#~ msgstr "motiv,seznam přezdívek,kanál"
+
+#~ msgid "theme,userlist,channel,background"
+#~ msgstr "motiv,seznam přezdívek,kanál,pozadí"
+
+#~ msgid "theme,userlist,channel,colors"
+#~ msgstr "motiv,seznam přezdívek,kanál,barvy"
+
+#~ msgid "theme,userlist,channel,grid"
+#~ msgstr "motiv,seznam přezdívek,kanál,mřížka"
+
+#~ msgid "time,ping"
+#~ msgstr "čas,ping"
+
+#~ msgid "time,timestamp"
+#~ msgstr "čas, měření času"
 
 #~ msgid "tray,dockwidget"
 #~ msgstr "lišta,dokovací widget"
@@ -13674,6 +13544,9 @@ msgstr "během:"
 #~ msgid "unmatched watch list entry"
 #~ msgstr "neexistující záznam watch seznamu"
 
+#~ msgid "url,programs"
+#~ msgstr "url,programy"
+
 #~ msgid "user total"
 #~ msgstr "uživatel celkem"
 
@@ -13682,6 +13555,9 @@ msgstr "během:"
 
 #~ msgid "user-operators"
 #~ msgstr "uživatel-operátoři"
+
+#~ msgid "userlist,channel"
+#~ msgstr "seznam uživatelů,kanál"
 
 #~ msgid "users total"
 #~ msgstr "uživatelů celkem"

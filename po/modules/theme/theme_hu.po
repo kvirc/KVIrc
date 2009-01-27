@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2008-03-03 10:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -41,10 +41,6 @@ msgstr "Készítő"
 #: src/modules/theme/libkvitheme.cpp:109
 msgid "Choose a file to save the screenshot to"
 msgstr "Add meg a fájlt, ahova a képernyőképet mentsem"
-
-#: src/modules/theme/managementdialog.cpp:194
-msgid "Close"
-msgstr ""
 
 #: src/modules/theme/themefunctions.cpp:116
 #: src/modules/theme/themefunctions.cpp:313
@@ -237,11 +233,6 @@ msgstr "Csomag Neve:"
 msgid "Package Path"
 msgstr "Csomag Útvonala"
 
-#: src/modules/theme/packthemedialog.cpp:470
-#, fuzzy
-msgid "Package saved succesfully"
-msgstr "A kinézet sikeresen mentve "
-
 #: src/modules/theme/packthemedialog.cpp:447
 #: src/modules/theme/packthemedialog.cpp:459
 msgid "Packaging failed"
@@ -411,3 +402,7 @@ msgstr "A neved"
 #: src/modules/theme/managementdialog.cpp:86
 msgid "by"
 msgstr "-"
+
+#, fuzzy
+#~ msgid "Package saved succesfully"
+#~ msgstr "A kinézet sikeresen mentve "

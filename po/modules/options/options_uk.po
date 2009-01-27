@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 01:08+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -1591,12 +1591,6 @@ msgstr "Профіль"
 msgid "Add Rule"
 msgstr "Додати правило"
 
-#: src/modules/options/optw_connection.h:45 src/modules/options/optw_dcc.h:58
-#: src/modules/options/optw_dcc.h:102 src/modules/options/optw_channel.h:64
-#: src/modules/options/optw_irc.h:57 src/modules/options/optw_identity.h:203
-msgid "Advanced"
-msgstr "Додатково"
-
 #: src/modules/options/optw_notify.cpp:60
 #: src/modules/options/optw_notify.cpp:125
 msgid "Advanced configuration"
@@ -1651,10 +1645,6 @@ msgstr "Попереджати при одержанні особистих по
 msgid "Alert level:"
 msgstr "Рівень попереджень:"
 
-#: src/modules/options/optw_highlighting.h:30
-msgid "Alert/Highlight"
-msgstr "Попередження/Підсвічування"
-
 #: src/modules/options/optw_ctcpfloodprotection.cpp:86
 msgid "Allow up to:"
 msgstr "Допускати до:"
@@ -1700,10 +1690,6 @@ msgstr "Завжди відкривати привати згорнутими"
 #: src/modules/options/optw_dcc.cpp:194
 msgid "Always open transfer window as minimized"
 msgstr "Завжди відкривати вікно передач файлів мінімізованим"
-
-#: src/modules/options/optw_antispam.h:30
-msgid "Anti-spam"
-msgstr "Антіспам"
 
 #: src/modules/options/optw_ctcp.cpp:53
 msgid "Append to SOURCE reply:"
@@ -1758,10 +1744,6 @@ msgstr "Автоматично резюмувати при авто-прийом
 msgid "Automatically unload unused modules"
 msgstr "Автоматично вивантажувати невикористовувані модулі"
 
-#: src/modules/options/optw_identity.h:178
-msgid "Avatar"
-msgstr "Аватар"
-
 #: src/modules/options/optw_identity.cpp:120
 msgid "Avatar Download - KVIrc"
 msgstr "Завантаження аватара - KVIrc"
@@ -1778,14 +1760,6 @@ msgstr "Аватар занадто великий - KVIrc"
 msgid "Avatar offer timeout:"
 msgstr "Таймаут пропозиції аватара:"
 
-#: src/modules/options/optw_avatar.h:32
-msgid "Avatars"
-msgstr "Аватари"
-
-#: src/modules/options/optw_away.h:30
-msgid "Away"
-msgstr "Відійшов"
-
 #: src/modules/options/optw_away.cpp:43
 msgid "Away Nickname"
 msgstr "Нік у режимі \"Відійшов\""
@@ -1796,8 +1770,6 @@ msgstr "Відійшов:"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_interfacelookglobal.cpp:198
-#: src/modules/options/optw_windowlist.h:79
-#: src/modules/options/optw_userlist.h:46
 msgid "Background"
 msgstr "Тло"
 
@@ -1870,10 +1842,6 @@ msgstr "Баг-совместимость"
 msgid "CLIENTINFO"
 msgstr "CLIENTINFO"
 
-#: src/modules/options/optw_ctcp.h:30
-msgid "CTCP"
-msgstr "CTCP"
-
 #: src/modules/options/optw_ctcp.cpp:47
 msgid "CTCP Replies"
 msgstr "CTCP відповіді"
@@ -1922,10 +1890,6 @@ msgstr "Повідомлення ChanServ і NickServ"
 msgid "Change nickname on away"
 msgstr "Змінювати Нік"
 
-#: src/modules/options/optw_channel.h:36
-msgid "Channel"
-msgstr "Канал"
-
 #: src/modules/options/optw_userlist.cpp:59
 msgid "Channel admin:"
 msgstr "Адміністратор каналу:"
@@ -1942,10 +1906,6 @@ msgstr "Вікна каналів"
 #: src/modules/options/optw_servers.cpp:779
 msgid "Channels to join automatically upon connect:"
 msgstr "Автоматично входити на канали при підключенні:"
-
-#: src/modules/options/optw_dcc.h:115
-msgid "Chat"
-msgstr "Чат"
 
 #: src/modules/options/optw_notify.cpp:65
 msgid "Check USERHOST for online users"
@@ -1979,10 +1939,6 @@ msgstr "Виберіть файл картинки - KVIrc"
 msgid "Choose..."
 msgstr "Вибрати..."
 
-#: src/modules/options/optw_windowlist.h:112
-msgid "Classic Window List"
-msgstr ""
-
 #: src/modules/options/optw_servers.cpp:1458
 msgid "Clear List"
 msgstr "Очистити список"
@@ -1998,10 +1954,6 @@ msgstr "Закрити цей діалог, застосувавши всі зм
 #: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Закрити цей діалог, забувши про всі зміни."
-
-#: src/modules/options/optw_messages.h:189
-msgid "Color Set"
-msgstr "Набір квітів"
 
 #: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
@@ -2038,7 +1990,6 @@ msgid "Connect to this server at startup"
 msgstr "Підключатися до цього сервера при старті"
 
 #: src/modules/options/optw_servers.cpp:769
-#: src/modules/options/optw_connection.h:32
 msgid "Connection"
 msgstr "З'єднання"
 
@@ -2050,10 +2001,6 @@ msgstr "Вікна терміналів"
 #: src/modules/options/optw_logging.cpp:44
 msgid "Console windows"
 msgstr "Вікна терміналів"
-
-#: src/modules/options/optw_notify.h:30
-msgid "Contacts"
-msgstr "Контакти"
 
 #: src/modules/options/optw_input.cpp:43
 msgid "Control char color"
@@ -2075,10 +2022,6 @@ msgstr "Кольори курсору"
 #, c-format
 msgid "Custom nickname (%%nick%% means a current nick):"
 msgstr "Іншої Нік( %%nick%% означає поточний Нік):"
-
-#: src/modules/options/optw_dcc.h:30
-msgid "DCC"
-msgstr "DCC"
 
 #: src/modules/options/optw_logging.cpp:43
 msgid "DCC Chat windows"
@@ -2250,10 +2193,6 @@ msgstr "Профіль"
 msgid "Edit Rule"
 msgstr "Редагувати правило"
 
-#: src/modules/options/optw_texticons.cpp:81
-msgid "Emoticon"
-msgstr ""
-
 #: src/modules/options/optw_antispam.cpp:39
 msgid "Enable Anti-spam For"
 msgstr "Включити антіспам для"
@@ -2396,19 +2335,9 @@ msgstr ""
 msgid "Failed to start the download"
 msgstr "Не вдалося запустити завантаження"
 
-#: src/modules/options/optw_windowlist.h:98
-#: src/modules/options/optw_userlist.h:103
-#: src/modules/options/optw_ircview.h:70
-msgid "Features"
-msgstr "Можливості"
-
 #: src/modules/options/optw_identity.cpp:376
 msgid "Female"
 msgstr "Жіночий"
-
-#: src/modules/options/optw_dcc.h:74
-msgid "File Transfer"
-msgstr "Передачі файлів"
 
 #: src/modules/options/optw_mediatypes.cpp:100
 msgid "File pattern:"
@@ -2425,10 +2354,6 @@ msgstr "Подсвечивати системну панель завдань і
 #: src/modules/options/optw_notify.cpp:51
 msgid "Flash window when users are going online"
 msgstr "Подсвечивать вікно коли користувачі з'являються в онлайн"
-
-#: src/modules/options/optw_ctcpfloodprotection.h:30
-msgid "Flood Protection"
-msgstr "Захист від флуда"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
@@ -2459,11 +2384,6 @@ msgstr "Форсувати негайний вихід"
 msgid "Force language:"
 msgstr "Примусово вказати мова програми за замовчуванням:"
 
-#: src/modules/options/optw_windowlist.h:64
-#: src/modules/options/optw_userlist.h:67
-msgid "Foreground"
-msgstr "Передній план"
-
 #: src/modules/options/optw_topiclabel.cpp:37
 #: src/modules/options/optw_input.cpp:40
 msgid "Foreground color"
@@ -2478,20 +2398,12 @@ msgid "Gender:"
 msgstr "Стать:"
 
 #: src/modules/options/optw_servers.cpp:213
-#: src/modules/options/optw_messages.cpp:71 src/modules/options/optw_dcc.h:45
-#: src/modules/options/optw_dcc.h:88
-#: src/modules/options/optw_interfacelookglobal.h:33
-#: src/modules/options/optw_channel.h:52 src/modules/options/optw_irc.h:43
-#: src/modules/options/optw_identity.h:154
+#: src/modules/options/optw_messages.cpp:71
 msgid "General"
 msgstr "Загальні"
 
 #: src/modules/options/dialog.cpp:114
 msgid "General Preferences"
-msgstr "Загальні настроювання"
-
-#: src/modules/options/optw_generalopt.h:30
-msgid "General options"
 msgstr "Загальні настроювання"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:44
@@ -2560,10 +2472,6 @@ msgstr "Сховати кнопки панелі інструментів уве
 msgid "Highest port:"
 msgstr "Верхня межа:"
 
-#: src/modules/options/optw_highlighting.h:44
-msgid "Highlight"
-msgstr "Підсвічування"
-
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight messages containing my nickname"
 msgstr "Подсвечувати повідомлення утримуючі мій Нік"
@@ -2609,10 +2517,6 @@ msgstr "Обробляти IPv4 як частина простору імен IP
 msgid "IPv6 Settings"
 msgstr "Властивості IPv6"
 
-#: src/modules/options/optw_irc.h:30
-msgid "IRC"
-msgstr "IRC"
-
 #: src/modules/options/optw_userlist.cpp:57
 #, fuzzy
 msgid "IRC Op:"
@@ -2630,10 +2534,6 @@ msgstr "Іконка"
 msgid "Id:"
 msgstr "Id:"
 
-#: src/modules/options/optw_connection.h:91
-msgid "Ident Service"
-msgstr "Сервіс ідентифікації"
-
 #: src/modules/options/optw_connection.cpp:222
 msgid "Ident username:"
 msgstr "Ідентифікаційне ім'я:"
@@ -2646,13 +2546,8 @@ msgstr "Команда ідентифікації"
 
 #: src/modules/options/optw_servers.cpp:557
 #: src/modules/options/optw_interfacefeatures.cpp:61
-#: src/modules/options/optw_identity.h:138
 msgid "Identity"
 msgstr "Ідентифікація"
-
-#: src/modules/options/optw_ignore.h:32
-msgid "Ignore"
-msgstr "Ігнор"
 
 #: src/modules/options/optw_uparser.cpp:47
 msgid "Ignore module versions (dangerous)"
@@ -2701,14 +2596,6 @@ msgstr "Неактивний текст (первинний)"
 #: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Text (Secondary)"
 msgstr "Неактивний текст (вторинний)"
-
-#: src/modules/options/optw_input.h:33 src/modules/options/optw_input.h:51
-msgid "Input"
-msgstr "Уведення"
-
-#: src/modules/options/optw_interfacefeatures.h:32
-msgid "Interface"
-msgstr "Інтерфейс"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
@@ -2771,21 +2658,9 @@ msgstr "Зберігати привати відкритими"
 msgid "Kill broken timers"
 msgstr "Убити биті таймери"
 
-#: src/modules/options/optw_topiclabel.h:32
-msgid "Labels"
-msgstr "Напису"
-
-#: src/modules/options/optw_lag.h:31
-msgid "Lag"
-msgstr "Затримка"
-
 #: src/modules/options/optw_lag.cpp:44
 msgid "Lag meter heartbeat:"
 msgstr "Інтервал виміру затримки:"
-
-#: src/modules/options/optw_textencoding.h:32
-msgid "Language"
-msgstr "Мова"
 
 #: src/modules/options/optw_identity.cpp:394
 msgid "Languages:"
@@ -2854,14 +2729,6 @@ msgstr "Запам'ятовувати канали, на які ви заход�
 msgid "Log this"
 msgstr "Журналювати"
 
-#: src/modules/options/optw_logging.h:30
-msgid "Logging"
-msgstr "Логірування"
-
-#: src/modules/options/optw_ircview.h:50
-msgid "Look"
-msgstr "Вид"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:199
 msgid "Low-Contrast Foreground"
 msgstr "Низький-контрастний передній план"
@@ -2893,11 +2760,6 @@ msgid ""
 msgstr ""
 "Безліч настроювань мають спливаючі підказки, які з'являються, коли ви "
 "затримуєте курсор миші на заголовку."
-
-#: src/modules/options/optw_ircview.h:84
-#, fuzzy
-msgid "Marker"
-msgstr "Розділова лінія:"
 
 #: src/modules/options/optw_ircview.cpp:179
 #, fuzzy
@@ -2950,21 +2812,9 @@ msgstr "Був кікнут"
 msgid "Media Player"
 msgstr "Мультімедіа програвач"
 
-#: src/modules/options/optw_mediatypes.h:48
-msgid "Media Types"
-msgstr "Медіа типи"
-
-#: src/modules/options/optw_messages.h:96
-msgid "Message Colors"
-msgstr "Кольори повідомлень"
-
 #: src/modules/options/optw_nickserv.cpp:76
 msgid "Message Regexp"
 msgstr "Повідомлення у вигляді регулярного вираження"
-
-#: src/modules/options/optw_messages.h:54
-msgid "Message Style"
-msgstr "Стиль повідомлень"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Mid-Contrast Foreground"
@@ -3108,7 +2958,6 @@ msgid "Nick completion postfix string"
 msgstr "Закінчення при завершенні ніка"
 
 #: src/modules/options/optw_servers.cpp:335
-#: src/modules/options/optw_nickserv.h:41
 msgid "NickServ"
 msgstr "NickServ"
 
@@ -3136,10 +2985,6 @@ msgstr "Нік"
 #: src/modules/options/optw_userlist.cpp:54
 msgid "Nickname Colors"
 msgstr "Кольори ніків"
-
-#: src/modules/options/optw_userlist.h:83
-msgid "Nickname Grid"
-msgstr "Таблиця ніків"
 
 #: src/modules/options/optw_identity.cpp:60
 msgid "Nickname alternatives"
@@ -3175,10 +3020,6 @@ msgstr "Нормально"
 #: src/modules/options/optw_userlist.cpp:127
 msgid "Normal:"
 msgstr "Нормальний:"
-
-#: src/modules/options/optw_notify.h:44
-msgid "Notifier"
-msgstr "Оповіщувач"
 
 #: src/modules/options/optw_notify.cpp:137
 msgid "Notifier window opacity while active (mouseover)"
@@ -3306,10 +3147,6 @@ msgstr "Додаткова інформація:"
 #: src/modules/options/optw_connection.cpp:150
 msgid "Outgoing data queue flush timeout:"
 msgstr "Таймаут скидання вихідних даних:"
-
-#: src/modules/options/optw_ircview.h:36
-msgid "Output"
-msgstr "Висновок"
 
 #: src/modules/options/optw_connection.cpp:198
 #, fuzzy
@@ -3490,11 +3327,6 @@ msgstr "Профіль"
 msgid "Profile Name:"
 msgstr "Профіль"
 
-#: src/modules/options/optw_identity.h:228
-#, fuzzy
-msgid "Profiles"
-msgstr "Профіль"
-
 #: src/modules/options/optw_windowlist.cpp:96
 #: src/modules/options/optw_windowlist.cpp:254
 msgid "Progress bar color:"
@@ -3504,10 +3336,6 @@ msgstr "Кольори смуги прогресу:"
 #: src/modules/options/optw_servers.cpp:497
 msgid "Properties"
 msgstr "Властивості"
-
-#: src/modules/options/optw_protection.h:32
-msgid "Protection"
-msgstr "Захист"
 
 #: src/modules/options/optw_urlhandlers.cpp:66
 #, fuzzy
@@ -3521,10 +3349,6 @@ msgstr "Протокол:"
 #: src/modules/options/optw_proxy.cpp:70
 msgid "Proxy"
 msgstr "Проксі"
-
-#: src/modules/options/optw_proxy.h:53
-msgid "Proxy Hosts"
-msgstr "Проксі сервери"
 
 #: src/modules/options/optw_servers.cpp:744
 msgid "Proxy server:"
@@ -3562,10 +3386,6 @@ msgstr ""
 #: src/modules/options/optw_identity.cpp:890
 msgid "Put here the username you want to use"
 msgstr ""
-
-#: src/modules/options/optw_query.h:30
-msgid "Query"
-msgstr "Приват"
 
 #: src/modules/options/optw_logging.cpp:41
 msgid "Query windows"
@@ -3683,10 +3503,6 @@ msgstr "Праворуч"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_connection.h:59
-msgid "SSL"
-msgstr "SSL"
-
 #: src/modules/options/optw_messages.cpp:402
 msgid "Save As..."
 msgstr "Зберегти як..."
@@ -3716,10 +3532,6 @@ msgstr ""
 #: src/modules/options/optw_avatar.cpp:56
 msgid "Scaling on load (and in user tooltips)"
 msgstr ""
-
-#: src/modules/options/optw_uparser.h:30
-msgid "Scripting Engine"
-msgstr "Движок скріптінга"
 
 #: src/modules/options/optw_tray.cpp:48
 msgid "Select message levels to notify"
@@ -3794,7 +3606,6 @@ msgid "Server:"
 msgstr "Сервер:"
 
 #: src/modules/options/optw_interfacefeatures.cpp:62
-#: src/modules/options/optw_servers.h:151
 msgid "Servers"
 msgstr "Список серверів"
 
@@ -3932,10 +3743,6 @@ msgstr "Мовчазний антіспам (без попереджень)"
 msgid "Single click"
 msgstr ""
 
-#: src/modules/options/optw_connection.h:76
-msgid "Socket"
-msgstr "Сокет"
-
 #: src/modules/options/optw_ircview.cpp:192
 msgid "SolidLine"
 msgstr ""
@@ -3948,21 +3755,13 @@ msgstr "Сортувати зберігають файлы, що, по ніку 
 msgid "Sort windows by name"
 msgstr "Сортувати вікна по імені"
 
-#: src/modules/options/optw_sound.h:33
-msgid "Sound"
-msgstr "Звук"
-
-#: src/modules/options/optw_sound.cpp:60 src/modules/options/optw_sound.h:47
+#: src/modules/options/optw_sound.cpp:60
 msgid "Sound System"
 msgstr "Звукова система"
 
 #: src/modules/options/optw_dcc.cpp:335
 msgid "Sound device:"
 msgstr "Звуковий устрій:"
-
-#: src/modules/options/optw_sound.h:82
-msgid "Sounds"
-msgstr "Звуки"
 
 #: src/modules/options/optw_logging.cpp:48
 msgid "Strip colors in logs"
@@ -3981,20 +3780,11 @@ msgstr "TIME"
 msgid "Test"
 msgstr "Тест"
 
-#: src/modules/options/optw_texticons.cpp:80
-#: src/modules/options/optw_messages.h:39
-msgid "Text"
-msgstr "Текст"
-
 #: src/modules/options/optw_servers.cpp:167
 #: src/modules/options/optw_servers.cpp:665
 #, fuzzy
 msgid "Text Encoding:"
 msgstr "Кодування:"
-
-#: src/modules/options/optw_texticons.h:39
-msgid "Text icons"
-msgstr "Текстові іконки"
 
 #: src/modules/options/optw_windowlist.cpp:86
 #: src/modules/options/optw_windowlist.cpp:246
@@ -4220,21 +4010,9 @@ msgstr "Замістити"
 msgid "Timeout Values"
 msgstr "Значення таймаута"
 
-#: src/modules/options/optw_messages.h:75
-msgid "Timestamp"
-msgstr "Оцінка часу"
-
 #: src/modules/options/optw_messages.cpp:151
 msgid "Timestamp format:"
 msgstr "Формат оцінки часу"
-
-#: src/modules/options/optw_interfacelookglobal.h:101
-msgid "ToolBar Applets"
-msgstr "Апплети панелі інструментів"
-
-#: src/modules/options/optw_tools.h:33
-msgid "Tools"
-msgstr "Інструменти"
 
 #: src/modules/options/optw_ircview.cpp:70
 #: src/modules/options/optw_input.cpp:62
@@ -4247,10 +4025,6 @@ msgstr "Зверху"
 msgid "Track last read text line"
 msgstr "Відслідковувати останній прочитаний рядок тексту"
 
-#: src/modules/options/optw_interfacelookglobal.h:48
-msgid "Transparency"
-msgstr "Прозорість"
-
 #: src/modules/options/optw_interfacelookglobal.cpp:106
 #: src/modules/options/optw_interfacelookglobal.cpp:112
 msgid "Transparency blend image:"
@@ -4260,14 +4034,6 @@ msgstr "Підміли изображение, що:"
 msgid "Transparent"
 msgstr "Прозорість"
 
-#: src/modules/options/optw_tray.h:32
-msgid "Tray icon"
-msgstr "Іконка в треє"
-
-#: src/modules/options/optw_windowlist.h:48
-msgid "Tree Window List"
-msgstr ""
-
 #: src/modules/options/optw_lag.cpp:55
 msgid "Trigger event if lag exceeds:"
 msgstr "Запустити подія, якщо затримка перевищує:"
@@ -4275,10 +4041,6 @@ msgstr "Запустити подія, якщо затримка перевищ�
 #: src/modules/options/optw_dcc.cpp:249
 msgid "Tweaks"
 msgstr "Настроювання"
-
-#: src/modules/options/optw_urlhandlers.h:32
-msgid "URL handlers"
-msgstr "Оброблювачі URL"
 
 #: src/modules/options/optw_notify.cpp:92
 msgid "USERHOST delay (in seconds)"
@@ -4476,10 +4238,6 @@ msgstr "Визначити префікс і постфікс"
 msgid "User-op:"
 msgstr "Користувач-оператор:"
 
-#: src/modules/options/optw_userlist.h:32
-msgid "Userlist"
-msgstr "Список користувачів"
-
 #: src/modules/options/optw_identity.cpp:697
 #, fuzzy
 msgid "Username"
@@ -4501,10 +4259,6 @@ msgstr "VERSION"
 msgid "Verbose"
 msgstr "Багатослівний"
 
-#: src/modules/options/optw_ircoutput.h:33
-msgid "Verbosity And Output"
-msgstr "Багатослівність висновку"
-
 #: src/modules/options/optw_userlist.cpp:137
 msgid "Vertical Alignment:"
 msgstr "Вертикальне розташування:"
@@ -4514,10 +4268,6 @@ msgstr "Вертикальне розташування:"
 #: src/modules/options/optw_windowlist.cpp:128
 msgid "Vertical align:"
 msgstr "Вертикальне розташування:"
-
-#: src/modules/options/optw_dcc.h:128
-msgid "Voice"
-msgstr "Голос"
 
 #: src/modules/options/optw_userlist.cpp:62
 msgid "Voice:"
@@ -4554,19 +4304,6 @@ msgstr "Відповіді Whois"
 msgid "Winamp messages ecoding"
 msgstr "Кодування повідомлень вінампа"
 
-#: src/modules/options/optw_interfacelookglobal.h:75
-msgid "Window Captions"
-msgstr "Заголовки вікон"
-
-#: src/modules/options/optw_windowlist.h:34
-#, fuzzy
-msgid "Window List"
-msgstr "Заголовки вікон"
-
-#: src/modules/options/optw_highlighting.h:57
-msgid "Window List Alert"
-msgstr ""
-
 #: src/modules/options/optw_highlighting.cpp:59
 msgid "Word splitters:"
 msgstr "Роздільники слів:"
@@ -4578,10 +4315,6 @@ msgstr "Слова, які вважаються спамом:"
 #: src/modules/options/optw_highlighting.cpp:57
 msgid "Words to highlight:"
 msgstr "Подсвечиваємі слова:"
-
-#: src/modules/options/optw_interfacelookglobal.h:88
-msgid "Workspace"
-msgstr "Робочий простір"
 
 #: src/modules/options/optw_identity.cpp:390
 msgid ""
@@ -4624,179 +4357,85 @@ msgstr "[PREFIX]Нік[!user@host][POSTFIX] повідомлення"
 msgid "[Unknown Media Type]"
 msgstr "[Невідомий медіа тип]"
 
-#: src/modules/options/optw_nickserv.h:43
-msgid "authentication,identify"
-msgstr "ідентифікація,аутентификация"
-
 #: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "байт/сек"
-
-#: src/modules/options/optw_query.h:32
-msgid "chat"
-msgstr "чат"
-
-#: src/modules/options/optw_servers.h:152
-msgid "connection"
-msgstr "з'єднання"
-
-#: src/modules/options/optw_proxy.h:55
-msgid "connection,servers"
-msgstr "з'єднання,сервера"
-
-#: src/modules/options/optw_protection.h:35
-msgid "ctcp,flood"
-msgstr "ctcp,флуд"
-
-#: src/modules/options/optw_ircoutput.h:35
-msgid "debug"
-msgstr "налагодження"
 
 #: src/modules/options/optw_textencoding.cpp:88
 msgid "en"
 msgstr "en"
 
-#: src/modules/options/optw_mediatypes.h:50
-msgid "file,audio,video,programs"
-msgstr "файл,аудіо,відео,програми"
-
 #: src/modules/options/optw_servers.cpp:1591
 msgid "irc.unknown.net"
 msgstr "irc.сервер.net"
-
-#: src/modules/options/optw_textencoding.h:35
-msgid "language,encoding,charset,codepage"
-msgstr "мова,кодування,кодова сторінка"
-
-#: src/modules/options/optw_notify.h:32
-msgid "notify,buddy,buddies,friends"
-msgstr "повідомлення,друг,друзі,приятелі,контакти"
-
-#: src/modules/options/optw_notify.h:45
-msgid "popup"
-msgstr "спливаюче меню"
-
-#: src/modules/options/optw_ignore.h:34
-msgid "protection"
-msgstr "захист"
-
-#: src/modules/options/optw_logging.h:31
-msgid "save,output"
-msgstr "збереження,висновок"
-
-#: src/modules/options/optw_uparser.h:31
-msgid "scripting,kvs,debug"
-msgstr "скріптінг,kvs,налагодження"
-
-#: src/modules/options/optw_texticons.h:41
-msgid "smileys,emoticons"
-msgstr "смайли, іконки"
-
-#: src/modules/options/optw_sound.h:84
-msgid "sound,events"
-msgstr "звуки,події"
-
-#: src/modules/options/optw_sound.h:49
-msgid "sound,xmms,audio,play,amarok"
-msgstr "звук,xmms,аудіо,програвати,amarok"
-
-#: src/modules/options/optw_windowlist.h:36
-#: src/modules/options/optw_windowlist.h:50
-#: src/modules/options/optw_windowlist.h:66
-#: src/modules/options/optw_windowlist.h:81
-#: src/modules/options/optw_windowlist.h:100
-#: src/modules/options/optw_windowlist.h:115
-#: src/modules/options/optw_interfacelookglobal.h:34
-msgid "theme"
-msgstr "тема"
-
-#: src/modules/options/optw_interfacelookglobal.h:49
-msgid "theme,background"
-msgstr "тема, тло"
-
-#: src/modules/options/optw_messages.h:97
-#: src/modules/options/optw_messages.h:190
-msgid "theme,colors,messages,output"
-msgstr "тема,кольори,повідомлення,висновок"
-
-#: src/modules/options/optw_messages.h:40
-#: src/modules/options/optw_ircview.h:37 src/modules/options/optw_ircview.h:51
-msgid "theme,colors,output"
-msgstr "тема,кольори,висновок"
-
-#: src/modules/options/optw_input.h:34
-msgid "theme,colors,text"
-msgstr "тема,кольори,текст"
-
-#: src/modules/options/optw_interfacelookglobal.h:76
-#: src/modules/options/optw_interfacelookglobal.h:89
-msgid "theme,mdi"
-msgstr "тема, mdi"
-
-#: src/modules/options/optw_messages.h:58
-msgid "theme,privmsg,output,format"
-msgstr "тема,повідомлення,формат,висновок"
-
-#: src/modules/options/optw_interfacelookglobal.h:102
-msgid "theme,toolbar"
-msgstr "тема, панель інструментів"
-
-#: src/modules/options/optw_topiclabel.h:33
-msgid "theme,topic"
-msgstr "тема,топік"
-
-#: src/modules/options/optw_userlist.h:33
-msgid "theme,userlist,channel"
-msgstr "тема,список користувачів,канал"
-
-#: src/modules/options/optw_userlist.h:47
-msgid "theme,userlist,channel,background"
-msgstr "тема,список користувачів,канал,тло"
-
-#: src/modules/options/optw_userlist.h:68
-msgid "theme,userlist,channel,colors"
-msgstr "тема,список користувачів,канал,кольори"
-
-#: src/modules/options/optw_userlist.h:84
-msgid "theme,userlist,channel,grid"
-msgstr "тема,список користувачів,канал,сітка"
-
-#: src/modules/options/optw_lag.h:33
-msgid "time,ping"
-msgstr "час,пінг"
-
-#: src/modules/options/optw_messages.h:79
-msgid "time,timestamp"
-msgstr "час,Оцінка часу"
-
-#: src/modules/options/optw_tray.h:34
-msgid "tray,TRAYICON"
-msgstr ""
 
 #: src/modules/options/optw_texticons.cpp:214
 msgid "unnamed"
 msgstr "без імені"
 
-#: src/modules/options/optw_urlhandlers.h:35
-msgid "url,programs"
-msgstr "url,програми"
-
-#: src/modules/options/optw_userlist.h:104
-msgid "userlist,channel"
-msgstr "список користувачів,канал"
-
 #: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid "within:"
 msgstr "у плині:"
 
+#~ msgid "Advanced"
+#~ msgstr "Додатково"
+
+#~ msgid "Alert/Highlight"
+#~ msgstr "Попередження/Підсвічування"
+
+#~ msgid "Anti-spam"
+#~ msgstr "Антіспам"
+
+#~ msgid "Avatar"
+#~ msgstr "Аватар"
+
+#~ msgid "Avatars"
+#~ msgstr "Аватари"
+
+#~ msgid "Away"
+#~ msgstr "Відійшов"
+
+#~ msgid "CTCP"
+#~ msgstr "CTCP"
+
+#~ msgid "Channel"
+#~ msgstr "Канал"
+
+#~ msgid "Chat"
+#~ msgstr "Чат"
+
 #~ msgid "Classic Taskbar"
 #~ msgstr "Класична панель завдань"
+
+#~ msgid "Color Set"
+#~ msgstr "Набір квітів"
+
+#~ msgid "Contacts"
+#~ msgstr "Контакти"
+
+#~ msgid "DCC"
+#~ msgstr "DCC"
 
 #~ msgid "Do not update the away list"
 #~ msgstr "Не запитувати список людей у режимі \"відійшов\""
 
+#~ msgid "Features"
+#~ msgstr "Можливості"
+
+#~ msgid "File Transfer"
+#~ msgstr "Передачі файлів"
+
+#~ msgid "Flood Protection"
+#~ msgstr "Захист від флуда"
+
 #~ msgid "Forcibly and completely disable the notifier"
 #~ msgstr "Повністю виключити спливаюче вікно извещателя"
+
+#~ msgid "Foreground"
+#~ msgstr "Передній план"
+
+#~ msgid "General options"
+#~ msgstr "Загальні настроювання"
 
 #~ msgid "Hide avatars"
 #~ msgstr "Сховати аватари в списку користувачів"
@@ -4804,21 +4443,110 @@ msgstr "у плині:"
 #~ msgid "Hide users label"
 #~ msgstr "Сховати мітки користувачів"
 
+#~ msgid "Highlight"
+#~ msgstr "Підсвічування"
+
+#~ msgid "IRC"
+#~ msgstr "IRC"
+
+#~ msgid "Ident Service"
+#~ msgstr "Сервіс ідентифікації"
+
+#~ msgid "Ignore"
+#~ msgstr "Ігнор"
+
+#~ msgid "Input"
+#~ msgstr "Уведення"
+
+#~ msgid "Interface"
+#~ msgstr "Інтерфейс"
+
+#~ msgid "Labels"
+#~ msgstr "Напису"
+
+#~ msgid "Lag"
+#~ msgstr "Затримка"
+
+#~ msgid "Language"
+#~ msgstr "Мова"
+
+#~ msgid "Logging"
+#~ msgstr "Логірування"
+
+#~ msgid "Look"
+#~ msgstr "Вид"
+
+#, fuzzy
+#~ msgid "Marker"
+#~ msgstr "Розділова лінія:"
+
+#~ msgid "Media Types"
+#~ msgstr "Медіа типи"
+
+#~ msgid "Message Colors"
+#~ msgstr "Кольори повідомлень"
+
+#~ msgid "Message Style"
+#~ msgstr "Стиль повідомлень"
+
 #~ msgid "Message Type"
 #~ msgstr "Типи повідомлень"
+
+#~ msgid "Nickname Grid"
+#~ msgstr "Таблиця ніків"
+
+#~ msgid "Notifier"
+#~ msgstr "Оповіщувач"
+
+#~ msgid "Output"
+#~ msgstr "Висновок"
 
 #, fuzzy
 #~ msgid "Output verosity"
 #~ msgstr "Багатослівність висновку"
 
+#, fuzzy
+#~ msgid "Profiles"
+#~ msgstr "Профіль"
+
+#~ msgid "Protection"
+#~ msgstr "Захист"
+
+#~ msgid "Proxy Hosts"
+#~ msgstr "Проксі сервери"
+
+#~ msgid "Query"
+#~ msgstr "Приват"
+
+#~ msgid "SSL"
+#~ msgstr "SSL"
+
 #~ msgid "Scaling"
 #~ msgstr "Масштабування"
+
+#~ msgid "Scripting Engine"
+#~ msgstr "Движок скріптінга"
+
+#~ msgid "Socket"
+#~ msgstr "Сокет"
+
+#~ msgid "Sound"
+#~ msgstr "Звук"
+
+#~ msgid "Sounds"
+#~ msgstr "Звуки"
 
 #~ msgid "Taskbar"
 #~ msgstr "Панель завдань"
 
 #~ msgid "Taskbar Alert"
 #~ msgstr "Панель завдань попереджень"
+
+#~ msgid "Text"
+#~ msgstr "Текст"
+
+#~ msgid "Text icons"
+#~ msgstr "Текстові іконки"
 
 #~ msgid ""
 #~ "This section contains irc protection tools<br><p>like<b> flood, ignore, "
@@ -4827,11 +4555,147 @@ msgstr "у плині:"
 #~ "Цей розділ містить утиліти захисту в irc мережах<br><p>такі як<b> "
 #~ "антіфлуд, ігнорування, антіспам. </b> </p>"
 
+#~ msgid "Timestamp"
+#~ msgstr "Оцінка часу"
+
+#~ msgid "ToolBar Applets"
+#~ msgstr "Апплети панелі інструментів"
+
+#~ msgid "Tools"
+#~ msgstr "Інструменти"
+
+#~ msgid "Transparency"
+#~ msgstr "Прозорість"
+
+#~ msgid "Tray icon"
+#~ msgstr "Іконка в треє"
+
 #~ msgid "Tree Taskbar"
 #~ msgstr "Дерево панелі завдань"
+
+#~ msgid "URL handlers"
+#~ msgstr "Оброблювачі URL"
 
 #~ msgid "Use tree taskbar"
 #~ msgstr "Використати дерево панелі завдань"
 
+#~ msgid "Userlist"
+#~ msgstr "Список користувачів"
+
+#~ msgid "Verbosity And Output"
+#~ msgstr "Багатослівність висновку"
+
+#~ msgid "Voice"
+#~ msgstr "Голос"
+
+#~ msgid "Window Captions"
+#~ msgstr "Заголовки вікон"
+
+#, fuzzy
+#~ msgid "Window List"
+#~ msgstr "Заголовки вікон"
+
+#~ msgid "Workspace"
+#~ msgstr "Робочий простір"
+
+#~ msgid "authentication,identify"
+#~ msgstr "ідентифікація,аутентификация"
+
+#~ msgid "chat"
+#~ msgstr "чат"
+
+#~ msgid "connection"
+#~ msgstr "з'єднання"
+
+#~ msgid "connection,servers"
+#~ msgstr "з'єднання,сервера"
+
+#~ msgid "ctcp,flood"
+#~ msgstr "ctcp,флуд"
+
+#~ msgid "debug"
+#~ msgstr "налагодження"
+
+#~ msgid "file,audio,video,programs"
+#~ msgstr "файл,аудіо,відео,програми"
+
+#~ msgid "language,encoding,charset,codepage"
+#~ msgstr "мова,кодування,кодова сторінка"
+
+#~ msgid "notify,buddy,buddies,friends"
+#~ msgstr "повідомлення,друг,друзі,приятелі,контакти"
+
+#~ msgid "popup"
+#~ msgstr "спливаюче меню"
+
+#~ msgid "protection"
+#~ msgstr "захист"
+
+#~ msgid "save,output"
+#~ msgstr "збереження,висновок"
+
+#~ msgid "scripting,kvs,debug"
+#~ msgstr "скріптінг,kvs,налагодження"
+
+#~ msgid "smileys,emoticons"
+#~ msgstr "смайли, іконки"
+
+#~ msgid "sound,events"
+#~ msgstr "звуки,події"
+
+#~ msgid "sound,xmms,audio,play,amarok"
+#~ msgstr "звук,xmms,аудіо,програвати,amarok"
+
+#~ msgid "theme"
+#~ msgstr "тема"
+
+#~ msgid "theme,background"
+#~ msgstr "тема, тло"
+
+#~ msgid "theme,colors,messages,output"
+#~ msgstr "тема,кольори,повідомлення,висновок"
+
+#~ msgid "theme,colors,output"
+#~ msgstr "тема,кольори,висновок"
+
+#~ msgid "theme,colors,text"
+#~ msgstr "тема,кольори,текст"
+
+#~ msgid "theme,mdi"
+#~ msgstr "тема, mdi"
+
+#~ msgid "theme,privmsg,output,format"
+#~ msgstr "тема,повідомлення,формат,висновок"
+
+#~ msgid "theme,toolbar"
+#~ msgstr "тема, панель інструментів"
+
+#~ msgid "theme,topic"
+#~ msgstr "тема,топік"
+
+#~ msgid "theme,userlist,channel"
+#~ msgstr "тема,список користувачів,канал"
+
+#~ msgid "theme,userlist,channel,background"
+#~ msgstr "тема,список користувачів,канал,тло"
+
+#~ msgid "theme,userlist,channel,colors"
+#~ msgstr "тема,список користувачів,канал,кольори"
+
+#~ msgid "theme,userlist,channel,grid"
+#~ msgstr "тема,список користувачів,канал,сітка"
+
+#~ msgid "time,ping"
+#~ msgstr "час,пінг"
+
+#~ msgid "time,timestamp"
+#~ msgstr "час,Оцінка часу"
+
 #~ msgid "tray,dockwidget"
 #~ msgstr "трей, іконка, системний лоток"
+
+#~ msgid "url,programs"
+#~ msgstr "url,програми"
+
+#~ msgid "userlist,channel"
+#~ msgstr "список користувачів,канал"

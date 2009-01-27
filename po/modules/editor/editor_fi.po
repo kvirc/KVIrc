@@ -8,18 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_fi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 14:59+0100\n"
 "PO-Revision-Date: 2007-11-21 18:00+0200\n"
 "Last-Translator: Santeri Piippo <aleksanteri4028@gmail.fi>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: src/modules/editor/scripteditor.cpp:1016
-#, fuzzy
-msgid "&Cancel"
-msgstr "Peruuta"
 
 #: src/modules/editor/scripteditor.cpp:752
 msgid "&Configure Editor..."
@@ -32,15 +27,6 @@ msgstr "&OK"
 #: src/modules/editor/scripteditor.cpp:749
 msgid "&Open..."
 msgstr "&Avaa..."
-
-#: src/modules/editor/scripteditor.cpp:256
-#: src/modules/editor/scripteditor.cpp:1021
-msgid "&Replace"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:1011
-msgid "&Replace in all Aliases"
-msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:750
 msgid "&Save As..."
@@ -72,26 +58,9 @@ msgstr "Peruuta"
 msgid "Choose a Filename - KVIrc"
 msgstr "Valitse tiedostonimi - KVIrc"
 
-#: src/modules/editor/scripteditor.cpp:522
-msgid "Colors"
-msgstr ""
-
 #: src/modules/editor/scripteditor.cpp:527
 msgid "Comments:"
 msgstr "Kommentit:"
-
-#: src/modules/editor/scripteditor.cpp:255
-msgid "Context sensitive help"
-msgstr ""
-
-#: src/modules/editor/scripteditor.cpp:761
-#, fuzzy
-msgid "Find"
-msgstr "Etsi:"
-
-#: src/modules/editor/scripteditor.cpp:269
-msgid "Find & Replace"
-msgstr ""
 
 #: src/modules/editor/scripteditor.cpp:532
 msgid "Find:"
@@ -129,10 +98,6 @@ msgstr "Asetukset"
 msgid "Punctuation:"
 msgstr "Välimerkit:"
 
-#: src/modules/editor/scripteditor.cpp:999
-msgid "Replace with"
-msgstr ""
-
 #: src/modules/editor/scripteditor.cpp:928
 #, c-format
 msgid "Row: %d Col: %d"
@@ -146,6 +111,10 @@ msgstr "Tallennus epäonnistui - KVIrc"
 msgid "Variables:"
 msgstr "Muuttujat:"
 
-#: src/modules/editor/scripteditor.cpp:989
-msgid "Word to Find"
-msgstr ""
+#, fuzzy
+#~ msgid "&Cancel"
+#~ msgstr "Peruuta"
+
+#, fuzzy
+#~ msgid "Find"
+#~ msgstr "Etsi:"
