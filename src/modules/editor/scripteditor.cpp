@@ -968,10 +968,12 @@ void KviScriptEditorImplementation::configureColors()
 	}
 }
 
-KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * parent, const char *)
-: QDialog(parent)
+KviScriptEditorReplaceDialog::KviScriptEditorReplaceDialog(QWidget * pParent, const QString & szName)
+: QDialog(pParent)
 {
-	m_pParent = parent;
+	setObjectName(szName);
+
+	m_pParent = pParent;
 	emit initFind();
 	QPalette p = palette();
 	p.setColor(foregroundRole(),QColor( 0, 0, 0 ));

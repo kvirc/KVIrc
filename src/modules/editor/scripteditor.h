@@ -117,25 +117,24 @@ public:
 	void highlightBlock(const QString & szText);
 	void updateSyntaxtTextFormat();
 private:
-     struct KviScriptHighlightingRule
-     {
-         QRegExp pattern;
-         QTextCharFormat format;
-     };
+	struct KviScriptHighlightingRule
+	{
+		QRegExp pattern;
+		QTextCharFormat format;
+	};
+
 	QVector<KviScriptHighlightingRule> highlightingRules;
 	QRegExp commentStartExpression;
-    QRegExp commentEndExpression;
+	QRegExp commentEndExpression;
 
-   	QTextCharFormat bracketFormat;
+	QTextCharFormat bracketFormat;
 	QTextCharFormat punctuationFormat;
 	QTextCharFormat keywordFormat;
 	QTextCharFormat variableFormat;
 	QTextCharFormat normaltextFormat;
 	QTextCharFormat findFormat;
 	QTextCharFormat functionFormat;
-    QTextCharFormat commentFormat;
-
-
+	QTextCharFormat commentFormat;
 };
 
 class KviScriptEditorImplementation : public KviScriptEditor
@@ -165,14 +164,11 @@ public:
 	void setCursorPosition(int iPos);
 	int cursor(){ return m_lastCursorPos; };
 	QLineEdit * findLineEdit(){ return m_pFindLineEdit; };
-
 protected:
 	virtual void focusInEvent(QFocusEvent * e);
 	void loadOptions();
 	void saveOptions();
-
 protected slots:
-
 	void saveToFile();
 	void loadFromFile();
 	void configureColors();
@@ -192,7 +188,7 @@ class KviScriptEditorReplaceDialog: public QDialog
 {
 	Q_OBJECT
 public:
-	KviScriptEditorReplaceDialog(QWidget * parent = 0, const char * name = 0);
+	KviScriptEditorReplaceDialog(QWidget * parent = 0, const QString & szName = QString());
 	~KviScriptEditorReplaceDialog();
 public:
 	QLineEdit * m_pFindLineEdit;
