@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 01:08+0100\n"
 "PO-Revision-Date: 2008-11-30 20:02+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -55,8 +55,8 @@ msgstr ""
 "$setBackgroundColor benötigt entweder ein Array als ersten Parameter, eine "
 "Hex-Zeichenkette oder Farbnamen, oder drei Integer"
 
-#: src/modules/objects/class_multilineedit.cpp:897
-#: src/modules/objects/class_multilineedit.cpp:1097
+#: src/modules/objects/class_multilineedit.cpp:850
+#: src/modules/objects/class_multilineedit.cpp:1050
 msgid "$setColor requires either an array as first parameter or three integers"
 msgstr ""
 "$setColor benötigt entweder ein Array als ersten Parameter oder drei Integer"
@@ -80,8 +80,8 @@ msgstr ""
 msgid "'%Q' is not a valid file path"
 msgstr "'%Q' ist kein gültiger Dateipfad"
 
-#: src/modules/objects/class_multilineedit.cpp:878
-#: src/modules/objects/class_multilineedit.cpp:1078
+#: src/modules/objects/class_multilineedit.cpp:831
+#: src/modules/objects/class_multilineedit.cpp:1031
 msgid "A string of 6 hex digits is required"
 msgstr "Eine Zeichenkette mit 6 Hex-Ziffern ist erforderlich"
 
@@ -180,7 +180,7 @@ msgstr ""
 msgid "Can't start the DNS thread"
 msgstr "Kann den DNS-Thread nicht starten"
 
-#: src/modules/objects/class_memorybuffer.cpp:110
+#: src/modules/objects/class_memorybuffer.cpp:115
 msgid "Cannot open file '%Q' for writing"
 msgstr "Kann Datei '%Q' nicht zum Schreiben öffnen"
 
@@ -278,11 +278,11 @@ msgstr "Host '%Q' ist keine gültige URL"
 
 #: src/modules/objects/class_pixmap.cpp:193
 #: src/modules/objects/class_tbrowser.cpp:103
-#: src/modules/objects/class_multilineedit.cpp:1129
+#: src/modules/objects/class_multilineedit.cpp:1082
 msgid "I can't find the specified file '%Q'."
 msgstr "Kann die angegebene Datei '%Q' nicht finden."
 
-#: src/modules/objects/class_multilineedit.cpp:1136
+#: src/modules/objects/class_multilineedit.cpp:1089
 msgid "I cannot read the file '%Q'."
 msgstr "Kann die Datei '%Q' nicht lesen."
 
@@ -331,7 +331,7 @@ msgstr "Ungültige IP-Adresse (%Q)"
 msgid "Invalid dock area specified"
 msgstr "Ungültiger Dock-Bereich angegeben"
 
-#: src/modules/objects/class_combobox.cpp:331
+#: src/modules/objects/class_combobox.cpp:330
 msgid "Invalid insertion Policy '%Q'"
 msgstr "Ungültige Einfüge-Policy '%Q'"
 
@@ -355,7 +355,7 @@ msgstr "Ungültige Parameter"
 msgid "Invalid resize mode defaulting to Auto"
 msgstr "Ungültiger Größenänderungsmodus, nutze Auto als Standard"
 
-#: src/modules/objects/class_treewidget.cpp:400
+#: src/modules/objects/class_treewidget.cpp:404
 msgid "Invalid selection mode '%Q'"
 msgstr "Ungültiger Auswahlmodus '%Q'"
 
@@ -372,8 +372,8 @@ msgstr "Ungültige Socket-Adresse"
 msgid "Invalid socket object specified (it doesn't inherit from socket)"
 msgstr "Ungültiges socket-Objekt angegeben (es erbt nicht von socket)"
 
-#: src/modules/objects/class_combobox.cpp:177
-#: src/modules/objects/class_combobox.cpp:194
+#: src/modules/objects/class_combobox.cpp:176
+#: src/modules/objects/class_combobox.cpp:193
 #: src/modules/objects/class_listwidget.cpp:191
 #: src/modules/objects/class_listwidget.cpp:209
 #, c-format
@@ -400,14 +400,15 @@ msgstr "Diesem Widget ist kein Layout zugeordnet "
 msgid "No socket object specified"
 msgstr "Kein socket-Objekt angegeben"
 
-#: src/modules/objects/class_combobox.cpp:174
-#: src/modules/objects/class_combobox.cpp:282
+#: src/modules/objects/class_combobox.cpp:173
+#: src/modules/objects/class_combobox.cpp:281
 #: src/modules/objects/class_listwidget.cpp:188
 msgid "No string parameter given - using empty string"
 msgstr "Kein Zeichenketten-Parameter gegeben - nutze leere Zeichenkette"
 
-#: src/modules/objects/class_multilineedit.cpp:399
-msgid "No such line number"
+#: src/modules/objects/class_multilineedit.cpp:397
+#, fuzzy, c-format
+msgid "No such line '%d'"
 msgstr "Keine solche Zeilennummer"
 
 #: src/modules/objects/class_file.cpp:249
@@ -421,8 +422,8 @@ msgstr "Kein solcher Öffnen-Modus '%Q'"
 msgid "Not a valid color !"
 msgstr "Keine gültige Farbe!"
 
-#: src/modules/objects/class_multilineedit.cpp:889
-#: src/modules/objects/class_multilineedit.cpp:1089
+#: src/modules/objects/class_multilineedit.cpp:842
+#: src/modules/objects/class_multilineedit.cpp:1042
 msgid "Not an hex digit"
 msgstr "Keine Hex-Ziffer"
 
@@ -462,8 +463,8 @@ msgstr ""
 msgid "One of the array parameters is empty"
 msgstr "Einer der Array-Parameter ist leer"
 
-#: src/modules/objects/class_multilineedit.cpp:866
-#: src/modules/objects/class_multilineedit.cpp:1066
+#: src/modules/objects/class_multilineedit.cpp:819
+#: src/modules/objects/class_multilineedit.cpp:1019
 #: src/modules/objects/class_widget.cpp:1220
 #: src/modules/objects/class_widget.cpp:1302
 msgid "One of the colors array parameters didn't evaluate to an integer"
@@ -471,8 +472,8 @@ msgstr ""
 "Einer der Farb-Array-Parameter konnte nicht zu einem Integer ausgewertet "
 "werden"
 
-#: src/modules/objects/class_multilineedit.cpp:861
-#: src/modules/objects/class_multilineedit.cpp:1061
+#: src/modules/objects/class_multilineedit.cpp:814
+#: src/modules/objects/class_multilineedit.cpp:1014
 #: src/modules/objects/class_widget.cpp:1214
 #: src/modules/objects/class_widget.cpp:1296
 msgid "One of the colors array parameters is empty"
@@ -589,8 +590,8 @@ msgstr ""
 "Das als Parameter übergebene Array muss mindestens 2 Elemente beinhalten"
 
 #: src/modules/objects/class_painter.cpp:619
-#: src/modules/objects/class_multilineedit.cpp:852
-#: src/modules/objects/class_multilineedit.cpp:1052
+#: src/modules/objects/class_multilineedit.cpp:805
+#: src/modules/objects/class_multilineedit.cpp:1005
 #: src/modules/objects/class_widget.cpp:1205
 #: src/modules/objects/class_widget.cpp:1287
 msgid "The array passed as parameter must contain at least 3 elements"
@@ -608,15 +609,15 @@ msgstr ""
 msgid "The class '%Q' does not exist"
 msgstr "Die Klasse '%Q' existiert nicht"
 
-#: src/modules/objects/class_memorybuffer.cpp:92
+#: src/modules/objects/class_memorybuffer.cpp:97
 msgid "The file '%Q' does not exist"
 msgstr "Die Datei '%Q' existiert nicht"
 
 #: src/modules/objects/class_painter.cpp:575
 #: src/modules/objects/class_painter.cpp:609
 #: src/modules/objects/class_painter.cpp:653
-#: src/modules/objects/class_multilineedit.cpp:902
-#: src/modules/objects/class_multilineedit.cpp:1102
+#: src/modules/objects/class_multilineedit.cpp:855
+#: src/modules/objects/class_multilineedit.cpp:1055
 #: src/modules/objects/class_widget.cpp:1140
 #: src/modules/objects/class_widget.cpp:1262
 #: src/modules/objects/class_widget.cpp:1344
@@ -722,7 +723,7 @@ msgstr ""
 msgid "Unknown '%Q' background mode"
 msgstr "Unbekannter '%Q' Hintergrundmodus"
 
-#: src/modules/objects/class_treewidget.cpp:415
+#: src/modules/objects/class_treewidget.cpp:419
 msgid "Unknown '%Q' sort order: switching to ascending order"
 msgstr ""
 "Unbekannte '%Q' Sortierreihenfolge: Wechsle zur aufsteigenden Reihenfolge"
@@ -738,7 +739,7 @@ msgstr "Unbekannte Farbrolle '%Q'"
 #: src/modules/objects/class_groupbox.cpp:315
 #: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_label.cpp:291
-#: src/modules/objects/class_multilineedit.cpp:1164
+#: src/modules/objects/class_multilineedit.cpp:1117
 msgid "Unknown alignment '%Q'"
 msgstr "Unbekannte Justierung '%Q'"
 
@@ -808,6 +809,11 @@ msgstr "Unbekanntes Widget-Attribut '%Q'"
 #: src/modules/objects/class_widget.cpp:1697
 msgid "Unknown widget flag '%Q'"
 msgstr "Unbekanntes Widget-Flag ''%Q'"
+
+#: src/modules/objects/class_multilineedit.cpp:508
+#, fuzzy
+msgid "Unknown word wrap '%Q'"
+msgstr "Unbekannte Farbgruppe '%Q'"
 
 #: src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"

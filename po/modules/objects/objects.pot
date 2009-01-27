@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 01:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 
 #: src/modules/objects/class_pixmap.cpp:193
 #: src/modules/objects/class_tbrowser.cpp:103
-#: src/modules/objects/class_multilineedit.cpp:1129
+#: src/modules/objects/class_multilineedit.cpp:1082
 msgid "I can't find the specified file '%Q'."
 msgstr ""
 
@@ -153,8 +153,8 @@ msgstr ""
 #: src/modules/objects/class_painter.cpp:575
 #: src/modules/objects/class_painter.cpp:609
 #: src/modules/objects/class_painter.cpp:653
-#: src/modules/objects/class_multilineedit.cpp:902
-#: src/modules/objects/class_multilineedit.cpp:1102
+#: src/modules/objects/class_multilineedit.cpp:855
+#: src/modules/objects/class_multilineedit.cpp:1055
 #: src/modules/objects/class_widget.cpp:1140
 #: src/modules/objects/class_widget.cpp:1262
 #: src/modules/objects/class_widget.cpp:1344
@@ -184,8 +184,8 @@ msgid " requires either an array as first parameter or two integers"
 msgstr ""
 
 #: src/modules/objects/class_painter.cpp:619
-#: src/modules/objects/class_multilineedit.cpp:852
-#: src/modules/objects/class_multilineedit.cpp:1052
+#: src/modules/objects/class_multilineedit.cpp:805
+#: src/modules/objects/class_multilineedit.cpp:1005
 #: src/modules/objects/class_widget.cpp:1205
 #: src/modules/objects/class_widget.cpp:1287
 msgid "The array passed as parameter must contain at least 3 elements"
@@ -271,18 +271,18 @@ msgstr ""
 msgid "The parent-widget isn't a MainWindow."
 msgstr ""
 
-#: src/modules/objects/class_treewidget.cpp:400
+#: src/modules/objects/class_treewidget.cpp:404
 msgid "Invalid selection mode '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_treewidget.cpp:415
+#: src/modules/objects/class_treewidget.cpp:419
 msgid "Unknown '%Q' sort order: switching to ascending order"
 msgstr ""
 
 #: src/modules/objects/class_groupbox.cpp:315
 #: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_label.cpp:291
-#: src/modules/objects/class_multilineedit.cpp:1164
+#: src/modules/objects/class_multilineedit.cpp:1117
 msgid "Unknown alignment '%Q'"
 msgstr ""
 
@@ -400,21 +400,21 @@ msgstr ""
 msgid "The widget must be a child of this hbox"
 msgstr ""
 
-#: src/modules/objects/class_combobox.cpp:174
-#: src/modules/objects/class_combobox.cpp:282
+#: src/modules/objects/class_combobox.cpp:173
+#: src/modules/objects/class_combobox.cpp:281
 #: src/modules/objects/class_listwidget.cpp:188
 msgid "No string parameter given - using empty string"
 msgstr ""
 
-#: src/modules/objects/class_combobox.cpp:177
-#: src/modules/objects/class_combobox.cpp:194
+#: src/modules/objects/class_combobox.cpp:176
+#: src/modules/objects/class_combobox.cpp:193
 #: src/modules/objects/class_listwidget.cpp:191
 #: src/modules/objects/class_listwidget.cpp:209
 #, c-format
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr ""
 
-#: src/modules/objects/class_combobox.cpp:331
+#: src/modules/objects/class_combobox.cpp:330
 msgid "Invalid insertion Policy '%Q'"
 msgstr ""
 
@@ -535,11 +535,11 @@ msgstr ""
 msgid "Unknown tickmark '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_memorybuffer.cpp:92
+#: src/modules/objects/class_memorybuffer.cpp:97
 msgid "The file '%Q' does not exist"
 msgstr ""
 
-#: src/modules/objects/class_memorybuffer.cpp:110
+#: src/modules/objects/class_memorybuffer.cpp:115
 msgid "Cannot open file '%Q' for writing"
 msgstr ""
 
@@ -551,40 +551,45 @@ msgstr ""
 msgid "Unknown segment style '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_multilineedit.cpp:399
-msgid "No such line number"
+#: src/modules/objects/class_multilineedit.cpp:397
+#, c-format
+msgid "No such line '%d'"
 msgstr ""
 
-#: src/modules/objects/class_multilineedit.cpp:861
-#: src/modules/objects/class_multilineedit.cpp:1061
+#: src/modules/objects/class_multilineedit.cpp:508
+msgid "Unknown word wrap '%Q'"
+msgstr ""
+
+#: src/modules/objects/class_multilineedit.cpp:814
+#: src/modules/objects/class_multilineedit.cpp:1014
 #: src/modules/objects/class_widget.cpp:1214
 #: src/modules/objects/class_widget.cpp:1296
 msgid "One of the colors array parameters is empty"
 msgstr ""
 
-#: src/modules/objects/class_multilineedit.cpp:866
-#: src/modules/objects/class_multilineedit.cpp:1066
+#: src/modules/objects/class_multilineedit.cpp:819
+#: src/modules/objects/class_multilineedit.cpp:1019
 #: src/modules/objects/class_widget.cpp:1220
 #: src/modules/objects/class_widget.cpp:1302
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr ""
 
-#: src/modules/objects/class_multilineedit.cpp:878
-#: src/modules/objects/class_multilineedit.cpp:1078
+#: src/modules/objects/class_multilineedit.cpp:831
+#: src/modules/objects/class_multilineedit.cpp:1031
 msgid "A string of 6 hex digits is required"
 msgstr ""
 
-#: src/modules/objects/class_multilineedit.cpp:889
-#: src/modules/objects/class_multilineedit.cpp:1089
+#: src/modules/objects/class_multilineedit.cpp:842
+#: src/modules/objects/class_multilineedit.cpp:1042
 msgid "Not an hex digit"
 msgstr ""
 
-#: src/modules/objects/class_multilineedit.cpp:897
-#: src/modules/objects/class_multilineedit.cpp:1097
+#: src/modules/objects/class_multilineedit.cpp:850
+#: src/modules/objects/class_multilineedit.cpp:1050
 msgid "$setColor requires either an array as first parameter or three integers"
 msgstr ""
 
-#: src/modules/objects/class_multilineedit.cpp:1136
+#: src/modules/objects/class_multilineedit.cpp:1089
 msgid "I cannot read the file '%Q'."
 msgstr ""
 

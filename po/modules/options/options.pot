@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
+"POT-Creation-Date: 2009-01-27 01:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -282,7 +282,7 @@ msgid ""
 msgstr ""
 
 #: src/modules/options/optw_servers.cpp:213
-#: src/modules/options/optw_messages.cpp:74
+#: src/modules/options/optw_messages.cpp:71
 #: src/modules/options/optw_dcc.h:45
 #: src/modules/options/optw_dcc.h:88
 #: src/modules/options/optw_interfacelookglobal.h:33
@@ -405,7 +405,7 @@ msgid "NickServ"
 msgstr ""
 
 #: src/modules/options/optw_servers.cpp:337
-#: src/modules/options/dialog.cpp:228
+#: src/modules/options/dialog.cpp:227
 #: src/modules/options/optw_identity.cpp:232
 #: src/modules/options/container.cpp:64
 msgid "&OK"
@@ -414,7 +414,7 @@ msgstr ""
 #: src/modules/options/optw_servers.cpp:343
 #: src/modules/options/optw_servers.cpp:827
 #: src/modules/options/optw_nickserv.cpp:128
-#: src/modules/options/dialog.cpp:243
+#: src/modules/options/dialog.cpp:242
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/optw_identity.cpp:906
@@ -709,136 +709,136 @@ msgstr ""
 msgid "Description"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1085
+#: src/modules/options/optw_servers.cpp:1086
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
 "a item for advanced options.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1099
-#: src/modules/options/optw_servers.cpp:1443
-#: src/modules/options/optw_servers.cpp:1569
+#: src/modules/options/optw_servers.cpp:1100
+#: src/modules/options/optw_servers.cpp:1444
+#: src/modules/options/optw_servers.cpp:1570
 msgid "New Network"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1105
+#: src/modules/options/optw_servers.cpp:1106
 msgid "New Server"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1112
+#: src/modules/options/optw_servers.cpp:1113
 msgid "Remove Network/Server"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1122
+#: src/modules/options/optw_servers.cpp:1123
 msgid "Copy Server"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1129
+#: src/modules/options/optw_servers.cpp:1130
 msgid "Paste Server"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1140
-#: src/modules/options/optw_servers.cpp:1459
+#: src/modules/options/optw_servers.cpp:1141
+#: src/modules/options/optw_servers.cpp:1460
 msgid "Import List"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1145
+#: src/modules/options/optw_servers.cpp:1146
 msgid "Active Configuration"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1146
-#: src/modules/options/optw_servers.cpp:1347
+#: src/modules/options/optw_servers.cpp:1147
+#: src/modules/options/optw_servers.cpp:1348
 msgid "Server:"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1149
+#: src/modules/options/optw_servers.cpp:1150
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1167
+#: src/modules/options/optw_servers.cpp:1168
 msgid "Advanced..."
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1169
+#: src/modules/options/optw_servers.cpp:1170
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1171
+#: src/modules/options/optw_servers.cpp:1172
 msgid "Connect &Now"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1175
+#: src/modules/options/optw_servers.cpp:1176
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1186
+#: src/modules/options/optw_servers.cpp:1187
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1188
+#: src/modules/options/optw_servers.cpp:1189
 msgid "Show this dialog at startup"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1190
+#: src/modules/options/optw_servers.cpp:1191
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1350
+#: src/modules/options/optw_servers.cpp:1351
 msgid "Network:"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1360
+#: src/modules/options/optw_servers.cpp:1361
 msgid "No selection"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1377
+#: src/modules/options/optw_servers.cpp:1378
 msgid "UnknownNet"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1444
+#: src/modules/options/optw_servers.cpp:1445
 msgid "Remove Network"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1447
+#: src/modules/options/optw_servers.cpp:1448
 msgid "&New Server"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1448
+#: src/modules/options/optw_servers.cpp:1449
 msgid "Re&move Server"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1450
+#: src/modules/options/optw_servers.cpp:1451
 msgid "&Copy Server"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1452
+#: src/modules/options/optw_servers.cpp:1453
 msgid "&Paste Server"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1457
+#: src/modules/options/optw_servers.cpp:1458
 msgid "Clear List"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1496
+#: src/modules/options/optw_servers.cpp:1497
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1513
+#: src/modules/options/optw_servers.cpp:1514
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1590
+#: src/modules/options/optw_servers.cpp:1591
 msgid "irc.unknown.net"
 msgstr ""
 
@@ -1043,107 +1043,111 @@ msgstr ""
 msgid "Background image"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:76
+#: src/modules/options/optw_messages.cpp:73
 msgid "Show message icons"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:77
+#: src/modules/options/optw_messages.cpp:74
 msgid "Draw some emoticons (smileys) as pictures"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:78
+#: src/modules/options/optw_messages.cpp:75
 msgid "Don't show colors in user messages"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:80
+#: src/modules/options/optw_messages.cpp:77
 msgid "Nicknames"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:82
+#: src/modules/options/optw_messages.cpp:79
 msgid "\"Smart\" nickname colors"
 msgstr ""
 
 #: src/modules/options/optw_messages.cpp:83
-msgid "Use same colors as in the userlist"
-msgstr ""
-
-#: src/modules/options/optw_messages.cpp:85
-msgid "Show nicknames in bold"
-msgstr ""
-
-#: src/modules/options/optw_messages.cpp:86
-msgid "Show user and host"
-msgstr ""
-
-#: src/modules/options/optw_messages.cpp:87
-msgid "Show channel mode prefix"
-msgstr ""
-
-#: src/modules/options/optw_messages.cpp:88
-msgid "User-defined prefix and postfix"
+msgid "Use specified colors for own nick:"
 msgstr ""
 
 #: src/modules/options/optw_messages.cpp:90
+msgid "Use same colors as in the userlist"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:93
+msgid "Show nicknames in bold"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:94
+msgid "Show user and host"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:95
+msgid "Show channel mode prefix"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:96
+msgid "User-defined prefix and postfix"
+msgstr ""
+
+#: src/modules/options/optw_messages.cpp:98
 msgid "[PREFIX]nickname[!user@host][POSTFIX] message"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:104
+#: src/modules/options/optw_messages.cpp:112
 msgid "Prefix:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:109
+#: src/modules/options/optw_messages.cpp:117
 msgid "Postfix:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:122
+#: src/modules/options/optw_messages.cpp:135
 msgid "Show timestamp"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:125
+#: src/modules/options/optw_messages.cpp:138
 msgid "Use UTC time for timestamp"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:132
+#: src/modules/options/optw_messages.cpp:145
 msgid "Use special color for timestamps"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:138
+#: src/modules/options/optw_messages.cpp:151
 msgid "Timestamp format:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:272
+#: src/modules/options/optw_messages.cpp:285
 msgid "Transparent"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:337
+#: src/modules/options/optw_messages.cpp:350
 msgid "Background:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:350
+#: src/modules/options/optw_messages.cpp:363
 msgid "Foreground:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:362
+#: src/modules/options/optw_messages.cpp:375
 msgid "Alert level:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:383
+#: src/modules/options/optw_messages.cpp:396
 msgid "Log this"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:387
+#: src/modules/options/optw_messages.cpp:400
 msgid "Load From..."
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:389
+#: src/modules/options/optw_messages.cpp:402
 msgid "Save As..."
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:535
+#: src/modules/options/optw_messages.cpp:548
 msgid "Choose a Filename - KVIrc"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:592
+#: src/modules/options/optw_messages.cpp:605
 msgid "Choose a Filename - KVIrc "
 msgstr ""
 
@@ -1595,19 +1599,19 @@ msgstr ""
 msgid "DCC/TDCC"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:115
+#: src/modules/options/dialog.cpp:114
 msgid "General Preferences"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:118
+#: src/modules/options/dialog.cpp:117
 msgid "Theme Preferences"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:120
+#: src/modules/options/dialog.cpp:119
 msgid "KVIrc Preferences"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:123
+#: src/modules/options/dialog.cpp:122
 msgid ""
 "This dialog contains a set of KVIrc settings.<br> Use the icons on the left "
 "to navigate through the option pages. The text box in the bottom left corner "
@@ -1615,20 +1619,20 @@ msgid ""
 "related to the search term you have entered."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:130
+#: src/modules/options/dialog.cpp:129
 msgid ""
 "Many settings have tooltips that can be shown by holding the cursor over "
 "their label for a few seconds."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:133
+#: src/modules/options/dialog.cpp:132
 msgid ""
 "When you have finished, click \"<b>OK</b>\" to accept your changes or "
 "\"<b>Cancel</b>\" to discard them. Clicking \"<b>Apply</b>\" will commit "
 "your changes without closing the window."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:197
+#: src/modules/options/dialog.cpp:196
 msgid ""
 "<p>This is the search tool for this options dialog.</p><p>You can enter a "
 "search term either in your native language or in english and press the "
@@ -1637,20 +1641,20 @@ msgid ""
 "p><p>Try \"nickname\" for example.</p>"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:230
+#: src/modules/options/dialog.cpp:229
 #: src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:236
+#: src/modules/options/dialog.cpp:235
 msgid "&Apply"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:238
+#: src/modules/options/dialog.cpp:237
 msgid "Commit all changes immediately."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:245
+#: src/modules/options/dialog.cpp:244
 #: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr ""
@@ -4068,24 +4072,24 @@ msgstr ""
 msgid "theme,privmsg,output,format"
 msgstr ""
 
-#: src/modules/options/optw_messages.h:69
+#: src/modules/options/optw_messages.h:75
 msgid "Timestamp"
 msgstr ""
 
-#: src/modules/options/optw_messages.h:73
+#: src/modules/options/optw_messages.h:79
 msgid "time,timestamp"
 msgstr ""
 
-#: src/modules/options/optw_messages.h:90
+#: src/modules/options/optw_messages.h:96
 msgid "Message Colors"
 msgstr ""
 
-#: src/modules/options/optw_messages.h:91
-#: src/modules/options/optw_messages.h:184
+#: src/modules/options/optw_messages.h:97
+#: src/modules/options/optw_messages.h:190
 msgid "theme,colors,messages,output"
 msgstr ""
 
-#: src/modules/options/optw_messages.h:183
+#: src/modules/options/optw_messages.h:189
 msgid "Color Set"
 msgstr ""
 
