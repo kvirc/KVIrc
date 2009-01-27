@@ -1,3 +1,4 @@
+# translation of serverdb_it.po to Italian
 # KVIrc ServerDB module Italian translation file
 # Italian translation file for KVIrc 4.0
 # Copyright (C) Szymon Stefanek
@@ -8,54 +9,105 @@ msgid ""
 msgstr ""
 "Project-Id-Version: serverdb_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-12 21:53+0100\n"
-"PO-Revision-Date: 2008-07-09 17:34+0200\n"
-"Last-Translator: Elvio Basello\n"
-"Language-Team:  <it@li.org>\n"
+"POT-Creation-Date: 2009-01-27 22:31+0100\n"
+"PO-Revision-Date: 2009-01-27 22:41+0100\n"
+"Last-Translator: \n"
+"Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/serverdb/libkviserverdb.cpp:685
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:685
 msgid "The network specified already exists"
 msgstr "La rete specificata esiste già"
 
-#: src/modules/serverdb/libkviserverdb.cpp:169
-#: src/modules/serverdb/libkviserverdb.cpp:203
-#: src/modules/serverdb/libkviserverdb.cpp:762
-#: src/modules/serverdb/libkviserverdb.cpp:826
-#: src/modules/serverdb/libkviserverdb.cpp:868
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:453
+msgid "The specified IP is not valid"
+msgstr "L'IP specificato non è valido"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:169
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:203
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:762
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:826
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:868
 msgid "The specified network does not exist"
 msgstr "La rete specificata non esiste"
 
-#: src/modules/serverdb/libkviserverdb.cpp:773
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:311
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:577
+msgid "The specified protocol does not exist"
+msgstr "Il protocollo specificato non esiste"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:284
+msgid "The specified proxy already exists"
+msgstr "Il proxyspecificato esiste già"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:70
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:113
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:374
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:445
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:508
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:569
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:613
+msgid "The specified proxy does not exist"
+msgstr "Il proxyspecificato non esiste"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:773
 msgid "The specified server already exists"
 msgstr "Il server specificato esiste già"
 
-#: src/modules/serverdb/libkviserverdb.cpp:210
-#: src/modules/serverdb/libkviserverdb.cpp:876
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:210
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:876
 msgid "The specified server does not exist"
 msgstr "Il server specificato non esiste"
 
-#: src/modules/serverdb/libkviserverdb.cpp:61
-#: src/modules/serverdb/libkviserverdb.cpp:162
-#: src/modules/serverdb/libkviserverdb.cpp:190
-#: src/modules/serverdb/libkviserverdb.cpp:677
-#: src/modules/serverdb/libkviserverdb.cpp:748
-#: src/modules/serverdb/libkviserverdb.cpp:812
-#: src/modules/serverdb/libkviserverdb.cpp:848
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:434
+msgid "You must provide the IP as parameter"
+msgstr "Devi fornire l'IP come parametro"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:61
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:162
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:190
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:677
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:748
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:812
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:848
 msgid "You must provide the network name as parameter"
 msgstr "Devi fornire il nome della rete come parametro"
 
-#: src/modules/serverdb/libkviserverdb.cpp:104
-#: src/modules/serverdb/libkviserverdb.cpp:196
-#: src/modules/serverdb/libkviserverdb.cpp:754
-#: src/modules/serverdb/libkviserverdb.cpp:854
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:363
+msgid "You must provide the port number as parameter"
+msgstr "Devi fornire il numero di porta come parametro"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:558
+msgid "You must provide the protocol as parameter"
+msgstr "Devi fornire il protocollo come parametro"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:60
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:103
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:357
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:428
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:497
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:552
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:596
+msgid "You must provide the proxy hostname as parameter"
+msgstr "Devi fornire l'hostname del proxy come parametro"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:273
+msgid "You must provide the proxy name as parameter"
+msgstr "Devi fornire il nome del proxy come parametro"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:104
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:196
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:754
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:854
 msgid "You must provide the server name as parameter"
 msgstr "Devi fornire il nome del server come parametro"
 
-#: src/modules/serverdb/libkviserverdb.cpp:818
-#: src/modules/serverdb/libkviserverdb.cpp:860
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/proxydb/libkviproxydb.cpp:602
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:818
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/serverdb/libkviserverdb.cpp:860
 msgid "You must provide the value as parameter"
 msgstr "Devi fornire il valore come parametro"
+
