@@ -12,7 +12,6 @@ SUBDIRS(
 	objects
 	options
 	perl
-	proxydb
 	register
 	serverdb
 	sharedfileswindow
