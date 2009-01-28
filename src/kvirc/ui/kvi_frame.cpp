@@ -1060,7 +1060,7 @@ void KviFrame::toolbarsPopupSelected(int id)
 	KviCustomToolBarDescriptor * dd = KviCustomToolBarManager::instance()->findDescriptorByInternalId(idext);
 	if(dd)
 	{
-		if(dd->toolBar())delete dd->toolBar();
+		if(dd->toolBar()) dd->toolBar()->deleteLater();
 		else dd->createToolBar();
 	}
 
