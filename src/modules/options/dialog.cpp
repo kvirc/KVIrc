@@ -512,7 +512,9 @@ void KviOptionsDialog::fillTreeWidget(KviTalTreeWidgetItem * p,KviPointerList<Kv
 			if(!it->m_pOptionsWidget)
 			{
 				it->m_pOptionsWidget = g_pOptionsInstanceManager->getInstance(it->m_pInstanceEntry,m_pWidgetStack);
-				m_pWidgetStack->addWidget(it->m_pOptionsWidget);
+
+				if(it->m_pOptionsWidget)
+					m_pWidgetStack->addWidget(it->m_pOptionsWidget);
 			}
 		} else {
 			it = (KviOptionsTreeWidgetItem *)p;
