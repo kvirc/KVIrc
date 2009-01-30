@@ -290,6 +290,10 @@ bool KviIrcMask::hasNumericHost() const
 	int nPoints = 0;
 	int nDoublePoints = 0;
 	unsigned short uc;
+
+	if(m_szHost.endsWith("=")) // for CR servers, see ticket #358
+		return true;
+
 	while((uc = p->unicode()))
 	{
 		if(uc == '.')nPoints++; // ipv6 masks can contain dots too!
