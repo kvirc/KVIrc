@@ -525,7 +525,7 @@ bool KviKvsObject_textedit::functionsetWrapPolicy(KviKvsObjectFunctionCall * c)
 		((QTextEdit *)widget())->setWordWrapMode(QTextOption::WordWrap);
 	else if(KviQString::equalCI(szPolicy,"AtWordBoundaryOrAnywhere"))
 		((QTextEdit *)widget())->setWordWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
-	else c->warning(__tr2qs("Unknown wrap policy'%Q'"),&szPolicy);
+        else c->warning(__tr2qs_ctx("Unknown wrap policy'%Q'","objects"),&szPolicy);
 */	
 	return true;
 }
@@ -1151,7 +1151,7 @@ bool KviKvsObject_textedit::functionsetVerticalAlignment(KviKvsObjectFunctionCal
 		((QTextEdit *)widget())->setVerticalAlignment(QTextEdit::AlignSuperScript);
 	else if(KviQString::equalCI(szValignment,"SubScript"))
 		((QTextEdit *)widget())->setVerticalAlignment(QTextEdit::AlignSubScript);
-        else c->warning(__tr2qs("Unknown vertical alignment '%Q'","objects"),&szValignment);
+        else c->warning(__tr2qs_ctx("Unknown vertical alignment '%Q'","objects"),&szValignment);
 	*/
 	return true;
 }
