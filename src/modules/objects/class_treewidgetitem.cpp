@@ -166,7 +166,7 @@ bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVar
 {
 	if (!parentObject())
 	{
-			pContext->error(__tr2qs("The listviewitem cannot be parentless"));
+                        pContext->error(__tr2qs_ctx("The listviewitem cannot be parentless","objects"));
 			return false;
 	}
 	if(parentObject()->inheritsClass("listviewitem"))
@@ -176,7 +176,7 @@ bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVar
 		if(parentObject()->inheritsClass("listview"))
 			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((KviTalTreeWidget *)parentScriptWidget()));
 		else {
-			pContext->error(__tr2qs("The parent of the listwidgetitem must be either another listwidgetitem or a listwidget"));
+                        pContext->error(__tr2qs_ctx("The parent of the listwidgetitem must be either another listwidgetitem or a listwidget","objects"));
 			return false;
 		}
 	}
@@ -282,7 +282,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setFlags)
 			sum = sum | flag;
 		}
 		else
-			c->warning(__tr2qs("Unknown item flag '%Q'"),&itemflags.at(i));
+                        c->warning(__tr2qs_ctx("Unknown item flag '%Q'","objects"),&itemflags.at(i));
 	}
 	if(m_pTreeWidgetItem)
 		m_pTreeWidgetItem->setFlags((Qt::ItemFlags)sum);
@@ -438,7 +438,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setPixmap)
 		obPixmap=KviKvsKernel::instance()->objectController()->lookupObject(obHpixmap);
 		if (!obPixmap->inheritsClass("pixmap"))
 		{
-			c->warning(__tr2qs("Pixmap object or image Id required"));
+                        c->warning(__tr2qs_ctx("Pixmap object or image Id required","objects"));
 			return true;
 		}
 		pix=((KviKvsObject_pixmap *)obPixmap)->getPixmap();
@@ -448,7 +448,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setPixmap)
 		pix=g_pIconManager->getImage(szPix);
 		if(!pix)
 		{
-			c->warning(__tr2qs("Error occured: the suitable file '%Q' is not of the correct format or it is not a valid icon number."),&szPix);
+                        c->warning(__tr2qs_ctx("Error occured: the suitable file '%Q' is not of the correct format or it is not a valid icon number.","objects"),&szPix);
 			return true;
 		}
 	}

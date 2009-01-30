@@ -505,7 +505,7 @@ bool KviKvsObject_textedit::functionSetWordWrap(KviKvsObjectFunctionCall * c)
 		((QTextEdit *)widget())->setLineWrapColumnOrWidth(QTextEdit::FixedPixelWidth);
 	else if(KviQString::equalCI(szWrap,"FixedColumnWidth"))
 		((QTextEdit *)widget())->setLineWrapColumnOrWidth(QTextEdit::FixedColumnWidth);
-	else c->warning(__tr2qs("Unknown word wrap '%Q'"),&szWrap);
+        else c->warning(__tr2qs_ctx("Unknown word wrap '%Q'","objects"),&szWrap);
 	return true;
 }
 
@@ -802,7 +802,7 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 	{
 		if(pColArray->array()->size() < 3)
 		{
-			c->error(__tr2qs("The array passed as parameter must contain at least 3 elements"));
+                        c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements","objects"));
 			return false;
 		}
 		KviKvsVariant * pColR = pColArray->array()->at(0);
@@ -811,12 +811,12 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 
 		if(!(pColR && pColG && pColB))
 		{
-			c->error(__tr2qs("One of the colors array parameters is empty"));
+                        c->error(__tr2qs_ctx("One of the colors array parameters is empty","objects"));
 			return false;
 		}
 		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
 		{
-			c->error(__tr2qs("One of the colors array parameters didn't evaluate to an integer"));
+                        c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer","objects"));
 			return false;
 		}
 
@@ -828,7 +828,7 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 				pColArray->asString(value);
 				if (value.length()!=6)
 				{
-						c->warning(__tr2qs("A string of 6 hex digits is required"));
+                                                c->warning(__tr2qs_ctx("A string of 6 hex digits is required","objects"));
 						return true;
 				}
 				QString buffer(value.mid(0,2));
@@ -839,7 +839,7 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 				iColB=buffer.toInt(&bOk2,16);
 				if (!bOk || !bOk1 || !bOk2)
 				{
-					c->warning(__tr2qs("Not an hex digit"));
+                                        c->warning(__tr2qs_ctx("Not an hex digit","objects"));
 				return true;
 				}
 	//		if (widget()) ((QTextEdit *)widget())->setColor(QColor(iColR,iColG,iColB));
@@ -847,12 +847,12 @@ bool KviKvsObject_textedit::functionsetColor(KviKvsObjectFunctionCall * c)
 			}
 		if(c->params()->count() < 3)
 		{
-			c->error(__tr2qs("$setColor requires either an array as first parameter or three integers"));
+                        c->error(__tr2qs_ctx("$setColor requires either an array as first parameter or three integers","objects"));
 			return false;
 		}
 		if(!pColArray->asInteger(iColR))
 		{
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));
+                        c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
 			return false;
 		}
 	}
@@ -982,7 +982,7 @@ bool KviKvsObject_textedit::functionsetTextFormat(KviKvsObjectFunctionCall * c)
 		((QTextEdit *)widget())->setTextFormat(Qt::LogText);
 	else if(KviQString::equalCI(szFormat,"AutoText"))
 		((QTextEdit *)widget())->setTextFormat(Qt::AutoText);
-	else c->warning(__tr2qs("Unknown text format '%Q'"),&szFormat);
+        else c->warning(__tr2qs_ctx("Unknown text format '%Q'","objects"),&szFormat);
 	*/
 	return true;
 }
@@ -1002,7 +1002,7 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 	{
 		if(pColArray->array()->size() < 3)
 		{
-			c->error(__tr2qs("The array passed as parameter must contain at least 3 elements"));
+                        c->error(__tr2qs_ctx("The array passed as parameter must contain at least 3 elements","objects"));
 			return false;
 		}
 		KviKvsVariant * pColR = pColArray->array()->at(0);
@@ -1011,12 +1011,12 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 
 		if(!(pColR && pColG && pColB))
 		{
-			c->error(__tr2qs("One of the colors array parameters is empty"));
+                        c->error(__tr2qs_ctx("One of the colors array parameters is empty","objects"));
 			return false;
 		}
 		if(!(pColR->asInteger(iColR) && pColG->asInteger(iColG) && pColB->asInteger(iColB)))
 		{
-			c->error(__tr2qs("One of the colors array parameters didn't evaluate to an integer"));
+                        c->error(__tr2qs_ctx("One of the colors array parameters didn't evaluate to an integer","objects"));
 			return false;
 		}
 
@@ -1028,7 +1028,7 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 			pColArray->asString(value);
 			if (value.length()!=6)
 			{
-					c->warning(__tr2qs("A string of 6 hex digits is required"));
+                                        c->warning(__tr2qs_ctx("A string of 6 hex digits is required","objects"));
 					return true;
 			}
 			QString buffer(value.mid(0,2));
@@ -1039,7 +1039,7 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 			iColB=buffer.toInt(&bOk2,16);
 			if (!bOk || !bOk1 || !bOk2)
 			{
-				c->warning(__tr2qs("Not an hex digit"));
+                                c->warning(__tr2qs_ctx("Not an hex digit","objects"));
 				return true;
 			}
 			//if (widget()) ((QTextEdit *)widget())->setParagraphBackgroundColor(iParagraph,QColor(iColR,iColG,iColB));
@@ -1047,12 +1047,12 @@ bool KviKvsObject_textedit::functionsetParagraphBackgroundColor(KviKvsObjectFunc
 		}
 		if(c->params()->count() < 3)
 		{
-			c->error(__tr2qs("$setColor requires either an array as first parameter or three integers"));
+                        c->error(__tr2qs_ctx("$setColor requires either an array as first parameter or three integers","objects"));
 			return false;
 		}
 		if(!pColArray->asInteger(iColR))
 		{
-			c->error(__tr2qs("The first parameter didn't evaluate to an array nor an integer"));
+                        c->error(__tr2qs_ctx("The first parameter didn't evaluate to an array nor an integer","objects"));
 			return false;
 		}
 	}
@@ -1079,14 +1079,14 @@ bool KviKvsObject_textedit::functionloadFile(KviKvsObjectFunctionCall * c)
 	KVSO_PARAMETERS_END(c)
 	if ( !QFile::exists(szFile))
 	{
-		c->warning(__tr2qs("I can't find the specified file '%Q'."),&szFile);
+                c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
         return true;
 	}
 
 	QFile file( szFile );
 	if ( !file.open( QIODevice::ReadOnly ) )
 	{
-		c->warning(__tr2qs("I cannot read the file '%Q'."),&szFile);
+                c->warning(__tr2qs_ctx("I cannot read the file '%Q'.","objects"),&szFile);
         return true;
 	}
 
@@ -1114,7 +1114,7 @@ bool KviKvsObject_textedit::functionsetAlignment(KviKvsObjectFunctionCall * c)
 		((QTextEdit *)widget())->setAlignment(Qt::AlignCenter);
 	else if(KviQString::equalCI(szAlignment,"Justify"))
 		((QTextEdit *)widget())->setAlignment(Qt::AlignJustify);
-	else c->warning(__tr2qs("Unknown alignment '%Q'"),&szAlignment);
+        else c->warning(__tr2qs_ctx("Unknown alignment '%Q'","objects"),&szAlignment);
 	return true;
 }
 
@@ -1132,7 +1132,7 @@ bool KviKvsObject_textedit::functionsetAutoFormatting(KviKvsObjectFunctionCall *
 		((QTextEdit *)widget())->setAutoFormatting(QTEXTEDIT_AUTO_BULLET_LIST);
 	else if(KviQString::equalCI(szAutoformatting,"AutoAll"))
 		((QTextEdit *)widget())->setAutoFormatting(QTEXTEDIT_AUTO_ALL);
-	else c->warning(__tr2qs("Unknown auto formatting mode '%Q'"),&szAutoformatting);
+        else c->warning(__tr2qs_ctx("Unknown auto formatting mode '%Q'","objects"),&szAutoformatting);
 	*/
 	return true;
 }
@@ -1151,7 +1151,7 @@ bool KviKvsObject_textedit::functionsetVerticalAlignment(KviKvsObjectFunctionCal
 		((QTextEdit *)widget())->setVerticalAlignment(QTextEdit::AlignSuperScript);
 	else if(KviQString::equalCI(szValignment,"SubScript"))
 		((QTextEdit *)widget())->setVerticalAlignment(QTextEdit::AlignSubScript);
-	else c->warning(__tr2qs("Unknown vertical alignment '%Q'"),&szValignment);
+        else c->warning(__tr2qs("Unknown vertical alignment '%Q'","objects"),&szValignment);
 	*/
 	return true;
 }

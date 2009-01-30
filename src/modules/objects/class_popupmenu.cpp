@@ -243,17 +243,17 @@ KVSO_CLASS_FUNCTION(popupmenu,insertWidget)
 	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if (!pObject)
 	{
-		c->warning(__tr2qs("Widget parameter is not an object"));
+                c->warning(__tr2qs_ctx("Widget parameter is not an object","objects"));
 		return true;
 	}
 	if (!pObject->object())
 	{
-		c->warning(__tr2qs("Widget parameter is not a valid object"));
+                c->warning(__tr2qs_ctx("Widget parameter is not a valid object","objects"));
 		return true;
 	}
 	if(!pObject->object()->isWidgetType())
 	{
-		c->warning(__tr2qs("Can't add a non-widget object"));
+                c->warning(__tr2qs_ctx("Can't add a non-widget object","objects"));
 		return TRUE;
 	}
 	if (widget()) ((KviTalPopupMenu *)widget())->insertItem(((KviTalPopupMenu  *)(pObject->object())));
@@ -274,7 +274,7 @@ KVSO_CLASS_FUNCTION(popupmenu,insertHandle)
 	ob=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
 	if(!ob->object()->inheritsClass("popupmenu"))
 	{
-		c->warning(__tr2qs("Can't add a non - popupmenu  object"));
+                c->warning(__tr2qs_ctx("Can't add a non - popupmenu  object","objects"));
 		return TRUE;
 	}
 	if(!widget())return true;
@@ -284,7 +284,7 @@ KVSO_CLASS_FUNCTION(popupmenu,insertHandle)
 	{
 		pix = g_pIconManager->getImage(szIcon);
 		if (pix) id=((KviTalPopupMenu *)widget())->insertItem(*pix,szLabel,((KviTalPopupMenu  *)(ob->object())));
-		else c->warning(__tr2qs("pix '%Q' doesn't exists"),&szIcon);
+                else c->warning(__tr2qs_ctx("pix '%Q' doesn't exists","objects"),&szIcon);
 	}
 	else
 		id=((KviTalPopupMenu *)widget())->insertItem(szLabel,((KviTalPopupMenu  *)(ob->object())));
