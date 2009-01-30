@@ -304,7 +304,7 @@ void KviLinksWindow::endOfLinks()
 		if(wildServers)output(KVI_OUT_LINKS,__tr2qs("Wildcard servers (hubs?): %d"),wildServers);
 		output(KVI_OUT_LINKS,__tr2qs("Direct links: %d (~%d.%d %)"),directLinks,directProcent / 100, directProcent % 100);
 		output(KVI_OUT_LINKS,__tr2qs("Close links (1 <= hops <= 3): %d (~%d.%d %)"),nearLinks,nearProcent / 100,nearProcent % 100);
-		output(KVI_OUT_LINKS,__tr2qs("Mid-range links (4 <= hops  <= 6): %d (~%d.%d %)"),midLinks,midProcent / 100,midProcent % 100);
+		output(KVI_OUT_LINKS,__tr2qs("Mid-range links (4 <= hops <= 6): %d (~%d.%d %)"),midLinks,midProcent / 100,midProcent % 100);
 		output(KVI_OUT_LINKS,__tr2qs("Distant links (7 <= hops): %d (~%d.%d %)"),farLinks,farProcent / 100,farProcent % 100);
 		output(KVI_OUT_LINKS,__tr2qs("Broken (unknown) links: %d"),brokenLinks);
 		output(KVI_OUT_LINKS,__tr2qs("Maximum links per host: %d [%s]"),maxLinks,szMaxLinks.ptr());

@@ -19,23 +19,23 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perlcore/libkviperlcore.cpp:236
+#: src/modules/perlcore/libkviperlcore.cpp:236
 msgid "Internal error: perl interpreter not initialized"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:477
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:481
+#: src/modules/perl/libkviperl.cpp:477
+#: src/modules/perl/libkviperl.cpp:481
 msgid "Perl execution error:"
 msgstr "Perl-Ausführungsfehler:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:47
+#: src/modules/perl/libkviperl.cpp:47
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr ""
 "Das perlcore-Modul kann nicht geladen werden: Perl-Unterstützung nicht "
 "verfügbar"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:460
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:460
+#: src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"
@@ -43,12 +43,12 @@ msgstr ""
 "Das Perlcore-Modul konnte den Code nicht ausführen: Irgendetwas stimmt mit "
 "der Perl-Unterstützung nicht"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:61
+#: src/modules/perl/libkviperl.cpp:61
 msgid "This KVIrc executable has been compiled without perl scripting support"
 msgstr ""
 "Diese Version von KVIrc wurde ohne Perl-Skript-Unterstützung kompiliert"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:48
+#: src/modules/perl/libkviperl.cpp:48
 msgid "To see more details about loading failure try /perlcore.load"
 msgstr ""
 "Um mehr Details über den Fehler beim Laden zu erfahren /perlcore.load "

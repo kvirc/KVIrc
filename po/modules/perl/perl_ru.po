@@ -21,30 +21,30 @@ msgstr ""
 "Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
 "10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perlcore/libkviperlcore.cpp:236
+#: src/modules/perlcore/libkviperlcore.cpp:236
 msgid "Internal error: perl interpreter not initialized"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:477
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:481
+#: src/modules/perl/libkviperl.cpp:477
+#: src/modules/perl/libkviperl.cpp:481
 msgid "Perl execution error:"
 msgstr "Ошибка выполнения perl:"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:47
+#: src/modules/perl/libkviperl.cpp:47
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr "Не возможно загрузить модуль perlcore: поддержка perl не доступна"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:460
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:460
+#: src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"
 msgstr "Модуль perlcore не может выполнить код: проблемма с поддержкой perl"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:61
+#: src/modules/perl/libkviperl.cpp:61
 msgid "This KVIrc executable has been compiled without perl scripting support"
 msgstr "Эта сборка KVIrc не имеет поддержки perl"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/perl/libkviperl.cpp:48
+#: src/modules/perl/libkviperl.cpp:48
 msgid "To see more details about loading failure try /perlcore.load"
 msgstr "Более подробная информация об ошибке загрузки модуля /perlcore.load"
