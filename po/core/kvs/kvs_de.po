@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-27 20:25+0100\n"
+"POT-Creation-Date: 2009-01-30 16:51+0100\n"
 "PO-Revision-Date: 2008-11-30 19:56+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -17,24 +17,24 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1080
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1080
 #, c-format
 msgid "%d properties listed"
 msgstr "%d Eigenschaften gelistet"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:252
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:252
 msgid "'unset' command used without a variable list"
 msgstr "'unset'-Befehl ohne Variablenliste benutzt"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:94
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:94
 msgid "/me can be used only in channels, queries and DCC chat windows"
 msgstr "/me kann nur in Channels, Queries und DCC-Chat-Fenstern benutzt werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:118
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:118
 msgid "A class can't be a subclass of itself"
 msgstr "Eine Klasse kann nicht ihre eigene Unterklasse sein"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1270
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1270
 msgid ""
 "A pixmap object, an image_id or an image file path is required for this "
 "property"
@@ -42,11 +42,11 @@ msgstr ""
 "Ein Pixmap-Objekt, eine Bild-ID oder ein Bild-Dateipfad wird für diese "
 "Eigenschaft benötigt"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:870
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:870
 msgid "A popup menu cannot be popped up twice"
 msgstr "Ein Popup-Menü kann nicht zweimal aufgeklappt werden"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:254
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:254
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
@@ -54,45 +54,45 @@ msgstr ""
 "Aliasnamen können nur Buchstaben, Ziffern, Unterstriche und ::-"
 "Namensraumseperatoren enthalten"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:257
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:257
 msgid "Another connection is already in progress in the selected IRC context"
 msgstr ""
 "Eine andere Verbindung ist bereits im Aufbau im ausgewählten IRC-Kontext"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:65
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:65
 msgid "Array index didn't evaluate to an integer"
 msgstr "Array-Index konnte nicht zu einem Integer ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:71
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:71
 msgid ""
 "Array index evaluated to a negative integer (non negative integer expected)"
 msgstr ""
 "Array-Index wurde zu einem negativen Integer ausgewertet (nicht negativer "
 "Integer erwartet)"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayreferenceassert.cpp:71
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayreferenceassert.cpp:71
 msgid "Array reference assert failed: the variable evaluated to type '%Q'"
 msgstr ""
 "Array-Referenzzusicherung ist fehlgeschlagen: Die Variable wurde zu Typ '%Q' "
 "ausgewertet"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:111
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:111
 msgid "Broken condition in menu setup: assuming false"
 msgstr "Kaputte Bedingung im Menü-Setup: Nehme Falsch an"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:857
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:857
 msgid "Broken epilogue in popup menu '%Q': ignoring"
 msgstr "Kaputter Abspann in Popup-Menü '%Q': ignoriere"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:218
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:218
 msgid "Broken icon parameter: ignoring"
 msgstr "Kaputter Icon-Parameter: ignoriere"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:842
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:842
 msgid "Broken prologue in popup menu '%Q': ignoring"
 msgstr "Kaputter Vorspann im Popup-Menü '%Q': ignoriere"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:868
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:868
 msgid ""
 "Broken slot '%Q' in target object '%Q::%Q' while emitting signal '%Q' from "
 "object '%Q::%Q': disconnecting"
@@ -100,28 +100,28 @@ msgstr ""
 "Kaputter Slot '%Q' in Zielobjekt '%Q::%Q', während des Sendes des Signals'%"
 "Q' von Objekt '%Q::%Q': Trenne die Verbindung"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:242
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:242
 msgid "Broken text parameter: assuming empty string"
 msgstr "Kaputter Text-Parameter: Nehme leere Zeichenkette an"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:102
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:105
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:102
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:105
 msgid "Call to undefined command '%Q'"
 msgstr "Aufruf des undefinierten Befehls '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:64
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:64
 msgid "Call to undefined function '%Q'"
 msgstr "Aufruf der undefinierten Funktion '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:628
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:628
 msgid "Can't delete a null object reference"
 msgstr "Kann eine Null-Referenz nicht löschen"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:634
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:634
 msgid "Can't delete an inexisting object"
 msgstr "Kann ein nichtexistierendes Objekt nicht löschen"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1350
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1350
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed and defined but the returned variant is not valid"
@@ -130,7 +130,8 @@ msgstr ""
 "Eigenschaft ist indiziert und definiert, aber die zurückgegebene Variante "
 "ist ungültig"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1112 src/kvirc/kvs/kvi_kvs_object.cpp:1342
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1112
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1342
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed but it doesn't really exist"
@@ -138,7 +139,7 @@ msgstr ""
 "Kann Eigenschaft '%Q' für Objekt '%Q' der Klasse '%Q' nicht finden: Die "
 "Eigenschaft ist indiziert aber existiert nicht"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1119
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1119
 msgid ""
 "Can't find property named '%Q' for object named '%Q'of class '%Q': the "
 "property is indexed and defined but the returned variant is not valid"
@@ -147,36 +148,36 @@ msgstr ""
 "Eigenschaft ist indiziert und definiert, aber die zurückgegebene Variante "
 "ist ungültig"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:498
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:498
 msgid "Can't find the external popup '%Q': ignoring"
 msgstr "Kann das externe Popup '%Q' nicht finden: ignoriere"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:477
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:441
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:477
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:441
 msgid "Can't find the icon '%Q'"
 msgstr "Kann Icon '%Q' nicht finden"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:226
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:226
 msgid "Can't find the icon '%Q': ignoring"
 msgstr "Kann Icon '%Q' nicht finden: ignoriere"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1291
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1291
 msgid "Can't find the requested image"
 msgstr "Kann das angeforderte Bild nicht finden"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:484
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:484
 msgid "Can't kill the timer '%Q' since it is not running"
 msgstr "Kann den Timer '%Q' nicht beenden, da er nicht läuft"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:144
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:144
 msgid "Can't override the builtin class '%Q'"
 msgstr "Kann die eingebaute Klasse '%Q' nicht überschreiben"
 
-#: src/kvirc/kvs/kvi_kvs_moduleinterface.cpp:164
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_moduleinterface.cpp:164
 msgid "Can't unload the module: it has locked itself in memory"
 msgstr "Kann das Modul nicht entladen: Es hat sich selbst im Speicher gesperrt"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1602
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1602
 msgid ""
 "Cannot call internal object function $%Q (for object named '%Q' of class '%"
 "Q') from this context"
@@ -184,40 +185,40 @@ msgstr ""
 "Kann interne Objektfunktion $%Q (des Objekts '%Q' der Klasse '%Q') nicht aus "
 "diesem Kontext aufrufen"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1592
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1592
 msgid "Cannot find object function $%Q for object named '%Q' of class '%Q'"
 msgstr "Kann Objektfunktion $%Q des Objekts '%Q' der Klasse '%Q' nicht finden"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1594
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1594
 msgid "Cannot find object function $%Q::%Q for object named '%Q' of class '%Q'"
 msgstr ""
 "Kann Objektfunktion $%Q::%Q des Objekts '%Q' der Klasse '%Q' nicht finden"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:604
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:604
 msgid "Choose a file to parse"
 msgstr "Eine Datei zum einlesen wählen"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:292
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:292
 msgid "Class '%Q' is not defined"
 msgstr "Klasse '%Q' ist nicht definiert"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:248
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:248
 msgid ""
 "Couldn't find a suitable IRC context for the connection, try using -n or -u"
 msgstr ""
 "Konnte keinen passenden IRC-Kontext für die Verbindung finden, versuchen Sie "
 "-n oder -u zu benutzen"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:125
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:125
 msgid "Couln't find base class named '%Q'"
 msgstr "Kann Basisklasse '%Q' nicht finden"
 
-#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:156
-#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:100
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:156
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:100
 msgid "DNS Lookup result for query \"%Q\""
 msgstr "DNS-Ergebnis für Anfrage \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:135
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:135
 msgid ""
 "Detected a loop in the inheritance tree of the base class '%Q': redefine "
 "that class first"
@@ -225,35 +226,36 @@ msgstr ""
 "Schleife im Vererbungsbaum der Basisklasse '%Q' gefunden: Definieren Sie "
 "diese Klasse zuerst neu"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:499
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:507
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:527
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:535
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:329
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:341
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:412
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:424
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:499
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:507
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:527
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:535
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:329
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:341
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:412
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:424
 msgid "Division by zero"
 msgstr "Division durch Null"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1151
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1151
 msgid "Empty infinite 'for' loop: fix the script"
 msgstr "Leere 'for'-Endlosschleife: Reparieren Sie das Skript"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:79
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:79
 msgid "Empty instruction block for command evaluation"
 msgstr "Leerer Instruktionsblock zur Befehlsauswertung"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:146 src/kvirc/kvs/kvi_kvs_parser.cpp:164
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:185
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:146
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:164
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:185
 msgid "Empty script"
 msgstr "Leere Zeichenkette"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1009
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1009
 msgid "Empty target specified"
 msgstr "Leeres Ziel angegeben"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:78
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:78
 msgid ""
 "Empty window identifier specified in the standard rebinding switch: no "
 "rebinding performed"
@@ -261,7 +263,7 @@ msgstr ""
 "Leerer Fensterbezeichner im Standard-Rebinding-Switch angegeben: Kein "
 "Rebinding ausgeführt"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:139
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:139
 msgid ""
 "Ending index of a multiple parameter identifier is lower or equal to the "
 "starting index. This will evaluate to a single parameter identifier."
@@ -269,44 +271,44 @@ msgstr ""
 "Der Endindex eines Mehrfachparameterbezeichners ist kleiner oder gleich dem "
 "Startindex. Dies wird zu einem einzelnen Parameterbezeicher ausgewertet."
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:117
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:117
 msgid "Error in inner alias command call '%Q', called from this context"
 msgstr ""
 "Fehler im inneren Aliasbefehlsaufruf '%Q', aufgerufen aus diesem Kontext"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:72
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliasfunctioncall.cpp:72
 msgid "Error in inner alias function call '%Q', called from this context"
 msgstr ""
 "Fehler im inneren Aliasfunktionsaufruf '%Q', aufgerufen aus diesem Kontext"
 
-#: src/kvirc/kvs/kvi_kvs_processmanager.cpp:215
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_processmanager.cpp:215
 msgid "Error triggered from process callback handler: killing process"
 msgstr ""
 "Der Callback-Handler-Prozess löste einen Fehler aus: Beende den Prozess"
 
-#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:161
-#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:105
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:161
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:105
 msgid "Error: %Q"
 msgstr "Fehler: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_eventmanager.cpp:501
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_eventmanager.cpp:501
 msgid "Event handler %Q is broken: disabling"
 msgstr "Ereignis-Handler %Q ist kaputt: wird deaktiviert"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:637
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:641
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:637
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:641
 msgid "Failed to load the file '%Q' for parsing"
 msgstr "Laden der Datei '%Q' zum Einlesen fehlgeschlagen"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:101
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:101
 msgid "Failed to send an unknown command as /raw"
 msgstr "Senden eines unbekannten Befehls als /raw fehlgeschlagen"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:967
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:967
 msgid "Failed to start the process"
 msgstr "Starten des Prozesses fehlgeschlagen"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1486
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1486
 msgid ""
 "Found 'break' label where a 'case','match','regexp' or 'default' label was "
 "expected"
@@ -314,11 +316,11 @@ msgstr ""
 "'break'-Label gefunden, wo ein 'case'-, 'match'-, regexp'- oder 'default'-"
 "Label erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:269
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:269
 msgid "Found an empty namespace in alias name"
 msgstr "Leerer Namespace im Aliasnamen gefunden"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1121
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1121
 msgid ""
 "Found char %q (unicode %x) while looking for the terminating ')' in 'for' "
 "command"
@@ -326,7 +328,7 @@ msgstr ""
 "Zeichen %q (Unicode %x) gefunden, während nach der abschließenden ) des "
 "'for'-Befehls gesucht wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1448
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1448
 msgid ""
 "Found character %q (unicode %x) where a 'case','match','regexp','default' or "
 "'break' label was expected"
@@ -334,7 +336,7 @@ msgstr ""
 "Zeichen %q (Unicode %x) gefunden, wo ein 'case'-, 'match'-, 'regexp'-, "
 "'default-' oder 'break'-Label erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1595
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1595
 msgid ""
 "Found character %q (unicode %x) where a "
 "'prologue','separator','label','popup','item','extpopup' or 'epilogue' label "
@@ -343,30 +345,30 @@ msgstr ""
 "Zeichen %q (Unicode %x) gefunden, wo ein 'prologue'-, 'separator'-, "
 "'label'-, 'popup'-, 'item'-, 'extpopup'- oder 'epilogue'-Label erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:775
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:775
 msgid "Found character %q (unicode %x) where a 'while' keyword was expected"
 msgstr ""
 "Zeichen %q (Unicode %x) gefunden, wo ein while-Schlüsselwort erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:479
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:507
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:534
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:479
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:507
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:534
 msgid "Found character %q (unicode %x) where a function name was expected"
 msgstr "Zeichen %q (Unicode %x) gefunden, wo ein Funktionsname erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:243
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:313
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:243
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:313
 msgid "Found character %q (unicode %x) where a variable was expected"
 msgstr "Zeichen %q (Unicode %x) gefunden, wo eine Variable erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:412
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:663
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:412
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:663
 msgid "Found character %q (unicode %x) where an open parenthesis was expected"
 msgstr ""
 "Zeichen %q (Unicode %x) gefunden, wo eine öffnende runde Klammer erwartet "
 "wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1223
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1223
 msgid ""
 "Found character '%q' (unicode %x) where '%' or '$' was expected: see /help "
 "foreach for the command syntax"
@@ -374,18 +376,18 @@ msgstr ""
 "Zeichen '%q' (Unicode %x) gefunden, wo '%' oder '$' erwartet wurde: Schauen "
 "Sie in /help foreach für die Befehlssyntax"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:822
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:840
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:863
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:822
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:840
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:863
 msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
 msgstr ""
 "Zeichen '%q' (Unicode %x) gefunden, wo ein Schrägstrich '/' erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2700
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2700
 msgid "Found character '%q' (unicode %x) where an instruction was expected"
 msgstr "Zeichen '%q' (Unicode %x) gefunden, wo eine Instruktion erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:109
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:109
 msgid ""
 "Found character '%q' (unicode 0x%x) where '%c' was expected: see \"/help %s"
 "\" for the command syntax"
@@ -393,31 +395,31 @@ msgstr ""
 "Zeichen %q (Unicode 0x%x) gefunden, wo '%c' erwartet wurde: Schauen Sie in "
 "\"/help %s\" nach der Befehlssyntax"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1271
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1271
 msgid ""
 "Found empty 'foreach' execution block: maybe you need to fix your script?"
 msgstr ""
 "Leeren 'foreach'-Ausführungsblock befunden: Vielleicht sollten Sie ihr "
 "Skript reparieren?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1694
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1694
 msgid "Found empty epilogue block: maybe you need to fix the script?"
 msgstr ""
 "Leerer epilogue-Block gefunden: Vielleicht sollten Sie das Skript reparieren?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1801
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1801
 msgid ""
 "Found empty instruction for popup item: maybe you need to fix the script?"
 msgstr ""
 "Leerer Instruktionsblock für das popup-Element gefunden: Vielleicht sollten "
 "Sie das Skript reparieren?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1692
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1692
 msgid "Found empty prologue block: maybe you need to fix the script?"
 msgstr ""
 "Leerer prologue-Block gefunden: Vielleicht sollten Sie das Skript reparieren?"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:112
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:112
 #, c-format
 msgid ""
 "Found end of input where character '%c' was expected: see \"/help %s\" for "
@@ -426,7 +428,7 @@ msgstr ""
 "Eingabeende gefunden, wo Zeichen '%c' erwartet wurde: Schauen Sie in \"/help "
 "%s\" nach der Befehlssyntax"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1491
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1491
 msgid ""
 "Found token '%Q' where a 'case','match','regexp','default' or 'break' label "
 "was expected"
@@ -434,7 +436,7 @@ msgstr ""
 "Token '%Q' gefunden, wo ein 'case'-, 'match'-, 'regexp'-, 'default'- oder "
 "'break'-Label erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1845
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1845
 msgid ""
 "Found token '%Q' where a "
 "'prologue','separator','label','popup','item','extpopup' or 'epilogue' label "
@@ -443,95 +445,95 @@ msgstr ""
 "Token '%Q' gefunden, wo ein 'prologue'-, 'separator'-, 'label'-, 'popup'-, "
 "'item'-, 'extpopup'- oder 'epilogue'-Label erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:811
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:811
 msgid "Garbage string after the expression in 'do' command: ignored"
 msgstr "Müll-Zeichenkette nach dem Ausdruck im do-Befehl: wird ignoriert"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:69
-#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:115
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:69
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:115
 msgid "Hash key evaluated to empty string: fix the script"
 msgstr ""
 "Hash-Schlüssel wurde zu einer leeren Zeichenkette ausgewertet: Reparieren "
 "Sie das Skript"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashreferenceassert.cpp:70
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_hashreferenceassert.cpp:70
 msgid "Hash reference assert failed: the variable evaluated to type '%Q'"
 msgstr ""
 "Hash-Referenzzusicherung fehlgeschlagen: Die Variable wurde zu Typ '%Q' "
 "ausgewertet"
 
-#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:166
-#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:110
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:166
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:110
 msgid "Hostname %d: %Q"
 msgstr "Hostname %d: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:172
-#: src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:116
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_dnsmanager.cpp:172
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_asyncdnsoperation.cpp:116
 msgid "IP address %d: %Q"
 msgstr "IP-Adresse %d: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:688
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:688
 msgid "Inexisting popup \"%Q\""
 msgstr "Nichtexistierendes Popup \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:83
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:83
 msgid "Internal error: pure virtual evaluateReadOnly called"
 msgstr "Interner Fehler: rein virtuelles evaluateReadOnly aufgerufen"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:96
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:96
 msgid "Internal error: pure virtual evaluateReadOnlyInObjectScope called"
 msgstr ""
 "Interner Fehler: Rein virtuelles evaluateReadOnlyInObjectScope aufgerufen"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:89
-#: src/kvirc/kvs/kvi_kvs_treenode_data.cpp:102
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:89
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_data.cpp:102
 msgid ""
 "Internal error: trying to evaluate as read-write a read-only data location"
 msgstr ""
 "Interner Fehler: Versuche eine nur-Lese-Datenlokation als schreib/lese "
 "auszuwerten"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:383
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:383
 msgid "Invalid IRC url (%Q)"
 msgstr "Ungültige IRC-URL (%Q)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:978
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:978
 msgid "Invalid color-set specification, using default"
 msgstr "Ungültige Farb-Set-Spezifikation, nutze Standard"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:70
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:70
 msgid "Invalid command evaluation in object scope"
 msgstr "Ungültige Befehlsauswertung im Objektgültigkeitsbereich"
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:108
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:225
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:274
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:301
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:108
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:225
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:274
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:301
 #, c-format
 msgid "Invalid data type for parameter \"%s\""
 msgstr "Ungültiger Datentyp für Parameter \"%s\""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:305
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:305
 msgid "Invalid duration value: using default"
 msgstr "Ungültiger Laufzeitwert: nutze Standard"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:55
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:55
 msgid "Invalid expression evaluation in object scope"
 msgstr "Ungültige Ausdrucksauswertung im Objektgültigkeitsbereich"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:381
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:381
 msgid "Invalid index specified: ignored"
 msgstr "Ungültiger Index angegeben: wird ignoriert"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:295
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:295
 msgid "Invalid pitch value: using default"
 msgstr "Ungültiger Abstandswert: nutze Standard"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:895
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:895
 msgid "Invalid syntax for screen coordinates, using cursor position"
 msgstr "Ungültige Syntax für Bildschirmkoordinaten, benutze Cursor-Position"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:89
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_rebindingswitch.cpp:89
 msgid ""
 "Invalid window specified in the standard rebinding switch: no rebinding "
 "performed"
@@ -539,106 +541,106 @@ msgstr ""
 "Ungültiges Fenster im Standard-Rebinding-Switch angegeben: Kein Rebinding "
 "ausgeführt"
 
-#: src/kvirc/kvs/kvi_kvs_object_class.cpp:150
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object_class.cpp:150
 msgid "It's not allowed to return values in the constructor"
 msgstr "Es ist nicht erlaubt, Werte aus dem Konstruktor zurückzugeben"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:242
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:242
 msgid "Lag meter was not enabled"
 msgstr "Lag-Meter wurde nicht aktiviert"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:367
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:367
 msgid "Left operand didn't evaluate to a number"
 msgstr "Linker Operand konnte nicht zu einer Zahl ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:572
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:572
 msgid "List of active timers"
 msgstr "Liste der aktiven Timer"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1030
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1030
 msgid "Listing Qt properties for object named '%Q' of KVS class %Q"
 msgstr "Liste die Qt-Eigenschaften für Objekt '%Q' der KVS-Klasse %Q auf"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:243
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:243
 msgid "Missing alias name"
 msgstr "Aliasname fehlt"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:713
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:713
 msgid "Missing channel list"
 msgstr "Fehlende Channel-Liste"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:96
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:109
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:96
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommandclass.cpp:109
 msgid "Missing class name"
 msgstr "Fehlender Klassenname"
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:148
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:148
 #, c-format
 msgid "Missing non-optional parameter \"%s\""
 msgstr "Nicht-optionaler Parameter \"%s\" fehlt"
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:197
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:197
 msgid "Missing parameter"
 msgstr "Fehlender Parameter"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1104
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1104
 msgid "Missing right operand for operator '"
 msgstr "Fehlender rechter Operand für Operator '"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:951
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:951
 msgid "Missing right operand for operator '+='"
 msgstr "Fehlender rechter Operand für Operator '+='"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:985
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:985
 msgid "Missing right operand for operator '-='"
 msgstr "Fehlender rechter Operand für Operator '-='"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1085
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1085
 msgid "Missing right operand for operator '.='"
 msgstr "Fehlender rechter Operand für Operator '.='"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1044
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1044
 msgid "Missing right operand for operator '<+'"
 msgstr "Fehlender rechter Operand für Operator '<+'"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1030
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1030
 msgid "Missing right operand for operator '<,'"
 msgstr "Fehlender rechter Operand für Operator '<'"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1016
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1016
 msgid "Missing right operand for operator '<<'"
 msgstr "Fehlender rechter Operand für Operator '<<'"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1006
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1006
 msgid "Missing right operand for operator '<<='"
 msgstr "Fehlender rechter Operand für Operator '<<='"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1066
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1066
 msgid "Missing right operand for operator '>>='"
 msgstr "Fehlender rechter Operand für Operator '>>='"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:917
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:917
 msgid "Missing right side operand for the binding operator '=~'"
 msgstr "Fehlender rechtsseitiger Operand für den Bindungsoperator =~"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1124
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1124
 msgid "Missing timeout delay"
 msgstr "Timeout-Verzögerung fehlt"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1115
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1115
 msgid "Missing timer name"
 msgstr "Timer-Name fehlt"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:67
-#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:67
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr "Modulbefehlsaufruf fehlgeschlagen: Kann Modul '%Q' nicht laden: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:800
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:800
 msgid "Module command call failed: can't load the module 'snd'"
 msgstr "Modulbefehlsaufruf fehlgeschlagen: Kann Modul 'snd' nicht laden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:75
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:75
 msgid ""
 "Module command call failed: the module '%Q' doesn't export a callback "
 "command named '%Q'"
@@ -646,7 +648,7 @@ msgstr ""
 "Modulbefehlsaufruf fehlgeschlagen: Das Modul '%Q' exportiert keinen "
 "Rückrufbefehl namens '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:74
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:74
 msgid ""
 "Module command call failed: the module '%Q' doesn't export a command named '%"
 "Q'"
@@ -654,7 +656,7 @@ msgstr ""
 "Modulbefehlsaufruf fehlgeschlagen: Das Modul '%Q' exportiert keinen Befehl "
 "namens '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:807
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:807
 msgid ""
 "Module command call failed: the module 'snd' doesn't export a command named "
 "'play'"
@@ -662,11 +664,11 @@ msgstr ""
 "Modulebefehlsaufruf fehlgeschlagen: Das Modul 'snd' exportiert keinen Befehl "
 "namens 'play'"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:67
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:67
 msgid "Module function call failed: can't load the module '%Q': %Q"
 msgstr "Modulfunktionsaufruf fehlgeschlagen: Kann Modul '%Q' nicht laden: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:74
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_modulefunctioncall.cpp:74
 msgid ""
 "Module function call failed: the module '%Q' doesn't export a function named "
 "'%Q'"
@@ -674,7 +676,7 @@ msgstr ""
 "Modulfunktionsaufruf fehlgeschlagen: Das Modul '%Q' exportiert keine "
 "Funktion namens '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3052
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3052
 msgid ""
 "Nested character %q corresponding to expected terminator, this might confuse "
 "me a bit: it is a good idea to enclose it in quotes"
@@ -683,114 +685,116 @@ msgstr ""
 "kann mich ein wenig verwirren: Es ist eine gute Idee, dieses in "
 "Anführungszeichen einzuschließen"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1105 src/kvirc/kvs/kvi_kvs_object.cpp:1333
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1105
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1333
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr "Keine Qt-Eigenschaft '%Q' für Objekt '%Q' der Klasse '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:417
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:417
 msgid "No button with type %Q named %Q"
 msgstr "Kein Button vom Typ %Q mit Namen %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:707
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:707
 msgid "No catalogue %Q for the current language found"
 msgstr "Kein Katalog %Q für die aktuelle Sprache gefunden"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:410
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:410
 msgid "No commandline specified for this type of url (%Q)"
 msgstr "Keine Befehlszeile angegeben für diesen URL-Typ (%Q)"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:560
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1207
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1220
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1242
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:560
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1207
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1220
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1242
 msgid "No handler '%Q' for event '%Q'"
 msgstr "Kein Handler '%Q' für Ereignis '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:554
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1203
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1216
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:554
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1203
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1216
 msgid "No handler '%Q' for raw numeric event '%d'"
 msgstr "Kein Handler '%Q' für Raw-Numeric-Ereignis '%d'"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:367
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:367
 msgid "No menu bar item with text '%Q'"
 msgstr "Kein Menüleisteneintrag mit Text '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:461
-#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:482
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:461
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:482
 #, c-format
 msgid "No such IRC context (%u)"
 msgstr "Kein solcher IRC-Kontext (%u)"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:551
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:559
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1183
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1191
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:551
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:559
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1183
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1191
 msgid "No such event (%Q)"
 msgstr "kein solches Ereignis (%Q)"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:567
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:567
 msgid "No such event handler (%Q) for event %Q"
 msgstr "kein solcher Ereignis-Handler (%Q) für Ereignis %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:606
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:606
 msgid "No target channel specified and the current window is not a channel"
 msgstr "Kein Ziel-Channel angegeben und das aktuelle Fenster ist kein Channel"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:904
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:904
 msgid ""
 "No target mask/channel specified and the current window is not a channel"
 msgstr ""
 "Keine Zielmaske/-channel angegeben und das aktuelle Fenster ist kein Channel"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:598
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:598
 msgid "None"
 msgstr "Nichts"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2640
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2640
 msgid "Objects have no extended scope variables"
 msgstr "Objekte haben keine Variablen mit erweitertem Gültigkeitsbereich"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:218
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:218
 msgid "Operand of unary operator didn't evaluate to a number"
 msgstr ""
 "Operand des unären Operators konnte nicht zu einer Zahl ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:510
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:510
 msgid "Option setting error: Unknown option or invalid value for option type"
 msgstr ""
 "Optionseinstellungsfehler: Unbekannte Option oder ungültiger Wert für "
 "Optionstyp"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:93
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:93
 msgid ""
 "Parameter identifiers are forbidden in object scope (after the '->' operator)"
 msgstr ""
 "Parameterbezeichner sind im Objektbereich (nach dem '->'-Operator) verboten"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:583
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:583
 msgid "Persistent"
 msgstr "Persistent"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:862
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:862
 msgid "Popup %Q is not defined"
 msgstr "Popup %Q ist nicht definiert"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:694
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:694
 msgid ""
 "Popup menu self-modification is not allowed (the popup is probably open)"
 msgstr ""
 "Selbstmodifikation eines Popup-Menüs ist nicht erlaubt (das Popup ist "
 "wahrscheinlich geöffnet)"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1036
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1036
 #, c-format
 msgid "Properties for Qt class %s"
 msgstr "Eigenschaften für Qt-Klasse %s"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1298 src/kvirc/kvs/kvi_kvs_object.cpp:1441
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1298
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1441
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
@@ -798,67 +802,67 @@ msgstr ""
 "Eigenschaft '%Q' von Objekt '%Q' der Klasse '%Q' hat einen nicht "
 "unterstützten Datentyp"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1048
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1048
 msgid "Property: %c%Q%c, type %Q"
 msgstr "Eigenschaft: %c%Q%c, Typ %Q"
 
-#: src/kvirc/kvs/kvi_kvs_popupmenu.cpp:484
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_popupmenu.cpp:484
 msgid "Recursive definition detected for popup '%Q': ignoring"
 msgstr "Rekursive Definition für Popup '%Q' erkannt: ignoriere"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:374
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:374
 msgid "Right operand didn't evaluate to a number"
 msgstr "Rechter Operand konnte nicht zu einer Zahl ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:92
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:92
 msgid "Say parse error: Broken command"
 msgstr "Say-Parse-Fehler: defekter Befehl"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1554
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1554
 msgid "Senseless empty switch command: fix the script"
 msgstr "Sinnloser leerer switch-Befehl: Reparieren Sie das Skript"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:589
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:589
 msgid "SingleShot"
 msgstr "Einfacher Versuch"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3062
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3062
 msgid "Skipping nested terminator character %q"
 msgstr "Überspringe verschachteltes Zerminatorzeichen %q"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:886
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:886
 msgid ""
 "Slot target object destroyed while emitting signal '%Q' from object '%Q::%Q'"
 msgstr ""
 "Slot-Zielobjekt wurde zerstört, während des Sendens des Signals '%Q' von "
 "Objekt '%Q::%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:263
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:263
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
 "Einzelner ':' im Aliasnamen gefunden: Meinten Sie ...<namespace>::<name>?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr "Einzelnes ':'-Zeichen: Meinten Sie '...<namespace>::<alias_name>'?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Einzelne '::'-Sequenz oder ungültiger Aliasname"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3089
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3089
 msgid "Stray backslash at the end of the script"
 msgstr "Einzelner Rückwärtsschrägstrich am Skriptende"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:60
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:60
 msgid "Stray dot ('.') character or invalid following module command name"
 msgstr ""
 "Einzelner Punkt ('.') oder der darauffolgende Modulbefehlsname ist ungültig"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:46
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:46
 msgid ""
 "Syntax error after '$' function call prefix. If you want to use a plain '$' "
 "in the code you need to escape it"
@@ -866,7 +870,7 @@ msgstr ""
 "Syntaxfehler nach '$' Funktionsaufrufpräfix. Wenn Sie nur ein '$' im Code "
 "nutzen möchten, müssen Sie es escapen"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2623
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2623
 msgid ""
 "Syntax error after '%' variable prefix. If you want to use a plain '%' in "
 "the code you need to escape it"
@@ -874,48 +878,48 @@ msgstr ""
 "Syntaxfehler nach dem '%'-Variablenvorzeichen. Wenn Sie ein einzelnes '%' im "
 "Code nutzen möchten, müssen Sie es escapen"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1149
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1171
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1149
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1171
 msgid "Syntax error: confused by earlier errors: bailing out"
 msgstr "Syntaxfehler: Verwirrt durch frühere Fehler: steige aus"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:154
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:154
 msgid "Syntax error: invalid $$ ($this) function call in object scope"
 msgstr "Syntaxfehler: Ungültiger $$ ($this) Aufruf im Objektbereich"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:94
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:94
 msgid "Syntax error: malformed (alias?) command identifier"
 msgstr "Syntaxfehler: Fehlerhafter (Alias?) Befehlsbezeichner"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:188
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:188
 msgid "Syntax error: malformed (alias?) function call identifier"
 msgstr "Snytaxfehler: fehlerhafter (Alias?) Funktionsaufrufbezeichner"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:180
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:180
 msgid "Syntax error: malformed alias function call identifier"
 msgstr "Syntaxfehler: fehlerhafter Aliasfunktionsaufrufbezeichner"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:86
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:86
 msgid "Syntax error: malformed alias identifier"
 msgstr "Syntaxfehler: Fehlerhafter Aliasbezeichner"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:61
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:61
 msgid "Syntax error: malformed module command identifier"
 msgstr "Syntaxfehler: Fehlerhafter Modulbefehlsbezeichner"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:393
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:393
 msgid "The $sw() function can be used only in aliases"
 msgstr "Die $sw()-Funktion kann nur in Aliasen benutzt werden"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1954
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1954
 msgid "The 'defpopup' command needs an expression enclosed in parenthesis"
 msgstr "Der 'defpopup'-Befehl benötigt einen Ausdruck in runden Klammern"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1044
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1044
 msgid "The 'for' command needs an expression enclosed in parenthesis"
 msgstr "Der 'for'-Befehl benötigt einen Ausdruck in runden Klammern"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1250
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1250
 msgid ""
 "The 'foreach' command expects a comma separated list of iteration data items "
 "after the first parameter"
@@ -923,8 +927,8 @@ msgstr ""
 "Der 'foreach'-Befehl erwartet eine Komma-separierte Liste von "
 "Iterationsdateneemten nach dem ersten Parameter"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1222
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1232
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1222
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1232
 msgid ""
 "The 'foreach' command expects a writeable iteration variable as first "
 "parameter"
@@ -932,27 +936,27 @@ msgstr ""
 "Der 'foreach'-Befehl erwartet eine schreibbare Interationsvariablenliste als "
 "ersten Parameter"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1208
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1208
 msgid "The 'foreach' command needs an expression enclosed in parenthesis"
 msgstr "Der 'foreach'-Befehl benötigt einen Ausdruck in runden Klammers"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:312
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:312
 msgid "The 'global' command needs a variable list"
 msgstr "Der 'global'-Befehl benötigt eine Variablenliste"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:854
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:854
 msgid "The 'if' command needs an expression enclosed in parenthesis"
 msgstr "Der if-Befehl benötigt einen Ausdruck in runden Klammern"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1391
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1391
 msgid "The 'switch' command needs an expression enclosed in parenthesis"
 msgstr "Der 'switch'-Befehl benötigt einen Ausdruck in runden Klammern"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:242
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:242
 msgid "The 'unset' command needs a variable list"
 msgstr "Der 'unset'-Befehl benötigt eine Variablenliste"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:791
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:791
 msgid ""
 "The 'while' block of the 'do' command needs an expression enclosed in "
 "parenthesis"
@@ -960,7 +964,7 @@ msgstr ""
 "Der while-Block des do-Befehls benötigt einen in runden Klammern "
 "eingeschlossenen Ausdruck"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2842
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2842
 msgid ""
 "The above problem might be related to the switch dash and the following "
 "equal sign"
@@ -968,11 +972,11 @@ msgstr ""
 "Das obige Problem kann zu einem 'switch'-Bindestrich und dem folgenden "
 "Gleichheitszeichen gehören"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:278
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:278
 msgid "The alias %Q is not existing"
 msgstr "Das Alias %Q existiert nicht"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:857
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:857
 msgid ""
 "The argument of the -w switch did not evaluate to a valid window id: using "
 "default"
@@ -980,7 +984,7 @@ msgstr ""
 "Das Argument des Schalters -w konnte nicht zu einer gültigen Fenster-ID "
 "ausgewertet werden: nutze Standard"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:99
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:99
 msgid ""
 "The argument of the [] subscript didn't evaluate to an array: automatic "
 "conversion from %Q supplied"
@@ -988,7 +992,7 @@ msgstr ""
 "Das Argument der []-Indizierung konnte nicht zu einem Array ausgewertet "
 "werden: Automatische Konvertierung von %Q geliefert"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:137
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arrayelement.cpp:137
 msgid ""
 "The argument of the [] subscript didn't evaluate to an array: automatic "
 "conversion from type '%Q' supplied"
@@ -996,7 +1000,7 @@ msgstr ""
 "Das Argument der []-Indizierung konnte nicht zu einem Array ausgewertet "
 "werden: Automatische Konvertierung von Typ '%Q' geliefert"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_arraycount.cpp:69
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_arraycount.cpp:69
 msgid ""
 "The argument of the array count '#' operator didn't evaluate to an array: "
 "automatic conversion from type '%Q' supplied"
@@ -1005,7 +1009,7 @@ msgstr ""
 "ausgewertet werden: Es wird die automatische Konvertierung vom Typ '%Q' "
 "bereitgestellt"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashcount.cpp:67
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_hashcount.cpp:67
 msgid ""
 "The argument of the hash count '#' operator didn't evaluate to a hash: "
 "automatic conversion from type '%Q' supplied"
@@ -1014,14 +1018,14 @@ msgstr ""
 "ausgewertet werden: Es wird die automatische Konvertierung vom Typ '%Q' "
 "bereitgestellt"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:866
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:866
 msgid ""
 "The argument of the i switch did not evaluate to a number: using default"
 msgstr ""
 "Das Argument des Schalters i konnte nicht zu einer Zahl ausgewertet werden: "
 "nutze Standard"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:131
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:131
 msgid ""
 "The argument of the {} subscript didn't evaluate to a hash automatic "
 "conversion from %Q supplied"
@@ -1029,7 +1033,7 @@ msgstr ""
 "Das Argument der {}-Indizierung konnte nicht zu einem Hash ausgewertet "
 "werden: Automatische Konvertierung von %Q geliefert"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:88
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_hashelement.cpp:88
 msgid ""
 "The argument of the {} subscript didn't evaluate to a hash: automatic "
 "conversion from type '%Q' supplied"
@@ -1037,23 +1041,23 @@ msgstr ""
 "Das Argument der {}-Indizierung konnte nicht zu einem Hash ausgewertet "
 "werden: Auotmatische Konvertierung von Typ '%Q' geliefert"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:746
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:746
 msgid "The catalogue %Q was not loaded"
 msgstr "Der Katalog %Q wurde nicht geladen"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:408
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:408
 msgid "The commandline for this url type seems to be broken (%Q)"
 msgstr "Die Befehlszeile für dieses URL-Typ scheint kaputt zu sein (%Q)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:411
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:411
 msgid "The current window is not a channel"
 msgstr "Das aktuelle Fenster ist kein Channel"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:253
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:253
 msgid "The current window is not a channel, a query or a console"
 msgstr "Das aktuelle Fenster ist kein Channel, Query oder Konsole"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2811
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2811
 msgid ""
 "The dash after a command should be followed by a letter (switch), by a digit "
 "(negative number) or be escaped"
@@ -1061,98 +1065,98 @@ msgstr ""
 "Der Bindestrich nach einem Befehl sollte gefolgt sein von einem Buchstaben "
 "(switch), einer Zahl (negative Zahl) oder escaped sein"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:271
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:276
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:271
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:276
 msgid "The following string was injected by the user:"
 msgstr "Die folgende Zeichenkette wurde vom Benutzer eingefügt:"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:879
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:879
 msgid ""
 "The last if command in the buffer has no conditional instructions: it's "
 "senseless"
 msgstr "Der letzte if-Befehl im Puffer hat keine Bedingung: er ist sinnlos"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:686
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:686
 msgid ""
 "The last while command in the buffer has no conditional instructions: it's "
 "senseless"
 msgstr "Der letze while-Befehl im Puffer hat keine Bedingungen: er ist sinnlos"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:402
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:402
 msgid "The left side of operator '%=' didn't evaluate to a number"
 msgstr ""
 "Die linke Seite des '%='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:259
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:259
 msgid "The left side of operator '&=' didn't evaluate to an integer"
 msgstr ""
 "Die linke Seite des '&='-Operators konnte nicht zu einem Integer ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:484
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:484
 msgid "The left side of operator '*=' didn't evaluate to a number"
 msgstr ""
 "Die linke Seite des '*='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:798
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:798
 msgid "The left side of operator '+=' didn't evaluate to a number"
 msgstr ""
 "Die linke Seite des '+='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:728
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:728
 msgid "The left side of operator '-=' didn't evaluate to a number"
 msgstr ""
 "Die linke Seite des '-='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:319
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:319
 msgid "The left side of operator '/=' didn't evaluate to a number"
 msgstr ""
 "Die linke Seite des '/='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:610
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:610
 msgid "The left side of operator '<<=' didn't evaluate to an integer"
 msgstr ""
 "Die linke Seite des '<<='-Operators konnte nicht zu einem Integer "
 "ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:669
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:669
 msgid "The left side of operator '>>=' didn't evaluate to an integer"
 msgstr ""
 "Die linke Seite des '>>='-Operators konnte nicht zu einem Integer "
 "ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:869
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:869
 msgid "The left side of operator '^=' didn't evaluate to an integer"
 msgstr ""
 "Die linke Seite des '^='-Operators konnte nicht zu einem Integer ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:551
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:551
 msgid "The left side of operator '|=' didn't evaluate to an integer"
 msgstr ""
 "Die linke Seite des '|='-Operators konnte nicht zu einem Integer ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:91
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:91
 msgid ""
 "The left side of the scope operator didn't evaluate as an object reference"
 msgstr ""
 "Die linke Seite des Gültigkeitsbereichoperators konnte nicht zu einer "
 "Objektreferenz ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:97
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:97
 msgid ""
 "The left side of the scope operator evaluated to a null object reference"
 msgstr ""
 "Die linke Seite des Gültigkeitsbereichoperators wurde zu einer Null-Referenz "
 "ausgwertet"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:104
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_scopeoperator.cpp:104
 msgid ""
 "The left side of the scope operator evaluated to an invalid object reference "
 "(object doesn't exist)"
@@ -1160,25 +1164,26 @@ msgstr ""
 "Die linke Seite des Gültigkeitsbereichoperators wurde zu einer ungültigen "
 "Objektreferenz ausgewertet (Objekt existiert nicht)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:701
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:701
 msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
 msgstr "Der Menü-Eintrag mit ID \"%Q\" existiert nicht im Popup \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1098 src/kvirc/kvs/kvi_kvs_object.cpp:1320
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1098
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1320
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr "Das Objekt '%Q' der Klasse '%Q' hat keine Qt-Eigenschaften"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:390
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:390
 msgid "The popup '%Q' is not defined"
 msgstr "Das Popup '%Q' ist nicht definiert"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_specialcommanddefpopup.cpp:318
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_specialcommanddefpopup.cpp:318
 #, c-format
 msgid "The popup '%s' is actually locked: 'self-modifications' are not allowed"
 msgstr ""
 "Das Popup '%s' eigentlich gesperrt: Selbstmodifikation ist nicht erlaubt"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1135
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_object.cpp:1135
 #, c-format
 msgid ""
 "The property is of type %s but the supplied argument can't be converted to "
@@ -1187,7 +1192,7 @@ msgstr ""
 "Die Eigenschaft ist vom Typ %s, aber das zur Verfügung gestellte Argument "
 "kann nicht zu diesem Typ konvertiert werden (erwarte '%s')"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:1239
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:1239
 msgid ""
 "The regular expression matched a zero-length substring: this is not valid in "
 "the s/// operator, skipping"
@@ -1195,67 +1200,67 @@ msgstr ""
 "Der reguläre Ausdruck traff auf eine leere Zeichenkette zu: Dies ist nicht "
 "gültig im s///-Operator, überspringe ihn"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:391
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:391
 msgid "The right side of operator '%=' didn't evaluate to a number"
 msgstr ""
 "Die rechte Seite des '%='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:248
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:248
 msgid "The right side of operator '&=' didn't evaluate to an integer"
 msgstr ""
 "Die rechte Seite des '&='-Operators konnte nicht zu einem Integer "
 "ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:473
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:473
 msgid "The right side of operator '*=' didn't evaluate to a number"
 msgstr ""
 "Die rechte Seite des '*='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:787
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:787
 msgid "The right side of operator '+=' didn't evaluate to a number"
 msgstr ""
 "Die rechte Seite des '+='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:717
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:717
 msgid "The right side of operator '-=' didn't evaluate to a number"
 msgstr ""
 "Die rechte Seite des '-='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:308
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:308
 msgid "The right side of operator '/=' didn't evaluate to a number"
 msgstr ""
 "Die rechte Seite des '/='-Operators konnte nicht zu einer Zahl ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:599
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:599
 msgid "The right side of operator '<<=' didn't evaluate to an integer"
 msgstr ""
 "Die rechte Seite des '<<='-Operators konnte nicht zu einem Integer "
 "ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:658
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:658
 msgid "The right side of operator '>>=' didn't evaluate to an integer"
 msgstr ""
 "Die rechte Seite des '>>='-Operators konnte nicht zu einem Integer "
 "ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:858
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:858
 msgid "The right side of operator '^=' didn't evaluate to an integer"
 msgstr ""
 "Die rechte Seite des '^='-Operators konnte nicht zu einem Integer "
 "ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:540
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:540
 msgid "The right side of operator '|=' didn't evaluate to an integer"
 msgstr ""
 "Die rechte Seite des '|='-Operators konnte nicht zu einem Integer "
 "ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:835
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:835
 msgid ""
 "The specified format string wasn't accepted by the underlying system time "
 "formatting function"
@@ -1263,69 +1268,69 @@ msgstr ""
 "Die angegebene Formatzeichenkette wurde von der zugrundeliegenden System-"
 "Zeitformatierungsfunktion nicht akzeptiert"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:948
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:948
 msgid "The specified maximum run time is invalid: assuming zero (infinite)"
 msgstr ""
 "Die angegebene maximale Laufzeit ist ungültig: Nehme Null (unbegrenzt) an"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1012
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1012
 msgid "The specified object does not exist"
 msgstr "Das angegebene Objekt existiert nicht"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:302
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:302
 msgid "The specified parent object does not exist"
 msgstr "Das angegebene Elternobjekt existiert nicht"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:938
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:938
 msgid "The specified ping time is invalid: assuming zero (no ping)"
 msgstr "Die angegebene Ping-Zeit ist ungültig: Nehme Null an (kein Ping)"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:437
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:408
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:437
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:408
 msgid "The specified window has no button containers"
 msgstr "Das angegebene Fenster hat keine Button-Container"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:131
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:131
 msgid "The specified window is not a channel"
 msgstr "Das angegebene Fenster ist kein Channel"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:153
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:204
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:153
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:204
 msgid "The target variable didn't evaluate to an integer or real value"
 msgstr ""
 "Die Zeilvariable konnte nicht zu einem Integer- oder Real-Wert ausgewertet "
 "werden"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1131
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1131
 msgid "The timeout delay didn't evaluate to an integer"
 msgstr "Die Timeout-Verzögerung kann nicht zu einem Integer ausgewertet werden"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:662
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:662
 msgid "The while command needs an expression enclosed in parenthesis"
 msgstr "Der while-Befehl benötigt einen Ausdruck in runden Klammern"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:54
-#: src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:72
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:54
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_extendedscopevariable.cpp:72
 msgid "There are no extended scope variables in this scope"
 msgstr ""
 "Es gibt keine Variablen mit erweitertem Gültigkeitsbereich in diesem "
 "Gültigkeitsbereich"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:429
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:429
 msgid "There is no option named '%Q'"
 msgstr "Es gibt keine Option namens '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:185
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:185
 msgid "This command can be used only in windows bound to an IRC context"
 msgstr ""
 "Dieser Befehl kann nur in einem Fenster genutzt werden, das mit einem IRC-"
 "Kontext verbunden ist"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands.cpp:151
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands.cpp:151
 msgid "This is not a channel"
 msgstr "Dies ist kein Channel"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:977
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:977
 msgid ""
 "This looks a lot like an object handle dereferencing operator '->' but in "
 "fact it isn't. Maybe you forgot a '$' just after?"
@@ -1333,27 +1338,27 @@ msgstr ""
 "Dies sieht sehr nach einem Objekt-Handle-Dereferenzierungsoperator '->' aus, "
 "aber es ist keiner. Haben Sie vielleicht ein '$' direkt danach vergessen?"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:295
-#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:254
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:295
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:254
 msgid "This window has no associated IRC context"
 msgstr "Dieses Fenster hat keinen zugeordneten IRC-Kontext"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:195
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:195
 msgid "This window has no associated IRC context and is not a DCC chat"
 msgstr ""
 "Dieses Fenster ist keinem IRC-Kontext zugeordnet und ist auch kein DCC-Chat"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:472
-#: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:587
-#: src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:493
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:472
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:587
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_mr.cpp:493
 msgid "This window is not associated to an IRC context"
 msgstr "Dieses Fenster ist keinem IRC-Kontext zugeordnet"
 
-#: src/kvirc/kvs/kvi_kvs_timermanager.cpp:237
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_timermanager.cpp:237
 msgid "Timer '%Q' has a broken callback handler: killing the timer"
 msgstr "Timer '%Q' hat einen kaputten Rückruf-Handler: Beende den Timer"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:478
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:478
 msgid ""
 "Timer name omitted but there is not current timer (this is not a timer "
 "callback)"
@@ -1361,37 +1366,37 @@ msgstr ""
 "Timer-Name ausgelassen, aber es gibt keinen aktuellen Timer (dies ist kein "
 "Timer-Callback)"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:609
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:609
 #, c-format
 msgid "Total: %u timers running"
 msgstr "Gesamt: %u Timer laufen"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:152
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:152
 msgid "Trailing garbage at the end of the break command: ignored"
 msgstr "Dem break-Befehl folgt Müll: wird ignoriert"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:180
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:180
 msgid "Trailing garbage at the end of the continue command: ignored"
 msgstr "Dem continue-Befehl folgt Müll: wird ignoriert"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:939
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:939
 msgid "Trailing garbage ignored after operator '++'"
 msgstr "Dem Operator '++' folgender Müll ignoriert"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:970
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:970
 msgid "Trailing garbage ignored after operator '--'"
 msgstr "Dem Operator '--' folgender Müll ignoriert"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1154
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:1154
 msgid "Unable to add the timer: insufficient system resources"
 msgstr "Kann den Timer nicht hinzufügen: Nicht ausreichende Systemressourcen"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1148
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1169
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1148
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1169
 msgid "Unexpected (and senseless) read-only data evaluation"
 msgstr "Unerwartete (und sinnlose) nur-lesen-Datenauswertung"
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:444
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_expression.cpp:444
 msgid ""
 "Unexpected character %q (unicode %h) in expression. If it meant to be a "
 "string use the quotes."
@@ -1399,16 +1404,16 @@ msgstr ""
 "Unerwartetes Zeichen %q (Unicode %h) im Ausdruck. Wenn es eine Zeichenkette "
 "sein soll, benutzen Sie Anführungszeichen."
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:45
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:45
 msgid "Unexpected character %q (unicode %x) after '$' function call prefix"
 msgstr ""
 "Unerwartetes Zeichen %q (Unicode %x) nach einem '$' Funktionsaufrufpräfix"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1170
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1170
 msgid "Unexpected character '%q' (unicode %x)"
 msgstr "Unerwartetes Zeichen '%q' (Unicode %x)"
 
-#: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:77
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_comment.cpp:77
 msgid ""
 "Unexpected character '%q' (unicode %x) after a slash (it is a typo or a "
 "malformed comment begin?)"
@@ -1416,11 +1421,11 @@ msgstr ""
 "Unerwartetes Zeichen '%q' (Unicode %x) nach einem Schrägstrich (ist es ein "
 "Tippfehler oder ein fehlerhafter Kommentarbeginn?)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2815
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2815
 msgid "Unexpected character '%q' (unicode %x) after a switch dash"
 msgstr "Unerwartetes Zeichen '%q' (Unicode %x) nach einem 'switch'-Bindestrich"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1167
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1167
 msgid ""
 "Unexpected character '%q' (unicode %x) after a void function call: end of "
 "instruction expected"
@@ -1428,7 +1433,7 @@ msgstr ""
 "Unerwartetes Zeichen '%q' (Unicode %x) nach einem void-Funktionsaufruf: Ende "
 "der Anweisungen erwartet"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1833
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1833
 msgid ""
 "Unexpected empty <name> field in extpopup parameters. See /help defpopup for "
 "the syntax"
@@ -1436,9 +1441,9 @@ msgstr ""
 "Unerwartetes leeres <name>-Feld in den extpopup-Parametern. Schauen Sie in /"
 "help defpopup nach der Syntax"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1746
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1777
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1825
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1746
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1777
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1825
 msgid ""
 "Unexpected empty <text> field in extpopup parameters. See /help defpopup for "
 "the syntax"
@@ -1446,7 +1451,7 @@ msgstr ""
 "Unerwartetes leeres <text>-Feld in den extpopup-Parametern. Schauen Sie in /"
 "help defpopup nach der Syntax"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1727
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1727
 msgid ""
 "Unexpected empty <text> field in label parameters. See /help defpopup for "
 "the syntax"
@@ -1454,11 +1459,11 @@ msgstr ""
 "Unerwartetes leeres <text>-Feld in den Label-Parametern. Schauen Sie in /"
 "help defpopup nach der Syntax"
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:459
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_expression.cpp:459
 msgid "Unexpected empty expression operand"
 msgstr "Unerwarteter leerer Ausdrucksoperand"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1246
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1246
 msgid ""
 "Unexpected end of 'foreach' parameters: at least one iteration data argument "
 "must be given"
@@ -1466,26 +1471,26 @@ msgstr ""
 "Unerwartetes Ende der'foreach'-Parameter: Mindestens ein "
 "Iterationsdatenargument muss angegeben werden"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:472
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:500
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:527
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:571
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:472
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:500
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:527
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:571
 msgid "Unexpected end of buffer in class definition"
 msgstr "Unerwartetes Pufferende in Klassendefinition"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1588
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1588
 msgid "Unexpected end of buffer in defpopup block"
 msgstr "Unerwartetes Pufferende im defpopup-Block"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:555
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:555
 msgid "Unexpected end of buffer in function parameter list reminder"
 msgstr "Unerwartetes Pufferende in FUnktionsparameterlisten-Reminder"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1441
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1441
 msgid "Unexpected end of buffer in switch condition block"
 msgstr "Unerwartetes Pufferende im 'switch'-Bedingungsblock"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:995
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:995
 msgid ""
 "Unexpected end of buffer while looking for the closing ')' in the 'for' "
 "command"
@@ -1493,7 +1498,7 @@ msgstr ""
 "Unerwartetes Pufferende während nach der schließenden ) des for-Befehls "
 "gesucht wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:773
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:773
 msgid ""
 "Unexpected end of command after the 'do' command block: expected 'while' "
 "keyword"
@@ -1501,14 +1506,14 @@ msgstr ""
 "Unerwartetes Befehlsende nach dem do-Befehlsblock: while-Schlüsselwort "
 "erwartet"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:856
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:856
 msgid ""
 "Unexpected end of command in binding operation, at least one slash is missing"
 msgstr ""
 "Unerwartetes Ende des Befehls in Bindungsoperation, mindestens ein "
 "Schrägstrich fehlt"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:833
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:833
 msgid ""
 "Unexpected end of command in binding operation, at least two slashes are "
 "missing"
@@ -1516,7 +1521,7 @@ msgstr ""
 "Unerwartetes Ende des Befehls in Bindungsoperation, mindestens zwei "
 "Schrägstriche fehlen"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3363
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3363
 msgid ""
 "Unexpected end of line in hash key (missing '}' character or unescaped "
 "newline)"
@@ -1524,11 +1529,12 @@ msgstr ""
 "Unerwartetes Zeilenende im Hash-Schlüssel (fehlendes '}'-Zeichen oder nicht "
 "maskierter Zeilenumbruch)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2924 src/kvirc/kvs/kvi_kvs_parser.cpp:2991
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2924
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2991
 msgid "Unexpected end of line in parameter list"
 msgstr "Unerwartetes Zeilenende in Paramaterliste"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3649
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3649
 msgid ""
 "Unexpected end of line in string constant (missing \" character or unescaped "
 "newline)"
@@ -1536,48 +1542,49 @@ msgstr ""
 "Unerwartetes Zeilenende in Zeichenkettenkonstante (fehlendes \"-Zeichen oder "
 "nicht maskierter Zeilenumbruch)"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:44
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:44
 msgid "Unexpected end of script after '$' function call prefix"
 msgstr "Unerwartetes Skriptende nach einem '$' Funktionsaufrufpräfix"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2817
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2817
 msgid "Unexpected end of script after a switch dash"
 msgstr "Unerwartetes Skriptende nach einem 'switch'-Bindestrich"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1151
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1151
 msgid "Unexpected end of script after a variable reference: expected operator"
 msgstr ""
 "Unerwartetes Skriptende nach einer Variablenreferenz: unerwarteter Operator"
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:298
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:364
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_expression.cpp:298
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_expression.cpp:364
 msgid "Unexpected end of script in expression"
 msgstr "Unerwartetes Skriptende im Ausdruck"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3356
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3356
 msgid "Unexpected end of script in hash key (missing '}' character ?)"
 msgstr "Unerwartetes Skriptende im Hash-Schlüssel (fehlendes '}'-Zeichen?)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2734
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2734
 msgid "Unexpected end of script in instruction block (missing closing brace)"
 msgstr ""
 "Unerwartetes Skriptende im Instruktionsblock (fehlende schließende "
 "geschweifte Klammer)"
 
-#: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:60
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_comment.cpp:60
 msgid "Unexpected end of script in multiline comment"
 msgstr "Unerwartetes Skriptende im Mehrzeilenkommentar"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2918 src/kvirc/kvs/kvi_kvs_parser.cpp:2985
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2918
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2985
 msgid "Unexpected end of script in parameter list"
 msgstr "Unerwartetes Skriptende in Parameterliste"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3642
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3642
 msgid "Unexpected end of script in string constant (missing \" character ?)"
 msgstr ""
 "Unerwartetes Skriptende in Zeichenkettenkonstante (fehlendes \"-Zeichen?)"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:880
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:880
 msgid ""
 "Unexpected end of script while looking for the instruction block of the if "
 "command"
@@ -1585,7 +1592,7 @@ msgstr ""
 "Unerwartetes Skriptende, während nach dem Instruktionsblock des if-Befehls "
 "gesucht wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:687
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:687
 msgid ""
 "Unexpected end of script while looking for the instruction block of the "
 "while command"
@@ -1593,161 +1600,164 @@ msgstr ""
 "Unerwartetes Skriptende, während nach dem Instruktionsblock des while-"
 "Befehls gesucht wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1234
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1234
 msgid "Unexpected function call as 'foreach' iteration variable"
 msgstr "Unerwarteter Funktionsaufruf als foreach-Iterationsvariable"
 
-#: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1236
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1236
 msgid "Unexpected read-only variable as 'foreach' iteration variable"
 msgstr "Unerwartete nur-lesbare Variable als 'foreach' Iterationsvariable"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:592
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:592
 msgid "Unknown"
 msgstr "Unbekannt"
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:214
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_expression.cpp:214
 msgid "Unknown binary operator '%q'"
 msgstr "Unbekannter Binäroperator '%q'"
 
-#: src/kvirc/kvs/kvi_kvs_parser_expression.cpp:116
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_expression.cpp:116
 msgid "Unknown binary operator '=%q': did you mean '==' ?"
 msgstr "Unbekannter Binäroperator '=%q': Meinten Sie '=='?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:896
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:896
 msgid "Unknown binding operation '%Q'"
 msgstr "Unbekannte Bindungsoperation '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_parser_command.cpp:291
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_command.cpp:291
 msgid "Unknown callback command \"%Q\""
 msgstr "Unbekannter Rückrufbefehl \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1121
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_lside.cpp:1121
 msgid "Unknown operator"
 msgstr "Unbekannter Operator"
 
-#: src/kvirc/kvs/kvi_kvs_parser_comment.cpp:59
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser_comment.cpp:59
 msgid "Unterminated c-style multiline comment"
 msgstr "Nicht abgeschlossener, mehrzeiliger, C-Stil Kommentar "
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3355 src/kvirc/kvs/kvi_kvs_parser.cpp:3362
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3355
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3362
 msgid "Unterminated hash key"
 msgstr "Nichtterminierter Hash-Schlüssel"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2733
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:2733
 msgid "Unterminated instruction block"
 msgstr "Nichtterminierter Instruktionsblock"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3641 src/kvirc/kvs/kvi_kvs_parser.cpp:3648
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3641
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:3648
 msgid "Unterminated string constant"
 msgstr "Nichtterminierte Zeichenkettenkonstante"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:988
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:988
 msgid "Window '%Q' not found, using current one"
 msgstr "Fenster '%Q' nicht gefunden, nutze aktuelles"
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:449
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:449
 msgid "Window button '%Q' not found"
 msgstr "Fenster-Button '%Q' nicht gefunden"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:121
-#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:465
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:121
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:465
 #, c-format
 msgid "Window with ID '%s' not found, returning empty string"
 msgstr "Fenster mit ID '%s' nicht gefunden, gebe leere Zeichenkette zurück"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1235
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1235
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Fenster mit ID %Q nicht gefunden: Kein Rebinding ausgeführt"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:586
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_gl.cpp:586
 msgid "WindowLifetime"
 msgstr "Fensterlebenszeit"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:751
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:751
 #, c-format
 msgid "You don't appear to be on channel %s"
 msgstr "Sie scheinen nicht in Channel %s zu sein"
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:191
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:191
 msgid "You're not connected to an IRC server"
 msgstr "Sie sind nicht mit einem IRC-Server verbunden"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:228
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:228
 #, c-format
 msgid "[KVS]   Destroyed window with pointer %x"
 msgstr "[KVS]   Fenster mit Zeiger %x zerstört"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:210
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:210
 msgid "[KVS]   in script context \"%Q\""
 msgstr "[KVS]   in Skriptkontext \"%Q\""
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:212
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:212
 msgid "[KVS]   in script context \"%Q\", %Q"
 msgstr "[KVS]   in Skriptkontext \"%Q\", %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:232
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:232
 msgid "[KVS] Call stack:"
 msgstr "[KVS] Call stack:"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:219
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:219
 msgid "[KVS] Code listing:"
 msgstr "[KVS] Code listing:"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:224
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:224
 msgid "[KVS] Window:"
 msgstr "[KVS] Fenster:"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:197
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:197
 msgid "[KVS]%c Compilation Error: %Q"
 msgstr "[KVS]%c Kompilierungsfehler: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:205
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:205
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr "[KVS]%c Laufzeitfehler: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:193 src/kvirc/kvs/kvi_kvs_report.cpp:201
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:193
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_report.cpp:201
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Warnung: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1185
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:98
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1185
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:98
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:97
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:97
 msgid "beginning of input"
 msgstr "Eingabebeginn"
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:116
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:116
 #, c-format
 msgid "found empty string where type '%s' was expected"
 msgstr "Leere Zeichenkette gefunden, wo Typ '%s' erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:227
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:276
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:227
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:276
 msgid "found empty string while a non empty one was expected"
 msgstr "Leere Zeichenkette gefunden, wo eine nicht-leere erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:303
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:303
 #, c-format
 msgid "found signed integer \"%d\" where type 'unsigned integer' was expected"
 msgstr "Signed Integer \"%d\" gefunden, wo ein unsigned erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:123
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:123
 msgid "found string value \"%Q\" where type '%s' was expected"
 msgstr "Zeichenkettenwert \"%Q\" gefunden, wo Typ '%s' erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:128
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parameterprocessor.cpp:128
 msgid "found type %Q where type '%s' was expected"
 msgstr "Typ %Q gefunden, wo Typ '%s' erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:95
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_parser.cpp:95
 #, c-format
 msgid "line %d, near character %d"
 msgstr "Zeile %d, bei Zeichen %d"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:89
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:89
 msgid "say: injected commandline"
 msgstr "say: eingespeiste Kommandozeile"
 

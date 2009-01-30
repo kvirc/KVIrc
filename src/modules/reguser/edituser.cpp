@@ -460,16 +460,16 @@ KviRegisteredUserEntryDialog::KviRegisteredUserEntryDialog(QWidget *p,KviRegiste
 	layout->setMargin(20);
 	layout->setSpacing(3);
 
-	m_pIgnoreQuery = new QCheckBox(__tr2qs_ctx("Ignore query-messages","register"),gb);
+	m_pIgnoreQuery = new QCheckBox(__tr2qs_ctx("Ignore query messages","register"),gb);
 	layout->addWidget(m_pIgnoreQuery);
 
-	m_pIgnoreChannel = new QCheckBox(__tr2qs_ctx("Ignore channel-messages","register"),gb);
+	m_pIgnoreChannel = new QCheckBox(__tr2qs_ctx("Ignore channel messages","register"),gb);
 	layout->addWidget(m_pIgnoreChannel);
 
-	m_pIgnoreNotice = new QCheckBox(__tr2qs_ctx("Ignore notice-messages","register"),gb);
+	m_pIgnoreNotice = new QCheckBox(__tr2qs_ctx("Ignore notice messages","register"),gb);
 	layout->addWidget(m_pIgnoreNotice);
 
-	m_pIgnoreCtcp = new QCheckBox(__tr2qs_ctx("Ignore ctcp-messages","register"),gb);
+	m_pIgnoreCtcp = new QCheckBox(__tr2qs_ctx("Ignore CTCP messages","register"),gb);
 	layout->addWidget(m_pIgnoreCtcp);
 
 	m_pIgnoreInvite = new QCheckBox(__tr2qs_ctx("Ignore invites","register"),gb);

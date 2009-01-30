@@ -119,7 +119,8 @@ KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalTreeWidgetItem 
 	{
 		t += __tr2qs_ctx("Notify disabled","register");
 	} else {
-		t += __tr2qs_ctx("Notify as: ","register");
+		t += __tr2qs_ctx("Notify as:","register");
+		t += " ";
 		t += szTmp;
 
 	}
@@ -130,7 +131,8 @@ KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalTreeWidgetItem 
 	{
 		t += __tr2qs_ctx("No comment set","register");
 	} else {
-		t += __tr2qs_ctx("Comment: ","register");
+		t += __tr2qs_ctx("Comment:","register");
+		t += " ";
 		t += m_pUser->getProperty("comment");
 	}
 	t += "</font></nobr>";

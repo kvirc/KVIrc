@@ -1,24 +1,20 @@
-# translation of editor_it.po to Italian
 # translation of editor_it.po to
-# KVIrc Editor module Italian translation file
-# Italian translation file for KVIrc 3.0
+# KVIrc editor modules Italian translation file
+# Italian translation file for KVIrc 4.0
 # Copyright (C) Szymon Stefanek
 # This file is distributed under the same license as the KVIrc package.
-# Eva <eva@cyberbeat.it>, 2004.
-# Etherea <cle at virg0 dot org>, 2006.
 #
+# Elvio Basello <hellvis69@netsons.org>, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: editor_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 02:30+0100\n"
-"PO-Revision-Date: 2009-01-30 02:54+0100\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2009-01-30 16:51+0100\n"
+"Last-Translator: Elvio Basello <hellvis69@netsons.org>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:394
 #, c-format
@@ -831,7 +827,10 @@ msgid ""
 "Ctrl+C\" ..."
 msgstr ""
 "Combinazione di tasti opzionale per abilitare questa azione.<br>La "
-"combinazione deve essere espressa come stringa di massimo 4 tasti separati da virgole eventualmente combinati coi modificatori \"Ctrl\", \"Shift\", \"Alt\" e \"Meta\".<br>Esempi di queste combinazioni sono \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
+"combinazione deve essere espressa come stringa di massimo 4 tasti separati "
+"da virgole eventualmente combinati coi modificatori \"Ctrl\", \"Shift\", "
+"\"Alt\" e \"Meta\".<br>Esempi di queste combinazioni sono \"Ctrl+X\", \"Ctrl"
+"+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:441
 msgid "Paste Above"
@@ -865,7 +864,9 @@ msgstr "Inserisci il nuovo nome per il namespace"
 msgid ""
 "Please enter the text to be searched for. The matching aliases will be "
 "highlighted."
-msgstr "Inserisci il testo da cercare. Gli alias che lo contengono saranno evidenziati."
+msgstr ""
+"Inserisci il testo da cercare. Gli alias che lo contengono saranno "
+"evidenziati."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1027
 msgid "Please note that all the children items will be deleted too."
@@ -974,12 +975,18 @@ msgid "Small Icon:"
 msgstr "Icona Piccola:"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1138
-msgid "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
-msgstr "Carattere ':' spurio nel nome dell'alias: volevi mettere ...<namespace>::<name> ?"
+msgid ""
+"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+msgstr ""
+"Carattere ':' spurio nel nome dell'alias: volevi mettere ...<namespace>::"
+"<name> ?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1206
-msgid "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
-msgstr "Carattere ':' spurio nel nome del namespace: volevi mettere ...<namespace>::<name> ?"
+msgid ""
+"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
+msgstr ""
+"Carattere ':' spurio nel nome del namespace: volevi mettere ...<namespace>::"
+"<name> ?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:82
 msgid "Submenu"
@@ -1001,7 +1008,9 @@ msgstr "L'etichetta della ToolBar non può essere vuota!"
 msgid ""
 "The big icon associated to this action.<br>It will appear at least in the "
 "toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
-msgstr "L'icona grande associata a questa azione.<br>Apparirà nei pulsanti della toolbar quando questa azione verrà inserita.<br>Deve essere di 32x32 pixel."
+msgstr ""
+"L'icona grande associata a questa azione.<br>Apparirà nei pulsanti della "
+"toolbar quando questa azione verrà inserita.<br>Deve essere di 32x32 pixel."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:787
 msgid "The exported file would be empty: cowardly refusing to write it"
@@ -1015,14 +1024,19 @@ msgstr "Il file \"%Q\" esiste. Vuoi sovrascriverlo ?"
 msgid ""
 "The small icon associated to this action.<br>It will appear at least in the "
 "popup menus when this action is inserted.<br>It has to be 16x16 pixels."
-msgstr "L'icona piccola associata a questa azione.<br>Apparirà nei menu popup quando questa azione verrà inserita.<br>Deve essere di 16x16 pixel."
+msgstr ""
+"L'icona piccola associata a questa azione.<br>Apparirà nei menu popup quando "
+"questa azione verrà inserita.<br>Deve essere di 16x16 pixel."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:266
 msgid ""
 "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
 "it automatically (so it doesn't collide with any other toolbar) or you "
 "prefer to do it manually ?"
-msgstr "L'ID della ToolBar specificata esistegià.<br>Vuoi che KVIrc lo assegnerà automaticamente (così non colliderà con nessun'altra toolbar) o preferisci farlo manualmente ?"
+msgstr ""
+"L'ID della ToolBar specificata esistegià.<br>Vuoi che KVIrc lo assegnerà "
+"automaticamente (così non colliderà con nessun'altra toolbar) o preferisci "
+"farlo manualmente ?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:713
 msgid "There is no selection!"
@@ -1039,7 +1053,9 @@ msgstr "Questo nome è già in uso. Scegline un altro."
 msgid ""
 "This will enable the action only if there are selected users in the active "
 "window"
-msgstr "Questo abiliterà l'azione solo se ci sono utenti selezionati nella finestra attiva"
+msgstr ""
+"Questo abiliterà l'azione solo se ci sono utenti selezionati nella finestra "
+"attiva"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:407
 msgid "ToolBar Export"
@@ -1094,13 +1110,17 @@ msgstr "Variabili:"
 msgid ""
 "Visible name for this action.<br>This string will be displayed to the user "
 "so it is a good idea to use $tr() here"
-msgstr "Nome visibile per questa azione.<br>Questa stringa verrà mostrata all'utente quindi è una buona idea usare $tr() qui"
+msgstr ""
+"Nome visibile per questa azione.<br>Questa stringa verrà mostrata all'utente "
+"quindi è una buona idea usare $tr() qui"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:146
 msgid ""
 "Visible short description for this action.<br>This string will be displayed "
 "to the user so it is a good idea to use $tr() here"
-msgstr "Breve descrizione visibile per questa azione.<br>Questa stringa verrà mostrata all'utente quindi è una buona idea usare $tr() qui"
+msgstr ""
+"Breve descrizione visibile per questa azione.<br>Questa stringa verrà "
+"mostrata all'utente quindi è una buona idea usare $tr() qui"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/editor/scripteditor.cpp:988
 msgid "Word to Find"
@@ -1152,4 +1172,3 @@ msgstr "niente"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:199
 msgid "unnamed"
 msgstr "senza nome"
-
