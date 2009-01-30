@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:51+0100\n"
+"POT-Creation-Date: 2009-01-30 20:03+0100\n"
 "PO-Revision-Date: 2008-03-07 09:56+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -117,12 +117,6 @@ msgstr "### Session du journal commencée à %s ###"
 #, fuzzy
 msgid "### Log session terminated at %1 ###"
 msgstr "### Session du journal terminée à %s ###"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:850
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1050
-msgid "$setColor requires either an array as first parameter or three integers"
-msgstr ""
-"$setColor nécessite soit un tableau en premier paramètre, soit 3 entiers"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_qstring.cpp:167
 msgid "%1 GB"
@@ -1114,12 +1108,6 @@ msgstr "Une véritable machine à transformer le texte pour lamouzes :D"
 msgid "A really lame text transformation engine: Light Version."
 msgstr ""
 "Une véritable machine à transformer le texte pour lamouzes : version légère"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:831
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1031
-#, fuzzy
-msgid "A string of 6 hex digits is required"
-msgstr "Une chaîne de caractère de 6 numéros hexadécimaux est recquis"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:383
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:729
@@ -2464,13 +2452,14 @@ msgstr "Bureau"
 msgid "Desktop Integration"
 msgstr "Intégration au bureau"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
-msgid "Destinaion file exists: no copy made"
-msgstr "Le fichier destinataire existe : aucune copie effectuée"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:248
 msgid "Destination file exists: file not renamed"
 msgstr "Le fichier destinataire existe : le fichier n'a pas été renomé"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
+#, fuzzy
+msgid "Destination file exists: no copy made"
+msgstr "Le fichier destinataire existe : aucune copie effectuée"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_toolbar.cpp:95
 msgid "Detached"
@@ -2740,14 +2729,6 @@ msgstr "Erreur dans le fichier compressé"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:100
 msgid "Error in loading module"
 msgstr "Erreur lors du chargement du module"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
-msgid ""
-"Error occured: the suitable file '%Q' is not of the correct format or it is "
-"not a valid icon number."
-msgstr ""
-"Erreur : le fichier '%Q' n'est pas au format correct ou n'est pas un numéro "
-"d'icône valide."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/file/kvi_packagefile.cpp:436
 msgid "Error while compressing a file stream"
@@ -3232,18 +3213,9 @@ msgstr "Nom de machine %d : %Q"
 msgid "Hostname resolution aborted"
 msgstr "Résolution du nom de la machine interrompue"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1082
-msgid "I can't find the specified file '%Q'."
-msgstr "Impossible de trouver le fichier spécifié '%Q'."
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
 msgstr "Impossible d'ouvrir le fichier"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1089
-#, fuzzy
-msgid "I cannot read the file '%Q'."
-msgstr " Impossible de lire le fichier '%Q'."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/iograph/libkviiograph.cpp:71
 msgid "I/O Traffic Graph"
@@ -3478,7 +3450,8 @@ msgstr "Erreur interne"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:214
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:292
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:367
-msgid "Internal error: I'm not in the user database ?"
+#, fuzzy
+msgid "Internal error: ain't I in the user database ?"
 msgstr "Erreur interne : je ne suis pas dans la base des utilisateurs ?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:529
@@ -4407,12 +4380,6 @@ msgstr ""
 msgid "Normal text"
 msgstr "Texte normal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:842
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1042
-#, fuzzy
-msgid "Not an hex digit"
-msgstr "Ce n'est pas un numéro hexadécimal"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:254
 msgid "Not away"
 msgstr "Pas absent"
@@ -4634,17 +4601,6 @@ msgstr "Valider"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
 msgstr "Sur <b>"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:819
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1019
-msgid "One of the colors array parameters didn't evaluate to an integer"
-msgstr ""
-"Un des éléments du tableau de couleurs passé en paramètre n'est pas un entier"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:814
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1014
-msgid "One of the colors array parameters is empty"
-msgstr "Un des éléments du tableau de couleurs passé en paramètre est vide"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:148
 #, c-format
@@ -4906,10 +4862,6 @@ msgstr "Copier (Lentement)"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:83
 msgid "Peer X509 certificate"
 msgstr "Certificat X509 du correspondant"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
-msgid "Pixmap object or image Id required"
-msgstr "Objet pixmap ou identifiant d'image requis"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1234
 msgid "Pixmap options (image path)"
@@ -6250,11 +6202,6 @@ msgstr "L'addon  \"%1\" n'a pas de commande de configuration définie"
 msgid "The addon \"%1\" has no help callback set"
 msgstr "L'addon  \"%1\" n'a pas d'aide définie"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:805
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1005
-msgid "The array passed as parameter must contain at least 3 elements"
-msgstr "Le tableau passé en paramètre doit contenir au moins 3 éléments"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:191
 msgid "The closing quotation mark is missing."
 msgstr "Il manque guillemet de fermeture."
@@ -6348,11 +6295,6 @@ msgstr "Le fichier %s existe déjà.<br>Voulez-vous l'écraser ?"
 msgid "The file specified is not a valid KVIrc package"
 msgstr "Le fichier spécifié n'est pas un paquet KVIrc valide"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:855
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1055
-msgid "The first parameter didn't evaluate to an array nor an integer"
-msgstr "Le paramètre n'a pas été évalué à un entier ou un tableau d'entiers"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1471
 msgid "The following CTCP ACTION has unrecognized target %Q"
 msgstr "Le CTCP ACTION suivant a une cible inconnue %Q"
@@ -6385,10 +6327,6 @@ msgid ""
 msgstr ""
 "Le message suivant apparaît chiffré, la machine de déchiffrage n'a pas pu le "
 "décoder : %Q"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
-msgid "The listviewitem cannot be parentless"
-msgstr "L'item listviewitem ne peut pas être orphelin"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:867
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:877
@@ -6423,14 +6361,6 @@ msgid ""
 msgstr ""
 "Le paquet a un numéro de version invalide, il est possible qu'il ait été "
 "créé par une version de KVIrc plus récente"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:179
-#, fuzzy
-msgid ""
-"The parent of the listwidgetitem must be either another listwidgetitem or a "
-"listwidget"
-msgstr ""
-"Le parent de listviewitem doit être soit un autre listviewtiem ou un listview"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/plugin.cpp:321
 msgid ""
@@ -7080,10 +7010,6 @@ msgstr "Inconnu "
 msgid "Unknown CTCP reply"
 msgstr "Réponse de CTCP inconnue"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1117
-msgid "Unknown alignment '%Q'"
-msgstr "Alignement inconnu '%Q'"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:53
 msgid "Unknown command"
 msgstr "Commande inconnue"
@@ -7101,11 +7027,6 @@ msgstr "Erreur inconnue"
 msgid "Unknown function"
 msgstr "Fonction inconnue"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
-#, fuzzy
-msgid "Unknown item flag '%Q'"
-msgstr "Type d'objet graphique inconnu : '%Q'"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:80
 msgid "Unknown node (host not found)"
 msgstr "Noeud inconnu (adresse de la machine non trouvée)"
@@ -7121,10 +7042,6 @@ msgstr "Serveur inconnu<br>"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:166
 msgid "Unknown string manipulation operation"
 msgstr "Manipulation inconnue de la chaîne de caractères"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:508
-msgid "Unknown word wrap '%Q'"
-msgstr "Mode césure inconnu '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:271
 #, fuzzy
@@ -8265,6 +8182,11 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ "chaîne de caractères hexadécimale, soit 3 entiers"
 
 #~ msgid ""
+#~ "$setColor requires either an array as first parameter or three integers"
+#~ msgstr ""
+#~ "$setColor nécessite soit un tableau en premier paramètre, soit 3 entiers"
+
+#~ msgid ""
 #~ "$setForegroundColor requires either an array as first parameter, one hex "
 #~ "string or three integers"
 #~ msgstr ""
@@ -8609,6 +8531,10 @@ msgstr "z : Destinataire des messages wallops aux opers"
 
 #~ msgid "A popup menu cannot be popped up twice"
 #~ msgstr "Un menu de popup ne peut être ouvert deux fois"
+
+#, fuzzy
+#~ msgid "A string of 6 hex digits is required"
+#~ msgstr "Une chaîne de caractère de 6 numéros hexadécimaux est recquis"
 
 #~ msgid "Action"
 #~ msgstr "Action"
@@ -9178,6 +9104,13 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ msgid "Error near line %d, column %d"
 #~ msgstr "Erreur près de la ligne %d et de la colonne %d"
 
+#~ msgid ""
+#~ "Error occured: the suitable file '%Q' is not of the correct format or it "
+#~ "is not a valid icon number."
+#~ msgstr ""
+#~ "Erreur : le fichier '%Q' n'est pas au format correct ou n'est pas un "
+#~ "numéro d'icône valide."
+
 #~ msgid "Error triggered from process callback handler: killing process"
 #~ msgstr ""
 #~ "Erreur recceuillie par l'intercepteur de rappel de processus : on tue le "
@@ -9422,6 +9355,13 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ msgid "I can't find the specified file %Q."
 #~ msgstr "Impossible de trouver le fichier %Q."
 
+#~ msgid "I can't find the specified file '%Q'."
+#~ msgstr "Impossible de trouver le fichier spécifié '%Q'."
+
+#, fuzzy
+#~ msgid "I cannot read the file '%Q'."
+#~ msgstr " Impossible de lire le fichier '%Q'."
+
 #~ msgid "IP address %d: %Q"
 #~ msgstr "Adresse IP %d : %Q"
 
@@ -9504,6 +9444,10 @@ msgstr "z : Destinataire des messages wallops aux opers"
 
 #~ msgid "Install Addon..."
 #~ msgstr "Installer un Addon..."
+
+#, fuzzy
+#~ msgid "Internal error: ain't in the user database ?"
+#~ msgstr "Erreur interne : je ne suis pas dans la base des utilisateurs ?"
 
 #~ msgid "Internal error: pure virtual evaluateReadOnly called"
 #~ msgstr "Erreur interne : appel de evaluateReadOnly virtuel pur"
@@ -10012,6 +9956,10 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ msgid "Not a widget object"
 #~ msgstr "Ce n'est pas un objet graphique"
 
+#, fuzzy
+#~ msgid "Not an hex digit"
+#~ msgstr "Ce n'est pas un numéro hexadécimal"
+
 #~ msgid "Notify Avatar"
 #~ msgstr "Notifier l'Avatar"
 
@@ -10073,6 +10021,14 @@ msgstr "z : Destinataire des messages wallops aux opers"
 
 #~ msgid "One of the array parameters is empty"
 #~ msgstr "On des élements du tableau passé en paramètre est vide"
+
+#~ msgid "One of the colors array parameters didn't evaluate to an integer"
+#~ msgstr ""
+#~ "Un des éléments du tableau de couleurs passé en paramètre n'est pas un "
+#~ "entier"
+
+#~ msgid "One of the colors array parameters is empty"
+#~ msgstr "Un des éléments du tableau de couleurs passé en paramètre est vide"
 
 #~ msgid "One of the geometry array parameters didn't evaluate to an integer"
 #~ msgstr ""
@@ -10164,6 +10120,9 @@ msgstr "z : Destinataire des messages wallops aux opers"
 
 #~ msgid "Pixmap dimensions are out of destination size "
 #~ msgstr "Les dimensions du Pixmap dépassent les dimensions de la destination"
+
+#~ msgid "Pixmap object or image Id required"
+#~ msgstr "Objet pixmap ou identifiant d'image requis"
 
 #~ msgid "Pixmap object required"
 #~ msgstr "Objet pixmap requis"
@@ -10632,6 +10591,9 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ msgid "The array passed as parameter must contain at least 2 elements"
 #~ msgstr "Le tableau passé en paramètre doit avoir au moins 2 éléments"
 
+#~ msgid "The array passed as parameter must contain at least 3 elements"
+#~ msgstr "Le tableau passé en paramètre doit contenir au moins 3 éléments"
+
 #~ msgid "The array passed as parameter must contain at least 4 elements"
 #~ msgstr "Le tableau passé en paramètre doit avoir au moins 4 éléments"
 
@@ -10689,6 +10651,9 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ msgstr ""
 #~ "Le fichier %s ne semble pas être une base valide de données "
 #~ "d'utilisateurs enregistrés."
+
+#~ msgid "The first parameter didn't evaluate to an array nor an integer"
+#~ msgstr "Le paramètre n'a pas été évalué à un entier ou un tableau d'entiers"
 
 #~ msgid ""
 #~ "The last if command in the buffer has no conditional instructions: it's "
@@ -10768,6 +10733,9 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ "Le membre de gauche de l'opérateur de portée est évalué à une référence "
 #~ "d'objet invalide (l'objet n'existe pas)"
 
+#~ msgid "The listviewitem cannot be parentless"
+#~ msgstr "L'item listviewitem ne peut pas être orphelin"
+
 #~ msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
 #~ msgstr ""
 #~ "L'élement de menu ayant pour idientifiant \"%Q\" n'existe pas dans le "
@@ -10778,6 +10746,14 @@ msgstr "z : Destinataire des messages wallops aux opers"
 
 #~ msgid "The parent of a layout must be a widget!"
 #~ msgstr "Le parent d'un layout doit etre un widget !"
+
+#, fuzzy
+#~ msgid ""
+#~ "The parent of the listwidgetitem must be either another listwidgetitem or "
+#~ "a listwidget"
+#~ msgstr ""
+#~ "Le parent de listviewitem doit être soit un autre listviewtiem ou un "
+#~ "listview"
 
 #~ msgid "The parent-widget isn't a MainWindow."
 #~ msgstr "Le widget parent n'est pas une MainWindow."
@@ -11253,6 +11229,9 @@ msgstr "z : Destinataire des messages wallops aux opers"
 #~ msgid "Unknown alignment"
 #~ msgstr "Alignement inconnu"
 
+#~ msgid "Unknown alignment '%Q'"
+#~ msgstr "Alignement inconnu '%Q'"
+
 #~ msgid "Unknown alignment: '%Q'"
 #~ msgstr "Alignement inconnu : '%Q'"
 
@@ -11276,6 +11255,10 @@ msgstr "z : Destinataire des messages wallops aux opers"
 
 #~ msgid "Unknown echo mode %Q"
 #~ msgstr "Mode echo inconnu %Q"
+
+#, fuzzy
+#~ msgid "Unknown item flag '%Q'"
+#~ msgstr "Type d'objet graphique inconnu : '%Q'"
 
 #~ msgid "Unknown mode "
 #~ msgstr "Mode inconnu "
@@ -11315,6 +11298,9 @@ msgstr "z : Destinataire des messages wallops aux opers"
 
 #~ msgid "Unknown widget attribute '%Q'"
 #~ msgstr "Attribut de widget '%Q' inconnu"
+
+#~ msgid "Unknown word wrap '%Q'"
+#~ msgstr "Mode césure inconnu '%Q'"
 
 #~ msgid "Unknown wrap policy'%Q'"
 #~ msgstr "Police de césure inconnue '%Q'"

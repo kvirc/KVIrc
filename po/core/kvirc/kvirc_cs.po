@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:51+0100\n"
+"POT-Creation-Date: 2009-01-30 20:03+0100\n"
 "PO-Revision-Date: 2007-12-17 11:31+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -115,11 +115,6 @@ msgstr "### Logovací relace spuštěna v %s ###"
 #, fuzzy
 msgid "### Log session terminated at %1 ###"
 msgstr "### Logovací relace ukončena v %s ###"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:850
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1050
-msgid "$setColor requires either an array as first parameter or three integers"
-msgstr "$setColor() vyžaduje pole jako první parametr třech celých čísel"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_qstring.cpp:167
 msgid "%1 GB"
@@ -1095,12 +1090,6 @@ msgstr "Skutečně lamerský transformátor textu :D"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/lamerizer/libkvilamerizer.cpp:229
 msgid "A really lame text transformation engine: Light Version."
 msgstr "Skutečně lamerský transformátor textu : Odlehčená verze."
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:831
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1031
-#, fuzzy
-msgid "A string of 6 hex digits is required"
-msgstr "Je třeba řetězec 6 hexa čísel"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:383
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:729
@@ -2423,13 +2412,13 @@ msgstr "Pracovní plocha"
 msgid "Desktop Integration"
 msgstr "Integrace s desktopem"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
-msgid "Destinaion file exists: no copy made"
-msgstr "Cílový soubor existuje: kopie nevytvořena"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:248
 msgid "Destination file exists: file not renamed"
 msgstr "Cílový soubor existuje: soubor nebyl přejmenován"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
+msgid "Destination file exists: no copy made"
+msgstr "Cílový soubor existuje: kopie nevytvořena"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_toolbar.cpp:95
 msgid "Detached"
@@ -2696,15 +2685,6 @@ msgstr "Chyba v komprimovaném souboru"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:100
 msgid "Error in loading module"
 msgstr "Chyba při nahrání modulu"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
-#, fuzzy
-msgid ""
-"Error occured: the suitable file '%Q' is not of the correct format or it is "
-"not a valid icon number."
-msgstr ""
-"Vyskytla se chyba: soubor není ve správném formátu nebo nemá platné číslo "
-"ikony."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/file/kvi_packagefile.cpp:436
 msgid "Error while compressing a file stream"
@@ -3171,18 +3151,9 @@ msgstr "Hostitel %d: %Q"
 msgid "Hostname resolution aborted"
 msgstr "Zjištění hostitele přerušeno"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1082
-msgid "I can't find the specified file '%Q'."
-msgstr "Nelze nalézt zadaný soubor '%Q'."
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
 msgstr "Nelze otevřít tento soubor"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1089
-#, fuzzy
-msgid "I cannot read the file '%Q'."
-msgstr " Nelze číst soubor '%Q'."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/iograph/libkviiograph.cpp:71
 msgid "I/O Traffic Graph"
@@ -3412,7 +3383,8 @@ msgstr "Interní chyba"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:214
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:292
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:367
-msgid "Internal error: I'm not in the user database ?"
+#, fuzzy
+msgid "Internal error: ain't I in the user database ?"
 msgstr "Interní chyba: Nejsem v databázi uživatelů ?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:529
@@ -4326,12 +4298,6 @@ msgstr "Nelze se přihlásit jako '\r!n\r%Q\r' (%d: %Q), zkouší se '%Q'..."
 msgid "Normal text"
 msgstr "Normální text"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:842
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1042
-#, fuzzy
-msgid "Not an hex digit"
-msgstr "Nejsou hexa číslice"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:254
 msgid "Not away"
 msgstr "Není pryč"
@@ -4553,16 +4519,6 @@ msgstr "Ok"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
 msgstr "Na <b>"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:819
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1019
-msgid "One of the colors array parameters didn't evaluate to an integer"
-msgstr "Jeden parametr z pole barev nejde přepočítat na celé číslo"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:814
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1014
-msgid "One of the colors array parameters is empty"
-msgstr "Jeden parametr z pole barev je prázdný"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:148
 #, c-format
@@ -4820,10 +4776,6 @@ msgstr "Vložit (pomalu)"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:83
 msgid "Peer X509 certificate"
 msgstr "X509 ceritifikát"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
-msgid "Pixmap object or image Id required"
-msgstr "Je potřeba pixmapový objekt nebo Id obrázku"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1234
 msgid "Pixmap options (image path)"
@@ -6124,11 +6076,6 @@ msgstr "Rozšíření \"%1\" nemá nastaven configure callback"
 msgid "The addon \"%1\" has no help callback set"
 msgstr "Rozšíření \"%1\" nemá nastaven help callback"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:805
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1005
-msgid "The array passed as parameter must contain at least 3 elements"
-msgstr "Pole zadané jako parametr musí obsahovat nejméně 3 elementy"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:191
 msgid "The closing quotation mark is missing."
 msgstr ""
@@ -6217,11 +6164,6 @@ msgstr "Soubor %s již existuje.<br>Chcete jej přepsat?"
 msgid "The file specified is not a valid KVIrc package"
 msgstr "Zadaný soubor není platným balíčkem KVIrc"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:855
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1055
-msgid "The first parameter didn't evaluate to an array nor an integer"
-msgstr "První parametr nejde přepočítat na pole nebo na celé číslo"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1471
 msgid "The following CTCP ACTION has unrecognized target %Q"
 msgstr "Následující CTCP ACTION má neočekávaný cíl %Q"
@@ -6255,10 +6197,6 @@ msgstr ""
 "Následující zpráva vypadá jako zašifrovaná, ale šifrovací nástroj selhal v "
 "jejím dekódování: %Q"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
-msgid "The listviewitem cannot be parentless"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:867
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:877
 msgid "The local IP address as seen by the IRC server is %Q"
@@ -6289,12 +6227,6 @@ msgid ""
 "The package has an invalid version number, it might have been created by a "
 "newer KVIrc"
 msgstr "Balíček má neplatné číslo verze, byl asi vytvořen novějším KVIrc"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:179
-msgid ""
-"The parent of the listwidgetitem must be either another listwidgetitem or a "
-"listwidget"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/plugin.cpp:321
 msgid ""
@@ -6909,10 +6841,6 @@ msgstr "Neznámý"
 msgid "Unknown CTCP reply"
 msgstr "Neznámá CTCP odezva"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1117
-msgid "Unknown alignment '%Q'"
-msgstr "Neznámé zarovnání '%Q'"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:53
 msgid "Unknown command"
 msgstr "Neznámý příkaz"
@@ -6930,11 +6858,6 @@ msgstr "Neznámá chyba"
 msgid "Unknown function"
 msgstr "Neznámá funkce"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
-#, fuzzy
-msgid "Unknown item flag '%Q'"
-msgstr "Neznámý flag widgetu: '%Q'"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:80
 msgid "Unknown node (host not found)"
 msgstr "Neznámý node (hostitel nenalezen)"
@@ -6950,11 +6873,6 @@ msgstr "Neznámý server<br>"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:166
 msgid "Unknown string manipulation operation"
 msgstr "Neznámá operace manipulace s řetězcem"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:508
-#, fuzzy
-msgid "Unknown word wrap '%Q'"
-msgstr "Neznámá vázací operace '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:271
 #, fuzzy
@@ -8123,6 +8041,10 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgstr ""
 #~ "$setBackgroundColor vyžaduje pole jako první parametr, jeden hexa řetězec "
 #~ "nebo tři celá čísla"
+
+#~ msgid ""
+#~ "$setColor requires either an array as first parameter or three integers"
+#~ msgstr "$setColor() vyžaduje pole jako první parametr třech celých čísel"
 
 #~ msgid ""
 #~ "$setForegroundColor requires either an array as first parameter, one hex "
@@ -9761,6 +9683,10 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "A popup menu cannot be popped up twice"
 #~ msgstr "Popup menu nemůže být zobrazeno dvakrát"
 
+#, fuzzy
+#~ msgid "A string of 6 hex digits is required"
+#~ msgstr "Je třeba řetězec 6 hexa čísel"
+
 #~ msgid "AVATAR"
 #~ msgstr "AVATAR"
 
@@ -10656,11 +10582,11 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Description:"
 #~ msgstr "Popis:"
 
+#~ msgid "Destinaion file exists: no copy made"
+#~ msgstr "Cílový soubor existuje: kopie nevytvořena"
+
 #~ msgid "Destination  parameter is not an object"
 #~ msgstr "Cílový parametr není objekt"
-
-#~ msgid "Destination file exists: no copy made"
-#~ msgstr "Cílový soubor existuje: kopie nevytvořena"
 
 #~ msgid "Destination is not an object"
 #~ msgstr "Cíl není objekt"
@@ -10887,6 +10813,14 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Error near line %d, column %d"
 #~ msgstr "Chyba poblíž řádku %d, sloupce %d"
+
+#, fuzzy
+#~ msgid ""
+#~ "Error occured: the suitable file '%Q' is not of the correct format or it "
+#~ "is not a valid icon number."
+#~ msgstr ""
+#~ "Vyskytla se chyba: soubor není ve správném formátu nebo nemá platné číslo "
+#~ "ikony."
 
 #~ msgid "Error token: %c%Q"
 #~ msgstr "Chybný token: %c%Q"
@@ -11325,6 +11259,13 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "I can't find the specified file %Q."
 #~ msgstr "Nelze nalézt zadaný soubor %Q."
 
+#~ msgid "I can't find the specified file '%Q'."
+#~ msgstr "Nelze nalézt zadaný soubor '%Q'."
+
+#, fuzzy
+#~ msgid "I cannot read the file '%Q'."
+#~ msgstr " Nelze číst soubor '%Q'."
+
 #~ msgid "ID3 tags' encoding"
 #~ msgstr "kódování ID3 tagů"
 
@@ -11501,6 +11442,10 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ "Internal error: Unable to add timer %s, insufficient system resources"
 #~ msgstr ""
 #~ "Interní chyba: Nelze přidat časovač %s, nedostatek systémových zdrojů"
+
+#, fuzzy
+#~ msgid "Internal error: ain't in the user database ?"
+#~ msgstr "Interní chyba: Nejsem v databázi uživatelů ?"
 
 #~ msgid "Internal error: pure virtual evaluateReadOnly called"
 #~ msgstr "Interní chyba: pure virtual evaluateReadOnly voláno"
@@ -12607,6 +12552,10 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Not a widget object"
 #~ msgstr "Není widget objekt"
 
+#, fuzzy
+#~ msgid "Not an hex digit"
+#~ msgstr "Nejsou hexa číslice"
+
 #~ msgid "Nothing to write"
 #~ msgstr "Není co zapisovat"
 
@@ -12711,6 +12660,12 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "One of the array parameters is empty"
 #~ msgstr "Jeden z parametrů pole je prázdný"
+
+#~ msgid "One of the colors array parameters didn't evaluate to an integer"
+#~ msgstr "Jeden parametr z pole barev nejde přepočítat na celé číslo"
+
+#~ msgid "One of the colors array parameters is empty"
+#~ msgstr "Jeden parametr z pole barev je prázdný"
 
 #~ msgid "One of the geometry array parameters didn't evaluate to an integer"
 #~ msgstr "Jeden z parametrů geometrického pole nejde přepočítat na celé číslo"
@@ -12877,6 +12832,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Pixmap not found"
 #~ msgstr "Pixmapa nenalezena."
+
+#~ msgid "Pixmap object or image Id required"
+#~ msgstr "Je potřeba pixmapový objekt nebo Id obrázku"
 
 #~ msgid "Pixmap object required"
 #~ msgstr "Je potřeba pixmapový objekt"
@@ -13695,6 +13653,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "The array passed as parameter must contain at least 2 elements"
 #~ msgstr "Pole zadané jako parametr musí obsahovat nejméně 2 elementy"
 
+#~ msgid "The array passed as parameter must contain at least 3 elements"
+#~ msgstr "Pole zadané jako parametr musí obsahovat nejméně 3 elementy"
+
 #~ msgid "The array passed as parameter must contain at least 4 elements"
 #~ msgstr "Pole zadané jako parametr musí obsahovat nejméně 4 elementy"
 
@@ -13764,6 +13725,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #, fuzzy
 #~ msgid "The file size is not an positive number"
 #~ msgstr "Zadaný parametr není celé číslo"
+
+#~ msgid "The first parameter didn't evaluate to an array nor an integer"
+#~ msgstr "První parametr nejde přepočítat na pole nebo na celé číslo"
 
 #, fuzzy
 #~ msgid "The first parameter must be an unsigned number"
@@ -14531,6 +14495,9 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 #~ msgid "Unknown alignment"
 #~ msgstr "Neznámé zarovnání"
 
+#~ msgid "Unknown alignment '%Q'"
+#~ msgstr "Neznámé zarovnání '%Q'"
+
 #~ msgid "Unknown alignment: %s"
 #~ msgstr "Neznámé zarovnání: %s"
 
@@ -14570,6 +14537,10 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Unknown frame style"
 #~ msgstr "Neznámý styl rámu"
+
+#, fuzzy
+#~ msgid "Unknown item flag '%Q'"
+#~ msgstr "Neznámý flag widgetu: '%Q'"
 
 #~ msgid "Unknown mode "
 #~ msgstr "Neznámý mód "
@@ -14616,6 +14587,10 @@ msgstr "z: Příjemce pro oper wallop zprávy"
 
 #~ msgid "Unknown widget type: %s"
 #~ msgstr "Neznámý typ widgetu: %s"
+
+#, fuzzy
+#~ msgid "Unknown word wrap '%Q'"
+#~ msgstr "Neznámá vázací operace '%Q'"
 
 #~ msgid "Unknown wrap policy'%Q'"
 #~ msgstr "Neznámé wrap pravidlo '%Q'"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:51+0100\n"
+"POT-Creation-Date: 2009-01-30 20:03+0100\n"
 "PO-Revision-Date: 2007-12-19 10:23+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -112,11 +112,6 @@ msgstr "### Журналювання почато %s ###"
 #, fuzzy
 msgid "### Log session terminated at %1 ###"
 msgstr "### Журналювання завершено %s ###"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:850
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1050
-msgid "$setColor requires either an array as first parameter or three integers"
-msgstr "$setColor вимагає або масиву як перший параметр або трьох цілих чисел"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_qstring.cpp:167
 msgid "%1 GB"
@@ -1097,12 +1092,6 @@ msgstr "Дійсно ламерский текстовий перетворюв�
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/lamerizer/libkvilamerizer.cpp:229
 msgid "A really lame text transformation engine: Light Version."
 msgstr "Дійсно ламерский текстовий перетворювач: полегшена версія"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:831
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1031
-#, fuzzy
-msgid "A string of 6 hex digits is required"
-msgstr "Потрібна рядок з 6 шестнадцатерічних символів"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:383
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:729
@@ -2442,13 +2431,14 @@ msgstr "Робітник стіл"
 msgid "Desktop Integration"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
-msgid "Destinaion file exists: no copy made"
-msgstr "Файл призначення існує: копія не зроблена"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:248
 msgid "Destination file exists: file not renamed"
 msgstr "Файл призначення існує: файл не перейменований"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
+#, fuzzy
+msgid "Destination file exists: no copy made"
+msgstr "Файл призначення існує: копія не зроблена"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_toolbar.cpp:95
 msgid "Detached"
@@ -2717,12 +2707,6 @@ msgstr "Помилка в стислому потоці"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:100
 msgid "Error in loading module"
 msgstr "Помилка завантаження модуля"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
-msgid ""
-"Error occured: the suitable file '%Q' is not of the correct format or it is "
-"not a valid icon number."
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/file/kvi_packagefile.cpp:436
 msgid "Error while compressing a file stream"
@@ -3203,18 +3187,9 @@ msgstr "Адреса %d: %Q"
 msgid "Hostname resolution aborted"
 msgstr "Визначення адреси перерване"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1082
-msgid "I can't find the specified file '%Q'."
-msgstr "Не можу знайти файл %Q"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
 msgstr "Я не можу відкрити цей файл"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1089
-#, fuzzy
-msgid "I cannot read the file '%Q'."
-msgstr " Я не можу прочитати файл. %Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/iograph/libkviiograph.cpp:71
 msgid "I/O Traffic Graph"
@@ -3445,7 +3420,8 @@ msgstr "Внутрішня помилка"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:214
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:292
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:367
-msgid "Internal error: I'm not in the user database ?"
+#, fuzzy
+msgid "Internal error: ain't I in the user database ?"
 msgstr "Внутрішня помилка: Це не база даних користувачів?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:529
@@ -4366,12 +4342,6 @@ msgstr "Неможливо ввійти під ніком '\r!n\r%Q\r' (%d: %Q),
 msgid "Normal text"
 msgstr "Нормальний текст"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:842
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1042
-#, fuzzy
-msgid "Not an hex digit"
-msgstr "Не шестнадцятеричні символи"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:254
 msgid "Not away"
 msgstr "режим Відійшов не включений"
@@ -4590,16 +4560,6 @@ msgstr "Ок"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
 msgstr "На <b>"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:819
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1019
-msgid "One of the colors array parameters didn't evaluate to an integer"
-msgstr "Один із квітів у масиві параметрів не є цілим числом"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:814
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1014
-msgid "One of the colors array parameters is empty"
-msgstr "Один із квітів у масиві параметрів порожній"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:148
 #, c-format
@@ -4857,10 +4817,6 @@ msgstr "Вставити (повільно)"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:83
 msgid "Peer X509 certificate"
 msgstr "Сертифікат ідентичний X509"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
-msgid "Pixmap object or image Id required"
-msgstr "Потрібно Pixmap об’єкт або малюнок"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1234
 msgid "Pixmap options (image path)"
@@ -6189,11 +6145,6 @@ msgstr "Доповнення \"%1\" не має конфігураційних �
 msgid "The addon \"%1\" has no help callback set"
 msgstr "Дія \"%1\" не має допомоги"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:805
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1005
-msgid "The array passed as parameter must contain at least 3 elements"
-msgstr "Масив, переданий як параметр, повинен мати як мінімум 3 елементи"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:191
 msgid "The closing quotation mark is missing."
 msgstr "Пропущена закриваючі лапки"
@@ -6285,11 +6236,6 @@ msgstr "Файл %s існує<br>Хочете переписати його?"
 msgid "The file specified is not a valid KVIrc package"
 msgstr "Задана версія \"%Q\" не має формату рядка версії"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:855
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1055
-msgid "The first parameter didn't evaluate to an array nor an integer"
-msgstr "Перший параметр не визначає безліч і не є цілим числом"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1471
 msgid "The following CTCP ACTION has unrecognized target %Q"
 msgstr "CTCP ACTION має непізнану мету %Q"
@@ -6320,10 +6266,6 @@ msgid ""
 msgstr ""
 "З'явилося наступне шифроване повідомлення, але кріптовальна машина не може "
 "його декодувати: %Q"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
-msgid "The listviewitem cannot be parentless"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:867
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:877
@@ -6356,12 +6298,6 @@ msgid ""
 msgstr ""
 "Пакет має не вірний номер версії. Можливо, він створений більше новою "
 "версією KVIrc"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:179
-msgid ""
-"The parent of the listwidgetitem must be either another listwidgetitem or a "
-"listwidget"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/plugin.cpp:321
 msgid ""
@@ -6982,10 +6918,6 @@ msgstr "Невідомий"
 msgid "Unknown CTCP reply"
 msgstr "Невідома відповідь CTCP"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1117
-msgid "Unknown alignment '%Q'"
-msgstr "Невідоме вирівнювання '%Q'"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:53
 msgid "Unknown command"
 msgstr "Невідома команда"
@@ -7003,11 +6935,6 @@ msgstr "Невідома помилка"
 msgid "Unknown function"
 msgstr "Невідома функція"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
-#, fuzzy
-msgid "Unknown item flag '%Q'"
-msgstr "Невідомий прапор widget'a: %Q"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:80
 msgid "Unknown node (host not found)"
 msgstr "Хост не знайдений"
@@ -7023,10 +6950,6 @@ msgstr "Невідомий сервер<br>"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:166
 msgid "Unknown string manipulation operation"
 msgstr "Операція обробки невідомого рядка"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:508
-msgid "Unknown word wrap '%Q'"
-msgstr "Невідоме слово '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:271
 #, fuzzy
@@ -8160,6 +8083,11 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ "шестнадцатиричну рядок або трьох цілих чисел"
 
 #~ msgid ""
+#~ "$setColor requires either an array as first parameter or three integers"
+#~ msgstr ""
+#~ "$setColor вимагає або масиву як перший параметр або трьох цілих чисел"
+
+#~ msgid ""
 #~ "$setForegroundColor requires either an array as first parameter, one hex "
 #~ "string or three integers"
 #~ msgstr ""
@@ -8480,6 +8408,10 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "A popup menu cannot be popped up twice"
 #~ msgstr "Спливаюче меню не може бути показане двічі"
+
+#, fuzzy
+#~ msgid "A string of 6 hex digits is required"
+#~ msgstr "Потрібна рядок з 6 шестнадцатерічних символів"
 
 #~ msgid "Action"
 #~ msgstr "Дія"
@@ -9251,6 +9183,13 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "I can't find the specified file %Q."
 #~ msgstr "Не можу знайти файл %Q"
 
+#~ msgid "I can't find the specified file '%Q'."
+#~ msgstr "Не можу знайти файл %Q"
+
+#, fuzzy
+#~ msgid "I cannot read the file '%Q'."
+#~ msgstr " Я не можу прочитати файл. %Q"
+
 #~ msgid "IP address %d: %Q"
 #~ msgstr "IP адреса %d: %Q"
 
@@ -9323,6 +9262,10 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Install Addon..."
 #~ msgstr "Установити доповнення..."
+
+#, fuzzy
+#~ msgid "Internal error: ain't in the user database ?"
+#~ msgstr "Внутрішня помилка: Це не база даних користувачів?"
 
 #~ msgid "Internal error: pure virtual evaluateReadOnly called"
 #~ msgstr "Внутрішня помилка: виклик чистої віртуальної evaluateReadOnly"
@@ -9824,6 +9767,10 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Not a widget object"
 #~ msgstr "Не widget об'єкт"
 
+#, fuzzy
+#~ msgid "Not an hex digit"
+#~ msgstr "Не шестнадцятеричні символи"
+
 #~ msgid "Notify Avatar"
 #~ msgstr "Повідомити про зміну аватара"
 
@@ -9879,6 +9826,12 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "One of the array parameters is empty"
 #~ msgstr "Один з параметрів масиву порожній"
+
+#~ msgid "One of the colors array parameters didn't evaluate to an integer"
+#~ msgstr "Один із квітів у масиві параметрів не є цілим числом"
+
+#~ msgid "One of the colors array parameters is empty"
+#~ msgstr "Один із квітів у масиві параметрів порожній"
 
 #~ msgid "One of the geometry array parameters didn't evaluate to an integer"
 #~ msgstr "Один з параметрів масиву геометрії не є числовим"
@@ -9953,6 +9906,9 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Paste Inside"
 #~ msgstr "Вставити по середині"
+
+#~ msgid "Pixmap object or image Id required"
+#~ msgstr "Потрібно Pixmap об’єкт або малюнок"
 
 #~ msgid "Pixmap object required"
 #~ msgstr "Потрібно Pixmap об’єкт"
@@ -10404,6 +10360,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "The array passed as parameter must contain at least 2 elements"
 #~ msgstr "Масив, переданий як параметр, повинен мати як мінімум 2 елементи"
 
+#~ msgid "The array passed as parameter must contain at least 3 elements"
+#~ msgstr "Масив, переданий як параметр, повинен мати як мінімум 3 елементи"
+
 #~ msgid "The array passed as parameter must contain at least 4 elements"
 #~ msgstr "Масив, переданий як параметр, повинен мати як мінімум 4 елементи"
 
@@ -10455,6 +10414,9 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "The file %s doesn't appear to be a valid registered users database."
 #~ msgstr "Файл %s не є дійсною базою реєстрації користувачів."
+
+#~ msgid "The first parameter didn't evaluate to an array nor an integer"
+#~ msgstr "Перший параметр не визначає безліч і не є цілим числом"
 
 #~ msgid ""
 #~ "The last if command in the buffer has no conditional instructions: it's "
@@ -10929,6 +10891,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #~ msgid "Unknown alignment"
 #~ msgstr "Невідоме вирівнювання"
 
+#~ msgid "Unknown alignment '%Q'"
+#~ msgstr "Невідоме вирівнювання '%Q'"
+
 #~ msgid "Unknown alignment: '%Q'"
 #~ msgstr "Невідоме вирівнювання: '%Q'"
 
@@ -10952,6 +10917,10 @@ msgstr "z: Одержувач повідомлень wallop"
 
 #~ msgid "Unknown echo mode %Q"
 #~ msgstr "Невідомий echo режим %Q"
+
+#, fuzzy
+#~ msgid "Unknown item flag '%Q'"
+#~ msgstr "Невідомий прапор widget'a: %Q"
 
 #~ msgid "Unknown mode "
 #~ msgstr "Невідомий режим"
@@ -10992,6 +10961,9 @@ msgstr "z: Одержувач повідомлень wallop"
 #, fuzzy
 #~ msgid "Unknown widget attribute '%Q'"
 #~ msgstr "Невідомий прапор widget'a: %Q"
+
+#~ msgid "Unknown word wrap '%Q'"
+#~ msgstr "Невідоме слово '%Q'"
 
 #~ msgid "Unknown wrap policy'%Q'"
 #~ msgstr "Невідома політика '%Q'"

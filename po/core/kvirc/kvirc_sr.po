@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:51+0100\n"
+"POT-Creation-Date: 2009-01-30 20:03+0100\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -120,11 +120,6 @@ msgstr "### Sesija beleenja pokrenuta u %s ###"
 #, fuzzy
 msgid "### Log session terminated at %1 ###"
 msgstr "### Sesija beleenja prekinuta u %s ###"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:850
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1050
-msgid "$setColor requires either an array as first parameter or three integers"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_qstring.cpp:167
 msgid "%1 GB"
@@ -1137,11 +1132,6 @@ msgstr "Maina za tranformisanje stvarno lamerskog teksta :D"
 #, fuzzy
 msgid "A really lame text transformation engine: Light Version."
 msgstr "Maina za tranformisanje stvarno lamerskog teksta :D"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:831
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1031
-msgid "A string of 6 hex digits is required"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:383
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:729
@@ -2619,13 +2609,14 @@ msgstr "Link radne povrine"
 msgid "Desktop Integration"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
-msgid "Destinaion file exists: no copy made"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:248
 #, fuzzy
 msgid "Destination file exists: file not renamed"
+msgstr "Specifi�a bind adresa (%Q) nije validna"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
+#, fuzzy
+msgid "Destination file exists: no copy made"
 msgstr "Specifi�a bind adresa (%Q) nije validna"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_toolbar.cpp:95
@@ -2914,12 +2905,6 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:100
 msgid "Error in loading module"
 msgstr "Greka u u�tavanju modula"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
-msgid ""
-"Error occured: the suitable file '%Q' is not of the correct format or it is "
-"not a valid icon number."
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/file/kvi_packagefile.cpp:436
 msgid "Error while compressing a file stream"
@@ -3445,19 +3430,9 @@ msgstr "Ime hosta %d: %s"
 msgid "Hostname resolution aborted"
 msgstr "Konektovanje prekinuto"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1082
-#, fuzzy
-msgid "I can't find the specified file '%Q'."
-msgstr "Ne mogu da na�m multimedijalni fajl %s"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/spaste/libkvispaste.cpp:114
 #, fuzzy
 msgid "I can't open that file"
-msgstr "I ne mogu da otvorim taj fajl"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1089
-#, fuzzy
-msgid "I cannot read the file '%Q'."
 msgstr "I ne mogu da otvorim taj fajl"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/iograph/libkviiograph.cpp:71
@@ -3704,7 +3679,7 @@ msgstr "Interna greka."
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:214
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:292
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:367
-msgid "Internal error: I'm not in the user database ?"
+msgid "Internal error: ain't I in the user database ?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:529
@@ -4700,11 +4675,6 @@ msgstr "Nema anse da se logujete kao '\r!n\r%Q\r' (%d:%Q): pokuavam '%Q'..."
 msgid "Normal text"
 msgstr "Normalni tekst"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:842
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1042
-msgid "Not an hex digit"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:254
 #, fuzzy
 msgid "Not away"
@@ -4941,17 +4911,6 @@ msgstr "Ok"
 #, fuzzy
 msgid "On <b>"
 msgstr " na <b>"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:819
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1019
-#, fuzzy
-msgid "One of the colors array parameters didn't evaluate to an integer"
-msgstr "Desni operand operatora %s procenjen na '%s' (nije broj)"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:814
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1014
-msgid "One of the colors array parameters is empty"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:148
 #, fuzzy, c-format
@@ -5228,10 +5187,6 @@ msgstr "Prenesi (polako)"
 #, fuzzy
 msgid "Peer X509 certificate"
 msgstr "Server X509 sertifikat"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
-msgid "Pixmap object or image Id required"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1234
 msgid "Pixmap options (image path)"
@@ -6649,11 +6604,6 @@ msgstr ""
 msgid "The addon \"%1\" has no help callback set"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:805
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1005
-msgid "The array passed as parameter must contain at least 3 elements"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:191
 msgid "The closing quotation mark is missing."
 msgstr ""
@@ -6748,12 +6698,6 @@ msgstr ""
 msgid "The file specified is not a valid KVIrc package"
 msgstr "Nevedeno unix vreme nije ispravno (%s)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:855
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1055
-#, fuzzy
-msgid "The first parameter didn't evaluate to an array nor an integer"
-msgstr "Levi operator nije broj"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1471
 msgid "The following CTCP ACTION has unrecognized target %Q"
 msgstr "Slede� CTCP zahtev ima nepoznatu metu %Q"
@@ -6788,10 +6732,6 @@ msgstr ""
 "Prate� poruka izgleda da je ifrovana, ali maina za deifrovanje ne moe da je "
 "deifruje: %s"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
-msgid "The listviewitem cannot be parentless"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:867
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:877
 msgid "The local IP address as seen by the IRC server is %Q"
@@ -6820,12 +6760,6 @@ msgstr ""
 msgid ""
 "The package has an invalid version number, it might have been created by a "
 "newer KVIrc"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:179
-msgid ""
-"The parent of the listwidgetitem must be either another listwidgetitem or a "
-"listwidget"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/plugin.cpp:321
@@ -7489,11 +7423,6 @@ msgstr "Nepoznato"
 msgid "Unknown CTCP reply"
 msgstr "nepoznat CTCP odgovor"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1117
-#, fuzzy
-msgid "Unknown alignment '%Q'"
-msgstr "Nepoznat operator"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:53
 msgid "Unknown command"
 msgstr "Nepoznata komanda"
@@ -7512,11 +7441,6 @@ msgstr "Nepoznata greka"
 msgid "Unknown function"
 msgstr "Nepoznata funkcija"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
-#, fuzzy
-msgid "Unknown item flag '%Q'"
-msgstr "Nepoznat operator"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:80
 msgid "Unknown node (host not found)"
 msgstr "Nepoznat �or (host nije prona�n)"
@@ -7533,11 +7457,6 @@ msgstr "Nepoznata greka"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:166
 msgid "Unknown string manipulation operation"
 msgstr "Nepoznata operacija manipulacije znakom"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:508
-#, fuzzy
-msgid "Unknown word wrap '%Q'"
-msgstr "Nepoznat operator"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:271
 #, fuzzy
@@ -11536,6 +11455,14 @@ msgstr "z: prima�oper wallop poruka"
 #~ msgstr "Napredno ..."
 
 #, fuzzy
+#~ msgid "I can't find the specified file '%Q'."
+#~ msgstr "Ne mogu da na�m multimedijalni fajl %s"
+
+#, fuzzy
+#~ msgid "I cannot read the file '%Q'."
+#~ msgstr "I ne mogu da otvorim taj fajl"
+
+#, fuzzy
 #~ msgid "IP address %d: %Q"
 #~ msgstr "IP adresa %d: %s"
 
@@ -11809,6 +11736,10 @@ msgstr "z: prima�oper wallop poruka"
 #~ msgstr "lista obavetenja ulasci"
 
 #, fuzzy
+#~ msgid "One of the colors array parameters didn't evaluate to an integer"
+#~ msgstr "Desni operand operatora %s procenjen na '%s' (nije broj)"
+
+#, fuzzy
 #~ msgid "Operand of unary operator didn't evaluate to a number"
 #~ msgstr "Desni operand operatora %s procenjen na '%s' (nije broj)"
 
@@ -11983,6 +11914,10 @@ msgstr "z: prima�oper wallop poruka"
 #~ msgstr ""
 #~ "Fajl %s ve�pstoji.\n"
 #~ "Prepisati ga ?"
+
+#, fuzzy
+#~ msgid "The first parameter didn't evaluate to an array nor an integer"
+#~ msgstr "Levi operator nije broj"
 
 #, fuzzy
 #~ msgid "The left side of operator '%=' didn't evaluate to a number"
@@ -12254,6 +12189,10 @@ msgstr "z: prima�oper wallop poruka"
 #~ msgstr "Neo�kivan kraj komande u klju� re�ika"
 
 #, fuzzy
+#~ msgid "Unknown alignment '%Q'"
+#~ msgstr "Nepoznat operator"
+
+#, fuzzy
 #~ msgid "Unknown binary operator '%q'"
 #~ msgstr "Nepoznat operator"
 
@@ -12264,6 +12203,14 @@ msgstr "z: prima�oper wallop poruka"
 #, fuzzy
 #~ msgid "Unknown callback command \"%Q\""
 #~ msgstr "Nepoznata komanda"
+
+#, fuzzy
+#~ msgid "Unknown item flag '%Q'"
+#~ msgstr "Nepoznat operator"
+
+#, fuzzy
+#~ msgid "Unknown word wrap '%Q'"
+#~ msgstr "Nepoznat operator"
 
 #, fuzzy
 #~ msgid "Unterminated instruction block"

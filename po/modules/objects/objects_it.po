@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:51+0100\n"
-"PO-Revision-Date: 2009-01-27 16:29+0100\n"
+"POT-Creation-Date: 2009-01-30 19:57+0100\n"
+"PO-Revision-Date: 2009-01-30 20:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -52,6 +52,11 @@ msgstr ""
 "$setBackgroundColor richiede come primo paramentro un array, una stringa "
 "esadecimale, un nome di colore o tre interi"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:850
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1050
+msgid "$setColor requires either an array as first parameter or three integers"
+msgstr "$setColor richiede o un array come primo parametro o tre interi"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1257
 msgid ""
 "$setForegroundColor requires either an array as first parameter, one hex "
@@ -61,14 +66,17 @@ msgstr ""
 "esadecimale, un nome di colore o tre interi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1135
-msgid ""
-"$setGeometry() requires either an array as first parameter or four integers"
-msgstr ""
-"$setGeometry() richiede sia un array come primo parametro o quattro interi"
+msgid "$setGeometry() requires either an array as first parameter or four integers"
+msgstr "$setGeometry() richiede sia un array come primo parametro o quattro interi"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_http.cpp:247
 msgid "'%Q' is not a valid file path"
 msgstr "'%Q' non è un percorso valido per il file"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:831
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1031
+msgid "A string of 6 hex digits is required"
+msgstr "E' richiesta una stringa di 6 cifre esadecimali"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:657
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:688
@@ -77,8 +85,7 @@ msgstr "Un'altra connessione in corso"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:278
 msgid "Area dimensions are out of destination size "
-msgstr ""
-"Le dimensioni dell'area sono più grandi della grandezza di destinazione"
+msgstr "Le dimensioni dell'area sono più grandi della grandezza di destinazione"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:321
 msgid "Argument too long, using only first char"
@@ -95,8 +102,7 @@ msgstr "Bind fallito"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:516
 msgid "Block parameter must be a string or a memorybuffer object"
-msgstr ""
-"Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
+msgstr "Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:216
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:433
@@ -228,6 +234,12 @@ msgstr "Errore nell'implementazione della classe KVS: processo annullato"
 msgid "Error near line %d, column %d"
 msgstr "Errore vicino alla riga %d, colonna %d"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
+msgid ""
+"Error occured: the suitable file '%Q' is not of the correct format or it is "
+"not a valid icon number."
+msgstr "E' occorso un errore: il file '%Q' non è nel formato corretto o non è un valido numero di icona."
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:963
 msgid "Failed to create the socket"
 msgstr "Creazione della socket fallita"
@@ -254,10 +266,15 @@ msgstr "Il file non è aperto!"
 msgid "Host '%Q' is not a valid url"
 msgstr "Host '%Q' non è un url valido"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1082
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:193
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tbrowser.cpp:103
 msgid "I can't find the specified file '%Q'."
 msgstr "Non trovo il file '%Q' specificato."
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1089
+msgid "I cannot read the file '%Q'."
+msgstr "Non posso leggere il file '%Q'."
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_popupmenu.cpp:214
 msgid "Icon '%Q' doesn't exist"
@@ -395,6 +412,11 @@ msgstr "Nessun modo di apertura '%Q'"
 msgid "Not a valid color !"
 msgstr "Colore non valido!"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:842
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1042
+msgid "Not an hex digit"
+msgstr "Non è una cifra esadecimale"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1859
 msgid "Null mask"
 msgstr "Maschera nulla"
@@ -432,11 +454,15 @@ msgstr "Uno dei parametri dell'array è vuoto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1220
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1302
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:819
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1019
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr "Uno dei parametri dell'array dei colori non viene valutato come intero"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1214
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1296
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:814
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1014
 msgid "One of the colors array parameters is empty"
 msgstr "Uno dei parametri dell'array dei colori è vuoto"
 
@@ -460,8 +486,7 @@ msgstr "Uno dei parametri dell'array move è vuoto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1632
 msgid "One of the resize array parameters didn't evaluate to an integer"
-msgstr ""
-"Uno dei parametri dell'array ridimensionamento non viene valutato come intero"
+msgstr "Uno dei parametri dell'array ridimensionamento non viene valutato come intero"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1627
 msgid "One of the resize array parameters is empty"
@@ -485,6 +510,10 @@ msgstr "Il padre dev'essere un oggetto widget"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:294
 msgid "Pixmap dimensions are out of destination size "
 msgstr "Le dimensioni della pixmap sono oltre la dimensione di destinazione"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
+msgid "Pixmap object or image Id required"
+msgstr "Oggetto pixmap o ID immagine richiesto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:1142
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1854
@@ -542,6 +571,8 @@ msgstr "L'array passato come parametro deve contenere almeno 2 elementi"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:619
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1205
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1287
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:805
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1005
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr "L'array passato come parametro deve contenere almeno 3 elementi"
 
@@ -567,6 +598,8 @@ msgstr "Il file '%Q' non esiste"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1344
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1587
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1644
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:855
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1055
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr "Il primo parametro non viene valutato come array né come intero"
 
@@ -587,6 +620,10 @@ msgstr "I dati in arrivo non sono un Dizionario"
 msgid "The incoming data isn't an array"
 msgstr "I dati in arrivo non sono un array"
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
+msgid "The listviewitem cannot be parentless"
+msgstr "L'elemento della lista non può essere senza padre"
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:500
 msgid "The memoryBuffer object is empty: nothing will be saved"
 msgstr "L'oggetto memorybuffer è vuoto: non verrà salvato nulla"
@@ -604,6 +641,12 @@ msgstr "Il valore di opacità non viene valutato come intero"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_layout.cpp:139
 msgid "The parent of a layout must be a widget!"
 msgstr "Il padre di un layout deve essere una widget!"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:179
+msgid ""
+"The parent of the listwidgetitem must be either another listwidgetitem or a "
+"listwidget"
+msgstr "L'oggetto padre di questo elemento della lista deve essere un'altro elemento lista o una lista"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_toolbar.cpp:92
 msgid "The parent-widget isn't a MainWindow."
@@ -644,8 +687,7 @@ msgid "There is no connection to accept!"
 msgstr "Non ci sono connessioni da accettare!"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_socket.cpp:1198
-msgid ""
-"Too much unprocessed incoming data (you've left this socket unmanaged ?)"
+msgid "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""
 "Troppi dati non processati in arrivo (hai lasciato la socket senza "
 "controllo?)"
@@ -667,6 +709,7 @@ msgid "Unknown Color Role '%Q'"
 msgstr "Ruolo Colore '%Q' sconosciuto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_label.cpp:291
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1117
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_hbox.cpp:197
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_groupbox.cpp:315
 msgid "Unknown alignment '%Q'"
@@ -688,6 +731,10 @@ msgstr "Stile del pennello '%Q' sconosciuto"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_lineedit.cpp:383
 msgid "Unknown echo mode '%Q'"
 msgstr "Modo echo '%Q' sconosciuto"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
+msgid "Unknown item flag '%Q'"
+msgstr "Flag elemento '%Q' sconosciuta"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_lcd.cpp:142
 msgid "Unknown mode '%Q'"
@@ -734,6 +781,10 @@ msgstr "Attributo widget '%Q' sconosciuto"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1697
 msgid "Unknown widget flag '%Q'"
 msgstr "Flag widget '%Q' sconosciuta"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:508
+msgid "Unknown word wrap '%Q'"
+msgstr "Word wrap '%Q' sconosciuto"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"
@@ -803,3 +854,4 @@ msgstr "Errore in scrittura!"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_xmlreader.cpp:315
 msgid "XML support not available in the Qt library"
 msgstr "Il supporto XML non è disponibile nella libreria Qt"
+

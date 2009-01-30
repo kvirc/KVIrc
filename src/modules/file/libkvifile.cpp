@@ -75,7 +75,7 @@ static bool file_kvs_cmd_copy(KviKvsModuleCommandCall * c)
 	KviFileUtils::adjustFilePath(szDst);
 	if(KviFileUtils::fileExists(szDst) && !c->switches()->find('o',"overwrite"))
 	{
-		c->warning(__tr2qs("Destinaion file exists: no copy made"));
+		c->warning(__tr2qs("Destination file exists: no copy made"));
 		return true;
 	}
 	if(!KviFileUtils::copyFile(szSrc,szDst))

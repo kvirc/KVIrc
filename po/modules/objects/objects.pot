@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:51+0100\n"
+"POT-Creation-Date: 2009-01-30 19:57+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,6 +45,7 @@ msgid "Widget object required"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_label.cpp:291
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1117
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_hbox.cpp:197
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_groupbox.cpp:315
 msgid "Unknown alignment '%Q'"
@@ -90,6 +91,8 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1344
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1587
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1644
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:855
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1055
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr ""
 
@@ -116,6 +119,8 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_painter.cpp:619
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1205
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1287
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:805
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1005
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr ""
 
@@ -208,11 +213,15 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1214
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1296
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:814
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1014
 msgid "One of the colors array parameters is empty"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1220
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_widget.cpp:1302
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:819
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1019
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr ""
 
@@ -308,6 +317,35 @@ msgstr ""
 msgid "No such line '%d'"
 msgstr ""
 
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:508
+msgid "Unknown word wrap '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:831
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1031
+msgid "A string of 6 hex digits is required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:842
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1042
+msgid "Not an hex digit"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:850
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1050
+msgid "$setColor requires either an array as first parameter or three integers"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1082
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:193
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tbrowser.cpp:103
+msgid "I can't find the specified file '%Q'."
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1089
+msgid "I cannot read the file '%Q'."
+msgstr ""
+
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_popupmenu.cpp:214
 msgid "Icon '%Q' doesn't exist"
 msgstr ""
@@ -318,11 +356,6 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:148
 msgid "Unknown tranformation mode: using default value Fast"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:193
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_tbrowser.cpp:103
-msgid "I can't find the specified file '%Q'."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:211
@@ -617,6 +650,30 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_layout.cpp:289
 msgid "The widget must be a child of this layout"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
+msgid "The listviewitem cannot be parentless"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:179
+msgid ""
+"The parent of the listwidgetitem must be either another listwidgetitem or a "
+"listwidget"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
+msgid "Unknown item flag '%Q'"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
+msgid "Pixmap object or image Id required"
+msgstr ""
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
+msgid ""
+"Error occured: the suitable file '%Q' is not of the correct format or it is "
+"not a valid icon number."
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_buttongroup.cpp:95

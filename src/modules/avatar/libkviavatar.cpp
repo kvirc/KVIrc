@@ -211,7 +211,7 @@ static bool avatar_kvs_cmd_set(KviKvsModuleCommandCall * c)
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
 	if(!e)
 	{
-		c->warning(__tr2qs("Internal error: I'm not in the user database ?"));
+		c->warning(__tr2qs("Internal error: ain't I in the user database ?"));
 		return true;
 	}
 
@@ -289,7 +289,7 @@ static bool avatar_kvs_cmd_unset(KviKvsModuleCommandCall * c)
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
 	if(!e)
 	{
-		c->warning(__tr2qs("Internal error: I'm not in the user database ?"));
+		c->warning(__tr2qs("Internal error: ain't I in the user database ?"));
 		return true;
 	}
 
@@ -364,7 +364,7 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 	KviIrcUserEntry * e = c->window()->connection()->userDataBase()->find(c->window()->connection()->currentNickName());
 	if(!e)
 	{
-		c->warning(__tr2qs("Internal error: I'm not in the user database ?"));
+		c->warning(__tr2qs("Internal error: ain't I in the user database ?"));
 		return true;
 	}
 

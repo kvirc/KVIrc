@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:51+0100\n"
+"POT-Creation-Date: 2009-01-30 20:03+0100\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Catal�<ca@li.org>\n"
@@ -120,11 +120,6 @@ msgstr "### Sessi�de registre iniciada a les %s ###"
 #, fuzzy
 msgid "### Log session terminated at %1 ###"
 msgstr "### Sessi�de registre acabada a les %s ###"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:850
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1050
-msgid "$setColor requires either an array as first parameter or three integers"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_qstring.cpp:167
 msgid "%1 GB"
@@ -1108,11 +1103,6 @@ msgstr "Un motor de transformaci�de text realment simple :D"
 #, fuzzy
 msgid "A really lame text transformation engine: Light Version."
 msgstr "Un motor de transformaci�de text realment simple :D"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:831
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1031
-msgid "A string of 6 hex digits is required"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:383
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:729
@@ -2488,14 +2478,13 @@ msgstr "Escritori"
 msgid "Desktop Integration"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
-#, fuzzy
-msgid "Destinaion file exists: no copy made"
-msgstr "L'arxiu de dest�existeix: no s'ha fet c�ia"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:248
 msgid "Destination file exists: file not renamed"
 msgstr "L'arxiu de dest�existeix: no s'ha renombrat"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
+msgid "Destination file exists: no copy made"
+msgstr "L'arxiu de dest�existeix: no s'ha fet c�ia"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_toolbar.cpp:95
 msgid "Detached"
@@ -2773,12 +2762,6 @@ msgstr ""
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:100
 msgid "Error in loading module"
 msgstr "Error en carregar el m�ul"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
-msgid ""
-"Error occured: the suitable file '%Q' is not of the correct format or it is "
-"not a valid icon number."
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/file/kvi_packagefile.cpp:436
 msgid "Error while compressing a file stream"
@@ -3284,18 +3267,8 @@ msgstr "M�uina %d: %s"
 msgid "Hostname resolution aborted"
 msgstr "Cancellada la resoluci�del nom de m�uina"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1082
-#, fuzzy
-msgid "I can't find the specified file '%Q'."
-msgstr "No es pot trobar l'arxiu multim�ia %s"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
-msgstr "No puc obrir aquest arxiu"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1089
-#, fuzzy
-msgid "I cannot read the file '%Q'."
 msgstr "No puc obrir aquest arxiu"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/iograph/libkviiograph.cpp:71
@@ -3535,7 +3508,8 @@ msgstr "Error intern"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:214
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:292
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:367
-msgid "Internal error: I'm not in the user database ?"
+#, fuzzy
+msgid "Internal error: ain't I in the user database ?"
 msgstr "Error intern: no estic a la base de dades d'usuari?"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:529
@@ -4473,11 +4447,6 @@ msgstr ""
 msgid "Normal text"
 msgstr "Text normal"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:842
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1042
-msgid "Not an hex digit"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:254
 msgid "Not away"
 msgstr "Present"
@@ -4703,18 +4672,6 @@ msgstr "Acceptar"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
 msgstr "A <b>"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:819
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1019
-#, fuzzy
-msgid "One of the colors array parameters didn't evaluate to an integer"
-msgstr "El par�etre d'acci�no s'avalua com un �dex"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:814
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1014
-#, fuzzy
-msgid "One of the colors array parameters is empty"
-msgstr "El par�etre d'acci�no s'avalua com un �dex"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:148
 #, c-format
@@ -4978,11 +4935,6 @@ msgstr "Enganxar (lentament)"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:83
 msgid "Peer X509 certificate"
 msgstr "Certificat X509 de l'altre part"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
-#, fuzzy
-msgid "Pixmap object or image Id required"
-msgstr "M�uina no trobada"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1234
 msgid "Pixmap options (image path)"
@@ -6336,11 +6288,6 @@ msgstr "L'acci�\"%1\" no existeix"
 msgid "The addon \"%1\" has no help callback set"
 msgstr "L'acci�\"%1\" no existeix"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:805
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1005
-msgid "The array passed as parameter must contain at least 3 elements"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:191
 msgid "The closing quotation mark is missing."
 msgstr ""
@@ -6436,12 +6383,6 @@ msgstr "El arxiu %s ja existeix.<br>Sobreescriure-ho?"
 msgid "The file specified is not a valid KVIrc package"
 msgstr "El format de temps especificat no � v�id (%s)"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:855
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1055
-#, fuzzy
-msgid "The first parameter didn't evaluate to an array nor an integer"
-msgstr "El par�etre d'acci�no s'avalua com un �dex"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1471
 msgid "The following CTCP ACTION has unrecognized target %Q"
 msgstr "El segent CTCP ACTION t�un dest�no reconegut %Q"
@@ -6476,10 +6417,6 @@ msgstr ""
 "El segent missatge sembla estar xifrat, per�el motor de xifrat a fallat al "
 "descodificar-lo: %s"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
-msgid "The listviewitem cannot be parentless"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:867
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:877
 msgid "The local IP address as seen by the IRC server is %Q"
@@ -6508,12 +6445,6 @@ msgstr ""
 msgid ""
 "The package has an invalid version number, it might have been created by a "
 "newer KVIrc"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:179
-msgid ""
-"The parent of the listwidgetitem must be either another listwidgetitem or a "
-"listwidget"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/plugin.cpp:321
@@ -7160,11 +7091,6 @@ msgstr "Desconegut"
 msgid "Unknown CTCP reply"
 msgstr "Resposta CTCP desconoeguda"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1117
-#, fuzzy
-msgid "Unknown alignment '%Q'"
-msgstr "Alineaci�desconeguda: %s"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:53
 msgid "Unknown command"
 msgstr "Comanda desconeguda"
@@ -7183,11 +7109,6 @@ msgstr "Error desconegut"
 msgid "Unknown function"
 msgstr "Funci�desconeguda"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
-#, fuzzy
-msgid "Unknown item flag '%Q'"
-msgstr "Alineaci�desconeguda: %s"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:80
 msgid "Unknown node (host not found)"
 msgstr "Node desconegut (m�uina no trobada)"
@@ -7203,11 +7124,6 @@ msgstr "Servidor desconegut<br>"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:166
 msgid "Unknown string manipulation operation"
 msgstr "Operaci�de manipulaci�de cadena desconeguda"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:508
-#, fuzzy
-msgid "Unknown word wrap '%Q'"
-msgstr "Operaci�d'associaci�desconeguda '%Q'"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:271
 #, fuzzy
@@ -10951,11 +10867,12 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr "Descripci�"
 
 #, fuzzy
+#~ msgid "Destinaion file exists: no copy made"
+#~ msgstr "L'arxiu de dest�existeix: no s'ha fet c�ia"
+
+#, fuzzy
 #~ msgid "Destination  parameter is not an object"
 #~ msgstr "La finestra especificada no � un canal"
-
-#~ msgid "Destination file exists: no copy made"
-#~ msgstr "L'arxiu de dest�existeix: no s'ha fet c�ia"
 
 #, fuzzy
 #~ msgid "Destination is not an object"
@@ -11637,6 +11554,14 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr "No es pot trobar l'arxiu multim�ia %s"
 
 #, fuzzy
+#~ msgid "I can't find the specified file '%Q'."
+#~ msgstr "No es pot trobar l'arxiu multim�ia %s"
+
+#, fuzzy
+#~ msgid "I cannot read the file '%Q'."
+#~ msgstr "No puc obrir aquest arxiu"
+
+#, fuzzy
 #~ msgid "IP address %d: %Q"
 #~ msgstr "Direcci�IP %d: %s"
 
@@ -11810,6 +11735,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr ""
 #~ "Error intern: no s'ha pogut afegir el cron�etre %s, no hi ha suficients "
 #~ "recursos al sistema"
+
+#, fuzzy
+#~ msgid "Internal error: ain't in the user database ?"
+#~ msgstr "Error intern: no estic a la base de dades d'usuari?"
 
 #~ msgid "Internal error: pure virtual evaluateReadOnly called"
 #~ msgstr "Error intern: s'ha cridat al m�ode virtual pur avaluat ReadOnly"
@@ -13069,6 +12998,14 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr "El par�etre d'acci�no s'avalua com un �dex"
 
 #, fuzzy
+#~ msgid "One of the colors array parameters didn't evaluate to an integer"
+#~ msgstr "El par�etre d'acci�no s'avalua com un �dex"
+
+#, fuzzy
+#~ msgid "One of the colors array parameters is empty"
+#~ msgstr "El par�etre d'acci�no s'avalua com un �dex"
+
+#, fuzzy
 #~ msgid "One of the geometry array parameters didn't evaluate to an integer"
 #~ msgstr "El par�etre d'acci�no s'avalua com un �dex"
 
@@ -13205,6 +13142,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 
 #~ msgid "Pattern"
 #~ msgstr "Patr"
+
+#, fuzzy
+#~ msgid "Pixmap object or image Id required"
+#~ msgstr "M�uina no trobada"
 
 #, fuzzy
 #~ msgid "Pixmap parameter is not an object"
@@ -14085,6 +14026,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgstr "La finestra especificada no � un canal"
 
 #, fuzzy
+#~ msgid "The first parameter didn't evaluate to an array nor an integer"
+#~ msgstr "El par�etre d'acci�no s'avalua com un �dex"
+
+#, fuzzy
 #~ msgid "The first parameter must be an unsigned number"
 #~ msgstr "La finestra especificada no � un canal"
 
@@ -14786,6 +14731,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #~ msgid "Unknown alignment"
 #~ msgstr "Alineaci�desconeguda: %s"
 
+#, fuzzy
+#~ msgid "Unknown alignment '%Q'"
+#~ msgstr "Alineaci�desconeguda: %s"
+
 #~ msgid "Unknown alignment: %s"
 #~ msgstr "Alineaci�desconeguda: %s"
 
@@ -14829,6 +14778,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid "Unknown frame style"
 #~ msgstr "Marc desconegut / estil d'ombra: %s"
+
+#, fuzzy
+#~ msgid "Unknown item flag '%Q'"
+#~ msgstr "Alineaci�desconeguda: %s"
 
 #, fuzzy
 #~ msgid "Unknown mode "
@@ -14888,6 +14841,10 @@ msgstr "z: Destinatari de missatges oper wallop"
 #, fuzzy
 #~ msgid "Unknown widget type: %s"
 #~ msgstr "Alineaci�desconeguda: %s"
+
+#, fuzzy
+#~ msgid "Unknown word wrap '%Q'"
+#~ msgstr "Operaci�d'associaci�desconeguda '%Q'"
 
 #~ msgid "UnknownNet"
 #~ msgstr "Xarxa Desconeguda"

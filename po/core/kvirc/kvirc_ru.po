@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:51+0100\n"
+"POT-Creation-Date: 2009-01-30 20:03+0100\n"
 "PO-Revision-Date: 2009-01-26 19:19+0300\n"
 "Last-Translator: Alexey Uzhva <alexey /a/tt/ uzhva /d/o/t/ ru>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -145,11 +145,6 @@ msgstr "### Журналирование начато %s ###"
 #, fuzzy
 msgid "### Log session terminated at %1 ###"
 msgstr "### Журналирование завершено %s ###"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:850
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1050
-msgid "$setColor requires either an array as first parameter or three integers"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_qstring.cpp:167
 msgid "%1 GB"
@@ -1100,11 +1095,6 @@ msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/lamerizer/libkvilamerizer.cpp:229
 msgid "A really lame text transformation engine: Light Version."
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:831
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1031
-msgid "A string of 6 hex digits is required"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:383
@@ -2442,13 +2432,14 @@ msgstr "Рабочий стол"
 msgid "Desktop Integration"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
-msgid "Destinaion file exists: no copy made"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:248
 #, fuzzy
 msgid "Destination file exists: file not renamed"
+msgstr "Файл назначения существует: файл не переименован"
+
+#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/file/libkvifile.cpp:78
+#, fuzzy
+msgid "Destination file exists: no copy made"
 msgstr "Файл назначения существует: файл не переименован"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_toolbar.cpp:95
@@ -2716,12 +2707,6 @@ msgstr "Ошибка в сжатом потоке"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:100
 msgid "Error in loading module"
 msgstr "Ошибка загрузки модуля"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:451
-msgid ""
-"Error occured: the suitable file '%Q' is not of the correct format or it is "
-"not a valid icon number."
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/file/kvi_packagefile.cpp:436
 msgid "Error while compressing a file stream"
@@ -3208,19 +3193,9 @@ msgstr "Адрес %d: %Q"
 msgid "Hostname resolution aborted"
 msgstr "Определение адреса прервано"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1082
-#, fuzzy
-msgid "I can't find the specified file '%Q'."
-msgstr "Не найдена иконка '%Q"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/spaste/libkvispaste.cpp:114
 msgid "I can't open that file"
 msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1089
-#, fuzzy
-msgid "I cannot read the file '%Q'."
-msgstr "Не найдена иконка '%Q"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/iograph/libkviiograph.cpp:71
 msgid "I/O Traffic Graph"
@@ -3454,7 +3429,7 @@ msgstr "Внутренняя ошибка"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:214
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:292
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/avatar/libkviavatar.cpp:367
-msgid "Internal error: I'm not in the user database ?"
+msgid "Internal error: ain't I in the user database ?"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/addon/libkviaddon.cpp:529
@@ -4386,11 +4361,6 @@ msgstr "Невозможно войти под ником '\r!n\r%Q\r' (%d: %Q),
 msgid "Normal text"
 msgstr "Нормальный текст"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:842
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1042
-msgid "Not an hex digit"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_statusbarapplet.cpp:254
 msgid "Not away"
 msgstr "режим Отошёл не включен"
@@ -4610,17 +4580,6 @@ msgstr "Ок"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:350
 msgid "On <b>"
 msgstr "На <b>"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:819
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1019
-#, fuzzy
-msgid "One of the colors array parameters didn't evaluate to an integer"
-msgstr "Левая часть оператора '&=' не является целым числом"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:814
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1014
-msgid "One of the colors array parameters is empty"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:148
 #, c-format
@@ -4876,10 +4835,6 @@ msgstr "Вставить (медленно)"
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_sslmaster.cpp:83
 msgid "Peer X509 certificate"
 msgstr "Сертификат идентичный X509"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:441
-msgid "Pixmap object or image Id required"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1234
 msgid "Pixmap options (image path)"
@@ -6201,11 +6156,6 @@ msgstr ""
 msgid "The addon \"%1\" has no help callback set"
 msgstr ""
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:805
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1005
-msgid "The array passed as parameter must contain at least 3 elements"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/help/helpwindow.cpp:191
 msgid "The closing quotation mark is missing."
 msgstr ""
@@ -6296,12 +6246,6 @@ msgstr "Файл %s существует.<br>Хотите переписать �
 msgid "The file specified is not a valid KVIrc package"
 msgstr "Заданная версия \"%Q\" не имеет формата строки версии"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:855
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1055
-#, fuzzy
-msgid "The first parameter didn't evaluate to an array nor an integer"
-msgstr "Таймаут не является целым числом"
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/sparser/kvi_sp_ctcp.cpp:1471
 msgid "The following CTCP ACTION has unrecognized target %Q"
 msgstr "CTCP ACTION имеет неопознанную цель %Q"
@@ -6332,10 +6276,6 @@ msgid ""
 msgstr ""
 "Появилось следующее шифрованное сообщение, но криптовальная машина не может "
 "его декодировать: %Q"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:169
-msgid "The listviewitem cannot be parentless"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:867
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/kernel/kvi_ircconnection.cpp:877
@@ -6368,12 +6308,6 @@ msgid ""
 msgstr ""
 "Пакет имеет не верный номер версии. Возможно, он создан более новой версией "
 "KVIrc"
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:179
-msgid ""
-"The parent of the listwidgetitem must be either another listwidgetitem or a "
-"listwidget"
-msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/system/plugin.cpp:321
 msgid ""
@@ -7021,10 +6955,6 @@ msgstr "(Неизвестный)"
 msgid "Unknown CTCP reply"
 msgstr "Ответ CTCP"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:1117
-msgid "Unknown alignment '%Q'"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:53
 msgid "Unknown command"
 msgstr ""
@@ -7044,10 +6974,6 @@ msgstr "Неизвестная ошибка"
 msgid "Unknown function"
 msgstr "Соединение"
 
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_treewidgetitem.cpp:285
-msgid "Unknown item flag '%Q'"
-msgstr ""
-
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:80
 #, fuzzy
 msgid "Unknown node (host not found)"
@@ -7065,10 +6991,6 @@ msgstr ": Неизвестный пользовательский режим"
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvilib/core/kvi_error.cpp:166
 msgid "Unknown string manipulation operation"
-msgstr ""
-
-#: /home/hellvis69/kvircsvn/trunk/kvirc/src/modules/objects/class_multilineedit.cpp:508
-msgid "Unknown word wrap '%Q'"
 msgstr ""
 
 #: /home/hellvis69/kvircsvn/trunk/kvirc/src/kvirc/ui/kvi_selectors.cpp:271
@@ -8678,6 +8600,14 @@ msgstr ""
 #~ msgid "Hide Advanced"
 #~ msgstr "Дополнительно..."
 
+#, fuzzy
+#~ msgid "I can't find the specified file '%Q'."
+#~ msgstr "Не найдена иконка '%Q"
+
+#, fuzzy
+#~ msgid "I cannot read the file '%Q'."
+#~ msgstr "Не найдена иконка '%Q"
+
 #~ msgid "IP address %d: %Q"
 #~ msgstr "IP адрес %d: %Q"
 
@@ -9015,6 +8945,10 @@ msgstr ""
 #~ msgid "Objects have no extended scope variables"
 #~ msgstr "Объект не имеет расширенных значений"
 
+#, fuzzy
+#~ msgid "One of the colors array parameters didn't evaluate to an integer"
+#~ msgstr "Левая часть оператора '&=' не является целым числом"
+
 #~ msgid "Operand of unary operator didn't evaluate to a number"
 #~ msgstr "Операнд унарного оператора не определён как число"
 
@@ -9349,6 +9283,10 @@ msgstr ""
 #, fuzzy
 #~ msgid "The file \"%Q\" exists. Do you want to replace it ?"
 #~ msgstr "Файл %s существует.<br>Хотите переписать его?"
+
+#, fuzzy
+#~ msgid "The first parameter didn't evaluate to an array nor an integer"
+#~ msgstr "Таймаут не является целым числом"
 
 #~ msgid ""
 #~ "The last if command in the buffer has no conditional instructions: it's "
