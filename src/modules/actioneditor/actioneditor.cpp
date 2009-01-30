@@ -154,8 +154,8 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	connect(m_pSmallIconButton,SIGNAL(clicked()),this,SLOT(chooseSmallIcon()));
 	gl->addWidget(m_pSmallIconButton,2,2);
 	QString s= __tr2qs_ctx("The small icon associated to this action.<br>" \
-				"It will appear at least in the popup menus when this action is inserted.<br>" \
-				"It should be 16x16 pixels.","editor");
+		"It will appear at least in the popup menus when this action is inserted.<br>" \
+		"It has to be 16x16 pixels.","editor");
 	m_pSmallIconEdit->setToolTip(s);
 	m_pSmallIconButton->setToolTip(s);
 
@@ -170,8 +170,8 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl->addWidget(m_pBigIconButton,3,2,2,2);
 //	gl->addMultiCellWidget(m_pBigIconButton,3,4,2,3);
 	s = __tr2qs_ctx("The big icon associated to this action.<br>" \
-				"It will appear at least in the toolbar buttons when this action is inserted.<br>" \
-				"It should be 32x32 pixels.","editor");
+		"It will appear at least in the toolbar buttons when this action is inserted.<br>" \
+		"It has to be 32x32 pixels.","editor");
 	m_pBigIconEdit->setToolTip(s);
 	m_pBigIconButton->setToolTip(s);
 
@@ -182,7 +182,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	gl->addWidget(m_pKeySequenceEdit,4,1,2,1);
 //	gl->addMultiCellWidget(m_pKeySequenceEdit,4,5,1,1);
 	m_pKeySequenceEdit->setToolTip(__tr2qs_ctx("Optional keyboard sequence that will activate this action.<br>" \
-		"The sequence should be expressed as a string of up to four key codes separated by commas " \
+		"The sequence has to be expressed as a string of up to four key codes separated by commas " \
 		"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta\".<br>" \
 		"Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ...","editor"));
 
@@ -206,7 +206,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	m_pNeedsContextCheck = new QCheckBox(__tr2qs_ctx("Needs IRC Context","editor"),tab);
 	connect(m_pNeedsContextCheck,SIGNAL(toggled(bool)),this,SLOT(needsContextCheckToggled(bool)));
 	m_pNeedsContextCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
-						"the active window belongs to an irc context","editor"));
+		"the active window belongs to an irc context","editor"));
 	gl->addWidget(m_pNeedsContextCheck,0,0,1,4);
 
 
@@ -217,7 +217,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 	m_pNeedsConnectionCheck = new QCheckBox(__tr2qs_ctx("Needs IRC Connection","editor"),tab);
 	connect(m_pNeedsConnectionCheck,SIGNAL(toggled(bool)),this,SLOT(needsConnectionCheckToggled(bool)));
 	m_pNeedsConnectionCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled only when " \
-						"the active window has an active IRC connection","editor"));
+		"the active window has an active IRC connection","editor"));
 	gl->addWidget(m_pNeedsConnectionCheck,1,1,1,3);
 
 
@@ -227,7 +227,7 @@ KviSingleActionEditor::KviSingleActionEditor(QWidget * par,KviActionEditor * ed)
 
 	m_pEnableAtLoginCheck = new QCheckBox(__tr2qs_ctx("Enable at Login","editor"),tab);
 	m_pEnableAtLoginCheck->setToolTip(__tr2qs_ctx("Check this option if this action should be enabled also during " \
-						"the login operations (so when the logical IRC connection hasn't been estabilished yet)","editor"));
+		"the login operations (so when the logical IRC connection hasn't been estabilished yet)","editor"));
 	gl->addWidget(m_pEnableAtLoginCheck,2,2,1,2);
 
 	m_pSpecificWindowsCheck = new QCheckBox(__tr2qs_ctx("Enable Only in Specified Windows","editor"),tab);
