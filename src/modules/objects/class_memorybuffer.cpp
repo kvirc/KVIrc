@@ -89,7 +89,8 @@ KVSO_CLASS_FUNCTION(memorybuffer,loadFromFile)
                 debug("loading file %s",szFileName.toUtf8().data());
                 if (f.open(QIODevice::ReadOnly))
                 {
-                    f.load(*m_pBuffer);
+                    m_pBuffer->resize(f.size());
+                    f.readBlock(m_pBuffer->data(),f.size());
                     f.close();
                 }
                 else debug("Error in load file!");
@@ -107,7 +108,7 @@ KVSO_CLASS_FUNCTION(memorybuffer,saveToFile)
 	KviFile f(szFileName);
 	if (f.open(QIODevice::WriteOnly))
 	{
-		f.write(*m_pBuffer);
+                f.writeBlock(m_pBuffer->data(),m_pBuffer->size());
 		f.close();
 	}
 	else
