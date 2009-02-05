@@ -79,8 +79,7 @@
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
-//	#include <kwin.h>
-	#include <kdeversion.h>
+	#include <kwindowsystem.h>
 #endif
 
 #if defined(COMPILE_ON_WINDOWS)
@@ -231,9 +230,7 @@ void KviWindow::demandAttention()
 		FlashWindowEx(&fwi);
 #else
 	#ifdef COMPILE_KDE_SUPPORT
-		#if (KDE_VERSION_MAJOR == 3) && (KDE_VERSION_MINOR >= 2)
-			KWin::demandAttention(frame()->winId(),true);
-		#endif
+		KWindowSystem::demandAttention(frame()->winId(),true);
 	#endif
 #endif
 	} else {
@@ -248,9 +245,7 @@ void KviWindow::demandAttention()
 		FlashWindowEx(&fwi);
 #else
 	#ifdef COMPILE_KDE_SUPPORT
-		#if (KDE_VERSION_MAJOR == 3) && (KDE_VERSION_MINOR >= 2)
-			KWin::demandAttention(winId(),true);
-		#endif
+		KWindowSystem::demandAttention(winId(),true);
 	#endif
 #endif
 	}
