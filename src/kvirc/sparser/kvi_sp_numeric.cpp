@@ -1918,10 +1918,10 @@ void KviServerParser::parseNumericCannotSendColor(KviIrcMessage * msg)
 		KviChannel * chan = msg->connection()->findChannel(szChan);
 		if(chan)
 		{
-			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot sent to channel: %Q"),&szInfo);
+			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot send to channel: %Q"),&szInfo);
 		} else {
 			KviWindow * pOut = (KviWindow *)(msg->console());
-			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot sent text to channel %Q: %Q"),&szChan,&szInfo);
+			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot send text to channel %Q: %Q"),&szChan,&szInfo);
 		}
 	}
 }
@@ -1936,10 +1936,10 @@ void KviServerParser::parseNumericCannotSend(KviIrcMessage * msg)
 		KviChannel * chan = msg->connection()->findChannel(szChan);
 		if(chan)
 		{
-			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot sent to channel"));
+			chan->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot send to channel"));
 		} else {
 			KviWindow * pOut = (KviWindow *)(msg->console());
-			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot sent text to channel %Q"),&szChan);
+			pOut->output(KVI_OUT_GENERICERROR,__tr2qs("Cannot send text to channel %Q"),&szChan);
 		}
 	}
 }
