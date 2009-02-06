@@ -53,6 +53,7 @@
 #include "class_socket.h"
 #include "class_spinbox.h"
 #include "class_tabwidget.h"
+#include "class_tablewidget.h"
 #include "class_tbrowser.h"
 #include "class_toolbar.h"
 #include "class_toolbutton.h"
@@ -65,6 +66,9 @@
 #include "class_workspace.h"
 #include "class_wrapper.h"
 #include "class_xmlreader.h"
+#include "class_sql.h"
+#include "class_datetimeedit.h"
+
 
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
@@ -90,8 +94,7 @@ static bool objects_module_cleanup(KviModule *)
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be unregistered before the base ones.
 
-	KviKvsObject_memorybuffer::unregisterSelf();
-
+            KviKvsObject_memorybuffer::unregisterSelf();
 	KviKvsObject_process::unregisterSelf();
 	KviKvsObject_ftp::unregisterSelf();
 	KviKvsObject_http::unregisterSelf();
@@ -131,8 +134,11 @@ static bool objects_module_cleanup(KviModule *)
 	KviKvsObject_textbrowser::unregisterSelf();
 	KviKvsObject_textedit::unregisterSelf();
 	KviKvsObject_button::unregisterSelf();
-	KviKvsObject_widget::unregisterSelf();
+            KviKvsObject_datetimeedit::unregisterSelf();
+            KviKvsObject_tablewidget::unregisterSelf();
+            KviKvsObject_widget::unregisterSelf();
 	KviKvsObject_list::unregisterSelf();
+            KviKvsObject_sql::unregisterSelf();
 	KviKvsObject_buttongroup::unregisterSelf();
 
 	return true;
@@ -956,12 +962,15 @@ static bool objects_module_init(KviModule * m)
 
 	KviKvsObject_buttongroup::registerSelf();
 
-	KviKvsObject_list::registerSelf();
-	KviKvsObject_widget::registerSelf();
-	KviKvsObject_button::registerSelf();
+            KviKvsObject_sql::registerSelf();
+            KviKvsObject_list::registerSelf();
+            KviKvsObject_widget::registerSelf();
+            KviKvsObject_tablewidget::registerSelf();
+            KviKvsObject_datetimeedit::registerSelf();
+            KviKvsObject_button::registerSelf();
 	KviKvsObject_textedit::registerSelf();
 	KviKvsObject_textbrowser::registerSelf();
-	KviKvsObject_checkbox::registerSelf();
+            KviKvsObject_checkbox::registerSelf();
 	KviKvsObject_dialog::registerSelf();
 	KviKvsObject_groupbox::registerSelf();
 	KviKvsObject_label::registerSelf();
