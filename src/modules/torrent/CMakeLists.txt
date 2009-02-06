@@ -1,6 +1,7 @@
 # CMakeLists for src/modules/torrent
 
 SET(kvitorrent_MOC_HDRS
+	tc_ktorrentdbusinterface.h
 	tc_statusbarapplet.h
 )
 
