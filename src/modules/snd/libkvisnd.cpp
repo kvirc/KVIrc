@@ -678,7 +678,7 @@ static bool snd_kvs_cmd_autodetect(KviKvsModuleCommandCall * c)
 	g_pSoundPlayer->detectSoundSystem();
 	if(KviQString::equalCI(KVI_OPTION_STRING(KviOption_stringSoundSystem),"null"))
 	{
-		c->window()->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Sorry , I can't find a sound system to use on this machine"));
+		c->window()->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Sorry, I can't find a sound system to use on this machine"));
 	} else {
 		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sound system detected to: %s"),KVI_OPTION_STRING(KviOption_stringSoundSystem).toUtf8().data());
 	}
