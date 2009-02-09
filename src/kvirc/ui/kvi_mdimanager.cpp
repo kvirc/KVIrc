@@ -179,6 +179,8 @@ void KviMdiManager::destroyChild(KviMdiChild *lpC,bool bFocusTopChild)
 		tmp->queuedMaximize();
 	}
 
+	delete lpC;
+
 	if(bFocusTopChild)focusTopChild();
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();

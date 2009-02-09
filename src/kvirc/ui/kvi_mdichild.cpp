@@ -104,7 +104,11 @@ void KviMdiChild::setRestoredGeometry(const QRect &r)
 
 KviMdiChild::~KviMdiChild()
 {
-	if(m_pClient) delete m_pClient;
+	if(m_pClient)
+	{
+		delete m_pClient;
+		m_pClient=0;
+	}
 }
 
 void KviMdiChild::closeEvent(QCloseEvent * e)

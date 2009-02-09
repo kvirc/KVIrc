@@ -523,10 +523,11 @@ void KviFrame::closeWindow(KviWindow *wnd)
 	// KviWindow will call childWindowDestroyed() here
 	if(wnd->mdiParent())
 	{
+		//this deletes the wnd, too
 		m_pMdi->destroyChild(wnd->mdiParent(),true);
+	} else {
+		delete wnd;
 	}
-
-	delete wnd;
 }
 
 void KviFrame::maximizeMdiChildWindow(KviMdiChild * lpC)
