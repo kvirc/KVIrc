@@ -2,19 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# Markus Rennings <kvirc@mrmx.de>, 2008.
+# Markus Rennings <kvirc@mrmx.de>, 2008, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: serverdb_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-01-30 16:51+0100\n"
-"PO-Revision-Date: 2008-07-10 01:11+0200\n"
+"PO-Revision-Date: 2009-02-10 20:15+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
-"Language-Team: german <de@li.org>\n"
+"Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/serverdb/libkviserverdb.cpp:685
@@ -22,9 +22,8 @@ msgid "The network specified already exists"
 msgstr "Das angegebene Netzwerk existiert bereits"
 
 #: src/modules/proxydb/libkviproxydb.cpp:453
-#, fuzzy
 msgid "The specified IP is not valid"
-msgstr "Der angegebene Server existiert nicht"
+msgstr "Die angegebene IP ist nicht gültig"
 
 #: src/modules/serverdb/libkviserverdb.cpp:169
 #: src/modules/serverdb/libkviserverdb.cpp:203
@@ -36,14 +35,12 @@ msgstr "Das angegebene Netzwerk existiert nicht"
 
 #: src/modules/proxydb/libkviproxydb.cpp:311
 #: src/modules/proxydb/libkviproxydb.cpp:577
-#, fuzzy
 msgid "The specified protocol does not exist"
-msgstr "Das angegebene Netzwerk existiert nicht"
+msgstr "Das angegebene Protokoll existiert nicht"
 
 #: src/modules/proxydb/libkviproxydb.cpp:284
-#, fuzzy
 msgid "The specified proxy already exists"
-msgstr "Der angegebene Server existiert bereits"
+msgstr "Der angegebene Proxy existiert bereits"
 
 #: src/modules/proxydb/libkviproxydb.cpp:70
 #: src/modules/proxydb/libkviproxydb.cpp:113
@@ -52,9 +49,8 @@ msgstr "Der angegebene Server existiert bereits"
 #: src/modules/proxydb/libkviproxydb.cpp:508
 #: src/modules/proxydb/libkviproxydb.cpp:569
 #: src/modules/proxydb/libkviproxydb.cpp:613
-#, fuzzy
 msgid "The specified proxy does not exist"
-msgstr "Der angegebene Server existiert nicht"
+msgstr "Der angegebene Proxy existiert nicht"
 
 #: src/modules/serverdb/libkviserverdb.cpp:773
 msgid "The specified server already exists"
@@ -66,9 +62,8 @@ msgid "The specified server does not exist"
 msgstr "Der angegebene Server existiert nicht"
 
 #: src/modules/proxydb/libkviproxydb.cpp:434
-#, fuzzy
 msgid "You must provide the IP as parameter"
-msgstr "Der Wert muss als Parameter angegeben werden"
+msgstr "Die IP muss als Parameter angegeben werden"
 
 #: src/modules/serverdb/libkviserverdb.cpp:61
 #: src/modules/serverdb/libkviserverdb.cpp:162
@@ -81,14 +76,12 @@ msgid "You must provide the network name as parameter"
 msgstr "Der Netzwerkname muss als Parameter angegeben werden"
 
 #: src/modules/proxydb/libkviproxydb.cpp:363
-#, fuzzy
 msgid "You must provide the port number as parameter"
-msgstr "Der Netzwerkname muss als Parameter angegeben werden"
+msgstr "Die Portnummer muss als Parameter angegeben werden"
 
 #: src/modules/proxydb/libkviproxydb.cpp:558
-#, fuzzy
 msgid "You must provide the protocol as parameter"
-msgstr "Der Wert muss als Parameter angegeben werden"
+msgstr "Das Protokoll muss als Parameter angegeben werden"
 
 #: src/modules/proxydb/libkviproxydb.cpp:60
 #: src/modules/proxydb/libkviproxydb.cpp:103
@@ -97,14 +90,12 @@ msgstr "Der Wert muss als Parameter angegeben werden"
 #: src/modules/proxydb/libkviproxydb.cpp:497
 #: src/modules/proxydb/libkviproxydb.cpp:552
 #: src/modules/proxydb/libkviproxydb.cpp:596
-#, fuzzy
 msgid "You must provide the proxy hostname as parameter"
-msgstr "Der Servername muss als Parameter angegeben werden"
+msgstr "Der Proxy-Name muss als Parameter angegeben werden"
 
 #: src/modules/proxydb/libkviproxydb.cpp:273
-#, fuzzy
 msgid "You must provide the proxy name as parameter"
-msgstr "Der Servername muss als Parameter angegeben werden"
+msgstr "Der Proxy-Name muss als Parameter angegeben werden"
 
 #: src/modules/serverdb/libkviserverdb.cpp:104
 #: src/modules/serverdb/libkviserverdb.cpp:196
@@ -118,3 +109,4 @@ msgstr "Der Servername muss als Parameter angegeben werden"
 #: src/modules/serverdb/libkviserverdb.cpp:860
 msgid "You must provide the value as parameter"
 msgstr "Der Wert muss als Parameter angegeben werden"
+
