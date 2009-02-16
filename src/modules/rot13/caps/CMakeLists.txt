@@ -1,6 +1,6 @@
 # CMakeLists for ./caps
 
-SET(CAPSFILE lamerizer)
+SET(CAPSFILE rot13)
 
 IF(UNIX)
 	IF(APPLE)

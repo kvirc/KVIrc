@@ -63,8 +63,6 @@
 	KviCryptController::KviCryptController(QWidget * par,KviWindowToolPageButton* button,const char *,KviWindow * wnd,KviCryptSessionInfo * cur)
 	: KviWindowToolWidget(par,button)
 	{
-// FIXME: #warning "Load the available modules here"
-
 		// Load the known encryption modules
 		(void)g_pModuleManager->loadModulesByCaps("crypt");
 

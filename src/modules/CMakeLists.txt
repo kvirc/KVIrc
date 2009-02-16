@@ -32,7 +32,7 @@ SUBDIRS(
 	notifier
 	objects options
 	perl perlcore popupeditor proxydb
-	raweditor regchan reguser rijndael
+	raweditor regchan reguser rijndael rot13
 	serverdb setup sharedfile sharedfileswindow snd socketspy spaste str system
 	texticons term theme tip tmphighlight toolbar toolbareditor torrent trayicon
 	upnp
