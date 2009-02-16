@@ -223,6 +223,21 @@ void KviTextIconsOptionsWidget::delClicked()
 
 	if((i > -1) && (i < m_pTable->rowCount()))
 	{
+		if(m_pIconButton)
+		{
+			delete m_pIconButton;
+			m_pIconButton=0;
+		}
+		if(m_pBrowseButton)
+		{
+			delete m_pBrowseButton;
+			m_pBrowseButton=0;
+		}
+		if (m_pBox)
+		{
+			delete m_pBox;
+			m_pBox=0;
+		}
 		m_pTable->removeRow(i);
 		if(m_pTable->rowCount() == 0) m_pDel->setEnabled(false);
 	}
