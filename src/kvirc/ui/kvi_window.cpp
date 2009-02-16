@@ -79,7 +79,7 @@
 #endif
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include <kwindowsystem.h>
+	#include <KWindowSystem>
 #endif
 
 #if defined(COMPILE_ON_WINDOWS)

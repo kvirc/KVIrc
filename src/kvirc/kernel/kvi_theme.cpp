@@ -121,7 +121,7 @@ bool KviThemeInfo::loadFromDirectory(const QString &szThemeDirectory,bool bIgnor
 	QString szD = szThemeDirectory;
 	szD.append(KVI_PATH_SEPARATOR_CHAR);
 	szD.append(KVI_THEMEINFO_FILE_NAME);
-	
+
 	if(!load(szD))
 		return false; // loading failed for some reason
 
@@ -245,7 +245,7 @@ namespace KviTheme
 			return false;
 		}
 
-		QPixmap out;
+		QImage out;
 
 		QString szScreenshotFileName = options.absoluteDirectory();
 		if(szScreenshotFileName.isEmpty())
@@ -263,9 +263,9 @@ namespace KviTheme
 		}
 
 		if(pix.width() > 600 || pix.height() > 450)
-			out.fromImage(pix.scaled(640,450,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
+			out = pix.scaled(640,450,QIMAGE_SCALE_MIN,Qt::SmoothTransformation);
 		else
-			out.fromImage(pix);
+			out = pix;
 
 		szScreenshotFileName = options.absoluteDirectory();
 		KviQString::ensureLastCharIs(szScreenshotFileName,KVI_PATH_SEPARATOR_CHAR);
@@ -277,9 +277,9 @@ namespace KviTheme
 		}
 
 		if(pix.width() > 300 || pix.height() > 225)
-			out.fromImage(pix.scaled(300,225,QIMAGE_SCALE_MIN,Qt::SmoothTransformation));
+			out = pix.scaled(300,225,QIMAGE_SCALE_MIN,Qt::SmoothTransformation);
 		else
-			out.fromImage(pix);
+			out = pix;
 
 		szScreenshotFileName = options.absoluteDirectory();
 		KviQString::ensureLastCharIs(szScreenshotFileName,KVI_PATH_SEPARATOR_CHAR);
@@ -289,7 +289,7 @@ namespace KviTheme
 			options.setLastError(__tr2qs("Failed to save the screenshot image"));
 			return false;
 		}
-		
+
 		return true;
 	}
 };
