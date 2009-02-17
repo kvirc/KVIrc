@@ -103,6 +103,7 @@
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_sql,"sql","object")
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,setConnection)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,setCurrentQuery)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,tablesList)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,currentQuery)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,closeConnection)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,queryInit)
@@ -116,6 +117,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_sql,"sql","object")
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,queryLast)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,queryFirst)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,queryRecord)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,lastError)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_sql)
 
@@ -132,7 +134,7 @@ while (t.hasNext())
     t.next();
     QString szConnectionName=t.key();
     connectionsDict.value(szConnectionName)->finish();
-    delete connectionsDict.value(szConnectionName);
+   // delete connectionsDict.value(szConnectionName);
     QSqlDatabase::removeDatabase(szConnectionName);
 }
 connectionsDict.clear();
@@ -191,6 +193,29 @@ KVSO_CLASS_FUNCTION(sql,closeConnection)
         }
         QSqlDatabase::removeDatabase(szConnectionName);
 
+        return true;
+}
+KVSO_CLASS_FUNCTION(sql,tablesList)
+{
+        QString szConnectionName;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("connectionName",KVS_PT_STRING,0,szConnectionName)
+        KVSO_PARAMETERS_END(c)
+
+        QStringList connections = QSqlDatabase::connectionNames();
+        if (!connections.contains(szConnectionName))
+        {
+             c->warning(__tr2qs_ctx("Connection %Q does not exists","objects"),&szConnectionName);
+             return true;
+        }
+        QSqlDatabase db=QSqlDatabase::database(szConnectionName);
+        QStringList tables=db.tables();
+        KviKvsArray *pArray=new KviKvsArray();
+        for(int i=0;i<tables.count();i++)
+        {
+            pArray->set(i,new KviKvsVariant(tables.at(i)));
+         }
+        c->returnValue()->setArray(pArray);
         return true;
 }
 KVSO_CLASS_FUNCTION(sql,setCurrentQuery)
@@ -289,7 +314,7 @@ KVSO_CLASS_FUNCTION(sql,queryBindValue)
         KVSO_PARAMETERS_END(c)              
         QString szType;
         v->getTypeName(szType);
-        if (v->isString())
+        if (v->isString()|| v->isNothing())
         {
             QString szText;
             v->asString(szText);
@@ -340,7 +365,7 @@ KVSO_CLASS_FUNCTION(sql,queryExec)
         KVSO_PARAMETERS_END(c)
         bool bOk;
         if (szQuery.isEmpty()) bOk=currentSQlQuery->exec();
-        else bOk=currentSQlQuery->exec(szQuery);
+        else bOk=currentSQlQuery->exec(szQuery.toLatin1());
         c->returnValue()->setBoolean(bOk);
         return true;
 }
@@ -381,11 +406,9 @@ KVSO_CLASS_FUNCTION(sql,queryRecord)
         CHECK_QUERY_IS_INIT
         KviKvsHash *pHash=new KviKvsHash();
         QSqlRecord record=currentSQlQuery->record();
-        debug ("count %d",record.count());
         for(int i=0;i<record.count();i++)
         {
             KviKvsVariant *pValue=0;
-            debug ("type %s",record.value(i).typeName());
             QVariant value=record.value(i);
             if (value.type()==QVariant::LongLong) pValue=new KviKvsVariant((kvs_int_t) value.toLongLong());
             else if (value.type()==QVariant::String) pValue=new KviKvsVariant(value.toString());

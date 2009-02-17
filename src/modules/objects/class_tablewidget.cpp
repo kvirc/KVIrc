@@ -31,8 +31,15 @@
 #include "class_tablewidget.h"
 #include "class_pixmap.h"
 #include "class_sql.h"
- #include <QTableWidget>
+#include <QTableWidget>
+#include <QHeaderView>
 
+
+#include <QPainter>
+#include <QPrinter>
+#include <QApplication>
+#include <QPoint>
+#include <QPaintEvent>
 /*
             @doc:tablewidget
 	@title:
@@ -48,7 +55,11 @@
                         This widget provides a table widget.
 	@functions:
 		!fn: $setText([<text:string>])
-                @signals:
+                        !fn: $text()
+                        !fn: $setHorizontalHeaderLabels
+                        !fn: $hideHorizontalHeaderLabels
+                        !fn: $setHorizontalHeaderLabels
+            @signals:
 		!sg: $clicked()
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
 
@@ -57,15 +68,27 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tablewidget,"tablewidget","widget")
 
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setText)
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,text)
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setIcon)
+        // Horizontal Header
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setHorizontalHeaderLabels)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,hideHorizontalHeader)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,hideVerticalHeader)
+
+        // Vertical Header
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setVerticalHeaderLabels)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,showHorizontalHeader)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,showVerticalHeader)
+
+        // Rows-Columns
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setRowCount)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,rowCount)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setColumnCount)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,columnCount)
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setHorizontalHeaderLabels)
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setVerticalHeaderLabels)
+
+        // Item (text. icon, widget)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setText)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,text)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setCellWidget)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setIcon)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_tablewidget)
 
@@ -213,6 +236,44 @@ KVSO_CLASS_FUNCTION(tablewidget,setVerticalHeaderLabels)
             KVSO_PARAMETERS_END(c)
             debug("list count %d",columns.count());
             ((QTableWidget *)object())->setVerticalHeaderLabels(columns);
+            return true;
+}
+
+KVSO_CLASS_FUNCTION(tablewidget,setCellWidget)
+{
+            CHECK_INTERNAL_POINTER(widget())
+            KviKvsObject * pObject;
+            kvs_hobject_t hObject;
+            kvs_uint_t uRow,uCol;
+            KVSO_PARAMETERS_BEGIN(c)
+                        KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
+                        KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
+                        KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+            KVSO_PARAMETERS_END(c)
+            pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+            CHECK_HOBJECT_IS_WIDGET(pObject)
+            ((QTableWidget *)object())->setCellWidget(uRow,uCol,((QWidget *)(pObject->object())));
+            return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,hideHorizontalHeader)
+{
+            ((QTableWidget *)widget())->horizontalHeader()->hide();
+            return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,hideVerticalHeader)
+{
+            ((QTableWidget *)widget())->verticalHeader()->hide();
+            return true;
+}
+
+KVSO_CLASS_FUNCTION(tablewidget,showHorizontalHeader)
+{
+            ((QTableWidget *)widget())->horizontalHeader()->show();
+            return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,showVerticalHeader)
+{
+            ((QTableWidget *)widget())->verticalHeader()->show();
             return true;
 }
 

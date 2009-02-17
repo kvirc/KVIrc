@@ -1046,7 +1046,7 @@ KVSO_CLASS_FUNCTION(painter,begin)
 		return true;
 	}
 	attachDevice(pObject,pd);
-	if (pObject->inheritsClass("pixmap")) ((KviKvsObject_pixmap *)pObject)->pixmapChanged();
+            //if (pObject->inheritsClass("pixmap")) ((KviKvsObject_pixmap *)pObject)->pixmapChanged();
 	return true;
 }
 

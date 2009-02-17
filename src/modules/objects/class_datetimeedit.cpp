@@ -75,7 +75,9 @@ KVSO_END_DESTRUCTOR(KviKvsObject_datetimeedit)
 
 bool KviKvsObject_datetimeedit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
-        SET_OBJECT(QDateTimeEdit);
+        QDateTimeEdit *obj=new QDateTimeEdit(QDate::currentDate(),parentScriptWidget());
+        obj->setObjectName(getName());
+        setObject(obj,true);
 //	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
 	return true;
 }

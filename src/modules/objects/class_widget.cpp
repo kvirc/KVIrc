@@ -49,6 +49,10 @@
 #include <QIcon>
 #include <QStatusBar>
 #include <QUrl>
+#include <QPainter>
+#include <QPrinter>
+#include <QApplication>
+#include <QPoint>
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 	#include <QtWebKit/QWebView>
@@ -1966,6 +1970,8 @@ KVSO_CLASS_FUNCTION(widget,removeFromStatusBar)
 	g_pFrame->statusBar()->removeWidget(widget());
 	return true;
 }
+
+
 
 #ifdef COMPILE_WEBKIT_SUPPORT
 KVSO_CLASS_FUNCTION(widget,setWebView)

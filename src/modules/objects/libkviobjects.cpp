@@ -612,7 +612,6 @@ static bool objects_kvs_cmd_disconnect(KviKvsModuleCommandCall * c)
 }
 
 
-
 static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 {
 	/*
@@ -680,7 +679,7 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 		return true;
 	}
 	if(obDst->inheritsClass("pixmap")){
-		((KviKvsObject_pixmap *)obDst)->pixmapChanged();
+                        //((KviKvsObject_pixmap *)obDst)->pixmapChanged();
 	}
 
 	/*FIXME
@@ -714,7 +713,7 @@ static bool objects_kvs_cmd_bitBlt(KviKvsModuleCommandCall * c)
 
 static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 {
-	KviKvsObject *obFor;
+/*	KviKvsObject *obFor;
 	KviKvsObject *obBck;
 	KviKvsObject *obDest;
 
@@ -772,11 +771,11 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 		return true;
 	}
 
-	if(obDest->inheritsClass("pixmap")) ((KviKvsObject_pixmap *)obDest)->pixmapChanged();
+//	if(obDest->inheritsClass("pixmap")) ((KviKvsObject_pixmap *)obDest)->pixmapChanged();
 
 
-	QImage  *img_back=((KviKvsObject_pixmap *)obBck)->getImage();
-	QImage *img_fore=((KviKvsObject_pixmap *)obFor)->getImage();
+            //QImage  *img_back=((KviKvsObject_pixmap *)obBck)->getImage();
+            //QImage *img_fore=((KviKvsObject_pixmap *)obFor)->getImage();
 
 	// check size
 	if ((iBkX+uW>img_back->width())||(iBkY+uH>img_back->height()))
@@ -818,6 +817,7 @@ static bool objects_kvs_cmd_blend(KviKvsModuleCommandCall * c)
 	QPainter p(pdDest);
 	QRect rect(iDesX,iDesY,buffer.width(),buffer.height());
 	p.drawImage(rect,buffer);
+            */
 	return true;
 
 }

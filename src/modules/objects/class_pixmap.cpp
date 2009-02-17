@@ -24,7 +24,10 @@
 //=============================================================================
 
 #include "class_pixmap.h"
+#include "class_widget.h"
+
 #include "class_memorybuffer.h"
+#include "kvi_animatedpixmap.h"
 
 #include "kvi_debug.h"
 #include "kvi_locale.h"
@@ -52,306 +55,299 @@
 		Note that x_offset, y_offest are offsets in the widget.
 		!fn: $resize(<width:integer>,<height:integer>)
 		Resizes the pixmap to w width and h height. Set wh or hg to 0, to have a null pixmap.
-		!fn: $scale(<width:integer>,<height:integer>,[<aspect_ratio:string>,<transformation_type:string>])
-		Scales the pixmap by sx horizontally and sy vertically.
+                        !fn: $scale(<width:integer>,<height:integer>,[<aspect_ratio:string>])
+                        Scales the pixmap or the animation by sx horizontally and sy vertically.
 		Aspect_ratio values:
 		- IgnoreAspectRatio:the pixmap is scaled ignoring his aspect ratio.
 		- KeepAspectRatio: pixmap is scaled to a rectangle as large as possible inside size, preserving the aspect ratio.
 		- KeepAspectRatioByExpanding, the pixmap is scaled to a rectangle as small as possible outside size, preserving the aspect ratio.
-		Transformation type values:
-		- Fast: fast transformation but less quality.
-		- Smooth: more quality using bilinear filtering.
-		!fn: $rotate(<a:real>)
-		Rotates the pixmap by a degrees.
-		!fn: $load(<file_name:string>)
-		Load a pixmap from the <file>.
+                        Default value is KeepAspectRatio.
+                        !fn: $load(<file_name:string>)
+                        Load a pixmap from the file <file_name>.
+                        !fn: $save(<file_name:string>)
+                        Save the pixmap or the current animation frame to the file <file_name>.
+                        !fn: $loadAnimation(<file_name:string>)
+                        Load an animation from the file <file_name> and start it.
+                        !fn: $startAnimation()
+                        Start the animation.
+                        !fn: $stopAnimation()
+                        Stop the animation.
 		!fn: <integer> $height()
-		Return the height of the pixmap.
+                        Return the height of the pixmap or of the animation.
 		!fn: <integer> $width()
-		Return the width of the pixmap.
+                        Return the width of the pixmap or of the animation.
+                        !fn: $frameChangedEvent()
+                        This event is triggered by KVIrc when the current animation frame changes.
+              @signals:
+                        !sg: $frameChanged()
+                        This signal is emitted by the default implementation of [classfnc]$frameChangedEvent[/classfnc]().[br]
 
 */
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_pixmap,"pixmap","object")
 
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,fill)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,resize)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,load)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,loadFromMemoryBuffer)
-
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,height)
-
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,width)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,setOpacity)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,scale)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,rotate)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,fill)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,resize)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,scale)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,load)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,loadAnimation)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,save)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,startAnimation)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,stopAnimation)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,loadFromMemoryBuffer)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,height)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,width)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,grabWidget)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_pixmap,frameChangedEvent)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_pixmap)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_pixmap,KviKvsObject)
-	m_pPixmap=new QPixmap();
-	m_pImage=new QImage();
-	bPixmapModified=false;
-	bImageModified=false;
+        m_pAnimatedPixmap = 0;
+        m_pPixmap = 0;
 KVSO_END_CONSTRUCTOR(KviKvsObject_pixmap)
 
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_pixmap)
-
-	emit aboutToDie();
-	delete m_pPixmap;
-	if (m_pImage) delete m_pImage;
-
+        emit aboutToDie();
+        if (m_pPixmap)delete m_pPixmap;
+        if (m_pAnimatedPixmap) delete m_pAnimatedPixmap;
 KVSO_END_CONSTRUCTOR(KviKvsObject_pixmap)
 
 
 KVSO_CLASS_FUNCTION(pixmap,fill)
 {
-	CHECK_INTERNAL_POINTER(m_pPixmap)
-	KviKvsObject *pObject;
-	kvs_int_t iXoffset,iYoffset;
-	kvs_hobject_t hObject;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("x_offset",KVS_PT_INT,0,iXoffset)
-		KVSO_PARAMETER("y_offset",KVS_PT_INT,0,iYoffset)
-	KVSO_PARAMETERS_END(c)
+        KviKvsObject *pObject;
+        kvs_int_t iXoffset,iYoffset;
+        kvs_hobject_t hObject;
+        KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+            KVSO_PARAMETER("x_offset",KVS_PT_INT,0,iXoffset)
+            KVSO_PARAMETER("y_offset",KVS_PT_INT,0,iYoffset)
+        KVSO_PARAMETERS_END(c)
 
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	CHECK_HOBJECT_IS_WIDGET(pObject)
-	bPixmapModified=true;
-	m_pPixmap->fill(((QWidget *)(pObject->object())),iXoffset,iYoffset);
-	return true;
+        pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+        CHECK_HOBJECT_IS_WIDGET(pObject)
+        if (m_pAnimatedPixmap)
+        {
+              delete m_pAnimatedPixmap;
+              m_pAnimatedPixmap=0;
+        }
+        if(!m_pPixmap) m_pPixmap=new QPixmap();
+        m_pPixmap->fill(((QWidget *)(pObject->object())),iXoffset,iYoffset);
+        return true;
 }
-
-KVSO_CLASS_FUNCTION(pixmap,scale)
-{
-	CHECK_INTERNAL_POINTER(m_pPixmap)
-	kvs_int_t iScaleW,iScaleH;
-	QString szAspectRatio, szTransformation;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("new_width",KVS_PT_INTEGER,0,iScaleW)
-		KVSO_PARAMETER("new_height",KVS_PT_INTEGER,0,iScaleH)
-		KVSO_PARAMETER("aspect_ratio",KVS_PT_STRING,KVS_PF_OPTIONAL,szAspectRatio)
-		KVSO_PARAMETER("tranformation_type",KVS_PT_STRING,KVS_PF_OPTIONAL,szTransformation)
-	KVSO_PARAMETERS_END(c)
-	Qt::AspectRatioMode ratio=Qt::IgnoreAspectRatio;
-	if (KviQString::equalCI(szAspectRatio,"IgnoreAspectRatio")) ratio=Qt::IgnoreAspectRatio;
-	else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatio")) ratio=Qt::KeepAspectRatio;
-	else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatioByExpanding")) ratio=Qt::KeepAspectRatioByExpanding;
-	else if (!szAspectRatio.isEmpty())c->warning(__tr2qs_ctx("Unknown aspect ratio: using default value IgnoreAspectRatio","objects"));
-	Qt::TransformationMode tmode=Qt::FastTransformation;
-	if (KviQString::equalCI(szTransformation,"Fast")) tmode=Qt::FastTransformation;
-	else if (KviQString::equalCI(szTransformation,"Smooth")) tmode=Qt::SmoothTransformation;
-	else if (!szAspectRatio.isEmpty())c->warning(__tr2qs_ctx("Unknown tranformation mode: using default value Fast","objects"));
-
-	*m_pPixmap = m_pPixmap->scaled(iScaleW, iScaleH,ratio,tmode);
-	bPixmapModified=true;
-	return true;
-}
-
-KVSO_CLASS_FUNCTION(pixmap,rotate)
-{
-	CHECK_INTERNAL_POINTER(m_pPixmap)
-	kvs_real_t uDegrees;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("a",KVS_PT_REAL,0,uDegrees)
-	KVSO_PARAMETERS_END(c)
-	QMatrix m;
-	m.rotate(uDegrees);
-	*m_pPixmap = m_pPixmap->transformed(m);
-	bPixmapModified=true;
-	return true;
-}
-
 KVSO_CLASS_FUNCTION(pixmap,resize)
 {
-	CHECK_INTERNAL_POINTER(m_pPixmap)
-	kvs_int_t uWidth,uHeight;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,0,uWidth)
-		KVSO_PARAMETER("height",KVS_PT_UNSIGNEDINTEGER,0,uHeight)
-	KVSO_PARAMETERS_END(c)
-	delete m_pPixmap;
-	m_pPixmap=new QPixmap(uWidth,uHeight);
-	bPixmapModified=true;
-	return true;
+        kvs_int_t iWidth,iHeight;
+        KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("width",KVS_PT_INTEGER,0,iWidth)
+            KVSO_PARAMETER("height",KVS_PT_INTEGER,0,iHeight)
+        KVSO_PARAMETERS_END(c)
+        if(m_pPixmap) delete m_pPixmap;
+        if (m_pAnimatedPixmap){
+           delete m_pAnimatedPixmap;
+           m_pAnimatedPixmap=0;
+        }
+        m_pPixmap=new QPixmap(iWidth,iHeight);
+        return true;
+}
+KVSO_CLASS_FUNCTION(pixmap,scale)
+{
+        kvs_int_t iWidth,iHeight;
+        QString szAspectRatio;
+        KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("width",KVS_PT_INTEGER,0,iWidth)
+            KVSO_PARAMETER("height",KVS_PT_INTEGER,0,iHeight)
+            KVSO_PARAMETER("aspect_ratio",KVS_PT_STRING,KVS_PF_OPTIONAL,szAspectRatio)
+        KVSO_PARAMETERS_END(c)
+        Qt::AspectRatioMode ratio=Qt::KeepAspectRatio;
+        if(!m_pPixmap || m_pAnimatedPixmap) return true;
+        if(!szAspectRatio.isEmpty())
+        {
+            if(KviQString::equalCI(szAspectRatio,"IgnoreAspectRatio")) ratio=Qt::IgnoreAspectRatio;
+            else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatio")) ratio=Qt::KeepAspectRatio;
+            else if (KviQString::equalCI(szAspectRatio,"KeepAspectRatioByExpanding")) ratio=Qt::KeepAspectRatioByExpanding;
+            else  c->warning(__tr2qs_ctx("Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio","objects"),&szAspectRatio);
+        }
+        if (m_pAnimatedPixmap) m_pAnimatedPixmap->resize(QSize(iWidth,iHeight),ratio);
+        else *m_pPixmap=m_pPixmap->scaled(iWidth,iHeight,ratio,Qt::SmoothTransformation);
+        return true;
+}
+KVSO_CLASS_FUNCTION(pixmap,loadAnimation)
+
+{
+        QString szFile;
+        KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
+        KVSO_PARAMETERS_END(c)
+        if(!QFile::exists(szFile))
+        {
+            c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
+            return true;
+        }
+        if (m_pAnimatedPixmap) delete m_pAnimatedPixmap;
+        if (m_pPixmap)
+        {
+            delete m_pPixmap;
+            m_pPixmap=0;
+        }
+        m_pAnimatedPixmap= new KviAnimatedPixmap(szFile);
+        connect(m_pAnimatedPixmap,SIGNAL(frameChanged()),this,SLOT(frameChanged()));
+        return true;
 }
 
-
+KVSO_CLASS_FUNCTION(pixmap,startAnimation)
+{
+        if (m_pAnimatedPixmap)    m_pAnimatedPixmap->start();
+        return true;
+}
+KVSO_CLASS_FUNCTION(pixmap,stopAnimation)
+{
+        if (m_pAnimatedPixmap)    m_pAnimatedPixmap->stop();
+        return true;
+}
 KVSO_CLASS_FUNCTION(pixmap,load)
 {
-	CHECK_INTERNAL_POINTER(m_pPixmap)
-	QString szFile;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
-	KVSO_PARAMETERS_END(c)
-	if(!QFile::exists(szFile))
-	{
-		c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
+        QString szFile;
+        KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
+        KVSO_PARAMETERS_END(c)
+        if(!QFile::exists(szFile))
+        {
+            c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
+            return true;
+        }
+        if (m_pAnimatedPixmap) delete m_pAnimatedPixmap;
+        if(!m_pPixmap) m_pPixmap=new QPixmap();
+        m_pPixmap->load(szFile);
         return true;
-	}
-	m_pPixmap->load(szFile);
-	bPixmapModified=true;
-	return true;
 }
+KVSO_CLASS_FUNCTION(pixmap,save)
+{
+        QString szFile;
+        KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
+        KVSO_PARAMETERS_END(c)
+        if (m_pAnimatedPixmap) m_pAnimatedPixmap->pixmap()->save(szFile);
+        else if(m_pPixmap) m_pPixmap->save(szFile);
+        return true;
+}
+/*
+KVSO_CLASS_FUNCTION(pixmap,save)
+{
+        //CHECK_INTERNAL_POINTER(m_pPixmap)
+        QString szFile;
+        KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("file",KVS_PT_STRING,0,szFile)
+        KVSO_PARAMETERS_END(c)
+        if(!QFile::exists(szFile))
+        {
+            c->warning(__tr2qs_ctx("I can't find the specified file '%Q'.","objects"),&szFile);
+            return true;
+        }
+        if (m_pAnimatedPixmap) delete m_pAnimatedPixmap;
+        m_pAnimatedPixmap= new KviAnimatedPixmap(szFile);
+        connect(m_pAnimatedPixmap,SIGNAL(frameChanged()),this,SLOT(frameChanged()));
+        //bPixmapModified=true;
+
+            return true;
+}
+*/
 KVSO_CLASS_FUNCTION(pixmap,loadFromMemoryBuffer)
 {
-	CHECK_INTERNAL_POINTER(m_pPixmap)
-	KviKvsObject * pObject;
-	kvs_hobject_t hObject;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("hobject",KVS_PT_HOBJECT,0,hObject)
-	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
-		c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
-		return true;
-	}
-	if (!pObject->inheritsClass("memorybuffer"))
-	{
-		c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
-		return true;
-	}
+        KviKvsObject * pObject;
+        kvs_hobject_t hObject;
+        KVSO_PARAMETERS_BEGIN(c)
+            KVSO_PARAMETER("hobject",KVS_PT_HOBJECT,0,hObject)
+        KVSO_PARAMETERS_END(c)
 
-	m_pPixmap->loadFromData(((KviKvsObject_memorybuffer *)pObject)->dataBuffer());
-
-	bPixmapModified=true;
-
-	return true;
+        pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+        if (!pObject)
+        {
+            c->warning(__tr2qs_ctx("Buffer parameter is not an object","objects"));
+            return true;
+        }
+        if (!pObject->inheritsClass("memorybuffer"))
+        {
+            c->warning(__tr2qs_ctx("Buffer parameter is not a memorybuffer object","objects"));
+            return true;
+        }
+        if (m_pAnimatedPixmap){
+            delete m_pAnimatedPixmap;
+            m_pAnimatedPixmap=0;
+        }
+        if (!m_pPixmap) m_pPixmap=new QPixmap();
+        m_pPixmap->loadFromData(((KviKvsObject_memorybuffer *)pObject)->dataBuffer());
+        return true;
 }
 
+KVSO_CLASS_FUNCTION(pixmap,grabWidget)
+{
+        CHECK_INTERNAL_POINTER(m_pPixmap)
+        KviKvsObject * pObject;
+        kvs_hobject_t hObject;
+        KVSO_PARAMETERS_BEGIN(c)
+               KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+        KVSO_PARAMETERS_END(c)
+        pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+        CHECK_HOBJECT_IS_WIDGET(pObject)
+        if (m_pAnimatedPixmap){
+            delete m_pAnimatedPixmap;
+            m_pAnimatedPixmap=0;
+        }
+        if (!m_pPixmap) m_pPixmap=new QPixmap();
+        *m_pPixmap=QPixmap::grabWidget(((KviKvsObject_widget *)pObject)->widget());
+  /*          QString szFileName;
+            KVSO_PARAMETERS_BEGIN(c)
+                        KVSO_PARAMETER("file_name",KVS_PT_STRING,0,szFileName)
+            KVSO_PARAMETERS_END(c)
+            QPrinter printer;//(QPrinter::HighResolution);
+            printer.setOutputFormat(QPrinter::PdfFormat);
+            printer.setPaperSize(QPrinter::A4);
+            printer.setOutputFileName(szFileName);
+
+            QPixmap pixmap=QPixmap::grabWidget(((QTableWidget *)widget()));
+            QPainter painter(&printer);
+            painter.drawPixmap(QPoint(0,0), pixmap, pixmap.rect());
+             */
+
+        return true;
+}
 KVSO_CLASS_FUNCTION(pixmap,height)
 {
-	CHECK_INTERNAL_POINTER(m_pPixmap)
-	c->returnValue()->setInteger(m_pPixmap->height());
-	return true;
+        if(!m_pAnimatedPixmap && !m_pPixmap) c->returnValue()->setInteger(0);
+        else if(m_pAnimatedPixmap) c->returnValue()->setInteger(m_pAnimatedPixmap->size().height());
+        else c->returnValue()->setInteger(m_pPixmap->height());
+        return true;
 }
 KVSO_CLASS_FUNCTION(pixmap,width)
 {
-	CHECK_INTERNAL_POINTER(m_pPixmap)
-	c->returnValue()->setInteger(m_pPixmap->width());
-	return true;
+        if(!m_pAnimatedPixmap && !m_pPixmap) c->returnValue()->setInteger(0);
+        else if(m_pAnimatedPixmap) c->returnValue()->setInteger(m_pAnimatedPixmap->size().width());
+        else c->returnValue()->setInteger(m_pPixmap->width());
+        return true;
 }
-// maybe DEPRECATED?
-KVSO_CLASS_FUNCTION(pixmap,setOpacity)
-{
-	CHECK_INTERNAL_POINTER(m_pPixmap)
-	kvs_real_t dOpacity;
-	kvs_uint_t uXoffset,uYoffset;
-	kvs_uint_t uWidth,uHeight;
-
-	KviKvsObject * pObDest;
-	kvs_hobject_t hObject;
-
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("opacity_factor",KVS_PT_DOUBLE,0,dOpacity)
-		KVSO_PARAMETER("destination",KVS_PT_HOBJECT,0,hObject)
-		KVSO_PARAMETER("x_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uXoffset)
-		KVSO_PARAMETER("y_offset",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uYoffset)
-		KVSO_PARAMETER("width",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uWidth)
-		KVSO_PARAMETER("height",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uHeight)
-	KVSO_PARAMETERS_END(c)
-	pObDest=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-
-	if (!pObDest)
-	{
-		c->warning(__tr2qs_ctx("Destination parameter is not an object","objects"));
-		return true;
-	}
-
-	if(!pObDest->inheritsClass("pixmap"))
-	{
-		c->warning(__tr2qs_ctx("Destination must be a pixmap object","objects"));
-		return true;
-	}
-	QImage *buffer=((KviKvsObject_pixmap *)pObDest)->getImage();
-	((KviKvsObject_pixmap *)pObDest)->imageChanged();
-	if (bPixmapModified) {
-		*m_pImage=m_pPixmap->toImage();
-	}
-	if (uWidth > (uint) buffer->width() || uHeight > (uint) buffer->height())
-	{
-			c->warning(__tr2qs_ctx("Area dimensions are out of destination size ","objects"));
-			return true;
-	}
-	if (!uWidth)
-	{
-		if(m_pImage->width()>buffer->width())
-		{
-			c->warning(__tr2qs_ctx("Pixmap dimensions are out of destination size ","objects"));
-			return true;
-		}
-	}
-
-	if (!uHeight)
-	{
-		if(m_pImage->height()>buffer->height())
-		{
-			c->warning(__tr2qs_ctx("Pixmap dimensions are out of destination size ","objects"));
-			return true;
-		}
-	}
-
-	if(uXoffset + uWidth > (uint) m_pImage->width())
-	{
-		c->warning(__tr2qs_ctx("Offset width area is out of pixmap size ","objects"));
-		return true;
-	}
-	if(uYoffset + uHeight > (uint) m_pImage->height())
-	{
-		c->warning(__tr2qs_ctx("Offset height area is out of pixmap size ","objects"));
-		return true;
-	}
-
-//	buffer->setAlphaBuffer(true);
-	int iHedge=uHeight?uHeight:m_pImage->height();
-	int iWedge=uWidth?uWidth:m_pImage->width();
-
-	for(int y = uYoffset;y<iHedge;y++)
-	{
-		QRgb * dst = (QRgb *)buffer->scanLine(y);
-		QRgb * src = (QRgb *)m_pImage->scanLine(y);
-		src += uXoffset;
-		QRgb * end;
-		end  = src + iWedge;
-		while(src < end)
-		{
-			*dst = qRgba(
-						(int)(qRed(*src)),
-						(int)(qGreen(*src)),
-						(int)(qBlue(*src)),
-						(int)(qAlpha(*src)*dOpacity)
-						);
-			src++;
-			dst++;
-		}
-	}
-	return true;
-}
-
 
 QPixmap * KviKvsObject_pixmap::getPixmap()
 {
-	if (bImageModified)
-	{
-		m_pPixmap->fromImage(*m_pImage);
-		bImageModified=false;
-	}
-	return m_pPixmap;
+        if (!m_pAnimatedPixmap && !m_pPixmap) return new QPixmap();
+        else if(m_pAnimatedPixmap) return m_pAnimatedPixmap->pixmap();
+        else return m_pPixmap;
 }
-QImage * KviKvsObject_pixmap::getImage()
+KVSO_CLASS_FUNCTION(pixmap,frameChangedEvent)
 {
-	if (bPixmapModified)
-	{
-		*m_pImage=m_pPixmap->toImage();
-		bPixmapModified=false;
-	}
+        emitSignal("frameChanged",c);
+        return true;
+}
 
-	return m_pImage;
+// slots
+void KviKvsObject_pixmap::frameChanged()
+{
+        KviKvsVariantList *params=0;
+        callFunction(this,"frameChangedEvent",params);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

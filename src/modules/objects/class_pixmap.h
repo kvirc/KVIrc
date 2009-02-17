@@ -30,6 +30,7 @@
 #include <qpixmap.h>
 #include <qimage.h>
 #include <QMatrix>
+#include <kvi_animatedpixmap.h>
 #include "kvi_string.h"
 
 
@@ -43,31 +44,33 @@ class KviKvsObject_pixmap : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_pixmap);
 	QPixmap  * getPixmap();
-	QImage * getImage();
-	void pixmapChanged(){bPixmapModified=true;}
-	void imageChanged(){bImageModified=true;}
 
-	QPixmap * pixmap(){ return m_pPixmap; }
+            //QPixmap * pixmap(){ return m_pPixmap; }
 protected:
-	QPixmap * m_pPixmap;
-	QImage * m_pImage;
-	bool bImageModified;
-	bool bPixmapModified;
+            KviAnimatedPixmap * m_pAnimatedPixmap;
+            QPixmap * m_pPixmap;
 signals:
 	void aboutToDie();
-
 protected:
-	bool fill(KviKvsObjectFunctionCall *c);
-	bool resize(KviKvsObjectFunctionCall *c);
-	bool scale(KviKvsObjectFunctionCall *c);
-	bool rotate(KviKvsObjectFunctionCall *c);
-	bool load(KviKvsObjectFunctionCall *c);
-	bool height(KviKvsObjectFunctionCall *c);
-	bool width(KviKvsObjectFunctionCall *c);
-	bool setOpacity(KviKvsObjectFunctionCall *c);
-	bool loadFromMemoryBuffer(KviKvsObjectFunctionCall *c);
+        bool fill(KviKvsObjectFunctionCall *c);
+        bool resize(KviKvsObjectFunctionCall *c);
+        bool scale(KviKvsObjectFunctionCall *c);
+        //bool rotate(KviKvsObjectFunctionCall *c);
+        bool save(KviKvsObjectFunctionCall *c);
+        bool startAnimation(KviKvsObjectFunctionCall *c);
+        bool stopAnimation(KviKvsObjectFunctionCall *c);
+        bool loadAnimation(KviKvsObjectFunctionCall *c);
+        bool load(KviKvsObjectFunctionCall *c);
+        bool height(KviKvsObjectFunctionCall *c);
+        bool width(KviKvsObjectFunctionCall *c);
+        bool grabWidget(KviKvsObjectFunctionCall *c);
+//	bool setOpacity(KviKvsObjectFunctionCall *c);
+        bool loadFromMemoryBuffer(KviKvsObjectFunctionCall *c);
 
+        bool frameChangedEvent(KviKvsObjectFunctionCall *c);
 
+protected slots:
+        void frameChanged();
   };
 
 #endif	// !_CLASS_PIXMAP_H_

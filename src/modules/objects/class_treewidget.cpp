@@ -31,6 +31,7 @@
 #include "kvi_iconmanager.h"
 #include <QTreeWidget>
 
+ #include <QSqlDatabase>
 
 // FIXME: fix the doc (function QT4 renamed)
 // OLD:
@@ -250,7 +251,6 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_treewidget)
 bool KviKvsObject_treewidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	setObject(new KviKvsTreeWidget(parentScriptWidget(),getName().toUtf8().data(),this),true);
-
 	// hack for compatibility with "old" addColumn method;
 	((QTreeWidget*) widget())->setColumnCount(0);
 

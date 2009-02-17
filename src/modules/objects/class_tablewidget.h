@@ -53,6 +53,12 @@ protected:
             bool rowCount(KviKvsObjectFunctionCall *c);
             bool setHorizontalHeaderLabels(KviKvsObjectFunctionCall *c);
             bool setVerticalHeaderLabels(KviKvsObjectFunctionCall *c);
+            bool setCellWidget(KviKvsObjectFunctionCall *c);
+
+            bool hideHorizontalHeader(KviKvsObjectFunctionCall *c);
+            bool showHorizontalHeader(KviKvsObjectFunctionCall *c);
+            bool hideVerticalHeader(KviKvsObjectFunctionCall *c);
+            bool showVerticalHeader(KviKvsObjectFunctionCall *c);
             //bool clickEvent(KviKvsObjectFunctionCall *c);
 
 protected slots:

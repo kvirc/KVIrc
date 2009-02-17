@@ -46,6 +46,8 @@ protected:
             return *currentSQlQuery;
         };
         bool setConnection(KviKvsObjectFunctionCall *c);
+        bool tablesList(KviKvsObjectFunctionCall *c);
+
         bool queryResultsSize(KviKvsObjectFunctionCall *c);
         bool queryNext(KviKvsObjectFunctionCall *c);
         bool queryPrevious(KviKvsObjectFunctionCall *c);
