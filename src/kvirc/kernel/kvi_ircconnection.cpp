@@ -46,7 +46,6 @@
 #include "kvi_internalcmd.h"
 #include "kvi_frame.h"
 #include "kvi_mexlinkfilter.h"
-////#include "kvi_garbage.h"
 #include "kvi_malloc.h"
 #include "kvi_memmove.h"
 #include "kvi_debug.h"
@@ -72,7 +71,6 @@
 
 extern KVIRC_API KviServerDataBase   * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase    * g_pProxyDataBase;
-//extern KVIRC_API KviGarbageCollector * g_pGarbageCollector;
 
 KviIrcConnection::KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity)
 : QObject()
@@ -115,7 +113,6 @@ KviIrcConnection::~KviIrcConnection()
 		QObject::disconnect(m_pLocalhostDns,SIGNAL(lookupDone(KviDns *)),0,0);
 		if(m_pLocalhostDns->isRunning())
 		{
-			//g_pGarbageCollector->collect(m_pLocalhostDns);
 			m_pLocalhostDns->deleteLater();
 		} else {
 			delete m_pLocalhostDns;

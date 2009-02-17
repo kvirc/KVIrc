@@ -193,24 +193,8 @@ KviIrcViewMarkerOptionsWidget::KviIrcViewMarkerOptionsWidget(QWidget * parent)
 	m_pMarkerStyle->addItem(__tr2qs_ctx("DashDotLine","options"));
 	m_pMarkerStyle->addItem(__tr2qs_ctx("DashDotDotLine","options"));
 
-	switch(KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle))
-	{
-		case Qt::DashLine:
-			m_pMarkerStyle->setCurrentIndex(1);
-			break;
-		case Qt::SolidLine:
-			m_pMarkerStyle->setCurrentIndex(2);
-			break;
-		case Qt::DashDotLine:
-			m_pMarkerStyle->setCurrentIndex(3);
-			break;
-		case Qt::DashDotDotLine:
-			m_pMarkerStyle->setCurrentIndex(4);
-			break;
-		default:
-			m_pMarkerStyle->setCurrentIndex(0);
-	}
-
+	unsigned int uStyle=KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle);
+	m_pMarkerStyle->setCurrentIndex(uStyle < 5 ? uStyle : 0);
 }
 
 KviIrcViewMarkerOptionsWidget::~KviIrcViewMarkerOptionsWidget()
@@ -219,24 +203,7 @@ KviIrcViewMarkerOptionsWidget::~KviIrcViewMarkerOptionsWidget()
 
 void KviIrcViewMarkerOptionsWidget::commit()
 {
-	int iFlags=0;
-	switch(m_pMarkerStyle->currentIndex())
-	{
-		case 1:
-			iFlags|=Qt::DashLine;
-			break;
-		case 2:
-			iFlags|=Qt::SolidLine;
-			break;
-		case 3:
-			iFlags|=Qt::DashDotLine;
-			break;
-		case 4:
-			iFlags|=Qt::DashDotDotLine;
-			break;
-	}
-
-	KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle)=iFlags;
+	KVI_OPTION_UINT(KviOption_uintIrcViewMarkerStyle)=m_pMarkerStyle->currentIndex();
 	KviOptionsWidget::commit();
 }
 
