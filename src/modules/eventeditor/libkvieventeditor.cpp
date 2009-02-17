@@ -73,7 +73,8 @@ static bool eventeditor_module_can_unload(KviModule *)
 
 static bool eventeditor_module_cleanup(KviModule *)
 {
-	if(g_pEventEditorWindow)delete g_pEventEditorWindow;
+	if(g_pEventEditorWindow && g_pFrame)
+		g_pFrame->closeWindow(g_pEventEditorWindow);
 	g_pEventEditorWindow = 0;
 	return true;
 }

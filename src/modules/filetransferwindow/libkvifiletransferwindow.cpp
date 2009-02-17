@@ -133,11 +133,9 @@ static bool filetransferwindow_module_init(KviModule * m)
 
 static bool filetransferwindow_module_cleanup(KviModule *)
 {
-	if(g_pFileTransferWindow)
-	{
-		delete g_pFileTransferWindow;
-		g_pFileTransferWindow = 0;
-	}
+	if(g_pFileTransferWindow && g_pFrame)
+		g_pFrame->closeWindow(g_pFileTransferWindow);
+	g_pFileTransferWindow = 0;
 	return true;
 }
 

@@ -130,6 +130,7 @@ public:
 	// If bShow is false then the window is not explicitly shown
 	// otherwise it is set as active window.
 	void addWindow(KviWindow *wnd,bool bShow = true); // public for modules
+	void closeWindow(KviWindow *wnd);
 	// Checks if a specified window is still existing in this frame child
 	// window list. This is useful for asynchronous functions
 	// that keep a window pointer and need to ensure that it is still
@@ -182,8 +183,6 @@ protected:
 
 	KviMdiChild * dockWindow(KviWindow *wnd,bool bShow = true,bool bCascade = true,QRect * setGeom = 0);
 	void undockWindow(KviWindow *wnd);
-
-	void closeWindow(KviWindow *wnd);
 
 	// called by KviWindow
 	void childWindowCloseRequest(KviWindow *wnd);

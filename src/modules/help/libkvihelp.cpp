@@ -200,11 +200,14 @@ static bool help_module_init(KviModule * m)
 
 static bool help_module_cleanup(KviModule *)
 {
-	if(g_pDocIndex) delete g_pDocIndex;
-	while(g_pHelpWidgetList->first())delete g_pHelpWidgetList->first();
+	if(g_pDocIndex)
+		delete g_pDocIndex;
+	while(g_pHelpWidgetList->first())
+		delete g_pHelpWidgetList->first();
 	delete g_pHelpWidgetList;
 	g_pHelpWidgetList = 0;
-	while(g_pHelpWindowList->first())g_pHelpWindowList->first()->close();
+	while(g_pHelpWindowList->first())
+		g_pHelpWindowList->first()->close();
 	delete g_pHelpWindowList;
 	g_pHelpWindowList = 0;
 	return true;

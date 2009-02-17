@@ -139,7 +139,6 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 
 KviWindow::~KviWindow()
 {
-	//g_pFrame->childWindowDestroyed(this);
 	destroyWindowListItem();
 	g_pApp->unregisterWindow(this);
 	if(g_pApp->windowCount() == 0)

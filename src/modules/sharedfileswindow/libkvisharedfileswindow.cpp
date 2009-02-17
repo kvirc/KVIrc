@@ -131,11 +131,9 @@ static bool sharedfileswindow_module_init(KviModule * m)
 
 static bool sharedfileswindow_module_cleanup(KviModule *)
 {
-	if(g_pSharedFilesWindow)
-	{
-		delete g_pSharedFilesWindow;
-		g_pSharedFilesWindow = 0;
-	}
+	if(g_pSharedFilesWindow && g_pFrame)
+		g_pFrame->closeWindow(g_pSharedFilesWindow);
+	g_pSharedFilesWindow = 0;
 	return true;
 }
 

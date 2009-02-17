@@ -155,7 +155,6 @@ void KviIOGraphWidget::timerEvent(QTimerEvent *)
 	unsigned int sDiff = sB - m_uLastSentBytes;
 	unsigned int rDiff = rB - m_uLastRecvBytes;
 
-	printf("%d\n",sDiff);
 	unsigned int iMax = qMax(sDiff, rDiff);
 	while(iMax > m_maxRate)
 		m_maxRate*=2;
@@ -326,11 +325,9 @@ static bool iograph_module_init(KviModule *m)
 
 static bool iograph_module_cleanup(KviModule *)
 {
-	if(g_pIOGraphWindow)
-	{
-		delete g_pIOGraphWindow;
-		g_pIOGraphWindow = 0;
-	}
+	if(g_pIOGraphWindow && g_pFrame)
+		g_pFrame->closeWindow(g_pIOGraphWindow);
+	g_pIOGraphWindow = 0;
 	return true;
 }
 
