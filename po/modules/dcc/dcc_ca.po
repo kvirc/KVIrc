@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-31 00:16+0100\n"
+"POT-Creation-Date: 2009-02-17 22:48+0100\n"
 "PO-Revision-Date: 2005-02-24 23:18+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -302,7 +302,7 @@ msgstr ""
 "No he pogut enviar la petició DCC %s a %s: la connexió IRC ha estat "
 "finalitzada"
 
-#: src/modules/dcc/send.cpp:1846 src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1846
 msgid "Cancel"
 msgstr "Cancel·lar"
 
@@ -338,7 +338,7 @@ msgstr ""
 msgid "Connected to %1:%2"
 msgstr "Conectat a %1:%2"
 
-#: src/modules/dcc/chat.cpp:530 src/modules/dcc/voice.cpp:916
+#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:530
 #: src/modules/dcc/canvas.cpp:283
 #, fuzzy
 msgid "Connected to %Q:%Q"
@@ -348,7 +348,7 @@ msgstr "Conectat a %s:%s"
 msgid "Contacting host %1 on port %2"
 msgstr "Contactant amb la màquina %1 en el port %2"
 
-#: src/modules/dcc/chat.cpp:184 src/modules/dcc/voice.cpp:756
+#: src/modules/dcc/voice.cpp:756 src/modules/dcc/chat.cpp:184
 #: src/modules/dcc/canvas.cpp:109
 #, fuzzy
 msgid "Contacting host %Q on port %Q"
@@ -413,7 +413,7 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "La transferència de dades ha acabat fa 30 segons, tancant la connexió"
 
-#: src/modules/dcc/chat.cpp:412 src/modules/dcc/voice.cpp:824
+#: src/modules/dcc/voice.cpp:824 src/modules/dcc/chat.cpp:412
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
@@ -516,7 +516,7 @@ msgstr ""
 msgid "Listening on interface %1 port %2"
 msgstr "Escoltant en la interfície %1 port %2"
 
-#: src/modules/dcc/chat.cpp:186 src/modules/dcc/voice.cpp:759
+#: src/modules/dcc/voice.cpp:759 src/modules/dcc/chat.cpp:186
 #: src/modules/dcc/canvas.cpp:85
 #, fuzzy
 msgid "Listening on interface %Q port %Q"
@@ -526,7 +526,7 @@ msgstr "Escoltant en la interfície %s port %s"
 msgid "Local end is %1:%2"
 msgstr "El extrem local és %1:%2"
 
-#: src/modules/dcc/chat.cpp:532 src/modules/dcc/voice.cpp:918
+#: src/modules/dcc/voice.cpp:918 src/modules/dcc/chat.cpp:532
 #: src/modules/dcc/canvas.cpp:285
 #, fuzzy
 msgid "Local end is %Q:%Q"
@@ -993,14 +993,14 @@ msgstr "[ERROR SSL]: %s"
 msgid "bytes/sec"
 msgstr "Mitja: ? bytes/seg"
 
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
-#: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
-#: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
-#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
-#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/marshal.cpp:444 src/modules/dcc/marshal.cpp:474
-#: src/modules/dcc/marshal.cpp:479 src/modules/dcc/requests.cpp:136
+#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:408
+#: src/modules/dcc/libkvidcc.cpp:443 src/modules/dcc/libkvidcc.cpp:642
+#: src/modules/dcc/libkvidcc.cpp:666 src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:805 src/modules/dcc/libkvidcc.cpp:1121
+#: src/modules/dcc/libkvidcc.cpp:1171 src/modules/dcc/requests.cpp:136
 #: src/modules/dcc/requests.cpp:137 src/modules/dcc/requests.cpp:138
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/marshal.cpp:444
+#: src/modules/dcc/marshal.cpp:474 src/modules/dcc/marshal.cpp:479
 msgid "unknown"
 msgstr "desconegut"
 

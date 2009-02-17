@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 19:57+0100\n"
+"POT-Creation-Date: 2009-02-17 22:48+0100\n"
 "PO-Revision-Date: 2009-01-27 01:22+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -37,17 +37,17 @@ msgstr "$fontMetricsHeight: Der Painter ist nicht aktiv!"
 msgid "$fontMetricsWidth: the painter is not active!"
 msgstr "$fontMetricsWidth: Der Painter ist nicht aktiv!"
 
-#: src/modules/objects/class_widget.cpp:1582
+#: src/modules/objects/class_widget.cpp:1586
 msgid "$move() requires either an array as first parameter or two integers"
 msgstr ""
 "$move() benötigt entweder ein Array als ersten Parameter oder zwei Integer"
 
-#: src/modules/objects/class_widget.cpp:1639
+#: src/modules/objects/class_widget.cpp:1643
 msgid "$resize() requires either an array as first parameter or two integers"
 msgstr ""
 "$resize() benötigt entweder ein Array als ersten Parameter oder zwei Integer"
 
-#: src/modules/objects/class_widget.cpp:1339
+#: src/modules/objects/class_widget.cpp:1343
 msgid ""
 "$setBackgroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
@@ -61,7 +61,7 @@ msgid "$setColor requires either an array as first parameter or three integers"
 msgstr ""
 "$setColor benötigt entweder ein Array als ersten Parameter oder drei Integer"
 
-#: src/modules/objects/class_widget.cpp:1257
+#: src/modules/objects/class_widget.cpp:1261
 msgid ""
 "$setForegroundColor requires either an array as first parameter, one hex "
 "string or color name, or three integers"
@@ -69,7 +69,7 @@ msgstr ""
 "$setForegroundColor benötigt entweder ein Array als ersten Parameter, eine "
 "Hex-Zeichenkette oder Farbnamen, oder drei Integer"
 
-#: src/modules/objects/class_widget.cpp:1135
+#: src/modules/objects/class_widget.cpp:1139
 msgid ""
 "$setGeometry() requires either an array as first parameter or four integers"
 msgstr ""
@@ -90,10 +90,6 @@ msgstr "Eine Zeichenkette mit 6 Hex-Ziffern ist erforderlich"
 msgid "Another connection in progress"
 msgstr "Eine weitere Verbindung in Bearbeitung"
 
-#: src/modules/objects/class_pixmap.cpp:278
-msgid "Area dimensions are out of destination size "
-msgstr "Bereichsdimensionen sind außerhalb der Zielgröße "
-
 #: src/modules/objects/class_file.cpp:321
 msgid "Argument too long, using only first char"
 msgstr "Argument zu lang, nutze nur das erste Zeichen"
@@ -112,10 +108,10 @@ msgid "Block parameter must be a string or a memorybuffer object"
 msgstr ""
 "Blockparameter muss eine Zeichenkette oder ein memorybuffer-Objekt sein"
 
-#: src/modules/objects/class_pixmap.cpp:216
-#: src/modules/objects/class_socket.cpp:433
+#: src/modules/objects/class_pixmap.cpp:275
 #: src/modules/objects/class_file.cpp:374
 #: src/modules/objects/class_file.cpp:508
+#: src/modules/objects/class_socket.cpp:433
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr "Pufferparameter ist kein memorybuffer-Objekt"
 
@@ -123,11 +119,11 @@ msgstr "Pufferparameter ist kein memorybuffer-Objekt"
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr "Puffer-Parameter ist kein memorybuffer- oder file-Objekt"
 
-#: src/modules/objects/class_pixmap.cpp:211
-#: src/modules/objects/class_socket.cpp:428
-#: src/modules/objects/class_socket.cpp:499
+#: src/modules/objects/class_pixmap.cpp:270
 #: src/modules/objects/class_file.cpp:369
 #: src/modules/objects/class_file.cpp:489
+#: src/modules/objects/class_socket.cpp:428
+#: src/modules/objects/class_socket.cpp:499
 msgid "Buffer parameter is not an object"
 msgstr "Pufferparameter ist kein Objekt"
 
@@ -139,11 +135,11 @@ msgstr "Button-Gruppe unterstützt nur Checkbox- und Radiobox-Objekte"
 msgid "Can't add a non-popupmenu object"
 msgstr "Kann ein Nicht-Popup-Menü-Objekt nicht hinzufügen"
 
-#: src/modules/objects/class_widget.cpp:1757
-#: src/modules/objects/class_wizard.cpp:146
-#: src/modules/objects/class_wizard.cpp:168
 #: src/modules/objects/class_window.cpp:143
 #: src/modules/objects/class_window.cpp:148
+#: src/modules/objects/class_wizard.cpp:146
+#: src/modules/objects/class_wizard.cpp:168
+#: src/modules/objects/class_widget.cpp:1761
 msgid "Can't add a non-widget object"
 msgstr "Kann Nicht-Widget-Objekt nicht hinzufügen"
 
@@ -180,11 +176,11 @@ msgstr ""
 msgid "Can't start the DNS thread"
 msgstr "Kann den DNS-Thread nicht starten"
 
-#: src/modules/objects/class_memorybuffer.cpp:115
+#: src/modules/objects/class_memorybuffer.cpp:116
 msgid "Cannot open file '%Q' for writing"
 msgstr "Kann Datei '%Q' nicht zum Schreiben öffnen"
 
-#: src/modules/objects/libkviobjects.cpp:183
+#: src/modules/objects/libkviobjects.cpp:189
 msgid "Class '%Q' is not defined"
 msgstr "Klasse '%Q' ist nicht definiert"
 
@@ -205,6 +201,21 @@ msgstr "Zeitüberschreitung beim Verbindungsaufbau"
 msgid "Connect failure: "
 msgstr "Verbindung fehlgeschlagen: "
 
+#: src/modules/objects/class_sql.cpp:184 src/modules/objects/class_sql.cpp:208
+#, fuzzy
+msgid "Connection %Q does not exists"
+msgstr "Objekt existiert nicht"
+
+#: src/modules/objects/class_sql.cpp:287
+#, fuzzy
+msgid "Connection %Q is not open!"
+msgstr "Datei ist nicht geöffnet!"
+
+#: src/modules/objects/class_sql.cpp:230
+#, fuzzy
+msgid "Connection query %Q does not exists"
+msgstr "Objekt existiert nicht"
+
 #: src/modules/objects/class_xmlreader.cpp:358
 msgid "Data is not a memorybuffer object or string"
 msgstr "Datum ist weder ein memorybuffer-Objekt noch eine Zeichenkette"
@@ -217,17 +228,9 @@ msgstr "Datenparameter ist kein memorybuffer-Objekt"
 msgid "Data parameter is not an object"
 msgstr "Datenparameter ist kein Objekt"
 
-#: src/modules/objects/libkviobjects.cpp:653
+#: src/modules/objects/libkviobjects.cpp:658
 msgid "Destination is not an object"
 msgstr "Ziel ist kein Objekt"
-
-#: src/modules/objects/class_pixmap.cpp:268
-msgid "Destination must be a pixmap object"
-msgstr "Ziel muss ein Pixmap-Objekt sein"
-
-#: src/modules/objects/class_pixmap.cpp:262
-msgid "Destination parameter is not an object"
-msgstr "Zielparameter ist kein Objekt"
 
 #: src/modules/objects/class_file.cpp:228
 msgid "Empty filename string"
@@ -242,6 +245,7 @@ msgstr "Fehler in KVS-Klassenimplementation: Verarbeitung abgebrochen"
 msgid "Error near line %d, column %d"
 msgstr "Fehler bei Zeile %d, Spalte %d"
 
+#: src/modules/objects/class_tablewidget.cpp:158
 #: src/modules/objects/class_treewidgetitem.cpp:451
 msgid ""
 "Error occured: the suitable file '%Q' is not of the correct format or it is "
@@ -266,9 +270,9 @@ msgstr "Konnte das Widget für \"wrap\" nicht finden"
 msgid "Failed to setup a nonblocking socket"
 msgstr "Einrichtung eines nichtblockierenden Sockets fehlgeschlagen"
 
-#: src/modules/objects/class_socket.cpp:512
 #: src/modules/objects/class_file.cpp:40
 #: src/modules/objects/class_file.cpp:480
+#: src/modules/objects/class_socket.cpp:512
 msgid "File is not open!"
 msgstr "Datei ist nicht geöffnet!"
 
@@ -276,9 +280,10 @@ msgstr "Datei ist nicht geöffnet!"
 msgid "Host '%Q' is not a valid url"
 msgstr "Host '%Q' ist keine gültige URL"
 
-#: src/modules/objects/class_multilineedit.cpp:1082
-#: src/modules/objects/class_pixmap.cpp:193
+#: src/modules/objects/class_pixmap.cpp:188
+#: src/modules/objects/class_pixmap.cpp:220
 #: src/modules/objects/class_tbrowser.cpp:103
+#: src/modules/objects/class_multilineedit.cpp:1082
 msgid "I can't find the specified file '%Q'."
 msgstr "Kann die angegebene Datei '%Q' nicht finden."
 
@@ -290,27 +295,27 @@ msgstr "Kann die Datei '%Q' nicht lesen."
 msgid "Icon '%Q' doesn't exist"
 msgstr "Icon '%Q' existiert nicht"
 
-#: src/modules/objects/libkviobjects.cpp:553
+#: src/modules/objects/libkviobjects.cpp:559
 msgid "Inexisting class object for objects.name"
 msgstr "Nichtexistierendes Klassenobjekt für objects.name"
 
-#: src/modules/objects/libkviobjects.cpp:262
+#: src/modules/objects/libkviobjects.cpp:268
 msgid "Inexisting source object for objects.connect"
 msgstr "Nichtexistierendes Quellobjekt für objects.connect"
 
-#: src/modules/objects/libkviobjects.cpp:601
+#: src/modules/objects/libkviobjects.cpp:607
 msgid "Inexisting source object for objects.disconnect"
 msgstr "Nichtexistiendes Quellobjekt für objects.disconnect"
 
-#: src/modules/objects/libkviobjects.cpp:257
+#: src/modules/objects/libkviobjects.cpp:263
 msgid "Inexisting target object for objects.connect"
 msgstr "Nichtexistierendes Zielobjekt für object.connect"
 
-#: src/modules/objects/libkviobjects.cpp:596
+#: src/modules/objects/libkviobjects.cpp:602
 msgid "Inexisting target object for objects.disconnect"
 msgstr "Nichtexistierendes Zielobjekt für objects.disconnect"
 
-#: src/modules/objects/libkviobjects.cpp:267
+#: src/modules/objects/libkviobjects.cpp:273
 msgid "Inexisting target slot '%Q' for objects.connect"
 msgstr "Nichtexistierender Ziel-Slot '%Q' für objects.connect"
 
@@ -347,7 +352,7 @@ msgstr ""
 "Ungültiges Objekt-Handle als Parameter übergeben (existiert das Objekt "
 "weiterhin?)"
 
-#: src/modules/objects/class_widget.cpp:1671
+#: src/modules/objects/class_widget.cpp:1675
 msgid "Invalid parameters"
 msgstr "Ungültige Parameter"
 
@@ -380,6 +385,10 @@ msgstr "Ungültiges socket-Objekt angegeben (es erbt nicht von socket)"
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr "Elementindex [%d] ist zu groß - nutze Standard $count() - 1 [%d]"
 
+#: src/modules/objects/class_tablewidget.cpp:120
+msgid "Item out of the tablewidget size"
+msgstr ""
+
 #: src/modules/objects/class_file.cpp:597
 msgid "Lenght of hex string is not multiple of 2"
 msgstr "Länge der Hex-Zeichenkette ist kein Vielfaches von 2"
@@ -388,13 +397,22 @@ msgstr "Länge der Hex-Zeichenkette ist kein Vielfaches von 2"
 msgid "Listen failure"
 msgstr "\"Listen\" fehlgeschlagen"
 
+#: src/modules/objects/class_sql.cpp:160
+msgid "Missing QT plugin for database %Q"
+msgstr ""
+
 #: src/modules/objects/class_socket.cpp:705
 msgid "No IPv6 support in this executable"
 msgstr "Keine IPv6-Unterstützung in dieser Programmversion"
 
-#: src/modules/objects/class_widget.cpp:1752
+#: src/modules/objects/class_widget.cpp:1756
 msgid "No Layout associated to the widget "
 msgstr "Diesem Widget ist kein Layout zugeordnet "
+
+#: src/modules/objects/class_sql.cpp:248
+#, fuzzy
+msgid "No query connection is open"
+msgstr "Eine weitere Verbindung in Bearbeitung"
 
 #: src/modules/objects/class_socket.cpp:566
 msgid "No socket object specified"
@@ -415,10 +433,10 @@ msgstr "Keine solche Zeile '%d'"
 msgid "No such open mode '%Q'"
 msgstr "Kein solcher Öffnen-Modus '%Q'"
 
-#: src/modules/objects/class_widget.cpp:1241
-#: src/modules/objects/class_widget.cpp:1247
-#: src/modules/objects/class_widget.cpp:1323
-#: src/modules/objects/class_widget.cpp:1329
+#: src/modules/objects/class_widget.cpp:1245
+#: src/modules/objects/class_widget.cpp:1251
+#: src/modules/objects/class_widget.cpp:1327
+#: src/modules/objects/class_widget.cpp:1333
 msgid "Not a valid color !"
 msgstr "Keine gültige Farbe!"
 
@@ -427,30 +445,22 @@ msgstr "Keine gültige Farbe!"
 msgid "Not an hex digit"
 msgstr "Keine Hex-Ziffer"
 
-#: src/modules/objects/class_widget.cpp:1859
+#: src/modules/objects/class_widget.cpp:1863
 msgid "Null mask"
 msgstr "Null-Maske"
 
+#: src/modules/objects/class_button.cpp:133
 #: src/modules/objects/class_painter.cpp:856
-#: src/modules/objects/class_button.cpp:131
 msgid "Object Pixmap required!"
 msgstr "Objekt Pixmap erforderlich!"
 
-#: src/modules/objects/libkviobjects.cpp:409
+#: src/modules/objects/libkviobjects.cpp:415
 msgid "Object does not exists"
 msgstr "Objekt existiert nicht"
 
 #: src/modules/objects/class_dockwindow.cpp:115
 msgid "Object in invalid state"
 msgstr "Objekt in ungültigem Status"
-
-#: src/modules/objects/class_pixmap.cpp:306
-msgid "Offset height area is out of pixmap size "
-msgstr "Abstandshöhe ist außerhalb der Pixmap-Größe"
-
-#: src/modules/objects/class_pixmap.cpp:301
-msgid "Offset width area is out of pixmap size "
-msgstr "Abstandsbreite ist außerhalb der Pixmap-Größe"
 
 #: src/modules/objects/class_painter.cpp:597
 #: src/modules/objects/class_painter.cpp:632
@@ -463,51 +473,51 @@ msgstr ""
 msgid "One of the array parameters is empty"
 msgstr "Einer der Array-Parameter ist leer"
 
-#: src/modules/objects/class_widget.cpp:1220
-#: src/modules/objects/class_widget.cpp:1302
 #: src/modules/objects/class_multilineedit.cpp:819
 #: src/modules/objects/class_multilineedit.cpp:1019
+#: src/modules/objects/class_widget.cpp:1224
+#: src/modules/objects/class_widget.cpp:1306
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Farb-Array-Parameter konnte nicht zu einem Integer ausgewertet "
 "werden"
 
-#: src/modules/objects/class_widget.cpp:1214
-#: src/modules/objects/class_widget.cpp:1296
 #: src/modules/objects/class_multilineedit.cpp:814
 #: src/modules/objects/class_multilineedit.cpp:1014
+#: src/modules/objects/class_widget.cpp:1218
+#: src/modules/objects/class_widget.cpp:1300
 msgid "One of the colors array parameters is empty"
 msgstr "Einer der Farb-Array-Parameter ist leer"
 
 #: src/modules/objects/class_painter.cpp:563
-#: src/modules/objects/class_widget.cpp:1125
+#: src/modules/objects/class_widget.cpp:1129
 msgid "One of the geometry array parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Geometrie-Array-Parameter konnte nicht zu einem Integer "
 "ausgewertet werden"
 
 #: src/modules/objects/class_painter.cpp:558
-#: src/modules/objects/class_widget.cpp:1120
+#: src/modules/objects/class_widget.cpp:1124
 msgid "One of the geometry array parameters is empty"
 msgstr "Einer der Geometrie-Array-Parameter ist leer"
 
-#: src/modules/objects/class_widget.cpp:1575
+#: src/modules/objects/class_widget.cpp:1579
 msgid "One of the move array parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Move-Array-Parameter konnte nicht zu einem Integer ausgewertet "
 "werden"
 
-#: src/modules/objects/class_widget.cpp:1570
+#: src/modules/objects/class_widget.cpp:1574
 msgid "One of the move array parameters is empty"
 msgstr "Einer der Move-Array-Parameter ist leer"
 
-#: src/modules/objects/class_widget.cpp:1632
+#: src/modules/objects/class_widget.cpp:1636
 msgid "One of the resize array parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Resize-Array-Parameter konnte nicht zu einem Integer ausgewertet "
 "werden"
 
-#: src/modules/objects/class_widget.cpp:1627
+#: src/modules/objects/class_widget.cpp:1631
 msgid "One of the resize array parameters is empty"
 msgstr "Einer der Resize-Array-Parameter ist leer"
 
@@ -518,30 +528,22 @@ msgid "One of the triplette parameters didn't evaluate to an integer"
 msgstr ""
 "Einer der Tripel-Parameter konnte nicht zu einem Integer ausgewertet werden"
 
-#: src/modules/objects/libkviobjects.cpp:749
-msgid "One or more of background, foreground or destination aren't objects"
-msgstr "Mindestens eins aus Hintergrund, Vordergrund oder Ziel ist kein Objekt"
+#: src/modules/objects/class_sql.cpp:348
+msgid "Only memorybuffer class object is supported"
+msgstr ""
 
-#: src/modules/objects/class_widget.cpp:1782
+#: src/modules/objects/class_widget.cpp:1786
 msgid "Parent must be a widget object"
 msgstr "Das übergeordnete Element muss ein Widget-Objekt sein"
 
-#: src/modules/objects/class_pixmap.cpp:285
-#: src/modules/objects/class_pixmap.cpp:294
-msgid "Pixmap dimensions are out of destination size "
-msgstr "Pixmap-Dimensionen sind außerhalb der Zielgröße"
-
+#: src/modules/objects/class_tablewidget.cpp:148
 #: src/modules/objects/class_treewidgetitem.cpp:441
 msgid "Pixmap object or image Id required"
 msgstr "Pixmap-Objekt oder Bild-Id benötigt"
 
 #: src/modules/objects/class_painter.cpp:1142
-#: src/modules/objects/class_widget.cpp:1854
+#: src/modules/objects/class_widget.cpp:1858
 msgid "Pixmap object required"
-msgstr "Pixmap-Objekt benötigt"
-
-#: src/modules/objects/libkviobjects.cpp:755
-msgid "Pixmap objects required"
 msgstr "Pixmap-Objekt benötigt"
 
 #: src/modules/objects/class_painter.cpp:1037
@@ -549,12 +551,12 @@ msgid "Pixmap or Widget parameter is not an object"
 msgstr "Pixmap- oder Widget-Parameter ist kein Objekt"
 
 #: src/modules/objects/class_painter.cpp:1137
-#: src/modules/objects/class_widget.cpp:1849
+#: src/modules/objects/class_widget.cpp:1853
 msgid "Pixmap parameter is not an object"
 msgstr "Pixmap-Parameter ist kein Objekt"
 
+#: src/modules/objects/class_button.cpp:127
 #: src/modules/objects/class_painter.cpp:851
-#: src/modules/objects/class_button.cpp:125
 msgid "Pixmap parameter is not an object!"
 msgstr "Pixmap-Parameter ist kein Objekt!"
 
@@ -566,6 +568,15 @@ msgstr "Prozess kann nicht gestartet werden."
 msgid "Processing aborted"
 msgstr "Verarbeitung abgebrochen"
 
+#: src/modules/objects/class_sql.cpp:282
+msgid "Query  %Q already initializated"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:257
+#, fuzzy
+msgid "Query for connection %Q does not exists"
+msgstr "Die Datei '%Q' existiert nicht"
+
 #: src/modules/objects/class_file.cpp:332
 msgid "Read error occured!"
 msgstr "Lesefehler aufgetreten!"
@@ -574,7 +585,7 @@ msgstr "Lesefehler aufgetreten!"
 msgid "Socket creation failed"
 msgstr "Socket-Erstellung fehlgeschlagen"
 
-#: src/modules/objects/libkviobjects.cpp:647
+#: src/modules/objects/libkviobjects.cpp:652
 msgid "Source is not an object"
 msgstr "Quelle ist kein Objekt"
 
@@ -583,53 +594,53 @@ msgid "The added widget is not a child of this dock window"
 msgstr "Das hinzugefügte Widget ist kein Kind dieses Dock-Fensters"
 
 #: src/modules/objects/class_painter.cpp:585
-#: src/modules/objects/class_widget.cpp:1563
-#: src/modules/objects/class_widget.cpp:1620
+#: src/modules/objects/class_widget.cpp:1567
+#: src/modules/objects/class_widget.cpp:1624
 msgid "The array passed as parameter must contain at least 2 elements"
 msgstr ""
 "Das als Parameter übergebene Array muss mindestens 2 Elemente beinhalten"
 
 #: src/modules/objects/class_painter.cpp:619
-#: src/modules/objects/class_widget.cpp:1205
-#: src/modules/objects/class_widget.cpp:1287
 #: src/modules/objects/class_multilineedit.cpp:805
 #: src/modules/objects/class_multilineedit.cpp:1005
+#: src/modules/objects/class_widget.cpp:1209
+#: src/modules/objects/class_widget.cpp:1291
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr ""
 "Das als Parameter übergebene Array muss mindestens 3 Elemente beinhalten"
 
 #: src/modules/objects/class_painter.cpp:549
-#: src/modules/objects/class_widget.cpp:1107
+#: src/modules/objects/class_widget.cpp:1111
 msgid "The array passed as parameter must contain at least 4 elements"
 msgstr ""
 "Das als Paramter übergebene Array muss mindestens 4 Elemente beinhalten"
 
-#: src/modules/objects/libkviobjects.cpp:352
-#: src/modules/objects/libkviobjects.cpp:451
+#: src/modules/objects/libkviobjects.cpp:358
+#: src/modules/objects/libkviobjects.cpp:457
 msgid "The class '%Q' does not exist"
 msgstr "Die Klasse '%Q' existiert nicht"
 
-#: src/modules/objects/class_memorybuffer.cpp:97
+#: src/modules/objects/class_memorybuffer.cpp:98
 msgid "The file '%Q' does not exist"
 msgstr "Die Datei '%Q' existiert nicht"
 
 #: src/modules/objects/class_painter.cpp:575
 #: src/modules/objects/class_painter.cpp:609
 #: src/modules/objects/class_painter.cpp:653
-#: src/modules/objects/class_widget.cpp:1140
-#: src/modules/objects/class_widget.cpp:1262
-#: src/modules/objects/class_widget.cpp:1344
-#: src/modules/objects/class_widget.cpp:1587
-#: src/modules/objects/class_widget.cpp:1644
 #: src/modules/objects/class_multilineedit.cpp:855
 #: src/modules/objects/class_multilineedit.cpp:1055
+#: src/modules/objects/class_widget.cpp:1144
+#: src/modules/objects/class_widget.cpp:1266
+#: src/modules/objects/class_widget.cpp:1348
+#: src/modules/objects/class_widget.cpp:1591
+#: src/modules/objects/class_widget.cpp:1648
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr ""
 "Der erste Parameter konnte nicht zu einem Array oder einem Integer "
 "ausgewertet werden"
 
-#: src/modules/objects/class_socket.cpp:627
 #: src/modules/objects/class_file.cpp:613
+#: src/modules/objects/class_socket.cpp:627
 msgid "The hex string is not correct!"
 msgstr "Die Hex-Zeichenkette ist nicht korrekt!"
 
@@ -679,7 +690,7 @@ msgstr ""
 msgid "The parent-widget isn't a MainWindow."
 msgstr "Das Eltern-Widget ist kein Hauptfenster."
 
-#: src/modules/objects/class_widget.cpp:1818
+#: src/modules/objects/class_widget.cpp:1822
 msgid "The pixmap is not valid"
 msgstr "Die Pixmap ist ungültig"
 
@@ -719,6 +730,10 @@ msgid ""
 msgstr ""
 "Zu viele unbearbeitete ankommende Daten (wird dieses Socket nicht gemanaged?)"
 
+#: src/modules/objects/class_sql.cpp:354
+msgid "Type value %Q not supported"
+msgstr ""
+
 #: src/modules/objects/class_painter.cpp:703
 msgid "Unknown '%Q' background mode"
 msgstr "Unbekannter '%Q' Hintergrundmodus"
@@ -728,18 +743,18 @@ msgid "Unknown '%Q' sort order: switching to ascending order"
 msgstr ""
 "Unbekannte '%Q' Sortierreihenfolge: Wechsle zur aufsteigenden Reihenfolge"
 
-#: src/modules/objects/class_widget.cpp:1917
+#: src/modules/objects/class_widget.cpp:1921
 msgid "Unknown Color Group '%Q'"
 msgstr "Unbekannte Farbgruppe '%Q'"
 
-#: src/modules/objects/class_widget.cpp:1908
+#: src/modules/objects/class_widget.cpp:1912
 msgid "Unknown Color Role '%Q'"
 msgstr "Unbekannte Farbrolle '%Q'"
 
+#: src/modules/objects/class_groupbox.cpp:315
+#: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_label.cpp:291
 #: src/modules/objects/class_multilineedit.cpp:1117
-#: src/modules/objects/class_hbox.cpp:197
-#: src/modules/objects/class_groupbox.cpp:315
 msgid "Unknown alignment '%Q'"
 msgstr "Unbekannte Justierung '%Q'"
 
@@ -748,8 +763,9 @@ msgstr "Unbekannte Justierung '%Q'"
 msgid "Unknown alignment: '%Q'"
 msgstr "Unbekannte Justierung: '%Q'"
 
-#: src/modules/objects/class_pixmap.cpp:144
-msgid "Unknown aspect ratio: using default value IgnoreAspectRatio"
+#: src/modules/objects/class_pixmap.cpp:173
+#, fuzzy
+msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
 msgstr "Unbekanntes Bildseitenverhältnis: nutze Standard IgnoreAspectRatio"
 
 #: src/modules/objects/class_painter.cpp:1433
@@ -768,8 +784,8 @@ msgstr "Unbekanntes Elementen-Flag '%Q'"
 msgid "Unknown mode '%Q'"
 msgstr "Unbekannter Modus '%Q'"
 
-#: src/modules/objects/class_slider.cpp:282
 #: src/modules/objects/class_groupbox.cpp:348
+#: src/modules/objects/class_slider.cpp:282
 msgid "Unknown orientation '%Q'"
 msgstr "Unbekannte Ausrichtung '%Q'"
 
@@ -786,7 +802,7 @@ msgid "Unknown segment style '%Q'"
 msgstr "Unbekannter Segmentstil '%Q'"
 
 #: src/modules/objects/class_label.cpp:345
-#: src/modules/objects/class_widget.cpp:1722
+#: src/modules/objects/class_widget.cpp:1726
 msgid "Unknown style '%Q'"
 msgstr "Unbekannter Stil '%Q'"
 
@@ -798,15 +814,11 @@ msgstr "Unbekannte Textposition '%Q'"
 msgid "Unknown tickmark '%Q'"
 msgstr "Unbekanntes Häkchen '%Q'"
 
-#: src/modules/objects/class_pixmap.cpp:148
-msgid "Unknown tranformation mode: using default value Fast"
-msgstr "Unbekannter Transformationsmodus: nutze Standardwert Schnell"
-
-#: src/modules/objects/class_widget.cpp:1884
+#: src/modules/objects/class_widget.cpp:1888
 msgid "Unknown widget attribute '%Q'"
 msgstr "Unbekanntes Widget-Attribut '%Q'"
 
-#: src/modules/objects/class_widget.cpp:1697
+#: src/modules/objects/class_widget.cpp:1701
 msgid "Unknown widget flag '%Q'"
 msgstr "Unbekanntes Widget-Flag ''%Q'"
 
@@ -825,14 +837,6 @@ msgstr ""
 "Port-Wert %d ist außerhalb des zulässigen Bereichs (gültige Werte sind im "
 "Bereich von 0 bis 65535)"
 
-#: src/modules/objects/libkviobjects.cpp:778
-msgid "Values for background are out of image size "
-msgstr "Werte für Hintergrund sind außerhalb der Bildgröße"
-
-#: src/modules/objects/libkviobjects.cpp:783
-msgid "Values for foreground are out of image size "
-msgstr "Werte für Vordergrund sind außerhalb der Bildgröße"
-
 #: src/modules/objects/class_xmlreader.cpp:164
 #, c-format
 msgid "Warning near line %d, column %d"
@@ -848,30 +852,29 @@ msgstr "Warnung bei Zeile %d, Spalte %d"
 msgid "Widget object required"
 msgstr "Widget-Objekt erfoderlich"
 
-#: src/modules/objects/libkviobjects.cpp:673
+#: src/modules/objects/libkviobjects.cpp:678
 msgid "Widget or Pixmap required"
 msgstr "Widget oder Pixmap benötigt"
 
 #: src/modules/objects/class_painter.cpp:1045
-#: src/modules/objects/libkviobjects.cpp:765
 msgid "Widget or Pixmap required "
 msgstr "Widget oder Pixmap benötigt "
 
 #: src/modules/objects/class_mainwindow.cpp:92
-#: src/modules/objects/class_widget.cpp:1746
 #: src/modules/objects/class_toolbutton.cpp:279
+#: src/modules/objects/class_widget.cpp:1750
 #: src/modules/objects/object_macros.h:115
 msgid "Widget parameter is not a valid object"
 msgstr "Widget-Parameter ist kein gültiges Objekt"
 
 #: src/modules/objects/class_mainwindow.cpp:87
-#: src/modules/objects/class_widget.cpp:1741
 #: src/modules/objects/class_toolbutton.cpp:274
+#: src/modules/objects/class_widget.cpp:1745
 #: src/modules/objects/object_macros.h:110
 msgid "Widget parameter is not an object"
 msgstr "Widget-Parameter ist kein Objekt"
 
-#: src/modules/objects/libkviobjects.cpp:663
+#: src/modules/objects/libkviobjects.cpp:668
 msgid "Widget, Image or Pixmap required "
 msgstr "Widget, Image oder Pixmap benötigt "
 
@@ -882,6 +885,40 @@ msgstr "Schreibfehler aufgetreten!"
 #: src/modules/objects/class_xmlreader.cpp:315
 msgid "XML support not available in the Qt library"
 msgstr "XML-Unterstützung ist nicht verfügbar in der Qt-Bibliothek"
+
+#~ msgid "Area dimensions are out of destination size "
+#~ msgstr "Bereichsdimensionen sind außerhalb der Zielgröße "
+
+#~ msgid "Destination must be a pixmap object"
+#~ msgstr "Ziel muss ein Pixmap-Objekt sein"
+
+#~ msgid "Destination parameter is not an object"
+#~ msgstr "Zielparameter ist kein Objekt"
+
+#~ msgid "Offset height area is out of pixmap size "
+#~ msgstr "Abstandshöhe ist außerhalb der Pixmap-Größe"
+
+#~ msgid "Offset width area is out of pixmap size "
+#~ msgstr "Abstandsbreite ist außerhalb der Pixmap-Größe"
+
+#~ msgid "One or more of background, foreground or destination aren't objects"
+#~ msgstr ""
+#~ "Mindestens eins aus Hintergrund, Vordergrund oder Ziel ist kein Objekt"
+
+#~ msgid "Pixmap dimensions are out of destination size "
+#~ msgstr "Pixmap-Dimensionen sind außerhalb der Zielgröße"
+
+#~ msgid "Pixmap objects required"
+#~ msgstr "Pixmap-Objekt benötigt"
+
+#~ msgid "Unknown tranformation mode: using default value Fast"
+#~ msgstr "Unbekannter Transformationsmodus: nutze Standardwert Schnell"
+
+#~ msgid "Values for background are out of image size "
+#~ msgstr "Werte für Hintergrund sind außerhalb der Bildgröße"
+
+#~ msgid "Values for foreground are out of image size "
+#~ msgstr "Werte für Vordergrund sind außerhalb der Bildgröße"
 
 #~ msgid "unknown"
 #~ msgstr "unbekannt"

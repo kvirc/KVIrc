@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-01-30 16:51+0100\n"
+"POT-Creation-Date: 2009-02-17 22:48+0100\n"
 "PO-Revision-Date: 2008-12-20 17:02+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -128,8 +128,7 @@ msgstr ""
 "Non trovo la proprietà '%Q' per l'oggetto '%Q' della classe '%Q': la "
 "proprietà è indicizzata e definita ma il valore ritornato non è valido"
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1112
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1342
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1112 src/kvirc/kvs/kvi_kvs_object.cpp:1342
 msgid ""
 "Can't find property named '%Q' for object named '%Q' of class '%Q': the "
 "property is indexed but it doesn't really exist"
@@ -241,8 +240,7 @@ msgstr "Ciclo infinito 'for' vuoto: sistema lo script"
 msgid "Empty instruction block for command evaluation"
 msgstr "Blocco di istruzioni vuoto per la valutazione del comando"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:146
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:164
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:146 src/kvirc/kvs/kvi_kvs_parser.cpp:164
 #: src/kvirc/kvs/kvi_kvs_parser.cpp:185
 msgid "Empty script"
 msgstr "Script vuoto"
@@ -639,8 +637,7 @@ msgid ""
 "me a bit: it is a good idea to enclose it in quotes"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1105
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1333
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1105 src/kvirc/kvs/kvi_kvs_object.cpp:1333
 msgid "No Qt property named '%Q' for object named '%Q' of class '%Q'"
 msgstr ""
 
@@ -679,10 +676,10 @@ msgstr ""
 msgid "No such IRC context (%u)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
-#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
 #: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:551
 #: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:559
+#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
+#: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1183
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1191
 msgid "No such event (%Q)"
@@ -740,8 +737,7 @@ msgstr ""
 msgid "Properties for Qt class %s"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1298
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1441
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1298 src/kvirc/kvs/kvi_kvs_object.cpp:1441
 msgid ""
 "Property '%Q' for object named '%Q' of class '%Q' has an unsupported data "
 "type"
@@ -1051,8 +1047,7 @@ msgstr ""
 msgid "The menu item with id \"%Q\" does not exist in popup \"%Q\""
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1098
-#: src/kvirc/kvs/kvi_kvs_object.cpp:1320
+#: src/kvirc/kvs/kvi_kvs_object.cpp:1098 src/kvirc/kvs/kvi_kvs_object.cpp:1320
 msgid "The object named '%Q' of class '%Q' has no Qt properties"
 msgstr ""
 
@@ -1348,8 +1343,7 @@ msgid ""
 "newline)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2924
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2991
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2924 src/kvirc/kvs/kvi_kvs_parser.cpp:2991
 msgid "Unexpected end of line in parameter list"
 msgstr ""
 
@@ -1388,8 +1382,7 @@ msgstr ""
 msgid "Unexpected end of script in multiline comment"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2918
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2985
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2918 src/kvirc/kvs/kvi_kvs_parser.cpp:2985
 msgid "Unexpected end of script in parameter list"
 msgstr ""
 
@@ -1445,8 +1438,7 @@ msgstr ""
 msgid "Unterminated c-style multiline comment"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3355
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3362
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3355 src/kvirc/kvs/kvi_kvs_parser.cpp:3362
 msgid "Unterminated hash key"
 msgstr ""
 
@@ -1454,8 +1446,7 @@ msgstr ""
 msgid "Unterminated instruction block"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3641
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3648
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3641 src/kvirc/kvs/kvi_kvs_parser.cpp:3648
 msgid "Unterminated string constant"
 msgstr ""
 
@@ -1523,8 +1514,7 @@ msgstr ""
 msgid "[KVS]%c Runtime Error: %Q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_report.cpp:193
-#: src/kvirc/kvs/kvi_kvs_report.cpp:201
+#: src/kvirc/kvs/kvi_kvs_report.cpp:193 src/kvirc/kvs/kvi_kvs_report.cpp:201
 msgid "[KVS]%c Warning: %Q"
 msgstr ""
 
