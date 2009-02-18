@@ -8,18 +8,18 @@ msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-02-17 22:48+0100\n"
-"PO-Revision-Date: 2009-01-27 01:22+0100\n"
+"PO-Revision-Date: 2009-02-17 23:56+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
-"Language-Team: german <de@li.org>\n"
+"Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/objects/class_painter.cpp:647
 msgid " requires either an array as first parameter or 3 integers"
-msgstr "benötigt entweder ein Array als ersten Parameter oder 3 Integer"
+msgstr " benötigt entweder ein Array als ersten Parameter oder 3 Integer"
 
 #: src/modules/objects/class_painter.cpp:569
 msgid " requires either an array as first parameter or four integers"
@@ -202,19 +202,16 @@ msgid "Connect failure: "
 msgstr "Verbindung fehlgeschlagen: "
 
 #: src/modules/objects/class_sql.cpp:184 src/modules/objects/class_sql.cpp:208
-#, fuzzy
 msgid "Connection %Q does not exists"
-msgstr "Objekt existiert nicht"
+msgstr "Verbindung %Q existiert nicht"
 
 #: src/modules/objects/class_sql.cpp:287
-#, fuzzy
 msgid "Connection %Q is not open!"
-msgstr "Datei ist nicht geöffnet!"
+msgstr "Verbindung %Q ist nicht geöffnet!"
 
 #: src/modules/objects/class_sql.cpp:230
-#, fuzzy
 msgid "Connection query %Q does not exists"
-msgstr "Objekt existiert nicht"
+msgstr "Verbindungsanfrage %Q existiert nicht"
 
 #: src/modules/objects/class_xmlreader.cpp:358
 msgid "Data is not a memorybuffer object or string"
@@ -387,7 +384,7 @@ msgstr "Elementindex [%d] ist zu groß - nutze Standard $count() - 1 [%d]"
 
 #: src/modules/objects/class_tablewidget.cpp:120
 msgid "Item out of the tablewidget size"
-msgstr ""
+msgstr "Element ausserhalb der tablewidget-Größe"
 
 #: src/modules/objects/class_file.cpp:597
 msgid "Lenght of hex string is not multiple of 2"
@@ -399,7 +396,7 @@ msgstr "\"Listen\" fehlgeschlagen"
 
 #: src/modules/objects/class_sql.cpp:160
 msgid "Missing QT plugin for database %Q"
-msgstr ""
+msgstr "Qt-Plugin für Datenbank %Q fehlt"
 
 #: src/modules/objects/class_socket.cpp:705
 msgid "No IPv6 support in this executable"
@@ -410,9 +407,8 @@ msgid "No Layout associated to the widget "
 msgstr "Diesem Widget ist kein Layout zugeordnet "
 
 #: src/modules/objects/class_sql.cpp:248
-#, fuzzy
 msgid "No query connection is open"
-msgstr "Eine weitere Verbindung in Bearbeitung"
+msgstr "Keine Query-Verbindung geöffnet"
 
 #: src/modules/objects/class_socket.cpp:566
 msgid "No socket object specified"
@@ -530,7 +526,7 @@ msgstr ""
 
 #: src/modules/objects/class_sql.cpp:348
 msgid "Only memorybuffer class object is supported"
-msgstr ""
+msgstr "Nur memorybuffer-Klassenobjekte werden unterstützt"
 
 #: src/modules/objects/class_widget.cpp:1786
 msgid "Parent must be a widget object"
@@ -570,12 +566,11 @@ msgstr "Verarbeitung abgebrochen"
 
 #: src/modules/objects/class_sql.cpp:282
 msgid "Query  %Q already initializated"
-msgstr ""
+msgstr "Anfrage %Q bereits initialisiert"
 
 #: src/modules/objects/class_sql.cpp:257
-#, fuzzy
 msgid "Query for connection %Q does not exists"
-msgstr "Die Datei '%Q' existiert nicht"
+msgstr "Anfrage für Verbindung %Q existiert nicht"
 
 #: src/modules/objects/class_file.cpp:332
 msgid "Read error occured!"
@@ -732,7 +727,7 @@ msgstr ""
 
 #: src/modules/objects/class_sql.cpp:354
 msgid "Type value %Q not supported"
-msgstr ""
+msgstr "Typ-Wert %Q nicht unterstützt"
 
 #: src/modules/objects/class_painter.cpp:703
 msgid "Unknown '%Q' background mode"
@@ -764,9 +759,10 @@ msgid "Unknown alignment: '%Q'"
 msgstr "Unbekannte Justierung: '%Q'"
 
 #: src/modules/objects/class_pixmap.cpp:173
-#, fuzzy
 msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
-msgstr "Unbekanntes Bildseitenverhältnis: nutze Standard IgnoreAspectRatio"
+msgstr ""
+"Unbekanntes Bildseitenverhältnis %Q: nutze Verhältnis "
+"'BehalteBildseitenverhältnis'"
 
 #: src/modules/objects/class_painter.cpp:1433
 msgid "Unknown brush style '%Q'"
