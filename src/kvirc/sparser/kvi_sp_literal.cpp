@@ -1124,62 +1124,44 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 	// Normal NOTICE
 	if(IS_ME(msg,szTarget))
 	{
-		// FIXME: "The NickServ and ChanServ handling should be optional!"
-
-		if(KviQString::equalCI(szNick,"NickServ"))
+		// Nickserv nick identification routine
+		QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+		KviIrcMask talker(szNick,szUser,szHost);
+		KviNickServRule * rule = 0;
+		//check per-network nickserver settings
+		KviNickServRuleSet * r = msg->connection()->target()->network()->nickServRuleSet();
+		if(r)
 		{
-			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+			if(r->isEnabled() && !r->isEmpty())
+				rule = r->matchRule(msg->connection()->currentNickName(), &talker, szMsgText);
+		}
+		//check global nickserver settings (with server mask)
+		if(!rule)
+		{
+			if(g_pNickServRuleSet->isEnabled() && !g_pNickServRuleSet->isEmpty())
+				rule = g_pNickServRuleSet->matchRule(msg->connection()->currentNickName(), &talker, szMsgText, msg->connection()->currentServerName());
+		}
+		//check if at least one of the rules matches
+		if(rule)
+		{
+			//kvs event triggering and text output
 			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnNickServNotice,console,szNick,szUser,szHost,szMsgText))
 				msg->setHaltOutput();
-
-			// nickname service... does it ask for identification ?
 			if(!msg->haltOutput())
 			{
 				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
 					console->activeWindow() : (KviWindow *)(console);
 				pOut->output(KVI_OUT_NICKSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
 			}
-
-			bool bAuthDone = false;
-			KviNickServRuleSet * r = msg->connection()->target()->network()->nickServRuleSet();
-			if(r)
+			// exec the rule
+			console->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("NickServ requests authentication, executing scheduled command"));
+			if(!KviKvsScript::run(rule->identifyCommand(),console))
 			{
-				if(r->isEnabled() && !r->isEmpty())
-				{
-					KviIrcMask talker(szNick,szUser,szHost);
-					KviNickServRule * rule = r->matchRule(msg->connection()->currentNickName(),&talker,szMsgText);
-					if(rule)
-					{
-						bAuthDone = true;
-						console->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("NickServ requests authentication, executing scheduled command"));
-						if(!KviKvsScript::run(rule->identifyCommand(),console))
-						{
-							console->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("The scheduled NickServ identification command appears to be broken, please change the setting"));
-						}
-					}
-				}
+				console->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("The scheduled NickServ identification command appears to be broken, please change the setting"));
 			}
-
-			if(!bAuthDone)
-			{
-				if(g_pNickServRuleSet->isEnabled() && !g_pNickServRuleSet->isEmpty())
-				{
-					KviIrcMask talker(szNick,szUser,szHost);
-					KviNickServRule * rule = g_pNickServRuleSet->matchRule(msg->connection()->currentNickName(),&talker,szMsgText,msg->connection()->currentServerName());
-					if(rule)
-					{
-						console->outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("NickServ requests authentication, executing scheduled command"));
-						if(!KviKvsScript::run(rule->identifyCommand(),console))
-						{
-							console->outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("The scheduled NickServ identification command appears to be broken, please change the setting"));
-						}
-					}
-				}
-			}
-
 			return;
 		}
-
+		// Chanserv nick identification routine
 		if(KviQString::equalCI(szNick,"ChanServ"))
 		{
 			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
