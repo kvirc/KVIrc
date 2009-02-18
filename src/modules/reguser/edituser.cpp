@@ -248,7 +248,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	m_pUserEdit = new QLineEdit(b);
 	//m_pUserEdit->setMinimumWidth(120);
 	m_pUserEdit->setAlignment(Qt::AlignCenter);
-	m_pUserEdit->setToolTip(__tr2qs_ctx("<center>This the <b>username</b> that will match this user. <b>*</b> will match any username.</center>","register"));
+	m_pUserEdit->setToolTip(__tr2qs_ctx("<center>This is the <b>username</b> that will match this user. <b>*</b> will match any username.</center>","register"));
 
 	l = new QLabel("<center><b>@</b></center>",b);
 	l->setAlignment(Qt::AlignCenter);
@@ -257,7 +257,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	m_pHostEdit = new QLineEdit(b);
 	//m_pHostEdit->setMinimumWidth(120);
 	m_pHostEdit->setAlignment(Qt::AlignLeft);
-	m_pHostEdit->setToolTip(__tr2qs_ctx("<center>This the <b>hostname</b> that will match this user. <b>*</b> will match any hostname.</center>","register"));
+	m_pHostEdit->setToolTip(__tr2qs_ctx("<center>This is the <b>hostname</b> that will match this user. <b>*</b> will match any hostname.</center>","register"));
 
 	// just a spacer
 //	l = new QLabel("<nobr>&nbsp;<nobr>",this);
