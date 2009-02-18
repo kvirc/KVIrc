@@ -40,8 +40,8 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-/*bool setText(KviKvsObjectFunctionCall *c);
-	bool text(KviKvsObjectFunctionCall *c);
+            bool date(KviKvsObjectFunctionCall *c);
+/*	bool text(KviKvsObjectFunctionCall *c);
 
 	bool setImage(KviKvsObjectFunctionCall *c);
 	bool clickEvent(KviKvsObjectFunctionCall *c);

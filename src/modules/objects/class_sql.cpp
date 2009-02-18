@@ -133,7 +133,7 @@ while (t.hasNext())
 {
     t.next();
     QString szConnectionName=t.key();
-    connectionsDict.value(szConnectionName)->finish();
+  //  connectionsDict.value(szConnectionName)->finish();
    // delete connectionsDict.value(szConnectionName);
     QSqlDatabase::removeDatabase(szConnectionName);
 }

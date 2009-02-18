@@ -47,7 +47,8 @@
 	@description:
 		This widget provides a push button
 	@functions:
-		!fn: $setText([<text:string>])
+                        !fn: $setDate([<text:string>])
+                        !fn: <string> $date([<format:string>])
                 @signals:
 		!sg: $clicked()
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
@@ -57,8 +58,8 @@
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_datetimeedit,"datetimeedit","widget")
 
-        /*KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_datetimeedit,setText)
-        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_datetimeedit,text)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_datetimeedit,date)
+        /*KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_datetimeedit,text)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_datetimeedit,clickEvent)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_datetimeedit,setImage)
 */
@@ -81,14 +82,21 @@ bool KviKvsObject_datetimeedit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 //	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
 	return true;
 }
-/*
-KVSO_CLASS_FUNCTION(button,text)
-{
-	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setString(((QPushButton *)widget())->text());
-	return true;
-}
 
+KVSO_CLASS_FUNCTION(datetimeedit,date)
+{
+
+        CHECK_INTERNAL_POINTER(widget())
+        QString szFormat;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("format",KVS_PT_STRING,0,szFormat)
+        KVSO_PARAMETERS_END(c)
+
+        c->returnValue()->setString(((QDateTimeEdit *)widget())->date().toString(szFormat));
+
+        return true;
+}
+/*
 KVSO_CLASS_FUNCTION(button,setText)
 {
 	CHECK_INTERNAL_POINTER(widget())
