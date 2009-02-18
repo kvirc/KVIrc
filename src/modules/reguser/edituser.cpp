@@ -239,7 +239,7 @@ KviReguserMaskDialog::KviReguserMaskDialog(QWidget * p,KviIrcMask * m)
 	m_pNickEdit = new QLineEdit(b);
 	//m_pNickEdit->setMinimumWidth(120);
 	m_pNickEdit->setAlignment(Qt::AlignRight);
-	m_pNickEdit->setToolTip(__tr2qs_ctx("<center>This the <b>nickname</b> that will match this user, default value is the registered name.</center>","register"));
+	m_pNickEdit->setToolTip(__tr2qs_ctx("<center>This is the <b>nickname</b> that will match this user, default value is the registered name.</center>","register"));
 
 	l = new QLabel("<center><b>!</b></center>",b);
 	l->setAlignment(Qt::AlignCenter);
