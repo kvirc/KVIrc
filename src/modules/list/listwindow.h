@@ -62,7 +62,6 @@ protected:
 	QString m_szChan;
 	QString m_szUsers;
 	QString m_szTopic;
-	QString m_szUsersKey;
 };
 
 class KviChannelTreeWidgetItem : public KviTalTreeWidgetItem
@@ -71,14 +70,9 @@ class KviChannelTreeWidgetItem : public KviTalTreeWidgetItem
 public:
 	KviChannelTreeWidgetItem(KviTalTreeWidget * v,KviChannelTreeWidgetItemData * pData);
 	~KviChannelTreeWidgetItem();
-protected:
-	KviChannelTreeWidgetItemData * m_pData;
 public:
-	const QString & channel(){ return m_pData->m_szChan; };
-	const KviChannelTreeWidgetItemData * channelData(){ return m_pData;}
 	int width ( const QFontMetrics & fm, const KviTalTreeWidget * lv, int column ) const;
-protected:
-	virtual QString key(int col,bool) const;
+	bool operator< ( const KviTalTreeWidgetItem & other ) const;
 };
 
 

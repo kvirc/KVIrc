@@ -34,7 +34,6 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_themedlabel.h"
 #include "kvi_options.h"
-#include "kvi_mirccntrl.h"
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnection.h"
 #include "kvi_qstring.h"
@@ -56,18 +55,11 @@
 
 extern KviPointerList<KviListWindow> * g_pListWindowList;
 
-// kvi_ircview.cpp
-//extern KVIRC_API const char * getColorBytes(const char *data_ptr,unsigned char *byte_1,unsigned char *byte_2);
-
-
 KviChannelTreeWidgetItemData::KviChannelTreeWidgetItemData(const QString &szChan,const QString &szUsers,const QString &szTopic)
 {
 	m_szChan = szChan;
 	m_szUsers = szUsers;
 	m_szTopic = szTopic;
-	m_szUsersKey = szUsers;
-	//setText(0,szChan.upper());
-	while(m_szUsersKey.length() < 6)m_szUsersKey.prepend("0");
 }
 
 KviChannelTreeWidgetItemData::~KviChannelTreeWidgetItemData()
@@ -78,28 +70,42 @@ KviChannelTreeWidgetItemData::~KviChannelTreeWidgetItemData()
 KviChannelTreeWidgetItem::KviChannelTreeWidgetItem(KviTalTreeWidget * v,KviChannelTreeWidgetItemData * pData)
 : KviTalTreeWidgetItem(v)
 {
-	m_pData = pData;
+	setText(0, pData->m_szChan);
+	setText(1, pData->m_szUsers);
+	setText(2, pData->m_szTopic);
 }
 
 
 KviChannelTreeWidgetItem::~KviChannelTreeWidgetItem()
 {
-	delete m_pData;
 }
 
 int KviChannelTreeWidgetItem::width ( const QFontMetrics & fm, const KviTalTreeWidget * , int column ) const
 {
-	debug("width request");
-	QString szText;
+	if(column==2)
+		return fm.width(KviMircCntrl::stripControlBytes(text(column)));
+	else return fm.width(text(column));
+}
 
-	switch(column)
+bool KviChannelTreeWidgetItem::operator< ( const KviTalTreeWidgetItem & other ) const
+{
+	int sortCol = treeWidget()->sortColumn();
+	switch (sortCol)
 	{
-		case 0:  szText = m_pData->m_szChan;   break;
-		case 1:  szText = m_pData->m_szUsers;  break;
-		default: szText = m_pData->m_szTopic;  break;
+		case 0:
+			//channel
+			return text(sortCol).toUpper() < other.text(sortCol).toUpper();
+			break;
+		case 1:
+			//users
+			return text(sortCol).toInt() < other.text(sortCol).toInt();
+			break;
+		case 2:
+		default:
+			//topic
+			return KviMircCntrl::stripControlBytes(text(sortCol)).toUpper() < KviMircCntrl::stripControlBytes(other.text(sortCol)).toUpper();
+			break;
 	}
-	if(column==2) return fm.width(KviMircCntrl::stripControlBytes(szText));
-	else return fm.width(szText);
 }
 
 #define KVI_LABEL_DEF_BACK 100
@@ -107,40 +113,29 @@ int KviChannelTreeWidgetItem::width ( const QFontMetrics & fm, const KviTalTreeW
 
 void KviChannelTreeWidgetItemDelegate::paint( QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index ) const
 {
-	KviChannelTreeWidgetItem *item=static_cast<KviChannelTreeWidgetItem *>(index.internalPointer());
-
 	if (option.state & QStyle::State_Selected)
 		p->fillRect(option.rect, option.palette.brush( QPalette::Highlight ) );
 
 	//reset the color
 	p->setPen( option.palette.text().color() );
 
-	switch(index.column())
-	{
-		case 0:  p->drawText(option.rect, item->channelData()->m_szChan);   break;
-		case 1:  p->drawText(option.rect, item->channelData()->m_szUsers);   break;
-		default: KviTopicWidget::paintColoredText(p,item->channelData()->m_szTopic,option.palette,option.rect);  break;
-	}
-}
-
-QString KviChannelTreeWidgetItem::key(int col,bool) const
-{
-	switch(col)
+	switch (index.column())
 	{
 		case 0:
-			return m_pData->m_szChan;
-		break;
+			//channel
+			p->drawText(option.rect, index.data().toString());
+			break;
 		case 1:
-			return m_pData->m_szUsersKey;
-		break;
+			//users
+			p->drawText(option.rect, Qt::AlignHCenter, index.data().toString());
+			break;
 		case 2:
-			return m_pData->m_szTopic;
-		break;
+		default:
+			//topic
+			KviTopicWidget::paintColoredText(p,index.data().toString(),option.palette,option.rect);
+			break;
 	}
-	QString ret;
-	return ret;
 }
-
 
 KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_LIST,lpFrm,"list",lpConsole) , KviExternalServerDataParser()
@@ -204,6 +199,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pTreeWidget->setColumnCount(3);
 	m_pTreeWidget->setHeaderLabels(columnLabels);
 	m_pTreeWidget->setAllColumnsShowFocus(TRUE);
+	m_pTreeWidget->setSortingEnabled(TRUE);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
 
 	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *, int)));
@@ -340,20 +336,15 @@ void KviListWindow::exportList()
 			szFile.append(".kvc");
 		KviConfig cfg(szFile,KviConfig::Write);
 		cfg.clear();
-		//KviTalTreeWidgetItemIterator it(m_pTreeWidget);
 
-		//while(it.current())
 		KviChannelTreeWidgetItem *it;
 		for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 		{
 			it=(KviChannelTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
-			KviChannelTreeWidgetItemData* pData= it->m_pData;
-			cfg.setGroup(pData->m_szChan);
+			cfg.setGroup(it->text(0));
 			// Write properties
-			cfg.writeEntry("topic",pData->m_szTopic);
-			cfg.writeEntry("users",pData->m_szUsers);
-//			cfg.writeEntry("usersKey",pData->m_szUsersKey);
-		//	++it;
+			cfg.writeEntry("topic",it->text(2));
+			cfg.writeEntry("users",it->text(1));
 		}
 	}
 }
@@ -469,7 +460,7 @@ void KviListWindow::flush()
 
 void KviListWindow::itemDoubleClicked(KviTalTreeWidgetItem *it, int)
 {
-	QString sz = ((KviChannelTreeWidgetItem *)it)->channel();
+	QString sz = it->text(0);
 	if(sz.isEmpty())return;
 	if(!connection())return;
 	KviQCString dat = connection()->encodeText(sz);
