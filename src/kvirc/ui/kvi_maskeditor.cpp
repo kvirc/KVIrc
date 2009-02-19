@@ -69,30 +69,30 @@ KviMaskInputDialog::KviMaskInputDialog(const QString &szMask,KviMaskEditor* pEdi
 	m_pEditor=pEditor;
 	setModal(1);
 	m_szOldMask=szMask;
-	
+
 	setWindowTitle(__tr2qs("Mask editor - KVirc"));
-	
+
 	QGridLayout * g = new QGridLayout(this);
-	
+
 	QLabel * tl = new QLabel(__tr2qs("New mask must match an *!*@* expression"),this);
 	g->addWidget(tl,0,0,1,4);
-	
+
 	m_pEdit=new QLineEdit(szMask,this);
 	g->addWidget(m_pEdit,1,0,1,4);
-	
+
 	m_pOkButton= new QPushButton(__tr2qs("Ok"),this);
 	connect(m_pOkButton,SIGNAL(clicked()), this, SLOT(accept()));
 	g->addWidget(m_pOkButton,2,1);
 	m_pOkButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
-	
+
 	m_pChancelButton= new QPushButton(__tr2qs("Cancel"),this);
 	connect(m_pChancelButton,SIGNAL(clicked()), this, SLOT(reject()));
 	g->addWidget(m_pChancelButton,2,2);
 	m_pChancelButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
-	
+
 	QRegExp rx( "*!*@*", Qt::CaseInsensitive,QRegExp::Wildcard );
 	QValidator* validator = new QRegExpValidator( rx, this );
-	
+
 	m_pEdit->setValidator( validator );
 }
 
@@ -102,7 +102,7 @@ KviMaskInputDialog::~KviMaskInputDialog()
 
 void KviMaskInputDialog::accept()
 {
-	if(m_szOldMask.isEmpty()) 
+	if(m_szOldMask.isEmpty())
 	{
 		m_pChannel->connection()->sendFmtData("MODE %s +%c %s",
 			m_pChannel->connection()->encodeText(m_pChannel->target()).data(),
@@ -125,7 +125,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 : KviWindowToolWidget(par,button)
 {
 	bool isEnabled=1;
-	
+
 	QObject * w = parent();
 	while(w)
 	{
@@ -182,7 +182,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	l = new QLabel(__tr2qs("Use doubleclick to edit item"),this);
 	g->addWidget(l,1,1);
 	g->addWidget(l,2,0,1,2);
-	
+
 	//FIX ME
 	m_pMaskBox = new KviTalTreeWidget(this);
 	m_pMaskBox->setFocusPolicy(Qt::ClickFocus);
@@ -209,15 +209,13 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	g->addWidget(m_pRemoveMask,4,1);
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveMask->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
-	
+
         m_pAddButton = new QPushButton(__tr2qs("&Add"),this);
 	m_pAddButton->setEnabled(isEnabled);
-	m_pAddButton->setFocusPolicy(Qt::ClickFocus);
-	m_pAddButton->setFocusProxy(this);
 	g->addWidget(m_pAddButton,4,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
-	
+
 	g->setColumnStretch(3,1);
 
 	for(KviMaskEntry * e = maskList->first();e;e = maskList->next()) addMask(e);
@@ -244,7 +242,7 @@ void KviMaskEditor::searchTextChanged ( const QString & text)
 		} else {
 			if(pMaskItem->mask()->szMask.contains(text))
 				pMaskItem->setHidden(false);
-			else 
+			else
 				pMaskItem->setHidden(true);
 		}
 		//pItem=pItem->nextSibling();
