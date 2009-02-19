@@ -287,9 +287,17 @@ void KviIrcView::mousePressEvent(QMouseEvent *e)
 		// We just set the mouse to be "down" and
 		// await mouseMove events...
 
+		m_pSelectionInitLine = getVisibleLineAt(e->pos().y());
+		m_pSelectionEndLine = m_pSelectionInitLine;
+		if(m_pSelectionInitLine)
+		{
+			m_iSelectionInitCharIndex = getVisibleCharIndexAt(m_pSelectionInitLine, e->pos().x(), e->pos().y());
+			m_iSelectionEndCharIndex=m_iSelectionInitCharIndex;
+		}
+
 		if(m_pToolWidget)
 		{
-			m_pCursorLine = getVisibleLineAt(e->pos().x(),e->pos().y());
+			m_pCursorLine = m_pSelectionInitLine;
 			repaint();
 		}
 
@@ -299,8 +307,6 @@ void KviIrcView::mousePressEvent(QMouseEvent *e)
 		m_bMouseIsDown = true;
 
 		m_bShiftPressed = (e->modifiers() & Qt::ShiftModifier);
-
-		calculateSelectionBounds();
 	}
 
 	if(e->button() & Qt::LeftButton)
@@ -452,20 +458,98 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 	delete pParams;
 }
 
-void KviIrcView::mouseReleaseEvent(QMouseEvent *)
+void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 {
-	if(m_iSelectTimer)
+	if(m_pSelectionInitLine)
 	{
 		killTimer(m_iSelectTimer);
 		m_iSelectTimer = 0;
+
+		KviIrcViewLine *tempLine=getVisibleLineAt(e->pos().y());
+		if(tempLine)
+		{
+			m_pSelectionEndLine = tempLine;
+			int iTmp=getVisibleCharIndexAt(m_pSelectionEndLine, e->pos().x(), e->pos().y());
+			if(iTmp > -1)
+				m_iSelectionEndCharIndex = iTmp;
+		}
+
+		//check if selection is bottom to top or viceversa
+		KviIrcViewLine *init, *end;
+		int initChar, endChar;
+		if(m_pSelectionInitLine->uIndex == m_pSelectionEndLine->uIndex)
+		{
+			init=m_pSelectionInitLine;
+			end=m_pSelectionEndLine;
+			if(m_iSelectionInitCharIndex<=m_iSelectionEndCharIndex)
+			{
+				//one line ltor selection
+				initChar=m_iSelectionInitCharIndex;
+				endChar=m_iSelectionEndCharIndex;
+			} else {
+				//one line rtol selection
+				initChar=m_iSelectionEndCharIndex;
+				endChar=m_iSelectionInitCharIndex;
+			}
+		} else if(m_pSelectionInitLine->uIndex < m_pSelectionEndLine->uIndex)
+		{
+			//multi line uptobottom selection
+			init=m_pSelectionInitLine;
+			end=m_pSelectionEndLine;
+			initChar=m_iSelectionInitCharIndex;
+			endChar=m_iSelectionEndCharIndex;
+		} else {
+			//multi line bottomtotop selection
+			end=m_pSelectionInitLine;
+			init=m_pSelectionEndLine;
+			initChar=m_iSelectionEndCharIndex;
+			endChar=m_iSelectionInitCharIndex;
+		}
+
+		tempLine = init;
+		QString szSelectionText;
+		while(tempLine)
+		{
+			if(tempLine->uIndex == init->uIndex)
+			{
+				if(tempLine->uIndex == end->uIndex)
+				{
+					//selection starts and ends in this line
+					szSelectionText.append(tempLine->szText.mid(initChar, endChar-initChar));
+					break;
+				} else {
+					// the first line of a multi line selection
+					szSelectionText.append(tempLine->szText.mid(initChar));
+					szSelectionText.append("\n");
+				}
+			} else {
+				if(tempLine->uIndex == end->uIndex)
+				{
+					// the last line of a multi line selection
+					szSelectionText.append(tempLine->szText.left(endChar));
+					szSelectionText.append("\n");
+					break;
+				} else {
+					//a middle line of a multi line selection
+					szSelectionText.append(tempLine->szText);
+					szSelectionText.append("\n");
+				}
+			}
+			tempLine = tempLine->pNext;
+		}
+
 		QClipboard * c = QApplication::clipboard();
 		if(c)
 		{
 			// copy to both!
-			c->setText(m_szLastSelection,QClipboard::Clipboard);
+			c->setText(szSelectionText,QClipboard::Clipboard);
 			if(c->supportsSelection())
-				c->setText(m_szLastSelection,QClipboard::Selection);
+				c->setText(szSelectionText,QClipboard::Selection);
 		}
+		m_pSelectionInitLine = 0;
+		m_pSelectionEndLine = 0;
+		m_iSelectionInitCharIndex=0;
+		m_iSelectionEndCharIndex=0;
 	}
 
 	if(m_bMouseIsDown)
@@ -489,25 +573,27 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 //	debug("Pos : %d,%d",e->pos().x(),e->pos().y());
 	if(m_bMouseIsDown && (e->buttons() & Qt::LeftButton)) // m_bMouseIsDown MUST BE true...(otherwise the mouse entered the window with the button pressed ?)
 	{
-
-		if(m_iSelectTimer == 0)m_iSelectTimer = startTimer(KVI_IRCVIEW_SELECT_REPAINT_INTERVAL);
+		if(m_iSelectTimer == 0)
+			m_iSelectTimer = startTimer(KVI_IRCVIEW_SELECT_REPAINT_INTERVAL);
 
 		//scroll the ircview if the user is trying to extend a selection near the ircview borders
 		int curY = e->pos().y();
 		if(curY < KVI_IRCVIEW_VERTICAL_BORDER)
 		{
 			prevLine();
-		} else if(curY > (height() - KVI_IRCVIEW_VERTICAL_BORDER)) {
+		} else if(curY > (height() - KVI_IRCVIEW_VERTICAL_BORDER))
+		{
 			nextLine();
 		}
-		/*if(m_iMouseTimer)
+
+		KviIrcViewLine *tempLine=getVisibleLineAt(e->pos().y());
+		if(tempLine)
 		{
-			killTimer(m_iMouseTimer);
-			m_iMouseTimer=0;
-			mouseRealPressEvent(m_pLastEvent);
-			delete m_pLastEvent;
-			m_pLastEvent=0;
-		}*/
+			m_pSelectionEndLine = tempLine;
+			int iTmp=getVisibleCharIndexAt(m_pSelectionEndLine, e->pos().x(), e->pos().y());
+			if(iTmp > -1)
+				m_iSelectionEndCharIndex = iTmp;
+		}
 	} else {
 		if(m_iSelectTimer)
 		{
@@ -526,8 +612,6 @@ void KviIrcView::mouseMoveEvent(QMouseEvent *e)
 
 		if(newLinkUnderMouse != m_pLastLinkUnderMouse)
 		{
-			//abortTip();
-			//m_iTipTimer = startTimer(KVI_OPTION_UINT(KviOption_uintIrcViewToolTipTimeoutInMsec));
 			m_pLastLinkUnderMouse = newLinkUnderMouse;
 			if(m_pLastLinkUnderMouse)
 			{
@@ -581,7 +665,6 @@ void KviIrcView::timerEvent(QTimerEvent *e)
 
 	if(e->timerId() == m_iSelectTimer)
 	{
-		calculateSelectionBounds();
 		repaint();
 	}
 	if(e->timerId() == m_iMouseTimer)
@@ -614,13 +697,15 @@ void KviIrcView::maybeTip(const QPoint &pnt)
 	int y = KVI_IRCVIEW_VERTICAL_BORDER;
 
 	markerArea = QRect(QPoint(x,y),QSize(16,16));
-	if(checkMarkerArea(markerArea,pnt)) doMarkerToolTip(markerArea);
+	if(checkMarkerArea(markerArea,pnt))
+		doMarkerToolTip(markerArea);
 
 	// Check if the mouse is over a link
 	KviIrcViewWrappedBlock * linkUnderMouse = getLinkUnderMouse(pnt.x(),pnt.y(),&rctLink,&linkCmd,&linkText);
 
-	if((linkUnderMouse == m_pLastLinkUnderMouse) && linkUnderMouse)doLinkToolTip(rctLink,linkCmd,linkText);
-	else m_pLastLinkUnderMouse = 0; //
+	if((linkUnderMouse == m_pLastLinkUnderMouse) && linkUnderMouse)
+		doLinkToolTip(rctLink,linkCmd,linkText);
+	else m_pLastLinkUnderMouse = 0;
 }
 
 void KviIrcView::doMarkerToolTip(const QRect &rct)

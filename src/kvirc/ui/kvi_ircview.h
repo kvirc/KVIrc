@@ -113,22 +113,17 @@ private:
 	QPoint                      m_mouseCurrentPos;
 
 	// Selection
-	int                         m_iSelectionBegin;
-	int                         m_iSelectionTop;
-	int                         m_iSelectionEnd;
-	int                         m_iSelectionBottom;
-	int                         m_iSelectionLeft;
-	int                         m_iSelectionRight;
+	KviIrcViewLine            * m_pSelectionInitLine;
+	KviIrcViewLine            * m_pSelectionEndLine;
+	int                         m_iSelectionInitCharIndex;
+	int                         m_iSelectionEndCharIndex;
+	int                         m_iSelectTimer;
 
 	bool                        m_bMouseIsDown;
 	bool                        m_bShiftPressed;
 
 	bool                        m_bSkipScrollBarRepaint;
-	int                         m_iSelectTimer;
 	int                         m_iMouseTimer;
-	//int                         m_iTipTimer;
-	QString                     m_szLastSelection;
-	QString                     m_szLastSelectionLine;
 	KviWindow                 * m_pKviWindow;
 	KviIrcViewWrappedBlockSelectionInfo * m_pWrappedBlockSelectionInfo;
 	QFile                     * m_pLogFile;
@@ -212,7 +207,8 @@ signals:
 	void fileDropped(const QString &);
 private:
 	void setCursorLine(KviIrcViewLine * l);
-	KviIrcViewLine * getVisibleLineAt(int xPos,int yPos);
+	KviIrcViewLine * getVisibleLineAt(int yPos);
+	int getVisibleCharIndexAt(KviIrcViewLine * line, int xPos, int yPos);
 	void getLinkEscapeCommand(QString &buffer,const QString &escape_cmd,const QString &escape_label);
 	void appendLine(KviIrcViewLine *ptr,bool bRepaint);
 	void postUpdateEvent();
@@ -220,8 +216,7 @@ private:
 	const kvi_wchar_t * getTextLine(int msg_type,const kvi_wchar_t * data_ptr,KviIrcViewLine *line_ptr,bool bEnableTimeStamp = true);
 	void calculateLineWraps(KviIrcViewLine *ptr,int maxWidth);
 	void recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi);
-	bool checkSelectionBlock(KviIrcViewLine * line,int left,int bottom,int bufIndex);
-	void calculateSelectionBounds();
+	bool checkSelectionBlock(KviIrcViewLine * line,int bufIndex);
 	KviIrcViewWrappedBlock * getLinkUnderMouse(int xPos,int yPos,QRect * pRect = 0,QString * linkCmd = 0,QString * linkText = 0);
 	void doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkText);
 	void doMarkerToolTip(const QRect &rct);

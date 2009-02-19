@@ -134,10 +134,6 @@ typedef struct _KviIrcViewLine
 typedef struct _KviIrcViewWrappedBlockSelectionInfoTag
 {
 	int selection_type;
-	/*struct {
-		int length;
-		int width;
-	} part[3];*/
 	int part_1_length;
 	int part_1_width;
 	int part_2_length;
