@@ -190,7 +190,7 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
             QStringList drivers = QSqlDatabase::drivers();
             if (!drivers.contains(szDbDriver))
             {
-                c->error(__tr2qs_ctx("Missing QT plugin for database %Q","objects"),&szDbDriver);
+                c->error(__tr2qs_ctx("Missing Qt plugin for database %Q","objects"),&szDbDriver);
                 return false;
             }
         }
