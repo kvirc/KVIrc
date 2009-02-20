@@ -183,7 +183,6 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	g->addWidget(l,1,1);
 	g->addWidget(l,2,0,1,2);
 
-	//FIX ME
 	m_pMaskBox = new KviTalTreeWidget(this);
 	m_pMaskBox->setFocusPolicy(Qt::ClickFocus);
 	m_pMaskBox->setFocusProxy(this);
@@ -216,10 +215,9 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
 	m_pAddButton->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NEWITEM)));
 
-	g->setColumnStretch(3,1);
+	g->setColumnStretch(1,1);
 
 	for(KviMaskEntry * e = maskList->first();e;e = maskList->next()) addMask(e);
-	registerSelf();
 }
 
 KviMaskEditor::~KviMaskEditor()
@@ -229,11 +227,9 @@ KviMaskEditor::~KviMaskEditor()
 
 void KviMaskEditor::searchTextChanged ( const QString & text)
 {
-//	KviTalTreeWidgetItem *pItem;//=m_pMaskBox->firstChild();
 	KviMaskItem *pMaskItem;
 	bool bEmpty = text.isEmpty();
 	for (int i=0;i<m_pMaskBox->topLevelItemCount();i++)
-	//while(pItem)
 	{
 		pMaskItem = (KviMaskItem *)m_pMaskBox->topLevelItem(i);
 		if(bEmpty)
@@ -245,7 +241,6 @@ void KviMaskEditor::searchTextChanged ( const QString & text)
 			else
 				pMaskItem->setHidden(true);
 		}
-		//pItem=pItem->nextSibling();
 	}
 }
 
@@ -253,8 +248,7 @@ void KviMaskEditor::removeClicked()
 {
 	KviPointerList<KviMaskEntry>  * l = new KviPointerList<KviMaskEntry>;
 	l->setAutoDelete(true);
-	KviMaskItem * it;// = (KviMaskItem *)(m_pMaskBox->firstChild());
-	//while(it)
+	KviMaskItem * it;
 	for (int i=0;i<m_pMaskBox->topLevelItemCount();i++)
 	{
 		it=(KviMaskItem *)m_pMaskBox->topLevelItem(i);
@@ -266,7 +260,6 @@ void KviMaskEditor::removeClicked()
 			e->uSetAt =  it->mask()->uSetAt;
 			l->append(e);
 		}
-	//	it = (KviMaskItem *)(it->nextSibling());
 	}
 	if(l->count() > 0)emit removeMasks(this,l);
 	delete l;
@@ -293,7 +286,6 @@ void KviMaskEditor::addClicked()
 
 void KviMaskEditor::addMask(KviMaskEntry *e)
 {
-//	debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
 	KviMaskItem *it;
 	it = new KviMaskItem(m_pMaskBox,e);
 	it->setIcon(0,*(g_pIconManager->getSmallIcon(m_iIconId)));
@@ -301,9 +293,7 @@ void KviMaskEditor::addMask(KviMaskEntry *e)
 
 void KviMaskEditor::removeMask(KviMaskEntry *e)
 {
-//	KviMaskItem * it =(KviMaskItem *)(m_pMaskBox->firstChild());
 	KviMaskItem * it;
-//	while(it)
 	for (int i=0;i<m_pMaskBox->topLevelItemCount();i++)
 	{
 		it=(KviMaskItem *)m_pMaskBox->topLevelItem(i);
@@ -312,7 +302,6 @@ void KviMaskEditor::removeMask(KviMaskEntry *e)
 			delete it;
 			return;
 		}
-	//	it = (KviMaskItem *)(it->nextSibling());
 	}
 }
 

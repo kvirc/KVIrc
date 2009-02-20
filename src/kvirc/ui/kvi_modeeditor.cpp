@@ -45,8 +45,6 @@
 
 //static char checkable_modes_table[KVI_NUM_CHECKABLE_MODES] = { 'p','s','t','n','m','i'};
 
-// FIXME: This widget should use a KviTalScrollView!
-
 KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char *,KviConsole * c,const QString &mode,const QString &key,const QString &limit)
 : KviWindowToolWidget(par,button)
 {
@@ -128,17 +126,14 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	m_pLimitBox->setEnabled(isEnabled);
 	i++;
 	g->addWidget(m_pLimitBox,i,0,1,3);
-	//g->addMultiCellWidget(m_pLimitBox,i,i,0,2);
 	connect(m_pLimitBox,SIGNAL(toggled(bool)),this,SLOT(limitBoxToggled(bool)));
 	m_pLimitEdit = new QLineEdit(pBackground);
 	m_pLimitEdit->setEnabled(isEnabled);
 	i++;
 	g->addWidget(m_pLimitEdit,i,1,1,2);
-//	g->addMultiCellWidget(m_pLimitEdit,i,i,1,2);
 	if(!m_szLimit.isEmpty())
 	{
 		m_pLimitBox->setChecked(true);
-//		m_pLimitEdit->setEnabled(true);
 		m_pLimitEdit->setText(m_szLimit);
 	} else {
 		m_pLimitEdit->setEnabled(false);
@@ -150,17 +145,14 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	i++;
 
 	g->addWidget(m_pKeyBox,i,0,1,3);
-	//g->addMultiCellWidget(m_pKeyBox,i,i,0,2);
 	connect(m_pKeyBox,SIGNAL(toggled(bool)),this,SLOT(keyBoxToggled(bool)));
 	m_pKeyEdit = new QLineEdit(pBackground);
 	m_pKeyEdit->setEnabled(isEnabled);
 	i++;
 	g->addWidget(m_pKeyEdit,i,1,1,2);
-//	g->addMultiCellWidget(m_pKeyEdit,i,i,1,2);
 	if(!m_szKey.isEmpty())
 	{
 		m_pKeyBox->setChecked(true);
-//		m_pLimitEdit->setEnabled(true);
 		m_pKeyEdit->setText(m_szKey);
 	} else {
 		m_pKeyEdit->setEnabled(false);
@@ -198,7 +190,6 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 		cb->setChecked(m_szMode.contains((char)ccc.unicode()));
 		i++;
 		g->addWidget(cb,i,0,1,3);
-	//	g->addMultiCellWidget(cb,i,i,0,2);
 	}
 
 	i++;
@@ -206,8 +197,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	g->setRowStretch(i,1);
 	g->setColumnStretch(2,1);
 
-	pScrollView->addChild(pBackground,0,0);
-	registerSelf();
+	pScrollView->setWidget(pBackground);
 }
 
 KviModeEditor::~KviModeEditor()

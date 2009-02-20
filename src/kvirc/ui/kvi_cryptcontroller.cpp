@@ -149,7 +149,6 @@
 		} else {
 			enableWidgets(false);
 		}
-		registerSelf();
 	}
 
 	KviCryptController::~KviCryptController()

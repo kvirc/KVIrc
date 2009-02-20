@@ -425,7 +425,7 @@ void KviChannel::toggleModeEditor()
 		delete m_pModeEditor;
 		m_pModeEditor = 0;
 
-		m_pSplitter->setMinimumHeight(20); //gfgf
+		m_pSplitter->setMinimumHeight(20);
 		if(m_pModeEditorButton->isChecked())
 			m_pModeEditorButton->setChecked(false);
 		resizeEvent(0);

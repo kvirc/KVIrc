@@ -50,12 +50,12 @@ class KviMaskItem: public KviTalTreeWidgetItem
 public:
 	KviMaskItem(KviTalTreeWidget* parent,KviMaskEntry* entry);
 	~KviMaskItem();
-	
+
 	KviMaskEntry* mask() { return &m_Mask; };
 	virtual int compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const;
 protected:
 	KviMaskEntry m_Mask;
-	
+
 };
 
 class KviMaskInputDialog : public QDialog
@@ -84,11 +84,11 @@ public:
 	~KviMaskEditor();
 protected:
 	KviTalTreeWidget      * m_pMaskBox;
-	QPushButton         * m_pRemoveMask;
-	QPushButton   	    * m_pAddButton;
-	QLineEdit           * m_pSearch;
-	char                  m_cFlag;
-	int		              m_iIconId;
+	QPushButton           * m_pRemoveMask;
+	QPushButton           * m_pAddButton;
+	QLineEdit             * m_pSearch;
+	char                    m_cFlag;
+	int                     m_iIconId;
 public:
 	char flag(){ return m_cFlag; };
 	void addMask(KviMaskEntry *e);

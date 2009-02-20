@@ -256,7 +256,6 @@ void KviUserListEntry::recalcSize()
 KviUserListView::KviUserListView(QWidget * pParent, KviWindowToolPageButton * pButton, KviIrcUserDataBase * pDb, KviWindow * pWnd, int iDictSize, const QString & szTextLabel, const char * pName)
 : KviWindowToolWidget(pParent,pButton)
 {
-	setAutoDelete(0);
 	setObjectName(pName);
 
 	m_pKviWindow  = pWnd;
@@ -286,7 +285,6 @@ KviUserListView::KviUserListView(QWidget * pParent, KviWindowToolPageButton * pB
 	m_iSelectedCount   = 0;
 
 	applyOptions();
-	registerSelf();
 }
 
 KviUserListView::~KviUserListView()
