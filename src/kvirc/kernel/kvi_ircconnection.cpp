@@ -598,16 +598,20 @@ bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 			m_pConsole->outputNoFmt(KVI_OUT_SOCKETWARNING,__tr2qs("[LINK WARNING]: Socket message truncated to 512 bytes."));
 	}
 
+	QString szMsg = (const char *)(pData->data());
+	szMsg.truncate(iLen - 2);
+
 	// notify the monitors
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
-			m->outgoingMessage((const char *)(pData->data()),iLen - 2);
+		{
+			if(m->outgoingMessage(szMsg.toUtf8().data()))
+				return true;
+		}
 	}
 
 	// Trigger OnOutboundTraffic event
-	QString szMsg = (const char *)(pData->data());
-	szMsg.truncate(iLen - 2);
 	KviKvsVariantList * pParams = new KviKvsVariantList();
 	pParams->append(szMsg);
 
@@ -632,16 +636,20 @@ bool KviIrcConnection::sendData(const char * pcBuffer, int iBuflen)
 	*(pData->data() + iBuflen) = '\r';
 	*(pData->data() + iBuflen + 1) = '\n';
 
+	QString szMsg = (const char *)(pData->data());
+	szMsg.truncate(iBuflen);
+
 	// notify the monitors
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
 	{
 		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
-			m->outgoingMessage((const char *)(pData->data()),iBuflen);
+		{
+			if(m->outgoingMessage(szMsg.toUtf8().data()))
+				return true;
+		}
 	}
 
 	// Trigger OnOutboundTraffic event
-	QString szMsg = (const char *)(pData->data());
-	szMsg.truncate(iBuflen);
 	KviKvsVariantList * pParams = new KviKvsVariantList();
 	pParams->append(szMsg);
 
@@ -1465,9 +1473,18 @@ void KviIrcConnection::incomingMessage(const char * pcMessage)
 	{
 		for(KviIrcDataStreamMonitor * m = l->first(); m; m = l->next())
 		{
-			m->incomingMessage(pcMessage);
+			if(m->incomingMessage(pcMessage))
+				return;
 		}
 	}
+	// set the last message time
+	m_pStatistics->setLastMessageTime(kvi_unixTime());
+	// and pass it to the server parser for processing
+	g_pServerParser->parseMessage(pcMessage,this);
+}
+
+void KviIrcConnection::incomingMessageNoFilter(const char * pcMessage)
+{
 	// set the last message time
 	m_pStatistics->setLastMessageTime(kvi_unixTime());
 	// and pass it to the server parser for processing

@@ -401,7 +401,7 @@ public:
 	* \return int
 	*/
 	int getCommonChannels(const QString & szNick, QString & szChansBuffer, bool bAddEscapeSequences = true);
-	
+
 	/**
 	* \brief Creates a new channel with the specified name.
 	*
@@ -414,7 +414,7 @@ public:
 	* \return KviChannel *
 	*/
 	KviChannel * createChannel(const QString & szName);
-	
+
 	///
 	/// This is called by KviChannel upon creation. You shouldn't need to call it.
 	///
@@ -439,13 +439,13 @@ public:
 	* \return void
 	*/
 	void keepChannelsOpenAfterDisconnect();
-	
+
 	/**
 	* \brief Closes all the currently open channels not marked as dead).
 	* \return void
 	*/
 	void closeAllChannels();
-	
+
 	//
 	// Query management
 	//
@@ -493,7 +493,7 @@ public:
 	/// FIXME: Could be made protected.
 	///
 	void unregisterQuery(KviQuery *q);
-	
+
 	/**
 	* \brief Marks all the currently open queries as DEAD
 	*
@@ -503,7 +503,7 @@ public:
 	* \return void
 	*/
 	void keepQueriesOpenAfterDisconnect();
-	
+
 	/**
 	* \brief This is the inverse of keepQueriesOpenAfterDisconnect().
 	*
@@ -512,7 +512,7 @@ public:
 	* \return void
 	*/
 	void resurrectDeadQueries();
-	
+
 	///
 	/// This function actually restarts the lag meter.
 	///
@@ -587,10 +587,20 @@ public:
 	*/
 	void incomingMessage(const char * pcMessage);
 
+	/**
+	* \brief This function is part of the networking stack.
+	*
+	* It's called by KviIrcDataStreamMonitor subclasses when they want to
+	* inject some message without getting it filtered again
+	* \param pcMessage The message :)
+	* \return void
+	*/
+	void incomingMessageNoFilter(const char * pcMessage);
+
 	//
 	// Encoding related stuff
 	//
-	
+
 	/**
 	* \brief Returns a pointer to the current global codec for outbound text.
 	*
@@ -629,7 +639,7 @@ public:
 	* \return QString
 	*/
 	QString decodeText(const char * szText);
-	
+
 	/**
 	* \brief Encodes the specified text by using the local text codec.
 	*
