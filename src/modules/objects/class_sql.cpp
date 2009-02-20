@@ -31,6 +31,35 @@
 #include <stdlib.h>
 #include <QHash>
 
+static KviPointerList <KviKvsObject_sql> sql_instances;
+
+static bool checkDuplicatedConnection(QString &szConnectionName)
+{
+    if(!sql_instances.count()) return false;
+    bool found=false;
+    for(KviKvsObject_sql *i = sql_instances.first(); i; i = sql_instances.next())
+    {
+        QSqlQuery *q=i->getQueryConnectionsDict().value(szConnectionName);
+        if (q)
+        {
+            i->closeQueryConnection(q);
+            found=true;
+            break;
+        }
+    }
+    return found;
+};
+static void KviKvsSqlInstanceRegister(KviKvsObject_sql *instance)
+{
+    sql_instances.setAutoDelete(false);
+    sql_instances.append(instance);
+};
+static void KviKvsSqlInstanceUnregister(KviKvsObject_sql *instance)
+{
+    int idx=sql_instances.findRef(instance);
+    sql_instances.remove(idx);
+};
+
 #define CHECK_QUERY_IS_INIT if (!currentSQlQuery)\
         {\
             c->error("No query has been initialized!");\
@@ -56,6 +85,8 @@
                       Connects to the DBMS using the connection <connection_name> and selecting the database <database_name>.[br]
                       If the optional parameter <database_driver> is passed, it will be used the corresponding driver (if present), otherwise Sqlite will be used.
                       Returns true if the operation is successful, false otherwise.
+                      !fn: <array> $tablesList(<connection_name:string>)
+                      Returns as array the database tables list.
                       !fn: $queryInit(<connection_name:string>)
                       Initialize the query for the database <connection_name> which has to be already connected.
                       !fn: $setCurrentQuery(<connection_name:string>)
@@ -124,20 +155,22 @@ KVSO_END_REGISTERCLASS(KviKvsObject_sql)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_sql,KviKvsObject)
 currentSQlQuery=0;
+KviKvsSqlInstanceRegister(this);
 KVSO_END_CONSTRUCTOR(KviKvsObject_sql)
 
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_sql)
-QHashIterator<QString,QSqlQuery *> t(connectionsDict);
+QHashIterator<QString,QSqlQuery *> t(queryConnectionsDict);
 while (t.hasNext())
 {
     t.next();
     QString szConnectionName=t.key();
-  //  connectionsDict.value(szConnectionName)->finish();
-   // delete connectionsDict.value(szConnectionName);
+    queryConnectionsDict.value(szConnectionName)->finish();
+    delete queryConnectionsDict.value(szConnectionName);
     QSqlDatabase::removeDatabase(szConnectionName);
 }
-connectionsDict.clear();
+KviKvsSqlInstanceUnregister(this);
+queryConnectionsDict.clear();
 
 KVSO_END_DESTRUCTOR(KviKvsObject_sql)
 
@@ -150,7 +183,7 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
                 KVSO_PARAMETER("user_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szUserName)
                 KVSO_PARAMETER("host_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szHostName)
                 KVSO_PARAMETER("password",KVS_PT_STRING,KVS_PF_OPTIONAL,szPassword)
-                KVSO_PARAMETER("dabaseType",KVS_PT_STRING,KVS_PF_OPTIONAL,szDbDriver)
+                KVSO_PARAMETER("database_type",KVS_PT_STRING,KVS_PF_OPTIONAL,szDbDriver)
         KVSO_PARAMETERS_END(c)
         if(!szDbDriver.isEmpty())
         {
@@ -162,6 +195,10 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
             }
         }
         else szDbDriver="QSQLITE";
+        if (checkDuplicatedConnection(szConnectionName))
+        {
+            c->warning(__tr2qs_ctx("Duplicate connection name '%Q', old query connection removed","objects"),&szConnectionName);
+        }
         QSqlDatabase db=QSqlDatabase::addDatabase(szDbDriver,szConnectionName);
         db.setDatabaseName(szDbName);
         db.setHostName(szHostName);
@@ -184,13 +221,15 @@ KVSO_CLASS_FUNCTION(sql,closeConnection)
              c->warning(__tr2qs_ctx("Connection %Q does not exists","objects"),&szConnectionName);
              return true;
         }
-        if (connectionsDict.value(szConnectionName))
-        {
+        QSqlQuery *q=queryConnectionsDict.value(szConnectionName);
+        if (q) closeQueryConnection(q);
+/*        {
             if (connectionsDict.value(szConnectionName)==currentSQlQuery) currentSQlQuery=0;
             connectionsDict.value(szConnectionName)->finish();
             delete connectionsDict.value(szConnectionName);
             connectionsDict.remove(szConnectionName);
         }
+*/
         QSqlDatabase::removeDatabase(szConnectionName);
 
         return true;
@@ -214,7 +253,7 @@ KVSO_CLASS_FUNCTION(sql,tablesList)
         for(int i=0;i<tables.count();i++)
         {
             pArray->set(i,new KviKvsVariant(tables.at(i)));
-         }
+        }
         c->returnValue()->setArray(pArray);
         return true;
 }
@@ -224,7 +263,7 @@ KVSO_CLASS_FUNCTION(sql,setCurrentQuery)
       KVSO_PARAMETERS_BEGIN(c)
               KVSO_PARAMETER("connection_name",KVS_PT_STRING,0,szConnectionName)
       KVSO_PARAMETERS_END(c)
-      QSqlQuery *q=connectionsDict.value(szConnectionName);
+      QSqlQuery *q=queryConnectionsDict.value(szConnectionName);
       if(!q)
       {
           c->warning(__tr2qs_ctx("Connection query %Q does not exists","objects"),&szConnectionName);
@@ -251,7 +290,7 @@ KVSO_CLASS_FUNCTION(sql,queryFinish)
       }
       else
       {
-          q=connectionsDict.value(szConnectionName);
+          q=queryConnectionsDict.value(szConnectionName);
           if(!q)
           {
               c->warning(__tr2qs_ctx("Query for connection %Q does not exists","objects"),&szConnectionName);
@@ -266,7 +305,7 @@ KVSO_CLASS_FUNCTION(sql,currentQuery)
     if (!currentSQlQuery) c->returnValue()->setString(QString());
     else
     {
-        QString szKey=connectionsDict.key(currentSQlQuery);
+        QString szKey=queryConnectionsDict.key(currentSQlQuery);
         c->returnValue()->setString(szKey);
     }
     return true;
@@ -277,7 +316,7 @@ KVSO_CLASS_FUNCTION(sql,queryInit)
         KVSO_PARAMETERS_BEGIN(c)
                 KVSO_PARAMETER("connection_name",KVS_PT_STRING,0,szConnectionName)
         KVSO_PARAMETERS_END(c)
-        if (connectionsDict.value(szConnectionName))
+        if (queryConnectionsDict.value(szConnectionName))
         {
            c->warning(__tr2qs_ctx("Query  %Q already initializated","objects"),&szConnectionName);
            return true;
@@ -288,7 +327,7 @@ KVSO_CLASS_FUNCTION(sql,queryInit)
             return false;
         }
         currentSQlQuery=new QSqlQuery(QSqlDatabase::database(szConnectionName));
-        connectionsDict[szConnectionName]=currentSQlQuery;
+        queryConnectionsDict[szConnectionName]=currentSQlQuery;
         return true;
 }
 
@@ -439,5 +478,11 @@ KVSO_CLASS_FUNCTION(sql,lastError)
         c->returnValue()->setString(szError);
         return true;
 }
-
+void KviKvsObject_sql::closeQueryConnection(QSqlQuery * query)
+{
+        if (query==currentSQlQuery) currentSQlQuery=0;
+        query->finish();
+        queryConnectionsDict.remove(queryConnectionsDict.key(query));
+        delete query;
+ }
 

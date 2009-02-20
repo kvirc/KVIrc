@@ -38,8 +38,11 @@ public:
         KVSO_DECLARE_OBJECT(KviKvsObject_sql)
 protected:
         QSqlQuery *currentSQlQuery;
-         QHash<QString,QSqlQuery *> connectionsDict;
+        QHash<QString,QSqlQuery *> queryConnectionsDict;
+
     public:
+        QHash<QString,QSqlQuery *> & getQueryConnectionsDict(){return queryConnectionsDict;};
+        void closeQueryConnection(QSqlQuery *);
         QSqlQuery & getQuery()
         {
             //if (currentSQlQuery) return *currentSQlQuery;
@@ -63,6 +66,7 @@ protected:
         bool queryInit(KviKvsObjectFunctionCall *c);
         bool closeConnection(KviKvsObjectFunctionCall *c);
         bool lastError(KviKvsObjectFunctionCall *c);
+
 };
 
 

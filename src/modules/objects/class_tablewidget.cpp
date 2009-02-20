@@ -30,7 +30,6 @@
 
 #include "class_tablewidget.h"
 #include "class_pixmap.h"
-#include "class_sql.h"
 #include <QTableWidget>
 #include <QHeaderView>
 
