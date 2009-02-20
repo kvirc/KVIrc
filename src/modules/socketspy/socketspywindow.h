@@ -44,9 +44,9 @@ protected:
 	virtual void applyOptions();
 public:
 	virtual QSize sizeHint() const;
-	virtual void incomingMessage(const char * message);
-	// message is NOT null terminated! For proxy connections it might spit out binary data!
-	virtual void outgoingMessage(const char * message,int len);
+	virtual bool incomingMessage(const char * message);
+	//For proxy connections it might spit out binary data!
+	virtual bool outgoingMessage(const char * message);
 	virtual void connectionInitiated();
 	virtual void connectionTerminated();
 	virtual void die();

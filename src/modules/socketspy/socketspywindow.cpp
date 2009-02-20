@@ -97,15 +97,17 @@ void KviSocketSpyWindow::fillCaptionBuffers()
 		m_pConsole->context()->id());
 }
 
-void KviSocketSpyWindow::incomingMessage(const char * message)
+bool KviSocketSpyWindow::incomingMessage(const char * message)
 {
 	outputNoFmt(KVI_OUT_SOCKETMESSAGE,console()->decodeText(message));
+	return false;
 }
 
-void KviSocketSpyWindow::outgoingMessage(const char * message,int len)
+bool KviSocketSpyWindow::outgoingMessage(const char * message)
 {
-	KviStr str(message,len);
-	outputNoFmt(KVI_OUT_RAW,console()->decodeText(str.ptr()));
+	outputNoFmt(KVI_OUT_RAW,console()->decodeText(message));
+	return false;
+
 }
 
 void KviSocketSpyWindow::connectionInitiated()
