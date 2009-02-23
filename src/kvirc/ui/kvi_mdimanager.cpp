@@ -170,15 +170,6 @@ void KviMdiManager::setTopChild(KviMdiChild *lpC,bool bSetFocus)
 void KviMdiManager::destroyChild(KviMdiChild *lpC,bool bFocusTopChild)
 {
 	removeSubWindow(lpC);
-
-	if (lpC->isMaximized() && activeSubWindow())
-	{
-		if (!activeSubWindow()->inherits("KviMdiChild")) return;
-
-		KviMdiChild * tmp = (KviMdiChild *) activeSubWindow();
-		tmp->queuedMaximize();
-	}
-
 	delete lpC;
 
 	if(bFocusTopChild)focusTopChild();
