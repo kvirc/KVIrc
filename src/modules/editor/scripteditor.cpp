@@ -401,7 +401,7 @@ QString KviScriptEditorWidget::textUnderCursor() const
 
 	return szWord;
 }
-
+/*
 void KviScriptEditorWidget::mouseReleaseEvent(QMouseEvent * e)
 {
 
@@ -420,7 +420,7 @@ void KviScriptEditorWidget::mouseReleaseEvent(QMouseEvent * e)
 		int iIndex=charAt(e->pos(),&iPara);
 		szBuffer = this->text(iPara);
 		getWordOnCursor(szBuffer,iIndex);
-		*/
+		*\/
 		QRect r = cursorRect();
 		QTextCursor cur = cursorForPosition(e->pos());
 		cur.select(QTextCursor::WordUnderCursor);
@@ -452,7 +452,7 @@ void KviScriptEditorWidget::mouseReleaseEvent(QMouseEvent * e)
 
 	QTextEdit::mouseReleaseEvent(e);
 }
-
+*/
 bool KviScriptEditorWidget::contextSensitiveHelp() const
 {
 	/*

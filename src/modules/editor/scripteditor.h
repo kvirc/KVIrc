@@ -86,7 +86,7 @@ signals:
 protected:
 	void contextMenuEvent(QContextMenuEvent * e);
 	virtual void keyPressEvent(QKeyEvent * e);
-	void mouseReleaseEvent(QMouseEvent * e);
+// 	void mouseReleaseEvent(QMouseEvent * e);
 };
 
 class KviScriptEditorWidgetColorOptions : public QDialog
