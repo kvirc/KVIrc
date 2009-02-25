@@ -383,9 +383,11 @@ void KviWindow::createWindowListItem()
 
 void KviWindow::destroyWindowListItem()
 {
-	if(!m_pWindowListItem)return;
-	g_pFrame->m_pWindowList->removeItem(m_pWindowListItem);
-	//	m_pWindowListItem = 0; // actually the WindowListItem destructor sets it
+	if(m_pWindowListItem)
+	{
+		g_pFrame->m_pWindowList->removeItem(m_pWindowListItem);
+		m_pWindowListItem = 0;
+	}
 }
 
 QToolButton * KviWindow::createToolButton(QWidget * par,const char * nam,int pixon,int,const QString & tooltip,bool bOn)

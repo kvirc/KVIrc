@@ -447,7 +447,10 @@ KviWindowListItem * KviTreeWindowList::addItem(KviWindow * wnd)
 
 bool KviTreeWindowList::removeItem(KviWindowListItem * it)
 {
-	delete (KviTreeWindowListItem *)it;
+	if(it)
+	{
+		delete (KviTreeWindowListItem *)it;
+	}
 	return true;
 }
 
