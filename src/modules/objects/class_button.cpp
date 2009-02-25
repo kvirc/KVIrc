@@ -64,6 +64,7 @@
                 @properties:
                 !pr: $scaledContents()
                 This property holds whether the label will scale its contents to fill all available space.
+
 */
 
 

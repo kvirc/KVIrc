@@ -29,6 +29,7 @@
 #include "class_lineedit.h"
 #include <QRegExpValidator>
 #include <QLineEdit>
+#include <QCompleter>
 static const char * mode_tbl[] = {
 			"Normal",
 			"NoEcho",
@@ -133,10 +134,10 @@ static const int mode_cod[] =  {
 		Sets the validation input mask to inputMask.[br]
 		Example:[br]
 		[br]
-		%esempio->$setInputMask( "+99 99 99 99 99;_" );[br]
-		%esempio->$setInputMask( "000.000.000.000;_" );[br]
-		%esempio->Ip Number Mask.[br]
-		%esempio->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );[br]
+                %ledit_example->$setInputMask( "+99 99 99 99 99;_" );[br]
+                %ledit_example->$setInputMask( "000.000.000.000;_" );[br]
+                %ledit_example->Ip Number Mask.[br]
+                %ledit_example->setInputMask( ">AAAAA-AAAAA-AAAAA-AAAAA-AAAAA;#" );[br]
 		[br]
 		The mask format understands these mask characters:[br]
 		Character		Meaning[br]
@@ -165,6 +166,18 @@ static const int mode_cod[] =  {
 		Called when the lineedit lost focus.
 		!fn: $textChangedEvent(<new text:string>)
 		This event is called when the text changed, In $0 there is the new text.
+                !fn: $setCompleter(<completion_mode:string>,<items:stringlist>)
+                Provides completions based on an stringlist.
+                Valid completion_mode are:
+                PopupCompletion: Current completions are displayed in a popup below the lineedit.
+                UnfilteredPopupCompletion: All possible completions are displayed in a popup window with the most likely suggestion selected.
+                InlineCompletion: Completions appear as selected text.
+                !fn: $disableCompleter()
+                Disable temporally the completer.
+                !fn: $enableCompleter()
+                Enable the completer.
+                !fn: $removeCompleter()
+                Remove the completer.
 	@signals:
 		!sg: $returnPressed()
 		This signal is emitted by the default implementation of [classfnc]$returnPressedEvent[/classfnc]().
@@ -181,6 +194,13 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_lineedit,"lineedit","widget")
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lineedit,text)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lineedit,setText)
+
+        // completer
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lineedit,setCompleter)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lineedit,enableCompleter)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lineedit,disableCompleter)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lineedit,unsetCompleter)
+
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lineedit,maxLength)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lineedit,setMaxLength)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_lineedit,frame)
@@ -208,18 +228,22 @@ KVSO_END_REGISTERCLASS(KviKvsObject_lineedit)
 
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_lineedit,KviKvsObject_widget)
-
+m_pCompleter=0;
 KVSO_END_CONSTRUCTOR(KviKvsObject_lineedit)
 
-
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_lineedit)
-
+if (m_pCompleter)
+{
+       delete m_pCompleter;
+       m_pCompleter=0;
+}
 KVSO_END_CONSTRUCTOR(KviKvsObject_lineedit)
 
 
 bool KviKvsObject_lineedit::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QLineEdit)
+
 	connect(widget(),SIGNAL(returnPressed()),this,SLOT(slotreturnPressed()));
 	connect(widget(),SIGNAL(lostFocus()),this,SLOT(slotlostFocus()));
 	connect(widget(),SIGNAL(textChanged(const QString & )),this,SLOT(slottextChanged(const QString & )));
@@ -262,8 +286,8 @@ KVSO_CLASS_FUNCTION(lineedit,maxLength)
 
 KVSO_CLASS_FUNCTION(lineedit,setMaxLength)
 {
-	CHECK_INTERNAL_POINTER(widget())
-	kvs_uint_t iMaxlen;
+        CHECK_INTERNAL_POINTER(widget())
+        kvs_uint_t iMaxlen;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("maxlen",KVS_PT_UNSIGNEDINTEGER,0,iMaxlen)
 	KVSO_PARAMETERS_END(c)
@@ -425,6 +449,54 @@ KVSO_CLASS_FUNCTION(lineedit,setInputMask)
 	return true;
 }
 
+KVSO_CLASS_FUNCTION(lineedit,setCompleter)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        QStringList szCompletionList;
+        QString szMode;
+        KVSO_PARAMETERS_BEGIN(c)             
+                KVSO_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
+                KVSO_PARAMETER("completion_list",KVS_PT_STRINGLIST,0,szCompletionList)
+        KVSO_PARAMETERS_END(c)
+        if(m_pCompleter)
+        {
+            delete m_pCompleter;
+
+        }
+         m_pCompleter=new QCompleter(szCompletionList);
+        QCompleter::CompletionMode mode=QCompleter::PopupCompletion;
+        if(KviQString::equalCI(szMode,"InlineCompletion")) mode=QCompleter::InlineCompletion;
+        else if(KviQString::equalCI(szMode,"UnfilteredPopupCompletion")) mode=QCompleter::UnfilteredPopupCompletion;
+        else if(!KviQString::equalCI(szMode,"PopupCompletion"))
+                   c->warning(__tr2qs_ctx("Unkonwn '%Q' completition mode, switching to default popupCompletition","objects"),&szMode);
+        m_pCompleter->setCompletionMode(mode);
+        ((QLineEdit *)widget())->setCompleter(m_pCompleter);
+        return true;
+}
+KVSO_CLASS_FUNCTION(lineedit,enableCompleter)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        if (m_pCompleter) ((QLineEdit *)widget())->setCompleter(m_pCompleter);
+        return true;
+}
+KVSO_CLASS_FUNCTION(lineedit,disableCompleter)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        ((QLineEdit *)widget())->setCompleter(0);
+        return true;
+}
+KVSO_CLASS_FUNCTION(lineedit,unsetCompleter)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        if (m_pCompleter){
+            ((QLineEdit *)widget())->setCompleter(0);
+            delete m_pCompleter;
+            m_pCompleter=0;
+        }
+        return true;
+}
+
+
 KVSO_CLASS_FUNCTION(lineedit,returnPressedEvent)
 {
 	emitSignal("returnPressed",c);
@@ -462,6 +534,7 @@ void KviKvsObject_lineedit::slottextChanged(const QString &text)
 	KviKvsVariantList params(new KviKvsVariant(text));
 	callFunction(this,"textChangedEvent",&params);
 }
+
 
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

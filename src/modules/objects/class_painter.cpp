@@ -33,7 +33,7 @@
 #include "kvi_error.h"
 #include "kvi_iconmanager.h"
 #include "kvi_malloc.h"
-
+ #include <QPrintDialog>
 #include <QTextDocument>
 #include <QIcon>
 
@@ -1028,24 +1028,81 @@ KVSO_CLASS_FUNCTION(painter,begin)
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
+            KviKvsVariant *v;
+            QString szFileName;
+            kvs_int_t i;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("paint_device",KVS_PT_HOBJECT,0,hObject)
+                        KVSO_PARAMETER("paint_device",KVS_PT_VARIANT,0,v)
+                        KVSO_PARAMETER("y",KVS_PT_INT,KVS_PF_OPTIONAL,i)
+                        KVSO_PARAMETER("file_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
 	KVSO_PARAMETERS_END(c)
-	pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
-	if (!pObject)
-	{
+            debug ("check device");
+            QPaintDevice * pd;
+            if(v->isString())
+            {
+                QString szDev;
+                v->asString(szDev);
+                if(KviQString::equalCI(szDev,"printer") || KviQString::equalCI(szDev,"pdf"))
+                {
+                    if (m_pPrinter) delete m_pPrinter;
+                    m_pPrinter=new QPrinter();
+                    if ( KviQString::equalCI(szDev,"pdf"))
+                    {
+                    //        m_pPrinter=new QPrinter();
+                         if(szFileName.isEmpty())
+                         {
+                            c->warning(__tr2qs_ctx("Missing filename","objects"));
+                            return true;
+                         }
+                         m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
+                         m_pPrinter->setOutputFileName(szFileName);
+
+                    }
+                    else{
+                        QPrintDialog printDialog(m_pPrinter, 0);
+                        if (printDialog.exec() == QDialog::Accepted) {
+                            debug("papersize %d",m_pPrinter->paperSize());
+                            m_pPainter->begin(m_pPrinter);
+                                return true;
+                            }
+                        else {
+                            m_pPrinter=0;
+                            return true;
+                        }
+                    }
+                    //if (i==3) m_pPrinter->setPaperSize(QPrinter::A3);
+                    //if (i==4) m_pPrinter->setPaperSize(QPrinter::A4);
+                }
+                else{
+                    c->warning(__tr2qs_ctx("No valid paint device","objects"));
+                    return true;
+                }
+                m_pPainter->begin(m_pPrinter);
+                return true;
+            }
+            else if (v->isHObject())
+            {
+                v->asHObject(hObject);
+                pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+                if (!pObject)
+                {
 		c->warning(__tr2qs_ctx("Pixmap or Widget parameter is not an object","objects"));
 		return true;
-	}
-	QPaintDevice * pd;
-	if(pObject->inheritsClass("pixmap"))pd=((KviKvsObject_pixmap *)pObject)->getPixmap();
+                }
 
-	else if (pObject->inheritsClass("widget")) pd=((KviKvsObject_widget *)pObject)->widget();
-	else{
-		c->warning(__tr2qs_ctx("Widget or Pixmap required ","objects"));
-		return true;
-	}
-	attachDevice(pObject,pd);
+                if(pObject->inheritsClass("pixmap"))pd=((KviKvsObject_pixmap *)pObject)->getPixmap();
+                else if (pObject->inheritsClass("widget")) pd=((KviKvsObject_widget *)pObject)->widget();
+                else
+                {
+                        c->warning(__tr2qs_ctx("Widget or Pixmap required ","objects"));
+                        return true;
+                }
+            }
+            else {
+                    c->warning(__tr2qs_ctx("No valid paint device","objects"));
+                    return true;
+                }
+            attachDevice(pObject,pd);
             //if (pObject->inheritsClass("pixmap")) ((KviKvsObject_pixmap *)pObject)->pixmapChanged();
 	return true;
 }
@@ -1067,12 +1124,26 @@ void KviKvsObject_painter::detachDevice()
 	if(!m_pDeviceObject)return;
 	disconnect(m_pDeviceObject,SIGNAL(aboutToDie()),this,SLOT(detachDevice()));
 	m_pPainter->end();
+            if (m_pPrinter)
+            {
+               delete m_pPrinter;
+               m_pPrinter=0;
+           }
 	m_pDeviceObject = 0;
 }
 
 KVSO_CLASS_FUNCTION(painter,end)
 {
-	detachDevice();
+            if(!m_pDeviceObject)
+            {
+                m_pPainter->end();
+                if (m_pPrinter)
+                {
+                   delete m_pPrinter;
+                   m_pPrinter=0;
+                }
+            }
+            else detachDevice();
 	return true;
 }
 KVSO_CLASS_FUNCTION(painter,beginPdf)
@@ -1084,7 +1155,7 @@ KVSO_CLASS_FUNCTION(painter,beginPdf)
 	KVSO_PARAMETERS_END(c)
 	if (m_pPrinter) delete m_pPrinter;
 	m_pPrinter=new QPrinter();//QPrinter::HighResolution);
-	m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
+            m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
 	m_pPrinter->setOutputFileName(szFileName);
 	m_pPainter->begin(m_pPrinter);
 	return true;
