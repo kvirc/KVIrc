@@ -80,6 +80,11 @@ General notes for the installation of the 4.0 release of KVIrc
     QMake version 2.01a
     Using Qt version 4.4.1 in /usr/lib/qt4/lib
 
+    If you have multiple versions of qt4 installed in your system and you want to use a specific version,
+    exporting QTDIR won't suffice. Since the cmake module searching for qt4 uses qmake itself to determine
+    the qt4 library dir, you can set your PATH to have cmake using using your preferred qmake version:
+
+    #PATH=/opt/qt4.5/bin/:PATH cmake ..
 
     #
     # CMake
