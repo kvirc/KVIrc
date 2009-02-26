@@ -844,17 +844,7 @@ void KviFrame::windowActivationChange(bool bOldActive)
 
 void KviFrame::updateCaption()
 {
-	if(g_pActiveWindow)
-	{
-		if(g_pActiveWindow->isMaximized() && g_pActiveWindow->mdiParent())
-		{
-			QString tmp = g_pActiveWindow->plainTextCaption();
-			tmp += QChar(' ');
-			tmp += KVI_DEFAULT_FRAME_CAPTION;
-			setWindowTitle(tmp);
-			return;
-		}
-	}
+	//the caption of an eventual maximized mdichild is already appended by qt
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 }
 
