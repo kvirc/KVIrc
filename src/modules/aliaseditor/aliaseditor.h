@@ -87,7 +87,7 @@ class KviAliasEditorTreeWidget : public QTreeWidget
 	Q_OBJECT
 public:
 	KviAliasEditorTreeWidget(QWidget*);
-	~KviAliasEditorTreeWidget(){};
+	~KviAliasEditorTreeWidget();
 protected:
 	void mousePressEvent (QMouseEvent *e);
 signals:

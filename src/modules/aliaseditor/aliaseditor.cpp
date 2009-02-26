@@ -222,6 +222,12 @@ KviAliasEditorTreeWidget::KviAliasEditorTreeWidget(QWidget * par)
 	setAnimated(true);
 }
 
+KviAliasEditorTreeWidget::~KviAliasEditorTreeWidget()
+{
+	//remove and delete all items
+	clear();
+}
+
 void KviAliasEditorTreeWidget::mousePressEvent (QMouseEvent *e)
 {
 		if (e->button() == Qt::RightButton)
