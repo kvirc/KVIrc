@@ -36,18 +36,18 @@ static KviPointerList <KviKvsObject_sql> sql_instances;
 static bool checkDuplicatedConnection(QString &szConnectionName)
 {
     if(!sql_instances.count()) return false;
-    bool found=false;
+    bool bFound=false;
     for(KviKvsObject_sql *i = sql_instances.first(); i; i = sql_instances.next())
     {
         QSqlQuery *q=i->getQueryConnectionsDict().value(szConnectionName);
         if (q)
         {
             i->closeQueryConnection(q);
-            found=true;
+            bFound=true;
             break;
         }
     }
-    return found;
+    return bFound;
 };
 static void KviKvsSqlInstanceRegister(KviKvsObject_sql *instance)
 {
@@ -89,6 +89,10 @@ static void KviKvsSqlInstanceUnregister(KviKvsObject_sql *instance)
                       Returns as array the database tables list.
                       !fn: $queryInit(<connection_name:string>)
                       Initialize the query for the database <connection_name> which has to be already connected.
+                      !fn: $transaction()
+                      Begin a transaction.
+                      !fn: $commit()
+                      Commit the transaction.
                       !fn: $setCurrentQuery(<connection_name:string>)
                       Sets the query for the database connection <connection_name> , which has to be already connected, as current query.
                       !fn: <connection_name:string> $currentQuery()
@@ -132,6 +136,8 @@ static void KviKvsSqlInstanceUnregister(KviKvsObject_sql *instance)
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_sql,"sql","object")
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,commit)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,beginTransaction)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,setConnection)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,setCurrentQuery)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,tablesList)
@@ -206,6 +212,40 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
         db.setPassword(szPassword);
 
         c->returnValue()->setBoolean(db.open());
+        return true;
+}
+KVSO_CLASS_FUNCTION(sql,beginTransaction)
+{
+        QString szConnectionName;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("connectionName",KVS_PT_STRING,0,szConnectionName)
+        KVSO_PARAMETERS_END(c)
+
+        QStringList connections = QSqlDatabase::connectionNames();
+        if (!connections.contains(szConnectionName))
+        {
+             c->warning(__tr2qs_ctx("Connection %Q does not exists","objects"),&szConnectionName);
+             return true;
+        }
+        QSqlDatabase db=QSqlDatabase::database(szConnectionName);
+        db.transaction();
+        return true;
+}
+KVSO_CLASS_FUNCTION(sql,commit)
+{
+        QString szConnectionName;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("connectionName",KVS_PT_STRING,0,szConnectionName)
+        KVSO_PARAMETERS_END(c)
+
+        QStringList connections = QSqlDatabase::connectionNames();
+        if (!connections.contains(szConnectionName))
+        {
+             c->warning(__tr2qs_ctx("Connection %Q does not exists","objects"),&szConnectionName);
+             return true;
+        }
+        QSqlDatabase db=QSqlDatabase::database(szConnectionName);
+        db.commit();
         return true;
 }
 KVSO_CLASS_FUNCTION(sql,closeConnection)

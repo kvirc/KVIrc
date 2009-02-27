@@ -50,6 +50,8 @@ protected:
         };
         bool setConnection(KviKvsObjectFunctionCall *c);
         bool tablesList(KviKvsObjectFunctionCall *c);
+        bool beginTransaction(KviKvsObjectFunctionCall *c);
+        bool commit(KviKvsObjectFunctionCall *c);
 
         bool queryResultsSize(KviKvsObjectFunctionCall *c);
         bool queryNext(KviKvsObjectFunctionCall *c);
