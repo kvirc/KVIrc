@@ -46,8 +46,11 @@
 #include <QMessageBox>
 
 #ifdef COMPILE_KDE_SUPPORT
-	#include <kcmdlineargs.h>
-	#include <kaboutdata.h>
+	#include <KCmdLineArgs>
+	#include <KAboutData>
+#endif
+#ifdef COMPILE_X11_SUPPORT
+	#include <X11/extensions/Xrender.h>
 #endif
 
 #define KVI_ARGS_RETCODE_OK 0
@@ -341,12 +344,63 @@ int main(int argc,char ** argv)
 
 	if(retCode != KVI_ARGS_RETCODE_OK)return ((retCode == KVI_ARGS_RETCODE_ERROR) ? (-1) : 0);
 
+	KviApp * theApp;
+
 #ifdef COMPILE_KDE_SUPPORT
 	KAboutData * about = new KAboutData("kvirc","kvirc",ki18n("KVIrc"),KVI_VERSION);
 	KCmdLineArgs::init(about);
+
 #endif
+
+	bool argbVisual=false;
+
+#ifdef COMPILE_X11_SUPPORT
+	//this makes sure we are running X11 with a compositing manager that supports ARGV visuals
+	//Code taken from an example by Zack Rusin http://zrusin.blogspot.com
+	Display *dpy = XOpenDisplay(0); // open default display
+	Colormap colormap = 0;
+	Visual *visual = 0;
+
+	if (dpy)
+	{
+		int screen = DefaultScreen(dpy);
+		int eventBase, errorBase;
+
+		if (XRenderQueryExtension(dpy, &eventBase, &errorBase))
+		{
+			int nvi;
+			XVisualInfo templ;
+			templ.screen  = screen;
+			templ.depth   = 32;
+			templ.c_class = TrueColor;
+			XVisualInfo *xvi = XGetVisualInfo(dpy, VisualScreenMask |
+							VisualDepthMask |
+							VisualClassMask, &templ, &nvi);
+		
+			for (int i = 0; i < nvi; ++i)
+			{
+				XRenderPictFormat *format = XRenderFindVisualFormat(dpy, xvi[i].visual);
+				if (format->type == PictTypeDirect && format->direct.alphaMask)
+				{
+					visual = xvi[i].visual;
+					colormap = XCreateColormap(dpy, RootWindow(dpy, screen), visual, AllocNone);
+					argbVisual=true;
+					break;
+				}
+			}
+		}
+	}
+
 	// Need to have the X socket open before IPC startup
-	KviApp * theApp = new KviApp(argc,argv);
+	if (argbVisual == true) {
+		theApp = new KviApp(dpy, argc, argv, Qt::HANDLE(visual), Qt::HANDLE(colormap));
+	} else  {
+#endif
+		theApp = new KviApp(argc,argv);
+#ifdef COMPILE_X11_SUPPORT
+	}
+#endif
+
 #ifdef COMPILE_DBUS_SUPPORT
 #ifndef COMPILE_KDE_SUPPORT
 	new KviDbusAdaptor(theApp);

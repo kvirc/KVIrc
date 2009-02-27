@@ -184,7 +184,15 @@ void KviToolBarGraphicalApplet::paintEvent(QPaintEvent *e)
 	QPainter pa(g_pIccMemBuffer);
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	if(g_pShadedChildGlobalDesktopBackground)
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+	{
+		pa.save();
+		pa.setCompositionMode(QPainter::CompositionMode_Source);
+		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
+		pa.fillRect(rect(), col);
+		pa.restore();
+	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapToGlobal(QPoint(0,0));
 		pa.drawTiledPixmap(e->rect().left(),e->rect().top(),e->rect().width(),e->rect().height(),*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());

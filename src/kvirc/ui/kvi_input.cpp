@@ -67,10 +67,6 @@ extern KviTextIconWindowWidget * g_pTextIconWindow;
 extern KviHistoryWindowWidget  * g_pHistoryWindow;
 extern KviTalPopupMenu         * g_pInputPopup;
 
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
-#endif
-
 KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 : QWidget(pPar)
 {

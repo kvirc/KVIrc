@@ -154,18 +154,6 @@ QPixmap                                 * g_pActivityMeterPixmap        = 0;
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 
-	#ifdef COMPILE_KDE3_SUPPORT
-		#include <ksharedpixmap.h>
-		#include <netwm.h>
-		#include <kimageeffect.h>
-		#include <dcopclient.h>
-		#include <qdatastream.h>
-		#include <qcstring.h>
-
-		// the shared pixmap that we get from KWin
-		KSharedPixmap           * g_pKdeDesktopBackground      = 0;
-	#endif
-
 	#include <QImage>
 
 	KVIRC_API QPixmap               * g_pShadedParentGlobalDesktopBackground = 0; // the pixmap that we use for MdiManager
@@ -180,6 +168,21 @@ QPixmap                                 * g_pActivityMeterPixmap        = 0;
 
 KviApp::KviApp(int &argc,char ** argv)
 : KviTalApplication(argc,argv)
+{
+	internalInit();
+	m_bSupportsCompositing=false;
+}
+
+#ifdef COMPILE_X11_SUPPORT
+KviApp::KviApp(Display * display, int & argc, char ** argv, Qt::HANDLE visual, Qt::HANDLE colormap)
+: KviTalApplication(display, argc, argv, visual, colormap)
+{
+	internalInit();
+	m_bSupportsCompositing=true;
+}
+#endif
+
+void KviApp::internalInit()
 {
 	setApplicationName("KVIrc");
 	setApplicationVersion(KVIRC_VERSION_RELEASE);
@@ -996,79 +999,9 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 
-	#ifdef COMPILE_KDE3_SUPPORT
-
-	#include <netwm.h>
-
-		void KviApp::downloadKdeRootPixmap()
-		{
-			if(g_pKdeDesktopBackground)
-			{
-				delete g_pKdeDesktopBackground;
-				g_pKdeDesktopBackground = 0;
-				// this signal shouldn't be connected ,but well.. let's make sure
-				disconnect(this,SIGNAL(backgroundChanged(int)),this,SLOT(kdeRootPixmapChanged(int)));
-			}
-			g_pKdeDesktopBackground = 0;
-
-			// This has been extracted from the KDELIBS KRootPixmap interface
-#if 0
-	#warning "The following warning will disappear soon..."
-			// FIXME: this form should be used starting from KDE 3.2
-			unsigned long l = NET::CurrentDesktop;
-			NETRootInfo rinfo( qt_xdisplay(), &l ,1 ,-1,true);
-#else
-			NETRootInfo rinfo(qt_xdisplay(),NET::CurrentDesktop);
-#endif
-			rinfo.activate();
-
-			QString name = QString("DESKTOP%1").arg(rinfo.currentDesktop());
-
-			g_pKdeDesktopBackground = new KSharedPixmap();
-			connect(g_pKdeDesktopBackground,SIGNAL(done(bool)),this,SLOT(kdeRootPixmapDownloadComplete(bool)));
-
-			if(!(g_pKdeDesktopBackground->isAvailable(name)))
-			{
-				// Pixmap not available!!!
-				delete g_pKdeDesktopBackground;
-				g_pKdeDesktopBackground = 0;
-				if(m_bUpdatePseudoTransparencyPending)return; // Already sent a request....
-				// Send a request to kdesktop....
-				DCOPClient *client = kapp->dcopClient();
-				if(!client->isAttached())client->attach();
-				QByteArray data;
-				QDataStream args(data,IO_WriteOnly);
-				args << 1;
-				client->send("kdesktop","KBackgroundIface","setExport(int)",data);
-				m_bUpdatePseudoTransparencyPending = true;
-				// Now wait a while and try again....
-				QTimer::singleShot(500,this,SLOT(updatePseudoTransparency()));
-				return;
-			}
-
-			if(!g_pKdeDesktopBackground->loadFromShared(QString("DESKTOP%1").arg(rinfo.currentDesktop())))
-			{
-				debug("Can't load the KDE root background image...");
-				delete g_pKdeDesktopBackground;
-				g_pKdeDesktopBackground = 0;
-			} //else {
-				// debug("Root pixmap downalod initiated");
-			//}
-		}
-
-	#endif //COMPILE_KDE3_SUPPORT
 
 	void KviApp::destroyPseudoTransparency()
 	{
-#ifdef COMPILE_KDE3_SUPPORT
-		if(g_pKdeDesktopBackground)
-		{
-			delete g_pKdeDesktopBackground;
-			g_pKdeDesktopBackground = 0;
-		}
-		// forget the backgroundChanged signal (will do nothing if it is not connected)
-		disconnect(this,SIGNAL(backgroundChanged(int)),this,SLOT(kdeRootPixmapChanged(int)));
-#endif //COMPILE_KDE3_SUPPORT
 		if(g_pShadedParentGlobalDesktopBackground)
 		{
 			delete g_pShadedParentGlobalDesktopBackground;
@@ -1088,14 +1021,8 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		QTimer::singleShot(0,this,SLOT(updatePseudoTransparency()));
 	}
 
-#ifdef COMPILE_KDE3_SUPPORT
-
-	#define kimageeffect_fade KImageEffect::fade
-
-#else //!COMPILE_KDE3_SUPPORT
-
 	//
-	// This function is taken from the KDE kimageeffect.cpp
+	// This function is taken from the KDE3 kimageeffect.cpp
 	// The authors listed at the top of the file are :)
 	//    Copyright (C) 1998, 1999 Christian Tibirna <ctibirna@total.net>
 	//              (C) 1998, 1999 Daniel M. Duley <mosfet@kde.org>
@@ -1157,8 +1084,6 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 		return img;
 	}
 
-#endif //!COMPILE_KDE3_SUPPORT
-
 	void KviApp::createGlobalBackgrounds(QPixmap * pix)
 	{
 		// create shaded copies...
@@ -1189,41 +1114,6 @@ void KviApp::fileDownloadTerminated(bool bSuccess,const QString &szRemoteUrl,con
 
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 
-void KviApp::kdeRootPixmapChanged(int)
-{
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#ifdef COMPILE_KDE3_SUPPORT
-		if(!KVI_OPTION_BOOL(KviOption_boolUpdateKdeBackgroundOnChange))return;
-		NETRootInfo rinfo(qt_xdisplay(),NET::CurrentDesktop);
-		rinfo.activate();
-		if(iDesktop == rinfo.currentDesktop())
-			updatePseudoTransparency();
-	#endif
-#endif //COMPILE_PSEUDO_TRANSPARENCY
-}
-
-void KviApp::kdeRootPixmapDownloadComplete(bool bSuccess)
-{
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	#ifdef COMPILE_KDE3_SUPPORT
-		if(!bSuccess)
-		{
-			qDebug("Failed to download the KDE root background image...");
-		} else {
-			// downloaded!
-			// create shaded copies...
-			createGlobalBackgrounds(g_pKdeDesktopBackground);
-			// make sure that this signal is not connected twice
-			disconnect(this,SIGNAL(backgroundChanged(int)),this,SLOT(kdeRootPixmapChanged(int)));
-			// connect it
-			connect(this,SIGNAL(backgroundChanged(int)),this,SLOT(kdeRootPixmapChanged(int)));
-		}
-		delete g_pKdeDesktopBackground;
-		g_pKdeDesktopBackground = 0;
-	#endif //COMPILE_KDE3_SUPPORT
-#endif //COMPILE_PSEUDO_TRANSPARENCY
-}
-
 
 void KviApp::updatePseudoTransparency()
 {
@@ -1231,22 +1121,13 @@ void KviApp::updatePseudoTransparency()
 	m_bUpdatePseudoTransparencyPending = false;
 	if(KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency))
 	{
-#ifdef COMPILE_KDE3_SUPPORT
-		if(KVI_OPTION_BOOL(KviOption_boolObtainGlobalBackgroundFromKde))
+		if(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap())
 		{
-			downloadKdeRootPixmap();
+			createGlobalBackgrounds(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap());
 		} else {
-#endif //COMPILE_KDE3_SUPPORT
-			if(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap())
-			{
-				createGlobalBackgrounds(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap());
-			} else {
-				destroyPseudoTransparency();
-				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
-			}
-#ifdef COMPILE_KDE3_SUPPORT
+			destroyPseudoTransparency();
+			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
 		}
-#endif //COMPILE_KDE3_SUPPORT
 	} else {
 		destroyPseudoTransparency();
 		if(g_pFrame)g_pFrame->updatePseudoTransparency();

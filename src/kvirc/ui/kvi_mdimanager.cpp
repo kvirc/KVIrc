@@ -99,23 +99,38 @@ bool KviMdiManager::focusNextPrevChild(bool bNext)
 	return m_pFrm->focusNextPrevChild(bNext);
 }
 
-void KviMdiManager::paintEvent(QPaintEvent * event)
+void KviMdiManager::paintEvent(QPaintEvent * e)
 {
 	QPainter p(viewport());
-	QPoint pnt = viewport()->mapToGlobal(event->rect().topLeft());
+
+    //make sure you clean your widget with a transparent
+    //  color before doing any rendering
+    //  note the usage of a composition mode Source
+    //  it's important!
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	if(g_pShadedParentGlobalDesktopBackground)
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
-		p.drawTiledPixmap(event->rect(),*(g_pShadedParentGlobalDesktopBackground), pnt);
+		p.save();
+		p.setCompositionMode(QPainter::CompositionMode_Source);
+		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) / (float)100));
+		p.fillRect(rect(), col);
+		p.restore();
+		return;
+	} else if(g_pShadedParentGlobalDesktopBackground)
+	{
+		QPoint pnt = viewport()->mapToGlobal(e->rect().topLeft());
+		p.drawTiledPixmap(e->rect(),*(g_pShadedParentGlobalDesktopBackground), pnt);
 		return;
 	}
 #endif
-
 	if(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap())
 	{
-		p.drawTiledPixmap(event->rect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()),pnt);
+		QPoint pnt = viewport()->mapToGlobal(e->rect().topLeft());
+		p.drawTiledPixmap(e->rect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapMdiBackground).pixmap()),pnt);
 	} else {
-		p.fillRect(event->rect(),KVI_OPTION_COLOR(KviOption_colorMdiBackground));
+		p.fillRect(e->rect(),KVI_OPTION_COLOR(KviOption_colorMdiBackground));
 	}
 }
 

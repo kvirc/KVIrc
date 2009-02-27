@@ -85,6 +85,9 @@ class KVIRC_API KviApp : public KviTalApplication
 	Q_OBJECT
 public:
 	KviApp(int &argc,char ** argv);
+#ifdef COMPILE_X11_SUPPORT
+	KviApp(Display * display, int & argc, char ** argv, Qt::HANDLE visual = 0, Qt::HANDLE colormap = 0);
+#endif
 	~KviApp();
 
 protected:
@@ -101,6 +104,7 @@ protected:
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	bool                            m_bUpdatePseudoTransparencyPending;
 #endif
+	bool				m_bSupportsCompositing;
 #ifndef COMPILE_NO_IPC
 	KviIpcSentinel                * m_pIpcSentinel;
 #endif
@@ -137,6 +141,7 @@ public:
 	static int getGloballyUniqueId(); // returns an unique integer identifier across the application
 
 	bool firstTimeRun(){ return m_bFirstTimeRun; };
+	bool supportsCompositing() { return m_bSupportsCompositing; };
 	void setupBegin();
 	void setupFinish();
 
@@ -249,7 +254,7 @@ public:
 	void fillRecentServersPopup(KviTalPopupMenu * m);
 	void fillRecentNicknamesPopup(KviTalPopupMenu * m,KviConsole * pConsole);
 	void fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsole * pConsole);
-
+// 
 	void autoConnectToServers();
 
 	void checkSuggestRestoreDefaultScript();
@@ -269,12 +274,11 @@ public slots:
 	// kvi_app.cpp : Slots
 	void saveConfiguration();
 	void updateGui();
-	void kdeRootPixmapDownloadComplete(bool bSuccess);
-	void kdeRootPixmapChanged(int iDesktop);
 	void updatePseudoTransparency();
 	void restoreDefaultScript();
 	void addRecentUrl(const QString& text);
 private:
+	void internalInit();
 	void createSplashScreen();
 	void destroySplashScreen();
 
@@ -298,9 +302,6 @@ private:
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	void createGlobalBackgrounds(QPixmap * pix);
 	void destroyPseudoTransparency();
-	#ifdef COMPILE_KDE3_SUPPORT
-		void downloadKdeRootPixmap();
-	#endif //COMPILE_KDE3_SUPPORT
 #endif //COMPILE_PSEUDO_TRANSPARENCY
 private:
 	// kvi_app.cpp : parts of setup()

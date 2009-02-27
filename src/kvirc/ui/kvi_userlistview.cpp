@@ -1660,7 +1660,15 @@ void KviUserListViewArea::paintEvent(QPaintEvent * e)
 	QFontMetrics fm(p.fontMetrics());
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	if(g_pShadedChildGlobalDesktopBackground)
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+	{
+		p.save();
+		p.setCompositionMode(QPainter::CompositionMode_Source);
+		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
+		p.fillRect(rect(), col);
+		p.restore();
+	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapToGlobal(QPoint(r.left(),r.top()));
 		p.drawTiledPixmap(r.left(),r.top(),width(),r.height(),*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());

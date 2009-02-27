@@ -112,7 +112,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("AutoAcceptDccSend",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("SendZeroAckInDccRecv",false,KviOption_sectFlagDcc),
 	BOOL_OPTION("UseFastDccSend",true,KviOption_sectFlagDcc),
-	BOOL_OPTION("ObtainGlobalBackgroundFromKde",false,KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme),
+	BOOL_OPTION("UseCompositingForTransparency",false,KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme),
 	BOOL_OPTION("UseWindowListIrcContextIndicator",false,KviOption_sectFlagWindowList | KviOption_resetUpdateGui),
 	BOOL_OPTION("UseGlobalApplicationFont",false,KviOption_sectFlagGui | KviOption_resetUpdateAppFont | KviOption_groupTheme),
 	BOOL_OPTION("AlwaysQuitKVIrcClosingLastConsole",false,KviOption_sectFlagFrame),

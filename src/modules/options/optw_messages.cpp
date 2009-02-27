@@ -226,7 +226,15 @@ void KviMessageListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionVie
 	const KviTalListWidget *tb = (const KviTalListWidget *)parent();
 	KviMessageListWidgetItem *it = static_cast<KviMessageListWidgetItem*>(index.internalPointer());
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	if(g_pShadedChildGlobalDesktopBackground)
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+	{
+		p->save();
+		p->setCompositionMode(QPainter::CompositionMode_Source);
+		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
+		p->fillRect(opt.rect, col);
+		p->restore();
+	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = tb->viewport()->mapToGlobal(opt.rect.topLeft());
 		p->drawTiledPixmap(opt.rect,*g_pShadedChildGlobalDesktopBackground, pnt);

@@ -57,10 +57,6 @@
 #include <QList>
 #include <QPainter>
 
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
-#endif
-
 extern KviAliasEditorWindow * g_pAliasEditorWindow;
 extern KviModule * g_pAliasEditorModule;
 

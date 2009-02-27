@@ -305,6 +305,7 @@ void KviMdiChild::updateCaption()
 void KviMdiChild::moveEvent(QMoveEvent *e)
 {
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
+	//this is not needed for real transparency using compositing
 	if(m_pClient && g_pShadedChildGlobalDesktopBackground)
 	{
 		if(m_pClient->inherits("KviWindow")) // actually this is always the case

@@ -586,7 +586,7 @@ void KviIrcView::postUpdateEvent()
 	{
 		// Three unprocessed paint events...do it now
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-		if(! ((KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap()) || m_pPrivateBackgroundPixmap || g_pShadedChildGlobalDesktopBackground))
+		if(! ((KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap()) || m_pPrivateBackgroundPixmap || g_pShadedChildGlobalDesktopBackground || KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency)))
 			fastScroll(3);
 #else
 		if(! ((KVI_OPTION_PIXMAP(KviOption_pixmapIrcViewBackground).pixmap()) || m_pPrivateBackgroundPixmap))
@@ -1016,7 +1016,15 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	}
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	if(g_pShadedChildGlobalDesktopBackground)
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+	{
+		pa.save();
+		pa.setCompositionMode(QPainter::CompositionMode_Source);
+		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
+		pa.fillRect(rect(), col);
+		pa.restore();
+	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapToGlobal(QPoint(rectLeft,rectTop));
 		pa.drawTiledPixmap(rectLeft,rectTop,rectWidth,rectHeight,*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());

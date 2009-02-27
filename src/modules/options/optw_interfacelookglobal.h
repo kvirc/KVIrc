@@ -60,14 +60,12 @@ protected:
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	KviPixmapSelector * m_pGlobalBackgroundPixmapSelector;
 	KviBoolSelector * m_pUseTransparencyBoolSelector;
-	#ifdef COMPILE_KDE_SUPPORT
-		KviBoolSelector * m_pObtainBackgroundFromKdeBoolSelector;
-		KviBoolSelector * m_pUpdateKdeBackgroundOnChangeBoolSelector;
+	#ifdef COMPILE_X11_SUPPORT
+		KviBoolSelector * m_pUseCompositingForTransparencyBoolSelector;
 	#endif
 #endif
 protected slots:
 	void enableGlobalBackgroundPixmapSelector(bool);
-	void enableUpdateKdeBackgroundBoolSelector(bool);
 };
 
 

@@ -61,7 +61,10 @@ QFontMetrics * g_pLastFontMetrics = 0;
 extern KviTalPopupMenu         * g_pInputPopup;
 extern KviTextIconWindowWidget * g_pTextIconWindow;
 extern KviColorWindow          * g_pColorWindow;
-extern QPixmap                 * g_pShadedChildGlobalDesktopBackground;
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	extern QPixmap       * g_pShadedChildGlobalDesktopBackground;
+#endif
 
 static int g_iInputFontCharWidth[256];
 static bool g_bInputFontMetricsDirty = true;
@@ -249,7 +252,15 @@ void KviInputEditor::drawContents(QPainter * p)
 		recalcFontMetrics();
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
-	if(g_pShadedChildGlobalDesktopBackground)
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+	{
+		p->save();
+		p->setCompositionMode(QPainter::CompositionMode_Source);
+		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
+		p->fillRect(rect, col);
+		p->restore();
+	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapToGlobal(rect.topLeft());
 		p->drawTiledPixmap(1,1,iWidgetWidth,iWidgetHeight,*g_pShadedChildGlobalDesktopBackground,pnt.x(),pnt.y());
