@@ -46,7 +46,7 @@
 	}
 
 	#ifdef COMPILE_X11_SUPPORT
-		KviTalApplication::KviTalApplication(Display * display, int & iArgc, char ** ppcArgv, Qt::HANDLE visual, Qt::HANDLE colormap);
+		KviTalApplication::KviTalApplication(Display * display, int & iArgc, char ** ppcArgv, Qt::HANDLE visual, Qt::HANDLE colormap)
 		: QApplication(display, iArgc, ppcArgv, visual, colormap)
 		{
 		}
