@@ -37,7 +37,7 @@ class KviKvsObject_sql : public KviKvsObject
 public:
         KVSO_DECLARE_OBJECT(KviKvsObject_sql)
 protected:
-        QSqlQuery *currentSQlQuery;
+        QSqlQuery *m_pCurrentSQlQuery;
         QHash<QString,QSqlQuery *> queryConnectionsDict;
 
     public:
@@ -46,7 +46,7 @@ protected:
         QSqlQuery & getQuery()
         {
             //if (currentSQlQuery) return *currentSQlQuery;
-            return *currentSQlQuery;
+            return *m_pCurrentSQlQuery;
         };
         bool setConnection(KviKvsObjectFunctionCall *c);
         bool tablesList(KviKvsObjectFunctionCall *c);
