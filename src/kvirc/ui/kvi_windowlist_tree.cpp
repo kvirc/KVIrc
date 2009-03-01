@@ -432,7 +432,7 @@ void KviTreeWindowList::tipRequest(KviDynamicToolTip *,const QPoint &pnt)
 		{
 			QString szText;
 			((KviTreeWindowListItem *)it)->m_pWindow->getWindowListTipText(szText);
-			m_pToolTip->tip(m_pTreeWidget->visualItemRect(it),szText);
+			m_pToolTip->tip(QRect(pnt, QSize(16,16)),szText);
 		}
 	}
 }

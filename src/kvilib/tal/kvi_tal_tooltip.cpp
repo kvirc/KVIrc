@@ -94,7 +94,10 @@ void KviTalToolTip::remove(QWidget *widget)
 void KviTalToolTip::tip(const QRect & rect,const QString & text)
 {
 //	debug("TOOL TIP AT %d,%d",rect.topLeft().x(),rect.topLeft().y());
-	QToolTip::showText(m_pParent->mapToGlobal(rect.bottomLeft()),text);
+	QPoint pnt=m_pParent->mapToGlobal(rect.topLeft());
+	pnt.setX(pnt.x()+16);
+	pnt.setY(pnt.y()+16);
+	QToolTip::showText(m_pParent->mapToGlobal(rect.topLeft()),text, m_pParent, rect);
 }
 
 void KviTalToolTip::maybeTip(const QPoint &)
