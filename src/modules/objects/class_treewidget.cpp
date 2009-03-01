@@ -53,7 +53,7 @@
         @keyterms:
                 listview widget class
         @title:
-                listview widget class
+                listview class
         @type:
                 class
         @short:

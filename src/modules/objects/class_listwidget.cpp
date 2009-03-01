@@ -27,24 +27,21 @@
 #include "kvi_debug.h"
 #include "class_list.h"
 #include "class_listwidget.h"
-
 #include <QListWidget>
 /*
-	@doc: listwidget
-	@keyterms:
-		listwidget object class
-	@title:
-		listwidget class
-	@type:
-		class
-	@short:
-		A widget displaying a list of items
-	@inherits:
-		[class]object[/class]
-		[class]widget[/class]
+        @doc:listbox
+        @title:
+                listbox class
+        @type:
+                class
+        @short:
+                A widget displaying a list of items.
+        @inherits:
+                [class]object[/class]
+                [class]widget[/class]
 	@description:
-		The listwidget class is a widget displaying a list of string items.[br]
-		The listwidget can operate in four selection modes: single, multi, extended
+                The listbox class is a widget displaying a list of string items.[br]
+                The listbox can operate in four selection modes: single, multi, extended
 		and none. In the "single" mode only one item can be selected at a time
 		and that item is also the current one. In the "multi" mode multiple
 		items can be selected and unselected and the current item may or may not
@@ -83,13 +80,13 @@
 		!fn: $textAt(<index:integer>)
 		Returns item at given index.
 		!fn: $setCurrentItem(<index:integer>)
-		Sets the current listwidget item.
+                Sets the current listbox item.
 		!fn: $clear()
 		Removes all the items
 		!fn: $itemEnteredEvent()
 		This function is called by KVIrc when the mouse cursor enters an item.
 		!fn: $selectionChangeEvent()
-		This function is called by KVIrc when the selection in the listwidget changes.
+                This function is called by KVIrc when the selection in the listbox changes.
 		!fn: $currentItemChangeEvent()
 		This function is called by KVIrc when the current item changes.
 		!fn: <index:integer> $onItemEvent()

@@ -34,25 +34,21 @@
  #include <QDateTimeEdit>
 
 /*
-	@doc:button
+        @doc:datetimeedit
 	@title:
-		button class
+                datetimeedit class
 	@type:
 		class
 	@short:
-		Button widget.
+                Datetimeedit widget.
 	@inherits:
 		[class]object[/class]
-		[class]button[/class]
+                [class]widget[/class]
 	@description:
-		This widget provides a push button
+                This widget provides a datetimeedit.
 	@functions:
-                        !fn: $setDate([<text:string>])
-                        !fn: <string> $date([<format:string>])
-                @signals:
-		!sg: $clicked()
-		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
-
+                !fn: $setDate([<text:string>])
+                !fn: <string> $date([<format:string>])
 */
 
 

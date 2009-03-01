@@ -122,3 +122,4 @@ KVSO_CLASS_FUNCTION(memorybuffer,saveToFile)
 #include "m_class_memorybuffer.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES*/
 
+
