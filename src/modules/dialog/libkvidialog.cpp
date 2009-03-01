@@ -236,10 +236,13 @@ KviKvsCallbackTextInput::KviKvsCallbackTextInput(
 	{
 		m_pEdit = new QTextEdit(this);
 		((QTextEdit *)m_pEdit)->setPlainText(szDefaultText);
+		((QTextEdit *)m_pEdit)->selectAll();
 	} else {
 		m_pEdit = new QLineEdit(this);
 		((QLineEdit *)m_pEdit)->setText(szDefaultText);
+		((QLineEdit *)m_pEdit)->selectAll();
 	}
+
 	g->addWidget(m_pEdit,1,1,1,1);
 
 	KviTalHBox * box = new KviTalHBox(this);
