@@ -356,7 +356,7 @@ SERVERDB_GET_NETWORK_PROPERTY(serverdb_kvs_fnc_networkLoginCommand,onLoginComman
 	@doc: serverdb.networkName
 	@type:
 		function
-	@title
+        @title:
 		$serverdb.networkName
 	@short:
 		Returns the name
