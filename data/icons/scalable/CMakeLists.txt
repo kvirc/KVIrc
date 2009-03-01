@@ -1,16 +1,28 @@
-# CMakeLists for data/icons
+# CMakeLists for data/icons/scalable/
 
-FILE(GLOB files "*.svgz")
+SET(iconapps
+	kvirc.svgz
+)
+
+SET(iconmime
+	kvs.svgz
+	kvc.svgz
+	kvt.svgz
+	kva.svgz
+)
 
 IF(UNIX)
 	IF(APPLE)
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/scalable/)
+		INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/scalable/apps/)
+		INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/scalable/mimetypes/)
 	ELSE()
 		# Assume linux
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/)
+		INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
+		INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/mimetypes/)
 	ENDIF()
 ELSEIF(WIN32)
-	INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/scalable/)
+	INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/scalable/apps/)
+	INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/scalable/mimetypes/)
 ENDIF()
 
 

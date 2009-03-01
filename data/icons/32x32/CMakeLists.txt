@@ -1,16 +1,28 @@
-# CMakeLists for data/icons
+# CMakeLists for data/icons/32x32/
 
-FILE(GLOB files "*.png")
+SET(iconapps
+	kvirc.png
+)
+
+SET(iconmime
+	kvs.png
+	kvc.png
+	kvt.png
+	kva.png
+)
 
 IF(UNIX)
 	IF(APPLE)
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/32x32/)
+		INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/32x32/apps/)
+		INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/icons/32x32/mimetypes/)
 	ELSE()
 		# Assume linux
-		INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/32x32/)
+		INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/32x32/apps/)
+		INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/32x32/mimetypes/)
 	ENDIF()
 ELSEIF(WIN32)
-	INSTALL(FILES ${files} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/32x32/)
+	INSTALL(FILES ${iconapps} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/32x32/apps/)
+	INSTALL(FILES ${iconmime} DESTINATION ${CMAKE_INSTALL_PREFIX}/icons/32x32/mimetypes/)
 ENDIF()
 
 
