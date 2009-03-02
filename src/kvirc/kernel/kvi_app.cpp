@@ -1154,11 +1154,30 @@ void KviApp::updatePseudoTransparency()
 		{
 			createGlobalBackgrounds(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap());
 		} else {
+			//destroy pseudo transparency pixmaps
                         destroyPseudoTransparency();
-                        KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
+			//if we get here, no pseudo transparency method can be used / is enabled.
+#ifdef COMPILE_X11_SUPPORT
+			//under x11, we still have to check real transparency methods
+			if(!KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency))
+			{
+				//real transparency is off => turn off transparency support at all
+				KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
+			}
+#else
+			// on other platforms, no way to proceed
+			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
+#endif // COMPILE_X11_SUPPORT
 		}
 	} else {
+		//transparency is disabled
+
+		//destroy pseudo transparency pixmaps
 		destroyPseudoTransparency();
+		//make sure real transparency is disabled
+		KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) = false;
+
+		//update widgets
 		if(g_pFrame)g_pFrame->updatePseudoTransparency();
 	}
 #endif //COMPILE_PSEUDO_TRANSPARENCY
