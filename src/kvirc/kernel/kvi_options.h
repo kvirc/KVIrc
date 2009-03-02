@@ -673,9 +673,7 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 
 	#define START_TABLE_NORMAL_ROW "<tr><td>"
 
-	#define SET_ANTI_ALIASING(p) \
-	(p).setRenderHint(QPainter::Antialiasing); \
-	(p).setRenderHint(QPainter::TextAntialiasing);
+	#define SET_ANTI_ALIASING(p) (p).setRenderHint(QPainter::TextAntialiasing);
 
 
 #if defined(_KVI_OPTIONS_CPP_) || defined(_WANT_OPTION_FLAGS_)
