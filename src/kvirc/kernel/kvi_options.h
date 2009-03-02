@@ -251,7 +251,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolIgnoreChannelAvatarRequestsWhenNoAvatarSet 157 /* ctcp */
 #define KviOption_boolFlashQueryWindowOnNewMessages 158              /* query */
 #define KviOption_boolConfirmCloseWhenThereAreConnections 159        /* interface features */
-#define KviOption_boolUpdateKdeBackgroundOnChange 160                /* themes::general NOT USED ANYMORE */
+#define KviOption_boolUseWindowsDesktopForTransparency 160           /* interface::features::global */
 #define KviOption_boolCtcpRequestsToActiveWindow 161                 /* irc::output */
 #define KviOption_boolServerRepliesToActiveWindow 162                /* irc::output */
 #define KviOption_boolServerNoticesToActiveWindow 163                /* irc::output */
@@ -322,7 +322,6 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPasteLastLogOnQueryJoin 228                  /* query */
 #define KviOption_boolUseSpecifiedSmartColorForOwnNick 229 /* interface::ircview */
 #define KVI_NUM_BOOL_OPTIONS 230
-//IF YOU WANT TO ADD A NEW BOOL OPTION, OVERWRITE #160 (IT IS NOT USED ANYMORE)
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

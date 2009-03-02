@@ -93,7 +93,6 @@
 #include <QTextCodec>
 #include <QMetaObject>
 #include <QTextDocument>
-
 /*
 HACK These 2 hacks are defined because X11 defines Unsorted and None
 which conflicts with QDir and KviApp::KvircSubdir
@@ -158,6 +157,10 @@ QPixmap                                 * g_pActivityMeterPixmap        = 0;
 
 	KVIRC_API QPixmap               * g_pShadedParentGlobalDesktopBackground = 0; // the pixmap that we use for MdiManager
 	KVIRC_API QPixmap               * g_pShadedChildGlobalDesktopBackground  = 0; // the pixmap that we use for MdiChild
+        #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+                #include <winuser.h>
+                #include <QDesktopWidget>
+        #endif
 #endif
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -251,7 +254,7 @@ void KviApp::setup()
 	getLocalKvircDirectory(szPath,None,"audio");
 	QDir::addSearchPath("audio",szPath);
 
-#ifdef COMPILE_ON_WINDOWS
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	//need to load image plugins:(
 	QString szPluginsDir;
 	getGlobalKvircDirectory(szPluginsDir,None,"qt-plugins/");
@@ -1121,12 +1124,38 @@ void KviApp::updatePseudoTransparency()
 	m_bUpdatePseudoTransparencyPending = false;
 	if(KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency))
 	{
+        #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+                //TODO this has been tested only under mingw!
+                //TODO this needs winxp: #if (_WIN32_WINNT >= 0x0501)
+                if(KVI_OPTION_BOOL(KviOption_boolUseWindowsDesktopForTransparency))
+                {
+                        QSize size = g_pApp->desktop()->screenGeometry(g_pApp->desktop()->primaryScreen()).size();
+                        // get the Program Manager
+                        HWND hWnd = FindWindow ("Progman", "Program Manager");
+                        // Create and setup bitmap
+                        HDC bitmap_dc = CreateCompatibleDC(qt_win_display_dc());
+                        HBITMAP bitmap = CreateCompatibleBitmap(qt_win_display_dc(), size.width(), size.height());
+                        HGDIOBJ null_bitmap = SelectObject(bitmap_dc, bitmap);
+
+                        PrintWindow (hWnd, bitmap_dc, 0);
+
+                        SelectObject(bitmap_dc, null_bitmap);
+                        DeleteDC(bitmap_dc);
+
+                        QPixmap pix = QPixmap::fromWinHBITMAP(bitmap);
+
+                        DeleteObject(bitmap);
+
+                        createGlobalBackgrounds(&pix);
+                } else
+        #endif
+
 		if(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap())
 		{
 			createGlobalBackgrounds(KVI_OPTION_PIXMAP(KviOption_pixmapGlobalTransparencyBackground).pixmap());
 		} else {
-			destroyPseudoTransparency();
-			KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
+                        destroyPseudoTransparency();
+                        KVI_OPTION_BOOL(KviOption_boolUseGlobalPseudoTransparency) = false;
 		}
 	} else {
 		destroyPseudoTransparency();

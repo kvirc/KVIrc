@@ -244,7 +244,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("IgnoreChannelAvatarRequestsWhenNoAvatarSet",true,KviOption_sectFlagAvatar),
 	BOOL_OPTION("FlashQueryWindowOnNewMessages",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("ConfirmCloseWhenThereAreConnections",true,KviOption_sectFlagFrame),
-	BOOL_OPTION("UpdateKdeBackgroundOnChange",false,KviOption_sectFlagFrame),
+	BOOL_OPTION("UseWindowsDesktopForTransparency",false,KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme),
 	BOOL_OPTION("CtcpRequestsToActiveWindow",false,KviOption_sectFlagConnection),
 	BOOL_OPTION("ServerRepliesToActiveWindow",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("ServerNoticesToActiveWindow",false,KviOption_sectFlagConnection),
