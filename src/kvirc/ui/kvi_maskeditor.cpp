@@ -134,7 +134,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 		if(w->inherits("KviChannel"))
 		{
 			KviChannel *chan = ((KviChannel *)w);
-			if(!( chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanOwner() || chan->isMeChanAdmin() || chan->connection()->userInfo()->hasUserMode('o') || chan->connection()->userInfo()->hasUserMode('O') ) )  isEnabled=0;
+			if(!( chan->isMeHalfOp() || chan->isMeOp() || chan->isMeChanOwner() || chan->isMeChanAdmin() ) )  isEnabled=0;
 			break;
 		}
 	w = w->parent();
