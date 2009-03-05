@@ -589,18 +589,14 @@ void KviMessageColorsOptionsWidget::save()
 void KviMessageColorsOptionsWidget::load()
 {
 
-	//KviStr szName;
 	QString szName;
-	//KviStr szInit;
 	QString szInit;
 	g_pApp->getLocalKvircDirectory(szInit,KviApp::MsgColors);
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	// symlink local to global
-	//KviStr szGlobal;
 	QString szGlobal;
 	g_pApp->getGlobalKvircDirectory(szGlobal,KviApp::MsgColors);
-	//KviStr szLocal;
 	QString szLocal;
 	g_pApp->getLocalKvircDirectory(szLocal,KviApp::MsgColors,"presets");
 	//qDebug("SYMLINKING %s to %s",szGlobal.ptr(),szLocal.ptr());

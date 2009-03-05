@@ -611,7 +611,19 @@ void KviOptionsDialog::applyClicked()
 void KviOptionsDialog::apply(bool bDialogAboutToClose)
 {
 	int count=m_pTreeWidget->topLevelItemCount();
+	int curTab=-1;
 	KviOptionsTreeWidgetItem * it;
+
+	if(!bDialogAboutToClose)
+	{
+		// bring up the current widget again!
+		it = (KviOptionsTreeWidgetItem *)m_pTreeWidget->currentItem();
+		//checking if the check of the check is checkable
+		if(it)
+			if(it->m_pOptionsWidget)
+				if(it->m_pOptionsWidget->tabWidget())
+					curTab = it->m_pOptionsWidget->tabWidget()->currentIndex();
+	}
 
 	for (int i=0;i<count;i++)
 	{
@@ -623,7 +635,13 @@ void KviOptionsDialog::apply(bool bDialogAboutToClose)
 	{
 		// bring up the current widget again!
 		it = (KviOptionsTreeWidgetItem *)m_pTreeWidget->currentItem();
-		if(it)treeWidgetItemSelectionChanged(it, 0);
+		if(it)
+		{
+			treeWidgetItemSelectionChanged(it, 0);
+			if(curTab > 0 && it->m_pOptionsWidget)
+				if(it->m_pOptionsWidget->tabWidget())
+					it->m_pOptionsWidget->tabWidget()->setCurrentIndex(curTab);
+		}
 	}
 
 	g_pApp->saveConfiguration();

@@ -82,7 +82,6 @@ void KviOptionsWidgetContainer::setup(KviOptionsWidget * w)
 	KviOptionsWidgetInstanceEntry * e = g_pOptionsInstanceManager->findInstanceEntry(w->metaObject()->className());
 	if(e)
 	{
-		//KviStr caption(KviStr::Format,"%s - KVIrc",e->szName);
 		setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(e->iIcon))));
 		setWindowTitle(e->szName);
 	}
