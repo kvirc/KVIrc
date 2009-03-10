@@ -46,10 +46,18 @@
 
 	#define KVI_INVALID_SOCKET INVALID_SOCKET
 
-	#define KVI_IPV6_PROTECTION_LEVEL IPV6_PROTECTION_LEVEL
-	#define KVI_PROTECTION_LEVEL_RESTRICTED    10  /* for Intranet apps      */
-	#define KVI_PROTECTION_LEVEL_DEFAULT       20  /* default level          */
-	#define KVI_PROTECTION_LEVEL_UNRESTRICTED  30  /* for peer-to-peer apps  */
+        //old mingw win32 headers doesn't contain this
+        #ifndef IPV6_PROTECTION_LEVEL
+        # define IPV6_PROTECTION_LEVEL          23
+	# define PROTECTION_LEVEL_RESTRICTED    10  /* for Intranet apps      */
+	# define PROTECTION_LEVEL_DEFAULT       20  /* default level          */
+	# define PROTECTION_LEVEL_UNRESTRICTED  30  /* for peer-to-peer apps  */
+        #endif
+
+	#define KVI_IPV6_PROTECTION_LEVEL          IPV6_PROTECTION_LEVEL
+	#define KVI_PROTECTION_LEVEL_RESTRICTED    PROTECTION_LEVEL_RESTRICTED
+	#define KVI_PROTECTION_LEVEL_DEFAULT       PROTECTION_LEVEL_DEFAULT
+	#define KVI_PROTECTION_LEVEL_UNRESTRICTED  PROTECTION_LEVEL_UNRESTRICTED
 #else
 
 	#include <sys/time.h>

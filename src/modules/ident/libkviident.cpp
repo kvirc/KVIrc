@@ -272,9 +272,12 @@ void KviIdentDaemon::run()
 		}
 
 		#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-			// under windows, we need to set the socket to be reachable from the outer internet
-			// see bug ticket #393
-		if(!kvi_socket_setsockopt(m_sock6,KVI_SOCKET_PF_INET6,KVI_IPV6_PROTECTION_LEVEL,&(int){ KVI_PROTECTION_LEVEL_UNRESTRICTED }, sizeof(int))
+                        /*
+			 * under windows, ipv6 hosts behind an ipv4 NAT can use Teredo to be reachable from the outer internet using their
+                         * ipv6 address; the default protection level doesn't permit this, so we need to set this socket option 
+			 * see bug ticket #393
+                         */
+		if(!kvi_socket_setsockopt(m_sock6,KVI_SOCKET_PF_INET6,KVI_IPV6_PROTECTION_LEVEL,(const void*)KVI_PROTECTION_LEVEL_UNRESTRICTED, sizeof(int)))
 		{
 			//this is not a fatal error
 			postMessage(__tr("Can't set the IPv6 ident service protection level to unrestricted: the ident service won't be exposed to the internet"),0);
