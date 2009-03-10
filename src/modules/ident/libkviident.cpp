@@ -271,6 +271,15 @@ void KviIdentDaemon::run()
 			goto ipv6_failure;
 		}
 
+		#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+			// under windows, we need to set the socket to be reachable from the outer internet
+			// see bug ticket #393
+		if(!kvi_socket_setsockopt(m_sock6,KVI_SOCKET_PF_INET6,KVI_IPV6_PROTECTION_LEVEL,&(int){ KVI_PROTECTION_LEVEL_UNRESTRICTED }, sizeof(int))
+		{
+			//this is not a fatal error
+			postMessage(__tr("Can't set the IPv6 ident service protection level to unrestricted: the ident service won't be exposed to the internet"),0);
+		}
+		#endif
 		if(!sa6.socketAddress())
 		{
 			postMessage(__tr("Can't enable the ident service on IPv6 : can't setup the listen address"),0);

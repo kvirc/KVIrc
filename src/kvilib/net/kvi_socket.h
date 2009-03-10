@@ -46,6 +46,10 @@
 
 	#define KVI_INVALID_SOCKET INVALID_SOCKET
 
+	#define KVI_IPV6_PROTECTION_LEVEL IPV6_PROTECTION_LEVEL
+	#define KVI_PROTECTION_LEVEL_RESTRICTED    10  /* for Intranet apps      */
+	#define KVI_PROTECTION_LEVEL_DEFAULT       20  /* default level          */
+	#define KVI_PROTECTION_LEVEL_UNRESTRICTED  30  /* for peer-to-peer apps  */
 #else
 
 	#include <sys/time.h>
@@ -57,7 +61,6 @@
 	#include <unistd.h>
 
 	#define KVI_INVALID_SOCKET (-1)
-
 #endif
 
 #ifndef MSG_NOSIGNAL
