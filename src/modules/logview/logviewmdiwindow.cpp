@@ -282,11 +282,11 @@ void KviLogViewMDIWindow::setupItemList()
 			continue;
 
 		if(filterFromDate)
-			if(pFile->date()<fromDate)
+			if(pFile->date()>fromDate)
 				continue;
 
 		if(filterToDate)
-			if(pFile->date()>toDate)
+			if(pFile->date()<toDate)
 				continue;
 
 		if(enableNameFilter)
