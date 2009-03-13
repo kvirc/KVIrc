@@ -527,7 +527,6 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 				{
 					// the last line of a multi line selection
 					szSelectionText.append(tempLine->szText.left(endChar));
-					szSelectionText.append("\n");
 					break;
 				} else {
 					//a middle line of a multi line selection
