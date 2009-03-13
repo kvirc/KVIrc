@@ -238,7 +238,6 @@ void KviScriptEditorWidget::insertCompletion(const QString & szCompletion)
 	tc.movePosition(QTextCursor::EndOfWord);
 
 	QString szTmp = szCompletion.right(iExtra);
-	debug ("append %s to %s",szTmp.toUtf8().data(),m_pCompleter->completionPrefix().toUtf8().data());
 	if(szCompletion.left(1)=="$")
 		szTmp.append("(");
 	else
@@ -884,7 +883,7 @@ void KviScriptEditorImplementation::setText(const char * txt)
 
 void KviScriptEditorImplementation::setText(const KviQCString & szText)
 {
-	m_pEditor->setText(szText.data());
+        m_pEditor->setPlainText(szText.data());
 	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }
@@ -896,7 +895,7 @@ void KviScriptEditorImplementation::getText(KviQCString & szText)
 
 void KviScriptEditorImplementation::setText(const QString & szText)
 {
-	m_pEditor->setText(szText);
+        m_pEditor->setPlainText(szText);
 	QTextCursor cur=m_pEditor->textCursor();
 	cur.movePosition(QTextCursor::End);
 	m_pEditor->setTextCursor(cur);
@@ -945,7 +944,7 @@ void KviScriptEditorImplementation::loadFromFile()
 		QString szBuffer;
 		if(KviFileUtils::loadFile(szFileName,szBuffer))
 		{
-			m_pEditor->setText(szBuffer);
+                        m_pEditor->setPlainText(szBuffer);
 			setCursorPosition(0);
 			//m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
 			//updateRowColLabel();

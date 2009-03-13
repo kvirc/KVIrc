@@ -60,7 +60,7 @@ static bool editor_module_cleanup(KviModule *)
 			if(w->inherits("KviWindow"))
 			{
 			//	debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
-				((KviWindow *)w)->close();
+				//((KviWindow *)w)->close();
 			//	debug("%s %s %i",__FILE__,__FUNCTION__,__LINE__);
 				break;
 			}
