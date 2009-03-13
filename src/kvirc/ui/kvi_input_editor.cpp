@@ -231,7 +231,6 @@ void KviInputEditor::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
 	SET_ANTI_ALIASING(p);
-	drawFrame(&p);
 	drawContents(&p);
 }
 
@@ -283,7 +282,7 @@ void KviInputEditor::drawContents(QPainter * p)
 	m_bCurUnderline  = false;
 
 	int iBottom       = iWidgetHeight-(iWidgetHeight-fm.height())/2;
-	int iTextBaseline = fm.ascent()+(iWidgetHeight-fm.height())/2;
+	int iTextBaseline = iWidgetHeight - fm.descent();
 	int iTop          = (iWidgetHeight-fm.height())/2;
 
 	runUpToTheFirstVisibleChar();

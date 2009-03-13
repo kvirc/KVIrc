@@ -109,7 +109,6 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 {
 	setObjectName(name);
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
-	setFont(KVI_OPTION_FONT(KviOption_fontLabel));
 	m_pHistory = 0;
 	m_pAccept = 0;
 	m_pDiscard = 0;
@@ -130,6 +129,8 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 
 	connect(m_pCompletionBox,SIGNAL(itemSelectionChanged()),this,SLOT(complete()));
 	m_pCompletionBox->hide();
+
+	applyOptions();
 }
 
 KviTopicWidget::~KviTopicWidget()
@@ -155,8 +156,8 @@ void KviTopicWidget::reset()
 
 void KviTopicWidget::applyOptions()
 {
-//	setFont(KVI_OPTION_FONT(KviOption_fontLabel));
-//	if(m_pComboBox)m_pComboBox->setFont(KVI_OPTION_FONT(KviOption_fontLabel));
+	//set the font
+	setFont(KVI_OPTION_FONT(KviOption_fontInput));
 	resizeEvent(0);
 }
 
@@ -296,15 +297,15 @@ QString convertToHtml(const QString &text)
 
 void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rect)
 {
-	QFontMetrics fm(p->font());
+	QFontMetrics fm(p->fontMetrics());
 	bool curBold      = false;
 	bool curUnderline = false;
 	unsigned char curFore      = KVI_LABEL_DEF_FORE; //default fore
 	unsigned char curBack      = KVI_LABEL_DEF_BACK; //default back
-	int baseline = rect.top() + rect.height() - fm.descent();
+	int baseline = rect.top() + rect.height() - fm.descent() -1;
 
-	int curX = rect.x() + 2; //2 is the margin
-	int maxX = rect.width() - 4; // 4 is 2*margin
+	int curX = rect.x() + 1; // is the margin
+	int maxX = rect.width() - 2; // 2 is 1*margin
 	unsigned int idx = 0;
 
 	while((idx < (unsigned int)text.length()) && (curX < maxX))
@@ -432,7 +433,6 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 void KviTopicWidget::paintEvent(QPaintEvent *)
 {
 	QPainter pa(this);
-	drawFrame(&pa);
 	if(m_pInput == 0)
 		drawContents(&pa);
 }
@@ -602,7 +602,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		m_pInput->setObjectName("topicw_inputeditor");
 		m_pInput->setReadOnly(!bCanEdit);
 		m_pInput->setMaxBufferSize(maxlen);
-		m_pInput->setGeometry(0,0,width() - (height() << 2)+height(),height());
+		m_pInput->setGeometry(2,2,width() - (height() << 2)+height(),height());
 		m_pInput->setText(m_szTopic);
 		connect(m_pInput,SIGNAL(enterPressed()),this,SLOT(acceptClicked()));
 		connect(m_pInput,SIGNAL(escapePressed()),this,SLOT(discardClicked()));
