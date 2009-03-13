@@ -89,6 +89,9 @@ General notes for the installation of the 4.0 release of KVIrc
     Please note that compiling with KDE4 support enabled will force kvirc to link against the Qt4 version
     that KDE4 is using, and thi may lead to problems in linking. Disabling KDE4 support is the only known
     solution at the moment.
+    Note also that you'll need to override the Qt libraries used when running KVIrc:
+
+    #LD_LIBRARY_PATH=/opt/qt4.5/lib/ kvirc4
 
     #
     # CMake

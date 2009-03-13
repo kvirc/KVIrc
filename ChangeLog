@@ -1,6 +1,78 @@
+13 March 2009
+   [CtrlAltCa]
+   - Added support for IPv6 policies handling under win32
+
+02 March 2009
+   [CtrlAltCa]
+   - Added support for fake transparency under win32
+
+27 February 2009
+   [CtrlAltCa]
+   - Added support for real transparency using compositing under X11
+   - Removed old KDE3 fake transparency
+
+19 February 2009
+   [CtrlAltCa]
+   - Rewrote the ircview selection system
+
+16 February 2009
+   [CtrlAltCa]
+   - Added ROT13 crypto algorythm
+
+06 February 2009
+   [Noldor]
+   - New KVS object classes: added datetimeedit, sql tablewidget and memorybuffer
+
+27 January 2009
+   [HelLViS69]
+   - Splitted locale stuff for modules and merged similar stuff
+
+20 January 2009
+   [CtrlAltCa]
+   - Implemented customizable colors for own nick
+
+06 January 2009
+   [CtrlAltCa]
+   - Improved compilation under MingW
+
+29 December 2008
+   [CtrlAltCa]
+   - Replace tabulation chars with spaces in input editor when pasting
+
+11 December 2008
+   [thexception]
+   - Reimplemented tilings in MDI windows
+
+28 November 2008
+   [CtrlAltCa]
+   - Implemented Undo/Redo in input box
+
+18 November 2008
+   [HelLViS69]
+   - Added Python to the parser at low level
+
+17 November 2008
+   [CtrlAltCa]
+   - Removed old interfaces to mediaplayer based on old KDE3/DCOP
+   - Ported torrent module to KDE4/DBus
+   - New function: added $system.dbus to control DBus events
+
+   [HelLViS69]
+   - Initial Python support (wip)
+
+12 November 20080
+   [Noldor]
+   - Splitted locale stuff for object classes
+
+   [HelLViS69]
+   - Splitted locale stuff for kvirc target
+
 04 November 2008
    [CtrlAltCa]
    - Fixed windows security bug on IRC URI handler
+
+   [thexception]
+   - Rewrote the entire MDI subsystem
 
 20 October 2008
    [HelLViS69]
