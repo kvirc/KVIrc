@@ -206,7 +206,7 @@ KviNickServRule * KviNickServRuleSet::matchRule(const QString &szNick,const KviI
 			if(!res.exactMatch(szServer))continue;
 		}
 		if(!nickServ->matchedBy(KviIrcMask(r->nickServMask())))continue;
-		QRegExp re(r->messageRegexp(),Qt::CaseInsensitive,QRegExp::Wildcard);
+		QRegExp re(r->messageRegexp(),Qt::CaseSensitive,QRegExp::Wildcard);
 		if(re.exactMatch(szMsg))return r;
 	}
 	return 0;
