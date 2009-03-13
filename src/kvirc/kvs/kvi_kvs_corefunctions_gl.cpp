@@ -899,4 +899,62 @@ namespace KviKvsCoreFunctions
 		return true;
 	}
 
+	///////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: link
+		@type:
+			function
+		@title:
+			$link
+		@short:
+			Returns the text specified as a link
+		@syntax:
+			<string> $link(<text:string>[,<type:string>])
+		@description:
+			Gets the text you pass as the first parameter and formats it
+			so that KVIrc will display it as a link. You can specify the
+			type of the link as the second parameter. Valid values for the
+			second parameter are:[br]
+			[ul]
+				[li]nick	link to a nickname[/li]
+				[li]channel	link to a channel name[/li]
+				[li]host	link to an host[/li]
+				[li]url		(default) link to an url[/li]
+			[/ul]
+			Please note that the text you get as the output is valid only
+			when interpreted locally. Sending this text to the server you can
+			get unpredictable results, depending on the irc client other people
+			is using.
+		@examples:
+			echo $link(pragma,nick)
+		@seealso:
+			[cmd]echo[/cmd]
+	*/
+
+	KVSCF(link)
+	{
+		QString szData, szType;
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("text",KVS_PT_NONEMPTYSTRING,0,szData)
+			KVSCF_PARAMETER("type",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szType)
+		KVSCF_PARAMETERS_END
+
+		QString szRet("\r!");
+		if(szType=="nick")
+		{
+			szRet.append("n\r");
+		} else if(szType=="channel") {
+			szRet.append("c\r");
+		} else if(szType=="host") {
+			szRet.append("h\r");
+		} else {
+			szRet.append("u\r");
+		}
+		szRet.append(szData);
+		szRet.append("\r");
+		KVSCF_pRetBuffer->setString(szRet);
+		return true;
+	}
+
 };

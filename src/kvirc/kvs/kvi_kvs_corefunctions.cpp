@@ -92,6 +92,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("lang",lang)
 		_REGFNC("length",length)
 		_REGFNC("lf",lf)
+		_REGFNC("link",link)
 		// m_r
 		_REGFNC("mask",mask)
 		_REGFNC("me",me)

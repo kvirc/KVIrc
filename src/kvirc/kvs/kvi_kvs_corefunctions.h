@@ -101,6 +101,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(lang);
 	KVSCF(length);
 	KVSCF(lf);
+	KVSCF(link);
 	// m_r
 	KVSCF(mask);
 	KVSCF(me);
