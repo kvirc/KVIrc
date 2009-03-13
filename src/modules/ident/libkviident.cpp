@@ -278,7 +278,7 @@ void KviIdentDaemon::run()
 			 * see bug ticket #393
                          */
                 int iPlu = KVI_PROTECTION_LEVEL_UNRESTRICTED;
-		if(!kvi_socket_setsockopt(m_sock6,KVI_IPPROTO_IPV6,KVI_IPV6_PROTECTION_LEVEL,(const void*)&iPlu, sizeof(int)))
+		if(!kvi_socket_setsockopt(m_sock6,KVI_IPPROTO_IPV6,KVI_IPV6_PROTECTION_LEVEL,(const void*)&iPlu, sizeof(iPlu)))
 		{
 			//this is not a fatal error
 			postMessage(__tr("Can't set the IPv6 ident service protection level to unrestricted: the ident service won't be exposed to the internet"),0);

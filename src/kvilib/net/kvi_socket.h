@@ -51,9 +51,9 @@
         //old mingw win32 headers doesn't contain this
         #ifndef IPV6_PROTECTION_LEVEL
         # define IPV6_PROTECTION_LEVEL          23
-	# define PROTECTION_LEVEL_RESTRICTED    10  /* for Intranet apps      */
+	# define PROTECTION_LEVEL_UNRESTRICTED  10  /* for peer-to-peer apps  */
 	# define PROTECTION_LEVEL_DEFAULT       20  /* default level          */
-	# define PROTECTION_LEVEL_UNRESTRICTED  30  /* for peer-to-peer apps  */
+        # define PROTECTION_LEVEL_RESTRICTED    30  /* for Intranet apps      */
         #endif
 
 	#define KVI_IPV6_PROTECTION_LEVEL          IPV6_PROTECTION_LEVEL
