@@ -46,6 +46,8 @@
 
 	#define KVI_INVALID_SOCKET INVALID_SOCKET
 
+        //every decent win version should contain IPPROTO_IPV6
+
         //old mingw win32 headers doesn't contain this
         #ifndef IPV6_PROTECTION_LEVEL
         # define IPV6_PROTECTION_LEVEL          23
@@ -58,6 +60,7 @@
 	#define KVI_PROTECTION_LEVEL_RESTRICTED    PROTECTION_LEVEL_RESTRICTED
 	#define KVI_PROTECTION_LEVEL_DEFAULT       PROTECTION_LEVEL_DEFAULT
 	#define KVI_PROTECTION_LEVEL_UNRESTRICTED  PROTECTION_LEVEL_UNRESTRICTED
+        #define KVI_IPPROTO_IPV6                   IPPROTO_IPV6
 #else
 
 	#include <sys/time.h>
