@@ -59,6 +59,7 @@ protected:
             bool showHorizontalHeader(KviKvsObjectFunctionCall *c);
             bool hideVerticalHeader(KviKvsObjectFunctionCall *c);
             bool showVerticalHeader(KviKvsObjectFunctionCall *c);
+            bool clear(KviKvsObjectFunctionCall *c);
             //bool clickEvent(KviKvsObjectFunctionCall *c);
 
 protected slots:

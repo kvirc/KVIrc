@@ -28,6 +28,7 @@
 #include "kvi_iconmanager.h"
 #include "kvi_file.h"
 
+#include "kvi_kvs_arraycast.h"
 #include "class_tablewidget.h"
 #include "class_pixmap.h"
 #include <QTableWidget>
@@ -40,7 +41,7 @@
 #include <QPoint>
 #include <QPaintEvent>
 /*
-            @doc:tablewidget
+        @doc:tablewidget
 	@title:
                         tablewidget class
 	@type:
@@ -54,10 +55,12 @@
                         This widget provides a table widget.
 	@functions:
 		!fn: $setText([<text:string>])
-                        !fn: $text()
-                        !fn: $setHorizontalHeaderLabels
-                        !fn: $hideHorizontalHeaderLabels
-                        !fn: $setHorizontalHeaderLabels
+                !fn: $text()
+                !fn: $setHorizontalHeaderLabels()
+                !fn: $hideHorizontalHeaderLabels()
+                !fn: $setVerticalHeaderLabels()
+                !fn: $hideVerticalHeaderLabels()
+                !fn: $clear()
             @signals:
 		!sg: $clicked()
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
@@ -88,6 +91,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tablewidget,"tablewidget","widget")
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,text)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setCellWidget)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setIcon)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,clear)
 
 KVSO_END_REGISTERCLASS(KviKvsObject_tablewidget)
 
@@ -105,6 +109,12 @@ bool KviKvsObject_tablewidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
         SET_OBJECT(QTableWidget)
         return true;
 }
+KVSO_CLASS_FUNCTION(tablewidget,clear)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        ((QTableWidget *)widget())->clear();
+        return true;
+}
 KVSO_CLASS_FUNCTION(tablewidget,setText)
 {
             CHECK_INTERNAL_POINTER(widget())
@@ -113,7 +123,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setText)
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
                         KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-                        KVSO_PARAMETER("col",KVS_PT_STRING,0,szText)
+                        KVSO_PARAMETER("text",KVS_PT_STRING,0,szText)
             KVSO_PARAMETERS_END(c)
             if(uRow>=((QTableWidget *)widget())->rowCount() || uRow>=((QTableWidget *)widget())->rowCount())
                 c->warning(__tr2qs_ctx("Item out of the tablewidget size","objects"));
@@ -135,7 +145,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setIcon)
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
                         KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-                        KVSO_PARAMETER("pixmap",KVS_PT_VARIANT,0,vPixmap)
+                        KVSO_PARAMETER("icon",KVS_PT_VARIANT,0,vPixmap)
             KVSO_PARAMETERS_END(c)
             QPixmap *pix = 0;
             if(vPixmap->isHObject())
@@ -169,7 +179,7 @@ KVSO_CLASS_FUNCTION(tablewidget,setIcon)
 }
 KVSO_CLASS_FUNCTION(tablewidget,text)
 {
-	CHECK_INTERNAL_POINTER(widget())
+            CHECK_INTERNAL_POINTER(widget())
             kvs_uint_t uCol,uRow;
             KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,uRow)
@@ -178,7 +188,7 @@ KVSO_CLASS_FUNCTION(tablewidget,text)
             QTableWidgetItem *item=((QTableWidget *)widget())->item(uRow,uCol);
             if(!item) c->returnValue()->setNothing();
             else c->returnValue()->setString(((QTableWidget *)widget())->item(uRow,uCol)->text());
-	return true;
+            return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,setRowCount)
 {
@@ -217,26 +227,61 @@ KVSO_CLASS_FUNCTION(tablewidget,setColumnCount)
 KVSO_CLASS_FUNCTION(tablewidget,setHorizontalHeaderLabels)
 {
             CHECK_INTERNAL_POINTER(widget())
-            QStringList columns;
+            KviKvsArrayCast ac;
             KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("labels",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,columns)
+                        KVSO_PARAMETER("labels",KVS_PT_ARRAYCAST,0,ac)
             KVSO_PARAMETERS_END(c)
-            ((QTableWidget *)object())->setHorizontalHeaderLabels(columns);
+            QStringList szColumns;
+            if(KviKvsArray * a = ac.array())
+            {
+                kvs_uint_t uIdx = 0;
+                kvs_uint_t uSize = a->size();
+                while(uIdx < uSize)
+                {
+                        KviKvsVariant * v = a->at(uIdx);
+                        if(v)
+                        {
+                                QString tmp;
+                                v->asString(tmp);
+                                szColumns.append(tmp);
+                        }
+                        else szColumns.append("");
+                        uIdx++;
+                }
+            }
+            ((QTableWidget *)object())->setHorizontalHeaderLabels(szColumns);
             return true;
 }
-
 
 KVSO_CLASS_FUNCTION(tablewidget,setVerticalHeaderLabels)
 {
             CHECK_INTERNAL_POINTER(widget())
-            QStringList columns;
+            KviKvsArrayCast ac;
             KVSO_PARAMETERS_BEGIN(c)
-                        KVSO_PARAMETER("labels",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,columns)
+                        KVSO_PARAMETER("labels",KVS_PT_ARRAYCAST,0,ac)
             KVSO_PARAMETERS_END(c)
-            debug("list count %d",columns.count());
-            ((QTableWidget *)object())->setVerticalHeaderLabels(columns);
+            QStringList szColumns;
+            if(KviKvsArray * a = ac.array())
+            {
+                kvs_uint_t uIdx = 0;
+                kvs_uint_t uSize = a->size();
+                while(uIdx < uSize)
+                {
+                        KviKvsVariant * v = a->at(uIdx);
+                        if(v)
+                        {
+                                QString tmp;
+                                v->asString(tmp);
+                                szColumns.append(tmp);
+                        }
+                        else szColumns.append("");
+                        uIdx++;
+                }
+            }
+            ((QTableWidget *)object())->setVerticalHeaderLabels(szColumns);
             return true;
 }
+
 
 KVSO_CLASS_FUNCTION(tablewidget,setCellWidget)
 {

@@ -49,6 +49,9 @@ protected:
             return *m_pCurrentSQlQuery;
         };
         bool setConnection(KviKvsObjectFunctionCall *c);
+        bool features(KviKvsObjectFunctionCall *c);
+        bool queryLastInsertId(KviKvsObjectFunctionCall *c);
+
         bool tablesList(KviKvsObjectFunctionCall *c);
         bool beginTransaction(KviKvsObjectFunctionCall *c);
         bool commit(KviKvsObjectFunctionCall *c);

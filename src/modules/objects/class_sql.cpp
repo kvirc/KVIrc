@@ -136,6 +136,7 @@ static void KviKvsSqlInstanceUnregister(KviKvsObject_sql *instance)
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_sql,"sql","object")
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,queryLastInsertId)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,commit)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,beginTransaction)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,setConnection)
@@ -155,7 +156,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_sql,"sql","object")
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,queryFirst)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,queryRecord)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,lastError)
-
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_sql,features)
 KVSO_END_REGISTERCLASS(KviKvsObject_sql)
 
 
@@ -214,6 +215,51 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
         c->returnValue()->setBoolean(db.open());
         return true;
 }
+KVSO_CLASS_FUNCTION(sql,queryLastInsertId)
+{
+        CHECK_QUERY_IS_INIT
+        KviKvsHash *pHash=new KviKvsHash();
+        KviKvsVariant *pValue=0;
+        QVariant value=m_pCurrentSQlQuery->lastInsertId();
+        if (value.type()==QVariant::LongLong){
+            c->returnValue()->setInteger((kvs_int_t) value.toLongLong());
+        }
+
+        return true;
+    }
+KVSO_CLASS_FUNCTION(sql,features)
+{
+        QString szConnectionName;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("connectionName",KVS_PT_STRING,0,szConnectionName)
+        KVSO_PARAMETERS_END(c)
+
+        QStringList connections = QSqlDatabase::connectionNames();
+        if (!connections.contains(szConnectionName))
+        {
+             c->warning(__tr2qs_ctx("Connection %Q does not exists","objects"),&szConnectionName);
+             return true;
+        }
+        QSqlDatabase db=QSqlDatabase::database(szConnectionName);
+        QSqlDriver *sqlDriver=db.driver();
+        QStringList features;
+        if (sqlDriver->hasFeature(QSqlDriver::Transactions)) features.append("transactions");
+        if (sqlDriver->hasFeature(QSqlDriver::QuerySize)) features.append("querysize");
+        if (sqlDriver->hasFeature(QSqlDriver::BLOB)) features.append("blob");
+        if (sqlDriver->hasFeature(QSqlDriver::PreparedQueries)) features.append("preparedqueries");
+        if (sqlDriver->hasFeature(QSqlDriver::NamedPlaceholders)) features.append("namedplaceholders");
+        if (sqlDriver->hasFeature(QSqlDriver::PositionalPlaceholders)) features.append("positionaplaceholders");
+        if (sqlDriver->hasFeature(QSqlDriver::LastInsertId)) features.append("lastinsertid");
+        if (sqlDriver->hasFeature(QSqlDriver::BatchOperations)) features.append("batchoperations");
+        if (sqlDriver->hasFeature(QSqlDriver::SimpleLocking)) features.append("simplelocking");
+        if (sqlDriver->hasFeature(QSqlDriver::LowPrecisionNumbers)) features.append("lowprecisionnumbers");
+        if (sqlDriver->hasFeature(QSqlDriver::EventNotifications)) features.append("eventnotifications");
+        if (sqlDriver->hasFeature(QSqlDriver::FinishQuery)) features.append("finishquery");
+        if (sqlDriver->hasFeature(QSqlDriver::MultipleResultSets)) features.append("multipleresults");
+        c->returnValue()->setString(features.join(","));
+        return true;
+}
+
 KVSO_CLASS_FUNCTION(sql,beginTransaction)
 {
         QString szConnectionName;
@@ -480,18 +526,21 @@ KVSO_CLASS_FUNCTION(sql,queryRecord)
         {
             KviKvsVariant *pValue=0;
             QVariant value=record.value(i);
-            if (value.type()==QVariant::LongLong) pValue=new KviKvsVariant((kvs_int_t) value.toLongLong());
-            else if (value.type()==QVariant::String) pValue=new KviKvsVariant(value.toString());
+            if (value.type()==QVariant::LongLong){debug ("set long"); pValue=new KviKvsVariant((kvs_int_t) value.toLongLong());}
+            else if (value.type()==QVariant::String) {debug ("set string");pValue=new KviKvsVariant(value.toString());}
             else if (value.type()==QVariant::ByteArray)
             {
+               debug("qbyte array");
                KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("memoryBuffer");
                KviKvsVariantList params(new KviKvsVariant(QString()));
                KviKvsObject * pObject = pClass->allocateInstance(0,"",c->context(),&params);
                *((KviKvsObject_memorybuffer *)pObject)->pBuffer()=value.toByteArray();
                pValue=new KviKvsVariant(pObject->handle());
             }
-            else pValue=new KviKvsVariant(QString());
+            else {debug("empty value in name %s",record.fieldName(i).toUtf8().data());pValue=new KviKvsVariant(QString());}
             pHash->set(record.fieldName(i),pValue);
+            KviKvsVariant *value2=pHash->get(record.fieldName(i));
+            value2->type();
         }
         c->returnValue()->setHash(pHash);
         return true;
