@@ -108,7 +108,7 @@ void KviModuleManager::completeModuleNames(const QString &path,const QString &wo
 		if(KviQString::equalCIN(word,*modname,word.length()))
 		{
 		//	KviQString::cutFromLast(*modname,".so");
-			#if defined(COMPILE_ON_WINDOWS)
+			#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 			KviQString::cutFromLast(*modname,".dll");
 			#else
 			KviQString::cutFromLast(*modname,".so");
