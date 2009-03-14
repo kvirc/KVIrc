@@ -36,6 +36,7 @@
 #include "kvi_netutils.h"
 #include "kvi_menubar.h"
 #include "kvi_userinput.h"
+#include <cstdlib>
 
 namespace KviKvsCoreSimpleCommands
 {
