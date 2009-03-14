@@ -1032,12 +1032,14 @@ void KviGoAwayAction::activeContextStateChanged()
 			b->setText(txt);
 		}
 		m_uInternalFlags |= KVI_ACTION_FLAG_ENABLED;
+		setEnabled(true);
 	} else {
 		for(QToolButton * b = (QToolButton *)bl->first();b;b = (QToolButton *)bl->next())
 		{
 			if(b->isEnabled())b->setEnabled(false);
 		}
 		m_uInternalFlags &= ~KVI_ACTION_FLAG_ENABLED;
+		setEnabled(true);
 	}
 }
 
