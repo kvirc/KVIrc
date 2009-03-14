@@ -141,11 +141,7 @@ void KviScriptEditorWidget::asyncCompleterCreation()
 		m_pListCompletition = new QStringList();
 		QString szPath;
 
-#ifdef KVIRC_MODULES_DIR
-		szPath = KVIRC_MODULES_DIR;
-#else
-		g_pApp->getGlobalKvircDirectory(szPath,KviApp::Plugins);
-#endif
+		g_pApp->getGlobalKvircDirectory(szPath,KviApp::Modules);
 
 		QDir d(szPath);
 

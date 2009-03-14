@@ -52,6 +52,12 @@ void KviApp::getGlobalKvircDirectory(QString &szData,KvircSubdir dir,const QStri
 		case None          :                                                                           break;
 		case Pics          : szData.append("pics");                                                    break;
 		case Modules       :
+			#ifdef KVIRC_MODULES_DIR
+				szData = KVIRC_MODULES_DIR;
+			#else
+				szData.append("modules");
+			#endif
+			break;
 		case Plugins       : szData.append("modules");                                                 break;
 		case EasyPlugins   : szData.append("easyplugins");                                             break;
 		case ConfigPlugins : KviQString::appendFormatted(szData,"config%smodules",KVI_PATH_SEPARATOR); break;

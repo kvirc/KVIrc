@@ -125,9 +125,9 @@ void KviModuleManager::completeModuleNames(const QString &word,KviPointerList<QS
 {
 	QString szDir;
 	// FIXME: Should check for duplicate names here!
-	g_pApp->getLocalKvircDirectory(szDir,KviApp::Plugins);
+	g_pApp->getLocalKvircDirectory(szDir,KviApp::Modules);
 	completeModuleNames(szDir,word,matches);
-	g_pApp->getGlobalKvircDirectory(szDir,KviApp::Plugins);
+	g_pApp->getGlobalKvircDirectory(szDir,KviApp::Modules);
 	completeModuleNames(szDir,word,matches);
 }
 
@@ -150,19 +150,6 @@ KviModule * KviModuleManager::getModule(const QString &modName)
 	return m;
 }
 
-/*
-static bool default_module_cmd_load(KviModule *,KviCommand *)
-{
-	return true;
-}
-
-static bool default_module_cmd_unload(KviModule *m,KviCommand *)
-{
-	g_pModuleManager->unloadModule(m->name());
-	return true;
-}
-*/
-
 bool KviModuleManager::loadModule(const QString &modName)
 {
 	if(findModule(modName))
@@ -181,16 +168,10 @@ bool KviModuleManager::loadModule(const QString &modName)
 #endif
 	szName=szName.toLower();
 
-#ifdef KVIRC_MODULES_DIR
-	tmp = KVIRC_MODULES_DIR;
-	KviQString::ensureLastCharIs(tmp, KVI_PATH_SEPARATOR_CHAR);
-	tmp.append(szName);
-#else
-	g_pApp->getLocalKvircDirectory(tmp,KviApp::Plugins,szName);
-#endif
+	g_pApp->getLocalKvircDirectory(tmp,KviApp::Modules,szName);
 	if(!KviFileUtils::fileExists(tmp))
 	{
-		g_pApp->getGlobalKvircDirectory(tmp,KviApp::Plugins,szName);
+		g_pApp->getGlobalKvircDirectory(tmp,KviApp::Modules,szName);
 	}
 
 	QLibrary* pLibrary = new QLibrary(tmp);

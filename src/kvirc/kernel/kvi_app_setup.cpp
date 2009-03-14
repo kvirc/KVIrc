@@ -70,7 +70,7 @@ bool KviApp::checkGlobalKvircDirectory(const QString dir)
 {
 	//First check if the help subdir exists
 	QString szDir2 = dir;
-	szDir2+=KVI_PATH_SEPARATOR"modules";
+	szDir2+=KVI_PATH_SEPARATOR"help";
 	if(!KviFileUtils::directoryExists(szDir2))return false;
 	//Then check if the pics subdir exists
 	QString szDir = dir;
