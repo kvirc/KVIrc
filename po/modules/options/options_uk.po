@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-17 22:48+0100\n"
+"POT-Creation-Date: 2009-03-15 15:28+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team:  Ukrainian\n"
@@ -1103,7 +1103,7 @@ msgstr ""
 "CTCP у плині певного часу щоб запобігти \"флуд\" повідомленнями CTCP.</"
 "center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:79
+#: src/modules/options/optw_interfacelookglobal.cpp:82
 msgid ""
 "<center>This option makes all KVIrc windows look like transparent.<br>You "
 "must choose a blending background image to below.</center>"
@@ -1111,11 +1111,23 @@ msgstr ""
 "<center>Ця опція робить всі вікна KVIrc схожими на напівпрозорі<br>Ви "
 "повинні вибрати зображення, що підміли нижче до заднього плану</center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:73
+#: src/modules/options/optw_interfacelookglobal.cpp:70
+#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
-"choose a blending background image to below or check the \"Use KDE desktop "
-"for transparency\" option.</center>"
+"choose a blending background image to below or check the \"Use compositing "
+"for real transparency\" option.</center>"
+msgstr ""
+"<center>Ця опція робить всі вікна KVIrc напівпрозорими<br>Ви повинні вибрати "
+"зображення, що підміли нижче до заднього плану, або включити опцію "
+"\"Використати десктоп KDE для напівпрозорості\".</center>"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:76
+#, fuzzy
+msgid ""
+"<center>This option makes all KVIrc windows look transparent.<br>You must "
+"choose a blending background image to below or check the \"Use desktop "
+"background for transparency\" option.</center>"
 msgstr ""
 "<center>Ця опція робить всі вікна KVIrc напівпрозорими<br>Ви повинні вибрати "
 "зображення, що підміли нижче до заднього плану, або включити опцію "
@@ -1548,7 +1560,7 @@ msgstr "Перервати"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Приймати битий RESUME (mIRC file.ext)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:156
+#: src/modules/options/optw_interfacelookglobal.cpp:160
 msgid "Active Background"
 msgstr "Активне тло"
 
@@ -1556,19 +1568,19 @@ msgstr "Активне тло"
 msgid "Active Configuration"
 msgstr "Поточна конфігурація"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:201
+#: src/modules/options/optw_interfacelookglobal.cpp:205
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr "Активний високо-контрастний передній план (первинний)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:206
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Активний високо-контрастний передній план (вторинний)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:158
+#: src/modules/options/optw_interfacelookglobal.cpp:162
 msgid "Active Text (Primary)"
 msgstr "Активний текст (первинний)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:159
+#: src/modules/options/optw_interfacelookglobal.cpp:163
 msgid "Active Text (Secondary)"
 msgstr "Активний текст (вторинний)"
 
@@ -1641,7 +1653,7 @@ msgstr "Попереджати з появою подсвечиваємих сл
 msgid "Alert for query messages"
 msgstr "Попереджати при одержанні особистих повідомлень"
 
-#: src/modules/options/optw_messages.cpp:375
+#: src/modules/options/optw_messages.cpp:383
 msgid "Alert level:"
 msgstr "Рівень попереджень:"
 
@@ -1768,8 +1780,8 @@ msgstr "Нік у режимі \"Відійшов\""
 msgid "Away:"
 msgstr "Відійшов:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:178
-#: src/modules/options/optw_interfacelookglobal.cpp:198
+#: src/modules/options/optw_interfacelookglobal.cpp:182
+#: src/modules/options/optw_interfacelookglobal.cpp:202
 msgid "Background"
 msgstr "Тло"
 
@@ -1778,8 +1790,8 @@ msgstr "Тло"
 msgid "Background Colors"
 msgstr "Кольори тла"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:179
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:183
+#: src/modules/options/optw_interfacelookglobal.cpp:210
 msgid "Background Image"
 msgstr "Фонове зображення"
 
@@ -1803,7 +1815,7 @@ msgstr "Фонове зображення"
 msgid "Background image:"
 msgstr "Фонове зображення:"
 
-#: src/modules/options/optw_messages.cpp:350
+#: src/modules/options/optw_messages.cpp:358
 msgid "Background:"
 msgstr "Тло:"
 
@@ -1819,7 +1831,7 @@ msgstr "Використати адресу для IPv4 з'єднань:"
 msgid "Bind IPv6 connections to:"
 msgstr "Використати адресу для IPv6 з'єднань:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:92
+#: src/modules/options/optw_interfacelookglobal.cpp:95
 msgid "Blend color:"
 msgstr "Підміли цвет, що:"
 
@@ -1915,7 +1927,7 @@ msgstr "Перевіряти USERHOST для онлайн користувачі
 msgid "Check interval (in seconds)"
 msgstr "Інтервал перевірки (у сек.)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:84
+#: src/modules/options/optw_interfacelookglobal.cpp:87
 msgid "Child window opacity:"
 msgstr "Затемненность дочірніх вікон:"
 
@@ -1923,11 +1935,11 @@ msgstr "Затемненность дочірніх вікон:"
 msgid "Choose Avatar - KVIrc"
 msgstr "Вибір аватара - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:548
+#: src/modules/options/optw_messages.cpp:556
 msgid "Choose a Filename - KVIrc"
 msgstr "Виберіть ім'я файлу - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:605
+#: src/modules/options/optw_messages.cpp:609
 msgid "Choose a Filename - KVIrc "
 msgstr "Виберіть ім'я файлу - KVIrc "
 
@@ -2225,7 +2237,7 @@ msgstr "Включити визначення затримок"
 msgid "Enable animated smiles"
 msgstr "Включити визначення затримок"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:70
+#: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
 msgstr "Включити імітацію напівпрозорості"
 
@@ -2357,7 +2369,7 @@ msgstr "Подсвечивать вікно коли користувачі з'�
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:196
+#: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Font"
 msgstr "Шрифт"
 
@@ -2389,7 +2401,7 @@ msgstr "Примусово вказати мова програми за зам�
 msgid "Foreground color"
 msgstr "Кольори переднього плану"
 
-#: src/modules/options/optw_messages.cpp:363
+#: src/modules/options/optw_messages.cpp:371
 msgid "Foreground:"
 msgstr "Передній план:"
 
@@ -2406,7 +2418,7 @@ msgstr "Загальні"
 msgid "General Preferences"
 msgstr "Загальні настроювання"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:44
+#: src/modules/options/optw_interfacelookglobal.cpp:45
 msgid "Global application font:"
 msgstr "Глобальний шрифт:"
 
@@ -2577,23 +2589,23 @@ msgstr "Ширина картинки:"
 msgid "Import List"
 msgstr "Імпортувати список"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:157
+#: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Background"
 msgstr "Неактивне тло"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:207
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr "Неактивний високо-контрастний передній план (первинний)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:208
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Неактивний високо-контрастний передній план (вторинний)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:164
 msgid "Inactive Text (Primary)"
 msgstr "Неактивний текст (первинний)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:165
 msgid "Inactive Text (Secondary)"
 msgstr "Неактивний текст (вторинний)"
 
@@ -2644,10 +2656,6 @@ msgstr "Зберігати канал відкритим"
 #: src/modules/options/optw_connection.cpp:51
 msgid "Keep channels open"
 msgstr "Зберігати канали відкритими"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:103
-msgid "Keep in sync with KDE background changes"
-msgstr "Синхронізувати зі змінами тла робочого стола КДЕ"
 
 #: src/modules/options/optw_connection.cpp:46
 #: src/modules/options/optw_connection.cpp:54
@@ -2709,7 +2717,7 @@ msgstr "Затримка спливаючих підказок:"
 msgid "Listen on address/interface:"
 msgstr "Слухати адреса/інтерфейс:"
 
-#: src/modules/options/optw_messages.cpp:400
+#: src/modules/options/optw_messages.cpp:408
 msgid "Load From..."
 msgstr "Завантажити з..."
 
@@ -2725,11 +2733,11 @@ msgstr "Розташування:"
 msgid "Log joined channels history"
 msgstr "Запам'ятовувати канали, на які ви заходите"
 
-#: src/modules/options/optw_messages.cpp:396
+#: src/modules/options/optw_messages.cpp:404
 msgid "Log this"
 msgstr "Журналювати"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:199
+#: src/modules/options/optw_interfacelookglobal.cpp:203
 msgid "Low-Contrast Foreground"
 msgstr "Низький-контрастний передній план"
 
@@ -2816,7 +2824,7 @@ msgstr "Мультімедіа програвач"
 msgid "Message Regexp"
 msgstr "Повідомлення у вигляді регулярного вираження"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:204
 msgid "Mid-Contrast Foreground"
 msgstr "Середньо-контрастний передній план"
 
@@ -3178,7 +3186,7 @@ msgstr "Розмір пакета:"
 msgid "Paranoic"
 msgstr "Параноідальний"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:88
+#: src/modules/options/optw_interfacelookglobal.cpp:91
 msgid "Parent window opacity:"
 msgstr "Затемненность батьківських вікон:"
 
@@ -3503,7 +3511,7 @@ msgstr "Праворуч"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_messages.cpp:402
+#: src/modules/options/optw_messages.cpp:410
 msgid "Save As..."
 msgstr "Зберегти як..."
 
@@ -3660,7 +3668,7 @@ msgstr "Показувати іконки статі"
 msgid "Show header"
 msgstr "Показати заголовок"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:43
+#: src/modules/options/optw_interfacelookglobal.cpp:44
 #, fuzzy
 msgid "Show icons in popup menus"
 msgstr "Сховати іконки в спливаючому меню"
@@ -3966,7 +3974,7 @@ msgstr ""
 "Ця опція змусить KVIrc ігнорувати запити CTCP AVATAR якщо у вас ні аватара. "
 "З його допомогою можна зменшити трафік за рахунок порожніх відповідей."
 
-#: src/modules/options/optw_interfacelookglobal.cpp:42
+#: src/modules/options/optw_interfacelookglobal.cpp:43
 msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
@@ -4025,12 +4033,13 @@ msgstr "Зверху"
 msgid "Track last read text line"
 msgstr "Відслідковувати останній прочитаний рядок тексту"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:106
-#: src/modules/options/optw_interfacelookglobal.cpp:112
+#: src/modules/options/optw_interfacelookglobal.cpp:102
+#: src/modules/options/optw_interfacelookglobal.cpp:118
+#: src/modules/options/optw_interfacelookglobal.cpp:125
 msgid "Transparency blend image:"
 msgstr "Підміли изображение, що:"
 
-#: src/modules/options/optw_messages.cpp:285
+#: src/modules/options/optw_messages.cpp:293
 msgid "Transparent"
 msgstr "Прозорість"
 
@@ -4080,10 +4089,6 @@ msgstr "Використати \"розумний\" менеджер списк�
 msgid "Use IPv6 protocol"
 msgstr "Використати IPv6 протокол"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:98
-msgid "Use KDE desktop for transparency"
-msgstr "Використати десктоп КДЕ для напівпрозорості"
-
 #: src/modules/options/optw_textencoding.cpp:50
 #: src/modules/options/optw_textencoding.cpp:58
 #: src/modules/options/optw_sound.cpp:102
@@ -4129,6 +4134,11 @@ msgstr "Використати аватар"
 msgid "Use bash-like nick completion"
 msgstr "Використати bash-стиль завершення ников"
 
+#: src/modules/options/optw_interfacelookglobal.cpp:100
+#, fuzzy
+msgid "Use compositing for real transparency"
+msgstr "Використати десктоп КДЕ для напівпрозорості"
+
 #: src/modules/options/optw_highlighting.cpp:95
 msgid "Use custom alert level"
 msgstr "Використати заданий рівень попереджень"
@@ -4136,6 +4146,11 @@ msgstr "Використати заданий рівень попереджен�
 #: src/modules/options/optw_servers.cpp:532
 msgid "Use default user mode"
 msgstr "Використати режими за замовчуванням"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:116
+#, fuzzy
+msgid "Use desktop background for transparency"
+msgstr "Використати десктоп КДЕ для напівпрозорості"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
@@ -4154,7 +4169,7 @@ msgstr "Використати плоскі кнопки"
 msgid "Use flood protection for CTCP requests (recommended)"
 msgstr "Використати захист від флуда (рекомендується)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:41
+#: src/modules/options/optw_interfacelookglobal.cpp:42
 msgid "Use global application font"
 msgstr "Використати глобальний шрифт додатка"
 
@@ -4460,6 +4475,9 @@ msgstr "у плині:"
 
 #~ msgid "Interface"
 #~ msgstr "Інтерфейс"
+
+#~ msgid "Keep in sync with KDE background changes"
+#~ msgstr "Синхронізувати зі змінами тла робочого стола КДЕ"
 
 #~ msgid "Labels"
 #~ msgstr "Напису"

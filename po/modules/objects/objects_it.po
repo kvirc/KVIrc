@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-17 22:48+0100\n"
+"POT-Creation-Date: 2009-03-15 15:28+0100\n"
 "PO-Revision-Date: 2009-01-30 20:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -153,11 +153,11 @@ msgstr "Non trovo la scheda"
 msgid "Can't find the tab "
 msgstr "Non trovo la scheda"
 
-#: src/modules/objects/class_listwidget.cpp:308
+#: src/modules/objects/class_listwidget.cpp:305
 msgid "Can't insert a non-widget object"
 msgstr "Non posso inserire un oggetto non widget"
 
-#: src/modules/objects/class_listwidget.cpp:303
+#: src/modules/objects/class_listwidget.cpp:300
 msgid "Can't insert the listwidget itself!"
 msgstr "Non posso inserire la stessa listwidget!"
 
@@ -179,7 +179,7 @@ msgstr "Non posso aprire il file '%Q' in scrittura"
 msgid "Class '%Q' is not defined"
 msgstr "Classe '%Q' non definita"
 
-#: src/modules/objects/class_painter.cpp:1499
+#: src/modules/objects/class_painter.cpp:1570
 msgid "Color name or triplette RGB/HSV values required"
 msgstr "Richiesto nome del colore o tripletta RGB/HSV"
 
@@ -196,17 +196,19 @@ msgstr "Tentativo di connessione scaduto"
 msgid "Connect failure: "
 msgstr "Connessione fallita: "
 
-#: src/modules/objects/class_sql.cpp:184 src/modules/objects/class_sql.cpp:208
+#: src/modules/objects/class_sql.cpp:240 src/modules/objects/class_sql.cpp:273
+#: src/modules/objects/class_sql.cpp:290 src/modules/objects/class_sql.cpp:307
+#: src/modules/objects/class_sql.cpp:324
 #, fuzzy
 msgid "Connection %Q does not exists"
 msgstr "L'oggetto non esiste"
 
-#: src/modules/objects/class_sql.cpp:287
+#: src/modules/objects/class_sql.cpp:403
 #, fuzzy
 msgid "Connection %Q is not open!"
 msgstr "Il file non è aperto!"
 
-#: src/modules/objects/class_sql.cpp:230
+#: src/modules/objects/class_sql.cpp:346
 #, fuzzy
 msgid "Connection query %Q does not exists"
 msgstr "L'oggetto non esiste"
@@ -227,6 +229,10 @@ msgstr "I dati non sono un oggetto"
 msgid "Destination is not an object"
 msgstr "La destinazione non è un oggetto"
 
+#: src/modules/objects/class_sql.cpp:207
+msgid "Duplicate connection name '%Q', old query connection removed"
+msgstr ""
+
 #: src/modules/objects/class_file.cpp:228
 msgid "Empty filename string"
 msgstr "Nome del file vuoto"
@@ -240,7 +246,7 @@ msgstr "Errore nell'implementazione della classe KVS: processo annullato"
 msgid "Error near line %d, column %d"
 msgstr "Errore vicino alla riga %d, colonna %d"
 
-#: src/modules/objects/class_tablewidget.cpp:158
+#: src/modules/objects/class_tablewidget.cpp:167
 #: src/modules/objects/class_treewidgetitem.cpp:451
 msgid ""
 "Error occured: the suitable file '%Q' is not of the correct format or it is "
@@ -335,7 +341,7 @@ msgstr "Area dock invalida"
 msgid "Invalid insertion Policy '%Q'"
 msgstr "Policy di inserimento '%Q' invalida"
 
-#: src/modules/objects/class_painter.cpp:1108
+#: src/modules/objects/class_painter.cpp:1179
 msgid "Invalid mode '%Q'"
 msgstr "Modo '%Q' invalido"
 
@@ -359,7 +365,7 @@ msgstr "Modo di ridimensionamento invalido, passo a Auto"
 msgid "Invalid selection mode '%Q'"
 msgstr "Modo di selezione '%Q' invalido"
 
-#: src/modules/objects/class_listwidget.cpp:272
+#: src/modules/objects/class_listwidget.cpp:269
 msgid "Invalid selection mode '%Q' assuming single"
 msgstr "Modo di selezione '%Q' invalido, assumo single"
 
@@ -374,13 +380,13 @@ msgstr "Oggetto socket invalido (non eredità dalla socket)"
 
 #: src/modules/objects/class_combobox.cpp:176
 #: src/modules/objects/class_combobox.cpp:193
-#: src/modules/objects/class_listwidget.cpp:191
-#: src/modules/objects/class_listwidget.cpp:209
+#: src/modules/objects/class_listwidget.cpp:188
+#: src/modules/objects/class_listwidget.cpp:206
 #, c-format
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr "L'elemento indice [%d] è troppo grosso - passo a $count() - 1 [%d]"
 
-#: src/modules/objects/class_tablewidget.cpp:120
+#: src/modules/objects/class_tablewidget.cpp:129
 msgid "Item out of the tablewidget size"
 msgstr ""
 
@@ -392,8 +398,12 @@ msgstr "La lunghezza della stringa esadecimale non è un multiplo di 2"
 msgid "Listen failure"
 msgstr "Listen fallita"
 
-#: src/modules/objects/class_sql.cpp:160
-msgid "Missing QT plugin for database %Q"
+#: src/modules/objects/class_sql.cpp:200
+msgid "Missing Qt plugin for database %Q"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1054
+msgid "Missing filename"
 msgstr ""
 
 #: src/modules/objects/class_socket.cpp:705
@@ -404,7 +414,7 @@ msgstr "Non c'è il supporto IPv6 in questo eseguibile"
 msgid "No Layout associated to the widget "
 msgstr "Non c'è Layout associato alla widget"
 
-#: src/modules/objects/class_sql.cpp:248
+#: src/modules/objects/class_sql.cpp:364
 #, fuzzy
 msgid "No query connection is open"
 msgstr "Un'altra connessione in corso"
@@ -415,7 +425,7 @@ msgstr "Nessun oggetto socket specificato"
 
 #: src/modules/objects/class_combobox.cpp:173
 #: src/modules/objects/class_combobox.cpp:281
-#: src/modules/objects/class_listwidget.cpp:188
+#: src/modules/objects/class_listwidget.cpp:185
 msgid "No string parameter given - using empty string"
 msgstr "Nessun parametro stringa dato - uso una stringa vuota"
 
@@ -427,6 +437,11 @@ msgstr "Nessuna linea '%d'"
 #: src/modules/objects/class_file.cpp:249
 msgid "No such open mode '%Q'"
 msgstr "Nessun modo di apertura '%Q'"
+
+#: src/modules/objects/class_painter.cpp:1077
+#: src/modules/objects/class_painter.cpp:1102
+msgid "No valid paint device"
+msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1245
 #: src/modules/objects/class_widget.cpp:1251
@@ -444,7 +459,7 @@ msgstr "Non è una cifra esadecimale"
 msgid "Null mask"
 msgstr "Maschera nulla"
 
-#: src/modules/objects/class_button.cpp:133
+#: src/modules/objects/class_button.cpp:134
 #: src/modules/objects/class_painter.cpp:856
 msgid "Object Pixmap required!"
 msgstr "Oggetto Pixmap richiesto!"
@@ -510,11 +525,11 @@ msgstr "Uno dei parametri dell'array ridimensionamento è vuoto"
 
 #: src/modules/objects/class_painter.cpp:884
 #: src/modules/objects/class_painter.cpp:937
-#: src/modules/objects/class_painter.cpp:1504
+#: src/modules/objects/class_painter.cpp:1575
 msgid "One of the triplette parameters didn't evaluate to an integer"
 msgstr "Uno dei parametri della tripletta non viene valutato come intero"
 
-#: src/modules/objects/class_sql.cpp:348
+#: src/modules/objects/class_sql.cpp:464
 msgid "Only memorybuffer class object is supported"
 msgstr ""
 
@@ -522,26 +537,26 @@ msgstr ""
 msgid "Parent must be a widget object"
 msgstr "Il padre dev'essere un oggetto widget"
 
-#: src/modules/objects/class_tablewidget.cpp:148
+#: src/modules/objects/class_tablewidget.cpp:157
 #: src/modules/objects/class_treewidgetitem.cpp:441
 msgid "Pixmap object or image Id required"
 msgstr "Oggetto pixmap o ID immagine richiesto"
 
-#: src/modules/objects/class_painter.cpp:1142
+#: src/modules/objects/class_painter.cpp:1213
 #: src/modules/objects/class_widget.cpp:1858
 msgid "Pixmap object required"
 msgstr "Oggetto pixmap richiesto"
 
-#: src/modules/objects/class_painter.cpp:1037
+#: src/modules/objects/class_painter.cpp:1089
 msgid "Pixmap or Widget parameter is not an object"
 msgstr "Pixmap o il parametro Widget non è un oggetto"
 
-#: src/modules/objects/class_painter.cpp:1137
+#: src/modules/objects/class_painter.cpp:1208
 #: src/modules/objects/class_widget.cpp:1853
 msgid "Pixmap parameter is not an object"
 msgstr "Il parametro pixmap non è un oggetto"
 
-#: src/modules/objects/class_button.cpp:127
+#: src/modules/objects/class_button.cpp:128
 #: src/modules/objects/class_painter.cpp:851
 msgid "Pixmap parameter is not an object!"
 msgstr "Il parametro pixmap non è un oggetto!"
@@ -554,11 +569,11 @@ msgstr "Il processo potrebbe non essere avviato."
 msgid "Processing aborted"
 msgstr "Processo annullato"
 
-#: src/modules/objects/class_sql.cpp:282
+#: src/modules/objects/class_sql.cpp:398
 msgid "Query  %Q already initializated"
 msgstr ""
 
-#: src/modules/objects/class_sql.cpp:257
+#: src/modules/objects/class_sql.cpp:373
 #, fuzzy
 msgid "Query for connection %Q does not exists"
 msgstr "Il file '%Q' non esiste"
@@ -647,7 +662,7 @@ msgstr "L'oggetto memorybuffer è vuoto: non verrà salvato nulla"
 
 #: src/modules/objects/class_painter.cpp:867
 #: src/modules/objects/class_painter.cpp:920
-#: src/modules/objects/class_painter.cpp:1486
+#: src/modules/objects/class_painter.cpp:1557
 msgid "The opacity parameter didn't evaluate to integer"
 msgstr "Il parametro di opacità non viene valutato come intero"
 
@@ -712,7 +727,7 @@ msgstr ""
 "Troppi dati non processati in arrivo (hai lasciato la socket senza "
 "controllo?)"
 
-#: src/modules/objects/class_sql.cpp:354
+#: src/modules/objects/class_sql.cpp:470
 msgid "Type value %Q not supported"
 msgstr ""
 
@@ -749,11 +764,11 @@ msgstr "Allineamento '%Q' sconosciuto"
 msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
 msgstr "Proporzioni sconosciute: uso il valore predefinito IgnoreAspectRatio"
 
-#: src/modules/objects/class_painter.cpp:1433
+#: src/modules/objects/class_painter.cpp:1504
 msgid "Unknown brush style '%Q'"
 msgstr "Stile del pennello '%Q' sconosciuto"
 
-#: src/modules/objects/class_lineedit.cpp:383
+#: src/modules/objects/class_lineedit.cpp:407
 msgid "Unknown echo mode '%Q'"
 msgstr "Modo echo '%Q' sconosciuto"
 
@@ -770,7 +785,7 @@ msgstr "Modo '%Q' sconosciuto"
 msgid "Unknown orientation '%Q'"
 msgstr "Orientamento '%Q' sconosciuto"
 
-#: src/modules/objects/class_painter.cpp:1407
+#: src/modules/objects/class_painter.cpp:1478
 msgid "Unknown pen style '%Q'"
 msgstr "Stile della penna '%Q' sconosciuto"
 
@@ -807,6 +822,10 @@ msgstr "Flag widget '%Q' sconosciuta"
 msgid "Unknown word wrap '%Q'"
 msgstr "Word wrap '%Q' sconosciuto"
 
+#: src/modules/objects/class_lineedit.cpp:471
+msgid "Unkonwn '%Q' completition mode, switching to default popupCompletition"
+msgstr ""
+
 #: src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"
 msgstr "Tipo di dato '%Q' non supportato"
@@ -837,7 +856,7 @@ msgstr "Oggetto widget richiesto"
 msgid "Widget or Pixmap required"
 msgstr "Widget o pixmap richiesta"
 
-#: src/modules/objects/class_painter.cpp:1045
+#: src/modules/objects/class_painter.cpp:1097
 msgid "Widget or Pixmap required "
 msgstr "Widget o Pixmap richiesti"
 

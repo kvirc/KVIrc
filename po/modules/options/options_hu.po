@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-17 22:48+0100\n"
+"POT-Creation-Date: 2009-03-15 15:28+0100\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -1088,7 +1088,7 @@ msgstr ""
 "<center>Ez korlátozza a CTCP kéréseket egy megadott időtartamon belül,ami "
 "így megakadályozza a CTCP floodoló üzeneteket.</center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:79
+#: src/modules/options/optw_interfacelookglobal.cpp:82
 msgid ""
 "<center>This option makes all KVIrc windows look like transparent.<br>You "
 "must choose a blending background image to below.</center>"
@@ -1096,11 +1096,23 @@ msgstr ""
 "<center>Ez az opció a KVIrcet úgy állítja be, hogy átlátszónak hasson. "
 "<br>Ehhez ki kell választani egy képet lentebb.</center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:73
+#: src/modules/options/optw_interfacelookglobal.cpp:70
+#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
-"choose a blending background image to below or check the \"Use KDE desktop "
-"for transparency\" option.</center>"
+"choose a blending background image to below or check the \"Use compositing "
+"for real transparency\" option.</center>"
+msgstr ""
+"<center>Ez az opció minden KVIrc ablakot átlátszónak mutat.<br>Ki kell "
+"választanod egy átlátszónak ható hátteret vagy alatta a \"KDE asztal "
+"használata átlátszóságnál\" opciót.</center>"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:76
+#, fuzzy
+msgid ""
+"<center>This option makes all KVIrc windows look transparent.<br>You must "
+"choose a blending background image to below or check the \"Use desktop "
+"background for transparency\" option.</center>"
 msgstr ""
 "<center>Ez az opció minden KVIrc ablakot átlátszónak mutat.<br>Ki kell "
 "választanod egy átlátszónak ható hátteret vagy alatta a \"KDE asztal "
@@ -1541,7 +1553,7 @@ msgstr "Megszakít"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Hibás Folytatás kérés elfogadása (mIRC file.kit)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:156
+#: src/modules/options/optw_interfacelookglobal.cpp:160
 msgid "Active Background"
 msgstr "Aktív Háttér"
 
@@ -1549,19 +1561,19 @@ msgstr "Aktív Háttér"
 msgid "Active Configuration"
 msgstr "Aktív Konfiguráció"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:201
+#: src/modules/options/optw_interfacelookglobal.cpp:205
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr "Aktív Magas Kontrasztú Előtér (Elsődleges)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:206
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Aktív Magas Kontrasztú Előtér (Másodlagos)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:158
+#: src/modules/options/optw_interfacelookglobal.cpp:162
 msgid "Active Text (Primary)"
 msgstr "Aktív Szöveg (Elsődleges)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:159
+#: src/modules/options/optw_interfacelookglobal.cpp:163
 msgid "Active Text (Secondary)"
 msgstr "Aktív Szöveg (Másodlagos)"
 
@@ -1633,7 +1645,7 @@ msgstr "Értesítés kiemelt szavaknál"
 msgid "Alert for query messages"
 msgstr "Figyelmeztetés Privát üzenetnél"
 
-#: src/modules/options/optw_messages.cpp:375
+#: src/modules/options/optw_messages.cpp:383
 msgid "Alert level:"
 msgstr "Figyelmeztetési szint: "
 
@@ -1760,8 +1772,8 @@ msgstr "Távol üzemmódnál használt Név"
 msgid "Away:"
 msgstr "Távol:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:178
-#: src/modules/options/optw_interfacelookglobal.cpp:198
+#: src/modules/options/optw_interfacelookglobal.cpp:182
+#: src/modules/options/optw_interfacelookglobal.cpp:202
 msgid "Background"
 msgstr "Háttér"
 
@@ -1770,8 +1782,8 @@ msgstr "Háttér"
 msgid "Background Colors"
 msgstr "Háttér Színek"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:179
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:183
+#: src/modules/options/optw_interfacelookglobal.cpp:210
 msgid "Background Image"
 msgstr "Háttérkép"
 
@@ -1795,7 +1807,7 @@ msgstr "Háttér kép"
 msgid "Background image:"
 msgstr "Háttér kép: "
 
-#: src/modules/options/optw_messages.cpp:350
+#: src/modules/options/optw_messages.cpp:358
 msgid "Background:"
 msgstr "Háttér: "
 
@@ -1811,7 +1823,7 @@ msgstr "IPv4 kapcsolat hozzárendelése: "
 msgid "Bind IPv6 connections to:"
 msgstr "IPv6 kapcsolat hozzárendelése: "
 
-#: src/modules/options/optw_interfacelookglobal.cpp:92
+#: src/modules/options/optw_interfacelookglobal.cpp:95
 msgid "Blend color:"
 msgstr "Keverés színe: "
 
@@ -1907,7 +1919,7 @@ msgstr "USERHOST ellenőrzése az elérhetőeknél"
 msgid "Check interval (in seconds)"
 msgstr "Időtúllépés ellenőrzése (mpben)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:84
+#: src/modules/options/optw_interfacelookglobal.cpp:87
 msgid "Child window opacity:"
 msgstr "Gyermek ablak átlátszósága:"
 
@@ -1915,11 +1927,11 @@ msgstr "Gyermek ablak átlátszósága:"
 msgid "Choose Avatar - KVIrc"
 msgstr "Válassz Avatart - KVirc"
 
-#: src/modules/options/optw_messages.cpp:548
+#: src/modules/options/optw_messages.cpp:556
 msgid "Choose a Filename - KVIrc"
 msgstr "Válassz Fájlnevet - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:605
+#: src/modules/options/optw_messages.cpp:609
 msgid "Choose a Filename - KVIrc "
 msgstr "Válassz Fájlnevet - KVIrc"
 
@@ -2218,7 +2230,7 @@ msgstr "Lagmérő engedélyezése"
 msgid "Enable animated smiles"
 msgstr "Lagmérő engedélyezése"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:70
+#: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
 msgstr "Hamis átlátszóság engedélyezése"
 
@@ -2350,7 +2362,7 @@ msgstr "Az ablak villogjon, ha egy felhasználó elérhető lesz"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:196
+#: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Font"
 msgstr "Betűtípus"
 
@@ -2382,7 +2394,7 @@ msgstr "Megadott nyelv:"
 msgid "Foreground color"
 msgstr "Előtér szín"
 
-#: src/modules/options/optw_messages.cpp:363
+#: src/modules/options/optw_messages.cpp:371
 msgid "Foreground:"
 msgstr "Előtér: "
 
@@ -2399,7 +2411,7 @@ msgstr "Általános"
 msgid "General Preferences"
 msgstr "Általános Beállítások"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:44
+#: src/modules/options/optw_interfacelookglobal.cpp:45
 msgid "Global application font:"
 msgstr "Globális alkalmazás betűtípusa:"
 
@@ -2567,23 +2579,23 @@ msgstr "Kép szélessége:"
 msgid "Import List"
 msgstr "Lista Importálása"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:157
+#: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Background"
 msgstr "Inaktív Háttér"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:207
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr "Inaktív Magas Kontrasztú Előtér (Elsődleges)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:208
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Inaktív Magas Kontrasztú Előtér (Elsődleges)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:164
 msgid "Inactive Text (Primary)"
 msgstr "Inaktív Szöveg (Elsődleges)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:165
 msgid "Inactive Text (Secondary)"
 msgstr "Inaktív szöveg (Másodlagos)"
 
@@ -2634,10 +2646,6 @@ msgstr "Csatorna maradjon nyitva"
 #: src/modules/options/optw_connection.cpp:51
 msgid "Keep channels open"
 msgstr "Csatornák nyitvatartása"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:103
-msgid "Keep in sync with KDE background changes"
-msgstr "Szinkronizáljon a KDE-vel háttérváltáskor"
 
 #: src/modules/options/optw_connection.cpp:46
 #: src/modules/options/optw_connection.cpp:54
@@ -2699,7 +2707,7 @@ msgstr "Link tipp megjelenésének késleltetése:"
 msgid "Listen on address/interface:"
 msgstr "Hallgatózás adott címen/eszközön:"
 
-#: src/modules/options/optw_messages.cpp:400
+#: src/modules/options/optw_messages.cpp:408
 msgid "Load From..."
 msgstr "Betöltés..."
 
@@ -2715,11 +2723,11 @@ msgstr "Hely:"
 msgid "Log joined channels history"
 msgstr "Csatornák naplózása, amihez csatlakoztál"
 
-#: src/modules/options/optw_messages.cpp:396
+#: src/modules/options/optw_messages.cpp:404
 msgid "Log this"
 msgstr "Logold"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:199
+#: src/modules/options/optw_interfacelookglobal.cpp:203
 msgid "Low-Contrast Foreground"
 msgstr "Alacsony kontrasztú Előtér"
 
@@ -2806,7 +2814,7 @@ msgstr "Médialejátszó"
 msgid "Message Regexp"
 msgstr "Message Regexp"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:204
 msgid "Mid-Contrast Foreground"
 msgstr "Közepes Kontrasztú Előtér"
 
@@ -3167,7 +3175,7 @@ msgstr "Csomag méret: "
 msgid "Paranoic"
 msgstr "Szófosó"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:88
+#: src/modules/options/optw_interfacelookglobal.cpp:91
 msgid "Parent window opacity:"
 msgstr "Szülő ablak átlátszósága"
 
@@ -3492,7 +3500,7 @@ msgstr "Jobb"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_messages.cpp:402
+#: src/modules/options/optw_messages.cpp:410
 msgid "Save As..."
 msgstr "Mentés mint..."
 
@@ -3647,7 +3655,7 @@ msgstr "Nemek mutatása ikonkkal"
 msgid "Show header"
 msgstr "Fejléc mutatása"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:43
+#: src/modules/options/optw_interfacelookglobal.cpp:44
 #, fuzzy
 msgid "Show icons in popup menus"
 msgstr "Popup ikonok rejtése"
@@ -3953,7 +3961,7 @@ msgstr ""
 "Csatorna CTCP AVATAR kérések mellőzése, ha nincs beállítva avatarod. Jó "
 "módszer a forgalom csökkentésére, ha nincs beállítva avatar."
 
-#: src/modules/options/optw_interfacelookglobal.cpp:42
+#: src/modules/options/optw_interfacelookglobal.cpp:43
 msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
@@ -4012,12 +4020,13 @@ msgstr "Fent"
 msgid "Track last read text line"
 msgstr "Utolsó olvasott sor követése"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:106
-#: src/modules/options/optw_interfacelookglobal.cpp:112
+#: src/modules/options/optw_interfacelookglobal.cpp:102
+#: src/modules/options/optw_interfacelookglobal.cpp:118
+#: src/modules/options/optw_interfacelookglobal.cpp:125
 msgid "Transparency blend image:"
 msgstr "Átlátszóra keverendő kép:"
 
-#: src/modules/options/optw_messages.cpp:285
+#: src/modules/options/optw_messages.cpp:293
 msgid "Transparent"
 msgstr "Átlátszó"
 
@@ -4067,10 +4076,6 @@ msgstr "\"Okos\" értesítési lista kezelő"
 msgid "Use IPv6 protocol"
 msgstr "IPv6 Protokoll használata"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:98
-msgid "Use KDE desktop for transparency"
-msgstr "KDE asztal használata átlátszóságnál"
-
 #: src/modules/options/optw_textencoding.cpp:50
 #: src/modules/options/optw_textencoding.cpp:58
 #: src/modules/options/optw_sound.cpp:102
@@ -4116,6 +4121,11 @@ msgstr "Avatar használata"
 msgid "Use bash-like nick completion"
 msgstr "Bash-szerű Névkiegészítés"
 
+#: src/modules/options/optw_interfacelookglobal.cpp:100
+#, fuzzy
+msgid "Use compositing for real transparency"
+msgstr "KDE asztal használata átlátszóságnál"
+
 #: src/modules/options/optw_highlighting.cpp:95
 msgid "Use custom alert level"
 msgstr "Megadott figyelmeztetési szint használata"
@@ -4123,6 +4133,11 @@ msgstr "Megadott figyelmeztetési szint használata"
 #: src/modules/options/optw_servers.cpp:532
 msgid "Use default user mode"
 msgstr "Alapértelmezett felhasználói módok"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:116
+#, fuzzy
+msgid "Use desktop background for transparency"
+msgstr "KDE asztal használata átlátszóságnál"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
@@ -4141,7 +4156,7 @@ msgstr "Sima gombok használata"
 msgid "Use flood protection for CTCP requests (recommended)"
 msgstr "Flood védelem használata (ajánlott)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:41
+#: src/modules/options/optw_interfacelookglobal.cpp:42
 msgid "Use global application font"
 msgstr "Globális alkalmazás betűtípusok használata"
 
@@ -4448,6 +4463,9 @@ msgstr "időn belül:"
 
 #~ msgid "Interface"
 #~ msgstr "Eszközök"
+
+#~ msgid "Keep in sync with KDE background changes"
+#~ msgstr "Szinkronizáljon a KDE-vel háttérváltáskor"
 
 #~ msgid "Labels"
 #~ msgstr "Címkék"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_fr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-17 22:48+0100\n"
+"POT-Creation-Date: 2009-03-15 15:28+0100\n"
 "PO-Revision-Date: 2008-03-06 18:30+0100\n"
 "Last-Translator: Elephantman <elephantman@europnet.org>\n"
 "Language-Team: Français <en@li.org>\n"
@@ -1129,7 +1129,7 @@ msgstr ""
 "CTCP en un interval spécifié, pour éviter d'être victime d'une \"inondation"
 "\" de messages CTCP.</center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:79
+#: src/modules/options/optw_interfacelookglobal.cpp:82
 msgid ""
 "<center>This option makes all KVIrc windows look like transparent.<br>You "
 "must choose a blending background image to below.</center>"
@@ -1137,11 +1137,23 @@ msgstr ""
 "<center>Cette option rend toutes les fenêtres de KVIrc comme transparentes."
 "<br>Vous devez choisir une image de fond fusionnelle ci-dessous.</center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:73
+#: src/modules/options/optw_interfacelookglobal.cpp:70
+#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
-"choose a blending background image to below or check the \"Use KDE desktop "
-"for transparency\" option.</center>"
+"choose a blending background image to below or check the \"Use compositing "
+"for real transparency\" option.</center>"
+msgstr ""
+"<center>Cette option rend toutes les fenêtres de KVIrc transparentes."
+"<br>Vous devez choisir une image de fond fusionnelle ci-dessous ou cocher "
+"l'option \"Utiliser le bureau de KDE pour la transparence\".</center>"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:76
+#, fuzzy
+msgid ""
+"<center>This option makes all KVIrc windows look transparent.<br>You must "
+"choose a blending background image to below or check the \"Use desktop "
+"background for transparency\" option.</center>"
 msgstr ""
 "<center>Cette option rend toutes les fenêtres de KVIrc transparentes."
 "<br>Vous devez choisir une image de fond fusionnelle ci-dessous ou cocher "
@@ -1593,7 +1605,7 @@ msgstr "Interrompre"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Accepter les RESUME cassés (fichier.ext mIRC)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:156
+#: src/modules/options/optw_interfacelookglobal.cpp:160
 msgid "Active Background"
 msgstr "Fond actif"
 
@@ -1601,19 +1613,19 @@ msgstr "Fond actif"
 msgid "Active Configuration"
 msgstr "Connexion active"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:201
+#: src/modules/options/optw_interfacelookglobal.cpp:205
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr "Avant-plan à fort contraste (primaire)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:206
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Avant-plan à fort contraste (secondaire)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:158
+#: src/modules/options/optw_interfacelookglobal.cpp:162
 msgid "Active Text (Primary)"
 msgstr "Texte actif (primaire)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:159
+#: src/modules/options/optw_interfacelookglobal.cpp:163
 msgid "Active Text (Secondary)"
 msgstr "Texte actif (secondaire)"
 
@@ -1685,7 +1697,7 @@ msgstr "Alerte en cas de mot surligné"
 msgid "Alert for query messages"
 msgstr "Alerter en cas de message en privé"
 
-#: src/modules/options/optw_messages.cpp:375
+#: src/modules/options/optw_messages.cpp:383
 msgid "Alert level:"
 msgstr "Niveau d'alerte :"
 
@@ -1812,8 +1824,8 @@ msgstr "Pseudo d'Absence"
 msgid "Away:"
 msgstr "Absents:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:178
-#: src/modules/options/optw_interfacelookglobal.cpp:198
+#: src/modules/options/optw_interfacelookglobal.cpp:182
+#: src/modules/options/optw_interfacelookglobal.cpp:202
 msgid "Background"
 msgstr "Fond"
 
@@ -1822,8 +1834,8 @@ msgstr "Fond"
 msgid "Background Colors"
 msgstr "Couleurs de Fond"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:179
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:183
+#: src/modules/options/optw_interfacelookglobal.cpp:210
 msgid "Background Image"
 msgstr "Image de fond"
 
@@ -1847,7 +1859,7 @@ msgstr "Image de fond"
 msgid "Background image:"
 msgstr "Image de fond :"
 
-#: src/modules/options/optw_messages.cpp:350
+#: src/modules/options/optw_messages.cpp:358
 msgid "Background:"
 msgstr "Arrière plan :"
 
@@ -1863,7 +1875,7 @@ msgstr "Lier les connexion IPv4 à :"
 msgid "Bind IPv6 connections to:"
 msgstr "Lier les connexion IPv6 à :"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:92
+#: src/modules/options/optw_interfacelookglobal.cpp:95
 msgid "Blend color:"
 msgstr "Couleur de fusion :"
 
@@ -1959,7 +1971,7 @@ msgstr "Vérifier le USERHOST pour les utilisateurs connectés"
 msgid "Check interval (in seconds)"
 msgstr "Intervalle de vérification (en secondes)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:84
+#: src/modules/options/optw_interfacelookglobal.cpp:87
 msgid "Child window opacity:"
 msgstr "Opacité de la fenêtre fille :"
 
@@ -1967,11 +1979,11 @@ msgstr "Opacité de la fenêtre fille :"
 msgid "Choose Avatar - KVIrc"
 msgstr "Choix d'un Avatar - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:548
+#: src/modules/options/optw_messages.cpp:556
 msgid "Choose a Filename - KVIrc"
 msgstr "Choisissez un Nom de Fichier - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:605
+#: src/modules/options/optw_messages.cpp:609
 msgid "Choose a Filename - KVIrc "
 msgstr "Choisir un fichier - KVIrc "
 
@@ -2267,7 +2279,7 @@ msgstr "Activer le mesureur de retard"
 msgid "Enable animated smiles"
 msgstr "Activer le mesureur de retard"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:70
+#: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
 msgstr "Activer la fausse transparence"
 
@@ -2402,7 +2414,7 @@ msgstr "Flasher la fenêtre quand les utilisateurs se connectent"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:196
+#: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Font"
 msgstr "Police"
 
@@ -2434,7 +2446,7 @@ msgstr "Forcer l'utilisation d'une langue :"
 msgid "Foreground color"
 msgstr "Couleur de l'avant-plan"
 
-#: src/modules/options/optw_messages.cpp:363
+#: src/modules/options/optw_messages.cpp:371
 msgid "Foreground:"
 msgstr "Avant plan :"
 
@@ -2451,7 +2463,7 @@ msgstr "Général"
 msgid "General Preferences"
 msgstr "Préférences Générales"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:44
+#: src/modules/options/optw_interfacelookglobal.cpp:45
 msgid "Global application font:"
 msgstr "Police globale :"
 
@@ -2620,23 +2632,23 @@ msgstr "Largeur de l'image :"
 msgid "Import List"
 msgstr "Importer Liste"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:157
+#: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Background"
 msgstr "Fonc inactif"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:207
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr "Avant-plan inactif à fort contraste (primaire)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:208
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Avant-plan inactif à fort contraste (secondaire)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:164
 msgid "Inactive Text (Primary)"
 msgstr "Texte inactif (primaire)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:165
 msgid "Inactive Text (Secondary)"
 msgstr "Texte inactif (secondaire)"
 
@@ -2687,10 +2699,6 @@ msgstr "Garder le salon ouvert"
 #: src/modules/options/optw_connection.cpp:51
 msgid "Keep channels open"
 msgstr "Garder les salons ouverts"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:103
-msgid "Keep in sync with KDE background changes"
-msgstr "Garder la synchronisation avec les changements de fond de KDE"
 
 #: src/modules/options/optw_connection.cpp:46
 #: src/modules/options/optw_connection.cpp:54
@@ -2752,7 +2760,7 @@ msgstr "Délai pour montrer la bulle d'aide des liens :"
 msgid "Listen on address/interface:"
 msgstr "Écouter sur l'adresses/interface :"
 
-#: src/modules/options/optw_messages.cpp:400
+#: src/modules/options/optw_messages.cpp:408
 msgid "Load From..."
 msgstr "Charger depuis..."
 
@@ -2768,11 +2776,11 @@ msgstr "Localisation :"
 msgid "Log joined channels history"
 msgstr "Journaliser l'historique des arrivées"
 
-#: src/modules/options/optw_messages.cpp:396
+#: src/modules/options/optw_messages.cpp:404
 msgid "Log this"
 msgstr "Journaliser"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:199
+#: src/modules/options/optw_interfacelookglobal.cpp:203
 msgid "Low-Contrast Foreground"
 msgstr "Avant-plan à faible contraste"
 
@@ -2859,7 +2867,7 @@ msgstr "Lecteur Multimédias"
 msgid "Message Regexp"
 msgstr "Expr. Regulière du Message"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:204
 msgid "Mid-Contrast Foreground"
 msgstr "Avant-plan à contraste moyen"
 
@@ -3221,7 +3229,7 @@ msgstr "Taille des paquets :"
 msgid "Paranoic"
 msgstr "Paranoïc"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:88
+#: src/modules/options/optw_interfacelookglobal.cpp:91
 msgid "Parent window opacity:"
 msgstr "Opacité de la fenêtre mère :"
 
@@ -3548,7 +3556,7 @@ msgstr "À droite"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_messages.cpp:402
+#: src/modules/options/optw_messages.cpp:410
 msgid "Save As..."
 msgstr "Sauvegarder sous..."
 
@@ -3704,7 +3712,7 @@ msgstr "Afficher les icône de sexe"
 msgid "Show header"
 msgstr "Montrer l'entête"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:43
+#: src/modules/options/optw_interfacelookglobal.cpp:44
 #, fuzzy
 msgid "Show icons in popup menus"
 msgstr "Ne pas afficher les icônes dans les popups"
@@ -4014,7 +4022,7 @@ msgstr ""
 "quand aucun avatar n'est choisi. C'est généralement une bonne idée puisque "
 "cela aide à réduire le traffic en n'envoyant pas la réponse qui serait vide."
 
-#: src/modules/options/optw_interfacelookglobal.cpp:42
+#: src/modules/options/optw_interfacelookglobal.cpp:43
 msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
@@ -4072,12 +4080,13 @@ msgstr "En haut"
 msgid "Track last read text line"
 msgstr "Traquer la dernière ligne de texte lue"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:106
-#: src/modules/options/optw_interfacelookglobal.cpp:112
+#: src/modules/options/optw_interfacelookglobal.cpp:102
+#: src/modules/options/optw_interfacelookglobal.cpp:118
+#: src/modules/options/optw_interfacelookglobal.cpp:125
 msgid "Transparency blend image:"
 msgstr "Image fusionelle de transparence :"
 
-#: src/modules/options/optw_messages.cpp:285
+#: src/modules/options/optw_messages.cpp:293
 msgid "Transparent"
 msgstr "Transparent"
 
@@ -4127,10 +4136,6 @@ msgstr "Utiliser le gestionnaire \"intelligent\" de liste de notifications"
 msgid "Use IPv6 protocol"
 msgstr "Utiliser le protocole IPV6"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:98
-msgid "Use KDE desktop for transparency"
-msgstr "Utiliser le bureau de KDE pour la transparence"
-
 #: src/modules/options/optw_textencoding.cpp:50
 #: src/modules/options/optw_textencoding.cpp:58
 #: src/modules/options/optw_sound.cpp:102
@@ -4176,6 +4181,11 @@ msgstr "Utiliser un avatar"
 msgid "Use bash-like nick completion"
 msgstr "Utiliser la complétion de pseudo de type bash"
 
+#: src/modules/options/optw_interfacelookglobal.cpp:100
+#, fuzzy
+msgid "Use compositing for real transparency"
+msgstr "Utiliser le bureau de KDE pour la transparence"
+
 #: src/modules/options/optw_highlighting.cpp:95
 msgid "Use custom alert level"
 msgstr "Utiliser un niveau d'alerte personnalisé"
@@ -4183,6 +4193,11 @@ msgstr "Utiliser un niveau d'alerte personnalisé"
 #: src/modules/options/optw_servers.cpp:532
 msgid "Use default user mode"
 msgstr "Mode d'utilisateur par défaut"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:116
+#, fuzzy
+msgid "Use desktop background for transparency"
+msgstr "Utiliser le bureau de KDE pour la transparence"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
@@ -4201,7 +4216,7 @@ msgstr "Utiliser des boutons plats"
 msgid "Use flood protection for CTCP requests (recommended)"
 msgstr "Utiliser la protection contre le flood (recommandé)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:41
+#: src/modules/options/optw_interfacelookglobal.cpp:42
 msgid "Use global application font"
 msgstr "Utiliser une police globale"
 
@@ -4512,6 +4527,9 @@ msgstr "en :"
 
 #~ msgid "Interface"
 #~ msgstr "Interface"
+
+#~ msgid "Keep in sync with KDE background changes"
+#~ msgstr "Garder la synchronisation avec les changements de fond de KDE"
 
 #~ msgid "Labels"
 #~ msgstr "Étiquettes"

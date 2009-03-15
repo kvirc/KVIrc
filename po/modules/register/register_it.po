@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: register_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-17 22:48+0100\n"
+"POT-Creation-Date: 2009-03-15 15:28+0100\n"
 "PO-Revision-Date: 2009-01-30 16:39+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -73,6 +73,33 @@ msgstr "&OK"
 msgid "&Remove"
 msgstr "&Rimuovi"
 
+#: src/modules/reguser/edituser.cpp:260
+#, fuzzy
+msgid ""
+"<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
+"match any hostname.</center>"
+msgstr ""
+"<center>Questo è l'<b>hostname</b> che matcherà questo utente. <b>*</b> "
+"matcherà qualsiasi hostname.</center>"
+
+#: src/modules/reguser/edituser.cpp:242
+#, fuzzy
+msgid ""
+"<center>This is the <b>nickname</b> that will match this user, default value "
+"is the registered name.</center>"
+msgstr ""
+"<center>Questo è il <b>nickname</b> che matcherà questo utente, il valore "
+"predefinito è il nome registrato.</center>"
+
+#: src/modules/reguser/edituser.cpp:251
+#, fuzzy
+msgid ""
+"<center>This is the <b>username</b> that will match this user. <b>*</b> will "
+"match any username.</center>"
+msgstr ""
+"<center>Questo è lo <b>username</b> che matcherà questo utente. <b>*</b> "
+"matcherà qualsiasi username.</center>"
+
 #: src/modules/reguser/dialog.cpp:93
 msgid ""
 "<center>This is the list of registered users. KVIrc can automatically "
@@ -87,30 +114,6 @@ msgstr ""
 "permette di aggiungere velocemente gli utenti alla lista di notifica. La "
 "lista di notifica può essere perfezionata modificando le proprietà delle "
 "voci.</center>"
-
-#: src/modules/reguser/edituser.cpp:260
-msgid ""
-"<center>This the <b>hostname</b> that will match this user. <b>*</b> will "
-"match any hostname.</center>"
-msgstr ""
-"<center>Questo è l'<b>hostname</b> che matcherà questo utente. <b>*</b> "
-"matcherà qualsiasi hostname.</center>"
-
-#: src/modules/reguser/edituser.cpp:242
-msgid ""
-"<center>This the <b>nickname</b> that will match this user, default value is "
-"the registered name.</center>"
-msgstr ""
-"<center>Questo è il <b>nickname</b> che matcherà questo utente, il valore "
-"predefinito è il nome registrato.</center>"
-
-#: src/modules/reguser/edituser.cpp:251
-msgid ""
-"<center>This the <b>username</b> that will match this user. <b>*</b> will "
-"match any username.</center>"
-msgstr ""
-"<center>Questo è lo <b>username</b> che matcherà questo utente. <b>*</b> "
-"matcherà qualsiasi username.</center>"
 
 #: src/modules/reguser/edituser.cpp:401
 msgid "<center>You can enter a space separated list of nicknames.</center>"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-17 22:48+0100\n"
+"POT-Creation-Date: 2009-03-15 15:28+0100\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -1084,7 +1084,7 @@ msgstr ""
 "CTCP požadavků v určitém časovém intervalu a předchází zprávám CTCP "
 "\"zahlcení\".</center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:79
+#: src/modules/options/optw_interfacelookglobal.cpp:82
 msgid ""
 "<center>This option makes all KVIrc windows look like transparent.<br>You "
 "must choose a blending background image to below.</center>"
@@ -1092,11 +1092,23 @@ msgstr ""
 "<center>Tato volba umožní všem oknům KVirc vypadat průhledně.<br>Musíte "
 "vybrat obrázek, který se hodí k pozadí.</center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:73
+#: src/modules/options/optw_interfacelookglobal.cpp:70
+#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
-"choose a blending background image to below or check the \"Use KDE desktop "
-"for transparency\" option.</center>"
+"choose a blending background image to below or check the \"Use compositing "
+"for real transparency\" option.</center>"
+msgstr ""
+"<center>Tato volba umožní všem oknům KVirc vypadat průhledně.<br>Musíte "
+"vybrat obrázek, který se hodí k pozadí. Nebo zapněte \"Použít KDE desktop "
+"pro průhlednost\" volbu.</center>"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:76
+#, fuzzy
+msgid ""
+"<center>This option makes all KVIrc windows look transparent.<br>You must "
+"choose a blending background image to below or check the \"Use desktop "
+"background for transparency\" option.</center>"
 msgstr ""
 "<center>Tato volba umožní všem oknům KVirc vypadat průhledně.<br>Musíte "
 "vybrat obrázek, který se hodí k pozadí. Nebo zapněte \"Použít KDE desktop "
@@ -1525,7 +1537,7 @@ msgstr "Přerušit"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Přijímat poškozené RESUME (mIRC soubor.ext)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:156
+#: src/modules/options/optw_interfacelookglobal.cpp:160
 msgid "Active Background"
 msgstr "Aktivní pozadí"
 
@@ -1533,19 +1545,19 @@ msgstr "Aktivní pozadí"
 msgid "Active Configuration"
 msgstr "Aktivní konfigurace"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:201
+#: src/modules/options/optw_interfacelookglobal.cpp:205
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr "Aktivní vysoce kontrastní popředí (primární)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:206
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Aktivní vysoce kontrastní popředí (sekundární)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:158
+#: src/modules/options/optw_interfacelookglobal.cpp:162
 msgid "Active Text (Primary)"
 msgstr "Aktivní text (Primární)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:159
+#: src/modules/options/optw_interfacelookglobal.cpp:163
 msgid "Active Text (Secondary)"
 msgstr "Aktivní text (Sekundární)"
 
@@ -1618,7 +1630,7 @@ msgstr "Výstraha pro zvýrazněná slova"
 msgid "Alert for query messages"
 msgstr "Výstraha pro query zprávy"
 
-#: src/modules/options/optw_messages.cpp:375
+#: src/modules/options/optw_messages.cpp:383
 msgid "Alert level:"
 msgstr "Úroveň výstrahy:"
 
@@ -1745,8 +1757,8 @@ msgstr "Pryč přezdívka"
 msgid "Away:"
 msgstr "Pryč:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:178
-#: src/modules/options/optw_interfacelookglobal.cpp:198
+#: src/modules/options/optw_interfacelookglobal.cpp:182
+#: src/modules/options/optw_interfacelookglobal.cpp:202
 msgid "Background"
 msgstr "Pozadí"
 
@@ -1755,8 +1767,8 @@ msgstr "Pozadí"
 msgid "Background Colors"
 msgstr "Barvy pozadí"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:179
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:183
+#: src/modules/options/optw_interfacelookglobal.cpp:210
 msgid "Background Image"
 msgstr "Obrázek na pozadí"
 
@@ -1780,7 +1792,7 @@ msgstr "Obrázek na pozadí"
 msgid "Background image:"
 msgstr "Obrázek na pozadí:"
 
-#: src/modules/options/optw_messages.cpp:350
+#: src/modules/options/optw_messages.cpp:358
 msgid "Background:"
 msgstr "Pozadí:"
 
@@ -1796,7 +1808,7 @@ msgstr "Vázat IPv4 spojení k:"
 msgid "Bind IPv6 connections to:"
 msgstr "Vázat IPv6 spojení k:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:92
+#: src/modules/options/optw_interfacelookglobal.cpp:95
 msgid "Blend color:"
 msgstr "Míchaná barva:"
 
@@ -1892,7 +1904,7 @@ msgstr "Zkontrolovat USERHOST pro online uživatele"
 msgid "Check interval (in seconds)"
 msgstr "Interval kontrol (v sekundách)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:84
+#: src/modules/options/optw_interfacelookglobal.cpp:87
 msgid "Child window opacity:"
 msgstr "Neprůsvitnost podřízeného okna:"
 
@@ -1900,11 +1912,11 @@ msgstr "Neprůsvitnost podřízeného okna:"
 msgid "Choose Avatar - KVIrc"
 msgstr "Výběr Avataru - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:548
+#: src/modules/options/optw_messages.cpp:556
 msgid "Choose a Filename - KVIrc"
 msgstr "Vyberte název souboru - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:605
+#: src/modules/options/optw_messages.cpp:609
 msgid "Choose a Filename - KVIrc "
 msgstr "Vyberte název souboru - KVIrc "
 
@@ -2201,7 +2213,7 @@ msgstr "Povolit měření lagu"
 msgid "Enable animated smiles"
 msgstr "Povolit měření lagu"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:70
+#: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
 msgstr "Povolit falešnou průhlednost"
 
@@ -2333,7 +2345,7 @@ msgstr "Blikající okno, když je uživatel online"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:196
+#: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Font"
 msgstr "Font"
 
@@ -2365,7 +2377,7 @@ msgstr ""
 msgid "Foreground color"
 msgstr "Barva popředí"
 
-#: src/modules/options/optw_messages.cpp:363
+#: src/modules/options/optw_messages.cpp:371
 msgid "Foreground:"
 msgstr "Popředí:"
 
@@ -2382,7 +2394,7 @@ msgstr "Hlavní"
 msgid "General Preferences"
 msgstr "Hlavní předvolby"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:44
+#: src/modules/options/optw_interfacelookglobal.cpp:45
 msgid "Global application font:"
 msgstr "Globální font aplikace:"
 
@@ -2544,23 +2556,23 @@ msgstr "Šířka obrázku:"
 msgid "Import List"
 msgstr "Importovat seznam"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:157
+#: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Background"
 msgstr "Neaktivní pozadí"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:207
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr "Neaktivní vysoce kontrastní popředí (primární)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:208
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Neaktivní vysoce kontrastní popředí (sekundární)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:164
 msgid "Inactive Text (Primary)"
 msgstr "Neaktivní text (Primární)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:165
 msgid "Inactive Text (Secondary)"
 msgstr "Neaktivní text (Sekundární)"
 
@@ -2611,10 +2623,6 @@ msgstr "Nechat kanál otevřený"
 #: src/modules/options/optw_connection.cpp:51
 msgid "Keep channels open"
 msgstr "Nechat kanály otevřené"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:103
-msgid "Keep in sync with KDE background changes"
-msgstr "Udržovat synchronizované se změnami pozadí KDE"
 
 #: src/modules/options/optw_connection.cpp:46
 #: src/modules/options/optw_connection.cpp:54
@@ -2676,7 +2684,7 @@ msgstr "Prodleva zobrazení tooltipů:"
 msgid "Listen on address/interface:"
 msgstr "Naslouchat na adrese/rozhraní:"
 
-#: src/modules/options/optw_messages.cpp:400
+#: src/modules/options/optw_messages.cpp:408
 msgid "Load From..."
 msgstr "Otevřít z..."
 
@@ -2692,11 +2700,11 @@ msgstr "Umístění:"
 msgid "Log joined channels history"
 msgstr "Logovat historii příchodů do kanálů"
 
-#: src/modules/options/optw_messages.cpp:396
+#: src/modules/options/optw_messages.cpp:404
 msgid "Log this"
 msgstr "Logovat"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:199
+#: src/modules/options/optw_interfacelookglobal.cpp:203
 msgid "Low-Contrast Foreground"
 msgstr "Málo kontrastní popředí"
 
@@ -2781,7 +2789,7 @@ msgstr "Přehrávač médií"
 msgid "Message Regexp"
 msgstr "Regexp zprávy"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:204
 msgid "Mid-Contrast Foreground"
 msgstr "Středně kontrastní popředí"
 
@@ -3141,7 +3149,7 @@ msgstr "Velikost paketu:"
 msgid "Paranoic"
 msgstr "Paranoidní"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:88
+#: src/modules/options/optw_interfacelookglobal.cpp:91
 msgid "Parent window opacity:"
 msgstr "Neprůsvitnost zdrojového okna:"
 
@@ -3466,7 +3474,7 @@ msgstr "Vpravo"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_messages.cpp:402
+#: src/modules/options/optw_messages.cpp:410
 msgid "Save As..."
 msgstr "Uložit jako..."
 
@@ -3625,7 +3633,7 @@ msgstr "Zobrazit ikony pohlaví"
 msgid "Show header"
 msgstr "Zobrazit hlavičku"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:43
+#: src/modules/options/optw_interfacelookglobal.cpp:44
 #, fuzzy
 msgid "Show icons in popup menus"
 msgstr "Zobrazí okno, které umožní úpravy vyskakovacích (popup) menu"
@@ -3922,7 +3930,7 @@ msgstr ""
 "pokud jste si žádný nenastavili. Toto je dobré vyzkoušet, jelikož pomáhá "
 "redukovat síťový provoz neposíláním odpovědí, které mohou být prázdné."
 
-#: src/modules/options/optw_interfacelookglobal.cpp:42
+#: src/modules/options/optw_interfacelookglobal.cpp:43
 msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
@@ -3979,12 +3987,13 @@ msgstr "Nahoře"
 msgid "Track last read text line"
 msgstr "Sledovat poslední přečtený řádek"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:106
-#: src/modules/options/optw_interfacelookglobal.cpp:112
+#: src/modules/options/optw_interfacelookglobal.cpp:102
+#: src/modules/options/optw_interfacelookglobal.cpp:118
+#: src/modules/options/optw_interfacelookglobal.cpp:125
 msgid "Transparency blend image:"
 msgstr "Obrázek míchaný průhledností:"
 
-#: src/modules/options/optw_messages.cpp:285
+#: src/modules/options/optw_messages.cpp:293
 msgid "Transparent"
 msgstr "Průhledné"
 
@@ -4034,10 +4043,6 @@ msgstr "Použít \"smart\" seznam oznamování"
 msgid "Use IPv6 protocol"
 msgstr "Použít IPv6 protokol"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:98
-msgid "Use KDE desktop for transparency"
-msgstr "Použít KDE desktop pro průhlednost"
-
 #: src/modules/options/optw_textencoding.cpp:50
 #: src/modules/options/optw_textencoding.cpp:58
 #: src/modules/options/optw_sound.cpp:102
@@ -4083,6 +4088,11 @@ msgstr "Použít avatar"
 msgid "Use bash-like nick completion"
 msgstr "Použít doplňování přezdívek jako v bashi"
 
+#: src/modules/options/optw_interfacelookglobal.cpp:100
+#, fuzzy
+msgid "Use compositing for real transparency"
+msgstr "Použít KDE desktop pro průhlednost"
+
 #: src/modules/options/optw_highlighting.cpp:95
 msgid "Use custom alert level"
 msgstr "Použít vlastní úroveň výstrah"
@@ -4090,6 +4100,11 @@ msgstr "Použít vlastní úroveň výstrah"
 #: src/modules/options/optw_servers.cpp:532
 msgid "Use default user mode"
 msgstr "Použít výchozí nastavení"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:116
+#, fuzzy
+msgid "Use desktop background for transparency"
+msgstr "Použít KDE desktop pro průhlednost"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
@@ -4108,7 +4123,7 @@ msgstr "Použít plochá tlačítka"
 msgid "Use flood protection for CTCP requests (recommended)"
 msgstr "Použít ochranu před zahlcením (doporučeno)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:41
+#: src/modules/options/optw_interfacelookglobal.cpp:42
 msgid "Use global application font"
 msgstr "Použít globální font aplikace"
 
@@ -8386,6 +8401,9 @@ msgstr "během:"
 
 #~ msgid "KVIrc WWW"
 #~ msgstr "KVIrc WWW"
+
+#~ msgid "Keep in sync with KDE background changes"
+#~ msgstr "Udržovat synchronizované se změnami pozadí KDE"
 
 #~ msgid "Kernel networking panic"
 #~ msgstr "Síťové jádro selhalo"

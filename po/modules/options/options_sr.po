@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-17 22:48+0100\n"
+"POT-Creation-Date: 2009-03-15 15:28+0100\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -988,7 +988,7 @@ msgid ""
 "messages.</center>"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:79
+#: src/modules/options/optw_interfacelookglobal.cpp:82
 #, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look like transparent.<br>You "
@@ -997,12 +997,23 @@ msgstr ""
 "Ova opcija će da napravi da svi KVIrc prozori budu providni.<br>Morate "
 "izabrati takođe globalnu pozadinsku sliku ispod."
 
-#: src/modules/options/optw_interfacelookglobal.cpp:73
+#: src/modules/options/optw_interfacelookglobal.cpp:70
 #, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
-"choose a blending background image to below or check the \"Use KDE desktop "
-"for transparency\" option.</center>"
+"choose a blending background image to below or check the \"Use compositing "
+"for real transparency\" option.</center>"
+msgstr ""
+"Ova opcija pravi sve KVIrc prozore da budu transparentni (providni)"
+"<br>Morate izabrati globalnu pixmapu pozadine ispod ili uključite<br>Preuzmi "
+"globalnu pozadinu od KDE\" opciju."
+
+#: src/modules/options/optw_interfacelookglobal.cpp:76
+#, fuzzy
+msgid ""
+"<center>This option makes all KVIrc windows look transparent.<br>You must "
+"choose a blending background image to below or check the \"Use desktop "
+"background for transparency\" option.</center>"
 msgstr ""
 "Ova opcija pravi sve KVIrc prozore da budu transparentni (providni)"
 "<br>Morate izabrati globalnu pixmapu pozadine ispod ili uključite<br>Preuzmi "
@@ -1429,7 +1440,7 @@ msgstr "Prekini"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:156
+#: src/modules/options/optw_interfacelookglobal.cpp:160
 #, fuzzy
 msgid "Active Background"
 msgstr "Aktivna pozadina"
@@ -1439,19 +1450,19 @@ msgstr "Aktivna pozadina"
 msgid "Active Configuration"
 msgstr "&Sačuvaj podešavanja"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:201
+#: src/modules/options/optw_interfacelookglobal.cpp:205
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:206
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:158
+#: src/modules/options/optw_interfacelookglobal.cpp:162
 msgid "Active Text (Primary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:159
+#: src/modules/options/optw_interfacelookglobal.cpp:163
 msgid "Active Text (Secondary)"
 msgstr ""
 
@@ -1535,7 +1546,7 @@ msgstr "Naglašene reči"
 msgid "Alert for query messages"
 msgstr "ignorisana poruka korisnika"
 
-#: src/modules/options/optw_messages.cpp:375
+#: src/modules/options/optw_messages.cpp:383
 #, fuzzy
 msgid "Alert level:"
 msgstr "Nivo upozorenja"
@@ -1683,8 +1694,8 @@ msgstr "Nadimak"
 msgid "Away:"
 msgstr "&Odsutnost"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:178
-#: src/modules/options/optw_interfacelookglobal.cpp:198
+#: src/modules/options/optw_interfacelookglobal.cpp:182
+#: src/modules/options/optw_interfacelookglobal.cpp:202
 #, fuzzy
 msgid "Background"
 msgstr "Pozadina"
@@ -1695,8 +1706,8 @@ msgstr "Pozadina"
 msgid "Background Colors"
 msgstr "Boja pozadine"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:179
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:183
+#: src/modules/options/optw_interfacelookglobal.cpp:210
 #, fuzzy
 msgid "Background Image"
 msgstr "Pozadinska slika"
@@ -1723,7 +1734,7 @@ msgstr "Pozadinska slika"
 msgid "Background image:"
 msgstr "Pozadinska slika"
 
-#: src/modules/options/optw_messages.cpp:350
+#: src/modules/options/optw_messages.cpp:358
 #, fuzzy
 msgid "Background:"
 msgstr "Pozadina"
@@ -1743,7 +1754,7 @@ msgstr "Poveži IRC IPv4 konekcije na prateći interfejs"
 msgid "Bind IPv6 connections to:"
 msgstr "Poveži IRC IPv4 konekcije na prateći interfejs"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:92
+#: src/modules/options/optw_interfacelookglobal.cpp:95
 #, fuzzy
 msgid "Blend color:"
 msgstr "uske boje"
@@ -1852,7 +1863,7 @@ msgstr "Proveri USERHOST za korisnike na vezi"
 msgid "Check interval (in seconds)"
 msgstr "Vreme isteka kačenja (u milisek)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:84
+#: src/modules/options/optw_interfacelookglobal.cpp:87
 msgid "Child window opacity:"
 msgstr ""
 
@@ -1861,12 +1872,12 @@ msgstr ""
 msgid "Choose Avatar - KVIrc"
 msgstr "Izaberite direktorijum..."
 
-#: src/modules/options/optw_messages.cpp:548
+#: src/modules/options/optw_messages.cpp:556
 #, fuzzy
 msgid "Choose a Filename - KVIrc"
 msgstr "Izaberi fajl za parseovanje"
 
-#: src/modules/options/optw_messages.cpp:605
+#: src/modules/options/optw_messages.cpp:609
 #, fuzzy
 msgid "Choose a Filename - KVIrc "
 msgstr "Izaberi fajl za parseovanje"
@@ -2200,7 +2211,7 @@ msgstr "Pogrešan parametar"
 msgid "Enable animated smiles"
 msgstr "Pogrešan parametar"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:70
+#: src/modules/options/optw_interfacelookglobal.cpp:67
 #, fuzzy
 msgid "Enable fake transparency"
 msgstr "Omogući deljenje (share) fajlova"
@@ -2340,7 +2351,7 @@ msgstr "lista obaveštenja ulasci"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:196
+#: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Font"
 msgstr "Font"
 
@@ -2373,7 +2384,7 @@ msgstr ""
 msgid "Foreground color"
 msgstr "Boja ispisa"
 
-#: src/modules/options/optw_messages.cpp:363
+#: src/modules/options/optw_messages.cpp:371
 #, fuzzy
 msgid "Foreground:"
 msgstr "Boja ispisa"
@@ -2393,7 +2404,7 @@ msgstr "Generalne opcije"
 msgid "General Preferences"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:44
+#: src/modules/options/optw_interfacelookglobal.cpp:45
 #, fuzzy
 msgid "Global application font:"
 msgstr "Globalni font aplikacije"
@@ -2572,24 +2583,24 @@ msgstr "Minimalna širina"
 msgid "Import List"
 msgstr "Uvezi"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:157
+#: src/modules/options/optw_interfacelookglobal.cpp:161
 #, fuzzy
 msgid "Inactive Background"
 msgstr "Aktivna pozadina"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:207
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:208
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:164
 msgid "Inactive Text (Primary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:165
 msgid "Inactive Text (Secondary)"
 msgstr ""
 
@@ -2646,10 +2657,6 @@ msgstr "Zadrži kanal otvoren kad te izbace (KICK)"
 #, fuzzy
 msgid "Keep channels open"
 msgstr "Zadrži kanal otvoren kad te izbace (KICK)"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:103
-msgid "Keep in sync with KDE background changes"
-msgstr ""
 
 #: src/modules/options/optw_connection.cpp:46
 #: src/modules/options/optw_connection.cpp:54
@@ -2715,7 +2722,7 @@ msgstr ""
 msgid "Listen on address/interface:"
 msgstr "Ne mogu da dobijem adresu interfejsa %s"
 
-#: src/modules/options/optw_messages.cpp:400
+#: src/modules/options/optw_messages.cpp:408
 #, fuzzy
 msgid "Load From..."
 msgstr "Učitavanje ikona..."
@@ -2735,11 +2742,11 @@ msgstr "obaveštenje"
 msgid "Log joined channels history"
 msgstr "Nedostaje lista kanala"
 
-#: src/modules/options/optw_messages.cpp:396
+#: src/modules/options/optw_messages.cpp:404
 msgid "Log this"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:199
+#: src/modules/options/optw_interfacelookglobal.cpp:203
 #, fuzzy
 msgid "Low-Contrast Foreground"
 msgstr "Veza prekriva ispis"
@@ -2838,7 +2845,7 @@ msgstr "Nov tip medija"
 msgid "Message Regexp"
 msgstr "Tip poruke"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:204
 #, fuzzy
 msgid "Mid-Contrast Foreground"
 msgstr "Veza prekriva ispis"
@@ -3242,7 +3249,7 @@ msgstr "Veličina paketa (bajtova)"
 msgid "Paranoic"
 msgstr "obaveštenje servera"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:88
+#: src/modules/options/optw_interfacelookglobal.cpp:91
 #, fuzzy
 msgid "Parent window opacity:"
 msgstr "Stariji fade faktor"
@@ -3601,7 +3608,7 @@ msgstr ""
 msgid "SOURCE"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:402
+#: src/modules/options/optw_messages.cpp:410
 #, fuzzy
 msgid "Save As..."
 msgstr "S&ačuvaj kao..."
@@ -3776,7 +3783,7 @@ msgstr "Pokaži ikone poruka"
 msgid "Show header"
 msgstr "Tekstualni editor"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:43
+#: src/modules/options/optw_interfacelookglobal.cpp:44
 #, fuzzy
 msgid "Show icons in popup menus"
 msgstr "&Terminal prozor"
@@ -4068,7 +4075,7 @@ msgid ""
 "reducing traffic by not sending a reply that would be empty."
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:42
+#: src/modules/options/optw_interfacelookglobal.cpp:43
 msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
@@ -4126,12 +4133,13 @@ msgstr "Naslov"
 msgid "Track last read text line"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:106
-#: src/modules/options/optw_interfacelookglobal.cpp:112
+#: src/modules/options/optw_interfacelookglobal.cpp:102
+#: src/modules/options/optw_interfacelookglobal.cpp:118
+#: src/modules/options/optw_interfacelookglobal.cpp:125
 msgid "Transparency blend image:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:285
+#: src/modules/options/optw_messages.cpp:293
 msgid "Transparent"
 msgstr "Transparentno "
 
@@ -4187,10 +4195,6 @@ msgstr "Koristi \"inteligentan\" upravljač liste obaveštenja"
 msgid "Use IPv6 protocol"
 msgstr "Koristi IpV6 protokol"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:98
-msgid "Use KDE desktop for transparency"
-msgstr ""
-
 #: src/modules/options/optw_textencoding.cpp:50
 #: src/modules/options/optw_textencoding.cpp:58
 #: src/modules/options/optw_sound.cpp:102
@@ -4244,6 +4248,10 @@ msgstr "Avatar slika"
 msgid "Use bash-like nick completion"
 msgstr ""
 
+#: src/modules/options/optw_interfacelookglobal.cpp:100
+msgid "Use compositing for real transparency"
+msgstr ""
+
 #: src/modules/options/optw_highlighting.cpp:95
 #, fuzzy
 msgid "Use custom alert level"
@@ -4253,6 +4261,10 @@ msgstr "Nivo upozorenja"
 #, fuzzy
 msgid "Use default user mode"
 msgstr "Mogući modovi korisnika:"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:116
+msgid "Use desktop background for transparency"
+msgstr ""
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
@@ -4272,7 +4284,7 @@ msgstr ""
 msgid "Use flood protection for CTCP requests (recommended)"
 msgstr "Koristi flood zaštitu"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:41
+#: src/modules/options/optw_interfacelookglobal.cpp:42
 msgid "Use global application font"
 msgstr "Koristi globalni font aplikacije"
 

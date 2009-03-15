@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-17 22:48+0100\n"
+"POT-Creation-Date: 2009-03-15 15:28+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,28 +65,28 @@ msgstr ""
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr ""
 
-#: src/modules/objects/class_tablewidget.cpp:120
+#: src/modules/objects/class_tablewidget.cpp:129
 msgid "Item out of the tablewidget size"
 msgstr ""
 
-#: src/modules/objects/class_tablewidget.cpp:148
+#: src/modules/objects/class_tablewidget.cpp:157
 #: src/modules/objects/class_treewidgetitem.cpp:441
 msgid "Pixmap object or image Id required"
 msgstr ""
 
-#: src/modules/objects/class_tablewidget.cpp:158
+#: src/modules/objects/class_tablewidget.cpp:167
 #: src/modules/objects/class_treewidgetitem.cpp:451
 msgid ""
 "Error occured: the suitable file '%Q' is not of the correct format or it is "
 "not a valid icon number."
 msgstr ""
 
-#: src/modules/objects/class_button.cpp:127
+#: src/modules/objects/class_button.cpp:128
 #: src/modules/objects/class_painter.cpp:851
 msgid "Pixmap parameter is not an object!"
 msgstr ""
 
-#: src/modules/objects/class_button.cpp:133
+#: src/modules/objects/class_button.cpp:134
 #: src/modules/objects/class_painter.cpp:856
 msgid "Object Pixmap required!"
 msgstr ""
@@ -115,45 +115,12 @@ msgstr ""
 msgid "Widget object required"
 msgstr ""
 
-#: src/modules/objects/class_lineedit.cpp:383
+#: src/modules/objects/class_lineedit.cpp:407
 msgid "Unknown echo mode '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_sql.cpp:160
-msgid "Missing QT plugin for database %Q"
-msgstr ""
-
-#: src/modules/objects/class_sql.cpp:184
-#: src/modules/objects/class_sql.cpp:208
-msgid "Connection %Q does not exists"
-msgstr ""
-
-#: src/modules/objects/class_sql.cpp:230
-msgid "Connection query %Q does not exists"
-msgstr ""
-
-#: src/modules/objects/class_sql.cpp:248
-msgid "No query connection is open"
-msgstr ""
-
-#: src/modules/objects/class_sql.cpp:257
-msgid "Query for connection %Q does not exists"
-msgstr ""
-
-#: src/modules/objects/class_sql.cpp:282
-msgid "Query  %Q already initializated"
-msgstr ""
-
-#: src/modules/objects/class_sql.cpp:287
-msgid "Connection %Q is not open!"
-msgstr ""
-
-#: src/modules/objects/class_sql.cpp:348
-msgid "Only memorybuffer class object is supported"
-msgstr ""
-
-#: src/modules/objects/class_sql.cpp:354
-msgid "Type value %Q not supported"
+#: src/modules/objects/class_lineedit.cpp:471
+msgid "Unkonwn '%Q' completition mode, switching to default popupCompletition"
 msgstr ""
 
 #: src/modules/objects/class_painter.cpp:549
@@ -230,7 +197,7 @@ msgstr ""
 
 #: src/modules/objects/class_painter.cpp:867
 #: src/modules/objects/class_painter.cpp:920
-#: src/modules/objects/class_painter.cpp:1486
+#: src/modules/objects/class_painter.cpp:1557
 msgid "The opacity parameter didn't evaluate to integer"
 msgstr ""
 
@@ -241,7 +208,7 @@ msgstr ""
 
 #: src/modules/objects/class_painter.cpp:884
 #: src/modules/objects/class_painter.cpp:937
-#: src/modules/objects/class_painter.cpp:1504
+#: src/modules/objects/class_painter.cpp:1575
 msgid "One of the triplette parameters didn't evaluate to an integer"
 msgstr ""
 
@@ -253,38 +220,91 @@ msgstr ""
 msgid "$fontMetricsHeight: the painter is not active!"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1037
+#: src/modules/objects/class_painter.cpp:1054
+msgid "Missing filename"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1077
+#: src/modules/objects/class_painter.cpp:1102
+msgid "No valid paint device"
+msgstr ""
+
+#: src/modules/objects/class_painter.cpp:1089
 msgid "Pixmap or Widget parameter is not an object"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1045
+#: src/modules/objects/class_painter.cpp:1097
 msgid "Widget or Pixmap required "
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1108
+#: src/modules/objects/class_painter.cpp:1179
 msgid "Invalid mode '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1137
+#: src/modules/objects/class_painter.cpp:1208
 #: src/modules/objects/class_widget.cpp:1853
 msgid "Pixmap parameter is not an object"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1142
+#: src/modules/objects/class_painter.cpp:1213
 #: src/modules/objects/class_widget.cpp:1858
 msgid "Pixmap object required"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1407
+#: src/modules/objects/class_painter.cpp:1478
 msgid "Unknown pen style '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1433
+#: src/modules/objects/class_painter.cpp:1504
 msgid "Unknown brush style '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1499
+#: src/modules/objects/class_painter.cpp:1570
 msgid "Color name or triplette RGB/HSV values required"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:200
+msgid "Missing Qt plugin for database %Q"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:207
+msgid "Duplicate connection name '%Q', old query connection removed"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:240
+#: src/modules/objects/class_sql.cpp:273
+#: src/modules/objects/class_sql.cpp:290
+#: src/modules/objects/class_sql.cpp:307
+#: src/modules/objects/class_sql.cpp:324
+msgid "Connection %Q does not exists"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:346
+msgid "Connection query %Q does not exists"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:364
+msgid "No query connection is open"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:373
+msgid "Query for connection %Q does not exists"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:398
+msgid "Query  %Q already initializated"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:403
+msgid "Connection %Q is not open!"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:464
+msgid "Only memorybuffer class object is supported"
+msgstr ""
+
+#: src/modules/objects/class_sql.cpp:470
+msgid "Type value %Q not supported"
 msgstr ""
 
 #: src/modules/objects/class_toolbar.cpp:83
@@ -410,14 +430,14 @@ msgstr ""
 
 #: src/modules/objects/class_combobox.cpp:173
 #: src/modules/objects/class_combobox.cpp:281
-#: src/modules/objects/class_listwidget.cpp:188
+#: src/modules/objects/class_listwidget.cpp:185
 msgid "No string parameter given - using empty string"
 msgstr ""
 
 #: src/modules/objects/class_combobox.cpp:176
 #: src/modules/objects/class_combobox.cpp:193
-#: src/modules/objects/class_listwidget.cpp:191
-#: src/modules/objects/class_listwidget.cpp:209
+#: src/modules/objects/class_listwidget.cpp:188
+#: src/modules/objects/class_listwidget.cpp:206
 #, c-format
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr ""
@@ -447,15 +467,15 @@ msgstr ""
 msgid "Unknown alignment: '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_listwidget.cpp:272
+#: src/modules/objects/class_listwidget.cpp:269
 msgid "Invalid selection mode '%Q' assuming single"
 msgstr ""
 
-#: src/modules/objects/class_listwidget.cpp:303
+#: src/modules/objects/class_listwidget.cpp:300
 msgid "Can't insert the listwidget itself!"
 msgstr ""
 
-#: src/modules/objects/class_listwidget.cpp:308
+#: src/modules/objects/class_listwidget.cpp:305
 msgid "Can't insert a non-widget object"
 msgstr ""
 

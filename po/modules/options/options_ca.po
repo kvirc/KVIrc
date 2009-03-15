@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-02-17 22:48+0100\n"
+"POT-Creation-Date: 2009-03-15 15:28+0100\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -1099,7 +1099,7 @@ msgstr ""
 "peticions CTCP dintre d'un interval especificat de temps, per a prevenir el "
 "\"flooding\" (saturació) de missatges CTCP.</center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:79
+#: src/modules/options/optw_interfacelookglobal.cpp:82
 msgid ""
 "<center>This option makes all KVIrc windows look like transparent.<br>You "
 "must choose a blending background image to below.</center>"
@@ -1108,11 +1108,23 @@ msgstr ""
 "transparents.<br> Has d'escollir també una imatge de fons per a barrejar "
 "més  a sota.</center>"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:73
+#: src/modules/options/optw_interfacelookglobal.cpp:70
+#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
-"choose a blending background image to below or check the \"Use KDE desktop "
-"for transparency\" option.</center>"
+"choose a blending background image to below or check the \"Use compositing "
+"for real transparency\" option.</center>"
+msgstr ""
+"<center>Aquesta opció farà que totes les finestres de KVIrc es vegin "
+"transparents.<br>Has d'escollir una imatge per a barrejar amb el fons o "
+"activar l'opció \"Emprar escriptori de KDE com a transparència\".</center>"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:76
+#, fuzzy
+msgid ""
+"<center>This option makes all KVIrc windows look transparent.<br>You must "
+"choose a blending background image to below or check the \"Use desktop "
+"background for transparency\" option.</center>"
 msgstr ""
 "<center>Aquesta opció farà que totes les finestres de KVIrc es vegin "
 "transparents.<br>Has d'escollir una imatge per a barrejar amb el fons o "
@@ -1551,7 +1563,7 @@ msgstr "Avortar"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Acceptar RESUME erroni (mIRC arxiu.ext)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:156
+#: src/modules/options/optw_interfacelookglobal.cpp:160
 msgid "Active Background"
 msgstr "Fons Actiu:"
 
@@ -1560,19 +1572,19 @@ msgstr "Fons Actiu:"
 msgid "Active Configuration"
 msgstr "Guardar Configuració"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:201
+#: src/modules/options/optw_interfacelookglobal.cpp:205
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr "Primer Pla Actiu d'Alt Contrast (Primari)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:206
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Primer Pla Actiu d'Alt Contrast (Secundari)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:158
+#: src/modules/options/optw_interfacelookglobal.cpp:162
 msgid "Active Text (Primary)"
 msgstr "Text Actiu (Primari)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:159
+#: src/modules/options/optw_interfacelookglobal.cpp:163
 msgid "Active Text (Secondary)"
 msgstr "Text Actiu (Secundari)"
 
@@ -1646,7 +1658,7 @@ msgstr "Alertar per paraules ressaltades"
 msgid "Alert for query messages"
 msgstr "Alertar per missatges privats"
 
-#: src/modules/options/optw_messages.cpp:375
+#: src/modules/options/optw_messages.cpp:383
 msgid "Alert level:"
 msgstr "Nivell d'alerta:"
 
@@ -1781,8 +1793,8 @@ msgstr "Nick d'absència"
 msgid "Away:"
 msgstr "Absent"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:178
-#: src/modules/options/optw_interfacelookglobal.cpp:198
+#: src/modules/options/optw_interfacelookglobal.cpp:182
+#: src/modules/options/optw_interfacelookglobal.cpp:202
 msgid "Background"
 msgstr "Fons"
 
@@ -1791,8 +1803,8 @@ msgstr "Fons"
 msgid "Background Colors"
 msgstr "Colors de Fons"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:179
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:183
+#: src/modules/options/optw_interfacelookglobal.cpp:210
 msgid "Background Image"
 msgstr "Imatge de Fons"
 
@@ -1816,7 +1828,7 @@ msgstr "Imatge de fons"
 msgid "Background image:"
 msgstr "Imatge de fons:"
 
-#: src/modules/options/optw_messages.cpp:350
+#: src/modules/options/optw_messages.cpp:358
 msgid "Background:"
 msgstr "Color de fons:"
 
@@ -1833,7 +1845,7 @@ msgstr "Unir connexions IPv4 a:"
 msgid "Bind IPv6 connections to:"
 msgstr "Unir connexions IPv6 a:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:92
+#: src/modules/options/optw_interfacelookglobal.cpp:95
 msgid "Blend color:"
 msgstr "Color de la barreja:"
 
@@ -1931,7 +1943,7 @@ msgstr "Comprovar USERHOST per a usuaris connectats"
 msgid "Check interval (in seconds)"
 msgstr "Interval de comprobació (en segons)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:84
+#: src/modules/options/optw_interfacelookglobal.cpp:87
 msgid "Child window opacity:"
 msgstr "Opacitat de la finestra filla:"
 
@@ -1939,11 +1951,11 @@ msgstr "Opacitat de la finestra filla:"
 msgid "Choose Avatar - KVIrc"
 msgstr "Esculli Avatar - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:548
+#: src/modules/options/optw_messages.cpp:556
 msgid "Choose a Filename - KVIrc"
 msgstr "Esculli un nom d'arxiu - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:605
+#: src/modules/options/optw_messages.cpp:609
 msgid "Choose a Filename - KVIrc "
 msgstr "Trii un nom d'arxiu - KVIrc"
 
@@ -2249,7 +2261,7 @@ msgstr "Activar mesurador de retràs"
 msgid "Enable animated smiles"
 msgstr "Activar mesurador de retràs"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:70
+#: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
 msgstr "Activar falsa transparència"
 
@@ -2381,7 +2393,7 @@ msgstr "Destell de la finestra quan els usuaris vagin estan en línia"
 
 #: src/modules/options/optw_topiclabel.cpp:36
 #: src/modules/options/optw_input.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:196
+#: src/modules/options/optw_interfacelookglobal.cpp:200
 msgid "Font"
 msgstr "Fonts"
 
@@ -2413,7 +2425,7 @@ msgstr ""
 msgid "Foreground color"
 msgstr "Color de primer pla"
 
-#: src/modules/options/optw_messages.cpp:363
+#: src/modules/options/optw_messages.cpp:371
 msgid "Foreground:"
 msgstr "Color de primer pla:"
 
@@ -2431,7 +2443,7 @@ msgstr "General"
 msgid "General Preferences"
 msgstr "Preferències Generals"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:44
+#: src/modules/options/optw_interfacelookglobal.cpp:45
 msgid "Global application font:"
 msgstr "Font global de l'aplicació:"
 
@@ -2596,23 +2608,23 @@ msgstr "Amplada de la imatge:"
 msgid "Import List"
 msgstr "Importar Llista"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:157
+#: src/modules/options/optw_interfacelookglobal.cpp:161
 msgid "Inactive Background"
 msgstr "Fons Inactiu:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:207
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr "Primer Pla inactiu d'Alt Contrast (Primari)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:208
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Primer Pla inactiu d'Alt Contrast (Secundari)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:164
 msgid "Inactive Text (Primary)"
 msgstr "Text Inactiu (Primari)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:165
 msgid "Inactive Text (Secondary)"
 msgstr "Text Inactiu (Secundari)"
 
@@ -2664,10 +2676,6 @@ msgstr "Mantindre el canal obert"
 #: src/modules/options/optw_connection.cpp:51
 msgid "Keep channels open"
 msgstr "Mantindre els canals oberts"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:103
-msgid "Keep in sync with KDE background changes"
-msgstr "Mantindre's sincronitzat amb els canvis de fons de KDE"
 
 #: src/modules/options/optw_connection.cpp:46
 #: src/modules/options/optw_connection.cpp:54
@@ -2729,7 +2737,7 @@ msgstr "Retràs fins a mostrar tooltip als enllaços:"
 msgid "Listen on address/interface:"
 msgstr "Escoltar en adreça/interfície:"
 
-#: src/modules/options/optw_messages.cpp:400
+#: src/modules/options/optw_messages.cpp:408
 msgid "Load From..."
 msgstr "Carregar Des de..."
 
@@ -2747,11 +2755,11 @@ msgstr "&Localització:"
 msgid "Log joined channels history"
 msgstr "Llista de canals registrats:"
 
-#: src/modules/options/optw_messages.cpp:396
+#: src/modules/options/optw_messages.cpp:404
 msgid "Log this"
 msgstr "Registrar això"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:199
+#: src/modules/options/optw_interfacelookglobal.cpp:203
 msgid "Low-Contrast Foreground"
 msgstr "Primer Pla de Baix contrast"
 
@@ -2840,7 +2848,7 @@ msgstr "Tipus de Medis"
 msgid "Message Regexp"
 msgstr "Expressió Regular del Missatge"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:204
 msgid "Mid-Contrast Foreground"
 msgstr "Primer Pla de Contrast Mitjà"
 
@@ -3210,7 +3218,7 @@ msgstr "Mida de paquet:"
 msgid "Paranoic"
 msgstr "Paranoic"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:88
+#: src/modules/options/optw_interfacelookglobal.cpp:91
 msgid "Parent window opacity:"
 msgstr "Opacitat de la finestra pare:"
 
@@ -3541,7 +3549,7 @@ msgstr "Dreta"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_messages.cpp:402
+#: src/modules/options/optw_messages.cpp:410
 msgid "Save As..."
 msgstr "Guardar Com a..."
 
@@ -3705,7 +3713,7 @@ msgstr "Mostrar icones de missatges"
 msgid "Show header"
 msgstr "Mostrar Editor de Prohibicions"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:43
+#: src/modules/options/optw_interfacelookglobal.cpp:44
 #, fuzzy
 msgid "Show icons in popup menus"
 msgstr "Mostra una finestra que et permet editar els menús emergents"
@@ -4005,7 +4013,7 @@ msgstr ""
 "pràctica perquè ajuda a reduir el tràfic evitant enviar rèpliques que "
 "podrien estar buides."
 
-#: src/modules/options/optw_interfacelookglobal.cpp:42
+#: src/modules/options/optw_interfacelookglobal.cpp:43
 msgid ""
 "This option will force a static font for every widget that has no specific "
 "font setting"
@@ -4062,12 +4070,13 @@ msgstr "Amunt"
 msgid "Track last read text line"
 msgstr "Marcar l'última línia de text llegida"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:106
-#: src/modules/options/optw_interfacelookglobal.cpp:112
+#: src/modules/options/optw_interfacelookglobal.cpp:102
+#: src/modules/options/optw_interfacelookglobal.cpp:118
+#: src/modules/options/optw_interfacelookglobal.cpp:125
 msgid "Transparency blend image:"
 msgstr "Imatge de barreja transparent:"
 
-#: src/modules/options/optw_messages.cpp:285
+#: src/modules/options/optw_messages.cpp:293
 msgid "Transparent"
 msgstr "Transparent"
 
@@ -4120,10 +4129,6 @@ msgstr "Emprar gestor \"intel·ligent\" de llista de notificacions"
 msgid "Use IPv6 protocol"
 msgstr "Emprar protocol IPv6"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:98
-msgid "Use KDE desktop for transparency"
-msgstr "Emprar escriptori de KDE com a transparència"
-
 #: src/modules/options/optw_textencoding.cpp:50
 #: src/modules/options/optw_textencoding.cpp:58
 #: src/modules/options/optw_sound.cpp:102
@@ -4169,6 +4174,11 @@ msgstr "Emprar avatar"
 msgid "Use bash-like nick completion"
 msgstr "Emprar completat de nick a l'estil bash"
 
+#: src/modules/options/optw_interfacelookglobal.cpp:100
+#, fuzzy
+msgid "Use compositing for real transparency"
+msgstr "Emprar escriptori de KDE com a transparència"
+
 #: src/modules/options/optw_highlighting.cpp:95
 msgid "Use custom alert level"
 msgstr "Emprar un nivell d'alerta personalitzat"
@@ -4176,6 +4186,11 @@ msgstr "Emprar un nivell d'alerta personalitzat"
 #: src/modules/options/optw_servers.cpp:532
 msgid "Use default user mode"
 msgstr "Mode d'usuari per defecte"
+
+#: src/modules/options/optw_interfacelookglobal.cpp:116
+#, fuzzy
+msgid "Use desktop background for transparency"
+msgstr "Emprar escriptori de KDE com a transparència"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
@@ -4194,7 +4209,7 @@ msgstr ""
 msgid "Use flood protection for CTCP requests (recommended)"
 msgstr "Utilitzar protecció de saturació (recomenat)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:41
+#: src/modules/options/optw_interfacelookglobal.cpp:42
 msgid "Use global application font"
 msgstr "Emprar font global de l'aplicació"
 
@@ -8515,6 +8530,9 @@ msgstr "cada:"
 #, fuzzy
 #~ msgid "KVIrc WWW"
 #~ msgstr "KVIrc"
+
+#~ msgid "Keep in sync with KDE background changes"
+#~ msgstr "Mantindre's sincronitzat amb els canvis de fons de KDE"
 
 #~ msgid "Kernel networking panic"
 #~ msgstr "Error greu en el nucli de xarxa"
