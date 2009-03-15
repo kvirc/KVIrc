@@ -886,10 +886,10 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 					// and this will trigger OnQueryTargetAdded
 					query->setTarget(szNick,szUser,szHost);
 				}
-			}
 
-			if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
-				query->pasteLastLog();
+				if(KVI_OPTION_BOOL(KviOption_boolPasteLastLogOnQueryJoin))
+					query->pasteLastLog();
+			}
 		}
 
 		// ok, now we either have a query or not

@@ -89,7 +89,7 @@ KviQueryOptionsWidget::KviQueryOptionsWidget(QWidget * parent)
 			"Uncheck if you think,that it wastes your query space/" \
 			"</center>","options"));
 
-	b = addBoolSelector(0,6,1,6,__tr2qs_ctx("Paste last channel log","options"),KviOption_boolPasteLastLogOnQueryJoin);
+	b = addBoolSelector(0,6,1,6,__tr2qs_ctx("Paste last query log","options"),KviOption_boolPasteLastLogOnQueryJoin);
 
 	KviTalHBox * box = new KviTalHBox(this);
 	addWidgetToLayout(box,0,7,1,7);
