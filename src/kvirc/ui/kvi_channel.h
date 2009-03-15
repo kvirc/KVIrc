@@ -203,7 +203,7 @@ protected:
 	KviPixmap                              m_privateBackground;
 	QDateTime                              m_joinTime;
 	QString                                m_szNameWithUserFlag;
-	KviPointerHashTable<QString,QString> * m_pTmpHighLighted;
+	QStringList                          * m_pTmpHighLighted;
 	unsigned int                           m_uActionHistoryHotActionCount;
 	KviPointerList<KviChannelAction>     * m_pActionHistory;
 	kvi_time_t                             m_tLastReceivedWhoReply;
@@ -944,7 +944,7 @@ public:
 	* \param szNick The nickname of the user
 	* \return bool
 	*/
-	bool isHighlightedUser(const QString & szNick) { return m_pTmpHighLighted->find(szNick); };
+	bool isHighlightedUser(const QString & szNick) { return m_pTmpHighLighted->contains(szNick,Qt::CaseInsensitive); };
 
 	/**
 	* \brief Called when the channel losts the focus by the user

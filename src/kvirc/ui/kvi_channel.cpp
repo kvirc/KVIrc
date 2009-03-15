@@ -101,8 +101,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	m_pActionHistory->setAutoDelete(true);
 	m_uActionHistoryHotActionCount = 0;
 
-	m_pTmpHighLighted      = new KviPointerHashTable<QString,QString>();
-	m_pTmpHighLighted->setAutoDelete(true);
+	m_pTmpHighLighted      = new QStringList();
 
 	// Register ourselves
 	connection()->registerChannel(this);
@@ -621,15 +620,15 @@ void KviChannel::setChannelLimit(const char * limit)
 
 void KviChannel::addHighlightedUser(const QString & szNick)
 {
-	if(!m_pUserListView->findEntry(szNick))
+	if(!m_pUserListView->findEntry(szNick) || m_pTmpHighLighted->contains(szNick,Qt::CaseInsensitive))
 		return;
 	else
-   		m_pTmpHighLighted->replace(szNick,new QString());
+   		m_pTmpHighLighted->append(szNick);
 }
 
 void KviChannel::removeHighlightedUser(const QString & szNick)
 {
-	m_pTmpHighLighted->remove(szNick);
+	m_pTmpHighLighted->removeOne(szNick);
 }
 
 void KviChannel::getChannelModeString(QString & szBuffer)

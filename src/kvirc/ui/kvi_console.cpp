@@ -148,6 +148,8 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 
 	m_pInput   = new KviInput(this,m_pNotifyListView);
 
+	m_pTmpHighLightedChannels = new QStringList;
+
 	if(KVI_OPTION_BOOL(KviOption_boolAutoLogConsole))m_pIrcView->startLogging();
 }
 
@@ -192,6 +194,8 @@ KviConsole::~KviConsole()
 
 	delete m_pContext;
 	m_pContext = 0;
+
+	delete m_pTmpHighLightedChannels;
 }
 
 void KviConsole::triggerCreationEvents()
@@ -580,6 +584,19 @@ int KviConsole::triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,c
 	return KVI_OUT_HIGHLIGHT;
 }
 
+void KviConsole::addHighlightedChannel(const QString & szChan)
+{
+	if(m_pTmpHighLightedChannels->contains(szChan,Qt::CaseInsensitive))
+		return;
+	else
+   		m_pTmpHighLightedChannels->append(szChan);
+}
+
+void KviConsole::removeHighlightedChannel(const QString & szChan)
+{
+	m_pTmpHighLightedChannels->removeOne(szChan);
+}
+
 // if it returns -1 you should just return and not display the message
 int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg)
 {
@@ -643,7 +660,7 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 
 	if(wnd->type() == KVI_WINDOW_TYPE_CHANNEL)
 	{
-		if(((KviChannel *)wnd)->isHighlightedUser(nick))
+		if(((KviChannel *)wnd)->isHighlightedUser(nick) || isHighlightedChannel(wnd->windowName()) )
 			return triggerOnHighlight(wnd,type,nick,user,host,szMsg,nick);
 
 		// FIXME: this is for userhighlighing
