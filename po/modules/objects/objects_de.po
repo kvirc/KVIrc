@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: objects_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-15 15:28+0100\n"
-"PO-Revision-Date: 2009-02-17 23:56+0100\n"
+"PO-Revision-Date: 2009-03-15 15:59+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -234,6 +234,7 @@ msgstr "Ziel ist kein Objekt"
 #: src/modules/objects/class_sql.cpp:207
 msgid "Duplicate connection name '%Q', old query connection removed"
 msgstr ""
+"Dupliziere Verbindungsnamen '%Q', die alte Query-Verbindung wurde entfernt"
 
 #: src/modules/objects/class_file.cpp:228
 msgid "Empty filename string"
@@ -401,13 +402,12 @@ msgid "Listen failure"
 msgstr "\"Listen\" fehlgeschlagen"
 
 #: src/modules/objects/class_sql.cpp:200
-#, fuzzy
 msgid "Missing Qt plugin for database %Q"
 msgstr "Qt-Plugin für Datenbank %Q fehlt"
 
 #: src/modules/objects/class_painter.cpp:1054
 msgid "Missing filename"
-msgstr ""
+msgstr "Fehlender Dateiname"
 
 #: src/modules/objects/class_socket.cpp:705
 msgid "No IPv6 support in this executable"
@@ -443,7 +443,7 @@ msgstr "Kein solcher Öffnen-Modus '%Q'"
 #: src/modules/objects/class_painter.cpp:1077
 #: src/modules/objects/class_painter.cpp:1102
 msgid "No valid paint device"
-msgstr ""
+msgstr "Kein gültiges Paint-Device"
 
 #: src/modules/objects/class_widget.cpp:1245
 #: src/modules/objects/class_widget.cpp:1251
@@ -841,6 +841,8 @@ msgstr "Unbekannter Wortumbruch '%Q'"
 #: src/modules/objects/class_lineedit.cpp:471
 msgid "Unkonwn '%Q' completition mode, switching to default popupCompletition"
 msgstr ""
+"Unbekannter '%Q' Vervollständigungsmodus, wechsle zum Standard "
+"popupCompletion"
 
 #: src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"

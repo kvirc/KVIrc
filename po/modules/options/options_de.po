@@ -10,13 +10,13 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-15 15:28+0100\n"
-"PO-Revision-Date: 2009-01-27 01:23+0100\n"
+"PO-Revision-Date: 2009-03-15 16:03+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
-"Language-Team: german <de@li.org>\n"
+"Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/options/optw_dcc.cpp:277 src/modules/options/optw_avatar.cpp:72
@@ -1144,26 +1144,25 @@ msgstr ""
 "ein Hintergrundbild unten ausgewählt sein.</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:70
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image to below or check the \"Use compositing "
 "for real transparency\" option.</center>"
 msgstr ""
 "<center>Diese Option macht alle KVIrc-Fenster transparent.<br>Es muss ein "
-"Hintergrundbild unten ausgewählt oder die Option <b>\"KDE-Arbeitsfläche für "
+"Hintergrundbild unten ausgewählt oder die Option <b>\"Compositing für echte"
 "Transparenz benutzen\" aktiviert sein.</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:76
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image to below or check the \"Use desktop "
 "background for transparency\" option.</center>"
 msgstr ""
 "<center>Diese Option macht alle KVIrc-Fenster transparent.<br>Es muss ein "
-"Hintergrundbild unten ausgewählt oder die Option <b>\"KDE-Arbeitsfläche für "
-"Transparenz benutzen\" aktiviert sein.</center>"
+"Hintergrundbild unten ausgewählt oder die Option <b>"
+"\"Arbeitsflächenhintergrund "
+"für Transparenz benutzen\" aktiviert sein.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:100
 msgid ""
@@ -4158,9 +4157,8 @@ msgid "Use bash-like nick completion"
 msgstr "Bash-ähnliche Nick-Komplettierung benutzen"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:100
-#, fuzzy
 msgid "Use compositing for real transparency"
-msgstr "KDE-Arbeitsfläche für Transparenz benutzen"
+msgstr "Compositing für echte Transparenz benutzen"
 
 #: src/modules/options/optw_highlighting.cpp:95
 msgid "Use custom alert level"
@@ -4171,9 +4169,8 @@ msgid "Use default user mode"
 msgstr "Standard-Benutzermodus benutzen"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:116
-#, fuzzy
 msgid "Use desktop background for transparency"
-msgstr "KDE-Arbeitsfläche für Transparenz benutzen"
+msgstr "Arbeitsflächenhintergrund für Transparenz benutzen"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"

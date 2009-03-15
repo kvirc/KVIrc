@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: register_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-03-15 15:28+0100\n"
-"PO-Revision-Date: 2009-02-18 22:11+0100\n"
+"PO-Revision-Date: 2009-03-15 16:07+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -71,30 +71,27 @@ msgid "&Remove"
 msgstr "Entfe&rnen"
 
 #: src/modules/reguser/edituser.cpp:260
-#, fuzzy
 msgid ""
 "<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
 "match any hostname.</center>"
 msgstr ""
 "<center>Dies ist der <b>Hostname</b>, der auf den Benutzer passen muss. "
-"<b>*</b> wird auf jeden Hostnamen passan.</center>"
+"<b>*</b> wird auf jeden Hostnamen passen.</center>"
 
 #: src/modules/reguser/edituser.cpp:242
-#, fuzzy
 msgid ""
 "<center>This is the <b>nickname</b> that will match this user, default value "
 "is the registered name.</center>"
 msgstr ""
-"<center>Dies ist der <b>Nickname</b>, der auf den Benutzer passen muss, "
+"<center>Dies ist der <b>Nickname</b>, der auf diesen Benutzer passen muss, "
 "Standard ist der registrierte Name.</center>"
 
 #: src/modules/reguser/edituser.cpp:251
-#, fuzzy
 msgid ""
 "<center>This is the <b>username</b> that will match this user. <b>*</b> will "
 "match any username.</center>"
 msgstr ""
-"<center>Dies ist der <b>Username</b>, der auf den Benutzer passen muss. "
+"<center>Dies ist der <b>Username</b>, der auf diesen Benutzer passen muss. "
 "<b>*</b> wird auf jeden Username passen.</center>"
 
 #: src/modules/reguser/dialog.cpp:93
@@ -554,3 +551,4 @@ msgstr "Benutzer nicht gefunden (%Q)"
 #: src/modules/reguser/edituser.cpp:91
 msgid "Value"
 msgstr "Wert"
+
