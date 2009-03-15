@@ -314,7 +314,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("PasteLastLogOnChannelJoin",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("PasteLastLogOnQueryJoin",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("UseSpecifiedSmartColorForOwnNick",false,KviOption_sectFlagIrcView | KviOption_groupTheme),
-	BOOL_OPTION("UseFullWordHighlighting",false,KviOption_sectFlagIrcView)
+	BOOL_OPTION("UseFullWordHighlighting",false,KviOption_sectFlagIrcView),
+	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

@@ -1746,7 +1746,20 @@ void KviInputEditor::completion(bool bShift)
 		// empty word will end up here
 		if(m_pUserListView)
 		{
-			if(KVI_OPTION_BOOL(KviOption_boolBashLikeNickCompletion))
+			if(KVI_OPTION_BOOL(KviOption_boolZshLikeNickCompletion))
+			{
+				if(m_szLastCompletedNick.isEmpty())
+				{
+					//first round of zsh completion
+					m_pUserListView->completeNickBashLike(szWord,&tmp,bShift);
+					bIsNick = true;
+					m_szLastCompletedNick=szWord;
+				} else {
+					standardNickCompletion(bShift,szWord,bFirstWordInLine);
+					repaintWithCursorOn();
+					return;
+				}
+			} else if(KVI_OPTION_BOOL(KviOption_boolBashLikeNickCompletion))
 			{
 				m_pUserListView->completeNickBashLike(szWord,&tmp,bShift);
 				bIsNick = true;

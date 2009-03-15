@@ -147,7 +147,12 @@ KviInputFeaturesOptionsWidget::KviInputFeaturesOptionsWidget(QWidget * parent)
 	addUIntSelector(0,4,0,4,__tr2qs_ctx("Expand tabulations in input using this amount of spaces:","options"),KviOption_uintSpacesToExpandTabulationInput,1,24,8,true);
 
 	KviTalGroupBox * g = addGroupBox(0,5,0,5,Qt::Horizontal,__tr2qs_ctx("Nick completion","options"));
-	addBoolSelector(g,__tr2qs_ctx("Use bash-like nick completion","options"),KviOption_boolBashLikeNickCompletion);
+	KviBoolSelector * b, *c;
+	b = addBoolSelector(g,__tr2qs_ctx("Use bash-like nick completion","options"),KviOption_boolBashLikeNickCompletion,!KVI_OPTION_BOOL(KviOption_boolZshLikeNickCompletion));
+	c = addBoolSelector(g,__tr2qs_ctx("Use zsh-like nick completion","options"),KviOption_boolZshLikeNickCompletion,!KVI_OPTION_BOOL(KviOption_boolBashLikeNickCompletion));
+	connect(b,SIGNAL(toggled(bool)),c,SLOT(setDisabled(bool)));
+	connect(c,SIGNAL(toggled(bool)),b,SLOT(setDisabled(bool)));
+
 	addStringSelector(g,__tr2qs_ctx("Nick completion postfix string","options"),KviOption_stringNickCompletionPostfix);
 	addBoolSelector(g,__tr2qs_ctx("Use the completion postfix string for the first word only","options"),KviOption_boolUseNickCompletionPostfixForFirstWordOnly);
 	addRowSpacer(0,6,0,6);
