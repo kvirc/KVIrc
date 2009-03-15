@@ -321,7 +321,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPasteLastLogOnChannelJoin 227                /* channel */
 #define KviOption_boolPasteLastLogOnQueryJoin 228                  /* query */
 #define KviOption_boolUseSpecifiedSmartColorForOwnNick 229 /* interface::ircview */
-#define KVI_NUM_BOOL_OPTIONS 230
+#define KviOption_boolUseFullWordHighlighting 230 /* highlight */
+#define KVI_NUM_BOOL_OPTIONS 231
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

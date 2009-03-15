@@ -56,16 +56,23 @@ KviHighlightingOptionsWidget::KviHighlightingOptionsWidget(QWidget * parent)
 		SIGNAL(toggled(bool)),
 		addStringListSelector(0,1,0,1,__tr2qs_ctx("Words to highlight:","options"),KviOption_stringlistHighlightWords,KVI_OPTION_BOOL(KviOption_boolUseWordHighlighting)),
 		SLOT(setEnabled(bool)));
-	addStringSelector(0,2,0,2,__tr2qs_ctx("Word splitters:","options"),KviOption_stringWordSplitters);
+
+	connect(
+		addBoolSelector(0,2,0,2,__tr2qs_ctx("Highlight every occurence of a word inside text","options"),KviOption_boolUseFullWordHighlighting),
+		SIGNAL(toggled(bool)),
+		addStringSelector(0,3,0,3,__tr2qs_ctx("Highlight only whole words using these word splitters:","options"),KviOption_stringWordSplitters,!KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting)),
+		SLOT(setDisabled(bool)));
+	
+	
 	// This can be used even without Word highlighting
-	b = addBoolSelector(0,3,0,3,__tr2qs_ctx("Highlight messages containing my nickname","options"),KviOption_boolAlwaysHighlightNick);
+	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Highlight messages containing my nickname","options"),KviOption_boolAlwaysHighlightNick);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will highlight any user message containing your current nickname</center>","options"));
-	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Flash the system taskbar entry on highlighted messages","options"),KviOption_boolFlashWindowOnHighlightedMessages);
+	b = addBoolSelector(0,5,0,5,__tr2qs_ctx("Flash the system taskbar entry on highlighted messages","options"),KviOption_boolFlashWindowOnHighlightedMessages);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will (attempt to) flash the system taskbar entry when a highlighted message is printed and KVIrc is not the active window</center>","options"));
-	b = addBoolSelector(0,5,0,5,__tr2qs_ctx("Popup the notifier window on highlighted messages","options"),KviOption_boolPopupNotifierOnHighlightedMessages);
+	b = addBoolSelector(0,6,0,6,__tr2qs_ctx("Popup the notifier window on highlighted messages","options"),KviOption_boolPopupNotifierOnHighlightedMessages);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will popup a little notifier window in the low right corner of your desktop when a highlighted message is printed and KVIrc is not the active window</center>","options"));
 
-	addRowSpacer(0,6,0,6);
+	addRowSpacer(0,7,0,7);
 }
 
 KviHighlightingOptionsWidget::~KviHighlightingOptionsWidget()

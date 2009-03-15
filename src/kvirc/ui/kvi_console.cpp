@@ -613,22 +613,30 @@ int KviConsole::applyHighlighting(KviWindow *wnd,int type,const QString &nick,co
 		{
 			if((*it).isEmpty())
 				continue;
-			if(!szPattern.isEmpty())
-				rgxHlite.setPattern(
-				QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(
-					QRegExp::escape(szPattern), QRegExp::escape(*it)
-					)
-				);
-			else
-				rgxHlite.setPattern(
-				QString("(?:\\s|^)%1(?:\\s|$)").arg(
-					QRegExp::escape(*it)
-					)
-				);
-			rgxHlite.setCaseSensitivity(Qt::CaseInsensitive);
-			if(szStripMsg.contains(rgxHlite))
+			if(KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting))
 			{
-				return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
+				if(szStripMsg.contains(*it))
+				{
+					return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
+				}
+			} else {
+				if(!szPattern.isEmpty())
+					rgxHlite.setPattern(
+					QString("(?:[%1]|\\s|^)%2(?:[%1]|\\s|$)").arg(
+						QRegExp::escape(szPattern), QRegExp::escape(*it)
+						)
+					);
+				else
+					rgxHlite.setPattern(
+					QString("(?:\\s|^)%1(?:\\s|$)").arg(
+						QRegExp::escape(*it)
+						)
+					);
+				rgxHlite.setCaseSensitivity(Qt::CaseInsensitive);
+				if(szStripMsg.contains(rgxHlite))
+				{
+					return triggerOnHighlight(wnd,type,nick,user,host,szMsg,*it);
+				}
 			}
 		}
 	}
