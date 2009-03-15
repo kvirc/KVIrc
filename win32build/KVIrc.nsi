@@ -6,8 +6,8 @@
 !include "LogicLib.nsh"
 
 Name "KVIrc"
-!define VERSION '3.4.0'
-!define RELEASE_NAME 'Virgo'
+!define VERSION '4.0.0-wip'
+!define RELEASE_NAME 'Insomnia (wip)'
 !define /date RELEASE_VERSION '%Y%m%d'
 !define URL_ABOUT 'http://www.kvirc.net/'
 !define URL_SUPPORT 'http://www.kvirc.net/'
@@ -19,7 +19,7 @@ SetCompressor /SOLID lzma
 XPStyle on
 InstallDir $PROGRAMFILES\KVIrc
 InstallDirRegKey HKLM "Software\KVIrc" "Install_Dir"
-Icon ..\data\resources\icon1.ico
+Icon ..\data\resources_win32\icon1.ico
 
 ;--------------------------------
 !include "WordFunc.nsh"
@@ -27,8 +27,8 @@ Icon ..\data\resources\icon1.ico
 Var LocalDir
 ;--------------------------------
 
-!define MUI_ICON ..\data\resources\icon1.ico
-!define MUI_UNICON ..\data\resources\icon1.ico
+!define MUI_ICON ..\data\resources_win32\icon1.ico
+!define MUI_UNICON ..\data\resources_win32\icon1.ico
 !define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
 !define MUI_LANGDLL_REGISTRY_KEY "Software\KVIrc" 
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
@@ -76,6 +76,7 @@ LangString KVIrcIsRunning ${LANG_ENGLISH} "An instance of KVIrc is currently run
 ; Sections
 
 Section -RemovePreviousInstallation
+    SetShellVarContext all
     ; Remove old installer
     ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc_is1" "InstallLocation"
     StrLen $R1 "$R0"
@@ -153,7 +154,7 @@ SectionEnd
 
 ; Optional section (can be disabled by the user)
 Section $(StartMenuSection) StartMenuSection_IDX
-
+  SetShellVarContext all
   CreateDirectory "$SMPROGRAMS\KVIrc"
   CreateShortCut "$SMPROGRAMS\KVIrc\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
   CreateShortCut "$SMPROGRAMS\KVIrc\KVIrc.lnk" "$INSTDIR\KVIrc.exe" "" "$INSTDIR\KVIrc.exe" 0 "" "" $(ProgramDescription)
@@ -161,10 +162,12 @@ Section $(StartMenuSection) StartMenuSection_IDX
 SectionEnd
 
 Section $(DesktopSection) DesktopSection_IDX
+  SetShellVarContext all
   CreateShortCut "$DESKTOP\KVIrc.lnk" "$INSTDIR\KVIrc.exe" "" "$INSTDIR\KVIrc.exe" 0 "" "" $(ProgramDescription)
 SectionEnd
 
 Section $(TraySection) TraySection_IDX
+  SetShellVarContext all
   CreateShortCut "$QUICKLAUNCH\KVIrc.lnk" "$INSTDIR\KVIrc.exe" "" "$INSTDIR\KVIrc.exe" 0 "" "" $(ProgramDescription)
 SectionEnd
 
@@ -217,7 +220,7 @@ FunctionEnd
 ; Uninstaller
 
 Section !un.$(UnGeneralFiles)
-  
+  SetShellVarContext all
   ; Remove registry keys
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc"
   DeleteRegKey HKLM SOFTWARE\KVIrc
