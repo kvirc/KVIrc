@@ -68,7 +68,6 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	g->addWidget(m_pTreeWidget,0,0,1,2);
-	//g->addMultiCellWidget(m_pTreeWidget,0,0,0,1);
 	connect(m_pTreeWidget,SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(itemClicked(QTreeWidgetItem *,int)));
 	connect(m_pTreeWidget,SIGNAL(itemActivated(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *,int)));
 
@@ -90,7 +89,6 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 	m_pPass->setEchoMode(QLineEdit::Password);
 
 	g->addWidget(m_pGroupBox,1,0,1,2);
-	//g->addMultiCellWidget(m_pGroupBox,1,1,0,1);
 
 	KviTalHBox * hb = new KviTalHBox(this);
 	hb->setSpacing(4);
@@ -301,6 +299,14 @@ void KviChannelsJoinWindow::regClicked()
 
 	KviKvsScript::run(szCmd,w);
 	fillListView();
+
+	//focus the new item (in reality, the first matching one)
+	QList<QTreeWidgetItem*> items = m_pTreeWidget->findItems(szTmp, Qt::MatchRecursive | Qt::MatchExactly);
+	if(!items.empty())
+	{
+		m_pTreeWidget->setCurrentItem(items.first());
+		m_pTreeWidget->scrollToItem(items.first());
+	}
 }
 
 /*

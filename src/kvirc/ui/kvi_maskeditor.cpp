@@ -306,7 +306,7 @@ void KviMaskEditor::removeMask(KviMaskEntry *e)
 	}
 }
 
-void KviMaskEditor::itemDoubleClicked( KviTalTreeWidgetItem * pItem,int column)
+void KviMaskEditor::itemDoubleClicked( KviTalTreeWidgetItem * pItem, int )
 {
 	if(pItem)
 	{

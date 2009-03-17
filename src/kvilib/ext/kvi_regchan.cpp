@@ -79,6 +79,7 @@ void KviRegisteredChannelDataBase::save(const QString &filename)
 {
 	KviConfig cfg(filename,KviConfig::Write);
 	cfg.clear();
+	cfg.preserveEmptyGroups(true);
 
 	KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*m_pChannelDict);
 	while(KviRegisteredChannelList * l = it.current())

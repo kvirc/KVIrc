@@ -11,18 +11,18 @@ defpopup(highlight)
 		if($0!=""){
 			%:regName = $reguser.match($mask($0))
 		        %:beingHl = $reguser.property(%:regName,highlight)
-			%:beingHlTmp = $tmphighlight.ishighlighted($0)
+			%:beingHlTmp = $tmphighlight.isNickHighLighted($0)
 		}
 	}
 
 	item($tr("Stop Highlighting (Local)")) (%:beingHlTmp && !%:beingHl)
 	{
-		tmphighlight.remove $0
+		tmphighlight.removeNick $0
 	}
 
 	item($tr("Start Highlighting (Local)")) (!%:beingHlTmp && !%:beingHl)
 	{
-		tmphighlight.add $0
+		tmphighlight.addNick $0
 	}
 
 	popup($tr("Always Highlight")) (!%:beingHl && !%:regName)

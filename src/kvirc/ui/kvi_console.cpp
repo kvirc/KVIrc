@@ -394,8 +394,7 @@ void KviConsole::saveProperties(KviConfig *cfg)
 {
 	KviWindow::saveProperties(cfg);
 	cfg->writeEntry("Splitter",m_pSplitter->sizes());
-	cfg->writeEntry("NotifyListViewVisible",m_pNotifyListView->isVisible());
-
+	cfg->writeEntry("NotifyListViewVisible",m_pNotifyViewButton->isChecked());
 }
 
 void KviConsole::getBaseLogFileName(QString &buffer)
@@ -421,15 +420,7 @@ void KviConsole::loadProperties(KviConfig *cfg)
 	QList<int> def;
 	def.append((w * 85) / 100);
 	def.append((w * 15) / 100);
-	QList<int> cur = cfg->readIntListEntry("Splitter",def);
-	// check the size correctness
-	if(cur.count() != 2)cur = def;
-	else {
-		int i1 = cur[0];
-		int i2 = cur[1];
-		if(i1 < i2)cur = def;
-	}
-	m_pSplitter->setSizes(cur);
+	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));
 	KviWindow::loadProperties(cfg);
 	showNotifyList(cfg->readBoolEntry("NotifyListViewVisible",false));
 }
