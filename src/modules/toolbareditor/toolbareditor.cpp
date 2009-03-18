@@ -137,14 +137,12 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	
 	QLabel * l = new QLabel(szText,this);
 	g->addWidget(l,0,0,1,6);
-//	g->addMultiCellWidget(l,0,0,0,5);
 
 	l = new QLabel(__tr2qs_ctx("Label","editor") + ":",this);
 	g->addWidget(l,1,0);
 
 	m_pLabelEdit = new QLineEdit(this);
 	g->addWidget(m_pLabelEdit,1,1,1,5);
-//	g->addMultiCellWidget(m_pLabelEdit,1,1,1,5);
 	m_pLabelEdit->setText(szLabel);
 	connect(m_pLabelEdit,SIGNAL(textChanged(const QString &)),this,SLOT(labelTextChanged(const QString &)));
 	
@@ -154,12 +152,9 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	m_pIconEdit = new QLineEdit(this);
 	m_pIconEdit->setReadOnly(true);
 	g->addWidget(m_pIconEdit,2,1,1,4);
-
-	//g->addMultiCellWidget(m_pIconEdit,2,2,1,4);
 	
 	m_pIconButton = new QPushButton(this);
 	g->addWidget(m_pIconButton,2,5,1,1);
-//	g->addMultiCellWidget(m_pIconButton,2,2,5,5);
 	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(iconButtonClicked()));
 
 	iconSelected(szIconId);
@@ -178,7 +173,6 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	m_pIdEdit->setText(szId);
 
 	g->addWidget(m_pAdvanced,3,0,1,6);
-//	g->addMultiCellWidget(m_pAdvanced,3,3,0,5);
 	m_pAdvanced->hide();
 
 	m_pLabelEdit->setFocus();
@@ -187,7 +181,6 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	connect(pb,SIGNAL(clicked()),this,SLOT(okClicked()));
 	pb->setMinimumWidth(80);
 	g->addWidget(pb,4,4,1,2);
-	//g->addMultiCellWidget(pb,4,4,4,5);
 	
 	pb = new QPushButton(__tr2qs_ctx("Cancel","editor"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
@@ -198,7 +191,6 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	connect(m_pAdvancedButton,SIGNAL(clicked()),this,SLOT(advancedClicked()));
 	m_pAdvancedButton->setMinimumWidth(100);
 	g->addWidget(m_pAdvancedButton,4,0,1,2);
-//	g->addMultiCellWidget(m_pAdvancedButton,4,4,0,1);
 	
 	g->setRowStretch(0,1);
 	g->setColumnStretch(2,1);
@@ -303,7 +295,6 @@ KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
 	QGridLayout * g = new QGridLayout(this);
 	m_pDrawer = new KviActionDrawer(this);
 	g->addWidget(m_pDrawer,0,0,7,1);
-//	g->addMultiCellWidget(m_pDrawer,0,6,0,0);
 
 	QPushButton * b = new QPushButton(__tr2qs_ctx("New ToolBar","editor"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(newToolBar()));

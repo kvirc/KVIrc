@@ -1205,7 +1205,7 @@ void KviFrame::hideEvent ( QHideEvent * e)
 {
 	if(KVI_OPTION_BOOL(KviOption_boolMinimizeInTray))
 	{
-		if(e->spontaneous() && (windowState() & Qt::WindowMinimized))
+		if(e->spontaneous())
 		{
 
 			if(!dockExtension())

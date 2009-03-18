@@ -121,6 +121,7 @@ KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage
 	KviTalIconAndRichTextItemDelegate * pItemDelegate = new KviTalIconAndRichTextItemDelegate(this);
 	setItemDelegate(pItemDelegate);
 	setSelectionMode(QAbstractItemView::SingleSelection);
+	setDragEnabled(true);
 	setSortingEnabled(true);
 	setMinimumHeight(400);
 	setMinimumWidth(380);
@@ -132,17 +133,6 @@ KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage
 	szPic += "/kvi_actiondrawer.png";
 	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
 	setStyleSheet(szStyle);
-	/*
-	m_pPage = pParent;
-	setSelectionMode(Single);[{['
-
-	//header()->hide();
-	int iWidth = viewport()->width();
-	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
-	setHeaderLabel("");
-	addColumn("",iWidth);
-	setSorting(0,true);
-	*/
 }
 
 KviActionDrawerPageListWidget::~KviActionDrawerPageListWidget()
@@ -178,7 +168,6 @@ KviActionDrawerPageListWidgetItem::KviActionDrawerPageListWidgetItem(KviTalListW
 : KviTalListWidgetItem(pList)
 {
 	m_pListWidget = pList;
-	//setDragEnabled(true);
 	m_szName = pAction->name();
 	QString szText = "<b>" + pAction->visibleName() + "</b>";
 	if(pAction->isKviUserActionNeverOverrideThis())
