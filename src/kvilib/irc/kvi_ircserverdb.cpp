@@ -471,6 +471,7 @@ void KviServerDataBase::load(const QString & filename)
 			pNewNet->m_szNickName = cfg.readQStringEntry("NickName");
 			pNewNet->m_szRealName = cfg.readQStringEntry("RealName");
 			pNewNet->m_szUserName = cfg.readQStringEntry("UserName");
+			pNewNet->m_szPass = cfg.readQStringEntry("Pass");
 			pNewNet->m_szOnConnectCommand = cfg.readQStringEntry("OnConnectCommand");
 			pNewNet->m_szOnLoginCommand = cfg.readQStringEntry("OnLoginCommand");
 			pNewNet->m_pNickServRuleSet = KviNickServRuleSet::load(&cfg,QString());
@@ -545,6 +546,8 @@ void KviServerDataBase::save(const QString &filename)
 			cfg.writeEntry("RealName",pNetwork->m_szRealName);
 		if(!pNetwork->m_szUserName.isEmpty())
 			cfg.writeEntry("UserName",pNetwork->m_szUserName);
+		if(!pNetwork->m_szPass.isEmpty())
+			cfg.writeEntry("Pass",pNetwork->m_szPass);
 		if(!pNetwork->m_szOnConnectCommand.isEmpty())
 			cfg.writeEntry("OnConnectCommand",pNetwork->m_szOnConnectCommand);
 		if(!pNetwork->m_szOnLoginCommand.isEmpty())

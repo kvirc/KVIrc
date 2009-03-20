@@ -135,6 +135,11 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 		"If this field is left empty (most common case), KVIrc will use the default username " \
 		"specified in the \"Identity\" options tab.</center>","options"));
 
+	l = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
+	m_pPassEditor = new QLineEdit(gbox);
+	m_pPassEditor->setEchoMode(QLineEdit::Password);
+	m_pPassEditor->setText(n->password());
+	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("<center>If this network requires a password, put it in this field, otherwise leave it empty.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Nickname:","options"),gbox);
 	m_pNickEditor = new QLineEdit(gbox);
@@ -408,6 +413,7 @@ void KviNetworkDetailsWidget::enableDisableNickServControls()
 void KviNetworkDetailsWidget::fillData(KviNetwork * n)
 {
 	n->setUserName(m_pUserEditor->text());
+	n->setPassword(m_pPassEditor->text());
 	n->setNickName(m_pNickEditor->text());
 	n->setRealName(m_pRealEditor->text());
 	n->setDescription(m_pDescEditor->text());

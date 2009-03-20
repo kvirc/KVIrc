@@ -74,6 +74,7 @@ protected:
 	QString              m_szNickName;                // preferred nick name
 	QString              m_szUserName;                // preferred user name
 	QString              m_szRealName;                // preferred real name
+	QString              m_szPass;                    // special password
 	QString              m_szOnConnectCommand;        // the command to run on connect
 	QString              m_szOnLoginCommand;          // the command to run after login
 	QStringList        * m_pChannelList;              // Channels to auto join
@@ -131,6 +132,12 @@ public:
 	* \return const QString &
 	*/
 	inline const QString & userName() const { return m_szUserName; };
+
+	/**
+	* \brief Returns the password of the user associated to the network
+	* \return const QString &
+	*/
+	inline const QString & password() const { return m_szPass; };
 
 	/**
 	* \brief Returns the commands to run on network login
@@ -249,6 +256,12 @@ public:
 	* \return void
 	*/
 	inline void setUserName(const QString & u){ m_szUserName = u; };
+
+	/**
+	* \brief Sets the password of the user associated to the network
+	* \return void
+	*/
+	inline void setPassword(const QString & p){ m_szPass = p; };
 	
 	/**
 	* \brief Sets the list of channels to mark for autojoin

@@ -1124,11 +1124,27 @@ void KviIrcConnection::loginToIrcServer()
 			szHidden.append('*');
 
 		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Sending %s as password"),szHidden.ptr());
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific password (%s)"),szHidden.ptr());
 
 		// The colon should allow user to use passwords with whitespaces.
 		// Non-whitespace passwords are unaffected.
 		if(!sendFmtData("PASS :%s",encodeText(pServer->m_szPass).data()))
+		{
+			// disconnected in the meantime
+			return;
+		}
+	} else if(!pNet->password().isEmpty()) {
+		KviStr szHidden;
+		int iLen = pNet->password().length();
+		for(int i=0; i<iLen; i++)
+			szHidden.append('*');
+
+		if(!_OUTPUT_MUTE)
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific password (%s)"),szHidden.ptr());
+
+		// The colon should allow user to use passwords with whitespaces.
+		// Non-whitespace passwords are unaffected.
+		if(!sendFmtData("PASS :%s",encodeText(pNet->password()).data()))
 		{
 			// disconnected in the meantime
 			return;

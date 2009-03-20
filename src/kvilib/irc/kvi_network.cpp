@@ -76,6 +76,7 @@ void KviNetwork::copyFrom(const KviNetwork &src)
 	m_szNickName = src.m_szNickName;
 	m_szRealName = src.m_szRealName;
 	m_szUserName = src.m_szUserName;
+	m_szPass = src.m_szPass;
 	m_bAutoConnect = src.m_bAutoConnect;
 	m_szUserIdentityId = src.m_szUserIdentityId;
 	m_szOnConnectCommand  = src.m_szOnConnectCommand;
