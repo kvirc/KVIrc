@@ -1057,28 +1057,6 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 
 	KviConsole * console = msg->console();
 
-	if(szHost == "*")
-	{
-		if(szUser == "*")
-		{
-			if(szNick.indexOf('.') != -1)
-			{
-				// server notice
-				// FIXME: "Dedicated window for server notices ?"
-				QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
-				if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnServerNotice,console,szNick,szMsgText))
-					msg->setHaltOutput();
-				if(!msg->haltOutput())
-				{
-					KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
-						console->activeWindow() : (KviWindow *)(console);
-					pOut->output(KVI_OUT_SERVERNOTICE,"[\r!s\r%Q\r]: %Q",&szNick,&szMsgText);
-				}
-				return;
-			}
-		}
-	}
-
 	// FIXME: "DEDICATED CTCP WINDOW ?"
 
 	KviStr * pTrailing = msg->trailingString();
@@ -1327,19 +1305,8 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 		chan = msg->connection()->findChannel(szTarget);
 	}
 
-	if(!chan)
+	if(chan)
 	{
-		if(!msg->haltOutput())
-		{
-			KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
-				console->activeWindow() : (KviWindow *)(console);
-			QString szBroad;
-			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
-			KviQString::sprintf(szBroad,"[>> %Q] %Q",&szOriginalTarget,&szMsgText);
-			console->outputPrivmsg(pOut,KVI_OUT_BROADCASTNOTICE,szNick,szUser,szHost,szBroad,0);
-			return;
-		}
-	} else {
 		chan->userAction(szNick,szUser,szHost,KVI_USERACTION_NOTICE);
 
 		KviStr szBuffer; const char * txtptr; int msgtype;
@@ -1359,6 +1326,42 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szMsgText,0);
 			}
 		}
+		return;
+	}
+
+	//server notice
+	if(szHost == "*")
+	{
+		if(szUser == "*")
+		{
+			if(szNick.indexOf('.') != -1)
+			{
+				// server notice
+				// FIXME: "Dedicated window for server notices ?"
+				QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+				if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnServerNotice,console,szNick,szMsgText))
+					msg->setHaltOutput();
+				if(!msg->haltOutput())
+				{
+					KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
+						console->activeWindow() : (KviWindow *)(console);
+					pOut->output(KVI_OUT_SERVERNOTICE,"[\r!s\r%Q\r]: %Q",&szNick,&szMsgText);
+				}
+				return;
+			}
+		}
+	}
+
+	//not better specified notice
+	if(!msg->haltOutput())
+	{
+		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
+			console->activeWindow() : (KviWindow *)(console);
+		QString szBroad;
+		QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+		KviQString::sprintf(szBroad,"[>> %Q] %Q",&szOriginalTarget,&szMsgText);
+		console->outputPrivmsg(pOut,KVI_OUT_BROADCASTNOTICE,szNick,szUser,szHost,szBroad,0);
+		return;
 	}
 }
 
