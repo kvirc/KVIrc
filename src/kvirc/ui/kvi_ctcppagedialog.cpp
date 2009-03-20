@@ -36,7 +36,7 @@
 #include <QSpacerItem>
 #include <QStackedWidget>
 #include <QPushButton>
-#include <QTabBar>
+#include <QTabWidget>
 
 // kvi_app.cpp
 extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
@@ -48,16 +48,12 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	setWindowTitle(__tr2qs("CTCP Page - KVIrc"));
 
 	QGridLayout * g = new QGridLayout(this);
-	m_pWidgetStack = new QStackedWidget(this);
-	g->addWidget(m_pWidgetStack,0,0);
-	m_pTabBar = new QTabBar(this);
-	m_pTabBar->setShape(QTabBar::TriangularSouth);
-	connect(m_pTabBar,SIGNAL(selected(int)),this,SLOT(tabSelected(int)));
+	m_pTabBar = new QTabWidget(this);
+	m_pTabBar->setTabShape(QTabWidget::Triangular);
 	g->addWidget(m_pTabBar,1,0);
 
 	g->setRowStretch(0,1);
 	g->addItem(new QSpacerItem(0, 15), 2, 0); 
-	//g->addRowSpacing(2,15);
 
 	m_pCloseButton = new QPushButton(__tr2qs("Close"),this);
 	connect(m_pCloseButton,SIGNAL(clicked()),this,SLOT(die()));
@@ -84,15 +80,8 @@ void KviCtcpPageDialog::die()
 	delete this;
 }
 
-void KviCtcpPageDialog::tabSelected(int id)
-{
-	m_pWidgetStack->widget(id)->raise();
-}
-
 void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,const QString &szHost,const QString &szMsg)
 {
-	int id = m_pTabBar->addTab(szNick);
-
 	QLabel * l = new QLabel(this);
 	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	//l->setMaximumWidth(600);
@@ -113,8 +102,8 @@ void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,cons
 	tmp += "]</center>";
 
 	l->setText(tmp);
-	m_pWidgetStack->addWidget(l);
-	m_pWidgetStack->widget(id)->raise();
+
+	int id = m_pTabBar->addTab(l, szNick);
 	m_pTabBar->setCurrentIndex(id);
 }
 
@@ -126,8 +115,8 @@ void KviCtcpPageDialog::closeEvent(QCloseEvent *)
 void KviCtcpPageDialog::popup()
 {
 	show();
-//	raise();
-//	setActiveWindow();
+	raise();
+	activateWindow();
 	m_pCloseButton->setFocus();
 }
 

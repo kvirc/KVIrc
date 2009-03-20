@@ -29,7 +29,7 @@
 
 #include <QWidget>
 
-class QTabBar;
+class QTabWidget;
 class QPushButton;
 class QStackedWidget;
 
@@ -40,8 +40,7 @@ public:
 	KviCtcpPageDialog();
 	~KviCtcpPageDialog();
 protected:
-	QStackedWidget * m_pWidgetStack;
-	QTabBar        * m_pTabBar;
+	QTabWidget     * m_pTabBar;
 	QPushButton    * m_pCloseButton;
 public:
 	void popup();
@@ -52,7 +51,6 @@ protected:
 	virtual void showEvent(QShowEvent * e);
 	virtual void closeEvent(QCloseEvent * e);
 protected slots:
-	void tabSelected(int id);
 	void die();
 };
 
