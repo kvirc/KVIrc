@@ -69,6 +69,26 @@ defpopup(highlight)
 	}
 }
 
+defpopup(channelhighlight)
+{
+	prologue
+	{
+		if($window!=""){
+			%:beingHlTmp = $tmphighlight.isChannelHighLighted($window)
+		}
+	}
+
+	item($tr("Stop Highlighting (Local)")) (%:beingHlTmp)
+	{
+		tmphighlight.removeChannel $window
+	}
+
+	item($tr("Start Highlighting (Local)")) (!%:beingHlTmp)
+	{
+		tmphighlight.addChannel $window
+	}
+}
+
 defpopup(ignore)
 {
 	prologue
@@ -729,6 +749,8 @@ defpopup(channeltextview)
 	}
 
 	separator
+
+	extpopup($tr("&Highlight"),channelhighlight,181)
 
 	item($tr("Copy Channel URL to Clipboard"),259)
 	{
