@@ -31,7 +31,7 @@ SUBDIRS(
 	mask math mediaplayer mircimport my
 	notifier
 	objects options
-	perl perlcore popupeditor proxydb
+	popupeditor proxydb
 	raweditor regchan reguser rijndael rot13
 	serverdb setup sharedfile sharedfileswindow snd socketspy spaste str system
 	texticons term theme tip tmphighlight toolbar toolbareditor torrent trayicon
@@ -42,3 +42,7 @@ SUBDIRS(
 	# forgotten ?
 	# offer
 )
+
+IF(COMPILE_PERL_SUPPORT)
+	SUBDIRS(perl perlcore)
+ENDIF()
