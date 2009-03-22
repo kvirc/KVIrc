@@ -227,6 +227,7 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 	setRootIsDecorated(true);
 	//Animation creates problem with the background painting on expande/collapse
 	//setAnimated(true);
+	setAutoFillBackground(false);
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));

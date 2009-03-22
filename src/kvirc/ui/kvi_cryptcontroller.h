@@ -26,7 +26,7 @@
 
 #include "kvi_settings.h"
 
-#if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
+#if defined(COMPILE_CRYPT_SUPPORT)
 	#include "kvi_crypt.h"
 	#include "kvi_heapobject.h"
 	#include "kvi_toolwindows_container.h"
