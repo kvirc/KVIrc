@@ -220,14 +220,6 @@ void KviTrayIcon::tipRequest(KviDynamicToolTip *,const QPoint &)
 //	return 0;
 //}
 
-//FIXME: Qt4 port
-/*void KviTrayIcon::mousePressEvent(QMouseEvent *e)
-{
-	if(e->button() & Qt::LeftButton)toggleParentFrame();
-	else if(e->button() & Qt::RightButton)
-		m_pContextPopup->popup(mapToGlobal(e->pos()));
-}*/
-
 void KviTrayIcon::doAway(bool)
 {
 	int id;
