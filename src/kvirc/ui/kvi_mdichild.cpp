@@ -113,7 +113,18 @@ KviMdiChild::~KviMdiChild()
 
 void KviMdiChild::closeEvent(QCloseEvent * e)
 {
-	widget()->close();
+	//this is tricky: first save a reference to our internal widget
+	QWidget * pClient = widget();
+	if(pClient)
+	{
+		//then, let's forget about it and make it forget about us
+		widget()->setParent(0);
+		unsetClient();
+		//make kviframe close it "the delete way"
+		pClient->close();
+	}
+	//while we survive for closing ourselves "the deleteLater() way"
+	deleteLater();
 	e->ignore();
 }
 
