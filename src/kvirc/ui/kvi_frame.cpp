@@ -83,6 +83,8 @@
 // FIXME: #warning "When a toolbar is moved , MdiManager is resized but does not update the MdiChild backgrounds"
 #endif
 
+#define KVI_DEFAULT_FRAME_CAPTION "KVIrc " KVI_VERSION " " KVI_RELEASE_NAME
+
 // Declared and managed by KviApp (kvi_app.cpp)
 extern KviConfig * g_pWinPropertiesConfig;
 KVIRC_API KviFrame * g_pFrame = 0; // the one and only frame object
@@ -93,6 +95,7 @@ KviFrame::KviFrame()
 	g_pFrame = this;
 
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC))));
+	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 
 	m_pWinList  = new KviPointerList<KviWindow>;
 	m_pWinList->setAutoDelete(false);
@@ -800,7 +803,6 @@ void KviFrame::childWindowActivated(KviWindow *wnd)
 	bool bActiveContextChanged = (m_pActiveContext != wnd->context());
 	m_pActiveContext = wnd->context();
 
-	if(wnd->isMaximized() && wnd->mdiParent())updateCaption();
 	m_pWindowList->setActiveItem(wnd->windowListItem());
 
 	//wnd->gainedActiveWindowStatus(); // <-- atm unused
@@ -839,15 +841,6 @@ void KviFrame::windowActivationChange(bool bOldActive)
 		if(g_pActiveWindow)g_pActiveWindow->lostUserFocus();
 	}
 }
-
-#define KVI_DEFAULT_FRAME_CAPTION "KVIrc " KVI_VERSION " " KVI_RELEASE_NAME
-
-void KviFrame::updateCaption()
-{
-	//the caption of an eventual maximized mdichild is already appended by qt
-	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
-}
-
 
 void KviFrame::closeEvent(QCloseEvent *e)
 {
@@ -951,7 +944,6 @@ void KviFrame::applyOptions()
 {
 	m_pMdi->update();
 	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())wnd->applyOptions();
-	updateCaption();
 
 	m_pWindowList->applyOptions();
 	g_pTextIconManager->applyOptions();
