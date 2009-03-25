@@ -102,12 +102,6 @@ LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
 # Release type
 #
 ###############################################################################
-SET(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
-SET(CMAKE_CXX_FLAGS_RELEASE        "-O2")
-SET(CMAKE_CXX_FLAGS_DEBUG          "-O0 -g")
-SET(CMAKE_C_FLAGS_RELWITHDEBINFO   "-O2 -g")
-SET(CMAKE_C_FLAGS_RELEASE          "-O2")
-SET(CMAKE_C_FLAGS_DEBUG            "-O0 -g")
 
 OPTION(WANT_DEBUG "Compile debug symbols" OFF)
 IF(DEBUG OR WITH_DEBUG)
