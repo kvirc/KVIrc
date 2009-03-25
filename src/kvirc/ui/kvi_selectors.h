@@ -109,13 +109,44 @@ public slots:
 	virtual void setEnabled(bool bEnabled);
 };
 
-
-class KVIRC_API KviPasswordSelector : public KviStringSelector
+class KVIRC_API KviPasswordSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
 public:
 	KviPasswordSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled);
-	~KviPasswordSelector(){};
+	~KviPasswordSelector();
+protected:
+	QLabel    * m_pLabel;
+	QLineEdit * m_pLineEdit;
+	QCheckBox * m_pCheckBox;
+	QString   * m_pOption;
+public:
+	void setValidator(QValidator * v){ m_pLineEdit->setValidator(v); };
+	void setMinimumLabelWidth(unsigned int uWidth){ m_pLabel->setMinimumWidth(uWidth); };
+	virtual void commit();
+	void setText(const QString& text);
+public slots:
+	virtual void setEnabled(bool bEnabled);
+protected slots:
+	void checkToggled(int state);
+};
+
+class KVIRC_API KviPasswordLineEdit : public KviTalHBox
+{
+	Q_OBJECT
+public:
+	KviPasswordLineEdit(QWidget * par);
+	~KviPasswordLineEdit();
+protected:
+	QLineEdit * m_pLineEdit;
+	QCheckBox * m_pCheckBox;
+public:
+	QString text();
+	void setText(const QString& text);
+public slots:
+	virtual void setEnabled(bool bEnabled);
+protected slots:
+	void checkToggled(int state);
 };
 
 class KVIRC_API KviPixmapPreview : public KviTalScrollView

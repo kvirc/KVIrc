@@ -136,8 +136,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 		"specified in the \"Identity\" options tab.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
-	m_pPassEditor = new QLineEdit(gbox);
-	m_pPassEditor->setEchoMode(QLineEdit::Password);
+	m_pPassEditor = new KviPasswordLineEdit(gbox);
 	m_pPassEditor->setText(n->password());
 	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("<center>If this network requires a password, put it in this field, otherwise leave it empty.</center>","options"));
 
@@ -420,17 +419,25 @@ void KviNetworkDetailsWidget::fillData(KviNetwork * n)
 	if(m_pAutoConnectCheck)
 		n->setAutoConnect(m_pAutoConnectCheck->isChecked());
 	if(m_pEncodingEditor)
-		if(m_pEncodingEditor->currentIndex() <= 0)n->setEncoding(QString());
-		else {
+	{
+		if(m_pEncodingEditor->currentIndex() <= 0)
+		{
+			n->setEncoding(QString());
+		} else {
 			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
 			n->setEncoding(d->szName);
 		}
+	}
 	if(m_pTextEncodingEditor)
-		if(m_pTextEncodingEditor->currentIndex() <= 0)n->setTextEncoding(QString());
-		else {
+	{
+		if(m_pTextEncodingEditor->currentIndex() <= 0)
+		{
+			n->setTextEncoding(QString());
+		} else {
 			KviLocale::EncodingDescription * dd = KviLocale::encodingDescription(m_pTextEncodingEditor->currentIndex() - 1);
 			n->setTextEncoding(dd->szName);
 		}
+	}
 	if(m_pChannelListSelector)
 		m_pChannelListSelector->commit();
 	if(m_lstChannels.isEmpty())n->setAutoJoinChannelList(0);
@@ -512,8 +519,7 @@ KviServerDetailsWidget::KviServerDetailsWidget(QWidget * par,KviServer * s)
 		"specified in the \"Identity\" options tab.</center>","options"));
 
 	l = new QLabel(__tr2qs_ctx("Password:","options"),gbox);
-	m_pPassEditor = new QLineEdit(gbox);
-	m_pPassEditor->setEchoMode(QLineEdit::Password);
+	m_pPassEditor = new KviPasswordLineEdit(gbox);
 	m_pPassEditor->setText(s->password());
 	KviTalToolTip::add(m_pPassEditor,__tr2qs_ctx("<center>If this server requires a password, put it in this field, otherwise leave it empty.</center>","options"));
 
@@ -895,17 +901,25 @@ void KviServerDetailsWidget::fillData(KviServer * s)
 	if(m_pLinkFilterEditor)
 		s->setLinkFilter(m_pLinkFilterEditor->lineEdit()->text());
 	if(m_pEncodingEditor)
-		if(m_pEncodingEditor->currentIndex() <= 0)s->m_szEncoding = "";
-		else {
+	{
+		if(m_pEncodingEditor->currentIndex() <= 0)
+		{
+			s->m_szEncoding = "";
+		} else {
 			KviLocale::EncodingDescription * d = KviLocale::encodingDescription(m_pEncodingEditor->currentIndex() - 1);
 			s->m_szEncoding = d->szName;
 		}
+	}
 	if(m_pTextEncodingEditor)
-		if(m_pTextEncodingEditor->currentIndex() <= 0)s->m_szTextEncoding = "";
-		else {
+	{
+		if(m_pTextEncodingEditor->currentIndex() <= 0)
+		{
+			s->m_szTextEncoding = "";
+		} else {
 			KviLocale::EncodingDescription * dd = KviLocale::encodingDescription(m_pTextEncodingEditor->currentIndex() - 1);
 			s->m_szTextEncoding = dd->szName;
 		}
+	}
 	s->setIp("");
 	if(m_pCacheIpCheck)
 		s->setCacheIp(m_pCacheIpCheck->isChecked());

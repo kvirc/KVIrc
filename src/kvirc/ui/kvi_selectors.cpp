@@ -167,11 +167,100 @@ void KviStringSelector::setText(const QString& text){
 }
 
 KviPasswordSelector::KviPasswordSelector(QWidget * par,const QString & txt,QString *pOption,bool bEnabled)
-: KviStringSelector(par,txt,pOption,bEnabled)
+: KviTalHBox(par) , KviSelectorInterface()
 {
+	m_pLabel = new QLabel(txt,this);
+	m_pLineEdit = new QLineEdit(this);
+	m_pCheckBox = new QCheckBox(this);
 	m_pLineEdit->setEchoMode(QLineEdit::Password);
+	m_pCheckBox->setCheckState(Qt::Checked);
+	connect(m_pCheckBox,SIGNAL(stateChanged(int)), this, SLOT(checkToggled(int)));
+	//m_pLineEdit->setMinimumWidth(200);
+	QString tmp = *pOption;
+	m_pLineEdit->setText(tmp);
+
+	setSpacing(4);
+	setStretchFactor(m_pLineEdit,1);
+
+	m_pOption = pOption;
+
+	setEnabled(bEnabled);
 }
 
+void KviPasswordSelector::checkToggled(int state)
+{
+	if(state == Qt::Checked)
+	{
+		m_pLineEdit->setEchoMode(QLineEdit::Password);
+	} else {
+		m_pLineEdit->setEchoMode(QLineEdit::Normal);
+	}
+}
+
+KviPasswordSelector::~KviPasswordSelector()
+{
+}
+
+void KviPasswordSelector::commit()
+{
+	QString tmp = m_pLineEdit->text();
+	*m_pOption = tmp;
+}
+
+void KviPasswordSelector::setEnabled(bool bEnabled)
+{
+	KviTalHBox::setEnabled(bEnabled);
+	m_pLineEdit->setEnabled(bEnabled);
+	m_pLabel->setEnabled(bEnabled);
+	m_pCheckBox->setEnabled(bEnabled);
+}
+
+void KviPasswordSelector::setText(const QString& text){
+	m_pLineEdit->setText(text);
+}
+
+KviPasswordLineEdit::KviPasswordLineEdit(QWidget * par)
+: KviTalHBox(par)
+{
+	m_pLineEdit = new QLineEdit(this);
+	m_pCheckBox = new QCheckBox(this);
+	m_pLineEdit->setEchoMode(QLineEdit::Password);
+	m_pCheckBox->setCheckState(Qt::Checked);
+	connect(m_pCheckBox,SIGNAL(stateChanged(int)), this, SLOT(checkToggled(int)));
+	//m_pLineEdit->setMinimumWidth(200);
+	setSpacing(4);
+	setStretchFactor(m_pLineEdit,1);
+}
+
+void KviPasswordLineEdit::checkToggled(int state)
+{
+	if(state == Qt::Checked)
+	{
+		m_pLineEdit->setEchoMode(QLineEdit::Password);
+	} else {
+		m_pLineEdit->setEchoMode(QLineEdit::Normal);
+	}
+}
+
+KviPasswordLineEdit::~KviPasswordLineEdit()
+{
+}
+
+QString KviPasswordLineEdit::text()
+{
+	return m_pLineEdit->text();
+}
+
+void KviPasswordLineEdit::setEnabled(bool bEnabled)
+{
+	KviTalHBox::setEnabled(bEnabled);
+	m_pLineEdit->setEnabled(bEnabled);
+	m_pCheckBox->setEnabled(bEnabled);
+}
+
+void KviPasswordLineEdit::setText(const QString& text){
+	m_pLineEdit->setText(text);
+}
 
 KviPixmapPreview::KviPixmapPreview(QWidget * par)
 : KviTalScrollView(par)

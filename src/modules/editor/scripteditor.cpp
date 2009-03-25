@@ -410,7 +410,7 @@ void KviScriptEditorWidget::mouseReleaseEvent(QMouseEvent * e)
 	if (e->button() == Qt::RightButton)
 	{
 		QString szBuffer;
-		/*
+		/\*
 		int iPara = paragraphAt(e->pos());
 		int iIndex=charAt(e->pos(),&iPara);
 		szBuffer = this->text(iPara);

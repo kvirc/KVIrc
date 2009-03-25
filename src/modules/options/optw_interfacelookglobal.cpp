@@ -41,7 +41,7 @@ KviThemeGeneralOptionsWidget::KviThemeGeneralOptionsWidget(QWidget * parent)
 
 	KviBoolSelector * b = addBoolSelector(0,1,1,1,__tr2qs_ctx("Use global application font","options"),KviOption_boolUseGlobalApplicationFont);
 	KviTalToolTip::add(b,__tr2qs_ctx("This option will force a static font for every widget that has no specific font setting","options"));
-	KviBoolSelector * g = addBoolSelector(0,0,1,0,__tr2qs_ctx("Show icons in popup menus","options"),KviOption_boolShowIconsInPopupMenus);
+	addBoolSelector(0,0,1,0,__tr2qs_ctx("Show icons in popup menus","options"),KviOption_boolShowIconsInPopupMenus);
 	KviFontSelector * f = addFontSelector(0,2,1,2,__tr2qs_ctx("Global application font:","options"),KviOption_fontApplication,
 			KVI_OPTION_BOOL(KviOption_boolUseGlobalApplicationFont));
 

@@ -75,7 +75,7 @@ protected:
 	KviScriptEditor       * m_pOnLoginEditor;
 
 	QLineEdit             * m_pUserEditor;
-	QLineEdit             * m_pPassEditor;
+	KviPasswordLineEdit   * m_pPassEditor;
 	QLineEdit             * m_pNickEditor;
 	QLineEdit             * m_pRealEditor;
 	QLineEdit             * m_pDescEditor;
@@ -114,7 +114,7 @@ protected:
 	KviScriptEditor       * m_pOnConnectEditor;
 	KviScriptEditor       * m_pOnLoginEditor;
 	QLineEdit             * m_pUserEditor;
-	QLineEdit             * m_pPassEditor;
+	KviPasswordLineEdit   * m_pPassEditor;
 	QLineEdit             * m_pNickEditor;
 	QLineEdit             * m_pRealEditor;
 	QLineEdit             * m_pDescEditor;
