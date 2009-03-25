@@ -2547,6 +2547,7 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 								while(1)
 								{
 									if(l->pBlocks[iEndOfLInk].pChunk)
+									{
 										if(l->pBlocks[iEndOfLInk].pChunk->type != KVI_TEXT_UNESCAPE)
 										{
 											switch(l->pBlocks[iEndOfLInk].pChunk->type)
@@ -2571,10 +2572,11 @@ KviIrcViewWrappedBlock * KviIrcView::getLinkUnderMouse(int xPos,int yPos,QRect *
 												break;
 											}
 											szLink.append(l->szText.mid(l->pBlocks[iEndOfLInk].block_start,l->pBlocks[iEndOfLInk].block_len));
-										} else
+										} else {
 											break;
+										}
+									}
 									iEndOfLInk++;
-
 								}
 								*linkText=szLink;
 								// grab the rest of the link visible string

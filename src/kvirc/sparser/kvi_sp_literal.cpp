@@ -1056,6 +1056,11 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 	msg->decodeAndSplitPrefix(szNick,szUser,szHost);
 
 	KviConsole * console = msg->console();
+	bool bIsServerNotice = false;
+
+	//Check is it's a server notice (szNick = irc.xxx.net)
+	if(szHost == "*" && szUser == "*" && szNick.indexOf('.') != -1)
+		bIsServerNotice = true;
 
 	// FIXME: "DEDICATED CTCP WINDOW ?"
 
@@ -1099,8 +1104,8 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 		}
 	}
 
-	// Normal NOTICE
-	if(IS_ME(msg,szTarget))
+	// Normal NOTICE (directed to my nickname)
+	if(IS_ME(msg,szTarget) && !bIsServerNotice)
 	{
 		// Nickserv nick identification routine
 		QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
@@ -1305,8 +1310,37 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 		chan = msg->connection()->findChannel(szTarget);
 	}
 
-	if(chan)
+	if(!chan)
 	{
+		if(bIsServerNotice)
+		{
+			//SERVER NOTICE DIRECTED TO A CHANNEL (EG. &servers, &kills on ircd)
+			// FIXME: "Dedicated window for server notices ?"
+			QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+			if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnServerNotice,console,szNick,szMsgText))
+				msg->setHaltOutput();
+			if(!msg->haltOutput())
+			{
+				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
+					console->activeWindow() : (KviWindow *)(console);
+				pOut->output(KVI_OUT_SERVERNOTICE,"[\r!s\r%Q\r]: %Q",&szNick,&szMsgText);
+			}
+			return;
+		} else {		
+			//UNKNOWN NOTICE TYPE
+			if(!msg->haltOutput())
+			{
+				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
+					console->activeWindow() : (KviWindow *)(console);
+				QString szBroad;
+				QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
+				KviQString::sprintf(szBroad,"[>> %Q] %Q",&szOriginalTarget,&szMsgText);
+				console->outputPrivmsg(pOut,KVI_OUT_BROADCASTNOTICE,szNick,szUser,szHost,szBroad,0);
+				return;
+			}
+		}
+	} else {
+		//CHANNEL NOTICE
 		chan->userAction(szNick,szUser,szHost,KVI_USERACTION_NOTICE);
 
 		KviStr szBuffer; const char * txtptr; int msgtype;
@@ -1326,42 +1360,6 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				console->outputPrivmsg(chan,msgtype,szNick,szUser,szHost,szMsgText,0);
 			}
 		}
-		return;
-	}
-
-	//server notice
-	if(szHost == "*")
-	{
-		if(szUser == "*")
-		{
-			if(szNick.indexOf('.') != -1)
-			{
-				// server notice
-				// FIXME: "Dedicated window for server notices ?"
-				QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
-				if(KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnServerNotice,console,szNick,szMsgText))
-					msg->setHaltOutput();
-				if(!msg->haltOutput())
-				{
-					KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServerNoticesToActiveWindow) ?
-						console->activeWindow() : (KviWindow *)(console);
-					pOut->output(KVI_OUT_SERVERNOTICE,"[\r!s\r%Q\r]: %Q",&szNick,&szMsgText);
-				}
-				return;
-			}
-		}
-	}
-
-	//not better specified notice
-	if(!msg->haltOutput())
-	{
-		KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolOperatorMessagesToActiveWindow) ?
-			console->activeWindow() : (KviWindow *)(console);
-		QString szBroad;
-		QString szMsgText = msg->connection()->decodeText(msg->safeTrailing());
-		KviQString::sprintf(szBroad,"[>> %Q] %Q",&szOriginalTarget,&szMsgText);
-		console->outputPrivmsg(pOut,KVI_OUT_BROADCASTNOTICE,szNick,szUser,szHost,szBroad,0);
-		return;
 	}
 }
 

@@ -1370,14 +1370,20 @@ void KviWindow::preprocessMessage(QString & szMessage)
 		tmp = KviMircCntrl::stripControlBytes(tmp);
 		tmp.trimmed();
 		if(m_pConsole)
+		{
 			if(m_pConsole->connection())
+			{
 				if(m_pConsole->connection()->serverInfo()->supportedChannelTypes().contains(tmp[0]))
+				{
 					if((*it)==tmp)
-						*it=QString("\r!c\r%1\r").arg(*it);
-					else
 					{
+						*it=QString("\r!c\r%1\r").arg(*it);
+					} else {
 						*it=QString("\r!c%1\r%2\r").arg(tmp).arg(*it);
 					}
+				}
+			}
+		}
 	}
 	szMessage=strings.join(" ");
 }

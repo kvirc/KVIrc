@@ -1695,7 +1695,7 @@ bool KviIrcSocket::queue_removeMessage()
 void KviIrcSocket::queue_removeAllMessages()
 {
 	if(m_pSendQueueHead)
-		while(queue_removeMessage());
+		while(queue_removeMessage()) {}
 }
 
 void KviIrcSocket::flushSendQueue()
