@@ -1,18 +1,18 @@
 # CMakeLists for data/applnk
 
-CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/kvirc4.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/kvirc4.desktop)
+CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/kvirc4.desktop.cmake ${CMAKE_CURRENT_BINARY_DIR}/${KVIRC_BINARYNAME}.desktop)
 
 IF(UNIX)
 	IF(APPLE)
 		INSTALL(FILES
-			${CMAKE_CURRENT_BINARY_DIR}/kvirc4.desktop
+			${CMAKE_CURRENT_BINARY_DIR}/${KVIRC_BINARYNAME}.desktop
 			DESTINATION
 			${CMAKE_INSTALL_PREFIX}/Contents/Resources/applnk/
 		)
 	ELSE()
 		# Assume linux
 		INSTALL(FILES
-			${CMAKE_CURRENT_BINARY_DIR}/kvirc4.desktop
+			${CMAKE_CURRENT_BINARY_DIR}/${KVIRC_BINARYNAME}.desktop
 			DESTINATION
 			${CMAKE_INSTALL_PREFIX}/share/applications/
 		)
