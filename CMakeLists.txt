@@ -611,7 +611,7 @@ ENDIF()
 # System memmove() support
 ############################################################################
 OPTION(WANT_SYSTEM_MEMMOVE "Compile System memmove() Support" OFF)
-IF(WITHOUT_SYSTEM_MEMMOVE)
+IF(WITH_SYSTEM_MEMMOVE)
 	SET(WANT_SYSTEM_MEMMOVE OFF)
 ENDIF()
 IF(WANT_SYSTEM_MEMMOVE)
