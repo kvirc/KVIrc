@@ -610,17 +610,17 @@ ENDIF()
 ############################################################################
 # System memmove() support
 ############################################################################
-#OPTION(WANT_SYSTEM_MEMMOVE "Compile System memmove() Support" ON)
-#IF(WITHOUT_SYSTEM_MEMMOVE)
-#	SET(WANT_SYSTEM_MEMMOVE OFF)
-#ENDIF()
-#IF(WANT_SYSTEM_MEMMOVE)
-#	SET(COMPILE_WITH_SYSTEM_MEMMOVE 1)
-#	SET(CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT "Yes")
-#ELSE()
-#	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_SYSTEM_MEMMOVE)
-#	SET(CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT "User disabled")
-#ENDIF()
+OPTION(WANT_SYSTEM_MEMMOVE "Compile System memmove() Support" OFF)
+IF(WITHOUT_SYSTEM_MEMMOVE)
+	SET(WANT_SYSTEM_MEMMOVE OFF)
+ENDIF()
+IF(WANT_SYSTEM_MEMMOVE)
+	SET(COMPILE_WITH_SYSTEM_MEMMOVE 1)
+	SET(CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT "Yes")
+ELSE()
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_SYSTEM_MEMMOVE)
+	SET(CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT "User disabled")
+ENDIF()
 
 ############################################################################
 # NETWORK FUNCTIONS support
@@ -684,17 +684,17 @@ ENDIF()
 ############################################################################
 # ix86 asm support
 ############################################################################
-#OPTION(WANT_IX86_ASM "Compile ix86 asm Support OFF)
-#IF(WITH_ix86_ASM)
-#	SET(WANT_IX86_ASM ON)
-#ENDIF()
-#IF(WANT_IX86_ASM)
-#	SET(COMPILE_ix86_ASM 1)
-#	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITH_ix86_ASM)
-#	SET(CMAKE_STATUS_ix86_ASM_SUPPORT "User enabled")
-#ELSE()
-#	SET(CMAKE_STATUS_ix86_ASM_SUPPORT "No")
-#ENDIF()
+OPTION(WANT_IX86_ASM "Compile ix86 (NOT x86_64!) asm Support" OFF)
+IF(WITH_ix86_ASM)
+	SET(WANT_IX86_ASM ON)
+ENDIF()
+IF(WANT_IX86_ASM)
+	SET(COMPILE_ix86_ASM 1)
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITH_ix86_ASM)
+	SET(CMAKE_STATUS_ix86_ASM_SUPPORT "User enabled")
+ELSE()
+	SET(CMAKE_STATUS_ix86_ASM_SUPPORT "No")
+ENDIF()
 
 ############################################################################
 # Memory profiling support
@@ -1081,12 +1081,12 @@ MESSAGE(STATUS "  Pseudo-Transparency Support : ${CMAKE_STATUS_TRANSPARENCY_SUPP
 MESSAGE(STATUS "  Perl Support                : ${CMAKE_STATUS_PERL_SUPPORT}")
 MESSAGE(STATUS "  Python Support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
 MESSAGE(STATUS "  IPC Support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
-#MESSAGE(STATUS "  System memmove Support      : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT}")
+MESSAGE(STATUS "  System memmove Support      : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT}")
 MESSAGE(STATUS "  GSM Support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
 MESSAGE(STATUS "  DCC Voice Support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
 MESSAGE(STATUS "  Apple Universal Binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
 
-#MESSAGE(STATUS "  ix86 asm Support            : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
+MESSAGE(STATUS "  ix86 asm Support            : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
 MESSAGE(STATUS "  Memory Profile Support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
 MESSAGE(STATUS "  Memory Checks Support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
 MESSAGE(STATUS "  GetText Support             : ${CMAKE_STATUS_GETTEXT_SUPPORT}${GETTEXT_EXTRA_STATUS}")
