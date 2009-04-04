@@ -56,6 +56,7 @@
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_qcstring.h"
 #include "kvi_tal_vbox.h"
+#include "kvi_mirccntrl.h"
 
 #include <QSplitter>
 #include <QEvent>
@@ -64,7 +65,6 @@
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
 	#include "kvi_cryptcontroller.h"
-	#include "kvi_mirccntrl.h"
 #endif
 
 #ifdef COMPILE_SSL_SUPPORT
