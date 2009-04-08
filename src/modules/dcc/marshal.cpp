@@ -43,6 +43,7 @@ KviDccMarshal::KviDccMarshal(KviDccMarshalOutputContext * ctx)
 	setObjectName("dcc_marshal");
 	m_pSn                   = 0;
 	m_fd                    = KVI_INVALID_SOCKET;
+	m_pTimeoutTimer		= 0;
 	m_bIPv6                 = false;
 	m_pOutputContext        = ctx;
 #ifdef COMPILE_SSL_SUPPORT
@@ -96,6 +97,11 @@ void KviDccMarshal::reset()
 		m_pSSL = 0;
 	}
 #endif
+	if(m_pTimeoutTimer)
+	{
+		delete m_pTimeoutTimer;
+		m_pTimeoutTimer = 0;
+	}
 	m_bIPv6 = false;
 }
 
@@ -109,6 +115,12 @@ int KviDccMarshal::dccListen(const QString &ip,const QString &port,bool bUseTime
 	m_bOutgoing = false;
 
 	m_bUseTimeout = bUseTimeout;
+	
+	if(m_pTimeoutTimer)
+	{
+		delete m_pTimeoutTimer;
+		m_pTimeoutTimer = 0;
+	}
 
 #ifdef COMPILE_SSL_SUPPORT
 	m_bUseSSL = bUseSSL;
@@ -268,8 +280,20 @@ void KviDccMarshal::doListen()
 	if(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) < 5)
 		KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) = 5;
 
+	if(m_pTimeoutTimer)
+	{
+		delete m_pTimeoutTimer;
+		m_pTimeoutTimer = 0;
+	}
+
 	if(m_bUseTimeout)
-		QTimer::singleShot(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) * 1000, this, SLOT(connectionTimedOut()));
+	{
+		m_pTimeoutTimer = new QTimer();
+		connect(m_pTimeoutTimer,SIGNAL(timeout()),this,SLOT(connectionTimedOut()));
+		m_pTimeoutTimer->setSingleShot(true);
+		m_pTimeoutTimer->setInterval((KviOption_uintDccSocketTimeout) * 1000);
+		m_pTimeoutTimer->start();
+	}
 	// and wait for connect
 
 	emit inProgress();
@@ -296,6 +320,11 @@ int KviDccMarshal::dccConnect(const char * ip,const char * port,bool bUseTimeout
 
 void KviDccMarshal::doConnect()
 {
+	if(m_pTimeoutTimer)
+	{
+		delete m_pTimeoutTimer;
+		m_pTimeoutTimer = 0;
+	}
 	// Check the address type
 	if(!KviNetUtils::isValidStringIp(m_szIp))
 	{
@@ -392,8 +421,20 @@ void KviDccMarshal::doConnect()
 	if(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) < 5)
 		KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) = 5;
 
+	if(m_pTimeoutTimer)
+	{
+		delete m_pTimeoutTimer;
+		m_pTimeoutTimer = 0;
+	}
+
 	if(m_bUseTimeout)
-		QTimer::singleShot(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) * 1000, this, SLOT(connectionTimedOut()));
+	{
+		m_pTimeoutTimer = new QTimer();
+		connect(m_pTimeoutTimer,SIGNAL(timeout()),this,SLOT(connectionTimedOut()));
+		m_pTimeoutTimer->setSingleShot(true);
+		m_pTimeoutTimer->setInterval((KviOption_uintDccSocketTimeout) * 1000);
+		m_pTimeoutTimer->start();
+	}
 
 	// and wait for connect
 	emit inProgress();
@@ -402,6 +443,11 @@ void KviDccMarshal::doConnect()
 
 void KviDccMarshal::snActivated(int)
 {
+	if(m_pTimeoutTimer)
+	{
+		delete m_pTimeoutTimer;
+		m_pTimeoutTimer = 0;
+	}
 #ifdef COMPILE_IPV6_SUPPORT
 	struct sockaddr_in6 hostSockAddr6;
 #endif
@@ -600,6 +646,7 @@ void KviDccMarshal::connectionTimedOut()
 {
 	reset();
 	emit error(KviError_connectionTimedOut);
+	debug("MARSHAL");
 }
 
 

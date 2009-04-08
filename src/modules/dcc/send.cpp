@@ -1417,7 +1417,7 @@ bool KviDccFileTransfer::handleResumeAccepted(const char * filename,const char *
 	return false;
 }
 
-bool KviDccFileTransfer::handleResumeRequest(const char * filename,const char * port,unsigned int filePos)
+bool KviDccFileTransfer::handleResumeRequest(const char * filename,const char * port,unsigned long filePos)
 {
 	if(!g_pDccFileTransfers)return false;
 
@@ -1630,6 +1630,7 @@ bool KviDccFileTransfer::event(QEvent *e)
 				outputAndLog(m_szStatusString);
 				m_eGeneralStatus = Success;
 				m_tTransferEndTime = kvi_unixTime();
+				if (m_pResumeTimer) delete m_pResumeTimer;
 
 				KVS_TRIGGER_EVENT_2(KviEvent_OnDCCFileTransferSuccess,
 					eventWindow(),
@@ -1763,7 +1764,7 @@ bool KviDccFileTransfer::resumeAccepted(const char *filename,const char *port,co
 	return true;
 }
 
-bool KviDccFileTransfer::doResume(const char * filename,const char * port,unsigned int filePos)
+bool KviDccFileTransfer::doResume(const char * filename,const char * port,unsigned long filePos)
 {
 	if(KviQString::equalCI(port,m_pMarshal->dccPort()) &&
 		(!m_pSlaveRecvThread) && (!m_pDescriptor->bRecvFile))
