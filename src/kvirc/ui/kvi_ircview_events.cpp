@@ -458,6 +458,32 @@ void KviIrcView::mouseRealPressEvent(QMouseEvent *e)
 	delete pParams;
 }
 
+void KviIrcView::addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelectionText)
+{
+	switch(pC->type)
+	{
+		case KVI_TEXT_BOLD:
+		case KVI_TEXT_UNDERLINE:
+		case KVI_TEXT_REVERSE:
+		case KVI_TEXT_RESET:
+			szSelectionText.append(QChar(pC->type));
+		break;
+		case KVI_TEXT_COLOR:
+			szSelectionText.append(QChar(pC->type));
+			if((pC->colors.fore != KVI_NOCHANGE) && (pC->colors.fore != KVI_TRANSPARENT))
+			{
+				if(pC->colors.fore > 9)szSelectionText.append(QChar('1'));
+				szSelectionText.append(QChar((pC->colors.fore%10)+'0'));
+			}
+			if((pC->colors.back != KVI_NOCHANGE) && (pC->colors.back != KVI_TRANSPARENT) )
+			{
+				szSelectionText.append(QChar(','));
+				if(pC->colors.back > 9)szSelectionText.append(QChar('1'));
+				szSelectionText.append(QChar((pC->colors.back%10)+'0'));
+			}
+		break;
+	}
+}
 void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 {
 	if(m_pSelectionInitLine)
@@ -515,22 +541,118 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 				if(tempLine->uIndex == end->uIndex)
 				{
 					//selection starts and ends in this line
-					szSelectionText.append(tempLine->szText.mid(initChar, endChar-initChar));
+					if(m_bShiftPressed)
+					{
+						bool bStarted=false;
+						KviIrcViewLineChunk *pC;
+						for(unsigned int i=0;i<tempLine->uChunkCount; i++)
+						{
+							pC = &tempLine->pChunks[i];
+							if(bStarted)
+							{
+								if(endChar >= (pC->iTextStart + pC->iTextLen))
+								{
+									//the entire chunk is included
+									addControlCharacter(pC, szSelectionText);
+									szSelectionText.append(tempLine->szText.mid(pC->iTextStart, pC->iTextLen));
+								} else {
+									//ends in this chunk
+									addControlCharacter(pC, szSelectionText);
+									szSelectionText.append(tempLine->szText.mid(pC->iTextStart, endChar-pC->iTextStart));
+									break;
+								}
+							} else {
+								if(initChar <= (pC->iTextStart + pC->iTextLen))
+								{
+									//starts in this chunk
+									addControlCharacter(pC, szSelectionText);
+									if((endChar-initChar) > pC->iTextLen)
+									{
+										//don't end in this chunk
+										szSelectionText.append(tempLine->szText.mid(initChar, pC->iTextLen-(initChar-pC->iTextStart)));
+										bStarted=true;
+									} else {
+										//ends in this chunk
+										szSelectionText.append(tempLine->szText.mid(initChar, endChar-initChar));
+										break;
+									}
+								}
+							}
+						}
+					} else {
+						szSelectionText.append(tempLine->szText.mid(initChar, endChar-initChar));
+					}
 					break;
 				} else {
 					// the first line of a multi line selection
-					szSelectionText.append(tempLine->szText.mid(initChar));
+					if(m_bShiftPressed)
+					{
+						bool bStarted=false;
+						KviIrcViewLineChunk *pC;
+						for(unsigned int i=0;i<tempLine->uChunkCount; i++)
+						{
+							pC = &tempLine->pChunks[i];
+							if(bStarted)
+							{
+								//the entire chunk is included
+								addControlCharacter(pC, szSelectionText);
+								szSelectionText.append(tempLine->szText.mid(pC->iTextStart, pC->iTextLen));
+							} else {
+								if(initChar <= (pC->iTextStart + pC->iTextLen))
+								{
+									//starts in this chunk
+									addControlCharacter(pC, szSelectionText);
+									szSelectionText.append(tempLine->szText.mid(initChar, pC->iTextLen-(initChar-pC->iTextStart)));
+									bStarted=true;
+								}
+							}
+						}
+					} else {
+						szSelectionText.append(tempLine->szText.mid(initChar));
+					}
 					szSelectionText.append("\n");
 				}
 			} else {
 				if(tempLine->uIndex == end->uIndex)
 				{
 					// the last line of a multi line selection
-					szSelectionText.append(tempLine->szText.left(endChar));
+					if(m_bShiftPressed)
+					{
+						KviIrcViewLineChunk *pC;
+						for(unsigned int i=0;i<tempLine->uChunkCount; i++)
+						{
+							pC = &tempLine->pChunks[i];
+							if(endChar >= (pC->iTextStart + pC->iTextLen))
+							{
+								//the entire chunk is included
+								addControlCharacter(pC, szSelectionText);
+								szSelectionText.append(tempLine->szText.mid(pC->iTextStart, pC->iTextLen));
+							} else {
+								//ends in this chunk
+								addControlCharacter(pC, szSelectionText);
+								szSelectionText.append(tempLine->szText.mid(pC->iTextStart, endChar-pC->iTextStart));
+								break;
+							}
+						}
+					} else {
+						szSelectionText.append(tempLine->szText.left(endChar));
+					}
 					break;
 				} else {
 					//a middle line of a multi line selection
-					szSelectionText.append(tempLine->szText);
+					if(m_bShiftPressed)
+					{
+						KviIrcViewLineChunk *pC;
+						for(unsigned int i=0;i<tempLine->uChunkCount; i++)
+						{
+							pC = &tempLine->pChunks[i];
+							//the entire chunk is included
+							addControlCharacter(pC, szSelectionText);
+							szSelectionText.append(tempLine->szText.mid(pC->iTextStart, pC->iTextLen));
+						}
+					} else {
+						szSelectionText.append(tempLine->szText);
+					}
 					szSelectionText.append("\n");
 				}
 			}

@@ -221,6 +221,7 @@ private:
 	void doLinkToolTip(const QRect &rct,QString &linkCmd,QString &linkText);
 	void doMarkerToolTip(const QRect &rct);
 	bool checkMarkerArea(const QRect & area, const QPoint & mousePos);
+	void addControlCharacter(KviIrcViewLineChunk *pC, QString & szSelectionText);
 protected:
 	virtual void paintEvent(QPaintEvent *);
 	virtual void resizeEvent(QResizeEvent *);
