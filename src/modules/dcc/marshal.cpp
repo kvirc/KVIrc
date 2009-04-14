@@ -291,7 +291,7 @@ void KviDccMarshal::doListen()
 		m_pTimeoutTimer = new QTimer();
 		connect(m_pTimeoutTimer,SIGNAL(timeout()),this,SLOT(connectionTimedOut()));
 		m_pTimeoutTimer->setSingleShot(true);
-		m_pTimeoutTimer->setInterval((KviOption_uintDccSocketTimeout) * 1000);
+		m_pTimeoutTimer->setInterval((KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) * 1000));
 		m_pTimeoutTimer->start();
 	}
 	// and wait for connect
@@ -432,7 +432,7 @@ void KviDccMarshal::doConnect()
 		m_pTimeoutTimer = new QTimer();
 		connect(m_pTimeoutTimer,SIGNAL(timeout()),this,SLOT(connectionTimedOut()));
 		m_pTimeoutTimer->setSingleShot(true);
-		m_pTimeoutTimer->setInterval((KviOption_uintDccSocketTimeout) * 1000);
+		m_pTimeoutTimer->setInterval(KVI_OPTION_UINT(KviOption_uintDccSocketTimeout) * 1000);
 		m_pTimeoutTimer->start();
 	}
 
@@ -646,7 +646,6 @@ void KviDccMarshal::connectionTimedOut()
 {
 	reset();
 	emit error(KviError_connectionTimedOut);
-	debug("MARSHAL");
 }
 
 
