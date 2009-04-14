@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-15 15:28+0100\n"
+"POT-Creation-Date: 2009-04-15 00:56+0200\n"
 "PO-Revision-Date: 2009-01-30 20:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -103,10 +103,10 @@ msgid "Block parameter must be a string or a memorybuffer object"
 msgstr ""
 "Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
 
-#: src/modules/objects/class_pixmap.cpp:275
+#: src/modules/objects/class_socket.cpp:433
 #: src/modules/objects/class_file.cpp:374
 #: src/modules/objects/class_file.cpp:508
-#: src/modules/objects/class_socket.cpp:433
+#: src/modules/objects/class_pixmap.cpp:275
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr "Il parametro buffer non è un oggetto memorybuffer"
 
@@ -114,11 +114,11 @@ msgstr "Il parametro buffer non è un oggetto memorybuffer"
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr "Il parametro buffer non è un oggetto memorybuffer o file"
 
-#: src/modules/objects/class_pixmap.cpp:270
-#: src/modules/objects/class_file.cpp:369
-#: src/modules/objects/class_file.cpp:489
 #: src/modules/objects/class_socket.cpp:428
 #: src/modules/objects/class_socket.cpp:499
+#: src/modules/objects/class_file.cpp:369
+#: src/modules/objects/class_file.cpp:489
+#: src/modules/objects/class_pixmap.cpp:270
 msgid "Buffer parameter is not an object"
 msgstr "Il parametro buffer non è un oggetto"
 
@@ -130,10 +130,10 @@ msgstr "Il buttongroup supporta solo oggetti checkbox e radiobutton"
 msgid "Can't add a non-popupmenu object"
 msgstr "Non posso aggiungere un oggetto non popupmenu"
 
-#: src/modules/objects/class_window.cpp:143
-#: src/modules/objects/class_window.cpp:148
 #: src/modules/objects/class_wizard.cpp:146
 #: src/modules/objects/class_wizard.cpp:168
+#: src/modules/objects/class_window.cpp:143
+#: src/modules/objects/class_window.cpp:148
 #: src/modules/objects/class_widget.cpp:1761
 msgid "Can't add a non-widget object"
 msgstr "Non posso aggiungere un oggetto non widget"
@@ -196,8 +196,10 @@ msgstr "Tentativo di connessione scaduto"
 msgid "Connect failure: "
 msgstr "Connessione fallita: "
 
-#: src/modules/objects/class_sql.cpp:240 src/modules/objects/class_sql.cpp:273
-#: src/modules/objects/class_sql.cpp:290 src/modules/objects/class_sql.cpp:307
+#: src/modules/objects/class_sql.cpp:240
+#: src/modules/objects/class_sql.cpp:273
+#: src/modules/objects/class_sql.cpp:290
+#: src/modules/objects/class_sql.cpp:307
 #: src/modules/objects/class_sql.cpp:324
 #, fuzzy
 msgid "Connection %Q does not exists"
@@ -271,9 +273,9 @@ msgstr "La widget da agganciare non è stata trovata"
 msgid "Failed to setup a nonblocking socket"
 msgstr "Creazione della socket non bloccante fallita"
 
+#: src/modules/objects/class_socket.cpp:512
 #: src/modules/objects/class_file.cpp:40
 #: src/modules/objects/class_file.cpp:480
-#: src/modules/objects/class_socket.cpp:512
 msgid "File is not open!"
 msgstr "Il file non è aperto!"
 
@@ -281,10 +283,10 @@ msgstr "Il file non è aperto!"
 msgid "Host '%Q' is not a valid url"
 msgstr "Host '%Q' non è un url valido"
 
+#: src/modules/objects/class_multilineedit.cpp:1082
+#: src/modules/objects/class_tbrowser.cpp:103
 #: src/modules/objects/class_pixmap.cpp:188
 #: src/modules/objects/class_pixmap.cpp:220
-#: src/modules/objects/class_tbrowser.cpp:103
-#: src/modules/objects/class_multilineedit.cpp:1082
 msgid "I can't find the specified file '%Q'."
 msgstr "Non trovo il file '%Q' specificato."
 
@@ -378,10 +380,10 @@ msgstr "Indirizzo socket invalido"
 msgid "Invalid socket object specified (it doesn't inherit from socket)"
 msgstr "Oggetto socket invalido (non eredità dalla socket)"
 
-#: src/modules/objects/class_combobox.cpp:176
-#: src/modules/objects/class_combobox.cpp:193
 #: src/modules/objects/class_listwidget.cpp:188
 #: src/modules/objects/class_listwidget.cpp:206
+#: src/modules/objects/class_combobox.cpp:176
+#: src/modules/objects/class_combobox.cpp:193
 #, c-format
 msgid "Item index [%d] is too big - defaulting to $count() - 1 [%d]"
 msgstr "L'elemento indice [%d] è troppo grosso - passo a $count() - 1 [%d]"
@@ -423,9 +425,9 @@ msgstr "Un'altra connessione in corso"
 msgid "No socket object specified"
 msgstr "Nessun oggetto socket specificato"
 
+#: src/modules/objects/class_listwidget.cpp:185
 #: src/modules/objects/class_combobox.cpp:173
 #: src/modules/objects/class_combobox.cpp:281
-#: src/modules/objects/class_listwidget.cpp:185
 msgid "No string parameter given - using empty string"
 msgstr "Nessun parametro stringa dato - uso una stringa vuota"
 
@@ -459,8 +461,8 @@ msgstr "Non è una cifra esadecimale"
 msgid "Null mask"
 msgstr "Maschera nulla"
 
-#: src/modules/objects/class_button.cpp:134
 #: src/modules/objects/class_painter.cpp:856
+#: src/modules/objects/class_button.cpp:134
 msgid "Object Pixmap required!"
 msgstr "Oggetto Pixmap richiesto!"
 
@@ -482,27 +484,27 @@ msgstr "Uno dei parametri dell'array non viene valutato come intero"
 msgid "One of the array parameters is empty"
 msgstr "Uno dei parametri dell'array è vuoto"
 
-#: src/modules/objects/class_multilineedit.cpp:819
-#: src/modules/objects/class_multilineedit.cpp:1019
 #: src/modules/objects/class_widget.cpp:1224
 #: src/modules/objects/class_widget.cpp:1306
+#: src/modules/objects/class_multilineedit.cpp:819
+#: src/modules/objects/class_multilineedit.cpp:1019
 msgid "One of the colors array parameters didn't evaluate to an integer"
 msgstr "Uno dei parametri dell'array dei colori non viene valutato come intero"
 
-#: src/modules/objects/class_multilineedit.cpp:814
-#: src/modules/objects/class_multilineedit.cpp:1014
 #: src/modules/objects/class_widget.cpp:1218
 #: src/modules/objects/class_widget.cpp:1300
+#: src/modules/objects/class_multilineedit.cpp:814
+#: src/modules/objects/class_multilineedit.cpp:1014
 msgid "One of the colors array parameters is empty"
 msgstr "Uno dei parametri dell'array dei colori è vuoto"
 
-#: src/modules/objects/class_painter.cpp:563
 #: src/modules/objects/class_widget.cpp:1129
+#: src/modules/objects/class_painter.cpp:563
 msgid "One of the geometry array parameters didn't evaluate to an integer"
 msgstr "Uno dei parametri dell'array geometrico non viene valutato come intero"
 
-#: src/modules/objects/class_painter.cpp:558
 #: src/modules/objects/class_widget.cpp:1124
+#: src/modules/objects/class_painter.cpp:558
 msgid "One of the geometry array parameters is empty"
 msgstr "Uno dei parametri dell'array geometrico è vuoto"
 
@@ -542,8 +544,8 @@ msgstr "Il padre dev'essere un oggetto widget"
 msgid "Pixmap object or image Id required"
 msgstr "Oggetto pixmap o ID immagine richiesto"
 
-#: src/modules/objects/class_painter.cpp:1213
 #: src/modules/objects/class_widget.cpp:1858
+#: src/modules/objects/class_painter.cpp:1213
 msgid "Pixmap object required"
 msgstr "Oggetto pixmap richiesto"
 
@@ -551,13 +553,13 @@ msgstr "Oggetto pixmap richiesto"
 msgid "Pixmap or Widget parameter is not an object"
 msgstr "Pixmap o il parametro Widget non è un oggetto"
 
-#: src/modules/objects/class_painter.cpp:1208
 #: src/modules/objects/class_widget.cpp:1853
+#: src/modules/objects/class_painter.cpp:1208
 msgid "Pixmap parameter is not an object"
 msgstr "Il parametro pixmap non è un oggetto"
 
-#: src/modules/objects/class_button.cpp:128
 #: src/modules/objects/class_painter.cpp:851
+#: src/modules/objects/class_button.cpp:128
 msgid "Pixmap parameter is not an object!"
 msgstr "Il parametro pixmap non è un oggetto!"
 
@@ -594,22 +596,22 @@ msgstr "La sorgente non è un oggetto"
 msgid "The added widget is not a child of this dock window"
 msgstr "La widget aggiunta non è figlia di questa finestra dock"
 
-#: src/modules/objects/class_painter.cpp:585
 #: src/modules/objects/class_widget.cpp:1567
 #: src/modules/objects/class_widget.cpp:1624
+#: src/modules/objects/class_painter.cpp:585
 msgid "The array passed as parameter must contain at least 2 elements"
 msgstr "L'array passato come parametro deve contenere almeno 2 elementi"
 
-#: src/modules/objects/class_painter.cpp:619
-#: src/modules/objects/class_multilineedit.cpp:805
-#: src/modules/objects/class_multilineedit.cpp:1005
 #: src/modules/objects/class_widget.cpp:1209
 #: src/modules/objects/class_widget.cpp:1291
+#: src/modules/objects/class_multilineedit.cpp:805
+#: src/modules/objects/class_multilineedit.cpp:1005
+#: src/modules/objects/class_painter.cpp:619
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr "L'array passato come parametro deve contenere almeno 3 elementi"
 
-#: src/modules/objects/class_painter.cpp:549
 #: src/modules/objects/class_widget.cpp:1111
+#: src/modules/objects/class_painter.cpp:549
 msgid "The array passed as parameter must contain at least 4 elements"
 msgstr "L'array passato come parametro deve contenere almeno 4 elementi"
 
@@ -622,21 +624,21 @@ msgstr "La classe '%Q' non esiste"
 msgid "The file '%Q' does not exist"
 msgstr "Il file '%Q' non esiste"
 
-#: src/modules/objects/class_painter.cpp:575
-#: src/modules/objects/class_painter.cpp:609
-#: src/modules/objects/class_painter.cpp:653
-#: src/modules/objects/class_multilineedit.cpp:855
-#: src/modules/objects/class_multilineedit.cpp:1055
 #: src/modules/objects/class_widget.cpp:1144
 #: src/modules/objects/class_widget.cpp:1266
 #: src/modules/objects/class_widget.cpp:1348
 #: src/modules/objects/class_widget.cpp:1591
 #: src/modules/objects/class_widget.cpp:1648
+#: src/modules/objects/class_multilineedit.cpp:855
+#: src/modules/objects/class_multilineedit.cpp:1055
+#: src/modules/objects/class_painter.cpp:575
+#: src/modules/objects/class_painter.cpp:609
+#: src/modules/objects/class_painter.cpp:653
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr "Il primo parametro non viene valutato come array né come intero"
 
-#: src/modules/objects/class_file.cpp:613
 #: src/modules/objects/class_socket.cpp:627
+#: src/modules/objects/class_file.cpp:613
 msgid "The hex string is not correct!"
 msgstr "La stringa esadecimale non è corretta!"
 
@@ -747,15 +749,15 @@ msgstr "Gruppo Colore '%Q' sconosciuto"
 msgid "Unknown Color Role '%Q'"
 msgstr "Ruolo Colore '%Q' sconosciuto"
 
+#: src/modules/objects/class_multilineedit.cpp:1117
 #: src/modules/objects/class_groupbox.cpp:315
 #: src/modules/objects/class_hbox.cpp:197
 #: src/modules/objects/class_label.cpp:291
-#: src/modules/objects/class_multilineedit.cpp:1117
 msgid "Unknown alignment '%Q'"
 msgstr "Allineamento '%Q' sconosciuto"
 
-#: src/modules/objects/class_vbox.cpp:200
 #: src/modules/objects/class_layout.cpp:308
+#: src/modules/objects/class_vbox.cpp:200
 msgid "Unknown alignment: '%Q'"
 msgstr "Allineamento '%Q' sconosciuto"
 
@@ -797,8 +799,8 @@ msgstr "Posizione '%Q' sconosciuta"
 msgid "Unknown segment style '%Q'"
 msgstr "Stile del segmento '%Q' sconosciuto"
 
-#: src/modules/objects/class_label.cpp:345
 #: src/modules/objects/class_widget.cpp:1726
+#: src/modules/objects/class_label.cpp:345
 msgid "Unknown style '%Q'"
 msgstr "Stile '%Q' sconosciuto"
 
@@ -842,12 +844,12 @@ msgstr ""
 msgid "Warning near line %d, column %d"
 msgstr "Warning vicino alla linea %d, colonna %d"
 
-#: src/modules/objects/class_mainwindow.cpp:97
 #: src/modules/objects/class_wizard.cpp:189
 #: src/modules/objects/class_wizard.cpp:208
 #: src/modules/objects/class_wizard.cpp:229
 #: src/modules/objects/class_wizard.cpp:249
 #: src/modules/objects/class_wizard.cpp:269
+#: src/modules/objects/class_mainwindow.cpp:97
 #: src/modules/objects/object_macros.h:120
 msgid "Widget object required"
 msgstr "Oggetto widget richiesto"
@@ -861,15 +863,15 @@ msgid "Widget or Pixmap required "
 msgstr "Widget o Pixmap richiesti"
 
 #: src/modules/objects/class_mainwindow.cpp:92
-#: src/modules/objects/class_toolbutton.cpp:279
 #: src/modules/objects/class_widget.cpp:1750
+#: src/modules/objects/class_toolbutton.cpp:279
 #: src/modules/objects/object_macros.h:115
 msgid "Widget parameter is not a valid object"
 msgstr "Il parametro widget non è un oggetto valido"
 
 #: src/modules/objects/class_mainwindow.cpp:87
-#: src/modules/objects/class_toolbutton.cpp:274
 #: src/modules/objects/class_widget.cpp:1745
+#: src/modules/objects/class_toolbutton.cpp:274
 #: src/modules/objects/object_macros.h:110
 msgid "Widget parameter is not an object"
 msgstr "Il parametro widget non è un oggetto"

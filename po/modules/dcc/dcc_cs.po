@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kvirc\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-15 15:28+0100\n"
+"POT-Creation-Date: 2009-04-15 00:56+0200\n"
 "PO-Revision-Date: 2007-12-05 17:57+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -25,7 +25,8 @@ msgstr "\"jakýkoliv\""
 msgid "%1"
 msgstr "%1"
 
-#: src/modules/dcc/send.cpp:1231 src/modules/dcc/send.cpp:1238
+#: src/modules/dcc/send.cpp:1231
+#: src/modules/dcc/send.cpp:1238
 msgid "%1 of %2 (%3%)"
 msgstr "%1 z %2 (%3%)"
 
@@ -73,7 +74,8 @@ msgstr "&Pie"
 msgid "&Polygons"
 msgstr "&Polygons"
 
-#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
+#: src/modules/dcc/canvaswidget.cpp:1479
+#: src/modules/dcc/canvaswidget.cpp:1487
 msgid "&Rectangle"
 msgstr "&Rectangle"
 
@@ -97,11 +99,13 @@ msgstr "&Shape"
 msgid "&Triangle"
 msgstr "&Triangle"
 
-#: src/modules/dcc/requests.cpp:772 src/modules/dcc/requests.cpp:942
+#: src/modules/dcc/requests.cpp:772
+#: src/modules/dcc/requests.cpp:942
 msgid "(unknown)"
 msgstr "(neznámý)"
 
-#: src/modules/dcc/libkvidcc.cpp:434 src/modules/dcc/libkvidcc.cpp:657
+#: src/modules/dcc/libkvidcc.cpp:434
+#: src/modules/dcc/libkvidcc.cpp:657
 #: src/modules/dcc/libkvidcc.cpp:1159
 msgid "-c requires -i and -p"
 msgstr "-c vyžaduje -i a -p"
@@ -164,7 +168,8 @@ msgstr ""
 "Můžete nastavit KVIrc, aby přijímalo avatary automaticky pomocí "
 "nastavení<tt>boolAutoAcceptIncomingAvatars</tt> jako true.<br>"
 
-#: src/modules/dcc/libkvidcc.cpp:634 src/modules/dcc/requests.cpp:449
+#: src/modules/dcc/libkvidcc.cpp:634
+#: src/modules/dcc/requests.cpp:449
 #: src/modules/dcc/requests.cpp:739
 msgid "<unknown size>"
 msgstr "<neznámá velikost>"
@@ -173,11 +178,12 @@ msgstr "<neznámá velikost>"
 msgid "Abort"
 msgstr "Přerušit"
 
-#: src/modules/dcc/send.cpp:908 src/modules/dcc/send.cpp:919
+#: src/modules/dcc/send.cpp:908
+#: src/modules/dcc/send.cpp:919
 msgid "Aborted"
 msgstr "Přerušeno"
 
-#: src/modules/dcc/send.cpp:1787
+#: src/modules/dcc/send.cpp:1788
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr "Přijímám RESUME požadavek, přenos začne na pozici %1"
 
@@ -258,7 +264,8 @@ msgstr ""
 "Nelze naslouchat na výchozím rozhraní '%s': opravte to v dialogu možností, "
 "zakázáním možnosti (pak možná bude dcc fungovat)"
 
-#: src/modules/dcc/broker.cpp:201 src/modules/dcc/broker.cpp:818
+#: src/modules/dcc/broker.cpp:201
+#: src/modules/dcc/broker.cpp:818
 msgid "Can't open file %Q for reading"
 msgstr "Nelze otevřít soubor %Q pro čtení"
 
@@ -286,11 +293,13 @@ msgstr "Nelze získat použitelnou lokální IPV4 adresu"
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Nelze poslat DCC %Q požadavek %Q: IRC spojení bylo přerušeno"
 
-#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1846
+#: src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/send.cpp:1847
 msgid "Cancel"
 msgstr "Zrušit"
 
-#: src/modules/dcc/chat.cpp:302 src/modules/dcc/chat.cpp:397
+#: src/modules/dcc/chat.cpp:302
+#: src/modules/dcc/chat.cpp:397
 msgid "Cannot send data: No active connection"
 msgstr "Nelze poslat data: Žádné aktivní připojení"
 
@@ -298,7 +307,8 @@ msgstr "Nelze poslat data: Žádné aktivní připojení"
 msgid "Choose Files to Save - KVIrc"
 msgstr "Vyberte soubory k uložení - KVIrc"
 
-#: src/modules/dcc/broker.cpp:161 src/modules/dcc/broker.cpp:781
+#: src/modules/dcc/broker.cpp:161
+#: src/modules/dcc/broker.cpp:781
 msgid "Choose Files to Send - KVIrc"
 msgstr "Vyberte soubory k odeslání - KVIrc"
 
@@ -312,16 +322,17 @@ msgstr ""
 msgid "Configure Bandwidth..."
 msgstr "Konfigurovat přenosové pásmo..."
 
-#: src/modules/dcc/send.cpp:1815
+#: src/modules/dcc/send.cpp:1816
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr "Konfigurovat přenosové pásmo pro DCC přenos %1"
 
-#: src/modules/dcc/send.cpp:1676
+#: src/modules/dcc/send.cpp:1677
 msgid "Connected to %1:%2"
 msgstr "Připojen k %1:%2"
 
-#: src/modules/dcc/voice.cpp:916 src/modules/dcc/chat.cpp:530
+#: src/modules/dcc/voice.cpp:916
 #: src/modules/dcc/canvas.cpp:283
+#: src/modules/dcc/chat.cpp:530
 msgid "Connected to %Q:%Q"
 msgstr "Spojeno s %Q:%Q"
 
@@ -329,12 +340,14 @@ msgstr "Spojeno s %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Kontaktuji hosta %1 na portu %2"
 
-#: src/modules/dcc/voice.cpp:756 src/modules/dcc/chat.cpp:184
+#: src/modules/dcc/voice.cpp:756
 #: src/modules/dcc/canvas.cpp:109
+#: src/modules/dcc/chat.cpp:184
 msgid "Contacting host %Q on port %Q"
 msgstr "Kontaktuje se hostitel %Q na portu %Q"
 
-#: src/modules/dcc/broker.cpp:290 src/modules/dcc/broker.cpp:544
+#: src/modules/dcc/broker.cpp:290
+#: src/modules/dcc/broker.cpp:544
 msgid "DCC %1 Request - KVIrc"
 msgstr "DCC %1 požadavek - KVIrc"
 
@@ -362,7 +375,8 @@ msgstr "DCC CANVAS požadavek"
 msgid "DCC CANVAS request not sent: awaiting manual connections"
 msgstr "DCC CANVAS požadavek nebyl odeslán: očekává se manuální připojeni"
 
-#: src/modules/dcc/voice.cpp:907 src/modules/dcc/canvas.cpp:278
+#: src/modules/dcc/voice.cpp:907
+#: src/modules/dcc/canvas.cpp:278
 msgid "DCC Failed: %Q"
 msgstr "DCC Selhání: %Q"
 
@@ -389,7 +403,8 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Přenos dat byl stornován před 30-ti sekundami, uzavírám spojení"
 
-#: src/modules/dcc/voice.cpp:824 src/modules/dcc/chat.cpp:412
+#: src/modules/dcc/voice.cpp:824
+#: src/modules/dcc/chat.cpp:412
 msgid "ERROR: %Q"
 msgstr "CHYBA: %Q"
 
@@ -430,7 +445,7 @@ msgstr "Vstupní buffer"
 msgid "Input buffer: %d bytes"
 msgstr "Vstupní buffer: %d bajtů"
 
-#: src/modules/dcc/send.cpp:1778
+#: src/modules/dcc/send.cpp:1779
 msgid "Internal error in RESUME request"
 msgstr "Vnitřní chyba v RESUME požadavku"
 
@@ -449,7 +464,7 @@ msgstr "Nesprávná IP adresa ve starém formátu %s"
 msgid "Invalid RECV request: Position %u is is larger than file size"
 msgstr "Nesprávný RECV požadavek: Pozice %u je větší než velikost souboru"
 
-#: src/modules/dcc/send.cpp:1783
+#: src/modules/dcc/send.cpp:1784
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr "Nesprávný RESUME požadavek: Pozice %1 je větší než velikost souboru"
 
@@ -475,11 +490,11 @@ msgstr "Určena nesprávná vzorkovací frekvence, nastavuji výchozí na 8000"
 msgid "It seems that I haven't requested this dcc chat"
 msgstr "Vypadá to, že nemám požadavek na tento dcc chat"
 
-#: src/modules/dcc/send.cpp:1818
+#: src/modules/dcc/send.cpp:1819
 msgid "Limit download bandwidth to"
 msgstr "Omezit příchozí šířku pásma na"
 
-#: src/modules/dcc/send.cpp:1818
+#: src/modules/dcc/send.cpp:1819
 msgid "Limit upload bandwidth to"
 msgstr "Omezit odchozí šířku pásma na"
 
@@ -487,21 +502,24 @@ msgstr "Omezit odchozí šířku pásma na"
 msgid "Listening on interface %1 port %2"
 msgstr "Naslouchám na rozhraní %1 port %2"
 
-#: src/modules/dcc/voice.cpp:759 src/modules/dcc/chat.cpp:186
+#: src/modules/dcc/voice.cpp:759
 #: src/modules/dcc/canvas.cpp:85
+#: src/modules/dcc/chat.cpp:186
 msgid "Listening on interface %Q port %Q"
 msgstr "Naslouchám na interfacu %Q port %Q"
 
-#: src/modules/dcc/send.cpp:1677
+#: src/modules/dcc/send.cpp:1678
 msgid "Local end is %1:%2"
 msgstr "Lokální konec je %1:%2"
 
-#: src/modules/dcc/voice.cpp:918 src/modules/dcc/chat.cpp:532
+#: src/modules/dcc/voice.cpp:918
 #: src/modules/dcc/canvas.cpp:285
+#: src/modules/dcc/chat.cpp:532
 msgid "Local end is %Q:%Q"
 msgstr "Lokální konec je %Q:%Q"
 
-#: src/modules/dcc/chat.cpp:246 src/modules/dcc/send.cpp:1563
+#: src/modules/dcc/chat.cpp:246
+#: src/modules/dcc/send.cpp:1563
 msgid "Low-level transport connection established"
 msgstr "Nízkoúrovňové přenosové spojení navázáno"
 
@@ -511,7 +529,8 @@ msgstr ""
 "Žádná nabídka souboru s názvem '%s' (s velikostí %s) není dostupná pro %Q [%"
 "Q@%Q]"
 
-#: src/modules/dcc/requests.cpp:778 src/modules/dcc/requests.cpp:928
+#: src/modules/dcc/requests.cpp:778
+#: src/modules/dcc/requests.cpp:928
 msgid "No suitable interface to listen on, trying to continue anyway..."
 msgstr "Žádné vhodné rozhraní pro naslouchání, snažím se pokračovat..."
 
@@ -519,7 +538,7 @@ msgstr "Žádné vhodné rozhraní pro naslouchání, snažím se pokračovat...
 msgid "No suitable interfaces to listen on, use -i"
 msgstr "Žádné vhodné rozhraní k naslouchání, použijte -i"
 
-#: src/modules/dcc/send.cpp:1841
+#: src/modules/dcc/send.cpp:1842
 msgid "OK"
 msgstr "OK"
 
@@ -540,7 +559,7 @@ msgstr "Výstupní buffer: %d bajtů"
 msgid "Over&write"
 msgstr "Př&epsat"
 
-#: src/modules/dcc/send.cpp:1747
+#: src/modules/dcc/send.cpp:1748
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr "RESUME přijato, přenos začne na pozici %1"
 
@@ -602,7 +621,8 @@ msgstr "Limit slotů dosažen  (%u slotů z %u)"
 msgid "Spd:"
 msgstr "Rych:"
 
-#: src/modules/dcc/chat.cpp:247 src/modules/dcc/send.cpp:1564
+#: src/modules/dcc/chat.cpp:247
+#: src/modules/dcc/send.cpp:1564
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Startuji SSL spojení"
 
@@ -641,7 +661,8 @@ msgstr ""
 "Následujícímu požadavku navázání chybí velikost souboru, předpokládá se "
 "velikost souboru 0"
 
-#: src/modules/dcc/requests.cpp:457 src/modules/dcc/requests.cpp:608
+#: src/modules/dcc/requests.cpp:457
+#: src/modules/dcc/requests.cpp:608
 #: src/modules/dcc/requests.cpp:747
 msgid ""
 "The above request is broken: The filename contains path components, "
@@ -699,7 +720,8 @@ msgstr ""
 "Šifrovací program nebyl schopen zašifrovat aktuální zprávu (%Q): %Q, žadná "
 "data nebyla odeslána na vzdálený konec"
 
-#: src/modules/dcc/libkvidcc.cpp:1577 src/modules/dcc/libkvidcc.cpp:2542
+#: src/modules/dcc/libkvidcc.cpp:1577
+#: src/modules/dcc/libkvidcc.cpp:2542
 #: src/modules/dcc/libkvidcc.cpp:2562
 msgid "The current window has no associated DCC session"
 msgstr "Současné okno nemá asociováno DCC sezení"
@@ -732,13 +754,15 @@ msgstr ""
 "Následující zpráva se zdá být zašifrovaná, ale šifrovací program nebyl "
 "schopen ji dešifrovat: %Q"
 
-#: src/modules/dcc/chat.cpp:213 src/modules/dcc/send.cpp:1504
+#: src/modules/dcc/chat.cpp:213
+#: src/modules/dcc/send.cpp:1504
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "Lokální IP adresa je privátní, ale nemám žádné IRC servery k jejímu zjištění"
 
-#: src/modules/dcc/chat.cpp:210 src/modules/dcc/send.cpp:1501
+#: src/modules/dcc/chat.cpp:210
+#: src/modules/dcc/send.cpp:1501
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
@@ -850,12 +874,13 @@ msgstr "Log Přenosů"
 msgid "Transfer completed"
 msgstr "Přenos kompletní"
 
-#: src/modules/dcc/send.cpp:918 src/modules/dcc/send.cpp:1589
-#: src/modules/dcc/send.cpp:1667
+#: src/modules/dcc/send.cpp:918
+#: src/modules/dcc/send.cpp:1589
+#: src/modules/dcc/send.cpp:1668
 msgid "Transfer failed: "
 msgstr "Přenos selhal: "
 
-#: src/modules/dcc/send.cpp:1721
+#: src/modules/dcc/send.cpp:1722
 msgid "Transferring data"
 msgstr "Přenáším data"
 
@@ -941,18 +966,26 @@ msgstr "[SSL CHYBA]: %1"
 msgid "[SSL ERROR]: %s"
 msgstr "[SSL CHYBA]: %s"
 
-#: src/modules/dcc/send.cpp:1837
+#: src/modules/dcc/send.cpp:1838
 msgid "bytes/sec"
 msgstr "bajtů/sek"
 
-#: src/modules/dcc/libkvidcc.cpp:111 src/modules/dcc/libkvidcc.cpp:408
-#: src/modules/dcc/libkvidcc.cpp:443 src/modules/dcc/libkvidcc.cpp:642
-#: src/modules/dcc/libkvidcc.cpp:666 src/modules/dcc/libkvidcc.cpp:803
-#: src/modules/dcc/libkvidcc.cpp:805 src/modules/dcc/libkvidcc.cpp:1121
-#: src/modules/dcc/libkvidcc.cpp:1171 src/modules/dcc/requests.cpp:136
-#: src/modules/dcc/requests.cpp:137 src/modules/dcc/requests.cpp:138
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/marshal.cpp:444
-#: src/modules/dcc/marshal.cpp:474 src/modules/dcc/marshal.cpp:479
+#: src/modules/dcc/marshal.cpp:490
+#: src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525
+#: src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/libkvidcc.cpp:408
+#: src/modules/dcc/libkvidcc.cpp:443
+#: src/modules/dcc/libkvidcc.cpp:642
+#: src/modules/dcc/libkvidcc.cpp:666
+#: src/modules/dcc/libkvidcc.cpp:803
+#: src/modules/dcc/libkvidcc.cpp:805
+#: src/modules/dcc/libkvidcc.cpp:1121
+#: src/modules/dcc/libkvidcc.cpp:1171
+#: src/modules/dcc/descriptor.cpp:65
+#: src/modules/dcc/requests.cpp:136
+#: src/modules/dcc/requests.cpp:137
+#: src/modules/dcc/requests.cpp:138
 msgid "unknown"
 msgstr "neznámý"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-03-15 15:28+0100\n"
+"POT-Creation-Date: 2009-04-15 00:56+0200\n"
 "PO-Revision-Date: 2009-02-10 20:09+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -205,8 +205,8 @@ msgstr "Alias hinzufügen"
 msgid "Add Namespace"
 msgstr "Namensraum hinzufügen"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:197
-#: src/modules/toolbareditor/toolbareditor.cpp:284
+#: src/modules/toolbareditor/toolbareditor.cpp:190
+#: src/modules/toolbareditor/toolbareditor.cpp:276
 msgid "Advanced..."
 msgstr "Erweitert..."
 
@@ -241,7 +241,7 @@ msgstr ""
 msgid "Apply"
 msgstr "Anwenden"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
+#: src/modules/toolbareditor/toolbareditor.cpp:261
 msgid "Automatically"
 msgstr "Automatisch"
 
@@ -285,8 +285,8 @@ msgstr "Kann Datei %s nicht zum Schreiben öffnen."
 #: src/modules/eventeditor/eventeditor.cpp:517
 #: src/modules/popupeditor/popupeditor.cpp:1311
 #: src/modules/raweditor/raweditor.cpp:491
-#: src/modules/toolbareditor/toolbareditor.cpp:192
-#: src/modules/toolbareditor/toolbareditor.cpp:411
+#: src/modules/toolbareditor/toolbareditor.cpp:185
+#: src/modules/toolbareditor/toolbareditor.cpp:402
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -371,7 +371,7 @@ msgstr "Verzeichnis auswählen – KVIrc"
 #: src/modules/popupeditor/popupeditor.cpp:1160
 #: src/modules/raweditor/raweditor.cpp:419
 #: src/modules/raweditor/raweditor.cpp:462
-#: src/modules/toolbareditor/toolbareditor.cpp:402
+#: src/modules/toolbareditor/toolbareditor.cpp:393
 msgid "Choose a Filename - KVIrc"
 msgstr "Dateiname auswählen - KVIrc"
 
@@ -379,7 +379,7 @@ msgstr "Dateiname auswählen - KVIrc"
 msgid "Choose the category that best fits for this action"
 msgstr "Wählen Sie eine Kategorie, die am Besten zu dieser Aktion passt"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:331
+#: src/modules/toolbareditor/toolbareditor.cpp:322
 msgid "Close"
 msgstr "Schließen"
 
@@ -403,7 +403,7 @@ msgstr "Kommentare:"
 msgid "Condition:"
 msgstr "Bedingung:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:383
+#: src/modules/toolbareditor/toolbareditor.cpp:374
 msgid "Confirm ToolBar Deletion"
 msgstr "Löschen der Werkzeugleiste bestätigen"
 
@@ -411,7 +411,7 @@ msgstr "Löschen der Werkzeugleiste bestätigen"
 msgid "Cu&t"
 msgstr "&Ausschneiden"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:298
+#: src/modules/toolbareditor/toolbareditor.cpp:290
 msgid "Customize Toolbars"
 msgstr "Werkzeugleiste anpassen"
 
@@ -419,7 +419,7 @@ msgstr "Werkzeugleiste anpassen"
 msgid "Delete Actions"
 msgstr "Aktionon löschen"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:312
+#: src/modules/toolbareditor/toolbareditor.cpp:303
 msgid "Delete ToolBar"
 msgstr "Werkzeugleiste löschen"
 
@@ -427,7 +427,7 @@ msgstr "Werkzeugleiste löschen"
 msgid "Description:"
 msgstr "Beschreibung:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:384
+#: src/modules/toolbareditor/toolbareditor.cpp:375
 msgid "Do you really want to delete toolbar \"%1\" ?"
 msgstr "Wollen Sie wirklich die Werkzeugleiste \"%1\" löschen?"
 
@@ -439,7 +439,7 @@ msgstr "Wollen Sie wirklich das Alias \"%Q\" löschen?"
 msgid "Do you really want to remove the namespace \"%Q\" ?"
 msgstr "Wollen Sie wirklich den Namensraum \"%Q\" löschen?"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:408
+#: src/modules/toolbareditor/toolbareditor.cpp:399
 msgid "Do you want the associated actions to be exported with the toolbar ?"
 msgstr ""
 "Wollen Sie die zugeordneten Aktionon mit der Werkzeugleiste exportieren?"
@@ -448,11 +448,11 @@ msgstr ""
 msgid "Drop here the icons from the toolbars to remove them"
 msgstr "Ziehen Sie die aus der Werkzeugleiste zu löschenden Symbole hierher"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:265
+#: src/modules/toolbareditor/toolbareditor.cpp:257
 msgid "Duplicate ToolBar Id"
 msgstr "Werkzeugleisten-ID duplizieren"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:316
+#: src/modules/toolbareditor/toolbareditor.cpp:307
 msgid "Edit ToolBar"
 msgstr "Werkzeugleiste bearbeiten"
 
@@ -524,7 +524,7 @@ msgstr "Ausgewählte in einzelne Dateien exportieren..."
 msgid "Export Selected..."
 msgstr "Ausgewählte exportieren..."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:324
+#: src/modules/toolbareditor/toolbareditor.cpp:315
 msgid "Export ToolBar"
 msgstr "Werkzeugleiste exportieren"
 
@@ -576,11 +576,11 @@ msgstr "Leeren Namensraum in Namensraumnamen gefunden"
 msgid "Functions:"
 msgstr "Funktionen:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:287
+#: src/modules/toolbareditor/toolbareditor.cpp:279
 msgid "Hide Advanced"
 msgstr "Verberge Erweitert"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:151
+#: src/modules/toolbareditor/toolbareditor.cpp:149
 msgid "Icon"
 msgstr "Symbol"
 
@@ -588,7 +588,7 @@ msgstr "Symbol"
 msgid "Icon:"
 msgstr "Symbol:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:170
+#: src/modules/toolbareditor/toolbareditor.cpp:165
 msgid "Id"
 msgstr "Id"
 
@@ -596,7 +596,7 @@ msgstr "Id"
 msgid "Internal unique name for the action"
 msgstr "Eindeutiger interner Name für die Aktion"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:252
+#: src/modules/toolbareditor/toolbareditor.cpp:244
 msgid "Invalid ToolBar Label"
 msgstr "Ungültiges Werkzeugleisten-Label"
 
@@ -618,7 +618,7 @@ msgid "Keywords:"
 msgstr "Schlüsselwörter:"
 
 #: src/modules/popupeditor/popupeditor.cpp:92
-#: src/modules/toolbareditor/toolbareditor.cpp:142
+#: src/modules/toolbareditor/toolbareditor.cpp:141
 msgid "Label"
 msgstr "Label"
 
@@ -630,7 +630,7 @@ msgstr "Label:"
 msgid "Load Script File - KVIrc"
 msgstr "Skriptdatei laden - KVIrc"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:269
+#: src/modules/toolbareditor/toolbareditor.cpp:261
 msgid "Manually"
 msgstr "Manuell"
 
@@ -647,8 +647,8 @@ msgstr "Fehlender Namensraumname"
 msgid "My Action"
 msgstr "Meine Aktion"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:501
-#: src/modules/toolbareditor/toolbareditor.cpp:502
+#: src/modules/toolbareditor/toolbareditor.cpp:492
+#: src/modules/toolbareditor/toolbareditor.cpp:493
 msgid "My ToolBar"
 msgstr "Meine Werkzeugleiste"
 
@@ -757,14 +757,14 @@ msgstr "Neuer Separator unterhalb"
 msgid "New Separator Inside"
 msgstr "Neuer Separator innerhalb"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:308
+#: src/modules/toolbareditor/toolbareditor.cpp:299
 msgid "New ToolBar"
 msgstr "Neue Werkzeugleiste"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:743
 #: src/modules/aliaseditor/aliaseditor.cpp:1033
-#: src/modules/toolbareditor/toolbareditor.cpp:385
-#: src/modules/toolbareditor/toolbareditor.cpp:410
+#: src/modules/toolbareditor/toolbareditor.cpp:376
+#: src/modules/toolbareditor/toolbareditor.cpp:401
 msgid "No"
 msgstr "Nein"
 
@@ -781,9 +781,9 @@ msgstr "Normaler Text:"
 #: src/modules/actioneditor/actioneditor.cpp:717
 #: src/modules/actioneditor/actioneditor.cpp:864
 #: src/modules/editor/scripteditor.cpp:530
-#: src/modules/toolbareditor/toolbareditor.cpp:186
-#: src/modules/toolbareditor/toolbareditor.cpp:252
-#: src/modules/toolbareditor/toolbareditor.cpp:464
+#: src/modules/toolbareditor/toolbareditor.cpp:180
+#: src/modules/toolbareditor/toolbareditor.cpp:244
+#: src/modules/toolbareditor/toolbareditor.cpp:455
 msgid "OK"
 msgstr "OK"
 
@@ -842,7 +842,7 @@ msgstr "Oberhalb einfügen"
 msgid "Paste Inside"
 msgstr "Innerhalb einfügen"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:228
+#: src/modules/toolbareditor/toolbareditor.cpp:220
 msgid "Please choose the icon for the ToolBar"
 msgstr "Bitte wählen Sie ein Symbol für die Werkzeugleiste"
 
@@ -874,11 +874,11 @@ msgstr ""
 msgid "Please note that all the children items will be deleted too."
 msgstr "Bitte beachten Sie, dass die Kind-Elemente ebenfalls gelöscht werden."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:500
+#: src/modules/toolbareditor/toolbareditor.cpp:491
 msgid "Please specify the properties for the new toolbar"
 msgstr "Bitte spezifizieren Sie die Eigenschaften der neuen Werkzeugleiste"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:474
+#: src/modules/toolbareditor/toolbareditor.cpp:465
 msgid "Please specify the properties for the toolbar \"%1\""
 msgstr ""
 "Bitte spezifizieren Sie die Eigenschaften der neuen Werkzeugleiste \"%1\""
@@ -1002,7 +1002,7 @@ msgstr "Test"
 msgid "Text:"
 msgstr "Text:"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:252
+#: src/modules/toolbareditor/toolbareditor.cpp:244
 msgid "The ToolBar Label can't be empty!"
 msgstr "Das Werkzeugleisten-Label kann nicht leer sein!"
 
@@ -1033,7 +1033,7 @@ msgstr ""
 "Popup-Menü, wenn diese Aktion eingefügt wird.<br>Es muss 16x16 Pixel groß "
 "sein,"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:266
+#: src/modules/toolbareditor/toolbareditor.cpp:258
 msgid ""
 "The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
 "it automatically (so it doesn't collide with any other toolbar) or you "
@@ -1062,7 +1062,7 @@ msgstr ""
 "Dies aktiviert die Aktion nur, wenn es ausgewählte Benutzer im aktiven "
 "Fenster gibt"
 
-#: src/modules/toolbareditor/toolbareditor.cpp:407
+#: src/modules/toolbareditor/toolbareditor.cpp:398
 msgid "ToolBar Export"
 msgstr "Werkzeugleistenexport"
 
@@ -1103,7 +1103,7 @@ msgstr "Kann nicht in die Raw-Ereignisdatei schreiben."
 msgid "Unable to write to the raw events file."
 msgstr "Kann nicht in die Raw-Ereignisse-Datei schreiben."
 
-#: src/modules/toolbareditor/toolbareditor.cpp:464
+#: src/modules/toolbareditor/toolbareditor.cpp:455
 msgid "Unable to write to the toolbar file."
 msgstr "Kann nicht in die Werkzeugleistendatei schreiben."
 
@@ -1139,14 +1139,14 @@ msgstr "Zu suchendes Wort"
 #: src/modules/popupeditor/popupeditor.cpp:1164
 #: src/modules/raweditor/raweditor.cpp:426
 #: src/modules/raweditor/raweditor.cpp:466
-#: src/modules/toolbareditor/toolbareditor.cpp:464
+#: src/modules/toolbareditor/toolbareditor.cpp:455
 msgid "Write Failed - KVIrc"
 msgstr "Schreiben fehlgeschlagen – KVIrc"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:743
 #: src/modules/aliaseditor/aliaseditor.cpp:1033
-#: src/modules/toolbareditor/toolbareditor.cpp:386
-#: src/modules/toolbareditor/toolbareditor.cpp:409
+#: src/modules/toolbareditor/toolbareditor.cpp:377
+#: src/modules/toolbareditor/toolbareditor.cpp:400
 msgid "Yes"
 msgstr "Ja"
 
