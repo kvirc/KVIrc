@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-15 00:56+0200\n"
-"PO-Revision-Date: 2009-03-15 15:52+0100\n"
+"PO-Revision-Date: 2009-04-15 01:21+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -6870,7 +6870,7 @@ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:195
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:283
 msgid "Unable to find a window with the specified window id"
-msgstr ""
+msgstr "Kann kein Fenster mit der angegebenen Fenster-ID finden"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:893
 msgid "Unable to look it up hostname: Hostname appears to be masked"
@@ -7247,10 +7247,9 @@ msgstr ""
 msgid "Using network specific nickname (%Q)"
 msgstr "Benutze netzwerkspezifischen Nick (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1143
-#, fuzzy, c-format
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1143, c-format
 msgid "Using network specific password (%s)"
-msgstr "Benutze netzwerkspezifischen Benutzernamen (%Q)"
+msgstr "Benutze netzwerkspezifisches Passwort (%s)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1089
 msgid "Using network specific real name (%Q)"
@@ -7272,10 +7271,9 @@ msgstr "Benutzt Server <b>%1</b>"
 msgid "Using server specific nickname (%Q)"
 msgstr "Benutze serverspezifischen Nick (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1127
-#, fuzzy, c-format
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1127, c-format
 msgid "Using server specific password (%s)"
-msgstr "Benutze serverspezifischen Benutzernamen (%Q)"
+msgstr "Benutze serverspezifisches Passwort (%s)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1083
 msgid "Using server specific real name (%Q)"

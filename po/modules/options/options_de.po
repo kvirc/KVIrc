@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-04-15 00:56+0200\n"
-"PO-Revision-Date: 2009-03-15 16:03+0100\n"
+"PO-Revision-Date: 2009-04-15 01:25+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -268,12 +268,11 @@ msgstr ""
 "Benutzermodus für diesen Server angeben"
 
 #: src/modules/options/optw_servers.cpp:141
-#, fuzzy
 msgid ""
 "<center>If this network requires a password, put it in this field, otherwise "
 "leave it empty.</center>"
 msgstr ""
-"<center>Wenn der Server ein Passwort erfordert, dieses in das Feld "
+"<center>Wenn dieses Netzwerk ein Passwort erfordert, dieses in das Feld "
 "eintragen, ansonsten leer lassen.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:71
@@ -2547,7 +2546,7 @@ msgstr "Höchster Port:"
 
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight every occurence of a word inside text"
-msgstr ""
+msgstr "Jedes Vorkommen eines Wortes im Text hervorheben"
 
 #: src/modules/options/optw_highlighting.cpp:68
 msgid "Highlight messages containing my nickname"
@@ -2555,7 +2554,7 @@ msgstr "Nachrichten, die den eigenen Nick enthalten, hervorheben"
 
 #: src/modules/options/optw_highlighting.cpp:63
 msgid "Highlight only whole words using these word splitters:"
-msgstr ""
+msgstr "Nur ganze Wörter hervorheben unter Verwenung dieser Trennzeichen:"
 
 #: src/modules/options/optw_sound.cpp:290
 msgid "Highlighted message in inactive window"
@@ -3262,9 +3261,8 @@ msgid "Paste last channel log"
 msgstr "Letztes Channel-Log einfügen"
 
 #: src/modules/options/optw_query.cpp:92
-#, fuzzy
 msgid "Paste last query log"
-msgstr "Letztes Channel-Log einfügen"
+msgstr "Letztes Query-Log einfügen"
 
 #: src/modules/options/optw_query.cpp:97
 #: src/modules/options/optw_channel.cpp:130
@@ -4288,9 +4286,8 @@ msgid "Use workaround for firewall"
 msgstr "Workaround für Firewall benutzen"
 
 #: src/modules/options/optw_input.cpp:152
-#, fuzzy
 msgid "Use zsh-like nick completion"
-msgstr "Bash-ähnliche Nick-Komplettierung benutzen"
+msgstr "Zsh-ähnliche Nick-Komplettierung benutzen"
 
 #: src/modules/options/optw_identity.cpp:634
 #: src/modules/options/optw_servers.cpp:541
