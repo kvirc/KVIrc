@@ -208,6 +208,9 @@ void KviApp::internalInit()
 	// next step is setup()
 	m_bSetupDone = false;
 	kvi_socket_flushTrafficCounters();
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	m_bPortable = KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable");
+#endif
 }
 
 void KviApp::setup()

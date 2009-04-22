@@ -96,6 +96,9 @@ protected:
 	QString                          m_szLocalKvircDir;
 	int				m_iHeartbeatTimerId;
 	bool                            m_bFirstTimeRun;
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	bool				m_bPortable;
+#endif
 	KviWindow                     * m_pActiveWindow;
 	bool                            m_bUpdateGuiPending;
 	KviPointerList<KviPendingAvatarChange> * m_pPendingAvatarChanges;

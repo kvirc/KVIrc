@@ -671,7 +671,7 @@ bool KviApp::findLocalKvircDirectory()
 #endif //COMPILE_KDE_SUPPORT
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	if(KviFileUtils::fileExists(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable")) {
+	if(m_bPortable) {
 		m_szLocalKvircDir=g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"Settings";
 		if(checkLocalKvircDirectory(m_szLocalKvircDir)) return true;
 	}
@@ -726,6 +726,9 @@ void KviApp::loadDirectories()
 	m_bFirstTimeRun = !findLocalKvircDirectory();
 
 	if(m_bFirstTimeRun)setupBegin();
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+	if (m_bPortable) return;
+#endif
 	if(!checkFileAssociations()) setupFileAssociations();
 	if(!checkUriAssociations("irc"))    setupUriAssociations("irc");
 	if(!checkUriAssociations("ircs"))   setupUriAssociations("ircs");
