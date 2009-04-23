@@ -1274,6 +1274,12 @@ bool KviUserListView::nickChange(const QString & szOldNick, const QString & szNe
 		kvi_time_t joint  = pEntry->m_joinTime;
 		bool bSelect      = pEntry->m_bSelected;
 		KviAvatar * pAv   = pEntry->m_pGlobalData->forgetAvatar();
+		if(pEntry->m_pConnectedAnimation)
+		{
+			pEntry->m_pConnectedAnimation->disconnect(SIGNAL(frameChanged()),
+				this,SLOT(animatedAvatarUpdated()));
+		}
+
 		KviIrcUserEntry::Gender gender = pEntry->m_pGlobalData->gender();
 		bool bBot = pEntry->m_pGlobalData->isBot();
 		part(szOldNick);
