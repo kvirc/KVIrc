@@ -1126,6 +1126,7 @@ void KviSetupWizard::accept()
 	if(m_pDirMakePortable->isChecked())
 	{
 		KviFileUtils::writeFile(g_pApp->applicationDirPath()+KVI_PATH_SEPARATOR_CHAR+"portable","true");
+                g_pApp->m_bPortable=true;
 	} else {
 #endif
 		g_pApp->saveKvircDirectory();
