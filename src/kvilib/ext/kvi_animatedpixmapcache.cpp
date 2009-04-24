@@ -28,13 +28,15 @@
 #include <QImageReader>
 #include <QImage>
 
+#define FRAME_DELAY 100
+
 static KviAnimatedPixmapCache* g_pAnimatedCache = 0;
 static QPixmap* g_pDummyPixmap = 0;
 
 KviAnimatedPixmapCache::KviAnimatedPixmapCache()
 {
 	g_pAnimatedCache = this;
-	m_animationTimer.setSingleShot(true);
+	m_animationTimer.setInterval(FRAME_DELAY);
 	connect(&m_animationTimer,SIGNAL(timeout()),this,SLOT(timeoutEvent()));
 }
 
@@ -162,31 +164,16 @@ void KviAnimatedPixmapCache::free(KviAnimatedPixmapCache::Data* data) {
 	g_pAnimatedCache->internalFree(data);
 }
 
-void  KviAnimatedPixmapCache::internalSceduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver)
+void  KviAnimatedPixmapCache::internalScheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver)
 {
 	//debug("Adding %i - %i",(uint)KviTimeUtils::getCurrentTimeMills()+delay,receiver);
 	m_timerMutex.lock();
-	bool needTimerChange = false;
 	long long when = KviTimeUtils::getCurrentTimeMills()+delay;
 
-	if(m_timerData.isEmpty())
-	{
-		m_timerData.insert(when,receiver);
-		needTimerChange = true;
-	} else {
-		long long currentNext = m_timerData.begin().key();
-		if(when<currentNext)
-		{
-			needTimerChange = true;
-		}
-		m_timerData.insert(when,receiver);
-	}
+	m_timerData.insert(when,receiver);
 
-	if(needTimerChange)
-	{
-		m_animationTimer.stop();
-		m_animationTimer.start(delay);
-	}
+	if(!m_animationTimer.isActive())
+		m_animationTimer.start();
 
 	m_timerMutex.unlock();
 }
@@ -212,42 +199,43 @@ void KviAnimatedPixmapCache::timeoutEvent()
 	*
 	* So it will not emit additional 5 events.
 	*/
-	long long now = KviTimeUtils::getCurrentTimeMills() + 3;
+	long long now = KviTimeUtils::getCurrentTimeMills() + FRAME_DELAY;
 
 	//m_timerMutex.lock();
 
 	QMultiMap<long long, KviAnimatedPixmapInterface*>::iterator i =
 			m_timerData.begin();
 
+	QList<KviAnimatedPixmapInterface*> processed;
 	while (i != m_timerData.end() && i.key() <= now)
 	{
-		i.value()->nextFrame();
-		//debug("Calling %i - %i",(uint)KviTimeUtils::getCurrentTimeMills(),i.value());
+		if(processed.contains(i.value()))
+		{
+			i.value()->nextFrame(false);
+		} else {
+			processed.append(i.value());
+		}
+
 		i = m_timerData.erase(i);
+	}
+
+	for(int i = 0; i < processed.size(); ++i)
+	{
+		processed.at(i)->nextFrame(true);
 	}
 
 	// m_timerMutex.unlock();
 
-	if (i != m_timerData.end())
-	{
-		long long nextDelay = i.key();
-		uint delay = (uint) (nextDelay - KviTimeUtils::getCurrentTimeMills());
-
-		if ((int) delay < 0)
-		{
-			delay = 0;
-		}
-
-		m_animationTimer.start(delay);
-	}
+	if(m_timerData.empty())
+		m_animationTimer.stop();
 }
 
-void  KviAnimatedPixmapCache::sceduleFrameChange(uint when,KviAnimatedPixmapInterface* receiver)
+void  KviAnimatedPixmapCache::scheduleFrameChange(uint when,KviAnimatedPixmapInterface* receiver)
 {
-  if (g_pAnimatedCache)
-  {
-    g_pAnimatedCache->internalSceduleFrameChange(when,receiver);
-  }
+	if (g_pAnimatedCache)
+	{
+		g_pAnimatedCache->internalScheduleFrameChange(when,receiver);
+	}
 }
 
 QPixmap* KviAnimatedPixmapCache::dummyPixmap()

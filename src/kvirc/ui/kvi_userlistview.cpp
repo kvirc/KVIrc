@@ -435,7 +435,7 @@ void KviUserListView::setMaskEntries(char cType, int iNum)
 
 void KviUserListView::animatedAvatarUpdated()
 {
-	//update();
+
 	if(!m_pTopItem)
 		return;
 
@@ -447,15 +447,39 @@ void KviUserListView::animatedAvatarUpdated()
 	int iCurTop = KVI_USERLIST_BORDER_WIDTH - m_pViewArea->m_iTopItemOffset;
 	int iCurBottom = 0;
 
+	int iBaseX = KVI_USERLIST_BORDER_WIDTH + 1;
+	int iBaseY = 2;
+	if(KVI_OPTION_BOOL(KviOption_boolDrawGenderIcons))
+		iBaseX += 11;
+	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelIcons))
+		iBaseX += 18;
+	if(KVI_OPTION_BOOL(KviOption_boolShowUserChannelState))
+		iBaseX += 11;
+	if(KVI_OPTION_BOOL(KviOption_boolUserListViewDrawGrid))
+	{
+		switch(KVI_OPTION_UINT(KviOption_uintUserListViewGridType))
+		{
+			case KVI_USERLISTVIEW_GRIDTYPE_PLAINGRID:
+			case KVI_USERLISTVIEW_GRIDTYPE_DOTGRID:
+				break;
+			default: // KVI_USERLISTVIEW_GRIDTYPE_3DGRID and KVI_USERLISTVIEW_GRIDTYPE_3DBUTTONS
+				if(pEntry->m_bSelected) iBaseY++;
+				break;
+		}
+		iBaseX += 3;
+	} else {
+		iBaseX += 1;
+	}
+
 	while(pEntry && (iCurTop <= m_pViewArea->height()))
 	{
 		iCurBottom = iCurTop + pEntry->m_iHeight;
 		if(pEntry->m_pConnectedAnimation==sender())
 		{
-			rct.setX(0);
-			rct.setY(iCurTop);
-			rct.setWidth(m_pViewArea->width());
-			rct.setHeight(pEntry->m_iHeight);
+			rct.setX(iBaseX);
+			rct.setY(iCurTop + iBaseY);
+			rct.setWidth(pEntry->m_pConnectedAnimation->pixmap()->size().width());
+			rct.setHeight(pEntry->m_pConnectedAnimation->pixmap()->size().height());
 
 			m_pViewArea->update(rct);
 		}

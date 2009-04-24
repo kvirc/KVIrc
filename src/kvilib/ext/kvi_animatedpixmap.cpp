@@ -50,7 +50,7 @@ KviAnimatedPixmap::KviAnimatedPixmap(KviAnimatedPixmap* source)
 	//restore started state
 	if(isStarted() && (framesCount()>1))
 	{
-		KviAnimatedPixmapCache::sceduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
+		KviAnimatedPixmapCache::scheduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
 	}
 }
 
@@ -64,7 +64,7 @@ void KviAnimatedPixmap::start()
 {
 	if(!isStarted() && (framesCount()>1))
 	{
-		KviAnimatedPixmapCache::sceduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
+		KviAnimatedPixmapCache::scheduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
 		m_bStarted = true;
 	}
 }
@@ -76,18 +76,18 @@ void KviAnimatedPixmap::stop()
 		m_bStarted = false;
 	}
 }
-
-void KviAnimatedPixmap::nextFrame()
+#include <stdio.h>
+void KviAnimatedPixmap::nextFrame(bool bScheduleNext)
 {
 	m_uCurrentFrameNumber++;
 	//Ensure, that we are not out of bounds
 	m_uCurrentFrameNumber %= m_lFrames->count();
-	emit(frameChanged());
 
 	//run timer again
-	if(m_bStarted)
+	if(m_bStarted && bScheduleNext)
 	{
-		KviAnimatedPixmapCache::sceduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
+		emit(frameChanged());
+		KviAnimatedPixmapCache::scheduleFrameChange(m_lFrames->at(m_uCurrentFrameNumber).delay,this);
 	}
 }
 

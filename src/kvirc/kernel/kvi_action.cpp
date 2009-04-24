@@ -275,9 +275,11 @@ void KviAction::activeWindowChanged()
 			break;
 		default:
 			if(m_uFlags & InternalWindowMask)
+			{
 				if(isEnabled())setEnabled(false);
-			else
+			} else {
 				if(!isEnabled())setEnabled(true);
+			}
 			break;
 	}
 }

@@ -259,15 +259,21 @@ int KviTextIconManager::load(const QString & szFileName, bool bMerge)
 				if(bMerge)
 				{
 					if(!m_pTextIconDict->find(*s))
+					{
 						if(iId != -1)
+						{
 							m_pTextIconDict->replace(*s,new KviTextIcon(iId));
-						else
+						} else {
 							m_pTextIconDict->replace(*s,new KviTextIcon(szTmp));
+						}
+					}
 				} else {
 					if(iId != -1)
+					{
 						m_pTextIconDict->replace(*s,new KviTextIcon(iId));
-					else
+					} else {
 						m_pTextIconDict->replace(*s,new KviTextIcon(szTmp));
+					}
 				}
 			}
 		}

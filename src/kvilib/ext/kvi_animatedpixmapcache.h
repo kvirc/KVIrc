@@ -33,7 +33,7 @@
 
 class KviAnimatedPixmapInterface {
 public:
-	 virtual void nextFrame() = 0;
+	 virtual void nextFrame(bool) = 0;
 	 virtual ~KviAnimatedPixmapInterface() {};
 };
 
@@ -114,14 +114,14 @@ protected:
 	Data* internalResize(Data* data,QSize size);
 
 	void  internalFree(Data* data);
-	void  internalSceduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
+	inline void  internalScheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
 	void  internalNotifyDelete(KviAnimatedPixmapInterface* receiver);
 protected slots:
         virtual void timeoutEvent();
 public:
 	virtual ~KviAnimatedPixmapCache();
 
-	static void  sceduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
+	static void  scheduleFrameChange(uint delay,KviAnimatedPixmapInterface* receiver);
 	static Data* load(QString szFileName);
 	static Data* resize(Data* data,QSize size);
 	static void  free(Data* data);

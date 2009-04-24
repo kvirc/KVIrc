@@ -160,7 +160,7 @@ public:
 	/*
 	 * Called when the frame changes
 	 */
-	void nextFrame();
+	void nextFrame(bool bScheduleNext);
 
 signals:
 
