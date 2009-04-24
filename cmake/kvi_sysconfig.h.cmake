@@ -31,8 +31,10 @@
 #cmakedefine COMPILE_AUDIOFILE_SUPPORT 1
 #cmakedefine COMPILE_PERL_SUPPORT 1
 #cmakedefine COMPILE_PYTHON_SUPPORT 1
+#if !(defined(MINGW))
 #cmakedefine COMPILE_ix86_ASM 1
 #cmakedefine COMPILE_WITH_SYSTEM_MEMMOVE 1
+#endif
 
 #cmakedefine COMPILE_DISABLE_DCC_VOICE 1
 #cmakedefine HAVE_LINUX_SOUNDCARD_H 1
