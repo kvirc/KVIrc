@@ -313,7 +313,6 @@ protected slots:
 protected:
 	//virtual void paintEvent(QPaintEvent * e);
 	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void mouseMoveEvent(QMouseEvent * e);
 	virtual void mouseReleaseEvent(QMouseEvent * e);
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	//virtual void resizeEvent(QResizeEvent * e);

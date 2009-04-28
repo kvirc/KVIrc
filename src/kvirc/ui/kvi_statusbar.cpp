@@ -486,58 +486,44 @@ void KviStatusBar::mousePressEvent(QMouseEvent * e)
 	}
 }
 
-void KviStatusBar::mouseMoveEvent(QMouseEvent * e)
-{
-
-	if(!m_pClickedApplet)
-		return;
-	if(!appletExists(m_pClickedApplet))
-		return;
-
-	KviStatusBarApplet * pApplet = (KviStatusBarApplet *) childAt(e->pos());
-
-	if(pApplet == m_pClickedApplet)
-		return;
-
-	// move!
-	if(!pApplet)
-	{
-		pApplet = m_pAppletList->first();
-		while(pApplet)
-		{
-			if(e->pos().x() < (pApplet->x()+pApplet->width()))
-			{
-				break;
-			} else {
-				pApplet = m_pAppletList->next();
-			}
-		}
-		if(!pApplet || pApplet == m_pClickedApplet)
-			return; // no way to move
-	}
-
-	printf("inverting %d and %d\n",m_pClickedApplet->index(),pApplet->index());
-
-	//swap indexes
-	int oldIndex = m_pClickedApplet->index();
-	m_pClickedApplet->setIndex(pApplet->index());
-	pApplet->setIndex(oldIndex);
-
-	removeWidget(m_pClickedApplet); //Note: This function does not delete the widget but hides it. To add the widget again, you must call both the addWidget() and show() functions.
-	insertPermanentWidget(m_pClickedApplet->index(), m_pClickedApplet);
-	m_pClickedApplet->show();
-
-	m_pClickedApplet->select(false);
-	g_pApp->restoreOverrideCursor();
-	m_pClickedApplet = 0;
-}
-
 void KviStatusBar::mouseReleaseEvent(QMouseEvent * e)
 {
 	if(e->button() == Qt::LeftButton)
 	{
 		if(m_pClickedApplet && appletExists(m_pClickedApplet))
 		{
+			KviStatusBarApplet * pApplet = (KviStatusBarApplet *) childAt(e->pos());
+
+			if(pApplet == m_pClickedApplet)
+				return;
+
+			// move!
+			if(!pApplet)
+			{
+				pApplet = m_pAppletList->first();
+				while(pApplet)
+				{
+					if(e->pos().x() < (pApplet->x()+pApplet->width()))
+					{
+						break;
+					} else {
+						pApplet = m_pAppletList->next();
+					}
+				}
+				if(!pApplet || pApplet == m_pClickedApplet)
+					return; // no way to move
+			}
+
+			//swap indexes
+			int oldIndex = m_pClickedApplet->index();
+			int newIndex = pApplet->index();
+			m_pClickedApplet->setIndex(newIndex);
+			pApplet->setIndex(oldIndex);
+
+			removeWidget(m_pClickedApplet); //Note: This function does not delete the widget but hides it. To add the widget again, you must call both the addWidget() and show() functions.
+			insertPermanentWidget(newIndex, m_pClickedApplet);
+			m_pClickedApplet->show();
+
 			m_pClickedApplet->select(false);
 			g_pApp->restoreOverrideCursor();
 			m_pClickedApplet = 0;
