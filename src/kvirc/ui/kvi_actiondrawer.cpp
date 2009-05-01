@@ -139,21 +139,23 @@ KviActionDrawerPageListWidget::~KviActionDrawerPageListWidget()
 {
 }
 
-/*
-void KviActionDrawerPageListWidget::contentsMousePressEvent(QMouseEvent * e)
+void KviActionDrawerPageListWidget::mousePressEvent(QMouseEvent * e)
 {
-	KviListView::contentsMousePressEvent(e);
-	KviActionDrawerPageListWidgetItem * pItem = (KviActionDrawerPageListWidgetItem *)itemAt(QPoint(5,contentsToViewport(e->pos()).y()));
+	KviTalListWidget::mousePressEvent(e);
+	KviActionDrawerPageListWidgetItem * pItem = (KviActionDrawerPageListWidgetItem *)itemAt(e->pos());
 	if(!pItem)
 		return;
 
-	KviTextDrag * pDrag = new KviTextDrag();
-	pDrag->setText(pItem->name());
+	QDrag * pDrag = new QDrag(this);
+	QMimeData *mimeData = new QMimeData;
 
-	if(pItem->icon())
-		pDrag->setImageData(pItem->icon());
+	mimeData->setText(pItem->name());
+	pDrag->setMimeData(mimeData);
+
+/*	if(pItem->icon())
+		pDrag->setPixmap(pItem->icon()->copy());*/
+	pDrag->exec();
 }
-*/
 
 void KviActionDrawerPageListWidget::resizeEvent(QResizeEvent * e)
 {

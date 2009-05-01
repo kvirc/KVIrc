@@ -114,12 +114,12 @@ void KviTrashcanLabel::heartbeat()
 
 void KviTrashcanLabel::dropEvent(QDropEvent * e)
 {
-	if(e->mimeData()->hasUrls()) e->acceptProposedAction();
+	if(e->mimeData()->hasText()) e->acceptProposedAction();
 }
 
 void KviTrashcanLabel::dragEnterEvent(QDragEnterEvent * e)
 {
-	if(e->mimeData()->hasUrls()) e->acceptProposedAction();
+	if(e->mimeData()->hasText()) e->acceptProposedAction();
 }
 
 

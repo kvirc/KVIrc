@@ -120,13 +120,9 @@ public:
 	* \brief Destroys an action drawer page list object
 	*/
 	~KviActionDrawerPageListWidget();
-/*
-protected:
-	KviActionDrawerPage * m_pPage;
-*/
 protected:
 	virtual void resizeEvent(QResizeEvent * e);
-	//virtual void contentsMousePressEvent(QMouseEvent * e);
+	virtual void mousePressEvent(QMouseEvent * e);
 };
 
 /**
@@ -153,10 +149,11 @@ protected:
 	QPixmap          * m_pIcon;
 	KviTalListWidget * m_pListWidget;
 	QString            m_szKey;
-/*
+
 public:
 	QPixmap * icon(){ return m_pIcon; };
 	const QString & name(){ return m_szName; };
+/*
 protected:
 	virtual void paintCell(QPainter * p,const QColorGroup & cg,int column,int width,int align);
 	virtual void setup();

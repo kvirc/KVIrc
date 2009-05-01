@@ -423,7 +423,8 @@ QWidget * KviAction::addToCustomToolBar(KviCustomToolBar *pParentToolBar)
 	setObjectName(m_szName.toUtf8().data());
 	connect(b,SIGNAL(clicked()),this,SLOT(activate()));
 
-	pParentToolBar->addWidget(b);
+	QAction *a = pParentToolBar->addWidget(b);
+	a->setVisible(true);
 	if(!isEnabled())b->setEnabled(false);
 	registerWidget(b);
 	return b;
