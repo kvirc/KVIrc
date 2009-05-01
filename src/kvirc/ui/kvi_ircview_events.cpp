@@ -660,7 +660,7 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *e)
 		}
 
 		QClipboard * c = QApplication::clipboard();
-		if(c)
+		if(c && !szSelectionText.isEmpty())
 		{
 			// copy to both!
 			c->setText(szSelectionText,QClipboard::Clipboard);
