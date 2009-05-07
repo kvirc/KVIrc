@@ -47,8 +47,8 @@ KviCustomToolBar::KviCustomToolBar(KviCustomToolBarDescriptor * pDesc, const QSt
 {
 	m_pDescriptor = pDesc;
 	m_pMovedChild = 0;
+	m_pMovedAction = 0;
 	m_pDraggedChild = 0;
-	m_pFilteredChildren = 0;
 	setAcceptDrops(true);
 	connect(KviActionManager::instance(),SIGNAL(beginCustomizeToolBars()),this,SLOT(beginCustomize()));
 	connect(KviActionManager::instance(),SIGNAL(endCustomizeToolBars()),this,SLOT(endCustomize()));
@@ -70,8 +70,6 @@ KviCustomToolBar::~KviCustomToolBar()
 			KviActionManager::instance()->setCurrentToolBar(0);
 	}
 
-	if(m_pFilteredChildren)
-		delete m_pFilteredChildren;
 }
 
 void KviCustomToolBar::paintEvent(QPaintEvent * e)
@@ -87,73 +85,12 @@ void KviCustomToolBar::paintEvent(QPaintEvent * e)
 	}
 }
 
-void KviCustomToolBar::filteredChildDestroyed()
-{
-	if(!m_pFilteredChildren)
-		return;
-	const QObject * o = sender();
-	m_pFilteredChildren->remove((void *)o);
-}
-
-void KviCustomToolBar::filterChild(QObject * o)
-{
-	bool * pBool = new bool(((QWidget *)o)->isEnabled());
-	if(m_pFilteredChildren)
-		m_pFilteredChildren->insert(o,pBool);
-	if(!*pBool)
-		((QWidget *)o)->setEnabled(true);
-	o->installEventFilter(this);
-	connect(o,SIGNAL(destroyed()),this,SLOT(filteredChildDestroyed()));
-}
-
-void KviCustomToolBar::unfilterChild(QObject * o)
-{
-	if(m_pFilteredChildren)
-	{
-		bool * pBool = m_pFilteredChildren->find(o);
-		if(pBool)
-		{
-			if(!*pBool)
-				((QWidget *)o)->setEnabled(false);
-			o->removeEventFilter(this);
-			disconnect(o,SIGNAL(destroyed()),this,SLOT(filteredChildDestroyed()));
-		}
-	}
-}
-
 void KviCustomToolBar::beginCustomize()
 {
-	if(m_pFilteredChildren)
-		delete m_pFilteredChildren;
-
-	m_pFilteredChildren = new KviPointerHashTable<void *,bool>;
-	m_pFilteredChildren->setAutoDelete(true);
-	// filter the events for all the children
-	QList<QObject *> list = children();
-	for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
-	{
-		if((*it)->isWidgetType())
-			filterChild(*it);
-	}
 }
 
 void KviCustomToolBar::endCustomize()
 {
-	// stop filtering events
-	QList<QObject *> list = children();
-	for(QList<QObject *>::Iterator it = list.begin(); it != list.end(); ++it)
-	{
-		if((*it)->isWidgetType())
-			unfilterChild(*it);
-	}
-
-	// FIXME: We SHOULD MAKE SURE that the children are re-enabled...
-	// this could be done by calling setEnabled(isEnabled()) on each action ?
-	if(m_pFilteredChildren)
-	{
-		delete m_pFilteredChildren;
-		m_pFilteredChildren = 0;
-	}
 	syncDescriptor();
 }
 
@@ -162,45 +99,12 @@ void KviCustomToolBar::syncDescriptor()
 	// store the item order in the descriptor
 	// There was boxLayouts
 	QLayout * pLayout = layout();
-/*	QLayoutIterator iter = lay->iterator();
-	QLayoutItem * i;
 	m_pDescriptor->actions()->clear();
-	while((i = iter.current()))
-	{
-		if(QWidget * w = i->widget())
-			m_pDescriptor->actions()->append(new QString(w->name()));
-		++iter;
-	}
-*/
-
 	for(int i=0; i < pLayout->count(); i++)
 	{
 		if(QWidget * w = pLayout->itemAt(i)->widget())
 			m_pDescriptor->actions()->append(new QString(w->objectName()));
 	}
-}
-
-void KviCustomToolBar::childEvent(QChildEvent * e)
-{
-	if(KviActionManager::customizingToolBars())
-	{
-		// this is useful for droppped and dragged-out children
-		if(e->type() == QEvent::ChildAdded)
-		{
-			if(e->child()->isWidgetType())
-				filterChild(e->child());
-			goto done;
-		}
-
-		if(e->type() == QEvent::ChildRemoved)
-		{
-			if(e->child()->isWidgetType())
-				unfilterChild(e->child());
-			goto done;
-		}
-	}
-done:
-	KviToolBar::childEvent(e);
 }
 
 void KviCustomToolBar::dragEnterEvent(QDragEnterEvent * e)
@@ -228,20 +132,54 @@ void KviCustomToolBar::dragEnterEvent(QDragEnterEvent * e)
 	} else e->ignore();
 }
 
-void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *)
+void KviCustomToolBar::dragMoveEvent(QDragMoveEvent *e)
 {
 	if(!m_pDraggedChild)
 		return;
 
-	drag(m_pDraggedChild,mapFromGlobal(QCursor::pos()));
+	int iMe = -1;
+	int iIdx = dropIndexAt(e->pos(),m_pDraggedChild,&iMe);
+// 	debug("DROP INDEX IS %d, ME IS %d",iIdx,iMe);
+	if(iIdx == iMe) return; // would move over itself
+
+	QWidget * pWidgetToMove = widgetAt(iIdx > iMe ? iIdx+1 : iIdx);
+// 	debug("SEARCHING FOR WIDGET TO MOVE AT %d AND FOUND %x (ME=%x)",iIdx > iMe ? iIdx+1 : iIdx,pWidgetToMove,pChild);
+	if(pWidgetToMove == m_pDraggedChild)
+		return; // hmmm
+
+	bool bDone = false;
+	QAction * pMyOwnAction = actionForWidget(m_pDraggedChild);
+	if(!pMyOwnAction)
+		return;
+
+	QAction * pAction=0;
+	removeAction(pMyOwnAction);
+	if(pWidgetToMove)
+	{
+		pAction = actionForWidget(pWidgetToMove);
+		if(pAction)
+		{
+// 			debug("AND GOT ACTION FOR THAT WIDGET\n");
+
+			bDone = true;
+			pAction = insertWidget(pAction,m_pDraggedChild);
+		}
+	} else {
+		pAction = addWidget(m_pDraggedChild);
+	}
+
+	if(!bDone)
+		pAction = addWidget(m_pDraggedChild);
+	pAction->setVisible(true);
+
+	QEvent ev(QEvent::LayoutRequest);
+	QApplication::sendEvent(this,&ev);
 }
 
 void KviCustomToolBar::dragLeaveEvent(QDragLeaveEvent *)
 {
 	if(m_pDraggedChild)
 	{
-		if(m_pFilteredChildren)
-			m_pFilteredChildren->remove(m_pDraggedChild); // just to be sure
 		delete m_pDraggedChild;
 		m_pDraggedChild = 0;
 	}
@@ -397,47 +335,6 @@ QAction * KviCustomToolBar::actionForWidget(QWidget * pWidget)
 	return actionAt(pWidget->x() + 1,pWidget->y() + 1);
 }
 
-void KviCustomToolBar::drag(QWidget * pChild, const QPoint & pnt)
-{
-	int iMe = -1;
-	int iIdx = dropIndexAt(pnt,pChild,&iMe);
-	//debug("DROP INDEX IS %d, ME IS %d",iIdx,iMe);
-	if(iIdx == iMe) return; // would move over itself
-
-	QWidget * pWidgetToMove = widgetAt(iIdx > iMe ? iIdx+1 : iIdx);
-	//debug("SEARCHING FOR WIDGET TO MOVE AT %d AND FOUND %x (ME=%x)",iIdx > iMe ? iIdx+1 : iIdx,pWidgetToMove,pChild);
-	if(pWidgetToMove == pChild)
-		return; // hmmm
-
-	bool bDone = false;
-	QAction * pMyOwnAction = actionForWidget(pChild);
-	if(!pMyOwnAction)
-		return;
-
-	QAction * pAction=0;
-	removeAction(pMyOwnAction);
-	if(pWidgetToMove)
-	{
-		pAction = actionForWidget(pWidgetToMove);
-		if(pAction)
-		{
-			//debug("AND GOT ACTION FOR THAT WIDGET");
-
-			bDone = true;
-			pAction = insertWidget(pAction,pChild);
-		}
-	} else {
-		addAction(pAction);
-	}
-
-	if(!bDone)
-		pAction = addWidget(pChild);
-	pAction->setVisible(true);
-
-	QEvent ev(QEvent::LayoutRequest);
-	QApplication::sendEvent(this,&ev);
-}
-
 void KviCustomToolBar::mousePressEvent(QMouseEvent * e)
 {
 	if(KviActionManager::customizingToolBars())
@@ -448,7 +345,7 @@ void KviCustomToolBar::mousePressEvent(QMouseEvent * e)
 bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 {
 	if(!KviActionManager::customizingToolBars())
-		goto unhandled; // anything here is done when customizing only
+		return KviToolBar::eventFilter(o,e); // anything here is done when customizing only
 	if(e->type() == QEvent::Enter)
 	{
 		if(m_pMovedChild)
@@ -485,91 +382,50 @@ bool KviCustomToolBar::eventFilter(QObject * o,QEvent * e)
 						if(pEvent->pos().x() > (m_pMovedChild->width() - 4))
 						{
 							m_pMovedChild = 0;
-							goto unhandled; // let the applet handle the event it
+							return KviToolBar::eventFilter(o,e); // let the applet handle the event it
 						}
 					}
-					g_pApp->setOverrideCursor(Qt::SizeAllCursor);
+					m_pMovedAction=actionForWidget(m_pMovedChild);
+
+					// drag out!
+					QDrag * pDrag = new QDrag(this);
+					QMimeData * pMime = new QMimeData();
+					pMime->setText(m_pMovedChild->objectName());
+					pDrag->setMimeData(pMime);
+					KviAction * act = KviActionManager::instance()->getAction(m_pMovedChild->objectName());
+					if(act)
+					{
+						QPixmap * pixie = act->bigIcon();
+						if(pixie)
+						{
+							pDrag->setPixmap(*pixie);
+							pDrag->setHotSpot(QPoint(3,3));
+						}
+					}
+
+					m_pMovedAction->setVisible(false);
+
+					QEvent ev(QEvent::LayoutRequest);
+					QApplication::sendEvent(this,&ev);
+					if(pDrag->exec(Qt::MoveAction) == Qt::MoveAction)
+					{
+						removeAction(m_pMovedAction);
+					} else {
+						// the user has probably failed to remove the action from the toolbar
+						// flash the trashcan in the customize toolbars dialog
+						KviActionManager::instance()->emitRemoveActionsHintRequest();
+						m_pMovedAction->setVisible(true);
+
+						QEvent ev(QEvent::LayoutRequest);
+						QApplication::sendEvent(this,&ev);
+					}
+					m_pMovedChild=0;
+					m_pMovedAction=0;
 					return true;
 				}
 			}
 		}
-		goto unhandled;
 	}
-
-	if(e->type() == QEvent::MouseButtonRelease)
-	{
-		if(m_pMovedChild)
-		{
-			g_pApp->restoreOverrideCursor();
-			m_pMovedChild = 0;
-			return true;
-		}
-		goto unhandled;
-	}
-
-	if(e->type() == QEvent::MouseMove)
-	{
-		if(m_pMovedChild)
-		{
-			QMouseEvent * pEvent = (QMouseEvent *)e;
-
-			QPoint pnt = mapFromGlobal(m_pMovedChild->mapToGlobal(pEvent->pos()));
-			if((pnt.y() < 0) || (pnt.y() > height()) || (pnt.x() < 0) || (pnt.x() > width()))
-			{
-				// drag out!
-				QDrag * pDrag = new QDrag(this);
-				QMimeData * pMime = new QMimeData();
-				pMime->setText(m_pMovedChild->objectName());
-				pDrag->setMimeData(pMime);
-
-				KviAction * act = KviActionManager::instance()->getAction(m_pMovedChild->objectName());
-				if(act)
-				{
-					QPixmap * pixie = act->bigIcon();
-					if(pixie)
-					{
-						pDrag->setPixmap(*pixie);
-						pDrag->setHotSpot(QPoint(3,3));
-					}
-				}
-				//pDrag->setPixmap(QPixmap::grabWidget(m_pMovedChild),QPoint(m_pMovedChild->width() / 2,m_pMovedChild->height() / 2));
-				// throw it somewhere else for now
-				if(m_pFilteredChildren)
-					unfilterChild(m_pMovedChild);
-
-				QAction * pActionForMovedChild = actionForWidget(m_pMovedChild);
-				if(pActionForMovedChild)
-					pActionForMovedChild->setVisible(false);
-				m_pMovedChild->hide();
-
-				QEvent ev(QEvent::LayoutRequest);
-				QApplication::sendEvent(this,&ev);
-				if(!pDrag->exec(Qt::MoveAction) != Qt::MoveAction)
-				{
-					// the user has probably failed to remove the action from the toolbar
-					// flash the trashcan in the customize toolbars dialog
-					KviActionManager::instance()->emitRemoveActionsHintRequest();
-					// will filter it as ChildInserted
-					QAction * pActionForMovedChild = actionForWidget(m_pMovedChild);
-					if(pActionForMovedChild)
-						pActionForMovedChild->setVisible(false);
-
-					QEvent ev(QEvent::LayoutRequest);
-					QApplication::sendEvent(this,&ev);
-				} else {
-					QApplication::sendPostedEvents(m_pMovedChild,0);
-					m_pMovedChild->deleteLater();
-					m_pMovedChild = 0;
-				}
-				return true;
-			}
-
-			drag(m_pMovedChild,pnt);
-			return true;
-		}
-		goto unhandled;
-	}
-unhandled:
 	return KviToolBar::eventFilter(o,e);
 }
 

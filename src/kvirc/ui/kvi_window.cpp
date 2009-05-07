@@ -777,7 +777,7 @@ KviTalPopupMenu * KviWindow::generatePopup()
 
 
 	g_pMdiWindowSystemMainPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_XY)),
-	                                        __tr2qs("Sa&ve Window Properties"),this,SLOT(savePropertiesAsDefault()));
+	                                        __tr2qs("Set Window Props as &default"),this,SLOT(savePropertiesAsDefault()));
 
 	fillContextPopup(g_pMdiWindowSystemMainPopup);
 

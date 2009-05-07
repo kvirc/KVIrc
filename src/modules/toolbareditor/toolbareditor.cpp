@@ -69,6 +69,7 @@ KviTrashcanLabel::KviTrashcanLabel(QWidget * p)
 	m_uFlashCount = 0;
 	m_pFlashTimer = 0;
 	m_clrOriginal =  palette().color(backgroundRole());
+	setAutoFillBackground(true); //needed for flashing
 	connect(KviActionManager::instance(),SIGNAL(removeActionsHintRequest()),this,SLOT(flash()));
 }
 
@@ -283,10 +284,9 @@ void KviCustomToolBarPropertiesDialog::advancedClicked()
 
 
 KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
-: QDialog(p)//,"" /*,WType_TopLevel | WStyle_Customize | WStyle_Title | WStyle_StaysOnTop | WStyle_DialogBorder*/)
+: QDialog(p)
 {
 	setObjectName("Toolbar_editor");
-	debug("Toolbar editor");
 	setWindowTitle(__tr2qs_ctx("Customize Toolbars","editor"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR)));
 

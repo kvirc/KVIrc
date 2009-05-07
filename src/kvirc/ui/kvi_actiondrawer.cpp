@@ -152,8 +152,16 @@ void KviActionDrawerPageListWidget::mousePressEvent(QMouseEvent * e)
 	mimeData->setText(pItem->name());
 	pDrag->setMimeData(mimeData);
 
-/*	if(pItem->icon())
-		pDrag->setPixmap(pItem->icon()->copy());*/
+	KviAction * act = KviActionManager::instance()->getAction(pItem->name());
+	if(act)
+	{
+		QPixmap * pixie = act->bigIcon();
+		if(pixie)
+		{
+			pDrag->setPixmap(*pixie);
+			pDrag->setHotSpot(QPoint(3,3));
+		}
+	}
 	pDrag->exec();
 }
 
