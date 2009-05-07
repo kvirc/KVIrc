@@ -89,7 +89,6 @@ KviSoundPlayer::KviSoundPlayer()
 	m_pSoundSystemDict = new KviPointerHashTable<QString,SoundSystemRoutine>(17,false);
 	m_pSoundSystemDict->setAutoDelete(true);
 #ifdef COMPILE_PHONON_SUPPORT
-	qDebug("Inserting phonon");
 	m_pSoundSystemDict->insert("phonon",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playPhonon)));
 #endif //!COMPILE_PHONON_SUPPORT
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -120,7 +119,10 @@ KviSoundPlayer::~KviSoundPlayer()
 	KviThreadManager::killPendingEvents(this);
 	delete m_pSoundSystemDict;
 
-	//TODO cleck g_pPhononPlayer cleaning
+#ifdef COMPILE_PHONON_SUPPORT
+	if(g_pPhononPlayer)
+		g_pPhononPlayer->deleteLater();
+#endif
 	g_pSoundPlayer = 0;
 }
 
@@ -205,7 +207,7 @@ void KviSoundPlayer::detectSoundSystem()
 bool KviSoundPlayer::playPhonon(const QString &szFileName)
 {
 	if(isMuted()) return true;
-        if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::MusicCategory);
+        if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::NotificationCategory);
 	if(g_pPhononPlayer->state()!=Phonon::ErrorState)
         {
                 g_pPhononPlayer->setCurrentSource(QUrl(szFileName));
@@ -527,31 +529,6 @@ void KviSoundThread::run()
 		}
 
 	#endif //COMPILE_ESD_SUPPORT
-
-	#ifdef COMPILE_PHONON_SUPPORT
-
-		KviPhononSoundThread::KviPhononSoundThread(const QString &szFileName)
-		: KviSoundThread(szFileName)
-		{
-			if(!g_pPhononPlayer)
-			{
-				g_pPhononPlayer = Phonon::createPlayer(Phonon::MusicCategory);
-			} else {
-				if(g_pPhononPlayer->state()!=Phonon::ErrorState)
-					g_pPhononPlayer->setCurrentSource(QUrl(szFileName));
-			}
-		}
-
-		KviPhononSoundThread::~KviPhononSoundThread()
-		{
-		}
-
-		void KviPhononSoundThread::play()
-		{
-			g_pPhononPlayer->play();
-		}
-	#endif //!COMPILE_PHONON_SUPPORT
-
 #endif //!COMPILE_ON_WINDOWS
 
 
