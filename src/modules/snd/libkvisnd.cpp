@@ -65,21 +65,17 @@
 			#ifdef HAVE_SYS_SOUNDCARD_H
 				#include <sys/soundcard.h>
 			#else
-				#warning "Ops.. have no soundcard.h ? ... we're going to fail here :/"
+				#ifdef HAVE_MACHINE_SOUNDCARD_H
+					#include <machine/soundcard.h>
+				#else
+					#warning "Ops.. have no soundcard.h ? ... we're going to fail here :/"
+				#endif
 			#endif
 		#endif
 		#ifdef COMPILE_AUDIOFILE_SUPPORT
 			#include <audiofile.h>
 		#endif //COMPILE_AUDIOFILE_SUPPORT
 	#endif //COMPILE_OSS_SUPPORT
-
-	#ifdef COMPILE_ARTS_SUPPORT
-		#include <arts/soundserver.h>
-
-		static Arts::Dispatcher * g_pArtsDispatcher = 0;
-
-	#endif //COMPILE_ARTS_SUPPORT
-
 #endif
 
 static KviSoundPlayer * g_pSoundPlayer = 0;
@@ -108,9 +104,6 @@ KviSoundPlayer::KviSoundPlayer()
 	#ifdef COMPILE_ESD_SUPPORT
 		m_pSoundSystemDict->insert("esd",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playEsd)));
 	#endif //COMPILE_ESD_SUPPORT
-	#ifdef COMPILE_ARTS_SUPPORT
-		m_pSoundSystemDict->insert("arts",new SoundSystemRoutine(KVI_PTR2MEMBER(KviSoundPlayer::playArts)));
-	#endif //COMPILE_ARTS_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
 	if(QSound::isAvailable())
@@ -127,12 +120,7 @@ KviSoundPlayer::~KviSoundPlayer()
 	KviThreadManager::killPendingEvents(this);
 	delete m_pSoundSystemDict;
 
-#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-	#ifdef COMPILE_ARTS_SUPPORT
-		if(g_pArtsDispatcher)delete g_pArtsDispatcher;
-        g_pArtsDispatcher = 0;
-	#endif
-#endif //!COMPILE_ON_WINDOWS
+	//TODO cleck g_pPhononPlayer cleaning
 	g_pSoundPlayer = 0;
 }
 
@@ -186,19 +174,6 @@ void KviSoundPlayer::detectSoundSystem()
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = "winmm";
 #else
-	#ifdef COMPILE_ARTS_SUPPORT
-		if(!g_pArtsDispatcher)g_pArtsDispatcher = new Arts::Dispatcher();
-
-		Arts::SimpleSoundServer *server = new Arts::SimpleSoundServer(Arts::Reference("global:Arts_SimpleSoundServer"));
-		if(!server->isNull())
-		{
-	        //Don't change the order of those deletes!
-			KVI_OPTION_STRING(KviOption_stringSoundSystem) = "arts";
-			delete server;
-			return;
-	    }
-		delete server;
-	#endif //COMPILE_ARTS_SUPPORT
 	#ifdef COMPILE_ESD_SUPPORT
 		esd_format_t format = ESD_BITS16 | ESD_STREAM | ESD_PLAY | ESD_MONO;
 		int esd_fd = esd_play_stream(format, 8012, NULL, "kvirc");
@@ -244,16 +219,6 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 	{
 		sndPlaySound(szFileName.toLocal8Bit().data(),SND_ASYNC | SND_NODEFAULT);
 		return true;
-		// This does not compile on win!
-		/*if(isMuted()) return true;
-			KviArtsSoundThread * t = new KviArtsSoundThread(szFileName);
-			if(!t->start())
-			{
-				delete t;
-				return false;
-			}
-			return true;
-			*/
 	}
 #else //!COMPILE_ON_WINDOWS
 	#ifdef COMPILE_OSS_SUPPORT
@@ -295,19 +260,6 @@ bool KviSoundPlayer::playPhonon(const QString &szFileName)
 			return true;
 		}
 	#endif //COMPILE_ESD_SUPPORT
-	#ifdef COMPILE_ARTS_SUPPORT
-		bool KviSoundPlayer::playArts(const QString &szFileName)
-		{
-			if(isMuted()) return true;
-			KviArtsSoundThread * t = new KviArtsSoundThread(szFileName);
-			if(!t->start())
-			{
-				delete t;
-				return false;
-			}
-			return true;
-		}
-	#endif //COMPILE_ARTS_SUPPORT
 #endif //!COMPILE_ON_WINDOWS
 
 bool KviSoundPlayer::playQt(const QString &szFileName)
@@ -391,10 +343,10 @@ void KviSoundThread::run()
 				float frameSize;
 				void * buffer;
 
-				file = afOpenFile(m_szFileName.utf8().data(),"r",NULL);
+				file = afOpenFile(m_szFileName.toUtf8().data(),"r",NULL);
 				if(!file)
 				{
-					debug("libaudiofile could not open the file %s",m_szFileName.utf8().data());
+					debug("libaudiofile could not open the file %s",m_szFileName.toUtf8().data());
 					debug("giving up playing sound...");
 					return; // screwed up
 				}
@@ -405,7 +357,7 @@ void KviSoundThread::run()
 
 				if(sampleFormat == -1)
 				{
-					debug("libaudiofile couldn't find the sample format for file %s",m_szFileName.utf8().data());
+					debug("libaudiofile couldn't find the sample format for file %s",m_szFileName.toUtf8().data());
 					debug("giving up playing sound...");
 					afCloseFile(file);
 					return; // screwed up
@@ -417,7 +369,7 @@ void KviSoundThread::run()
 
 				int audiofd_c = open("/dev/dsp", O_WRONLY | O_EXCL | O_NDELAY);
 				QFile audiofd;
-				audiofd.open(IO_WriteOnly,audiofd_c);
+				audiofd.open(audiofd_c,QIODevice::WriteOnly);
 
 				if(audiofd_c < 0)
 				{
@@ -452,7 +404,7 @@ void KviSoundThread::run()
 
 				while(framesRead > 0)
 				{
-					audiofd.writeBlock((char *)buffer,(int)(framesRead * frameSize));
+					audiofd.write((char *)buffer,(int)(framesRead * frameSize));
 					framesRead = afReadFrames(file, AF_DEFAULT_TRACK, buffer,BUFFER_FRAMES);
 				}
 
@@ -484,7 +436,7 @@ void KviSoundThread::run()
 			int iDataLen = 0;
 			int iSize = 0;
 
-			if(!f.open(IO_ReadOnly))
+			if(!f.open(QIODevice::WriteOnly))
 			{
 				debug("Could not open sound file %s! [OSS]",m_szFileName.toUtf8().data());
 				return;
@@ -498,7 +450,7 @@ void KviSoundThread::run()
 				goto exit_thread;
 			}
 
-			if(f.readBlock(buf,24) < 24)
+			if(f.read(buf,24) < 24)
 			{
 				debug("Error while reading the sound file header (%s)! [OSS]",m_szFileName.toUtf8().data());
 				goto exit_thread;
@@ -521,7 +473,7 @@ void KviSoundThread::run()
 				if(iCanRead > 0)
 				{
 					int iToRead = iSize > iCanRead ? iCanRead : iSize;
-					int iReaded = f.readBlock(buf + iDataLen,iToRead);
+					int iReaded = f.read(buf + iDataLen,iToRead);
 					if(iReaded < 1)
 					{
 						debug("Error while reading the file data (%s)! [OSS]",m_szFileName.toUtf8().data());
@@ -576,33 +528,7 @@ void KviSoundThread::run()
 
 	#endif //COMPILE_ESD_SUPPORT
 
-	#ifdef COMPILE_ARTS_SUPPORT
-
-		KviArtsSoundThread::KviArtsSoundThread(const QString &szFileName)
-		: KviSoundThread(szFileName)
-		{
-		}
-
-		KviArtsSoundThread::~KviArtsSoundThread()
-		{
-		}
-
-		void KviArtsSoundThread::play()
-		{
-			if(!g_pArtsDispatcher)g_pArtsDispatcher = new Arts::Dispatcher;
-
-			Arts::SimpleSoundServer *server = new Arts::SimpleSoundServer(Arts::Reference("global:Arts_SimpleSoundServer"));
-			if(server->isNull())
-			{
-				debug("Can't connect to sound server to play file %s",m_szFileName.toUtf8().data());
-			} else {
-				server->play(m_szFileName);
-			}
-			delete server;
-		}
-	#endif
-
-		#ifdef COMPILE_PHONON_SUPPORT
+	#ifdef COMPILE_PHONON_SUPPORT
 
 		KviPhononSoundThread::KviPhononSoundThread(const QString &szFileName)
 		: KviSoundThread(szFileName)
@@ -642,7 +568,7 @@ void KviSoundThread::run()
 	@description:
 		Play a file, using the sound system specified by the user in the options.[br]
 		The supported file formats vary from one sound system to another, but the best
-		bet could be Au Law (.au) files. Artsd, EsounD and Linux/OSS with audiofile support also
+		bet could be Au Law (.au) files. Phonon, EsounD and Linux/OSS with audiofile support also
 		support other formats like .wav files but in OSS without audiofile only .au files are
 		supported.
 		On windows the supported file formats are determined by the drivers installed.

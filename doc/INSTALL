@@ -308,7 +308,16 @@ General notes for the installation of the 4.0 release of KVIrc
         Use pre-compiled headers
 
     -DWITHOUT_PHONON
-        Disable Phonon support.
+        Disable Phonon audio backend support.
+
+    -DWITHOUT_OSS
+        Disable Oss audio backend support. This automatically disables Audiofile support, too.
+
+    -DWITHOUT_AUDIOFILE
+        Disable Audiofile audio backend support.
+
+    -DWITHOUT_ESD
+        Disable Esd audio backend support.
 
     -DWITHOUT_QTDBUS
         Disable Qt-DBus support.
@@ -419,13 +428,10 @@ General notes for the installation of the 4.0 release of KVIrc
 
 
 # To add here and in main CMakeLists.txt
-COMPILE_ARTS_SUPPORT
 COMPILE_DCC_CANVAS
-COMPILE_ESD_SUPPORT
 COMPILE_GET_INTERFACE_ADDRESS
 COMPILE_IGNORE_SIGALARM
 COMPILE_MMX_ASM
-COMPILE_OSS_SUPPORT
 COMPILE_SCRIPTTOOLBAR
 COMPILE_WITH_NO_SOUND
 COMPILE_XSS_SUPPORT
