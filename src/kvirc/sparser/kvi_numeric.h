@@ -16,12 +16,12 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with this program; if not, write to the Free Software
-// Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-//
+// along with this program. If not, write to the Free Software Foundation,
+// Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 
 // Revisited by Szymon Stefanek 07 Jul 1998 (pragma at kvirc dot net) 
 // Re-revisited again on 11 Feb 1999 (pragma at kvirc dot net)
+// Updated FSF address on 07 May 2009 (ctrlaltca at libero dot it)
 
 // We will need 4 digit replies for the new irc protocol
 // and then leave 50-100 numbers between logical groups...
