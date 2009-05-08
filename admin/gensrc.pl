@@ -50,7 +50,7 @@ if(open(THEFILE,">$name"))
 	print THEFILE "//\n";
 	print THEFILE "//   You should have received a copy of the GNU General Public License\n";
 	print THEFILE "//   along with this program. If not, write to the Free Software Foundation,\n";
-	print THEFILE "//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.\n";
+	print THEFILE "//   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n";
 	print THEFILE "//\n";
 	print THEFILE "\n";
 
