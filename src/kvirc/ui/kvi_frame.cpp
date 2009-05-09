@@ -856,9 +856,7 @@ void KviFrame::closeEvent(QCloseEvent *e)
 		}
 		if(dockExtension())
 		{
-
-			dockExtension()->setPrevWindowState(windowState());
-			QTimer::singleShot( 0, this, SLOT(hide()) );
+			hide();
 		}
 		return;
 	}
@@ -1207,8 +1205,7 @@ void KviFrame::hideEvent ( QHideEvent * e)
 
 			if(dockExtension())
 			{
-				dockExtension()->setPrevWindowState(windowState());
-				QTimer::singleShot( 0, this, SLOT(hide()) );
+				hide();
 			}
 
 		}
