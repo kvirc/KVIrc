@@ -1612,4 +1612,12 @@ NServers=4
 1_SSL=true
 1_Port=6601
 NServers=2
+[Rizon]
+0_Hostname=irc.rizon.net
+0_Description=Rizon:%20Random%20server
+1_Hostname=irc.rizon.net
+1_Description=Rizon:%20Random%20server SSL
+1_SSL=true
+1_Port=9999
+NServers=2
 
