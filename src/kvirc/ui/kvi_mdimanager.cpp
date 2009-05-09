@@ -64,7 +64,7 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 : QMdiArea(parent)
 {
 	setFrameShape(NoFrame);
-
+	m_bInSDIMode = false;
 	m_pFrm = pFrm;
 
 	m_pWindowPopup = new KviTalPopupMenu(this);
