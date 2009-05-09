@@ -39,6 +39,10 @@
 
 #include <stdio.h>
 
+#if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+	#include <signal.h>
+#endif
+
 static bool g_bSSLInitialized = false;
 static KviMutex * g_pSSLMutex = 0;
 
@@ -285,8 +289,18 @@ void KviSSL::shutdown()
 {
 	if(m_pSSL)
 	{
+		#if !(defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW))
+		//avoid to die on a SIGPIPE if the connection has close (SSL_shutdown can call send())
+		//see bug #440
+		signal( SIGPIPE, SIG_IGN );
 		// At least attempt to shutdown the connection gracefully
 		SSL_shutdown(m_pSSL);
+		//restore normal SIGPIPE behaviour.
+		signal( SIGPIPE, SIG_DFL );
+		#else
+		// At least attempt to shutdown the connection gracefully
+		SSL_shutdown(m_pSSL);
+		#endif
 		SSL_free(m_pSSL);
 		m_pSSL = 0;
 	}
