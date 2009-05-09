@@ -354,11 +354,10 @@ void KviMdiChild::unsetClient()
 	setObjectName("mdi_child");
 }
 
-void KviMdiChild::activate(bool bSetFocus)
+void KviMdiChild::activate()
 {
 	if(m_pManager->topChild() != this)
-		m_pManager->setTopChild(this,bSetFocus);
-	else if(bSetFocus)setFocus();
+		m_pManager->setTopChild(this);
 }
 
 void KviMdiChild::focusInEvent(QFocusEvent *)

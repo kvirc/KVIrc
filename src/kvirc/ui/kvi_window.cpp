@@ -931,7 +931,7 @@ void KviWindow::youAreUndocked()
 void KviWindow::activateSelf()
 {
 	if(mdiParent())
-		mdiParent()->activate(false);
+		mdiParent()->activate();
 
 	g_pFrame->childWindowActivated(this);
 	// this is now done by KviFrame in childWindowActivated

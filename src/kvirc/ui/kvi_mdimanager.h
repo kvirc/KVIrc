@@ -127,10 +127,9 @@ public:
 	/**
 	* \brief Bring the KviMdiChild to the foreground
 	* \param lpC The KviMdiChild
-	* \param bSetFocus If set the KviMdiChild will get the keyboard focus
 	* \return void
 	*/
-	void setTopChild(KviMdiChild * lpC, bool bSetFocus);
+	void setTopChild(KviMdiChild * lpC);
 
 	/**
 	* \brief Show the KviMdiChild and bring it to the front

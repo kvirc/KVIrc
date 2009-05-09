@@ -212,10 +212,9 @@ public:
 
 	/**
 	* \brief Activates this subwindow
-	* \param bSetFocus Sets if the input line gets the focus
 	* \return void
 	*/
-	void activate(bool bSetFocus);
+	void activate();
 
 	/**
 	* \brief Enqueue minimize status

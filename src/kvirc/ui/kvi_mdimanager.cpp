@@ -148,7 +148,7 @@ void KviMdiManager::manageChild(KviMdiChild * lpC, bool, QRect *)
 void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 {
 	lpC->show();
-	setTopChild(lpC,true);
+	setTopChild(lpC);
 	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
 
@@ -157,7 +157,7 @@ KviMdiChild * KviMdiManager::topChild()
 	return (KviMdiChild*)activeSubWindow();
 };
 
-void KviMdiManager::setTopChild(KviMdiChild *lpC,bool bSetFocus)
+void KviMdiManager::setTopChild(KviMdiChild *lpC)
 {
 	__range_valid(lpC);
 	// The following check fails safely at startup....
@@ -171,15 +171,6 @@ void KviMdiManager::setTopChild(KviMdiChild *lpC,bool bSetFocus)
 	}
 
 	setActiveSubWindow((QMdiSubWindow*) lpC);
-
-	if(bSetFocus)
-	{
-		if(!lpC->hasFocus())
-		{
-			lpC->setFocus();
-		}
-	}
-
 }
 
 void KviMdiManager::destroyChild(KviMdiChild *lpC,bool bFocusTopChild)
@@ -363,9 +354,9 @@ bool KviMdiManager::isInSDIMode()
 
 void KviMdiManager::relayoutMenuButtons()
 {
-	// also force an activation of the top MdiChild since it probably didn't get it yet*/
+	// also force an activation of the top MdiChild since it probably didn't get it yet
 	KviMdiChild * c = topChild();
-	if(c) c->activate(false);
+	if(c) c->activate();
 }
 
 #define KVI_TILE_METHOD_ANODINE 0
@@ -488,7 +479,7 @@ void KviMdiManager::menuActivated(int id)
 	if(!lpC) return;
 	if(lpC->state() == KviMdiChild::Minimized) lpC->restore();
 
-	setTopChild(lpC, true);
+	setTopChild(lpC);
 }
 
 void KviMdiManager::ensureNoMaximized()
