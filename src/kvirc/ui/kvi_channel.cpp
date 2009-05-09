@@ -285,14 +285,14 @@ void KviChannel::applyOptions()
 void KviChannel::getConfigGroupName(QString & szBuffer)
 {
 	szBuffer = windowName();
-	szBuffer.append("@");
 
-	if(connection())
-	{
-		szBuffer.append(console()->currentNetworkName());
-	} else {
-		szBuffer.append(context()->id());
-	}
+//TODO it would be nice to save per-network channel settings, so that the settings of two channels
+//with the same name but of different networks gets different config entries.
+// 	if(connection())
+// 	{
+// 		szBuffer.append("@");
+// 		szBuffer.append(connection()->networkName());
+// 	}
 }
 
 void KviChannel::saveProperties(KviConfig * cfg)
@@ -300,13 +300,7 @@ void KviChannel::saveProperties(KviConfig * cfg)
 	KviWindow::saveProperties(cfg);
 	cfg->writeEntry("TopSplitter",m_pTopSplitter->sizes());
 	cfg->writeEntry("Splitter",m_pSplitter->sizes());
-
-	QList<int> tmp = m_pVertSplitter->sizes();
-	QList<int> tmp2;
-	for(QList<int>::Iterator it = tmp.begin();it != tmp.end();++it)
-		tmp2.append(*it);
-
-	cfg->writeEntry("VertSplitter",m_pMessageView ? tmp2 : m_VertSplitterSizesList);
+	cfg->writeEntry("VertSplitter",m_pMessageView ? m_pVertSplitter->sizes() : m_VertSplitterSizesList);
 	cfg->writeEntry("PrivateBackground",m_privateBackground);
 	cfg->writeEntry("DoubleView",m_pMessageView ? true : false);
 
@@ -334,8 +328,6 @@ void KviChannel::loadProperties(KviConfig * cfg)
 	def.append((iWidth * 40) / 100);
 	m_VertSplitterSizesList=cfg->readIntListEntry("VertSplitter",def);
 	showDoubleView(cfg->readBoolEntry("DoubleView",false));
-	//def.append((iWidth * 50) / 100);
-	//def.append((iWidth * 50) / 100);
 
 	m_privateBackground = cfg->readPixmapEntry("PrivateBackground",KviPixmap());
 	if(m_privateBackground.pixmap())
