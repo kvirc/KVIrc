@@ -81,8 +81,8 @@
 	@short:
 		Returns the IRC network name of an IRC context
 	@syntax:
-		<string> $contex.networkName
-		<string> $contex.networkName(<irc_context_id:uint>)
+		<string> $context.networkName
+		<string> $context.networkName(<irc_context_id:uint>)
 	@description:
 		Returns the name of the network for the specified IRC context.
 		If no irc_context_id is specified then the current irc_context is used.
@@ -108,8 +108,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 	@short:
 		Returns the IRC server name of an IRC context
 	@syntax:
-		<string> $contex.serverHostName
-		<string> $contex.serverHostName(<irc_context_id:uint>)
+		<string> $context.serverHostName
+		<string> $context.serverHostName(<irc_context_id:uint>)
 	@description:
 		Returns the host name of the IRC server that was used to perform
 		the connection in the specified irc context.
@@ -141,8 +141,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 	@short:
 		Returns the IRC server ip address of an IRC context
 	@syntax:
-		<string> $contex.serverIpAddress
-		<string> $contex.serverIpAddress(<irc_context_id:uint>)
+		<string> $context.serverIpAddress
+		<string> $context.serverIpAddress(<irc_context_id:uint>)
 	@description:
 		Returns the ip address of the IRC server for the specified irc context.
 		If no irc_context_id is specified then the current irc_context is used.
@@ -169,8 +169,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 	@short:
 		Returns the IPV6 state of an IRC context
 	@syntax:
-		<string> $contex.serverIsIPV6
-		<string> $contex.serverIsIPV6(<irc_context_id:uint>)
+		<string> $context.serverIsIPV6
+		<string> $context.serverIsIPV6(<irc_context_id:uint>)
 	@description:
 		Returns true if the current irc context connection runs over IPV6.
 		If no irc_context_id is specified then the current irc_context is used.
@@ -198,8 +198,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 	@short:
 		Returns the SSL state of an IRC context
 	@syntax:
-		<string> $contex.serverIsSSL
-		<string> $contex.serverIsSSL(<irc_context_id:uint>)
+		<string> $context.serverIsSSL
+		<string> $context.serverIsSSL(<irc_context_id:uint>)
 	@description:
 		Returns true if the current irc context connection runs over SSL.
 		If no irc_context_id is specified then the current irc_context is used.
@@ -227,8 +227,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 	@short:
 		Returns the password used to login to the server of an IRC context
 	@syntax:
-		<string> $contex.serverPassword
-		<string> $contex.serverPassword(<irc_context_id:uint>)
+		<string> $context.serverPassword
+		<string> $context.serverPassword(<irc_context_id:uint>)
 	@description:
 		Returns the password used to login to the IRC server for the specified irc context.
 		If no irc_context_id is specified then the current irc_context is used.
@@ -256,8 +256,8 @@ STANDARD_IRC_CONNECTION_TARGET_PARAMETER(
 	@short:
 		Returns the port of the IRC server of an IRC context
 	@syntax:
-		<uint> $contex.serverPort
-		<uint> $contex.serverPort(<irc_context_id:uint>)
+		<uint> $context.serverPort
+		<uint> $context.serverPort(<irc_context_id:uint>)
 	@description:
 		Returns the port of the IRC server for the specified irc context.
 		If no irc_context_id is specified then the current irc_context is used.
@@ -338,7 +338,7 @@ static bool context_kvs_fnc_state(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns a list of existing IRC contexts
 	@syntax:
-		<array> $contex.list
+		<array> $context.list
 	@description:
 		Returns the array of currently existing IRC context identifiers.
 	@seealso:
