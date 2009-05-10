@@ -412,7 +412,7 @@ void KviMdiManager::fillWindowPopup()
 
 	m_pWindowPopup->insertSeparator();
 	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MINIMIZE)),(__tr2qs("Mi&nimize All")),this,SLOT(minimizeAll()));
-    m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),(__tr2qs("&Restore all")),this,SLOT(restoreAll()));
+	m_pWindowPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_RESTORE)),(__tr2qs("&Restore all")),this,SLOT(restoreAll()));
 
 	m_pWindowPopup->insertSeparator();
 	int i = 100;
@@ -461,7 +461,10 @@ void KviMdiManager::fillWindowPopup()
 			m_pWindowPopup->insertItem(szItem);
 		}
 
-		//m_pWindowPopup->setItemChecked(i, ((uint)i) == (m_pZ->count()+99) ); <- ????
+		//this is useless, since the windows are listed in stacking order, the active one
+		//will always be the last anyway.
+		//if(lpC==currentSubWindow())
+		//	m_pWindowPopup->setItemChecked(i, true );
 		i++;
 	}
 }
