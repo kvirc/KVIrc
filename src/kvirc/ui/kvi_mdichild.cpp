@@ -175,7 +175,7 @@ void KviMdiChild::setWindowTitle(const QString & plain,const QString & xmlActive
 
 void KviMdiChild::windowStateChangedEvent( Qt::WindowStates oldState, Qt::WindowStates newState )
 {
-	// check if window has been minmized
+	// check if window has been minimized
 	if (!(oldState & Qt::WindowMinimized) && (newState & Qt::WindowMinimized))
 	{
 		m_LastState = m_State;

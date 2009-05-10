@@ -254,8 +254,9 @@ void KviMdiManager::childMinimized(KviMdiChild * lpC, bool bWasMaximized)
 
 	if(subWindowList().count() > 1)
 	{
-		if(!bWasMaximized)
+		if(bWasMaximized)
 		{
+			m_bInSDIMode = false;
 			if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
 		}
 		focusTopChild();
@@ -512,18 +513,70 @@ void KviMdiManager::tileMethodMenuActivated(int id)
 
 void KviMdiManager::cascadeWindows()
 {
+	cascadeSubWindows();
 }
 
 void KviMdiManager::cascadeMaximized()
 {
+	cascadeSubWindows();
+	QList<QMdiSubWindow *> tmp = subWindowList();
+	KviMdiChild * lpC;
+
+	for(int i = 0; i < tmp.count(); i++)
+	{
+		if (tmp.at(i)->inherits("KviMdiChild"))
+		{
+			lpC = (KviMdiChild *) tmp.at(i);
+			if(lpC->state() != KviMdiChild::Minimized)
+			{
+				QPoint pnt(lpC->pos());
+				QSize curSize(viewport()->width() - pnt.x(),viewport()->height() - pnt.y());
+				if((lpC->minimumSize().width() > curSize.width()) ||
+					(lpC->minimumSize().height() > curSize.height()))lpC->resize(lpC->minimumSize());
+				else lpC->resize(curSize);
+			}
+		}
+	}
 }
 
 void KviMdiManager::expandVertical()
 {
+	ensureNoMaximized();
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+	KviMdiChild * lpC;
+
+	for(int i = 0; i < tmp.count(); i++)
+	{
+		if (tmp.at(i)->inherits("KviMdiChild"))
+		{
+			lpC = (KviMdiChild *) tmp.at(i);
+			if(lpC->state() != KviMdiChild::Minimized)
+			{
+				lpC->move(lpC->x(),0);
+				lpC->resize(lpC->width(),viewport()->height());
+			}
+		}
+	}
 }
 
 void KviMdiManager::expandHorizontal()
 {
+	ensureNoMaximized();
+	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+	KviMdiChild * lpC;
+
+	for(int i = 0; i < tmp.count(); i++)
+	{
+		if (tmp.at(i)->inherits("KviMdiChild"))
+		{
+			lpC = (KviMdiChild *) tmp.at(i);
+			if(lpC->state() != KviMdiChild::Minimized)
+			{
+				lpC->move(0,lpC->y());
+				lpC->resize(viewport()->width(),lpC->height());
+			}
+		}
+	}
 }
 
 void KviMdiManager::minimizeAll()
@@ -537,7 +590,7 @@ void KviMdiManager::minimizeAll()
 		if (tmp.at(i)->inherits("KviMdiChild"))
 		{
 			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() == KviMdiChild::Minimized) lpC->minimize();
+			if(lpC->state() != KviMdiChild::Minimized) lpC->minimize();
 		}
 	}
 }
@@ -554,7 +607,7 @@ void KviMdiManager::restoreAll()
 		if (tmp.at(i)->inherits("KviMdiChild"))
 		{
 			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() == KviMdiChild::Normal) lpC->restore();
+			if(lpC->state() == KviMdiChild::Minimized) lpC->restore();
 		}
 	}
 }
