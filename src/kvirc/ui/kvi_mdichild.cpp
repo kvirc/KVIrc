@@ -307,10 +307,11 @@ void KviMdiChild::minimize()
 
 void KviMdiChild::updateCaption()
 {
-	if (m_pClient && m_pClient->inherits("KviWindow"))
-	{
-		((KviWindow*)m_pClient)->updateCaptionListItem();
-	}
+	if(m_pClient)
+		if(m_pClient->inherits("KviWindow"))
+		{
+			((KviWindow*)m_pClient)->updateCaptionListItem();
+		}
 }
 
 void KviMdiChild::moveEvent(QMoveEvent *e)
@@ -366,14 +367,14 @@ void KviMdiChild::focusInEvent(QFocusEvent *)
 
 void KviMdiChild::updateSystemPopup()
 {
-	if(m_pClient->inherits("KviWindow"))
-	{
-		systemMenu()->clear();
-		QMenu * tmp = ((KviWindow*) m_pClient)->generatePopup();
-		if (tmp)
+	if(m_pClient)
+		if(m_pClient->inherits("KviWindow"))
 		{
-			systemMenu()->addActions(tmp->actions());
+			systemMenu()->clear();
+			QMenu * tmp = ((KviWindow*) m_pClient)->generatePopup();
+			if (tmp)
+			{
+				systemMenu()->addActions(tmp->actions());
+			}
 		}
-	}
-
 }
