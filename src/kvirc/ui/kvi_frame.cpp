@@ -446,9 +446,9 @@ void KviFrame::saveWindowProperties(KviWindow * wnd,const QString &szSection)
 	// The following line should NOT be needed...but just to be sure...
 	g_pWinPropertiesConfig->setGroup(szSection);
 
-	g_pWinPropertiesConfig->writeEntry("IsDocked",wnd->mdiParent());
+	g_pWinPropertiesConfig->writeEntry("IsDocked",wnd->isDocked());
 
-	if (wnd->mdiParent())
+	if (!wnd->isDocked() && wnd->mdiParent())
 	{
 		g_pWinPropertiesConfig->writeEntry("IsMaximized",wnd->mdiParent()->isMaximized());
 	} else {

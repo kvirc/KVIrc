@@ -122,6 +122,7 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 	m_pTextEncodingButton   = 0;
 	m_pHideToolsButton      = 0;
 //	m_pEditorsContainer     = 0;
+	m_bIsDocked             = false;
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	m_pCryptControllerButton = 0;
@@ -912,6 +913,7 @@ void KviWindow::updateIcon()
 
 void KviWindow::youAreDocked()
 {
+	m_bIsDocked=true;
 	((KviMdiChild *)parent())->setIcon(*myIconPtr());
 	updateCaption();
 	connect(((KviMdiChild *)parent()),SIGNAL(systemPopupRequest(const QPoint &)),this,SLOT(systemPopupRequest(const QPoint &)));
@@ -919,6 +921,7 @@ void KviWindow::youAreDocked()
 
 void KviWindow::youAreUndocked()
 {
+	m_bIsDocked=false;
 	setWindowIcon(QIcon(*myIconPtr()));
 	updateCaption();
 }

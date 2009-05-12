@@ -174,12 +174,14 @@ protected: // almost private: don't touch :D
 	//unsigned int                          m_uTextEncoding;
 	QTextCodec                          * m_pTextCodec;
 //	KviToolWindowsContainer             * m_pEditorsContainer;
+	bool                                m_bIsDocked;
 public:
+	inline bool isDocked() { return m_bIsDocked; }
 	// The global ID of this window: unique in the application
 	inline QString id(){ return QString("%1").arg(m_uId); };
 	inline unsigned long int numericId(){ return m_uId; };
 	KviTalPopupMenu * generatePopup();
-public:
+
 	// THIS is the function that should be used
 	inline const QString & windowName(){ return m_szName; };
 	void setWindowName(const QString &szName);
