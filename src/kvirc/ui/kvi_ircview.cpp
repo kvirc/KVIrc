@@ -4807,7 +4807,7 @@ void KviIrcView::mouseReleaseEvent(QMouseEvent *)
 		killTimer(m_iSelectTimer);
 		m_iSelectTimer = 0;
 		QClipboard * c = QApplication::clipboard();
-		if(c)
+		if(c && !m_szLastSelection.isEmpty())
 		{
 			// copy to both!
 			c->setText(m_szLastSelection,QClipboard::Clipboard);
