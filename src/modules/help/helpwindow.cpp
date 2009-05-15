@@ -276,11 +276,6 @@ void KviHelpWindow::resizeEvent(QResizeEvent *)
 	m_pSplitter->setGeometry(0,0,width(),height());
 }
 
-QSize KviHelpWindow::sizeHint() const
-{
-	return m_pHelpWidget->sizeHint();
-}
-
 void KviHelpWindow::fillCaptionBuffers()
 {
 	m_szPlainTextCaption = __tr2qs("Help Browser");

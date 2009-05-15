@@ -63,7 +63,6 @@ protected:
 	virtual void saveProperties(KviConfig * cfg);
 	virtual void loadProperties(KviConfig * cfg);
 public:
-	virtual QSize sizeHint() const;
 	QTextBrowser * textBrowser();
 public slots:
 	void indexSelected ( QListWidgetItem * );
