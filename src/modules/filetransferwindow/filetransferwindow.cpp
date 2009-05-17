@@ -136,14 +136,12 @@ KviFileTransferWidget::KviFileTransferWidget(QWidget * pParent)
 				<< __tr2qs_ctx("Information","filetransferwindow")
 				<< __tr2qs_ctx("Progress","filetransferwindow");
 	setHorizontalHeaderLabels(colHeaders);
-	horizontalHeader()->setResizeMode(QHeaderView::Interactive);
-
 	//default column widths
 	setColumnWidth(0, FILETRANSFERW_CELLSIZE);
 	horizontalHeader()->setResizeMode(0, QHeaderView::Fixed);
-	horizontalHeader()->setResizeMode(1, QHeaderView::Stretch);
-	horizontalHeader()->setResizeMode(2, QHeaderView::Stretch);
-
+	horizontalHeader()->setResizeMode(1, QHeaderView::Interactive);
+	setColumnWidth(1, 500);
+	horizontalHeader()->setStretchLastSection(true);
 	//focus policy
 	setFocusPolicy(Qt::NoFocus);
 	viewport()->setFocusPolicy(Qt::NoFocus);
