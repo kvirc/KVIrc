@@ -1345,8 +1345,10 @@ QPixmap * KviPopupEditorWindow::myIconPtr()
 void KviPopupEditorWindow::resizeEvent(QResizeEvent *)
 {
 	int hght = m_pBase->sizeHint().height();
-	m_pEditor->setGeometry(0,0,width(),height()- hght);
-	m_pBase->setGeometry(0,height() - hght,width(),hght);
+	if(m_pEditor)
+		m_pEditor->setGeometry(0,0,width(),height()- hght);
+	if(m_pBase)
+		m_pBase->setGeometry(0,height() - hght,width(),hght);
 }
 
 void KviPopupEditorWindow::fillCaptionBuffers()
