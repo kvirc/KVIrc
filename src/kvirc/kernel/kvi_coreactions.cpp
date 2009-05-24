@@ -68,7 +68,7 @@
 // Ctrl+Alt+H : Show help index
 // Ctrl+Alt+R : Edit regusers
 // Ctrl+Alt+M : Manage Script Addons
-// Ctrl+Alt+L : Manage Themes
+// Ctrl+Alt+F : Manage Themes
 
 void register_core_actions(KviActionManager * m)
 {
@@ -219,7 +219,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_theme.png",
 		KVI_SMALLICON_THEME,
 		0,
-		"Ctrl+Alt+L");
+		"Ctrl+Alt+F");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_TOOLBAREDITOR,
