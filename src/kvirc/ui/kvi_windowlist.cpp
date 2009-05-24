@@ -112,7 +112,7 @@ KviWindowListItem *  KviWindowListBase::item(int number)
 	return it;
 }
 
-void KviWindowListBase::switchWindow(bool bNext,bool bInContextOnly)
+void KviWindowListBase::switchWindow(bool bNext,bool bInContextOnly,bool bHighlightedOnly)
 {
 	if(!g_pActiveWindow)return;
 
@@ -126,21 +126,16 @@ void KviWindowListBase::switchWindow(bool bNext,bool bInContextOnly)
 	{
 		it = bNext ? nextItem() : prevItem();
 		if(!it)it = bNext ? firstItem() : lastItem();
+		if(it == cur)return; // did a complete loop.... no window to switch to
 		if(it)
 		{
-			if(bInContextOnly)
-			{
-				if(it->kviWindow()->console() == cons)
-				{
-					g_pFrame->setActiveWindow(it->kviWindow());
-					return;
-				}
-			} else {
-				g_pFrame->setActiveWindow(it->kviWindow());
-				return;
-			}
+			if(bHighlightedOnly && it->highlightLevel() < 3)
+				continue;
+			if(bInContextOnly && it->kviWindow()->console() != cons)
+				continue;
+			g_pFrame->setActiveWindow(it->kviWindow());
+			return;
 		}
-		if(it == cur)return; // did a complete loop.... no window to switch to
 	}
 }
 

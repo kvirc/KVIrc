@@ -91,7 +91,7 @@ public:
 	virtual KviWindowListItem * prevItem(void) { return 0; }
 	virtual KviWindowListItem * item(int number);
 	virtual bool setIterationPointer(KviWindowListItem *){ return false; };
-	virtual void switchWindow(bool bNext,bool bInContextOnly);
+	virtual void switchWindow(bool bNext,bool bInContextOnly,bool bHighlightedOnly=false);
 	virtual void updatePseudoTransparency(){};
 	virtual void applyOptions(){};
 	virtual void wheelEvent(QWheelEvent *e);

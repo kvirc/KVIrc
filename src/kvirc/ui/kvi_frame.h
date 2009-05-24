@@ -205,6 +205,8 @@ protected:
 protected slots:
 	void switchToNextWindow();
 	void switchToPrevWindow();
+	void switchToNextHighlightedWindow();
+	void switchToPrevHighlightedWindow();
 	void switchToNextWindowInContext();
 	void switchToPrevWindowInContext();
 
