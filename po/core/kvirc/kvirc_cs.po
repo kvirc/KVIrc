@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 00:56+0200\n"
+"POT-Creation-Date: 2009-05-26 21:51+0200\n"
 "PO-Revision-Date: 2007-12-17 11:31+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -92,8 +92,7 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] zrovna odešel z \r!c\r%Q\r: %Q"
 msgid " (%1 hops)"
 msgstr " (%1 hopů)"
 
-#: src/kvirc/ui/kvi_channel.cpp:1052
-#: src/kvirc/ui/kvi_query.cpp:456
+#: src/kvirc/ui/kvi_channel.cpp:1044 src/kvirc/ui/kvi_query.cpp:456
 #: src/kvirc/ui/kvi_console.cpp:1137
 msgid " on "
 msgstr " na "
@@ -457,8 +456,7 @@ msgstr "&Přidat Ban"
 msgid "&Add to Custom Colors"
 msgstr "&Přidat k vlastním barvám"
 
-#: src/kvirc/ui/kvi_frame.cpp:890
-#: src/kvirc/ui/kvi_console.cpp:509
+#: src/kvirc/ui/kvi_frame.cpp:892 src/kvirc/ui/kvi_console.cpp:509
 #: src/kvirc/ui/kvi_console.cpp:543
 msgid "&Always"
 msgstr "&Vždy"
@@ -467,7 +465,7 @@ msgstr "&Vždy"
 msgid "&Apply"
 msgstr "&Použít"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:392
+#: src/kvirc/ui/kvi_mdimanager.cpp:384
 msgid "&Auto Tile"
 msgstr "&Auto vedle sebe"
 
@@ -479,20 +477,17 @@ msgstr "&Automatický náhled"
 msgid "&Basic colors"
 msgstr "&Základní barvy"
 
-#: src/kvirc/ui/kvi_selectors.cpp:393
-#: src/modules/setup/setupwizard.cpp:243
-#: src/modules/setup/setupwizard.cpp:257
-#: src/modules/setup/setupwizard.cpp:285
+#: src/kvirc/ui/kvi_selectors.cpp:393 src/modules/setup/setupwizard.cpp:243
+#: src/modules/setup/setupwizard.cpp:257 src/modules/setup/setupwizard.cpp:285
 #: src/modules/avatar/libkviavatar.cpp:93
 msgid "&Browse..."
 msgstr "&Procházet..."
 
-#: src/kvilib/system/kvi_locale.cpp:1089
-#: src/modules/url/libkviurl.cpp:390
+#: src/kvilib/system/kvi_locale.cpp:1089 src/modules/url/libkviurl.cpp:390
 msgid "&Cancel"
 msgstr "&Zrušit"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:385
+#: src/kvirc/ui/kvi_mdimanager.cpp:377
 msgid "&Cascade Windows"
 msgstr "Okna &Přes sebe"
 
@@ -520,7 +515,7 @@ msgstr "&Vlastní barvy"
 msgid "&Define Custom Colors >>"
 msgstr "&Definovat vlastní barvy >>"
 
-#: src/kvirc/ui/kvi_window.cpp:751
+#: src/kvirc/ui/kvi_window.cpp:752
 msgid "&Dock"
 msgstr "&Dokovat"
 
@@ -580,22 +575,18 @@ msgstr "&Modul"
 msgid "&Next >"
 msgstr "&Další >"
 
-#: src/kvirc/ui/kvi_frame.cpp:890
-#: src/kvirc/ui/kvi_console.cpp:511
-#: src/kvirc/ui/kvi_console.cpp:545
-#: src/modules/setup/setupwizard.cpp:747
+#: src/kvirc/ui/kvi_frame.cpp:892 src/kvirc/ui/kvi_console.cpp:511
+#: src/kvirc/ui/kvi_console.cpp:545 src/modules/setup/setupwizard.cpp:747
 #: src/modules/addon/managementdialog.cpp:266
 msgid "&No"
 msgstr "&Ne"
 
-#: src/kvilib/system/kvi_locale.cpp:1088
-#: src/modules/url/libkviurl.cpp:396
+#: src/kvilib/system/kvi_locale.cpp:1088 src/modules/url/libkviurl.cpp:396
 #: src/modules/avatar/libkviavatar.cpp:103
 msgid "&OK"
 msgstr "&OK"
 
-#: src/kvirc/ui/kvi_menubar.cpp:260
-#: src/kvirc/ui/kvi_menubar.cpp:268
+#: src/kvirc/ui/kvi_menubar.cpp:260 src/kvirc/ui/kvi_menubar.cpp:268
 msgid "&Other..."
 msgstr "&Ostatní..."
 
@@ -642,11 +633,11 @@ msgstr "&Odebrat vybrané"
 msgid "&Replace"
 msgstr "&Nahradit"
 
-#: src/kvirc/ui/kvi_window.cpp:762
+#: src/kvirc/ui/kvi_window.cpp:763
 msgid "&Restore"
 msgstr "&Obnovit"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:423
+#: src/kvirc/ui/kvi_mdimanager.cpp:415
 #, fuzzy
 msgid "&Restore all"
 msgstr "&Obnovit"
@@ -675,7 +666,7 @@ msgstr "&Nastavení"
 msgid "&Size"
 msgstr "&Velikost"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:389
+#: src/kvirc/ui/kvi_mdimanager.cpp:381
 msgid "&Tile Windows"
 msgstr "Okna &Vedle sebe"
 
@@ -696,7 +687,7 @@ msgstr "&Podtržený"
 msgid "&Undo"
 msgstr "&Odpoutat"
 
-#: src/kvirc/ui/kvi_window.cpp:748
+#: src/kvirc/ui/kvi_window.cpp:749
 msgid "&Undock"
 msgstr "&Odpoutat"
 
@@ -704,10 +695,8 @@ msgstr "&Odpoutat"
 msgid "&Window"
 msgstr "&Okno"
 
-#: src/kvirc/ui/kvi_frame.cpp:890
-#: src/kvirc/ui/kvi_console.cpp:510
-#: src/kvirc/ui/kvi_console.cpp:544
-#: src/modules/setup/setupwizard.cpp:747
+#: src/kvirc/ui/kvi_frame.cpp:892 src/kvirc/ui/kvi_console.cpp:510
+#: src/kvirc/ui/kvi_console.cpp:544 src/modules/setup/setupwizard.cpp:747
 #: src/modules/addon/managementdialog.cpp:266
 msgid "&Yes"
 msgstr "&Ano"
@@ -750,8 +739,7 @@ msgid "(None)"
 msgstr "(Žádné)"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:609
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:646
-#: src/kvirc/ui/kvi_channel.cpp:1639
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:646 src/kvirc/ui/kvi_channel.cpp:1631
 #: src/modules/links/linkswindow.cpp:315
 msgid "(Unknown)"
 msgstr "(Neznámý)"
@@ -876,7 +864,7 @@ msgstr ""
 msgid "<b>Can't find any tip... :(</b>"
 msgstr "<b>Nelze nalézt žádný tip... :(</b>"
 
-#: src/kvirc/ui/kvi_channel.cpp:1663
+#: src/kvirc/ui/kvi_channel.cpp:1655
 msgid "<b>Channel mode:</b>"
 msgstr "<b>Mód kanálu:</b>"
 
@@ -897,7 +885,7 @@ msgstr ""
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Prostřední klik:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:776
+#: src/kvirc/kernel/kvi_app.cpp:779
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -943,12 +931,12 @@ msgstr ""
 "<b>Shift+Drag</b> nebo <b>Ctrl+Drag</b> pro přesun apletu po "
 "liště<br><b>Pravý klik</b> pro prohlédnutí dalších možností"
 
-#: src/kvirc/ui/kvi_channel.cpp:1679
+#: src/kvirc/ui/kvi_channel.cpp:1671
 #, c-format
 msgid "<br><b>Key:</b> %s"
 msgstr "<br><b>Klíč:</b> %s"
 
-#: src/kvirc/ui/kvi_channel.cpp:1688
+#: src/kvirc/ui/kvi_channel.cpp:1680
 #, c-format
 msgid "<br><b>Limit:</b> %s"
 msgstr "<br><b>Limit:</b> %s"
@@ -1003,8 +991,7 @@ msgstr ""
 "<nobr><font color=\"%s\"><b>Seznam kanálů</b></font> <font color=\"%s\">[IRC "
 "kontext %u]</font></nobr>"
 
-#: src/modules/links/linkswindow.cpp:163
-#: src/modules/links/linkswindow.cpp:171
+#: src/modules/links/linkswindow.cpp:163 src/modules/links/linkswindow.cpp:171
 msgid ""
 "<nobr><font color=\"%s\"><b>Links for %Q</b></font> <font color=\"%s\">[IRC "
 "Context %u]</font></nobr>"
@@ -1022,8 +1009,7 @@ msgstr ""
 "<nobr><font color=\"%s\"><b>Soket špión</b></font> <font color=\"%s\">[IRC "
 "kontext %u]</font></nobr>"
 
-#: src/modules/term/termwindow.cpp:75
-#: src/modules/term/termwindow.cpp:79
+#: src/modules/term/termwindow.cpp:75 src/modules/term/termwindow.cpp:79
 #, c-format
 msgid "<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"
 msgstr "<nobr><font color=\"%s\"><b>Terminál</b></font></nobr>"
@@ -1096,8 +1082,7 @@ msgstr "Skutečně lamerský transformátor textu :D"
 msgid "A really lame text transformation engine: Light Version."
 msgstr "Skutečně lamerský transformátor textu : Odlehčená verze."
 
-#: src/kvirc/ui/kvi_selectors.cpp:472
-#: src/kvirc/ui/kvi_selectors.cpp:818
+#: src/kvirc/ui/kvi_selectors.cpp:472 src/kvirc/ui/kvi_selectors.cpp:818
 msgid "A&dd"
 msgstr "Při&dat"
 
@@ -1274,7 +1259,7 @@ msgstr "Jsem uživatel-opnut"
 msgid "Am voiced"
 msgstr "Dostal jsem voice"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:397
+#: src/kvirc/ui/kvi_mdimanager.cpp:389
 msgid "Anodine's Full Grid"
 msgstr "Anodine plná mřížka"
 
@@ -1290,7 +1275,7 @@ msgstr "Probíhá jiné spojení"
 msgid "Application Folders"
 msgstr "Složky aplikace"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:193
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:185
 msgid "Apply to all IRC Contexts"
 msgstr "Použít na všechny IRC kontexty"
 
@@ -1339,7 +1324,7 @@ msgstr "Dostupné módy uživatele:"
 msgid "Avatar change"
 msgstr "Změna avataru"
 
-#: src/kvirc/kernel/kvi_app.cpp:987
+#: src/kvirc/kernel/kvi_app.cpp:990
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr "Stažení avataru selhalo pro %Q!%Q@%Q a url %Q: %Q"
 
@@ -1348,12 +1333,12 @@ msgstr "Stažení avataru selhalo pro %Q!%Q@%Q a url %Q: %Q"
 msgid "Average hops: ~%d.%d"
 msgstr "Průměrně hopů: ~%d.%d"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:602
+#: src/kvirc/ui/kvi_statusbar.cpp:588
 #: src/modules/trayicon/libkvitrayicon.cpp:98
 msgid "Away"
 msgstr "Pryč"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:220
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:212
 msgid "Away Indicator"
 msgstr "Pryč indikátor"
 
@@ -1361,15 +1346,15 @@ msgstr "Pryč indikátor"
 msgid "Away message"
 msgstr "Pryč zpráva"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:303
+#: src/modules/trayicon/libkvitrayicon.cpp:307
 msgid "Away on %1"
 msgstr "Pryč na %1"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:277
+#: src/modules/trayicon/libkvitrayicon.cpp:281
 msgid "Away on all"
 msgstr "Pryč všude"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:248
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:240
 msgid "Away since"
 msgstr "Pryč od"
 
@@ -1377,16 +1362,15 @@ msgstr "Pryč od"
 msgid "Away/Back"
 msgstr "Pryč/Návrat"
 
-#: src/kvilib/system/kvi_locale.cpp:1049
-#: src/kvilib/tal/kvi_tal_wizard.cpp:207
+#: src/kvilib/system/kvi_locale.cpp:1049 src/kvilib/tal/kvi_tal_wizard.cpp:207
 msgid "Back"
 msgstr "Předchozí"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:299
+#: src/modules/trayicon/libkvitrayicon.cpp:303
 msgid "Back on %1"
 msgstr "Zpátky na %1"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:280
+#: src/modules/trayicon/libkvitrayicon.cpp:284
 msgid "Back on all"
 msgstr "Zpátky všude"
 
@@ -1615,18 +1599,15 @@ msgid "Can't open file for appending"
 msgstr "Nelze otevřít soubor pro připojování"
 
 #: src/kvilib/file/kvi_packagefile.cpp:679
-#: src/kvilib/file/kvi_packagefile.cpp:932
-#: src/kvilib/core/kvi_error.cpp:143
+#: src/kvilib/file/kvi_packagefile.cpp:932 src/kvilib/core/kvi_error.cpp:143
 msgid "Can't open file for reading"
 msgstr "Nelze otevřít soubor pro čtení"
 
-#: src/kvilib/file/kvi_packagefile.cpp:493
-#: src/kvilib/core/kvi_error.cpp:140
+#: src/kvilib/file/kvi_packagefile.cpp:493 src/kvilib/core/kvi_error.cpp:140
 msgid "Can't open file for writing"
 msgstr "Nelze otevřít soubor pro zápis"
 
-#: src/modules/file/libkvifile.cpp:724
-#: src/modules/file/libkvifile.cpp:816
+#: src/modules/file/libkvifile.cpp:724 src/modules/file/libkvifile.cpp:816
 msgid "Can't open the file \"%Q\" for reading"
 msgstr "Nelze otevřít soubor \"%Q\" pro čtení"
 
@@ -1728,12 +1709,9 @@ msgid "Can't start the ident service on IPv6 : socket() failed"
 msgstr "Nelze vytvořit naslouchací soket : vázání selhalo"
 
 #: src/kvilib/file/kvi_packagefile.cpp:142
-#: src/kvilib/system/kvi_locale.cpp:1027
-#: src/kvilib/tal/kvi_tal_wizard.cpp:181
-#: src/kvirc/ui/kvi_maskeditor.cpp:88
-#: src/kvirc/ui/kvi_imagedialog.cpp:154
-#: src/modules/setup/setupwizard.cpp:87
-#: src/modules/help/index.cpp:102
+#: src/kvilib/system/kvi_locale.cpp:1027 src/kvilib/tal/kvi_tal_wizard.cpp:181
+#: src/kvirc/ui/kvi_maskeditor.cpp:88 src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/modules/setup/setupwizard.cpp:87 src/modules/help/index.cpp:102
 #: src/modules/avatar/libkviavatar.cpp:108
 msgid "Cancel"
 msgstr "Zrušit"
@@ -1782,7 +1760,7 @@ msgstr "Nelze poslat do kanálu: %Q"
 msgid "Cannot stop list download, no active connection."
 msgstr "Nelze zastavit stahování seznamu, není žádné aktivní spojení."
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:386
+#: src/kvirc/ui/kvi_mdimanager.cpp:378
 msgid "Cascade &Maximized"
 msgstr "Přes sebe &maximalizovaně"
 
@@ -1921,7 +1899,7 @@ msgstr "Heslo kanálu"
 msgid "Channel private message"
 msgstr "Soukromá zpráva v kanále"
 
-#: src/kvirc/ui/kvi_channel.cpp:1749
+#: src/kvirc/ui/kvi_channel.cpp:1741
 #, c-format
 msgid "Channel synchronized in %d.%d seconds"
 msgstr "Kanál synchronizován během %d.%d sekund"
@@ -1946,7 +1924,7 @@ msgstr "Stažení seznamu kanálů dokončeno"
 msgid "Char device"
 msgstr "Znakové zařízení"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:689
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:681
 #, fuzzy
 msgid "Check on startup"
 msgstr "Stav spojení"
@@ -1975,8 +1953,7 @@ msgstr "Zvolte adresář - KVIrc"
 msgid "Choose a Download Folder - KVIrc Setup"
 msgstr "Vyberte adresář pro stahování - KVIrc Nastavení"
 
-#: src/kvirc/ui/kvi_selectors.cpp:433
-#: src/kvirc/ui/kvi_selectors.cpp:439
+#: src/kvirc/ui/kvi_selectors.cpp:433 src/kvirc/ui/kvi_selectors.cpp:439
 msgid "Choose a File - KVIrc"
 msgstr "Vyberte soubor - KVIrc"
 
@@ -1984,8 +1961,7 @@ msgstr "Vyberte soubor - KVIrc"
 msgid "Choose a servers.ini file"
 msgstr "Zvolte soubor servers.ini"
 
-#: src/kvirc/ui/kvi_selectors.cpp:347
-#: src/modules/avatar/libkviavatar.cpp:148
+#: src/kvirc/ui/kvi_selectors.cpp:347 src/modules/avatar/libkviavatar.cpp:148
 msgid "Choose an Image File - KVIrc"
 msgstr "Vyberte soubor obrázku - KVIrc"
 
@@ -1993,8 +1969,7 @@ msgstr "Vyberte soubor obrázku - KVIrc"
 msgid "Choose an Old Configuration Folder - KVIrc Setup"
 msgstr "Vyberte původní adresář konfigurace - KVIrc Nastavení"
 
-#: src/modules/list/listwindow.cpp:331
-#: src/modules/list/listwindow.cpp:356
+#: src/modules/list/listwindow.cpp:331 src/modules/list/listwindow.cpp:356
 msgid "Choose filename"
 msgstr "Vyberte soubor"
 
@@ -2052,8 +2027,7 @@ msgstr "Schránka"
 msgid "Clo&se"
 msgstr "Za&vřít"
 
-#: src/kvirc/ui/kvi_ctcppagedialog.cpp:58
-#: src/kvirc/ui/kvi_window.cpp:768
+#: src/kvirc/ui/kvi_ctcppagedialog.cpp:58 src/kvirc/ui/kvi_window.cpp:769
 #: src/kvirc/ui/kvi_modeeditor.cpp:79
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:112
 #: src/modules/theme/managementdialog.cpp:194
@@ -2152,8 +2126,7 @@ msgstr "Potvrdit víceřádkouvou zprávu"
 msgid "Confirm addon uninstallation"
 msgstr "Potvrzení odinstalování rozšíření"
 
-#: src/kvirc/ui/kvi_frame.cpp:890
-#: src/kvirc/ui/kvi_console.cpp:506
+#: src/kvirc/ui/kvi_frame.cpp:892 src/kvirc/ui/kvi_console.cpp:506
 #: src/kvirc/ui/kvi_console.cpp:541
 msgid "Confirmation - KVIrc"
 msgstr "Potvrzení - KVIrc"
@@ -2174,8 +2147,7 @@ msgstr "Spojení/Odpojení"
 msgid "Connected since"
 msgstr "Připojen od"
 
-#: src/modules/list/listwindow.cpp:264
-#: src/modules/links/linkswindow.cpp:132
+#: src/modules/list/listwindow.cpp:264 src/modules/links/linkswindow.cpp:132
 #, c-format
 msgid "Connected to %s (%s)"
 msgstr "Připojen k %s (%s)"
@@ -2184,7 +2156,7 @@ msgstr "Připojen k %s (%s)"
 msgid "Connection"
 msgstr "Spojení"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:623
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:615
 msgid "Connection Timer"
 msgstr "Časovač připojení"
 
@@ -2197,8 +2169,7 @@ msgstr "Pokus o spojení selhal [%s]"
 msgid "Connection established, sending request"
 msgstr "Spojení navázáno, zasílá se požadavek"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:701
-#: src/kvirc/ui/kvi_console.cpp:1110
+#: src/kvirc/ui/kvi_statusbar.cpp:687 src/kvirc/ui/kvi_console.cpp:1110
 msgid "Connection in progress..."
 msgstr "Probíhá připojování..."
 
@@ -2299,7 +2270,7 @@ msgid ""
 msgstr ""
 "Šifrování: Je třeba povolit šifrování anebo dešifrování, aby nástroj fungoval"
 
-#: src/kvirc/ui/kvi_window.cpp:408
+#: src/kvirc/ui/kvi_window.cpp:409
 msgid "Crypting"
 msgstr "Šifrování"
 
@@ -2360,7 +2331,7 @@ msgstr "Toto okno není kanál"
 msgid "Customize Toolbars..."
 msgstr "Upravit nástrojové lišty..."
 
-#: src/kvirc/ui/kvi_frame.cpp:1027
+#: src/kvirc/ui/kvi_frame.cpp:1029
 msgid "Customize..."
 msgstr "Upravit..."
 
@@ -2390,7 +2361,7 @@ msgstr "DCC požadavek"
 msgid "Data buffer too long"
 msgstr "Příliš velký datový buffer"
 
-#: src/kvirc/ui/kvi_channel.cpp:764
+#: src/kvirc/ui/kvi_channel.cpp:756
 msgid "Dead channel"
 msgstr "Mrtvý kanál"
 
@@ -2403,8 +2374,7 @@ msgid "Decrypt key:"
 msgstr "Dešifrovací klíč:"
 
 #: src/kvilib/irc/kvi_useridentity.cpp:175
-#: src/kvilib/ext/kvi_regusersdb.cpp:683
-#: src/kvilib/ext/kvi_regusersdb.cpp:684
+#: src/kvilib/ext/kvi_regusersdb.cpp:683 src/kvilib/ext/kvi_regusersdb.cpp:684
 msgid "Default"
 msgstr "Výchozí"
 
@@ -2465,8 +2435,7 @@ msgstr "Adresář"
 msgid "Discard Changes"
 msgstr "Zahodit změny"
 
-#: src/kvirc/ui/kvi_menubar.cpp:231
-#: src/kvirc/kernel/kvi_coreactions.cpp:614
+#: src/kvirc/ui/kvi_menubar.cpp:231 src/kvirc/kernel/kvi_coreactions.cpp:614
 msgid "Disconnect"
 msgstr "Odpojit"
 
@@ -2498,30 +2467,30 @@ msgstr "Nepřepisovat adresář? - KVIrc"
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Opravdu chcete odinstalovat rozšíření \"%1\" ?"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:833
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:825
 #, fuzzy
 msgid "Double click to check"
 msgstr "Dvojklik pro nastavení..."
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:332
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:324
 msgid "Double click to enable it"
 msgstr "Dvojklik pro zapnutí"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:256
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:248
 msgid "Double click to enter away mode"
 msgstr "Dvojklik pro pryč mód"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:849
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:841
 #, fuzzy
 msgid "Double click to get the lastest version"
 msgstr "Dvojklikem navštívíte odkaz"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:252
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:244
 msgid "Double click to leave away mode"
 msgstr "Dvojklik pro zrušení pryč módu"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:841
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:845
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:833
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:837
 #, fuzzy
 msgid "Double click to retry"
 msgstr "Dvojklik pro nastavení<br>"
@@ -2673,8 +2642,7 @@ msgstr "Konec kánalu %Q pro \r!c\r%Q\r"
 msgid "End of help about %Q"
 msgstr "Konec nápovědy o %Q"
 
-#: src/kvirc/ui/kvi_channel.cpp:1895
-#: src/kvirc/ui/kvi_query.cpp:884
+#: src/kvirc/ui/kvi_channel.cpp:1887 src/kvirc/ui/kvi_query.cpp:884
 #, fuzzy
 msgid "End of log"
 msgstr "Konec SEZNAMU"
@@ -2743,11 +2711,11 @@ msgstr "Spouští se příkazy naplánované \"po připojení\" pro server"
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr "Spouští se naplánované příkazy \"při přihlašování\" pro server"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:419
+#: src/kvirc/ui/kvi_mdimanager.cpp:411
 msgid "Expand &Horizontally"
 msgstr "Rozšířit &Horizontálně"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:418
+#: src/kvirc/ui/kvi_mdimanager.cpp:410
 msgid "Expand &Vertically"
 msgstr "Rozšířit &Vertikálně"
 
@@ -2833,13 +2801,11 @@ msgid "Failed to rename the existing file, please rename manually and retry"
 msgstr ""
 "Selhalo přejmenování existujícího souboru, prosím zkuste to ručně a znovu"
 
-#: src/kvirc/kernel/kvi_options.cpp:1078
-#: src/kvirc/kernel/kvi_options.cpp:1113
+#: src/kvirc/kernel/kvi_options.cpp:1078 src/kvirc/kernel/kvi_options.cpp:1113
 msgid "Failed to save one of the theme images"
 msgstr "Selhalo uložení jednoho z obrázků témat"
 
-#: src/kvirc/kernel/kvi_theme.cpp:261
-#: src/kvirc/kernel/kvi_theme.cpp:275
+#: src/kvirc/kernel/kvi_theme.cpp:261 src/kvirc/kernel/kvi_theme.cpp:275
 #: src/kvirc/kernel/kvi_theme.cpp:289
 msgid "Failed to save the screenshot image"
 msgstr "Selhalo uložení snímku obrazovky"
@@ -2872,8 +2838,7 @@ msgstr "Selhal zápis do souboru %Q: cíl nemůže být otevřen"
 msgid "Feature not available"
 msgstr "Funkce není dostupná"
 
-#: src/kvirc/ui/kvi_console.cpp:327
-#: src/modules/setup/setupwizard.cpp:394
+#: src/kvirc/ui/kvi_console.cpp:327 src/modules/setup/setupwizard.cpp:394
 msgid "Female"
 msgstr "Žena"
 
@@ -2881,8 +2846,7 @@ msgstr "Žena"
 msgid "Fifo"
 msgstr "Fifo"
 
-#: src/kvirc/ui/kvi_filedialog.cpp:122
-#: src/kvirc/ui/kvi_filedialog.cpp:167
+#: src/kvirc/ui/kvi_filedialog.cpp:122 src/kvirc/ui/kvi_filedialog.cpp:167
 msgid "File Exists - KVIrc"
 msgstr "Soubor existuje - KVIrc"
 
@@ -2890,19 +2854,19 @@ msgstr "Soubor existuje - KVIrc"
 msgid "File I/O error"
 msgstr "Chyba I/O souboru"
 
-#: src/kvirc/kernel/kvi_app.cpp:954
+#: src/kvirc/kernel/kvi_app.cpp:957
 msgid "File download failed"
 msgstr "Stažení souboru selhalo"
 
-#: src/kvirc/kernel/kvi_app.cpp:956
+#: src/kvirc/kernel/kvi_app.cpp:959
 msgid "File download from %1 failed"
 msgstr "Stahování souboru od %1 selhalo"
 
-#: src/kvirc/kernel/kvi_app.cpp:967
+#: src/kvirc/kernel/kvi_app.cpp:970
 msgid "File download from %1 successfully complete"
 msgstr "Stahování souboru od %1 úspěšně dokončeno"
 
-#: src/kvirc/kernel/kvi_app.cpp:965
+#: src/kvirc/kernel/kvi_app.cpp:968
 msgid "File download successfully complete"
 msgstr "Stažení souboru úspěšně dokončeno"
 
@@ -2943,8 +2907,7 @@ msgstr "Hledat &Předchozí"
 msgid "Find Text"
 msgstr "&Hledat text"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:234
-#: src/modules/setup/setupwizard.cpp:86
+#: src/kvilib/tal/kvi_tal_wizard.cpp:234 src/modules/setup/setupwizard.cpp:86
 msgid "Finish"
 msgstr "Hotovo"
 
@@ -2952,7 +2915,7 @@ msgstr "Hotovo"
 msgid "Flat"
 msgstr "Plochá"
 
-#: src/kvirc/ui/kvi_channel.cpp:972
+#: src/kvirc/ui/kvi_channel.cpp:964
 msgid "Flooded with messages"
 msgstr "Flooder se zprávami"
 
@@ -2980,7 +2943,7 @@ msgstr "Zakázat kanálové CTCP"
 msgid "Foreground"
 msgstr "Popředí"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:492
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:484
 #, fuzzy
 msgid "Format"
 msgstr "Normální"
@@ -2989,8 +2952,7 @@ msgstr "Normální"
 msgid "Forward"
 msgstr "Vpřed"
 
-#: src/modules/help/helpwindow.cpp:181
-#: src/modules/help/helpwindow.cpp:190
+#: src/modules/help/helpwindow.cpp:181 src/modules/help/helpwindow.cpp:190
 msgid "Full Text Search"
 msgstr "Fulltextové vyhledávání"
 
@@ -3002,8 +2964,7 @@ msgstr "Celá cesta"
 msgid "GUI"
 msgstr "GUI"
 
-#: src/kvirc/ui/kvi_console.cpp:325
-#: src/modules/setup/setupwizard.cpp:388
+#: src/kvirc/ui/kvi_console.cpp:325 src/modules/setup/setupwizard.cpp:388
 msgid "Gender:"
 msgstr "Pohlaví:"
 
@@ -3067,12 +3028,11 @@ msgstr "Změna módu na poloop"
 msgid "Header too long: exceeded 4096 bytes"
 msgstr "Hlavička příliš dlouhá: přesahuje 4096 bajtů"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:193
-#: src/kvirc/kernel/kvi_options.cpp:833
+#: src/kvilib/tal/kvi_tal_wizard.cpp:193 src/kvirc/kernel/kvi_options.cpp:833
 msgid "Help"
 msgstr "Nápověda"
 
-#: src/modules/help/helpwindow.cpp:286
+#: src/modules/help/helpwindow.cpp:281
 msgid "Help Browser"
 msgstr "Prohlížeč nápovědy"
 
@@ -3113,7 +3073,7 @@ msgstr "Schovat &Dokovací ikonu"
 msgid "Hide Find Window"
 msgstr "Schovat vyhledávací okno"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:271
+#: src/modules/trayicon/libkvitrayicon.cpp:275
 msgid "Hide Window"
 msgstr "Schovat okno"
 
@@ -3122,7 +3082,7 @@ msgstr "Schovat okno"
 msgid "Hide/Show"
 msgstr "Schovat okno"
 
-#: src/kvirc/ui/kvi_channel.cpp:968
+#: src/kvirc/ui/kvi_channel.cpp:960
 msgid "High activity"
 msgstr "Vysoká aktivita"
 
@@ -3159,7 +3119,7 @@ msgstr "Hostitel nenalezen"
 msgid "Host unreachable (no route to host)"
 msgstr "Hostitel není dostupný (neexistuje cesta k hostiteli)"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:590
+#: src/kvirc/ui/kvi_statusbar.cpp:576
 #, fuzzy
 msgid "Hostname"
 msgstr "Hostitel %d: %Q"
@@ -3234,8 +3194,7 @@ msgstr "Tabulka ikon"
 msgid "Ident message"
 msgstr "Ident zpráva"
 
-#: src/modules/ident/libkviident.cpp:403
-#: src/modules/ident/libkviident.cpp:423
+#: src/modules/ident/libkviident.cpp:403 src/modules/ident/libkviident.cpp:423
 msgid "Identd accepting connection"
 msgstr "Identd přijímá spojení"
 
@@ -3363,8 +3322,7 @@ msgstr "Obsah"
 msgid "Indexing help files"
 msgstr "Inexuji soubory nápovědy"
 
-#: src/kvirc/ui/kvi_input.cpp:116
-#: src/kvirc/ui/kvi_input.cpp:417
+#: src/kvirc/ui/kvi_input.cpp:116 src/kvirc/ui/kvi_input.cpp:417
 msgid "Input History Disabled"
 msgstr "Vstupní historie vypnuta"
 
@@ -3380,7 +3338,7 @@ msgstr "Nainstalovat balíček"
 msgid "Install Theme Package"
 msgstr "Instalovat balíček motivu"
 
-#: src/kvirc/kernel/kvi_app.cpp:775
+#: src/kvirc/kernel/kvi_app.cpp:778
 msgid "Installation problems ?"
 msgstr "Instalační problémy ?"
 
@@ -3392,8 +3350,7 @@ msgstr "Nedostatek zdrojů pro dokončení operace"
 msgid "Integer parameter expected"
 msgstr "Očekáván parametr typu integer"
 
-#: src/kvilib/file/kvi_packagefile.cpp:571
-#: src/kvilib/core/kvi_error.cpp:52
+#: src/kvilib/file/kvi_packagefile.cpp:571 src/kvilib/core/kvi_error.cpp:52
 msgid "Internal error"
 msgstr "Interní chyba"
 
@@ -3600,7 +3557,7 @@ msgstr "Připojit zprávu o chybě"
 msgid "Join message"
 msgstr "Příchodová zpráva"
 
-#: src/kvirc/ui/kvi_userlistview.cpp:1547
+#: src/kvirc/ui/kvi_userlistview.cpp:1577
 msgid "Joined on <b>%1</b>"
 msgstr "Přišel v <b>%1</b>"
 
@@ -3687,7 +3644,7 @@ msgstr "Vykopnutí"
 msgid "Label: %Q"
 msgstr "Návěstí: %Q"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:386
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:378
 msgid "Lag Indicator"
 msgstr "Lag indikátor"
 
@@ -3701,25 +3658,23 @@ msgstr "Kontrola lagu přerušena (%s)"
 msgid "Lag check completed (%s)"
 msgstr "Kontrola lagu dokončena (%s)"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:326
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:318
 msgid "Lag measure not available yet"
 msgstr "Hodnota lagu není ještě dostupná"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:330
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:322
 msgid "Lag meter engine disabled"
 msgstr "Měřič lagu je vypnut"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:319
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:359
-#: src/kvirc/ui/kvi_irctoolbar.cpp:322
-#: src/kvirc/ui/kvi_irctoolbar.cpp:394
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:311
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:351
+#: src/kvirc/ui/kvi_irctoolbar.cpp:322 src/kvirc/ui/kvi_irctoolbar.cpp:394
 #, c-format
 msgid "Lag: %d.%d%d"
 msgstr "Lag: %d.%d%d"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:373
-#: src/kvirc/ui/kvi_irctoolbar.cpp:324
-#: src/kvirc/ui/kvi_irctoolbar.cpp:396
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:365
+#: src/kvirc/ui/kvi_irctoolbar.cpp:324 src/kvirc/ui/kvi_irctoolbar.cpp:396
 msgid "Lag: ?.??"
 msgstr "Lag: ?.??"
 
@@ -3735,7 +3690,7 @@ msgstr "Velké (32x32)"
 msgid "Large Icons"
 msgstr "Velké ikony"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:324
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:316
 #, c-format
 msgid "Last checked %d mins %d secs ago"
 msgstr "Naposledy zjišťováno před %d min %d sek"
@@ -3797,7 +3752,7 @@ msgstr "Seznam Stažení"
 msgid "List cannot be requested: Not connected to a server"
 msgstr "Seznam kanálů nemůže být žádán: Nejste připojeni na server"
 
-#: src/kvirc/ui/kvi_window.cpp:522
+#: src/kvirc/ui/kvi_window.cpp:523
 msgid "List of window types available in this release of KVIrc:"
 msgstr "Seznam typů oken dostupných v této verzi KVIrc:"
 
@@ -3815,7 +3770,7 @@ msgstr "Seznam %Q"
 msgid "Loaded module '%s' (%s)"
 msgstr "Nahrán modul '%s' (%s)"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:594
+#: src/kvirc/ui/kvi_statusbar.cpp:580
 msgid "Local IP"
 msgstr ""
 
@@ -3835,8 +3790,7 @@ msgstr "Umístění:"
 msgid "Logging in as %Q!%Q :%Q"
 msgstr "Přihlášení jako %Q!%Q :%Q"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:707
-#: src/kvirc/ui/kvi_console.cpp:1113
+#: src/kvirc/ui/kvi_statusbar.cpp:693 src/kvirc/ui/kvi_console.cpp:1113
 msgid "Login in progress..."
 msgstr "Probíhá přihlašování..."
 
@@ -3872,7 +3826,7 @@ msgstr "Zjišťuje se hostitel proxy (%s)..."
 msgid "Looking up the server hostname (%s)..."
 msgstr "Zjišťuje se hostitel serveru (%s)..."
 
-#: src/kvirc/ui/kvi_channel.cpp:964
+#: src/kvirc/ui/kvi_channel.cpp:956
 msgid "Low activity"
 msgstr "Nízká aktivita"
 
@@ -3881,7 +3835,7 @@ msgstr "Nízká aktivita"
 msgid "Low-level transport connection established [%s (%s:%u)]"
 msgstr "Nízkoúrovňové přenosové spojení navázáno [%s (%s:%u)]"
 
-#: src/kvirc/ui/kvi_window.cpp:759
+#: src/kvirc/ui/kvi_window.cpp:760
 msgid "Ma&ximize"
 msgstr "Ma&ximalizovat"
 
@@ -3889,8 +3843,7 @@ msgstr "Ma&ximalizovat"
 msgid "Make KVIrc default IRC client"
 msgstr "Nastavit KVIrc jako výchozí IRC klient"
 
-#: src/kvirc/ui/kvi_console.cpp:327
-#: src/modules/setup/setupwizard.cpp:395
+#: src/kvirc/ui/kvi_console.cpp:327 src/modules/setup/setupwizard.cpp:395
 msgid "Male"
 msgstr "Muž"
 
@@ -3933,7 +3886,7 @@ msgstr "Maximálně linků na hostitele: %d [%s]"
 msgid "Maximum number of reconnect attempts reached (%d): giving up"
 msgstr "Maximální počet pokusů o opětovné spojení dosažen (%d): vzdávám to"
 
-#: src/kvirc/ui/kvi_channel.cpp:966
+#: src/kvirc/ui/kvi_channel.cpp:958
 msgid "Medium activity"
 msgstr "Střední aktivita"
 
@@ -3941,11 +3894,11 @@ msgstr "Střední aktivita"
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
 msgstr "Barevné možnosti zprávy (obrázek_id,popředí,pozadí,logFlag (0/1))"
 
-#: src/kvirc/ui/kvi_window.cpp:756
+#: src/kvirc/ui/kvi_window.cpp:757
 msgid "Mi&nimize"
 msgstr "Mi&nimalizovat"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:422
+#: src/kvirc/ui/kvi_mdimanager.cpp:414
 msgid "Mi&nimize All"
 msgstr "Mi&nimalizovat vše"
 
@@ -3958,27 +3911,27 @@ msgstr "Středně vzdálených linků (4 <= hopů  <= 6): %d (~%d.%d %)"
 msgid "Mieeeeeowww!"
 msgstr "Mňaaaaaaauuuu!"
 
-#: src/kvirc/ui/kvi_channel.cpp:972
+#: src/kvirc/ui/kvi_channel.cpp:964
 msgid "Might be flooded with messages"
 msgstr "Asi flooder se zprávami"
 
-#: src/kvirc/ui/kvi_channel.cpp:968
+#: src/kvirc/ui/kvi_channel.cpp:960
 msgid "Might be high activity"
 msgstr "Asi vysoká aktivita"
 
-#: src/kvirc/ui/kvi_channel.cpp:964
+#: src/kvirc/ui/kvi_channel.cpp:956
 msgid "Might be low activity"
 msgstr "Asi nízká aktivita"
 
-#: src/kvirc/ui/kvi_channel.cpp:966
+#: src/kvirc/ui/kvi_channel.cpp:958
 msgid "Might be medium activity"
 msgstr "Asi střední aktivita"
 
-#: src/kvirc/ui/kvi_channel.cpp:970
+#: src/kvirc/ui/kvi_channel.cpp:962
 msgid "Might be very high activity"
 msgstr "Asi velmi vysoká aktivita"
 
-#: src/kvirc/ui/kvi_channel.cpp:960
+#: src/kvirc/ui/kvi_channel.cpp:952
 msgid "Minimal activity"
 msgstr "Minimální aktivita"
 
@@ -4043,8 +3996,7 @@ msgstr "Chybí jméno popupu"
 msgid "Missing variable name"
 msgstr "Chybí název proměnné"
 
-#: src/modules/log/libkvilog.cpp:108
-#: src/modules/log/libkvilog.cpp:166
+#: src/modules/log/libkvilog.cpp:108 src/modules/log/libkvilog.cpp:166
 #: src/modules/log/libkvilog.cpp:217
 msgid "Missing window id after the 'w' switch"
 msgstr "Chybí id okna za 'w' přepínačem"
@@ -4102,12 +4054,11 @@ msgstr "Vyjednávájí se přenosové informace"
 msgid "Netsplit detected: %s"
 msgstr "Detekován Netsplit: %s"
 
-#: src/kvilib/system/kvi_locale.cpp:1076
-#: src/kvirc/ui/kvi_statusbar.cpp:574
+#: src/kvilib/system/kvi_locale.cpp:1076 src/kvirc/ui/kvi_statusbar.cpp:560
 msgid "Network"
 msgstr "Síť"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:550
+#: src/kvirc/ui/kvi_statusbar.cpp:536
 #, fuzzy
 msgid "Network informations"
 msgstr "Informace serveru"
@@ -4140,7 +4091,7 @@ msgstr "Nový IRC kontext"
 msgid "New mask must match an *!*@* expression"
 msgstr "Nová maska musí obsahovat  výraz *!*@*"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:847
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:839
 #, fuzzy
 msgid "New updates found"
 msgstr "Nenalezeno"
@@ -4161,7 +4112,7 @@ msgstr "NickServ zpráva"
 msgid "NickServ requests authentication, executing scheduled command"
 msgstr "NickServ požaduje autorizaci, provádí se plánovaný příkaz"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:582
+#: src/kvirc/ui/kvi_statusbar.cpp:568
 msgid "Nickname"
 msgstr "Přezdívka"
 
@@ -4173,10 +4124,8 @@ msgstr "Problém přezdívky"
 msgid "Nickname:"
 msgstr "Přezdívka:"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753
-#: src/kvirc/ui/kvi_statusbar.cpp:572
-#: src/kvirc/ui/kvi_input.cpp:256
-#: src/kvirc/kernel/kvi_app.cpp:791
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/ui/kvi_statusbar.cpp:558
+#: src/kvirc/ui/kvi_input.cpp:256 src/kvirc/kernel/kvi_app.cpp:794
 msgid "No"
 msgstr "Ne"
 
@@ -4184,8 +4133,7 @@ msgstr "Ne"
 msgid "No "
 msgstr "Ne "
 
-#: src/kvirc/ui/kvi_statusbar.cpp:714
-#: src/kvirc/ui/kvi_irctoolbar.cpp:329
+#: src/kvirc/ui/kvi_statusbar.cpp:700 src/kvirc/ui/kvi_irctoolbar.cpp:329
 msgid "No IRC context"
 msgstr "Žádný IRC kontext"
 
@@ -4193,11 +4141,11 @@ msgstr "Žádný IRC kontext"
 msgid "No action name/index specified"
 msgstr "Nebyl určen název akce/obsahu"
 
-#: src/kvirc/ui/kvi_channel.cpp:958
+#: src/kvirc/ui/kvi_channel.cpp:950
 msgid "No activity"
 msgstr "Žádná aktivita"
 
-#: src/kvirc/kernel/kvi_app.cpp:790
+#: src/kvirc/kernel/kvi_app.cpp:793
 msgid "No and Don't Ask Me Again"
 msgstr "Ne a již se neptat"
 
@@ -4209,8 +4157,7 @@ msgstr "Nenastaveno téma"
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Žádné společné kanály s \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
-#: src/kvirc/ui/kvi_irctoolbar.cpp:289
-#: src/kvirc/ui/kvi_console.cpp:1107
+#: src/kvirc/ui/kvi_irctoolbar.cpp:289 src/kvirc/ui/kvi_console.cpp:1107
 msgid "No connection"
 msgstr "Nepřipojeno"
 
@@ -4298,7 +4245,7 @@ msgstr "Žádné téma nebylo nastaveno pro kanál \r!c\r%Q\r"
 msgid "No topic message has been received from the server yet"
 msgstr "Zatím nebyla ze serveru poslána žádná zpráva o tématu"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:843
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:835
 #, fuzzy
 msgid "No updates found"
 msgstr "Nenalezeno"
@@ -4315,13 +4262,12 @@ msgstr "Nelze se přihlásit jako '\r!n\r%Q\r' (%d: %Q), zkouší se '%Q'..."
 msgid "Normal text"
 msgstr "Normální text"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:254
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:246
 msgid "Not away"
 msgstr "Není pryč"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:710
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:262
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:338
+#: src/kvirc/ui/kvi_statusbar.cpp:696 src/kvirc/ui/kvi_statusbarapplet.cpp:254
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:330
 #: src/kvirc/ui/kvi_irctoolbar.cpp:358
 msgid "Not connected"
 msgstr "Nepřipojen"
@@ -4330,8 +4276,7 @@ msgstr "Nepřipojen"
 msgid "Not enough parameters"
 msgstr "Nedostatek parametrů"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2186
-#: src/kvirc/ui/kvi_ircview.cpp:2240
+#: src/kvirc/ui/kvi_ircview.cpp:2186 src/kvirc/ui/kvi_ircview.cpp:2240
 msgid "Not found"
 msgstr "Nenalezeno"
 
@@ -4347,8 +4292,7 @@ msgstr "Není známo nic o %Q"
 msgid "Nothing known about %Q (no connection)"
 msgstr "Není známo nic o %Q (žádné spojení)"
 
-#: src/kvirc/ui/kvi_console.cpp:144
-#: src/kvirc/ui/kvi_console.cpp:147
+#: src/kvirc/ui/kvi_console.cpp:144 src/kvirc/ui/kvi_console.cpp:147
 msgid "Notify List"
 msgstr "Seznam Oznamování"
 
@@ -4514,8 +4458,7 @@ msgid "O: Local IRC operator (LOCOP)"
 msgstr "O: Lokální IRC operátor (LOCOP)"
 
 #: src/kvilib/system/kvi_locale.cpp:1026
-#: src/kvirc/ui/kvi_cryptcontroller.cpp:127
-#: src/kvirc/ui/kvi_htmldialog.cpp:92
+#: src/kvirc/ui/kvi_cryptcontroller.cpp:127 src/kvirc/ui/kvi_htmldialog.cpp:92
 msgid "OK"
 msgstr "OK"
 
@@ -4527,8 +4470,7 @@ msgstr "Datový proud (neznámý)"
 msgid "Often used directories"
 msgstr "Často používané adresáře"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2036
-#: src/kvirc/ui/kvi_maskeditor.cpp:83
+#: src/kvirc/ui/kvi_ircview.cpp:2036 src/kvirc/ui/kvi_maskeditor.cpp:83
 #: src/kvirc/ui/kvi_imagedialog.cpp:158
 msgid "Ok"
 msgstr "Ok"
@@ -4618,8 +4560,7 @@ msgstr "Operace přerušena"
 msgid "Operation cancelled"
 msgstr "Operace zrušena"
 
-#: src/kvilib/net/kvi_http.cpp:966
-#: src/kvilib/net/kvi_http.cpp:1172
+#: src/kvilib/net/kvi_http.cpp:966 src/kvilib/net/kvi_http.cpp:1172
 msgid "Operation timed out"
 msgstr "Časový limit operace vypršel"
 
@@ -4636,7 +4577,7 @@ msgstr "Oops.. interní chyba"
 msgid "Ops... for some reason the link filter object has been destroyed"
 msgstr "Oops... z nějakého důvodu byl linkovaný filtr objekt zničen"
 
-#: src/kvirc/ui/kvi_window.cpp:508
+#: src/kvirc/ui/kvi_window.cpp:509
 msgid "Ops...I've accidentally lost the crypting engine..."
 msgstr "Oops...Ztratili jsme náhodně šifrovací nástroj..."
 
@@ -4648,7 +4589,7 @@ msgstr "Oops...dekódovací šifra nebyla inicializována"
 msgid "Ops...encrypt cipher not initialized"
 msgstr "Oops...kódovací šifra nebyla inicializována"
 
-#: src/kvirc/kernel/kvi_app_setup.cpp:762
+#: src/kvirc/kernel/kvi_app_setup.cpp:765
 #, fuzzy, c-format
 msgid ""
 "Ops...it looks like I can't load modules on this sytem.\n"
@@ -4661,7 +4602,7 @@ msgstr ""
 "kvůli následující chybě: \"%s\"\n"
 "Přerušuji."
 
-#: src/kvirc/kernel/kvi_app_setup.cpp:777
+#: src/kvirc/kernel/kvi_app_setup.cpp:780
 msgid ""
 "Ops...it looks like you have a broken distribution.\n"
 "The setup module does not export the \"setup_begin\" function.\n"
@@ -4671,7 +4612,7 @@ msgstr ""
 "Setup modul neexportuje funkci \"setup_begin\".\n"
 "Přerušuji!"
 
-#: src/kvirc/kernel/kvi_app_setup.cpp:820
+#: src/kvirc/kernel/kvi_app_setup.cpp:823
 msgid ""
 "Ops...it looks like you have a broken distribution.\n"
 "The setup module does not export the \"setup_finish\" function.\n"
@@ -4869,33 +4810,32 @@ msgstr ""
 "pokud chcete použít CBC mód, musíte označit \n"
 "vaše klíče prefixem \"cbc\".\n"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2171
-#: src/kvirc/ui/kvi_ircview.cpp:2224
+#: src/kvirc/ui/kvi_ircview.cpp:2171 src/kvirc/ui/kvi_ircview.cpp:2224
 #, c-format
 msgid "Pos %d"
 msgstr "Pozice %d"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:399
+#: src/kvirc/ui/kvi_mdimanager.cpp:391
 msgid "Pragma's Horizontal 4-Grid"
 msgstr "Pragma horizontání 4-mřížka"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:403
+#: src/kvirc/ui/kvi_mdimanager.cpp:395
 msgid "Pragma's Horizontal 6-Grid"
 msgstr "Pragma horizontání 6-mřížka"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:407
+#: src/kvirc/ui/kvi_mdimanager.cpp:399
 msgid "Pragma's Horizontal 9-Grid"
 msgstr "Pragma horizontání 9-mřížka"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:401
+#: src/kvirc/ui/kvi_mdimanager.cpp:393
 msgid "Pragma's Vertical 4-Grid"
 msgstr "Pragma vertikální 4-mřížka"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:405
+#: src/kvirc/ui/kvi_mdimanager.cpp:397
 msgid "Pragma's Vertical 6-Grid"
 msgstr "Pragma vertikální 6-mřížka"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:409
+#: src/kvirc/ui/kvi_mdimanager.cpp:401
 msgid "Pragma's Vertical 9-Grid"
 msgstr "Pragma vertikální 4-mřížka"
 
@@ -4903,7 +4843,7 @@ msgstr "Pragma vertikální 4-mřížka"
 msgid "Private"
 msgstr "Soukromý"
 
-#: src/kvirc/ui/kvi_window.cpp:416
+#: src/kvirc/ui/kvi_window.cpp:417
 msgid "Private Text Encoding"
 msgstr "Soukromé kódování textu"
 
@@ -5061,7 +5001,7 @@ msgstr "Query s %1!%2"
 msgid "Query with %1!%2 (%3)"
 msgstr "Query s %1!%2 (%3)"
 
-#: src/kvirc/ui/kvi_userlistview.cpp:1559
+#: src/kvirc/ui/kvi_userlistview.cpp:1589
 msgid "Quiet for <b>%1h %2m %3s</b>"
 msgstr "Nepromluvil <b>%1h %2m %3s</b>"
 
@@ -5089,8 +5029,7 @@ msgstr "Ukončí KVIrc uzavřením všech současných spojení"
 msgid "Raw data to server"
 msgstr "Raw data k serveru"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:205
-#: src/kvirc/ui/kvi_selectors.cpp:474
+#: src/kvirc/ui/kvi_maskeditor.cpp:205 src/kvirc/ui/kvi_selectors.cpp:474
 #: src/kvirc/ui/kvi_selectors.cpp:820
 msgid "Re&move"
 msgstr "Ode&brat"
@@ -5215,13 +5154,12 @@ msgstr "Registrována kontrola lagu se spolehlivostí %u (%s)"
 msgid "Reload"
 msgstr "Obnovit"
 
-#: src/kvirc/kernel/kvi_app.cpp:855
+#: src/kvirc/kernel/kvi_app.cpp:858
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr "Vzdálený příkaz přijat (%s ...)"
 
-#: src/kvilib/core/kvi_error.cpp:98
-#: src/kvilib/net/kvi_http.cpp:1054
+#: src/kvilib/core/kvi_error.cpp:98 src/kvilib/net/kvi_http.cpp:1054
 #: src/kvilib/net/kvi_http.cpp:1133
 msgid "Remote end has closed the connection"
 msgstr "Spojení ukončeno druhou stranou"
@@ -5247,8 +5185,7 @@ msgstr "Zjistit Linky"
 msgid "Request List"
 msgstr "Stáhnout seznam"
 
-#: src/modules/list/listwindow.cpp:397
-#: src/modules/links/linkswindow.cpp:436
+#: src/modules/list/listwindow.cpp:397 src/modules/links/linkswindow.cpp:436
 msgid "Reset"
 msgstr "Obnovit"
 
@@ -5260,7 +5197,7 @@ msgstr "Obnovit dočasné pozadí"
 msgid "Restore &Default Script"
 msgstr "Obnovit &Výchozí skript"
 
-#: src/kvirc/kernel/kvi_app.cpp:811
+#: src/kvirc/kernel/kvi_app.cpp:814
 msgid "Restore Default Script - KVIrc"
 msgstr "Obnovit výchozí skript - KVIrc"
 
@@ -5302,10 +5239,6 @@ msgstr "Spustit KVS Skript"
 msgid "SSL message"
 msgstr "SSL zpráva"
 
-#: src/kvirc/ui/kvi_window.cpp:780
-msgid "Sa&ve Window Properties"
-msgstr "Ul&ožit vlastnosti okna"
-
 #: src/kvilib/system/kvi_locale.cpp:1042
 msgid "Sample"
 msgstr "Vzorek"
@@ -5334,7 +5267,7 @@ msgstr "Skri&pt"
 msgid "Scri&pting"
 msgstr "Skri&pty"
 
-#: src/kvirc/ui/kvi_actiondrawer.cpp:174
+#: src/kvirc/ui/kvi_actiondrawer.cpp:184
 msgid "Script"
 msgstr "Skript"
 
@@ -5362,8 +5295,7 @@ msgstr "Akce příbuzné skriptování"
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:812
-#: src/modules/help/helpwindow.cpp:100
+#: src/kvirc/kernel/kvi_options.cpp:812 src/modules/help/helpwindow.cpp:100
 msgid "Search"
 msgstr "Hledat"
 
@@ -5459,7 +5391,7 @@ msgstr "Zaslán požadavek linků, čeká se na odezvu..."
 msgid "Sent list request, waiting for reply..."
 msgstr "Zaslán požadavek seznamu, čeká se na odezvu..."
 
-#: src/kvirc/ui/kvi_channel.cpp:1572
+#: src/kvirc/ui/kvi_channel.cpp:1564
 msgid "Sent part request, waiting for reply..."
 msgstr "Poslán part požadavek, čeká se na odezvu..."
 
@@ -5475,12 +5407,12 @@ msgstr "Posláno užívatelské jméno a heslo, čeká se na potvrzení"
 msgid "Separate Directories"
 msgstr "Oddělit adresáře"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:649
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:641
 #: src/kvirc/kernel/kvi_coreactions.cpp:508
 msgid "Separator"
 msgstr "Oddělovač"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:578
+#: src/kvirc/ui/kvi_statusbar.cpp:564
 msgid "Server"
 msgstr "Server"
 
@@ -5566,12 +5498,16 @@ msgstr "Nastavit &vše"
 msgid "Set &None"
 msgstr "Nastavit žá&dný"
 
+#: src/kvirc/ui/kvi_window.cpp:781
+#, fuzzy
+msgid "Set Window Props as &default"
+msgstr "Ul&ožit vlastnosti okna"
+
 #: src/kvirc/ui/kvi_maskeditor.cpp:198
 msgid "Set at"
 msgstr "Nastaveno"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:197
-#: src/kvirc/ui/kvi_topicw.cpp:539
+#: src/kvirc/ui/kvi_maskeditor.cpp:197 src/kvirc/ui/kvi_topicw.cpp:539
 msgid "Set by"
 msgstr "Nastavil"
 
@@ -5595,7 +5531,7 @@ msgstr "Nastavení"
 msgid "Settings folder:"
 msgstr "Adresář nastavení:"
 
-#: src/kvirc/kernel/kvi_app_setup.cpp:793
+#: src/kvirc/kernel/kvi_app_setup.cpp:796
 msgid "Setup aborted"
 msgstr "Nastavení přerušeno"
 
@@ -5603,8 +5539,7 @@ msgstr "Nastavení přerušeno"
 msgid "Short View"
 msgstr "Stručné zobrazení"
 
-#: src/kvirc/ui/kvi_frame.cpp:983
-#: src/kvirc/ui/kvi_frame.cpp:999
+#: src/kvirc/ui/kvi_frame.cpp:985 src/kvirc/ui/kvi_frame.cpp:1001
 msgid "Show %1"
 msgstr "Zobrazit %1"
 
@@ -5624,8 +5559,7 @@ msgstr "Zobrazit  vyhledávací okno"
 msgid "Show Hidden Files"
 msgstr "Zobrazovat skryté soubory"
 
-#: src/kvirc/ui/kvi_input.cpp:111
-#: src/kvirc/ui/kvi_input.cpp:411
+#: src/kvirc/ui/kvi_input.cpp:111 src/kvirc/ui/kvi_input.cpp:411
 msgid "Show History<br>&lt;Ctrl+PageUp&gt;"
 msgstr "Zobrazit historii<br>&lt;Ctrl+PageUp&gt;"
 
@@ -5657,7 +5591,7 @@ msgstr "Zobrazit seznam URL"
 msgid "Show User List"
 msgstr "Zobrazit uživatele"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:271
+#: src/modules/trayicon/libkvitrayicon.cpp:275
 msgid "Show Window"
 msgstr "Zobrazit okno"
 
@@ -5669,7 +5603,7 @@ msgstr "Zobrazit při spuštění"
 msgid "Show this window after connecting"
 msgstr "Zobrazit toto okno po připojení"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:597
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:589
 msgid "Show total connection time"
 msgstr "Zobrazit celkový čas připojení"
 
@@ -5776,7 +5710,7 @@ msgstr "Obnovuje se přímé spojení se serverem"
 msgid "Silence speaking"
 msgstr "Šeptání"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:545
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:537
 msgid "Simple Clock"
 msgstr "Jednoduché hodiny"
 
@@ -5784,7 +5718,7 @@ msgstr "Jednoduché hodiny"
 msgid "Slash (/) character expected"
 msgstr "Očekáváno lomítko (/)"
 
-#: src/modules/spaste/libkvispaste.cpp:269
+#: src/modules/spaste/libkvispaste.cpp:268
 msgid "Slow-paste ID:%d Window:%Q"
 msgstr "Pomalu vložit ID:%d Okno:%Q"
 
@@ -5800,11 +5734,11 @@ msgstr "Malé ikony"
 msgid "Small icons"
 msgstr "Malé ikony"
 
-#: src/kvirc/ui/kvi_window.cpp:715
+#: src/kvirc/ui/kvi_window.cpp:716
 msgid "Smart (Send Local)"
 msgstr "Chytré (Poslat lokál)"
 
-#: src/kvirc/ui/kvi_window.cpp:716
+#: src/kvirc/ui/kvi_window.cpp:717
 msgid "Smart (Send UTF-8)"
 msgstr "Chytré (Poslat UTF-8)"
 
@@ -5852,7 +5786,7 @@ msgid ""
 msgstr ""
 "Něco opravdu divného se děje: server odmítá všechny přihlašovací přezdívky..."
 
-#: src/modules/snd/libkvisnd.cpp:681
+#: src/modules/snd/libkvisnd.cpp:584
 #, fuzzy
 msgid "Sorry, I can't find a sound system to use on this machine"
 msgstr "Lituji, nelze nalézt zvukový systém pro použití na tomto stroji"
@@ -5869,11 +5803,11 @@ msgstr "Třídění"
 msgid "Sorting"
 msgstr "Třídění"
 
-#: src/modules/snd/libkvisnd.cpp:664
+#: src/modules/snd/libkvisnd.cpp:567
 msgid "Sound file '%Q' not found"
 msgstr "Zvukový soubor '%Q' nenalezen"
 
-#: src/modules/snd/libkvisnd.cpp:683
+#: src/modules/snd/libkvisnd.cpp:586
 #, c-format
 msgid "Sound system detected to: %s"
 msgstr "Zvukový systém detekován jako: %s"
@@ -5909,7 +5843,7 @@ msgstr "Split zpráva"
 msgid "Standalone Servers"
 msgstr "Samostatné servery"
 
-#: src/kvirc/ui/kvi_window.cpp:714
+#: src/kvirc/ui/kvi_window.cpp:715
 msgid "Standard"
 msgstr "Standardní"
 
@@ -5932,8 +5866,7 @@ msgstr "Obnovuje se přímé spojení se serverem"
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr "Obnovuje se přímé spojení se serverem"
 
-#: src/kvirc/ui/kvi_channel.cpp:1879
-#: src/kvirc/ui/kvi_query.cpp:868
+#: src/kvirc/ui/kvi_channel.cpp:1871 src/kvirc/ui/kvi_query.cpp:868
 #, fuzzy
 msgid "Starting last log"
 msgstr "Zahajuji vypisování seznamu oznamování"
@@ -5950,8 +5883,7 @@ msgstr "Zastavit vložení"
 msgid "Stop list download"
 msgstr "Zastavit stahování seznamu"
 
-#: src/modules/list/listwindow.cpp:250
-#: src/modules/list/listwindow.cpp:362
+#: src/modules/list/listwindow.cpp:250 src/modules/list/listwindow.cpp:362
 msgid "Stopping the list download..."
 msgstr "Zastavuje se stahování seznamu..."
 
@@ -5959,8 +5891,7 @@ msgstr "Zastavuje se stahování seznamu..."
 msgid "Store configuration in folder"
 msgstr "Uložit konfiguraci v adresáři"
 
-#: src/kvilib/net/kvi_http.cpp:705
-#: src/kvilib/net/kvi_http.cpp:847
+#: src/kvilib/net/kvi_http.cpp:705 src/kvilib/net/kvi_http.cpp:847
 msgid "Stream exceeded expected length"
 msgstr "Proud překročil očekávanou délku"
 
@@ -5984,13 +5915,11 @@ msgstr "Možnosti řetězce (hodnota řetězce)"
 msgid "Strip colors"
 msgstr "Odstranit barvy"
 
-#: src/kvirc/ui/kvi_menubar.cpp:145
-#: src/kvirc/kernel/kvi_coreactions.cpp:336
+#: src/kvirc/ui/kvi_menubar.cpp:145 src/kvirc/kernel/kvi_coreactions.cpp:336
 msgid "Subscribe to the Mailing List"
 msgstr "Přihlásit se do Mailing listu"
 
-#: src/kvilib/core/kvi_error.cpp:50
-#: src/kvilib/net/kvi_http.cpp:318
+#: src/kvilib/core/kvi_error.cpp:50 src/kvilib/net/kvi_http.cpp:318
 msgid "Success"
 msgstr "Hotovo"
 
@@ -6027,7 +5956,7 @@ msgstr "Emulátor terminálu"
 msgid "Text"
 msgstr "Text:"
 
-#: src/kvirc/ui/kvi_window.cpp:775
+#: src/kvirc/ui/kvi_window.cpp:776
 msgid "Text &Encoding"
 msgstr "Kódo&vání textu"
 
@@ -6073,10 +6002,8 @@ msgstr "Akce \"%Q\" neexistuje"
 msgid "The action parameter didn't evaluate to an index"
 msgstr "Parametr akce nejde přepočítat na index"
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
 #: src/modules/addon/libkviaddon.cpp:386
 msgid "The addon \"%1\" does not exist"
 msgstr "Rozšíření \"%1\" neexistuje"
@@ -6135,7 +6062,7 @@ msgstr "Spojení bylo neočekávaně přerušeno. Pokus o obnovu spojení..."
 msgid "The crypt engine \"%Q\" does not exist"
 msgstr "Šifrovací nástroj \"%Q\" neexistoval"
 
-#: src/kvirc/ui/kvi_channel.cpp:1141
+#: src/kvirc/ui/kvi_channel.cpp:1133
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %Q, no "
 "data sent to the server"
@@ -6167,8 +6094,7 @@ msgstr ""
 msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr ""
 
-#: src/kvirc/ui/kvi_filedialog.cpp:120
-#: src/kvirc/ui/kvi_filedialog.cpp:165
+#: src/kvirc/ui/kvi_filedialog.cpp:120 src/kvirc/ui/kvi_filedialog.cpp:165
 #, c-format
 msgid "The file %s already exists.<br>Do you wish to overwrite it?"
 msgstr "Soubor %s již existuje.<br>Chcete jej přepsat?"
@@ -6258,7 +6184,7 @@ msgstr ""
 "Poslední změna přezdívky z \r!n\r%Q\r na \r!n\r%Q\r způsobila query kolizi: "
 "spojuji výstup"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:838
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:830
 msgid "The remote server replied with "
 msgstr ""
 
@@ -6352,8 +6278,7 @@ msgstr ""
 "Zadaná vázací adresa (%Q) je neplatná (rozhraní na které odkazuje je nejspíš "
 "vypnuté)"
 
-#: src/modules/file/libkvifile.cpp:486
-#: src/modules/file/libkvifile.cpp:629
+#: src/modules/file/libkvifile.cpp:486 src/modules/file/libkvifile.cpp:629
 msgid "The specified directory does not exist '%Q'"
 msgstr "Určený adresář neexistuje '%Q'"
 
@@ -6388,7 +6313,7 @@ msgstr "Zadané okno (%Q) není kanál"
 msgid "The specified window (%Q) is not a channel/query/DCC chat"
 msgstr "Určené okno (%Q) není kanál, query, ani DCC chat"
 
-#: src/modules/spaste/libkvispaste.cpp:219
+#: src/modules/spaste/libkvispaste.cpp:218
 msgid "The specified window (%Q) is not a channel/query/dcc"
 msgstr "Určené okno (%Q) není kanál, query, ani dcc"
 
@@ -6476,7 +6401,7 @@ msgstr "Svět se zastavil?"
 msgid "Theme information file is not valid"
 msgstr "Soubor s informacemi o motivu je neplatný"
 
-#: src/kvirc/ui/kvi_frame.cpp:886
+#: src/kvirc/ui/kvi_frame.cpp:888
 msgid "There are active connections, are you sure you wish to "
 msgstr "Jsou zde aktivní spojení, opravdu chcete "
 
@@ -6546,8 +6471,7 @@ msgstr "Tato volba je také dostupná jako"
 msgid "This plugin does not export the desired function."
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:580
-#: src/kvirc/ui/kvi_query.cpp:754
+#: src/kvirc/ui/kvi_query.cpp:580 src/kvirc/ui/kvi_query.cpp:754
 msgid "This query has no active targets, no message sent"
 msgstr "Toto query nemá aktivní cíle, zpráva neposlána"
 
@@ -6581,7 +6505,7 @@ msgstr "Toto okno nemá možnost logování"
 msgid "Thumbnail Previews"
 msgstr "Náhledy miniatur"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:415
+#: src/kvirc/ui/kvi_mdimanager.cpp:407
 msgid "Tile Met&hod"
 msgstr "Způ&sob vedle sebe"
 
@@ -6609,8 +6533,7 @@ msgstr "Tip pro %Q: %Q"
 msgid "Tip: %Q"
 msgstr "Tip: %Q"
 
-#: src/kvirc/ui/kvi_toolbar.cpp:86
-#: src/kvirc/ui/kvi_menubar.cpp:183
+#: src/kvirc/ui/kvi_toolbar.cpp:86 src/kvirc/ui/kvi_menubar.cpp:183
 msgid "Toolbars"
 msgstr "Nástrojové lišty"
 
@@ -6750,7 +6673,7 @@ msgstr "Nelze zjistit hostitel IRC proxy : Nelze spustit DNS slave"
 msgid "Unable to look up the server hostname: Can't start the DNS slave"
 msgstr "Nelze zjistit hostitele serveru: Nelze spustit DNS slave"
 
-#: src/modules/snd/libkvisnd.cpp:670
+#: src/modules/snd/libkvisnd.cpp:573
 msgid "Unable to play sound '%Q'"
 msgstr "Nelze přehrát zvuk '%Q'"
 
@@ -6845,17 +6768,13 @@ msgstr "Nezvýrazňovat žádné Query"
 msgid "Unhighlight All Windows"
 msgstr "Nezvýrazňovat žádná okna"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr "Odinstalovává se existující rozšíření verze %Q"
 
-#: src/kvilib/net/kvi_ssl.cpp:583
-#: src/kvilib/net/kvi_ssl.cpp:613
-#: src/kvilib/net/kvi_ssl.cpp:636
-#: src/kvirc/ui/kvi_topicw.cpp:150
-#: src/kvirc/kernel/kvi_theme.cpp:86
-#: src/modules/upnp/rootservice.cpp:172
+#: src/kvilib/net/kvi_ssl.cpp:597 src/kvilib/net/kvi_ssl.cpp:627
+#: src/kvilib/net/kvi_ssl.cpp:650 src/kvirc/ui/kvi_topicw.cpp:150
+#: src/kvirc/kernel/kvi_theme.cpp:86 src/modules/upnp/rootservice.cpp:172
 msgid "Unknown"
 msgstr "Neznámý"
 
@@ -6934,8 +6853,7 @@ msgstr "Nenadálá chyba nameserveru (spadl ?)"
 msgid "Unsigned integer options (unsigned integer constant)"
 msgstr "Volby bezznaménkových integerů (bezznaménková integerová konstanta)"
 
-#: src/modules/setup/setupwizard.cpp:366
-#: src/modules/setup/setupwizard.cpp:393
+#: src/modules/setup/setupwizard.cpp:366 src/modules/setup/setupwizard.cpp:393
 msgid "Unspecified"
 msgstr "Neurčeno"
 
@@ -6981,17 +6899,17 @@ msgstr "Neukončený subvýraz (Nesoulad závorek)"
 msgid "Untitled"
 msgstr "Nepojmenovaný"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:718
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:710
 #, fuzzy
 msgid "Update Indicator"
 msgstr "Lag indikátor"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:836
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:828
 #, fuzzy
 msgid "Update failed"
 msgstr "Nahradit soubor"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:828
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:820
 msgid "Update missing"
 msgstr ""
 
@@ -6999,7 +6917,7 @@ msgstr ""
 msgid "Updating away state for channel %Q"
 msgstr "Aktualizace pryč stavu pro kanál %Q"
 
-#: src/kvirc/ui/kvi_window.cpp:702
+#: src/kvirc/ui/kvi_window.cpp:703
 msgid "Use Default Encoding"
 msgstr "Použít výchozí kódování"
 
@@ -7019,8 +6937,7 @@ msgstr "Použít adresář nastavení z předchozí instalace"
 msgid "Use the crypt engine"
 msgstr "Použít šifrování"
 
-#: src/kvirc/ui/kvi_channel.cpp:153
-#: src/kvirc/ui/kvi_channel.cpp:193
+#: src/kvirc/ui/kvi_channel.cpp:153 src/kvirc/ui/kvi_channel.cpp:193
 msgid "User List"
 msgstr "Seznam uživatelů"
 
@@ -7028,7 +6945,7 @@ msgstr "Seznam uživatelů"
 msgid "User Mode"
 msgstr "Uživatelský mód"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:598
+#: src/kvirc/ui/kvi_statusbar.cpp:584
 #, fuzzy
 msgid "User Modes"
 msgstr "Uživatelský mód"
@@ -7054,7 +6971,7 @@ msgid "User-operators OR Auditorium: /NAMES and /WHO show only ops"
 msgstr ""
 "Uživatelé-operátoři NEBO Auditorium: /NAMES a /WHO zobrazí pouze operátory"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:586
+#: src/kvirc/ui/kvi_statusbar.cpp:572
 #, fuzzy
 msgid "Username"
 msgstr "Uživatelské jméno:"
@@ -7156,11 +7073,11 @@ msgstr "Očekávána proměnná nebo identifikátor"
 msgid "Verbose/Debug"
 msgstr "Upovídaný/Ladění"
 
-#: src/kvirc/ui/kvi_channel.cpp:970
+#: src/kvirc/ui/kvi_channel.cpp:962
 msgid "Very high activity"
 msgstr "Velmi vysoká aktivita"
 
-#: src/kvirc/ui/kvi_channel.cpp:962
+#: src/kvirc/ui/kvi_channel.cpp:954
 msgid "Very low activity"
 msgstr "Velmi nízká aktivita"
 
@@ -7194,8 +7111,7 @@ msgstr "Wallops (+w)"
 msgid "Wallops message"
 msgstr "Wallops zpráva"
 
-#: src/modules/url/libkviurl.cpp:233
-#: src/modules/url/libkviurl.cpp:312
+#: src/modules/url/libkviurl.cpp:233 src/modules/url/libkviurl.cpp:312
 #: src/modules/url/libkviurl.cpp:497
 #: src/modules/mircimport/libkvimircimport.cpp:116
 msgid "Warning - KVIrc"
@@ -7256,14 +7172,12 @@ msgstr "Pokusím se o znovupřipojení za %d sekund"
 msgid "Window"
 msgstr "Okno"
 
-#: src/modules/log/libkvilog.cpp:103
-#: src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:212
 msgid "Window %Q not found"
 msgstr "Okno %Q nenalezeno"
 
-#: src/kvirc/ui/kvi_windowlist_tree.cpp:381
-#: src/kvirc/ui/kvi_windowlist.cpp:61
+#: src/kvirc/ui/kvi_windowlist_tree.cpp:381 src/kvirc/ui/kvi_windowlist.cpp:61
 msgid "Window List"
 msgstr "Seznam oken"
 
@@ -7300,10 +7214,8 @@ msgstr "Zapisuji data balíčku"
 msgid "Writing package header"
 msgstr "Zapisuje se hlavička balíčku"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753
-#: src/kvirc/ui/kvi_statusbar.cpp:570
-#: src/kvirc/ui/kvi_input.cpp:255
-#: src/kvirc/kernel/kvi_app.cpp:792
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/ui/kvi_statusbar.cpp:556
+#: src/kvirc/ui/kvi_input.cpp:255 src/kvirc/kernel/kvi_app.cpp:795
 msgid "Yes"
 msgstr "Ano"
 
@@ -7311,7 +7223,7 @@ msgstr "Ano"
 msgid "Yes, always"
 msgstr "Ano, vždy"
 
-#: src/kvirc/kernel/kvi_app.cpp:812
+#: src/kvirc/kernel/kvi_app.cpp:815
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -7327,7 +7239,7 @@ msgstr "Nejste připojeni k serveru"
 msgid "You cannot export an empty list"
 msgstr "Nemůžete exportovat prázdný seznam"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:830
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:822
 msgid ""
 "You didn't checked yet.\n"
 " \t\t\t\tShould I check it?"
@@ -7461,12 +7373,11 @@ msgstr "[%s]: [SSL]: Použit soubor certifikátu %s"
 msgid "[%s]: [SSL]: Using private key file %s"
 msgstr "[%s]: [SSL]: Použit soubor privátního klíče %s"
 
-#: src/kvirc/ui/kvi_query.cpp:217
-#: src/kvirc/ui/kvi_query.cpp:265
+#: src/kvirc/ui/kvi_query.cpp:217 src/kvirc/ui/kvi_query.cpp:265
 msgid "[Dead Query]"
 msgstr "[Mrtvé Query]"
 
-#: src/kvirc/ui/kvi_channel.cpp:998
+#: src/kvirc/ui/kvi_channel.cpp:990
 msgid "[Dead channel]"
 msgstr "[Mrtvý kanál]"
 
@@ -7520,38 +7431,32 @@ msgstr "[SOKET]: %Q"
 msgid "[SSL ERROR]: %Q"
 msgstr "[SSL CHYBA]: %Q"
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:53
-#: src/kvirc/kernel/kvi_sslmaster.cpp:60
+#: src/kvirc/kernel/kvi_sslmaster.cpp:53 src/kvirc/kernel/kvi_sslmaster.cpp:60
 #, c-format
 msgid "[SSL]:     Common name: %c%s"
 msgstr "[SSL]:     Obecné jméno: %c%s"
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:56
-#: src/kvirc/kernel/kvi_sslmaster.cpp:63
+#: src/kvirc/kernel/kvi_sslmaster.cpp:56 src/kvirc/kernel/kvi_sslmaster.cpp:63
 #, c-format
 msgid "[SSL]:     Country: %c%s"
 msgstr "[SSL]:     Země: %c%s"
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:58
-#: src/kvirc/kernel/kvi_sslmaster.cpp:65
+#: src/kvirc/kernel/kvi_sslmaster.cpp:58 src/kvirc/kernel/kvi_sslmaster.cpp:65
 #, c-format
 msgid "[SSL]:     Locality: %c%s"
 msgstr "[SSL]:     Lokace: %c%s"
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:54
-#: src/kvirc/kernel/kvi_sslmaster.cpp:61
+#: src/kvirc/kernel/kvi_sslmaster.cpp:54 src/kvirc/kernel/kvi_sslmaster.cpp:61
 #, c-format
 msgid "[SSL]:     Organization: %c%s"
 msgstr "[SSL]:     Organizace: %c%s"
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:55
-#: src/kvirc/kernel/kvi_sslmaster.cpp:62
+#: src/kvirc/kernel/kvi_sslmaster.cpp:55 src/kvirc/kernel/kvi_sslmaster.cpp:62
 #, c-format
 msgid "[SSL]:     Organizational unit: %c%s"
 msgstr "[SSL]:     Organizační jednotka: %c%s"
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:57
-#: src/kvirc/kernel/kvi_sslmaster.cpp:64
+#: src/kvirc/kernel/kvi_sslmaster.cpp:57 src/kvirc/kernel/kvi_sslmaster.cpp:64
 #, c-format
 msgid "[SSL]:     State or province: %c%s"
 msgstr "[SSL]:     Stát nebo provincie: %c%s"
@@ -7608,8 +7513,7 @@ msgstr "[SSL]:  Verze: %c%s"
 msgid "[SSL]: %Q"
 msgstr "[SSL]: %Q"
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:40
-#: src/kvirc/kernel/kvi_sslmaster.cpp:49
+#: src/kvirc/kernel/kvi_sslmaster.cpp:40 src/kvirc/kernel/kvi_sslmaster.cpp:49
 #, c-format
 msgid "[SSL]: %c%s"
 msgstr "[SSL]: %c%s"
@@ -7637,25 +7541,23 @@ msgstr ""
 msgid "[Server parser]: [%s][%s] %Q"
 msgstr "[Server parser]: [%s][%s] %Q"
 
-#: src/kvirc/ui/kvi_channel.cpp:793
+#: src/kvirc/ui/kvi_channel.cpp:785
 msgid "active user"
 msgstr "aktivní uživatel"
 
-#: src/kvirc/ui/kvi_channel.cpp:793
+#: src/kvirc/ui/kvi_channel.cpp:785
 msgid "active users"
 msgstr "aktivních uživatelů"
 
-#: src/kvirc/ui/kvi_channel.cpp:710
-#: src/kvirc/ui/kvi_channel.cpp:725
+#: src/kvirc/ui/kvi_channel.cpp:702 src/kvirc/ui/kvi_channel.cpp:717
 msgid "and"
 msgstr "a"
 
-#: src/kvirc/ui/kvi_channel.cpp:733
+#: src/kvirc/ui/kvi_channel.cpp:725
 msgid "and other %1 users"
 msgstr "a ostatních %1 uživatelů"
 
-#: src/kvirc/ui/kvi_channel.cpp:715
-#: src/kvirc/ui/kvi_channel.cpp:736
+#: src/kvirc/ui/kvi_channel.cpp:707 src/kvirc/ui/kvi_channel.cpp:728
 msgid "are talking"
 msgstr "mluví"
 
@@ -7663,10 +7565,8 @@ msgstr "mluví"
 msgid "autojoining"
 msgstr "autopříchod"
 
-#: src/kvirc/ui/kvi_irctoolbar.cpp:372
-#: src/kvirc/ui/kvi_irctoolbar.cpp:380
-#: src/kvirc/ui/kvi_console.cpp:1125
-#: src/kvirc/ui/kvi_console.cpp:1132
+#: src/kvirc/ui/kvi_irctoolbar.cpp:372 src/kvirc/ui/kvi_irctoolbar.cpp:380
+#: src/kvirc/ui/kvi_console.cpp:1125 src/kvirc/ui/kvi_console.cpp:1132
 msgid "away"
 msgstr "pryč"
 
@@ -7696,11 +7596,11 @@ msgstr "c: Příjemce pro cconn zprávy"
 msgid "channel"
 msgstr "kanál"
 
-#: src/kvirc/ui/kvi_channel.cpp:874
+#: src/kvirc/ui/kvi_channel.cpp:866
 msgid "channel administrator"
 msgstr "administrátor kanálu"
 
-#: src/kvirc/ui/kvi_channel.cpp:874
+#: src/kvirc/ui/kvi_channel.cpp:866
 msgid "channel administrators"
 msgstr "administrátoři kanálu"
 
@@ -7708,11 +7608,11 @@ msgstr "administrátoři kanálu"
 msgid "channel notification:"
 msgstr "oznámení kanálu:"
 
-#: src/kvirc/ui/kvi_channel.cpp:863
+#: src/kvirc/ui/kvi_channel.cpp:855
 msgid "channel owner"
 msgstr "vlastník kanálu"
 
-#: src/kvirc/ui/kvi_channel.cpp:863
+#: src/kvirc/ui/kvi_channel.cpp:855
 msgid "channel owners"
 msgstr "vlastníci kanálu"
 
@@ -7748,11 +7648,11 @@ msgstr "dvojklikni na názvu kanálu pro příchod"
 msgid "f: Recipient for full server notices"
 msgstr "f: Příjemce pro plná oznámení serveru"
 
-#: src/kvirc/ui/kvi_channel.cpp:896
+#: src/kvirc/ui/kvi_channel.cpp:888
 msgid "half-operator"
 msgstr "polo-operátor"
 
-#: src/kvirc/ui/kvi_channel.cpp:896
+#: src/kvirc/ui/kvi_channel.cpp:888
 msgid "half-operators"
 msgstr "polo-operátorů"
 
@@ -7762,15 +7662,15 @@ msgstr "polo-operátorů"
 msgid "hexadecimal"
 msgstr "šestnáctkové"
 
-#: src/kvirc/ui/kvi_channel.cpp:836
+#: src/kvirc/ui/kvi_channel.cpp:828
 msgid "hot user"
 msgstr "velmi aktivní uživatel"
 
-#: src/kvirc/ui/kvi_channel.cpp:836
+#: src/kvirc/ui/kvi_channel.cpp:828
 msgid "hot users"
 msgstr "velmi aktivních uživatelů"
 
-#: src/kvirc/ui/kvi_channel.cpp:979
+#: src/kvirc/ui/kvi_channel.cpp:971
 msgid "human"
 msgstr "lidí"
 
@@ -7798,7 +7698,7 @@ msgstr "ingnorován (nepřípustný)"
 msgid "invite list"
 msgstr "seznam pozvání"
 
-#: src/kvirc/ui/kvi_channel.cpp:704
+#: src/kvirc/ui/kvi_channel.cpp:696
 msgid "is talking"
 msgstr "mluví"
 
@@ -7830,11 +7730,11 @@ msgstr "oznamování"
 msgid "o: IRC operator (OPER)"
 msgstr "o: IRC operátor (OPER)"
 
-#: src/kvirc/ui/kvi_channel.cpp:779
+#: src/kvirc/ui/kvi_channel.cpp:771
 msgid "operator"
 msgstr "operátor"
 
-#: src/kvirc/ui/kvi_channel.cpp:780
+#: src/kvirc/ui/kvi_channel.cpp:772
 msgid "operators"
 msgstr "operátorů"
 
@@ -7862,7 +7762,7 @@ msgstr "query"
 msgid "query"
 msgstr "query"
 
-#: src/kvirc/ui/kvi_frame.cpp:887
+#: src/kvirc/ui/kvi_frame.cpp:889
 msgid "quit KVIrc?"
 msgstr "ukončit KVIrc?"
 
@@ -7893,7 +7793,7 @@ msgstr "odpovězeno"
 msgid "s: Recipient for server notices"
 msgstr "s: Příjemce oznámení serveru"
 
-#: src/kvirc/ui/kvi_channel.cpp:704
+#: src/kvirc/ui/kvi_channel.cpp:696
 msgid "said something recently"
 msgstr "řekl něco naposledy"
 
@@ -7910,27 +7810,27 @@ msgstr "neznámý"
 msgid "unmatched watch list entry"
 msgstr "neexistující záznam watch seznamu"
 
-#: src/kvirc/ui/kvi_channel.cpp:927
+#: src/kvirc/ui/kvi_channel.cpp:919
 msgid "user total"
 msgstr "uživatel celkem"
 
-#: src/kvirc/ui/kvi_channel.cpp:918
+#: src/kvirc/ui/kvi_channel.cpp:910
 msgid "user-operator"
 msgstr "uživatel-operátor"
 
-#: src/kvirc/ui/kvi_channel.cpp:918
+#: src/kvirc/ui/kvi_channel.cpp:910
 msgid "user-operators"
 msgstr "uživatel-operátoři"
 
-#: src/kvirc/ui/kvi_channel.cpp:927
+#: src/kvirc/ui/kvi_channel.cpp:919
 msgid "users total"
 msgstr "uživatelů celkem"
 
-#: src/kvirc/ui/kvi_channel.cpp:907
+#: src/kvirc/ui/kvi_channel.cpp:899
 msgid "voiced user"
 msgstr "uživatel s voice"
 
-#: src/kvirc/ui/kvi_channel.cpp:907
+#: src/kvirc/ui/kvi_channel.cpp:899
 msgid "voiced users"
 msgstr "uživatelů s voice"
 
@@ -7950,8 +7850,7 @@ msgstr "watch záznam přidaný uživatelem"
 msgid "watch entry listing requested by user"
 msgstr "seznam watch požadován uživatelem"
 
-#: src/kvirc/ui/kvi_channel.cpp:715
-#: src/kvirc/ui/kvi_channel.cpp:736
+#: src/kvirc/ui/kvi_channel.cpp:707 src/kvirc/ui/kvi_channel.cpp:728
 msgid "were talking recently"
 msgstr "mluvili naposledy"
 

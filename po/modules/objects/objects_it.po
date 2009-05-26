@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 00:56+0200\n"
+"POT-Creation-Date: 2009-05-26 21:51+0200\n"
 "PO-Revision-Date: 2009-01-30 20:08+0100\n"
 "Last-Translator: \n"
 "Language-Team: Italian <it@li.org>\n"
@@ -196,10 +196,8 @@ msgstr "Tentativo di connessione scaduto"
 msgid "Connect failure: "
 msgstr "Connessione fallita: "
 
-#: src/modules/objects/class_sql.cpp:240
-#: src/modules/objects/class_sql.cpp:273
-#: src/modules/objects/class_sql.cpp:290
-#: src/modules/objects/class_sql.cpp:307
+#: src/modules/objects/class_sql.cpp:240 src/modules/objects/class_sql.cpp:273
+#: src/modules/objects/class_sql.cpp:290 src/modules/objects/class_sql.cpp:307
 #: src/modules/objects/class_sql.cpp:324
 #, fuzzy
 msgid "Connection %Q does not exists"

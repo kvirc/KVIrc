@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 00:56+0200\n"
+"POT-Creation-Date: 2009-05-26 21:51+0200\n"
 "PO-Revision-Date: 2008-08-01 07:46+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
@@ -24,8 +24,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " bytes"
 
@@ -44,8 +43,7 @@ msgstr " linhas"
 msgid " min"
 msgstr " minutos"
 
-#: src/modules/options/optw_lag.cpp:45
-#: src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_connection.cpp:151
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
@@ -1758,8 +1756,7 @@ msgstr "Anexar à resposta VERSION:"
 msgid "Auto flush logs every"
 msgstr "Auto esvaziar registos a todos os"
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Auto detectar"
 
@@ -1771,8 +1768,7 @@ msgstr "Detecção automática"
 msgid "Automatically Log"
 msgstr "Registar Automaticamente"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Aceitar automaticamente"
@@ -1907,8 +1903,7 @@ msgstr "Respostas CTCP"
 msgid "Cache IP address"
 msgstr "Endereço IP em cache"
 
-#: src/modules/options/dialog.cpp:242
-#: src/modules/options/optw_identity.cpp:95
+#: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/optw_identity.cpp:906
 #: src/modules/options/optw_nickserv.cpp:128
@@ -1920,8 +1915,7 @@ msgstr "Cancelar"
 
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
 #: src/modules/options/optw_userlist.cpp:144
@@ -2006,13 +2000,11 @@ msgstr "Limpar Lista"
 msgid "Close in tray"
 msgstr "Fechar no ícone da barra de tarefas"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Fecha esta caixa de diálogo, aceitando todas as alterações."
 
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Fecha esta caixa de diálogo, rejeitando todas as alterações."
 
@@ -2025,8 +2017,7 @@ msgid "Commit all changes immediately."
 msgstr "Aplicar as alterações imediatamente."
 
 #: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_notify.cpp:41 src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
 msgid "Configuration"
 msgstr "Configuração"
@@ -3194,8 +3185,7 @@ msgstr "Abrir Privado Para"
 msgid "Open all minimized"
 msgstr "Abrir todos minimizados"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Abrir minimizado quando auto-aceite"
 
@@ -3842,8 +3832,7 @@ msgstr "Usar Protocolo SSL"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Teste"
 
@@ -4067,8 +4056,7 @@ msgstr ""
 
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
 #: src/modules/options/optw_userlist.cpp:141
@@ -4434,8 +4422,7 @@ msgstr "[PREFIXO]alcunha[!utilizador@endereço][SUFIXO] mensagem"
 msgid "[Unknown Media Type]"
 msgstr "[Tipo de Média Desconhecido}"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bytes/seg"
 

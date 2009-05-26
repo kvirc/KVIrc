@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 00:56+0200\n"
+"POT-Creation-Date: 2009-05-26 21:51+0200\n"
 "PO-Revision-Date: 2008-02-14 02:10+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
@@ -90,8 +90,7 @@ msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] je upravo napusti[o/la] \r!c\r%Q\r: %Q"
 msgid " (%1 hops)"
 msgstr " (%1 hops)"
 
-#: src/kvirc/ui/kvi_channel.cpp:1052
-#: src/kvirc/ui/kvi_query.cpp:456
+#: src/kvirc/ui/kvi_channel.cpp:1044 src/kvirc/ui/kvi_query.cpp:456
 #: src/kvirc/ui/kvi_console.cpp:1137
 msgid " on "
 msgstr " na "
@@ -452,8 +451,7 @@ msgstr "&Dodaj Ban"
 msgid "&Add to Custom Colors"
 msgstr "&Dodaj u Korisničke Boje"
 
-#: src/kvirc/ui/kvi_frame.cpp:890
-#: src/kvirc/ui/kvi_console.cpp:509
+#: src/kvirc/ui/kvi_frame.cpp:892 src/kvirc/ui/kvi_console.cpp:509
 #: src/kvirc/ui/kvi_console.cpp:543
 msgid "&Always"
 msgstr "&Uvijek"
@@ -462,7 +460,7 @@ msgstr "&Uvijek"
 msgid "&Apply"
 msgstr "Prihv&ati"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:392
+#: src/kvirc/ui/kvi_mdimanager.cpp:384
 msgid "&Auto Tile"
 msgstr "&Automatski Poploči"
 
@@ -474,20 +472,17 @@ msgstr "&Automatski Prikaz"
 msgid "&Basic colors"
 msgstr "Osnovne &boje"
 
-#: src/kvirc/ui/kvi_selectors.cpp:393
-#: src/modules/setup/setupwizard.cpp:243
-#: src/modules/setup/setupwizard.cpp:257
-#: src/modules/setup/setupwizard.cpp:285
+#: src/kvirc/ui/kvi_selectors.cpp:393 src/modules/setup/setupwizard.cpp:243
+#: src/modules/setup/setupwizard.cpp:257 src/modules/setup/setupwizard.cpp:285
 #: src/modules/avatar/libkviavatar.cpp:93
 msgid "&Browse..."
 msgstr "&Pregledaj..."
 
-#: src/kvilib/system/kvi_locale.cpp:1089
-#: src/modules/url/libkviurl.cpp:390
+#: src/kvilib/system/kvi_locale.cpp:1089 src/modules/url/libkviurl.cpp:390
 msgid "&Cancel"
 msgstr "Po&ništi"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:385
+#: src/kvirc/ui/kvi_mdimanager.cpp:377
 msgid "&Cascade Windows"
 msgstr "&Stepenasti Prozori"
 
@@ -515,7 +510,7 @@ msgstr "&Prilagođene boje"
 msgid "&Define Custom Colors >>"
 msgstr "&Definiraj Korisničke Boje >>"
 
-#: src/kvirc/ui/kvi_window.cpp:751
+#: src/kvirc/ui/kvi_window.cpp:752
 msgid "&Dock"
 msgstr "&Spoji"
 
@@ -576,22 +571,18 @@ msgstr "&Modul"
 msgid "&Next >"
 msgstr "Slijedeće"
 
-#: src/kvirc/ui/kvi_frame.cpp:890
-#: src/kvirc/ui/kvi_console.cpp:511
-#: src/kvirc/ui/kvi_console.cpp:545
-#: src/modules/setup/setupwizard.cpp:747
+#: src/kvirc/ui/kvi_frame.cpp:892 src/kvirc/ui/kvi_console.cpp:511
+#: src/kvirc/ui/kvi_console.cpp:545 src/modules/setup/setupwizard.cpp:747
 #: src/modules/addon/managementdialog.cpp:266
 msgid "&No"
 msgstr "&Ne"
 
-#: src/kvilib/system/kvi_locale.cpp:1088
-#: src/modules/url/libkviurl.cpp:396
+#: src/kvilib/system/kvi_locale.cpp:1088 src/modules/url/libkviurl.cpp:396
 #: src/modules/avatar/libkviavatar.cpp:103
 msgid "&OK"
 msgstr "&Uredu"
 
-#: src/kvirc/ui/kvi_menubar.cpp:260
-#: src/kvirc/ui/kvi_menubar.cpp:268
+#: src/kvirc/ui/kvi_menubar.cpp:260 src/kvirc/ui/kvi_menubar.cpp:268
 msgid "&Other..."
 msgstr "&Ostalo..."
 
@@ -638,11 +629,11 @@ msgstr "&Ukloni Odabrano"
 msgid "&Replace"
 msgstr "&Zamijeni"
 
-#: src/kvirc/ui/kvi_window.cpp:762
+#: src/kvirc/ui/kvi_window.cpp:763
 msgid "&Restore"
 msgstr "&Vrati"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:423
+#: src/kvirc/ui/kvi_mdimanager.cpp:415
 #, fuzzy
 msgid "&Restore all"
 msgstr "&Vrati"
@@ -672,7 +663,7 @@ msgstr "&Opcije"
 msgid "&Size"
 msgstr "&Veličina"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:389
+#: src/kvirc/ui/kvi_mdimanager.cpp:381
 msgid "&Tile Windows"
 msgstr "&Poploči Prozore"
 
@@ -693,7 +684,7 @@ msgstr "Po&dvučeno"
 msgid "&Undo"
 msgstr "&Odvoji"
 
-#: src/kvirc/ui/kvi_window.cpp:748
+#: src/kvirc/ui/kvi_window.cpp:749
 msgid "&Undock"
 msgstr "&Odvoji"
 
@@ -701,10 +692,8 @@ msgstr "&Odvoji"
 msgid "&Window"
 msgstr "&Prozori"
 
-#: src/kvirc/ui/kvi_frame.cpp:890
-#: src/kvirc/ui/kvi_console.cpp:510
-#: src/kvirc/ui/kvi_console.cpp:544
-#: src/modules/setup/setupwizard.cpp:747
+#: src/kvirc/ui/kvi_frame.cpp:892 src/kvirc/ui/kvi_console.cpp:510
+#: src/kvirc/ui/kvi_console.cpp:544 src/modules/setup/setupwizard.cpp:747
 #: src/modules/addon/managementdialog.cpp:266
 msgid "&Yes"
 msgstr "&Da"
@@ -747,8 +736,7 @@ msgid "(None)"
 msgstr "ništa"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:609
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:646
-#: src/kvirc/ui/kvi_channel.cpp:1639
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:646 src/kvirc/ui/kvi_channel.cpp:1631
 #: src/modules/links/linkswindow.cpp:315
 msgid "(Unknown)"
 msgstr ""
@@ -872,7 +860,7 @@ msgstr ""
 msgid "<b>Can't find any tip... :(</b>"
 msgstr "<b>Ne mogu pronaći nijedan savjet... :(</b>"
 
-#: src/kvirc/ui/kvi_channel.cpp:1663
+#: src/kvirc/ui/kvi_channel.cpp:1655
 msgid "<b>Channel mode:</b>"
 msgstr "<b>Modovi sobe:</b>"
 
@@ -893,7 +881,7 @@ msgstr ""
 msgid "<b>Middle-click:</b><br>%Q"
 msgstr "<b>Srednji klik:</b><br>%Q"
 
-#: src/kvirc/kernel/kvi_app.cpp:776
+#: src/kvirc/kernel/kvi_app.cpp:779
 msgid ""
 "<b>Ooops...</b><br><br><b>There are some reasons that make me think that "
 "your KVIrc installation is incomplete.</b><br><br>I might be wrong, but you "
@@ -927,12 +915,12 @@ msgstr ""
 "<b>Shift+Pomicanje</b> ili <b>Ctrl+Pomicanje</b> za micanje appleta "
 "okolo<br><b>Desni klik</b> za pregled drugih opcija"
 
-#: src/kvirc/ui/kvi_channel.cpp:1679
+#: src/kvirc/ui/kvi_channel.cpp:1671
 #, c-format
 msgid "<br><b>Key:</b> %s"
 msgstr "<br><b>Ključ:</b> %s"
 
-#: src/kvirc/ui/kvi_channel.cpp:1688
+#: src/kvirc/ui/kvi_channel.cpp:1680
 #, c-format
 msgid "<br><b>Limit:</b> %s"
 msgstr "<br><b>Limit:</b> %s"
@@ -982,8 +970,7 @@ msgstr ""
 "<nobr><font color=\"%s\"><b>Popis Soba</b></font> <font color=\"%s\">[IRC "
 "Kontekst%u]</font></nobr>"
 
-#: src/modules/links/linkswindow.cpp:163
-#: src/modules/links/linkswindow.cpp:171
+#: src/modules/links/linkswindow.cpp:163 src/modules/links/linkswindow.cpp:171
 #, fuzzy
 msgid ""
 "<nobr><font color=\"%s\"><b>Links for %Q</b></font> <font color=\"%s\">[IRC "
@@ -1002,8 +989,7 @@ msgstr ""
 "<nobr><font color=\"%s\"><b>Popis Soba</b></font> <font color=\"%s\">[IRC "
 "Kontekst %u]</font></nobr>"
 
-#: src/modules/term/termwindow.cpp:75
-#: src/modules/term/termwindow.cpp:79
+#: src/modules/term/termwindow.cpp:75 src/modules/term/termwindow.cpp:79
 #, c-format
 msgid "<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"
 msgstr "<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"
@@ -1060,8 +1046,7 @@ msgstr ""
 msgid "A really lame text transformation engine: Light Version."
 msgstr ""
 
-#: src/kvirc/ui/kvi_selectors.cpp:472
-#: src/kvirc/ui/kvi_selectors.cpp:818
+#: src/kvirc/ui/kvi_selectors.cpp:472 src/kvirc/ui/kvi_selectors.cpp:818
 msgid "A&dd"
 msgstr "&Dodaj"
 
@@ -1241,7 +1226,7 @@ msgstr ""
 msgid "Am voiced"
 msgstr ""
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:397
+#: src/kvirc/ui/kvi_mdimanager.cpp:389
 msgid "Anodine's Full Grid"
 msgstr "Andoineova Puna Mreža"
 
@@ -1257,7 +1242,7 @@ msgstr "Oduga konekcija se obrađuje"
 msgid "Application Folders"
 msgstr "Mape Aplikacije"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:193
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:185
 msgid "Apply to all IRC Contexts"
 msgstr "Prihvaćanje za sve IRC Kontekste"
 
@@ -1306,7 +1291,7 @@ msgstr ""
 msgid "Avatar change"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:987
+#: src/kvirc/kernel/kvi_app.cpp:990
 msgid "Avatar download failed for %Q!%Q@%Q and url %Q: %Q"
 msgstr ""
 
@@ -1315,12 +1300,12 @@ msgstr ""
 msgid "Average hops: ~%d.%d"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbar.cpp:602
+#: src/kvirc/ui/kvi_statusbar.cpp:588
 #: src/modules/trayicon/libkvitrayicon.cpp:98
 msgid "Away"
 msgstr "Away"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:220
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:212
 msgid "Away Indicator"
 msgstr "Indikator Odsutnosti"
 
@@ -1328,15 +1313,15 @@ msgstr "Indikator Odsutnosti"
 msgid "Away message"
 msgstr ""
 
-#: src/modules/trayicon/libkvitrayicon.cpp:303
+#: src/modules/trayicon/libkvitrayicon.cpp:307
 msgid "Away on %1"
 msgstr "Odsut[an/na] na %1"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:277
+#: src/modules/trayicon/libkvitrayicon.cpp:281
 msgid "Away on all"
 msgstr "Odsutan na svima"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:248
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:240
 msgid "Away since"
 msgstr "Odsutan od"
 
@@ -1344,16 +1329,15 @@ msgstr "Odsutan od"
 msgid "Away/Back"
 msgstr "Away/Back"
 
-#: src/kvilib/system/kvi_locale.cpp:1049
-#: src/kvilib/tal/kvi_tal_wizard.cpp:207
+#: src/kvilib/system/kvi_locale.cpp:1049 src/kvilib/tal/kvi_tal_wizard.cpp:207
 msgid "Back"
 msgstr "Nazad"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:299
+#: src/modules/trayicon/libkvitrayicon.cpp:303
 msgid "Back on %1"
 msgstr "Prisut[an/na] na %1"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:280
+#: src/modules/trayicon/libkvitrayicon.cpp:284
 msgid "Back on all"
 msgstr "Prisut[an/na] na svima"
 
@@ -1580,18 +1564,15 @@ msgid "Can't open file for appending"
 msgstr "Ne mogu otvoriti datoteku za dodavanje"
 
 #: src/kvilib/file/kvi_packagefile.cpp:679
-#: src/kvilib/file/kvi_packagefile.cpp:932
-#: src/kvilib/core/kvi_error.cpp:143
+#: src/kvilib/file/kvi_packagefile.cpp:932 src/kvilib/core/kvi_error.cpp:143
 msgid "Can't open file for reading"
 msgstr "Ne mogu otvoriti datoteku za čitanje"
 
-#: src/kvilib/file/kvi_packagefile.cpp:493
-#: src/kvilib/core/kvi_error.cpp:140
+#: src/kvilib/file/kvi_packagefile.cpp:493 src/kvilib/core/kvi_error.cpp:140
 msgid "Can't open file for writing"
 msgstr "Ne mogu otvoriti datoteku za zapisivanje"
 
-#: src/modules/file/libkvifile.cpp:724
-#: src/modules/file/libkvifile.cpp:816
+#: src/modules/file/libkvifile.cpp:724 src/modules/file/libkvifile.cpp:816
 msgid "Can't open the file \"%Q\" for reading"
 msgstr "Ne mogu otvoriti datoteku \"%Q\" za čitanje"
 
@@ -1688,12 +1669,9 @@ msgid "Can't start the ident service on IPv6 : socket() failed"
 msgstr "Ne mogu pokrenuti ident servis na IpV6 : socket() neuspjeh"
 
 #: src/kvilib/file/kvi_packagefile.cpp:142
-#: src/kvilib/system/kvi_locale.cpp:1027
-#: src/kvilib/tal/kvi_tal_wizard.cpp:181
-#: src/kvirc/ui/kvi_maskeditor.cpp:88
-#: src/kvirc/ui/kvi_imagedialog.cpp:154
-#: src/modules/setup/setupwizard.cpp:87
-#: src/modules/help/index.cpp:102
+#: src/kvilib/system/kvi_locale.cpp:1027 src/kvilib/tal/kvi_tal_wizard.cpp:181
+#: src/kvirc/ui/kvi_maskeditor.cpp:88 src/kvirc/ui/kvi_imagedialog.cpp:154
+#: src/modules/setup/setupwizard.cpp:87 src/modules/help/index.cpp:102
 #: src/modules/avatar/libkviavatar.cpp:108
 msgid "Cancel"
 msgstr "Odustani"
@@ -1742,7 +1720,7 @@ msgstr "\r!n\r%Q\r je pozva[o|la] %Q u kanal %Q"
 msgid "Cannot stop list download, no active connection."
 msgstr "Ne mogu zaustaviti preuzimanje popisa, nema aktivne konekcije."
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:386
+#: src/kvirc/ui/kvi_mdimanager.cpp:378
 msgid "Cascade &Maximized"
 msgstr "Stepenasto &Maksimizirano"
 
@@ -1881,7 +1859,7 @@ msgstr "Lozinka sobe"
 msgid "Channel private message"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:1749
+#: src/kvirc/ui/kvi_channel.cpp:1741
 #, c-format
 msgid "Channel synchronized in %d.%d seconds"
 msgstr "Soba sinkronizirana u %d.%d sekundi"
@@ -1906,7 +1884,7 @@ msgstr "Preuzimanje popisa soba dovršeno"
 msgid "Char device"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:689
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:681
 #, fuzzy
 msgid "Check on startup"
 msgstr "Prikaži na startupu"
@@ -1935,8 +1913,7 @@ msgstr "Odaberite Direktorij - KVIrc"
 msgid "Choose a Download Folder - KVIrc Setup"
 msgstr "Odaberi Download Mapu - KVIrc Instalacija"
 
-#: src/kvirc/ui/kvi_selectors.cpp:433
-#: src/kvirc/ui/kvi_selectors.cpp:439
+#: src/kvirc/ui/kvi_selectors.cpp:433 src/kvirc/ui/kvi_selectors.cpp:439
 msgid "Choose a File - KVIrc"
 msgstr "Odaberite Datoteku - KVIrc"
 
@@ -1944,8 +1921,7 @@ msgstr "Odaberite Datoteku - KVIrc"
 msgid "Choose a servers.ini file"
 msgstr "Odaberite servers.ini datoteku"
 
-#: src/kvirc/ui/kvi_selectors.cpp:347
-#: src/modules/avatar/libkviavatar.cpp:148
+#: src/kvirc/ui/kvi_selectors.cpp:347 src/modules/avatar/libkviavatar.cpp:148
 msgid "Choose an Image File - KVIrc"
 msgstr "Odaberite Sliku - KVIrc"
 
@@ -1953,8 +1929,7 @@ msgstr "Odaberite Sliku - KVIrc"
 msgid "Choose an Old Configuration Folder - KVIrc Setup"
 msgstr "Odaberi Staru Konfiguracijsku Mapu - KVIrc Instalacija"
 
-#: src/modules/list/listwindow.cpp:331
-#: src/modules/list/listwindow.cpp:356
+#: src/modules/list/listwindow.cpp:331 src/modules/list/listwindow.cpp:356
 msgid "Choose filename"
 msgstr "Odaberi datoteku"
 
@@ -2013,8 +1988,7 @@ msgstr "Međuspremnik"
 msgid "Clo&se"
 msgstr "&Zatvori"
 
-#: src/kvirc/ui/kvi_ctcppagedialog.cpp:58
-#: src/kvirc/ui/kvi_window.cpp:768
+#: src/kvirc/ui/kvi_ctcppagedialog.cpp:58 src/kvirc/ui/kvi_window.cpp:769
 #: src/kvirc/ui/kvi_modeeditor.cpp:79
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:112
 #: src/modules/theme/managementdialog.cpp:194
@@ -2113,8 +2087,7 @@ msgstr "Potvrdi Višerednu Poruku"
 msgid "Confirm addon uninstallation"
 msgstr ""
 
-#: src/kvirc/ui/kvi_frame.cpp:890
-#: src/kvirc/ui/kvi_console.cpp:506
+#: src/kvirc/ui/kvi_frame.cpp:892 src/kvirc/ui/kvi_console.cpp:506
 #: src/kvirc/ui/kvi_console.cpp:541
 msgid "Confirmation - KVIrc"
 msgstr "Potvrda - KVIrc"
@@ -2135,8 +2108,7 @@ msgstr "Spoji/Odspoji"
 msgid "Connected since"
 msgstr "Spojen od"
 
-#: src/modules/list/listwindow.cpp:264
-#: src/modules/links/linkswindow.cpp:132
+#: src/modules/list/listwindow.cpp:264 src/modules/links/linkswindow.cpp:132
 #, c-format
 msgid "Connected to %s (%s)"
 msgstr "Spojen kao %s (%s)"
@@ -2145,7 +2117,7 @@ msgstr "Spojen kao %s (%s)"
 msgid "Connection"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:623
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:615
 msgid "Connection Timer"
 msgstr "Brojač Vremena Spajanja"
 
@@ -2158,8 +2130,7 @@ msgstr "Connection attempt failed [%s]"
 msgid "Connection established, sending request"
 msgstr "Konekcija ostvarena, šaljem zahtjev"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:701
-#: src/kvirc/ui/kvi_console.cpp:1110
+#: src/kvirc/ui/kvi_statusbar.cpp:687 src/kvirc/ui/kvi_console.cpp:1110
 msgid "Connection in progress..."
 msgstr "Spajanje u tijeku..."
 
@@ -2261,7 +2232,7 @@ msgid ""
 "Crypt: You have to enable encryption and/or decryption for the engine to work"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:408
+#: src/kvirc/ui/kvi_window.cpp:409
 msgid "Crypting"
 msgstr "Kriptiranje"
 
@@ -2312,7 +2283,7 @@ msgstr "Trenutni prozor nije kanal"
 msgid "Customize Toolbars..."
 msgstr "Podešavanje Alatne Trake..."
 
-#: src/kvirc/ui/kvi_frame.cpp:1027
+#: src/kvirc/ui/kvi_frame.cpp:1029
 msgid "Customize..."
 msgstr "Prilagodi..."
 
@@ -2341,7 +2312,7 @@ msgstr ""
 msgid "Data buffer too long"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:764
+#: src/kvirc/ui/kvi_channel.cpp:756
 msgid "Dead channel"
 msgstr "Mrtva soba"
 
@@ -2354,8 +2325,7 @@ msgid "Decrypt key:"
 msgstr "Ključ za dekripciju:"
 
 #: src/kvilib/irc/kvi_useridentity.cpp:175
-#: src/kvilib/ext/kvi_regusersdb.cpp:683
-#: src/kvilib/ext/kvi_regusersdb.cpp:684
+#: src/kvilib/ext/kvi_regusersdb.cpp:683 src/kvilib/ext/kvi_regusersdb.cpp:684
 msgid "Default"
 msgstr "Standardno"
 
@@ -2418,8 +2388,7 @@ msgstr "Direktorij"
 msgid "Discard Changes"
 msgstr "Poništi Promjene"
 
-#: src/kvirc/ui/kvi_menubar.cpp:231
-#: src/kvirc/kernel/kvi_coreactions.cpp:614
+#: src/kvirc/ui/kvi_menubar.cpp:231 src/kvirc/kernel/kvi_coreactions.cpp:614
 msgid "Disconnect"
 msgstr "Odspoji"
 
@@ -2452,30 +2421,30 @@ msgstr "Ne prepisati mapu? - KVIrc"
 msgid "Do you really want to uninstall the addon \"%1\" ?"
 msgstr "Stvarno želite obrisati alatnu traku \"%1\" ?"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:833
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:825
 #, fuzzy
 msgid "Double click to check"
 msgstr "Dvostruki klik za postavljanje..."
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:332
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:324
 msgid "Double click to enable it"
 msgstr "Dvostruki klik za uključivanje"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:256
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:248
 msgid "Double click to enter away mode"
 msgstr "Dvostruki klik za ulaz u Away"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:849
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:841
 #, fuzzy
 msgid "Double click to get the lastest version"
 msgstr "Dvostruki klik za otvaranje ovog linka"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:252
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:244
 msgid "Double click to leave away mode"
 msgstr "Dvostruki klik za napuštanje Away-a"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:841
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:845
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:833
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:837
 #, fuzzy
 msgid "Double click to retry"
 msgstr "Dvostruki klik za postavljanje<br>"
@@ -2627,8 +2596,7 @@ msgstr ""
 msgid "End of help about %Q"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:1895
-#: src/kvirc/ui/kvi_query.cpp:884
+#: src/kvirc/ui/kvi_channel.cpp:1887 src/kvirc/ui/kvi_query.cpp:884
 msgid "End of log"
 msgstr ""
 
@@ -2696,11 +2664,11 @@ msgstr ""
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr ""
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:419
+#: src/kvirc/ui/kvi_mdimanager.cpp:411
 msgid "Expand &Horizontally"
 msgstr "Proširi &Vodoravno"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:418
+#: src/kvirc/ui/kvi_mdimanager.cpp:410
 msgid "Expand &Vertically"
 msgstr "Proširi &Okomito"
 
@@ -2789,13 +2757,11 @@ msgstr ""
 "Neuspjeh pri preimenovanju postojeće datoteke, molim preimenujte ručno i "
 "pokušajte ponovno"
 
-#: src/kvirc/kernel/kvi_options.cpp:1078
-#: src/kvirc/kernel/kvi_options.cpp:1113
+#: src/kvirc/kernel/kvi_options.cpp:1078 src/kvirc/kernel/kvi_options.cpp:1113
 msgid "Failed to save one of the theme images"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_theme.cpp:261
-#: src/kvirc/kernel/kvi_theme.cpp:275
+#: src/kvirc/kernel/kvi_theme.cpp:261 src/kvirc/kernel/kvi_theme.cpp:275
 #: src/kvirc/kernel/kvi_theme.cpp:289
 msgid "Failed to save the screenshot image"
 msgstr ""
@@ -2829,8 +2795,7 @@ msgstr "Greška pri zapisivanju datoteke %Q: Odredište nije moguće otvoriti"
 msgid "Feature not available"
 msgstr "Opcija nije dostupna"
 
-#: src/kvirc/ui/kvi_console.cpp:327
-#: src/modules/setup/setupwizard.cpp:394
+#: src/kvirc/ui/kvi_console.cpp:327 src/modules/setup/setupwizard.cpp:394
 msgid "Female"
 msgstr "Žensko"
 
@@ -2838,8 +2803,7 @@ msgstr "Žensko"
 msgid "Fifo"
 msgstr "Fifo"
 
-#: src/kvirc/ui/kvi_filedialog.cpp:122
-#: src/kvirc/ui/kvi_filedialog.cpp:167
+#: src/kvirc/ui/kvi_filedialog.cpp:122 src/kvirc/ui/kvi_filedialog.cpp:167
 msgid "File Exists - KVIrc"
 msgstr "Datoteka Postoji - KVIrc"
 
@@ -2847,19 +2811,19 @@ msgstr "Datoteka Postoji - KVIrc"
 msgid "File I/O error"
 msgstr "Datotečna I/O greška"
 
-#: src/kvirc/kernel/kvi_app.cpp:954
+#: src/kvirc/kernel/kvi_app.cpp:957
 msgid "File download failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:956
+#: src/kvirc/kernel/kvi_app.cpp:959
 msgid "File download from %1 failed"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:967
+#: src/kvirc/kernel/kvi_app.cpp:970
 msgid "File download from %1 successfully complete"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app.cpp:965
+#: src/kvirc/kernel/kvi_app.cpp:968
 msgid "File download successfully complete"
 msgstr ""
 
@@ -2900,8 +2864,7 @@ msgstr ""
 msgid "Find Text"
 msgstr "&Pronađi iduće"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:234
-#: src/modules/setup/setupwizard.cpp:86
+#: src/kvilib/tal/kvi_tal_wizard.cpp:234 src/modules/setup/setupwizard.cpp:86
 msgid "Finish"
 msgstr ""
 
@@ -2909,7 +2872,7 @@ msgstr ""
 msgid "Flat"
 msgstr "Flat"
 
-#: src/kvirc/ui/kvi_channel.cpp:972
+#: src/kvirc/ui/kvi_channel.cpp:964
 msgid "Flooded with messages"
 msgstr "Zatrpanost porukama"
 
@@ -2937,7 +2900,7 @@ msgstr ""
 msgid "Foreground"
 msgstr "Slova"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:492
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:484
 #, fuzzy
 msgid "Format"
 msgstr "Naprijed"
@@ -2946,8 +2909,7 @@ msgstr "Naprijed"
 msgid "Forward"
 msgstr "Naprijed"
 
-#: src/modules/help/helpwindow.cpp:181
-#: src/modules/help/helpwindow.cpp:190
+#: src/modules/help/helpwindow.cpp:181 src/modules/help/helpwindow.cpp:190
 msgid "Full Text Search"
 msgstr ""
 
@@ -2959,8 +2921,7 @@ msgstr "Puna putanja"
 msgid "GUI"
 msgstr ""
 
-#: src/kvirc/ui/kvi_console.cpp:325
-#: src/modules/setup/setupwizard.cpp:388
+#: src/kvirc/ui/kvi_console.cpp:325 src/modules/setup/setupwizard.cpp:388
 msgid "Gender:"
 msgstr "Spol:"
 
@@ -3024,12 +2985,11 @@ msgstr ""
 msgid "Header too long: exceeded 4096 bytes"
 msgstr "Zaglavlje predugačko: prekoračeno 4096 bajtova"
 
-#: src/kvilib/tal/kvi_tal_wizard.cpp:193
-#: src/kvirc/kernel/kvi_options.cpp:833
+#: src/kvilib/tal/kvi_tal_wizard.cpp:193 src/kvirc/kernel/kvi_options.cpp:833
 msgid "Help"
 msgstr ""
 
-#: src/modules/help/helpwindow.cpp:286
+#: src/modules/help/helpwindow.cpp:281
 msgid "Help Browser"
 msgstr "Preglednik Pomoći"
 
@@ -3068,7 +3028,7 @@ msgstr "Sakrij &Dock Ikonu"
 msgid "Hide Find Window"
 msgstr "Sakrij Prozor za Traženje"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:271
+#: src/modules/trayicon/libkvitrayicon.cpp:275
 msgid "Hide Window"
 msgstr "Sakrij Prozor"
 
@@ -3077,7 +3037,7 @@ msgstr "Sakrij Prozor"
 msgid "Hide/Show"
 msgstr "Sakrij Prozor"
 
-#: src/kvirc/ui/kvi_channel.cpp:968
+#: src/kvirc/ui/kvi_channel.cpp:960
 msgid "High activity"
 msgstr "Visoka aktivnost"
 
@@ -3115,7 +3075,7 @@ msgstr ""
 msgid "Host unreachable (no route to host)"
 msgstr "Host nedostupan (nema putanje do hosta)"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:590
+#: src/kvirc/ui/kvi_statusbar.cpp:576
 msgid "Hostname"
 msgstr ""
 
@@ -3187,8 +3147,7 @@ msgstr "Tablica Ikona"
 msgid "Ident message"
 msgstr ""
 
-#: src/modules/ident/libkviident.cpp:403
-#: src/modules/ident/libkviident.cpp:423
+#: src/modules/ident/libkviident.cpp:403 src/modules/ident/libkviident.cpp:423
 msgid "Identd accepting connection"
 msgstr "Identd prihvaćanje konekcije"
 
@@ -3315,8 +3274,7 @@ msgstr "Indeks Pomoći"
 msgid "Indexing help files"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input.cpp:116
-#: src/kvirc/ui/kvi_input.cpp:417
+#: src/kvirc/ui/kvi_input.cpp:116 src/kvirc/ui/kvi_input.cpp:417
 msgid "Input History Disabled"
 msgstr "Povijest Unosa Isključena"
 
@@ -3332,7 +3290,7 @@ msgstr "Instaliraj Paket"
 msgid "Install Theme Package"
 msgstr "Instaliraj KVIrc Paket Teme"
 
-#: src/kvirc/kernel/kvi_app.cpp:775
+#: src/kvirc/kernel/kvi_app.cpp:778
 msgid "Installation problems ?"
 msgstr ""
 
@@ -3344,8 +3302,7 @@ msgstr "Nedovoljno resursa za dovršavanje operacije"
 msgid "Integer parameter expected"
 msgstr ""
 
-#: src/kvilib/file/kvi_packagefile.cpp:571
-#: src/kvilib/core/kvi_error.cpp:52
+#: src/kvilib/file/kvi_packagefile.cpp:571 src/kvilib/core/kvi_error.cpp:52
 msgid "Internal error"
 msgstr "Interna greška"
 
@@ -3552,7 +3509,7 @@ msgstr ""
 msgid "Join message"
 msgstr ""
 
-#: src/kvirc/ui/kvi_userlistview.cpp:1547
+#: src/kvirc/ui/kvi_userlistview.cpp:1577
 msgid "Joined on <b>%1</b>"
 msgstr "Uš[ao/la] <b>%1</b>"
 
@@ -3638,7 +3595,7 @@ msgstr ""
 msgid "Label: %Q"
 msgstr "Naziv: %Q"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:386
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:378
 msgid "Lag Indicator"
 msgstr "Lag Indikator"
 
@@ -3652,25 +3609,23 @@ msgstr ""
 msgid "Lag check completed (%s)"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:326
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:318
 msgid "Lag measure not available yet"
 msgstr "Lag mjerene je još nedostupno"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:330
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:322
 msgid "Lag meter engine disabled"
 msgstr "Iskljucen pokretač Lag mjerenja"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:319
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:359
-#: src/kvirc/ui/kvi_irctoolbar.cpp:322
-#: src/kvirc/ui/kvi_irctoolbar.cpp:394
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:311
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:351
+#: src/kvirc/ui/kvi_irctoolbar.cpp:322 src/kvirc/ui/kvi_irctoolbar.cpp:394
 #, c-format
 msgid "Lag: %d.%d%d"
 msgstr "Lag: %d.%d%d"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:373
-#: src/kvirc/ui/kvi_irctoolbar.cpp:324
-#: src/kvirc/ui/kvi_irctoolbar.cpp:396
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:365
+#: src/kvirc/ui/kvi_irctoolbar.cpp:324 src/kvirc/ui/kvi_irctoolbar.cpp:396
 msgid "Lag: ?.??"
 msgstr "Lag: ?.??"
 
@@ -3686,7 +3641,7 @@ msgstr "Velika (32x32)"
 msgid "Large Icons"
 msgstr "Velike Ikone"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:324
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:316
 #, c-format
 msgid "Last checked %d mins %d secs ago"
 msgstr "Zadnja provjera prije %d minuta %d sekundi"
@@ -3752,7 +3707,7 @@ msgstr "Zaustavi preuzimanje popisa"
 msgid "List cannot be requested: Not connected to a server"
 msgstr "Popis ne može biti zatražen: Bez spoja na server"
 
-#: src/kvirc/ui/kvi_window.cpp:522
+#: src/kvirc/ui/kvi_window.cpp:523
 msgid "List of window types available in this release of KVIrc:"
 msgstr "Popis vrsta prozora dostupnih u ovoj verziji KVIrc-a:"
 
@@ -3770,7 +3725,7 @@ msgstr ""
 msgid "Loaded module '%s' (%s)"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbar.cpp:594
+#: src/kvirc/ui/kvi_statusbar.cpp:580
 msgid "Local IP"
 msgstr ""
 
@@ -3790,8 +3745,7 @@ msgstr "Lokacija:"
 msgid "Logging in as %Q!%Q :%Q"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbar.cpp:707
-#: src/kvirc/ui/kvi_console.cpp:1113
+#: src/kvirc/ui/kvi_statusbar.cpp:693 src/kvirc/ui/kvi_console.cpp:1113
 msgid "Login in progress..."
 msgstr "Logiranje u tijeku..."
 
@@ -3826,7 +3780,7 @@ msgstr ""
 msgid "Looking up the server hostname (%s)..."
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:964
+#: src/kvirc/ui/kvi_channel.cpp:956
 msgid "Low activity"
 msgstr "Niska aktivnost"
 
@@ -3835,7 +3789,7 @@ msgstr "Niska aktivnost"
 msgid "Low-level transport connection established [%s (%s:%u)]"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:759
+#: src/kvirc/ui/kvi_window.cpp:760
 msgid "Ma&ximize"
 msgstr "Ma&ksimiziraj"
 
@@ -3843,8 +3797,7 @@ msgstr "Ma&ksimiziraj"
 msgid "Make KVIrc default IRC client"
 msgstr "Koristi KVIrc kao zadani IRC klijent"
 
-#: src/kvirc/ui/kvi_console.cpp:327
-#: src/modules/setup/setupwizard.cpp:395
+#: src/kvirc/ui/kvi_console.cpp:327 src/modules/setup/setupwizard.cpp:395
 msgid "Male"
 msgstr "Muško"
 
@@ -3888,7 +3841,7 @@ msgstr ""
 msgid "Maximum number of reconnect attempts reached (%d): giving up"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:966
+#: src/kvirc/ui/kvi_channel.cpp:958
 msgid "Medium activity"
 msgstr "Srednja aktivnost"
 
@@ -3896,11 +3849,11 @@ msgstr "Srednja aktivnost"
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:756
+#: src/kvirc/ui/kvi_window.cpp:757
 msgid "Mi&nimize"
 msgstr "Mi&nimiziraj"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:422
+#: src/kvirc/ui/kvi_mdimanager.cpp:414
 msgid "Mi&nimize All"
 msgstr "Sma&nji Sve"
 
@@ -3912,27 +3865,27 @@ msgstr ""
 msgid "Mieeeeeowww!"
 msgstr "Mijauuuuuuuuuuuuuuuuuu!"
 
-#: src/kvirc/ui/kvi_channel.cpp:972
+#: src/kvirc/ui/kvi_channel.cpp:964
 msgid "Might be flooded with messages"
 msgstr "Moguća zatrpanost porukama"
 
-#: src/kvirc/ui/kvi_channel.cpp:968
+#: src/kvirc/ui/kvi_channel.cpp:960
 msgid "Might be high activity"
 msgstr "Moguća visoka aktivnost"
 
-#: src/kvirc/ui/kvi_channel.cpp:964
+#: src/kvirc/ui/kvi_channel.cpp:956
 msgid "Might be low activity"
 msgstr "Moguća niska aktivnost"
 
-#: src/kvirc/ui/kvi_channel.cpp:966
+#: src/kvirc/ui/kvi_channel.cpp:958
 msgid "Might be medium activity"
 msgstr "Moguća srednja aktivnost"
 
-#: src/kvirc/ui/kvi_channel.cpp:970
+#: src/kvirc/ui/kvi_channel.cpp:962
 msgid "Might be very high activity"
 msgstr "Moguća vrlo visoka aktivnost"
 
-#: src/kvirc/ui/kvi_channel.cpp:960
+#: src/kvirc/ui/kvi_channel.cpp:952
 msgid "Minimal activity"
 msgstr "Minimalna aktivnost"
 
@@ -3997,8 +3950,7 @@ msgstr "Nedostaje ime popup-a"
 msgid "Missing variable name"
 msgstr "Nedostaje ime varijable"
 
-#: src/modules/log/libkvilog.cpp:108
-#: src/modules/log/libkvilog.cpp:166
+#: src/modules/log/libkvilog.cpp:108 src/modules/log/libkvilog.cpp:166
 #: src/modules/log/libkvilog.cpp:217
 msgid "Missing window id after the 'w' switch"
 msgstr "Nedostaje id prozora nakon 'w' switcha"
@@ -4057,12 +4009,11 @@ msgstr ""
 msgid "Netsplit detected: %s"
 msgstr ""
 
-#: src/kvilib/system/kvi_locale.cpp:1076
-#: src/kvirc/ui/kvi_statusbar.cpp:574
+#: src/kvilib/system/kvi_locale.cpp:1076 src/kvirc/ui/kvi_statusbar.cpp:560
 msgid "Network"
 msgstr "Mreža"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:550
+#: src/kvirc/ui/kvi_statusbar.cpp:536
 #, fuzzy
 msgid "Network informations"
 msgstr "&Informacije"
@@ -4095,7 +4046,7 @@ msgstr "Novi IRC Kontekst"
 msgid "New mask must match an *!*@* expression"
 msgstr "Nova maska mora odgovarati *!*@* izrazu"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:847
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:839
 #, fuzzy
 msgid "New updates found"
 msgstr "Nije pronađeno"
@@ -4116,7 +4067,7 @@ msgstr ""
 msgid "NickServ requests authentication, executing scheduled command"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbar.cpp:582
+#: src/kvirc/ui/kvi_statusbar.cpp:568
 #, fuzzy
 msgid "Nickname"
 msgstr "Nadimak:"
@@ -4130,10 +4081,8 @@ msgstr ""
 msgid "Nickname:"
 msgstr "Nadimak:"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753
-#: src/kvirc/ui/kvi_statusbar.cpp:572
-#: src/kvirc/ui/kvi_input.cpp:256
-#: src/kvirc/kernel/kvi_app.cpp:791
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/ui/kvi_statusbar.cpp:558
+#: src/kvirc/ui/kvi_input.cpp:256 src/kvirc/kernel/kvi_app.cpp:794
 msgid "No"
 msgstr "Ne"
 
@@ -4141,8 +4090,7 @@ msgstr "Ne"
 msgid "No "
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbar.cpp:714
-#: src/kvirc/ui/kvi_irctoolbar.cpp:329
+#: src/kvirc/ui/kvi_statusbar.cpp:700 src/kvirc/ui/kvi_irctoolbar.cpp:329
 msgid "No IRC context"
 msgstr "Nema IRC konteksta"
 
@@ -4150,11 +4098,11 @@ msgstr "Nema IRC konteksta"
 msgid "No action name/index specified"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:958
+#: src/kvirc/ui/kvi_channel.cpp:950
 msgid "No activity"
 msgstr "Nema aktivnosti"
 
-#: src/kvirc/kernel/kvi_app.cpp:790
+#: src/kvirc/kernel/kvi_app.cpp:793
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
@@ -4166,8 +4114,7 @@ msgstr "Tema sobe nije postavljena"
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 msgstr "Nema zajedničkih soba za \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
-#: src/kvirc/ui/kvi_irctoolbar.cpp:289
-#: src/kvirc/ui/kvi_console.cpp:1107
+#: src/kvirc/ui/kvi_irctoolbar.cpp:289 src/kvirc/ui/kvi_console.cpp:1107
 msgid "No connection"
 msgstr "Nema konekcije"
 
@@ -4253,7 +4200,7 @@ msgstr ""
 msgid "No topic message has been received from the server yet"
 msgstr "Tema još nije primljena od servera"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:843
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:835
 #, fuzzy
 msgid "No updates found"
 msgstr "Nije pronađeno"
@@ -4270,13 +4217,12 @@ msgstr ""
 msgid "Normal text"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:254
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:246
 msgid "Not away"
 msgstr "Prisut[an/na]"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:710
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:262
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:338
+#: src/kvirc/ui/kvi_statusbar.cpp:696 src/kvirc/ui/kvi_statusbarapplet.cpp:254
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:330
 #: src/kvirc/ui/kvi_irctoolbar.cpp:358
 msgid "Not connected"
 msgstr "Odspojen"
@@ -4285,8 +4231,7 @@ msgstr "Odspojen"
 msgid "Not enough parameters"
 msgstr "Nema dovoljno parametara"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2186
-#: src/kvirc/ui/kvi_ircview.cpp:2240
+#: src/kvirc/ui/kvi_ircview.cpp:2186 src/kvirc/ui/kvi_ircview.cpp:2240
 msgid "Not found"
 msgstr "Nije pronađeno"
 
@@ -4302,8 +4247,7 @@ msgstr "Nema podataka o %Q"
 msgid "Nothing known about %Q (no connection)"
 msgstr "Nema podataka o %Q (nema konekcije)"
 
-#: src/kvirc/ui/kvi_console.cpp:144
-#: src/kvirc/ui/kvi_console.cpp:147
+#: src/kvirc/ui/kvi_console.cpp:144 src/kvirc/ui/kvi_console.cpp:147
 msgid "Notify List"
 msgstr "Notify Popis"
 
@@ -4442,8 +4386,7 @@ msgid "O: Local IRC operator (LOCOP)"
 msgstr ""
 
 #: src/kvilib/system/kvi_locale.cpp:1026
-#: src/kvirc/ui/kvi_cryptcontroller.cpp:127
-#: src/kvirc/ui/kvi_htmldialog.cpp:92
+#: src/kvirc/ui/kvi_cryptcontroller.cpp:127 src/kvirc/ui/kvi_htmldialog.cpp:92
 msgid "OK"
 msgstr "Uredu"
 
@@ -4455,8 +4398,7 @@ msgstr ""
 msgid "Often used directories"
 msgstr "Često korišteni Direktoriji"
 
-#: src/kvirc/ui/kvi_ircview.cpp:2036
-#: src/kvirc/ui/kvi_maskeditor.cpp:83
+#: src/kvirc/ui/kvi_ircview.cpp:2036 src/kvirc/ui/kvi_maskeditor.cpp:83
 #: src/kvirc/ui/kvi_imagedialog.cpp:158
 msgid "Ok"
 msgstr "Uredu"
@@ -4534,8 +4476,7 @@ msgstr "Prekinuta operacija"
 msgid "Operation cancelled"
 msgstr "Operacija obustavljena"
 
-#: src/kvilib/net/kvi_http.cpp:966
-#: src/kvilib/net/kvi_http.cpp:1172
+#: src/kvilib/net/kvi_http.cpp:966 src/kvilib/net/kvi_http.cpp:1172
 msgid "Operation timed out"
 msgstr "Operacija istekla"
 
@@ -4553,7 +4494,7 @@ msgstr "Interna greška"
 msgid "Ops... for some reason the link filter object has been destroyed"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:508
+#: src/kvirc/ui/kvi_window.cpp:509
 msgid "Ops...I've accidentally lost the crypting engine..."
 msgstr ""
 
@@ -4566,7 +4507,7 @@ msgid "Ops...encrypt cipher not initialized"
 msgstr ""
 
 # C:/Programming/kvirc/qt4-trunk/kvirc/src/kvirc/kernel/kvi_app_setup.cpp:750
-#: src/kvirc/kernel/kvi_app_setup.cpp:762
+#: src/kvirc/kernel/kvi_app_setup.cpp:765
 #, c-format
 msgid ""
 "Ops...it looks like I can't load modules on this sytem.\n"
@@ -4575,14 +4516,14 @@ msgid ""
 "Aborting."
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app_setup.cpp:777
+#: src/kvirc/kernel/kvi_app_setup.cpp:780
 msgid ""
 "Ops...it looks like you have a broken distribution.\n"
 "The setup module does not export the \"setup_begin\" function.\n"
 "Aborting!"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_app_setup.cpp:820
+#: src/kvirc/kernel/kvi_app_setup.cpp:823
 msgid ""
 "Ops...it looks like you have a broken distribution.\n"
 "The setup module does not export the \"setup_finish\" function.\n"
@@ -4760,33 +4701,32 @@ msgid ""
 "your key(s) with \"cbc:\".\n"
 msgstr ""
 
-#: src/kvirc/ui/kvi_ircview.cpp:2171
-#: src/kvirc/ui/kvi_ircview.cpp:2224
+#: src/kvirc/ui/kvi_ircview.cpp:2171 src/kvirc/ui/kvi_ircview.cpp:2224
 #, c-format
 msgid "Pos %d"
 msgstr "Pos %d"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:399
+#: src/kvirc/ui/kvi_mdimanager.cpp:391
 msgid "Pragma's Horizontal 4-Grid"
 msgstr "Pragmina Vodoravna 4-Mreža"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:403
+#: src/kvirc/ui/kvi_mdimanager.cpp:395
 msgid "Pragma's Horizontal 6-Grid"
 msgstr "Pragmina Vodoravna 6-Mreža"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:407
+#: src/kvirc/ui/kvi_mdimanager.cpp:399
 msgid "Pragma's Horizontal 9-Grid"
 msgstr "Pragmina Vodoravna 9-Mreža"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:401
+#: src/kvirc/ui/kvi_mdimanager.cpp:393
 msgid "Pragma's Vertical 4-Grid"
 msgstr "Pragmina Vertikalna 4-Mreža"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:405
+#: src/kvirc/ui/kvi_mdimanager.cpp:397
 msgid "Pragma's Vertical 6-Grid"
 msgstr "Pragmina Okomita 6-Mreža"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:409
+#: src/kvirc/ui/kvi_mdimanager.cpp:401
 msgid "Pragma's Vertical 9-Grid"
 msgstr "Pragmina Okomita 9-Mreža"
 
@@ -4794,7 +4734,7 @@ msgstr "Pragmina Okomita 9-Mreža"
 msgid "Private"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:416
+#: src/kvirc/ui/kvi_window.cpp:417
 msgid "Private Text Encoding"
 msgstr "Kodiranje Privatnog Teksta"
 
@@ -4952,7 +4892,7 @@ msgstr "Razgovor s %1!%2"
 msgid "Query with %1!%2 (%3)"
 msgstr "Razgovor s %1!%2 (%3)"
 
-#: src/kvirc/ui/kvi_userlistview.cpp:1559
+#: src/kvirc/ui/kvi_userlistview.cpp:1589
 msgid "Quiet for <b>%1h %2m %3s</b>"
 msgstr "Šuti <b>%1h %2m %3s</b>"
 
@@ -4980,8 +4920,7 @@ msgstr "Izlazi iz KVIrc-a zatvarajući sve trenutne konekcije"
 msgid "Raw data to server"
 msgstr ""
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:205
-#: src/kvirc/ui/kvi_selectors.cpp:474
+#: src/kvirc/ui/kvi_maskeditor.cpp:205 src/kvirc/ui/kvi_selectors.cpp:474
 #: src/kvirc/ui/kvi_selectors.cpp:820
 msgid "Re&move"
 msgstr "Uklo&ni"
@@ -5106,13 +5045,12 @@ msgstr ""
 msgid "Reload"
 msgstr "Osvježi"
 
-#: src/kvirc/kernel/kvi_app.cpp:855
+#: src/kvirc/kernel/kvi_app.cpp:858
 #, c-format
 msgid "Remote command received (%s ...)"
 msgstr ""
 
-#: src/kvilib/core/kvi_error.cpp:98
-#: src/kvilib/net/kvi_http.cpp:1054
+#: src/kvilib/core/kvi_error.cpp:98 src/kvilib/net/kvi_http.cpp:1054
 #: src/kvilib/net/kvi_http.cpp:1133
 msgid "Remote end has closed the connection"
 msgstr ""
@@ -5138,8 +5076,7 @@ msgstr "Zatraži Popis"
 msgid "Request List"
 msgstr "Zatraži Popis"
 
-#: src/modules/list/listwindow.cpp:397
-#: src/modules/links/linkswindow.cpp:436
+#: src/modules/list/listwindow.cpp:397 src/modules/links/linkswindow.cpp:436
 msgid "Reset"
 msgstr "Poništi"
 
@@ -5151,7 +5088,7 @@ msgstr "Osvježi Privremenu Pozadinu"
 msgid "Restore &Default Script"
 msgstr "Vrati &Standardnu Skriptu"
 
-#: src/kvirc/kernel/kvi_app.cpp:811
+#: src/kvirc/kernel/kvi_app.cpp:814
 msgid "Restore Default Script - KVIrc"
 msgstr ""
 
@@ -5193,10 +5130,6 @@ msgstr "Pokreni KVS Skriptu"
 msgid "SSL message"
 msgstr ""
 
-#: src/kvirc/ui/kvi_window.cpp:780
-msgid "Sa&ve Window Properties"
-msgstr "Pohr&ani Postavke Prozora"
-
 #: src/kvilib/system/kvi_locale.cpp:1042
 msgid "Sample"
 msgstr "Uzorak"
@@ -5225,7 +5158,7 @@ msgstr "Skr&ipta"
 msgid "Scri&pting"
 msgstr "&Skriptiranje"
 
-#: src/kvirc/ui/kvi_actiondrawer.cpp:174
+#: src/kvirc/ui/kvi_actiondrawer.cpp:184
 msgid "Script"
 msgstr "Skripta"
 
@@ -5254,8 +5187,7 @@ msgstr ""
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_options.cpp:812
-#: src/modules/help/helpwindow.cpp:100
+#: src/kvirc/kernel/kvi_options.cpp:812 src/modules/help/helpwindow.cpp:100
 msgid "Search"
 msgstr ""
 
@@ -5353,7 +5285,7 @@ msgstr "Poslan zahtjev za popisom, čekam odgovor..."
 msgid "Sent list request, waiting for reply..."
 msgstr "Poslan zahtjev za popisom, čekam odgovor..."
 
-#: src/kvirc/ui/kvi_channel.cpp:1572
+#: src/kvirc/ui/kvi_channel.cpp:1564
 msgid "Sent part request, waiting for reply..."
 msgstr "Poslan zahtijev za izlaz, čekam odgovor..."
 
@@ -5369,12 +5301,12 @@ msgstr ""
 msgid "Separate Directories"
 msgstr "Odvoji Direktorije"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:649
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:641
 #: src/kvirc/kernel/kvi_coreactions.cpp:508
 msgid "Separator"
 msgstr "Razdjelnik"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:578
+#: src/kvirc/ui/kvi_statusbar.cpp:564
 #, fuzzy
 msgid "Server"
 msgstr "Server:"
@@ -5462,12 +5394,16 @@ msgstr "Od&aberi Sve"
 msgid "Set &None"
 msgstr "Odaberi &Ništa"
 
+#: src/kvirc/ui/kvi_window.cpp:781
+#, fuzzy
+msgid "Set Window Props as &default"
+msgstr "Pohr&ani Postavke Prozora"
+
 #: src/kvirc/ui/kvi_maskeditor.cpp:198
 msgid "Set at"
 msgstr "Pustavljeno u"
 
-#: src/kvirc/ui/kvi_maskeditor.cpp:197
-#: src/kvirc/ui/kvi_topicw.cpp:539
+#: src/kvirc/ui/kvi_maskeditor.cpp:197 src/kvirc/ui/kvi_topicw.cpp:539
 msgid "Set by"
 msgstr "Postavljeno od"
 
@@ -5491,7 +5427,7 @@ msgstr ""
 msgid "Settings folder:"
 msgstr "Mapa s postavkama:"
 
-#: src/kvirc/kernel/kvi_app_setup.cpp:793
+#: src/kvirc/kernel/kvi_app_setup.cpp:796
 msgid "Setup aborted"
 msgstr ""
 
@@ -5499,8 +5435,7 @@ msgstr ""
 msgid "Short View"
 msgstr "Kratki Pogled"
 
-#: src/kvirc/ui/kvi_frame.cpp:983
-#: src/kvirc/ui/kvi_frame.cpp:999
+#: src/kvirc/ui/kvi_frame.cpp:985 src/kvirc/ui/kvi_frame.cpp:1001
 msgid "Show %1"
 msgstr "Prikaži %1"
 
@@ -5520,8 +5455,7 @@ msgstr "Prikaži Prozor za Traženje"
 msgid "Show Hidden Files"
 msgstr "Prikaži Skrivene Datoteke"
 
-#: src/kvirc/ui/kvi_input.cpp:111
-#: src/kvirc/ui/kvi_input.cpp:411
+#: src/kvirc/ui/kvi_input.cpp:111 src/kvirc/ui/kvi_input.cpp:411
 msgid "Show History<br>&lt;Ctrl+PageUp&gt;"
 msgstr "Prikaži Povijest<br>&lt;Ctrl+PageUp&gt;"
 
@@ -5555,7 +5489,7 @@ msgstr "Prikaži Popis URL-ova"
 msgid "Show User List"
 msgstr "Prikaži Popis Korisnika"
 
-#: src/modules/trayicon/libkvitrayicon.cpp:271
+#: src/modules/trayicon/libkvitrayicon.cpp:275
 msgid "Show Window"
 msgstr "Pokaži Prozor"
 
@@ -5568,7 +5502,7 @@ msgstr "Prikaži Statusnu Traku"
 msgid "Show this window after connecting"
 msgstr "Pokaži ovaj prozor nakon spajanja"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:597
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:589
 msgid "Show total connection time"
 msgstr "Prikaži ukupno vrijeme spajanja"
 
@@ -5678,7 +5612,7 @@ msgstr "Gašenje identd servisa (spontana akcija)"
 msgid "Silence speaking"
 msgstr "Tišina govori"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:545
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:537
 msgid "Simple Clock"
 msgstr "Jednostavan Sat"
 
@@ -5686,7 +5620,7 @@ msgstr "Jednostavan Sat"
 msgid "Slash (/) character expected"
 msgstr ""
 
-#: src/modules/spaste/libkvispaste.cpp:269
+#: src/modules/spaste/libkvispaste.cpp:268
 msgid "Slow-paste ID:%d Window:%Q"
 msgstr "Sporo lijepljenje ID:%d Prozor:%Q"
 
@@ -5702,11 +5636,11 @@ msgstr "Male Ikone"
 msgid "Small icons"
 msgstr "Male ikone"
 
-#: src/kvirc/ui/kvi_window.cpp:715
+#: src/kvirc/ui/kvi_window.cpp:716
 msgid "Smart (Send Local)"
 msgstr "Pametno (Send Local)"
 
-#: src/kvirc/ui/kvi_window.cpp:716
+#: src/kvirc/ui/kvi_window.cpp:717
 msgid "Smart (Send UTF-8)"
 msgstr "Pametno (Pošalji UTF-8)"
 
@@ -5755,7 +5689,7 @@ msgid ""
 "nicknames..."
 msgstr ""
 
-#: src/modules/snd/libkvisnd.cpp:681
+#: src/modules/snd/libkvisnd.cpp:584
 msgid "Sorry, I can't find a sound system to use on this machine"
 msgstr ""
 
@@ -5771,12 +5705,12 @@ msgstr "Sortiranje"
 msgid "Sorting"
 msgstr "Sortiranje"
 
-#: src/modules/snd/libkvisnd.cpp:664
+#: src/modules/snd/libkvisnd.cpp:567
 #, fuzzy
 msgid "Sound file '%Q' not found"
 msgstr "Prozor s ID '%Q' nije pronađen"
 
-#: src/modules/snd/libkvisnd.cpp:683
+#: src/modules/snd/libkvisnd.cpp:586
 #, c-format
 msgid "Sound system detected to: %s"
 msgstr ""
@@ -5809,7 +5743,7 @@ msgstr ""
 msgid "Standalone Servers"
 msgstr "Samostojeći Serveri"
 
-#: src/kvirc/ui/kvi_window.cpp:714
+#: src/kvirc/ui/kvi_window.cpp:715
 msgid "Standard"
 msgstr "Uobičajeno"
 
@@ -5832,8 +5766,7 @@ msgstr "Pokretanje identd servisa (IpV5/V6 na IpV6 prostornom imenu)"
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr "Pokretanje identd servisa (IpV4/V6 na odijeljenim prostornim imenima)"
 
-#: src/kvirc/ui/kvi_channel.cpp:1879
-#: src/kvirc/ui/kvi_query.cpp:868
+#: src/kvirc/ui/kvi_channel.cpp:1871 src/kvirc/ui/kvi_query.cpp:868
 msgid "Starting last log"
 msgstr ""
 
@@ -5849,8 +5782,7 @@ msgstr "Zaustavi lijepljenje"
 msgid "Stop list download"
 msgstr "Zaustavi preuzimanje popisa"
 
-#: src/modules/list/listwindow.cpp:250
-#: src/modules/list/listwindow.cpp:362
+#: src/modules/list/listwindow.cpp:250 src/modules/list/listwindow.cpp:362
 msgid "Stopping the list download..."
 msgstr "Zaustavljanje preuzimanja popisa..."
 
@@ -5858,8 +5790,7 @@ msgstr "Zaustavljanje preuzimanja popisa..."
 msgid "Store configuration in folder"
 msgstr "Pohrani konfiguraciju u mapu"
 
-#: src/kvilib/net/kvi_http.cpp:705
-#: src/kvilib/net/kvi_http.cpp:847
+#: src/kvilib/net/kvi_http.cpp:705 src/kvilib/net/kvi_http.cpp:847
 msgid "Stream exceeded expected length"
 msgstr "Niz prekoračio očekivanu duljinu"
 
@@ -5883,13 +5814,11 @@ msgstr ""
 msgid "Strip colors"
 msgstr ""
 
-#: src/kvirc/ui/kvi_menubar.cpp:145
-#: src/kvirc/kernel/kvi_coreactions.cpp:336
+#: src/kvirc/ui/kvi_menubar.cpp:145 src/kvirc/kernel/kvi_coreactions.cpp:336
 msgid "Subscribe to the Mailing List"
 msgstr "Pretplata na Mailing Listu"
 
-#: src/kvilib/core/kvi_error.cpp:50
-#: src/kvilib/net/kvi_http.cpp:318
+#: src/kvilib/core/kvi_error.cpp:50 src/kvilib/net/kvi_http.cpp:318
 msgid "Success"
 msgstr "Uspjeh"
 
@@ -5926,7 +5855,7 @@ msgstr "Terminal emulator"
 msgid "Text"
 msgstr "Tekst:"
 
-#: src/kvirc/ui/kvi_window.cpp:775
+#: src/kvirc/ui/kvi_window.cpp:776
 msgid "Text &Encoding"
 msgstr "&Kodiranje Teksta"
 
@@ -5973,10 +5902,8 @@ msgstr "Akcija \"%1\" ne postoji"
 msgid "The action parameter didn't evaluate to an index"
 msgstr ""
 
-#: src/modules/addon/libkviaddon.cpp:200
-#: src/modules/addon/libkviaddon.cpp:246
-#: src/modules/addon/libkviaddon.cpp:293
-#: src/modules/addon/libkviaddon.cpp:339
+#: src/modules/addon/libkviaddon.cpp:200 src/modules/addon/libkviaddon.cpp:246
+#: src/modules/addon/libkviaddon.cpp:293 src/modules/addon/libkviaddon.cpp:339
 #: src/modules/addon/libkviaddon.cpp:386
 #, fuzzy
 msgid "The addon \"%1\" does not exist"
@@ -6035,7 +5962,7 @@ msgstr ""
 msgid "The crypt engine \"%Q\" does not exist"
 msgstr "Akcija \"%1\" ne postoji"
 
-#: src/kvirc/ui/kvi_channel.cpp:1141
+#: src/kvirc/ui/kvi_channel.cpp:1133
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %Q, no "
 "data sent to the server"
@@ -6065,8 +5992,7 @@ msgstr ""
 msgid "The encrypt key wasn't a valid hexadecimal string"
 msgstr ""
 
-#: src/kvirc/ui/kvi_filedialog.cpp:120
-#: src/kvirc/ui/kvi_filedialog.cpp:165
+#: src/kvirc/ui/kvi_filedialog.cpp:120 src/kvirc/ui/kvi_filedialog.cpp:165
 #, c-format
 msgid "The file %s already exists.<br>Do you wish to overwrite it?"
 msgstr "Datoteka %s već postoji.<br>Želite li ju prepisati?"
@@ -6152,7 +6078,7 @@ msgid ""
 "collision: merging output"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:838
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:830
 msgid "The remote server replied with "
 msgstr ""
 
@@ -6236,8 +6162,7 @@ msgid ""
 "might be down)"
 msgstr ""
 
-#: src/modules/file/libkvifile.cpp:486
-#: src/modules/file/libkvifile.cpp:629
+#: src/modules/file/libkvifile.cpp:486 src/modules/file/libkvifile.cpp:629
 msgid "The specified directory does not exist '%Q'"
 msgstr "Navedeni direktorij ne postoji '%Q'"
 
@@ -6276,7 +6201,7 @@ msgstr "Navedeni prozor (%Q) nije soba/razgovor/dcc"
 msgid "The specified window (%Q) is not a channel/query/DCC chat"
 msgstr "Navedeni prozor (%Q) nije soba/razgovor/DCC razgovor"
 
-#: src/modules/spaste/libkvispaste.cpp:219
+#: src/modules/spaste/libkvispaste.cpp:218
 msgid "The specified window (%Q) is not a channel/query/dcc"
 msgstr "Navedeni prozor (%Q) nije soba/razgovor/dcc"
 
@@ -6361,7 +6286,7 @@ msgstr "Svijet je stao?"
 msgid "Theme information file is not valid"
 msgstr ""
 
-#: src/kvirc/ui/kvi_frame.cpp:886
+#: src/kvirc/ui/kvi_frame.cpp:888
 msgid "There are active connections, are you sure you wish to "
 msgstr "Postoje aktivne konekcije, jeste li sigurni da želite"
 
@@ -6427,8 +6352,7 @@ msgstr "Ova opcija je također dostupna kao"
 msgid "This plugin does not export the desired function."
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:580
-#: src/kvirc/ui/kvi_query.cpp:754
+#: src/kvirc/ui/kvi_query.cpp:580 src/kvirc/ui/kvi_query.cpp:754
 msgid "This query has no active targets, no message sent"
 msgstr "Ovaj razgovor nema aktivnih odredišta, poruka nije poslana"
 
@@ -6462,7 +6386,7 @@ msgstr "Ovaj prozor nema mogućnost evidentiranja"
 msgid "Thumbnail Previews"
 msgstr "Prikaz Sličica"
 
-#: src/kvirc/ui/kvi_mdimanager.cpp:415
+#: src/kvirc/ui/kvi_mdimanager.cpp:407
 msgid "Tile Met&hod"
 msgstr "Popločena Me&toda"
 
@@ -6490,8 +6414,7 @@ msgstr ""
 msgid "Tip: %Q"
 msgstr ""
 
-#: src/kvirc/ui/kvi_toolbar.cpp:86
-#: src/kvirc/ui/kvi_menubar.cpp:183
+#: src/kvirc/ui/kvi_toolbar.cpp:86 src/kvirc/ui/kvi_menubar.cpp:183
 msgid "Toolbars"
 msgstr "Alatne Trake"
 
@@ -6634,7 +6557,7 @@ msgstr ""
 msgid "Unable to look up the server hostname: Can't start the DNS slave"
 msgstr ""
 
-#: src/modules/snd/libkvisnd.cpp:670
+#: src/modules/snd/libkvisnd.cpp:573
 msgid "Unable to play sound '%Q'"
 msgstr ""
 
@@ -6726,17 +6649,13 @@ msgstr "Denotiraj Sve Privatne Razgovore"
 msgid "Unhighlight All Windows"
 msgstr "Denotiraj Sve Prozore"
 
-#: src/modules/addon/libkviaddon.cpp:194
-#: src/modules/addon/libkviaddon.cpp:573
+#: src/modules/addon/libkviaddon.cpp:194 src/modules/addon/libkviaddon.cpp:573
 msgid "Uninstalling existing addon version %Q"
 msgstr ""
 
-#: src/kvilib/net/kvi_ssl.cpp:583
-#: src/kvilib/net/kvi_ssl.cpp:613
-#: src/kvilib/net/kvi_ssl.cpp:636
-#: src/kvirc/ui/kvi_topicw.cpp:150
-#: src/kvirc/kernel/kvi_theme.cpp:86
-#: src/modules/upnp/rootservice.cpp:172
+#: src/kvilib/net/kvi_ssl.cpp:597 src/kvilib/net/kvi_ssl.cpp:627
+#: src/kvilib/net/kvi_ssl.cpp:650 src/kvirc/ui/kvi_topicw.cpp:150
+#: src/kvirc/kernel/kvi_theme.cpp:86 src/modules/upnp/rootservice.cpp:172
 msgid "Unknown"
 msgstr "Nepoznato"
 
@@ -6816,8 +6735,7 @@ msgstr ""
 msgid "Unsigned integer options (unsigned integer constant)"
 msgstr ""
 
-#: src/modules/setup/setupwizard.cpp:366
-#: src/modules/setup/setupwizard.cpp:393
+#: src/modules/setup/setupwizard.cpp:366 src/modules/setup/setupwizard.cpp:393
 msgid "Unspecified"
 msgstr "Neodređeno"
 
@@ -6866,16 +6784,16 @@ msgstr ""
 msgid "Untitled"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:718
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:710
 #, fuzzy
 msgid "Update Indicator"
 msgstr "Lag Indikator"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:836
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:828
 msgid "Update failed"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:828
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:820
 msgid "Update missing"
 msgstr ""
 
@@ -6883,7 +6801,7 @@ msgstr ""
 msgid "Updating away state for channel %Q"
 msgstr "Ažuriranje away stanja za sobu %Q"
 
-#: src/kvirc/ui/kvi_window.cpp:702
+#: src/kvirc/ui/kvi_window.cpp:703
 msgid "Use Default Encoding"
 msgstr "Koristi uobičajeno kodiranje"
 
@@ -6903,8 +6821,7 @@ msgstr "Koristi mapu s postavkama od prethodne verzije"
 msgid "Use the crypt engine"
 msgstr "Koristi pogon za kriptiranje"
 
-#: src/kvirc/ui/kvi_channel.cpp:153
-#: src/kvirc/ui/kvi_channel.cpp:193
+#: src/kvirc/ui/kvi_channel.cpp:153 src/kvirc/ui/kvi_channel.cpp:193
 msgid "User List"
 msgstr "Lista Korisnika"
 
@@ -6912,7 +6829,7 @@ msgstr "Lista Korisnika"
 msgid "User Mode"
 msgstr "Korisnički Modovi"
 
-#: src/kvirc/ui/kvi_statusbar.cpp:598
+#: src/kvirc/ui/kvi_statusbar.cpp:584
 #, fuzzy
 msgid "User Modes"
 msgstr "Korisnički Modovi"
@@ -6937,7 +6854,7 @@ msgstr ""
 msgid "User-operators OR Auditorium: /NAMES and /WHO show only ops"
 msgstr ""
 
-#: src/kvirc/ui/kvi_statusbar.cpp:586
+#: src/kvirc/ui/kvi_statusbar.cpp:572
 #, fuzzy
 msgid "Username"
 msgstr "Preimenuj"
@@ -7038,11 +6955,11 @@ msgstr "Očekivana varijabla ili identifikator"
 msgid "Verbose/Debug"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:970
+#: src/kvirc/ui/kvi_channel.cpp:962
 msgid "Very high activity"
 msgstr "Vrlo visoka aktivnost"
 
-#: src/kvirc/ui/kvi_channel.cpp:962
+#: src/kvirc/ui/kvi_channel.cpp:954
 msgid "Very low activity"
 msgstr "Vrlo niska aktivnost"
 
@@ -7073,8 +6990,7 @@ msgstr ""
 msgid "Wallops message"
 msgstr ""
 
-#: src/modules/url/libkviurl.cpp:233
-#: src/modules/url/libkviurl.cpp:312
+#: src/modules/url/libkviurl.cpp:233 src/modules/url/libkviurl.cpp:312
 #: src/modules/url/libkviurl.cpp:497
 #: src/modules/mircimport/libkvimircimport.cpp:116
 #, fuzzy
@@ -7135,14 +7051,12 @@ msgstr ""
 msgid "Window"
 msgstr "Prozor"
 
-#: src/modules/log/libkvilog.cpp:103
-#: src/modules/log/libkvilog.cpp:161
+#: src/modules/log/libkvilog.cpp:103 src/modules/log/libkvilog.cpp:161
 #: src/modules/log/libkvilog.cpp:212
 msgid "Window %Q not found"
 msgstr "Prozor %Q nije pronađen"
 
-#: src/kvirc/ui/kvi_windowlist_tree.cpp:381
-#: src/kvirc/ui/kvi_windowlist.cpp:61
+#: src/kvirc/ui/kvi_windowlist_tree.cpp:381 src/kvirc/ui/kvi_windowlist.cpp:61
 msgid "Window List"
 msgstr "Popis Prozora"
 
@@ -7181,10 +7095,8 @@ msgstr "Zapisivanje podataka paketa"
 msgid "Writing package header"
 msgstr "Zapisivanje zaglavlja paketa"
 
-#: src/kvirc/sparser/kvi_sp_numeric.cpp:753
-#: src/kvirc/ui/kvi_statusbar.cpp:570
-#: src/kvirc/ui/kvi_input.cpp:255
-#: src/kvirc/kernel/kvi_app.cpp:792
+#: src/kvirc/sparser/kvi_sp_numeric.cpp:753 src/kvirc/ui/kvi_statusbar.cpp:556
+#: src/kvirc/ui/kvi_input.cpp:255 src/kvirc/kernel/kvi_app.cpp:795
 msgid "Yes"
 msgstr "Da"
 
@@ -7192,7 +7104,7 @@ msgstr "Da"
 msgid "Yes, always"
 msgstr "Da, uvijek"
 
-#: src/kvirc/kernel/kvi_app.cpp:812
+#: src/kvirc/kernel/kvi_app.cpp:815
 msgid ""
 "You are about to restore the default script.<br>This will erase any script "
 "changes you have made.<br>Do you wish to proceed?"
@@ -7206,7 +7118,7 @@ msgstr ""
 msgid "You cannot export an empty list"
 msgstr "Ne možete izvesti prazan popis"
 
-#: src/kvirc/ui/kvi_statusbarapplet.cpp:830
+#: src/kvirc/ui/kvi_statusbarapplet.cpp:822
 msgid ""
 "You didn't checked yet.\n"
 " \t\t\t\tShould I check it?"
@@ -7337,12 +7249,11 @@ msgstr ""
 msgid "[%s]: [SSL]: Using private key file %s"
 msgstr ""
 
-#: src/kvirc/ui/kvi_query.cpp:217
-#: src/kvirc/ui/kvi_query.cpp:265
+#: src/kvirc/ui/kvi_query.cpp:217 src/kvirc/ui/kvi_query.cpp:265
 msgid "[Dead Query]"
 msgstr "[Mrtav Razgovor]"
 
-#: src/kvirc/ui/kvi_channel.cpp:998
+#: src/kvirc/ui/kvi_channel.cpp:990
 msgid "[Dead channel]"
 msgstr "[Mrtav kanal]"
 
@@ -7396,38 +7307,32 @@ msgstr ""
 msgid "[SSL ERROR]: %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:53
-#: src/kvirc/kernel/kvi_sslmaster.cpp:60
+#: src/kvirc/kernel/kvi_sslmaster.cpp:53 src/kvirc/kernel/kvi_sslmaster.cpp:60
 #, c-format
 msgid "[SSL]:     Common name: %c%s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:56
-#: src/kvirc/kernel/kvi_sslmaster.cpp:63
+#: src/kvirc/kernel/kvi_sslmaster.cpp:56 src/kvirc/kernel/kvi_sslmaster.cpp:63
 #, c-format
 msgid "[SSL]:     Country: %c%s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:58
-#: src/kvirc/kernel/kvi_sslmaster.cpp:65
+#: src/kvirc/kernel/kvi_sslmaster.cpp:58 src/kvirc/kernel/kvi_sslmaster.cpp:65
 #, c-format
 msgid "[SSL]:     Locality: %c%s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:54
-#: src/kvirc/kernel/kvi_sslmaster.cpp:61
+#: src/kvirc/kernel/kvi_sslmaster.cpp:54 src/kvirc/kernel/kvi_sslmaster.cpp:61
 #, c-format
 msgid "[SSL]:     Organization: %c%s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:55
-#: src/kvirc/kernel/kvi_sslmaster.cpp:62
+#: src/kvirc/kernel/kvi_sslmaster.cpp:55 src/kvirc/kernel/kvi_sslmaster.cpp:62
 #, c-format
 msgid "[SSL]:     Organizational unit: %c%s"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:57
-#: src/kvirc/kernel/kvi_sslmaster.cpp:64
+#: src/kvirc/kernel/kvi_sslmaster.cpp:57 src/kvirc/kernel/kvi_sslmaster.cpp:64
 #, c-format
 msgid "[SSL]:     State or province: %c%s"
 msgstr ""
@@ -7484,8 +7389,7 @@ msgstr ""
 msgid "[SSL]: %Q"
 msgstr ""
 
-#: src/kvirc/kernel/kvi_sslmaster.cpp:40
-#: src/kvirc/kernel/kvi_sslmaster.cpp:49
+#: src/kvirc/kernel/kvi_sslmaster.cpp:40 src/kvirc/kernel/kvi_sslmaster.cpp:49
 #, c-format
 msgid "[SSL]: %c%s"
 msgstr ""
@@ -7512,25 +7416,23 @@ msgstr ""
 msgid "[Server parser]: [%s][%s] %Q"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:793
+#: src/kvirc/ui/kvi_channel.cpp:785
 msgid "active user"
 msgstr "aktivni korisni[k/ca]"
 
-#: src/kvirc/ui/kvi_channel.cpp:793
+#: src/kvirc/ui/kvi_channel.cpp:785
 msgid "active users"
 msgstr "aktivni korisni[ci/ce]"
 
-#: src/kvirc/ui/kvi_channel.cpp:710
-#: src/kvirc/ui/kvi_channel.cpp:725
+#: src/kvirc/ui/kvi_channel.cpp:702 src/kvirc/ui/kvi_channel.cpp:717
 msgid "and"
 msgstr "i"
 
-#: src/kvirc/ui/kvi_channel.cpp:733
+#: src/kvirc/ui/kvi_channel.cpp:725
 msgid "and other %1 users"
 msgstr "i drugih %1 korisni[ka/ca]"
 
-#: src/kvirc/ui/kvi_channel.cpp:715
-#: src/kvirc/ui/kvi_channel.cpp:736
+#: src/kvirc/ui/kvi_channel.cpp:707 src/kvirc/ui/kvi_channel.cpp:728
 msgid "are talking"
 msgstr "pričaju"
 
@@ -7538,10 +7440,8 @@ msgstr "pričaju"
 msgid "autojoining"
 msgstr ""
 
-#: src/kvirc/ui/kvi_irctoolbar.cpp:372
-#: src/kvirc/ui/kvi_irctoolbar.cpp:380
-#: src/kvirc/ui/kvi_console.cpp:1125
-#: src/kvirc/ui/kvi_console.cpp:1132
+#: src/kvirc/ui/kvi_irctoolbar.cpp:372 src/kvirc/ui/kvi_irctoolbar.cpp:380
+#: src/kvirc/ui/kvi_console.cpp:1125 src/kvirc/ui/kvi_console.cpp:1132
 msgid "away"
 msgstr "odsutan"
 
@@ -7571,11 +7471,11 @@ msgstr ""
 msgid "channel"
 msgstr "soba"
 
-#: src/kvirc/ui/kvi_channel.cpp:874
+#: src/kvirc/ui/kvi_channel.cpp:866
 msgid "channel administrator"
 msgstr "administrator sobe"
 
-#: src/kvirc/ui/kvi_channel.cpp:874
+#: src/kvirc/ui/kvi_channel.cpp:866
 msgid "channel administrators"
 msgstr "administratori sobe"
 
@@ -7583,11 +7483,11 @@ msgstr "administratori sobe"
 msgid "channel notification:"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:863
+#: src/kvirc/ui/kvi_channel.cpp:855
 msgid "channel owner"
 msgstr "vlasni[k/ca] sobe"
 
-#: src/kvirc/ui/kvi_channel.cpp:863
+#: src/kvirc/ui/kvi_channel.cpp:855
 msgid "channel owners"
 msgstr "vlasni[ci/ce] sobe"
 
@@ -7623,11 +7523,11 @@ msgstr ""
 msgid "f: Recipient for full server notices"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:896
+#: src/kvirc/ui/kvi_channel.cpp:888
 msgid "half-operator"
 msgstr "polu-operator[ica]"
 
-#: src/kvirc/ui/kvi_channel.cpp:896
+#: src/kvirc/ui/kvi_channel.cpp:888
 msgid "half-operators"
 msgstr "polu-operator[i/ice]"
 
@@ -7637,15 +7537,15 @@ msgstr "polu-operator[i/ice]"
 msgid "hexadecimal"
 msgstr "heksadecimalno"
 
-#: src/kvirc/ui/kvi_channel.cpp:836
+#: src/kvirc/ui/kvi_channel.cpp:828
 msgid "hot user"
 msgstr "vrući korisni[k/ca]"
 
-#: src/kvirc/ui/kvi_channel.cpp:836
+#: src/kvirc/ui/kvi_channel.cpp:828
 msgid "hot users"
 msgstr "vrući korisnic[i/e]"
 
-#: src/kvirc/ui/kvi_channel.cpp:979
+#: src/kvirc/ui/kvi_channel.cpp:971
 msgid "human"
 msgstr "ljudi"
 
@@ -7673,7 +7573,7 @@ msgstr ""
 msgid "invite list"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:704
+#: src/kvirc/ui/kvi_channel.cpp:696
 msgid "is talking"
 msgstr "priča"
 
@@ -7705,11 +7605,11 @@ msgstr ""
 msgid "o: IRC operator (OPER)"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:779
+#: src/kvirc/ui/kvi_channel.cpp:771
 msgid "operator"
 msgstr "operator[ica]"
 
-#: src/kvirc/ui/kvi_channel.cpp:780
+#: src/kvirc/ui/kvi_channel.cpp:772
 msgid "operators"
 msgstr "operatori[ce]"
 
@@ -7737,7 +7637,7 @@ msgstr "razgovori"
 msgid "query"
 msgstr "razgovor"
 
-#: src/kvirc/ui/kvi_frame.cpp:887
+#: src/kvirc/ui/kvi_frame.cpp:889
 msgid "quit KVIrc?"
 msgstr "izaći iz KVIrc-a?"
 
@@ -7767,7 +7667,7 @@ msgstr ""
 msgid "s: Recipient for server notices"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:704
+#: src/kvirc/ui/kvi_channel.cpp:696
 msgid "said something recently"
 msgstr "rek[ao/la] nešto maloprije"
 
@@ -7785,27 +7685,27 @@ msgstr "Nepoznato"
 msgid "unmatched watch list entry"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:927
+#: src/kvirc/ui/kvi_channel.cpp:919
 msgid "user total"
 msgstr "korisni[k/ca] ukupno"
 
-#: src/kvirc/ui/kvi_channel.cpp:918
+#: src/kvirc/ui/kvi_channel.cpp:910
 msgid "user-operator"
 msgstr "korisnički operator"
 
-#: src/kvirc/ui/kvi_channel.cpp:918
+#: src/kvirc/ui/kvi_channel.cpp:910
 msgid "user-operators"
 msgstr "korisnički operatori"
 
-#: src/kvirc/ui/kvi_channel.cpp:927
+#: src/kvirc/ui/kvi_channel.cpp:919
 msgid "users total"
 msgstr "korisni[ka/ce] ukupno"
 
-#: src/kvirc/ui/kvi_channel.cpp:907
+#: src/kvirc/ui/kvi_channel.cpp:899
 msgid "voiced user"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:907
+#: src/kvirc/ui/kvi_channel.cpp:899
 msgid "voiced users"
 msgstr ""
 
@@ -7825,8 +7725,7 @@ msgstr ""
 msgid "watch entry listing requested by user"
 msgstr ""
 
-#: src/kvirc/ui/kvi_channel.cpp:715
-#: src/kvirc/ui/kvi_channel.cpp:736
+#: src/kvirc/ui/kvi_channel.cpp:707 src/kvirc/ui/kvi_channel.cpp:728
 msgid "were talking recently"
 msgstr "su pričali maloprije"
 

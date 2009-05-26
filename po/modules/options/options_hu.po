@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 00:56+0200\n"
+"POT-Creation-Date: 2009-05-26 21:51+0200\n"
 "PO-Revision-Date: 2008-03-03 08:56+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,8 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " bájt"
 
@@ -36,8 +35,7 @@ msgstr " sor"
 msgid " min"
 msgstr " perc"
 
-#: src/modules/options/optw_lag.cpp:45
-#: src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_connection.cpp:151
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
@@ -1719,8 +1717,7 @@ msgstr "Hozzáfűzés a VERZIÓ válaszhoz: "
 msgid "Auto flush logs every"
 msgstr "Naplófájlok mentése minden"
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Auto-Felismerés"
 
@@ -1732,8 +1729,7 @@ msgstr "Automatikus felismerés"
 msgid "Automatically Log"
 msgstr "Automatikus Naplózás"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Automatikus fogadás"
@@ -1868,8 +1864,7 @@ msgstr "CTCP Válaszok"
 msgid "Cache IP address"
 msgstr "Ip cím tárolása"
 
-#: src/modules/options/dialog.cpp:242
-#: src/modules/options/optw_identity.cpp:95
+#: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:237
 #: src/modules/options/optw_identity.cpp:906
 #: src/modules/options/optw_nickserv.cpp:128
@@ -1881,8 +1876,7 @@ msgstr "Mégsem"
 
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
 #: src/modules/options/optw_userlist.cpp:144
@@ -1967,13 +1961,11 @@ msgstr "Lista Törlése"
 msgid "Close in tray"
 msgstr "Bezárásnál a KVIrcet tegye a tálcára"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Párbeszédablak bezárása, összes változás érvényesítése."
 
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Párbeszédablak bezárása, összes változás elvetése."
 
@@ -1986,8 +1978,7 @@ msgid "Commit all changes immediately."
 msgstr "Minden változás alkalmazása azonnal."
 
 #: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_notify.cpp:41 src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
 msgid "Configuration"
 msgstr "Beállítások"
@@ -3157,8 +3148,7 @@ msgstr "Privát nyitása"
 msgid "Open all minimized"
 msgstr "Minden kicsinyített megnyitása"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Megnyitás a háttérben automatikus fogadásnál"
 
@@ -3804,8 +3794,7 @@ msgstr "SSL protokol használata"
 msgid "TIME"
 msgstr "IDŐ"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Teszt"
 
@@ -4027,8 +4016,7 @@ msgstr ""
 
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
 #: src/modules/options/optw_userlist.cpp:141
@@ -4396,8 +4384,7 @@ msgstr "[ELŐTAG]név[!felhasználónév@hoszt][UTÓTAG] üzenet"
 msgid "[Unknown Media Type]"
 msgstr "[Ismeretlen Médiatípus]"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bájt/mp"
 
