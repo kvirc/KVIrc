@@ -47,7 +47,7 @@ class KviIrcConnection;
 class KviStatusBarApplet;
 class KviStatusBarAppletDescriptor;
 
-typedef KviStatusBarApplet * (*CreateAppletCallback)(KviStatusBar *,KviStatusBarAppletDescriptor *);
+typedef KviStatusBarApplet * (*CreateAppletCallback)(KviStatusBar *, KviStatusBarAppletDescriptor *);
 
 class KVIRC_API KviStatusBarAppletDescriptor : public KviHeapObject
 {
@@ -62,16 +62,16 @@ protected:
 	int                              m_iId;
 	KviPointerList<KviStatusBarApplet> * m_pAppletList;
 public:
-	KviStatusBarAppletDescriptor(const QString &szVisibleName,
-					const QString &szInternalName,
+	KviStatusBarAppletDescriptor(const QString & szVisibleName,
+					const QString & szInternalName,
 					CreateAppletCallback pProc,
-					const QString &szPreloadModule = QString(),
-					const QPixmap &pixIcon = QPixmap());
+					const QString & szPreloadModule = QString(),
+					const QPixmap & pixIcon = QPixmap());
 	virtual ~KviStatusBarAppletDescriptor();
 public:
-	const QString &visibleName(){ return m_szVisibleName; };
-	const QString &internalName(){ return m_szInternalName; };
-	const QString &preloadModule(){ return m_szPreloadModule; };
+	const QString & visibleName(){ return m_szVisibleName; };
+	const QString & internalName(){ return m_szInternalName; };
+	const QString & preloadModule(){ return m_szPreloadModule; };
 	int id(){ return m_iId; };
 	QPixmap * icon(){ return m_pIcon; };
 protected:
@@ -91,22 +91,22 @@ protected:
 	bool                           m_bSelected;
 	int mIndex;
 public:
-	KviStatusBarApplet(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
+	KviStatusBarApplet(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
 	virtual ~KviStatusBarApplet();
 public:
 	KviStatusBar * statusBar(){ return m_pStatusBar; };
 	KviFrame * frame(){ return m_pStatusBar->frame(); };
 	KviStatusBarAppletDescriptor * descriptor(){ return m_pDescriptor; };
-	void setIndex(int i){mIndex=i;};
-	int index(){return mIndex;};
+	void setIndex(int i){ mIndex=i; };
+	int index(){ return mIndex; };
 	void select(bool bSelect = true);
 	bool isSelected(){ return m_bSelected; };
 protected:
-	virtual void paintEvent(QPaintEvent *e);
+	virtual void paintEvent(QPaintEvent * e);
 	
 	virtual void fillContextPopup(KviTalPopupMenu *){};
-	virtual void loadState(const char *,KviConfig *){};
-	virtual void saveState(const char *,KviConfig *){};
+	virtual void loadState(const char *, KviConfig *){};
+	virtual void saveState(const char *, KviConfig *){};
 	virtual QString tipText(const QPoint &);
 };
 
@@ -115,7 +115,7 @@ class KviStatusBarClock : public KviStatusBarApplet
 {
 	Q_OBJECT
 public:
-	KviStatusBarClock(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
+	KviStatusBarClock(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
 	virtual ~KviStatusBarClock();
 	enum Format { HMS , HM };
 protected:
@@ -128,8 +128,8 @@ protected:
 	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual void timerEvent(QTimerEvent * e);
 	
-	virtual void loadState(const char * prefix,KviConfig *cfg);
-	virtual void saveState(const char * prefix,KviConfig *cfg);
+	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
+	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
 protected slots:
 	void toggleUtc();
 	void toggle24h();
@@ -141,15 +141,15 @@ class KviStatusBarConnectionTimer : public KviStatusBarApplet
 {
 	Q_OBJECT
 public:
-	KviStatusBarConnectionTimer(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
+	KviStatusBarConnectionTimer(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
 	virtual ~KviStatusBarConnectionTimer();
 protected:
 	bool m_bTotal;
 protected:
 	virtual void timerEvent(QTimerEvent * e);
-	virtual void fillContextPopup(KviTalPopupMenu *p);
-	virtual void loadState(const char * prefix,KviConfig *cfg);
-	virtual void saveState(const char * prefix,KviConfig *cfg);
+	virtual void fillContextPopup(KviTalPopupMenu * p);
+	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
+	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
 public:
 	static void selfRegister(KviStatusBar * pBar);
 protected slots:
@@ -161,7 +161,7 @@ class KviStatusBarSeparator : public KviStatusBarApplet
 {
 	Q_OBJECT
 public:
-	KviStatusBarSeparator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
+	KviStatusBarSeparator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
 	virtual ~KviStatusBarSeparator();
 public:
 	static void selfRegister(KviStatusBar * pBar);
@@ -172,18 +172,18 @@ class KviStatusBarAwayIndicator : public KviStatusBarApplet
 {
 	Q_OBJECT
 public:
-	KviStatusBarAwayIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
+	KviStatusBarAwayIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
 	virtual ~KviStatusBarAwayIndicator();
 public:
 	static void selfRegister(KviStatusBar * pBar);
 protected:
 	bool m_bAwayOnAllContexts;
 protected:
-	virtual void mouseDoubleClickEvent(QMouseEvent *e);
+	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual QString tipText(const QPoint &);
-	virtual void fillContextPopup(KviTalPopupMenu *p);
-	virtual void loadState(const char * prefix,KviConfig *cfg);
-	virtual void saveState(const char * prefix,KviConfig *cfg);
+	virtual void fillContextPopup(KviTalPopupMenu * p);
+	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
+	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
 protected slots:
 	void updateDisplay();
 	void toggleContext();
@@ -194,12 +194,12 @@ class KviStatusBarLagIndicator : public KviStatusBarApplet
 {
 	Q_OBJECT
 public:
-	KviStatusBarLagIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
+	KviStatusBarLagIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
 	virtual ~KviStatusBarLagIndicator();
 public:
 	static void selfRegister(KviStatusBar * pBar);
 protected:
-	virtual void mouseDoubleClickEvent(QMouseEvent *e);
+	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual QString tipText(const QPoint &);
 protected slots:
 	void updateDisplay();
@@ -210,22 +210,20 @@ class KviStatusBarUpdateIndicator : public KviStatusBarApplet
 {
 	Q_OBJECT
 public:
-	KviStatusBarUpdateIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor);
+	KviStatusBarUpdateIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor);
 	virtual ~KviStatusBarUpdateIndicator();
 	static void selfRegister(KviStatusBar * pBar);
 protected:
-	virtual void mouseDoubleClickEvent(QMouseEvent *e);
+	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual QString tipText(const QPoint &);
-	virtual void fillContextPopup(KviTalPopupMenu *p);
-	virtual void loadState(const char * prefix,KviConfig *cfg);
-	virtual void saveState(const char * prefix,KviConfig *cfg);
+	virtual void fillContextPopup(KviTalPopupMenu * p);
+	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
+	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
 	void checkVersion();
 	void getNewVersion();
 protected slots:
 	void updateDisplay();
 	void toggleContext();
-	//void hostResolved(const QString &);
-	//void connectionEstabilished();
 	void responseReceived(const QString &);
 	void requestCompleted(bool status);
 	void binaryDataReceived(const KviDataBuffer &);

@@ -395,7 +395,7 @@ KVSO_CLASS_FUNCTION(sql,queryInit)
         KVSO_PARAMETERS_END(c)
         if (queryConnectionsDict.value(szConnectionName))
         {
-           c->warning(__tr2qs_ctx("Query  %Q already initializated","objects"),&szConnectionName);
+           c->warning(__tr2qs_ctx("Query %Q already initializated","objects"),&szConnectionName);
            return true;
         }
         if(!QSqlDatabase::connectionNames().contains(szConnectionName))

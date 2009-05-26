@@ -61,7 +61,7 @@
 #include <QEvent>
 #include <QMouseEvent>
 
-KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString &szVisibleName,const QString &szInternalName,CreateAppletCallback pProc,const QString &szPreloadModule,const QPixmap &pixIcon)
+KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString & szVisibleName, const QString & szInternalName, CreateAppletCallback pProc, const QString & szPreloadModule, const QPixmap & pixIcon)
 : KviHeapObject()
 {
 	static int s_iAppletDescriptorUniqueId = 0;
@@ -79,9 +79,9 @@ KviStatusBarAppletDescriptor::KviStatusBarAppletDescriptor(const QString &szVisi
 
 KviStatusBarAppletDescriptor::~KviStatusBarAppletDescriptor()
 {
-	while(KviStatusBarApplet * a = m_pAppletList->first())delete a;
+	while(KviStatusBarApplet * a = m_pAppletList->first()) delete a;
 	delete m_pAppletList;
-	if(m_pIcon)delete m_pIcon;
+	if(m_pIcon) delete m_pIcon;
 }
 
 KviStatusBarApplet * KviStatusBarAppletDescriptor::create(KviStatusBar * pBar)
@@ -100,7 +100,7 @@ void KviStatusBarAppletDescriptor::unregisterApplet(KviStatusBarApplet * a)
 }
 
 
-KviStatusBarApplet::KviStatusBarApplet(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarApplet::KviStatusBarApplet(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
 : QLabel(pParent), m_pStatusBar(pParent), m_pDescriptor(pDescriptor)
 {
 	m_pDescriptor->registerApplet(this);
@@ -142,7 +142,7 @@ void KviStatusBarApplet::select(bool bSelect)
 
 
 // Away applet
-KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarAwayIndicator::KviStatusBarAwayIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
 	m_bAwayOnAllContexts = false;
@@ -180,30 +180,30 @@ void KviStatusBarAwayIndicator::toggleContext()
 	m_bAwayOnAllContexts = !m_bAwayOnAllContexts;
 }
 
-void KviStatusBarAwayIndicator::fillContextPopup(KviTalPopupMenu *p)
+void KviStatusBarAwayIndicator::fillContextPopup(KviTalPopupMenu * p)
 {
 	int id = p->insertItem(__tr2qs("Apply to all IRC Contexts"),this,SLOT(toggleContext()));
 	p->setItemChecked(id,m_bAwayOnAllContexts);
 }
 
-void KviStatusBarAwayIndicator::loadState(const char * prefix,KviConfig *cfg)
+void KviStatusBarAwayIndicator::loadState(const char * pcPrefix, KviConfig * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_AwayOnAllContexts",prefix);
-	m_bAwayOnAllContexts = cfg->readBoolEntry(tmp.ptr(),false);
+	KviStr tmp(KviStr::Format,"%s_AwayOnAllContexts",pcPrefix);
+	m_bAwayOnAllContexts = pCfg->readBoolEntry(tmp.ptr(),false);
 }
 
-void KviStatusBarAwayIndicator::saveState(const char * prefix,KviConfig *cfg)
+void KviStatusBarAwayIndicator::saveState(const char * pcPrefix, KviConfig * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_AwayOnAllContexts",prefix);
-	cfg->writeEntry(tmp.ptr(),m_bAwayOnAllContexts);
+	KviStr tmp(KviStr::Format,"%s_AwayOnAllContexts",pcPrefix);
+	pCfg->writeEntry(tmp.ptr(),m_bAwayOnAllContexts);
 }
 
-KviStatusBarApplet * CreateStatusBarAwayIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarApplet * CreateStatusBarAwayIndicator(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
 {
-	KviStatusBarApplet * applet=new KviStatusBarAwayIndicator(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
+	KviStatusBarApplet * pApplet = new KviStatusBarAwayIndicator(pBar,pDescriptor);
+	pApplet->setIndex(pBar->insertPermanentWidgetAtTheEnd(pApplet));
 	
-	return applet;
+	return pApplet;
 }
 
 void KviStatusBarAwayIndicator::selfRegister(KviStatusBar * pBar)
@@ -231,34 +231,36 @@ void KviStatusBarAwayIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 QString KviStatusBarAwayIndicator::tipText(const QPoint &)
 {
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
-	QString ret = "<center><b>";
-	if(!c)goto not_connected;
+	QString szRet = "<center><b>";
+
+	if(!c) goto not_connected;
 	if(c->state() != KviIrcConnection::Connected)goto not_connected;
 	if(c->userInfo()->isAway())
 	{
-		QString tmp = KviTimeUtils::formatTimeInterval(kvi_unixTime() - c->userInfo()->awayTime(),KviTimeUtils::NoLeadingEmptyIntervals);
-		ret += __tr2qs("Away since");
-		ret += ' ';
-		ret += tmp;
-		ret += "</b><br>";
-		ret += __tr2qs("Double click to leave away mode");
+		QString szTmp = KviTimeUtils::formatTimeInterval(kvi_unixTime() - c->userInfo()->awayTime(),KviTimeUtils::NoLeadingEmptyIntervals);
+
+		szRet += __tr2qs("Away since");
+		szRet += ' ';
+		szRet += szTmp;
+		szRet += "</b><br>";
+		szRet += __tr2qs("Double click to leave away mode");
 	} else {
-		ret += __tr2qs("Not away");
-		ret += "</b><br>";
-		ret += __tr2qs("Double click to enter away mode");
+		szRet += __tr2qs("Not away");
+		szRet += "</b><br>";
+		szRet += __tr2qs("Double click to enter away mode");
 	}
-	ret += "</center>";
-	return ret;
+	szRet += "</center>";
+	return szRet;
 
 not_connected:
-	ret +=  __tr2qs("Not connected");
-	ret += "</b></center>";
-	return ret;
+	szRet +=  __tr2qs("Not connected");
+	szRet += "</b></center>";
+	return szRet;
 }
 
 
 // Lag indicator applet
-KviStatusBarLagIndicator::KviStatusBarLagIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarLagIndicator::KviStatusBarLagIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
 	connect(pParent->frame(),SIGNAL(activeContextChanged()),this,SLOT(updateDisplay()));
@@ -279,13 +281,14 @@ KviStatusBarLagIndicator::~KviStatusBarLagIndicator()
 {
 }
 
-void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent *e)
+void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	if(!(e->button() & Qt::LeftButton))return;
+	if(!(e->button() & Qt::LeftButton)) return;
 
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
-	if(!c)return;
-	if(c->state() != KviIrcConnection::Connected)return;
+
+	if(!c) return;
+	if(c->state() != KviIrcConnection::Connected) return;
 	if(!c->lagMeter())
 	{
 		KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine) = true;
@@ -293,13 +296,13 @@ void KviStatusBarLagIndicator::mouseDoubleClickEvent(QMouseEvent *e)
 	}
 }
 
-
 QString KviStatusBarLagIndicator::tipText(const QPoint &)
 {
 	KviIrcConnection * c = statusBar()->frame()->activeConnection();
-	QString ret = "<center><b>";
-	if(!c)goto not_connected;
-	if(c->state() != KviIrcConnection::Connected)goto not_connected;
+	QString szRet = "<center><b>";
+
+	if(!c) goto not_connected;
+	if(c->state() != KviIrcConnection::Connected) goto not_connected;
 	if(c->lagMeter())
 	{
 		int lll;
@@ -308,34 +311,35 @@ QString KviStatusBarLagIndicator::tipText(const QPoint &)
 			int llls = lll / 1000;
 			int llld = (lll % 1000) / 100;
 			int lllc = (lll % 100) / 10;
-			KviQString::appendFormatted(ret,__tr2qs("Lag: %d.%d%d"),llls,llld,lllc);
-			ret += "</b><br>";
+			KviQString::appendFormatted(szRet,__tr2qs("Lag: %d.%d%d"),llls,llld,lllc);
+			szRet += "</b><br>";
 			int vss = c->lagMeter()->secondsSinceLastCompleted();
 			int vmm = vss / 60;
 			vss = vss % 60;
-			KviQString::appendFormatted(ret,__tr2qs("Last checked %d mins %d secs ago"),vmm,vss);
+			KviQString::appendFormatted(szRet,__tr2qs("Last checked %d mins %d secs ago"),vmm,vss);
 		} else {
-			ret += __tr2qs("Lag measure not available yet");
-			ret += "</b>";
+			szRet += __tr2qs("Lag measure not available yet");
+			szRet += "</b>";
 		}
 	} else {
-		ret += __tr2qs("Lag meter engine disabled");
-		ret += "</b><br>";
-		ret += __tr2qs("Double click to enable it");
+		szRet += __tr2qs("Lag meter engine disabled");
+		szRet += "</b><br>";
+		szRet += __tr2qs("Double click to enable it");
 	}
-	ret += "</center>";
-	return ret;
+	szRet += "</center>";
+	return szRet;
 
 not_connected:
-	ret +=  __tr2qs("Not connected");
-	ret += "</b></center>";
-	return ret;
+	szRet +=  __tr2qs("Not connected");
+	szRet += "</b></center>";
+	return szRet;
 }
 
 void KviStatusBarLagIndicator::updateDisplay()
 {
 	KviIrcContext * c = statusBar()->frame()->activeContext();
-	if(!c)return;
+
+	if(!c) return;
 	if(c->isConnected())
 	{
 		KviIrcConnection * ic = c->connection();
@@ -347,16 +351,16 @@ void KviStatusBarLagIndicator::updateDisplay()
 				int llls = lll / 1000;
 				int llld = (lll % 1000) / 100;
 				int lllc = (lll % 100) / 10;
-				QString tmp;
-				KviQString::sprintf(tmp,__tr2qs("Lag: %d.%d%d"),llls,llld,lllc);
+				QString szTmp;
+				KviQString::sprintf(szTmp,__tr2qs("Lag: %d.%d%d"),llls,llld,lllc);
 				if(lll > 60000)
 				{
 					// one minute lag!
 					// paint it in red
-					tmp.prepend("<nobr><font color=\"#e00000\">");
-					tmp.append("</font></nobr>");
+					szTmp.prepend("<nobr><font color=\"#e00000\">");
+					szTmp.append("</font></nobr>");
 				}
-				setText(tmp);
+				setText(szTmp);
 				return;
 			}
 		}
@@ -365,11 +369,11 @@ void KviStatusBarLagIndicator::updateDisplay()
 	setText(__tr2qs("Lag: ?.??"));
 }
 
-KviStatusBarApplet * CreateStatusBarLagIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarApplet * CreateStatusBarLagIndicator(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
 {
-	KviStatusBarApplet * applet=new KviStatusBarLagIndicator(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
-	return applet;
+	KviStatusBarApplet * pApplet = new KviStatusBarLagIndicator(pBar,pDescriptor);
+	pApplet->setIndex(pBar->insertPermanentWidgetAtTheEnd(pApplet));
+	return pApplet;
 }
 
 void KviStatusBarLagIndicator::selfRegister(KviStatusBar * pBar)
@@ -381,7 +385,7 @@ void KviStatusBarLagIndicator::selfRegister(KviStatusBar * pBar)
 
 
 // Clock applet
-KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarClock::KviStatusBarClock(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
 	m_bUtc  = false;
@@ -400,11 +404,11 @@ KviStatusBarClock::~KviStatusBarClock()
 {
 }
 
-void KviStatusBarClock::timerEvent(QTimerEvent *)
+void KviStatusBarClock::timerEvent(QTimerEvent * e)
 {
 	kvi_time_t tt = kvi_unixTime();
 	struct tm * t = m_bUtc ? gmtime(&tt) : localtime(&tt);
-	QString tmp;
+	QString szTmp;
 	QString szDay = "AM";
 
 	if(!m_b24h)
@@ -421,7 +425,7 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 		switch(m_iType)
 		{
 			case KviStatusBarClock::HMS:
-				KviQString::sprintf(tmp,"%d%d:%d%d:%d%d %s",
+				KviQString::sprintf(szTmp,"%d%d:%d%d:%d%d %s",
 					t->tm_hour / 10,
 					t->tm_hour % 10,
 					t->tm_min / 10,
@@ -431,7 +435,7 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 					szDay.toUtf8().data());
 				break;
 			case KviStatusBarClock::HM:
-				KviQString::sprintf(tmp,"%d%d:%d%d %s",
+				KviQString::sprintf(szTmp,"%d%d:%d%d %s",
 					t->tm_hour / 10,
 					t->tm_hour % 10,
 					t->tm_min / 10,
@@ -444,7 +448,7 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 		switch(m_iType)
 		{
 			case KviStatusBarClock::HMS:
-				KviQString::sprintf(tmp,"%d%d:%d%d:%d%d",
+				KviQString::sprintf(szTmp,"%d%d:%d%d:%d%d",
 					t->tm_hour / 10,
 					t->tm_hour % 10,
 					t->tm_min / 10,
@@ -453,7 +457,7 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 					t->tm_sec % 10);
 				break;
 			case KviStatusBarClock::HM:
-				KviQString::sprintf(tmp,"%d%d:%d%d",
+				KviQString::sprintf(szTmp,"%d%d:%d%d",
 					t->tm_hour / 10,
 					t->tm_hour % 10,
 					t->tm_min / 10,
@@ -461,7 +465,7 @@ void KviStatusBarClock::timerEvent(QTimerEvent *)
 				break;
 		}
 	}
-	setText(tmp);
+	setText(szTmp);
 }
 
 void KviStatusBarClock::fillContextPopup(KviTalPopupMenu * p)
@@ -497,38 +501,38 @@ void KviStatusBarClock::toggle24h()
 	timerEvent(0);
 }
 
-void KviStatusBarClock::changeFormat(QAction * act)
+void KviStatusBarClock::changeFormat(QAction * pAct)
 {
 	bool bOk;
-	m_iType = act->data().toInt(&bOk);
+	m_iType = pAct->data().toInt(&bOk);
 	if(!bOk) return;
 }
 
-void KviStatusBarClock::loadState(const char * prefix,KviConfig *cfg)
+void KviStatusBarClock::loadState(const char * pcPrefix, KviConfig * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_Utc",prefix);
-	m_bUtc = cfg->readBoolEntry(tmp.ptr(),false);
-	KviStr tmp2(KviStr::Format,"%s_24h",prefix);
-	m_b24h = cfg->readBoolEntry(tmp2.ptr(),false);
-	KviStr tmp3(KviStr::Format,"%s_Format",prefix);
-	m_iType = cfg->readIntEntry(tmp3.ptr(),KviStatusBarClock::HMS);
+	KviStr tmp(KviStr::Format,"%s_Utc",pcPrefix);
+	m_bUtc = pCfg->readBoolEntry(tmp.ptr(),false);
+	KviStr tmp2(KviStr::Format,"%s_24h",pcPrefix);
+	m_b24h = pCfg->readBoolEntry(tmp2.ptr(),false);
+	KviStr tmp3(KviStr::Format,"%s_Format",pcPrefix);
+	m_iType = pCfg->readIntEntry(tmp3.ptr(),KviStatusBarClock::HMS);
 }
 
-void KviStatusBarClock::saveState(const char * prefix,KviConfig *cfg)
+void KviStatusBarClock::saveState(const char * pcPrefix, KviConfig * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_Utc",prefix);
-	cfg->writeEntry(tmp.ptr(),m_bUtc);
-	KviStr tmp2(KviStr::Format,"%s_24h",prefix);
-	cfg->writeEntry(tmp2.ptr(),m_b24h);
-	KviStr tmp3(KviStr::Format,"%s_Format",prefix);
-	cfg->writeEntry(tmp3.ptr(),m_iType);
+	KviStr tmp(KviStr::Format,"%s_Utc",pcPrefix);
+	pCfg->writeEntry(tmp.ptr(),m_bUtc);
+	KviStr tmp2(KviStr::Format,"%s_24h",pcPrefix);
+	pCfg->writeEntry(tmp2.ptr(),m_b24h);
+	KviStr tmp3(KviStr::Format,"%s_Format",pcPrefix);
+	pCfg->writeEntry(tmp3.ptr(),m_iType);
 }
 
-KviStatusBarApplet * CreateStatusBarClock(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarApplet * CreateStatusBarClock(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
 {
-	KviStatusBarApplet * applet=new KviStatusBarClock(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
-	return applet;
+	KviStatusBarApplet * pApplet = new KviStatusBarClock(pBar,pDescriptor);
+	pApplet->setIndex(pBar->insertPermanentWidgetAtTheEnd(pApplet));
+	return pApplet;
 }
 
 void KviStatusBarClock::selfRegister(KviStatusBar * pBar)
@@ -551,7 +555,7 @@ KviStatusBarConnectionTimer::~KviStatusBarConnectionTimer()
 {
 }
 //g_pApp->topmostConnectedConsole()
-void KviStatusBarConnectionTimer::timerEvent(QTimerEvent *)
+void KviStatusBarConnectionTimer::timerEvent(QTimerEvent * e)
 {
 	if(m_bTotal)
 	{
@@ -584,29 +588,29 @@ void KviStatusBarConnectionTimer::toggleTotal()
 	m_bTotal = !m_bTotal;
 }
 
-void KviStatusBarConnectionTimer::fillContextPopup(KviTalPopupMenu *p)
+void KviStatusBarConnectionTimer::fillContextPopup(KviTalPopupMenu * p)
 {
 	int id = p->insertItem(__tr2qs("Show total connection time"),this,SLOT(toggleTotal()));
 	p->setItemChecked(id,m_bTotal);
 }
 
-void KviStatusBarConnectionTimer::loadState(const char * prefix,KviConfig *cfg)
+void KviStatusBarConnectionTimer::loadState(const char * pcPrefix, KviConfig * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_Total",prefix);
-	m_bTotal = cfg->readBoolEntry(tmp.ptr(),false);
+	KviStr tmp(KviStr::Format,"%s_Total",pcPrefix);
+	m_bTotal = pCfg->readBoolEntry(tmp.ptr(),false);
 }
 
-void KviStatusBarConnectionTimer::saveState(const char * prefix,KviConfig *cfg)
+void KviStatusBarConnectionTimer::saveState(const char * pcPrefix, KviConfig * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_Total",prefix);
-	cfg->writeEntry(tmp.ptr(),m_bTotal);
+	KviStr tmp(KviStr::Format,"%s_Total",pcPrefix);
+	pCfg->writeEntry(tmp.ptr(),m_bTotal);
 }
 
 KviStatusBarApplet * CreateStatusBarConnectionTimer(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
 {
-	KviStatusBarApplet * applet=new KviStatusBarConnectionTimer(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
-	return applet;
+	KviStatusBarApplet * pApplet = new KviStatusBarConnectionTimer(pBar,pDescriptor);
+	pApplet->setIndex(pBar->insertPermanentWidgetAtTheEnd(pApplet));
+	return pApplet;
 }
 
 void KviStatusBarConnectionTimer::selfRegister(KviStatusBar * pBar)
@@ -618,7 +622,7 @@ void KviStatusBarConnectionTimer::selfRegister(KviStatusBar * pBar)
 
 
 // Separator applet
-KviStatusBarSeparator::KviStatusBarSeparator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarSeparator::KviStatusBarSeparator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
 	setFrameStyle(QFrame::VLine | QFrame::Sunken);
@@ -628,11 +632,11 @@ KviStatusBarSeparator::~KviStatusBarSeparator()
 {
 }
 
-KviStatusBarApplet * CreateStatusBarSeparator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarApplet * CreateStatusBarSeparator(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
 {
-	KviStatusBarApplet * applet=new KviStatusBarSeparator(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
-	return applet;
+	KviStatusBarApplet * pApplet = new KviStatusBarSeparator(pBar,pDescriptor);
+	pApplet->setIndex(pBar->insertPermanentWidgetAtTheEnd(pApplet));
+	return pApplet;
 }
 
 void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
@@ -644,7 +648,7 @@ void KviStatusBarSeparator::selfRegister(KviStatusBar * pBar)
 
 
 // Update applet
-KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarUpdateIndicator::KviStatusBarUpdateIndicator(KviStatusBar * pParent, KviStatusBarAppletDescriptor * pDescriptor)
 : KviStatusBarApplet(pParent,pDescriptor)
 {
 	m_bCheckDone = false;
@@ -676,32 +680,31 @@ void KviStatusBarUpdateIndicator::toggleContext()
 	m_bUpdateOnStartup = !m_bUpdateOnStartup;
 }
 
-void KviStatusBarUpdateIndicator::fillContextPopup(KviTalPopupMenu *p)
+void KviStatusBarUpdateIndicator::fillContextPopup(KviTalPopupMenu * p)
 {
 	int id = p->insertItem(__tr2qs("Check on startup"),this,SLOT(toggleContext()));
 	p->setItemChecked(id,m_bUpdateOnStartup);
 }
 
-void KviStatusBarUpdateIndicator::loadState(const char * prefix,KviConfig *cfg)
+void KviStatusBarUpdateIndicator::loadState(const char * pcPrefix, KviConfig * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",prefix);
-	m_bUpdateOnStartup = cfg->readBoolEntry(tmp.ptr(),false);
+	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",pcPrefix);
+	m_bUpdateOnStartup = pCfg->readBoolEntry(tmp.ptr(),false);
 
 	if(m_bUpdateOnStartup) checkVersion();
 }
 
-void KviStatusBarUpdateIndicator::saveState(const char * prefix,KviConfig *cfg)
+void KviStatusBarUpdateIndicator::saveState(const char * pcPrefix, KviConfig * pCfg)
 {
-	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",prefix);
-	cfg->writeEntry(tmp.ptr(),m_bUpdateOnStartup);
+	KviStr tmp(KviStr::Format,"%s_UpdateOnStartup",pcPrefix);
+	pCfg->writeEntry(tmp.ptr(),m_bUpdateOnStartup);
 }
 
-KviStatusBarApplet * CreateStatusBarUpdateIndicator(KviStatusBar * pBar,KviStatusBarAppletDescriptor *pDescriptor)
+KviStatusBarApplet * CreateStatusBarUpdateIndicator(KviStatusBar * pBar, KviStatusBarAppletDescriptor * pDescriptor)
 {
-//	return new KviStatusBarUpdateIndicator(pBar,pDescriptor);
-	KviStatusBarApplet * applet=new KviStatusBarUpdateIndicator(pBar,pDescriptor);
-	applet->setIndex(pBar->insertPermanentWidgetAtTheEnd(applet));
-	return applet;
+	KviStatusBarApplet * pApplet = new KviStatusBarUpdateIndicator(pBar,pDescriptor);
+	pApplet->setIndex(pBar->insertPermanentWidgetAtTheEnd(pApplet));
+	return pApplet;
 }
 
 void KviStatusBarUpdateIndicator::selfRegister(KviStatusBar * pBar)
@@ -717,55 +720,39 @@ void KviStatusBarUpdateIndicator::checkVersion()
 	QString szFileName;
 	KviUrl url("http://kvirc.net/checkversion.php");
 
-	//qDebug("Created http object");
 	m_pHttpRequest = new KviHttpRequest();
 	connect(m_pHttpRequest,SIGNAL(resolvingHost(const QString &)),this,SLOT(hostResolved(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(connectionEstabilished()),this,SLOT(connectionEstabilished()));
 	connect(m_pHttpRequest,SIGNAL(receivedResponse(const QString &)),this,SLOT(responseReceived(const QString &)));
 	connect(m_pHttpRequest,SIGNAL(binaryData(const KviDataBuffer &)),this,SLOT(binaryDataReceived(const KviDataBuffer &)));
 	connect(m_pHttpRequest,SIGNAL(terminated(bool)),this,SLOT(requestCompleted(bool)));
-	//qDebug("Connected signals");
 
-	//qDebug("Making http request");
 	m_pHttpRequest->get(url,KviHttpRequest::WholeFile,szFileName);
 }
 
 void KviStatusBarUpdateIndicator::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	//qDebug("Update mouse double click event");
-	if(!(e->button() & Qt::LeftButton))return;
+	if(!(e->button() & Qt::LeftButton)) return;
 
 	if(m_bUpdateStatus) getNewVersion();
 	else checkVersion();
 }
-/*
-void KviStatusBarUpdateIndicator::hostResolved(const QString &host)
-{
-	qDebug("Resolved host: %s",host.toUtf8().data());
-}
 
-void KviStatusBarUpdateIndicator::connectionEstabilished()
+void KviStatusBarUpdateIndicator::responseReceived(const QString & szResponse)
 {
-	qDebug("Connection established");
-}
-*/
-void KviStatusBarUpdateIndicator::responseReceived(const QString &response)
-{
-	//qDebug("Remote response: %s",response.toUtf8().data());
-	if(response != "HTTP/1.1 200 OK")
+	// Server response
+	if(szResponse != "HTTP/1.1 200 OK")
 	{
-		m_szHttpResponse = response;
+		m_szHttpResponse = szResponse;
 		m_bCheckFailed = true;
 		updateDisplay();
 	}
 }
 
-void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer)
+void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer & buffer)
 {
 	// Got data
 	KviStr szData((const char *)buffer.data(),buffer.size());
-	//qDebug("Data received: %s",szData.ptr());
-	//qDebug("Version: %s",QString(KVI_VERSION).toUtf8().data());
 
 	// The version returned by remote server is newer than ours
 	if(KviMiscUtils::compareVersions(szData.ptr(),KVI_VERSION) < 0)
@@ -780,66 +767,60 @@ void KviStatusBarUpdateIndicator::binaryDataReceived(const KviDataBuffer &buffer
 
 void KviStatusBarUpdateIndicator::requestCompleted(bool)
 {
-	//qDebug("Data transfer terminated");
+	// Data transfer terminated
 	delete m_pHttpRequest;
-	//qDebug("Deleted http object");
 }
 
 void KviStatusBarUpdateIndicator::getNewVersion()
 {
 	// Set build platform
-	QString system = KviBuildInfo::buildSystemName();
-	//qDebug("System: %s",system.toUtf8().data());
-	if(system == "Windows") system = "win32";
-	else if(system == "Darwin") system = "macosx";
-	else system = "unix";
-	//qDebug("System: %s",system.toUtf8().data());
+	QString szSystem = KviBuildInfo::buildSystemName();
+
+	if(szSystem == "Windows") szSystem = "win32";
+	else if(szSystem == "Darwin") szSystem = "macosx";
+	else szSystem = "unix";
 
 	// Create page to link to
-	QString url = "http://kvirc.net/?id=releases&platform=";
-	url += system;
-	url += "&version=";
-	url += m_szNewVersion;
-	//qDebug("URL: %s",url.toUtf8().data());
+	QString szUrl = "http://kvirc.net/?id=releases&platform=";
+	szUrl += szSystem;
+	szUrl += "&version=";
+	szUrl += m_szNewVersion;
 
 	// Create command to run
-	QString command = "openurl ";
-	command += url;
-	//qDebug("Command: %s",command.toUtf8().data());
+	QString szCommand = "openurl ";
+	szCommand += szUrl;
 
 	// Open the download page for the platform we're using
-	KviKvsScript::run(command,g_pActiveWindow);
-	//qDebug("KviKvsScript returned: %d",test);
+	KviKvsScript::run(szCommand,g_pActiveWindow);
 }
 
 QString KviStatusBarUpdateIndicator::tipText(const QPoint &)
 {
-	QString ret = "<center><b>";
+	QString szRet = "<center><b>";
 	if(!m_bCheckDone)
 	{
-		ret += __tr2qs("Update missing");
-		ret += "</b><br>";
-		ret += __tr2qs("You didn't checked yet.\n \
-				Should I check it?");
-		ret += "<br>";
-		ret += __tr2qs("Double click to check");
+		szRet += __tr2qs("Update missing");
+		szRet += "</b><br>";
+		szRet += __tr2qs("You didn't checked yet.\nShould I check it?");
+		szRet += "<br>";
+		szRet += __tr2qs("Double click to check");
 	} else if(m_bCheckFailed)
 	{
-		ret += __tr2qs("Update failed");
-		ret += "</b><br>";
-		ret += __tr2qs("The remote server replied with ");
-		ret += m_szHttpResponse;
-		ret += "<br>";
-		ret += __tr2qs("Double click to retry");
+		szRet += __tr2qs("Update failed");
+		szRet += "</b><br>";
+		szRet += __tr2qs("The remote server replied with ");
+		szRet += m_szHttpResponse;
+		szRet += "<br>";
+		szRet += __tr2qs("Double click to retry");
 	} else if(!m_bUpdateStatus){
-		ret += __tr2qs("No updates found");
-		ret += "</b><br>";
-		ret += __tr2qs("Double click to retry");
+		szRet += __tr2qs("No updates found");
+		szRet += "</b><br>";
+		szRet += __tr2qs("Double click to retry");
 	} else if(m_bUpdateStatus){
-		ret += __tr2qs("New updates found");
-		ret += "</b><br>";
-		ret += __tr2qs("Double click to get the lastest version");
+		szRet += __tr2qs("New updates found");
+		szRet += "</b><br>";
+		szRet += __tr2qs("Double click to get the lastest version");
 	}
-	ret += "</center>";
-	return ret;
+	szRet += "</center>";
+	return szRet;
 }

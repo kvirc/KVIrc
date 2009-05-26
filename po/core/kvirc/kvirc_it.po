@@ -6,19 +6,20 @@
 # Szymon Stefanek <pragma at kvirc dot net>, 2004.
 # Eva Schaller <eva at cyberbeat dot it>, 2002,2003, 2004.
 # Alessio Paoletti <nate at paranoici dot org>, 2004,2005, 2006;.
-# Elvio Basello <hellvis69 at altervista dot com>, 2005, 2006.
+# Elvio Basello <hellvis69 at netsons dot org>, 2005, 2006, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-26 21:51+0200\n"
-"PO-Revision-Date: 2009-01-31 00:10+0100\n"
-"Last-Translator: \n"
-"Language-Team: Italian <it@li.org>\n"
+"PO-Revision-Date: 2009-05-27 00:32+0200\n"
+"Last-Translator: Elvio Basello <hellvis69@netsons.org>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:686
 msgid ""
@@ -445,9 +446,8 @@ msgid "&About KVIrc"
 msgstr "Su &KVIrc"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:213
-#, fuzzy
 msgid "&Add"
-msgstr "Aggiungi"
+msgstr "&Aggiungi"
 
 #: src/modules/url/libkviurl.cpp:461
 msgid "&Add Ban"
@@ -1749,22 +1749,18 @@ msgid "Cannot request list: No active connection"
 msgstr "Impossibile richiedere la lista: nessuna connessione attiva"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1942
-#, fuzzy
 msgid "Cannot send text to channel %Q"
 msgstr "Impossibile inviare il testo al canale %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1924
-#, fuzzy
 msgid "Cannot send text to channel %Q: %Q"
 msgstr "Impossibile inviare il testo al canale %Q: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1939
-#, fuzzy
 msgid "Cannot send to channel"
 msgstr "Impossibile inviare al canale"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1921
-#, fuzzy
 msgid "Cannot send to channel: %Q"
 msgstr "Impossibile inviare al canale: %Q"
 
@@ -3319,7 +3315,7 @@ msgstr "Traffico in entrata"
 
 #: src/modules/links/linkswindow.cpp:316
 msgid "Incomplete LINKS result, no stats available"
-msgstr ""
+msgstr "Risultati LINKS incompleti, nessuna statistica disponibile"
 
 #: src/modules/help/helpwindow.cpp:79
 msgid "Index"
@@ -3568,12 +3564,13 @@ msgid "Joined on <b>%1</b>"
 msgstr "Entrato il <b>%1</b>"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:156
+#, fuzzy
 msgid "Just idling..."
-msgstr ""
+msgstr "Sto idlando..."
 
 #: src/modules/trayicon/libkvitrayicon.cpp:167
 msgid "Just vegetating"
-msgstr ""
+msgstr "Sto vegetando"
 
 #: src/modules/help/index.cpp:103
 msgid "KVIrc"
@@ -3910,13 +3907,12 @@ msgid "Mi&nimize All"
 msgstr "Mi&nimizza tutte"
 
 #: src/modules/links/linkswindow.cpp:307
-#, fuzzy
 msgid "Mid-range links (4 <= hops <= 6): %d (~%d.%d %)"
 msgstr "Link a media distanza (4 <= hops <= 6): %d (~%d.%d %)"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:171
 msgid "Mieeeeeowww!"
-msgstr ""
+msgstr "Mieeeeeowww!"
 
 #: src/kvirc/ui/kvi_channel.cpp:964
 msgid "Might be flooded with messages"
@@ -4592,11 +4588,11 @@ msgstr "Ops... ho accidentalmente perso il sistema di crittazione..."
 
 #: src/modules/rijndael/libkvirijndael.cpp:218
 msgid "Ops...decrypt cipher not initialized"
-msgstr ""
+msgstr "Ops... algoritmo di decrittazione non inizializzato"
 
 #: src/modules/rijndael/libkvirijndael.cpp:181
 msgid "Ops...encrypt cipher not initialized"
-msgstr ""
+msgstr "Ops... algoritmo di crittazione non inizializzato"
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:765
 #, c-format
@@ -5175,7 +5171,7 @@ msgstr "La connessione remota è stata terminata"
 
 #: src/modules/mircimport/libkvimircimport.cpp:143
 msgid "Remote mIRC servers.ini Import Wizard"
-msgstr ""
+msgstr "Wizard Importazione servers.ini di mIRC"
 
 #: src/kvirc/ui/kvi_statusbar.cpp:343
 msgid "Remove %Q"
@@ -5513,9 +5509,8 @@ msgid "Set &None"
 msgstr "&Nessuna selezione"
 
 #: src/kvirc/ui/kvi_window.cpp:781
-#, fuzzy
 msgid "Set Window Props as &default"
-msgstr "Sal&va le proprietà della finestra"
+msgstr "Setta le proprietà della finestra come &default"
 
 #: src/kvirc/ui/kvi_maskeditor.cpp:198
 msgid "Set at"
@@ -5735,7 +5730,7 @@ msgstr "Atteso carattere barra (/)"
 
 #: src/modules/spaste/libkvispaste.cpp:268
 msgid "Slow-paste ID:%d Window:%Q"
-msgstr ""
+msgstr "Slow-paste ID: %d Finestra: %Q"
 
 #: src/kvirc/ui/kvi_toolbar.cpp:100
 msgid "Small (22x22)"
@@ -5803,7 +5798,6 @@ msgstr ""
 "durante il Login"
 
 #: src/modules/snd/libkvisnd.cpp:584
-#, fuzzy
 msgid "Sorry, I can't find a sound system to use on this machine"
 msgstr "Spiacente, non trovo un sistema sonoro da usare con questa macchina"
 
@@ -6686,7 +6680,7 @@ msgstr "Impossibile determinare la cifratura corrente"
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:195
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:283
 msgid "Unable to find a window with the specified window id"
-msgstr ""
+msgstr "Impossibile trovare una finestra con l'id finestra specificato"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:893
 msgid "Unable to look it up hostname: Hostname appears to be masked"
@@ -7049,10 +7043,9 @@ msgstr "Uso il protocollo IRC filtrato: il collegamento filtrato è \"%Q\""
 msgid "Using network specific nickname (%Q)"
 msgstr "Uso il nickname specificato per la rete (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1143
-#, fuzzy, c-format
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1143, c-format
 msgid "Using network specific password (%s)"
-msgstr "Uso il nome utente specificato per il Server (%Q)"
+msgstr "Uso la password specificata per la rete (%s)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1089
 msgid "Using network specific real name (%Q)"
@@ -7074,10 +7067,9 @@ msgstr "Uso il Server <b>%1</b>"
 msgid "Using server specific nickname (%Q)"
 msgstr "Uso il nickname specificato per il Server (%Q)"
 
-#: src/kvirc/kernel/kvi_ircconnection.cpp:1127
-#, fuzzy, c-format
+#: src/kvirc/kernel/kvi_ircconnection.cpp:1127, c-format
 msgid "Using server specific password (%s)"
-msgstr "Uso il nome utente specificato per il server (%Q)"
+msgstr "Uso la password specificata per il server (%s)"
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1083
 msgid "Using server specific real name (%Q)"
@@ -7224,7 +7216,7 @@ msgstr "Finestra non trovata."
 
 #: src/modules/window/libkviwindow.cpp:941
 msgid "Window type or 'all' expected as first parameter"
-msgstr ""
+msgstr "Mi aspetto il tipo finestra o 'all' come primo parametro"
 
 #: src/modules/spaste/libkvispaste.cpp:64
 msgid "Window with ID '%Q' not found"

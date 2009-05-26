@@ -1,27 +1,27 @@
 # translation of options_it.po to Italian
 # translation of options_it.po to
 # KVIrc OPTIONS module Italian traslation file
-# Italian translation file for KVIrc 3.0
+# Italian translation file for KVIrc 4.0
 # Copyright (C) Szymon Stefanek
 # This file is distributed under the same license as the KVIrc package.
 #
+#
 # Szymon Stefanek <pragma at kvirc dot net>, 2004.
 # Eva Schaller <eva@cyberbeat.it>, 2002,2003, 2004.
-# Elvio Basello <hellvis69@altervista.org>, 2005, 2006
 # Nate Grey <nate@paranoici.org>, 2004, 2005, 2006.
-#
+# Elvio Basello <hellvis69 at netsons dot org>, 2005, 2006-2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-26 21:51+0200\n"
-"PO-Revision-Date: 2009-01-27 16:31+0100\n"
+"PO-Revision-Date: 2009-05-27 01:19+0200\n"
 "Last-Translator: \n"
-"Language-Team: Italian <it@li.org>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
@@ -267,12 +267,11 @@ msgstr ""
 "modi utenti iniziali per questo server"
 
 #: src/modules/options/optw_servers.cpp:141
-#, fuzzy
 msgid ""
 "<center>If this network requires a password, put it in this field, otherwise "
 "leave it empty.</center>"
 msgstr ""
-"<center>Se il server richiede una password, inseriscila in questo campo, "
+"<center>Se la rete richiede una password, inseriscila in questo campo, "
 "altrimenti lascialo vuoto.</center>"
 
 #: src/modules/options/optw_highlighting.cpp:71
@@ -1137,7 +1136,6 @@ msgstr ""
 "trasparenti.<br>Devi scegliere un immagine di sfondo.</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:70
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image to below or check the \"Use compositing "
@@ -1145,10 +1143,9 @@ msgid ""
 msgstr ""
 "<center>Questa opzione fa sì che tutte le finestre di KVIrc siano "
 "trasparenti.<br>Devi scegliere un immagine di sfondo, o attivare l'opzione "
-"\"Usa il desktop di KDE per la trasparenza\".</center>"
+"\"Usa il composite per la vera trasparenza\".</center>"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:76
-#, fuzzy
 msgid ""
 "<center>This option makes all KVIrc windows look transparent.<br>You must "
 "choose a blending background image to below or check the \"Use desktop "
@@ -1156,7 +1153,7 @@ msgid ""
 msgstr ""
 "<center>Questa opzione fa sì che tutte le finestre di KVIrc siano "
 "trasparenti.<br>Devi scegliere un immagine di sfondo, o attivare l'opzione "
-"\"Usa il desktop di KDE per la trasparenza\".</center>"
+"\"Usa il desktop per la trasparenza\".</center>"
 
 #: src/modules/options/optw_highlighting.cpp:107
 msgid ""
@@ -2521,7 +2518,7 @@ msgstr "Porta alta:"
 
 #: src/modules/options/optw_highlighting.cpp:61
 msgid "Highlight every occurence of a word inside text"
-msgstr ""
+msgstr "Evidenzia ogni occorrenza della parola all'interno del testo"
 
 #: src/modules/options/optw_highlighting.cpp:68
 msgid "Highlight messages containing my nickname"
@@ -2529,7 +2526,7 @@ msgstr "Evidenzia i messaggi contenenti il mio nickname"
 
 #: src/modules/options/optw_highlighting.cpp:63
 msgid "Highlight only whole words using these word splitters:"
-msgstr ""
+msgstr "Evidenzia solo le parole intere usando questi separatori:"
 
 #: src/modules/options/optw_sound.cpp:290
 msgid "Highlighted message in inactive window"
@@ -3236,9 +3233,8 @@ msgid "Paste last channel log"
 msgstr "Incolla l'ultimo log del canale"
 
 #: src/modules/options/optw_query.cpp:92
-#, fuzzy
 msgid "Paste last query log"
-msgstr "Incolla l'ultimo log del canale"
+msgstr "Incolla l'ultimo log della query"
 
 #: src/modules/options/optw_query.cpp:97
 #: src/modules/options/optw_channel.cpp:130
@@ -4158,9 +4154,8 @@ msgid "Use bash-like nick completion"
 msgstr "Usa il completamento dei nick in stile bash"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:100
-#, fuzzy
 msgid "Use compositing for real transparency"
-msgstr "Usa il desktop di KDE per la trasparenza"
+msgstr "Usa il composite per la vera trasparenza"
 
 #: src/modules/options/optw_highlighting.cpp:102
 msgid "Use custom alert level"
@@ -4171,9 +4166,8 @@ msgid "Use default user mode"
 msgstr "Usa i modi utente predefiniti"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:116
-#, fuzzy
 msgid "Use desktop background for transparency"
-msgstr "Usa il desktop di KDE per la trasparenza"
+msgstr "Usa lo sfondo del desktop per la trasparenza"
 
 #: src/modules/options/optw_userlist.cpp:68
 msgid "Use different color for own nick:"
@@ -4256,9 +4250,8 @@ msgid "Use workaround for firewall"
 msgstr "Usa workaround per il firewall"
 
 #: src/modules/options/optw_input.cpp:152
-#, fuzzy
 msgid "Use zsh-like nick completion"
-msgstr "Usa il completamento dei nick in stile bash"
+msgstr "Usa il completamento dei nick in stile zsh"
 
 #: src/modules/options/optw_identity.cpp:634
 #: src/modules/options/optw_servers.cpp:541

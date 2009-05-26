@@ -1,20 +1,23 @@
-# translation of objects_it.po to Italian
-# Copyright (C) 2008 Szymon Stefanek
+# translation of notifier_it.po to
+# KVIrc Notifier modules Italian translation file
+# Italian translation file for KVIrc 4.0
+# Copyright (C) Szymon Stefanek
 # This file is distributed under the same license as the KVIrc package.
-# Elvio Basello <hellvis69 at netsons dot org>, 2008.
 #
+# Elvio Basello <hellvis69 at netsons dot org>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-26 21:51+0200\n"
-"PO-Revision-Date: 2009-01-30 20:08+0100\n"
+"PO-Revision-Date: 2009-05-27 01:15+0200\n"
 "Last-Translator: \n"
-"Language-Team: Italian <it@li.org>\n"
+"Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 0.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/objects/class_painter.cpp:647
 msgid " requires either an array as first parameter or 3 integers"
@@ -199,19 +202,16 @@ msgstr "Connessione fallita: "
 #: src/modules/objects/class_sql.cpp:240 src/modules/objects/class_sql.cpp:273
 #: src/modules/objects/class_sql.cpp:290 src/modules/objects/class_sql.cpp:307
 #: src/modules/objects/class_sql.cpp:324
-#, fuzzy
 msgid "Connection %Q does not exists"
-msgstr "L'oggetto non esiste"
+msgstr "La connessione %Q non esiste"
 
 #: src/modules/objects/class_sql.cpp:403
-#, fuzzy
 msgid "Connection %Q is not open!"
-msgstr "Il file non è aperto!"
+msgstr "La connessione %Q non è aperta!"
 
 #: src/modules/objects/class_sql.cpp:346
-#, fuzzy
 msgid "Connection query %Q does not exists"
-msgstr "L'oggetto non esiste"
+msgstr "La query della connessione %Q non esiste"
 
 #: src/modules/objects/class_xmlreader.cpp:358
 msgid "Data is not a memorybuffer object or string"
@@ -231,7 +231,7 @@ msgstr "La destinazione non è un oggetto"
 
 #: src/modules/objects/class_sql.cpp:207
 msgid "Duplicate connection name '%Q', old query connection removed"
-msgstr ""
+msgstr "Nome della connessione '%Q' duplicato, vecchia query rimossa"
 
 #: src/modules/objects/class_file.cpp:228
 msgid "Empty filename string"
@@ -388,7 +388,7 @@ msgstr "L'elemento indice [%d] è troppo grosso - passo a $count() - 1 [%d]"
 
 #: src/modules/objects/class_tablewidget.cpp:129
 msgid "Item out of the tablewidget size"
-msgstr ""
+msgstr "Elemento fuori dalla dimensione della tablewidget"
 
 #: src/modules/objects/class_file.cpp:597
 msgid "Lenght of hex string is not multiple of 2"
@@ -400,11 +400,11 @@ msgstr "Listen fallita"
 
 #: src/modules/objects/class_sql.cpp:200
 msgid "Missing Qt plugin for database %Q"
-msgstr ""
+msgstr "Manca il plugin Qt per il database %Q"
 
 #: src/modules/objects/class_painter.cpp:1054
 msgid "Missing filename"
-msgstr ""
+msgstr "Manca il nome del file"
 
 #: src/modules/objects/class_socket.cpp:705
 msgid "No IPv6 support in this executable"
@@ -415,9 +415,8 @@ msgid "No Layout associated to the widget "
 msgstr "Non c'è Layout associato alla widget"
 
 #: src/modules/objects/class_sql.cpp:364
-#, fuzzy
 msgid "No query connection is open"
-msgstr "Un'altra connessione in corso"
+msgstr "Nessuna connessione query aperta"
 
 #: src/modules/objects/class_socket.cpp:566
 msgid "No socket object specified"
@@ -441,7 +440,7 @@ msgstr "Nessun modo di apertura '%Q'"
 #: src/modules/objects/class_painter.cpp:1077
 #: src/modules/objects/class_painter.cpp:1102
 msgid "No valid paint device"
-msgstr ""
+msgstr "Nessun dispositivo di disegno valido"
 
 #: src/modules/objects/class_widget.cpp:1245
 #: src/modules/objects/class_widget.cpp:1251
@@ -531,7 +530,7 @@ msgstr "Uno dei parametri della tripletta non viene valutato come intero"
 
 #: src/modules/objects/class_sql.cpp:464
 msgid "Only memorybuffer class object is supported"
-msgstr ""
+msgstr "Solo la classe memorybuffer è supportata"
 
 #: src/modules/objects/class_widget.cpp:1786
 msgid "Parent must be a widget object"
@@ -571,12 +570,11 @@ msgstr "Processo annullato"
 
 #: src/modules/objects/class_sql.cpp:398
 msgid "Query  %Q already initializated"
-msgstr ""
+msgstr "Query %Q già inizializzata"
 
 #: src/modules/objects/class_sql.cpp:373
-#, fuzzy
 msgid "Query for connection %Q does not exists"
-msgstr "Il file '%Q' non esiste"
+msgstr "La query per la connessione %Q non esiste"
 
 #: src/modules/objects/class_file.cpp:332
 msgid "Read error occured!"
@@ -729,7 +727,7 @@ msgstr ""
 
 #: src/modules/objects/class_sql.cpp:470
 msgid "Type value %Q not supported"
-msgstr ""
+msgstr "Tipo %Q non supportato"
 
 #: src/modules/objects/class_painter.cpp:703
 msgid "Unknown '%Q' background mode"
@@ -760,9 +758,8 @@ msgid "Unknown alignment: '%Q'"
 msgstr "Allineamento '%Q' sconosciuto"
 
 #: src/modules/objects/class_pixmap.cpp:173
-#, fuzzy
 msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
-msgstr "Proporzioni sconosciute: uso il valore predefinito IgnoreAspectRatio"
+msgstr "Proporzioni %Q sconosciute - Cambio a KeepAspectRatio"
 
 #: src/modules/objects/class_painter.cpp:1504
 msgid "Unknown brush style '%Q'"
@@ -825,6 +822,7 @@ msgstr "Word wrap '%Q' sconosciuto"
 #: src/modules/objects/class_lineedit.cpp:471
 msgid "Unkonwn '%Q' completition mode, switching to default popupCompletition"
 msgstr ""
+"Modo di completamento '%Q' sconosciuto, cambio al default popupCompletition"
 
 #: src/modules/objects/class_file.cpp:441
 msgid "Unsupported datatype '%Q'"
