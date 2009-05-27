@@ -12,8 +12,8 @@ msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-05-26 21:51+0200\n"
-"PO-Revision-Date: 2009-05-27 00:32+0200\n"
-"Last-Translator: Elvio Basello <hellvis69@netsons.org>\n"
+"PO-Revision-Date: 2009-05-27 18:00+0200\n"
+"Last-Translator: \n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1654,8 +1654,9 @@ msgid "Can't resolve the localhost name"
 msgstr "Impossibile risolvere il nome del localhost"
 
 #: src/modules/term/termwidget.cpp:98
+#, fuzzy
 msgid "Can't retrieve the terminal emulation factory"
-msgstr ""
+msgstr "Impossibile recuperare l'emulazione del terminale"
 
 #: src/kvilib/core/kvi_error.cpp:144
 msgid "Can't send a zero-size file"
@@ -1666,6 +1667,8 @@ msgid ""
 "Can't set the IPv6 ident service protection level to unrestricted: the ident "
 "service won't be exposed to the internet"
 msgstr ""
+"Impossibile settare il livello di protezione del servizio ident su IPv6 a "
+"unrestricted: il servizio ident non verrà esposto su internet"
 
 #: src/modules/avatar/libkviavatar.cpp:258
 msgid "Can't set the current avatar to '%Q': can't load the image"
@@ -2297,6 +2300,17 @@ msgid ""
 "See the rijndael module documentation\n"
 "for more info on the algorithm used.\n"
 msgstr ""
+"Motorre crittografico basato sull'algoritmo\n"
+"Advanced Encryption Standard (AES)\n"
+"chiamato Rijndael.\n"
+"Il testo viene prima crittato con rijndael\n"
+"e poi convertito in notazione %s.\n"
+"Le chiavi usate sono lunghe %d bit e verranno riempite\n"
+"con zeri se le fornisci più corte.\n"
+"Se viene fornita solo una chiave, questo motore\n"
+"la userà sia per crittare che per decrittare.\n"
+"Guarda la documentazione del modulo rijndael\n"
+"per maggiori informazioni sugli algoritmi usati.\n"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:78
 msgid "Cryptography/text transformation"
@@ -2459,7 +2473,7 @@ msgstr "Non disturbare... sto guardando la TV"
 
 #: src/modules/setup/setupwizard.cpp:743
 msgid "Do not overwrite folder? - KVIrc"
-msgstr ""
+msgstr "Non sovrascrivere la cartella? - KVIrc"
 
 #: src/modules/addon/managementdialog.cpp:262
 msgid "Do you really want to uninstall the addon \"%1\" ?"
@@ -2531,8 +2545,9 @@ msgstr ""
 "nella posizione desiderata"
 
 #: src/modules/setup/setupwizard.cpp:209
+#, fuzzy
 msgid "Dreaded License Agreement"
-msgstr ""
+msgstr "Dreaded License Agreement"
 
 #: src/modules/ident/libkviident.cpp:498
 msgid "Dropping connection (request too long)"
@@ -2952,7 +2967,7 @@ msgstr "Successiva"
 
 #: src/modules/help/helpwindow.cpp:181 src/modules/help/helpwindow.cpp:190
 msgid "Full Text Search"
-msgstr ""
+msgstr "Ricerca Completa Del Testo"
 
 #: src/kvirc/ui/kvi_imagedialog.cpp:134
 msgid "Full path"
@@ -3199,7 +3214,7 @@ msgstr "Connessione identd chiusa dall'host remoto"
 
 #: src/modules/ident/libkviident.cpp:472
 msgid "Identd processing request"
-msgstr ""
+msgstr "Sto processando la richiesta identd"
 
 #: src/modules/ident/libkviident.cpp:446
 msgid "Identd socket error : dropping connection"
@@ -3564,7 +3579,6 @@ msgid "Joined on <b>%1</b>"
 msgstr "Entrato il <b>%1</b>"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:156
-#, fuzzy
 msgid "Just idling..."
 msgstr "Sto idlando..."
 
@@ -4801,6 +4815,18 @@ msgid ""
 "if you want to use CBC mode you must prefix\n"
 "your key(s) with \"cbc:\".\n"
 msgstr ""
+"Motore crittografico popolare basato sul vecchio\n"
+"algoritmo di crittazione Blowfish.\n"
+"Il testo viene prima crittato con Blowfish e poi\n"
+"convertito in notazione base64.\n"
+"Le chiavi usate devo avere lunghezza variabile e\n"
+"sono specificate come stringhe di caratteri.\n"
+"Puoi specificare chiavi lunghe fino a 56 byte (448 bit).\n"
+"Se viene fornita solo una chiave, questo motore\n"
+"la userà sia per crittare che per decrittare.\n"
+"Questo motore lavora in modo ECB come predefinito:\n"
+"se vuoi usare il modo CBC devi mettere prima delle tue\n"
+"chiavi \"cbc:\".\n"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2171 src/kvirc/ui/kvi_ircview.cpp:2224
 #, c-format
@@ -6274,6 +6300,13 @@ msgid ""
 "in a sealed wrapper that the reader must choose to open - e.g. for posting "
 "things that might offend some readers, or spoilers."
 msgstr ""
+"Il semplice algoritmo di crittazione di Cesare che rimpiazza ogni lettera "
+"con una "
+"13 posti avanti o indietro rispetto all'alfabeto; è usato per racchiudere il "
+"testo in "
+"un wrapper che il lettore deve scegliere per aprire - es. per scrivere frasi "
+"che "
+"potrebbero offendere qualcun'altro, oppure spoiler."
 
 #: src/modules/window/libkviwindow.cpp:1135
 msgid "The specified IRC context is not valid: creating a context free window"
@@ -6548,7 +6581,7 @@ msgstr "Tempo scaduto mentre aspettavo la richiesta: fermo la connessione"
 
 #: src/modules/url/libkviurl.cpp:159
 msgid "Timestamp"
-msgstr ""
+msgstr "Timestamp"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1006
 msgid "Tip for %Q: %Q"
@@ -7142,6 +7175,8 @@ msgstr "Attenzione - KVIrc"
 #: src/modules/links/linkswindow.cpp:261
 msgid "Warning: No root link was sent by the server, the stats may be invalid."
 msgstr ""
+"Attenzione: nessun link radice è stato inviato dal server, le statistiche "
+"potrebbero essere non valide."
 
 #: src/kvirc/kernel/kvi_ircsocket.cpp:811
 msgid "We can accept auth method 0 (no auth)"
@@ -7185,7 +7220,7 @@ msgstr "Risposta al Whois utente"
 #: src/modules/links/linkswindow.cpp:304
 #, c-format
 msgid "Wildcard servers (hubs?): %d"
-msgstr ""
+msgstr "Wildcard server (hub?): %d"
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:601
 #, c-format
