@@ -1,7 +1,7 @@
 # CMakeLists for data/
 
 # Find subdirs
-SUBDIRS(applnk config defscript deftheme helppics icons man msgcolors pics)
+SUBDIRS(applnk config defscript deftheme helppics icons man mimetypes msgcolors pics)
 
 IF(APPLE)
 	# MacOS X
