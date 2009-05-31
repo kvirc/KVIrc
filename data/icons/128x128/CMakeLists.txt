@@ -4,10 +4,10 @@ SET(iconapps
 )
 
 SET(iconmime
-	kvs.png
-	kvc.png
-	kvt.png
-	kva.png
+	text-x-kvs.png
+	text-x-kvc.png
+	application-x-kvt.png
+	application-x-kva.png
 )
 
 IF(UNIX)
