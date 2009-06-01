@@ -579,10 +579,8 @@ static bool perl_module_init(KviModule * m)
 	return true;
 }
 
-static bool perl_module_cleanup(KviModule *m)
+static bool perl_module_cleanup(KviModule *)
 {
-#ifdef COMPILE_PERL_SUPPORT
-#endif // COMPILE_PERL_SUPPORT
 	return true;
 }
 

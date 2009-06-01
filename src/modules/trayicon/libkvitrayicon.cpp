@@ -244,6 +244,7 @@ void KviTrayIcon::doAway(bool)
 			{
 				KviConsole* pConsole=(KviConsole*)wnd;
 				if(pConsole->isConnected())
+				{
 					if(id==-2)
 					{
 						pConsole->connection()->sendFmtData("AWAY");
@@ -252,13 +253,16 @@ void KviTrayIcon::doAway(bool)
 							pConsole->connection()->encodeText(KVI_OPTION_STRING(KviOption_stringAwayMessage)).data()
 							);
 					}
+				}
 			}
  			++it;
 		}
 	} else {
 		KviConsole* pConsole=g_pApp->findConsole((unsigned int)id);
 		if(pConsole)
+		{
 			if(pConsole->isConnected())
+			{
 				if(pConsole->connection()->userInfo()->isAway())
 				{
 					pConsole->connection()->sendFmtData("AWAY");
@@ -267,6 +271,8 @@ void KviTrayIcon::doAway(bool)
 						pConsole->connection()->encodeText(KVI_OPTION_STRING(KviOption_stringAwayMessage)).data()
 						);
 				}
+			}
+		}
 	}
 }
 
