@@ -409,6 +409,11 @@ ELSE()
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_OSS)
 ENDIF()
 
+#winmm - win32
+IF(WIN32)
+	LIST(APPEND CMAKE_STATUS_AUDIO_BACKENDS "WinMM")
+ENDIF()
+
 ############################################################################
 # Check for KDE4
 ############################################################################
