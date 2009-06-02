@@ -1371,33 +1371,30 @@ defpopup(hostpopup)
 
 	item(Telnet to $0,25)
 	{
-		if("$system.ostype" == "unix")run xterm -e telnet $0
-		else run telnet $0
+		system.runcmd telnet $0
 	}
 
 	separator
 
 	item(Traceroute $0,42)
 	{
-		if("$system.ostype" == "unix")run xterm -e /bin/sh -c "echo \"Traceroute to $0...\" && traceroute $0 && cat"
-		else run tracert $0
+		if("$system.ostype" == "unix")system.runcmd /bin/sh -c "echo \"Traceroute to $0...\" && traceroute $0"
+		else system.runcmd tracert $0
 	}
 
 	item(Traceroute6 $0,42)
 	{
-		if("$system.ostype" == "unix")run xterm -e /bin/sh -c "echo \"Traceroute (inet6) to $0...\" && traceroute6 $0 && cat"
-		else run tracert6 $0
+		if("$system.ostype" == "unix")system.runcmd /bin/sh -c "echo \"Traceroute (inet6) to $0...\" && traceroute6 $0"
+		else system.runcmd tracert6 $0
 	}
 
 	item(Ping $0,147)
 	{
-		if("$system.ostype" == "unix")run xterm -e /bin/sh -c "echo \"Ping $0...\" && ping $0 && cat"
-		else run ping $0
+		system.runcmd ping $0
 	}
 
 	item(Ping6 $0,147)
 	{
-		if("$system.ostype" == "unix")run xterm -e /bin/sh -c "echo \"Ping (inet6) $0...\" && ping6 $0 && cat"
-		else run ping6 $0
+		system.runcmd ping6 $0
 	}
 }

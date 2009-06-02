@@ -5,6 +5,7 @@
 //
 //   This system is part of the KVirc irc client distribution
 //   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright ©        2009 Kai Wasserbäch <debian@carbon-project.org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -46,6 +47,11 @@
 
 #ifdef COMPILE_KDE_SUPPORT
 	#include <QtDBus/QtDBus>
+	#include <KToolInvocation>  // invokeTerminal() for system.runcmd
+#else                           // tools we need to work around the absence of
+                                // invokeTerminal()
+	#include <QProcess>
+	#include <QList>
 #endif
 
 KviPluginManager * g_pPluginManager;
@@ -668,6 +674,71 @@ static bool system_kvs_fnc_plugin_call(KviKvsModuleFunctionCall *c)
 	return g_pPluginManager->pluginCall(c);
 }
 
+/*
+    @doc: system.runcmd
+    @type:
+        command
+    @title:
+        system.runcmd
+    @short:
+        Runs the specified command in a terminal
+    @syntax:
+        system.runcmd <command:string>
+    @description:
+        Tries to run the given command in the system's default (X)
+        terminal (emulator).
+        [br]
+        [br]
+        [b]Warning: Execute only harmless commands through this![/b]
+	@examples:
+		[example]
+			system.runcmd "ping $0"
+		[/example]
+*/
+// implements https://svn.kvirc.de/kvirc/ticket/459
+static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
+{
+	QString szCommand;
+
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("command",KVS_PT_NONEMPTYSTRING,KVS_PF_APPENDREMAINING,szCommand)
+	KVSM_PARAMETERS_END(c)
+
+	// check for empty szCommand
+	if(!szCommand.isEmpty())
+	{
+		KviQCString szCmd = szCommand.toLocal8Bit();
+#ifdef COMPILE_KDE_SUPPORT          // We have invokeTerminal().
+		KToolInvocation::invokeTerminal(szCmd.data());
+#else                               // No invokeTerminal() for us, we'll use a
+                                    // combination of QList and QProcess.
+
+		QProcess oProc;
+		QStringList args;
+		QStringList szTerminals;
+#ifdef COMPILE_ON_WINDOWS           // Only »cmd.exe /k« in the list.
+		szTerminals.append("cmd.exe");
+		args << "/k" << szCommand;
+#else
+		// List: x-terminal-emulator, terminal, xterm
+		szTerminals.append("x-terminal-emulator");
+		szTerminals.append("terminal");
+		szTerminals.append("xterm");
+		args << "-e" << szCommand;
+#endif                              // endif COMPILE_ON_WINDOWS
+
+		QString szTerm;
+		while(!szTerminals.isEmpty())
+		{
+			szTerm=szTerminals.takeFirst();
+			if (oProc.startDetached(szTerm, args))
+				break;
+		}
+#endif                              // endif COMPILE_KDE_SUPPORT
+	}
+	return true;
+}
+
 static bool system_module_init(KviModule * m)
 {
 	KVSM_REGISTER_FUNCTION(m,"ostype",system_kvs_fnc_ostype);
@@ -687,6 +758,7 @@ static bool system_module_init(KviModule * m)
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setenv",system_kvs_cmd_setenv);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setClipboard",system_kvs_cmd_setClipboard);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"setSelection",system_kvs_cmd_setSelection);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"runcmd",system_kvs_cmd_runcmd);
 
 	g_pPluginManager = new(KviPluginManager);
 
