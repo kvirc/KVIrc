@@ -1378,13 +1378,13 @@ defpopup(hostpopup)
 
 	item(Traceroute $0,42)
 	{
-		if("$system.ostype" == "unix")system.runcmd /bin/sh -c "echo \"Traceroute to $0...\" && traceroute $0"
+		if("$system.ostype" == "unix")system.runcmd traceroute $0"
 		else system.runcmd tracert $0
 	}
 
 	item(Traceroute6 $0,42)
 	{
-		if("$system.ostype" == "unix")system.runcmd /bin/sh -c "echo \"Traceroute (inet6) to $0...\" && traceroute6 $0"
+		if("$system.ostype" == "unix")system.runcmd traceroute6 $0"
 		else system.runcmd tracert6 $0
 	}
 
