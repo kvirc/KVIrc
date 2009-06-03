@@ -51,7 +51,7 @@
 #else                           // tools we need to work around the absence of
                                 // invokeTerminal()
 	#include <QProcess>
-	#include <QList>
+	#include <QStringList>
 #endif
 
 KviPluginManager * g_pPluginManager;
@@ -711,7 +711,7 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 #ifdef COMPILE_KDE_SUPPORT          // We have invokeTerminal().
 		KToolInvocation::invokeTerminal(szCmd.data());
 #else                               // No invokeTerminal() for us, we'll use a
-                                    // combination of QList and QProcess.
+                                    // combination of QStringList and QProcess.
 
 		QProcess oProc;
 		QStringList args;
