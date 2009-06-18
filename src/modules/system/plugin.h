@@ -28,6 +28,7 @@
 #include "kvi_module.h"
 #include "kvi_pointerhashtable.h"
 #include <QLibrary>
+
 typedef int (*plugin_function)(int argc, char* argv[], char ** buffer);
 typedef int (*plugin_unload)();
 typedef int (*plugin_canunload)();
