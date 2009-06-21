@@ -68,7 +68,7 @@ ELSE()
 		MESSAGE("Subversion not found. No revision number will be used")
 	ELSE()
 		SET(CMAKE_KVIRC_BUILD_REVISION ${MANUAL_REVISION})
-		MESSAGE("-- Current revision has been set manually to ${MANUAL_REVISION}")
+		MESSAGE("-- Current revision has been manually set to ${MANUAL_REVISION}")
 	ENDIF()
 ENDIF()
 
@@ -351,7 +351,7 @@ ELSE()
 	SET(CMAKE_STATUS_X11_SUPPORT "Not needed")
 ENDIF()
 
-# Qt-Phonon support
+# Phonon support
 OPTION(WANT_PHONON "Whether to compile Phonon support" ON)
 IF(WITHOUT_PHONON)
 	SET(WANT_PHONON OFF)
@@ -604,24 +604,15 @@ IF(WITHOUT_PYTHON)
 	SET(WANT_PYTHON OFF)
 ENDIF()
 IF(WANT_PYTHON)
-	FIND_PACKAGE(PythonInterp)
-	IF(PYTHONINTERP_FOUND)
+	FIND_PACKAGE(Python)
+	IF(PYTHON_FOUND)
 		SET(COMPILE_PYTHON_SUPPORT 1)
 		SET(CMAKE_STATUS_PYTHON_SUPPORT "Yes")
 
-		# Get the right flags to link with
-		EXECUTE_PROCESS(
-			COMMAND ${PYTHON_EXECUTABLE}-config --ldflags
-			OUTPUT_VARIABLE PYTHON_LINK_FLAGS
-		)
+		SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PYTHON_LFLAGS}")
+		LIST(APPEND LIBS ${PYTHON_LIBRARY})
 
-		# Remove new line characters
-		STRING(REGEX REPLACE "(\r?\n)+$" "" PYTHON_LINK_FLAGS "${PYTHON_LINK_FLAGS}")
-
-		SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PYTHON_LINK_FLAGS}")
-
-		# Remove leading and trailing spaces (string strip)
-		STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+		INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
 	ELSE()
 		SET(CMAKE_STATUS_PYTHON_SUPPORT "No")
 	ENDIF()
@@ -711,7 +702,6 @@ IF(WANT_DCC_VOICE)
 		SET(COMPILE_DISABLE_DCC_VOICE 1)
 		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DCC_VOICE)
 		SET(CMAKE_STATUS_DCC_VOICE_SUPPORT "No, soundcard.h not found")
-
 	ENDIF()
 ELSE()
 	SET(COMPILE_DISABLE_DCC_VOICE 1)
@@ -770,7 +760,6 @@ ENDIF()
 ############################################################################
 # Win32 mingw/cmake build checks
 ############################################################################
-
 IF(WIN32)
 	ADD_DEFINITIONS(-D_WIN32_WINNT=0x501 -DWINVER=0x501)
 ENDIF()
@@ -788,7 +777,7 @@ IF(MINGW)
 ENDIF()
 
 IF(MSVC)
-	      ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
+	ADD_DEFINITIONS(-D_CRT_SECURE_NO_WARNINGS)
 ENDIF()
 
 ############################################################################
@@ -1122,7 +1111,6 @@ MESSAGE(STATUS "  System memmove Support      : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SU
 MESSAGE(STATUS "  GSM Support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
 MESSAGE(STATUS "  DCC Voice Support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
 MESSAGE(STATUS "  Apple Universal Binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
-
 MESSAGE(STATUS "  ix86 asm Support            : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
 MESSAGE(STATUS "  Memory Profile Support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
 MESSAGE(STATUS "  Memory Checks Support       : ${CMAKE_STATUS_MEMORY_CHECKS_SUPPORT}")
