@@ -716,7 +716,7 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 		QProcess oProc;
 		QStringList args;
 		QStringList szTerminals;
-#ifdef COMPILE_ON_WINDOWS           // Only »cmd.exe /k« in the list.
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)           // Only »cmd.exe /k« in the list.
 		szTerminals.append("cmd.exe");
 		args << "/k" << szCommand;
 #else
