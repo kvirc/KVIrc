@@ -47,6 +47,10 @@ SET(LIB_SUFFIX
 )
 
 # Get revision number from SVN
+SET(MANUAL_REVISION
+	CACHE STRING "Manually set the revision number if subversion is not found"
+)
+
 FIND_PACKAGE(Subversion)
 IF(Subversion_FOUND)
 	MESSAGE("-- Found Subversion ${Subversion_VERSION_SVN}")
@@ -58,7 +62,14 @@ IF(Subversion_FOUND)
 		MESSAGE("-- No Subversion working copy found")
 	ENDIF()
 ELSE()
-	MESSAGE("Subversion not found. No revision number will be used")
+	STRING(COMPARE EQUAL "${MANUAL_REVISION}" "" MANUAL_REVISION_UNSET)
+	
+	IF(MANUAL_REVISION_UNSET)
+		MESSAGE("Subversion not found. No revision number will be used")
+	ELSE()
+		SET(CMAKE_KVIRC_BUILD_REVISION ${MANUAL_REVISION})
+		MESSAGE("-- Current revision has been set manually to ${MANUAL_REVISION}")
+	ENDIF()
 ENDIF()
 
 # Get the build date

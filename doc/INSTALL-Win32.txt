@@ -20,13 +20,13 @@ Requisites:
   - CMake from Kitware:
       [Configuration tool; needed to compile KVIrc, mandatory]
       Download it from http://www.cmake.org
-      The package you want is called "Windows (Win32 Installer) cmake-2.6.1-win32-x86.exe" (version number may vary).
+      The package you want is called "Windows (Win32 Installer) cmake-2.6.4-win32-x86.exe" (version number may vary).
       You need at least version 2.6 to compile KVirc.
 
   - Qt 4 from Trolltech:
       [Graphic library, mandatory]
-      Download it from http://trolltech.com/developer/downloads/qt/windows
-      The package you want is called "qt-win-opensource-4.4.3-mingw.exe" (version number may vary).
+      Download it from http://www.qtsoftware.com/downloads/windows-cpp
+      The package you want is called "qt-win-opensource-4.5.1-mingw.exe" (version number may vary).
       You need at least Qt 4.4 upwards.
 
   - MinGW from the MinGW team:
@@ -35,13 +35,13 @@ Requisites:
       MinGW is still based on the 3.x brach of gcc; if you want to test the new gcc4 (it should create faster executables), follow these
       instructions:
       Point your browset at: http://sourceforge.net/projects/mingw/ , follow the "download" link and get the "Automated MinGW Installer MinGW 5.1.4" (version number may vary) and the "GCC Version 4 Testing: gcc-4.3.0-20080502-mingw32-alpha" packages (version may vary). First execute the automated installer, then uncompress the gcc4 archive and copy it over the installation directory created by the installer (overwriting the old gcc3). You can also use TDM's GCC/mingw32 Builds (these unofficial mingw packages ships with gcc4 included) you can find here: http://www.tdragon.net/recentgcc/.
-      Beware that the current Qt version (4.4.3) is packing some old win32api headers, that brakes compilation with gcc4. You can read more info about
+      Beware that old Qt versions (4.4.x) are packing some old win32api headers, that breaks compilation with gcc4. You can read more info about
       this issue here: http://www.qtcentre.org/forum/f-installation-and-deployment-5/t-building-qt-443-with-gcc-432-on-windows-xp-16697.html
 
   - OpenSSL compiled for Win32 from Shining Light Productions:
       [Enc/Decrypt library; needed to secure your irc sessions, optional]
       Download it from http://www.slproweb.com/products/Win32OpenSSL.html
-      The package you want is called "Win32 OpenSSL v0.9.8g" (version number may vary; there should be a notice like "Recommended for software developers" in the package description).
+      The package you want is called "Win32 OpenSSL v0.9.8k" (version number may vary; there should be a notice like "Recommended for software developers" in the package description).
       Any recent version should work; general rule: more recent means more secure.
       Note: probably GnuWin32's version (see infos for Zlib) works too.
 
@@ -61,7 +61,7 @@ Requisites:
 
   - Phonon smplayer/vlc frontend for MinGW:
       [Multimedia library; needed to play multimedia files using phonon, optional]
-      (For the little story, the default Windows backend for Phonon is based on DirectShow 9 and MinGW is not capable of compiling DS9 code, that's why Trolltech doesn't ship Phonon with Qt-4.4 MinGW)
+      (For the little story, the default Windows backend for Phonon is based on DirectShow 9 and MinGW is not capable of compiling it, that's why Trolltech doesn't ship the DirectShow 9 backend with Qt for MinGW)
       Get it at http://code.google.com/p/phonon-vlc-mplayer/; it needs some tweaking to work;
       Please refer to the "Getting phonon to work with mplayer frontend" at the end of this document.
 
@@ -125,9 +125,6 @@ Common errors, pitfalls, ..
   <command line>:15:1: warning: this is the location of the previous definition
   ----------
   This is a simple warning, it doesn't block compilation or affects any functionality.
-
-- Rijndael module isn't compiling/loading/working at all:
-  It is excluded from the mingw port by now, because it uses class templates and virtual functions in a way gcc 3 () can't understand well.
 
 - On modules compilation we get a warning like this one:
   ----------
