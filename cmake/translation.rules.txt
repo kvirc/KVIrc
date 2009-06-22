@@ -43,23 +43,23 @@ IF(USE_GETTEXT_TRANSLATIONS)
 
 		# All files in a new line
 		GET_FILENAME_COMPONENT(PO_DIR ${_absPotFile} PATH)
-		FILE(WRITE ${PO_DIR}/filelist.txt "")
+		FILE(WRITE ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt "")
 
 		SET(XGETTEXT_FILES_STRING)
 		FOREACH(ARG ${XGETTEXT_FILES})
-			FILE(APPEND ${PO_DIR}/filelist.txt ${ARG} "\n")
+			FILE(APPEND ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt ${ARG} "\n")
 		ENDFOREACH()
 
 		IF(TRANSLATION_KVIRC_CORE)
 			ADD_CUSTOM_COMMAND(
 				COMMENT "Extracting messages for ${_potBasename}"
-				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr -f ${PO_DIR}/filelist.txt
+				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
 				TARGET messages-extract-${_potBasename}
 			)
 		ELSE()
 			ADD_CUSTOM_COMMAND(
 				COMMENT "Extracting ctx messages for ${_potBasename}"
-				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr_ctx -k__tr_no_lookup_ctx -k__tr2qs_ctx -k__tr2wc_ctx -k__tr2ws_ctx -f ${PO_DIR}/filelist.txt
+				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr_ctx -k__tr_no_lookup_ctx -k__tr2qs_ctx -k__tr2wc_ctx -k__tr2ws_ctx -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
 				TARGET messages-extract-${_potBasename}
 			)
 		ENDIF()
