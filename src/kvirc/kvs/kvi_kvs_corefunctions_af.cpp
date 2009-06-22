@@ -782,7 +782,7 @@ namespace KviKvsCoreFunctions
 				[cmd]echo[/cmd] $date("d/m/Y H:M:S")
 			[/example]
 		@seealso:
-			[fnc]$time[/fnc], [fnc]$unixtime[/fnc]
+			[fnc]$unixtime[/fnc], [fnc]$hptimestamp[/fnc]
 	*/
 
 	KVSCF(date)

@@ -404,7 +404,7 @@ KviStatusBarClock::~KviStatusBarClock()
 {
 }
 
-void KviStatusBarClock::timerEvent(QTimerEvent * e)
+void KviStatusBarClock::timerEvent(QTimerEvent *)
 {
 	kvi_time_t tt = kvi_unixTime();
 	struct tm * t = m_bUtc ? gmtime(&tt) : localtime(&tt);
@@ -555,7 +555,7 @@ KviStatusBarConnectionTimer::~KviStatusBarConnectionTimer()
 {
 }
 //g_pApp->topmostConnectedConsole()
-void KviStatusBarConnectionTimer::timerEvent(QTimerEvent * e)
+void KviStatusBarConnectionTimer::timerEvent(QTimerEvent *)
 {
 	if(m_bTotal)
 	{
