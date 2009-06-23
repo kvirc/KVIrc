@@ -116,6 +116,13 @@ namespace KviKvsCoreSimpleCommands
 		QString szSwitches="";
 		if(KVSCSC_pSwitches->find('m',"mdi"))szSwitches.append("-m ");
 		if(KVSCSC_pSwitches->find('n',"new"))szSwitches.append("-n ");
+
+		if(szParams[0]==QChar('$'))
+			szParams.prepend('\\');
+
+		if(szParams.endsWith("()"))
+			szParams.chop(2);
+
 		KviKvsScript s("help","help.open " + szSwitches + szParams);
 		s.run(KVSCSC_pContext->window());
 
