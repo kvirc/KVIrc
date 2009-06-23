@@ -81,12 +81,11 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)
 		KVSCSC_PARAMETERS_END
 
-		KVSCSC_REQUIRE_CONNECTION
-
 		switch(KVSCSC_pWindow->type())
 		{
 			case KVI_WINDOW_TYPE_CHANNEL:
 			case KVI_WINDOW_TYPE_QUERY:
+				KVSCSC_REQUIRE_CONNECTION
 			case KVI_WINDOW_TYPE_DCCCHAT:
 				KVSCSC_pWindow->ownAction(szText);
 			break;
