@@ -9,16 +9,16 @@ IF(UNIX)
 		# Assume linux
 		FOREACH(MAN ${MANS})
 			# Grep the language code
-			# FIXME: this doesn't work with codes like "pt_BR"
-			STRING(SUBSTRING ${MAN} 6 2 LANGCODE)
+			SET(LANGCODE ${MAN})
+			STRING(REPLACE "kvirc." "" LANGCODE ${LANGCODE})
+			STRING(REPLACE ".1" "" LANGCODE ${LANGCODE})
 
 			# If the man is in English, it uses the root directory
 			STRING(COMPARE EQUAL ${LANGCODE} "en" STREQUAL)
 			IF(${STREQUAL})
-				STRING(REGEX REPLACE ".en" "" MAN ${MAN})
-				INSTALL(FILES ${MAN} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man1/)
+				INSTALL(FILES ${MAN} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/man1/ RENAME "kvirc.1")
 			ELSE()
-				INSTALL(FILES ${MAN} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/${LANGCODE}/man1/)
+				INSTALL(FILES ${MAN} DESTINATION ${CMAKE_INSTALL_PREFIX}/share/man/${LANGCODE}/man1/ RENAME "kvirc.1")
 			ENDIF()
 		ENDFOREACH()
 	ENDIF()
