@@ -43,8 +43,6 @@
 KviActionDrawer::KviActionDrawer(QWidget * pParent)
 : QTabWidget(pParent)
 {
-	setMinimumWidth(400);
-	setMinimumHeight(300);
 }
 
 KviActionDrawer::~KviActionDrawer()
@@ -123,16 +121,6 @@ KviActionDrawerPageListWidget::KviActionDrawerPageListWidget(KviActionDrawerPage
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setDragEnabled(true);
 	setSortingEnabled(true);
-	setMinimumHeight(400);
-	setMinimumWidth(380);
-
-	QString szPic;
-	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
-	szPic.replace('\\',"/");
-
-	szPic += "/kvi_actiondrawer.png";
-	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
-	setStyleSheet(szStyle);
 }
 
 KviActionDrawerPageListWidget::~KviActionDrawerPageListWidget()

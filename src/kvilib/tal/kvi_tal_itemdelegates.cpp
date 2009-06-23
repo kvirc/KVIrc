@@ -78,7 +78,7 @@ void KviTalIconAndRichTextItemDelegate::paint(QPainter * pPainter, const QStyleO
 	doc.setHtml(szText);
 	doc.setDefaultFont(pPainter->font());
 	pPainter->translate(option.rect.x()+iAfterIcon,option.rect.y()+LVI_BORDER);
-	doc.setTextWidth(option.rect.width()-10);
+	doc.setTextWidth(option.rect.width()-32);
 	QRect cliprect = QRect(QPoint(0,0),QSize(option.rect.width()-iAfterIcon,option.rect.height()-(LVI_BORDER*2)-4));
 	doc.drawContents(pPainter,cliprect);
 	pPainter->restore();
