@@ -121,12 +121,7 @@ void KviKvsKernel::completeCommand(const QString &szCommandBegin,KviPointerList<
 		COMPLETE_COMMAND_BY_DICT(KviKvsSpecialCommandParsingRoutine,m_pSpecialCommandParsingRoutineDict)
 		COMPLETE_COMMAND_BY_DICT(KviKvsCoreCallbackCommandExecRoutine,m_pCoreCallbackCommandExecRoutineDict)
 
-		//KviPointerList<QString> lModules;
-		//lModules.setAutoDelete(true);
 		g_pModuleManager->completeModuleNames(szCommandBegin,pMatches);
-		//QString szEmpty = "";
-		//for(QString * pszModuleName = lModules.first();pszModuleName;pszModuleName = lModules.next())
-			//completeModuleCommand(*pszModuleName,szEmpty,pMatches);
 
 		KviKvsAliasManager::instance()->completeCommand(szCommandBegin,pMatches);
 	} else {
@@ -174,12 +169,7 @@ void KviKvsKernel::completeFunction(const QString &szFunctionBegin,KviPointerLis
 			++it;
 		}
 
-		KviPointerList<QString> lModules;
-		lModules.setAutoDelete(true);
-		g_pModuleManager->completeModuleNames(szFunctionBegin,&lModules);
-		QString szEmpty = "";
-		for(QString * pszModuleName = lModules.first();pszModuleName;pszModuleName = lModules.next())
-			completeModuleFunction(*pszModuleName,szEmpty,pMatches);
+		g_pModuleManager->completeModuleNames(szFunctionBegin,pMatches);
 
 		KviPointerList<QString> lAliases;
 		lAliases.setAutoDelete(true);
