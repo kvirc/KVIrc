@@ -204,7 +204,6 @@ KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &
 
 	QGridLayout * g = new QGridLayout(this);
 
-
 	QString msg = "<center>";
 	msg += __tr2qs_ctx("Please select an avatar image. " \
 				"The full path to a local file or an image on the Web can be used.<br>" \
@@ -227,7 +226,9 @@ KviAvatarSelectionDialog::KviAvatarSelectionDialog(QWidget * par,const QString &
 	QPushButton * b = new QPushButton(__tr2qs_ctx("&Browse...","options"),this);
 	connect(b,SIGNAL(clicked()),this,SLOT(chooseFileClicked()));
 	g->addWidget(b,1,2);
-	KviTalHBox * h = new KviTalHBox(this);h->setSpacing(8);
+
+	KviTalHBox * h = new KviTalHBox(this);
+	h->setSpacing(8);
 	g->addWidget(h,2,1,1,2);
 	b = new QPushButton(__tr2qs_ctx("&OK","options"),h);
 	b->setMinimumWidth(80);
@@ -260,12 +261,15 @@ void KviAvatarSelectionDialog::cancelClicked()
 void KviAvatarSelectionDialog::chooseFileClicked()
 {
 	QString tmp;
- 	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs_ctx("Choose an Image File - KVIrc","options"),
-		QString(),KVI_FILTER_IMAGE,false,true,this))
+	//QString szFilter = "*.jpg; *.png";
+ 	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs_ctx("Choose an Image File - KVIrc","options"),QString(),KVI_FILTER_IMAGE,false,true,this))
+	//if(KviFileDialog::askForOpenFileName(tmp,__tr2qs_ctx("Choose an Image File - KVIrc","options"),QString(),szFilter,false,true,this))
 	{
 		m_pLineEdit->setText(tmp);
 	}
 }
+
+//static bool askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial = QString(), const QString & szFilter = QString(), bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
 
 void KviAvatarSelectionDialog::closeEvent(QCloseEvent * e)
 {
