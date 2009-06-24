@@ -256,7 +256,6 @@ void KviMdiManager::childMinimized(KviMdiChild * lpC, bool bWasMaximized)
 	{
 		if(bWasMaximized)
 		{
-			m_bInSDIMode = false;
 			if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
 		}
 		focusTopChild();
