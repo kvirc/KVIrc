@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: perl_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-04-15 00:56+0200\n"
+"POT-Creation-Date: 2009-06-24 02:09+0200\n"
 "PO-Revision-Date: 2009-02-10 20:11+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -19,23 +19,23 @@ msgstr ""
 "X-Generator: Lokalize 0.3\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/perlcore/libkviperlcore.cpp:236
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/perlcore/libkviperlcore.cpp:236
 msgid "Internal error: perl interpreter not initialized"
 msgstr "Interner Fehler: Perl-Interpreter nicht initialisiert"
 
-#: src/modules/perl/libkviperl.cpp:477
-#: src/modules/perl/libkviperl.cpp:481
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/perl/libkviperl.cpp:477
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/perl/libkviperl.cpp:481
 msgid "Perl execution error:"
 msgstr "Perl-Ausführungsfehler:"
 
-#: src/modules/perl/libkviperl.cpp:47
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/perl/libkviperl.cpp:47
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr ""
 "Das perlcore-Modul kann nicht geladen werden: Perl-Unterstützung nicht "
 "verfügbar"
 
-#: src/modules/perl/libkviperl.cpp:460
-#: src/modules/perl/libkviperl.cpp:534
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/perl/libkviperl.cpp:460
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"
@@ -43,12 +43,12 @@ msgstr ""
 "Das Perlcore-Modul konnte den Code nicht ausführen: Irgendetwas stimmt mit "
 "der Perl-Unterstützung nicht"
 
-#: src/modules/perl/libkviperl.cpp:61
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/perl/libkviperl.cpp:61
 msgid "This KVIrc executable has been compiled without perl scripting support"
 msgstr ""
 "Diese Version von KVIrc wurde ohne Perl-Skript-Unterstützung kompiliert"
 
-#: src/modules/perl/libkviperl.cpp:48
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/perl/libkviperl.cpp:48
 msgid "To see more details about loading failure try /perlcore.load"
 msgstr ""
 "Um mehr Details über den Fehler beim Laden zu erfahren /perlcore.load "
