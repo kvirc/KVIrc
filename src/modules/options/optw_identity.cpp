@@ -261,15 +261,11 @@ void KviAvatarSelectionDialog::cancelClicked()
 void KviAvatarSelectionDialog::chooseFileClicked()
 {
 	QString tmp;
-	//QString szFilter = "*.jpg; *.png";
- 	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs_ctx("Choose an Image File - KVIrc","options"),QString(),KVI_FILTER_IMAGE,false,true,this))
-	//if(KviFileDialog::askForOpenFileName(tmp,__tr2qs_ctx("Choose an Image File - KVIrc","options"),QString(),szFilter,false,true,this))
+	if(KviFileDialog::askForOpenFileName(tmp,__tr2qs_ctx("Choose an Image File - KVIrc","options"),QString(),KVI_FILTER_IMAGE,false,true,this))
 	{
 		m_pLineEdit->setText(tmp);
 	}
 }
-
-//static bool askForOpenFileName(QString & szBuffer, const QString & szCaption, const QString & szInitial = QString(), const QString & szFilter = QString(), bool bShowHidden = false, bool bShowNative = true, QWidget * pParent = 0);
 
 void KviAvatarSelectionDialog::closeEvent(QCloseEvent * e)
 {
