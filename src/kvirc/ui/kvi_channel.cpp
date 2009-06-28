@@ -923,28 +923,31 @@ void KviChannel::getWindowListTipText(QString & szBuffer)
 	KviChannelActivityStats cas;
 	getChannelActivityStats(&cas);
 
-
+	//FIXME hardcoding styles sucks
 	if(cas.lTalkingUsers.count() > 0)
 	{
 		if((cas.lTalkingUsers.count() < 3) && (cas.lWereTalkingUsers.count() > 0))
 		{
-			szBuffer += "<tr><td bgcolor=\"#E0E0E0\">";
+			szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 			getTalkingUsersStats(szBuffer,cas.lWereTalkingUsers,true);
+			szBuffer += "</font>";
 			szBuffer += szRowEnd;
 		}
-		szBuffer += "<tr><td bgcolor=\"#E0E0E0\">";
+		szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 		getTalkingUsersStats(szBuffer,cas.lTalkingUsers,false);
+		szBuffer += "</font>";
 		szBuffer += szRowEnd;
 	} else {
 		if(cas.lWereTalkingUsers.count() > 0)
 		{
-			szBuffer += "<tr><td bgcolor=\"#E0E0E0\">";
+			szBuffer += "<tr><td bgcolor=\"#E0E0E0\"><font color=\"#000000\">";
 			getTalkingUsersStats(szBuffer,cas.lWereTalkingUsers,true);
+			szBuffer += "</font>";
 			szBuffer += szRowEnd;
 		}
 	}
 
-	szBuffer += "<tr><td bgcolor=\"#A0A0A0\"><b>";
+	szBuffer += "<tr><td bgcolor=\"#A0A0A0\"><b><font color=\"#000000\">";
 
 	if(cas.dActionsPerMinute < 0.1)
 		szBuffer += __tr2qs("No activity");
@@ -972,7 +975,7 @@ void KviChannel::getWindowListTipText(QString & szBuffer)
 		szBuffer += "]";
 	}
 
-	szBuffer += "</b></td></tr>";
+	szBuffer += "</font></b></td></tr>";
 
 	szBuffer += szEndOfDoc;
 }
