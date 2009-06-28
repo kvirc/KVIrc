@@ -113,19 +113,13 @@ KviMdiChild::~KviMdiChild()
 
 void KviMdiChild::closeEvent(QCloseEvent * e)
 {
-	//this is tricky: first save a reference to our internal widget
-	QWidget * pClient = widget();
+	//we let kviwindow handle the process
+	KviWindow * pClient = (KviWindow*) widget();
 	if(pClient)
 	{
-		//then, let's forget about it and make it forget about us
-		widget()->setParent(0);
-		unsetClient();
-		//make kviframe close it "the delete way"
-		pClient->close();
+		e->ignore();
+		pClient->delayedClose();
 	}
-	//while we survive for closing ourselves "the deleteLater() way"
-	deleteLater();
-	e->ignore();
 }
 
 QRect KviMdiChild::restoredGeometry()
