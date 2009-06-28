@@ -63,7 +63,7 @@ KviIrcMessageCheckListItem::KviIrcMessageCheckListItem(QTreeWidget * par,KviIrcV
 	setFlags(Qt::ItemIsEnabled|Qt::ItemIsSelectable|Qt::ItemIsUserCheckable);
 	setCheckState(0,Qt::Checked);
 	setIcon(0,*(g_pIconManager->getSmallIcon(KVI_OPTION_MSGTYPE(id).pixId())));
-	m_pToolWidget = 0;
+	setText(0,KVI_OPTION_MSGTYPE(id).type());
 	m_pToolWidget = w;
 }
 
@@ -151,7 +151,7 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 
 	m_pFilterView = new QTreeWidget(w1);
-	m_pFilterView->setMaximumWidth(60);
+	m_pFilterView->setMinimumWidth(60);
 	m_pFilterView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	m_pFilterView->setRootIsDecorated(false);
 	m_pFilterView->setColumnCount(1);
@@ -197,7 +197,6 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()
 {
-	kvi_free((void *)m_pFilterItems);
 }
 
 void KviIrcViewToolWidget::filterEnableAll()
