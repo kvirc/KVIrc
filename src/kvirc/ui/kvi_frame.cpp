@@ -516,7 +516,9 @@ void KviFrame::closeWindow(KviWindow *wnd)
 		}
 
 		if(pCandidate)
+		{
 			childWindowActivated(pCandidate);
+		}
 		// else { m_pActiveWindow = 0; m_pActiveContext = 0; };
 	}
 
@@ -809,7 +811,7 @@ void KviFrame::childWindowActivated(KviWindow *wnd)
 
 	m_pWindowList->setActiveItem(wnd->windowListItem());
 
-	//wnd->gainedActiveWindowStatus(); // <-- atm unused
+	
 
 	if(g_pActiveWindow->view())
 		g_pActiveWindow->view()->clearUnreaded();

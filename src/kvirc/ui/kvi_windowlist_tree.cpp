@@ -157,12 +157,16 @@ void KviTreeWindowListItem::setActive(bool bActive)
 	if(bActive)
 	{
 		m_iHighlightLevel = 0;
+		setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
+		treeWidget()->setCurrentItem(this);
+		treeWidget()->scrollToItem(this);
 	} else {
 		if(isSelected())
+		{
 			m_iHighlightLevel = 0;
+			setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
+		}
 	}
-
-	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 }
 
 QString KviTreeWindowListItem::key() const
