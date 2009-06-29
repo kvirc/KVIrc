@@ -45,13 +45,14 @@ KviLoggingOptionsWidget::KviLoggingOptionsWidget(QWidget * parent)
 #ifdef COMPILE_ZLIB_SUPPORT
 	addBoolSelector(0,1,0,1,__tr2qs_ctx("Gzip logs","options"),KviOption_boolGzipLogs); 
 #endif
-	addBoolSelector(0,2,0,2,__tr2qs_ctx("Strip colors in logs","options"),KviOption_boolStripControlCodesInLogs); 
-	KviUIntSelector* us = addUIntSelector(0,3,0,3,__tr2qs_ctx("Auto flush logs every","options"),KviOption_uintAutoFlushLogs,0,99999,0);
+	addBoolSelector(0,2,0,2,__tr2qs_ctx("Strip message type numbers in logs","options"),KviOption_boolStripMsgTypeInLogs);
+	addBoolSelector(0,3,0,3,__tr2qs_ctx("Strip colors in logs","options"),KviOption_boolStripControlCodesInLogs);
+	KviUIntSelector* us = addUIntSelector(0,4,0,4,__tr2qs_ctx("Auto flush logs every","options"),KviOption_uintAutoFlushLogs,0,99999,0);
 	us->setSuffix(__tr2qs_ctx(" min","options"));
 	mergeTip(us,
 		__tr2qs_ctx("<center>Save logs with the current interval<br>" \
 			"Set to 0 to disable this feature</center>","options"));
-	addRowSpacer(0,4,0,4);
+	addRowSpacer(0,5,0,5);
 }
 
 KviLoggingOptionsWidget::~KviLoggingOptionsWidget()

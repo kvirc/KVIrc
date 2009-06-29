@@ -218,7 +218,15 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 
 void KviIrcView::add2Log(const QString &szBuffer,int iMsgType)
 {
-	QString szToWrite=QString("%1 %2\n").arg(iMsgType).arg(szBuffer);
-	KviQCString szTmp = KviQString::toUtf8(szToWrite);
-	if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1) debug("WARNING : Can not write to the log file.");
+	KviQCString szTmp;
+	QString szToWrite;
+	if(KVI_OPTION_BOOL(KviOption_boolStripMsgTypeInLogs))
+	{
+		szToWrite = QString("%1\n").arg(szBuffer);
+	} else {
+		QString szToWrite = QString("%1 %2\n").arg(iMsgType).arg(szBuffer);
+	}
+	szTmp = KviQString::toUtf8(szToWrite);
+	if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1)
+		debug("WARNING : Can not write to the log file.");
 }

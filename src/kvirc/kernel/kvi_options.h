@@ -323,7 +323,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseSpecifiedSmartColorForOwnNick 229 /* interface::ircview */
 #define KviOption_boolUseFullWordHighlighting 230 /* highlight */
 #define KviOption_boolZshLikeNickCompletion 231
-#define KVI_NUM_BOOL_OPTIONS 232
+#define KviOption_boolStripMsgTypeInLogs 232			/* log */
+#define KVI_NUM_BOOL_OPTIONS 233
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
