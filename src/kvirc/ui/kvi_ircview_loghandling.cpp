@@ -224,7 +224,7 @@ void KviIrcView::add2Log(const QString &szBuffer,int iMsgType)
 	{
 		szToWrite = QString("%1\n").arg(szBuffer);
 	} else {
-		QString szToWrite = QString("%1 %2\n").arg(iMsgType).arg(szBuffer);
+		szToWrite = QString("%1 %2\n").arg(iMsgType).arg(szBuffer);
 	}
 	szTmp = KviQString::toUtf8(szToWrite);
 	if(m_pLogFile->write(szTmp.data(),szTmp.length())==-1)
