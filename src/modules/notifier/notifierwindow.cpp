@@ -727,7 +727,8 @@ void KviNotifierWindow::redrawText()
 // 		m->text()->drawContents(&p);
 
 		p.save();
-
+		//force foreground color - see bug #434
+		context.palette.setColor(QPalette::Text, p.pen().color());
 		m->text()->setPageSize(clip.size());
 		p.translate(clip.x(),clip.y());
 		m->text()->documentLayout()->draw(&p, context);
