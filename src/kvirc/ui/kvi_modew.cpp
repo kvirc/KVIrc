@@ -28,13 +28,13 @@
 #include "kvi_options.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionuserinfo.h"
-#include "kvi_qcstring.h"
 #include "kvi_tal_hbox.h"
 
 #include <QFrame>
 #include <QLineEdit>
 #include <QEvent>
 #include <QResizeEvent>
+#include <QByteArray>
 
 KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
 :QFrame(par)
@@ -144,7 +144,7 @@ void KviModeWidget::editorReturnPressed()
 	if(!szNewModes.isEmpty()) mode+=QString("+"+szNewModes);
 	if(!mode.isEmpty())
 	{
-		KviQCString chan = m_pChannel->connection()->encodeText(m_pChannel->target());
+		QByteArray chan = m_pChannel->connection()->encodeText(m_pChannel->target());
 		m_pChannel->connection()->sendFmtData("MODE %s %s",chan.data(),mode.toUtf8().data());
 	}
 	reset();

@@ -154,7 +154,7 @@ namespace KviKvsCoreFunctions
 		KviStr tmp1(szHex);
 		char * buf;
 		int len = tmp1.hexToBuffer(&buf,true);
-		KVSCF_pRetBuffer->setString(QString(KviQCString(buf,len+1)));
+		KVSCF_pRetBuffer->setString(QString(QByteArray(buf,len+1)));
 		KviStr::freeBuffer(buf);
 		return true;
 	}

@@ -114,25 +114,25 @@ QString KviMediaPlayerInterface::amipEval(const QString &)
 QString KviMediaPlayerInterface::artist()
 {
 	SCAN_MP3_FILE
-	return pCodec->toUnicode(KviQCString(mp3.id3.artist));
+	return pCodec->toUnicode(QByteArray(mp3.id3.artist));
 }
 
 QString KviMediaPlayerInterface::title()
 {
 	SCAN_MP3_FILE
-	return pCodec->toUnicode(KviQCString(mp3.id3.title));
+	return pCodec->toUnicode(QByteArray(mp3.id3.title));
 }
 
 QString KviMediaPlayerInterface::genre()
 {
 	SCAN_MP3_FILE
-	return pCodec->toUnicode(KviQCString(get_typegenre(mp3.id3.genre[0])));
+	return pCodec->toUnicode(QByteArray(get_typegenre(mp3.id3.genre[0])));
 }
 
 QString KviMediaPlayerInterface::comment()
 {
 	SCAN_MP3_FILE
-	return pCodec->toUnicode(KviQCString(mp3.id3.comment));
+	return pCodec->toUnicode(QByteArray(mp3.id3.comment));
 }
 
 QString KviMediaPlayerInterface::year()
@@ -144,7 +144,7 @@ QString KviMediaPlayerInterface::year()
 QString KviMediaPlayerInterface::album()
 {
 	SCAN_MP3_FILE
-	return pCodec->toUnicode(KviQCString(mp3.id3.album));
+	return pCodec->toUnicode(QByteArray(mp3.id3.album));
 }
 
 bool KviMediaPlayerInterface::playMrl(const QString &)

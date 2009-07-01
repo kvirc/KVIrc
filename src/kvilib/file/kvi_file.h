@@ -31,9 +31,10 @@
 #include "kvi_string.h"
 #include "kvi_pointerlist.h"
 #include "kvi_inttypes.h"
-#include "kvi_qcstring.h"
 
 #include <QFile>
+#include <QByteArray>
+
 #include <time.h>
 
 #define kvi_file_offset_t qlonglong

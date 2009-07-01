@@ -347,7 +347,7 @@ KVSO_CLASS_FUNCTION(xmlreader,parse)
 		// We have a problem here.. most kvirc functions already interpret the data
 		// read from files. We should have binary data handling features to get this to work correctly.
 		// The following snippet of code tries to provide a best-effort workaround.
-		KviQCString utf8data = KviQString::toUtf8(szString);
+		QByteArray utf8data = KviQString::toUtf8(szString);
 		QByteArray data = utf8data;
 		data.truncate(utf8data.length()); // don't include the null terminator in data
 		source.setData(data);

@@ -28,7 +28,6 @@
 #include "kvi_malloc.h"
 #include "kvi_app.h"
 #include "kvi_options.h"
-#include "kvi_qcstring.h"
 #include "kvi_kvs_arraycast.h"
 #include "kvi_file.h"
 
@@ -36,6 +35,7 @@
 #include <QDir>
 #include <QTextStream>
 #include <QTextCodec>
+#include <QByteArray>
 
 /*
 	@doc: file.copy
@@ -919,7 +919,7 @@ static bool file_kvs_cmd_writeLines(KviKvsModuleCommandCall * c)
 	while(u < a.array()->size())
 	{
 		KviKvsVariant * v = a.array()->at(u);
-		KviQCString dat;
+		QByteArray dat;
 		if(v)
 		{
 			QString szDat;

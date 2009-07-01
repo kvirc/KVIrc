@@ -58,7 +58,6 @@
 #include "kvi_lagmeter.h"
 #include "kvi_ircserver.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_qcstring.h"
 #include "kvi_network.h"
 #include "kvi_settings.h"
 
@@ -73,6 +72,7 @@
 //#include "kvi_iconmanager.h"
 #include <QDateTime>
 #include <QTextDocument>
+#include <QByteArray>
 
 extern KviNickServRuleSet * g_pNickServRuleSet;
 
@@ -647,10 +647,10 @@ void KviServerParser::parseLiteralKick(KviIrcMessage *msg)
 		{
 			if(_OUTPUT_VERBOSE)
 				console->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Attempting to rejoin \r!c\r%Q\r..."),&szChan);
-			KviQCString szC = msg->connection()->encodeText(szChan);
+			QByteArray szC = msg->connection()->encodeText(szChan);
 			if(!szPass.isEmpty())
 			{
-				KviQCString szP = msg->connection()->encodeText(szPass);
+				QByteArray szP = msg->connection()->encodeText(szPass);
 				msg->connection()->sendFmtData("JOIN %s %s",szC.data(),szP.data());
 			} else msg->connection()->sendFmtData("JOIN %s",szC.data());
 		}

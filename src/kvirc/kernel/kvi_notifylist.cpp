@@ -45,9 +45,9 @@
 #include "kvi_qstring.h"
 #include "kvi_lagmeter.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_qcstring.h"
 
 #include <QStringList>
+#include <QByteArray>
 
 // FIXME: #warning "Finish this doc!"
 
@@ -502,7 +502,7 @@ void KviIsOnNotifyListManager::sendIsOn()
 {
 	if(_OUTPUT_PARANOIC)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Checking for: %Q"),&m_szIsOnString);
-	KviQCString szDec = m_pConnection->encodeText(m_szIsOnString);
+	QByteArray szDec = m_pConnection->encodeText(m_szIsOnString);
 	m_pConnection->sendFmtData("ISON %s",szDec.data());
 	if(m_pConnection->lagMeter())
 		m_pConnection->lagMeter()->lagCheckRegister("@notify_ison",40); // not that reliable
@@ -774,7 +774,7 @@ void KviIsOnNotifyListManager::sendUserhost()
 {
 	if(_OUTPUT_PARANOIC)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Checking userhost for: %Q"),&m_szUserhostString);
-	KviQCString ccc = m_pConnection->encodeText(m_szUserhostString);
+	QByteArray ccc = m_pConnection->encodeText(m_szUserhostString);
 	m_pConnection->sendFmtData("USERHOST %s",ccc.data());
 	if(m_pConnection->lagMeter())
 		m_pConnection->lagMeter()->lagCheckRegister("@notify_userhost",50);
@@ -971,7 +971,7 @@ void KviStupidNotifyListManager::sendIsOn()
 	}
 	if(_OUTPUT_PARANOIC)
 		m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Checking for: %Q"),&m_szLastIsOnMsg);
-	KviQCString dat = m_pConnection->encodeText(m_szLastIsOnMsg);
+	QByteArray dat = m_pConnection->encodeText(m_szLastIsOnMsg);
 	m_pConnection->sendFmtData("ISON%s",dat.data());
 
 	if(m_pConnection->lagMeter())
@@ -1135,7 +1135,7 @@ void KviWatchNotifyListManager::start()
 		{
 			if((watchStr.length() + nk.length() + 2) > 501)
 			{
-				KviQCString dat = m_pConnection->encodeText(watchStr);
+				QByteArray dat = m_pConnection->encodeText(watchStr);
 				m_pConnection->sendFmtData("WATCH%s",dat.data());
 				if(_OUTPUT_VERBOSE)
 					m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Adding watch entries for %Q"),&watchStr);
@@ -1148,7 +1148,7 @@ void KviWatchNotifyListManager::start()
 
 	if(!watchStr.isEmpty())
 	{
-		KviQCString dat = m_pConnection->encodeText(watchStr);
+		QByteArray dat = m_pConnection->encodeText(watchStr);
 		m_pConnection->sendFmtData("WATCH%s",dat.data());
 		if(_OUTPUT_VERBOSE)
 			m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: Adding watch entries for %Q"),&watchStr);

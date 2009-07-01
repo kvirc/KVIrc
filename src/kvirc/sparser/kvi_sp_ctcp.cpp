@@ -461,7 +461,7 @@ void KviServerParser::encodeCtcpParameter(const char * parametr,QString &resultB
 	// This one encodes a single ctcp parameter with the simplest
 	// subset of rules and places it in the supplied buffer
 	//
-	KviQCString buffer;
+	QByteArray buffer;
 	register const char* param=parametr;
 	if(!param)
 	{
@@ -575,7 +575,7 @@ const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviStr &buff
 }
 
 
-const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,KviQCString &buffer)
+const char * KviServerParser::decodeCtcpEscape(const char * msg_ptr,QByteArray &buffer)
 {
 	//
 	// This one decodes an octal sequence
@@ -724,7 +724,7 @@ const char * KviServerParser::extractCtcpParameter(const char * p_msg_ptr,QStrin
 	// based CTCP message.
 	//
 
-	KviQCString buffer;
+	QByteArray buffer;
 	register const char* msg_ptr=p_msg_ptr;
 	int bInString = 0;
 	if(!msg_ptr) return 0;
@@ -946,7 +946,7 @@ bool KviServerParser::checkCtcpFlood(KviCtcpMessage *msg)
 
 void KviServerParser::replyCtcp(KviCtcpMessage *msg,const QString &data)
 {
-	KviQCString szNick = msg->msg->connection()->encodeText(msg->pSource->nick());
+	QByteArray szNick = msg->msg->connection()->encodeText(msg->pSource->nick());
 	msg->msg->connection()->sendFmtData(
 			"NOTICE %s :%c%s %s%c",
 			szNick.data(),

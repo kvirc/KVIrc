@@ -96,11 +96,8 @@
 #include "kvi_ircconnection.h"
 #include "kvi_mdimanager.h"
 #include "kvi_userinput.h"
-#include "kvi_qcstring.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_animatedpixmap.h"
-
-// FIXME: #warning "There should be an option to preserve control codes in copied text (clipboard) (mIrc = CTRL+Copy->with colors)"
 
 #include <QBitmap>
 #include <QPainter>
@@ -113,6 +110,7 @@
 #include <QCursor>
 #include <QScrollBar>
 #include <QFontDialog>
+#include <QByteArray>
 
 #include <time.h>
 
@@ -444,7 +442,7 @@ bool KviIrcView::saveBuffer(const char *filename)
 	if(!f.open(QIODevice::WriteOnly|QIODevice::Truncate))return false;
 	QString tmp;
 	getTextBuffer(tmp);
-	KviQCString tmpx = KviQString::toUtf8(tmp);
+	QByteArray tmpx = KviQString::toUtf8(tmp);
 	f.write(tmpx.data(),tmpx.length());
 	f.close();
 	return true;

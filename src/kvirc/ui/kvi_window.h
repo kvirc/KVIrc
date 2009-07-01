@@ -33,7 +33,6 @@
 #include "kvi_app.h"
 #include "kvi_string.h"
 #include "kvi_qstring.h"
-#include "kvi_qcstring.h"
 #include "kvi_settings.h"
 #include "kvi_irccontext.h"
 #include "kvi_ircconnection.h"
@@ -51,6 +50,7 @@
 #include <QWidget>
 #include <QToolButton>
 #include <QTextEncoder>
+#include <QByteArray>
 
 class QPushButton;
 class QPixmap;
@@ -250,7 +250,7 @@ public:
 	// this must return a default text codec suitable for this window
 	virtual QTextCodec * defaultTextCodec();
 	// encode the text from szSource by using m_uTextEncoding
-	inline KviQCString encodeText(const QString &szText);
+	inline QByteArray encodeText(const QString &szText);
 	inline QString decodeText(const char * szText);
 	//return a text encoder
 	QTextEncoder * makeEncoder();
@@ -391,7 +391,7 @@ protected:
 	extern KVIRC_API KviWindow * g_pActiveWindow;
 #endif
 
-inline KviQCString KviWindow::encodeText(const QString &szText)
+inline QByteArray KviWindow::encodeText(const QString &szText)
 {
 	if(m_pTextCodec) {
 		return m_pTextCodec->fromUnicode(szText);

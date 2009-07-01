@@ -218,7 +218,7 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 
 void KviIrcView::add2Log(const QString &szBuffer,int iMsgType)
 {
-	KviQCString szTmp;
+	QByteArray szTmp;
 	QString szToWrite;
 	if(KVI_OPTION_BOOL(KviOption_boolStripMsgTypeInLogs))
 	{

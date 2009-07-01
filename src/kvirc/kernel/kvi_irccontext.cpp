@@ -51,13 +51,13 @@
 #include "kvi_kvs_script.h"
 #include "kvi_netutils.h"
 #include "kvi_ircurl.h"
-#include "kvi_qcstring.h"
 #include "kvi_useridentity.h"
 
 #define __KVI_DEBUG__
 #include "kvi_debug.h"
 
 #include <QTimer>
+#include <QByteArray>
 
 // the irc context identifiers start from 1
 static unsigned int g_uNextIrcContextId = 1;
@@ -855,7 +855,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce,const QString &szQuit
 					ret.asString(buffer);
 				else
 					buffer = szQuit;
-				KviQCString dat = connection()->encodeText(buffer);
+				QByteArray dat = connection()->encodeText(buffer);
 				bWasSentQuit = false;
 				connection()->stateData()->setSentQuit();
 				connection()->sendFmtData("QUIT :%s",dat.data() ? dat.data() : ""); // here theoretically we COULD get disconnected

@@ -279,7 +279,7 @@ KviMediaPlayerInterface::PlayerStatus KviXmmsInterface::status()
 bool KviXmmsInterface::playMrl(const QString &mrl)
 {
 	void (*sym)(int,char *) = (void (*)(int,char *))lookupSymbol("xmms_remote_playlist_add_url_string");
-	KviQCString tmp = mrl.toLocal8Bit();
+	QByteArray tmp = mrl.toLocal8Bit();
 	if(!tmp.isEmpty())
 	{
 		if(sym)

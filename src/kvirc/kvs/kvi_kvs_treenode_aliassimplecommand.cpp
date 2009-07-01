@@ -31,8 +31,9 @@
 #include "kvi_irccontext.h"
 #include "kvi_window.h"
 #include "kvi_ircconnection.h"
-#include "kvi_qcstring.h"
 #include "kvi_out.h"
+
+#include <QByteArray>
 
 
 KviKvsTreeNodeAliasSimpleCommand::KviKvsTreeNodeAliasSimpleCommand(const QChar * pLocation, const QString & szCmdName, KviKvsTreeNodeDataList * params)
@@ -81,7 +82,7 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 				szAll.prepend(" ");
 			szAll.prepend(m_szCmdName);
 
-			KviQCString szData;
+			QByteArray szData;
 
 			if(!c->window()->context())
 				goto no_way_to_send_as_raw;

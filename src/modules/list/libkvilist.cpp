@@ -48,19 +48,19 @@ KviPointerList<KviListWindow> * g_pListWindowList = 0;
 		The channel list window is opened automatically when a channel list
 		is requested from the server.
 */
-
 static bool list_kvs_cmd_open(KviKvsModuleCommandCall * c)
 {
 
-	if(!c->window()->console())return c->context()->errorNoIrcContext();
+	if(!c->window()->console()) return c->context()->errorNoIrcContext();
 
 	if(!(c->window()->context()->listWindow()))
 	{
-		KviListWindow *w = new KviListWindow(c->window()->frame(),c->window()->console());
+		KviListWindow * w = new KviListWindow(c->window()->frame(),c->window()->console());
 		c->window()->frame()->addWindow(w);
 	} else {
 		c->warning(__tr2qs("List window already open for this IRC context"));
 	}
+
 	return true;
 }
 

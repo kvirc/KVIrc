@@ -32,6 +32,7 @@
 #endif
 
 #define _KVI_DEBUG_CHECK_RANGE_
+
 #include "kvi_debug.h"
 #include "kvi_options.h"
 #include "kvi_input.h"
@@ -54,13 +55,13 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_kvs_eventtriggers.h"
-#include "kvi_qcstring.h"
-#include "kvi_tal_vbox.h"
 #include "kvi_mirccntrl.h"
+#include "kvi_tal_vbox.h"
 
 #include <QSplitter>
 #include <QEvent>
 #include <QResizeEvent>
+#include <QByteArray>
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
@@ -303,7 +304,7 @@ void KviDccChat::ownMessage(const QString &text)
 		return;
 	}
 
-	KviQCString szData = encodeText(text);
+	QByteArray szData = encodeText(text);
 	const char * d = szData.data();
 	if(!d)return;
 
@@ -387,7 +388,7 @@ void KviDccChat::ownAction(const QString &text)
 			szTmpBuffer = text;
 		}
 
-		KviQCString szData = encodeText(szTmpBuffer);
+		QByteArray szData = encodeText(szTmpBuffer);
 		const char * d = szData.data();
 		if(!d)return;
 		KviStr buf(KviStr::Format,"%cACTION %s%c\r\n",0x01,d,0x01);

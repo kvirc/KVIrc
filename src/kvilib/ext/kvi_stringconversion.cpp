@@ -35,7 +35,6 @@ QString g_szLocalDir;
 
 namespace KviStringConversion
 {
-
 	void init(const QString& szGlobalDir,const QString& szLocalDir)
 	{
 		g_szGlobalDir=szGlobalDir;
@@ -147,7 +146,7 @@ namespace KviStringConversion
 
 	bool fromString(const QString & szValue,QRect &buffer)
 	{
-		KviQCString tmp = KviQString::toUtf8(szValue);
+		QByteArray tmp = KviQString::toUtf8(szValue);
 		const char * c = tmp.data();
 		if(!c)return false;
 		int l,t,w,h;
@@ -194,7 +193,7 @@ namespace KviStringConversion
 	{
 		int iId,iLog,iLevel;
 		unsigned int uFore,uBack;
-		KviQCString tmp = KviQString::toUtf8(szValue);
+		QByteArray tmp = KviQString::toUtf8(szValue);
 		char * cx = tmp.data();
 		if(!cx)return false;
 		if(sscanf(cx,"%d,%u,%u,%d,%d",&iId,&uFore,&uBack,&iLog,&iLevel) != 5)return false;

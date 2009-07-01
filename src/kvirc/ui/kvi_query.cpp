@@ -45,7 +45,6 @@
 #include "kvi_ircuserdb.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_toolwindows_container.h"
-#include "kvi_qcstring.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_tal_hbox.h"
 
@@ -65,6 +64,7 @@
 #include <QPixmap>
 #include <QSplitter>
 #include <QList>
+#include <QByteArray>
 
 KviQuery::KviQuery(KviFrame * lpFrm, KviConsole * lpConsole, const QString & szNick)
 : KviWindow(KVI_WINDOW_TYPE_QUERY,lpFrm,szNick,lpConsole)
@@ -583,11 +583,11 @@ void KviQuery::ownMessage(const QString & szBuffer)
 
 	//my full mask as seen by other users
 	QString szTmpMask = connection()->userInfo()->nickName() + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
-	KviQCString szMyFullMask = connection()->encodeText(szTmpMask);
+	QByteArray szMyFullMask = connection()->encodeText(szTmpMask);
 	//target name
-	KviQCString szName = connection()->encodeText(windowName());
+	QByteArray szName = connection()->encodeText(windowName());
 	//message
-	KviQCString szData = encodeText(szBuffer);
+	QByteArray szData = encodeText(szBuffer);
 	const char * d = szData.data();
 	/* max length of a PRIVMSG text. Max buffer length for our sszEnd is 512 byte, but we have to
 	* remember that the server will prepszEnd to the message our full mask and truncate the resulting
@@ -663,7 +663,7 @@ void KviQuery::ownMessage(const QString & szBuffer)
 		 * Due to encoding stuff, this is frikin'time eater
 		 */
 		QTextEncoder * p_Encoder = makeEncoder(); // our temp encoder
-		KviQCString szTmp;		// used to calculate the length of an encoded message
+		QByteArray szTmp;		// used to calculate the length of an encoded message
 		int iPos;			// contains the index where to truncate szTmpBuffer
 		int iC;				// cycles counter (debugging/profiling purpose)
 		float fPosDiff;			// optimization internal; aggressivity factor
@@ -766,7 +766,7 @@ void KviQuery::ownAction(const QString & szBuffer)
 			szTmpBuffer = szBuffer;
 		}
 
-		KviQCString szBuffer = encodeText(szTmpBuffer);
+		QByteArray szBuffer = encodeText(szTmpBuffer);
 
 		QString sz = windowName();
 		if(sz.isEmpty())

@@ -36,9 +36,9 @@
 #include <QTextCodec>
 #include <QDir>
 #include <QLocale>
+#include <QByteArray>
 
 #include "kvi_string.h"
-#include "kvi_qcstring.h"
 #include "kvi_env.h"
 #include "kvi_fileutils.h"
 #include "kvi_file.h"
@@ -258,7 +258,7 @@ static bool g_utf8_validate (const char   *str,
 class KviSmartTextCodec : public QTextCodec
 {
 protected:
-	KviQCString  m_szName;
+	QByteArray  m_szName;
 	QTextCodec * m_pRecvCodec;
 	QTextCodec * m_pSendCodec;
 public:

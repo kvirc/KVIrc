@@ -36,9 +36,8 @@
 
 #include <QtGlobal>
 #include <QString>
+#include <QByteArray>
 
-
-#include "kvi_qcstring.h"
 #include "kvi_inttypes.h"
 #include "kvi_heapobject.h"
 #include "kvi_stdarg.h"
@@ -149,7 +148,7 @@ public:
 	// Safe even if the QString is null.
 	KviStr(const QString &str);
 
-	KviStr(const KviQCString &str);
+	KviStr(const QByteArray &str);
 
 	// Fill sonstructor.
 	// Creates a string long fillLen characters filled with character c.<br>
@@ -258,7 +257,7 @@ public:
 	KviStr & operator=(const char *str);         // str can be NULL here
 	KviStr & operator=(char c);                  // 2 bytes allocated ,m_len = 1
 	KviStr & operator=(const QString &str);
-	KviStr & operator=(const KviQCString &str);
+	KviStr & operator=(const QByteArray &str);
 
 	// Append operators
 	KviStr & operator+=(const KviStr &str)      { append(str); return (*this);          };

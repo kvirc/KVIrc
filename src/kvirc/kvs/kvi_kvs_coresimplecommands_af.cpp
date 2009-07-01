@@ -132,7 +132,7 @@ namespace KviKvsCoreSimpleCommands
 				++it;
 			}
 		} else  {
-			KviQCString szR = KVSCSC_pConnection->encodeText(szReason);
+			QByteArray szR = KVSCSC_pConnection->encodeText(szReason);
 			if(!(KVSCSC_pConnection->sendFmtData("AWAY :%s",szR.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
@@ -519,8 +519,8 @@ namespace KviKvsCoreSimpleCommands
 			KviQString::appendFormatted(szCtcpData," %d.%d",tv.tv_sec,tv.tv_usec);
 		}
 
-		KviQCString szT = KVSCSC_pConnection->encodeText(szTarget);
-		KviQCString szD = KVSCSC_pConnection->encodeText(szCtcpData);
+		QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
+		QByteArray szD = KVSCSC_pConnection->encodeText(szCtcpData);
 
 		if(!(KVSCSC_pConnection->sendFmtData("%s %s :%c%s%c",
 				KVSCSC_pSwitches->find('n',"notice") ? "NOTICE" : "PRIVMSG",szT.data(),0x01,szD.data(),0x01)))

@@ -22,10 +22,13 @@
 //
 //=============================================================================
 
-#include "kvi_settings.h"
-#include "kvi_qstring.h"
+#include "class_socket.h"
 #include "class_memorybuffer.h"
 #include "class_file.h"
+
+#include "kvi_settings.h"
+#include "kvi_qstring.h"
+
 #define _KVI_DEBUG_CHECK_RANGE_
 #include "kvi_debug.h"
 
@@ -40,9 +43,8 @@
 #include "kvi_malloc.h"
 #include "kvi_memmove.h"
 #include "kvi_databuffer.h"
-#include "kvi_qcstring.h"
 
-#include "class_socket.h"
+#include <QByteArray>
 
 //#include <stdlib.h>
 
@@ -531,7 +533,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 		pVariantData->asString(szData);
 		if(!KviFileUtils::fileExists(szData))
 		{
-			KviQCString szData8 = szData.toUtf8();
+			QByteArray szData8 = szData.toUtf8();
 			if(szData8.length() > 0)
 			{
 					m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());

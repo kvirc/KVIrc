@@ -901,13 +901,6 @@ For the moment, in random order:
 
 - Widgets have been abstracted in kvilib/tal.
 
-- Qt 4.x has no QCString anymore. It uses QByteArray instead. From my own
-  point of view this is ugly since the name is misleading and QByteArray
-  is forced to mantain the null terminator which is not needed
-  in normal "byte array" operations...but well, we have to live with it.
-  kvilib has kvi_qcstring.h that defines the KviQCString MACRO.
-  It expands to QByteArray under Qt 4.x.
-
 - Avoid any use of Q3Support features.
 
 - Do not use the "char * c = KviQString::toUtf8(string).data();" construct.

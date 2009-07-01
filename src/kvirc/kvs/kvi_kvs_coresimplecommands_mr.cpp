@@ -129,7 +129,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		KviQCString szTxt = KVSCSC_pConnection->encodeText(szText);
+		QByteArray szTxt = KVSCSC_pConnection->encodeText(szText);
 
 		if(!szTxt.isEmpty())
 		{
@@ -216,7 +216,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		KviQCString szData = KVSCSC_pConnection->encodeText(szNick);
+		QByteArray szData = KVSCSC_pConnection->encodeText(szNick);
 		if(!szData.data())szData = "";
 
 		if(!KVSCSC_pConnection->sendFmtData("NICK %s",szData.data()))
@@ -267,8 +267,8 @@ namespace KviKvsCoreSimpleCommands
 		KviWindow * w = KVSCSC_pConnection->findChannel(szTarget);
 		if(!w)w = KVSCSC_pConnection->findQuery(szTarget);
 
-		KviQCString szT = KVSCSC_pConnection->encodeText(szTarget);
-		KviQCString szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
+		QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
+		QByteArray szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
 		if(!szT.data())szT = ""; // encoding problems ?
 		if(!szD.data())szD = ""; // encoding problems ?
 
@@ -714,13 +714,13 @@ namespace KviKvsCoreSimpleCommands
 			}
 		}
 
-		KviQCString szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
+		QByteArray szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
 
 		QStringList sl = szChans.split(",",QString::SkipEmptyParts);
 
 		if(!szMsg.isEmpty())
 		{
-			KviQCString szText;
+			QByteArray szText;
 			if(sl.count() == 1)
 			{
 				// single chan , use channel encoding if possible
@@ -945,8 +945,8 @@ namespace KviKvsCoreSimpleCommands
 		if(!KVSCSC_pSwitches->find('q',"quiet") && w)
 			w->ownMessage(szText);
 		else {
-			KviQCString szT = KVSCSC_pConnection->encodeText(szTarget);
-			KviQCString szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
+			QByteArray szT = KVSCSC_pConnection->encodeText(szTarget);
+			QByteArray szD = w ? w->encodeText(szText) : KVSCSC_pConnection->encodeText(szText);
 			if(!szT.data())szT = ""; // encoding problems ?
 			if(!szD.data())szD = ""; // encoding problems ?
 
@@ -1174,7 +1174,7 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		KviQCString szData = KVSCSC_pConnection->encodeText(szRawCommand);
+		QByteArray szData = KVSCSC_pConnection->encodeText(szRawCommand);
 		if(!szData.data())szData = "";
 
 		if(!KVSCSC_pConnection->sendData(szData.data()))

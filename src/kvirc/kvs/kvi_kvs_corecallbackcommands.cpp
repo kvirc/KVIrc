@@ -350,7 +350,7 @@ namespace KviKvsCoreCallbackCommands
 
 		KVSCCC_REQUIRE_CONNECTION
 
-		KviQCString szN = KVSCCC_pConnection->encodeText(szNick);
+		QByteArray szN = KVSCCC_pConnection->encodeText(szNick);
 
 		KviAsyncWhoisInfo * info = new KviAsyncWhoisInfo();
 		info->pCallback = new KviKvsScript(*KVSCCC_pCallback);

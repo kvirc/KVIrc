@@ -43,7 +43,6 @@
 #include "kvi_sharedfiles.h"
 #include "kvi_out.h"
 #include "kvi_ircmask.h"
-#include "kvi_qcstring.h"
 #include "kvi_tal_hbox.h"
 
 #include <QLineEdit>
@@ -53,6 +52,7 @@
 #include <QLabel>
 #include <QLayout>
 #include <QCloseEvent>
+#include <QByteArray>
 
 static KviPointerList<KviAsyncAvatarSelectionDialog> * g_pAvatarSelectionDialogList = 0;
 extern KVIRC_API KviSharedFilesManager * g_pSharedFilesManager;
@@ -411,11 +411,11 @@ static bool avatar_kvs_cmd_notify(KviKvsModuleCommandCall * c)
 	if(!c->switches()->find('q',"quiet"))
 		c->window()->output(KVI_OUT_AVATAR,__tr2qs("Notifying avatar '%Q' to %Q"),&avatar,&szTarget);
 
-	KviQCString encodedTarget = c->window()->connection()->encodeText(szTarget);
+	QByteArray encodedTarget = c->window()->connection()->encodeText(szTarget);
 
 	if(!avatar.isEmpty())
 	{
-		KviQCString encodedAvatar = c->window()->connection()->encodeText(avatar);
+		QByteArray encodedAvatar = c->window()->connection()->encodeText(avatar);
 
 		if(o)
 		{
@@ -547,7 +547,7 @@ static bool avatar_kvs_cmd_query(KviKvsModuleCommandCall * c)
 
 	KVSM_REQUIRE_CONNECTION(c)
 
-	KviQCString target = c->window()->connection()->encodeText(szName);
+	QByteArray target = c->window()->connection()->encodeText(szName);
 	c->window()->connection()->sendFmtData("PRIVMSG %s :%cAVATAR%c",target.data(),0x01,0x01);
 
 	return true;

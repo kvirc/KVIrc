@@ -4,7 +4,7 @@
 //   Creation date : Thu Oct 7 2001 13:27:55 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2001-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the lists of the GNU General Public License
@@ -37,7 +37,6 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnection.h"
 #include "kvi_qstring.h"
-#include "kvi_qcstring.h"
 #include "kvi_topicw.h"
 #include "kvi_config.h"
 #include "kvi_filedialog.h"
@@ -52,10 +51,11 @@
 #include <QSplitter>
 #include <QToolTip>
 #include <QDateTime>
+#include <QByteArray>
 
 extern KviPointerList<KviListWindow> * g_pListWindowList;
 
-KviChannelTreeWidgetItemData::KviChannelTreeWidgetItemData(const QString &szChan,const QString &szUsers,const QString &szTopic)
+KviChannelTreeWidgetItemData::KviChannelTreeWidgetItemData(const QString & szChan, const QString & szUsers, const QString & szTopic)
 {
 	m_szChan = szChan;
 	m_szUsers = szUsers;
@@ -75,35 +75,34 @@ KviChannelTreeWidgetItem::KviChannelTreeWidgetItem(KviTalTreeWidget * v,KviChann
 	setText(2, pData->m_szTopic);
 }
 
-
 KviChannelTreeWidgetItem::~KviChannelTreeWidgetItem()
 {
 }
 
-int KviChannelTreeWidgetItem::width ( const QFontMetrics & fm, const KviTalTreeWidget * , int column ) const
+int KviChannelTreeWidgetItem::width(const QFontMetrics & fm, const KviTalTreeWidget *, int iColumn) const
 {
-	if(column==2)
-		return fm.width(KviMircCntrl::stripControlBytes(text(column)));
-	else return fm.width(text(column));
+	if(iColumn == 2)
+		return fm.width(KviMircCntrl::stripControlBytes(text(iColumn)));
+	else return fm.width(text(iColumn));
 }
 
-bool KviChannelTreeWidgetItem::operator< ( const KviTalTreeWidgetItem & other ) const
+bool KviChannelTreeWidgetItem::operator<(const KviTalTreeWidgetItem & other) const
 {
-	int sortCol = treeWidget()->sortColumn();
-	switch (sortCol)
+	int iSortCol = treeWidget()->sortColumn();
+	switch(iSortCol)
 	{
 		case 0:
 			//channel
-			return text(sortCol).toUpper() < other.text(sortCol).toUpper();
+			return text(iSortCol).toUpper() < other.text(iSortCol).toUpper();
 			break;
 		case 1:
 			//users
-			return text(sortCol).toInt() < other.text(sortCol).toInt();
+			return text(iSortCol).toInt() < other.text(iSortCol).toInt();
 			break;
 		case 2:
 		default:
 			//topic
-			return KviMircCntrl::stripControlBytes(text(sortCol)).toUpper() < KviMircCntrl::stripControlBytes(other.text(sortCol)).toUpper();
+			return KviMircCntrl::stripControlBytes(text(iSortCol)).toUpper() < KviMircCntrl::stripControlBytes(other.text(iSortCol)).toUpper();
 			break;
 	}
 }
@@ -111,15 +110,24 @@ bool KviChannelTreeWidgetItem::operator< ( const KviTalTreeWidgetItem & other ) 
 #define KVI_LABEL_DEF_BACK 100
 #define KVI_LABEL_DEF_FORE 101
 
-void KviChannelTreeWidgetItemDelegate::paint( QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index ) const
+KviChannelTreeWidgetItemDelegate::KviChannelTreeWidgetItemDelegate(KviTalTreeWidget * pWidget)
+: QItemDelegate(pWidget)
+{
+}
+
+KviChannelTreeWidgetItemDelegate::~KviChannelTreeWidgetItemDelegate()
+{
+}
+
+void KviChannelTreeWidgetItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
 	if (option.state & QStyle::State_Selected)
 		p->fillRect(option.rect, option.palette.brush( QPalette::Highlight ) );
 
 	//reset the color
-	p->setPen( option.palette.text().color() );
+	p->setPen(option.palette.text().color());
 
-	switch (index.column())
+	switch(index.column())
 	{
 		case 0:
 			//channel
@@ -137,8 +145,9 @@ void KviChannelTreeWidgetItemDelegate::paint( QPainter * p, const QStyleOptionVi
 	}
 }
 
-KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
-: KviWindow(KVI_WINDOW_TYPE_LIST,lpFrm,"list",lpConsole) , KviExternalServerDataParser()
+
+KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
+: KviWindow(KVI_WINDOW_TYPE_LIST,lpFrm,"list",lpConsole), KviExternalServerDataParser()
 {
 	g_pListWindowList->append(this);
 
@@ -154,37 +163,45 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("vsplitter");
 
-	KviTalHBox * box = new KviTalHBox(m_pTopSplitter);
-	box->setSpacing(1);
-	box->setMargin(0);
-	m_pOpenButton = new QToolButton(box);
+	KviTalHBox * pBox = new KviTalHBox(m_pTopSplitter);
+	pBox->setSpacing(1);
+	pBox->setMargin(0);
+
+	m_pOpenButton = new QToolButton(pBox);
+	m_pOpenButton->setObjectName("import_list");
+	m_pOpenButton->setIconSize(QSize(16,16));
 	m_pOpenButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_OPEN))));
+	KviTalToolTip::add(m_pOpenButton,__tr2qs("Import List"));
 	connect(m_pOpenButton,SIGNAL(clicked()),this,SLOT(importList()));
 
-	m_pSaveButton = new QToolButton(box);
+	m_pSaveButton = new QToolButton(pBox);
+	m_pSaveButton->setObjectName("export_list");
+	m_pSaveButton->setIconSize(QSize(16,16));
 	m_pSaveButton->setIcon(QIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_SAVE))));
+	KviTalToolTip::add(m_pSaveButton,__tr2qs("Export List"));
 	connect(m_pSaveButton,SIGNAL(clicked()),this,SLOT(exportList()));
 
-	m_pRequestButton = new QToolButton(box);
+	m_pRequestButton = new QToolButton(pBox);
 	m_pRequestButton->setObjectName("request_button");
 	m_pRequestButton->setIconSize(QSize(16,16));
 	m_pRequestButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LIST))));
-	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));
 	KviTalToolTip::add(m_pRequestButton,__tr2qs("Request List"));
+	connect(m_pRequestButton,SIGNAL(clicked()),this,SLOT(requestList()));
 
-	m_pStopListDownloadButton = new QToolButton(box);
+	m_pStopListDownloadButton = new QToolButton(pBox);
 	m_pStopListDownloadButton->setObjectName("stoplistdownload_button");
 	m_pStopListDownloadButton->setIconSize(QSize(16,16));
 	m_pStopListDownloadButton->setIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_NICKNAMEPROBLEM))));
-	connect(m_pStopListDownloadButton,SIGNAL(clicked()),this,SLOT(stoplistdownload()));
 	KviTalToolTip::add(m_pStopListDownloadButton,__tr2qs("Stop list download"));
+	connect(m_pStopListDownloadButton,SIGNAL(clicked()),this,SLOT(stoplistdownload()));
 
-	m_pParamsEdit = new QLineEdit(box);
-	box->setStretchFactor(m_pParamsEdit,1);
+	m_pParamsEdit = new QLineEdit(pBox);
+	pBox->setStretchFactor(m_pParamsEdit,1);
 	KviTalToolTip::add(m_pParamsEdit,__tr2qs("<center><b>/LIST command parameters:</b><br>Many servers accept special parameters that " \
-						"allow you to filter the returned entries.<br>" \
-						"Commonly, masked channel names (*kvirc*) are accepted as parameters, as well as strings " \
-						"like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on the channel.</center>"));
+		"allow you to filter the returned entries.<br>" \
+		"Commonly, masked channel names (*kvirc*) are accepted as parameters, as well as strings " \
+		"like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on the channel.</center>"));
+
 
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter,"info_label");
 
@@ -201,15 +218,12 @@ KviListWindow::KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	m_pTreeWidget->setAllColumnsShowFocus(TRUE);
 	m_pTreeWidget->setSortingEnabled(TRUE);
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
-
 	connect(m_pTreeWidget,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),this,SLOT(itemDoubleClicked(QTreeWidgetItem *, int)));
 
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 
 	m_pConsole->context()->setListWindowPointer(this);
-
-	connect(m_pConsole->context(),SIGNAL(stateChanged()),
-		this,SLOT(connectionStateChange()));
+	connect(m_pConsole->context(),SIGNAL(stateChanged()),this,SLOT(connectionStateChange()));
 
 	connectionStateChange();
 }
@@ -218,14 +232,16 @@ KviListWindow::~KviListWindow()
 {
 	g_pListWindowList->removeRef(this);
 	m_pConsole->context()->setListWindowPointer(0);
-	if(m_pFlushTimer)delete m_pFlushTimer;
+
+	if(m_pFlushTimer)
+		delete m_pFlushTimer;
 	m_pItemList->setAutoDelete(true);
 	delete m_pItemList;
 }
 
-void KviListWindow::getBaseLogFileName(QString &buffer)
+void KviListWindow::getBaseLogFileName(QString & szBuffer)
 {
-	buffer.sprintf("LIST_%d",context()->id());
+	szBuffer.sprintf("LIST_%d",context()->id());
 }
 
 void KviListWindow::requestList()
@@ -233,8 +249,10 @@ void KviListWindow::requestList()
 	if(m_pConsole->isConnected())
 	{
 		KviStr parms = m_pParamsEdit->text();
-		if(parms.isEmpty())m_pConsole->connection()->sendFmtData("list");
+		if(parms.isEmpty())
+			m_pConsole->connection()->sendFmtData("list");
 		else m_pConsole->connection()->sendFmtData("list %s",m_pConsole->connection()->encodeText(parms.ptr()).data());
+
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent list request, waiting for reply..."));
 		m_pRequestButton->setEnabled(false);
 	} else {
@@ -259,12 +277,12 @@ void KviListWindow::connectionStateChange()
 	m_pRequestButton->setEnabled(st == KviIrcContext::Connected);
 	if(st == KviIrcContext::Connected)
 	{
-		QString tmp;
-		KviQString::sprintf(tmp,
+		QString szTmp;
+		KviQString::sprintf(szTmp,
 				__tr2qs("Connected to %s (%s)"),
 				m_pConsole->connection()->currentServerName().toUtf8().data(),
 				m_pConsole->currentNetworkName().toUtf8().data());
-		m_pInfoLabel->setText(tmp);
+		m_pInfoLabel->setText(szTmp);
 	} else {
 		m_pInfoLabel->setText(__tr2qs("List cannot be requested: Not connected to a server"));
 	}
@@ -277,9 +295,9 @@ QPixmap * KviListWindow::myIconPtr()
 
 void KviListWindow::resizeEvent(QResizeEvent *)
 {
-	int hght = m_pTopSplitter->sizeHint().height();
-	m_pTopSplitter->setGeometry(0,0,width(),hght);
-	m_pSplitter->setGeometry(0,hght,width(),height() - hght);
+	int iHeight = m_pTopSplitter->sizeHint().height();
+	m_pTopSplitter->setGeometry(0,0,width(),iHeight);
+	m_pSplitter->setGeometry(0,iHeight,width(),height() - iHeight);
 }
 
 QSize KviListWindow::sizeHint() const
@@ -328,19 +346,19 @@ void KviListWindow::exportList()
 	} else {
 		szFile = __tr2qs("Channel list");
 	}
-	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose filename"),szFile,
-		__tr2qs("Configuration files (*.kvc)"),false,
-		false,true,this))
+
+	if(KviFileDialog::askForSaveFileName(szFile,__tr2qs("Choose filename"),szFile,__tr2qs("Configuration files (*.kvc)"),false,false,true,this))
 	{
-		if(QFileInfo(szFile).completeSuffix()!="kvc")
+		if(QFileInfo(szFile).completeSuffix() != "kvc")
 			szFile.append(".kvc");
+
 		KviConfig cfg(szFile,KviConfig::Write);
 		cfg.clear();
 
-		KviChannelTreeWidgetItem *it;
-		for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
+		KviChannelTreeWidgetItem * it;
+		for(int i=0; i < m_pTreeWidget->topLevelItemCount(); i++)
 		{
-			it=(KviChannelTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+			it = (KviChannelTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 			cfg.setGroup(it->text(0));
 			// Write properties
 			cfg.writeEntry("topic",it->text(2));
@@ -351,10 +369,9 @@ void KviListWindow::exportList()
 
 void KviListWindow::importList()
 {
-
 	QString szFile;
-	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose filename"),QString(),KVI_FILTER_CONFIG,false,
-		false,this))
+
+	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose filename"),QString(),KVI_FILTER_CONFIG,false,false,this))
 	{
 		if(m_pConsole->isConnected())
 		{
@@ -382,13 +399,19 @@ void KviListWindow::importList()
 	}
 }
 
-void KviListWindow::control(int message)
+void KviListWindow::control(int iMsg)
 {
-	switch(message)
+	switch(iMsg)
 	{
-		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET:       reset();       break;
-		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_STARTOFDATA: startOfList(); break;
-		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA:   endOfList();   break;
+		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_RESET:
+			reset();
+		break;
+		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_STARTOFDATA:
+			startOfList();
+		break;
+		case EXTERNAL_SERVER_DATA_PARSER_CONTROL_ENDOFDATA:
+			endOfList();
+		break;
 	}
 }
 
@@ -420,7 +443,7 @@ void KviListWindow::startOfList()
 	m_pRequestButton->setEnabled(false);
 }
 
-void KviListWindow::processData(KviIrcMessage *msg)
+void KviListWindow::processData(KviIrcMessage * pMsg)
 {
 	if(!m_pFlushTimer)
 	{
@@ -430,19 +453,17 @@ void KviListWindow::processData(KviIrcMessage *msg)
 		m_pRequestButton->setEnabled(false);
 	}
 
-	QString sz2 = msg->connection()->decodeText(msg->safeParam(2));
-
 	m_pItemList->append(
 		new KviChannelTreeWidgetItemData(
-			msg->connection()->decodeText(msg->safeParam(1)),
-			msg->connection()->decodeText(msg->safeParam(2)),
-			msg->connection()->decodeText(msg->safeTrailing()))
+			pMsg->connection()->decodeText(pMsg->safeParam(1)),
+			pMsg->connection()->decodeText(pMsg->safeParam(2)),
+			pMsg->connection()->decodeText(pMsg->safeTrailing()))
 	);
 
 	if(_OUTPUT_VERBOSE)
 	{
-		QString zzz = msg->connection()->decodeText(msg->allParams());
-		output(KVI_OUT_LIST,__tr2qs("Processing list: %Q"),&zzz);
+		QString szTmp = pMsg->connection()->decodeText(pMsg->allParams());
+		output(KVI_OUT_LIST,__tr2qs("Processing list: %Q"),&szTmp);
 	}
 }
 
@@ -458,13 +479,16 @@ void KviListWindow::flush()
 	m_pTreeWidget->viewport()->update();
 }
 
-void KviListWindow::itemDoubleClicked(KviTalTreeWidgetItem *it, int)
+void KviListWindow::itemDoubleClicked(KviTalTreeWidgetItem * it, int)
 {
-	QString sz = it->text(0);
-	if(sz.isEmpty())return;
-	if(!connection())return;
-	KviQCString dat = connection()->encodeText(sz);
-	if(!dat.data())return;
+	QString szText = it->text(0);
+
+	if(szText.isEmpty()) return;
+	if(!connection()) return;
+
+	QByteArray dat = connection()->encodeText(szText);
+	if(!dat.data()) return;
+
 	m_pConsole->connection()->sendFmtData("join %s",dat.data());
 }
 

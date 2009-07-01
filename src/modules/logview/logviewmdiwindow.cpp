@@ -33,7 +33,6 @@
 #include "kvi_frame.h"
 #include "kvi_ircview.h"
 #include "kvi_qstring.h"
-#include "kvi_qcstring.h"
 #include "kvi_app.h"
 #include "kvi_fileutils.h"
 #include "kvi_tal_popupmenu.h"
@@ -55,6 +54,7 @@
 #include <QLabel>
 #include <QShortcut>
 #include <QMouseEvent>
+#include <QByteArray>
 
 #ifdef COMPILE_ZLIB_SUPPORT
 	#include <zlib.h>
@@ -451,7 +451,7 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 		{
 			char buff[1025];
 			int len;
-			KviQCString data;
+			QByteArray data;
 			//QCString data;
 			len=gzread(file,buff,1024);
 			while(len>0)

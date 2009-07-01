@@ -33,9 +33,9 @@
 #include "kvi_settings.h"
 #include "kvi_inttypes.h"
 #include "kvi_stdarg.h"
-#include "kvi_qcstring.h"
 
 #include <QString>
+#include <QByteArray>
 
 /**
 * \namespace KviQString
@@ -306,18 +306,18 @@ namespace KviQString
 	/**
 	* \brief Return a UTF-8 formatted string
 	* \param s The source string
-	* \return KviQCString
+	* \return QByteArray
 	* \warning: DO NOT USE CONSTRUCTS LIKE char * c = KviQString::toUtf8(something).data();
 	* They are dangerous since with many compilers the returned string
 	* gets destroyed at the end of the instruction and the c pointer gets
 	* thus invalidated.
 	* Use
-	* KviQCString tmp = KviQString::toUtf8(something);
+	* QByteArray tmp = KviQString::toUtf8(something);
 	* char * c = tmp.data();
 	* instead. Yes, I know that it sucks, but it's the only way to
 	* transit to Qt 4.x more or less cleanly...
 	*/
-	inline KviQCString toUtf8(const QString & s)
+	inline QByteArray toUtf8(const QString & s)
 	{
 		return s.toUtf8();
 	}
@@ -325,9 +325,9 @@ namespace KviQString
 	/**
 	* \brief Return the local 8-bit representation of the string
 	* \param s The source string
-	* \return KviQCString
+	* \return QByteArray
 	*/
-	inline KviQCString toLocal8Bit(const QString & s)
+	inline QByteArray toLocal8Bit(const QString & s)
 	{
 		return s.toLocal8Bit();
 	}

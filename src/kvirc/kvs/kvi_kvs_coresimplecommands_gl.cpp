@@ -283,7 +283,7 @@ namespace KviKvsCoreSimpleCommands
 		pActive->console()->output(KVI_WINDOW_TYPE_SOCKETSPY,__tr2qs_ctx("The following string was injected by the user:","kvs"));
 
 		// Encode the text for the socket
-		KviQCString szT = KVSCSC_pConnection->encodeText(szText);
+		QByteArray szT = KVSCSC_pConnection->encodeText(szText);
 
 		// Send the converted text to the socket
 		KVSCSC_pConnection->incomingMessage(szT.constData());
@@ -365,14 +365,14 @@ namespace KviKvsCoreSimpleCommands
 		}
 
 		szChans = slChans.join(",");
-		KviQCString szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
+		QByteArray szEncodedChans = KVSCSC_pConnection->encodeText(szChans);
 
 		if(szKeys.isEmpty())
 		{
 			if(!(KVSCSC_pConnection->sendFmtData("JOIN %s",szEncodedChans.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		} else {
-			KviQCString szEncodedKeys  = KVSCSC_pConnection->encodeText(szKeys);
+			QByteArray szEncodedKeys  = KVSCSC_pConnection->encodeText(szKeys);
 			if(!(KVSCSC_pConnection->sendFmtData("JOIN %s %s",szEncodedChans.data(),szEncodedKeys.data())))
 				return KVSCSC_pContext->warningNoIrcConnection();
 		}
@@ -419,9 +419,9 @@ namespace KviKvsCoreSimpleCommands
 			return false;
 		}
 
-		KviQCString szC = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->target());
-		KviQCString szU = KVSCSC_pConnection->encodeText(szUser);
-		KviQCString szR = KVSCSC_pConnection->encodeText(szReason);
+		QByteArray szC = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->target());
+		QByteArray szU = KVSCSC_pConnection->encodeText(szUser);
+		QByteArray szR = KVSCSC_pConnection->encodeText(szReason);
 
 		if(szR.isEmpty())
 		{

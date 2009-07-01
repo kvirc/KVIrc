@@ -442,7 +442,7 @@ void KviChannel::setMode(const char * mode)
 	if(!connection())
 		return;
 
-	KviQCString tmp = connection()->encodeText(m_szName);
+	QByteArray tmp = connection()->encodeText(m_szName);
 	connection()->sendFmtData("MODE %s %s",tmp.data(),mode);
 }
 
@@ -503,7 +503,7 @@ void KviChannel::toggleEditor(KviMaskEditor ** ppEd, KviWindowToolPageButton ** 
 		{
 			if(connection())
 			{
-				KviQCString szName = connection()->encodeText(m_szName);
+				QByteArray szName = connection()->encodeText(m_szName);
 				connection()->sendFmtData("MODE %s %c",szName.data(),cFlag);
 			}
 		}
@@ -538,7 +538,7 @@ void KviChannel::removeMasks(KviMaskEditor * ed, KviPointerList<KviMaskEntry> * 
 		{
 			if(connection())
 			{
-				KviQCString szName = connection()->encodeText(m_szName);
+				QByteArray szName = connection()->encodeText(m_szName);
 				connection()->sendFmtData("MODE %s -%s %s",szName.data(),szFlags.toUtf8().data(),connection()->encodeText(szMasks).data());
 			}
 
@@ -552,7 +552,7 @@ void KviChannel::removeMasks(KviMaskEditor * ed, KviPointerList<KviMaskEntry> * 
 	{
 		if(connection())
 		{
-			KviQCString szName = connection()->encodeText(m_szName);
+			QByteArray szName = connection()->encodeText(m_szName);
 			connection()->sendFmtData("MODE %s -%s %s",szName.data(),szFlags.toUtf8().data(),connection()->encodeText(szMasks).data());
 		}
 	}
@@ -1079,11 +1079,11 @@ void KviChannel::ownMessage(const QString & szBuffer)
 
 	//my full mask as seen by other users
 	QString MyFullMask = connection()->userInfo()->nickName() + "!" + connection()->userInfo()->userName() + "@" + connection()->userInfo()->hostName();
-	KviQCString szMyFullMask = connection()->encodeText(MyFullMask);
+	QByteArray szMyFullMask = connection()->encodeText(MyFullMask);
 	//target name
-	KviQCString szName = connection()->encodeText(windowName());
+	QByteArray szName = connection()->encodeText(windowName());
 	//message
-	KviQCString szData = encodeText(szBuffer);
+	QByteArray szData = encodeText(szBuffer);
 	const char * d = szData.data();
 	/* max length of a PRIVMSG text. Max buffer length for our send is 512 byte, but we have to
 	* remember that the server will prepend to the message our full mask and truncate the resulting
@@ -1157,7 +1157,7 @@ void KviChannel::ownMessage(const QString & szBuffer)
 		 * Due to encoding stuff, this is frikin'time eater
 		 */
 		QTextEncoder * p_Encoder = makeEncoder(); // our temp encoder
-		KviQCString szTmp;		// used to calculate the length of an encoded message
+		QByteArray szTmp;		// used to calculate the length of an encoded message
 		int iPos;			// contains the index where to truncate szTmpBuffer
 		int iC;				// cycles counter (debugging/profiling purpose)
 		float fPosDiff;			// optimization internal; aggressivity factor
@@ -1254,7 +1254,7 @@ void KviChannel::ownAction(const QString & szBuffer)
 	}
 
 	QString szName = m_szName;
-	KviQCString szData = encodeText(szTmpBuffer);
+	QByteArray szData = encodeText(szTmpBuffer);
 	const char * d = szData.data();
 
 	if(!d)
@@ -1523,8 +1523,8 @@ void KviChannel::topicSelected(const QString & szTopic)
 	if(!connection())
 		return;
 
-	KviQCString szEncoded = encodeText(szTopic);
-	KviQCString szName = connection()->encodeText(m_szName);
+	QByteArray szEncoded = encodeText(szTopic);
+	QByteArray szName = connection()->encodeText(m_szName);
 	connection()->sendFmtData("TOPIC %s :%s",szName.data(),szEncoded.length() ? szEncoded.data() : "");
 }
 
@@ -1547,9 +1547,9 @@ void KviChannel::closeEvent(QCloseEvent * e)
 			if(KviKvsScript::evaluate(szTmp,this,0,&vRet))
 				vRet.asString(szTmp);
 
-			KviQCString dat = encodeText(szTmp);
+			QByteArray dat = encodeText(szTmp);
 			partMessageSent();
-			KviQCString szName = connection()->encodeText(m_szName);
+			QByteArray szName = connection()->encodeText(m_szName);
 			connection()->sendFmtData("PART %s :%s",szName.data(),dat.data() ? dat.data() : "");
 			// be sure to not reference ourselves here.. we could be disconnected!
 		} else {

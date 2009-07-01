@@ -874,17 +874,17 @@ void KviScriptEditorImplementation::saveToFile()
 
 void KviScriptEditorImplementation::setText(const char * txt)
 {
-	setText(KviQCString(txt));
+	setText(QByteArray(txt));
 }
 
-void KviScriptEditorImplementation::setText(const KviQCString & szText)
+void KviScriptEditorImplementation::setText(const QByteArray & szText)
 {
         m_pEditor->setPlainText(szText.data());
 	m_pEditor->document()->setModified(false);
 	updateRowColLabel();
 }
 
-void KviScriptEditorImplementation::getText(KviQCString & szText)
+void KviScriptEditorImplementation::getText(QByteArray & szText)
 {
 	szText = m_pEditor->toPlainText().toUtf8();
 }

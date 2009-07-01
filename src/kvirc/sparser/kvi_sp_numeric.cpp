@@ -26,6 +26,7 @@
 
 
 #include "kvi_sparser.h"
+
 #include "kvi_window.h"
 #include "kvi_query.h"
 #include "kvi_out.h"
@@ -50,7 +51,6 @@
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_time.h"
 #include "kvi_lagmeter.h"
-#include "kvi_qcstring.h"
 #include "kvi_kvs_eventtriggers.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variantlist.h"
@@ -60,6 +60,7 @@
 #include <QDateTime>
 #include <QTextCodec>
 #include <QRegExp>
+#include <QByteArray>
 
 // #define IS_CHANNEL_TYPE_FLAG(_str) ((*(_str) == '#') || (*(_str) == '&') || (*(_str) == '!'))
 #define IS_CHANNEL_TYPE_FLAG(_qchar) (msg->connection()->serverInfo()->supportedChannelTypes().indexOf(_qchar) != -1)
@@ -399,7 +400,7 @@ void KviServerParser::parseNumericNames(KviIrcMessage *msg)
 	// [=|*|@] is the type of the channel:
 	// = --> public  * --> private   @ --> secret
 	// ...but we ignore it
-	//QString szChan = msg->connection()->decodeText(msg->cSafeParam(2)->data()); // <-- KviQCString::data() is implicitly unsafe: it CAN return 0
+	//QString szChan = msg->connection()->decodeText(msg->cSafeParam(2)->data()); // <-- QByteArray::data() is implicitly unsafe: it CAN return 0
 	QString szChan = msg->connection()->decodeText(msg->safeParam(2));
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 	// and run to the first nickname
@@ -719,7 +720,7 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 			{
 				if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars))
 				{
-					KviQCString d = msg->connection()->encodeText(szNick);
+					QByteArray d = msg->connection()->encodeText(szNick);
 					msg->connection()->sendFmtData("%s %s :%c%s%c","PRIVMSG",d.data(),0x01,"AVATAR",0x01);
 				}
 			}
@@ -902,7 +903,7 @@ void KviServerParser::parseLoginNicknameProblem(KviIrcMessage *msg)
 				&szActual,msg->numeric(),&szWText,&szNextNick);
 	}
 
-	KviQCString d = msg->connection()->encodeText(szNextNick);
+	QByteArray d = msg->connection()->encodeText(szNextNick);
 	msg->connection()->sendFmtData("NICK %s",d.data());
 }
 
@@ -1680,7 +1681,7 @@ void KviServerParser::parseNumericBackFromAway(KviIrcMessage * msg)
 	{
 		if(_OUTPUT_PARANOIC)
 			msg->console()->output(KVI_OUT_AWAY,__tr2qs("Restoring pre-away nickname (%Q)"),&szNickBeforeAway);
-		KviQCString szDat = msg->connection()->encodeText(szNickBeforeAway);
+		QByteArray szDat = msg->connection()->encodeText(szNickBeforeAway);
 		msg->connection()->sendFmtData("NICK %s",szDat.data());
 	}
 
@@ -1718,7 +1719,7 @@ void KviServerParser::parseNumericAway(KviIrcMessage * msg)
 
 		if(_OUTPUT_PARANOIC)
 			msg->console()->output(KVI_OUT_AWAY,__tr2qs("Setting away nickname (%Q)"),&szNewNick);
-		KviQCString dat = msg->connection()->encodeText(szNewNick);
+		QByteArray dat = msg->connection()->encodeText(szNewNick);
 		msg->connection()->sendFmtData("NICK %s",dat.data());
 	}
 }

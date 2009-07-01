@@ -31,8 +31,9 @@
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_variant.h"
 #include "kvi_userinput.h"
-#include "kvi_qcstring.h"
 #include "kvi_pointerhashtable.h"
+
+#include <QByteArray>
 
 #ifdef DEBUG
 	#undef DEBUG
@@ -239,7 +240,7 @@ bool KviPerlInterpreter::execute(
 
 	g_lWarningList.clear();
 
-	KviQCString szUtf8 = szCode.toUtf8();
+	QByteArray szUtf8 = szCode.toUtf8();
 	PERL_SET_CONTEXT(m_pInterpreter);
 
 	// clear the _ array

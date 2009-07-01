@@ -247,7 +247,7 @@ void KviIrcConnection::setupTextCodec()
  * We're asking the connection itself to encode/decode text: use server specific encoding,
  * instead of the "user text" encoding used in channels
  */
-KviQCString KviIrcConnection::encodeText(const QString & szText)
+QByteArray KviIrcConnection::encodeText(const QString & szText)
 {
 	if(!m_pSrvCodec)
 		return szText.toUtf8();
@@ -1100,9 +1100,9 @@ void KviIrcConnection::loginToIrcServer()
 
 	// FIXME: The server's encoding!
 	setupTextCodec();
-	KviQCString szNick = encodeText(m_pUserInfo->nickName()); // never empty
-	KviQCString szUser = encodeText(m_pUserInfo->userName()); // never empty
-	KviQCString szReal = encodeText(m_pUserInfo->realName()); // may be empty
+	QByteArray szNick = encodeText(m_pUserInfo->nickName()); // never empty
+	QByteArray szUser = encodeText(m_pUserInfo->userName()); // never empty
+	QByteArray szReal = encodeText(m_pUserInfo->realName()); // may be empty
 
 	if(!szReal.data())szReal = "";
 

@@ -129,7 +129,7 @@ namespace KviUserInput
 				case KVI_WINDOW_TYPE_CONSOLE:
 					if(pWindow->connection())
 					{
-						KviQCString data = pWindow->connection()->encodeText(buf);
+						QByteArray data = pWindow->connection()->encodeText(buf);
 
 						if(((KviConsole *)pWindow)->connection()->sendData(data.data()))
 						{

@@ -30,14 +30,13 @@
 #include "kvi_string.h"
 #include "kvi_thread.h"
 #include "kvi_locale.h"
-#include "kvi_qcstring.h"
 #include "kvi_app.h"
 #include "kvi_env.h"
 #include "kvi_osinfo.h"
-#include "kvi_qcstring.h"
 #include "kvi_modulemanager.h"
 
 #include <QClipboard>
+#include <QByteArray>
 
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	#include <sys/utsname.h>
@@ -206,7 +205,7 @@ static bool system_kvs_fnc_getenv(KviKvsModuleFunctionCall *c)
 		KVSM_PARAMETER("variable",KVS_PT_NONEMPTYSTRING,0,szVariable)
 	KVSM_PARAMETERS_END(c)
 
-	KviQCString szVar = szVariable.toLocal8Bit();
+	QByteArray szVar = szVariable.toLocal8Bit();
 /*#ifdef COMPILE_ON_WINDOWS
 	QString env= getenv(szVar.data());
 	QString def= __tr2qs("No environment variable found, please don't use the %% in the request");
@@ -428,7 +427,7 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 		The parameters MUST be in the form "type=value"
 		where "type" is the C++ type of the parameter and value
 		is the string rappresentation of the parameter data. Currently
-		KVIrc supports only QString,KviQCString,bool,int and uint data types.[br]
+		KVIrc supports only QString,QByteArray,bool,int and uint data types.[br]
 		The returned value is the string rappresentation of the returned
 		data if the return type is known, otherwise it is the name of the data type returned.
 		[br]
@@ -500,9 +499,9 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 		{
 			QString ddd = tmp.ptr();
 			ds << ddd;
-		} else if(kvi_strEqualCI("KviQCString",szType.ptr()))
+		} else if(kvi_strEqualCI("QByteArray",szType.ptr()))
 		{
-			KviQCString qcs = tmp.ptr();
+			QByteArray qcs = tmp.ptr();
 			ds << qcs;
 		} else if(kvi_strEqualCI("bool",szType.ptr()))
 		{
@@ -610,8 +609,8 @@ static bool system_kvs_cmd_setenv(KviKvsModuleCommandCall * c)
 		KVSM_PARAMETER("value",KVS_PT_STRING,KVS_PF_OPTIONAL,szValue)
 	KVSM_PARAMETERS_END(c)
 
-	KviQCString szVar = szVariable.toLocal8Bit();
-	KviQCString szVal = szValue.toLocal8Bit();
+	QByteArray szVar = szVariable.toLocal8Bit();
+	QByteArray szVal = szValue.toLocal8Bit();
 
 	if(szVal.isEmpty())kvi_unsetenv(szVar.data());
 	else
@@ -707,7 +706,7 @@ static bool system_kvs_cmd_runcmd(KviKvsModuleCommandCall *c)
 	// check for empty szCommand
 	if(!szCommand.isEmpty())
 	{
-		KviQCString szCmd = szCommand.toLocal8Bit();
+		QByteArray szCmd = szCommand.toLocal8Bit();
 #ifdef COMPILE_KDE_SUPPORT          // We have invokeTerminal().
 		KToolInvocation::invokeTerminal(szCmd.data());
 #else                               // No invokeTerminal() for us, we'll use a

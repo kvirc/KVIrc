@@ -32,13 +32,13 @@
 
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
-#include "kvi_qcstring.h"
 #include "kvi_pointerlist.h"
 #include "kvi_time.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_ircconnectionserverinfo.h"
 
 #include <QObject>
+#include <QByteArray>
 
 class QTimer;
 class QTextCodec;
@@ -646,9 +646,9 @@ public:
 	* You should first attempt to encode the text by using the window codec
 	* (if you belong to a window).
 	* \param szText The text to encode
-	* \return KviQCString
+	* \return QByteArray
 	*/
-	KviQCString encodeText(const QString & szText);
+	QByteArray encodeText(const QString & szText);
 protected:
 	//
 	// Notify list management

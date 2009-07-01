@@ -38,10 +38,10 @@
 #include "kvi_settings.h"
 #include "kvi_qstring.h"
 #include "kvi_pointerhashtable.h"
-#include "kvi_qcstring.h" // QByteArray anyway
 #include "kvi_pointerlist.h"
 
 #include <QObject>
+#include <QByteArray>
 
 class QProgressDialog;
 class QLabel;

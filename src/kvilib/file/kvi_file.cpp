@@ -69,7 +69,7 @@ bool KviFile::load(QByteArray &bData)
 
 bool KviFile::save(const QString &szData)
 {
-	KviQCString c = KviQString::toUtf8(szData);
+	QByteArray c = KviQString::toUtf8(szData);
 	if(!save((kvi_u32_t)(c.length())))return false;
 	return (writeBlock(c.data(),c.length()) == ((unsigned int)(c.length())));
 }
@@ -78,7 +78,7 @@ bool KviFile::load(QString &szData)
 {
 	kvi_u32_t iLen;
 	if(!load(iLen))return false;
-	KviQCString tmp;
+	QByteArray tmp;
 	tmp.resize(iLen + 1);
 	if(readBlock((char *)(tmp.data()),iLen) != iLen)return false;
 	*(tmp.data() + iLen) = 0;

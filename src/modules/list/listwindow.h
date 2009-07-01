@@ -40,23 +40,21 @@
 
 class KviThemedLabel;
 
-
 class KviChannelTreeWidgetItemDelegate : public QItemDelegate
 {
 public:
-	KviChannelTreeWidgetItemDelegate(KviTalTreeWidget * pWidget=0)
-		: QItemDelegate(pWidget) {};
-	~KviChannelTreeWidgetItemDelegate(){};
-	void paint( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-
+	KviChannelTreeWidgetItemDelegate(KviTalTreeWidget * pWidget = 0);
+	~KviChannelTreeWidgetItemDelegate();
+	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 };
+
 class KviChannelTreeWidgetItemData
 {
 	friend class KviChannelTreeWidgetItem;
 	friend class KviListWindow;
 	friend class KviChannelTreeWidgetItemDelegate;
 public:
-	KviChannelTreeWidgetItemData(const QString &szChan,const QString &szUsers,const QString &szTopic);
+	KviChannelTreeWidgetItemData(const QString & szChan, const QString & szUsers, const QString & szTopic);
 	~KviChannelTreeWidgetItemData();
 protected:
 	QString m_szChan;
@@ -68,52 +66,50 @@ class KviChannelTreeWidgetItem : public KviTalTreeWidgetItem
 {
 	friend class KviListWindow;
 public:
-	KviChannelTreeWidgetItem(KviTalTreeWidget * v,KviChannelTreeWidgetItemData * pData);
+	KviChannelTreeWidgetItem(KviTalTreeWidget * pWidget, KviChannelTreeWidgetItemData * pData);
 	~KviChannelTreeWidgetItem();
 public:
-	int width ( const QFontMetrics & fm, const KviTalTreeWidget * lv, int column ) const;
-	bool operator< ( const KviTalTreeWidgetItem & other ) const;
+	int width (const QFontMetrics & fm, const KviTalTreeWidget * pWidget, int iColumn) const;
+	bool operator<(const KviTalTreeWidgetItem & other) const;
 };
-
 
 class KviListWindow : public KviWindow, public KviExternalServerDataParser
 {
 	Q_OBJECT
 public:
-	KviListWindow(KviFrame * lpFrm,KviConsole * lpConsole);
+	KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole);
 	~KviListWindow();
 protected:
-	QSplitter          * m_pVertSplitter;
-	QSplitter          * m_pTopSplitter;
-	KviTalTreeWidget   * m_pTreeWidget;
-	QLineEdit          * m_pParamsEdit;
-	QToolButton        * m_pRequestButton;
-	QToolButton        * m_pStopListDownloadButton;
-	QToolButton        * m_pOpenButton;
-	QToolButton        * m_pSaveButton;
-	KviThemedLabel     * m_pInfoLabel;
-	QTimer             * m_pFlushTimer;
+	QSplitter                                    * m_pVertSplitter;
+	QSplitter                                    * m_pTopSplitter;
+	KviTalTreeWidget                             * m_pTreeWidget;
+	QLineEdit                                    * m_pParamsEdit;
+	QToolButton                                  * m_pRequestButton;
+	QToolButton                                  * m_pStopListDownloadButton;
+	QToolButton                                  * m_pOpenButton;
+	QToolButton                                  * m_pSaveButton;
+	KviThemedLabel                               * m_pInfoLabel;
+	QTimer                                       * m_pFlushTimer;
 	KviPointerList<KviChannelTreeWidgetItemData> * m_pItemList;
 public: // Methods
-	virtual void control(int msg);
-	virtual void processData(KviIrcMessage * msg);
+	virtual void control(int iMsg);
+	virtual void processData(KviIrcMessage * pMsg);
 	virtual void die();
+	virtual QSize sizeHint() const;
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 	virtual void applyOptions();
-	virtual void resizeEvent(QResizeEvent *e);
-	virtual void getBaseLogFileName(QString &buffer);
+	virtual void resizeEvent(QResizeEvent * e);
+	virtual void getBaseLogFileName(QString & szBuffer);
 protected slots:
 	void flush();
-	void itemDoubleClicked(QTreeWidgetItem *it, int);
+	void itemDoubleClicked(QTreeWidgetItem * it, int);
 	void requestList();
 	void stoplistdownload();
 	void connectionStateChange();
 	void exportList();
 	void importList();
-public:
-	virtual QSize sizeHint() const;
 private:
 	void reset();
 	void endOfList();

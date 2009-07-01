@@ -280,7 +280,7 @@ namespace KviFileUtils
 	{
 		KviFile f(szPath);
 		if(!f.openForWriting(bAppend))return false;
-		KviQCString szTmp = KviQString::toUtf8(szData);
+		QByteArray szTmp = KviQString::toUtf8(szData);
 		if(!szTmp.data())return true;
 		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))return false;
 		return true;
@@ -296,7 +296,7 @@ namespace KviFileUtils
 	{
 		KviFile f(szPath);
 		if(!f.openForWriting(bAppend))return false;
-		KviQCString szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
+		QByteArray szTmp = QTextCodec::codecForLocale()->fromUnicode(szData);
 		if(!szTmp.data())return true;
 		if(f.writeBlock(szTmp.data(),szTmp.length()) != ((unsigned int)(szTmp.length())))return false;
 		return true;

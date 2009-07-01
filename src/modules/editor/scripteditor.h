@@ -28,7 +28,6 @@
 #include "kvi_scripteditor.h"
 #include "kvi_pointerlist.h"
 #include "kvi_selectors.h"
-#include "kvi_qcstring.h"
 #include "kvi_tal_textedit.h"
 #include "kvi_tal_popupmenu.h"
 
@@ -40,6 +39,7 @@
 #include <QListWidget>
 #include <QCheckBox>
 #include <QSyntaxHighlighter>
+#include <QByteArray>
 
 class QTimer;
 
@@ -153,9 +153,9 @@ protected:
 public:
 	virtual void setText(const char * txt);
 	virtual void setText(const QString & szText);
-	virtual void setText(const KviQCString & szText);
+	virtual void setText(const QByteArray & szText);
 	virtual void getText(QString & szText);
-	virtual void getText(KviQCString & szText);
+	virtual void getText(QByteArray & szText);
 	virtual void setFindText(const QString & szText);
 	virtual void setEnabled(bool bEnabled);
 	virtual void setFocus();

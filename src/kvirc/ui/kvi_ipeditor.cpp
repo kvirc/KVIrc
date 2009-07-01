@@ -23,7 +23,6 @@
 //=============================================================================
 
 #include "kvi_ipeditor.h"
-#include "kvi_qcstring.h"
 
 #include <QApplication>
 #include <QLineEdit>
@@ -31,6 +30,7 @@
 #include <QFrame>
 #include <QEvent>
 #include <QKeyEvent>
+#include <QByteArray>
 
 #include <ctype.h>
 
@@ -113,7 +113,7 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 	//       is valid before effectively setting the fields
 	clear();
 
-	KviQCString ip = ipAddr.toAscii(); // ip addresses are digits & latin letters abcdef (IPv6)
+	QByteArray ip = ipAddr.toAscii(); // ip addresses are digits & latin letters abcdef (IPv6)
 
 	ip = ip.trimmed();
 	const char * c = ip.data();
@@ -127,7 +127,7 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 			const char *anchor = c;
 			while(isdigit(*c))c++;
 			if(c == anchor)return false; // Invalid empty field
-			KviQCString str(anchor,(c - anchor) + 1);
+			QByteArray str(anchor,(c - anchor) + 1);
 			bool bOk;
 			int num = str.toInt(&bOk);
 			if(!bOk)return false; // should never happen , but just to be sure
@@ -143,7 +143,7 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 		{
 			const char *anchor = c;
 			while(isdigit(*c) || ((tolower(*c) >= 'a') && (tolower(*c) <= 'f')) || ((tolower(*c) >= 'A') && (tolower(*c) <= 'F')))c++;
-			KviQCString str(anchor,(c - anchor) + 1);
+			QByteArray str(anchor,(c - anchor) + 1);
 			if(str.length() > 4)return false; // Too long
 			m_pEdit[i]->setText(str.data());
 			if(i < 7){

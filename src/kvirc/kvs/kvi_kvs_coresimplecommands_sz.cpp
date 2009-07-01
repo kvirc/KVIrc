@@ -609,8 +609,8 @@ namespace KviKvsCoreSimpleCommands
 			}
 		}
 
-		KviQCString szC = KVSCSC_pConnection->encodeText(szChannel);
-		KviQCString szT = KVSCSC_pConnection->encodeText(szTopic);
+		QByteArray szC = KVSCSC_pConnection->encodeText(szChannel);
+		QByteArray szT = KVSCSC_pConnection->encodeText(szTopic);
 		if(szTopic.isEmpty())
 		{
 			if(!KVSCSC_pConnection->sendFmtData("TOPIC %s",szC.data()))
@@ -907,7 +907,7 @@ namespace KviKvsCoreSimpleCommands
 			}
 		}
 
-		KviQCString szC = KVSCSC_pConnection->encodeText(szChannel);
+		QByteArray szC = KVSCSC_pConnection->encodeText(szChannel);
 
 		if(!KVSCSC_pConnection->sendFmtData("WHO %s",szC.data()))
 			return KVSCSC_pContext->warningNoIrcConnection();
@@ -955,7 +955,7 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,KVS_PF_APPENDREMAINING,szNick)
 		KVSCSC_PARAMETERS_END
 
-		KviQCString szData = KVSCSC_pContext->connection()->encodeText(szNick);
+		QByteArray szData = KVSCSC_pContext->connection()->encodeText(szNick);
 
 		if(!KVSCSC_pContext->connection())return KVSCSC_pContext->warningNoIrcConnection();
 		if(!KVSCSC_pContext->connection()->sendFmtData("WHOIS %s",szData.data()))return KVSCSC_pContext->warningNoIrcConnection();
@@ -995,7 +995,7 @@ namespace KviKvsCoreSimpleCommands
 			KVSCSC_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,KVS_PF_APPENDREMAINING,szNick)
 		KVSCSC_PARAMETERS_END
 
-		KviQCString szData = KVSCSC_pContext->connection()->encodeText(szNick);
+		QByteArray szData = KVSCSC_pContext->connection()->encodeText(szNick);
 
 		if(!KVSCSC_pContext->connection())return KVSCSC_pContext->warningNoIrcConnection();
 		if(!KVSCSC_pContext->connection()->sendFmtData("WHOWAS %s",szData.data()))return KVSCSC_pContext->warningNoIrcConnection();

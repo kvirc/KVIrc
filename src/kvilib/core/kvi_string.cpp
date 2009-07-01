@@ -747,7 +747,7 @@ int kvi_vsnprintf(char *buffer,int len,const char *fmt,kvi_va_list list)
 			case 'Q': // QString! (this should almost never happen)
 			{
 				QString * s = kvi_va_arg(list,QString *);
-				KviQCString cs = KviQString::toUtf8(*s);
+				QByteArray cs = KviQString::toUtf8(*s);
 				const char * t = cs.data();
 				if(!t)continue; // nothing to do
 				//check for space...
@@ -812,7 +812,7 @@ int kvi_irc_vsnprintf(char *buffer,const char *fmt,kvi_va_list list,bool *bTrunc
 			case 'Q': // QString! (this should almost never happen)
 			{
 				QString * s = kvi_va_arg(list,QString *);
-				KviQCString cs = KviQString::toUtf8(*s);
+				QByteArray cs = KviQString::toUtf8(*s);
 				const char * t = cs.data();
 				if(!t)continue; // nothing to do
 				while(*t)
@@ -1037,7 +1037,7 @@ KviStr::KviStr(const char *str)
 	}
 }
 
-KviStr::KviStr(const KviQCString &str)
+KviStr::KviStr(const QByteArray &str)
 {
 	//Deep copy constructor
 	if(str.data())
@@ -1116,7 +1116,7 @@ KviStr::KviStr(const KviStr &str)
 
 KviStr::KviStr(const QString &str)
 {
-	KviQCString sz = KviQString::toUtf8(str);
+	QByteArray sz = KviQString::toUtf8(str);
 	if(sz.length() > 0)
 	{
 		m_len = sz.length();
@@ -1195,7 +1195,7 @@ KviStr & KviStr::operator=(const KviStr &str)
 	return (*this);
 }
 
-KviStr & KviStr::operator=(const KviQCString &str)
+KviStr & KviStr::operator=(const QByteArray &str)
 {
 	m_len = str.length();
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+1);
@@ -1491,7 +1491,7 @@ KviStr & KviStr::setStr(const char *str,int len)
 
 KviStr & KviStr::operator=(const QString &str)
 {
-	KviQCString sz = KviQString::toUtf8(str);
+	QByteArray sz = KviQString::toUtf8(str);
 	if(sz.length() > 0){
 		m_len = sz.length();
 		m_ptr = (char *)kvi_realloc(m_ptr,m_len+1);
@@ -1540,7 +1540,7 @@ void KviStr::append(const char *str)
 
 void KviStr::append(const QString &str)
 {
-	KviQCString sz = KviQString::toUtf8(str);
+	QByteArray sz = KviQString::toUtf8(str);
 	if(sz.length() < 1)return;
 	m_ptr = (char *)kvi_realloc(m_ptr,m_len+sz.length()+1);
 	kvi_fastmove((m_ptr+m_len),sz.data(),sz.length()+1);
