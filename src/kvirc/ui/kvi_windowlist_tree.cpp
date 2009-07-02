@@ -156,23 +156,16 @@ void KviTreeWindowListItem::setActive(bool bActive)
 {
 	if(bActive)
 	{
-		m_iHighlightLevel = 0;
-		setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
+		unhighlight();
 		treeWidget()->setCurrentItem(this);
 		treeWidget()->scrollToItem(this);
-	} else {
-		if(isSelected())
-		{
-			m_iHighlightLevel = 0;
-			setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
-		}
 	}
 }
 
 QString KviTreeWindowListItem::key() const
 {
 	// This is the sorting function for KviTreeTaskBarItem
-	// 1) window type (console, other window..) 2) unique id (to avoid bug #9) 3) windowname (for alphabetical sorting of childs) 3)
+	// 1) window type (console, other window..) 2) unique id [to avoid bug #9] 3) windowname (for alphabetical sorting of childs)
 	QString ret;
 	if(m_pWindow->type()==KVI_WINDOW_TYPE_CONSOLE)
 	{

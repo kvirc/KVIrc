@@ -750,7 +750,7 @@ void KviServerParser::parseLiteralPrivmsg(KviIrcMessage *msg)
 
 	KviConsole * console = msg->console();
 	KviRegisteredUser * u = msg->connection()->userDataBase()->registeredUser(szNick,szUser,szHost);
-    //Highlight it?
+	//Highlight it?
 
 	// FIXME: 	#warning "DEDICATED CTCP WINDOW ?"
 	KviStr * pTrailing = msg->trailingString();

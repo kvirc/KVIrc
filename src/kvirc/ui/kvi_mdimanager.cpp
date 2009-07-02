@@ -140,7 +140,7 @@ void KviMdiManager::manageChild(KviMdiChild * lpC, bool, QRect *)
 
 	addSubWindow((QMdiSubWindow*)lpC);
 
-	if(isInSDIMode()) lpC->queuedMaximize();
+// 	if(isInSDIMode()) lpC->queuedMaximize();
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }

@@ -184,7 +184,7 @@ void KviMdiChild::windowStateChangedEvent( Qt::WindowStates oldState, Qt::Window
 	}
 
 	// check if window has been maximized
-	if (!(oldState & Qt::WindowMaximized) && newState & Qt::WindowMaximized)
+	if (!(oldState & Qt::WindowMaximized) && (newState & Qt::WindowMaximized))
 	{
 		m_LastState = m_State;
 		m_State = Maximized;
