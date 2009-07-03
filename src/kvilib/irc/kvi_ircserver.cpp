@@ -4,7 +4,7 @@
 //   Creation date : Mon Jul 10 2000 03:42:59 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -45,28 +45,28 @@
 
 KviServer::KviServer()
 {
-	m_pReconnectInfo=0;
-	m_uFlags = 0;
-	m_uPort  = 6667;
+	m_pReconnectInfo       = 0;
+	m_uFlags               = 0;
+	m_uPort                = 6667;
 	m_pAutoJoinChannelList = 0;
-	m_bAutoConnect = false;
-	m_iProxy = -1;
+	m_bAutoConnect         = false;
+	m_iProxy               = -1;
 }
 
 KviProxy * KviServer::proxyServer(KviProxyDataBase * pDb)
 {
-	int i=0;
-	if(proxy()<0) return 0;
+	int i = 0;
+	if(proxy() < 0) return 0;
 	KviPointerList<KviProxy> * proxylist = pDb->proxyList();
-	for(KviProxy * p = proxylist->first();p;p = proxylist->next())
+	for(KviProxy * p = proxylist->first(); p; p = proxylist->next())
 	{
-		if(i==proxy()) return p;
+		if(i == proxy()) return p;
 		i++;
 	}
 	return 0;
 }
 
-KviServer::KviServer(const KviServer &serv)
+KviServer::KviServer(const KviServer & serv)
 {
 	if(serv.m_pReconnectInfo) m_pReconnectInfo = new KviServerReconnectInfo(*(serv.m_pReconnectInfo));
 	else m_pReconnectInfo = 0;
@@ -88,13 +88,14 @@ KviServer::KviServer(const KviServer &serv)
 	m_szId               = serv.m_szId;
 	m_iProxy             = serv.m_iProxy;
 	m_szUserIdentityId   = serv.m_szUserIdentityId;
+	m_bAutoConnect       = serv.m_bAutoConnect;
+
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
 	else m_pAutoJoinChannelList = 0;
-	m_bAutoConnect       = serv.m_bAutoConnect;
 }
 
-void KviServer::operator=(const KviServer &serv)
+void KviServer::operator=(const KviServer & serv)
 {
 	m_szHostname         = serv.m_szHostname;
 	m_szIp               = serv.m_szIp;
@@ -107,24 +108,24 @@ void KviServer::operator=(const KviServer &serv)
 	m_szEncoding         = serv.m_szEncoding;
 	m_szTextEncoding     = serv.m_szTextEncoding;
 	m_uFlags             = serv.m_uFlags;
-	m_szInitUMode = serv.m_szInitUMode;
+	m_szInitUMode        = serv.m_szInitUMode;
 	m_szOnConnectCommand = serv.m_szOnConnectCommand;
 	m_szOnLoginCommand   = serv.m_szOnLoginCommand;
 	m_szLinkFilter       = serv.m_szLinkFilter;
 	m_szId               = serv.m_szId;
 	m_szUserIdentityId   = serv.m_szUserIdentityId;
 	m_iProxy	     = serv.m_iProxy;
-	if(m_pAutoJoinChannelList)delete m_pAutoJoinChannelList;
+	m_bAutoConnect       = serv.m_bAutoConnect;
+
+	if(m_pAutoJoinChannelList) delete m_pAutoJoinChannelList;
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
 	else m_pAutoJoinChannelList = 0;
-	m_bAutoConnect    = serv.m_bAutoConnect;
 }
-
 
 KviServer::~KviServer()
 {
-	if(m_pAutoJoinChannelList)delete m_pAutoJoinChannelList;
+	if(m_pAutoJoinChannelList) delete m_pAutoJoinChannelList;
 	if(m_pReconnectInfo) delete m_pReconnectInfo;
 }
 
@@ -137,208 +138,211 @@ void KviServer::generateUniqueId()
 
 QString KviServer::ircUri()
 {
-	QString uri("irc");
-	if(useSSL() || supportsSTARTTLS())uri += "s";
-	if(isIPv6())uri += "6";
-	uri += "://";
-	uri += m_szHostname;
+	QString szUri("irc");
+	if(useSSL() || supportsSTARTTLS()) szUri += "s";
+	if(isIPv6()) szUri += "6";
+	szUri += "://";
+	szUri += m_szHostname;
 
-	if(m_uPort!=6667)
+	if(m_uPort != 6667)
 	{
-		uri += ":";
-		QString num;
-		num.setNum(m_uPort);
-		uri += num;
+		szUri += ":";
+		QString szNum;
+		szNum.setNum(m_uPort);
+		szUri += szNum;
 	}
-	return uri;
+	return szUri;
 }
 
 void KviServer::setAutoJoinChannelList(QStringList * pNewChannelList)
 {
-	if(m_pAutoJoinChannelList)delete m_pAutoJoinChannelList;
+	if(m_pAutoJoinChannelList) delete m_pAutoJoinChannelList;
 	m_pAutoJoinChannelList = pNewChannelList;
 }
 
-bool KviServer::load(KviConfig * cfg,const QString &prefix)
+bool KviServer::load(KviConfig * cfg, const QString & szPrefix)
 {
-	QString tmp;
-	KviQString::sprintf(tmp,"%QHostname",&prefix);
-	m_szHostname = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QIp",&prefix);
-	m_szIp = cfg->readQStringEntry(tmp);
-	if(m_szHostname.isEmpty() && m_szIp.isEmpty())return false;
-	KviQString::sprintf(tmp,"%QDescription",&prefix);
-	m_szDescription = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QUser",&prefix);
-	m_szUser = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QPass",&prefix);
-	m_szPass = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QNick",&prefix);
-	m_szNick = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QRealName",&prefix);
-	m_szRealName = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QInitUmode",&prefix);
-	m_szInitUMode = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QAutoJoinChannels",&prefix);
-	QStringList l = cfg->readStringListEntry(tmp,QStringList());
-	if(l.count() > 0)setAutoJoinChannelList(new QStringList(l));
-	KviQString::sprintf(tmp,"%QAutoConnect",&prefix);
-	m_bAutoConnect = cfg->readBoolEntry(tmp,false);
-	KviQString::sprintf(tmp,"%QEncoding",&prefix);
-	m_szEncoding = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QTextEncoding",&prefix);
-	m_szTextEncoding = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QOnConnectCommand",&prefix);
-	m_szOnConnectCommand = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QOnLoginCommand",&prefix);
-	m_szOnLoginCommand = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QLinkFilter",&prefix);
-	m_szLinkFilter = cfg->readQStringEntry(tmp);
-	KviQString::sprintf(tmp,"%QPort",&prefix);
-	m_uPort = cfg->readUIntEntry(tmp,6667);
-	KviQString::sprintf(tmp,"%QId",&prefix);
-	m_szId = cfg->readQStringEntry(tmp);
-	if(m_szId.isEmpty())generateUniqueId();
-	KviQString::sprintf(tmp,"%QIPv6",&prefix);
-	setIPv6(cfg->readBoolEntry(tmp,false));
-	KviQString::sprintf(tmp,"%QCacheIp",&prefix);
-	setCacheIp(cfg->readBoolEntry(tmp,false)); // true ?
-	KviQString::sprintf(tmp,"%QSSL",&prefix);
-	setUseSSL(cfg->readBoolEntry(tmp,false));
-	KviQString::sprintf(tmp,"%QSupportsSTARTTLS",&prefix);
-	setSupportsSTARTTLS(cfg->readBoolEntry(tmp,false));
-	KviQString::sprintf(tmp,"%QProxy",&prefix);
-	setProxy(cfg->readIntEntry(tmp,-2));
-	KviQString::sprintf(tmp,"%QUserIdentityId",&prefix);
-	m_szUserIdentityId = cfg->readQStringEntry(tmp);
+	QString szTmp;
+	KviQString::sprintf(szTmp,"%QHostname",&szPrefix);
+	m_szHostname = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QIp",&szPrefix);
+	m_szIp = cfg->readQStringEntry(szTmp);
+	if(m_szHostname.isEmpty() && m_szIp.isEmpty())	return false;
+
+	KviQString::sprintf(szTmp,"%QDescription",&szPrefix);
+	m_szDescription = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QUser",&szPrefix);
+	m_szUser = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QPass",&szPrefix);
+	m_szPass = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QNick",&szPrefix);
+	m_szNick = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QRealName",&szPrefix);
+	m_szRealName = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QInitUmode",&szPrefix);
+	m_szInitUMode = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QAutoJoinChannels",&szPrefix);
+	QStringList l = cfg->readStringListEntry(szTmp,QStringList());
+	if(l.count() > 0) setAutoJoinChannelList(new QStringList(l));
+
+	KviQString::sprintf(szTmp,"%QAutoConnect",&szPrefix);
+	m_bAutoConnect = cfg->readBoolEntry(szTmp,false);
+	KviQString::sprintf(szTmp,"%QEncoding",&szPrefix);
+	m_szEncoding = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QTextEncoding",&szPrefix);
+	m_szTextEncoding = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QOnConnectCommand",&szPrefix);
+	m_szOnConnectCommand = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QOnLoginCommand",&szPrefix);
+	m_szOnLoginCommand = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QLinkFilter",&szPrefix);
+	m_szLinkFilter = cfg->readQStringEntry(szTmp);
+	KviQString::sprintf(szTmp,"%QPort",&szPrefix);
+	m_uPort = cfg->readUIntEntry(szTmp,6667);
+	KviQString::sprintf(szTmp,"%QId",&szPrefix);
+	m_szId = cfg->readQStringEntry(szTmp);
+	if(m_szId.isEmpty()) generateUniqueId();
+
+	KviQString::sprintf(szTmp,"%QIPv6",&szPrefix);
+	setIPv6(cfg->readBoolEntry(szTmp,false));
+	KviQString::sprintf(szTmp,"%QCacheIp",&szPrefix);
+	setCacheIp(cfg->readBoolEntry(szTmp,false)); // true ?
+	KviQString::sprintf(szTmp,"%QSSL",&szPrefix);
+	setUseSSL(cfg->readBoolEntry(szTmp,false));
+	KviQString::sprintf(szTmp,"%QSupportsSTARTTLS",&szPrefix);
+	setSupportsSTARTTLS(cfg->readBoolEntry(szTmp,false));
+	KviQString::sprintf(szTmp,"%QProxy",&szPrefix);
+	setProxy(cfg->readIntEntry(szTmp,-2));
+	KviQString::sprintf(szTmp,"%QUserIdentityId",&szPrefix);
+	m_szUserIdentityId = cfg->readQStringEntry(szTmp);
 	return true;
 }
 
-void KviServer::save(KviConfig * cfg,const QString &prefix)
+void KviServer::save(KviConfig * cfg, const QString & szPrefix)
 {
-	QString tmp;
-	KviQString::sprintf(tmp,"%QHostname",&prefix);
-	cfg->writeEntry(tmp,m_szHostname);
-	KviQString::sprintf(tmp,"%QId",&prefix);
-	cfg->writeEntry(tmp,m_szId);
+	QString szTmp;
+	KviQString::sprintf(szTmp,"%QHostname",&szPrefix);
+	cfg->writeEntry(szTmp,m_szHostname);
+	KviQString::sprintf(szTmp,"%QId",&szPrefix);
+	cfg->writeEntry(szTmp,m_szId);
 	if(!m_szIp.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QIp",&prefix);
-		cfg->writeEntry(tmp,m_szIp);
+		KviQString::sprintf(szTmp,"%QIp",&szPrefix);
+		cfg->writeEntry(szTmp,m_szIp);
 	}
 	if(!m_szDescription.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QDescription",&prefix);
-		cfg->writeEntry(tmp,m_szDescription);
+		KviQString::sprintf(szTmp,"%QDescription",&szPrefix);
+		cfg->writeEntry(szTmp,m_szDescription);
 	}
 	if(!m_szUser.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QUser",&prefix);
-		cfg->writeEntry(tmp,m_szUser);
+		KviQString::sprintf(szTmp,"%QUser",&szPrefix);
+		cfg->writeEntry(szTmp,m_szUser);
 	}
 	if(!m_szPass.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QPass",&prefix);
-		cfg->writeEntry(tmp,m_szPass);
+		KviQString::sprintf(szTmp,"%QPass",&szPrefix);
+		cfg->writeEntry(szTmp,m_szPass);
 	}
 	if(!m_szNick.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QNick",&prefix);
-		cfg->writeEntry(tmp,m_szNick);
+		KviQString::sprintf(szTmp,"%QNick",&szPrefix);
+		cfg->writeEntry(szTmp,m_szNick);
 	}
 	if(!m_szRealName.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QRealName",&prefix);
-		cfg->writeEntry(tmp,m_szRealName);
+		KviQString::sprintf(szTmp,"%QRealName",&szPrefix);
+		cfg->writeEntry(szTmp,m_szRealName);
 	}
 	if(!m_szInitUMode.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QInitUMode",&prefix);
-		cfg->writeEntry(tmp,m_szInitUMode);
+		KviQString::sprintf(szTmp,"%QInitUMode",&szPrefix);
+		cfg->writeEntry(szTmp,m_szInitUMode);
 	}
 	if(autoJoinChannelList())
 	{
-		KviQString::sprintf(tmp,"%QAutoJoinChannels",&prefix);
-		cfg->writeEntry(tmp,*(autoJoinChannelList()));
+		KviQString::sprintf(szTmp,"%QAutoJoinChannels",&szPrefix);
+		cfg->writeEntry(szTmp,*(autoJoinChannelList()));
 	}
 	if(autoConnect()) // otherwise it defaults to false anyway
 	{
-		KviQString::sprintf(tmp,"%QAutoConnect",&prefix);
-		cfg->writeEntry(tmp,autoConnect());
+		KviQString::sprintf(szTmp,"%QAutoConnect",&szPrefix);
+		cfg->writeEntry(szTmp,autoConnect());
 	}
 	if(!m_szEncoding.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QEncoding",&prefix);
-		cfg->writeEntry(tmp,m_szEncoding);
+		KviQString::sprintf(szTmp,"%QEncoding",&szPrefix);
+		cfg->writeEntry(szTmp,m_szEncoding);
 	}
 	if(!m_szTextEncoding.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QTextEncoding",&prefix);
-		cfg->writeEntry(tmp,m_szTextEncoding);
+		KviQString::sprintf(szTmp,"%QTextEncoding",&szPrefix);
+		cfg->writeEntry(szTmp,m_szTextEncoding);
 	}
 	if(!m_szOnConnectCommand.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QOnConnectCommand",&prefix);
-		cfg->writeEntry(tmp,m_szOnConnectCommand);
+		KviQString::sprintf(szTmp,"%QOnConnectCommand",&szPrefix);
+		cfg->writeEntry(szTmp,m_szOnConnectCommand);
 	}
 	if(!m_szOnLoginCommand.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QOnLoginCommand",&prefix);
-		cfg->writeEntry(tmp,m_szOnLoginCommand);
+		KviQString::sprintf(szTmp,"%QOnLoginCommand",&szPrefix);
+		cfg->writeEntry(szTmp,m_szOnLoginCommand);
 	}
 	if(!m_szLinkFilter.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QLinkFilter",&prefix);
-		cfg->writeEntry(tmp,m_szLinkFilter);
+		KviQString::sprintf(szTmp,"%QLinkFilter",&szPrefix);
+		cfg->writeEntry(szTmp,m_szLinkFilter);
 	}
 	if(m_uPort != 6667)
 	{
-		KviQString::sprintf(tmp,"%QPort",&prefix);
-		cfg->writeEntry(tmp,m_uPort);
+		KviQString::sprintf(szTmp,"%QPort",&szPrefix);
+		cfg->writeEntry(szTmp,m_uPort);
 	}
 	if(isIPv6())
 	{
-		KviQString::sprintf(tmp,"%QIPv6",&prefix);
-		cfg->writeEntry(tmp,isIPv6());
+		KviQString::sprintf(szTmp,"%QIPv6",&szPrefix);
+		cfg->writeEntry(szTmp,isIPv6());
 	}
 	if(cacheIp())
 	{
-		KviQString::sprintf(tmp,"%QCacheIp",&prefix);
-		cfg->writeEntry(tmp,cacheIp());
+		KviQString::sprintf(szTmp,"%QCacheIp",&szPrefix);
+		cfg->writeEntry(szTmp,cacheIp());
 	}
 	if(useSSL())
 	{
-		KviQString::sprintf(tmp,"%QSSL",&prefix);
-		cfg->writeEntry(tmp,useSSL());
+		KviQString::sprintf(szTmp,"%QSSL",&szPrefix);
+		cfg->writeEntry(szTmp,useSSL());
 	}
 	if(supportsSTARTTLS())
 	{
-		KviQString::sprintf(tmp,"%QSupportsSTARTTLS",&prefix);
-		cfg->writeEntry(tmp,supportsSTARTTLS());
+		KviQString::sprintf(szTmp,"%QSupportsSTARTTLS",&szPrefix);
+		cfg->writeEntry(szTmp,supportsSTARTTLS());
 	}
 	if(proxy()!=-2)
 	{
-		KviQString::sprintf(tmp,"%QProxy",&prefix);
-		cfg->writeEntry(tmp,proxy());
+		KviQString::sprintf(szTmp,"%QProxy",&szPrefix);
+		cfg->writeEntry(szTmp,proxy());
 	}
 	if(!m_szUserIdentityId.isEmpty())
 	{
-		KviQString::sprintf(tmp,"%QUserIdentityId",&prefix);
-		cfg->writeEntry(tmp,m_szUserIdentityId);
+		KviQString::sprintf(szTmp,"%QUserIdentityId",&szPrefix);
+		cfg->writeEntry(szTmp,m_szUserIdentityId);
 	}
 }
 
 
 KviServerReconnectInfo::KviServerReconnectInfo()
 {
-	m_bIsAway=false;
+	m_bIsAway = false;
 }
 
 KviServerReconnectInfo::~KviServerReconnectInfo()
 {
 }
 
-KviServerReconnectInfo::KviServerReconnectInfo(const KviServerReconnectInfo &info)
+KviServerReconnectInfo::KviServerReconnectInfo(const KviServerReconnectInfo & info)
 {
 	m_szNick         = info.m_szNick;
 	m_szAwayReason   = info.m_szAwayReason;

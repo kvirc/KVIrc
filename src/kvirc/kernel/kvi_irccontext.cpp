@@ -152,7 +152,6 @@ void KviIrcContext::unregisterDataStreamMonitor(KviIrcDataStreamMonitor *m)
 	}
 }
 
-
 void KviIrcContext::closeAllDeadChannels()
 {
 	while(m_pDeadChannels)
@@ -510,7 +509,10 @@ void KviIrcContext::connectToCurrentServer()
 	if(m_pAsynchronousConnectionData)
 	{
 		szBindAddress = m_pAsynchronousConnectionData->szBindAddress;
-		srv->m_pReconnectInfo=m_pAsynchronousConnectionData->m_pReconnectInfo;
+		srv->m_pReconnectInfo = m_pAsynchronousConnectionData->m_pReconnectInfo;
+	} else {
+		// see bug #450
+		srv->m_pReconnectInfo = 0;
 	}
 
 	// Find out the identity we'll be using in this connection
@@ -532,21 +534,19 @@ void KviIrcContext::connectToCurrentServer()
 	// If not found, get the default identity (this is GRANTED to be never null, eventually filled up with defaults)
 	pIdentity = KviUserIdentityManager::instance()->defaultIdentity();
 
-
-	if(m_pConnection)delete m_pConnection;
+	if(m_pConnection) delete m_pConnection;
 	m_pConnection = new KviIrcConnection(
-				this,
-				new KviIrcConnectionTarget(
-					net,
-					srv,
-					prx,
-					szBindAddress
-				),
-				new KviUserIdentity(*pIdentity)
-			);
+		this,
+		new KviIrcConnectionTarget(
+			net,
+			srv,
+			prx,
+			szBindAddress
+		),
+		new KviUserIdentity(*pIdentity)
+	);
 
 	setState(Connecting);
-
 
 	if(m_pAsynchronousConnectionData)
 	{
@@ -559,7 +559,7 @@ void KviIrcContext::connectToCurrentServer()
 	// save stuff for later
 
 	// FIXME: this management of "next" connection should be reviewed a bit anyway
-	if(m_pSavedAsynchronousConnectionData)delete m_pSavedAsynchronousConnectionData;
+	if(m_pSavedAsynchronousConnectionData) delete m_pSavedAsynchronousConnectionData;
 	m_pSavedAsynchronousConnectionData = new KviAsynchronousConnectionData();
 	m_pSavedAsynchronousConnectionData->szServer = srv->m_szHostname;
 	m_pSavedAsynchronousConnectionData->uPort = srv->port();
@@ -695,17 +695,15 @@ void KviIrcContext::connectionTerminated()
 
 	KviServer oldServer(*(connection()->target()->server()));
 	if(oldServer.m_pReconnectInfo) delete oldServer.m_pReconnectInfo;
-	KviServerReconnectInfo* pInfo = new KviServerReconnectInfo();
+
+	KviServerReconnectInfo * pInfo = new KviServerReconnectInfo();
 	pInfo->m_szNick = connection()->userInfo()->isAway() ? connection()->userInfo()->nickNameBeforeAway() : connection()->userInfo()->nickName();
-	pInfo->m_bIsAway=connection()->userInfo()->isAway();
-	pInfo->m_szAwayReason=connection()->userInfo()->awayReason();
+	pInfo->m_bIsAway = connection()->userInfo()->isAway();
+	pInfo->m_szAwayReason = connection()->userInfo()->awayReason();
 
 	// we consider it unexpected when we haven't sent a QUIT message and we're connected
 	// or alternatively when a simulation of such a termination is requested (this is used to keep the queries open etc..)
-	bool bUnexpectedDisconnect = (!(connection()->stateData()->sentQuit())) && ((m_eState == KviIrcContext::Connected) ||
-									connection()->stateData()->simulateUnexpectedDisconnect());
-
-	QString szChannels,szProtectedChannels,szPasswords,szCurPass,szCurChan;
+	bool bUnexpectedDisconnect = (!(connection()->stateData()->sentQuit())) && ((m_eState == KviIrcContext::Connected) || connection()->stateData()->simulateUnexpectedDisconnect());
 
 	if(bUnexpectedDisconnect)
 	{
@@ -715,11 +713,11 @@ void KviIrcContext::connectionTerminated()
 			{
 				// FIXME: THIS SHOULD BE A KviIrcConnection FUNCTION
 				KviChannel * c;
-				QString szChannels,szProtectedChannels,szPasswords,szCurPass,szCurChan;
+				QString szChannels, szProtectedChannels, szPasswords, szCurPass, szCurChan;
 				// first only chans without key, in groups of 4
-				for(c = connection()->channelList()->first();c;c = connection()->channelList()->next())
+				for(c = connection()->channelList()->first(); c; c = connection()->channelList()->next())
 				{
-					szCurPass=c->channelKey();
+					szCurPass = c->channelKey();
 					szCurChan = c->windowName();
 					if(szCurPass.isEmpty())
 					{
@@ -735,7 +733,7 @@ void KviIrcContext::connectionTerminated()
 						szPasswords.append(szCurPass);
 					}
 				}
-				if( (!szChannels.isEmpty()) || (!szProtectedChannels.isEmpty()) )
+				if((!szChannels.isEmpty()) || (!szProtectedChannels.isEmpty()))
 				{
 					pInfo->m_szJoinChannels.append(szProtectedChannels);
 					if(!szProtectedChannels.isEmpty() && !szChannels.isEmpty())
@@ -749,7 +747,7 @@ void KviIrcContext::connectionTerminated()
 
 			if(KVI_OPTION_BOOL(KviOption_boolReopenQueriesAfterReconnect))
 			{
-				for(KviQuery * q = connection()->queryList()->first();q;q = connection()->queryList()->next())
+				for(KviQuery * q = connection()->queryList()->first(); q; q = connection()->queryList()->next())
 				{
 					pInfo->m_szOpenQueryes.append(q->target());
 				}
@@ -808,12 +806,11 @@ void KviIrcContext::connectionTerminated()
 
 void KviIrcContext::beginAsynchronousConnect(unsigned int uDelayInMSecs)
 {
-	if(m_pReconnectTimer)delete m_pReconnectTimer;
+	if(m_pReconnectTimer) delete m_pReconnectTimer;
 	m_pReconnectTimer = new QTimer(this);
 	connect(m_pReconnectTimer,SIGNAL(timeout()),this,SLOT(asynchronousConnect()));
 	m_pReconnectTimer->start(uDelayInMSecs);
 }
-
 
 void KviIrcContext::asynchronousConnect()
 {
@@ -829,8 +826,7 @@ void KviIrcContext::asynchronousConnect()
 	connectToCurrentServer();
 }
 
-
-void KviIrcContext::terminateConnectionRequest(bool bForce,const QString &szQuitMsg,bool bSimulateUnexpectedDisconnect)
+void KviIrcContext::terminateConnectionRequest(bool bForce, const QString & szQuitMsg, bool bSimulateUnexpectedDisconnect)
 {
 	if(!connection())return; // hm ?
 
@@ -890,7 +886,7 @@ void KviIrcContext::terminateConnectionRequest(bool bForce,const QString &szQuit
 	}
 }
 
-void KviIrcContext::timerEvent(QTimerEvent *e)
+void KviIrcContext::timerEvent(QTimerEvent * e)
 {
 	if(e->timerId() != m_iHeartbeatTimerId)
 	{
@@ -899,10 +895,8 @@ void KviIrcContext::timerEvent(QTimerEvent *e)
 	}
 
 	// our heartbeat
-
 	kvi_time_t tNow = kvi_unixTime();
 
 	if(m_pConnection)
 		m_pConnection->heartbeat(tNow);
 }
-

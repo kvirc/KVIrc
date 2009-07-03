@@ -7,7 +7,7 @@
 //   Creation date : Mon Jul 10 2000 03:24:11 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -57,10 +57,25 @@ class KviServer;
 * \class KviServerReconnectInfo
 * \brief A class for reconnecting purposes
 */
-class KVILIB_API KviServerReconnectInfo {
+class KVILIB_API KviServerReconnectInfo
+{
 public:
+	/**
+	* \brief Constructs the server reconnect info object
+	* \return KviServerReconnectInfo
+	*/
 	KviServerReconnectInfo();
-	KviServerReconnectInfo(const KviServerReconnectInfo &info);
+
+	/**
+	* \brief Carbon copy
+	* \param info The object to copy the info from
+	* \return KviServerReconnectInfo
+	*/
+	KviServerReconnectInfo(const KviServerReconnectInfo & info);
+
+	/**
+	* \brief Destroys the server reconnect info object
+	*/
 	~KviServerReconnectInfo();
 public:
 	QString               m_szNick;
@@ -129,6 +144,7 @@ public:
 
 	/**
 	* \brief Returns the proxy server
+	* \param pDb The proxy database
 	* \return KviProxy
 	*/
 	KviProxy * proxyServer(KviProxyDataBase * pDb);
@@ -277,119 +293,138 @@ public:
 
 	/**
 	* \brief Sets the proxy server for the server
+	* \param iProxy The proxy to connect through
 	* \return void
 	*/
-	inline void setProxy(int p){ m_iProxy = p; };
+	inline void setProxy(int iProxy){ m_iProxy = iProxy; };
 
 	/**
 	* \brief Sets the IP for the server
+	* \param szIp The IP of the server
 	* \return void
 	*/
-	inline void setIp(const QString & a){ m_szIp = a; };
+	inline void setIp(const QString & szIp){ m_szIp = szIp; };
 
 	/**
 	* \brief Sets the port for the server
+	* \param uPort The port of the server
 	* \return void
 	*/
-	inline void setPort(kvi_u32_t p){ m_uPort = p; };
+	inline void setPort(kvi_u32_t uPort){ m_uPort = uPort; };
 
 	/**
 	* \brief Sets the hostname for the server
+	* \param szHost The host name of the user
 	* \return void
 	*/
-	inline void setHostName(const QString & n){ m_szHostname = n; };
+	inline void setHostName(const QString & szHost){ m_szHostname = szHost; };
 
 	/**
 	* \brief Sets the description for the server
+	* \param szDesc The description of the server
 	* \return void
 	*/
-	inline void setDescription(const QString & d){ m_szDescription = d; };
+	inline void setDescription(const QString & szDesc){ m_szDescription = szDesc; };
 
 	/**
 	* \brief Sets the username of the user associated to the server
+	* \param szUser The user name of the user
 	* \return void
 	*/
-	inline void setUserName(const QString & u){ m_szUser = u; };
+	inline void setUserName(const QString & szUser){ m_szUser = szUser; };
 
 	/**
 	* \brief Sets the password of the user associated to the server
+	* \param szPass The password of the user
 	* \return void
 	*/
-	inline void setPassword(const QString & p){ m_szPass = p; };
+	inline void setPassword(const QString & szPass){ m_szPass = szPass; };
 
 	/**
 	* \brief Sets the nickname of the user associated to the server
+	* \param szNick The nick name of the user
 	* \return void
 	*/
-	inline void setNickName(const QString & n){ m_szNick = n; };
+	inline void setNickName(const QString & szNick){ m_szNick = szNick; };
 
 	/**
 	* \brief Sets the realname of the user associated to the server
+	* \param szReal The real name of the user
 	* \return void
 	*/
-	inline void setRealName(const QString & r){ m_szRealName = r; };
+	inline void setRealName(const QString & szReal){ m_szRealName = szReal; };
 
 	/**
 	* \brief Sets the encoding associated to the server
 	* Some informations as nickname and channel names are encoded when
 	* communicating with the server
 	* This is the default encoding when talking on channels or queries
+	* \param szEncoding The default encoding of the text
 	* \return void
 	*/
-	inline void setEncoding(const QString & e){ m_szEncoding = e; };
+	inline void setEncoding(const QString & szEncoding){ m_szEncoding = szEncoding; };
 
 	/**
 	* \brief Sets the encoding associated to the server
 	* This is the default encoding when talking on channels or queries
+	* \param szEncoding The default encoding of the text
 	* \return void
 	*/
-	inline void setTextEncoding(const QString & e){ m_szTextEncoding = e; };
+	inline void setTextEncoding(const QString & szEncoding){ m_szTextEncoding = szEncoding; };
 
 	/**
 	* \brief Sets the user modes of the user associated to the server
+	* \param szUMode The user modes of the user
 	* \return void
 	*/
-	inline void setInitUMode(const QString & u){ m_szInitUMode = u; };
+	inline void setInitUMode(const QString & szUMode){ m_szInitUMode = szUMode; };
 
 	/**
 	* \brief Sets the commands to run on server connection
+	* \param szCmd The comands to run on connection
 	* \return void
 	*/
-	inline void setOnConnectCommand(const QString & cmd){ m_szOnConnectCommand = cmd; };
+	inline void setOnConnectCommand(const QString & szCmd){ m_szOnConnectCommand = szCmd; };
 
 	/**
 	* \brief Sets the commands to run on server login
+	* \param szCmd The comands to run on login
 	* \return void
 	*/
-	inline void setOnLoginCommand(const QString & cmd){ m_szOnLoginCommand = cmd; };
+	inline void setOnLoginCommand(const QString & szCmd){ m_szOnLoginCommand = szCmd; };
 
 	/**
 	* \brief
+	* \param szFilter
 	* \return void
 	*/
-	inline void setLinkFilter(const QString &f){ m_szLinkFilter = f; };
+	inline void setLinkFilter(const QString & szFilter){ m_szLinkFilter = szFilter; };
 
 	/**
 	* \brief Sets the list of channels to autojoin after connection
 	* The channel list must be allocated with a new!
+	* \param pNewChannelList The list of channels to autojoin
 	* \return void
 	*/
 	void setAutoJoinChannelList(QStringList * pNewChannelList);
 
 	/**
 	* \brief Sets the autoconnection mode for the server
+	* \param bAutoConnect Whether to set the autoconnection
 	* \return void
 	*/
-	inline void setAutoConnect(bool autoconnect) { m_bAutoConnect = autoconnect; };
+	inline void setAutoConnect(bool bAutoConnect) { m_bAutoConnect = bAutoConnect; };
 
 	/**
 	* \brief Sets the id of the user associated to the server
+	* \param szUserIdentityId The user identity id to set
 	* \return void
 	*/
-	inline void setUserIdentityId(const QString &szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
+	inline void setUserIdentityId(const QString & szUserIdentityId){ m_szUserIdentityId = szUserIdentityId; };
 
 	/**
 	* \brief Sets if the server uses IPv6
+	* \param bSet Whether to set the support for IPv6
 	* \return void
 	*/
 	inline void setIPv6(bool bSet)
@@ -400,6 +435,7 @@ public:
 
 	/**
 	* \brief Sets if the server uses SSL
+	* \param bSet Whether to set the support for SSL
 	* \return void
 	*/
 	inline void setUseSSL(bool bSet)
@@ -410,6 +446,7 @@ public:
 
 	/**
 	* \brief Sets if the server supports the STARTTLS protocol
+	* \param bSet Whether to set the support for STARTTLS
 	* \return void
 	*/
 	inline void setSupportsSTARTTLS(bool bSet)
@@ -420,11 +457,12 @@ public:
 
 	/**
 	* \brief Sets if the server caches the IP
+	* \param bSet Whether to set the cache for the IP
 	* \return void
 	*/
 	inline void setCacheIp(bool bSet)
 	{
-		if(bSet)m_uFlags |= KVI_IRCSERVER_FLAG_CACHEIP;
+		if(bSet) m_uFlags |= KVI_IRCSERVER_FLAG_CACHEIP;
 		else m_uFlags &= ((unsigned short)~KVI_IRCSERVER_FLAG_CACHEIP);
 	};
 
@@ -439,30 +477,30 @@ public:
 	* \param szId The id of the server
 	* \return void
 	*/
-	inline void setId(const QString & szId){ m_szId = szId; if(m_szId.isEmpty())generateUniqueId(); };
+	inline void setId(const QString & szId){ m_szId = szId; if(m_szId.isEmpty()) generateUniqueId(); };
 
 	/**
 	* \brief Loads the informations from the configuration file
 	* \param cfg The configuration file
-	* \param prefix The prefix of the server
+	* \param szPrefix The prefix of the server
 	* \return bool
 	*/
-	bool load(KviConfig * cfg, const QString & prefix);
+	bool load(KviConfig * cfg, const QString & szPrefix);
 
 	/**
 	* \brief Saves the informations to the configuration file
 	* \param cfg The configuration file
-	* \param prefix The prefix of the server
+	* \param szPrefix The prefix of the server
 	* \return void
 	*/
-	void save(KviConfig * cfg, const QString & prefix);
+	void save(KviConfig * cfg, const QString & szPrefix);
 
 	/**
 	* \brief Carbon copy
 	* \param s The server to copy
 	* \return void
 	*/
-	void operator =(const KviServer & s );
+	void operator=(const KviServer & s);
 };
 
 #endif //_KVI_IRCSERVER_H_
