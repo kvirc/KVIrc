@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 02:09+0200\n"
+"POT-Creation-Date: 2009-07-03 15:21+0200\n"
 "PO-Revision-Date: 2007-03-31 10:19+0400\n"
 "Last-Translator: Alexey Uzhva <alexey at kvirc dot ru>\n"
 "Language-Team: Russian\n"
@@ -41,7 +41,7 @@ msgstr ""
 msgid " lines"
 msgstr " строк"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:50
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:51
 msgid " min"
 msgstr " минут"
 
@@ -83,7 +83,7 @@ msgstr "\"Умные\" цвета ников"
 msgid "&Apply"
 msgstr "&Применить"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:227
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:226
 msgid "&Browse..."
 msgstr "&Выбрать..."
 
@@ -104,7 +104,7 @@ msgid "&New Server"
 msgstr "&Новый сервер"
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_servers.cpp:341
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:232
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:233
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/dialog.cpp:227
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/container.cpp:64
 msgid "&OK"
@@ -448,7 +448,7 @@ msgstr "<center>Пожалуйста подождите пока загрузи�
 msgid "<center>Put here a brief description of the network.</center>"
 msgstr "<center>Укажите здесь краткое описание сети.</center>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:52
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:53
 msgid ""
 "<center>Save logs with the current interval<br>Set to 0 to disable this "
 "feature</center>"
@@ -1736,7 +1736,7 @@ msgstr "Добавить к ответу SOURCE:"
 msgid "Append to VERSION reply:"
 msgstr "Добавить к ответу VERSION:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:49
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:50
 msgid "Auto flush logs every"
 msgstr "Автоматически записывать логи каждые"
 
@@ -1893,7 +1893,7 @@ msgstr "Кешировать IP адрес"
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_servers.cpp:347
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_servers.cpp:839
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:95
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:237
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:238
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:906
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/dialog.cpp:242
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/container.cpp:72
@@ -1972,7 +1972,7 @@ msgstr "Выберите имя файла - KVIrc"
 msgid "Choose a Filename - KVIrc "
 msgstr "Выберите имя файла - KVIrc "
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:263
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:264
 msgid "Choose an Image File - KVIrc"
 msgstr "Выберите файл картинки - KVIrc"
 
@@ -3278,7 +3278,7 @@ msgstr ""
 msgid "Plain Grid"
 msgstr "Плоская сетка"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:209
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:208
 msgid ""
 "Please select an avatar image. The full path to a local file or an image on "
 "the Web can be used.<br>If you wish to use a local image file, click the "
@@ -3818,9 +3818,13 @@ msgstr "Звуковая система"
 msgid "Sound device:"
 msgstr "Звуковое устройство:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:48
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:49
 msgid "Strip colors in logs"
 msgstr "Вырезать цвета в файлах логов"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:48
+msgid "Strip message type numbers in logs"
+msgstr ""
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_servers.cpp:647
 #, fuzzy

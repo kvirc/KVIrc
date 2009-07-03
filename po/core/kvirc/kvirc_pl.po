@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVirc 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 02:09+0200\n"
+"POT-Creation-Date: 2009-07-03 15:21+0200\n"
 "PO-Revision-Date: 2001-09-11 00:28+0200\n"
 "Last-Translator: Krzysztof Godlewski <kgod@poczta.onet.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -67,8 +67,8 @@ msgstr ""
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1839
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1842
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1840
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1843
 msgid "\r!n\r%Q\r invited %Q into channel %Q"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 msgid " (%1 hops)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1044
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1047
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:1137
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_query.cpp:456
 #, fuzzy
@@ -176,40 +176,40 @@ msgstr ""
 msgid "%Q PING reply from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %u sec %u msec"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1786
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1835
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1832
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1885
 msgid "%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1753
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1795
 msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1730
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1770
 msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1864
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1916
 msgid "%Q [%Q@%Q] has set channel mode %s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1820
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1868
 msgid "%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1778
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1822
 msgid "%Q [%Q@%Q] has set mode %c%c \r!n\r%Q\r"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1861
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1913
 msgid "%Q [%Q@%Q] has set mode %s %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1733
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1773
 msgid "%Q [%Q@%Q] has unset the channel key"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1756
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_literal.cpp:1798
 msgid "%Q [%Q@%Q] has unset the channel limit"
 msgstr ""
 
@@ -232,7 +232,7 @@ msgstr ""
 msgid "%Q established [%s (%s:%u)]"
 msgstr "Połączenie przerwane"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:657
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:658
 #, fuzzy
 msgid "%Q for \r!c\r%Q\r: \r!m-%c\r%Q\r (set by %Q on %Q)"
 msgstr "Nieprawidłowy indeks (%Q)"
@@ -250,91 +250,91 @@ msgstr ""
 msgid "%Q unsets avatar"
 msgstr "Obraz Avatar"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1907
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1908
 msgid "%Q: no such channel"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1896
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1897
 msgid "%Q: no such server"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1402
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1403
 msgid "%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1419
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1420
 msgid "%c\r!n\r%Q\r%c WHOWAS info from \r!s\r%Q\r"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1120
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1121
 msgid "%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1323
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1324
 msgid "%c\r!n\r%Q\r%c is authenticated as %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1067
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1068
 msgid "%c\r!n\r%Q\r%c is away: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1145
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1146
 msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1213
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1214
 msgid "%c\r!n\r%Q\r%c's channels: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1996
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1997
 msgid "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1260
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1261
 msgid "%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1355
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1356
 msgid "%c\r!n\r%Q\r%c's info: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1149
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1150
 msgid "%c\r!n\r%Q\r%c's real name was: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1125
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1126
 msgid "%c\r!n\r%Q\r%c's real name: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1304
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1305
 msgid "%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1270
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1271
 msgid "%c\r!n\r%Q\r%c's signon time: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1803
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1804
 #, c-format
 msgid "%c\r!s\r%s\r%c's administrator is %s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1814
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1815
 #, c-format
 msgid "%c\r!s\r%s\r%c's contact adress is %s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1864
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1865
 #, c-format
 msgid "%c\r!s\r%s\r%c's information:"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1792
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1793
 #, c-format
 msgid "%c\r!s\r%s\r%c's server info: %s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1885
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1886
 msgid "%c\r!s\r%s\r%c's time is %Q"
 msgstr ""
 
@@ -454,7 +454,7 @@ msgstr "Dodaj zakładkę"
 msgid "&Add to Custom Colors"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:892
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:894
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:509
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:543
 msgid "&Always"
@@ -464,7 +464,7 @@ msgstr ""
 msgid "&Apply"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:384
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:383
 #, fuzzy
 msgid "&Auto Tile"
 msgstr "Ułożenie &Anodine"
@@ -492,7 +492,7 @@ msgstr "Przeglądaj"
 msgid "&Cancel"
 msgstr "Anuluj"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:377
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:376
 #, fuzzy
 msgid "&Cascade Windows"
 msgstr "Ułóż kaskadują&co"
@@ -591,7 +591,7 @@ msgstr ""
 msgid "&Next >"
 msgstr "Wygląd tekstu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:892
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:894
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:511
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:545
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:266
@@ -661,7 +661,7 @@ msgstr ""
 msgid "&Restore"
 msgstr "P&rzywróć"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:415
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:414
 #, fuzzy
 msgid "&Restore all"
 msgstr "P&rzywróć"
@@ -691,7 +691,7 @@ msgstr ""
 msgid "&Size"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:381
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:380
 #, fuzzy
 msgid "&Tile Windows"
 msgstr "Okno &terminala"
@@ -721,7 +721,7 @@ msgstr ""
 msgid "&Window"
 msgstr "&Okno"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:892
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:894
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:510
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:544
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/addon/managementdialog.cpp:266
@@ -765,35 +765,35 @@ msgstr ""
 msgid "(None)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1631
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:609
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:646
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1634
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:610
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:647
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/links/linkswindow.cpp:315
 msgid "(Unknown)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:486
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:487
 #, fuzzy
 msgid "(unknown)"
 msgstr "nieznany"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:748
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:749
 msgid "+I mode change"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:744
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:745
 msgid "+b mode change"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:746
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:747
 msgid "+e mode change"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:737
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:738
 msgid "+o mode change"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:739
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:740
 msgid "+v mode change"
 msgstr ""
 
@@ -809,24 +809,24 @@ msgstr ""
 msgid "- d -- h -- m -- s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:749
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:750
 msgid "-I mode change"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:745
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:746
 msgid "-b mode change"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:747
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:748
 #, fuzzy
 msgid "-e mode change"
 msgstr "Pokazuj skrócone zmiany trybów"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:738
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:739
 msgid "-o mode change"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:740
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:741
 msgid "-v mode change"
 msgstr ""
 
@@ -859,7 +859,7 @@ msgid ""
 ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:170
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:171
 #, fuzzy
 msgid ": Unknown user mode"
 msgstr "Nieznany tryb wyświetlania"
@@ -891,7 +891,7 @@ msgstr ""
 msgid "<b>Can't find any tip... :(</b>"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1655
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1658
 #, fuzzy
 msgid "<b>Channel mode:</b>"
 msgstr "Anuluj"
@@ -947,17 +947,17 @@ msgid ""
 "click</b> to see the other options"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1671
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1674
 #, c-format
 msgid "<br><b>Key:</b> %s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1680
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1683
 #, c-format
 msgid "<br><b>Limit:</b> %s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:184
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:200
 msgid ""
 "<center><b>/LIST command parameters:</b><br>Many servers accept special "
 "parameters that allow you to filter the returned entries.<br>Commonly, "
@@ -979,14 +979,14 @@ msgid ""
 "In most cases the default URL is acceptable.</center>"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:295
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:313
 #, c-format
 msgid ""
 "<nobr><font color=\"%s\"><b>Channel List</b></font> <font color=\"%s\">[IRC "
 "Context %u]</font></nobr>"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:302
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:320
 #, c-format
 msgid ""
 "<nobr><font color=\"%s\"><b>Channel list</b></font> <font color=\"%s\">[IRC "
@@ -1213,43 +1213,43 @@ msgstr ""
 msgid "Allows you to manage the themes"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:802
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:803
 msgid "Am de-halfop'd"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:826
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:827
 msgid "Am de-userop'd"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:799
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:800
 msgid "Am deop'd"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:800
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:801
 msgid "Am devoiced"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:801
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:802
 msgid "Am halfop'd"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:796
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:797
 msgid "Am kicked"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:797
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:798
 msgid "Am op'd"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:825
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:826
 msgid "Am userop'd"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:798
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:799
 msgid "Am voiced"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:389
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:388
 #, fuzzy
 msgid "Anodine's Full Grid"
 msgstr "Ułożenie &Anodine"
@@ -1308,15 +1308,15 @@ msgstr "Znajdowanie hosta %s..."
 msgid "Auto-joining server specific channels"
 msgstr "Znajdowanie hosta %s..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:178
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:179
 msgid "Available channel modes:"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:160
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:161
 msgid "Available user modes:"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:732
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:733
 #, fuzzy
 msgid "Avatar change"
 msgstr "Obraz Avatar"
@@ -1339,7 +1339,7 @@ msgstr ""
 msgid "Away Indicator"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:785
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:786
 msgid "Away message"
 msgstr ""
 
@@ -1396,7 +1396,7 @@ msgstr "&Narzędzia"
 msgid "Ban Exception Editor"
 msgstr "Wygląd tekstu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:670
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:671
 msgid "Ban exception listing"
 msgstr ""
 
@@ -1404,11 +1404,11 @@ msgstr ""
 msgid "Ban exception masks"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:805
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:806
 msgid "Ban exception matching my mask"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:664
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:665
 msgid "Ban listing"
 msgstr ""
 
@@ -1416,11 +1416,11 @@ msgstr ""
 msgid "Ban masks"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:803
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:804
 msgid "Ban matching my mask"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:806
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:807
 msgid "Ban unexception matching my mask"
 msgstr ""
 
@@ -1436,7 +1436,7 @@ msgid ""
 "interface"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:840
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:841
 #, fuzzy
 msgid "BitTorrent message"
 msgstr "Interfejs"
@@ -1454,7 +1454,7 @@ msgstr ""
 msgid "Bookmarks"
 msgstr "Dodaj zakładkę"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1230
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1231
 msgid "Boolean options (1/0)"
 msgstr ""
 
@@ -1466,11 +1466,11 @@ msgstr ""
 msgid "Bottom"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:795
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:796
 msgid "Broadcast notice"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:794
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:795
 msgid "Broadcast private message"
 msgstr ""
 
@@ -1528,23 +1528,23 @@ msgstr ""
 msgid "CTCP Page - KVIrc"
 msgstr "Wybierz katalog..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:726
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:727
 msgid "CTCP reply"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:729
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:730
 msgid "CTCP request flood warning"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:728
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:729
 msgid "CTCP request ignored"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:727
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:728
 msgid "CTCP request replied"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:730
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:731
 msgid "CTCP request unknown"
 msgstr ""
 
@@ -1568,7 +1568,7 @@ msgstr ""
 msgid "Can't enable the ident service on IPv6 : can't setup the listen address"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1487
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1488
 msgid "Can't evaluate creation time"
 msgstr ""
 
@@ -1625,12 +1625,12 @@ msgstr "Wybierz pliki do wysłania"
 msgid "Can't open the file \"%Q\" for writing"
 msgstr "Wybierz pliki do wysłania"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:275
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:274
 #, fuzzy
 msgid "Can't open the filter file %Q for writing"
 msgstr "Wybierz pliki do wysłania"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:252
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:251
 #, fuzzy, c-format
 msgid "Can't open the filter file %s for reading."
 msgstr "Wybierz pliki do wysłania"
@@ -1734,36 +1734,36 @@ msgstr ""
 msgid "Cannot request links: No active connection"
 msgstr "Brak połączenia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:241
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:259
 #, fuzzy
 msgid "Cannot request list: No active connection"
 msgstr "Brak połączenia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1942
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1943
 #, fuzzy
 msgid "Cannot send text to channel %Q"
 msgstr "Brak wartości do wstawienia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1924
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1925
 #, fuzzy
 msgid "Cannot send text to channel %Q: %Q"
 msgstr "Brak wartości do wstawienia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1939
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1940
 #, fuzzy
 msgid "Cannot send to channel"
 msgstr "Pokazuj skrócone zmiany trybów"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1921
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1922
 #, fuzzy
 msgid "Cannot send to channel: %Q"
 msgstr "Brak wartości do wstawienia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:252
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:270
 msgid "Cannot stop list download, no active connection."
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:378
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:377
 #, fuzzy
 msgid "Cascade &Maximized"
 msgstr "Ułóż kaskadująco z&maksymalizowane"
@@ -1789,23 +1789,23 @@ msgstr "Kategoria"
 msgid "Censor swear words"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:819
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:820
 msgid "Chan admin status set"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:820
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:821
 msgid "Chan admin status unset"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:828
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:829
 msgid "Chan owner status set"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:829
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:830
 msgid "Chan owner status unset"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:784
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:785
 msgid "ChanServ message"
 msgstr ""
 
@@ -1821,13 +1821,13 @@ msgid "Changed text encoding to %Q"
 msgstr "Wybierz pliki do wysłania"
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_actionmanager.cpp:68
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:196
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:213
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:67
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/channelsjoin/channelsjoinwindow.cpp:75
 msgid "Channel"
 msgstr "Kanał"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1500
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1501
 msgid "Channel \r!c\r%Q\r was created at %Q"
 msgstr ""
 
@@ -1837,7 +1837,7 @@ msgstr ""
 msgid "Channel CTCP"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:292
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:310
 #, fuzzy, c-format
 msgid "Channel List [IRC Context %u]"
 msgstr "&Nowy kontekst irc"
@@ -1847,39 +1847,39 @@ msgstr "&Nowy kontekst irc"
 msgid "Channel Modes"
 msgstr "Anuluj"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:761
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:762
 msgid "Channel creation time reply"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:765
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:766
 msgid "Channel encrypted private message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:742
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:743
 #, fuzzy
 msgid "Channel key change"
 msgstr "Pokazuj skrócone zmiany trybów"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:743
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:744
 #, fuzzy
 msgid "Channel limit change"
 msgstr "Pokazuj skrócone zmiany trybów"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:329
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:347
 #, fuzzy
 msgid "Channel list"
 msgstr "Anuluj"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1562
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1563
 msgid "Channel list begin: channel, users, topic"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:326
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:344
 #, fuzzy
 msgid "Channel list for %Q - %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:787
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:788
 msgid "Channel list message"
 msgstr ""
 
@@ -1887,7 +1887,7 @@ msgstr ""
 msgid "Channel mode"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:591
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:592
 #, fuzzy
 msgid "Channel mode for \r!c\r%Q\r is %s"
 msgstr "Nieprawidłowy indeks (%Q)"
@@ -1897,7 +1897,7 @@ msgstr "Nieprawidłowy indeks (%Q)"
 msgid "Channel name"
 msgstr "Anuluj"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:776
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:777
 #, fuzzy
 msgid "Channel notice"
 msgstr "Anuluj"
@@ -1912,16 +1912,16 @@ msgstr "Nieznany operator"
 msgid "Channel password"
 msgstr "Nieznany operator"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:724
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:725
 msgid "Channel private message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1741
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1744
 #, c-format
 msgid "Channel synchronized in %d.%d seconds"
 msgstr "Kanał zsynchronizowany w %d.%d sekund"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:490
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:491
 #, fuzzy
 msgid "Channel topic is: %Q"
 msgstr "Anuluj"
@@ -1931,11 +1931,11 @@ msgstr "Anuluj"
 msgid "Channel topic:"
 msgstr "Anuluj"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1495
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1496
 msgid "Channel was created at %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:408
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:431
 msgid "Channels list download finished"
 msgstr ""
 
@@ -1953,12 +1953,12 @@ msgstr "Połączenie przerwane"
 msgid "Choose Avatar - KVIrc"
 msgstr "Wybierz katalog..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1993
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1991
 #, fuzzy
 msgid "Choose Temporary Background..."
 msgstr "Wybierz katalog..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1992
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1990
 #, fuzzy
 msgid "Choose Temporary Font..."
 msgstr "Wybierz katalog..."
@@ -1999,8 +1999,8 @@ msgstr ""
 msgid "Choose an Old Configuration Folder - KVIrc Setup"
 msgstr "Wybierz pliki do wysłania"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:331
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:356
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:350
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:374
 #, fuzzy
 msgid "Choose filename"
 msgstr "Wybierz nazwę zapisywanego pliku"
@@ -2010,7 +2010,7 @@ msgstr "Wybierz nazwę zapisywanego pliku"
 msgid "Choose image ..."
 msgstr "Wybierz katalog..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2031
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2029
 #, fuzzy
 msgid "Choose the background image..."
 msgstr "Wybierz katalog..."
@@ -2028,7 +2028,7 @@ msgstr ""
 msgid "Clear"
 msgstr "Wyczyść"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1997
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1995
 msgid "Clear Buffer"
 msgstr ""
 
@@ -2092,15 +2092,15 @@ msgstr "Okno &terminala"
 msgid "Color free (no ANSI colors)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1233
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1234
 msgid "Color options (#RRGGBB)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:975
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:976
 msgid "Command syntax %Q: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:625
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:626
 #, fuzzy
 msgid "Commit Changes"
 msgstr "Ostatnie &kanały"
@@ -2133,7 +2133,7 @@ msgstr ""
 msgid "Compression library internal error"
 msgstr "Wewnętrzny błąd"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:332
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:350
 #, fuzzy
 msgid "Configuration files (*.kvc)"
 msgstr "Zapi&sz ustawienia"
@@ -2175,7 +2175,7 @@ msgstr ""
 msgid "Confirm addon uninstallation"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:892
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:894
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:506
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_console.cpp:541
 #, fuzzy
@@ -2200,7 +2200,7 @@ msgstr "Połączenie"
 msgid "Connected since"
 msgstr "Połączenie"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:264
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:282
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/links/linkswindow.cpp:132
 #, fuzzy, c-format
 msgid "Connected to %s (%s)"
@@ -2240,7 +2240,7 @@ msgstr ""
 msgid "Connection reset by peer"
 msgstr "Połączenie przerwane"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:712
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:713
 #, fuzzy
 msgid "Connection status"
 msgstr "Połączenie przerwane"
@@ -2288,7 +2288,7 @@ msgstr "Połącz"
 msgid "Context sensitive help"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:658
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:659
 msgid "Copy to clipboard"
 msgstr ""
 
@@ -2389,27 +2389,27 @@ msgstr "Pokazuj skrócone zmiany trybów"
 msgid "Customize Toolbars..."
 msgstr "&Narzędzia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1029
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1031
 msgid "Customize..."
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:578
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:577
 msgid "DBus calls are available only when KDE support is compiled in"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:767
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:768
 msgid "DCC chat message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:754
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:755
 msgid "DCC error"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:753
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:754
 msgid "DCC message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:752
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:753
 msgid "DCC request"
 msgstr ""
 
@@ -2498,7 +2498,7 @@ msgstr "Przeglądarka &katalogów"
 msgid "Directory"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:632
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:633
 #, fuzzy
 msgid "Discard Changes"
 msgstr "Anuluj"
@@ -2579,7 +2579,7 @@ msgstr ""
 "Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
 "zobaczyć inne opcje"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:551
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:552
 #, fuzzy
 msgid "Double-click to edit..."
 msgstr ""
@@ -2608,7 +2608,7 @@ msgstr ""
 "Kliknij podwójnie by otworzyć link<br>Kliknij prawym przyciskiem aby "
 "zobaczyć inne opcje"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:559
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:560
 #, fuzzy
 msgid "Double-click to set..."
 msgstr ""
@@ -2699,50 +2699,50 @@ msgstr ""
 msgid "Encrypt key:"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:768
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:769
 msgid "Encrypted DCC chat message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:777
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:778
 msgid "Encrypted channel notice"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:779
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:780
 msgid "Encrypted query notice"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1874
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1875
 #, c-format
 msgid "End of %c\r!s\r%s\r%c's information"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1642
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1643
 msgid "End of LINKS"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1603
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1604
 msgid "End of LIST"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:376
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:377
 msgid "End of NAMES for \r!c\r%Q\r"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:813
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:814
 msgid "End of WHO list for %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:630
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:631
 #, fuzzy
 msgid "End of channel %Q for \r!c\r%Q\r"
 msgstr "Nieprawidłowy indeks (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1023
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1024
 #, fuzzy
 msgid "End of help about %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1887
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1890
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_query.cpp:884
 #, fuzzy
 msgid "End of log"
@@ -2812,15 +2812,20 @@ msgstr ""
 msgid "Executing scheduled server specific \"on login\" commands"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:411
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:410
 #, fuzzy
 msgid "Expand &Horizontally"
 msgstr "Rozszeż po&ziomo"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:410
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:409
 #, fuzzy
 msgid "Expand &Vertically"
 msgstr "Rozszeż &pionowo"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:181
+#, fuzzy
+msgid "Export List"
+msgstr "Trwa łączenie..."
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/file/libkvifile.cpp:83
 #, fuzzy
@@ -2836,12 +2841,12 @@ msgstr ""
 msgid "Failed to create the target directory"
 msgstr "Wybierz pliki do wysłania"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:995
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:996
 #, fuzzy
 msgid "Failed to create the theme directory"
 msgstr "Wybierz pliki do wysłania"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1091
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1092
 #, fuzzy
 msgid "Failed to create the theme subdirectory"
 msgstr "Wybierz pliki do wysłania"
@@ -2873,7 +2878,7 @@ msgstr "Wybierz pliki do wysłania"
 msgid "Failed to load avatar with name \"%Q\" and local path \"%Q\""
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2036
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2034
 #, fuzzy
 msgid "Failed to load the selected image"
 msgstr "Wybierz pliki do wysłania"
@@ -2917,8 +2922,8 @@ msgstr "Wybierz pliki do wysłania"
 msgid "Failed to rename the existing file, please rename manually and retry"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1078
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1113
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1079
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1114
 #, fuzzy
 msgid "Failed to save one of the theme images"
 msgstr "Wybierz pliki do wysłania"
@@ -2947,7 +2952,7 @@ msgstr ""
 msgid "Failed to start the server list transfer :("
 msgstr "Wybierz pliki do wysłania"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:273
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:272
 #, fuzzy
 msgid "Failed to write the filter file %Q (IO Error)"
 msgstr "Wybierz pliki do wysłania"
@@ -3045,7 +3050,7 @@ msgstr "Znajdź"
 msgid "Flat"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:964
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:967
 #, fuzzy
 msgid "Flooded with messages"
 msgstr "Interfejs"
@@ -3054,7 +3059,7 @@ msgstr "Interfejs"
 msgid "Floppy"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1238
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1239
 msgid "Font options (family,pointsize,style,charset,weight,flags (biusf))"
 msgstr ""
 
@@ -3112,29 +3117,29 @@ msgstr "Ogólne"
 msgid "Generic actions"
 msgstr "Ogólne opcje"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:818
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:819
 #, fuzzy
 msgid "Generic critical error"
 msgstr "Wewnętrzny błąd"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:817
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:818
 #, fuzzy
 msgid "Generic error"
 msgstr "Wewnętrzny błąd"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:814
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:815
 msgid "Generic status"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:813
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:814
 msgid "Generic success"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:815
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:816
 msgid "Generic verbose message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:816
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:817
 msgid "Generic warning"
 msgstr ""
 
@@ -3152,7 +3157,7 @@ msgstr "Wygląd tekstu"
 msgid "Global idle timer must be started before using $my.globalIdle function"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:788
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:789
 #, fuzzy
 msgid "Half-deop mode change"
 msgstr "Pokazuj skrócone zmiany trybów"
@@ -3162,7 +3167,7 @@ msgstr "Pokazuj skrócone zmiany trybów"
 msgid "Half-operators"
 msgstr "Nieznany operator"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:781
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:782
 #, fuzzy
 msgid "Halfop mode change"
 msgstr "Pokazuj skrócone zmiany trybów"
@@ -3171,7 +3176,7 @@ msgstr "Pokazuj skrócone zmiany trybów"
 msgid "Header too long: exceeded 4096 bytes"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:833
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:834
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvilib/tal/kvi_tal_wizard.cpp:193
 #, fuzzy
 msgid "Help"
@@ -3214,7 +3219,7 @@ msgstr ""
 msgid "Hide &Dock Icon"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1986
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1984
 #, fuzzy
 msgid "Hide Find Window"
 msgstr "Okno &terminala"
@@ -3229,16 +3234,16 @@ msgstr "Okno &terminala"
 msgid "Hide/Show"
 msgstr "Okno &terminala"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:960
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:963
 msgid "High activity"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:701
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:702
 #, fuzzy
 msgid "Highlighted text"
 msgstr "M&inimalizuj"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:615
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:616
 #, fuzzy
 msgid "History"
 msgstr "Katalog domowy"
@@ -3258,7 +3263,7 @@ msgstr "Po&moc"
 msgid "Host %Q resolved to %Q"
 msgstr "Brak nazwy hosta do odszukania"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:706
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:707
 msgid "Host lookup result"
 msgstr ""
 
@@ -3289,11 +3294,11 @@ msgstr "Wybierz pliki do wysłania"
 msgid "I/O Traffic Graph"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:773
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:774
 msgid "ICQ message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:774
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:775
 msgid "ICQ user-message"
 msgstr ""
 
@@ -3320,11 +3325,11 @@ msgstr "&Nowy kontekst irc"
 msgid "IRC Context related actions"
 msgstr "&Nowy kontekst irc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:841
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:842
 msgid "IRC Op status set"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:842
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:843
 msgid "IRC Op status unset"
 msgstr ""
 
@@ -3347,7 +3352,7 @@ msgstr "Tabela &ikon"
 msgid "Icon Table"
 msgstr "Tabela &ikon"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:786
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:787
 #, fuzzy
 msgid "Ident message"
 msgstr "Interfejs"
@@ -3385,7 +3390,7 @@ msgid ""
 "the CTRL+P prefix"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:809
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:810
 msgid "Ignored user message"
 msgstr ""
 
@@ -3422,6 +3427,11 @@ msgstr "Nieprawidłowy indeks (%Q)"
 #, fuzzy
 msgid "Ignoring query-PRIVMSG from \r!nc\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:174
+#, fuzzy
+msgid "Import List"
+msgstr "Trwa łączenie..."
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mircimport/libkvimircimport.cpp:326
 msgid "Import from http://www.mirc.co.uk/servers.ini"
@@ -3532,12 +3542,12 @@ msgstr ""
 msgid "Internal error: call a head-shrinker"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:470
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:469
 #, fuzzy
 msgid "Invalid DBus interface"
 msgstr "Nieprawidłowy indeks (%s)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:482
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:481
 #, fuzzy
 msgid "Invalid DBus parameter syntax"
 msgstr "Błędny parametr"
@@ -3597,7 +3607,7 @@ msgstr ""
 msgid "Invalid direction for this engine"
 msgstr "Błędny margines"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2036
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2034
 #, fuzzy
 msgid "Invalid image"
 msgstr "Nieprawidłowy indeks (%s)"
@@ -3653,16 +3663,16 @@ msgstr "Wygląd tekstu"
 msgid "Invite exception masks or forbid /INVITE"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:807
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:808
 msgid "Invite exception matching my mask"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:667
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:668
 #, fuzzy
 msgid "Invite listing"
 msgstr "Interfejs"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:789
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:790
 msgid "Invite message"
 msgstr ""
 
@@ -3670,7 +3680,7 @@ msgstr ""
 msgid "Invite only"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:808
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:809
 msgid "Invite unexception matching my mask"
 msgstr ""
 
@@ -3684,7 +3694,7 @@ msgstr "Akcje"
 msgid "Irc Tools"
 msgstr "Narzędzia Irc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1235
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1236
 msgid "Irc context color options (#RRGGBB)"
 msgstr ""
 
@@ -3727,11 +3737,11 @@ msgstr ""
 msgid "Join KVIrc Italian Channel on AzzurraNet"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:793
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:794
 msgid "Join error message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:719
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:720
 msgid "Join message"
 msgstr ""
 
@@ -3813,7 +3823,7 @@ msgstr ""
 msgid "Key"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:770
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:771
 msgid "Kick action"
 msgstr ""
 
@@ -3900,11 +3910,11 @@ msgstr ""
 msgid "Link"
 msgstr "&Połączenia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:703
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:704
 msgid "Link overlay foreground"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1627
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1628
 msgid "Link: %Q"
 msgstr ""
 
@@ -3918,7 +3928,7 @@ msgstr "Nie jesteś połączony z serwerem"
 msgid "Links for %Q [IRC Context %u]"
 msgstr "&Nowy kontekst irc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:771
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:772
 msgid "Links reply"
 msgstr ""
 
@@ -3931,7 +3941,7 @@ msgstr ""
 msgid "List Download"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:269
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:287
 #, fuzzy
 msgid "List cannot be requested: Not connected to a server"
 msgstr "Nie jesteś połączony z serwerem"
@@ -3940,11 +3950,11 @@ msgstr "Nie jesteś połączony z serwerem"
 msgid "List of window types available in this release of KVIrc:"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/libkvilist.cpp:62
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/libkvilist.cpp:61
 msgid "List window already open for this IRC context"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1589
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1590
 #, fuzzy
 msgid "List: %Q"
 msgstr "&Połączenia"
@@ -3986,7 +3996,7 @@ msgstr "logowanie się..."
 msgid "Login operations complete, happy ircing!"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:769
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:770
 #, fuzzy
 msgid "Login operations completed"
 msgstr "Nieznany operator"
@@ -4015,7 +4025,7 @@ msgstr "Znajdowanie hosta %s..."
 msgid "Looking up the server hostname (%s)..."
 msgstr "Znajdowanie hosta %s..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:956
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:959
 msgid "Low activity"
 msgstr ""
 
@@ -4080,11 +4090,11 @@ msgstr ""
 msgid "Maximum number of reconnect attempts reached (%d): giving up"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:958
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:961
 msgid "Medium activity"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1239
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1240
 msgid "Message color options (image_id,foreground,background,logFlag (0/1))"
 msgstr ""
 
@@ -4093,7 +4103,7 @@ msgstr ""
 msgid "Mi&nimize"
 msgstr "M&inimalizuj"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:414
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:413
 #, fuzzy
 msgid "Mi&nimize All"
 msgstr "M&inimalizuj"
@@ -4106,27 +4116,27 @@ msgstr ""
 msgid "Mieeeeeowww!"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:964
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:967
 msgid "Might be flooded with messages"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:960
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:963
 msgid "Might be high activity"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:956
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:959
 msgid "Might be low activity"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:958
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:961
 msgid "Might be medium activity"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:962
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:965
 msgid "Might be very high activity"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:952
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:955
 msgid "Minimal activity"
 msgstr ""
 
@@ -4138,11 +4148,11 @@ msgstr "Minimalizuj"
 msgid "Minimized all the currently visible MDI windows"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1234
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1235
 msgid "Mirccolor options (#RRGGBB)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:987
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:988
 msgid "Missing absolute directory for the theme information"
 msgstr ""
 
@@ -4215,11 +4225,11 @@ msgstr "Dzielenie modulo przez zero"
 msgid "Multi-line Editor<br>&lt;Alt+Backspace&gt;"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:790
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:791
 msgid "Multimedia message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:750
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:751
 #, fuzzy
 msgid "Multiple channel mode change"
 msgstr "Pokazuj skrócone zmiany trybów"
@@ -4228,7 +4238,7 @@ msgstr "Pokazuj skrócone zmiany trybów"
 msgid "Multiple operations not supported for numeric operators"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:741
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:742
 #, fuzzy
 msgid "Multiple user mode change"
 msgstr "Pokazuj skrócone zmiany trybów"
@@ -4243,7 +4253,7 @@ msgstr "Zmień nazwę"
 msgid "Name: %Q"
 msgstr "Zmień nazwę"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:471
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:472
 #, fuzzy
 msgid "Names for \r!c\r%Q\r: %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
@@ -4310,12 +4320,12 @@ msgstr "Tekst nie odnaleziony"
 msgid "Next"
 msgstr "Wygląd tekstu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:736
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:737
 #, fuzzy
 msgid "Nick changes"
 msgstr "Anuluj"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:783
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:784
 msgid "NickServ message"
 msgstr ""
 
@@ -4328,7 +4338,7 @@ msgstr ""
 msgid "Nickname"
 msgstr "Ostatnie &nicki"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:755
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:756
 msgid "Nickname problem"
 msgstr ""
 
@@ -4339,7 +4349,7 @@ msgstr "Ostatnie &nicki"
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:256
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_statusbar.cpp:558
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:753
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:754
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_app.cpp:794
 msgid "No"
 msgstr ""
@@ -4359,7 +4369,7 @@ msgstr "&Nowy kontekst irc"
 msgid "No action name/index specified"
 msgstr "Nie podano indeksu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:950
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:953
 msgid "No activity"
 msgstr ""
 
@@ -4367,7 +4377,7 @@ msgstr ""
 msgid "No and Don't Ask Me Again"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:515
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:516
 msgid "No channel topic is set"
 msgstr ""
 
@@ -4450,12 +4460,12 @@ msgstr "Nie ma takiej klasy"
 msgid "No such object function"
 msgstr "Nie ma takiej funkcji w obiekcie"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:556
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:557
 #, fuzzy
 msgid "No topic is set"
 msgstr "Brak wartości do wstawienia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:520
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:521
 #, fuzzy
 msgid "No topic is set for channel \r!c\r%Q\r"
 msgstr "Brak wartości do wstawienia"
@@ -4473,11 +4483,11 @@ msgstr "Tekst nie odnaleziony"
 msgid "No users in the notify list"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:901
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:902
 msgid "No way to login as '\r!n\r%Q\r' (%d: %Q), trying '%Q'..."
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:699
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:700
 msgid "Normal text"
 msgstr ""
 
@@ -4497,8 +4507,8 @@ msgstr "Brak połączenia"
 msgid "Not enough parameters"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2186
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2240
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2184
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2238
 #, fuzzy
 msgid "Not found"
 msgstr "Tekst nie odnaleziony"
@@ -4520,11 +4530,11 @@ msgstr ""
 msgid "Notify List"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:762
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:763
 msgid "Notify list joins"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:763
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:764
 msgid "Notify list leaves"
 msgstr ""
 
@@ -4669,7 +4679,7 @@ msgid "Often used directories"
 msgstr ""
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_maskeditor.cpp:83
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2036
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2034
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_imagedialog.cpp:158
 msgid "Ok"
 msgstr "Ok"
@@ -4678,7 +4688,7 @@ msgstr "Ok"
 msgid "On <b>"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:148
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:149
 #, c-format
 msgid ""
 "One or more standard mode flags are missing in the server available modes.\n"
@@ -4823,7 +4833,7 @@ msgstr ""
 msgid "Out of address space"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:775
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:776
 msgid "Outgoing ICQ user-message"
 msgstr ""
 
@@ -4831,35 +4841,35 @@ msgstr ""
 msgid "Outgoing traffic"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:843
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:844
 msgid "Own IRC Op status set"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:844
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:845
 msgid "Own IRC Op status unset"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:821
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:822
 msgid "Own chan admin status set"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:822
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:823
 msgid "Own chan admin status unset"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:830
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:831
 msgid "Own chan owner status set"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:831
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:832
 msgid "Own chan owner status unset"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:764
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:765
 msgid "Own encrypted private message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:723
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:724
 msgid "Own private message"
 msgstr ""
 
@@ -4880,12 +4890,12 @@ msgstr ""
 msgid "Parent Directory"
 msgstr "Katalog domowy"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:704
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:705
 #, fuzzy
 msgid "Parser error"
 msgstr "Wewnętrzny błąd"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:705
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:706
 msgid "Parser warning"
 msgstr ""
 
@@ -4894,7 +4904,7 @@ msgstr ""
 msgid "Part All Channels"
 msgstr "Ostatnie &kanały"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:720
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:721
 msgid "Part message"
 msgstr ""
 
@@ -4921,7 +4931,7 @@ msgstr ""
 msgid "Peer X509 certificate"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1236
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1237
 msgid "Pixmap options (image path)"
 msgstr ""
 
@@ -4975,38 +4985,38 @@ msgid ""
 "your key(s) with \"cbc:\".\n"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2171
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2224
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2169
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:2222
 #, c-format
 msgid "Pos %d"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:391
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:390
 #, fuzzy
 msgid "Pragma's Horizontal 4-Grid"
 msgstr "Ułożenie P&ragma (poziome)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:395
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:394
 #, fuzzy
 msgid "Pragma's Horizontal 6-Grid"
 msgstr "Ułożenie P&ragma (poziome)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:399
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:398
 #, fuzzy
 msgid "Pragma's Horizontal 9-Grid"
 msgstr "Ułożenie P&ragma (poziome)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:393
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:392
 #, fuzzy
 msgid "Pragma's Vertical 4-Grid"
 msgstr "Ułożenie &Pragma (pionowe)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:397
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:396
 #, fuzzy
 msgid "Pragma's Vertical 6-Grid"
 msgstr "Ułożenie &Pragma (pionowe)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:401
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:400
 #, fuzzy
 msgid "Pragma's Vertical 9-Grid"
 msgstr "Ułożenie &Pragma (pionowe)"
@@ -5034,7 +5044,7 @@ msgstr ""
 msgid "Processing link: %s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:445
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:466
 #, fuzzy
 msgid "Processing list: %Q"
 msgstr "Połączenie przerwane"
@@ -5152,16 +5162,16 @@ msgstr ""
 msgid "Query Targets"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:766
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:767
 msgid "Query encrypted private message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:778
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:779
 #, fuzzy
 msgid "Query notice"
 msgstr "Serwery"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:725
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:726
 msgid "Query private message"
 msgstr ""
 
@@ -5170,7 +5180,7 @@ msgstr ""
 msgid "Query target:"
 msgstr "Serwery"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:791
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:792
 msgid "Query trace message"
 msgstr ""
 
@@ -5196,11 +5206,11 @@ msgstr "Pokazuj pingi od serwera"
 msgid "Quit KVIrc"
 msgstr "Informacje o KVirc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:733
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:734
 msgid "Quit message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:735
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:736
 msgid "Quit on netsplit message"
 msgstr ""
 
@@ -5208,7 +5218,7 @@ msgstr ""
 msgid "Quits KVIrc closing all the current connections"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:711
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:712
 #, fuzzy
 msgid "Raw data to server"
 msgstr "Ostatnie &serwery"
@@ -5258,7 +5268,7 @@ msgstr "Prawdziwe imię"
 msgid "Received HTTP response: %s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1250
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1251
 msgid "Received a broken RPL_WHOISIDLE, can't evaluate the idle time"
 msgstr ""
 
@@ -5309,7 +5319,7 @@ msgstr "Ostatnie &kanały"
 msgid "Reconnect attempt aborted"
 msgstr "Połączenie przerwane"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1231
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1232
 msgid "Rectangle options (x,y,width,height)"
 msgstr ""
 
@@ -5375,17 +5385,17 @@ msgstr ""
 msgid "Request Links"
 msgstr "Wygląd tekstu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:173
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:188
 msgid "Request List"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:397
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:420
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/links/linkswindow.cpp:436
 #, fuzzy
 msgid "Reset"
 msgstr "Odrzuć"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1994
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1992
 #, fuzzy
 msgid "Reset Temporary Background"
 msgstr "Wybierz katalog..."
@@ -5398,7 +5408,7 @@ msgstr ""
 msgid "Restore Default Script - KVIrc"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1682
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1683
 msgid "Restoring pre-away nickname (%Q)"
 msgstr "Znajdowanie hosta %Q..."
 
@@ -5413,7 +5423,7 @@ msgstr "Brak połączenia"
 msgid "Reverse"
 msgstr "Serwer:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_windowlist_tree.cpp:307
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_windowlist_tree.cpp:304
 #, fuzzy
 msgid "Reverse Sort"
 msgstr "Serwer:"
@@ -5436,7 +5446,7 @@ msgstr "Prawy operand nie jest liczbą"
 msgid "Run KVS Script"
 msgstr "Centrum &skryptów"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:811
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:812
 msgid "SSL message"
 msgstr ""
 
@@ -5500,13 +5510,13 @@ msgstr ""
 msgid "Scroll up to read from the last read line"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:812
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:813
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/help/helpwindow.cpp:100
 #, fuzzy
 msgid "Search"
 msgstr "Narzędzia Irc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:315
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:313
 #, fuzzy
 msgid "Search tools"
 msgstr "Narzędzia Irc"
@@ -5543,12 +5553,12 @@ msgstr "Zaznacz wszystko"
 msgid "Select Font"
 msgstr "Zaznacz wszystko"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:237
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:236
 #, fuzzy
 msgid "Select a Filter File"
 msgstr "Zaznacz wszystko"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:262
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircviewtools.cpp:261
 #, fuzzy
 msgid "Select a Name for the Filter File"
 msgstr "Zaznacz wszystko"
@@ -5568,7 +5578,7 @@ msgstr "Zaznacz wszystko"
 msgid "Select color"
 msgstr "Zaznacz wszystko"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:700
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:701
 #, fuzzy
 msgid "Selection"
 msgstr "Zaznacz wszystko"
@@ -5606,11 +5616,11 @@ msgstr ""
 msgid "Sent links request, waiting for reply..."
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:238
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:256
 msgid "Sent list request, waiting for reply..."
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1564
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1567
 msgid "Sent part request, waiting for reply..."
 msgstr ""
 
@@ -5641,7 +5651,7 @@ msgstr "Serwer:"
 msgid "Server %Q has a nickname: %Q"
 msgstr "Znajdowanie hosta %s..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:198
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:199
 msgid "Server %Q version %S supporting user modes '%S' and channel modes '%S'"
 msgstr ""
 
@@ -5650,7 +5660,7 @@ msgstr ""
 msgid "Server ERROR: %Q"
 msgstr "Serwer:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:717
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:718
 msgid "Server Message of the Day"
 msgstr ""
 
@@ -5667,7 +5677,7 @@ msgstr ""
 msgid "Server appears to be a network hub<br>"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:832
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:833
 #, fuzzy
 msgid "Server error"
 msgstr "Wewnętrzny błąd"
@@ -5692,22 +5702,22 @@ msgstr "Brak nazwy hosta do odszukania"
 msgid "Server idle for"
 msgstr "Serwer:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:716
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:717
 #, fuzzy
 msgid "Server information"
 msgstr "Ogólne opcje"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:780
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:781
 #, fuzzy
 msgid "Server notice"
 msgstr "Serwery"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:718
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:719
 #, fuzzy
 msgid "Server ping"
 msgstr "Ogólne opcje"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:810
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:811
 #, fuzzy
 msgid "Server statistics"
 msgstr "Serwery"
@@ -5738,17 +5748,17 @@ msgstr "Nieznany operator"
 msgid "Set at"
 msgstr "Data"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:539
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:540
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_maskeditor.cpp:197
 msgid "Set by"
 msgstr "Ustawił"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:545
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_topicw.cpp:546
 #, fuzzy
 msgid "Set on"
 msgstr "Zaznacz wszystko"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1720
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1721
 msgid "Setting away nickname (%Q)"
 msgstr "Znajdowanie hosta %Q..."
 
@@ -5775,8 +5785,8 @@ msgstr "Połączenie przerwane"
 msgid "Short View"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:985
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1001
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:987
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:1003
 msgid "Show %1"
 msgstr ""
 
@@ -5789,7 +5799,7 @@ msgstr ""
 msgid "Show &Icon Table"
 msgstr "Tabela &ikon"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1988
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1986
 #, fuzzy
 msgid "Show Find Window"
 msgstr "&Okno"
@@ -6011,12 +6021,12 @@ msgstr "&Szpieg gniazda"
 msgid "Socket creation failed"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:709
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:710
 #, fuzzy
 msgid "Socket error"
 msgstr "&Szpieg gniazda"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:707
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:708
 msgid "Socket message"
 msgstr ""
 
@@ -6029,11 +6039,11 @@ msgstr ""
 msgid "Socket open"
 msgstr "Zaznacz wszystko"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:708
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:709
 msgid "Socket warning"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:886
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:887
 msgid ""
 "Something really weird is happening: the server is refusing all the login "
 "nicknames..."
@@ -6047,7 +6057,7 @@ msgstr ""
 msgid "Sorry, no crypt engines available"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_windowlist_tree.cpp:306
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_windowlist_tree.cpp:303
 #, fuzzy
 msgid "Sort"
 msgstr "Centrum &skryptów"
@@ -6077,7 +6087,7 @@ msgid ""
 "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:772
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:773
 #, fuzzy
 msgid "Spam report"
 msgstr "Serwer:"
@@ -6086,7 +6096,7 @@ msgstr "Serwer:"
 msgid "Split View"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:734
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:735
 msgid "Split message"
 msgstr ""
 
@@ -6121,7 +6131,7 @@ msgstr "Brak połączenia"
 msgid "Starting identd service (IPv4/v6 on separate namespaces)"
 msgstr "Brak połączenia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1871
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1874
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_query.cpp:868
 msgid "Starting last log"
 msgstr ""
@@ -6135,12 +6145,12 @@ msgstr ""
 msgid "Stop Paste"
 msgstr "Wklej"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:180
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:195
 msgid "Stop list download"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:250
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:362
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:268
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:379
 msgid "Stopping the list download..."
 msgstr ""
 
@@ -6162,11 +6172,11 @@ msgstr ""
 msgid "Stri&keout"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1240
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1241
 msgid "String list options (comma separated list of strings)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1232
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1233
 msgid "String options (string value)"
 msgstr ""
 
@@ -6188,16 +6198,16 @@ msgstr "Sukces"
 msgid "Switch dash without switch letter"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:710
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:711
 #, fuzzy
 msgid "System error"
 msgstr "Wewnętrzny błąd"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:714
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:715
 msgid "System message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:713
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:714
 msgid "System warning"
 msgstr ""
 
@@ -6225,12 +6235,12 @@ msgstr "Wygląd tekstu"
 msgid "Text &Encoding"
 msgstr "Wygląd tekstu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:834
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:835
 #, fuzzy
 msgid "Text Encoding Server message"
 msgstr "Wygląd tekstu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:531
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:530
 #, c-format
 msgid "The DBus call returned an error \"%s\": %s"
 msgstr ""
@@ -6327,7 +6337,7 @@ msgstr ""
 msgid "The crypt engine \"%Q\" does not exist"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1133
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:1136
 msgid ""
 "The crypto engine was unable to encrypt the current message (%Q): %Q, no "
 "data sent to the server"
@@ -6339,7 +6349,7 @@ msgid ""
 "data sent to the server"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:263
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:264
 msgid "The current network is %Q"
 msgstr ""
 
@@ -6468,7 +6478,7 @@ msgid ""
 "encrypted"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:891
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:892
 msgid ""
 "The server is refusing all the login nicknames: giving up, you must send the "
 "nickname manually"
@@ -6535,8 +6545,8 @@ msgstr ""
 msgid "The specified network has no server entries"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:495
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:516
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:494
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:515
 #, fuzzy
 msgid "The specified parameter is not an integer"
 msgstr "Prawy operand nie jest liczbą"
@@ -6644,7 +6654,7 @@ msgstr ""
 msgid "Theme information file is not valid"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:888
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:890
 #, fuzzy
 msgid "There are active connections, are you sure you wish to "
 msgstr "Brak połączenia"
@@ -6714,16 +6724,16 @@ msgstr ""
 msgid "This query has no active targets, no message sent"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:270
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:304
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:271
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:305
 msgid "This server supports the CODEPAGE command, it will be used"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:245
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:246
 msgid "This server supports the WATCH notify list method, it will be used"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:320
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:321
 #, c-format
 msgid "This server supports: %s"
 msgstr ""
@@ -6744,7 +6754,7 @@ msgstr ""
 msgid "Thumbnail Previews"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:407
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_mdimanager.cpp:406
 msgid "Tile Met&hod"
 msgstr ""
 
@@ -6765,12 +6775,12 @@ msgstr ""
 msgid "Timestamp"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1006
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1007
 #, fuzzy
 msgid "Tip for %Q: %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1003
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1004
 #, fuzzy
 msgid "Tip: %Q"
 msgstr "&Połączenia"
@@ -6790,7 +6800,7 @@ msgstr "&Narzędzia"
 msgid "Top"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:198
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:215
 msgid "Topic"
 msgstr ""
 
@@ -6798,31 +6808,31 @@ msgstr ""
 msgid "Topic change restricted"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:497
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:498
 #, fuzzy
 msgid "Topic for \r!c\r%Q\r is: %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:571
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:572
 #, fuzzy
 msgid "Topic for \r!c\r%Q\r was set by %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:568
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:569
 #, fuzzy
 msgid "Topic for \r!c\r%Q\r was set by %Q on %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:722
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:723
 msgid "Topic message"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:560
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:561
 #, fuzzy
 msgid "Topic was set by %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:559
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:560
 #, fuzzy
 msgid "Topic was set by %Q on %Q"
 msgstr "Nieprawidłowy indeks (%Q)"
@@ -6878,7 +6888,7 @@ msgstr "Zapi&sz ustawienia"
 msgid "URL Selection"
 msgstr "Zaznacz wszystko"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:702
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:703
 msgid "URL foreground"
 msgstr ""
 
@@ -6887,7 +6897,7 @@ msgstr ""
 msgid "URL:IRC Protocol"
 msgstr "Protokół:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1541
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1542
 msgid "USERHOST info: %Q"
 msgstr ""
 
@@ -6963,7 +6973,7 @@ msgstr ""
 msgid "Unable to start the request slave thread"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:804
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:805
 msgid "Unban matching my mask"
 msgstr ""
 
@@ -7012,7 +7022,7 @@ msgstr "Niespodziewany koniec komendy w łańcuchu"
 msgid "Unexpected token"
 msgstr "Niespodziewany znak"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:715
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:716
 msgid "Unhandled server reply"
 msgstr ""
 
@@ -7049,7 +7059,7 @@ msgstr ""
 msgid "Unknown "
 msgstr "nieznany"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:782
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:783
 msgid "Unknown CTCP reply"
 msgstr ""
 
@@ -7107,7 +7117,7 @@ msgstr ""
 msgid "Unrecognized proxy reply"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:721
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:722
 msgid "Unrecognized/broken message"
 msgstr ""
 
@@ -7119,7 +7129,7 @@ msgstr ""
 msgid "Unrecoverable nameserver error (crashed ?)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1237
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:1238
 msgid "Unsigned integer options (unsigned integer constant)"
 msgstr ""
 
@@ -7129,12 +7139,12 @@ msgstr ""
 msgid "Unspecified"
 msgstr "Nie podano indeksu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:572
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:571
 #, fuzzy, c-format
 msgid "Unsupported DBus call return type %s"
 msgstr "Używaj IpV6"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:521
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/system/libkvisystem.cpp:520
 #, fuzzy, c-format
 msgid "Unsupported DBus parameter type %s"
 msgstr "Używaj IpV6"
@@ -7232,7 +7242,7 @@ msgstr "Tryb użytkownika"
 msgid "User Modes"
 msgstr "Tryb użytkownika"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:731
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:732
 #, fuzzy
 msgid "User action"
 msgstr "Brak połączenia"
@@ -7241,12 +7251,12 @@ msgstr "Brak połączenia"
 msgid "User friendly commandline mode<br>See also /help commandline"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:594
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:595
 #, fuzzy
 msgid "User mode for \r!n\r%Q\r is %s"
 msgstr "Nieprawidłowy indeks (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:824
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:825
 #, fuzzy
 msgid "User-deop mode change"
 msgstr "Pokazuj skrócone zmiany trybów"
@@ -7260,12 +7270,12 @@ msgstr ""
 msgid "Username"
 msgstr "Użytkownik:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:823
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:824
 #, fuzzy
 msgid "Userop mode change"
 msgstr "Pokazuj skrócone zmiany trybów"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:197
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:214
 #, fuzzy
 msgid "Users"
 msgstr "Wyczyść"
@@ -7359,15 +7369,15 @@ msgstr "Oczekiwano zmiennej lub identyfikatora"
 msgid "Variable or identifier expected"
 msgstr "Oczekiwano zmiennej lub identyfikatora"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:827
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:828
 msgid "Verbose/Debug"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:962
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:965
 msgid "Very high activity"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:954
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:957
 msgid "Very low activity"
 msgstr ""
 
@@ -7383,7 +7393,7 @@ msgstr ""
 msgid "WALLOPS from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:756
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:757
 msgid ""
 "WHO entry for %c\r!n\r%Q\r%c [%Q@\r!h\r%Q\r]: %cChannel%c: \r!c\r%Q\r, %"
 "cServer%c: \r!s\r%Q\r, %cHops%c: %d, %cFlags%c: %Q, %cAway%c: %Q, %cReal name"
@@ -7394,7 +7404,7 @@ msgstr ""
 msgid "Wallops (+w)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:792
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:793
 msgid "Wallops message"
 msgstr ""
 
@@ -7423,29 +7433,29 @@ msgstr ""
 msgid "Welcome to KVIrc"
 msgstr "Wybierz katalog..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:751
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:752
 msgid "Who reply"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:757
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:758
 #, fuzzy
 msgid "Whois channels reply"
 msgstr "Pokaż czas synchronizacji kanału"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:758
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:759
 msgid "Whois idle reply"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:760
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:761
 msgid "Whois other reply"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:759
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:760
 #, fuzzy
 msgid "Whois server reply"
 msgstr "Pokazuj pingi od serwera"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:756
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_options.cpp:757
 msgid "Whois user reply"
 msgstr ""
 
@@ -7472,7 +7482,7 @@ msgid "Window %Q not found"
 msgstr "Tekst nie odnaleziony"
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_windowlist.cpp:61
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_windowlist_tree.cpp:381
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_windowlist_tree.cpp:378
 msgid "Window List"
 msgstr ""
 
@@ -7515,7 +7525,7 @@ msgstr ""
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_input.cpp:255
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_statusbar.cpp:556
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:753
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:754
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/kernel/kvi_app.cpp:795
 msgid "Yes"
 msgstr ""
@@ -7535,7 +7545,7 @@ msgstr ""
 msgid "You are not connected to a server"
 msgstr "Nie jesteś połączony z serwerem"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:318
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/list/listwindow.cpp:336
 msgid "You cannot export an empty list"
 msgstr ""
 
@@ -7614,21 +7624,21 @@ msgid ""
 "on the IRC server"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1957
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1965
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1958
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1966
 msgid "Your encoding is now %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:2020
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:2021
 #, c-format
 msgid "Your user mode is %s"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1990
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1988
 msgid "Zoom In"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1991
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_ircview.cpp:1989
 msgid "Zoom Out"
 msgstr ""
 
@@ -7666,7 +7676,7 @@ msgstr ""
 msgid "[Dead Query]"
 msgstr "Ostatnie &kanały"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:990
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:993
 #, fuzzy
 msgid "[Dead channel]"
 msgstr "Ostatnie &kanały"
@@ -7675,7 +7685,7 @@ msgstr "Ostatnie &kanały"
 msgid "[Dead query]"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1702
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1703
 msgid "[Entering away status]: %Q"
 msgstr ""
 
@@ -7689,11 +7699,11 @@ msgstr ""
 msgid "[LINK WARNING]: Socket message truncated to 512 bytes."
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1671
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1672
 msgid "[Leaving away status after %ud %uh %um %us]: %Q"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1675
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:1676
 msgid "[Leaving away status]: %Q"
 msgstr ""
 
@@ -7870,11 +7880,11 @@ msgstr ""
 msgid "away"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:636
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:637
 msgid "ban exception list"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:634
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:635
 msgid "ban list"
 msgstr ""
 
@@ -7976,7 +7986,7 @@ msgstr ""
 msgid "hot users"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:971
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_channel.cpp:974
 msgid "human"
 msgstr ""
 
@@ -8000,7 +8010,7 @@ msgstr ""
 msgid "ignored (unrecognized)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:635
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/sparser/kvi_sp_numeric.cpp:636
 msgid "invite list"
 msgstr ""
 
@@ -8071,7 +8081,7 @@ msgstr ""
 msgid "query"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:889
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/kvirc/ui/kvi_frame.cpp:891
 #, fuzzy
 msgid "quit KVIrc?"
 msgstr "Informacje o KVirc"
@@ -8111,8 +8121,8 @@ msgstr ""
 msgid "secure connection"
 msgstr "Brak połączenia"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:864
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:869
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:866
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:871
 msgid "unknown"
 msgstr "nieznany"
 
@@ -9333,10 +9343,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Image width:"
 #~ msgstr "M&inimalizuj"
-
-#, fuzzy
-#~ msgid "Import List"
-#~ msgstr "Trwa łączenie..."
 
 #, fuzzy
 #~ msgid "Inactive Background"

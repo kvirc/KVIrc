@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 02:09+0200\n"
+"POT-Creation-Date: 2009-07-03 15:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -368,15 +368,15 @@ msgid "Unknown aspect ratio %Q - Switching to KeepAspectRatio ratio"
 msgstr ""
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:270
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:428
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:499
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:430
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:501
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:369
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:489
 msgid "Buffer parameter is not an object"
 msgstr ""
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:275
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:433
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:435
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:374
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:508
 msgid "Buffer parameter is not a memorybuffer object"
@@ -488,7 +488,7 @@ msgid "Query for connection %Q does not exists"
 msgstr ""
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_sql.cpp:398
-msgid "Query %Q already initializated"
+msgid "Query %Q already initialized"
 msgstr ""
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_sql.cpp:403
@@ -515,99 +515,99 @@ msgstr ""
 msgid "Can't insert a non-widget object"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:512
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:514
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:40
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:480
 msgid "File is not open!"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:523
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:525
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:566
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:568
 msgid "No socket object specified"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:572
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:574
 msgid "Invalid socket object specified (it doesn't inherit from socket)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:584
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:586
 msgid "There is no connection to accept!"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:610
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:612
 msgid "The hex string lenght is not a multiple of 2"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:627
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:629
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:613
 msgid "The hex string is not correct!"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:652
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:654
 #, c-format
 msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:657
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:688
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:659
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:690
 msgid "Another connection in progress"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:705
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:707
 msgid "No IPv6 support in this executable"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:727
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:941
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:729
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:943
 msgid "Invalid IP address (%Q)"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:748
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:750
 msgid "Socket creation failed"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:763
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:784
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:765
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:786
 msgid "Invalid socket address"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:771
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:792
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:773
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:794
 msgid "Bind failure"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:802
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:804
 msgid "Listen failure"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:935
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:937
 msgid "Invalid IP address "
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:963
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:965
 msgid "Failed to create the socket"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:975
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:977
 msgid "Failed to setup a nonblocking socket"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:996
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:998
 msgid "Connect failure: "
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1023
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1025
 msgid "Connect attempt timed out"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1052
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1054
 msgid "Can't start the DNS thread"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1198
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1200
 msgid ""
 "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 02:09+0200\n"
+"POT-Creation-Date: 2009-07-03 15:21+0200\n"
 "PO-Revision-Date: 2005-12-27 23:02+0200\n"
 "Last-Translator: Valerius <valeragir@mail.ru>\n"
 "Language-Team: russian\n"
@@ -224,7 +224,7 @@ msgstr "Текущий используемый кодек - '%s'"
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Попытка пассивного DCC %1 соединения"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:161
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:162
 #, c-format
 msgid "Attempting a passive DCC %s connection"
 msgstr "Попытка пассивного DCC %s соединения"
@@ -241,7 +241,7 @@ msgstr "Попытка пассивного соединения DCC VOICE"
 msgid "Attempting an active DCC %1 connection"
 msgstr "Попытка активного DCC %1 соединения"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:170
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:171
 #, c-format
 msgid "Attempting an active DCC %s connection"
 msgstr "Попытка активного DCC %s соединения"
@@ -310,8 +310,8 @@ msgstr "Невозможно отослать DCC %Q запрос в %Q: IRC с�
 msgid "Cancel"
 msgstr "Отмена"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:302
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:397
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:303
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:398
 msgid "Cannot send data: No active connection"
 msgstr "Невозможно отослать данные: Нет активных соединений"
 
@@ -343,7 +343,7 @@ msgstr "Конфигурирование пропускной способнос
 msgid "Connected to %1:%2"
 msgstr "Подключение к%1:%2"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:530
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:531
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:916
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/canvas.cpp:283
 msgid "Connected to %Q:%Q"
@@ -353,7 +353,7 @@ msgstr "Подключение к %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Подключение к хосту %1 на порт %2"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:184
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:185
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:756
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/canvas.cpp:109
 msgid "Contacting host %Q on port %Q"
@@ -368,11 +368,11 @@ msgstr "Запрос DCC %1 - KVIrc"
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "DCC %1 запрос не отослан, ожидаю ручного соединения"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:502
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:503
 msgid "DCC %Q failed: %Q"
 msgstr "Ошибка DCC %Q: %Q"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:238
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:239
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "DCC %Q запрос не отослан, ожидаю ручного соединения"
 
@@ -417,7 +417,7 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Передача данных завершилась 30 сек. назад, закрываю соединение"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:412
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:413
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:824
 msgid "ERROR: %Q"
 msgstr "ОШИБКА: %Q"
@@ -516,7 +516,7 @@ msgstr "Предел при передаче"
 msgid "Listening on interface %1 port %2"
 msgstr "Прослушивание интерфейса %1 на порту %2"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:186
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:187
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:759
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/canvas.cpp:85
 msgid "Listening on interface %Q port %Q"
@@ -526,13 +526,13 @@ msgstr "Прослушивание на интерфейсе %Q порта %Q"
 msgid "Local end is %1:%2"
 msgstr "Локальное окончание %1:%2"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:532
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:533
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:918
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/canvas.cpp:285
 msgid "Local end is %Q:%Q"
 msgstr "Локальное окончание %Q:%Q"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:246
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:247
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/send.cpp:1563
 msgid "Low-level transport connection established"
 msgstr "Установлено соединение по низкоуровневому транспорту"
@@ -599,7 +599,7 @@ msgstr "Повторная отправка TDCC"
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr "Отослан DCC %1 запрос %2, ожидаю соединения от удалённого клиента..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:235
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:236
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
 msgstr "Отправка DCC %Q запроса %Q, ожидаю соединения от удалённого клиента..."
 
@@ -633,7 +633,7 @@ msgstr "Достигнут лимит слотов (%u слотов из %u)"
 msgid "Spd:"
 msgstr "Скорость:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:247
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:248
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/send.cpp:1564
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Запуск соединения через SSL"
@@ -721,7 +721,7 @@ msgstr "Подключение к хосту <b>%1</b> на порт <b>%2</b><b
 msgid "The connection will be secured using SSL.<br>"
 msgstr "Соединение будет использовать SSL.<br>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:344
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:345
 #, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
@@ -757,7 +757,7 @@ msgstr ""
 "<br><b>переписать</b> существующий файл, или<br> <b>автоматически "
 "переименовать</b> новый файл?"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:456
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:457
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
@@ -766,14 +766,14 @@ msgstr ""
 "Следующее сообщение зашифровано, но криптовальная машина не может его "
 "расшифровать: %s"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:213
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:214
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/send.cpp:1504
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "Локальный IP адрес является приватным и нет IRC сервера для его определения"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:210
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:211
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/send.cpp:1501
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
@@ -786,7 +786,7 @@ msgstr ""
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "Локальный IP адрес является приватным, определяю из IRC сервера: %1"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:208
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:209
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "Локальный IP адрес является приватным, определение из IRC сервера: %s"
@@ -970,7 +970,7 @@ msgstr ""
 msgid "[SSL ERROR]: %1"
 msgstr "[ОШИБКА SSL]: %1"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:255
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:256
 #, c-format
 msgid "[SSL ERROR]: %s"
 msgstr "[ОШИБКА SSL]: %s"

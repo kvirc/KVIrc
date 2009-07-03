@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 02:09+0200\n"
+"POT-Creation-Date: 2009-07-03 15:21+0200\n"
 "PO-Revision-Date: 2005-02-24 23:18+0100\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -221,7 +221,7 @@ msgstr "El còdec actual és '%s'"
 msgid "Attempting a passive DCC %1 connection"
 msgstr "Intentant una connexió DCC pasiva %1"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:161
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:162
 #, c-format
 msgid "Attempting a passive DCC %s connection"
 msgstr "Intentant una connexió %s DCC pasiva"
@@ -238,7 +238,7 @@ msgstr "Intentant una connexió pasiva DCC VOICE"
 msgid "Attempting an active DCC %1 connection"
 msgstr "Intentant una connexió DCC activa %1"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:170
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:171
 #, c-format
 msgid "Attempting an active DCC %s connection"
 msgstr "Intentant una connexió %s DCC activa"
@@ -314,8 +314,8 @@ msgstr ""
 msgid "Cancel"
 msgstr "Cancel·lar"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:302
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:397
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:303
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:398
 msgid "Cannot send data: No active connection"
 msgstr "No puc enviar dades: No hi ha una connexió activa"
 
@@ -348,7 +348,7 @@ msgstr ""
 msgid "Connected to %1:%2"
 msgstr "Conectat a %1:%2"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:530
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:531
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:916
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/canvas.cpp:283
 #, fuzzy
@@ -359,7 +359,7 @@ msgstr "Conectat a %s:%s"
 msgid "Contacting host %1 on port %2"
 msgstr "Contactant amb la màquina %1 en el port %2"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:184
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:185
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:756
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/canvas.cpp:109
 #, fuzzy
@@ -375,12 +375,12 @@ msgstr "Petició DCC %1 - KVIrc"
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "Petició DCC %1 no enviada, esperant connexió manual"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:502
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:503
 #, fuzzy
 msgid "DCC %Q failed: %Q"
 msgstr "DCC %s ha fallat: %Q"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:238
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:239
 #, fuzzy
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr "La petició DCC %s no ha estat enviada, esperant connexió manual"
@@ -427,7 +427,7 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "La transferència de dades ha acabat fa 30 segons, tancant la connexió"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:412
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:413
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:824
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
@@ -531,7 +531,7 @@ msgstr ""
 msgid "Listening on interface %1 port %2"
 msgstr "Escoltant en la interfície %1 port %2"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:186
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:187
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:759
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/canvas.cpp:85
 #, fuzzy
@@ -542,14 +542,14 @@ msgstr "Escoltant en la interfície %s port %s"
 msgid "Local end is %1:%2"
 msgstr "El extrem local és %1:%2"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:532
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:533
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/voice.cpp:918
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/canvas.cpp:285
 #, fuzzy
 msgid "Local end is %Q:%Q"
 msgstr "El extrem final és %s:%s"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:246
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:247
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/send.cpp:1563
 msgid "Low-level transport connection established"
 msgstr "Establerta la connexió de transport de baix nivell"
@@ -618,7 +618,7 @@ msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 "Enviada petició DCC %1 a %2, esperant la connexió des del client remot..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:235
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:236
 #, fuzzy
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
 msgstr "Enviada petició DCC %s a %s, esperant la connexió del client remot..."
@@ -655,7 +655,7 @@ msgstr "Arribat al límit d'slots (%u slots de %u)"
 msgid "Spd:"
 msgstr ""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:247
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:248
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/send.cpp:1564
 msgid "Starting Secure Socket Layer handshake"
 msgstr "Iniciant negociació del protocol SSL"
@@ -745,7 +745,7 @@ msgstr ""
 msgid "The connection will be secured using SSL.<br>"
 msgstr "La connexió serà assegurada emprant SSL.<br>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:344
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:345
 #, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
@@ -784,7 +784,7 @@ msgstr ""
 "automàticament</b> el nou arxiu, o<br><b>continuar</b> una transferència "
 "incompleta?"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:456
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:457
 #, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
@@ -793,7 +793,7 @@ msgstr ""
 "El següent missatge semblar estar xifrat, però el motor de xifrat ha fallat "
 "al descodificar-lo: %s"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:213
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:214
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/send.cpp:1504
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
@@ -801,7 +801,7 @@ msgstr ""
 "L'adreça IP local és privada, però no tinc un servidor IRC des d'on "
 "determinar-la"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:210
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:211
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/send.cpp:1501
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
@@ -814,7 +814,7 @@ msgstr ""
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr "L'adreça IP local és privada, determinant-la des del servidor IRC: %1"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:208
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:209
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
 msgstr "L'adreça IP local és privada, determinant des del servidor IRC: %s"
@@ -1008,7 +1008,7 @@ msgstr ""
 msgid "[SSL ERROR]: %1"
 msgstr "[ERROR SSL]: %1"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:255
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/dcc/chat.cpp:256
 #, c-format
 msgid "[SSL ERROR]: %s"
 msgstr "[ERROR SSL]: %s"

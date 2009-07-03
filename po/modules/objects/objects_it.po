@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: objects_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 02:09+0200\n"
+"POT-Creation-Date: 2009-07-03 15:21+0200\n"
 "PO-Revision-Date: 2009-05-27 01:15+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -83,8 +83,8 @@ msgstr "'%Q' non è un percorso valido per il file"
 msgid "A string of 6 hex digits is required"
 msgstr "E' richiesta una stringa di 6 cifre esadecimali"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:657
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:688
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:659
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:690
 msgid "Another connection in progress"
 msgstr "Un'altra connessione in corso"
 
@@ -96,8 +96,8 @@ msgstr "Argomento troppo lungo, uso solo il primo carattere"
 msgid "Argument too long, using only the first char"
 msgstr "Argomento troppo lungo, uso solo il primo carattere"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:771
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:792
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:773
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:794
 msgid "Bind failure"
 msgstr "Bind fallito"
 
@@ -107,19 +107,19 @@ msgstr ""
 "Il parametro di blocco deve essere una stringa o un oggetto memorybuffer"
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:275
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:433
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:435
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:374
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:508
 msgid "Buffer parameter is not a memorybuffer object"
 msgstr "Il parametro buffer non è un oggetto memorybuffer"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:523
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:525
 msgid "Buffer parameter is not a memorybuffer or file object"
 msgstr "Il parametro buffer non è un oggetto memorybuffer o file"
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_pixmap.cpp:270
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:428
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:499
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:430
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:501
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:369
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:489
 msgid "Buffer parameter is not an object"
@@ -170,7 +170,7 @@ msgstr ""
 "Non posso impostare un oggetto non widget come widget principale di una "
 "finestra dock"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1052
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1054
 msgid "Can't start the DNS thread"
 msgstr "Non posso avviare il processo DNS"
 
@@ -191,11 +191,11 @@ msgstr "Richiesto nome del colore o tripletta RGB/HSV"
 msgid "Color name or triplette rgb/hsv value required"
 msgstr "Richiesto nome del colore o tripletta RGB/HSV"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1023
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1025
 msgid "Connect attempt timed out"
 msgstr "Tentativo di connessione scaduto"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:996
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:998
 msgid "Connect failure: "
 msgstr "Connessione fallita: "
 
@@ -257,7 +257,7 @@ msgstr ""
 "E' occorso un errore: il file '%Q' non è nel formato corretto o non è un "
 "valido numero di icona."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:963
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:965
 msgid "Failed to create the socket"
 msgstr "Creazione della socket fallita"
 
@@ -269,11 +269,11 @@ msgstr "Una delle widget del percorso ('%Q::%Q') non è stata trovata"
 msgid "Failed to find the widget to wrap"
 msgstr "La widget da agganciare non è stata trovata"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:975
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:977
 msgid "Failed to setup a nonblocking socket"
 msgstr "Creazione della socket non bloccante fallita"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:512
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:514
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:40
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:480
 msgid "File is not open!"
@@ -326,12 +326,12 @@ msgstr "Slot target '%Q' inesistente per objects.connect"
 msgid "Internal error: no valid pointer for this object"
 msgstr "Errore interno: nessun puntatore valido per questo oggetto"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:935
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:937
 msgid "Invalid IP address "
 msgstr "Indirizzo IP invalido "
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:727
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:941
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:729
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:943
 msgid "Invalid IP address (%Q)"
 msgstr "Indirizzo IP invalido (%Q)"
 
@@ -371,12 +371,12 @@ msgstr "Modo di selezione '%Q' invalido"
 msgid "Invalid selection mode '%Q' assuming single"
 msgstr "Modo di selezione '%Q' invalido, assumo single"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:763
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:784
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:765
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:786
 msgid "Invalid socket address"
 msgstr "Indirizzo socket invalido"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:572
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:574
 msgid "Invalid socket object specified (it doesn't inherit from socket)"
 msgstr "Oggetto socket invalido (non eredità dalla socket)"
 
@@ -396,7 +396,7 @@ msgstr "Elemento fuori dalla dimensione della tablewidget"
 msgid "Lenght of hex string is not multiple of 2"
 msgstr "La lunghezza della stringa esadecimale non è un multiplo di 2"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:802
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:804
 msgid "Listen failure"
 msgstr "Listen fallita"
 
@@ -408,7 +408,7 @@ msgstr "Manca il plugin Qt per il database %Q"
 msgid "Missing filename"
 msgstr "Manca il nome del file"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:705
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:707
 msgid "No IPv6 support in this executable"
 msgstr "Non c'è il supporto IPv6 in questo eseguibile"
 
@@ -420,7 +420,7 @@ msgstr "Non c'è Layout associato alla widget"
 msgid "No query connection is open"
 msgstr "Nessuna connessione query aperta"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:566
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:568
 msgid "No socket object specified"
 msgstr "Nessun oggetto socket specificato"
 
@@ -572,7 +572,7 @@ msgstr "Processo annullato"
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_sql.cpp:398
 #, fuzzy
-msgid "Query %Q already initializated"
+msgid "Query %Q already initialized"
 msgstr "Query %Q già inizializzata"
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_sql.cpp:373
@@ -583,7 +583,7 @@ msgstr "La query per la connessione %Q non esiste"
 msgid "Read error occured!"
 msgstr "Errore nella lettura!"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:748
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:750
 msgid "Socket creation failed"
 msgstr "Creazione della socket fallita"
 
@@ -636,12 +636,12 @@ msgstr "Il file '%Q' non esiste"
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr "Il primo parametro non viene valutato come array né come intero"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:627
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:629
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_file.cpp:613
 msgid "The hex string is not correct!"
 msgstr "La stringa esadecimale non è corretta!"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:610
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:612
 msgid "The hex string lenght is not a multiple of 2"
 msgstr "La lunghezza della stringa esadecimale non è multiplo di 2"
 
@@ -717,11 +717,11 @@ msgstr ""
 "L'identificatore della finestra preceduto da WinId deve essere il primo "
 "oggetto nel percorso di ricerca"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:584
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:586
 msgid "There is no connection to accept!"
 msgstr "Non ci sono connessioni da accettare!"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1198
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:1200
 msgid ""
 "Too much unprocessed incoming data (you've left this socket unmanaged ?)"
 msgstr ""
@@ -831,7 +831,7 @@ msgstr ""
 msgid "Unsupported datatype '%Q'"
 msgstr "Tipo di dato '%Q' non supportato"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:652
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/objects/class_socket.cpp:654
 #, c-format
 msgid "Value %d for port is out of range (values allowed are from 0 to 65535)"
 msgstr ""

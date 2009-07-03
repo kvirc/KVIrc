@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-06-24 02:09+0200\n"
+"POT-Creation-Date: 2009-07-03 15:21+0200\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid " lines"
 msgstr " řádků"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:50
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:51
 msgid " min"
 msgstr " min"
 
@@ -76,7 +76,7 @@ msgstr "\"Smart\" barvy přezdívek"
 msgid "&Apply"
 msgstr "&Použít"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:227
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:226
 msgid "&Browse..."
 msgstr "&Procházet..."
 
@@ -97,7 +97,7 @@ msgid "&New Server"
 msgstr "&Nový server"
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_servers.cpp:341
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:232
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:233
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/dialog.cpp:227
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/container.cpp:64
 msgid "&OK"
@@ -435,7 +435,7 @@ msgstr "<center>Prosím počkejte, dokud nebude avatar stažen</center>"
 msgid "<center>Put here a brief description of the network.</center>"
 msgstr "<center>Zde vložte krátký popis sítě.</center>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:52
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:53
 msgid ""
 "<center>Save logs with the current interval<br>Set to 0 to disable this "
 "feature</center>"
@@ -1700,7 +1700,7 @@ msgstr "Připojit k SOURCE odezvě:"
 msgid "Append to VERSION reply:"
 msgstr "Připojit k VERSION odezvě:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:49
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:50
 msgid "Auto flush logs every"
 msgstr "Auto flush logů každý"
 
@@ -1857,7 +1857,7 @@ msgstr "Cache IP adresy"
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_servers.cpp:347
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_servers.cpp:839
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:95
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:237
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:238
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:906
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/dialog.cpp:242
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/container.cpp:72
@@ -1936,7 +1936,7 @@ msgstr "Vyberte název souboru - KVIrc"
 msgid "Choose a Filename - KVIrc "
 msgstr "Vyberte název souboru - KVIrc "
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:263
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:264
 msgid "Choose an Image File - KVIrc"
 msgstr "Vyberte soubor obrázku - KVIrc"
 
@@ -3229,7 +3229,7 @@ msgstr ""
 msgid "Plain Grid"
 msgstr "Obyčejná mřížka"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:209
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_identity.cpp:208
 msgid ""
 "Please select an avatar image. The full path to a local file or an image on "
 "the Web can be used.<br>If you wish to use a local image file, click the "
@@ -3770,9 +3770,13 @@ msgstr "Zvukový systém"
 msgid "Sound device:"
 msgstr "Zvukové zařízení:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:48
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:49
 msgid "Strip colors in logs"
 msgstr "Odstranit barvy v souborech logů"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_logging.cpp:48
+msgid "Strip message type numbers in logs"
+msgstr ""
 
 #: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/options/optw_servers.cpp:647
 #, fuzzy
