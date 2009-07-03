@@ -172,45 +172,51 @@ static const char * idlemsgs[NIDLEMSGS]=
 	__tr("idle idle idle idle!")
 };
 
-void KviTrayIcon::tipRequest(KviDynamicToolTip *,const QPoint &)
+bool KviTrayIcon::event(QEvent *e)
 {
-	QString tmp;
-
-	KviWindowListBase * t = m_pFrm->windowListWidget();
-
-	QString line;
-
-	for(KviWindowListItem * b = t->firstItem();b;b = t->nextItem())
+	if(e->type()==QEvent::ToolTip)
 	{
+		QPoint pos= m_pFrm->mapFromGlobal(QCursor::pos());
+		QString tmp;
 
-		if(b->kviWindow()->view())
+		KviWindowListBase * t = m_pFrm->windowListWidget();
+
+		QString line;
+
+		for(KviWindowListItem * b = t->firstItem();b;b = t->nextItem())
 		{
-			if(b->kviWindow()->view()->haveUnreadedMessages())
+
+			if(b->kviWindow()->view())
 			{
-				line = b->kviWindow()->lastMessageText();
-				if(!line.isEmpty())
+				if(b->kviWindow()->view()->haveUnreadedMessages())
 				{
-					line.replace(QChar('&'),"&amp;");
-					line.replace(QChar('<'),"&lt;");
-					line.replace(QChar('>'),"&gt;");
-					tmp += "<b>";
-					tmp += b->kviWindow()->plainTextCaption();
-					tmp += "</b><br>";
-					tmp += line;
-					tmp += "<br><br>\n";
+					line = b->kviWindow()->lastMessageText();
+					if(!line.isEmpty())
+					{
+						line.replace(QChar('&'),"&amp;");
+						line.replace(QChar('<'),"&lt;");
+						line.replace(QChar('>'),"&gt;");
+						tmp += "<b>";
+						tmp += b->kviWindow()->plainTextCaption();
+						tmp += "</b><br>";
+						tmp += line;
+						tmp += "<br><br>\n";
+					}
 				}
 			}
 		}
+
+
+		srand(time(0));
+
+		// We use the bad way to generate random numbers :)))))
+
+		if(tmp.isEmpty())tmp = __tr2qs_no_xgettext(idlemsgs[(int)(rand() % NIDLEMSGS)]);
+
+		m_pTip->tip(QRect(pos,QSize(0,0)),tmp);
+		return true;
 	}
-
-
-	srand(time(0));
-
-	// We use the bad way to generate random numbers :)))))
-
-	if(tmp.isEmpty())tmp = __tr2qs_no_xgettext(idlemsgs[(int)(rand() % NIDLEMSGS)]);
-
-	//m_pTip->tip(rect(),tmp);
+	return false;
 }
 
 //int KviTrayIcon::message(int,void *)

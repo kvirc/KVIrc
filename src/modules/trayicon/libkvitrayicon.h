@@ -68,11 +68,10 @@ public:
 	void updateIcon();
 protected:
 	void grabActivityInfo();
-
+	virtual bool event(QEvent * e);
 protected slots:
 	void fillContextPopup();
 	void toggleParentFrame();
-	void tipRequest(KviDynamicToolTip *tip,const QPoint &pnt);
 	void doAway(bool);
 	void flashingTimerShot();
 	void activatedSlot( QSystemTrayIcon::ActivationReason reason );
