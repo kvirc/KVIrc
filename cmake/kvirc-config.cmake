@@ -60,7 +60,7 @@ while test $# -gt 0; do
 	esac
 
 	LIBS="@LIBS@"
-	LIBS="$(echo ${LIBS} | sed s//;/g)"
+	LIBS="$(echo ${LIBS} | sed s/\;/\ /g)"
 
 	case $1 in
 		--version)
