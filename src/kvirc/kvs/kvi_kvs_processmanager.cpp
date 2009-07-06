@@ -243,7 +243,7 @@ void KviKvsProcessAsyncOperation::readStdout()
 			m_szStdoutBuffer += QString(a);
 	} else {
 		m_pProcess->setReadChannel(KviProcess::StandardOutput);
-		QString l = m_pProcess->readLine();
+		QString l;
 		bool bBreak = false;
 		while((m_pProcess->canReadLine()) && (!bBreak))
 		{
