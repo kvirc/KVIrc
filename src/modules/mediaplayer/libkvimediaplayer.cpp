@@ -1612,6 +1612,7 @@ static bool mediaplayer_module_init( KviModule * m )
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviXmms2Interface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviBmpxInterface));
 	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviAmarok2Interface));
+	g_pDescriptorList->append(MP_CREATE_DESCRIPTOR(KviQmmpInterface));
 #endif
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)

@@ -4,7 +4,7 @@
 //   Creation date : Thu 06 Dec 2007 14:20:02 by Tomasz Moń
 //
 //   This file is part of the KVIrc IRC client distribution
-//   Copyright (C) 2007-2008 Tomasz Moń <desowin@gmail.com>
+//   Copyright (C) 2007-2009 Tomasz Moń <desowin@gmail.com>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -463,6 +463,24 @@ KviAmarok2Interface::KviAmarok2Interface()
 : KviMPRISInterface()
 {
 	m_szServiceName = "org.mpris.amarok";
+}
+
+/* Qmmp interface */
+MP_IMPLEMENT_DESCRIPTOR(
+        KviQmmpInterface,
+        "Qmmp",
+        __tr2qs_ctx(
+                "An interface to Qmmp.\n" \
+                "Download it from http://qmmp.ylsoftware.com\n"
+                ,
+                "mediaplayer"
+        )
+)
+
+KviQmmpInterface::KviQmmpInterface()
+: KviMPRISInterface()
+{
+        m_szServiceName = "org.mpris.qmmp";
 }
 
 #endif //!COMPILE_ON_WINDOWS
