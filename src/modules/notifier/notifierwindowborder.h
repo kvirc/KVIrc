@@ -49,10 +49,7 @@ private:
 	
 	QRect	m_captionRect;
 	QRect	m_bodyRect;
-	QRect	m_tabsRect;
 	QRect	m_titleRect;
-	
-	QRect	m_progressRect;
 
 	// Pictures
 	QPixmap * m_pixSX;
@@ -91,22 +88,10 @@ private:
 	QPixmap m_pixIconClose_out_HL;
 	QPixmap m_pixIconClose_over_HL;
 	QPixmap m_pixIconClose_clicked_HL;
-		
-	int m_iTabsHeight;
-	int m_iTitleFontHeight;
+
 	int m_eIconState;
 	int m_iRctWidth;
 	int m_iRctHeight;
-	
-	bool m_bNeedToRedraw;
-	
-public:
-protected:
-
-
-// ================================
-// Put methods declaration below...
-// ================================
 private:
 	void loadImages();
 	void recalculatePositions();
@@ -126,29 +111,20 @@ public:
 	void resetIcons();
 
 	// writing methods...	
-	int x() { return m_pnt.x(); };
-	int y() { return m_pnt.y(); };
-	int width() { return m_rct.width(); };
-	int height() { return m_rct.height(); };
-	int baseLine() { return (y()+height()); };
+	inline int x() const { return m_pnt.x(); };
+	inline int y() const { return m_pnt.y(); };
+	inline int width() const { return m_rct.width(); };
+	inline int height() const { return m_rct.height(); };
+	inline int baseLine() const { return (y()+height()); };
 
-	QRect bodyRect() { return m_bodyRect; };
-	QRect tabsRect() { return m_tabsRect; };
-	QRect captionRect() { return m_captionRect; };
-	QRect rect() { return m_rct; };
-	QRect closeRect() { return m_closeIconRect; };
-	QRect titleRect() { return m_titleRect; };
-	QRect progressRect() { return m_progressRect; };
-	
-	void centerTitle(int h) { m_iTitleFontHeight = h; };
-	
-	void touch() { m_bNeedToRedraw = true; };
+	inline QRect bodyRect() { return m_bodyRect; };
+	inline QRect captionRect() { return m_captionRect; };
+	inline QRect rect() { return m_rct; };
+	inline QRect closeRect() { return m_closeIconRect; };
+	inline QRect titleRect() { return m_titleRect; };
 	
 	void draw(QPainter *, bool b = false);
 	void setPics(bool b = false);
-
-protected:
-
 };
 
 #endif //!_KVINOTIFIERWINDOWBORDER_H_

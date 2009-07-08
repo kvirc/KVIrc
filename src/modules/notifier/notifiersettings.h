@@ -29,7 +29,7 @@
 
 
 #define WDG_MIN_WIDTH	370
-#define WDG_MIN_HEIGHT	150
+#define WDG_MIN_HEIGHT	160
 #define WDG_BORDER_THICKNESS 5
 #define SPACING 2
 

@@ -2,17 +2,15 @@
 
 SET(kvinotifier_MOC_HDRS
 	notifierwindow.h
-	notifierwindowtabs.h
+	notifierwindowtab.h
 )
 
 SET(kvinotifier_SRCS
 	libkvinotifier.cpp
 	notifierwindow.cpp
 	notifiermessage.cpp
-	notifierwindowtabs.cpp
-	notifierwindowbody.cpp
+	notifierwindowtab.cpp
 	notifierwindowborder.cpp
-	notifierwindowprogressbar.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

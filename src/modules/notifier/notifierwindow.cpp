@@ -25,10 +25,8 @@
 
 #include "notifiermessage.h"
 #include "notifierwindow.h"
-#include "notifierwindowbody.h"
 #include "notifierwindowborder.h"
-#include "notifierwindowprogressbar.h"
-#include "notifierwindowtabs.h"
+#include "notifierwindowtab.h"
 
 #include "kvi_iconmanager.h"
 #include "kvi_config.h"
@@ -40,7 +38,7 @@
 #include "kvi_options.h"
 #include "kvi_userinput.h"
 
-#include <QAbstractTextDocumentLayout>
+
 #include <QApplication>
 #include <QImage>
 #include <QDesktopWidget>
@@ -50,6 +48,13 @@
 #include <QFontMetrics>
 #include <QRegExp>
 #include <QPainter>
+#include <QPaintEvent>
+#include <QMouseEvent>
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	#include <QPixmap>
+	extern QPixmap * g_pShadedParentGlobalDesktopBackground;
+#endif
 
 extern KviNotifierWindow * g_pNotifierWindow;
 
@@ -79,7 +84,6 @@ KviNotifierWindow::KviNotifierWindow()
 	m_tAutoHideAt = 0;
 	m_tStartedAt=0;
 	m_pAutoHideTimer = 0;
-	m_pProgressTimer = 0;
 
 	m_pWndBorder = new KviNotifierWindowBorder();
 
@@ -94,12 +98,14 @@ KviNotifierWindow::KviNotifierWindow()
 
 	QString szFamily = cfg.readEntry("TextFontFamily","Arial");
 	m_pDefaultFont = new QFont(szFamily,cfg.readIntEntry("TextFontSize",9));
+	setFont(*m_pDefaultFont);
+
 	szFamily = cfg.readEntry("TitleFontFamily","Arial");
 	m_pTitleFont = new QFont(szFamily,cfg.readIntEntry("TitleFontSize",9));
 
 	m_clrCurText = cfg.readColorEntry("CurTextColor",QColor(40,0,0));
 	m_clrHistoricText = cfg.readColorEntry("HistoricTextColor",QColor(125,125,125));
-	m_clrTitle = QColor(255,255,255); //cfg.readColorEntry("TitleColor",QColor(0,0,0));
+	m_clrTitle = QColor(255,255,255);
 	for(int i=0;i<NUM_OLD_COLORS;i++)
 	{
 		KviStr szKey;
@@ -114,17 +120,8 @@ KviNotifierWindow::KviNotifierWindow()
 
 	setFocusPolicy(Qt::NoFocus);
 	setMouseTracking(true);
-	//setCursor(m_cursor);
 
 	hide();
-	m_pLineEdit = new QLineEdit(this);
-	m_pLineEdit->setGeometry(0,0,0,0);
-	m_pLineEdit->hide();
-	m_pLineEdit->installEventFilter(this);
-	connect(m_pLineEdit,SIGNAL(returnPressed()),this,SLOT(returnPressed()));
-
-	szFamily = cfg.readEntry("InputFontFamily","Arial");
-	m_pLineEdit->setFont(QFont(szFamily,cfg.readIntEntry("InputFontSize",9)));
 
 	m_bBlinkOn = false;
 
@@ -132,8 +129,6 @@ KviNotifierWindow::KviNotifierWindow()
 	m_bPrevDown = false;
 	m_bNextDown = false;
 	m_bWriteDown = false;
-
-	m_bKeyShiftPressed = false;
 
 	m_bLeftButtonIsPressed = false;
 	m_bDiagonalResizing = false;
@@ -147,25 +142,46 @@ KviNotifierWindow::KviNotifierWindow()
 	m_bDisableHideOnMainWindowGotAttention = false;
 
 	// Positioning the notifier bottom-right
-	int iWidth = m_pixBackground.width();
-	int iHeight = m_pixBackground.height();
 	QDesktopWidget * w = QApplication::desktop();
-	QRect r = w->availableGeometry(w->primaryScreen()); //w->screenGeometry(w->primaryScreen());
+	QRect r = w->availableGeometry(w->primaryScreen());
 
-	/*debug("r.x(),r.y(): %d,%d",r.x(),r.y());
-	debug("r.width(),r.height(): %d,%d",r.width(),r.height());*/
+	m_wndRect.setRect(	r.x() + r.width() - (WDG_MIN_WIDTH + SPACING),
+				r.y() + r.height() - (WDG_MIN_HEIGHT + SPACING),
+				WDG_MIN_WIDTH,
+				WDG_MIN_HEIGHT );
 
-	m_wndRect.setRect( r.x() + r.width() - (iWidth + SPACING), r.y() + r.height() - (iHeight + SPACING), iWidth, iHeight );
+	m_pWndTabs = new QTabWidget(this);
+	m_pWndTabs->setUsesScrollButtons(true);
+	m_pWndTabs->setTabsClosable(true);
+	connect(m_pWndTabs,SIGNAL(tabCloseRequested(int)),this,SLOT(slotTabCloseRequested(int)));
 
-	//m_pWndBorder = new KviNotifierWindowBorder();
-	m_pWndTabs = new KviNotifierWindowTabs(m_pWndBorder->tabsRect());
-	m_pWndBody = new KviNotifierWindowBody(m_pWndBorder->bodyRect());
+	m_pProgressBar = new QProgressBar(this);
+	m_pProgressBar->setOrientation(Qt::Vertical);
+	m_pProgressBar->setRange(0, 100);
+	m_pProgressBar->setTextVisible(false);
+	m_pProgressBar->setMaximumWidth(8);
+	m_pProgressBar->installEventFilter(this);
 
-	m_pProgressBar = new KviNotifierWindowProgressBar(m_pWndBorder->progressRect());
+	m_pLineEdit = new QLineEdit(this);
+	QPalette palette=m_pLineEdit->palette();
+	palette.setColor(m_pLineEdit->backgroundRole(), Qt::transparent);
+	m_pLineEdit->setPalette(palette);
+	m_pLineEdit->installEventFilter(this);
+	m_pLineEdit->hide();
+	connect(m_pLineEdit,SIGNAL(returnPressed()),this,SLOT(returnPressed()));
 
-	// FIXME: Ugly global-font initialization..
-	QFontMetrics titleFontMetrics(*m_pTitleFont);
-	m_pWndBorder->centerTitle(titleFontMetrics.height());
+	szFamily = cfg.readEntry("InputFontFamily","Arial");
+	m_pLineEdit->setFont(QFont(szFamily,cfg.readIntEntry("InputFontSize",9)));
+
+	QGridLayout *layout = new QGridLayout;
+	layout->addWidget(m_pProgressBar, 0,0,2,1);
+	layout->addWidget(m_pWndTabs,0,1,1,1);
+	layout->addWidget(m_pLineEdit,1,1,1,1);
+	layout->setSpacing(SPACING);
+
+	layout->setGeometry(m_pWndBorder->bodyRect());
+	layout->setContentsMargins(5,25,5,5);
+	setLayout(layout);
 
 	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
 }
@@ -179,22 +195,10 @@ KviNotifierWindow::~KviNotifierWindow()
 	delete m_pTitleFont;
 	delete m_pWndBorder;
 	delete m_pWndTabs;
-	delete m_pWndBody;
-}
-
-int KviNotifierWindow::countTabs()
-{
-	return m_pWndTabs->count();
 }
 
 void KviNotifierWindow::reloadImages()
 {
-	m_pixBackground = QPixmap(WDG_MIN_WIDTH,WDG_MIN_HEIGHT);
-	m_pixBackground.fill();
-	m_pixBackgroundHighlighted = QPixmap(m_pixBackground.size());
-	m_pixBackgroundHighlighted.fill();
-
-	m_pWndBorder->resize(m_pixBackground.size());
 }
 
 void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,const QString &szText,unsigned int uMessageTime)
@@ -205,9 +209,26 @@ void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,con
 	if(szImageId.isEmpty())pIcon = 0;
 	else pIcon = g_pIconManager->getImage(szImageId);
 
-	KviNotifierMessage * m = new KviNotifierMessage(this,pIcon ? new QPixmap(*pIcon) : 0,szMessage);
+	KviNotifierMessage * m = new KviNotifierMessage(pIcon ? new QPixmap(*pIcon) : 0,szMessage);
 
-	m_pWndTabs->addMessage(pWnd, m); // Adds a tab about the sender pWnd
+	//search for an existing tab
+	KviNotifierWindowTab *tab=0, *tmp=0;
+	for(int i=0; i<m_pWndTabs->count();++i)
+	{
+		tmp=(KviNotifierWindowTab*)m_pWndTabs->widget(i);
+		if(tmp->wnd() == pWnd)
+		{
+			tab=tmp;
+			break;
+		}
+	}
+
+	if(!tab)
+	{
+		tab = new KviNotifierWindowTab(pWnd, m_pWndTabs);
+	}
+
+	tab->appendMessage(m);
 
 	if(!isActiveWindow())
 		startBlinking();
@@ -218,7 +239,8 @@ void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,con
 		if(m_tAutoHideAt < tAutoHide)
 		{
 			m_tAutoHideAt = tAutoHide;
-			if(m_eState == Visible)startAutoHideTimer();
+			if(m_eState == Visible)
+				startAutoHideTimer();
 		}
 	} else {
 		// never hide
@@ -231,15 +253,8 @@ void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,con
 		if(pWnd->hasAttention())m_bDisableHideOnMainWindowGotAttention = true;
 	}
 
-	//m_pWndTabs->setCurrentMessage(m);
-	if(isVisible())update();
-	// else the line edit was hidden
-}
-
-
-int KviNotifierWindow::textWidth()
-{
-	return m_pWndBody->textRect().width() - 20;
+	if(isVisible())
+		update();
 }
 
 void KviNotifierWindow::stopShowHideTimer()
@@ -258,21 +273,10 @@ void KviNotifierWindow::stopBlinkTimer()
 
 void KviNotifierWindow::stopAutoHideTimer()
 {
-	if(m_pProgressTimer) delete m_pProgressTimer;
-	m_pProgressTimer = 0;
-
 	if(!m_pAutoHideTimer)return;
 	delete m_pAutoHideTimer;
 	m_pAutoHideTimer = 0;
-	m_pProgressBar->setProgress(0);
-}
-
-void KviNotifierWindow::computeRect()
-{
-	int iWidth = m_pixBackground.width();
-	int iHeight = m_pixBackground.height();
-	m_pWndBorder->setGeometry(QPoint(x(),y()), QSize(iWidth,iHeight));
-	update();
+	m_pProgressBar->setValue(0);
 }
 
 void KviNotifierWindow::doShow(bool bDoAnimate)
@@ -307,16 +311,6 @@ void KviNotifierWindow::doShow(bool bDoAnimate)
 			m_bNextDown = false;
 			m_bWriteDown = false;
 			m_bBlinkOn = false;
-			m_imgDesktop = QPixmap::grabWindow(
-						QApplication::desktop()->winId(),
-						m_wndRect.x(),
-						m_wndRect.y(),
-						m_wndRect.width(),
-						m_wndRect.height()).toImage();
-			// QPixmap tmp = QPixmap::grabWindow( QApplication::desktop()->winId(),m_wndRect.x(), m_wndRect.y(), m_wndRect.width(), m_wndRect.height());
-			// tmp.save("/root/pix.png","PNG");
-			m_pixForeground = QPixmap(m_pixBackground.size());
-			m_imgBuffer = QImage(m_pixBackground.width(),m_pixBackground.height(),QImage::Format_RGB32);
 			if(bDoAnimate)
 			{
 				m_pShowHideTimer = new QTimer();
@@ -324,19 +318,10 @@ void KviNotifierWindow::doShow(bool bDoAnimate)
 				m_dOpacity = OPACITY_STEP;
 				m_eState = Showing;
 				m_bCrashShowWorkAround=true;
-				#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC) || defined(COMPILE_ON_MINGW))
 				setWindowOpacity(m_dOpacity);
-				#endif
 				show();
-				#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC) || defined(COMPILE_ON_MINGW))
-					m_pShowHideTimer->start(40);
-				#else
-					m_pShowHideTimer->start(100);
-				#endif
-				computeRect();
+				m_pShowHideTimer->start(40);
 				m_bCrashShowWorkAround=false;
-				//show();
-
 			} else {
 				m_dOpacity = 1.0;
 				m_eState = Visible;
@@ -353,10 +338,10 @@ void KviNotifierWindow::doShow(bool bDoAnimate)
 bool KviNotifierWindow::shouldHideIfMainWindowGotAttention()
 {
 	if(m_bDisableHideOnMainWindowGotAttention)return false;
-	KviNotifierWindowTab * t = m_pWndTabs->currentTab();
+	KviNotifierWindowTab * t = (KviNotifierWindowTab*) m_pWndTabs->currentWidget();
 	if(!t)return false;
-	if(!t->window())return false;
-	return t->window()->hasAttention();
+	if(!t->wnd())return false;
+	return t->wnd()->hasAttention();
 }
 
 void KviNotifierWindow::heartbeat()
@@ -396,9 +381,7 @@ void KviNotifierWindow::heartbeat()
 
 				if(!isVisible())show(); //!!!
 				if(m_pLineEdit->isVisible())m_pLineEdit->hide();
-				#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC) || defined(COMPILE_ON_MINGW))
-					setWindowOpacity(m_dOpacity);
-				#endif
+				setWindowOpacity(m_dOpacity);
 				update();
 
 			}
@@ -439,9 +422,7 @@ void KviNotifierWindow::heartbeat()
 			break;
 		case Hiding:
 			m_dOpacity -= OPACITY_STEP;
-			#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC) || defined(COMPILE_ON_MINGW))
-				setWindowOpacity(m_dOpacity);
-			#endif
+			setWindowOpacity(m_dOpacity);
 			if(m_pLineEdit->isVisible())m_pLineEdit->hide();
 			if(m_dOpacity <= 0.0)hideNow();
 			else update();
@@ -459,7 +440,7 @@ void KviNotifierWindow::hideNow()
 	m_tAutoHideAt = 0;
 
 	if(m_pLineEdit->isVisible())m_pLineEdit->hide();
-	hide();//if(isVisible())hide();
+	hide();
 }
 
 void KviNotifierWindow::doHide(bool bDoAnimate)
@@ -503,14 +484,9 @@ void KviNotifierWindow::doHide(bool bDoAnimate)
 			connect(m_pShowHideTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 			m_dOpacity = 1.0 - OPACITY_STEP;
 			m_eState = Hiding;
-			#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC) || defined(COMPILE_ON_MINGW))
-				setWindowOpacity(m_dOpacity);
-				update();
-				m_pShowHideTimer->start(40);
-			#else
-				update();
-				m_pShowHideTimer->start(100);
-			#endif
+			setWindowOpacity(m_dOpacity);
+			update();
+			m_pShowHideTimer->start(40);
 		}
 		break;
 		default:
@@ -520,8 +496,7 @@ void KviNotifierWindow::doHide(bool bDoAnimate)
 
 void KviNotifierWindow::showEvent(QShowEvent *)
 {
-	computeRect();
-	setGeometry(m_wndRect); // w_win = w_wndRect
+ 	setGeometry(m_wndRect);
 }
 
 void KviNotifierWindow::hideEvent(QHideEvent *)
@@ -532,7 +507,6 @@ void KviNotifierWindow::hideEvent(QHideEvent *)
 	stopAutoHideTimer();
 	m_eState = Hidden; // make sure it's true
 	m_tAutoHideAt = 0; // make sure it's true
-	markAllMessagesAsHistoric();
 	m_bDisableHideOnMainWindowGotAttention = false;
 }
 
@@ -554,25 +528,14 @@ void KviNotifierWindow::startAutoHideTimer()
 {
 	stopAutoHideTimer();
 	m_tStartedAt = kvi_unixTime();
-	m_qtStartedAt.start();
 	if(m_tAutoHideAt <= m_tStartedAt)return;
 
 	int nSecs = m_tAutoHideAt - m_tStartedAt;
 	if(nSecs < 5)nSecs = 5;
 	m_pAutoHideTimer = new QTimer();
-	connect(m_pAutoHideTimer,SIGNAL(timeout()),this,SLOT(autoHide()));
-	m_pAutoHideTimer->start(nSecs * 1000);
 
-	m_pProgressTimer= new QTimer();
-	connect(m_pProgressTimer,SIGNAL(timeout()),this,SLOT(progressUpdate()));
-	m_pProgressTimer->start(60);
-}
-
-void KviNotifierWindow::autoHide()
-{
-	m_tAutoHideAt = 0;
-	stopAutoHideTimer();
-	doHide(true);
+	connect(m_pAutoHideTimer,SIGNAL(timeout()),this,SLOT(progressUpdate()));
+	m_pAutoHideTimer->start(100);
 }
 
 void KviNotifierWindow::blink()
@@ -597,164 +560,57 @@ void KviNotifierWindow::blink()
 	update();
 }
 
-void KviNotifierWindow::markAllMessagesAsHistoric()
+void KviNotifierWindow::paintEvent(QPaintEvent *e)
 {
-	if (!m_pWndTabs) return;
-	m_pWndTabs->markAllMessagesAsHistoric();
-}
+	QPainter p(this);
 
-static void blend_images(QImage &buffer,QImage &background,QImage &foreground,double dValue)
-{
-	for(int y = 0;y < buffer.height();y++)
+	//make sure you clean your widget with a transparent
+	//  color before doing any rendering
+	//  note the usage of a composition mode Source
+	//  it's important!
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
-		QRgb * dst = (QRgb *)buffer.scanLine(y);
-		QRgb * end = dst + buffer.width();
-		QRgb * bkg = (QRgb *)background.scanLine(y);
-		QRgb * fgn = (QRgb *)foreground.scanLine(y);
-
-		double dRemaining = 1.0 - dValue;
-
-		while(dst < end)
-		{
-			*dst = qRgb(
-						(int)((qRed(*bkg) * dRemaining) + (qRed(*fgn) * dValue)),
-						(int)((qGreen(*bkg) * dRemaining) + (qGreen(*fgn) * dValue)),
-						(int)((qBlue(*bkg) * dRemaining) + (qBlue(*fgn) * dValue))
-					);
-			dst++;
-			bkg++;
-			fgn++;
-		}
-
-	}
-}
-
-void KviNotifierWindow::paintEvent(QPaintEvent *)
-{
-
-	redrawWindow();
-	redrawText();
-
-	QPainter px(this);
-
-	if(m_dOpacity < 1.0)
-	{
-
-	#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MAC) || defined(COMPILE_ON_MINGW))
-		px.drawPixmap(0,0,m_pixForeground);
-	#else
-		QImage temp_image = m_pixForeground.toImage();
-
-		if(temp_image.size()!=m_imgBuffer.size())
-			m_imgBuffer = QImage(m_pixBackground.width(),m_pixBackground.height(),QImage::Format_RGB32);
-
-		//FIXME if the window gets moved/resized, we hould update m_imgDesktop
-		if(temp_image.size()==m_imgDesktop.size())
-		{
-			blend_images(m_imgBuffer,m_imgDesktop,temp_image,m_dOpacity);
-			px.drawImage(0,0,m_imgBuffer);
-		} else {
-			px.drawPixmap(0,0,m_pixForeground);
-		}
-	#endif
-		px.end();
-	} else {
-		px.drawPixmap(0,0,m_pixForeground);
-	}
-}
-
-void KviNotifierWindow::redrawText()
-{
-	QPainter p(&m_pixForeground);
-	QAbstractTextDocumentLayout::PaintContext context;
-
-	// the current tab
-	KviNotifierWindowTab * tab = m_pWndTabs->currentTab();
-	if(!tab)return;
-
-	// its message list
-	KviPointerList<KviNotifierMessage> * l = tab->messageList();
-	if(!l)return;
-	if(l->isEmpty())return;
-
-	// the current message
-	KviNotifierMessage * cur = tab->currentMessage();
-	if(!cur)cur = l->last();
-
-	// this is useful in several places
-	KviNotifierMessage * last = l->last();
-
-	// make sure that we can loop
-	int iIdx = l->findRef(cur);
-	if(iIdx == -1)
-	{
-		tab->setCurrentMessage(last);
-		cur = last;
-		iIdx = l->findRef(cur);
-	}
-
-	int y = m_pWndBody->textRect().y() + m_pWndBody->textRect().height();
-
-	if(m_pLineEdit->isVisible())y -= (m_pLineEdit->height() + 4);
-
-	QPalette palette = QPalette();
-
-	int idx = iIdx;
-	KviNotifierMessage * m = cur;
-	while(m && (y > m_pWndBody->textRect().y()))
-	{
-		int iHeight = (int) m->text()->size().height();
-		if(iHeight < 18)iHeight = 18;
-		y -= iHeight;
-		if(m->historic())
-		{
-			p.setPen(m_clrHistoricText);
-		} else {
-			if(m == last)
-				p.setPen(m_clrCurText);
-			else {
-				int iClrIdx = l->count() - (idx + 2);
-				if(iClrIdx < 0)
-					iClrIdx = 0;
-				else if(iClrIdx >= NUM_OLD_COLORS)iClrIdx = (NUM_OLD_COLORS - 1);
-					p.setPen(m_clrOldText[iClrIdx]);
-			}
-		}
-
-		int iMaxY = y > m_pWndBody->textRect().y() ? y : m_pWndBody->textRect().y();
-		QRect clip(m_pWndBody->textRect().x() + 20,iMaxY,m_pWndBody->textRect().width() - 20,iHeight);
-
-// 		m->text()->drawContents(&p);
-
 		p.save();
-		//force foreground color - see bug #434
-		context.palette.setColor(QPalette::Text, p.pen().color());
-		m->text()->setPageSize(clip.size());
-		p.translate(clip.x(),clip.y());
-		m->text()->documentLayout()->draw(&p, context);
+		p.setCompositionMode(QPainter::CompositionMode_Source);
+		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) / (float)100));
+		p.fillRect(rect(), col);
 		p.restore();
+	} else if(g_pShadedParentGlobalDesktopBackground)
+	{
+		QPoint pnt = mapToGlobal(e->rect().topLeft());
+		p.drawTiledPixmap(e->rect(),*(g_pShadedParentGlobalDesktopBackground), pnt);
+	}
+#endif
 
-		if(y > m_pWndBody->textRect().y())
-		{
-			if(m->image())
-				p.drawPixmap(m_pWndBody->textRect().x() + 1,y + 1,*(m->image()),0,0,16,16);
-		}
-		m = l->prev();
-		idx--;
+	if(m_wndRect.width()!=m_pWndBorder->width() || m_wndRect.height()!=m_pWndBorder->height())
+		m_pWndBorder->resize( m_wndRect.size() );
+
+	if(m_bBlinkOn)
+	{
+		m_pWndBorder->draw(&p,true);
+	} else {
+		m_pWndBorder->draw(&p);
 	}
 
 	p.setPen(QPen(m_clrTitle));
 	p.setFont(*m_pTitleFont);
-	QString title;
-	KviQString::sprintf(title,"[%d/%d]",iIdx + 1,l->count());
-
-	if(tab->window())
+	QString title = "KVIrc - ";
+	KviNotifierWindowTab *tab = (KviNotifierWindowTab *)m_pWndTabs->currentWidget();
+	if(tab)
 	{
-		title += " ";
-		title += tab->window()->plainTextCaption();
+		if(tab->wnd())
+		{
+			title += tab->wnd()->plainTextCaption();
+		} else {
+			title += "notifier";
+		}
+	} else {
+			title += "notifier";
 	}
-	p.drawText(m_pWndBorder->titleRect(),Qt::AlignLeft | Qt::TextSingleLine,title);
-	p.end();
+	p.drawText(m_pWndBorder->titleRect(),Qt::AlignLeft | Qt::AlignVCenter | Qt::TextSingleLine,title);
 }
 
 void KviNotifierWindow::mouseMoveEvent(QMouseEvent * e)
@@ -774,25 +630,6 @@ void KviNotifierWindow::mouseMoveEvent(QMouseEvent * e)
 			}
 			goto sartelo;
 		}
-
-		if(m_pWndTabs->currentTab())
-		{
-			/* ### MOUSE-MOVE-EVENT -> m_pWndTabs ### */
-			if (m_pWndTabs->rect().contains(e->pos())) {
-				m_pWndTabs->mouseMoveEvent(e);
-				goto sartelo;
-			}
-
-			/* ### MOUSE-MOVE-EVENT -> m_pWndBody ### */
-			if (m_pWndBody->rect().contains(e->pos())) {
-				if (m_pWndBody->rctWriteIcon().contains(e->pos())) {
-					m_pWndBody->setWriteIcon(WDG_ICON_ON);
-				} else {
-					m_pWndBody->setWriteIcon(WDG_ICON_OFF);
-				}
-				goto sartelo;
-			}
-		}
 		/* ### END ### */
 
 sartelo:
@@ -800,7 +637,8 @@ sartelo:
 
 	}
 
-	if(m_bDragging) {
+	if(m_bDragging)
+	{
 		setCursor(Qt::SizeAllCursor);
 
 		int w = m_wndRect.width();
@@ -813,12 +651,10 @@ sartelo:
 		m_wndRect.setHeight(h);
 
 		setGeometry(m_wndRect);
-
-		return;
-	} else if (m_bResizing) {
+	} else if (m_bResizing)
+	{
 		resize(e->pos());
 	}
-
 }
 
 void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
@@ -845,12 +681,6 @@ void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 
 	if(checkResizing(m_pntClick)) goto sartelo;
 
-	if(m_pWndTabs->rect().contains(e->pos()))
-	{
-		m_pWndTabs->mousePressEvent(e);
-		goto sartelo;
-	}
-
 	if(m_pWndBorder->captionRect().contains(e->pos())) {
 		//debug ("Clicked on m_pWndBorder->rect()");
 		if(m_pWndBorder->closeRect().contains(e->pos()))	{
@@ -871,29 +701,6 @@ void KviNotifierWindow::mousePressEvent(QMouseEvent * e)
 	//debug ("x,y: %d,%d - width,height: %d,%d", m_pWndBorder->rect().x(),m_pWndBorder->rect().y(),m_pWndBorder->rect().width(),m_pWndBorder->rect().height());
 
 	if (m_pWndBorder->rect().contains(e->pos())) {
-		if(m_pWndTabs->currentTab())
-		{
-			//debug ("Clicked on m_pWndBody->textRect()");
-			if(m_pWndBody->rctWriteIcon().contains(e->pos()))
-			{
-				m_pWndBody->setWriteIcon(WDG_ICON_CLICKED);
-				showLineEdit(!(m_pLineEdit->isVisible()));
-			}
-
-			if(m_pWndBody->rctPrevIcon().contains(e->pos()) && m_pWndBody->prevIconState()!=WDG_ICON_OFF)
-			{
-				m_bPrevDown = true;
-				m_pWndBody->setPrevIcon(WDG_ICON_CLICKED);
-				prevButtonClicked();
-			}
-
-			if(m_pWndBody->rctNextIcon().contains(e->pos()) && m_pWndBody->nextIconState()!=WDG_ICON_OFF)
-			{
-				m_bNextDown = true;
-				m_pWndBody->setNextIcon(WDG_ICON_CLICKED);
-				nextButtonClicked();
-			}
-		}
 		goto sartelo;
 	}
 
@@ -913,11 +720,6 @@ void KviNotifierWindow::mouseReleaseEvent(QMouseEvent * e)
 	m_bLeftButtonIsPressed = false;
 	m_bResizing = false;
 
-	//m_pWndBody->setWriteIcon(WDG_ICON_ON);
-	m_pWndBody->setNextIcon(WDG_ICON_ON);
-	m_pWndBody->setPrevIcon(WDG_ICON_ON);
-	m_pWndTabs->setCloseTabIcon(WDG_ICON_OFF);
-
 	if(m_bDragging)
 	{
 		m_bDragging = false;
@@ -936,81 +738,15 @@ void KviNotifierWindow::mouseReleaseEvent(QMouseEvent * e)
 
 	}
 
-	if(m_pWndTabs->rect().contains(e->pos()))
-	{
-		m_pWndTabs->mouseReleaseEvent(e);
-	}
-
 	setCursor(-1);
-
-}
-
-void KviNotifierWindow::mouseDoubleClickEvent(QMouseEvent * e)
-{
-	if(!m_pWndBody->textRect().contains(e->pos()))
-	{
-		QWidget::mouseDoubleClickEvent(e);
-		return;
-	}
-
-	KviNotifierWindowTab * tab = m_pWndTabs->currentTab();
-	if(!tab)return;
-
-	if(!tab->window())return;
-
-	hideNow();
-	delayedRaise(tab->window());
 }
 
 void KviNotifierWindow::keyPressEvent(QKeyEvent * e)
 {
-	if (e->key()==Qt::Key_Shift) {
-		m_bKeyShiftPressed = true;
-		return;
-	}
-
-	if (e->key()==Qt::Key_Left && m_bKeyShiftPressed) {
-		m_pWndTabs->prev();
-		return;
-	}
-	if (e->key()==Qt::Key_Right && m_bKeyShiftPressed) {
-		m_pWndTabs->next();
-		return;
-	}
-
 	if (e->key()==Qt::Key_Escape) {
 		hideNow();
 		return;
 	}
-}
-
-void KviNotifierWindow::keyReleaseEvent(QKeyEvent * e)
-{
-	if (e->key()==Qt::Key_Shift) m_bKeyShiftPressed = false;
-}
-
-void KviNotifierWindow::delayedRaise(KviWindow * pWnd)
-{
-	m_pWindowToRaise = pWnd;
-	QTimer::singleShot(0,this,SLOT(delayedRaiseSlot()));
-}
-
-void KviNotifierWindow::delayedRaiseSlot()
-{
-	if(!m_pWindowToRaise)return;
-	if(!g_pApp->windowExists(m_pWindowToRaise))return;
-
-	if(m_pWindowToRaise->mdiParent())
-	{
-		if(!m_pWindowToRaise->frame()->isVisible())
-			m_pWindowToRaise->frame()->show();
-
-		m_pWindowToRaise->frame()->raise();
-		//((QWidget *)(m_pWindowToRaise->frame()))->setActiveWindow();
-		m_pWindowToRaise->frame()->setFocus();
-	}
-
-	m_pWindowToRaise->delayedAutoRaise();
 }
 
 bool KviNotifierWindow::checkResizing(QPoint e)
@@ -1087,8 +823,6 @@ bool KviNotifierWindow::checkResizing(QPoint e)
 
 void KviNotifierWindow::resize(QPoint , bool)
 {
-	//QPoint aux = mapToGlobal(p);
-
 	if (m_whereResizing==WDG_UPSX || m_whereResizing==WDG_SX || m_whereResizing==WDG_DWNSX) {
 		if ((x() + width() - cursor().pos().x()) < WDG_MIN_WIDTH)
 			m_wndRect.setLeft(x() + width() - WDG_MIN_WIDTH);
@@ -1121,49 +855,6 @@ void KviNotifierWindow::resize(QPoint , bool)
 	setGeometry(m_wndRect);
 }
 
-void KviNotifierWindow::redrawWindow()
-{
-	if(m_pixBackground.size()!=m_wndRect.size())
-	{
-		// Redraw only if size was modified..
-		m_pixBackground = QPixmap(m_wndRect.size());
-		m_pixForeground = QPixmap(m_wndRect.size());
-		m_pixBackgroundHighlighted = QPixmap(m_wndRect.size());
-
-		m_pWndBorder->resize( m_wndRect.size() );
-		m_pWndTabs->setWidth( m_pWndBorder->tabsRect().width() );
-		m_pWndBody->resize( m_pWndBorder->bodyRect() );
-		m_pProgressBar->setHeight(m_pWndBorder->bodyRect().height() + m_pWndBorder->tabsRect().height());
-	}
-
-	QPainter paint;
-	if(m_bBlinkOn)
-	{
-		m_pWndBorder->touch();
-		m_pWndTabs->touch();
-		m_pWndBody->touch();
-		paint.begin(&m_pixBackgroundHighlighted);
-			m_pWndBorder->draw(&paint,true);
-			m_pWndTabs->draw(&paint);
-			m_pWndBody->draw(&paint);
-			m_pProgressBar->draw(&paint);
-		paint.end();
-		m_pixForeground = m_pixBackgroundHighlighted.copy();
-		m_pWndBorder->touch();
-		m_pWndTabs->touch();
-		m_pWndBody->touch();
-	} else {
-		paint.begin(&m_pixBackground);
-			m_pWndBorder->draw(&paint);
-			m_pWndTabs->draw(&paint);
-			m_pWndBody->draw(&paint);
-			m_pProgressBar->draw(&paint);
-		paint.end();
-		m_pixForeground = m_pixBackground.copy();
-	}
-
-}
-
 inline void KviNotifierWindow::setCursor(int cur)
 {
 	if (m_cursor.shape() != cur) {
@@ -1188,7 +879,6 @@ void KviNotifierWindow::leaveEvent(QEvent *)
 {
 	// Leaving the widget area, restore default cursor
 	m_pWndBorder->resetIcons();
-	m_pWndTabs->resetIcons();
 	if (!m_bResizing) setCursor(-1);
 	if(!m_pShowHideTimer) {
 		m_pShowHideTimer = new QTimer();
@@ -1216,7 +906,7 @@ void KviNotifierWindow::contextPopup(const QPoint &pos)
 void KviNotifierWindow::fillContextPopup()
 {
 	m_pContextPopup->clear();
-
+	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_EDITOR)),__tr2qs_ctx("Show/Hide input line","notifier"),this,SLOT(toggleLineEdit()));
 	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CLOSE)),__tr2qs_ctx("Hide","notifier"),this,SLOT(hideNow()));
 	m_pContextPopup->insertSeparator();
 	m_pDisablePopup->clear();
@@ -1289,52 +979,30 @@ void KviNotifierWindow::disablePermanently()
 	hideNow();
 }
 
-void KviNotifierWindow::wheelEvent(QWheelEvent * e)
+void KviNotifierWindow::toggleLineEdit()
 {
-	if(e->delta() > 0)prevButtonClicked();
-	else nextButtonClicked();
-}
-
-void KviNotifierWindow::prevButtonClicked()
-{
-	KviNotifierWindowTab * tab = m_pWndTabs->currentTab();
-	if(!tab)return;
-	tab->setPrevMessageAsCurrent();
-	update();
-}
-
-void KviNotifierWindow::nextButtonClicked()
-{
-	KviNotifierWindowTab * tab = m_pWndTabs->currentTab();
-	if(!tab)return;
-	tab->setNextMessageAsCurrent();
-	update();
+	showLineEdit(!m_pLineEdit->isVisible());
 }
 
 void KviNotifierWindow::showLineEdit(bool bShow)
 {
 	if(bShow)
 	{
-		//if(m_pLineEdit->isVisible())return;
-		if(!m_pWndTabs->currentMessage())return;
-		if(!m_pWndTabs->currentTab()->window())return;
+		if(m_pLineEdit->isVisible())return;
+		if(!((KviNotifierWindowTab *)m_pWndTabs->currentWidget())->wnd())return;
 		m_pLineEdit->setToolTip("");;
 		QString tip = __tr2qs_ctx("Write text or commands to window","notifier");
 		tip += " \"";
-		tip += m_pWndTabs->currentTab()->window()->plainTextCaption();
+		tip += ((KviNotifierWindowTab *)m_pWndTabs->currentWidget())->wnd()->plainTextCaption();
 		tip += "\"";
 		m_pLineEdit->setToolTip(tip);
-		m_pLineEdit->setGeometry(m_pWndBody->textRect().x(),m_pWndBody->textRect().y() + m_pWndBody->textRect().height() - m_iInputHeight,m_pWndBody->textRect().width(),m_iInputHeight);
 		m_pLineEdit->show();
 		m_pLineEdit->setFocus();
-		redrawWindow();
 		activateWindow();
 	} else {
 		if(!m_pLineEdit->isVisible())return;
 		m_pLineEdit->hide();
 		setFocus();
-		KviNotifierWindowTab * tab = m_pWndTabs->currentTab();
-		if(tab)tab->setLastMessageAsCurrent();
 		update();
 	}
 }
@@ -1370,10 +1038,9 @@ void KviNotifierWindow::returnPressed()
 {
 	if(!m_pLineEdit->isVisible())return;
 
-	KviNotifierWindowTab * tab = m_pWndTabs->currentTab();
+	KviNotifierWindowTab * tab = (KviNotifierWindowTab *) m_pWndTabs->currentWidget();
 	if(!tab)return;
-	if(!tab->currentMessage())return;
-	if(!tab->window())return;
+	if(!tab->wnd())return;
 
 	QString txt = m_pLineEdit->text();
 	if(txt.isEmpty())return;
@@ -1382,16 +1049,36 @@ void KviNotifierWindow::returnPressed()
 	html.replace(">","&gt;");
 	KviStr tmp(KviStr::Format,"%d",KVI_SMALLICON_OWNPRIVMSG);
 
-	addMessage(tab->window(),tmp.ptr(),html,0); //m_pCurrentFocusedWindowTab on place of m_pCurrentMessage->window()
+	addMessage(tab->wnd(),tmp.ptr(),html,0);
 	m_pLineEdit->setText("");
-	KviUserInput::parse(txt,tab->window(),QString(),1);
+	KviUserInput::parse(txt,tab->wnd(),QString(),1);
 }
 
 void KviNotifierWindow::progressUpdate()
 {
-	double dProgress = m_qtStartedAt.elapsed()/(m_tAutoHideAt - m_tStartedAt);
-	dProgress/=1000;
-	m_pProgressBar->setProgress(dProgress);
+	kvi_time_t now = kvi_unixTime();
+	int iProgress = (int) (100/(m_tAutoHideAt - m_tStartedAt)*(now - m_tStartedAt));
+	m_pProgressBar->setValue(iProgress);
+	if(now>=m_tAutoHideAt)
+	{
+		m_tAutoHideAt = 0;
+		stopAutoHideTimer();
+		doHide(true);
+	}
+}
+
+void KviNotifierWindow::slotTabCloseRequested(int index)
+{
+	if(m_pWndTabs)
+	{
+		KviNotifierWindowTab *tab = (KviNotifierWindowTab*) m_pWndTabs->widget(index);
+		m_pWndTabs->removeTab(index);
+		if(tab)
+			delete tab;
+
+		if(m_pWndTabs->count()==0)
+			hideNow();
+	}
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

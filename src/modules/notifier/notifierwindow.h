@@ -44,13 +44,13 @@
 #include <QRect>
 #include <QTimer>
 #include <QWidget>
+#include <QTabWidget>
+#include <QProgressBar>
 
 class QPainter;
 class KviWindow;
 class KviNotifierMessage;
-class KviNotifierWindowBody;
 class KviNotifierWindowBorder;
-class KviNotifierWindowProgressBar;
 class KviNotifierWindowTabs;
 
 
@@ -64,29 +64,24 @@ public:
 	~KviNotifierWindow();
 protected:
 	QTimer * m_pShowHideTimer;
-	QTimer * m_pProgressTimer;
 	QTimer * m_pBlinkTimer;
 	QTimer * m_pAutoHideTimer;
 	State   m_eState;
 	bool    m_bBlinkOn;
 	double  m_dOpacity;
-	QImage  m_imgDesktop;            // the desktop screenshot
-	QPixmap m_pixBackground;         // our background image
-	QPixmap m_pixBackgroundHighlighted;
-	QPixmap m_pixForeground;         // we paint the stuff HERE
-
-	// Notifier graphic layout
-	QPixmap m_pixBckgrnd;
-
-	QImage  m_imgBuffer;             // here we merge the two images
+// 	QImage  m_imgDesktop;            // the desktop screenshot
+// 	QPixmap m_pixBackground;         // our background image
+// 	QPixmap m_pixBackgroundHighlighted;
+// 	QPixmap m_pixForeground;         // we paint the stuff HERE
+// 
+// 	// Notifier graphic layout
+// 	QPixmap m_pixBckgrnd;
 
 	bool    m_bCloseDown;
 	bool    m_bPrevDown;
 	bool    m_bNextDown;
 	bool    m_bWriteDown;
 	bool m_bCrashShowWorkAround;
-
-	bool	m_bKeyShiftPressed;
 
 	QFont * m_pDefaultFont;
 	QFont * m_pTitleFont;
@@ -125,9 +120,8 @@ protected:
 
 	QCursor m_cursor;
 
-	KviNotifierWindowTabs 		* m_pWndTabs;
-	KviNotifierWindowProgressBar	* m_pProgressBar;
-	KviNotifierWindowBody 		* m_pWndBody;
+	QTabWidget 			* m_pWndTabs;
+	QProgressBar			* m_pProgressBar;
 	KviNotifierWindowBorder 	* m_pWndBorder;
 public:
 	void doShow(bool bDoAnimate);
@@ -135,10 +129,10 @@ public:
 	const QFont & defaultFont(){ return *m_pDefaultFont; };
 	int textWidth();
 	void addMessage(KviWindow * pWnd,const QString &szImageId,const QString &szText,unsigned int uMessageTime);
-	State state() { return m_eState; };
 	void setDisableHideOnMainWindowGotAttention(bool b){ m_bDisableHideOnMainWindowGotAttention = b; };
-	int countTabs();
 	void showLineEdit(bool bShow);
+	inline int countTabs() const { if(m_pWndTabs)return m_pWndTabs->count(); return 0; };
+	inline State state() const { return m_eState; };
 protected:
 	virtual void showEvent(QShowEvent *e);
 	virtual void hideEvent(QHideEvent * e);
@@ -148,18 +142,17 @@ protected:
 	virtual void mouseMoveEvent(QMouseEvent * e);
 	virtual void leaveEvent(QEvent * e);
 	virtual void enterEvent(QEvent * e);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
-	virtual void wheelEvent(QWheelEvent * e);
 	virtual bool eventFilter(QObject * pEdit,QEvent * e);
 	virtual void keyPressEvent ( QKeyEvent * e );
-	virtual void keyReleaseEvent ( QKeyEvent * e );
+public slots:
+	void hideNow();
+	void toggleLineEdit();
 protected slots:
 	void blink();
 	void heartbeat();
 	void returnPressed();
 	void reloadImages();
 	void fillContextPopup();
-	void hideNow();
 	void disableFor1Minute();
 	void disableFor5Minutes();
 	void disableFor15Minutes();
@@ -167,25 +160,19 @@ protected slots:
 	void disableFor60Minutes();
 	void disableUntilKVIrcRestarted();
 	void disablePermanently();
-	void delayedRaiseSlot();
-	void autoHide();
 	void progressUpdate();
+	void slotTabCloseRequested(int index);
 private:
 	void contextPopup(const QPoint &pos);
 	void startBlinking();
-	void markAllMessagesAsHistoric();
-	void computeRect();
+// 	void computeRect();
 	void stopShowHideTimer();
 	void stopBlinkTimer();
 	void stopAutoHideTimer();
 	void startAutoHideTimer();
-	void delayedRaise(KviWindow * pWnd);
-	void prevButtonClicked();
-	void nextButtonClicked();
 	bool shouldHideIfMainWindowGotAttention();
 	void setCursor(int);
 	void resize(QPoint p, bool = true);
-	void redrawWindow();
 	void redrawText();
 	bool checkResizing(QPoint);
 };

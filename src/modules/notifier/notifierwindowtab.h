@@ -1,13 +1,11 @@
-#ifndef _NOTIFIERMESSAGE_H_
-#define _NOTIFIERMESSAGE_H_
+#ifndef _KVINOTIFIERWINDOWTAB_H_
+#define _KVINOTIFIERWINDOWTAB_H_
 //=============================================================================
 //
-//   File : notifiermessage.h
-//   Creation date : Mar 02 Nov 2004 02:41:18 by Iacopo Palazzi
+//   File : notifierwindowtab.h
+//   Creation date : Tue 07 Jul 2009 10:28 by Fabio Bas
 //
 //   This file is part of the KVIrc distribution
-//   Copyright (C) 2004 Szymon Stefanek (pragma at kvirc dot net)
-//   Copyright (C) 2004-2008 Iacopo Palazzi < iakko(at)siena(dot)linux(dot)it >
 //   Copyright (C) 2009 Fabio Bas < ctrlaltca at gmail dot com >
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -26,29 +24,39 @@
 //
 //=============================================================================
 
-#include <QPixmap>
-#include <QString>
-#include <QLabel>
-#include <QHBoxLayout>
+#include "notifiermessage.h"
+
+#include "kvi_settings.h"
+
+#include <QTabWidget>
+#include <QScrollArea>
+#include <QVBoxLayout>
 #include <QWidget>
 
-class KviNotifierMessage : public QWidget
-{
-	friend class KviNotifierWindow;
-public:
-	KviNotifierMessage(QPixmap * pPixmap, const QString &szText);
-	~KviNotifierMessage();
-private:
-	QString  	  m_szText;
-	QPixmap		* m_pPixmap;
-	QHBoxLayout	* m_pHBox;
-	QLabel		* m_pLabel0;
-	QLabel		* m_pLabel1;
-public:
-	static QString convertToHtml(const QString &text);
-	inline QString text() const { return m_szText; };
-	inline QPixmap* pixmap() const { return m_pPixmap; };
+class QPainter;
+class KviWindow;
 
+class KviNotifierWindowTab : public QScrollArea // this class defines an object for every single tab about the tabs area
+{
+	Q_OBJECT
+public:
+	KviNotifierWindowTab(KviWindow *, QTabWidget*);
+	~KviNotifierWindowTab();
+private:
+	QString		  m_label;
+	KviWindow	* m_pWnd;
+	QTabWidget	* m_pParent;
+	QVBoxLayout	* m_pVBox;
+	QWidget		* m_pVWidget;
+public:
+	void appendMessage(KviNotifierMessage * m);
+	inline QString label() const { return m_label; };
+	inline KviWindow * wnd() const { return m_pWnd; };
+protected:
+	virtual void mouseDoubleClickEvent(QMouseEvent * e);
+private slots:
+	void scrollRangeChanged(int, int);
+	void labelChanged();
 };
 
-#endif //!_NOTIFIERMESSAGE_H_
+#endif //!_KVINOTIFIERWINDOWTAB_H_

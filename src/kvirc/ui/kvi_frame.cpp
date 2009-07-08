@@ -80,7 +80,6 @@
 	// kvi_app.h
 	extern QPixmap * g_pShadedParentGlobalDesktopBackground;
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
-// FIXME: #warning "When a toolbar is moved , MdiManager is resized but does not update the MdiChild backgrounds"
 #endif
 
 #define KVI_DEFAULT_FRAME_CAPTION "KVIrc " KVI_VERSION " " KVI_RELEASE_NAME
@@ -1213,7 +1212,7 @@ void KviFrame::hideEvent ( QHideEvent * e)
 	{
 		if(e->spontaneous())
 		{
-
+			e->ignore();
 			if(!dockExtension())
 			{
 				executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
@@ -1225,7 +1224,6 @@ void KviFrame::hideEvent ( QHideEvent * e)
 			}
 
 		}
-
 	}
 }
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

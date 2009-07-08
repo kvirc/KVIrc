@@ -107,9 +107,6 @@ bool KviChannelTreeWidgetItem::operator<(const KviTalTreeWidgetItem & other) con
 	}
 }
 
-#define KVI_LABEL_DEF_BACK 100
-#define KVI_LABEL_DEF_FORE 101
-
 KviChannelTreeWidgetItemDelegate::KviChannelTreeWidgetItemDelegate(KviTalTreeWidget * pWidget)
 : QItemDelegate(pWidget)
 {
