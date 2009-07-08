@@ -718,10 +718,11 @@ void KviServerParser::parseNumericWhoReply(KviIrcMessage *msg)
 		{
 			if( (szReal[0].unicode()==KVI_TEXT_COLOR) && (szReal[1].unicode() & 4) && (szReal[2].unicode()==KVI_TEXT_RESET) )
 			{
-				if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars))
+				if(KVI_OPTION_BOOL(KviOption_boolRequestMissingAvatars) && !e->avatarRequested())
 				{
 					QByteArray d = msg->connection()->encodeText(szNick);
 					msg->connection()->sendFmtData("%s %s :%c%s%c","PRIVMSG",d.data(),0x01,"AVATAR",0x01);
+					e->setAvatarRequested();
 				}
 			}
 		}

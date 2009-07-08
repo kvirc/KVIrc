@@ -104,6 +104,7 @@ protected:
 
 	int         m_nRefs;
 	bool        m_bBot;
+	bool        m_bAvatarRequested;
 
 	bool        m_bNotFoundRegUserLoockup;
 	QString     m_szRegisteredUserName;
@@ -284,6 +285,19 @@ public:
 	* \return KviAvatar *
 	*/
 	KviAvatar * forgetAvatar();
+
+	/**
+	* \brief Returns true if kvirc already made an attempt to download user's avatar
+	* \return bool
+	*/
+	bool avatarRequested() const { return m_bAvatarRequested; };
+
+	/**
+	* \brief Mark that kvirc is trying (already tried) to get user's avatar
+	* \param bIsBot If the user is a bot
+	*/
+	void setAvatarRequested() { m_bAvatarRequested=true; };
+
 };
 
 /**
