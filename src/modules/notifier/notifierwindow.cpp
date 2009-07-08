@@ -53,7 +53,7 @@
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	#include <QPixmap>
-	extern QPixmap * g_pShadedParentGlobalDesktopBackground;
+	extern QPixmap       * g_pShadedChildGlobalDesktopBackground;
 #endif
 
 extern KviNotifierWindow * g_pNotifierWindow;
@@ -571,13 +571,13 @@ void KviNotifierWindow::paintEvent(QPaintEvent *e)
 		p.save();
 		p.setCompositionMode(QPainter::CompositionMode_Source);
 		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
-		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyParentFadeFactor) / (float)100));
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
 		p.fillRect(rect(), col);
 		p.restore();
-	} else if(g_pShadedParentGlobalDesktopBackground)
+	} else if(g_pShadedChildGlobalDesktopBackground)
 	{
 		QPoint pnt = mapToGlobal(e->rect().topLeft());
-		p.drawTiledPixmap(e->rect(),*(g_pShadedParentGlobalDesktopBackground), pnt);
+		p.drawTiledPixmap(e->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
 	}
 #endif
 
