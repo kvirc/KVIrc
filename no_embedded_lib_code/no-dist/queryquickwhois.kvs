@@ -1,0 +1,21 @@
+# This small script adds a "quick whois" button to every query window
+
+event(OnQueryWindowCreated,queryquickwhois)
+{
+	button(w,queryquickwhois,88,"Quick whois (with idle time)")
+	{
+		if($target != "")
+		{
+			foreach(%x,$target)whois %x %x
+		}
+	}
+}
+
+alias(queryquickwhois_uninstall)
+{
+	event(OnQueryWindowCreated,queryquickwhois){}
+	alias(queryquickwhois_uninstall){}
+}
+
+echo "Query-quick-whois script installed."
+echo "Use /queryquickwhois_uninstall to remove it."

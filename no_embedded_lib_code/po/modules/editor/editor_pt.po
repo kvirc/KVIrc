@@ -1,0 +1,1129 @@
+# translation of editor_pt.po to Português
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Zé <mmodem00@netvisao.pt>, 2004.
+# José Melo <mmodem00@netvisao.pt>, 2005, 2006.
+# José Melo <mmodem00@gmail.com>, 2005.
+# Zé <ze@mandriva.org>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: editor_pt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-03 15:21+0200\n"
+"PO-Revision-Date: 2008-08-01 07:41+0100\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
+"Language-Team: Português <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:394
+#, c-format
+msgid ""
+"\n"
+"\n"
+"Event:\n"
+"%s\n"
+"\n"
+"Parameters:\n"
+"%s"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:95
+msgid "### Epilogue ###"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:99
+msgid "### Prologue ###"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:188
+msgid "&Add Raw Event..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1567
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:512
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1306
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:486
+msgid "&Apply"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1009
+msgid "&Cancel"
+msgstr "&Cancelar"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:744
+msgid "&Configure Editor..."
+msgstr "&Configurar Editor..."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:431
+msgid "&Copy"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:202
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:167
+msgid "&Disable Handler"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:198
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:163
+msgid "&Enable Handler"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:105
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1020
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:106
+msgid "&Export All To..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:210
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:175
+msgid "&Export Handler To..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1091
+msgid "&Export Popup To..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1022
+msgid "&Export selected To..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:215
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:180
+msgid "&New Handler"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1079
+msgid "&New Popup"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1562
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:454
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:507
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1301
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:426
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:481
+msgid "&OK"
+msgstr "&OK"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:741
+msgid "&Open..."
+msgstr "&Abrir..."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:436
+msgid "&Paste Below"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1014
+msgid "&Replace"
+msgstr "&Substituir"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:1004
+msgid "&Replace in all Aliases"
+msgstr "&Substituis em todas as Aliases"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:742
+msgid "&Save As..."
+msgstr "&Gravar Como..."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:242
+msgid ""
+"<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
+"order to decide if this entry has to be shown.<br>An empty condition "
+"evaluates to true.</center>"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:260
+msgid ""
+"<center><b>External menu name</b><br>This allows to nest externally defined "
+"popup menus. The popup menu with the specified name will be looked up at "
+"menu setup time.</center>"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:251
+msgid ""
+"<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
+"path or a relative path.<br>Portable scripts should never use absolute paths."
+"</center>"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:270
+msgid ""
+"<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
+"center>"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:233
+msgid ""
+"<center><b>Visible text</b><br>May contain identifiers that will be "
+"evaluated at popup call time.<br>For labels, this text can contain also "
+"limited HTML tags.</center>"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:586
+#, fuzzy
+msgid "Action"
+msgstr "Funções:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:857
+msgid "Action Editor"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:126
+msgid "Action code"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:520
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1253
+msgid "Add Alias"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:525
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1278
+msgid "Add Namespace"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:191
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:277
+msgid "Advanced..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:214
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:454
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1456
+msgid "Alias"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1555
+msgid "Alias Editor"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:715
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:789
+msgid "Alias Export"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1359
+msgid "Alias already exists"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1126
+msgid ""
+"Alias names can contain only letters, digits, underscores and '::' namespace "
+"separators"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:870
+msgid "Apply"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:262
+msgid "Automatically"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:518
+msgid "Background:"
+msgstr "Fundo:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1125
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1139
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1150
+msgid "Bad Alias Name"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1193
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1207
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1218
+msgid "Bad Namespace Name"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:162
+msgid "Big Icon:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:520
+msgid "Brackets:"
+msgstr "Chavetas:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:951
+#, c-format
+msgid "Can't open the file %s for reading."
+msgstr "Não é possível abrir o ficheiro %s para leitura."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:870
+#, c-format
+msgid "Can't open the file %s for writing."
+msgstr "Não é possível abrir o ficheiro %s para escrita."
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:876
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1572
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:534
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:517
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1311
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:491
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:186
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:402
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:134
+msgid "Category:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:229
+msgid ""
+"Check this option if this action should be enabled also during the login "
+"operations (so when the logical IRC connection hasn't been estabilished yet)"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:208
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window belongs to an irc context"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:219
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window has an active IRC connection"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:252
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a channel"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:241
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a console"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:274
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a dcc chat"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:263
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is a query"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:235
+msgid ""
+"Check this option if this action should be enabled only when the active "
+"window is of a specified type"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:721
+#, fuzzy
+msgid "Choose a Directory - KVIrc"
+msgstr "Escolha um Nome de Ficheiro - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:692
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:808
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:857
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:447
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:488
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1110
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1160
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:419
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:462
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:393
+msgid "Choose a Filename - KVIrc"
+msgstr "Escolha um Nome de Ficheiro - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:139
+msgid "Choose the category that best fits for this action"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:322
+#, fuzzy
+msgid "Close"
+msgstr "Cores"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:128
+msgid "Code"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:570
+msgid "Collapse All Namespaces"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:516
+msgid "Colors"
+msgstr "Cores"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:521
+msgid "Comments:"
+msgstr "Comentários:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:236
+#, fuzzy
+msgid "Condition:"
+msgstr "Funções:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:374
+msgid "Confirm ToolBar Deletion"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:426
+msgid "Cu&t"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:290
+msgid "Customize Toolbars"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:630
+msgid "Delete Actions"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:303
+msgid "Delete ToolBar"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:141
+msgid "Description:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:375
+msgid "Do you really want to delete toolbar \"%1\" ?"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1025
+msgid "Do you really want to remove the alias \"%Q\" ?"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1027
+msgid "Do you really want to remove the namespace \"%Q\" ?"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:399
+msgid "Do you want the associated actions to be exported with the toolbar ?"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:64
+msgid "Drop here the icons from the toolbars to remove them"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:258
+msgid "Duplicate ToolBar Id"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:307
+msgid "Edit ToolBar"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:265
+msgid "Edit the alias or namespace name"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:116
+msgid "Edit the event handler name."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:111
+msgid "Edit the raw event handler name."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:233
+msgid "Enable Only in Specified Windows"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:228
+msgid "Enable at Login"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:251
+msgid "Enable in Channel Windows"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:240
+msgid "Enable in Console Windows"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:273
+msgid "Enable in DCC Chat Windows"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:262
+msgid "Enable in Query Windows"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:229
+msgid "Enter the numeric code of the message (0-999)"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:96
+msgid "Epilogue"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:168
+msgid "Event"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:561
+msgid "Event Editor"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:633
+msgid "Export Actions..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:556
+msgid "Export All..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:549
+msgid "Export Selected in singles files..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:543
+msgid "Export Selected..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:315
+msgid "Export ToolBar"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:85
+msgid "External Menu"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:254
+msgid "External menu:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:753
+msgid "Find"
+msgstr "Procurar"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:263
+#, fuzzy
+msgid "Find & Replace"
+msgstr "Procurar e Substituir"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:608
+#, fuzzy
+msgid "Find In Aliases"
+msgstr "Procurar e Substituir"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:564
+msgid "Find In Aliases..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:526
+msgid "Find:"
+msgstr "Procurar:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:283
+msgid "Flags"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:514
+msgid "Font:"
+msgstr "Tipo de Letra:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1151
+msgid "Found an empty namespace in alias name"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1219
+msgid "Found an empty namespace in namespace name"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:522
+msgid "Functions:"
+msgstr "Funções:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:280
+msgid "Hide Advanced"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:150
+msgid "Icon"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:245
+#, fuzzy
+msgid "Icon:"
+msgstr "Tipo de Letra:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:166
+msgid "Id"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:107
+msgid "Internal unique name for the action"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:245
+msgid "Invalid ToolBar Label"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:79
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:209
+msgid "Item"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:263
+msgid "Item Id:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:178
+msgid "Key Sequence:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:523
+msgid "Keywords:"
+msgstr "Identificadores:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:92
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:142
+msgid "Label"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:109
+msgid "Label:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:937
+msgid "Load Script File - KVIrc"
+msgstr "Carregar Ficheiro de Script - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:262
+msgid "Manually"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1112
+msgid "Missing Alias Name"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1180
+msgid "Missing Namespace Name"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:764
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:765
+msgid "My Action"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:492
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:493
+msgid "My ToolBar"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:103
+msgid "Name:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:452
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1445
+msgid "Namespace"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1371
+msgid "Namespace already exists"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1194
+msgid ""
+"Namespace names can contain only letters, digits, underscores and '::' "
+"namespace separators"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:217
+msgid "Needs IRC Connection"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:206
+msgid "Needs IRC Context"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:627
+msgid "New Action"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:417
+msgid "New External Menu Above"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:415
+msgid "New External Menu Below"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:419
+msgid "New External Menu Inside"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:401
+msgid "New Item Above"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:399
+msgid "New Item Below"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:403
+msgid "New Item Inside"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:393
+msgid "New Label Above"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:391
+msgid "New Label Below"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:395
+msgid "New Label Inside"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:409
+msgid "New Menu Above"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:407
+msgid "New Menu Below"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:463
+msgid "New Menu Epilogue"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:411
+msgid "New Menu Inside"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:455
+msgid "New Menu Prologue"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:229
+msgid "New Raw Event"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:385
+msgid "New Separator Above"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:383
+msgid "New Separator Below"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:387
+msgid "New Separator Inside"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:299
+msgid "New ToolBar"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:743
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1033
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:376
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:401
+msgid "No"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:260
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1435
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:369
+msgid "No item selected"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:519
+msgid "Normal text:"
+msgstr "Texto normal:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:717
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:864
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:530
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:181
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:245
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:455
+#, fuzzy
+msgid "OK"
+msgstr "&OK"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:715
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:789
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:819
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:492
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1117
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1164
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:466
+msgid "Ok"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1114
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1127
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1141
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1152
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1182
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1195
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1209
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1220
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1361
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1373
+msgid "Ok, Let me try again..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:246
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:257
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:268
+msgid "Only If There Are Selected Users"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:950
+msgid "Open Failed - KVIrc"
+msgstr "Falha ao Abrir - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:184
+msgid ""
+"Optional keyboard sequence that will activate this action.<br>The sequence "
+"has to be expressed as a string of up to four key codes separated by commas "
+"eventually combined with the modifiers \"Ctrl\",\"Shift\",\"Alt\" and \"Meta"
+"\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
+"Ctrl+C\" ..."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:441
+msgid "Paste Above"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:445
+msgid "Paste Inside"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:221
+msgid "Please choose the icon for the ToolBar"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1253
+msgid "Please enter the name for the new alias"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1278
+msgid "Please enter the name for the new namespace"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1345
+msgid "Please enter the new name for the alias"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1347
+msgid "Please enter the new name for the namespace"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:609
+msgid ""
+"Please enter the text to be searched for. The matching aliases will be "
+"highlighted."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1029
+msgid "Please note that all the children items will be deleted too."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:491
+msgid "Please specify the properties for the new toolbar"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:465
+msgid "Please specify the properties for the toolbar \"%1\""
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1016
+msgid "Popup"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1358
+msgid "Popup Editor"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:195
+msgid "Popup name"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:508
+msgid "Preferences"
+msgstr "Preferências"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:100
+msgid "Prologue"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:197
+msgid "Properties"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:525
+msgid "Punctuation:"
+msgstr "Pontuação:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:766
+msgid "Put here a short description of your action"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:534
+msgid "Raw Editor"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:94
+msgid "Raw Event"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:206
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:171
+msgid "Re&move Handler"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1085
+msgid "Re&move Popup"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:535
+msgid "Remove Selected"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1033
+msgid "Remove item"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:261
+msgid "Rename"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1345
+msgid "Rename Alias"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1347
+msgid "Rename Namespace"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:743
+#, fuzzy
+msgid "Replace file"
+msgstr "Substituir com"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:992
+msgid "Replace with"
+msgstr "Substituir com"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:920
+#, c-format
+msgid "Row: %d Col: %d"
+msgstr "Linha: %d Coluna: %d"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:869
+msgid "Save Failed - KVIrc"
+msgstr "Gravação Falhada - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:89
+msgid "Separator"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:148
+msgid "Small Icon:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1140
+msgid ""
+"Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1208
+msgid ""
+"Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:82
+msgid "Submenu"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:199
+msgid "Test"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:228
+msgid "Text:"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:245
+msgid "The ToolBar Label can't be empty!"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:172
+msgid ""
+"The big icon associated to this action.<br>It will appear at least in the "
+"toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:789
+msgid "The exported file would be empty: cowardly refusing to write it"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:742
+msgid "The file \"%Q\" exists. Do you want to replace it ?"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:156
+msgid ""
+"The small icon associated to this action.<br>It will appear at least in the "
+"popup menus when this action is inserted.<br>It has to be 16x16 pixels."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:259
+msgid ""
+"The specified ToolBar Id already exists.<br>Would you like KVIrc to assign "
+"it automatically (so it doesn't collide with any other toolbar) or you "
+"prefer to do it manually ?"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:715
+msgid "There is no selection!"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1360
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1372
+msgid "This name is already in use. Please choose another one."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:247
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:258
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:269
+msgid ""
+"This will enable the action only if there are selected users in the active "
+"window"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:398
+msgid "ToolBar Export"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:134
+msgid "ToolBar Properties"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:209
+msgid "Type"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:717
+msgid "Unable to write to the actions file."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:819
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1164
+msgid "Unable to write to the alias file."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:454
+msgid "Unable to write to the event file."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:492
+msgid "Unable to write to the events file."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1117
+msgid "Unable to write to the popup file."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:426
+msgid "Unable to write to the raw event file."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:466
+msgid "Unable to write to the raw events file."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:455
+msgid "Unable to write to the toolbar file."
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:524
+msgid "Variables:"
+msgstr "Variáveis:"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:113
+msgid ""
+"Visible name for this action.<br>This string will be displayed to the user "
+"so it is a good idea to use $tr() here"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:146
+msgid ""
+"Visible short description for this action.<br>This string will be displayed "
+"to the user so it is a good idea to use $tr() here"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/editor/scripteditor.cpp:983
+msgid "Word to Find"
+msgstr "Palavra a Procurar"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/actioneditor/actioneditor.cpp:717
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:819
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:454
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:492
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1117
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1164
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:426
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:466
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:455
+#, fuzzy
+msgid "Write Failed - KVIrc"
+msgstr "Falha ao Abrir - KVIrc"
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:743
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1033
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:377
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/toolbareditor/toolbareditor.cpp:400
+msgid "Yes"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:743
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1033
+msgid "Yes to All"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1113
+msgid "You must specify a valid name for the alias"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/aliaseditor/aliaseditor.cpp:1181
+msgid "You must specify a valid name for the namespace"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:266
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:261
+msgid "default"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:390
+msgid "none"
+msgstr ""
+
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/eventeditor/eventeditor.cpp:228
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/popupeditor/popupeditor.cpp:1261
+#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/raweditor/raweditor.cpp:199
+msgid "unnamed"
+msgstr ""
+
+#, fuzzy
+#~ msgid "&Find Next(WIP)"
+#~ msgstr "&Procurar Próximo"
+
+#~ msgid "&Replace(WIP)"
+#~ msgstr "&Substituir(WIP)"

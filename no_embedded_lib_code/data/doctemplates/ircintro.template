@@ -1,0 +1,60 @@
+/*
+	@doc: ircintro
+	@title:
+		Introduction to IRC
+	@short:
+		Introduction to IRC
+	@keyterms:
+		irc,channel,channels,channel operator,irc server,server,irc network,irc user,irc users,irc client,internet relay chat,nickname,nicknames,irc etiquette
+	@body:
+		[big]What is IRC ?[/big][br]
+		Internet Relay Chat (IRC) is one of the most popular and most interactive services on the Internet.
+		When you've been wondering 'where the others are?', then IRC is what you're looking for.
+		IRC allows real-time conversations with people from the whole planet, 24-hours a day, worldwide.
+		[br]
+		[big]How does it work ?[/big][br]
+		IRC consists of various separate networks (or "nets") of IRC servers: machines that allow users to connect to IRC.
+		The largest nets are EFnet (the original IRC net, often having more than 32,000 people at once), Undernet, IRCnet, DALnet, and NewNet.
+		Generally, the user (such as you) runs a program (called "irc client") to connect to a server on one of the IRC nets.
+		The server will relay the informations between you and the "rest" of the network (obviously including the other irc users).
+		Each user is known on IRC by a nickname (or "nick"), such as smartgal or FunGuy.
+		To avoid conflicts with other users, it is best to use a nick that is not too common, e.g., "john" is a poor choice.
+		Some networks allow the registration of nicknames: once you have registered a nickname noone else will be able to use it.
+		Once connected to an IRC server on an IRC network, you will usually join one or more [b]channels[/b] and converse with other irc users.
+		On EFnet, there often are more than 12,000 channels, each one devoted to a different topic.
+		[br]
+		[big]Channels[/big][br]
+		Channel names usually begin with a #, as in #irchelp.
+		The same channels are shared among all IRC servers on the same net, so you do not have to be on the same IRC server as your friends.
+		Each channel can be joined by a "virtually" unlimited number of users and every word spoken "to the channel" is
+		seen by all the users that have joined it.
+		Each channel has a topic that usually describes the ideas being exchanged between users in that moment.
+		It is a good idea to take a look at the topic before starting to talk "randomly" :).
+		Channels are run by channel operators, or just "ops" for short, who can control the channel by choosing who may join (by "banning" some users),
+		who must leave (by "kicking" them out), and even who may speak (by making the channel "moderated")!
+		Channel ops have complete control over their channel, and their decisions are final.
+		If you are banned from a channel, send a /msg to a channel op and ask nicely to be let in
+		(see the /who command in the next section to learn how to find ops).
+		If they ignore you or /who gives no response because the channel is in secret mode (+s),
+		just go somewhere else where you are more welcome.
+		Some IRC networks have a richer hierarchy of channel users and you may find half-operators, channel administrators or
+		channel owners.
+		[br]
+		[big]Just a bit of IRC Etiquette...[/big][br]
+		You'll find all kinds of people on IRC. Some nice, and some not so nice.
+		Simply behave as you would in the real world. Most people will be friendly and considerate, if you are as well.
+		When you join a channel, say hello. Don't expect to get hello's back from everyone,
+		especially when there are lots of people on the channel.
+		If you've never visited the channel before and have no idea what to expect,
+		just sit back and watch for awhile to get a feel for the flow of the channel (thats called "lurking").
+		[br]
+		[big]Finding more info[/big][br]
+		The web is full of informations about IRC: it's just a matter of typing "IRC" in a search engine.
+		An user-friendly site to start from might be www.irchelp.org: you will find a huge list of
+		documents and links that will hopefully answer to all your questions.
+		You may also give a short read to the [doc:kvircintro]Introduction to KVIrc[/doc] which will
+		give you an idea of what an IRC client is.
+		[br]
+		[big]Well...[/big][br]
+		Have fun :)
+*/

@@ -1,0 +1,1400 @@
+# Default popups file
+
+#
+# Here comes a nice part...
+# The popups. KVIrc has a lot of events that merely ask for a popup to be shown :)
+#
+defpopup(highlight)
+{
+	prologue
+	{
+		if($0!=""){
+			%:regName = $reguser.match($mask($0))
+		        %:beingHl = $reguser.property(%:regName,highlight)
+			%:beingHlTmp = $tmphighlight.isNickHighLighted($0)
+		}
+	}
+
+	item($tr("Stop Highlighting (Local)")) (%:beingHlTmp && !%:beingHl)
+	{
+		tmphighlight.removeNick $0
+	}
+
+	item($tr("Start Highlighting (Local)")) (!%:beingHlTmp && !%:beingHl)
+	{
+		tmphighlight.addNick $0
+	}
+
+	popup($tr("Always Highlight")) (!%:beingHl && !%:regName)
+	{
+		item($tr("Highlight as") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
+		{
+			reguser.add $0 $mask($0,11); reguser.setproperty $0 highlight 1;
+		}
+
+		item($tr("Highlight as") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
+		{
+			reguser.add $0 $mask($0,12); reguser.setproperty $0 highlight 1;
+		}
+
+		item($tr("Highlight as") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
+		{
+			reguser.add $0 $mask($0,13); reguser.setproperty $0 highlight 1;
+		}
+
+		item($tr("Highlight as") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
+		{
+			reguser.add $0 $mask($0,3); reguser.setproperty $0 highlight 1;
+		}
+
+		item($tr("Highlight as") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
+		{
+			reguser.add $0 $mask($0,4); reguser.setproperty $0 highlight 1;
+		}
+
+		item($tr("Highlight as") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
+		{
+			reguser.add $0 $mask($0,5); reguser.setproperty $0 highlight 1;
+		}
+	}
+
+	item($tr("Always Highlight")) (!%:beingHl && %:regName)
+	{
+		reguser.setproperty $0 highlight 1
+	}
+
+	item($tr("Stop Highlighting")) (%:beingHl)
+	{
+		reguser.setproperty $0 highlight 0
+	}
+}
+
+defpopup(channelhighlight)
+{
+	prologue
+	{
+		if($window!=""){
+			%:beingHlTmp = $tmphighlight.isChannelHighLighted($window)
+		}
+	}
+
+	item($tr("Stop Highlighting (Local)")) (%:beingHlTmp)
+	{
+		tmphighlight.removeChannel $window
+	}
+
+	item($tr("Start Highlighting (Local)")) (!%:beingHlTmp)
+	{
+		tmphighlight.addChannel $window
+	}
+}
+
+defpopup(ignore)
+{
+	prologue
+	{
+		%:inIgnoreList = 0
+		%:regName = $reguser.match($mask($0))
+		%:ignLabelText = "<p><b>$0</b> "
+		if(%:regName)
+		{
+			%:inIgnoreList = $reguser.isIgnoreEnabled(%:regName);
+			if(%:inIgnoreList) %:ignLabelText << $tr("is being ignored")
+			else %:ignLabelText << $tr("is not being ignored")
+		
+			%:ignLabelText << "</p>"
+		} else {
+			%:ignLabelText << $tr("is not being ignored")"</p>"
+		}
+	}
+
+	label(%:ignLabelText)
+
+	item($tr("Enable Ignore"),168) (!%:inIgnoreList && %:regName)
+	{
+		reguser.setIgnoreEnabled %:regName 1;
+	}
+
+	popup($tr("Ignore as..."),44) (!%:inIgnoreList)
+	{
+		item($tr("Ignore as") $0 "("$mask($0,0)")") ("$reguser.exactMatch($mask($0,0))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,0);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,1)")") ("$reguser.exactMatch($mask($0,1))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,1);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,2)")") ("$reguser.exactMatch($mask($0,2))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,2);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,3);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,4);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,5);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,6)")") ("$reguser.exactMatch($mask($0,6))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,6);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,7)")") ("$reguser.exactMatch($mask($0,7))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,7);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,8)")") ("$reguser.exactMatch($mask($0,8))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,8);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,9)")") ("$reguser.exactMatch($mask($0,9))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,9);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,10)")") ("$reguser.exactMatch($mask($0,10))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,10);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,11);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,12);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,13);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,14)")") ("$reguser.exactMatch($mask($0,14))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,14);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,15)")") ("$reguser.exactMatch($mask($0,15))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,15);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,16)")") ("$reguser.exactMatch($mask($0,16))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,16);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,17)")") ("$reguser.exactMatch($mask($0,17))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,17);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,18)")") ("$reguser.exactMatch($mask($0,18))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,18);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,19)")") ("$reguser.exactMatch($mask($0,19))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,19);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,20)")") ("$reguser.exactMatch($mask($0,20))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,20);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,21)")") ("$reguser.exactMatch($mask($0,21))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,21);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,22)")") ("$reguser.exactMatch($mask($0,22))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,22);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,23)")") ("$reguser.exactMatch($mask($0,23))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,23);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,24)")") ("$reguser.exactMatch($mask($0,24))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,24);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,25)")") ("$reguser.exactMatch($mask($0,25))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,25);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+
+		item($tr("Ignore as") $0 "("$mask($0,26)")") ("$reguser.exactMatch($mask($0,26))" == "")
+		{
+			if(!%:regName) reguser.add $0 $mask($0,26);
+			reguser.setIgnoreEnabled $0 1;
+			reguser.setIgnoreFlags -p -c -n -t -i -d $0;
+		}
+	}
+
+	item($tr("Unignore"),217) (%:inIgnoreList)
+	{
+		reguser.setIgnoreEnabled %:regName 0;
+	}
+}
+
+defpopup(registration)
+{
+	prologue
+	{
+
+		# This is really smart...we are loading
+		# the reguser module only if this popup is being requested (the user effectively
+		# puts the mouse on the "Registration" item and the sub-popup is being shown)
+		%:regName = $reguser.match($mask($0))
+		%:labelText = "<p><b>$0</b>";
+		if(%:regName)
+		{
+			%:labelText << $tr("is registered as") ": <b>"%:regName"</b>"
+			# We want to display masks here!!!
+			%:inNotifyList = $reguser.property(%:regName,notify);
+			if(%:inNotifyList)%:labelText << "<br><b>$0</b>" $tr("is in the notify list")
+			%:curAvatar = $avatar.name($0);
+			%:defAvatar = $reguser.property(%:regName,avatar);
+			if(%:defAvatar)%:labelText << "<br><b>$0</b>" $tr("has a default avatar")
+			%:labelText << "</p>"
+		} else {
+			%:labelText << $tr("is not registered")"</p>"
+		}
+	}
+
+	label(%:labelText)
+
+	item($tr("Register")"...") (!%:regName)
+	{
+		reguser.wizard $mask($0)
+	}
+
+	popup($tr("Quick Registration")) (!%:regName)
+	{
+		item($tr("Register as") $0 "("$mask($0,11)")") ("$reguser.exactMatch($mask($0,11))" == "")
+		{
+			reguser.add $0 $mask($0,11)
+		}
+
+		item($tr("Register as") $0 "("$mask($0,12)")") ("$reguser.exactMatch($mask($0,12))" == "")
+		{
+			reguser.add $0 $mask($0,12)
+		}
+
+		item($tr("Register as") $0 "("$mask($0,13)")") ("$reguser.exactMatch($mask($0,13))" == "")
+		{
+			reguser.add $0 $mask($0,13)
+		}
+
+		item($tr("Register as") $0 "("$mask($0,3)")") ("$reguser.exactMatch($mask($0,3))" == "")
+		{
+			reguser.add $0 $mask($0,3)
+		}
+
+		item($tr("Register as") $0 "("$mask($0,4)")") ("$reguser.exactMatch($mask($0,4))" == "")
+		{
+			reguser.add $0 $mask($0,4)
+		}
+
+		item($tr("Register as") $0 "("$mask($0,5)")") ("$reguser.exactMatch($mask($0,5))" == "")
+		{
+			reguser.add $0 $mask($0,5)
+		}
+	}
+
+	item($tr("Edit Registration")"...",113) (%:regName)
+	{
+		reguser.edit "%:regName"
+	}
+
+	item($tr("Unregister") %:regName) (%:regName)
+	{
+		reguser.remove "%:regName"
+	}
+
+	separator
+
+	item($tr("Add to Notify")) (%:regName && !%:inNotifyList)
+	{
+		reguser.setproperty -n "%:regName" notify $0
+	}
+
+	item($tr("Remove from Notify")) (%:regName && %:inNotifyList)
+	{
+		reguser.setproperty -n "%:regName" notify
+	}
+
+	popup($tr("Avatar")) (%:regName)
+	{
+		item($tr("Choose")"...") (%:regName)
+		{
+			dialog.image(f,$tr("Choose Avatar Image File"),"","",$0,"%:regName")
+			{
+				if($0)
+				{
+					reguser.setproperty -a $2 avatar $0;
+				}
+			}
+		}
+
+		item($tr("Set as Default")) (%:curAvatar && ("%:curAvatar" != "%:defAvatar"))
+		{
+			reguser.setproperty "%:regName" avatar %:curAvatar
+		}
+
+		item($tr("Clear Default")) (%:defAvatar)
+		{
+			reguser.setproperty %:regName avatar
+			# Force the avatar to update
+			# if("%:curAvatar" == "")who $0
+		}
+	}
+}
+
+defpopup("urlpopup")
+{
+	item($tr("Copy To Clipboard"),259)
+	{
+		str.toClipboard $0
+	}
+}
+
+# This code adds a channel popup that accepts
+# a comma separated list of nicknames as parameter (to the /popup command)
+
+defpopup(channel)
+{
+	prologue
+	{
+		# we use the extended scope variables: they are visible in the entire defpopup scope
+		# %:visible is the string that we will "show to the user" in the popup widget
+		# for multiple users the string might become long so we are going to change it in "multiple users"
+		%:visible = $0
+		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
+		# of multiple nicknames rather than a single nick
+		%:multiple = 0
+		# finally , set these variables
+		%:itemBanName = $tr("Ban")
+		if($str.findfirst(%:visible,",") != -1)
+		{
+			# found a comma in the $0 parameter...we have multiple nicknames
+			%:visible = "("$tr("Multiple Users")")"
+			%:multiple = 1
+			%:itemBanMask = "*!user@*.host.tld"
+			%:itemBanNick = "nick"
+		} else {
+			%:itemBanMask = $mask(%:visible,$option(uintDefaultBanType))
+			if("%:itemBanMask" == "*!*@*")%:itemBanName = $tr("&Ban")
+			%:itemBanNick = %:visible
+		}
+		# speed it up
+
+		%:isMeHalfOp = $chan.isMeHalfOp()
+		%:isMeOp = $chan.isMeOp()
+		%:isMeOwner = $chan.isMeOwner()
+		%:isMeAdmin = $chan.isMeAdmin()
+		%:bCanKB = 0;
+
+		if(%:isMeHalfOp)
+		{
+			foreach(%nick,$str.split(",",$0))
+			{
+				if($chan.usermodelevel(%nick) <= $chan.usermodelevel($me))
+				{
+					%:bCanKB = 1;
+					break;
+				}
+			}
+		}
+	}
+
+	item("/WHOIS" %:visible "("$tr("idle time")")",75,whois_item)
+	{
+		foreach(%i,$str.split(",",$0))
+			whois %i %i
+	}
+
+	separator
+
+	popup($tr("&Information"),49,"information_popup")
+	{
+		item("/WHOIS" %:visible,75,"whois_item")
+		{
+			whois $0
+		}
+
+		item(/WHOWAS %:visible,92)
+		{
+			whowas $0
+		}
+
+		item(/WHO %:visible,75)
+		{
+			who $0
+		}
+
+		separator
+
+		item($tr("DNS for") %:visible,75)
+		{
+			foreach(%i,$str.split(",",$0))dns %i
+		}
+
+		item($tr("Mask for") %:visible,75) (!%:multiple)
+		{
+			echo $mask($0,11)
+		}
+	}
+
+	popup($tr("&Control"),9,"control_popup") (%:isMeHalfOp)
+	{
+		label($usermodename($me()))
+
+		item($tr("O&wner") %:visible,260) (%:isMeOwner)
+		{
+			chanowner $0
+		}
+
+		item($tr("&Deowner") %:visible,261) (%:isMeOwner)
+		{
+			dechanowner $0
+		}
+
+		item($tr("&Administrator") %:visible,242) (%:isMeAdmin)
+		{
+			chanadmin $0
+		}
+
+		item($tr("&Deadministrator") %:visible,243) (%:isMeAdmin)
+		{
+			dechanadmin $0
+		}
+
+		item($tr("&Op") %:visible,34) (%:isMeOp)
+		{
+			op $0
+		}
+
+		item($tr("&Deop") %:visible,62) (%:isMeOp)
+		{
+			deop $0
+		}
+
+		item($tr("&Halfop") %:visible,174) (%:isMeOp)
+		{
+			halfop $0
+		}
+
+		item($tr("&Dehalfop") %:visible,175) (%:isMeOp)
+		{
+			dehalfop $0
+		}
+
+		item($tr("&Voice") %:visible,35) (%:isMeHalfOp)
+		{
+			voice $0
+		}
+
+		item($tr("D&evoice") %:visible,63) (%:isMeHalfOp)
+		{
+			devoice $0
+		}
+
+		separator
+
+		item($tr("&Kick") %:visible,110) (%:bCanKB)
+		{
+			foreach(%i,$str.split(",",$0))kick %i
+		}
+
+		item($tr("K&ick") %:visible $tr("With..."),110) (%:bCanKB)
+		{
+			dialog.textinput -d="$me" -i=110 ($tr("Kick Reason"),$tr("Enter a kick reason"),$tr("&Kick"),$tr("Cancel"),,$0)
+			{
+				if($0 == 0)
+				{
+					foreach(%i,$str.split(",",$2))kick %i $1
+				}
+			}
+		}
+
+		item($tr("&Ban") %:visible "("%:itemBanMask")",67) (("%:itemBanMask" != "*!*@*") && %:bCanKB)
+		{
+			ban $mask($0,$option(uintDefaultBanType))
+		}
+
+		item(%:itemBanName %:visible "("%:itemBanNick!*@*")",67) (%:bCanKB)
+		{
+			ban $0
+		}
+
+		item($tr("Kick/Ban") %:visible,110) (%:bCanKB)
+		{
+			kb $0
+		}
+
+		item($tr("Kick/Ban") %:visible $tr("With..."),110) (%:bCanKB)
+		{
+			dialog.textinput -d="$me" -i=110 ($tr("Kick/Ban Reason"),$tr("Enter a kick/ban reason"),$tr("&Kick/Ban"),$tr("Cancel"),,$0)
+			{
+				if($0 == 0)
+				{
+					kb $2 $1
+				}
+			}
+		}
+		separator
+		
+		item($tr("Configure ban mask..."),20)
+		{
+			options.edit KviChannelAdvancedOptionsWidget
+		}
+	}
+
+	separator
+
+	item($tr("&Query") %:visible,47)
+	{
+		query $0
+	}
+
+	separator
+
+	extpopup(C&TCP,ctcp,51)
+
+	extpopup(&DCC,dcc,77) (!%:multiple)
+
+	separator
+
+	extpopup($tr("&Registration"),registration,111) (!%:multiple)
+
+	extpopup($tr("&Highlight"),highlight,181) (!%:multiple)
+
+	extpopup($tr("Ig&nore"),ignore,203) (!%:multiple)
+
+	item($tr("Notify Avatar"),57)
+	{
+		avatar.notify $0
+	}
+}
+
+# Popup to show on right-clicking channel links
+#
+defpopup(channelpopup)
+{
+	item($tr("&Join") $0,145)
+	{
+		hop $0
+	}
+
+	item($tr("&Part") $0,40)
+	{
+		if($channel($0)) eval "part $0 $option(stringPartMessage)";
+	}
+
+	separator
+
+	item(/NAMES $0,75)
+	{
+		names $0;
+	}
+
+	item(/WHO $0,75)
+	{
+		who $0;
+	}
+	separator
+
+	item($tr("Copy Channel Address"),259)
+	{
+		str.toClipboard $chan.getUrl($0)
+	}
+	
+}
+
+defpopup(channels)
+{
+	item(#KVirc,46)
+	{
+		j #KVirc
+	}
+
+	item(#MDE,46)
+	{
+		j #MDE
+	}
+
+	item(#kde,46)
+	{
+		j #kde
+	}
+}
+
+defpopup(channeltextview)
+{
+	extpopup($tr("Channels"),channels,46)
+
+	item($tr("&Join Channels..."),46) ($server)
+	{
+		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
+	}
+
+	separator
+
+	item($tr("&Hop") $0,145)
+	{
+		hop $0
+	}
+
+	item($tr("&Part") $0,40)
+	{
+		if($channel($0)) eval "part $0 $option(stringPartMessage)";
+	}
+
+	separator
+
+	extpopup(C&TCP,ctcp,51)
+
+	separator
+
+	item(/NAMES $0,75)
+	{
+		names $0;
+	}
+
+	item(/WHO $0,75)
+	{
+		who $0;
+	}
+
+	item($tr("Notify Avatar"),57)
+	{
+		avatar.notify $0
+	}
+
+	separator
+
+	extpopup($tr("&Highlight"),channelhighlight,181)
+
+	item($tr("Copy Channel URL to Clipboard"),259)
+	{
+		str.toClipboard $chan.getUrl
+	}
+	
+	item($tr("Clear Buffer"),121)
+	{
+		clear;
+	}
+
+}
+
+defpopup(consoletextview)
+{
+	label($tr("You're not connected to a server")) (!$server)
+
+	extpopup($tr("Channels"),channels,46)
+
+	separator
+
+	item($tr("&Join Channels..."),46) ($server)
+	{
+		if($option(boolShowChannelsJoinDialogAsToplevel))channelsjoin.open -t;else channelsjoin.open
+	}
+
+	popup($tr("&Information"),13) ($server)
+	{
+		item(/MOTD,30)
+		{
+			motd
+		}
+
+		item(/INFO,29)
+		{
+			info
+		}
+
+		item(/LUSERS,57)
+		{
+			lusers
+		}
+
+		popup(/STATS,22)
+		{
+			item(d "(Debug/DNS?)")
+			{
+				stats d
+			}
+
+			item($tr("l (Connections)"))
+			{
+				stats l
+			}
+
+			item($tr("m (Command Usage)"))
+			{
+				stats m
+			}
+
+			item($tr("o (Operators)"))
+			{
+				stats o
+			}
+
+			item($tr("t (Connection stats ?)"),23)
+			{
+				stats t
+			}
+
+			item($tr("u (Uptime)"),93)
+			{
+				stats u
+			}
+
+			item($tr("y (y-Lines)"))
+			{
+				stats y
+			}
+
+			item($tr("z (Debug Stats?)"),11)
+			{
+				stats z
+			}
+		}
+
+		item(/TIME,93)
+		{
+			time
+		}
+
+		item(/ADMIN,29)
+		{
+			admin
+		}
+
+		item(/VERSION,16)
+		{
+			version
+		}
+
+		item(/HELP,49)
+		{
+			raw help
+		}
+	}
+
+	separator
+
+	item($tr("Clear Buffer"),121)
+	{
+		clear;
+	}
+}
+
+# This is a common popup , accepts a list of nicknames as parameter
+defpopup(ctcp)
+{
+	item(PING,36)
+	{
+		ctcp $0 PING
+	}
+
+	item(FINGER,53)
+	{
+		ctcp $0 FINGER
+	}
+
+	item(VERSION,16)
+	{
+		ctcp $0 VERSION
+	}
+
+	item(USERINFO,57)
+	{
+		ctcp $0 USERINFO
+	}
+
+	item(CLIENTINFO,52)
+	{
+		ctcp $0 CLIENTINFO
+	}
+
+	item(SOURCE,14)
+	{
+		ctcp $0 SOURCE
+	}
+
+	item(TIME,93)
+	{
+		ctcp $0 TIME
+	}
+
+	item(PAGE...,223)
+	{
+		#dialog.textinput -d="Wakeup!" ($tr("CTCP Page to") $0,$tr("Enter the message text"),$tr("Ok"),$tr("Cancel"))
+		dialog.textinput(CTCP Page $0,Enter the message text,&Page,Cancel,"",$0)
+		{
+			if($0 == 0)ctcp $2 PAGE $1
+		}
+	}
+
+	item(AVATAR,57)
+	{
+		ctcp $0 AVATAR
+	}
+}
+
+defpopup(dcc)
+{
+	prologue
+	{
+
+		if($features("SSL"))%:bHaveSSL=1
+		else %:bHaveSSL=0
+	}
+
+	item($tr("Chat with") $0,78)
+	{
+		dcc.chat $0
+	}
+
+	item($tr("Reverse Chat with") $0,78)
+	{
+		dcc.chat -z $0
+	}
+
+	item($tr("Secure Chat with") $0,78) (%:bHaveSSL)
+	{
+		dcc.chat -s $0
+	}
+
+	separator
+
+	item($tr("Send to") $0,79)
+	{
+		dcc.send $0
+	}
+	
+	item($tr("Secure send to") $0,79)
+	{
+		dcc.send -s $0
+	}
+
+	item($tr("Reverse Send to") $0,79)
+	{
+		dcc.rsend -z $0
+	}
+	
+	item($tr("Secure Reverse Send to") $0,79)
+	{
+		dcc.rsend -z -s $0
+	}
+
+	separator
+
+	item($tr("TDCC Send to") $0,77)
+	{
+		dcc.send -t $0
+	}
+
+	item($tr("TDCC Reverse Send to") $0,77)
+	{
+		dcc.rsend -t $0
+	}
+
+	separator
+
+	popup($tr("Voice Chat"),166)
+	{
+		item($tr("Default")": ADPCM 8 KHz (32 kbps)")
+		{
+			dcc.voice $0
+		}
+
+		separator
+
+		item("ADPCM 11.025 KHz (44.1 kbps)")
+		{
+			dcc.voice -h=11025 $0
+		}
+
+		item("ADPCM 16 KHz (64 kbps)")
+		{
+			dcc.voice -h=16000 $0
+		}
+
+		item("ADPCM 22.05 KHz (88.2 kbps)")
+		{
+			dcc.voice -h=22050 $0
+		}
+
+		item("GSM 8 KHz (13.2 kbps)")
+		{
+			dcc.voice -g=gsm $0
+		}
+
+		item("GSM 11.025 KHz (18.1 kbps)")
+		{
+			dcc.voice -g=gsm -h=11025 $0
+		}
+
+		item("GSM 16 KHz (26.4 kbps)")
+		{
+			dcc.voice -g=gsm -h=16000 $0
+		}
+
+		item("GSM 22.05 KHz (36.2 kbps)")
+		{
+			dcc.voice -g=gsm -h=22050 $0
+		}
+
+		item("GSM 44.1 KHz (72.4 kbps)")
+		{
+			dcc.voice -g=gsm -h=44100 $0
+		}
+
+		item("NULL 8 KHz (128 kbps)")
+		{
+			dcc.voice -g=null $0
+		}
+
+		item("NULL 11.025 KHz (176.4 kbps)")
+		{
+			dcc.voice -g=null -h=11025 $0
+		}
+	}
+}
+
+defpopup(dccchat)
+{
+	prologue
+	{
+
+		# we use the extended scope variables: they are visible in the entire defpopup scope
+		# %:visible is the string that we will "show to the user" in the popup widget
+		# for multiple users the string might become long so we are going to change it in "multiple users"
+		%:visible = $0
+		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
+		# of multiple nicknames rather than a single nick
+		%:multiple = 0
+		# finally , set these variables
+		if($str.findfirst(%:visible,",") != -1)
+		{
+			# found a comma in the $0 parameter...we have multiple nicknames
+			%:visible = "("$tr("Multiple Users")")"
+			%:multiple = 1
+		}
+	}
+
+	separator
+
+	extpopup(C&TCP,ctcp,51)
+
+	extpopup(&DCC,dcc,77)
+
+	separator
+
+	item($tr("Notify Avatar"),57)
+	{
+		avatar.notify $0
+	}
+
+	separator
+
+	item($tr("Clear Buffer"),121)
+	{
+		clear
+	}
+}
+
+#
+# Some minimal work on the query
+# A text view popup (right click on a query view)
+#
+
+defpopup(querytextview)
+{
+	prologue
+	{
+
+		# we use the extended scope variables: they are visible in the entire defpopup scope
+		# %:visible is the string that we will "show to the user" in the popup widget
+		# for multiple users the string might become long so we are going to change it in "multiple users"
+		%:visible = $0
+		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
+		# of multiple nicknames rather than a single nick
+		%:multiple = 0
+		# finally , set these variables
+		if($str.findfirst(%:visible,",") != -1)
+		{
+			# found a comma in the $0 parameter...we have multiple nicknames
+			%:visible = "("$tr("Multiple Users")")"
+			%:multiple = 1
+		}
+	}
+
+	item(/WHOIS $0 "("$tr("idle time")")",75) (!%:multiple)
+	{
+		whois $0 $0
+	}
+
+	separator
+
+	popup($tr("&Information"),49)
+	{
+		item(/WHOIS $0,75)
+		{
+			whois $0
+		}
+
+		item(/WHOWAS $0,92)
+		{
+			whowas $0
+		}
+
+		item(/WHO $0,75)
+		{
+			who $0
+		}
+
+		separator
+
+		item($tr("DNS for") $0,75)
+		{
+			foreach(%i,$str.split(",",$0))dns %i
+		}
+
+		item($tr("Mask for") $0,75) (!%:multiple)
+		{
+			echo $mask($0,11)
+		}
+	}
+
+	separator
+
+	extpopup(C&TCP,ctcp,51)
+
+	extpopup(&DCC,dcc,77)
+
+	separator
+
+	extpopup($tr("&Ignore"),ignore,203) (!%:multiple)
+
+	extpopup($tr("&Registration"),registration,111) (!%:multiple)
+
+	item($tr("Notify Avatar"),57)
+	{
+		avatar.notify $0
+	}
+
+	separator
+
+	item($tr("Clear Buffer"),121)
+	{
+		clear
+	}
+}
+
+
+#
+# Logging popup for the windows
+#
+defpopup(logging)
+{
+	prologue
+	{
+
+		# If this window is being logged actually , $log.file will be non empty
+		# and pointing to the log file actually open.
+		%:logfile = $str.replace($log.file,,$file.localdir)
+	}
+
+	label($tr("Logging to"):<br><b>%:logfile</b>) ("%:logfile" != "")
+
+	item($tr("Flush Log File"),19) (%:logfile)
+	{
+		log.flush
+	}
+
+	separator
+
+	item($tr("Stop Logging"),58) (%:logfile)
+	{
+		log.stop
+	}
+
+	label($tr("Not Logging")) (!%:logfile)
+
+	item($tr("Log To Default File"),119) (!%:logfile)
+	{
+		log.start
+	}
+
+	item($tr("Log To Default File") "("$tr("Include Existing Buffer")")",119) (!%:logfile)
+	{
+		log.start -p
+	}
+
+	item($tr("Log To..."),119) (!%:logfile)
+	{
+		dialog.file(save,$tr("Choose Log Filename"))
+		{
+			if($0)log.start  $0
+		}
+	}
+
+	item($tr("Log To...") "("$tr("Include Existing Buffer")")",119) (!%:logfile)
+	{
+		dialog.file(save,$tr("Choose Log Filename"))
+		{
+			if($0)log.start -p $0
+		}
+	}
+}
+
+defpopup(defaulttextview)
+{
+	prologue
+	{
+
+		# we use the extended scope variables: they are visible in the entire defpopup scope
+		# %:visible is the string that we will "show to the user" in the popup widget
+		# for multiple users the string might become long so we are going to change it in "multiple users"
+		%:visible = $0
+		# %:multiple is an internal flag: set to 1 if the parameter passed to the popup contains a list
+		# of multiple nicknames rather than a single nick
+		%:multiple = 0
+		# finally , set these variables
+		if($str.findfirst(%:visible,",") != -1)
+		{
+			# found a comma in the $0 parameter...we have multiple nicknames
+			%:visible = "("$tr("Multiple Users")")"
+			%:multiple = 1
+		}
+	}
+
+	item(/WHOIS $0 "("$tr("idle time")")",75) (!%:multiple)
+	{
+		whois $0 $0
+	}
+
+	separator
+
+	popup($tr("&Information"),49)
+	{
+		item(/WHOIS $0,75)
+		{
+			whois $0
+		}
+
+		item(/WHOWAS $0,92)
+		{
+			whowas $0
+		}
+
+		item(/WHO $0,75)
+		{
+			who $0
+		}
+
+		separator
+
+		item(DNS $0,75)
+		{
+			foreach(%i,$str.split(",",$0))dns %i
+		}
+	}
+
+	separator
+
+	item($tr("&Query") %:visible,47)
+	{
+		query $0
+	}
+
+	separator
+
+	extpopup(C&TCP,ctcp,51)
+
+	extpopup(&DCC,dcc,77)
+
+	separator
+
+	extpopup($tr("&Registration"),registration,111) (!%:multiple)
+
+	extpopup($tr("&Highlight"),highlight,181) (!%:multiple)
+
+	extpopup($tr("Ig&nore"),ignore,203) (!%:multiple)
+
+	item($tr("Notify avatar"),57)
+	{
+		avatar.notify $0
+	}
+
+	separator
+
+	item($tr("Clear Buffer"),121)
+	{
+		clear
+	}
+}
+
+file.addimagepath %mypath/pics/
+
+#
+# FIXME: Add uninstall part:
+#  file.delimagepath
+#
+
+
+#
+# A default popup for the middle click in a text view
+# This should manage logging , buffer saving and other
+# stuff common to ALL windows
+#
+
+defpopup(windowpopup)
+{
+	extpopup(Logging,logging,119)
+
+#	popup(Buffer)
+#	{
+#		item("Save to file...")window.savebuffer
+#		item("Clear")window.clear
+#		item("Find...")window.findtext
+#	}
+#	popup(View)
+#	{
+#		item("Show images")($window.images == 0)window.images 1
+#		item("Enable timestamps")($window.timestamp == 0)window.timestamp 1
+#		item("Disable timestamps")($window.timestam == 1)window.timestamp 0
+#		item("Set font...")$window.setfont
+#		item("Set background...")$window.setbackground
+#	}
+#	popup(Mdi)
+#	{
+#		item("Minimize")window.minimize
+#		item("Maximize")window.maximize
+#	}
+}
+
+# Host link popup
+
+defpopup(hostpopup)
+{
+	item(Look Up $0,13)
+	{
+		host -a $0
+	}
+
+	separator
+
+	item(Open ftp://$0/,145) ("$system.ostype" == "unix")
+	{
+		openurl ftp://$0/
+	}
+
+	item(Telnet to $0,25)
+	{
+		system.runcmd telnet $0
+	}
+
+	separator
+
+	item(Traceroute $0,42)
+	{
+		if("$system.ostype" == "unix") system.runcmd traceroute $0
+		else system.runcmd tracert $0
+	}
+
+	item(Traceroute6 $0,42)
+	{
+		if("$system.ostype" == "unix") system.runcmd traceroute6 $0
+		else system.runcmd tracert6 $0
+	}
+
+	item(Ping $0,147)
+	{
+		system.runcmd ping $0
+	}
+
+	item(Ping6 $0,147)
+	{
+		system.runcmd ping6 $0
+	}
+}

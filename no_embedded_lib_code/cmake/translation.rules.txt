@@ -1,0 +1,82 @@
+IF(USE_GETTEXT_TRANSLATIONS)
+	SET(_gmoFiles)
+	GET_FILENAME_COMPONENT(_potBasename ${POTFILE} NAME_WE)
+	GET_FILENAME_COMPONENT(_absPotFile ${POTFILE} ABSOLUTE)
+
+	FOREACH(_currentPoFile ${pofiles})
+		GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
+		GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
+		GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
+		SET(_gmoFile ${CMAKE_CURRENT_BINARY_DIR}/${_lang}.gmo)
+
+		ADD_CUSTOM_COMMAND(
+			OUTPUT ${_gmoFile}
+			COMMAND ${GETTEXT_MSGFMT_EXECUTABLE} -o ${_gmoFile} ${_absFile}
+			DEPENDS ${_absPotFile} ${_absFile}
+		)
+
+		IF (APPLE)
+			INSTALL(FILES ${_gmoFile} DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/locale/ RENAME ${_lang}.mo)
+		ELSE ()
+			# Assume Linux
+			INSTALL(FILES ${_gmoFile} DESTINATION share/${PACKAGE}/${VERSION_BRANCH}/locale/ RENAME ${_lang}.mo)
+		ENDIF ()
+		LIST(APPEND _gmoFiles ${_gmoFile})
+	ENDFOREACH()
+
+	ADD_CUSTOM_TARGET(kvirc-translations-${_potBasename} DEPENDS ${_gmoFiles})
+	ADD_DEPENDENCIES(kvirc-translations kvirc-translations-${_potBasename})
+
+	IF(USE_GETTEXT_EXTRA)
+		ADD_CUSTOM_TARGET(messages-update-${_potBasename})
+		ADD_DEPENDENCIES(messages-update messages-update-${_potBasename})
+
+		ADD_CUSTOM_TARGET(messages-extract-${_potBasename})
+		ADD_DEPENDENCIES(messages-extract messages-extract-${_potBasename})
+
+		# messages-extract
+		SET(XGETTEXT_FILES)
+		FOREACH(SDIR ${XGETTEXT_SOURCESDIR})
+			FILE(GLOB_RECURSE XGETTEXT_FILES_TEMP ${SDIR}/*.cpp ${SDIR}/*.h ${SDIR}/*.kvs)
+			LIST(APPEND XGETTEXT_FILES ${XGETTEXT_FILES_TEMP})
+		ENDFOREACH()
+
+		# All files in a new line
+		GET_FILENAME_COMPONENT(PO_DIR ${_absPotFile} PATH)
+		FILE(WRITE ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt "")
+
+		SET(XGETTEXT_FILES_STRING)
+		FOREACH(ARG ${XGETTEXT_FILES})
+			FILE(APPEND ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt ${ARG} "\n")
+		ENDFOREACH()
+
+		IF(TRANSLATION_KVIRC_CORE)
+			ADD_CUSTOM_COMMAND(
+				COMMENT "Extracting messages for ${_potBasename}"
+				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr -k__tr_no_lookup -k__tr2qs -k__tr2wc -k__tr2ws -ktr -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
+				TARGET messages-extract-${_potBasename}
+			)
+		ELSE()
+			ADD_CUSTOM_COMMAND(
+				COMMENT "Extracting ctx messages for ${_potBasename}"
+				COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${_absPotFile} -k__tr_ctx -k__tr_no_lookup_ctx -k__tr2qs_ctx -k__tr2wc_ctx -k__tr2ws_ctx -f ${CMAKE_BINARY_DIR}/${PO_DIR}/filelist.txt
+				TARGET messages-extract-${_potBasename}
+			)
+		ENDIF()
+		# messages-update
+		GET_FILENAME_COMPONENT(_potBasename ${POTFILE} NAME_WE)
+		GET_FILENAME_COMPONENT(_absPotFile ${POTFILE} ABSOLUTE)
+		FOREACH(_currentPoFile ${pofiles})
+			GET_FILENAME_COMPONENT(_absFile ${_currentPoFile} ABSOLUTE)
+			GET_FILENAME_COMPONENT(_abs_PATH ${_absFile} PATH)
+			GET_FILENAME_COMPONENT(_lang ${_absFile} NAME_WE)
+
+			ADD_CUSTOM_COMMAND(
+				COMMENT "Updating messages in ${_currentPoFile}"
+				COMMAND ${GETTEXT_MSGMERGE_EXECUTABLE} --quiet --update --backup=none -s ${_absFile} ${_absPotFile}
+			DEPENDS ${_absPotFile} ${_absFile}
+			TARGET messages-update-${_potBasename}
+			)
+		ENDFOREACH()
+	ENDIF()
+ENDIF()

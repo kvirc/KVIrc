@@ -1,0 +1,84 @@
+######################################################################################################
+#
+# MP3Share KVIrc script
+#
+# This small script communicates with the platform mp3 player
+# and advertises the currently played song, allowing its download by dcc
+#
+#
+# The following things are left as exercise to the readed:
+#
+# - "max downloads" checking is done
+# - starting the platform mp3player if it is not running
+#
+######################################################################################################
+
+file.mkdir $file.localdir("pics")
+file.copy -o $file.extractPath($0)"/mp3share_icon.png" $file.localdir("pics/mp3share_icon.png")
+
+
+action.create -w=cqd (mp3share_advertise,$tr("Advertise MP3"),$tr("Advertises the currently played song and shares it"),mp3share_icon.png)
+{
+	if(!$mp3player.isplaying)
+	{
+		echo It looks like your mp3 player is not playing
+		halt
+	}
+
+	if($mp3player.getlength <= 0)
+	{
+		# Playing a stream
+
+		me plays$k(4) $mp3player.gettitle() $k(2)(streaming from $mp3player.getfilename())
+
+	} else {
+		%mins = $($mp3player.getlength / 60000)
+		%secs = $(($mp3player.getlength % 60000) / 1000)
+		%secs1 = $(%secs / 10)
+		%secs2 = $(%secs % 10)
+		%rate = $($mp3player.getrate / 1000)
+
+		%text = $k(4) $mp3player.gettitle() $k(2)[%mins:%secs1%secs2 %rate Kbps $mp3player.getfreq Hz \
+			$file.size("$mp3player.getfilename") Bytes]$o
+
+		if(%type != "dccchat")
+		{
+			srand $unixtime
+			%a = $rand(9)
+			%b = $rand(9)
+			%c = $rand(9)
+		
+			me plays%text (Use $b/CTCP $me XDCC GET mp3_%a%b%c$b to download)
+
+			sharedfile.add -t=$(($mp3player.getlength / 1000) + 60) \
+				-n="mp3_%a%b%c" $mp3player.getfilename;
+		} else me plays%text
+	}
+}
+
+toolbar.create mp3share $tr("MP3 Sharing")
+toolbar.additem mp3share mp3share_advertise
+toolbar.show mp3share
+
+alias(mp3share_uninstall)
+{
+	action.destroy mp3share_advertise
+	toolbar.destroy mp3share
+	alias(mp3share_uninstall){}
+}
+
+
+echo "The Mp3share script is installed."
+if("$system.ostype" == "windows")
+{
+	echo "On Windows you need the Winamp multimedia player"
+	echo "freely available at http://www.winamp.com"
+	echo "You also need to install the gen_kvirc.dll from the KVIrc"
+	echo "distribution as a Winamp plugin (this involves copying the"
+	echo "file to the winamp \"plugins\" directory)."
+} else {
+	echo "On Unix you need the Xmms multimedia player"
+	echo "freely available at http://www.xmms.org"
+}
+echo "Use mp3share_uninstall to uninstall the script."
+echo "Have fun :)"

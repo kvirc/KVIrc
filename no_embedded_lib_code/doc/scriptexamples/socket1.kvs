@@ -1,0 +1,45 @@
+# This is a simple socket class to play with from the console
+# It just echoes the events to the console window
+
+class(testsocket,socket)
+{
+	connectEvent()
+	{
+		echo "[$$] Connected to $$->$remoteIp() $$->$remotePort()"
+	}
+
+	disconnectEvent()
+	{
+		echo "[$$] Disconnected ($0-)"
+	}
+
+	connectFailedEvent()
+	{
+		echo "[$$] Connect failed ($0-)"
+	}
+
+	dataAvailableEvent()
+	{
+		echo "[$$] Data: $$->$read()"
+	}
+}
+
+echo "testsocket class installed"
+echo "You can play with it by using:"
+
+echo "/\%X = \$new(testsocket); # To create it"
+echo "/\%X->\$connect(<host>,<port>); # To connect to a host"
+echo "/\%X->\$write(<data>); # To write ASCII data"
+echo "/\%X->\$close(); # To terminate a connection"
+echo "/delete \%X; # To destroy it"
+echo "...."
+echo "Tip: why don't you try to IRC ?"
+echo "The sequence might be something like:"
+echo "/\%X = \$new(testsocket)"
+echo "/\%X->\$connect(<your_irc_server>,6667)"
+echo "/\%X->\$write(\"USER <youruser> <somestring> <somestring> :<realname>\$cr\$lf\")"
+echo "/\%X->\$write(\"NICK <yournick>\$cr\$lf\")"
+echo "/\%X->\$write(\"JOIN #kvirc\$cr\$lf\")"
+echo "/\%X->\$write(\"PRIVMSG #kvirc :Hello IRC-World! :D\$cr\$lf\")"
+echo "...."
+echo "Have fun! :)"

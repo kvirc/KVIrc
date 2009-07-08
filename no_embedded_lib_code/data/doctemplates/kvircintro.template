@@ -1,0 +1,67 @@
+/*
+	@doc: kvircintro
+	@title:
+		Introduction to KVIrc
+	@short:
+		Introduction to KVIrc
+	@keyterms:
+		KVIrc
+	@body:
+		[big]Introduction[/big]
+
+		In really simple words KVIrc is a Chat client: you use it to talk to other
+		people over the internet. More specifically KVIrc is an IRC client
+		and if you haven't readed it yet please take a look at the [doc:ircintro]IRC introduction[/doc]
+		then come back here. Now that you know what IRC is then you already know
+		that an IRC client acts as a relay for the informations that you
+		exchange with your IRC server. KVIrc also acts as a filter and provides
+		an user-friendly interface for the communication protocol that is a bit complex
+		and rude when seen in its original form (by using telnet for example).
+		KVIrc also contains a sophisticated scripting language that allows you to
+		implement automated reactions to the network events. This is something similar
+		to creating a robot that acts spontaneously after you have told him what to do.
+		The scripting language allows you to enchance the KVIrc's interface and
+		to handle special IRC network features that KVIrc itself isn't aware of.
+
+		[big]History[/big]
+
+		The original meaning of the name "KVIrc" was, more or less, "K Visual IRC Client".
+		The initial K is a common prefix for the applications written for the KDE
+		desktop environment: this was the case of the initial versions of KVIrc.
+		Starting from version 2.0.0 the absolute KDE dependancy has been dropped (for several
+		valid reasons) and the support became optional.[br]
+		"Visual" was (and is) one of the client goals: having an user-friendly interface to the IRC world.
+		Many extreme-unix users have misinterpreted the "user-friendly" interface and have tagged
+		KVIrc as a client for "newbies". Well... that is partially true: KVIrc is ALSO a client for newbies:
+		A total IRC novice should be able to "chat" in few minutes after installing the program,
+		preferably without bothering to read any manual. Yes ,I know that it is not in "unix"-style.
+		On the other side, KVIrc contains a whole bunch of compex features that can be discovered
+		only by reading the documentation and experimenting. I bet that you can also
+		find a lot of undocumented tricks :)
+
+		[big]A bit of "philosophy"[/big]
+
+		At the time of writing (Feb 2005) KVIrc approaches release 3.2.0. The small
+		[b]one-man-project[/b] has grown to the level of a small [b]community[/b].
+		People from around the world have joined our development efforts and are
+		constantly donating their time, eyes and bandwidth in order to make KVIrc
+		a really good IRC client. Besides of simply giving you a free (as in freedom!) and nice
+		program for chatting, they are giving you the great opportunity to see what's behind
+		the scenes: you have the source code for the whole application.
+		In practical terms this means more or less 300.000 lines of tested, debugged and
+		commented C++ code, several perl scripts, dozens of makefiles and all the means
+		that you need to produce a working KVIrc executable on all the supported platforms.
+		There is a lot of knowledge (some people call it "technology" because it sells better)
+		inside, ready to be acquired by an attentive reader. Don't forget that the freedom of
+		building your own executable from the sources gives you the opportunity
+		of verifying the source itself: for example you might be interested in verifying
+		that KVIrc will not run any malware code on your machine nor will collect
+		your private data and sell it to someone while you're happily chatting with a friend.
+		[b]We call it freedom, please respect it.[/b]
+
+		[big]Well...[/big]
+
+		Have fun :)[br]
+		[br]
+		Szymon Stefanek and The KVIrc Development Team
+*/
