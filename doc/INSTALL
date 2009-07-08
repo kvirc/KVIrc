@@ -42,7 +42,7 @@ General notes for the installation of the 4.0 release of KVIrc
 ###############################################################################
 
     In order to compile KVIrc 4.0 you need at least these softwares:
-    - Qt GUI Toolkit 4.4 - http://www.trolltech.com
+    - Qt GUI Toolkit 4.5 - http://www.trolltech.com
     - CMake 2.6 - http://www.cmake.org
     - C++ compiler, such as g++ - http://gcc.gnu.org
     - Pthread implementation
@@ -78,7 +78,7 @@ General notes for the installation of the 4.0 release of KVIrc
     On my system the output is:
 
     QMake version 2.01a
-    Using Qt version 4.4.1 in /usr/lib/qt4/lib
+    Using Qt version 4.5.1 in /usr/lib64/qt/lib
 
     If you have multiple versions of qt4 installed in your system and you want to use a specific version,
     exporting QTDIR won't suffice. Since the cmake module searching for Qt4 uses qmake itself to determine
@@ -104,7 +104,7 @@ General notes for the installation of the 4.0 release of KVIrc
 
     On my system the ouput is:
 
-    # cmake version 2.6-patch 1
+    # cmake version 2.6-patch 2
 
 
     #
@@ -120,14 +120,11 @@ General notes for the installation of the 4.0 release of KVIrc
 
     The output on my system is:
 
-    Reading specs from /usr/lib/gcc/i486-slackware-linux/4.2.4/specs
-    Target: i486-slackware-linux
-    Configured with: ../gcc-4.2.4/configure --prefix=/usr --enable-shared
-    --enable-languages=ada,c,c++,fortran,java,objc --enable-threads=posix
-    --enable-__cxa_atexit --disable-checking --with-gnu-ld --verbose
-    --with-arch=i486 --target=i486-slackware-linux --host=i486-slackware-linux
+    Reading specs from /usr/lib64/gcc/x86_64-slackware-linux/4.3.3/specs
+    Target: x86_64-slackware-linux
+    Configured with: ../gcc-4.3.3/configure --prefix=/usr --libdir=/usr/lib64 --enable-shared --enable-bootstrap --enable-languages=ada,c,c++,fortran,java,objc --enable-threads=posix --enable-checking=release --with-system-zlib --disable-libunwind-exceptions --enable-__cxa_atexit --enable-libssp --with-gnu-ld --verbose --disable-multilib --target=x86_64-slackware-linux --build=x86_64-slackware-linux --host=x86_64-slackware-linux
     Thread model: posix
-    gcc version 4.2.4
+    gcc version 4.3.3 (GCC)
 
 
     #

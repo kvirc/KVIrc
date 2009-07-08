@@ -910,26 +910,6 @@ ENDIF()
 
 ###############################################################################
 #
-# Package target, `cmake . -DWITH_PACKAGES="<semicolon-separated formats>" && make package` to build packages
-# ex. -DWITH_PACKAGES="RPM;TGZ"
-#
-###############################################################################
-IF(WITH_PACKAGES)
-	INCLUDE (InstallRequiredSystemLibraries)
-	SET (CPACK_CMAKE_GENERATOR "Unix Makefiles")
-	SET (CPACK_PACKAGE_NAME "kvirc")
-	SET (CPACK_GENERATOR ${WITH_PACKAGES})
-	SET (CPACK_PACKAGE_DESCRIPTION_SUMMARY "KDE based next generation IRC client with module support")
-	SET (CPACK_PACKAGE_VENDOR "KVIrc team")
-	SET (CPACK_PACKAGE_VERSION_MINOR ${VERSION_MINOR})
-
-	SET (CPACK_PACKAGE_INSTALL_DIRECTORY "KVIrc")
-	SET (CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VERSION_MINOR}")
-	SET (CPACK_PACKAGE_CONTACT "voker57@gmail.com")
-	INCLUDE (CPack)
-ENDIF()
-###############################################################################
-#
 # The User documentation target (kvirc internal help)
 #
 ###############################################################################

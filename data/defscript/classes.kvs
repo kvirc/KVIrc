@@ -52,7 +52,7 @@ class(installer,object)
 		{
 			foreach(%file,$$->%lFiles[])
 			{
-				%c .= "	file.remove \"%file\"$lf";
+				%c .= "file.remove \"%file\"$lf";
 			}
 		}
 		%c .= "}"
