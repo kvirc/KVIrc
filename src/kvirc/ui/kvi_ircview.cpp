@@ -1932,6 +1932,9 @@ void KviIrcView::recalcFontVariables(const QFontMetrics &fm,const QFontInfo &fi)
 	{
 		m_iFontCharacterWidth[i]=m_pFm->width(QChar(i));
 	}
+	//fix for #489 (horizontal tabulations)
+	m_iFontCharacterWidth[9]=m_pFm->width("\t");
+
 	if(m_iFontLineWidth==0)m_iFontLineWidth=1;
 	m_iWrapMargin = m_pFm->width("wwww");
 	m_iMinimumPaintWidth = (m_pFm->width('w') << 1)+m_iWrapMargin;
