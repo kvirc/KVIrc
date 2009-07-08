@@ -276,9 +276,9 @@ ENDIF()
 
 FIND_PACKAGE(Qt4 REQUIRED)
 IF(QT4_FOUND)
-	# We require at least Qt 4.4.x
-	IF(QT_VERSION_MINOR LESS 4)
-		MESSAGE(FATAL_ERROR "Upgrade your Qt GUI Toolkit to 4.4")
+	# We require at least Qt 4.5.x
+	IF(QT_VERSION_MINOR LESS 5)
+		MESSAGE(FATAL_ERROR "Upgrade your Qt GUI Toolkit to 4.5")
 	ENDIF()
 
         SET(QT_USE_QTSQL true)
