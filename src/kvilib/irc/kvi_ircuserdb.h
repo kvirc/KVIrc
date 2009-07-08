@@ -294,7 +294,6 @@ public:
 
 	/**
 	* \brief Mark that kvirc is trying (already tried) to get user's avatar
-	* \param bIsBot If the user is a bot
 	*/
 	void setAvatarRequested() { m_bAvatarRequested=true; };
 
