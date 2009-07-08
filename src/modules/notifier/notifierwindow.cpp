@@ -167,7 +167,6 @@ KviNotifierWindow::KviNotifierWindow()
 	palette.setColor(m_pLineEdit->backgroundRole(), Qt::transparent);
 	m_pLineEdit->setPalette(palette);
 	m_pLineEdit->installEventFilter(this);
-	m_pLineEdit->hide();
 	connect(m_pLineEdit,SIGNAL(returnPressed()),this,SLOT(returnPressed()));
 
 	szFamily = cfg.readEntry("InputFontFamily","Arial");
@@ -227,6 +226,8 @@ void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,con
 	{
 		tab = new KviNotifierWindowTab(pWnd, m_pWndTabs);
 	}
+
+	m_pWndTabs->setCurrentWidget(tab);
 
 	tab->appendMessage(m);
 
@@ -380,7 +381,6 @@ void KviNotifierWindow::heartbeat()
 				}
 
 				if(!isVisible())show(); //!!!
-				if(m_pLineEdit->isVisible())m_pLineEdit->hide();
 				setWindowOpacity(m_dOpacity);
 				update();
 
@@ -423,7 +423,6 @@ void KviNotifierWindow::heartbeat()
 		case Hiding:
 			m_dOpacity -= OPACITY_STEP;
 			setWindowOpacity(m_dOpacity);
-			if(m_pLineEdit->isVisible())m_pLineEdit->hide();
 			if(m_dOpacity <= 0.0)hideNow();
 			else update();
 		break;
@@ -438,8 +437,6 @@ void KviNotifierWindow::hideNow()
 	m_eState = Hidden;
 	m_dOpacity = 0.0;
 	m_tAutoHideAt = 0;
-
-	if(m_pLineEdit->isVisible())m_pLineEdit->hide();
 	hide();
 }
 
@@ -469,7 +466,6 @@ void KviNotifierWindow::doHide(bool bDoAnimate)
 	case Visible:
 		stopBlinkTimer();
 		stopShowHideTimer();
-		if(m_pLineEdit->isVisible())m_pLineEdit->hide();
 		if((!bDoAnimate) || (x() != m_pWndBorder->x()) || (y() != m_pWndBorder->y()))
 		{
 
