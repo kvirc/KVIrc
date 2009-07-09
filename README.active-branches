@@ -1,0 +1,29 @@
+no_embedded_lib_code:
+    Purpose:
+    ********
+    This branch has the target to either remove embedded copies of third-party
+    code (in this regard: code/functionality that can be found in a library)
+    entirely or at least open up a build path, where the library is used.
+
+    Rationale:
+    **********
+    The reasons for this work are simple: security, robustness and
+    (compilation) speed.
+    Embedded copies of code or the nth reimplementation of code might be a
+    feasable solution on systems without package management or a good way
+    to exercise one programming skills, but lead all invariently to the
+    problems named above. This is most often due to the fact, that embedded
+    code doesn't stay in sync with the original upstream version and thus
+    misses security fixes or the fact, that the own reimplementation of some
+    functionality isn't tested as widely the one offered by a library. That
+    allows security issues staying unsolved for a long time.
+
+    Additional Note:
+    ****************
+    The Debian Security Team dislikes embedded code (for reasons see above),
+    therefore I'm trying to get us rid of them.
+
+    Status:     active
+    *******
+
+ -- Kai Wasserbäch <debian@carbon-project.org>  Thu, 09 Jul 2009 20:12:00 +0200
