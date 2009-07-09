@@ -40,17 +40,4 @@ public:
 	~KviNotifyOptionsWidget();
 };
 
-#define KVI_OPTIONS_WIDGET_ICON_KviNotifierOptionsWidget KVI_SMALLICON_ALERT
-#define KVI_OPTIONS_WIDGET_NAME_KviNotifierOptionsWidget __tr2qs_no_lookup("Notifier")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierOptionsWidget __tr2qs_no_lookup("popup")
-#define KVI_OPTIONS_WIDGET_PARENT_KviNotifierOptionsWidget KviInterfaceFeaturesOptionsWidget
-
-class KviNotifierOptionsWidget : public KviOptionsWidget
-{
-	Q_OBJECT
-public:
-	KviNotifierOptionsWidget(QWidget * parent);
-	~KviNotifierOptionsWidget();
-};
-
 #endif //_OPTW_NOTIFY_H_

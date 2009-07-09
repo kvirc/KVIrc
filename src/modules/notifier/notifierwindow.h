@@ -37,7 +37,6 @@
 #include <QColor>
 #include <QCursor>
 #include <QDateTime>
-#include <QFont>
 #include <QImage>
 #include <QLineEdit>
 #include <QPixmap>
@@ -69,29 +68,14 @@ protected:
 	State   m_eState;
 	bool    m_bBlinkOn;
 	double  m_dOpacity;
-// 	QImage  m_imgDesktop;            // the desktop screenshot
-// 	QPixmap m_pixBackground;         // our background image
-// 	QPixmap m_pixBackgroundHighlighted;
-// 	QPixmap m_pixForeground;         // we paint the stuff HERE
-// 
-// 	// Notifier graphic layout
-// 	QPixmap m_pixBckgrnd;
 
 	bool    m_bCloseDown;
 	bool    m_bPrevDown;
 	bool    m_bNextDown;
 	bool    m_bWriteDown;
-	bool m_bCrashShowWorkAround;
-
-	QFont * m_pDefaultFont;
-	QFont * m_pTitleFont;
+	bool    m_bCrashShowWorkAround;
 
 	QRect	m_wndRect;
-
-	QColor  m_clrCurText;
-	QColor  m_clrOldText[NUM_OLD_COLORS];
-	QColor  m_clrHistoricText;
-	QColor  m_clrTitle;
 
 	KviNotifierMessage * m_pCurrentMessage;
 	QLineEdit * m_pLineEdit;
@@ -106,8 +90,6 @@ protected:
 	QPoint      m_pntDrag;
 	QPoint      m_pntPos;
 	QPoint      m_pntClick;
-	int         m_iInputHeight;
-	int         m_iBlinkTimeout;
 	int         m_iBlinkCount;
 	KviTalPopupMenu     * m_pContextPopup;
 	KviTalPopupMenu     * m_pDisablePopup;
@@ -116,7 +98,6 @@ protected:
 	kvi_time_t  m_tStartedAt;
 	QTime	    m_qtStartedAt;
 	bool	    m_bDisableHideOnMainWindowGotAttention;
-	//bool	    m_bForceShowing;
 
 	QCursor m_cursor;
 
@@ -126,7 +107,6 @@ protected:
 public:
 	void doShow(bool bDoAnimate);
 	void doHide(bool bDoAnimate);
-	const QFont & defaultFont(){ return *m_pDefaultFont; };
 	int textWidth();
 	void addMessage(KviWindow * pWnd,const QString &szImageId,const QString &szText,unsigned int uMessageTime);
 	void setDisableHideOnMainWindowGotAttention(bool b){ m_bDisableHideOnMainWindowGotAttention = b; };
@@ -151,7 +131,7 @@ protected slots:
 	void blink();
 	void heartbeat();
 	void returnPressed();
-	void reloadImages();
+	void updateGui();
 	void fillContextPopup();
 	void disableFor1Minute();
 	void disableFor5Minutes();

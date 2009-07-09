@@ -505,7 +505,10 @@ KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 	COLOR_OPTION("IrcViewMarkLine",40,40,40,KviOption_sectFlagIrcView),
 	COLOR_OPTION("UserListViewAwayForeground",143,143,143,KviOption_sectFlagUserListView),
 	COLOR_OPTION("UserListViewOwnForeground",255,255,0,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewIrcOpForeground",200,0,0,KviOption_sectFlagUserListView)
+	COLOR_OPTION("UserListViewIrcOpForeground",200,0,0,KviOption_sectFlagUserListView),
+	COLOR_OPTION("NotifierBackground",255,255,255,KviOption_sectFlagNotifier),
+	COLOR_OPTION("NotifierForeground",0,0,0,KviOption_sectFlagNotifier),
+	COLOR_OPTION("NotifierTitleForeground",255,255,255,KviOption_sectFlagNotifier)
 };
 
 
@@ -543,7 +546,8 @@ KviPixmapOption g_pixmapOptionsTable[KVI_NUM_PIXMAP_OPTIONS]=
 	PIXMAP_OPTION("MyAvatar",KviOption_sectFlagUser),
 	PIXMAP_OPTION("IrcToolBarAppletBackground",KviOption_sectFlagIrcToolBar | KviOption_groupTheme),
 	PIXMAP_OPTION("TreeWindowListBackground",KviOption_sectFlagWindowList | KviOption_groupTheme),
-	PIXMAP_OPTION("GlobalTransparencyBackground",KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme)
+	PIXMAP_OPTION("GlobalTransparencyBackground",KviOption_sectFlagGui | KviOption_resetUpdatePseudoTransparency | KviOption_groupTheme),
+	PIXMAP_OPTION("NotifierBackground",KviOption_sectFlagNotifier | KviOption_groupTheme)
 };
 
 //#define INT_OPTION(_name,_value,_flags)
@@ -632,8 +636,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("IdentdOutputMode",KviIdentdOutputMode::Quiet,KviOption_sectFlagConnection),
 	UINT_OPTION("ScaleAvatarsOnLoadHeight",600,KviOption_sectFlagAvatar),
 	UINT_OPTION("ScaleAvatarsOnLoadWidth",800,KviOption_sectFlagAvatar),
-	UINT_OPTION("NotifierActiveTransparency",90,KviOption_sectFlagFrame),
-	UINT_OPTION("NotifierInactiveTransparency",40,KviOption_sectFlagFrame),
+	UINT_OPTION("NotifierActiveTransparency",90,KviOption_sectFlagNotifier),
+	UINT_OPTION("NotifierInactiveTransparency",40,KviOption_sectFlagNotifier),
 	UINT_OPTION("IrcViewMarkerStyle",0,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("IrcViewMarkerSize",1,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	UINT_OPTION("UrlMouseClickNum",2,KviOption_sectFlagUrl),
@@ -644,7 +648,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("DaysIntervalToPasteOnQueryJoin",10,KviOption_sectFlagLogging),
 	UINT_OPTION("SpacesToExpandTabulationInput",4,KviOption_sectFlagInput),
 	UINT_OPTION("UserIrcViewOwnForeground",4,KviOption_sectFlagIrcView | KviOption_groupTheme),
-	UINT_OPTION("UserIrcViewOwnBackground",8,KviOption_sectFlagIrcView | KviOption_groupTheme)
+	UINT_OPTION("UserIrcViewOwnBackground",8,KviOption_sectFlagIrcView | KviOption_groupTheme),
+	UINT_OPTION("NotifierPixmapAlign",0,KviOption_sectFlagNotifier | KviOption_groupTheme)
 };
 
 #define FONT_OPTION(_name,_face,_size,_flags) \
@@ -664,7 +669,9 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 	FONT_OPTION("Application","Arial",9,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
 	FONT_OPTION("IrcToolBarApplet","Arial",9,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
 	FONT_OPTION("WindowList","Arial",9,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
-	FONT_OPTION("TreeWindowList","Arial",9,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList)
+	FONT_OPTION("TreeWindowList","Arial",9,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
+	FONT_OPTION("Notifier","Arial",9,KviOption_sectFlagNotifier | KviOption_resetUpdateGui),
+	FONT_OPTION("NotifierTitle","Arial",9,KviOption_sectFlagNotifier | KviOption_resetUpdateGui)
 #else
 	FONT_OPTION("IrcView","Monospace",10,KviOption_sectFlagIrcView | KviOption_resetUpdateGui),
 	FONT_OPTION("Input","Sans Serif",12,KviOption_sectFlagInput | KviOption_resetUpdateGui),
@@ -673,7 +680,9 @@ KviFontOption g_fontOptionsTable[KVI_NUM_FONT_OPTIONS]=
 	FONT_OPTION("Application","Sans Serif",10,KviOption_sectFlagGui | KviOption_resetUpdateAppFont),
 	FONT_OPTION("IrcToolBarApplet","Sans Serif",10,KviOption_sectFlagIrcToolBar | KviOption_resetUpdateGui),
 	FONT_OPTION("WindowList","Sans Serif",10,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
-	FONT_OPTION("TreeWindowList","Sans Serif",10,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList)
+	FONT_OPTION("TreeWindowList","Sans Serif",10,KviOption_sectFlagWindowList | KviOption_resetUpdateWindowList),
+	FONT_OPTION("Notifier","Sans Serif",9,KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier),
+	FONT_OPTION("NotifierTitle","Sans Serif",9,KviOption_sectFlagNotifier | KviOption_resetUpdateNotifier)
 #endif
 };
 
@@ -1331,6 +1340,11 @@ void KviApp::optionResetUpdate(int flags)
 	if(flags & KviOption_resetRecentChannels)
 	{
 		g_pApp->buildRecentChannels();
+	}
+
+	if(flags & KviOption_resetUpdateNotifier)
+	{
+		emit updateNotifier();
 	}
 }
 bool KviApp::setOptionValue(const QString &optName,const QString &value)

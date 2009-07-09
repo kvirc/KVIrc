@@ -87,37 +87,6 @@ KviNotifierWindow::KviNotifierWindow()
 
 	m_pWndBorder = new KviNotifierWindowBorder();
 
-	reloadImages();
-
-	QString buffer;
-	g_pApp->getReadOnlyConfigPath(buffer,"libkvinotifier.kvc",KviApp::ConfigPlugins,true);
-
-	KviConfig cfg(buffer,KviConfig::Read);
-
-	cfg.setGroup("NotifierSkin");
-
-	QString szFamily = cfg.readEntry("TextFontFamily","Arial");
-	m_pDefaultFont = new QFont(szFamily,cfg.readIntEntry("TextFontSize",9));
-	setFont(*m_pDefaultFont);
-
-	szFamily = cfg.readEntry("TitleFontFamily","Arial");
-	m_pTitleFont = new QFont(szFamily,cfg.readIntEntry("TitleFontSize",9));
-
-	m_clrCurText = cfg.readColorEntry("CurTextColor",QColor(40,0,0));
-	m_clrHistoricText = cfg.readColorEntry("HistoricTextColor",QColor(125,125,125));
-	m_clrTitle = QColor(255,255,255);
-	for(int i=0;i<NUM_OLD_COLORS;i++)
-	{
-		KviStr szKey;
-		szKey.sprintf("OldTextColor%d",i + 1);
-		m_clrOldText[i] = cfg.readColorEntry(szKey.ptr(),QColor(90,90,90));
-	}
-
-	m_iBlinkTimeout = cfg.readIntEntry("BlinkTimeout",650);
-	if(m_iBlinkTimeout < 100)m_iBlinkTimeout = 100;
-	m_iInputHeight = cfg.readIntEntry("InputHeight",20);
-	if(m_iInputHeight < 10)m_iInputHeight = 10;
-
 	setFocusPolicy(Qt::NoFocus);
 	setMouseTracking(true);
 
@@ -169,8 +138,7 @@ KviNotifierWindow::KviNotifierWindow()
 	m_pLineEdit->installEventFilter(this);
 	connect(m_pLineEdit,SIGNAL(returnPressed()),this,SLOT(returnPressed()));
 
-	szFamily = cfg.readEntry("InputFontFamily","Arial");
-	m_pLineEdit->setFont(QFont(szFamily,cfg.readIntEntry("InputFontSize",9)));
+	updateGui();
 
 	QGridLayout *layout = new QGridLayout;
 	layout->addWidget(m_pProgressBar, 0,0,2,1);
@@ -182,7 +150,7 @@ KviNotifierWindow::KviNotifierWindow()
 	layout->setContentsMargins(5,25,5,5);
 	setLayout(layout);
 
-	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
+	connect(g_pApp,SIGNAL(updateNotifier()),this,SLOT(updateGui()));
 }
 
 KviNotifierWindow::~KviNotifierWindow()
@@ -190,14 +158,20 @@ KviNotifierWindow::~KviNotifierWindow()
 	stopShowHideTimer();
 	stopBlinkTimer();
 	stopAutoHideTimer();
-	delete m_pDefaultFont;
-	delete m_pTitleFont;
 	delete m_pWndBorder;
 	delete m_pWndTabs;
 }
 
-void KviNotifierWindow::reloadImages()
+void KviNotifierWindow::updateGui()
 {
+	setFont(KVI_OPTION_FONT(KviOption_fontNotifier));
+	QPalette pal = palette();
+	pal.setColor(QPalette::Foreground, KVI_OPTION_COLOR(KviOption_colorNotifierForeground));
+	setPalette(pal);
+	QPalette palette=m_pLineEdit->palette();
+	palette.setColor(m_pLineEdit->foregroundRole(), KVI_OPTION_COLOR(KviOption_colorNotifierForeground));
+	m_pLineEdit->setPalette(palette);
+	m_pLineEdit->setFont(KVI_OPTION_FONT(KviOption_fontNotifier));
 }
 
 void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,const QString &szText,unsigned int uMessageTime)
@@ -516,7 +490,7 @@ void KviNotifierWindow::startBlinking()
 		m_pBlinkTimer = new QTimer();
 		connect(m_pBlinkTimer,SIGNAL(timeout()),this,SLOT(blink()));
 		m_iBlinkCount = 0;
-		m_pBlinkTimer->start(m_iBlinkTimeout);
+		m_pBlinkTimer->start(1000);
 	}
 }
 
@@ -578,9 +552,16 @@ void KviNotifierWindow::paintEvent(QPaintEvent *e)
 	{
 		QPoint pnt = mapToGlobal(e->rect().topLeft());
 		p.drawTiledPixmap(e->rect(),*(g_pShadedChildGlobalDesktopBackground), pnt);
+	} else {
+#endif
+		QPixmap * pPix = KVI_OPTION_PIXMAP(KviOption_pixmapNotifierBackground).pixmap();
+
+		p.fillRect(rect(),KVI_OPTION_COLOR(KviOption_colorNotifierBackground));
+		if(pPix)
+			KviPixmapUtils::drawPixmapWithPainter(&p,pPix,KVI_OPTION_UINT(KviOption_uintNotifierPixmapAlign),rect(),width(),height());
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
-
 	if(m_wndRect.width()!=m_pWndBorder->width() || m_wndRect.height()!=m_pWndBorder->height())
 		m_pWndBorder->resize( m_wndRect.size() );
 
@@ -591,8 +572,9 @@ void KviNotifierWindow::paintEvent(QPaintEvent *e)
 		m_pWndBorder->draw(&p);
 	}
 
-	p.setPen(QPen(m_clrTitle));
-	p.setFont(*m_pTitleFont);
+	p.setPen(KVI_OPTION_COLOR(KviOption_colorNotifierTitleForeground));
+	p.setFont(KVI_OPTION_FONT(KviOption_fontNotifierTitle));
+
 	QString title = "KVIrc - ";
 	KviNotifierWindowTab *tab = (KviNotifierWindowTab *)m_pWndTabs->currentWidget();
 	if(tab)

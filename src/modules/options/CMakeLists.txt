@@ -27,6 +27,7 @@ SET(kvioptions_MOC_HDRS
 	optw_messages.h
 	optw_nickserv.h
 	optw_notify.h
+	optw_notifier.h
 	optw_protection.h
 	optw_proxy.h
 	optw_query.h
@@ -72,6 +73,7 @@ SET(kvioptions_SRCS
 	optw_messages.cpp
 	optw_nickserv.cpp
 	optw_notify.cpp
+	optw_notifier.cpp
 	optw_protection.cpp
 	optw_proxy.cpp
 	optw_query.cpp

@@ -53,6 +53,7 @@
 #include "optw_mediatypes.h"
 #include "optw_messages.h"
 #include "optw_nickserv.h"
+#include "optw_notifier.h"
 #include "optw_notify.h"
 #include "optw_protection.h"
 #include "optw_proxy.h"
@@ -355,14 +356,19 @@ KviOptionsWidget * classKviNickServOptionsWidget_createInstanceProc(QWidget * pa
 	return new KviNickServOptionsWidget(parent);
 }
 
-KviOptionsWidget * classKviNotifyOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classKviNotifierLookOptionsWidget_createInstanceProc(QWidget * parent)
 {
-	return new KviNotifyOptionsWidget(parent);
+	return new KviNotifierLookOptionsWidget(parent);
 }
 
 KviOptionsWidget * classKviNotifierOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviNotifierOptionsWidget(parent);
+}
+
+KviOptionsWidget * classKviNotifyOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviNotifyOptionsWidget(parent);
 }
 
 KviOptionsWidget * classKviProtectionOptionsWidget_createInstanceProc(QWidget * parent)
@@ -604,10 +610,12 @@ static const char * g_szName_KviStandardColorsOptionsWidget = KVI_OPTIONS_WIDGET
 static const char * g_szClassName_KviStandardColorsOptionsWidget = "KviStandardColorsOptionsWidget";
 static const char * g_szName_KviNickServOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNickServOptionsWidget;
 static const char * g_szClassName_KviNickServOptionsWidget = "KviNickServOptionsWidget";
-static const char * g_szName_KviNotifyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifyOptionsWidget;
-static const char * g_szClassName_KviNotifyOptionsWidget = "KviNotifyOptionsWidget";
+static const char * g_szName_KviNotifierLookOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifierLookOptionsWidget;
+static const char * g_szClassName_KviNotifierLookOptionsWidget = "KviNotifierLookOptionsWidget";
 static const char * g_szName_KviNotifierOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifierOptionsWidget;
 static const char * g_szClassName_KviNotifierOptionsWidget = "KviNotifierOptionsWidget";
+static const char * g_szName_KviNotifyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifyOptionsWidget;
+static const char * g_szClassName_KviNotifyOptionsWidget = "KviNotifyOptionsWidget";
 static const char * g_szName_KviProtectionOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviProtectionOptionsWidget;
 static const char * g_szClassName_KviProtectionOptionsWidget = "KviProtectionOptionsWidget";
 static const char * g_szName_KviProxyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviProxyOptionsWidget;
@@ -3082,6 +3090,40 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviStandardColorsOptionsWidget,"options");
 		e0->pChildList->append(e1);
 		e1->pChildList = 0;
+
+	e0 = new KviOptionsWidgetInstanceEntry;
+	e0->createProc = &classKviNotifierLookOptionsWidget_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_KviNotifierLookOptionsWidget;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviNotifierLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviNotifierLookOptionsWidget
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviNotifierLookOptionsWidget;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierLookOptionsWidget
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierLookOptionsWidget;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviNotifierLookOptionsWidget
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviNotifierLookOptionsWidget;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviNotifierLookOptionsWidget
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviNotifierLookOptionsWidget;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifierLookOptionsWidget
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifierLookOptionsWidget;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_KviNotifierLookOptionsWidget;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviNotifierLookOptionsWidget,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
 	e0 = new KviOptionsWidgetInstanceEntry;
 	e0->createProc = &classKviServerOptionsWidget_createInstanceProc;

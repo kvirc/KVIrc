@@ -473,7 +473,11 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_colorUserListViewAwayForeground 54                              /* look & feel::interface look::userlist */
 #define KviOption_colorUserListViewOwnForeground 55                              /* look & feel::interface look::userlist */
 #define KviOption_colorUserListViewIrcOpForeground 56                                /* look & feel::interface look::userlist */
-#define KVI_NUM_COLOR_OPTIONS 57
+#define KviOption_colorNotifierBackground 57                                         /* look & feel::interface look::notifier */
+#define KviOption_colorNotifierForeground 58                                         /* look & feel::interface look::notifier */
+#define KviOption_colorNotifierTitleForeground 59                                    /* look & feel::interface look::notifier */
+
+#define KVI_NUM_COLOR_OPTIONS 60
 
 
 
@@ -487,10 +491,11 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_pixmapLabelBackground 4                                      /* look & feel::interface look::topic label */
 #define KviOption_pixmapMyAvatar 5                                             /* identity */
 #define KviOption_pixmapIrcToolBarAppletBackground 6                           /* theme::tool bar applets */
-#define KviOption_pixmapTreeWindowListBackground 7                                /* look & feel::interface look::WindowList::tree WindowList */
+#define KviOption_pixmapTreeWindowListBackground 7                             /* look & feel::interface look::WindowList::tree WindowList */
 #define KviOption_pixmapGlobalTransparencyBackground 8                         /* theme::transparency */
+#define KviOption_pixmapNotifierBackground 9                                   /* interface::look::components::notifier */
 
-#define KVI_NUM_PIXMAP_OPTIONS 9
+#define KVI_NUM_PIXMAP_OPTIONS 10
 
 
 
@@ -580,7 +585,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintSpacesToExpandTabulationInput 73           /* number of spaces used in tabulation expansion in the inputbar */
 #define KviOption_uintUserIrcViewOwnForeground 74                /* look & feel::ircview */
 #define KviOption_uintUserIrcViewOwnBackground 75                /* look & feel::ircview */
-#define KVI_NUM_UINT_OPTIONS 76
+#define KviOption_uintNotifierPixmapAlign 76
+#define KVI_NUM_UINT_OPTIONS 77
 
 namespace KviIdentdOutputMode {
 	enum Mode {
@@ -600,10 +606,12 @@ namespace KviIdentdOutputMode {
 #define KviOption_fontLabel 3                                        /* look & feel::interface look::topic label */
 #define KviOption_fontApplication 4                                  /* interface::look::global */
 #define KviOption_fontIrcToolBarApplet 5                             /* theme::tool bar applet */
-#define KviOption_fontWindowList 6                                      /* interface::look::WindowList::classic WindowList */
-#define KviOption_fontTreeWindowList 7                                  /* interface::look::WindowList::tree WindowList */
+#define KviOption_fontWindowList 6                                   /* interface::look::WindowList::classic WindowList */
+#define KviOption_fontTreeWindowList 7                               /* interface::look::WindowList::tree WindowList */
+#define KviOption_fontNotifier 8                                     /* interface::look::components::notifier */
+#define KviOption_fontNotifierTitle 9                                /* interface::look::components::notifier */
 
-#define KVI_NUM_FONT_OPTIONS 8
+#define KVI_NUM_FONT_OPTIONS 10
 
 
 
@@ -709,8 +717,9 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 	#define KviOption_sectFlagUrl 23
 	#define KviOption_sectFlagRecent 24
 	#define KviOption_sectFlagGeometry 25
+	#define KviOption_sectFlagNotifier 26
 
-	#define KVI_NUM_OPTION_SECT_FLAGS 26
+	#define KVI_NUM_OPTION_SECT_FLAGS 27
 
 	#define KviOption_sectMask 255
 
@@ -723,7 +732,7 @@ extern KVIRC_API KviStringListOption g_stringlistOptionsTable[KVI_NUM_STRINGLIST
 
 	// actions to take when an option is set
 	#define KviOption_resetNone 0
-	//#define KviOption_resetUpdateCaption (1 << 16) UNUSED!
+	#define KviOption_resetUpdateNotifier (1 << 16)
 	#define KviOption_resetUpdateGui (1 << 17)
 	#define KviOption_resetUpdateWindowList (1 << 18)
 	#define KviOption_resetUpdateAppFont (1 << 19)

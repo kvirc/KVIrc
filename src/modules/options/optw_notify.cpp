@@ -102,58 +102,6 @@ KviNotifyOptionsWidget::~KviNotifyOptionsWidget()
 {
 }
 
-
-KviNotifierOptionsWidget::KviNotifierOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent)
-{
-	setObjectName("notifier_options_widget");
-
-	createLayout();
-
-	KviBoolSelector * b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Enable the notifier","options"),KviOption_boolEnableNotifier);
-	QString tip = "<center>";
-	tip += __tr2qs_ctx("This is an option for the impatient: it allows to forcibly and permanently disable " \
-					"the notifier window. Please note that if this option is activated then " \
-					"the notifier will NOT popup even if all the other options around specify " \
-					"to use it in response to particular events. Also note that this option " \
-					"will make all the /notifier.* commands fail silently.","options");
-	tip += "</center>";
-	mergeTip(b,tip);
-	addBoolSelector(0,1,0,1,__tr2qs_ctx("Enable notifier window flashing","options"),KviOption_boolNotifierFlashing);
-	KviBoolSelector * b2 = addBoolSelector(0,2,0,2,__tr2qs_ctx("Enable notifier window fade effect","options"),KviOption_boolNotifierFading);
-
-	KviTalGroupBox *g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Advanced configuration","options"));
-	connect(b,SIGNAL(toggled(bool)),g,SLOT(setEnabled(bool)));
-
-	connect(b,
-		SIGNAL(toggled(bool)),
-		addUIntSelector(g,__tr2qs_ctx("Default auto hiding time for messages (0 to disable)","options"),
-				KviOption_uintNotifierAutoHideTime,
-				0,86400,30,KVI_OPTION_BOOL(KviOption_boolEnableNotifier)),
-		SLOT(setEnabled(bool)));
-
-	connect(b2,
-		SIGNAL(toggled(bool)),
-		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while active (mouseover)","options"),
-				KviOption_uintNotifierActiveTransparency,
-				0,100,90,KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
-		SLOT(setEnabled(bool)));
-
-	connect(b2,
-		SIGNAL(toggled(bool)),
-		addUIntSelector(g,__tr2qs_ctx("Notifier window opacity while inactive","options"),
-				KviOption_uintNotifierInactiveTransparency,
-				0,100,40,KVI_OPTION_BOOL(KviOption_boolNotifierFading)),
-		SLOT(setEnabled(bool)));
-
-	addRowSpacer(0,4,0,4);
-}
-
-KviNotifierOptionsWidget::~KviNotifierOptionsWidget()
-{
-}
-
-
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_optw_notify.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
