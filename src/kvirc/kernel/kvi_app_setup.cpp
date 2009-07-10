@@ -356,7 +356,7 @@ void KviApp::setupUriAssociations(const char * proto)
 
 	KviStr key=storedKey;
 
-	KviQCString tmp;
+	QByteArray tmp;
 	QString appPath = applicationFilePath();
 	appPath.replace('/',"\\");
 
@@ -392,7 +392,7 @@ void KviApp::setupFileAssociations()
 	HKEY hKey;
 	DWORD err;
 
-	KviQCString tmp;
+	QByteArray tmp;
 	QString appPath = applicationFilePath();
 	appPath.replace('/',"\\");
 
