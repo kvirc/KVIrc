@@ -159,7 +159,7 @@ KviNotifierWindow::~KviNotifierWindow()
 	stopBlinkTimer();
 	stopAutoHideTimer();
 	delete m_pWndBorder;
-	delete m_pWndTabs;
+	m_pWndTabs->deleteLater();
 }
 
 void KviNotifierWindow::updateGui()
@@ -1052,7 +1052,7 @@ void KviNotifierWindow::slotTabCloseRequested(int index)
 		KviNotifierWindowTab *tab = (KviNotifierWindowTab*) m_pWndTabs->widget(index);
 		m_pWndTabs->removeTab(index);
 		if(tab)
-			delete tab;
+			tab->deleteLater();
 
 		if(m_pWndTabs->count()==0)
 			hideNow();

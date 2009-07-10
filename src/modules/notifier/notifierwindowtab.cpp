@@ -77,9 +77,9 @@ KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QTabWidget *parent)
 KviNotifierWindowTab::~KviNotifierWindowTab()
 {
 	if(m_pVBox)
-		delete m_pVBox;
+		m_pVBox->deleteLater();
 	if(m_pVWidget)
-		delete m_pVWidget;
+		m_pVWidget->deleteLater();
 }
 
 void KviNotifierWindowTab::appendMessage(KviNotifierMessage * m)
@@ -90,7 +90,7 @@ void KviNotifierWindowTab::appendMessage(KviNotifierMessage * m)
 		QLayoutItem* tmp=m_pVBox->takeAt(0);
 		KviNotifierMessage* tmp2=(KviNotifierMessage*)tmp->widget();
 		if(tmp2)
-			delete tmp2;
+			tmp2->deleteLater();
 	}
 }
 

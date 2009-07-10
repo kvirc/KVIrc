@@ -55,11 +55,11 @@ KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 KviNotifierMessage::~KviNotifierMessage()
 {
 	if(m_pLabel0)
-		delete m_pLabel0;
+		m_pLabel0->deleteLater();
 	if(m_pLabel1)
-		delete m_pLabel1;
+		m_pLabel1->deleteLater();
 	if(m_pHBox)
-		delete m_pHBox;
+		m_pHBox->deleteLater();
 }
 
 //TODO merge this code with kvi_topicw.cpp's one
