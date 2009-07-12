@@ -121,6 +121,9 @@ void KviNotifierWindowTab::mouseDoubleClickEvent(QMouseEvent *)
 
 	if(m_pWnd->mdiParent())
 	{
+		m_pWnd->frame()->raise();
+		m_pWnd->frame()->setFocus();
+		m_pWnd->frame()->setWindowState(m_pWnd->frame()->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
 		if(!m_pWnd->frame()->isVisible())
 			m_pWnd->frame()->show();
 	}
