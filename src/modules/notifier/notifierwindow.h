@@ -127,6 +127,7 @@ protected:
 public slots:
 	void hideNow();
 	void toggleLineEdit();
+	void slotTabCloseRequested(int index);
 protected slots:
 	void blink();
 	void heartbeat();
@@ -141,7 +142,6 @@ protected slots:
 	void disableUntilKVIrcRestarted();
 	void disablePermanently();
 	void progressUpdate();
-	void slotTabCloseRequested(int index);
 private:
 	void contextPopup(const QPoint &pos);
 	void startBlinking();

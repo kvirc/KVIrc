@@ -45,6 +45,7 @@ KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QTabWidget *parent)
 	{
 		m_label = m_pWnd->windowName();
 		connect(pWnd,SIGNAL(windowNameChanged()),this,SLOT(labelChanged()));
+		connect(pWnd,SIGNAL(destroyed()),this,SLOT(closeMe()));
 	} else {
 		m_label = (QString)"----";
 	}
@@ -125,6 +126,19 @@ void KviNotifierWindowTab::mouseDoubleClickEvent(QMouseEvent *)
 	}
 
 	m_pWnd->frame()->setActiveWindow(m_pWnd);
+}
+
+void KviNotifierWindowTab::closeMe()
+{
+	//our window has been closed
+	if(m_pParent && g_pNotifierWindow)
+	{
+		int index = m_pParent->indexOf(this);
+		if(index!=-1)
+		{
+			g_pNotifierWindow->slotTabCloseRequested(index);
+		}
+	}
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
