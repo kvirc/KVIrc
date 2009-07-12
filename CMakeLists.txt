@@ -878,6 +878,10 @@ ENDIF()
 # Search for subdirectories
 SUBDIRS(src data po scripts doc)
 
+#install additional resources for win32
+IF(WIN32)
+	ADD_SUBDIRECTORY(win32build)
+ENDIF()
 ###############################################################################
 #
 # The API documentation target
