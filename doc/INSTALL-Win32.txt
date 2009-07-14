@@ -65,6 +65,17 @@ Requisites:
       Get it at http://code.google.com/p/phonon-vlc-mplayer/; it needs some tweaking to work;
       Please refer to the "Getting phonon to work with mplayer frontend" at the end of this document.
 
+  - Subversion cli for windows:
+	  [Versioning tool; needed for cmake to automatically set the correct revision number in kvirc build]
+	  Any version will work; We advice you to use the version you can find at http://subversion.tigris.org/servlets/ProjectDocumentList?FolderID=8100 .
+	  The package you want is called "Setup-Subversion-1.6.3.msi" (version numbers may vary).
+	  If you don't want to install subversion cli because you are already using another subversion tool (like TortoiseSvn), you can just force the correct svn revision passing to cmake the -DMANUAL_REVISION=xxxx parameter.
+
+  - Nullsoft scriptable install system (NSIS)
+	  [Installer packages creator; needed if you want to create an installer package for kvirc]
+      Get it at http://nsis.sourceforge.net/Download ; the package you want is called "nsis-2.45-setup.exe" (version numbers may vary).
+	  Please note that the kvirc nsis script doesn't support -DCOEXISTENCE cmake flag by now, so you'll need to disable it before compiling if you want to create an installer package.
+	  
 Further reccomended download if you plan to develop KVIrc:
 
   - GNU Debugger (gdb) for Win32:
@@ -94,7 +105,8 @@ Now you have to define some environmental variable:
 
   PATH
   Add to the system PATH the bin directories of CMake, Qt, MinGW. If you plan to use gdb and/or straceNT, add their bin directories too. Example:
-  C:\Programmi\CMake 2.6\bin;C:\QT\4.4.0\BIN\;C:\MINGW\BIN
+  C:\Program Files\CMake 2.6\bin;C:\QT\4.4.0\BIN\;C:\MINGW\BIN
+  Note: if you installed subversion, it probably already added itself to the path.
 
 
 Now you should be ready to compile KVIrc.
@@ -111,10 +123,15 @@ Example:
   - download kvirc's trunk from svn into c:\kvirc
   - create directory c:\kvirc\build
   - open a command promp, browse to "c:\kvirc\build" and run "cmake .. " (without quotes; .. refers to the parent directory, c:\kvirc, that contains kvirc source code); alternatively, use the cmake gui specifing "c:\kvirc\" as "where is the source code" and "c:\kvirc\build" as "where to build the binaries" and press "configure".
+    Note: when trying to configure kvirc using the cmake gui for the first time, you'll be asked for the type of files that cmake has to create: choose "MinGW Makefiles"; if you're using cmake from the commandline, you need to pass to cmake the option -G "MinGW Makefiles".
   - cmake will check your system and create a set of Makefiles you'll need later to compile KVIrc. If it's complaining about some missing library it can't find, probably you haven't setted up properly the environmental variables needed. Refers to the errors to understand what you need to fix.
   - once you get cmake to create the complete set of Makefiles, simply exec a "make" (exactly as used to do under unix); KVIrc will start to get compiled.
   - once the compilation ends, exec a "make install" (exactly as you use to do under unix); the installation system should create a "release" directory (in our example: c:\kvirc\build\release) and move kvirc compiled binaries in there.
   - simply running kvirc from that directory should work :) . If instead it's complaining of some missing dll's, you may need to copy those dlls into kvirc binary directory (in our example: c:\kvirc\build\release) or to get those dlls recognized and loaded automatically from you o.s.
+  - if you want to create an installer package, you need to:
+	1) fill the binary directory in our example: c:\kvirc\build\release) with all the files that cmake doesn't create: needed dlls / locale translations / help files / qt plugins
+    2)run the KVIrc.nsi script from the build directory (c:\kvirc\build in our example) . Just compile it using nsis and an installer package will be generated.
+  Note: the nsis script doesn't support -DCOEXISTENCE cmake flag by now, so you'll need to disable it before compiling if you want to create an installer package.
 
 
 
