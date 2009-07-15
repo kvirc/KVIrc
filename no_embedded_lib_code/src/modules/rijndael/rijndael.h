@@ -24,6 +24,8 @@
 //
 //=============================================================================
 
+// THIS FILE IS LARGELY UNUSED IF YOU COMPILE WITH »COMPILE_NO_EMBEDDED_CODE«!
+
 //
 // Another implementation of the Rijndael cipher.
 // This is intended to be an easily usable library file.
@@ -84,6 +86,17 @@
 
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 
+#define RIJNDAEL_SUCCESS 0
+#define RIJNDAEL_UNSUPPORTED_MODE -1
+#define RIJNDAEL_UNSUPPORTED_DIRECTION -2
+#define RIJNDAEL_UNSUPPORTED_KEY_LENGTH -3
+#define RIJNDAEL_BAD_KEY -4
+#define RIJNDAEL_NOT_INITIALIZED -5
+#define RIJNDAEL_BAD_DIRECTION -6
+#define RIJNDAEL_CORRUPTED_DATA -7
+
+#ifndef WANT_NO_EMBEDDED_CODE
+
 #define _MAX_KEY_COLUMNS (256/32)
 #define _MAX_ROUNDS      14
 //#define BITSPERBLOCK        128 /* Default number of bits in a cipher block */
@@ -94,14 +107,6 @@ typedef unsigned char  UINT8;
 typedef unsigned int   UINT32;
 typedef unsigned short UINT16;
 
-#define RIJNDAEL_SUCCESS 0
-#define RIJNDAEL_UNSUPPORTED_MODE -1
-#define RIJNDAEL_UNSUPPORTED_DIRECTION -2
-#define RIJNDAEL_UNSUPPORTED_KEY_LENGTH -3
-#define RIJNDAEL_BAD_KEY -4
-#define RIJNDAEL_NOT_INITIALIZED -5
-#define RIJNDAEL_BAD_DIRECTION -6
-#define RIJNDAEL_CORRUPTED_DATA -7
 
 class Rijndael
 {
@@ -148,6 +153,8 @@ protected:
 	void encrypt(const UINT8 a[16], UINT8 b[16]);
 	void decrypt(const UINT8 a[16], UINT8 b[16]);
 };
+
+#endif // WANT_NO_EMBEDDED_CODE
 
 #endif // COMPILE_CRYPT_SUPPORT
 

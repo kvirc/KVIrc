@@ -24,6 +24,9 @@
 //
 //=============================================================================
 
+// Compile this only if KVIrc is compiled without »COMPILE_NO_EMBEDDED_CODE«.
+#ifndef WANT_NO_EMBEDDED_CODE
+
 //
 // This code is adapted from the MircCryption engine suite by Dark Raichu
 // Original comments follow.
@@ -137,5 +140,7 @@ inline unsigned int BlowFish::F(unsigned int ui)
 }
 
 #endif //COMPILE_CRYPT_SUPPORT
+
+#endif // WANT_NO_EMBEDDED_CODE
 
 #endif //!_BLOWFISH_H_
