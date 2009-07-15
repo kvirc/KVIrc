@@ -301,7 +301,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolStripControlCodesInLogs 207			/* log */
 #define KviOption_boolEnableTrayIconFlashing 208
 #define KviOption_boolUseFlatClassicWindowListButtons 209
-#define KviOption_boolShowTreeWindowListHeader 210
+#define KviOption_boolShowTreeWindowListHeader 210   //UNUSED
 #define KviOption_boolUseLevelBasedTrayNotification 211
 #define KviOption_boolMuteAllSounds 212
 #define KviOption_boolCreateMinimizedChannels 213
@@ -324,6 +324,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolUseFullWordHighlighting 230 /* highlight */
 #define KviOption_boolZshLikeNickCompletion 231
 #define KviOption_boolStripMsgTypeInLogs 232			/* log */
+
+//210 is unused, fell free to use it instead of adding a new one
 #define KVI_NUM_BOOL_OPTIONS 233
 
 
