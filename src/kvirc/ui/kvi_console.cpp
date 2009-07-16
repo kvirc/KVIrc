@@ -958,7 +958,7 @@ void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const
 		if(u->getProperty("avatar",szAvatar))
 		{
 			// the user has a default avatar...
-			KviAvatar * avatar = g_pIconManager->getAvatar(QString(),szAvatar);
+			KviAvatar * avatar = g_pIconManager->getAvatar(szAvatar,KviFileUtils::extractFileName(szAvatar));
 			if(avatar)
 			{
 				e->setAvatar(avatar);
