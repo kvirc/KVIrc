@@ -25,7 +25,7 @@
 //=============================================================================
 
 // Compile this only if KVIrc is compiled without »COMPILE_NO_EMBEDDED_CODE«.
-#ifndef WANT_NO_EMBEDDED_CODE
+#ifndef COMPILE_NO_EMBEDDED_CODE
 
 //
 // This code is adapted from the MircCryption engine suite by Dark Raichu

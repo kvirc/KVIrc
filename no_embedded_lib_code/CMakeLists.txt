@@ -763,9 +763,9 @@ ENDIF()
 #   cmake.
 ############################################################################
 OPTION(WANT_NO_EMBEDDED_CODE "Don't use embedded copies of code available from libraries (potential security issue)" OFF)
-IF(COMPILE_NO_EMBEDDED_CODE)
+IF(WITH_NO_EMBEDDED_CODE)
     SET(WANT_NO_EMBEDDED_CODE ON)
-ENDIF(COMPILE_NO_EMBEDDED_CODE)
+ENDIF(WITH_NO_EMBEDDED_CODE)
 
 IF(WANT_NO_EMBEDDED_CODE)
     find_package(PkgConfig REQUIRED)
@@ -773,6 +773,8 @@ IF(WANT_NO_EMBEDDED_CODE)
     # needed for Rijndael/AES replacement and friends
     pkg_check_modules(CRYPTOPP REQUIRED libcrypto++)
     LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
+    #SET(COMPILE_NO_EMBEDDED_CODE 1)
+    #ADD_DEFINITIONS(-DCOMPILE_NO_EMBEDDED_CODE)
 ENDIF(WANT_NO_EMBEDDED_CODE)
 
 ############################################################################

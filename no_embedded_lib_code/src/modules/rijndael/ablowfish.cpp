@@ -22,8 +22,8 @@
 //
 //=============================================================================
 
-// Compile this only if »WANT_NO_EMBEDDED_CODE« isn't set
-#ifndef WANT_NO_EMBEDDED_CODE
+// Compile this only if »COMPILE_NO_EMBEDDED_CODE« isn't set
+#ifndef COMPILE_NO_EMBEDDED_CODE
 
 #include "ablowfish.h"
 #include "kvi_memmove.h"
@@ -636,4 +636,4 @@ void BlowFish::Decrypt(const unsigned char* in, unsigned char* out, unsigned int
 
 #endif //COMPILE_CRYPT_SUPPORT
 
-#endif // WANT_NO_EMBEDDED_CODE
+#endif // COMPILE_NO_EMBEDDED_CODE

@@ -24,8 +24,6 @@
 //
 //=============================================================================
 
-// THIS FILE IS LARGELY UNUSED IF YOU COMPILE WITH »COMPILE_NO_EMBEDDED_CODE«!
-
 //
 // Another implementation of the Rijndael cipher.
 // This is intended to be an easily usable library file.
@@ -84,7 +82,7 @@
 
 #include "kvi_settings.h"
 
-#if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
+#if (defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN) ) && !defined(COMPILE_NO_EMBEDDED_CODE)
 
 #define RIJNDAEL_SUCCESS 0
 #define RIJNDAEL_UNSUPPORTED_MODE -1
@@ -94,8 +92,6 @@
 #define RIJNDAEL_NOT_INITIALIZED -5
 #define RIJNDAEL_BAD_DIRECTION -6
 #define RIJNDAEL_CORRUPTED_DATA -7
-
-#ifndef WANT_NO_EMBEDDED_CODE
 
 #define _MAX_KEY_COLUMNS (256/32)
 #define _MAX_ROUNDS      14
@@ -153,8 +149,6 @@ protected:
 	void encrypt(const UINT8 a[16], UINT8 b[16]);
 	void decrypt(const UINT8 a[16], UINT8 b[16]);
 };
-
-#endif // WANT_NO_EMBEDDED_CODE
 
 #endif // COMPILE_CRYPT_SUPPORT
 
