@@ -22,8 +22,6 @@
 //
 //=============================================================================
 
-// In case »COMPILE_NO_EMBEDDED_CODE« is set, we use the methods from libcrypto++.
-#ifndef COMPILE_NO_EMBEDDED_CODE
 //
 // Another implementation of the Rijndael cipher.
 // This is intended to be an easily usable library file.
@@ -1628,5 +1626,3 @@ void Rijndael::decrypt(const UINT8 a[16], UINT8 b[16])
 }
 
 #endif // COMPILE_CRYPT_SUPPORT
-
-#endif // COMPILE_NO_EMBEDDED_CODE

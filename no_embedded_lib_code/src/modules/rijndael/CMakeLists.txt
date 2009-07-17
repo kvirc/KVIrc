@@ -2,17 +2,23 @@
 
 SUBDIRS(caps)
 
-SET(kvirijndael_SRCS
-	libkvirijndael.cpp
-	rijndael.cpp
-	ablowfish.cpp
-)
-
 IF(WANT_NO_EMBEDDED_CODE)
-    ADD_DEFINITIONS("-DCOMPILE_NO_EMBEDDED_CODE -fexceptions")
-    SET(APPEND CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-undefined -Wl,--as-needed")
-    SET(APPEND CMAKE_MODULE_LINKER_FLAGS "-Wl,--no-undefined -Wl,--as-needed")
+    ADD_DEFINITIONS("-fexceptions")
+
+    SET(kvirijndael_SRCS 
+            libkvirijndael_cryptopp.cpp
+       )
+
+    SET(kvirijndael_MOC_HDRS
+            libkvirijndael_cryptopp.h
+       )
 ELSEIF(WANT_NO_EMBEDDED_CODE)
+    SET(kvirijndael_SRCS
+	    libkvirijndael.cpp
+	    rijndael.cpp
+	    ablowfish.cpp
+    )
+
     SET(kvirijndael_MOC_HDRS
 	    libkvirijndael.h
     )

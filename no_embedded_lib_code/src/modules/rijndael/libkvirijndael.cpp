@@ -4,9 +4,8 @@
 //   Creation date : Sat Now 4 2000 15:33:12 CEST by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C)      2000 Till Bush (buti@geocities.com)
+//   Copyright (C) 2000 Till Bush (buti@geocities.com)
 //   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
-//   Copyright ©        2009 Kai Wasserbäch <debian@carbon-project.org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,22 +24,7 @@
 //=============================================================================
 
 #include "libkvirijndael.h"
-
-// in case of COMPILE_NO_EMBEDDED_CODE, we #include the libcrypto++ headers here.
-#ifdef COMPILE_NO_EMBEDDED_CODE
-#warning "You're about to compile experimental code!"
-#include <crypto++/aes.h>
-#include <crypto++/blowfish.h>
-#include <crypto++/filters.h>
-#include <crypto++/modes.h>
-#include <crypto++/base64.h>
-#include <crypto++/hex.h>
-#include <string>
-#else  // COMPILE_NO_EMBEDDED_CODE
 #include "rijndael.h"
-#include "kvi_malloc.h"
-#include "kvi_memmove.h"
-#endif // COMPILE_NO_EMBEDDED_CODE
 
 #include "kvi_module.h"
 #include "kvi_debug.h"
@@ -64,7 +48,7 @@
 		originally written by Joan Daemen and Vincent Rijmen. The original Rijndael
 		description is available at http://www.esat.kuleuven.ac.be/~rijmen/rijndael/.[br]
 		It is a private key block cipher that has been designed to replace
-		the widely used DES, and it should provide at least a decent security against
+		the widely used DES, and it should provide at leas a decent security agains
 		common attacks. Theoretically the best attack that one can perform on this cipher
 		is the "brute force" attack that requires a really massive parallel computation:
 		actually out of the possibilities of a common "hacker".[br]
@@ -78,13 +62,13 @@
 
 
 #if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
+	#include "kvi_memmove.h"
+	#include "kvi_malloc.h"
 	#include "kvi_pointerlist.h"
 
 	static KviPointerList<KviCryptEngine> * g_pEngineList = 0;
 
-// Don't panic (;-)), the class is also defined for the libcrypto++ case, but it
-// is much cleaner to split them entirely.
-#ifndef COMPILE_NO_EMBEDDED_CODE
+
 	KviRijndaelEngine::KviRijndaelEngine()
 	: KviCryptEngine()
 	{
@@ -325,225 +309,44 @@
 		}
 		return true;
 	}
-#else  // COMPILE_NO_EMBEDDED_CODE
-    // The following lines contain a compatible (to the embedded version)
-    // implementation of the KviCryptEngine for Rijndael. Therefore the output
-    // gets encoded the same way (Hex or ASCII) as with the embedded version.
-    KviRijndaelEngine::KviRijndaelEngine()
-        : KviCryptEngine()
-    {
-        g_pEngineList->append(this);
-        m_szEncKey.clear();
-        m_szDecKey.clear();
-    }
 
-    KviRijndaelEngine::~KviRijndaelEngine()
-    {
-        g_pEngineList->removeRef(this);
-        m_szEncKey.clear();
-        m_szDecKey.clear();
-    }
+	static KviCryptEngine * allocRijndael128HexEngine()
+	{
+		return new KviRijndael128HexEngine();
+	}
 
-    bool KviRijndaelEngine::init(const char *encKey, int encKeyLen, const char *decKey, int decKeyLen)
-    {
-        if(encKey && (encKeyLen > 0))
-        {
-            if(!(decKey && (decKeyLen > 0)))
-            {
-                decKey    = encKey;
-                decKeyLen = encKeyLen;
-            }
-        } else {
-            if(decKey && decKeyLen)
-            {
-                encKey    = decKey;
-                encKeyLen = decKeyLen;
-            } else {
-                setLastError(__tr("Missing both encrypt and decrypt key: at least one is needed"));
-                return false;
-            }
-        }
+	static KviCryptEngine * allocRijndael192HexEngine()
+	{
+		return new KviRijndael192HexEngine();
+	}
 
-        int defKeyLen = this->getKeyLen();
-        
-        // The no-embedded approach is to use a string to pass the
-        // cropped/padded key around. We don't init the CryptoPP object here,
-        // that can be done neatly in one invocation in the encrypt/decrypt
-        // methods.
-        // This has the additional advantage, that we don't need memmove and
-        // memset.
-        m_szEncKey = encKey;
-        m_szDecKey = decKey;
-        
-        if(encKeyLen > defKeyLen)encKeyLen = defKeyLen;
-        m_szEncKey = m_szEncKey.substr(0,encKeyLen);
-        if(encKeyLen < defKeyLen)m_szEncKey.resize(defKeyLen);
+	static KviCryptEngine * allocRijndael256HexEngine()
+	{
+		return new KviRijndael256HexEngine();
+	}
 
-        if(decKeyLen > defKeyLen)decKeyLen = defKeyLen;
-        m_szDecKey = m_szDecKey.substr(0,decKeyLen);
-        if(decKeyLen < defKeyLen)m_szDecKey.resize(defKeyLen);
-        
-        if(m_szEncKey.empty() || m_szDecKey.empty()) {
-                return false;
-        } else {
-                return true;
-        }
-    }
+	static KviCryptEngine * allocRijndael128Base64Engine()
+	{
+		return new KviRijndael128Base64Engine();
+	}
 
-    KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,KviStr &outBuffer)
-    {
-        std::string cipher;
-        // byte is a typedef by Crypto++ for unsigned char.
-        byte key[m_szEncKey.size()];
+	static KviCryptEngine * allocRijndael192Base64Engine()
+	{
+		return new KviRijndael192Base64Engine();
+	}
 
-        for(unsigned int i=0;i<m_szEncKey.size();i++) {
-            key[i] = m_szEncKey.at(i);
-        }
+	static KviCryptEngine * allocRijndael256Base64Engine()
+	{
+		return new KviRijndael256Base64Engine();
+	}
 
-        // We hardcode CBC mode here, as the embedded code is always called in
-        // CBC mode too (see above, line 148), no need to use the external
-        // cipher object.
-        // The padding mode is enforced to be
-        // CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING, as the embedded code
-        // does only that.
-        try {
-            CryptoPP::CBC_Mode< CryptoPP::AES >::Encryption encryptor( key, sizeof(key) );
+	static void deallocRijndaelCryptEngine(KviCryptEngine * e)
+	{
+		delete e;
+	}
 
-            if(getEncoding() == KVI_RIJNDAEL_HEX) {
-                CryptoPP::StringSource(static_cast<std::string>(plainText), true,
-                    new CryptoPP::StreamTransformationFilter(
-                        encryptor, new CryptoPP::HexEncoder(
-                            new CryptoPP::StringSink( cipher )
-                            ), CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
-                        )
-                    );
-            }
-            else if(getEncoding() == KVI_RIJNDAEL_B64) {
-                CryptoPP::StringSource(static_cast<std::string>(plainText), true,
-                    new CryptoPP::StreamTransformationFilter(
-                        encryptor, new CryptoPP::Base64Encoder(
-                            new CryptoPP::StringSink( cipher )
-                            ), CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
-                        )
-                    );
-            }
-            else {
-                setLastError(__tr("Unable to determine output encoding (Hex or Base64)."));
-                return KviCryptEngine::EncryptError;
-            }
-        }
-        catch(CryptoPP::Exception e) {
-            QString staticErrTxt =
-            __tr("Crypto++ threw the following exception: ");
-            setLastError(staticErrTxt.append(QString(e.what())));
-            return KviCryptEngine::EncryptError;
-        }
 
-        outBuffer = KVI_TEXT_CRYPTESCAPE;
-        outBuffer.append(cipher.c_str());
-        return KviCryptEngine::Encrypted;
-    }
-    
-    KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,KviStr &plainText)
-    {
-        std::string plain;
-        byte key[m_szDecKey.size()];
-        
-        for(unsigned int i=0;i<m_szDecKey.size();i++) {
-            key[i] = m_szDecKey.at(i);
-        }
-
-        if(*inBuffer != KVI_TEXT_CRYPTESCAPE)
-        {
-        plainText = inBuffer;
-        return KviCryptEngine::DecryptOkWasPlainText;
-        }
-
-        inBuffer++;
-
-        if(!*inBuffer)
-        {
-        plainText = inBuffer;
-        return KviCryptEngine::DecryptOkWasPlainText; // empty buffer
-        }
-
-        try {
-            CryptoPP::CBC_Mode< CryptoPP::AES >::Decryption decryptor( key, sizeof(key) );
-            
-            if(getEncoding() == KVI_RIJNDAEL_HEX) {
-                CryptoPP::StringSource(static_cast<std::string>(inBuffer), true,
-                        new CryptoPP::HexDecoder(
-                            new CryptoPP::StreamTransformationFilter(
-                                decryptor, new CryptoPP::StringSink( plain ),
-                                CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
-                            )
-                        );
-            }
-            else if(getEncoding() == KVI_RIJNDAEL_B64) {
-                CryptoPP::StringSource(static_cast<std::string>(inBuffer), true,
-                        new CryptoPP::Base64Decoder(
-                            new CryptoPP::StreamTransformationFilter(
-                                decryptor, new CryptoPP::StringSink( plain ),
-                                CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
-                            )
-                        );
-            }
-            else {
-                setLastError(__tr("Unable to determine input encoding (Hex or Base64)."));
-                return KviCryptEngine::DecryptError;
-            }
-        }
-        catch(CryptoPP::Exception e) {
-            QString staticErrTxt =
-            __tr("Crypto++ threw the following exception: ");
-            setLastError(staticErrTxt.append(QString(e.what())));
-            return KviCryptEngine::DecryptError;
-        }
-        
-        plainText = plain.c_str();
-        return KviCryptEngine::DecryptOkWasEncrypted;
-    }
-#endif // COMPILE_NO_EMBEDDED_CODE
-
-// The following is needed in either case
-    static KviCryptEngine * allocRijndael128HexEngine()
-    {
-        return new KviRijndael128HexEngine();
-    }
-
-    static KviCryptEngine * allocRijndael192HexEngine()
-    {
-        return new KviRijndael192HexEngine();
-    }
-
-    static KviCryptEngine * allocRijndael256HexEngine()
-    {
-        return new KviRijndael256HexEngine();
-    }
-
-    static KviCryptEngine * allocRijndael128Base64Engine()
-    {
-        return new KviRijndael128Base64Engine();
-    }
-
-    static KviCryptEngine * allocRijndael192Base64Engine()
-    {
-        return new KviRijndael192Base64Engine();
-    }
-
-    static KviCryptEngine * allocRijndael256Base64Engine()
-    {
-        return new KviRijndael256Base64Engine();
-    }
-
-    static void deallocRijndaelCryptEngine(KviCryptEngine * e)
-    {
-        delete e;
-    }
-
-// The same as above for the Blowfish implementation.
-#ifndef COMPILE_NO_EMBEDDED_CODE
-       // Mircryption stuff
+	// Mircryption stuff
 
 	#include "ablowfish.h"
 
@@ -881,185 +684,13 @@
 
 		return true;
 	}
-#else  // COMPILE_NO_EMBEDDED_CODE
-// Again a compatible (to the embedded version) implementation of the
-// KviCryptEngine, this time for Blowfish.
-    KviMircryptionEngine::KviMircryptionEngine()
-    : KviCryptEngine()
-    {
-        g_pEngineList->append(this);
-        m_szEncKey.clear();
-        m_szDecKey.clear();
-    }
 
-    KviMircryptionEngine::~KviMircryptionEngine()
-    {
-        g_pEngineList->removeRef(this);
-        m_szEncKey.clear();
-        m_szDecKey.clear();
-    }
 
-bool KviMircryptionEngine::init(const char * encKey,int encKeyLen,const char * decKey,int decKeyLen)
-{
-    if(encKey && (encKeyLen > 0))
-    {
-        if(!(decKey && (decKeyLen > 0)))
-        {
-            decKey = encKey;
-            decKeyLen = encKeyLen;
-        } // else all
-    } else {
-        // no encrypt key specified...
-        if(decKey && decKeyLen)
-        {
-            encKey = decKey;
-            encKeyLen = decKeyLen;
-        } else {
-            // both keys missing
-            setLastError(__tr("Missing both encrypt and decrypt key: at least one is needed"));
-            return false;
-        }
-    }
+	static KviCryptEngine * allocMircryptionEngine()
+	{
+		return new KviMircryptionEngine();
+	}
 
-    m_szEncKey = std::string(encKey,encKeyLen);
-    m_szDecKey = std::string(decKey,decKeyLen);
-    if((m_szEncKey.find("cbc:",0,4) != std::string::npos) && (m_szEncKey.size() > 4)) {
-        m_szEncKey.substr(4);
-        m_bEncryptCBC = true;
-    }
-    else {
-        m_bEncryptCBC = false;
-    }
-    
-    if((m_szDecKey.find("cbc:",0,4) != std::string::npos) && (m_szDecKey.size() > 4)) {
-        m_szDecKey.substr(4);
-        m_bDecryptCBC = true;
-    }
-    else {
-        m_bDecryptCBC = false;
-    }
-
-    return true;
-}
-
-KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * plainText,KviStr &outBuffer)
-{
-    std::string cipher;
-    byte key[m_szEncKey.size()];
-
-    for(unsigned int i=0;i<m_szEncKey.size();i++) {
-        key[i] = m_szEncKey.at(i);
-    }
-
-    if(m_bEncryptCBC)
-    {
-        try {
-            CryptoPP::CBC_Mode< CryptoPP::Blowfish >::Encryption encryptor( key, sizeof(key) );
-            CryptoPP::StringSource(static_cast<std::string>(plainText), true,
-                new CryptoPP::StreamTransformationFilter(
-                    encryptor, new CryptoPP::Base64Encoder(
-                        new CryptoPP::StringSink( cipher )
-                        ), CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
-                    )
-                );
-        }
-        catch(CryptoPP::Exception e) {
-            QString staticErrTxt =
-            __tr("Crypto++ threw the following exception: ");
-            setLastError(staticErrTxt.append(QString(e.what())));
-            return KviCryptEngine::EncryptError;
-        }
-    } else {
-        try {
-            CryptoPP::ECB_Mode< CryptoPP::Blowfish >::Encryption encryptor( key, sizeof(key) );
-            CryptoPP::StringSource(static_cast<std::string>(plainText), true,
-                new CryptoPP::StreamTransformationFilter(
-                    encryptor, new CryptoPP::Base64Encoder(
-                        new CryptoPP::StringSink( cipher )
-                        ), CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
-                    )
-                );
-        }
-        catch(CryptoPP::Exception e) {
-            QString staticErrTxt =
-            __tr("Crypto++ threw the following exception: ");
-            setLastError(staticErrTxt.append(QString(e.what())));
-            return KviCryptEngine::EncryptError;
-        }
-    }
-    
-    outBuffer = "+OK ";
-    outBuffer.append(cipher.c_str());
-    
-    return KviCryptEngine::Encrypted;
-}
-
-KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffer,KviStr &plainText)
-{
-    std::string plain;
-    std::string szIn = inBuffer;
-    byte key[m_szDecKey.size()];
-    
-    // various old versions
-    if(kvi_strEqualCSN(inBuffer,"mcps ",5))
-        szIn.substr(5);
-    else if(kvi_strEqualCSN(inBuffer,"+OK ",4))
-        szIn.substr(4);
-    else {
-        plainText = szIn.c_str();
-        return KviCryptEngine::DecryptOkWasPlainText;
-    }
-
-    for(unsigned int i=0;i<m_szDecKey.size();i++) {
-        key[i] = m_szDecKey.at(i);
-    }
-    
-    if(m_bDecryptCBC)
-    {
-        try {
-            CryptoPP::CBC_Mode< CryptoPP::Blowfish >::Decryption decryptor( key, sizeof(key) );
-            CryptoPP::StringSource(szIn, true,
-                new CryptoPP::Base64Decoder(
-                    new CryptoPP::StreamTransformationFilter(
-                        decryptor, new CryptoPP::StringSink( plain ),
-                        CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
-                    )
-                );
-        }
-        catch(CryptoPP::Exception e) {
-            QString staticErrTxt =
-            __tr("Crypto++ threw the following exception: ");
-            setLastError(staticErrTxt.append(QString(e.what())));
-            return KviCryptEngine::DecryptError;
-        }
-    } else {
-        try {
-            CryptoPP::ECB_Mode< CryptoPP::Blowfish >::Decryption decryptor( key, sizeof(key) );
-            CryptoPP::StringSource(szIn, true,
-                new CryptoPP::Base64Decoder(
-                    new CryptoPP::StreamTransformationFilter(
-                        decryptor, new CryptoPP::StringSink( plain ),
-                        CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
-                    )
-                );
-        }
-        catch(CryptoPP::Exception e) {
-            QString staticErrTxt =
-            __tr("Crypto++ threw the following exception: ");
-            setLastError(staticErrTxt.append(QString(e.what())));
-            return KviCryptEngine::DecryptError;
-        }
-    }
-    
-    plainText = plain.c_str();
-    return KviCryptEngine::DecryptOkWasEncrypted;
-}
-#endif // COMPILE_NO_EMBEDDED_CODE
-
-static KviCryptEngine * allocMircryptionEngine()
-{
-    return new KviMircryptionEngine();
-}
 #endif
 
 
@@ -1088,7 +719,7 @@ static bool rijndael_module_init(KviModule * m)
 
 	KviCryptEngineDescription * d = new KviCryptEngineDescription;
 	d->szName = "Rijndael128Hex";
-    d->szAuthor = "Szymon Stefanek, Kai Wasserbäch";
+	d->szAuthor = "Szymon Stefanek";
 	d->szDescription.sprintf(format.ptr(),__tr("hexadecimal"),128);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
@@ -1098,7 +729,7 @@ static bool rijndael_module_init(KviModule * m)
 
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael192Hex";
-    d->szAuthor = "Szymon Stefanek, Kai Wasserbäch";
+	d->szAuthor = "Szymon Stefanek";
 	d->szDescription.sprintf(format.ptr(),__tr("hexadecimal"),192);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
@@ -1108,7 +739,7 @@ static bool rijndael_module_init(KviModule * m)
 
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael256Hex";
-    d->szAuthor = "Szymon Stefanek, Kai Wasserbäch";
+	d->szAuthor = "Szymon Stefanek";
 	d->szDescription.sprintf(format.ptr(),__tr("hexadecimal"),256);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
@@ -1118,7 +749,7 @@ static bool rijndael_module_init(KviModule * m)
 
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael128Base64";
-    d->szAuthor = "Szymon Stefanek, Kai Wasserbäch";
+	d->szAuthor = "Szymon Stefanek";
 	d->szDescription.sprintf(format.ptr(),__tr("base64"),128);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
@@ -1128,7 +759,7 @@ static bool rijndael_module_init(KviModule * m)
 
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael192Base64";
-    d->szAuthor = "Szymon Stefanek, Kai Wasserbäch";
+	d->szAuthor = "Szymon Stefanek";
 	d->szDescription.sprintf(format.ptr(),__tr("base64"),192);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
@@ -1138,7 +769,7 @@ static bool rijndael_module_init(KviModule * m)
 
 	d = new KviCryptEngineDescription;
 	d->szName = "Rijndael256Base64";
-    d->szAuthor = "Szymon Stefanek, Kai Wasserbäch";
+	d->szAuthor = "Szymon Stefanek";
 	d->szDescription.sprintf(format.ptr(),__tr("base64"),256);
 	d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
 			KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
@@ -1149,7 +780,7 @@ static bool rijndael_module_init(KviModule * m)
 
 	d = new KviCryptEngineDescription;
 	d->szName = "Mircryption";
-    d->szAuthor = "Szymon Stefanek, Kai Wasserbäch";
+	d->szAuthor = "Szymon Stefanek";
 	d->szDescription = __tr("Popular cryptographic engine based on the\n" \
 		"old Blowfish encryption algorithm.\n" \
 		"The text is first encrypted with Blowfish \n" \
@@ -1203,7 +834,7 @@ static bool rijndael_module_can_unload(KviModule *)
 KVIRC_MODULE(
 	"Rijndael crypt engine",
 	"4.0.0",
-             "Szymon Stefanek <pragma at kvirc dot net>, Kai Wasserbäch <debian@carbon-project.org" ,
+	"Szymon Stefanek <pragma at kvirc dot net>" ,
 	"Exports the rijndael crypt engine",
 	rijndael_module_init ,
 	rijndael_module_can_unload,

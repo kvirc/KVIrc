@@ -82,16 +82,7 @@
 
 #include "kvi_settings.h"
 
-#if (defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN) ) && !defined(COMPILE_NO_EMBEDDED_CODE)
-
-#define RIJNDAEL_SUCCESS 0
-#define RIJNDAEL_UNSUPPORTED_MODE -1
-#define RIJNDAEL_UNSUPPORTED_DIRECTION -2
-#define RIJNDAEL_UNSUPPORTED_KEY_LENGTH -3
-#define RIJNDAEL_BAD_KEY -4
-#define RIJNDAEL_NOT_INITIALIZED -5
-#define RIJNDAEL_BAD_DIRECTION -6
-#define RIJNDAEL_CORRUPTED_DATA -7
+#if defined(COMPILE_CRYPT_SUPPORT) || defined(Q_MOC_RUN)
 
 #define _MAX_KEY_COLUMNS (256/32)
 #define _MAX_ROUNDS      14
@@ -103,6 +94,14 @@ typedef unsigned char  UINT8;
 typedef unsigned int   UINT32;
 typedef unsigned short UINT16;
 
+#define RIJNDAEL_SUCCESS 0
+#define RIJNDAEL_UNSUPPORTED_MODE -1
+#define RIJNDAEL_UNSUPPORTED_DIRECTION -2
+#define RIJNDAEL_UNSUPPORTED_KEY_LENGTH -3
+#define RIJNDAEL_BAD_KEY -4
+#define RIJNDAEL_NOT_INITIALIZED -5
+#define RIJNDAEL_BAD_DIRECTION -6
+#define RIJNDAEL_CORRUPTED_DATA -7
 
 class Rijndael
 {
