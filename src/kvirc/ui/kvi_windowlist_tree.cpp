@@ -268,13 +268,16 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 	KviTreeWindowListItem * it = (KviTreeWindowListItem *)itemAt(e->pos());
 	if(it)
 	{
+		//clicked over an item
 		KviWindow* wnd = it->kviWindow();
 		if(e->button() & Qt::LeftButton)
 		{
 			if(e->modifiers() & Qt::ShiftModifier)
 			{
+				//shitf+left click: close window
 				wnd->delayedClose();
 			} else {
+				//left click activate/deactivate window
 				if((g_pActiveWindow != wnd) || (wnd->isMinimized()))
 				{
 					g_pFrame->setActiveWindow(wnd);
@@ -284,10 +287,16 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 
 		} else if(e->button() & Qt::RightButton)
 		{
+			//right click: open popup
 			wnd->contextPopup();
-		}
+		}else if(e->button() & Qt::MidButton)
+		{
+			//mid click: close window
+			wnd->delayedClose();
+ 		}
 
 	} else {
+		//clicked on empty space
 		if(e->button() & Qt::RightButton)
 		{
 			KviTalPopupMenu* pPopup=new KviTalPopupMenu();
