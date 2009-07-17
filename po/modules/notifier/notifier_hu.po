@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: notifier_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-03 15:21+0200\n"
+"POT-Creation-Date: 2009-07-17 22:38+0200\n"
 "PO-Revision-Date: 2007-08-23 18:55+0200\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -16,54 +16,58 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1227
+#: src/modules/notifier/notifierwindow.cpp:895
 msgid "1 Hour"
 msgstr "1 Óra"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1223
+#: src/modules/notifier/notifierwindow.cpp:891
 msgid "1 Minute"
 msgstr "1 Perc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1225
+#: src/modules/notifier/notifierwindow.cpp:893
 msgid "15 Minutes"
 msgstr "15 Perc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1226
+#: src/modules/notifier/notifierwindow.cpp:894
 msgid "30 Minutes"
 msgstr "30 Perc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1224
+#: src/modules/notifier/notifierwindow.cpp:892
 msgid "5 Minutes"
 msgstr "5 Perc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1232
+#: src/modules/notifier/notifierwindow.cpp:900
 msgid "Disable"
 msgstr "Letiltás"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1220
+#: src/modules/notifier/notifierwindow.cpp:888
 msgid "Hide"
 msgstr "Elrejt"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1230
+#: src/modules/notifier/notifierwindow.cpp:898
 msgid "Permanently (Until Explicitly Enabled)"
 msgstr "Végleg (amíg újra engedélyezve nem lesz)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:154
+#: src/modules/notifier/notifierwindow.cpp:887
+msgid "Show/Hide input line"
+msgstr ""
+
+#: src/modules/notifier/libkvinotifier.cpp:154
 msgid "The -t switch expects a timeout in seconds"
 msgstr "A -t kapcsoló időtúllépést vár másodpercekben"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:151
+#: src/modules/notifier/libkvinotifier.cpp:151
 msgid "The specified timeout is not valid, assuming 0"
 msgstr "A megadott időtúllépés érvénytelen, beállítás nullára"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/libkvinotifier.cpp:137
+#: src/modules/notifier/libkvinotifier.cpp:137
 msgid "The specified window does not exist"
 msgstr "A megadott ablak nem létezik"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1229
+#: src/modules/notifier/notifierwindow.cpp:897
 msgid "Until KVIrc is Restarted"
 msgstr "Amíg a KVIrcet újra nem indítod"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/notifier/notifierwindow.cpp:1322
+#: src/modules/notifier/notifierwindow.cpp:972
 msgid "Write text or commands to window"
 msgstr "Szöveg vagy parancs írása az ablakba"

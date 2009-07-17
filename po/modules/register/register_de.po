@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: register_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-03 15:21+0200\n"
+"POT-Creation-Date: 2009-07-17 22:38+0200\n"
 "PO-Revision-Date: 2009-04-15 01:18+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -16,64 +16,64 @@ msgstr ""
 "X-Generator: Lokalize 0.3\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:820
+#: src/modules/reguser/libkvireguser.cpp:820
 msgid "    Mask: %Q!%Q@%Q"
 msgstr "    Maske: %Q!%Q@%Q"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:834
+#: src/modules/reguser/libkvireguser.cpp:834
 msgid "    No properties"
 msgstr "    Keine Eigenschaften"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:831
+#: src/modules/reguser/libkvireguser.cpp:831
 msgid "    Property: %Q=%Q"
 msgstr "    Eigenschaft: %Q=%Q"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/regchan/libkviregchan.cpp:212
+#: src/modules/regchan/libkviregchan.cpp:212
 #, c-format
 msgid "    Property: %s=%s"
 msgstr "    Eigenschaft: %s=%s"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:816
+#: src/modules/reguser/libkvireguser.cpp:816
 msgid "    Warning: this user has no registration masks"
 msgstr "    Warnung: Dieser Benutzer hat keine Masken registriert"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:812
+#: src/modules/reguser/libkvireguser.cpp:812
 msgid " User: %c%Q"
 msgstr " Benutzer: %c%Q"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:246
+#: src/modules/reguser/dialog.cpp:246
 msgid "&Add Group..."
 msgstr "&Gruppe hinzufügen..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:371
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:241
+#: src/modules/reguser/dialog.cpp:241
+#: src/modules/reguser/edituser.cpp:371
 msgid "&Add..."
 msgstr "&Hinzufügen..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:380
+#: src/modules/reguser/edituser.cpp:380
 msgid "&Edit"
 msgstr "&Editieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:258
+#: src/modules/reguser/dialog.cpp:258
 msgid "&Edit..."
 msgstr "B&earbeiten..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:101
+#: src/modules/reguser/edituser.cpp:101
 msgid "&New"
 msgstr "&Neu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:113
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:274
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:487
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:287
+#: src/modules/reguser/dialog.cpp:287
+#: src/modules/reguser/edituser.cpp:113
+#: src/modules/reguser/edituser.cpp:274
+#: src/modules/reguser/edituser.cpp:487
 msgid "&OK"
 msgstr "&OK"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:105
+#: src/modules/reguser/edituser.cpp:105
 msgid "&Remove"
 msgstr "Entfe&rnen"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:260
+#: src/modules/reguser/edituser.cpp:260
 msgid ""
 "<center>This is the <b>hostname</b> that will match this user. <b>*</b> will "
 "match any hostname.</center>"
@@ -81,7 +81,7 @@ msgstr ""
 "<center>Dies ist der <b>Hostname</b>, der auf den Benutzer passen muss. "
 "<b>*</b> wird auf jeden Hostnamen passen.</center>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:242
+#: src/modules/reguser/edituser.cpp:242
 msgid ""
 "<center>This is the <b>nickname</b> that will match this user, default value "
 "is the registered name.</center>"
@@ -89,7 +89,7 @@ msgstr ""
 "<center>Dies ist der <b>Nickname</b>, der auf diesen Benutzer passen muss, "
 "Standard ist der registrierte Name.</center>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:251
+#: src/modules/reguser/edituser.cpp:251
 msgid ""
 "<center>This is the <b>username</b> that will match this user. <b>*</b> will "
 "match any username.</center>"
@@ -97,7 +97,7 @@ msgstr ""
 "<center>Dies ist der <b>Username</b>, der auf diesen Benutzer passen muss. "
 "<b>*</b> wird auf jeden Username passen.</center>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:93
+#: src/modules/reguser/dialog.cpp:93
 msgid ""
 "<center>This is the list of registered users. KVIrc can automatically "
 "recognize and associate properties to them.<br>Use the buttons on the right "
@@ -112,13 +112,13 @@ msgstr ""
 "Benachrichtigungsliste. Feineinstellungen der Benachrichtigungsliste werden "
 "durch editieren der Eintragseigenschaften vorgenommen.</center>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:401
+#: src/modules/reguser/edituser.cpp:401
 msgid "<center>You can enter a space separated list of nicknames.</center>"
 msgstr ""
 "<center>Sie können eine Liste von Nicknames eingeben, getrennt durch "
 "Leerzeichen.</center>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:112
+#: src/modules/reguser/wizard.cpp:112
 msgid ""
 "<p>A registered user is identified by one or more <b>IRC masks</b>.<br>A "
 "mask must be in the following form:<br><b>nickname!username@hostname</"
@@ -137,7 +137,7 @@ msgstr ""
 "\"<b>Editieren</b>\"-Knopf im Dialog Registrierte Benutzer. Sie müssen "
 "mindestens eine Maske angeben.</p>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:208
+#: src/modules/reguser/wizard.cpp:208
 msgid ""
 "<p>If you want to be notified when this user is online or goes offline, you "
 "must specify the list of nicknames that KVIrc will look for.<br><br>You can "
@@ -150,7 +150,7 @@ msgstr ""
 "Nicknames hinzufügen möchten, nutzen Sie den \"<b>Editieren</b>\"-Knopf im "
 "Dialog Registrierte Benutzer.</p>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:183
+#: src/modules/reguser/wizard.cpp:183
 msgid ""
 "<p>If you want to store an avatar image for this user, you can set it here. "
 "KVIrc will show the avatar in the userlist next to the user's nickname."
@@ -166,7 +166,7 @@ msgstr ""
 "hält und sie in der Benutzerliste skalieren muss, daher ist es besser, "
 "kleine Bilder mit geringer Auflösung zu nutzen.</p>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:254
+#: src/modules/reguser/wizard.cpp:254
 msgid ""
 "<p>That's it. The user registration has been completed.<br><br>Click "
 "\"<b>Finish</b>\" to close this dialog.</p>"
@@ -174,7 +174,7 @@ msgstr ""
 "<p>Das war's. Die Registrierung dieses Benutzers ist vollständig.<br><br> "
 "Klicken Sie auf \"<b>Beenden</b>\", um diesen Dialog zu schließen.</p>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:88
+#: src/modules/reguser/wizard.cpp:88
 msgid ""
 "<p>Welcome to the user registration wizard.<br>This process allows you to "
 "add an IRC user to the database and set properties for that user. KVIrc will "
@@ -198,94 +198,94 @@ msgstr ""
 "\", \"Dubya\".\n"
 "</p>"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:235
+#: src/modules/reguser/dialog.cpp:235
 msgid "Add (Wizard)..."
 msgstr "Hinzufügen (Assistent)..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:237
+#: src/modules/reguser/dialog.cpp:237
 msgid "Add a registered user by means of a user-friendly wizard."
 msgstr ""
 "Hinzufügen eines registrierten Benutzers durch einen benutzerfreundlichen "
 "Assistenten."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:218
+#: src/modules/reguser/wizard.cpp:218
 msgid "Add this user to the notify list"
 msgstr "Diesen Benutzer zur Benachrichtigungsliste hinzufügen"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:248
+#: src/modules/reguser/dialog.cpp:248
 msgid "Adds a new group"
 msgstr "Erstellt eine neue Gruppe"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:441
+#: src/modules/reguser/edituser.cpp:441
 msgid "All Properties..."
 msgstr "Alle Eigenschaften..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:426
+#: src/modules/reguser/edituser.cpp:426
 msgid "Avatar"
 msgstr "Avatar"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:777
+#: src/modules/reguser/dialog.cpp:777
 msgid "Can't export the registered users database: Write error."
 msgstr ""
 "Kann die registrierte-Benutzer-Datenbank nicht exportieren: Schreibfehler."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:884
+#: src/modules/reguser/dialog.cpp:884
 msgid "Can't import the registered users database: Read error."
 msgstr ""
 "Kann die registrierte-Benutzer-Datenbank nicht importieren: Lesefehler."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:698
+#: src/modules/reguser/dialog.cpp:698
 msgid "Can't open file %Q for writing."
 msgstr "Kann Datei %Q nicht zum Schreiben öffnen."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:798
+#: src/modules/reguser/dialog.cpp:798
 #, c-format
 msgid "Can't open file %s for reading."
 msgstr "Kann Datei %s nicht zum Lesen öffnen."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:117
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:278
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:486
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:292
+#: src/modules/reguser/dialog.cpp:292
+#: src/modules/reguser/edituser.cpp:117
+#: src/modules/reguser/edituser.cpp:278
+#: src/modules/reguser/edituser.cpp:486
 msgid "Cancel"
 msgstr "Abbrechen"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/regchan/libkviregchan.cpp:207
+#: src/modules/regchan/libkviregchan.cpp:207
 #, c-format
 msgid "Channel: %c%s@%s"
 msgstr "Channel: %c%s@%s"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:691
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:791
+#: src/modules/reguser/dialog.cpp:691
+#: src/modules/reguser/dialog.cpp:791
 msgid "Choose a Filename - KVIrc"
 msgstr "Dateinamen auswählen - KVIrc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:348
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:134
+#: src/modules/reguser/dialog.cpp:134
+#: src/modules/reguser/edituser.cpp:348
 msgid "Comment:"
 msgstr "Kommentar:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:494
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:497
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:498
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:500
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:502
+#: src/modules/reguser/dialog.cpp:494
+#: src/modules/reguser/dialog.cpp:497
+#: src/modules/reguser/dialog.cpp:498
+#: src/modules/reguser/dialog.cpp:500
+#: src/modules/reguser/dialog.cpp:502
 msgid "Default"
 msgstr "Standard"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:261
+#: src/modules/reguser/dialog.cpp:261
 msgid "Edit the first selected entry."
 msgstr "Bearbeitet den ersten ausgewählten Eintrag."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:454
+#: src/modules/reguser/edituser.cpp:454
 msgid "Enable ignore for this user"
 msgstr "Diesen Benutzer ignorieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:267
+#: src/modules/reguser/dialog.cpp:267
 msgid "Export To..."
 msgstr "Exportieren nach..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:270
+#: src/modules/reguser/dialog.cpp:270
 msgid ""
 "Export the selected entries to a file.<br>All the data associated with the "
 "selected registered users will be exported.<br>You (or anyone else) can "
@@ -295,56 +295,56 @@ msgstr ""
 "ausgewählten Eintrge werden exportiert.<br>Sie (oder andere) können diese "
 "Einträge später wieder mit dem \"Importieren\"-Knopf importieren."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:81
+#: src/modules/reguser/dialog.cpp:81
 msgid "Flags"
 msgstr "Flags"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:397
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:410
+#: src/modules/reguser/dialog.cpp:397
+#: src/modules/reguser/dialog.cpp:410
 msgid "Group name:"
 msgstr "Gruppenname:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:388
+#: src/modules/reguser/edituser.cpp:388
 msgid "Identity"
 msgstr "Identität"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:484
+#: src/modules/reguser/edituser.cpp:484
 msgid "Ignore"
 msgstr "Ignorieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:472
+#: src/modules/reguser/edituser.cpp:472
 msgid "Ignore CTCP messages"
 msgstr "CTCP-Nachrichten ignorieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:478
+#: src/modules/reguser/edituser.cpp:478
 msgid "Ignore DCCs"
 msgstr "DCCs ignorieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:466
+#: src/modules/reguser/edituser.cpp:466
 msgid "Ignore channel messages"
 msgstr "Channel-Nachrichten ignorieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:456
+#: src/modules/reguser/edituser.cpp:456
 msgid "Ignore features"
 msgstr "Ignorieren-Merkmale"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:475
+#: src/modules/reguser/edituser.cpp:475
 msgid "Ignore invites"
 msgstr "Einladungen ignorieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:469
+#: src/modules/reguser/edituser.cpp:469
 msgid "Ignore notice messages"
 msgstr "Notice-Nachrichten ignorieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:463
+#: src/modules/reguser/edituser.cpp:463
 msgid "Ignore query messages"
 msgstr "Query-Nachrichten ignorieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:274
+#: src/modules/reguser/dialog.cpp:274
 msgid "Import From..."
 msgstr "Importieren aus..."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:276
+#: src/modules/reguser/dialog.cpp:276
 msgid ""
 "Import entries from a file exported earlier by the \"export\" function of "
 "this dialog."
@@ -352,7 +352,7 @@ msgstr ""
 "Einträge importieren, die durch die \"Exportieren\"-Funktion dieses Dialogs "
 "exportiert wurden."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:232
+#: src/modules/reguser/edituser.cpp:232
 msgid ""
 "Insert a mask for this user.<br>It can contain the wildcard characters '*' "
 "and '?'."
@@ -360,205 +360,205 @@ msgstr ""
 "Fügen Sie eine Maske für diesen Benutzer ein.<br>Sie kann die Platzhalter "
 "'*' und '?' enthalten."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:354
+#: src/modules/reguser/libkvireguser.cpp:354
 msgid "Mask %Q already used to identify user %Q"
 msgstr "Maske %Q wird bereits genutzt, um Benutzer %Q zu identifizieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:221
+#: src/modules/reguser/libkvireguser.cpp:221
 msgid "Mask %Q is already used to identify user %s"
 msgstr "Maske %Q wird bereits genutzt, um Benutzer %s zu identifizieren"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:409
+#: src/modules/reguser/libkvireguser.cpp:409
 msgid "Mask %Q not found"
 msgstr "Maske %Q nicht gefunden"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:228
+#: src/modules/reguser/edituser.cpp:228
 msgid "Mask Editor"
 msgstr "Maskeneditor"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:358
+#: src/modules/reguser/edituser.cpp:358
 msgid "Masks:"
 msgstr "Masken:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:453
+#: src/modules/reguser/dialog.cpp:453
 msgid "Move to group"
 msgstr "Zu Gruppe verschieben"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:81
+#: src/modules/reguser/dialog.cpp:81
 msgid "Name"
 msgstr "Name"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:342
+#: src/modules/reguser/edituser.cpp:342
 msgid "Name:"
 msgstr "Name:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:228
+#: src/modules/reguser/wizard.cpp:228
 msgid "Nickname 2:"
 msgstr "Nickname 2:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:224
+#: src/modules/reguser/wizard.cpp:224
 msgid "Nickname:"
 msgstr "Nickname:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:132
+#: src/modules/reguser/dialog.cpp:132
 msgid "No comment set"
 msgstr "Kein Kommentar eingegeben"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:685
+#: src/modules/reguser/dialog.cpp:685
 msgid "No entries selected."
 msgstr "Keine Eintrge ausgewählt."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:337
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:402
+#: src/modules/reguser/libkvireguser.cpp:337
+#: src/modules/reguser/libkvireguser.cpp:402
 msgid "No mask specified"
 msgstr "Keine Maske angegeben"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:188
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:268
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:331
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:451
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:516
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:690
+#: src/modules/reguser/libkvireguser.cpp:188
+#: src/modules/reguser/libkvireguser.cpp:268
+#: src/modules/reguser/libkvireguser.cpp:331
+#: src/modules/reguser/libkvireguser.cpp:451
+#: src/modules/reguser/libkvireguser.cpp:516
+#: src/modules/reguser/libkvireguser.cpp:690
 msgid "No name specified"
 msgstr "Kein Name angegeben"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:696
+#: src/modules/reguser/libkvireguser.cpp:696
 msgid "No property specified"
 msgstr "Keine Eigenschaft angegeben"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/regchan/libkviregchan.cpp:120
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/regchan/libkviregchan.cpp:177
+#: src/modules/regchan/libkviregchan.cpp:120
+#: src/modules/regchan/libkviregchan.cpp:177
 msgid "No such channel/netmask entry in the database"
 msgstr "Kein Eintrag in der Datenbank für diesen Channel/Netzmaske"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:122
+#: src/modules/reguser/dialog.cpp:122
 msgid "Notify as:"
 msgstr "Anzeigen als:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:120
+#: src/modules/reguser/dialog.cpp:120
 msgid "Notify disabled"
 msgstr "Benachrichtigung ausgeschaltet"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:397
+#: src/modules/reguser/edituser.cpp:397
 msgid "Notify nicknames:"
 msgstr "Benachrichtigen bei Nicknames:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:394
+#: src/modules/reguser/edituser.cpp:394
 msgid "Notify when user is online"
 msgstr "Benachrichtigen, wenn Benutzer online ist"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:243
+#: src/modules/reguser/dialog.cpp:243
 msgid "Open the edit dialog to create a new user entry."
 msgstr ""
 "Den Bearbeiten-Dialog öffnen, um einen neuen Benutzereintrag zu erstellen."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:448
+#: src/modules/reguser/edituser.cpp:448
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:90
+#: src/modules/reguser/edituser.cpp:90
 msgid "Property"
 msgstr "Eigenschaft"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:78
+#: src/modules/reguser/edituser.cpp:78
 msgid "Property Editor"
 msgstr "Eigenschafteneditor"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:375
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:251
+#: src/modules/reguser/dialog.cpp:251
+#: src/modules/reguser/edituser.cpp:375
 msgid "Re&move"
 msgstr "&Entfernen"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:336
+#: src/modules/reguser/edituser.cpp:336
 msgid "Registered User Entry"
 msgstr "Registrierter Benutzer Eintrag"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:218
+#: src/modules/reguser/dialog.cpp:218
 msgid "Registered Users - KVIrc"
 msgstr "Registrierte Benutzer - KVIrc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/regchan/libkviregchan.cpp:197
+#: src/modules/regchan/libkviregchan.cpp:197
 msgid "Registered channel list:"
 msgstr "Liste registrierter Channel:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:801
+#: src/modules/reguser/libkvireguser.cpp:801
 msgid "Registered users database dump:"
 msgstr "Auflistung der registrierten-Benutzer Datenbank:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:258
+#: src/modules/reguser/wizard.cpp:258
 msgid "Registration Complete"
 msgstr "Registrierung komplett"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:254
+#: src/modules/reguser/dialog.cpp:254
 msgid "Remove the currently selected entries."
 msgstr "Entfernt die aktuell ausgewählten Einträge."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:97
+#: src/modules/reguser/wizard.cpp:97
 msgid "Step 1: Entry Name"
 msgstr "Schritt 1: Eintragsname"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:171
+#: src/modules/reguser/wizard.cpp:171
 msgid "Step 2: Mask Selection"
 msgstr "Schritt 2: Maske auswählen"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:197
+#: src/modules/reguser/wizard.cpp:197
 msgid "Step 3: Avatar Selection"
 msgstr "Schritt 3: Avatar Auswahl"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:242
+#: src/modules/reguser/wizard.cpp:242
 msgid "Step 4: Notify List"
 msgstr "Schritt 4: Benachrichtigungsliste"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:192
+#: src/modules/reguser/wizard.cpp:192
 msgid "Store an avatar for this user"
 msgstr "Ein Avatar für diesen Benutzer speichern"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:816
+#: src/modules/reguser/dialog.cpp:816
 #, c-format
 msgid "The file %s contains an invalid registered users database version."
 msgstr ""
 "Die Datei %s enthält eine ungltige Version der registrierte-Benutzer-"
 "Datenbank."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/dialog.cpp:809
+#: src/modules/reguser/dialog.cpp:809
 #, c-format
 msgid "The file %s doesn't appear to be a valid registered users database."
 msgstr ""
 "Die Datei %s scheint keine gültige registrierte-Benutzer-Datenbank zu sein."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/regchan/libkviregchan.cpp:219
+#: src/modules/regchan/libkviregchan.cpp:219
 #, c-format
 msgid "Total %d channels"
 msgstr "Gesamt %d Channel"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:840
+#: src/modules/reguser/libkvireguser.cpp:840
 #, c-format
 msgid "Total: %d matching users (of %d in the database)"
 msgstr "Gesamt: %d passende Benutzer (von %d in der Datenbank)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:433
+#: src/modules/reguser/edituser.cpp:433
 msgid "Use custom color in userlist"
 msgstr "Benutzerdefinierte Farbe in der Benutzerliste verwenden"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:344
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:458
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:523
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:703
+#: src/modules/reguser/libkvireguser.cpp:344
+#: src/modules/reguser/libkvireguser.cpp:458
+#: src/modules/reguser/libkvireguser.cpp:523
+#: src/modules/reguser/libkvireguser.cpp:703
 msgid "User %Q not found"
 msgstr "Benutzer %Q nicht gefunden"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/wizard.cpp:77
+#: src/modules/reguser/wizard.cpp:77
 msgid "User Registration Wizard - KVIrc"
 msgstr "Benutzer-registrieren-Assistent - KVIrc"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:208
+#: src/modules/reguser/libkvireguser.cpp:208
 msgid "User already registered: found exact name match"
 msgstr "Benutzer ist bereits registriert: exakte Namensgleichheit gefunden"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/libkvireguser.cpp:274
+#: src/modules/reguser/libkvireguser.cpp:274
 msgid "User not found (%Q)"
 msgstr "Benutzer nicht gefunden (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/reguser/edituser.cpp:91
+#: src/modules/reguser/edituser.cpp:91
 msgid "Value"
 msgstr "Wert"

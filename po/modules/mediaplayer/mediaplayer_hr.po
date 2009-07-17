@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-03 15:21+0200\n"
+"POT-Creation-Date: 2009-07-17 22:38+0200\n"
 "PO-Revision-Date: 2008-01-17 02:20+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Hrvatski <en@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:455
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:455
 #, fuzzy
 msgid ""
 "An interface to Amarok2.\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Sučelje za popularni UNIX xmms media player.\n"
 "Preuzmite ga sa http://www.xmms.org\n"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:431
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:431
 #, fuzzy
 msgid ""
 "An interface to BMPx.\n"
@@ -34,7 +34,16 @@ msgstr ""
 "Sučelje za popularni UNIX xmms media player.\n"
 "Preuzmite ga sa http://www.xmms.org\n"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_amipinterface.cpp:108
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:473
+#, fuzzy
+msgid ""
+"An interface to Qmmp.\n"
+"Download it from http://qmmp.ylsoftware.com\n"
+msgstr ""
+"Sučelje za popularni UNIX xmms media player.\n"
+"Preuzmite ga sa http://www.xmms.org\n"
+
+#: src/modules/mediaplayer/mp_amipinterface.cpp:108
 msgid ""
 "An interface to the AMIP plug-in.\n"
 "You can download it from http://amip.tools-for.net.\n"
@@ -44,7 +53,7 @@ msgstr ""
 "Možete ga downloadati sa http://amip.tools-for.net.\n"
 "Za korištenje ovog sučelja morate instalirati AMIP plug-in za vaš player."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
 msgid ""
 "An interface to the popular UNIX audacious media player.\n"
 "Download it from http://audacious-media-player.org\n"
@@ -52,7 +61,7 @@ msgstr ""
 "Sučelje za popularni UNIX audacious media player.\n"
 "Preuzmite ga sa http://audacious-media-player.org\n"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
 msgid ""
 "An interface to the popular UNIX xmms media player.\n"
 "Download it from http://www.xmms.org\n"
@@ -60,7 +69,7 @@ msgstr ""
 "Sučelje za popularni UNIX xmms media player.\n"
 "Preuzmite ga sa http://www.xmms.org\n"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_mprisinterface.cpp:320
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:320
 #, fuzzy
 msgid ""
 "An interface to the popular audacious media player.\n"
@@ -69,7 +78,7 @@ msgstr ""
 "Sučelje za popularni UNIX audacious media player.\n"
 "Preuzmite ga sa http://audacious-media-player.org\n"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:194
+#: src/modules/mediaplayer/mp_winampinterface.cpp:194
 msgid ""
 "An interface to the popupar Winamp media player.\n"
 "You can download it from http://www.winamp.com.\n"
@@ -83,7 +92,7 @@ msgstr ""
 "nalazi u direktoriju KVIrc distribucije, u Winamp plugins direktorij i "
 "restartati Winamp."
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#: src/modules/mediaplayer/mp_xmms2interface.cpp:33
 #, fuzzy
 msgid ""
 "An interface to the xmms2 media player.\n"
@@ -92,68 +101,68 @@ msgstr ""
 "Sučelje za popularni UNIX xmms media player.\n"
 "Preuzmite ga sa http://www.xmms.org\n"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:184
+#: src/modules/mediaplayer/mp_winampinterface.cpp:184
 msgid "Can't find a running winamp window"
 msgstr "Ne mogu pronaći pokrenuti winamp prozor"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:145
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
 msgid "Can't find symbol %s in %Q"
 msgstr "Ne mogu pronaći znak %s u %Q"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_xmmsinterface.cpp:136
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
 msgid "Can't load the player library (%Q)"
 msgstr "Ne mogu učitati bazu playera (%Q)"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:101
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
 msgid "Choosing media player interface \"%Q\""
 msgstr "Odabirem media player \"%Q\""
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_interface.cpp:43
+#: src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
 msgstr "Funkcija nije implementirana"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:134
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:571
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:594
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:636
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:675
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1183
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1319
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1363
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1552
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1595
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:571
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:636
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:675
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
 msgid "Last interface error: "
 msgstr "Posljednja greška sucelja:"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:114
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
 msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
 msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:73
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
 msgid ""
 "Not sure about the results, trying a second, more agressive detection pass"
 msgstr "Nesiguni rezultati, pokušavam agresivniju detekciju"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:104
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
 msgid "Seems that there is no usable media player on this machine"
 msgstr "Čini se da nema korisnih media playera na ovom računalu"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:133
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:570
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:593
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:635
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:674
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1182
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1318
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1362
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1551
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:1594
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1551
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1594
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "Odabrani media player nije uspio izvršiti traženu funkciju"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:316
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/mp_winampinterface.cpp:350
+#: src/modules/mediaplayer/mp_winampinterface.cpp:316
+#: src/modules/mediaplayer/mp_winampinterface.cpp:350
 msgid ""
 "The winamp plugin has not been installed properly. Check /help mediaplayer."
 "nowplaying"
@@ -161,8 +170,8 @@ msgstr ""
 "Winamp pluginovi nisu ispravno instalirani. Provjerite /help mediaplayer."
 "nowplaying"
 
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:65
-#: /home/hellvis69/Progetti/KVIrc/svn/trunk/kvirc/src/modules/mediaplayer/libkvimediaplayer.cpp:91
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Pokušavam media player \"%Q\": score %d"
 
