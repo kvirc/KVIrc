@@ -5,6 +5,7 @@
 //
 //   This str is part of the KVirc irc client distribution
 //   Copyright (C) 2001-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright ©        2009 Kai Wasserbäch <debian@carbon-project.org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -36,8 +37,28 @@
 #include <QRegExp>
 #include <QClipboard>
 
-#ifdef COMPILE_SSL_SUPPORT
+#if defined( COMPILE_SSL_SUPPORT ) && !defined( COMPILE_NO_EMBEDDED_CODE )
+    // The current implementation
 	#include <openssl/evp.h>
+#elif defined(COMPILE_NO_EMBEDDED_CODE)
+    // The preferred new implementation (until QCryptographicHash supports all
+    // hashes we want).
+    // As Crypto++ is concerned for security they warn about MD5 and friends,
+    // but we can ignore that and therefore silence the warnings.
+    #define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
+    // Hashes (should cover most cases)
+    #include <crypto++/md2.h>
+    #include <crypto++/md4.h>
+    #include <crypto++/md5.h>
+    #include <crypto++/sha.h>
+    #include <crypto++/ripemd.h>
+    #include <crypto++/crc.h>
+    // Encoding
+    #include <crypto++/hex.h>
+#else
+    // The fallback we can always use, but with very limited set of
+    // functionality.
+    #include <QCryptographicHash>
 #endif
 
 /*
@@ -1518,23 +1539,24 @@ static bool str_kvs_fnc_charsum(KviKvsModuleFunctionCall * c)
 	@short:
 		Returns the sum of the character codes of the string
 	@syntax:
-		<string> $str.digest(<data:string>[,<algorythm:string>])
+		<string> $str.digest(<data:string>[,<algorithm:string>])
 	@description:
 		Calculates digest for given string using algorithm passed as 2nd argument.
 		Currently supported: md5, md4, md2, sha1, mdc2, ripemd160, dss1
-		Default is md5. Requires OpenSSL support
+		Default is md5. Requires OpenSSL support or (better) Crypto++, but
+        offers a minimal set of hashes in any case.
 */
 
 
 static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 {
-#ifdef COMPILE_SSL_SUPPORT
 	QString szString,szType,szResult;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("data",KVS_PT_NONEMPTYSTRING,0,szString)
 		KVSM_PARAMETER("algorythm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szType)
 	KVSM_PARAMETERS_END(c)
 
+#if defined( COMPILE_SSL_SUPPORT ) && !defined(COMPILE_NO_EMBEDDED_CODE)
 	if(szType.isEmpty()) szType="md5";
 
 	EVP_MD_CTX mdctx;
@@ -1567,8 +1589,124 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	}
 
 	c->returnValue()->setString(szResult);
-#else
-	c->warning(__tr2qs("KVIrc is compiled without OpenSSL support. $str.digest function disabled"));
+#elif defined(COMPILE_NO_EMBEDDED_CODE)
+    // Crypto++ implementation
+    std::string digest_cpp;
+
+    if(szType.toLower() == "sha1") {
+            CryptoPP::SHA1 hash;
+            CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                true, new CryptoPP::HashFilter(
+                    hash, new CryptoPP::HexEncoder (
+                        new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "sha224") {
+        CryptoPP::SHA224 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "sha256") {
+        CryptoPP::SHA256 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "sha384") {
+        CryptoPP::SHA384 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "sha512") {
+        CryptoPP::SHA512 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "ripemd128") {
+        CryptoPP::RIPEMD128 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "ripemod160") {
+        CryptoPP::RIPEMD160 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "ripemd256") {
+        CryptoPP::RIPEMD256 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "ripemd320") {
+        CryptoPP::RIPEMD320 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "crc32") {
+        CryptoPP::CRC32 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "md2") {
+        CryptoPP::Weak::MD2 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "md4") {
+        CryptoPP::Weak::MD4 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else if(szType.toLower() == "md5" || szType.isEmpty()){
+        CryptoPP::Weak::MD5 hash;
+        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
+                                true, new CryptoPP::HashFilter(
+                                hash, new CryptoPP::HexEncoder (
+                                new CryptoPP::StringSink(digest_cpp))));
+    }
+    else {
+            c->warning(__tr2qs("Unsupported message digest."));
+            return true;
+    }
+
+    c->returnValue()->setString(QString(digest_cpp.c_str()));
+#else // fall back to QCryptographicHash
+    QCryptographicHash::Algorithm qAlgo;
+    if(szType.toLower() == "sha1") {
+            qAlgo = QCryptographicHash::Sha1;
+    }
+    else if(szType.toLower() == "md4") {
+            qAlgo = QQCryptographicHash::Md4;
+    }
+    else if(szType.toLower() == "md5" || szType.isEmpty()){
+            qAlgo = QCryptographicHash::Md5;
+    }
+    else {
+	    c->warning(__tr2qs("KVIrc is compiled without Crypto++ or OpenSSL support. $str.digest supports only MD4, MD5 and SHA1."));
+        return true;
+    }
+
+    c->returnValue()->setString(QString(QCryptographicHash::hash(szString.toLocal8Bit(), qAlgo).toHex()).toUpper());
 #endif
 
 	return true;
@@ -2336,11 +2474,12 @@ static bool str_module_cleanup(KviModule *)
 
 KVIRC_MODULE(
 	"Str",                                                 // module name
-	"1.0.0",                                                // module version
+	"1.0.1",                                               // module version
 	"Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)"\
 	"          (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)" \
 	"          (C) 2005 Tonino Imbesi (grifisx at barmes dot org)" \
-	"          (C) 2005 Alessandro Carbone (elfonol at gmail dot com)", // author & (C)
+	"          (C) 2005 Alessandro Carbone (elfonol at gmail dot com)" \
+    "           ©  2009 Kai Wasserbäch <debian@carbon-project.org>", // author & (C)
 	"Interface to the str system",
 	str_module_init,
 	0,

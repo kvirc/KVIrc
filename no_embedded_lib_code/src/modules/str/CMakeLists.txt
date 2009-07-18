@@ -1,10 +1,14 @@
 # CMakeLists for src/modules/str
 
-IF(UNIX)
-	IF(APPLE)
-		LIST(APPEND LIBS -lssl -lcrypto)
-	ENDIF()
-ENDIF()
+IF(WANT_NO_EMBEDDED_CODE)
+    ADD_DEFINITIONS("-DCOMPILE_NO_EMBEDDED_CODE -fexceptions")
+ELSEIF(WANT_NO_EMBEDDED_CODE)
+    IF(UNIX)
+	    IF(APPLE)
+		    LIST(APPEND LIBS -lssl -lcrypto)
+	    ENDIF()
+    ENDIF()
+ENDIF(WANT_NO_EMBEDDED_CODE)
 
 SET(kvistr_SRCS
 	libkvistr.cpp
