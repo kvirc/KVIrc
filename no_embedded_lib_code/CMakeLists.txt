@@ -768,6 +768,8 @@ IF(WITH_NO_EMBEDDED_CODE)
 ENDIF(WITH_NO_EMBEDDED_CODE)
 
 IF(WANT_NO_EMBEDDED_CODE)
+    MESSAGE("-- WANT_NO_EMBEDDED_CODE activated.")
+    MESSAGE("-- WARNING: Parts of the code you're about to compile are in an experimental state!")
     find_package(PkgConfig REQUIRED)
 
     # needed for Rijndael/AES replacement and friends

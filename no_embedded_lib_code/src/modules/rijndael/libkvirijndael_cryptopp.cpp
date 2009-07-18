@@ -25,7 +25,6 @@
 
 #include "libkvirijndael_cryptopp.h"
 
-#warning "You're about to compile experimental code!"
 #include <crypto++/aes.h>
 #include <crypto++/blowfish.h>
 #include <crypto++/filters.h>
@@ -424,12 +423,14 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffe
         try {
             CryptoPP::CBC_Mode< CryptoPP::Blowfish >::Decryption decryptor( key, sizeof(key) );
             CryptoPP::StringSource(szIn, true,
-                                    new CryptoPP::Base64Decoder(
-                                    new CryptoPP::StreamTransformationFilter(
-                                    decryptor, new CryptoPP::StringSink( plain ),
-                                                                             CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
-                                                                             )
-                                                                             );
+                            new CryptoPP::Base64Decoder(
+                                new CryptoPP::StreamTransformationFilter(
+                                    decryptor,
+                                    new CryptoPP::StringSink( plain ),
+                                    CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING
+                                    )
+                                )
+                            );
         }
         catch(CryptoPP::Exception e) {
             QString staticErrTxt =
@@ -441,12 +442,12 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffe
         try {
             CryptoPP::ECB_Mode< CryptoPP::Blowfish >::Decryption decryptor( key, sizeof(key) );
             CryptoPP::StringSource(szIn, true,
-                                    new CryptoPP::Base64Decoder(
-                                    new CryptoPP::StreamTransformationFilter(
+                            new CryptoPP::Base64Decoder(
+                                new CryptoPP::StreamTransformationFilter(
                                     decryptor, new CryptoPP::StringSink( plain ),
-                                                                             CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
-                                                                             )
-                                                                             );
+                                    CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
+                                )
+                            );
         }
         catch(CryptoPP::Exception e) {
             QString staticErrTxt =
@@ -476,14 +477,18 @@ static bool rijndael_module_init(KviModule * m)
     KviStr format = __tr("Cryptographic engine based on the\n" \
     "Advanced Encryption Standard (AES)\n" \
     "algorithm called Rijndael.\n" \
-    "The text is first encrypted with rijndael\n" \
+    "The text is first encrypted with Rijndael\n" \
     "and then converted to %s notation.\n" \
     "The keys used are %d bit long and will be padded\n" \
     "with zeros if you provide shorter ones.\n" \
     "If only one key is provided, this engine\n" \
     "will use it for both encrypting and decrypting.\n" \
-    "See the rijndael module documentation\n" \
-    "for more info on the algorithm used.\n");
+    "This is the Crypto++ implementation which could do\n" \
+    "a lot more than the current default engine, but as\n" \
+    "this should be a drop-in replacement, it acts just\n" \
+    "like that one.\n" \
+    "Information about the algorithm can be found at\n" \
+    "<http://www.cryptolounge.org/wiki/AES>\n");
     
     // FIXME: Maybe convert this repeated code to a function eh ?
     
@@ -592,12 +597,12 @@ static bool rijndael_module_can_unload(KviModule *)
 // =======================================
 KVIRC_MODULE(
 "Rijndael crypt engine",
-             "4.0.0",
-             "Szymon Stefanek <pragma at kvirc dot net>, Kai Wasserbäch <debian@carbon-project.org" ,
+             "4.0.1",
+             "Copyright ©      2009 Kai Wasserbäch <debian@carbon-project.org>" \
+             "          © 2000-2008 Szymon Stefanek <pragma at kvirc dot net>" ,
              "Exports the rijndael crypt engine",
              rijndael_module_init ,
              rijndael_module_can_unload,
              0,
              rijndael_module_cleanup
              )
-             

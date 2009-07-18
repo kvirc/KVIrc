@@ -1593,7 +1593,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
     // Crypto++ implementation
     std::string digest_cpp;
 
-    if(szType.toLower() == "sha1") {
+    if(szType.toLower() == "sha1" || szType.toLower() == "sha") {
             CryptoPP::SHA1 hash;
             CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
                 true, new CryptoPP::HashFilter(
@@ -1635,7 +1635,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
                                 hash, new CryptoPP::HexEncoder (
                                 new CryptoPP::StringSink(digest_cpp))));
     }
-    else if(szType.toLower() == "ripemod160") {
+    else if(szType.toLower() == "ripemd160") {
         CryptoPP::RIPEMD160 hash;
         CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
                                 true, new CryptoPP::HashFilter(
