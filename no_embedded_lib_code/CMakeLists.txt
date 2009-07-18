@@ -773,7 +773,7 @@ IF(WANT_NO_EMBEDDED_CODE)
     find_package(PkgConfig REQUIRED)
 
     # needed for Rijndael/AES replacement and friends
-    pkg_check_modules(CRYPTOPP REQUIRED libcrypto++)
+    pkg_check_modules(CRYPTOPP REQUIRED libcrypto++>=5.0.0)
     LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
     #SET(COMPILE_NO_EMBEDDED_CODE 1)
     #ADD_DEFINITIONS(-DCOMPILE_NO_EMBEDDED_CODE)
