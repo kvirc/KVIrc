@@ -66,7 +66,6 @@ SET(kvilib_SRCS
 	ext/kvi_databuffer.cpp
 	ext/kvi_dbusadaptor.cpp
 	ext/kvi_garbage.cpp
-	ext/kvi_md5.cpp
 	ext/kvi_mediatype.cpp
 	ext/kvi_miscutils.cpp
 	ext/kvi_msgtype.cpp

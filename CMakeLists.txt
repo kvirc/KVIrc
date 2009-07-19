@@ -750,6 +750,37 @@ ELSE()
 	SET(CMAKE_STATUS_MEMORY_CHECKS_SUPPORT "No")
 ENDIF()
 
+############################################################################
+# »No embedded code« (but slightly more dependecies)
+# This might need some explanation, so here we go:
+#   I (Kai Wasserbäch) noticed as one of the Debian Maintainers of KVIrc,
+#   that KVIrc uses quite some embedded code and/or own implementations of
+#   code, that is available from widely tested libraries. This is not
+#   recommeded to do, as this most probably leads to security issues
+#   (keeping different versions of code across several projects in sync is
+#   prone to fail). Therefore I start hereby replacing such code copies
+#   with library calls.
+#   But a few people on #kvirc complained that new dependencies would be
+#   unfeasable. That leads to the following paragraph: we only use the
+#   saner way to build KVIrc if -DCOMPILE_NO_EMBEDDED_CODE=YES is passed to
+#   cmake.
+############################################################################
+OPTION(WANT_NO_EMBEDDED_CODE "Don't use embedded copies of code available from libraries (potential security issue)" OFF)
+IF(WITH_NO_EMBEDDED_CODE)
+    SET(WANT_NO_EMBEDDED_CODE ON)
+ENDIF(WITH_NO_EMBEDDED_CODE)
+
+IF(WANT_NO_EMBEDDED_CODE)
+    MESSAGE("-- WANT_NO_EMBEDDED_CODE activated.")
+    MESSAGE("-- WARNING: Parts of the code you're about to compile are in an experimental state!")
+    find_package(PkgConfig REQUIRED)
+
+    # needed for Rijndael/AES replacement and friends
+    pkg_check_modules(CRYPTOPP REQUIRED libcrypto++>=5.0.0)
+    LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
+    #SET(COMPILE_NO_EMBEDDED_CODE 1)
+    #ADD_DEFINITIONS(-DCOMPILE_NO_EMBEDDED_CODE)
+ENDIF(WANT_NO_EMBEDDED_CODE)
 
 ############################################################################
 # Win32 mingw/cmake build checks
