@@ -39,8 +39,6 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_time.h"
 
-//#warning "Other engines: mircStrip koi2win colorizer lamerizer etc.."
-
 /*
 @doc: rijndael
 @type:
@@ -140,10 +138,16 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 {
     std::string cipher;
     // byte is a typedef by Crypto++ for unsigned char.
-    byte key[m_szEncKey.size()];
+    byte key[m_szEncKey.size()],iv[CryptoPP::AES::IV_LENGTH];
     
     for(unsigned int i=0;i<m_szEncKey.size();i++) {
         key[i] = m_szEncKey.at(i);
+    }
+
+    // The following is absolute shit, but the module we replace does it like
+    // that, so we hardcode the IV to 0 in the required length...
+    for(int i=0;i<CryptoPP::AES::IV_LENGTH;i++) {
+        iv[i] = 0;
     }
     
     // We hardcode CBC mode here, as the embedded code is always called in
@@ -153,7 +157,7 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
     // CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING, as the embedded code
     // does only that.
     try {
-        CryptoPP::CBC_Mode< CryptoPP::AES >::Encryption encryptor( key, sizeof(key) );
+        CryptoPP::CBC_Mode< CryptoPP::AES >::Encryption encryptor( key, sizeof(key), iv );
         
         if(getEncoding() == KVI_RIJNDAEL_HEX) {
             CryptoPP::StringSource(static_cast<std::string>(plainText), true,
@@ -184,55 +188,62 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
         setLastError(staticErrTxt.append(QString(e.what())));
         return KviCryptEngine::EncryptError;
     }
-    
-    outBuffer = KVI_TEXT_CRYPTESCAPE;
-    outBuffer.append(cipher.c_str());
+   
+    outBuffer = cipher.c_str();
+    outBuffer.prepend(KVI_TEXT_CRYPTESCAPE);
     return KviCryptEngine::Encrypted;
 }
 
 KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,KviStr &plainText)
 {
     std::string plain;
-    byte key[m_szDecKey.size()];
+    byte key[m_szDecKey.size()],iv[CryptoPP::AES::IV_LENGTH];
+    std::string szIn = inBuffer;
     
     for(unsigned int i=0;i<m_szDecKey.size();i++) {
         key[i] = m_szDecKey.at(i);
     }
     
-    if(*inBuffer != KVI_TEXT_CRYPTESCAPE)
+    // The following is absolute shit, but the module we replace does it like
+    // that, so we hardcode the IV to 0 in the required length...
+    for(int i=0;i<CryptoPP::AES::IV_LENGTH;i++) {
+        iv[i] = 0;
+    }
+
+    if(static_cast<int>(szIn[0]) != KVI_TEXT_CRYPTESCAPE)
     {
         plainText = inBuffer;
         return KviCryptEngine::DecryptOkWasPlainText;
     }
+
+    szIn = szIn.erase(0,1);
     
-    inBuffer++;
-    
-    if(!*inBuffer)
+    if(szIn.empty())
     {
         plainText = inBuffer;
         return KviCryptEngine::DecryptOkWasPlainText; // empty buffer
     }
     
     try {
-        CryptoPP::CBC_Mode< CryptoPP::AES >::Decryption decryptor( key, sizeof(key) );
+        CryptoPP::CBC_Mode< CryptoPP::AES >::Decryption decryptor( key, sizeof(key), iv );
         
         if(getEncoding() == KVI_RIJNDAEL_HEX) {
-            CryptoPP::StringSource(static_cast<std::string>(inBuffer), true,
+            CryptoPP::StringSource(szIn, true,
                                     new CryptoPP::HexDecoder(
                                     new CryptoPP::StreamTransformationFilter(
                                     decryptor, new CryptoPP::StringSink( plain ),
-                                                                             CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
-                                                                             )
-                                                                             );
+                                    CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
+                                    )
+                                    );
         }
         else if(getEncoding() == KVI_RIJNDAEL_B64) {
-            CryptoPP::StringSource(static_cast<std::string>(inBuffer), true,
+            CryptoPP::StringSource(szIn, true,
                                     new CryptoPP::Base64Decoder(
                                     new CryptoPP::StreamTransformationFilter(
                                     decryptor, new CryptoPP::StringSink( plain ),
-                                                                             CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
-                                                                             )
-                                                                             );
+                                    CryptoPP::BlockPaddingSchemeDef::ZEROS_PADDING )
+                                    )
+                                    );
         }
         else {
             setLastError(__tr("Unable to determine input encoding (Hex or Base64)."));
@@ -245,7 +256,7 @@ KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,K
         setLastError(staticErrTxt.append(QString(e.what())));
         return KviCryptEngine::DecryptError;
     }
-    
+
     plainText = plain.c_str();
     return KviCryptEngine::DecryptOkWasEncrypted;
 }
@@ -328,7 +339,7 @@ bool KviMircryptionEngine::init(const char * encKey,int encKeyLen,const char * d
     m_szEncKey = std::string(encKey,encKeyLen);
     m_szDecKey = std::string(decKey,decKeyLen);
     if((m_szEncKey.find("cbc:",0,4) != std::string::npos) && (m_szEncKey.size() > 4)) {
-        m_szEncKey.substr(4);
+        m_szEncKey = m_szEncKey.substr(4);
         m_bEncryptCBC = true;
     }
     else {
@@ -336,7 +347,7 @@ bool KviMircryptionEngine::init(const char * encKey,int encKeyLen,const char * d
     }
     
     if((m_szDecKey.find("cbc:",0,4) != std::string::npos) && (m_szDecKey.size() > 4)) {
-        m_szDecKey.substr(4);
+        m_szDecKey = m_szDecKey.substr(4);
         m_bDecryptCBC = true;
     }
     else {
@@ -405,10 +416,16 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffe
     byte key[m_szDecKey.size()];
     
     // various old versions
-    if(kvi_strEqualCSN(inBuffer,"mcps ",5))
-        szIn.substr(5);
-    else if(kvi_strEqualCSN(inBuffer,"+OK ",4))
-        szIn.substr(4);
+    if(szIn.find("mcps ",0,5) != std::string::npos) {
+        szIn = szIn.substr(5);
+    }
+    else if(szIn.find("+OK ",0,4) != std::string::npos) {
+        szIn = szIn.substr(4);
+    }
+    // some servers seem to strip the + at the beginning...
+    else if(szIn.find("OK ",0,3) != std::string::npos) {
+        szIn = szIn.substr(3);
+    }
     else {
         plainText = szIn.c_str();
         return KviCryptEngine::DecryptOkWasPlainText;
@@ -567,7 +584,8 @@ static bool rijndael_module_init(KviModule * m)
     "will use it for both encrypting and decrypting.\n" \
     "This engine works in ECB mode by default:\n" \
     "if you want to use CBC mode you must prefix\n" \
-    "your key(s) with \"cbc:\".\n");
+    "your key(s) with \"cbc:\".\n\n" \
+    "This is the Crypto++ based version, not relying on embedded code\n");
     d->iFlags = KVI_CRYPTENGINE_CAN_ENCRYPT | KVI_CRYPTENGINE_CAN_DECRYPT |
     KVI_CRYPTENGINE_WANT_ENCRYPT_KEY | KVI_CRYPTENGINE_WANT_DECRYPT_KEY;
     d->allocFunc = allocMircryptionEngine;
