@@ -762,8 +762,8 @@ ENDIF()
 #   with library calls.
 #   But a few people on #kvirc complained that new dependencies would be
 #   unfeasable. That leads to the following paragraph: we only use the
-#   saner way to build KVIrc if -DCOMPILE_NO_EMBEDDED_CODE=YES is passed to
-#   cmake.
+#   saner way to build KVIrc if -DWANT_NO_EMBEDDED_CODE=YES is passed to
+#   CMake.
 ############################################################################
 OPTION(WANT_NO_EMBEDDED_CODE "Don't use embedded copies of code available from libraries (potential security issue)" OFF)
 IF(WITH_NO_EMBEDDED_CODE)
