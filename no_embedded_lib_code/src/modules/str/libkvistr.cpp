@@ -1696,7 +1696,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
             qAlgo = QCryptographicHash::Sha1;
     }
     else if(szType.toLower() == "md4") {
-            qAlgo = QQCryptographicHash::Md4;
+            qAlgo = QCryptographicHash::Md4;
     }
     else if(szType.toLower() == "md5" || szType.isEmpty()){
             qAlgo = QCryptographicHash::Md5;
