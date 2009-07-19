@@ -1,4 +1,5 @@
 # CMakeLists for src/modules/rijndael
+IF(WANT_NO_EMBEDDED_CODE OR WANT_OPENSSL)
 
 SUBDIRS(caps)
 
@@ -29,3 +30,4 @@ QT4_WRAP_CPP(kvirijndael_MOC_SRCS ${kvirijndael_MOC_HDRS})
 
 SET(kvi_module_name kvirijndael)
 INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
+ENDIF(WANT_NO_EMBEDDED_CODE OR WANT_OPENSSL)
