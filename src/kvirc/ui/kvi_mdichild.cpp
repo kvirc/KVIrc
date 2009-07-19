@@ -159,11 +159,9 @@ bool KviMdiChild::closeEnabled()
 	return m_bCloseEnabled;
 }
 
-void KviMdiChild::setWindowTitle(const QString & plain,const QString & xmlActive,const QString & xmlInactive)
+void KviMdiChild::setWindowTitle(const QString & plain)
 {
 	m_szPlainCaption = plain;
-	m_szXmlActiveCaption = xmlActive;
-	m_szXmlInactiveCaption = xmlInactive;
 	QMdiSubWindow::setWindowTitle(plain);
 }
 

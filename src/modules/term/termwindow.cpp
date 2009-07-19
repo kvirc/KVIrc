@@ -70,15 +70,6 @@
 	void KviTermWindow::fillCaptionBuffers()
 	{
 		m_szPlainTextCaption = __tr("Terminal");
-
-		m_szHtmlActiveCaption.sprintf(
-			__tr("<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"),
-			KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii().data(),
-			KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toAscii().data());
-		m_szHtmlInactiveCaption.sprintf(
-			__tr("<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"),
-			KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii().data(),
-			KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toAscii().data());
 	}
 
 

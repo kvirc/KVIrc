@@ -256,11 +256,6 @@ KviOptionsWidget * classKviThemeTransparencyOptionsWidget_createInstanceProc(QWi
 	return new KviThemeTransparencyOptionsWidget(parent);
 }
 
-KviOptionsWidget * classKviThemeMdiCaptionsOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviThemeMdiCaptionsOptionsWidget(parent);
-}
-
 KviOptionsWidget * classKviThemeMdiAreaOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviThemeMdiAreaOptionsWidget(parent);
@@ -570,8 +565,6 @@ static const char * g_szName_KviThemeGeneralOptionsWidget = KVI_OPTIONS_WIDGET_N
 static const char * g_szClassName_KviThemeGeneralOptionsWidget = "KviThemeGeneralOptionsWidget";
 static const char * g_szName_KviThemeTransparencyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeTransparencyOptionsWidget;
 static const char * g_szClassName_KviThemeTransparencyOptionsWidget = "KviThemeTransparencyOptionsWidget";
-static const char * g_szName_KviThemeMdiCaptionsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeMdiCaptionsOptionsWidget;
-static const char * g_szClassName_KviThemeMdiCaptionsOptionsWidget = "KviThemeMdiCaptionsOptionsWidget";
 static const char * g_szName_KviThemeMdiAreaOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeMdiAreaOptionsWidget;
 static const char * g_szClassName_KviThemeMdiAreaOptionsWidget = "KviThemeMdiAreaOptionsWidget";
 static const char * g_szName_KviThemeToolBarAppletsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeToolBarAppletsOptionsWidget;
@@ -1849,40 +1842,6 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	#endif
 	e0->szNameNoLocale = g_szName_KviThemeTransparencyOptionsWidget;
 	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviThemeTransparencyOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-	e0->pChildList = 0;
-
-	e0 = new KviOptionsWidgetInstanceEntry;
-	e0->createProc = &classKviThemeMdiCaptionsOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviThemeMdiCaptionsOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviThemeMdiCaptionsOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviThemeMdiCaptionsOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviThemeMdiCaptionsOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiCaptionsOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiCaptionsOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiCaptionsOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiCaptionsOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviThemeMdiCaptionsOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviThemeMdiCaptionsOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeMdiCaptionsOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeMdiCaptionsOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviThemeMdiCaptionsOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviThemeMdiCaptionsOptionsWidget,"options");
 	m_pInstanceTree->append(e0);
 	e0->pChildList = 0;
 

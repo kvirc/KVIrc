@@ -107,22 +107,6 @@ void KviCodeTesterWindow::resizeEvent(QResizeEvent *)
 void KviCodeTesterWindow::fillCaptionBuffers()
 {
 	m_szPlainTextCaption = __tr2qs_ctx("Script Tester","editor");
-
-	static QString p1("<nobr><font color=\"");
-	static QString p2("\"><b>");
-	static QString p3("</b></font></nobr>");
-
-	m_szHtmlActiveCaption = p1;
-	m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name();
-	m_szHtmlActiveCaption += p2;
-	m_szHtmlActiveCaption += m_szPlainTextCaption;
-	m_szHtmlActiveCaption += p3;
-
-	m_szHtmlInactiveCaption = p1;
-	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name();
-	m_szHtmlInactiveCaption += p2;
-	m_szHtmlInactiveCaption += m_szPlainTextCaption;
-	m_szHtmlInactiveCaption += p3;
 }
 
 void KviCodeTesterWindow::getConfigGroupName(QString &szName)

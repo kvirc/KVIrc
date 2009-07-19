@@ -153,8 +153,6 @@ protected: // almost private: don't touch :D
 	KviWindowListItem                   * m_pWindowListItem;
 	QWidget                             * m_pFocusHandler;
 	QString                               m_szPlainTextCaption;
-	QString                               m_szHtmlActiveCaption;
-	QString                               m_szHtmlInactiveCaption;
 	KviIrcView                          * m_pIrcView;
 	KviInput                            * m_pInput;
 	QSplitter                           * m_pSplitter;
@@ -279,8 +277,6 @@ public:
 	virtual void ownMessage(const QString &){};
 	virtual void ownAction(const QString &){};
 	virtual const QString & plainTextCaption(){ return m_szPlainTextCaption; };
-	virtual const QString & htmlActiveCaption(){ return m_szHtmlActiveCaption; };
-	virtual const QString & htmlInactiveCaption(){ return m_szHtmlInactiveCaption; };
 	virtual void setFocus();
 
 	void internalOutput(KviIrcView * pView,int msg_type,const kvi_wchar_t * text,int iFlags=0);

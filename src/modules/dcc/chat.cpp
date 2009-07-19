@@ -279,11 +279,6 @@ void KviDccChat::fillCaptionBuffers()
 		m_pDescriptor->szNick).arg(m_pDescriptor->szIp).arg(m_pDescriptor->szPort);
 
 	m_szPlainTextCaption = tmp;
-
-	m_szHtmlActiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii().data(),tmp.toUtf8().data());
-	m_szHtmlInactiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii().data(),tmp.toUtf8().data());
 }
 
 QPixmap * KviDccChat::myIconPtr()

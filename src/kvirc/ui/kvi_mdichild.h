@@ -93,10 +93,6 @@ private:
 	MdiChildState   m_LastState;
 	/// Contains the current window Icon
 	QPixmap         m_pIcon;
-	/// XML-Version of active Caption.
-	QString         m_szXmlActiveCaption;
-	/// XML-Version of inactive Caption.
-	QString         m_szXmlInactiveCaption;
 	/// Caption as plain text.
 	QString         m_szPlainCaption;
 	/// If window can be closed or not
@@ -156,25 +152,13 @@ public:
 	const QString & plainCaption() { return m_szPlainCaption; };
 
 	/**
-	* \brief Returns XML-caption string for active caption
-	* \return const QString &
-	*/
-	const QString & xmlActiveCaption() { return m_szXmlActiveCaption; };
-
-	/**
-	* \brief Returns XML-caption string for inactive caption
-	* \return const QString &
-	*/
-	const QString & xmlInactiveCaption() { return m_szXmlInactiveCaption; };
-
-	/**
 	* \brief Sets the window title
 	* \param plain Plain text of caption
 	* \param xmlActive not used
 	* \param xmlInactive not used
 	* \return void
 	*/
-	void setWindowTitle(const QString & szPlain, const QString & szXmlActive, const QString & szXmlInactive);
+	void setWindowTitle(const QString & szPlain);
 
 	/**
 	* \brief Sets the window icon

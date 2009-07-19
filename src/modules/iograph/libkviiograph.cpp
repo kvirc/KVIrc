@@ -69,18 +69,6 @@ void KviIOGraphWindow::resizeEvent(QResizeEvent *)
 void KviIOGraphWindow::fillCaptionBuffers()
 {
 	m_szPlainTextCaption = __tr2qs("I/O Traffic Graph");
-
-	m_szHtmlActiveCaption = "<nobr><font color=\"";
-	m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name();
-	m_szHtmlActiveCaption += "\"><b>";
-	m_szHtmlActiveCaption += m_szPlainTextCaption;
-	m_szHtmlActiveCaption += "</b></font></nobr>";
-
-	m_szHtmlInactiveCaption = "<nobr><font color=\"";
-	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name();
-	m_szHtmlInactiveCaption += "\"><b>";
-	m_szHtmlInactiveCaption += m_szPlainTextCaption;
-	m_szHtmlInactiveCaption += "</b></font></nobr>";
 }
 
 void KviIOGraphWindow::die()

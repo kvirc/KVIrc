@@ -632,32 +632,16 @@ void KviWindow::fillCaptionBuffers()
 
 void KviWindow::fillSingleColorCaptionBuffers(const QString &szName)
 {
-	static QString p1("<nobr><font color=\"");
-	static QString p2("\"><b>");
-	static QString p3("</b></font></nobr>");
-
 	m_szPlainTextCaption = szName;
-
-	m_szHtmlActiveCaption = p1;
-	m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name();
-	m_szHtmlActiveCaption += p2;
-	m_szHtmlActiveCaption += szName;
-	m_szHtmlActiveCaption += p3;
-
-	m_szHtmlInactiveCaption = p1;
-	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name();
-	m_szHtmlInactiveCaption += p2;
-	m_szHtmlInactiveCaption += szName;
-	m_szHtmlInactiveCaption += p3;
 }
 
 void KviWindow::updateCaption()
 {
 	fillCaptionBuffers();
 	if(mdiParent())
-		mdiParent()->setWindowTitle(plainTextCaption(),htmlActiveCaption(),htmlInactiveCaption());
+		mdiParent()->setWindowTitle(m_szPlainTextCaption);
 	else
-		setWindowTitle(plainTextCaption());
+		setWindowTitle(m_szPlainTextCaption);
 	if(m_pWindowListItem)m_pWindowListItem->captionChanged();
 }
 

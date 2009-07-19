@@ -152,28 +152,6 @@ void KviThemeTransparencyOptionsWidget::enableGlobalBackgroundPixmapSelector(boo
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-KviThemeMdiCaptionsOptionsWidget::KviThemeMdiCaptionsOptionsWidget(QWidget * parent)
-: KviOptionsWidget(parent)
-{
-	createLayout();
-
-	addColorSelector(0,0,0,0,__tr2qs_ctx("Active Background","options"),KviOption_colorMdiCaptionActive);
-	addColorSelector(0,1,0,1,__tr2qs_ctx("Inactive Background","options"),KviOption_colorMdiCaptionInactive);
-	addColorSelector(0,2,0,2,__tr2qs_ctx("Active Text (Primary)","options"),KviOption_colorCaptionTextActive);
-	addColorSelector(0,3,0,3,__tr2qs_ctx("Active Text (Secondary)","options"),KviOption_colorCaptionTextActive2);
-	addColorSelector(0,4,0,4,__tr2qs_ctx("Inactive Text (Primary)","options"),KviOption_colorCaptionTextInactive);
-	addColorSelector(0,5,0,5,__tr2qs_ctx("Inactive Text (Secondary)","options"),KviOption_colorCaptionTextInactive2);
-
-	addRowSpacer(0,6,0,6);
-}
-
-KviThemeMdiCaptionsOptionsWidget::~KviThemeMdiCaptionsOptionsWidget()
-{
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 KviThemeMdiAreaOptionsWidget::KviThemeMdiAreaOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {

@@ -294,7 +294,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("StripControlCodesInLogs",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("EnableTrayIconFlashing",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("UseFlatClassicWindowListButtons",false,KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
-	BOOL_OPTION("ShowTreeWindowListHeader",false,KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme),
+	BOOL_OPTION("StripMsgTypeInLogs",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("UseLevelBasedTrayNotification",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("MuteAllSounds",false,KviOption_sectFlagFrame),
 	BOOL_OPTION("CreateMinimizedChannels",false,KviOption_sectFlagFrame),
@@ -315,8 +315,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("PasteLastLogOnQueryJoin",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("UseSpecifiedSmartColorForOwnNick",false,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("UseFullWordHighlighting",false,KviOption_sectFlagIrcView),
-	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput),
-	BOOL_OPTION("StripMsgTypeInLogs",false,KviOption_sectFlagLogging)
+	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
@@ -455,12 +454,12 @@ KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 	COLOR_OPTION("WindowListHighlight1Text",0,16,144,KviOption_sectFlagWindowList),
 	COLOR_OPTION("WindowListHighlight2Text",32,0,255,KviOption_sectFlagWindowList),
 	COLOR_OPTION("WindowListProgressBar",180,180,180,KviOption_sectFlagWindowList),
-	COLOR_OPTION("MdiCaptionActive",113,125,190,KviOption_sectFlagMdi),
-	COLOR_OPTION("MdiCaptionInactive",180,180,180,KviOption_sectFlagMdi),
-	COLOR_OPTION("CaptionTextActive",255,255,255,KviOption_sectFlagWindows),
-	COLOR_OPTION("CaptionTextActive2",255,30,30,KviOption_sectFlagWindows),
-	COLOR_OPTION("CaptionTextInactive",0,0,0,KviOption_sectFlagWindows),
-	COLOR_OPTION("CaptionTextInactive2",30,30,30,KviOption_sectFlagWindows),
+	COLOR_OPTION("UserListViewAwayForeground",143,143,143,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewOwnForeground",255,255,0,KviOption_sectFlagUserListView),
+	COLOR_OPTION("UserListViewIrcOpForeground",200,0,0,KviOption_sectFlagUserListView),
+	COLOR_OPTION("NotifierBackground",255,255,255,KviOption_sectFlagNotifier),
+	COLOR_OPTION("NotifierForeground",0,0,0,KviOption_sectFlagNotifier),
+	COLOR_OPTION("NotifierTitleForeground",255,255,255,KviOption_sectFlagNotifier),
 	COLOR_OPTION("IrcViewBackground",255,255,255,KviOption_sectFlagIrcView),
 	COLOR_OPTION("InputBackgroundColor",255,255,255,KviOption_sectFlagInput),
 	COLOR_OPTION("InputSelectionBackground",0,0,0,KviOption_sectFlagInput),
@@ -502,13 +501,7 @@ KviColorOption g_colorOptionsTable[KVI_NUM_COLOR_OPTIONS]=
 	COLOR_OPTION("UserListViewUserOpForeground",0,127,178,KviOption_sectFlagUserListView),
 	COLOR_OPTION("UserListViewGrid",110,110,110,KviOption_sectFlagUserListView),
 	COLOR_OPTION("UserListViewChanOwnerForeground",81,87,111,KviOption_sectFlagUserListView),
-	COLOR_OPTION("IrcViewMarkLine",40,40,40,KviOption_sectFlagIrcView),
-	COLOR_OPTION("UserListViewAwayForeground",143,143,143,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewOwnForeground",255,255,0,KviOption_sectFlagUserListView),
-	COLOR_OPTION("UserListViewIrcOpForeground",200,0,0,KviOption_sectFlagUserListView),
-	COLOR_OPTION("NotifierBackground",255,255,255,KviOption_sectFlagNotifier),
-	COLOR_OPTION("NotifierForeground",0,0,0,KviOption_sectFlagNotifier),
-	COLOR_OPTION("NotifierTitleForeground",255,255,255,KviOption_sectFlagNotifier)
+	COLOR_OPTION("IrcViewMarkLine",40,40,40,KviOption_sectFlagIrcView)
 };
 
 
