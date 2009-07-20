@@ -762,7 +762,7 @@ ENDIF()
 #   with library calls.
 #   But a few people on #kvirc complained that new dependencies would be
 #   unfeasable. That leads to the following paragraph: we only use the
-#   saner way to build KVIrc if -DWANT_NO_EMBEDDED_CODE=YES is passed to
+#   saner way to build KVIrc if -DWITH_NO_EMBEDDED_CODE=YES is passed to
 #   CMake.
 ############################################################################
 OPTION(WANT_NO_EMBEDDED_CODE "Don't use embedded copies of code available from libraries (potential security issue)" OFF)
@@ -773,13 +773,19 @@ ENDIF(WITH_NO_EMBEDDED_CODE)
 IF(WANT_NO_EMBEDDED_CODE)
     MESSAGE("-- WANT_NO_EMBEDDED_CODE activated.")
     MESSAGE("-- WARNING: Parts of the code you're about to compile are in an experimental state!")
-    find_package(PkgConfig REQUIRED)
+    find_package(PkgConfig)
 
     # needed for Rijndael/AES replacement and friends
-    pkg_check_modules(CRYPTOPP REQUIRED libcrypto++>=5.0.0)
-    LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
-    #SET(COMPILE_NO_EMBEDDED_CODE 1)
-    #ADD_DEFINITIONS(-DCOMPILE_NO_EMBEDDED_CODE)
+    pkg_check_modules(CRYPTOPP libcrypto++>=5.0.0)
+    IF(CRYPTOPP_FOUND)
+        LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
+    ELSE(CRYPTOPP_FOUND)
+        LIST(APPEND LIBS "-lcrypto++")
+        MESSAGE("     WARNING: YOU ENABLED WITH_NO_EMBEDDED_CODE BUT YOUR SYSTEM DOESN'T PROVIDE")
+        MESSAGE("              A .pc FILE FOR Crypto++.")
+        MESSAGE("              THIS BUILD MIGHT FAIL, MAKE SURE Crypto++ IS INSTALLED AND IT CAN")
+        MESSAGE("              BE LINKED AGAINST IT WITH »-lcrypto++«.")
+    ENDIF(CRYPTOPP_FOUND)
 ENDIF(WANT_NO_EMBEDDED_CODE)
 
 ############################################################################
