@@ -27,10 +27,10 @@
 
 #include <crypto++/aes.h>
 #include <crypto++/blowfish.h>
-#include <crypto++/filters.h>
 #include <crypto++/modes.h>
 #include <crypto++/base64.h>
 #include <crypto++/hex.h>
+#include <crypto++/osrng.h>
 #include <string>
 
 #include "kvi_module.h"
@@ -79,6 +79,7 @@ KviRijndaelEngine::KviRijndaelEngine()
     g_pEngineList->append(this);
     m_szEncKey.clear();
     m_szDecKey.clear();
+    m_bRandomIv = false;
 }
 
 KviRijndaelEngine::~KviRijndaelEngine()
@@ -94,42 +95,45 @@ bool KviRijndaelEngine::init(const char *encKey, int encKeyLen, const char *decK
     {
         if(!(decKey && (decKeyLen > 0)))
         {
-            decKey    = encKey;
+            decKey = encKey;
             decKeyLen = encKeyLen;
-        }
+        } // else all
     } else {
+        // no encrypt key specified...
         if(decKey && decKeyLen)
         {
-            encKey    = decKey;
+            encKey = decKey;
             encKeyLen = decKeyLen;
         } else {
+            // both keys missing
             setLastError(__tr("Missing both encrypt and decrypt key: at least one is needed"));
             return false;
         }
     }
-    
-    int defKeyLen = this->getKeyLen();
-    
-    // The no-embedded approach is to use a string to pass the
-    // cropped/padded key around. We don't init the CryptoPP object here,
-    // that can be done neatly in one invocation in the encrypt/decrypt
-    // methods.
-    // This has the additional advantage, that we don't need memmove and
-    // memset.
+
     m_szEncKey = encKey;
     m_szDecKey = decKey;
     
-    if(encKeyLen > defKeyLen)encKeyLen = defKeyLen;
-    m_szEncKey = m_szEncKey.substr(0,encKeyLen);
-    if(encKeyLen < defKeyLen)m_szEncKey.resize(defKeyLen);
+    if(encKeyLen > getKeyLen()) {
+        m_szEncKey = m_szEncKey.substr(0,getKeyLen());
+    }
     
-    if(decKeyLen > defKeyLen)decKeyLen = defKeyLen;
-    m_szDecKey = m_szDecKey.substr(0,decKeyLen);
-    if(decKeyLen < defKeyLen)m_szDecKey.resize(defKeyLen);
+    if(encKeyLen < getKeyLen()) {
+        m_szEncKey.resize(getKeyLen());
+    }
+    
+    if(decKeyLen > getKeyLen()) {
+        m_szDecKey = m_szDecKey.substr(0,getKeyLen());
+    }
+    
+    if(decKeyLen < getKeyLen()) {
+        m_szDecKey.resize(getKeyLen());
+    }
     
     if(m_szEncKey.empty() || m_szDecKey.empty()) {
         return false;
-    } else {
+    }
+    else {
         return true;
     }
 }
@@ -138,16 +142,31 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 {
     std::string cipher;
     // byte is a typedef by Crypto++ for unsigned char.
-    byte key[m_szEncKey.size()],iv[CryptoPP::AES::IV_LENGTH];
+    byte key[m_szEncKey.size()],iv[CryptoPP::AES::BLOCKSIZE * 16];
     
     for(unsigned int i=0;i<m_szEncKey.size();i++) {
-        key[i] = m_szEncKey.at(i);
+        key[i] = m_szEncKey[i];
     }
 
-    // The following is absolute shit, but the module we replace does it like
-    // that, so we hardcode the IV to 0 in the required length...
-    for(int i=0;i<CryptoPP::AES::IV_LENGTH;i++) {
-        iv[i] = 0;
+    // prepare for random IV
+    if(m_bRandomIv) {
+        try {
+            CryptoPP::AutoSeededRandomPool rng;
+            rng.GenerateBlock( iv, sizeof(iv) );
+        }
+        catch(CryptoPP::Exception e) {
+            QString staticErrTxt =
+            __tr("Crypto++ threw the following exception: ");
+            setLastError(staticErrTxt.append(QString(e.what())));
+            return KviCryptEngine::EncryptError;
+        }
+    }
+    else {
+        // The following is absolute shit, but the module we replace does it like
+        // that, so we hardcode the IV to 0 in the required length...
+        for(unsigned int i=0;i<sizeof(iv);i++) {
+            iv[i] = 0x00;
+        }
     }
     
     // We hardcode CBC mode here, as the embedded code is always called in
@@ -197,17 +216,32 @@ KviCryptEngine::EncryptResult KviRijndaelEngine::encrypt(const char * plainText,
 KviCryptEngine::DecryptResult KviRijndaelEngine::decrypt(const char * inBuffer,KviStr &plainText)
 {
     std::string plain;
-    byte key[m_szDecKey.size()],iv[CryptoPP::AES::IV_LENGTH];
+    byte key[m_szDecKey.size()],iv[CryptoPP::AES::BLOCKSIZE * 16];
     std::string szIn = inBuffer;
     
     for(unsigned int i=0;i<m_szDecKey.size();i++) {
-        key[i] = m_szDecKey.at(i);
+        key[i] = m_szDecKey[i];
     }
     
-    // The following is absolute shit, but the module we replace does it like
-    // that, so we hardcode the IV to 0 in the required length...
-    for(int i=0;i<CryptoPP::AES::IV_LENGTH;i++) {
-        iv[i] = 0;
+    // prepare for random IV
+    if(m_bRandomIv) {
+        try {
+            CryptoPP::AutoSeededRandomPool rng;
+            rng.GenerateBlock( iv, sizeof(iv) );
+        }
+        catch(CryptoPP::Exception e) {
+            QString staticErrTxt =
+            __tr("Crypto++ threw the following exception: ");
+            setLastError(staticErrTxt.append(QString(e.what())));
+            return KviCryptEngine::DecryptError;
+        }
+    }
+    else {
+        // The following is absolute shit, but the module we replace does it like
+        // that, so we hardcode the IV to 0 in the required length...
+        for(unsigned int i=0;i<sizeof(iv);i++) {
+            iv[i] = 0x00;
+        }
     }
 
     if(static_cast<int>(szIn[0]) != KVI_TEXT_CRYPTESCAPE)
@@ -305,6 +339,7 @@ KviMircryptionEngine::KviMircryptionEngine()
     g_pEngineList->append(this);
     m_szEncKey.clear();
     m_szDecKey.clear();
+    m_bRandomIv = false;
 }
 
 KviMircryptionEngine::~KviMircryptionEngine()
@@ -360,7 +395,7 @@ bool KviMircryptionEngine::init(const char * encKey,int encKeyLen,const char * d
 KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * plainText,KviStr &outBuffer)
 {
     std::string cipher;
-    byte key[m_szEncKey.size()];
+    byte key[m_szEncKey.size()], iv[CryptoPP::Blowfish::BLOCKSIZE * 16];
     
     for(unsigned int i=0;i<m_szEncKey.size();i++) {
         key[i] = m_szEncKey.at(i);
@@ -369,7 +404,25 @@ KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * plainTe
     if(m_bEncryptCBC)
     {
         try {
-            CryptoPP::CBC_Mode< CryptoPP::Blowfish >::Encryption encryptor( key, sizeof(key) );
+            if(m_bRandomIv) {
+                try {
+                    CryptoPP::AutoSeededRandomPool rng;
+                    rng.GenerateBlock( iv, sizeof(iv) );
+                }
+                catch(CryptoPP::Exception e) {
+                    QString staticErrTxt =
+                    __tr("Crypto++ threw the following exception: ");
+                    setLastError(staticErrTxt.append(QString(e.what())));
+                    return KviCryptEngine::EncryptError;
+                }
+            }
+            else {
+                for(unsigned int i=0;i<sizeof(iv);i++) {
+                    iv[i] = 0x00;
+                }
+            }
+            
+            CryptoPP::CBC_Mode< CryptoPP::Blowfish >::Encryption encryptor( key, sizeof(key), iv );
             CryptoPP::StringSource(static_cast<std::string>(plainText), true,
                                     new CryptoPP::StreamTransformationFilter(
                                     encryptor, new CryptoPP::Base64Encoder(
@@ -413,7 +466,7 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffe
 {
     std::string plain;
     std::string szIn = inBuffer;
-    byte key[m_szDecKey.size()];
+    byte key[m_szDecKey.size()], iv[CryptoPP::Blowfish::BLOCKSIZE * 16];
     
     // various old versions
     if(szIn.find("mcps ",0,5) != std::string::npos) {
@@ -438,7 +491,25 @@ KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffe
     if(m_bDecryptCBC)
     {
         try {
-            CryptoPP::CBC_Mode< CryptoPP::Blowfish >::Decryption decryptor( key, sizeof(key) );
+            if(m_bRandomIv) {
+                try {
+                    CryptoPP::AutoSeededRandomPool rng;
+                    rng.GenerateBlock( iv, sizeof(iv) );
+                }
+                catch(CryptoPP::Exception e) {
+                    QString staticErrTxt =
+                    __tr("Crypto++ threw the following exception: ");
+                    setLastError(staticErrTxt.append(QString(e.what())));
+                    return KviCryptEngine::DecryptError;
+                }
+            }
+            else {
+                for(unsigned int i=0;i<sizeof(iv);i++) {
+                    iv[i] = 0x00;
+                }
+            }
+            
+            CryptoPP::CBC_Mode< CryptoPP::Blowfish >::Decryption decryptor( key, sizeof(key), iv );
             CryptoPP::StringSource(szIn, true,
                             new CryptoPP::Base64Decoder(
                                 new CryptoPP::StreamTransformationFilter(

@@ -53,6 +53,7 @@ class KviRijndaelEngine : public KviCryptEngine
     private:
         std::string m_szEncKey;
         std::string m_szDecKey;
+        bool        m_bRandomIv;
     public:
         virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
         virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
@@ -141,5 +142,6 @@ class KviMircryptionEngine : public KviCryptEngine
         std::string m_szDecKey;
         bool m_bEncryptCBC;
         bool m_bDecryptCBC;
+        bool m_bRandomIv;
 };
 #endif // _LIBKVIRIJNDAEL_H_
