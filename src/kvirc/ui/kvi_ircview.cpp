@@ -1291,6 +1291,13 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 // EOF macro declarations
 
+			if(pCurTextLine == m_pCursorLine)
+			{
+				//this line is currently highlighted by the ircview "find" method.
+				curBack=KVI_OPTION_MSGTYPE(KVI_OUT_SEARCH).back();
+				curFore=KVI_OPTION_MSGTYPE(KVI_OUT_SEARCH).fore();
+			}
+
 			if(m_bMouseIsDown)
 			{
 				//Check if the block or a part of it is selected
@@ -1426,18 +1433,6 @@ no_selection_paint:
 					curLeftCoord += block->block_width;
 				}
 			}
-		}
-
-		//paint the cursor
-
-		if(pCurTextLine == m_pCursorLine)
-		{
-			// paint the cursor line
-			int iH = lineWrapsHeight + m_iFontLineSpacing;
-
-			pa.setCompositionMode(QPainter::CompositionMode_SourceOut);
-			pa.fillRect(0,curBottomCoord - iH,widgetWidth,iH + (m_iFontDescent << 1),QBrush(QColor(0,0,0,127)));
-			pa.setCompositionMode(QPainter::CompositionMode_SourceOver);
 		}
 
 		curBottomCoord -= (lineWrapsHeight + m_iFontLineSpacing);
