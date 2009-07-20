@@ -77,7 +77,6 @@ class KviSdiButtonBox;
 class KVIRC_API KviMdiManager : public QMdiArea
 {
 	friend class KviMdiChild;
-	friend class KviMdiCaption;
 	Q_OBJECT
 public:
 	/**

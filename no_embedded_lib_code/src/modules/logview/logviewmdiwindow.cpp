@@ -205,14 +205,6 @@ void KviLogViewMDIWindow::resizeEvent(QResizeEvent *)
 void KviLogViewMDIWindow::fillCaptionBuffers()
 {
 	m_szPlainTextCaption = __tr2qs_ctx("Log Viewer","logview");
-
-	m_szHtmlActiveCaption = QString("<nobr><font color=\"%1\"><b>").arg(KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toUtf8().data());
-	m_szHtmlActiveCaption.append(m_szPlainTextCaption);
-	m_szHtmlActiveCaption.append("</b></font></nobr>");
-
-	m_szHtmlInactiveCaption = QString("<nobr><font color=\"%1\"><b>").arg(KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toUtf8().data());
-	m_szHtmlInactiveCaption.append(m_szPlainTextCaption);
-	m_szHtmlInactiveCaption.append("</b></font></nobr>");
 }
 
 void KviLogViewMDIWindow::die()

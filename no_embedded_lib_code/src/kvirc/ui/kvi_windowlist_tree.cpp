@@ -231,15 +231,6 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 	setFocusPolicy(Qt::NoFocus);
 	setFrameShape(NoFrame);
 
-	if(KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHeader))
-	{
-		header()->show();
-	} else {
-		header()->hide();
-	}
-
-	header()->setResizeMode(QHeaderView::Interactive);
-
 	viewport()->setAutoFillBackground(false);
 	viewport()->setMouseTracking(TRUE);
 
@@ -277,13 +268,16 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 	KviTreeWindowListItem * it = (KviTreeWindowListItem *)itemAt(e->pos());
 	if(it)
 	{
+		//clicked over an item
 		KviWindow* wnd = it->kviWindow();
 		if(e->button() & Qt::LeftButton)
 		{
 			if(e->modifiers() & Qt::ShiftModifier)
 			{
+				//shitf+left click: close window
 				wnd->delayedClose();
 			} else {
+				//left click activate/deactivate window
 				if((g_pActiveWindow != wnd) || (wnd->isMinimized()))
 				{
 					g_pFrame->setActiveWindow(wnd);
@@ -293,10 +287,16 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 
 		} else if(e->button() & Qt::RightButton)
 		{
+			//right click: open popup
 			wnd->contextPopup();
-		}
+		}else if(e->button() & Qt::MidButton)
+		{
+			//mid click: close window
+			wnd->delayedClose();
+ 		}
 
 	} else {
+		//clicked on empty space
 		if(e->button() & Qt::RightButton)
 		{
 			KviTalPopupMenu* pPopup=new KviTalPopupMenu();
@@ -375,8 +375,8 @@ KviTreeWindowList::KviTreeWindowList()
 : KviWindowListBase()
 {
 	m_pTreeWidget = new KviTreeWindowListTreeWidget(this);
-	m_pTreeWidget->setHeaderLabel(__tr2qs("Window List"));
 	m_pTreeWidget->setColumnWidth(0,135);
+	m_pTreeWidget->header()->hide();
 	setWidget(m_pTreeWidget);
 
 	//ad-hoc itemdelegate for this view
@@ -401,6 +401,8 @@ KviTreeWindowList::KviTreeWindowList()
 	//tooltips
 	m_pToolTip = new KviDynamicToolTip(m_pTreeWidget->viewport(),"tree_windowlist_tooltip");
 	connect(m_pToolTip,SIGNAL(tipRequest(KviDynamicToolTip *,const QPoint &)),this,SLOT(tipRequest(KviDynamicToolTip *,const QPoint &)));
+
+	applyOptions();
 }
 
 KviTreeWindowList::~KviTreeWindowList()
@@ -538,13 +540,6 @@ bool KviTreeWindowList::setIterationPointer(KviWindowListItem * it)
 
 void KviTreeWindowList::applyOptions()
 {
-	if(!KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHeader))
-	{
-		m_pTreeWidget->header()->hide();
-	} else {
-		m_pTreeWidget->header()->show();
-	}
-	m_pTreeWidget->update();
 }
 
 // KviTreeWindowListItemDelegate

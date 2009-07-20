@@ -51,25 +51,24 @@ SET(MANUAL_REVISION
 	CACHE STRING "Manually set the revision number if subversion is not found"
 )
 
-FIND_PACKAGE(Subversion)
-IF(Subversion_FOUND)
-	MESSAGE("-- Found Subversion ${Subversion_VERSION_SVN}")
-	Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc)
- 	IF(DEFINED KVIrc_WC_REVISION)
-		SET(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
-		MESSAGE("-- Current revision is ${KVIrc_WC_REVISION}")
+STRING(COMPARE EQUAL "${MANUAL_REVISION}" "" MANUAL_REVISION_UNSET)
+IF(MANUAL_REVISION_UNSET)
+	FIND_PACKAGE(Subversion)
+	IF(Subversion_FOUND)
+		MESSAGE("-- Found Subversion ${Subversion_VERSION_SVN}")
+		Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc)
+ 		IF(DEFINED KVIrc_WC_REVISION)
+			SET(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
+			MESSAGE("-- Current revision is ${KVIrc_WC_REVISION}")
+		ELSE()
+			MESSAGE("-- No Subversion working copy found")
+		ENDIF()
 	ELSE()
-		MESSAGE("-- No Subversion working copy found")
+		MESSAGE("Subversion not found. No revision number will be used")
 	ENDIF()
 ELSE()
-	STRING(COMPARE EQUAL "${MANUAL_REVISION}" "" MANUAL_REVISION_UNSET)
-	
-	IF(MANUAL_REVISION_UNSET)
-		MESSAGE("Subversion not found. No revision number will be used")
-	ELSE()
-		SET(CMAKE_KVIRC_BUILD_REVISION ${MANUAL_REVISION})
-		MESSAGE("-- Current revision has been manually set to ${MANUAL_REVISION}")
-	ENDIF()
+	SET(CMAKE_KVIRC_BUILD_REVISION ${MANUAL_REVISION})
+	MESSAGE("-- Current revision has been manually set to ${MANUAL_REVISION}")
 ENDIF()
 
 # Get the build date
@@ -122,13 +121,12 @@ IF(WANT_DEBUG)
 	SET(CMAKE_BUILD_TYPE Debug)
 	SET(CMAKE_STATUS_DEBUG_SUPPORT "Yes")
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS DEBUG)
+	#force gdb format of debug symbols
 	SET(CMAKE_CXX_FLAGS "-O0 -ggdb")
 	SET(CMAKE_C_FLAGS "-O0 -ggdb")
 ELSE()
 	SET(CMAKE_BUILD_TYPE Release)
 	SET(CMAKE_STATUS_DEBUG_SUPPORT "No")
-	SET(CMAKE_CXX_FLAGS "-O2")
-	SET(CMAKE_C_FLAGS "-O2")
 ENDIF()
 
 
@@ -275,8 +273,13 @@ ENDIF()
 ############################################################################
 
 # We require at least Qt 4.5.x
-FIND_PACKAGE(Qt4 4.5.0 REQUIRED QtSQL QtXML QtNetwork)
+FIND_PACKAGE(Qt4 4.5.0 REQUIRED)
 IF(QT4_FOUND)
+	SET(QT_USE_QTSQL true) 
+	SET(QT_USE_QTXML true) 
+	SET(QT_USE_QTNETWORK true) 
+
+	# Qt-DBus support 
 	OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" ON)
 	IF(WITHOUT_QTDBUS)
 		SET(WANT_QTDBUS OFF)
@@ -759,8 +762,8 @@ ENDIF()
 #   with library calls.
 #   But a few people on #kvirc complained that new dependencies would be
 #   unfeasable. That leads to the following paragraph: we only use the
-#   saner way to build KVIrc if -DCOMPILE_NO_EMBEDDED_CODE=YES is passed to
-#   cmake.
+#   saner way to build KVIrc if -DWITH_NO_EMBEDDED_CODE=YES is passed to
+#   CMake.
 ############################################################################
 OPTION(WANT_NO_EMBEDDED_CODE "Don't use embedded copies of code available from libraries (potential security issue)" OFF)
 IF(WITH_NO_EMBEDDED_CODE)
@@ -770,13 +773,19 @@ ENDIF(WITH_NO_EMBEDDED_CODE)
 IF(WANT_NO_EMBEDDED_CODE)
     MESSAGE("-- WANT_NO_EMBEDDED_CODE activated.")
     MESSAGE("-- WARNING: Parts of the code you're about to compile are in an experimental state!")
-    find_package(PkgConfig REQUIRED)
+    find_package(PkgConfig)
 
     # needed for Rijndael/AES replacement and friends
-    pkg_check_modules(CRYPTOPP REQUIRED libcrypto++>=5.0.0)
-    LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
-    #SET(COMPILE_NO_EMBEDDED_CODE 1)
-    #ADD_DEFINITIONS(-DCOMPILE_NO_EMBEDDED_CODE)
+    pkg_check_modules(CRYPTOPP libcrypto++>=5.0.0)
+    IF(CRYPTOPP_FOUND)
+        LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
+    ELSE(CRYPTOPP_FOUND)
+        LIST(APPEND LIBS "-lcrypto++")
+        MESSAGE("     WARNING: YOU ENABLED WITH_NO_EMBEDDED_CODE BUT YOUR SYSTEM DOESN'T PROVIDE")
+        MESSAGE("              A .pc FILE FOR Crypto++.")
+        MESSAGE("              THIS BUILD MIGHT FAIL, MAKE SURE Crypto++ IS INSTALLED AND IT CAN")
+        MESSAGE("              BE LINKED AGAINST IT WITH »-lcrypto++«.")
+    ENDIF(CRYPTOPP_FOUND)
 ENDIF(WANT_NO_EMBEDDED_CODE)
 
 ############################################################################
@@ -905,6 +914,10 @@ ENDIF()
 # Search for subdirectories
 SUBDIRS(src data po scripts doc)
 
+#install additional resources for win32
+IF(WIN32)
+	ADD_SUBDIRECTORY(win32build)
+ENDIF()
 ###############################################################################
 #
 # The API documentation target

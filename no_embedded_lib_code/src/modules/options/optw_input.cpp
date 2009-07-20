@@ -32,7 +32,7 @@
 KviInputLookOptionsWidget::KviInputLookOptionsWidget(QWidget * parent)
 : KviOptionsWidget(parent)
 {
-	setObjectName("ircviewlook_options_widget");
+	setObjectName("inputlook_options_widget");
 	createLayout();
 
 	addFontSelector(0,0,1,0,__tr2qs_ctx("Font","options"),KviOption_fontInput);

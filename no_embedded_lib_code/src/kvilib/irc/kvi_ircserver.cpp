@@ -68,8 +68,6 @@ KviProxy * KviServer::proxyServer(KviProxyDataBase * pDb)
 
 KviServer::KviServer(const KviServer & serv)
 {
-	if(serv.m_pReconnectInfo) m_pReconnectInfo = new KviServerReconnectInfo(*(serv.m_pReconnectInfo));
-	else m_pReconnectInfo = 0;
 	m_szHostname         = serv.m_szHostname;
 	m_szIp               = serv.m_szIp;
 	m_szDescription      = serv.m_szDescription;
@@ -93,6 +91,10 @@ KviServer::KviServer(const KviServer & serv)
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
 	else m_pAutoJoinChannelList = 0;
+
+	if(serv.m_pReconnectInfo)
+		m_pReconnectInfo = new KviServerReconnectInfo(*(serv.m_pReconnectInfo));
+	else m_pReconnectInfo = 0;
 }
 
 void KviServer::operator=(const KviServer & serv)
@@ -121,12 +123,25 @@ void KviServer::operator=(const KviServer & serv)
 	if(serv.m_pAutoJoinChannelList)
 		m_pAutoJoinChannelList = new QStringList(*(serv.m_pAutoJoinChannelList));
 	else m_pAutoJoinChannelList = 0;
+
+	if(m_pReconnectInfo) delete m_pReconnectInfo;
+	if(serv.m_pReconnectInfo)
+		m_pReconnectInfo = new KviServerReconnectInfo(*(serv.m_pReconnectInfo));
+	else m_pReconnectInfo = 0;
 }
 
 KviServer::~KviServer()
 {
-	if(m_pAutoJoinChannelList) delete m_pAutoJoinChannelList;
-	if(m_pReconnectInfo) delete m_pReconnectInfo;
+	if(m_pAutoJoinChannelList)
+	{
+		delete m_pAutoJoinChannelList;
+		m_pAutoJoinChannelList = 0;
+	}
+	if(m_pReconnectInfo)
+	{
+		delete m_pReconnectInfo;
+		m_pReconnectInfo = 0;
+	}
 }
 
 void KviServer::generateUniqueId()

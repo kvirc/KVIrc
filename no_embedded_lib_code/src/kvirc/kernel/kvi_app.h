@@ -316,6 +316,7 @@ private:
 	void createFrame();
 signals:
 	void reloadImages();
+	void updateNotifier();
 	void recentUrlsChanged();
 };
 

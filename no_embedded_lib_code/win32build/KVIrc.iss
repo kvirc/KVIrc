@@ -4,7 +4,7 @@
 [Setup]
 
 AppName=KVIrc
-AppVerName=KVIrc 3.4.0 "Virgo"
+AppVerName=KVIrc 4.0.0-wip "Insomnia"
 AppId=KVIrc
 AppPublisher=Szymon Stefanek and The KVIrc Development Team
 AppPublisherURL=http://www.kvirc.net
@@ -16,7 +16,7 @@ AllowNoIcons=yes
 ;Compression=bzip/9
 Compression=lzma/max
 SolidCompression=yes
-SourceDir=.\package
+SourceDir=.\release
 OutputDir=.\setup
 ShowLanguageDialog=yes
 SetupIconFile=..\..\data\resources\icon1.ico

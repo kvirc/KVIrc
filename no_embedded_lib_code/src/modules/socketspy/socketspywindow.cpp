@@ -81,20 +81,6 @@ void KviSocketSpyWindow::getBaseLogFileName(QString &buffer)
 void KviSocketSpyWindow::fillCaptionBuffers()
 {
 	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Socket Spy [IRC Context %u]"),m_pConsole->context()->id());
-
-	KviQString::sprintf(m_szHtmlActiveCaption,
-		__tr2qs("<nobr><font color=\"%s\"><b>Socket Spy</b></font> " \
-			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii().data(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toAscii().data(),
-		m_pConsole->context()->id());
-
-	KviQString::sprintf(m_szHtmlInactiveCaption,
-		__tr2qs("<nobr><font color=\"%s\"><b>Socket Spy</b></font> " \
-			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii().data(),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toAscii().data(),
-		m_pConsole->context()->id());
 }
 
 bool KviSocketSpyWindow::incomingMessage(const char * message)

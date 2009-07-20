@@ -53,6 +53,7 @@
 #include "optw_mediatypes.h"
 #include "optw_messages.h"
 #include "optw_nickserv.h"
+#include "optw_notifier.h"
 #include "optw_notify.h"
 #include "optw_protection.h"
 #include "optw_proxy.h"
@@ -255,11 +256,6 @@ KviOptionsWidget * classKviThemeTransparencyOptionsWidget_createInstanceProc(QWi
 	return new KviThemeTransparencyOptionsWidget(parent);
 }
 
-KviOptionsWidget * classKviThemeMdiCaptionsOptionsWidget_createInstanceProc(QWidget * parent)
-{
-	return new KviThemeMdiCaptionsOptionsWidget(parent);
-}
-
 KviOptionsWidget * classKviThemeMdiAreaOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviThemeMdiAreaOptionsWidget(parent);
@@ -355,14 +351,19 @@ KviOptionsWidget * classKviNickServOptionsWidget_createInstanceProc(QWidget * pa
 	return new KviNickServOptionsWidget(parent);
 }
 
-KviOptionsWidget * classKviNotifyOptionsWidget_createInstanceProc(QWidget * parent)
+KviOptionsWidget * classKviNotifierLookOptionsWidget_createInstanceProc(QWidget * parent)
 {
-	return new KviNotifyOptionsWidget(parent);
+	return new KviNotifierLookOptionsWidget(parent);
 }
 
 KviOptionsWidget * classKviNotifierOptionsWidget_createInstanceProc(QWidget * parent)
 {
 	return new KviNotifierOptionsWidget(parent);
+}
+
+KviOptionsWidget * classKviNotifyOptionsWidget_createInstanceProc(QWidget * parent)
+{
+	return new KviNotifyOptionsWidget(parent);
 }
 
 KviOptionsWidget * classKviProtectionOptionsWidget_createInstanceProc(QWidget * parent)
@@ -564,8 +565,6 @@ static const char * g_szName_KviThemeGeneralOptionsWidget = KVI_OPTIONS_WIDGET_N
 static const char * g_szClassName_KviThemeGeneralOptionsWidget = "KviThemeGeneralOptionsWidget";
 static const char * g_szName_KviThemeTransparencyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeTransparencyOptionsWidget;
 static const char * g_szClassName_KviThemeTransparencyOptionsWidget = "KviThemeTransparencyOptionsWidget";
-static const char * g_szName_KviThemeMdiCaptionsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeMdiCaptionsOptionsWidget;
-static const char * g_szClassName_KviThemeMdiCaptionsOptionsWidget = "KviThemeMdiCaptionsOptionsWidget";
 static const char * g_szName_KviThemeMdiAreaOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeMdiAreaOptionsWidget;
 static const char * g_szClassName_KviThemeMdiAreaOptionsWidget = "KviThemeMdiAreaOptionsWidget";
 static const char * g_szName_KviThemeToolBarAppletsOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviThemeToolBarAppletsOptionsWidget;
@@ -604,10 +603,12 @@ static const char * g_szName_KviStandardColorsOptionsWidget = KVI_OPTIONS_WIDGET
 static const char * g_szClassName_KviStandardColorsOptionsWidget = "KviStandardColorsOptionsWidget";
 static const char * g_szName_KviNickServOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNickServOptionsWidget;
 static const char * g_szClassName_KviNickServOptionsWidget = "KviNickServOptionsWidget";
-static const char * g_szName_KviNotifyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifyOptionsWidget;
-static const char * g_szClassName_KviNotifyOptionsWidget = "KviNotifyOptionsWidget";
+static const char * g_szName_KviNotifierLookOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifierLookOptionsWidget;
+static const char * g_szClassName_KviNotifierLookOptionsWidget = "KviNotifierLookOptionsWidget";
 static const char * g_szName_KviNotifierOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifierOptionsWidget;
 static const char * g_szClassName_KviNotifierOptionsWidget = "KviNotifierOptionsWidget";
+static const char * g_szName_KviNotifyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviNotifyOptionsWidget;
+static const char * g_szClassName_KviNotifyOptionsWidget = "KviNotifyOptionsWidget";
 static const char * g_szName_KviProtectionOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviProtectionOptionsWidget;
 static const char * g_szClassName_KviProtectionOptionsWidget = "KviProtectionOptionsWidget";
 static const char * g_szName_KviProxyOptionsWidget = KVI_OPTIONS_WIDGET_NAME_KviProxyOptionsWidget;
@@ -1845,40 +1846,6 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 	e0->pChildList = 0;
 
 	e0 = new KviOptionsWidgetInstanceEntry;
-	e0->createProc = &classKviThemeMdiCaptionsOptionsWidget_createInstanceProc;
-	e0->pWidget = 0;
-	e0->szClassName = g_szClassName_KviThemeMdiCaptionsOptionsWidget;
-	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviThemeMdiCaptionsOptionsWidget;
-	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviThemeMdiCaptionsOptionsWidget
-	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviThemeMdiCaptionsOptionsWidget;
-	#else
-	e0->iPriority = 0;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiCaptionsOptionsWidget
-	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiCaptionsOptionsWidget;
-	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiCaptionsOptionsWidget
-	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiCaptionsOptionsWidget;
-	#else
-	e0->szGroup = "general";
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviThemeMdiCaptionsOptionsWidget
-	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviThemeMdiCaptionsOptionsWidget;
-	#else
-	e0->bIsContainer = false;
-	#endif
-	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeMdiCaptionsOptionsWidget
-	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviThemeMdiCaptionsOptionsWidget;
-	#else
-	e0->bIsNotContained = false;
-	#endif
-	e0->szNameNoLocale = g_szName_KviThemeMdiCaptionsOptionsWidget;
-	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviThemeMdiCaptionsOptionsWidget,"options");
-	m_pInstanceTree->append(e0);
-	e0->pChildList = 0;
-
-	e0 = new KviOptionsWidgetInstanceEntry;
 	e0->createProc = &classKviThemeMdiAreaOptionsWidget_createInstanceProc;
 	e0->pWidget = 0;
 	e0->szClassName = g_szClassName_KviThemeMdiAreaOptionsWidget;
@@ -3082,6 +3049,40 @@ KviOptionsInstanceManager::KviOptionsInstanceManager()
 		e1->szName = __tr2qs_ctx_no_xgettext(g_szName_KviStandardColorsOptionsWidget,"options");
 		e0->pChildList->append(e1);
 		e1->pChildList = 0;
+
+	e0 = new KviOptionsWidgetInstanceEntry;
+	e0->createProc = &classKviNotifierLookOptionsWidget_createInstanceProc;
+	e0->pWidget = 0;
+	e0->szClassName = g_szClassName_KviNotifierLookOptionsWidget;
+	e0->iIcon = KVI_OPTIONS_WIDGET_ICON_KviNotifierLookOptionsWidget;
+	#ifdef KVI_OPTIONS_WIDGET_PRIORITY_KviNotifierLookOptionsWidget
+	e0->iPriority = KVI_OPTIONS_WIDGET_PRIORITY_KviNotifierLookOptionsWidget;
+	#else
+	e0->iPriority = 0;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierLookOptionsWidget
+	e0->szKeywordsNoLocale = KVI_OPTIONS_WIDGET_KEYWORDS_KviNotifierLookOptionsWidget;
+	e0->szKeywords = __tr2qs_ctx_no_xgettext(e0->szKeywordsNoLocale.toUtf8().data(),"options");;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_GROUP_KviNotifierLookOptionsWidget
+	e0->szGroup = KVI_OPTIONS_WIDGET_GROUP_KviNotifierLookOptionsWidget;
+	#else
+	e0->szGroup = "general";
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_CONTAINER_KviNotifierLookOptionsWidget
+	e0->bIsContainer = KVI_OPTIONS_WIDGET_CONTAINER_KviNotifierLookOptionsWidget;
+	#else
+	e0->bIsContainer = false;
+	#endif
+	#ifdef KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifierLookOptionsWidget
+	e0->bIsNotContained = KVI_OPTIONS_WIDGET_NOTCONTAINED_KviNotifierLookOptionsWidget;
+	#else
+	e0->bIsNotContained = false;
+	#endif
+	e0->szNameNoLocale = g_szName_KviNotifierLookOptionsWidget;
+	e0->szName = __tr2qs_ctx_no_xgettext(g_szName_KviNotifierLookOptionsWidget,"options");
+	m_pInstanceTree->append(e0);
+	e0->pChildList = 0;
 
 	e0 = new KviOptionsWidgetInstanceEntry;
 	e0->createProc = &classKviServerOptionsWidget_createInstanceProc;

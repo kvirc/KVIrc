@@ -799,11 +799,6 @@ void KviDccVoice::fillCaptionBuffers()
 		m_pDescriptor->szLocalFileName.toUtf8().data());
 
 	m_szPlainTextCaption = tmp;
-
-	m_szHtmlActiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toAscii().data(),tmp.ptr());
-	m_szHtmlInactiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toAscii().data(),tmp.ptr());
 }
 
 QPixmap * KviDccVoice::myIconPtr()

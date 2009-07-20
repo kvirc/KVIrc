@@ -1159,7 +1159,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 	@short:
 		Sets the caption of an user window
 	@syntax:
-		window.setWindowTitle [-q] <window_id> <plain_text_caption> [html_inactive_caption] [html_active_caption]
+		window.setWindowTitle [-q] <window_id> <plain_text_caption>
 	@switches:
 		!sw: -q | --quiet
 		Be quiet
@@ -1168,16 +1168,7 @@ static bool window_kvs_fnc_open(KviKvsModuleFunctionCall * c)
 		If <window_id> is an empty string then the current window is assumed.[br]
 		The window must be of type userwnd and must have been created by [fnc]$window.open[/fnc]:
 		it is not possible to change the caption of other window types.[br]
-		If the window is not of the expected type then a warning is printed unless the -q switch is used.[br]
-		If [html_inactive_caption] and/or [html_active_caption] are given then
-		the html versions of the captions displayed in the window caption bars
-		are set too. If one of these parameters is missing then <plain_text_caption> is
-		used for the html versions too. The html captions can contain limited html code. In particular
-		you're allowed to use the &lt;nobr&gt;,&lt;font&gt;,&lt;b&gt; and &lt;i&gt; html tags.
-		It is better to avoid using colored fonts since you can't know which color scheme the
-		user will have set.[br]
-		If the windows get undocked, it will just use <plain_text_caption>, not the styled html captions.
-		If the specified window does not exist a warning is printed unless the -q switch is used.
+		If the window does not exists or is not of the expected type then a warning is printed unless the -q switch is used.[br]
 	@seealso:
 */
 
@@ -1185,14 +1176,10 @@ static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 {
 	QString szWnd;
 	QString szPlain;
-	QString szInactive;
-	QString szActive;
 	KviWindow * pWnd;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("window_id",KVS_PT_STRING,0,szWnd)
 		KVSM_PARAMETER("plain_text_caption",KVS_PT_STRING,0,szPlain)
-		KVSM_PARAMETER("html_inactive_caption",KVS_PT_STRING,KVS_PF_OPTIONAL,szInactive)
-		KVSM_PARAMETER("html_active_caption",KVS_PT_STRING,KVS_PF_OPTIONAL,szActive)
 	KVSM_PARAMETERS_END(c)
 
 	pWnd = g_pApp->findWindow(szWnd.toUtf8().data());
@@ -1205,7 +1192,7 @@ static bool window_kvs_cmd_setWindowTitle(KviKvsModuleCommandCall * c)
 
 	if(pWnd->type() == KVI_WINDOW_TYPE_USERWINDOW)
 	{
-		((KviUserWindow *)pWnd)->setWindowTitleStrings(szPlain,szInactive,szActive);
+		((KviUserWindow *)pWnd)->setWindowTitleStrings(szPlain);
 	} else {
 		if(!c->hasSwitch('q',"quiet"))c->warning(__tr2qs("The specified window is not of type \"userwnd\""));
 	}

@@ -158,22 +158,6 @@ QSize KviLinksWindow::sizeHint() const
 void KviLinksWindow::fillCaptionBuffers()
 {
 	KviQString::sprintf(m_szPlainTextCaption,__tr2qs("Links for %Q [IRC Context %u]"),&m_szRootServer,m_pConsole->context()->id());
-
-	KviQString::sprintf(m_szHtmlActiveCaption,
-		__tr2qs("<nobr><font color=\"%s\"><b>Links for %Q</b></font> " \
-			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().toUtf8().data(),
-		&m_szRootServer,
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name().toUtf8().data(),
-		m_pConsole->context()->id());
-
-	KviQString::sprintf(m_szHtmlInactiveCaption,
-		__tr2qs("<nobr><font color=\"%s\"><b>Links for %Q</b></font> " \
-			"<font color=\"%s\">[IRC Context %u]</font></nobr>"),
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().toUtf8().data(),
-		&m_szRootServer,
-		KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name().toUtf8().data(),
-		m_pConsole->context()->id());
 }
 
 void KviLinksWindow::die()

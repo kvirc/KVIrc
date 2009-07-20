@@ -42,7 +42,7 @@ protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
 public:
-	void setWindowTitleStrings(const QString &szPlainText,const QString &szHtmlInactive,const QString &szHtmlActive);
+	void setWindowTitleStrings(const QString &szPlainText);
 };
 
 #endif //!_USERWINDOW_H_

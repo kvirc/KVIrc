@@ -958,7 +958,7 @@ void KviConsole::checkDefaultAvatar(KviIrcUserEntry *e,const QString &nick,const
 		if(u->getProperty("avatar",szAvatar))
 		{
 			// the user has a default avatar...
-			KviAvatar * avatar = g_pIconManager->getAvatar(QString(),szAvatar);
+			KviAvatar * avatar = g_pIconManager->getAvatar(szAvatar,KviFileUtils::extractFileName(szAvatar));
 			if(avatar)
 			{
 				e->setAvatar(avatar);
@@ -1144,36 +1144,10 @@ void KviConsole::fillCaptionBuffers()
 {
 	fillStatusString();
 
-	static QString begin("<nobr><font color=\"");
-	static QString boldbegin("\"><b>");
-	static QString endofbold("</b></font> <font color=\"");
-	static QString endoffont("\">");
-	static QString end("</font></nobr>");
-
 	m_szPlainTextCaption = windowName();
 	m_szPlainTextCaption += " [";
 	m_szPlainTextCaption += m_szStatusString;
 	m_szPlainTextCaption += QChar(']');
-
-	m_szHtmlActiveCaption = begin;
-	m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name();
-	m_szHtmlActiveCaption += boldbegin;
-	m_szHtmlActiveCaption += windowName();
-	m_szHtmlActiveCaption += endofbold;
-	m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name();
-	m_szHtmlActiveCaption += endoffont;
-	m_szHtmlActiveCaption += m_szStatusString;
-	m_szHtmlActiveCaption += end;
-
-	m_szHtmlInactiveCaption = begin;
-	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name();
-	m_szHtmlInactiveCaption += boldbegin;
-	m_szHtmlInactiveCaption += windowName();
-	m_szHtmlInactiveCaption += endofbold;
-	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name();
-	m_szHtmlInactiveCaption += endoffont;
-	m_szHtmlInactiveCaption += m_szStatusString;
-	m_szHtmlInactiveCaption += end;
 }
 
 QPixmap * KviConsole::myIconPtr()

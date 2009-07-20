@@ -57,6 +57,7 @@ protected:
 private slots:
 	void scrollRangeChanged(int, int);
 	void labelChanged();
+	void closeMe();
 };
 
 #endif //!_KVINOTIFIERWINDOWTAB_H_

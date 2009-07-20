@@ -982,12 +982,6 @@ void KviChannel::getWindowListTipText(QString & szBuffer)
 
 void KviChannel::fillCaptionBuffers()
 {
-	static QString szBegin("<nobr><font color=\"");
-	static QString szBoldBegin("\"><b>");
-	static QString szBoldEnd("</b></font> <font color=\"");
-	static QString szFontEnd("\">");
-	static QString szEnd("</font></nobr>");
-
 	if(!connection())
 	{
 		QString szDead = __tr2qs("[Dead channel]");
@@ -998,25 +992,6 @@ void KviChannel::fillCaptionBuffers()
 		m_szPlainTextCaption += " : ";
 		m_szPlainTextCaption += szDead;
 
-		m_szHtmlActiveCaption = szBegin;
-		m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name();
-		m_szHtmlActiveCaption += szBoldBegin;
-		m_szHtmlActiveCaption += m_szName;
-		m_szHtmlActiveCaption += szBoldEnd;
-		m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name();
-		m_szHtmlActiveCaption += szFontEnd;
-		m_szHtmlActiveCaption += szDead;
-		m_szHtmlActiveCaption += szEnd;
-
-		m_szHtmlInactiveCaption = szBegin;
-		m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name();
-		m_szHtmlInactiveCaption += szBoldBegin;
-		m_szHtmlInactiveCaption += m_szName;
-		m_szHtmlInactiveCaption += szBoldEnd;
-		m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name();
-		m_szHtmlInactiveCaption += szFontEnd;
-		m_szHtmlInactiveCaption += szDead;
-		m_szHtmlInactiveCaption += szEnd;
 		return;
 	}
 
@@ -1050,26 +1025,6 @@ void KviChannel::fillCaptionBuffers()
 
 	m_szPlainTextCaption += QChar(' ');
 	m_szPlainTextCaption += szNickOnServer;
-
-	m_szHtmlActiveCaption = szBegin;
-	m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name();
-	m_szHtmlActiveCaption += szBoldBegin;
-	m_szHtmlActiveCaption += m_szNameWithUserFlag;
-	m_szHtmlActiveCaption += szBoldEnd;
-	m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive2).name();
-	m_szHtmlActiveCaption += szFontEnd;
-	m_szHtmlActiveCaption += szNickOnServer;
-	m_szHtmlActiveCaption += szEnd;
-
-	m_szHtmlInactiveCaption = szBegin;
-	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name();
-	m_szHtmlInactiveCaption += szBoldBegin;
-	m_szHtmlInactiveCaption += m_szNameWithUserFlag;
-	m_szHtmlInactiveCaption += szBoldEnd;
-	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive2).name();
-	m_szHtmlInactiveCaption += szFontEnd;
-	m_szHtmlInactiveCaption += szNickOnServer;
-	m_szHtmlInactiveCaption += szEnd;
 }
 
 void KviChannel::ownMessage(const QString & szBuffer)

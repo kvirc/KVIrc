@@ -45,6 +45,7 @@ KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QTabWidget *parent)
 	{
 		m_label = m_pWnd->windowName();
 		connect(pWnd,SIGNAL(windowNameChanged()),this,SLOT(labelChanged()));
+		connect(pWnd,SIGNAL(destroyed()),this,SLOT(closeMe()));
 	} else {
 		m_label = (QString)"----";
 	}
@@ -77,9 +78,9 @@ KviNotifierWindowTab::KviNotifierWindowTab(KviWindow * pWnd, QTabWidget *parent)
 KviNotifierWindowTab::~KviNotifierWindowTab()
 {
 	if(m_pVBox)
-		delete m_pVBox;
+		m_pVBox->deleteLater();
 	if(m_pVWidget)
-		delete m_pVWidget;
+		m_pVWidget->deleteLater();
 }
 
 void KviNotifierWindowTab::appendMessage(KviNotifierMessage * m)
@@ -90,7 +91,7 @@ void KviNotifierWindowTab::appendMessage(KviNotifierMessage * m)
 		QLayoutItem* tmp=m_pVBox->takeAt(0);
 		KviNotifierMessage* tmp2=(KviNotifierMessage*)tmp->widget();
 		if(tmp2)
-			delete tmp2;
+			tmp2->deleteLater();
 	}
 }
 
@@ -120,11 +121,27 @@ void KviNotifierWindowTab::mouseDoubleClickEvent(QMouseEvent *)
 
 	if(m_pWnd->mdiParent())
 	{
+		m_pWnd->frame()->raise();
+		m_pWnd->frame()->setFocus();
+		m_pWnd->frame()->setWindowState(m_pWnd->frame()->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
 		if(!m_pWnd->frame()->isVisible())
 			m_pWnd->frame()->show();
 	}
 
 	m_pWnd->frame()->setActiveWindow(m_pWnd);
+}
+
+void KviNotifierWindowTab::closeMe()
+{
+	//our window has been closed
+	if(m_pParent && g_pNotifierWindow)
+	{
+		int index = m_pParent->indexOf(this);
+		if(index!=-1)
+		{
+			g_pNotifierWindow->slotTabCloseRequested(index);
+		}
+	}
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

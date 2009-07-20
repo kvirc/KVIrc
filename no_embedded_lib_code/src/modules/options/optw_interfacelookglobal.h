@@ -70,20 +70,6 @@ protected slots:
 	void enableGlobalBackgroundPixmapSelector(bool);
 };
 
-
-#define KVI_OPTIONS_WIDGET_ICON_KviThemeMdiCaptionsOptionsWidget KVI_SMALLICON_CAPTION
-#define KVI_OPTIONS_WIDGET_NAME_KviThemeMdiCaptionsOptionsWidget __tr2qs_no_lookup("Window Captions")
-#define KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiCaptionsOptionsWidget __tr2qs_no_lookup("theme,mdi")
-#define KVI_OPTIONS_WIDGET_GROUP_KviThemeMdiCaptionsOptionsWidget "theme"
-
-class KviThemeMdiCaptionsOptionsWidget : public KviOptionsWidget
-{
-	Q_OBJECT
-public:
-	KviThemeMdiCaptionsOptionsWidget(QWidget * parent);
-	~KviThemeMdiCaptionsOptionsWidget();
-};
-
 #define KVI_OPTIONS_WIDGET_ICON_KviThemeMdiAreaOptionsWidget KVI_SMALLICON_APPLET
 #define KVI_OPTIONS_WIDGET_NAME_KviThemeMdiAreaOptionsWidget __tr2qs_no_lookup("Workspace")
 #define KVI_OPTIONS_WIDGET_KEYWORDS_KviThemeMdiAreaOptionsWidget __tr2qs_no_lookup("theme,mdi")

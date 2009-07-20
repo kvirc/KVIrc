@@ -91,23 +91,7 @@ void KviDebugWindow::loadProperties(KviConfig *cfg)
 
 void KviDebugWindow::fillCaptionBuffers()
 {
-	static QString begin("<nobr><font color=\"");
-	static QString boldbegin("\"><b>");
-	static QString end("</b></font></nobr>");
-
 	m_szPlainTextCaption = windowName();
-
-	m_szHtmlActiveCaption = begin;
-	m_szHtmlActiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name();
-	m_szHtmlActiveCaption += boldbegin;
-	m_szHtmlActiveCaption += windowName();
-	m_szHtmlActiveCaption += end;
-
-	m_szHtmlInactiveCaption = begin;
-	m_szHtmlInactiveCaption += KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name();
-	m_szHtmlInactiveCaption += boldbegin;
-	m_szHtmlInactiveCaption += windowName();
-	m_szHtmlInactiveCaption += end;
 }
 
 QPixmap * KviDebugWindow::myIconPtr()
