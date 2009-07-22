@@ -537,7 +537,6 @@ void KviApp::findGlobalKvircDirectory()
 	if(checkGlobalKvircDirectory(m_szGlobalKvircDir))return;
 
 	KviMessageBox::warning("Unable to find the shared Kvirc directory.\n"\
-			"The usual path for this directory is c:\\kvirc\\" KVI_VERSION_BRANCH "\\.\n"\
 			"I have tried %Q, but it seemed to fail\n" \
 			"Trying to run anyway...\n",&m_szGlobalKvircDir);
 #else

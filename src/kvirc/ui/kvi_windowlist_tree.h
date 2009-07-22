@@ -25,27 +25,22 @@
 //=============================================================================
 
 #include "kvi_windowlist.h"
-#include "kvi_tal_treewidget.h"
-#include "kvi_tal_itemdelegates.h"
+#include <QTreeWidget>
+#include <QAbstractItemDelegate>
 #include <QAbstractItemView>
 
 class KviTreeWindowList;
 class KviTreeWindowListItemInternal;
 
-class KVIRC_API KviTreeWindowListItem : public KviTalTreeWidgetItem , public KviWindowListItem
+class KVIRC_API KviTreeWindowListItem : public QTreeWidgetItem , public KviWindowListItem
 {
 	friend class KviTreeWindowList;
 	friend class KviTreeWindowListTreeWidget;
 	friend class KviTreeWindowListItemInternal;
 public:
-	KviTreeWindowListItem(KviTalTreeWidget * par,KviWindow * wnd);
+	KviTreeWindowListItem(QTreeWidget * par,KviWindow * wnd);
 	KviTreeWindowListItem(KviTreeWindowListItem * par,KviWindow * wnd);
 	~KviTreeWindowListItem();
-protected:
-	int m_iStepNumber;
-	bool m_bIncreasing;
-	QTimer* m_pAnimTimer;
-	KviTreeWindowListItemInternal *m_pInternal;
 public:
 	virtual QString key() const;
 	virtual void captionChanged();
@@ -55,29 +50,13 @@ public:
 	virtual void applyOptions();
 protected:
 	void setActive(bool bActive);
-	void mouseEnter();
-	void mouseLeave();
-	void timerShot();
-	int calculateColor(int col1,int col2);
 	bool operator<(const QTreeWidgetItem &other)const
 	{
 		return key() < ((KviTreeWindowListItem*)&other)->key();
 	}
 };
 
-class KviTreeWindowListItemInternal : public QObject
-{
-	Q_OBJECT
-public:
-	KviTreeWindowListItemInternal(KviTreeWindowListItem* pItem):m_pItem(pItem) {};
-	~KviTreeWindowListItemInternal() {};
-protected:
-	KviTreeWindowListItem* m_pItem;
-public slots:
-	void timerShot() { m_pItem->timerShot();};
-};
-
-class KVIRC_API KviTreeWindowListTreeWidget : public KviTalTreeWidget
+class KVIRC_API KviTreeWindowListTreeWidget : public QTreeWidget
 {
 	friend class KviTreeWindowListItem;
 	friend class KviTreeWindowListItemDelegate;
@@ -90,13 +69,11 @@ protected:
 	virtual void mousePressEvent(QMouseEvent *e);
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void paintEvent(QPaintEvent * event);
-	virtual void mouseMoveEvent (QMouseEvent * e);
-	virtual void leaveEvent(QEvent *);
 private:
 	KviWindowListItem * lastItem();
 signals:
-	void leftMousePress(KviTalTreeWidgetItem * it);
-	void rightMousePress(KviTalTreeWidgetItem * it);
+	void leftMousePress(QTreeWidgetItem * it);
+	void rightMousePress(QTreeWidgetItem * it);
 public slots:
 	void sort();
 	void reverseSort();
@@ -132,23 +109,18 @@ protected slots:
 	void tipRequest(KviDynamicToolTip *tip,const QPoint &pnt);
 };
 
-#define KVI_TTBID_STEPNUM Qt::UserRole
-#define KVI_TTBID_REDDIFF Qt::UserRole + 1
-#define KVI_TTBID_GREENDIFF Qt::UserRole + 2
-#define KVI_TTBID_BLUEDIFF Qt::UserRole + 3
-#define KVI_TTBID_HIGHLIGHT Qt::UserRole + 4
-#define KVI_TTBID_PROGRESS Qt::UserRole + 5
+#define KVI_TTBID_HIGHLIGHT Qt::UserRole
+#define KVI_TTBID_PROGRESS Qt::UserRole + 1
 
-class KVIRC_API KviTreeWindowListItemDelegate : public KviTalIconAndRichTextItemDelegate
+class KVIRC_API KviTreeWindowListItemDelegate : public QAbstractItemDelegate
 {
 	Q_OBJECT
 public:
 	KviTreeWindowListItemDelegate(QAbstractItemView * pWidget=0)
-		: KviTalIconAndRichTextItemDelegate(pWidget) {};
+		: QAbstractItemDelegate(pWidget) {};
 	~KviTreeWindowListItemDelegate(){};
 	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
-	int calculateColor(int col1,int col2, int iStepNumber) const;
 };
 
 #endif //_KVI_WINDOWLIST_TREE_H_
