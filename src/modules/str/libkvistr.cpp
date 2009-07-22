@@ -57,22 +57,19 @@
     #include <crypto++/hex.h>
     // additional
     #include <string>
-    // template class
+    // template function
     template <typename T>
-    class CryptoPpStrHash {
-        public:
-            CryptoPpStrHash(){};
-            virtual ~CryptoPpStrHash(){};
-            std::string hashIt(std::string szMessage){
-                T hash;
-                std::string szDigest;
-                CryptoPP::StringSource(szMessage, true, new CryptoPP::HashFilter(
-                hash, new CryptoPP::HexEncoder(
-                new CryptoPP::StringSink(szDigest))));
-                
-                return szDigest;
-            };
-    };
+    std::string CryptoPpStrHash(std::string szMessage){
+            T hash;
+            std::string szDigest;
+            CryptoPP::StringSource(szMessage, true, new CryptoPP::HashFilter(
+                                    hash, new CryptoPP::HexEncoder(
+                                            new CryptoPP::StringSink(szDigest)
+                                            )
+                                    )
+                            );
+            return szDigest;
+    }
 #else
     // The fallback we can always use, but with very limited set of
     // functionality.
@@ -1610,58 +1607,46 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 #elif defined(COMPILE_NO_EMBEDDED_CODE)
     // Crypto++ implementation
     std::string szDigest;
+    std::string szMsg = szString.toLocal8Bit().data();
 
     if(szType.toLower() == "sha1" || szType.toLower() == "sha") {
-        CryptoPpStrHash<CryptoPP::SHA1> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA1>(szMsg);
     }
     else if(szType.toLower() == "sha224") {
-        CryptoPpStrHash<CryptoPP::SHA224> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA224>(szMsg);
     }
     else if(szType.toLower() == "sha256") {
-        CryptoPpStrHash<CryptoPP::SHA256> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA256>(szMsg);
     }
     else if(szType.toLower() == "sha384") {
-        CryptoPpStrHash<CryptoPP::SHA384> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA384>(szMsg);
     }
     else if(szType.toLower() == "sha512") {
-        CryptoPpStrHash<CryptoPP::SHA512> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA512>(szMsg);
     }
     else if(szType.toLower() == "ripemd128") {
-        CryptoPpStrHash<CryptoPP::RIPEMD128> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD128>(szMsg);
     }
     else if(szType.toLower() == "ripemd160") {
-        CryptoPpStrHash<CryptoPP::RIPEMD160> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD160>(szMsg);
     }
     else if(szType.toLower() == "ripemd256") {
-        CryptoPpStrHash<CryptoPP::RIPEMD256> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD256>(szMsg);
     }
     else if(szType.toLower() == "ripemd320") {
-        CryptoPpStrHash<CryptoPP::RIPEMD320> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD320>(szMsg);
     }
     else if(szType.toLower() == "crc32") {
-        CryptoPpStrHash<CryptoPP::CRC32> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::CRC32>(szMsg);
     }
     else if(szType.toLower() == "md2") {
-        CryptoPpStrHash<CryptoPP::Weak::MD2> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::Weak::MD2>(szMsg);
     }
     else if(szType.toLower() == "md4") {
-        CryptoPpStrHash<CryptoPP::Weak::MD4> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::Weak::MD4>(szMsg);
     }
     else if(szType.toLower() == "md5" || szType.isEmpty()){
-        CryptoPpStrHash<CryptoPP::Weak::MD5> myWrapper;
-        szDigest = myWrapper.hashIt(static_cast<std::string>(szString.toLocal8Bit().data()));
+        szDigest = CryptoPpStrHash<CryptoPP::Weak::MD5>(szMsg);
     }
     else {
         c->warning(__tr2qs("Unsupported message digest."));
