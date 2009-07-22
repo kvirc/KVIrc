@@ -162,7 +162,7 @@ void KviNotifierWindowBorder::recalculatePositions()
 	m_bodyRect.setSize( QSize(m_captionRect.width()-(2*m_pixCaptionDX->width()),m_rct.height()-m_captionRect.height()-m_pixDWN->height()) );
 
 	m_titleRect.setTopLeft( QPoint(m_pixCaptionSX->width(),0) );
-	m_titleRect.setSize( QSize(m_rct.width()-m_pixCaptionSX->width()-m_pixCaptionDX->width(),m_captionRect.height()));
+	m_titleRect.setSize( QSize(m_rct.width()-m_pixCaptionSX->width()-m_pixCaptionDX->width()-m_pixIconClose->width(),m_captionRect.height()));
 
 }
 
