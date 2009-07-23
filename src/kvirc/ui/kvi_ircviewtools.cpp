@@ -34,6 +34,7 @@
 #include "kvi_filedialog.h"
 #include "kvi_app.h"
 #include "kvi_memmove.h"
+#include "kvi_window.h"
 
 #include <QTabWidget>
 #include <QLayout>
@@ -197,6 +198,13 @@ KviIrcViewToolWidget::KviIrcViewToolWidget(KviIrcView * par)
 
 KviIrcViewToolWidget::~KviIrcViewToolWidget()
 {
+	if(m_pFilterView)
+		m_pFilterView->deleteLater();
+
+	if(m_pIrcView)
+		if(m_pIrcView->parentKviWindow())
+			if(m_pIrcView->parentKviWindow()->input())
+				m_pIrcView->parentKviWindow()->input()->setFocus();
 }
 
 void KviIrcViewToolWidget::filterEnableAll()
