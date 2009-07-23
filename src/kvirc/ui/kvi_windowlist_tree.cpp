@@ -373,7 +373,18 @@ bool KviTreeWindowList::removeItem(KviWindowListItem * it)
 {
 	if(it)
 	{
-		delete (KviTreeWindowListItem *)it;
+		KviTreeWindowListItem *item=(KviTreeWindowListItem *)it;
+		if(m_pTreeWidget)
+		{
+			int index = m_pTreeWidget->indexOfTopLevelItem(item);
+			if(index>=0)
+			{
+				delete (KviTreeWindowListItem *)m_pTreeWidget->takeTopLevelItem(index);
+			} else {
+				item->parent()->removeChild(item);
+				delete item;
+			}
+		}
 	}
 	return true;
 }
