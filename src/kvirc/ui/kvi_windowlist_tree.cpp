@@ -164,13 +164,13 @@ KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
 {
 	setObjectName("tree_windowlist");
 	setRootIsDecorated(true);
-	//Animation creates problem with the background painting on expande/collapse
-	//setAnimated(true);
+	setAnimated(true);
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));
 	setFocusPolicy(Qt::NoFocus);
 	setFrameShape(NoFrame);
+	viewport()->setAutoFillBackground(false); 
 	m_pPrevItem=0;
 }
 
