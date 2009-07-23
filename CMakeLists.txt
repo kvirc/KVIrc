@@ -15,7 +15,7 @@ PROJECT(kvirc)
 SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # Minimum cmake version
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6.4)
 
 # Check modules first in local dir
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
@@ -979,10 +979,6 @@ IF(UNIX)
 		distclean
 		@echo Cleaning for source distribution
 	)
-	ADD_CUSTOM_TARGET(
-		uninstall
-		"${CMAKE_COMMAND}" -P "${PROJECT_BINARY_DIR}/cmake_uninstall.cmake"
-	)
 	SET(
 		DISTCLEANED
 		cmake.depends
@@ -1053,12 +1049,6 @@ ELSE()
 ENDIF()
 
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/FindKVIrc.cmake.in ${kvirc_BINARY_DIR}/FindKVIrc.cmake @ONLY)
-
-CONFIGURE_FILE(
-	${PROJECT_SOURCE_DIR}/cmake/UninstallTarget.cmake.in
-	${PROJECT_BINARY_DIR}/cmake_uninstall.cmake
-	IMMEDIATE @ONLY
-)
 
 IF(WANT_DOXYGEN)
 	IF(DOXYGEN_FOUND)
