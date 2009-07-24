@@ -155,7 +155,7 @@ ENDIF()
 #
 ###############################################################################
 
-OPTION(WANT_COEXISTENCE "Append version to binaries to maintain compatibility with older versions" ON)
+OPTION(WANT_COEXISTENCE "Append version to binaries to maintain compatibility with older versions" OFF)
 IF(COEXISTENCE)
 	SET(WANT_COEXISTENCE ON)
 ENDIF()
