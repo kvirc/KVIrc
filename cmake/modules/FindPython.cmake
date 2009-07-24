@@ -1,5 +1,4 @@
 # Copyright (c) 2003-2007 FlashCode <flashcode@flashtux.org>
-# Copyright  ©       2009 Kai Wasserbäch <debian@carbon-project>
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -20,6 +19,7 @@
 # and libraries are. It also determines what the name of the library is. This
 # code sets the following variables:
 #
+#  PYTHON_EXECUTABLE   = full path to the python binary
 #  PYTHON_INCLUDE_PATH = path to where python.h can be found
 #  PYTHON_LIBRARY = path to where libpython.so* can be found
 #  PYTHON_LFLAGS = python compiler options for linking
@@ -29,10 +29,23 @@ IF(PYTHON_FOUND)
 	SET(PYTHON_FIND_QUIETLY TRUE)
 ENDIF(PYTHON_FOUND)
 
-FIND_PACKAGE(PythonInterp)
+FIND_PROGRAM(PYTHON_EXECUTABLE 
+	NAMES python python2.6 python2.5 python2.4 python2.3 python2.2
+	PATHS /usr/bin /usr/local/bin /usr/pkg/bin
+)
 
-IF(PYTHONINTERP_FOUND)
-    FIND_PACKAGE(PythonLibs)
+IF(PYTHON_EXECUTABLE)
+	MESSAGE(STATUS "Found Python: ${PYTHON_EXECUTABLE}")
+
+	EXECUTE_PROCESS(
+		COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import *; print get_config_var('CONFINCLUDEPY')"
+		OUTPUT_VARIABLE PYTHON_INC_DIR
+	)
+  
+	EXECUTE_PROCESS(
+		COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import *; print get_config_var('LIBPL')"
+		OUTPUT_VARIABLE PYTHON_POSSIBLE_LIB_PATH
+	)
   
 	EXECUTE_PROCESS(
 		COMMAND ${PYTHON_EXECUTABLE} -c "from distutils.sysconfig import *; print get_config_var('LINKFORSHARED')"
@@ -40,19 +53,28 @@ IF(PYTHONINTERP_FOUND)
 	)
   
 	# remove the new lines from the output by replacing them with empty strings
+	STRING(REPLACE "\n" "" PYTHON_INC_DIR "${PYTHON_INC_DIR}")
+	STRING(REPLACE "\n" "" PYTHON_POSSIBLE_LIB_PATH "${PYTHON_POSSIBLE_LIB_PATH}")
 	STRING(REPLACE "\n" "" PYTHON_LFLAGS "${PYTHON_LFLAGS}")
-
-    IF(PYTHONLIBS_FOUND)  
-    	SET(PYTHON_LIBRARY ${PYTHON_LIBRARIES})
-    ENDIF(PYTHONLIBS_FOUND)
+  
+	FIND_PATH(PYTHON_INCLUDE_PATH
+		NAMES Python.h
+		PATHS ${PYTHON_INC_DIR}
+	)
+  
+	FIND_LIBRARY(PYTHON_LIBRARY
+		NAMES python python2.6 python2.5 python2.4 python2.3 python2.2
+		PATHS ${PYTHON_POSSIBLE_LIB_PATH}
+	)
 
 	IF(PYTHON_LIBRARY AND PYTHON_INCLUDE_PATH)
 		SET(PYTHON_FOUND TRUE)
 	ENDIF(PYTHON_LIBRARY AND PYTHON_INCLUDE_PATH)
   
 	MARK_AS_ADVANCED(
+		PYTHON_EXECUTABLE
 		PYTHON_INCLUDE_PATH
 		PYTHON_LIBRARY
 		PYTHON_LFLAGS
 	)
-ENDIF(PYTHONINTERP_FOUND) 
+ENDIF(PYTHON_EXECUTABLE) 
