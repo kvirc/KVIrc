@@ -1285,7 +1285,7 @@ msgid ""
 "<center>This option will cause KVIrc to minimize the console window after "
 "successfully logging into a server.</center>"
 msgstr ""
-"<center>Diese Option wird KVIrc veranlassen, das Console-Fenster nach "
+"<center>Diese Option wird KVIrc veranlassen, das Konsolenfenster nach "
 "erfolgreichem Login zu minimieren.</center>"
 
 #: src/modules/options/optw_connection.cpp:58
@@ -1580,7 +1580,7 @@ msgid ""
 "that implements only a limited subset of the Identification Protocol "
 "specifications. If it is possible, install a real ident daemon.</p>"
 msgstr ""
-"<p><b>Warnung:</b><br>Dies ist ein <b>nicht-RFC1413/913-kompilanter</b> "
+"<p><b>Warnung:</b><br>Dies ist ein <b>nicht-RFC1413-konformer</b> "
 "ident-Daemon, der nur ein begrenzte Anzahl an Spezifikationen des IDENTD-"
 "Dienstes implementiert. Wenn möglich, einen richtigen ident-Daemon "
 "installieren.</p>"
@@ -2043,7 +2043,7 @@ msgstr "Um alle Änderungen zu verwerfen, Dialog schliessen"
 
 #: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
-msgstr "Kommandozeile standardmäßig in benutzerfreundlichem Modus"
+msgstr "Kommandozeile standardmäßig im benutzerfreundlichen Modus"
 
 #: src/modules/options/dialog.cpp:237
 msgid "Commit all changes immediately."
@@ -2086,7 +2086,7 @@ msgstr "Konsole"
 
 #: src/modules/options/optw_logging.cpp:44
 msgid "Console windows"
-msgstr "Console-Fenster"
+msgstr "Konsolenfenster"
 
 #: src/modules/options/optw_input.cpp:43
 msgid "Control char color"
@@ -2300,7 +2300,7 @@ msgstr "URL-Hervorhebung aktivieren"
 
 #: src/modules/options/optw_userlist.cpp:238
 msgid "Enable animated avatars"
-msgstr "Animierte Avatars aktivieren"
+msgstr "Animierte Avatare aktivieren"
 
 #: src/modules/options/optw_ircview.cpp:160
 msgid "Enable animated smiles"
@@ -2325,7 +2325,7 @@ msgstr "Lagmeter aktivieren"
 #: src/modules/options/optw_tray.cpp:46
 msgid "Enable level-based message notification (not a message-type based)"
 msgstr ""
-"Aktiviere die level-bezogene Benachrichtigung (keine meldungstyp-bezogene)"
+"Aktiviere die Level bezogene Benachrichtigung (keine Meldungstyp bezogene)"
 
 #: src/modules/options/optw_notifier.cpp:152
 msgid "Enable notifier window fade effect"
@@ -2488,7 +2488,7 @@ msgstr "Allgemeine Einstellungen"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:45
 msgid "Global application font:"
-msgstr "Globaler Anwendung-Zeichensatz:"
+msgstr "Globale Anwendungsschriftart:"
 
 #: src/modules/options/optw_userlist.cpp:85
 msgid "Grid color:"
@@ -2730,7 +2730,7 @@ msgstr "Channels offenhalten"
 #: src/modules/options/optw_connection.cpp:46
 #: src/modules/options/optw_connection.cpp:54
 msgid "Keep queries open"
-msgstr "Anfragen offen halten"
+msgstr "Anfragen offenhalten"
 
 #: src/modules/options/optw_uparser.cpp:41
 msgid "Kill broken timers"
@@ -2778,11 +2778,11 @@ msgstr "Verknüpfungsfilter:"
 
 #: src/modules/options/optw_ircview.cpp:158
 msgid "Link tooltip hide delay:"
-msgstr "Verknüpfung-Kurzinfo-Ausblendverzögerung:"
+msgstr "Link Tooltip Ausblendverzögerung:"
 
 #: src/modules/options/optw_ircview.cpp:156
 msgid "Link tooltip show delay:"
-msgstr "Verknüpfung-Kurzinfo-Anzeigeverzögerung:"
+msgstr "Link Tooltip Einblendverzögerung:"
 
 #: src/modules/options/optw_dcc.cpp:81
 msgid "Listen on address/interface:"
@@ -2898,7 +2898,7 @@ msgstr "Vordergrund mit mittlerem Kontrast"
 
 #: src/modules/options/optw_irc.cpp:49
 msgid "Minimize console after successful login"
-msgstr "Console nach erfolgreichem Login minimieren"
+msgstr "Konsole nach erfolgreichem Login minimieren"
 
 #: src/modules/options/optw_tray.cpp:43
 msgid "Minimize in tray"
@@ -3100,7 +3100,7 @@ msgstr "Benachrichtigungsfensterdeckkraft während Inaktivität"
 
 #: src/modules/options/optw_dcc.cpp:186
 msgid "Notify completion in console"
-msgstr "Notiere Erfolg in der Console"
+msgstr "Notiere Erfolg in der Konsole"
 
 #: src/modules/options/optw_dcc.cpp:187
 msgid "Notify completion in notifier"
@@ -3249,7 +3249,7 @@ msgstr "Paranoid"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:91
 msgid "Parent window opacity:"
-msgstr "Kindfenster-Undurchsichtigkeit:"
+msgstr "Elternfenster-Undurchsichtigkeit:"
 
 #: src/modules/options/optw_identity.cpp:641
 msgid "Part message:"
@@ -3317,7 +3317,7 @@ msgstr "Benachrichtungsfenster bei neuer Anfrage-Nachricht anzeigen"
 
 #: src/modules/options/optw_notify.cpp:56
 msgid "Popup notifier when users are going online"
-msgstr "Benachrichtigung-Popup, wenn Benutzer online geht"
+msgstr "Benachrichtigungs-Popup, wenn Benutzer online geht"
 
 #: src/modules/options/optw_highlighting.cpp:72
 msgid "Popup the notifier window on highlighted messages"
@@ -3508,7 +3508,7 @@ msgstr "Channel erneut betreten"
 
 #: src/modules/options/optw_connection.cpp:57
 msgid "Rejoin channels after reconnect"
-msgstr "Channels nach neuverbinden erneut betreten"
+msgstr "Channels nach Neuverbinden erneut betreten"
 
 #: src/modules/options/optw_uparser.cpp:51
 msgid "Relay errors and warnings to debug window"
@@ -3540,7 +3540,7 @@ msgstr "Proxy löschen"
 
 #: src/modules/options/optw_connection.cpp:60
 msgid "Reopen queries after reconnect"
-msgstr "Anfragen nach neuverbinden erneut öffnen"
+msgstr "Anfragen nach Neuverbinden erneut öffnen"
 
 #: src/modules/options/optw_dcc.cpp:225
 msgid "Replace spaces with underscores in outgoing filenames"
@@ -3691,11 +3691,11 @@ msgstr "Aktivitätsmeter in Fensterliste anzeigen"
 
 #: src/modules/options/optw_userlist.cpp:237
 msgid "Show avatars in userlist"
-msgstr "Avatars in Benutzerliste anzeigen"
+msgstr "Avatare in Benutzerliste anzeigen"
 
 #: src/modules/options/optw_messages.cpp:95
 msgid "Show channel mode prefix"
-msgstr "Channel-Modus-Vorspann anzeigen"
+msgstr "Channel-Mode Präfix anzeigen"
 
 #: src/modules/options/optw_channel.cpp:125
 msgid "Show channel sync time"
@@ -3757,7 +3757,7 @@ msgstr "Benachrichtigungsliste im aktiven Fenster anzeigen"
 
 #: src/modules/options/optw_ircoutput.cpp:72
 msgid "Show own parts in the console"
-msgstr "Eigenes Channel-Verlassen in Console anzeigen"
+msgstr "Eigenes Channel-Verlassen in der Konsole anzeigen"
 
 #: src/modules/options/optw_ircoutput.cpp:71
 msgid "Show server pings"
