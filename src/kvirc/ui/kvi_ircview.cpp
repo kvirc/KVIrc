@@ -287,6 +287,9 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	setAutoFillBackground(false);
 
 	m_pFm = 0; // will be updated in the first paint event
+	m_iFontDescent=0;
+	m_iFontLineSpacing=0;
+	m_iFontLineWidth=0;
 
 	m_pToolTip = new KviIrcViewToolTip(this);
 

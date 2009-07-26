@@ -1608,7 +1608,6 @@ KviUserListViewArea::KviUserListViewArea(KviUserListView * pPar)
 	m_pScrollBar->setValue(0);
 	connect(m_pScrollBar,SIGNAL(valueChanged(int)),this,SLOT(scrollBarMoved(int)));
 	m_pScrollBar->setPageStep(height());
-	m_pScrollBar->setSingleStep(m_pListView->m_iFontHeight);
 	m_iLastScrollBarVal = 0;
 	m_iTopItemOffset = 0;
 	m_bIgnoreScrollBar = false;

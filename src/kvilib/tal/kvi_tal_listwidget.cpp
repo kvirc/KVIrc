@@ -44,8 +44,8 @@ bool KviTalListWidget::event(QEvent * e)
 	    QHelpEvent *helpEvent = static_cast<QHelpEvent *>(e);
 		const QPoint &p=helpEvent->pos();
 		QListWidgetItem *item=itemAt(p);
-		if (item){
-			debug ("Emit tip request in listwidget");
+		if (item)
+		{
 			emit tipRequest(item,p);
 		}
 	}
