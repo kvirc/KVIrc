@@ -92,8 +92,6 @@ KviFrame::KviFrame()
 : KviTalMainWindow(0,"kvirc_frame")
 {
 	g_pFrame = this;
-
-	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC))));
 	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 
 	m_pWinList  = new KviPointerList<KviWindow>;
