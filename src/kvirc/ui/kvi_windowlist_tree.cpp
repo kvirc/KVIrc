@@ -380,8 +380,9 @@ bool KviTreeWindowList::removeItem(KviWindowListItem * it)
 			{
 				delete (KviTreeWindowListItem *)m_pTreeWidget->takeTopLevelItem(index);
 			} else {
-				item->parent()->removeChild(item);
-				delete item;
+				index = item->parent()->indexOfChild(item);
+				if(index>=0)
+					delete (KviTreeWindowListItem *)item->parent()->takeChild(index);
 			}
 		}
 	}
