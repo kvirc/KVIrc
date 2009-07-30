@@ -313,7 +313,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseStartTlsIfAvailable",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("PasteLastLogOnChannelJoin",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("PasteLastLogOnQueryJoin",false,KviOption_sectFlagLogging),
-	BOOL_OPTION("UseSpecifiedSmartColorForOwnNick",false,KviOption_sectFlagIrcView | KviOption_groupTheme),
+	BOOL_OPTION("UseSpecifiedSmartColorForOwnNick",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("UseFullWordHighlighting",false,KviOption_sectFlagIrcView),
 	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput)
 };
@@ -640,8 +640,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("LinesToPasteOnQueryJoin",10,KviOption_sectFlagLogging),
 	UINT_OPTION("DaysIntervalToPasteOnQueryJoin",10,KviOption_sectFlagLogging),
 	UINT_OPTION("SpacesToExpandTabulationInput",4,KviOption_sectFlagInput),
-	UINT_OPTION("UserIrcViewOwnForeground",4,KviOption_sectFlagIrcView | KviOption_groupTheme),
-	UINT_OPTION("UserIrcViewOwnBackground",8,KviOption_sectFlagIrcView | KviOption_groupTheme),
+	UINT_OPTION("UserIrcViewOwnForeground",4,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	UINT_OPTION("UserIrcViewOwnBackground",8,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("NotifierPixmapAlign",0,KviOption_sectFlagNotifier | KviOption_groupTheme)
 };
 

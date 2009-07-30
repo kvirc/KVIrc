@@ -93,6 +93,7 @@ protected:
 	KviWindowToolPageButton * m_pNotifyViewButton;
 	QComboBox               * m_pAddressEdit;
 	QString                   m_szStatusString; // nick (flags) on server | not connected
+	QString                   m_szOwnSmartColor;
 	QStringList             * m_pTmpHighLightedChannels;
 protected:
 	// UI
@@ -119,7 +120,7 @@ protected:
 	int triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger);
 
 	void showNotifyList(bool bShow);
-
+	static int getSmartColorHashForNick(QString *szNick);
 public:
 	// UI
 	inline KviUserListView * notifyListView(){ return m_pNotifyListView; };
