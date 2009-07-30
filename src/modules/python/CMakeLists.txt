@@ -2,7 +2,7 @@
 #
 # Only build this, if WITH_PYTHON was set and passed to CMake
 
-IF(WANT_PYTHON)
+IF(COMPILE_PYTHON_SUPPORT)
     SET(kvipython_SRCS
 	    libkvipython.cpp
     )
@@ -13,4 +13,4 @@ IF(WANT_PYTHON)
     SET(kvi_module_name kvipython)
 
     INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)
-ENDIF(WANT_PYTHON)
+ENDIF(COMPILE_PYTHON_SUPPORT)
