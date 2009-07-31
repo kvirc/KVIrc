@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-07-29 11:35+0200\n"
-"PO-Revision-Date: 2009-07-05 16:57+0200\n"
+"PO-Revision-Date: 2009-07-31 03:06+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -137,7 +137,7 @@ msgstr "%1 TB"
 
 #: src/kvilib/core/kvi_qstring.cpp:154
 msgid "%1 bytes"
-msgstr "%1 Byte"
+msgstr "%1 Bytes"
 
 #: src/kvirc/ui/kvi_console.cpp:368
 msgid "%1 hops"
@@ -157,11 +157,11 @@ msgstr "%1 ist wahrscheinlich abwesend"
 
 #: src/kvirc/ui/kvi_query.cpp:192
 msgid "%1 is using irc server: %2"
-msgstr "%1 benutzt den IRC-Server <b>%2</b>"
+msgstr "%1 benutzt den IRC-Server: %2"
 
 #: src/kvirc/ui/kvi_query.cpp:190
 msgid "%1 is using irc server: %2 (%3 hops)"
-msgstr "%1 benutzt den IRC-Server <b>%2</b> (%3 Sprüngeentfernt)"
+msgstr "%1 benutzt den IRC-Server: %2 (%3 Sprünge entfernt)"
 
 #: src/modules/mircimport/libkvimircimport.cpp:249
 msgid "%1 servers imported succesfully"
@@ -173,7 +173,7 @@ msgstr "%Q %Q-Antwort von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1039
 msgid "%Q %Q%c request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
-msgstr "%Q %Q%c-Abfrage von \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q) %Q"
+msgstr "%Q %Q%c-Abfrage von \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q), %Q"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1030
 msgid ""
@@ -191,7 +191,7 @@ msgstr ""
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1832
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1888
 msgid "%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"
-msgstr "%Q [%Q@%Q] hat den Channel-\r!m%c%c\rModus %c%c\r gesetzt"
+msgstr "%Q [%Q@%Q] hat den Channel-\r!m%c%c\r-Modus %c%c\r gesetzt"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1795
 msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
@@ -232,7 +232,7 @@ msgstr "%Q-Algorithmus wird nicht unterstützt"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1596
 msgid "%Q changes avatar to %s"
-msgstr "%Q änderte das Avatar zu %s"
+msgstr "%Q ändert das Avatar zu %s"
 
 #: src/modules/mircimport/libkvimircimport.cpp:115
 msgid ""
@@ -260,7 +260,7 @@ msgstr "%Q ist im IRC"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1589
 msgid "%Q unsets avatar"
-msgstr "%Q entfernte das Avatar"
+msgstr "%Q entfernt das Avatar"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1909
 msgid "%Q: no such channel"
@@ -329,26 +329,26 @@ msgstr "%c\r!n\r%Q\r%cs Einloggzeit: %Q"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1805
 #, c-format
 msgid "%c\r!s\r%s\r%c's administrator is %s"
-msgstr "%c\r!n\r%s\r%cs Administrator ist %s"
+msgstr "%c\r!s\r%s\r%cs Administrator ist %s"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1816
 #, c-format
 msgid "%c\r!s\r%s\r%c's contact adress is %s"
-msgstr "%c\r!n\r%s\r%cs Kontaktadresse ist %s"
+msgstr "%c\r!s\r%s\r%cs Kontaktadresse ist %s"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1866
 #, c-format
 msgid "%c\r!s\r%s\r%c's information:"
-msgstr "%c\r!n\r%s\r%cs Info:"
+msgstr "%c\r!s\r%s\r%cs Info:"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1794
 #, c-format
 msgid "%c\r!s\r%s\r%c's server info: %s"
-msgstr "%c\r!n\r%s\r%cs Server-Info: %s"
+msgstr "%c\r!s\r%s\r%cs Server-Info: %s"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1887
 msgid "%c\r!s\r%s\r%c's time is %Q"
-msgstr "%c\r!s\r%s\r%c's Zeit ist %Q"
+msgstr "%c\r!s\r%s\r%cs Zeit ist %Q"
 
 #: src/modules/links/linkswindow.cpp:284
 msgid "%c%cLinks for %Q"
@@ -534,7 +534,7 @@ msgstr "&Filter:"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:138
 msgid "&Find Next"
-msgstr "Zur &nächsten Fundstelle springen"
+msgstr "&Nächstes suchen"
 
 #: src/kvilib/system/kvi_locale.cpp:1039
 msgid "&Font"
@@ -704,9 +704,7 @@ msgstr "&Ja"
 
 #: src/kvilib/core/kvi_error.cpp:146
 msgid "'item', 'popup', 'label' or 'separator' keyword expected"
-msgstr ""
-"Es wurde ein 'item'-, 'popup'-, 'label'- oder 'separator'-Schlüsselwort "
-"erwartet"
+msgstr "'item'-, 'popup'-, 'label'- oder 'separator'-Schlüsselwort erwartet"
 
 #: src/kvilib/core/kvi_error.cpp:77
 msgid "(DNS Internal) Bad flags"
@@ -805,42 +803,40 @@ msgstr "-v Modusänderung"
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1682
 msgid ": No such nickname in the user database, ignoring the change"
 msgstr ""
-": Es ist kein solcher Nick in der Benutzerdatenbank; die Änderung wird "
-"ignoriert"
+": Es ist kein solcher Nick in der Benutzerdatenbank; ignoriere die "
+"Änderung"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1674
 msgid ": No valid local copy of avatar available, ignoring"
-msgstr ""
-": Es ist keine gültige lokale Kopie eines Avatars vorhanden; der Umstand "
-"wird ignoriert"
+msgstr ": Keine gültige lokale Kopie des Avatars vorhanden, ignoriere"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1657
 #, c-format
 msgid ": No valid local copy of avatar available, requesting one (DCC GET %s)"
 msgstr ""
-": Es ist keine gültige lokale Kopie eines Avatars vorhanden; frage eine "
-"Kopie an (per DCC GET %s)"
+": Keine gültige lokale Kopie des Avatars vorhanden, frage eine "
+"Kopie an (DCC GET %s)"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1642
 #, c-format
 msgid ": No valid local copy of avatar available, requesting one (HTTP GET %s)"
 msgstr ""
-": Es ist keine gültige lokale Kopie eines Avatars vorhanden; frage eine "
-"Kopie an (per HTTP GET %s)"
+": Keine gültige lokale Kopie des Avatars vorhanden, frage eine "
+"Kopie an (HTTP GET %s)"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1649
 msgid ""
 ": No valid local copy of avatar available; failed to start an HTTP transfer, "
 "ignoring"
 msgstr ""
-": Es ist keine gültige lokale Kopie eines Avatars vorhanden; der Start der "
+": Keine gültige lokale Kopie des Avatars vorhanden; der Start der "
 "HTTP-Übertragung ist fehlgeschlagen: wird ignoriert"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1669
 msgid ""
 ": No valid local copy of avatar available; flood limit exceeded, ignoring"
 msgstr ""
-": Keine gültige lokale Kopie eines Avatars vorhanden; Flutbegrenzung "
+": Keine gültige lokale Kopie des Avatars vorhanden; Flutbegrenzung "
 "erreicht: wird ignoriert"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:171
@@ -869,7 +865,7 @@ msgid ""
 "click to join %Q<br>Right click to view other options"
 msgstr ""
 "<b>%Q</b> (<u><font color=\"blue\"><nowrap>%Q</nowrap></font></u>)"
-"<hr>Doppelklicken, um %Q zu betreten<br>Rechtsklicken zum Ansehen weiterer "
+"<hr>Doppelklicken, um %Q zu betreten<br>Rechtsklicken für weitere "
 "Optionen"
 
 #: src/modules/tip/libkvitip.cpp:210
@@ -1084,7 +1080,7 @@ msgstr "Über &KVIrc"
 
 #: src/kvilib/core/kvi_error.cpp:155
 msgid "Access denied"
-msgstr "Der Zugriff wurde verweigert"
+msgstr "Zugriff verweigert"
 
 #: src/kvilib/core/kvi_error.cpp:142
 msgid "Acknowledge error"
@@ -1152,7 +1148,7 @@ msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:156
 msgid "Address already in use"
-msgstr "Die Adresse ist bereits in Benutzung"
+msgstr "Die Adresse wird bereits benutzt"
 
 #: src/kvirc/ui/kvi_console.cpp:117
 msgid "Address:"
@@ -1292,7 +1288,7 @@ msgstr "Versuche, Addon \"%Q\" in Version %Q zu registrieren"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:649
 msgid "Attempting to rejoin \r!c\r%Q\r..."
-msgstr "Es wird versucht \r!c\r%Q\r erneut zu betreten"
+msgstr "Versuche, \r!c\r%Q\r erneut zu betreten ..."
 
 #: src/kvirc/kernel/kvi_ircconnection.cpp:1401
 msgid "Auto-joining network specific channels"
@@ -1482,7 +1478,7 @@ msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:96
 msgid "Broken pipe"
-msgstr "Netzwerkfehler (\"Kaputte Leitung\"/Broken pipe)"
+msgstr "Netzwerkfehler (Broken pipe)"
 
 #: src/kvirc/ui/kvi_imagedialog.cpp:238
 msgid "Builtin $icon(%Q) [index %d]"
@@ -1641,7 +1637,7 @@ msgstr "Kann die Terminal-Emulation-Factory nicht erhalten"
 
 #: src/kvilib/core/kvi_error.cpp:144
 msgid "Can't send a zero-size file"
-msgstr "Kann keine 0-Byte-Dateien senden"
+msgstr "Kann keine 0-Byte-Datei senden"
 
 #: src/modules/ident/libkviident.cpp:284
 msgid ""
@@ -1741,7 +1737,7 @@ msgstr "Kann Text nicht zum Channel %Q senden: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1941
 msgid "Cannot send to channel"
-msgstr "Kann \tnicht zum Channel senden"
+msgstr "Kann nicht zum Channel senden"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1923
 msgid "Cannot send to channel: %Q"
@@ -1773,7 +1769,7 @@ msgstr "Kategorie: %Q"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:248
 msgid "Censor swear words"
-msgstr "Zensierte Schimpfwörter"
+msgstr "Zensiere Schimpfwörter"
 
 #: src/kvirc/kernel/kvi_options.cpp:822
 msgid "Chan admin status set"
@@ -2195,11 +2191,11 @@ msgstr "Die Verbindung zum Server wurde verloren"
 
 #: src/kvirc/kernel/kvi_irclink.cpp:370
 msgid "Contacting %Q %s (%s) on port %u"
-msgstr "%Q %s (%s) wird an Port %u kontaktiert"
+msgstr "Kontaktiere %Q %s (%s) an Port %u"
 
 #: src/kvilib/net/kvi_http.cpp:251
 msgid "Contacting host %Q on port %u"
-msgstr "Der Host %Q wird am Port %u kontaktiert"
+msgstr "Kontaktiere Host %Q an Port %u"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:95
 msgid "Context"
@@ -2239,12 +2235,12 @@ msgstr "Erstellt einen eingebetteten Editor für lange Skripte"
 
 #: src/kvilib/file/kvi_packagefile.cpp:477
 msgid "Creating package..."
-msgstr "Das Paket wird erstellt..."
+msgstr "Erstelle Paket ..."
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:264
 msgid "Crypt: Can't create an engine instance: crypting disabled"
 msgstr ""
-"Verschlüsselung: Erstellung des Vorgangs fehlgeschlagen: Verschlüsselung "
+"Verschlüsselung: Instanziierung der Routine fehlgeschlagen: Verschlüsselung "
 "wurde ausgeschaltet"
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:275
@@ -2292,7 +2288,7 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_cryptcontroller.cpp:78
 msgid "Cryptography/text transformation"
-msgstr "Verschlüsselung-/Textumwandlung"
+msgstr "Verschlüsselung/Textumwandlung"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:725
 msgid "Cu&t"
@@ -2443,7 +2439,7 @@ msgstr "Die DNS-Anfrage ist fehlgeschlagen"
 #: src/kvilib/core/kvi_error.cpp:76
 msgid "Dns temporaneous fault (try again)"
 msgstr ""
-"Es liegt eine temporäre DNS-Fehlfunktion vor (versuchen Sie es doch bitte "
+"Temporäre DNS-Fehlfunktion (versuchen Sie es doch bitte "
 "erneut)"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:166
@@ -2491,8 +2487,8 @@ msgstr "Doppelklick zum Bearbeiten..."
 msgid ""
 "Double-click to look up this hostname<br>Right-click to view other options"
 msgstr ""
-"Doppelklicken zum Auflösen dieses Hostnamens<br>Rechtsklicken zum Ansehen "
-"weiterer Optionen"
+"Doppelklicken zum Auflösen dieses Hostnamens<br>Rechtsklicken für weitere "
+"Optionen"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:875
 msgid "Double-click to open this link"
@@ -2500,9 +2496,7 @@ msgstr "Doppelklicken zum Öffnen der Verknüpfung"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:924
 msgid "Double-click to read the MOTD<br>Right-click to view other options"
-msgstr ""
-"Doppelklicken zum Lesen der MOTD<br>Rechtsklicken zum Ansehen weiterer "
-"Optionen"
+msgstr "Doppelklicken zum Lesen der MOTD<br>Rechtsklicken für weitere Optionen"
 
 #: src/kvirc/ui/kvi_topicw.cpp:560
 msgid "Double-click to set..."
@@ -2608,7 +2602,7 @@ msgstr "Verschlüsselte Channel-Notiz"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1876
 #, c-format
 msgid "End of %c\r!s\r%s\r%c's information"
-msgstr "Ende aller bekannten Informationen über %c\r!s\r%s\r%c"
+msgstr "Ende der Informationen über %c\r!s\r%s\r%c"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1644
 msgid "End of LINKS"
@@ -2812,7 +2806,7 @@ msgstr "Speichern des Bildschirmfotos fehlgeschlagen"
 #: src/kvirc/kernel/kvi_ircconnection.cpp:163
 msgid "Failed to set the encoding to %Q: mapping not available."
 msgstr ""
-"Setzen der Kodierung zu \"%Q\" fehlgeschlagen: Mapping ist nicht verfügbar."
+"Setzen der Kodierung zu %Q fehlgeschlagen: Mapping ist nicht verfügbar."
 
 #: src/kvirc/kernel/kvi_irclink.cpp:142
 msgid "Failed to set up the link filter \"%Q\", will try with plain IRC"
@@ -2901,7 +2895,7 @@ msgstr "Suchen"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:134
 msgid "Find &Prev."
-msgstr "Zur &vorherigen Fundstelle springen"
+msgstr "&Vorheriges suchen"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:92
 msgid "Find Text"
@@ -3198,7 +3192,7 @@ msgstr "Identd akzeptiert die Verbindung"
 
 #: src/modules/ident/libkviident.cpp:451
 msgid "Identd connection closed by remote host"
-msgstr "Idend-Verbindung vom entfernten Rechner geschlossen"
+msgstr "Identd-Verbindung vom entfernten Rechner geschlossen"
 
 #: src/modules/ident/libkviident.cpp:472
 msgid "Identd processing request"
@@ -3231,7 +3225,7 @@ msgstr "Ignorierte Benutzernachricht"
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:831
 #, c-format
 msgid "Ignoring CTCP from \r!nc\r%s\r [%s@\r!h\r%s\r]"
-msgstr "Ignoriere die CTCP-Abfrage durch \r!nc\r%s\r [%s@\r!h\r%s\r]"
+msgstr "Ignoriere CTCP von \r!nc\r%s\r [%s@\r!h\r%s\r]"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1722
 msgid "Ignoring DCC %S request from \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%Q %S)"
@@ -3342,7 +3336,7 @@ msgstr "Eingabeverlauf deaktiviert"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:778
 msgid "Insert Icon"
-msgstr "Piktogramm (Icon) einfügen"
+msgstr "Symbol einfügen"
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:481
 msgid "Install Package"
@@ -3636,13 +3630,13 @@ msgstr ""
 "es erneut."
 
 #: src/modules/str/libkvistr.cpp:1669
-#, fuzzy
 msgid ""
 "KVIrc is compiled without Crypto++ or OpenSSL support. $str.digest supports "
 "only MD4, MD5 and SHA1."
 msgstr ""
-"KVIrc wurde ohne OpenSSL-Unterstützung kompiliert. $str.digest-Funktion "
-"deaktiviert"
+"KVIrc wurde ohne OpenSSL- oder Crypto++-Unterstützung kompiliert. $str."
+"digest-Funktion "
+"unterstützt nur MD4, MD5 und SHA1."
 
 #: src/kvilib/core/kvi_error.cpp:93
 msgid "Kernel networking panic"
@@ -4171,7 +4165,7 @@ msgstr "Es ist kein Channel-Thema gesetzt"
 
 #: src/kvirc/ui/kvi_query.cpp:408
 msgid "No common channels for \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
-msgstr "Sie haben keine gemeinsamen Channels mit \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
+msgstr "Keine gemeinsamen Channels mit \r!n\r%Q\r [%Q@\r!h\r%Q\r]"
 
 #: src/kvirc/ui/kvi_irctoolbar.cpp:289 src/kvirc/ui/kvi_console.cpp:1110
 msgid "No connection"
@@ -4198,7 +4192,7 @@ msgstr "Es wurde keine Hostadresse zum Auflösen angegeben"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:252
 msgid "No kicks able (unless U-Line)"
-msgstr "Kein Herauswerfen möglich (außer für Inhaber einer U-Line)"
+msgstr "Kein Herauswerfen möglich (außer für U-Line)"
 
 #: src/kvirc/ui/kvi_input_editor.cpp:1818
 msgid "No matches"
@@ -4276,7 +4270,7 @@ msgstr "Keine Benutzer in der Benachrichtigungsliste"
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:903
 msgid "No way to login as '\r!n\r%Q\r' (%d: %Q), trying '%Q'..."
 msgstr ""
-"Es gab keine Möglichkeit zum Einloggen als '\r!n\r%Q\r' (%d: %Q), es wird '%"
+"Einloggen als '\r!n\r%Q\r' (%d: %Q) nicht möglich, es wird '%"
 "Q' versucht ..."
 
 #: src/kvirc/kernel/kvi_options.cpp:702
@@ -4401,7 +4395,7 @@ msgid ""
 "Notify list: ISON delay (%d sec) is too short, resetting to something more "
 "reasonable (5 sec)"
 msgstr ""
-"Benachrichtigungsliste: Die ISON-Verzögerung ist wirklich zu klein (%d "
+"Benachrichtigungsliste: Die ISON-Verzögerung ist zu klein (%d "
 "Sekunden): wird auf vernünftigen Wert (5 Sekunden) zurückgesetzt."
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:377
@@ -4425,7 +4419,7 @@ msgid ""
 "Notify list: Timeout (%d sec) is too short, resetting to something more "
 "reasonable (15 sec)"
 msgstr ""
-"Benachrichtigungsliste: Die Zeitbeschränkung (%d Sekunden) ist wirklich zu "
+"Benachrichtigungsliste: Die Zeitbeschränkung (%d Sekunden) ist zu "
 "klein: es wird auf vernünftigen Wert (15 Sekunden) zurückgesetzt."
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:1028
@@ -4443,7 +4437,7 @@ msgid ""
 "Notify list: USERHOST delay (%d sec) is too short, resetting to something "
 "more reasonable (5 sec)"
 msgstr ""
-"Benachrichtigungsliste: Die USERHOST-Verzögerung (%d sek.) ist zu klein: "
+"Benachrichtigungsliste: Die USERHOST-Verzögerung (%d Sek.) ist zu klein: "
 "wird auf einen vernünftigen Wert (5 s) zurückgesetzt"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:711
@@ -4642,7 +4636,7 @@ msgid ""
 msgstr ""
 "Ups... es scheint, als wenn diese Distribution fehlerhaft ist.\n"
 "Das Einrichtungsmodul exportiert die \"setup_begin\"-Funktion nicht.\n"
-"Es wird abgebrochen!"
+"Breche ab!"
 
 #: src/kvirc/kernel/kvi_app_setup.cpp:822
 msgid ""
@@ -5886,7 +5880,7 @@ msgstr ""
 msgid ""
 "Spam privmsg from \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (matching spamword \"%s\")"
 msgstr ""
-"Private Spamnachricht von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (paßt auf das "
+"Spamnachricht von \r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q (paßt auf das "
 "Spamwort \"%s\")"
 
 #: src/kvirc/kernel/kvi_options.cpp:775
@@ -5983,7 +5977,7 @@ msgstr "Mailing-Liste abbonnieren"
 
 #: src/kvilib/net/kvi_http.cpp:318 src/kvilib/core/kvi_error.cpp:50
 msgid "Success"
-msgstr "Erfolg!"
+msgstr "Erfolg"
 
 #: src/kvilib/core/kvi_error.cpp:57
 msgid "Switch dash without switch letter"
@@ -6029,7 +6023,7 @@ msgstr "Textkodierungs-Servermeldung"
 #: src/modules/system/libkvisystem.cpp:530
 #, c-format
 msgid "The DBus call returned an error \"%s\": %s"
-msgstr "Der DBus-Aufruf ergab einen Fehler \"%s\":%s"
+msgstr "Der DBus-Aufruf ergab einen Fehler \"%s\": %s"
 
 #: src/kvilib/core/kvi_error.cpp:117
 msgid "The SOCKSv4 protocol lacks IPv6 support"
@@ -6173,7 +6167,7 @@ msgstr "Die angegebene Datei ist kein gültiges KVIrc-Paket"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1471
 msgid "The following CTCP ACTION has unrecognized target %Q"
-msgstr "Die nachfolgende CTCP ACTION hat das unerkannte Ziel \"%Q\""
+msgstr "Die nachfolgende CTCP ACTION hat das unerkannte Ziel %Q"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1111
 #, c-format
@@ -7002,9 +6996,8 @@ msgid "Unsupported key length"
 msgstr "Nicht unterstützte Schlüssellänge"
 
 #: src/modules/str/libkvistr.cpp:1652
-#, fuzzy
 msgid "Unsupported message digest."
-msgstr "Nicht unterstütztes Bildformat"
+msgstr "Nicht unterstützter Message Digest."
 
 #: src/kvilib/net/kvi_http.cpp:167
 msgid "Unsupported protocol %1"
@@ -7600,7 +7593,7 @@ msgstr "SSL]:   Ausgeber:"
 #: src/kvirc/kernel/kvi_sslmaster.cpp:66
 #, c-format
 msgid "[SSL]:   Public key: %c%s (%d bits)"
-msgstr "[SSL]:   Öffentlicher Schlüssel: %c%s (%d Bit)"
+msgstr "[SSL]:   Öffentlicher Schlüssel: %c%s (%d Bits)"
 
 #: src/kvirc/kernel/kvi_sslmaster.cpp:74
 #, c-format
@@ -8004,472 +7997,4 @@ msgstr "y: überwachen :)"
 msgid "z: Recipient for oper wallop messages"
 msgstr "z: Empfänger für oper wallop-Nachrichten"
 
-#, fuzzy
-#~ msgid "    No properties"
-#~ msgstr "Eigenschaften..."
 
-#, fuzzy
-#~ msgid "&Add Group..."
-#~ msgstr "&Laden von ..."
-
-#, fuzzy
-#~ msgid "&Add Raw Event..."
-#~ msgstr "RAW-Ereignisse bearbeiten..."
-
-#, fuzzy
-#~ msgid "&Add..."
-#~ msgstr "Erweitert ..."
-
-#, fuzzy
-#~ msgid "&Edit"
-#~ msgstr "&Beenden"
-
-#, fuzzy
-#~ msgid "&Edit..."
-#~ msgstr "Ereignisse bearbeiten..."
-
-#, fuzzy
-#~ msgid "&Enable Handler"
-#~ msgstr "Entschlüsselung aktivieren"
-
-#, fuzzy
-#~ msgid "&Export Popup To..."
-#~ msgstr "Aufklappmenüs bearbeiten..."
-
-#, fuzzy
-#~ msgid "&Paste Below"
-#~ msgstr "Einfügen (langsam)"
-
-#~ msgid ""
-#~ "<nobr><font color=\"%s\"><b>Channel List</b></font> <font color=\"%s\">"
-#~ "[IRC Context %u]</font></nobr>"
-#~ msgstr ""
-#~ "<nobr><font color=\"%s\"><b>Channel Liste</b></font> <font color=\"%s\">"
-#~ "[IRC Kontext %u]</font></nobr>"
-
-#~ msgid ""
-#~ "<nobr><font color=\"%s\"><b>Channel list</b></font> <font color=\"%s\">"
-#~ "[IRC Context %u]</font></nobr>"
-#~ msgstr ""
-#~ "<nobr><font color=\"%s\"><b>Channel Liste</b></font> <font color=\"%s\">"
-#~ "[IRC Kontext %u]</font></nobr>"
-
-#~ msgid ""
-#~ "<nobr><font color=\"%s\"><b>Links for %Q</b></font> <font color=\"%s\">"
-#~ "[IRC Context %u]</font></nobr>"
-#~ msgstr ""
-#~ "<nobr><font color=\"%s\"><b>Links für %Q</b></font> <font color=\"%s\">"
-#~ "[IRC Kontext %u]</font></nobr>"
-
-#~ msgid ""
-#~ "<nobr><font color=\"%s\"><b>Socket Spy</b></font> <font color=\"%s\">[IRC "
-#~ "Context %u]</font></nobr>"
-#~ msgstr ""
-#~ "<nobr><font color=\"%s\"><b>Socket-Überwachung</b></font> <font color=\"%s"
-#~ "\">[IRC Kontext %u]</font></nobr>"
-
-#~ msgid "<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"
-#~ msgstr "<nobr><font color=\"%s\"><b>Terminal</b></font></nobr>"
-
-#, fuzzy
-#~ msgid "Action"
-#~ msgstr "IRC-Aktionen"
-
-#, fuzzy
-#~ msgid "Action Editor"
-#~ msgstr "Bannausnahmen-Editor"
-
-#, fuzzy
-#~ msgid "Add Alias"
-#~ msgstr "Applet hinzufügen"
-
-#, fuzzy
-#~ msgid "Add this user to the notify list"
-#~ msgstr "Keine Benutzer in der Benachrichtigungsliste"
-
-#, fuzzy
-#~ msgid "Alias"
-#~ msgstr "&Immer"
-
-#, fuzzy
-#~ msgid "Alias Editor"
-#~ msgstr "Bann-Editor"
-
-#, fuzzy
-#~ msgid "Alias already exists"
-#~ msgstr "Die Adresse ist bereits in Benutzung"
-
-#, fuzzy
-#~ msgid "All Properties..."
-#~ msgstr "Eigenschaften..."
-
-#, fuzzy
-#~ msgid "Apply"
-#~ msgstr "An&wenden"
-
-#, fuzzy
-#~ msgid "Avatar"
-#~ msgstr "Avataränderung"
-
-#, fuzzy
-#~ msgid "Big Icon:"
-#~ msgstr "Große Symbole"
-
-#, fuzzy
-#~ msgid "Can't open file %Q for writing."
-#~ msgstr "Die Datei \"%Q\" kann nicht schreibend geöffnet werden"
-
-#, fuzzy
-#~ msgid "Can't open file %s for reading."
-#~ msgstr "Die Datei kann nicht zum Lesen geöffnet werden"
-
-#, fuzzy
-#~ msgid "Channel: %c%s@%s"
-#~ msgstr "Channel-Passwort"
-
-#, fuzzy
-#~ msgid "Choose a Filename - KVIrc"
-#~ msgstr "Datei auswählen - KVIrc"
-
-#, fuzzy
-#~ msgid "Code"
-#~ msgstr "Schließen"
-
-#, fuzzy
-#~ msgid "Collapse All Namespaces"
-#~ msgstr "Alle Anfragen schliessen"
-
-#, fuzzy
-#~ msgid "Colors"
-#~ msgstr "Schließen"
-
-#, fuzzy
-#~ msgid "Condition:"
-#~ msgstr "Verbindung"
-
-#, fuzzy
-#~ msgid "Customize Toolbars"
-#~ msgstr "Werkzeugleisten anpassen...."
-
-#, fuzzy
-#~ msgid "Delete Actions"
-#~ msgstr "Auswahl"
-
-#, fuzzy
-#~ msgid "Delete ToolBar"
-#~ msgstr "Farbe(n) auswählen"
-
-#, fuzzy
-#~ msgid "Description:"
-#~ msgstr "Skripte"
-
-#, fuzzy
-#~ msgid "Edit ToolBar"
-#~ msgstr "Lesezeichen be&arbeiten"
-
-#, fuzzy
-#~ msgid "Enable at Login"
-#~ msgstr "Entschlüsselung aktivieren"
-
-#, fuzzy
-#~ msgid "Enable in Query Windows"
-#~ msgstr "Entschlüsselung aktivieren"
-
-#, fuzzy
-#~ msgid "Event Editor"
-#~ msgstr "Bann-Editor"
-
-#, fuzzy
-#~ msgid "Find In Aliases"
-#~ msgstr "Aliasse bearbeiten..."
-
-#, fuzzy
-#~ msgid "Find In Aliases..."
-#~ msgstr "Aliasse bearbeiten..."
-
-#, fuzzy
-#~ msgid "Flags"
-#~ msgstr "Flach"
-
-#, fuzzy
-#~ msgid "Hide Advanced"
-#~ msgstr "Erweitert ..."
-
-#, fuzzy
-#~ msgid "I can't find the specified file '%Q'."
-#~ msgstr "Server-IP-Adresse kann nicht gefunden werden: %Q"
-
-#, fuzzy
-#~ msgid "Icon"
-#~ msgstr "Symbolgröße"
-
-#, fuzzy
-#~ msgid "Ignore"
-#~ msgstr "ignoriert"
-
-#, fuzzy
-#~ msgid "Ignore channel-messages"
-#~ msgstr "Ignorierte Benutzernachricht"
-
-#, fuzzy
-#~ msgid "Ignore ctcp-messages"
-#~ msgstr "Ignorierte Benutzernachricht"
-
-#, fuzzy
-#~ msgid "Ignore features"
-#~ msgstr "Ignorierte Benutzernachricht"
-
-#, fuzzy
-#~ msgid "Ignore notice-messages"
-#~ msgstr "Ignorierte Benutzernachricht"
-
-#, fuzzy
-#~ msgid "Ignore query-messages"
-#~ msgstr "Ignorierte Benutzernachricht"
-
-#, fuzzy
-#~ msgid "Import From..."
-#~ msgstr "&Laden von ..."
-
-#, fuzzy
-#~ msgid "Invalid ToolBar Label"
-#~ msgstr "Der Port ist ungültig"
-
-#, fuzzy
-#~ msgid "Mask %Q not found"
-#~ msgstr "Der Host wurde nicht gefunden."
-
-#, fuzzy
-#~ msgid "Mask Editor"
-#~ msgstr "Bann-Editor"
-
-#, fuzzy
-#~ msgid "Masks:"
-#~ msgstr "Maske"
-
-#, fuzzy
-#~ msgid "Missing Alias Name"
-#~ msgstr "Sie haben keinen Variablennamen angegeben"
-
-#, fuzzy
-#~ msgid "Missing Namespace Name"
-#~ msgstr "Sie haben keinen Variablennamen angegeben"
-
-#, fuzzy
-#~ msgid "My Action"
-#~ msgstr "IRC-Aktionen"
-
-#, fuzzy
-#~ msgid "My ToolBar"
-#~ msgstr "Werkzeugleisten"
-
-#, fuzzy
-#~ msgid "Name:"
-#~ msgstr "Nach Name"
-
-#, fuzzy
-#~ msgid "Needs IRC Connection"
-#~ msgstr "Neuer IRC-Kontext"
-
-#, fuzzy
-#~ msgid "Needs IRC Context"
-#~ msgstr "Neuer IRC-Kontext"
-
-#, fuzzy
-#~ msgid "New Action"
-#~ msgstr "IRC-Aktionen"
-
-#, fuzzy
-#~ msgid "New Raw Event"
-#~ msgstr "RAW-Ereignisse bearbeiten..."
-
-#, fuzzy
-#~ msgid "New Separator Above"
-#~ msgstr "Trenner"
-
-#, fuzzy
-#~ msgid "New Separator Below"
-#~ msgstr "Trenner"
-
-#, fuzzy
-#~ msgid "New Separator Inside"
-#~ msgstr "Trenner"
-
-#, fuzzy
-#~ msgid "New ToolBar"
-#~ msgstr "Werkzeugleisten"
-
-#, fuzzy
-#~ msgid "Nickname 2:"
-#~ msgstr "Nickname"
-
-#, fuzzy
-#~ msgid "No comment set"
-#~ msgstr "Kein IRC-Kontext"
-
-#, fuzzy
-#~ msgid "No item selected"
-#~ msgstr "Nicht verbunden"
-
-#, fuzzy
-#~ msgid "Notify as: "
-#~ msgstr "Benachrichtigungsliste"
-
-#, fuzzy
-#~ msgid "Notify disabled"
-#~ msgstr "Benachrichtigungsliste"
-
-#, fuzzy
-#~ msgid "Notify nicknames:"
-#~ msgstr "Benachrichtigungsliste"
-
-#, fuzzy
-#~ msgid "Notify when user is online"
-#~ msgstr "Ein Benutzer in der Benachrichtigungsliste hat den Channel betreten"
-
-#, fuzzy
-#~ msgid "Paste Above"
-#~ msgstr "&Datei einfügen"
-
-#, fuzzy
-#~ msgid "Paste Inside"
-#~ msgstr "&Datei einfügen"
-
-#, fuzzy
-#~ msgid "Popup Editor"
-#~ msgstr "Modus-Editor"
-
-#, fuzzy
-#~ msgid "Popup name"
-#~ msgstr "Der Aufklappsmenü-Name fehlt"
-
-#, fuzzy
-#~ msgid "Properties"
-#~ msgstr "Eigenschaften..."
-
-#, fuzzy
-#~ msgid "Property"
-#~ msgstr "Eigenschaften..."
-
-#, fuzzy
-#~ msgid "Property Editor"
-#~ msgstr "Modus-Editor"
-
-#, fuzzy
-#~ msgid "Raw Editor"
-#~ msgstr "Bann-Editor"
-
-#, fuzzy
-#~ msgid "Raw Event"
-#~ msgstr "RAW-Ereignisse bearbeiten..."
-
-#, fuzzy
-#~ msgid "Re&move Handler"
-#~ msgstr "&Löschen"
-
-#, fuzzy
-#~ msgid "Re&move Popup"
-#~ msgstr "&Löschen"
-
-#, fuzzy
-#~ msgid "Registered User Entry"
-#~ msgstr "Registriert als"
-
-#, fuzzy
-#~ msgid "Registered Users - KVIrc"
-#~ msgstr "Registriert als"
-
-#, fuzzy
-#~ msgid "Registered channel list:"
-#~ msgstr "Registriert als"
-
-#, fuzzy
-#~ msgid "Registration Complete"
-#~ msgstr "Einloggoperationen abgeschlossen"
-
-#, fuzzy
-#~ msgid "Remove item"
-#~ msgstr "%Q löschen"
-
-#, fuzzy
-#~ msgid "Rename"
-#~ msgstr "Benutzername"
-
-#, fuzzy
-#~ msgid "Replace file"
-#~ msgstr "Update fehlgeschlagen"
-
-#~ msgid "Sending %s as password"
-#~ msgstr "Sende %s als Passwort"
-
-#, fuzzy
-#~ msgid "Small Icon:"
-#~ msgstr "Kleine Symbole"
-
-#, fuzzy
-#~ msgid "Step 4: Notify List"
-#~ msgstr "Benachrichtigungsliste"
-
-#, fuzzy
-#~ msgid "Text:"
-#~ msgstr "&Nächster"
-
-#, fuzzy
-#~ msgid "The file \"%Q\" exists. Do you want to replace it ?"
-#~ msgstr "Die Datei %s existiert bereits.<br>Soll sie überschrieben werden?"
-
-#, fuzzy
-#~ msgid "ToolBar Properties"
-#~ msgstr "Eigenschaften..."
-
-#, fuzzy
-#~ msgid "Total %d channels"
-#~ msgstr "Toter Channel"
-
-#, fuzzy
-#~ msgid "Unable to write to the actions file."
-#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#, fuzzy
-#~ msgid "Unable to write to the event file."
-#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#, fuzzy
-#~ msgid "Unable to write to the events file."
-#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#, fuzzy
-#~ msgid "Unable to write to the popup file."
-#~ msgstr "Die DNS-Anfrage kann nicht gestartet werden"
-
-#, fuzzy
-#~ msgid "Unable to write to the raw event file."
-#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#, fuzzy
-#~ msgid "Unable to write to the raw events file."
-#~ msgstr "Die aktuelle Verschlüsselung konnte nicht festgestellt werden."
-
-#, fuzzy
-#~ msgid "User %Q not found"
-#~ msgstr "Der Host wurde nicht gefunden."
-
-#, fuzzy
-#~ msgid "User not found (%Q)"
-#~ msgstr "Der Host wurde nicht gefunden."
-
-#, fuzzy
-#~ msgid "Value"
-#~ msgstr "männlich"
-
-#, fuzzy
-#~ msgid "Write Failed - KVIrc"
-#~ msgstr "Datei auswählen - KVIrc"
-
-#, fuzzy
-#~ msgid "Yes to All"
-#~ msgstr "&Alles setzen"
-
-#, fuzzy
-#~ msgid "default"
-#~ msgstr "Voreinstellungen"
