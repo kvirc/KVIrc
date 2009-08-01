@@ -486,14 +486,13 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 		//selection colored background
 		p->fillRect(option.rect, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 	} else {
-		if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects))
-			if(option.rect.contains(treeWidget->mapFromGlobal(QCursor::pos())))
-			{
-				// paint mouse over effect
-				QColor col(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
-				col.setAlpha(127);
-				p->fillRect(option.rect, col);
-			}
+		if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects) && option.state & QStyle::State_MouseOver)
+		{
+			// paint mouse over effect
+			QColor col(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+			col.setAlpha(127);
+			p->fillRect(option.rect, col);
+		}
 	}
 	//draw window icon, irc context indicator (a colored square), set font properties for text
 	int im = option.rect.left();

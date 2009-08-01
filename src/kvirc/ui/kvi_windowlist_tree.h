@@ -26,7 +26,7 @@
 
 #include "kvi_windowlist.h"
 #include <QTreeWidget>
-#include <QAbstractItemDelegate>
+#include <QStyledItemDelegate>
 #include <QAbstractItemView>
 
 class KviTreeWindowList;
@@ -90,7 +90,7 @@ private:
 	KviTreeWindowListTreeWidget * m_pTreeWidget;
 	KviTreeWindowListItem * m_pCurrentItem;
 	KviDynamicToolTip  * m_pToolTip;
-	QAbstractItemDelegate* m_pItemDelegate;
+	QStyledItemDelegate* m_pItemDelegate;
 public:
 	virtual KviWindowListItem * addItem(KviWindow *);
 	virtual bool removeItem(KviWindowListItem *);
@@ -112,12 +112,12 @@ protected slots:
 #define KVI_TTBID_HIGHLIGHT Qt::UserRole
 #define KVI_TTBID_PROGRESS Qt::UserRole + 1
 
-class KVIRC_API KviTreeWindowListItemDelegate : public QAbstractItemDelegate
+class KVIRC_API KviTreeWindowListItemDelegate : public QStyledItemDelegate
 {
 	Q_OBJECT
 public:
 	KviTreeWindowListItemDelegate(QAbstractItemView * pWidget=0)
-		: QAbstractItemDelegate(pWidget) {};
+		: QStyledItemDelegate(pWidget) {};
 	~KviTreeWindowListItemDelegate(){};
 	QSize sizeHint(const QStyleOptionViewItem &option,const QModelIndex &index) const;
 	void paint ( QPainter * painter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
