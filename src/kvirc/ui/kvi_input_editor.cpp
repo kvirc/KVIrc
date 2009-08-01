@@ -1237,7 +1237,8 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 	{
 		switch(e->key())
 		{
-			case Qt::Key_Backspace:
+			case Qt::Key_Enter:
+			case Qt::Key_Return:
 				if(m_pInputParent->inherits("KviInput"))
 				{
 					((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
