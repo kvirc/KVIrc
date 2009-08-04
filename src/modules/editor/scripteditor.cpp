@@ -365,25 +365,24 @@ QString KviScriptEditorWidget::textUnderCursor() const
 	QTextCursor tc = textCursor();
 	if(tc.atBlockStart())
 		return QString();
-
 	tc.clearSelection();
-	tc.movePosition(QTextCursor::StartOfWord);
+	tc.movePosition(QTextCursor::StartOfWord,QTextCursor::KeepAnchor);
 	if(tc.atBlockStart())
 	{
+		szWord.append(tc.selectedText());
 		tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor);
-		if(tc.atBlockEnd())
-			return tc.selectedText();
-
+		szWord.append(tc.selectedText());
+		if(tc.atBlockEnd()){
+			return szWord;
+		}
 		tc.movePosition(QTextCursor::NextCharacter,QTextCursor::KeepAnchor);
-		szWord = tc.selectedText();
+		szWord.append(tc.selectedText());
 		if(szWord.right(1)!=".")
 			szWord.chop(1);
-
 		return szWord;
 	}
 
-	tc.movePosition(QTextCursor::PreviousCharacter);
-	tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor);
+	tc.movePosition(QTextCursor::PreviousCharacter,QTextCursor::KeepAnchor);
 	szWord=tc.selectedText();
 	if(szWord.left(1)==".")
 	{
@@ -393,7 +392,6 @@ QString KviScriptEditorWidget::textUnderCursor() const
 		tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor,1);
 		szWord.prepend(tc.selectedText());
 	} else szWord.remove(0,1);
-
 	return szWord;
 }
 /*

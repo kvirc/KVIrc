@@ -431,7 +431,7 @@ static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("container",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tofind",KVS_PT_STRING,0,szSubString)
 	KVSM_PARAMETERS_END(c)
-	bIs = szString.indexOf(szSubString,Qt::CaseInsensitive) != -1;
+	bIs = szString.indexOf(szSubString,Qt::CaseSensitive) != -1;
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
