@@ -284,10 +284,10 @@ General notes for the installation of the 4.0 release of KVIrc
     -DCMAKE_INSTALL_PREFIX=/path
         It will install all stuff under /path directory
 
-    -DLIBDIR_SUFFIX=suffix
-        It will install libkvilib and kvirc modules under ${CMAKE_INSTALL_PREFIX}/lib${LIBDIR_SUFFIX}
+    -DLIB_SUFFIX=suffix
+        It will install libkvilib and kvirc modules under ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
         directory. It defaults to an empty suffix. Mainly used for 64 bit distros
-        (-DLIBDIR_SUFFIX=64).
+        (-DLIB_SUFFIX=64).
 
     -DCOEXISTENCE
         Append version information to kvirc and libkvilib, so that different
@@ -478,7 +478,7 @@ COMPILE_XSS_SUPPORT
     This will install the executable in /usr/local/bin (if you don't have
     specified a different -DCMAKE_INSTALL_PREFIX option in the cmake rules),
     the libraries in /usr/local/lib (if you don't have specified a different
-    -DLIBDIR_SUFFIX option in the cmake rules) and the shared data in
+    -DLIB_SUFFIX option in the cmake rules) and the shared data in
     /usr/local/share/kvirc.
 
     Make sure that /usr/local/lib is in your /etc/ld.so.conf , if it isn't
