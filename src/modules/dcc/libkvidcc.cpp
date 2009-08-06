@@ -223,7 +223,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
+		If this switch is NOT specified, the port will be a "random" one chosen by the kernel.[br]
 
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
@@ -281,7 +281,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
 		If the 'p' switch is specified, the local listening socket
 		will be bound to the <port>, otherwise it will be bound to
-		a random port choosen by the kernel.[br]
+		a random port chosen by the kernel.[br]
 		If the 'a' switch is specified, the requesting CTCP message
 		will contain <fake address> as target for the remote user,
 		otherwise the CTCP message will contain the real IP address
@@ -541,7 +541,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
+		If this switch is NOT specified, the port will be a "random" one chosen by the kernel.[br]
 
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
@@ -735,7 +735,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
+		If this switch is NOT specified, the port will be a "random" one chosen by the kernel.[br]
 
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
@@ -1041,7 +1041,7 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
+		If this switch is NOT specified, the port will be a "random" one chosen by the kernel.[br]
 
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
@@ -1404,7 +1404,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		This is the simplest and most standardized DCC subprotocol. Almost every IRC client implements it.[br]
 		It is used to exchange lines of text between the two clients.[br]
 		The negotiation is quite simple, we assume that Client A wants to establish a DCC Chat connection to Client B.
-		Client A sets up a listening socket and retrieves its adress (ip address and port).[br]
+		Client A sets up a listening socket and retrieves its address (ip address and port).[br]
 		Once the socket is ready Client A sends a CTCP request to B, in the following form:[br]
 		[b]DCC CHAT chat <ipaddress> <port>[/b][br]
 		Where <ipaddress> is a string representing an positive integer that is the A socket's IP address

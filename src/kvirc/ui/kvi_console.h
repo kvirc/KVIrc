@@ -170,7 +170,7 @@ public:
 	void setAvatarFromOptions();
 
 	// This returns the default avatar for the current KVIrc user
-	// if he has choosen a valid avatar in the options dialog
+	// if he has chosen a valid avatar in the options dialog
 	// otherwise returns 0.
 	// The avatar is allocated with new and must be deleted
 	// when no longer needed.

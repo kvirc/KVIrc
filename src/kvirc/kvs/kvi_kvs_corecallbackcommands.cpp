@@ -664,7 +664,7 @@ namespace KviKvsCoreCallbackCommands
 			[br]
 			[b]Startup event[/b][br]
 			If the -x switch is used then the startup event is triggered
-			just after the process has been succesfully launched.
+			just after the process has been successfully launched.
 			The $0 parameter passed to the callback contains the string "started".
 			Parameter $1 contains the pid of the slave process.[br]
 			[br]
@@ -988,7 +988,7 @@ namespace KviKvsCoreCallbackCommands
 			existing object designed by <object_handle>.
 			<implementation> must be a valid command sequence.[br]
 			Side note:[br]
-			This command can not succesfully implement
+			This command can not successfully implement
 			the "constructor" function since it must be called
 			after this one has already been executed.[br]
 			To implement a constructor you MUST write your own class definition.[br]

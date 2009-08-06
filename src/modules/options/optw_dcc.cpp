@@ -187,7 +187,7 @@ KviDccSendGeneralOptionsWidget::KviDccSendGeneralOptionsWidget(QWidget * parent)
 	addBoolSelector(g,__tr2qs_ctx("Notify completion in notifier","options"),KviOption_boolNotifyDccSendSuccessInNotifier);
 	b = addBoolSelector(g,__tr2qs_ctx("Automatically clear transfer","options"),KviOption_boolAutoCloseDccSendOnSuccess);
 	mergeTip(b,
-		__tr2qs_ctx("<center>This option will cause succesfully terminated transfers " \
+		__tr2qs_ctx("<center>This option will cause successfully terminated transfers " \
 				"to be automatically removed from the transfer window.</center>","options"));
 
 

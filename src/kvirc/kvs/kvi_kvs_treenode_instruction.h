@@ -73,7 +73,7 @@ public:
 	* \brief This is the main entry point to the tree visit
 	*
 	* It returns false when the tree visiting has to be stopped and returns
-	* true when it has been succesfully completed. A false return value may
+	* true when it has been successfully completed. A false return value may
 	* signal an error but is also used by break, halt, return and similar.
 	* The error condition is signaled by KviKvsRunTimeContext::error().
 	* \param c The source context

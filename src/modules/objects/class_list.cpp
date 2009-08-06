@@ -86,22 +86,22 @@
 
 		!fn: <boolean> $remove(<index:uint>)
 		Removes the item at zero-based <index>. Returns $true
-		if the item was succesfully removed and $false otherwise (i.e. <index>
+		if the item was successfully removed and $false otherwise (i.e. <index>
 		pointed beyond the end of the list).
 
 		!fn: <boolean> $removeFirst()
 		Removes the first item from the list. Returns $true
-		if the item was succesfully removed (the list was not empty)
+		if the item was successfully removed (the list was not empty)
 		and $false otherwise.
 
 		!fn: <boolean> $removeLast()
 		Removes the last item from the list. Returns $true
-		if the item was succesfully removed (the list was not empty)
+		if the item was successfully removed (the list was not empty)
 		and $false otherwise.
 
 		!fn: <boolean> $removeCurrent()
 		Removes the current item from the list. Returns $true
-		if the item was succesfully removed or $false otherwise.
+		if the item was successfully removed or $false otherwise.
 		Invalidates any iteration operation.
 
 		!fn: <boolean> $moveFirst()

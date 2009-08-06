@@ -2184,7 +2184,7 @@ void KviInputEditor::addCommand(const Command& cmd)
 		The idea is quite simple: the IRC client (and it's user) associates
 		some small images to text strings (called icon tokens) and the strings are sent
 		in place of the images preceeded by a special escape character.[br]
-		The choosen escape character is 29 (hex 0x1d) which corresponds
+		The chosen escape character is 29 (hex 0x1d) which corresponds
 		to the ASCII group separator.[br]
 		So for example if a client has the association of the icon token "rose" with a small
 		icon containing a red rose flower then KVIrc could send the string

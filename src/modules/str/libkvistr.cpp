@@ -179,11 +179,11 @@ static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 	@title:
 		$str.len
 	@short:
-		Returns the lenght of the given string
+		Returns the length of the given string
 	@syntax:
 		<uint> $str.len(<data:string>)
 	@description:
-		Returns the lenght (that is, number of characters) of the given string.
+		Returns the length (that is, number of characters) of the given string.
 		This function is internally aliased to [fnc]$str.length[/fnc]() too.
 */
 
@@ -194,11 +194,11 @@ static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 	@title:
 		$str.length
 	@short:
-		Returns the lenght of the given string
+		Returns the length of the given string
 	@syntax:
 		<uint> $str.length(<data:string>)
 	@description:
-		Returns the lenght (that is, number of characters) of the given string.
+		Returns the length (that is, number of characters) of the given string.
 		This function is internally aliased to [fnc]$str.len[/fnc]() too.
 */
 

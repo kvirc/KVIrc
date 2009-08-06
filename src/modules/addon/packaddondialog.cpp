@@ -250,7 +250,7 @@ bool KviPackAddonDialog::packAddon()
 		return false;
 	}
 
-	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs("Package saved succesfully in ") + szPackagePath,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs("Package saved successfully in ") + szPackagePath,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 	return true;
 }

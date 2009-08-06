@@ -1242,7 +1242,7 @@ void KviWindow::internalOutput(KviIrcView * pView,int msg_type,const kvi_wchar_t
 
 	if(!m_pWindowListItem) return;
 
-	// if this option is checked we dont highlight other than channel msg
+	// if this option is checked we don't highlight other than channel msg
 	if(KVI_OPTION_BOOL(KviOption_boolHighlightOnlyNormalMsg))
 	{
 		if((msg_type != KVI_OUT_CHANPRIVMSG) && (msg_type != KVI_OUT_CHANPRIVMSGCRYPTED))

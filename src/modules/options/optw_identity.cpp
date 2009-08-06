@@ -603,7 +603,7 @@ void KviIdentityAvatarOptionsWidget::chooseAvatar()
 		if((m_pLocalAvatar->pixmap()->width() > 1024) || (m_pLocalAvatar->pixmap()->height() > 768))
 		{
 			QMessageBox::warning(this,__tr2qs_ctx("Avatar Might Be Too Big - KVIrc","options"),
-						__tr2qs_ctx("The avatar you have choosen is bigger than 1024x768 pixels.<br>" \
+						__tr2qs_ctx("The avatar you have chosen is bigger than 1024x768 pixels.<br>" \
 							"Such a big image will not be seen on all the user monitors<br>" \
 							"and will probably be scaled by the remote clients with poor quality<br>" \
 							"algorithms to improve performance. You *should* scale it manually<br>" \

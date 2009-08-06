@@ -1089,7 +1089,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			IRC context, connection dependant commands
 		@body:
 			Many KVIrc commands are connection dependant:
-			you need an IRC connection to succesfully execute them;
+			you need an IRC connection to successfully execute them;
 			usually because some data needs to be sent to the server.
 			This includes commands like [cmd]whois[/cmd],[cmd]raw[/cmd],[cmd]query[/cmd],
 			[cmd]msg[/cmd],[cmd]notice[/cmd],[cmd]op[/cmd],[cmd]ctcp[/cmd]...[br]

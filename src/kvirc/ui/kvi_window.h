@@ -243,7 +243,7 @@ public:
 	const QString & lastMessageText();
 
 	inline const QString &textEncoding(){ return m_szTextEncoding; };
-	// returns true if the encoding could be succesfully set
+	// returns true if the encoding could be successfully set
 	bool setTextEncoding(const QString &szTextEncoding);
 	// this must return a default text codec suitable for this window
 	virtual QTextCodec * defaultTextCodec();

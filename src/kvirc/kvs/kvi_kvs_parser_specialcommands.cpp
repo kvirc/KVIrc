@@ -1307,7 +1307,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			Another flow control command
 		@description:
 			The switch command is based on the standard C 'switch' keyword.
-			It executes conditionally groups of commands choosen from
+			It executes conditionally groups of commands chosen from
 			a larger set of command groups.[br]
 			First <expression> is evaluated (<expression> is any arithmetic or string expression).[br]
 			Then the 'match','regexp','case' and 'default' labels are evaluated sequentially

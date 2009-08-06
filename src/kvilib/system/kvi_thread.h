@@ -188,7 +188,7 @@ public:
 	// HANDLE WITH CARE
 
 	// Runs the thread...call only from external threads!!! :)
-	// This function returns true if the child thread has been succesfully created
+	// This function returns true if the child thread has been successfully created
 	// this des not mean that run() is being already executed...
 	// isStartingUp() will return true from this moment until
 	// the child thread jumps into run() where it will be set to running state (isRunning() == true)

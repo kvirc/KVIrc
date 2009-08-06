@@ -89,7 +89,7 @@
 		Attempts a connection to <host> on port <port>.[br]
 		<host> can be a numeric internet address (either Ipv4 or Ipv6 (if supported)) or a hostname.[br]
 		If a hostname is used, a DNS lookup is performed (the socket enters the "dns call" state).[br]
-		This function returns 1 if the connect attempt can be succesfully initiated,
+		This function returns 1 if the connect attempt can be successfully initiated,
 		0 otherwise.[br] In fact , this function returns 0 only if the supplied <port> parameter
 		is invalid or the socket is in an incoherent state (already connected or listening):
 		for a newly created socket and with a valid <port> number you can safely ignore
@@ -120,7 +120,7 @@
 		This function returns '1' in case of success and '0' in case of failure.
 
 		!fn: $connectEvent()
-		This function is called when a connection attempt has been succesfully completed.
+		This function is called when a connection attempt has been successfully completed.
 		The socket is actually connected to [classfnc:socket]$remoteIp[/classfnc]() on
 		[classfnc:socket]$remotePort[/classfnc](). You can start
 		writing data and you may expect [classfnc:socket]$dataAvailableEvent[/classfnc]() to be
@@ -609,7 +609,7 @@ KVSO_CLASS_FUNCTION(socket,writeHex)
 	KVSO_PARAMETERS_END(c)
 	if (m_szHex.length()%2)
 	{
-		c->warning(__tr2qs_ctx("The hex string lenght is not a multiple of 2","objects"));
+		c->warning(__tr2qs_ctx("The hex string length is not a multiple of 2","objects"));
 		return true;
 	}
 	unsigned char byte,lsb,msb;

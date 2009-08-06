@@ -133,7 +133,7 @@ public:
 * while traversing the list you should put them
 * in a temporary list and remove them after the iteration.
 *
-* I've choosen this way because usually you don't modify
+* I've chosen this way because usually you don't modify
 * the list while traversing it and a fix for this
 * would add a constant overhead to several list operation.
 * You just must take care of it yourself.

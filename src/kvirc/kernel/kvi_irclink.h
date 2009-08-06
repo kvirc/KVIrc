@@ -152,7 +152,7 @@ protected:
 	* \brief Starts a connection attempt.
 	*
 	* It starts the server or proxy DNS lookup.
-	* The function MUST be asynchronous: it must return succesfully and
+	* The function MUST be asynchronous: it must return successfully and
 	* report any error by using m_pConnection->linkAttemptFailed()
 	* It's called internally and it's overridable
 	* \return void
