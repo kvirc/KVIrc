@@ -30,6 +30,7 @@
 #include "kvi_frame.h"
 
 #include <QSystemTrayIcon>
+#include <QLabel>
 
 class QPixmap;
 class QTimer;
@@ -48,6 +49,7 @@ protected:
 	KviDynamicToolTip      * m_pTip;
 	KviTalPopupMenu        * m_pContextPopup;
 	KviTalPopupMenu        * m_pAwayPopup;
+	QLabel                 * m_pTitleLabel;
 
 	QAction* m_pToggleFrame;
 	QAction* m_pAwayMenuId;

@@ -292,6 +292,8 @@ KviUserListView::~KviUserListView()
 	removeAllEntries();
 	delete m_pEntryDict;
 	delete m_pToolTip;
+	delete m_pViewArea;
+	delete m_pUsersLabel;
 }
 
 void KviUserListView::emitRightClick()

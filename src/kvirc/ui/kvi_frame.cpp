@@ -209,6 +209,12 @@ KviFrame::~KviFrame()
 		m_pDockExtension = 0;
 	}
 
+	if(m_pStatusBar)
+	{
+		delete m_pStatusBar;
+		m_pStatusBar = 0;
+	}
+
 	// the really last thing to do : close all the windows
 	while(m_pWinList->first())
 		closeWindow(m_pWinList->first());
@@ -957,8 +963,6 @@ void KviFrame::toggleStatusBar()
 		delete m_pStatusBar;
 		m_pStatusBar = 0;
 	} else {
-		//if(statusBar())delete statusBar(); // kill any existing status bar (QT BUG)
-
 		m_pStatusBar = new KviStatusBar(this);
 		m_pStatusBar->load();
 		setStatusBar(m_pStatusBar);

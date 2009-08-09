@@ -114,6 +114,7 @@ KviStatusBar::~KviStatusBar()
 	delete m_pMessageQueue;
 	delete m_pAppletDescriptors;
 	delete m_pAppletList;
+	delete m_pMessageLabel;
 }
 
 void KviStatusBar::load()
