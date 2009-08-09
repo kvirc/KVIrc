@@ -10,13 +10,13 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-09 23:27+0200\n"
-"PO-Revision-Date: 2009-04-15 01:25+0200\n"
+"PO-Revision-Date: 2009-08-09 23:41+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
@@ -3545,7 +3545,7 @@ msgstr "Speicherort"
 
 #: src/modules/options/optw_logging.cpp:46
 msgid "Save logs to folder:"
-msgstr ""
+msgstr "Logdateien speichern in Verzeichnis:"
 
 #: src/modules/options/optw_mediatypes.cpp:112
 msgid "Save path:"
@@ -3794,7 +3794,7 @@ msgstr "Farben in Logdateien entfernen"
 
 #: src/modules/options/optw_logging.cpp:47
 msgid "Strip message type numbers in logs"
-msgstr ""
+msgstr "Nachrichtentypnummern in Logdateien entfernen"
 
 #: src/modules/options/optw_servers.cpp:647
 msgid "Supports STARTTLS protocol"
@@ -4057,12 +4057,11 @@ msgstr "Zeitstempel-Format:"
 
 #: src/modules/options/optw_notifier.cpp:41
 msgid "Title Font"
-msgstr ""
+msgstr "Titel-Schriftart"
 
 #: src/modules/options/optw_notifier.cpp:42
-#, fuzzy
 msgid "Title Foreground color"
-msgstr "Vordergrundfarbe"
+msgstr "Titelvordergrundfarbe"
 
 #: src/modules/options/optw_notifier.cpp:60
 #: src/modules/options/optw_windowlist.cpp:138

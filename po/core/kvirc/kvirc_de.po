@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: kvirc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-08-09 23:27+0200\n"
-"PO-Revision-Date: 2009-07-31 03:06+0200\n"
+"PO-Revision-Date: 2009-08-09 23:42+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -847,9 +847,9 @@ msgid "< &Back"
 msgstr "< &Zurück"
 
 #: src/kvirc/ui/kvi_input.cpp:323
-#, fuzzy
 msgid "<Ctrl+Return>; submits, <Alt+Return>; hides this editor"
-msgstr "<Strg+Eingabetaste>; sendet ab; <Alt+Rücktaste>; schließt den Editor"
+msgstr ""
+"<Strg+Eingabetaste>; sendet ab; <Alt+Eingabetaste>; schließt diesen Editor"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:1002
 msgid ""
@@ -4022,9 +4022,8 @@ msgid "Modulo by zero"
 msgstr "Modulo von Null"
 
 #: src/kvirc/ui/kvi_input.cpp:152
-#, fuzzy
 msgid "Multi-line Editor<br>&lt;Alt+Return&gt;"
-msgstr "Mehrzeiliger Editor<br>&lt;Alt+Rücktaste&gt;"
+msgstr "Mehrzeiliger Editor<br>&lt;Alt+Eingabetaste&gt;"
 
 #: src/kvirc/kernel/kvi_options.cpp:794
 msgid "Multimedia message"
@@ -7992,3 +7991,4 @@ msgstr "y: überwachen :)"
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:276
 msgid "z: Recipient for oper wallop messages"
 msgstr "z: Empfänger für oper wallop-Nachrichten"
+
