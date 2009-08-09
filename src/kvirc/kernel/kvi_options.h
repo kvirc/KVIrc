@@ -392,8 +392,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_stringPreferredTorrentClient 56          /* still missing in options ! */
 // empty string means guess from locale
 #define KviOption_stringDefaultSrvEncoding 57                       /* server encoding */
+#define KviOption_stringLogsPath 58                              /* logfolder */
 
-#define KVI_NUM_STRING_OPTIONS 58
+#define KVI_NUM_STRING_OPTIONS 59
 
 
 

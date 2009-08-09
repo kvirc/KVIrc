@@ -1850,13 +1850,14 @@ void KviApp::heartbeat(kvi_time_t tNow)
 		KVI_OPTION_UINT(KviOption_uintTotalConnectionTime)++;
 	}
 
-	if (pTm && !pTm->tm_hour && !pTm->tm_min && !pTm->tm_sec) {
+	if (pTm && !pTm->tm_hour && !pTm->tm_min && !pTm->tm_sec)
+	{
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
-			while(it.current()) {
-				if (it.current()->view() && it.current()->view()->isLogging())
-					it.current()->view()->startLogging(0);
-				++it;
-			}
+		while(it.current()) {
+			if (it.current()->view() && it.current()->view()->isLogging())
+				it.current()->view()->startLogging(0);
+			++it;
+		}
 	}
 }
 

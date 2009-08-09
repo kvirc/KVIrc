@@ -119,7 +119,22 @@ void KviApp::getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QStrin
 		case Config        : szData.append("config");                                            break;
 		case ConfigPlugins : szData.append("config"KVI_PATH_SEPARATOR"modules");                 break;
 		case ConfigScripts : szData.append("config"KVI_PATH_SEPARATOR"scripts");                 break;
-		case Log           : szData.append("log");                                               break;
+		case Log           :
+			szData = KVI_OPTION_STRING(KviOption_stringLogsPath);
+			// we should take special care here
+			// the user is likely to mess the path behind our back
+			// try to recover from most common problems
+			while(szData.endsWith(KVI_PATH_SEPARATOR_CHAR))
+				szData = szData.remove(szData.length()-1,1);
+			if(szData.isEmpty())
+			{
+				szData = QDir::homePath();
+				if(!szData.endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
+					szData.append(KVI_PATH_SEPARATOR_CHAR);
+				szData.append("log");
+				KVI_OPTION_STRING(KviOption_stringLogsPath) = szData;
+			}
+		break;
 		case Incoming      :
 			szData = KVI_OPTION_STRING(KviOption_stringIncomingPath);
 			// we should take special care here
