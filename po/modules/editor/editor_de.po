@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-29 11:35+0200\n"
+"POT-Creation-Date: 2009-08-09 23:27+0200\n"
 "PO-Revision-Date: 2009-02-10 20:09+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -56,11 +56,11 @@ msgstr "R&aw-Ereignis hinzufügen..."
 msgid "&Apply"
 msgstr "&Anwenden"
 
-#: src/modules/editor/scripteditor.cpp:1009
+#: src/modules/editor/scripteditor.cpp:1007
 msgid "&Cancel"
 msgstr "Abbre&chen"
 
-#: src/modules/editor/scripteditor.cpp:744
+#: src/modules/editor/scripteditor.cpp:742
 msgid "&Configure Editor..."
 msgstr "&Editor einrichten..."
 
@@ -115,7 +115,7 @@ msgstr "&Neues Popup"
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/editor/scripteditor.cpp:741
+#: src/modules/editor/scripteditor.cpp:739
 msgid "&Open..."
 msgstr "&Öffnen..."
 
@@ -123,15 +123,15 @@ msgstr "&Öffnen..."
 msgid "&Paste Below"
 msgstr "&Unten einfügen"
 
-#: src/modules/editor/scripteditor.cpp:1014
+#: src/modules/editor/scripteditor.cpp:1012
 msgid "&Replace"
 msgstr "E&rsetzen"
 
-#: src/modules/editor/scripteditor.cpp:1004
+#: src/modules/editor/scripteditor.cpp:1002
 msgid "&Replace in all Aliases"
 msgstr "In allen Aliassen e&rsetzen"
 
-#: src/modules/editor/scripteditor.cpp:742
+#: src/modules/editor/scripteditor.cpp:740
 msgid "&Save As..."
 msgstr "&Speichern als..."
 
@@ -245,7 +245,7 @@ msgstr "Anwenden"
 msgid "Automatically"
 msgstr "Automatisch"
 
-#: src/modules/editor/scripteditor.cpp:518
+#: src/modules/editor/scripteditor.cpp:516
 msgid "Background:"
 msgstr "Hintergrund:"
 
@@ -265,23 +265,23 @@ msgstr "Schlechter Namensraumname"
 msgid "Big Icon:"
 msgstr "Großes Symbol:"
 
-#: src/modules/editor/scripteditor.cpp:520
+#: src/modules/editor/scripteditor.cpp:518
 msgid "Brackets:"
 msgstr "Klammern:"
 
-#: src/modules/editor/scripteditor.cpp:951
+#: src/modules/editor/scripteditor.cpp:949
 #, c-format
 msgid "Can't open the file %s for reading."
 msgstr "Kann Datei %s nicht zum Lesen öffnen."
 
-#: src/modules/editor/scripteditor.cpp:870
+#: src/modules/editor/scripteditor.cpp:868
 #, c-format
 msgid "Can't open the file %s for writing."
 msgstr "Kann Datei %s nicht zum Schreiben öffnen."
 
 #: src/modules/actioneditor/actioneditor.cpp:876
 #: src/modules/aliaseditor/aliaseditor.cpp:1572
-#: src/modules/editor/scripteditor.cpp:534
+#: src/modules/editor/scripteditor.cpp:532
 #: src/modules/eventeditor/eventeditor.cpp:517
 #: src/modules/popupeditor/popupeditor.cpp:1311
 #: src/modules/raweditor/raweditor.cpp:491
@@ -364,7 +364,7 @@ msgstr "Verzeichnis auswählen – KVIrc"
 
 #: src/modules/actioneditor/actioneditor.cpp:692
 #: src/modules/aliaseditor/aliaseditor.cpp:808
-#: src/modules/editor/scripteditor.cpp:857
+#: src/modules/editor/scripteditor.cpp:855
 #: src/modules/eventeditor/eventeditor.cpp:447
 #: src/modules/eventeditor/eventeditor.cpp:488
 #: src/modules/popupeditor/popupeditor.cpp:1110
@@ -391,11 +391,11 @@ msgstr "Code"
 msgid "Collapse All Namespaces"
 msgstr "Alle Namensräume einklappen"
 
-#: src/modules/editor/scripteditor.cpp:516
+#: src/modules/editor/scripteditor.cpp:514
 msgid "Colors"
 msgstr "Farben"
 
-#: src/modules/editor/scripteditor.cpp:521
+#: src/modules/editor/scripteditor.cpp:519
 msgid "Comments:"
 msgstr "Kommentare:"
 
@@ -536,7 +536,7 @@ msgstr "Externes Menü"
 msgid "External menu:"
 msgstr "Externes Menü:"
 
-#: src/modules/editor/scripteditor.cpp:753
+#: src/modules/editor/scripteditor.cpp:751
 msgid "Find"
 msgstr "Suche"
 
@@ -552,7 +552,7 @@ msgstr "In Aliassen suchen"
 msgid "Find In Aliases..."
 msgstr "In Aliassen suchen..."
 
-#: src/modules/editor/scripteditor.cpp:526
+#: src/modules/editor/scripteditor.cpp:524
 msgid "Find:"
 msgstr "Suche:"
 
@@ -560,7 +560,7 @@ msgstr "Suche:"
 msgid "Flags"
 msgstr "Flags"
 
-#: src/modules/editor/scripteditor.cpp:514
+#: src/modules/editor/scripteditor.cpp:512
 msgid "Font:"
 msgstr "Schriftart:"
 
@@ -572,7 +572,7 @@ msgstr "Leeren Namensraum in Aliasnamen gefunden"
 msgid "Found an empty namespace in namespace name"
 msgstr "Leeren Namensraum in Namensraumnamen gefunden"
 
-#: src/modules/editor/scripteditor.cpp:522
+#: src/modules/editor/scripteditor.cpp:520
 msgid "Functions:"
 msgstr "Funktionen:"
 
@@ -613,7 +613,7 @@ msgstr "Element-Id:"
 msgid "Key Sequence:"
 msgstr "Tastenfolge:"
 
-#: src/modules/editor/scripteditor.cpp:523
+#: src/modules/editor/scripteditor.cpp:521
 msgid "Keywords:"
 msgstr "Schlüsselwörter:"
 
@@ -626,7 +626,7 @@ msgstr "Label"
 msgid "Label:"
 msgstr "Label:"
 
-#: src/modules/editor/scripteditor.cpp:937
+#: src/modules/editor/scripteditor.cpp:935
 msgid "Load Script File - KVIrc"
 msgstr "Skriptdatei laden - KVIrc"
 
@@ -774,13 +774,13 @@ msgstr "Nein"
 msgid "No item selected"
 msgstr "Kein Element ausgewählt"
 
-#: src/modules/editor/scripteditor.cpp:519
+#: src/modules/editor/scripteditor.cpp:517
 msgid "Normal text:"
 msgstr "Normaler Text:"
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 #: src/modules/actioneditor/actioneditor.cpp:864
-#: src/modules/editor/scripteditor.cpp:530
+#: src/modules/editor/scripteditor.cpp:528
 #: src/modules/toolbareditor/toolbareditor.cpp:181
 #: src/modules/toolbareditor/toolbareditor.cpp:245
 #: src/modules/toolbareditor/toolbareditor.cpp:455
@@ -816,7 +816,7 @@ msgstr "Ok, versuche es erneut..."
 msgid "Only If There Are Selected Users"
 msgstr "Nur wenn Benutzer ausgewählt sind"
 
-#: src/modules/editor/scripteditor.cpp:950
+#: src/modules/editor/scripteditor.cpp:948
 msgid "Open Failed - KVIrc"
 msgstr "Öffnen fehlgeschlagen - KVIrc"
 
@@ -895,7 +895,7 @@ msgstr "Popup-Editor"
 msgid "Popup name"
 msgstr "Popup-Name"
 
-#: src/modules/editor/scripteditor.cpp:508
+#: src/modules/editor/scripteditor.cpp:506
 msgid "Preferences"
 msgstr "Einstellungen"
 
@@ -907,7 +907,7 @@ msgstr "Prolog"
 msgid "Properties"
 msgstr "Eigenschaften"
 
-#: src/modules/editor/scripteditor.cpp:525
+#: src/modules/editor/scripteditor.cpp:523
 msgid "Punctuation:"
 msgstr "Zeichensetzung:"
 
@@ -956,16 +956,16 @@ msgstr "Namensraum umbenennen"
 msgid "Replace file"
 msgstr "Datei ersetzen"
 
-#: src/modules/editor/scripteditor.cpp:992
+#: src/modules/editor/scripteditor.cpp:990
 msgid "Replace with"
 msgstr "Ersetzen mit"
 
-#: src/modules/editor/scripteditor.cpp:920
+#: src/modules/editor/scripteditor.cpp:918
 #, c-format
 msgid "Row: %d Col: %d"
 msgstr "Zeile: %d Spalte: %d"
 
-#: src/modules/editor/scripteditor.cpp:869
+#: src/modules/editor/scripteditor.cpp:867
 msgid "Save Failed - KVIrc"
 msgstr "Speichern fehlgeschlagen - KVIrc"
 
@@ -1107,7 +1107,7 @@ msgstr "Kann nicht in die Raw-Ereignisse-Datei schreiben."
 msgid "Unable to write to the toolbar file."
 msgstr "Kann nicht in die Werkzeugleistendatei schreiben."
 
-#: src/modules/editor/scripteditor.cpp:524
+#: src/modules/editor/scripteditor.cpp:522
 msgid "Variables:"
 msgstr "Variablen:"
 
@@ -1127,7 +1127,7 @@ msgstr ""
 "Sichtbare Kurzbeschreibung für diese Aktion.<br>Diese Zeichenkette wird dem "
 "Benutzer angezeigt, daher ist es eine gute Idee, hier $tr() zu nutzen"
 
-#: src/modules/editor/scripteditor.cpp:983
+#: src/modules/editor/scripteditor.cpp:981
 msgid "Word to Find"
 msgstr "Zu suchendes Wort"
 

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_ru\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-29 11:35+0200\n"
+"POT-Creation-Date: 2009-08-09 23:27+0200\n"
 "PO-Revision-Date: 2005-12-27 23:02+0200\n"
 "Last-Translator: Valerius <valeragir@mail.ru>\n"
 "Language-Team: russian\n"
@@ -298,7 +298,7 @@ msgstr "Не могу найти пригодный локальный IPV4 ад
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr "Невозможно отослать DCC %Q запрос в %Q: IRC соединение закрыто"
 
-#: src/modules/dcc/send.cpp:1847 src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1847
 msgid "Cancel"
 msgstr "Отмена"
 
@@ -333,8 +333,8 @@ msgstr "Конфигурирование пропускной способнос
 msgid "Connected to %1:%2"
 msgstr "Подключение к%1:%2"
 
-#: src/modules/dcc/chat.cpp:526 src/modules/dcc/voice.cpp:911
-#: src/modules/dcc/canvas.cpp:283
+#: src/modules/dcc/voice.cpp:911 src/modules/dcc/canvas.cpp:283
+#: src/modules/dcc/chat.cpp:526
 msgid "Connected to %Q:%Q"
 msgstr "Подключение к %Q:%Q"
 
@@ -342,8 +342,8 @@ msgstr "Подключение к %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Подключение к хосту %1 на порт %2"
 
-#: src/modules/dcc/chat.cpp:185 src/modules/dcc/voice.cpp:756
-#: src/modules/dcc/canvas.cpp:109
+#: src/modules/dcc/voice.cpp:756 src/modules/dcc/canvas.cpp:109
+#: src/modules/dcc/chat.cpp:185
 msgid "Contacting host %Q on port %Q"
 msgstr "Подключение к хосту %Q на порт %Q"
 
@@ -403,7 +403,7 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr "Передача данных завершилась 30 сек. назад, закрываю соединение"
 
-#: src/modules/dcc/chat.cpp:408 src/modules/dcc/voice.cpp:819
+#: src/modules/dcc/voice.cpp:819 src/modules/dcc/chat.cpp:408
 msgid "ERROR: %Q"
 msgstr "ОШИБКА: %Q"
 
@@ -501,8 +501,8 @@ msgstr "Предел при передаче"
 msgid "Listening on interface %1 port %2"
 msgstr "Прослушивание интерфейса %1 на порту %2"
 
-#: src/modules/dcc/chat.cpp:187 src/modules/dcc/voice.cpp:759
-#: src/modules/dcc/canvas.cpp:85
+#: src/modules/dcc/voice.cpp:759 src/modules/dcc/canvas.cpp:85
+#: src/modules/dcc/chat.cpp:187
 msgid "Listening on interface %Q port %Q"
 msgstr "Прослушивание на интерфейсе %Q порта %Q"
 
@@ -510,8 +510,8 @@ msgstr "Прослушивание на интерфейсе %Q порта %Q"
 msgid "Local end is %1:%2"
 msgstr "Локальное окончание %1:%2"
 
-#: src/modules/dcc/chat.cpp:528 src/modules/dcc/voice.cpp:913
-#: src/modules/dcc/canvas.cpp:285
+#: src/modules/dcc/voice.cpp:913 src/modules/dcc/canvas.cpp:285
+#: src/modules/dcc/chat.cpp:528
 msgid "Local end is %Q:%Q"
 msgstr "Локальное окончание %Q:%Q"
 
@@ -954,13 +954,13 @@ msgstr "[ОШИБКА SSL]: %s"
 msgid "bytes/sec"
 msgstr "байт/сек"
 
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/libkvidcc.cpp:111
 #: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
 #: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
 #: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
 #: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:136
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/requests.cpp:136
 #: src/modules/dcc/requests.cpp:137 src/modules/dcc/requests.cpp:138
 msgid "unknown"
 msgstr "неизвестный"

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-29 11:35+0200\n"
+"POT-Creation-Date: 2009-08-09 23:27+0200\n"
 "PO-Revision-Date: 2005-02-10 18:45+0100\n"
 "Last-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
 "Language-Team: spanish\n"
@@ -301,7 +301,7 @@ msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
 msgstr ""
 "No pude enviar la petición DCC %s a %s: la conexión IRC ha sido finalizada"
 
-#: src/modules/dcc/send.cpp:1847 src/modules/dcc/dialogs.cpp:158
+#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1847
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -337,8 +337,8 @@ msgstr "Configurar el caudal para la transferencia DCC %1"
 msgid "Connected to %1:%2"
 msgstr "Conectado a %1:%2"
 
-#: src/modules/dcc/chat.cpp:526 src/modules/dcc/voice.cpp:911
-#: src/modules/dcc/canvas.cpp:283
+#: src/modules/dcc/voice.cpp:911 src/modules/dcc/canvas.cpp:283
+#: src/modules/dcc/chat.cpp:526
 #, fuzzy
 msgid "Connected to %Q:%Q"
 msgstr "Conectado a %s:%s"
@@ -347,8 +347,8 @@ msgstr "Conectado a %s:%s"
 msgid "Contacting host %1 on port %2"
 msgstr "Contactando con la máquina %1 en el puerto %2"
 
-#: src/modules/dcc/chat.cpp:185 src/modules/dcc/voice.cpp:756
-#: src/modules/dcc/canvas.cpp:109
+#: src/modules/dcc/voice.cpp:756 src/modules/dcc/canvas.cpp:109
+#: src/modules/dcc/chat.cpp:185
 #, fuzzy
 msgid "Contacting host %Q on port %Q"
 msgstr "Contactando con la máquina %s en el puerto %s"
@@ -413,7 +413,7 @@ msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr ""
 "La transferencia de datos terminó hace 30 segundos, cerrando la conexión"
 
-#: src/modules/dcc/chat.cpp:408 src/modules/dcc/voice.cpp:819
+#: src/modules/dcc/voice.cpp:819 src/modules/dcc/chat.cpp:408
 msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
@@ -516,8 +516,8 @@ msgstr "Limitar el caudal de subida a"
 msgid "Listening on interface %1 port %2"
 msgstr "Escuchando en el interfaz %1 puerto %2"
 
-#: src/modules/dcc/chat.cpp:187 src/modules/dcc/voice.cpp:759
-#: src/modules/dcc/canvas.cpp:85
+#: src/modules/dcc/voice.cpp:759 src/modules/dcc/canvas.cpp:85
+#: src/modules/dcc/chat.cpp:187
 #, fuzzy
 msgid "Listening on interface %Q port %Q"
 msgstr "Escuchando en el interfaz %s puerto %s"
@@ -526,8 +526,8 @@ msgstr "Escuchando en el interfaz %s puerto %s"
 msgid "Local end is %1:%2"
 msgstr "El extremo local es %1:%2"
 
-#: src/modules/dcc/chat.cpp:528 src/modules/dcc/voice.cpp:913
-#: src/modules/dcc/canvas.cpp:285
+#: src/modules/dcc/voice.cpp:913 src/modules/dcc/canvas.cpp:285
+#: src/modules/dcc/chat.cpp:528
 #, fuzzy
 msgid "Local end is %Q:%Q"
 msgstr "El extremo final es %s:%s"
@@ -997,13 +997,13 @@ msgstr "[ERROR SSL]: %s"
 msgid "bytes/sec"
 msgstr "bytes/seg"
 
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/libkvidcc.cpp:111
 #: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
 #: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
 #: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
 #: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:136
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/requests.cpp:136
 #: src/modules/dcc/requests.cpp:137 src/modules/dcc/requests.cpp:138
 msgid "unknown"
 msgstr "desconocido"
