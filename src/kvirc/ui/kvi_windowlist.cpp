@@ -65,6 +65,7 @@ KviWindowListBase::KviWindowListBase()
 	setFeatures(QDockWidget::DockWidgetMovable);
 	m_pActivityMeterTimer = new QTimer();
 	connect(m_pActivityMeterTimer,SIGNAL(timeout()),this,SLOT(updateActivityMeter()));
+	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),this, SLOT(updateDockLocation(Qt::DockWidgetArea)));
 	m_pActivityMeterTimer->start(5000);
 }
 
@@ -147,6 +148,10 @@ void KviWindowListBase::wheelEvent(QWheelEvent *e)
 		switchWindow(true, false);
 }
 
+void KviWindowListBase::updateDockLocation(Qt::DockWidgetArea newArea)
+{
+	currentArea = newArea;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // KviWindowListItem

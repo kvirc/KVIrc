@@ -1133,16 +1133,27 @@ void KviFrame::restoreToolBarPositions()
 
 void KviFrame::createWindowList()
 {
+	Qt::DockWidgetArea area=Qt::NoDockWidgetArea;
+
+	if(m_pWindowList)
+	{
+		area = m_pWindowList->currentDockArea();
+		delete m_pWindowList;
+	}
+
 	if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListWindowList))
 	{
 		m_pWindowList = new KviTreeWindowList();
 		m_pWindowList->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-		addDockWidget(Qt::LeftDockWidgetArea,m_pWindowList);
+		if(area==Qt::NoDockWidgetArea)
+			area = Qt::LeftDockWidgetArea;
 	} else {
 		m_pWindowList = new KviClassicWindowList();
 		m_pWindowList->setAllowedAreas(Qt::AllDockWidgetAreas);
-		addDockWidget(Qt::BottomDockWidgetArea,m_pWindowList);
+		if(area==Qt::NoDockWidgetArea)
+			area = Qt::BottomDockWidgetArea;
 	}
+	addDockWidget(area,m_pWindowList);
 }
 
 void KviFrame::recreateWindowList()
@@ -1152,8 +1163,9 @@ void KviFrame::recreateWindowList()
 	{
 		w->destroyWindowListItem();
 	}
-	delete m_pWindowList;
+
 	createWindowList();
+
 	for(w = m_pWinList->first();w;w = m_pWinList->next())
 	{
 		w->createWindowListItem();
