@@ -160,7 +160,7 @@ bool KviPerlInterpreter::init()
 {
 	if(m_pInterpreter)done();
 	int daArgc = 4;
-	char * daArgs[] = { "yo", "-e", "0", "-w" };
+	const char * daArgs[] = { "yo", "-e", "0", "-w" };
 	char ** daEnv=NULL;
 	PERL_SYS_INIT3(&daArgc,(char ***)&daArgs,&daEnv);
 	m_pInterpreter = perl_alloc();
