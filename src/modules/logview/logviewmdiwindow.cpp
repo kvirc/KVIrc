@@ -311,6 +311,7 @@ void KviLogViewMDIWindow::setupItemList()
 		new KviLogListViewLog(pLastGroupItem,pFile->type(),pFile);
 	}
 	progress.setValue( m_logList.count() );
+	m_pListView->sortItems(0, Qt::AscendingOrder);
 }
 
 void KviLogViewMDIWindow::cacheFileList()
