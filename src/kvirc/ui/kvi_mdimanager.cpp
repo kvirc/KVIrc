@@ -155,7 +155,7 @@ void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 KviMdiChild * KviMdiManager::topChild()
 {
 	return (KviMdiChild*)activeSubWindow();
-};
+}
 
 void KviMdiManager::setTopChild(KviMdiChild *lpC)
 {

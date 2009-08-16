@@ -83,4 +83,4 @@ namespace KviMessageBox
 #endif
 		return bRet;
 	}
-};
+}

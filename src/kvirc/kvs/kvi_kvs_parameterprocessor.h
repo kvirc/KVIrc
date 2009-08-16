@@ -120,7 +120,7 @@ namespace KviKvsParameterProcessor
 	};
 
 	KVIRC_API bool process(KviKvsVariantList * pVariantList,KviKvsRunTimeContext * pContext,KviKvsParameterProcessor::ParameterFormat * pFmtArray);
-};
+}
 
 
 #define KVS_PARAMETERS_BEGIN(__name) \

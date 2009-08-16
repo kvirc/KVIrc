@@ -86,6 +86,6 @@ namespace KviStringConversion
 	// QStringList <-> QString
 	extern KVILIB_API void toString(const QStringList &sValue,QString &buffer);
 	extern KVILIB_API bool fromString(const QString &szValue,QStringList &buffer);
-};
+}
 
 #endif //!_KVI_STRINGCONVERSION_H_

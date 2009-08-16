@@ -48,17 +48,17 @@ static bool checkDuplicatedConnection(QString &szConnectionName)
         }
     }
     return bFound;
-};
+}
 static void KviKvsSqlInstanceRegister(KviKvsObject_sql *instance)
 {
     sql_instances.setAutoDelete(false);
     sql_instances.append(instance);
-};
+}
 static void KviKvsSqlInstanceUnregister(KviKvsObject_sql *instance)
 {
     int idx=sql_instances.findRef(instance);
     sql_instances.remove(idx);
-};
+}
 
 #define CHECK_QUERY_IS_INIT if (!m_pCurrentSQlQuery)\
         {\

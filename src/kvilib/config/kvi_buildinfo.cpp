@@ -97,4 +97,4 @@ namespace KviBuildInfo
 		#endif
 		return rev;
 	}
-};
+}

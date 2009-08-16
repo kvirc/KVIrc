@@ -391,5 +391,5 @@ namespace KviThemeFunctions
 			g_pFrame->showNormal();
 		return bResult;
 	}
-};
+}
 

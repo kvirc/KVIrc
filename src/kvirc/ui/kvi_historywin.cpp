@@ -272,7 +272,7 @@ void KviHistoryWindowWidget::popup(KviInput * pOwner)
 	m_pWindow->setFixedSize(width(),height());
 	//move(QCursor::pos());
 	show();
-};
+}
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_historywin.moc"

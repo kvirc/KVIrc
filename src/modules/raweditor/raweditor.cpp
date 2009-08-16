@@ -61,7 +61,7 @@ KviRawTreeWidgetItem::KviRawTreeWidgetItem(KviTalTreeWidget *par,int idx,bool bE
 	if(idx < 10)m_szName.prepend('0');
 	setText(0,m_szName);
 	setEnabled(bEnabled);
-};
+}
 /*
 const QPixmap * KviRawTreeWidgetItem::pixmap(int col) const
 {

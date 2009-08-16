@@ -164,7 +164,7 @@ namespace KviTheme
 	/// an existing screenshot on disk (usually in the tmp directory).
 	///
 	bool KVIRC_API saveScreenshots(KviThemeInfo &options,const QString &szOriginalScreenshotPath);
-};
+}
 
 
 #endif //_KVI_THEME_H_

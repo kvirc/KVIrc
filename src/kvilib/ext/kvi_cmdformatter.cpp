@@ -215,6 +215,6 @@ namespace KviCommandFormatter
 		KviQString::ensureLastCharIs(buffer,'\n');
 		buffer.append("}\n");
 	}
-};
+}
 
 // FIXME: #warning "move popups and events to this formatting stuff!"

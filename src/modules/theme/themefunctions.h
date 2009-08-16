@@ -50,7 +50,7 @@ namespace KviThemeFunctions
 		
 	);
 	bool makeKVIrcScreenshot(const QString &szSavePngFilePath,bool bMaximizeFrame = false);
-};
+}
 
 
 

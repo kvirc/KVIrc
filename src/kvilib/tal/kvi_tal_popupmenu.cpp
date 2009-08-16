@@ -47,7 +47,7 @@ QAction * KviTalPopupMenu::getAction(int id)
 {
 	QAction * a = actionsDict.value(id);
 	return a ? a : 0;
-};
+}
 
 int KviTalPopupMenu::insertItem(const QString &szText)
 {

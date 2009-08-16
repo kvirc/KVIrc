@@ -1019,4 +1019,4 @@ namespace KviQString
 			buffer++;
 		}
 	}
-};
+}

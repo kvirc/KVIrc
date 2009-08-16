@@ -64,7 +64,7 @@
 	inline void kvi_gettimeofday(struct timeval * tmv, struct timezone * tmz)
 	{
 		gettimeofday(tmv,tmz);
-	};
+	}
 #endif
 
 /**
@@ -136,6 +136,6 @@ namespace KviTimeUtils
 	* \return QString
 	*/
 	KVILIB_API QString formatTimeInterval(unsigned int uSeconds,int iFlags = 0);
-};
+}
 
 #endif //_KVI_TIME_H_

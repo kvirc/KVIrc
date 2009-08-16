@@ -44,19 +44,19 @@ KviLogListViewItem::KviLogListViewItem(KviTalTreeWidgetItem * par, KviLogFile::K
 : KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
 {
 	setText(0,m_pFileData ? m_pFileData->name() : QString());
-};
+}
 
 KviLogListViewItem::KviLogListViewItem(KviTalTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
 : KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
 {
 	setText(0,m_pFileData ? m_pFileData->name() : QString());
-};
+}
 
 KviLogListViewItemFolder::KviLogListViewItemFolder(KviTalTreeWidgetItem * par, const QString& label)
 : KviLogListViewItem(par,KviLogFile::Other,0)
 {
 	setText(0,label);
-};
+}
 
 KviLogListViewItemType::KviLogListViewItemType(KviTalTreeWidget * par, KviLogFile::KviLogTypes type)
 : KviLogListViewItem(par,type,0)

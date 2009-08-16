@@ -42,7 +42,7 @@ class KviKvsObject_pixmap : public KviKvsObject
 	Q_OBJECT
 //	Q_PROPERTY(QPixmap pixmap READ getPixmap)
 public:
-	KVSO_DECLARE_OBJECT(KviKvsObject_pixmap);
+	KVSO_DECLARE_OBJECT(KviKvsObject_pixmap)
 	QPixmap  * getPixmap();
 
             //QPixmap * pixmap(){ return m_pPixmap; }

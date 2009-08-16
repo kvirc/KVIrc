@@ -70,6 +70,6 @@ namespace KviUserInput
 	KVIRC_API void parseNonCommand(QString & szData, KviWindow * pWindow);
 
 	//bool parseCommandWithSingleArgument(const QString & szData, KviWindow * pWindow, const QString & szContext = KviQString::empty);
-};
+}
 
 #endif //_KVI_USERINPUT_H_

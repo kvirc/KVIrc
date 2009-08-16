@@ -126,6 +126,6 @@ namespace KviBuildInfo
 	* \return QString
 	*/
 	extern KVILIB_API QString buildRevision();
-};
+}
 
 #endif //!_KVI_BUILDINFO_H_

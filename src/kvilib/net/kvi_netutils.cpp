@@ -627,7 +627,7 @@ namespace KviNetUtils
 		KviQString::sprintf(szBuffer,"%u B/s",uBytesPerSec);
 
 	}
-};
+}
 
 bool kvi_isRoutableIpString(const char * ipstring)
 {
