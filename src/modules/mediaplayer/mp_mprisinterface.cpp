@@ -341,6 +341,10 @@ int KviAudaciousInterface::getPlayListPos()
 
 bool KviAudaciousInterface::quit()
 {
+	if (KviMPRISInterface::quit())
+		return TRUE;
+
+	/* compability with older versions */
 	MPRIS_SIMPLE_CALL("/Player", "Quit")
 }
 
@@ -369,6 +373,12 @@ QString KviAudaciousInterface::mrl()
 
 KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
 {
+	KviMediaPlayerInterface::PlayerStatus status;
+	status = KviMPRISInterface::status();
+	if (status != KviMediaPlayerInterface::Unknown)
+		return status;
+
+	/* compability with older versions */
 	QDBusInterface dbus_iface(m_szServiceName, "/Player",
 				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
 	if (!dbus_iface.isValid())
