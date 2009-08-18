@@ -20,42 +20,42 @@ msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has been kicked from \r!c\r%Q\r by \r!n\r%Q\r [%Q@"
 "\r!h\r%Q\r]: %Q"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] is eraf geschopt van \r!c\r%Q\r by \r!n\r%Q\r [%Q@"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] is van \r!c\r%Q\r geschopt door \r!n\r%Q\r [%Q@"
 "\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1405
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has changed topic to \"%Q%c\""
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] heeft onderwerp veranderd naar \"%Q%c\""
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] heeft het onderwerp veranderd naar \"%Q%c\""
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:321
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] neemt deel \r!c\r%Q\r"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] neemt nu deel aan \r!c\r%Q\r"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:316
 msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has joined \r!c\r%Q\r [implicit +%c umode change]"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] neemt deel \r!c\r%Q\r [implicit +%c umode change]"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] neemt nu deel aan \r!c\r%Q\r [implicit +%c umode change]"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:698
 msgid ""
 "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just been kicked from \r!c\r%Q\r by \r!n\r%Q"
 "\r [%Q@\r!h\r%Q\r]: %Q"
 msgstr ""
-"\r!n\r%Q\r [%Q@\r!h\r%Q\r] is er juist afgeschopt van \r!c\r%Q\r by \r!n\r%Q"
+"\r!n\r%Q\r [%Q@\r!h\r%Q\r] is er zojuist van \r!c\r%Q\r afgeschopt door \r!n\r%Q"
 "\r [%Q@\r!h\r%Q\r]: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:334
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has just joined \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] neemt juist deel \r!c\r%Q\r"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] neemt vanaf nu deel aan \r!c\r%Q\r"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:416
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] heeft verlaten \r!c\r%Q\r"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] heeft \r!c\r%Q\r verlaten"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:412
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] has left \r!c\r%Q\r: %Q"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] heeft verlaten \r!c\r%Q\r: %Q"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] heeft \r!c\r%Q\r verlaten: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:562
 #: src/kvirc/sparser/kvi_sp_literal.cpp:578
@@ -64,26 +64,26 @@ msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] Heeft IRC verlaten: %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1555
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] invites you to channel \r!c\r%Q\r (%Q)"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] nodigd je uit naar kanaal \r!c\r%Q\r (%Q)"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] nodigt je uit op kanaal \r!c\r%Q\r (%Q)"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1438
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1491
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1511
 msgid "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is now known as \r!n\r%Q\r"
-msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is gekend als \r!n\r%Q\r"
+msgstr "\r!n\r%Q\r [%Q@\r!h\r%Q\r] is nu bekend als \r!n\r%Q\r"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1841
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1844
 msgid "\r!n\r%Q\r invited %Q into channel %Q"
-msgstr "\r!n\r%Q\r nodigd %Q in kanaal %Q"
+msgstr "\r!n\r%Q\r nodigt %Q in kanaal %Q"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:434
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r"
-msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] heeft juist verlaten \r!c\r%Q\r"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] heeft zojuist \r!c\r%Q\r verlaten"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:430
 msgid "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] has just left \r!c\r%Q\r: %Q"
-msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] heeft juist verlaten \r!c\r%Q\r: %Q"
+msgstr "\r!nc\r%Q\r [%Q@\r!h\r%Q\r] heeft zojuist \r!c\r%Q\r verlaten: %Q"
 
 #: src/kvirc/ui/kvi_query.cpp:255
 msgid " (%1 hops)"
@@ -92,7 +92,7 @@ msgstr " (%1 sprong)"
 #: src/kvirc/ui/kvi_channel.cpp:1022 src/kvirc/ui/kvi_query.cpp:430
 #: src/kvirc/ui/kvi_console.cpp:1155
 msgid " on "
-msgstr "aan"
+msgstr " op "
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:212
 msgid "### End of existing data buffer."
@@ -231,7 +231,7 @@ msgid ""
 "%Q doesn't look like a servers.ini file.\n"
 "Import failed."
 msgstr ""
-"%Q blijkt geen sever.ini bestand.\n"
+"%Q blijkt geen severs.ini bestand.\n"
 "Importeren mislukt."
 
 #: src/kvirc/kernel/kvi_irccontext.cpp:675
@@ -248,7 +248,7 @@ msgstr "%Q heeft IRC verlaten"
 
 #: src/kvirc/kernel/kvi_notifylist.cpp:191
 msgid "%Q is on IRC"
-msgstr "%Q is in IRC"
+msgstr "%Q is op IRC"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1589
 msgid "%Q unsets avatar"
@@ -256,11 +256,11 @@ msgstr "%Q avatar afgezet"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1909
 msgid "%Q: no such channel"
-msgstr "%Q: zo geen kanaal"
+msgstr "%Q: dit kanaal bestaat niet"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1898
 msgid "%Q: no such server"
-msgstr "%Q: zo geen server"
+msgstr "%Q: deze server bestaat niet"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1404
 msgid "%c\r!n\r%Q\r%c WHOIS info from \r!s\r%Q\r"
@@ -276,11 +276,11 @@ msgstr "%c\r!n\r%Q\r%c is %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1325
 msgid "%c\r!n\r%Q\r%c is authenticated as %Q"
-msgstr "%c\r!n\r%Q\r%c is authentiek als %Q"
+msgstr "%c\r!n\r%Q\r%c is geauthenticeerd als %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1069
 msgid "%c\r!n\r%Q\r%c is away: %Q"
-msgstr "%c\r!n\r%Q\r%c is weg: %Q"
+msgstr "%c\r!n\r%Q\r%c is afwezig: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1147
 msgid "%c\r!n\r%Q\r%c was %c\r!n\r%Q\r!%Q@\r!h\r%Q\r%c"
@@ -296,7 +296,7 @@ msgstr "%c\r!n\r%Q\r%c's codepage is %Q: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1262
 msgid "%c\r!n\r%Q\r%c's idle time: %ud %uh %um %us"
-msgstr "%c\r!n\r%Q\r%c's stille tijd: %ud %uh %um %us"
+msgstr "%c\r!n\r%Q\r%c's inactief gedurende: %ud %uh %um %us"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1357
 msgid "%c\r!n\r%Q\r%c's info: %Q"
@@ -316,7 +316,7 @@ msgstr "%c\r!n\r%Q\r%c's server: \r!s\r%Q\r - %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1272
 msgid "%c\r!n\r%Q\r%c's signon time: %Q"
-msgstr "%c\r!n\r%Q\r%c's inteken tijd: %Q"
+msgstr "%c\r!n\r%Q\r%c's aanmeldtijd: %Q"
 
 #: src/kvirc/sparser/kvi_sp_numeric.cpp:1805
 #, c-format
@@ -370,7 +370,7 @@ msgstr "%d gelijkenissen: %Q"
 #: src/kvirc/kernel/kvi_irccontext.cpp:607
 #, c-format
 msgid "%d of %d"
-msgstr "%d aan %d"
+msgstr "%d van %d"
 
 #: src/modules/ident/libkviident.cpp:109
 #, c-format
@@ -395,7 +395,7 @@ msgstr "%s (%s:%u)"
 #: src/kvirc/kernel/kvi_irclink.cpp:384
 #, fuzzy, c-format
 msgid "%s established [%s (%s:%u)]"
-msgstr "%Q hersteld [%s (%s:%u)]"
+msgstr "%s hersteld [%s (%s:%u)]"
 
 #: src/modules/links/linkswindow.cpp:236
 #, c-format
@@ -448,11 +448,11 @@ msgstr "Toevoegen"
 
 #: src/modules/url/libkviurl.cpp:461
 msgid "&Add Ban"
-msgstr "Verbande toevoegen"
+msgstr "Ban toevoegen"
 
 #: src/kvilib/system/kvi_locale.cpp:1036
 msgid "&Add to Custom Colors"
-msgstr "Voeg gebruikte kleuren toe"
+msgstr "Voeg aan aangepaste kleuren toe"
 
 #: src/kvirc/ui/kvi_frame.cpp:897 src/kvirc/ui/kvi_console.cpp:511
 #: src/kvirc/ui/kvi_console.cpp:545
@@ -461,7 +461,7 @@ msgstr "&Altijd"
 
 #: src/kvirc/ui/kvi_modeeditor.cpp:78
 msgid "&Apply"
-msgstr "Toevoegen"
+msgstr "Toepassen"
 
 #: src/kvirc/ui/kvi_mdimanager.cpp:383
 msgid "&Auto Tile"
@@ -499,7 +499,7 @@ msgstr "&Configureer"
 
 #: src/modules/trayicon/libkvitrayicon.cpp:99
 msgid "&Configure KVIrc..."
-msgstr "&Configuratie KVIrc..."
+msgstr "KVirc &Instellen..."
 
 #: src/kvirc/ui/kvi_input_editor.cpp:727
 msgid "&Copy"
@@ -507,11 +507,11 @@ msgstr "Kopiëren..."
 
 #: src/kvilib/system/kvi_locale.cpp:1031
 msgid "&Custom colors"
-msgstr "Gebruikte kleuren"
+msgstr "Aangepaste kleuren"
 
 #: src/kvilib/system/kvi_locale.cpp:1035
 msgid "&Define Custom Colors >>"
-msgstr "&Definieer Gebruikte Kleuren>>"
+msgstr "Aangepaste kleuren definieren >>"
 
 #: src/kvirc/ui/kvi_window.cpp:736
 msgid "&Dock"
@@ -519,7 +519,7 @@ msgstr "&Koppelen"
 
 #: src/kvilib/system/kvi_locale.cpp:1055
 msgid "&Edit Bookmarks"
-msgstr "Bewerk Bladwijzers"
+msgstr "Bladwijzers bewerken"
 
 #: src/kvilib/system/kvi_locale.cpp:1086
 msgid "&Filter:"
@@ -527,7 +527,7 @@ msgstr "&Filter"
 
 #: src/kvirc/ui/kvi_ircviewtools.cpp:138
 msgid "&Find Next"
-msgstr "Zoek volgende"
+msgstr "Volgende zoeken"
 
 #: src/kvilib/system/kvi_locale.cpp:1039
 msgid "&Font"
@@ -547,7 +547,7 @@ msgstr "&Help Browser (Paneel)"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:98
 msgid "&Join"
-msgstr "Neem deel"
+msgstr "Deelnemen"
 
 #: src/modules/url/libkviurl.cpp:152
 msgid "&List"
@@ -563,7 +563,7 @@ msgstr "Laden vanaf"
 
 #: src/kvilib/system/kvi_locale.cpp:1085
 msgid "&Location:"
-msgstr "&Locatie"
+msgstr "&Lokatie"
 
 #: src/modules/url/libkviurl.cpp:145
 msgid "&Module"
@@ -5932,7 +5932,7 @@ msgstr "Strook kleuren"
 
 #: src/kvirc/ui/kvi_menubar.cpp:145 src/kvirc/kernel/kvi_coreactions.cpp:336
 msgid "Subscribe to the Mailing List"
-msgstr "Voeg je toe aan de brief lijst"
+msgstr "Voeg je toe aan de mailinglijst"
 
 #: src/kvilib/core/kvi_error.cpp:50 src/kvilib/net/kvi_http.cpp:318
 msgid "Success"
@@ -6438,7 +6438,7 @@ msgstr "Er zijn aktieve verbindingen, ben je zeker wat je wilt"
 
 #: src/kvilib/core/kvi_error.cpp:170
 msgid "There is no $this pointer in this scope (unexpected @)"
-msgstr "Er is geen $ deze aanduider in dit bereik (onverwacht @)"
+msgstr "Er is geen $this in dit bereik (onverwacht @)"
 
 #: src/kvilib/core/kvi_error.cpp:83
 msgid "This KVIrc executable has no IPV6 support"
