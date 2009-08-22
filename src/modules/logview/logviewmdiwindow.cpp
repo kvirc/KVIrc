@@ -250,7 +250,6 @@ void KviLogViewMDIWindow::setupItemList()
 		__tr2qs_ctx("Abort filtering","logview"), 0, m_logList.count(),
 		this);
 	progress.setObjectName("progress");
-	progress.setModal(TRUE);
 
 	int i=0;
 	for(pFile=m_logList.first();pFile;pFile=m_logList.next())
