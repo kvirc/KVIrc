@@ -1181,7 +1181,7 @@ defpopup(logging)
 
 		# If this window is being logged actually , $log.file will be non empty
 		# and pointing to the log file actually open.
-		%:logfile = $str.replace($log.file,,$file.localdir)
+		%:logfile = $file.extractfilename($log.file)
 	}
 
 	label($tr("Logging to"):<br><b>%:logfile</b>) ("%:logfile" != "")

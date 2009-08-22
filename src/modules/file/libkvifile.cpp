@@ -1174,14 +1174,14 @@ static bool file_kvs_fnc_extractpath(KviKvsModuleFunctionCall * c)
 	@short:
 		Extract the filename from a file path
 	@syntax:
-		<string> $file.extractpath(<filepath:string>)
+		<string> $file.extractfilename(<filepath:string>)
 	@description:
 		Returns the filename part of the filepath translated to match the current
 		platform filesystem conventions.[br]
 		For example, if <filepath> is /usr/arch/mp3/Carisma_SuonoDelSilenzio.mp3 then
 		this function will return Carisma_SuonoDelSilenzio.mp3
 	@seealso:
-		[fnc]$file.extractPath[/fnc]
+		[fnc]$file.extractfilename[/fnc]
 */
 
 static bool file_kvs_fnc_extractfilename(KviKvsModuleFunctionCall * c)

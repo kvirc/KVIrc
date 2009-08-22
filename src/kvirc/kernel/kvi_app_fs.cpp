@@ -128,7 +128,7 @@ void KviApp::getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QStrin
 				szData = szData.remove(szData.length()-1,1);
 			if(szData.isEmpty())
 			{
-				szData = QDir::homePath();
+				szData = m_szLocalKvircDir;
 				if(!szData.endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
 					szData.append(KVI_PATH_SEPARATOR_CHAR);
 				szData.append("log");
