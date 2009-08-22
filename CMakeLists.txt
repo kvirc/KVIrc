@@ -121,10 +121,25 @@ IF(WANT_DEBUG)
 	SET(CMAKE_BUILD_TYPE Debug)
 	SET(CMAKE_STATUS_DEBUG_SUPPORT "Yes")
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS DEBUG)
-	#force gdb format of debug symbols
-	SET(CMAKE_CXX_FLAGS "-O0 -ggdb")
-	SET(CMAKE_C_FLAGS "-O0 -ggdb")
+	IF(CMAKE_COMPILER_IS_GNUCXX)
+		#force gdb format of debug symbols
+		SET(CMAKE_CXX_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --visibility-inlines-hidden --no-implement-inlines --unit-at-a-time --fast-math")
+		SET(CMAKE_C_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --visibility-inlines-hidden --no-implement-inlines --unit-at-a-time --fast-math")
+	ELSE()
+		#this small set of options should work on almost all compilers
+		SET(CMAKE_CXX_FLAGS "-O0 -g")
+		SET(CMAKE_C_FLAGS "-O0 -g")
+	ENDIF()
 ELSE()
+	IF(CMAKE_COMPILER_IS_GNUCXX)
+		#force gdb options
+		SET(CMAKE_CXX_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --visibility-inlines-hidden --no-implement-inlines --unit-at-a-time --fast-math")
+		SET(CMAKE_C_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --visibility-inlines-hidden --no-implement-inlines --unit-at-a-time --fast-math")
+	ELSE()
+		#this small set of options should work on almost all compilers
+		SET(CMAKE_CXX_FLAGS "-O3")
+		SET(CMAKE_C_FLAGS "-O3")
+	ENDIF()
 	SET(CMAKE_BUILD_TYPE Release)
 	SET(CMAKE_STATUS_DEBUG_SUPPORT "No")
 ENDIF()
