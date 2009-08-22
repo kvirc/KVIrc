@@ -405,7 +405,10 @@ void KviIrcView::setFont(const QFont &f)
 		l->iMaxLineWidth = -1;
 		l = l->pNext;
 	}
-	QWidget::setFont(f);
+
+	QFont newFont(f);
+	newFont.setKerning(false);
+	QWidget::setFont(newFont);
 	update();
 }
 

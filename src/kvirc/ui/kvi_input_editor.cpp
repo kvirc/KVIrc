@@ -158,7 +158,9 @@ void KviInputEditor::recalcFontMetrics()
 void KviInputEditor::applyOptions()
 {
 	//set the font
-	setFont(KVI_OPTION_FONT(KviOption_fontInput));
+	QFont newFont(KVI_OPTION_FONT(KviOption_fontInput));
+	newFont.setKerning(false);
+	setFont(newFont);
 
 	//then, let font metrics be updated in lazy fashion
 	if(g_pLastFontMetrics) delete g_pLastFontMetrics;
@@ -465,11 +467,10 @@ void KviInputEditor::drawTextBlock(QPainter * pa, QFontMetrics & fm, int iCurXPo
 
 	pa->drawText(iCurXPos,iTextBaseline,szTmp);
 
-	if(m_bCurBold)pa->drawText(iCurXPos+1,iTextBaseline,szTmp);
+	if(m_bCurBold)
+		pa->drawText(iCurXPos+1,iTextBaseline,szTmp);
 	if(m_bCurUnderline)
-	{
 		pa->drawLine(iCurXPos,iTextBaseline + fm.descent(),iCurXPos+m_iBlockWidth,iTextBaseline + fm.descent());
-	}
 }
 
 QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
