@@ -159,10 +159,7 @@ extern "C" void xs_init(pTHX)
 bool KviPerlInterpreter::init()
 {
 	if(m_pInterpreter)done();
-	int daArgc = 4;
 	const char * daArgs[] = { "yo", "-e", "0", "-w" };
-	char ** daEnv=NULL;
-	PERL_SYS_INIT3(&daArgc,(char ***)&daArgs,&daEnv);
 	m_pInterpreter = perl_alloc();
 	if(!m_pInterpreter)return false;
 	PERL_SET_CONTEXT(m_pInterpreter);
@@ -391,6 +388,10 @@ static bool perlcore_module_init(KviModule * m)
 #ifdef COMPILE_PERL_SUPPORT
 	g_pInterpreters = new KviPointerHashTable<QString,KviPerlInterpreter>(17,false);
 	g_pInterpreters->setAutoDelete(false);
+	int daArgc = 4;
+	const char * daArgs[] = { "yo", "-e", "0", "-w" };
+	char ** daEnv=NULL;
+	PERL_SYS_INIT3(&daArgc,(char ***)&daArgs,&daEnv);
 	return true;
 #else // !COMPILE_PERL_SUPPORT
 	return false;
