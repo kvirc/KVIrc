@@ -419,7 +419,7 @@ KviLogFile::KviLogFile(const QString& name)
 	undecoded.cutToFirst('_');
 	m_szName = undecoded.hexDecode(undecoded.ptr()).ptr();
 
-	undecoded = szTmpName.section('.',1).section('_',0,0);
+	undecoded = szTmpName.section('.',1).section('_',0,-2);
 	m_szNetwork = undecoded.hexDecode(undecoded.ptr()).ptr();
 
 	QString szDate = szTmpName.section('.',-4,-1).section('_',1,1);
