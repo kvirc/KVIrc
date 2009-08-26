@@ -59,7 +59,7 @@ QFontMetrics * g_pLastFontMetrics = 0;
 
 // from kvi_app.cpp
 extern KviTalPopupMenu         * g_pInputPopup;
-extern KviTextIconWindowWidget * g_pTextIconWindow;
+extern KviTextIconWindow       * g_pTextIconWindow;
 extern KviColorWindow          * g_pColorWindow;
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -1335,12 +1335,12 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 					if(iXPos > 24)
 						iXPos-=24;
 					if(!g_pTextIconWindow)
-						g_pTextIconWindow = new KviTextIconWindowWidget();
+						g_pTextIconWindow = new KviTextIconWindow();
 
 					if(iXPos+g_pTextIconWindow->width() > width())
 						iXPos = width()-(g_pTextIconWindow->width()+2);
 					g_pTextIconWindow->move(mapToGlobal(QPoint(iXPos,-KVI_TEXTICON_WIN_HEIGHT)));
-					g_pTextIconWindow->popup(this);
+					g_pTextIconWindow->popup(this,false);
 				}
 			}
 			break;

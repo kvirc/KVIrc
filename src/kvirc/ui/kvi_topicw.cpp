@@ -52,7 +52,6 @@
 #include <QEvent>
 #include <QMouseEvent>
 
-extern KviTextIconWindowWidget * g_pTextIconWindow;
 extern KviColorWindow * g_pColorWindow;
 
 

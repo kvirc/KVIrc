@@ -63,7 +63,7 @@
 
 //This comes from kvi_app.cpp
 extern KviColorWindow          * g_pColorWindow;
-extern KviTextIconWindowWidget * g_pTextIconWindow;
+extern KviTextIconWindow       * g_pTextIconWindow;
 extern KviHistoryWindowWidget  * g_pHistoryWindow;
 extern KviTalPopupMenu         * g_pInputPopup;
 
@@ -335,9 +335,9 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 
 void KviInput::iconButtonClicked()
 {
-	if(!g_pTextIconWindow)g_pTextIconWindow = new KviTextIconWindowWidget();
+	if(!g_pTextIconWindow)g_pTextIconWindow = new KviTextIconWindow();
 	QPoint pnt = m_pIconButton->mapToGlobal(QPoint(m_pIconButton->width(),0));
-	g_pTextIconWindow->move(pnt.x()-g_pTextIconWindow->width(),pnt.y() - g_pTextIconWindow->height());
+ 	g_pTextIconWindow->move(pnt.x()-g_pTextIconWindow->width(),pnt.y() - g_pTextIconWindow->height());
 	g_pTextIconWindow->popup(this,true);
 }
 
