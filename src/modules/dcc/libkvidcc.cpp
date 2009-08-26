@@ -348,8 +348,8 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		to do various things:
 		[example]
 			# Tricky: simulate a HTTP server
-			dcc.chat -n -i=127.0.0.1 -p=80 Netscape
-			# Now open http://127.0.0.1 with netscape
+			dcc.chat -n -i=127.0.0.1 -p=80 WebBrowser
+			# Now open http://127.0.0.1 with your web browser
 			# and type "<html><body>Hello!</body></html>" :)
 			#
 			# Tricky 2: simulate the ident daemon (if you have none)

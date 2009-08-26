@@ -331,7 +331,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 		#ifdef COMPILE_ON_MAC
 			#define RUN_THE_BROWSER "run open $0"
 		#else
-			#define RUN_THE_BROWSER "run kvi_run_netscape $0"
+			#define RUN_THE_BROWSER "run x-www-browser $0"
 		#endif
 	#endif
 #endif

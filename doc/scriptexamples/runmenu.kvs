@@ -36,10 +36,10 @@ defpopup(runmenu)
 			run konqueror
 		}
 
-		item(netscape,164)
+		item(firefox,164)
 		{
-			if($system.ostype == unix)run kvi_run_netscape
-			else run netscape.exe
+			if($system.ostype == unix)run firefox
+			else run firefox.exe
 		}
 	}
 
