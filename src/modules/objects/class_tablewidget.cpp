@@ -40,26 +40,35 @@
 #include <QApplication>
 #include <QPoint>
 #include <QPaintEvent>
+#include <QTableWidgetItem>
 /*
         @doc:tablewidget
 	@title:
-                        tablewidget class
+                tablewidget class
 	@type:
 		class
 	@short:
-                        Tablewidget widget.
+                Tablewidget widget.
 	@inherits:
 		[class]object[/class]
-                        [class]widget[/class]
+                [class]widget[/class]
 	@description:
-                        This widget provides a table widget.
+                This widget provides a table.
 	@functions:
-		!fn: $setText([<text:string>])
-                !fn: $text()
-                !fn: $setHorizontalHeaderLabels()
-                !fn: $hideHorizontalHeaderLabels()
-                !fn: $setVerticalHeaderLabels()
-                !fn: $hideVerticalHeaderLabels()
+                !fn: $setText(<row:integer>,<col:integer>,[<text:string>])
+                !fn: <string> $text(<row:integer>,<col:integer>)
+                !fn: $setHorizontalHeaderLabels(<string array>)
+                !fn: $showHorizontalHeader()
+                !fn: $hideHorizontalHeader()
+                !fn: $setVerticalHeaderLabels(<string array>)
+                !fn: $showVerticalHeader()
+                !fn: $hideVerticalHeader()
+                !fn: $setRowCount(<integer>)
+                !fn: <integer> $rowCount()
+                !fn: $setColumnCount(<integer>)
+                !fn: <integer> $columnCount()
+                !fn: $setCellWidget(<hobject>)
+                !fn: $setIcon()
                 !fn: $clear()
             @signals:
 		!sg: $clicked()
@@ -83,15 +92,27 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tablewidget,"tablewidget","widget")
         // Rows-Columns
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setRowCount)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,rowCount)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,currentRow)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setColumnCount)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,columnCount)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,currentColumn)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,itemRowColAt)
+
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,hideRow)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,showRow)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,hideColumn)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,showColumn)
 
         // Item (text. icon, widget)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setText)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setToolTip)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,text)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setCellWidget)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setIcon)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,clear)
+
+        KVSO_REGISTER_HANDLER(KviKvsObject_tablewidget,"itemEnteredEvent",itemEnteredEvent);
+
 
 KVSO_END_REGISTERCLASS(KviKvsObject_tablewidget)
 
@@ -106,7 +127,9 @@ KVSO_END_DESTRUCTOR(KviKvsObject_tablewidget)
 
 bool KviKvsObject_tablewidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
+
         SET_OBJECT(QTableWidget)
+        connect(widget(),SIGNAL(itemEntered(QTableWidgetItem *)),this,SLOT(slotItemEntered(QTableWidgetItem *)));
         return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,clear)
@@ -206,13 +229,53 @@ KVSO_CLASS_FUNCTION(tablewidget,rowCount)
             c->returnValue()->setInteger(((QTableWidget *)widget())->rowCount());
             return true;
 }
+KVSO_CLASS_FUNCTION(tablewidget,currentRow)
+{
+            CHECK_INTERNAL_POINTER(widget())
+            c->returnValue()->setInteger(((QTableWidget *)widget())->currentRow());
+            return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,currentColumn)
+{
+            CHECK_INTERNAL_POINTER(widget())
+            c->returnValue()->setInteger(((QTableWidget *)widget())->currentColumn());
+            return true;
+}
 KVSO_CLASS_FUNCTION(tablewidget,columnCount)
 {
             CHECK_INTERNAL_POINTER(widget())
             c->returnValue()->setInteger(((QTableWidget *)widget())->columnCount());
             return true;
 }
-
+KVSO_CLASS_FUNCTION(tablewidget,itemRowColAt)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        kvs_uint_t uX,uY;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("uX",KVS_PT_UNSIGNEDINTEGER,0,uX)
+                KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
+        KVSO_PARAMETERS_END(c)
+        KviKvsArray *pArray;
+        QTableWidgetItem *pItem=((QTableWidget *)widget())->itemAt(QPoint(uX,uY));
+        pArray=new KviKvsArray;
+        pArray->set(0,new KviKvsVariant((kvs_int_t)pItem->row()));
+        pArray->set(1,new KviKvsVariant((kvs_int_t)pItem->column()));
+        c->returnValue()->setArray(pArray);
+        return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,setToolTip)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        QString szTooltip;
+        kvs_uint_t uX,uY;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("uX",KVS_PT_UNSIGNEDINTEGER,0,uX)
+                KVSO_PARAMETER("uY",KVS_PT_UNSIGNEDINTEGER,0,uY)
+                KVSO_PARAMETER("tooltip",KVS_PT_STRING,0,szTooltip)
+        KVSO_PARAMETERS_END(c)
+        ((QTableWidget *)widget())->itemAt(uX,uY)->setToolTip(szTooltip);
+        return true;
+}
 KVSO_CLASS_FUNCTION(tablewidget,setColumnCount)
 {
             CHECK_INTERNAL_POINTER(widget())
@@ -224,6 +287,44 @@ KVSO_CLASS_FUNCTION(tablewidget,setColumnCount)
             return true;
 }
 
+KVSO_CLASS_FUNCTION(tablewidget,hideColumn)
+{
+            CHECK_INTERNAL_POINTER(widget())
+            kvs_int_t iCol;
+            KVSO_PARAMETERS_BEGIN(c)
+                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+            KVSO_PARAMETERS_END(c)
+            ((QTableWidget *)widget())->hideColumn(iCol);
+            return true;
+}
+KVSO_CLASS_FUNCTION(tablewidget,showColumn)
+{
+            CHECK_INTERNAL_POINTER(widget())
+            kvs_int_t iCol;
+            KVSO_PARAMETERS_BEGIN(c)
+                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+            KVSO_PARAMETERS_END(c)
+            ((QTableWidget *)widget())->showColumn(iCol);
+            return true;
+}KVSO_CLASS_FUNCTION(tablewidget,hideRow)
+{
+            CHECK_INTERNAL_POINTER(widget())
+            kvs_int_t iRow;
+            KVSO_PARAMETERS_BEGIN(c)
+                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+            KVSO_PARAMETERS_END(c)
+            ((QTableWidget *)widget())->hideRow(iRow);
+            return true;
+}KVSO_CLASS_FUNCTION(tablewidget,showRow)
+{
+            CHECK_INTERNAL_POINTER(widget())
+            kvs_int_t iRow;
+            KVSO_PARAMETERS_BEGIN(c)
+                        KVSO_PARAMETER("col",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+            KVSO_PARAMETERS_END(c)
+            ((QTableWidget *)widget())->showRow(iRow);
+            return true;
+}
 KVSO_CLASS_FUNCTION(tablewidget,setHorizontalHeaderLabels)
 {
             CHECK_INTERNAL_POINTER(widget())
@@ -320,8 +421,20 @@ KVSO_CLASS_FUNCTION(tablewidget,showVerticalHeader)
             ((QTableWidget *)widget())->verticalHeader()->show();
             return true;
 }
+void KviKvsObject_tablewidget::slotItemEntered(QTableWidgetItem * i)
 
+{
+      // if (!i) callFunction(this,"itecurrentItemChangeEvent",0,0);
+        debug("entered");
+        KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i->row()),new KviKvsVariant((kvs_int_t)i->column()));
+        callFunction(this,"itemEnteredEvent",0,&params);
+}
+KVSO_CLASS_FUNCTION(tablewidget,itemEnteredEvent)
+{
 
+        emitSignal("itemEntered",c,c->params());
+        return true;
+}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_tablewidget.moc"
 #endif //COMPILE_USE_STANDALONE_MOC_SOURCES

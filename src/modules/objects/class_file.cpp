@@ -40,6 +40,7 @@
 	{c->warning(__tr2qs_ctx("File is not open!","objects"));return true;}
 
 // needed for $open()
+
 const char * const mod_tbl[] = {
 	"Raw",
 	"ReadOnly",
@@ -250,7 +251,7 @@ KVSO_CLASS_FUNCTION(file,open)
 		}
 	}
 
-	m_pFile->open(sum);
+        m_pFile->open(QIODevice::ReadOnly);
 	return true;
 }
 
@@ -532,8 +533,9 @@ KVSO_CLASS_FUNCTION(file,readLine)
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	QString buffer;
-	KviFileUtils::readLine(m_pFile,buffer);
-	c->returnValue()->setString(buffer);
+        bool ok=KviFileUtils::readLine(m_pFile,buffer);
+        debug("ok %d",ok);
+        c->returnValue()->setString(buffer);
 	return true;
 }
 

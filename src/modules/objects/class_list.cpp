@@ -42,8 +42,6 @@
 	@inherits:
 		[class]object[/class]
 	@description:
-
-
 		This object class abstracts a double linked list of strings.
 		You can insert/remove items by zero based position, at the end (tail) or at the
 		beginning (head). The list incorporates an efficient iteration

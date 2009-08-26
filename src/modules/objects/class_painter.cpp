@@ -238,16 +238,16 @@ const char * const brushstyles_tbl[] = {
 		Sets the background mode of the painter to <bgMode>: valid values are:[br]
 		- Transparent	(that is the default value);[br]
 		- Opaque.[br]
-		!fn: $setOpacity(<opacity_factor:real>) [QT4 ONLY]
+                !fn: $setOpacity(<opacity_factor:real>)
 		Sets the painter opacity that affects all painter operations (drawpixmap, drawtext...). Valid values range are from 0 (total transparency) to 1 (total opacity)[br]
 		You must invoke the [classfnc]$begin[/classfnc] before using it.
-		!fn: $setTextAntialiasing(<boolean>) [QT4 ONLY]
+                !fn: $setTextAntialiasing(<boolean>)
 		Enable/disable antialias in text if possible.
 		You must call the [classfnc]$begin[/classfnc] before using it.
-		!fn: $setAntialiasing(<boolean>) [QT4 ONLY]
+                !fn: $setAntialiasing(<boolean>)
 		Enable/disable antialias in edges of primitives if possible.
 		You must call the [classfnc]$begin[/classfnc] before using it.
-		!fn: $setSmoothPixmapTransform(<boolean>) [QT4 ONLY]
+                !fn: $setSmoothPixmapTransform(<boolean>)
 		Enable/disable smooth bilinear pixmap transformation algorithm (such as bilinear).
 		You must call the [classfnc]$begin[/classfnc] before using it.
 		Example:[br]
@@ -1028,83 +1028,83 @@ KVSO_CLASS_FUNCTION(painter,begin)
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	KviKvsObject * pObject;
 	kvs_hobject_t hObject;
-            KviKvsVariant *v;
-            QString szFileName;
-            kvs_int_t i;
-	KVSO_PARAMETERS_BEGIN(c)
+        KviKvsVariant *v;
+        QString szFileName;
+        KVSO_PARAMETERS_BEGIN(c)
                         KVSO_PARAMETER("paint_device",KVS_PT_VARIANT,0,v)
-                        KVSO_PARAMETER("y",KVS_PT_INT,KVS_PF_OPTIONAL,i)
                         KVSO_PARAMETER("file_name",KVS_PT_STRING,KVS_PF_OPTIONAL,szFileName)
 	KVSO_PARAMETERS_END(c)
-            debug ("check device");
-            QPaintDevice * pd;
-            if(v->isString())
-            {
-                QString szDev;
-                v->asString(szDev);
-                if(KviQString::equalCI(szDev,"printer") || KviQString::equalCI(szDev,"pdf"))
-                {
-                    if (m_pPrinter) delete m_pPrinter;
-                    m_pPrinter=new QPrinter();
-                    if ( KviQString::equalCI(szDev,"pdf"))
-                    {
-                    //        m_pPrinter=new QPrinter();
-                         if(szFileName.isEmpty())
-                         {
-                            c->warning(__tr2qs_ctx("Missing filename","objects"));
-                            return true;
-                         }
-                         m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
-                         m_pPrinter->setOutputFileName(szFileName);
-
-                    }
-                    else{
-                        QPrintDialog printDialog(m_pPrinter, 0);
-                        if (printDialog.exec() == QDialog::Accepted) {
-                            debug("papersize %d",m_pPrinter->paperSize());
-                            m_pPainter->begin(m_pPrinter);
-                                return true;
-                            }
-                        else {
-                            m_pPrinter=0;
-                            return true;
-                        }
-                    }
-                    //if (i==3) m_pPrinter->setPaperSize(QPrinter::A3);
-                    //if (i==4) m_pPrinter->setPaperSize(QPrinter::A4);
+        QPaintDevice * pd;
+        if(v->isString())
+        {
+             QString szDev;
+             v->asString(szDev);
+             if(KviQString::equalCI(szDev,"printer") || KviQString::equalCI(szDev,"pdf"))
+             {
+                 if (m_pPrinter) delete m_pPrinter;
+                 m_pPrinter=new QPrinter();
+                 if ( KviQString::equalCI(szDev,"pdf"))
+                 {
+                 //        m_pPrinter=new QPrinter();
+                     if(szFileName.isEmpty())
+                     {
+                         c->warning(__tr2qs_ctx("Missing filename","objects"));
+                         return true;
+                     }
+                     m_pPrinter->setOutputFormat(QPrinter::PdfFormat);
+                     m_pPrinter->setOutputFileName(szFileName);
+                 }
+                 else
+                 {
+                     QPrintDialog printDialog(m_pPrinter, 0);
+                     if (printDialog.exec() == QDialog::Accepted)
+                     {
+                       debug("papersize %d",m_pPrinter->paperSize());
+                       m_pPainter->begin(m_pPrinter);
+                       return true;
+                     }
+                     else
+                     {
+                       m_pPrinter=0;
+                       return true;
+                     }
+                   }
+                   //if (i==3) m_pPrinter->setPaperSize(QPrinter::A3);
+                   //if (i==4) m_pPrinter->setPaperSize(QPrinter::A4);
                 }
-                else{
+                else
+                {
                     c->warning(__tr2qs_ctx("No valid paint device","objects"));
                     return true;
                 }
                 m_pPainter->begin(m_pPrinter);
                 return true;
-            }
-            else if (v->isHObject())
-            {
+        }
+        else if (v->isHObject())
+        {
                 v->asHObject(hObject);
                 pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
                 if (!pObject)
                 {
-		c->warning(__tr2qs_ctx("Pixmap or Widget parameter is not an object","objects"));
-		return true;
+                    c->warning(__tr2qs_ctx("Pixmap or Widget parameter is not an object","objects"));
+                    return true;
                 }
-
                 if(pObject->inheritsClass("pixmap"))pd=((KviKvsObject_pixmap *)pObject)->getPixmap();
                 else if (pObject->inheritsClass("widget")) pd=((KviKvsObject_widget *)pObject)->widget();
                 else
                 {
-                        c->warning(__tr2qs_ctx("Widget or Pixmap required ","objects"));
-                        return true;
-                }
-            }
-            else {
-                    c->warning(__tr2qs_ctx("No valid paint device","objects"));
+                    c->warning(__tr2qs_ctx("Widget or Pixmap required ","objects"));
                     return true;
                 }
-            attachDevice(pObject,pd);
+       }
+       else
+       {
+                c->warning(__tr2qs_ctx("No valid paint device","objects"));
+                return true;
+       }
+       attachDevice(pObject,pd);
             //if (pObject->inheritsClass("pixmap")) ((KviKvsObject_pixmap *)pObject)->pixmapChanged();
-	return true;
+       return true;
 }
 
 void KviKvsObject_painter::attachDevice(KviKvsObject * o,QPaintDevice * p)

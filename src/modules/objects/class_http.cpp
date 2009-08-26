@@ -83,7 +83,7 @@ const char * const ssl_errors_tbl[] = {
 		!fn: <id:integer>$setHost(<host:string>,<remote_port:unsigned_integer>)
 		
 		!fn: <id:integer>$currentId()
-		!fn: $setProxy(<host:string>,[<user:string>,<password:string>])
+                !fn: $setProxy(<host:string>,<port:integer>,[<user:string>,<password:string>])
 		!fn: $setUser(<user:string>,<password:string>)
 		!fn: $readAll()
 		!fn: <error:string> $errorString()
