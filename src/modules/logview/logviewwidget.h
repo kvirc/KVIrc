@@ -66,8 +66,12 @@ class KviLogListViewLog : public KviLogListViewItem
 public:
 	KviLogListViewLog(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
 	~KviLogListViewLog() {};
-	virtual QString key ( int column, bool) const { return text(column); };
 	virtual QString fileName() const { return m_pFileData->fileName(); };
+protected:
+	bool operator<(const QTreeWidgetItem &other)const
+	{
+		return m_pFileData->date() < ((KviLogListViewLog*)&other)->m_pFileData->date();
+	}
 };
 
 #endif
