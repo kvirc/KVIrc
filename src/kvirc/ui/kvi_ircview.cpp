@@ -976,7 +976,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	 */
 	int scrollbarWidth = m_pScrollBar->width();
 	int widgetWidth  = width() - scrollbarWidth;
-	if(!isVisible() || (widgetWidth < 20))
+	if(!isVisible())
 	{
 		m_iUnprocessedPaintEventRequests = 0; // assume a full repaint when this widget is shown...
 		return; //can't show stuff here
@@ -1045,6 +1045,12 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
+
+	if(widgetWidth < 20)
+	{
+		m_iUnprocessedPaintEventRequests = 0; // assume a full repaint when this widget is shown...
+		return; //can't show stuff here
+	}
 
 	/*
 	 * Profane description: after the background, start to paint the contents (a list of text lines with "dynamic contents", correctly
