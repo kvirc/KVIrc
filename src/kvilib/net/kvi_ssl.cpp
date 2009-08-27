@@ -488,7 +488,11 @@ KviSSLCertificate * KviSSL::getPeerCertificate()
 KviSSLCipherInfo * KviSSL::getCurrentCipherInfo()
 {
 	if(!m_pSSL)return 0;
+#if OPENSSL_VERSION_NUMBER >= 0x10000000L
+	const SSL_CIPHER * c = SSL_get_current_cipher(m_pSSL);
+#else
 	SSL_CIPHER * c = SSL_get_current_cipher(m_pSSL);
+#endif
 	if(!c)return 0;
 	return new KviSSLCipherInfo(c);
 }
@@ -666,8 +670,11 @@ const char * KviSSLCertificate::verify()
 }
 */
 
-
+#if OPENSSL_VERSION_NUMBER >= 0x10000000L
+KviSSLCipherInfo::KviSSLCipherInfo(const SSL_CIPHER * c)
+#else
 KviSSLCipherInfo::KviSSLCipherInfo(SSL_CIPHER * c)
+#endif
 {
 	m_szVersion = SSL_CIPHER_get_version(c);
 	m_iNumBitsUsed = SSL_CIPHER_get_bits(c,&m_iNumBits);

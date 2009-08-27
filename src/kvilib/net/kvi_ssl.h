@@ -100,7 +100,11 @@ public:
 class KVILIB_API KviSSLCipherInfo
 {
 public:
+#if OPENSSL_VERSION_NUMBER >= 0x10000000L
+	KviSSLCipherInfo(const SSL_CIPHER * c);
+#else
 	KviSSLCipherInfo(SSL_CIPHER * c);
+#endif
 	~KviSSLCipherInfo();
 protected:
 	KviStr       m_szVersion;
