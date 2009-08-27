@@ -38,8 +38,8 @@
 #include "kvi_ircuserdb.h"
 #include "kvi_time.h"
 #include "kvi_frame.h"
+#include "kvi_statusbar.h"
 
-#include <QStatusBar>
 
 namespace KviKvsCoreFunctions
 {
@@ -666,9 +666,13 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(countStatusBarItems)
 	{
-		QList<QWidget *> widgets = g_pFrame->statusBar()->findChildren<QWidget *>();
-		KVSCF_pRetBuffer->setInteger(widgets.count());
-		return true;
+                if (g_pFrame->mainStatusBar())
+                {
+                    QList<QWidget *> widgets = g_pFrame->mainStatusBar()->findChildren<QWidget *>();
+                    KVSCF_pRetBuffer->setInteger(widgets.count());
+                }
+                else KVSCF_pRetBuffer->setInteger(0);
+                return true;
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
