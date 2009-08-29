@@ -159,15 +159,6 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	m_pListWidget->setSortingEnabled(true);
 	m_pListWidget->setMinimumHeight(400);
 	m_pListWidget->setMinimumWidth(380);
-
-	QString szPic;
-	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
-	// we need mandatory unix like path separator
-	szPic.replace('\\',"/");
-
-	szPic += "/kvi_dialog_addons.png";
-	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
-	m_pListWidget->setStyleSheet(szStyle);
 	g->addWidget(m_pListWidget,1,0);
 
 	fillListView();

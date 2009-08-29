@@ -36,7 +36,7 @@ if(open(THEFILE,">$name"))
 	print THEFILE "//   Creation date : $thetime GMT by Szymon Stefanek\n";
 	print THEFILE "//\n";
 	print THEFILE "//   This file is part of the KVirc irc client distribution\n";
-	print THEFILE "//   Copyright (C) 2002 Szymon Stefanek (pragma at kvirc dot net)\n";
+	print THEFILE "//   Copyright (C) 2009 Szymon Stefanek (pragma at kvirc dot net)\n";
 	print THEFILE "//\n";
 	print THEFILE "//   This program is FREE software. You can redistribute it and/or\n";
 	print THEFILE "//   modify it under the terms of the GNU General Public License\n";
