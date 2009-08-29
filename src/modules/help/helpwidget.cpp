@@ -55,6 +55,7 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame *,bool bIsStandalone)
 	m_pTextBrowser->setObjectName("text_browser");
 	m_pTextBrowser->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
 	m_pTextBrowser->setFocusPolicy(Qt::NoFocus);
+	m_pTextBrowser->setStyleSheet("QTextBrowser { background-color:white; color:black; }");
 	m_pToolBar = new KviTalHBox(this);
 
 	m_pBtnIndex = new QToolButton(m_pToolBar);
