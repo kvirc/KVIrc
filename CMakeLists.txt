@@ -112,52 +112,61 @@ LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
 # Release type
 #
 ###############################################################################
+OPTION(USE_ENV_FLAGS "Don't try to set CMAKE_C(XX)_FLAGS; instead, use the ones from environment variables" OFF)
+IF(USE_ENV_FLAGS)
+	SET(WANT_ENV_FLAGS ON)
+ENDIF()
 
 OPTION(WANT_DEBUG "Compile debug symbols" OFF)
 IF(DEBUG OR WITH_DEBUG)
 	SET(WANT_DEBUG ON)
 ENDIF()
-IF(WANT_DEBUG)
-	SET(CMAKE_BUILD_TYPE Debug)
-	SET(CMAKE_STATUS_DEBUG_SUPPORT "Yes")
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS DEBUG)
-	IF(CMAKE_COMPILER_IS_GNUCXX)
-		#force gdb format of debug symbols
-		SET(CMAKE_CXX_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
-		SET(CMAKE_C_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
-		#gcc3 is still used by mingw and doesn't support this flag
-		INCLUDE(CheckCXXCompilerFlag)
-		CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
-		IF(CXX_HAS_VIH_FLAG)
-			SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
-			SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
-		ENDIF(CXX_HAS_VIH_FLAG)
-	ELSE()
-		#this small set of options should work on almost all compilers
-		SET(CMAKE_CXX_FLAGS "-O0 -g")
-		SET(CMAKE_C_FLAGS "-O0 -g")
-	ENDIF()
-ELSE()
-	IF(CMAKE_COMPILER_IS_GNUCXX)
-		#force gdb options
-		SET(CMAKE_CXX_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
-		SET(CMAKE_C_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
-		#gcc3 is still used by mingw and doesn't support this flag
-		INCLUDE(CheckCXXCompilerFlag)
-		CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
-		IF(CXX_HAS_VIH_FLAG)
-			SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
-			SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
-		ENDIF(CXX_HAS_VIH_FLAG)
-	ELSE()
-		#this small set of options should work on almost all compilers
-		SET(CMAKE_CXX_FLAGS "-O3")
-		SET(CMAKE_C_FLAGS "-O3")
-	ENDIF()
-	SET(CMAKE_BUILD_TYPE Release)
-	SET(CMAKE_STATUS_DEBUG_SUPPORT "No")
-ENDIF()
 
+IF(WANT_ENV_FLAGS)
+	SET(CMAKE_BUILD_TYPE Undefined)
+	SET(CMAKE_STATUS_DEBUG_SUPPORT "Environment-driven")
+ELSE()
+	IF(WANT_DEBUG)
+		SET(CMAKE_BUILD_TYPE Debug)
+		SET(CMAKE_STATUS_DEBUG_SUPPORT "Yes")
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS DEBUG)
+		IF(CMAKE_COMPILER_IS_GNUCXX)
+			#force gdb format of debug symbols
+			SET(CMAKE_CXX_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			SET(CMAKE_C_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			#gcc3 is still used by mingw and doesn't support this flag
+			INCLUDE(CheckCXXCompilerFlag)
+			CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
+			IF(CXX_HAS_VIH_FLAG)
+				SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+				SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+			ENDIF(CXX_HAS_VIH_FLAG)
+		ELSE()
+			#this small set of options should work on almost all compilers
+			SET(CMAKE_CXX_FLAGS "-O0 -g")
+			SET(CMAKE_C_FLAGS "-O0 -g")
+		ENDIF()
+	ELSE()
+		SET(CMAKE_BUILD_TYPE Release)
+		SET(CMAKE_STATUS_DEBUG_SUPPORT "No")
+		IF(CMAKE_COMPILER_IS_GNUCXX)
+			#force gdb options
+			SET(CMAKE_CXX_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			SET(CMAKE_C_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			#gcc3 is still used by mingw and doesn't support this flag
+			INCLUDE(CheckCXXCompilerFlag)
+			CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
+			IF(CXX_HAS_VIH_FLAG)
+				SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+				SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+			ENDIF(CXX_HAS_VIH_FLAG)
+		ELSE()
+			#this small set of options should work on almost all compilers
+			SET(CMAKE_CXX_FLAGS "-O3")
+			SET(CMAKE_C_FLAGS "-O3")
+		ENDIF()
+	ENDIF()
+ENDIF()
 
 ###############################################################################
 #
