@@ -38,7 +38,6 @@
 #include "kvi_ircconnection.h"
 #include "kvi_tal_hbox.h"
 
-#include <QSplitter>
 #include <QToolTip>
 #include <QLabel>
 #include <QMouseEvent>
@@ -51,7 +50,7 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 {
 	g_pLinksWindowList->append(this);
 
-	m_pTopSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pTopSplitter->setObjectName("top_splitter");
 
 	// The button box on the left
@@ -71,10 +70,10 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	connect(lpConsole->context(),SIGNAL(stateChanged()),
 		this,SLOT(connectionStateChange()));
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("splitter");
 
-	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("vsplitter");
 
 	m_pListView  = new KviLinksListView(m_pVertSplitter);

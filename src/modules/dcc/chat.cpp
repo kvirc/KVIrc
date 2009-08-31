@@ -58,7 +58,6 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_tal_vbox.h"
 
-#include <QSplitter>
 #include <QEvent>
 #include <QResizeEvent>
 #include <QByteArray>
@@ -101,7 +100,7 @@ KviDccChat::KviDccChat(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 	createCryptControllerButton(m_pButtonContainer);
 #endif
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("dcc_chat_splitter");
 	m_pIrcView  = new KviIrcView(m_pSplitter,pFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));

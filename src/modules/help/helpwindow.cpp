@@ -35,7 +35,6 @@
 
 #include <QList>
 #include <QFileInfo>
-#include <QSplitter>
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QRegExp>
@@ -67,7 +66,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	}
 
 	g_pHelpWindowList->append(this);
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pHelpWidget = new KviHelpWidget(m_pSplitter,lpFrm);
 

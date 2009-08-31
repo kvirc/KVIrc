@@ -48,7 +48,6 @@
 #include <QTimer>
 #include <QPainter>
 #include <QFontMetrics>
-#include <QSplitter>
 #include <QToolTip>
 #include <QDateTime>
 #include <QByteArray>
@@ -153,11 +152,11 @@ KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
 	m_pItemList = new KviPointerList<KviChannelTreeWidgetItemData>;
 	m_pItemList->setAutoDelete(false);
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("splitter");
-	m_pTopSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pTopSplitter->setObjectName("top_splitter");
-	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("vsplitter");
 
 	KviTalHBox * pBox = new KviTalHBox(m_pTopSplitter);

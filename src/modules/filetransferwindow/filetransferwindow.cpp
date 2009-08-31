@@ -38,7 +38,6 @@
 #include "kvi_tal_hbox.h"
 #include "kvi_frame.h"
 
-#include <QSplitter>
 #include <QToolTip>
 #include <QPainter>
 #include <QMessageBox>
@@ -249,9 +248,9 @@ KviFileTransferWindow::KviFileTransferWindow(KviModuleExtensionDescriptor * d,Kv
 	m_pTimer = new QTimer(this);
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(heartbeat()));
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("transferwindow_hsplitter");
-	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("transferwindow_vsplitter");
 
 	m_pTableWidget  = new KviFileTransferWidget(m_pVertSplitter);

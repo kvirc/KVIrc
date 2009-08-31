@@ -46,7 +46,7 @@
 #include <QStringList>
 #include <QToolButton>
 
-class QSplitter;
+
 class KviConsole;
 class KviTopicWidget;
 class KviIrcMask;
@@ -177,8 +177,8 @@ public:
 	*/
 	~KviChannel();
 protected:
-	QSplitter                            * m_pTopSplitter;
-	QSplitter                            * m_pVertSplitter;
+	KviTalSplitter                       * m_pTopSplitter;
+	KviTalSplitter                       * m_pVertSplitter;
 	QToolButton                          * m_pDoubleViewButton;
 	KviWindowToolPageButton              * m_pListViewButton;
 	KviWindowToolPageButton              * m_pBanEditorButton;

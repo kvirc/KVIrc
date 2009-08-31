@@ -154,8 +154,6 @@ public:
 	/**
 	* \brief Sets the window title
 	* \param plain Plain text of caption
-	* \param xmlActive not used
-	* \param xmlInactive not used
 	* \return void
 	*/
 	void setWindowTitle(const QString & szPlain);

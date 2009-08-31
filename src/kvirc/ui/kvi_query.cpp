@@ -62,7 +62,6 @@
 #include <QDate>
 #include <QByteArray>
 #include <QPixmap>
-#include <QSplitter>
 #include <QList>
 #include <QByteArray>
 
@@ -72,7 +71,7 @@ KviQuery::KviQuery(KviFrame * lpFrm, KviConsole * lpConsole, const QString & szN
 	m_iFlags = 0;
 	connection()->registerQuery(this);
 
-	//m_pTopSplitter = new QSplitter(QSplitter::Horizontal,this,"top_splitter");
+	//m_pTopSplitter = new KviTalSplitter(QSplitter::Horizontal,this,"top_splitter");
 	m_pButtonBox = new KviTalHBox(this);
 	m_pLabel = new KviThemedLabel(m_pButtonBox,"query_label");
 	m_pLabel->setAutoHeight(1);
@@ -85,7 +84,7 @@ KviQuery::KviQuery(KviFrame * lpFrm, KviConsole * lpConsole, const QString & szN
 
 	createTextEncodingButton(m_pButtonGrid);
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));

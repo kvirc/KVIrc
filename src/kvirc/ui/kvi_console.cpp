@@ -78,7 +78,6 @@
 	#include "kvi_sslmaster.h"
 #endif
 
-#include <QSplitter>
 #include <QToolBar>
 #include <QTimer>
 #include <QMessageBox>
@@ -132,7 +131,7 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	connect(m_pAddressEdit,SIGNAL(activated(const QString & )),this,SLOT(ircUriChanged(const QString & )));
 	connect(g_pApp,SIGNAL(recentUrlsChanged()),this,SLOT(recentUrlsChanged()));
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("console_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));

@@ -38,6 +38,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_input.h"
 #include "kvi_tal_hbox.h"
+#include "kvi_tal_splitter.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// The brain-damaged MSVC compiler can't instantiate QList templates without a destructor definition
@@ -54,7 +55,6 @@
 
 class QPushButton;
 class QPixmap;
-class QSplitter;
 class QTextCodec;
 class KviFrame;
 class KviWindowListItem;
@@ -155,7 +155,7 @@ protected: // almost private: don't touch :D
 	QString                               m_szPlainTextCaption;
 	KviIrcView                          * m_pIrcView;
 	KviInput                            * m_pInput;
-	QSplitter                           * m_pSplitter;
+	KviTalSplitter                      * m_pSplitter;
 	KviTalHBox                          * m_pButtonBox;
 	unsigned long int                     m_uId;
 	QString                               m_szTextEncoding;
@@ -209,7 +209,7 @@ public:
 	// the current IRC connection (if any)
 	inline KviIrcConnection * connection();
 	// The splitter of this window: it *shouldn't* be null... but ... well.. who knows ? :D ...better check it
-	inline QSplitter * splitter(){ return m_pSplitter; };
+	inline KviTalSplitter * splitter(){ return m_pSplitter; };
 	// The window has ALWAYS a WindowList item
 	inline KviWindowListItem * windowListItem(){ return m_pWindowListItem; };
 	// The window *might* have a button container

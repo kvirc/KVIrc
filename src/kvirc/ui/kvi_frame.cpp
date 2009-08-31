@@ -800,7 +800,6 @@ void KviFrame::childConnectionUserModeChange(KviIrcConnection * c)
 	emit activeConnectionUserModeChanged();
 }
 
-
 void KviFrame::childWindowActivated(KviWindow *wnd)
 {
 	// ASSERT(m_pWinList->findRef(wnd))
@@ -814,16 +813,13 @@ void KviFrame::childWindowActivated(KviWindow *wnd)
 
 	m_pWindowList->setActiveItem(wnd->windowListItem());
 
-	
-
 	if(g_pActiveWindow->view())
 		g_pActiveWindow->view()->clearUnreaded();
 
 	emit activeWindowChanged();
-	if(bActiveContextChanged)emit{
+	if(bActiveContextChanged)
+		emit activeContextChanged();
 
-		activeContextChanged();
-	}
 	KVS_TRIGGER_EVENT_0(KviEvent_OnWindowActivated,wnd);
 }
 
@@ -1236,7 +1232,6 @@ void KviFrame::hideEvent ( QHideEvent * e)
 			{
 				hide();
 			}
-
 		}
 	}
 }

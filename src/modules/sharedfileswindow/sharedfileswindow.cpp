@@ -42,7 +42,6 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPushButton>
-#include <QSplitter>
 #include <QLayout>
 #include <QMessageBox>
 #include <QFileInfo>
@@ -212,7 +211,7 @@ KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviF
 : KviWindow(KVI_WINDOW_TYPE_TOOL,lpFrm,"shared files window",0) , KviModuleExtension(d)
 {
 	g_pSharedFilesWindow = this;
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("sharedfiles_splitter");
 
 	KviTalVBox * vbox = new KviTalVBox(m_pSplitter);

@@ -72,7 +72,6 @@
 #include <QFileInfo>
 #include <QDate>
 #include <QByteArray>
-#include <QSplitter>
 #include <QLabel>
 #include <QEvent>
 #include <QPalette>
@@ -111,7 +110,7 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	m_pButtonBox->setSpacing(0);
 	m_pButtonBox->setMargin(0);
 
-	m_pTopSplitter = new QSplitter(Qt::Horizontal,m_pButtonBox);
+	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,m_pButtonBox);
 
 	m_pButtonBox->setStretchFactor(m_pTopSplitter,1);
 
@@ -130,11 +129,11 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	createTextEncodingButton(m_pButtonContainer);
 
 	// Central splitter
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName(szName);
 	m_pSplitter->setOpaqueResize(false);
 	// Spitted vertially on the left
-	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setOpaqueResize(false);
 	// With the IRC view over
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
@@ -321,7 +320,6 @@ void KviChannel::loadProperties(KviConfig * cfg)
 	def.append((iWidth * 82) / 100);
 	def.append((iWidth * 18) / 100);
 	m_pSplitter->setSizes(cfg->readIntListEntry("Splitter",def));
-	//debug("SETTING DEFAULT SIZES");
 	def.clear();
 
 	def.append((iWidth * 60) / 100);

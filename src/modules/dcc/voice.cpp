@@ -43,7 +43,6 @@
 #include "kvi_tal_vbox.h"
 
 #include <QFrame>
-#include <QSplitter>
 #include <QSlider>
 #include <QToolTip>
 
@@ -645,7 +644,7 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("dcc_window_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,pFrm,this);
 

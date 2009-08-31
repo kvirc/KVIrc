@@ -310,9 +310,7 @@ void KviInputEditor::drawContents(QPainter * p)
 		int iXLeft = xPositionFromCharIndex(fm,iSelStart,TRUE);
 		int iXRight = xPositionFromCharIndex(fm,m_iSelectionEnd + 1,TRUE);
 
-//		p->setRasterOp(Qt::NotROP);
 		p->fillRect(iXLeft,frameWidth(),iXRight - iXLeft,iWidgetWidth,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
-//		p->setRasterOp(Qt::CopyROP);
 	}
 
 	// When m_bIMComposing is true, the text between m_iIMStart and m_iIMStart+m_iIMLength should be highlighted to show that this is the active
@@ -330,9 +328,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 		int iXIMSelectionLeft = xPositionFromCharIndex(fm,iIMSelectionStart,TRUE);
 		int iXIMSelectionRight = xPositionFromCharIndex(fm,iIMSelectionStart + m_iIMSelectionLength,TRUE);
-//		p->setRasterOp(Qt::NotROP);
 		p->fillRect(iXIMSelectionLeft,0,iXIMSelectionRight - iXIMSelectionLeft, iWidgetWidth,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
-//		p->setRasterOp(Qt::CopyROP);
 
 		// highlight the IM selection
 		int iIMStart = m_iIMStart;

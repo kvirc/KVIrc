@@ -39,7 +39,6 @@
 
 #include <QList>
 #include <QPixmap>
-#include <QSplitter>
 #include <QToolButton>
 #include <QFileInfo>
 #include <QDir>
@@ -69,7 +68,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	g_pLogViewWindow = this;
 //	m_pLogViewWidget = new KviLogViewWidget(this);
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pTabWidget = new QTabWidget(m_pSplitter);
 

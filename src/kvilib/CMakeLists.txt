@@ -33,6 +33,7 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_menubar.h
 	tal/kvi_tal_popupmenu.h
 	tal/kvi_tal_scrollview.h
+	tal/kvi_tal_splitter.h
 	tal/kvi_tal_tabdialog.h
 	tal/kvi_tal_tablewidget.h
 	tal/kvi_tal_textedit.h

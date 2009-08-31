@@ -37,7 +37,6 @@
 
 #include <QList>
 #include <QPixmap>
-#include <QSplitter>
 
 KviDebugWindow * KviDebugWindow::m_pInstance = 0;
 
@@ -46,7 +45,7 @@ KviDebugWindow::KviDebugWindow()
 : KviWindow(KVI_WINDOW_TYPE_DEBUG,g_pFrame,__tr2qs("Debug Messages"),0)
 {
 	m_pInstance = this;
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
 	m_pInput   = new KviInput(this,0);
