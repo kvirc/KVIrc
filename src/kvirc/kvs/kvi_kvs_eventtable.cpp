@@ -925,7 +925,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			Command name is set if the visible name differs with the actual link target(probably contains mIRC colors,etc). It is equal to the actual target name.
 			This event is triggered when an user has right clicked on an URL link in
 			the text view. The double click link action is builtin and it causes KVIrc
-			to open the URL with a browser (tipically your os default browser).[br]
+			to open the URL with a browser (tipically your OS default browser).[br]
 			This is a good place to show a [cmd]popup[/cmd] menu with some operations
 			that can be performed with the URL , like bookmarking in some way or opening
 			with a specific browser.[br]
