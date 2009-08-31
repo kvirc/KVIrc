@@ -455,7 +455,7 @@ void KviIdentityGeneralOptionsWidget::commit()
 {
 	KviOptionsWidget::commit();
 
-	if(KVI_OPTION_STRING(KviOption_stringRealname).isEmpty()) KVI_OPTION_STRING(KviOption_stringUsername)=KVI_DEFAULT_REALNAME;
+	if(KVI_OPTION_STRING(KviOption_stringRealname).isEmpty()) KVI_OPTION_STRING(KviOption_stringRealname)=KVI_DEFAULT_REALNAME;
 	if(KVI_OPTION_STRING(KviOption_stringUsername).isEmpty()) KVI_OPTION_STRING(KviOption_stringUsername)=KVI_DEFAULT_USERNAME;
 	
 	KVI_OPTION_STRING(KviOption_stringNickname2) = m_szAltNicknames[0];
