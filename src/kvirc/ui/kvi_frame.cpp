@@ -600,6 +600,8 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 					// In this situation the child will not get the focusInEvent
 					// and thus will not call out childWindowActivated() method
 					if(!isActiveWindow()) childWindowActivated(wnd);
+				} else {
+					lpC->setWindowState(lpC->windowState() | Qt::WindowMaximized);
 				}
 			} else {
 				wnd->setGeometry(rect);
@@ -608,6 +610,8 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 				{
 					wnd->show();
 					if(bMaximized)wnd->maximize();
+				} else {
+					wnd->setWindowState(wnd->windowState() | Qt::WindowMaximized);
 				}
 				wnd->youAreUndocked();
 				if(bShow)
