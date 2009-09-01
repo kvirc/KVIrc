@@ -92,7 +92,6 @@
 
 extern KVIRC_API KviServerDataBase           * g_pServerDataBase;
 extern KVIRC_API KviProxyDataBase               * g_pProxyDataBase;
-//extern KVIRC_API KviGarbageCollector            * g_pGarbageCollector;
 
 KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 #ifdef COMPILE_ON_WINDOWS
@@ -785,7 +784,7 @@ void KviConsole::outputPrivmsg(KviWindow *wnd,
 
 	if(KVI_OPTION_BOOL(KviOption_boolColorNicks))
 	{
-		if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick))
+		if(KVI_OPTION_BOOL(KviOption_boolUseSpecifiedSmartColorForOwnNick) && connection())
 		{
 			if(QString::compare(nick,connection()->userInfo()->nickName(),Qt::CaseSensitive)==0)
 			{
