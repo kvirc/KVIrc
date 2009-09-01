@@ -25,23 +25,55 @@
 //
 //=============================================================================
 
+/**
+* \file kvi_tal_splitter.h
+* \author fabio bas
+* \brief Class used to workaround a strange behaviour in QSplitter
+*/
+
 #include "kvi_settings.h"
 #include <QSplitter>
+
+/**
+* \class KviTalSplitter
+* \brief Toolkit Abstraction Layer: splitter class
+*/
 
 class KVILIB_API KviTalSplitter : public QSplitter
 {
 	Q_OBJECT
 public:
-	KviTalSplitter(Qt::Orientation orientation, QWidget * parent = 0)
-	: QSplitter(orientation, parent), bHasValidSizes(false) {};
+	/**
+	* \brief Constructs the splitter object
+	* \param orientation The orentation of the splitter: horizontal or vertical
+	* \param pParent the parent object
+	* \return KviTalSplitter
+	*/
+	KviTalSplitter(Qt::Orientation orientation, QWidget * pParent = 0)
+	: QSplitter(orientation, pParent), bHasValidSizes(false) {};
+
+	/**
+	* \brief Destroys the splitter object
+	*/
 	virtual ~KviTalSplitter() {};
-	QList<int> sizes() { return bHasValidSizes ? QSplitter::sizes() : oldSizes; };
-	void setSizes(QList<int> sizes) { oldSizes = sizes; QSplitter::setSizes(oldSizes); };
-protected:
-	virtual void showEvent(QShowEvent * event) { if(!bHasValidSizes) bHasValidSizes=true; QSplitter::showEvent(event); };
 private:
 	bool bHasValidSizes;
 	QList<int> oldSizes;
+public:
+	/**
+	* \brief Returns the list of sizes of the items contained inside the splitter
+	* \return QList<int>
+	*/
+	QList<int> sizes() { return bHasValidSizes ? QSplitter::sizes() : oldSizes; };
+
+	/**
+	* \brief Sets the initial sizes for items contained inside the splitter
+	* \param sizes The list of sizes
+	* \return void
+	*/
+	void setSizes(QList<int> sizes) { oldSizes = sizes; QSplitter::setSizes(oldSizes); };
+protected:
+	virtual void showEvent(QShowEvent * event) { if(!bHasValidSizes) bHasValidSizes=true; QSplitter::showEvent(event); };
 };
 
 #endif // _KVI_TAL_SPLITTER_H_
