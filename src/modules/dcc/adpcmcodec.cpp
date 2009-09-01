@@ -25,10 +25,10 @@
 // Copyright 1992 by Stichting Mathematisch Centrum, Amsterdam, The Netherlands.
 //                           All Rights Reserved
 //
-// Permission to use, copy, modify, and distribute this software and its 
-// documentation for any purpose and without fee is hereby granted, 
+// Permission to use, copy, modify, and distribute this software and its
+// documentation for any purpose and without fee is hereby granted,
 // provided that the above copyright notice appear in all copies and that
-// both that copyright notice and this permission notice appear in 
+// both that copyright notice and this permission notice appear in
 // supporting documentation, and that the names of Stichting Mathematisch
 // Centrum or CWI not be used in advertising or publicity pertaining to
 // distribution of the software without specific, written prior permission.
@@ -97,10 +97,10 @@ void ADPCM_compress(short indata[],char outdata[],int len,ADPCM_state *state)
 	int index;            /* Current step change index */
 	int outputbuffer = 0; /* place to keep previous 4-bit value */
 	int bufferstep;	      /* toggle between outputbuffer/output */
-	
+
 	lpOut = (signed char *)outdata;
 	lpIn  = indata;
-	
+
 	valpred = state->valprev;
 	index = state->index;
 	step = stepsizeTable[index];
@@ -113,7 +113,7 @@ void ADPCM_compress(short indata[],char outdata[],int len,ADPCM_state *state)
 		diff = val - valpred;
 		sign = (diff < 0) ? 8 : 0;
 		if(sign)diff=(-diff);
-		// Step 2 - Divide and clamp 
+		// Step 2 - Divide and clamp
 		// Note:
 		// This code *approximately* computes:
 		//    delta = diff*4/step;
@@ -147,7 +147,7 @@ void ADPCM_compress(short indata[],char outdata[],int len,ADPCM_state *state)
 		if ( valpred > 32767 )valpred = 32767;
 		else if ( valpred < -32768 )valpred = -32768;
 		// Step 5 - Assemble value, update index and step values
-		delta |= sign;	
+		delta |= sign;
 		index += indexTable[delta];
 		if ( index < 0 ) index = 0;
 		if ( index > 88 ) index = 88;
@@ -175,10 +175,10 @@ void ADPCM_uncompress(char indata[],short outdata[],int len,ADPCM_state *state)
 	int index;			/* Current step change index */
 	int inputbuffer=0;  /* place to keep next 4-bit value */
 	int bufferstep;		/* toggle between inputbuffer/input */
-	
+
 	outp = outdata;
 	inp = (signed char *)indata;
-	
+
 	valpred = state->valprev;
 	index = state->index;
 	step = stepsizeTable[index];
@@ -226,7 +226,7 @@ void ADPCM_uncompress(char indata[],short outdata[],int len,ADPCM_state *state)
 		/* Step 7 - Output value */
 		*outp++ = valpred;
 	}
-	
+
 	state->valprev = valpred;
 	state->index = index;
 }

@@ -265,7 +265,7 @@ void KviKvsEventManager::removeAllModuleAppHandlers(KviKvsModuleInterface *pIfac
 	for(unsigned int i =0;i< KVI_KVS_NUM_APP_EVENTS;i++)
 	{
 		if(!m_appEventTable[i].handlers())continue;
-	
+
 		KviPointerList<KviKvsEventHandler> l;
 		l.setAutoDelete(false);
 		for(h = m_appEventTable[i].handlers()->first();h;h = m_appEventTable[i].handlers()->next())
@@ -288,7 +288,7 @@ void KviKvsEventManager::removeAllModuleAppHandlers(KviKvsModuleInterface *pIfac
 			}
 			*/
 			// END COMPAT
-	
+
 		}
 		for(h = l.first();h;h = l.next())m_appEventTable[i].removeHandler(h);
 	}
@@ -437,7 +437,7 @@ void KviKvsEventManager::removeAllScriptRawHandlers()
 			{
 				if(e->type() == KviKvsEventHandler::Script)dl.append(e);
 			}
-			
+
 			for(e = dl.first();e;e = dl.next())
 			{
 				m_rawEventTable[i]->removeRef(e);

@@ -363,7 +363,7 @@ public:
 		}
 		return 0;
 	}
-	
+
 	/**
 	* \brief Returns the item associated to the key hKey
 	*
@@ -512,7 +512,7 @@ public:
 						return true;
 					}
 				}
-			}			
+			}
 		}
 		return false;
 	}
@@ -643,7 +643,7 @@ public:
 		}
 		return 0;
 	}
-	
+
 	/**
 	* \brief Returns the key pointed by the hash table iterator.
 	*
@@ -868,7 +868,7 @@ public:
 		}
 		return bRet;
 	}
-	
+
 	/**
 	* \brief Moves the iterator to the last element of the hash table.
 	*
@@ -936,7 +936,7 @@ public:
 		}
 		return bRet;
 	}
-	
+
 	/**
 	* \brief Moves the iterator to the next element of the hash table.
 	*
@@ -949,7 +949,7 @@ public:
 	{
 		return moveNext();
 	}
-	
+
 	/**
 	* \brief Moves the iterator to the previous element of the hash table.
 	*
@@ -1026,7 +1026,7 @@ public:
 	{
 		return m_pIterator ? m_pIterator->current()->data() : NULL;
 	}
-	
+
 	/**
 	* \brief Returs the key pointed by the iterator
 	*
@@ -1065,7 +1065,7 @@ public:
 		m_pIterator = NULL;
 		moveFirst();
 	}
-	
+
 	/**
 	* \brief Destroys the iterator
 	*/

@@ -214,7 +214,7 @@
 // |  |
 // |  +--SingleParameterIdentifier(OK)  this is $n
 // |  |                                 canEvaluateToObjectReference() = true
-// |  |  
+// |  |
 // |  +--MultipleParameterIdentifier(OK)  this is $n-[n]
 // |  |
 // |  +--CommandEvaluation(OK) this is ${ ... }
@@ -300,7 +300,7 @@
 // |  |     |  +--ExpressionBinaryOperatorEqualTo(OK) (evaluate and result ok)
 // |  |     |  |
 // |  |     |  +--ExpressionBinaryOperatorNotEqualTo(OK) (evaluate and result ok)
-// |  |     |  
+// |  |     |
 // |  |     +--ExpressionUnaryOperator(OK) (never instantiated)
 // |  |        |
 // |  |        +--ExpressionUnaryOperatorNegate(OK) (evaluate and result ok)
@@ -360,7 +360,7 @@
 //          |
 //          +--SpecialCommandDefpopupLabelLabel(OK)
 //
-// 
+//
 //
 
 

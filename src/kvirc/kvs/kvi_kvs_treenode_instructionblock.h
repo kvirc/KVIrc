@@ -46,9 +46,9 @@ public:
 	KviKvsTreeNodeInstruction * releaseFirst();
 	virtual void contextDescription(QString &szBuffer);
 	virtual void dump(const char * prefix);
-	
+
 	virtual bool execute(KviKvsRunTimeContext * c);
-	
+
 };
 
 

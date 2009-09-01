@@ -40,7 +40,7 @@ public:
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	
+
 	bool setTitle(KviKvsObjectFunctionCall *c);
 	bool title(KviKvsObjectFunctionCall *c);
 	bool setFlat(KviKvsObjectFunctionCall *c);

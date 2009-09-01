@@ -315,7 +315,7 @@ public:
 	KviStr & replaceAll(const char c,const char *str);
 	//same as above but with a string
 	KviStr & replaceAll(const char *toFind,const char *str,bool bCaseS = true);
-	
+
 	KviStr & transliterate(const char * szToFind,const char * szReplacement);
 
 	// Strips whitespace characters from beginning of this string.
@@ -446,7 +446,7 @@ public:
 	// returns an empty string...
 	// this if often useful!
 	static KviStr & emptyString();
-	
+
 	//=============================================================================
 	// Dead interface
 	//=============================================================================

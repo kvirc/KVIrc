@@ -45,10 +45,10 @@ protected:
 
 	unsigned int         m_uId; // this dcc session ID
 	QString              m_szId;
-	
+
 	KviDccWindow       * m_pDccWindow;   // 0 if it has no window
 	KviDccFileTransfer * m_pDccTransfer; // 0 if it is not a transfer
-	
+
 	bool                 m_bCreationEventTriggered;
 public:
 	// A console that this DCC is bound to (might be replaced while we wait for user acknowledge in dialogs)
@@ -57,7 +57,7 @@ public:
 
 	KviDccWindow * window() const { return m_pDccWindow; };
 	void setWindow(KviDccWindow * w){ m_pDccWindow = w; };
-	
+
 	KviDccFileTransfer * transfer() const { return m_pDccTransfer; };
 	void setTransfer(KviDccFileTransfer * t){ m_pDccTransfer = t; };
 

@@ -75,7 +75,7 @@ Requisites:
 	  [Installer packages creator; needed if you want to create an installer package for kvirc]
       Get it at http://nsis.sourceforge.net/Download ; the package you want is called "nsis-2.45-setup.exe" (version numbers may vary).
 	  Please note that the kvirc nsis script doesn't support -DCOEXISTENCE cmake flag by now, so you'll need to disable it before compiling if you want to create an installer package.
-	  
+
 Further reccomended download if you plan to develop KVIrc:
 
   - GNU Debugger (gdb) for Win32:
@@ -96,7 +96,7 @@ Then install the rest of the packages. Remember to write down the installation p
 Now you have to define some environmental variable:
 
   CMAKE_INCLUDE_PATH
-  Set it to the include subdirectories of the paths where you installed mingw, zlib and openssl. Example: 
+  Set it to the include subdirectories of the paths where you installed mingw, zlib and openssl. Example:
   C:\ZLIB\INCLUDE;C:\MINGW\INCLUDE;C:\openssl\include
 
   CMAKE_LIBRARY_PATH
@@ -164,7 +164,7 @@ Getting phonon to work with mplayer frontend
   VideoLAN: you need to use svn version; more info at http://www.videolan.org/ (untested with kvirc)
   Please note that to use the mplayer backend you have to install smplayer to C:\Program Files\SMPlayer\ . If your are using a not-english localized version of windows, you'll probably need to change the proposed path to this one during installation.
 - Get latest phonon-vlc-mplayer source from svn
-- This frontend wants to install the mingwm10.dll library in its binary output directory; you'll probably need to fit the default path in trunk/CMakelists.txt from 
+- This frontend wants to install the mingwm10.dll library in its binary output directory; you'll probably need to fit the default path in trunk/CMakelists.txt from
   install(FILES C:/mingw/bin/mingwm10.dll DESTINATION ${BIN_INSTALL_DIR})
   to the right path where you have installed mingw in your system.
 - go to /trunk/build/ and run:

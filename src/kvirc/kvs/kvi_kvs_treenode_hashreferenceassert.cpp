@@ -60,7 +60,7 @@ bool KviKvsTreeNodeHashReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObje
 	} else {
 		if(!m_pSource->evaluateReadOnly(c,pBuffer))return false;
 	}
-	
+
 	if(!pBuffer->isHash())
 	{
 		if(!pBuffer->isNothing())

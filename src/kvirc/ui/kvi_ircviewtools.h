@@ -120,5 +120,5 @@ protected:
 	virtual void mouseMoveEvent(QMouseEvent *);
 	virtual void mousePressEvent(QMouseEvent *);
 };
-	
+
 #endif //!_KVI_IRCVIEWTOOLS_H_

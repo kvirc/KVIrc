@@ -303,12 +303,12 @@ exception of the first one) but it is highly appreciated.
 - INDENT WITH TABS (the only MANDATORY rule)
 
 	Go back to the line above and read it again.
-	
+
 	INDENT, TABS.
 
 	Tabs can be assigned any number of spaces in any decent source code
 	editor.
-	
+
 	Actually 95% of the KVIrc code is indented in BSD/Allman style
 	but the K&R style is also tolerated.
 
@@ -317,7 +317,7 @@ exception of the first one) but it is highly appreciated.
 	g_*                : global variables
 	m_*                : member variables
 	no prefix          : any other scope
-	
+
 	[prefix]pName      : pointer to something named Name
 	[prefix]iName      : integer (signed) variable named Name
 	[prefix]uName      : unsigned integer
@@ -331,7 +331,7 @@ exception of the first one) but it is highly appreciated.
 	                     Do NOT name a member or global variable i.
 
 	So finally:
-	
+
 	g_pApp is a global pointer to the application object
 	m_pData is a member variable pointer to some data object
 	m_szName is a string member variable named Name
@@ -361,11 +361,11 @@ exception of the first one) but it is highly appreciated.
 	The class names start with an upper case letter. In most cases
 	there is a Kvi prefix and the rest follows the rule for function names.
 		KviApp, KviConsole, KviWindow, KviStr, KviConfig, KviUserParser ...
-	
+
 	If possible, do not use "shortcut" names.
 	Actually KviCommand is preferred over KviCmd unless the KviCmd class
 	is REALLY widely used across the source (like KviStr for example).
-	
+
 	This helps a lot in remembering the class names: with the shortcuts
 	you're often forced to open the corresponding header file to look up
 	which letters have been left off...
@@ -427,7 +427,7 @@ This is the list of the various string types used in KVIrc.
 
 (const) char *
 	The classic C null terminated string.
-	
+
 KviStr
 	The basic KVIrc string class. It has been first implemented as a hack
 	around various bugs of the original QString class (the NOT unicode one
@@ -452,7 +452,7 @@ QString
 	is not an issue, you must take care when passing QString objects between
 	concurrent threads.
 
-(const) QChar * 
+(const) QChar *
 	The array of Qt chars. This is usually obtained by callling
 	KviQString::nullTerminatedArray() which itself is a hack...
 	This array is used in some functions that were written for
@@ -628,12 +628,12 @@ KviServerParser * g_pServerParser;
 	The one and only server parser
 	Declared in "kvi_sparser.h"
 	Almost always set (critical phases at early startup and late shutdown)
-	
+
 KviFrame * g_pFrame;
 	The one and only main window
 	Declared in "kvi_frame.h"
 	Almost always set (critical phases at early startup and late shutdown)
-	
+
 KviWindow * g_pActiveWindow;
 	The one and only active window
 	Declared in "kvi_window.h"
@@ -720,7 +720,7 @@ Rule for safe text output
 -------------------------------------------------------------------------------
 
 If the format string you're going to output is not constant (i.e. it
-comes from the server) you MUST use KviWindow::outputNoFmt() instead 
+comes from the server) you MUST use KviWindow::outputNoFmt() instead
 of KviWindow::output().
 
 BAD:

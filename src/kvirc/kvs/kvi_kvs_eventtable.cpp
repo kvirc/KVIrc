@@ -268,7 +268,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			(thus, KVIrc assumes that YOU have provided the necessary output and feedback to the user).[br]
 			A common error here is to call halt and re-echo the unmodified output; [b]this
 			can cause another OnHighlight event to be triggered and create an infinite loop![/b].
-			[cmd]echoprivmsg[/cmd] [b]-n[/b] is the command you probably want. 
+			[cmd]echoprivmsg[/cmd] [b]-n[/b] is the command you probably want.
 	*/
 	EVENT("OnHighlight", \
 		"$0 = source nick\n" \

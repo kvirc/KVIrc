@@ -51,7 +51,7 @@ namespace KviMessageBox
 		QMessageBox::warning(0,"KVIrc",s);
 #endif
 	}
-	
+
 	void information(const QString &fmt,...)
 	{
 		kvi_va_list list;
@@ -65,7 +65,7 @@ namespace KviMessageBox
 		QMessageBox::information(0,"KVIrc",s);
 #endif
 	}
-	
+
 	bool yesNo(const QString &caption,const QString &fmt,...)
 	{
 		kvi_va_list list;

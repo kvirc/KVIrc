@@ -51,18 +51,18 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 	QString html_center_end = "</center>";
 
 	QGridLayout * gl = new QGridLayout(this);//,bUseServerMaskField ? 7 : 6,4,10,5);
-	
+
 	QLabel * l = new QLabel(__tr2qs_ctx("Registered NickName","options"),this);
 	gl->addWidget(l,0,0);
-	
+
 	m_pRegisteredNickEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pRegisteredNickEdit,html_center_begin + __tr2qs_ctx("Put here the nickname that you have registered with NickServ","options") + html_center_end);
 	gl->addWidget(m_pRegisteredNickEdit,0,1,1,3);
 //	gl->addMultiCellWidget(m_pRegisteredNickEdit,0,0,1,3);
-	
+
 	l = new QLabel(__tr2qs_ctx("NickServ Mask","options"),this);
 	gl->addWidget(l,1,0);
-	
+
 	m_pNickServMaskEdit = new QLineEdit(this);
 	KviTalToolTip::add(m_pNickServMaskEdit,
 		html_center_begin + __tr2qs_ctx("This is the mask that NickServ must match to be correctly identified as the NickServ service. "  \
@@ -72,7 +72,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 			"the mask <b>NickServ!*@*</b> may be safe to use in this field.","options") + html_center_end);
 	gl->addWidget(m_pNickServMaskEdit,1,1,1,3);
 //	gl->addMultiCellWidget(m_pNickServMaskEdit,1,1,1,3);
-	
+
 	l = new QLabel(__tr2qs_ctx("Message Regexp","options"),this);
 	gl->addWidget(l,2,0);
 
@@ -105,7 +105,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 	{
 		l = new QLabel(__tr2qs_ctx("Server mask","options"),this);
 		gl->addWidget(l,4,0);
-		
+
 		m_pServerMaskEdit = new QLineEdit(this);
 		KviTalToolTip::add(m_pServerMaskEdit,
 			html_center_begin + __tr2qs_ctx("This is the mask that the current server must match in order " \
@@ -138,7 +138,7 @@ KviNickServRuleEditor::KviNickServRuleEditor(QWidget * par,bool bUseServerMaskFi
 
 	gl->setColumnStretch(1,1);
 	gl->setRowStretch(bUseServerMaskField ? 5 : 4,1);
-	
+
 	setMinimumWidth(250);
 }
 
@@ -149,24 +149,24 @@ KviNickServRuleEditor::~KviNickServRuleEditor()
 bool KviNickServRuleEditor::validate()
 {
 	QString s = m_pRegisteredNickEdit->text();
-	
+
 	QString m = __tr2qs_ctx("Invalid NickServ Rule","options");
 	QString o = __tr2qs_ctx("OK","options");
-	
+
 	if(s.isEmpty())
 	{
 		QMessageBox::warning(this,m,__tr2qs_ctx("The Nickname field can't be empty!","options"),o);
 		return false;
 	}
-	
+
 	if(s.indexOf(QChar(' ')) != -1)
 	{
 		QMessageBox::warning(this,m,__tr2qs_ctx("The Nickname field can't contain spaces!","options"),o);
 		return false;
 	}
-	
+
 	s = m_pNickServMaskEdit->text();
-	
+
 	if(s.isEmpty())
 	{
 		QMessageBox::warning(this,m,__tr2qs_ctx("The NickServ mask can't be empty!<br>You must put at least * there.","options"),o);
@@ -174,7 +174,7 @@ bool KviNickServRuleEditor::validate()
 	}
 
 	s = m_pMessageRegexpEdit->text();
-	
+
 	if(s.isEmpty())
 	{
 		QMessageBox::warning(this,m,__tr2qs_ctx("The Message Regexp can't be empty!<br>You must put at least * there.","options"),o);
@@ -182,13 +182,13 @@ bool KviNickServRuleEditor::validate()
 	}
 
 	s = m_pIdentifyCommandEdit->text();
-	
+
 	if(s.isEmpty())
 	{
 		QMessageBox::warning(this,m,__tr2qs_ctx("The Identify Command can't be empty!","options"),o);
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -223,7 +223,7 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 {
 	createLayout();
 	setObjectName("nickserv_options_widget");
-	
+
 	QGridLayout * gl = layout();
 
 	KviNickServRuleSet * rs = g_pNickServRuleSet;
@@ -239,7 +239,7 @@ KviNickServOptionsWidget::KviNickServOptionsWidget(QWidget * parent)
 	m_pNickServTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pNickServTreeWidget->setAllColumnsShowFocus(true);
 	QStringList columnLabels;
-	
+
 	columnLabels.append(__tr2qs_ctx("Nickname","options"));
 	columnLabels.append(__tr2qs_ctx("Server mask","options"));
 	columnLabels.append(__tr2qs_ctx("NickServ Mask","options"));

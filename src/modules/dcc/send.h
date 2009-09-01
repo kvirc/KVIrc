@@ -192,10 +192,10 @@ private:
 	kvi_time_t               m_tTransferEndTime;
 	// cached stats
 	unsigned long            m_uTotalFileSize; // total file size to transfer
-	
+
 	unsigned int             m_uMaxBandwidth;
 	KviDccFileTransferBandwidthDialog * m_pBandwidthDialog;
-	
+
 	QTimer                 * m_pResumeTimer; // used to signal resume timeout
 public:
 	bool resumeAccepted(const char * filename,const char * port,const char *szZeroPortTag);
@@ -221,12 +221,12 @@ public:
 	virtual bool active();
 	virtual QString tipText();
 	virtual QString localFileName();
-	
+
 	bool isFileUpload(){ return m_pDescriptor->isFileUpload(); };
 
 	unsigned int averageSpeed();
 	unsigned int transferredBytes();
-	
+
 	int bandwidthLimit();
 	void setBandwidthLimit(int iVal);
 protected:

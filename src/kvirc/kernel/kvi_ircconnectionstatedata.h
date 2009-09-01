@@ -58,22 +58,22 @@ public:
 
 	bool sentQuit(){ return m_bSentQuit; };
 	void setSentQuit(){ m_bSentQuit = true; };
-	
+
 	kvi_time_t lastReceivedChannelWhoReply(){ return m_tLastReceivedChannelWhoReply; };
 	void setLastReceivedChannelWhoReply(kvi_time_t tTime){ m_tLastReceivedChannelWhoReply = tTime; };
-	
+
 	kvi_time_t lastSentChannelWhoRequest(){ return m_tLastSentChannelWhoRequest; };
-	void setLastSentChannelWhoRequest(kvi_time_t tTime){ m_tLastSentChannelWhoRequest = tTime; };	
+	void setLastSentChannelWhoRequest(kvi_time_t tTime){ m_tLastSentChannelWhoRequest = tTime; };
 
 	kvi_time_t lastReceivedWhoisReply(){ return m_tLastReceivedWhoisReply; };
 	void setLastReceivedWhoisReply(kvi_time_t tTime){ m_tLastReceivedWhoisReply = tTime; };
-	
+
 	bool simulateUnexpectedDisconnect(){ return m_bSimulateUnexpectedDisconnect; };
 	void setSimulateUnexpectedDisconnect(){ m_bSimulateUnexpectedDisconnect = true; };
 
 	unsigned int loginNickIndex(){ return m_uLoginNickIndex; };
 	void setLoginNickIndex(unsigned int uNickIdx){ m_uLoginNickIndex = uNickIdx; };
-	
+
 	const QString & commandToExecAfterConnect(){ return m_szCommandToExecAfterConnect; };
 	void setCommandToExecAfterConnect(const QString &szCmd){ m_szCommandToExecAfterConnect = szCmd; };
 };

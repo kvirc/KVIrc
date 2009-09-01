@@ -39,7 +39,7 @@
 // Default: 0
 #define KVS_PT_INT 2
 	#define KVS_PT_INTEGER 2
-	
+
 // Data type: kvs_uint_t
 // Default: 0
 #define KVS_PT_UINT 3
@@ -49,12 +49,12 @@
 // default: 0.0
 #define KVS_PT_DOUBLE 4
 	#define KVS_PT_REAL 4
-	
+
 // Data type: bool
 // default: false
 #define KVS_PT_BOOL 5
 	#define KVS_PT_BOOLEAN 5
-	
+
 // Data type: KviKvsHash *
 // default: 0
 #define KVS_PT_HASH 6

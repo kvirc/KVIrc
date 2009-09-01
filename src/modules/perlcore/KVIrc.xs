@@ -1,5 +1,5 @@
 MODULE = KVIrc		PACKAGE = KVIrc
-		
+
 void echo(text,colorset = 0,windowid = 0)
 	char * text
 	int colorset
@@ -17,7 +17,7 @@ void echo(text,colorset = 0,windowid = 0)
 			}
 			pWnd->outputNoFmt(colorset,QString::fromUtf8(text));
 		}
-		
+
 void say(text,windowid = 0)
 	char * text
 	char * windowid

@@ -174,9 +174,9 @@ KviThemeToolBarAppletsOptionsWidget::KviThemeToolBarAppletsOptionsWidget(QWidget
 : KviOptionsWidget(parent)
 {
 	createLayout();
-	
+
 	addFontSelector(0,0,0,0,__tr2qs_ctx("Font","options"),KviOption_fontIrcToolBarApplet);
-	
+
 	addColorSelector(0,1,0,1,__tr2qs_ctx("Background","options"),KviOption_colorIrcToolBarAppletBackground);
 	addColorSelector(0,2,0,2,__tr2qs_ctx("Low-Contrast Foreground","options"),KviOption_colorIrcToolBarAppletForegroundLowContrast);
 	addColorSelector(0,3,0,3,__tr2qs_ctx("Mid-Contrast Foreground","options"),KviOption_colorIrcToolBarAppletForegroundMidContrast);

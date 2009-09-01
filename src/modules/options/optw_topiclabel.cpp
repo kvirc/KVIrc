@@ -37,7 +37,7 @@ KviTopicLabelLookOptionsWidget::KviTopicLabelLookOptionsWidget(QWidget *p):KviOp
 	addColorSelector(0, 1, 0, 1, __tr2qs_ctx("Foreground color","options"), KviOption_colorLabelForeground);
 	addColorSelector(0, 2, 0, 2, __tr2qs_ctx("Background color","options"), KviOption_colorLabelBackground);
 	addPixmapSelector(0, 3, 0, 3, __tr2qs_ctx("Background image","options"), KviOption_pixmapLabelBackground);
-	
+
 	layout()->setRowStretch(3, 1);
 }
 

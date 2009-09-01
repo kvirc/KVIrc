@@ -376,7 +376,7 @@ int main(int argc,char ** argv)
 			XVisualInfo *xvi = XGetVisualInfo(dpy, VisualScreenMask |
 							VisualDepthMask |
 							VisualClassMask, &templ, &nvi);
-		
+
 			for (int i = 0; i < nvi; ++i)
 			{
 				XRenderPictFormat *format = XRenderFindVisualFormat(dpy, xvi[i].visual);

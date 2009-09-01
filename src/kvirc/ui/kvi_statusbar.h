@@ -32,7 +32,7 @@
 * \def VMARGIN Vertical margin
 * \def HMARGIN Horizontal margin
 * \def SPACING Spacing between applets
-* \def RICHTEXTLABELTRICK 
+* \def RICHTEXTLABELTRICK
 */
 
 #include "kvi_settings.h"

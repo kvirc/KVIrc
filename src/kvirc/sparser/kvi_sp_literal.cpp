@@ -1326,7 +1326,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				pOut->output(KVI_OUT_SERVERNOTICE,"[\r!s\r%Q\r]: %Q",&szNick,&szMsgText);
 			}
 			return;
-		} else {		
+		} else {
 			//UNKNOWN NOTICE TYPE
 			if(!msg->haltOutput())
 			{

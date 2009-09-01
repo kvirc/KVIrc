@@ -467,7 +467,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 	if(!remoteApp.isValid())
 	{
 			c->warning(__tr2qs("Invalid DBus interface"));
-			return false;		
+			return false;
 	}
 
 	QList<QVariant> ds;
@@ -523,7 +523,7 @@ static bool system_kvs_fnc_dbus(KviKvsModuleFunctionCall *c)
 	}
 
 	QDBusMessage reply = remoteApp.callWithArgumentList(QDBus::Block, szMethod, ds);
-	
+
 	if (reply.type() == QDBusMessage::ErrorMessage)
 	{
 		QDBusError err = reply;

@@ -98,7 +98,7 @@ private:
 	// returns 0 only in case of error
 	// starts on the first char of a buffer
 	// stops at the first null char encountered
-	KviKvsTreeNodeInstruction                * parseInstructionList(); 
+	KviKvsTreeNodeInstruction                * parseInstructionList();
 	// may return 0 (empty instruction), check error() for error conditions
 	// starts on the first character of an instruction
 	// if the first char is ';' '\n' or null it just returns 0 without error
@@ -169,11 +169,11 @@ private:
 	KviKvsTreeNodeData                       * parseHashKey();
 	// never returns 0
 	KviKvsTreeNodeConstantData               * parseHashKeyLiteralParameter();
-	
+
 	//
 	// kvi_kvs_parser_specialcommands.cpp
 	//
-	
+
 	// return 0 only in case of error
 	// starts at the leading '(' of the if command (after the switches)
 	// and stops after the end of the else block
@@ -188,12 +188,12 @@ private:
 	// returns 0 only in case of error
 	// starts at the leading '(' of the while command (after the switches)
 	// and stops after the end of the command block
-	// if the first character is not '(' then this function fails with an error	
+	// if the first character is not '(' then this function fails with an error
 	KviKvsTreeNodeCommand                    * parseSpecialCommandWhile();
 	// returns 0 only in case of error
 	// starts at the leading '(' of the while command (after the switches)
 	// and stops after the end of the command block
-	// if the first character is not '(' then this function fails with an error	
+	// if the first character is not '(' then this function fails with an error
 	KviKvsTreeNodeCommand                    * parseSpecialCommandDo();
 	// returns 0 only in case of error
 	// and stops after the end of the break command
@@ -287,7 +287,7 @@ private:
 	//
 	// kvi_kvs_parser_expression.cpp
 	//
-	
+
 	// returns 0 only in case of error
 	// starts AFTER the leading char of the expression
 	// ends afer the first terminator found

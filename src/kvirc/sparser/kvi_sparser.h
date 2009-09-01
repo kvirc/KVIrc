@@ -204,7 +204,7 @@ private:
 	void parseCommandHelp(KviIrcMessage *msg);
 	void parseCommandEndOfHelp(KviIrcMessage *msg);
 	void parseChannelHelp(KviIrcMessage *msg);
-	
+
 	void parseLiteralPing(KviIrcMessage *msg);
 	void parseLiteralJoin(KviIrcMessage *msg);
 	void parseLiteralTopic(KviIrcMessage *msg);

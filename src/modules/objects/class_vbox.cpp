@@ -34,7 +34,7 @@
 
 // Tables used in $setAlignment & $alignment
 const char * const align_tbl[] = {
-			"Left", 
+			"Left",
 			"Right",
 			"HCenter",
 			"VCenter",
@@ -82,8 +82,8 @@ const int align_cod[] = {
 		!fn: $addStretch(<stretch:integer>)
 		Adds a stretchable space with zero minimum size and stretch factor stretch to the end of this box layout.
 		!fn: $setAlignment(<flag1:string>, <flag2:string>, ...)
-		Sets the alignment for widget w to  flags, given as parameters. 
-		Valid flags are:Right,Left,Top,Bottom,HCenter,VCenter,Center  
+		Sets the alignment for widget w to  flags, given as parameters.
+		Valid flags are:Right,Left,Top,Bottom,HCenter,VCenter,Center
 */
 
 
@@ -184,7 +184,7 @@ KVSO_CLASS_FUNCTION(vbox,setAlignment)
 	int align,sum=0;
 	for ( QStringList::Iterator it = alignment.begin(); it != alignment.end(); ++it )
 		{
-		
+
 			align = 0;
 			for(unsigned int j = 0; j < align_num; j++)
 			{
@@ -198,7 +198,7 @@ KVSO_CLASS_FUNCTION(vbox,setAlignment)
 				sum = sum | align;
 			else
 				c->warning(__tr2qs_ctx("Unknown alignment: '%Q'","objects"),&(*it));
-			
+
 		}
 	if (widget()) ((KviTalHBox *)widget())->setAlignment(((QWidget *)(pObject->object())),(Qt::Alignment)sum);
 	return true;

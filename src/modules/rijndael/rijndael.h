@@ -89,7 +89,7 @@
 //#define BITSPERBLOCK        128 /* Default number of bits in a cipher block */
 #define MAX_IV_SIZE      16
 
-// We assume that unsigned int is 32 bits long.... 
+// We assume that unsigned int is 32 bits long....
 typedef unsigned char  UINT8;
 typedef unsigned int   UINT32;
 typedef unsigned short UINT16;

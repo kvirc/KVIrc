@@ -132,12 +132,12 @@ public:
 	bool isHash() const { return m_pData ? (m_pData->m_eType == KviKvsVariantData::Hash) : false; };
 	bool isBoolean() const { return m_pData ? (m_pData->m_eType == KviKvsVariantData::Boolean) : false; };
 	bool isHObject() const { return m_pData ? (m_pData->m_eType == KviKvsVariantData::HObject) : false; };
-	
+
 	bool isEmpty() const;
-	
+
 	// returns true if this variant is nothing, false, null, 0 or an empty string
 	bool isEqualToNothing() const;
-	
+
 	// evaluates Integer, Real and String rappresenting an Integer
 	bool asInteger(kvs_int_t &iVal) const;
 	// evaluates Real, Integer and String rappresenting a Real
@@ -173,14 +173,14 @@ public:
 	void copyFrom(const KviKvsVariant & v);
 	void takeFrom(KviKvsVariant * v);
 	void takeFrom(KviKvsVariant &v);
-	
+
 	void dump(const char * prefix) const;
-	
+
 	// returns -1 if this variant is greater than the other, 0 if are equal, 1 if the other is greater
 	// if bPreferNumeric is true then when comparing strings a conversion to a numeric format
 	// is first attempted.
 	int compare(const KviKvsVariant * pOther,bool bPreferNumeric = false) const;
-	
+
 	void operator = (const KviKvsVariant &v){ copyFrom(v); };
 
 	//JSON serialization

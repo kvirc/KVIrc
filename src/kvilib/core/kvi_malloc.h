@@ -35,7 +35,7 @@
 
 #ifdef COMPILE_MEMORY_PROFILE
 
-	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW) 
+	#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		#error "This stuff should be never compiled on Windows"
 	#endif
 
@@ -60,7 +60,7 @@
 		// Want to check all the pointers
 		#define kvi_malloc(__size_) kvi_safe_malloc(__size_)
 		#define kvi_realloc(__ptr_,__size_) kvi_safe_realloc((void *)__ptr_,__size_)
-	
+
 		#ifndef _KVI_MALLOC_CPP_
 			extern void outOfMemory();
 		#endif

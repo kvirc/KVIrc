@@ -103,7 +103,7 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 
 	int i = 0;
 	int iMatch = 0;
-	
+
 	KviLocale::EncodingDescription * d = KviLocale::encodingDescription(i);
 	while(d->szName)
 	{
@@ -122,11 +122,11 @@ KviSoundGeneralOptionsWidget::KviSoundGeneralOptionsWidget(QWidget * parent)
 	h = new KviTalHBox(g);
 
 	m_pWinampEncodingCombo = new QComboBox(h);
-	
+
 	m_pWinampEncodingCombo->addItem(__tr2qs_ctx("Use Language Encoding","options"));
 	i = 0;
 	iMatch = 0;
-	
+
 	d = KviLocale::encodingDescription(i);
 	while(d->szName)
 	{
@@ -253,7 +253,7 @@ void KviSoundGeneralOptionsWidget::commit()
 	KviOptionsWidget::commit();
 	KVI_OPTION_STRING(KviOption_stringSoundSystem) = m_pSoundSystemBox->currentText();
 	KVI_OPTION_STRING(KviOption_stringPreferredMediaPlayer) = m_pMediaPlayerBox->currentText();
-	
+
 	int idx = m_pTagsEncodingCombo->currentIndex();
 	if(idx <= 0)
 	{
@@ -283,18 +283,18 @@ KviSoundsOptionsWidget::KviSoundsOptionsWidget(QWidget * parent)
 	createLayout();
 	addLabel(0,0,0,0,__tr2qs_ctx("New Query opened","options"));
 	addSoundSelector(1,0,1,0,"",KviOption_stringOnNewQueryOpenedSound);
-	
+
 	addLabel(0,1,0,1,__tr2qs_ctx("New message in inactive query","options"));
 	addSoundSelector(1,1,1,1,"",KviOption_stringOnQueryMessageSound);
-	
+
 	addLabel(0,2,0,2,__tr2qs_ctx("Highlighted message in inactive window","options"));
 	addSoundSelector(1,2,1,2,"",KviOption_stringOnHighlightedMessageSound);
-	
+
 	addLabel(0,3,0,3,__tr2qs_ctx("Me have been kicked","options"));
 	addSoundSelector(1,3,1,3,"",KviOption_stringOnMeKickedSound);
-	
+
 	addRowSpacer(0,4,1,4);
-	
+
 }
 
 KviSoundsOptionsWidget::~KviSoundsOptionsWidget()

@@ -2,7 +2,7 @@
 
 alias(exprtest)
 {
-	%txt = "Testing expression:" $0; 
+	%txt = "Testing expression:" $0;
 
 	%ret = ${ eval "return \$(" $0 ")"; }
 	if(%ret != $1)

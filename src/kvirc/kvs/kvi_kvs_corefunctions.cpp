@@ -41,7 +41,7 @@ namespace KviKvsCoreFunctions
 			r->proc = KVI_PTR2MEMBER(KviKvsCoreFunctions::__routine); \
 			pKern->registerCoreFunctionExecRoutine(QString(__fncName),r); \
 		}
-		
+
 		// a_f
 		_REGFNC("active",active)
 		_REGFNC("array",array)
@@ -141,7 +141,7 @@ namespace KviKvsCoreFunctions
 		KVSCF_pRetBuffer->setString(g_szStaticStrayConstantAt);
 		return true;
 	}
-	
+
 	KVSCF(mightBeStrayAtOrThis)
 	{
 		KviKvsObject * o = KVSCF_pContext->thisObject();

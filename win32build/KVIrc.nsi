@@ -29,8 +29,8 @@ Var LocalDir
 
 !define MUI_ICON ..\data\resources_win32\icon1.ico
 !define MUI_UNICON ..\data\resources_win32\icon1.ico
-!define MUI_LANGDLL_REGISTRY_ROOT "HKCU" 
-!define MUI_LANGDLL_REGISTRY_KEY "Software\KVIrc" 
+!define MUI_LANGDLL_REGISTRY_ROOT "HKCU"
+!define MUI_LANGDLL_REGISTRY_KEY "Software\KVIrc"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
 !define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\README.txt"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\kvirc.exe"
@@ -41,7 +41,7 @@ Var LocalDir
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
- 
+
 !insertmacro MUI_UNPAGE_CONFIRM
 !insertmacro MUI_UNPAGE_COMPONENTS
 !insertmacro MUI_UNPAGE_INSTFILES
@@ -103,7 +103,7 @@ Section !$(KVIrc) KVIrc_IDX
 	SectionIn RO
 	SetDetailsPrint textonly
 	DetailPrint $(KVIrcDescr)
-	SetDetailsPrint listonly 
+	SetDetailsPrint listonly
 
 	SetOutPath "$INSTDIR"
 	File release\*.*
@@ -132,10 +132,10 @@ Section !$(KVIrc) KVIrc_IDX
 	SetOutPath "$INSTDIR\themes"
 	File /r release\themes\*.*
 
-  
+
 	; Write the installation path into the registry
 	WriteRegStr HKLM SOFTWARE\KVIrc "Install_Dir" "$INSTDIR"
-  
+
 	; Write the uninstall keys for Windows
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "DisplayName" "KVIrc"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString" '"$INSTDIR\uninstall.exe"'
@@ -147,9 +147,9 @@ Section !$(KVIrc) KVIrc_IDX
 	WriteRegDWORD HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "NoRepair" 1
 
 	WriteUninstaller "uninstall.exe"
-	
+
 	ExecWait "$INSTDIR\win32registrar.exe"
-  
+
 SectionEnd
 
 ; Optional section (can be disabled by the user)
@@ -158,7 +158,7 @@ Section $(StartMenuSection) StartMenuSection_IDX
   CreateDirectory "$SMPROGRAMS\KVIrc"
   CreateShortCut "$SMPROGRAMS\KVIrc\Uninstall.lnk" "$INSTDIR\uninstall.exe" "" "$INSTDIR\uninstall.exe" 0
   CreateShortCut "$SMPROGRAMS\KVIrc\KVIrc.lnk" "$INSTDIR\KVIrc.exe" "" "$INSTDIR\KVIrc.exe" 0 "" "" $(ProgramDescription)
-  
+
 SectionEnd
 
 Section $(DesktopSection) DesktopSection_IDX
@@ -207,10 +207,10 @@ Function .onInit
 	Call CloseKVIrcInstances
 
 	ReadRegStr $R0 HKCU Software\Winamp ""
-	IfFileExists "$R0\winamp.exe" continue 0 
+	IfFileExists "$R0\winamp.exe" continue 0
 		SectionSetFlags ${WinampSection_IDX} 16 # 10000 in binary: disabled+unchecked
 continue:
-			
+
 FunctionEnd
 
 ;Function .onInstSuccess
@@ -224,7 +224,7 @@ Section !un.$(UnGeneralFiles)
   ; Remove registry keys
   DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc"
   DeleteRegKey HKLM SOFTWARE\KVIrc
-	  	
+
   ; Remove autostart entry
   Call un.RemoveAutostart
 
@@ -234,7 +234,7 @@ Section !un.$(UnGeneralFiles)
   ; Remove directories used
   RMDir "$SMPROGRAMS\KVIrc"
   RMDir /r "$INSTDIR"
-  
+
   ReadRegStr $R0 HKCU Software\Winamp ""
 	IfFileExists "$R0\Plugins\gen_kvirc.dll" 0 +2
 	  	Delete "$R0\Plugins\gen_kvirc.dll"
@@ -249,7 +249,7 @@ Section /o un.$(UnLocalData)
   ${un.WordReplace} $LocalDir "%20" " " "+" "$LocalDir"
   ${un.WordReplace} $LocalDir "/" "\" "+" "$LocalDir"
   RMDir /r "$LocalDir"
-  Delete "$PROFILE\kvirc.ini"	
+  Delete "$PROFILE\kvirc.ini"
 
 SectionEnd
 

@@ -35,23 +35,23 @@ namespace KviKvs
 	void loadAliases(const QString &szFileName);
 	void saveAliases(const QString &szFileName);
 	void clearAliases();
-	
+
 	void loadPopups(const QString &szFileName);
 	void savePopups(const QString &szFileName);
 	void clearPopups();
-	
+
 	void loadAppEvents(const QString &szFileName);
 	void saveAppEvents(const QString &szFileName);
 	void clearAppEvents();
-	
+
 	void loadRawEvents(const QString &szFileName);
 	void saveRawEvents(const QString &szFileName);
 	void clearRawEvents();
-	
+
 	void loadScriptAddons(const QString &szFileName);
 	void saveScriptAddons(const QString &szFileName);
 	void clearScriptAddons();
-	
+
 	void flushUserClasses();
 };
 

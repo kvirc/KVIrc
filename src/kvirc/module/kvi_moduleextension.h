@@ -89,7 +89,7 @@ public:
 	void setVisibleName(const KviStr &szVisibleName){ m_szVisibleName = szVisibleName; };
 	void setFlags(int iFlags){ m_iFlags = iFlags; };
 	void setIcon(const QPixmap &pix);
-	
+
 protected:
 	void registerObject(KviModuleExtension * e);
 	void unregisterObject(KviModuleExtension * e);

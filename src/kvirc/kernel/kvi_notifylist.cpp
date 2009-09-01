@@ -111,7 +111,7 @@
 		KVIrc will attempt to guess if the server you're currently using supports the WATCH command
 		and eventually use this last method.[br]
 		The WATCH method uses the "notify" property to get the nicknames that have to be
-		sent to the server in the /WATCH commands. 
+		sent to the server in the /WATCH commands.
 */
 
 // Basic NotifyListManager: this does completely nothing
@@ -166,11 +166,11 @@ void KviNotifyListManager::notifyOnLine(const QString &nick,const QString &user,
 		KviQString::sprintf(szWho,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]",&nick,&user,&host);
 	else
 		KviQString::sprintf(szWho,"\r!n\r%Q\r",&nick);
-	
+
 	KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
 	KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 	QString szNotify;
-	
+
 	while(KviRegisteredUser * u = it.current())
 	{
 		QString prop=u->getProperty("notify");
@@ -189,10 +189,10 @@ void KviNotifyListManager::notifyOnLine(const QString &nick,const QString &user,
 		++it;
 	}
 	QString szFmt = __tr2qs("%Q is on IRC");
-	
+
 	if(szMsg.isEmpty())
 		KviQString::sprintf(szMsg,szFmt,&szWho);
-	
+
 	if((!szReason.isEmpty()) && (_OUTPUT_VERBOSE))
 	{
 		szMsg += "(";
@@ -223,18 +223,18 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 	if(!KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnNotifyOffLine,out,nick))
 	{
 		QString szWho;
-			
+
 		if(!(user.isEmpty() || host.isEmpty()))
 			KviQString::sprintf(szWho,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]",&nick,&user,&host);
 		else
 			KviQString::sprintf(szWho,"\r!n\r%Q\r",&nick);
-	
+
 		QString szMsg;
-		
+
 		KviPointerHashTable<QString,KviRegisteredUser> * d = g_pRegisteredUserDataBase->userDict();
 		KviPointerHashTableIterator<QString,KviRegisteredUser> it(*d);
 		QString szNotify;
-		
+
 		while(KviRegisteredUser * u = it.current())
 		{
 			QString prop=u->getProperty("notify");
@@ -252,17 +252,17 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 			}
 			++it;
 		}
-		
+
 		if(szMsg.isEmpty())
 			KviQString::sprintf(szMsg,__tr2qs("%Q has left IRC"),&szWho);
-	
+
 		if((!szReason.isEmpty()) && (_OUTPUT_VERBOSE))
 		{
 			szMsg += "(";
 			szMsg += szReason;
 			szMsg += ")";
 		}
-	
+
 		out->outputNoFmt(KVI_OUT_NOTIFYOFFLINE,szMsg);
 	}
 
@@ -317,7 +317,7 @@ void KviNotifyListManager::notifyOffLine(const QString &nick,const QString &user
 //                                                                           buildUserhostList()                    |
 //                                                                               |                                  |
 //                                                                           m_pUserhostList->isEmpty() ? - YES --->+
-//                                                                               |                          ^^^     |  
+//                                                                               |                          ^^^     |
 //                                                                               |             (unexpected!)|||     |
 //                                                                               NO                                 |
 //                                                                               |                                  |
@@ -408,7 +408,7 @@ void KviIsOnNotifyListManager::buildRegUserDict()
 			}
 		}
 		++it;
-	}	
+	}
 }
 
 void KviIsOnNotifyListManager::delayedNotifySession()
@@ -566,7 +566,7 @@ bool KviIsOnNotifyListManager::handleIsOn(KviIrcMessage *msg)
 	// the remaining in the IsOnList are offline
 
 	QString * s;
-	
+
 	for(s = tmplist.first();s;s = tmplist.next())
 	{
 		m_pIsOnList->removeRef(s);
@@ -822,23 +822,23 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage *msg)
 					user = "*";
 					host = nk;
 				}
-	
+
 				bool bGotIt = false;
 				QString szNick = m_pConnection->decodeText(nick.ptr());
 				QString szUser = m_pConnection->decodeText(user.ptr());
 				QString szHost = m_pConnection->decodeText(host.ptr());
-				
+
 				for(QString * s = m_pUserhostList->first();s && (!bGotIt);s = m_pUserhostList->next())
 				{
 					if(KviQString::equalCI(*s,szNick))
 					{
-						KviIrcMask * mk = new KviIrcMask(szNick,szUser,szHost);	
+						KviIrcMask * mk = new KviIrcMask(szNick,szUser,szHost);
 						tmplist.append(mk);
 						bGotIt = true;
 						m_pUserhostList->removeRef(s);
 					}
 				}
-	
+
 				if(!bGotIt)
 				{
 					// ops...not my userhost!
@@ -875,7 +875,7 @@ bool KviIsOnNotifyListManager::handleUserhost(KviIrcMessage *msg)
 				m_pConsole->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Notify list: \r!n\r%Q\r appears to have gone offline before USERHOST reply was received, will recheck in the next loop"),s);
 			m_pUserhostList->removeFirst();
 		}
-	
+
 	}
 
 	if(m_pOnlineList->isEmpty())
@@ -1243,7 +1243,7 @@ bool KviWatchNotifyListManager::handleWatchReply(KviIrcMessage *msg)
 	const char * nk = msg->safeParam(1);
 	const char * us = msg->safeParam(2);
 	const char * ho = msg->safeParam(3);
-	QString dnk = m_pConnection->decodeText(nk); 
+	QString dnk = m_pConnection->decodeText(nk);
 	QString dus = m_pConnection->decodeText(us);
 	QString dho = m_pConnection->decodeText(ho);
 

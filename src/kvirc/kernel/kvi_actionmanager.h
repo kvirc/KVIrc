@@ -48,7 +48,7 @@ protected:
 	KviPointerHashTable<QString,KviAction> * m_pActions;
 	KviPointerHashTable<QString,KviActionCategory> * m_pCategories;
 	static bool m_bCustomizingToolBars;
-	
+
 	// action categories
 	static KviActionCategory * m_pCategoryIrc;
 	static KviActionCategory * m_pCategoryGeneric;
@@ -73,11 +73,11 @@ public:
 	static KviActionCategory * categoryGUI(){ return m_pCategoryGUI; };
 	static KviActionCategory * categoryChannel(){ return m_pCategoryChannel; };
 	static KviActionCategory * categoryTools(){ return m_pCategoryTools; };
-	
+
 	KviPointerHashTable<QString,KviAction> * actions(){ return m_pActions; };
 	KviActionCategory * category(const QString &szName);
 	KviPointerHashTable<QString,KviActionCategory> * categories(){ return m_pCategories; };
-	
+
 	void killAllKvsUserActions();
 
 	static KviCustomToolBar * currentToolBar(){ return m_pCurrentToolBar; };

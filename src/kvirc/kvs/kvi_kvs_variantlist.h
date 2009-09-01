@@ -55,7 +55,7 @@ public:
 	KviKvsVariant * next(){ return m_pList->next(); };
 	KviKvsVariant * at(int iIdx){ return m_pList->at(iIdx); };
 	unsigned int count(){ return m_pList->count(); };
-	
+
 	void clear(){ m_pList->clear(); };
 
 	void append(const QString &szParam){ m_pList->append(new KviKvsVariant(szParam)); };
@@ -68,7 +68,7 @@ public:
 
 	void append(KviKvsVariant * v){ m_pList->append(v); };
 	void prepend(KviKvsVariant * v){ m_pList->prepend(v); };
-	
+
 	void setAutoDelete(bool bAutoDelete); // this is TRUE by default
 
 	void allAsString(QString &szBuffer);

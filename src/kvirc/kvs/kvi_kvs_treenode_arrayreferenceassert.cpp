@@ -61,7 +61,7 @@ bool KviKvsTreeNodeArrayReferenceAssert::evaluateReadOnlyInObjectScope(KviKvsObj
 	} else {
 		if(!m_pSource->evaluateReadOnly(c,pBuffer))return false;
 	}
-	
+
 	if(!pBuffer->isArray())
 	{
 		if(!pBuffer->isNothing())

@@ -36,7 +36,7 @@ public:
 	KviAsynchronousConnectionData();
 	~KviAsynchronousConnectionData();
 public:
-	QString            szServer; 
+	QString            szServer;
 	bool               bUseLastServerInContext; // this is checked ONLY if szServer is empty
 	kvi_u32_t          uPort;
 	bool               bPortIsOk;

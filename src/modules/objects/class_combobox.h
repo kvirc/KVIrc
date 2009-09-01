@@ -40,7 +40,7 @@ public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	
+
 	bool insertItem(KviKvsObjectFunctionCall *c);
 	bool changeItem(KviKvsObjectFunctionCall *c);
 	bool removeItem(KviKvsObjectFunctionCall *c);

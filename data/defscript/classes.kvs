@@ -7,7 +7,7 @@ class(installer,object)
 	{
 		$$->%iNumFiles = 0
 	}
-	
+
 	copyFiles($0 = source dir, $1 = file regexp, $2 = target dir)
 	{
 		if($0 == "")
@@ -15,19 +15,19 @@ class(installer,object)
 			echo "[Installer] Error: the first argument of copyFiles must be a source directory"
 			halt
 		}
-	
+
 		if($1 == "")
 		{
 			echo "[Installer] Error: the second argument of copyFiles must be a file name or file regexp"
 			halt
 		}
-	
+
 		if($2 == "")
 		{
 			echo "[Installer] Error: the third argument of copyFiles must be a destination directory"
 			halt
 		}
-	
+
 		if($file.exists($0))
 		{
 			%files[] = $file.ls($0,f,$1)
@@ -43,7 +43,7 @@ class(installer,object)
 			}
 		}
 	}
-	
+
 	generateUninstallAlias($0 = alias name)
 	{
 		%c  = "alias($0)$lf"

@@ -109,7 +109,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs_ctx("Missing class name","kvs"));
 		return false;
 	}
-	
+
 	if(szBaseClassName.isEmpty())szBaseClassName = "object";
 
 	// avoid infinite recursion in loading the base class
@@ -125,7 +125,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 		c->error(this,__tr2qs_ctx("Couln't find base class named '%Q'","kvs"),&szBaseClassName);
 		return false;
 	}
-	
+
 	// walk the inheritance tree of the base class in order to detect loops
 	KviKvsObjectClass * pClass = pBaseClass;
 	while(pClass)
@@ -137,7 +137,7 @@ bool KviKvsTreeNodeSpecialCommandClass::execute(KviKvsRunTimeContext * c)
 		}
 		pClass = pClass->parentClass();
 	}
-	
+
 	KviKvsObjectClass * pActualClass = KviKvsKernel::instance()->objectController()->lookupClass(szClassName,true);
 	if(pActualClass)
 	{

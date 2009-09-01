@@ -19,7 +19,7 @@
 // along with this program. If not, write to the Free Software Foundation,
 // Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-// Revisited by Szymon Stefanek 07 Jul 1998 (pragma at kvirc dot net) 
+// Revisited by Szymon Stefanek 07 Jul 1998 (pragma at kvirc dot net)
 // Re-revisited again on 11 Feb 1999 (pragma at kvirc dot net)
 // Updated FSF address on 07 May 2009 (ctrlaltca at libero dot it)
 
@@ -101,7 +101,7 @@
 #define RPL_STATSQLINE       217 /* [I,E,U,D] */
 #define RPL_STATSYLINE       218 /* [I,E,U,D] */
 #define RPL_ENDOFSTATS	     219 //	[I,E,U,D] */
-// #define RPL_????       220 
+// #define RPL_????       220
 #define RPL_UMODEIS          221 /* <nick> <mode>                                            [I,E,U,D] # */
 #define RPL_STATSBLINE       222 /* [E] */
 #define RPL_SQLINE_NICK      222 /* [D] */
@@ -424,8 +424,8 @@
 ///* 241 */	RPL_STATSLLINE, "%c %s * %s %d %d",
 ///* 242 */	RPL_STATSUPTIME, ":Server Up %d days, %d:%02d:%02d",
 ///* 243 */	RPL_STATSOLINE, "%c %s * %s %d %d",
-///* 244 */	RPL_STATSHLINE, "%c %s * %s %d %d", 
-///* 245 */	RPL_STATSSLINE, "%c %s * %s %d %d", 
+///* 244 */	RPL_STATSHLINE, "%c %s * %s %d %d",
+///* 245 */	RPL_STATSSLINE, "%c %s * %s %d %d",
 ///* 250 */ RPL_STATSCONN,":Highest connection count: %d (%d clients)"
 ///* 261 */	RPL_TRACELOG, "File %s %d",
 ///* 262 */	RPL_ENDOFTRACE, "%s :End of TRACE",

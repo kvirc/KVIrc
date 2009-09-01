@@ -90,7 +90,7 @@ KviSplashScreen::KviSplashScreen()
 			// dummy image
 			pix = new QPixmap(300,200);
 		}
-		
+
 		if(g_pApp->findImage(szPix,"kvi_splash_overlay.png"))
 		{
 			m_pOverlay = new QPixmap(szPix);
@@ -98,7 +98,7 @@ KviSplashScreen::KviSplashScreen()
 			m_pOverlay = new QPixmap(300,20);
 		}
 	}
-	
+
 	setPixmap(*pix);
 	m_pTimer = new QTimer(this);
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(suicide()));

@@ -39,7 +39,7 @@
 // 1 : Common activity
 // 2 : People talking
 // 3 : Response messages (whois , dns)
-// 4 : 
+// 4 :
 // 5 : Highlighted text
 
 // FIXME: Check the message ranges!!!

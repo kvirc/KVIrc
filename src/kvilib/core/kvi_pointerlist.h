@@ -210,7 +210,7 @@ public:
 		m_pNode = m_pList->m_pHead;
 		return m_pNode != NULL;
 	}
-	
+
 	/**
 	* \brief Moves the iterator to the last element of the list.
 	*
@@ -477,7 +477,7 @@ public:
 			{
 				// our element is greater, n->m_pData goes first
 				KviPointerListNode * pNext = n->m_pNext;
-				n->m_pPrev = m_pAux->m_pPrev; // his prev becomes 
+				n->m_pPrev = m_pAux->m_pPrev; // his prev becomes
 				n->m_pNext = m_pAux;
 				if(m_pAux->m_pPrev)
 					m_pAux->m_pPrev->m_pNext = n;
@@ -509,7 +509,7 @@ public:
 		src->m_pTail = NULL;
 		src->m_uCount = 0;
 	}
-	
+
 	/**
 	* \brief Swap the lists
 	* \param src The list to swap with
@@ -549,7 +549,7 @@ public:
 
 		do {
 			carry.grabFirstAndPrepend(this);
-			
+
 			for(counter = &tmp[0];counter != fill && !counter->isEmpty();++counter)
 			{
 				counter->merge(&carry);

@@ -41,7 +41,7 @@ protected:
 public:
 	virtual void contextDescription(QString &szBuffer);
 	virtual void dump(const char * prefix);
-	
+
 	virtual bool canEvaluateToObjectReference();
 	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
 };

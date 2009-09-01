@@ -50,12 +50,12 @@ bool KviKvsTreeNodeCompositeData::evaluateReadOnly(KviKvsRunTimeContext * c,KviK
 	QString * pS = new QString();
 
 	pBuffer->setString(pS);
-	
+
 	KviKvsVariant res;
 
 	// we need to use an iterator to accomodate recursion
 	KviPointerListIterator<KviKvsTreeNodeData> it(*m_pSubData);
-	
+
 	while(KviKvsTreeNodeData * d = it.current())
 	{
 		if(!d->evaluateReadOnly(c,&res))return false;

@@ -81,7 +81,7 @@ static bool loadAmipDll()
 {
 	amip_dll = LoadLibrary("ac.dll");
 	if (!amip_dll) return false;
-	
+
 	MP_AC_FUNC(ac_init);
 	MP_AC_FUNC(ac_uninit);
 	MP_AC_FUNC(ac_getDestHost);
@@ -89,15 +89,15 @@ static bool loadAmipDll()
 	MP_AC_FUNC(ac_pingServer);
 	MP_AC_FUNC(ac_eval);
 	MP_AC_FUNC(ac_exec);
-	
+
 	return true;
 };
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toAscii()); 
+	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toAscii());
 	if(!c)
-		c = QTextCodec::codecForLocale(); 
+		c = QTextCodec::codecForLocale();
 	return c;
 }
 
@@ -241,7 +241,7 @@ QString KviAmipInterface::mrl()
 	else ret=fn;
 	if(!ret.startsWith("http://",Qt::CaseInsensitive))
 	ret.prepend("file://");
-	
+
 	return ret;
 }
 

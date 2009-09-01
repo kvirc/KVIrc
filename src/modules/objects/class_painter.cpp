@@ -462,7 +462,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,translate)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,reset)
 
-	
+
 
 	// ??
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setOpacity)
@@ -471,7 +471,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setSmoothPixmapTransform)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setBackGroundMode)
 
-	
+
 
 	// QPainterPath stuff
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawPath)
@@ -479,7 +479,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,pathAddText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,pathMoveTo)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,pathLineTo)
-	
+
 	// Pen
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setPenJoinStyle)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,setPenCapStyle)
@@ -1018,7 +1018,7 @@ KVSO_CLASS_FUNCTION(painter,fontMetricsHeight)
 	CHECK_INTERNAL_POINTER(m_pPainter)
 	if (m_pPainter->isActive())
 		c->returnValue()->setInteger(m_pPainter->fontMetrics().height());
-	else 
+	else
 		c->warning(__tr2qs_ctx("$fontMetricsHeight: the painter is not active!","objects"));
 	return true;
 }

@@ -153,7 +153,7 @@ namespace KviKvsCoreSimpleCommands
 		}
 
 		QStringList sl = szTokens.split(QRegExp("[, ]+"),QString::SkipEmptyParts);
-		
+
 		QByteArray szFlags;
 		QByteArray szTarget = KVSCSC_pConnection->encodeText(KVSCSC_pWindow->windowName());
 		QByteArray szMessage;

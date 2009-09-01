@@ -68,9 +68,9 @@
 		virtual bool setShuffle(bool &bVal);
 		virtual KviMediaPlayerInterface::PlayerStatus status();
 	};
-	
+
 	MP_DECLARE_DESCRIPTOR(KviWinampInterface)
-	
+
 #endif //COMPILE_ON_WINDOWS
 
 #endif //!_MP_WINAMPINTERFACE_H_

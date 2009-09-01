@@ -46,7 +46,7 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 			"constraints set below. Better keep this option on. :)</center>","options"));
 
 	addBoolSelector(g,__tr2qs_ctx("Do not scale avatar if it is less than required size","options"),KviOption_boolDoNotStretchAvatars);
-	
+
 	KviUIntSelector *u = addUIntSelector(g,__tr2qs_ctx("Image width:","options"),KviOption_uintAvatarScaleWidth,0,512,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatars));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	u = addUIntSelector(g,__tr2qs_ctx("Image height:","options"),KviOption_uintAvatarScaleHeight,0,512,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatars));
@@ -55,7 +55,7 @@ KviAvatarAdvancedOptionsWidget::KviAvatarAdvancedOptionsWidget(QWidget * parent)
 	//2nd
 	g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Scaling on load (and in user tooltips)","options"));
 	b = addBoolSelector(g,__tr2qs_ctx("Scale avatar images on image load","options"),KviOption_boolScaleAvatarsOnLoad);
-	
+
 	u = addUIntSelector(g,__tr2qs_ctx("Image width:","options"),KviOption_uintScaleAvatarsOnLoadWidth,0,1280,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	u = addUIntSelector(g,__tr2qs_ctx("Image height:","options"),KviOption_uintScaleAvatarsOnLoadHeight,0,1280,80,KVI_OPTION_BOOL(KviOption_boolScaleAvatarsOnLoad));

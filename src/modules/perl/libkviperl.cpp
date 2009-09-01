@@ -77,7 +77,7 @@
 		This feature is present only if a working perl installation
 		has been found at ./configure time.[br]
 		[br]
-		
+
 		[big]Using perl from KVS[/big][br]
 		Using perl from KVIrc is really easy: just enclose
 		your perl code snippet inside [cmd]perl.begin[/cmd] and [cmd]perl.end[/cmd].
@@ -101,7 +101,7 @@
 		If you have already encountered the KVIrc's [cmd]eval[/cmd] command
 		that you probably also know how to execute a perl code snippet from a file :)[br]
 		[br]
-		
+
 		[big]Using KVS from perl[/big][br]
 		KVIrc exports several commands to the perl namespace
 		that allow you to invoke KVIrc's functions from inside the perl code snippet.[br]
@@ -119,7 +119,7 @@
 		is the equivalent of the -w option. Both &lt;colorset&gt; and &lt;windowid&gt;
 		can be omitted (in this case KVIrc will use a default colorset and the current window).[br]
 		[br]
-		
+
 		[big]Perl execution contexts[/big][br]
 		The perl code snippets are executed by the means of a perl interpreter.
 		Each perl interpreter has its own context and thus it's own variables,
@@ -170,7 +170,7 @@
 		If you just execute occasional perl code snippets and don't need to keep persistent variables
 		then just use the nameless temporary context provided by [cmd]perl.begin[/cmd]("").[br]
 		[br]
-		
+
 		[big]Passing parameters to the perl script[/big][br]
 		The easiest way to pass parameters to the perl code snippet
 		is to put them as [cmd]perl.begin[/cmd] arguments.
@@ -185,7 +185,7 @@
 		[cmd]perl.end[/cmd]
 		[/example]
 		[br]
-		
+
 		[big]Accessing the KVIrc scripting context from perl[/big][br]
 		KVIrc exposes the following functions that manipulate the
 		variables of the KVIrc's current KVS execution context.[br]
@@ -287,7 +287,7 @@
 		In this way you can write perl aliases that return values
 		without doing any variable passing equilibrism.[br]
 		[br]
-		
+
 		[big]Executing perl scripts from files[/big][br]
 		[example]
 		[cmd]alias[/cmd](perlexec)
@@ -328,7 +328,7 @@
 		[cmd]perl.end[/cmd]
 		[/example]
 		[br]
-		
+
 		[big]Curiosity[/big][br]
 		The perl support in KVIrc is implemented as a master-slave module pair.
 		The perl.* module is the master while perlcore is the slave.
@@ -453,7 +453,7 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 		ex.lArgs.append(tmp);
 	}
 	ex.bQuiet = c->switches()->find('q',"quiet");
-	
+
 	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_EXECUTE,&ex))
 	{
 		if(!c->switches()->find('q',"quiet"))
@@ -471,7 +471,7 @@ static bool perl_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	{
 		if(!c->switches()->find('q',"quiet"))
 		{
-			
+
 			if(c->switches()->find('f',"fail-on-error"))
 			{
 				c->warning(__tr2qs_ctx("Perl execution error:","perl"));
@@ -527,7 +527,7 @@ static bool perl_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	KviPerlCoreCtrlCommand_destroy ex;
 	ex.uSize = sizeof(KviPerlCoreCtrlCommand_destroy);
 	ex.szContext = szContext;
-	
+
 	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_DESTROY,&ex))
 	{
 		if(!c->switches()->find('q',"quiet"))
@@ -569,7 +569,7 @@ static bool perl_module_init(KviModule * m)
 	// register the command anyway
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"begin",perl_kvs_cmd_begin);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"destroy",perl_kvs_cmd_destroy);
-	
+
 	KVSM_REGISTER_FUNCTION(m,"isAvailable",perl_kvs_fnc_isAvailable);
 
 	// FIXME: perl.isSupported()

@@ -77,11 +77,11 @@ const char * const ssl_errors_tbl[] = {
 		This class provides a standard HTTP functionality.[br]
 	@functions:
 		!fn: <id:integer>$get(<remote_path:string>,<local_file: string>)
-		
+
 		!fn: <id:integer>$post(<remote_path:string>,<post_data:string>,<local_file: string>)
 		!fn: $abort()
 		!fn: <id:integer>$setHost(<host:string>,<remote_port:unsigned_integer>)
-		
+
 		!fn: <id:integer>$currentId()
                 !fn: $setProxy(<host:string>,<port:integer>,[<user:string>,<password:string>])
 		!fn: $setUser(<user:string>,<password:string>)

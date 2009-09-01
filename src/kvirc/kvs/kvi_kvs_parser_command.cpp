@@ -45,7 +45,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 
 	const QChar * pSecondPart = 0;
 	int iSecondPartLen = 0;
-	
+
 	bool bHasNamespaceSoMustBeAlias = false;
 
 	if(KVSP_curCharUnicode == '.')
@@ -190,12 +190,12 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 			// is this a special command ?
 
 			// Here theoretically we could also lookup special commands composed of two parts but we actually don't need it.
-			
+
 			// Looking up only the first part if there is a second part, instead,
 			// is dangerous since it may generate infinite loops (help.open vs help)
 
 			KviKvsSpecialCommandParsingRoutine * ccpr = KviKvsKernel::instance()->findSpecialCommandParsingRoutine(szIdentifier);
-		
+
 			if(ccpr)
 			{
 				cmd = (this->*(ccpr->proc))();
@@ -222,7 +222,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 
 		// is it a callback command ?
 		if(KVSP_curCharUnicode == '(')
-		{	
+		{
 			// core callback command
 			// module callback command
 			KviKvsTreeNodeDataList * dl = parseCommaSeparatedParameterList();
@@ -239,9 +239,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 				delete dl;
 				return 0;
 			}
-	
+
 			const QChar * pClbkBegin = KVSP_curCharPointer;
-	
+
 			KviKvsTreeNodeInstruction * ins = parseInstruction();
 			if(!ins)
 			{
@@ -254,13 +254,13 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 				// actually we need empty callbacks (for alias() at least)
 				// the single command implementations should take care of checking it
 				/*else {
-				
+
 					warning(pIdentifier,__tr2qs_ctx("Callback command called with an empty callback instruction","kvs"));
 					error(KVSP_curCharPointer,__tr2qs_ctx("Callback commands must have a callback instruction","kvs"));
 					if(sw)delete sw;
 					delete dl;
 					return 0;
-					
+
 				}*/
 			} else {
 				delete ins; // in fact we don't need it, it will be reparsed the first time it is called
@@ -270,15 +270,15 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 				//    The locals of this context are NOT the same as the locals
 				//    of the other context.
 			}
-	
+
 			QString szCallbackName = szIdentifier;
 			szCallbackName += " callback";
-	
+
 			QString szBlock(pClbkBegin,KVSP_curCharPointer - pClbkBegin);
 			KviCommandFormatter::bufferFromBlock(szBlock);
-	
+
 			KviKvsScript * clbk = new KviKvsScript(szCallbackName,szBlock);
-	
+
 			if(pSecondPart)
 			{
 				cmd = new KviKvsTreeNodeModuleCallbackCommand(pIdentifier,szIdentifier,QString(pSecondPart,iSecondPartLen),dl,clbk);
@@ -296,14 +296,14 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 					return 0;
 				}
 			}
-	
+
 			if(sw)
 			{
 				cmd->setSwitchList(sw);
 				// cmd becomes child of the rebinding switch
 				if(pRebindData)return new KviKvsTreeNodeRebindingSwitch(pRebindData->location(),pRebindData,cmd);
 			}
-			
+
 			return cmd;
 		}
 	}

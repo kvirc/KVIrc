@@ -77,7 +77,7 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 		{
 			QString szAll;
 			l.allAsString(szAll);
-			
+
 			if(!szAll.isEmpty())
 				szAll.prepend(" ");
 			szAll.prepend(m_szCmdName);
@@ -92,10 +92,10 @@ bool KviKvsTreeNodeAliasSimpleCommand::execute(KviKvsRunTimeContext * c)
 			szData = c->window()->connection()->encodeText(szAll);
 			if(!szData.data())
 				szData = "";
-	
+
 			if(!c->window()->connection()->sendData(szData.data()))
 				goto no_way_to_send_as_raw;
-	
+
 			c->window()->output(KVI_OUT_RAW,__tr2qs_ctx("[RAW]: %Q","kvs"),&szAll);
 			return true;
 no_way_to_send_as_raw:

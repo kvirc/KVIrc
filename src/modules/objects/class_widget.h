@@ -57,7 +57,7 @@ protected:
 	// setEnabled..
 	// ... etc
 	// so the name of the C++ function matches exactly the name of the KVS function at this point
-	
+
 	// let's also try to keep alphabetic order for the functions here.. so one can find them quickly
 
 	bool addWidgetToWrappedLayout(KviKvsObjectFunctionCall *c);
@@ -133,7 +133,7 @@ class KviKvsWidget : public QWidget
 	Q_PROPERTY(QSize sizeHint READ sizeHint)
 public:
 	KviKvsWidget(KviKvsObject_widget * ob,QWidget * par);
-		
+
 
 	virtual ~KviKvsWidget();
 protected:

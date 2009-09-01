@@ -36,7 +36,7 @@ class KviAwayOptionsWidget : public KviOptionsWidget
 public:
 	KviAwayOptionsWidget(QWidget * parent);
 	~KviAwayOptionsWidget();
-protected: 
+protected:
 	KviBoolSelector		* m_pEnableAwayNick;
 	KviBoolSelector		* m_pEnableCustomAwayNick;
 	KviStringSelector   * m_pCustomAwayNick;

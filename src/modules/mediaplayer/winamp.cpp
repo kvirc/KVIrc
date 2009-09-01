@@ -114,7 +114,7 @@ LRESULT CALLBACK WndProc(HWND hwnd,UINT message,WPARAM wParam,LPARAM lParam)
 					char * szTitle = (char *)SendMessage(hwnd,WM_USER,idx,IPC_GETPLAYLISTFILE);
 					strcpy(szBuffer,szTitle);
 					return strlen(szBuffer);
-				}				
+				}
 			} else if((lParam >= KVIRC_WM_USER_TRANSFER) && (lParam < (KVIRC_WM_USER_TRANSFER + 4096)))
 			{
 				return (LRESULT) szBuffer[lParam - KVIRC_WM_USER_TRANSFER];

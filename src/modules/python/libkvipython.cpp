@@ -106,7 +106,7 @@ static bool python_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	KviPerlCoreCtrlCommand_destroy ex;
 	ex.uSize = sizeof(KviPerlCoreCtrlCommand_destroy);
 	ex.szContext = szContext;
-	
+
 	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_DESTROY,&ex))
 	{
 		if(!c->switches()->find('q',"quiet"))
@@ -148,7 +148,7 @@ static bool python_module_init(KviModule * m)
 	// register the command anyway
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"begin",python_kvs_cmd_begin);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"destroy",python_kvs_cmd_destroy);
-	
+
 	KVSM_REGISTER_FUNCTION(m,"isAvailable",python_kvs_fnc_isAvailable);
 #ifdef COMPILE_PYTHON_SUPPORT
 	g_pPythonCoreModule = g_pModuleManager->getModule("pythoncore");

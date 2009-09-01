@@ -74,7 +74,7 @@ bool KviKvsTreeNodeModuleFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c
 		c->error(this,__tr2qs_ctx("Module function call failed: the module '%Q' doesn't export a function named '%Q'","kvs"),&m_szModuleName,&m_szFunctionName);
 		return false;
 	}
-	
+
 	KviKvsVariantList l;
 	if(!m_pParams->evaluate(c,&l))return false;
 

@@ -50,7 +50,7 @@ signals:
 
 };
 
-class KVILIB_API KviTalListWidgetItem : public QListWidgetItem 
+class KVILIB_API KviTalListWidgetItem : public QListWidgetItem
 {
 public:
 	KviTalListWidgetItem()
@@ -70,10 +70,10 @@ public:
 	KviTalListWidgetText(KviTalListWidget* listbox, const QString & text=QString());
 	KviTalListWidgetText(const QString & text=QString());
 	~KviTalListWidgetText();
-	
+
 	int height(const KviTalListWidget *) const;
 	int width(const KviTalListWidget *)  const;
-	
+
 	int rtti() const;
 	enum { RTTI = 1 };
 
@@ -93,12 +93,12 @@ public:
 	KviTalListWidgetPixmap(KviTalListWidget* listbox, const QPixmap &, const QString&);
 	KviTalListWidgetPixmap(const QPixmap &, const QString&);
 	~KviTalListWidgetPixmap();
-	
+
 	const QPixmap *pixmap() const { return &pm; }
-	
+
 	int height(const KviTalListWidget *) const;
 	int width(const KviTalListWidget *)  const;
-	
+
 	int rtti() const;
 	enum { RTTI = 2 };
 

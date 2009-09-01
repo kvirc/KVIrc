@@ -62,8 +62,8 @@ KviHighlightingOptionsWidget::KviHighlightingOptionsWidget(QWidget * parent)
 		SIGNAL(toggled(bool)),
 		addStringSelector(0,3,0,3,__tr2qs_ctx("Highlight only whole words using these word splitters:","options"),KviOption_stringWordSplitters,!KVI_OPTION_BOOL(KviOption_boolUseFullWordHighlighting)),
 		SLOT(setDisabled(bool)));
-	
-	
+
+
 	// This can be used even without Word highlighting
 	b = addBoolSelector(0,4,0,4,__tr2qs_ctx("Highlight messages containing my nickname","options"),KviOption_boolAlwaysHighlightNick);
 	mergeTip(b,__tr2qs_ctx("<center>If this option is enabled, KVIrc will highlight any user message containing your current nickname</center>","options"));

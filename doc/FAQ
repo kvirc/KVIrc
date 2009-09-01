@@ -4,7 +4,7 @@
 1.2 Why KVIrc is not totally integrated in KDE ?
 
 
-2. COMPILATION 
+2. COMPILATION
 
 2.1 I can't compile kvirc from svn, what's wrong?
 2.2 Internal Compiler Errors ?
@@ -13,7 +13,7 @@
 2.4 I got 'amarokInterface.cpp:29:31: amarokInterface.moc: No such file or directory'. Whats going wrong?
 
 
-3. INSTALLATION 
+3. INSTALLATION
 
 3.1 There is a problem during package installation/creation
      file /usr/share/services/irc.protocol from install
@@ -271,7 +271,7 @@
   is almost nothing you can do about that...
 
   UTF-8 is the best encoding we can get on IRC. Try to convince
-  other people to use it :)     
+  other people to use it :)
 
 
 4.5 I can't connect to an IPV6 server, what's wrong ?
@@ -284,7 +284,7 @@
   Is the IPV6 support enabled in your kvirc executable ?
   To find it out , try
 
-        /echo $features 
+        /echo $features
 
   in the KVIrc commandline. You should get a comma separated list of
   features compiled in the executable. If the list contains "IPv6" then
@@ -353,7 +353,7 @@
    only once in a while. If you really need to see the logs in real time
    then you can explicitly flush the log files by scripting.
    Just add a script like this to your OnKVIrcStartup event:
- 
+
    timer(flushlogfiles,30000)
    {
        foreach(%x,$window.list(all,any))
@@ -365,7 +365,7 @@
           }
        }
    }
- 
+
    The script above will flush all the log files every 30 seconds. You may
    remove the echo statement if you're annoyed by the output :)
 
@@ -390,7 +390,7 @@
   Use /server -s <servername>
   It should work also over IPV6.
   If it doesn't work then your executable might have no SSL support compiled in.
-  To find it out type 
+  To find it out type
 
        /echo $features
 
@@ -437,9 +437,9 @@
   of text transformation engines. You can access the list of the engines
   by clicking the button with the yellow lock in the upper right corner
   of the window. In the pane that will appear select "use text transformation"
-  and then choose one of the available engines. 
-  The Mircryption engine is an implementation of the mircryption protocol and 
-  supports both ECB and CBC mode. There is also a wide variety of Rijndael based encryption 
+  and then choose one of the available engines.
+  The Mircryption engine is an implementation of the mircryption protocol and
+  supports both ECB and CBC mode. There is also a wide variety of Rijndael based encryption
   engies as well as some funky other text transform tricks.
   Most of the engines will need a pair of keys to encrypt and decrypt text
   and in most cases you will use the same key for both encrypting and
@@ -496,7 +496,7 @@
   To keep the channels and queries open you just need to select the
   relative options in the "Connection" page of the options dialog
   (on unexpected disconnect: "Keep channels open" an/or "Keep queries open").
-  
+
   Then you might also select "Automatically reconnect", "Rejoin channels
   after reconnect" and "Reopen queries after reconnect" to bring your
   "dead windows" to life again :)
@@ -561,7 +561,7 @@
   When transferring files to other KVIrc clients you may also try the
   DCC RSEND protocol instead of DCC SEND. It will ask the remote end
   to listen instead.
-  
+
 -------------------------------------------------------------------------------
 6. APPAREANCE
 -------------------------------------------------------------------------------
@@ -583,13 +583,13 @@
   KVIrc should be able to detect such situations and automatically suggest the
   re-installation of the default script.
 
-6.3 Does KVIrc support Themes? 
+6.3 Does KVIrc support Themes?
 
   Yes, KVIrc has introduced a Theme Manager. You can find it in the Option dialog.
-  From there you can change the way KVIrc looks: fonts, colors, windows behaviour, 
-  icons, taskbars, and so on. 
-  Once you have changed the theme, you can export it and share with your friends, 
-  or send it to the KVIrc staff to see it published on the web site. 
+  From there you can change the way KVIrc looks: fonts, colors, windows behaviour,
+  icons, taskbars, and so on.
+  Once you have changed the theme, you can export it and share with your friends,
+  or send it to the KVIrc staff to see it published on the web site.
 
 
 6.4  I hate all that colors, what can I do about it ?

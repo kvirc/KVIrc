@@ -51,10 +51,10 @@ KviInterfaceFeaturesOptionsWidget::KviInterfaceFeaturesOptionsWidget(QWidget * p
 	m_pDisableSplash = new QCheckBox(__tr2qs_ctx("Disable splash screen","options"),this);
 	addWidgetToLayout(m_pDisableSplash,0,3,0,3);
 	m_pDisableSplash->setChecked(bDisableSplash);
-	
+
 	addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable visual effects","options"),KviOption_boolEnableVisualEffects);
 	addBoolSelector(0,5,0,5,__tr2qs_ctx("Hide Channel window tool buttons by default","options"),KviOption_boolHideWindowToolButtons);
-	
+
 	KviTalGroupBox * g = addGroupBox(0,6,0,6,Qt::Horizontal,__tr2qs_ctx("Open Dialog Window For","options"));
 	addBoolSelector(g,__tr2qs_ctx("Preferences","options"),KviOption_boolShowGeneralOptionsDialogAsToplevel);
 	addBoolSelector(g,__tr2qs_ctx("Registered Users","options"),KviOption_boolShowRegisteredUsersDialogAsToplevel);
@@ -83,7 +83,7 @@ void KviInterfaceFeaturesOptionsWidget::commit()
 		if(KviFileUtils::fileExists(szSplashDisableFile))
 			KviFileUtils::removeFile(szSplashDisableFile);
 	}
-	
+
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

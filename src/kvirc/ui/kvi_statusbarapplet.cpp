@@ -202,7 +202,7 @@ KviStatusBarApplet * CreateStatusBarAwayIndicator(KviStatusBar * pBar, KviStatus
 {
 	KviStatusBarApplet * pApplet = new KviStatusBarAwayIndicator(pBar,pDescriptor);
 	pApplet->setIndex(pBar->insertPermanentWidgetAtTheEnd(pApplet));
-	
+
 	return pApplet;
 }
 
@@ -480,7 +480,7 @@ void KviStatusBarClock::fillContextPopup(KviTalPopupMenu * p)
 	QMenu * pMenu = new QMenu(p);
 	QAction * pAction = pMenu->addAction("hh:mm:ss");
 	pAction->setData(QVariant(KviStatusBarClock::HMS));
-	
+
 	pAction = pMenu->addAction("hh:mm");
 	pAction->setData(QVariant(KviStatusBarClock::HM));
 	connect(pMenu,SIGNAL(triggered(QAction *)),this,SLOT(changeFormat(QAction *)));

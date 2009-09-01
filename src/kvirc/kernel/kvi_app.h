@@ -257,7 +257,7 @@ public:
 	void fillRecentServersPopup(KviTalPopupMenu * m);
 	void fillRecentNicknamesPopup(KviTalPopupMenu * m,KviConsole * pConsole);
 	void fillRecentChannelsPopup(KviTalPopupMenu * m,KviConsole * pConsole);
-// 
+//
 	void autoConnectToServers();
 
 	void checkSuggestRestoreDefaultScript();

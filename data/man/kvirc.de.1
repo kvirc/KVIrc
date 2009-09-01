@@ -1,4 +1,4 @@
-.TH KVIRC 1 "14/09/2008" Version 4.0.0
+.TH KVIRC 1 "02/09/2009" Version 4.0.0
 .SH NAME
 KVIrc - ein Internet-Relay-Chat-Client.
 .SH SYNOPSIS
@@ -6,7 +6,7 @@ KVIrc - ein Internet-Relay-Chat-Client.
 
 .SH BESCHREIBUNG
 .PP
-KVIrc ist ein auf der Qt-Bibliothek basierender IRC Client mit grafischer Oberfläche.
+KVIrc ist ein auf der Qt-Bibliothek basierender IRC Client mit grafischer OberflÃ¤che.
 .PP
 KVIrc stellt eine benutzerfreundliche Schnittstelle zum IRC-Protokoll (siehe \fIRFC1459\fP)
 und seinen Erweiterungen dar.
@@ -31,31 +31,31 @@ Erstelle \fI<Datei>\fP, falls sie nicht existiert.
 Eine neue KVIrc-Sitzung erzwingen, selbst wenn bereits ein laufende vorhanden ist.
 .TP 8
 .B \-e \fI<Befehle>\fP
-Wenn bereits eine KVIrc-Sitzung ausgeführt wird, führe die \fI<Befehle>\fP in dieser 
-aus, anderenfalls starte normal und führe die \fI<Befehle>\fP aus.
+Wenn bereits eine KVIrc-Sitzung ausgefÃ¼hrt wird, fÃ¼hre die \fI<Befehle>\fP in dieser
+aus, anderenfalls starte normal und fÃ¼hre die \fI<Befehle>\fP aus.
 \fI<Befehle>\fP muss ein einzelner Shell-Token sein.
 Diese Option kann mehrfach angegeben werden.
 .TP 8
 .B \-x \fI<commands>\fP
-Wenn bereits eine KVIrc-Sitzung ausgeführt wird, führe die \fI<Befehle>\fP in dieser 
+Wenn bereits eine KVIrc-Sitzung ausgefÃ¼hrt wird, fÃ¼hre die \fI<Befehle>\fP in dieser
 aus, anderenfalls tue nichts und breche ab.
-\fI<Befehle>\fP muss ein einzelner Shell-Token sein. 
+\fI<Befehle>\fP muss ein einzelner Shell-Token sein.
 Diese Option kann mehrfach angegeben werden.
 .TP 8
 .B \-r \fI<commands>\fP
-Wenn bereits eine KVIrc-Sitzung ausgeführt wird, führe \fI<Befehle>\fP in dieser aus, 
-anderenfalls starte normal (und führe \fI<Befehle>\fP NICHT aus). 
-\fI<Befehle>\fP muss ein einzelner Shell-Token sein. 
+Wenn bereits eine KVIrc-Sitzung ausgefÃ¼hrt wird, fÃ¼hre \fI<Befehle>\fP in dieser aus,
+anderenfalls starte normal (und fÃ¼hre \fI<Befehle>\fP NICHT aus).
+\fI<Befehle>\fP muss ein einzelner Shell-Token sein.
 Diese Option kann mehrfach angegeben werden.
 .TP 8
 .B \-m
-Sollte bereits eine Sitzung laufen, zeige einen darüber informierenden
+Sollte bereits eine Sitzung laufen, zeige einen darÃ¼ber informierenden
 Popup-Dialog an, anstatt die Meldung auf einer Konsole auszugeben.
 Dies ist besonders dann hilfreich, wenn KVIrc mittels eines grafischen
 Buttons in der Taskleise gestartet wird.
 .TP 8
 .B \-\-nosplash
-Den Begrüßungsbildschirm (splash screen) nicht anzeigen.
+Den BegrÃ¼ÃŸungsbildschirm (splash screen) nicht anzeigen.
 .TP 8
 .B [Server]
 Nach dem Start zu diesem Server verbinden.
@@ -68,7 +68,7 @@ Eine URL der Form
 
   irc[6]://<Server>[:<Port>][/<Kanal>[?<Passwort>]]
 
-Für jede auf der Befehlszeile angegebene URL einen neuen IRC-Kontext
+FÃ¼r jede auf der Befehlszeile angegebene URL einen neuen IRC-Kontext
 erstellen und versuchen, zu <Server> auf <Port> zu verbinden.
 Der optionale Parameter <Kanal> gibt den nach dem Verbinden automatisch zu
 betretenen Kanal an.
@@ -82,17 +82,17 @@ Wenn nicht gesetzt, wird KVIrc $LANG nutzen.
 .TP 8
 .B LANG
 Spracheinstellung.
-Falls nicht angegeben (oder falls auf »en«, »POSIX« oder »C« gesetzt), wird KVIrc die
+Falls nicht angegeben (oder falls auf Â»enÂ«, Â»POSIXÂ« oder Â»CÂ« gesetzt), wird KVIrc die
 Standardsprache (Englisch) verwenden.
 .TP 8
 
 .SH DATEIEN
 
 \fB$PREFIX\fP/share/kvirc/\fBVERSION\fP/*
-Verzeichnis welches die globalen KVIrc-Einstellungen, Module usw. enthält.
+Verzeichnis welches die globalen KVIrc-Einstellungen, Module usw. enthÃ¤lt.
 
 \fB$HOME\fP/.kvirc.rc KVIrc sucht zuerst nach dieser Datei.
-Sollte der »-c«-Parameter übergeben worden sein, wird die damit angegebene Datei
+Sollte der Â»-cÂ«-Parameter Ã¼bergeben worden sein, wird die damit angegebene Datei
 statt dieser verwandt.
 Sollte die Datei gefunden werden, wird die erste nicht leere Zeile als
 Pfadangabe zum \fILokalen KVIrc-Verzeichnis\fP interpretiert.
@@ -103,8 +103,8 @@ Setup-Modus und erlaubt die Auswahl eines neuen
 
 \fBLokales KVIrc-Verzeichnis\fP/*
 Verzeichnis, welches die lokalen (benutzerspezifischen) KVIrc-Einstellungen
-enthält.
-Ähnelt dem globalen Verzeichnis.
+enthÃ¤lt.
+Ã„hnelt dem globalen Verzeichnis.
 
 .SH SIEHE AUCH
 .BR X (1)
@@ -116,10 +116,10 @@ Permission to use, copy, modify, and distribute this software and its
 documentation for any purpose and without fee is hereby granted,
 provided that the above copyright notice appear in all copies and that
 both that copyright notice and this permission notice appear in
-supporting documentation. 
+supporting documentation.
 
-.SH VERBESSERUNGSVORSCHLÄGE UND FEHLER (BUGS)
-Alle gefundenen Bugs und Verbesserungsvorschläge sollten unter 
+.SH VERBESSERUNGSVORSCHLÃ„GE UND FEHLER (BUGS)
+Alle gefundenen Bugs und VerbesserungsvorschlÃ¤ge sollten unter
 \fI<https://svn.kvirc.de/kvirc/>\fP berichtet werden.
 
 .SH OFFIZIELLE WEBSEITE
@@ -130,8 +130,8 @@ http://www.kvirc.net
 Szymon 'Pragma' Stefanek \fI<pragma at kvirc dot net>\fP
 
 Code, Fehlerbehebungen, neue Features und vieles mehr von
-Alessandro 'Noldor@freenode' Carbone, Elvio 'HelLViS69@freenode' Basello, 
-Fabio 'CtrlAltCa@freenode' Bas, Alexey 'Alexey@freenode' Uzhva, 
+Alessandro 'Noldor@freenode' Carbone, Elvio 'HelLViS69@freenode' Basello,
+Fabio 'CtrlAltCa@freenode' Bas, Alexey 'Alexey@freenode' Uzhva,
 Voker57@freenode
 
 Alte Autoren:
@@ -139,12 +139,12 @@ Alte Autoren:
 Mit Patches, Fehlerbereinigungen, Erweiterugen und mehr von:
 [Anodine]@efnet, Till 'BuTi@ircnet' Busch, Fritz 'KNFritz@ircnet' Elfert, RAD Kade 1
 
-Mit vielen Hilfen (Bug-Suche, scharfem Nachdenken, im IRC verbrachten Nächten,
-großartigen Ideen von vielen Leuten aus dem Internet, unter anderem:
+Mit vielen Hilfen (Bug-Suche, scharfem Nachdenken, im IRC verbrachten NÃ¤chten,
+groÃŸartigen Ideen von vielen Leuten aus dem Internet, unter anderem:
 Paul 'infected@ircnet' Boehm, Olle 'Crocodile@ircnet' H\[:a]lln\[:a]s, Diablo@ircnet,
 Andrew 'Drosha@ircnet' Frolov, MalboroLi@ircnet, munehiro@ircnet
 
-Diese Übersetzung der Handbuchseite wurde von Kai Wasserbäch <debian@carbon-project.org> für das
+Diese Ãœbersetzung der Handbuchseite wurde von Kai WasserbÃ¤ch <debian@carbon-project.org> fÃ¼r das
 Debian-Projekt angefertigt, darf aber auch von anderen unter den selben Bediungen wie KVIrc
-verwandt werden. 
+verwandt werden.
 Aktualisiert von Markus Rennings <kvirc@mrmx.de>.

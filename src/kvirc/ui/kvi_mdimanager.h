@@ -212,7 +212,7 @@ protected:
 	 *  \deprecated Was used by old MDI system
 	 */
 	void childMoved(KviMdiChild * lpC);
-	
+
 	/**
 	 * \brief Open the window popup menu
 	 */

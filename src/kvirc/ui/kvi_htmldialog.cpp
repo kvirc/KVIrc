@@ -41,16 +41,16 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 		setWindowTitle("KVIrc");
 	else
 		setWindowTitle(pData->szCaption);
-		
+
 	if(!pData->pixIcon.isNull())
 		setWindowIcon(QIcon(pData->pixIcon));
 
 	QGridLayout * g = new QGridLayout(this);
-	
+
 	QLabel * l;
 	KviTextBrowser * te;
 	QPushButton * pb;
-	
+
 	int iUp = 0;
 	int iDown = 2;
 
@@ -121,7 +121,7 @@ KviHtmlDialog::KviHtmlDialog(QWidget * pParent,KviHtmlDialogData * pData)
 
 KviHtmlDialog::~KviHtmlDialog()
 {
-	
+
 }
 
 void KviHtmlDialog::button1Pressed()

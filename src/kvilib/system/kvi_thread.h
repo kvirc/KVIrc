@@ -78,7 +78,7 @@
 
 		#include <pthread.h>
 		#include <errno.h> // for EBUSY
-	
+
 		// Mutex stuff
 		#define kvi_mutex_t pthread_mutex_t
 		#define kvi_threadMutexInit(_pMutex_t) pthread_mutex_init(_pMutex_t,0)
@@ -91,23 +91,23 @@
 		}
 		// Actually unused
 		// #define kvi_threadMutexTryLock(_pMutex_t) pthread_mutex_trylock(_pMutex_t)
-	
+
 		// Thread stuff
 		#define kvi_thread_t pthread_t
-	
+
 		inline bool kvi_threadCreate(kvi_thread_t *t,void * (*start_routine)(void *),void * arg)
 		{
 			pthread_attr_t a;
 			pthread_attr_init(&a);
 			pthread_attr_setinheritsched(&a,PTHREAD_INHERIT_SCHED);
 			pthread_attr_setdetachstate(&a,PTHREAD_CREATE_DETACHED);
-	
+
 			int ret = pthread_create(t,&a,start_routine,arg);
-	
+
 			pthread_attr_destroy(&a);
 			return (ret == 0);
 		}
-	
+
 		// We don't care about exit codes at all
 		#define kvi_threadExit() pthread_exit(0)
 	#else
@@ -129,23 +129,23 @@
 			};
 			// Actually unused
 			// #define kvi_threadMutexTryLock(_pMutex_t) mutex_trylock(_pMutex_t)
-	
+
 			// Thread stuff
 			#define kvi_thread_t thread_t
-	
+
 			inline bool kvi_threadCreate(kvi_thread_t *t,void * (*start_routine)(void *),void *arg)
 			{
 				return (thr_create(0,0,start_routine,arg,THR_DETACHED,t) == 0);
 			}
-	
+
 			// We don't care about exit codes at all
 			#define kvi_threadExit() thr_exit(0)
 		#else
 // FIXME: 			#warning "Missing a decent thread implementation: we're going to fail , sorry!"
 		#endif
 	#endif
-#endif	
-	
+#endif
+
 class KVILIB_API KviMutex : public KviHeapObject
 {
 private:

@@ -96,12 +96,12 @@ void KviTrashcanLabel::heartbeat()
 	m_uFlashCount++;
 	if(m_uFlashCount % 2){
 		QPalette p = palette();
-		p.setColor(backgroundRole(),QColor(0,0,0)); 
+		p.setColor(backgroundRole(),QColor(0,0,0));
 		setPalette(p);
 	}
 	else{
 		QPalette p = palette();
-		p.setColor(backgroundRole(),m_clrOriginal); 
+		p.setColor(backgroundRole(),m_clrOriginal);
 		setPalette(p);
 	}
 	update();
@@ -133,9 +133,9 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 
 	setWindowTitle(__tr2qs_ctx("ToolBar Properties","editor"));
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR))));
-	
+
 	QGridLayout * g = new QGridLayout(this);
-	
+
 	QLabel * l = new QLabel(szText,this);
 	g->addWidget(l,0,0,1,6);
 
@@ -146,14 +146,14 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	g->addWidget(m_pLabelEdit,1,1,1,5);
 	m_pLabelEdit->setText(szLabel);
 	connect(m_pLabelEdit,SIGNAL(textChanged(const QString &)),this,SLOT(labelTextChanged(const QString &)));
-	
+
 	l = new QLabel(__tr2qs_ctx("Icon","editor") + ":",this);
 	g->addWidget(l,2,0);
-	
+
 	m_pIconEdit = new QLineEdit(this);
 	m_pIconEdit->setReadOnly(true);
 	g->addWidget(m_pIconEdit,2,1,1,4);
-	
+
 	m_pIconButton = new QPushButton(this);
 	g->addWidget(m_pIconButton,2,5,1,1);
 	connect(m_pIconButton,SIGNAL(clicked()),this,SLOT(iconButtonClicked()));
@@ -177,22 +177,22 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 	m_pAdvanced->hide();
 
 	m_pLabelEdit->setFocus();
-	
+
 	QPushButton * pb = new QPushButton(__tr2qs_ctx("OK","editor"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(okClicked()));
 	pb->setMinimumWidth(80);
 	g->addWidget(pb,4,4,1,2);
-	
+
 	pb = new QPushButton(__tr2qs_ctx("Cancel","editor"),this);
 	connect(pb,SIGNAL(clicked()),this,SLOT(reject()));
 	pb->setMinimumWidth(80);
 	g->addWidget(pb,4,3);
-	
+
 	m_pAdvancedButton = new QPushButton(__tr2qs_ctx("Advanced...","editor"),this);
 	connect(m_pAdvancedButton,SIGNAL(clicked()),this,SLOT(advancedClicked()));
 	m_pAdvancedButton->setMinimumWidth(100);
 	g->addWidget(m_pAdvancedButton,4,0,1,2);
-	
+
 	g->setRowStretch(0,1);
 	g->setColumnStretch(2,1);
 }
@@ -245,12 +245,12 @@ void KviCustomToolBarPropertiesDialog::okClicked()
 		QMessageBox::information(this,__tr2qs_ctx("Invalid ToolBar Label","editor"),__tr2qs_ctx("The ToolBar Label can't be empty!","editor"),__tr2qs_ctx("OK","editor"));
 		return;
 	}
-	
+
 	if(m_szId.isEmpty())
 	{
 		m_szId = KviCustomToolBarManager::instance()->idForNewToolBar(m_szLabel);
 	}
-	
+
 	if(KviCustomToolBarManager::instance()->find(m_szId))
 	{
 		if(m_szId != m_szOriginalId)
@@ -311,7 +311,7 @@ KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
 	QFrame * f = new QFrame(this);
 	f->setFrameStyle(QFrame::HLine | QFrame::Sunken);
 	g->addWidget(f,3,1);
-	
+
 	m_pExportToolBarButton = new QPushButton(__tr2qs_ctx("Export ToolBar","editor"),this);
 	connect(m_pExportToolBarButton,SIGNAL(clicked()),this,SLOT(exportToolBar()));
 	g->addWidget(m_pExportToolBarButton,4,1);
@@ -325,12 +325,12 @@ KviCustomizeToolBarsDialog::KviCustomizeToolBarsDialog(QWidget * p)
 
 	g->setRowStretch(5,1);
 	g->setColumnStretch(0,1);
-	
+
 	m_pDrawer->fill();
 
 	connect(KviActionManager::instance(),SIGNAL(currentToolBarChanged()),this,SLOT(currentToolBarChanged()));
 	KviActionManager::instance()->customizeToolBarsDialogCreated();
-	
+
 	currentToolBarChanged();
 
 	if(g_rectToolBarEditorDialogGeometry.y() < 5)
@@ -387,9 +387,9 @@ void KviCustomizeToolBarsDialog::exportToolBar()
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
 	szName += t->descriptor()->id();
 	szName += ".kvs";
-	
+
 	QString szFile;
-	
+
 	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
 
 	QString szCode;

@@ -100,17 +100,17 @@ void KviKvsRunTimeContext::report(bool bError,KviKvsTreeNode * pNode,const QStri
 		{
 			pCodeListing = new KviPointerList<QString>;
 			pCodeListing->setAutoDelete(true);
-	
+
 			int iLine,iCol;
-	
+
 			KviKvsReport::findLineColAndListing(m_pScript->buffer(),pNode->location(),iLine,iCol,pCodeListing);
-			
+
 			KviQString::sprintf(szLocation,__tr2qs_ctx("line %d, near character %d","kvs"),iLine,iCol);
 		}
-		
+
 		// create the call stack
 		int iFrame = 0;
-		
+
 		pCallStack = new KviPointerList<QString>;
 		pCallStack->setAutoDelete(true);
 

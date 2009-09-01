@@ -296,7 +296,7 @@ namespace KviKvsCoreFunctions
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/*
 		@doc: string
 		@type:
@@ -395,7 +395,7 @@ namespace KviKvsCoreFunctions
 		}
 
 		KviKvsVariant * v;
-		
+
 
 		if(szSwitch.length() > 1)
 		{

@@ -56,7 +56,7 @@ KviConnectionOptionsWidget::KviConnectionOptionsWidget(QWidget * parent)
 
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Rejoin channels after reconnect","options"),KviOption_boolRejoinChannelsAfterReconnect,KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to rejoin channels after a successful reconnect attempt.</center>","options"));
-	
+
 	b1 = addBoolSelector(gbox,__tr2qs_ctx("Reopen queries after reconnect","options"),KviOption_boolReopenQueriesAfterReconnect,KVI_OPTION_BOOL(KviOption_boolAutoReconnectOnUnexpectedDisconnect));
 	mergeTip(b1,__tr2qs_ctx("<center>This option will cause KVIrc to reopen query windows after a successful reconnect attempt.</center>","options"));
 
@@ -143,7 +143,7 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 	setObjectName("transport_options_widget");
 	createLayout();
 	KviUIntSelector * u;
-	
+
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Timeout Values","options"),this);
 	u = addUIntSelector(g,__tr2qs_ctx("Connect timeout:","options"),KviOption_uintIrcSocketTimeout,5,6000,60);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
@@ -157,7 +157,7 @@ KviTransportOptionsWidget::KviTransportOptionsWidget(QWidget * parent)
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 
 	g = addGroupBox(0,3,0,3,Qt::Horizontal,__tr2qs_ctx("Network Interfaces","options"));
-	
+
 	b = addBoolSelector(g,__tr2qs_ctx("Bind IPv4 connections to:","options"),KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress);
 	KviStringSelector * s = addStringSelector(g,"",KviOption_stringIPv4ConnectionBindAddress,KVI_OPTION_BOOL(KviOption_boolBindIrcIPv4ConnectionsToSpecifiedAddress));
 	connect(b,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
@@ -215,14 +215,14 @@ KviIdentOptionsWidget::KviIdentOptionsWidget(QWidget * parent)
 	}
 
 	gbox = addGroupBox(0,2,0,2,Qt::Horizontal,__tr2qs_ctx("Configuration","options"),KVI_OPTION_BOOL(KviOption_boolUseIdentService));
-	
+
 	KviBoolSelector *b = addBoolSelector(gbox,__tr2qs_ctx("Enable ident service only while connecting to server","options"),KviOption_boolUseIdentServiceOnlyOnConnect);
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
 
 	KviStringSelector * s = addStringSelector(gbox,__tr2qs_ctx("Ident username:","options"),
 		KviOption_stringIdentdUser,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),s,SLOT(setEnabled(bool)));
-	
+
 	KviUIntSelector * u = addUIntSelector(gbox,__tr2qs_ctx("Service port:","options"),
 		KviOption_uintIdentdPort,0,65535,113,KVI_OPTION_BOOL(KviOption_boolUseIdentService));
 	connect(m_pEnableIdent,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));

@@ -156,7 +156,7 @@ public:
 	* \return KviPackageWriter
 	*/
 	KviPackageWriter();
-	
+
 	/**
 	* \brief Destroys the object
 	*/
@@ -295,7 +295,7 @@ public:
 	* \return KviPackageReader
 	*/
 	KviPackageReader();
-	
+
 	/**
 	* \brief Destroys the object
 	*/

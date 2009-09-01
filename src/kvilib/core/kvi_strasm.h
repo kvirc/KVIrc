@@ -59,7 +59,7 @@ extern inline bool kvi_strEqualCS(const char * str1,const char * str2)
 	return eax;
 }
 
-extern inline bool kvi_strEqualCSN(const char * str1,const char * str2,int len)	
+extern inline bool kvi_strEqualCSN(const char * str1,const char * str2,int len)
 {
 	register bool eax;
 	__asm__ __volatile__ (
@@ -88,7 +88,7 @@ extern inline bool kvi_strEqualCSN(const char * str1,const char * str2,int len)
 // OPTIMIZATION
 // The following two functions are used to compare a variable string with one in that
 // only A-Z<->a-z case insensivity is significant.
-// For example 
+// For example
 // kvi_strEqualNoLocalCI("a string that does not contain any strange char",str2)
 // will always give the correct result
 // These will NOT work with localizable characters:

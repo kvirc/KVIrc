@@ -55,7 +55,7 @@ bool KviKvsTreeNodeAliasFunctionCall::evaluateReadOnly(KviKvsRunTimeContext * c,
 	KviKvsVariantList l;
 	if(!m_pParams->evaluate(c,&l))
 		return false;
-	
+
 	pBuffer->setNothing();
 
 	const KviKvsScript * s = KviKvsAliasManager::instance()->lookup(m_szFunctionName);

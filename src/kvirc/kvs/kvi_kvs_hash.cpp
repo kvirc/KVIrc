@@ -72,7 +72,7 @@ void KviKvsHash::serialize(QString& result)
 	{
 		if(bNeedComma)result.append(',');
 		else bNeedComma = true;
-		
+
 		tmpBuffer = it.currentKey();
 		KviKvsVariant::serializeString(tmpBuffer);
 		result.append(tmpBuffer);

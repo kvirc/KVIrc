@@ -912,7 +912,7 @@ KviIdentityProfileEditor::KviIdentityProfileEditor(QWidget * pParent)
 	connect(m_pBtnOk,SIGNAL(clicked()),this,SLOT(okPressed()));
 
 	pLayout->setColumnStretch(1,1);
-	
+
 	setMinimumWidth(250);
 }
 
@@ -961,7 +961,7 @@ void KviIdentityProfileEditor::toggleButton(const QString & szText)
 		(szText.isEmpty())
 	)
 		bEnabled = false;
-	
+
 	m_pBtnOk->setEnabled(bEnabled);
 }
 

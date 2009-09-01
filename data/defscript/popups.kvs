@@ -101,7 +101,7 @@ defpopup(ignore)
 			%:inIgnoreList = $reguser.isIgnoreEnabled(%:regName);
 			if(%:inIgnoreList) %:ignLabelText << $tr("is being ignored")
 			else %:ignLabelText << $tr("is not being ignored")
-		
+
 			%:ignLabelText << "</p>"
 		} else {
 			%:ignLabelText << $tr("is not being ignored")"</p>"
@@ -620,7 +620,7 @@ defpopup(channel)
 			}
 		}
 		separator
-		
+
 		item($tr("Configure ban mask..."),20)
 		{
 			options.edit KviChannelAdvancedOptionsWidget
@@ -685,7 +685,7 @@ defpopup(channelpopup)
 	{
 		str.toClipboard $chan.getUrl($0)
 	}
-	
+
 }
 
 defpopup(channels)
@@ -756,7 +756,7 @@ defpopup(channeltextview)
 	{
 		str.toClipboard $chan.getUrl
 	}
-	
+
 	item($tr("Clear Buffer"),121)
 	{
 		clear;
@@ -949,7 +949,7 @@ defpopup(dcc)
 	{
 		dcc.send $0
 	}
-	
+
 	item($tr("Secure send to") $0,79)
 	{
 		dcc.send -s $0
@@ -959,7 +959,7 @@ defpopup(dcc)
 	{
 		dcc.rsend -z $0
 	}
-	
+
 	item($tr("Secure Reverse Send to") $0,79)
 	{
 		dcc.rsend -z -s $0

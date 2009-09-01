@@ -35,7 +35,7 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_dockwindow)
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	
+
 	bool addWidget(KviKvsObjectFunctionCall *c);
 	bool orientation(KviKvsObjectFunctionCall *c);
 	bool setOrientation(KviKvsObjectFunctionCall *c);

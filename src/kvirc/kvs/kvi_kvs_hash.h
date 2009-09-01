@@ -55,7 +55,7 @@ public:
 	kvs_uint_t size() const { return m_pDict->count(); };
 
 	void appendAsString(QString &szBuffer) const;
-	
+
 	const KviPointerHashTable<QString,KviKvsVariant> * dict(){ return m_pDict; };
 
 	void serialize(QString& result);

@@ -72,7 +72,7 @@
 		#else
 			#define KVILIB_API __declspec(dllimport)
 		#endif
-	
+
 		#ifdef __KVIRC__
 			#define KVIRC_API __declspec(dllexport)
 		#else

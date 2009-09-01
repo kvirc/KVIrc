@@ -76,7 +76,7 @@ void KviTextIconWindow::fill()
 
 	KviPointerHashTable<QString,KviTextIcon> * pDict = g_pTextIconManager->textIconDict();
 	KviPointerHashTableIterator<QString,KviTextIcon> it(*pDict);
-	
+
 	int iCol = KVI_TEXTICON_COLUMNS;
 	QLabel* newItem;
 	while(KviTextIcon * pIcon = it.current())

@@ -39,7 +39,7 @@ class SPasteController : public QObject
 public:
 	SPasteController(KviWindow * w,int id);
 	~SPasteController();
-	
+
 	//bool pasteFileInit(KviStr * fileName);
 	bool pasteFileInit(QString &fileName);
 	bool pasteClipboardInit(void);

@@ -140,7 +140,7 @@ KviDccRenameBox::KviDccRenameBox(KviDccBroker * br,KviDccDescriptor * dcc,const 
 	//QHBoxLayout *hb = new QHBoxLayout(4);
 	QHBoxLayout *hb = new QHBoxLayout();
 	hb->setSpacing(4);
-	vb->addLayout(hb,Qt::AlignCenter);	
+	vb->addLayout(hb,Qt::AlignCenter);
 
 	QPushButton * btn = new QPushButton(__tr2qs_ctx("&Rename","dcc"),this);
 	hb->addWidget(btn);

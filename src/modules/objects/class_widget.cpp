@@ -1228,7 +1228,7 @@ KVSO_CLASS_FUNCTION(widget,setPaletteForeground)
 	}
 	else
 	{
-		QColor color;	
+		QColor color;
 		if (c->params()->count()==1)
 		{
 				if(pColArray->isString())
@@ -1239,7 +1239,7 @@ KVSO_CLASS_FUNCTION(widget,setPaletteForeground)
 					color.setNamedColor(szColor);
 					if (!color.isValid())
 					{
-						// itsn't a color name: let try with an hex triplette 
+						// itsn't a color name: let try with an hex triplette
 						color.setNamedColor("#"+szColor);
 						if (!color.isValid())
 						{
@@ -1251,7 +1251,7 @@ KVSO_CLASS_FUNCTION(widget,setPaletteForeground)
 				else {
 					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
 					return true;
-				}		
+				}
 				QPalette p = widget()->palette();
 				p.setColor(widget()->foregroundRole(), color);
 				widget()->setPalette(p);
@@ -1310,7 +1310,7 @@ KVSO_CLASS_FUNCTION(widget,setBackgroundColor)
 	}
 	else
 	{
-		QColor color;	
+		QColor color;
 		if (c->params()->count()==1)
 		{
 				if(pColArray->isString())
@@ -1321,7 +1321,7 @@ KVSO_CLASS_FUNCTION(widget,setBackgroundColor)
 					color.setNamedColor(szColor);
 					if (!color.isValid())
 					{
-						// itsn't a color name: let try with an hex triplette 
+						// itsn't a color name: let try with an hex triplette
 						color.setNamedColor("#"+szColor);
 						if (!color.isValid())
 						{
@@ -1333,7 +1333,7 @@ KVSO_CLASS_FUNCTION(widget,setBackgroundColor)
 				else {
 					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
 					return true;
-				}		
+				}
 				QPalette p = widget()->palette();
 				p.setColor(widget()->backgroundRole(), color);
 				widget()->setPalette(p);

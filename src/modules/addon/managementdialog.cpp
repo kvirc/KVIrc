@@ -125,7 +125,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	sep = new QFrame(hb);
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
-	
+
 	m_pPackButton = new QToolButton(hb);
 	m_pPackButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 	m_pPackButton->setIconSize(QSize(32,32));
@@ -162,7 +162,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	g->addWidget(m_pListWidget,1,0);
 
 	fillListView();
-	
+
 	currentChanged(0,0);
 	connect(m_pListWidget,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
 	m_pListWidget->setCurrentItem(m_pListWidget->item(0));
@@ -252,12 +252,12 @@ void KviScriptManagementDialog::uninstallScript()
 	QString txt = "<p>";
 	txt += __tr2qs("Do you really want to uninstall the addon \"%1\" ?").arg(it->addon()->visibleName());
 	txt += "</p>";
-	
+
 	if(QMessageBox::question(this,
 		__tr2qs("Confirm addon uninstallation"),txt,__tr2qs("&Yes"),__tr2qs("&No"),0,1) != 0)return;
 
 	KviKvsScriptAddonManager::instance()->unregisterAddon(it->addon()->name(),g_pActiveWindow);
-	
+
 	fillListView();
 	currentChanged(0,0);
 }
@@ -282,7 +282,7 @@ void KviScriptManagementDialog::installScript()
 		QString szCmd = "parse \"";
 		szCmd += szFileName;
 		szCmd += "\"";
-	
+
 		KviKvsScript::run(szCmd,g_pActiveWindow);
 	} else if(szFileName.endsWith(".kva")){
 		qDebug("Addon file .kva");

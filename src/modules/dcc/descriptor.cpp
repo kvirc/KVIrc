@@ -52,9 +52,9 @@ KviDccDescriptor::KviDccDescriptor(KviConsole * pConsole)
 
 	m_uId = g_uNextDescriptorId;
 	g_uNextDescriptorId++;
-	
+
 	m_szId.setNum(m_uId);
-	
+
 	if(!g_pDescriptorDict)
 	{
 		g_pDescriptorDict = new KviPointerHashTable<int,KviDccDescriptor>;
@@ -102,7 +102,7 @@ KviDccDescriptor::~KviDccDescriptor()
 		else {
 			if(!(g_pApp->windowExists(pEventWindow)))pEventWindow = g_pApp->activeConsole();
 		}
-	
+
 		if(pEventWindow)
 		{
 			// recheck it again...
@@ -150,7 +150,7 @@ KviDccDescriptor * KviDccDescriptor::find(unsigned int uId)
 void KviDccDescriptor::copyFrom(const KviDccDescriptor &src)
 {
 	m_uId = g_uNextDescriptorId;
-	g_uNextDescriptorId++;	
+	g_uNextDescriptorId++;
 	m_szId.setNum(m_uId);
 
 	if(!g_pDescriptorDict)

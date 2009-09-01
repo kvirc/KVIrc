@@ -63,7 +63,7 @@ namespace KviKvs
 	{
 		KviKvsPopupManager::instance()->load(szFileName);
 	}
-	
+
 	void savePopups(const QString &szFileName)
 	{
 		KviKvsPopupManager::instance()->save(szFileName);
@@ -78,7 +78,7 @@ namespace KviKvs
 	{
 		KviKvsAliasManager::instance()->load(szFileName);
 	}
-	
+
 	void saveAliases(const QString &szFileName)
 	{
 		KviKvsAliasManager::instance()->save(szFileName);
@@ -88,22 +88,22 @@ namespace KviKvs
 	{
 		KviKvsAliasManager::instance()->clear();
 	}
-	
+
 	void loadAppEvents(const QString &szFileName)
 	{
 		KviKvsEventManager::instance()->loadAppEvents(szFileName);
 	}
-	
+
 	void saveAppEvents(const QString &szFileName)
 	{
 		KviKvsEventManager::instance()->saveAppEvents(szFileName);
 	}
-	
+
 	void clearAppEvents()
 	{
 		KviKvsEventManager::instance()->removeAllScriptAppHandlers();
 	}
-	
+
 	void loadRawEvents(const QString &szFileName)
 	{
 		KviKvsEventManager::instance()->loadRawEvents(szFileName);
@@ -113,27 +113,27 @@ namespace KviKvs
 	{
 		KviKvsEventManager::instance()->saveRawEvents(szFileName);
 	}
-	
+
 	void clearRawEvents()
 	{
 		KviKvsEventManager::instance()->removeAllScriptRawHandlers();
 	}
-	
+
 	void loadScriptAddons(const QString &szFileName)
 	{
 		KviKvsScriptAddonManager::instance()->load(szFileName);
 	}
-	
+
 	void saveScriptAddons(const QString &szFileName)
 	{
 		KviKvsScriptAddonManager::instance()->save(szFileName);
 	}
-	
+
 	void clearScriptAddons()
 	{
 		KviKvsScriptAddonManager::instance()->clear();
 	}
-	
+
 	void flushUserClasses()
 	{
 		KviKvsKernel::instance()->objectController()->flushUserClasses();

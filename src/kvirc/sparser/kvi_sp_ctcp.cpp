@@ -1416,7 +1416,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 		pOut = KVI_OPTION_BOOL(KviOption_boolExternalMessagesToActiveWindow) ? msg->msg->console()->activeWindow() : msg->msg->console();
 	}
 
-	//see bug ticket #220 
+	//see bug ticket #220
 	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
 		szData = KviMircCntrl::stripControlBytes(szData);
 

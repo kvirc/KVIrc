@@ -57,11 +57,11 @@ private:
 	QTimer                       * m_pStartTimer;       // timer used to start the connection
 	KviDns                       * m_pProxyDns;         // the dns object for the proxy hostnames
 	KviDns                       * m_pServerDns;        // the dns object for the server hostnames
-	
+
 	char                         * m_pReadBuffer;
 	unsigned int                   m_uReadBufferLen;
 	unsigned int                   m_uReadPackets;
-	
+
 	int                            m_iLastError;
 public:
 	void start(KviIrcConnectionTarget * t);

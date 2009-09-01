@@ -68,9 +68,9 @@ protected:
 	QString m_szDate;               //< theme creation date
 	QString m_szApplication;        //< theme creation (KVIrc) version
 	QString m_szThemeEngineVersion; //< the theme engine version that saved this theme
-	
+
 	QString m_szLastError;          //< reported when some function fails
-	
+
 	QPixmap m_pixScreenshotLarge;   //< the large screenshot pixmap
 	QPixmap m_pixScreenshotMedium;  //< the medium screenshot pixmap
 	QPixmap m_pixScreenshotSmall;   //< the small screenshot pixmap
@@ -83,7 +83,7 @@ public:
 	/// save the currently defined theme configuration in the specified file
 	///
 	bool save(const QString &szThemeFileName);
-	
+
 	const QString & lastError(){ return m_szLastError; };
 	void setLastError(const QString &szLastError){ m_szLastError = szLastError; };
 	const QString & name(){ return m_szName; };

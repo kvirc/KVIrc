@@ -42,7 +42,7 @@ KviIrcMessage::KviIrcMessage(const char * message,KviIrcConnection * pConnection
 
 	//m_pcParams = new KviPointerList<QCString>;
 	//m_pcParams->setAutoDelete(true);
-	
+
 	while(*m_ptr == ' ')++m_ptr;
 	const char * allParams = m_ptr; // just to be sure
 	if(*m_ptr)

@@ -232,7 +232,7 @@
 		Now %var is unset.[br]
 		Reset it with a comma separated list of items
 		[example]
-		%var = Pragma,Diabl0,Arter|o	
+		%var = Pragma,Diabl0,Arter|o
 		%var <, MalboroLi
 		[/example]
 		%var now contains "Pragma,Diabl0,Arter|o,MalboroLi"[br]
@@ -265,7 +265,7 @@ KviKvsTreeNodeData * KviKvsParser::parseOperationRightSide(bool bPreferNumeric)
 	l->setAutoDelete(true);
 
 	const QChar * pBegin = KVSP_curCharPointer;
-	
+
 	for(;;)
 	{
 		switch(KVSP_curCharUnicode)
@@ -810,13 +810,13 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 	// t or tr or y
 	// s
 	const QChar * pBegin = KVSP_curCharPointer;
-	
+
 	while(KVSP_curCharIsLetter)KVSP_skipChar;
-	
+
 	QString szOp = QString(pBegin,KVSP_curCharPointer - pBegin).toLower();
 
 	skipSpaces();
-	
+
 	if(KVSP_curCharUnicode != '/')
 	{
 		error(KVSP_curCharPointer,__tr2qs_ctx("Found character '%q' (unicode %x) where a slash '/' was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
@@ -827,7 +827,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 
 	KviKvsTreeNodeData * pFirst = parseBindingOperationParameter();
 	if(!pFirst)return 0;
-	
+
 	if(KVSP_curCharIsEndOfCommand)
 	{
 		error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of command in binding operation, at least two slashes are missing","kvs"));
@@ -866,7 +866,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 	}
 
 	KVSP_skipChar;
-	
+
 	KviKvsTreeNodeData * pThird = parseCommandParameter();
 	if(!pThird)
 	{
@@ -879,7 +879,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 
 		pThird = new KviKvsTreeNodeConstantData(KVSP_curCharPointer,new KviKvsVariant(QString("")));
 	}
-	
+
 	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
 	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
 
@@ -892,7 +892,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseBindingOperation()
 		// regexp substitution s/szFirst/szSecond/szFlags
 		return new KviKvsTreeNodeOperationStringSubstitution(pBegin,pFirst,pSecond,pThird);
 	}
-	
+
 	error(KVSP_curCharPointer,__tr2qs_ctx("Unknown binding operation '%Q'","kvs"),&szOp);
 	return 0;
 }
@@ -902,7 +902,7 @@ KviKvsTreeNodeOperation * KviKvsParser::parseOperation()
 {
 	// find the operator
 	const QChar * pBegin = KVSP_curCharPointer;
-	
+
 	switch(KVSP_curCharUnicode)
 	{
 		case '=':

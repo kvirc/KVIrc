@@ -55,7 +55,7 @@ public:
 	virtual bool canEvaluateToObjectReference(); // no by default
 	virtual bool isFunctionCall(); // no by default
 	virtual bool canEvaluateInObjectScope(); // no by default
-	
+
 	virtual bool convertStringConstantToNumeric(); // this does nothing by default and is reimplemented only by KviKvsTreeNodeConstantData
 };
 

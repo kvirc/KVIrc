@@ -827,7 +827,7 @@ NServers=3
 5_Description=RealROOT%20Server
 6_Hostname=irc.datacomm.ch
 6_Description=Datacomm%20Server
-7_Hostname=irc.osanet.cz 
+7_Hostname=irc.osanet.cz
 7_Description=OSANET%20Server
 8_Hostname=irc.i.cz
 8_Description=ICZ%20Server
@@ -1384,6 +1384,10 @@ NServers=3
 [Spamnet]
 0_Hostname=irc.spamnet.org
 0_Description=Spamnet:%20Random%20server
+NServers=1
+[SpotChat]
+0_Hostname=irc.spotchat.org
+0_Description=SpotChat:%20Random%20server
 NServers=1
 [StarChat]
 0_Hostname=irc.starchat.net

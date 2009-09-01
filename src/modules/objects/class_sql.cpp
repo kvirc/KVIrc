@@ -424,7 +424,7 @@ KVSO_CLASS_FUNCTION(sql,queryBindValue)
         KVSO_PARAMETERS_BEGIN(c)
                 KVSO_PARAMETER("bindName",KVS_PT_STRING,0,szFieldName)
                 KVSO_PARAMETER("value",KVS_PT_VARIANT,0,v)
-        KVSO_PARAMETERS_END(c)              
+        KVSO_PARAMETERS_END(c)
         QString szType;
         v->getTypeName(szType);
         if (v->isString()|| v->isNothing())

@@ -68,7 +68,7 @@ public:
 	* \return void
 	*/
 	virtual void dump(const char * prefix);
-	
+
 	/**
 	* \brief This is the main entry point to the tree visit
 	*

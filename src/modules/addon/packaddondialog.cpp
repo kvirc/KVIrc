@@ -67,7 +67,7 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	// Welcome page
 	QWidget * pPage = new QWidget(this);
 	QGridLayout * pLayout = new QGridLayout(pPage);
-	
+
 	QLabel * pLabel = new QLabel(pPage);
 	QString szText = "<p>";
 	szText += __tr2qs_ctx("This procedure allows you to export the selected addon to a single package. It is useful when you want to distribute your addon to the public.","addon");
@@ -76,11 +76,11 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	szText += "</p><p>";
 	szText += __tr2qs_ctx("Hit the \"Next\" button to begin.","addon");
 	szText += "<p>";
-	
+
 	pLabel->setText(szText);
 	pLayout->addWidget(pLabel,0,0);
 	pLayout->setRowStretch(1,1);
-	
+
 	addPage(pPage,__tr2qs_ctx("Welcome","addon"));
 
 	setBackEnabled(pPage,false);
@@ -274,7 +274,7 @@ KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPack
 	pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs_ctx("Package Author:","addon"));
 	pLayout->addWidget(pLabel,1,0);
-	
+
 	m_pAuthorNameEdit = new QLineEdit(this);
 	m_pAuthorNameEdit->setText(szPackageAuthor);
 	pLayout->addWidget(m_pAuthorNameEdit,1,1);
@@ -282,7 +282,7 @@ KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPack
 	pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs_ctx("Package Name:","addon"));
 	pLayout->addWidget(pLabel,2,0);
-	
+
 	m_pPackageNameEdit = new QLineEdit(this);
 	m_pPackageNameEdit->setText(szPackageName);
 	pLayout->addWidget(m_pPackageNameEdit,2,1);
@@ -290,7 +290,7 @@ KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPack
 	pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs_ctx("Package Version:","addon"));
 	pLayout->addWidget(pLabel,3,0);
-	
+
 	m_pPackageVersionEdit = new QLineEdit(this);
 	m_pPackageVersionEdit->setText(szPackageVersion);
 	pLayout->addWidget(m_pPackageVersionEdit,3,1);
@@ -298,7 +298,7 @@ KviPackAddonCreateInfoPackageWidget::KviPackAddonCreateInfoPackageWidget(KviPack
 	pLabel = new QLabel(this);
 	pLabel->setText(__tr2qs_ctx("Package Description:","addon"));
 	pLayout->addWidget(pLabel,4,0);
-	
+
 	m_pPackageDescriptionEdit = new KviTalTextEdit(this);
 	m_pPackageDescriptionEdit->setBackgroundRole(QPalette::Window);
 	m_pPackageDescriptionEdit->setText(szPackageDescription);
@@ -318,7 +318,7 @@ KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDia
 	// Select installer script
 	m_pInstallPathSelector = new KviFileSelector(this,__tr2qs_ctx("Select installer script:","addon"),&szInstallPath,true,0,"*.kvs");
 	pLayout->addWidget(m_pInstallPathSelector,1,0);
-	
+
 	// Select script dir
 	m_pSourcePathSelector = new KviDirectorySelector(this,__tr2qs_ctx("Select scripts directory:","addon"),&szSourcePath,true);
 	pLayout->addWidget(m_pSourcePathSelector,2,0);

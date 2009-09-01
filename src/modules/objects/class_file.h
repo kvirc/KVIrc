@@ -47,7 +47,7 @@ public:
 	bool close(KviKvsObjectFunctionCall *c);
 	bool flush(KviKvsObjectFunctionCall *c);
 	bool size(KviKvsObjectFunctionCall *c);
-	
+
 	bool atEnd(KviKvsObjectFunctionCall *c);
 		// int QFile at() const
 	bool where(KviKvsObjectFunctionCall *c);
@@ -56,7 +56,7 @@ public:
 	bool putch(KviKvsObjectFunctionCall *c);
 	bool getch(KviKvsObjectFunctionCall *c);
 	bool unGetch(KviKvsObjectFunctionCall *c);
-	
+
 	bool readBlock(KviKvsObjectFunctionCall *c);
 	bool writeBlock(KviKvsObjectFunctionCall *c);
 

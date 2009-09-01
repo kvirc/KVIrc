@@ -47,7 +47,7 @@ public:
 		// Execute the callback only if the target window exists
 		// If this flag is not used then if the target window dies
 		// the callback is executed in another window (the associated console, if possible, otherwise the first available console)
-		OnlyIfWindowExists = 1 
+		OnlyIfWindowExists = 1
 	};
 	enum CallbackStatus {
 		// succesfull execution

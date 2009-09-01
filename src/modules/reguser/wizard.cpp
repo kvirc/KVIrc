@@ -51,9 +51,9 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 : KviTalWizard(par)
 {
 	m_pDb = db;
-	
+
 	setModal(bModal);
-	
+
 	m_bModal = bModal;
 
 	KviIrcMask mask(!startMask.isEmpty() ? startMask.toUtf8().data() : "*!*@*");
@@ -73,14 +73,14 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 
 	QFrame * f;
 
-//    resize( 490, 456 ); 
+//    resize( 490, 456 );
 	setWindowTitle(__tr2qs_ctx("User Registration Wizard - KVIrc","register"));
 	setWindowIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_LINUX)));
 
 	setSizeGripEnabled( TRUE );
 
 	m_pPage1 = new QWidget(this);
-	m_pPage1Layout = new QGridLayout(m_pPage1); 
+	m_pPage1Layout = new QGridLayout(m_pPage1);
 	m_pPage1Layout->setSpacing(4);
 	m_pPage1Layout->setMargin(8);
 
@@ -104,7 +104,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 
 
 	m_pPage2 = new QWidget(this);
-	m_pPage2Layout = new QGridLayout( m_pPage2 ); 
+	m_pPage2Layout = new QGridLayout( m_pPage2 );
 	m_pPage2Layout->setSpacing( 4 );
 	m_pPage2Layout->setMargin( 8 );
 
@@ -175,7 +175,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 
 
 	m_pPage3 = new QWidget(this);
-	m_pPage3Layout = new QGridLayout(m_pPage3); 
+	m_pPage3Layout = new QGridLayout(m_pPage3);
 	m_pPage3Layout->setSpacing(4);
 	m_pPage3Layout->setMargin(8);
 
@@ -200,7 +200,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 
 
 	m_pPage4 = new QWidget(this);
-	m_pPage4Layout = new QGridLayout(m_pPage4); 
+	m_pPage4Layout = new QGridLayout(m_pPage4);
 	m_pPage4Layout->setSpacing(4);
 	m_pPage4Layout->setMargin(8);
 
@@ -246,7 +246,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 
 
 	m_pPage5 = new QWidget(this);
-	m_pPage5Layout = new QGridLayout(m_pPage5); 
+	m_pPage5Layout = new QGridLayout(m_pPage5);
 	m_pPage5Layout->setSpacing(4);
 	m_pPage5Layout->setMargin(8);
 
@@ -375,7 +375,7 @@ void KviRegistrationWizard::accept()
 				m1.append(' ');
 			m1.append(m2);
 		}
-	
+
 		if(!m1.isEmpty())
 		{
 			u->setProperty("notify",m1);
@@ -414,7 +414,7 @@ void KviRegistrationWizard::maskChanged(const QString &)
 		setNextEnabled(m_pPage2,false);
 		return;
 	}
-	
+
 	if(tmp2.isEmpty())
 	{
 		setNextEnabled(m_pPage2,false);

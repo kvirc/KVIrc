@@ -92,7 +92,7 @@ KviActionDrawerPage::KviActionDrawerPage(QWidget * pParent, const QString & szDe
 : QWidget(pParent)
 {
 	QGridLayout * pLayout = new QGridLayout(this);
-	
+
 	QString szDesc = "<b>" + szDescription + "</b>";
 	QLabel * pLabel = new QLabel(szDesc,this);
 	pLayout->addWidget(pLabel,0,0);

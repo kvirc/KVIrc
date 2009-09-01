@@ -103,11 +103,11 @@ namespace KviKvsParameterProcessor
 				return true; // empty optional
 			}
 		}
-	
+
 		QString szError;
 		KviQString::sprintf(szError,__tr2qs_ctx("Invalid data type for parameter \"%s\"","kvs"),pFmtArray->szName);
 		szError += ": ";
-		
+
 		if(v->isString())
 		{
 			QString tmp = v->string();
@@ -130,11 +130,11 @@ namespace KviKvsParameterProcessor
 		pContext->error(szError);
 		return false;
 	}
-	
+
 	bool process(KviKvsVariantList * pVariantList,KviKvsRunTimeContext * pContext,KviKvsParameterProcessor::ParameterFormat * pFmtArray)
 	{
 		KviKvsVariant * v = pVariantList->first();
-		
+
 		while(pFmtArray->szName)
 		{
 			if(!v)

@@ -9,8 +9,8 @@
 /* Compiler settings for .\win32registrar.idl:
     Oicf, W1, Zp8, env=Win32 (32b run)
     protocol : dce , ms_ext, c_ext
-    error checks: allocation ref bounds_check enum stub_data 
-    VC __declspec() decoration level: 
+    error checks: allocation ref bounds_check enum stub_data
+    VC __declspec() decoration level:
          __declspec(uuid()), __declspec(selectany), __declspec(novtable)
          DECLSPEC_UUID(), MIDL_INTERFACE()
 */
@@ -34,7 +34,7 @@
 #pragma once
 #endif
 
-/* Forward Declarations */ 
+/* Forward Declarations */
 
 /* header files for imported files */
 #include "oaidl.h"
@@ -42,17 +42,17 @@
 
 #ifdef __cplusplus
 extern "C"{
-#endif 
+#endif
 
 void * __RPC_USER MIDL_user_allocate(size_t);
-void __RPC_USER MIDL_user_free( void * ); 
+void __RPC_USER MIDL_user_free( void * );
 
 
 #ifndef __win32registrarLib_LIBRARY_DEFINED__
 #define __win32registrarLib_LIBRARY_DEFINED__
 
 /* library win32registrarLib */
-/* [helpstring][version][uuid] */ 
+/* [helpstring][version][uuid] */
 
 
 EXTERN_C const IID LIBID_win32registrarLib;

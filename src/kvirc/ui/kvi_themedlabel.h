@@ -49,7 +49,7 @@ public:
 	QString text() { return m_szText; };
 	void setAutoHeight(bool value) { m_bAutoHeight=value; };
 	void applyOptions();
-	
+
 //	QSize sizeHint();
 signals:
 	void doubleClicked();

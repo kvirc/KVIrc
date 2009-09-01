@@ -40,12 +40,12 @@ namespace KviUserInput
 		const QChar * b = KviQString::nullTerminatedArray(szData);
 		const QChar * c = b;
 		if(!c)return true; // empty
-		
+
 		while(c->isSpace()) c++;
 
 		if(!c->unicode())
 			return true; // empty
-		
+
 		if(c->unicode() == '\\')
 		{
 			c++;
@@ -68,14 +68,14 @@ namespace KviUserInput
 
 		if(KVS_TRIGGER_EVENT_1_HALTED(KviEvent_OnTextInput,pWindow,szData))
 			return true; // halted
-		
+
 		if(c != b)
 			szData.remove(0,c-b);
 
 		parseNonCommand(szData,pWindow);
 		return true;
 	}
-	
+
 	bool parseCommand(const QString & szData, KviWindow * pWindow, const QString & szContext, bool bUserFriendlyCommandline)
 	{
 		if(bUserFriendlyCommandline)
@@ -102,7 +102,7 @@ namespace KviUserInput
 			return (kvs.run(pWindow,0,0/*,KviKvsScript::AssumeLocals*/) != KviKvsScript::Error);
 		}
 	}
-	
+
 	void parseNonCommand(QString & szData, KviWindow * pWindow)
 	{
 		const QChar * aux = KviQString::nullTerminatedArray(szData);
@@ -110,7 +110,7 @@ namespace KviUserInput
 
 		if(!beg)
 			return; // empty
-	
+
 		while(aux->unicode())
 		{
 			while(aux->unicode() && (aux->unicode() != '\n'))
@@ -120,10 +120,10 @@ namespace KviUserInput
 			if(aux->unicode() == '\n')
 				aux++;
 			beg = aux;
-	
+
 			if(buf.isEmpty())
 				buf = " "; // avoid "No text to send" (d3vah)
-	
+
 			switch(pWindow->type())
 			{
 				case KVI_WINDOW_TYPE_CONSOLE:

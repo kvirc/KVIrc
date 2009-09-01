@@ -127,7 +127,7 @@ void KviKvsArray::findNewSize()
 		m_uSize = 0;
 	}
 	// need to shrink ?
-	
+
 	if((m_uAllocSize - m_uSize) > KVI_KVS_ARRAY_ALLOC_CHUNK)
 	{
 		m_uAllocSize = m_uSize;

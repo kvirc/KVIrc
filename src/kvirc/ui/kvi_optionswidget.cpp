@@ -49,7 +49,7 @@ KviOptionsWidget::KviOptionsWidget(QWidget * parent,const char * name,bool)
 		m_szBasicTipStart += __tr2qs("This option is also available as");
 		m_szBasicTipStart += "<br><nobr>/option <b> ";
 		m_szBasicTipEnd = "</b></nobr></font></center>";
-		
+
 	}
 	// FIXME: The bSunken value is ignored!
 	//if(bSunken)setFrameStyle(QFrame::StyledPanel | QFrame::Sunken);
@@ -597,18 +597,18 @@ KviFontSelector * KviOptionsWidget::addFontSelector(QWidget * pParent,const QStr
 	return d;
 }
 
-//#define DECLARE_COMMIT_FUNCTION(__fnc,__class,__classString) 
-//	void KviOptionsWidget::__fnc() 
-//	{ 
-//		QObjectList * l = queryList(__classString); 
-//		if(!l)return; 
-//		QObjectListIt it(*l); 
-//		while(it.current()) 
-//		{ 
-//			((__class *)it.current())->commit(); 
-//			++it; 
-//		} 
-//		delete l; 
+//#define DECLARE_COMMIT_FUNCTION(__fnc,__class,__classString)
+//	void KviOptionsWidget::__fnc()
+//	{
+//		QObjectList * l = queryList(__classString);
+//		if(!l)return;
+//		QObjectListIt it(*l);
+//		while(it.current())
+//		{
+//			((__class *)it.current())->commit();
+//			++it;
+//		}
+//		delete l;
 //	}
 
 //DECLARE_COMMIT_FUNCTION(commitBoolSelectors,KviBoolSelector,"KviBoolSelector")

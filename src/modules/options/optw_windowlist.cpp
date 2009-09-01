@@ -82,9 +82,9 @@ KviTreeWindowListForegroundOptionsWidget::KviTreeWindowListForegroundOptionsWidg
 	createLayout();
 
 	addFontSelector(0,0,0,0,__tr2qs_ctx("Font:","options"),KviOption_fontTreeWindowList);
-	
+
 	KviTalGroupBox *g = addGroupBox(0,1,0,1,Qt::Horizontal,__tr2qs_ctx("Text/Alert Colors","options"));
-	
+
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTreeWindowListForeground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorTreeWindowListActiveForeground);
 	addColorSelector(g,__tr2qs_ctx("Alert Level 1:","options"),KviOption_colorTreeWindowListHighlight1Foreground);
@@ -114,7 +114,7 @@ KviTreeWindowListBackgroundOptionsWidget::KviTreeWindowListBackgroundOptionsWidg
 	setObjectName("treewindowlist_options_widget");
 
 	createLayout();
-	
+
 	KviTalGroupBox * g = addGroupBox(0,0,1,0,Qt::Horizontal,__tr2qs_ctx("Background Colors","options"));
 	addColorSelector(g,__tr2qs_ctx("Normal:","options"),KviOption_colorTreeWindowListBackground);
 	addColorSelector(g,__tr2qs_ctx("Selected:","options"),KviOption_colorTreeWindowListActiveBackground);
@@ -124,21 +124,21 @@ KviTreeWindowListBackgroundOptionsWidget::KviTreeWindowListBackgroundOptionsWidg
 	addLabel(0,2,0,2,__tr2qs_ctx("Horizontal align:","options"));
 	m_pHorizontalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pHorizontalAlign,1,2,1,2);
-	
+
 	addLabel(0,3,0,3,__tr2qs_ctx("Vertical align:","options"));
 	m_pVerticalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pVerticalAlign,1,3,1,3);
-	
+
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Left","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Right","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Center","options"));
-	
+
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Tile","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Top","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Bottom","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Center","options"));
-	
+
 	switch( KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign) & Qt::AlignHorizontal_Mask)
 	{
 		case Qt::AlignLeft:
@@ -153,7 +153,7 @@ KviTreeWindowListBackgroundOptionsWidget::KviTreeWindowListBackgroundOptionsWidg
 		default:
 			m_pHorizontalAlign->setCurrentIndex(0);
 	}
-	
+
 	switch( KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign) & Qt::AlignVertical_Mask)
 	{
 		case Qt::AlignTop:
@@ -206,7 +206,7 @@ void KviTreeWindowListBackgroundOptionsWidget::commit()
 			iFlags|=Qt::AlignVCenter;
 			break;
 	}
-	
+
 	KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign)=iFlags;
 }
 
@@ -218,7 +218,7 @@ KviTreeWindowListFeaturesOptionsWidget::KviTreeWindowListFeaturesOptionsWidget(Q
 	setObjectName("treewindowlist_options_widget");
 
 	createLayout();
-	
+
 	addUIntSelector(0,1,0,1,__tr2qs_ctx("Minimum width:","options"),KviOption_uintTreeWindowListMinimumWidth,24,1024,125);
 	addUIntSelector(0,2,0,2,__tr2qs_ctx("Maximum width:","options"),KviOption_uintTreeWindowListMaximumWidth,24,9999,125);
 
