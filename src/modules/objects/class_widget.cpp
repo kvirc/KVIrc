@@ -1957,6 +1957,7 @@ KVSO_CLASS_FUNCTION(widget,setKeyShortcut)
 KVSO_CLASS_FUNCTION(widget,insertIntoStatusBar)
 {
 	CHECK_INTERNAL_POINTER(widget())
+             debug("instertinto");
         if (g_pFrame->mainStatusBar())
                 g_pFrame->mainStatusBar()->insertPermanentWidgetAtTheEnd(widget(),0);
 	return true;
