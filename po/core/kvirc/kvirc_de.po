@@ -191,11 +191,11 @@ msgstr ""
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1832
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1888
 msgid "%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"
-msgstr "%Q [%Q@%Q] hat den Channel-\r!m%c%c\r-Modus %c%c\r gesetzt"
+msgstr "%Q [%Q@%Q] hat den Channel \r!m%c%c\rModus %c%c\r gesetzt"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1795
 msgid "%Q [%Q@%Q] has set channel \r!m-l\rlimit to %Q\r"
-msgstr "%Q [%Q@%Q] hat die Channel-\r!m-l\rBegrenzung auf %Q\r gesetzt"
+msgstr "%Q [%Q@%Q] hat die Channel \r!m-l\rBegrenzung auf %Q\r gesetzt"
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1770
 msgid "%Q [%Q@%Q] has set channel key to \"\r!m-k\r%Q\r\""
@@ -716,7 +716,7 @@ msgstr "(DNS intern) IPC-Fehlfunktion (die Arbeitsdaten sind fehlerhaft)"
 
 #: src/kvilib/core/kvi_error.cpp:78
 msgid "(DNS Internal) Out of memory"
-msgstr "(DNS-intern) Der Speicher ust voll"
+msgstr "(DNS-intern) Der Speicher ist voll"
 
 #: src/kvilib/core/kvi_error.cpp:79
 msgid "(DNS Internal) Service not supported"
@@ -2828,7 +2828,7 @@ msgstr ""
 
 #: src/kvilib/core/kvi_error.cpp:149
 msgid "Feature not available"
-msgstr "Diese Fähigkeit ist nicht verfügbar"
+msgstr "Diese Funktion ist nicht verfügbar"
 
 #: src/kvirc/ui/kvi_console.cpp:329 src/modules/setup/setupwizard.cpp:394
 msgid "Female"
@@ -4597,8 +4597,7 @@ msgstr ""
 #: src/kvirc/ui/kvi_window.cpp:509
 msgid "Ops...I've accidentally lost the crypting engine..."
 msgstr ""
-"Ups ... Ich habe die Verbindung zur Verschlüsselungsroutineunbeabsichtigt "
-"verloren ..."
+"Ups ... Ich habe die versehentlich die Verschlüsselungsroutine verloren ..."
 
 #: src/modules/rijndael/libkvirijndael.cpp:218
 msgid "Ops...decrypt cipher not initialized"
@@ -6238,7 +6237,7 @@ msgstr ""
 #: src/kvirc/kernel/kvi_irccontext.cpp:650
 msgid "The problem *might* be caused by an updated DNS entry"
 msgstr ""
-"Das Problem *könnte* durch einen geänderten DNS-Eintrag hervorgewurfen "
+"Das Problem *könnte* durch einen geänderten DNS-Eintrag hervorgerufen "
 "worden sein."
 
 #: src/kvirc/sparser/kvi_sp_literal.cpp:1485
@@ -7008,7 +7007,7 @@ msgstr "Der Unterausdruck wurde nicht abgeschlossen (Klammerfehler)"
 
 #: src/modules/help/index.cpp:351
 msgid "Untitled"
-msgstr "unbetitelt"
+msgstr "Unbenannt"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:713
 msgid "Update Indicator"
