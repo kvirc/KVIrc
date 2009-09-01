@@ -1,3 +1,112 @@
+26 August 2009
+   [CtrlAltCa]
+   - Reworked the icon window
+
+16 August 2009
+   [desowin]
+   - Added compability with recent audacious versions
+
+09 August 2009
+   [CtrlAltCa]
+   - New option: path for logfiles saving
+
+04 August 2009
+   [Noldor]
+   - reworked code completer
+
+01 August 2009
+   [CtrlAltCa]
+   - Create dcc windows inside the irc context that generates them
+
+30 July 2009
+   [HelLViS69]
+   - First testing implementation of python support: this IS NOT intended to work yet!
+   [CtrlAltCa]
+   - Added option for personal nick colors and avoid to use them for others's nicks
+
+27 July 2009
+   [CtrlAltCa]
+   - support for +f channel mode
+
+25 July 2009
+   [CtrlAltCa]
+   - Replaced win32 icon with a hi-res vista/win7 capable one 
+
+19 July 2009
+   [CtrlAltCa]
+   - changed window.setWindowTitle() syntax to match current qt implementation
+   [Curan]
+   - Merged patched from no_embedded_code branch, mostly $str.digest and libcrypto++ support
+
+17 July 2009
+   [CtrlAltCa]
+   - Added the possibility to close a window using a middle mouse button click
+
+12 July 2009
+   [CtrlAltCa]
+   - Deleted some old win32 install scripts and modified the others to fit kvirc4
+
+08 July 2009
+   [HelLViS69]
+   - Removed TODO-Qt4 since the port is complete
+
+08 July 2009
+   [CtrlAltCa]
+   - Rewritten notifier module
+
+06 July 2009
+   [desowin]
+   - Added Qmmp mediaplayer interface
+
+03 July 2009
+   [HelLViS69]
+   - Added classes file in default script: this is useful to create addon
+
+01 July 2009
+   [HelLViS69]
+   - removed KviQCString with QByteArray
+
+25 June 2009
+   [HelLViS69]
+   - Translated man page to italian
+
+23 June 2009
+   [Curan]
+   - Translated man page to german
+
+21 June 2009
+   [CtrlAltCa]
+   - Added a cmake variable to manually set the revision number
+
+02 June 2009
+   [Curan]
+   - Added system.runcmd: runs the specified command in a terminal 
+
+31 May 2009
+   [Kebianizao]
+   - Applied patch to achieve freedesktop icon naming compliance
+
+30 May 2009
+   [HelLViS69]
+   - Applied patch for including per freedesktop mimetypes definitions, thanks to Pino Toscano
+
+23 May 2009
+   [wrar]
+   - Added a possibility to switch to next/previous "active" window with Alt-PgUp/PgDown
+
+08 May 2009
+   [mren] [Kebianizao]
+   - updated FSF address in all source files
+
+25 March 2009
+   [CtrlAltCa]
+   - Added a tick to show/hide passwords in edit fields
+
+15 March 2009
+   [CtrlAltCa]
+   - Added zsh-style nick completion
+   - Added tmphighlight.addChannel(), tmphighlight.removeChannel(), $tmphighlight.isChannelHighLighted()
+
 13 March 2009
    [CtrlAltCa]
    - Added support for IPv6 policies handling under win32
