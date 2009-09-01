@@ -38,7 +38,7 @@
 		<string>  $texticons.get(<iconName:string>)
 		<integer> $texticons.get(<iconName:string>)
 	@description:
-		if <iconName:string> is setted returns integer icon id or string filename, associciated with <iconName:string>[br]
+		if <iconName:string> is setted returns integer icon id or string filename, associated with <iconName:string>[br]
 		if <iconName:string> isn't set returns hash where keys are the icon names, and values are the icon id's or filenames
 	@seealso:
 		[fnc]$texticons.get[/fnc]

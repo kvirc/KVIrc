@@ -53,7 +53,6 @@
 #include "kvi_internalcmd.h"
 #include "kvi_sparser.h"
 #include "kvi_themedlabel.h"
-//#include "kvi_garbage.h"
 #include "kvi_modulemanager.h"
 #include "kvi_fileutils.h"
 #include "kvi_time.h"
