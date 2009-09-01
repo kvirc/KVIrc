@@ -71,19 +71,16 @@ order or writing a wrong format spec will make kvirc crash sooner or later.
 
 
 
-Step 4: Adding the translation to the Makefile.am
+Step 4: Adding the translation to the install system
 
 Once you have translated some strings you can try to run the translation in
 kvirc. If you are updating an existing translation then you can jump
 directly to step 5.
 
-You must force the make process to pick up your translation
-file and compile it. This is again an one time step.
-In kvirc/src/kvirc there is a file named Makefile.am
-You should edit it and add kvirc_xxx.po where the other *.po files are
-mentioned. You should have no problems in guessing what needs to be added
-by looking at the other *.po entries in that file.
-Then you just run ./autogen.sh , ./configure and you build kvirc as usual.
+You could need to force the make process to pick up your translation
+file and compile it. This is again an one time step. You'll just need to
+clean your cmake CMakeCache.txt and re-run cmake again for it to pick up
+the new translation file, then build kvirc as usual.
 After it has finished building you run kvirc after making sure that your LANG
 variable is set correctly.
 
