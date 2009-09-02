@@ -138,7 +138,7 @@ void KviMdiManager::paintEvent(QPaintEvent * e)
 
 void KviMdiManager::manageChild(KviMdiChild * lpC, bool, QRect *)
 {
-	__range_valid(lpC);
+//	__range_valid(lpC);
 
 	addSubWindow((QMdiSubWindow*)lpC);
 
@@ -159,7 +159,7 @@ KviMdiChild * KviMdiManager::topChild()
 
 void KviMdiManager::setTopChild(KviMdiChild *lpC)
 {
-	__range_valid(lpC);
+//	__range_valid(lpC);
 	// The following check fails safely at startup....
 
 	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
@@ -250,7 +250,7 @@ void KviMdiManager::childMaximized(KviMdiChild *)
 
 void KviMdiManager::childMinimized(KviMdiChild * lpC, bool bWasMaximized)
 {
-	__range_valid(lpC);
+//	__range_valid(lpC);
 
 	if(subWindowList().count() > 1)
 	{
@@ -474,7 +474,7 @@ void KviMdiManager::menuActivated(int id)
 	id-=100;
 	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
 
-	__range_valid(((uint)id) < tmp.count());
+//	__range_valid(((uint)id) < tmp.count());
 
 	if (!tmp.at(id)->inherits("KviMdiChild")) return;
 	KviMdiChild * lpC = (KviMdiChild *) tmp.at(id);
