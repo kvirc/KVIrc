@@ -153,6 +153,10 @@ public:
 	// returns the dockExtension applet. Useful for calling refresh() when
 	// some particular event happens
 	KviDockExtension * dockExtension(){ return m_pDockExtension; };
+	// Updates the main window caption.
+	// Should be called when the active window changes
+	// and the active irc context changes state
+	void updateCaption();
 	// helper for saving the window properties
 	void saveWindowProperties(KviWindow * wnd,const QString &szSection);
 	// finds the module extension toolbar with the specified identifier
