@@ -245,25 +245,6 @@ KVSO_CLASS_FUNCTION(label,margin)
 	c->returnValue()->setInteger(((QLabel *)widget())->margin());
 	return true;
 }
-/*
-// FIX ME
-bool KviKvsObject_label::functionSetAutoResize(KviKvsObjectFunctionCall *c)
-{
-	bool bEnabled;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
-	KVSO_PARAMETERS_END(c)
-	 return true;
-
-}
-
-// FIX ME
-bool KviKvsObject_label::functionAutoResize(KviKvsObjectFunctionCall *c)
-{
-		if (widget()) c->returnValue()->setBoolean(true);
-	return true;
-}
-*/
 
 KVSO_CLASS_FUNCTION(label,setAlignment)
 {

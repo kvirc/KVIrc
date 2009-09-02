@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -58,13 +58,15 @@
 		!fn: $setImage(<image_id_or_pixmap_object>)
 		Sets the icon for this button.
 		See the [doc:image_id]image identifier[/doc] documentation for the explaination	of the <image_id> parameter.
-		@signals:
+                !fn: $clickEvent()
+                Called by KVIrc when the mouse button is clicked.
+                The default implementation emits the [classfnc]$clicked[/classfnc]()signal.
+        @signals:
 		!sg: $clicked()
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().
-                @properties:
+        @properties:
                 !pr: $scaledContents()
                 This property holds whether the label will scale its contents to fill all available space.
-
 */
 
 

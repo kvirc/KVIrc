@@ -1,11 +1,11 @@
 //=============================================================================
 //
-//   File : class_memorybuffer.cpp
+//   File : class_file.cpp
 //   Creation date : Fri Mar 18 21:30:48 CEST 2005
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
+//   Copyright (C) 2000-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -235,23 +235,24 @@ KVSO_CLASS_FUNCTION(file,open)
 	{
 		for ( int idx=0;idx<modes.count();idx++)
 		{
-			mod = QIODevice::ReadOnly;
-			for(unsigned int j = 0; j < mod_num; j++)
+                        int found=false;
+                        for(unsigned int j = 0; j < mod_num; j++)
 			{
-				if(KviQString::equalCI(modes.at(idx), mod_tbl[j]))
+
+                                if(KviQString::equalCI(modes.at(idx), mod_tbl[j]))
 				{
-					mod=mod_cod[j];
+                                        mod=mod_cod[j];
+                                        found=true;
 					break;
 				}
 			}
-			if(mod!=QIODevice::ReadOnly)
+                        if(found)
 				sum = sum | mod;
 			else
 				c->warning(__tr2qs_ctx("No such open mode '%Q'","objects"),&modes.at(idx));
 		}
 	}
-
-        m_pFile->open(QIODevice::ReadOnly);
+        c->returnValue()->setBoolean(m_pFile->open(sum));
 	return true;
 }
 
@@ -533,8 +534,9 @@ KVSO_CLASS_FUNCTION(file,readLine)
 	CHECK_INTERNAL_POINTER(m_pFile)
 	CHECK_FILE_IS_OPEN
 	QString buffer;
-        bool ok=KviFileUtils::readLine(m_pFile,buffer);
-        debug("ok %d",ok);
+        //bool ok=KviFileUtils::readLine(m_pFile,buffer);
+        buffer=m_pFile->readLine();
+      //  debug("ok %d",ok);
         c->returnValue()->setString(buffer);
 	return true;
 }

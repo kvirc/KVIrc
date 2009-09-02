@@ -4,7 +4,7 @@
 //   Creation date : Wed 30 Gen 2009 09:30:05 CEST by Carbone Alessandro
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2009 Carbone Alessandro (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -47,8 +47,33 @@
 	@description:
                 This widget provides a datetimeedit.
 	@functions:
-                !fn: $setDate([<text:string>])
-                !fn: <string> $date([<format:string>])
+                !fn: $setDate(<text:string>,<format:string>)
+                Sets the date of the widget using the format <format>. Possible values for format are:
+                d the day as number without a leading zero (1 to 31)
+                dd the day as number with a leading zero (01 to 31)
+                ddd the abbreviated localized day name (e.g. 'Mon' to 'Sun'). Uses QDate::shortDayName().
+                dddd the long localized day name (e.g. 'Monday' to 'Qt::Sunday'). Uses QDate::longDayName().
+                M the month as number without a leading zero (1-12)
+                MM the month as number with a leading zero (01-12)
+                MMM the abbreviated localized month name (e.g. 'Jan' to 'Dec'). Uses QDate::shortMonthName().
+                MMMM the long localized month name (e.g. 'January' to 'December'). Uses QDate::longMonthName().
+                yy the year as two digit number (00-99)
+                yyyy the year as four digit number
+                !fn: <string> $date(<format:string>)
+                Returns the widget date according to format.
+                !fn: $setTime(<text:string>,<format:string>)
+                Sets the date of the widget using the format <format>. Possibile values for format are:
+                h the hour without a leading zero
+                hh the hour with a leading zero
+                m the minute without a leading zero
+                mm the minute with a leading zero
+                s the second without a leading zero
+                ss the second with a leading zero
+                z the milliseconds without leading zeroes
+                zzz the milliseconds with leading zeroes
+                AP(or ap) use AM/PM display. AP will be replaced by either "AM" or "PM".
+                !fn: $time(<format:string>)
+                Returns the widget time according to format.
 */
 
 

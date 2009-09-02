@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -83,8 +83,7 @@
 		!fn: $textAt(<index:uint>)
 		Returns item at given index.
 		!fn: $setCurrentItem(<index:uint>)
-		Sets the current combobox item. This is the item to be
-		displayed on the combobox button.
+                Sets the current combobox item. This is the item to be displayed on the combobox button.
 		!fn: $activatedEvent(<index:integer>)
 		This function is called by the framework when a new item  has activated. The index value is the position of the new item.[br]
 		The default implementation emits the [classfnc]$activated[/classfnc]() signal,
