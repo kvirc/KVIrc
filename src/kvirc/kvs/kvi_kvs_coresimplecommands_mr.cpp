@@ -76,6 +76,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(me)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szText;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)
@@ -122,6 +124,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(mode)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szText;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_APPENDREMAINING,szText)
@@ -209,6 +213,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(nick)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szNick;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,0,szNick)
@@ -352,6 +358,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(openurl)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szUrl;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("url",KVS_PT_NONEMPTYSTRING,KVS_PF_APPENDREMAINING,szUrl)
@@ -494,6 +502,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(option)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szName;
 		QString szValue;
 		KVSCSC_PARAMETERS_BEGIN
@@ -991,6 +1001,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(query)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szTargets,szText;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("targets",KVS_PT_NONEMPTYSTRING,0,szTargets)
@@ -1128,6 +1140,9 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(raise)
 	{
+		Q_UNUSED(__pSwitches);
+		Q_UNUSED(__pParams);
+
 		if(!KVSCSC_pWindow->frame()->isVisible())KVSCSC_pWindow->frame()->show();
 		KVSCSC_pWindow->frame()->raise();
 		//KVSCSC_pWindow->frame()->setActiveWindow();
@@ -1263,6 +1278,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(returnCKEYWORDWORKAROUND)
 	{
+		Q_UNUSED(__pSwitches);
+
 		if(KVSCSC_pParams->count() == 0)
 		{
 			KVSCSC_pContext->returnValue()->setNothing();
@@ -1310,6 +1327,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(run)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szCommand;
 		QStringList l;
 		KVSCSC_PARAMETERS_BEGIN

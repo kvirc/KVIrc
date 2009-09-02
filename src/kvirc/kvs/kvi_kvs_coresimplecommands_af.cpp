@@ -169,6 +169,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(back)
 	{
+		Q_UNUSED(__pParams);
 
 		if(KVSCSC_pSwitches->find('a',"all-networks"))
 		{
@@ -549,6 +550,9 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(debugCKEYWORDWORKAROUND)
 	{
+		Q_UNUSED(__pSwitches);
+		Q_UNUSED(__pContext);
+
 		QString szAll;
 		KVSCSC_pParams->allAsString(szAll);
 		KviWindow * pWnd = KviDebugWindow::getInstance();
@@ -1039,6 +1043,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(error)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szAll;
 		KVSCSC_pParams->allAsString(szAll);
 		KVSCSC_pContext->error("%Q",&szAll);
@@ -1264,6 +1270,10 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(exit)
 	{
+		Q_UNUSED(__pSwitches);
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		g_pApp->quit();
 		return true;
 	}

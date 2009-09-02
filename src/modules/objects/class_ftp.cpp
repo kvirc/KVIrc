@@ -243,7 +243,7 @@ void KviKvsObject_ftp::slotReadyRead ()
 {
 }
 
-void KviKvsObject_ftp::slotRawCommandReply (int replyCode, const QString & detail)
+void KviKvsObject_ftp::slotRawCommandReply (int , const QString & )
 {
 }
 

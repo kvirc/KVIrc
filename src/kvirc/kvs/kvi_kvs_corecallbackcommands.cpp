@@ -149,7 +149,7 @@ namespace KviKvsCoreCallbackCommands
 
 		KviKvsVariant * pMagic = pMagicPtr ? new KviKvsVariant(*pMagicPtr) : new KviKvsVariant();
 
-		KviKvsAsyncDnsOperation * op = new KviKvsAsyncDnsOperation(
+		new KviKvsAsyncDnsOperation(
 						KVSCCC_pContext->window(),
 						szQuery,
 						queryType,
@@ -999,6 +999,8 @@ namespace KviKvsCoreCallbackCommands
 
 	KVSCCC(privateimpl)
 	{
+		Q_UNUSED(__pSwitches);
+
 		kvs_hobject_t hObject;
 		QString szFunctionName;
 		KVSCCC_PARAMETERS_BEGIN

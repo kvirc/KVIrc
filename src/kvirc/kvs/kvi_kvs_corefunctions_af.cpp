@@ -231,6 +231,8 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(array)
 	{
+		Q_UNUSED(__pContext);
+
 		KviKvsArray * a = new KviKvsArray();
 		kvs_int_t idx = 0;
 
@@ -319,6 +321,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(b)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setString(QString(QChar(KVI_TEXT_BOLD)));
 		return true;
 	}
@@ -666,6 +671,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(countStatusBarItems)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
                 if (g_pFrame->mainStatusBar())
                 {
                     QList<QWidget *> widgets = g_pFrame->mainStatusBar()->findChildren<QWidget *>();
@@ -695,6 +703,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(cr)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setString(QString(QChar('\r')));
 		return true;
 	}
@@ -875,6 +886,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(falseCKEYWORDWORKAROUND)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setBoolean(false);
 		return true;
 	}
@@ -1025,6 +1039,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(firstConnectedConsole)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KviConsole * c = g_pApp->topmostConnectedConsole();
 		// FIXME: The window id's should be numeric!!!
 		KVSCF_pRetBuffer->setString(c ? c->id() : "0");
@@ -1061,6 +1078,8 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(flatten)
 	{
+		Q_UNUSED(__pContext);
+
 		KviKvsArray * a = new KviKvsArray();
 		KVSCF_pRetBuffer->setArray(a);
 		unsigned int uIdx = 0;

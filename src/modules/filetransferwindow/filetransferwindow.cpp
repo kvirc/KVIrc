@@ -355,7 +355,7 @@ KviFileTransferItem * KviFileTransferWindow::findItem(KviFileTransfer * t)
 
 void KviFileTransferWindow::transferRegistered(KviFileTransfer * t)
 {
-	KviFileTransferItem * it = new KviFileTransferItem(m_pTableWidget,t);
+	new KviFileTransferItem(m_pTableWidget,t);
 	//t->setDisplayItem(it);
 }
 

@@ -337,6 +337,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(nothing)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setNothing();
 		return true;
 	}
@@ -365,6 +368,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(nullCKEYWORDWORKAROUND)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setHObject(0);
 		return true;
 	}
@@ -389,6 +395,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(o)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setString(QString(QChar(KVI_TEXT_RESET)));
 		return true;
 	}
@@ -522,6 +531,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(r)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setString(QString(QChar(KVI_TEXT_REVERSE)));
 		return true;
 	}
@@ -636,6 +648,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(receivedBytes)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setInteger(g_uIncomingTraffic);
 		return true;
 	}

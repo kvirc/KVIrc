@@ -461,7 +461,7 @@ static bool objects_kvs_fnc_classAllHandlers(KviKvsModuleFunctionCall * c)
 	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler>  it(* pClass->getHandlers());
 	KviKvsHash* pHash = new KviKvsHash();
 	c->returnValue()->setHash(pHash);
-	while(KviKvsObjectFunctionHandler * t = it.current())
+	while(it.current())
 	{
 		QString szCode;
 		KviKvsObjectFunctionHandler *handler=pClass->lookupFunctionHandler(it.currentKey());

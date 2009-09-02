@@ -139,6 +139,8 @@ namespace KviKvsCoreSimpleCommands
 
 	bool multipleModeCommand(KviKvsRunTimeContext * __pContext,KviKvsVariantList * __pParams,KviKvsSwitchList * __pSwitches,char plusminus,char flag)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szTokens;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("tokens",KVS_PT_STRING,KVS_PF_APPENDREMAINING,szTokens)
@@ -215,6 +217,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(rfc2812wrapper)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szText;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("text",KVS_PT_STRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szText)

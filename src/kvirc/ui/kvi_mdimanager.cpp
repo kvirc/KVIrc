@@ -248,7 +248,7 @@ void KviMdiManager::childMaximized(KviMdiChild *)
 }
 
 
-void KviMdiManager::childMinimized(KviMdiChild * lpC, bool bWasMaximized)
+void KviMdiManager::childMinimized(KviMdiChild *, bool bWasMaximized)
 {
 //	__range_valid(lpC);
 
