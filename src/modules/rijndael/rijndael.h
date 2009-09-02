@@ -88,6 +88,7 @@
 #define _MAX_ROUNDS      14
 //#define BITSPERBLOCK        128 /* Default number of bits in a cipher block */
 #define MAX_IV_SIZE      16
+#define STRICT_ALIGN 0
 
 // We assume that unsigned int is 32 bits long....
 typedef unsigned char  UINT8;

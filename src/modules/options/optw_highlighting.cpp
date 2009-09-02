@@ -102,9 +102,9 @@ KviAlertOptionsWidget::KviAlertOptionsWidget(QWidget * parent)
 	KviBoolSelector * b6 = addBoolSelector(g,__tr2qs_ctx("Use custom alert level","options"),KviOption_boolHighlightOnlyAtCostumHighlightLevel);
 	mergeTip(b6, __tr2qs_ctx("<center>If this option is enabled, KVIrc will alert in the window list only if the specified alert level is reached.</center>","options"));
 
-	KviUIntSelector * b7 = addUIntSelector(g,__tr2qs_ctx("Minimum alert level:","options"),KviOption_uintMinHighlightLevel,1,KVI_MSGTYPE_MAXLEVEL,KVI_MSGTYPE_MAXLEVEL,KVI_OPTION_UINT(KviOption_boolHighlightOnlyAtCostumHighlightLevel));
+	KviUIntSelector * b7 = addUIntSelector(g,__tr2qs_ctx("Minimum alert level:","options"),KviOption_uintMinHighlightLevel,1,KVI_MSGTYPE_MAXLEVEL,KVI_MSGTYPE_MAXLEVEL,KVI_OPTION_BOOL(KviOption_boolHighlightOnlyAtCostumHighlightLevel));
 	b7->setEnabled(KVI_OPTION_BOOL(KviOption_boolHighlightOnlyAtCostumHighlightLevel));
-	mergeTip(b6, __tr2qs_ctx("<center>This option sets the minimum alert level for the window list.</center>","options"));
+	mergeTip(b7, __tr2qs_ctx("<center>This option sets the minimum alert level for the window list.</center>","options"));
 	connect(b6,SIGNAL(toggled(bool)),b7,SLOT(setEnabled(bool)));
 
 	addRowSpacer(0,1,0,1);
