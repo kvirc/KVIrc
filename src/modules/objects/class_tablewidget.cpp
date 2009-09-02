@@ -402,22 +402,26 @@ KVSO_CLASS_FUNCTION(tablewidget,setCellWidget)
 }
 KVSO_CLASS_FUNCTION(tablewidget,hideHorizontalHeader)
 {
+	Q_UNUSED(c);
             ((QTableWidget *)widget())->horizontalHeader()->hide();
             return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,hideVerticalHeader)
 {
+	Q_UNUSED(c);
             ((QTableWidget *)widget())->verticalHeader()->hide();
             return true;
 }
 
 KVSO_CLASS_FUNCTION(tablewidget,showHorizontalHeader)
 {
+	Q_UNUSED(c);
             ((QTableWidget *)widget())->horizontalHeader()->show();
             return true;
 }
 KVSO_CLASS_FUNCTION(tablewidget,showVerticalHeader)
 {
+	Q_UNUSED(c);
             ((QTableWidget *)widget())->verticalHeader()->show();
             return true;
 }

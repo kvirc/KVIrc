@@ -1,7 +1,7 @@
 # CMakeLists for src/modules/pythoncore
 
-SET(kvipythoncore_MOC_HDRS
-	pythoncoreinterface.h
+SET(kvipythoncore_MOC_HDRS ""
+# 	pythoncoreinterface.h
 )
 
 SET(kvipythoncore_SRCS

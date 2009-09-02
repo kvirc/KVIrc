@@ -123,7 +123,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseCommand()
 		pRebindData = 0;
 	}
 
-	KviKvsTreeNodeCommand * cmd;
+	KviKvsTreeNodeCommand * cmd=0;
 
 	if(!bHasNamespaceSoMustBeAlias)
 	{

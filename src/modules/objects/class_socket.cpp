@@ -349,12 +349,14 @@ KVSO_END_DESTRUCTOR(KviKvsObject_socket)
 
 KVSO_CLASS_FUNCTION(socket,status)
 {
-        c->returnValue()->setInteger(m_iStatus);http://ansa.it/
+        c->returnValue()->setInteger(m_iStatus);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(socket,close)
 {
+	Q_UNUSED(c);
+
 	if (!m_pOutBuffer) return true;
 	if((m_pOutBuffer->size() != 0) && (m_iStatus == KVI_SCRIPT_SOCKET_STATUS_CONNECTED))
 		tryFlush();

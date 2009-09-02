@@ -106,6 +106,9 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_vbox)
 
 bool KviKvsObject_vbox::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
+	Q_UNUSED(pContext);
+	Q_UNUSED(pParams);
+
 	SET_OBJECT(KviTalVBox);
 	return true;
 }

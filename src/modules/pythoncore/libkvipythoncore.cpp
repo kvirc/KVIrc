@@ -68,7 +68,7 @@
 */
 #endif // COMPILE_PYTHON_SUPPORT
 
-static bool pythoncore_module_init(KviModule * m)
+static bool pythoncore_module_init(KviModule *)
 {
 #ifdef COMPILE_PYTHON_SUPPORT
 
@@ -92,7 +92,7 @@ static bool pythoncore_module_init(KviModule * m)
 	return false;
 }
 
-static bool pythoncore_module_cleanup(KviModule * m)
+static bool pythoncore_module_cleanup(KviModule *)
 {
 #ifdef COMPILE_PYTHON_SUPPORT
 	//perlcore_destroy_all_interpreters();

@@ -3132,6 +3132,9 @@ KviKvsTreeNodeConstantData * KviKvsParser::__funcname() \
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseCommandLiteralParameter)
+			Q_UNUSED(pStart);
+			Q_UNUSED(iNestedTerminators);
+
 			case 0:
 			case '$':
 			case '%':
@@ -3146,6 +3149,9 @@ LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseStringLiteralParameter)
+			Q_UNUSED(pStart);
+			Q_UNUSED(iNestedTerminators);
+
 			case 0:
 			case '$':
 			case '%':
@@ -3165,6 +3171,8 @@ LITERAL_PARAM_PARSING_FUNCTION_END
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseHashKeyLiteralParameter)
+			Q_UNUSED(pStart);
+
 			case '{':
 LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR
 			case '}':
@@ -3182,6 +3190,8 @@ LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseCommaSeparatedLiteralParameter)
+			Q_UNUSED(pStart);
+
 			case '(':
 LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR
 			case ')':
@@ -3200,6 +3210,8 @@ LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseSingleLiteralParameterInParenthesis)
+			Q_UNUSED(pStart);
+
 			case '(':
 LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR
 			case ')':
@@ -3216,6 +3228,9 @@ LITERAL_PARAM_PARSING_FUNCTION_END_WITH_EXPECTED_TERMINATOR
 LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseBindingOperationLiteralParameter)
+			Q_UNUSED(pStart);
+			Q_UNUSED(iNestedTerminators);
+
 			case 0:
 			case '$':
 			case '%':

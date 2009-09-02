@@ -1124,28 +1124,31 @@ void KviKvsObject_painter::detachDevice()
 	if(!m_pDeviceObject)return;
 	disconnect(m_pDeviceObject,SIGNAL(aboutToDie()),this,SLOT(detachDevice()));
 	m_pPainter->end();
-            if (m_pPrinter)
-            {
-               delete m_pPrinter;
-               m_pPrinter=0;
-           }
+	if (m_pPrinter)
+	{
+		delete m_pPrinter;
+		m_pPrinter=0;
+	}
 	m_pDeviceObject = 0;
 }
 
 KVSO_CLASS_FUNCTION(painter,end)
 {
-            if(!m_pDeviceObject)
-            {
-                m_pPainter->end();
-                if (m_pPrinter)
-                {
-                   delete m_pPrinter;
-                   m_pPrinter=0;
-                }
-            }
-            else detachDevice();
+	Q_UNUSED(c);
+
+	if(!m_pDeviceObject)
+	{
+		m_pPainter->end();
+		if (m_pPrinter)
+		{
+			delete m_pPrinter;
+			m_pPrinter=0;
+		}
+	}
+	else detachDevice();
 	return true;
 }
+
 KVSO_CLASS_FUNCTION(painter,beginPdf)
 {
 	CHECK_INTERNAL_POINTER(m_pPainter)
@@ -1598,6 +1601,7 @@ KVSO_CLASS_FUNCTION(painter,setGradientAsBrush)
 
 KVSO_CLASS_FUNCTION(painter,clearGradient)
 {
+	Q_UNUSED(c);
 	if (!m_pGradient) delete m_pGradient;
 	m_pGradient=0;
 	return true;
@@ -1722,6 +1726,7 @@ KVSO_CLASS_FUNCTION(painter,drawPath)
 
 KVSO_CLASS_FUNCTION(painter,resetPath)
 {
+	Q_UNUSED(c);
 	if (m_pPainterPath){
 		delete m_pPainterPath;
 		m_pPainterPath=0;
