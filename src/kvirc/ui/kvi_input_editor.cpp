@@ -2239,59 +2239,59 @@ void KviInputEditor::addCommand(const Command& cmd)
 		to type multiple commands at once :).
 		[/p]
 		[big]Default Key Bindings:[/big][br]
-		Ctrl+B: Inserts the 'bold' mIRC text control character<br>
-		Ctrl+K: Inserts the 'color' mIRC text control character<br>
-		Ctrl+R: Inserts the 'reverse' mIRC text control character<br>
-		Ctrl+U: Inserts the 'underline' mIRC text control character<br>
-		Ctrl+O: Inserts the 'reset' mIRC text control character<br>
-		Ctrl+P: Inserts the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line<br>
-		Ctrl+Z: Undo the last action<br>
-		Ctrl+Y: Redo the last undoed action<br>
-		Ctrl+C: Copies the selected text to clipboard<br>
-		Ctrl+X: Cuts the selected text<br>
-		Ctrl+V: Pastes the clipboard contents (same as middle mouse click)<br>
-		Ctrl+I: Inserts the 'icon' control code and pops up the icon list box<br>
-		Ctrl+A: Select all<br>
-		Ctrl+L: Paste file<br>
-		CursorUp: Moves backward in the command history<br>
-		CursorDown: Moves forward in the command history<br>
-		CursorRight: Moves the cursor to the right<br>
-		CursorLeft: Moves the cursor to the left :)<br>
-		Shift+CursorLeft: Moves the selection to the left<br>
-		Shift+RightCursor: Moves the selection to the right<br>
-		Ctrl+CursorLeft: Moves the cursor one word left<br>
-		Ctrl+CursorRight: Moves the cursor one word right<br>
-		Ctrl+Shift+CursorLeft: Moves the selection one word left<br>
-		Ctrl+Shift+CursorRight: Moves the selection one word right<br>
-		Tab: Nickname, function/command, or filename completion (see below)<br>
-		Shift+Tab: Hostmask or function/command completion (see below)<br>
-		Alt+&lt;numeric_sequence&gt;: Inserts the character by ASCII/Unicode code<br>
-		<example>
+		Ctrl+B: Inserts the 'bold' mIRC text control character[br]
+		Ctrl+K: Inserts the 'color' mIRC text control character[br]
+		Ctrl+R: Inserts the 'reverse' mIRC text control character[br]
+		Ctrl+U: Inserts the 'underline' mIRC text control character[br]
+		Ctrl+O: Inserts the 'reset' mIRC text control character[br]
+		Ctrl+P: Inserts the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line[br]
+		Ctrl+Z: Undo the last action[br]
+		Ctrl+Y: Redo the last undoed action[br]
+		Ctrl+C: Copies the selected text to clipboard[br]
+		Ctrl+X: Cuts the selected text[br]
+		Ctrl+V: Pastes the clipboard contents (same as middle mouse click)[br]
+		Ctrl+I: Inserts the 'icon' control code and pops up the icon list box[br]
+		Ctrl+A: Select all[br]
+		Ctrl+L: Paste file[br]
+		CursorUp: Moves backward in the command history[br]
+		CursorDown: Moves forward in the command history[br]
+		CursorRight: Moves the cursor to the right[br]
+		CursorLeft: Moves the cursor to the left :)[br]
+		Shift+CursorLeft: Moves the selection to the left[br]
+		Shift+RightCursor: Moves the selection to the right[br]
+		Ctrl+CursorLeft: Moves the cursor one word left[br]
+		Ctrl+CursorRight: Moves the cursor one word right[br]
+		Ctrl+Shift+CursorLeft: Moves the selection one word left[br]
+		Ctrl+Shift+CursorRight: Moves the selection one word right[br]
+		Tab: Nickname, function/command, or filename completion (see below)[br]
+		Shift+Tab: Hostmask or function/command completion (see below)[br]
+		Alt+&lt;numeric_sequence&gt;: Inserts the character by ASCII/Unicode code
+		[example]
 		Alt+32: Inserts ASCII/Unicode character 32: ' ' (a space)
 		Alt+00032: Same as above :)
 		Alt+13: Inserts the Carriage Return (CR) control character
 		Alt+77: Inserts ASCII/Unicode character 77: 'M'
 		Alt+23566: Inserts Unicode character 23566 (an ideogram)
-		</example>
-		Also look at the <a href="shortcuts.kvihelp">global shortcuts</a> reference.<br>
-		If you drop a file on this widget, a <a href="parse.kvihelp">/PARSE &lt;filename&gt;</a> will be executed.<br>
-		You can enable word substitution in the preferences dialog.<br>
-		For example, if you choose to substitute "afaik" with "As far as I know",<br>
+		[/example]
+		Also look at the [doc:keyboard]keyboard shortcuts[/doc] reference.[br]
+		If you drop a file on this widget, a <a href="parse.kvihelp">/PARSE &lt;filename&gt;</a> will be executed.[br]
+		You can enable word substitution in the preferences dialog.[br]
+		For example, if you choose to substitute "afaik" with "As far as I know",[br]
 		when you will type "afaik" somewhere in the command line, and then
-		press Space or Return, that word will be replaced with "As far as I know".<br>
-		Experiment with it :)<br>
-		The Tab key activates the completion of the current word.<br>
+		press Space or Return, that word will be replaced with "As far as I know".[br]
+		Experiment with it :)[br]
+		The Tab key activates the completion of the current word.[br]
 		If a word is prefixed with a '/', it is treated as a command to be completed,
 		if it begins with '$', it is treated as a function or identifier to be completed,
-		otherwise it is treated as a nickname or filename to be completed.<br>
-		<example>
-			/ec&lt;Tab&gt; will produce /echo&lt;space&gt
+		otherwise it is treated as a nickname or filename to be completed.
+		[example]
+			/ec&lt;Tab&gt; will produce /echo&lt;space&gt;
 			/echo $loca&lt;Tab&gt; will produce /echo $localhost
-		</example>
+		[/example]
 		Multiple matches are listed in the view window and the word is completed
-		to the common part of all the matches.<br>
-		<example>
+		to the common part of all the matches.
+		[example]
 			$sel&lt;Tab;&gt; will find multiple matches and produce $selected
-		</example>
+		[/example]
 		Experiment with that too :)
 */

@@ -290,8 +290,8 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		[b]Alt+RightArrow[/b]: Next window[br]
 		[b]Alt+PageUp[/b]: Previous highlighted window[br]
 		[b]Alt+PageDown[/b]: Next highlighted window[br]
-		[b]Alt+Shift+LeftArrow[/b]: Previous window in the same IRC context[/b]
-		[b]Alt+Shift+RightArrow[/b]: Next window in the same IRC context[/b]
+		[b]Alt+Shift+LeftArrow[/b]: Previous window in the same IRC context[br]
+		[b]Alt+Shift+RightArrow[/b]: Next window in the same IRC context[br]
 		[b]Ctrl+UpArrow[/b]: Maximize current window[br]
 		[b]Ctrl+DownArrow[/b] or [b]ESC[/b]: Minimize current window[br]
 		[b]Ctrl+&lt;digit&gt;[/b], [b]F1-F12[/b], [b]Shift+(F1-F12)[/b]: Script accelerators (see [event:onaccelkeypressed]OnAccelKeyPressed[/event])[br]
@@ -310,7 +310,7 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		[b]Ctrl+C[/b]: Copies the selected text to clipboard[br]
 		[b]Ctrl+X[/b]: Cuts the selected text[br]
 		[b]Ctrl+V[/b]: Pastes the clipboard contents (same as middle mouse click)[br]
-		[b]Ctrl+I[/b]: Inserts the 'icon' control code and pops up the icon list box
+		[b]Ctrl+I[/b]: Inserts the 'icon' control code and pops up the icon list box[br]
 		[b]CursorUp[/b]: Moves backward in the command history[br]
 		[b]CursorDown[/b]: Moves forward in the command history[br]
 		[b]Ctrl+PageUp[/b]: Opens the history popup[br]
@@ -319,19 +319,19 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		[b]Shift+CursorLeft[/b]: Moves the selection to the left[br]
 		[b]Shift+RightCursor[/b]: Moves the selection to the right[br]
 		[b]PageUp[/b]: Scrolls the output window up one page[br]
-		[b]PageDown[/b]: Scrolls the output window down one page[b]
+		[b]PageDown[/b]: Scrolls the output window down one page[br]
 		[b]Shift+PageUp[/b]: Scrolls the output window up one line[br]
-		[b]Shift+PageDown[/b]: Scrolls the output window down one line[b]
-		[b]Alt+lt;numeric_sequence&gt;[/b]: Inserts the character by ASCII/Unicode code[br]
+		[b]Shift+PageDown[/b]: Scrolls the output window down one line[br]
 		[b]Ctrl+Backspace[/b]: Shows or hides the multiline editor[br]
 		[b]Ctrl+F4[/b]: Closes the current window[br]
-		<example>
+		[b]Alt+&lt;numeric_sequence&gt;[/b]: Inserts the character by ASCII/Unicode code
+		[example]
 			Alt+32: Inserts ASCII/Unicode character 32: ' ' (a space)
 			Alt+00032: Same as above :)
 			Alt+13: Inserts the Carriage Return (CR) control character
 			Alt+77: Inserts ASCII/Unicode character 77: 'M'
 			Alt+23566: Inserts Unicode character 23566 (an ideogram)
-		</example>
+		[/example]
 */
 
 void KviFrame::installAccelerators()
