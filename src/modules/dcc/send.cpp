@@ -471,6 +471,11 @@ void KviDccSendThread::updateStats()
 	m_pMutex->unlock();
 }
 
+union _ack_buffer {
+	char cAckBuffer[4];
+	quint32 i32AckBuffer;
+};
+
 void KviDccSendThread::run()
 {
 	m_pTimeInterval->mark();
@@ -481,7 +486,7 @@ void KviDccSendThread::run()
 	m_iTotalSentBytes         = 0;
 	m_iInstantSentBytes       = 0;
 	int iFailedSelects        = 0;
-	char ackbuffer[4];
+	_ack_buffer ackbuffer;
 	int iBytesInAckBuffer     = 0;
 	quint32 iLastAck         = 0;
 
@@ -541,13 +546,13 @@ void KviDccSendThread::run()
 				if(!m_pOpt->bNoAcks)
 				{
 					int iAckBytesToRead = 4 - iBytesInAckBuffer;
-					int readLen = kvi_socket_recv(m_fd,(void *)(ackbuffer + iBytesInAckBuffer),iAckBytesToRead);
+					int readLen = kvi_socket_recv(m_fd,(void *)(ackbuffer.cAckBuffer + iBytesInAckBuffer),iAckBytesToRead);
 					if(readLen > 0)
 					{
 						iBytesInAckBuffer += readLen;
 						if(iBytesInAckBuffer == 4)
 						{
-							quint32 iNewAck = ntohl(*((quint32 *)ackbuffer));
+							quint32 iNewAck = ntohl(ackbuffer.i32AckBuffer);
 							if((iNewAck > pFile->pos()) || (iNewAck < iLastAck))
 							{
 								// the peer is drunk or is trying to fool us
