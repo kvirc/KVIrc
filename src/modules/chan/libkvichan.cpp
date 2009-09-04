@@ -1453,6 +1453,59 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 }
 
 /*
+	@doc: chan.matchqban
+	@type:
+		function
+	@title:
+		$chan.matchqban
+	@short:
+		Matches a mask agains the channel ban list searcing for +q bans (aka mute bans)
+	@syntax:
+		<string> $chan.matchqban([window_id],<complete_mask>)
+	@description:
+		Some networks use +q channel mode to set "mute bans".
+		When an user mask matches such a ban, he won't be able to send messages to the channel.
+		The "mute bans" masks will be inserted in the normal channel bans list, with a percent sign % prepended
+		This function returns the "mute ban" mask that matches <complete_mask> on channel identified by [window_id].[br]
+		If no ban mask matches <complete_mask> an empty string is returned.[br]
+		If [window_id] is empty, the current window is used.[br]
+		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
+		This function is useful to determine if a "mute ban" set on the channel matches an user.[br]
+*/
+
+static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
+{
+	QString szWinId,szMask;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("window id",KVS_PT_STRING,0,szWinId)
+		KVSM_PARAMETER("mask",KVS_PT_STRING,0,szMask)
+	KVSM_PARAMETERS_END(c)
+
+	KviChannel * ch = chan_kvs_find_channel(c,szWinId);
+	szMask.prepend('%');
+
+	if(!ch)
+	{
+		c->returnValue()->setNothing();
+		return true;
+	}
+
+	KviPointerList<KviMaskEntry> * l = ch->banList();
+
+	for(KviMaskEntry * e = l->first();e;e = l->next())
+	{
+		if(KviQString::matchStringCI(e->szMask,szMask))
+		{
+			c->returnValue()->setString(e->szMask);
+			return true;
+		}
+	}
+
+	c->returnValue()->setNothing();
+	return true;
+}
+
+/*
 	@doc: chan.usermodelevel
 	@type:
 		function
@@ -1608,6 +1661,7 @@ static bool chan_module_init(KviModule * m)
 	KVSM_REGISTER_FUNCTION(m,"banexceptionlist",chan_kvs_fnc_banexceptionlist);
 	KVSM_REGISTER_FUNCTION(m,"invitelist",chan_kvs_fnc_invitelist);
 	KVSM_REGISTER_FUNCTION(m,"matchban",chan_kvs_fnc_matchban);
+	KVSM_REGISTER_FUNCTION(m,"matchqban",chan_kvs_fnc_matchqban);
 	KVSM_REGISTER_FUNCTION(m,"matchbanexception",chan_kvs_fnc_matchbanexception);
 	KVSM_REGISTER_FUNCTION(m,"matchinvite",chan_kvs_fnc_matchinvite);
 	KVSM_REGISTER_FUNCTION(m,"getUrl",chan_kvs_fnc_getUrl);
