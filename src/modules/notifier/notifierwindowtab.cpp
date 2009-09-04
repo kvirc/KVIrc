@@ -35,6 +35,7 @@
 #include "kvi_window.h"
 
 #include <QScrollBar>
+#include <QResizeEvent>
 
 extern KviNotifierWindow * g_pNotifierWindow;
 
@@ -86,6 +87,8 @@ KviNotifierWindowTab::~KviNotifierWindowTab()
 void KviNotifierWindowTab::appendMessage(KviNotifierMessage * m)
 {
 	m_pVBox->addWidget(m);
+	m->setFixedWidth(viewport()->width());
+
 	while(m_pVBox->count() > MAX_MESSAGES_IN_WINDOW)
 	{
 		QLayoutItem* tmp=m_pVBox->takeAt(0);
@@ -140,6 +143,21 @@ void KviNotifierWindowTab::closeMe()
 		if(index!=-1)
 		{
 			g_pNotifierWindow->slotTabCloseRequested(index);
+		}
+	}
+}
+
+void KviNotifierWindowTab::resizeEvent(QResizeEvent *)
+{
+	if(m_pVBox)
+	{
+		int iWidth = viewport()->width();
+		KviNotifierMessage* m;
+		for(int i=0;i<m_pVBox->count(); i++)
+		{
+			m = (KviNotifierMessage*)m_pVBox->itemAt(i)->widget();
+			if(m)
+				m->setFixedWidth(iWidth);
 		}
 	}
 }

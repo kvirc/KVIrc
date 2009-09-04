@@ -31,6 +31,8 @@
 #include "kvi_options.h"
 
 #include <QRect>
+#include <QResizeEvent>
+
 KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 {
 	m_szText=szText;
@@ -38,6 +40,7 @@ KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 
 	m_pLabel0 = new QLabel();
 	m_pLabel0->setFixedSize(16,16);
+
 	if(m_pPixmap)
 		m_pLabel0->setPixmap(*m_pPixmap);
 
@@ -60,6 +63,14 @@ KviNotifierMessage::~KviNotifierMessage()
 		m_pLabel1->deleteLater();
 	if(m_pHBox)
 		m_pHBox->deleteLater();
+}
+
+#define LAB1_MARGIN 16+(3*SPACING)
+void KviNotifierMessage::resizeEvent(QResizeEvent * e)
+{
+	int iWidth=e->size().width()-LAB1_MARGIN;
+	if(iWidth>0)
+		m_pLabel1->setFixedWidth(iWidth);
 }
 
 //TODO merge this code with kvi_topicw.cpp's one

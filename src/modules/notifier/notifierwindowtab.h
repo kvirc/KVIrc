@@ -54,6 +54,7 @@ public:
 	inline KviWindow * wnd() const { return m_pWnd; };
 protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
+	virtual void resizeEvent(QResizeEvent * e);
 private slots:
 	void scrollRangeChanged(int, int);
 	void labelChanged();

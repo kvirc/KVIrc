@@ -48,7 +48,8 @@ public:
 	static QString convertToHtml(const QString &text);
 	inline QString text() const { return m_szText; };
 	inline QPixmap* pixmap() const { return m_pPixmap; };
-
+protected:
+	virtual void resizeEvent(QResizeEvent * e);
 };
 
 #endif //!_NOTIFIERMESSAGE_H_
