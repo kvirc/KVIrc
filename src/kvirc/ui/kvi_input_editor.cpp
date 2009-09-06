@@ -650,6 +650,48 @@ void KviInputEditor::runUpToTheFirstVisibleChar()
 	}
 }
 
+void KviInputEditor::mouseDoubleClickEvent(QMouseEvent * e)
+{
+	//select clicked word
+	if(e->button() & Qt::LeftButton)
+	{
+		if(m_szTextBuffer.length()<1)
+			return;
+		int iCursor = charIndexFromXPosition(e->pos().x());
+		int iLen=m_szTextBuffer.length()-1;
+		if(iCursor>iLen)
+			iCursor=iLen;
+		if(!m_szTextBuffer.at(iCursor).isLetterOrNumber())
+			return;
+		//search word init
+		m_iSelectionBegin = iCursor;
+		while(m_iSelectionBegin > 0)
+		{
+			if(!m_szTextBuffer.at(m_iSelectionBegin-1).isLetterOrNumber())
+					break;
+			m_iSelectionBegin--;
+		}
+		//ensure that the begin of the selection is visible
+		if(m_iFirstVisibleChar>m_iSelectionBegin)
+			m_iFirstVisibleChar=m_iSelectionBegin;
+
+		//search word end
+		m_iSelectionEnd = iCursor;
+		while(m_iSelectionEnd < iLen)
+		{
+			if(!m_szTextBuffer.at(m_iSelectionEnd+1).isLetterOrNumber())
+					break;
+			m_iSelectionEnd++;
+		}
+		if(m_iSelectionEnd==((int)(m_szTextBuffer.length())))
+			m_iSelectionEnd--;
+		//all-in-one: move cursor at the end of the selection, ensure it's visible and repaint
+		moveCursorTo(m_iSelectionEnd, true);
+		m_iCursorPosition++;
+		killDragTimer();
+	}
+}
+
 void KviInputEditor::mousePressEvent(QMouseEvent * e)
 {
 	if(e->button() & Qt::LeftButton)
