@@ -993,6 +993,7 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 		line_ptr->iMsgType=iMsgType;
 		line_ptr->iMaxLineWidth=-1;
 		line_ptr->iBlockCount=0;
+		line_ptr->uLineWraps=0;
 
 		if(!KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))
 		{

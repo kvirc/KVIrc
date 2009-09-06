@@ -598,8 +598,7 @@ bool KviIrcConnection::sendFmtData(const char * pcFmt, ...)
 			m_pConsole->outputNoFmt(KVI_OUT_SOCKETWARNING,__tr2qs("[LINK WARNING]: Socket message truncated to 512 bytes."));
 	}
 
-	QString szMsg = (const char *)(pData->data());
-	szMsg.truncate(iLen - 2);
+	QString szMsg = QString::fromAscii((const char *)(pData->data()), iLen-2);
 
 	// notify the monitors
 	if(KviPointerList<KviIrcDataStreamMonitor> * l = context()->monitorList())
