@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-08-18 23:01+0200\n"
+"POT-Creation-Date: 2009-09-08 23:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,106 +109,106 @@ msgstr ""
 msgid "The specified window identifier is not valid"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:163
+#: src/modules/dcc/voice.cpp:162
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
 "half-duplex soundcard , use the DCC VOICE option to force half-duplex "
 "algorithm"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:171
+#: src/modules/dcc/voice.cpp:170
 msgid ""
 "Half duplex soundcard detected, you will not be able to talk and listen at "
 "the same time"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:212
+#: src/modules/dcc/voice.cpp:211
 #, c-format
 msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
 "closest match (%d)"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:270
+#: src/modules/dcc/voice.cpp:269
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:656
+#: src/modules/dcc/voice.cpp:655
 msgid "Input buffer"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:658
+#: src/modules/dcc/voice.cpp:657
 msgid "Output buffer"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:741
+#: src/modules/dcc/voice.cpp:740
 msgid "Attempting a passive DCC VOICE connection"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:746
+#: src/modules/dcc/voice.cpp:745
 msgid "Attempting an active DCC VOICE connection"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:756
+#: src/modules/dcc/voice.cpp:755
 #: src/modules/dcc/canvas.cpp:109
-#: src/modules/dcc/chat.cpp:185
+#: src/modules/dcc/chat.cpp:184
 msgid "Contacting host %Q on port %Q"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:759
+#: src/modules/dcc/voice.cpp:758
 #: src/modules/dcc/canvas.cpp:85
-#: src/modules/dcc/chat.cpp:187
+#: src/modules/dcc/chat.cpp:186
 msgid "Listening on interface %Q port %Q"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:776
+#: src/modules/dcc/voice.cpp:775
 msgid ""
 "Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:778
+#: src/modules/dcc/voice.cpp:777
 msgid "DCC VOICE request not sent: awaiting manual connections"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:819
-#: src/modules/dcc/chat.cpp:408
+#: src/modules/dcc/voice.cpp:818
+#: src/modules/dcc/chat.cpp:407
 msgid "ERROR: %Q"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:877
+#: src/modules/dcc/voice.cpp:876
 #, c-format
 msgid "Input buffer: %d bytes"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:879
+#: src/modules/dcc/voice.cpp:878
 #, c-format
 msgid "Output buffer: %d bytes"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:902
+#: src/modules/dcc/voice.cpp:901
 #: src/modules/dcc/canvas.cpp:278
 msgid "DCC Failed: %Q"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:911
+#: src/modules/dcc/voice.cpp:910
 #: src/modules/dcc/canvas.cpp:283
-#: src/modules/dcc/chat.cpp:526
+#: src/modules/dcc/chat.cpp:525
 msgid "Connected to %Q:%Q"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:913
+#: src/modules/dcc/voice.cpp:912
 #: src/modules/dcc/canvas.cpp:285
-#: src/modules/dcc/chat.cpp:528
+#: src/modules/dcc/chat.cpp:527
 msgid "Local end is %Q:%Q"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:931
+#: src/modules/dcc/voice.cpp:930
 #, c-format
 msgid "Actual codec used is '%s'"
 msgstr ""
 
-#: src/modules/dcc/voice.cpp:1015
+#: src/modules/dcc/voice.cpp:1014
 #, c-format
 msgid "Volume: %i"
 msgstr ""
@@ -406,75 +406,75 @@ msgstr ""
 msgid "&Insert"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:162
+#: src/modules/dcc/chat.cpp:161
 #, c-format
 msgid "Attempting a passive DCC %s connection"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:171
+#: src/modules/dcc/chat.cpp:170
 #, c-format
 msgid "Attempting an active DCC %s connection"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:209
+#: src/modules/dcc/chat.cpp:208
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:211
-#: src/modules/dcc/send.cpp:1501
+#: src/modules/dcc/chat.cpp:210
+#: src/modules/dcc/send.cpp:1506
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:214
-#: src/modules/dcc/send.cpp:1504
+#: src/modules/dcc/chat.cpp:213
+#: src/modules/dcc/send.cpp:1509
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:236
+#: src/modules/dcc/chat.cpp:235
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:239
+#: src/modules/dcc/chat.cpp:238
 msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:247
-#: src/modules/dcc/send.cpp:1563
+#: src/modules/dcc/chat.cpp:246
+#: src/modules/dcc/send.cpp:1568
 msgid "Low-level transport connection established"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:248
-#: src/modules/dcc/send.cpp:1564
+#: src/modules/dcc/chat.cpp:247
+#: src/modules/dcc/send.cpp:1569
 msgid "Starting Secure Socket Layer handshake"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:256
+#: src/modules/dcc/chat.cpp:255
 #, c-format
 msgid "[SSL ERROR]: %s"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:298
-#: src/modules/dcc/chat.cpp:393
+#: src/modules/dcc/chat.cpp:297
+#: src/modules/dcc/chat.cpp:392
 msgid "Cannot send data: No active connection"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:340
+#: src/modules/dcc/chat.cpp:339
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:452
+#: src/modules/dcc/chat.cpp:451
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
 
-#: src/modules/dcc/chat.cpp:498
+#: src/modules/dcc/chat.cpp:497
 msgid "DCC %Q failed: %Q"
 msgstr ""
 
@@ -499,7 +499,7 @@ msgid "Re&sume"
 msgstr ""
 
 #: src/modules/dcc/dialogs.cpp:158
-#: src/modules/dcc/send.cpp:1847
+#: src/modules/dcc/send.cpp:1852
 msgid "Cancel"
 msgstr ""
 
@@ -732,167 +732,167 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:597
+#: src/modules/dcc/send.cpp:602
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:729
+#: src/modules/dcc/send.cpp:734
 #, c-format
 msgid "TRANSFER %d"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:752
+#: src/modules/dcc/send.cpp:757
 msgid "Setting up the connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:811
+#: src/modules/dcc/send.cpp:816
 msgid "Attempting a passive DCC %1 connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:815
+#: src/modules/dcc/send.cpp:820
 msgid "Attempting an active DCC %1 connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:841
+#: src/modules/dcc/send.cpp:846
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:908
-#: src/modules/dcc/send.cpp:919
+#: src/modules/dcc/send.cpp:913
+#: src/modules/dcc/send.cpp:924
 msgid "Aborted"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:918
-#: src/modules/dcc/send.cpp:1589
-#: src/modules/dcc/send.cpp:1668
+#: src/modules/dcc/send.cpp:923
+#: src/modules/dcc/send.cpp:1594
+#: src/modules/dcc/send.cpp:1673
 msgid "Transfer failed: "
 msgstr ""
 
-#: src/modules/dcc/send.cpp:929
+#: src/modules/dcc/send.cpp:934
 msgid "Configure Bandwidth..."
 msgstr ""
 
-#: src/modules/dcc/send.cpp:931
+#: src/modules/dcc/send.cpp:936
 msgid "Resend DCC"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:932
+#: src/modules/dcc/send.cpp:937
 msgid "Resend TDCC"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:933
+#: src/modules/dcc/send.cpp:938
 msgid "Resend RevDCC"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:937
+#: src/modules/dcc/send.cpp:942
 msgid "Abort"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1127
+#: src/modules/dcc/send.cpp:1132
 msgid "From: "
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1128
+#: src/modules/dcc/send.cpp:1133
 msgid "To: "
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1231
-#: src/modules/dcc/send.cpp:1238
+#: src/modules/dcc/send.cpp:1236
+#: src/modules/dcc/send.cpp:1243
 msgid "%1 of %2 (%3%)"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1242
+#: src/modules/dcc/send.cpp:1247
 msgid "%1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1255
+#: src/modules/dcc/send.cpp:1260
 msgid "Spd:"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1270
+#: src/modules/dcc/send.cpp:1275
 msgid "Avg:"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1340
+#: src/modules/dcc/send.cpp:1345
 msgid "Transfer Log"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1469
+#: src/modules/dcc/send.cpp:1474
 msgid "Contacting host %1 on port %2"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1476
+#: src/modules/dcc/send.cpp:1481
 msgid "Listening on interface %1 port %2"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1499
+#: src/modules/dcc/send.cpp:1504
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1550
+#: src/modules/dcc/send.cpp:1555
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1552
+#: src/modules/dcc/send.cpp:1557
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1571
+#: src/modules/dcc/send.cpp:1576
 msgid "[SSL ERROR]: %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1614
+#: src/modules/dcc/send.cpp:1619
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1629
+#: src/modules/dcc/send.cpp:1634
 msgid "Transfer completed"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1677
+#: src/modules/dcc/send.cpp:1682
 msgid "Connected to %1:%2"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1678
+#: src/modules/dcc/send.cpp:1683
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1722
+#: src/modules/dcc/send.cpp:1727
 msgid "Transferring data"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1748
+#: src/modules/dcc/send.cpp:1753
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1779
+#: src/modules/dcc/send.cpp:1784
 msgid "Internal error in RESUME request"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1784
+#: src/modules/dcc/send.cpp:1789
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1788
+#: src/modules/dcc/send.cpp:1793
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1816
+#: src/modules/dcc/send.cpp:1821
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1819
+#: src/modules/dcc/send.cpp:1824
 msgid "Limit upload bandwidth to"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1819
+#: src/modules/dcc/send.cpp:1824
 msgid "Limit download bandwidth to"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1838
+#: src/modules/dcc/send.cpp:1843
 msgid "bytes/sec"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1842
+#: src/modules/dcc/send.cpp:1847
 msgid "OK"
 msgstr ""
