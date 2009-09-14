@@ -3,7 +3,6 @@ SUBDIRS(translations)
 
 #FIXME the nullsoft install scripts don't support the coexistence switch
 SET(files
-	KVIrc.iss
 	KVIrc.nsi
 	README.txt
 )
