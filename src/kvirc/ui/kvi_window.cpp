@@ -643,8 +643,6 @@ void KviWindow::updateCaption()
 	else
 		setWindowTitle(m_szPlainTextCaption);
 	if(m_pWindowListItem)m_pWindowListItem->captionChanged();
-	if(mdiParent() && isMaximized() && (g_pActiveWindow == this))
-		g_pFrame->updateCaption();
 }
 
 void KviWindow::updateCaptionListItem()

@@ -64,8 +64,6 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 : QMdiArea(parent)
 {
 	setFrameShape(NoFrame);
-	//this option fixes #519 and some other strange behaviours related to window focusing
-	setOption(QMdiArea::DontMaximizeSubWindowOnActivation);
 	m_bInSDIMode = false;
 	m_pFrm = pFrm;
 

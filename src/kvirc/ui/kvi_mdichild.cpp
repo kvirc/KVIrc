@@ -81,7 +81,7 @@ KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 
 	m_pClient = 0;
 
-	connect(this, SIGNAL(windowStateChanged(Qt::WindowStates,Qt::WindowStates)), this, SLOT(windowStateChangedEvent(Qt::WindowStates,Qt::WindowStates)));
+// 	connect(this, SIGNAL(windowStateChanged(Qt::WindowStates,Qt::WindowStates)), this, SLOT(windowStateChangedEvent(Qt::WindowStates,Qt::WindowStates)));
 	connect(this, SIGNAL(minimizeSignal()), this, SLOT(minimize()), Qt::QueuedConnection);
 	connect(this, SIGNAL(restoreSignal()), this, SLOT(restore()), Qt::QueuedConnection);
 	connect(this, SIGNAL(maximizeSignal()), this, SLOT(maximize()), Qt::QueuedConnection);
