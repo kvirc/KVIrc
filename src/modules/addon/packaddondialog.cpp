@@ -81,6 +81,11 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	setPixmap(QWizard::LogoPixmap,*pLogo);
 #endif
 
+	// Add the properties to handle fields
+	setDefaultProperty("QTextEdit","plainText","textChanged()");
+	setDefaultProperty("KviFileSelector","file","selectionChanged()");
+	setDefaultProperty("KviDirSelector","dir","selectionChanged()");
+
 	// Welcome page
 	QWizardPage * pPage = new QWizardPage(this);
 	QVBoxLayout * pLayout = new QVBoxLayout(pPage);
@@ -473,14 +478,6 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 {
 	setTitle(__tr2qs_ctx("Package Informations","addon"));
 	setSubTitle(__tr2qs_ctx("Here you need to provide informations about you (the packager) and a short description of the package you're creating.","addon"));
-	//setPixmap(QWizard::WatermarkPixmap, QPixmap(":/images/watermark.png"));
-
-	// Default values
-	m_szPackageAuthor = __tr2qs_ctx("Your name here","addon");
-	m_szPackageName = "The name must NOT contains spaces, like MyAddon";
-	m_szPackageDescription = __tr2qs_ctx("Put a package description here...","addon");
-	m_szPackageVersion = "Version number in the form x.y[.z], like 1.0 or 2.0.3";
-	m_szPackageMinVersion = KVI_VERSION;
 
 	QGridLayout * pLayout = new QGridLayout(this);
 
@@ -489,7 +486,7 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 	pLayout->addWidget(pLabel,0,0);
 	
 	m_pPackageAuthorEdit = new QLineEdit(this);
-	m_pPackageAuthorEdit->setText(m_szPackageAuthor);
+	m_pPackageAuthorEdit->setText(__tr2qs_ctx("Your name here","addon"));
 	pLabel->setBuddy(m_pPackageAuthorEdit);
 	pLayout->addWidget(m_pPackageAuthorEdit,0,1);
 
@@ -498,7 +495,7 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 	pLayout->addWidget(pLabel,1,0);
 	
 	m_pPackageNameEdit = new QLineEdit(this);
-	m_pPackageNameEdit->setText(m_szPackageName);
+	m_pPackageNameEdit->setText(__tr2qs_ctx("No spaces allowed, like MyAddon","addon"));
 	pLabel->setBuddy(m_pPackageNameEdit);
 	pLayout->addWidget(m_pPackageNameEdit,1,1);
 
@@ -507,7 +504,7 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 	pLayout->addWidget(pLabel,2,0);
 	
 	m_pPackageVersionEdit = new QLineEdit(this);
-	m_pPackageVersionEdit->setText(m_szPackageVersion);
+	m_pPackageVersionEdit->setText(__tr2qs_ctx("Version in the form x.y[.z], like 1.0 or 2.0.3","addon"));
 	pLabel->setBuddy(m_pPackageVersionEdit);
 	pLayout->addWidget(m_pPackageVersionEdit,2,1);
 
@@ -517,7 +514,7 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 	
 	m_pPackageDescriptionEdit = new KviTalTextEdit(this);
 	m_pPackageDescriptionEdit->setBackgroundRole(QPalette::Window);
-	m_pPackageDescriptionEdit->setText(m_szPackageDescription);
+	m_pPackageDescriptionEdit->setText(__tr2qs_ctx("Put a package description here...","addon"));
 	pLabel->setBuddy(m_pPackageDescriptionEdit);
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1,1,2);
 	pLayout->setRowStretch(1,1);
@@ -527,7 +524,7 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 	pLayout->addWidget(pLabel,4,0);
 
 	m_pPackageMinVersionEdit = new QLineEdit(this);
-	m_pPackageMinVersionEdit->setText(m_szPackageMinVersion);
+	m_pPackageMinVersionEdit->setText(KVI_VERSION);
 	pLabel->setBuddy(m_pPackageMinVersionEdit);
 	pLayout->addWidget(m_pPackageMinVersionEdit,4,1);
 
@@ -535,9 +532,9 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 	registerField("packageAuthor*",m_pPackageAuthorEdit);
 	registerField("packageName*",m_pPackageNameEdit);
 	registerField("packageVersion*",m_pPackageVersionEdit);
+	// FIXME: if the description field is changed before the others, it work, otherwise not
+	//registerField("packageDescription*",m_pPackageDescriptionEdit);
 	registerField("packageDescription",m_pPackageDescriptionEdit);
-	// FIXME
-	//registerField("packageDescription*",m_pPackageDescriptionEdit,"QString toPlainText()","textChanged()");
 	registerField("packageMinVersion",m_pPackageMinVersionEdit);
 }
 
@@ -563,7 +560,7 @@ KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDia
 	pLayout->addWidget(m_pPackageIconEdit);
 
 	// Store data in the fields
-	// FIXME
+	// FIXME they seem to ignore KviFile/DirSelector properties
 	//registerField("packageDirPath*",m_pPackageIconEdit);
 	//registerField("packageIcon*",m_pPackageIconEdit);
 	registerField("packageDirPath",m_pPackageIconEdit);
@@ -588,8 +585,8 @@ KviPackAddonSaveSelectionWidget::KviPackAddonSaveSelectionWidget(KviPackAddonDia
 	pLayout->addWidget(m_pSavePathSelector);
 
 	// Store data in the fields
-	// FIXME: these fields don't get registered
-	//registerField("packageSavePath*",m_pSavePathSelector,"","selectionChanged");
+	// FIXME they seem to ignore KviFile/DirSelector properties
+	//registerField("packageSavePath*",m_pSavePathSelector);
 	registerField("packageSavePath",m_pSavePathSelector);
 }
 

@@ -210,6 +210,7 @@ public slots:
 class KVIRC_API KviFileSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
+	Q_PROPERTY(QString file READ file WRITE setFile)
 public:
 	KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags = 0,const QString &szFilter = QString());
 	~KviFileSelector(){};
@@ -226,6 +227,8 @@ protected:
 	unsigned int  m_uFlags;
 	QString       m_szFilter;
 public:
+	QString file(){ return *m_pOption; };
+	void setFile(QString & szFile){ *m_pOption = szFile; };
 	virtual void commit();
 	void setSelection(const QString &szSelection);
 signals:
@@ -241,9 +244,13 @@ protected:
 class KVIRC_API KviDirectorySelector : public KviFileSelector
 {
 	Q_OBJECT
+	Q_PROPERTY(QString dir READ dir WRITE setDir)
 public:
 	KviDirectorySelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled);
 	~KviDirectorySelector(){};
+public:
+	QString dir(){ return *m_pOption; };
+	void setDir(QString szDir){ *m_pOption = szDir; };
 protected:
 	virtual void select();
 };
