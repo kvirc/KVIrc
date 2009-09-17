@@ -84,7 +84,7 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 	// Add the properties to handle fields
 	setDefaultProperty("QTextEdit","plainText","textChanged()");
 	setDefaultProperty("KviFileSelector","file","selectionChanged()");
-	setDefaultProperty("KviDirSelector","dir","selectionChanged()");
+	setDefaultProperty("KviDirectorySelector","dir","selectionChanged()");
 
 	// Welcome page
 	QWizardPage * pPage = new QWizardPage(this);
