@@ -195,6 +195,7 @@ bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCa
 	if(bShowNative)
 	{
 		szBuffer = QFileDialog::getExistingDirectory(pParent,szCaption,szInitial);
+		KviFileUtils::adjustFilePath(szBuffer);
 		return !szBuffer.isEmpty();
 	}
 #else

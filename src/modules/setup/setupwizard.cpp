@@ -732,6 +732,7 @@ void KviSetupWizard::newDirClicked()
 void KviSetupWizard::chooseOldDataPath()
 {
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pDataPathEdit->text(),__tr2qs("Choose an Old Configuration Folder - KVIrc Setup"),0);
+	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
 	{
 		KviQString::ensureLastCharIs(szBuffer,KVI_PATH_SEPARATOR_CHAR);
@@ -758,6 +759,7 @@ void KviSetupWizard::chooseOldDataPath()
 void KviSetupWizard::chooseDataPath()
 {
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pDataPathEdit->text(),__tr2qs("Choose a Configuration Folder - KVIrc Setup"),0);
+	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
 	{
 		KviQString::ensureLastCharIs(szBuffer,KVI_PATH_SEPARATOR_CHAR);
@@ -769,6 +771,7 @@ void KviSetupWizard::chooseIncomingPath()
 {
 	//QString szBuffer = QFileDialog::getExistingDirectory(m_pIncomingPathEdit->text(),0,0,__tr2qs("Choose the download folder"));
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pIncomingPathEdit->text(),__tr2qs("Choose a Download Folder - KVIrc Setup"),0);
+	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
 	{
 		m_pIncomingPathEdit->setText(szBuffer);
