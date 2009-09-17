@@ -94,7 +94,6 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 				m_szPackagePath += "-";
 				m_szPackagePath += szPackageVersion;
 			}
-			m_szPackagePath += ".";
 			m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
 
 			bPackagePathSet = true;
@@ -106,7 +105,6 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 		m_szPackagePath += szPackageName;
 		m_szPackagePath += "-";
 		m_szPackagePath += szPackageVersion;
-		m_szPackagePath += ".";
 		m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
 	}
 
@@ -294,12 +292,12 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Here you must choose the file name for the theme package. It should have a *.%1 extension.","theme").arg(KVI_FILEEXTENSION_THEMEPACKAGE));
+	pLabel->setText(__tr2qs_ctx("Here you must choose the file name for the theme package. It should have a *%1 extension.","theme").arg(KVI_FILEEXTENSION_THEMEPACKAGE));
 		pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
 
-	szFilter = "*.";
+	szFilter = "*";
 	szFilter += KVI_FILEEXTENSION_THEMEPACKAGE;
 	m_pPathSelector = new KviFileSelector(pPage,"",&m_szPackagePath,true,KviFileSelector::ChooseSaveFileName,szFilter);
 	pLayout->addWidget(m_pPathSelector,1,0);

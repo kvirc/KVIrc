@@ -253,8 +253,11 @@ void KviScriptManagementDialog::uninstallScript()
 	txt += __tr2qs("Do you really want to uninstall the addon \"%1\" ?").arg(it->addon()->visibleName());
 	txt += "</p>";
 
-	if(QMessageBox::question(this,
-		__tr2qs("Confirm addon uninstallation"),txt,__tr2qs("&Yes"),__tr2qs("&No"),0,1) != 0)return;
+	if(QMessageBox::question(
+		this,
+		__tr2qs("Confirm addon uninstallation"),
+		txt, __tr2qs("&Yes"), __tr2qs("&No"),0,1
+		) != 0) return;
 
 	KviKvsScriptAddonManager::instance()->unregisterAddon(it->addon()->name(),g_pActiveWindow);
 
@@ -271,7 +274,11 @@ void KviScriptManagementDialog::installScript()
 {
 	QString szFileName, szError;
 
-	if(!KviFileDialog::askForOpenFileName(szFileName,__tr2qs("Please select the addon installation file"),QString(),KVI_FILTER_SCRIPTS,false,true))return;
+	if(!KviFileDialog::askForOpenFileName(
+		szFileName,
+		__tr2qs("Please select the addon installation file"),
+		QString(),KVI_FILTER_SCRIPTS,false,true
+		)) return;
 
 	szFileName.replace("\\","\\\\");
 
@@ -288,14 +295,28 @@ void KviScriptManagementDialog::installScript()
 		qDebug("Addon file .kva");
 		if(!KviAddonFunctions::installAddonPackage(szFileName,szError,this))
 		{
-			QMessageBox::critical(this,__tr2qs_ctx("Install Addon - KVIrc","addon"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+			QMessageBox::critical(
+				this,
+				__tr2qs_ctx("Install Addon - KVIrc","addon"),
+				szError,
+				QMessageBox::Ok,
+				QMessageBox::NoButton,
+				QMessageBox::NoButton
+			);
 			return;
 		}
 	} else {
 		// Just for sanity check. We should NEVER enter here
 		qDebug("Entered sanity check");
 		KviAddonFunctions::notAValidAddonPackage(szError);
-		QMessageBox::critical(this,__tr2qs_ctx("Install Addon - KVIrc","addon"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		QMessageBox::critical(
+			this,
+			__tr2qs_ctx("Install Addon - KVIrc","addon"),
+			szError,
+			QMessageBox::Ok,
+			QMessageBox::NoButton,
+			QMessageBox::NoButton
+		);
 	}
 
 	fillListView();
