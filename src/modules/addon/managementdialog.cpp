@@ -285,14 +285,13 @@ void KviScriptManagementDialog::installScript()
 	// Switch between script and addon
 	if(szFileName.endsWith(".kvs"))
 	{
-		qDebug("Script file .kvs");
 		QString szCmd = "parse \"";
 		szCmd += szFileName;
 		szCmd += "\"";
 
 		KviKvsScript::run(szCmd,g_pActiveWindow);
-	} else if(szFileName.endsWith(".kva")){
-		qDebug("Addon file .kva");
+	} else if(szFileName.endsWith(".kva"))
+	{
 		if(!KviAddonFunctions::installAddonPackage(szFileName,szError,this))
 		{
 			QMessageBox::critical(

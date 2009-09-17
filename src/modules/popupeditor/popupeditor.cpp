@@ -40,6 +40,7 @@
 #include "kvi_kvs_variantlist.h"
 #include "kvi_pointerhashtable.h"
 #include "kvi_tal_vbox.h"
+#include "kvi_fileextensions.h"
 
 #include <QMessageBox>
 #include <QDir>
@@ -1107,7 +1108,7 @@ void KviPopupEditor::exportCurrentPopup()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true))return;
 
 	QString szOut;
 	m_pLastEditedItem->popup()->generateDefPopup(szOut);
@@ -1157,7 +1158,7 @@ void KviPopupEditor::exportPopups(bool bSelectedOnly)
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true))return;
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{

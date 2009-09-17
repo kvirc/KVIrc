@@ -158,8 +158,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	m_pImageLabel->setAlignment(Qt::AlignCenter | Qt::AlignVCenter);
 	pLayout->addWidget(m_pImageLabel,1,0);
 
-	QString szFilter = "*.png *.jpg *.xpm";
-	m_pImageSelector = new KviFileSelector(pPage,"",&m_szScreenshotPath,true,0,szFilter);
+	m_pImageSelector = new KviFileSelector(pPage,"",&m_szScreenshotPath,true,0,KVI_FILTER_IMAGE);
 	connect(m_pImageSelector,SIGNAL(selectionChanged(const QString &)),this,SLOT(imageSelectionChanged(const QString &)));
 	pLayout->addWidget(m_pImageSelector,2,0);
 

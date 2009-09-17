@@ -42,6 +42,7 @@
 #include "kvi_cmdformatter.h"
 #include "kvi_module.h"
 #include "kvi_tal_vbox.h"
+#include "kvi_fileextensions.h"
 
 #include <QList>
 #include <QSplitter>
@@ -805,7 +806,7 @@ void KviAliasEditor::exportAliases(bool bSelectedOnly,bool bSingleFiles)
 	else szNameFile="aliases";
 	szName += szNameFile;
 	szName += ".kvs";
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",false,true,true))
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,false,true,true))
 	{
 		g_pAliasEditorModule->unlock();
 		return;

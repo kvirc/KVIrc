@@ -28,7 +28,6 @@
 #include "kvi_locale.h"
 #include "kvi_imagedialog.h"
 #include "kvi_config.h"
-#include "kvi_filedialog.h"
 #include "kvi_fileutils.h"
 #include "kvi_scripteditor.h"
 #include "kvi_debug.h"
@@ -43,6 +42,7 @@
 #include "kvi_tal_vbox.h"
 #include <kvi_tal_groupbox.h>
 #include "kvi_tal_itemdelegates.h"
+#include "kvi_fileextensions.h"
 
 #include <QList>
 #include <QSplitter>
@@ -689,7 +689,7 @@ void KviActionEditor::exportActions()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,QString(),true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true))return;
 
 	QString szCode;
 

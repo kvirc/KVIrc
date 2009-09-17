@@ -38,6 +38,7 @@
 #include "kvi_filedialog.h"
 #include "kvi_kvs_useraction.h"
 #include "kvi_tal_tooltip.h"
+#include "kvi_fileextensions.h"
 
 #include <QPushButton>
 #include <QLayout>
@@ -390,7 +391,7 @@ void KviCustomizeToolBarsDialog::exportToolBar()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true))return;
 
 	QString szCode;
 
