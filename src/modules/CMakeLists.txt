@@ -38,9 +38,6 @@ SUBDIRS(
 	upnp
 	url
 	window
-
-	# forgotten ?
-	# offer
 )
 
 IF(COMPILE_PERL_SUPPORT)
