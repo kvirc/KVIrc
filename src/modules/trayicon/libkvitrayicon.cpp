@@ -350,14 +350,15 @@ void KviTrayIcon::toggleParentFrame()
 	if(m_pFrm->isVisible()) {
 		m_pFrm->hide();
 	} else {
+		//restore active mdichild
 		top_widget->show();
 		top_widget->raise();
-
 		if(g_pActiveWindow) g_pActiveWindow->setFocus();
-		if(m_pFrm->isMinimized())
-			m_pFrm->showNormal();
-		else
-			m_pFrm->show();
+		
+		//restore mainwindow
+		m_pFrm->setWindowState(m_pFrm->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+		m_pFrm->show();
+
 	}
 }
 
