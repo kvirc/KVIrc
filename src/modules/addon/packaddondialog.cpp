@@ -563,7 +563,7 @@ KviPackAddonFileSelectionWidget::KviPackAddonFileSelectionWidget(KviPackAddonDia
 	// FIXME they seem to ignore KviFile/DirSelector properties
 	//registerField("packageDirPath*",m_pPackageIconEdit);
 	//registerField("packageIcon*",m_pPackageIconEdit);
-	registerField("packageDirPath",m_pPackageIconEdit);
+	registerField("packageDirPath",m_pDirPathSelector);
 	registerField("packageIcon",m_pPackageIconEdit);
 }
 

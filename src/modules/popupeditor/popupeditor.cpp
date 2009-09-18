@@ -1103,7 +1103,7 @@ void KviPopupEditor::exportCurrentPopup()
 
 	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
-	szName += m_pLastEditedItem->popup()->text(0);
+	szName += m_pLastEditedItem->popup()->popupName();
 	szName += ".kvs";
 
 	QString szFile;
