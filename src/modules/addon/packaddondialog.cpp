@@ -71,7 +71,7 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 		setPixmap(QWizard::WatermarkPixmap,*pSide);
 		setPixmap(QWizard::LogoPixmap,*pLogo);
 	#endif
-#elseif defined(COMPILE_ON_MAC)
+#elif defined(COMPILE_ON_MAC)
 	setWizardStyle(QWizard::MacStyle);
 	setPixmap(QWizard::BackgroundPixmap,*pSide);
 #else
