@@ -157,17 +157,18 @@ public:
 	KviMenuTreeWidgetItem  * m_pLastEditedItem;
 	bool                   m_bOneTimeSetupDone;
 	KviTalPopupMenu      * m_pContextPopup;
+	KviTalPopupMenu      * m_pEmptyContextPopup;
 public:
 	void commit();
 	void exportPopups(bool);
 protected slots:
 	void currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *prev);
+	void customContextMenuRequested(const QPoint &pnt);
 	void newPopup();
 	void exportAll();
 	void exportSelected();
 	void exportCurrentPopup();
 	void removeCurrentPopup();
-	void itemPressed(QTreeWidgetItem * item, int column);
 protected:
 	void showEvent(QShowEvent *e);
 	void getExportPopupBuffer(QString &buffer,KviMenuTreeWidgetItem * it);
