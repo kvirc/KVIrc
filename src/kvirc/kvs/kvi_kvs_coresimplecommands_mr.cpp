@@ -728,27 +728,24 @@ namespace KviKvsCoreSimpleCommands
 
 		QStringList sl = szChans.split(",",QString::SkipEmptyParts);
 
-		if(!szMsg.isEmpty())
+		if(szMsg.isEmpty())szMsg = KVI_OPTION_STRING(KviOption_stringPartMessage);
+
+		QByteArray szText;
+		if(sl.count() == 1)
 		{
-			QByteArray szText;
-			if(sl.count() == 1)
-			{
-				// single chan , use channel encoding if possible
-				KviChannel * ch = KVSCSC_pConnection->findChannel(szChans);
-				if(ch)
-					szText = ch->encodeText(szMsg);
-				else
-					szText = KVSCSC_pConnection->encodeText(szMsg);
-			} else {
-				// multiple chans, use connection encoding
+			// single chan , use channel encoding if possible
+			KviChannel * ch = KVSCSC_pConnection->findChannel(szChans);
+			if(ch)
+				szText = ch->encodeText(szMsg);
+			else
 				szText = KVSCSC_pConnection->encodeText(szMsg);
-			}
-			if(!(KVSCSC_pConnection->sendFmtData("PART %s :%s",szEncodedChans.data(),szText.data())))
-				return KVSCSC_pContext->warningNoIrcConnection();
 		} else {
-			if(!(KVSCSC_pConnection->sendFmtData("PART %s",szEncodedChans.data())))
-				return KVSCSC_pContext->warningNoIrcConnection();
+			// multiple chans, use connection encoding
+			szText = KVSCSC_pConnection->encodeText(szMsg);
 		}
+		if(!(KVSCSC_pConnection->sendFmtData("PART %s :%s",szEncodedChans.data(),szText.data())))
+			return KVSCSC_pContext->warningNoIrcConnection();
+
 
 		for(QStringList::Iterator it=sl.begin();it != sl.end();it++)
 		{
