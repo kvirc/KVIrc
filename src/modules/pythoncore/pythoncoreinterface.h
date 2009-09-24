@@ -1,5 +1,6 @@
 #ifndef _PYTHONCOREINTERFACE_H_
 #define _PYTHONCOREINTERFACE_H_
+
 //=============================================================================
 //
 //   File : pythoncoreinterface.h
@@ -20,7 +21,7 @@
 //
 //   You should have received a copy of the GNU General Public License
 //   along with this program. If not, write to the Free Software Foundation,
-//   Inc. ,59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+//   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 //
 //=============================================================================
 
@@ -30,10 +31,14 @@
 
 #include <QStringList>
 
+
+#define KVI_PYTHONCORECTRLCOMMAND_EXECUTE "execute"
+
 typedef struct _KviPythonCoreCtrlCommand_execute
 {
 	unsigned int           uSize;
 	KviKvsRunTimeContext * pKvsContext;
+	QString                szContext;
 	QString                szCode;
 	bool                   bExitOk;
 	QString                szRetVal;
@@ -43,10 +48,12 @@ typedef struct _KviPythonCoreCtrlCommand_execute
 	bool                   bQuiet;
 } KviPythonCoreCtrlCommand_execute;
 
+#define KVI_PYTHONCORECTRLCOMMAND_DESTROY "destroy"
+
 typedef struct _KviPythonCoreCtrlCommand_destroy
 {
 	unsigned int uSize;
 	QString      szContext;
 } KviPythonCoreCtrlCommand_destroy;
 
-#endif // _PYTHONCOREINTERFACE_H_
+#endif // !_PYTHONCOREINTERFACE_H_

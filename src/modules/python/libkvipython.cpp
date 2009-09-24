@@ -35,6 +35,8 @@
 	#include "../pythoncore/pythoncoreinterface.h"
 	#include <Python.h>
 
+	static KviModule * g_pPythonCoreModule = 0;
+	
 	#define KVS_CHECK_PYTHONCORE(_m,_c) \
 		g_pPythonCoreModule = g_pModuleManager->getModule("pythoncore"); \
 		if(!g_pPythonCoreModule) \
@@ -48,8 +50,6 @@
 		}
 
 	#define KVS_CHECK_MODULE_STATE(_m,_c) KVS_CHECK_PYTHONCORE(_m,_c)
-
-	static KviModule * g_pPythonCoreModule = 0;
 
 #else // COMPILE_PYTHON_SUPPORT
 
@@ -68,25 +68,67 @@ static bool python_kvs_cmd_begin(KviKvsModuleCommandCall * c)
 	// This command is somewhat special in the fact that has a dedicated
 	// parsing routine in the KVS core parser.
 	// The parser sets the python code as the first parameter of our call,
-	// the remaining params are the arguments
+	// the remaining params are the context name and the arguments
 
-	QString szCode;
+	QString szCode,szContext;
 	KviKvsVariantList vList;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("code",KVS_PT_STRING,0,szCode)
+		KVSM_PARAMETER("context",KVS_PT_STRING,KVS_PF_OPTIONAL,szContext)
 		KVSM_PARAMETER("args",KVS_PT_VARIANTLIST,KVS_PF_OPTIONAL,vList)
 	KVSM_PARAMETERS_END(c)
 
 	KVS_CHECK_MODULE_STATE(m,c)
 
 #ifdef COMPILE_PYTHON_SUPPORT
-	debug("Python module begin");
+	KviPythonCoreCtrlCommand_execute ex;
+	ex.uSize = sizeof(KviPythonCoreCtrlCommand_execute);
+	ex.pKvsContext = c->context();
+	ex.szContext = szContext;
+	ex.szCode = szCode;
+	for(KviKvsVariant * v = vList.first();v;v = vList.next())
+	{
+		QString tmp;
+		v->asString(tmp);
+		ex.lArgs.append(tmp);
+	}
+	ex.bQuiet = c->switches()->find('q',"quiet");
 
-	// FIXME Test: this prints the sentence on the stdout, like Qt's debug()
-	if(PyRun_SimpleString("print 'Test string'\n") < 0)
-		c->warning("Non funza");
+	if(!g_pPythonCoreModule->ctrl(KVI_PYTHONCORECTRLCOMMAND_EXECUTE,&ex))
+	{
+		if(!c->switches()->find('q',"quiet"))
+			c->warning(__tr2qs_ctx("The pythoncore module failed to execute the code: something is wrong with the python support","python"));
+		return true;
+	}
 
-#endif // COMPILE_PYTHON_SUPPORT
+	if(!ex.lWarnings.isEmpty())
+	{
+		for(QStringList::Iterator it = ex.lWarnings.begin();it != ex.lWarnings.end();++it)
+			c->warning(*it);
+	}
+
+	if(!ex.bExitOk)
+	{
+		if(!c->switches()->find('q',"quiet"))
+		{
+
+			if(c->switches()->find('f',"fail-on-error"))
+			{
+				c->warning(__tr2qs_ctx("Python execution error:","python"));
+				c->warning(ex.szError);
+				return false;
+			} else {
+				c->warning(__tr2qs_ctx("Python execution error:","python"));
+				c->error(ex.szError);
+			}
+		}
+	}
+
+	if(!c->switches()->find('n',"no-return"))
+		c->context()->returnValue()->setString(ex.szRetVal);
+
+#endif //COMPILE_PYTHON_SUPPORT
+
 
 	return true;
 }
@@ -101,20 +143,16 @@ static bool python_kvs_cmd_destroy(KviKvsModuleCommandCall * c)
 	KVS_CHECK_MODULE_STATE(m,c)
 
 #ifdef COMPILE_PYTHON_SUPPORT
-/*
-#ifdef COMPILE_PERL_SUPPORT
-	KviPerlCoreCtrlCommand_destroy ex;
-	ex.uSize = sizeof(KviPerlCoreCtrlCommand_destroy);
+	KviPythonCoreCtrlCommand_destroy ex;
+	ex.uSize = sizeof(KviPythonCoreCtrlCommand_destroy);
 	ex.szContext = szContext;
 
-	if(!g_pPerlCoreModule->ctrl(KVI_PERLCORECTRLCOMMAND_DESTROY,&ex))
+	if(!g_pPythonCoreModule->ctrl(KVI_PYTHONCORECTRLCOMMAND_DESTROY,&ex))
 	{
 		if(!c->switches()->find('q',"quiet"))
-			c->warning(__tr2qs_ctx("The perlcore module failed to execute the code: something is wrong with the perl support","perl"));
+			c->warning(__tr2qs_ctx("The pythoncore module failed to execute the code: something is wrong with the python support","python"));
 	}
-#endif //COMPILE_PERL_SUPPORT
-*/
-#endif // COMPILE_PYTHON_SUPPORT
+#endif //COMPILE_PYTHON_SUPPORT
 
 	return true;
 }
@@ -156,7 +194,7 @@ static bool python_module_init(KviModule * m)
 	return true;
 }
 
-static bool python_module_cleanup(KviModule * m)
+static bool python_module_cleanup(KviModule *)
 {
 	return true;
 }
