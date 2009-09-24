@@ -940,7 +940,7 @@ void KviScriptEditorImplementation::loadFromFile()
 		{
                         m_pEditor->setPlainText(szBuffer);
 			setCursorPosition(0);
-			//m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
+			//m_pEditor->moveCursor(QTextEdit::MoveEnd,false);
 			//updateRowColLabel();
 		} else {
 			QString szTmp;

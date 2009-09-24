@@ -32,8 +32,8 @@
 #include "kvi_sourcesdate.h"
 #include "kvi_buildinfo.h"
 #include "kvi_osinfo.h"
-#include "kvi_tal_textedit.h"
 
+#include <QTextEdit>
 #include <QWidget>
 #include <QLayout>
 #include <QLabel>
@@ -112,7 +112,7 @@ KviAboutDialog::KviAboutDialog()
 	w = new QWidget(this);
 	g = new QGridLayout(w);
 
-	KviTalTextEdit * v = new KviTalTextEdit(w);
+	QTextEdit * v = new QTextEdit(w);
 	v->setReadOnly(true);
 	g->addWidget(v,0,0);
 
@@ -186,7 +186,7 @@ KviAboutDialog::KviAboutDialog()
 	w = new QWidget(this);
 	g = new QGridLayout(w);
 
-	v = new KviTalTextEdit(w);
+	v = new QTextEdit(w);
 	v->setReadOnly(true);
 	g->addWidget(v,0,0);
 
@@ -199,7 +199,7 @@ KviAboutDialog::KviAboutDialog()
 	w = new QWidget(this);
 	g = new QGridLayout(w);
 
-	v = new KviTalTextEdit(w);
+	v = new QTextEdit(w);
 	v->setReadOnly(true);
 	v->setWordWrapMode(QTextOption::NoWrap);
 	g->addWidget(v,0,0);

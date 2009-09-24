@@ -36,11 +36,11 @@
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 #include "kvi_selectors.h"
-#include "kvi_tal_textedit.h"
 
 #include <QWizard>
 #include <QWizardPage>
 
+class QTextEdit;
 class QLineEdit;
 class QLabel;
 
@@ -123,11 +123,11 @@ public:
 	*/
 	~KviPackAddonInfoPackageWidget();
 protected:
-	QLineEdit       * m_pPackageAuthorEdit;
-	QLineEdit       * m_pPackageNameEdit;
-	QLineEdit       * m_pPackageVersionEdit;
-	KviTalTextEdit  * m_pPackageDescriptionEdit;
-	QLineEdit       * m_pPackageMinVersionEdit;
+	QLineEdit  * m_pPackageAuthorEdit;
+	QLineEdit  * m_pPackageNameEdit;
+	QLineEdit  * m_pPackageVersionEdit;
+	QTextEdit  * m_pPackageDescriptionEdit;
+	QLineEdit  * m_pPackageMinVersionEdit;
 };
 
 /**

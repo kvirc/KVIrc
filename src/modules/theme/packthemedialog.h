@@ -33,7 +33,7 @@
 
 class QLineEdit;
 class QLabel;
-class KviTalTextEdit;
+class QTextEdit;
 class KviFileSelector;
 
 
@@ -44,17 +44,17 @@ public:
 	KviPackThemeDialog(QWidget * pParent,KviPointerList<KviThemeInfo> * pThemeInfoList);
 	virtual ~KviPackThemeDialog();
 protected:
-	QString m_szImagePath;
-	KviFileSelector * m_pImageSelector;
-	QString m_szPackagePath;
-	KviFileSelector * m_pPathSelector;
-	QLabel * m_pImageLabel;
+	QString                        m_szImagePath;
+	KviFileSelector              * m_pImageSelector;
+	QString                        m_szPackagePath;
+	KviFileSelector              * m_pPathSelector;
+	QLabel                       * m_pImageLabel;
 	KviPointerList<KviThemeInfo> * m_pThemeInfoList;
-	QLineEdit * m_pPackageNameEdit;
-	KviTalTextEdit * m_pPackageDescriptionEdit;
-	QLineEdit * m_pPackageVersionEdit;
-	QLineEdit * m_pPackagerNameEdit;
-	QWidget * m_pImageSelectionPage;
+	QLineEdit                    * m_pPackageNameEdit;
+	QTextEdit                    * m_pPackageDescriptionEdit;
+	QLineEdit                    * m_pPackageVersionEdit;
+	QLineEdit                    * m_pPackagerNameEdit;
+	QWidget                      * m_pImageSelectionPage;
 protected:
 	virtual void accept();
 	bool packTheme();

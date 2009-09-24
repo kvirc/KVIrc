@@ -36,9 +36,9 @@ bool g_bFoundMirc;
 #include "kvi_env.h"
 #include "kvi_options.h"
 #include "kvi_config.h"
-#include "kvi_tal_textedit.h"
 #include "kvi_tal_hbox.h"
 
+#include <QTextEdit>
 #include <QMessageBox>
 #include <QDir>
 #include <QPushButton>
@@ -190,7 +190,7 @@ KviSetupWizard::KviSetupWizard()
 		"</ul></p>" \
 		"<p>The \"legalese\" version of the license is shown in the box below.</p>"));
 
-	KviTalTextEdit * ed = new KviTalTextEdit(m_pLicense->m_pVBox);
+	QTextEdit * ed = new QTextEdit(m_pLicense->m_pVBox);
 	ed->setReadOnly(true);
 	ed->setWordWrapMode(QTextOption::NoWrap);
 	QString szLicense;

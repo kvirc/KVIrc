@@ -39,8 +39,8 @@
 #include "kvi_selectors.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_tal_textedit.h"
 
+#include <QTextEdit>
 #include <QLineEdit>
 #include <QMessageBox>
 #include <QDir>
@@ -512,7 +512,7 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 	pLabel->setText(__tr2qs_ctx("Package &Description:","addon"));
 	pLayout->addWidget(pLabel,3,0);
 	
-	m_pPackageDescriptionEdit = new KviTalTextEdit(this);
+	m_pPackageDescriptionEdit = new QTextEdit(this);
 	m_pPackageDescriptionEdit->setBackgroundRole(QPalette::Window);
 	m_pPackageDescriptionEdit->setText(__tr2qs_ctx("Put a package description here...","addon"));
 	pLabel->setBuddy(m_pPackageDescriptionEdit);

@@ -25,7 +25,6 @@
 
 #include "kvi_htmldialog.h"
 #include "kvi_locale.h"
-#include "kvi_tal_textedit.h"
 
 #include <QLabel>
 #include <QPushButton>

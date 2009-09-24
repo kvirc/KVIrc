@@ -39,8 +39,8 @@
 #include "kvi_selectors.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_tal_textedit.h"
 
+#include <QTextEdit>
 #include <QLayout>
 #include <QPushButton>
 #include <QLineEdit>
@@ -185,7 +185,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 
 	szThemesDescription += "</body></html>";
 
-	KviTalTextEdit * pTextEdit = new KviTalTextEdit(pPage);
+	QTextEdit * pTextEdit = new QTextEdit(pPage);
 	pTextEdit->setBackgroundRole(QPalette::Window);
 	pTextEdit->setReadOnly(true);
 	QTextDocument *doc=new QTextDocument(pTextEdit);
@@ -235,7 +235,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLabel->setText(__tr2qs_ctx("Description:","theme"));
 	pLayout->addWidget(pLabel,3,0);
 
-	m_pPackageDescriptionEdit = new KviTalTextEdit(pPage);
+	m_pPackageDescriptionEdit = new QTextEdit(pPage);
 	m_pPackageDescriptionEdit->setText(szPackageDescription);
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
 

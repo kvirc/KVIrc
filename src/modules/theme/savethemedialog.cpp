@@ -39,8 +39,8 @@
 #include "kvi_selectors.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_tal_textedit.h"
 
+#include <QTextEdit>
 #include <QLayout>
 #include <QPushButton>
 #include <QLineEdit>
@@ -119,7 +119,7 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	pLabel->setText(__tr2qs_ctx("Description:","theme"));
 	pLayout->addWidget(pLabel,3,0);
 
-	m_pThemeDescriptionEdit = new KviTalTextEdit(pPage);
+	m_pThemeDescriptionEdit = new QTextEdit(pPage);
 	//m_pThemeDescriptionEdit->setText(szThemeDescription);
 	pLayout->addWidget(m_pThemeDescriptionEdit,3,1);
 

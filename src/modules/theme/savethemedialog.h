@@ -34,7 +34,7 @@
 class QLineEdit;
 class QPushButton;
 class QLabel;
-class KviTalTextEdit;
+class QTextEdit;
 class KviFileSelector;
 
 
@@ -45,24 +45,22 @@ public:
 	KviSaveThemeDialog(QWidget * pParent);
 	virtual ~KviSaveThemeDialog();
 protected:
-	QString m_szScreenshotPath;
+	QString           m_szScreenshotPath;
 	KviFileSelector * m_pImageSelector;
-	QLabel * m_pImageLabel;
-	QLineEdit * m_pThemeNameEdit;
-	KviTalTextEdit * m_pThemeDescriptionEdit;
-	QLineEdit * m_pThemeVersionEdit;
-	QLineEdit * m_pAuthorNameEdit;
-	QWidget * m_pImageSelectionPage;
-	QPushButton * m_pOkButton;
+	QLabel          * m_pImageLabel;
+	QLineEdit       * m_pThemeNameEdit;
+	QTextEdit       * m_pThemeDescriptionEdit;
+	QLineEdit       * m_pThemeVersionEdit;
+	QLineEdit       * m_pAuthorNameEdit;
+	QWidget         * m_pImageSelectionPage;
+	QPushButton     * m_pOkButton;
 protected:
 	virtual void accept();
 	bool saveTheme();
 protected slots:
 	void makeScreenshot();
-	void imageSelectionChanged(const QString &szImagePath);
+	void imageSelectionChanged(const QString & szImagePath);
 	//void themeNameChanged(const QString &txt);
 };
-
-
 
 #endif //!_SAVETHEMEDIALOG_H_
