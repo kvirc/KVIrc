@@ -263,7 +263,7 @@ void KviPasswordLineEdit::setText(const QString& text){
 }
 
 KviPixmapPreview::KviPixmapPreview(QWidget * par)
-: KviTalScrollView(par)
+: QScrollArea(par)
 {
 	m_pLabPixmap = new QLabel;
 	setWidget(m_pLabPixmap);

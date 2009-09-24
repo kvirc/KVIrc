@@ -31,10 +31,10 @@
 #include "kvi_pixmap.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
-#include "kvi_tal_scrollview.h"
 #include "kvi_tal_listwidget.h"
-#include <QTreeWidget>
 
+#include <QTreeWidget>
+#include <QScrollArea>
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QLabel>
@@ -149,7 +149,7 @@ protected slots:
 	void checkToggled(int state);
 };
 
-class KVIRC_API KviPixmapPreview : public KviTalScrollView
+class KVIRC_API KviPixmapPreview : public QScrollArea
 {
 	Q_OBJECT
 public:

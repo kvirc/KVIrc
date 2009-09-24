@@ -32,8 +32,8 @@
 #include "kvi_channel.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_toolwindows_container.h"
-#include "kvi_tal_scrollview.h"
 
+#include <QScrollArea>
 #include <QLayout>
 #include <QLabel>
 
@@ -69,9 +69,9 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 
 	setFocusPolicy(Qt::ClickFocus);
 
-	KviTalScrollView *pScrollView = new KviTalScrollView(this);
-	pScrollView->viewport()->setBackgroundRole(QPalette::Background);
-	pMasterLayout->addWidget(pScrollView,0,0);
+	QScrollArea * pScrollArea = new QScrollArea(this);
+	pScrollArea->viewport()->setBackgroundRole(QPalette::Background);
+	pMasterLayout->addWidget(pScrollArea,0,0);
 
 	pMasterLayout->setRowStretch(1,1);
 	QPushButton * b;
@@ -81,7 +81,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	pMasterLayout->addWidget(b,1,0);
 	connect(b,SIGNAL(clicked()),this,SLOT(commit()));
 
-	QWidget * pBackground = new QWidget(pScrollView->viewport());
+	QWidget * pBackground = new QWidget(pScrollArea->viewport());
 
 	QGridLayout *g = new QGridLayout(pBackground);
 
@@ -197,7 +197,7 @@ KviModeEditor::KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const
 	g->setRowStretch(i,1);
 	g->setColumnStretch(2,1);
 
-	pScrollView->setWidget(pBackground);
+	pScrollArea->setWidget(pBackground);
 }
 
 KviModeEditor::~KviModeEditor()

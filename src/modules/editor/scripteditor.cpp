@@ -44,7 +44,6 @@
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_groupbox.h"
-#include "kvi_tal_scrollview.h"
 
 #include <QScrollBar>
 #include <QLayout>
