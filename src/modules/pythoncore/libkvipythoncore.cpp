@@ -112,19 +112,51 @@ bool KviPythonInterpreter::execute(
 		return false;
 	}
 
+	int retVal;
+	
 	// grab the global interpreter lock
 	PyEval_AcquireLock();
 	// swap in my thread state
 	PyThreadState_Swap(m_pThreadState);
 	// execute some python code
-	PyRun_SimpleString("import sys\n");
-	PyRun_SimpleString("sys.stdout.write('Hello from a C thread!\\n')\n");
+	retVal = PyRun_SimpleString(szCode.toUtf8().data());
+
+	szRetVal.setNum(retVal);
+
+	if (PyErr_Occurred())
+	{
+	// PyErr_Print();
+		PyObject *type = NULL, *value = NULL, *traceback = NULL, *pyString = NULL;
+		PyErr_Fetch(&type, &value, &traceback);
+		PyErr_Clear();
+		szError = "Python error: ";
+		if (type != NULL && (pyString=PyObject_Str(type))!=NULL &&
+			(PyString_Check(pyString)))
+			szError += PyString_AsString(pyString);
+		else szError += "<unknown exception type> ";
+		Py_XDECREF(pyString);
+		
+		if (value != NULL && (pyString=PyObject_Str(value))!=NULL &&
+			(PyString_Check(pyString)))
+		{
+			szError += ": ";
+			szError += PyString_AsString(value);
+		} else szError += "<unknown exception data> ";
+		Py_XDECREF(pyString);
+
+		Py_XDECREF(type);
+		Py_XDECREF(value);
+		Py_XDECREF(traceback);
+	}
+
 	// clear the thread state
 	PyThreadState_Swap(NULL);
 	// release our hold on the global interpreter
 	PyEval_ReleaseLock();
 
-	return true;
+	if(retVal)
+		return false;
+	else return true;
 }
 
 	static KviPointerHashTable<QString,KviPythonInterpreter> * g_pInterpreters = 0;
@@ -223,7 +255,7 @@ static bool pythoncore_module_init(KviModule *)
 	PyEval_ReleaseLock();
 
 	// Initialize the Python module for KVIrc
-// 	python_init();
+	python_init();
 
 	g_pInterpreters = new KviPointerHashTable<QString,KviPythonInterpreter>(17,false);
 	g_pInterpreters->setAutoDelete(false);
@@ -243,10 +275,9 @@ static bool pythoncore_module_cleanup(KviModule *)
 
 	// shut down the interpreter
 	PyEval_AcquireLock();
+	PyThreadState_Swap(mainThreadState);
+	PyEval_ReleaseLock();
 	Py_Finalize();
-
-	// Close the intepreter
-	Py_Exit(0);
 #endif // COMPILE_PYTHON_SUPPORT
 
 	return true;
