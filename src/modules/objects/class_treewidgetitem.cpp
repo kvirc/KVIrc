@@ -174,7 +174,7 @@ bool KviKvsObject_treewidgetitem::init(KviKvsRunTimeContext * pContext,KviKvsVar
 		 m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((KviKvsObject_treewidgetitem *)parentObject())->m_pTreeWidgetItem);
 	} else {
 		if(parentObject()->inheritsClass("listview"))
-			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((KviTalTreeWidget *)parentScriptWidget()));
+			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,((QTreeWidget *)parentScriptWidget()));
 		else {
                         pContext->error(__tr2qs_ctx("The parent of the listwidgetitem must be either another listwidgetitem or a listwidget","objects"));
 			return false;
@@ -190,13 +190,13 @@ void KviKvsObject_treewidgetitem::childDestroyed()
 	die();
 }
 
-KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par)
-:KviTalTreeWidgetItem(par), m_pMasterObject(ob)
+KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,QTreeWidget * par)
+:QTreeWidgetItem(par), m_pMasterObject(ob)
 {
 }
 
-KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par)
-:KviTalTreeWidgetItem(par), m_pMasterObject(ob)
+KviKvsStandardTreeWidgetItem::KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,QTreeWidgetItem * par)
+:QTreeWidgetItem(par), m_pMasterObject(ob)
 {
 }
 
@@ -205,7 +205,7 @@ KviKvsStandardTreeWidgetItem::~KviKvsStandardTreeWidgetItem()
 	if(m_pMasterObject)m_pMasterObject->childDestroyed();
 }
 
-kvs_hobject_t KviKvsObject_treewidgetitem::itemToHandle(KviTalTreeWidgetItem * it)
+kvs_hobject_t KviKvsObject_treewidgetitem::itemToHandle(QTreeWidgetItem * it)
 {
 	if(!it)return (kvs_hobject_t)0;
 	KviKvsObject_treewidgetitem * pObject;
@@ -230,7 +230,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setText)
 KVSO_CLASS_FUNCTION(treewidgetitem,firstChild)
 {
 	if(m_pTreeWidgetItem)
-		c->returnValue()->setHObject(itemToHandle((KviTalTreeWidgetItem*)m_pTreeWidgetItem->child(0)));
+		c->returnValue()->setHObject(itemToHandle((QTreeWidgetItem*)m_pTreeWidgetItem->child(0)));
 	else
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
@@ -342,7 +342,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setChecked)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pTreeWidgetItem)return true;
 	//if(m_pTreeWidgetItem->rtti() != 1)return true; // not a QCheckListItem
-	((KviTalTreeWidgetItem *)m_pTreeWidgetItem)->setCheckState(0,bChecked?Qt::Checked:Qt::Unchecked);
+	((QTreeWidgetItem *)m_pTreeWidgetItem)->setCheckState(0,bChecked?Qt::Checked:Qt::Unchecked);
 	return true;
 }
 
@@ -359,7 +359,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,isChecked)
 		return true;
 	}
 	*/
-	c->returnValue()->setBoolean(((KviTalTreeWidgetItem *)m_pTreeWidgetItem)->checkState(0)==Qt::Checked?1:0);
+	c->returnValue()->setBoolean(((QTreeWidgetItem *)m_pTreeWidgetItem)->checkState(0)==Qt::Checked?1:0);
 	return true;
 }
 /*
@@ -373,10 +373,10 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setCheckable)
 	if(bCheckable)
 	{
 		if(m_pTreeWidgetItem->rtti() == 1)return true; // a QCheckListItem already
-		KviTalTreeWidgetItem * pParent = m_pTreeWidgetItem->parent();
-		KviTalTreeWidget * pLV = (KviTalTreeWidget *)m_pTreeWidgetItem->listView();
+		QTreeWidgetItem * pParent = m_pTreeWidgetItem->parent();
+		QTreeWidget * pLV = (QTreeWidget *)m_pTreeWidgetItem->listView();
 		// swap the items, so we don't die now
-		KviTalTreeWidgetItem * pThis = m_pTreeWidgetItem;
+		QTreeWidgetItem * pThis = m_pTreeWidgetItem;
 		m_pTreeWidgetItem = 0;
 		delete pThis;
 		if(pParent)
@@ -385,10 +385,10 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setCheckable)
 			m_pTreeWidgetItem = new KviKvsCheckTreeWidgetItem(this,pLV);
 	} else {
 		if(m_pTreeWidgetItem->rtti() != 1)return true; // not a QCheckListItem yet
-		KviTalTreeWidgetItem * pParent = m_pTreeWidgetItem->parent();
-		KviTalTreeWidget * pLV = (KviTalTreeWidget *)m_pTreeWidgetItem->listView();
+		QTreeWidgetItem * pParent = m_pTreeWidgetItem->parent();
+		QTreeWidget * pLV = (QTreeWidget *)m_pTreeWidgetItem->listView();
 		// swap the items, so we don't die now
-		KviTalTreeWidgetItem * pThis = m_pTreeWidgetItem;
+		QTreeWidgetItem * pThis = m_pTreeWidgetItem;
 		m_pTreeWidgetItem = 0;
 		delete pThis;
 		if(pParent)

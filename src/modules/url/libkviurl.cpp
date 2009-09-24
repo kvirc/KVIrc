@@ -84,7 +84,7 @@ static KviModuleExtension * url_extension_alloc(KviModuleExtensionAllocStruct *)
 }
 
 KviUrlDialogTreeWidget::KviUrlDialogTreeWidget(QWidget * par)
-: KviTalTreeWidget(par)
+: QTreeWidget(par)
 {
 }
 
@@ -95,7 +95,7 @@ void KviUrlDialogTreeWidget::mousePressEvent (QMouseEvent *e)
 		QTreeWidgetItem *i= itemAt(e->pos());
 		if (i) emit rightButtonPressed(i,QCursor::pos());
 	}
-	KviTalTreeWidget::mousePressEvent(e);
+	QTreeWidget::mousePressEvent(e);
 }
 
 KviUrlAction::KviUrlAction(QObject * pParent)
@@ -271,14 +271,14 @@ void UrlDialog::findtext()
 */
 }
 
-void UrlDialog::dblclk_url(KviTalTreeWidgetItem *item, int)
+void UrlDialog::dblclk_url(QTreeWidgetItem *item, int)
 {
 	QString cmd="openurl ";
 	cmd.append(item->text(0));
 	KviKvsScript::run(cmd,this);
 }
 
-void UrlDialog::popup(KviTalTreeWidgetItem *item, const QPoint &point)
+void UrlDialog::popup(QTreeWidgetItem *item, const QPoint &point)
 {
 	m_szUrl = item->text(0);
 	KviTalPopupMenu p(0,"menu");
@@ -321,7 +321,7 @@ QPixmap *UrlDialog::myIconPtr()
 
 void UrlDialog::addUrl(QString url, QString window, QString count, QString timestamp)
 {
-	KviTalTreeWidgetItem *UrlItem = new KviTalTreeWidgetItem(m_pUrlList);
+	QTreeWidgetItem *UrlItem = new QTreeWidgetItem(m_pUrlList);
 
 	UrlItem->setText(0, url);
 	UrlItem->setText(1, window);
@@ -751,7 +751,7 @@ int check_url(KviWindow *w,const QString &szUrl) // return 0 if no occurence of 
 			int count=tmpitem->dlg->m_pUrlList->topLevelItemCount();
 			for(int i=0;i<count;i++)
 			{
-				KviTalTreeWidgetItem* it=tmpitem->dlg->m_pUrlList->topLevelItem(i);
+				QTreeWidgetItem* it=tmpitem->dlg->m_pUrlList->topLevelItem(i);
 				if (it->text(0) == szUrl) {
 					int tmpCount = it->text(2).toInt();
 					tmpCount++;

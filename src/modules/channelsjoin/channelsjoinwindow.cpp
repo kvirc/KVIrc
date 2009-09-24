@@ -33,7 +33,7 @@
 #include "kvi_console.h"
 #include "kvi_regchan.h"
 #include "kvi_kvs_script.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 #include "kvi_tal_groupbox.h"
 
 #include <QLabel>
@@ -63,7 +63,7 @@ KviChannelsJoinWindow::KviChannelsJoinWindow(QWidget * par, const char * name)
 
 	QGridLayout * g = new QGridLayout(this);
 
-	m_pTreeWidget = new KviTalTreeWidget(this);
+	m_pTreeWidget = new QTreeWidget(this);
 	m_pTreeWidget->setHeaderLabel(__tr2qs("Channel"));
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -159,10 +159,10 @@ void KviChannelsJoinWindow::fillListView()
 
 	m_pTreeWidget->header()->hide();
 
-	KviTalTreeWidgetItem * par = new KviTalTreeWidgetItem(m_pTreeWidget);
+	QTreeWidgetItem * par = new QTreeWidgetItem(m_pTreeWidget);
 	par->setText(0,__tr2qs("Recent Channels"));
 	par->setExpanded(true);
-	KviTalTreeWidgetItem * chld;
+	QTreeWidgetItem * chld;
 
 	if(m_pConsole)
 	{
@@ -171,14 +171,14 @@ void KviChannelsJoinWindow::fillListView()
 		{
 			for(QStringList::Iterator it = pList->begin(); it != pList->end(); ++it)
 			{
-				chld = new KviTalTreeWidgetItem(par);
+				chld = new QTreeWidgetItem(par);
 				chld->setText(0,*it);
 				chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			}
 		}
 	}
 
-	par = new KviTalTreeWidgetItem(m_pTreeWidget);
+	par = new QTreeWidgetItem(m_pTreeWidget);
 	par->setText(0,__tr2qs("Registered Channels"));
 	par->setExpanded(true);
 
@@ -188,7 +188,7 @@ void KviChannelsJoinWindow::fillListView()
 		KviPointerHashTableIterator<const char *,KviRegisteredChannelList> it(*d);
 		while(it.current())
 		{
-			chld = new KviTalTreeWidgetItem(par);
+			chld = new QTreeWidgetItem(par);
 			chld->setText(0,it.currentKey());
 			chld->setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CHANNEL)));
 			++it;

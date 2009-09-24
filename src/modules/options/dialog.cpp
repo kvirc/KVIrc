@@ -74,8 +74,8 @@ KviGeneralOptionsFrontWidget::~KviGeneralOptionsFrontWidget()
 }
 
 
-KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(KviTalTreeWidget *parent,KviOptionsWidgetInstanceEntry * e)
-:KviTalTreeWidgetItem()
+KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(QTreeWidget *parent,KviOptionsWidgetInstanceEntry * e)
+:QTreeWidgetItem()
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
@@ -84,8 +84,8 @@ KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(KviTalTreeWidget *parent,KviO
 	parent->insertTopLevelItem(0, this);
 }
 
-KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,KviOptionsWidgetInstanceEntry * e)
-:KviTalTreeWidgetItem()
+KviOptionsTreeWidgetItem::KviOptionsTreeWidgetItem(QTreeWidgetItem *parent,KviOptionsWidgetInstanceEntry * e)
+:QTreeWidgetItem()
 {
 	m_pInstanceEntry = e;
 	m_pOptionsWidget = 0;
@@ -173,7 +173,7 @@ KviOptionsDialog::KviOptionsDialog(QWidget * par,const QString &szGroup)
 	vbox->setMargin(3);
 
 	// Controlling list view
-	m_pTreeWidget = new KviTalTreeWidget(vbox);
+	m_pTreeWidget = new QTreeWidget(vbox);
 
 	m_pTreeWidget->header()->hide();
 	m_pTreeWidget->setRootIsDecorated(true);
@@ -476,7 +476,7 @@ void KviOptionsDialog::searchClicked()
 		search(szTxt);
 }
 
-void KviOptionsDialog::fillTreeWidget(KviTalTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly)
+void KviOptionsDialog::fillTreeWidget(QTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly)
 {
 	if(!l)return;
 
@@ -534,12 +534,12 @@ void KviOptionsDialog::fillTreeWidget(KviTalTreeWidgetItem * p,KviPointerList<Kv
 	}
 }
 
-void KviOptionsDialog::treeWidgetItemSelectionChanged(KviTalTreeWidgetItem* it, KviTalTreeWidgetItem *)
+void KviOptionsDialog::treeWidgetItemSelectionChanged(QTreeWidgetItem* it, QTreeWidgetItem *)
 {
 	if(it)
 	{
 		QString str = it->text(0);
-		KviTalTreeWidgetItem * par = it->parent();
+		QTreeWidgetItem * par = it->parent();
 
 		while(par)
 		{

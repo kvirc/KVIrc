@@ -26,7 +26,7 @@
 
 #include "kvi_window.h"
 #include "kvi_string.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 #include "kvi_tal_popupmenu.h"
 
 #include <QWidget>
@@ -39,12 +39,12 @@ class KviScriptEditor;
 class KviMenuTreeWidgetItem;
 
 // KviPopupTreeWidgetItem
-class KviPopupTreeWidgetItem : public KviTalTreeWidgetItem
+class KviPopupTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	enum Type { Item , Menu , Separator , Label , Epilogue , Prologue , ExtMenu };
 public:
-	KviPopupTreeWidgetItem(KviTalTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t);
+	KviPopupTreeWidgetItem(QTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t);
 	KviPopupTreeWidgetItem(KviPopupTreeWidgetItem * parent,KviPopupTreeWidgetItem * after,Type t);
 public:
 	Type                   m_type;
@@ -75,7 +75,7 @@ protected:
 	KviKvsPopupMenu      * m_pClipboard;
 	KviKvsPopupMenu      * m_pTestPopup;
 	KviPopupTreeWidgetItem * m_pLastSelectedItem;
-	KviTalTreeWidget     * m_pTreeWidget;
+	QTreeWidget     * m_pTreeWidget;
 	QLineEdit            * m_pNameEditor;
 	KviScriptEditor      * m_pEditor;
 	QLineEdit            * m_pTextEditor;
@@ -131,10 +131,10 @@ protected slots:
 
 
 
-class KviMenuTreeWidgetItem : public KviTalTreeWidgetItem
+class KviMenuTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviMenuTreeWidgetItem(KviTalTreeWidget * par,KviKvsPopupMenu * popup);
+	KviMenuTreeWidgetItem(QTreeWidget * par,KviKvsPopupMenu * popup);
 	~KviMenuTreeWidgetItem();
 public:
 	KviKvsPopupMenu * m_pPopup;
@@ -153,7 +153,7 @@ public:
 	~KviPopupEditor();
 public:
 	KviSinglePopupEditor * m_pEditor;
-	KviTalTreeWidget     * m_pTreeWidget;
+	QTreeWidget     * m_pTreeWidget;
 	KviMenuTreeWidgetItem  * m_pLastEditedItem;
 	bool                   m_bOneTimeSetupDone;
 	KviTalPopupMenu      * m_pContextPopup;

@@ -283,7 +283,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 				__tr2qs_ctx("This check enables the automatic identification with NickServ","options"));
 	m_pNickServCheck->setChecked(bNickServEnabled);
 
-	m_pNickServTreeWidget = new KviTalTreeWidget(tab);
+	m_pNickServTreeWidget = new QTreeWidget(tab);
 	m_pNickServTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pNickServTreeWidget->setAllColumnsShowFocus(true);
 	m_pNickServTreeWidget->setColumnCount(4);
@@ -324,7 +324,7 @@ KviNetworkDetailsWidget::KviNetworkDetailsWidget(QWidget * par,KviNetwork * n)
 		KviPointerList<KviNickServRule> * ll = rs->rules();
 		for(KviNickServRule * rule = ll->first();rule;rule = ll->next())
 		{
-			KviTalTreeWidgetItem* it = new KviTalTreeWidgetItem(m_pNickServTreeWidget);
+			QTreeWidgetItem* it = new QTreeWidgetItem(m_pNickServTreeWidget);
 			it->setText(0,rule->registeredNick());
 			it->setText(1,rule->nickServMask());
 			it->setText(2,rule->messageRegexp());
@@ -364,7 +364,7 @@ KviNetworkDetailsWidget::~KviNetworkDetailsWidget()
 
 void KviNetworkDetailsWidget::editNickServRule()
 {
-	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *) m_pNickServTreeWidget->currentItem();
+	QTreeWidgetItem * it = (QTreeWidgetItem *) m_pNickServTreeWidget->currentItem();
 	if(!it)return;
 	KviNickServRule r(it->text(0),it->text(1),it->text(2),it->text(3));
 	KviNickServRuleEditor ed(this,false);
@@ -383,7 +383,7 @@ void KviNetworkDetailsWidget::addNickServRule()
 	KviNickServRuleEditor ed(this,false);
 	if(ed.editRule(&r))
 	{
-		KviTalTreeWidgetItem *it = new KviTalTreeWidgetItem(m_pNickServTreeWidget);
+		QTreeWidgetItem *it = new QTreeWidgetItem(m_pNickServTreeWidget);
 		it->setText(0,r.registeredNick());
 		it->setText(1,r.nickServMask());
 		it->setText(2,r.messageRegexp());
@@ -393,7 +393,7 @@ void KviNetworkDetailsWidget::addNickServRule()
 
 void KviNetworkDetailsWidget::delNickServRule()
 {
-	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)m_pNickServTreeWidget->currentItem();
+	QTreeWidgetItem * it = (QTreeWidgetItem *)m_pNickServTreeWidget->currentItem();
 	if(!it)return;
 	delete it;
 	enableDisableNickServControls();
@@ -448,10 +448,10 @@ void KviNetworkDetailsWidget::fillData(KviNetwork * n)
 		{
 			KviNickServRuleSet * rs = KviNickServRuleSet::createInstance();
 			rs->setEnabled(m_pNickServCheck->isChecked());
-			KviTalTreeWidgetItem * it;
+			QTreeWidgetItem * it;
 			for (int i=0;i<m_pNickServTreeWidget->topLevelItemCount();i++)
 			{
-				it=(KviTalTreeWidgetItem *) m_pNickServTreeWidget->topLevelItem(i);
+				it=(QTreeWidgetItem *) m_pNickServTreeWidget->topLevelItem(i);
 				rs->addRule(KviNickServRule::createInstance(it->text(0),it->text(1),it->text(2),it->text(3)));
 			}
 			n->setNickServRuleSet(rs);
@@ -1019,8 +1019,8 @@ void KviServerDetailsWidget::useDefaultInitUModeToggled(bool b)
 // kvi_app.cpp
 extern KVIRC_API KviServerDataBase * g_pServerDataBase;
 
-KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,const KviNetwork *n)
-    : KviTalTreeWidgetItem(parent)
+KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,const KviNetwork *n)
+    : QTreeWidgetItem(parent)
 {
 	setIcon(0,QIcon(pm));
 	m_pServerData = 0;
@@ -1029,8 +1029,8 @@ KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(KviTalTreeWidget 
 	setText(1,n->description());
 }
 
-KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,const QPixmap &pm,const KviServer *s)
-    : KviTalTreeWidgetItem(parent)
+KviServerOptionsTreeWidgetItem::KviServerOptionsTreeWidgetItem(QTreeWidgetItem *parent,const QPixmap &pm,const KviServer *s)
+    : QTreeWidgetItem(parent)
 {
 	setIcon(0,QIcon(pm));
 	m_pServerData = new KviServer(*s);
@@ -1078,7 +1078,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pNetworkDetailsDialog = 0;
 	m_pImportFilter = 0;
 
-	m_pTreeWidget = new KviTalTreeWidget(this);
+	m_pTreeWidget = new QTreeWidget(this);
 	addWidgetToLayout(m_pTreeWidget,0,0,0,0);
 	m_pTreeWidget->setColumnCount(2);
 	m_pTreeWidget->setMinimumWidth(500);
@@ -1257,17 +1257,17 @@ void KviServerOptionsWidget::recentServersPopupClicked(int id)
 	kvi_u32_t uPort = port.toUInt(&bOk);
 	// we have the port too
 
-	KviTalTreeWidgetItem * pFoundNet = 0;
-	KviTalTreeWidgetItem * pFoundSrv = 0;
+	QTreeWidgetItem * pFoundNet = 0;
+	QTreeWidgetItem * pFoundSrv = 0;
 
-	KviTalTreeWidgetItem * net;
+	QTreeWidgetItem * net;
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		net=(KviTalTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
-		KviTalTreeWidgetItem * srv;
+		net=(QTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
+		QTreeWidgetItem * srv;
 		for (int j=0;j<net->childCount();j++)
 		{
-			srv=(KviTalTreeWidgetItem *)net->child(i);
+			srv=(QTreeWidgetItem *)net->child(i);
 			KviStr tmp = ((KviServerOptionsTreeWidgetItem *)srv)->m_pServerData->hostName();
 			if(kvi_strEqualCI(tmp.ptr(),data.ptr()))
 			{
@@ -1458,7 +1458,7 @@ void KviServerOptionsWidget::commit()
 void KviServerOptionsWidget::customContextMenuRequested(const QPoint &pnt)
 {
 	int id;
-	KviTalTreeWidgetItem *it=(KviTalTreeWidgetItem *) m_pTreeWidget->itemAt(pnt);
+	QTreeWidgetItem *it=(QTreeWidgetItem *) m_pTreeWidget->itemAt(pnt);
 	bool bServer = (it && ((KviServerOptionsTreeWidgetItem *)it)->m_pServerData);
 	m_pContextPopup->clear();
 	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_WORLD)),__tr2qs_ctx("New Network","options"),this,SLOT(newNetwork()));

@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_window.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QWidget>
 #include <QTextDocument>
@@ -75,17 +75,17 @@ public:
 };
 
 
-class KviActionEditorTreeWidgetItem : public KviTalTreeWidgetItem
+class KviActionEditorTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviActionEditorTreeWidgetItem(KviTalTreeWidget * v,KviActionData * a);
+	KviActionEditorTreeWidgetItem(QTreeWidget * v,KviActionData * a);
 	~KviActionEditorTreeWidgetItem();
 protected:
 	KviActionData * m_pActionData;
 	//QSimpleRichText * m_pText;
 	QTextDocument * m_pText;
 	QPixmap * m_pIcon;
-	KviTalTreeWidget * m_pTreeWidget;
+	QTreeWidget * m_pTreeWidget;
 	QString m_szKey;
 public:
 	KviActionData * actionData(){ return m_pActionData; };
@@ -97,7 +97,7 @@ public:
 };
 
 
-class KviActionEditorTreeView : public KviTalTreeWidget
+class KviActionEditorTreeView : public QTreeWidget
 {
 	Q_OBJECT
 public:

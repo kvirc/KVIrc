@@ -28,7 +28,7 @@
 #include "kvi_regusersdb.h"
 #include "kvi_selectors.h"
 #include "kvi_pointerhashtable.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 #include "kvi_tal_listwidget.h"
 #include "kvi_tal_popupmenu.h"
 
@@ -39,7 +39,7 @@
 #include <QMultiHash>
 #include <QTextDocument>
 
-class  KviRegisteredUsersListView : public KviTalTreeWidget
+class  KviRegisteredUsersListView : public QTreeWidget
 {
 	Q_OBJECT
 public:
@@ -62,17 +62,17 @@ public:
 
 };
 
-class KviRegisteredUsersDialogItemBase : public KviTalTreeWidgetItem
+class KviRegisteredUsersDialogItemBase : public QTreeWidgetItem
 {
 public:
 	enum Types { User,Group };
 protected:
 	KviRegisteredUsersDialogItemBase(Types type,KviRegisteredUsersListView * par)
-	:KviTalTreeWidgetItem(par),m_iType(type)
+	:QTreeWidgetItem(par),m_iType(type)
 	{
 	};
-	KviRegisteredUsersDialogItemBase(Types type,KviTalTreeWidgetItem * par)
-	:KviTalTreeWidgetItem(par),m_iType(type)
+	KviRegisteredUsersDialogItemBase(Types type,QTreeWidgetItem * par)
+	:QTreeWidgetItem(par),m_iType(type)
 	{
 	};
 	~KviRegisteredUsersDialogItemBase()
@@ -108,7 +108,7 @@ protected:
 	KviRegisteredUser * m_pUser;
 	QTextDocument       m_pText;
 public:
-	KviRegisteredUsersDialogItem(KviTalTreeWidgetItem * par,KviRegisteredUser * u);
+	KviRegisteredUsersDialogItem(QTreeWidgetItem * par,KviRegisteredUser * u);
 	~KviRegisteredUsersDialogItem();
 public:
 	KviRegisteredUser * user(){ return m_pUser; };

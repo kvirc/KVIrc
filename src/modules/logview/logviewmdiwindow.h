@@ -29,7 +29,7 @@
 #include "kvi_window.h"
 #include "kvi_moduleextension.h"
 #include "kvi_tal_vbox.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 #include "kvi_pointerlist.h"
 
 #include <QTabWidget>
@@ -73,7 +73,7 @@ private:
 	QDate        m_date;
 };
 
-class KviLogViewListView : public KviTalTreeWidget
+class KviLogViewListView : public QTreeWidget
 {
 	Q_OBJECT
 public:

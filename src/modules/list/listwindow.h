@@ -31,7 +31,7 @@
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 #include "kvi_tal_popupmenu.h"
 
 #include <QToolButton>
@@ -43,7 +43,7 @@ class KviThemedLabel;
 class KviChannelTreeWidgetItemDelegate : public QItemDelegate
 {
 public:
-	KviChannelTreeWidgetItemDelegate(KviTalTreeWidget * pWidget = 0);
+	KviChannelTreeWidgetItemDelegate(QTreeWidget * pWidget = 0);
 	~KviChannelTreeWidgetItemDelegate();
 	void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index ) const;
 };
@@ -62,15 +62,15 @@ protected:
 	QString m_szTopic;
 };
 
-class KviChannelTreeWidgetItem : public KviTalTreeWidgetItem
+class KviChannelTreeWidgetItem : public QTreeWidgetItem
 {
 	friend class KviListWindow;
 public:
-	KviChannelTreeWidgetItem(KviTalTreeWidget * pWidget, KviChannelTreeWidgetItemData * pData);
+	KviChannelTreeWidgetItem(QTreeWidget * pWidget, KviChannelTreeWidgetItemData * pData);
 	~KviChannelTreeWidgetItem();
 public:
-	int width (const QFontMetrics & fm, const KviTalTreeWidget * pWidget, int iColumn) const;
-	bool operator<(const KviTalTreeWidgetItem & other) const;
+	int width (const QFontMetrics & fm, const QTreeWidget * pWidget, int iColumn) const;
+	bool operator<(const QTreeWidgetItem & other) const;
 };
 
 class KviListWindow : public KviWindow, public KviExternalServerDataParser
@@ -82,7 +82,7 @@ public:
 protected:
 	QSplitter                                    * m_pVertSplitter;
 	QSplitter                                    * m_pTopSplitter;
-	KviTalTreeWidget                             * m_pTreeWidget;
+	QTreeWidget                             * m_pTreeWidget;
 	QLineEdit                                    * m_pParamsEdit;
 	QToolButton                                  * m_pRequestButton;
 	QToolButton                                  * m_pStopListDownloadButton;

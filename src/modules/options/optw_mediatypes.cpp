@@ -46,8 +46,8 @@ static void copyMediaType(KviMediaType * dst,const KviMediaType * src)
 	dst->szIcon                  = src->szIcon;
 }
 
-KviMediaTypeTreeWidgetItem::KviMediaTypeTreeWidgetItem(KviTalTreeWidget * w,KviMediaType * t)
-: KviTalTreeWidgetItem(w)
+KviMediaTypeTreeWidgetItem::KviMediaTypeTreeWidgetItem(QTreeWidget * w,KviMediaType * t)
+: QTreeWidgetItem(w)
 {
 	copyData(t);
 }
@@ -71,7 +71,7 @@ KviMediaTypesOptionsWidget::KviMediaTypesOptionsWidget(QWidget * parent)
 
 	createLayout();
 
-	m_pTreeWidget = new KviTalTreeWidget(this);
+	m_pTreeWidget = new QTreeWidget(this);
 	m_pTreeWidget->setColumnCount(3);
 	QStringList columnLabels;
 	columnLabels.append(__tr2qs_ctx("Pattern","options"));

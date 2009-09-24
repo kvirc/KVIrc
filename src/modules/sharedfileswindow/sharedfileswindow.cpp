@@ -185,8 +185,8 @@ void KviSharedFileEditDialog::okClicked()
 }
 
 
-KviSharedFilesTreeWidgetItem::KviSharedFilesTreeWidgetItem(KviTalTreeWidget * lv,KviSharedFile * f)
-: KviTalTreeWidgetItem(lv)
+KviSharedFilesTreeWidgetItem::KviSharedFilesTreeWidgetItem(QTreeWidget * lv,KviSharedFile * f)
+: QTreeWidgetItem(lv)
 {
 	setText(0,f->name());
 	setText(1,f->absFilePath());
@@ -216,7 +216,7 @@ KviSharedFilesWindow::KviSharedFilesWindow(KviModuleExtensionDescriptor * d,KviF
 
 	KviTalVBox * vbox = new KviTalVBox(m_pSplitter);
 
-	m_pTreeWidget  = new KviTalTreeWidget(vbox);
+	m_pTreeWidget  = new QTreeWidget(vbox);
 	//m_pTreeWidget->header()->hide();
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 	QStringList columsLabels;
@@ -257,7 +257,7 @@ KviSharedFilesWindow::~KviSharedFilesWindow()
 
 void KviSharedFilesWindow::enableButtons()
 {
-	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)m_pTreeWidget->currentItem();
+	QTreeWidgetItem * it = (QTreeWidgetItem *)m_pTreeWidget->currentItem();
 	m_pEditButton->setEnabled(it);
 	m_pRemoveButton->setEnabled(it);
 }
@@ -324,11 +324,11 @@ void KviSharedFilesWindow::sharedFileAdded(KviSharedFile * f)
 
 void KviSharedFilesWindow::sharedFileRemoved(KviSharedFile * f)
 {
-	KviTalTreeWidgetItem * it;
+	QTreeWidgetItem * it;
 	for (int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 //	while(it)
 	{
-		it=(KviTalTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
+		it=(QTreeWidgetItem *) m_pTreeWidget->topLevelItem(i);
 		if(((KviSharedFilesTreeWidgetItem *)it)->readOnlySharedFilePointer() == f)
 		{
 			delete ((KviSharedFilesTreeWidgetItem *)it);
@@ -389,7 +389,7 @@ void KviSharedFilesWindow::transferUnregistering(KviSharedFiles * t)
 	if(it)delete it;
 }
 
-void KviSharedFilesWindow::rightButtonPressed(KviTalTreeWidgetItem *it,const QPoint &pnt,int col)
+void KviSharedFilesWindow::rightButtonPressed(QTreeWidgetItem *it,const QPoint &pnt,int col)
 {
 	if(!m_pContextPopup)m_pContextPopup = new KviTalPopupMenu(this);
 	if(!m_pLocalFilePopup)m_pLocalFilePopup = new KviTalPopupMenu(this);
@@ -503,7 +503,7 @@ void KviSharedFilesWindow::rightButtonPressed(KviTalTreeWidgetItem *it,const QPo
 
 KviSharedFiles * KviSharedFilesWindow::selectedTransfer()
 {
-	KviTalTreeWidgetItem * it = m_pTreeWidget->selectedItem();
+	QTreeWidgetItem * it = m_pTreeWidget->selectedItem();
 	if(!it)return 0;
 	KviSharedFilesItem * i = (KviSharedFilesItem *)it;
 	return i->transfer();
@@ -639,8 +639,8 @@ void KviSharedFilesWindow::heartbeat()
 {
 	if(m_pTreeWidget->childCount() < 1)return;
 
-	KviTalTreeWidgetItem * i1;
-	KviTalTreeWidgetItem * i2;
+	QTreeWidgetItem * i1;
+	QTreeWidgetItem * i2;
 
 	i1 = m_pTreeWidget->itemAt(QPoint(1,1));
 	if(!i1)

@@ -320,7 +320,7 @@ void KviLogViewMDIWindow::cacheFileList()
 	}
 }
 
-void KviLogViewMDIWindow::itemSelected(KviTalTreeWidgetItem * it,KviTalTreeWidgetItem *)
+void KviLogViewMDIWindow::itemSelected(QTreeWidgetItem * it,QTreeWidgetItem *)
 {
 	//A parent node
 	m_pIrcView->clearBuffer();
@@ -466,7 +466,7 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 }
 
 KviLogViewListView::KviLogViewListView(QWidget * par)
-: KviTalTreeWidget(par)
+: QTreeWidget(par)
 {
 	header()->setSortIndicatorShown(true);
 	setColumnCount(1);

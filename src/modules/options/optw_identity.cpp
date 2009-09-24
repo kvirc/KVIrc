@@ -39,7 +39,7 @@
 #include "kvi_identityprofile.h"
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_hbox.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QCheckBox>
 #include <QLineEdit>
@@ -685,7 +685,7 @@ KviIdentityProfileOptionsWidget::KviIdentityProfileOptionsWidget(QWidget * pPare
 	connect(m_pProfilesCheck,SIGNAL(toggled(bool)),this,SLOT(toggleControls()));
 
 	// Profiles list
-	m_pTreeWidget = new KviTalTreeWidget(this);
+	m_pTreeWidget = new QTreeWidget(this);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 
@@ -724,11 +724,11 @@ KviIdentityProfileOptionsWidget::KviIdentityProfileOptionsWidget(QWidget * pPare
 	// Fill in the treewidget
 	if(pSet && pSet->profiles())
 	{
-		KviTalTreeWidgetItem * pItem;
+		QTreeWidgetItem * pItem;
 		KviPointerList<KviIdentityProfile> * pList = pSet->profiles();
 		for(KviIdentityProfile * pProfile = pList->first(); pProfile; pProfile = pList->next())
 		{
-			pItem = new KviTalTreeWidgetItem(m_pTreeWidget);
+			pItem = new QTreeWidgetItem(m_pTreeWidget);
 			pItem->setText(0,pProfile->name());
 			pItem->setText(1,pProfile->network());
 			pItem->setText(2,pProfile->nick());
@@ -763,7 +763,7 @@ void KviIdentityProfileOptionsWidget::addProfileEntry()
 
 	if(editor.editProfile(&profile))
 	{
-		KviTalTreeWidgetItem * pItem = new KviTalTreeWidgetItem(m_pTreeWidget);
+		QTreeWidgetItem * pItem = new QTreeWidgetItem(m_pTreeWidget);
 		pItem->setText(0,profile.name());
 		pItem->setText(1,profile.network());
 		pItem->setText(2,profile.nick());
@@ -775,7 +775,7 @@ void KviIdentityProfileOptionsWidget::addProfileEntry()
 
 void KviIdentityProfileOptionsWidget::editProfileEntry()
 {
-	KviTalTreeWidgetItem * pItem = (KviTalTreeWidgetItem *)m_pTreeWidget->currentItem();
+	QTreeWidgetItem * pItem = (QTreeWidgetItem *)m_pTreeWidget->currentItem();
 	if(!pItem)
 		return;
 
@@ -802,7 +802,7 @@ void KviIdentityProfileOptionsWidget::editProfileEntry()
 
 void KviIdentityProfileOptionsWidget::delProfileEntry()
 {
-	KviTalTreeWidgetItem * pItem = (KviTalTreeWidgetItem *)m_pTreeWidget->currentItem();
+	QTreeWidgetItem * pItem = (QTreeWidgetItem *)m_pTreeWidget->currentItem();
 	if(!pItem)
 		return;
 
@@ -816,10 +816,10 @@ void KviIdentityProfileOptionsWidget::commit()
 	if(m_pTreeWidget->topLevelItemCount())
 	{
 		KviIdentityProfileSet::instance()->setEnabled(m_pProfilesCheck->isChecked());
-		KviTalTreeWidgetItem * pItem;
+		QTreeWidgetItem * pItem;
 		for(int i=0; i < m_pTreeWidget->topLevelItemCount(); i++)
 		{
-			pItem = (KviTalTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+			pItem = (QTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 
 			KviIdentityProfile * pProfile = new KviIdentityProfile();
 			pProfile->setName(pItem->text(0));

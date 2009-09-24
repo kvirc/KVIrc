@@ -33,7 +33,7 @@
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_scrollview.h"
 #include "kvi_tal_listwidget.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QCheckBox>
 #include <QLineEdit>
@@ -366,12 +366,12 @@ public:
 	virtual void setEnabled(bool bEnabled);
 };
 
-class KVIRC_API KviChanTreeViewItem : public KviTalTreeWidgetItem
+class KVIRC_API KviChanTreeViewItem : public QTreeWidgetItem
 {
 private:
 	QString m_szPass;
 public:
-	KviChanTreeViewItem(KviTalTreeWidget* pList,QString szChan,QString szPass);
+	KviChanTreeViewItem(QTreeWidget* pList,QString szChan,QString szPass);
 	~KviChanTreeViewItem() {};
 
 	const QString& pass() { return m_szPass; }
@@ -385,7 +385,7 @@ public:
 	~KviChannelListSelector();
 private:
 	QLabel       * m_pLabel;
-	KviTalTreeWidget    * m_pTreeWidget;
+	QTreeWidget    * m_pTreeWidget;
 	QLineEdit    * m_pChanLineEdit;
 	QLineEdit    * m_pPassLineEdit;
 	QPushButton  * m_pAddButton;

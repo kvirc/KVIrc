@@ -58,15 +58,15 @@ extern KviPopupEditorWindow * g_pPopupEditorWindow;
 
 
 //KviPopupEntryItem
-KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviTalTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t)
-: KviTalTreeWidgetItem(pTreeWidget, after)
+KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(QTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t)
+: QTreeWidgetItem(pTreeWidget, after)
 {
 	m_type = t;
 	init();
 }
 
 KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviPopupTreeWidgetItem * parent,KviPopupTreeWidgetItem * after,Type t)
-: KviTalTreeWidgetItem(parent, after)
+: QTreeWidgetItem(parent, after)
 {
 	m_type = t;
 	init();
@@ -168,9 +168,9 @@ void KviPopupTreeWidgetItem::setIcon(const QString & szIcon)
 			{
 				QPixmap * pix = g_pIconManager->getImage(szIcon);
 				if(pix)
-					KviTalTreeWidgetItem::setIcon(0,QIcon(*pix));
+					QTreeWidgetItem::setIcon(0,QIcon(*pix));
 				else
-					KviTalTreeWidgetItem::setIcon(0,QIcon());
+					QTreeWidgetItem::setIcon(0,QIcon());
 			}
 		break;
 		default:
@@ -204,7 +204,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	spl->setObjectName("popupeditor");
 	spl->setOpaqueResize(false);
 
-	m_pTreeWidget = new KviTalTreeWidget(spl);
+	m_pTreeWidget = new QTreeWidget(spl);
 	m_pTreeWidget->setColumnCount(2);
 	QStringList labels;
 	labels << __tr2qs_ctx("Item","editor") << __tr2qs_ctx("Type","editor");
@@ -798,13 +798,13 @@ void KviSinglePopupEditor::selectionChanged()
 	bool bTextEditorEnabled = false;
 	bool bNameEditorEnabled = false;
 
-	KviTalTreeWidgetItem * it;
+	QTreeWidgetItem * it;
 
 	if(m_pTreeWidget->selectedItems().empty())
 	{
 		it=0;
 	} else {
-		it= (KviTalTreeWidgetItem*)m_pTreeWidget->selectedItems().first();
+		it= (QTreeWidgetItem*)m_pTreeWidget->selectedItems().first();
 	}
 
 	if(it)
@@ -981,8 +981,8 @@ void KviSinglePopupEditor::edit(KviMenuTreeWidgetItem * it)
 }
 
 
-KviMenuTreeWidgetItem::KviMenuTreeWidgetItem(KviTalTreeWidget * par,KviKvsPopupMenu * popup)
-: KviTalTreeWidgetItem(par)
+KviMenuTreeWidgetItem::KviMenuTreeWidgetItem(QTreeWidget * par,KviKvsPopupMenu * popup)
+: QTreeWidgetItem(par)
 {
 	setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)));
 	setText(0,popup->popupName());
@@ -1011,7 +1011,7 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 
 	KviTalVBox * box = new KviTalVBox(spl);
 
-	m_pTreeWidget = new KviTalTreeWidget(box);
+	m_pTreeWidget = new QTreeWidget(box);
 	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("Popup","editor"));
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pTreeWidget->header()->setSortIndicatorShown(true);

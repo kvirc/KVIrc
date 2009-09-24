@@ -52,8 +52,8 @@
 extern KviRawEditorWindow * g_pRawEditorWindow;
 
 
-KviRawTreeWidgetItem::KviRawTreeWidgetItem(KviTalTreeWidget *par,int idx,bool bEnabled)
-: KviTalTreeWidgetItem(par)
+KviRawTreeWidgetItem::KviRawTreeWidgetItem(QTreeWidget *par,int idx,bool bEnabled)
+: QTreeWidgetItem(par)
 {
 	m_iIdx = idx;
  	m_szName.setNum(idx);
@@ -149,8 +149,8 @@ void KviRawEditor::oneTimeSetup()
 
 void KviRawEditor::customContextMenuRequested(const QPoint &pos)
 {
-	KviTalTreeWidgetItem *it;
-	it=(KviTalTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
+	QTreeWidgetItem *it;
+	it=(QTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
 	__range_valid(m_bOneTimeSetupDone);
 	m_pContextPopup->clear();
 	if(it)
@@ -253,14 +253,14 @@ void KviRawEditor::addHandlerForCurrentRaw()
 {
 	__range_valid(m_pOneTimeSetupDone);
 
-	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *) m_pTreeWidget->currentItem();
+	QTreeWidgetItem * it = (QTreeWidgetItem *) m_pTreeWidget->currentItem();
 	if(it)
 	{
 		if(it->parent() == 0)
 		{
 			QString buffer = __tr2qs_ctx("default","editor");
 			getUniqueHandlerName((KviRawTreeWidgetItem *)it,buffer);
-			KviTalTreeWidgetItem * ch = new KviRawHandlerTreeWidgetItem(it,buffer,"",true);
+			QTreeWidgetItem * ch = new KviRawHandlerTreeWidgetItem(it,buffer,"",true);
 			it->setExpanded(true);
 			ch->setSelected(true);
 		}
@@ -272,7 +272,7 @@ void KviRawEditor::removeCurrentHandler()
 	__range_valid(m_pOneTimeSetupDone);
 	if(m_pLastEditedItem)
 	{
-		KviTalTreeWidgetItem * it = m_pLastEditedItem;
+		QTreeWidgetItem * it = m_pLastEditedItem;
 		KviRawTreeWidgetItem * parent=(KviRawTreeWidgetItem *)it->parent();
 		m_pLastEditedItem = 0;
 		delete it;
@@ -299,17 +299,17 @@ void KviRawEditor::commit()
 
 	saveLastEditedItem();
 	KviKvsEventManager::instance()->removeAllScriptRawHandlers();
-	KviTalTreeWidgetItem * it;
+	QTreeWidgetItem * it;
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
-		it=(KviTalTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+		it=(QTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 		if(it->childCount())
 		{
 			QString szContext;
-			KviTalTreeWidgetItem * ch;
+			QTreeWidgetItem * ch;
 			for (int j=0;j<it->childCount();j++)
 			{
-				ch=(KviTalTreeWidgetItem *)it->child(j);
+				ch=(QTreeWidgetItem *)it->child(j);
 				debug("Commit handler %s",((KviRawHandlerTreeWidgetItem *)ch)->m_szBuffer.toUtf8().data());
 				//int a=(KviRawTreeWidgetItem *)it)->m_iIdx;
 				KviQString::sprintf(szContext,"RawEvent%d::%Q",&(((KviRawTreeWidgetItem *)it)->m_iIdx),&(((KviRawHandlerTreeWidgetItem *)ch)->m_szName));

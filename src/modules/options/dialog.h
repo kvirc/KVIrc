@@ -28,7 +28,7 @@
 #include "instances.h"
 
 #include "kvi_optionswidget.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QDialog>
 #include <QStringList>
@@ -49,11 +49,11 @@ public:
 	~KviGeneralOptionsFrontWidget();
 };
 
-class KviOptionsTreeWidgetItem : public KviTalTreeWidgetItem
+class KviOptionsTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviOptionsTreeWidgetItem(KviTalTreeWidget *parent,KviOptionsWidgetInstanceEntry * e);
-	KviOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,KviOptionsWidgetInstanceEntry * e);
+	KviOptionsTreeWidgetItem(QTreeWidget *parent,KviOptionsWidgetInstanceEntry * e);
+	KviOptionsTreeWidgetItem(QTreeWidgetItem *parent,KviOptionsWidgetInstanceEntry * e);
 	~KviOptionsTreeWidgetItem();
 public:
 	KviOptionsWidgetInstanceEntry * m_pInstanceEntry;
@@ -67,7 +67,7 @@ public:
 	KviOptionsDialog(QWidget * par,const QString &szGroup);
 	~KviOptionsDialog();
 private:
-	KviTalTreeWidget             * m_pTreeWidget;
+	QTreeWidget             * m_pTreeWidget;
 	QLabel                       * m_pCategoryLabel;
 	QStackedWidget               * m_pWidgetStack;
 	KviGeneralOptionsFrontWidget * m_pFrontWidget;
@@ -76,8 +76,8 @@ private:
 	QToolButton                  * m_pSearchButton;
 private:
 	void recursiveCommit(KviOptionsTreeWidgetItem *it);
-	void fillTreeWidget(KviTalTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
-	//KviOptionsTreeWidgetItem * showHiddenChildren(KviTalTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
+	void fillTreeWidget(QTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l,const QString &szGroup,bool bNotContainedOnly = false);
+	//KviOptionsTreeWidgetItem * showHiddenChildren(QTreeWidgetItem * p,KviPointerList<KviOptionsWidgetInstanceEntry> * l);
 	//KviOptionsTreeWidgetItem * findItemByPage(KviOptionsTreeWidgetItem *it,KviOptionsWidget * pPage);
 private slots:
 	void treeWidgetItemSelectionChanged(QTreeWidgetItem* it, QTreeWidgetItem *prev);
