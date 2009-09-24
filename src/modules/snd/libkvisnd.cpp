@@ -37,8 +37,9 @@
 #include <QSound>
 
 #ifdef COMPILE_PHONON_SUPPORT
-	#include <phonon/mediaobject.h>
-	#include <phonon/path.h>
+	#include <Phonon/MediaSource>
+	#include <Phonon/MediaObject>
+	#include <Phonon/Path>
 	Phonon::MediaObject * g_pPhononPlayer=0;
 	#include <QUrl>
 #endif //!COMPILE_PHONON_SUPPORT
@@ -207,10 +208,12 @@ void KviSoundPlayer::detectSoundSystem()
 bool KviSoundPlayer::playPhonon(const QString &szFileName)
 {
 	if(isMuted()) return true;
-        if(!g_pPhononPlayer) g_pPhononPlayer= Phonon::createPlayer(Phonon::NotificationCategory);
+	Phonon::MediaSource media(szFileName);
+        if(!g_pPhononPlayer)
+		g_pPhononPlayer= Phonon::createPlayer(Phonon::MusicCategory,media);
+	else g_pPhononPlayer->setCurrentSource(media);
 	if(g_pPhononPlayer->state()!=Phonon::ErrorState)
         {
-                g_pPhononPlayer->setCurrentSource(QUrl(szFileName));
                 g_pPhononPlayer->play();
         }
 	return true;
