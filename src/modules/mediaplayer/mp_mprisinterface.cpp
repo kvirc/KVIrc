@@ -396,6 +396,11 @@ KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
 
 int KviAudaciousInterface::length()
 {
+	int length = KviMPRISInterface::length();
+	if (length != -1)
+		return length;
+
+	/* compability with older versions */
 	MPRIS_CALL_METHOD("GetMetadata", -1)
 
 	foreach (QVariant v, reply.arguments()) {
@@ -491,6 +496,23 @@ KviQmmpInterface::KviQmmpInterface()
 : KviMPRISInterface()
 {
         m_szServiceName = "org.mpris.qmmp";
+}
+
+/* xmms2 interface */
+MP_IMPLEMENT_DESCRIPTOR(
+	KviXmms2Interface,
+	"xmms2",
+	__tr2qs_ctx(
+		"An interface to the xmms2 media player.\n" \
+		"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n",
+		"mediaplayer"
+	)
+)
+
+KviXmms2Interface::KviXmms2Interface()
+: KviMPRISInterface()
+{
+	m_szServiceName = "org.mpris.xmms2";
 }
 
 #endif //!COMPILE_ON_WINDOWS

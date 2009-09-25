@@ -29,7 +29,6 @@
 #include "mp_mprisinterface.h"
 #include "mp_winampinterface.h"
 #include "mp_xmmsinterface.h"
-#include "mp_xmms2interface.h"
 
 #include "kvi_module.h"
 #include "kvi_options.h"
