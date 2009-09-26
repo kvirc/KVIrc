@@ -67,6 +67,7 @@ public:
 	~KviTreeWindowListTreeWidget();
 protected:
 	virtual void mousePressEvent(QMouseEvent *e);
+	virtual void mouseMoveEvent(QMouseEvent *e);
 	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void paintEvent(QPaintEvent * event);
 private:

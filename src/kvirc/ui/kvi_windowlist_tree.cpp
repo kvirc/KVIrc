@@ -177,9 +177,13 @@ KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()
 {
 }
 
+void KviTreeWindowListTreeWidget::mouseMoveEvent(QMouseEvent *)
+{
+	//dummy just to avoid bug #581
+}
+
 void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 {
-
 	KviTreeWindowListItem * it = (KviTreeWindowListItem *)itemAt(e->pos());
 	if(it)
 	{
@@ -585,14 +589,6 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			default: iLevel = KviOption_colorTreeWindowListHighlight5Foreground; break;
 		}
 
-/*		p->setPen(
-			QColor(
-				calculateColor(KVI_OPTION_COLOR(iLevel).red(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground).red(),iStepNumber),
-				calculateColor(KVI_OPTION_COLOR(iLevel).green(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground).green(),iStepNumber),
-				calculateColor(KVI_OPTION_COLOR(iLevel).blue(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground).blue(),iStepNumber)
-				)
-			);
-*/
 		p->setPen(KVI_OPTION_COLOR(iLevel));
 	}
 
