@@ -134,6 +134,7 @@ KviCustomToolBarPropertiesDialog::KviCustomToolBarPropertiesDialog(QWidget * p,c
 
 	setWindowTitle(__tr2qs_ctx("ToolBar Properties","editor"));
 	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TOOLBAR))));
+	setModal(true);
 
 	QGridLayout * g = new QGridLayout(this);
 
