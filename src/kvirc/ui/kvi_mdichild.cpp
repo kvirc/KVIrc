@@ -60,18 +60,6 @@
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-
-#define KVI_MDI_NORESIZE 0
-#define KVI_MDI_RESIZE_TOP 1
-#define KVI_MDI_RESIZE_LEFT 2
-#define KVI_MDI_RESIZE_RIGHT 4
-#define KVI_MDI_RESIZE_BOTTOM 8
-#define KVI_MDI_RESIZE_TOPLEFT (1|2)
-#define KVI_MDI_RESIZE_TOPRIGHT (1|4)
-#define KVI_MDI_RESIZE_BOTTOMLEFT (8|2)
-#define KVI_MDI_RESIZE_BOTTOMRIGHT (8|4)
-
-
 KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 : QMdiSubWindow()
 {
@@ -81,7 +69,6 @@ KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 
 	m_pClient = 0;
 
-// 	connect(this, SIGNAL(windowStateChanged(Qt::WindowStates,Qt::WindowStates)), this, SLOT(windowStateChangedEvent(Qt::WindowStates,Qt::WindowStates)));
 	connect(this, SIGNAL(minimizeSignal()), this, SLOT(minimize()), Qt::QueuedConnection);
 	connect(this, SIGNAL(restoreSignal()), this, SLOT(restore()), Qt::QueuedConnection);
 	connect(this, SIGNAL(maximizeSignal()), this, SLOT(maximize()), Qt::QueuedConnection);

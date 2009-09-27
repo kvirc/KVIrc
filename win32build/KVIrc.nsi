@@ -6,7 +6,7 @@
 !include "LogicLib.nsh"
 
 Name "KVIrc"
-!define VERSION '4.0.0-wip'
+!define VERSION '4.0.0-rc1'
 !define RELEASE_NAME 'Insomnia (wip)'
 !define /date RELEASE_VERSION '%Y%m%d'
 !define URL_ABOUT 'http://www.kvirc.net/'
@@ -63,8 +63,6 @@ LangString KVIrc ${LANG_ENGLISH} "KVIrc (required)"
 LangString KVIrcDescr ${LANG_ENGLISH} "KVIrc program files"
 LangString StartMenuSection ${LANG_ENGLISH} "Start menu"
 LangString StartMenuSectionDescr ${LANG_ENGLISH} "Create start menu icon"
-LangString WinampSection ${LANG_ENGLISH} "Winamp plugin"
-LangString WinampSectionDescr ${LANG_ENGLISH} "Install Winamp plugin"
 LangString AutostartSection ${LANG_ENGLISH} "Autostart"
 LangString AutostartSectionDescr ${LANG_ENGLISH} "Start program when user login"
 LangString MsgUninstallOldInstaller ${LANG_ENGLISH} "Previous versions of KVIrc must to be uninstalled."
@@ -74,29 +72,6 @@ LangString KVIrcIsRunning ${LANG_ENGLISH} "An instance of KVIrc is currently run
 
 ;--------------------------------
 ; Sections
-
-Section -RemovePreviousInstallation
-    SetShellVarContext all
-    ; Remove old installer
-    ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc_is1" "InstallLocation"
-    StrLen $R1 "$R0"
-    ${If} $R1 > 0
-	${If} "$R0" != "$INSTDIR"
-	    IfFileExists "$R0\unins000.exe" 0 +3
-	    MessageBox MB_OK "$(MsgUninstallOldInstaller)"
-	    ExecWait "$R0\unins000.exe"
-	${EndIf}
-	DeleteRegKey  HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc_is1"
-    ${EndIf}
-
-    ; Remove previous installation
-;	ReadRegStr $R2 HKLM SOFTWARE\KVIrc "Install_Dir"
-;	IfFileExists $R2\uninstall.exe 0 noinst
-;		ExecWait "$INSTDIR\kvirc.exe -x exit"
-;		Sleep 5000
-;	noinst:
-    RMDir "$SMPROGRAMS\KVIrc"
-SectionEnd
 
 Section !$(KVIrc) KVIrc_IDX
 
@@ -176,12 +151,6 @@ Section /o $(AutostartSection) AutostartSection_IDX
   Call AddAutostart
 SectionEnd
 
-Section $(WinampSection) WinampSection_IDX
-ReadRegStr $R0 HKCU Software\Winamp ""
-	IfFileExists "$R0\winamp.exe" 0 +2
-	  	Rename "$INSTDIR\modules\gen_kvirc.dll" "$R0\Plugins\gen_kvirc.dll"
-SectionEnd
-
 ;--------------------------------
 ; Descriptions
 
@@ -196,8 +165,6 @@ SectionEnd
         $(TraySectionDescr)
 !insertmacro MUI_DESCRIPTION_TEXT ${AutostartSection_IDX} \
         $(AutostartSectionDescr)
-!insertmacro MUI_DESCRIPTION_TEXT ${WinampSection_IDX} \
-        $(WinampSectionDescr)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
@@ -206,10 +173,22 @@ Function .onInit
 
 	Call CloseKVIrcInstances
 
-	ReadRegStr $R0 HKCU Software\Winamp ""
-	IfFileExists "$R0\winamp.exe" continue 0
-		SectionSetFlags ${WinampSection_IDX} 16 # 10000 in binary: disabled+unchecked
-continue:
+    SetShellVarContext all
+    ; Remove old installer
+    ReadRegStr $R0 HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc" "UninstallString"
+    StrCmp $R0 "" done
+
+    MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "$(MsgUninstallOldInstaller)" IDOK uninst
+    Abort
+ 
+    ;Run the uninstaller
+uninst:
+    ClearErrors
+    ExecWait "$R0"
+	DeleteRegKey  HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc"
+    RMDir "$SMPROGRAMS\KVIrc"  
+ 
+done:
 
 FunctionEnd
 
@@ -234,11 +213,6 @@ Section !un.$(UnGeneralFiles)
   ; Remove directories used
   RMDir "$SMPROGRAMS\KVIrc"
   RMDir /r "$INSTDIR"
-
-  ReadRegStr $R0 HKCU Software\Winamp ""
-	IfFileExists "$R0\Plugins\gen_kvirc.dll" 0 +2
-	  	Delete "$R0\Plugins\gen_kvirc.dll"
-
 SectionEnd
 
 ;Remove local data dir
