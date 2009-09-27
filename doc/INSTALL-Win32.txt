@@ -51,8 +51,15 @@ Requisites:
       The package you want is "Complete package, except sources" (version number may vary).
 
   - Perl for Win32:
-      [Programming language; needed for documentation creation and optional scripting support, mandatory by now]
-      Any win32 version will work; We advice you to use the version you can find at http://www.activestate.com/store/activeperl/download .
+      [Programming language; needed for documentation creation and optional scripting support]
+      Any win32 version will work; We advice you to use the version you can find at http://www.activestate.com/activeperl/downloads/ .
+      Perl is needed to extract documentation from the source files and generate help files for kvirc.
+
+  - Python for Win32:
+      [Programming language; needed for documentation creation and optional scripting support]
+      Any win32 version will work; We advice you to use the version you can find at http://www.activestate.com/activepython/downloads/ .
+      Please note that we are currently supporting the 2.x version of python (currently 2.6). Python3000 (aka python3k) is not backwards compatible and supported by now.
+      Python support is currently disabled by default, so you'll need to pass the -DWITH_PYTHON=1 flag to cmake to enable it.
 
   - GNU GetText for Win32:
       [Localization library; needed to translate kvirc interface into your own language, optional]
@@ -66,15 +73,15 @@ Requisites:
       Please refer to the "Getting phonon to work with mplayer frontend" at the end of this document.
 
   - Subversion cli for windows:
-	  [Versioning tool; needed for cmake to automatically set the correct revision number in kvirc build]
-	  Any version will work; We advice you to use the version you can find at http://subversion.tigris.org/servlets/ProjectDocumentList?FolderID=8100 .
-	  The package you want is called "Setup-Subversion-1.6.3.msi" (version numbers may vary).
-	  If you don't want to install subversion cli because you are already using another subversion tool (like TortoiseSvn), you can just force the correct svn revision passing to cmake the -DMANUAL_REVISION=xxxx parameter.
+      [Versioning tool; needed for cmake to automatically set the correct revision number in kvirc build]
+      Any version will work; We advice you to use the version you can find at http://subversion.tigris.org/servlets/ProjectDocumentList?FolderID=8100 .
+      The package you want is called "Setup-Subversion-1.6.3.msi" (version numbers may vary).
+      If you don't want to install subversion cli because you are already using another subversion tool (like TortoiseSvn), you can just force the correct svn revision passing to cmake the -DMANUAL_REVISION=xxxx parameter.
 
   - Nullsoft scriptable install system (NSIS)
-	  [Installer packages creator; needed if you want to create an installer package for kvirc]
+      [Installer packages creator; needed if you want to create an installer package for kvirc]
       Get it at http://nsis.sourceforge.net/Download ; the package you want is called "nsis-2.45-setup.exe" (version numbers may vary).
-	  Please note that the kvirc nsis script doesn't support -DCOEXISTENCE cmake flag by now, so you'll need to disable it before compiling if you want to create an installer package.
+      Please note that the kvirc nsis script doesn't support -DCOEXISTENCE cmake flag by now, so enabling it will make the installer script fail.
 
 Further reccomended download if you plan to develop KVIrc:
 
