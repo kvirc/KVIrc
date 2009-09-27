@@ -60,6 +60,7 @@ extern "C" {
 		static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs);
 		static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs);
 		static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs);
+		static PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs);
 	#else
 		// This section is used in modules that use kvircmodule's API
 		static void ** PyKVIrc_API;
@@ -82,7 +83,8 @@ extern "C" {
 			(*(int (*)(const char * pcCmd)) PyKVIrc_API[7])
 		#define PyKVIrc_internalWarning \
 			(*(int (*)(const char * pcCmd)) PyKVIrc_API[8])
-
+		#define PyKVIrc_error \
+			(*(int (*)(const char * pcCmd)) PyKVIrc_API[9])
 		/**
 		* \brief Returns 0 on success, -1 otherwise
 		*

@@ -37,65 +37,80 @@
 #include "kvi_kvs_script.h"
 
 
-static KviKvsRunTimeContext * g_pCurrentKvsContext = 0;
-static KviStr g_szLastReturnValue("");
-
-/*
-static int PyKVIrc_Echo(const char * pcCmd)
-{
-	return system(pcCmd);
-}
-*/
+extern KviKvsRunTimeContext * g_pCurrentKvsContext;
+extern bool g_bExecuteQuiet;
+extern KviStr g_szLastReturnValue;
+extern QStringList g_lWarningList;
+extern QString g_lError;
 
 static PyObject * PyKVIrc_echo(PyObject * pSelf, PyObject * pArgs)
 {
-	const char * pcText;
-	int iColorSet;
-	const char * pcWinId;
+	Q_UNUSED(pSelf);
+	const char * pcText=0;
+	int iColorSet=0;
+	const char * pcWinId=0;
+	KviWindow * pWnd=0;
 
 	if(!PyArg_ParseTuple(pArgs,"s|is",&pcText,&iColorSet,&pcWinId))
 		return 0;
 
-	if(g_pCurrentKvsContext && pcText)
+	if(pcText)
 	{
-		KviWindow * pWnd;
 		if(pcWinId)
 		{
 			pWnd = g_pApp->findWindow(pcWinId);
-			if(!pWnd)
-				pWnd = g_pCurrentKvsContext->window();
-		} else {
-			pWnd = g_pCurrentKvsContext->window();
 		}
-		pWnd->outputNoFmt(iColorSet,QString::fromUtf8(pcText));
+		if(!pWnd)
+		{
+			if(g_pCurrentKvsContext)
+			{
+				pWnd = g_pCurrentKvsContext->window();
+			} else if(g_pActiveWindow) {
+				pWnd = g_pActiveWindow;
+			} else {
+				pWnd = (KviWindow*) g_pApp->activeConsole();
+			}
+		}
+		if(pWnd)
+			pWnd->outputNoFmt(iColorSet,QString::fromUtf8(pcText));
 	}
 
-	//sts = PyKVIrc_System(command);
-	//return Py_BuildValue("i", sts);
 	return Py_BuildValue("i",1);
 }
 
 static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
 {
-	const char * pcText;
-	const char * pcWinId;
+	Q_UNUSED(pSelf);
+		
+	const char * pcText=0;
+	const char * pcWinId=0;
+	KviWindow * pWnd=0;
 
 	if(!PyArg_ParseTuple(pArgs,"s|s",&pcText,&pcWinId))
 		return 0;
 
-	if(g_pCurrentKvsContext && pcText)
+	if(pcText)
 	{
-		KviWindow * pWnd;
 		if(pcWinId)
 		{
 			pWnd = g_pApp->findWindow(pcWinId);
-			if(!pWnd)
-				pWnd = g_pCurrentKvsContext->window();
-		} else {
-			pWnd = g_pCurrentKvsContext->window();
 		}
-		QString szTmp = QString::fromUtf8(pcText);
-		KviUserInput::parse(szTmp,pWnd);
+		if(!pWnd)
+		{
+			if(g_pCurrentKvsContext)
+			{
+				pWnd = g_pCurrentKvsContext->window();
+			} else if(g_pActiveWindow) {
+				pWnd = g_pActiveWindow;
+			} else {
+				pWnd = (KviWindow*) g_pApp->activeConsole();
+			}
+		}
+		if(pWnd)
+		{
+			QString szText=QString::fromUtf8(pcText);
+			KviUserInput::parse(szText,pWnd);
+		}
 	}
 
 	return Py_BuildValue("i",1);
@@ -103,46 +118,143 @@ static PyObject * PyKVIrc_say(PyObject * pSelf, PyObject * pArgs)
 
 static PyObject * PyKVIrc_warning(PyObject * pSelf, PyObject * pArgs)
 {
+	Q_UNUSED(pSelf);
+	const char * pcText=0;
+
+	if(!PyArg_ParseTuple(pArgs,"s",&pcText))
+		return 0;
+
+	if(pcText && !g_bExecuteQuiet)
+	{
+		if(g_pCurrentKvsContext)
+			g_pCurrentKvsContext->warning(pcText);
+	}
+
+	return Py_BuildValue("i",1);
 }
 
 static PyObject * PyKVIrc_getLocal(PyObject * pSelf, PyObject * pArgs)
 {
+	Q_UNUSED(pSelf);
+
+	QString tmp;
+	const char * szVarName=0;
+	if(!PyArg_ParseTuple(pArgs,"s",&szVarName))
+		return 0;
+	
+	if(g_pCurrentKvsContext)
+	{
+		KviKvsVariant * pVar = g_pCurrentKvsContext->localVariables()->find(szVarName);
+		if(pVar)
+		{
+			pVar->asString(tmp);
+			return Py_BuildValue("s",tmp.toUtf8().data());
+		} else return Py_BuildValue("s","");
+	}
+	return 0;
 }
 
 static PyObject * PyKVIrc_setLocal(PyObject * pSelf, PyObject * pArgs)
 {
+	Q_UNUSED(pSelf);
+
+	QString tmp;
+	const char * szVarName=0;
+	const char * szVarValue=0;
+
+	if(!PyArg_ParseTuple(pArgs,"ss",&szVarName, &szVarValue))
+		return 0;
+
+	if(g_pCurrentKvsContext)
+	{
+		if(szVarValue && *szVarValue)
+		{
+			KviKvsVariant * pVar = g_pCurrentKvsContext->localVariables()->get(szVarName);
+			pVar->setString(szVarValue);
+		} else {
+			g_pCurrentKvsContext->localVariables()->unset(szVarName);
+		}
+		return Py_BuildValue("i",1);
+	}
+	return 0;
 }
 
 static PyObject * PyKVIrc_getGlobal(PyObject * pSelf, PyObject * pArgs)
 {
+	Q_UNUSED(pSelf);
+
+	QString tmp;
+	const char * szVarName=0;
+	if(!PyArg_ParseTuple(pArgs,"s",&szVarName))
+		return 0;
+
+	if(g_pCurrentKvsContext)
+	{
+		KviKvsVariant * pVar = g_pCurrentKvsContext->globalVariables()->find(szVarName);
+		if(pVar)
+		{
+			pVar->asString(tmp);
+			return Py_BuildValue("s",tmp.toUtf8().data());
+		} else return Py_BuildValue("s","");
+	}
+	return 0;
 }
 
 static PyObject * PyKVIrc_setGlobal(PyObject * pSelf, PyObject * pArgs)
 {
+	Q_UNUSED(pSelf);
+
+	QString tmp;
+	const char * szVarName=0;
+	const char * szVarValue=0;
+
+	if(!PyArg_ParseTuple(pArgs,"ss",&szVarName, &szVarValue))
+		return 0;
+
+	if(g_pCurrentKvsContext)
+	{
+		if(szVarValue && *szVarValue)
+		{
+			KviKvsVariant * pVar = g_pCurrentKvsContext->globalVariables()->get(szVarName);
+			pVar->setString(szVarValue);
+		} else {
+			g_pCurrentKvsContext->globalVariables()->unset(szVarName);
+		}
+		return Py_BuildValue("i",1);
+	}
+	return 0;
 }
 
 static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
 {
-	const char * pcCode;
-	char * pcRetVal;
+	Q_UNUSED(pSelf);
+	const char * pcCode=0;
+	char * pcRetVal=0;
+	KviWindow * pWnd=0;
 
 	if(!PyArg_ParseTuple(pArgs,"s",&pcCode))
 		return 0;
 
-	if(g_pCurrentKvsContext && pcCode)
+	if(pcCode)
 	{
-		KviKvsVariant ret;
-		if(KviKvsScript::run(QString::fromUtf8(pcCode),g_pCurrentKvsContext->window(),0,&ret))
+		if(g_pCurrentKvsContext)
 		{
-			QString szTmp;
-			ret.asString(szTmp);
-			g_szLastReturnValue = szTmp;
+			pWnd = g_pCurrentKvsContext->window();
+		} else if(g_pActiveWindow) {
+			pWnd = g_pActiveWindow;
 		} else {
-			g_szLastReturnValue = "";
+			pWnd = (KviWindow*) g_pApp->activeConsole();
 		}
-		pcRetVal = g_szLastReturnValue.ptr();
-	} else {
-		pcRetVal = "";
+		if(pWnd)
+		{
+			KviKvsVariant ret;
+			QString szRet;
+			if(KviKvsScript::run(QString::fromUtf8(pcCode),pWnd,0,&ret))
+			{
+				ret.asString(szRet);
+				pcRetVal = szRet.toUtf8().data();
+			}
+		}
 	}
 
 	return Py_BuildValue("s",pcRetVal);
@@ -150,26 +262,56 @@ static PyObject * PyKVIrc_eval(PyObject * pSelf, PyObject * pArgs)
 
 static PyObject * PyKVIrc_internalWarning(PyObject * pSelf, PyObject * pArgs)
 {
+	Q_UNUSED(pSelf);
+	const char * pcText=0;
+
+	if(!PyArg_ParseTuple(pArgs,"s",&pcText))
+		return 0;
+
+	if(pcText && !g_bExecuteQuiet)
+	{
+		g_lWarningList.append(QString(pcText));
+	}
+
+	return Py_BuildValue("i",1);
+}
+
+static PyObject * PyKVIrc_error(PyObject * pSelf, PyObject * pArgs)
+{
+	Q_UNUSED(pSelf);
+	const char * pcText=0;
+
+	if(!PyArg_ParseTuple(pArgs,"s",&pcText))
+		return 0;
+
+	if(pcText)
+	{
+		g_lError.append(pcText);
+	}
+
+	return Py_BuildValue("i",1);
 }
 
 static PyMethodDef KVIrcMethods[] = {
-	{ "KVIrc::echo", PyKVIrc_echo, METH_VARARGS,
+	{ "echo", PyKVIrc_echo, METH_VARARGS,
 		"Outputs a text to a KVIrc window" },
-	{ "KVIrc::say", PyKVIrc_say, METH_VARARGS,
+	{ "say", PyKVIrc_say, METH_VARARGS,
 		"Types text in a window" },
-	{ "KVIrc::warning", PyKVIrc_warning, METH_VARARGS,
+	{ "warning", PyKVIrc_warning, METH_VARARGS,
 		"Prints a warning message" },
-	{ "KVIrc::getLocal", PyKVIrc_getLocal, METH_VARARGS,
+	{ "getLocal", PyKVIrc_getLocal, METH_VARARGS,
 		"Gets a local variable" },
-	{ "KVIrc::setLocal", PyKVIrc_setLocal, METH_VARARGS,
+	{ "setLocal", PyKVIrc_setLocal, METH_VARARGS,
 		"Sets a local variable" },
-	{ "KVIrc::getGlobal", PyKVIrc_getGlobal, METH_VARARGS,
+	{ "getGlobal", PyKVIrc_getGlobal, METH_VARARGS,
 		"Gets a global variable" },
-	{ "KVIrc::setGlobal", PyKVIrc_setGlobal, METH_VARARGS,
+	{ "setGlobal", PyKVIrc_setGlobal, METH_VARARGS,
 		"Sets a global variable" },
-	{ "KVIrc::eval", PyKVIrc_eval, METH_VARARGS,
+	{ "eval", PyKVIrc_eval, METH_VARARGS,
 		"Change the behaviour of a set of commands" },
-	{ "KVIrc::internalWarning", PyKVIrc_internalWarning, METH_VARARGS,
+	{ "internalWarning", PyKVIrc_internalWarning, METH_VARARGS,
+		"" },
+	{ "error", PyKVIrc_error, METH_VARARGS,
 		"" },
 	{ NULL, NULL, 0, NULL }
 };
@@ -193,7 +335,8 @@ PyMODINIT_FUNC python_init()
 	PyKVIrc_API[6] = (void *)PyKVIrc_setGlobal;
 	PyKVIrc_API[7] = (void *)PyKVIrc_eval;
 	PyKVIrc_API[8] = (void *)PyKVIrc_internalWarning;
-
+	PyKVIrc_API[9] = (void *)PyKVIrc_error;
+	
 	// Create a CObject containing the API pointer array's address
 	pC_API_Object = PyCObject_FromVoidPtr((void *)PyKVIrc_API,NULL);
 

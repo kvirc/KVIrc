@@ -37,10 +37,11 @@
 	#include "pythoncoreinterface.h"
 	#include <Python.h>
 
-static KviKvsRunTimeContext * g_pCurrentKvsContext = 0;
-static bool g_bExecuteQuiet = false;
+KviKvsRunTimeContext * g_pCurrentKvsContext = 0;
+bool g_bExecuteQuiet = false;
+QStringList g_lWarningList;
+QString g_lError;
 static KviStr g_szLastReturnValue("");
-static QStringList g_lWarningList;
 
 static PyThreadState * mainThreadState = NULL;
 
@@ -101,10 +102,10 @@ void KviPythonInterpreter::done()
 
 bool KviPythonInterpreter::execute(
 		const QString &szCode,
-		QStringList &args,
+		QStringList &, //args
 		QString &szRetVal,
 		QString &szError,
-		QStringList &lWarnings)
+		QStringList &) //lWarnings
 {
 	if(!m_pThreadState)
 	{
@@ -113,40 +114,30 @@ bool KviPythonInterpreter::execute(
 	}
 
 	int retVal;
-	
+	g_lError.clear();
+
 	// grab the global interpreter lock
 	PyEval_AcquireLock();
 	// swap in my thread state
 	PyThreadState_Swap(m_pThreadState);
+	//prepend some helping functions
+	QString szPreCode= QString("import kvirc\n" \
+		"import sys\n" \
+		"class kvirc_stderr_grabber:\n" \
+		"\tdef write(self,s):\n" \
+		"\t\tkvirc.error(s)\n" \
+		"sys.stderr=kvirc_stderr_grabber()\n"
+	);
+	PyRun_SimpleString(szPreCode.toUtf8().data());
+
 	// execute some python code
 	retVal = PyRun_SimpleString(szCode.toUtf8().data());
 
 	szRetVal.setNum(retVal);
 
-	if (PyErr_Occurred())
+	if (PyErr_Occurred() || retVal)
 	{
-	// PyErr_Print();
-		PyObject *type = NULL, *value = NULL, *traceback = NULL, *pyString = NULL;
-		PyErr_Fetch(&type, &value, &traceback);
-		PyErr_Clear();
-		szError = "Python error: ";
-		if (type != NULL && (pyString=PyObject_Str(type))!=NULL &&
-			(PyString_Check(pyString)))
-			szError += PyString_AsString(pyString);
-		else szError += "<unknown exception type> ";
-		Py_XDECREF(pyString);
-		
-		if (value != NULL && (pyString=PyObject_Str(value))!=NULL &&
-			(PyString_Check(pyString)))
-		{
-			szError += ": ";
-			szError += PyString_AsString(value);
-		} else szError += "<unknown exception data> ";
-		Py_XDECREF(pyString);
-
-		Py_XDECREF(type);
-		Py_XDECREF(value);
-		Py_XDECREF(traceback);
+		szError = g_lError;
 	}
 
 	// clear the thread state
