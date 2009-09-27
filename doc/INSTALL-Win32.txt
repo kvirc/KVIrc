@@ -59,7 +59,6 @@ Requisites:
       [Programming language; needed for documentation creation and optional scripting support]
       Any win32 version will work; We advice you to use the version you can find at http://www.activestate.com/activepython/downloads/ .
       Please note that we are currently supporting the 2.x version of python (currently 2.6). Python3000 (aka python3k) is not backwards compatible and supported by now.
-      Python support is currently disabled by default, so you'll need to pass the -DWITH_PYTHON=1 flag to cmake to enable it.
 
   - GNU GetText for Win32:
       [Localization library; needed to translate kvirc interface into your own language, optional]
