@@ -41,11 +41,13 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_painter)
 protected:
 	QPrinter * m_pPrinter;
-	QPainter * m_pPainter;
+        bool bDonotdeleteinternalqpainter;
+        QPainter * m_pPainter;
 	QMatrix  m_pMatrix;
 	QLinearGradient *m_pGradient;
 	QPainterPath *m_pPainterPath;
 public:
+        void setInternalPainter(QPainter *p);
 	bool setFont(KviKvsObjectFunctionCall *c);
 	bool setFontSize(KviKvsObjectFunctionCall *c);
 

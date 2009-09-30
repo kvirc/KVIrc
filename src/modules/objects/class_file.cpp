@@ -536,7 +536,6 @@ KVSO_CLASS_FUNCTION(file,readLine)
 	QString buffer;
         //bool ok=KviFileUtils::readLine(m_pFile,buffer);
         buffer=m_pFile->readLine();
-      //  debug("ok %d",ok);
         c->returnValue()->setString(buffer);
 	return true;
 }

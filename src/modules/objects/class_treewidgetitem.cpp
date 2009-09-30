@@ -32,6 +32,7 @@
 #include "kvi_iconmanager.h"
 
 const int item_flags[] = {
+        Qt::NoItemFlags,
 	Qt::ItemIsSelectable,
 	Qt::ItemIsEditable,
 	Qt::ItemIsDragEnabled,
@@ -42,7 +43,8 @@ const int item_flags[] = {
 };
 
 const char * const itemflags_tbl[] = {
-	"selectable",
+	"noitemflag",
+        "selectable",
 	"editable",
 	"dragEnabled",
 	"dropEnabled",

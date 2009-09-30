@@ -7,7 +7,7 @@
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2005-2008 Alessandro Carbone (elfonol at gmail dot com)
+//   Copyright (C) 2005-2009 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License

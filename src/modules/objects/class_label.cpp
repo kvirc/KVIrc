@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -208,6 +208,9 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_label)
 bool KviKvsObject_label::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QLabel)
+        int size=sizeof(*this);
+        debug ("sizeasd %d",size);
+
 	return true;
 }
 

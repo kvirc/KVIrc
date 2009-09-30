@@ -91,7 +91,7 @@ KVSO_END_DESTRUCTOR(KviKvsObject_button)
 bool KviKvsObject_button::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QPushButton);
-	connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
+        connect(widget(),SIGNAL(clicked()),this,SLOT(slotClicked()));
 	return true;
 }
 

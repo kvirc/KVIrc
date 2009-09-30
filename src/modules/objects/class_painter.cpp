@@ -521,6 +521,10 @@ KVSO_END_REGISTERCLASS(KviKvsObject_painter)
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_painter,KviKvsObject)
 
 	m_pPainter = new QPainter();
+        int size=sizeof(*this);
+        debug ("sizeasd %d",size);
+
+        bDonotdeleteinternalqpainter=false;
 	m_pPrinter = 0 ;
 	m_pDeviceObject=0;
 	m_pPainterPath=0;
@@ -534,7 +538,7 @@ if (m_pPainterPath) delete m_pPainterPath;
 	m_pPainterPath=0;
 if (m_pGradient) delete m_pGradient;
 	m_pGradient=0;
-if (m_pPainter) delete m_pPainter;
+if (m_pPainter && !bDonotdeleteinternalqpainter) delete m_pPainter;
 	m_pPainter = 0;
 if (m_pPrinter) delete m_pPrinter;
 	m_pPrinter = 0;
@@ -1733,8 +1737,12 @@ KVSO_CLASS_FUNCTION(painter,resetPath)
 	}
 	return true;
 }
-
-
+void KviKvsObject_painter::setInternalPainter(QPainter *p)
+{
+    delete m_pPainter;
+    m_pPainter=p;
+    bDonotdeleteinternalqpainter=true;
+}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_painter.moc"
 #endif //COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -215,8 +215,7 @@ void KviKvsObject_ftp::slotCommandStarted ( int )
 
 void KviKvsObject_ftp::slotDataTransferProgress ( qint64 done, qint64 total )
 {
-	//FIXME qint64 to kvs_int_t cast
-	callFunction(this,"dataTransferProgressEvent",0,new KviKvsVariantList(
+        callFunction(this,"dataTransferProgressEvent",0,new KviKvsVariantList(
 		new KviKvsVariant((kvs_int_t) done),new KviKvsVariant((kvs_int_t) total)));
 }
 KVSO_CLASS_FUNCTION(ftp,dataTransferProgressEvent)

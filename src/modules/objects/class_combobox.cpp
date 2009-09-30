@@ -355,7 +355,7 @@ void KviKvsObject_combobox::editTextChanged(const QString &text)
 
 void KviKvsObject_combobox::slotActivated(int i)
 {
-	KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i));
+        KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i));
 	callFunction(this,"activatedEvent",&params);
 }
 

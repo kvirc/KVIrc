@@ -23,6 +23,7 @@
 //=============================================================================
 
 #include "kvi_debug.h"
+#include "kvi_app.h"
 #include "kvi_locale.h"
 #include "kvi_error.h"
 #include "kvi_iconmanager.h"
@@ -30,6 +31,7 @@
 
 #include "kvi_kvs_arraycast.h"
 #include "class_tablewidget.h"
+#include "class_painter.h"
 #include "class_pixmap.h"
 #include <QTableWidget>
 #include <QHeaderView>
@@ -41,6 +43,32 @@
 #include <QPoint>
 #include <QPaintEvent>
 #include <QTableWidgetItem>
+#include <QRect>
+
+const int item_flags[] = {
+        Qt::NoItemFlags,
+        Qt::ItemIsSelectable,
+        Qt::ItemIsEditable,
+        Qt::ItemIsDragEnabled,
+        Qt::ItemIsDropEnabled,
+        Qt::ItemIsUserCheckable,
+        Qt::ItemIsEnabled,
+        Qt::ItemIsTristate
+};
+
+const char * const itemflags_tbl[] = {
+        "noitemflag",
+        "selectable",
+        "editable",
+        "dragEnabled",
+        "dropEnabled",
+        "userCheckable",
+        "enabled",
+        "tristate"
+};
+
+#define itemflags_num	(sizeof(itemflags_tbl) / sizeof(itemflags_tbl[0]))
+
 /*
         @doc:tablewidget
 	@title:
@@ -110,8 +138,12 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_tablewidget,"tablewidget","widget")
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setCellWidget)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setIcon)
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,clear)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_tablewidget,setItemFlags);
 
         KVSO_REGISTER_HANDLER(KviKvsObject_tablewidget,"itemEnteredEvent",itemEnteredEvent);
+
+
+        KVSO_REGISTER_STANDARD_TRUERETURN_HANDLER(KviKvsObject_tablewidget,"paintCellEvent")
 
 
 KVSO_END_REGISTERCLASS(KviKvsObject_tablewidget)
@@ -122,13 +154,16 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_tablewidget)
 
 
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_tablewidget)
-
+delete m_pCellItemDelegate;
 KVSO_END_DESTRUCTOR(KviKvsObject_tablewidget)
 
-bool KviKvsObject_tablewidget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KviKvsObject_tablewidget::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
 {
 
         SET_OBJECT(QTableWidget)
+        m_pCellItemDelegate=new KviCellItemDelegate(((QTableWidget *)widget()),this);
+        m_pContext=c;
+        ((QTableWidget *)widget())->setItemDelegate(m_pCellItemDelegate);
         connect(widget(),SIGNAL(itemEntered(QTableWidgetItem *)),this,SLOT(slotItemEntered(QTableWidgetItem *)));
         return true;
 }
@@ -425,11 +460,46 @@ KVSO_CLASS_FUNCTION(tablewidget,showVerticalHeader)
             ((QTableWidget *)widget())->verticalHeader()->show();
             return true;
 }
+KVSO_CLASS_FUNCTION(tablewidget,setItemFlags)
+{
+    CHECK_INTERNAL_POINTER(widget())
+
+    QStringList itemflags;
+        kvs_int_t iRow,iCol;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("row",KVS_PT_UNSIGNEDINTEGER,0,iRow)
+                KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,iCol)
+                KVSO_PARAMETER("flags",KVS_PT_STRINGLIST,KVS_PF_OPTIONAL,itemflags)
+        KVSO_PARAMETERS_END(c)
+        int flag,sum=0;
+        for ( int i=0;i<itemflags.count();i++)
+        {
+                flag = 0;
+                for(unsigned int j = 0; j < itemflags_num; j++)
+                {
+                        if(KviQString::equalCI(itemflags.at(i), itemflags_tbl[j]))
+                        {
+                                flag=item_flags[j];
+                                break;
+                        }
+                }
+                if(flag){
+                  //      if (flag==Qt::ItemIsUserCheckable)
+                    //                    pItem->setCheckState(0,Qt::Unchecked);
+                        sum = sum | flag;
+                }
+                else
+                        c->warning(__tr2qs_ctx("Unknown item flag '%Q'","objects"),&itemflags.at(i));
+        }
+        QTableWidgetItem *pItem=((QTableWidget *)widget())->item(iRow,iCol);
+        if(pItem) pItem->setFlags((Qt::ItemFlags)sum);
+        return true;
+}
+
 void KviKvsObject_tablewidget::slotItemEntered(QTableWidgetItem * i)
 
 {
       // if (!i) callFunction(this,"itecurrentItemChangeEvent",0,0);
-        debug("entered");
         KviKvsVariantList params(new KviKvsVariant((kvs_int_t)i->row()),new KviKvsVariant((kvs_int_t)i->column()));
         callFunction(this,"itemEnteredEvent",0,&params);
 }
@@ -439,6 +509,47 @@ KVSO_CLASS_FUNCTION(tablewidget,itemEnteredEvent)
         emitSignal("itemEntered",c,c->params());
         return true;
 }
+bool KviKvsObject_tablewidget::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index)
+{
+        p->save();
+        KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("painter");
+        KviKvsVariantList params;
+        KviKvsObject * pObject = pClass->allocateInstance(0,"internalpainter",m_pContext,&params);
+        ((KviKvsObject_painter *)pObject)->setInternalPainter(p);
+        p->setClipRect(option.rect);
+        p->translate(option.rect.x(),option.rect.y());
+        int col=index.column();
+        int row=index.row();
+        kvs_hobject_t handle=pObject->handle();
+        KviKvsVariantList parameters(new KviKvsVariant(handle),new KviKvsVariant((kvs_int_t) row),new KviKvsVariant((kvs_int_t) col));
+        bool ret=false;
+        KviKvsVariant *retv=new KviKvsVariant(ret);
+        callFunction(this,"paintCellEvent",retv,&parameters);
+        pObject->dieNow();
+        p->restore();
+        return retv->asBoolean();
+}
+
+KviCellItemDelegate::KviCellItemDelegate(QAbstractItemView * pWidget,KviKvsObject_tablewidget * parent)
+: QItemDelegate(pWidget), m_pParentScript(parent)
+{
+}
+
+KviCellItemDelegate::~KviCellItemDelegate()
+{
+}
+
+void KviCellItemDelegate::paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const
+{
+        if (m_pParentScript->paint(pPainter,option,index)) QItemDelegate::paint(pPainter,option,index);
+}
+
+QSize KviCellItemDelegate::sizeHint(const QStyleOptionViewItem &option, const QModelIndex & index) const
+{
+        return QItemDelegate::sizeHint(option,index);
+}
+
+
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "m_class_tablewidget.moc"
 #endif //COMPILE_USE_STANDALONE_MOC_SOURCES
