@@ -50,16 +50,12 @@ KviTreeWindowListItem::KviTreeWindowListItem(QTreeWidget * par,KviWindow * wnd)
 : QTreeWidgetItem(par) , KviWindowListItem(wnd)
 {
 	applyOptions();
-	//sort the widget
-	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
 KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par,KviWindow * wnd)
 : QTreeWidgetItem(par) , KviWindowListItem(wnd)
 {
 	applyOptions();
-	//sort the widget
-	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
 KviTreeWindowListItem::~KviTreeWindowListItem()
@@ -71,6 +67,9 @@ KviTreeWindowListItem::~KviTreeWindowListItem()
 
 void KviTreeWindowListItem::applyOptions()
 {
+	//sort the widget if necessary
+	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
+		treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
 void KviTreeWindowListItem::captionChanged()
@@ -101,7 +100,8 @@ void KviTreeWindowListItem::captionChanged()
 		szText.prepend('(').append(')');
 
 	//sort the widget
-	treeWidget()->sortItems(0,Qt::AscendingOrder);
+	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
+		treeWidget()->sortItems(0,Qt::AscendingOrder);
 
 	setData(0, Qt::DisplayRole, szText);
 }
