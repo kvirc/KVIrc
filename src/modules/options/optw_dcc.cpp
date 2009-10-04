@@ -136,7 +136,7 @@ KviDccAdvancedOptionsWidget::KviDccAdvancedOptionsWidget(QWidget * parent)
 					"and it includes all the DCC types (send,chat,recv...). " \
 					"KVIrc will refuse the requests when this limit is reached.</center>","options"));
 
-	addUIntSelector(0,3,1,3,__tr2qs_ctx("DCC socket timeout:","options"),KviOption_uintDccSocketTimeout,10,65536,180);
+	u = addUIntSelector(0,3,1,3,__tr2qs_ctx("DCC socket timeout:","options"),KviOption_uintDccSocketTimeout,10,65536,180);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	mergeTip(u,__tr2qs_ctx("<center>This is the amount of time that KVIrc will wait for a response before assuming that a DCC has failed " \
 		"because the remote client was unable to connect to our listening socket.</center>","options"));
