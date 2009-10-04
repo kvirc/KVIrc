@@ -54,7 +54,7 @@ class KviTalPopupMenu;
 typedef struct _KviDccSendThreadOptions
 {
 	KviStr       szFileName;
-	int          iStartPosition;
+	quint64      uStartPosition;
 	int          iPacketSize;
 	int          iIdleStepLengthInMSec;
 	bool         bFastSend;
@@ -71,25 +71,25 @@ public:
 	~KviDccSendThread();
 private:
 	// stats: SHARED!!!
-	int            m_iAverageSpeed;
-	int            m_iInstantSpeed;
-	int            m_iFilePosition;
-	int            m_iAckedBytes;
-	int            m_iTotalSentBytes;
+	uint           m_uAverageSpeed;
+	uint           m_uInstantSpeed;
+	quint64        m_uFilePosition;
+	quint64        m_uAckedBytes;
+	quint64        m_uTotalSentBytes;
 	// internal
 	unsigned long  m_uStartTime;
 	unsigned long  m_uInstantSpeedInterval;
-	int            m_iInstantSentBytes;
+	quint64        m_uInstantSentBytes;
 	KviDccSendThreadOptions * m_pOpt;
 	KviMSecTimeInterval * m_pTimeInterval;             // used for computing the instant bandwidth but not only
 public:
 	void initGetInfo();
-	int averageSpeed(){ return m_iAverageSpeed; };
-	int instantSpeed(){ return m_iInstantSpeed; };
-	int filePosition(){ return m_iFilePosition; };
+	uint averageSpeed(){ return m_uAverageSpeed; };
+	uint instantSpeed(){ return m_uInstantSpeed; };
+	quint64 filePosition(){ return m_uFilePosition; };
 	// sent ONLY in this session
-	int sentBytes(){ return m_iTotalSentBytes; };
-	int ackedBytes(){ return m_iAckedBytes; };
+	quint64 sentBytes(){ return m_uTotalSentBytes; };
+	quint64 ackedBytes(){ return m_uAckedBytes; };
 	unsigned int bandwidthLimit(){ return m_pOpt->uMaxBandwidth; };
 	void setBandwidthLimit(unsigned int uMaxBandwidth){ m_pOpt->uMaxBandwidth = uMaxBandwidth; };
 	void doneGetInfo();
@@ -102,7 +102,7 @@ typedef struct _KviDccRecvThreadOptions
 {
 	bool         bResume;
 	KviStr       szFileName;
-	int          iTotalFileSize;
+	quint64      uTotalFileSize;
 	int          iIdleStepLengthInMSec;
 	bool         bSendZeroAck;
 	bool         bNoAcks;
@@ -119,24 +119,24 @@ protected:
 	KviDccRecvThreadOptions * m_pOpt;
 
 	// stats: SHARED!
-	int                   m_iAverageSpeed;
-	int                   m_iInstantSpeed;
-	int                   m_iFilePosition;
-	int                   m_iTotalReceivedBytes;
+	uint                  m_uAverageSpeed;
+	uint                  m_uInstantSpeed;
+	quint64               m_uFilePosition;
+	quint64               m_uTotalReceivedBytes;
 
 	// internal
 	unsigned long         m_uStartTime;
 	KviMSecTimeInterval * m_pTimeInterval;             // used for computing the instant bandwidth
-	int                   m_iInstantReceivedBytes;
-	unsigned long         m_uInstantSpeedInterval;
+	quint64              m_uInstantReceivedBytes;
+	quint64               m_uInstantSpeedInterval;
 	QFile               * m_pFile;
 public:
 	void initGetInfo();
-	int averageSpeed(){ return m_iAverageSpeed; };
-	int instantSpeed(){ return m_iInstantSpeed; };
-	int filePosition(){ return m_iFilePosition; };
+	uint averageSpeed(){ return m_uAverageSpeed; };
+	uint instantSpeed(){ return m_uInstantSpeed; };
+	quint64 filePosition(){ return m_uFilePosition; };
 	// received ONLY in this session
-	int receivedBytes(){ return m_iTotalReceivedBytes; };
+	quint64 receivedBytes(){ return m_uTotalReceivedBytes; };
 	unsigned int bandwidthLimit(){ return m_pOpt->uMaxBandwidth; };
 	void setBandwidthLimit(unsigned int uMaxBandwidth){ m_pOpt->uMaxBandwidth = uMaxBandwidth; };
 	void doneGetInfo();
@@ -191,7 +191,7 @@ private:
 	kvi_time_t               m_tTransferStartTime;
 	kvi_time_t               m_tTransferEndTime;
 	// cached stats
-	unsigned long            m_uTotalFileSize; // total file size to transfer
+	quint64                  m_uTotalFileSize; // total file size to transfer
 
 	unsigned int             m_uMaxBandwidth;
 	KviDccFileTransferBandwidthDialog * m_pBandwidthDialog;

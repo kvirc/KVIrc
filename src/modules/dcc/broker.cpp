@@ -820,7 +820,7 @@ void KviDccBroker::sendFileExecute(KviDccBox * box,KviDccDescriptor *dcc)
 		delete dcc;
 		return;
 	}
-
+	
 	dcc->szFileName = dcc->szLocalFileName;
 	dcc->szFileName = QFileInfo(dcc->szFileName).fileName();
 
@@ -849,7 +849,7 @@ bool KviDccBroker::handleResumeAccepted(const char * filename,const char * port,
 	return KviDccFileTransfer::handleResumeAccepted(filename,port,szZeroPortTag);
 }
 
-bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename,const char * port,unsigned int filePos,const char * szZeroPortTag)
+bool KviDccBroker::handleResumeRequest(KviDccRequest * dcc,const char * filename,const char * port,unsigned long filePos,const char * szZeroPortTag)
 {
 	//debug("HANDLE %s %s %u %s",filename,port,filePos,szZeroPortTag);
 	// the zeroPOrtTag is nonempty here only if port == 0
