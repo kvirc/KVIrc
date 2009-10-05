@@ -583,7 +583,7 @@ void KviDccSendThread::run()
 							uLastAck = iNewAck;
 							if(bAckHack)
 							{
-								uTotLastAck = (iAckHackRounds*4294967296) + iNewAck;
+								uTotLastAck = (iAckHackRounds*4*1024*1024*1024) + iNewAck;
 							} else {
 								
 								uTotLastAck = iNewAck;
