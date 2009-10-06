@@ -1117,13 +1117,10 @@ void KviIrcConnection::loginToIrcServer()
 	pServer->m_szPass.trimmed();
 	if(!pServer->m_szPass.isEmpty())
 	{
-		KviStr szHidden;
-		int iLen = pServer->m_szPass.length();
-		for(int i=0; i<iLen; i++)
-			szHidden.append('*');
+		QString szHidden = QString(pServer->m_szPass.length(), QChar('*'));
 
 		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific password (%s)"),szHidden.ptr());
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using server specific password (%s)"),szHidden.toUtf8().data());
 
 		// The colon should allow user to use passwords with whitespaces.
 		// Non-whitespace passwords are unaffected.
@@ -1133,13 +1130,10 @@ void KviIrcConnection::loginToIrcServer()
 			return;
 		}
 	} else if(!pNet->password().isEmpty()) {
-		KviStr szHidden;
-		int iLen = pNet->password().length();
-		for(int i=0; i<iLen; i++)
-			szHidden.append('*');
+		QString szHidden = QString(pNet->password().length(), QChar('*'));
 
 		if(!_OUTPUT_MUTE)
-			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific password (%s)"),szHidden.ptr());
+			m_pConsole->output(KVI_OUT_VERBOSE,__tr2qs("Using network specific password (%s)"),szHidden.toUtf8().data());
 
 		// The colon should allow user to use passwords with whitespaces.
 		// Non-whitespace passwords are unaffected.
