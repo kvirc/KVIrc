@@ -69,6 +69,7 @@ SET(kviobjects_SRCS
 	class_slider.cpp
 	class_socket.cpp
 	class_spinbox.cpp
+	class_sql.cpp
 	class_tabwidget.cpp
 	class_tablewidget.cpp
 	class_tbrowser.cpp
@@ -83,7 +84,6 @@ SET(kviobjects_SRCS
 	class_workspace.cpp
 	class_wrapper.cpp
 	class_xmlreader.cpp
-	class_sql.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

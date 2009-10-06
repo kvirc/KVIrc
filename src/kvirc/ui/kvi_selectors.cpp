@@ -452,10 +452,11 @@ KviDirectorySelector::KviDirectorySelector(QWidget * par,const QString & txt,QSt
 
 void KviDirectorySelector::select()
 {
-	QString tmp;
-	if(KviFileDialog::askForDirectoryName(tmp,__tr2qs("Choose a Directory - KVIrc"),""))
+	QString szTmp;
+	if(KviFileDialog::askForDirectoryName(szTmp,__tr2qs("Choose a Directory - KVIrc"),""))
 	{
-		m_pLineEdit->setText(tmp);
+		m_pLineEdit->setText(szTmp);
+		emit selectionChanged(szTmp);
 	}
 }
 
