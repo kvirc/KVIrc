@@ -361,6 +361,8 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITHOUT_PERL
         Forcibly disable perl support.
         You will not be able to use perl scripts inside KVIrc.
+        Note that perl support will be checked anyway, and used to generate
+        the documentation if present.
 
     -DWITHOUT_PYTHON
         Forcibly disable python support.
