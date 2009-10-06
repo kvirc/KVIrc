@@ -61,6 +61,7 @@ public:
 	~KviUrlDialogTreeWidget(){};
 protected:
 	void mousePressEvent (QMouseEvent *e);
+	void paintEvent(QPaintEvent * event);
 signals:
 	void rightButtonPressed(QTreeWidgetItem *,QPoint);
 };
