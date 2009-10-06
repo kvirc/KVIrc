@@ -1791,7 +1791,7 @@ bool KviDccFileTransfer::doResume(const char * filename,const char * port,unsign
 		if(KviQString::equalCI(filename,m_pDescriptor->szFileName) || KVI_OPTION_BOOL(KviOption_boolAcceptBrokenFileNameDccResumeRequests))
 		{
 			bool bOk;
-			unsigned int iLocalFileSize = m_pDescriptor->szLocalFileSize.toUInt(&bOk);
+			quint64 iLocalFileSize = m_pDescriptor->szLocalFileSize.toULongLong(&bOk);
 			if(!bOk)
 			{
 				// ops...internal error
