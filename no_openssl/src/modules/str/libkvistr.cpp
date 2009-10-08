@@ -37,15 +37,14 @@
 #include <QRegExp>
 #include <QClipboard>
 
-#if defined( COMPILE_SSL_SUPPORT ) && !defined( COMPILE_NO_EMBEDDED_CODE )
-    // The current implementation
-	#include <openssl/evp.h>
-#elif defined(COMPILE_NO_EMBEDDED_CODE)
+#if defined(COMPILE_NO_EMBEDDED_CODE)
     // The preferred new implementation (until QCryptographicHash supports all
-    // hashes we want).
+    // hashes we want). Replaces OpenSSL implementation.
+    //
     // As Crypto++ is concerned for security they warn about MD5 and friends,
     // but we can ignore that and therefore silence the warnings.
     #define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
+
     // Hashes (should cover most cases)
     #include <crypto++/md2.h>
     #include <crypto++/md4.h>
@@ -57,6 +56,7 @@
     #include <crypto++/hex.h>
     // additional
     #include <string>
+
     // template function
     template <typename T>
     std::string CryptoPpStrHash(std::string szMessage){
@@ -1571,40 +1571,7 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("algorythm",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szType)
 	KVSM_PARAMETERS_END(c)
 
-#if defined( COMPILE_SSL_SUPPORT ) && !defined(COMPILE_NO_EMBEDDED_CODE)
-	if(szType.isEmpty()) szType="md5";
-
-	EVP_MD_CTX mdctx;
-	const EVP_MD *md;
-	unsigned char md_value[EVP_MAX_MD_SIZE];
-	unsigned int md_len, i;
-	char buff[3];
-	OpenSSL_add_all_digests();
-
-	md = EVP_get_digestbyname(szType.toUtf8().data());
-	if(!md) {
-		c->warning(__tr2qs("%Q algorytm is not supported"),&szType);
-		return true;
-	}
-
-	EVP_MD_CTX_init(&mdctx);
-	EVP_DigestInit_ex(&mdctx, md, NULL);
-	EVP_DigestUpdate(&mdctx, szString.toUtf8().data(), szString.toUtf8().length());
-	EVP_DigestFinal_ex(&mdctx, md_value, &md_len);
-	EVP_MD_CTX_cleanup(&mdctx);
-
-	for(i = 0; i < md_len; i++)
-	{
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-		_snprintf(buff,3,"%02x",md_value[i]);
-#else
-		snprintf(buff,3,"%02x",md_value[i]);
-#endif
-		szResult.append(buff);
-	}
-
-	c->returnValue()->setString(szResult);
-#elif defined(COMPILE_NO_EMBEDDED_CODE)
+#if defined(COMPILE_NO_EMBEDDED_CODE)
     // Crypto++ implementation
     std::string szDigest;
     std::string szMsg = szString.toLocal8Bit().data();
