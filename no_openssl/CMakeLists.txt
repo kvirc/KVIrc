@@ -511,44 +511,6 @@ ELSE()
 ENDIF()
 
 ############################################################################
-# OpenSSL support (Secure Sockets, Certificates, Digests etc...)
-############################################################################
-
-OPTION(WANT_OPENSSL "Whether to use OpenSSL library" ON)
-IF(WITHOUT_SSL)
-	SET(WANT_OPENSSL OFF)
-ENDIF()
-IF(WANT_OPENSSL)
-	FIND_PACKAGE(OpenSSL)
-	IF(OPENSSL_FOUND)
-		IF(WIN32)
-			# On windows/mingw we need libeay32 too...
-			FIND_LIBRARY(LIB_EAY NAMES libeay32MD eay libeay libeay32)
-			IF(LIB_EAY)
-				INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
-				LIST(APPEND LIBS ${OPENSSL_LIBRARIES} ${LIB_EAY})
-				SET(COMPILE_SSL_SUPPORT 1)
-				SET(CMAKE_STATUS_SSL_SUPPORT "Yes")
-			ELSE()
-				SET(CMAKE_STATUS_SSL_SUPPORT "Not available, libeay missing")
-			ENDIF()
-		ELSE()
-			INCLUDE_DIRECTORIES(${OPENSSL_INCLUDE_DIR})
-			LIST(APPEND LIBS ${OPENSSL_LIBRARIES})
-			SET(COMPILE_SSL_SUPPORT 1)
-			SET(CMAKE_STATUS_SSL_SUPPORT "Yes")
-			# CMake FindOpenSSL is incomplete and does not add -lcrypto to LIBS...
-			LIST(APPEND LIBS -lcrypto)
-		ENDIF()
-	ELSE()
-		SET(CMAKE_STATUS_SSL_SUPPORT "Not available")
-	ENDIF()
-ELSE()
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_OPENSSL)
-	SET(CMAKE_STATUS_SSL_SUPPORT "User disabled")
-ENDIF()
-
-############################################################################
 # Crypt engines support
 ############################################################################
 
