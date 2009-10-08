@@ -1,0 +1,85 @@
+//=============================================================================
+//
+//   File : kvirc.rc
+//   Creation date : Unknown by Szymon Stefanek
+//
+//   This toolbar is part of the KVirc irc client distribution
+//   Copyright (C) 2009 Szymon Stefanek (pragma at kvirc dot net)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+//
+//=============================================================================
+
+#include "resource.h"
+
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+IDD_ICON2               ICON    DISCARDABLE     "kvs.ico"
+IDD_ICON3               ICON    DISCARDABLE     "kvc.ico"
+IDD_ICON4               ICON    DISCARDABLE     "kvt.ico"
+IDD_ICON5               ICON    DISCARDABLE     "kva.ico"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 4,0,0,0
+ PRODUCTVERSION 4,0,0,0
+ FILEFLAGSMASK 0x17L
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "CompanyName", "KVIrc Development Team"
+            VALUE "FileDescription", "K Visual IRC Client Executable"
+            VALUE "FileVersion", "4, 0, 0, 0"
+            VALUE "InternalName", "KVIrc"
+            VALUE "LegalCopyright", "Copyright (C) 2009"
+            VALUE "OriginalFilename", "kvirc.exe"
+            VALUE "ProductName", "K Visual IRC Client"
+            VALUE "ProductVersion", "4, 0, 0, 0"
+        END
+    END
+END

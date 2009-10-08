@@ -1,0 +1,123 @@
+Starting from the release 3.0.0 KVIrc supports user interface themeing.
+
+A KVIrc theme is basically:
+- a subset of the options that controls the visual appearance
+	of the user interface
+- a set of icons that override the default ones
+
+The skeleton for a new theme can be produced by simply saving your current
+theme. Open the options dialog and go to the Look & Feel / Theme page.
+Click on "Save current theme", enter the description in the dialog that
+appears and select "Ok". The theme skeleton is now saved in your home
+directory.The confirmation dialog
+should have told you exactly where: it should be a directory like
+$HOME/.kvirc/<kvircversion>/theme/<yourthemename>-<yourthemeversion>.
+Cd to that directory and look around. You should see two configuration *.kvc
+files and a lot of *.png images.
+
+themeinfo.kvc contains the informations that the user can see when browsing
+the themes in the options dialog. The format of this file should be obvious:
+you  can edit it manually if you want to make some changes.
+(The %20 strings are url-encoded spaces, KVirc will accept also plain spaces).
+
+themedata.kvc contains the visual settings. It looks more or less like this:
+
+	....
+	uintGlobalTransparencyParentFadeFactor=10
+	boolObtainGlobalBackgroundFromKde=false
+	pixmapLabelBackground=
+	msgtypeMotd=30,1,100,1,1
+	fontIrcView=helvetica,10,5,50
+	colorIrcToolBarAppletForegroundLowContrast=180,180,180
+	boolUseGuiEffectFadeMenu=false
+	pixmapGlobalTransparencyBackground=pixmapGlobalTransparencyBackground.png
+	pixmapTreeTaskBarBackground=
+	iccolor2=0,0,200
+	mirccolor13=200,0,200
+	....
+
+You can *carefully* edit it by hand, if you wish.
+Each option starts with a prefix that defines the "type" of that option.
+
+pixmap defines an image and thus should contain an image path (see below)
+color defines an user interface color and is an R,G,B triplet
+font defines an user interface font: you usually need to change only the
+	first two values: font family and size
+msgtype defines the icon, text color, background color, log level and
+	alert level of the messages
+uint is an unsigned integer value
+bool is a boolean value: true or false
+mirccolor defines the colors used by the CTRL+K escape and is an
+	R,G,B triplet like color.
+iccolor defines the default color of an irc context and is again an
+	R,G,B triplet.
+
+Hints:
+	- When changing the pixmap entries remember to use filenames
+	  without path. KVIrc will lookup the filenames in the directory
+	  of your the me.
+
+	- The options stringIconThemeSubdir reflects the name of the
+	  directory in which the theme images are stored.
+	  If you change the directory name, you must also change this option.
+
+The theme directory contains also a set of *.png files.
+KVIrc will load these files instead of the default ones shipped in the
+distribution. You can modify/replace them, but keep in mind the
+following simple rules:
+	- you can't modify the image size: if you do it,
+	  the images will look bad
+	- the image format must be *.png: it is the only
+	  format granted to be loaded by all the versions of KVIrc.
+
+If you don't want to "override" an image (and thus you want to leave
+the "default" one) you can delete it from the theme directory. KVIrc will
+fallback to the default image shipped in the distribution.
+
+If you look at the global kvirc installation directory (usually
+/usr/local/share/kvirc/version/pics/) you will notice that there are other
+images that KVIrc loads. You can override each image by placing your version
+with the same name in your theme directory.
+
+Hints:
+	- All the small icons have a meaning and a name:
+	  you should reflect it when painting.
+	  This small script will show you the associations between
+	  the icons and their names:
+
+		%i = 0
+		do {
+			%name = $iconname(%i)
+			echo The icon by id %i is named %name
+			%i++
+		} while(%name != "")
+
+	- The id's of the icons are just their ZERO_BASED indexes.
+	  The kvi_smallicon_<number>.png files are numbered in increasing
+	  order and contain 16 images each one. kvi_smallicon_00.png
+	  contains images from 0 to 15, kvi_smallicon_01.png contains images
+	  16 to 31 etc... Thus the third icon in kvi_smallicon_02.png
+	  has id (2*16)+(3)-1 = 34.
+
+
+
+
+What happens when an user installs a theme
+-----------------------------------------------------------------------------
+
+When an user attempts to install a theme from the options dialog,
+KVIrc reads the themedata.kvc file and applies all the visual settings.
+This is an one-time action: the settings are applied only once from the
+themedata.kvc file and then are saved to the user's configuration files.
+In this way the user can alter the theme by freely changing the individual
+settings. One of the applied options is stringIconThemeSubdir that contains
+the directory of the theme images. KVIrc uses this option to lookup the
+image files before looking at any other directory. If the image file is found
+there, it is loaded and used, otherwise KVIrc falls back to the images
+shipped in the distribution.
+
+
+Have fun :)
+
+Szymon Stefanek
+

@@ -1,0 +1,131 @@
+This mini-howto describes the procedure for translating KVIrc in a new language.-----------------------------------------------------------------------------------
+
+Step 0: Getting the right sources.
+
+	First of all you need the SVN version of kvirc.
+	To obtain the SVN version you can follow the instructions on
+	http://www.kvirc.net/?id=svn
+
+	The translation stuff is in kvirc/po/kvirc .
+
+
+
+
+Step 1: Finding out your language code
+
+You must find out the contents of your language code.
+Usually this is a string formed of at least two letters and it
+can be found by examining the contents of your $LANG shell variable
+or by looking at http://translation.sourceforge.net/HTML/teams.html
+Examples of such codes are "it", "en", "hu" or "pt_BR"
+
+
+
+Step 2: Generating the list of messages to translate
+
+You must perform this step only if it is the first time that KVIrc is translated
+to your language. If you're going to update an existing translation then
+you can jump directly to step 3.
+
+Run the command to extract the messages from the sources.
+
+# cd kvirc/po/kvirc
+# make messages-extract
+
+A file named kvirc.pot will be created
+You rename this file to kvirc_xxx.po where xxx is your language code
+found in step 1.
+
+# mv kvirc.pot kvirc_xxx.po
+
+
+
+Step 3: Translating the messages
+
+If you did the step 2 then you have just created the kvirc_xxx.po
+file where xxx stands for your language code (found in step 1).
+If you jumped directly here from 1 then you need to find and existing
+kvirc_xxx.po in the kvirc/po/kvirc directory.
+If there isn't one then go back to step 2.
+
+Just use a translation tool for translation (for example kbabel or poedit).
+
+
+The next part of this step is only for information:
+The kvirc_xxx.po file contains a set of strings like the following one:
+
+#: /path/to/the/file/which/contains/the/string: line number
+msgid "The original english message"
+msgstr "The translation goes here"
+
+The msgid is the original message that needs to be translated
+and msgstr is the translation (that will be initially empty, when
+the kvirc_xxx.po file is created).
+
+The msgid can contain html tags, escapes like "\n" and format specifications
+like "%s". You MUST match the tags, escapes and format specs in the msgstr
+strings. Keep special attention to the format specifications (%s, %W,
+%Q...)..
+They must remain in EXACTLY the same order as in the msgid: exchanging the
+order or writing a wrong format spec will make kvirc crash sooner or later.
+
+
+
+Step 4: Adding the translation to the install system
+
+Once you have translated some strings you can try to run the translation in
+kvirc. If you are updating an existing translation then you can jump
+directly to step 5.
+
+You could need to force the make process to pick up your translation
+file and compile it. This is again an one time step. You'll just need to
+clean your cmake CMakeCache.txt and re-run cmake again for it to pick up
+the new translation file, then build kvirc as usual.
+After it has finished building you run kvirc after making sure that your LANG
+variable is set correctly.
+
+
+
+Step 5: Trying the translation
+
+Run make and wait until it finishes.
+
+# export LANG="xxx"
+# kvirc
+
+KVirc should then pick up your translation file and use it.
+
+
+Step 6: Updating the translation when the sources change
+
+While the development goes on new messages are added to the sources
+and a small part of the existing messages change.
+When you do a svn update to obtain the latest sources you should
+cd to kvirc/po/kvirc and run:
+
+# make messages-update
+
+This procedure will update your kvirc_xxx.po file with the new messages
+and mark the old messages as either fuzzy or invalid.
+The invalid entries must be re-translated completely again while the
+fuzzy entries have minor changes and can be probably adjusted in few seconds.
+
+
+Misc:
+
+
+If you're in doubt about some translation, you should take a look at how
+similar sentences have been translated in the KDE *.po files: there should
+be a hungarian translation file for KDE available on the KDE svn.
+
+Since many of the modules have their own translation files then
+the procedure above may (but not must) be repeated for the po/modules/*/
+subdirectories.
+
+When you're satisfied with your translation you may send your *.po files to
+pragma at kvirc dot net asking for inclusion in the svn. If you want
+to mantain the translation then you may also ask for a writeable svn account.
+
+
+Happy translating :)
+Szymon Stefanek

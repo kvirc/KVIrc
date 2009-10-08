@@ -1,0 +1,98 @@
+# CMakeLists for src/modules/options
+
+SET(kvioptions_MOC_HDRS
+	container.h
+	dialog.h
+	instances.h
+	optw_antispam.h
+	optw_avatar.h
+	optw_channel.h
+	optw_connection.h
+	optw_ctcp.h
+	optw_ctcpfloodprotection.h
+	optw_dcc.h
+	optw_generalopt.h
+	optw_highlighting.h
+	optw_identity.h
+	optw_ignore.h
+	optw_input.h
+	optw_interfacefeatures.h
+	optw_interfacelookglobal.h
+	optw_irc.h
+	optw_ircoutput.h
+	optw_ircview.h
+	optw_lag.h
+	optw_logging.h
+	optw_mediatypes.h
+	optw_messages.h
+	optw_nickserv.h
+	optw_notify.h
+	optw_notifier.h
+	optw_protection.h
+	optw_proxy.h
+	optw_query.h
+	optw_servers.h
+	optw_sound.h
+	optw_windowlist.h
+	optw_textencoding.h
+	optw_texticons.h
+	optw_tools.h
+	optw_topiclabel.h
+	optw_away.h
+	optw_uparser.h
+	optw_urlhandlers.h
+	optw_userlist.h
+	optw_tray.h
+)
+
+SET(kvioptions_SRCS
+	libkvioptions.cpp
+	container.cpp
+	dialog.cpp
+	instances.cpp
+	optw_antispam.cpp
+	optw_avatar.cpp
+	optw_channel.cpp
+	optw_connection.cpp
+	optw_ctcp.cpp
+	optw_ctcpfloodprotection.cpp
+	optw_dcc.cpp
+	optw_generalopt.cpp
+	optw_highlighting.cpp
+	optw_identity.cpp
+	optw_ignore.cpp
+	optw_input.cpp
+	optw_interfacefeatures.cpp
+	optw_interfacelookglobal.cpp
+	optw_irc.cpp
+	optw_ircoutput.cpp
+	optw_ircview.cpp
+	optw_lag.cpp
+	optw_logging.cpp
+	optw_mediatypes.cpp
+	optw_messages.cpp
+	optw_nickserv.cpp
+	optw_notify.cpp
+	optw_notifier.cpp
+	optw_protection.cpp
+	optw_proxy.cpp
+	optw_query.cpp
+	optw_servers.cpp
+	optw_sound.cpp
+	optw_windowlist.cpp
+	optw_textencoding.cpp
+	optw_texticons.cpp
+	optw_tools.cpp
+	optw_topiclabel.cpp
+	optw_away.cpp
+	optw_uparser.cpp
+	optw_urlhandlers.cpp
+	optw_userlist.cpp
+	optw_tray.cpp
+)
+
+# After this call, files will be moc'ed to moc_kvi_*.cpp
+QT4_WRAP_CPP(kvioptions_MOC_SRCS ${kvioptions_MOC_HDRS})
+
+SET(kvi_module_name kvioptions)
+INCLUDE(${CMAKE_SOURCE_DIR}/cmake/module.rules.txt)

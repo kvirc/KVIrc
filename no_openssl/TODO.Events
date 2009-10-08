@@ -1,0 +1,58 @@
+WRITE DOCS!!! :P
+
+This is a list of old KVIrc 2.x events that are not present yet on KVIRC 3/4.
+Please remove as you implement them.
+
+OnCTCPMultimedia
+OnError
+OnEventError
+OnIdleStart
+OnIdleStop
+OnLogin?
+OnUnhandedNumeric
+OnUserWindowFileDrop
+OnUserWindowInput
+OnWhoisReply -> kvi_sp_numeric.cpp 851
+
+(10)
+
+
+Commands (Pragma please review, maybe remove ircop commands?)
+--------
+
+CD
+CTTPREPLY
+DIR
+FINDTEXT
+GEOMETRY
+KILLPROC
+LOCOPS
+MULTIMEDIA
+OPNOTICE
+OPERSERV
+OS
+OWNER
+PROCLIST
+REHASH
+STATSERV
+STATUS
+UNEXCEPT
+
+(17)
+
+Functions
+---------
+DurationToString
+GetEnv
+Icon
+InetAton
+InetNtoa
+IsMe
+IsValidIp
+New needs documentation!
+NumTimeToString
+Range
+StrCat
+Uname
+
+(12)

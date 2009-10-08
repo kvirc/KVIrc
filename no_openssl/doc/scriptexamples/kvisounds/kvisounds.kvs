@@ -1,0 +1,169 @@
+#############################################################################################
+# This script adds a set of IRCap style sounds to some events
+# It is heavily based on the anti-idle script
+# (C) 2002 Juanjo Álvarez Martínez
+#############################################################################################
+# Dedicated to my girlfriend Annalisa for put up with me and my crazes
+
+# TODO: 
+# Sound for OnKvircStartup and OnKvircShutdown
+# Delete the sound files on uninstall?
+# Add a menu (scripts->kvisounds?) from where the user can 
+# enable/disable every sound
+
+%Thispath = $file.extractpath($0)
+
+alias(kvisounds)
+{
+	switch($0)
+	{
+		case(on):
+		{
+			# checking if it wasn't running
+			if(!%Kvisoundsstatus)
+			{
+				# the script wasn't running already, so it should be started by calling the
+				# script with the run parameter
+                #eventctl -e OnDCCGetConnected kvisounds
+                #eventctl -e OnDCCGetTransferComplete kvisounds
+                #eventctl -e OnDCCSendConnected kvisounds
+                #eventctl -e OnDCCSendTransferComplete kvisounds
+                eventctl -e OnIrc kvisounds
+                eventctl -e OnMeOp kvisounds
+                eventctl -e OnMeDeOp kvisounds
+                eventctl -e OnMeJoin kvisounds
+                eventctl -e OnMeKick kvisounds
+                eventctl -e OnHighlight kvisounds
+                eventctl -e OnQueryWindowCreated kvisounds				
+				eventctl -e OnQueryMessage kvisounds
+
+				%Kvisoundsstatus = 1;
+				echo "Kvi-Sounds enabled";
+			} else {
+				# the script was already running
+				echo "Kvi-Sounds already enabled";
+			}
+		}
+		break
+		case(off):
+		{
+			# checking if it was already running
+			if(%Kvisoundsstatus)
+			{
+				# Sounds were enabled so we desactivate them disabling the events
+	            #eventctl -d OnDCCGetConnected kvisounds
+	            #eventctl -d OnDCCGetTransferComplete kvisounds
+	            #eventctl -d OnDCCSendConnected kvisounds
+	            #eventctl -d OnDCCSendTransferComplete kvisounds
+	            eventctl -d OnIrc kvisounds
+	            eventctl -d OnMeOp kvisounds
+	            eventctl -d OnMeDeOp kvisounds
+	            eventctl -d OnMeJoin kvisounds
+	            eventctl -d OnMeKick kvisounds
+	            eventctl -d OnHighlight kvisounds
+	            eventctl -d OnQueryWindowCreated kvisounds	
+				eventctl -d OnQueryMessage kvisounds
+			} else {
+				# The script wasn't running
+				echo "Kvi-Sounds were not enabled";
+			}
+		}
+		break
+		case(status):
+		{
+			# checking the status variable
+			if(%Kvisoundsstatus)
+			{
+				echo "Kvi-Sounds are enabled";
+			} else {
+				echo "Kvi-Sounds are disabled";
+			}
+		}
+		break
+		case(install):
+		{
+
+			# Event handlers
+			#event(OnDCCGetConnected,kvisounds){snd.play file.localdir(audio/send.au);};
+			#event(OnDCCGetTransferComplete,kvisounds){snd.play $file.localdir(audio/transfer.au);};
+			#event(OnDCCSendConnected,kvisounds){snd.play $file.localdir(audio/send.au);};
+			#event(OnDCCSendTransferComplete,kvisounds){snd.play $file.localdir(audio/transfer.au);};
+			event(OnIrc,kvisounds){snd.play $file.localdir(audio/login.au);};
+			event(OnMeOp,kvisounds){snd.play $file.localdir(audio/op.au);};
+			event(OnMeDeOp,kvisounds){snd.play $file.localdir(audio/deop.au);};
+			event(OnMeJoin,kvisounds){snd.play $file.localdir(audio/join.au);};
+			event(OnMeKick,kvisounds){snd.play $file.localdir(audio/kick.au);};
+			event(OnHighlight,kvisounds){snd.play $file.localdir(audio/cuac.au);};
+			event(OnQueryWindowCreated,kvisounds){snd.play $file.localdir(audio/ring.au);};
+			event(OnQueryMessage,kvisounds){snd.play $file.localdir(audio/bip.au);};
+
+			# We copy the file to his default destination
+			%newpath = $str.append(%Thispath,/waves)
+            file.mkdir $file.localdir/audio
+			file.copy -o %newpath/transfer.au $file.localdir(audio/transfer.au)
+			file.copy -o %newpath/cuac.au $file.localdir(audio/cuac.au)
+			file.copy -o %newpath/deop.au $file.localdir(audio/deop.au)
+			file.copy -o %newpath/join.au $file.localdir(audio/join.au)
+			file.copy -o %newpath/kick.au $file.localdir(audio/kick.au)
+			file.copy -o %newpath/login.au $file.localdir(audio/login.au)
+			file.copy -o %newpath/op.au $file.localdir(audio/op.au)
+			file.copy -o %newpath/ring.au $file.localdir(audio/ring.au)
+			file.copy -o %newpath/send.au $file.localdir(audio/send.au)
+			file.copy -o %newpath/bip.au $file.localdir(audio/bip.au)
+
+			kvisounds on
+
+			echo "installation of the Kvi-Sounds script succesful"
+			echo "you can uninstall it by typing '/kvisounds uninstall'"
+			echo "you can enable it by typing '/kvisounds on' and disable it with '/kvisounds off'"
+			echo "just type '/kvisounds help' to get all possible commands"
+			echo "---"
+			echo "Juanjo Álvarez and the KVIrc Development Team"
+
+	    }
+		break
+		case(uninstall):
+		{	
+			alias($snd.play){};
+            #event(OnDCCGetConnected,kvisounds){};
+            #event(OnDCCGetTransferComplete,kvisounds){};
+            #event(OnDCCSendConnected,kvisounds){};
+            #event(OnDCCSendTransferComplete,kvisounds){};
+            event(OnIrc,kvisounds){};
+            event(OnMeOp,kvisounds){};
+            event(OnMeDeOp,kvisounds){};
+            event(OnMeJoin,kvisounds){};
+            event(OnMeKick,kvisounds){};
+            event(OnHighlight,kvisounds){};
+            event(OnQueryWindowCreated,kvisounds){};
+			event(OnQueryMessage,kvisounds){};
+			alias(kvisounds){};
+
+			echo "KVI-Sounds script sucesfully uninstalled"
+
+		}
+		break
+		case(help):
+		{
+			echo "usage: /kvisounds <option>"
+			echo ""
+			echo "possible options:"
+			echo "on            enable sounds"
+			echo "off           disable sounds"
+			echo "status        tell you if the kvi-sounds script is enabled"
+			echo "uninstall     uninstall the kvi-sounds script"
+			echo "help          guess what ;)"
+		}
+		break
+		default
+		{
+			echo "Unsupported Kvi-Sounds parameter ($0)"
+			echo "Try '/kvisounds help' for more information."
+		}
+	}			
+}	
+
+kvisounds install
+
+				
+				

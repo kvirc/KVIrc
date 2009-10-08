@@ -1,0 +1,108 @@
+######################################################################################################
+#
+# playing KVIrc script
+#
+# I started this script cause I was scared about the colors of Pragmas mp3share script
+# and the insecierness of dcc download.
+# 
+# So I did set up this little script for mp3 advertising based on Pragmas ugly mp3share.
+#
+# Hints, donations and stuff can be delivered to istari@kvirc.net.
+#
+# This small script communicates with the platform mp3 player
+# and advertises the currently played song
+#
+# The following things are left as exercise to the readed:
+#
+# - starting the platform mp3player if it is not running
+#
+######################################################################################################
+
+file.mkdir $file.localdir(pics)
+file.copy -o $file.extractPath($0)/playing_icon.png $file.localdir(pics/playing_icon.png)
+
+action.create -w=cqd (playing_adv,$tr("Advertise MP3"),$tr("Advertises the currently played song"),playing_icon.png)
+{
+	if(!($mp3player.isplaying))
+	{
+		echo It looks like your mp3 player is not playing
+		halt
+	}
+
+	switch ($mp3player.getchannels())
+	{
+		case("1"): %channel="mono"
+			break
+		case("2"): %channel="stereo"
+			break
+	}
+
+	%tmins = $($mp3player.getlength / 60000)
+	%tsecs = $(($mp3player.getlength % 60000) / 1000)
+	%tsecs1 = $(%tsecs / 10)
+	%tsecs2 = $(%tsecs % 10)
+        %mins = $($mp3player.gettime / 60000)
+        %secs = $(($mp3player.gettime % 60000) / 1000)
+        %secs1 = $(%secs / 10)
+        %secs2 = $(%secs % 10)
+	%rate = $($mp3player.getrate / 1000)
+	%size = $file.size("$mp3player.getfilename")
+	%msize = $(%size / (1024*1024))
+	%ksize = $((%size - ((%size / (1024*1024)) * 1024 * 1024) - (%size % 1024)) / 1024)
+	%bsize = $(%size % 1024)
+	
+
+	if(%size > 0)
+	{
+    	    if(%msize > 0)
+	    {
+		    %size = "%msize MByte %ksize KByte"
+	    }else{
+		    if(%ksize > 0)
+		    {
+			    %size = "%ksize KByte %bsize Byte"
+		    }else{
+			    %size = "%bsize Byte"
+		    }
+	    }
+
+	    me is listening to $mp3player.gettitle() =- %mins:%secs1%secs2 of %tmins:%tsecs1%tsecs2 -=- %rate Kbps -=- \
+		$mp3player.getfreq Hz -=- %channel -=- %size -=$o
+	}else{
+	    me is streaming \"$mp3player.gettitle()\" from $mp3player.getfilename =- %mins:%secs1%secs2 mins -=- %rate Kbps -=- \
+		$mp3player.getfreq Hz -=- %channel -=$o
+	}
+
+#	offer.add -t=$(($mp3player.getlength / 1000) + 60) \
+#		-n="mp3_$mp3player.getposition" $mp3player.getfilename;
+}
+
+toolbar.create playing $tr("MP3 Sharing")
+toolbar.additem playing playing_advertise
+toolbar.show playing
+
+alias(playing_uninstall)
+{
+	# Kill the playing_adv alias
+	action.destroy -q playing_adv
+	# Kill this alias
+	alias(playing_uninstall){}
+}
+
+
+playing_addbutton
+
+echo The playing script is installed.
+if("$system.ostype" == "windows")
+{
+	echo On Windows you need the Winamp multimedia player
+	echo freely available at http://www.winamp.com
+	echo You also need to install the gen_kvirc.dll from the KVIrc
+	echo distribution as a Winamp plugin (this involves copying the
+	echo file to the winamp \"plugins\" directory).
+} else {
+	echo On Unix you need the Xmms multimedia player
+	echo freely available at http://www.xmms.org
+}
+echo Use playing_uninstall to uninstall the script.
+echo Have fun :)

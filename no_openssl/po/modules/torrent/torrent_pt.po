@@ -1,0 +1,73 @@
+# translation of torrent_pt.po to Português
+# Zé <mmodem00@gmail.com>, 2007.
+# Zé <ze@mandriva.org>, 2008.
+# Copyright (C) YEAR THE KVIrc COPYRIGHT HOLDER
+# This file is distributed under the same license as the KVIrc package.
+msgid ""
+msgstr ""
+"Project-Id-Version: torrent_pt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-18 23:01+0200\n"
+"PO-Revision-Date: 2008-08-01 07:48+0100\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
+"Language-Team: Português <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+msgid ""
+"An interface to KDE's excellent KTorrent client.\n"
+"Download it from http://www.ktorrent.org\n"
+msgstr ""
+"Um interface para o cliente KDE KTorrent.\n"
+"Transfira-o de http://www.ktorrent.org\n"
+
+#: src/modules/torrent/libkvitorrent.cpp:102
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "E escolher o interface do cliente torrent \"%Q\""
+
+#: src/modules/torrent/libkvitorrent.cpp:719
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Interface de cliente inválido \"%Q\"!"
+
+#: src/modules/torrent/libkvitorrent.cpp:129
+msgid "Last interface error: "
+msgstr "Ultimo erro do interface: "
+
+#: src/modules/torrent/tc_statusbarapplet.cpp:92
+msgid "No client selected!"
+msgstr "Nenhum cliente seleccionado!"
+
+#: src/modules/torrent/libkvitorrent.cpp:118
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr "Nenhum interface seleccionado. Tente /torrent.detect"
+
+#: src/modules/torrent/libkvitorrent.cpp:109
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr "Parece que não existe nenhum cliente torrent nesta máquina"
+
+#: src/modules/torrent/libkvitorrent.cpp:128
+msgid ""
+"The selected torrent client interface failed to execute the requested "
+"function"
+msgstr ""
+"O interface de cliente torrent seleccionado falhou ao executar a função "
+"pedida"
+
+#: src/modules/torrent/tc_statusbarapplet.cpp:61
+msgid "Torrent Client"
+msgstr "Cliente Torrent"
+
+#: src/modules/torrent/libkvitorrent.cpp:62
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "A tentar o interface do cliente torrent \"%Q\": pontuação %d"
+
+#: src/modules/torrent/libkvitorrent.cpp:711
+msgid "Using client interface \"%Q\"."
+msgstr "A usar o interface do cliente \"%Q\"."
+
+#~ msgid "Index out of range: %d [0-%d]!"
+#~ msgstr "Índice fora de alcance: %d [0-%d]!"

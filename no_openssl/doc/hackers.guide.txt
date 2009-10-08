@@ -1,0 +1,901 @@
+KVIrc hackers guide - Szymon Stefanek - 2004.05.26
+last updated on 2008.06.02
+-------------------------------------------------------------------------------
+
+This is an always-work-in-progress guide for KVIrc source code hackers.
+
+-------------------------------------------------------------------------------
+The source tree
+-------------------------------------------------------------------------------
+
+/                         Root directory.
+|                         This is almost completely CMake stuff.
+|
+|-- admin                 Administrative files and document generation scripts.
+|
+|-- cmake                 Build files using the new CMake system resides in here.
+|
+|-- data                  Data for the KVIrc program. Most of this stuff is
+|   |                     installed in $(prefix)/share/kvirc/$VERSION/
+|   |
+|   |-- applnk            *.desktop and menu entries for KDE
+|   |
+|   |-- config            Default configuration files
+|   |
+|   |-- defscript         The default script
+|   |
+|   |-- deftheme          The default themes
+|   |
+|   |-- doctemplates      Some document templates that get parsed by gendoc.pl
+|   |                     when the html documentation is generated
+|   |
+|   |-- helppics          Data pictures for the html documentation
+|   |
+|   |-- icons             Icons in various sizes
+|   |
+|   |-- man               The manual pages
+|   |
+|   |-- manifests         Manifests needed to compile under win32 using VC++
+|   |
+|   |-- msgcolors         Default sets of message colors
+|   |
+|   |-- pics              Most of the pictures that KVIrc uses
+|   |
+|   |-- protocols         irc:// and irc6:// protocol definitions for konqueror
+|   |
+|   |-- resources_win32   Resources for the windows compilation.
+|   |
+|   `-- resources_mac     Resources for the macosx compilation.
+|
+|-- doc                   Any kind of documentation
+|   |
+|   `-- scriptexamples    Various script examples
+|
+|-- po                    Internationalization (i18n :)
+|   |
+|   |-- core              Translations for kvilib and the main KVIrc executable
+|   |
+|   `-- modules           Translations for the modules
+|
+|-- scripts               Some SHELL scripts. Probably only config is used atm.
+|
+|-- src                   The sources
+|   |
+|   |-- kvilib            KVIrc library. Any source code snippet that can be
+|   |   |                 abstracted enough to not depend on the KVIrc core
+|   |   |                 ends up here. kvilib depends only on external stuff.
+|   |   |
+|   |   |-- config        The headers that control the compile-time
+|   |   |                 configuration.
+|   |   |
+|   |   |-- core          The really basic classes: strings, memory management,
+|   |   |                 error code defines etc..
+|   |   |
+|   |   |-- ext           Here ends everything that has no other specific place
+|   |   |                 in kvilib.
+|   |   |
+|   |   |-- file          File management and file utilities
+|   |   |
+|   |   |-- include       Compile-time generated include files. these are
+|   |   |                 only links.
+|   |   |
+|   |   |-- irc           IRC protocol related classes.
+|   |   |
+|   |   |-- net           Networking related stuff: sockets, ssl, http ...
+|   |   |
+|   |   |-- system        System function wrappers or stuff that depends
+|   |   |                 on the strict operating system support.
+|   |   |                 Threads, localisation, env, time, shared library..
+|   |   |
+|   |   `-- tal           Toolkit Abstraction Layer: wrapper classes that
+|   |                     inherit from KDE* or QT classes, depending on the
+|   |                     compilation type.
+|   |
+|   |-- kvirc             The KVIrc executable sources
+|   |   |
+|   |   |-- kernel        The core of the executable. The main function is
+|   |   |                 here. Here is also the KviApp object and the options
+|   |   |                 core management.
+|   |   |
+|   |   |-- kvs           The NEW shiny scripting engine.
+|   |   |                 This two-stage UNICODE KVS interpreter replaces the
+|   |   |                 old uparser and is the default scripting engine
+|   |   |                 since kvirc 3.4.
+|   |   |
+|   |   |-- module        The module management stuff: the loader, the module
+|   |   |                 interface definitions etc..
+|   |   |
+|   |   |-- sparser       The IRC server parser
+|   |   |
+|   |   `-- ui            User interface. 99% of the core GUI is here.
+|   |                     Here you can find KviFrame (the main window)
+|   |                     KviMdiManager, KviWindow, KviChannel, KviQuery,
+|   |                     KviConsole, KviInput, KviIrcView and KviUserListView
+|   |                     which are the most common widgets in kvirc.
+|   |
+|   |-- modules           Yes, the modules :D
+|   |   |
+|   |   |-- about         The about dialog
+|   |   |
+|   |   |-- action        The action module
+|   |   |
+|   |   |-- actioneditor  The action editor
+|   |   |
+|   |   |-- addon         The addon module
+|   |   |
+|   |   |-- aliaseditor   The alias editor window
+|   |   |
+|   |   |-- avatar        Avatar manipulation stuff
+|   |   |
+|   |   |-- chan          $chan.* scripting stuff
+|   |   |
+|   |   |-- channelsjoin  The channelsjoin dialog
+|   |   |
+|   |   |-- clock         This was a clock applet but actually it is not
+|   |   |                 working and thus not compiled.
+|   |   |
+|   |   |-- codetester    The codetester window
+|   |   |
+|   |   |-- config        config.* scripting stuff
+|   |   |
+|   |   |-- context       The context module
+|   |   |
+|   |   |-- dcc           This module implements the whole DCC protocol.
+|   |   |                 Windows, transfer threads etc: everyting is here.
+|   |   |
+|   |   |-- dialog        dialog.* scripting stuff
+|   |   |
+|   |   |-- editor        The scripting editor core widget.
+|   |   |
+|   |   |-- eventeditor   The event editor window
+|   |   |
+|   |   |-- file          file.* scripting stuff
+|   |   |
+|   |   |-- filetransferwindow The file transfers window
+|   |   |
+|   |   |-- help          The help browser
+|   |   |
+|   |   |-- http          http.* scripting stuff
+|   |   |
+|   |   |-- ident         A small ident daemon
+|   |   |
+|   |   |-- iograph       an input/output graph window
+|   |   |
+|   |   |-- lamerizer     A crypt/text-transformation engine
+|   |   |
+|   |   |-- language      A language detector module
+|   |   |
+|   |   |-- links         The links window
+|   |   |
+|   |   |-- list          The channel list window
+|   |   |
+|   |   |-- log           log.* scripting stuff
+|   |   |
+|   |   |-- logview       The logviewer window
+|   |   |
+|   |   |-- mask          mask.* scripting stuff
+|   |   |
+|   |   |-- math          the math module
+|   |   |
+|   |   |-- mediaplayer   the media player module
+|   |   |                 This is an interface to some multimedia programs
+|   |   |                 (amarok, audacious, juk, xmms, winamp) and libs
+|   |   |                 (amip, DBus). This replaces the old mp3player
+|   |   |                 module. You'll need to satisfy some dependencies
+|   |   |                 to enable support for a specific program/library,
+|   |   |                 by example on unix libxmms.so is
+|   |   |                 loaded at runtime. On windows there is also
+|   |   |                 a gen_kvirc.dll plugin for winamp that needs
+|   |   |                 to be loaded by the winamp program in order to make
+|   |   |                 communications with KVIrc possible.
+|   |   |
+|   |   |-- mircimport    A server entry importer from the mirc's servers.ini
+|   |   |
+|   |   |-- my            my.* scripting stuff
+|   |   |
+|   |   |-- notifier      the notifier module creates a dialog that keeps you
+|   |   |                 informed about new messages when kvirc is minimized
+|   |   |
+|   |   |-- objects       All the object oriented scripting stuff
+|   |   |
+|   |   |-- options       The options dialog
+|   |   |
+|   |   |-- perl          The perl scripting module
+|   |   |
+|   |   |-- perlcore      The perlcore module
+|   |   |
+|   |   |-- popupeditor   The popup editor window
+|   |   |
+|   |   |-- proxydb       The proxy DB management stuff from KVS
+|   |   |
+|   |   |-- python        The python scripting module
+|   |   |
+|   |   |-- pythoncore    The pythoncore module
+|   |   |
+|   |   |-- raweditor     The raw events editor window
+|   |   |
+|   |   |-- regchan       regchan.* scripting stuff
+|   |   |
+|   |   |-- reguser       reguser.* scripting stuff
+|   |   |
+|   |   |-- rijndael      A crypting engine
+|   |   |
+|   |   |-- rot13         A crypt/text-transformation engine
+|   |   |
+|   |   |-- serverdb      The server DB management stuff from KVS
+|   |   |
+|   |   |-- setup         The module that is loaded when KVIrc is started
+|   |   |                 for the first time. It contains the initial
+|   |   |                 configuration wizard.
+|   |   |
+|   |   |-- sharedfile    sharedfile.* scripting stuff
+|   |   |
+|   |   |-- sharedfileswindow The shared files window
+|   |   |
+|   |   |-- snd           snd.* scripting stuff
+|   |   |
+|   |   |-- socketspy     The socketspy window
+|   |   |
+|   |   |-- spaste        spaste.* scripting stuff
+|   |   |
+|   |   |-- str           str.* scripting stuff
+|   |   |
+|   |   |-- system        system.* scripting stuff
+|   |   |
+|   |   |-- term          The embedded terminal emulator (needs KDE)
+|   |   |
+|   |   |-- texticons     Texticons handling functions module
+|   |   |
+|   |   |-- theme         Theme management/package module
+|   |   |
+|   |   |-- tip           The tip of the day
+|   |   |
+|   |   |-- tmphighlight  tmphighlight.* scripting stuff
+|   |   |
+|   |   |-- toolbar       toolbar.* scripting stuff
+|   |   |
+|   |   |-- toolbareditor The toolbar editor window
+|   |   |
+|   |   |-- torrent       The torrent module
+|   |   |
+|   |   |-- trayicon      The trayicon module
+|   |   |
+|   |   |-- upnp          The UPnP management module
+|   |   |
+|   |   |-- url           The url window
+|   |   |
+|   |    `-- window       window.* scripting stuff
+|   |
+|    `-- win32registrar   win32 support files. WinMain is here
+|
+`-- win32build            The directory for Windows builds
+
+As of 2004.05.26:
+[pragma@phoenix src]# cat $(find ./ -name \*.h) | wc -l
+  60189
+[pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
+ 164400
+
+As of 2008.04.26:
+[pragma@phoenix src]# cat $(find ./ -name \*.h) | wc -l
+  49663
+[pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
+ 237020
+
+As of 2009.09.01:
+[pragma@phoenix src]# cat $(find ./ -name \*.h) | wc -l
+  59081
+[pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
+ 244976
+
+-------------------------------------------------------------------------------
+The coding style
+-------------------------------------------------------------------------------
+
+The coding style helps the reader a lot. In a large project you tend
+to forget the exact meaning of some functions or variables.
+A good naming convention makes the code "auto commenting": by looking
+at the name of a variable or function you can understand its type
+and guess its meaning and usage.
+Following these rules is not strictly mandatory (maybe with the
+exception of the first one) but it is highly appreciated.
+
+- INDENT WITH TABS (the only MANDATORY rule)
+
+	Go back to the line above and read it again.
+
+	INDENT, TABS.
+
+	Tabs can be assigned any number of spaces in any decent source code
+	editor.
+
+	Actually 95% of the KVIrc code is indented in BSD/Allman style
+	but the K&R style is also tolerated.
+
+- Try to use the following variable naming conventions
+
+	g_*                : global variables
+	m_*                : member variables
+	no prefix          : any other scope
+
+	[prefix]pName      : pointer to something named Name
+	[prefix]iName      : integer (signed) variable named Name
+	[prefix]uName      : unsigned integer
+	[prefix]szName     : string named Name
+	[prefix]dName      : floating point vars
+	[prefix]eName      : enumerated value variables
+	[prefix]tName      : kvi_time_t values
+
+	i,j,k,tmp,aux,p    : short names are used for short term variables
+	                     like the temporaries used in functions.
+	                     Do NOT name a member or global variable i.
+
+	So finally:
+
+	g_pApp is a global pointer to the application object
+	m_pData is a member variable pointer to some data object
+	m_szName is a string member variable named Name
+	szPippo is a string variable named Pippo
+	tmp is a short term temporary variable
+	i,j,k are probably some short term iteration variables
+	...
+
+
+- Function names
+
+	C++ class member functions
+		Function names start with lower case letters. Each word except the first
+		one should start with an upper case letter. Try to use descriptive names
+		and not acronyms or shortcuts (unless they are really obvious).
+		For example:
+			fillUserList, setAutoDelete, joinChannel, markQueryAsDead ...
+	Standalone C/C++ functions
+		For standalone functions you can follow the C++ rule but the
+		kernel-like syntax is also acceptable (all low case letters with
+		underscore separators).
+		If you're defining a widely used C function (maybe in kvilib)
+		then adding a kvi_ prefix is also a good idea.
+
+- Class names
+
+	The class names start with an upper case letter. In most cases
+	there is a Kvi prefix and the rest follows the rule for function names.
+		KviApp, KviConsole, KviWindow, KviStr, KviConfig, KviUserParser ...
+
+	If possible, do not use "shortcut" names.
+	Actually KviCommand is preferred over KviCmd unless the KviCmd class
+	is REALLY widely used across the source (like KviStr for example).
+
+	This helps a lot in remembering the class names: with the shortcuts
+	you're often forced to open the corresponding header file to look up
+	which letters have been left off...
+
+	Structure names usually follow the same conventions.
+
+- Simple data types
+
+	If you need to define a simple data type then something like kvi_typename_t
+	is a good choice.
+
+- Preprocessor
+
+	Preprocessor macros should be all uppercase with undescores separating
+	words.
+
+- Comment the code
+
+	You don't need to write poems: two lines describing what a function
+	does will be enough.
+	If a function is simple and its meaning is clear from its name
+	then comments are not needed (this is why we're using expressive
+	variable and function names).
+	Single line C++ comments are preferred over the C style comments.
+
+-------------------------------------------------------------------------------
+Coding tips
+-------------------------------------------------------------------------------
+
+- Don't use C++ exceptions: they make the code unmanteinable in the long term
+
+- If you need to access some system function then first look if there is
+	an existing kvi_* wrapper and use that one instead. The wrapper is there
+	because of portability issues.
+
+- Don't use the STL features: anything that you need IS either in the Qt library
+	or in kvilib.
+
+- Sources include some arch/compile specific defines:
+        - Windows compilation (using MS Visual c++ projects) has COMPILE_ON_WINDOWS #defined;
+        - Windows compilation (using Cmake+MinGW) has COMPILE_ON_MINGW #defined;
+        - a unix* compilation with KDE support has COMPILE_KDE_SUPPORT #defined;
+        - a MacOs compilation (using gnu tools) has COMPILE_ON_MAC #defined;
+
+- Modularize, abstract, modularize, abstract ...
+
+- When your objects need to be allocated with new in a module and destroyed
+	in the kvirc core or kvilib (or viceversa) then derive the class from
+	KviHeapObject that will provide the new and delete operators.
+	This is a workaround for Windows that uses a separate
+	heap for each executable module (*.exe or *.dll). Data allocated on one
+	heap must be freed on the same heap.
+
+-------------------------------------------------------------------------------
+The strings
+-------------------------------------------------------------------------------
+
+This is the list of the various string types used in KVIrc.
+
+(const) char *
+	The classic C null terminated string.
+
+KviStr
+	The basic KVIrc string class. It has been first implemented as a hack
+	around various bugs of the original QString class (the NOT unicode one
+	that now has been renamed to QCString). It has the property of being
+	always non null and it has no reference counting.
+	Actually many occurences of this string are replaced by QString
+	(especially in GUI modules) to handle correctly the UNICODE character set.
+
+QString
+	The Qt UNICODE string. See the Qt documentation for details.
+	This is the string that should be mostly used in KVIrc in the near future.
+	Take care: in general it is NOT null terminated.
+	There is a KviQString wrapper namespace (#include "kvi_qstring.h") that
+	adds some missing functionality. For example,
+		KviQString::sprintf(qstring_buffer,qstring_format,...)
+	allows formatting a QString with a format string that is a QString itself
+	(and thus it is UNICODE).
+	QString uses reference counting. An assigment of a QString to another
+	QString does NOT make an immediate copy, it just increases the reference
+	count instead. The copy is made at the first modification of one of the
+	two strings (the operation is called "detaching"). While generally this
+	is not an issue, you must take care when passing QString objects between
+	concurrent threads.
+
+(const) QChar *
+	The array of Qt chars. This is usually obtained by callling
+	KviQString::nullTerminatedArray() which itself is a hack...
+	This array is used in some functions that were written for
+	const char * strings and haven't been ported completely.
+
+QCString
+	The Qt non UNICODE string. See the Qt documentation for details.
+
+The Goal:
+	- Use KviStr only where it is strictly needed (for protocol or performance
+		related issues). One of such places is the IRC server parser (but there
+		are more).
+	- Use QString everywhere in the user interface and in any other
+		place where KviStr is not strictly needed. Save and restore
+		strings in the UTF8 format.
+	- Get rid of ALL occurences of KviWStr and kvi_wchar_t * : DONE on 2004.11.02
+
+-------------------------------------------------------------------------------
+Strings and localisation
+-------------------------------------------------------------------------------
+
+Any string that is shown to the user should be translated to the user's local
+language. To make a string translaetable use one of the __tr* macros.
+The most common one across the sources is __tr("string") that returns
+a const char * translation of "string".
+Actually __tr() is being phased out in favor of __tr2qs() that returns
+a QString instead of a const char * pointer.
+The arguments of these macros are extracted from the sources by the
+gettext program and are used to build the translation hashes loaded at runtime.
+Remember that the arguments must be string constants and not variables.
+
+The list that follows describes briefly the localisation macros
+defined in kvi_locale.h
+
+CSTRING is an US-ASCII null terminated C string.
+
+__tr2qs(CSTRING) : translates CSTRING to a QString &
+__tr(CSTRING) : translates CSTRING to another CSTRING
+	This should disappear in favor of __tr2qs
+
+These macros are NOT THREAD SAFE: you can't call them from non GUI threads.
+If you need to translate some string in a slave thread (probably when
+sending a message event to the main GUI thread) then you need to use the
+__tr_no_lookup() (on the slave side) and __tr_no_xgettext() (on the master side).
+
+
+-------------------------------------------------------------------------------
+Anatomy of an IRC context
+-------------------------------------------------------------------------------
+
+
+KviIrcContext [persistent set of resources]
+  |
+  +--KviIrcConnection [changed at every connection, with (almost) all the children]
+  |     |
+  |     +--KviIrcConnectionTarget [target server, proxy to use and address to bind]
+  |     |     |
+  |     |     +--KviIrcServer
+  |     |     |
+  |     |     +--KviProxy [null if not using a proxy]
+  |     |
+  |     +--KviIrcLink [high level network link: trasmits and receives IRC messages]
+  |     |     |
+  |     |     +--(KviIrcConnectionTargetResolver) [kickstarts the connection]
+  |     |     |
+  |     |     +--KviIrcSocket [low level network link: transmits packets of bytes]
+  |     |
+  |     +--KviPtrList<KviChannel> [active channels]
+  |     |
+  |     +--KviPtrList<KviQuery> [active queries]
+  |     |
+  |     +--KviIrcConnectionUserInfo [nick, user, host, local ip...]
+  |     |
+  |     +--KviIrcConnectionServerInfo [name, supported modes, supported flags...]
+  |     |
+  |     +--KviNotifyListManager [kvi_notifylist.h]
+  |     |
+  |     +--...
+  |
+  +--KviConsole [persistent]
+  |
+  +--(KviLinksWindow), (KviListWindow) [other may-be-persistent context windows]
+  |
+  +--KviPtrList<KviChannel> [dead channels]
+  |
+  +--KviPtrList<KviQuery> [dead queries]
+  |
+  +--...
+
+KviIrcContext is the set of resources used to deal with a single irc
+connection. An irc context is persistent and reusable until the user decides to
+destroy it. The irc context owns the console window (KviConsole) that is
+strictly tied to the lifetime of the context itself. The console is created
+when the IRC context is created and when the user closes the console then
+the IRC context is destroyed too.
+In earlier KVIrc versions there was only KviConsole that did the role of both
+KviConsole and KviIrcContext, but since the class has grown in complexity
+to a point where it started to be unmantainable the splitting has been unavoidable.
+
+KviIrcConnection rappresents an IRC connection: it is the highest protocol
+implementation on the KVIrc's networking stack. A KviIrcConnection
+owns a KviIrcLink (that is the lower level). KviIrcConnection is NOT reusable:
+it lives only for the lifetime of a single IRC connection inside the parent
+irc context. KviIrcConnection talks to the parent's KviConsole.
+The connection target is a KviIrcConnectionTarget class and it contains
+the KviIrcServer, KviProxy and the eventual bind address. The owned target
+is passed down the networking stack to the lower level classes.
+The connection contains also the lists of queries and channels currently opened.
+When a channel or query is marked as dead then its ownership is passed to
+the KviIrcContext (it becomes permanent between two connections).
+The connection owns a lot of other interesting classes to take a look at:
+KviIrcConnectionUserInfo, KviIrcConnectionServerInfo, KviNotifyListManager...
+
+KviIrcLink is the middle level of the KVIrc's networking stack.
+It handles host lookups, the connection startup and data stream input and output.
+This is meant to be a "pluggable" class: it should be flexible enough to allow
+inheritance and protocol overriding. KviIrcLink owns and manages the KviIrcSocket.
+It takes care of extracting IRC protocol messages from the KviIrcSocket raw data
+stream and of formatting the outgoing messages by adding the trailing CRLF.
+The host lookups are done by the means of KviIrcConnectionTargetResolver.
+
+KviIrcSocket is the lowest level of the KVIrc's networking stack.
+It manages the connection through proxies and accesses the system level
+socket directly. The incoming data stream is passed to KviIrcLink::processData()
+and the outgoing data stream is received through KviIrcSocket::sendPacket()
+KviIrcSocket also manages the outgoing send queue and implements the
+"anti-server-flood" algorithm.
+This class doesn't know anything about the IRC protocol: it just receives
+and sends out raw data packets!
+
+
+.......
+
+kvirc (KviApp)
+  |
+  +-frame window (KviFrame)
+     |
+     +-irc_context 1 (KviIrcContext)
+     |  |
+     |  +-irc_connection (KviIrcConnection)
+     |  |  |
+     |  |  +-list of channels
+     |  |  |
+     |  |  +-list of queries
+     |  |  |
+     |  |  +-irc_link
+     |  |
+     |  +-console (KviConsole)
+     |
+     +-irc_context 2
+     | ...
+
+
+KviConsole <-> KviIrcContext
+
+-------------------------------------------------------------------------------
+Important global variables
+-------------------------------------------------------------------------------
+
+All these variables are almost alwas set (and point to a real alive object).
+The only critical moments where these variables must be double checked
+are the startup phase and the shutdown phase.
+Do not attempt to change the values of these variables unless you REALLY know
+what you're doing.
+
+
+KviApp * g_pApp;
+	The one and only application object
+	Declared in "kvi_app.h"
+	Always set.
+
+KviServerParser * g_pServerParser;
+	The one and only server parser
+	Declared in "kvi_sparser.h"
+	Almost always set (critical phases at early startup and late shutdown)
+
+KviFrame * g_pFrame;
+	The one and only main window
+	Declared in "kvi_frame.h"
+	Almost always set (critical phases at early startup and late shutdown)
+
+KviWindow * g_pActiveWindow;
+	The one and only active window
+	Declared in "kvi_window.h"
+	Almost always set (critical phases at early startup and late shutdown)
+
+Note for C++ purists: In fact we could be using the protected singleton pattern
+on most of these variables and access it by the means of Class::instance().
+The global var names save some typing and can be written by any other class
+without having to worry about friends or write-access functions.
+
+-------------------------------------------------------------------------------
+The charset mess
+-------------------------------------------------------------------------------
+
+IRC is not UNICODE :/ ... sigh ...
+The fact is that every user wants his local encoding to be used.
+KVIrc tries to be even smarter and allow a different encoding for each window.
+This is a difficult task since we simply can't translate the strings that
+come from and go to the server just at the socket level.
+
+User -> Server
+
+We need to allow the local user to write UNICODE data, encode it to the
+proper charset (again depending on the window the text was typed in) and
+send it down to the server.
+When the user writes commands this is going to become a little mess since
+nicknames, channel names or usernames may or may not be encoded in the
+encoding of the current window.
+
+Server -> User
+
+We need to carry the plain 8bit data (in whatever encoding it is) from the
+server up to the GUI level, then convert to UNICODE by choosing the proper
+decode routine just when we know in which window the text is going to be
+displayed. In (non RFC) servers that allow encoded characters in nicknames
+this is going to become a real mess since the same 8bit nick may result in
+a different UNICODE string depending on the window it was "decoded" on.
+
+(Partial) Solution:
+- Each server has an encoding set. If empty then the network encoding is used.
+- Each network has and encoding set. If empty then the default system encoding
+  is used.
+- The system encoding is set by the user. If empty then the encoding is guessed
+  from the user's locale.
+- Each window (with the exception of the console) has its own encoding used
+  ONLY for private messages and notices. This allows one to join
+  a channel with a "special" encoding and still see what's being written in.
+  The real utility of this last feature still needs to be evaluated.
+
+-------------------------------------------------------------------------------
+Output levels
+-------------------------------------------------------------------------------
+
+There are few macros that specify the output level that the user desires.
+These marcors are defined in "kvi_options.h"
+
+_OUTPUT_MUTE: returns true if the user wants KVIrc to spit less useless output
+      possible. The goal of the user is to chat on IRC so print only data
+      relevant to this. If stuff goes wrong then print the errors in
+      short forms (one liners) and do it only in case of serious ones.
+      Don't print any transient error or warning.
+      Usage: if(!_OUTPUT_MUTE)output...
+
+_OUTPUT_QUIET: returns true if the uses wants KVIrc to spit less output than
+      normal. The goal of the user is to chat visually on IRC so print
+      only data relevant to this.
+      Usage: if(!_OUTPUT_QUIET)output...
+
+<normal level>: Reference output level: here stuff is printed unconditionally.
+      Usage: output...
+
+_OUTPUT_VERBOSE: returns true if the users allows KVIrc to print some
+      additional output. This is intended mainly for scripters and
+      curious pepole that want detailed informations about what is going
+      on around them.
+      Usage: if(_OUTPUT_VERBOSE)output...
+
+_OUTPUT_PARANOIC: returns true if the users allows KVIrc to print anything
+      including debug info. This is intended mainly for developers.
+      Usage: if(_OUTPUT_PARANOIC)output...
+
+-------------------------------------------------------------------------------
+Rule for safe text output
+-------------------------------------------------------------------------------
+
+If the format string you're going to output is not constant (i.e. it
+comes from the server) you MUST use KviWindow::outputNoFmt() instead
+of KviWindow::output().
+
+BAD:
+	QString szText = pConnection->decodeText(msg.safeTrailing());
+	pWindow->output(KVI_OUT_SOMETHING,szText); <--potential crash/security hole
+
+GOOD:
+	QString szText = pConnection->decodeText(msg.safeTrailing());
+	pWindow->outputNoFmt(KVI_OUT_SOMETHING,szText); <--faster and no crashes
+
+-------------------------------------------------------------------------------
+KVIrc (and script) versioning
+-------------------------------------------------------------------------------
+
+- Standard definition
+
+The KVIrc versioning follows a really common standard: we use a
+string of numbers separated by dots with decreasing weight from left to right.
+
+	<N1>.<N2>.<N3>.<N4>.....
+
+where each <NX> is a number.
+
+Theoretically there is no limit on the parts the version can be composed
+of but in fact we use either three or four part versions. The omitted
+parts on the right are implicitly assumed to be 0.
+
+The first part is called the major release number and it is bumped
+up only when really big changes occur in the source tree. A bump from N to N+1
+in the major version number means that a great milestone has been achieved
+and the software is really different from what it was in the moment
+when the major number was bumped from N-1 to N. This usually also means
+that the software might be somewhat incompatible with the previous major release.
+
+When the major number is bumped up all the following parts are reset to 0
+(and could be even temporairly omitted).
+
+The second part is called minor release number and it is increased
+more often than the major. A bump from N to N+1 in the minor version number
+means that an ordinary (small) development milestone has been achieved.
+Software versions with the same major and close minor numbers are likely
+to be totally compatible with each other.
+
+When the minor number is bumped up all the following parts are reset to 0.
+
+The third part is called (public) revision number and it is increased often.
+A bump from N to N+1 in the revision number usually means that a set of bugfixes
+or some new features have been included in the software. Compatibility
+should be assumed unless explicitly noted. Again, when the revision number
+is bumped up all the following parts are reset to 0.
+
+The fourth part is actually used only on the svn tree and it is usually not
+present in the official public releases (it is assumed to be 0 for comparison
+purposes). It is called the "internal revision" number and when taken
+out of the version string it may assume a meaning on its own (but it's not
+required in fact). KVIrc uses the ISO sources date in the format YYYYMMDD for this
+number. The sources date number is defined in src/kvilib/config/kvi_sourcesdate.h
+and is also displayed by kvirc --version. Some packagers prefer to use the svn
+revision number instead of the sources date. This is not "official" but it's
+still ok as long as it follows the "order-preserving" rule (see below).
+
+It is unlikely that you will find a KVIrc versioned with more than
+four numbers... but if you will (for some strange reason) then it will
+still follow the same rules: it will be increased for yet minor changes
+(two versions within a single day ?) and will be reset to (implicit)
+zero when the fourth part changes.
+
+- Comparison of version strings
+
+The comparison of two version strings is defined as follows.
+Let N1.N2.N3.N4.N5..... and M1.M2.M3.M4.M5..... be version strings.
+To find out which one is greater compare each couple of numbers Ni-Mi at the same
+position i (with the same weight) until Ni and Mi differ or both Ni and
+Mi are omitted. If both Ni and Mi are omitted then the version strings
+are equal, otherwise the greater version string is the one that
+contains the greater of the Ni - Mi couple. Easy, right ?
+
+This means that to compare 3.2.6.3.4 and 3.2.9 you first compare
+3 with 3 and find that they are equal. Then you compare 2 with 2
+and find that they are equal. Then compare 6 with 9 and find that
+they are different and 9 is greater. This allows you to say that
+the first version string is greater than the second.
+
+To compare 3.2.6.1 with 3.2.6 you compare 3 and 3, 2 and 2, 6 and 6
+and 1 with (implicit) 0, that tells you that the first version string
+is greater than the second one.
+
+This also means that 3 and 3.0.0 are assumed to be EQUAL since
+the algorithm above finds that at the fourth comparison step
+both numbers are omitted (thus zero from there up to infinity).
+
+This comparison function is monotonically increasing or in
+other words order-preserving. This is a *requirement* for a consistent
+versioning scheme.
+
+- Package versioning schemes with letters
+
+It is common for packages to add letters to some of the parts
+of the version string. This causes the string to lose the
+advantage of being universally comparable but it might still
+define a consistent scheme for some package line. In the case
+that letters are added to a version string (like 3.2.6.svn10)
+we say that it is comparable only to the version strings
+that have the same letter pattern: 3.2.6.svn10 and 4.3.1.svn344
+are comparable but 3.2.6.svn10 and 3.2.6.cvs15 are not.
+For comparable strings we strip the letters in order to make the comparison.
+
+- Stable and unstable versions
+
+Our numbering scheme does NOT tell which versions are stable
+and which are unstable. The versions are declared to be (more or less) stable
+by other means (read: the mailing list and the www site).
+It is true, tough, that stable versions are likely to have
+more numbers omitted (read: 3.5 looks more "stable" than 3.4.5.43),
+but this is not a strict requirement. It is also true that
+almost all "unstable" versions come out from the svn tree and
+usually contain all the four parts.
+
+- Official, semi-official and unofficial packages
+
+We tend to have three types of packages. The official packages are the
+ones considered to be stable and released on the site in all the supported forms
+(source and various kinds of binaries). The official releases are also announced
+in tracker sites and spread between distributors. Since "most" stable, the
+official releases are the ones likely to be included in the OS distributions.
+The official packages have md5 sums and a gpg signature of one of the KVIrc
+developers (with a public key available from a "trusteable" location such
+as the KVIrc web site).
+
+The semi-official packages are snapshots of the source tree made when
+some important changes have occured. They are announced on the KVIrc site
+only and are likely to be stable (but are not declared officially to be so).
+The semi-official packages usually are at least in the source form but
+there are likely to be some binaries available too.
+We do not sign the semi-official packages but it's still somewhat
+granted that WE (the KVIrc Development Team) make them and thus the
+source can be trusted.
+
+The unofficial packages are random snapshots of the svn source tree made
+by anyone who wants to do it at any time. They are not announced on the KVIrc
+web site (but might be uploaded to ftp.kvirc.net) but rather announced and available
+at some other internet location. Since we always try to keep the svn
+tree clean and compilable they should work fine but there is no guarantee.
+There is no rule for the unofficial package format: there might be source-only
+or binary only packages. We *suggest* to use the four part version string format
+but in fact they might contain third party patches and even follow their own
+derived version numbering scheme. The general rule is: we don't control
+the unofficial packages and don't provide support if they don't compile/work
+as expected the user/packager is on his own.. but we'll try to be helpful,
+if possible :)
+
+- Putting it all together
+
+At the moment of writing the KVIrc svn trunk has version 4.0.0.
+Today is 01 Sept 2009 and the current svn revision number is 3453.
+The latest official release was 3.4.2, still based on qt3, and some 3.4.3
+bugfixes snapshots are floating around the net.
+If tomorrow we had to emit a quick fix for the official release we'll
+use 4.0.1.
+
+-------------------------------------------------------------------------------
+Code documentation
+-------------------------------------------------------------------------------
+
+KVIrc is LARGE. We need to start documenting the source code if we want
+to understand our own code in a year from now and if we want help from
+others.
+
+Use Doxygen.
+
+There is a Doxyfile in the admin subdirectory. You can either
+run doxygen from there or simply type "make devdocs" from the
+top directory of the source tree.
+Then take a look at doc/api/html/annotated.html
+
+Let's also try to document the code we write: the doxygen syntax
+is trivial and you can find a 5 minute tutorial by googling.
+

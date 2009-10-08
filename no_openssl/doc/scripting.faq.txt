@@ -1,0 +1,48 @@
+-------------------------------------------------------------------------------
+Q: What is a callback (command) ?
+
+A: A callback is a command or set of commands that is called by KVIrc in
+   response to an event. It is similar to an event handler; the difference
+   is that the event handler is usually static, the callback is "created"
+   at runtime instead.
+   Consider the command exec (see /help exec); its syntax is as follows:
+
+   exec(<commandline>[,<magicparams>])
+   {
+     <callback>
+   }
+
+   The <callback> is a list of commands that will be called by KVIrc when
+   the <commandline> has been executed and the slave process has printed
+   some data on its stdout.
+
+
+-------------------------------------------------------------------------------
+Q: How can i print on a window the result of an external command like nmap
+   or uname ?
+
+A: Starting from version 3.0.0 KVIrc supports (again) the /exec command.
+   The commandline you're looking for might be something similar to:
+
+     exec("uname -a"){ echo $1; };
+
+   If you want to say the result to a channel you may use say instead of echo
+
+     exec("uname -a"){ say $1; };
+
+   For nmap you might consider using the -e switch too in order to see
+   the errors printed on stderr.
+
+     exec -e ("nmap -sS -p 1-1024 somehost"){ say $1; }
+
+   Exec is a really flexible command, it can process the slave output in blocks
+   or as a whole and can write data to the slave too. See /help exec for
+   more details.
+
+-------------------------------------------------------------------------------
+Q: KVIrc crashes when I use a commandline like the following:
+   alias(identify){ identify password; }
+
+A: This is infinite recursion: a programming error.
+   Take a look at http://en.wikipedia.org/wiki/Infinite_loop , learn
+   that once for all and fix your script.

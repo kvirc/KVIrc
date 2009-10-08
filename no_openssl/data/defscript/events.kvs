@@ -1,0 +1,113 @@
+# Default events file
+
+event(OnDccChatPopupRequest,default)
+{
+	popup dccchat $dcc.remoteNick($0);
+}
+
+event(OnChannelPopupRequest,default)
+{
+	popup channeltextview $target;
+}
+
+event(OnConsolePopupRequest,default)
+{
+	popup consoletextview;
+}
+
+event(OnChannelLinkPopupRequest,default)
+{
+	if($0 != "") popup channelpopup $0;
+}
+
+event(OnQueryPopupRequest,default)
+{
+	if($target) popup querytextview $target;
+}
+
+event(OnQueryNickPopupRequest,default)
+{
+	if($0 != "") popup querytextview $0;
+}
+
+event(OnQueryFileDropped,default)
+{
+	if($0 != "") dcc.send $target $0;
+}
+
+event(OnNickLinkDefaultActionRequest,default)
+{
+	if($0 != "") whois $0;
+}
+
+event(OnNickLinkPopupRequest,default)
+{
+	if($0 != "") popup defaulttextview $0;
+}
+
+event(OnNotifyListDefaultActionRequest,default)
+{
+	if($0 != "")
+	{
+		query $0; whois $0 $0;
+	}
+}
+
+event(OnNotifyListPopupRequest,default)
+{
+	if($0 != "") popup defaulttextview $0;
+};
+
+event(OnWindowPopupRequest,default)
+{
+	popup windowpopup;
+}
+
+event(OnChannelWindowCreated,default)
+{
+	button(w,Logging,119,Logging)
+	{
+		popup -p=$0,$1 logging;
+	}
+}
+
+event(OnQueryWindowCreated,default)
+{
+	button(w,Logging,119,Logging)
+	{
+		popup -p=$0,$1 logging;
+	}
+}
+
+event(OnDCCChatWindowCreated,default)
+{
+	button(w,Logging,119,Logging)
+	{
+		popup -p=$0,$1 logging;
+	}
+}
+
+event(OnChannelNickLinkClick,default)
+{
+	if($0 != "") window.insertInInputText $window $0$option(stringNickCompletionPostfix);
+}
+
+event(OnChannelNickPopupRequest,default)
+{
+	if($0 != "") popup channel $0;
+}
+
+event(OnChannelNickDefaultActionRequest,default)
+{
+	if(!$isEmpty($0)) query $0;
+}
+
+event(OnURLLinkPopupRequest,URL popup)
+{
+	popup urlpopup $0
+}
+
+event(OnHostLinkPopupRequest,default)
+{
+	popup hostpopup $0;
+}

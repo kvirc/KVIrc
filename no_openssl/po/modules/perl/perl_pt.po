@@ -1,0 +1,51 @@
+# translation of perl_pt.po to Português
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Szymon Stefanek <pragma@kvirc.dontforgettoremoveme.net>, 2004.
+# Zé <mmodem00@netvisao.pt>, 2004.
+# José Melo <mmodem00@netvisao.pt>, 2005, 2006.
+# Zé <ze@mandriva.org>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: perl_pt\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"PO-Revision-Date: 2008-03-31 10:24+0100\n"
+"Last-Translator: Zé <ze@mandriva.org>\n"
+"Language-Team: Português <pt@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+"Plural-Forms:  nplurals=2; plural=(n != 1);\n"
+
+#: src/modules/perlcore/libkviperlcore.cpp:234
+msgid "Internal error: perl interpreter not initialized"
+msgstr ""
+
+#: src/modules/perl/libkviperl.cpp:477 src/modules/perl/libkviperl.cpp:481
+msgid "Perl execution error:"
+msgstr "Erro de execução perl:"
+
+#: src/modules/perl/libkviperl.cpp:47
+msgid "The perlcore module can't be loaded: perl support not available"
+msgstr ""
+"O módulo perlcore não pode ser carregado: o suporte perl não está disponível"
+
+#: src/modules/perl/libkviperl.cpp:460 src/modules/perl/libkviperl.cpp:534
+msgid ""
+"The perlcore module failed to execute the code: something is wrong with the "
+"perl support"
+msgstr ""
+"O módulo perlcore falhou ao executar o código: alguma coisa não está "
+"correcta no suporte perl"
+
+#: src/modules/perl/libkviperl.cpp:61
+msgid "This KVIrc executable has been compiled without perl scripting support"
+msgstr "Este executável KVirc foi compilado sem suporte perl"
+
+#: src/modules/perl/libkviperl.cpp:48
+msgid "To see more details about loading failure try /perlcore.load"
+msgstr ""
+"Para ver mais detalhes acerca da falha de carregamento tente /perlcore.load"

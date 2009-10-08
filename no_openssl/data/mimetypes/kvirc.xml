@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+  <mime-type type="application/x-kva">
+    <comment>KVIrc Addon Package</comment>
+    <glob pattern="*.kva"/>
+  </mime-type>
+  <mime-type type="text/x-kvc">
+    <comment>KVIrc Configuration File</comment>
+    <glob pattern="*.kvc"/>
+  </mime-type>
+  <mime-type type="text/x-kvs">
+    <comment>KVIrc Script File</comment>
+    <glob pattern="*.kvs"/>
+  </mime-type>
+  <mime-type type="application/x-kvt">
+    <comment>KVIrc Theme Package</comment>
+    <glob pattern="*.kvt"/>
+  </mime-type>
+</mime-info>

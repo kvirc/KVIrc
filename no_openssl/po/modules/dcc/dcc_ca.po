@@ -1,0 +1,1030 @@
+# translation of dcc_ca.po to Català
+# translation of dcc_es.po to spanish
+# José Luis Sánchez <jsanchezv@teleline.es>, 2004.
+# Marc Serra Romero <mad93@majomo.com>, 2005.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dcc_ca\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"PO-Revision-Date: 2005-02-24 23:18+0100\n"
+"Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
+"Language-Team: Català <ca@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
+"X-Generator: KBabel 1.2\n"
+
+#: src/modules/dcc/requests.cpp:857
+msgid "\"any\""
+msgstr "\"qualsevol\""
+
+#: src/modules/dcc/send.cpp:1247
+msgid "%1"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1236 src/modules/dcc/send.cpp:1243
+#, fuzzy
+msgid "%1 of %2 (%3%)"
+msgstr "%1 de %2 bytes (%3%)"
+
+#: src/modules/dcc/requests.cpp:692
+msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
+msgstr "%Q [%Q@%Q] està preparat per a rebre l'arxiu \"%s\""
+
+#: src/modules/dcc/dialogs.cpp:75
+msgid "&Accept"
+msgstr "&Acceptar"
+
+#: src/modules/dcc/canvaswidget.cpp:1482
+msgid "&Chord"
+msgstr "A&cord"
+
+#: src/modules/dcc/canvaswidget.cpp:1480
+msgid "&Ellipse"
+msgstr "&Elipse"
+
+#: src/modules/dcc/canvaswidget.cpp:1489
+msgid "&Hexagon"
+msgstr "&Hexagon"
+
+#: src/modules/dcc/canvaswidget.cpp:1495
+msgid "&Insert"
+msgstr "&Inserir"
+
+#: src/modules/dcc/canvaswidget.cpp:1492
+msgid "&Item"
+msgstr "Element"
+
+#: src/modules/dcc/canvaswidget.cpp:1478
+msgid "&Line"
+msgstr "&Línia"
+
+#: src/modules/dcc/canvaswidget.cpp:1488
+msgid "&Pentagon"
+msgstr "&Pentagon"
+
+#: src/modules/dcc/canvaswidget.cpp:1481
+msgid "&Pie"
+msgstr "Pastís"
+
+#: src/modules/dcc/canvaswidget.cpp:1493
+msgid "&Polygons"
+msgstr "&Polígons"
+
+#: src/modules/dcc/canvaswidget.cpp:1479 src/modules/dcc/canvaswidget.cpp:1487
+msgid "&Rectangle"
+msgstr "&Rectangle"
+
+#: src/modules/dcc/dialogs.cpp:80
+msgid "&Reject"
+msgstr "&Rebutjar"
+
+#: src/modules/dcc/dialogs.cpp:145
+msgid "&Rename"
+msgstr "&Renombrar"
+
+#: src/modules/dcc/canvaswidget.cpp:1484
+msgid "&Rich text (html)"
+msgstr "Text en&riquit (html)"
+
+#: src/modules/dcc/canvaswidget.cpp:1491
+msgid "&Shape"
+msgstr "Figura"
+
+#: src/modules/dcc/canvaswidget.cpp:1486
+msgid "&Triangle"
+msgstr "&Triangle"
+
+#: src/modules/dcc/requests.cpp:772 src/modules/dcc/requests.cpp:942
+msgid "(unknown)"
+msgstr "(desconegut)"
+
+#: src/modules/dcc/libkvidcc.cpp:434 src/modules/dcc/libkvidcc.cpp:657
+#: src/modules/dcc/libkvidcc.cpp:1159
+msgid "-c requires -i and -p"
+msgstr "-c necessita -i i -p"
+
+#: src/modules/dcc/broker.cpp:270
+msgid ""
+"<b>%1 [%2@%3]</b> requests a <b>Direct Client Connection</b> in <b>%4</b> "
+"mode.<br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> demana una <b>Connexió Directa a Client (DCC)</b> en mode "
+"<b>%4</b><br>"
+
+#: src/modules/dcc/broker.cpp:411
+msgid ""
+"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in "
+"<b>CANVAS</b> mode.<br>The connection target will be host <b>%4</b> on port "
+"<b>%5</b><br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> peticions a<br><b>Connexió Directa a Client (DCC)</b> en "
+"mode <b>CANVAS</b>.<br>El destí de la connexió serà la màquina <b>%4</b> en "
+"el port <b>%5</b><br>"
+
+#: src/modules/dcc/broker.cpp:341
+msgid ""
+"<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VOICE</"
+"b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
+"b><br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> peticions a<br><b>Connexió Directa a Client (DCC)</b> en "
+"modo <b>VOICE</b>.<br>El destí de la connexió serà la màquina <b>%4</b> en "
+"el port <b>%5</b><br>"
+
+#: src/modules/dcc/broker.cpp:503
+#, fuzzy
+msgid ""
+"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
+"<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> vol enviar-li l'arxiu '<b>%4</b>', de <b>%5</b> bytes de "
+"longitud.<br>El destí de la connexió serà la màquina <b>%6</b> en el port <b>"
+"%7</b><br>"
+
+#: src/modules/dcc/broker.cpp:516
+#, fuzzy
+msgid ""
+"<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
+"<br>You will be the passive side of the connection.<br>"
+msgstr ""
+"<b>%1 [%2@%3]</b> vol enviar-li l'arxiu '<b>%4</b>', de <b>%5</b> bytes de "
+"longitud.<br>Seràs el cantó passiu de la connexió.<br>"
+
+#: src/modules/dcc/broker.cpp:529
+msgid ""
+"<center><b>Note:</b></center>The file appears to be an avatar that you have "
+"requested. You should not change its filename. Save it in a location where "
+"KVIrc can find it, such as the 'avatars', 'incoming', or 'pics' directories, "
+"your home directory, or the save directory for the incoming file type. The "
+"default save path will probably work. You can instruct KVIrc to accept "
+"incoming avatars automatically by setting the option "
+"<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
+msgstr ""
+"<center><b>Nota:</b></center>El arxiu sembla ser un avatar que ha solicitat. "
+"No hauria de canviar el nom de l'arxiu. Guardi-ho en un lloc on pugui trobar-"
+"lo KVIrc, com els directoris 'avatars', 'incoming' o 'pics' del teu "
+"directori personal o en el directori de gravació pel tipus d'arxiu entrant. "
+"Provablement, la ruta de gravació per defecte funcionarà. Pot demanar a "
+"KVIrc que accepti avatars automàticament activant l'opció <tt>Acceptar "
+"automàticament avatars entrants</tt>.<br>"
+
+#: src/modules/dcc/libkvidcc.cpp:634 src/modules/dcc/requests.cpp:449
+#: src/modules/dcc/requests.cpp:739
+msgid "<unknown size>"
+msgstr "<mida desconeguda>"
+
+#: src/modules/dcc/send.cpp:942
+msgid "Abort"
+msgstr "Interrompre"
+
+#: src/modules/dcc/send.cpp:913 src/modules/dcc/send.cpp:924
+msgid "Aborted"
+msgstr "Interrumpuda"
+
+#: src/modules/dcc/send.cpp:1793
+msgid "Accepting RESUME request, transfer will begin at position %1"
+msgstr "Acceptant petició RESUM, la transferència començara a la posició %1"
+
+#: src/modules/dcc/requests.cpp:958
+#, fuzzy
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %Q"
+msgstr ""
+"Acceptant una petició d'arxiu des de %Q [%Q@%Q] per a '%s' (arxiu real: %Q), "
+"oferint DCC %s"
+
+#: src/modules/dcc/requests.cpp:901
+msgid ""
+"Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
+"DCC %s since we can't accept incoming connections (user option)"
+msgstr ""
+"Acceptant una petició d'arxiu des de %Q [%Q@%Q] per a '%s' (arxiu real: %Q), "
+"oferint DCC %s perque no podem acceptar connexions entrants (opció d'usuari)"
+
+#: src/modules/dcc/voice.cpp:930
+#, c-format
+msgid "Actual codec used is '%s'"
+msgstr "El còdec actual és '%s'"
+
+#: src/modules/dcc/send.cpp:816
+msgid "Attempting a passive DCC %1 connection"
+msgstr "Intentant una connexió DCC pasiva %1"
+
+#: src/modules/dcc/chat.cpp:161
+#, c-format
+msgid "Attempting a passive DCC %s connection"
+msgstr "Intentant una connexió %s DCC pasiva"
+
+#: src/modules/dcc/canvas.cpp:80
+msgid "Attempting a passive DCC CANVAS connection"
+msgstr "Intentant una connexió pasiva DCC CANVAS"
+
+#: src/modules/dcc/voice.cpp:740
+msgid "Attempting a passive DCC VOICE connection"
+msgstr "Intentant una connexió pasiva DCC VOICE"
+
+#: src/modules/dcc/send.cpp:820
+msgid "Attempting an active DCC %1 connection"
+msgstr "Intentant una connexió DCC activa %1"
+
+#: src/modules/dcc/chat.cpp:170
+#, c-format
+msgid "Attempting an active DCC %s connection"
+msgstr "Intentant una connexió %s DCC activa"
+
+#: src/modules/dcc/canvas.cpp:106
+msgid "Attempting an active DCC CANVAS connection"
+msgstr "Intentant una connexió DCC CANVAS activa"
+
+#: src/modules/dcc/voice.cpp:745
+msgid "Attempting an active DCC VOICE connection"
+msgstr "Intentant una connexió activa DCC VOICE"
+
+#: src/modules/dcc/broker.cpp:557
+#, fuzzy
+msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
+msgstr "Acceptant automàticament petició DCC %s de %s!%s@%s per l'arxiu %s"
+
+#: src/modules/dcc/broker.cpp:631
+#, fuzzy
+msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
+msgstr ""
+"Guardant automàticament el DCC %s arxiu %s com a \r![!dbl]play $0\r%s\r"
+
+#: src/modules/dcc/send.cpp:1275
+msgid "Avg:"
+msgstr ""
+
+#: src/modules/dcc/utils.cpp:142
+#, c-format
+msgid ""
+"Can't listen on default interface '%s': fix it in the options dialog, "
+"disabling the option (so the next dcc will work)"
+msgstr ""
+"No puc escoltar en la interfície per defecte '%s': arregla-ho en el diàleg "
+"d'opcions deshabilitant l'opció (per a que funcioni el pròxim dcc)"
+
+#: src/modules/dcc/broker.cpp:201 src/modules/dcc/broker.cpp:818
+#, fuzzy
+msgid "Can't open file %Q for reading"
+msgstr "No he pogut obrir l'arxiu %s per a lectura"
+
+#: src/modules/dcc/requests.cpp:534
+#, c-format
+msgid ""
+"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgstr ""
+"No puc realitzar el DCC REVC: la transferència de l'arxiu %s en el port %s "
+"no s'ha iniciat"
+
+#: src/modules/dcc/requests.cpp:573
+#, c-format
+msgid ""
+"Can't proceed with DCC SEND: Transfer not initiated for file %s on port %s, "
+"or invalid resume size"
+msgstr ""
+"No he pogut realitzar en DCC SEND: la transferència de l'arxiu %s en el port "
+"%s no s'ha iniciat o té una mida de resum no vàlida"
+
+#: src/modules/dcc/utils.cpp:124
+msgid "Can't retrieve a suitable local IPV4 address"
+msgstr "No puc trobar una adreça IPv4 apropiada"
+
+#: src/modules/dcc/broker.cpp:191
+#, fuzzy
+msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
+msgstr ""
+"No he pogut enviar la petició DCC %s a %s: la connexió IRC ha estat "
+"finalitzada"
+
+#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1852
+msgid "Cancel"
+msgstr "Cancel·lar"
+
+#: src/modules/dcc/chat.cpp:297 src/modules/dcc/chat.cpp:392
+msgid "Cannot send data: No active connection"
+msgstr "No puc enviar dades: No hi ha una connexió activa"
+
+#: src/modules/dcc/broker.cpp:618
+#, fuzzy
+msgid "Choose Files to Save - KVIrc"
+msgstr "Esculli els Arxius a Enviar - KVIrc"
+
+#: src/modules/dcc/broker.cpp:161 src/modules/dcc/broker.cpp:781
+msgid "Choose Files to Send - KVIrc"
+msgstr "Esculli els Arxius a Enviar - KVIrc"
+
+#: src/modules/dcc/requests.cpp:96
+#, c-format
+msgid "Concurrent transfer limit reached (%u of %u transfers running)"
+msgstr ""
+"Arribant al límit de transferències concurrents (%u de %u transferències "
+"funcionant)"
+
+#: src/modules/dcc/send.cpp:934
+msgid "Configure Bandwidth..."
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1821
+msgid "Configure bandwidth for DCC transfer %1"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1682
+msgid "Connected to %1:%2"
+msgstr "Conectat a %1:%2"
+
+#: src/modules/dcc/voice.cpp:910 src/modules/dcc/canvas.cpp:283
+#: src/modules/dcc/chat.cpp:525
+#, fuzzy
+msgid "Connected to %Q:%Q"
+msgstr "Conectat a %s:%s"
+
+#: src/modules/dcc/send.cpp:1474
+msgid "Contacting host %1 on port %2"
+msgstr "Contactant amb la màquina %1 en el port %2"
+
+#: src/modules/dcc/voice.cpp:755 src/modules/dcc/canvas.cpp:109
+#: src/modules/dcc/chat.cpp:184
+#, fuzzy
+msgid "Contacting host %Q on port %Q"
+msgstr "Contactant amb la màquina %s en el port %s"
+
+#: src/modules/dcc/broker.cpp:290 src/modules/dcc/broker.cpp:544
+msgid "DCC %1 Request - KVIrc"
+msgstr "Petició DCC %1 - KVIrc"
+
+#: src/modules/dcc/send.cpp:1557
+msgid "DCC %1 request not sent, awaiting manual connection"
+msgstr "Petició DCC %1 no enviada, esperant connexió manual"
+
+#: src/modules/dcc/chat.cpp:497
+#, fuzzy
+msgid "DCC %Q failed: %Q"
+msgstr "DCC %s ha fallat: %Q"
+
+#: src/modules/dcc/chat.cpp:238
+#, fuzzy
+msgid "DCC %Q request not sent, awaiting manual connection"
+msgstr "La petició DCC %s no ha estat enviada, esperant connexió manual"
+
+#: src/modules/dcc/send.cpp:1619
+#, fuzzy
+msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
+msgstr "Transferència DCC %s amb %s@%s:%s completada: \r![!dbl]play $0\r%s\r"
+
+#: src/modules/dcc/broker.cpp:417
+msgid "DCC CANVAS request"
+msgstr "Petició de DCC CANVAS"
+
+#: src/modules/dcc/canvas.cpp:102
+msgid "DCC CANVAS request not sent: awaiting manual connections"
+msgstr "Petició DCC CANVAS no enviada; esperant connexions manuals"
+
+#: src/modules/dcc/voice.cpp:901 src/modules/dcc/canvas.cpp:278
+msgid "DCC Failed: %Q"
+msgstr "Ha fallat el DCC: %Q"
+
+#: src/modules/dcc/broker.cpp:347
+msgid "DCC VOICE request"
+msgstr "Petició de DCC VOICE"
+
+#: src/modules/dcc/voice.cpp:777
+msgid "DCC VOICE request not sent: awaiting manual connections"
+msgstr "No s'ha enviat la petició DCC: esperant connexions manuals"
+
+#: src/modules/dcc/libkvidcc.cpp:1114
+msgid "DCC VOICE support not enabled at compilation time"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:362
+msgid ""
+"Data transfer terminated, waiting 30 seconds for the peer to close the "
+"connection..."
+msgstr ""
+"Transferència de dades acabada, esperant 30 segons per a que l'altre extrem "
+"tanqui la connexió..."
+
+#: src/modules/dcc/send.cpp:369
+msgid "Data transfer was terminated 30 seconds ago, closing the connection"
+msgstr "La transferència de dades ha acabat fa 30 segons, tancant la connexió"
+
+#: src/modules/dcc/voice.cpp:818 src/modules/dcc/chat.cpp:407
+msgid "ERROR: %Q"
+msgstr "ERROR: %Q"
+
+#: src/modules/dcc/broker.cpp:747
+#, fuzzy
+msgid "File %s exists, auto-renaming to %Q"
+msgstr "L'arxiu %s ja existeix, renombrant automàticament a %s.rnm"
+
+#: src/modules/dcc/dialogs.cpp:165
+msgid "File Already Exists - KVIrc"
+msgstr "L'Arxiu Ja Existeix - KVIrc"
+
+#: src/modules/dcc/send.cpp:1132
+msgid "From: "
+msgstr "Des de: "
+
+#: src/modules/dcc/voice.cpp:170
+msgid ""
+"Half duplex soundcard detected, you will not be able to talk and listen at "
+"the same time"
+msgstr ""
+"Detectada tarja de so half-duplex, no seràs capaç de parlar i escoltar al "
+"mateix temps"
+
+#: src/modules/dcc/requests.cpp:79
+msgid "Ignoring"
+msgstr "Ignorant"
+
+#: src/modules/dcc/requests.cpp:79
+msgid "Ignoring and notifying failure"
+msgstr "Ignorant i notificant l'errada"
+
+#: src/modules/dcc/voice.cpp:655
+msgid "Input buffer"
+msgstr "Buffer d'entrada"
+
+#: src/modules/dcc/voice.cpp:876
+#, c-format
+msgid "Input buffer: %d bytes"
+msgstr "Buffer d'entrada: %d bytes"
+
+#: src/modules/dcc/send.cpp:1784
+msgid "Internal error in RESUME request"
+msgstr "Error intern  a la petició RESUME"
+
+#: src/modules/dcc/requests.cpp:196
+#, c-format
+msgid "Invalid IP address %s"
+msgstr "Adreça IP no vàlida %s"
+
+#: src/modules/dcc/requests.cpp:175
+#, c-format
+msgid "Invalid IP address in old format %s"
+msgstr "L'adreça IP en format antic no és vàlida %s"
+
+#: src/modules/dcc/requests.cpp:638
+#, c-format
+msgid "Invalid RECV request: Position %u is is larger than file size"
+msgstr ""
+"Petició RECV no vàlida: la posició %u és més gran que la mida de l'arxiu"
+
+#: src/modules/dcc/send.cpp:1789
+msgid "Invalid RESUME request: Position %1 is larger than file size"
+msgstr ""
+"Petició RESUME no vàlida: la posició %1 és major que la mida de l'arxiu"
+
+#: src/modules/dcc/libkvidcc.cpp:1148
+#, fuzzy
+msgid "Invalid codec specified, defaulting to 'adpcm'"
+msgstr "Còdec '%s' no vàlid, posant per defecte 'adpcm'"
+
+#: src/modules/dcc/requests.cpp:158
+#, c-format
+msgid "Invalid port number %s"
+msgstr "Número de port no vàlid %s"
+
+#: src/modules/dcc/requests.cpp:560
+#, c-format
+msgid "Invalid resume position argument '%s'"
+msgstr "L'argument de posició de resum '%s' no és vàlid"
+
+#: src/modules/dcc/libkvidcc.cpp:1132
+#, fuzzy
+msgid "Invalid sample rate specified, defaulting to 8000"
+msgstr "Freqüència de motreig '%s' no vàlida, posant a 8000 per defecte"
+
+#: src/modules/dcc/requests.cpp:327
+msgid "It seems that I haven't requested this dcc chat"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1824
+msgid "Limit download bandwidth to"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1824
+msgid "Limit upload bandwidth to"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1481
+msgid "Listening on interface %1 port %2"
+msgstr "Escoltant en la interfície %1 port %2"
+
+#: src/modules/dcc/voice.cpp:758 src/modules/dcc/canvas.cpp:85
+#: src/modules/dcc/chat.cpp:186
+#, fuzzy
+msgid "Listening on interface %Q port %Q"
+msgstr "Escoltant en la interfície %s port %s"
+
+#: src/modules/dcc/send.cpp:1683
+msgid "Local end is %1:%2"
+msgstr "El extrem local és %1:%2"
+
+#: src/modules/dcc/voice.cpp:912 src/modules/dcc/canvas.cpp:285
+#: src/modules/dcc/chat.cpp:527
+#, fuzzy
+msgid "Local end is %Q:%Q"
+msgstr "El extrem final és %s:%s"
+
+#: src/modules/dcc/chat.cpp:246 src/modules/dcc/send.cpp:1568
+msgid "Low-level transport connection established"
+msgstr "Establerta la connexió de transport de baix nivell"
+
+#: src/modules/dcc/requests.cpp:856
+msgid "No file offer named '%s' (with size %s) available for %Q [%Q@%Q]"
+msgstr ""
+"No hi ha una oferta de l'arxiu '%s' (amb mida %s) disponible per a %Q [%Q@%Q]"
+
+#: src/modules/dcc/requests.cpp:778 src/modules/dcc/requests.cpp:928
+msgid "No suitable interface to listen on, trying to continue anyway..."
+msgstr ""
+"No hi ha una interfície adequant en el que escoltar, intentant continuar de "
+"totes formes..."
+
+#: src/modules/dcc/libkvidcc.cpp:139
+msgid "No suitable interfaces to listen on, use -i"
+msgstr "No hi ha interfícies adequades per a escoltar, empra -i"
+
+#: src/modules/dcc/send.cpp:1847
+msgid "OK"
+msgstr ""
+
+#: src/modules/dcc/voice.cpp:269
+msgid "Ops...failed to test the soundcard capabilities...expect problems..."
+msgstr ""
+"Ups...ha fallat la prova de les capacitats de la tarja de so...pots esperar "
+"problemes"
+
+#: src/modules/dcc/voice.cpp:657
+msgid "Output buffer"
+msgstr "Buffer de sortida"
+
+#: src/modules/dcc/voice.cpp:878
+#, c-format
+msgid "Output buffer: %d bytes"
+msgstr "Buffer de sortida: %d bytes"
+
+#: src/modules/dcc/dialogs.cpp:149
+msgid "Over&write"
+msgstr "Sobreescriure"
+
+#: src/modules/dcc/send.cpp:1753
+msgid "RESUME accepted, transfer will begin at position %1"
+msgstr "S'ha acceptat RESUME, la transferència s'iniciarà a la posició %1"
+
+#: src/modules/dcc/dialogs.cpp:153
+msgid "Re&sume"
+msgstr "Continuar"
+
+#: src/modules/dcc/send.cpp:936
+msgid "Resend DCC"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:938
+msgid "Resend RevDCC"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:937
+msgid "Resend TDCC"
+msgstr ""
+
+#: src/modules/dcc/send.cpp:1555
+msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
+msgstr ""
+"Enviada petició DCC %1 a %2, esperant la connexió des del client remot..."
+
+#: src/modules/dcc/chat.cpp:235
+#, fuzzy
+msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
+msgstr "Enviada petició DCC %s a %s, esperant la connexió del client remot..."
+
+#: src/modules/dcc/canvas.cpp:100
+#, fuzzy
+msgid ""
+"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgstr ""
+"Enviada petició DCC CANVAS a %s, esperant la connexió des del client remot..."
+
+#: src/modules/dcc/send.cpp:846
+msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
+msgstr "Enviada petició DCC RESUME a %1, esperant el ACCEPT"
+
+#: src/modules/dcc/voice.cpp:775
+#, fuzzy
+msgid ""
+"Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
+"connect..."
+msgstr ""
+"Enviada petició DCC VOICE (%s) a %s, esperant la connexió del client remot..."
+
+#: src/modules/dcc/send.cpp:757
+msgid "Setting up the connection"
+msgstr "Configurant la connexió"
+
+#: src/modules/dcc/requests.cpp:113
+#, c-format
+msgid "Slot limit reached (%u slots of %u)"
+msgstr "Arribat al límit d'slots (%u slots de %u)"
+
+#: src/modules/dcc/send.cpp:1260
+msgid "Spd:"
+msgstr ""
+
+#: src/modules/dcc/chat.cpp:247 src/modules/dcc/send.cpp:1569
+msgid "Starting Secure Socket Layer handshake"
+msgstr "Iniciant negociació del protocol SSL"
+
+#: src/modules/dcc/send.cpp:734
+#, c-format
+msgid "TRANSFER %d"
+msgstr "TRANSFERIR %d"
+
+#: src/modules/dcc/requests.cpp:1015
+#, c-format
+msgid ""
+"The above request appears to be broken: Invalid sample-rate '%s', defaulting "
+"to 8000"
+msgstr ""
+"La petició anterior sembla errònia: freqüència de motreig '%s' no vàlida, "
+"posant a 8000 per defecte"
+
+#: src/modules/dcc/requests.cpp:992
+#, fuzzy
+msgid ""
+"The above request cannot be accepted: DCC VOICE support not enabled at "
+"compilation time "
+msgstr "La petició anterior no pot ser acceptada: còdec no suportat '%s'"
+
+#: src/modules/dcc/requests.cpp:1002
+#, c-format
+msgid "The above request cannot be accepted: Unsupported codec '%s'"
+msgstr "La petició anterior no pot ser acceptada: còdec no suportat '%s'"
+
+#: src/modules/dcc/requests.cpp:598
+msgid ""
+"The above request has resume file size missing, assuming a resume file size "
+"of 0"
+msgstr ""
+"La petició anterior no té una mida d'arxiu per a continuar, assumint 0 com a "
+"mida d'arxiu de reanudació"
+
+#: src/modules/dcc/requests.cpp:457 src/modules/dcc/requests.cpp:608
+#: src/modules/dcc/requests.cpp:747
+msgid ""
+"The above request is broken: The filename contains path components, "
+"stripping the leading path and trying to continue"
+msgstr ""
+"La petició anterior no és correcta: el nom de l'arxiu conté una ruta, "
+"traient la ruta i intentant continuar"
+
+#: src/modules/dcc/requests.cpp:447
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number, trying to continue"
+msgstr ""
+"La petició anterior no es connecta: el quart paràmetre hauria de ser la mida "
+"de l'arxiu però no sembla ser un número enter sense signe, intentant "
+"continuar"
+
+#: src/modules/dcc/requests.cpp:737
+msgid ""
+"The above request is broken: The fourth parameter should be the file size "
+"but does not appear to be an unsigned number; trying to continue"
+msgstr ""
+"La petició anterior és errònia: el quart paràmetre hauria de ser la mida de "
+"l'arxiu però no sembla ser un enter sense signe;intentant continuar"
+
+#: src/modules/dcc/requests.cpp:263
+#, c-format
+msgid ""
+"The above request is broken: The second parameter is '%s' and should be "
+"'chat', trying to continue"
+msgstr ""
+"La petició anterior no és connecta: el segon paràmetre és '%s' i hauria de "
+"ser xat, intentant continuar"
+
+#: src/modules/dcc/requests.cpp:326
+msgid ""
+"The above request is broken: it looks like a zero port tag acknowledge but I "
+"have either never seen this tag or it was sent more than 120 seconds ago"
+msgstr ""
+
+#: src/modules/dcc/broker.cpp:285
+msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
+msgstr ""
+"El destí de la connexió serà la màquina <b>%1</b> en el port <b>%2</b><br>"
+
+#: src/modules/dcc/broker.cpp:275
+msgid "The connection will be secured using SSL.<br>"
+msgstr "La connexió serà assegurada emprant SSL.<br>"
+
+#: src/modules/dcc/chat.cpp:339
+#, fuzzy
+msgid ""
+"The crypto engine was not able to encrypt the current message (%Q): %Q, no "
+"data was sent to the remote end"
+msgstr ""
+"El motor de xifrat no ha estat capaç de desxifrar el missatge actual (%Q): %"
+"s, no s'han enviat dades a l'extrem remot"
+
+#: src/modules/dcc/libkvidcc.cpp:1577 src/modules/dcc/libkvidcc.cpp:2542
+#: src/modules/dcc/libkvidcc.cpp:2562
+msgid "The current window has no associated DCC session"
+msgstr "La finestra actual no té una sessió DCC associada"
+
+#: src/modules/dcc/broker.cpp:665
+#, fuzzy
+msgid ""
+"The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
+"to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
+"file, or<br><b>resume</b> an incomplete download?"
+msgstr ""
+"L'arxiu '<b>%1</b>' ja existeix i té <b>%2</b> bytes de longitud."
+"<br>¿Dessitja<br><b>sobreescriure</b> l'arxiu existent,<br> <b>renombrar "
+"automàticament</b> el nou arxiu, o<br><b>continuar</b> una transferència "
+"incompleta?"
+
+#: src/modules/dcc/broker.cpp:677
+#, fuzzy
+msgid ""
+"The file '<b>%1</b>' already existsand is larger than the offered one.<br>Do "
+"you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-rename</b> "
+"the new file ?"
+msgstr ""
+"L'arxiu '<b>%1</b>' ja existeix i té <b>%2</b> bytes de longitud."
+"<br>¿Dessitja<br><b>sobreescriure</b> l'arxiu existent,<br> <b>renombrar "
+"automàticament</b> el nou arxiu, o<br><b>continuar</b> una transferència "
+"incompleta?"
+
+#: src/modules/dcc/chat.cpp:451
+#, fuzzy
+msgid ""
+"The following message appears to be encrypted, but the crypto engine failed "
+"to decode it: %Q"
+msgstr ""
+"El següent missatge semblar estar xifrat, però el motor de xifrat ha fallat "
+"al descodificar-lo: %s"
+
+#: src/modules/dcc/chat.cpp:213 src/modules/dcc/send.cpp:1509
+msgid ""
+"The local IP address is private, but have no IRC server to determine it from"
+msgstr ""
+"L'adreça IP local és privada, però no tinc un servidor IRC des d'on "
+"determinar-la"
+
+#: src/modules/dcc/chat.cpp:210 src/modules/dcc/send.cpp:1506
+msgid ""
+"The local IP address is private, but unable to determine it from the IRC "
+"server"
+msgstr ""
+"L'adreça IP local és privada, però és impossible determinar-la des del "
+"servidor IRC"
+
+#: src/modules/dcc/send.cpp:1504
+msgid "The local IP address is private, determining from IRC server: %1"
+msgstr "L'adreça IP local és privada, determinant-la des del servidor IRC: %1"
+
+#: src/modules/dcc/chat.cpp:208
+#, c-format
+msgid "The local IP address is private, determining from IRC server: %s"
+msgstr "L'adreça IP local és privada, determinant des del servidor IRC: %s"
+
+#: src/modules/dcc/requests.cpp:698
+#, c-format
+msgid "The remote client is listening on interface %s and port %s"
+msgstr "El client remot està escoltant en la interfície %s i port %s"
+
+#: src/modules/dcc/libkvidcc.cpp:1582
+msgid "The specified parameter is not a valid DCC identifier"
+msgstr "El paràmetre especificat no és un identificador DCC vàlid"
+
+#: src/modules/dcc/libkvidcc.cpp:2553
+msgid "The specified window identifier is not valid"
+msgstr "L'identificador de finestra especificat no és vàlid"
+
+#: src/modules/dcc/libkvidcc.cpp:1662
+msgid "This DCC session is not a DCC transfer session"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:890
+msgid "This executable has been built without SSL support, -s switch ignored"
+msgstr ""
+"Aquest executable ha estat construït sense suport SSL, el modificador -s "
+"serà ignorat"
+
+#: src/modules/dcc/requests.cpp:275
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC CHAT is not available"
+msgstr ""
+"Aquest executable ha estat compilat sense suport SSL, no està disponible "
+"l'extenssió per a DCC CHAT"
+
+#: src/modules/dcc/requests.cpp:844
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC GET is not available"
+msgstr ""
+"Aquest executable ha estat compilat sense suport SSL, no està disponible "
+"l'extensió per a DCC GET"
+
+#: src/modules/dcc/requests.cpp:622
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RECV is not available"
+msgstr ""
+"Aquest executable ha estat compilat sense suport SSL, no està disponible "
+"l'extensió SSL per a DCC RECV"
+
+#: src/modules/dcc/requests.cpp:761
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC RSEND is not available"
+msgstr ""
+"Aquest executable ha estat compilat sense suport SSL, no està disponible "
+"l'extensió SSL per a DCC RSEND"
+
+#: src/modules/dcc/requests.cpp:471
+msgid ""
+"This executable has been compiled without SSL support, the SSL extension to "
+"DCC SEND is not available"
+msgstr ""
+"Aquest executable ha estat compilat sense suport SSL, no està disposable "
+"l'extenssió per a DCC SEND"
+
+#: src/modules/dcc/libkvidcc.cpp:960
+msgid "This executable has no SSL support, -s switch ignored"
+msgstr "Aquest executable no té suport SSL, modificador -s ignorat"
+
+#: src/modules/dcc/libkvidcc.cpp:172
+msgid "This executable was built without SSL support, -s switch ignored"
+msgstr ""
+"Aquest executable s'ha construït sense suport SSL, el modificador -s serà "
+"ignorat"
+
+#: src/modules/dcc/libkvidcc.cpp:91
+msgid ""
+"This window has no associated IRC context (an IRC context is required unless "
+"-c or -n are passed)"
+msgstr ""
+"Aquesta finestra no té context IRC associat (es necessita un context IRC a "
+"menys que es passin els modificadors -c o -n)"
+
+#: src/modules/dcc/send.cpp:1133
+msgid "To: "
+msgstr "A: "
+
+#: src/modules/dcc/requests.cpp:122
+msgid "Too many pending connections"
+msgstr "Masses connexions pendents"
+
+#: src/modules/dcc/send.cpp:1345
+msgid "Transfer Log"
+msgstr "Registre de Transferència"
+
+#: src/modules/dcc/send.cpp:1634
+msgid "Transfer completed"
+msgstr "Transferència completada"
+
+#: src/modules/dcc/send.cpp:923 src/modules/dcc/send.cpp:1594
+#: src/modules/dcc/send.cpp:1673
+msgid "Transfer failed: "
+msgstr "Ha fallat la transferència: "
+
+#: src/modules/dcc/send.cpp:1727
+msgid "Transferring data"
+msgstr "Transferint dades"
+
+#: src/modules/dcc/libkvidcc.cpp:129
+#, fuzzy
+msgid "Unable to get address of interface %Q"
+msgstr "Impossible obtenir l'adreça de la interfície %s"
+
+#: src/modules/dcc/requests.cpp:77
+#, fuzzy
+msgid "Unable to process the above request: %Q, %Q"
+msgstr "No és possible processar la petició anterior: %s, %Q"
+
+#: src/modules/dcc/requests.cpp:1159
+#, c-format
+msgid "Unknown DCC type '%s'"
+msgstr "Tipus DCC desconegut '%s'"
+
+#: src/modules/dcc/requests.cpp:705
+msgid ""
+"Use %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%c "
+"to send the file (or double-click on the socket)"
+msgstr ""
+"Emprar %c\r![!dbl]dcc.send %s -i=%s -p=%s %Q\r/dcc.send %s -i=%s -p=%s %Q\r%"
+"c per a enviar l'arxiu (o doble click al socket)"
+
+#: src/modules/dcc/voice.cpp:1014
+#, c-format
+msgid "Volume: %i"
+msgstr "Volum: %i"
+
+#: src/modules/dcc/send.cpp:261
+msgid ""
+"WARNING: Ignoring data past the declared end of file and closing the "
+"connection"
+msgstr ""
+"ATENCIO: Ignorant les dades que excedeixen del final d'arxiu declarat i "
+"tancant la connexió"
+
+#: src/modules/dcc/send.cpp:602
+msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
+msgstr ""
+"ATENCIO: Rebent dades en un DCC TSEND, aquí no hauria d'haver confirmacions"
+
+#: src/modules/dcc/send.cpp:260
+msgid "WARNING: The peer is sending garbage data past the end of the file"
+msgstr ""
+"ATENCIO: El altre extrem està enviant dades escombraria passant el final de "
+"l'arxiu"
+
+#: src/modules/dcc/voice.cpp:162
+msgid ""
+"WARNING: failed to check the soundcard duplex capabilities: if this is a "
+"half-duplex soundcard , use the DCC VOICE option to force half-duplex "
+"algorithm"
+msgstr ""
+"ATENCIO: ha fallat la comprovació de la característica duplex de la tarja de "
+"so: si aquesta és una tarja half-duplex, empra l'opció DCC VOICE per a "
+"forçar l'algoritme half-duplex"
+
+#: src/modules/dcc/voice.cpp:211
+#, c-format
+msgid ""
+"WARNING: failed to set the requested sample rate (%d): the device used "
+"closest match (%d)"
+msgstr ""
+"ATENCIO: ha fallat la configuració de la freqüència de mostreig solicitada (%"
+"d): el dispositiu ha emprat el valor més proper (%d)"
+
+#: src/modules/dcc/broker.cpp:281
+msgid "You will be the passive side of the connection.<br>"
+msgstr ""
+
+#: src/modules/dcc/libkvidcc.cpp:104
+msgid ""
+"You're not connected to a server (an active connection is required unless -c "
+"or -n are passed)"
+msgstr ""
+"No està connectat a un servidor (es necessita una connexió activa a menys "
+"que es passin els modificadors -c o -n)"
+
+#: src/modules/dcc/send.cpp:1576
+msgid "[SSL ERROR]: %1"
+msgstr "[ERROR SSL]: %1"
+
+#: src/modules/dcc/chat.cpp:255
+#, c-format
+msgid "[SSL ERROR]: %s"
+msgstr "[ERROR SSL]: %s"
+
+#: src/modules/dcc/send.cpp:1843
+#, fuzzy
+msgid "bytes/sec"
+msgstr "Mitja: ? bytes/seg"
+
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
+#: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
+#: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
+#: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/requests.cpp:136
+#: src/modules/dcc/requests.cpp:137 src/modules/dcc/requests.cpp:138
+msgid "unknown"
+msgstr "desconegut"
+
+#~ msgid "%1 bytes"
+#~ msgstr "%1 bytes"
+
+#~ msgid "Avg: %1 bytes/sec"
+#~ msgstr "Mitja: %1 bytes/seg"
+
+#~ msgid "Choose Save Location - KVIrc"
+#~ msgstr "Esculli el Lloc de la Grabació - KVIrc"
+
+#~ msgid "Contacting host %s on port %s"
+#~ msgstr "Contactant amb la màquina %s en el port %s"
+
+#~ msgid "Invalid file size specified, no message sent"
+#~ msgstr ""
+#~ "La mida de l'arxiu especificat no és vàlida, no s'ha enviat el missatge"
+
+#~ msgid "Missing filename"
+#~ msgstr "Falta el nom d'arxiu"
+
+#~ msgid "Missing target nickname"
+#~ msgstr "Falta nick de destí"
+
+#~ msgid "The file size is not an positive number"
+#~ msgstr "La mida de l'arxiu no és un número positiu"

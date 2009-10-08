@@ -1,0 +1,159 @@
+#
+# anti idle script
+# : some people like it, some people need it
+# : by Balboy :))
+#
+
+# creating the main alias
+
+alias(aidle)
+{
+	# using a switch to see what option has been selected
+	switch($0)
+	{
+		# ok, so the script should start
+		case(start):
+		{
+			# checking if it wasn't running already
+			if(!%Aidlestatus{$ic})
+			{
+				# the script wasn't running already, so it should be started by calling the 
+				# script with the run parameter
+				aidle internal_run
+				# saving the status of the anti idle script
+				%Aidlestatus{$ic} = 1
+				# an anti idle var is set, to define the speed of the anti itde script
+				# there are 2 possible ways
+				%Aidletype{$ic} = 1
+				echo "Anti idle has been enabled"
+			} else {
+				# the script was already running
+				echo "Anti idle has already been enabled on this server"
+			}
+		}
+		break
+		# the script should be halted
+		case(stop):
+		{
+			# checking if it was already running
+			if(%Aidlestatus{$ic})
+			{
+				# the script was running, so it should be stopped by killing the timer
+				killtimer antiidle{$ic}
+				# clearing variabled
+				%Aidlestatus{$ic} = ""
+				%Aidletype{$ic} = ""
+				echo "Anti idle has been disabled"
+			} else {
+				# the script wasn't running
+				echo "Anti idle has not been enabled on this server"
+			}
+		}
+		break
+		# the script status should be shown
+		case(status):
+		{
+			# checking the status variable
+			if(%Aidlestatus{$ic})
+			{
+				echo "anti idle is enabled on this server"
+			} else {
+				echo "anti idle is disabled on this server"
+			}
+		}
+		break
+		# this is a parameter that should only be called by the script itself
+		# this is where the idle time gets actualy killed
+
+		case(internal_run):
+		{
+			# this part will make a varianle to switch random anti idle modes (fast/slow)
+			# note: once a type has been decided, changing the type works by a small chance
+			%aidletypecheck{$ic} = $rand(100)
+			if(%aidletypecheck{$ic} < 10)
+			{
+				if(%Aidletype{$ic} == 1)
+				{
+					%Aidletype{$ic} = 2
+				} else {
+					%Aidletype{$ic} = 1
+				}
+			}
+			# use the var just created to start one of the anti idle modes
+			if(%Aidletype{$ic} == 1){
+				# starting a timer who will keep sending messages to yourself, no output will be shown
+				timer -r=$console -s (antiidle{$ic},$(10000 + $rand(50000)))
+				{
+					aidle internal_run
+					# checking if we are online 
+					if($server)
+					{
+						raw -q privmsg $me :
+					}
+				}
+			} else {	
+				# this part is simular as above
+				timer -r=$console -s (antiidle{$ic},$(10000 + $rand(30000)))
+				{
+					aidle internal_run
+					if($server)
+					{
+						raw -q privmsg $me :
+					}
+				}
+			}
+		}
+		break
+		# the script should be uninstalled
+		case(uninstall):
+		{
+			echo "the anti idle script has been uninstalled succesfully"
+			# defining the alias by empty code will remove it
+			alias(aidle){}
+			event(412,aidle){}
+
+		}
+		break
+		# if help was asked
+		case(help):
+		{
+			echo "usage: /aidle <option>"
+			echo ""
+			echo "possible options:"
+			echo "start             start the anti idle"
+			echo "stop              stop the anti idle"
+			echo "status            tell you if the anti idle script is enabled or not"
+			echo "uninstall         uninstall the script"
+			echo "help              this help output"
+		}
+		break
+		# if the parameter you give with the anti idle script is not valid
+		# a small program usage is printed
+		default
+		{
+			echo "Unsupported anti idle parameter ($0)"
+			echo "Try '/aidle help' for more information."
+		}
+	}
+}
+
+
+# creating an event
+
+event(412,aidle)
+{
+	# this raw will stop the error messages you will get from the server, 
+	# every time you send an empty msg to yourself
+	halt; 
+}
+
+# and at last, we also put some output, with some information :)
+
+echo "installation of the anti idle script succesful"
+echo "you can always uninstall it by typing /aidle uinstall"
+echo "just type '/aidle help' to get all the possible commands"
+echo "---"
+echo "Happy ircing or should i say idling :)"
+echo "Balboy and The KVIrc Development Team"
+
+# hint for later: $window.list(console,all)

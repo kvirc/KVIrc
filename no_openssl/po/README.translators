@@ -1,0 +1,15 @@
+Please use UTF-8 as encoding for your po files and stick to it.
+
+You can also translate the man page into your language.
+You find the man pages in ../data/man
+
+The tips for the "Tip of the Day" could also be translated.
+To do so, cd into ../src/modules/tip/ and copy libkvitip.kvc to
+libkvitip_<language code>.kvc (if it doesn't exist already). After
+copying open it in your favourite editor (read: vim ^^) and translate
+the tips. As stated in that file, the translated file MUST be encoded
+in UTF-8.
+
+Please have also a look into the file for you language in 
+../win32build/translations
+NOTE: This files are NOT UTF-8.

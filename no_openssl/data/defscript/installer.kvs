@@ -1,0 +1,169 @@
+/*
+	 A helper class for installing and parsing files,
+	 and generating an uninstallation alias on the fly.
+
+	Example :
+		include "utils/installer.kvs"
+		%installer = $new(installer,0,myinstaller)
+		%installer->$copyFiles(pics,*.png,$file.localdir(pics))
+		%installer->$includeFiles(src,*.kvs)
+		%installer->generateUninstallAlias("foo::uninstall")
+		delete %installer
+	Here, "foo::uninstall" must be called in you uninstall
+	callback script.
+
+	Warnings:
+		1) Declaration of aliases, popups, etc, in source files
+		(.kvs) must be in a similar format
+		as when you export them directly from kvirc.
+		Example:
+			alias(myalias)
+			defpopup(mypopup)
+		2) If you use a "defpopup -m" to add an item to an
+		existing popup,this item won't be registered
+		automatically for uninstallation by this installer script.
+		You should typically identify the item you added using
+		the "id" parameter. See this example where the id is
+		"myaddon::myitem":
+			defpopup -m (channeltextview)
+			{
+				item(MyItem)(myaddon::myitem)
+				{
+					...
+				}
+			}
+		Then, you add this line to you uninstall callback
+		script:
+			delpopupitem channeltextview myaddon::myitem
+*/
+class(installer,object)
+{
+	constructor()
+	{
+	}
+
+	copyFiles($0 = source dir,$1 = file regexp,$2 = target dir)
+	{
+		if(!$file.exists($0))return
+		if($isempty($0))
+		{
+			echo $tr("[Installer] The first argument to \%installer->\$copyfiles must be a source directory")
+			halt
+		}
+
+		if($isempty($1))
+		{
+			echo $tr("[Installer] The second argument to \%installer->\$copyfiles must be a file name or file regexp")
+			halt
+		}
+
+		if($isempty($2))
+		{
+			echo $tr("[Installer] The third argument to \%installer->\$copyfiles must be a destination directory")
+			halt
+		}
+
+		if($file.exists($0))
+		{
+			%files = $file.ls($file.fixpath($0),f,$1)
+			if($length(%files))
+			{
+				@$mkdir($2)
+				foreach(%file,%files)
+				{
+					$this->%lFiles <+ $str.replace($file.fixpath("$2/%file"),"\\\\","\\")
+					file.copy -o $file.fixpath($0/%file) $file.fixpath($2/%file)
+				}
+			}
+		}
+	}
+
+	// Recursive creation of directory
+	mkdir($0 = directory)
+	{
+		if($isempty($0) || $file.exists($0)) return
+		foreach -a (%subdir,$str.split("/",$file.fixpath($0)))
+		{
+			%p <+ %subdir
+			%path = $str.join("/",%p)
+			if(!$file.exists(%path))
+				file.mkdir -q %path
+		}
+		if(!$file.exists($0))
+		{
+			echo $tr("[Installer] Failed to create directory") \"$0\"
+			return
+		}
+	}
+
+	// Parse source files and get what will need to be uninstalled
+	includeFiles($0 = dir, $1 = file regexp)
+	{
+		if($isempty($0))
+		{
+			echo $tr("[Installer] The first argument to \%installer->\$includefiles must be a source directory")
+			halt
+		}
+
+		@$mkdir($0)
+
+		if($1 == "")
+			%szRe = "*.kvs"
+		else
+			%szRe = $1
+
+		%files = $file.ls($file.fixpath($0),f,$1)
+		if($length(%files))
+		{
+			foreach(%file,%files)
+			{
+				$this->%lSources <+ $str.replace($file.fixpath("$0/%file"),"\\\\","\\")
+				include $file.fixpath("$0/%file")
+			}
+		}
+	}
+
+
+	generateUninstallAlias($0 = alias name)
+	{
+		%c  = "alias($0)$lf"
+		%c .= "{$lf"
+		if($isset($this->%lFiles))
+		{
+			foreach(%file,$this->%lFiles)
+			{
+				%file =~ s/"^$file.localdir()/(.*)$"/"\$file.localdir(\\1)"/
+				%c .= "	file.remove -q \"%file\"$lf";
+			}
+		}
+		if($isset($this->%lSources))
+		{
+			foreach(%file,$this->%lSources){
+				foreach(%line,$file.readlines(%file))
+				if(!$str.isempty(%line)){
+					if($str.match("event(*)",%line,e))
+						%c .= "	event -q ("$str.token(1,"()",%line)"){}$lf"
+					else if($str.match("alias(*)",%line,e))
+						%aliases<+$str.token(1,"()",%line)
+					else if($str.match("defpopup(*)",%line,e))
+						%c .= "	defpopup("$str.token(1,"()",%line)"){}$lf"
+					else if($str.match("toolbar.create * *",%line,e))
+						%c .= "	toolbar.destroy -q "$str.word(1,%line)"$lf"
+					else if($str.match("action.create* (*)",%line,e))
+						%c .= "	action.destroy -q "$str.replace($str.token(1,"(,)",%line),,\")"$lf"
+					else if($str.match("class(*)*",%line,e))
+						%c .= "	objects.killclass -q "$str.token(1,"(,)",%line)"$lf"
+				}
+			}
+			if($isset(%aliases))
+				foreach(%alias,%aliases)
+					%c .= "	alias -q (%alias){}$lf"
+			%c .= "	alias -q ($0){}$lf"
+		}
+		%c .= "}"
+		eval %c
+	}
+}
+
+
+

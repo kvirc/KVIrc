@@ -1,0 +1,182 @@
+# translation of mediaplayer_hr.po to Hrvatski
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# SpeedyGhost <SpeedyGhost@gmail.com>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: mediaplayer_hr\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"PO-Revision-Date: 2008-01-17 02:20+0100\n"
+"Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
+"Language-Team: Hrvatski <en@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:465
+#, fuzzy
+msgid ""
+"An interface to Amarok2.\n"
+"Download it from http://amarok.kde.org\n"
+msgstr ""
+"Sučelje za popularni UNIX xmms media player.\n"
+"Preuzmite ga sa http://www.xmms.org\n"
+
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:441
+#, fuzzy
+msgid ""
+"An interface to BMPx.\n"
+"Download it from http://bmpx.backtrace.info\n"
+msgstr ""
+"Sučelje za popularni UNIX xmms media player.\n"
+"Preuzmite ga sa http://www.xmms.org\n"
+
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:483
+#, fuzzy
+msgid ""
+"An interface to Qmmp.\n"
+"Download it from http://qmmp.ylsoftware.com\n"
+msgstr ""
+"Sučelje za popularni UNIX xmms media player.\n"
+"Preuzmite ga sa http://www.xmms.org\n"
+
+#: src/modules/mediaplayer/mp_amipinterface.cpp:108
+msgid ""
+"An interface to the AMIP plug-in.\n"
+"You can download it from http://amip.tools-for.net.\n"
+"To use this interface you must install AMIP plug-in for your player."
+msgstr ""
+"Sučelje za AMIP plug-in.\n"
+"Možete ga downloadati sa http://amip.tools-for.net.\n"
+"Za korištenje ovog sučelja morate instalirati AMIP plug-in za vaš player."
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:49
+msgid ""
+"An interface to the popular UNIX audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Sučelje za popularni UNIX audacious media player.\n"
+"Preuzmite ga sa http://audacious-media-player.org\n"
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:38
+msgid ""
+"An interface to the popular UNIX xmms media player.\n"
+"Download it from http://www.xmms.org\n"
+msgstr ""
+"Sučelje za popularni UNIX xmms media player.\n"
+"Preuzmite ga sa http://www.xmms.org\n"
+
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:320
+#, fuzzy
+msgid ""
+"An interface to the popular audacious media player.\n"
+"Download it from http://audacious-media-player.org\n"
+msgstr ""
+"Sučelje za popularni UNIX audacious media player.\n"
+"Preuzmite ga sa http://audacious-media-player.org\n"
+
+#: src/modules/mediaplayer/mp_winampinterface.cpp:194
+msgid ""
+"An interface to the popupar Winamp media player.\n"
+"You can download it from http://www.winamp.com.\n"
+"To use all the features of this interface you must copy the gen_kvirc.dll "
+"plugin found in the KVIrc distribution directory to the Winamp plugins "
+"folder and restart winamp."
+msgstr ""
+"Sučelje za popularni Winamp media player.\n"
+"Možete ga preuzeti sa http://www.winamp.com.\n"
+"Za korištenje ovog sučelja morate kopirati gen_kvirc.dll plugin, koji se "
+"nalazi u direktoriju KVIrc distribucije, u Winamp plugins direktorij i "
+"restartati Winamp."
+
+#: src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#, fuzzy
+msgid ""
+"An interface to the xmms2 media player.\n"
+"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
+msgstr ""
+"Sučelje za popularni UNIX xmms media player.\n"
+"Preuzmite ga sa http://www.xmms.org\n"
+
+#: src/modules/mediaplayer/mp_winampinterface.cpp:184
+msgid "Can't find a running winamp window"
+msgstr "Ne mogu pronaći pokrenuti winamp prozor"
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:145
+msgid "Can't find symbol %s in %Q"
+msgstr "Ne mogu pronaći znak %s u %Q"
+
+#: src/modules/mediaplayer/mp_xmmsinterface.cpp:136
+msgid "Can't load the player library (%Q)"
+msgstr "Ne mogu učitati bazu playera (%Q)"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
+msgid "Choosing media player interface \"%Q\""
+msgstr "Odabirem media player \"%Q\""
+
+#: src/modules/mediaplayer/mp_interface.cpp:43
+msgid "Function not implemented"
+msgstr "Funkcija nije implementirana"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:571
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:594
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:636
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:675
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
+msgid "Last interface error: "
+msgstr "Posljednja greška sucelja:"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr "Nesiguni rezultati, pokušavam agresivniju detekciju"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Čini se da nema korisnih media playera na ovom računalu"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:133
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:570
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:593
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:635
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:674
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1182
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1318
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1551
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1594
+msgid ""
+"The selected media player interface failed to execute the requested function"
+msgstr "Odabrani media player nije uspio izvršiti traženu funkciju"
+
+#: src/modules/mediaplayer/mp_winampinterface.cpp:316
+#: src/modules/mediaplayer/mp_winampinterface.cpp:350
+msgid ""
+"The winamp plugin has not been installed properly. Check /help mediaplayer."
+"nowplaying"
+msgstr ""
+"Winamp pluginovi nisu ispravno instalirani. Provjerite /help mediaplayer."
+"nowplaying"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
+msgid "Trying media player interface \"%Q\": score %d"
+msgstr "Pokušavam media player \"%Q\": score %d"
+
+#~ msgid "An interface to the AmaroK KDE media player."
+#~ msgstr "Sučelje za Amarok KDE media player"
+
+#~ msgid "An interface to the Juk KDE media player."
+#~ msgstr "Sučelje za Juk KDE media player."

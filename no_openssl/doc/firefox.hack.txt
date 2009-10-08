@@ -1,0 +1,32 @@
+Firefox Hack Guide - HelLViS69 - 2007.02.08
+-------------------------------------------------------------------------------
+
+@ Prologue
+
+This guide is meant to be a simple hack to add protocols handlers to Firefox,
+such as irc://
+This guide is been tested on Linux, Mac and Windows.
+
+@ How To
+
+- Open Firefox at the url about:config
+  You'll find the Firefox configuration
+
+- Click with right button, select New, then Boolean
+  As Name insert network.protocol-handler.external.irc and true as Value
+
+- Click with right button, select New, then String
+  As Name insert network.protocol-handler.app.irc
+  As Value you have to insert the path of KVIrc binary, eg /usr/bin/kvirc ,
+  `which kvirc` or C:\Programs\Firefox\firefox.exe
+
+- Make sure that network.protocol-handler.expose-all are setted as true
+
+With these simple steps you can handle irc://irc.something.tld from Firefox
+
+If you want to add more protocols handlers, just follow the same steps changing
+the protocol you want to add in firefox and the application you want to use to
+handle the new protcol
+
+Elvio Basello
+<HelLViS69>

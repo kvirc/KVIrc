@@ -1,0 +1,14 @@
+Update TODO file, if something is implemented, it should be removed in the TODO file.
+Mantain TODO file as clear as possible
+
+- Events, events, events. There are lots of them pending (see TODO.Events).
+- /timer as a module
+- It would be cool if KVIrc could to delete old log files automatically
+	(configurable, of course), to avoid disk ocupation. For example, delete (or
+	move to trash) 15-days old log files automatically (configurable by user).
+- html colored logs (with icons ? configurable with an option)
+  SHould get the available modes from RPL_ISUPPORT and show them in the box
+- CService support
+	We already have nickserv support, why not CService/X support? This should be much much easier to
+	implement as it's only on one net (Undernet), and with a static host and command that never changes, we
+	only need to specify password.

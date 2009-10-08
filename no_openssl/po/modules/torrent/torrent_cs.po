@@ -1,0 +1,69 @@
+# Czech translation of Kvirc.
+# Copyright (C) 2004 THE Kvirc'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the Kvirc package.
+# Dušan Hokův <dusan@mirc.cz>, 2007.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Kvirc\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-08-18 23:01+0200\n"
+"PO-Revision-Date: 2007-12-05 18:20+0100\n"
+"Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
+msgid ""
+"An interface to KDE's excellent KTorrent client.\n"
+"Download it from http://www.ktorrent.org\n"
+msgstr ""
+"Interface ke skvělému KDE KTorrent klientu.\n"
+"Stahujte na http://www.ktorrent.org\n"
+
+#: src/modules/torrent/libkvitorrent.cpp:102
+msgid "Choosing torrent client interface \"%Q\""
+msgstr "Vybírám interface torrent klienta \"%Q\""
+
+#: src/modules/torrent/libkvitorrent.cpp:719
+msgid "Invalid client interface \"%Q\"!"
+msgstr "Neplatný interface klienta \"%Q\"!"
+
+#: src/modules/torrent/libkvitorrent.cpp:129
+msgid "Last interface error: "
+msgstr "POslední chyba interfacu:"
+
+#: src/modules/torrent/tc_statusbarapplet.cpp:92
+msgid "No client selected!"
+msgstr "Nebyl zvolen klient!"
+
+#: src/modules/torrent/libkvitorrent.cpp:118
+msgid "No torrent client interface selected. Try /torrent.detect"
+msgstr "Nebyl zvolen interface torrent klienta. Zkuste /torrent.detect"
+
+#: src/modules/torrent/libkvitorrent.cpp:109
+msgid "Seems that there is no usable torrent client on this machine"
+msgstr "Vypadá to, že na tomto počítači není použitelný torrent klient"
+
+#: src/modules/torrent/libkvitorrent.cpp:128
+msgid ""
+"The selected torrent client interface failed to execute the requested "
+"function"
+msgstr "Zvolený interface torrent klienta selhal ve spuštění požadované funkce"
+
+#: src/modules/torrent/tc_statusbarapplet.cpp:61
+msgid "Torrent Client"
+msgstr ""
+
+#: src/modules/torrent/libkvitorrent.cpp:62
+msgid "Trying torrent client interface \"%Q\": score %d"
+msgstr "Zkouším interface torrent klienta \"%Q\": skóre %d"
+
+#: src/modules/torrent/libkvitorrent.cpp:711
+msgid "Using client interface \"%Q\"."
+msgstr "Používám interface klienta \"%Q\"."
+
+#~ msgid "Index out of range: %d [0-%d]!"
+#~ msgstr "Index mimo rozsah: %d [0-%d]!"

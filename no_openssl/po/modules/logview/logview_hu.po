@@ -1,0 +1,117 @@
+# translation of logview_hu.po to hungarian
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Ádám Fibinger <vfiber@interware.hu>, 2006, 2007.
+msgid ""
+msgstr ""
+"Project-Id-Version: logview_hu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"PO-Revision-Date: 2007-08-23 18:47+0200\n"
+"Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
+"Language-Team: hungarian <hu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.4\n"
+
+#: src/modules/logview/logviewmdiwindow.cpp:294
+msgid "%Q on %Q"
+msgstr "%Q on %Q"
+
+#: src/modules/logview/logviewmdiwindow.cpp:242
+msgid "Abort filtering"
+msgstr "Szűrés megszakítása"
+
+#: src/modules/logview/logviewmdiwindow.cpp:141
+msgid "Apply filter"
+msgstr "Szűrő alkalmazása"
+
+#: src/modules/logview/libkvilogview.cpp:135
+msgid "Browse &Log Files"
+msgstr "Naplófájlok Ta&llózása"
+
+#: src/modules/logview/logviewwidget.cpp:71
+msgid "Channel"
+msgstr "Csatorna"
+
+#: src/modules/logview/logviewwidget.cpp:83
+msgid "Console"
+msgstr "Konzol"
+
+#: src/modules/logview/logviewmdiwindow.cpp:110
+msgid "Contents filter"
+msgstr "Tartalomszűrő"
+
+#: src/modules/logview/logviewwidget.cpp:79
+msgid "DCC Chat"
+msgstr "DCC beszélgetés"
+
+#: src/modules/logview/logviewmdiwindow.cpp:85
+msgid "Filter"
+msgstr "Szűrő"
+
+#: src/modules/logview/logviewmdiwindow.cpp:241
+msgid "Filtering files..."
+msgstr "Fájlok szűrése..."
+
+#: src/modules/logview/logviewmdiwindow.cpp:76
+msgid "Index"
+msgstr "Index"
+
+#: src/modules/logview/logviewmdiwindow.cpp:473
+msgid "Log File"
+msgstr "Napló Fájl"
+
+#: src/modules/logview/logviewmdiwindow.cpp:200
+msgid "Log Viewer"
+msgstr "Naplófájl Böngésző"
+
+#: src/modules/logview/logviewmdiwindow.cpp:119
+msgid "Log contents mask:"
+msgstr "Napló tartalom maszk:"
+
+#: src/modules/logview/logviewmdiwindow.cpp:113
+msgid "Log name mask:"
+msgstr "Napló név maszk:"
+
+#: src/modules/logview/logviewmdiwindow.cpp:133
+msgid "Only newier than"
+msgstr "Újabb, mint"
+
+#: src/modules/logview/logviewmdiwindow.cpp:125
+msgid "Only older than"
+msgstr "Régebbi, mint"
+
+#: src/modules/logview/logviewwidget.cpp:87
+msgid "Other"
+msgstr "Más"
+
+#: src/modules/logview/logviewwidget.cpp:75
+msgid "Query"
+msgstr "Privát"
+
+#: src/modules/logview/logviewmdiwindow.cpp:365
+msgid "Remove file"
+msgstr "Fájl Eltávolítása"
+
+#: src/modules/logview/logviewmdiwindow.cpp:101
+msgid "Show DCC chat logs"
+msgstr "DCC beszélgetésnaplók mutatása"
+
+#: src/modules/logview/logviewmdiwindow.cpp:89
+msgid "Show channel logs"
+msgstr "Csatorna naplók mutatása"
+
+#: src/modules/logview/logviewmdiwindow.cpp:97
+msgid "Show console logs"
+msgstr "Konzol naplók mutatása"
+
+#: src/modules/logview/logviewmdiwindow.cpp:105
+msgid "Show other logs"
+msgstr "Más naplók mutatása"
+
+#: src/modules/logview/logviewmdiwindow.cpp:93
+msgid "Show query logs"
+msgstr "Privát naplók mutatása"

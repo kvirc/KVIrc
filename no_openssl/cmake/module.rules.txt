@@ -1,0 +1,35 @@
+# Template rules for modules
+IF(WANT_COEXISTENCE)
+	SET(KVIRC_BINARYNAME ${PACKAGE}${VERSION_MAJOR})
+	SET(KVILIB_BINARYNAME kvilib${VERSION_MAJOR})
+ELSE()
+	SET(KVIRC_BINARYNAME ${PACKAGE})
+	SET(KVILIB_BINARYNAME kvilib)
+ENDIF()
+
+ADD_LIBRARY(${kvi_module_name} MODULE ${${kvi_module_name}_SRCS} ${${kvi_module_name}_MOC_SRCS})
+
+IF(WIN32)
+	IF(MSVC)
+		TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
+	ELSE()
+		#mingw needs these flags for linking
+		TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${KVIRC_BINARYNAME} ${LIBS})
+	ENDIF()
+ELSE()
+	TARGET_LINK_LIBRARIES(${kvi_module_name} ${KVILIB_BINARYNAME} ${LIBS})
+ENDIF()
+
+SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+
+IF(UNIX)
+	IF(APPLE)
+		SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES INSTALL_NAME_DIR @executable_path/../Frameworks)
+		INSTALL(TARGETS ${kvi_module_name} LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/modules/)
+	ELSE()
+		# Assume linux
+		INSTALL(TARGETS ${kvi_module_name} LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/kvirc/${VERSION_BRANCH}/modules/)
+	ENDIF()
+ELSEIF(WIN32)
+	INSTALL(TARGETS ${kvi_module_name} LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/modules)
+ENDIF()

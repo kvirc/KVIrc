@@ -1,0 +1,78 @@
+# translation of notifier_de.po to Deutsch
+# translation of notifier_it.po to Deutsch
+# This file is distributed under the same license as the PACKAGE package.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
+#
+# Christoph Thielecke <crissi99@gmx.de>, 2004.
+# Markus Rennings <kvirc@mrmx.de>, 2009.
+msgid ""
+msgstr ""
+"Project-Id-Version: notifier_de\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-07-17 22:38+0200\n"
+"PO-Revision-Date: 2009-07-17 22:45+0200\n"
+"Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
+"Language-Team: German <>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"net>\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#: src/modules/notifier/notifierwindow.cpp:895
+msgid "1 Hour"
+msgstr "1 Stunde"
+
+#: src/modules/notifier/notifierwindow.cpp:891
+msgid "1 Minute"
+msgstr "1 Minute"
+
+#: src/modules/notifier/notifierwindow.cpp:893
+msgid "15 Minutes"
+msgstr "15 Minuten"
+
+#: src/modules/notifier/notifierwindow.cpp:894
+msgid "30 Minutes"
+msgstr "30 Minuten"
+
+#: src/modules/notifier/notifierwindow.cpp:892
+msgid "5 Minutes"
+msgstr "5 Minuten"
+
+#: src/modules/notifier/notifierwindow.cpp:900
+msgid "Disable"
+msgstr "Deaktivieren"
+
+#: src/modules/notifier/notifierwindow.cpp:888
+msgid "Hide"
+msgstr "Ausblenden"
+
+#: src/modules/notifier/notifierwindow.cpp:898
+msgid "Permanently (Until Explicitly Enabled)"
+msgstr "Permanent (Bis explizit aktiviert)"
+
+#: src/modules/notifier/notifierwindow.cpp:887
+msgid "Show/Hide input line"
+msgstr "Zeige/Verberge Eingabezeile"
+
+#: src/modules/notifier/libkvinotifier.cpp:154
+msgid "The -t switch expects a timeout in seconds"
+msgstr "Der -t-Schlater erwartet einen Zeitablauf in Sekunden"
+
+#: src/modules/notifier/libkvinotifier.cpp:151
+msgid "The specified timeout is not valid, assuming 0"
+msgstr "Der angegebene Zeitablauf ist ungültig, 0 wird angenommen"
+
+#: src/modules/notifier/libkvinotifier.cpp:137
+msgid "The specified window does not exist"
+msgstr "Das angegebene Fenster existiert nicht"
+
+#: src/modules/notifier/notifierwindow.cpp:897
+msgid "Until KVIrc is Restarted"
+msgstr "Bis KVIrc neugestartet ist"
+
+#: src/modules/notifier/notifierwindow.cpp:972
+msgid "Write text or commands to window"
+msgstr "Text oder Kommandos zu Fenster senden"
+

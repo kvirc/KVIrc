@@ -1,0 +1,187 @@
+# The scripts in this tutorial implement the famous minesweeper game
+# STEP 4
+
+class(minelabel,label)
+{
+	mousePressEvent()
+	{
+		$$->$parent()->$mineLabelPressed($this)
+	}
+}
+
+class(minesweepermain,widget)
+{
+	constructor()
+	{
+		# This is no longer needed here : we move it to the container widget
+
+		$$->%rows = 10
+		$$->%cols = 10
+		$$->%mines = 10
+		# is there a running game ?
+		$$->%bGameRunning = 0
+
+
+		$$->%layout = $new(layout,$this)
+
+		for(%i = 0;%i < $$->%rows;%i++)
+		{
+			for(%j = 0;%j < $$->%cols;%j++)
+			{
+				$$->%label{%i,%j}=$new(minelabel,$this,"%i_%j")
+				$$->%label{%i,%j}->%row = %i
+				$$->%label{%i,%j}->%col = %j
+				# Let's set the minimum size of the labels: they look better this way
+				$$->%label{%i,%j}->$setMinimumWidth(26)
+				$$->%label{%i,%j}->$setMinimumHeight(26)
+				$$->%label{%i,%j}->$setAlignment(HCenter , VCenter)
+				$$->%layout->$addWidget($$->%label{%i,%j},%i,%j)
+			}
+		}
+		# We remove this call, $$->$newGame() will be called from the container widget
+		#$$->$newGame()
+	}
+
+	newGame()
+	{
+		for(%i = 0;%i < $$->%rows;%i++)
+		{
+			for(%j = 0;%j < $$->%cols;%j++)
+			{
+				%l = $$->%label{%i,%j}
+				%l->$setFrameStyle(Raised,WinPanel);
+				%l->%bIsMine = 0
+				%l->%numMines = 0
+				%l->%bIsDiscovered = 0
+				%l->$setText("")
+				# Set enabled !
+				%l->$setEnabled(1)
+			}
+		}
+		# drop the mines
+		for(%i = 0;%i < $$->%mines;%i++)
+		{
+			%row = $rand($($$->%rows - 1))
+			%col = $rand($($$->%cols - 1))
+			while($$->%label{%row,%col}->%bIsMine != 0)
+			{
+				%row = $rand($($$->%rows - 1))
+				%col = $rand($($$->%cols - 1))
+			} 
+			$$->%label{%row,%col}->%bIsMine = 1
+			# increase the mine count for the adiacent cells
+			if(%row > 0)
+			{
+				$$->%label{$(%row - 1),%col}->%numMines++
+				if(%col > 0)$$->%label{$(%row - 1),$(%col - 1)}->%numMines++
+				if(%col < ($$->%cols - 1))$$->%label{$(%row - 1),$(%col + 1)}->%numMines++
+			}
+			if(%row < ($$->%rows - 1))
+			{
+				$$->%label{$(%row + 1),%col}->%numMines++
+				if(%col > 0)$$->%label{$(%row + 1),$(%col - 1)}->%numMines++
+				if(%col < ($$->%cols - 1))$$->%label{$(%row + 1),$(%col + 1)}->%numMines++
+			}
+			if(%col > 0)$$->%label{%row,$(%col - 1)}->%numMines++
+			if(%col < ($$->%cols - 1))$$->%label{%row,$(%col + 1)}->%numMines++
+		}
+		# A game is running
+		$$->%bGameRunning = 1
+	}
+
+	mineLabelPressed($0 = mine label object that has been pressed)
+	{
+		# When the game isn't running we don't care about the mouse press events
+		if(!$$->%bGameRunning)return
+		if($0->%bIsMine)
+		{
+			$0->$setFrameStyle(WinPanel,Sunken)
+			$0->$setImage(82); # 82 is a bomb
+			# We emit the gameOver signal so the container widget knows
+			$$->$emit(gameOver)
+			# And disable all the cells
+			for(%i = 0;%i < $$->%rows;%i++)
+			{
+				for(%j = 0;%j < $$->%cols;%j++)
+				{
+					$$->%label{%i,%j}->$setEnabled(0)
+				}
+			}
+			# leave the bomb image enabled :D
+			$0->$setEnabled(1)
+			# Game finished :(
+			$$->%bGameRunning = 0
+		} else {
+			$$->$discoverCells($0)
+		}
+	}
+
+	discoverCells($0 = mine label that has to be discovered)
+	{
+		if($0->%bIsMine)return;
+		if($0->%bIsDiscovered)return;
+		$0->%bIsDiscovered = 1
+		$0->$setFrameStyle(WinPanel,Sunken)
+		if($0->%numMines > 0)$0->$setText($0->%numMines)
+		else {
+			if($0->%row > 0)
+			{
+				$$->$discoverCells($$->%label{$($0->%row - 1),$0->%col})
+				if($0->%col > 0)$$->$discoverCells($$->%label{$($0->%row - 1),$($0->%col - 1)})
+				if($0->%col < ($$->%cols - 1))$$->$discoverCells($$->%label{$($0->%row - 1),$($0->%col + 1)})
+			}
+			if($0->%row < ($$->%rows - 1))
+			{
+				$$->$discoverCells($$->%label{$($0->%row + 1),$0->%col})
+				if($0->%col > 0)$$->$discoverCells($$->%label{$($0->%row + 1),$($0->%col - 1)})
+				if($0->%col < ($$->%cols - 1))$$->$discoverCells($$->%label{$($0->%row + 1),$($0->%col + 1)})
+			}
+			if($0->%col > 0)$$->$discoverCells($$->%label{$0->%row,$($0->%col - 1)})
+			if($0->%col < ($$->%cols - 1))$$->$discoverCells($$->%label{$0->%row,$($0->%col + 1)})
+		}
+	}
+
+}
+
+# We want a bigger window around our minesweeper widget
+# we want to provide some output and user menus...
+# Thus we create a container widget class , that will be also our new toplevel widget
+
+class(minesweeper,widget)
+{
+	constructor()
+	{
+		$$->$setCaption("KVIrc's Minesweeper (0.1.0)");
+
+		# we need a layout to manage the children
+		$$->%layout = $new(layout,$$)
+
+
+		$$->%gamepool = $new(minesweepermain,$$)
+		$$->%layout->$addWidget($$->%gamepool,1,0)
+		connect $$->%gamepool gameOver $$ gameOver
+
+		$$->%output = $new(label,$$)
+		$$->%output->$setFrameStyle(WinPanel,Sunken)
+		$$->%layout->$addWidget($$->%output,2,0)
+
+		$$->$newGame()
+	}
+
+	gameOver()
+	{
+		$$->%output->$setText("Game Over :(")
+	}
+
+	newGame()
+	{
+		$$->%gamepool->$newGame()
+		$$->%output->$setText("Ready")
+	}
+}
+
+
+#We substitute the old creation call with the new container object creation call
+#%m = $new(minesweepermain)
+%m = $new(minesweeper)
+%m->$show()
