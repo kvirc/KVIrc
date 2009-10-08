@@ -27,3 +27,27 @@ no_embedded_lib_code:
     *******
 
  -- Kai Wasserbäch <debian@carbon-project.org>  Thu, 09 Jul 2009 20:12:00 +0200
+
+no_openssl:
+    Purpose:
+    ********
+    Remove all dependencies on OpenSSL from the code.
+
+    Rationale:
+    **********
+    OpenSSL requires an exception to the GNU GPL license and disallows
+    releasing the source under GPLv2+ (only GPLv2 possible). As Qt offers
+    QSslSocket (and friends) in the QtNetwork module, there is no longer any
+    need to use OpenSSL.
+
+    Additional Note:
+    ****************
+    Our sponsor for the next Debian package upload declines to do said upload
+    unless the current license issue (code actually licensed under GPLv2+ which
+    isn't possible because of OpenSSL) is resolved. This is the attempt to
+    remove all dependencies on said library.
+
+    Status:     active
+    *******
+
+ -- Kai Wasserbäch <debian@carbon-project.org>  Thu, 08 Oct 2009 17:41:42 +0200
