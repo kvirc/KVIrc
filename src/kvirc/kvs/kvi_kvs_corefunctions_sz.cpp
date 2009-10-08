@@ -977,7 +977,7 @@ namespace KviKvsCoreFunctions
 			in this interval of time KVIrc knows only the user's nickname.
 			This function will return the string "*" in this case.[br]
 		@seealso:
-			[fnc]$isWellKnown[/fnc], [$fnc]$hostname[/fnc], [cmd]awhois[/cmd]
+			[fnc]$isWellKnown[/fnc], [fnc]$hostname[/fnc], [fnc]$realname[/fnc], [cmd]awhois[/cmd]
 	*/
 
 	KVSCF(username)

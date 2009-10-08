@@ -106,6 +106,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("r",r)
 		_REGFNC("rand",rand)
 		_REGFNC("real",real)
+		_REGFNC("realname",realname)
 		_REGFNC("receivedBytes",receivedBytes)
 		_REGFNC("rsort",rsort)
 		// s_z

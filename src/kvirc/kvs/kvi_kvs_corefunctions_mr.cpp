@@ -631,6 +631,65 @@ namespace KviKvsCoreFunctions
 	}
 
 	/*
+		@doc: realname
+		@type:
+			function
+		@title:
+			$realname
+		@short:
+			Returns the realname of the specified user
+		@syntax:
+			<string> $realname(<nickname:string>)
+		@description:
+			Returns the realname of the specified IRC user IF it is known.[br]
+			The realname is known if [fnc]$isWellKnown[/fnc] returns 1.[br]
+			The realname is generally known if the user is on a channel with you
+			or has an open query with you.[br]
+			Detailed explaination:[br]
+			KVIrc has an internal database of users that are currently
+			visible by *this client*: this includes users on open channels
+			and queries.[br] The other IRC users are NOT in the database:
+			this means that KVIrc knows NOTHING about them and can't return
+			any information immediately. In this case this function will return
+			an EMPTY string.[br]
+			If a user is in the database, at least his nickname is known.[br]
+			The username and hostname are known only if the server provides that information
+			spontaneously or after a KVIrc request.[br]
+			KVIrc requests user information for all the users in open queries
+			and channels. This information takes some time to be retrieved,
+			in this interval of time KVIrc knows only the user's nickname.
+			This function will return the string "*" in this case.[br]
+		@seealso:
+			[fnc]$isWellKnown[/fnc], [fnc]$hostname[/fnc], [fnc]$username[/fnc], [cmd]awhois[/cmd]
+	*/
+
+	KVSCF(realname)
+	{
+		QString szNick;
+
+		KVSCF_PARAMETERS_BEGIN
+			KVSCF_PARAMETER("nick",KVS_PT_NONEMPTYSTRING,0,szNick)
+		KVSCF_PARAMETERS_END
+
+		if(KVSCF_pContext->window()->console())
+		{
+			if(KVSCF_pContext->window()->console()->isConnected())
+			{
+				KviIrcUserEntry * e = KVSCF_pContext->window()->connection()->userDataBase()->find(szNick);
+				if(e)
+				{
+					KVSCF_pRetBuffer->setString(e->realName());
+					return true;
+				}
+			}
+		}
+
+		KVSCF_pRetBuffer->setNothing();
+		return true;
+	}
+
+
+	/*
 		@doc: receivedBytes
 		@type:
 			function
