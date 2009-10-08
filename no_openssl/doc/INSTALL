@@ -50,7 +50,6 @@ General notes for the installation of the 4.0 release of KVIrc
     - KDE (Optional) - http://www.kde.org
     - GNU gettext (Optional) - http://www.gnu.org/software/gettext
     - Perl (Optional) - http://www.perl.com
-    - OpenSSL (Optional) - http://www.openssl.org
 
     #
     # Qt GUI Toolkit
@@ -198,19 +197,6 @@ General notes for the installation of the 4.0 release of KVIrc
     and 5.10; KVIrc should play nice with perl if >= 5.004, but 5.10 is strongly
     suggested, since future updates can break back compatibility.
 
-
-    #
-    # OpenSSL (Optional)
-    #
-
-    If you want the secure socket layer (SSL) support to be compiled you need the
-    OpenSSL library and headers. (libssl.so and openssl/ssl.h)
-
-    - (Optional) If you want DCC VOICE to support the gsm codec,
-    you need a recent copy of libgsm. This is not strictly required
-    at compile time since KVIrc will look for the library at run-time,
-    and only if the DCC VOICE with the gsm codec is requested.
-    You can check for libgsm using the 'find' command.
 
     # find / -name libgsm*
 
