@@ -57,12 +57,12 @@
 // Ctrl+Alt+M : Manage Script Addons
 // Ctrl+Alt+F : Manage Themes
 // Ctrl+Alt+U : Edit regusers
-// Ctrl+X : Execute script
+// Ctrl+S : Execute script
 // Ctrl+Q : Action editor
 // Ctrl+A : Alias editor
 // Ctrl+E : Event editor
 // Ctrl+P : Popup editor
-// Ctrl+R : Raw event editor
+// Ctrl+Y : Raw event editor
 // Ctrl+T : Customize toolbars
 
 void register_core_actions(KviActionManager * m)
@@ -292,7 +292,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_raweditor.png",
 		KVI_SMALLICON_RAWEVENT,
 		0,
-		"Ctrl+R");
+		"Ctrl+Y");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_CODETESTER,
@@ -314,7 +314,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_folder.png",
 		KVI_SMALLICON_FOLDER,
 		0,
-		"Ctrl+X");
+		"Ctrl+S");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_HELPINDEX,
