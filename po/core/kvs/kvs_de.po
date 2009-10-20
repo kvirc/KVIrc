@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"POT-Creation-Date: 2009-10-20 22:24+0200\n"
 "PO-Revision-Date: 2008-11-30 19:56+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -42,7 +42,7 @@ msgstr ""
 "Ein Pixmap-Objekt, eine Bild-ID oder ein Bild-Dateipfad wird für diese "
 "Eigenschaft benötigt"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:879
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:876
 msgid "A popup menu cannot be popped up twice"
 msgstr "Ein Popup-Menü kann nicht zweimal aufgeklappt werden"
 
@@ -249,7 +249,7 @@ msgstr "Leerer Instruktionsblock zur Befehlsauswertung"
 msgid "Empty script"
 msgstr "Leere Zeichenkette"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1020
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1017
 msgid "Empty target specified"
 msgstr "Leeres Ziel angegeben"
 
@@ -527,7 +527,7 @@ msgstr "Ungültiger Index angegeben: wird ignoriert"
 msgid "Invalid pitch value: using default"
 msgstr "Ungültiger Abstandswert: nutze Standard"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:904
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:901
 msgid "Invalid syntax for screen coordinates, using cursor position"
 msgstr "Ungültige Syntax für Bildschirmkoordinaten, benutze Cursor-Position"
 
@@ -634,7 +634,7 @@ msgstr "Timer-Name fehlt"
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr "Modulbefehlsaufruf fehlgeschlagen: Kann Modul '%Q' nicht laden: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:809
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:806
 msgid "Module command call failed: can't load the module 'snd'"
 msgstr "Modulbefehlsaufruf fehlgeschlagen: Kann Modul 'snd' nicht laden"
 
@@ -654,7 +654,7 @@ msgstr ""
 "Modulbefehlsaufruf fehlgeschlagen: Das Modul '%Q' exportiert keinen Befehl "
 "namens '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:816
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:813
 msgid ""
 "Module command call failed: the module 'snd' doesn't export a command named "
 "'play'"
@@ -774,7 +774,7 @@ msgstr ""
 msgid "Persistent"
 msgstr "Persistent"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:871
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:868
 msgid "Popup %Q is not defined"
 msgstr "Popup %Q ist nicht definiert"
 
@@ -1655,7 +1655,7 @@ msgstr "Fenster-Button '%Q' nicht gefunden"
 msgid "Window with ID '%s' not found, returning empty string"
 msgstr "Fenster mit ID '%s' nicht gefunden, gebe leere Zeichenkette zurück"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1249
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1246
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr "Fenster mit ID %Q nicht gefunden: Kein Rebinding ausgeführt"
 
@@ -1663,7 +1663,7 @@ msgstr "Fenster mit ID %Q nicht gefunden: Kein Rebinding ausgeführt"
 msgid "WindowLifetime"
 msgstr "Fensterlebenszeit"
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:760
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:757
 #, c-format
 msgid "You don't appear to be on channel %s"
 msgstr "Sie scheinen nicht in Channel %s zu sein"
@@ -1710,7 +1710,7 @@ msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Warnung: %Q"
 
 #: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:99
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1199
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1196
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 

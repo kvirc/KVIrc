@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"POT-Creation-Date: 2009-10-20 22:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -422,14 +422,14 @@ msgid "The local IP address is private, determining from IRC server: %s"
 msgstr ""
 
 #: src/modules/dcc/chat.cpp:210
-#: src/modules/dcc/send.cpp:1506
+#: src/modules/dcc/send.cpp:1520
 msgid ""
 "The local IP address is private, but unable to determine it from the IRC "
 "server"
 msgstr ""
 
 #: src/modules/dcc/chat.cpp:213
-#: src/modules/dcc/send.cpp:1509
+#: src/modules/dcc/send.cpp:1523
 msgid ""
 "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
@@ -443,12 +443,12 @@ msgid "DCC %Q request not sent, awaiting manual connection"
 msgstr ""
 
 #: src/modules/dcc/chat.cpp:246
-#: src/modules/dcc/send.cpp:1568
+#: src/modules/dcc/send.cpp:1582
 msgid "Low-level transport connection established"
 msgstr ""
 
 #: src/modules/dcc/chat.cpp:247
-#: src/modules/dcc/send.cpp:1569
+#: src/modules/dcc/send.cpp:1583
 msgid "Starting Secure Socket Layer handshake"
 msgstr ""
 
@@ -499,7 +499,7 @@ msgid "Re&sume"
 msgstr ""
 
 #: src/modules/dcc/dialogs.cpp:158
-#: src/modules/dcc/send.cpp:1852
+#: src/modules/dcc/send.cpp:1866
 msgid "Cancel"
 msgstr ""
 
@@ -732,167 +732,167 @@ msgstr ""
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:602
+#: src/modules/dcc/send.cpp:630
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:734
+#: src/modules/dcc/send.cpp:762
 #, c-format
 msgid "TRANSFER %d"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:757
+#: src/modules/dcc/send.cpp:785
 msgid "Setting up the connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:816
+#: src/modules/dcc/send.cpp:844
 msgid "Attempting a passive DCC %1 connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:820
+#: src/modules/dcc/send.cpp:848
 msgid "Attempting an active DCC %1 connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:846
+#: src/modules/dcc/send.cpp:874
 msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:913
-#: src/modules/dcc/send.cpp:924
+#: src/modules/dcc/send.cpp:941
+#: src/modules/dcc/send.cpp:952
 msgid "Aborted"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:923
-#: src/modules/dcc/send.cpp:1594
-#: src/modules/dcc/send.cpp:1673
+#: src/modules/dcc/send.cpp:951
+#: src/modules/dcc/send.cpp:1608
+#: src/modules/dcc/send.cpp:1687
 msgid "Transfer failed: "
 msgstr ""
 
-#: src/modules/dcc/send.cpp:934
+#: src/modules/dcc/send.cpp:962
 msgid "Configure Bandwidth..."
 msgstr ""
 
-#: src/modules/dcc/send.cpp:936
+#: src/modules/dcc/send.cpp:964
 msgid "Resend DCC"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:937
+#: src/modules/dcc/send.cpp:965
 msgid "Resend TDCC"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:938
+#: src/modules/dcc/send.cpp:966
 msgid "Resend RevDCC"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:942
+#: src/modules/dcc/send.cpp:967
 msgid "Abort"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1132
+#: src/modules/dcc/send.cpp:1157
 msgid "From: "
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1133
+#: src/modules/dcc/send.cpp:1158
 msgid "To: "
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1236
-#: src/modules/dcc/send.cpp:1243
+#: src/modules/dcc/send.cpp:1259
+#: src/modules/dcc/send.cpp:1266
 msgid "%1 of %2 (%3%)"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1247
+#: src/modules/dcc/send.cpp:1270
 msgid "%1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1260
+#: src/modules/dcc/send.cpp:1283
 msgid "Spd:"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1275
+#: src/modules/dcc/send.cpp:1294
 msgid "Avg:"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1345
+#: src/modules/dcc/send.cpp:1359
 msgid "Transfer Log"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1474
+#: src/modules/dcc/send.cpp:1488
 msgid "Contacting host %1 on port %2"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1481
+#: src/modules/dcc/send.cpp:1495
 msgid "Listening on interface %1 port %2"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1504
+#: src/modules/dcc/send.cpp:1518
 msgid "The local IP address is private, determining from IRC server: %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1555
+#: src/modules/dcc/send.cpp:1569
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1557
+#: src/modules/dcc/send.cpp:1571
 msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1576
+#: src/modules/dcc/send.cpp:1590
 msgid "[SSL ERROR]: %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1619
+#: src/modules/dcc/send.cpp:1633
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1634
+#: src/modules/dcc/send.cpp:1648
 msgid "Transfer completed"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1682
+#: src/modules/dcc/send.cpp:1696
 msgid "Connected to %1:%2"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1683
+#: src/modules/dcc/send.cpp:1697
 msgid "Local end is %1:%2"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1727
+#: src/modules/dcc/send.cpp:1741
 msgid "Transferring data"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1753
+#: src/modules/dcc/send.cpp:1767
 msgid "RESUME accepted, transfer will begin at position %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1784
+#: src/modules/dcc/send.cpp:1798
 msgid "Internal error in RESUME request"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1789
+#: src/modules/dcc/send.cpp:1803
 msgid "Invalid RESUME request: Position %1 is larger than file size"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1793
+#: src/modules/dcc/send.cpp:1807
 msgid "Accepting RESUME request, transfer will begin at position %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1821
+#: src/modules/dcc/send.cpp:1835
 msgid "Configure bandwidth for DCC transfer %1"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1824
+#: src/modules/dcc/send.cpp:1838
 msgid "Limit upload bandwidth to"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1824
+#: src/modules/dcc/send.cpp:1838
 msgid "Limit download bandwidth to"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1843
+#: src/modules/dcc/send.cpp:1857
 msgid "bytes/sec"
 msgstr ""
 
-#: src/modules/dcc/send.cpp:1847
+#: src/modules/dcc/send.cpp:1861
 msgid "OK"
 msgstr ""

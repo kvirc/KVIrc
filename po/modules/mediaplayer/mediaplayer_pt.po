@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_pt\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"POT-Creation-Date: 2009-10-20 22:24+0200\n"
 "PO-Revision-Date: 2008-08-01 07:45+0100\n"
 "Last-Translator: Zé <ze@mandriva.org>\n"
 "Language-Team: Português <pt@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Generator: KBabel 1.11.4\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:465
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:470
 #, fuzzy
 msgid ""
 "An interface to Amarok2.\n"
@@ -28,7 +28,7 @@ msgstr ""
 "Um interface para o MPx.\n"
 "Pode-o transferir de http://bmpx.backtrace.info\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:441
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:446
 msgid ""
 "An interface to BMPx.\n"
 "Download it from http://bmpx.backtrace.info\n"
@@ -36,7 +36,7 @@ msgstr ""
 "Um interface para o MPx.\n"
 "Pode-o transferir de http://bmpx.backtrace.info\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:483
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:488
 #, fuzzy
 msgid ""
 "An interface to Qmmp.\n"
@@ -93,7 +93,7 @@ msgstr ""
 "dll encontrado no directório de distribuição do KVirc para a pasta plugins "
 "do Winamp e reiniciar o reprodutor."
 
-#: src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:506
 msgid ""
 "An interface to the xmms2 media player.\n"
 "Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n"
@@ -113,42 +113,13 @@ msgstr "Não é possível encontrar o símbolo %s em %Q"
 msgid "Can't load the player library (%Q)"
 msgstr "Não é possível carregar a biblioteca do leitor (%Q)"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:100
 msgid "Choosing media player interface \"%Q\""
 msgstr "A escolher o interface reprodutor de médias \"%Q\""
 
 #: src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
 msgstr "Função não implementada"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:571
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:594
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:636
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:675
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
-msgid "Last interface error: "
-msgstr "Último erro do interface: "
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr ""
-"Nenhum interface reprodutor de médias seleccionado. Tente /mediaplayer.detect"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr ""
-"Não há certezas acerca dos resultados, tentar novamente, estado de detecção "
-"mais agressivo"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
-msgid "Seems that there is no usable media player on this machine"
-msgstr "Parece que não existe um reprodutor de médias nesta máquina"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:133
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:570
@@ -160,6 +131,35 @@ msgstr "Parece que não existe um reprodutor de médias nesta máquina"
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1551
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1594
+msgid "Last interface error: "
+msgstr "Último erro do interface: "
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:113
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr ""
+"Nenhum interface reprodutor de médias seleccionado. Tente /mediaplayer.detect"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:72
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr ""
+"Não há certezas acerca dos resultados, tentar novamente, estado de detecção "
+"mais agressivo"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:103
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Parece que não existe um reprodutor de médias nesta máquina"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:132
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:569
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:592
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:634
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:673
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1181
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1317
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1361
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1550
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1593
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "O interface reprodutor de médias falhou ao executar a função pedida"
@@ -173,8 +173,8 @@ msgstr ""
 "O 'plugin' winamp não foi instalado correctamente, Verifique /"
 "helpmediaplayer.nowplaying"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:64
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:90
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "A tentar o interface reprodutor de médias \"%Q\": resultado %d"
 

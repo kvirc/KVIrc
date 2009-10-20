@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: mediaplayer_hr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"POT-Creation-Date: 2009-10-20 22:24+0200\n"
 "PO-Revision-Date: 2008-01-17 02:20+0100\n"
 "Last-Translator: SpeedyGhost <SpeedyGhost@gmail.com>\n"
 "Language-Team: Hrvatski <en@li.org>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:465
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:470
 #, fuzzy
 msgid ""
 "An interface to Amarok2.\n"
@@ -25,7 +25,7 @@ msgstr ""
 "Sučelje za popularni UNIX xmms media player.\n"
 "Preuzmite ga sa http://www.xmms.org\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:441
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:446
 #, fuzzy
 msgid ""
 "An interface to BMPx.\n"
@@ -34,7 +34,7 @@ msgstr ""
 "Sučelje za popularni UNIX xmms media player.\n"
 "Preuzmite ga sa http://www.xmms.org\n"
 
-#: src/modules/mediaplayer/mp_mprisinterface.cpp:483
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:488
 #, fuzzy
 msgid ""
 "An interface to Qmmp.\n"
@@ -92,7 +92,7 @@ msgstr ""
 "nalazi u direktoriju KVIrc distribucije, u Winamp plugins direktorij i "
 "restartati Winamp."
 
-#: src/modules/mediaplayer/mp_xmms2interface.cpp:33
+#: src/modules/mediaplayer/mp_mprisinterface.cpp:506
 #, fuzzy
 msgid ""
 "An interface to the xmms2 media player.\n"
@@ -113,39 +113,13 @@ msgstr "Ne mogu pronaći znak %s u %Q"
 msgid "Can't load the player library (%Q)"
 msgstr "Ne mogu učitati bazu playera (%Q)"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:101
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:100
 msgid "Choosing media player interface \"%Q\""
 msgstr "Odabirem media player \"%Q\""
 
 #: src/modules/mediaplayer/mp_interface.cpp:43
 msgid "Function not implemented"
 msgstr "Funkcija nije implementirana"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:134
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:571
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:594
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:636
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:675
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1183
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1319
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1363
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1552
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:1595
-msgid "Last interface error: "
-msgstr "Posljednja greška sucelja:"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:114
-msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
-msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:73
-msgid ""
-"Not sure about the results, trying a second, more agressive detection pass"
-msgstr "Nesiguni rezultati, pokušavam agresivniju detekciju"
-
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:104
-msgid "Seems that there is no usable media player on this machine"
-msgstr "Čini se da nema korisnih media playera na ovom računalu"
 
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:133
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:570
@@ -157,6 +131,32 @@ msgstr "Čini se da nema korisnih media playera na ovom računalu"
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1362
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1551
 #: src/modules/mediaplayer/libkvimediaplayer.cpp:1594
+msgid "Last interface error: "
+msgstr "Posljednja greška sucelja:"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:113
+msgid "No mediaplayer interface selected. Try /mediaplayer.detect"
+msgstr "Nema odabranog media playera. Pokušajte /mediaplayer.detect"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:72
+msgid ""
+"Not sure about the results, trying a second, more agressive detection pass"
+msgstr "Nesiguni rezultati, pokušavam agresivniju detekciju"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:103
+msgid "Seems that there is no usable media player on this machine"
+msgstr "Čini se da nema korisnih media playera na ovom računalu"
+
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:132
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:569
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:592
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:634
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:673
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1181
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1317
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1361
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1550
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:1593
 msgid ""
 "The selected media player interface failed to execute the requested function"
 msgstr "Odabrani media player nije uspio izvršiti traženu funkciju"
@@ -170,8 +170,8 @@ msgstr ""
 "Winamp pluginovi nisu ispravno instalirani. Provjerite /help mediaplayer."
 "nowplaying"
 
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:65
-#: src/modules/mediaplayer/libkvimediaplayer.cpp:91
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:64
+#: src/modules/mediaplayer/libkvimediaplayer.cpp:90
 msgid "Trying media player interface \"%Q\": score %d"
 msgstr "Pokušavam media player \"%Q\": score %d"
 
