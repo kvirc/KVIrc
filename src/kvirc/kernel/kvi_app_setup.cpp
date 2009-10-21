@@ -117,8 +117,11 @@ bool KviApp::checkFileAssociations()
 	HKEY hKey;
 
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kvs",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
-
+	}
+	
 	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
 	{
 		free(buffer);
@@ -132,7 +135,10 @@ bool KviApp::checkFileAssociations()
 
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
 	{
@@ -147,7 +153,10 @@ bool KviApp::checkFileAssociations()
 
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\DefaultIcon",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
 	{
@@ -164,7 +173,10 @@ bool KviApp::checkFileAssociations()
 
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
 	{
@@ -179,7 +191,10 @@ bool KviApp::checkFileAssociations()
 
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcScript\\Shell\\Parse\\command",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
 	{
@@ -197,7 +212,10 @@ bool KviApp::checkFileAssociations()
 	//Config
 
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kvc",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
 	{
@@ -212,11 +230,17 @@ bool KviApp::checkFileAssociations()
 
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcConfig",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	//Addon
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kva",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
 	{
@@ -231,10 +255,17 @@ bool KviApp::checkFileAssociations()
 
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcAddon",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
+
 	//Theme
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,".kvt",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
 	{
@@ -249,7 +280,10 @@ bool KviApp::checkFileAssociations()
 
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,"KVIrcTheme",0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	free(buffer);
 #endif
@@ -274,7 +308,10 @@ bool KviApp::checkUriAssociations(char * proto)
 
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,key,0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( (err=RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len)) != ERROR_SUCCESS)
 	{
@@ -297,7 +334,10 @@ bool KviApp::checkUriAssociations(char * proto)
 	key = storedKey+"\\DefaultIcon";
 	len = QUERY_BUFFER;
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,key,0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
 	{
@@ -315,7 +355,10 @@ bool KviApp::checkUriAssociations(char * proto)
 	len = QUERY_BUFFER;
 	key = storedKey+"\\Shell\\open";
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,key,0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
 	{
@@ -331,7 +374,10 @@ bool KviApp::checkUriAssociations(char * proto)
 	len = QUERY_BUFFER;
 	key = storedKey+"\\Shell\\open\\command";
 	if(RegOpenKeyEx(HKEY_CLASSES_ROOT,key,0,KEY_READ,&hKey) != ERROR_SUCCESS )
+	{
+		free(buffer);
 		return false;
+	}
 
 	if( RegQueryValueEx( hKey,0,0,0,(LPBYTE)buffer,&len) != ERROR_SUCCESS)
 	{
