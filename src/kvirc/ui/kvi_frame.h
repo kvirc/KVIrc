@@ -196,12 +196,10 @@ protected:
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void moveEvent(QMoveEvent *e);
 	virtual bool focusNextPrevChild(bool next);
-	virtual void windowActivationChange(bool bOldActive);
+	virtual void changeEvent(QEvent * event);
 
 	void updatePseudoTransparency();
 	void installAccelerators();
-
-	virtual void hideEvent ( QHideEvent * e);
 protected slots:
 	void switchToNextWindow();
 	void switchToPrevWindow();

@@ -827,17 +827,18 @@ void KviFrame::childWindowActivated(KviWindow *wnd)
 	KVS_TRIGGER_EVENT_0(KviEvent_OnWindowActivated,wnd);
 }
 
-void KviFrame::windowActivationChange(bool bOldActive)
+void KviFrame::changeEvent(QEvent * e)
 {
-	// if we have just been activated by the WM
-	// then update the active window task bar item
-	// It will then reset its highlight state
-	// and hopefully make the dock widget work correctly
-	// in this case.
-	// This will also trigger the OnWindowActivated event :)
-	if(isActiveWindow())
+	if (e->type() == QEvent::ActivationChange)
 	{
-		if(!bOldActive)
+		//WINDOW (DE)ACTIVATION
+		// if we have just been activated by the WM
+		// then update the active window task bar item
+		// It will then reset its highlight state
+		// and hopefully make the dock widget work correctly
+		// in this case.
+		// This will also trigger the OnWindowActivated event :)
+		if(isActiveWindow())
 		{
 			if(g_pActiveWindow)
 			{
@@ -845,11 +846,29 @@ void KviFrame::windowActivationChange(bool bOldActive)
 				g_pActiveWindow = 0; // really ugly hack!
 				childWindowActivated(pTmp);
 			}
+		} else {
+			if(g_pActiveWindow)g_pActiveWindow->lostUserFocus();
 		}
+
+	} else if (e->type() == QEvent::WindowStateChange)
+	{
+		//MINIMIZED EVENT
+		if(isMinimized() && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
+		{
+			if(!dockExtension())
+				executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
+			if(dockExtension())
+			{
+				e->ignore();
+				QTimer::singleShot( 0, this, SLOT(hide()) );
+			}
+		}
+
 	} else {
-		if(g_pActiveWindow)g_pActiveWindow->lostUserFocus();
+		KviTalMainWindow::changeEvent(e);
 	}
 }
+
 
 void KviFrame::closeEvent(QCloseEvent *e)
 {
@@ -1219,25 +1238,6 @@ void KviFrame::switchToNextWindowInContext(void)
 	m_pWindowList->switchWindow(true,true);
 }
 
-void KviFrame::hideEvent ( QHideEvent * e)
-{
-	if(KVI_OPTION_BOOL(KviOption_boolMinimizeInTray))
-	{
-		if(e->spontaneous())
-		{
-			if(!dockExtension())
-			{
-				executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
-			}
-
-			if(dockExtension())
-			{
-				e->ignore();
-				QTimer::singleShot( 0, this, SLOT(hide()) );
-			}
-		}
-	}
-}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_frame.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
