@@ -55,7 +55,6 @@ private:
 	int                    m_pId;
 	KviWindow             *m_pWindow;
 	QTimer                *m_pTimer;
-	QStringList::Iterator  m_clipBuffIterator;
 };
 
 #endif //SPASTE_CONTROLLER_H
