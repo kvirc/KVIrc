@@ -39,6 +39,7 @@
 #include <QMessageBox>
 #include <QRegExp>
 #include <QToolTip>
+#include <QTimer>
 
 extern Index        * g_pDocIndex;
 extern KviPointerList<KviHelpWindow> * g_pHelpWindowList;
@@ -111,6 +112,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 	li.append(80);
 	m_pSplitter->setSizes(li);
 
+	QTimer::singleShot(0,m_pIndexSearch,SLOT(setFocus()));
 }
 
 KviHelpWindow::~KviHelpWindow()

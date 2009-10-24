@@ -51,7 +51,6 @@ private:
 	bool           m_bIsStandalone;
 protected:
 	virtual void resizeEvent(QResizeEvent *e);
-	bool eventFilter(QObject *, QEvent *);
 protected slots:
 	void doClose();
 	void showIndex();
