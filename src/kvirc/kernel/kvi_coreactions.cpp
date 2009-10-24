@@ -259,7 +259,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_aliaseditor.png",
 		KVI_SMALLICON_ALIAS,
 		0,
-		"Ctrl+A");
+		"Ctrl+Alt+A");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EVENTEDITOR,
