@@ -487,7 +487,7 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 					{
 						// same type!
 						// sort by name
-						if(!KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) || (KviQString::cmpCI(btn->kviWindow()->windowName(),b->kviWindow()->windowName()) > 0))
+						if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) && (KviQString::cmpCI(btn->kviWindow()->windowName(),b->kviWindow()->windowName()) > 0))
 						{
 							// got a "higher one"
 							m_pButtonList->insert(idx,b);
