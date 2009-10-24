@@ -80,7 +80,6 @@ Requisites:
   - Nullsoft scriptable install system (NSIS)
       [Installer packages creator; needed if you want to create an installer package for kvirc]
       Get it at http://nsis.sourceforge.net/Download ; the package you want is called "nsis-2.45-setup.exe" (version numbers may vary).
-      Please note that the kvirc nsis script doesn't support -DCOEXISTENCE cmake flag by now, so enabling it will make the installer script fail.
 
 Further reccomended download if you plan to develop KVIrc:
 
