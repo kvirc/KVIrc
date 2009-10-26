@@ -458,14 +458,14 @@ namespace KviQString
 	void appendNumber(QString &s,kvi_i64_t iInteger)
 	{
 		char buffer[64];
-		::sprintf(buffer,"%ld",iInteger);
+		::sprintf(buffer,"%lld", (long long int) iInteger);
 		s.append(buffer);
 	}
 
 	void appendNumber(QString &s,kvi_u64_t uInteger)
 	{
 		char buffer[64];
-		::sprintf(buffer,"%lu",uInteger);
+		::sprintf(buffer,"%llu", (long long unsigned int) uInteger);
 		s.append(buffer);
 	}
 
