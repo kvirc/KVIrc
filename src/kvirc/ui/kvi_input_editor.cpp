@@ -1335,6 +1335,11 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 					repaintWithCursorOn();
 				}
 			break;
+			case Qt::Key_J:
+			{
+				//avoid Ctrl+J from inserting a linefeed
+				break;
+			}
 			case Qt::Key_K:
 			{
 				if(!m_bReadOnly)

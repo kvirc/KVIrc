@@ -3,77 +3,136 @@ An accelerator key is a combination of keyboard buttons that, when pressed
 toghether, will accomplish an action which otherwise would be done by moving
 the mouse or selecting from a menu.
 
-  Global hotkeys
+  Some notes on keys:
 
-Ctrl+Alt+A: Alias editor
-Ctrl+E: Event editor
-Ctrl+P: Popup editor
-Ctrl+Q: Action editor
-Ctrl+Y: Raw event editor
-Ctrl+T: Customize toolbars
-Ctrl+S: Execute script
-Ctrl+Alt+F: Manage Themes
-Ctrl+Alt+H: Show help index
-Ctrl+Alt+I: Identity dialog
-Ctrl+Alt+J: Join Channels
-Ctrl+Alt+M: Manage Script Addons
-Ctrl+Alt+N: New irc context
-Ctrl+Alt+O: General options
-Ctrl+Alt+S: Servers dialog
-Ctrl+Alt+T: Theme options
-Ctrl+Alt+U: Edit regusers
+Under Windows, the Ctrl+Alt is mapped to the AltGr (Alternative Graphics) key.
+Since AltGr is used in many keyboard layouts to produce special characters,
+the use of any Ctrl+Alt hotkey is discouraged.
+A list of standard window hotkeys can be found here: http://support.microsoft.com/kb/126449
+Under Unix*/KDE, a lot of keys are globally binded to specific software, eg:
+	Ctrl+Shift+S shows the contact list of Kopete
+	Ctrl+Alt+S stops the music player juk
+A list of these can be found at SystemSettings->Keyboard and mouse->Global keyboard shortcuts.
 
-  Window related hotkeys
+  All the standard keys alphabetically ordered:
 
-Alt+LeftArrow: Previous window
-Alt+RightArrow: Next window
-Alt+PageUp: Previous highlighted window
-Alt+PageDown: Next highlighted window
-Alt+Shift+LeftArrow: Previous window in the same IRC context
-Alt+Shift+RightArrow: Next window in the same IRC context
-Ctrl+UpArrow: Maximizes current window
-Ctrl+DownArrow or ESC: Minimizes current window
-Shift+<F1-F12> window switch
-PageUp: Scrolls the output window up one page
-PageDown: Scrolls the output window down one page
-Shift+PageUp: Scrolls the output window up one line
-Shift+PageDown: Scrolls the output window down one line
-Ctrl+F4: Closes the current window
+F1	Help Index (Window)
 
-  Text related hotkeys
+Ctrl+A	Select all
+Ctrl+B	Insert Bold control character
+Ctrl+C  Copy to clipboard
+Ctrl+D
+Ctrl+E
+Ctrl+F	Open "Find Text" dialog
+Ctrl+G
+Ctrl+H
+Ctrl+I	Open "Insert icon" dialog
+Ctrl+J	Open "Join Channels" dialog
+Ctrl+K	Open "Insert Color" dialog
+Ctrl+L
+Ctrl+M
+Ctrl+N	Open new context
+Ctrl+O	Insert Reset control character
+Ctrl+P	Insert "Plain text" control character
+Ctrl+Q
+Ctrl+R	Insert Reverse control character
+Ctrl+S Open "Servers" dialog
+Ctrl+T	Open "Manage Toolbars" dialog
+Ctrl+U	Insert Underline control character
+Ctrl+V	Paste clipboard contents
+Ctrl+W	Close current window
+Ctrl+X	Cut to clipboard
+Ctrl+Y	Redo last action
+Ctrl+Z	Undo last action
 
-Ctrl+LeftArrow: Selection left to the previous word
-Ctrl+RightArrow: Selection right to the next word
-Ctrl+Shift+LeftArrow: Previous word
-Ctrl+Shift+RightArrow: Next word
-Ctrl+<digit>, F1-F12, Shift+(F1-F12): Script accelerators (see OnAccelKeyPressed)
-Tab in the first word of input: Completes nicknames in the current channel or query
-Tab after a leading /: Completes commands
-Tab after a / in the middle of input: Completes directories
-Tab after a $: Completes function names
-Shift+Tab after the first word of input: completes masks in the current channel or query
-Ctrl+B: Inserts the 'bold' mIRC text control character
-Ctrl+K: Inserts the 'color' mIRC text control character
-Ctrl+R: Inserts the 'reverse' mIRC text control character
-Ctrl+U: Inserts the 'underline' mIRC text control character
-Ctrl+O: Inserts the 'reset' mIRC text control character
-Ctrl+P: Inserts the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line
-Ctrl+C: Copies the selected text to clipboard
-Ctrl+X: Cuts the selected text
-Ctrl+V: Pastes the clipboard contents (same as middle mouse click)
-Ctrl+I: Inserts the 'icon' control code and pops up the icon list box
-CursorUp: Moves backward in the command history
-CursorDown: Moves forward in the command history
-Ctrl+PageUp: Opens the history popup
-CursorRight: Moves the cursor to the right
-CursorLeft: Moves the cursor to the left :)
-Shift+CursorLeft: Moves the selection to the left
-Shift+RightCursor: Moves the selection to the right
-Ctrl+Backspace: Shows or hides the multiline editor
-Ctrl+Enter: send message as plain text, ignoring / commands
-Alt+<numeric_sequence>: Inserts the character by ASCII/Unicode code; example:
+Ctrl+Shift+A	Go away/back
+Ctrl+Shift+B
+Ctrl+Shift+C	Connect/disconnect current irc context
+Ctrl+Shift+D
+Ctrl+Shift+E	Open Event editor
+Ctrl+Shift+F
+Ctrl+Shift+G
+Ctrl+Shift+H
+Ctrl+Shift+I	Open Identity options
+Ctrl+Shift+J
+Ctrl+Shift+K
+Ctrl+Shift+L	Open Alias editor
+Ctrl+Shift+M
+Ctrl+Shift+N
+Ctrl+Shift+O	Open "Options" dialog
+Ctrl+Shift+P	Open Popup editor
+Ctrl+Shift+Q	Open Action editor
+Ctrl+Shift+R	Open Raw events editor
+Ctrl+Shift+S	Open Script tester
+Ctrl+Shift+T	Open "Theme Options" dialog
+Ctrl+Shift+U	Open "Registered users" dialog
+Ctrl+Shift+V
+Ctrl+Shift+W
+Ctrl+Shift+X	Open "Execute Script" dialog
+Ctrl+Shift+Y
+Ctrl+Shift+Z
+
+
+
+  Window handling related keys:
+
+Alt+LeftArrow:		Previous window
+Alt+RightArrow:		Next window
+Alt+PageUp:		Previous highlighted window
+Alt+PageDown:		Next highlighted window
+Alt+Shift+LeftArrow:	Previous window in the same IRC context
+Alt+Shift+RightArrow:	Next window in the same IRC context
+Ctrl+UpArrow:		Maximizes current window
+Ctrl+DownArrow or ESC:	Minimizes current window
+Shift+<F1-F12>		window switch
+PageUp:			Scroll the output window up one page
+PageDown:		Scroll the output window down one page
+Shift+PageUp:		Scroll the output window up one line
+Shift+PageDown:		Scroll the output window down one line
+Ctrl+W:			Close current window
+
+
+
+  Text editing related hotkeys:
+
+Ctrl+LeftArrow:		Selection left to the previous word
+Ctrl+RightArrow:	Selection right to the next word
+Ctrl+Shift+LeftArrow:	Previous word
+Ctrl+Shift+RightArrow:	Next word
+Ctrl+<digit>:		Script accelerators (see OnAccelKeyPressed)
+F2-F12, Shift+(F1-F12):	Script accelerators (see OnAccelKeyPressed)
+Ctrl+B:			Insert the 'bold' mIRC text control character
+Ctrl+K:			Insert the 'color' mIRC text control character
+Ctrl+R:			Insert the 'reverse' mIRC text control character
+Ctrl+U:			Insert the 'underline' mIRC text control character
+Ctrl+O:			Insert the 'reset' mIRC text control character
+Ctrl+P:			Insert the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line
+Ctrl+C:			Copie the selected text to clipboard
+Ctrl+X:			Cut the selected text
+Ctrl+V:			Paste the clipboard contents (same as middle mouse click)
+Ctrl+I:			Insert the 'icon' control code and pops up the icon list box
+CursorUp:		Move backward in the command history
+CursorDown:		Move forward in the command history
+Ctrl+PageUp:		Open the history popup
+CursorRight:		Move the cursor to the right
+CursorLeft:		Move the cursor to the left :)
+Shift+CursorLeft:	Move the selection to the left
+Shift+RightCursor:	Move the selection to the right
+Alt+Enter:		Show/hide the multiline editor
+Ctrl+Enter:		Send message as plain text, ignoring / commands
+Alt+<numeric_sequence>: Insert the character by ASCII/Unicode code; example:
 	Alt+32: Inserts ASCII/Unicode character 32: ' ' (a space)
 	Alt+00032: Same as above :)
 	Alt+13: Inserts the Carriage Return (CR) control character
 	Alt+77: Inserts ASCII/Unicode character 77: 'M'
 	Alt+23566: Inserts Unicode character 23566 (an ideogram)
+
+
+
+	Completion hotkeys
+
+Tab in the first word of input:		Complete nicknames in the current channel or query
+Tab after a leading /:			Complete commands
+Tab after a / in the middle of input:	Complete directories
+Tab after a $:				Complete function names
+Shift+Tab after the first word of input:Complete masks in the current channel or query

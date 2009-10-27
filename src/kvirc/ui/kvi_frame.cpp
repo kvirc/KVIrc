@@ -325,8 +325,8 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		[b]PageDown[/b]: Scrolls the output window down one page[br]
 		[b]Shift+PageUp[/b]: Scrolls the output window up one line[br]
 		[b]Shift+PageDown[/b]: Scrolls the output window down one line[br]
-		[b]Ctrl+Backspace[/b]: Shows or hides the multiline editor[br]
-		[b]Ctrl+F4[/b]: Closes the current window[br]
+		[b]Alt+Enter[/b]: Shows or hides the multiline editor[br]
+		[b]Ctrl+W[/b]: Closes the current window[br]
 		[b]Alt+&lt;numeric_sequence&gt;[/b]: Inserts the character by ASCII/Unicode code
 		[example]
 			Alt+32: Inserts ASCII/Unicode character 32: ' ' (a space)
@@ -350,7 +350,6 @@ void KviFrame::installAccelerators()
 	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT + Qt::SHIFT), this, SLOT(switchToNextWindowInContext()), 0, Qt::ApplicationShortcut);
 
 	static int accel_table[] = {
-		Qt::Key_F4 + Qt::CTRL ,     // close current window
 		Qt::Key_1 + Qt::CTRL ,       // script accels...
 		Qt::Key_2 + Qt::CTRL ,
 		Qt::Key_3 + Qt::CTRL ,
@@ -361,7 +360,6 @@ void KviFrame::installAccelerators()
 		Qt::Key_8 + Qt::CTRL ,
 		Qt::Key_9 + Qt::CTRL ,
 		Qt::Key_0 + Qt::CTRL ,
-		Qt::Key_F1 , // reserved for context sensitive help
 		Qt::Key_F2 ,
 		Qt::Key_F3 ,
 		Qt::Key_F4 ,
@@ -386,21 +384,7 @@ void KviFrame::installAccelerators()
 
 void KviFrame::accelActivated()
 {
-	int keys = (int)(((QShortcut *)sender())->key());
-	switch(keys)
-	{
-		case (Qt::Key_F4+Qt::CTRL):
-		{
-			if(g_pActiveWindow)
-				g_pActiveWindow->close();
-		}
-		break;
-		default:
-		{
-			KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed,g_pActiveWindow,(QString)(((QShortcut *)sender())->key()));
-		}
-		break;
-	};
+	KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed,g_pActiveWindow,(QString)(((QShortcut *)sender())->key()));
 }
 
 void KviFrame::executeInternalCommand(int index)
