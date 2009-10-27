@@ -1144,6 +1144,22 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			}
 			return;
 		}
+
+		//old style NickServ nick identification routine
+		if(KviQString::equalCI(szNick,"NickServ"))
+		{
+			//kvs event triggering and text output
+			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnNickServNotice,console,szNick,szUser,szHost,szMsgText))
+				msg->setHaltOutput();
+			if(!msg->haltOutput())
+			{
+				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
+					console->activeWindow() : (KviWindow *)(console);
+				pOut->output(KVI_OUT_NICKSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
+			}
+			return;
+		}
+
 		// Chanserv nick identification routine
 		if(KviQString::equalCI(szNick,"ChanServ"))
 		{
