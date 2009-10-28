@@ -823,6 +823,8 @@ IF(WANT_NO_EMBEDDED_CODE)
 
 	# needed for Rijndael/AES replacement and friends
 	pkg_check_modules(CRYPTOPP libcrypto++>=5.0.0)
+	# for Fedora, per nucleo
+	pkg_check_modules(CRYPTOPP libcryptopp>=5.0.0)
 	IF(CRYPTOPP_FOUND)
 		LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
 	ELSE()
