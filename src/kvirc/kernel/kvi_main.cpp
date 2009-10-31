@@ -276,38 +276,41 @@ int parseArgs(ParseArgs * a)
 			// no dash
 			if(kvi_strEqualCIN(p,"irc://",6) || kvi_strEqualCIN(p,"irc6://",7) || kvi_strEqualCIN(p,"ircs://",7) || kvi_strEqualCIN(p,"ircs6://",8))
 			{
-				KviStr tmp = QString::fromLocal8Bit(p);
+				KviStr szTmp = QString::fromLocal8Bit(p);
 				if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
 				a->szExecCommand.append("openurl ");
-				tmp.replaceAll("$",""); // the urls can't contain $ signs
-				tmp.replaceAll(";",""); // the urls can't contain ; signs
-				tmp.replaceAll("%",""); // the urls can't contain % signs
-				a->szExecCommand.append(tmp);
+				szTmp.replaceAll("$",""); // the urls can't contain $ signs
+				szTmp.replaceAll(";",""); // the urls can't contain ; signs
+				szTmp.replaceAll("%",""); // the urls can't contain % signs
+				a->szExecCommand.append(szTmp);
 			} else {
-				QString tmp = QString::fromLocal8Bit(p);
+				QString szTmp = QString::fromLocal8Bit(p);
 				bool bOk;
-				tmp.toUInt(&bOk);
-				if(bOk)szPort = tmp;
-				else {
-					QString ri = tmp.right(4);
+				szTmp.toUInt(&bOk);
+				if(bOk)
+				{
+					szPort = szTmp;
+				} else {
+					QString ri = szTmp.right(4);
 					if(KviQString::equalCI(ri,".kvs"))
 					{
 						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
 						a->szExecCommand.append("parse \"");
-						tmp.replace('$',"\\$");
-						tmp.replace('\\',"\\\\");
-						a->szExecCommand.append(tmp);
+						szTmp.replace('$',"\\$");
+						szTmp.replace('\\',"\\\\");
+						a->szExecCommand.append(szTmp);
 						a->szExecCommand.append('"');
 					} else if(KviQString::equalCI(ri,".kvt"))
 					{
 						if(a->szExecCommand.hasData())a->szExecCommand.append('\n');
 						a->szExecCommand.append("theme.install \"");
-						tmp.replace('$',"\\$");
-						tmp.replace('\\',"\\\\");
-						a->szExecCommand.append(tmp);
+						szTmp.replace('$',"\\$");
+						szTmp.replace('\\',"\\\\");
+						a->szExecCommand.append(szTmp);
 						a->szExecCommand.append('"');
-					} else
-						szServer = tmp; // assume a plain server name
+					} else {
+						szServer = szTmp; // assume a plain server name
+					}
 				}
 			}
 		}
@@ -328,7 +331,7 @@ int parseArgs(ParseArgs * a)
 	return KVI_ARGS_RETCODE_OK;
 }
 
-int main(int argc,char ** argv)
+int main(int argc, char ** argv)
 {
 	ParseArgs a;
 	a.argc = argc;
@@ -340,11 +343,14 @@ int main(int argc,char ** argv)
 	a.bShowSplashScreen = true;
 	a.bExecuteCommandAndClose = false;
 
-	int retCode = parseArgs(&a);
+	int iRetCode = parseArgs(&a);
 
-	if(retCode != KVI_ARGS_RETCODE_OK)return ((retCode == KVI_ARGS_RETCODE_ERROR) ? (-1) : 0);
+	if(iRetCode != KVI_ARGS_RETCODE_OK)
+	{
+		return ((iRetCode == KVI_ARGS_RETCODE_ERROR) ? (-1) : 0);
+	}
 
-	KviApp * theApp;
+	KviApp * pTheApp;
 
 #ifdef COMPILE_KDE_SUPPORT
 	KAboutData * pAbout = new KAboutData("kvirc", "kvirc", ki18n("KVIrc"), KVI_VERSION);
@@ -354,39 +360,39 @@ int main(int argc,char ** argv)
 	KCmdLineArgs::init(pAbout);
 #endif
 
-	bool argbVisual=false;
+	bool bArgVisual = false;
 
 #ifdef COMPILE_X11_SUPPORT
 	//this makes sure we are running X11 with a compositing manager that supports ARGV visuals
 	//Code taken from an example by Zack Rusin http://zrusin.blogspot.com
-	Display *dpy = XOpenDisplay(0); // open default display
+	Display * pDisplay = XOpenDisplay(0); // open default display
 	Colormap colormap = 0;
-	Visual *visual = 0;
+	Visual * pVisual = 0;
 
-	if (dpy)
+	if(pDisplay)
 	{
-		int screen = DefaultScreen(dpy);
-		int eventBase, errorBase;
+		int iScreen = DefaultScreen(pDisplay);
+		int iEventBase, iErrorBase;
 
-		if (XRenderQueryExtension(dpy, &eventBase, &errorBase))
+		if(XRenderQueryExtension(pDisplay, &iEventBase, &iErrorBase))
 		{
-			int nvi;
+			int iNvi;
 			XVisualInfo templ;
-			templ.screen  = screen;
+			templ.screen  = iScreen;
 			templ.depth   = 32;
 			templ.c_class = TrueColor;
-			XVisualInfo *xvi = XGetVisualInfo(dpy, VisualScreenMask |
+			XVisualInfo * pXvi = XGetVisualInfo(pDisplay, VisualScreenMask |
 							VisualDepthMask |
-							VisualClassMask, &templ, &nvi);
+							VisualClassMask, &templ, &iNvi);
 
-			for (int i = 0; i < nvi; ++i)
+			for(int i = 0; i < iNvi; ++i)
 			{
-				XRenderPictFormat *format = XRenderFindVisualFormat(dpy, xvi[i].visual);
-				if (format->type == PictTypeDirect && format->direct.alphaMask)
+				XRenderPictFormat * pFormat = XRenderFindVisualFormat(pDisplay, pXvi[i].visual);
+				if(pFormat->type == PictTypeDirect && pFormat->direct.alphaMask)
 				{
-					visual = xvi[i].visual;
-					colormap = XCreateColormap(dpy, RootWindow(dpy, screen), visual, AllocNone);
-					argbVisual=true;
+					pVisual = pXvi[i].visual;
+					colormap = XCreateColormap(pDisplay, RootWindow(pDisplay, iScreen), pVisual, AllocNone);
+					bArgVisual = true;
 					break;
 				}
 			}
@@ -394,25 +400,29 @@ int main(int argc,char ** argv)
 	}
 
 	// Need to have the X socket open before IPC startup
-	if (argbVisual == true) {
-		theApp = new KviApp(dpy, argc, argv, Qt::HANDLE(visual), Qt::HANDLE(colormap));
+	if(bArgVisual)
+	{
+		pTheApp = new KviApp(pDisplay, argc, argv, Qt::HANDLE(pVisual), Qt::HANDLE(colormap));
 	} else  {
 #endif
-		theApp = new KviApp(argc,argv);
+		pTheApp = new KviApp(argc,argv);
 #ifdef COMPILE_X11_SUPPORT
 	}
 #endif
 
 #ifdef COMPILE_DBUS_SUPPORT
 #ifndef COMPILE_KDE_SUPPORT
-	new KviDbusAdaptor(theApp);
-	QDBusConnection::sessionBus().registerObject("/MainApplication", theApp);
+	new KviDbusAdaptor(pTheApp);
+	QDBusConnection::sessionBus().registerObject("/MainApplication", pTheApp);
 #endif
 #endif
 	KviStr szRemoteCommand = a.szExecCommand;
 	if(a.szExecRemoteCommand.hasData())
 	{
-		if(szRemoteCommand.hasData())szRemoteCommand.append('\n');
+		if(szRemoteCommand.hasData())
+		{
+			szRemoteCommand.append('\n');
+		}
 		szRemoteCommand.append(a.szExecRemoteCommand);
 	}
 
@@ -448,32 +458,35 @@ int main(int argc,char ** argv)
 		{
 			if(szRemoteCommand.isEmpty())
 			{
-				KviStr tmp(KviStr::Format,"Another KVIrc session is already running on this display and with this user id.\nUse %s -f if you want to force a new session.",argv[0]);
+				KviStr szTmp(KviStr::Format,"Another KVIrc session is already running on this display and with this user id.\nUse %s -f if you want to force a new session.",argv[0]);
 				if(a.bShowPopup)
-					QMessageBox::information(0,"Session - KVIrc",tmp.ptr(),QMessageBox::Ok);
-				else
-					debug("%s",tmp.ptr());
+				{
+					QMessageBox::information(0,"Session - KVIrc",szTmp.ptr(),QMessageBox::Ok);
+				} else {
+					debug("%s",szTmp.ptr());
+				}
 			}
-			delete theApp;
+			delete pTheApp;
 			return 0;
-		} else if(a.bExecuteCommandAndClose) {
-			delete theApp;
+		} else if(a.bExecuteCommandAndClose)
+		{
+			delete pTheApp;
 			return 0;
 		}
 	}
 #endif
 
-	theApp->m_bCreateConfig      = a.createFile;
-	theApp->m_szConfigFile       = a.configFile;
-	theApp->m_szExecAfterStartup = a.szExecCommand;
-	theApp->m_bShowSplashScreen  = a.bShowSplashScreen;
-	theApp->setup();
+	pTheApp->m_bCreateConfig      = a.createFile;
+	pTheApp->m_szConfigFile       = a.configFile;
+	pTheApp->m_szExecAfterStartup = a.szExecCommand;
+	pTheApp->m_bShowSplashScreen  = a.bShowSplashScreen;
+	pTheApp->setup();
 
 	// YEAH!
-	int retVal = theApp->exec();
+	int iRetVal = pTheApp->exec();
 	// :)
 
-	delete theApp;
-	theApp = 0;
-	return retVal;
+	delete pTheApp;
+	pTheApp = 0;
+	return iRetVal;
 }
