@@ -347,9 +347,11 @@ int main(int argc,char ** argv)
 	KviApp * theApp;
 
 #ifdef COMPILE_KDE_SUPPORT
-	//fake out argv: we don't want to use the kde options handling
-	char * fooArgv[2] = { (char*)"kvirc", NULL };
-	KCmdLineArgs::init(1, fooArgv, "kvirc","kvirc",ki18n("KVIrc"),KVI_VERSION);
+	KAboutData * pAbout = new KAboutData("kvirc", "kvirc", ki18n("KVIrc"), KVI_VERSION);
+	#if KDE_IS_VERSION(4,3,0)
+		pAbout->setBugAddress("https://svn.kvirc.de/kvirc/");
+	#endif
+	KCmdLineArgs::init(pAbout);
 #endif
 
 	bool argbVisual=false;
