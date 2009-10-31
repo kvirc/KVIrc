@@ -93,13 +93,6 @@ KviMenuBar::~KviMenuBar()
 	if(m_pDefaultItemId)kvi_free(m_pDefaultItemId);
 }
 
-void KviMenuBar::showEvent(QShowEvent *)
-{
-	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
-	// by resetting the corner widget
-	m_pFrm->mdiManager()->relayoutMenuButtons();
-}
-
 void KviMenuBar::addDefaultItem(const QString &text,KviTalPopupMenu * pop)
 {
 	m_iNumDefaultItems++;

@@ -177,7 +177,7 @@ protected:
 	void createWindowList();
 	void recreateWindowList();
 
-	KviMdiChild * dockWindow(KviWindow *wnd,bool bShow = true,bool bCascade = true,QRect * setGeom = 0);
+	KviMdiChild * dockWindow(KviWindow *wnd,bool bCascade = true,QRect * setGeom = 0);
 	void undockWindow(KviWindow *wnd);
 
 	// called by KviWindow
@@ -213,7 +213,6 @@ protected slots:
 
 	void accelActivated();
 	void toolbarsPopupSelected(int id);
-	void maximizeMdiChildWindow(KviMdiChild * lpC);
 signals:
 	void activeWindowChanged();       // almost never 0.. but may be
 	void activeContextChanged();      // may be 0!

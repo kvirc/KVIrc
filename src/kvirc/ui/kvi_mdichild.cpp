@@ -38,22 +38,10 @@
 #include "kvi_settings.h"
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
-#include "kvi_pointerlist.h"
 #include "kvi_tal_popupmenu.h"
-
-#include <QCursor>
-#include <QApplication>
-#include <QFontMetrics>
-#include <QPixmap>
-#include <QStyle>
-#include <QPainter>
-#include <QEvent>
-#include <QMouseEvent>
-#include <QBoxLayout>
 
 #ifdef COMPILE_ON_MAC
 	#include "kvi_app.h"  //Needed for g_pApp
-	#include <QDesktopWidget>
 #endif
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -66,27 +54,15 @@ KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 	setObjectName(name ? name : "mdi_child");
 
 	m_pManager = par;
-
 	m_pClient = 0;
-
-	connect(this, SIGNAL(minimizeSignal()), this, SLOT(minimize()), Qt::QueuedConnection);
-	connect(this, SIGNAL(restoreSignal()), this, SLOT(restore()), Qt::QueuedConnection);
-	connect(this, SIGNAL(maximizeSignal()), this, SLOT(maximize()), Qt::QueuedConnection);
 
 	m_restoredGeometry   = QRect(10,10,320,240);
 	setMinimumSize(KVI_MDICHILD_MIN_WIDTH,KVI_MDICHILD_MIN_HEIGHT);
-	m_bCloseEnabled = true;
-	m_State = Normal;
 
 	connect(systemMenu(), SIGNAL(aboutToShow()), this, SLOT(updateSystemPopup()));
+	connect(this, SIGNAL(windowStateChanged(Qt::WindowStates, Qt::WindowStates)), this, SLOT(windowStateChangedEvent(Qt::WindowStates, Qt::WindowStates)));
 
 	setAutoFillBackground(true);
-}
-
-void KviMdiChild::setRestoredGeometry(const QRect &r)
-{
-	m_restoredGeometry = r;
-	setGeometry(r);
 }
 
 KviMdiChild::~KviMdiChild()
@@ -96,6 +72,12 @@ KviMdiChild::~KviMdiChild()
 		delete m_pClient;
 		m_pClient=0;
 	}
+}
+
+void KviMdiChild::setRestoredGeometry(const QRect &r)
+{
+	m_restoredGeometry = r;
+	setGeometry(r);
 }
 
 void KviMdiChild::closeEvent(QCloseEvent * e)
@@ -116,13 +98,11 @@ QRect KviMdiChild::restoredGeometry()
 
 KviMdiChild::MdiChildState KviMdiChild::state()
 {
-	return m_State;
-}
-
-void KviMdiChild::setBackgroundRole(QPalette::ColorRole)
-{
-	// hack
-	//QFrame::setBackgroundRole(QPalette::Window);
+	if(isMinimized())
+		return Minimized;
+	if(isMaximized())
+		return Maximized;
+	return Normal;
 }
 
 void KviMdiChild::setIcon(QPixmap pix)
@@ -136,152 +116,66 @@ const QPixmap * KviMdiChild::icon()
 	return &m_pIcon;
 }
 
-void KviMdiChild::enableClose(bool bEnable)
-{
-	m_bCloseEnabled = bEnable;
-}
-
-bool KviMdiChild::closeEnabled()
-{
-	return m_bCloseEnabled;
-}
-
 void KviMdiChild::setWindowTitle(const QString & plain)
 {
 	m_szPlainCaption = plain;
 	QMdiSubWindow::setWindowTitle(plain);
 }
 
-void KviMdiChild::windowStateChangedEvent( Qt::WindowStates oldState, Qt::WindowStates newState )
+void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowStates newState)
 {
-	// check if window has been minimized
-	if (!(oldState & Qt::WindowMinimized) && (newState & Qt::WindowMinimized))
+// 	qDebug("%s %d => %d", m_szPlainCaption.toUtf8().data(), (int) oldState, (int) newState);
+	Qt::WindowStates diffState = oldState ^ newState;
+
+	if(diffState.testFlag(Qt::WindowMinimized))
 	{
-		m_LastState = m_State;
-		m_State = Minimized;
-		// notify KviMdiManager
-		m_pManager->childMinimized(this,true);
-		// call the queued event since we can't change state while being in another event
-		emit minimizeSignal();
-		// update channelist caption
+		//minimized or unminimized
 		updateCaption();
-		return;
+		if(newState.testFlag(Qt::WindowMinimized))
+		{
+			//i have just been minimized, but i want another window to get activation
+			m_pManager->focusPreviousTopChild();
+		}
 	}
 
-	// check if window has been maximized
-	if (!(oldState & Qt::WindowMaximized) && (newState & Qt::WindowMaximized))
+	if(newState.testFlag(Qt::WindowActive) && diffState.testFlag(Qt::WindowMaximized))
 	{
-		m_LastState = m_State;
-		m_State = Maximized;
-
-		m_pManager->childMaximized(this);
-		// update channelist caption
-		updateCaption();
-		return;
+		//i'm the active window and my maximized state has changed => update sdi mode
+		m_pManager->setIsInSDIMode(newState.testFlag(Qt::WindowMaximized));
 	}
-
-	if ((oldState & Qt::WindowMaximized) && !(newState & Qt::WindowMaximized))
-	{
-		m_LastState = m_State;
-		m_State = Normal;
-		m_pManager->childRestored(this,true);
-		// update channelist caption
-		updateCaption();
-		return;
-	}
-
-	if ((oldState & Qt::WindowMinimized) && !(newState & Qt::WindowMinimized))
-	{
-		m_LastState = m_State;
-		m_State = Normal;
-		// notify KviMdiManager
-		m_pManager->childRestored(this,true);
-		// update channelist caption
-		updateCaption();
-		return;
-	}
-}
-
-void KviMdiChild::queuedMinimize()
-{
-	emit minimizeSignal();
-}
-
-void KviMdiChild::queuedRestore()
-{
-	emit restoreSignal();
-}
-
-void KviMdiChild::queuedMaximize()
-{
-	emit maximizeSignal();
-}
-
-void KviMdiChild::maximize()
-{
-	m_LastState = m_State;
-	m_State = Maximized;
-
-	showMaximized();
-	m_pManager->childMaximized(this);
-
-	updateCaption();
 }
 
 void KviMdiChild::restore()
 {
-	switch(state())
+	if(isMinimized())
 	{
-		case Maximized:
-			m_State = Normal;
-			showNormal();
-			m_pManager->childRestored(this,true);
-		break;
-		case Minimized:
-			m_State = Normal;
-			if (m_LastState == Normal)
-			{
-				showNormal();
-			} else maximize();
-			updateCaption();
-			m_pManager->childRestored(this,false);
-		break;
-		case Normal:
-			m_State = Normal;
-			if(!isVisible())
-			{
-				show();
-			}
-			return;
-		break;
+		if(isMaximized())
+			showMaximized();
+		else showNormal();
+		return;
 	}
+
+	if(isMaximized())
+	{
+		showNormal();
+		return;
+	}
+
+	if(!isVisible())
+	{
+		show();
+		return;
+	}
+}
+
+void KviMdiChild::maximize()
+{
+	showMaximized();
 }
 
 void KviMdiChild::minimize()
 {
-	m_LastState = m_State;
-	switch(state())
-	{
-		case Maximized:
-			m_State = Minimized;
-			hide();
-			m_pManager->childMinimized(this,true);
-		break;
-		case Normal:
-			m_State = Minimized;
-			hide();
-			m_pManager->childMinimized(this,false);
-		break;
-		case Minimized:
-			m_State = Minimized;
-			if(isVisible())
-			{
-				hide();
-			}
-			return;
-		break;
-	}
-	updateCaption();
+	showMinimized();
 }
 
 void KviMdiChild::updateCaption()
@@ -289,7 +183,7 @@ void KviMdiChild::updateCaption()
 	if(m_pClient)
 		if(m_pClient->inherits("KviWindow"))
 		{
-			((KviWindow*)m_pClient)->updateCaptionListItem();
+			((KviWindow*)m_pClient)->updateCaption();
 		}
 }
 
@@ -306,11 +200,6 @@ void KviMdiChild::moveEvent(QMoveEvent *e)
 	}
 #endif
 	QMdiSubWindow::moveEvent(e);
-}
-
-void KviMdiChild::systemPopupSlot()
-{
-		emit systemPopupRequest(QCursor::pos());
 }
 
 void KviMdiChild::setClient(QWidget * w)
@@ -338,10 +227,6 @@ void KviMdiChild::activate()
 {
 	if(m_pManager->topChild() != this)
 		m_pManager->setTopChild(this);
-}
-
-void KviMdiChild::focusInEvent(QFocusEvent *)
-{
 }
 
 void KviMdiChild::updateSystemPopup()

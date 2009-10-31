@@ -354,10 +354,7 @@ void KviWindowListButton::drawButtonLabel(QPainter * painter)
 	}
 
 	if(bMinimized)
-	{
-		szText.prepend('(');
-		szText.append(')');
-	}
+		szText.prepend('(').append(')');
 
 	pPainter->setClipRect(cRect);
 	pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,&bRect);

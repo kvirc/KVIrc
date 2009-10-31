@@ -271,7 +271,6 @@ public:
 	virtual void getConfigGroupName(QString &buf);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void updateCaption();
-	void updateCaptionListItem();
 	virtual void applyOptions();
 	virtual void updateIcon();
 	virtual void ownMessage(const QString &){};
@@ -354,7 +353,6 @@ protected:
 	// Virtuals overridden to manage the internal layouts...
 	virtual void moveEvent(QMoveEvent *e);
 	virtual void closeEvent(QCloseEvent *e);
-	virtual void wheelEvent(QWheelEvent *e);
 	virtual void childEvent(QChildEvent *e);
 	virtual void focusInEvent(QFocusEvent *e);
 
