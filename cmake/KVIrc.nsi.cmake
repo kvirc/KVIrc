@@ -8,13 +8,17 @@
 Name "KVIrc"
 !define VERSION '4.0.0-rc1'
 !define RELEASE_NAME 'Insomnia (wip)'
-!define /date RELEASE_VERSION '%Y%m%d'
+!define /date RELEASE_VERSION 'r@CMAKE_KVIRC_BUILD_REVISION@'
 !define URL_ABOUT 'http://www.kvirc.net/'
 !define URL_SUPPORT 'http://www.kvirc.net/'
 !define URL_UPDATE 'http://www.kvirc.net/'
 !define PUBLISHER 'Szymon Stefanek and The KVIrc Development Team'
 
+; Svn release, eg: KVIrc-4.0.0-rc1-dev-r3585.exe
 OutFile KVIrc-${VERSION}-dev-${RELEASE_VERSION}.exe
+; Stable version, eg: KVIrc-4.0.0-Insomnia.exe
+;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
+
 SetCompressor /SOLID lzma
 XPStyle on
 InstallDir $PROGRAMFILES\KVIrc
@@ -32,7 +36,6 @@ Var LocalDir
 !define MUI_LANGDLL_REGISTRY_ROOT "HKCU"
 !define MUI_LANGDLL_REGISTRY_KEY "Software\KVIrc"
 !define MUI_LANGDLL_REGISTRY_VALUENAME "Installer Language"
-!define MUI_FINISHPAGE_SHOWREADME "$INSTDIR\README.txt"
 !define MUI_FINISHPAGE_RUN "$INSTDIR\@KVIRC_BINARYNAME@.exe"
 
 ; Pages
@@ -185,8 +188,6 @@ Function .onInit
 uninst:
     ClearErrors
     ExecWait "$R0"
-	DeleteRegKey  HKLM "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc"
-    RMDir "$SMPROGRAMS\KVIrc"  
  
 done:
 
@@ -199,31 +200,58 @@ FunctionEnd
 ; Uninstaller
 
 Section !un.$(UnGeneralFiles)
-  SetShellVarContext all
-  ; Remove registry keys
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc"
-  DeleteRegKey HKLM SOFTWARE\KVIrc
+    SetShellVarContext all
 
-  ; Remove autostart entry
-  Call un.RemoveAutostart
+    ; Remove registry keys
+    DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\KVIrc"
+    DeleteRegKey HKLM SOFTWARE\KVIrc
 
-  ; Remove shortcuts, if any
-  Delete "$SMPROGRAMS\KVIrc\*.*"
+    ; Remove autostart entry
+    Call un.RemoveAutostart
 
-  ; Remove directories used
-  RMDir "$SMPROGRAMS\KVIrc"
-  RMDir /r "$INSTDIR"
+    ; Remove shortcuts, if any
+    Delete "$SMPROGRAMS\KVIrc\*.*"
+    RMDir "$SMPROGRAMS\KVIrc"
+  
+    ; Delete installed trees of files
+    RMDir /r "$INSTDIR\config"
+    RMDir /r "$INSTDIR\qt-plugins"
+    RMDir /r "$INSTDIR\defscript"
+    RMDir /r "$INSTDIR\doc"
+    RMDir /r "$INSTDIR\help"
+    RMDir /r "$INSTDIR\license"
+    RMDir /r "$INSTDIR\locale"
+    RMDir /r "$INSTDIR\modules"
+    RMDir /r "$INSTDIR\msgcolors"
+    RMDir /r "$INSTDIR\pics"
+    RMDir /r "$INSTDIR\themes"
+    Delete "$INSTDIR\*.dll"
+    Delete "$INSTDIR\*.exe"
 SectionEnd
 
 ;Remove local data dir
 Section /o un.$(UnLocalData)
 
-	DetailPrint $(UnLocalDataDescr)
-  ReadINIStr $LocalDir "$PROFILE\kvirc.ini" Main LocalKvircDirectory
-  ${un.WordReplace} $LocalDir "%20" " " "+" "$LocalDir"
-  ${un.WordReplace} $LocalDir "/" "\" "+" "$LocalDir"
-  RMDir /r "$LocalDir"
-  Delete "$PROFILE\kvirc.ini"
+    DetailPrint $(UnLocalDataDescr)
+    IfFileExists "$INSTDIR\portable" portable notportable
+
+portable:
+    RMDir /r "$INSTDIR\Settings"
+    Delete "$INSTDIR\portable"
+    Goto done
+
+notportable:
+	; test kvirc4 file
+    ReadINIStr $LocalDir "$PROFILE\kvirc4.ini" Main LocalKvircDirectory
+	; not found => don't delete anything
+	StrCmp $LocalDir "" done
+
+    ${un.WordReplace} $LocalDir "%20" " " "+" "$LocalDir"
+    ${un.WordReplace} $LocalDir "/" "\" "+" "$LocalDir"
+    RMDir /r "$LocalDir"
+    Delete "$PROFILE\kvirc4.ini"
+
+done:
 
 SectionEnd
 
