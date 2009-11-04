@@ -54,6 +54,7 @@
 #include <QFontMetrics>
 #include <QKeyEvent>
 #include <QDragEnterEvent>
+#include <QInputContext>
 
 QFontMetrics * g_pLastFontMetrics = 0;
 
@@ -815,6 +816,14 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 		}
 
 		g_pInputPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)),__tr2qs("Insert Icon"),m_pIconMenu);
+
+		QInputContext *qic = g_pApp->inputContext();
+		if (qic) {
+			QList<QAction *> imActions = qic->actions();
+			for (int i = 0; i < imActions.size(); ++i)
+				g_pInputPopup->addAction(imActions.at(i));
+		}
+
 		g_pInputPopup->popup(mapToGlobal(e->pos()));
 	} else {
 		pasteSelectionWithConfirmation();
@@ -1219,30 +1228,51 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 		return;
 	}
 
-	removeSelected();
-
-	int c = m_iCursorPosition;
-	if (e->replacementStart() <= 0)
-		c += e->commitString().length() + qMin(-e->replacementStart(), e->replacementLength());
-
-	m_iCursorPosition += e->replacementStart();
-
-	// insert commit string
-	if (e->replacementLength()) {
-		m_iIMSelectionBegin = m_iCursorPosition;
-		m_iIMLength = e->replacementLength();
-		removeSelected();
-	}
-	if (!e->commitString().isEmpty())
+	if(!m_bIMComposing)
 	{
-		m_bIMComposing = false;
-		insertText(e->commitString());
-	} else {
+		removeSelected();
+		m_iIMStart = m_iIMSelectionBegin = m_iCursorPosition;
+		m_iIMLength = 0;
 		m_bIMComposing = true;
 	}
 
-	m_iCursorPosition = c;
-	update();
+	m_bUpdatesEnabled = false;
+
+	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
+
+	// update selection inside the pre-edit
+	m_iIMSelectionBegin = m_iIMStart + e->replacementStart();
+	m_iIMSelectionLength = e->replacementLength();
+	moveCursorTo(m_iIMSelectionBegin);
+
+	if (e->commitString().isEmpty())
+	{
+		if(e->preeditString().isEmpty())
+		{
+			m_bIMComposing = false;
+			m_iIMStart = 0;
+			m_iIMLength = 0;
+		} else {
+			// replace the preedit area with the IM result text
+			m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->preeditString());
+			// move cursor to after the IM result text
+			moveCursorTo(m_iIMStart + m_iIMLength);
+		}
+	} else {
+		// replace the preedit area with the IM result text
+		m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
+		// move cursor to after the IM result text
+		moveCursorTo(m_iIMStart + m_iIMLength);
+		// reset data
+		m_bIMComposing = false;
+		m_iIMStart = 0;
+		m_iIMLength = 0;
+	}
+
+	// repaint
+	m_bUpdatesEnabled = true;
+		
+	repaintWithCursorOn();
 }
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
