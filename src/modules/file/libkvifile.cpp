@@ -688,8 +688,8 @@ static bool file_kvs_fnc_ls(KviKvsModuleFunctionCall * c)
 		<size> is an upper limit but may be not reached if the real file is smaller.[br]
 		The data read is returned as a string , so if the file contains binary data,
 		expect strange results.[br] If <size> is not specified, then KVIrc tries to read
-		the whole file up to the 1 MB limit (so if you want to read a file that is
-		bigger thatn 1 MB then you MUST specify the <size>).[br]
+		the whole file up to the 1 MiB limit (so if you want to read a file that is
+		bigger thatn 1 MiB then you MUST specify the <size>).[br]
 		WARNING: always check the file size before attemting to read a whole file...
 		reading a CDROM iso image may sit down your system :) (and will prolly crash while
 		allocating memory , before attempting to read anything)[br]
@@ -786,7 +786,7 @@ static bool file_kvs_fnc_read(KviKvsModuleFunctionCall * c)
 		is decoded from the ut8 characters set. If 'l' is present the the file
 		is decoded by using the local 8 bit character set instead.
 		WARNING: Always check the size of the file you're going to read: it is not
-		a good idea attempting to read a 700 MB binary file with this function since
+		a good idea attempting to read a 700 MiB binary file with this function since
 		it will probably sit down your system and exhaust your virtual memory.
 	@examples:
 		[example]

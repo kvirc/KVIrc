@@ -154,13 +154,13 @@
 		if (u == "B")
 			;
 		else
-		if (u == "KB")
+		if (u == "KiB")
 			sz = sz * 1024.0;
 		else
-		if (u == "MB")
+		if (u == "MiB")
 			sz = sz * 1024.0 * 1024.0;
 		else
-		if (u == "GB")
+		if (u == "GiB")
 			sz = sz * 1024.0 * 1024.0 * 1024.0;
 		else
 			return false;

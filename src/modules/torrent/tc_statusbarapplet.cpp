@@ -69,11 +69,11 @@ void KviTorrentStatusBarApplet::selfRegister(KviStatusBar *bar)
 QString formatSize(float sz)
 {
 	if (sz >= 1024.0f*1024.0f*1024.0f)
-		return QString("%1 GB").arg(sz / (1024.0f*1024.0f*1024.0f), 2, 'f', 2);
+		return QString("%1 GiB").arg(sz / (1024.0f*1024.0f*1024.0f), 2, 'f', 2);
 	if (sz >= 1024.0f*1024.0f)
-		return QString("%1 MB").arg(sz / (1024.0f*1024.0f), 2, 'f', 2);
+		return QString("%1 MiB").arg(sz / (1024.0f*1024.0f), 2, 'f', 2);
 	if (sz >= 1024.0f)
-		return QString("%1 KB").arg(sz / 1024.0f, 2, 'f', 2);
+		return QString("%1 KiB").arg(sz / 1024.0f, 2, 'f', 2);
 	return QString("%1 B").arg(sz, 2, 'f', 2);
 }
 
