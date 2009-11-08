@@ -638,7 +638,8 @@ void KviWindow::updateCaption()
 		mdiParent()->setWindowTitle(m_szPlainTextCaption);
 	else
 		setWindowTitle(m_szPlainTextCaption);
-	if(m_pWindowListItem)m_pWindowListItem->captionChanged();
+	if(m_pWindowListItem)
+		m_pWindowListItem->captionChanged();
 }
 
 void KviWindow::createSystemTextEncodingPopup()

@@ -56,6 +56,8 @@ class KviTalPopupMenu;
 	#include "kvi_window.h"
 #endif
 
+#define KVI_DEFAULT_FRAME_CAPTION "KVIrc " KVI_VERSION " " KVI_RELEASE_NAME
+
 // base class for the dock extension applets..
 // this should be probably moved out of here
 class KVIRC_API KviDockExtension

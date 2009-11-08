@@ -185,6 +185,7 @@ protected slots:
 	void menuActivated(int id);
 	void tileMethodMenuActivated(int id);
 	void fillWindowPopup();
+	void updateWindowTitle(QMdiSubWindow *pWindow);
 };
 
 #endif //_KVI_MDIMANAGER_H_

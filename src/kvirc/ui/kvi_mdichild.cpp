@@ -38,6 +38,7 @@
 #include "kvi_settings.h"
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
+#include "kvi_frame.h"
 #include "kvi_tal_popupmenu.h"
 
 #ifdef COMPILE_ON_MAC
@@ -72,6 +73,7 @@ KviMdiChild::~KviMdiChild()
 		delete m_pClient;
 		m_pClient=0;
 	}
+	m_pManager->focusPreviousTopChild();
 }
 
 void KviMdiChild::setRestoredGeometry(const QRect &r)
@@ -120,10 +122,13 @@ void KviMdiChild::setWindowTitle(const QString & plain)
 {
 	m_szPlainCaption = plain;
 	QMdiSubWindow::setWindowTitle(plain);
+	if(m_pManager->activeSubWindow() == this)
+		m_pManager->updateWindowTitle(this);
 }
 
 void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowStates newState)
 {
+	static bool bDontConsiderMaximizedEvents = false;
 // 	qDebug("%s %d => %d", m_szPlainCaption.toUtf8().data(), (int) oldState, (int) newState);
 	Qt::WindowStates diffState = oldState ^ newState;
 
@@ -138,9 +143,32 @@ void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowS
 		}
 	}
 
-	if(newState.testFlag(Qt::WindowActive) && diffState.testFlag(Qt::WindowMaximized))
+	if(newState.testFlag(Qt::WindowActive) && diffState.testFlag(Qt::WindowMaximized) && !diffState.testFlag(Qt::WindowMinimized) && !bDontConsiderMaximizedEvents)
 	{
+		//we are active, our maximized state has changed, and it's not because of a minimization
+		if(newState.testFlag(Qt::WindowMaximized))
+		{
+			bDontConsiderMaximizedEvents = true;
+
+			//ensure no other subwindow is maximized
+			QList<QMdiSubWindow *> tmp = m_pManager->subWindowList(QMdiArea::StackingOrder);
+			KviMdiChild * lpC;
+			for(int i = 0; i < tmp.count(); i++)
+			
+				if (tmp.at(i)->inherits("KviMdiChild"))
+				{
+					lpC = (KviMdiChild *) tmp.at(i);
+					if(lpC->state() == KviMdiChild::Maximized && lpC != this)
+						lpC->setWindowState(windowState() & ~Qt::WindowMaximized);
+				}
+			}
+
+			//stop ignoring maximized events
+			bDontConsiderMaximizedEvents=false;
+		}
+
 		//i'm the active window and my maximized state has changed => update sdi mode
+		//we don't consider this relevant if a window minimization is involved
 		m_pManager->setIsInSDIMode(newState.testFlag(Qt::WindowMaximized));
 	}
 }
@@ -157,6 +185,7 @@ void KviMdiChild::restore()
 
 	if(isMaximized())
 	{
+		setWindowState(windowState() & ~Qt::WindowMaximized);
 		showNormal();
 		return;
 	}
