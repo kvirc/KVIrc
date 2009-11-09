@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: dcc_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-20 22:24+0200\n"
+"POT-Creation-Date: 2009-11-09 21:04+0100\n"
 "PO-Revision-Date: 2007-11-13 22:32+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -300,7 +300,7 @@ msgstr ""
 "DCC %Q-Anfrage kann nicht an %Q gestellt werden: Die IRC-Verbindung wurde "
 "beendet"
 
-#: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1866
+#: src/modules/dcc/send.cpp:1866 src/modules/dcc/dialogs.cpp:158
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -335,8 +335,8 @@ msgstr "Bandbreite für DCC-Übertragung %1 konfigurieren"
 msgid "Connected to %1:%2"
 msgstr "Verbunden zu %1:%2"
 
-#: src/modules/dcc/voice.cpp:910 src/modules/dcc/canvas.cpp:283
-#: src/modules/dcc/chat.cpp:525
+#: src/modules/dcc/chat.cpp:525 src/modules/dcc/voice.cpp:910
+#: src/modules/dcc/canvas.cpp:283
 msgid "Connected to %Q:%Q"
 msgstr "Verbunden zu %Q:%Q"
 
@@ -344,8 +344,8 @@ msgstr "Verbunden zu %Q:%Q"
 msgid "Contacting host %1 on port %2"
 msgstr "Host %1 wird an Port %2 kontaktiert"
 
-#: src/modules/dcc/voice.cpp:755 src/modules/dcc/canvas.cpp:109
-#: src/modules/dcc/chat.cpp:184
+#: src/modules/dcc/chat.cpp:184 src/modules/dcc/voice.cpp:755
+#: src/modules/dcc/canvas.cpp:109
 msgid "Contacting host %Q on port %Q"
 msgstr "Host %Q wird an Port %Q kontaktiert"
 
@@ -408,7 +408,7 @@ msgstr ""
 "Datenübertragung wurde vor 30 Sekunden beendet: Das Schliessen der "
 "Verbindung wird erzwungen"
 
-#: src/modules/dcc/voice.cpp:818 src/modules/dcc/chat.cpp:407
+#: src/modules/dcc/chat.cpp:407 src/modules/dcc/voice.cpp:818
 msgid "ERROR: %Q"
 msgstr "FEHLER: %Q"
 
@@ -506,8 +506,8 @@ msgstr "Bandbreite zum Hochladen beschränken auf"
 msgid "Listening on interface %1 port %2"
 msgstr "Es wird an Schnittstelle %1 Port %2 gewartet"
 
-#: src/modules/dcc/voice.cpp:758 src/modules/dcc/canvas.cpp:85
-#: src/modules/dcc/chat.cpp:186
+#: src/modules/dcc/chat.cpp:186 src/modules/dcc/voice.cpp:758
+#: src/modules/dcc/canvas.cpp:85
 msgid "Listening on interface %Q port %Q"
 msgstr "Es wird an Schnittstelle %Q Port %Q gewartet"
 
@@ -515,8 +515,8 @@ msgstr "Es wird an Schnittstelle %Q Port %Q gewartet"
 msgid "Local end is %1:%2"
 msgstr "Lokales Ende ist %1:%2"
 
-#: src/modules/dcc/voice.cpp:912 src/modules/dcc/canvas.cpp:285
-#: src/modules/dcc/chat.cpp:527
+#: src/modules/dcc/chat.cpp:527 src/modules/dcc/voice.cpp:912
+#: src/modules/dcc/canvas.cpp:285
 msgid "Local end is %Q:%Q"
 msgstr "Lokales Ende ist %Q:%Q"
 
@@ -979,13 +979,13 @@ msgstr "[SSL-FEHLER]: %s"
 msgid "bytes/sec"
 msgstr "Byte/s"
 
-#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
-#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/libkvidcc.cpp:111
+#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/libkvidcc.cpp:111
 #: src/modules/dcc/libkvidcc.cpp:408 src/modules/dcc/libkvidcc.cpp:443
 #: src/modules/dcc/libkvidcc.cpp:642 src/modules/dcc/libkvidcc.cpp:666
 #: src/modules/dcc/libkvidcc.cpp:803 src/modules/dcc/libkvidcc.cpp:805
 #: src/modules/dcc/libkvidcc.cpp:1121 src/modules/dcc/libkvidcc.cpp:1171
-#: src/modules/dcc/descriptor.cpp:65 src/modules/dcc/requests.cpp:136
+#: src/modules/dcc/marshal.cpp:490 src/modules/dcc/marshal.cpp:520
+#: src/modules/dcc/marshal.cpp:525 src/modules/dcc/requests.cpp:136
 #: src/modules/dcc/requests.cpp:137 src/modules/dcc/requests.cpp:138
 msgid "unknown"
 msgstr "unbekannt"

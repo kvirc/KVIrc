@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvs_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-20 22:24+0200\n"
+"POT-Creation-Date: 2009-11-09 21:04+0100\n"
 "PO-Revision-Date: 2008-11-30 19:56+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: german <de@li.org>\n"
@@ -225,14 +225,14 @@ msgstr ""
 "Schleife im Vererbungsbaum der Basisklasse '%Q' gefunden: Definieren Sie "
 "diese Klasse zuerst neu"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:329
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:341
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:412
-#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:424
 #: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:499
 #: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:507
 #: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:527
 #: src/kvirc/kvs/kvi_kvs_treenode_expression.cpp:535
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:329
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:341
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:412
+#: src/kvirc/kvs/kvi_kvs_treenode_operation.cpp:424
 msgid "Division by zero"
 msgstr "Division durch Null"
 
@@ -381,7 +381,7 @@ msgid "Found character '%q' (unicode %x) where a slash '/' was expected"
 msgstr ""
 "Zeichen '%q' (Unicode %x) gefunden, wo ein Schrägstrich '/' erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2700
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2798
 msgid "Found character '%q' (unicode %x) where an instruction was expected"
 msgstr "Zeichen '%q' (Unicode %x) gefunden, wo eine Instruktion erwartet wurde"
 
@@ -629,8 +629,8 @@ msgstr "Timeout-Verzögerung fehlt"
 msgid "Missing timer name"
 msgstr "Timer-Name fehlt"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
 #: src/kvirc/kvs/kvi_kvs_treenode_modulesimplecommand.cpp:67
+#: src/kvirc/kvs/kvi_kvs_treenode_modulecallbackcommand.cpp:68
 msgid "Module command call failed: can't load the module '%Q': %Q"
 msgstr "Modulbefehlsaufruf fehlgeschlagen: Kann Modul '%Q' nicht laden: %Q"
 
@@ -674,7 +674,7 @@ msgstr ""
 "Modulfunktionsaufruf fehlgeschlagen: Das Modul '%Q' exportiert keine "
 "Funktion namens '%Q'"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3052
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3150
 msgid ""
 "Nested character %q corresponding to expected terminator, this might confuse "
 "me a bit: it is a good idea to enclose it in quotes"
@@ -722,10 +722,10 @@ msgstr "Kein Menüleisteneintrag mit Text '%Q'"
 msgid "No such IRC context (%u)"
 msgstr "Kein solcher IRC-Kontext (%u)"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:567
-#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:575
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:534
 #: src/kvirc/kvs/kvi_kvs_corecallbackcommands.cpp:542
+#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:567
+#: src/kvirc/kvs/kvi_kvs_corefunctions_gl.cpp:575
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1189
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_af.cpp:1197
 msgid "No such event (%Q)"
@@ -749,7 +749,7 @@ msgstr ""
 msgid "None"
 msgstr "Nichts"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2640
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2738
 msgid "Objects have no extended scope variables"
 msgstr "Objekte haben keine Variablen mit erweitertem Gültigkeitsbereich"
 
@@ -822,7 +822,7 @@ msgstr "Sinnloser leerer switch-Befehl: Reparieren Sie das Skript"
 msgid "SingleShot"
 msgstr "Einfacher Versuch"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3062
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3160
 msgid "Skipping nested terminator character %q"
 msgstr "Überspringe verschachteltes Zerminatorzeichen %q"
 
@@ -839,17 +839,17 @@ msgid ""
 msgstr ""
 "Einzelner ':' im Aliasnamen gefunden: Meinten Sie ...<namespace>::<name>?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
 #: src/kvirc/kvs/kvi_kvs_parser_command.cpp:93
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:187
 msgid "Stray ':' character: did you mean '...<namespace>::<alias_name>' ?"
 msgstr "Einzelnes ':'-Zeichen: Meinten Sie '...<namespace>::<alias_name>'?"
 
-#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
 #: src/kvirc/kvs/kvi_kvs_parser_command.cpp:85
+#: src/kvirc/kvs/kvi_kvs_parser_dollar.cpp:179
 msgid "Stray '::' sequence or invalid following alias name"
 msgstr "Einzelne '::'-Sequenz oder ungültiger Aliasname"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3089
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3187
 msgid "Stray backslash at the end of the script"
 msgstr "Einzelner Rückwärtsschrägstrich am Skriptende"
 
@@ -866,7 +866,7 @@ msgstr ""
 "Syntaxfehler nach '$' Funktionsaufrufpräfix. Wenn Sie nur ein '$' im Code "
 "nutzen möchten, müssen Sie es escapen"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2623
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2721
 msgid ""
 "Syntax error after '%' variable prefix. If you want to use a plain '%' in "
 "the code you need to escape it"
@@ -960,7 +960,7 @@ msgstr ""
 "Der while-Block des do-Befehls benötigt einen in runden Klammern "
 "eingeschlossenen Ausdruck"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2842
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2940
 msgid ""
 "The above problem might be related to the switch dash and the following "
 "equal sign"
@@ -1053,7 +1053,7 @@ msgstr "Das aktuelle Fenster ist kein Channel"
 msgid "The current window is not a channel, a query or a console"
 msgstr "Das aktuelle Fenster ist kein Channel, Query oder Konsole"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2811
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2909
 msgid ""
 "The dash after a command should be followed by a letter (switch), by a digit "
 "(negative number) or be escaped"
@@ -1333,8 +1333,8 @@ msgstr ""
 "Dies sieht sehr nach einem Objekt-Handle-Dereferenzierungsoperator '->' aus, "
 "aber es ist keiner. Haben Sie vielleicht ein '$' direkt danach vergessen?"
 
-#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 #: src/kvirc/kvs/kvi_kvs_corefunctions_af.cpp:297
+#: src/kvirc/kvs/kvi_kvs_corefunctions_sz.cpp:257
 msgid "This window has no associated IRC context"
 msgstr "Dieses Fenster hat keinen zugeordneten IRC-Kontext"
 
@@ -1416,7 +1416,7 @@ msgstr ""
 "Unerwartetes Zeichen '%q' (Unicode %x) nach einem Schrägstrich (ist es ein "
 "Tippfehler oder ein fehlerhafter Kommentarbeginn?)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2815
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2913
 msgid "Unexpected character '%q' (unicode %x) after a switch dash"
 msgstr "Unerwartetes Zeichen '%q' (Unicode %x) nach einem 'switch'-Bindestrich"
 
@@ -1516,7 +1516,7 @@ msgstr ""
 "Unerwartetes Ende des Befehls in Bindungsoperation, mindestens zwei "
 "Schrägstriche fehlen"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3378
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3476
 msgid ""
 "Unexpected end of line in hash key (missing '}' character or unescaped "
 "newline)"
@@ -1524,11 +1524,11 @@ msgstr ""
 "Unerwartetes Zeilenende im Hash-Schlüssel (fehlendes '}'-Zeichen oder nicht "
 "maskierter Zeilenumbruch)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2924 src/kvirc/kvs/kvi_kvs_parser.cpp:2991
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3022 src/kvirc/kvs/kvi_kvs_parser.cpp:3089
 msgid "Unexpected end of line in parameter list"
 msgstr "Unerwartetes Zeilenende in Paramaterliste"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3664
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3762
 msgid ""
 "Unexpected end of line in string constant (missing \" character or unescaped "
 "newline)"
@@ -1540,7 +1540,7 @@ msgstr ""
 msgid "Unexpected end of script after '$' function call prefix"
 msgstr "Unerwartetes Skriptende nach einem '$' Funktionsaufrufpräfix"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2817
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2915
 msgid "Unexpected end of script after a switch dash"
 msgstr "Unerwartetes Skriptende nach einem 'switch'-Bindestrich"
 
@@ -1554,11 +1554,11 @@ msgstr ""
 msgid "Unexpected end of script in expression"
 msgstr "Unerwartetes Skriptende im Ausdruck"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3371
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3469
 msgid "Unexpected end of script in hash key (missing '}' character ?)"
 msgstr "Unerwartetes Skriptende im Hash-Schlüssel (fehlendes '}'-Zeichen?)"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2734
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2832
 msgid "Unexpected end of script in instruction block (missing closing brace)"
 msgstr ""
 "Unerwartetes Skriptende im Instruktionsblock (fehlende schließende "
@@ -1568,11 +1568,11 @@ msgstr ""
 msgid "Unexpected end of script in multiline comment"
 msgstr "Unerwartetes Skriptende im Mehrzeilenkommentar"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2918 src/kvirc/kvs/kvi_kvs_parser.cpp:2985
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3016 src/kvirc/kvs/kvi_kvs_parser.cpp:3083
 msgid "Unexpected end of script in parameter list"
 msgstr "Unerwartetes Skriptende in Parameterliste"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3657
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3755
 msgid "Unexpected end of script in string constant (missing \" character ?)"
 msgstr ""
 "Unerwartetes Skriptende in Zeichenkettenkonstante (fehlendes \"-Zeichen?)"
@@ -1629,15 +1629,15 @@ msgstr "Unbekannter Operator"
 msgid "Unterminated c-style multiline comment"
 msgstr "Nicht abgeschlossener, mehrzeiliger, C-Stil Kommentar "
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3370 src/kvirc/kvs/kvi_kvs_parser.cpp:3377
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3468 src/kvirc/kvs/kvi_kvs_parser.cpp:3475
 msgid "Unterminated hash key"
 msgstr "Nichtterminierter Hash-Schlüssel"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2733
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2831
 msgid "Unterminated instruction block"
 msgstr "Nichtterminierter Instruktionsblock"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3656 src/kvirc/kvs/kvi_kvs_parser.cpp:3663
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3754 src/kvirc/kvs/kvi_kvs_parser.cpp:3761
 msgid "Unterminated string constant"
 msgstr "Nichtterminierte Zeichenkettenkonstante"
 
@@ -1709,8 +1709,8 @@ msgstr "[KVS]%c Laufzeitfehler: %Q"
 msgid "[KVS]%c Warning: %Q"
 msgstr "[KVS]%c Warnung: %Q"
 
-#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:99
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1196
+#: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:99
 msgid "[RAW]: %Q"
 msgstr "[RAW]: %Q"
 
@@ -1741,8 +1741,8 @@ msgstr "Zeichenkettenwert \"%Q\" gefunden, wo Typ '%s' erwartet wurde"
 msgid "found type %Q where type '%s' was expected"
 msgstr "Typ %Q gefunden, wo Typ '%s' erwartet wurde"
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:95
 #: src/kvirc/kvs/kvi_kvs_runtimecontext.cpp:108
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:95
 #, c-format
 msgid "line %d, near character %d"
 msgstr "Zeile %d, bei Zeichen %d"
