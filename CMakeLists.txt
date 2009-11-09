@@ -372,6 +372,12 @@ IF(UNIX)
 			SET(CMAKE_STATUS_X11_SUPPORT "Yes")
 			INCLUDE_DIRECTORIES(${X11_INCLUDE_DIR})
 			LIST(APPEND LIBS ${X11_LIBRARIES})
+            # Seems like ${X11_LIBRARIES} doesn't add -lXrender, which is needed
+            # for building with --no-add-needed/binutils-gold, see
+            # <http://bugs.debian.org/555068> for details.
+            IF(X11_Xrender_FOUND)
+                    LIST(APPEND LIBS ${X11_Xrender_LIB})
+            ENDIF(X11_Xrender_FOUND)
 		ELSE()
 			SET(CMAKE_STATUS_X11_SUPPORT "Not available")
 		ENDIF()
