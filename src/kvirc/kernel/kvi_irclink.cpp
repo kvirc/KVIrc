@@ -381,7 +381,7 @@ void KviIrcLink::socketStateChange()
 			m_pConsole->outputNoFmt(KVI_OUT_CONNECTION,__tr2qs("Starting Secure Socket Layer handshake"));
 		break;
 		case KviIrcSocket::ProxyLogin:
-			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%s established [%s (%s:%u)]"),
+			m_pConsole->output(KVI_OUT_CONNECTION,__tr2qs("%Q established [%s (%s:%u)]"),
 				connection()->link()->socket()->usingSSL() ? &(__tr2qs("Secure proxy connection")) : &(__tr2qs("Proxy connection")),
 				connection()->target()->proxy()->m_szHostname.toUtf8().data(),
 				connection()->target()->proxy()->m_szIp.toUtf8().data(),
