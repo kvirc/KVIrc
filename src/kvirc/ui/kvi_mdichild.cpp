@@ -154,7 +154,7 @@ void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowS
 			QList<QMdiSubWindow *> tmp = m_pManager->subWindowList(QMdiArea::StackingOrder);
 			KviMdiChild * lpC;
 			for(int i = 0; i < tmp.count(); i++)
-			
+			{
 				if (tmp.at(i)->inherits("KviMdiChild"))
 				{
 					lpC = (KviMdiChild *) tmp.at(i);
