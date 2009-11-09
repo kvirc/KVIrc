@@ -82,6 +82,8 @@
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
+#define KVI_DEFAULT_FRAME_CAPTION "KVIrc " KVI_VERSION " " KVI_RELEASE_NAME
+
 // Declared and managed by KviApp (kvi_app.cpp)
 extern KviConfig * g_pWinPropertiesConfig;
 KVIRC_API KviFrame * g_pFrame = 0; // the one and only frame object
@@ -542,7 +544,6 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 				if(bShow)
 				{
 					m_pMdi->showAndActivate(lpC);
-
 					// Handle the special case of this top level widget not being the active one.
 					// In this situation the child will not get the focusInEvent
 					// and thus will not call out childWindowActivated() method
@@ -691,7 +692,8 @@ void KviFrame::unhighlightWindowsOfContext(KviIrcContext * c)
 void KviFrame::setActiveWindow(KviWindow *wnd)
 {
 	// ASSERT(m_pWinList->findRef(wnd))
-	if(wnd->isMinimized()) wnd->restore();
+	if(wnd->isMinimized())
+		wnd->restore();
 	if(wnd->mdiParent())
 		m_pMdi->showAndActivate(wnd->mdiParent());
 	else wnd->delayedAutoRaise();

@@ -64,7 +64,6 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 : QMdiArea(parent)
 {
 	setFrameShape(NoFrame);
-	setOption(QMdiArea::DontMaximizeSubWindowOnActivation, true);
 	m_bInSDIMode = KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode);
 	m_pFrm = pFrm;
 
@@ -73,8 +72,6 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 	connect(m_pWindowPopup,SIGNAL(aboutToShow()),this,SLOT(fillWindowPopup()));
 	m_pTileMethodPopup = new KviTalPopupMenu(this);
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
-
-	connect( this, SIGNAL(subWindowActivated(QMdiSubWindow*)), this, SLOT(updateWindowTitle(QMdiSubWindow*)) );
 
 	viewport()->setAutoFillBackground(false);
 
@@ -85,20 +82,6 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 KviMdiManager::~KviMdiManager()
 {
 }
-
-void KviMdiManager::updateWindowTitle(QMdiSubWindow *pWindow)
-{
-	QString szText(KVI_DEFAULT_FRAME_CAPTION);
-	if(pWindow)
-	{
-		m_pFrm->setWindowTitle(QString("%1 - [%2]").arg(KVI_DEFAULT_FRAME_CAPTION, pWindow->windowTitle()));
-	} else {
-		//When window is 0, QMdiArea has just deactivated its last active window,
-		//and there are no active windows on the workspace.
-		setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
-	}
-}
-
 
 void KviMdiManager::paintEvent(QPaintEvent * e)
 {
@@ -350,8 +333,9 @@ void KviMdiManager::menuActivated(int id)
 void KviMdiManager::ensureNoMaximized()
 {
 	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
+
 	KviMdiChild * lpC;
-	
+
 	for(int i = 0; i < tmp.count(); i++)
 	{
 		if (tmp.at(i)->inherits("KviMdiChild"))
