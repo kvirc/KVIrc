@@ -1059,6 +1059,16 @@ void KviServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 	if(e)e->setAway(true);
 	KviQuery * q = msg->connection()->findQuery(szNk);
 	if(q) q->updateLabelText();
+
+	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNk);
+	if(i)
+	{
+		if(!i->szSpecial.isEmpty())
+			i->szSpecial.append(",");
+		i->szSpecial.append("away");
+		return;
+	}
+
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szNk));
