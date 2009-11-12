@@ -47,14 +47,14 @@
     // but we can ignore that and therefore silence the warnings.
     #define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
     // Hashes (should cover most cases)
-    #include <crypto++/md2.h>
-    #include <crypto++/md4.h>
-    #include <crypto++/md5.h>
-    #include <crypto++/sha.h>
-    #include <crypto++/ripemd.h>
-    #include <crypto++/crc.h>
+    #include <cryptopp/md2.h>
+    #include <cryptopp/md4.h>
+    #include <cryptopp/md5.h>
+    #include <cryptopp/sha.h>
+    #include <cryptopp/ripemd.h>
+    #include <cryptopp/crc.h>
     // Encoding
-    #include <crypto++/hex.h>
+    #include <cryptopp/hex.h>
     // additional
     #include <string>
     // template function

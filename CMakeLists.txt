@@ -851,18 +851,16 @@ IF(WANT_NO_EMBEDDED_CODE)
 	MESSAGE(STATUS "WANT_NO_EMBEDDED_CODE activated.")
 	FIND_PACKAGE(PkgConfig)
 
-	# needed for Rijndael/AES replacement and friends
-	pkg_check_modules(CRYPTOPP libcrypto++>=5.0.0)
 	# for Fedora, per nucleo
 	pkg_check_modules(CRYPTOPP libcryptopp>=5.0.0)
 	IF(CRYPTOPP_FOUND)
 		LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
 	ELSE()
-		LIST(APPEND LIBS "-lcrypto++")
+		LIST(APPEND LIBS "-lcryptopp")
 		MESSAGE("     WARNING: YOU ENABLED WITH_NO_EMBEDDED_CODE BUT YOUR SYSTEM DOESN'T PROVIDE")
 		MESSAGE("              A .pc FILE FOR Crypto++.")
 		MESSAGE("              THIS BUILD MIGHT FAIL, MAKE SURE Crypto++ IS INSTALLED AND IT CAN")
-		MESSAGE("              BE LINKED AGAINST IT WITH »-lcrypto++«.")
+		MESSAGE("              BE LINKED AGAINST IT WITH »-lcryptopp«.")
 	ENDIF()
 ENDIF()
 
