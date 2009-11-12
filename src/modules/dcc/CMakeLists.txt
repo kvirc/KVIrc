@@ -6,6 +6,7 @@ SET(kvidcc_MOC_HDRS
 	dialogs.h
 	marshal.h
 	send.h
+	video.h
 	voice.h
 	window.h
 )
@@ -26,6 +27,7 @@ SET(kvidcc_SRCS
 	send.cpp
 	thread.cpp
 	utils.cpp
+	video.cpp
 	voice.cpp
 	window.cpp
 )

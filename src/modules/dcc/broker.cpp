@@ -27,6 +27,7 @@
 #include "chat.h"
 #include "send.h"
 #include "voice.h"
+#include "video.h"
 
 #ifdef COMPILE_DCC_CANVAS
 	#include "canvas.h"
@@ -390,6 +391,75 @@ void KviDccBroker::passiveVoiceExecute(KviDccDescriptor * dcc)
 	KviStr tmp(KviStr::Format,"dcc: voice %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
 	KviDccVoice * v = new KviDccVoice(dcc->console()->frame(),dcc,tmp.ptr());
 	//#warning "Create minimized dcc voice ?... or maybe it's too much ? :)"
+	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
+	dcc->console()->frame()->addWindow(v,!bMinimized);
+	if(bMinimized)v->minimize();
+	m_pDccWindowList->append(v);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// ACTIVE VIDEO
+///////////////////////////////////////////////////////////////////////////////
+
+void KviDccBroker::activeVideoManage(KviDccDescriptor * dcc)
+{
+	if(!dcc->bAutoAccept)
+	{
+		// need confirmation
+		QString tmp = __tr2qs_ctx(
+					"<b>%1 [%2@%3]</b> requests a<br>" \
+					"<b>Direct Client Connection</b> in <b>VIDEO</b> mode.<br>" \
+					"The connection target will be host <b>%4</b> on port <b>%5</b><br>" \
+				,"dcc" \
+			).arg(dcc->szNick).arg(dcc->szUser).arg(dcc->szHost).arg(dcc->szIp).arg(dcc->szPort);
+
+		KviDccAcceptBox * box = new KviDccAcceptBox(this,dcc,tmp,__tr2qs_ctx("DCC VIDEO request","dcc"));
+		m_pBoxList->append(box);
+		connect(box,SIGNAL(accepted(KviDccBox *,KviDccDescriptor *)),
+				this,SLOT(activeVideoExecute(KviDccBox *,KviDccDescriptor *)));
+		connect(box,SIGNAL(rejected(KviDccBox *,KviDccDescriptor *)),
+				this,SLOT(cancelDcc(KviDccBox *,KviDccDescriptor *)));
+		box->show();
+	} else {
+		// auto accept
+		activeVideoExecute(0,dcc);
+	}
+}
+
+void KviDccBroker::activeVideoExecute(KviDccBox *box,KviDccDescriptor * dcc)
+{
+	if(box)box->forgetDescriptor();
+
+	if(!g_pApp->windowExists(dcc->console()))
+	{
+		// rebind to the first available console....
+		dcc->setConsole(g_pApp->activeConsole());
+	}
+
+	KviStr tmp(KviStr::Format,"dcc: video %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
+	KviDccVideo * v = new KviDccVideo(dcc->console()->frame(),dcc,tmp.ptr());
+
+	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : \
+			(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVideo) || \
+				(dcc->bAutoAccept && KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccVideoWhenAutoAccepted)));
+
+	dcc->console()->frame()->addWindow(v,!bMinimized);
+	if(bMinimized)v->minimize();
+
+	m_pDccWindowList->append(v);
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+// PASSIVE VOICE
+///////////////////////////////////////////////////////////////////////////////
+
+void KviDccBroker::passiveVideoExecute(KviDccDescriptor * dcc)
+{
+	KviStr tmp(KviStr::Format,"dcc: video %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
+	KviDccVideo * v = new KviDccVideo(dcc->console()->frame(),dcc,tmp.ptr());
+	//#warning "Create minimized dcc video ?... or maybe it's too much ? :)"
 	bool bMinimized = dcc->bOverrideMinimize ? dcc->bShowMinimized : KVI_OPTION_BOOL(KviOption_boolCreateMinimizedDccChat);
 	dcc->console()->frame()->addWindow(v,!bMinimized);
 	if(bMinimized)v->minimize();

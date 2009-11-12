@@ -54,4 +54,30 @@ public:
 	virtual int decodedFrameSize();
 };
 
+class KviDccVideoCodec
+{
+public:
+	KviDccVideoCodec();
+	virtual ~KviDccVideoCodec();
+protected:
+	KviStr m_szName;
+public:
+	const char * name();
+	virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual int encodedFrameSize();
+	virtual int decodedFrameSize();
+};
+
+class KviDccVideoNullCodec : public KviDccVideoCodec
+{
+public:
+	KviDccVideoNullCodec();
+	virtual ~KviDccVideoNullCodec();
+public:
+	virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual int encodedFrameSize();
+	virtual int decodedFrameSize();
+};
 #endif //_CODEC_H_

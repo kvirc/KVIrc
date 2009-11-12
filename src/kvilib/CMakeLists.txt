@@ -19,6 +19,7 @@ SET(kvilib_MOC_HDRS
 	ext/kvi_crypt.h
 	ext/kvi_regusersdb.h
 	ext/kvi_sharedfiles.h
+	ext/avdevice/videodevicepool.h
 	irc/kvi_ircuserdb.h
 	net/kvi_dns.h
 	net/kvi_http.h
@@ -76,6 +77,14 @@ SET(kvilib_SRCS
 	ext/kvi_regusersdb.cpp
 	ext/kvi_sharedfiles.cpp
 	ext/kvi_stringconversion.cpp
+	ext/avdevice/videodevice.cpp 
+	ext/avdevice/videoinput.cpp 
+	ext/avdevice/dummyvideodevice.cpp
+	ext/avdevice/videodevicevector.cpp
+	ext/avdevice/videodevicepool.cpp 
+	ext/avdevice/videodevicemodelpool.cpp
+	ext/avdevice/bayer.cpp
+	ext/avdevice/sonix_compress.cpp
 	file/kvi_file.cpp
 	file/kvi_fileutils.cpp
 	file/kvi_packagefile.cpp

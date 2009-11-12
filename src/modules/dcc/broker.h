@@ -86,6 +86,9 @@ public:
 	void activeVoiceManage(KviDccDescriptor * dcc);
 	void passiveVoiceExecute(KviDccDescriptor * dcc);
 
+	void activeVideoManage(KviDccDescriptor * dcc);
+	void passiveVideoExecute(KviDccDescriptor * dcc);
+
 	void recvFileManage(KviDccDescriptor * dcc);
 	void sendFileManage(KviDccDescriptor * dcc);
 
@@ -101,6 +104,7 @@ public slots:
 
 	void activeCanvasExecute(KviDccBox * box,KviDccDescriptor * dcc);
 	void activeVoiceExecute(KviDccBox * box,KviDccDescriptor * dcc);
+	void activeVideoExecute(KviDccBox * box,KviDccDescriptor * dcc);
 
 	void sendFileExecute(KviDccBox * box,KviDccDescriptor * dcc);
 	void recvFileExecute(KviDccBox * box,KviDccDescriptor * dcc);

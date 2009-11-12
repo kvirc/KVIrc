@@ -88,3 +88,70 @@ int KviDccVoiceNullCodec::decodedFrameSize()
 {
 	return 1024;
 }
+
+//--------------------------
+
+KviDccVideoCodec::KviDccVideoCodec()
+{
+}
+
+KviDccVideoCodec::~KviDccVideoCodec()
+{
+}
+
+void KviDccVideoCodec::encode(KviDataBuffer *,KviDataBuffer *)
+{
+}
+
+void KviDccVideoCodec::decode(KviDataBuffer *,KviDataBuffer *)
+{
+}
+
+int KviDccVideoCodec::encodedFrameSize()
+{
+	return 0;
+}
+
+int KviDccVideoCodec::decodedFrameSize()
+{
+	return 0;
+}
+
+const char * KviDccVideoCodec::name()
+{
+	return m_szName.ptr();
+}
+
+KviDccVideoNullCodec::KviDccVideoNullCodec()
+: KviDccVideoCodec()
+{
+	m_szName = "null (no compression)";
+}
+
+KviDccVideoNullCodec::~KviDccVideoNullCodec()
+{
+}
+
+void KviDccVideoNullCodec::encode(KviDataBuffer * signal,KviDataBuffer * stream)
+{
+	if(signal->size() < 1)return;
+	stream->append(signal->data(),signal->size());
+	signal->resize(0);
+}
+
+void KviDccVideoNullCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
+{
+	if(stream->size() < 1)return;
+	signal->append(stream->data(),stream->size());
+	stream->resize(0);
+}
+
+int KviDccVideoNullCodec::encodedFrameSize()
+{
+	return 1024;
+}
+
+int KviDccVideoNullCodec::decodedFrameSize()
+{
+	return 1024;
+}
