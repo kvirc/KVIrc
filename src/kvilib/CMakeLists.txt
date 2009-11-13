@@ -19,7 +19,6 @@ SET(kvilib_MOC_HDRS
 	ext/kvi_crypt.h
 	ext/kvi_regusersdb.h
 	ext/kvi_sharedfiles.h
-	ext/avdevice/videodevicepool.h
 	irc/kvi_ircuserdb.h
 	net/kvi_dns.h
 	net/kvi_http.h
@@ -45,6 +44,12 @@ SET(kvilib_MOC_HDRS
 IF(COMPILE_DBUS_SUPPORT)
 	LIST(APPEND kvilib_MOC_HDRS
 		ext/kvi_dbusadaptor.h
+	)
+ENDIF()
+
+IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
+	LIST(APPEND kvilib_MOC_HDRS
+		ext/avdevice/videodevicepool.h
 	)
 ENDIF()
 
@@ -77,14 +82,6 @@ SET(kvilib_SRCS
 	ext/kvi_regusersdb.cpp
 	ext/kvi_sharedfiles.cpp
 	ext/kvi_stringconversion.cpp
-	ext/avdevice/videodevice.cpp 
-	ext/avdevice/videoinput.cpp 
-	ext/avdevice/dummyvideodevice.cpp
-	ext/avdevice/videodevicevector.cpp
-	ext/avdevice/videodevicepool.cpp 
-	ext/avdevice/videodevicemodelpool.cpp
-	ext/avdevice/bayer.cpp
-	ext/avdevice/sonix_compress.cpp
 	file/kvi_file.cpp
 	file/kvi_fileutils.cpp
 	file/kvi_packagefile.cpp
@@ -125,6 +122,19 @@ SET(kvilib_SRCS
 	tal/kvi_tal_vbox.cpp
 	tal/kvi_tal_wizard.cpp
 )
+
+IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
+	LIST(APPEND kvilib_SRCS
+		ext/avdevice/videodevice.cpp 
+		ext/avdevice/videoinput.cpp 
+		ext/avdevice/dummyvideodevice.cpp
+		ext/avdevice/videodevicevector.cpp
+		ext/avdevice/videodevicepool.cpp 
+		ext/avdevice/videodevicemodelpool.cpp
+		ext/avdevice/bayer.cpp
+		ext/avdevice/sonix_compress.cpp
+	)
+ENDIF()
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp
 QT4_WRAP_CPP(kvilib_MOC_SRCS ${kvilib_MOC_HDRS})
