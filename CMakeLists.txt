@@ -882,7 +882,7 @@ IF(WANT_NO_EMBEDDED_CODE)
 	FIND_PACKAGE(PkgConfig)
 
 	# for every os/distribution 
-	pkg_check_modules(CRYPTOPP libcryptopp>=5.0.0)
+	pkg_check_modules(CRYPTOPP cryptopp>=5.0.0)
 
 	# for Debian and derivates
 	pkg_check_modules(CRYPTOPP libcrypto++>=5.0.0)
