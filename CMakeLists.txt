@@ -253,9 +253,18 @@ INCLUDE(CheckIncludeFiles)
 CHECK_INCLUDE_FILES(sys/types.h SYSTEM_HAS_SYS_TYPES_H)
 CHECK_INCLUDE_FILES(strings.h SYSTEM_HAS_STRINGS_H)
 
-# No longer rely on this test for endianness (otherwise cross-compilation might fail)
-#INCLUDE(TestBigEndian)
-#TEST_BIG_ENDIAN(SYSTEM_IS_BIG_ENDIAN)
+# "dynamic labels" compiler support
+TRY_RUN(TEST_DID_RUN_DYNLABELS TEST_DID_COMPILE_DYNLABELS "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/dynlabels.cpp")
+IF(TEST_DID_COMPILE_DYNLABELS)
+	STRING(COMPARE EQUAL "${TEST_DID_RUN_DYNLABELS}" "0" TEST_DID_RUN_DYNLABELS_SUCCESS)
+	IF(TEST_DID_RUN_DYNLABELS_SUCCESS)
+		SET(COMPILE_USE_DYNAMIC_LABELS 1)
+	ELSE()
+		SET(COMPILE_USE_DYNAMIC_LABELS 0)
+	ENDIF()
+ELSE()
+	SET(COMPILE_USE_DYNAMIC_LABELS 0)
+ENDIF()
 
 ###############################################################################
 # Option for precompiled headers usage (currently broken because of bad gcc support)

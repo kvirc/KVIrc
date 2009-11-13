@@ -36,14 +36,8 @@
 
 #include <QtGlobal>
 
-#ifdef KVIRC_EXTERNAL_MODULE
-	// when compiling an external module
-	// include the last configuration
-	#include "kvi_configstatus.h"
-#else
-	// assume CMake build system for all systems
-	#include "kvi_sysconfig.h"
-#endif
+// assume CMake build system for all systems
+#include "kvi_sysconfig.h"
 
 // FIXME: Once we have a stable CMake build system, this section needs a cleanup.
 #if (defined(_OS_WIN32_) || defined(Q_OS_WIN32) || defined(Q_OS_WIN32_)) && !defined(MINGW)
@@ -98,14 +92,6 @@
 #endif
 
 #define KVI_RELEASE_NAME "Insomnia"
-
-#ifndef COMPILE_ON_WINDOWS
-	/* HACK: this is an hack to get dynamic labels while porting.
-		this line MUST be removed when the new Qt4 implementation
-		is working
-	*/
-	#define COMPILE_USE_DYNAMIC_LABELS
-#endif
 
 // We want _GNU_SOURCE features
 #ifndef _GNU_SOURCE

@@ -42,6 +42,7 @@
 #cmakedefine COMPILE_ix86_ASM 1
 #cmakedefine COMPILE_WITH_SYSTEM_MEMMOVE 1
 #endif
+#cmakedefine COMPILE_USE_DYNAMIC_LABELS 1
 
 #cmakedefine COMPILE_DISABLE_DCC_VOICE 1
 #cmakedefine HAVE_LINUX_SOUNDCARD_H 1
