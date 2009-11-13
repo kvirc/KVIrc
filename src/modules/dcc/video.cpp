@@ -76,6 +76,7 @@ KviDccVideoThread::KviDccVideoThread(KviWindow * wnd,kvi_socket_t fd,KviDccVideo
 #endif
 	startRecording();
 	startPlaying();
+
 }
 
 KviDccVideoThread::~KviDccVideoThread()
@@ -340,10 +341,12 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pOutVideoLabel->setAlignment(Qt::AlignCenter);
 	m_pLayout->addWidget(m_pOutVideoLabel, 11, 0, 10, 1);
 
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	//local video input
 	m_pVideoDevicePool = Kopete::AV::VideoDevicePool::self();
 	m_pVideoDevicePool->open();
 	m_pVideoDevicePool->setSize(320, 240);
+#endif
 
 	//local video input: config
 	m_pLabel[0] = new QLabel();
@@ -351,7 +354,9 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pLayout->addWidget(m_pLabel[0], 11, 1, 1, 1);
 	
 	m_pCDevices = new QComboBox();
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_pVideoDevicePool->fillDeviceQComboBox(m_pCDevices);
+#endif
 	m_pLayout->addWidget(m_pCDevices, 12, 1, 1, 1);
 
 	m_pLabel[1] = new QLabel();
@@ -359,7 +364,9 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pLayout->addWidget(m_pLabel[1], 13, 1, 1, 1);
 
 	m_pCInputs = new QComboBox();
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_pVideoDevicePool->fillInputQComboBox(m_pCInputs);
+#endif
 	m_pLayout->addWidget(m_pCInputs, 14, 1, 1, 1);
 
 	m_pLabel[2] = new QLabel();
@@ -367,11 +374,14 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pLayout->addWidget(m_pLabel[2], 15, 1, 1, 1);
 
 	m_pCStandards = new QComboBox();
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_pVideoDevicePool->fillStandardQComboBox(m_pCStandards);
+#endif
 	m_pLayout->addWidget(m_pCStandards, 16, 1, 1, 1);
 
 	setLayout(m_pLayout);
 
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_pVideoDevicePool->startCapturing();
 
 	connect(m_pVideoDevicePool, SIGNAL(deviceRegistered(const QString &) ), SLOT(deviceRegistered(const QString &)) );
@@ -382,7 +392,7 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	{
 		m_Timer.start(40); //25fps
 	}
-
+#endif
 	m_pMarshal = new KviDccMarshal(this);
 	connect(m_pMarshal,SIGNAL(error(int)),this,SLOT(handleMarshalError(int)));
 	connect(m_pMarshal,SIGNAL(connected()),this,SLOT(connected()));
@@ -393,8 +403,9 @@ KviDccVideo::KviDccVideo(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 
 KviDccVideo::~KviDccVideo()
 {
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_pVideoDevicePool->close();
-
+#endif
 	if(m_pInVideoLabel)
 	{
 		delete m_pInVideoLabel;
@@ -644,6 +655,7 @@ void KviDccVideo::startOrStopTalking(bool bStart)
 
 void KviDccVideo::slotUpdateImage()
 {
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_pVideoDevicePool->getFrame();
 	m_pVideoDevicePool->getImage(&m_Image);
 	if(isVisible())
@@ -652,10 +664,12 @@ void KviDccVideo::slotUpdateImage()
 		if(m_pSlaveThread)
 			m_pInVideoLabel->setPixmap(QPixmap::fromImage(m_pSlaveThread->m_inImage));
 	}
+#endif
 }
 
 void KviDccVideo::deviceRegistered(const QString &)
 {
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_pVideoDevicePool->fillDeviceQComboBox(m_pCDevices);
 	m_pVideoDevicePool->fillInputQComboBox(m_pCInputs);
 	m_pVideoDevicePool->fillStandardQComboBox(m_pCStandards);
@@ -671,14 +685,17 @@ void KviDccVideo::deviceRegistered(const QString &)
 	{
 		m_Timer.start(200); //5fps
 	}
+#endif
 }
 
 
 void KviDccVideo::deviceUnregistered(const QString & )
 {
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	m_pVideoDevicePool->fillDeviceQComboBox(m_pCDevices);
 	m_pVideoDevicePool->fillInputQComboBox(m_pCInputs);
 	m_pVideoDevicePool->fillStandardQComboBox(m_pCStandards);
+#endif
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

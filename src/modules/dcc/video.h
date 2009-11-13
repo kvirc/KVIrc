@@ -42,7 +42,9 @@
 #include <QComboBox>
 #include <QGridLayout>
 
-#include "avdevice/videodevicepool.h"
+#ifndef COMPILE_DISABLE_DCC_VIDEO
+	#include "avdevice/videodevicepool.h"
+#endif
 
 class QSlider;
 class KviDccMarshal;
@@ -104,7 +106,9 @@ public:
 protected:
 	QLabel *m_pInVideoLabel;
 	QLabel *m_pOutVideoLabel;
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	Kopete::AV::VideoDevicePool *m_pVideoDevicePool;
+#endif
 	QComboBox *m_pCDevices;
 	QComboBox *m_pCInputs;
 	QComboBox *m_pCStandards;

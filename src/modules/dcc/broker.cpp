@@ -22,6 +22,8 @@
 //
 //=============================================================================
 
+#include "kvi_settings.h"
+
 #include "broker.h"
 #include "dialogs.h"
 #include "chat.h"
@@ -452,7 +454,7 @@ void KviDccBroker::activeVideoExecute(KviDccBox *box,KviDccDescriptor * dcc)
 
 
 ///////////////////////////////////////////////////////////////////////////////
-// PASSIVE VOICE
+// PASSIVE VIDEO
 ///////////////////////////////////////////////////////////////////////////////
 
 void KviDccBroker::passiveVideoExecute(KviDccDescriptor * dcc)
