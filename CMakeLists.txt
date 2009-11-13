@@ -760,8 +760,8 @@ ENDIF()
 # Dcc video support + extended webcam support (LibV4L2)
 ############################################################################
 OPTION(WANT_DCC_VIDEO "Compile DCC Video Support" OFF)
-IF(WITHOUT_DCC_VIDEO)
-	SET(WANT_DCC_VIDEO OFF)
+IF(WITH_DCC_VIDEO)
+	SET(WANT_DCC_VIDEO ON)
 ENDIF()
 
 FIND_PACKAGE(LibV4L2)
