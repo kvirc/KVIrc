@@ -851,8 +851,11 @@ IF(WANT_NO_EMBEDDED_CODE)
 	MESSAGE(STATUS "WANT_NO_EMBEDDED_CODE activated.")
 	FIND_PACKAGE(PkgConfig)
 
-	# for Fedora, per nucleo
+	# for every os/distribution 
 	pkg_check_modules(CRYPTOPP libcryptopp>=5.0.0)
+
+	# for Debian and derivates
+	pkg_check_modules(CRYPTOPP libcrypto++>=5.0.0)
 	IF(CRYPTOPP_FOUND)
 		LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
 	ELSE()
