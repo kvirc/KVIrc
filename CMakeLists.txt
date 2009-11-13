@@ -71,6 +71,18 @@ ELSE()
 	MESSAGE(STATUS "Current revision has been manually set to ${MANUAL_REVISION}")
 ENDIF()
 
+# Set man dir
+SET(MANDIR
+	CACHE STRING "Define man directory starting from $CMAKE_INSTALL_PREFIX"
+)
+
+STRING(COMPARE EQUAL "${MANDIR}" "" MANDIR_UNSET)
+IF(MANDIR_UNSET)
+	SET(MANDIR_PREFIX "share/man")
+ELSE()
+	SET(MANDIR_PREFIX "man")
+ENDIF()
+
 # Get the build date
 TRY_RUN(TEST_DID_RUN TEST_DID_COMPILE "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/datetime.cpp" OUTPUT_VARIABLE TEST_BUILD_DATE)
 IF(TEST_DID_COMPILE)
@@ -1203,6 +1215,16 @@ ELSEIF(WIN32)
 	SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/${KVIRC_BINARYNAME}/${VERSION_BRANCH}/)
 ENDIF()
 
+# Man path
+IF(UNIX)
+	IF(APPLE)
+		# does MacOS X use man pages?
+	ELSE()
+		# Assume linux
+		SET(KVIRC_MAN_PATH ${CMAKE_INSTALL_PREFIX}/${MANDIR_PREFIX}/)
+	ENDIF()
+ENDIF()
+
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "Ok, this is the configuration I've worked out:")
 IF(${CONFIG_IS_UPTODATE})
@@ -1212,6 +1234,7 @@ MESSAGE(STATUS " ")
 MESSAGE(STATUS "  Binary Path                 : ${KVIRC_BIN_PATH}")
 MESSAGE(STATUS "  Library Path                : ${KVIRC_LIB_PATH}")
 MESSAGE(STATUS "  Modules Path                : ${KVIRC_MOD_PATH}")
+MESSAGE(STATUS "  Man Path                    : ${KVIRC_MAN_PATH}")
 MESSAGE(STATUS "  Debug                       : ${CMAKE_STATUS_DEBUG_SUPPORT}")
 MESSAGE(STATUS "  Verbose Output              : ${CMAKE_STATUS_VERBOSE_SUPPORT}")
 MESSAGE(STATUS "  Coexistence Support         : ${CMAKE_STATUS_COEXISTENCE_VER}")

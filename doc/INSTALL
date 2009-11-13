@@ -289,6 +289,10 @@ General notes for the installation of the 4.0 release of KVIrc
         directory. It defaults to an empty suffix. Mainly used for 64 bit distros
         (-DLIB_SUFFIX=64).
 
+    -DMANDIR=directory
+        It will install man pages under $CMAKE_INSTALL_PREFIX/$MANDIR.
+        It will default to $CMAKE_INSTALL_PREFIX/share/man
+
     -DCOEXISTENCE
         Append version information to KVIrc and libkvilib, so that different
         KVIrc versions can cohexist in the same system.
@@ -408,6 +412,9 @@ General notes for the installation of the 4.0 release of KVIrc
         Explicitly disable the DCC VOICE sound support. This might help
         if you have problems in compilation of src/modules/dcc/voice.cpp.
         It will disable the sound support (and thus make DCC VOICE not usable).
+
+    -DWITH_DCC_VIDEO
+        Enables testing DCC VIDEO support.
 
     -DWITH_MEMORY_PROFILE
         Debug stuff...enables memory allocation profiling (don't use it :)
