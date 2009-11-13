@@ -45,17 +45,16 @@ class KVILIB_API KviTalSplitter : public QSplitter
 public:
 	/**
 	* \brief Constructs the splitter object
-	* \param orientation The orentation of the splitter: horizontal or vertical
+	* \param orientation The orientation of the splitter: horizontal or vertical
 	* \param pParent the parent object
 	* \return KviTalSplitter
 	*/
-	KviTalSplitter(Qt::Orientation orientation, QWidget * pParent = 0)
-	: QSplitter(orientation, pParent), bHasValidSizes(false) {};
+	KviTalSplitter(Qt::Orientation orientation, QWidget * pParent = 0);
 
 	/**
 	* \brief Destroys the splitter object
 	*/
-	virtual ~KviTalSplitter() {};
+	virtual ~KviTalSplitter();
 private:
 	bool bHasValidSizes;
 	QList<int> oldSizes;
@@ -64,16 +63,17 @@ public:
 	* \brief Returns the list of sizes of the items contained inside the splitter
 	* \return QList<int>
 	*/
-	QList<int> sizes() { return bHasValidSizes ? QSplitter::sizes() : oldSizes; };
+	QList<int> sizes();
 
 	/**
 	* \brief Sets the initial sizes for items contained inside the splitter
 	* \param sizes The list of sizes
 	* \return void
 	*/
-	void setSizes(QList<int> sizes) { oldSizes = sizes; QSplitter::setSizes(oldSizes); };
-protected:
-	virtual void showEvent(QShowEvent * event) { if(!bHasValidSizes) bHasValidSizes=true; QSplitter::showEvent(event); };
+	void setSizes(QList<int> sizes);
+protected slots:
+	void splitterHasMoved(int pos, int index);
+
 };
 
 #endif // _KVI_TAL_SPLITTER_H_

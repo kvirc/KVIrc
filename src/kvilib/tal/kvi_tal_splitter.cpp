@@ -1,0 +1,53 @@
+//=============================================================================
+//
+//   File : kvi_tal_splitter.cpp
+//   Creation date : Mon Aug 31 2009 19:47:08 by Fabio Bas
+//
+//   This file is part of the KVirc irc client distribution
+//   Copyright (C) 2009 Fabio Bas (ctrlaltca at libero dot it)
+//
+//   This program is FREE software. You can redistribute it and/or
+//   modify it under the terms of the GNU General Public License
+//   as published by the Free Software Foundation; either version 2
+//   of the License, or (at your opinion) any later version.
+//
+//   This program is distributed in the HOPE that it will be USEFUL,
+//   but WITHOUT ANY WARRANTY; without even the implied warranty of
+//   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+//   See the GNU General Public License for more details.
+//
+//   You should have received a copy of the GNU General Public License
+//   along with this program. If not, write to the Free Software Foundation,
+//   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+//
+//=============================================================================
+
+#include "kvi_tal_splitter.h"
+#include <stdio.h>
+KviTalSplitter::KviTalSplitter(Qt::Orientation orientation, QWidget * pParent)
+: QSplitter(orientation, pParent)
+{
+	bHasValidSizes = false;
+	connect(this, SIGNAL(splitterMoved(int, int)), this, SLOT(splitterHasMoved(int, int)));
+}
+
+KviTalSplitter::~KviTalSplitter()
+{
+}
+
+QList<int> KviTalSplitter::sizes()
+{
+	return bHasValidSizes ? QSplitter::sizes() : oldSizes;
+}
+
+void KviTalSplitter::setSizes(QList<int> sizes)
+{
+	oldSizes = sizes;
+	QSplitter::setSizes(oldSizes);
+}
+
+void KviTalSplitter::splitterHasMoved(int, int)
+{
+	if(!bHasValidSizes)
+		bHasValidSizes=true;
+}

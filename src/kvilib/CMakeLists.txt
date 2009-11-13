@@ -115,6 +115,7 @@ SET(kvilib_SRCS
 	tal/kvi_tal_mainwindow.cpp
 	tal/kvi_tal_menubar.cpp
 	tal/kvi_tal_popupmenu.cpp
+	tal/kvi_tal_splitter.cpp
 	tal/kvi_tal_tabdialog.cpp
 	tal/kvi_tal_tablewidget.cpp
 	tal/kvi_tal_toolbar.cpp
