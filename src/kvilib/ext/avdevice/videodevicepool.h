@@ -57,11 +57,11 @@
 #include <QComboBox>
 #include "videodevice.h"
 #include "kopete_export.h"
-#include <kconfig.h>
-#include <kglobal.h>
 
 #ifdef COMPILE_KDE_SUPPORT
 	#include <solid/device.h>
+	#include <kconfig.h>
+	#include <kglobal.h>
 #endif
 
 // Uncomment this line and comment out the include and using lines to 
@@ -136,9 +136,8 @@ public:
 	bool setAutoColorCorrection(bool colorcorrection);
 	bool getImageAsMirror();
 	bool setImageAsMirror(bool imageasmirror);
-
 	void loadConfig(); // Load configuration parameters;
-	void saveConfig(); // Save configuretion parameters;
+	void saveConfig(); // Save configuration parameters;
 signals:
 	/**
 	 * Provisional signatures, probably more useful to indicate which device was registered

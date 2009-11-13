@@ -47,8 +47,6 @@
 #include <cerrno>
 #include <cstring>
 
-#include <kdebug.h>
-
 #include "videoinput.h"
 #include "videodevice.h"
 

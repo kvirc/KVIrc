@@ -46,7 +46,7 @@
 
 #include <qstring.h>
 #include <qvector.h>
-#include <kdebug.h>
+
 #include "kopete_export.h"
 
 namespace Kopete {

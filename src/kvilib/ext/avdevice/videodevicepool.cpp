@@ -48,10 +48,6 @@
 #include <cerrno>
 #include <cstring>
 
-#include <klocale.h>
-#include <kglobal.h>
-#include <kconfig.h>
-#include <kconfiggroup.h>
 #include <qdir.h>
 
 #include "videodevice.h"
@@ -62,6 +58,11 @@
 	#include <solid/devicenotifier.h>
 	#include <solid/deviceinterface.h>
 	#include <solid/video.h>
+
+	#include <klocale.h>
+	#include <kglobal.h>
+	#include <kconfig.h>
+	#include <kconfiggroup.h>
 #endif
 
 #define CLEAR(x) memset (&(x), 0, sizeof (x))
@@ -774,6 +775,7 @@ unsigned int VideoDevicePool::inputs()
  */
 void VideoDevicePool::loadConfig()
 {
+#ifdef COMPILE_KDE_SUPPORT
     /// @todo implement me
 	kDebug() << "called";
 	if((hasDevices())&&(m_clients==0))
@@ -827,6 +829,7 @@ void VideoDevicePool::loadConfig()
 			}
 		}
 	}
+#endif
 }
 
 /*!
@@ -834,6 +837,7 @@ void VideoDevicePool::loadConfig()
  */
 void VideoDevicePool::saveConfig()
 {
+#ifdef COMPILE_KDE_SUPPORT
     /// @todo implement me
 	kDebug() << "called";
 	if(hasDevices())
@@ -898,6 +902,7 @@ void VideoDevicePool::saveConfig()
 		config.sync();
 		kDebug();
 	}
+#endif
 }
 
 #ifdef COMPILE_KDE_SUPPORT

@@ -55,7 +55,6 @@
 #endif // __u64*/
 
 #include <qstring.h>
-#include <kdebug.h>
 #include "kopete_export.h"
 
 namespace Kopete {
