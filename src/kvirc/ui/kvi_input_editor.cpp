@@ -2114,14 +2114,15 @@ int  KviInputEditor::xPositionFromCharIndex(QFontMetrics & fm, int iChIdx, bool 
 	// FIXME: this could use fm.width(m_szTextBuffer,chIdx)
 	int iCurXPos = bContentsCoords ? KVI_INPUT_MARGIN : frameWidth()+KVI_INPUT_MARGIN;
 	int iCurChar = m_iFirstVisibleChar;
-	while(iCurChar < iChIdx)
-	{
-		QChar c = m_szTextBuffer.at(iCurChar);
+	if(!m_szTextBuffer.isEmpty())
+		while(iCurChar < iChIdx)
+		{
+			QChar c = m_szTextBuffer.at(iCurChar);
 
-		iCurXPos += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
+			iCurXPos += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
 
-		iCurChar++;
-	}
+			iCurChar++;
+		}
 	return iCurXPos;
 }
 
@@ -2133,14 +2134,16 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx, bool bContentsCoords)
 
 	if(!g_pLastFontMetrics)
 		g_pLastFontMetrics = new QFontMetrics(font());
-	while(iCurChar < iChIdx)
-	{
-		QChar c = m_szTextBuffer.at(iCurChar);
 
-		iCurXPos += c.unicode() < 32 ? g_pLastFontMetrics->width(getSubstituteChar(c.unicode())) + 4 : g_pLastFontMetrics->width(c);
+	if(!m_szTextBuffer.isEmpty())
+		while(iCurChar < iChIdx)
+		{
+			QChar c = m_szTextBuffer.at(iCurChar);
 
-		iCurChar++;
-	}
+			iCurXPos += c.unicode() < 32 ? g_pLastFontMetrics->width(getSubstituteChar(c.unicode())) + 4 : g_pLastFontMetrics->width(c);
+
+			iCurChar++;
+		}
 
 	return iCurXPos;
 }
