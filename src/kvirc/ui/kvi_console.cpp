@@ -191,8 +191,9 @@ KviConsole::~KviConsole()
 
 	//if(m_pLastIrcServer)delete m_pLastIrcServer;
 
-	delete m_pContext;
+	KviIrcContext * pTmp = m_pContext;
 	m_pContext = 0;
+	delete pTmp;
 
 	delete m_pTmpHighLightedChannels;
 }
