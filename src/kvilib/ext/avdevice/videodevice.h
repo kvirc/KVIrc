@@ -41,8 +41,6 @@
     *************************************************************************
 */
 
-#define ENABLE_AV
-
 #ifndef KOPETE_AVVIDEODEVICELISTITEM_H
 #define KOPETE_AVVIDEODEVICELISTITEM_H
 
@@ -55,7 +53,9 @@
 #include <unistd.h>
 #include <signal.h>
 
-#if defined(__linux__) && defined(ENABLE_AV)
+#include "kvi_settings.h"
+
+#ifndef COMPILE_DISABLE_AVDEVICE
 
 #include <asm/types.h>
 #undef __STRICT_ANSI__
@@ -86,10 +86,9 @@
 
 #endif // __linux__
 
-#include <qstring.h>
-#include <qfile.h>
-#include <qimage.h>
-#include <q3valuevector.h>
+#include <QString>
+#include <QFile>
+#include <QImage>
 
 #include "videoinput.h"
 
@@ -103,7 +102,7 @@ namespace AV {
 typedef enum
 {
 	VIDEODEV_DRIVER_NONE
-#if defined( __linux__) && defined(ENABLE_AV)
+#ifndef COMPILE_DISABLE_AVDEVICE
         ,
 	VIDEODEV_DRIVER_V4L
 #ifdef V4L2_CAP_VIDEO_CAPTURE
@@ -317,7 +316,7 @@ public:
 	int descriptor;
 
 //protected:
-#if defined(__linux__) && defined(ENABLE_AV)
+#ifndef COMPILE_DISABLE_AVDEVICE
 #ifdef V4L2_CAP_VIDEO_CAPTURE
 	struct v4l2_capability V4L2_capabilities;
 	struct v4l2_cropcap cropcap;

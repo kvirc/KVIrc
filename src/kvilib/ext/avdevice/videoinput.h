@@ -41,8 +41,6 @@
     *************************************************************************
 */
 
-#define ENABLE_AV
-
 #ifndef KOPETE_AVVIDEOINPUT_H
 #define KOPETE_AVVIDEOINPUT_H
 
@@ -54,8 +52,7 @@
 #define __u64 unsigned long long
 #endif // __u64*/
 
-#include <qstring.h>
-#include "kopete_export.h"
+#include <QString>
 
 namespace Kopete {
 
@@ -64,7 +61,7 @@ namespace AV {
 /**
 @author Kopete Developers
 */
-class KOPETE_EXPORT VideoInput{
+class VideoInput{
 public:
 	VideoInput();
 	~VideoInput();

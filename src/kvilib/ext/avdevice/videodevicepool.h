@@ -50,13 +50,11 @@
 
 #include "videoinput.h"
 #include "videodevicemodelpool.h"
-#include <qstring.h>
-#include <qimage.h>
-#include <q3valuevector.h>
-#include <qmutex.h>
+#include <QString>
+#include <QImage>
+#include <QMutex>
 #include <QComboBox>
 #include "videodevice.h"
-#include "kopete_export.h"
 
 #ifdef COMPILE_KDE_SUPPORT
 	#include <solid/device.h>
@@ -80,7 +78,7 @@ This class allows kopete to check for the existence, open, configure, test, set 
 @author Cláudio da Silveira Pinheiro
 */
 
-class KOPETE_EXPORT VideoDevicePool : public QObject
+class VideoDevicePool : public QObject
 {
 Q_OBJECT
 public:

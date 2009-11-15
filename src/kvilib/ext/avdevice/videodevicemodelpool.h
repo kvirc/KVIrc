@@ -44,10 +44,8 @@
 #ifndef KOPETE_AVVIDEODEVICEMODELPOOL_H
 #define KOPETE_AVVIDEODEVICEMODELPOOL_H
 
-#include <qstring.h>
-#include <qvector.h>
-
-#include "kopete_export.h"
+#include <QString>
+#include <QVector>
 
 namespace Kopete {
 
