@@ -214,7 +214,16 @@ KviFrame::~KviFrame()
 		m_pStatusBar = 0;
 	}
 
-	// the really last thing to do : close all the windows
+	//close all console windows, so that they will destroy their irccontext and close
+	// all child windows, too (eg channels inside that irc context)
+	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
+	{
+		if(wnd)
+			if(wnd->type() != KVI_WINDOW_TYPE_CONSOLE)
+				closeWindow(wnd);
+	}
+
+	// close all the remaining windows
 	while(m_pWinList->first())
 		closeWindow(m_pWinList->first());
 

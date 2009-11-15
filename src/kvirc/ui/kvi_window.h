@@ -146,7 +146,6 @@ protected: // almost private: don't touch :D
 	QString                               m_szName;                  // the current window name (usually also the target)
 	KviFrame                            * m_pFrm;
 	KviConsole                          * m_pConsole;
-	KviIrcContext                       * m_pContext;
 
 	int                                   m_iType;
 
@@ -204,10 +203,9 @@ public:
 	inline KviMdiChild * mdiParent(){ return (KviMdiChild *)parent(); };
 	// The console that this window belongs to: may be null for windows that aren't bound to irc contexts
 	inline KviConsole * console(){ return m_pConsole; };
-	// same as above
-	inline KviIrcContext * context(){ return m_pContext; };
+	KviIrcContext * context();
 	// the current IRC connection (if any)
-	inline KviIrcConnection * connection();
+	KviIrcConnection * connection();
 	// The splitter of this window: it *shouldn't* be null... but ... well.. who knows ? :D ...better check it
 	inline KviTalSplitter * splitter(){ return m_pSplitter; };
 	// The window has ALWAYS a WindowList item
@@ -402,11 +400,5 @@ inline QString KviWindow::decodeText(const char * szText)
 		return defaultTextCodec()->toUnicode(szText);
 	}
 }
-
-inline KviIrcConnection * KviWindow::connection()
-{
-	return m_pContext ? m_pContext->connection() : 0;
-}
-
 
 #endif //_KVI_WINDOW_H_

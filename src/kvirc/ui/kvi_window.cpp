@@ -116,7 +116,6 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 	m_pSplitter             = 0;
 	m_pButtonBox            = 0;
 	m_pConsole              = lpConsole;
-	m_pContext              = lpConsole ? lpConsole->context() : 0;
 	m_pLastFocusedChild     = 0;
 	m_pTextCodec            = 0; // will be set by loadProperties
 	m_pTextEncodingButton   = 0;
@@ -1364,6 +1363,28 @@ QTextCodec * KviWindow::defaultTextCodec()
 		if(c)return c;
 	}
 	return KviApp::defaultTextCodec();
+}
+
+KviIrcConnection * KviWindow::connection()
+{
+	if(console())
+		if(console()->context())
+			return console()->context()->connection();
+	return 0;
+}
+
+KviIrcContext * KviWindow::context()
+{
+	if(console())
+	{
+		if(console() == this)
+		{
+			return ((KviConsole*)this)->context();
+		} else {
+			return console()->context();
+		}
+	}
+	return 0;
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
