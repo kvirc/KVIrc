@@ -69,11 +69,11 @@ public:
 	virtual int decodedFrameSize();
 };
 
-class KviDccVideoNullCodec : public KviDccVideoCodec
+class KviDccVideoJpegCodec : public KviDccVideoCodec
 {
 public:
-	KviDccVideoNullCodec();
-	virtual ~KviDccVideoNullCodec();
+	KviDccVideoJpegCodec();
+	virtual ~KviDccVideoJpegCodec();
 public:
 	virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
 	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);

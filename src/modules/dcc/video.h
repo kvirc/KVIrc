@@ -79,11 +79,14 @@ protected:
 	bool                       m_bPlaying;
 	bool                       m_bRecording;
 	bool                       m_bRecordingRequestPending;
+	unsigned  int              m_uSleepTime;
 	KviMutex                 * m_pInfoMutex;
 	// stuff protected by the mutex:
 	int                        m_iInputBufferSize;
 	int                        m_iOutputBufferSize;
+protected:
 	QImage                     m_inImage;
+	QImage                     m_outImage;
 protected:
 	bool readWriteStep();
 	bool videoStep();
@@ -106,25 +109,12 @@ public:
 protected:
 	QLabel *m_pInVideoLabel;
 	QLabel *m_pOutVideoLabel;
-#ifndef COMPILE_DISABLE_DCC_VIDEO
-	Kopete::AV::VideoDevicePool *m_pVideoDevicePool;
-#endif
 	QComboBox *m_pCDevices;
 	QComboBox *m_pCInputs;
 	QComboBox *m_pCStandards;
 	QGridLayout *m_pLayout;
-	QImage m_Image;
 	QTimer m_Timer;
 	QLabel * m_pLabel[2];
-/*
-	KviTalHBox                  * m_pHBox;
-	QSlider                * m_pVolumeSlider;
-	QLabel                 * m_pInputLabel;
-	QLabel                 * m_pOutputLabel;
-	QLabel                 * m_pRecordingLabel;
-	QLabel                 * m_pPlayingLabel;
-	QToolButton            * m_pTalkButton;
-*/
 	QString                * m_pszTarget;
 	KviDccVideoThread      * m_pSlaveThread;
 protected:

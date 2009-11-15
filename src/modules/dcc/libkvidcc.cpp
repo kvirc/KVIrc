@@ -1202,7 +1202,7 @@ static bool dcc_kvs_cmd_video(KviKvsModuleCommandCall * c)
 
 	if(!dcc_kvs_parse_default_parameters(d,c))return false;
 
-	d->szCodec = "null";
+	d->szCodec = "jpeg";
 
 	if(KviKvsVariant * pCodec = c->switches()->find('g',"codec"))
 	{
@@ -1211,8 +1211,8 @@ static bool dcc_kvs_cmd_video(KviKvsModuleCommandCall * c)
 
 		if(!kvi_dcc_video_is_valid_codec(szCodec.toUtf8().data()))
 		{
-			c->warning(__tr2qs_ctx("Invalid codec specified, defaulting to 'null'","dcc"));
-			d->szCodec = "null";
+			c->warning(__tr2qs_ctx("Invalid codec specified, defaulting to 'jpeg'","dcc"));
+			d->szCodec = "jpeg";
 		}
 	}
 
