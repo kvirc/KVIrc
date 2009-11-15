@@ -98,7 +98,7 @@ protected slots:
 	void startDownload();
 	void cancelClicked();
 	void downloadTerminated(bool bSuccess);
-	void downloadMessage(const char * msg);
+	void downloadMessage(const QString &szMsg);
 };
 
 

@@ -148,7 +148,7 @@ KviAvatarDownloadDialog::~KviAvatarDownloadDialog()
 void KviAvatarDownloadDialog::startDownload()
 {
 	connect(m_pRequest,SIGNAL(terminated(bool)),this,SLOT(downloadTerminated(bool)));
-	connect(m_pRequest,SIGNAL(status(const char *)),this,SLOT(downloadMessage(const char *)));
+	connect(m_pRequest,SIGNAL(status(const QString &)),this,SLOT(downloadMessage(const QString &)));
 
 	QString tmp = m_szUrl;
 	g_pIconManager->urlToCachedFileName(tmp);
@@ -175,14 +175,14 @@ void KviAvatarDownloadDialog::cancelClicked()
 	reject();
 }
 
-void KviAvatarDownloadDialog::downloadMessage(const char * message)
+void KviAvatarDownloadDialog::downloadMessage(const QString &szMsg)
 {
-	if(message)
+	if(!szMsg.isEmpty())
 	{
 		QString txt = "<center>";
-		txt += message;
+		txt += szMsg;
 		txt += "</center>";
-		m_pOutput->setText(message);
+		m_pOutput->setText(szMsg);
 	}
 }
 
