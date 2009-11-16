@@ -313,7 +313,8 @@ bool KviPackAddonDialog::packAddon()
 	{
 		QMessageBox::critical(this,
 			__tr2qs_ctx("Addon Packaging Error","addon"),
-			szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+			szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton
+		);
 		return false;
 	}
 
@@ -364,7 +365,7 @@ bool KviPackAddonDialog::packAddon()
 	}
 	
 	// Add sound dir
-	if(!pw.addDirectory(m_szDirPath + "/sound","sound/" + m_szName))
+	if(!pw.addDirectory(m_szDirPath + "/sounds","sounds/" + m_szName))
 	{
 		szTmp = __tr2qs_ctx("Packaging failed","addon");
 		szTmp += ": ";
