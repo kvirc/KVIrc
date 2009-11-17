@@ -36,7 +36,7 @@ Requisites:
       While installing Qt4, you will be asked to perform a minimal install of MinGW; you can simply answer 'yes' to get this installed.
       MinGW is still based on the 3.x brach of gcc; if you want to test the new gcc4 (it should create faster executables), follow these
       instructions:
-      Point your browset at: http://sourceforge.net/projects/mingw/ , follow the "view all files" link and download "Automated MinGW Installer" (MinGW-5.1.6.exe)
+      Point your browser at: http://sourceforge.net/projects/mingw/ , follow the "view all files" link and download "Automated MinGW Installer" (MinGW-5.1.6.exe)
       (version number may vary). Run the installer, choose the "Current" package and select "MinGW base tools", "g++ compiler", "MinGW Make" components.
       Then go back to http://sourceforge.net/projects/mingw/ , follow the "view all files" => "GCC Version 4" (Current Release_gcc-4.4.0)" link.
       You'll find a file called "gcc-4.40-mingw32-notes.txt", read it carefully, at least twice. Then download these files:
@@ -61,10 +61,10 @@ Requisites:
 
   - Zlib compiled for Win32:
       [Compression library; needed for many stuffs, optional]
-      MinGW offers a zlib package: You'll nedd to download from http://sourceforge.net/projects/mingw/ the packages:
+      MinGW offers a zlib package: You'll need to download from http://sourceforge.net/projects/mingw/ the packages:
 		zlib-1.2.3-1-mingw32-dll-1.tar.gz
 		zlib-1.2.3-1-mingw32-dev-1.tar.gz
-      And uncrompress them inside your mingw installation directory.
+      And uncompress them inside your mingw installation directory.
 
   - Perl for Win32:
       [Programming language; needed for documentation creation and optional scripting support]
