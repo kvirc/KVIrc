@@ -146,13 +146,13 @@ ELSE()
 			#force gdb format of debug symbols
 			SET(CMAKE_CXX_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
 			SET(CMAKE_C_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
-			#gcc3 is still used by mingw and doesn't support this flag
 			INCLUDE(CheckCXXCompilerFlag)
 			CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
-			IF(CXX_HAS_VIH_FLAG)
+			#gcc doesn't support visibility on PE/win32
+			IF(CXX_HAS_VIH_FLAG AND NOT MINGW)
 				SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
 				SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
-			ENDIF(CXX_HAS_VIH_FLAG)
+			ENDIF()
 		ELSE()
 			#this small set of options should work on almost all compilers
 			SET(CMAKE_CXX_FLAGS "-O0 -g")
@@ -165,13 +165,13 @@ ELSE()
 			#force gdb options
 			SET(CMAKE_CXX_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
 			SET(CMAKE_C_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
-			#gcc3 is still used by mingw and doesn't support this flag
 			INCLUDE(CheckCXXCompilerFlag)
 			CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
-			IF(CXX_HAS_VIH_FLAG)
+			#gcc doesn't support visibility on PE/win32
+			IF(CXX_HAS_VIH_FLAG AND NOT MINGW)
 				SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
 				SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
-			ENDIF(CXX_HAS_VIH_FLAG)
+			ENDIF()
 		ELSE()
 			#this small set of options should work on almost all compilers
 			SET(CMAKE_CXX_FLAGS "-O3")
@@ -1232,6 +1232,8 @@ IF(UNIX)
 		# Assume linux
 		SET(KVIRC_MAN_PATH ${CMAKE_INSTALL_PREFIX}/${MANDIR_PREFIX}/)
 	ENDIF()
+ELSE()
+		SET(KVIRC_MAN_PATH "Not available")
 ENDIF()
 
 MESSAGE(STATUS " ")
