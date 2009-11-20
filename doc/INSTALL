@@ -278,6 +278,10 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITH_DEBUG
         Alias of -DDEBUG flag.
 
+    -DWITHOUT_STRIP
+        Available only if debug is disabled, this flag disables objects stripping before installation.
+        (Object stripping discards symbols from object files, lowering their size on disk)
+
     -DVERBOSE
         Generate verbose output when compiling.
 

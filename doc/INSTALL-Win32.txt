@@ -22,7 +22,9 @@ Requisites:
       [Configuration tool; needed to compile KVIrc, mandatory]
       Download it from http://www.cmake.org
       The package you want is called "Windows (Win32 Installer) cmake-2.6.4-win32-x86.exe" (version number may vary).
-      You need at least version 2.6.4 to compile KVirc. Version 2.8.0 will just work partially: its FindOpenSSl module is broken.
+      You need at least version 2.6.4 to compile KVirc.
+      Version 2.8.0 will just work partially: its FindOpenSSl module is broken, but you can download a working one from here:
+      http://gdcm.svn.sf.net/viewvc/gdcm/trunk/CMake/FindOpenSSL.cmake?view=log (the working module will be part of cmake 2.8.1).
       Recent versions of the cmake installer will ask if you want to add cmake to the system PATH: you want it, preferably for all users.
 
   - Qt 4 from Trolltech:
