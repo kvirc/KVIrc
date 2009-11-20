@@ -995,6 +995,12 @@ namespace KviKvsCoreFunctions
 	#ifdef COMPILE_WEBKIT_SUPPORT
 			"Webkit",
 	#endif
+	#ifndef COMPILE_DISABLE_DCC_VIDEO
+			"DCCVideo",
+	#endif
+	#ifndef COMPILE_DISABLE_DCC_VOICE
+			"DCCVoice",
+	#endif
 			"Qt4",
 			"KVS",
 			0
