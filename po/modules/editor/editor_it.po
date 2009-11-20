@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: editor_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-20 22:24+0200\n"
+"POT-Creation-Date: 2009-11-20 23:15+0100\n"
 "Last-Translator: Elvio Basello <hellvis69@netsons.org>\n"
 "Language-Team: Italian <it@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -134,7 +134,7 @@ msgstr "Sostituisci in tutti gli Alias"
 msgid "&Save As..."
 msgstr "&Salva con nome..."
 
-#: src/modules/popupeditor/popupeditor.cpp:241
+#: src/modules/popupeditor/popupeditor.cpp:242
 msgid ""
 "<center><b>Boolean condition</b><br>Will be evaluated at popup call time in "
 "order to decide if this entry has to be shown.<br>An empty condition "
@@ -144,7 +144,7 @@ msgstr ""
 "per decidere se questa voce va mostrata.<br>Una condizione vuota viene "
 "valutata come vera.</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:259
+#: src/modules/popupeditor/popupeditor.cpp:260
 msgid ""
 "<center><b>External menu name</b><br>This allows to nest externally defined "
 "popup menus. The popup menu with the specified name will be looked up at "
@@ -154,7 +154,7 @@ msgstr ""
 "popup definito esternamente. Il popup col nome specificato sarà cercato "
 "all'avvio del menu.</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:250
+#: src/modules/popupeditor/popupeditor.cpp:251
 msgid ""
 "<center><b>Icon identifier</b><br>May be an internal icon ID, an absolute "
 "path or a relative path.<br>Portable scripts should never use absolute paths."
@@ -164,7 +164,7 @@ msgstr ""
 "percorso assoluto o relativo.<br>Script portabili non dovrebbero mai usare "
 "percorsi assoluti.</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:269
+#: src/modules/popupeditor/popupeditor.cpp:270
 msgid ""
 "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
 "center>"
@@ -172,7 +172,7 @@ msgstr ""
 "<center><b>ID Elemento</b><br>Questo ti permette di usare delpopupitem in "
 "seguito.</center>"
 
-#: src/modules/popupeditor/popupeditor.cpp:232
+#: src/modules/popupeditor/popupeditor.cpp:233
 msgid ""
 "<center><b>Visible text</b><br>May contain identifiers that will be "
 "evaluated at popup call time.<br>For labels, this text can contain also "
@@ -399,7 +399,7 @@ msgstr "Colori"
 msgid "Comments:"
 msgstr "Commenti:"
 
-#: src/modules/popupeditor/popupeditor.cpp:235
+#: src/modules/popupeditor/popupeditor.cpp:236
 msgid "Condition:"
 msgstr "Condizione:"
 
@@ -531,7 +531,7 @@ msgstr "Esporta ToolBar"
 msgid "External Menu"
 msgstr "Menu Esterno"
 
-#: src/modules/popupeditor/popupeditor.cpp:253
+#: src/modules/popupeditor/popupeditor.cpp:254
 msgid "External menu:"
 msgstr "Menu esterno:"
 
@@ -583,7 +583,7 @@ msgstr "Nascondi Avanzate"
 msgid "Icon"
 msgstr "Icona"
 
-#: src/modules/popupeditor/popupeditor.cpp:244
+#: src/modules/popupeditor/popupeditor.cpp:245
 msgid "Icon:"
 msgstr "Icona:"
 
@@ -604,7 +604,7 @@ msgstr "Etichetta ToolBar Invalida"
 msgid "Item"
 msgstr "Elemento"
 
-#: src/modules/popupeditor/popupeditor.cpp:262
+#: src/modules/popupeditor/popupeditor.cpp:263
 msgid "Item Id:"
 msgstr "ID Elemento:"
 
@@ -997,7 +997,7 @@ msgstr "Sottomenu"
 msgid "Test"
 msgstr "Prova"
 
-#: src/modules/popupeditor/popupeditor.cpp:227
+#: src/modules/popupeditor/popupeditor.cpp:228
 msgid "Text:"
 msgstr "Testo:"
 
