@@ -746,7 +746,7 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 				bDisableResume = true;
 				// the file on disk is larger or equal to the remote one
 				tmp = __tr2qs_ctx( \
-							"The file '<b>%1</b>' already exists" \
+							"The file '<b>%1</b>' already exists " \
 							"and is larger than the offered one.<br>" \
 							"Do you wish to<br>" \
 							"<b>overwrite</b> the existing file, or<br> " \
