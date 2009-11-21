@@ -159,7 +159,7 @@ bool KviDccVoiceThread::checkSoundcard()
 
 	if(ioctl(m_soundFd,SNDCTL_DSP_GETCAPS,&caps) < 0)
 	{
-		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard , use the DCC VOICE option to force half-duplex algorithm","dcc").toUtf8().data());
+		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard, use the DCC VOICE option to force half-duplex algorithm","dcc").toUtf8().data());
 		if(bOpened)closeSoundcard();
 		return false;
 	}
