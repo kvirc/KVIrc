@@ -53,7 +53,6 @@ class KviRijndaelEngine : public KviCryptEngine
     private:
         std::string m_szEncKey;
         std::string m_szDecKey;
-        bool        m_bRandomIv;
     public:
         virtual bool init(const char *encKey,int encKeyLen,const char *decKey,int decKeyLen);
         virtual KviCryptEngine::EncryptResult encrypt(const char * plainText,KviStr &outBuffer);
@@ -126,7 +125,7 @@ class KviRijndael256Base64Engine : public KviRijndaelEngine
         virtual int getEncoding() { return KVI_RIJNDAEL_B64; };
 };
 
-// Blowfish (named »Mircryption to be a real drop in replacement, hopefully)
+// Blowfish (named »Mircryption« to be a real drop in replacement, hopefully)
 class KviMircryptionEngine : public KviCryptEngine
 {
     Q_OBJECT
@@ -142,6 +141,5 @@ class KviMircryptionEngine : public KviCryptEngine
         std::string m_szDecKey;
         bool m_bEncryptCBC;
         bool m_bDecryptCBC;
-        bool m_bRandomIv;
 };
 #endif // _LIBKVIRIJNDAEL_H_
