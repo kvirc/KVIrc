@@ -87,7 +87,7 @@ namespace KviNetUtils
 	KVILIB_API bool isRoutableIp(const char * ipaddr);
 	KVILIB_API bool isRoutableIpString(const QString &szIpString);
 	KVILIB_API void formatNetworkBandwidthString(QString &szBuffer,unsigned int uBytesPerSec);
-};
+}
 
 
 #endif //!_KVI_NETUTILS_H_

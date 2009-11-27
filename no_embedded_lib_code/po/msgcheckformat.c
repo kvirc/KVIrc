@@ -102,7 +102,7 @@ static void process_message(po_message_t m)
 			}
 		}
 	}
-	
+
 	if(*p || *q)
 	{
 		print_error(m,msgid,msgstr,"Mismatched number of format characters");
@@ -110,7 +110,7 @@ static void process_message(po_message_t m)
 }
 
 static void process_messages(po_message_iterator_t it)
-{	
+{
 	po_message_t m = po_next_message(it);
 	while(m)
 	{

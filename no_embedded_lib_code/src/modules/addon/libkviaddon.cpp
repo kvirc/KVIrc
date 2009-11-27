@@ -583,7 +583,7 @@ static bool addon_kvs_cmd_register(KviKvsModuleCallbackCommandCall * c)
 	}
 
 	if(!c->switches()->find('q',"quiet"))
-		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Script succesfully registered"));
+		c->window()->output(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Script successfully registered"));
 
 	return true;
 }

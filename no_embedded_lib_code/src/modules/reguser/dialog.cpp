@@ -73,7 +73,7 @@
 extern KviRegisteredUsersDialog * g_pRegisteredUsersDialog;
 
 KviRegisteredUsersListView::KviRegisteredUsersListView(QWidget * par)
-: KviTalTreeWidget(par)
+: QTreeWidget(par)
 {
 	setColumnCount(2);
 
@@ -104,10 +104,10 @@ void KviRegisteredUsersListView::mousePressEvent (QMouseEvent *e)
 		QTreeWidgetItem *i= itemAt(e->pos());
 		if (i) emit rightButtonPressed(i,QCursor::pos());
 	}
-	KviTalTreeWidget::mousePressEvent(e);
+	QTreeWidget::mousePressEvent(e);
 }
 
-KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(KviTalTreeWidgetItem * par,KviRegisteredUser * u)
+KviRegisteredUsersDialogItem::KviRegisteredUsersDialogItem(QTreeWidgetItem * par,KviRegisteredUser * u)
 : KviRegisteredUsersDialogItemBase(User,par), m_pUser(u)
 {
 	QString szTmp;
@@ -331,7 +331,7 @@ KviRegisteredUsersDialog::~KviRegisteredUsersDialog()
 	g_pLocalRegisteredUserDataBase = 0;
 }
 
-void KviRegisteredUsersDialog::itemPressed(KviTalTreeWidgetItem *it,int c)
+void KviRegisteredUsersDialog::itemPressed(QTreeWidgetItem *it,int c)
 {
 	if(!it)return;
 	KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)it;
@@ -377,7 +377,7 @@ void KviRegisteredUsersDialog::itemPressed(KviTalTreeWidgetItem *it,int c)
 	}
 }
 
-void KviRegisteredUsersDialog::itemDoubleClicked(KviTalTreeWidgetItem *it, int)
+void KviRegisteredUsersDialog::itemDoubleClicked(QTreeWidgetItem *it, int)
 {
 	if(!it)return;
 	KviRegisteredUsersDialogItemBase* b=(KviRegisteredUsersDialogItemBase*)it;
@@ -630,7 +630,7 @@ void KviRegisteredUsersDialog::editItem(KviRegisteredUsersDialogItem * i)
 		int count = m_pListView->topLevelItemCount();
 		for(int c=0;c<count;c++)
 		{
-			KviTalTreeWidgetItem * i = m_pListView->topLevelItem(c);
+			QTreeWidgetItem * i = m_pListView->topLevelItem(c);
 			QString szTmp = i->text(0);
 			if(KviQString::equalCI(szTmp,szName))
 			{

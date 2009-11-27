@@ -123,7 +123,7 @@ protected:
 
 	enum RunTimeFlags { BreakPending = 1, ContinuePending = 2, HaltCalled = 4, DisableReporting = 8 };
 	unsigned int                m_uRunTimeFlags;            // a combination of RunTimeFlags
-	
+
 	KviKvsExtendedRunTimeData * m_pExtendedData;            // shallow, may be 0
 
 	// error handling
@@ -158,7 +158,7 @@ public:
 
 	KviKvsVariant * returnValue()
 		{ return m_pReturnValue; };
-	
+
 	// this is the default error reporting location
 	// it is also used by rfc2812wrapper to find out the current command name!
 	KviKvsTreeNode * defaultReportLocation()
@@ -207,7 +207,7 @@ public:
 	// returns the old pointer
 	KviKvsVariant * swapReturnValuePointer(KviKvsVariant * pNewPointer);
 	// the old pointer MUST be reset!
-	
+
 	// this is called by the parser when a break is encountered
 	// the parser calls setBreakPending() and returns false
 	// the contexts that can handle a break should check breakPending()
@@ -242,7 +242,7 @@ public:
 		{ m_uRunTimeFlags |= HaltCalled; };
 	bool haltCalled()
 		{ return (m_uRunTimeFlags & HaltCalled); };
-	
+
 	// this is used by KviKvsScript to disable reporting when the Quiet flag is used
 	void disableReporting()
 		{ m_uRunTimeFlags |= DisableReporting; };

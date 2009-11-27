@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-17 22:38+0200\n"
+"POT-Creation-Date: 2009-11-20 23:15+0100\n"
 "PO-Revision-Date: 2006-01-15 22:32+0100\n"
 "Last-Translator: Jose Luis Sanchez <jsanchezv@teleline.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -15,8 +15,7 @@ msgstr ""
 "First-Translator: Juan José Álvarez Martínez <juanjux@yahoo.es>\n"
 "X-Generator: KBabel 1.11\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " bytes"
 
@@ -31,12 +30,11 @@ msgstr ""
 msgid " lines"
 msgstr " líneas"
 
-#: src/modules/options/optw_logging.cpp:51
+#: src/modules/options/optw_logging.cpp:50
 msgid " min"
 msgstr ""
 
-#: src/modules/options/optw_lag.cpp:45
-#: src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_connection.cpp:151
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
@@ -439,7 +437,7 @@ msgstr ""
 msgid "<center>Put here a brief description of the network.</center>"
 msgstr "<center>Ponga aquí una breve descripción de la red.</center>"
 
-#: src/modules/options/optw_logging.cpp:53
+#: src/modules/options/optw_logging.cpp:52
 msgid ""
 "<center>Save logs with the current interval<br>Set to 0 to disable this "
 "feature</center>"
@@ -1315,7 +1313,7 @@ msgstr ""
 #: src/modules/options/optw_dcc.cpp:190
 #, fuzzy
 msgid ""
-"<center>This option will cause succesfully terminated transfers to be "
+"<center>This option will cause successfully terminated transfers to be "
 "automatically removed from the transfer window.</center>"
 msgstr ""
 "<center>Esta opción hará que KVIrc se conecte a esta red al inicio</center>"
@@ -1591,30 +1589,18 @@ msgstr "Abortar"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Aceptar RESUME erroneo (mIRC archivo.ext)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:160
-msgid "Active Background"
-msgstr "Fondo Activo:"
-
 #: src/modules/options/optw_servers.cpp:1166
 #, fuzzy
 msgid "Active Configuration"
 msgstr "Guardar Configuración"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:205
+#: src/modules/options/optw_interfacelookglobal.cpp:183
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr "Primer Plano Activo de Alto Contraste (Primario)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:184
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Primer Plano Activo de Alto Contraste (Secundario)"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:162
-msgid "Active Text (Primary)"
-msgstr "Texto Activo (Primario)"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:163
-msgid "Active Text (Secondary)"
-msgstr "Texto Activo (Secundario)"
 
 #: src/modules/options/optw_connection.cpp:200
 #, fuzzy
@@ -1686,7 +1672,7 @@ msgstr "Alertar por palabras resaltadas"
 msgid "Alert for query messages"
 msgstr "Alertar por mensajes privados"
 
-#: src/modules/options/optw_messages.cpp:383
+#: src/modules/options/optw_messages.cpp:387
 msgid "Alert level:"
 msgstr "Nivel de alerta:"
 
@@ -1747,12 +1733,11 @@ msgstr "Añadir a la respuesta SOURCE:"
 msgid "Append to VERSION reply:"
 msgstr "Añadir a la respuesta VERSION:"
 
-#: src/modules/options/optw_logging.cpp:50
+#: src/modules/options/optw_logging.cpp:49
 msgid "Auto flush logs every"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Detectar automáticamente"
 
@@ -1765,8 +1750,7 @@ msgstr "Reconectar automáticamente"
 msgid "Automatically Log"
 msgstr "Grabar registro automáticamente"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Aceptar automáticamente"
@@ -1821,8 +1805,8 @@ msgstr "Nick de ausencia"
 msgid "Away:"
 msgstr "Ausente:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:182
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:180
 msgid "Background"
 msgstr "Fondo"
 
@@ -1831,8 +1815,8 @@ msgstr "Fondo"
 msgid "Background Colors"
 msgstr "Colores de Fondo"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:183
-#: src/modules/options/optw_interfacelookglobal.cpp:210
+#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:188
 msgid "Background Image"
 msgstr "Imagen de Fondo"
 
@@ -1858,7 +1842,7 @@ msgstr "Imagen de fondo"
 msgid "Background image:"
 msgstr "Imagen de fondo:"
 
-#: src/modules/options/optw_messages.cpp:358
+#: src/modules/options/optw_messages.cpp:362
 msgid "Background:"
 msgstr "Color de fondo:"
 
@@ -1907,8 +1891,7 @@ msgstr "Respuestas CTCP"
 msgid "Cache IP address"
 msgstr "Cachear dirección IP"
 
-#: src/modules/options/dialog.cpp:242
-#: src/modules/options/optw_identity.cpp:95
+#: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
 #: src/modules/options/optw_nickserv.cpp:128
@@ -1922,8 +1905,7 @@ msgstr "Cancelar"
 #: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
 #: src/modules/options/optw_userlist.cpp:144
@@ -1985,11 +1967,11 @@ msgstr "Opacidad de la ventana hija:"
 msgid "Choose Avatar - KVIrc"
 msgstr "Escoge Avatar - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:556
+#: src/modules/options/optw_messages.cpp:560
 msgid "Choose a Filename - KVIrc"
 msgstr "Escoja un nombre de archivo - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:609
+#: src/modules/options/optw_messages.cpp:613
 msgid "Choose a Filename - KVIrc "
 msgstr "Escoja un nombre de archivo - KVIrc"
 
@@ -2010,13 +1992,11 @@ msgstr "Limpiar Lista"
 msgid "Close in tray"
 msgstr "Minimizar en la bandeja"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Cerrar el diálogo, aceptando todos los cambios."
 
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Cerrar el diálogo, descartando todos los cambios."
 
@@ -2029,8 +2009,7 @@ msgid "Commit all changes immediately."
 msgstr "Grabar todos los cambios inmediatamente."
 
 #: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_notify.cpp:41 src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
 msgid "Configuration"
 msgstr "Configuración"
@@ -2428,7 +2407,7 @@ msgid "Flash window when users are going online"
 msgstr "Destelleo de la ventana cuando los usuarios vayan estando en línea"
 
 #: src/modules/options/optw_notifier.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_input.cpp:38
 #: src/modules/options/optw_topiclabel.cpp:36
 msgid "Font"
@@ -2463,7 +2442,7 @@ msgstr ""
 msgid "Foreground color"
 msgstr "Color de primer plano"
 
-#: src/modules/options/optw_messages.cpp:371
+#: src/modules/options/optw_messages.cpp:375
 msgid "Foreground:"
 msgstr "Color de primer plano:"
 
@@ -2501,7 +2480,7 @@ msgstr "Imaginar dirección desde el servidor IRC si no es rutable"
 msgid "Guess save path from media type"
 msgstr "Estimar ruta para guardar desde el tipo de medio"
 
-#: src/modules/options/optw_logging.cpp:46
+#: src/modules/options/optw_logging.cpp:56
 msgid "Gzip logs"
 msgstr "Comprimir logs con Gzip"
 
@@ -2655,25 +2634,13 @@ msgstr "Anchura de la imagen:"
 msgid "Import List"
 msgstr "Importar Lista"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:161
-msgid "Inactive Background"
-msgstr "Fondo Inactivo:"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:207
+#: src/modules/options/optw_interfacelookglobal.cpp:185
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr "Primer Plano Inactivo de Alto Contraste (Primario)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:208
+#: src/modules/options/optw_interfacelookglobal.cpp:186
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Primer Plano Inactivo de Alto Contraste (Secundario)"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:164
-msgid "Inactive Text (Primary)"
-msgstr "Texto Inactivo (Primario)"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:165
-msgid "Inactive Text (Secondary)"
-msgstr "Texto Inactivo (Secundario)"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
@@ -2785,7 +2752,7 @@ msgstr "Retraso hasta mostrar tooltip en los enlaces:"
 msgid "Listen on address/interface:"
 msgstr "Escuchar en la dirección/interfaz:"
 
-#: src/modules/options/optw_messages.cpp:408
+#: src/modules/options/optw_messages.cpp:412
 msgid "Load From..."
 msgstr "Cargar Desde..."
 
@@ -2803,11 +2770,11 @@ msgstr "&Localización:"
 msgid "Log joined channels history"
 msgstr "Lista de canales registrados:"
 
-#: src/modules/options/optw_messages.cpp:404
+#: src/modules/options/optw_messages.cpp:408
 msgid "Log this"
 msgstr "Registrar esto"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:181
 msgid "Low-Contrast Foreground"
 msgstr "Primer Plano de Bajo Contraste"
 
@@ -2895,7 +2862,7 @@ msgstr "Reproductor de Medios"
 msgid "Message Regexp"
 msgstr "Expresión Regular del Mensaje"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:182
 msgid "Mid-Contrast Foreground"
 msgstr "Primer Plano de Contraste Medio"
 
@@ -3214,8 +3181,7 @@ msgstr "Abrir Privado para"
 msgid "Open all minimized"
 msgstr "Abrir todas minimizadas"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Abrir minimizada cuando se acepte automáticamente"
 
@@ -3598,7 +3564,7 @@ msgstr "Derecha"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_messages.cpp:410
+#: src/modules/options/optw_messages.cpp:414
 msgid "Save As..."
 msgstr "Guardar Como.."
 
@@ -3606,6 +3572,11 @@ msgstr "Guardar Como.."
 #, fuzzy
 msgid "Save Location"
 msgstr "&Localización:"
+
+#: src/modules/options/optw_logging.cpp:46
+#, fuzzy
+msgid "Save logs to folder:"
+msgstr "No puedo grabar el registro al archivo %Q"
 
 #: src/modules/options/optw_mediatypes.cpp:112
 msgid "Save path:"
@@ -3861,12 +3832,12 @@ msgstr "Sistema de Sonido"
 msgid "Sound device:"
 msgstr "Dispositivo de sonido:"
 
-#: src/modules/options/optw_logging.cpp:49
+#: src/modules/options/optw_logging.cpp:48
 #, fuzzy
 msgid "Strip colors in logs"
 msgstr "Quitar colores"
 
-#: src/modules/options/optw_logging.cpp:48
+#: src/modules/options/optw_logging.cpp:47
 msgid "Strip message type numbers in logs"
 msgstr ""
 
@@ -3879,8 +3850,7 @@ msgstr "Usar protocolo SSL"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Prueba"
 
@@ -3921,7 +3891,7 @@ msgstr "¡El campo del nick no puede contener espacios!"
 
 #: src/modules/options/optw_identity.cpp:606
 msgid ""
-"The avatar you have choosen is bigger than 1024x768 pixels.<br>Such a big "
+"The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big "
 "image will not be seen on all the user monitors<br>and will probably be "
 "scaled by the remote clients with poor quality<br>algorithms to improve "
 "performance. You *should* scale it manually<br>to a sane size (like 800x600) "
@@ -4104,8 +4074,7 @@ msgstr ""
 #: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
 #: src/modules/options/optw_userlist.cpp:141
@@ -4150,7 +4119,7 @@ msgstr "Marcar la última línea de texto leída"
 msgid "Transparency blend image:"
 msgstr "Imagen de mezcla transparente:"
 
-#: src/modules/options/optw_messages.cpp:293
+#: src/modules/options/optw_messages.cpp:297
 msgid "Transparent"
 msgstr "Transparente"
 
@@ -4477,8 +4446,7 @@ msgstr "[PREFIJO]nick[!usuario@maquina][SUFIJO] mensaje"
 msgid "[Unknown Media Type]"
 msgstr "[Tipo de Medio Desconocido]"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bytes/seg"
 
@@ -4794,7 +4762,7 @@ msgstr "cada:"
 #~ msgstr "%c\r!s\r%s\r%c's el administrador es %Q"
 
 #, fuzzy
-#~ msgid "%c\r!s\r%s\r%c's contact adress is %s"
+#~ msgid "%c\r!s\r%s\r%c's contact address is %s"
 #~ msgstr "%c\r!s\r%s\r%c's dirección de contacto es %Q"
 
 #~ msgid "%c\r!s\r%s\r%c's information:"
@@ -5787,6 +5755,9 @@ msgstr "cada:"
 #~ msgid "Actions that will appear in the \"Tools\" menu"
 #~ msgstr "Acciones que aparecerán en el menú \"Herramientas\""
 
+#~ msgid "Active Background"
+#~ msgstr "Fondo Activo:"
+
 #~ msgid "Active Ban Exceptions"
 #~ msgstr "Excepciones a Prohibición Activas"
 
@@ -5795,6 +5766,12 @@ msgstr "cada:"
 
 #~ msgid "Active Invite Exceptions"
 #~ msgstr "Excepciones a Invitación Activas"
+
+#~ msgid "Active Text (Primary)"
+#~ msgstr "Texto Activo (Primario)"
+
+#~ msgid "Active Text (Secondary)"
+#~ msgstr "Texto Activo (Secundario)"
 
 #~ msgid "Acts as a separator for other items: performs no action"
 #~ msgstr ""
@@ -6327,9 +6304,6 @@ msgstr "cada:"
 
 #~ msgid "Can't kill the timer '%Q' since it is not running"
 #~ msgstr "No puedo parar el cronómetro '%Q' porque no está funcionando"
-
-#~ msgid "Can't log to file %Q"
-#~ msgstr "No puedo grabar el registro al archivo %Q"
 
 #~ msgid "Can't open file \"%s\" for writing"
 #~ msgstr "No puedo abrir el archivo \"%s\" en modo escritura"
@@ -7988,7 +7962,7 @@ msgstr "cada:"
 #~ msgstr "Si este server utiliza IPv6, intente /server -i %s"
 
 #~ msgid ""
-#~ "If you dont want to encrypt a particular text line then just start it "
+#~ "If you don't want to encrypt a particular text line then just start it "
 #~ "with the CTRL+P prefix"
 #~ msgstr ""
 #~ "Si no quieres cifrar una línea de texto en particular, comiénzala con el "
@@ -8043,6 +8017,15 @@ msgstr "cada:"
 
 #~ msgid "In progress..."
 #~ msgstr "En progreso..."
+
+#~ msgid "Inactive Background"
+#~ msgstr "Fondo Inactivo:"
+
+#~ msgid "Inactive Text (Primary)"
+#~ msgstr "Texto Inactivo (Primario)"
+
+#~ msgid "Inactive Text (Secondary)"
+#~ msgstr "Texto Inactivo (Secundario)"
 
 #, fuzzy
 #~ msgid "Include Existing Buffer"
@@ -10296,7 +10279,7 @@ msgstr "cada:"
 #~ msgid "Script registration failed"
 #~ msgstr "Falló el registro del script"
 
-#~ msgid "Script succesfully registered"
+#~ msgid "Script successfully registered"
 #~ msgstr "Script registrado satisfactoriamente"
 
 #~ msgid "Scripting"

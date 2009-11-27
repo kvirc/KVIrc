@@ -41,7 +41,7 @@ namespace KviKvsCoreFunctions
 			r->proc = KVI_PTR2MEMBER(KviKvsCoreFunctions::__routine); \
 			pKern->registerCoreFunctionExecRoutine(QString(__fncName),r); \
 		}
-		
+
 		// a_f
 		_REGFNC("active",active)
 		_REGFNC("array",array)
@@ -106,6 +106,7 @@ namespace KviKvsCoreFunctions
 		_REGFNC("r",r)
 		_REGFNC("rand",rand)
 		_REGFNC("real",real)
+		_REGFNC("realname",realname)
 		_REGFNC("receivedBytes",receivedBytes)
 		_REGFNC("rsort",rsort)
 		// s_z
@@ -138,12 +139,17 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(strayAt)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setString(g_szStaticStrayConstantAt);
 		return true;
 	}
-	
+
 	KVSCF(mightBeStrayAtOrThis)
 	{
+		Q_UNUSED(__pParams);
+
 		KviKvsObject * o = KVSCF_pContext->thisObject();
 		if(o)
 		{

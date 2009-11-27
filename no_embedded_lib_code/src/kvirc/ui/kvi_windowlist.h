@@ -81,6 +81,7 @@ public:
 protected:
 	KviFrame * m_pFrm;
 	QTimer   * m_pActivityMeterTimer;
+	Qt::DockWidgetArea currentArea;
 public:
 	virtual KviWindowListItem * addItem(KviWindow *){ return 0; };
 	virtual bool removeItem(KviWindowListItem *){ return false; };
@@ -96,8 +97,10 @@ public:
 	virtual void applyOptions(){};
 	virtual void wheelEvent(QWheelEvent *e);
 	static void getTextForConsole(QString &szText,KviConsole * pConsole);
+	Qt::DockWidgetArea currentDockArea() { return currentArea; };
 protected slots:
 	virtual void updateActivityMeter();
+	void updateDockLocation(Qt::DockWidgetArea newArea);
 };
 
 //

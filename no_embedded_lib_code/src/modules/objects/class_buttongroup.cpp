@@ -5,7 +5,7 @@
 //   by Tonino Imbesi(Grifisx) and Alessandro Carbone(Noldor)
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2005 Alessandro Carbone (elfonol at gmail dot com)
+//   Copyright (C) 2009 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -48,8 +48,8 @@
 	@description:
 		This object organizes buttons in a group.
 	@functions:
-		!fn: $addButton(<checkbutton or radiobutton:object>)
-		Adds the given button to the button group.
+                !fn: <id:integer> $addButton(<checkbutton or radiobutton:object>)
+                Adds the given button to the button group and returns an unique identifier.
 		!fn: <object> $checkedButton()
 		Returns the button group's checked button, or 0 if no buttons are checked.
 */
@@ -57,7 +57,6 @@
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_buttongroup,"buttongroup","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_buttongroup,addButton)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_buttongroup,checkedButton)
-
 KVSO_END_REGISTERCLASS(KviKvsObject_buttongroup)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_buttongroup,KviKvsObject)

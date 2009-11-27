@@ -38,7 +38,6 @@
 #include "kvi_ircconnection.h"
 #include "kvi_tal_hbox.h"
 
-#include <QSplitter>
 #include <QToolTip>
 #include <QLabel>
 #include <QMouseEvent>
@@ -51,7 +50,7 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 {
 	g_pLinksWindowList->append(this);
 
-	m_pTopSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pTopSplitter->setObjectName("top_splitter");
 
 	// The button box on the left
@@ -71,10 +70,10 @@ KviLinksWindow::KviLinksWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 	connect(lpConsole->context(),SIGNAL(stateChanged()),
 		this,SLOT(connectionStateChange()));
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("splitter");
 
-	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("vsplitter");
 
 	m_pListView  = new KviLinksListView(m_pVertSplitter);
@@ -185,8 +184,8 @@ void KviLinksWindow::endOfLinks()
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Received end of links."));
 	outputNoFmt(KVI_OUT_SYSTEMMESSAGE,"======================");
 
-	KviTalTreeWidgetItem * it   = 0;
-	KviTalTreeWidgetItem * root = 0;
+	QTreeWidgetItem * it   = 0;
+	QTreeWidgetItem * root = 0;
 
 	int totalHosts  = 0;
 	int totalHops   = 0;
@@ -206,7 +205,7 @@ void KviLinksWindow::endOfLinks()
 		totalHosts++;
 		if(l->hops == 0)
 		{
-			root = new KviTalTreeWidgetItem(m_pListView);
+			root = new QTreeWidgetItem(m_pListView);
 			root->setText(0,QString(l->host.ptr()));
 			root->setText(1,QString("0"));
 			root->setText(2,QString(l->description.ptr()));
@@ -237,19 +236,19 @@ void KviLinksWindow::endOfLinks()
 				KviStr tmp2(KviStr::Format,"%d",l->hops);
 				if(root)
 				{
-					it = new KviTalTreeWidgetItem(root);
+					it = new QTreeWidgetItem(root);
 					it->setText(0,QString(l->host.ptr()));
 					it->setText(1,QString(tmp2.ptr()));
 					it->setText(2,tmp);
 				} else {
 					outputNoFmt(KVI_OUT_SYSTEMERROR,__tr2qs("Warning: No root link was sent by the server, the stats may be invalid."));
-					it = new KviTalTreeWidgetItem(m_pListView);
+					it = new QTreeWidgetItem(m_pListView);
 					it->setText(0,QString(l->host.ptr()));
 					it->setText(1,QString(tmp2.ptr()));
 					it->setText(2,tmp);
 				}
 			} else {
-				it = (KviTalTreeWidgetItem*) it->parent();
+				it = (QTreeWidgetItem*) it->parent();
 				if(it)
 				{
 					int links = it->childCount() + 1;
@@ -311,17 +310,17 @@ void KviLinksWindow::endOfLinks()
 	m_pListView->repaint();
 }
 
-KviTalTreeWidgetItem * KviLinksWindow::insertLink(KviLink *l)
+QTreeWidgetItem * KviLinksWindow::insertLink(KviLink *l)
 {
 	__range_valid(l->hops > 0);
-	KviTalTreeWidgetItem * i = getItemByHost(l->parent.ptr(),0);
-	KviTalTreeWidgetItem * it = 0;
+	QTreeWidgetItem * i = getItemByHost(l->parent.ptr(),0);
+	QTreeWidgetItem * it = 0;
 	if(!i)
 	{
 		return 0;
 	} else {
 		KviStr hops(KviStr::Format,"%d",l->hops);
-		it = new KviTalTreeWidgetItem(i);
+		it = new QTreeWidgetItem(i);
 		it->setText(0,QString(l->host.ptr()));
 		it->setText(1,QString(hops.ptr()));
 		it->setText(2,QString(l->description.ptr()));
@@ -330,7 +329,7 @@ KviTalTreeWidgetItem * KviLinksWindow::insertLink(KviLink *l)
 	return it;
 }
 
-KviTalTreeWidgetItem * KviLinksWindow::getItemByHost(const char *host,KviTalTreeWidgetItem * par)
+QTreeWidgetItem * KviLinksWindow::getItemByHost(const char *host,QTreeWidgetItem * par)
 {
 	KviStr tmp;
 	if(par)
@@ -339,7 +338,7 @@ KviTalTreeWidgetItem * KviLinksWindow::getItemByHost(const char *host,KviTalTree
 		{
 			tmp = par->child(i)->text(0);
 			if(kvi_strEqualCI(tmp.ptr(),host))return par->child(i);
-			KviTalTreeWidgetItem * ch = getItemByHost(host,par->child(i));
+			QTreeWidgetItem * ch = getItemByHost(host,par->child(i));
 			if(ch)return ch;
 		}
 	} else {
@@ -347,7 +346,7 @@ KviTalTreeWidgetItem * KviLinksWindow::getItemByHost(const char *host,KviTalTree
 		{
 			tmp = m_pListView->topLevelItem(i)->text(0);
 			if(kvi_strEqualCI(tmp.ptr(),host))return m_pListView->topLevelItem(i);
-			KviTalTreeWidgetItem * ch = getItemByHost(host,m_pListView->topLevelItem(i));
+			QTreeWidgetItem * ch = getItemByHost(host,m_pListView->topLevelItem(i));
 			if(ch)return ch;
 		}
 	}
@@ -463,7 +462,7 @@ void KviLinksWindow::applyOptions()
 }
 
 KviLinksListView::KviLinksListView(QWidget * par)
-: KviTalTreeWidget(par)
+: QTreeWidget(par)
 {
 	header()->setSortIndicatorShown(true);
 	setColumnCount(3);

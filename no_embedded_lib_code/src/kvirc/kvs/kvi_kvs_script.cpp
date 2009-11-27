@@ -315,7 +315,7 @@ int KviKvsScript::execute(KviWindow * pWnd, KviKvsVariantList * pParams, KviKvsV
 			delete pParams;
 
 		// this is intended for developers only
-		pWnd->outputNoFmt(KVI_OUT_PARSERERROR,"[developer error]: you must succesfully call KviKvsScript::parse() before KviKvsScript::execute()");
+		pWnd->outputNoFmt(KVI_OUT_PARSERERROR,"[developer error]: you must successfully call KviKvsScript::parse() before KviKvsScript::execute()");
 		return Error;
 	}
 

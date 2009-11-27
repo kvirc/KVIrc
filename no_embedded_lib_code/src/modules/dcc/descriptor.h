@@ -45,10 +45,10 @@ protected:
 
 	unsigned int         m_uId; // this dcc session ID
 	QString              m_szId;
-	
+
 	KviDccWindow       * m_pDccWindow;   // 0 if it has no window
 	KviDccFileTransfer * m_pDccTransfer; // 0 if it is not a transfer
-	
+
 	bool                 m_bCreationEventTriggered;
 public:
 	// A console that this DCC is bound to (might be replaced while we wait for user acknowledge in dialogs)
@@ -57,7 +57,7 @@ public:
 
 	KviDccWindow * window() const { return m_pDccWindow; };
 	void setWindow(KviDccWindow * w){ m_pDccWindow = w; };
-	
+
 	KviDccFileTransfer * transfer() const { return m_pDccTransfer; };
 	void setTransfer(KviDccFileTransfer * t){ m_pDccTransfer = t; };
 
@@ -78,7 +78,7 @@ public:
 	// Generic parameters
 	QString         szType;            // DCC protocol : CHAT , SCHAT , SEND , TSSEND....
 
-	bool           bActive;           // active or passive connection ?
+	bool            bActive;           // active or passive connection ?
 
 	QString         szNick;            // remote user nickname
 	QString         szUser;            // remote user name (unknown for passive dcc)
@@ -94,21 +94,21 @@ public:
 	QString         szListenIp;        // passive only : ip to listen on
 	QString         szListenPort;      // passive only : port to listen on
 
-	bool           bSendRequest;      // passive only : true if we have to send the CTCP request
+	bool            bSendRequest;      // passive only : true if we have to send the CTCP request
 
 	QString         szFakeIp;          // passive only : fake ip to send in the CTCP
 	QString         szFakePort;        // passive only : fake port to send in the CTCP
 
-	bool           bDoTimeout;        // the marshall has to setup a timeout ?
+	bool            bDoTimeout;        // the marshall has to setup a timeout ?
 
-	bool           bIsTdcc;           // is this a TDCC ?
+	bool            bIsTdcc;           // is this a TDCC ?
 
-	bool           bOverrideMinimize; // Override the default minimize option ?
-	bool           bShowMinimized;    // Show minimized ? (valid if bOverrideMinimize is true)
+	bool            bOverrideMinimize; // Override the default minimize option ?
+	bool            bShowMinimized;    // Show minimized ? (valid if bOverrideMinimize is true)
 
-	bool           bAutoAccept;       // Auto accepted dcc send/chat ?
+	bool            bAutoAccept;       // Auto accepted dcc send/chat ?
 #ifdef COMPILE_SSL_SUPPORT
-	bool           bIsSSL;            // do we have to use SSL ?
+	bool            bIsSSL;            // do we have to use SSL ?
 #endif
 	// Specific parameters
 
@@ -120,15 +120,15 @@ public:
 	QString         szLocalFileName;   // RECVFILE: save file name selected, SENDFILE: file to send
 	QString         szLocalFileSize;   // RECVFILE: local file size (to resume), SENDFILE: file to send size
 
-	bool           bRecvFile;         // do we have to RECEIVE the file or SEND it ?
-	bool           bResume;           // do we want to resume ?
-	bool           bNoAcks;           // blind dcc send ? (do not receive nor send acknowledges)
+	bool            bRecvFile;         // do we have to RECEIVE the file or SEND it ?
+	bool            bResume;           // do we want to resume ?
+	bool            bNoAcks;           // blind dcc send ? (do not receive nor send acknowledges)
 
-	bool           bIsIncomingAvatar; // It is an Incoming Avatar DCC SEND ?
+	bool            bIsIncomingAvatar; // It is an Incoming Avatar DCC SEND ?
 
 	// DCC VOICE
-	KviStr         szCodec;           // codec name
-	int            iSampleRate;       // Sample rate
+	KviStr          szCodec;           // codec name
+	int             iSampleRate;       // Sample rate
 public:
 	QString protocol(){ return szType; };
 	bool isActive(){ return bActive; };

@@ -26,7 +26,7 @@
 //=============================================================================
 
 #include "kvi_optionswidget.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QDialog>
 #include <QButtonGroup>
@@ -50,11 +50,11 @@ class KviNetworkData;
 class KviMexServerImport;
 
 
-class KviServerOptionsTreeWidgetItem : public KviTalTreeWidgetItem
+class KviServerOptionsTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviServerOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,const KviNetwork *n);
-	KviServerOptionsTreeWidgetItem(KviTalTreeWidgetItem *parent,const QPixmap &pm,const KviServer *s);
+	KviServerOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,const KviNetwork *n);
+	KviServerOptionsTreeWidgetItem(QTreeWidgetItem *parent,const QPixmap &pm,const KviServer *s);
 	~KviServerOptionsTreeWidgetItem();
 public:
 	KviServer * m_pServerData;
@@ -85,7 +85,7 @@ protected:
 
 	QCheckBox             * m_pAutoConnectCheck;
 
-	KviTalTreeWidget        * m_pNickServTreeWidget;
+	QTreeWidget        * m_pNickServTreeWidget;
 	QCheckBox             * m_pNickServCheck;
 	QPushButton           * m_pAddRuleButton;
 	QPushButton           * m_pDelRuleButton;
@@ -160,7 +160,7 @@ public:
 	KviServerOptionsWidget(QWidget * parent);
 	~KviServerOptionsWidget();
 protected:
-	KviTalTreeWidget                    * m_pTreeWidget;
+	QTreeWidget                    * m_pTreeWidget;
 	QLabel                       * m_pSrvNetLabel;
 	QLineEdit                    * m_pSrvNetEdit;
 	//QLabel                       * m_pPortLabel;

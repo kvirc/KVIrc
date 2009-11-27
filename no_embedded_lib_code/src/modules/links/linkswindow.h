@@ -30,7 +30,7 @@
 #include "kvi_sparser.h"
 #include "kvi_console.h"
 #include "kvi_irccontext.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 #include "kvi_tal_popupmenu.h"
 
 #include <QToolButton>
@@ -46,7 +46,7 @@ typedef struct _KviLink
 	KviStr description;
 } KviLink;
 
-class KviLinksListView : public KviTalTreeWidget
+class KviLinksListView : public QTreeWidget
 {
 	Q_OBJECT
 public:
@@ -93,8 +93,8 @@ public:
 private:
 	void reset();
 	void endOfLinks();
-	KviTalTreeWidgetItem * insertLink(KviLink * l);
-	KviTalTreeWidgetItem * getItemByHost(const char *host,KviTalTreeWidgetItem * par);
+	QTreeWidgetItem * insertLink(KviLink * l);
+	QTreeWidgetItem * getItemByHost(const char *host,QTreeWidgetItem * par);
 };
 
 #endif //_KVI_LINKSWINDOW_H_

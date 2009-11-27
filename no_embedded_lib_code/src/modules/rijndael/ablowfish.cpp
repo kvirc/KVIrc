@@ -311,8 +311,8 @@ BlowFish::BlowFish(unsigned char* ucKey, unsigned int keysize, const SBlock& roC
 	if(keysize<1)
 	//	throw exception("Incorrect key length");
 	    return;
-	
-	
+
+
 	//Check the Key - the key length should be between 1 and 56 bytes
 	if(keysize>56)
 		keysize = 56;
@@ -338,7 +338,7 @@ BlowFish::BlowFish(unsigned char* ucKey, unsigned int keysize, const SBlock& roC
 			iCount++;
 			if(iCount == ((int)keysize))
 			{
-				//All bytes used, so recycle bytes 
+				//All bytes used, so recycle bytes
 				iCount = 0;
 				p = aucLocalKey;
 			}

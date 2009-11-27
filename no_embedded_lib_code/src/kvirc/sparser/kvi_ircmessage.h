@@ -79,9 +79,9 @@ public:
 	int                paramCount(){ return m_pParams->count(); };
 
 	const char       * param(unsigned int idx){ return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : 0; };
-	
+
 	const char       * safeParam(unsigned int idx){ return (idx < m_pParams->count()) ? m_pParams->at(idx)->ptr() : KviStr::emptyString().ptr(); };
-	
+
 	KviStr           * paramString(unsigned int idx){ return m_pParams->at(idx); };
 
 	const char       * trailing(){ KviStr * tr = m_pParams->last(); return tr ? tr->ptr() : 0; };
@@ -98,7 +98,7 @@ public:
 	bool               haltOutput(){ return (m_iFlags & KVI_IRCMSG_FLAG_HALTOUTPUT); };
 	void               setUnrecognized(){ m_iFlags |= KVI_IRCMSG_FLAG_UNRECOGNIZED; };
 	bool               unrecognized(){ return (m_iFlags & KVI_IRCMSG_FLAG_UNRECOGNIZED); };
-	
+
 	void decodeAndSplitPrefix(QString &szNick,QString &szUser,QString &szHost);
 	void decodeAndSplitMask(char * mask,QString &szNick,QString &szUser,QString &szHost);
 };

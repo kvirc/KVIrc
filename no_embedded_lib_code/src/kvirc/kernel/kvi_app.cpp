@@ -130,7 +130,7 @@ KVIRC_API KviProxyDataBase              * g_pProxyDataBase              = 0;
 
 // Global windows
 KVIRC_API KviColorWindow                * g_pColorWindow                = 0;
-KVIRC_API KviTextIconWindowWidget       * g_pTextIconWindow             = 0;
+KVIRC_API KviTextIconWindow             * g_pTextIconWindow             = 0;
 KVIRC_API KviTalPopupMenu               * g_pInputPopup                 = 0;
 KVIRC_API QStringList                   * g_pRecentTopicList            = 0;
 KVIRC_API KviPointerHashTable<QString,KviWindow>  * g_pGlobalWindowDict = 0;
@@ -1850,13 +1850,14 @@ void KviApp::heartbeat(kvi_time_t tNow)
 		KVI_OPTION_UINT(KviOption_uintTotalConnectionTime)++;
 	}
 
-	if (pTm && !pTm->tm_hour && !pTm->tm_min && !pTm->tm_sec) {
+	if (pTm && !pTm->tm_hour && !pTm->tm_min && !pTm->tm_sec)
+	{
 		KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
-			while(it.current()) {
-				if (it.current()->view() && it.current()->view()->isLogging())
-					it.current()->view()->startLogging(0);
-				++it;
-			}
+		while(it.current()) {
+			if (it.current()->view() && it.current()->view()->isLogging())
+				it.current()->view()->startLogging(0);
+			++it;
+		}
 	}
 }
 

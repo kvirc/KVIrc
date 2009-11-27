@@ -28,31 +28,31 @@
 	#include "kvi_string.h"
 	#include "kvi_locale.h"
 	#include "kvi_tal_popupmenu.h"
-	
+
 	#include <QCursor>
 	#include <QPainter>
 	#include <QTextDocument>
 	#include <QLineEdit>
 	#include <QComboBox>
 	#include <QValidator>
-	
+
 	#include <math.h>
 	#include <stdlib.h>
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasRectangleItem
 	//
-	
+
 	KviCanvasRectangleItem::KviCanvasRectangleItem(QCanvas * c,int x,int y,int w,int h)
 	: QCanvasRectangle(x,y,w,h,c)
 	{
 	}
-	
+
 	KviCanvasRectangleItem::~KviCanvasRectangleItem()
 	{
 	}
-	
+
 	void KviCanvasRectangleItem::drawSelection(QPainter &p)
 	{
 		p.setRasterOp(NotROP);
@@ -61,7 +61,7 @@
 		p.drawRect((int)x(),(int)y(),width(),height());
 		p.setRasterOp(CopyROP);
 	}
-	
+
 	void KviCanvasRectangleItem::setProperty(const QString &property,const QVariant &val)
 	{
 		if(m_properties[property].isValid())
@@ -71,8 +71,8 @@
 			show();
 		}
 	}
-	
-	
+
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasPolygon
@@ -82,34 +82,34 @@
 	{
 		m_properties.insert("clrForeground",QVariant(QColor(0,0,0)));
 		m_properties.insert("uLineWidth",QVariant((unsigned int)0));
-	
+
 		m_properties.insert("clrBackground",QVariant(QColor(0,0,0)));
 		m_properties.insert("bHasBackground",QVariant(false,1));
-	
+
 		m_dScaleFactor = dScaleFactor;
 		m_points = pnts;
-	
+
 		resetPoints();
 		move(x,y);
 	}
-	
+
 	KviCanvasPolygon::~KviCanvasPolygon()
 	{
 	}
-	
+
 	void KviCanvasPolygon::setScaleFactor(double dScaleFactor)
 	{
 		m_dScaleFactor = dScaleFactor;
 		resetPoints();
 	}
-	
+
 	void KviCanvasPolygon::setInternalPoints(const QPointArray &pnts)
 	{
 		m_points = pnts;
 		resetPoints();
-		
+
 	}
-	
+
 	void KviCanvasPolygon::resetPoints()
 	{
 		QPointArray scaled(m_points.size());
@@ -124,12 +124,12 @@
 		}
 		setPoints(scaled);
 	}
-	
+
 	int KviCanvasPolygon::rtti() const
 	{
 		return KVI_CANVAS_RTTI_POLYGON;
 	}
-	
+
 	void KviCanvasPolygon::setProperty(const QString &property,const QVariant &val)
 	{
 		if(m_properties[property].isValid())
@@ -149,7 +149,7 @@
 			}
 		}
 	}
-	
+
 	void KviCanvasPolygon::draw(QPainter &p)
 	{
 		if(isEnabled())
@@ -158,7 +158,7 @@
 			p.setPen(pen());
 			p.drawPolygon(areaPoints());
 		}
-	
+
 		if(isSelected())
 		{
 			p.setRasterOp(NotROP);
@@ -173,29 +173,29 @@
 			canvas()->setChanged(QRect((int)(x() - dVal),(int)(y() - dVal),(int)(dVal * 4),(int)(dVal * 4)));
 		}
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasEllipticItem
 	//
-	
+
 	KviCanvasEllipticItem::KviCanvasEllipticItem(QCanvas * c,int x,int y,int w,int h)
 	: KviCanvasRectangleItem(c,x,y,w,h)
 	{
 		m_properties.insert("clrForeground",QVariant(QColor(0,0,0)));
 		m_properties.insert("uLineWidth",QVariant((unsigned int)0));
-	
+
 		m_properties.insert("clrBackground",QVariant(QColor(0,0,0)));
 		m_properties.insert("bHasBackground",QVariant(false,1));
-	
+
 	//	m_properties.insert("iStartAngle",QVariant(0));
 	//	m_properties.insert("iEndAngle",QVariant(360));
 	}
-	
+
 	KviCanvasEllipticItem::~KviCanvasEllipticItem()
 	{
 	}
-	
+
 	void KviCanvasEllipticItem::draw(QPainter &p)
 	{
 		if(isEnabled())
@@ -207,14 +207,14 @@
 			drawContent(p);
 			p.setBrush(b);
 		}
-	
+
 		if(isSelected())drawSelection(p);
 	}
-	
+
 	void KviCanvasEllipticItem::drawContent(QPainter &p)
 	{
 	}
-	
+
 	void KviCanvasEllipticItem::setProperty(const QString & property,const QVariant &val)
 	{
 		if(m_properties[property].isValid())
@@ -228,68 +228,68 @@
 			}
 		}
 	}
-	
+
 	int KviCanvasEllipticItem::rtti() const
 	{
 		return KVI_CANVAS_RTTI_ELLIPSE;
 	}
-	
-	
+
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasEllipse
 	//
-	
-	
+
+
 	KviCanvasEllipse::KviCanvasEllipse(QCanvas * c,int x,int y,int w,int h)
 	: KviCanvasEllipticItem(c,x,y,w,h)
 	{
 	}
-	
+
 	KviCanvasEllipse::~KviCanvasEllipse()
 	{
 	}
-	
+
 	int KviCanvasEllipse::rtti() const
 	{
 		return KVI_CANVAS_RTTI_ELLIPSE;
 	}
-	
+
 	void KviCanvasEllipse::drawContent(QPainter &p)
 	{
 		p.drawEllipse((int)x(),(int)y(),width(),height());
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasPie
 	//
-	
-	
+
+
 	KviCanvasPie::KviCanvasPie(QCanvas * c,int x,int y,int w,int h)
 	: KviCanvasEllipticItem(c,x,y,w,h)
 	{
 		m_properties.insert("iStartAngle",QVariant((int)0));
 		m_properties.insert("iExtensionAngle",QVariant((int)360));
 	}
-	
+
 	KviCanvasPie::~KviCanvasPie()
 	{
 	}
-	
+
 	int KviCanvasPie::rtti() const
 	{
 		return KVI_CANVAS_RTTI_PIE;
 	}
-	
+
 	void KviCanvasPie::drawContent(QPainter &p)
 	{
 		int iStartAngle = m_properties["iStartAngle"].asInt() * 16;
 		int iEndAngle = m_properties["iExtensionAngle"].asInt() * 16;
 		p.drawPie((int)x(),(int)y(),width(),height(),iStartAngle,iEndAngle);
 	}
-	
-	
+
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasChord
@@ -300,23 +300,23 @@
 		m_properties.insert("iStartAngle",QVariant((int)0));
 		m_properties.insert("iExtensionAngle",QVariant((int)360));
 	}
-	
+
 	KviCanvasChord::~KviCanvasChord()
 	{
 	}
-	
+
 	int KviCanvasChord::rtti() const
 	{
 		return KVI_CANVAS_RTTI_CHORD;
 	}
-	
+
 	void KviCanvasChord::drawContent(QPainter &p)
 	{
 		int iStartAngle = m_properties["iStartAngle"].asInt() * 16;
 		int iEndAngle = m_properties["iExtensionAngle"].asInt() * 16;
 		p.drawChord((int)x(),(int)y(),width(),height(),iStartAngle,iEndAngle);
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasRectangle
@@ -326,20 +326,20 @@
 	{
 		m_properties.insert("clrForeground",QVariant(QColor(0,0,0)));
 		m_properties.insert("uLineWidth",QVariant((unsigned int)0));
-	
+
 		m_properties.insert("clrBackground",QVariant(QColor(0,0,0)));
 		m_properties.insert("bHasBackground",QVariant(false,1));
 	}
-	
+
 	KviCanvasRectangle::~KviCanvasRectangle()
 	{
 	}
-	
+
 	int KviCanvasRectangle::rtti() const
 	{
 		return KVI_CANVAS_RTTI_RECTANGLE;
 	}
-	
+
 	void KviCanvasRectangle::setProperty(const QString &property,const QVariant &val)
 	{
 		if(m_properties[property].isValid())
@@ -353,7 +353,7 @@
 			}
 		}
 	}
-	
+
 	void KviCanvasRectangle::draw(QPainter & p)
 	{
 		if(isEnabled())
@@ -365,10 +365,10 @@
 			p.setPen(pen());
 			p.drawRect((int)x(),(int)y(),width(),height());
 		}
-	
+
 		if(isSelected())drawSelection(p);
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasRichText
@@ -382,16 +382,16 @@
 		m_properties.insert("szText",QVariant(QString("<center>Insert here your <font color=\"#FF0000\"><b>RICH TEXT</b></font></center>")));
 		m_properties.insert("fntDefault",QVariant(f));
 	}
-	
+
 	KviCanvasRichText::~KviCanvasRichText()
 	{
 	}
-	
+
 	int KviCanvasRichText::rtti() const
 	{
 		return KVI_CANVAS_RTTI_RICHTEXT;
 	}
-	
+
 	void KviCanvasRichText::draw(QPainter & p)
 	{
 		if(isEnabled())
@@ -401,11 +401,11 @@
 			text.setWidth(width());
 			text.draw(&p,(int)x() + 1,(int)y() + 1,QRegion(QRect((int)x() + 1,(int)y() + 1,width(),height())),QColorGroup());
 		}
-	
+
 		if(isSelected())drawSelection(p);
 	}
-	
-	
+
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasLine
@@ -417,11 +417,11 @@
 		m_properties.insert("uLineWidth",QVariant((unsigned int)0));
 		m_properties.insert("clrForeground",QVariant(QColor()));
 	}
-	
+
 	KviCanvasLine::~KviCanvasLine()
 	{
 	}
-	
+
 	void KviCanvasLine::setProperty(const QString &property,const QVariant &val)
 	{
 		m_properties.replace(property,val);
@@ -430,12 +430,12 @@
 			setPen(QPen(m_properties["clrForeground"].asColor(),m_properties["uLineWidth"].toInt()));
 		}
 	}
-	
+
 	int KviCanvasLine::rtti() const
 	{
 		return KVI_CANVAS_RTTI_LINE;
 	}
-	
+
 	void KviCanvasLine::draw(QPainter &p)
 	{
 		if(isEnabled())
@@ -443,7 +443,7 @@
 			p.setPen(pen());
 			p.drawLine(startPoint(),endPoint());
 		}
-	
+
 		if(isSelected())
 		{
 			p.setRasterOp(NotROP);
@@ -452,7 +452,7 @@
 			p.setRasterOp(CopyROP);
 		}
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasView
@@ -466,85 +466,85 @@
 		m_pSelectedItem = 0;
 		viewport()->setMouseTracking(true);
 	}
-	
+
 	KviCanvasView::~KviCanvasView()
 	{
 	}
-	
+
 	void KviCanvasView::insertRectangle()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = Rectangle;
 	}
-	
+
 	void KviCanvasView::insertRichText()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = RichText;
 	}
-	
+
 	void KviCanvasView::insertLine()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = Line;
 	}
-	
+
 	void KviCanvasView::insertEllipse()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = Ellipse;
 	}
-	
+
 	void KviCanvasView::insertPie()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = Pie;
 	}
-	
+
 	void KviCanvasView::insertChord()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = Chord;
 	}
-	
+
 	void KviCanvasView::insertPolygonTriangle()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = PolygonTriangle;
 	}
-	
+
 	void KviCanvasView::insertPolygonRectangle()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = PolygonRectangle;
 	}
-	
+
 	void KviCanvasView::insertPolygonPentagon()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = PolygonPentagon;
 	}
-	
+
 	void KviCanvasView::insertPolygonHexagon()
 	{
 		m_state = SelectOrigin;
 		setCursor(crossCursor);
 		m_objectToInsert = PolygonPentagon;
 	}
-	
+
 	#ifndef M_PI
 		#define M_PI 3.14159265358979323846
 	#endif
-	
+
 	static void calcPolygonPoints(QPointArray &pnts,unsigned int nVertices)
 	{
 		double dDelta = (2 * M_PI) / nVertices;
@@ -556,11 +556,11 @@
 			pnts.setPoint(i,(int)theX,(int)theY);
 		}
 	}
-	
+
 	void KviCanvasView::insertObjectAt(const QPoint & pnt,ObjectType o)
 	{
 		QCanvasItem * r = 0;
-	
+
 		switch(o)
 		{
 			case Rectangle:
@@ -615,14 +615,14 @@
 			}
 			break;
 		}
-	
+
 		if(r)
 		{
 			setItemSelected(r);
 			r->setEnabled(true);
 			r->show();
 		}
-	
+
 		switch(KVI_CANVAS_RTTI_CONTROL_TYPE(r))
 		{
 			case KVI_CANVAS_RTTI_CONTROL_TYPE_RECTANGLE:
@@ -635,19 +635,19 @@
 	//			beginDragPolygon((KviCanvasPolygon *)r,pnt,true);
 	//		break;
 		}
-	
+
 	//	canvas()->update();
 	}
-	
+
 	void KviCanvasView::setItemSelected(QCanvasItem * it)
 	{
 		clearSelection();
 		it->setSelected(true);
 		m_pSelectedItem = it;
 		m_pCanvasWidget->m_pPropertiesWidget->editItem(it);
-	
+
 	}
-	
+
 	void KviCanvasView::clearSelection()
 	{
 		if(!m_pSelectedItem)return;
@@ -655,27 +655,27 @@
 		m_pSelectedItem = 0;
 		m_pCanvasWidget->m_pPropertiesWidget->editItem(0);
 	}
-	
+
 	void KviCanvasView::beginDragLine(KviCanvasLine * it,const QPoint &p,bool bInitial)
 	{
 		QPoint sp = it->startPoint();
-	
+
 		m_dragBegin = p - sp;
-	
+
 		if(bInitial)
 		{
 			m_dragMode = Bottom;
 			setCursor(sizeAllCursor);
 			return;
 		}
-	
+
 		if((abs(p.x() - sp.x()) < 3) && (abs(p.y() - sp.y()) < 3))
 		{
 			m_dragMode = Top;
 			setCursor(sizeAllCursor);
 			return;
 		}
-	
+
 		sp = it->endPoint();
 		if((abs(p.x() - sp.x()) < 3) && (abs(p.y() - sp.y()) < 3))
 		{
@@ -683,11 +683,11 @@
 			setCursor(sizeAllCursor);
 			return;
 		}
-	
+
 		m_dragMode = All;
 		setCursor(pointingHandCursor);
 	}
-	
+
 	void KviCanvasView::dragLine(KviCanvasLine * it,const QPoint &p)
 	{
 		switch(m_dragMode)
@@ -716,7 +716,7 @@
 		}
 		canvas()->update();
 	}
-	
+
 	static double ssm_2d_rotationAngleFromXAxis(double dx,double dy)
 	{
 		//
@@ -724,24 +724,24 @@
 		//acos(---------) = acos(-----------------) = acos(---------)
 		//     |v1||v2|            |(dx,dy)| * 1           |(dx,dy)|
 		//
-	
+
 		//double dVal = hypot(dx,dy);
 		double dVal = sqrt((dx * dx) + (dy * dy));
-	
+
 		if(dVal == 0.0)return 0; // ???
-	
+
 		dVal = acos(dx / dVal);
-	
+
 		return (dy > 0.0) ? dVal : -dVal;
 	}
-	
+
 	static double ssm_2d_rotationAngle(double drefx,double drefy,double drotatedx,double drotatedy)
 	{
 		double dRefAngle = ssm_2d_rotationAngleFromXAxis(drefx,drefy);
 		double dRotAngle = ssm_2d_rotationAngleFromXAxis(drotatedx,drotatedy);
 		return dRotAngle - dRefAngle;
 	}
-	
+
 	static void ssm_2d_rotate(double &dx,double &dy,double dAngle)
 	{
 		// Rotation matrix:
@@ -749,28 +749,28 @@
 		// | cos(x)    sin(x) |
 		// |                  |
 		// | -sin(x)   cos(x) |
-	
+
 		double s = sin(dAngle);
 		double c = cos(dAngle);
-	
+
 		double tmpX = (dx * c) - (dy * s);
 		double tmpY = (dx * s) + (dy * c);
-	
+
 		dx = tmpX;
 		dy = tmpY;
 	}
-	
+
 	static double ssm_hypot(double a,double b)
 	{
 		return sqrt((a * a) + (b * b));
 	}
-	
+
 	void KviCanvasView::beginDragPolygon(KviCanvasPolygon * it,const QPoint &p,bool bShift,bool bCtrl)
 	{
 		m_dragBegin = QPoint((int)(p.x() - it->x()),(int)(p.y() - it->y()));
-	
+
 		QPointArray pa = it->areaPoints();
-	
+
 		for(unsigned int i=0;i<pa.size();i++)
 		{
 			QPoint pnt = pa.point(i);
@@ -786,7 +786,7 @@
 				return;
 			}
 		}
-	
+
 		if(bShift)
 		{
 			m_dragMode = Scale;
@@ -794,7 +794,7 @@
 			setCursor(sizeAllCursor);
 			return;
 		}
-	
+
 		if(bCtrl)
 		{
 			m_dragMode = Rotate;
@@ -803,11 +803,11 @@
 			setCursor(sizeHorCursor);
 			return;
 		}
-	
+
 		m_dragMode = All;
 		setCursor(pointingHandCursor);
 	}
-	
+
 	void KviCanvasView::dragPolygon(KviCanvasPolygon * it,const QPoint &p)
 	{
 		switch(m_dragMode)
@@ -853,11 +853,11 @@
 		}
 		canvas()->update();
 	}
-	
+
 	void KviCanvasView::beginDragRectangle(KviCanvasRectangleItem * it,const QPoint & p,bool bInitial)
 	{
 		m_dragBegin = QPoint((int)(p.x() - it->x()),(int)(p.y() - it->y()));
-	
+
 		if(bInitial)
 		{
 			// Right bottom
@@ -865,7 +865,7 @@
 			setCursor(sizeFDiagCursor);
 			return;
 		}
-	
+
 		if(p.x() < (((int)it->x()) + 2))
 		{
 			// Left edge
@@ -887,7 +887,7 @@
 			setCursor(sizeHorCursor);
 			return;
 		}
-	
+
 		if(p.x() > (it->right() - 2))
 		{
 			// Right edge
@@ -909,7 +909,7 @@
 			setCursor(sizeHorCursor);
 			return;
 		}
-		
+
 		// Somewhere in the middle
 		if(p.y() < (((int)it->y()) + 2))
 		{
@@ -925,16 +925,16 @@
 			setCursor(sizeVerCursor);
 			return;
 		}
-	
+
 		m_dragMode = All;
 		setCursor(pointingHandCursor);
 	}
-	
+
 	void KviCanvasView::dragRectangle(KviCanvasRectangleItem * it,const QPoint & p)
 	{
-	
+
 		int aux1,aux2,aux3,aux4;
-	
+
 		switch(m_dragMode)
 		{
 			case All:
@@ -1026,10 +1026,10 @@
 			default:
 			break;
 		}
-	
+
 		canvas()->update();
 	}
-	
+
 	void KviCanvasView::contentsMouseMoveEvent(QMouseEvent *e)
 	{
 	//	QPoint p = inverseWorldMatrix().map(e->pos());
@@ -1058,7 +1058,7 @@
 			{
 				QCanvasItemList l = canvas()->collisions(p);
 				QCanvasItemList::Iterator it = l.begin();
-		
+
 				if(it != l.end())
 				{
 					// Got an item
@@ -1086,7 +1086,7 @@
 			}
 		}
 	}
-	
+
 	void KviCanvasView::contentsMouseReleaseEvent(QMouseEvent *e)
 	{
 		if(m_dragMode != None)
@@ -1101,14 +1101,14 @@
 			}
 		}
 	}
-	
+
 	void KviCanvasView::contentsMousePressEvent(QMouseEvent *e)
 	{
 		if(e->button() & Qt::LeftButton)
 		{
 	//	    QPoint p = inverseWorldMatrix().map(e->pos());
 			QPoint p = e->pos();
-	
+
 			switch(m_state)
 			{
 				case SelectOrigin:
@@ -1118,12 +1118,12 @@
 					insertObjectAt(p,m_objectToInsert);
 					canvas()->update();
 				break;
-	
+
 				case Idle:
 				{
 					QCanvasItemList l = canvas()->collisions(p);
 					QCanvasItemList::Iterator it = l.begin();
-	
+
 					if(it != l.end())
 					{
 						// Got an item
@@ -1157,11 +1157,11 @@
 			}
 		}
 	}
-	
+
 	void KviCanvasView::propertyChanged(const QString &s,const QVariant &v)
 	{
 		if(!m_pSelectedItem)return;
-	
+
 		switch(KVI_CANVAS_RTTI_CONTROL_TYPE(m_pSelectedItem))
 		{
 			case KVI_CANVAS_RTTI_CONTROL_TYPE_RECTANGLE:
@@ -1174,11 +1174,11 @@
 				((KviCanvasPolygon *)m_pSelectedItem)->setProperty(s,v);
 			break;
 		}
-	
+
 		canvas()->update();
 	}
-	
-	
+
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviVariantTableItem
@@ -1188,11 +1188,11 @@
 	{
 		m_property = property;
 	}
-	
+
 	KviVariantTableItem::~KviVariantTableItem()
 	{
 	}
-	
+
 	QWidget * KviVariantTableItem::createEditor() const
 	{
 		switch(m_property.type())
@@ -1268,7 +1268,7 @@
 				b->insertItem(tmpDefault + ", 40");
 				b->insertItem(tmpDefault + ", 48");
 				b->insertItem(f.family() + ", 12");
-				b->setCurrentItem(0); 
+				b->setCurrentItem(0);
 				b->setCurrentItem(m_property.toBool() ? 1 : 0);
 				return b;
 			}
@@ -1278,7 +1278,7 @@
 		}
 		return 0;
 	}
-	
+
 	void KviVariantTableItem::setContentFromEditor(QWidget * w)
 	{
 		switch(m_property.type())
@@ -1320,11 +1320,11 @@
 			break;
 		}
 	}
-	
+
 	void KviVariantTableItem::paint(QPainter *p,const QColorGroup &cg,const QRect &cr,bool)
 	{
 		p->fillRect(0,0,cr.width(),cr.height(),cg.base());
-	
+
 		if(m_property.type() == QVariant::Color)
 		{
 			p->fillRect(3,3,cr.width() - 6,cr.height() - 6,m_property.asColor());
@@ -1356,8 +1356,8 @@
 			p->drawText(0,0,cr.width(),cr.height(),Qt::AlignLeft | Qt::AlignTop,sz);
 		}
 	}
-	
-	
+
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasItemPropertiesWidget
@@ -1375,11 +1375,11 @@
 		verticalHeader()->hide();
 		connect(this,SIGNAL(valueChanged(int,int)),this,SLOT(cellEdited(int,int)));
 	}
-	
+
 	KviCanvasItemPropertiesWidget::~KviCanvasItemPropertiesWidget()
 	{
 	}
-	
+
 	void KviCanvasItemPropertiesWidget::cellEdited(int row,int)
 	{
 		QTableItem * it = item(row,0);
@@ -1389,7 +1389,7 @@
 		if(!it)return;
 		emit propertyChanged(szName,((KviVariantTableItem *)it)->property());
 	}
-	
+
 	void KviCanvasItemPropertiesWidget::editItem(QCanvasItem * it)
 	{
 		if(!it)
@@ -1403,9 +1403,9 @@
 			setNumRows(0);
 			return;
 		}
-	
+
 		QMap<QString,QVariant> * m = 0;
-	
+
 		switch(KVI_CANVAS_RTTI_CONTROL_TYPE(it))
 		{
 			case KVI_CANVAS_RTTI_CONTROL_TYPE_RECTANGLE:
@@ -1418,26 +1418,26 @@
 				m = ((KviCanvasPolygon *)it)->properties();
 			break;
 		}
-	
+
 		if(!m)
 		{
 			editItem(0);
 			return;
 		}
-	
+
 		for(int i=0;i<numRows();i++)
 		{
 			clearCell(i,0);
 			clearCell(i,1);
 			clearCellWidget(i,1);
 		}
-	
+
 		setNumRows(m->count());
-	
+
 		QTableItem * item;
-	
+
 		int idx = 0;
-	
+
 		for(QMap<QString,QVariant>::ConstIterator iter = m->begin();iter != m->end();++iter)
 		{
 			item = new QTableItem(this,QTableItem::Never,iter.key().toUtf8().data());
@@ -1446,9 +1446,9 @@
 			setItem(idx,1,item);
 			idx++;
 		}
-	
+
 	}
-	
+
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	//
 	// KviCanvasWidget
@@ -1468,9 +1468,9 @@
 		l.append(80);
 		l.append(20);
 		m_pSplitter->setSizes(l);
-	
+
 		connect(m_pPropertiesWidget,SIGNAL(propertyChanged(const QString &,const QVariant &)),m_pCanvasView,SLOT(propertyChanged(const QString &,const QVariant &)));
-	
+
 		KviTalPopupMenu * add = new KviTalPopupMenu(m_pMenuBar);
 		KviTalPopupMenu * shapes = new KviTalPopupMenu(add);
 		KviTalPopupMenu * polygons = new KviTalPopupMenu(add);
@@ -1480,25 +1480,25 @@
 		shapes->insertItem(__tr2qs_ctx("&Ellipse","dcc"),m_pCanvasView,SLOT(insertEllipse()));
 		shapes->insertItem(__tr2qs_ctx("&Pie","dcc"),m_pCanvasView,SLOT(insertPie()));
 		shapes->insertItem(__tr2qs_ctx("&Chord","dcc"),m_pCanvasView,SLOT(insertChord()));
-	
+
 		items->insertItem(__tr2qs_ctx("&Rich text (html)","dcc"),m_pCanvasView,SLOT(insertRichText()));
-	
+
 		polygons->insertItem(__tr2qs_ctx("&Triangle","dcc"),m_pCanvasView,SLOT(insertPolygonTriangle()));
 		polygons->insertItem(__tr2qs_ctx("&Rectangle","dcc"),m_pCanvasView,SLOT(insertPolygonRectangle()));
 		polygons->insertItem(__tr2qs_ctx("&Pentagon","dcc"),m_pCanvasView,SLOT(insertPolygonPentagon()));
 		polygons->insertItem(__tr2qs_ctx("&Hexagon","dcc"),m_pCanvasView,SLOT(insertPolygonHexagon()));
-	
+
 		add->insertItem(__tr2qs_ctx("&Shape","dcc"),shapes);
 		add->insertItem(__tr2qs_ctx("&Item","dcc"),items);
 		add->insertItem(__tr2qs_ctx("&Polygons","dcc"),polygons);
-	
+
 		m_pMenuBar->insertItem(__tr2qs_ctx("&Insert","dcc"),add);
 	}
-	
+
 	KviCanvasWidget::~KviCanvasWidget()
 	{
 	}
-	
+
 	void KviCanvasWidget::resizeEvent(QResizeEvent *)
 	{
 		int h = m_pMenuBar->sizeHint().height();
@@ -1507,6 +1507,6 @@
 		m_pStatusLabel->setGeometry(0,height() - h2,width(),h2);
 		m_pSplitter->setGeometry(0,h,width(),height() - (h + h2));
 	}
-	
+
 	#include "m_canvaswidget.moc"
 #endif

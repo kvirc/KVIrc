@@ -39,7 +39,7 @@ class QLineEdit;
 class QPushButton;
 class QComboBox;
 class KviHttpRequest;
-class KviTalTreeWidget;
+class QTreeWidget;
 class KviIdentityProfile;
 
 class KviNickAlternativesDialog : public QDialog
@@ -98,7 +98,7 @@ protected slots:
 	void startDownload();
 	void cancelClicked();
 	void downloadTerminated(bool bSuccess);
-	void downloadMessage(const char * msg);
+	void downloadMessage(const QString &szMsg);
 };
 
 
@@ -236,7 +236,7 @@ public:
 	KviIdentityProfileOptionsWidget(QWidget * pParent);
 	~KviIdentityProfileOptionsWidget();
 protected:
-	KviTalTreeWidget * m_pTreeWidget;
+	QTreeWidget * m_pTreeWidget;
 	QCheckBox        * m_pProfilesCheck;
 	QPushButton      * m_pBtnAddProfile;
 	QPushButton      * m_pBtnEditProfile;

@@ -36,10 +36,10 @@ public:
 public:
 	bool parse(KviKvsObjectFunctionCall *c);
 	bool lastError(KviKvsObjectFunctionCall *c);
-	
+
 	void fatalError(const QString &szError);
 protected:
-	QString m_szLastError;	
+	QString m_szLastError;
 };
 
 #endif //!_CLASS_XMLREADER_H_

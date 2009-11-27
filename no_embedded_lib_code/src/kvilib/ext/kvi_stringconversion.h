@@ -37,7 +37,7 @@
 #include <QString>
 
 
-namespace KviStringConversion 
+namespace KviStringConversion
 {
 	extern KVILIB_API void init(const QString& szGlobalDir,const QString& szLocalDir);
 
@@ -47,7 +47,7 @@ namespace KviStringConversion
 	extern KVILIB_API void encodePath(QStringList& buffer);
 	extern KVILIB_API void decodePath(QStringList& buffer);
 
-	// bool <-> 
+	// bool <->
 	extern KVILIB_API void toString(const bool bValue,QString &buffer);
 	extern KVILIB_API bool fromString(const QString &szValue,bool &buffer);
 
@@ -86,6 +86,6 @@ namespace KviStringConversion
 	// QStringList <-> QString
 	extern KVILIB_API void toString(const QStringList &sValue,QString &buffer);
 	extern KVILIB_API bool fromString(const QString &szValue,QStringList &buffer);
-};
+}
 
 #endif //!_KVI_STRINGCONVERSION_H_

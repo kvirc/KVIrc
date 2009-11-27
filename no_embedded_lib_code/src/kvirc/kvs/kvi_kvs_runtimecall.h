@@ -43,9 +43,9 @@ public:
 public:
 	// the script runtime context, never zero
 	KviKvsRunTimeContext * context(){ return m_pContext; };
-	
+
 	KviWindow * window(){ return m_pContext->window(); };
-	
+
 	// parameter list access & helpers.. almost unused
 	// because of the KVSM_PARAMETER macros
 	KviKvsVariantList * parameterList(){ return m_pParams; };
@@ -54,7 +54,7 @@ public:
 	unsigned int parameterCount(){ return m_pParams->count(); };
 	KviKvsVariant * firstParam(){ return m_pParams->first(); };
 	KviKvsVariant * nextParam(){ return m_pParams->next(); };
-	
+
 	// This is virtual and returns false by default
 	// only few derived classes allow the parameter code to be
 	// extracted. This is mainly useful in module callback commands
@@ -73,7 +73,7 @@ public:
 	// it means that something rather critical happened and the script
 	// execution cannot continue
 	bool leaveBlockingSection(){ return m_pContext->leaveBlockingSection(); };
-	
+
 	// forwarders for context: they ease the porting
 	void warning(const QString &szFmt,...);
 	bool error(const QString &szFmt,...); // this ALWAYS returns false

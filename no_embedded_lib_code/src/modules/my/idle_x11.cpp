@@ -31,34 +31,34 @@
 	#include <QApplication>
 	#include <QDesktopWidget>
 	#include <QX11Info>
-	
+
 	#include <X11/Xlib.h>
 	#include <X11/Xutil.h>
 	#include <X11/extensions/scrnsaver.h>
-	
+
 	static XErrorHandler old_handler = 0;
 	extern "C" int xerrhandler(Display* dpy, XErrorEvent* err)
 	{
 		if(err->error_code == BadDrawable)
 			return 0;
-	
+
 		return (*old_handler)(dpy, err);
 	}
-	
+
 	class IdlePlatform::Private
 	{
 	public:
 		Private() {}
-	
+
 		XScreenSaverInfo *ss_info;
 	};
-	
+
 	IdlePlatform::IdlePlatform()
 	{
 		d = new Private;
 		d->ss_info = 0;
 	}
-	
+
 	IdlePlatform::~IdlePlatform()
 	{
 		if(d->ss_info)
@@ -69,14 +69,14 @@
 		}
 		delete d;
 	}
-	
+
 	bool IdlePlatform::init()
 	{
 		if(d->ss_info)
 			return true;
-	
+
 		old_handler = XSetErrorHandler(xerrhandler);
-	
+
 		int event_base, error_base;
 		if(XScreenSaverQueryExtension(QApplication::desktop()->screen()->x11Display(), &event_base, &error_base)) {
 			d->ss_info = XScreenSaverAllocInfo();
@@ -84,7 +84,7 @@
 		}
 		return false;
 	}
-	
+
 	int IdlePlatform::secondsIdle()
 	{
 		if(!d->ss_info) return 0;

@@ -30,7 +30,7 @@
 #include <qtimer.h>
 #include <qscrollview.h>
 #include <qpixmap.h>
-#include <qlabel.h> 
+#include <qlabel.h>
 
 class KviDlgAbout;
 
@@ -81,7 +81,7 @@ private slots:
 	void close();
 private:
 	virtual void closeEvent(QCloseEvent *);
-	
+
 	QLabel		* m_pPicLabel;
 	QLabel		* m_pTextLabel;
 	QPushButton	* m_pButton;

@@ -74,4 +74,4 @@ namespace KviMiscUtils
 		return true;
 	}
 
-};
+}

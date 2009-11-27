@@ -59,7 +59,7 @@ General notes for the installation of the 4.0 release of KVIrc
     If your distro has KDE installed then Qt is already installed. If not, simply
     install qt4 from your distro's repositories.
 
-    So before running cmake make sure that the environment variable $QTDIR
+    So before running CMake make sure that the environment variable $QTDIR
     points to the right location. This will help in finding the correct version
     of Qt.
 
@@ -81,12 +81,12 @@ General notes for the installation of the 4.0 release of KVIrc
     Using Qt version 4.5.1 in /usr/lib64/qt/lib
 
     If you have multiple versions of qt4 installed in your system and you want to use a specific version,
-    exporting QTDIR won't suffice. Since the cmake module searching for Qt4 uses qmake itself to determine
-    the Qt4 library dir, you can set your PATH to have cmake using using your preferred qmake version:
+    exporting QTDIR won't suffice. Since the CMake module searching for Qt4 uses qmake itself to determine
+    the Qt4 library dir, you can set your PATH to have CMake using using your preferred qmake version:
 
     #PATH=/opt/qt4.5/bin/:$PATH cmake ..
 
-    Please note that compiling with KDE4 support enabled will force kvirc to link against the Qt4 version
+    Please note that compiling with KDE4 support enabled will force KVIrc to link against the Qt4 version
     that KDE4 is using, and thi may lead to problems in linking. Disabling KDE4 support is the only known
     solution at the moment.
     Note also that you'll need to override the Qt libraries used when running KVIrc:
@@ -98,7 +98,7 @@ General notes for the installation of the 4.0 release of KVIrc
     #
 
     This is usually included in the last distros.
-    To check which cmake you have, simply run:
+    To check which CMake you have, simply run:
 
     # cmake --version
 
@@ -141,7 +141,7 @@ General notes for the installation of the 4.0 release of KVIrc
 
     # /usr/lib/libpthread.so
 
-    If you don't have it (cmake will tell you) you can download it from your
+    If you don't have it (CMake will tell you) you can download it from your
     favorite GNU mirror.
     The configure script will also fail if the library is hidden somewhere on
     your system (eg. not in /lib , /usr/lib or /usr/local/lib): you should
@@ -154,7 +154,7 @@ General notes for the installation of the 4.0 release of KVIrc
     If you want to compile the KDE integration support you obviousy need KDE.
     The kdelibs package should suffice.
 
-    So before running cmake make sure that the environment variable $KDEDIR
+    So before running CMake make sure that the environment variable $KDEDIR
     points to the right location.
 
     You might eventually set it with the command:
@@ -258,7 +258,7 @@ General notes for the installation of the 4.0 release of KVIrc
 
     In this way you have just created an out-of-source environment useful
     to have a clean working directory.
-    Note that the final dots are required or cmake will NOT create the right
+    Note that the final dots are required or CMake will NOT create the right
     environment.
 
     The CMake rules support some flags. If you don't specify them, CMake will
@@ -278,6 +278,10 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITH_DEBUG
         Alias of -DDEBUG flag.
 
+    -DWITHOUT_STRIP
+        Available only if debug is disabled, this flag disables objects stripping before installation.
+        (Object stripping discards symbols from object files, lowering their size on disk)
+
     -DVERBOSE
         Generate verbose output when compiling.
 
@@ -285,17 +289,25 @@ General notes for the installation of the 4.0 release of KVIrc
         It will install all stuff under /path directory
 
     -DLIB_SUFFIX=suffix
-        It will install libkvilib and kvirc modules under ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
+        It will install libkvilib and KVIrc modules under ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
         directory. It defaults to an empty suffix. Mainly used for 64 bit distros
         (-DLIB_SUFFIX=64).
 
+    -DMANDIR=directory
+        It will install man pages under $CMAKE_INSTALL_PREFIX/$MANDIR.
+        It will default to $CMAKE_INSTALL_PREFIX/share/man
+
     -DCOEXISTENCE
-        Append version information to kvirc and libkvilib, so that different
-        kvirc versions can cohexist in the same system.
+        Append version information to KVIrc and libkvilib, so that different
+        KVIrc versions can cohexist in the same system.
+
+    -DUSE_ENV_FLAGS
+        Kvirc install rules won't try to figure out and set CMAKE_C(XX)_FLAGS; instead, it will let CMake use
+        the ones from environment variables. Activating this flag will override -DDEBUG.
 
     -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
         It will re-initialize the installation path to a good default.
-        Following compilations should use the correct path value cached by cmake.
+        Following compilations should use the correct path value cached by CMake.
         This flag is useful to solve MacOS X install problems.
 
     -DCOMPILE_MACOSX_UNIVERSAL_BINARY
@@ -321,9 +333,6 @@ General notes for the installation of the 4.0 release of KVIrc
 
     -DWITHOUT_QTWEBKIT
         Disable Qt-WebKit support.
-
-    -DWITHOUT_AUDIOFILE
-        Disable Audiofile support.
 
     -DWITHOUT_KDE4
         Disable KDE4 support.
@@ -359,17 +368,19 @@ General notes for the installation of the 4.0 release of KVIrc
 
     -DWITHOUT_PERL
         Forcibly disable perl support.
-        You will not be able to use perl scripts inside KVIrc
+        You will not be able to use perl scripts inside KVIrc.
+        Note that perl support will be checked anyway, and used to generate
+        the documentation if present.
 
     -DWITHOUT_PYTHON
         Forcibly disable python support.
-        You will not be able to use python scripts inside KVIrc
+        You will not be able to use python scripts inside KVIrc.
 
     -DWITHOUT_IPC
         Disables support for inter-process communication.
         You will be not able to send remote commands to running
-        kvirc sessions: this basically means that every time you run
-        the kvirc executable, a new session will be started.
+        KVIrc sessions: this basically means that every time you run
+        the KVIrc executable, a new session will be started.
         If you don't use this switch, a new session will be started
         only if no session is running on the same display or
         "new session" has been forced by a commandline switch.
@@ -399,12 +410,15 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITH_ix86_ASM
         KVIrc contains some ix86 assembly routines that *could* performs
         some things faster (this is not always true, depends on the compiler).
-        You might want to try it if your kvirc seems to be really slow...
+        You might want to try it if your KVIrc seems to be really slow...
 
     -DWITHOUT_DCC_VOICE
         Explicitly disable the DCC VOICE sound support. This might help
         if you have problems in compilation of src/modules/dcc/voice.cpp.
         It will disable the sound support (and thus make DCC VOICE not usable).
+
+    -DWITH_DCC_VIDEO
+        Enables testing DCC VIDEO support.
 
     -DWITH_MEMORY_PROFILE
         Debug stuff...enables memory allocation profiling (don't use it :)
@@ -413,7 +427,7 @@ General notes for the installation of the 4.0 release of KVIrc
         Enables malloc() memory checks. This will print a nice message if your
         system goes out of memory...
         It can't save you from buying new RAM, but at least you will know that
-        your system went out of memory and it is not a proper kvirc fault.
+        your system went out of memory and it is not a proper KVIrc fault.
         Actually you probably have no reason in using it.
 
     -DMANUAL_REVISION
@@ -476,9 +490,9 @@ COMPILE_XSS_SUPPORT
     Same as above: use "gmake install" if your make is not GNU make.
 
     This will install the executable in /usr/local/bin (if you don't have
-    specified a different -DCMAKE_INSTALL_PREFIX option in the cmake rules),
+    specified a different -DCMAKE_INSTALL_PREFIX option in the CMake rules),
     the libraries in /usr/local/lib (if you don't have specified a different
-    -DLIB_SUFFIX option in the cmake rules) and the shared data in
+    -DLIB_SUFFIX option in the CMake rules) and the shared data in
     /usr/local/share/kvirc.
 
     Make sure that /usr/local/lib is in your /etc/ld.so.conf , if it isn't
@@ -511,7 +525,7 @@ COMPILE_XSS_SUPPORT
 
     # mkdir release
     # cd release
-    # cmake [your options] ..
+    # cmake ..
     # make install
 
 ###############################################################################

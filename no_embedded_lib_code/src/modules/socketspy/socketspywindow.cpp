@@ -32,16 +32,13 @@
 #include "kvi_console.h"
 //#include "kvi_module.h"
 
-#include <QSplitter>
-
-
 extern KviPointerList<KviSocketSpyWindow> * g_pSocketSpyWindowList;
 
 KviSocketSpyWindow::KviSocketSpyWindow(KviFrame * lpFrm,KviConsole * lpConsole)
 : KviWindow(KVI_WINDOW_TYPE_SOCKETSPY,lpFrm,"socket_spy",lpConsole) , KviIrcDataStreamMonitor(lpConsole->context())
 {
 	g_pSocketSpyWindowList->append(this);
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	setObjectName("spysocket_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	// Ensure proper focusing

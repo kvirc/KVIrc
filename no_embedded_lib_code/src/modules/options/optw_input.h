@@ -43,7 +43,7 @@ private:
 public:
 	KviInputLookOptionsWidget(QWidget * parent);
 	~KviInputLookOptionsWidget();
-	
+
 	virtual void commit();
 };
 

@@ -79,7 +79,7 @@ bool KviKvsTreeNodeModuleCallbackCommand::execute(KviKvsRunTimeContext * c)
 	KviKvsVariantList l;
 	l.setAutoDelete(true);
 	if(!(m_pParams->evaluate(c,&l)))return false;
-	
+
 	KviKvsSwitchList swl;
 	if(m_pSwitches)
 	{
@@ -87,7 +87,7 @@ bool KviKvsTreeNodeModuleCallbackCommand::execute(KviKvsRunTimeContext * c)
 	}
 
 	c->setDefaultReportLocation(this);
-	
+
 	KviKvsModuleCallbackCommandCall call(m,c,&l,&swl,m_pCallback,m_pParams);
 
 	return (*proc)(&call);

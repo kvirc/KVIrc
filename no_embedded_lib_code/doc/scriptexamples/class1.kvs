@@ -32,7 +32,7 @@ class (B,A)
 
 class (C,B)
 {
-	# Derived from B : inherits $B::virtual and 
+	# Derived from B : inherits $B::virtual and
 	# overrides $B::function (that is $A::function)
 	function
 	{

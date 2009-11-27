@@ -29,15 +29,15 @@
 
 #include "kvi_window.h"
 #include "kvi_scripteditor.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 class KviScriptEditor;
 
-class KviLogListViewItem : public KviTalTreeWidgetItem
+class KviLogListViewItem : public QTreeWidgetItem
 {
 public:
-	KviLogListViewItem(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
-	KviLogListViewItem(KviTalTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
+	KviLogListViewItem(QTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
+	KviLogListViewItem(QTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
 	~KviLogListViewItem() {};
 public:
 	KviLogFile::KviLogTypes m_type;
@@ -48,7 +48,7 @@ public:
 class KviLogListViewItemFolder : public KviLogListViewItem
 {
 public:
-	KviLogListViewItemFolder(KviTalTreeWidgetItem * par, const QString& label);
+	KviLogListViewItemFolder(QTreeWidgetItem * par, const QString& label);
 	~KviLogListViewItemFolder() {};
 public:
 };
@@ -56,7 +56,7 @@ public:
 class KviLogListViewItemType : public KviLogListViewItem
 {
 public:
-	KviLogListViewItemType(KviTalTreeWidget * par, KviLogFile::KviLogTypes type);
+	KviLogListViewItemType(QTreeWidget * par, KviLogFile::KviLogTypes type);
 	~KviLogListViewItemType() {};
 };
 
@@ -64,10 +64,14 @@ public:
 class KviLogListViewLog : public KviLogListViewItem
 {
 public:
-	KviLogListViewLog(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
+	KviLogListViewLog(QTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData);
 	~KviLogListViewLog() {};
-	virtual QString key ( int column, bool) const { return text(column); };
 	virtual QString fileName() const { return m_pFileData->fileName(); };
+protected:
+	bool operator<(const QTreeWidgetItem &other)const
+	{
+		return m_pFileData->date() < ((KviLogListViewLog*)&other)->m_pFileData->date();
+	}
 };
 
 #endif

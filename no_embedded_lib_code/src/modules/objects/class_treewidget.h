@@ -82,7 +82,7 @@ protected slots:
 	void slotItemChanged(QTreeWidgetItem *,int);
 };
 
-class KviKvsTreeWidget : public KviTalTreeWidget
+class KviKvsTreeWidget : public QTreeWidget
 {
 	Q_OBJECT
 public:

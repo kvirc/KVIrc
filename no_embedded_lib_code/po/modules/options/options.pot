@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-17 22:38+0200\n"
+"POT-Creation-Date: 2009-11-20 23:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,44 +160,44 @@ msgstr ""
 msgid "Timestamp format:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:293
+#: src/modules/options/optw_messages.cpp:297
 msgid "Transparent"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:358
+#: src/modules/options/optw_messages.cpp:362
 msgid "Background:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:371
+#: src/modules/options/optw_messages.cpp:375
 msgid "Foreground:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:383
+#: src/modules/options/optw_messages.cpp:387
 msgid "Alert level:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:404
+#: src/modules/options/optw_messages.cpp:408
 msgid "Log this"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:408
+#: src/modules/options/optw_messages.cpp:412
 msgid "Load From..."
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:410
+#: src/modules/options/optw_messages.cpp:414
 msgid "Save As..."
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:556
+#: src/modules/options/optw_messages.cpp:560
 msgid "Choose a Filename - KVIrc"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:609
+#: src/modules/options/optw_messages.cpp:613
 msgid "Choose a Filename - KVIrc "
 msgstr ""
 
 #: src/modules/options/optw_notifier.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_input.cpp:38
 #: src/modules/options/optw_topiclabel.cpp:36
 msgid "Font"
@@ -787,7 +787,7 @@ msgstr ""
 
 #: src/modules/options/optw_identity.cpp:606
 msgid ""
-"The avatar you have choosen is bigger than 1024x768 pixels.<br>Such a big "
+"The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big "
 "image will not be seen on all the user monitors<br>and will probably be "
 "scaled by the remote clients with poor quality<br>algorithms to improve "
 "performance. You *should* scale it manually<br>to a sane size (like 800x600) "
@@ -1684,60 +1684,36 @@ msgid "Use desktop background for transparency"
 msgstr ""
 
 #: src/modules/options/optw_interfacelookglobal.cpp:160
-msgid "Active Background"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:161
-msgid "Inactive Background"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:162
-msgid "Active Text (Primary)"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:163
-msgid "Active Text (Secondary)"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:164
-msgid "Inactive Text (Primary)"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:165
-msgid "Inactive Text (Secondary)"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:182
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:180
 msgid "Background"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:183
-#: src/modules/options/optw_interfacelookglobal.cpp:210
+#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:188
 msgid "Background Image"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:181
 msgid "Low-Contrast Foreground"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:182
 msgid "Mid-Contrast Foreground"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:205
+#: src/modules/options/optw_interfacelookglobal.cpp:183
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:184
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:207
+#: src/modules/options/optw_interfacelookglobal.cpp:185
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:208
+#: src/modules/options/optw_interfacelookglobal.cpp:186
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr ""
 
@@ -3154,7 +3130,7 @@ msgstr ""
 
 #: src/modules/options/optw_dcc.cpp:190
 msgid ""
-"<center>This option will cause succesfully terminated transfers to be "
+"<center>This option will cause successfully terminated transfers to be "
 "automatically removed from the transfer window.</center>"
 msgstr ""
 
@@ -3826,29 +3802,33 @@ msgid "Console windows"
 msgstr ""
 
 #: src/modules/options/optw_logging.cpp:46
-msgid "Gzip logs"
+msgid "Save logs to folder:"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:48
+#: src/modules/options/optw_logging.cpp:47
 msgid "Strip message type numbers in logs"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:49
+#: src/modules/options/optw_logging.cpp:48
 msgid "Strip colors in logs"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:50
+#: src/modules/options/optw_logging.cpp:49
 msgid "Auto flush logs every"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:51
+#: src/modules/options/optw_logging.cpp:50
 msgid " min"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:53
+#: src/modules/options/optw_logging.cpp:52
 msgid ""
 "<center>Save logs with the current interval<br>Set to 0 to disable this "
 "feature</center>"
+msgstr ""
+
+#: src/modules/options/optw_logging.cpp:56
+msgid "Gzip logs"
 msgstr ""
 
 #: src/modules/options/optw_texticons.cpp:91

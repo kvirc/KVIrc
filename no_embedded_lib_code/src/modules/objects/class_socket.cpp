@@ -89,7 +89,7 @@
 		Attempts a connection to <host> on port <port>.[br]
 		<host> can be a numeric internet address (either Ipv4 or Ipv6 (if supported)) or a hostname.[br]
 		If a hostname is used, a DNS lookup is performed (the socket enters the "dns call" state).[br]
-		This function returns 1 if the connect attempt can be succesfully initiated,
+		This function returns 1 if the connect attempt can be successfully initiated,
 		0 otherwise.[br] In fact , this function returns 0 only if the supplied <port> parameter
 		is invalid or the socket is in an incoherent state (already connected or listening):
 		for a newly created socket and with a valid <port> number you can safely ignore
@@ -120,7 +120,7 @@
 		This function returns '1' in case of success and '0' in case of failure.
 
 		!fn: $connectEvent()
-		This function is called when a connection attempt has been succesfully completed.
+		This function is called when a connection attempt has been successfully completed.
 		The socket is actually connected to [classfnc:socket]$remoteIp[/classfnc]() on
 		[classfnc:socket]$remotePort[/classfnc](). You can start
 		writing data and you may expect [classfnc:socket]$dataAvailableEvent[/classfnc]() to be
@@ -148,12 +148,12 @@
 		the length of the available data in bytes.[br]
 		You can use one of the $read* functions to obtain the data.
 
-		!fn: $read(<length>)
+                !fn: $read(<length>[,<hobject>])
 		Reads at most <length> bytes of data from the socket. If <length> is anything "outside" the
 		available data range (<length> < 0 or <length> > available_data_length), this function
 		returns all the available data.[br]
-		Please note that this function can't deal withi binary data: NULL characters are transformed to
-		ASCII characters 255.
+                By default this function can deal ascii data only: NULL characters are transformed to
+                ASCII characters 255. You can pass a [class]memorybuffer[/class] object to read binary data.
 
 		!fn: $readHex(<length>)
 		Reads at most <length> bytes of data from the socket. If <length> is anything "outside" the
@@ -161,9 +161,9 @@
 		returns all the available data.[br]
 		Returns the data encoded as hexadecimal digit string: this function can deal with binary data too.
 
-		!fn: $write(<data>)
+                !fn: $write(<data, files or hobject>[,length])
 		Writes <data> to the socket.[br]
-		This function can't deal with binary data (you can't send a NULL character)[br]
+                This function can deal with binary data passing  a [class]memorybuffer[/class] object[br]
 		Please note that when this function finishes it does not mean that the data has reached the remote end.[br]
 		Basically it does not even mean that the data has been sent to the remote host.[br]
 		The data is enqueued for sending and will be sent as soon as possible.[br]
@@ -195,7 +195,7 @@
 		The return value is meaningful only if the socket is in connected or connecting state.
 
 		!fn: $setProtocol(<protocol>)
-		Let KVIrc use TCP jr UDP protocol
+                Let KVIrc use TCP or UDP protocol
 
 		!fn: $remotePort()
 		Returns the port of the remote end of this socket.[br]
@@ -249,7 +249,8 @@
 	{[br]
 		# the connection to the server failed[br]
 		echo  "Connection failed: "$0[br]
-		delete $$[br]
+                delete $$[br]ite)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_socket,w
 	}[br]
 	connectEvent() [br]
 	{[br]
@@ -348,12 +349,14 @@ KVSO_END_DESTRUCTOR(KviKvsObject_socket)
 
 KVSO_CLASS_FUNCTION(socket,status)
 {
-	c->returnValue()->setInteger(m_iStatus);
+        c->returnValue()->setInteger(m_iStatus);
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(socket,close)
 {
+	Q_UNUSED(c);
+
 	if (!m_pOutBuffer) return true;
 	if((m_pOutBuffer->size() != 0) && (m_iStatus == KVI_SCRIPT_SOCKET_STATUS_CONNECTED))
 		tryFlush();
@@ -489,7 +492,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 	KviKvsVariant * pVariantData;
 	kvs_hobject_t hObject;
 	KVSO_PARAMETERS_BEGIN(c)
-			KVSO_PARAMETER("data_or_file_or_",KVS_PT_VARIANT,0,pVariantData)
+                        KVSO_PARAMETER("data_or_file_or_memorybuffer",KVS_PT_VARIANT,0,pVariantData)
 			KVSO_PARAMETER("length",KVS_PT_UNSIGNEDINTEGER,KVS_PF_OPTIONAL,uLen)
 	KVSO_PARAMETERS_END(c)
 	if (pVariantData->isHObject())
@@ -515,10 +518,10 @@ KVSO_CLASS_FUNCTION(socket,write)
 				return true;
 			}
 			if (!uLen) uLen=pFile->size();
-			kvs_int_t siz=pFile->size();
+                        kvs_int_t size=pFile->size();
 			pFile->flush();
 			m_pOutBuffer->append((const unsigned char*)pFile->read(uLen).data(),uLen);
-			c->returnValue()->setBoolean((siz-pFile->pos()==0));
+                        c->returnValue()->setBoolean((size-pFile->pos()==0));
 		}
 		else
 		{
@@ -536,6 +539,7 @@ KVSO_CLASS_FUNCTION(socket,write)
 			QByteArray szData8 = szData.toUtf8();
 			if(szData8.length() > 0)
 			{
+                                        debug("write on socket %s",szData8.data());
 					m_pOutBuffer->append((const unsigned char*)szData8.data(),szData8.length());
 			}
 		}
@@ -609,7 +613,7 @@ KVSO_CLASS_FUNCTION(socket,writeHex)
 	KVSO_PARAMETERS_END(c)
 	if (m_szHex.length()%2)
 	{
-		c->warning(__tr2qs_ctx("The hex string lenght is not a multiple of 2","objects"));
+		c->warning(__tr2qs_ctx("The hex string length is not a multiple of 2","objects"));
 		return true;
 	}
 	unsigned char byte,lsb,msb;

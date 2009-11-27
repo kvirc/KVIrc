@@ -33,7 +33,7 @@
 			// Someone has defined Bool ?
 			#undef Bool
 		#endif
-		
+
 		#include <X11/Xlib.h>
 
 		// Too bad that X11/Xlib.h defines Bool, Error and Success... this basically

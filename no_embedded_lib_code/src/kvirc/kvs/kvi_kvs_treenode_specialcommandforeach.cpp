@@ -101,7 +101,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 					} else {
 						v->result()->setNothing();
 					}
-					
+
 					if(!m_pLoop->execute(c))
 					{
 						if(c->error())
@@ -128,7 +128,7 @@ bool KviKvsTreeNodeSpecialCommandForeach::execute(KviKvsRunTimeContext * c)
 						delete v;
 						return false; // propagate the false return value
 					}
-	
+
 					idx++;
 				}
 			}

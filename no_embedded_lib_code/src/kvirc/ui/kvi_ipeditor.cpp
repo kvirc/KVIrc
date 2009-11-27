@@ -127,7 +127,7 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 			const char *anchor = c;
 			while(isdigit(*c))c++;
 			if(c == anchor)return false; // Invalid empty field
-			QByteArray str(anchor,(c - anchor) + 1);
+			QByteArray str(anchor,c - anchor);
 			bool bOk;
 			int num = str.toInt(&bOk);
 			if(!bOk)return false; // should never happen , but just to be sure
@@ -143,7 +143,7 @@ bool KviIpEditor::setAddress(const QString &ipAddr)
 		{
 			const char *anchor = c;
 			while(isdigit(*c) || ((tolower(*c) >= 'a') && (tolower(*c) <= 'f')) || ((tolower(*c) >= 'A') && (tolower(*c) <= 'F')))c++;
-			QByteArray str(anchor,(c - anchor) + 1);
+			QByteArray str(anchor,c - anchor);
 			if(str.length() > 4)return false; // Too long
 			m_pEdit[i]->setText(str.data());
 			if(i < 7){

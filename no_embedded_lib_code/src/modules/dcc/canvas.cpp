@@ -31,7 +31,7 @@
 	#include "dialogs.h"
 	#include "marshal.h"
 	#include "canvaswidget.h"
-	
+
 	#define _KVI_DEBUG_CHECK_RANGE_
 	#include "kvi_debug.h"
 	#include "kvi_options.h"
@@ -51,29 +51,29 @@
 	#include "kvi_settings.h"
 	#include "kvi_themedlabel.h"
 	#include "kvi_ircconnection.h"
-	
+
 	#include <QSplitter>
-	
+
 	extern KviDccBroker * g_pDccBroker;
-	
-	
+
+
 	KviDccCanvas::KviDccCanvas(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name)
 	: KviDccWindow(KVI_WINDOW_TYPE_DCCCANVAS,pFrm,name,dcc)
 	{
 		m_pSplitter = new QSplitter(QSplitter::Vertical,this,"splitter");
-	
+
 		m_pCanvas   = new KviCanvasWidget(m_pSplitter);
-	
+
 		m_pIrcView  = new KviIrcView(m_pSplitter,pFrm,this);
 		m_pInput    = new KviInput(this);
-	
+
 	//	setFocusHandler(m_pInput,this);
-	
+
 		m_pMarshal = new KviDccMarshal(this);
 		connect(m_pMarshal,SIGNAL(error(int)),this,SLOT(handleMarshalError(int)));
 		connect(m_pMarshal,SIGNAL(connected()),this,SLOT(connected()));
-	
-	
+
+
 		if(!(m_pDescriptor->bActive))
 		{
 			// PASSIVE CONNECTION
@@ -81,10 +81,10 @@
 			int ret = m_pMarshal->dccListen(dcc->szListenIp,dcc->szListenPort,m_pDescriptor->bDoTimeout);
 			if(ret != KviError_success)handleMarshalError(ret);
 			else {
-				
+
 				output(KVI_OUT_DCCMSG,__tr2qs_ctx("Listening on interface %Q port %Q","dcc"),
 					&(m_pMarshal->localIp()),&(m_pMarshal->localPort()));
-	
+
 				if(dcc->bSendRequest)
 				{
 					QString ip     = !dcc->szFakeIp.isEmpty() ? dcc->szFakeIp : dcc->szListenIp;
@@ -108,10 +108,10 @@
 			if(ret != KviError_success)handleMarshalError(ret);
 			else output(KVI_OUT_DCCMSG,__tr2qs_ctx("Contacting host %Q on port %Q","dcc"),&(dcc->szIp),&(dcc->szPort));
 		}
-	
+
 	//	m_pSlaveThread = 0;
 	}
-	
+
 	KviDccCanvas::~KviDccCanvas()
 	{
 		g_pDccBroker->unregisterDccWindow(this);
@@ -125,7 +125,7 @@
 	//	delete m_pDescriptor;
 	//	delete m_pMarshal;
 	}
-	
+
 	const QString & KviDccCanvas::target()
 	{
 		// This may change on the fly...
@@ -133,20 +133,20 @@
 			m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
 		return m_szTarget;
 	}
-	
+
 	void KviDccCanvas::fillCaptionBuffers()
 	{
 		KviStr tmp(KviStr::Format,"DCC Canvas %s@%s:%s",
 			m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szIp.toUtf8().data(),m_pDescriptor->szPort.toUtf8().data());
-	
+
 		m_szPlainTextCaption = tmp;
-	
+
 		m_szHtmlActiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
 			KVI_OPTION_COLOR(KviOption_colorCaptionTextActive).name().ascii(),tmp.ptr());
 		m_szHtmlInactiveCaption.sprintf("<nobr><font color=\"%s\"><b>%s</b></font></nobr>",
 			KVI_OPTION_COLOR(KviOption_colorCaptionTextInactive).name().ascii(),tmp.ptr());
 	}
-	
+
 	QPixmap * KviDccCanvas::myIconPtr()
 	{
 		return g_pIconManager->getSmallIcon(KVI_SMALLICON_CANVAS);
@@ -165,14 +165,14 @@
 			m_pDescriptor->szLocalNick.toUtf8().data(),m_pDescriptor->szLocalUser.toUtf8().data(),
 			m_pDescriptor->szLocalHost.toUtf8().data(),text);
 	}
-	
+
 	void KviDccCanvas::ownAction(const char * text)
 	{
 		KviStr buf(KviStr::Format,"%cACTION %s%c\r\n",text);
 	//	m_pSlaveThread->sendRawData(buf.ptr(),buf.len());
 		output(KVI_OUT_ACTION,"%Q %s",&(m_pDescriptor->szLocalNick),text);
 	}
-	
+
 	bool KviDccCanvas::event(QEvent *e)
 	{
 	//	if(e->type() == KVI_THREAD_EVENT)
@@ -255,7 +255,7 @@
 	//	}
 		return KviWindow::event(e);
 	}
-	
+
 	void KviDccCanvas::resizeEvent(QResizeEvent *e)
 	{
 		int hght = m_pInput->heightHint();
@@ -264,20 +264,20 @@
 		m_pSplitter->setGeometry(0,0,width(),height() - hght);
 		m_pInput->setGeometry(0,height() - hght,width(),hght);
 	}
-	
+
 	QSize KviDccCanvas::sizeHint() const
 	{
 		QSize ret(m_pIrcView->sizeHint().width(),
 			m_pIrcView->sizeHint().height() + m_pInput->heightHint());
 		return ret;
 	}
-	
+
 	void KviDccCanvas::handleMarshalError(int err)
 	{
 		QString sss = KviError::getDescription(err);
 		output(KVI_OUT_DCCERROR,__tr2qs_ctx("DCC Failed: %Q","dcc"),&sss);
 	}
-	
+
 	void KviDccCanvas::connected()
 	{
 		output(KVI_OUT_DCCMSG,__tr2qs_ctx("Connected to %Q:%Q","dcc"),
@@ -295,6 +295,6 @@
 	//	m_pSlaveThread = new KviDccCanvasThread(this,m_pMarshal->releaseSocket());
 	//	m_pSlaveThread->start();
 	}
-	
+
 	#include "m_canvas.moc"
 #endif

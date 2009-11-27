@@ -2,7 +2,7 @@
 
 event(OnDccChatPopupRequest,default)
 {
-	popup dccchat $0;
+	popup dccchat $dcc.remoteNick($0);
 }
 
 event(OnChannelPopupRequest,default)

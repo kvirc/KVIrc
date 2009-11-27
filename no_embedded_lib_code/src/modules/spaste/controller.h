@@ -39,7 +39,7 @@ class SPasteController : public QObject
 public:
 	SPasteController(KviWindow * w,int id);
 	~SPasteController();
-	
+
 	//bool pasteFileInit(KviStr * fileName);
 	bool pasteFileInit(QString &fileName);
 	bool pasteClipboardInit(void);
@@ -55,7 +55,6 @@ private:
 	int                    m_pId;
 	KviWindow             *m_pWindow;
 	QTimer                *m_pTimer;
-	QStringList::Iterator  m_clipBuffIterator;
 };
 
 #endif //SPASTE_CONTROLLER_H

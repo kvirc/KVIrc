@@ -33,20 +33,19 @@
 
 #include "kvi_settings.h"
 #include "kvi_string.h"
-#include "kvi_tal_popupmenu.h"
 
-#include <QFrame>
-#include <QLabel>
-#include <QLabel>
-#include <QToolButton>
 #include <QMdiSubWindow>
-#include <QWidget>
 #include <QWindowStateChangeEvent>
-#include <QTimer>
 
 class KviMdiManager;
-class KviMdiChild;
-class QCursor;
+
+/**
+* \def KVI_MDICHILD_MIN_WIDTH Defines the minimum width of the child
+* \def KVI_MDICHILD_MIN_HEIGHT Defines the minimum height of the child
+*/
+#define KVI_MDICHILD_MIN_WIDTH 100
+#define KVI_MDICHILD_MIN_HEIGHT 40
+
 
 /**
 * \class KviMdiChild
@@ -69,6 +68,7 @@ public:
 	* \brief Destroys the Mdi child object
 	*/
 	~KviMdiChild();
+
 public:
 	/**
 	* \enum MdiChildState
@@ -87,22 +87,17 @@ private:
 	QWidget       * m_pClient;
 	/// Saves the geometry of the window for restoring it's position
 	QRect           m_restoredGeometry;
-	/// Saves the last state of our window
-	MdiChildState   m_State;
-	/// Saves the last state before window is minimized
-	MdiChildState   m_LastState;
 	/// Contains the current window Icon
 	QPixmap         m_pIcon;
 	/// Caption as plain text.
 	QString         m_szPlainCaption;
-	/// If window can be closed or not
-	bool            m_bCloseEnabled;
 private:
 	/**
 	* \brief Updates the caption of the child
 	* \return void
 	*/
 	void updateCaption();
+
 public:
 	/**
 	* \brief Read the current geometry
@@ -154,8 +149,6 @@ public:
 	/**
 	* \brief Sets the window title
 	* \param plain Plain text of caption
-	* \param xmlActive not used
-	* \param xmlInactive not used
 	* \return void
 	*/
 	void setWindowTitle(const QString & szPlain);
@@ -174,64 +167,17 @@ public:
 	const QPixmap * icon();
 
 	/**
-	* \brief Enables or disables the close button
-	* \param bEnable Activate/Deactivate close button
-	* \return void
-	*
-	* This does not remove the close button, it'll remove the buttons function
-	*/
-	void enableClose(bool bEnable);
-
-	/**
-	* \brief Returns if close is enabled
-	* \return bool
-	*/
-	bool closeEnabled();
-
-	/**
 	* \brief Returns the current KviMdiManager of the subwindow
 	* \return KviMdiManager *
 	*/
-	KviMdiManager * manager(){ return m_pManager; };
+	inline KviMdiManager * manager(){ return m_pManager; };
 
 	/**
 	* \brief Activates this subwindow
 	* \return void
 	*/
 	void activate();
-
-	/**
-	* \brief Enqueue minimize status
-	*
-	* Since Qt sometimes does not like changing window states while being in
-	* another event, we need tell Qt to minimize it as soon as possible.
-	* \return void
-	*/
-	void queuedMinimize();
-
-	/**
-	* \brief Enqueue restore status
-	*
-	* Since Qt sometimes does not like changing window states while being in
-	* another event, we need tell Qt to restore it as soon as possible.
-	* \return void
-	*/
-	void queuedRestore();
-
-	/**
-	* \brief Enqueue maximize status
-	*
-	* Since Qt sometimes does not like changing window states while being in
-	* another event, we need tell Qt to maximize it as soon as possible.
-	* \return void
-	*/
-	void queuedMaximize();
 protected:
-	// TODO: ???
-	virtual void setBackgroundRole(QPalette::ColorRole);
-	// TODO: ???
-	virtual void focusInEvent(QFocusEvent *);
-
 	/**
 	* \brief Updates the widget background when moving
 	* \return void
@@ -243,14 +189,6 @@ protected:
 	* \return void
 	*/
 	virtual void closeEvent(QCloseEvent * e);
-
-	// TODO: ???
-	/**
-	* \brief Emits the systemPopupRequest signal
-	* \param pnt The point where the popup has to be shown
-	* \return void
-	*/
-	void emitSystemPopupRequest(const QPoint & pnt) { emit systemPopupRequest(pnt); };
 public slots:
 	/**
 	* \brief Maximizes this window
@@ -270,9 +208,6 @@ public slots:
 	*/
 	void restore();
 
-	// TODO: ???
-	void systemPopupSlot();
-
 	/**
 	* \brief Triggered when the state of a window changes
 	*
@@ -282,43 +217,13 @@ public slots:
 	* \return void
 	*/
 	void windowStateChangedEvent( Qt::WindowStates oldState, Qt::WindowStates newState );
+
 private slots:
 	/**
 	* \brief Updates the system popup
 	* \return void
 	*/
 	void updateSystemPopup();
-signals:
-	/**
-	* \brief Signal is emitted when user clicks on the window icon
-	* \param pnt The point where the user clicks
-	* \return void
-	*/
-	void systemPopupRequest(const QPoint & pnt);
-
-	/**
-	* \brief This signal is used to minimize the window
-	* \return void
-	*/
-	void minimizeSignal();
-
-	/**
-	* \brief This signal is used to maximize the window
-	* \return void
-	*/
-	void maximizeSignal();
-
-	/**
-	* \brief This signal is used to restore the window
-	* \return void
-	*/
-	void restoreSignal();
-
-	/**
-	* \brief This signal is used to hide the window
-	* \return void
-	*/
-	void hideSignal();
 };
 
 #endif //_KVI_MDICHILD_H_

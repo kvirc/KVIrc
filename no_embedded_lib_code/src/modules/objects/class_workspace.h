@@ -26,7 +26,8 @@
 //=============================================================================
 
 #include "class_widget.h"
-
+#include <QHash>
+#include <QMdiSubWindow>
 class KviKvsObject_workspace : public KviKvsObject_widget
 {
 public:
@@ -34,18 +35,23 @@ public:
 public:
 	QWidget * widget() { return (QWidget *)object(); };
 protected:
-
+        QHash<kvs_hobject_t, QMdiSubWindow*> *pWidgetDict;
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
-	bool functionactiveWindow(KviKvsObjectFunctionCall *c);
-	bool functionscrollBarsEnabled(KviKvsObjectFunctionCall *c);
-	bool functionsetscrollBarsEnabled(KviKvsObjectFunctionCall *c);
-	bool functioncascade(KviKvsObjectFunctionCall *c);
-	bool functiontile(KviKvsObjectFunctionCall *c);
-	bool functioncloseActiveWindow(KviKvsObjectFunctionCall *c);
-	bool functioncloseAllWindows(KviKvsObjectFunctionCall *c);
-	bool functionactivateNextWindow(KviKvsObjectFunctionCall *c);
-	bool functionactivatePrevWindow(KviKvsObjectFunctionCall *c);
+        bool addSubWindow(KviKvsObjectFunctionCall *c);
+        bool removeSubWindow(KviKvsObjectFunctionCall *c);
+        bool cascade(KviKvsObjectFunctionCall *c);
+        bool tile(KviKvsObjectFunctionCall *c);
+        bool closeActiveWindow(KviKvsObjectFunctionCall *c);
+        bool closeAllWindows(KviKvsObjectFunctionCall *c);
+        bool activateNextWindow(KviKvsObjectFunctionCall *c);
+        bool activatePrevWindow(KviKvsObjectFunctionCall *c);
+        bool scrollBarsEnabled(KviKvsObjectFunctionCall *c);
+        bool setscrollBarsEnabled(KviKvsObjectFunctionCall *c);
+
+    bool activeWindow(KviKvsObjectFunctionCall *c);
+
+
 };
 
 #endif	//!_CLASS_WORKSPACE_H_

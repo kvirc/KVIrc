@@ -94,7 +94,7 @@ private:
 	bool m_bSupportsCodePages;             // supports the /CODEPAGE command ?
 	int m_iMaxTopicLen;
 	int m_iMaxModeChanges;
-	QString m_szListModes; 
+	QString m_szListModes;
 	QString m_szPlainModes;
 public:
 	char  registerModeChar() { return m_pServInfo ?  m_pServInfo->getRegisterModeChar() : 0; };
@@ -112,12 +112,12 @@ public:
 
 	int maxTopicLen() { return m_iMaxTopicLen; };
 	int maxModeChanges() { return m_iMaxModeChanges; };
-	
+
 	void setServerVersion(const QString & version);
-	
+
 	const QString & getChannelModeDescription(QChar mode) { return m_pServInfo->getChannelModeDescription(mode); };
 	const QString & getUserModeDescription(QChar mode) { return m_pServInfo->getUserModeDescription(mode); };
-	
+
 	bool isSupportedModePrefix(QChar c);
 	bool isSupportedModeFlag(QChar c);
 	QChar modePrefixChar(kvi_u32_t flag);

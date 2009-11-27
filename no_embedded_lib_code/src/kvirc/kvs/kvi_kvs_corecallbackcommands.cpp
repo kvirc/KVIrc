@@ -102,7 +102,7 @@ namespace KviKvsCoreCallbackCommands
 					[cmd]echo[/cmd] "Ip address: "$2;
 					[cmd]echo[/cmd] "Hostname: "$3;
 				} else {
-					[cmd]echo[/cmd] "Error: $2"; 
+					[cmd]echo[/cmd] "Error: $2";
 				}
 			}
 			ahost -i ("irc.flashnet.it","Hello :)")
@@ -114,7 +114,7 @@ namespace KviKvsCoreCallbackCommands
 					[cmd]echo[/cmd] "Ip address: "$2;
 					[cmd]echo[/cmd] "Hostname: "$3;
 				} else {
-					[cmd]echo[/cmd] "Error: $2"; 
+					[cmd]echo[/cmd] "Error: $2";
 				}
 			}
 			ahost -a ("cafe:babe::dead:beef")
@@ -126,7 +126,7 @@ namespace KviKvsCoreCallbackCommands
 					[cmd]echo[/cmd] "Ip address: "$2;
 					[cmd]echo[/cmd] "Hostname: "$3;
 				} else {
-					[cmd]echo[/cmd] "Error: $2"; 
+					[cmd]echo[/cmd] "Error: $2";
 				}
 			}
 			[/example]
@@ -149,7 +149,7 @@ namespace KviKvsCoreCallbackCommands
 
 		KviKvsVariant * pMagic = pMagicPtr ? new KviKvsVariant(*pMagicPtr) : new KviKvsVariant();
 
-		KviKvsAsyncDnsOperation * op = new KviKvsAsyncDnsOperation(
+		new KviKvsAsyncDnsOperation(
 						KVSCCC_pContext->window(),
 						szQuery,
 						queryType,
@@ -254,7 +254,7 @@ namespace KviKvsCoreCallbackCommands
 			KVSCCC_pContext->error(__tr2qs_ctx("Alias names can contain only letters, digits, underscores and '::' namespace separators","kvs"));
 			return false;
 		}
-		
+
 		// make sure that we have only doubled "::" and not ":" or ":::..."
 		QString tmp = szName;
 		tmp.replace("::","@"); // @ is not allowed by the rule above
@@ -415,7 +415,7 @@ namespace KviKvsCoreCallbackCommands
 				button(w,test,-1,Test button){ echo Test!; }
 				button(w,test){}
 			[/example]
-			
+
 	*/
 
 	KVSCCC(button)
@@ -450,7 +450,7 @@ namespace KviKvsCoreCallbackCommands
 			}
 			return true;
 		}
-		
+
 		if(!pButton)
 		{
 			pButton = new KviWindowScriptButton(KVSCCC_pWindow->buttonContainer(),KVSCCC_pWindow,szName.toUtf8().data());
@@ -477,9 +477,9 @@ namespace KviKvsCoreCallbackCommands
 					KVSCCC_pContext->warning(__tr2qs_ctx("Can't find the icon '%Q'","kvs"),&szIcon);
 			}
 		}
-	
+
 		pButton->setEnabled(!(KVSCCC_pSwitches->find('d',"disabled")));
-	
+
 		return true;
 	}
 
@@ -521,11 +521,11 @@ namespace KviKvsCoreCallbackCommands
 			KVSCCC_PARAMETER("event_name",KVS_PT_NONEMPTYSTRING,0,szEventName)
 			KVSCCC_PARAMETER("handler_name",KVS_PT_NONEMPTYSTRING,0,szHandlerName)
 		KVSCCC_PARAMETERS_END
-		
+
 		bool bOk;
 		int iNumber = szEventName.toInt(&bOk);
 		bool bIsRaw = (bOk && (iNumber >= 0) && (iNumber < 1000));
-	
+
 		if(bIsRaw)
 		{
 			if(!KviKvsEventManager::instance()->isValidRawEvent(iNumber))
@@ -543,7 +543,7 @@ namespace KviKvsCoreCallbackCommands
 				return true;
 			}
 		}
-	
+
 		if(KVSCCC_pCallback->code().isEmpty())
 		{
 			if(bIsRaw)
@@ -664,7 +664,7 @@ namespace KviKvsCoreCallbackCommands
 			[br]
 			[b]Startup event[/b][br]
 			If the -x switch is used then the startup event is triggered
-			just after the process has been succesfully launched.
+			just after the process has been successfully launched.
 			The $0 parameter passed to the callback contains the string "started".
 			Parameter $1 contains the pid of the slave process.[br]
 			[br]
@@ -674,7 +674,7 @@ namespace KviKvsCoreCallbackCommands
 			it you must use the -n switch. $0 contains the string "stdout".
 			If the -b switch is not used then $1 contains a single line of process
 			output with the trailing carriage return and/or line feed stripped.
-			If -b is used then $1 contains the whole process output 
+			If -b is used then $1 contains the whole process output
 			block (eventually empty) with all the cr/lf pairs.[br]
 			[br]
 			[b]Stderr data event[/b][br]
@@ -797,21 +797,21 @@ namespace KviKvsCoreCallbackCommands
 					[comment]# Returning an empty string does not write to stdin[/comment]
 					return
 				}
-				
+
 				if($1 == "stderr")
 				{
 					echo "[stderr] $1"
 					return
 				}
-				
+
 				if($1 == "terminated")
 				{
 					echo "[process terminated]"
 					return
 				}
-			
+
 				echo "[stdout] $1"
-			
+
 				switch(%:state)
 				{
 					case(0):
@@ -915,7 +915,7 @@ namespace KviKvsCoreCallbackCommands
 		KVSCCC_PARAMETERS_END
 
 		int f = 0;
-		
+
 		if(KVSCCC_pSwitches->find('t',"trigger-termination") != 0)f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERTERMINATED;
 		if(KVSCCC_pSwitches->find('n',"no-stdout") == 0)f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDOUT;
 		if(KVSCCC_pSwitches->find('e',"trigger-stderr") != 0)f |= KVI_KVS_PROCESSDESCRIPTOR_TRIGGERSTDERR;
@@ -926,7 +926,7 @@ namespace KviKvsCoreCallbackCommands
 
 		QString szShell;
 		KVSCCC_pSwitches->getAsStringIfExisting('s',"shell",szShell);
-		
+
 		kvs_int_t iPingTime = 0;
 		kvs_int_t iMaxRunTime = 0;
 
@@ -949,9 +949,9 @@ namespace KviKvsCoreCallbackCommands
 				iMaxRunTime = 0;
 			}
 		}
-	
+
 		KviKvsProcessDescriptorData * d = new KviKvsProcessDescriptorData;
-		
+
 		d->szCommandline = szCommandline;
 		d->szShell = szShell;
 		d->pWnd = KVSCCC_pContext->window();
@@ -960,14 +960,14 @@ namespace KviKvsCoreCallbackCommands
 		d->pCallback = new KviKvsScript(*KVSCCC_pCallback);
 		d->iMaxRunTime = iMaxRunTime;
 		d->iPingTimeout = iPingTime;
-	
+
 		KviKvsProcessAsyncOperation * op = new KviKvsProcessAsyncOperation(d);
 		if(!op->start())
 		{
 			if(KVSCCC_pSwitches->find('q',"quiet") == 0)KVSCCC_pContext->warning(__tr2qs_ctx("Failed to start the process","kvs"));
 			delete op;
 		}
-	
+
 		return true;
 	}
 
@@ -988,7 +988,7 @@ namespace KviKvsCoreCallbackCommands
 			existing object designed by <object_handle>.
 			<implementation> must be a valid command sequence.[br]
 			Side note:[br]
-			This command can not succesfully implement
+			This command can not successfully implement
 			the "constructor" function since it must be called
 			after this one has already been executed.[br]
 			To implement a constructor you MUST write your own class definition.[br]
@@ -999,6 +999,8 @@ namespace KviKvsCoreCallbackCommands
 
 	KVSCCC(privateimpl)
 	{
+		Q_UNUSED(__pSwitches);
+
 		kvs_hobject_t hObject;
 		QString szFunctionName;
 		KVSCCC_PARAMETERS_BEGIN
@@ -1169,7 +1171,7 @@ namespace KviKvsCoreCallbackCommands
 			r->proc = KVI_PTR2MEMBER(KviKvsCoreCallbackCommands::__routine); \
 			pKern->registerCoreCallbackCommandExecRoutine(QString(__cmdName),r); \
 		}
-		
+
 		_REGCMD("ahost",ahost);
 		_REGCMD("awhois",awhois);
 		_REGCMD("alias",alias);

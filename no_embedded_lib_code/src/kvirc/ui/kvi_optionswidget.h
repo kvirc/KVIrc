@@ -105,7 +105,7 @@ public:
 	KviPasswordSelector   * addPasswordSelector(QWidget * pParent,const QString & txt,QString * pOption,bool bEnabled = true);
 	KviPasswordSelector   * addPasswordSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
 	KviPasswordSelector   * addPasswordSelector(QWidget * pParent,const QString & txt,int optId,bool bEnabled = true);
-	
+
 	KviPixmapSelector     * addPixmapSelector(int x1,int y1,int x2,int y2,const QString & txt,int optId,bool bEnabled = true);
 	KviPixmapSelector     * addPixmapSelector(int x1,int y1,int x2,int y2,const QString & txt,KviPixmap * pOption,bool bEnabled = true);
 

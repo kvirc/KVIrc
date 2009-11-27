@@ -48,17 +48,17 @@ static bool checkDuplicatedConnection(QString &szConnectionName)
         }
     }
     return bFound;
-};
+}
 static void KviKvsSqlInstanceRegister(KviKvsObject_sql *instance)
 {
     sql_instances.setAutoDelete(false);
     sql_instances.append(instance);
-};
+}
 static void KviKvsSqlInstanceUnregister(KviKvsObject_sql *instance)
 {
     int idx=sql_instances.findRef(instance);
     sql_instances.remove(idx);
-};
+}
 
 #define CHECK_QUERY_IS_INIT if (!m_pCurrentSQlQuery)\
         {\
@@ -218,13 +218,10 @@ KVSO_CLASS_FUNCTION(sql,setConnection)
 KVSO_CLASS_FUNCTION(sql,queryLastInsertId)
 {
         CHECK_QUERY_IS_INIT
-        KviKvsHash *pHash=new KviKvsHash();
-        KviKvsVariant *pValue=0;
         QVariant value=m_pCurrentSQlQuery->lastInsertId();
         if (value.type()==QVariant::LongLong){
             c->returnValue()->setInteger((kvs_int_t) value.toLongLong());
         }
-
         return true;
     }
 KVSO_CLASS_FUNCTION(sql,features)
@@ -427,7 +424,7 @@ KVSO_CLASS_FUNCTION(sql,queryBindValue)
         KVSO_PARAMETERS_BEGIN(c)
                 KVSO_PARAMETER("bindName",KVS_PT_STRING,0,szFieldName)
                 KVSO_PARAMETER("value",KVS_PT_VARIANT,0,v)
-        KVSO_PARAMETERS_END(c)              
+        KVSO_PARAMETERS_END(c)
         QString szType;
         v->getTypeName(szType);
         if (v->isString()|| v->isNothing())
@@ -526,18 +523,17 @@ KVSO_CLASS_FUNCTION(sql,queryRecord)
         {
             KviKvsVariant *pValue=0;
             QVariant value=record.value(i);
-            if (value.type()==QVariant::LongLong){debug ("set long"); pValue=new KviKvsVariant((kvs_int_t) value.toLongLong());}
-            else if (value.type()==QVariant::String) {debug ("set string");pValue=new KviKvsVariant(value.toString());}
+            if (value.type()==QVariant::LongLong) pValue=new KviKvsVariant((kvs_int_t) value.toLongLong());
+            else if (value.type()==QVariant::String) pValue=new KviKvsVariant(value.toString());
             else if (value.type()==QVariant::ByteArray)
             {
-               debug("qbyte array");
                KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("memoryBuffer");
                KviKvsVariantList params(new KviKvsVariant(QString()));
                KviKvsObject * pObject = pClass->allocateInstance(0,"",c->context(),&params);
                *((KviKvsObject_memorybuffer *)pObject)->pBuffer()=value.toByteArray();
                pValue=new KviKvsVariant(pObject->handle());
             }
-            else {debug("empty value in name %s",record.fieldName(i).toUtf8().data());pValue=new KviKvsVariant(QString());}
+            else pValue=new KviKvsVariant(QString());
             pHash->set(record.fieldName(i),pValue);
             KviKvsVariant *value2=pHash->get(record.fieldName(i));
             value2->type();

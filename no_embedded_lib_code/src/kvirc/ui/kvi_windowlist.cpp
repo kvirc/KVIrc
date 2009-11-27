@@ -65,6 +65,7 @@ KviWindowListBase::KviWindowListBase()
 	setFeatures(QDockWidget::DockWidgetMovable);
 	m_pActivityMeterTimer = new QTimer();
 	connect(m_pActivityMeterTimer,SIGNAL(timeout()),this,SLOT(updateActivityMeter()));
+	connect(this, SIGNAL(dockLocationChanged(Qt::DockWidgetArea)),this, SLOT(updateDockLocation(Qt::DockWidgetArea)));
 	m_pActivityMeterTimer->start(5000);
 }
 
@@ -147,6 +148,10 @@ void KviWindowListBase::wheelEvent(QWheelEvent *e)
 		switchWindow(true, false);
 }
 
+void KviWindowListBase::updateDockLocation(Qt::DockWidgetArea newArea)
+{
+	currentArea = newArea;
+}
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // KviWindowListItem
@@ -349,10 +354,7 @@ void KviWindowListButton::drawButtonLabel(QPainter * painter)
 	}
 
 	if(bMinimized)
-	{
-		szText.prepend('(');
-		szText.append(')');
-	}
+		szText.prepend('(').append(')');
 
 	pPainter->setClipRect(cRect);
 	pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,&bRect);
@@ -482,7 +484,7 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 					{
 						// same type!
 						// sort by name
-						if(!KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) || (KviQString::cmpCI(btn->kviWindow()->windowName(),b->kviWindow()->windowName()) > 0))
+						if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) && (KviQString::cmpCI(btn->kviWindow()->windowName(),b->kviWindow()->windowName()) > 0))
 						{
 							// got a "higher one"
 							m_pButtonList->insert(idx,b);

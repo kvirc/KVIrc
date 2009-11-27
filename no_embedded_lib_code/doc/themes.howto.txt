@@ -21,7 +21,7 @@ you  can edit it manually if you want to make some changes.
 (The %20 strings are url-encoded spaces, KVirc will accept also plain spaces).
 
 themedata.kvc contains the visual settings. It looks more or less like this:
-	
+
 	....
 	uintGlobalTransparencyParentFadeFactor=10
 	boolObtainGlobalBackgroundFromKde=false
@@ -35,7 +35,7 @@ themedata.kvc contains the visual settings. It looks more or less like this:
 	iccolor2=0,0,200
 	mirccolor13=200,0,200
 	....
-	
+
 You can *carefully* edit it by hand, if you wish.
 Each option starts with a prefix that defines the "type" of that option.
 
@@ -69,7 +69,7 @@ following simple rules:
 	  the images will look bad
 	- the image format must be *.png: it is the only
 	  format granted to be loaded by all the versions of KVIrc.
-	
+
 If you don't want to "override" an image (and thus you want to leave
 the "default" one) you can delete it from the theme directory. KVIrc will
 fallback to the default image shipped in the distribution.
@@ -84,7 +84,7 @@ Hints:
 	  you should reflect it when painting.
 	  This small script will show you the associations between
 	  the icons and their names:
-		
+
 		%i = 0
 		do {
 			%name = $iconname(%i)
@@ -92,13 +92,13 @@ Hints:
 			%i++
 		} while(%name != "")
 
-	- The id's of the icons are just their ZERO_BASED indexes. 
+	- The id's of the icons are just their ZERO_BASED indexes.
 	  The kvi_smallicon_<number>.png files are numbered in increasing
 	  order and contain 16 images each one. kvi_smallicon_00.png
 	  contains images from 0 to 15, kvi_smallicon_01.png contains images
 	  16 to 31 etc... Thus the third icon in kvi_smallicon_02.png
 	  has id (2*16)+(3)-1 = 34.
-		
+
 
 
 

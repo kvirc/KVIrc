@@ -273,10 +273,14 @@ void KviMessageListWidgetItemDelegate::paint(QPainter * p, const QStyleOptionVie
 
 	if(opt.state & QStyle::State_Selected)
 	{
-		QPen pen(KVI_OPTION_COLOR(KviOption_colorIrcViewBackground));
+		QPen pen(Qt::white);
+		p->setPen(pen);
+		p->drawRect(opt.rect.adjusted(0,0,-1,-1));
+		p->drawRect(opt.rect.adjusted (1,1,-2,-2));
 
+		pen.setColor(Qt::black);
 		pen.setStyle(Qt::DashLine);
-		p->setPen( pen);
+		p->setPen(pen);
 		p->drawRect(opt.rect.adjusted(0,0,-1,-1));
 		p->drawRect(opt.rect.adjusted (1,1,-2,-2));
 	}

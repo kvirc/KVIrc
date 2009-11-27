@@ -151,7 +151,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandBreak()
 	{
 		warning(KVSP_curCharPointer,__tr2qs_ctx("Trailing garbage at the end of the break command: ignored","kvs"));
 	}
-	
+
 	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
 	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
 	return new KviKvsTreeNodeSpecialCommandBreak(pBegin);
@@ -179,7 +179,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandContinue()
 	{
 		warning(KVSP_curCharPointer,__tr2qs_ctx("Trailing garbage at the end of the continue command: ignored","kvs"));
 	}
-	
+
 	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
 	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
 	return new KviKvsTreeNodeSpecialCommandContinue(pBegin);
@@ -220,7 +220,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 
 	KviPointerList<KviKvsTreeNodeVariable> * pVarList = new KviPointerList<KviKvsTreeNodeVariable>;
 	pVarList->setAutoDelete(true);
-	
+
 	while(KVSP_curCharUnicode == '%')
 	{
 		KviKvsTreeNodeVariable * d = parsePercent();
@@ -229,7 +229,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandUnset()
 		pVarList->append(d);
 
 		skipSpaces();
-		
+
 		if(KVSP_curCharUnicode == ',')
 		{
 			KVSP_skipChar;
@@ -286,7 +286,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 		KVSP_skipChar;
 		const QChar * pBegin = KVSP_curCharPointer;
 
-	
+
 		while((KVSP_curCharIsLetterOrNumber) || (KVSP_curCharUnicode == '_'))KVSP_skipChar;
 
 		QString szIdentifier(pBegin,KVSP_curCharPointer - pBegin);
@@ -297,9 +297,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandGlobal()
 			m_pGlobals->setAutoDelete(true);
 		}
 		m_pGlobals->replace(szIdentifier,new QString());
-		
+
 		skipSpaces();
-		
+
 		if(KVSP_curCharUnicode == ',')
 		{
 			KVSP_skipChar;
@@ -345,7 +345,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			If an implementation of that class was already existing
 			it is removed with all the derived classes (and all the instances of this class
 			and the derived ones are destroyed).
-			<base_class_name> is the name of the class that the 
+			<base_class_name> is the name of the class that the
 			new class has to inherit from.[br]
 			If <base_class_name> is omitted, the new class inherits automatically
 			from [class:object]object[/class].[br]
@@ -364,7 +364,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			meaning in KVIrc scripting. The <parameter reminder> respects the syntax
 			of an expression, so it is terminated by a closed parenthesis.
 			It's rather dangerous to use this command inside an object
-			function handler: if the class definition <class> was already 
+			function handler: if the class definition <class> was already
 			existing and it is a parent of the object's class, you might
 			end up executing "inexisting" code.[br]
 			As a thumb rule, use this command only outside object function handlers.[br]
@@ -482,7 +482,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 		}
 
 		QString szLabel(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
-		
+
 		unsigned int uHandlerFlags = 0;
 
 		if(szLabel.toLower() == "internal")
@@ -492,16 +492,16 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			if(KVSP_curCharUnicode != '(')
 			{
 				pLabelBegin = KVSP_curCharPointer;
-		
+
 				while(KVSP_curCharIsLetterOrNumber)KVSP_skipChar;
-		
+
 				if(KVSP_curCharIsEndOfBuffer)
 				{
 					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in class definition","kvs"));
 					delete pClass;
 					return 0;
 				}
-		
+
 				if(KVSP_curCharPointer == pLabelBegin)
 				{
 					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
@@ -519,16 +519,16 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 			if(KVSP_curCharUnicode != '(')
 			{
 				pLabelBegin = KVSP_curCharPointer;
-		
+
 				while(KVSP_curCharIsLetterOrNumber)KVSP_skipChar;
-		
+
 				if(KVSP_curCharIsEndOfBuffer)
 				{
 					error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in class definition","kvs"));
 					delete pClass;
 					return 0;
 				}
-		
+
 				if(KVSP_curCharPointer == pLabelBegin)
 				{
 					error(KVSP_curCharPointer,__tr2qs_ctx("Found character %q (unicode %x) where a function name was expected","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
@@ -538,7 +538,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 				szLabel = QString(pLabelBegin,KVSP_curCharPointer - pLabelBegin);
 			}
 		}
-		
+
 		if(!skipSpacesAndNewlines())
 		{
 			delete pClass;
@@ -549,14 +549,14 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandClass()
 		{
 			while((!(KVSP_curCharIsEndOfBuffer)) && (KVSP_curCharUnicode != ')'))
 				KVSP_skipChar;
-				
+
 			if(KVSP_curCharIsEndOfBuffer)
 			{
 				error(KVSP_curCharPointer,__tr2qs_ctx("Unexpected end of buffer in function parameter list reminder","kvs"));
 				delete pClass;
 				return 0;
 			}
-			
+
 			KVSP_skipChar;
 
 			if(!skipSpacesAndNewlines())
@@ -779,7 +779,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 		} else j++;
 		KVSP_skipChar;
 	}
-	
+
 	if(!skipSpacesAndNewlines())
 	{
 		if(i)delete i;
@@ -811,7 +811,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandDo()
 		warning(KVSP_curCharPointer,__tr2qs_ctx("Garbage string after the expression in 'do' command: ignored","kvs"));
 		while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
 	}
-	
+
 	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
 
 	return new KviKvsTreeNodeSpecialCommandDo(pBegin,e,i);
@@ -1086,7 +1086,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 		}
 	}
 
-	
+
 	// HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK HACK
 	// KVSP_curCharPointer is const!
 	// we shouldn't be able to modify it
@@ -1115,7 +1115,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 	} // else just empty instruction
 
 	skipSpaces();
-	
+
 	if(KVSP_curCharUnicode != ')')
 	{
 		error(KVSP_curCharPointer,__tr2qs_ctx("Found char %q (unicode %x) while looking for the terminating ')' in 'for' command","kvs"),KVSP_curCharPointer,KVSP_curCharUnicode);
@@ -1145,7 +1145,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 			if(i2)delete i2;
 			return 0;
 		}
-		
+
 		if((!i1) && (!e) && (!i2))
 		{
 			error(pForBegin,__tr2qs_ctx("Empty infinite 'for' loop: fix the script","kvs"));
@@ -1155,7 +1155,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandFor()
 			return 0;
 		}
 	} // else just an empty instruction
-	
+
 	return new KviKvsTreeNodeSpecialCommandFor(pForBegin,i1,e,i2,loop);
 }
 
@@ -1226,7 +1226,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandForeach()
 
 	KviKvsTreeNodeData * d = parsePercentOrDollar();
 	if(!d)return 0;
-	
+
 	if(d->isFunctionCall() || d->isReadOnly())
 	{
 		warning(KVSP_curCharPointer,__tr2qs_ctx("The 'foreach' command expects a writeable iteration variable as first parameter","kvs"));
@@ -1307,7 +1307,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandSwitch()
 			Another flow control command
 		@description:
 			The switch command is based on the standard C 'switch' keyword.
-			It executes conditionally groups of commands choosen from
+			It executes conditionally groups of commands chosen from
 			a larger set of command groups.[br]
 			First <expression> is evaluated (<expression> is any arithmetic or string expression).[br]
 			Then the 'match','regexp','case' and 'default' labels are evaluated sequentially
@@ -1570,7 +1570,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 	KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * pPopup = new KviKvsTreeNodeSpecialCommandDefpopupLabelPopup(KVSP_curCharPointer);
 
 	KVSP_skipChar;
-	
+
 	if(!skipSpacesAndNewlines())
 	{
 		delete pPopup;
@@ -1601,7 +1601,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 		QString szLabelLow = szLabel.toLower();
 
 		KviPointerList<QString> * pParameters = 0;
-		
+
 		QString szCondition;
 
 
@@ -1758,7 +1758,7 @@ KviKvsTreeNodeSpecialCommandDefpopupLabelPopup * KviKvsParser::parseSpecialComma
 				delete pPopup;
 				return 0;
 			}
-			
+
 			pSubPopup->setCondition(szCondition);
 			pSubPopup->setText(*pText);
 			pSubPopup->setItemName(pItemName ? *pItemName : QString());
@@ -1983,7 +1983,7 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandHelp()
 {
 	// again not a fully special command: this routine just returns
 	// a CoreSimpleCommand but parses the parameters as constants
-	
+
 	// we handle a single big parameter, with whitespace stripped
 	// This is because we want the identifiers to be preserved
 	// as unevaluated (i.e $function).
@@ -1992,9 +1992,9 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandHelp()
 
 	const QChar * pBegin = KVSP_curCharPointer;
 	while(!KVSP_curCharIsEndOfCommand)KVSP_skipChar;
-	
+
 	if(!KVSP_curCharIsEndOfBuffer)KVSP_skipChar;
-	
+
 	QString tmp(pBegin,KVSP_curCharPointer - pBegin);
 	tmp.trimmed();
 
@@ -2005,6 +2005,6 @@ KviKvsTreeNodeCommand * KviKvsParser::parseSpecialCommandHelp()
 
 	KviKvsTreeNodeDataList * p = new KviKvsTreeNodeDataList(pBegin);
 	p->addItem(new KviKvsTreeNodeConstantData(pBegin,new KviKvsVariant(tmp)));
-	
+
 	return new KviKvsTreeNodeCoreSimpleCommand(pBegin,szHelpName,p,r);
 }

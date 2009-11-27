@@ -337,4 +337,4 @@ namespace KviAddonFunctions
 
 		return szDirName;
 	}
-};
+}

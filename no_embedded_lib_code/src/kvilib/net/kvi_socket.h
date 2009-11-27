@@ -110,7 +110,7 @@
 inline kvi_socket_t kvi_socket_create(int pf,int type,int proto)
 {
 	return (kvi_socket_t)socket(pf,type,proto);
-};
+}
 
 //================================================================================================
 // kvi_socket_isValid
@@ -145,7 +145,7 @@ inline void kvi_socket_destroy(kvi_socket_t sock)
 #else
 	close(sock);
 #endif
-};
+}
 
 //================================================================================================
 // kvi_socket_setNonBlocking
@@ -161,7 +161,7 @@ inline bool kvi_socket_setNonBlocking(kvi_socket_t sock)
 #else
 	return (fcntl(sock,F_SETFL,O_NONBLOCK) == 0);
 #endif
-};
+}
 
 //================================================================================================
 // kvi_socket_bind
@@ -172,7 +172,7 @@ inline bool kvi_socket_setNonBlocking(kvi_socket_t sock)
 inline bool kvi_socket_bind(kvi_socket_t sock,const struct sockaddr * sa,int salen)
 {
 	return (::bind(sock,sa,salen) == 0);
-};
+}
 
 //================================================================================================
 // kvi_socket_connect
@@ -189,7 +189,7 @@ inline bool kvi_socket_connect(kvi_socket_t sock,const struct sockaddr *sa,int s
 #else
 	return (::connect(sock,sa,salen) == 0);
 #endif
-};
+}
 
 inline bool kvi_socket_recoverableConnectError(int err)
 {
@@ -198,7 +198,7 @@ inline bool kvi_socket_recoverableConnectError(int err)
 #else
 	return (err == EINPROGRESS);
 #endif
-};
+}
 
 inline bool kvi_socket_recoverableError(int err)
 {
@@ -223,7 +223,7 @@ inline kvi_socket_t kvi_socket_accept(kvi_socket_t sock,struct sockaddr *sa,int 
 #else
 	return (kvi_socket_t)::accept(sock,sa,(socklen_t *)salen);
 #endif
-};
+}
 
 //================================================================================================
 // kvi_socket_listen
@@ -235,7 +235,7 @@ inline kvi_socket_t kvi_socket_accept(kvi_socket_t sock,struct sockaddr *sa,int 
 inline bool kvi_socket_listen(kvi_socket_t sock,int backlog)
 {
 	return (::listen(sock,backlog) == 0);
-};
+}
 
 //================================================================================================
 // kvi_socket_select
@@ -249,7 +249,7 @@ inline bool kvi_socket_listen(kvi_socket_t sock,int backlog)
 inline int kvi_socket_select(int nhpo,fd_set *r,fd_set *w,fd_set *e,struct timeval * t)
 {
 	return ::select(nhpo,r,w,e,t);
-};
+}
 
 //================================================================================================
 // kvi_socket_send
@@ -269,7 +269,7 @@ inline int kvi_socket_send(kvi_socket_t sock,const void * buf,int size)
 #else
 	return ::send(sock,buf,size,MSG_NOSIGNAL | MSG_DONTWAIT);
 #endif
-};
+}
 
 //================================================================================================
 // kvi_socket_recv
@@ -291,7 +291,7 @@ inline int kvi_socket_recv(kvi_socket_t sock,void * buf,int maxlen)
 #endif
 	g_uIncomingTraffic+=iReceived;
 	return iReceived;
-};
+}
 
 //================================================================================================
 // kvi_socket_getsockopt
@@ -338,7 +338,7 @@ inline bool kvi_socket_disableNagle(kvi_socket_t sock)
 {
 	int opt = 1;
 	return kvi_socket_setsockopt(sock,IPPROTO_TCP,TCP_NODELAY,&opt,sizeof(opt));
-};
+}
 */
 
 //================================================================================================

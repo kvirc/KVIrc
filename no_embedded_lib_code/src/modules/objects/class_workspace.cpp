@@ -30,8 +30,9 @@
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
 
-#include <QWorkspace>
-
+#include <QMdiArea>
+#include <QMdiSubWindow>
+#include <QHash>
 /*
 	@doc:	workspace
 	@keyterms:
@@ -77,7 +78,7 @@
 		{[br]
 			constructor[br]
 			{[br]
-				$$->$setGeometry(%X,%Y,100,100)[br]
+                                $$->$setGeometry(%X,%Y,100,100)[br](KviKvsObjectFunctionCall *c
 				$$->%label=$new(label,$$)[br]
 				$$->%label->$settext("Another class by N\&G")[br]
 				$$->%label->$setautoresize(1)[br]
@@ -162,96 +163,162 @@
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_workspace,"workspace","widget")
-	KVSO_REGISTER_HANDLER(KviKvsObject_workspace,"activeWindow", functionactiveWindow);
-	KVSO_REGISTER_HANDLER(KviKvsObject_workspace,"scrollBarsEnabled", functionscrollBarsEnabled);
-	KVSO_REGISTER_HANDLER(KviKvsObject_workspace,"setscrollBarsEnabled", functionsetscrollBarsEnabled);
-	KVSO_REGISTER_HANDLER(KviKvsObject_workspace,"cascade", functioncascade);
-	KVSO_REGISTER_HANDLER(KviKvsObject_workspace,"tile", functiontile);
-	KVSO_REGISTER_HANDLER(KviKvsObject_workspace,"closeActiveWindow", functioncloseActiveWindow);
-	KVSO_REGISTER_HANDLER(KviKvsObject_workspace,"closeAllWindows", functioncloseAllWindows);
-	KVSO_REGISTER_HANDLER(KviKvsObject_workspace,"activateNextWindow", functionactivateNextWindow);
-	KVSO_REGISTER_HANDLER(KviKvsObject_workspace,"activatePrevWindow", functionactivatePrevWindow);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,addSubWindow);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,removeSubWindow);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,activeWindow);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,scrollBarsEnabled);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,setscrollBarsEnabled);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,cascade);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,tile);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,closeActiveWindow);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,closeAllWindows);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,activateNextWindow);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_workspace,activatePrevWindow);
 KVSO_END_REGISTERCLASS(KviKvsObject_workspace)
 
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_workspace,KviKvsObject_widget)
-
+pWidgetDict=new QHash<kvs_hobject_t,QMdiSubWindow *>;
 KVSO_END_CONSTRUCTOR(KviKvsObject_workspace)
 
-
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_workspace)
-
+if (pWidgetDict)
+{
+    pWidgetDict->clear();
+    delete pWidgetDict;
+    pWidgetDict=0;
+}
 KVSO_END_CONSTRUCTOR(KviKvsObject_workspace)
 
 bool KviKvsObject_workspace::init(KviKvsRunTimeContext * ,KviKvsVariantList *)
 {
-	SET_OBJECT(QWorkspace);
+        SET_OBJECT(QMdiArea);
 	return true;
 }
 
-bool KviKvsObject_workspace::functionactiveWindow(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(workspace,addSubWindow)
 {
-	//if(widget()) c->returnValue()->setHObject((unsigned long)(((QWorkspace *)widget())->activeWindow()));
-	// FIXME!
-	c->returnValue()->setHObject(0);
-	return true; //?pFIX ME?
+        CHECK_INTERNAL_POINTER(widget())
+        KviKvsObject * pObject;
+        kvs_hobject_t hObject;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+        KVSO_PARAMETERS_END(c)
+        pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+        CHECK_HOBJECT_IS_WIDGET(pObject)
+        QMdiSubWindow *pMdi=((QMdiArea *)object())->addSubWindow(((QWidget *)(pObject->object())));
+        pWidgetDict->insert(hObject,pMdi);
+        ((QMdiArea *)object())->setActiveSubWindow(pMdi);
+        return true;
+}
+KVSO_CLASS_FUNCTION(workspace,removeSubWindow)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        KviKvsObject * pObject;
+        kvs_hobject_t hObject;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("widget",KVS_PT_HOBJECT,0,hObject)
+        KVSO_PARAMETERS_END(c)
+        pObject=KviKvsKernel::instance()->objectController()->lookupObject(hObject);
+        CHECK_HOBJECT_IS_WIDGET(pObject)
+        QMdiSubWindow *pMdiSubWindow=pWidgetDict->value(hObject);
+        if(pMdiSubWindow)
+        {
+               ((QMdiArea *)object())->removeSubWindow(pMdiSubWindow);
+               pWidgetDict->remove(hObject);
+        }
+        else c->warning(__tr2qs_ctx("The widget must be a subwindow of this workspace","objects"));
+        return true;
 }
 
-bool KviKvsObject_workspace::functionscrollBarsEnabled(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(workspace,cascade)
 {
-	if(widget())
-	c->returnValue()->setBoolean(((QWorkspace *)widget())->scrollBarsEnabled());
+        CHECK_INTERNAL_POINTER(widget())
+        ((QMdiArea *)widget())->cascadeSubWindows();
+        return true;
+}
+KVSO_CLASS_FUNCTION(workspace,tile)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        ((QMdiArea *)widget())->tileSubWindows();
+        return true;
+}
+KVSO_CLASS_FUNCTION(workspace,closeActiveWindow)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        ((QMdiArea *)widget())->closeActiveSubWindow();
+        return true;
+}
+
+KVSO_CLASS_FUNCTION(workspace,closeAllWindows)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        ((QMdiArea *)widget())->closeAllSubWindows();
+        return true;
+}
+
+KVSO_CLASS_FUNCTION(workspace,activateNextWindow)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        ((QMdiArea *)widget())->activateNextSubWindow();
+        return true;
+}
+
+KVSO_CLASS_FUNCTION(workspace,activatePrevWindow)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        ((QMdiArea *)widget())->activatePreviousSubWindow();
+        return true;
+}
+
+KVSO_CLASS_FUNCTION(workspace,activeWindow)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        QMdiSubWindow *pActiveMdi=((QMdiArea *)widget())->activeSubWindow();
+        if (pActiveMdi)
+        {
+            QHashIterator<kvs_hobject_t,QMdiSubWindow *> t(*pWidgetDict);
+            while (t.hasNext())
+            {
+                    t.next();
+                    kvs_hobject_t hObject=t.key();
+                    QMdiSubWindow *pMdi=t.value();
+                    if (pMdi==pActiveMdi)
+                    {
+                        c->returnValue()->setHObject(hObject);
+                        break;
+                    }
+            }
+        }
+        else c->returnValue()->setHObject((kvs_hobject_t)0);
+        return true;
+}
+KVSO_CLASS_FUNCTION(workspace,scrollBarsEnabled)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        bool bEnabled;
+        if(((QMdiArea *)widget())->verticalScrollBarPolicy()!=Qt::ScrollBarAlwaysOff) bEnabled=true;
+        else bEnabled=false;
+        c->returnValue()->setBoolean(bEnabled);
 	return true;
 }
 
-bool KviKvsObject_workspace::functionsetscrollBarsEnabled(KviKvsObjectFunctionCall *c)
+KVSO_CLASS_FUNCTION(workspace,setscrollBarsEnabled)
 {
-	bool bEnabled;
+        CHECK_INTERNAL_POINTER(widget())
+        bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
-	if(widget())
-		((QWorkspace *)widget())->setScrollBarsEnabled(bEnabled);
-	return true;
+        if(bEnabled)
+        {
+                ((QMdiArea *)widget())->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+                ((QMdiArea *)widget())->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        }
+        else
+        {
+                ((QMdiArea *)widget())->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+                ((QMdiArea *)widget())->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+        }
+        return true;
 }
 
-bool KviKvsObject_workspace::functioncascade(KviKvsObjectFunctionCall *)
-{
-	if(widget())
-		((QWorkspace *)widget())->cascade();
-	return true;
-}
-
-bool KviKvsObject_workspace::functiontile(KviKvsObjectFunctionCall *)
-{
-	if(widget())
-		((QWorkspace *)widget())->tile();
-	return true;
-}
-
-bool KviKvsObject_workspace::functioncloseActiveWindow(KviKvsObjectFunctionCall *)
-{
-	if(widget())
-		((QWorkspace *)widget())->closeActiveWindow();
-	return true;
-}
-
-bool KviKvsObject_workspace::functioncloseAllWindows(KviKvsObjectFunctionCall *)
-{
-	if(widget())
-		((QWorkspace *)widget())->closeAllWindows();
-	return true;
-}
-
-bool KviKvsObject_workspace::functionactivateNextWindow(KviKvsObjectFunctionCall *)
-{
-	if(widget())
-		((QWorkspace *)widget())->activateNextWindow();
-	return true;
-}
-
-bool KviKvsObject_workspace::functionactivatePrevWindow(KviKvsObjectFunctionCall *)
-{
-	if(widget())
-		((QWorkspace *)widget())->activatePreviousWindow();
-	return true;
-}

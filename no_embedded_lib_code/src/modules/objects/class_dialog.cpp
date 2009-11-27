@@ -4,7 +4,7 @@
 //   Creation date : Sun Apr 10 22:51:48 CEST 2002 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -48,6 +48,7 @@
 		similar to the widget class, it has only a couple of minor differences.
 		A dialog is always a top-level widget, but if it has a parent, its default
 		location is centered on top of the parent. It will also share the parent's windowlist entry.
+                !fn; setModal (<boolean>)
 		If you call $setModal(1) then the dialog will have non-blocking modal behaviour:
 		it will appear above its parent widget and block its input until it's closed.
 	@functions:

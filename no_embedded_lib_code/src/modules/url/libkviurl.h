@@ -31,7 +31,7 @@
 #include "kvi_tal_menubar.h"
 #include "kvi_mextoolbar.h"
 #include "kvi_kvs_action.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QDialog>
 #include <QLayout>
@@ -53,7 +53,7 @@ typedef struct _KviUrl
 	QString timestamp;
 } KviUrl;
 
-class KviUrlDialogTreeWidget : public KviTalTreeWidget
+class KviUrlDialogTreeWidget : public QTreeWidget
 {
 	Q_OBJECT
 public:
@@ -61,6 +61,7 @@ public:
 	~KviUrlDialogTreeWidget(){};
 protected:
 	void mousePressEvent (QMouseEvent *e);
+	void paintEvent(QPaintEvent * event);
 signals:
 	void rightButtonPressed(QTreeWidgetItem *,QPoint);
 };

@@ -1144,6 +1144,22 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 			}
 			return;
 		}
+
+		//old style NickServ nick identification routine
+		if(KviQString::equalCI(szNick,"NickServ"))
+		{
+			//kvs event triggering and text output
+			if(KVS_TRIGGER_EVENT_4_HALTED(KviEvent_OnNickServNotice,console,szNick,szUser,szHost,szMsgText))
+				msg->setHaltOutput();
+			if(!msg->haltOutput())
+			{
+				KviWindow * pOut = KVI_OPTION_BOOL(KviOption_boolServicesNoticesToActiveWindow) ?
+					console->activeWindow() : (KviWindow *)(console);
+				pOut->output(KVI_OUT_NICKSERV,"\r!n\r%Q\r [%Q@\r!h\r%Q\r]: %Q",&szNick,&szUser,&szHost,&szMsgText);
+			}
+			return;
+		}
+
 		// Chanserv nick identification routine
 		if(KviQString::equalCI(szNick,"ChanServ"))
 		{
@@ -1326,7 +1342,7 @@ void KviServerParser::parseLiteralNotice(KviIrcMessage *msg)
 				pOut->output(KVI_OUT_SERVERNOTICE,"[\r!s\r%Q\r]: %Q",&szNick,&szMsgText);
 			}
 			return;
-		} else {		
+		} else {
 			//UNKNOWN NOTICE TYPE
 			if(!msg->haltOutput())
 			{
@@ -1878,13 +1894,22 @@ void KviServerParser::parseChannelMode(const QString &szNick,const QString &szUs
 			CHANNEL_MODE('e',KviEvent_OnMeBanException,KviEvent_OnMeBanExceptionRemove,KviEvent_OnBanException,KviEvent_OnBanExceptionRemove,KVI_OUT_MEBANEXCEPT,KVI_OUT_MEBANUNEXCEPT,KVI_OUT_BANEXCEPT,KVI_OUT_BANUNEXCEPT)
 
 			default:
+				aParam = msg->connection()->decodeText(msg->safeParam(curParam++)); \
 				chan->setChannelMode(*aux,bSet);
 				if(!(msg->haltOutput() || (KVI_OPTION_BOOL(KviOption_boolShowCompactModeChanges) && bIsMultiMode)))
 				{
-					chan->output(KVI_OUT_CHANMODE,
-						__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),
-						&nickBuffer,&szUser,&hostBuffer,
-						bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
+					if(aParam.isEmpty())
+					{
+						chan->output(KVI_OUT_CHANMODE,
+							__tr2qs("%Q [%Q@%Q] has set channel \r!m%c%c\rmode %c%c\r"),
+							&nickBuffer,&szUser,&hostBuffer,
+							bSet ? '-' : '+',*aux,bSet ? '+' : '-',*aux);
+					} else {
+						chan->output(KVI_OUT_CHANMODE,
+							__tr2qs("%Q [%Q@%Q] has set mode %c%c \r!m%c%c\r%Q\r"),
+							&nickBuffer,&szUser,&hostBuffer,
+							bSet ? '+' : '-',*aux,bSet ? '-' : '+',*aux,&aParam);
+					}
 				}
 				if(bIsMultiSingleMode)
 					iIconForCompactMode=KVI_OUT_CHANMODE;

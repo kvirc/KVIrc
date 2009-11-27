@@ -33,14 +33,14 @@ exec -x -k=60000 -t -e ("telnet my.mail.server.com 25")
 		# Returning an empty string does not write to stdin
 		return
 	}
-	
+
 	if($0 == "stderr")
 	{
 		# This is our stderr handler.. just in case something goes wrong
 		echo "[stderr] $1"
 		return
 	}
-	
+
 	if($0 == "terminated")
 	{
 		echo "[process terminated]"

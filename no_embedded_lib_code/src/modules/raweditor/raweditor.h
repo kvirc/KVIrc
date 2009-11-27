@@ -26,7 +26,7 @@
 
 #include "kvi_window.h"
 #include "kvi_qstring.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 #include "kvi_iconmanager.h"
 
 #include <QWidget>
@@ -35,25 +35,25 @@
 class KviScriptEditor;
 class KviTalPopupMenu;
 
-class KviRawTreeWidget : public KviTalTreeWidget
+class KviRawTreeWidget : public QTreeWidget
 {
 	public:
 	KviRawTreeWidget(QWidget *par)
-		: KviTalTreeWidget(par){};
-	void updateItem(KviTalTreeWidgetItem *item)
+		: QTreeWidget(par){};
+	void updateItem(QTreeWidgetItem *item)
 	{
 		update(indexFromItem(item,0));
 	};
 	~KviRawTreeWidget() {};
 };
 
-class KviRawTreeWidgetItem : public KviTalTreeWidgetItem
+class KviRawTreeWidgetItem : public QTreeWidgetItem
 {
 public:
 	int m_iIdx;
 	QString m_szName;
 public:
-	KviRawTreeWidgetItem(KviTalTreeWidget * par,int idx,bool bEnabled);
+	KviRawTreeWidgetItem(QTreeWidget * par,int idx,bool bEnabled);
 	~KviRawTreeWidgetItem() {};
 public:
 	void setEnabled(bool bEnabled)
@@ -65,11 +65,11 @@ public:
 	virtual QString text(int) const { return m_szName; };
 };
 
-class KviRawHandlerTreeWidgetItem : public KviTalTreeWidgetItem
+class KviRawHandlerTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviRawHandlerTreeWidgetItem(KviTalTreeWidgetItem * par,const QString & name,const QString & buffer,bool bEnabled)
-	: KviTalTreeWidgetItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled)
+	KviRawHandlerTreeWidgetItem(QTreeWidgetItem * par,const QString & name,const QString & buffer,bool bEnabled)
+	: QTreeWidgetItem(par), m_szName(name) , m_szBuffer(buffer) , m_bEnabled(bEnabled)
 	{
 		setText(0,name);
 		setEnabled(bEnabled);

@@ -1,10 +1,10 @@
 //=============================================================================
 //
 //   File : controller.h
-//   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo Alvarez
+//   Creation date : Thu Apr 30 2002 17:13:12 GMT by Juanjo Álvarez
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002 Juanjo Alvarez (juanjux@yahoo.es)
+//   Copyright (C) 2002 Juanjo Álvarez (juanjux@yahoo.es)
 //   Copyright (C) 2002-2008 Szymon Stefanek (kvirc@tin.it)
 //
 //   This program is FREE software. You can redistribute it and/or
@@ -69,8 +69,12 @@ bool SPasteController::pasteFileInit(QString &fileName)
 	if(m_pFile)return false; // can't paste two files at a time
 	m_pFile = new QFile(fileName);
 	if(!m_pFile->open(QIODevice::ReadOnly))return false;
+	//avoid double connection
+	disconnect(m_pTimer,SIGNAL(timeout()),0,0);
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(pasteFile()));
-	m_pTimer->start(KVI_OPTION_UINT(KviOption_uintPasteDelay));
+	//avoid timer reset if always active
+	if(!m_pTimer->isActive())
+		m_pTimer->start(KVI_OPTION_UINT(KviOption_uintPasteDelay));
 	return true;
 }
 
@@ -83,10 +87,13 @@ bool SPasteController::pasteClipboardInit(void)
 		(*m_pClipBuff) += tmp.isEmpty()?QStringList():tmp.split("\n",QString::KeepEmptyParts);
 	} else {
 		m_pClipBuff = new QStringList(tmp.isEmpty()?QStringList():tmp.split("\n",QString::KeepEmptyParts));
-		m_clipBuffIterator = m_pClipBuff->begin();
 	}
+	//avoid double connection
+	disconnect(m_pTimer,SIGNAL(timeout()),0,0);
 	connect(m_pTimer,SIGNAL(timeout()),this,SLOT(pasteClipboard()));
-	m_pTimer->start(KVI_OPTION_UINT(KviOption_uintPasteDelay));
+	//avoid timer reset if always active
+	if(!m_pTimer->isActive())
+		m_pTimer->start(KVI_OPTION_UINT(KviOption_uintPasteDelay));
 	return true;
 }
 
@@ -117,25 +124,14 @@ void SPasteController::pasteFile(void)
 
 void SPasteController::pasteClipboard(void)
 {
-	if(m_clipBuffIterator != m_pClipBuff->end())
+	if(m_pClipBuff->isEmpty() || !g_pApp->windowExists(m_pWindow))
 	{
-		if(!g_pApp->windowExists(m_pWindow))
-		{
-		  	delete this;
-		} else {
-			QString line;
-			if((*m_clipBuffIterator).isEmpty())
-			{
-				line = QChar(KVI_TEXT_RESET);
-			} else {
-				line = *m_clipBuffIterator;
-			}
-
-			line.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
-			m_pWindow->ownMessage(line);
-			++m_clipBuffIterator;
-		}
-	} else delete this;//Clipboard finished
+	  	delete this;
+	} else {
+		QString line = m_pClipBuff->takeFirst();
+		line.replace('\t',QString(KVI_OPTION_UINT(KviOption_uintSpacesToExpandTabulationInput),' ')); //expand tabs to spaces
+		m_pWindow->ownMessage(line);
+	}
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

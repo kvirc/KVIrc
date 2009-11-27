@@ -52,13 +52,13 @@ typedef  struct _KviIrcUrlParts {
 namespace KviIrcUrl
 {
 
-	enum KviIrcUrlParserError { 
+	enum KviIrcUrlParserError {
 		InvalidProtocol = 1,
 		InvalidPort = 2,
 		NeedNewContext = 4
 	};
 
-	enum KviIrcUrlContextSpec { 
+	enum KviIrcUrlContextSpec {
 		FirstFreeContext = 1,
 		NewContext = 2,
 		CurrentContext = 4,
@@ -68,7 +68,7 @@ namespace KviIrcUrl
 	};
 
 	extern KVIRC_API bool parse(const char * url,KviStr &cmdBuffer,int contextSpec = KVI_IRCURL_CONTEXT_FIRSTFREE);
-	
+
 	extern KVIRC_API int  run(const QString& url,int contextSpec = FirstFreeContext,KviConsole* pConsole = 0);
 
 	extern KVIRC_API void split(QString url, KviIrcUrlParts& parts);

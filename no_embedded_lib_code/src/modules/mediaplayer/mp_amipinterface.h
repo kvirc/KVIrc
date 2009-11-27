@@ -73,7 +73,7 @@
 		virtual QString amipEval(const QString &cmd);
 		virtual KviMediaPlayerInterface::PlayerStatus status();
 	};
-	
+
 	MP_DECLARE_DESCRIPTOR(KviAmipInterface)
 
 #endif //COMPILE_ON_WINDOWS

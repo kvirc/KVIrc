@@ -51,7 +51,7 @@ KviLagOptionsWidget::KviLagOptionsWidget(QWidget * parent)
 			"the pings (if any) will be sent really less often. " \
 			"5000 is a reasonable value.</center>","options"));
 	connect(pUse,SIGNAL(toggled(bool)),pInterval,SLOT(setEnabled(bool)));
-	
+
 	KviUIntSelector * pAlarm = addUIntSelector(g, __tr2qs_ctx("Trigger event if lag exceeds:","options"), KviOption_uintLagAlarmTime,5000,1000000,30000, KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
 	pAlarm->setSuffix(__tr2qs_ctx(" msec","options"));
 	mergeTip(pAlarm,__tr2qs_ctx("<center>This option controls the threshold for the " \
@@ -59,7 +59,7 @@ KviLagOptionsWidget::KviLagOptionsWidget(QWidget * parent)
 			"the threshold OnLagAlarmTimeUp will be triggered and when the lag falls " \
 			"back below the threshold then OnLagAlarmTimeDown will be triggered</center>","options"));
 	connect(pUse,SIGNAL(toggled(bool)),pAlarm,SLOT(setEnabled(bool)));
-	
+
 	KviBoolSelector * pShow = addBoolSelector(g, __tr2qs_ctx("Show lag in IRC context display","options"), KviOption_boolShowLagOnContextDisplay, KVI_OPTION_BOOL(KviOption_boolUseLagMeterEngine));
 	mergeTip(pShow,__tr2qs_ctx("<center>This makes the IRC context display applet show the current lag after the user's nickname (in seconds)</center>","options"));
 

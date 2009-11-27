@@ -150,7 +150,7 @@
 	extern KVILIB_API const kvi_wchar_t * getColorBytesW(const kvi_wchar_t *data_ptr,unsigned char *byte_1,unsigned char *byte_2);
 	extern KVILIB_API unsigned int getUnicodeColorBytes(const QString &szData,unsigned int charIdx,unsigned char *byte_1,unsigned char *byte_2);
 	inline const QChar * getUnicodeColorBytes(const QChar *pData,unsigned char *byte_1,unsigned char *byte_2)
-		{ return (QChar *)getColorBytesW((const kvi_wchar_t *)pData,byte_1,byte_2); };
+		{ return (QChar *)getColorBytesW((const kvi_wchar_t *)pData,byte_1,byte_2); }
 
 #endif
 

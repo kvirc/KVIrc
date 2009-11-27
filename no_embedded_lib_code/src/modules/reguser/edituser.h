@@ -28,7 +28,7 @@
 #include "kvi_regusersdb.h"
 #include "kvi_selectors.h"
 #include "kvi_pointerhashtable.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 #include "kvi_tal_popupmenu.h"
 #include <kvi_tal_tabdialog.h>
 

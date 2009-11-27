@@ -40,9 +40,9 @@ public:
 	virtual void contextDescription(QString &szBuffer);
 
 	virtual void dump(const char * prefix);
-	
+
 	virtual bool convertStringConstantToNumeric();
-	
+
 	KviKvsVariant * value(){ return m_pValue; };
 };
 

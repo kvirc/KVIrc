@@ -45,7 +45,7 @@
 
 	KviKTorrentDBusInterface::KviKTorrentDBusInterface()
 	{
-		printf("KviKTorrentDBusInterface\n");
+// 		printf("KviKTorrentDBusInterface\n");
 
 // 		QTimer *timer = new QTimer(this);
 // 		connect(timer, SIGNAL(timeout()), this, SLOT(slotTimer()));
@@ -60,7 +60,7 @@
 
 	KviKTorrentDBusInterface::~KviKTorrentDBusInterface()
 	{
-		printf("~KviKTorrentDBusInterface\n");
+// 		printf("~KviKTorrentDBusInterface\n");
 	}
 
 	bool KviKTorrentDBusInterface::findRunningApp()
@@ -90,7 +90,7 @@
 	}
 
 #define KTDBUS_SIMPLE_CALL(__action) \
-	QDBusInterface dbus_iface("org.ktorrent.ktorrent", "/KTorrent", \
+	QDBusInterface dbus_iface("org.ktorrent.ktorrent", "/core", \
 				"org.ktorrent.KTorrent", QDBusConnection::sessionBus()); \
 	QDBusMessage reply = dbus_iface.call(QDBus::Block, __action); \
 	if (reply.type() == QDBusMessage::ErrorMessage) { \
@@ -154,13 +154,13 @@
 		if (u == "B")
 			;
 		else
-		if (u == "KB")
+		if (u == "KiB")
 			sz = sz * 1024.0;
 		else
-		if (u == "MB")
+		if (u == "MiB")
 			sz = sz * 1024.0 * 1024.0;
 		else
-		if (u == "GB")
+		if (u == "GiB")
 			sz = sz * 1024.0 * 1024.0 * 1024.0;
 		else
 			return false;
@@ -168,7 +168,7 @@
 		return true;
 	}
 */
-	bool KviKTorrentDBusInterface::start(int i)
+	bool KviKTorrentDBusInterface::start(int )
 	{
 /*
 		CHECK_RANGE_BOOL(i, m_ti.size())
@@ -180,7 +180,7 @@
 		return true;
 	}
 
-	bool KviKTorrentDBusInterface::stop(int i)
+	bool KviKTorrentDBusInterface::stop(int )
 	{
 /*
 		CHECK_RANGE_BOOL(i, m_ti.size())
@@ -192,7 +192,7 @@
 		return true;
 	}
 
-	bool KviKTorrentDBusInterface::announce(int i)
+	bool KviKTorrentDBusInterface::announce(int )
 	{
 /*
 		CHECK_RANGE_BOOL(i, m_ti.size())
@@ -204,7 +204,7 @@
 		return true;
 	}
 
-	QString KviKTorrentDBusInterface::state(int i)
+	QString KviKTorrentDBusInterface::state(int )
 	{
 /*
 		CHECK_RANGE_STRING(i, m_ti.size())
@@ -214,7 +214,7 @@
 	return QString();
 	}
 
-	QString KviKTorrentDBusInterface::name(int i)
+	QString KviKTorrentDBusInterface::name(int )
 	{
 	/*
 		CHECK_RANGE_STRING(i, m_ti.size())
@@ -224,7 +224,7 @@
 	return QString();
 	}
 
-	int KviKTorrentDBusInterface::fileCount(int i)
+	int KviKTorrentDBusInterface::fileCount(int )
 	{
 	/*
 		CHECK_RANGE_INT(i, m_ti.size())
@@ -238,7 +238,7 @@
 	return 0;
 	}
 
-	QString KviKTorrentDBusInterface::fileName(int i, int file)
+	QString KviKTorrentDBusInterface::fileName(int , int )
 	{
 	/*
 		CHECK_RANGE_STRING(i, m_ti.size())
@@ -254,7 +254,7 @@
 	return QString();
 	}
 
-	QString KviKTorrentDBusInterface::filePriority(int i, int file)
+	QString KviKTorrentDBusInterface::filePriority(int , int )
 	{
 	/*
 		CHECK_RANGE_STRING(i, m_ti.size())
@@ -278,7 +278,7 @@
 	return QString();
 	}
 
-	bool KviKTorrentDBusInterface::setFilePriority(int i, int file, const QString &prio)
+	bool KviKTorrentDBusInterface::setFilePriority(int , int , const QString &)
 	{
 	/*
 		CHECK_RANGE_BOOL(i, m_ti.size())
@@ -480,7 +480,7 @@
 	return -1;
 	}
 
-	bool KviKTorrentDBusInterface::setMaxUploadSpeed(int kbytes_per_sec)
+	bool KviKTorrentDBusInterface::setMaxUploadSpeed(int )
 	{
 	/*
 		if (!voidRetIntDCOPCall("KTorrent", "setMaxUploadSpeed(int)", kbytes_per_sec))
@@ -489,7 +489,7 @@
 		return true;
 	}
 
-	bool KviKTorrentDBusInterface::setMaxDownloadSpeed(int kbytes_per_sec)
+	bool KviKTorrentDBusInterface::setMaxDownloadSpeed(int )
 	{
 	/*
 		if (!voidRetIntDCOPCall("KTorrent", "setMaxDownloadSpeed(int)", kbytes_per_sec))

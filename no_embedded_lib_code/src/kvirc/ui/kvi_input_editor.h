@@ -556,6 +556,7 @@ protected:
 	virtual void keyReleaseEvent(QKeyEvent * e);
 	virtual void mousePressEvent(QMouseEvent * e);
 	virtual void mouseReleaseEvent(QMouseEvent * e);
+	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void dragEnterEvent(QDragEnterEvent * e);
 	virtual void dropEvent(QDropEvent * e);
 	virtual void inputMethodEvent(QInputMethodEvent * e) ;

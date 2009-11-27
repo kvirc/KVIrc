@@ -31,10 +31,10 @@
 #include "kvi_pixmap.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_vbox.h"
-#include "kvi_tal_scrollview.h"
 #include "kvi_tal_listwidget.h"
-#include "kvi_tal_treewidget.h"
 
+#include <QTreeWidget>
+#include <QScrollArea>
 #include <QCheckBox>
 #include <QLineEdit>
 #include <QLabel>
@@ -149,7 +149,7 @@ protected slots:
 	void checkToggled(int state);
 };
 
-class KVIRC_API KviPixmapPreview : public KviTalScrollView
+class KVIRC_API KviPixmapPreview : public QScrollArea
 {
 	Q_OBJECT
 public:
@@ -210,6 +210,7 @@ public slots:
 class KVIRC_API KviFileSelector : public KviTalHBox, public KviSelectorInterface
 {
 	Q_OBJECT
+	Q_PROPERTY(QString tmpFile READ tmpFile WRITE setTmpFile)
 public:
 	KviFileSelector(QWidget * par,const QString & txt,QString * pOption,bool bEnabled,unsigned int uFlags = 0,const QString &szFilter = QString());
 	~KviFileSelector(){};
@@ -226,6 +227,8 @@ protected:
 	unsigned int  m_uFlags;
 	QString       m_szFilter;
 public:
+	QString tmpFile(){ return m_pLineEdit->text(); };
+	void setTmpFile(QString & szFile){ m_pLineEdit->setText(szFile); };
 	virtual void commit();
 	void setSelection(const QString &szSelection);
 signals:
@@ -359,12 +362,12 @@ public:
 	virtual void setEnabled(bool bEnabled);
 };
 
-class KVIRC_API KviChanTreeViewItem : public KviTalTreeWidgetItem
+class KVIRC_API KviChanTreeViewItem : public QTreeWidgetItem
 {
 private:
 	QString m_szPass;
 public:
-	KviChanTreeViewItem(KviTalTreeWidget* pList,QString szChan,QString szPass);
+	KviChanTreeViewItem(QTreeWidget* pList,QString szChan,QString szPass);
 	~KviChanTreeViewItem() {};
 
 	const QString& pass() { return m_szPass; }
@@ -378,7 +381,7 @@ public:
 	~KviChannelListSelector();
 private:
 	QLabel       * m_pLabel;
-	KviTalTreeWidget    * m_pTreeWidget;
+	QTreeWidget    * m_pTreeWidget;
 	QLineEdit    * m_pChanLineEdit;
 	QLineEdit    * m_pPassLineEdit;
 	QPushButton  * m_pAddButton;

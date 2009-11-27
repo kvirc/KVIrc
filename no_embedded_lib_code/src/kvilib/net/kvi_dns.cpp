@@ -366,7 +366,7 @@ KviDns::~KviDns()
 bool KviDns::isRunning() const
 {
 	return (m_state == Busy);
-};
+}
 
 bool KviDns::lookup(const QString &query,QueryType type)
 {

@@ -15,7 +15,7 @@ PROJECT(kvirc)
 SET(CMAKE_ALLOW_LOOSE_LOOP_CONSTRUCTS true)
 
 # Minimum cmake version
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 2.6.4)
 
 # Check modules first in local dir
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules)
@@ -55,26 +55,38 @@ STRING(COMPARE EQUAL "${MANUAL_REVISION}" "" MANUAL_REVISION_UNSET)
 IF(MANUAL_REVISION_UNSET)
 	FIND_PACKAGE(Subversion)
 	IF(Subversion_FOUND)
-		MESSAGE("-- Found Subversion ${Subversion_VERSION_SVN}")
+		MESSAGE(STATUS "Found Subversion ${Subversion_VERSION_SVN}")
 		Subversion_WC_INFO(${PROJECT_SOURCE_DIR} KVIrc)
  		IF(DEFINED KVIrc_WC_REVISION)
 			SET(CMAKE_KVIRC_BUILD_REVISION ${KVIrc_WC_REVISION})
-			MESSAGE("-- Current revision is ${KVIrc_WC_REVISION}")
+			MESSAGE(STATUS "Current revision is ${KVIrc_WC_REVISION}")
 		ELSE()
-			MESSAGE("-- No Subversion working copy found")
+			MESSAGE(STATUS "No Subversion working copy found")
 		ENDIF()
 	ELSE()
 		MESSAGE("Subversion not found. No revision number will be used")
 	ENDIF()
 ELSE()
 	SET(CMAKE_KVIRC_BUILD_REVISION ${MANUAL_REVISION})
-	MESSAGE("-- Current revision has been manually set to ${MANUAL_REVISION}")
+	MESSAGE(STATUS "Current revision has been manually set to ${MANUAL_REVISION}")
+ENDIF()
+
+# Set man dir
+SET(MANDIR
+	CACHE STRING "Define man directory starting from $CMAKE_INSTALL_PREFIX"
+)
+
+STRING(COMPARE EQUAL "${MANDIR}" "" MANDIR_UNSET)
+IF(MANDIR_UNSET)
+	SET(MANDIR_PREFIX "share/man")
+ELSE()
+	SET(MANDIR_PREFIX "man")
 ENDIF()
 
 # Get the build date
 TRY_RUN(TEST_DID_RUN TEST_DID_COMPILE "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/datetime.cpp" OUTPUT_VARIABLE TEST_BUILD_DATE)
 IF(TEST_DID_COMPILE)
-	STRING(REGEX MATCH "[0-9][0-9][0-9][0-9]/[0-9][0-9]/[0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] [A-Z][A-Z][A-Z]" CMAKE_KVIRC_BUILD_DATE "${TEST_BUILD_DATE}")
+	STRING(REGEX MATCH "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9] [0-9][0-9]:[0-9][0-9]:[0-9][0-9] [A-Z][A-Z][A-Z]" CMAKE_KVIRC_BUILD_DATE "${TEST_BUILD_DATE}")
 ELSE()
 	SET(CMAKE_KVIRC_BUILD_DATE "ERROR")
 ENDIF()
@@ -112,23 +124,78 @@ LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS CMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX}
 # Release type
 #
 ###############################################################################
+OPTION(USE_ENV_FLAGS "Don't try to set CMAKE_C(XX)_FLAGS; instead, use the ones from environment variables" OFF)
+IF(USE_ENV_FLAGS)
+	SET(WANT_ENV_FLAGS ON)
+ENDIF()
 
 OPTION(WANT_DEBUG "Compile debug symbols" OFF)
 IF(DEBUG OR WITH_DEBUG)
 	SET(WANT_DEBUG ON)
 ENDIF()
-IF(WANT_DEBUG)
-	SET(CMAKE_BUILD_TYPE Debug)
-	SET(CMAKE_STATUS_DEBUG_SUPPORT "Yes")
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS DEBUG)
-	#force gdb format of debug symbols
-	SET(CMAKE_CXX_FLAGS "-O0 -ggdb")
-	SET(CMAKE_C_FLAGS "-O0 -ggdb")
-ELSE()
-	SET(CMAKE_BUILD_TYPE Release)
-	SET(CMAKE_STATUS_DEBUG_SUPPORT "No")
-ENDIF()
 
+OPTION(WANT_STRIP "Strip binaries (discard symbols from object files)" OFF)
+	
+IF(WANT_ENV_FLAGS)
+	SET(CMAKE_BUILD_TYPE Undefined)
+	SET(CMAKE_STATUS_DEBUG_SUPPORT "Environment-driven")
+ELSE()
+	IF(WANT_DEBUG)
+		SET(WANT_STRIP OFF)
+		SET(CMAKE_BUILD_TYPE Debug)
+		SET(CMAKE_STATUS_DEBUG_SUPPORT "Yes")
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS DEBUG)
+		IF(CMAKE_COMPILER_IS_GNUCXX)
+			#force gdb format of debug symbols
+			SET(CMAKE_CXX_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			SET(CMAKE_C_FLAGS "-O0 -ggdb -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			INCLUDE(CheckCXXCompilerFlag)
+			CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
+			#gcc doesn't support visibility on PE/win32
+			IF(CXX_HAS_VIH_FLAG AND NOT MINGW)
+				SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+				SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+			ENDIF()
+		ELSE()
+			#this small set of options should work on almost all compilers
+			SET(CMAKE_CXX_FLAGS "-O0 -g")
+			SET(CMAKE_C_FLAGS "-O0 -g")
+		ENDIF()
+	ELSE()
+		IF(WITHOUT_STRIP)
+			SET(WANT_STRIP OFF)
+			SET(CMAKE_STATUS_DEBUG_SUPPORT "No (Release)")
+			SET(CMAKE_BUILD_TYPE Release)
+		ELSE()
+			FIND_PROGRAM(STRIP_EXECUTABLE NAMES strip)
+			IF(STRIP_EXECUTABLE)
+				SET(WANT_STRIP ON)
+				SET(CMAKE_STATUS_DEBUG_SUPPORT "No (Stripped)")
+				SET(CMAKE_BUILD_TYPE Release-stripped)
+			ELSE()
+				SET(WANT_STRIP OFF)
+				SET(CMAKE_STATUS_DEBUG_SUPPORT "No (Release)")
+				SET(CMAKE_BUILD_TYPE Release)
+			ENDIF()
+		ENDIF()
+		IF(CMAKE_COMPILER_IS_GNUCXX)
+			#force gdb options
+			SET(CMAKE_CXX_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			SET(CMAKE_C_FLAGS "-O3 -fomit-frame-pointer -DNDEBUG --no-enforce-eh-specs -pipe --exec-charset=UTF-8 --input-charset=UTF-8 --no-implement-inlines --unit-at-a-time --fast-math")
+			INCLUDE(CheckCXXCompilerFlag)
+			CHECK_CXX_COMPILER_FLAG("-fvisibility-inlines-hidden" CXX_HAS_VIH_FLAG)
+			#gcc doesn't support visibility on PE/win32
+			IF(CXX_HAS_VIH_FLAG AND NOT MINGW)
+				SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+				SET(CMAKE_C_FLAGS "${CMAKE_CXX_FLAGS} -fvisibility-inlines-hidden")
+			ENDIF()
+		ELSE()
+			#this small set of options should work on almost all compilers
+			SET(CMAKE_CXX_FLAGS "-O3")
+			SET(CMAKE_C_FLAGS "-O3")
+		ENDIF()
+	ENDIF()
+ENDIF()
 
 ###############################################################################
 #
@@ -155,7 +222,7 @@ ENDIF()
 #
 ###############################################################################
 
-OPTION(WANT_COEXISTENCE "Append version to binaries to maintain compatibility with older versions" ON)
+OPTION(WANT_COEXISTENCE "Append version to binaries to maintain compatibility with older versions" OFF)
 IF(COEXISTENCE)
 	SET(WANT_COEXISTENCE ON)
 ENDIF()
@@ -203,9 +270,18 @@ INCLUDE(CheckIncludeFiles)
 CHECK_INCLUDE_FILES(sys/types.h SYSTEM_HAS_SYS_TYPES_H)
 CHECK_INCLUDE_FILES(strings.h SYSTEM_HAS_STRINGS_H)
 
-# No longer rely on this test for endianness (otherwise cross-compilation might fail)
-#INCLUDE(TestBigEndian)
-#TEST_BIG_ENDIAN(SYSTEM_IS_BIG_ENDIAN)
+# "dynamic labels" compiler support
+TRY_RUN(TEST_DID_RUN_DYNLABELS TEST_DID_COMPILE_DYNLABELS "${CMAKE_BINARY_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/dynlabels.cpp")
+IF(TEST_DID_COMPILE_DYNLABELS)
+	STRING(COMPARE EQUAL "${TEST_DID_RUN_DYNLABELS}" "0" TEST_DID_RUN_DYNLABELS_SUCCESS)
+	IF(TEST_DID_RUN_DYNLABELS_SUCCESS)
+		SET(COMPILE_USE_DYNAMIC_LABELS 1)
+	ELSE()
+		SET(COMPILE_USE_DYNAMIC_LABELS 0)
+	ENDIF()
+ELSE()
+	SET(COMPILE_USE_DYNAMIC_LABELS 0)
+ENDIF()
 
 ###############################################################################
 # Option for precompiled headers usage (currently broken because of bad gcc support)
@@ -275,11 +351,11 @@ ENDIF()
 # We require at least Qt 4.5.x
 FIND_PACKAGE(Qt4 4.5.0 REQUIRED)
 IF(QT4_FOUND)
-	SET(QT_USE_QTSQL true) 
-	SET(QT_USE_QTXML true) 
-	SET(QT_USE_QTNETWORK true) 
+	SET(QT_USE_QTSQL true)
+	SET(QT_USE_QTXML true)
+	SET(QT_USE_QTNETWORK true)
 
-	# Qt-DBus support 
+	# Qt-DBus support
 	OPTION(WANT_QTDBUS "Whether to compile Qt-DBus support" ON)
 	IF(WITHOUT_QTDBUS)
 		SET(WANT_QTDBUS OFF)
@@ -289,7 +365,7 @@ IF(QT4_FOUND)
 			SET(QT_USE_QTDBUS true)
 			SET(CMAKE_STATUS_QTDBUS_SUPPORT "Yes")
 			SET(COMPILE_DBUS_SUPPORT 1)
-			ADD_DEFINITIONS("-DCOMPILE_DBUS_SUPPORT")
+			ADD_DEFINITIONS(-DCOMPILE_DBUS_SUPPORT)
 			LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS COMPILE_DBUS_SUPPORT)
 		ELSE()
 			SET(CMAKE_STATUS_QTDBUS_SUPPORT "Not available")
@@ -308,7 +384,7 @@ IF(QT4_FOUND)
 			SET(QT_USE_QTWEBKIT true)
 			SET(CMAKE_STATUS_QTWEBKIT_SUPPORT "Yes")
 			SET(COMPILE_WEBKIT_SUPPORT 1)
-			ADD_DEFINITIONS("-DCOMPILE_WEBKIT_SUPPORT")
+			ADD_DEFINITIONS(-DCOMPILE_WEBKIT_SUPPORT)
 			LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS COMPILE_WEBKIT_SUPPORT)
 		ELSE()
 			SET(CMAKE_STATUS_QTWEBKIT_SUPPORT "Not available")
@@ -330,13 +406,16 @@ IF(UNIX)
 		# Assume linux
 		FIND_PACKAGE(X11)
 		IF(X11_FOUND)
-			#STRING(REPLACE ";" " " CMAKESUX_X11_INCLUDE_DIR "${X11_INCLUDE_DIR}")
-			#SET(CMAKE_INCLUDEDIRS "${CMAKE_INCLUDEDIRS} ${CMAKESUX_X11_INCLUDE_DIR}")
-			#SET(CMAKE_LIBRARIES "${CMAKE_LIBRARIES} X11")
 			SET(COMPILE_X11_SUPPORT 1)
 			SET(CMAKE_STATUS_X11_SUPPORT "Yes")
 			INCLUDE_DIRECTORIES(${X11_INCLUDE_DIR})
 			LIST(APPEND LIBS ${X11_LIBRARIES})
+            # Seems like ${X11_LIBRARIES} doesn't add -lXrender, which is needed
+            # for building with --no-add-needed/binutils-gold, see
+            # <http://bugs.debian.org/555068> for details.
+            IF(X11_Xrender_FOUND)
+                    LIST(APPEND LIBS ${X11_Xrender_LIB})
+            ENDIF(X11_Xrender_FOUND)
 		ELSE()
 			SET(CMAKE_STATUS_X11_SUPPORT "Not available")
 		ENDIF()
@@ -433,7 +512,7 @@ IF(WANT_KDE4)
 		INCLUDE_DIRECTORIES(${KDE4_INCLUDES})
 		ADD_DEFINITIONS(${KDE4_DEFINITIONS})
 		SET(COMPILE_KDE_SUPPORT 1)
-		LIST(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY})
+		LIST(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_SOLID_LIBRARY})
 		SET(CMAKE_STATUS_KDE4_SUPPORT "Yes")
 		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS COMPILE_KDE_SUPPORT)
 
@@ -479,7 +558,7 @@ ENDIF()
 # OpenSSL support (Secure Sockets, Certificates, Digests etc...)
 ############################################################################
 
-OPTION(WANT_OPENSSL "Whether to use OpenSSL library, if found" ON)
+OPTION(WANT_OPENSSL "Whether to use OpenSSL library" ON)
 IF(WITHOUT_SSL)
 	SET(WANT_OPENSSL OFF)
 ENDIF()
@@ -567,11 +646,14 @@ OPTION(WANT_PERL "Compile Perl Support" ON)
 IF(WITHOUT_PERL)
 	SET(WANT_PERL OFF)
 ENDIF()
+
+#perl is needed for documentation, too
+FIND_PACKAGE(Perl)
+
 IF(WANT_PERL)
-	FIND_PACKAGE(Perl)
 	IF(PERL_FOUND)
 		SET(COMPILE_PERL_SUPPORT 1)
-		SET(CMAKE_STATUS_PERL_SUPPORT "Yes")
+		SET(CMAKE_STATUS_PERL_SUPPORT "Yes, used for scripting+doc")
 
 		# Get the right flags to link with
 		EXECUTE_PROCESS(
@@ -588,8 +670,13 @@ IF(WANT_PERL)
 		SET(CMAKE_STATUS_PERL_SUPPORT "No")
 	ENDIF()
 ELSE()
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_PERL)
-	SET(CMAKE_STATUS_PERL_SUPPORT "User disabled")
+	IF(PERL_FOUND)
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_PERL)
+		SET(CMAKE_STATUS_PERL_SUPPORT "Used for doc, but scripting disabled by user")
+	ELSE()
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_PERL)
+		SET(CMAKE_STATUS_PERL_SUPPORT "No")
+	ENDIF()
 ENDIF()
 
 # Check for Python support
@@ -603,16 +690,20 @@ IF(WANT_PYTHON)
 		SET(COMPILE_PYTHON_SUPPORT 1)
 		SET(CMAKE_STATUS_PYTHON_SUPPORT "Yes")
 
+		#under win32/mingw, if no link flag is needed ${PYTHON_LFLAGS} is set to a braindead "None"
+		STRING(REPLACE "None" "" PYTHON_LFLAGS "${PYTHON_LFLAGS}")
 		SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} ${PYTHON_LFLAGS}")
+                # Remove leading and trailing spaces (string strip)
+		STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 		LIST(APPEND LIBS ${PYTHON_LIBRARY})
 
 		INCLUDE_DIRECTORIES(${PYTHON_INCLUDE_PATH})
 	ELSE()
-		SET(CMAKE_STATUS_PYTHON_SUPPORT "No")
+		SET(CMAKE_STATUS_PYTHON_SUPPORT "No, not found.")
 	ENDIF()
 ELSE()
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_PYTHON)
-	SET(CMAKE_STATUS_PYTHON_SUPPORT "User disabled")
+	SET(CMAKE_STATUS_PYTHON_SUPPORT "No")
 ENDIF()
 
 ############################################################################
@@ -653,7 +744,7 @@ INCLUDE(CheckFunctionExists)
 CHECK_FUNCTION_EXISTS("inet_ntoa" HAVE_INET_NTOA)
 # what systems lacks this!?
 IF(HAVE_INET_NTOA)
-	ADD_DEFINITIONS("-DHAVE_INET_NTOA")
+	ADD_DEFINITIONS(-DHAVE_INET_NTOA)
 ENDIF()
 
 ############################################################################
@@ -701,6 +792,39 @@ ELSE()
 	SET(COMPILE_DISABLE_DCC_VOICE 1)
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DCC_VOICE)
 	SET(CMAKE_STATUS_DCC_VOICE_SUPPORT "User disabled")
+ENDIF()
+
+############################################################################
+# Dcc video support + extended webcam support (LibV4L2)
+############################################################################
+OPTION(WANT_DCC_VIDEO "Compile DCC Video Support" OFF)
+IF(WITH_DCC_VIDEO)
+	SET(WANT_DCC_VIDEO ON)
+ENDIF()
+
+FIND_PACKAGE(LibV4L2)
+
+IF(WANT_DCC_VIDEO)
+	IF(LIBV4L2_FOUND)
+		SET(CMAKE_STATUS_DCC_VIDEO_SUPPORT "Yes, with LibV4L2")
+		SET(HAVE_LIBV4L2 1)
+		SET(V4L2_CAP_VIDEO_CAPTURE 1)
+	ELSE()
+		find_path(V4L_INCLUDE_DIR NAMES linux/videodev.h)
+		IF(V4L_INCLUDE_DIR)
+			SET(CMAKE_STATUS_DCC_VIDEO_SUPPORT "Yes, without LibV4L2")
+		ELSE()
+			SET(COMPILE_DISABLE_AVDEVICE 1)
+			SET(COMPILE_DISABLE_DCC_VIDEO 1)
+			LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DCC_VIDEO)
+			SET(CMAKE_STATUS_DCC_VIDEO_SUPPORT "Not available")
+		ENDIF()
+	ENDIF()
+ELSE()
+	SET(COMPILE_DISABLE_AVDEVICE 1)
+	SET(COMPILE_DISABLE_DCC_VIDEO 1)
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_DCC_VIDEO)
+	SET(CMAKE_STATUS_DCC_VIDEO_SUPPORT "User disabled")
 ENDIF()
 
 ############################################################################
@@ -767,26 +891,28 @@ ENDIF()
 ############################################################################
 OPTION(WANT_NO_EMBEDDED_CODE "Don't use embedded copies of code available from libraries (potential security issue)" OFF)
 IF(WITH_NO_EMBEDDED_CODE)
-    SET(WANT_NO_EMBEDDED_CODE ON)
-ENDIF(WITH_NO_EMBEDDED_CODE)
+	SET(WANT_NO_EMBEDDED_CODE ON)
+ENDIF()
 
 IF(WANT_NO_EMBEDDED_CODE)
-    MESSAGE("-- WANT_NO_EMBEDDED_CODE activated.")
-    MESSAGE("-- WARNING: Parts of the code you're about to compile are in an experimental state!")
-    find_package(PkgConfig)
+	MESSAGE(STATUS "WANT_NO_EMBEDDED_CODE activated.")
+	FIND_PACKAGE(PkgConfig)
 
-    # needed for Rijndael/AES replacement and friends
-    pkg_check_modules(CRYPTOPP libcrypto++>=5.0.0)
-    IF(CRYPTOPP_FOUND)
-        LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
-    ELSE(CRYPTOPP_FOUND)
-        LIST(APPEND LIBS "-lcrypto++")
-        MESSAGE("     WARNING: YOU ENABLED WITH_NO_EMBEDDED_CODE BUT YOUR SYSTEM DOESN'T PROVIDE")
-        MESSAGE("              A .pc FILE FOR Crypto++.")
-        MESSAGE("              THIS BUILD MIGHT FAIL, MAKE SURE Crypto++ IS INSTALLED AND IT CAN")
-        MESSAGE("              BE LINKED AGAINST IT WITH »-lcrypto++«.")
-    ENDIF(CRYPTOPP_FOUND)
-ENDIF(WANT_NO_EMBEDDED_CODE)
+	# for every os/distribution 
+	pkg_check_modules(CRYPTOPP cryptopp>=5.0.0)
+
+	# for Debian and derivates
+	pkg_check_modules(CRYPTOPP libcrypto++>=5.0.0)
+	IF(CRYPTOPP_FOUND)
+		LIST(APPEND LIBS "-l${CRYPTOPP_LIBRARIES}")
+	ELSE()
+		LIST(APPEND LIBS "-lcryptopp")
+		MESSAGE("     WARNING: YOU ENABLED WITH_NO_EMBEDDED_CODE BUT YOUR SYSTEM DOESN'T PROVIDE")
+		MESSAGE("              A .pc FILE FOR Crypto++.")
+		MESSAGE("              THIS BUILD MIGHT FAIL, MAKE SURE Crypto++ IS INSTALLED AND IT CAN")
+		MESSAGE("              BE LINKED AGAINST IT WITH »-lcryptopp«.")
+	ENDIF()
+ENDIF()
 
 ############################################################################
 # Win32 mingw/cmake build checks
@@ -796,12 +922,13 @@ IF(WIN32)
 ENDIF()
 
 IF(MINGW)
-        ADD_DEFINITIONS(-DMINGW -DCOMPILE_USE_STANDALONE_MOC_SOURCES -mwindows)
         LIST(APPEND LIBS -lshlwapi)
 	IF(WANT_DEBUG)
                 SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} -Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -fno-exceptions")
+				ADD_DEFINITIONS(-DMINGW -DCOMPILE_USE_STANDALONE_MOC_SOURCES)
         ELSE()
                 SET(ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS} -Wl,--enable-auto-import,--enable-runtime-pseudo-reloc -mwindows -fno-exceptions")
+				ADD_DEFINITIONS(-DMINGW -DCOMPILE_USE_STANDALONE_MOC_SOURCES -mwindows)
 	ENDIF()
         #remove leading and trailing spaces (string strip)
         STRING(REGEX REPLACE "(^( )+|( )+$)" "" ADDITIONAL_LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
@@ -980,10 +1107,6 @@ IF(UNIX)
 		distclean
 		@echo Cleaning for source distribution
 	)
-	ADD_CUSTOM_TARGET(
-		uninstall
-		"${CMAKE_COMMAND}" -P "${PROJECT_BINARY_DIR}/cmake_uninstall.cmake"
-	)
 	SET(
 		DISTCLEANED
 		cmake.depends
@@ -1055,12 +1178,6 @@ ENDIF()
 
 #CONFIGURE_FILE(${kvirc_SOURCE_DIR}/cmake/FindKVIrc.cmake.in ${kvirc_BINARY_DIR}/FindKVIrc.cmake @ONLY)
 
-CONFIGURE_FILE(
-	${PROJECT_SOURCE_DIR}/cmake/UninstallTarget.cmake.in
-	${PROJECT_BINARY_DIR}/cmake_uninstall.cmake
-	IMMEDIATE @ONLY
-)
-
 IF(WANT_DOXYGEN)
 	IF(DOXYGEN_FOUND)
 		CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/cmake/Doxyfile.cmake ${CMAKE_BINARY_DIR}/admin/Doxyfile @ONLY)
@@ -1088,12 +1205,64 @@ LIST(APPEND LIBS "${ADDITIONAL_LINK_FLAGS}")
 # FINAL OUTPUT
 ###############################################################################
 
+# Binary path
+IF(UNIX)
+	IF(APPLE)
+		SET(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/Contents/MacOS/${KVIRC_BINARYNAME})
+	ELSE()
+		# Assume linux
+		SET(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/bin/${KVIRC_BINARYNAME})
+	ENDIF()
+ELSEIF(WIN32)
+	SET(KVIRC_BIN_PATH ${CMAKE_INSTALL_PREFIX}/${KVIRC_BINARYNAME})
+ENDIF()
+
+# KviLib path
+IF(UNIX)
+	IF(APPLE)
+		SET(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/Contents/Frameworks/)
+	ELSE()
+		# Assume linux
+		SET(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/)
+	ENDIF()
+ELSEIF(WIN32)
+	SET(KVIRC_LIB_PATH ${CMAKE_INSTALL_PREFIX}/)
+ENDIF()
+
+# Modules path
+IF(UNIX)
+	IF(APPLE)
+		SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/Contents/Frameworks/${KVIRC_BINARYNAME}/${VERSION_BRANCH}/)
+	ELSE()
+		# Assume linux
+		SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}/${KVIRC_BINARYNAME}/${VERSION_BRANCH}/)
+	ENDIF()
+ELSEIF(WIN32)
+	SET(KVIRC_MOD_PATH ${CMAKE_INSTALL_PREFIX}/${KVIRC_BINARYNAME}/${VERSION_BRANCH}/)
+ENDIF()
+
+# Man path
+IF(UNIX)
+	IF(APPLE)
+		# does MacOS X use man pages?
+	ELSE()
+		# Assume linux
+		SET(KVIRC_MAN_PATH ${CMAKE_INSTALL_PREFIX}/${MANDIR_PREFIX}/)
+	ENDIF()
+ELSE()
+		SET(KVIRC_MAN_PATH "Not available")
+ENDIF()
+
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "Ok, this is the configuration I've worked out:")
 IF(${CONFIG_IS_UPTODATE})
 	MESSAGE(STATUS "(I found an old config that was exactly the same and kept it to save compilation time)")
 ENDIF()
 MESSAGE(STATUS " ")
+MESSAGE(STATUS "  Binary Path                 : ${KVIRC_BIN_PATH}")
+MESSAGE(STATUS "  Library Path                : ${KVIRC_LIB_PATH}")
+MESSAGE(STATUS "  Modules Path                : ${KVIRC_MOD_PATH}")
+MESSAGE(STATUS "  Man Path                    : ${KVIRC_MAN_PATH}")
 MESSAGE(STATUS "  Debug                       : ${CMAKE_STATUS_DEBUG_SUPPORT}")
 MESSAGE(STATUS "  Verbose Output              : ${CMAKE_STATUS_VERBOSE_SUPPORT}")
 MESSAGE(STATUS "  Coexistence Support         : ${CMAKE_STATUS_COEXISTENCE_VER}")
@@ -1113,6 +1282,7 @@ MESSAGE(STATUS "  IPC Support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
 MESSAGE(STATUS "  System memmove Support      : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT}")
 MESSAGE(STATUS "  GSM Support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
 MESSAGE(STATUS "  DCC Voice Support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
+MESSAGE(STATUS "  DCC Video Support           : ${CMAKE_STATUS_DCC_VIDEO_SUPPORT}")
 MESSAGE(STATUS "  Apple Universal Binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
 MESSAGE(STATUS "  ix86 asm Support            : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
 MESSAGE(STATUS "  Memory Profile Support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")
@@ -1121,7 +1291,7 @@ MESSAGE(STATUS "  GetText Support             : ${CMAKE_STATUS_GETTEXT_SUPPORT}$
 MESSAGE(STATUS "  GetText Messages Tidying    : ${CMAKE_STATUS_MESSAGE_TIDY}")
 #MESSAGE(STATUS "  Generate int. help files    : ${CMAKE_STATUS_GEN_USERDOC}")
 MESSAGE(STATUS "  Doxygen Support             : ${CMAKE_STATUS_DOXYGEN_SUPPORT}")
-MESSAGE(STATUS "  Enabled audio backends      : ${CMAKE_STATUS_AUDIO_BACKENDS}")
+MESSAGE(STATUS "  Enabled Audio Backends      : ${CMAKE_STATUS_AUDIO_BACKENDS}")
 MESSAGE(STATUS " ")
 MESSAGE(STATUS "  Build Date                  : ${CMAKE_KVIRC_BUILD_DATE}")
 MESSAGE(STATUS " ")

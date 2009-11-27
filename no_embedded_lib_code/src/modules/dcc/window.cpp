@@ -27,7 +27,7 @@
 #include "kvi_tal_hbox.h"
 
 KviDccWindow::KviDccWindow(int type,KviFrame * lpFrm,const char * name,KviDccDescriptor * d)
-: KviWindow(type,lpFrm,name)
+: KviWindow(type,lpFrm,name, d->console())
 {
 	m_pDescriptor = d;
 	m_pDescriptor->setWindow(this);

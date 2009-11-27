@@ -38,6 +38,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_input.h"
 #include "kvi_tal_hbox.h"
+#include "kvi_tal_splitter.h"
 
 #ifdef COMPILE_ON_WINDOWS
 	// The brain-damaged MSVC compiler can't instantiate QList templates without a destructor definition
@@ -54,7 +55,6 @@
 
 class QPushButton;
 class QPixmap;
-class QSplitter;
 class QTextCodec;
 class KviFrame;
 class KviWindowListItem;
@@ -146,7 +146,6 @@ protected: // almost private: don't touch :D
 	QString                               m_szName;                  // the current window name (usually also the target)
 	KviFrame                            * m_pFrm;
 	KviConsole                          * m_pConsole;
-	KviIrcContext                       * m_pContext;
 
 	int                                   m_iType;
 
@@ -155,7 +154,7 @@ protected: // almost private: don't touch :D
 	QString                               m_szPlainTextCaption;
 	KviIrcView                          * m_pIrcView;
 	KviInput                            * m_pInput;
-	QSplitter                           * m_pSplitter;
+	KviTalSplitter                      * m_pSplitter;
 	KviTalHBox                          * m_pButtonBox;
 	unsigned long int                     m_uId;
 	QString                               m_szTextEncoding;
@@ -204,12 +203,11 @@ public:
 	inline KviMdiChild * mdiParent(){ return (KviMdiChild *)parent(); };
 	// The console that this window belongs to: may be null for windows that aren't bound to irc contexts
 	inline KviConsole * console(){ return m_pConsole; };
-	// same as above
-	inline KviIrcContext * context(){ return m_pContext; };
+	KviIrcContext * context();
 	// the current IRC connection (if any)
-	inline KviIrcConnection * connection();
+	KviIrcConnection * connection();
 	// The splitter of this window: it *shouldn't* be null... but ... well.. who knows ? :D ...better check it
-	inline QSplitter * splitter(){ return m_pSplitter; };
+	inline KviTalSplitter * splitter(){ return m_pSplitter; };
 	// The window has ALWAYS a WindowList item
 	inline KviWindowListItem * windowListItem(){ return m_pWindowListItem; };
 	// The window *might* have a button container
@@ -243,7 +241,7 @@ public:
 	const QString & lastMessageText();
 
 	inline const QString &textEncoding(){ return m_szTextEncoding; };
-	// returns true if the encoding could be succesfully set
+	// returns true if the encoding could be successfully set
 	bool setTextEncoding(const QString &szTextEncoding);
 	// this must return a default text codec suitable for this window
 	virtual QTextCodec * defaultTextCodec();
@@ -271,7 +269,6 @@ public:
 	virtual void getConfigGroupName(QString &buf);
 	virtual void getBaseLogFileName(QString &buffer);
 	virtual void updateCaption();
-	void updateCaptionListItem();
 	virtual void applyOptions();
 	virtual void updateIcon();
 	virtual void ownMessage(const QString &){};
@@ -354,7 +351,6 @@ protected:
 	// Virtuals overridden to manage the internal layouts...
 	virtual void moveEvent(QMoveEvent *e);
 	virtual void closeEvent(QCloseEvent *e);
-	virtual void wheelEvent(QWheelEvent *e);
 	virtual void childEvent(QChildEvent *e);
 	virtual void focusInEvent(QFocusEvent *e);
 
@@ -404,11 +400,5 @@ inline QString KviWindow::decodeText(const char * szText)
 		return defaultTextCodec()->toUnicode(szText);
 	}
 }
-
-inline KviIrcConnection * KviWindow::connection()
-{
-	return m_pContext ? m_pContext->connection() : 0;
-}
-
 
 #endif //_KVI_WINDOW_H_

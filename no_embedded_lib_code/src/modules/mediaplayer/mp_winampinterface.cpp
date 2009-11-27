@@ -46,14 +46,14 @@
 
 #define IPC_JUMPTOTIME 106
 // ** SendMessage(hwnd_winamp,WM_WA_IPC,ms,IPC_JUMPTOTIME);
-// ** IPC_JUMPTOTIME sets the position in milliseconds of the 
+// ** IPC_JUMPTOTIME sets the position in milliseconds of the
 // ** current song (approximately).
 
 #define IPC_SETPLAYLISTPOS 121
 //	** SendMessage(hwnd_winamp,WM_WA_IPC,position,IPC_SETPLAYLISTPOS)
 //	** IPC_SETPLAYLISTPOS sets the playlsit position to 'position'.
 
-#define IPC_SETVOLUME 122 
+#define IPC_SETVOLUME 122
 // ** SendMessage(hwnd_winamp,WM_WA_IPC,volume,IPC_SETVOLUME);
 // ** IPC_SETVOLUME sets the volume of Winamp (from 0-255).
 
@@ -62,9 +62,9 @@
 //	** IPC_GETLISTLENGTH returns the length of the current playlist, in
 //	** tracks.
 
-#define IPC_GETEQDATA 127 
+#define IPC_GETEQDATA 127
 // ** int data=SendMessage(hwnd_winamp,WM_WA_IPC,pos,IPC_GETEQDATA);
-// ** IPC_GETEQDATA queries the status of the EQ. 
+// ** IPC_GETEQDATA queries the status of the EQ.
 // ** The value returned depends on what 'pos' is set to:
 // ** Value      Meaning
 // ** ------------------
@@ -169,8 +169,8 @@
 
 static QTextCodec * mediaplayer_get_codec()
 {
-	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toAscii()); 
-	if(!c)c = QTextCodec::codecForLocale(); 
+	QTextCodec * c= QTextCodec::codecForName(KVI_OPTION_STRING(KviOption_stringWinampTextEncoding).toAscii());
+	if(!c)c = QTextCodec::codecForLocale();
 	return c;
 
 }
@@ -362,7 +362,7 @@ QString KviWinampInterface::nowPlaying()
 				szBuffer[i] = SendMessage(hWinamp,WM_USER,KVIRC_WM_USER,KVIRC_WM_USER_TRANSFER + i);
 			}
 			szBuffer[ len ] = '\0';
-			
+
 			QTextCodec *c=mediaplayer_get_codec();
 			if (c) ret = c->toUnicode(szBuffer);
 			else ret=szBuffer;

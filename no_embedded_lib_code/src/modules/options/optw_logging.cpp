@@ -42,9 +42,8 @@ KviLoggingOptionsWidget::KviLoggingOptionsWidget(QWidget * parent)
 	addBoolSelector(g,__tr2qs_ctx("Channel windows","options"),KviOption_boolAutoLogChannels);
 	addBoolSelector(g,__tr2qs_ctx("DCC Chat windows","options"),KviOption_boolAutoLogDccChat);
 	addBoolSelector(g,__tr2qs_ctx("Console windows","options"),KviOption_boolAutoLogConsole);
-#ifdef COMPILE_ZLIB_SUPPORT
-	addBoolSelector(0,1,0,1,__tr2qs_ctx("Gzip logs","options"),KviOption_boolGzipLogs); 
-#endif
+
+	addDirectorySelector(0,1,0,1,__tr2qs_ctx("Save logs to folder:","options"),KviOption_stringLogsPath);
 	addBoolSelector(0,2,0,2,__tr2qs_ctx("Strip message type numbers in logs","options"),KviOption_boolStripMsgTypeInLogs);
 	addBoolSelector(0,3,0,3,__tr2qs_ctx("Strip colors in logs","options"),KviOption_boolStripControlCodesInLogs);
 	KviUIntSelector* us = addUIntSelector(0,4,0,4,__tr2qs_ctx("Auto flush logs every","options"),KviOption_uintAutoFlushLogs,0,99999,0);
@@ -52,7 +51,12 @@ KviLoggingOptionsWidget::KviLoggingOptionsWidget(QWidget * parent)
 	mergeTip(us,
 		__tr2qs_ctx("<center>Save logs with the current interval<br>" \
 			"Set to 0 to disable this feature</center>","options"));
-	addRowSpacer(0,5,0,5);
+
+#ifdef COMPILE_ZLIB_SUPPORT
+	addBoolSelector(0,5,0,5,__tr2qs_ctx("Gzip logs","options"),KviOption_boolGzipLogs);
+#endif
+
+	addRowSpacer(0,6,0,6);
 }
 
 KviLoggingOptionsWidget::~KviLoggingOptionsWidget()

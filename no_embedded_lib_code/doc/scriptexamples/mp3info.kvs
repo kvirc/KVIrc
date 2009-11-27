@@ -16,7 +16,7 @@
 				%Mtime++
 				%Stime-=60
 			}
-			
+
 			%Htime=0
 
 			while(%Mtime > 59) {
@@ -34,20 +34,20 @@
 			}
 
 
-	
-			if (%Htime > 0)
-				%Ctime = $str.append %Htime:%Mtime:%Stime						
-			
-			
 
-			if (%Mtime > 0 && %Htime < 1) 
+			if (%Htime > 0)
+				%Ctime = $str.append %Htime:%Mtime:%Stime
+
+
+
+			if (%Mtime > 0 && %Htime < 1)
 				%Ctime = $str.append %Mtime:%Stime
-				
-			
-			
-			if (%Mtime < 1 && %Htime < 1) 
+
+
+
+			if (%Mtime < 1 && %Htime < 1)
 				%Ctime = %Stime
-			
+
 
 
 			me has currently [$mp3player.gettitle @ %Xmms_play - $($mp3player.getrate/1000) kbps - $($mp3player.getfreq/1000) kHz - seit: %Ctime (h:m:s)]
@@ -55,13 +55,13 @@
 
 
 		else if(%Postfix == %Cda_postfix) {
-           %Xmms_play=$mp3player.getfilename; 
+           %Xmms_play=$mp3player.getfilename;
 
         }
 
-  
+
 		else {
-            
+
             if ($mp3player.getchannels == 2) {
                  %Channels = Stereo
             }
@@ -84,9 +84,9 @@
             %size = $file.size("$mp3player.getfilename")
             %msize = $(%size / (1024*1024))
             %ksize = $((%size - ((%size / (1024*1024)) * 1024 * 1024) - (%size % 1024)) / 1024)
-     
+
             %bsize = $(%size % 1024)
-            
+
 
             if(%msize > 0){
                     %size = "%msize MByte %ksize KByte"

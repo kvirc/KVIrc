@@ -47,7 +47,7 @@ class KviKvsObject_socket : public KviKvsObject
 public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_socket)
 protected:
-	bool               m_bUdp;  
+	bool               m_bUdp;
 	kvi_socket_t       m_sock;
 	int                m_iStatus;
 	QString             m_szRemoteIp;

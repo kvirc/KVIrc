@@ -263,7 +263,7 @@ void KviPasswordLineEdit::setText(const QString& text){
 }
 
 KviPixmapPreview::KviPixmapPreview(QWidget * par)
-: KviTalScrollView(par)
+: QScrollArea(par)
 {
 	m_pLabPixmap = new QLabel;
 	setWidget(m_pLabPixmap);
@@ -452,10 +452,11 @@ KviDirectorySelector::KviDirectorySelector(QWidget * par,const QString & txt,QSt
 
 void KviDirectorySelector::select()
 {
-	QString tmp;
-	if(KviFileDialog::askForDirectoryName(tmp,__tr2qs("Choose a Directory - KVIrc"),""))
+	QString szTmp;
+	if(KviFileDialog::askForDirectoryName(szTmp,__tr2qs("Choose a Directory - KVIrc"),""))
 	{
-		m_pLineEdit->setText(tmp);
+		m_pLineEdit->setText(szTmp);
+		emit selectionChanged(szTmp);
 	}
 }
 
@@ -781,8 +782,8 @@ void KviSoundSelector::setEnabled(bool bEnabled)
 	m_pPlayButton->setEnabled(bEnabled);
 }
 
-KviChanTreeViewItem::KviChanTreeViewItem(KviTalTreeWidget* pList,QString szChan,QString szPass)
-:KviTalTreeWidgetItem(pList)
+KviChanTreeViewItem::KviChanTreeViewItem(QTreeWidget* pList,QString szChan,QString szPass)
+:QTreeWidgetItem(pList)
 {
 	m_szPass=szPass;
 	QString mask;
@@ -795,7 +796,7 @@ KviChannelListSelector::KviChannelListSelector(QWidget * par,const QString & txt
 : KviTalVBox(par), KviSelectorInterface()
 {
 	m_pLabel = new QLabel(txt,this);
-	m_pTreeWidget = new KviTalTreeWidget(this);
+	m_pTreeWidget = new QTreeWidget(this);
 	m_pTreeWidget->setRootIsDecorated(false);
 	m_pTreeWidget->setColumnCount(2);
 	QStringList columnLabels;
@@ -845,7 +846,7 @@ void KviChannelListSelector::commit()
 	{
 		pItem=(KviChanTreeViewItem*)m_pTreeWidget->topLevelItem(i);
 		m_pOption->append(pItem->text(0)+":"+pItem->pass());
-	//KviTalTreeWidgetItemIterator it( m_pTreeWidget);
+	//QTreeWidgetItemIterator it( m_pTreeWidget);
 	//while ( it.current() ) {
 	//	pItem = (KviChanTreeViewItem*)( it.current() );
 //		m_pOption->append(pItem->text(0)+":"+pItem->pass());
@@ -884,14 +885,14 @@ void KviChannelListSelector::addClicked()
 
 void KviChannelListSelector::removeClicked()
 {
-	KviPointerList<KviTalTreeWidgetItem> lst;
+	KviPointerList<QTreeWidgetItem> lst;
 	QList<QTreeWidgetItem *> items=m_pTreeWidget->selectedItems () ;
-	//KviTalTreeWidgetItemIterator it( m_pTreeWidget, KviTalTreeWidgetItemIterator::Selected );
+	//QTreeWidgetItemIterator it( m_pTreeWidget, QTreeWidgetItemIterator::Selected );
 	//while ( it.current() ) {
 	for (int i=0;i<items.count();i++)
 	{
-		lst.append((KviTalTreeWidgetItem *)items.at(i));
-	//	lst.append((KviTalTreeWidgetItem *)it.current() );
+		lst.append((QTreeWidgetItem *)items.at(i));
+	//	lst.append((QTreeWidgetItem *)it.current() );
 	//	++it;
 	}
 	lst.setAutoDelete(TRUE);

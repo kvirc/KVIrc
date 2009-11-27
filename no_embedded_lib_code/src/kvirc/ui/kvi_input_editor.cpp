@@ -54,12 +54,13 @@
 #include <QFontMetrics>
 #include <QKeyEvent>
 #include <QDragEnterEvent>
+#include <QInputContext>
 
 QFontMetrics * g_pLastFontMetrics = 0;
 
 // from kvi_app.cpp
 extern KviTalPopupMenu         * g_pInputPopup;
-extern KviTextIconWindowWidget * g_pTextIconWindow;
+extern KviTextIconWindow       * g_pTextIconWindow;
 extern KviColorWindow          * g_pColorWindow;
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -158,7 +159,9 @@ void KviInputEditor::recalcFontMetrics()
 void KviInputEditor::applyOptions()
 {
 	//set the font
-	setFont(KVI_OPTION_FONT(KviOption_fontInput));
+	QFont newFont(KVI_OPTION_FONT(KviOption_fontInput));
+	newFont.setKerning(false);
+	setFont(newFont);
 
 	//then, let font metrics be updated in lazy fashion
 	if(g_pLastFontMetrics) delete g_pLastFontMetrics;
@@ -308,9 +311,7 @@ void KviInputEditor::drawContents(QPainter * p)
 		int iXLeft = xPositionFromCharIndex(fm,iSelStart,TRUE);
 		int iXRight = xPositionFromCharIndex(fm,m_iSelectionEnd + 1,TRUE);
 
-//		p->setRasterOp(Qt::NotROP);
 		p->fillRect(iXLeft,frameWidth(),iXRight - iXLeft,iWidgetWidth,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
-//		p->setRasterOp(Qt::CopyROP);
 	}
 
 	// When m_bIMComposing is true, the text between m_iIMStart and m_iIMStart+m_iIMLength should be highlighted to show that this is the active
@@ -328,9 +329,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 		int iXIMSelectionLeft = xPositionFromCharIndex(fm,iIMSelectionStart,TRUE);
 		int iXIMSelectionRight = xPositionFromCharIndex(fm,iIMSelectionStart + m_iIMSelectionLength,TRUE);
-//		p->setRasterOp(Qt::NotROP);
 		p->fillRect(iXIMSelectionLeft,0,iXIMSelectionRight - iXIMSelectionLeft, iWidgetWidth,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
-//		p->setRasterOp(Qt::CopyROP);
 
 		// highlight the IM selection
 		int iIMStart = m_iIMStart;
@@ -418,7 +417,7 @@ void KviInputEditor::drawContents(QPainter * p)
 	while(m_iBlockLen < m_iCursorPosition)
 	{
 		QChar c = m_szTextBuffer.at(m_iBlockLen);
-		m_iLastCursorXPosition+= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);
+		m_iLastCursorXPosition+= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
 		m_iBlockLen++;
 	}
 
@@ -465,11 +464,10 @@ void KviInputEditor::drawTextBlock(QPainter * pa, QFontMetrics & fm, int iCurXPo
 
 	pa->drawText(iCurXPos,iTextBaseline,szTmp);
 
-	if(m_bCurBold)pa->drawText(iCurXPos+1,iTextBaseline,szTmp);
+	if(m_bCurBold)
+		pa->drawText(iCurXPos+1,iTextBaseline,szTmp);
 	if(m_bCurUnderline)
-	{
 		pa->drawLine(iCurXPos,iTextBaseline + fm.descent(),iCurXPos+m_iBlockWidth,iTextBaseline + fm.descent());
-	}
 }
 
 QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
@@ -534,7 +532,7 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics & fm, int iCurXPos,
 				(c != QChar(KVI_TEXT_ICON))))
 			{
 				m_iBlockLen++;
-				int iXxx = c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
+				int iXxx = c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
 				m_iBlockWidth += iXxx;
 				iCurXPos      += iXxx;
 				iIdx++;
@@ -650,6 +648,48 @@ void KviInputEditor::runUpToTheFirstVisibleChar()
 			}
 		}
 		iIdx++;
+	}
+}
+
+void KviInputEditor::mouseDoubleClickEvent(QMouseEvent * e)
+{
+	//select clicked word
+	if(e->button() & Qt::LeftButton)
+	{
+		if(m_szTextBuffer.length()<1)
+			return;
+		int iCursor = charIndexFromXPosition(e->pos().x());
+		int iLen=m_szTextBuffer.length()-1;
+		if(iCursor>iLen)
+			iCursor=iLen;
+		if(!m_szTextBuffer.at(iCursor).isLetterOrNumber())
+			return;
+		//search word init
+		m_iSelectionBegin = iCursor;
+		while(m_iSelectionBegin > 0)
+		{
+			if(!m_szTextBuffer.at(m_iSelectionBegin-1).isLetterOrNumber())
+					break;
+			m_iSelectionBegin--;
+		}
+		//ensure that the begin of the selection is visible
+		if(m_iFirstVisibleChar>m_iSelectionBegin)
+			m_iFirstVisibleChar=m_iSelectionBegin;
+
+		//search word end
+		m_iSelectionEnd = iCursor;
+		while(m_iSelectionEnd < iLen)
+		{
+			if(!m_szTextBuffer.at(m_iSelectionEnd+1).isLetterOrNumber())
+					break;
+			m_iSelectionEnd++;
+		}
+		if(m_iSelectionEnd==((int)(m_szTextBuffer.length())))
+			m_iSelectionEnd--;
+		//all-in-one: move cursor at the end of the selection, ensure it's visible and repaint
+		moveCursorTo(m_iSelectionEnd, true);
+		m_iCursorPosition++;
+		killDragTimer();
 	}
 }
 
@@ -776,6 +816,14 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 		}
 
 		g_pInputPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)),__tr2qs("Insert Icon"),m_pIconMenu);
+
+		QInputContext *qic = g_pApp->inputContext();
+		if (qic) {
+			QList<QAction *> imActions = qic->actions();
+			for (int i = 0; i < imActions.size(); ++i)
+				g_pInputPopup->addAction(imActions.at(i));
+		}
+
 		g_pInputPopup->popup(mapToGlobal(e->pos()));
 	} else {
 		pasteSelectionWithConfirmation();
@@ -1180,30 +1228,51 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 		return;
 	}
 
-	removeSelected();
-
-	int c = m_iCursorPosition;
-	if (e->replacementStart() <= 0)
-		c += e->commitString().length() + qMin(-e->replacementStart(), e->replacementLength());
-
-	m_iCursorPosition += e->replacementStart();
-
-	// insert commit string
-	if (e->replacementLength()) {
-		m_iIMSelectionBegin = m_iCursorPosition;
-		m_iIMLength = e->replacementLength();
-		removeSelected();
-	}
-	if (!e->commitString().isEmpty())
+	if(!m_bIMComposing)
 	{
-		m_bIMComposing = false;
-		insertText(e->commitString());
-	} else {
+		removeSelected();
+		m_iIMStart = m_iIMSelectionBegin = m_iCursorPosition;
+		m_iIMLength = 0;
 		m_bIMComposing = true;
 	}
 
-	m_iCursorPosition = c;
-	update();
+	m_bUpdatesEnabled = false;
+
+	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
+
+	// update selection inside the pre-edit
+	m_iIMSelectionBegin = m_iIMStart + e->replacementStart();
+	m_iIMSelectionLength = e->replacementLength();
+	moveCursorTo(m_iIMSelectionBegin);
+
+	if (e->commitString().isEmpty())
+	{
+		if(e->preeditString().isEmpty())
+		{
+			m_bIMComposing = false;
+			m_iIMStart = 0;
+			m_iIMLength = 0;
+		} else {
+			// replace the preedit area with the IM result text
+			m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->preeditString());
+			// move cursor to after the IM result text
+			moveCursorTo(m_iIMStart + m_iIMLength);
+		}
+	} else {
+		// replace the preedit area with the IM result text
+		m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
+		// move cursor to after the IM result text
+		moveCursorTo(m_iIMStart + m_iIMLength);
+		// reset data
+		m_bIMComposing = false;
+		m_iIMStart = 0;
+		m_iIMLength = 0;
+	}
+
+	// repaint
+	m_bUpdatesEnabled = true;
+		
+	repaintWithCursorOn();
 }
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
@@ -1237,7 +1306,8 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 	{
 		switch(e->key())
 		{
-			case Qt::Key_Backspace:
+			case Qt::Key_Enter:
+			case Qt::Key_Return:
 				if(m_pInputParent->inherits("KviInput"))
 				{
 					((KviInput*)(m_pInputParent))->multiLinePaste(m_szTextBuffer);
@@ -1295,6 +1365,11 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 					repaintWithCursorOn();
 				}
 			break;
+			case Qt::Key_J:
+			{
+				//avoid Ctrl+J from inserting a linefeed
+				break;
+			}
 			case Qt::Key_K:
 			{
 				if(!m_bReadOnly)
@@ -1333,12 +1408,12 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 					if(iXPos > 24)
 						iXPos-=24;
 					if(!g_pTextIconWindow)
-						g_pTextIconWindow = new KviTextIconWindowWidget();
+						g_pTextIconWindow = new KviTextIconWindow();
 
 					if(iXPos+g_pTextIconWindow->width() > width())
 						iXPos = width()-(g_pTextIconWindow->width()+2);
 					g_pTextIconWindow->move(mapToGlobal(QPoint(iXPos,-KVI_TEXTICON_WIN_HEIGHT)));
-					g_pTextIconWindow->popup(this);
+					g_pTextIconWindow->popup(this,false);
 				}
 			}
 			break;
@@ -1977,13 +2052,13 @@ void KviInputEditor::moveRightFirstVisibleCharToShowCursor()
 
 	QChar c = m_szTextBuffer.at(m_iCursorPosition);
 
-	m_iLastCursorXPosition += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);
+	m_iLastCursorXPosition += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
 
 	while(m_iLastCursorXPosition >= contentsRect().width()-2*KVI_INPUT_MARGIN)
 	{
 		c = m_szTextBuffer.at(m_iFirstVisibleChar);
 
-		m_iLastCursorXPosition -= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
+		m_iLastCursorXPosition -= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
 
 		m_iFirstVisibleChar++;
 	}
@@ -2016,7 +2091,7 @@ int KviInputEditor::charIndexFromXPosition(int iXPos)
 	while(iCurChar < iBufLen)
 	{
 		QChar c = m_szTextBuffer.at(iCurChar);
-		int iWidthCh = (c.unicode() < 32) ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);
+		int iWidthCh = (c.unicode() < 32) ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
 
 		if(iXPos < (iCurXPos+(iWidthCh/2)))
 		{
@@ -2039,14 +2114,15 @@ int  KviInputEditor::xPositionFromCharIndex(QFontMetrics & fm, int iChIdx, bool 
 	// FIXME: this could use fm.width(m_szTextBuffer,chIdx)
 	int iCurXPos = bContentsCoords ? KVI_INPUT_MARGIN : frameWidth()+KVI_INPUT_MARGIN;
 	int iCurChar = m_iFirstVisibleChar;
-	while(iCurChar < iChIdx)
-	{
-		QChar c = m_szTextBuffer.at(iCurChar);
+	if(!m_szTextBuffer.isEmpty())
+		while(iCurChar < iChIdx)
+		{
+			QChar c = m_szTextBuffer.at(iCurChar);
 
-		iCurXPos += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 3 : fm.width(c);;
+			iCurXPos += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
 
-		iCurChar++;
-	}
+			iCurChar++;
+		}
 	return iCurXPos;
 }
 
@@ -2058,14 +2134,16 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx, bool bContentsCoords)
 
 	if(!g_pLastFontMetrics)
 		g_pLastFontMetrics = new QFontMetrics(font());
-	while(iCurChar < iChIdx)
-	{
-		QChar c = m_szTextBuffer.at(iCurChar);
 
-		iCurXPos += c.unicode() < 32 ? g_pLastFontMetrics->width(getSubstituteChar(c.unicode())) + 3 : g_pLastFontMetrics->width(c);
+	if(!m_szTextBuffer.isEmpty())
+		while(iCurChar < iChIdx)
+		{
+			QChar c = m_szTextBuffer.at(iCurChar);
 
-		iCurChar++;
-	}
+			iCurXPos += c.unicode() < 32 ? g_pLastFontMetrics->width(getSubstituteChar(c.unicode())) + 4 : g_pLastFontMetrics->width(c);
+
+			iCurChar++;
+		}
 
 	return iCurXPos;
 }
@@ -2183,7 +2261,7 @@ void KviInputEditor::addCommand(const Command& cmd)
 		The idea is quite simple: the IRC client (and it's user) associates
 		some small images to text strings (called icon tokens) and the strings are sent
 		in place of the images preceeded by a special escape character.[br]
-		The choosen escape character is 29 (hex 0x1d) which corresponds
+		The chosen escape character is 29 (hex 0x1d) which corresponds
 		to the ASCII group separator.[br]
 		So for example if a client has the association of the icon token "rose" with a small
 		icon containing a red rose flower then KVIrc could send the string
@@ -2241,59 +2319,59 @@ void KviInputEditor::addCommand(const Command& cmd)
 		to type multiple commands at once :).
 		[/p]
 		[big]Default Key Bindings:[/big][br]
-		Ctrl+B: Inserts the 'bold' mIRC text control character<br>
-		Ctrl+K: Inserts the 'color' mIRC text control character<br>
-		Ctrl+R: Inserts the 'reverse' mIRC text control character<br>
-		Ctrl+U: Inserts the 'underline' mIRC text control character<br>
-		Ctrl+O: Inserts the 'reset' mIRC text control character<br>
-		Ctrl+P: Inserts the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line<br>
-		Ctrl+Z: Undo the last action<br>
-		Ctrl+Y: Redo the last undoed action<br>
-		Ctrl+C: Copies the selected text to clipboard<br>
-		Ctrl+X: Cuts the selected text<br>
-		Ctrl+V: Pastes the clipboard contents (same as middle mouse click)<br>
-		Ctrl+I: Inserts the 'icon' control code and pops up the icon list box<br>
-		Ctrl+A: Select all<br>
-		Ctrl+L: Paste file<br>
-		CursorUp: Moves backward in the command history<br>
-		CursorDown: Moves forward in the command history<br>
-		CursorRight: Moves the cursor to the right<br>
-		CursorLeft: Moves the cursor to the left :)<br>
-		Shift+CursorLeft: Moves the selection to the left<br>
-		Shift+RightCursor: Moves the selection to the right<br>
-		Ctrl+CursorLeft: Moves the cursor one word left<br>
-		Ctrl+CursorRight: Moves the cursor one word right<br>
-		Ctrl+Shift+CursorLeft: Moves the selection one word left<br>
-		Ctrl+Shift+CursorRight: Moves the selection one word right<br>
-		Tab: Nickname, function/command, or filename completion (see below)<br>
-		Shift+Tab: Hostmask or function/command completion (see below)<br>
-		Alt+&lt;numeric_sequence&gt;: Inserts the character by ASCII/Unicode code<br>
-		<example>
+		Ctrl+B: Inserts the 'bold' mIRC text control character[br]
+		Ctrl+K: Inserts the 'color' mIRC text control character[br]
+		Ctrl+R: Inserts the 'reverse' mIRC text control character[br]
+		Ctrl+U: Inserts the 'underline' mIRC text control character[br]
+		Ctrl+O: Inserts the 'reset' mIRC text control character[br]
+		Ctrl+P: Inserts the 'non-crypt' (plain text) KVIrc control character used to disable encryption of the current text line[br]
+		Ctrl+Z: Undo the last action[br]
+		Ctrl+Y: Redo the last undoed action[br]
+		Ctrl+C: Copies the selected text to clipboard[br]
+		Ctrl+X: Cuts the selected text[br]
+		Ctrl+V: Pastes the clipboard contents (same as middle mouse click)[br]
+		Ctrl+I: Inserts the 'icon' control code and pops up the icon list box[br]
+		Ctrl+A: Select all[br]
+		Ctrl+L: Paste file[br]
+		CursorUp: Moves backward in the command history[br]
+		CursorDown: Moves forward in the command history[br]
+		CursorRight: Moves the cursor to the right[br]
+		CursorLeft: Moves the cursor to the left :)[br]
+		Shift+CursorLeft: Moves the selection to the left[br]
+		Shift+RightCursor: Moves the selection to the right[br]
+		Ctrl+CursorLeft: Moves the cursor one word left[br]
+		Ctrl+CursorRight: Moves the cursor one word right[br]
+		Ctrl+Shift+CursorLeft: Moves the selection one word left[br]
+		Ctrl+Shift+CursorRight: Moves the selection one word right[br]
+		Tab: Nickname, function/command, or filename completion (see below)[br]
+		Shift+Tab: Hostmask or function/command completion (see below)[br]
+		Alt+&lt;numeric_sequence&gt;: Inserts the character by ASCII/Unicode code
+		[example]
 		Alt+32: Inserts ASCII/Unicode character 32: ' ' (a space)
 		Alt+00032: Same as above :)
 		Alt+13: Inserts the Carriage Return (CR) control character
 		Alt+77: Inserts ASCII/Unicode character 77: 'M'
 		Alt+23566: Inserts Unicode character 23566 (an ideogram)
-		</example>
-		Also look at the <a href="shortcuts.kvihelp">global shortcuts</a> reference.<br>
-		If you drop a file on this widget, a <a href="parse.kvihelp">/PARSE &lt;filename&gt;</a> will be executed.<br>
-		You can enable word substitution in the preferences dialog.<br>
-		For example, if you choose to substitute "afaik" with "As far as I know",<br>
+		[/example]
+		Also look at the [doc:keyboard]keyboard shortcuts[/doc] reference.[br]
+		If you drop a file on this widget, a <a href="parse.kvihelp">/PARSE &lt;filename&gt;</a> will be executed.[br]
+		You can enable word substitution in the preferences dialog.[br]
+		For example, if you choose to substitute "afaik" with "As far as I know",[br]
 		when you will type "afaik" somewhere in the command line, and then
-		press Space or Return, that word will be replaced with "As far as I know".<br>
-		Experiment with it :)<br>
-		The Tab key activates the completion of the current word.<br>
+		press Space or Return, that word will be replaced with "As far as I know".[br]
+		Experiment with it :)[br]
+		The Tab key activates the completion of the current word.[br]
 		If a word is prefixed with a '/', it is treated as a command to be completed,
 		if it begins with '$', it is treated as a function or identifier to be completed,
-		otherwise it is treated as a nickname or filename to be completed.<br>
-		<example>
-			/ec&lt;Tab&gt; will produce /echo&lt;space&gt
+		otherwise it is treated as a nickname or filename to be completed.
+		[example]
+			/ec&lt;Tab&gt; will produce /echo&lt;space&gt;
 			/echo $loca&lt;Tab&gt; will produce /echo $localhost
-		</example>
+		[/example]
 		Multiple matches are listed in the view window and the word is completed
-		to the common part of all the matches.<br>
-		<example>
+		to the common part of all the matches.
+		[example]
 			$sel&lt;Tab;&gt; will find multiple matches and produce $selected
-		</example>
+		[/example]
 		Experiment with that too :)
 */

@@ -49,14 +49,14 @@ public:
 	KviModeEditor(QWidget * par,KviWindowToolPageButton* button,const char * nam,KviConsole * c,const QString &mode,const QString &key,const QString &limit);
 	~KviModeEditor();
 protected: // fields
-	QString m_szMode;
-	QString m_szKey;
-	QString m_szLimit;
+	QString                     m_szMode;
+	QString                     m_szKey;
+	QString                     m_szLimit;
 	KviPointerList<QCheckBox> * m_pCheckBoxes;
-	QCheckBox * m_pLimitBox;
-	QLineEdit * m_pLimitEdit;
-	QCheckBox * m_pKeyBox;
-	QLineEdit * m_pKeyEdit;
+	QCheckBox                 * m_pLimitBox;
+	QLineEdit                 * m_pLimitEdit;
+	QCheckBox                 * m_pKeyBox;
+	QLineEdit                 * m_pKeyEdit;
 signals:
 	void setMode(const char *);
 	void done();

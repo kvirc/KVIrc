@@ -1,5 +1,29 @@
 #!/usr/bin/perl
 
+#============================================================================
+#
+#   File : gendoc.pl
+#   Creation date : Sun 17 Dec 2006 20:36:07 by Szymon Stefanek
+#
+#   This file is part of the KVIrc IRC Client distribution
+#   Copyright (C) 2000-2009 Szymon Stefanek <pragma at kvirc dot net>
+#
+#   This program is FREE software. You can redistribute it and/or
+#   modify it under the terms of the GNU General Public License
+#   as published by the Free Software Foundation; either version 2
+#   of the License, or (at your opinion) any later version.
+#
+#   This program is distributed in the HOPE that it will be USEFUL,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#   See the GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program. If not, write to the Free Software Foundation,
+#   Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+#
+#============================================================================
+
 #################################################################################################
 # GLOBAL CONFIGS
 #################################################################################################
@@ -121,7 +145,7 @@ sub print_header
 	print $g_filehandle "<title>$_[0]</title>\n";
 
 	print $g_filehandle "<style type=\"text/css\">\n";
-	print $g_filehandle "body {\n"; 
+	print $g_filehandle "body {\n";
 	print $g_filehandle " font-size: 11pt;\n";
 	print $g_filehandle " margin-left: 8px;\n";
 	print $g_filehandle " margin-right: 8px;\n";
@@ -591,7 +615,7 @@ sub process_body_line
 	$_[0] =~ s/\[i\]/\<i\>/g;
 	$_[0] =~ s/\[\/i\]/\<\/i\>/g;
 	$_[0] =~ s/\[ul\]/\<ul\>/g;
-	$_[0] =~ s/\[\/ul\]/\<\/ul\>/g; 
+	$_[0] =~ s/\[\/ul\]/\<\/ul\>/g;
 	$_[0] =~ s/\[li\]/\<li\>/g;
 	$_[0] =~ s/\[\/li\]/\<\/li\>/g;
 	$_[0] =~ s/\[table\]/\<table bgcolor=\"$g_internaltablecolor\" width=\"100\%\"\>/g;
@@ -1103,7 +1127,7 @@ sub generate_indexes
 	if(open(CMDINDEX,">$g_directory/doc_$category\_index_all$g_fileextension"))
 	{
 		$g_filehandle=CMDINDEX;
-	
+
 		print_header("$doctitle: All");
 		print_tablestart();
 		print_title("$doctitle: All","");
@@ -1114,7 +1138,7 @@ sub generate_indexes
 		print_tableend();
 
 		print_tablestart();
-	
+
 		$i=0;
 
 		while($i < $count)
@@ -1124,7 +1148,7 @@ sub generate_indexes
 			print_twocolumnbody("<a href=\"$link\">$cmd</a>",$short);
 			$i++;
 		}
-	
+
 		print_tableend();
 
 		print_tablestart();
@@ -1132,7 +1156,7 @@ sub generate_indexes
 		print_tableend();
 
 		print_footer();
-	
+
 		close(CMDINDEX);
 	} else {
 		print "Can't open $g_directory/doc_$category\_index_all$g_fileextension for writing\n";
@@ -1152,7 +1176,7 @@ sub generate_indexes
 
 
 			$g_filehandle=CMDINDEX;
-		
+
 			print_header("$doctitle: $_");
 			print_tablestart();
 			print_title("$doctitle: $_","");
@@ -1163,7 +1187,7 @@ sub generate_indexes
 			print_tableend();
 
 			print_tablestart();
-		
+
 			$i=0;
 			$j=0;
 			if($number > 0)
@@ -1217,7 +1241,7 @@ sub generate_indexes
 			print_tableend();
 
 			print_footer();
-		
+
 			close(CMDINDEX);
 		} else {
 			print "Can't open $g_directory/doc_$category\_alphabetic_$_$g_fileextension for writing\n";
@@ -1296,7 +1320,7 @@ if(open(DOCINDEX,">$g_directory/index$g_fileextension"))
 	print_twocolumnsubtitle("Fundamentals");
 	print_twocolumnbody("<a href=\"doc_ircintro$g_fileextension\">Introduction to IRC</a>","A \"must read\" for beginners");
 	print_twocolumnbody("<a href=\"doc_kvircintro$g_fileextension\">Introduction to KVIrc</a>","A couple of words about KVIrc");
-	
+
 	print_twocolumnsubtitle("Scripting Concepts: The KVS Manual");
 	print_twocolumnbody("<a href=\"doc_kvs_introduction$g_fileextension\">Introduction to KVS</a>","Introduction to the KVIrc Scripting Language");
 	print_twocolumnbody("<a href=\"doc_kvs_basicconcepts$g_fileextension\">Basic KVS Concepts</a>","The first steps in the KVS world");

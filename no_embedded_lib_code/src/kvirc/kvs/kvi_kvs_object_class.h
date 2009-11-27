@@ -64,7 +64,7 @@ protected:
 	QString                                       m_szName;            // the class name
 	bool                                          m_bBuiltin;          // is this a builtin or script based class ?
 	KviPointerHashTable<QString,KviKvsObjectFunctionHandler>          * m_pFunctionHandlers; // all our function handlers
-	KviPointerList<KviKvsObjectClass>               * m_pChildClasses;     // 
+	KviPointerList<KviKvsObjectClass>               * m_pChildClasses;     //
 	KviKvsObjectAllocateInstanceProc              m_allocProc;
 	bool                                          m_bDirty;            // not yet flushed to disk (only for not builtin classes)
 protected:

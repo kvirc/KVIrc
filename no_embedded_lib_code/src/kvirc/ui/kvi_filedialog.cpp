@@ -80,7 +80,7 @@ bool KviFileDialog::askForOpenFileName(QString & szBuffer, const QString & szCap
 	KviFileDialog * pDialog = new KviFileDialog(szInitial,szFilter,pParent,"open_file_name_dialog",true);
 	pDialog->setWindowTitle(szCaption);
 	// i was ignorant
-	pDialog->setFileMode(KviTalFileDialog::AnyFile);
+	pDialog->setFileMode(KviTalFileDialog::ExistingFile);
 	//pDialog->setShowHiddenFiles(showHidden);
 
 	if(pDialog->exec() == QDialog::Accepted)
@@ -195,6 +195,7 @@ bool KviFileDialog::askForDirectoryName(QString & szBuffer, const QString & szCa
 	if(bShowNative)
 	{
 		szBuffer = QFileDialog::getExistingDirectory(pParent,szCaption,szInitial);
+		KviFileUtils::adjustFilePath(szBuffer);
 		return !szBuffer.isEmpty();
 	}
 #else
@@ -243,7 +244,7 @@ bool KviFileDialog::askForOpenFileNames(QStringList & szBuffer, const QString & 
 
 	KviFileDialog * pDialog = new KviFileDialog(szInitial,szFilter,pParent,"open_file_names_dialog",true);
 	pDialog->setWindowTitle(szCaption);
-	// See line 190
+ // See line 190
 	pDialog->setFileMode(KviTalFileDialog::ExistingFiles);
 	//pDialog->setShowHiddenFiles(showHidden);
 

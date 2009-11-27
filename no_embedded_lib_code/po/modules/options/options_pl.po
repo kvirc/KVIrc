@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVirc 3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-17 22:38+0200\n"
+"POT-Creation-Date: 2009-11-20 23:15+0100\n"
 "PO-Revision-Date: 2001-09-11 00:28+0200\n"
 "Last-Translator: Krzysztof Godlewski <kgod@poczta.onet.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
@@ -15,8 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8-bit\n"
 "X-Generator: KBabel 0.9.6\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr ""
 
@@ -31,12 +30,11 @@ msgstr ""
 msgid " lines"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:51
+#: src/modules/options/optw_logging.cpp:50
 msgid " min"
 msgstr ""
 
-#: src/modules/options/optw_lag.cpp:45
-#: src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_connection.cpp:151
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
@@ -357,7 +355,7 @@ msgstr ""
 msgid "<center>Put here a brief description of the network.</center>"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:53
+#: src/modules/options/optw_logging.cpp:52
 msgid ""
 "<center>Save logs with the current interval<br>Set to 0 to disable this "
 "feature</center>"
@@ -954,7 +952,7 @@ msgstr ""
 
 #: src/modules/options/optw_dcc.cpp:190
 msgid ""
-"<center>This option will cause succesfully terminated transfers to be "
+"<center>This option will cause successfully terminated transfers to be "
 "automatically removed from the transfer window.</center>"
 msgstr ""
 
@@ -1144,30 +1142,17 @@ msgstr "Przerwij"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:160
-#, fuzzy
-msgid "Active Background"
-msgstr "Akcje"
-
 #: src/modules/options/optw_servers.cpp:1166
 #, fuzzy
 msgid "Active Configuration"
 msgstr "Zapi&sz ustawienia"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:205
+#: src/modules/options/optw_interfacelookglobal.cpp:183
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:184
 msgid "Active High-Contrast Foreground (Secondary)"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:162
-msgid "Active Text (Primary)"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:163
-msgid "Active Text (Secondary)"
 msgstr ""
 
 #: src/modules/options/optw_connection.cpp:200
@@ -1242,7 +1227,7 @@ msgstr ""
 msgid "Alert for query messages"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:383
+#: src/modules/options/optw_messages.cpp:387
 msgid "Alert level:"
 msgstr ""
 
@@ -1304,12 +1289,11 @@ msgstr ""
 msgid "Append to VERSION reply:"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:50
+#: src/modules/options/optw_logging.cpp:49
 msgid "Auto flush logs every"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr ""
 
@@ -1321,8 +1305,7 @@ msgstr ""
 msgid "Automatically Log"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr ""
@@ -1379,8 +1362,8 @@ msgstr "Ostatnie &nicki"
 msgid "Away:"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:182
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:180
 msgid "Background"
 msgstr ""
 
@@ -1389,8 +1372,8 @@ msgstr ""
 msgid "Background Colors"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:183
-#: src/modules/options/optw_interfacelookglobal.cpp:210
+#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:188
 msgid "Background Image"
 msgstr ""
 
@@ -1416,7 +1399,7 @@ msgstr ""
 msgid "Background image:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:358
+#: src/modules/options/optw_messages.cpp:362
 msgid "Background:"
 msgstr ""
 
@@ -1467,8 +1450,7 @@ msgstr ""
 msgid "Cache IP address"
 msgstr ""
 
-#: src/modules/options/dialog.cpp:242
-#: src/modules/options/optw_identity.cpp:95
+#: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
 #: src/modules/options/optw_nickserv.cpp:128
@@ -1482,8 +1464,7 @@ msgstr "Anuluj"
 #: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
 #: src/modules/options/optw_userlist.cpp:144
@@ -1551,12 +1532,12 @@ msgstr ""
 msgid "Choose Avatar - KVIrc"
 msgstr "Wybierz katalog..."
 
-#: src/modules/options/optw_messages.cpp:556
+#: src/modules/options/optw_messages.cpp:560
 #, fuzzy
 msgid "Choose a Filename - KVIrc"
 msgstr "Wybierz katalog..."
 
-#: src/modules/options/optw_messages.cpp:609
+#: src/modules/options/optw_messages.cpp:613
 #, fuzzy
 msgid "Choose a Filename - KVIrc "
 msgstr "Wybierz katalog..."
@@ -1579,13 +1560,11 @@ msgstr "Wyczyść"
 msgid "Close in tray"
 msgstr "M&inimalizuj"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr ""
 
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr ""
 
@@ -1598,8 +1577,7 @@ msgid "Commit all changes immediately."
 msgstr ""
 
 #: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_notify.cpp:41 src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
 #, fuzzy
 msgid "Configuration"
@@ -2013,7 +1991,7 @@ msgid "Flash window when users are going online"
 msgstr ""
 
 #: src/modules/options/optw_notifier.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_input.cpp:38
 #: src/modules/options/optw_topiclabel.cpp:36
 msgid "Font"
@@ -2049,7 +2027,7 @@ msgstr ""
 msgid "Foreground color"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:371
+#: src/modules/options/optw_messages.cpp:375
 msgid "Foreground:"
 msgstr ""
 
@@ -2088,7 +2066,7 @@ msgstr ""
 msgid "Guess save path from media type"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:46
+#: src/modules/options/optw_logging.cpp:56
 msgid "Gzip logs"
 msgstr ""
 
@@ -2246,25 +2224,12 @@ msgstr "M&inimalizuj"
 msgid "Import List"
 msgstr "Trwa łączenie..."
 
-#: src/modules/options/optw_interfacelookglobal.cpp:161
-#, fuzzy
-msgid "Inactive Background"
-msgstr "Akcje"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:207
+#: src/modules/options/optw_interfacelookglobal.cpp:185
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:208
+#: src/modules/options/optw_interfacelookglobal.cpp:186
 msgid "Inactive High-Contrast Foreground (Secondary)"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:164
-msgid "Inactive Text (Primary)"
-msgstr ""
-
-#: src/modules/options/optw_interfacelookglobal.cpp:165
-msgid "Inactive Text (Secondary)"
 msgstr ""
 
 #: src/modules/options/optw_query.cpp:101
@@ -2381,7 +2346,7 @@ msgstr ""
 msgid "Listen on address/interface:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:408
+#: src/modules/options/optw_messages.cpp:412
 msgid "Load From..."
 msgstr ""
 
@@ -2400,11 +2365,11 @@ msgstr "Akcje"
 msgid "Log joined channels history"
 msgstr "Za&rejestrowani użytkownicy"
 
-#: src/modules/options/optw_messages.cpp:404
+#: src/modules/options/optw_messages.cpp:408
 msgid "Log this"
 msgstr ""
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:181
 msgid "Low-Contrast Foreground"
 msgstr ""
 
@@ -2490,7 +2455,7 @@ msgstr "Typy plików"
 msgid "Message Regexp"
 msgstr "Typy plików"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:182
 msgid "Mid-Contrast Foreground"
 msgstr ""
 
@@ -2824,8 +2789,7 @@ msgstr ""
 msgid "Open all minimized"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr ""
 
@@ -3221,7 +3185,7 @@ msgstr ""
 msgid "SOURCE"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:410
+#: src/modules/options/optw_messages.cpp:414
 msgid "Save As..."
 msgstr ""
 
@@ -3229,6 +3193,11 @@ msgstr ""
 #, fuzzy
 msgid "Save Location"
 msgstr "Akcje"
+
+#: src/modules/options/optw_logging.cpp:46
+#, fuzzy
+msgid "Save logs to folder:"
+msgstr "Nastąpił błąd odczytu"
 
 #: src/modules/options/optw_mediatypes.cpp:112
 #, fuzzy
@@ -3498,11 +3467,11 @@ msgstr "Wewnętrzny błąd"
 msgid "Sound device:"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:49
+#: src/modules/options/optw_logging.cpp:48
 msgid "Strip colors in logs"
 msgstr ""
 
-#: src/modules/options/optw_logging.cpp:48
+#: src/modules/options/optw_logging.cpp:47
 msgid "Strip message type numbers in logs"
 msgstr ""
 
@@ -3515,8 +3484,7 @@ msgstr "Używaj IpV6"
 msgid "TIME"
 msgstr ""
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr ""
 
@@ -3554,7 +3522,7 @@ msgstr ""
 
 #: src/modules/options/optw_identity.cpp:606
 msgid ""
-"The avatar you have choosen is bigger than 1024x768 pixels.<br>Such a big "
+"The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big "
 "image will not be seen on all the user monitors<br>and will probably be "
 "scaled by the remote clients with poor quality<br>algorithms to improve "
 "performance. You *should* scale it manually<br>to a sane size (like 800x600) "
@@ -3694,8 +3662,7 @@ msgstr ""
 #: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
 #: src/modules/options/optw_userlist.cpp:141
@@ -3738,7 +3705,7 @@ msgstr ""
 msgid "Transparency blend image:"
 msgstr ""
 
-#: src/modules/options/optw_messages.cpp:293
+#: src/modules/options/optw_messages.cpp:297
 #, fuzzy
 msgid "Transparent"
 msgstr "Transport"
@@ -4067,8 +4034,7 @@ msgstr ""
 msgid "[Unknown Media Type]"
 msgstr ""
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr ""
 
@@ -4463,6 +4429,10 @@ msgstr ""
 #~ msgstr "Zapi&sz ustawienia"
 
 #, fuzzy
+#~ msgid "Active Background"
+#~ msgstr "Akcje"
+
+#, fuzzy
 #~ msgid "Active Bans"
 #~ msgstr "Akcje"
 
@@ -4710,10 +4680,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Can't find the window with id '%Q'"
 #~ msgstr "Wybierz pliki do wysłania"
-
-#, fuzzy
-#~ msgid "Can't log to file %Q"
-#~ msgstr "Nastąpił błąd odczytu"
 
 #, fuzzy
 #~ msgid "Can't open file \"%s\" for writing"
@@ -5554,6 +5520,10 @@ msgstr ""
 
 #~ msgid "In progress..."
 #~ msgstr "Trwa łączenie..."
+
+#, fuzzy
+#~ msgid "Inactive Background"
+#~ msgstr "Akcje"
 
 #~ msgid "Index %u out of range"
 #~ msgstr "Indeks %u poza zakresem"

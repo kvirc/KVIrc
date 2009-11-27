@@ -210,6 +210,6 @@ namespace KviError
 	* \return int
 	*/
 	KVILIB_API int translateSystemError(int iErrNo);
-};
+}
 
 #endif //_KVI_ERROR_H_

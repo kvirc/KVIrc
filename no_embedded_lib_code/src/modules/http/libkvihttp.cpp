@@ -181,7 +181,7 @@ static bool http_kvs_complete_get(KviKvsModuleCommandCall * c,QString &szUrl,QSt
 
 		!sw: -m=<max_content_length> | --max-len=<max_content_length>
 		Causes content longer than <max_content_length> to be discarded.[br]
-		This is mainly to prevent you from automatically downloading 300 MB files
+		This is mainly to prevent you from automatically downloading 300 MiB files
 		and to prevent DOS attacks from malicious servers that do not report the Content-length header.[br]
 		If the Content-length header is reported by the server then the transfer is aborted
 		if the length exceedes <max_content_length>.[br]

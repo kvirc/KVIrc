@@ -43,7 +43,6 @@
 #include "kvi_ircview.h"
 #include "kvi_tal_popupmenu.h"
 
-#include <QLabel>
 #include <QPixmap>
 #include <QPainter>
 #include <QTimer>
@@ -88,10 +87,10 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 	m_pTip = new KviDynamicToolTip(frm,"dock_tooltip");
 	m_pAwayPopup = new KviTalPopupMenu(0);
 
-	QLabel * l = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
+	m_pTitleLabel = new QLabel(__tr2qs("<b>KVIrc</b>"),m_pContextPopup);
 	QPalette p;
-	l->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
-	m_pContextPopup->insertItem(l);
+	m_pTitleLabel->setStyleSheet("background-color: " + p.color(QPalette::Normal, QPalette::Mid).name());
+	m_pContextPopup->insertItem(m_pTitleLabel);
 	m_pContextPopup->setWindowTitle(__tr2qs("Context"));
 	m_pAwayMenuId = m_pContextPopup->addMenu(m_pAwayPopup);
 	m_pAwayMenuId->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_AWAY)));
@@ -115,8 +114,7 @@ KviTrayIcon::KviTrayIcon(KviFrame * frm)
 
 	connect(m_pContextPopup,SIGNAL(aboutToShow()),this,SLOT(fillContextPopup()));
 
-	QIcon icon(*g_pDock1);
-	setIcon(icon);
+	setIcon(*g_pDock1);
 
 	connect(this,SIGNAL(activated ( QSystemTrayIcon::ActivationReason )),this,SLOT(activatedSlot ( QSystemTrayIcon::ActivationReason )));
 }
@@ -126,6 +124,11 @@ KviTrayIcon::~KviTrayIcon()
 {
 	m_pFrm->setDockExtension(0);
 	g_pTrayIconList->removeRef(this);
+	delete m_pAwayPopup;
+	delete m_pTitleLabel;
+	delete m_pTip;
+	delete m_pFlashingTimer;
+	delete m_pContextPopup;
 }
 
 
@@ -342,19 +345,13 @@ void KviTrayIcon::fillContextPopup()
 
 void KviTrayIcon::toggleParentFrame()
 {
-	QWidget *top_widget = m_pFrm->topLevelWidget();
-
-	if(m_pFrm->isVisible()) {
+	if(m_pFrm->isVisible())
+	{
 		m_pFrm->hide();
 	} else {
-		top_widget->show();
-		top_widget->raise();
-
-		if(g_pActiveWindow) g_pActiveWindow->setFocus();
-		if(m_pFrm->isMinimized())
-			m_pFrm->showNormal();
-		else
-			m_pFrm->show();
+		//restore mainwindow
+		m_pFrm->setWindowState(m_pFrm->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
+		m_pFrm->show();
 	}
 }
 

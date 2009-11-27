@@ -225,15 +225,15 @@ bool KviKvsUserAction::load(KviConfig * cfg)
 	szKvsName += m_szName;
 	QString szTmp = szKvsName;
 	szTmp += "::label";
-	
+
 	if(m_pVisibleNameScript)delete m_pVisibleNameScript;
 	m_pVisibleNameScript = new KviKvsScript(szTmp,m_szVisibleName,KviKvsScript::Parameter);
-	
+
 	if(m_szVisibleName.isEmpty())return false;
 	m_szDescription = cfg->readQStringEntry("Description");
 	szTmp = szKvsName;
 	szTmp += "::description";
-	
+
 	if(m_pDescriptionScript)delete m_pDescriptionScript;
 	m_pDescriptionScript = new KviKvsScript(szTmp,m_szDescription,KviKvsScript::Parameter);
 
@@ -247,7 +247,7 @@ bool KviKvsUserAction::load(KviConfig * cfg)
 
 	QString szCode = cfg->readQStringEntry("Code");
 	if(szCode.isEmpty())return false;
-	
+
 	if(m_pScript)delete m_pScript;
 	QString tmp = KVI_KVS_ACTION_SCRIPT_NAME_PREFIX;
 	tmp += m_szName;

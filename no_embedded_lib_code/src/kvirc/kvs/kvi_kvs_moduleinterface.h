@@ -48,7 +48,7 @@ public:
 					KviKvsRunTimeContext * pContext,
 					KviKvsVariantList * pParams)
 		: KviKvsRunTimeCall(pContext,pParams), m_pModule(pModule) {}
-	~KviKvsModuleRunTimeCall(){};				
+	~KviKvsModuleRunTimeCall(){};
 public:
 	KviModule * module(){ return m_pModule; };
 };
@@ -77,7 +77,7 @@ public:
 public:
 	KviKvsSwitchList * switches(){ return m_pSwitchList; };
 	KviKvsSwitchList * switchList(){ return m_pSwitchList; };
-	
+
 	// forwarders for the switch list
 	bool hasSwitch(unsigned short u,const QString &szSwitch){ return (m_pSwitchList->find(u,szSwitch) != 0); };
 	KviKvsVariant * getSwitch(unsigned short u,const QString &szSwitch){ return m_pSwitchList->find(u,szSwitch); };

@@ -38,7 +38,7 @@
 #include <QFile>
 
 
-// this will be choosen during the setup process
+// this will be chosen during the setup process
 QString g_szChoosenIncomingDirectory;
 //int g_iThemeToApply = THEME_APPLY_NONE;
 bool bNeedToApplyDefaults;
@@ -85,7 +85,7 @@ KVIMODULEEXPORTFUNC void setup_finish()
 		// #define KVI_DEFAULT_CTCP_USERINFO_REPLY "I'm too lazy to edit this field."
 		// #define KVI_DEFAULT_AWAY_MESSAGE "I'm off to see the wizard."
 
-		// Apply the choosen default theme
+		// Apply the chosen default theme
 		QString szDir;
 /*		switch(g_iThemeToApply)
 		{

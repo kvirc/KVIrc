@@ -86,14 +86,14 @@ KviKvsCallbackObject::CallbackStatus KviKvsCallbackObject::execute(KviKvsVariant
 	KviKvsVariantList params;
 	params.setAutoDelete(false);
 	KviKvsVariant * v;
-	
+
 	if(pParams)
 		for(v = pParams->first();v;v = pParams->next())
 			params.append(v);
 
 	for(v = m_pMagicParams->first();v;v = m_pMagicParams->next())
 		params.append(v);
-	
+
 	unsigned int uRet = m_pScript->run(m_pTargetWindow,&params,pRetVal,KviKvsScript::PreserveParams);
 
 	if(uRet)
@@ -102,7 +102,7 @@ KviKvsCallbackObject::CallbackStatus KviKvsCallbackObject::execute(KviKvsVariant
 			return HaltEncountered;
 		return Success;
 	}
-	
+
 	// ooops... error
 	return Error;
 }

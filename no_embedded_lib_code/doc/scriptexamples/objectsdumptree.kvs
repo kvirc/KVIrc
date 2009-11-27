@@ -3,8 +3,8 @@ alias(dump)
 	# Objects Tree Dump  script
 	# Written by Noldor & Grifisx  (2005)
 	# This script allow you to see all kvirc's interface objects in a listview.
-	# It's just an alias, install it and "/dump"  =) EnjoY! 
-	
+	# It's just an alias, install it and "/dump"  =) EnjoY!
+
 	class (mylistview,listview)
 	{
 		constructor
@@ -32,7 +32,7 @@ alias(dump)
 			%tmp_property=$new(listviewitem,$$->$parent->%property)
 			$$->$parent->%property->$setTooltip(%gerarchia)
 			%ger=$str.replace(%gerarchia,",","->")
-			eval \%Wrapper\=\$new\(wrapper,0,test,%ger\) 
+			eval \%Wrapper\=\$new\(wrapper,0,test,%ger\)
 			$$->$parent->%line_ger->$setText(%ger)
 			if (!%Wrapper)
 			{
@@ -64,7 +64,7 @@ alias(dump)
 			@%list_name[%i]->$setRenameEnabled(2)
 			%i++;
 			}
-			
+
 		}
 		killPropertyChildren()
 		{
@@ -82,21 +82,21 @@ alias(dump)
 			%value=$2
 			eval \%Wrapper\-\>\$setProperty\(%property\,%value\)
 		}
-		
+
 	}
 	class (dump,widget)
 	{
 		constructor
-		{	
+		{
 			%Flag=0
 			@$resize(800,600)
 			@%tree[]=$str.split("\|",$objects.dump(0))
-			@$setCaption("Kvir Objects Dump")	
+			@$setCaption("Kvir Objects Dump")
 			@%lay=$new(layout,$$)
 			@%dump=$new(mylistview,$$)
-			@%tree=$new(object)		
+			@%tree=$new(object)
 			@%property=$new(listview,$$)
-	
+
 			privateimpl(@%property,itemRenamedEvent)
 			{
 				$$->$parent->%dump->$itemRenamed($0,$1,$2)
@@ -107,7 +107,7 @@ alias(dump)
 			@%dump->$addcolumn("Kvirc Widget Objects Tree",300)
 			@%dump->$setRootIsDecorated(1)
 			@%lay->$addwidget(@%dump,0,0)
-			@%lay->$addwidget(@%property,0,1)		
+			@%lay->$addwidget(@%property,0,1)
 			@%line_find=$new(lineedit,$$)
 			@%line_ger=$new(lineedit,$$)
 			@%lay->$addwidget(@%line_find,1,0)

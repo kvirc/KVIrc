@@ -39,7 +39,6 @@
 
 #include <QList>
 #include <QPixmap>
-#include <QSplitter>
 #include <QToolButton>
 #include <QFileInfo>
 #include <QDir>
@@ -69,7 +68,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	g_pLogViewWindow = this;
 //	m_pLogViewWidget = new KviLogViewWidget(this);
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pTabWidget = new QTabWidget(m_pSplitter);
 
@@ -90,32 +89,26 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	m_pShowChannelsCheck = new QCheckBox(__tr2qs_ctx("Show channel logs","logview"),m_pSearchTab);
 	m_pShowChannelsCheck->setChecked(true);
 	layout->addWidget(m_pShowChannelsCheck,0,0,1,2);
-//	layout->addMultiCellWidget(m_pShowChannelsCheck,0,0,0,1);
 
 	m_pShowQueryesCheck  = new QCheckBox(__tr2qs_ctx("Show query logs","logview"),m_pSearchTab);
 	m_pShowQueryesCheck->setChecked(true);
 	layout->addWidget(m_pShowQueryesCheck,1,0,1,2);
-//	layout->addMultiCellWidget(m_pShowQueryesCheck,1,1,0,1);
 
 	m_pShowConsolesCheck = new QCheckBox(__tr2qs_ctx("Show console logs","logview"),m_pSearchTab);
 	m_pShowConsolesCheck->setChecked(true);
 	layout->addWidget(m_pShowConsolesCheck,2,0,1,2);
-//	layout->addMultiCellWidget(m_pShowConsolesCheck,2,2,0,1);
 
 	m_pShowDccChatCheck  = new QCheckBox(__tr2qs_ctx("Show DCC chat logs","logview"),m_pSearchTab);
 	m_pShowDccChatCheck->setChecked(true);
 	layout->addWidget(m_pShowDccChatCheck,3,0,1,2);
-//	layout->addMultiCellWidget(m_pShowDccChatCheck,3,3,0,1);
 
 	m_pShowOtherCheck   = new QCheckBox(__tr2qs_ctx("Show other logs","logview"),m_pSearchTab);
 	m_pShowOtherCheck->setChecked(true);
 	layout->addWidget(m_pShowOtherCheck,4,0,1,2);
-//	layout->addMultiCellWidget(m_pShowOtherCheck,4,4,0,1);
 
 	QLabel *l;
 	l = new QLabel(__tr2qs_ctx("Contents filter","logview"),m_pSearchTab);
 	layout->addWidget(l,5,0,1,2);
-//	layout->addMultiCellWidget(l,5,5,0,1);
 
 	l = new QLabel(__tr2qs_ctx("Log name mask:","logview"),m_pSearchTab);
 	m_pFileNameMask = new QLineEdit(m_pSearchTab);
@@ -222,7 +215,6 @@ void KviLogViewMDIWindow::setupItemList()
 {
 	m_pListView->clear();
 	KviLogFile *pFile;
-	//m_logList.begin();
 	KviLogListViewItem *pLastCategory=0;
 	KviLogListViewItemFolder *pLastGroupItem=0;
 	QString szLastGroup;
@@ -250,7 +242,6 @@ void KviLogViewMDIWindow::setupItemList()
 		__tr2qs_ctx("Abort filtering","logview"), 0, m_logList.count(),
 		this);
 	progress.setObjectName("progress");
-	progress.setModal(TRUE);
 
 	int i=0;
 	for(pFile=m_logList.first();pFile;pFile=m_logList.next())
@@ -311,6 +302,7 @@ void KviLogViewMDIWindow::setupItemList()
 		new KviLogListViewLog(pLastGroupItem,pFile->type(),pFile);
 	}
 	progress.setValue( m_logList.count() );
+	m_pListView->sortItems(0, Qt::AscendingOrder);
 }
 
 void KviLogViewMDIWindow::cacheFileList()
@@ -328,7 +320,7 @@ void KviLogViewMDIWindow::cacheFileList()
 	}
 }
 
-void KviLogViewMDIWindow::itemSelected(KviTalTreeWidgetItem * it,KviTalTreeWidgetItem *)
+void KviLogViewMDIWindow::itemSelected(QTreeWidgetItem * it,QTreeWidgetItem *)
 {
 	//A parent node
 	m_pIrcView->clearBuffer();
@@ -419,7 +411,7 @@ KviLogFile::KviLogFile(const QString& name)
 	undecoded.cutToFirst('_');
 	m_szName = undecoded.hexDecode(undecoded.ptr()).ptr();
 
-	undecoded = szTmpName.section('.',1).section('_',0,0);
+	undecoded = szTmpName.section('.',1).section('_',0,-2);
 	m_szNetwork = undecoded.hexDecode(undecoded.ptr()).ptr();
 
 	QString szDate = szTmpName.section('.',-4,-1).section('_',1,1);
@@ -474,7 +466,7 @@ void KviLogFile::getText(QString & text,const QString& logDir){
 }
 
 KviLogViewListView::KviLogViewListView(QWidget * par)
-: KviTalTreeWidget(par)
+: QTreeWidget(par)
 {
 	header()->setSortIndicatorShown(true);
 	setColumnCount(1);

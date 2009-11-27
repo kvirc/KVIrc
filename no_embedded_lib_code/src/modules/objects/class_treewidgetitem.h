@@ -29,7 +29,7 @@
 #include "class_widget.h"
 #include "object_macros.h"
 
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 class KviKvsObject_treewidgetitem : public KviKvsObject
 {
@@ -37,7 +37,7 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_treewidgetitem)
 	void childDestroyed();
 protected:
-	KviTalTreeWidgetItem * m_pTreeWidgetItem;
+	QTreeWidgetItem * m_pTreeWidgetItem;
 protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 protected:
@@ -59,15 +59,15 @@ protected:
 	bool setFlags(KviKvsObjectFunctionCall *c);
 
 public:
-	static kvs_hobject_t itemToHandle(KviTalTreeWidgetItem * it);
+	static kvs_hobject_t itemToHandle(QTreeWidgetItem * it);
 };
 
 
-class KviKvsStandardTreeWidgetItem : public KviTalTreeWidgetItem
+class KviKvsStandardTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par);
-	KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par);
+	KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,QTreeWidget * par);
+	KviKvsStandardTreeWidgetItem(KviKvsObject_treewidgetitem * ob,QTreeWidgetItem * par);
 	virtual ~KviKvsStandardTreeWidgetItem();
 protected:
 	KviKvsObject_treewidgetitem * m_pMasterObject;
@@ -79,8 +79,8 @@ public:
 class KviKvsCheckTreeWidgetItem : public KviTalCheckListItem
 {
 public:
-	KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidget * par);
-	KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,KviTalTreeWidgetItem * par);
+	KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,QTreeWidget * par);
+	KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,QTreeWidgetItem * par);
 	virtual ~KviKvsCheckTreeWidgetItem();
 protected:
 	KviKvsObject_treewidgetitem * m_pMasterObject;

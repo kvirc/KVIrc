@@ -67,7 +67,7 @@ void KviToolBar::mousePressEvent(QMouseEvent * e)
 		KviTalToolBar::mousePressEvent(e);
 		return;
 	}
-	
+
 	if(!g_pToolBarContextPopup)
 		g_pToolBarContextPopup = new KviTalPopupMenu();
 	if(!g_pToolBarIconSizesPopup)

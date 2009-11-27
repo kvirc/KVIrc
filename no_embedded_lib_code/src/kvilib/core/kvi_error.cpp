@@ -231,4 +231,4 @@ namespace KviError
 		}
 #endif
 	}
-};
+}

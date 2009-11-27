@@ -115,7 +115,7 @@ int KviDccMarshal::dccListen(const QString &ip,const QString &port,bool bUseTime
 	m_bOutgoing = false;
 
 	m_bUseTimeout = bUseTimeout;
-	
+
 	if(m_pTimeoutTimer)
 	{
 		delete m_pTimeoutTimer;

@@ -1059,6 +1059,16 @@ void KviServerParser::parseNumericWhoisAway(KviIrcMessage * msg)
 	if(e)e->setAway(true);
 	KviQuery * q = msg->connection()->findQuery(szNk);
 	if(q) q->updateLabelText();
+
+	KviAsyncWhoisInfo * i = msg->connection()->asyncWhoisData()->lookup(szNk);
+	if(i)
+	{
+		if(!i->szSpecial.isEmpty())
+			i->szSpecial.append(",");
+		i->szSpecial.append("away");
+		return;
+	}
+
 	if(!msg->haltOutput())
 	{
 		KviWindow * pOut = (KviWindow *)(msg->connection()->findQuery(szNk));
@@ -1813,7 +1823,7 @@ void KviServerParser::parseNumericServerAdminInfoAdminContact(KviIrcMessage * ms
 	{
 		KviWindow * pOut = (KviWindow *)(msg->console());
 			QString szInfo = msg->connection()->decodeText(msg->safeTrailing());
-			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's contact adress is %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.toUtf8().data());
+			pOut->output(KVI_OUT_SERVERINFO,__tr2qs("%c\r!s\r%s\r%c's contact address is %s"),KVI_TEXT_BOLD,msg->prefix(),KVI_TEXT_BOLD,szInfo.toUtf8().data());
 	}
 }
 

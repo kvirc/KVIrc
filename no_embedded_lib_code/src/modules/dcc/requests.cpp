@@ -26,6 +26,7 @@
 
 #include "gsmcodec.h"
 #include "broker.h"
+#include "video.h"
 #include "voice.h"
 #include "utils.h"
 #include "send.h"
@@ -551,7 +552,7 @@ static void dccModuleParseDccResume(KviDccRequest *dcc)
 	//      DCC SEND <filename> <remoteip> <remoteport> <filesize> <tag>
 
 	bool bOk;
-	unsigned int filePos = dcc->szParam3.toUInt(&bOk);
+	quint64 filePos = dcc->szParam3.toULong(&bOk);
 	if(!bOk)
 	{
 		if(!dcc->ctcpMsg->msg->haltOutput())
@@ -1041,6 +1042,79 @@ static void dccModuleParseDccVoice(KviDccRequest *dcc)
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// VIDEO
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+static void dccModuleParseDccVideo(KviDccRequest *dcc)
+{
+	//
+	// We have received a DCC VIDEO request in the following form:
+	//
+	//     DCC VIDEO codec <ipaddress> <port>
+	//
+	// This means that we're requested to setup an ACTIVE voice connection
+	// ... Easy task :)
+	//
+
+	if(!dcc_module_check_limits(dcc))return;
+
+	if(!dcc_module_normalize_target_data(dcc,dcc->szParam2,dcc->szParam3))return;
+
+#ifdef COMPILE_DISABLE_DCC_VIDEO
+	if(!dcc->ctcpMsg->msg->haltOutput())
+	{
+		dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
+			__tr2qs_ctx("The above request cannot be accepted: DCC VIDEO support not enabled at compilation time ","dcc"));
+		return;
+	}
+#endif
+	//  Actually unused parameter
+	if(!kvi_dcc_video_is_valid_codec(dcc->szParam1.ptr()))
+	{
+		if(!dcc->ctcpMsg->msg->haltOutput())
+		{
+			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCERROR,
+				__tr2qs_ctx("The above request cannot be accepted: Unsupported codec '%s'","dcc"),dcc->szParam1.ptr());
+			return;
+		}
+	}
+
+// 	bool bOk;
+
+// 	int iSampleRate = dcc->szParam4.toInt(&bOk);
+// 	if(!bOk)
+// 	{
+// 		if(!dcc->ctcpMsg->msg->haltOutput())
+// 		{
+// 			dcc->ctcpMsg->msg->console()->output(KVI_OUT_DCCMSG,
+// 				__tr2qs_ctx("The above request appears to be broken: Invalid sample-rate '%s', defaulting to 8000","dcc"),dcc->szParam4.ptr());
+// 		}
+// 		iSampleRate = 8000;
+// 	}
+
+
+	KviDccDescriptor * d = new KviDccDescriptor(dcc->pConsole);
+	d->szNick            = dcc->ctcpMsg->pSource->nick();
+	d->szUser            = dcc->ctcpMsg->pSource->user();
+	d->szHost            = dcc->ctcpMsg->pSource->host();
+	dcc_fill_local_nick_user_host(d,dcc);
+
+
+	d->szIp              = dcc->szParam2.ptr();
+	d->szPort            = dcc->szParam3.ptr();
+	d->bActive           = true; // we have to connect
+	d->bIsTdcc           = false;
+	d->bNoAcks           = false; // this has no meaning in voice
+	d->szCodec           = dcc->szParam1;
+// 	d->iSampleRate       = iSampleRate;
+	d->bOverrideMinimize = false;
+	d->bAutoAccept       = KVI_OPTION_BOOL(KviOption_boolAutoAcceptDccVideo);
+	dcc_module_set_dcc_type(d,"VIDEO");
+	d->triggerCreationEvent();
+	g_pDccBroker->activeVideoManage(d);
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // CANVAS
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1101,7 +1175,7 @@ typedef struct _dccParseProcEntry
 	dccParseProc proc;
 } dccParseProcEntry;
 
-#define KVI_NUM_KNOWN_DCC_TYPES 27
+#define KVI_NUM_KNOWN_DCC_TYPES 28
 
 static dccParseProcEntry dccParseProcTable[KVI_NUM_KNOWN_DCC_TYPES]=
 {
@@ -1131,7 +1205,8 @@ static dccParseProcEntry dccParseProcTable[KVI_NUM_KNOWN_DCC_TYPES]=
 	{ "STRSEND", dccModuleParseDccRSend  },
 	{ "TSRSEND", dccModuleParseDccRSend  },
 	{ "CANVAS" , dccModuleParseDccCanvas },
-	{ "VOICE"  , dccModuleParseDccVoice  }
+	{ "VOICE"  , dccModuleParseDccVoice  },
+	{ "VIDEO"  , dccModuleParseDccVideo  }
 };
 
 

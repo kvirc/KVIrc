@@ -28,7 +28,7 @@
 #include "kvi_pointerlist.h"
 #include "kvi_string.h"
 #include "kvi_toolwindows_container.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QPushButton>
 #include <QDialog>
@@ -45,14 +45,14 @@ typedef struct _KviMaskEntry
 	unsigned int uSetAt;
 } KviMaskEntry;
 
-class KviMaskItem: public KviTalTreeWidgetItem
+class KviMaskItem: public QTreeWidgetItem
 {
 public:
-	KviMaskItem(KviTalTreeWidget* parent,KviMaskEntry* entry);
+	KviMaskItem(QTreeWidget* parent,KviMaskEntry* entry);
 	~KviMaskItem();
 
 	KviMaskEntry* mask() { return &m_Mask; };
-	virtual int compare ( KviTalTreeWidgetItem * i, int col, bool ascending ) const;
+	virtual int compare ( QTreeWidgetItem * i, int col, bool ascending ) const;
 protected:
 	KviMaskEntry m_Mask;
 
@@ -83,7 +83,7 @@ public:
 		char flag,const char * nam);
 	~KviMaskEditor();
 protected:
-	KviTalTreeWidget      * m_pMaskBox;
+	QTreeWidget      * m_pMaskBox;
 	QPushButton           * m_pRemoveMask;
 	QPushButton           * m_pAddButton;
 	QLineEdit             * m_pSearch;

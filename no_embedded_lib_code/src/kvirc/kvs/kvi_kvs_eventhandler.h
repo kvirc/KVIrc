@@ -61,7 +61,7 @@ public:
 
 	bool isEnabled(){ return m_bEnabled; };
 	void setEnabled(bool bEnabled){ m_bEnabled = bEnabled; };
-	
+
 	// Static allocator function.
 	// This MUST be used by the modules to allocate event structures
 	// instead of the new operator.

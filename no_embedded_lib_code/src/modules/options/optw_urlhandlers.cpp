@@ -136,7 +136,7 @@ void KviUrlHandlersOptionsWidget::commit()
 	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("\\\\","@MAGIC@");
 	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("\\","\\\\");
 	KVI_OPTION_STRING(KviOption_stringUrlUnknownCommand).replace("@MAGIC@","\\\\");
-	
+
 	//Check for escaped " in url handler ( \" )
         KVI_OPTION_STRING(KviOption_stringUrlHttpCommand).replace("\\\\\"","\\\"");
         KVI_OPTION_STRING(KviOption_stringUrlHttpsCommand).replace("\\\\\"","\\\"");

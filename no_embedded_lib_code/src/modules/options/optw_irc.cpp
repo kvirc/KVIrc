@@ -66,7 +66,7 @@ KviIrcAdvancedOptionsWidget::KviIrcAdvancedOptionsWidget(QWidget * parent)
 {
 	setObjectName("irc_advanced_options_widget");
 	createLayout();
-	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Force immediate quit","options"),KviOption_boolForceBrutalQuit);    
+	KviBoolSelector *b = addBoolSelector(0,0,0,0,__tr2qs_ctx("Force immediate quit","options"),KviOption_boolForceBrutalQuit);
 	mergeTip(b,
 		__tr2qs_ctx("<center>This option causes KVIrc to close " \
 		"the connection immediately after sending the QUIT message.<br>" \

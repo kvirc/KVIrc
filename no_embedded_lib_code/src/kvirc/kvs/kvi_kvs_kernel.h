@@ -77,27 +77,27 @@ private:
 	static KviKvsKernel * m_pKvsKernel; // global kernel object
 
 	KviPointerHashTable<QString,KviKvsSpecialCommandParsingRoutine>     * m_pSpecialCommandParsingRoutineDict;
-	
+
 	KviPointerHashTable<QString,KviKvsCoreSimpleCommandExecRoutine>     * m_pCoreSimpleCommandExecRoutineDict;
 	KviPointerHashTable<QString,KviKvsCoreCallbackCommandExecRoutine>   * m_pCoreCallbackCommandExecRoutineDict;
 	KviPointerHashTable<QString,KviKvsCoreFunctionExecRoutine>          * m_pCoreFunctionExecRoutineDict;
-	
+
 	KviKvsHash                                    * m_pGlobalVariables;
 	KviKvsVariantList                             * m_pEmptyParameterList;
-	
+
 	KviKvsObjectController                        * m_pObjectController;
 	KviKvsAsyncOperationManager                   * m_pAsyncOperationManager;
 public:
 	static void init();
 	static void done();
 	static KviKvsKernel * instance(){ return m_pKvsKernel; };
-	
+
 	KviKvsVariantList * emptyParameterList(){ return m_pEmptyParameterList; };
 
 	KviKvsHash * globalVariables(){ return m_pGlobalVariables; };
-	
+
 	KviKvsObjectController * objectController(){ return m_pObjectController; };
-	
+
 	KviKvsAsyncOperationManager * asyncOperationManager(){ return m_pAsyncOperationManager; };
 
 	void registerSpecialCommandParsingRoutine(const QString &szCmdName,KviKvsSpecialCommandParsingRoutine * r)
@@ -132,7 +132,7 @@ public:
 		completeCommand(szCommandBegin,p);
 		return p;
 	}
-		
+
 	KviPointerList<QString> * completeFunctionAllocateResult(const QString &szFunctionBegin)
 	{
 		KviPointerList<QString> *p=new KviPointerList<QString>;

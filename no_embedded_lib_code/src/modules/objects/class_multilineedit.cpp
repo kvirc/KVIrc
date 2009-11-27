@@ -250,14 +250,14 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 /*	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertLine", functionInsertLine)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"removeLine", functionRemoveLine)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertAt", functionInsertAt)
-	
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setCursorPosition", functionSetCursorPosition)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setWordWrap", functionSetWordWrap)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"wordWrap", functionWordWrap)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"length", functionLength);
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"indent", functionundoDepth)
 
-	
+
 	*/
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"atEnd", functionAtEnd)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"numLines", functionNumLines)
@@ -284,7 +284,7 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	//->Zoom In, Out, To
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomIn", functionzoomIn)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"zoomOut", functionzoomOut)
-	
+
 	//->Undo & Redo
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"undo", functionundo)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"redo", functionredo)
@@ -297,7 +297,7 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	//->Text color & others
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setText", functionsetText)
 	/*
-	
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setColor", functionsetColor)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setModified" , functionsetModified)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"setLinkUnderline" , functionsetLinkUnderline)
@@ -320,10 +320,10 @@ KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"addwidget", functionAddWidget)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"paragraphLength" , functionparagraphLength)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"insertParagraph" , functioninsertParagraph)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"removeParagraph" , functionremoveParagraph)
-	
-	
+
+
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"linesOfParagraph" , functionlinesOfParagraph)
-	
+
 	*/
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"lineOfChar" , functionlineOfChar)
 	KVSO_REGISTER_HANDLER(KviKvsObject_textedit,"lines" ,functionlines)
@@ -526,7 +526,7 @@ bool KviKvsObject_textedit::functionsetWrapPolicy(KviKvsObjectFunctionCall * c)
 	else if(KviQString::equalCI(szPolicy,"AtWordBoundaryOrAnywhere"))
 		((QTextEdit *)widget())->setWordWrapMode(QTextOption::WrapAtWordBoundaryOrAnywhere);
         else c->warning(__tr2qs_ctx("Unknown wrap policy'%Q'","objects"),&szPolicy);
-*/	
+*/
 	return true;
 }
 

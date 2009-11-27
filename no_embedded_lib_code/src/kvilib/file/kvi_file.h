@@ -79,7 +79,7 @@ public:
 	bool load(kvi_u8_t &t);
 
 	bool save(kvi_i8_t t){ return save((kvi_u8_t)t); };
-	bool load(kvi_i8_t &t){ return load((kvi_u8_t &)t); };;
+	bool load(kvi_i8_t &t){ return load((kvi_u8_t &)t); };
 
 	bool save(const KviStr &szData);
 	bool load(KviStr &szData);

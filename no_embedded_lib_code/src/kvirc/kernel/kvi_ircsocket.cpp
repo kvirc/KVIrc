@@ -1313,6 +1313,7 @@ void KviIrcSocket::doSSLHandshake(int)
 		return; // ops ?
 	}
 
+	// We avoid to reset() the socket while in a processData() call (see bug #600)
 	switch(m_pSSL->connect())
 	{
 		case KviSSL::Success:
@@ -1333,12 +1334,12 @@ void KviIrcSocket::doSSLHandshake(int)
 		break;
 		case KviSSL::RemoteEndClosedConnection:
 			raiseError(KviError_remoteEndClosedConnection);
-			reset();
+// 			reset();
 		break;
 		case KviSSL::SSLError:
 			raiseSSLError();
 			raiseError(KviError_SSLError);
-			reset();
+// 			reset();
 		break;
 		case KviSSL::SyscallError:
 		{
@@ -1355,12 +1356,12 @@ void KviIrcSocket::doSSLHandshake(int)
 				m_pWsn->setEnabled(true);
 				return;
 			}
-			reset();
+// 			reset();
 		}
 		break;
 		default:
 			raiseError(KviError_SSLError);
-			reset();
+// 			reset();
 		break;
 	}
 

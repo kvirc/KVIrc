@@ -34,10 +34,10 @@ int main(int,char **)
 	else
 		std::cout
 			<< (tNowParts->tm_year + 1900)
-			<< "/"
+			<< "-"
 			<< ((tNowParts->tm_mon + 1) / 10)
 			<< ((tNowParts->tm_mon + 1) % 10)
-			<< "/"
+			<< "-"
 			<< ((tNowParts->tm_mday) / 10)
 			<< ((tNowParts->tm_mday) % 10)
 			<< " "

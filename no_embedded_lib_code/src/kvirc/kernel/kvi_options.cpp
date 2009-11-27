@@ -313,9 +313,12 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("UseStartTlsIfAvailable",true,KviOption_sectFlagConnection),
 	BOOL_OPTION("PasteLastLogOnChannelJoin",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("PasteLastLogOnQueryJoin",false,KviOption_sectFlagLogging),
-	BOOL_OPTION("UseSpecifiedSmartColorForOwnNick",false,KviOption_sectFlagIrcView | KviOption_groupTheme),
+	BOOL_OPTION("UseSpecifiedSmartColorForOwnNick",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("UseFullWordHighlighting",false,KviOption_sectFlagIrcView),
-	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput)
+	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput),
+	BOOL_OPTION("AutoAcceptDccVideo", false, KviOption_sectFlagDcc),
+	BOOL_OPTION("CreateMinimizedDccVideo", false, KviOption_sectFlagDcc),
+	BOOL_OPTION("CreateMinimizedDccVideoWhenAutoAccepted",true,KviOption_sectFlagDcc)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
@@ -331,7 +334,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 		#ifdef COMPILE_ON_MAC
 			#define RUN_THE_BROWSER "run open $0"
 		#else
-			#define RUN_THE_BROWSER "run kvi_run_netscape $0"
+			#define RUN_THE_BROWSER "run x-www-browser $0"
 		#endif
 	#endif
 #endif
@@ -395,7 +398,8 @@ KviStringOption g_stringOptionsTable[KVI_NUM_STRING_OPTIONS]=
 	STRING_OPTION("OnQueryMessageSound","",KviOption_sectFlagFrame),
 	STRING_OPTION("IrcViewTimestampFormat","[hh:mm:ss]",KviOption_sectFlagIrcView),
 	STRING_OPTION("PreferredTorrentClient","auto",KviOption_sectFlagFrame),
-	STRING_OPTION("DefaultSrvEncoding","",KviOption_sectFlagFrame)
+	STRING_OPTION("DefaultSrvEncoding","",KviOption_sectFlagFrame),
+	STRING_OPTION("LogsPath","",KviOption_sectFlagUser | KviOption_encodePath)
 };
 
 #define STRINGLIST_OPTION(_txt,_flags) \
@@ -640,8 +644,8 @@ KviUIntOption g_uintOptionsTable[KVI_NUM_UINT_OPTIONS]=
 	UINT_OPTION("LinesToPasteOnQueryJoin",10,KviOption_sectFlagLogging),
 	UINT_OPTION("DaysIntervalToPasteOnQueryJoin",10,KviOption_sectFlagLogging),
 	UINT_OPTION("SpacesToExpandTabulationInput",4,KviOption_sectFlagInput),
-	UINT_OPTION("UserIrcViewOwnForeground",4,KviOption_sectFlagIrcView | KviOption_groupTheme),
-	UINT_OPTION("UserIrcViewOwnBackground",8,KviOption_sectFlagIrcView | KviOption_groupTheme),
+	UINT_OPTION("UserIrcViewOwnForeground",4,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
+	UINT_OPTION("UserIrcViewOwnBackground",8,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	UINT_OPTION("NotifierPixmapAlign",0,KviOption_sectFlagNotifier | KviOption_groupTheme)
 };
 

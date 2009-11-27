@@ -6,8 +6,7 @@
 //   Creation date : Sat 03 May 2008 01:40:44 by Elvio Basello
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2008 Elvio Basello <hellvis69 at netsons dot org>
-//   Copyright (C) 2008 Alessandro Carbone <elfonol at gmail dot com>
+//   Copyright (C) 2008-2009 Elvio Basello <hellvis69 at netsons dot org>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -25,111 +24,224 @@
 //
 //=============================================================================
 
+/**
+* \file packaddondialog.h
+* \author Elvio Basello
+* \brief Addon package creator
+*
+* This set of classes allow users to create addon for KVIrc in a standard
+* distributable *.kva packages.
+*/
+
 #include "kvi_settings.h"
 #include "kvi_pointerlist.h"
 #include "kvi_selectors.h"
-#include "kvi_tal_wizard.h"
-#include "kvi_tal_textedit.h"
 
-#include <QLineEdit>
-#include <QLabel>
-#include <QWidget>
+#include <QWizard>
+#include <QWizardPage>
 
-class KviPackAddonCreateInfoPackageWidget;
+class QTextEdit;
+class QLineEdit;
+class QLabel;
+
+class KviPackAddonInfoPackageWidget;
 class KviPackAddonFileSelectionWidget;
 class KviPackAddonSaveSelectionWidget;
-class KviPackAddonInfoWidget;
+class KviPackAddonSummaryInfoWidget;
+class KviPackAddonSummaryFilesWidget;
 
-class KviPackAddonDialog : public KviTalWizard
+/**
+* \class KviPackAddonDialog
+* \brief Wizard for addon creation
+*/
+class KviPackAddonDialog : public QWizard
 {
 	Q_OBJECT
 public:
+	/**
+	* \brief Create the wizard object
+	* \param pParent The parent widget
+	* \return KviPackAddonDialog
+	*/
 	KviPackAddonDialog(QWidget * pParent);
-	~KviPackAddonDialog(){};
-	KviPackAddonCreateInfoPackageWidget * m_pPackAddonInfoCreateWidget;
-	KviPackAddonFileSelectionWidget     * m_pPackAddonFileSelectionWidget;
-	KviPackAddonSaveSelectionWidget     * m_pPackAddonSaveSelectionWidget;
-	KviPackAddonInfoWidget              * m_pPackAddonInfoWidget;
+
+	/**
+	* \brief Destroys the wizard object
+	*/
+	~KviPackAddonDialog();
 protected:
-	QString m_szPackagePath;
+	KviPackAddonInfoPackageWidget   * m_pPackAddonInfoPackageWidget;
+	KviPackAddonFileSelectionWidget * m_pPackAddonFileSelectionWidget;
+	KviPackAddonSaveSelectionWidget * m_pPackAddonSaveSelectionWidget;
+	KviPackAddonSummaryInfoWidget   * m_pPackAddonSummaryInfoWidget;
+	KviPackAddonSummaryFilesWidget  * m_pPackAddonSummaryFilesWidget;
+	QString                           m_szAuthor;
+	QString                           m_szName;
+	QString                           m_szVersion;
+	QString                           m_szDescription;
+	QString                           m_szMinVersion;
+	QString                           m_szIcon;
+	QString                           m_szDirPath;
+	QString                           m_szSavePath;
 protected:
+	/**
+	* \brief Runs the packAddon() function and closes the wizard
+	* \return void
+	*/
 	virtual void accept();
+
+	/**
+	* \brief Creates the addon package
+	* \return bool
+	*/
 	bool packAddon();
+
+	/**
+	* \brief Ensures the source directory is complete
+	* \param pszError The buffer containing errors
+	* \return bool
+	*/
+	bool checkDirTree(QString * pszError);
+
+	/**
+	* \brief Creates the installer file
+	* \param pszError The buffer containing errors
+	* \return bool
+	*/
+	bool createInstaller(QString * pszError);
 };
 
-class KviPackAddonCreateInfoPackageWidget : public QWidget
+/**
+* \class KviPackAddonInfoPackageWidget
+* \brief Wizard page for addon informations
+*/
+class KviPackAddonInfoPackageWidget : public QWizardPage
 {
 	Q_OBJECT
 public:
-	KviPackAddonCreateInfoPackageWidget(KviPackAddonDialog *pParent);
-	~KviPackAddonCreateInfoPackageWidget(){};
-	QString authorName(){return m_pAuthorNameEdit->text();};
-	QString packageName(){return m_pPackageNameEdit->text();};
-	QString packageVersion(){return m_pPackageVersionEdit->text();};
-	QString packageDescription(){return m_pPackageDescriptionEdit->toPlainText();};
+	/**
+	* \brief Create the wizard package info page object
+	* \param pParent The parent widget
+	* \return KviPackAddonInfoPackageWidget
+	*/
+	KviPackAddonInfoPackageWidget(KviPackAddonDialog * pParent);
+
+	/**
+	* \brief Destroys the wizard package info page object
+	*/
+	~KviPackAddonInfoPackageWidget();
 protected:
-	QLineEdit      * m_pAuthorNameEdit;
-	QLineEdit      * m_pPackageNameEdit;
-	QLineEdit      * m_pPackageVersionEdit;
-	KviTalTextEdit * m_pPackageDescriptionEdit;
+	QLineEdit * m_pPackageAuthorEdit;
+	QLineEdit * m_pPackageNameEdit;
+	QLineEdit * m_pPackageVersionEdit;
+	QLineEdit * m_pPackageDescriptionEdit;
+	QLineEdit * m_pPackageMinVersionEdit;
 };
 
-class KviPackAddonFileSelectionWidget : public QWidget
+/**
+* \class KviPackAddonFileSelectionWidget
+* \brief Wizard page for directory source selection
+*/
+class KviPackAddonFileSelectionWidget : public QWizardPage
 {
 	Q_OBJECT
 public:
-	KviPackAddonFileSelectionWidget(KviPackAddonDialog *pParent);
-	~KviPackAddonFileSelectionWidget(){};
-	QString sourcePath(){m_pSourcePathSelector->commit();return szSourcePath;};
-	QString configPath(){m_pConfigPathSelector->commit();return szConfigPath;};
-	QString imagePath(){m_pImagePathSelector->commit();return szImagePath;};
-	QString localePath(){m_pLocalePathSelector->commit();return szLocalePath;};
-	QString helpPath(){m_pHelpPathSelector->commit();return szHelpPath;};
-	QString soundPath(){m_pSoundPathSelector->commit();return szSoundPath;};
-	QString installerPath(){m_pInstallPathSelector->commit();return szInstallPath;};
+	/**
+	* \brief Create the wizard package source dir object
+	* \param pParent The parent widget
+	* \return KviPackAddonFileSelectionWidget
+	*/
+	KviPackAddonFileSelectionWidget(KviPackAddonDialog * pParent);
+
+	/**
+	* \brief Destroys the wizard package source dir object
+	*/
+	~KviPackAddonFileSelectionWidget();
 protected:
-	KviDirectorySelector * m_pSourcePathSelector;
-	KviDirectorySelector * m_pConfigPathSelector;
-	KviDirectorySelector * m_pImagePathSelector;
-	KviDirectorySelector * m_pLocalePathSelector;
-	KviDirectorySelector * m_pHelpPathSelector;
-	KviDirectorySelector * m_pSoundPathSelector;
-	KviFileSelector      * m_pInstallPathSelector;
-	QString szSourcePath;
-	QString szConfigPath;
-	QString szImagePath;
-	QString szLocalePath;
-	QString szHelpPath;
-	QString szSoundPath;
-	QString szInstallPath;
+	KviDirectorySelector * m_pDirPathSelector;
+	KviFileSelector      * m_pPackageIconEdit;
+	QString                m_szDirPath;
+	QString                m_szPackageIcon;
 };
 
-class KviPackAddonSaveSelectionWidget : public QWidget
+/**
+* \class KviPackAddonSaveSelectionWidget
+* \brief Wizard page for saving package
+*/
+class KviPackAddonSaveSelectionWidget : public QWizardPage
 {
 	Q_OBJECT
 public:
-	KviPackAddonSaveSelectionWidget(KviPackAddonDialog *pParent);
-	~KviPackAddonSaveSelectionWidget(){};
-	QString savePath(){m_pSavePathSelector->commit();return szSavePath;};
+	/**
+	* \brief Create the wizard save page object
+	* \param pParent The parent widget
+	* \return KviPackAddonSaveSelectionWidget
+	*/
+	KviPackAddonSaveSelectionWidget(KviPackAddonDialog * pParent);
+
+	/**
+	* \brief Destroys the wizard save page object
+	*/
+	~KviPackAddonSaveSelectionWidget();
 protected:
 	KviFileSelector * m_pSavePathSelector;
-	QString szSavePath;
+protected:
+	/**
+	* \brief Perform initial tasks before showing the widget
+	* \return void
+	*/
+	virtual void initializePage();
 };
 
-class KviPackAddonInfoWidget : public QWidget
+/**
+* \class KviPackAddonSummaryInfoWidget
+* \brief Wizard page for showing informations inserted
+*/
+class KviPackAddonSummaryInfoWidget : public QWizardPage
 {
+	Q_OBJECT
 public:
-	KviPackAddonInfoWidget(KviPackAddonDialog *);
-	~KviPackAddonInfoWidget(){};
+	/**
+	* \brief Create the wizard summary info page object
+	* \param pParent The parent widget
+	* \return KviPackAddonSummaryInfoWidget
+	*/
+	KviPackAddonSummaryInfoWidget(KviPackAddonDialog * pParent);
+
+	/**
+	* \brief Destroys the wizard summary info page object
+	*/
+	~KviPackAddonSummaryInfoWidget();
 protected:
-	KviPackAddonDialog * m_pParent;
 	QLabel * m_pLabelInfo;
 	QLabel * m_pLabelAuthor;
 	QLabel * m_pPackageName;
 	QLabel * m_pPackageVersion;
 	QLabel * m_pPackageDescription;
-	void showEvent(QShowEvent *event);
+protected:
+	/**
+	* \brief Perform initial tasks before showing the widget
+	* \return void
+	*/
+	virtual void initializePage();
 };
 
+
+class KviPackAddonSummaryFilesWidget : public QDialog
+{
+	Q_OBJECT
+public:
+	KviPackAddonSummaryFilesWidget(KviPackAddonDialog * pParent);
+	~KviPackAddonSummaryFilesWidget();
+protected:
+	QTextEdit * m_pFiles;
+	QString     m_szPath;
+public:
+	void setPath(QString & szPath){ m_szPath = szPath; };
+protected:
+	virtual void showEvent(QShowEvent *);
+	virtual void accept();
+	virtual void reject();
+};
 
 #endif //!_PACKADDONDIALOG_H_

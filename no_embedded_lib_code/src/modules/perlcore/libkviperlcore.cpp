@@ -159,10 +159,7 @@ extern "C" void xs_init(pTHX)
 bool KviPerlInterpreter::init()
 {
 	if(m_pInterpreter)done();
-	int daArgc = 4;
-	char * daArgs[] = { "yo", "-e", "0", "-w" };
-	char ** daEnv=NULL;
-	PERL_SYS_INIT3(&daArgc,(char ***)&daArgs,&daEnv);
+	const char * daArgs[] = { "yo", "-e", "0", "-w" };
 	m_pInterpreter = perl_alloc();
 	if(!m_pInterpreter)return false;
 	PERL_SET_CONTEXT(m_pInterpreter);
@@ -349,7 +346,7 @@ static void perlcore_destroy_all_interpreters()
 
 #endif // COMPILE_PERL_SUPPORT
 
-static bool perlcore_module_ctrl(KviModule * m,const char * cmd,void * param)
+static bool perlcore_module_ctrl(KviModule *,const char * cmd,void * param)
 {
 #ifdef COMPILE_PERL_SUPPORT
 	if(kvi_strEqualCS(cmd,KVI_PERLCORECTRLCOMMAND_EXECUTE))
@@ -386,18 +383,22 @@ static bool perlcore_module_ctrl(KviModule * m,const char * cmd,void * param)
 	return false;
 }
 
-static bool perlcore_module_init(KviModule * m)
+static bool perlcore_module_init(KviModule *)
 {
 #ifdef COMPILE_PERL_SUPPORT
 	g_pInterpreters = new KviPointerHashTable<QString,KviPerlInterpreter>(17,false);
 	g_pInterpreters->setAutoDelete(false);
+	int daArgc = 4;
+	const char * daArgs[] = { "yo", "-e", "0", "-w" };
+	char ** daEnv=NULL;
+	PERL_SYS_INIT3(&daArgc,(char ***)&daArgs,&daEnv);
 	return true;
 #else // !COMPILE_PERL_SUPPORT
 	return false;
 #endif // !COMPILE_PERL_SUPPORT
 }
 
-static bool perlcore_module_cleanup(KviModule * m)
+static bool perlcore_module_cleanup(KviModule *)
 {
 #ifdef COMPILE_PERL_SUPPORT
 	perlcore_destroy_all_interpreters();
@@ -408,7 +409,7 @@ static bool perlcore_module_cleanup(KviModule * m)
 	return true;
 }
 
-static bool perlcore_module_can_unload(KviModule * m)
+static bool perlcore_module_can_unload(KviModule *)
 {
 #ifdef COMPILE_PERL_SUPPORT
 	return (g_pInterpreters->count() == 0);

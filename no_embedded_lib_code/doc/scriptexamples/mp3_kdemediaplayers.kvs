@@ -18,7 +18,7 @@
     %Mtime++
     %Stime-=60
    }
-   
+
    %Htime=0
 
    while(%Mtime > 59) {
@@ -36,32 +36,32 @@
    }
 
 
- 
-   if (%Htime > 0)
-    %Ctime = $str.append %Htime:%Mtime:%Stime      
-   
-   
 
-   if (%Mtime > 0 && %Htime < 1) 
+   if (%Htime > 0)
+    %Ctime = $str.append %Htime:%Mtime:%Stime
+
+
+
+   if (%Mtime > 0 && %Htime < 1)
     %Ctime = $str.append %Mtime:%Stime
-    
-   
-   
-   if (%Mtime < 1 && %Htime < 1) 
+
+
+
+   if (%Mtime < 1 && %Htime < 1)
     %Ctime = %Stime
-   
+
 
 
    me muckelt grad [$mp3player.gettitle @ %Xmms_play - $($mp3player.getrate/1000) kbps - $($mp3player.getfreq/1000) kHz - seit: %Ctime (h:m:s)]
-  } 
+  }
   else if(%Postfix == %Cda_postfix) {
    me muckelt grad [$mp3player.gettitle - Audio CD]
 
-  } 
+  }
 
-  
+
   else {
-            
+
             if ($mp3player.getchannels == 2)
                  %Channels = Stereo
             else
@@ -82,9 +82,9 @@
             %size = $file.size("$mp3player.getfilename")
             %msize = $(%size / (1024*1024))
             %ksize = $((%size - ((%size / (1024*1024)) * 1024 * 1024) - (%size % 1024)) / 1024)
-     
+
             %bsize = $(%size % 1024)
-            
+
             if(%msize > 0)
             {
                     %size = "%msize MByte %ksize KByte"
@@ -97,7 +97,7 @@
                     }
             }
             if ($mp3player.isplaying){
-  
+
   if($mp3player.getmp3tag_artist != ""){
    %outartist= $mp3player.getmp3tag_artist
   }
@@ -116,41 +116,41 @@
   else {
    if (%outtitle == ""){
     %outartisttitle="["%outartist"]"
-   } 
+   }
    else {
     %outartisttitle="["%outtitle"]"
    }
 
   }
-  
-  if (mp3player.getmp3tag_album !=""){ 
+
+  if (mp3player.getmp3tag_album !=""){
    %outalbum =" - [Album: "$mp3player.getmp3tag_album"]"
-  } 
+  }
   else {
    %outalbum =""
-  } 
-  
-  if (mp3player.getmp3tag_genre !=""){ 
+  }
+
+  if (mp3player.getmp3tag_genre !=""){
    %outgenre =" - [Genre: "$mp3player.getmp3tag_genre"]"
-  } 
+  }
   else {
    %outgenre =""
-  } 
-  
+  }
 
-  if ($mp3player.getmp3tag_comment !=""){ 
+
+  if ($mp3player.getmp3tag_comment !=""){
    %outcomment =" - [Comment: "$mp3player.getmp3tag_comment"]"
   }
   else {
    %outcomment=""
   }
-  if ($mp3player.getmp3tag_version != ""){ 
+  if ($mp3player.getmp3tag_version != ""){
    %outmp3tagversion = "MPEG"$mp3player.getmp3tag_version
   }
   else {
    %outmp3tagversion=""
   }
-  if ($mp3player.getmp3tag_layer != ""){ 
+  if ($mp3player.getmp3tag_layer != ""){
    %outmp3taglayer = "Layer"$mp3player.getmp3tag_layer
   }
   else {
@@ -169,35 +169,35 @@
    }
 
   }
- 
-  
+
+
   %rate = $($mp3player.getrate/1000)
-  if (%rate != 0){ 
+  if (%rate != 0){
    %outrate=" - ["%rate KBps"]"
   }
   else {
    %outrate=""
   }
-  if (%Frequ2 != 0){ 
+  if (%Frequ2 != 0){
    %outfrequ2=" - ["%Frequ2 KHz"]"
-  } 
+  }
   else {
    %outfrequ2=""
   }
-  if (%Channels != 0){ 
+  if (%Channels != 0){
    %outchannels = " - ["%Channels"]"
   }
   else {
    %outchannels=""
   }
-  if (%size != 0){ 
+  if (%size != 0){
    %outsize = " - ["%size"]"
   }
   else {
    %outsize=""
   }
 
-       me muckelt grad %outartisttitle %outalbum %outgenre %outcomment %outmp3tagversionlayer %outrate %outfrequ2 - [%mins:%secs1%secs2 min of %tmins:%tsecs1%tsecs2 min] - [Player: $mp3player.getplayer ] 
+       me muckelt grad %outartisttitle %outalbum %outgenre %outcomment %outmp3tagversionlayer %outrate %outfrequ2 - [%mins:%secs1%secs2 min of %tmins:%tsecs1%tsecs2 min] - [Player: $mp3player.getplayer ]
             }
   }
         if (!$mp3player.isplaying){

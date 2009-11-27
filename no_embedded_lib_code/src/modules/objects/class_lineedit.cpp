@@ -454,7 +454,7 @@ KVSO_CLASS_FUNCTION(lineedit,setCompleter)
         CHECK_INTERNAL_POINTER(widget())
         QStringList szCompletionList;
         QString szMode;
-        KVSO_PARAMETERS_BEGIN(c)             
+        KVSO_PARAMETERS_BEGIN(c)
                 KVSO_PARAMETER("mode",KVS_PT_STRING,KVS_PF_OPTIONAL,szMode)
                 KVSO_PARAMETER("completion_list",KVS_PT_STRINGLIST,0,szCompletionList)
         KVSO_PARAMETERS_END(c)

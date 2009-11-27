@@ -156,7 +156,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 		[b]'\C'[/b] (where C is a [b]CTCP valid ascii non digit character[/b]) that corresponds
 		literally to the character C discarding any other semantic that might be associated
 		with it (This will become clear later).
-		I've choosen the octal rappresentation just to follow a bit the old specification:
+		I've chosen the octal rappresentation just to follow a bit the old specification:
 		the authors seemed to like it. This point could be discussed in
 		some mailing list or sth. The '\C' sequence is useful to include the backslash
 		character (escape sequence '\\').[br]
@@ -1416,7 +1416,7 @@ void KviServerParser::parseCtcpRequestAction(KviCtcpMessage *msg)
 		pOut = KVI_OPTION_BOOL(KviOption_boolExternalMessagesToActiveWindow) ? msg->msg->console()->activeWindow() : msg->msg->console();
 	}
 
-	//see bug ticket #220 
+	//see bug ticket #220
 	if(KVI_OPTION_BOOL(KviOption_boolStripMircColorsInUserMessages))
 		szData = KviMircCntrl::stripControlBytes(szData);
 

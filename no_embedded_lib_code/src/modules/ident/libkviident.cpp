@@ -274,7 +274,7 @@ void KviIdentDaemon::run()
 		#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
                         /*
 			 * under windows, ipv6 hosts behind an ipv4 NAT can use Teredo to be reachable from the outer internet using their
-                         * ipv6 address; the default protection level doesn't permit this, so we need to set this socket option 
+                         * ipv6 address; the default protection level doesn't permit this, so we need to set this socket option
 			 * see bug ticket #393
                          */
                 int iPlu = KVI_PROTECTION_LEVEL_UNRESTRICTED;

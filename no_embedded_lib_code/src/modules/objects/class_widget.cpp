@@ -34,6 +34,8 @@
 #include "kvi_window.h"
 #include "kvi_app.h"
 #include "kvi_frame.h"
+#include "kvi_statusbar.h"
+
 
 #include <QKeyEvent>
 #include <QDesktopWidget>
@@ -496,7 +498,7 @@ const Qt::WindowType widgettypes_cod[] = {
 		NoSystemBackground - Indicates that the widget has no background, i.e. when the widget receives paint events, the background is not automatically repainted.
 		PaintOnScreen - Indicates that the widget wants to draw directly onto the screen.
 		NoMousePropagation - Prohibits mouse events from being propagated to the widget's parent.
-		!fn: $setStyleSheet(<string>)[QT4 only]
+                !fn: $setStyleSheet(<string>)
 
 		!fn: $array(<red:integer,green:integer,blue:integer) $colorPalette(<color_role:string><color_group:string>)
 		Returns the color in color_group(disabled, active or inactive), used for color_role.
@@ -512,7 +514,7 @@ const Qt::WindowType widgettypes_cod[] = {
 
 		!fn: <short_cut_id:integer> $setKeyShortCut(<key:char>)
 		Adds a shortcut whith key. A [classfnc]$shortCutEvent[/classfnc] will be triggered when the user will press alt+key.
-		!fn: $shortCutEvent(<shortcut_id:integer>)[QT4 only]
+                !fn: $shortCutEvent(<shortcut_id:integer>)
 		This function will be called when a shortcut key has been triggered.
 		You must reimplement this event to manage a shortcut system in a custom widget.
 		The default implementation does nothing.
@@ -718,7 +720,6 @@ KVSO_END_REGISTERCLASS(KviKvsObject_widget)
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_widget,KviKvsObject)
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_widget)
-
 emit aboutToDie();
 //	if (webview) delete webview;
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
@@ -1227,7 +1228,7 @@ KVSO_CLASS_FUNCTION(widget,setPaletteForeground)
 	}
 	else
 	{
-		QColor color;	
+		QColor color;
 		if (c->params()->count()==1)
 		{
 				if(pColArray->isString())
@@ -1238,7 +1239,7 @@ KVSO_CLASS_FUNCTION(widget,setPaletteForeground)
 					color.setNamedColor(szColor);
 					if (!color.isValid())
 					{
-						// itsn't a color name: let try with an hex triplette 
+						// itsn't a color name: let try with an hex triplette
 						color.setNamedColor("#"+szColor);
 						if (!color.isValid())
 						{
@@ -1250,7 +1251,7 @@ KVSO_CLASS_FUNCTION(widget,setPaletteForeground)
 				else {
 					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
 					return true;
-				}		
+				}
 				QPalette p = widget()->palette();
 				p.setColor(widget()->foregroundRole(), color);
 				widget()->setPalette(p);
@@ -1309,7 +1310,7 @@ KVSO_CLASS_FUNCTION(widget,setBackgroundColor)
 	}
 	else
 	{
-		QColor color;	
+		QColor color;
 		if (c->params()->count()==1)
 		{
 				if(pColArray->isString())
@@ -1320,7 +1321,7 @@ KVSO_CLASS_FUNCTION(widget,setBackgroundColor)
 					color.setNamedColor(szColor);
 					if (!color.isValid())
 					{
-						// itsn't a color name: let try with an hex triplette 
+						// itsn't a color name: let try with an hex triplette
 						color.setNamedColor("#"+szColor);
 						if (!color.isValid())
 						{
@@ -1332,7 +1333,7 @@ KVSO_CLASS_FUNCTION(widget,setBackgroundColor)
 				else {
 					c->warning(__tr2qs_ctx("Not a valid color !","objects"));
 					return true;
-				}		
+				}
 				QPalette p = widget()->palette();
 				p.setColor(widget()->backgroundRole(), color);
 				widget()->setPalette(p);
@@ -1956,11 +1957,9 @@ KVSO_CLASS_FUNCTION(widget,setKeyShortcut)
 KVSO_CLASS_FUNCTION(widget,insertIntoStatusBar)
 {
 	CHECK_INTERNAL_POINTER(widget())
-	kvs_int_t iIndex;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("index",KVS_PT_UNSIGNEDINTEGER,0,iIndex)
-	KVSO_PARAMETERS_END(c)
-	g_pFrame->statusBar()->insertPermanentWidget(iIndex,widget());
+             debug("instertinto");
+        if (g_pFrame->mainStatusBar())
+                g_pFrame->mainStatusBar()->insertPermanentWidgetAtTheEnd(widget(),0);
 	return true;
 }
 

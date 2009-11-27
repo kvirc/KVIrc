@@ -30,6 +30,25 @@
 #include "class_widget.h"
 #include "object_macros.h"
 #include <QtSql>
+#include <QTableWidgetItem>
+
+#include <QItemDelegate>
+#include <QAbstractItemView>
+#include "kvi_kvs_runtimecontext.h"
+class KviKvsObject_tablewidget;
+
+class KviCellItemDelegate : public QItemDelegate
+{
+public:
+        KviCellItemDelegate(QAbstractItemView * pWidget = 0,KviKvsObject_tablewidget *pParent=0);
+        ~KviCellItemDelegate();
+protected:
+//        QAbstractItemView * m_pParent;
+        KviKvsObject_tablewidget *m_pParentScript;
+public:
+        QSize sizeHint(const QStyleOptionViewItem & option, const QModelIndex & index) const;
+        void paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index) const;
+};
 
 class KviKvsObject_tablewidget : public KviKvsObject_widget
 {
@@ -38,18 +57,28 @@ public:
         KVSO_DECLARE_OBJECT(KviKvsObject_tablewidget)
 public:
 	QWidget * widget() { return (QWidget *)object(); };
-protected:
+        bool paint(QPainter * pPainter, const QStyleOptionViewItem & option, const QModelIndex & index);
+
+    protected:
             QSqlQueryModel *model;
-protected:
+            KviKvsRunTimeContext *m_pContext;
+            KviCellItemDelegate *m_pCellItemDelegate;
+        protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
             bool setText(KviKvsObjectFunctionCall *c);
+            bool setToolTip(KviKvsObjectFunctionCall *c);
             bool text(KviKvsObjectFunctionCall *c);
             bool setIcon(KviKvsObjectFunctionCall *c);
+            bool setItemFlags(KviKvsObjectFunctionCall *c);
 
             bool setColumnCount(KviKvsObjectFunctionCall *c);
             bool columnCount(KviKvsObjectFunctionCall *c);
             bool setRowCount(KviKvsObjectFunctionCall *c);
+            bool currentRow(KviKvsObjectFunctionCall *c);
+            bool currentColumn(KviKvsObjectFunctionCall *c);
+            bool itemRowColAt(KviKvsObjectFunctionCall *c);
+
             bool rowCount(KviKvsObjectFunctionCall *c);
             bool setHorizontalHeaderLabels(KviKvsObjectFunctionCall *c);
             bool setVerticalHeaderLabels(KviKvsObjectFunctionCall *c);
@@ -60,10 +89,18 @@ protected:
             bool hideVerticalHeader(KviKvsObjectFunctionCall *c);
             bool showVerticalHeader(KviKvsObjectFunctionCall *c);
             bool clear(KviKvsObjectFunctionCall *c);
-            //bool clickEvent(KviKvsObjectFunctionCall *c);
+            bool itemEnteredEvent(KviKvsObjectFunctionCall *c);
+
+            bool hideColumn(KviKvsObjectFunctionCall *c);
+            bool showColumn(KviKvsObjectFunctionCall *c);
+            bool hideRow(KviKvsObjectFunctionCall *c);
+            bool showRow(KviKvsObjectFunctionCall *c);
 
 protected slots:
+        void slotItemEntered(QTableWidgetItem *);
+
         //void slotClicked();
 };
+
 
 #endif	// !_CLASS_TABLEWIDGET_H_

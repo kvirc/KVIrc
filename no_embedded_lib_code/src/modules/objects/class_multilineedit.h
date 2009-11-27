@@ -59,7 +59,7 @@ protected:
 	bool functionCopy(KviKvsObjectFunctionCall *c);
 	bool functionPaste(KviKvsObjectFunctionCall *c);
 	bool functionCut(KviKvsObjectFunctionCall *c);
-//								|-G&N add-| 
+//								|-G&N add-|
 	bool functionsetItalic(KviKvsObjectFunctionCall *c);
 	bool functionitalic(KviKvsObjectFunctionCall *c);
 	bool functionsetBold(KviKvsObjectFunctionCall *c);
@@ -75,12 +75,12 @@ protected:
     bool functionindent(KviKvsObjectFunctionCall *c);
     bool functionsetUndoRedoEnabled(KviKvsObjectFunctionCall *c);
     bool functionisUndoRedoEnabled(KviKvsObjectFunctionCall *c);
-	
+
 	bool functionsetText(KviKvsObjectFunctionCall *c);
     bool functionsetHtmlText(KviKvsObjectFunctionCall *c);
     bool functionsetPlainText(KviKvsObjectFunctionCall *c);
-    
-	
+
+
 	bool functionsetPointSize(KviKvsObjectFunctionCall *c);
     bool functionsetColor(KviKvsObjectFunctionCall *c);
 	bool functionisUndoAvailable(KviKvsObjectFunctionCall *c);

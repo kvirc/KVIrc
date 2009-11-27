@@ -44,52 +44,32 @@
 
 extern QPixmap * g_pActivityMeterPixmap;
 
-#define KVI_NUM_STEPS 20
-#define KVI_TIMER_DELAY 18
-
-
 // KviTreeWindowListItem
 
-KviTreeWindowListItem::KviTreeWindowListItem(KviTalTreeWidget * par,KviWindow * wnd)
-: KviTalTreeWidgetItem(par) , KviWindowListItem(wnd)
+KviTreeWindowListItem::KviTreeWindowListItem(QTreeWidget * par,KviWindow * wnd)
+: QTreeWidgetItem(par) , KviWindowListItem(wnd)
 {
-	m_iStepNumber=0;
-	m_bIncreasing=0;
-	m_pInternal=new KviTreeWindowListItemInternal(this);
-	m_pAnimTimer=new QTimer();
-	QObject::connect( m_pAnimTimer, SIGNAL(timeout()), m_pInternal, SLOT(timerShot()));
 	applyOptions();
-	//sort the widget
-	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
 KviTreeWindowListItem::KviTreeWindowListItem(KviTreeWindowListItem * par,KviWindow * wnd)
-: KviTalTreeWidgetItem(par) , KviWindowListItem(wnd)
+: QTreeWidgetItem(par) , KviWindowListItem(wnd)
 {
-	m_iStepNumber=0;
-	m_bIncreasing=0;
-	m_pInternal=new KviTreeWindowListItemInternal(this);
-	m_pAnimTimer=new QTimer();
-	QObject::connect( m_pAnimTimer, SIGNAL(timeout()), m_pInternal, SLOT(timerShot()));
 	applyOptions();
-	//sort the widget
-	treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
 KviTreeWindowListItem::~KviTreeWindowListItem()
 {
-	KviTalTreeWidget* pView=(KviTalTreeWidget *)treeWidget();
+	KviTreeWindowListTreeWidget* pView= (KviTreeWindowListTreeWidget*)treeWidget();
 	if(pView)
-		if(((KviTreeWindowListTreeWidget*)(pView))->m_pPrevItem==this) ((KviTreeWindowListTreeWidget*)(treeWidget()))->m_pPrevItem=0;
-	delete m_pAnimTimer;
-	delete m_pInternal;
+		if(pView->m_pPrevItem==this) pView->m_pPrevItem=0;
 }
 
 void KviTreeWindowListItem::applyOptions()
 {
-	setData(0, KVI_TTBID_REDDIFF, (KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground).red()-KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground).red())/KVI_NUM_STEPS);
-	setData(0, KVI_TTBID_GREENDIFF, (KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground).green()-KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground).green())/KVI_NUM_STEPS);
-	setData(0, KVI_TTBID_BLUEDIFF, (KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground).blue()-KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground).blue())/KVI_NUM_STEPS);
+	//sort the widget if necessary
+	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
+		treeWidget()->sortItems(0,Qt::AscendingOrder);
 }
 
 void KviTreeWindowListItem::captionChanged()
@@ -120,7 +100,8 @@ void KviTreeWindowListItem::captionChanged()
 		szText.prepend('(').append(')');
 
 	//sort the widget
-	treeWidget()->sortItems(0,Qt::AscendingOrder);
+	if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName))
+		treeWidget()->sortItems(0,Qt::AscendingOrder);
 
 	setData(0, Qt::DisplayRole, szText);
 }
@@ -176,64 +157,19 @@ QString KviTreeWindowListItem::key() const
 	return ret;
 }
 
-void KviTreeWindowListItem::timerShot()
-{
-	if(m_bIncreasing)
-		m_iStepNumber++;
-	else
-		m_iStepNumber--;
-
-	if((m_iStepNumber>=KVI_NUM_STEPS) && m_bIncreasing)
-	{
-		if(m_pAnimTimer->isActive()) m_pAnimTimer->stop();
-		m_iStepNumber=KVI_NUM_STEPS; //make shure, that we cannot get out of range
-	} else if((m_iStepNumber<=0) && !m_bIncreasing) {
-		if(m_pAnimTimer->isActive()) m_pAnimTimer->stop();
-		m_iStepNumber=0; //make shure, that we cannot get out of range
-	}
-	setData(0, KVI_TTBID_STEPNUM, m_iStepNumber);
-
-	QRect rect = treeWidget()->visualItemRect(this);
- 	treeWidget()->update(QRect(0, rect.top(), rect.left()+rect.width(), rect.height()));
-}
-
-void KviTreeWindowListItem::mouseEnter()
-{
-	if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects))
-	{
-		m_bIncreasing=true;
-		if(!m_pAnimTimer->isActive()) m_pAnimTimer->start(KVI_TIMER_DELAY);
-	}
-}
-
-void KviTreeWindowListItem::mouseLeave()
-{
-	if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects))
-	{
-		m_bIncreasing=false;
-		if(!m_pAnimTimer->isActive()) m_pAnimTimer->start(KVI_TIMER_DELAY);
-	}
-}
-
 // KviTreeWindowListTreeWidget
 
 KviTreeWindowListTreeWidget::KviTreeWindowListTreeWidget(QWidget * par)
-: KviTalTreeWidget(par)
+: QTreeWidget(par)
 {
 	setObjectName("tree_windowlist");
 	setRootIsDecorated(true);
-	//Animation creates problem with the background painting on expande/collapse
-	//setAnimated(true);
-	setAutoFillBackground(false);
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setFont(KVI_OPTION_FONT(KviOption_fontTreeWindowList));
 	setFocusPolicy(Qt::NoFocus);
 	setFrameShape(NoFrame);
-
 	viewport()->setAutoFillBackground(false);
-	viewport()->setMouseTracking(TRUE);
-
 	m_pPrevItem=0;
 }
 
@@ -241,30 +177,13 @@ KviTreeWindowListTreeWidget::~KviTreeWindowListTreeWidget()
 {
 }
 
-void KviTreeWindowListTreeWidget::mouseMoveEvent ( QMouseEvent * e )
+void KviTreeWindowListTreeWidget::mouseMoveEvent(QMouseEvent *)
 {
-	KviTreeWindowListItem* pCur=(KviTreeWindowListItem*)(itemAt(e->pos()));
-	if(pCur!=m_pPrevItem)
-	{
-		if(m_pPrevItem)m_pPrevItem->mouseLeave();
-		if(pCur) pCur->mouseEnter();
-		setCursor(Qt::PointingHandCursor);
-		m_pPrevItem=pCur;
-	} else if(!pCur) {
-		setCursor(Qt::ArrowCursor);
-	}
-}
-
-void KviTreeWindowListTreeWidget::leaveEvent(QEvent *)
-{
-	if(m_pPrevItem) m_pPrevItem->mouseLeave();
-	m_pPrevItem=0;
-	setCursor(Qt::ArrowCursor);
+	//dummy just to avoid bug #581
 }
 
 void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 {
-
 	KviTreeWindowListItem * it = (KviTreeWindowListItem *)itemAt(e->pos());
 	if(it)
 	{
@@ -281,7 +200,7 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 				if((g_pActiveWindow != wnd) || (wnd->isMinimized()))
 				{
 					g_pFrame->setActiveWindow(wnd);
-					KviTalTreeWidget::mousePressEvent(e);
+					QTreeWidget::mousePressEvent(e);
 				} else wnd->minimize();
 			}
 
@@ -309,7 +228,7 @@ void KviTreeWindowListTreeWidget::mousePressEvent(QMouseEvent *e)
 
 void KviTreeWindowListTreeWidget::mouseDoubleClickEvent(QMouseEvent * e)
 {
-	KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)itemAt(e->pos());
+	QTreeWidgetItem * it = itemAt(e->pos());
 	if(it)
 	{
 		if(e->button() & Qt::LeftButton)
@@ -366,7 +285,7 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 	delete p;
 
 	//call paint on all childrens
-	KviTalTreeWidget::paintEvent(event);
+	QTreeWidget::paintEvent(event);
 }
 
 // KviTreeWindowList
@@ -427,7 +346,7 @@ void KviTreeWindowList::tipRequest(KviDynamicToolTip *,const QPoint &pnt)
 {
 	if(KVI_OPTION_BOOL(KviOption_boolShowWindowListToolTips))
 	{
-		KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)m_pTreeWidget->itemAt(pnt);
+		QTreeWidgetItem * it = m_pTreeWidget->itemAt(pnt);
 		if(it)
 		{
 			QString szText;
@@ -457,7 +376,19 @@ bool KviTreeWindowList::removeItem(KviWindowListItem * it)
 {
 	if(it)
 	{
-		delete (KviTreeWindowListItem *)it;
+		KviTreeWindowListItem *item=(KviTreeWindowListItem *)it;
+		if(m_pTreeWidget)
+		{
+			int index = m_pTreeWidget->indexOfTopLevelItem(item);
+			if(index>=0)
+			{
+				delete (KviTreeWindowListItem *)m_pTreeWidget->takeTopLevelItem(index);
+			} else {
+				index = item->parent()->indexOfChild(item);
+				if(index>=0)
+					delete (KviTreeWindowListItem *)item->parent()->takeChild(index);
+			}
+		}
 	}
 	return true;
 }
@@ -532,8 +463,8 @@ KviWindowListItem * KviTreeWindowList::lastItem()
 bool KviTreeWindowList::setIterationPointer(KviWindowListItem * it)
 {
 	m_pCurrentItem = (KviTreeWindowListItem *)it;
-	if(!it)return true;
-	if(((KviTalTreeWidget *)m_pTreeWidget) == ((KviTreeWindowListItem *)it)->treeWidget())return true;
+	if(!m_pCurrentItem)return true;
+	if(m_pTreeWidget == m_pCurrentItem->treeWidget())return true;
 	m_pCurrentItem = 0;
 	return false;
 }
@@ -544,84 +475,34 @@ void KviTreeWindowList::applyOptions()
 
 // KviTreeWindowListItemDelegate
 
-int KviTreeWindowListItemDelegate::calculateColor(int col1,int col2, int iStepNumber) const
-{
-	int result=col1+(col2-col1)/KVI_NUM_STEPS*iStepNumber;
-	return result<255 ? result :255;
-}
-
 void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewItem & option, const QModelIndex & index) const
 {
-	QRect rect=option.rect;
-	QRect branchRect = QRect(0, rect.top(), rect.left(), rect.height());
-	QRect fullRect = QRect(0, rect.top(), rect.left()+rect.width(), rect.height());
-
 	QString szText=index.data(Qt::DisplayRole).toString();
-	int iStepNumber=index.data(KVI_TTBID_STEPNUM).toInt();
-	int iRedDiff=index.data(KVI_TTBID_REDDIFF).toInt();
-	int iGreenDiff=index.data(KVI_TTBID_GREENDIFF).toInt();
-	int iBlueDiff=index.data(KVI_TTBID_BLUEDIFF).toInt();
-	int iHighlightLevel=index.data(KVI_TTBID_HIGHLIGHT).toInt();
 	int iProgress=index.data(KVI_TTBID_PROGRESS).toInt();
 
 	//FIXME not exactly model/view coding style.. but we need to access data on the associated window
 	KviTreeWindowListTreeWidget* treeWidget = (KviTreeWindowListTreeWidget*)parent();
-	KviTreeWindowListItem* item = (KviTreeWindowListItem*) treeWidget->itemFromIndex(index);
-	KviWindow* pWindow = item->kviWindow();
+	KviWindow* pWindow = ((KviTreeWindowListItem*)treeWidget->itemFromIndex(index))->kviWindow();
 
 	//paint cell background
 	if (option.state & QStyle::State_Selected)
 	{
 		//selection colored background
-		p->fillRect(fullRect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+		p->fillRect(option.rect, KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
 	} else {
-		if(!iStepNumber)
+		if(KVI_OPTION_BOOL(KviOption_boolEnableVisualEffects) && option.state & QStyle::State_MouseOver)
 		{
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-			if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
-			{
-				p->save();
-				p->setCompositionMode(QPainter::CompositionMode_Source);
-				QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
-				col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-				p->fillRect(fullRect, col);
-				p->restore();
-			} else if(g_pShadedChildGlobalDesktopBackground)
-			{
-				QPoint pnt = treeWidget->viewport()->mapToGlobal(fullRect.topLeft());
-				p->drawTiledPixmap(fullRect,*g_pShadedChildGlobalDesktopBackground,pnt);
-			} else {
-#endif
-				//background image (if defined)
-				QPixmap * pix = KVI_OPTION_PIXMAP(KviOption_pixmapTreeWindowListBackground).pixmap();
-				if(pix)
-				{
-					KviPixmapUtils::drawPixmapWithPainter(p,pix,KVI_OPTION_UINT(KviOption_uintTreeWindowListPixmapAlign),fullRect,fullRect.width(),fullRect.height());
-				} else {
-					p->fillRect(fullRect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
-				}
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-			}
-#endif
-		} else {
 			// paint mouse over effect
-			p->fillRect(fullRect,
-				QColor(KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground).red()+iRedDiff*iStepNumber,
-					KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground).green()+iGreenDiff*iStepNumber,
-					KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground).blue()+iBlueDiff*iStepNumber
-					)
-				);
+			QColor col(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveBackground));
+			col.setAlpha(127);
+			p->fillRect(option.rect, col);
 		}
 	}
-
-	//tree branches
-	treeWidget->drawBranches(p, branchRect, index);
-
 	//draw window icon, irc context indicator (a colored square), set font properties for text
-	int im = rect.left();
-	int yPixmap = (rect.top() + (rect.height() / 2 - 8));
+	int im = option.rect.left();
+	int yPixmap = (option.rect.top() + (option.rect.height() / 2 - 8));
 
-	QRect cRect(im + 3,rect.top(),rect.width(),rect.height());
+	QRect cRect(im + 3,option.rect.top(),option.rect.width(),option.rect.height());
 
 	switch(pWindow->type())
 	{
@@ -695,7 +576,9 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 	{
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground));
 	} else {
+		int iHighlightLevel=index.data(KVI_TTBID_HIGHLIGHT).toInt();
 		int iLevel;
+
 		switch(iHighlightLevel)
 		{
 			case 0: iLevel = KviOption_colorTreeWindowListForeground; break;
@@ -705,13 +588,8 @@ void KviTreeWindowListItemDelegate::paint(QPainter * p, const QStyleOptionViewIt
 			case 4: iLevel = KviOption_colorTreeWindowListHighlight4Foreground; break;
 			default: iLevel = KviOption_colorTreeWindowListHighlight5Foreground; break;
 		}
-		p->setPen(
-			QColor(
-				calculateColor(KVI_OPTION_COLOR(iLevel).red(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground).red(),iStepNumber),
-				calculateColor(KVI_OPTION_COLOR(iLevel).green(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground).green(),iStepNumber),
-				calculateColor(KVI_OPTION_COLOR(iLevel).blue(),KVI_OPTION_COLOR(KviOption_colorTreeWindowListActiveForeground).blue(),iStepNumber)
-				)
-			);
+
+		p->setPen(KVI_OPTION_COLOR(iLevel));
 	}
 
 	//draw window name

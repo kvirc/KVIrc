@@ -58,7 +58,7 @@ namespace KviThemeFunctions
 		KviHtmlDialogData hd;
 
 		const char * check_fields[] = { "Name", "Version", "Author", "Description", "Date", "Application" };
-	
+
 		// check if it is a valid theme file
 		KviPackageReader r;
 		if(!r.readHeader(szThemePackageFileName))
@@ -67,37 +67,37 @@ namespace KviThemeFunctions
 			KviQString::sprintf(szError,__tr2qs_ctx("The selected file does not seem to be a valid KVIrc package: %Q","theme"),&szErr);
 			return false;
 		}
-	
+
 		pInfoFields = r.stringInfoFields();
-	
+
 		pValue = pInfoFields->find("PackageType");
 		if(!pValue)return notAValidThemePackage(szError);
 		if(!KviQString::equalCI(*pValue,"ThemePack"))return notAValidThemePackage(szError);
 		pValue = pInfoFields->find("ThemePackVersion");
 		if(!pValue)return notAValidThemePackage(szError);
 		if(!KviQString::equalCI(*pValue,"1"))return notAValidThemePackage(szError);
-		
+
 		// make sure the default fields exist
 		for(int i=0;i<6;i++)
 		{
 			pValue = pInfoFields->find(check_fields[i]);
 			if(!pValue)return notAValidThemePackage(szError);
 		}
-	
+
 		pValue = pInfoFields->find("ThemeCount");
 		if(!pValue)return notAValidThemePackage(szError);
 		bool bOk;
 		int iThemeCount = pValue->toInt(&bOk);
 		if(!bOk)return notAValidThemePackage(szError);
 		if(iThemeCount < 1)return notAValidThemePackage(szError);
-	
+
 		// ok.. it should be really valid at this point
-		
+
 		// load its picture
 		pByteArray = r.binaryInfoFields()->find("Image");
 		if(pByteArray)
 			pix.loadFromData(*pByteArray,0,0);
-		
+
 		if(pix.isNull())
 		{
 			// load the default icon
@@ -129,11 +129,11 @@ namespace KviThemeFunctions
 
 		int iIdx = 0;
 		int iValidThemeCount = iThemeCount;
-		
+
 		while(iIdx < iThemeCount)
 		{
 			bool bValid = true;
-		
+
 			QString szThemeName;
 			QString szThemeVersion;
 			QString szThemeDescription;
@@ -256,7 +256,7 @@ namespace KviThemeFunctions
 			&szWarnings,
 			&szShowDetails
 		);
-		
+
 		hd.addImageResource("theme_dialog_pack_image",pix);
 		hd.addHtmlResource("theme_dialog_details",szDetails);
 		hd.addHtmlResource("theme_dialog_main",hd.szHtmlText);
@@ -277,7 +277,7 @@ namespace KviThemeFunctions
 		hd.iFlags = KviHtmlDialogData::ForceMinimumSize;
 
 		bInstall = KviHtmlDialog::display(pDialogParent,&hd) == 2;
-		
+
 		if(bInstall)
 		{
 			QString szUnpackPath;
@@ -373,13 +373,13 @@ namespace KviThemeFunctions
 			if(g_pFrame->isMaximized())
 				bMaximizeFrame = false;
 		}
-	
+
 		if(bMaximizeFrame)
 			g_pFrame->showMaximized();
-		
+
 		QPixmap pix = QPixmap::grabWidget(g_pFrame);
 		bool bResult = true;
-		
+
 		if(pix.isNull())
 			bResult = false;
 		else {
@@ -391,5 +391,5 @@ namespace KviThemeFunctions
 			g_pFrame->showNormal();
 		return bResult;
 	}
-};
+}
 

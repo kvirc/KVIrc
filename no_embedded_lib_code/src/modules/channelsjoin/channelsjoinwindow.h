@@ -32,7 +32,7 @@
 
 #include "kvi_window.h"
 #include "kvi_string.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QDialog>
 
@@ -64,7 +64,7 @@ public:
 	~KviChannelsJoinWindow();
 protected:
 	QLineEdit        * m_pChannelEdit;
-	KviTalTreeWidget * m_pTreeWidget;
+	QTreeWidget * m_pTreeWidget;
 	KviTalGroupBox   * m_pGroupBox;
 	QLineEdit        * m_pPass;
 	QCheckBox        * m_pShowAtStartupCheck;

@@ -44,7 +44,6 @@
 #include "kvi_tal_vbox.h"
 #include "kvi_tal_hbox.h"
 #include "kvi_tal_groupbox.h"
-#include "kvi_tal_scrollview.h"
 
 #include <QScrollBar>
 #include <QLayout>
@@ -336,7 +335,7 @@ void KviScriptEditorWidget::keyPressEvent(QKeyEvent * e)
 	}
 // Adapted from QT4 QCompleter example
 	bool isShortcut = ((e->modifiers() & Qt::ControlModifier) && e->key() == Qt::Key_E); // CTRL+E
-	if (!m_pCompleter || !isShortcut) // dont process the shortcut when we have a completer
+	if (!m_pCompleter || !isShortcut) // don't process the shortcut when we have a completer
 		QTextEdit::keyPressEvent(e);
 	const bool ctrlOrShift = e->modifiers() & (Qt::ControlModifier | Qt::ShiftModifier);
 	if (!m_pCompleter || (ctrlOrShift && e->text().isEmpty()))
@@ -365,25 +364,24 @@ QString KviScriptEditorWidget::textUnderCursor() const
 	QTextCursor tc = textCursor();
 	if(tc.atBlockStart())
 		return QString();
-
 	tc.clearSelection();
-	tc.movePosition(QTextCursor::StartOfWord);
+	tc.movePosition(QTextCursor::StartOfWord,QTextCursor::KeepAnchor);
 	if(tc.atBlockStart())
 	{
+		szWord.append(tc.selectedText());
 		tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor);
-		if(tc.atBlockEnd())
-			return tc.selectedText();
-
+		szWord.append(tc.selectedText());
+		if(tc.atBlockEnd()){
+			return szWord;
+		}
 		tc.movePosition(QTextCursor::NextCharacter,QTextCursor::KeepAnchor);
-		szWord = tc.selectedText();
+		szWord.append(tc.selectedText());
 		if(szWord.right(1)!=".")
 			szWord.chop(1);
-
 		return szWord;
 	}
 
-	tc.movePosition(QTextCursor::PreviousCharacter);
-	tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor);
+	tc.movePosition(QTextCursor::PreviousCharacter,QTextCursor::KeepAnchor);
 	szWord=tc.selectedText();
 	if(szWord.left(1)==".")
 	{
@@ -393,7 +391,6 @@ QString KviScriptEditorWidget::textUnderCursor() const
 		tc.movePosition(QTextCursor::EndOfWord,QTextCursor::KeepAnchor,1);
 		szWord.prepend(tc.selectedText());
 	} else szWord.remove(0,1);
-
 	return szWord;
 }
 /*
@@ -942,7 +939,7 @@ void KviScriptEditorImplementation::loadFromFile()
 		{
                         m_pEditor->setPlainText(szBuffer);
 			setCursorPosition(0);
-			//m_pEditor->moveCursor(KviTalTextEdit::MoveEnd,false);
+			//m_pEditor->moveCursor(QTextEdit::MoveEnd,false);
 			//updateRowColLabel();
 		} else {
 			QString szTmp;

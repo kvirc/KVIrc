@@ -88,3 +88,83 @@ int KviDccVoiceNullCodec::decodedFrameSize()
 {
 	return 1024;
 }
+
+//--------------------------
+
+KviDccVideoCodec::KviDccVideoCodec()
+{
+}
+
+KviDccVideoCodec::~KviDccVideoCodec()
+{
+}
+
+void KviDccVideoCodec::encode(KviDataBuffer *,KviDataBuffer *)
+{
+}
+
+void KviDccVideoCodec::decode(KviDataBuffer *,KviDataBuffer *)
+{
+}
+
+int KviDccVideoCodec::encodedFrameSize()
+{
+	return 0;
+}
+
+int KviDccVideoCodec::decodedFrameSize()
+{
+	return 0;
+}
+
+const char * KviDccVideoCodec::name()
+{
+	return m_szName.ptr();
+}
+
+KviDccVideoJpegCodec::KviDccVideoJpegCodec()
+: KviDccVideoCodec()
+{
+	m_szName = "jpeg";
+}
+
+KviDccVideoJpegCodec::~KviDccVideoJpegCodec()
+{
+}
+
+void KviDccVideoJpegCodec::encode(KviDataBuffer * signal,KviDataBuffer * stream)
+{
+	if(signal->size() < 1)return;
+	stream->append(signal->data(),signal->size());
+	signal->resize(0);
+}
+
+void KviDccVideoJpegCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
+{
+	static unsigned const char jpg_magic_init[4] = { 0xFF, 0xD8, 0xFF, 0xE0}; //SOI + APP0
+	static unsigned const char jpg_magic_end[2] = { 0xFF, 0xD9}; //EOI
+
+	if(stream->size() < 1)return;
+	
+	int start = stream->find(jpg_magic_init, 4);
+	int end = stream->find(jpg_magic_end, 2);
+	if(start != -1 && end != -1)
+	{
+		//remove junk before jpeg start
+		stream->remove(start);
+		int len = end - start + 1;
+		signal->clear();
+		signal->append(stream->data(),stream->size());
+		stream->remove(len);
+	}
+}
+
+int KviDccVideoJpegCodec::encodedFrameSize()
+{
+	return 0;
+}
+
+int KviDccVideoJpegCodec::decodedFrameSize()
+{
+	return 0;
+}

@@ -10,13 +10,10 @@ The source tree
 
 /                         Root directory.
 |                         This is almost completely CMake stuff.
-|                         Here you can also find project files for various IDE:
-|                         by now KDevelop and Visual C++.
 |
 |-- admin                 Administrative files and document generation scripts.
 |
 |-- cmake                 Build files using the new CMake system resides in here.
-|                         This is work in progress.
 |
 |-- data                  Data for the KVIrc program. Most of this stuff is
 |   |                     installed in $(prefix)/share/kvirc/$VERSION/
@@ -50,17 +47,13 @@ The source tree
 |   |
 |   `-- resources_mac     Resources for the macosx compilation.
 |
-|-- debian                Debian mantainer's stuff
-|
 |-- doc                   Any kind of documentation
 |   |
 |   `-- scriptexamples    Various script examples
 |
-|-- no-dist               Stuff that does NOT end in the final distribution
-
 |-- po                    Internationalization (i18n :)
 |   |
-|   |-- kvirc             Translations for kvilib and the main KVIrc executable
+|   |-- core              Translations for kvilib and the main KVIrc executable
 |   |
 |   `-- modules           Translations for the modules
 |
@@ -100,8 +93,6 @@ The source tree
 |   |
 |   |-- kvirc             The KVIrc executable sources
 |   |   |
-|   |   |-- include       Again compile-time include files. Only links.
-|   |   |
 |   |   |-- kernel        The core of the executable. The main function is
 |   |   |                 here. Here is also the KviApp object and the options
 |   |   |                 core management.
@@ -116,12 +107,11 @@ The source tree
 |   |   |
 |   |   |-- sparser       The IRC server parser
 |   |   |
-|   |   |-- ui            User interface. 99% of the core GUI is here.
-|   |   |                 Here you can find KviFrame (the main window)
-|   |   |                 KviMdiManager, KviWindow, KviChannel, KviQuery,
-|   |   |                 KviConsole, KviInput, KviIrcView and KviUserListView
-|   |   |                 which are the most common widgets in kvirc.
-|   |   |
+|   |   `-- ui            User interface. 99% of the core GUI is here.
+|   |                     Here you can find KviFrame (the main window)
+|   |                     KviMdiManager, KviWindow, KviChannel, KviQuery,
+|   |                     KviConsole, KviInput, KviIrcView and KviUserListView
+|   |                     which are the most common widgets in kvirc.
 |   |
 |   |-- modules           Yes, the modules :D
 |   |   |
@@ -155,8 +145,6 @@ The source tree
 |   |   |
 |   |   |-- dialog        dialog.* scripting stuff
 |   |   |
-|   |   |-- dockwidget    The dock widget for KDE and windows.
-|   |   |
 |   |   |-- editor        The scripting editor core widget.
 |   |   |
 |   |   |-- eventeditor   The event editor window
@@ -171,9 +159,7 @@ The source tree
 |   |   |
 |   |   |-- ident         A small ident daemon
 |   |   |
-|   |   |-- iograph       Another applet that is not compiled for now.
-|   |   |
-|   |   |-- lag           Lag meter
+|   |   |-- iograph       an input/output graph window
 |   |   |
 |   |   |-- lamerizer     A crypt/text-transformation engine
 |   |   |
@@ -222,6 +208,10 @@ The source tree
 |   |   |
 |   |   |-- proxydb       The proxy DB management stuff from KVS
 |   |   |
+|   |   |-- python        The python scripting module
+|   |   |
+|   |   |-- pythoncore    The pythoncore module
+|   |   |
 |   |   |-- raweditor     The raw events editor window
 |   |   |
 |   |   |-- regchan       regchan.* scripting stuff
@@ -229,6 +219,8 @@ The source tree
 |   |   |-- reguser       reguser.* scripting stuff
 |   |   |
 |   |   |-- rijndael      A crypting engine
+|   |   |
+|   |   |-- rot13         A crypt/text-transformation engine
 |   |   |
 |   |   |-- serverdb      The server DB management stuff from KVS
 |   |   |
@@ -251,6 +243,10 @@ The source tree
 |   |   |-- system        system.* scripting stuff
 |   |   |
 |   |   |-- term          The embedded terminal emulator (needs KDE)
+|   |   |
+|   |   |-- texticons     Texticons handling functions module
+|   |   |
+|   |   |-- theme         Theme management/package module
 |   |   |
 |   |   |-- tip           The tip of the day
 |   |   |
@@ -286,6 +282,12 @@ As of 2008.04.26:
 [pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
  237020
 
+As of 2009.09.01:
+[pragma@phoenix src]# cat $(find ./ -name \*.h) | wc -l
+  59081
+[pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
+ 244976
+
 -------------------------------------------------------------------------------
 The coding style
 -------------------------------------------------------------------------------
@@ -301,12 +303,12 @@ exception of the first one) but it is highly appreciated.
 - INDENT WITH TABS (the only MANDATORY rule)
 
 	Go back to the line above and read it again.
-	
+
 	INDENT, TABS.
 
 	Tabs can be assigned any number of spaces in any decent source code
 	editor.
-	
+
 	Actually 95% of the KVIrc code is indented in BSD/Allman style
 	but the K&R style is also tolerated.
 
@@ -315,7 +317,7 @@ exception of the first one) but it is highly appreciated.
 	g_*                : global variables
 	m_*                : member variables
 	no prefix          : any other scope
-	
+
 	[prefix]pName      : pointer to something named Name
 	[prefix]iName      : integer (signed) variable named Name
 	[prefix]uName      : unsigned integer
@@ -329,7 +331,7 @@ exception of the first one) but it is highly appreciated.
 	                     Do NOT name a member or global variable i.
 
 	So finally:
-	
+
 	g_pApp is a global pointer to the application object
 	m_pData is a member variable pointer to some data object
 	m_szName is a string member variable named Name
@@ -359,11 +361,11 @@ exception of the first one) but it is highly appreciated.
 	The class names start with an upper case letter. In most cases
 	there is a Kvi prefix and the rest follows the rule for function names.
 		KviApp, KviConsole, KviWindow, KviStr, KviConfig, KviUserParser ...
-	
+
 	If possible, do not use "shortcut" names.
 	Actually KviCommand is preferred over KviCmd unless the KviCmd class
 	is REALLY widely used across the source (like KviStr for example).
-	
+
 	This helps a lot in remembering the class names: with the shortcuts
 	you're often forced to open the corresponding header file to look up
 	which letters have been left off...
@@ -425,7 +427,7 @@ This is the list of the various string types used in KVIrc.
 
 (const) char *
 	The classic C null terminated string.
-	
+
 KviStr
 	The basic KVIrc string class. It has been first implemented as a hack
 	around various bugs of the original QString class (the NOT unicode one
@@ -450,11 +452,11 @@ QString
 	is not an issue, you must take care when passing QString objects between
 	concurrent threads.
 
-(const) QChar * 
-    The array of Qt chars. This is usually obtained by callling
-    KviQString::nullTerminatedArray() which itself is a hack...
-    This array is used in some functions that were written for
-    const char * strings and haven't been ported completely.
+(const) QChar *
+	The array of Qt chars. This is usually obtained by callling
+	KviQString::nullTerminatedArray() which itself is a hack...
+	This array is used in some functions that were written for
+	const char * strings and haven't been ported completely.
 
 QCString
 	The Qt non UNICODE string. See the Qt documentation for details.
@@ -626,12 +628,12 @@ KviServerParser * g_pServerParser;
 	The one and only server parser
 	Declared in "kvi_sparser.h"
 	Almost always set (critical phases at early startup and late shutdown)
-	
+
 KviFrame * g_pFrame;
 	The one and only main window
 	Declared in "kvi_frame.h"
 	Almost always set (critical phases at early startup and late shutdown)
-	
+
 KviWindow * g_pActiveWindow;
 	The one and only active window
 	Declared in "kvi_window.h"
@@ -718,7 +720,7 @@ Rule for safe text output
 -------------------------------------------------------------------------------
 
 If the format string you're going to output is not constant (i.e. it
-comes from the server) you MUST use KviWindow::outputNoFmt() instead 
+comes from the server) you MUST use KviWindow::outputNoFmt() instead
 of KviWindow::output().
 
 BAD:
@@ -872,40 +874,12 @@ if possible :)
 
 - Putting it all together
 
-At the moment of writing the KVIrc svn tree has version 4.0.0 (but some 3.9.9
-definition is still floating around in the source code).
-Today is 02 Jun 2008 and the current svn revision number is 1880.
-The latest official release was 3.4.0 (where the internal revision number
-was omitted and implicitly assumed to be 0).
+At the moment of writing the KVIrc svn trunk has version 4.0.0.
+Today is 01 Sept 2009 and the current svn revision number is 3453.
+The latest official release was 3.4.2, still based on qt3, and some 3.4.3
+bugfixes snapshots are floating around the net.
 If tomorrow we had to emit a quick fix for the official release we'll
-use 3.4.1. The next official is likely to be a qt4-only version 4.
-
--------------------------------------------------------------------------------
-Porting to Qt 4.x for version 4 (no Qt 3.x compatibility)
--------------------------------------------------------------------------------
-
-For the moment, in random order:
-
-- Avoid using QString::null, use KviQString::empty instead.
-  This is because Qt 4.x does NOT have a null static variable. Qt 4.x in fact
-  does not have the distinction between null and empty strings (Note that for
-  KviStr this choice was made since the beginning).
-  Do NOT replace all the uses of QString::null with QString(); for Qt 3.x this
-  construct was too SLOW, and the qt 4.x porting documentation suggests not to
-  do it anyway.
-
-- We're building a compatibility layer in kvilib.
-  Before using ANY Qt class, look if there is an override in kvilib.
-  In fact always, prefer Kvi* classes over the Q* ones and include
-  the "kvi_*.h" files instead of the <qt*.h> ones.
-
-- Widgets have been abstracted in kvilib/tal.
-
-- Avoid any use of Q3Support features.
-
-- Do not use the "char * c = KviQString::toUtf8(string).data();" construct.
-  It leads to crashes on many compilers since the returned KviQCString
-  goes out of scope just at the end of the instruction.
+use 4.0.1.
 
 -------------------------------------------------------------------------------
 Code documentation

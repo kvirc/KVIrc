@@ -54,12 +54,12 @@ namespace KviQString
 	// sz2 is assumed to be null terminated here!
 	extern KVILIB_API bool equalCI(const QString &sz1,const QChar * sz2);
 	inline bool equalCS(const char * sz1,const QString &sz2)
-		{ return equalCS(sz2,sz1); };
+		{ return equalCS(sz2,sz1); }
 	inline bool equalCI(const char * sz1,const QString &sz2)
-		{ return equalCI(sz2,sz1); };
+		{ return equalCI(sz2,sz1); }
 	// sz1 is assumed to be null terminated here!
 	inline bool equalCI(const QChar * sz1,const QString &sz2)
-		{ return equalCI(sz2,sz1); };
+		{ return equalCI(sz2,sz1); }
 
 	extern KVILIB_API bool equalCSN(const QString &sz1,const QString &sz2,unsigned int len);
 	extern KVILIB_API bool equalCIN(const QString &sz1,const QString &sz2,unsigned int len);
@@ -68,12 +68,12 @@ namespace KviQString
 	// sz2 is assumed to be null terminated here!
 	extern KVILIB_API bool equalCIN(const QString &sz1,const QChar * sz2,unsigned int len);
 	inline bool equalCSN(const char * sz1,const QString &sz2,unsigned int len)
-		{ return equalCSN(sz2,sz1,len); };
+		{ return equalCSN(sz2,sz1,len); }
 	inline bool equalCIN(const char * sz1,const QString &sz2,unsigned int len)
-		{ return equalCIN(sz2,sz1,len); };
+		{ return equalCIN(sz2,sz1,len); }
 	// sz1 is assumed to be null terminated here!
 	inline bool equalCIN(const QChar * sz1,const QString &sz2,unsigned int len)
-		{ return equalCIN(sz2,sz1,len); };
+		{ return equalCIN(sz2,sz1,len); }
 
 	//note that greater here means that come AFTER in the alphabetic order
 	// return < 0 ---> str1 < str2
@@ -96,7 +96,7 @@ namespace KviQString
 	* \return bool
 	*/
 	inline bool lastCharIs(QString & szString, const QChar & c)
-		{ return szString.endsWith(c); };
+		{ return szString.endsWith(c); }
 
 	extern KVILIB_API void ensureLastCharIs(QString &szString,const QChar &c);
 
@@ -361,7 +361,7 @@ namespace KviQString
 		return szNumber.toULongLong(bOk);
 #endif
 	}
-};
+}
 
 // QT4SUX: Because QString::null is gone. QString() is SLOWER than QString::null since it invokes a constructor and destructor.
 

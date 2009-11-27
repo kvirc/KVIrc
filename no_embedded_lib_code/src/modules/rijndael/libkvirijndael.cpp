@@ -103,7 +103,7 @@
 			{
 				decKey = encKey;
 				decKeyLen = encKeyLen;
-			} // else all 
+			} // else all
 		} else {
 			// no encrypt key specified...
 			if(decKey && decKeyLen)
@@ -183,7 +183,7 @@
 		}
 		int len = (int)kvi_strLen(plainText);
 		char * buf = (char *)kvi_malloc(len + 16);
-		
+
 		int retVal = m_pEncryptCipher->padEncrypt((const unsigned char *)plainText,len,(unsigned char *)buf);
 		if(retVal < 0)
 		{
@@ -226,7 +226,7 @@
 		}
 
 		inBuffer++;
-		
+
 		if(!*inBuffer)
 		{
 			plainText = inBuffer;
@@ -239,7 +239,7 @@
 		if(!asciiToBinary(inBuffer,&len,&binary))return KviCryptEngine::DecryptError;
 
 		char * buf = (char *)kvi_malloc(len + 1);
-		
+
 		int retVal = m_pDecryptCipher->padDecrypt((const unsigned char *)binary,len,(unsigned char *)buf);
 		kvi_free(binary);
 
@@ -355,12 +355,12 @@
 	{
 		g_pEngineList->append(this);
 	}
-	
+
 	KviMircryptionEngine::~KviMircryptionEngine()
 	{
 		g_pEngineList->removeRef(this);
 	}
-	
+
 	bool KviMircryptionEngine::init(const char * encKey,int encKeyLen,const char * decKey,int decKeyLen)
 	{
 		if(encKey && (encKeyLen > 0))
@@ -369,7 +369,7 @@
 			{
 				decKey = encKey;
 				decKeyLen = encKeyLen;
-			} // else all 
+			} // else all
 		} else {
 			// no encrypt key specified...
 			if(decKey && decKeyLen)
@@ -394,7 +394,7 @@
 			m_bDecryptCBC = false;
 		return true;
 	}
-	
+
 	KviCryptEngine::EncryptResult KviMircryptionEngine::encrypt(const char * plainText,KviStr &outBuffer)
 	{
 		KviStr szPlain = plainText;
@@ -420,7 +420,7 @@
 		//outBuffer += MCPS2_ENDTAG;
 		return KviCryptEngine::Encrypted;
 	}
-	
+
 	KviCryptEngine::DecryptResult KviMircryptionEngine::decrypt(const char * inBuffer,KviStr &plainText)
 	{
 		plainText = "";
@@ -453,7 +453,7 @@
 			if(idx > 0) // a non encrypted block
 				plainText += szIn.left(idx);
 			szIn.cutLeft(idx + len1);
-			
+
 			idx = szIn.findFirstIdx(MCPS2_ENDTAG);
 			if(idx != -1)
 			{
@@ -464,7 +464,7 @@
 		}
 		*/
 	}
-	
+
 	static unsigned char fake_base64[]="./0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 	unsigned int fake_base64dec(unsigned char c)
@@ -472,7 +472,7 @@
 		static char base64unmap[255];
 		static bool didinit=false;
 		int i;
-	
+
 		if(!didinit)
 		{
 			// initialize base64unmap
@@ -483,7 +483,7 @@
 
 		return base64unmap[c];
 	}
-	
+
 	static void byteswap_buffer(unsigned char * p,int len)
 	{
 		while(len > 0)
@@ -514,7 +514,7 @@
 		//byteswap_buffer((unsigned char *)plain.ptr(),plain.len());
 
 		unsigned char * out =(unsigned char *)kvi_malloc(plain.len()); // we use this to avoid endiannes problems
-		
+
 		BlowFish bf((unsigned char *)m_szEncryptKey.ptr(),m_szEncryptKey.len());
 		bf.ResetChain();
 		bf.Encrypt((unsigned char *)plain.ptr(),out,plain.len(),BlowFish::ECB);
@@ -542,7 +542,7 @@
 			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
 			*p++ = fake_base64[*dd2 & 0x3f]; *dd2 >>= 6;
 			*p++ = fake_base64[*dd2 & 0x3f];
-			
+
 			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
 			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
 			*p++ = fake_base64[*dd1 & 0x3f]; *dd1 >>= 6;
@@ -571,7 +571,7 @@
 		// a fake base64 decoding algo, use a different character set
 		// and stuff 6 bytes at a time into a 32 bit long...
 		int ll = (encoded.len() * 2) / 3;
-		
+
 		unsigned char * buf = (unsigned char *)kvi_malloc(ll);
 		unsigned char * p = (unsigned char *)encoded.ptr();
 		unsigned char * e = p + encoded.len();
@@ -621,9 +621,9 @@
 
 		// choose an IV
 		static bool bDidInit = false;
-		
+
 		int t = (int)kvi_unixTime();
-		
+
 		if(!bDidInit)
 		{
 			srand(t);

@@ -40,13 +40,14 @@ KviTalPopupMenu::KviTalPopupMenu(QWidget * pParent,const QString &szName)
 
 KviTalPopupMenu::~KviTalPopupMenu()
 {
+	clear();
 }
 
 QAction * KviTalPopupMenu::getAction(int id)
 {
 	QAction * a = actionsDict.value(id);
 	return a ? a : 0;
-};
+}
 
 int KviTalPopupMenu::insertItem(const QString &szText)
 {
@@ -81,7 +82,7 @@ int KviTalPopupMenu::insertItem(const QString &szText,const QObject * pReceiver,
 	QAction * action = addAction(szText);
 
 	// create a compatible slot
-	signalMapper[action] = new QSignalMapper();
+	signalMapper[action] = new QSignalMapper(this);
 	signalMapper[action]->setMapping(action, identifier);
 
 	connect(action, SIGNAL(triggered()), signalMapper[action], SLOT(map()));
@@ -96,7 +97,7 @@ int KviTalPopupMenu::insertItem(const QPixmap &pix,const QString &szText,const Q
 	QAction * action = addAction(pix, szText);
 
 	// create a compatible slot
-	signalMapper[action] = new QSignalMapper();
+	signalMapper[action] = new QSignalMapper(this);
 	signalMapper[action]->setMapping(action, identifier);
 
 	connect(action, SIGNAL(triggered()), signalMapper[action], SLOT(map()));
@@ -136,7 +137,7 @@ void KviTalPopupMenu::setItemChecked(int id,bool check)
 {
 	QAction * action = actionsDict.value(id);
 	action->setCheckable(true);
-    action->setChecked(check);
+	action->setChecked(check);
 }
 
 void KviTalPopupMenu::setItemParameter(int id, int param)
@@ -157,7 +158,8 @@ void KviTalPopupMenu::setItemParameter(int id, int param)
 int KviTalPopupMenu::itemParameter(int id)
 {
 	QAction * action = actionsDict.value(id);
-	if (action)	return action->data().toInt();
+	if (action)
+		return action->data().toInt();
 	else return 0;
 }
 

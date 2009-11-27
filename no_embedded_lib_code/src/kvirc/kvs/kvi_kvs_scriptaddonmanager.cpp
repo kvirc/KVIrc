@@ -290,7 +290,7 @@ void KviKvsScriptAddonManager::save(const QString &szFileName)
 	cfg.clear();
 
 	KviPointerHashTableIterator<QString,KviKvsScriptAddon> it(*m_pAddonDict);
-	
+
 	while(KviKvsScriptAddon * a = it.current())
 	{
 		cfg.setGroup(a->name());
@@ -312,7 +312,7 @@ void KviKvsScriptAddonManager::delayedLoad()
 
 	KviPointerHashTable<QString,KviConfigGroup> * d = cfg.dict();
 	if(!d)return;
-	
+
 	KviPointerHashTableIterator<QString,KviConfigGroup> it(*d);
 	while(it.current())
 	{

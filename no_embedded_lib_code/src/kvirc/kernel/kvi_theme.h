@@ -32,8 +32,8 @@
 
 #include <QPixmap>
 
-#define KVI_THEMEINFO_FILE_NAME "themeinfo." KVI_FILEEXTENSION_CONFIG
-#define KVI_THEMEDATA_FILE_NAME "themedata." KVI_FILEEXTENSION_CONFIG
+#define KVI_THEMEINFO_FILE_NAME "themeinfo" KVI_FILEEXTENSION_CONFIG
+#define KVI_THEMEDATA_FILE_NAME "themedata" KVI_FILEEXTENSION_CONFIG
 #define KVI_THEMEINFO_CONFIG_GROUP "ThemeInfo"
 #define KVI_THEMEDATA_CONFIG_GROUP "ThemeData"
 
@@ -68,9 +68,9 @@ protected:
 	QString m_szDate;               //< theme creation date
 	QString m_szApplication;        //< theme creation (KVIrc) version
 	QString m_szThemeEngineVersion; //< the theme engine version that saved this theme
-	
+
 	QString m_szLastError;          //< reported when some function fails
-	
+
 	QPixmap m_pixScreenshotLarge;   //< the large screenshot pixmap
 	QPixmap m_pixScreenshotMedium;  //< the medium screenshot pixmap
 	QPixmap m_pixScreenshotSmall;   //< the small screenshot pixmap
@@ -83,7 +83,7 @@ public:
 	/// save the currently defined theme configuration in the specified file
 	///
 	bool save(const QString &szThemeFileName);
-	
+
 	const QString & lastError(){ return m_szLastError; };
 	void setLastError(const QString &szLastError){ m_szLastError = szLastError; };
 	const QString & name(){ return m_szName; };
@@ -164,7 +164,7 @@ namespace KviTheme
 	/// an existing screenshot on disk (usually in the tmp directory).
 	///
 	bool KVIRC_API saveScreenshots(KviThemeInfo &options,const QString &szOriginalScreenshotPath);
-};
+}
 
 
 #endif //_KVI_THEME_H_

@@ -54,7 +54,7 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame *,bool bIsStandalone)
 	m_pTextBrowser = new QTextBrowser(this);
 	m_pTextBrowser->setObjectName("text_browser");
 	m_pTextBrowser->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
-	m_pTextBrowser->setFocusPolicy(Qt::NoFocus);
+	m_pTextBrowser->setStyleSheet("QTextBrowser { background-color:white; color:black; }");
 	m_pToolBar = new KviTalHBox(this);
 
 	m_pBtnIndex = new QToolButton(m_pToolBar);
@@ -83,8 +83,6 @@ KviHelpWidget::KviHelpWidget(QWidget * par,KviFrame *,bool bIsStandalone)
 	m_pToolBar->setStretchFactor(pSpacer,1);
 	connect(m_pTextBrowser,SIGNAL(backwardAvailable(bool)),m_pBtnBackward,SLOT(setEnabled(bool)));
 	connect(m_pTextBrowser,SIGNAL(forwardAvailable(bool)),m_pBtnForward,SLOT(setEnabled(bool)));
-
-	m_pTextBrowser->viewport()->installEventFilter(this);
 }
 
 KviHelpWidget::~KviHelpWidget()
@@ -131,19 +129,6 @@ QSize KviHelpWidget::sizeHint() const
 	if(m_pToolBar->sizeHint().width() > wdth)wdth = m_pToolBar->sizeHint().width();
 	QSize s(wdth,m_pTextBrowser->sizeHint().height() + m_pToolBar->sizeHint().height());
 	return s;
-}
-
-bool KviHelpWidget::eventFilter(QObject * o, QEvent *e)
-{
-	QClipboard *cb = QApplication::clipboard();
-
-	if(e->type() == QEvent::MouseButtonRelease) {
-		if(m_pTextBrowser->textCursor().hasSelection()) {
-			cb->setText(m_pTextBrowser->textCursor().selectedText());
-		}
-	}
-
-	return QWidget::eventFilter(o,e);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

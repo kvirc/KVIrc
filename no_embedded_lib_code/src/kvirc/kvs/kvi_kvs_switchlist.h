@@ -55,7 +55,7 @@ public:
 	{
 		return m_pShortSwitchDict ? m_pShortSwitchDict->find((int)uShortKey) : 0;
 	};
-	
+
 	KviKvsVariant * find(const QString &szLongKey)
 	{
 		return m_pLongSwitchDict ? m_pLongSwitchDict->find(szLongKey) : 0;
@@ -71,7 +71,7 @@ public:
 		}
 		return m_pShortSwitchDict ? m_pShortSwitchDict->find((int)uShortKey) : 0;
 	};
-	
+
 	bool getAsStringIfExisting(unsigned short uShortKey,const QString &szLongKey,QString &szBuffer)
 	{
 		KviKvsVariant * v = find(uShortKey,szLongKey);

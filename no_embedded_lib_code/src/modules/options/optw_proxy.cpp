@@ -43,8 +43,8 @@
 #include <QToolButton>
 
 
-KviProxyOptionsTreeWidgetItem::KviProxyOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,KviProxy * prx)
-: KviTalTreeWidgetItem(parent)
+KviProxyOptionsTreeWidgetItem::KviProxyOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,KviProxy * prx)
+: QTreeWidgetItem(parent)
 {
 	debug("Creating item");
 	setText(0,prx->m_szHostname);
@@ -65,7 +65,7 @@ KviProxyOptionsWidget::KviProxyOptionsWidget(QWidget * parent)
 
 	addBoolSelector(0,0,1,0,__tr2qs_ctx("Use proxy","options"),KviOption_boolUseProxyHost);
 
-	m_pTreeWidget = new KviTalTreeWidget(this);
+	m_pTreeWidget = new QTreeWidget(this);
 	addWidgetToLayout(m_pTreeWidget,0,1,0,1);
 	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("Proxy","options"));
 	m_pTreeWidget->setRootIsDecorated(true);
@@ -320,7 +320,7 @@ void KviProxyOptionsWidget::commit()
 
 void KviProxyOptionsWidget::customContextMenuRequested(const QPoint &pos)
 {
-	KviTalTreeWidgetItem *it=(KviTalTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
+	QTreeWidgetItem *it=(QTreeWidgetItem *)m_pTreeWidget->itemAt(pos);
 	m_pContextPopup->clear();
 	m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_PROXY)),__tr2qs_ctx("&New Proxy","options"),this,SLOT(newProxy()));
 	m_pContextPopup->setItemEnabled(m_pContextPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_CUT)),__tr2qs_ctx("Re&move Proxy","options"),this,SLOT(removeCurrent())),it);
@@ -343,11 +343,11 @@ void KviProxyOptionsWidget::removeCurrent()
 		//delete m_pLastEditedItem;
 		//m_pLastEditedItem = 0;
 
-		KviTalTreeWidgetItem * tmp = m_pLastEditedItem;
+		QTreeWidgetItem * tmp = m_pLastEditedItem;
 		m_pLastEditedItem = 0;
 		delete tmp;
 
-		KviTalTreeWidgetItem * it = (KviTalTreeWidgetItem *)m_pTreeWidget->topLevelItem(0);
+		QTreeWidgetItem * it = (QTreeWidgetItem *)m_pTreeWidget->topLevelItem(0);
 		if(it)
 		{
 			it->setSelected(true);

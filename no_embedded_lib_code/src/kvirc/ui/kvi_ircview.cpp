@@ -287,6 +287,9 @@ KviIrcView::KviIrcView(QWidget *parent,KviFrame *pFrm,KviWindow *pWnd)
 	setAutoFillBackground(false);
 
 	m_pFm = 0; // will be updated in the first paint event
+	m_iFontDescent=0;
+	m_iFontLineSpacing=0;
+	m_iFontLineWidth=0;
 
 	m_pToolTip = new KviIrcViewToolTip(this);
 
@@ -402,7 +405,10 @@ void KviIrcView::setFont(const QFont &f)
 		l->iMaxLineWidth = -1;
 		l = l->pNext;
 	}
-	QWidget::setFont(f);
+
+	QFont newFont(f);
+	newFont.setKerning(false);
+	QWidget::setFont(newFont);
 	update();
 }
 
@@ -970,7 +976,7 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 	 */
 	int scrollbarWidth = m_pScrollBar->width();
 	int widgetWidth  = width() - scrollbarWidth;
-	if(!isVisible() || (widgetWidth < 20))
+	if(!isVisible())
 	{
 		m_iUnprocessedPaintEventRequests = 0; // assume a full repaint when this widget is shown...
 		return; //can't show stuff here
@@ -1039,6 +1045,12 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	}
 #endif
+
+	if(widgetWidth < 20)
+	{
+		m_iUnprocessedPaintEventRequests = 0; // assume a full repaint when this widget is shown...
+		return; //can't show stuff here
+	}
 
 	/*
 	 * Profane description: after the background, start to paint the contents (a list of text lines with "dynamic contents", correctly
@@ -1291,6 +1303,13 @@ void KviIrcView::paintEvent(QPaintEvent *p)
 
 // EOF macro declarations
 
+			if(pCurTextLine == m_pCursorLine)
+			{
+				//this line is currently highlighted by the ircview "find" method.
+				curBack=KVI_OPTION_MSGTYPE(KVI_OUT_SEARCH).back();
+				curFore=KVI_OPTION_MSGTYPE(KVI_OUT_SEARCH).fore();
+			}
+
 			if(m_bMouseIsDown)
 			{
 				//Check if the block or a part of it is selected
@@ -1426,18 +1445,6 @@ no_selection_paint:
 					curLeftCoord += block->block_width;
 				}
 			}
-		}
-
-		//paint the cursor
-
-		if(pCurTextLine == m_pCursorLine)
-		{
-			// paint the cursor line
-			int iH = lineWrapsHeight + m_iFontLineSpacing;
-
-			pa.setCompositionMode(QPainter::CompositionMode_SourceOut);
-			pa.fillRect(0,curBottomCoord - iH,widgetWidth,iH + (m_iFontDescent << 1),QBrush(QColor(0,0,0,127)));
-			pa.setCompositionMode(QPainter::CompositionMode_SourceOver);
 		}
 
 		curBottomCoord -= (lineWrapsHeight + m_iFontLineSpacing);

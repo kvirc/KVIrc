@@ -59,7 +59,7 @@ bool KviKvsTreeNodeSpecialCommandIf::execute(KviKvsRunTimeContext * c)
 {
 	KviKvsVariant v;
 	if(!m_pExpression->evaluateReadOnly(c,&v))return false;
-	
+
 	if(v.asBoolean())
 	{
 		if(m_pIfInstruction)

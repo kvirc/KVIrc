@@ -48,7 +48,7 @@
 #define KVS_TRIGGER_EVENT(__idx,__wnd,__parms) \
 	if(KviKvsEventManager::instance()->hasAppHandlers(__idx)) \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,__parms);
-		
+
 #define KVS_TRIGGER_EVENT_HALTED(__idx,__wnd,__parms) \
 	(KviKvsEventManager::instance()->hasAppHandlers(__idx) ? \
 		KviKvsEventManager::instance()->trigger(__idx,__wnd,__parms) : false)

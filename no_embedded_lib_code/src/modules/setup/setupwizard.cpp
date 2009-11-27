@@ -36,9 +36,9 @@ bool g_bFoundMirc;
 #include "kvi_env.h"
 #include "kvi_options.h"
 #include "kvi_config.h"
-#include "kvi_tal_textedit.h"
 #include "kvi_tal_hbox.h"
 
+#include <QTextEdit>
 #include <QMessageBox>
 #include <QDir>
 #include <QPushButton>
@@ -105,7 +105,7 @@ KviSetupPage::KviSetupPage(KviSetupWizard * w)
 	//m_pVBox->setBackgroundColor(QColor(0,80,0));
 	//m_pVBox->setMaximumHeight(450);
 	g->addWidget(m_pVBox,0,1);
-	
+
 	g->setColumnStretch(1,1);
 
 	QLabel * l = new QLabel(m_pVBox);
@@ -120,9 +120,9 @@ KviSetupPage::KviSetupPage(KviSetupWizard * w)
 	l->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	l->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
 	l->setMargin(0);
-	QPalette p = l->palette(); 
-	p.setColor(backgroundRole(), QColor(48,48,48)); 
-	l->setPalette(p); 
+	QPalette p = l->palette();
+	p.setColor(backgroundRole(), QColor(48,48,48));
+	l->setPalette(p);
 
 	m_pTextLabel = new QLabel(m_pVBox);
 	m_pTextLabel->setWordWrap(true);
@@ -190,7 +190,7 @@ KviSetupWizard::KviSetupWizard()
 		"</ul></p>" \
 		"<p>The \"legalese\" version of the license is shown in the box below.</p>"));
 
-	KviTalTextEdit * ed = new KviTalTextEdit(m_pLicense->m_pVBox);
+	QTextEdit * ed = new QTextEdit(m_pLicense->m_pVBox);
 	ed->setReadOnly(true);
 	ed->setWordWrapMode(QTextOption::NoWrap);
 	QString szLicense;
@@ -203,7 +203,7 @@ KviSetupWizard::KviSetupWizard()
 			"Please report to <pragma at kvirc dot net>");
 	}
 	ed->setText(szLicense);
-	
+
 	m_pLicense->m_pVBox->setStretchFactor(ed,1);
 
 	addPage(m_pLicense,__tr2qs("Dreaded License Agreement"));
@@ -235,25 +235,25 @@ KviSetupWizard::KviSetupWizard()
 	m_pDirButtonGroup = new KviTalGroupBox(Qt::Horizontal,__tr2qs("Store configuration in folder"),m_pDirectory->m_pVBox);
 	m_pDirUsePrev = new QRadioButton(__tr2qs("Use settings folder from previous installation"),m_pDirButtonGroup);
 	connect(m_pDirUsePrev,SIGNAL(clicked()),this,SLOT(oldDirClicked()));
-	
+
 	m_pOldPathBox = new KviTalHBox(m_pDirButtonGroup);
 	m_pOldDataPathEdit = new QLineEdit(m_pOldPathBox);
 	connect(m_pOldDataPathEdit,SIGNAL(textChanged ( const QString & )),this,SLOT(oldDataTextChanged ( const QString & )));
-	
+
 	QPushButton * pb = new QPushButton(__tr2qs("&Browse..."),m_pOldPathBox);
 	connect(pb,SIGNAL(clicked()),this,SLOT(chooseOldDataPath()));
 	m_pOldPathBox->setSpacing(3);
 	m_pOldPathBox->setStretchFactor(m_pOldDataPathEdit,1);
-	
+
 	m_pDirUseNew = new QRadioButton(__tr2qs("Use new settings folder"),m_pDirButtonGroup);
 	connect(m_pDirUseNew,SIGNAL(clicked()),this,SLOT(newDirClicked()));
-	
+
 	QLabel* l = new QLabel(m_pDirButtonGroup);
 	l->setText(__tr2qs("Settings folder:"));
 
 	m_pNewPathBox = new KviTalHBox(m_pDirButtonGroup);
 	m_pDataPathEdit = new QLineEdit(m_pNewPathBox);
-	
+
 	pb = new QPushButton(__tr2qs("&Browse..."),m_pNewPathBox);
 	connect(pb,SIGNAL(clicked()),this,SLOT(chooseDataPath()));
 
@@ -264,7 +264,7 @@ KviSetupWizard::KviSetupWizard()
 	tmp = QTextCodec::codecForLocale()->toUnicode(getenv( "APPDATA" ));
 	if(tmp.isEmpty())
 		tmp = QDir::homePath();
-#else 
+#else
 	tmp = QDir::homePath();
 #endif //COMPILE_ON_WINDOWS
 	KviQString::ensureLastCharIs(tmp,KVI_PATH_SEPARATOR_CHAR);
@@ -281,7 +281,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pNewIncomingBox = new KviTalHBox(m_pDirButtonGroup);
 
 	m_pIncomingPathEdit = new QLineEdit(m_pNewIncomingBox);
-	
+
 	pb = new QPushButton(__tr2qs("&Browse..."),m_pNewIncomingBox);
 	connect(pb,SIGNAL(clicked()),this,SLOT(chooseIncomingPath()));
 
@@ -293,7 +293,7 @@ KviSetupWizard::KviSetupWizard()
 	tmp.append(KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME);
 	KviFileUtils::adjustFilePath(tmp);
 	m_pIncomingPathEdit->setText(tmp);
-	
+
 	m_pDirUseNew->toggle();
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
@@ -303,7 +303,7 @@ KviSetupWizard::KviSetupWizard()
 	// Pragma: Unused, takes only space.
 	//m_pDirRestore = new QRadioButton(__tr2qs("Restore from backup archive"),m_pDirButtonGroup);
 	//m_pDirRestore->setEnabled(FALSE);
-	
+
 	//l = new QLabel(m_pDirectory->m_pVBox,"<b> </b>");
 
 	//m_pDirectory->m_pVBox->setStretchFactor(m_pDirectory->m_pTextLabel,1);
@@ -339,7 +339,7 @@ KviSetupWizard::KviSetupWizard()
 	m_pNickSelector = new KviStringSelector(gbox,__tr2qs("Nickname:"),&(KVI_OPTION_STRING(KviOption_stringNickname1)),true);
 	m_pNickSelector->setMinimumLabelWidth(120);
 	m_pNickSelector->setMargin(0);
-	
+
 	QValidator * v = new QRegExpValidator(QRegExp("[^-0-9 ][^ ]*"),gbox);
 	m_pNickSelector->setValidator(v);
 
@@ -357,12 +357,12 @@ KviSetupWizard::KviSetupWizard()
 	KviTalHBox* hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
 	hb->setMargin(0);
-	
+
 	l = new QLabel(__tr2qs("Age:"),hb);
 	l->setMinimumWidth(120);
-	
+
 	m_pAgeCombo = new QComboBox(hb);
-	
+
 	m_pAgeCombo->insertItem(0,__tr2qs("Unspecified"));
 	unsigned int i;
 	for(i=1;i<120;i++)
@@ -384,7 +384,7 @@ KviSetupWizard::KviSetupWizard()
 	hb = new KviTalHBox(gbox);
 	hb->setSpacing(4);
 	hb->setMargin(0);
-	
+
 	l = new QLabel(__tr2qs("Gender:"),hb);
 	l->setMinimumWidth(120);
 
@@ -420,7 +420,7 @@ KviSetupWizard::KviSetupWizard()
 
 	setHelpEnabled(m_pIdentity,false);
 
-	
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	// Default theme
 /*	m_pTheme = new KviSetupPage(this);
@@ -434,30 +434,30 @@ KviSetupWizard::KviSetupWizard()
 		"If you don't know what to choose, just use the default.</p>"));
 
 	m_pThemeButtonGroup = new KviTalVButtonGroup(m_pTheme->m_pVBox);
-	
+
 	KviTalHBox* pThemesHb = new KviTalHBox(m_pThemeButtonGroup);
 
 	KviTalVBox* pThemesVb = new KviTalVBox(pThemesHb);
-	
+
 	QString szThemeImagePath;
 	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApp::Pics,"kvi_setup_theme_hires.png");
-	
+
 	QPixmap* pHiResPixmap = new QPixmap(szThemeImagePath);
 	if(pHiResPixmap->isNull())
 	{
 		delete pHiResPixmap;
 		pHiResPixmap= new QPixmap(250,200);
 	}
-	
+
 	QLabel* pPixmapLabelHiRes = new QLabel(pThemesVb);
 
 	pPixmapLabelHiRes->setPixmap(*pHiResPixmap);
 	pPixmapLabelHiRes->setFixedSize(pHiResPixmap->size());
 	pPixmapLabelHiRes->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	pPixmapLabelHiRes->setMargin(0);
-	
+
 	m_pThemeHiRes = new QRadioButton(__tr2qs("&Fancy Theme"),pThemesVb);
-	
+
 	pThemesVb = new KviTalVBox(pThemesHb);
 	g_pApp->getGlobalKvircDirectory(szThemeImagePath,KviApp::Pics,"kvi_setup_theme_lowres.png");
 	QPixmap* pLowResPixmap = new QPixmap(szThemeImagePath);
@@ -466,19 +466,19 @@ KviSetupWizard::KviSetupWizard()
 		delete pLowResPixmap;
 		pLowResPixmap= new QPixmap(250,200);
 	}
-	
+
 	QLabel* pPixmapLabelLowRes = new QLabel(pThemesVb);
 
 	pPixmapLabelLowRes->setPixmap(*pLowResPixmap);
 	pPixmapLabelLowRes->setFixedSize(pLowResPixmap->size());
 	pPixmapLabelLowRes->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	pPixmapLabelLowRes->setMargin(0);
-	
+
 	m_pThemeLoRes  = new QRadioButton(__tr2qs("&Minimalist Theme"),pThemesVb);
 	m_pThemeNone = new QRadioButton(__tr2qs("&Don't apply any theme"),m_pThemeButtonGroup);
 	m_pThemeButtonGroup->insert(m_pThemeHiRes);
 	m_pThemeButtonGroup->insert(m_pThemeLoRes);
-	
+
 	m_pThemeHiRes->setChecked(true);
 
 	addPage(m_pTheme,__tr2qs("Default Theme"));
@@ -529,17 +529,17 @@ KviSetupWizard::KviSetupWizard()
 
 
 	m_pServersButtonGroup = new KviTalVButtonGroup(__tr2qs("Choose a server to connect"),m_pServers->m_pVBox);
-	
+
 	m_pServersChooseFromList = new QRadioButton(__tr2qs("Choose from built-in server list"),m_pServersButtonGroup);
-	
+
 	m_pServersSpecifyManually = new QRadioButton(__tr2qs("Specify server manually"),m_pServersButtonGroup);
 	hb = new KviTalHBox(m_pServersButtonGroup);
-	
+
 	m_uServerPort=6667;
 	m_pServerHostSelector = new KviStringSelector(hb,__tr2qs("Server:"),&m_szServerHost,true);
 	m_pServerPortSelector = new KviUIntSelector(hb,__tr2qs("Port:"),&m_uServerPort,1,65536,6667,true,false);
-	
-	
+
+
 	m_pServersOpenIrcUrl = new QRadioButton(__tr2qs("Open irc:// or irc6:// URL"),m_pServersButtonGroup);
 	m_szServerUrl="irc://";
 	m_pServerUrlSelector = new KviStringSelector(m_pServersButtonGroup,__tr2qs("URL:"),&m_szServerUrl,true);
@@ -625,9 +625,9 @@ KviSetupWizard::KviSetupWizard()
 					cfg.setGroup("mirc");
 					m_pNickSelector->setText(cfg.readQStringEntry("nick",KVI_OPTION_STRING(KviOption_stringNickname1)));
 					m_pRealNameSelector->setText(cfg.readQStringEntry("user",KVI_OPTION_STRING(KviOption_stringRealname)));
-					KVI_OPTION_STRING(KviOption_stringNickname2) = 
+					KVI_OPTION_STRING(KviOption_stringNickname2) =
 						cfg.readQStringEntry("anick",KVI_OPTION_STRING(KviOption_stringNickname2));
-					KVI_OPTION_STRING(KviOption_stringUsername)  = 
+					KVI_OPTION_STRING(KviOption_stringUsername)  =
 						cfg.readQStringEntry("email",KVI_OPTION_STRING(KviOption_stringUsername)).section('@',0,0);
 
 					if(cfg.hasGroup("files"))
@@ -666,7 +666,7 @@ void KviSetupWizard::showEvent(QShowEvent *e)
 {
 	int primary_screen = g_pApp->desktop()->primaryScreen();
 	QRect r = g_pApp->desktop()->screenGeometry(primary_screen);
-		
+
 	int w = r.width();
 	int h = r.height();
 
@@ -680,7 +680,7 @@ void KviSetupWizard::showEvent(QShowEvent *e)
 	} else {
 		if(ww < 770)ww = 770;
 	}
-	
+
 	setGeometry(r.left() + (w - ww) / 2, r.top() + (h - wh) / 2,ww,wh);
 
 	KviTalWizard::showEvent(e);
@@ -691,11 +691,11 @@ void KviSetupWizard::oldDirClicked()
 	m_pOldPathBox->setEnabled(true);
 	m_pNewPathBox->setEnabled(false);
 	m_pNewIncomingBox->setEnabled(false);
-	
+
 	if(m_pIdentity) setPageEnabled(m_pIdentity,false);
 //	if(m_pTheme) setPageEnabled(m_pTheme,false);
 	if(m_pServers) setPageEnabled(m_pServers,false);
-	
+
 	if(m_pOldDataPathEdit->text().isEmpty()) setNextEnabled(m_pDirectory,false);
 	else setNextEnabled(m_pDirectory,true);
 }
@@ -720,11 +720,11 @@ void KviSetupWizard::newDirClicked()
 	m_pOldPathBox->setEnabled(false);
 	m_pNewPathBox->setEnabled(true);
 	m_pNewIncomingBox->setEnabled(true);
-	
+
 	if(m_pIdentity) setPageEnabled(m_pIdentity,true);
 //	if(m_pTheme) setPageEnabled(m_pTheme,true);
 	if(m_pServers) setPageEnabled(m_pServers,true);
-	
+
 	if(m_pDataPathEdit->text().isEmpty() || m_pIncomingPathEdit->text().isEmpty()) setNextEnabled(m_pDirectory,false);
 	else setNextEnabled(m_pDirectory,true);
 }
@@ -732,6 +732,7 @@ void KviSetupWizard::newDirClicked()
 void KviSetupWizard::chooseOldDataPath()
 {
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pDataPathEdit->text(),__tr2qs("Choose an Old Configuration Folder - KVIrc Setup"),0);
+	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
 	{
 		KviQString::ensureLastCharIs(szBuffer,KVI_PATH_SEPARATOR_CHAR);
@@ -758,6 +759,7 @@ void KviSetupWizard::chooseOldDataPath()
 void KviSetupWizard::chooseDataPath()
 {
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pDataPathEdit->text(),__tr2qs("Choose a Configuration Folder - KVIrc Setup"),0);
+	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
 	{
 		KviQString::ensureLastCharIs(szBuffer,KVI_PATH_SEPARATOR_CHAR);
@@ -769,6 +771,7 @@ void KviSetupWizard::chooseIncomingPath()
 {
 	//QString szBuffer = QFileDialog::getExistingDirectory(m_pIncomingPathEdit->text(),0,0,__tr2qs("Choose the download folder"));
 	QString szBuffer = KviTalFileDialog::getExistingDirectoryPath(m_pIncomingPathEdit->text(),__tr2qs("Choose a Download Folder - KVIrc Setup"),0);
+	KviFileUtils::adjustFilePath(szBuffer);
 	if(!szBuffer.isEmpty())
 	{
 		m_pIncomingPathEdit->setText(szBuffer);
@@ -782,7 +785,7 @@ void KviSetupWizard::makeLink()
 	// You need this horrible snippet of code to create a shortcut!!!!
 	//
 	// you have to:
-	// - dig in the registry , 
+	// - dig in the registry ,
 	// - trigger the entire COM subsystem
 	// - bring up a couple of OLE interfaces....
 	// - use some obscure functions like MultiByteToWideChar
@@ -801,7 +804,7 @@ void KviSetupWizard::makeLink()
 
 	// Dig in the registry looking up the Desktop path
 	if(RegOpenKeyEx(HKEY_CURRENT_USER,
-		"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders", 
+		"Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Shell Folders",
 		0,KEY_QUERY_VALUE,&hCU) == ERROR_SUCCESS)
 	{
 		RegQueryValueEx(hCU,"Desktop",NULL,&lpType,
@@ -830,7 +833,7 @@ void KviSetupWizard::makeLink()
 
 		IPersistFile* ppf;
 
-		// Query IShellLink for the IPersistFile interface for 
+		// Query IShellLink for the IPersistFile interface for
 		// saving the shell link in persistent storage.
 		if(psl->QueryInterface(IID_IPersistFile,(void **)&ppf) == S_OK)
 		{
@@ -842,7 +845,7 @@ void KviSetupWizard::makeLink()
 	        // Ensure string is ANSI.
 			MultiByteToWideChar(CP_ACP,0,QTextCodec::codecForLocale()->fromUnicode(szLinkTarget).data(),-1,(LPWSTR)wsz,MAX_PATH);
 			// Save the link via the IPersistFile::Save method.
-			ppf->Save((LPCOLESTR)wsz,true);    
+			ppf->Save((LPCOLESTR)wsz,true);
 			ppf->Release();
 		}
 		psl->Release();
@@ -946,7 +949,7 @@ void KviSetupWizard::reject()
 void KviSetupWizard::accept()
 {
 	QString szDir;
-	
+
 	if(m_pDirUsePrev->isChecked())
 	{
 		bNeedToApplyDefaults=false;
@@ -981,7 +984,7 @@ void KviSetupWizard::accept()
 				"If you experience any problems try deleting the old directory:\n" \
 				"the setup program will be started automatically again."),szDir.ptr());
 		}*/
-	
+
 		g_pApp->m_szLocalKvircDir = szDir;
 		KviFileUtils::adjustFilePath(g_pApp->m_szLocalKvircDir);
 
@@ -1008,24 +1011,24 @@ void KviSetupWizard::accept()
 		}
 
 		g_szChoosenIncomingDirectory = szDir;
-	
+
 #if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 		// Make local->global link
 		QString localPath = QString("%1/global").arg(g_pApp->m_szLocalKvircDir);
 		unlink(QTextCodec::codecForLocale()->fromUnicode(localPath).data());
 		symlink(QTextCodec::codecForLocale()->fromUnicode(g_pApp->m_szGlobalKvircDir).data(),QTextCodec::codecForLocale()->fromUnicode(localPath).data());
 #endif
-	
+
 #ifdef COMPILE_KDE_SUPPORT
 		if(m_pCreateDesktopShortcut->isChecked())
 			makeLink();
 #endif
-	
+
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 		if(m_pCreateUrlHandlers->isChecked())
 			setUrlHandlers();
 #endif
-	
+
 /*		if(m_pTheme)
 		{
 			if(m_pThemeButtonGroup->selected() == m_pThemeHiRes)
@@ -1038,7 +1041,7 @@ void KviSetupWizard::accept()
 				g_iThemeToApply = THEME_APPLY_NONE;
 			}
 		}
-*/		
+*/
 		if(m_pIdentity)
 		{
 			m_pNickSelector->commit();
@@ -1046,18 +1049,18 @@ void KviSetupWizard::accept()
 			m_pLocationSelector->commit();
 			m_pLanguagesSelector->commit();
 			//m_pOtherInfoSelector->commit();
-			
+
 			KVI_OPTION_STRING(KviOption_stringNickname1).trimmed();
 			KVI_OPTION_STRING(KviOption_stringNickname1).replace(" ","");
-			
+
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).length() > 32)
 			{
 				QString tmp = KVI_OPTION_STRING(KviOption_stringNickname1).left(32);
 				KVI_OPTION_STRING(KviOption_stringNickname1) = tmp;
 			}
-		
+
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).isEmpty())KVI_OPTION_STRING(KviOption_stringNickname1) = "newbie";
-		
+
 			QString szNickPart;
 			if(KVI_OPTION_STRING(KviOption_stringNickname1).length() < 31)
 			{
@@ -1065,7 +1068,7 @@ void KviSetupWizard::accept()
 			} else {
 				szNickPart = KVI_OPTION_STRING(KviOption_stringNickname1).left(30);
 			}
-		
+
 			QString alt = szNickPart;
 			alt.prepend("|"); // <-- this is an erroneous nickname on IrcNet :/
 			alt.append("|");
@@ -1078,13 +1081,13 @@ void KviSetupWizard::accept()
 			alt = szNickPart;
 			alt.append("2");
 			KVI_OPTION_STRING(KviOption_stringNickname4) = alt;
-			
+
 			int i = m_pAgeCombo->currentIndex();
 			if(i < 0)i = 0;
 			if(i > 120)i = 120;
 			if(i <= 0)KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge) = "";
 			else KVI_OPTION_STRING(KviOption_stringCtcpUserInfoAge).setNum(i);
-			
+
 			switch(m_pGenderCombo->currentIndex())
 			{
 				case 1:
@@ -1104,7 +1107,7 @@ void KviSetupWizard::accept()
 			m_pServerUrlSelector->commit();
 			//m_pServerConfigSelector->commit();
 			m_pServerPortSelector->commit();
-			
+
 			if(m_pServersSpecifyManually->isOn())
 			{
 				KVI_OPTION_BOOL(KviOption_boolShowServersConnectDialogOnStart) = FALSE;

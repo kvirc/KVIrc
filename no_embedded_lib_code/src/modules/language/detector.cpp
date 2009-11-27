@@ -19064,7 +19064,7 @@ void detect_language_and_encoding(const char * data,LanguageAndEncodingResult * 
 		match[i] = 0;
 	}
 	retBuffer->dAccuracy = 0.0;
-	
+
 	int utf8 = utf8score((const unsigned char *)data);
 	i=0;
 	while(i<NUM_DESCRIPTORS)

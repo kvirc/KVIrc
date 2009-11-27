@@ -25,6 +25,7 @@
 #include "gsmcodec.h"
 #include "broker.h"
 #include "voice.h"
+#include "video.h"
 #include "utils.h"
 #include "send.h"
 #include "window.h"
@@ -223,7 +224,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
+		If this switch is NOT specified, the port will be a "random" one chosen by the kernel.[br]
 
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
@@ -281,7 +282,7 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		The -i switch parameter may serve also as a target address when the -c switch is used.[br]
 		If the 'p' switch is specified, the local listening socket
 		will be bound to the <port>, otherwise it will be bound to
-		a random port choosen by the kernel.[br]
+		a random port chosen by the kernel.[br]
 		If the 'a' switch is specified, the requesting CTCP message
 		will contain <fake address> as target for the remote user,
 		otherwise the CTCP message will contain the real IP address
@@ -348,8 +349,8 @@ static bool dcc_kvs_parse_default_parameters(KviDccDescriptor * d,KviKvsModuleCo
 		to do various things:
 		[example]
 			# Tricky: simulate a HTTP server
-			dcc.chat -n -i=127.0.0.1 -p=80 Netscape
-			# Now open http://127.0.0.1 with netscape
+			dcc.chat -n -i=127.0.0.1 -p=80 WebBrowser
+			# Now open http://127.0.0.1 with your web browser
 			# and type "<html><body>Hello!</body></html>" :)
 			#
 			# Tricky 2: simulate the ident daemon (if you have none)
@@ -541,7 +542,7 @@ static bool dcc_kvs_cmd_chat(KviKvsModuleCommandCall * c)
 
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
+		If this switch is NOT specified, the port will be a "random" one chosen by the kernel.[br]
 
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
@@ -735,7 +736,7 @@ static bool dcc_kvs_cmd_send(KviKvsModuleCommandCall * c)
 
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
+		If this switch is NOT specified, the port will be a "random" one chosen by the kernel.[br]
 
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
@@ -1041,7 +1042,7 @@ static bool dcc_kvs_cmd_get(KviKvsModuleCommandCall * c)
 
 		!sw: -p=<port> | --port=<port>
 		Bind the local listening socket to the specified <port>.
-		If this switch is NOT specified, the port will be a "random" one choosen by the kernel.[br]
+		If this switch is NOT specified, the port will be a "random" one chosen by the kernel.[br]
 
 		!sw: -a=<fake address> | --fake-address=<fake address>
 		Send the <fake address> as target for the remote client in the requesting CTCP message.
@@ -1181,6 +1182,69 @@ static bool dcc_kvs_cmd_voice(KviKvsModuleCommandCall * c)
 }
 
 
+static bool dcc_kvs_cmd_video(KviKvsModuleCommandCall * c)
+{
+	QString szTarget;
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("target",KVS_PT_NONEMPTYSTRING,0,szTarget)
+	KVSM_PARAMETERS_END(c)
+
+#ifdef COMPILE_DISABLE_DCC_VIDEO
+	c->warning(__tr2qs_ctx("DCC VIDEO support not enabled at compilation time","dcc"));
+	return true;
+#endif
+
+	KviDccDescriptor * d = new KviDccDescriptor(c->window()->console());
+
+	d->szNick       = szTarget;              // we always specify the nickname
+	d->szUser       = __tr2qs_ctx("unknown","dcc"); // username is always unknown
+	d->szHost       = d->szUser;                 // host is always unknown
+
+	if(!dcc_kvs_parse_default_parameters(d,c))return false;
+
+	d->szCodec = "jpeg";
+
+	if(KviKvsVariant * pCodec = c->switches()->find('g',"codec"))
+	{
+		QString szCodec;
+		pCodec->asString(szCodec);
+
+		if(!kvi_dcc_video_is_valid_codec(szCodec.toUtf8().data()))
+		{
+			c->warning(__tr2qs_ctx("Invalid codec specified, defaulting to 'jpeg'","dcc"));
+			d->szCodec = "jpeg";
+		}
+	}
+
+	dcc_module_set_dcc_type(d,"VIDEO");
+	if(c->switches()->find('c',"connect"))
+	{
+		if(!(c->switches()->find('i',"ip") && c->switches()->find('p',"port")))
+		{
+			delete d;
+			c->error(__tr2qs_ctx("-c requires -i and -p","dcc"));
+			return false;
+		}
+		d->szIp         = d->szListenIp;
+		d->szPort       = d->szListenPort;
+		d->szListenIp   = ""; // useless
+		d->szListenPort = ""; // useless
+		d->bActive      = true;
+
+		d->triggerCreationEvent();
+		g_pDccBroker->activeVideoExecute(0,d);
+	} else {
+		d->szIp         = __tr2qs_ctx("unknown","dcc");
+		d->szPort       = d->szIp;
+		d->bActive      = false;
+		d->bSendRequest = !(c->switches()->find('n',"no-ctcp"));
+
+		d->triggerCreationEvent();
+		g_pDccBroker->passiveVideoExecute(d);
+	}
+
+	return true;
+}
 
 
 /*
@@ -1404,7 +1468,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		This is the simplest and most standardized DCC subprotocol. Almost every IRC client implements it.[br]
 		It is used to exchange lines of text between the two clients.[br]
 		The negotiation is quite simple, we assume that Client A wants to establish a DCC Chat connection to Client B.
-		Client A sets up a listening socket and retrieves its adress (ip address and port).[br]
+		Client A sets up a listening socket and retrieves its address (ip address and port).[br]
 		Once the socket is ready Client A sends a CTCP request to B, in the following form:[br]
 		[b]DCC CHAT chat <ipaddress> <port>[/b][br]
 		Where <ipaddress> is a string representing an positive integer that is the A socket's IP address
@@ -2698,6 +2762,7 @@ static bool dcc_module_init(KviModule * m)
 
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"send",dcc_kvs_cmd_send);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"chat",dcc_kvs_cmd_chat);
+	KVSM_REGISTER_SIMPLE_COMMAND(m,"video",dcc_kvs_cmd_video);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"voice",dcc_kvs_cmd_voice);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"recv",dcc_kvs_cmd_recv);
 	KVSM_REGISTER_SIMPLE_COMMAND(m,"rsend",dcc_kvs_cmd_rsend);

@@ -62,7 +62,6 @@
 #include <QDate>
 #include <QByteArray>
 #include <QPixmap>
-#include <QSplitter>
 #include <QList>
 #include <QByteArray>
 
@@ -72,7 +71,7 @@ KviQuery::KviQuery(KviFrame * lpFrm, KviConsole * lpConsole, const QString & szN
 	m_iFlags = 0;
 	connection()->registerQuery(this);
 
-	//m_pTopSplitter = new QSplitter(QSplitter::Horizontal,this,"top_splitter");
+	//m_pTopSplitter = new KviTalSplitter(QSplitter::Horizontal,this,"top_splitter");
 	m_pButtonBox = new KviTalHBox(this);
 	m_pLabel = new KviThemedLabel(m_pButtonBox,"query_label");
 	m_pLabel->setAutoHeight(1);
@@ -85,7 +84,7 @@ KviQuery::KviQuery(KviFrame * lpFrm, KviConsole * lpConsole, const QString & szN
 
 	createTextEncodingButton(m_pButtonGrid);
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,lpFrm,this);
 	connect(m_pIrcView,SIGNAL(rightClicked()),this,SLOT(textViewRightClicked()));
@@ -115,9 +114,13 @@ KviQuery::~KviQuery()
 {
 	m_pUserListView->partAll();
 	if(type() == KVI_WINDOW_TYPE_DEADQUERY)
-		context()->unregisterDeadQuery(this);
-	else
-		connection()->unregisterQuery(this);
+	{
+		if(context())
+			context()->unregisterDeadQuery(this);
+	} else {
+		if(connection())
+			connection()->unregisterQuery(this);
+	}
 }
 
 void KviQuery::updateLabelText()
@@ -292,7 +295,10 @@ void KviQuery::getBaseLogFileName(QString & szBuffer)
 	} else {
 		szBuffer = windowName();
 		szBuffer+=".";
-		szBuffer += console()->context()->id();
+		if(context())
+			szBuffer += console()->context()->id();
+		else
+			szBuffer += "0";
 	}
 }
 
@@ -473,8 +479,10 @@ void KviQuery::setDeadQuery()
 	m_pUserListView->partAll();
 	m_pUserListView->enableUpdates(true);
 	m_pUserListView->setUserDataBase(0);
-	connection()->unregisterQuery(this);
-	context()->registerDeadQuery(this);
+	if(connection())
+		connection()->unregisterQuery(this);
+	if(context())
+		context()->registerDeadQuery(this);
 	setType(KVI_WINDOW_TYPE_DEADQUERY);
 
 	updateIcon();
@@ -487,8 +495,10 @@ void KviQuery::setAliveQuery()
 	m_iFlags &= ~KVI_QUERY_FLAG_DEAD;
 	m_pUserListView->setUserDataBase(connection()->userDataBase());
 	setType(KVI_WINDOW_TYPE_QUERY);
-	context()->unregisterDeadQuery(this);
-	connection()->registerQuery(this);
+	if(context())
+		context()->unregisterDeadQuery(this);
+	if(connection())
+		connection()->registerQuery(this);
 
 	// Update log file name
 	if(m_pIrcView->isLogging())

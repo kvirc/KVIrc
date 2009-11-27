@@ -40,7 +40,7 @@
 class KviHtmlDialogData
 {
 public:
-	KviHtmlDialogData() { 
+	KviHtmlDialogData() {
 		m_pDoc=new QTextDocument();
 	};
 	~KviHtmlDialogData(){delete m_pDoc;};
@@ -57,16 +57,16 @@ public:
 	{
 		htmlResource.insert(key,value);
 	}
-			
+
 	// input
-	
+
 	// mandatory fields
 	enum Flags { ForceMinimumSize = 1 };
 	int iFlags;               // da flags :)
 	int iDefaultButton;       // the button to use when Enter is pressed (1,2 or 3)
 	int iCancelButton;        // the button to use when Esc is pressed (1,2 or 3)
 	QString szHtmlText;       // Shouldn't be empty :D
-	
+
 	// optional fields
 	QString szCaption;        // KVIrc is used when this is empty
 	QString szUpperLabelText; // no label is shown if this is empty
@@ -91,19 +91,19 @@ public:
 	KviTextBrowser(QWidget *par,KviHtmlDialogData *ht)
 		: QTextBrowser(par), m_pHt(ht){};
 	~KviTextBrowser(){};
-	virtual QVariant loadResource ( int type, const QUrl & name ) 
+	virtual QVariant loadResource ( int type, const QUrl & name )
 	{
 		QString p=m_pHt->htmlResource.value(name.path());
 		debug("resource %s type %d and page %s",name.path().toUtf8().data(),type,p.toUtf8().data());
 		if (!p.isEmpty()) return QVariant(p);
 		else return QVariant();
-		
-		
+
+
 		//return QTextBrowser::loadResource(type,name);
 	}
 protected:
 	KviHtmlDialogData *m_pHt;
-	
+
 };
 
 class KVIRC_API KviHtmlDialog : public QDialog

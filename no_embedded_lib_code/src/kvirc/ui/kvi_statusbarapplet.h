@@ -103,7 +103,7 @@ public:
 	bool isSelected(){ return m_bSelected; };
 protected:
 	virtual void paintEvent(QPaintEvent * e);
-	
+
 	virtual void fillContextPopup(KviTalPopupMenu *){};
 	virtual void loadState(const char *, KviConfig *){};
 	virtual void saveState(const char *, KviConfig *){};
@@ -127,7 +127,7 @@ public:
 protected:
 	virtual void fillContextPopup(KviTalPopupMenu * p);
 	virtual void timerEvent(QTimerEvent * e);
-	
+
 	virtual void loadState(const char * pcPrefix, KviConfig * pCfg);
 	virtual void saveState(const char * pcPrefix, KviConfig * pCfg);
 protected slots:

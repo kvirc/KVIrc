@@ -30,15 +30,15 @@
 	#include "descriptor.h"
 	#include "window.h"
 	#include "thread.h"
-	
+
 	#include "kvi_window.h"
 	#include "kvi_string.h"
 	#include "kvi_pointerlist.h"
-	
+
 	class KviDccMarshal;
 	class KviCanvasWidget;
 	class QSplitter;
-	
+
 	class KviDccCanvas : public KviDccWindow
 	{
 		Q_OBJECT

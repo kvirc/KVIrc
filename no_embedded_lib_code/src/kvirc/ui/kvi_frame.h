@@ -177,7 +177,7 @@ protected:
 	void createWindowList();
 	void recreateWindowList();
 
-	KviMdiChild * dockWindow(KviWindow *wnd,bool bShow = true,bool bCascade = true,QRect * setGeom = 0);
+	KviMdiChild * dockWindow(KviWindow *wnd,bool bCascade = true,QRect * setGeom = 0);
 	void undockWindow(KviWindow *wnd);
 
 	// called by KviWindow
@@ -196,12 +196,10 @@ protected:
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void moveEvent(QMoveEvent *e);
 	virtual bool focusNextPrevChild(bool next);
-	virtual void windowActivationChange(bool bOldActive);
+	virtual void changeEvent(QEvent * event);
 
 	void updatePseudoTransparency();
 	void installAccelerators();
-
-	virtual void hideEvent ( QHideEvent * e);
 protected slots:
 	void switchToNextWindow();
 	void switchToPrevWindow();
@@ -215,7 +213,6 @@ protected slots:
 
 	void accelActivated();
 	void toolbarsPopupSelected(int id);
-	void maximizeMdiChildWindow(KviMdiChild * lpC);
 signals:
 	void activeWindowChanged();       // almost never 0.. but may be
 	void activeContextChanged();      // may be 0!

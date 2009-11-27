@@ -41,14 +41,16 @@ public:
 	KVSO_DECLARE_OBJECT(KviKvsObject_painter)
 protected:
 	QPrinter * m_pPrinter;
-	QPainter * m_pPainter;
+        bool bDonotdeleteinternalqpainter;
+        QPainter * m_pPainter;
 	QMatrix  m_pMatrix;
 	QLinearGradient *m_pGradient;
 	QPainterPath *m_pPainterPath;
 public:
+        void setInternalPainter(QPainter *p);
 	bool setFont(KviKvsObjectFunctionCall *c);
 	bool setFontSize(KviKvsObjectFunctionCall *c);
-	
+
 	bool fontAscent(KviKvsObjectFunctionCall *c);
 	bool fontDescent(KviKvsObjectFunctionCall *c);
 	bool fontMetricsWidth(KviKvsObjectFunctionCall *c);
@@ -69,7 +71,7 @@ public:
 
 	bool drawText(KviKvsObjectFunctionCall *c);
 	bool drawPixmap(KviKvsObjectFunctionCall *c);
-	
+
 
 	bool begin(KviKvsObjectFunctionCall *c);
 	bool end(KviKvsObjectFunctionCall *c);
@@ -111,7 +113,7 @@ public:
 	bool resetPath(KviKvsObjectFunctionCall *c);
 
 	bool beginPdf(KviKvsObjectFunctionCall *c);
-	
+
 	bool painterDeviceWidth(KviKvsObjectFunctionCall *c);
 	bool painterDeviceHeight(KviKvsObjectFunctionCall *c);
 

@@ -11,7 +11,7 @@ SET(kviobjects_MOC_HDRS
 	class_button.h
 	class_checkbox.h
 	class_combobox.h
-        class_datetimeedit.h
+	class_datetimeedit.h
 	class_dockwindow.h
 	class_ftp.h
 	class_http.h
@@ -27,14 +27,13 @@ SET(kviobjects_MOC_HDRS
 	class_socket.h
 	class_spinbox.h
 	class_tabwidget.h
-            class_tablewidget.h
+	class_tablewidget.h
 	class_tbrowser.h
 	class_toolbutton.h
 	class_treewidget.h
 	class_widget.h
 	class_window.h
 	class_wizard.h
-        class_sql.h
 )
 
 SET(kviobjects_SRCS
@@ -43,7 +42,7 @@ SET(kviobjects_SRCS
 	class_buttongroup.cpp
 	class_checkbox.cpp
 	class_combobox.cpp
-        class_datetimeedit.cpp
+	class_datetimeedit.cpp
 	class_dialog.cpp
 	class_dockwindow.cpp
 	class_file.cpp
@@ -70,8 +69,9 @@ SET(kviobjects_SRCS
 	class_slider.cpp
 	class_socket.cpp
 	class_spinbox.cpp
+	class_sql.cpp
 	class_tabwidget.cpp
-            class_tablewidget.cpp
+	class_tablewidget.cpp
 	class_tbrowser.cpp
 	class_toolbar.cpp
 	class_toolbutton.cpp
@@ -84,7 +84,6 @@ SET(kviobjects_SRCS
 	class_workspace.cpp
 	class_wrapper.cpp
 	class_xmlreader.cpp
-        class_sql.cpp
 )
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp

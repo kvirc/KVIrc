@@ -56,7 +56,7 @@ public:
 
 	bool hasAppHandlers(unsigned int uEvIdx){ return m_appEventTable[uEvIdx].hasHandlers(); };
 	KviPointerList<KviKvsEventHandler> * appHandlers(unsigned int uEvIdx){ return m_appEventTable[uEvIdx].handlers(); };
-	
+
 	bool hasRawHandlers(unsigned int uEvIdx){ return m_rawEventTable[uEvIdx]; };
 	KviPointerList<KviKvsEventHandler> * rawHandlers(unsigned int uEvIdx){ return m_rawEventTable[uEvIdx]; };
 
@@ -68,19 +68,19 @@ public:
 
 	bool addAppHandler(unsigned int uEvIdx,KviKvsEventHandler * h);
 	bool addRawHandler(unsigned int uRawIdx,KviKvsEventHandler * h);
-	
+
 	bool removeScriptAppHandler(unsigned int uEvIdx,const QString &szName);
 	bool removeScriptRawHandler(unsigned int uEvIdx,const QString &szName);
-	
+
 	bool enableScriptAppHandler(unsigned int uEvIdx,const QString &szName,bool bEnable);
 	bool enableScriptRawHandler(unsigned int uEvIdx,const QString &szName,bool bEnable);
-	
+
 	bool removeModuleAppHandler(unsigned int uEvIdx,KviKvsModuleInterface *i);
 	bool removeModuleRawHandler(unsigned int uRawIdx,KviKvsModuleInterface *i);
-	
+
 	void removeAllModuleAppHandlers(KviKvsModuleInterface *i);
 	void removeAllModuleRawHandlers(KviKvsModuleInterface *i);
-	
+
 	void removeAllModuleHandlers(KviKvsModuleInterface * i);
 
 	KviKvsScriptEventHandler * findScriptRawHandler(unsigned int uEvIdx,const QString &szName);
@@ -93,7 +93,7 @@ public:
 		{ return triggerHandlers(m_appEventTable[uEvIdx].handlers(),pWnd,pParams); };
 	bool triggerRaw(unsigned int uEvIdx,KviWindow *pWnd,KviKvsVariantList * pParams)
 		{ return triggerHandlers(m_rawEventTable[uEvIdx],pWnd,pParams); };
-		
+
 	// this is the only that takes parameter ownership and deletes them
 	bool triggerDeleteParams(unsigned int uEvIdx,KviWindow * pWnd,KviKvsVariantList * pParams)
 	{

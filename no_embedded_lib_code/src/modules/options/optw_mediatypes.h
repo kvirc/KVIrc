@@ -26,16 +26,16 @@
 
 #include "kvi_optionswidget.h"
 #include "kvi_mediatype.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QLineEdit>
 #include <QPushButton>
 
 
-class KviMediaTypeTreeWidgetItem : public KviTalTreeWidgetItem
+class KviMediaTypeTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviMediaTypeTreeWidgetItem(KviTalTreeWidget * w,KviMediaType * t);
+	KviMediaTypeTreeWidgetItem(QTreeWidget * w,KviMediaType * t);
 	~KviMediaTypeTreeWidgetItem();
 private:
 	KviMediaType m_data;
@@ -58,7 +58,7 @@ public:
 	KviMediaTypesOptionsWidget(QWidget * parent);
 	~KviMediaTypesOptionsWidget();
 private:
-	KviTalTreeWidget  * m_pTreeWidget;
+	QTreeWidget  * m_pTreeWidget;
 	QLineEdit   * m_pDescription;
 	QLineEdit   * m_pIanaType;
 	QLineEdit   * m_pFileMask;

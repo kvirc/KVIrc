@@ -68,6 +68,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(globals)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setHash(new KviKvsHash( *(KviKvsKernel::instance()->globalVariables()) ));
 		return true;
 	}
@@ -107,6 +110,8 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(hash)
 	{
+		Q_UNUSED(__pContext);
+
 		KviKvsHash * a = new KviKvsHash();
 
 		for(KviKvsVariant * key = KVSCF_pParams->first();key;key = KVSCF_pParams->next())
@@ -235,6 +240,8 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(lag)
 	{
+		Q_UNUSED(__pParams);
+
 		if(!KVSCF_pContext->window()->console()) return KVSCF_pContext->errorNoIrcContext();
  		if(!KVSCF_pContext->window()->console()->connection())  return KVSCF_pContext->warningNoIrcConnection();
 		if(!KVSCF_pContext->window()->console()->connection()->lagMeter())
@@ -277,6 +284,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(hptimestamp)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		struct timeval tv;
 		kvi_gettimeofday(&tv,0);
 		kvs_real_t dTimestamp = (kvs_real_t)(tv.tv_sec);
@@ -454,6 +464,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(isMainWindowActive)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setBoolean(g_pFrame->isActiveWindow());
 		return true;
 	}
@@ -476,6 +489,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(isMainWindowMinimized)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setBoolean(g_pFrame->isMinimized());
 		return true;
 	}
@@ -895,6 +911,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(lf)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setString(QString(QChar('\n')));
 		return true;
 	}

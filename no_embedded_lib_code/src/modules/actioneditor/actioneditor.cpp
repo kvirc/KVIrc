@@ -28,7 +28,6 @@
 #include "kvi_locale.h"
 #include "kvi_imagedialog.h"
 #include "kvi_config.h"
-#include "kvi_filedialog.h"
 #include "kvi_fileutils.h"
 #include "kvi_scripteditor.h"
 #include "kvi_debug.h"
@@ -43,6 +42,7 @@
 #include "kvi_tal_vbox.h"
 #include <kvi_tal_groupbox.h>
 #include "kvi_tal_itemdelegates.h"
+#include "kvi_fileextensions.h"
 
 #include <QList>
 #include <QSplitter>
@@ -67,8 +67,8 @@ static QString g_szLastEditedAction;
 #define LVI_SPACING 8
 #define LVI_MINIMUM_CELL_WIDTH (LVI_MINIMUM_TEXT_WIDTH + LVI_BORDER + LVI_ICON_SIZE + LVI_SPACING + LVI_BORDER)
 
-KviActionEditorTreeWidgetItem::KviActionEditorTreeWidgetItem(KviTalTreeWidget * v,KviActionData * a)
-: KviTalTreeWidgetItem(v)
+KviActionEditorTreeWidgetItem::KviActionEditorTreeWidgetItem(QTreeWidget * v,KviActionData * a)
+: QTreeWidgetItem(v)
 {
 	m_pActionData = a;
 	m_pTreeWidget = v;
@@ -580,7 +580,7 @@ void KviSingleActionEditor::commit()
 
 
 KviActionEditorTreeView::KviActionEditorTreeView(QWidget * pParent)
-: KviTalTreeWidget(pParent)
+: QTreeWidget(pParent)
 {
 	setColumnCount (1);
 	setHeaderLabel(__tr2qs_ctx("Action","editor"));
@@ -599,7 +599,7 @@ KviActionEditorTreeView::~KviActionEditorTreeView()
 
 void KviActionEditorTreeView::resizeEvent(QResizeEvent * e)
 {
-	KviTalTreeWidget::resizeEvent(e);
+	QTreeWidget::resizeEvent(e);
 	int iWidth = viewport()->width();
 	if(iWidth < LVI_MINIMUM_CELL_WIDTH)iWidth = LVI_MINIMUM_CELL_WIDTH;
 	setColumnWidth(0,iWidth);
@@ -689,7 +689,7 @@ void KviActionEditor::exportActions()
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,QString(),true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true))return;
 
 	QString szCode;
 

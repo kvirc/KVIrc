@@ -46,10 +46,10 @@ class KviDccBox;
 class KviDccZeroPortTag
 {
 public:
-	QDateTime    m_tTimestamp;
-	QString      m_szTag;
-	unsigned int m_uFileSize; // outgoing file size, valid only for file transfers obviously
-	unsigned int m_uResumePosition; // if 0 = no resume, valid only for file transfers obviously
+	QDateTime      m_tTimestamp;
+	QString        m_szTag;
+	unsigned long  m_uFileSize; // outgoing file size, valid only for file transfers obviously
+	unsigned long  m_uResumePosition; // if 0 = no resume, valid only for file transfers obviously
 };
 
 class KviDccBroker : public QObject
@@ -86,11 +86,14 @@ public:
 	void activeVoiceManage(KviDccDescriptor * dcc);
 	void passiveVoiceExecute(KviDccDescriptor * dcc);
 
+	void activeVideoManage(KviDccDescriptor * dcc);
+	void passiveVideoExecute(KviDccDescriptor * dcc);
+
 	void recvFileManage(KviDccDescriptor * dcc);
 	void sendFileManage(KviDccDescriptor * dcc);
 
 	bool handleResumeAccepted(const char * filename,const char * port,const char * szZeroPortTag);
-	bool handleResumeRequest(KviDccRequest * dcc,const char * filename,const char * port,unsigned int filePos,const char * szZeroPortTag);
+	bool handleResumeRequest(KviDccRequest * dcc,const char * filename,const char * port,unsigned long filePos,const char * szZeroPortTag);
 
 public slots:
 	void rsendExecute(KviDccBox * box,KviDccDescriptor * dcc);
@@ -101,6 +104,7 @@ public slots:
 
 	void activeCanvasExecute(KviDccBox * box,KviDccDescriptor * dcc);
 	void activeVoiceExecute(KviDccBox * box,KviDccDescriptor * dcc);
+	void activeVideoExecute(KviDccBox * box,KviDccDescriptor * dcc);
 
 	void sendFileExecute(KviDccBox * box,KviDccDescriptor * dcc);
 	void recvFileExecute(KviDccBox * box,KviDccDescriptor * dcc);

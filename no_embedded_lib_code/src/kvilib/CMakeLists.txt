@@ -28,15 +28,13 @@ SET(kvilib_MOC_HDRS
 	tal/kvi_tal_filedialog.h
 	tal/kvi_tal_groupbox.h
 	tal/kvi_tal_hbox.h
-	tal/kvi_tal_iconview.h
 	tal/kvi_tal_listwidget.h
 	tal/kvi_tal_mainwindow.h
 	tal/kvi_tal_menubar.h
 	tal/kvi_tal_popupmenu.h
-	tal/kvi_tal_scrollview.h
+	tal/kvi_tal_splitter.h
 	tal/kvi_tal_tabdialog.h
 	tal/kvi_tal_tablewidget.h
-	tal/kvi_tal_textedit.h
 	tal/kvi_tal_toolbar.h
 	tal/kvi_tal_tooltip.h
 	tal/kvi_tal_vbox.h
@@ -46,6 +44,12 @@ SET(kvilib_MOC_HDRS
 IF(COMPILE_DBUS_SUPPORT)
 	LIST(APPEND kvilib_MOC_HDRS
 		ext/kvi_dbusadaptor.h
+	)
+ENDIF()
+
+IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
+	LIST(APPEND kvilib_MOC_HDRS
+		ext/avdevice/videodevicepool.h
 	)
 ENDIF()
 
@@ -106,21 +110,32 @@ SET(kvilib_SRCS
 	tal/kvi_tal_filedialog.cpp
 	tal/kvi_tal_groupbox.cpp
 	tal/kvi_tal_hbox.cpp
-	tal/kvi_tal_iconview.cpp
 	tal/kvi_tal_itemdelegates.cpp
 	tal/kvi_tal_listwidget.cpp
 	tal/kvi_tal_mainwindow.cpp
 	tal/kvi_tal_menubar.cpp
 	tal/kvi_tal_popupmenu.cpp
-	tal/kvi_tal_scrollview.cpp
+	tal/kvi_tal_splitter.cpp
 	tal/kvi_tal_tabdialog.cpp
 	tal/kvi_tal_tablewidget.cpp
-	tal/kvi_tal_textedit.cpp
 	tal/kvi_tal_toolbar.cpp
 	tal/kvi_tal_tooltip.cpp
 	tal/kvi_tal_vbox.cpp
 	tal/kvi_tal_wizard.cpp
 )
+
+IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
+	LIST(APPEND kvilib_SRCS
+		ext/avdevice/videodevice.cpp 
+		ext/avdevice/videoinput.cpp 
+		ext/avdevice/dummyvideodevice.cpp
+		ext/avdevice/videodevicevector.cpp
+		ext/avdevice/videodevicepool.cpp 
+		ext/avdevice/videodevicemodelpool.cpp
+		ext/avdevice/bayer.cpp
+		ext/avdevice/sonix_compress.cpp
+	)
+ENDIF()
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp
 QT4_WRAP_CPP(kvilib_MOC_SRCS ${kvilib_MOC_HDRS})
@@ -140,6 +155,11 @@ ENDIF()
 ADD_LIBRARY(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
 TARGET_LINK_LIBRARIES(${KVILIB_BINARYNAME} ${LIBS})
 SET_TARGET_PROPERTIES(${KVILIB_BINARYNAME} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+
+IF(WANT_STRIP)
+	GET_TARGET_PROPERTY(KVILIB_LOCATION ${KVILIB_BINARYNAME} LOCATION)
+	INSTALL(CODE "EXEC_PROGRAM(${STRIP_EXECUTABLE} ARGS -s \"${KVILIB_LOCATION}\")")
+ENDIF()
 
 # Installation directives
 IF(UNIX)

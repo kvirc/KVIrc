@@ -177,9 +177,9 @@ bool KviKvsObjectClass::save(const QString &szFileName)
 					"class(\"%Q\",\"%Q\")\n" \
 					"{\n",
 					&m_szName,&szParentName);
-		
+
 	KviPointerHashTableIterator<QString,KviKvsObjectFunctionHandler> it(*m_pFunctionHandlers);
-	
+
 	while(KviKvsObjectFunctionHandler * h = it.current())
 	{
 		if(h->isScriptHandler())
@@ -198,16 +198,16 @@ bool KviKvsObjectClass::save(const QString &szFileName)
 		}
 		++it;
 	}
-	
+
 	szBuffer += "}\n";
-	
+
 	return KviFileUtils::writeFile(szFileName,szBuffer);
 }
 void KviKvsObjectClass::getFunctionCode(QString &szCode,KviKvsObjectFunctionHandler &h)
 {
 	szCode=h.scriptHandlerCode();
 }
-	
+
 
 
 bool KviKvsObjectClass::load(const QString &szFileName)

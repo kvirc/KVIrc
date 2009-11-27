@@ -1,3 +1,127 @@
+   October 2009
+   [HelLViS69]
+   - Reworked the whole addon system: the new packaging handler with a simple wizard will guide
+     you during the addon creation process. Moreover now you need to follow a strict set of rules
+     to ensure the standardization of .kva (KVIrc Addon) extension
+   - Added $realname() function
+   - Removed KviTalScrollView and KviTalTextEdit classes
+   - Moved bytes multiples from SI to IEC standard (KiB, MiB, GiB instead of KB, MB, GB)
+   [CtrlAltCa]
+   - Finished the Python scripting support
+   - Modified all accelerators
+   - Improved url module
+   - Removed KviTalTreeWidget class
+   - More work on Phonon
+
+26 August 2009
+   [CtrlAltCa]
+   - Reworked the icon window
+
+16 August 2009
+   [desowin]
+   - Added compability with recent audacious versions
+
+09 August 2009
+   [CtrlAltCa]
+   - New option: path for logfiles saving
+
+04 August 2009
+   [Noldor]
+   - Reworked code completer
+
+01 August 2009
+   [CtrlAltCa]
+   - Create dcc windows inside the irc context that generates them
+
+30 July 2009
+   [HelLViS69]
+   - First testing implementation of python support: this IS NOT intended to work yet!
+   [CtrlAltCa]
+   - Added option for personal nick colors and avoid to use them for others's nicks
+
+27 July 2009
+   [CtrlAltCa]
+   - Support for +f channel mode
+
+25 July 2009
+   [CtrlAltCa]
+   - Replaced win32 icon with a hi-res vista/win7 capable one
+
+19 July 2009
+   [CtrlAltCa]
+   - Changed window.setWindowTitle() syntax to match current qt implementation
+   [Curan]
+   - Merged patched from no_embedded_code branch, mostly $str.digest and libcrypto++ support
+
+17 July 2009
+   [CtrlAltCa]
+   - Added the possibility to close a window using a middle mouse button click
+
+12 July 2009
+   [CtrlAltCa]
+   - Deleted some old win32 install scripts and modified the others to fit kvirc4
+
+08 July 2009
+   [HelLViS69]
+   - Removed TODO-Qt4 since the port is complete
+
+08 July 2009
+   [CtrlAltCa]
+   - Rewritten notifier module
+
+06 July 2009
+   [desowin]
+   - Added Qmmp mediaplayer interface
+
+03 July 2009
+   [HelLViS69]
+   - Added classes file in default script: this is useful to create addon
+
+01 July 2009
+   [HelLViS69]
+   - Removed KviQCString with QByteArray
+
+25 June 2009
+   [HelLViS69]
+   - Translated man page to italian
+
+23 June 2009
+   [Curan]
+   - Translated man page to german
+
+21 June 2009
+   [CtrlAltCa]
+   - Added a cmake variable to manually set the revision number
+
+02 June 2009
+   [Curan]
+   - Added system.runcmd: runs the specified command in a terminal
+
+31 May 2009
+   [Kebianizao]
+   - Applied patch to achieve freedesktop icon naming compliance
+
+30 May 2009
+   [HelLViS69]
+   - Applied patch for including per freedesktop mimetypes definitions, thanks to Pino Toscano
+
+23 May 2009
+   [wrar]
+   - Added a possibility to switch to next/previous "active" window with Alt-PgUp/PgDown
+
+08 May 2009
+   [mren & Kebianizao]
+   - Updated FSF address in all source files
+
+25 March 2009
+   [CtrlAltCa]
+   - Added a tick to show/hide passwords in edit fields
+
+15 March 2009
+   [CtrlAltCa]
+   - Added zsh-style nick completion
+   - Added tmphighlight.addChannel(), tmphighlight.removeChannel(), $tmphighlight.isChannelHighLighted()
+
 13 March 2009
    [CtrlAltCa]
    - Added support for IPv6 policies handling under win32
@@ -182,7 +306,7 @@ buh :) - 16 August 2008
    [Alexey]
    - Configurable avatar scaling on load
    - Human-redable file sized on dcc transfers
-   
+
 12 Mar 2007
    [Alexey]
    - Added support for remote dns on socks5 proxy
@@ -197,17 +321,17 @@ buh :) - 16 August 2008
 26 Feb 2007
    [Alexey]
    - Added Export/Import feature to channel list module
-   
+
 25 Feb 2007
    [Alexey]
    - Repainted reuser list
    - Added search field for mask editors
-   
+
 24 Feb 2007
    [Noldor]
    - New QT4 win compiling projects: still unusable... kvilib and kvirc compile but only in release;
      you need to compile qt libraries by yourself then try to compile kvilib and kvirc (use COMPILE_USE_QT4 in kvi_wincfg.h).
-     Some module compile without problem... others need to be ported. 
+     Some module compile without problem... others need to be ported.
 
 20 Feb 2007
    [Alexey]
@@ -226,7 +350,7 @@ buh :) - 16 August 2008
      the list.
    - I'm thinking about qmake support (as suggested by Matteo Catanese some time ago)
      ... will require some work ... what do you think about it ?
-   
+
 18 Feb 2007
    [Alexey]
    - Fixed dns resolver under win32
@@ -271,7 +395,7 @@ buh :) - 16 August 2008
 30 Jan 2007
    [Alexey]
    - Introduced option "using identd only on connect"
-   
+
 29 Jan 2007
    [Alexey]
    - Introduced search in log files
@@ -360,7 +484,7 @@ buh :) - 16 August 2008
 
 27 Dec 2006
    [Noldor]
-   - Alias editor module: 
+   - Alias editor module:
      added the possibility to save a selection of aliases in separated files (every file will have the alias name);
      fixed search function;
    - Script editor module:
@@ -369,7 +493,7 @@ buh :) - 16 August 2008
    - Objects module:
      added objects.classes, objects.variables, objects.classAllHandlers;
      fixed crash in listviewitem class;
-     fixed little bug in multilinnedit class (function $setWordWrap); 
+     fixed little bug in multilinnedit class (function $setWordWrap);
 
 
 19 Dec 2006
@@ -403,17 +527,17 @@ buh :) - 16 August 2008
    - More work on the options dialogs
    - Removed the duplicated kvc_ icon.
 
-19 Nov 2006 
+19 Nov 2006
    [Alexey]
    - New function - $chan.getUrl
    - NickServ identity can now accept masks in nick field
 
-16 Nov 2006 
+16 Nov 2006
    [Alexey]
    - Added a simple browser-like address bar to console
    - Clicking on nick in channel ircview now selects it in the userlist
    - Avatar dcc send rejected if avatar size greater, then max filesize, setted in options
-   
+
 15 Nov 2006
    [HelLViS69]
    - Added a checkbox on AwayIndicator applet popup to choose to go away
@@ -479,7 +603,7 @@ Oct 2006
    - Fixed crash after first run wizard on *nix
    - Make possible installation on USB removable drives (WIN32). KVIrc can store settings in program folder
    - Make pathes in configs system-independent
-   
+
 23 Sep 2006
    [Zerg] (commited by Alexey)
    - Change dock icon size to 22x22 on KDE. Fixed style of icon
@@ -489,7 +613,7 @@ Oct 2006
 
 18 Sep 2006
    [Noldor]
-   - Added alphablend in objects.blend 
+   - Added alphablend in objects.blend
    - Added doc to class image and function setOpacity()
    ... now we can create some weird, cool effect :=D
 
@@ -631,19 +755,19 @@ Oct 2006
 13 May 2006
    [Alexey]
    - Added search and document index to the help system
-   
+
 10 May 2006
    [Alexey]
    - Added texticon module to manage text icon collection
    - Added detection if the KVIrc running to the win32 insatll script (patch contributed by Zerg)
-   
+
 02 May 2006
    - Improved win32 insatll script (patch contributed by Zerg)
 
 22 Apr 2006
    [Alexey]
    - Now user can define position and/or tiling methood of backgrounds
-   
+
 22 Apr 2006
    [Alexey]
    - Added visual effects to the tree taskbar
@@ -652,7 +776,7 @@ Oct 2006
    [Alexey]
    - [WIN32] Added installer script for NSIS installer (nsis.sf.net). It can properly uninstall local data dir, automatically install Winamp plugin
    - Added ability to bind sounds on some events via options dialog
-   
+
 18 Apr 2006
    [Alexey]
    - !KVIrc now can run from localized folder (generally WIN32 fix)!
@@ -678,8 +802,8 @@ Oct 2006
 01 Apr 2006
    [Alexey]
    - changed KVS_PT_STRINGLIST type to QStringList
-   - added option to set default ban mask 
-   - added options to set maximum width of classic taskbar button 
+   - added option to set default ban mask
+   - added options to set maximum width of classic taskbar button
 
 17 Mar 2006
    [Alexey]
@@ -733,15 +857,15 @@ Oct 2006
    - improved nick colorization in KViIrcView: now registered nicks are colorised as in the userlist
    - now it is possible to assign a comment to the registered user. Comment will be shown it tooltip and WATCH join/quit messages
    - added option for colorizing own nick in different color
-   
+
 21 Feb 2006
    [Alexey]
    - added option to disable avatar scaling if it less that required size
-   
+
 20 Feb 2006
    - registered users can be organazid into groups
    - some fixes in maskeditor
-   
+
 13 Feb 2006
    [Ahinu]
    - regchan.list -> regchan.showlist, added $regchan.list
@@ -760,7 +884,7 @@ Oct 2006
 03 Feb 2006
    - Improved maskedior. Now it can edit masks;)
    - Fixed issues with [] symbols in Wildcard expressions
-   
+
 02 Feb 2006
    [Pragma]
    - Added zero port request handling also for DCC CHAT.
@@ -788,11 +912,11 @@ Oct 2006
    - Fixed and optimized objects.blend command: now it is very cool and you can create some eyes candy effect
      very easily =)(more new graphic commands will come in the near future)
    - The porting of the module object is near to finish: only class socket is missing.
-  
+
 14 Jan 2006
    [Grifisx & Noldor]
    - Added the new class object named "image": at this moment it is in alpha state and without docs;
-   - Added command objects.blend.  
+   - Added command objects.blend.
    [Pragma]
    - Added the math.* module
    - Fixed comparison of variables in KVS
@@ -864,17 +988,17 @@ Oct 2006
    - [Kernel]  New theme package format. Now theme s\is a king of addon
    - [KVS]     Fixed crash while calling $tr("") in new KVS
    - [Kernel]  Other bugfixes
-   
+
    [Pragma]
    - [Kernel]  Fixed crashbugs in KVS kernel
-   
+
 09 Dec 2005
    [Alexey]
    - [Kernel]  Fixed bugs in handling modes. Now it is case sensivity
    - [UI]      Fixed bug with deleting selected text from input line or topic editor
    - [UI]      Pressing a key in userlist now selects the first nick with first letter, equal to the pressed key
    - [UI]      Now options splitted into 3 categories: for novice,normal and experienced users. Newbies should see really simple configuration dialog
-   
+
 07 Dec 2005
    [Alexey]
    - [Kernel]  KVirc *hopefelly* supports now localized file names and file pathes! (but it really partially support it now:)))
@@ -886,10 +1010,10 @@ Oct 2006
 
 05 Dec 2005
    [Alexey]
-   - [Kernel]  Added soma additional checks to KviRegisteredUser class. 
+   - [Kernel]  Added soma additional checks to KviRegisteredUser class.
    - [Kernel]  Mode work on filesystem interfave
    - [Kernel]  Much better filenames encoding function from internationalization point of view. Logfile names becomes not so ugly:)
-   
+
 01 Dec 2005
    [Alexey]
    - [UI]      Fixed bug with nick completion
@@ -901,7 +1025,7 @@ Oct 2006
    [Alexey]
    - [Kernel]  Fixed crashes in action and toolbar  modules under windows
    - [Kernel]  Added trick to resolve unmasked local hostname from 001 server message, even when you using +x mode
-   
+
 26 Nov 2005
    [Alexey]
    - [UI]      Fixed bug with non-latin search in ircview. Now it works:)
@@ -909,11 +1033,11 @@ Oct 2006
    - [UI]      Improved smart nick and channel highlighting.
    - [UI]      Escape hotkey (minimize window) replaced with Ctrl+Esc hotkey.
    - [UI]      Better code highlighting and code completion in scripteditor.
-  
+
 25 Nov 2005
    [Alexey]
    - [UI]      Added smart nick and channel highlighting. Now most of channel names and nicknames are recognized and you can click on it by mouse:)
-   
+
 24 Nov 2005
    [Alexey]
    - [KVS]     config module ported
@@ -923,7 +1047,7 @@ Oct 2006
 23 Nov 2005
    [Alexey]
    - [Kernel]  Added ability to choose proxy server in irc server's preferences. You can choose different proxyes for different servers
-   
+
 22 Nov 2005
    [Alexey]
    - [KVS]     Removed ugly $insertInInput function, added commands window.setInputText,window.insertInInputText  and function $windos.inputText
@@ -931,7 +1055,7 @@ Oct 2006
    - [Kernel]  Added support for RPL_ADMINME, RPL_ADMINLOC1, RPL_ADMINLOC2, RPL_ADMINEMAIL, RPL_COMMANDSYNTAX, RPL_INVITING, RPL_INFO, RPL_INFOSTART, RPL_ENDOFINFO, RPL_TIME, ERR_NOSUCHSERVER, ERR_NOSUCHCHANNEL, ERR_CANNOTSENDTOCHAN, ERR_NOCOLORSONCHAN server messages
    - [Kernel]  Added support for gzipping logs and viewing gzipped logs
    [Pragma]
-   - First step for the implementation of namespaces in aliases (new KVS only)   
+   - First step for the implementation of namespaces in aliases (new KVS only)
 
 21 Nov 2005
    [Alexey]
@@ -963,14 +1087,14 @@ Oct 2006
    - [Kernel]  Fixed click vs double click bug
    - [Kernel]  Added parsing of 703(WeNet) and 020 messages
    - [UI]      New topic editor
-   - [Misc]    Fixed some other bugs   
+   - [Misc]    Fixed some other bugs
    - [UI]      Fixed permission on topiceditor and mode editors(for ircOps and halfops)
    - [Kernel]  Fixed bug when message, that have raw event handlers decode 2 times
    - [Modules] Fixed internationalization issues in avatar module
    - [KVS]     Window,reguser,url,term,toolbareditor,regchan modules are ported..
    - [KVS]     Log module ported, porting logging system from KviStr to QString
    - [kernel]  Some fixes for COMPILE_ONLY_NEW_KVS
-   
+
    [Pragma]
    - More work on the KVS engine
    - avatar module ported...
@@ -984,7 +1108,7 @@ Oct 2006
    - started dcc module porting from KviStr to QString
    - resolved lot of internatiolization problems in DCC module
    - improved defscript
-   
+
 26 Oct 2005
    [Alexey]
    - Added Ctrl+A shortcut for select all
@@ -1005,15 +1129,15 @@ Oct 2006
    [Pragma]
    - A quick fix for the connect button handling
    - A fix for a crash in the listview KVS class (new parser)
-   - More KVS all around   
+   - More KVS all around
 
 19 Jun 2005
    [Grifisx/Noldor]
    - code improvements in the editor(...stil a work in progress):
      added code completition (shift+insert keys), added a dynamic help: move over a command/function.
-     then right button and "help command/function" (... its in beta status, need some workaround :D) : 
+     then right button and "help command/function" (... its in beta status, need some workaround :D) :
      an help window will appear.
-   - added some options to hide graphic elements in the gui to build a very "minimalist" KVIrc.    
+   - added some options to hide graphic elements in the gui to build a very "minimalist" KVIrc.
 
 15 Jun 2005
    [Grifisx/Noldor]
@@ -1071,7 +1195,7 @@ Oct 2006
 
 08 Mar 2005
    [Grifisx/Noldor]
-   - Fixed CTRL+K, CTRL+B, CTRL+U, CTRL+I...escapes in the topic widget 	
+   - Fixed CTRL+K, CTRL+B, CTRL+U, CTRL+I...escapes in the topic widget
 
 27 Feb 2005
    [Pragma]
@@ -1148,7 +1272,7 @@ Oct 2006
      at once in a query or channel. The warning can be obviously disabled
      forever by answering "Always".
    - Added the XIM "hot spot" handling for the input window.
-     
+
 
 01 Feb 2005:
    [Pragma]
@@ -1167,7 +1291,7 @@ Oct 2006
 
 29 Jan 2005:
    [Iakko]
-   - Added Notifier 2.0 in a more stable and usable version, now tabs and 
+   - Added Notifier 2.0 in a more stable and usable version, now tabs and
      "blinking onFocusOut/showing" are working. The Notifier is still on Beta version.
    - Some kvi_sp_literal.cpp and kvi_sp_ctcp.cpp (under kvirccvs/kvirc/src/kvirc/sparser) changes
      needed for notifier to work. A core recompilation is suggested even if
@@ -1203,7 +1327,7 @@ Oct 2006
    - Fixed a couple of bugs related to the mask handling
    - Fixed a possible bug related to acknowledges in the DCC send code
    - Other small fixes all around as usual.
-   
+
 
 27 Jan 2005:
    [Noldor/Grifisx]
@@ -1339,7 +1463,7 @@ Oct 2006
 1 Aug 2004:
    [Juanjo]
    - Added an autopackage dir with two (very initial) apsepc files to build a
-     .autopackage autoinstaller. 
+     .autopackage autoinstaller.
      If you have not
 	 checked autopackage (http://autopackage.org) DO IT NOW :) is the real
 	 solution for Linux third party software installation across distributions
@@ -1653,7 +1777,7 @@ Oct 2006
    - Classic taskbar now limits number of rows (when horizontal).
    - KviChannel API change: banMask(), etc. removed in favour of setMask().
    - Mask editor requests new list when opened after a mode change.
-   * Fixes problem with CR ircd where -b messages may not match bans in list due     to stupid inconsistent hostmasking. 
+   * Fixes problem with CR ircd where -b messages may not match bans in list due     to stupid inconsistent hostmasking.
 
 12 Mar 2004:
    [Trisk]
@@ -1723,7 +1847,7 @@ Oct 2006
     - Added support for changing the order of option items in the
         options dialog tree display. Most common options should go at the top.
     - Random fixes around :)
-	
+
 14 Feb 2004:
     [Trisk]
     - Changed 005 numeric parser output a bit, fixes issues with skipping to
@@ -1736,7 +1860,7 @@ Oct 2006
     - Fixed a miscompilation --without-info-tips
     - Added the lag to the irc context indicator tooltip.
     - Make the irc context indicator a little bigger (but the correct way
-        would be to make it resize itself depending on the inside text size). 
+        would be to make it resize itself depending on the inside text size).
 
 06 Feb 2004:
     [Pragma]
@@ -1756,7 +1880,7 @@ Oct 2006
 23 Jan 2004:
     [Pragma]
     - More work on the KVS engine : popups almost ready
-    - Fixed a regusers bug that didn't allow to register channels with a '@' 
+    - Fixed a regusers bug that didn't allow to register channels with a '@'
       character in it
     - More windows port: kvilib, kvirc and several modules are already working
     - Fixed an expression parser bug related to string/number comparisons
@@ -1812,7 +1936,7 @@ Oct 2006
       /- echo "This is the new parser's version of echo"
       /- echo $window this is the new parser's version of echo \$window
       ...
-    - Added four ways of painting the user list view grid. It is user selectable 
+    - Added four ways of painting the user list view grid. It is user selectable
       now.
       Please tell me which is the best one (to choose the default)
 
@@ -1887,7 +2011,7 @@ New Years Eve, 2003:
 
     [Pragma]
     - Added avatar caching
-    - Reworked the code that remembers the last irc server connected in each 
+    - Reworked the code that remembers the last irc server connected in each
       console now it doesn't break the servers dialog.
       After the commit I've discovered that it collided with the Trisk's solution:
       merged the two solutions in something yet better.
@@ -1947,9 +2071,9 @@ Christmas Eve (Western Hemisphere) 2003:
 
 21 Oct 2003:
     [Crissi]
-    - 'Always highlight messages with my nick on them' added: Check 
+    - 'Always highlight messages with my nick on them' added: Check
       irc::output::highlight tab on options.
-    - 'Hightlight only at normal msg' added: Check irc::output::highlight 
+    - 'Hightlight only at normal msg' added: Check irc::output::highlight
       tab on options.
     - 'Highlight at highlight msg too' added: Check irc::output::highlight
       tab on options.
@@ -1971,20 +2095,20 @@ Christmas Eve (Western Hemisphere) 2003:
 
 11 Oct 2003:
     [Crissi]
-    - Channels can now stored for each server and then auto join them if 
-      successfully connected to the server. Look into advanced server info, 
+    - Channels can now stored for each server and then auto join them if
+      successfully connected to the server. Look into advanced server info,
       'After login join channels' tab. Simply check the channels (from history)
-      you want to join. Also you can add a new channel (current bug: after 
+      you want to join. Also you can add a new channel (current bug: after
       adding close/reopen the dialog for showing new channel in list).
-    - Minimize console after successful login. Look into Preferences - Options - 
+    - Minimize console after successful login. Look into Preferences - Options -
       Connection.
 
 12 Aug 2003:
     [Crissi]
-    - 'Minimize all windows' and 'Restore all windows' added. Check Menu - 
+    - 'Minimize all windows' and 'Restore all windows' added. Check Menu -
     Window and window action toolbar.
-  
-01 Aug 2003: 
+
+01 Aug 2003:
     [Juanjo]
     - I'm back, ahhh nothing like vacations to do some free software ;)
     - The channel completion will also complete on the list of recent channels.
@@ -1993,7 +2117,7 @@ Christmas Eve (Western Hemisphere) 2003:
 
 18 Apr 2003:
     [Crissi]
-    - exec module added. Check kvirccvs/modules/exec/README for more info. 
+    - exec module added. Check kvirccvs/modules/exec/README for more info.
 
 26 Mar 2003:
     [Crissi]
@@ -2013,7 +2137,7 @@ Christmas Eve (Western Hemisphere) 2003:
 28 Feb 2003:
     [Crissi]
     - The width of the taskbar entries is now custoumizable.
-    - GUI option 'Minimal width of taskbar buttons' added. 
+    - GUI option 'Minimal width of taskbar buttons' added.
 
 25 Feb 2003:
     [Istari]
@@ -2022,8 +2146,8 @@ Christmas Eve (Western Hemisphere) 2003:
 25 Feb 2003:
     [Crissi]
     - GUI options for symbols on taskbar and disabling global who added.
-    - Try to show emoticons with start not with : correctly (not from me...)... 
-      tell me if you got problems with this...  
+    - Try to show emoticons with start not with : correctly (not from me...)...
+      tell me if you got problems with this...
 
 25 Feb 2003:
     [Pragma]
@@ -2031,7 +2155,7 @@ Christmas Eve (Western Hemisphere) 2003:
 
 21 Feb 2003:
     [Crissi]
-    - Fixed text on first setup page, Translation possibility for buttons in 
+    - Fixed text on first setup page, Translation possibility for buttons in
       wizard added.
 
 20 Feb 2003:
@@ -2044,12 +2168,12 @@ Christmas Eve (Western Hemisphere) 2003:
 
 18 Feb 2003:
     [Crissi]
-    - Size of toolbar icon fixed. Right size s now selected if toolbar size if 
+    - Size of toolbar icon fixed. Right size s now selected if toolbar size if
       changed.
 
 18 Feb 2003:
     [Pragma]
-    - Support for broken filename RESUME requests (mIrc's file.ext) added. 
+    - Support for broken filename RESUME requests (mIrc's file.ext) added.
 
 15 Feb 2003:
     [Crissi]
@@ -2072,7 +2196,7 @@ Christmas Eve (Western Hemisphere) 2003:
       - $mp3player.getmp3tag_tracknumber => get the track number
       - $mp3player.getmp3tag_version => get MPEG version
     - A example script was added (kvirccvs/kvirc/doc/scriptexamples/mp3info.kvs)
-    
+
 4 November 2002:
     [Juanjo]
     - Added widgets to the identity an server dialogs to set a default user mode
@@ -2087,8 +2211,8 @@ Christmas Eve (Western Hemisphere) 2003:
     [Juanjo]
     - Added the alias 'lag' to the default script (it just returns the lag
       using $lag.lag()).
-    - Added the event 'OnLagCheck' that get triggered every time there is a 
-      new lag data. This should help scripters to write their own lagmeters 
+    - Added the event 'OnLagCheck' that get triggered every time there is a
+      new lag data. This should help scripters to write their own lagmeters
       without having to poll KVIrc.
     - Added an option to display the lag on the IRC context indicator, making
       all those changes actually useful for the final user :)
@@ -2096,9 +2220,9 @@ Christmas Eve (Western Hemisphere) 2003:
 18 Oct 2002:
     [Juanjo]
     - Added a new (and very simple) Lagmeter (see the new 'lag' module
-      commands and functions), the 'Lag Options' dialog in the options/irc 
+      commands and functions), the 'Lag Options' dialog in the options/irc
       window and the 'OnLagAlarmTimeUp' and 'OnLagAlarmTimeDown' events. I'll
-      add an applet displaying the lag to the lag module as soon as I figure 
+      add an applet displaying the lag to the lag module as soon as I figure
       how to do it :)
     - Added the OnPong event.
     - Fixed bug 200210130200522026
@@ -2128,8 +2252,8 @@ Christmas Eve (Western Hemisphere) 2003:
     [Pragma]
     - More SSL support
     - A lot of bugfixes (see bugtrack.kvirc.omnikron.net)
-    - Arrays support in the whole user parser (uh...this was huge , but 
-      necessary) a huge set of functions has been moved to the new array 
+    - Arrays support in the whole user parser (uh...this was huge , but
+      necessary) a huge set of functions has been moved to the new array
       interface	WARNING: the dictionaries have a new syntax now! %dict{key}
       %something[id] is now reserved to arrays (with numeric id).[br]
     - FOR command added
@@ -2149,8 +2273,8 @@ Christmas Eve (Western Hemisphere) 2003:
 
 21 May 2002:
     [Juanjo]
-    - Using Pragma's support for text icons, added the option to substitute 
-      some icons (currently ':)', ':D', ':-)', ':-D' and ':-O') in the irc view 
+    - Using Pragma's support for text icons, added the option to substitute
+      some icons (currently ':)', ':D', ':-)', ':-D' and ':-O') in the irc view
       (Options -> Look & Feel -> Irc View). Still not finished.
 
 18-21 May 2002:
@@ -2208,15 +2332,15 @@ Christmas Eve (Western Hemisphere) 2003:
     - Minor fixes around
     - Fix for the KDE style toolbars
     - Fixes for the liquid KDE theme (transparency).
-      not everything works... some label stuff must be fixed in the theme 
+      not everything works... some label stuff must be fixed in the theme
       engine...
     - Query user list view invisible by default (also saved in the window state)
     - Same for the channel double view
-    - Removed /tbutton and /wbutton and added generic /button and /buttonctl 
+    - Removed /tbutton and /wbutton and added generic /button and /buttonctl
       instead updated the example scripts accordingly
     - Merged the libtool update patch and added more fixes for this
     - Fixes for --with-local-8bit compilation
-    - Added kvi_list.h and the compatibility KviPtrList defines to work both 
+    - Added kvi_list.h and the compatibility KviPtrList defines to work both
       with qt2 and qt3
 
 31 Mar 2002:
@@ -2232,7 +2356,7 @@ Christmas Eve (Western Hemisphere) 2003:
     - Added the beginning of the offer list window
     - Preliminary window properties saving... now handling defaults too
     - Minor utility-functions in the window popup menus
-    - Preliminary rearrangements of code for KviConsole.... the header is 
+    - Preliminary rearrangements of code for KviConsole.... the header is
       becoming a mess need to order the code syntactically and then maybe extract
       some code to be put in external classes. KviIrcConnection could be an idea.
     - Beginning of code for the toolbar button management... need a module ?
@@ -2247,7 +2371,7 @@ Christmas Eve (Western Hemisphere) 2003:
 
 28 Feb 2002:
     [Juanjo]
-    - Pragma branded str module optimizations, docs for all the implemented 
+    - Pragma branded str module optimizations, docs for all the implemented
       functions.
 
 26 Feb 2002:
@@ -2297,8 +2421,8 @@ Christmas Eve (Western Hemisphere) 2003:
 20 Jan 2002:
     [Juanjo]
     - Added the config widget for the create query on server notice option.
-    - Events and events doc: OnDCCChatConnected, OnDCCChatMessage, 
-      OnDCCSendTransferComplete, OnDCCGetTransferComplete, OnCTCPFlood, 
+    - Events and events doc: OnDCCChatConnected, OnDCCChatMessage,
+      OnDCCSendTransferComplete, OnDCCGetTransferComplete, OnCTCPFlood,
       OnServerNotice, OnChannelNotice...
 
 19 Jan 2002:
@@ -2315,7 +2439,7 @@ Christmas Eve (Western Hemisphere) 2003:
     - updated po file
     - anti idle script changed... but pragma's syntax he gave me is not working
       yet :p
-	  
+
     [Juanjo, which is alive]
     - Added the 'recent servers' Qlist to the servers dialog
     - Added the 'Show after connecting to server' checkbox to the channelsjoin
@@ -2342,7 +2466,7 @@ Christmas Eve (Western Hemisphere) 2003:
 
 18 Nov 2001:
     [Juanjo]
-    - Added a 'Connect to servers' dialog (serversjoin.open) -> update: 
+    - Added a 'Connect to servers' dialog (serversjoin.open) -> update:
       serversconnec.open
     - Added scripted buttons for the channels and servers dialogs.
     - Added $anyConsoleConnected() function.
@@ -2354,15 +2478,15 @@ Christmas Eve (Western Hemisphere) 2003:
 
 10 Nov 2001:
     [Juanjo]
-    - Now it has all the functionality ;)	
-	
+    - Now it has all the functionality ;)
+
     [YaP]
     - IPv6 porting from Win XP to Win 2000 (Preprocessor definition: WIN2K)
-	
+
 8 Nov 2001:
     [Juanjo]
     - Added a 'Join Channels' widget. It still don't have all the
-      funcionality. 
+      funcionality.
 
 4 Nov 2001:
     [Juanjo]
@@ -2375,7 +2499,7 @@ Christmas Eve (Western Hemisphere) 2003:
     [Kristoff]
     - Made Dcc Voice completely configurable, options dialog also added
     - Volume slider for dcc voice added
-    - Fixed a bug in alt+arrows switching (sigsegv when window had no context 
+    - Fixed a bug in alt+arrows switching (sigsegv when window had no context
       assigned)
 
 23 Sep 2001:
@@ -2388,14 +2512,14 @@ Christmas Eve (Western Hemisphere) 2003:
 
 12 Sep 2001:
     [Kristoff]
-    - Text selected in Help Browser window is now automagically copied into the 
-      clipboard and can be pasted (Balboy's request).	
-    - Pressing Enter in Help Browser's lineedit starts search. When the search 
+    - Text selected in Help Browser window is now automagically copied into the
+      clipboard and can be pasted (Balboy's request).
+    - Pressing Enter in Help Browser's lineedit starts search. When the search
       starts the cursor changes into waitCursor (cosmetical improvement :))
     - 22 Mar - 12 Sep... man...
-    - biff module added - not functional at all - adding some code not to mess 
+    - biff module added - not functional at all - adding some code not to mess
       with makefiles anymore
-	
+
 12 Sep 2001:
     [Balboy]
     - updated the changelog :p
@@ -2408,7 +2532,7 @@ Christmas Eve (Western Hemisphere) 2003:
 22 Mar 2001:
     [Kristoff]
     - combobox object added
-	
+
 17 Mar 2001:
     [Pragma]:
     - A lot of unreported changes again
@@ -2416,8 +2540,8 @@ Christmas Eve (Western Hemisphere) 2003:
 
 17 Feb 2001:
     [Pragma]
-    - A lot of changes: removed the libkvigui, it was rather useless, and it is 
-      better to have all the GUI code into the core executable...(for many 
+    - A lot of changes: removed the libkvigui, it was rather useless, and it is
+      better to have all the GUI code into the core executable...(for many
       reasons).
     - Added the first "shy" icq module.
 
@@ -2429,10 +2553,10 @@ Christmas Eve (Western Hemisphere) 2003:
 
 05 Dec 2000:
     [Number1]
-    - Cleaned up the about dialog, added some new entries and fixed the 
+    - Cleaned up the about dialog, added some new entries and fixed the
       background bug.
       Note: Could people start using this log again please? ;)
- 
+
 12 Sep 2000:
     [Kristoff]
     - started this ChangeLog (to avoid confusion: newset entries go above

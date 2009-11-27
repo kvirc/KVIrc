@@ -34,15 +34,15 @@
 	#include <QVariant>
 	#include <QTable>
 	#include <QSplitter>
-	
+
 	class KviCanvasWidget;
-	
+
 	#define KVI_CANVAS_RTTI_CONTROL_TYPE_RECTANGLE 1
 	#define KVI_CANVAS_RTTI_CONTROL_TYPE_LINE 2
 	#define KVI_CANVAS_RTTI_CONTROL_TYPE_POLYGON 4
-	
+
 	#define KVI_CANVAS_RTTI_CONTROL_TYPE_MASK 255
-	
+
 	#define KVI_CANVAS_RTTI_RECTANGLE (KVI_CANVAS_RTTI_CONTROL_TYPE_RECTANGLE | (1 << 8))
 	#define KVI_CANVAS_RTTI_RICHTEXT  (KVI_CANVAS_RTTI_CONTROL_TYPE_RECTANGLE | (2 << 8))
 	#define KVI_CANVAS_RTTI_LINE      (KVI_CANVAS_RTTI_CONTROL_TYPE_LINE | (3 << 8))
@@ -50,11 +50,11 @@
 	#define KVI_CANVAS_RTTI_CHORD     (KVI_CANVAS_RTTI_CONTROL_TYPE_RECTANGLE | (5 << 8))
 	#define KVI_CANVAS_RTTI_PIE       (KVI_CANVAS_RTTI_CONTROL_TYPE_RECTANGLE | (6 << 8))
 	#define KVI_CANVAS_RTTI_POLYGON   (KVI_CANVAS_RTTI_CONTROL_TYPE_POLYGON | (7 << 8))
-	
+
 	#define KVI_CANVAS_RTTI_CONTROL_TYPE(__item) (__item->rtti() & KVI_CANVAS_RTTI_CONTROL_TYPE_MASK)
-	
-	
-	
+
+
+
 	class KviCanvasPolygon : public QCanvasPolygon
 	{
 	public:
@@ -75,8 +75,8 @@
 		virtual void setProperty(const QString &property,const QVariant &val);
 		virtual int rtti() const;
 	};
-	
-	
+
+
 	class KviCanvasRectangleItem : public QCanvasRectangle
 	{
 		friend class KviCanvasRectangle;
@@ -97,8 +97,8 @@
 	protected:
 		void drawSelection(QPainter &p);
 	};
-	
-	
+
+
 	class KviCanvasEllipticItem : public KviCanvasRectangleItem
 	{
 		friend class KviCanvasEllipse;
@@ -113,8 +113,8 @@
 		virtual void drawContent(QPainter & p);
 		virtual int rtti() const;
 	};
-	
-	
+
+
 	class KviCanvasEllipse : public KviCanvasEllipticItem
 	{
 	public:
@@ -124,8 +124,8 @@
 		virtual void drawContent(QPainter & p);
 		virtual int rtti() const;
 	};
-	
-	
+
+
 	class KviCanvasPie : public KviCanvasEllipticItem
 	{
 	public:
@@ -135,8 +135,8 @@
 		virtual void drawContent(QPainter & p);
 		virtual int rtti() const;
 	};
-	
-	
+
+
 	class KviCanvasChord : public KviCanvasEllipticItem
 	{
 	public:
@@ -146,8 +146,8 @@
 		virtual void drawContent(QPainter & p);
 		virtual int rtti() const;
 	};
-	
-	
+
+
 	class KviCanvasLine : public QCanvasLine
 	{
 	public:
@@ -162,8 +162,8 @@
 		virtual void draw(QPainter & p);
 		virtual int rtti() const;
 	};
-	
-	
+
+
 	class KviCanvasRectangle : public KviCanvasRectangleItem
 	{
 	public:
@@ -174,8 +174,8 @@
 		virtual void setProperty(const QString &property,const QVariant &val);
 		virtual int rtti() const;
 	};
-	
-	
+
+
 	class KviCanvasRichText : public KviCanvasRectangleItem
 	{
 	public:
@@ -185,8 +185,8 @@
 		virtual void draw(QPainter & p);
 		virtual int rtti() const;
 	};
-	
-	
+
+
 	class KviCanvasView : public QCanvasView
 	{
 		Q_OBJECT
@@ -206,14 +206,14 @@
 		};
 	protected:
 		KviCanvasWidget * m_pCanvasWidget;
-	
+
 		// Insertion of objects
 		State             m_state;
 		ObjectType        m_objectToInsert;
-	
+
 		// Selected item
 		QCanvasItem   * m_pSelectedItem;
-	
+
 		DragMode          m_dragMode;
 		QPoint            m_dragBegin;
 		double            m_dragScaleFactor;
@@ -222,13 +222,13 @@
 	protected:
 		void beginDragRectangle(KviCanvasRectangleItem * it,const QPoint &p,bool bInitial = false);
 		void dragRectangle(KviCanvasRectangleItem * it,const QPoint & p);
-	
+
 		void beginDragLine(KviCanvasLine * it,const QPoint &p,bool bInitial = false);
 		void dragLine(KviCanvasLine * it,const QPoint &p);
-	
+
 		void beginDragPolygon(KviCanvasPolygon * it,const QPoint &p,bool bShift = false,bool bCtrl = false);
 		void dragPolygon(KviCanvasPolygon * it,const QPoint &p);
-	
+
 		void setItemSelected(QCanvasItem * it);
 		void clearSelection();
 		void insertObjectAt(const QPoint & pnt,ObjectType o);
@@ -248,7 +248,7 @@
 		void insertPolygonHexagon();
 		void propertyChanged(const QString &s,const QVariant &v);
 	};
-	
+
 
 	class KviVariantTableItem : public QTableItem
 	{
@@ -263,8 +263,8 @@
 		QVariant & property(){ return m_property; };
 		virtual void paint(QPainter *p,const QColorGroup &cg,const QRect &cr,bool selected);
 	};
-	
-	
+
+
 	class KviCanvasItemPropertiesWidget : public QTable
 	{
 		Q_OBJECT
@@ -278,8 +278,8 @@
 	signals:
 		void propertyChanged(const QString &s,const QVariant &v);
 	};
-	
-	
+
+
 	class KviCanvasWidget : public QWidget
 	{
 		friend class KviCanvasView;

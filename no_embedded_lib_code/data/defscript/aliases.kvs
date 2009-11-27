@@ -92,7 +92,7 @@ alias(ms)
 alias(gnotice)
 {
 	# Global notice
-	
+
 	# Check channel validity
 	%szChan = $0
 	if(!%szChan)
@@ -107,7 +107,7 @@ alias(gnotice)
 		echo $tr("-q: quiet mode")
 		halt
 	}
-	
+
 	# Check the message validity
 	%szMsg = $1-
 	if($str.length(%szMsg) == 0)
@@ -116,21 +116,21 @@ alias(gnotice)
 		echo $tr("Type /gnotice for help")
 		halt
 	}
-	
+
 	# Detect message type
 	if($sw(m,message)) %szCmd = "msg"
 	else %szCmd = "notice"
-	
+
 	# Check for quiet message
 	if($sw(q,quiet)) %szCmd = $str.append(%szCmd," -q")
-	
+
 	# Check null switches
 	if((!$sw(w,owners)) && (!$sw(a,admins)) && (!$sw(o,ops)) && (!$sw(h,halfops)) && (!$sw(v,voices)))
 	{
 		eval %szCmd %szChan %szMsg
 		halt
 	}
-	
+
 	# Check switches passed
 	if($sw(w,owners)) eval %szCmd \~%szChan %szMsg
 	if($sw(a,admins)) eval %szCmd \!%szChan %szMsg

@@ -117,7 +117,7 @@ static bool tmphighlight_kvs_cmd_removenick(KviKvsModuleCommandCall * c)
 		tmphighlight.addChannel [window_id:integer]
 	@description:
 		This command adds a channel to the irc context temporary highlight list, so that every user message
-		from that channel will be highlighted until you close that irc context. This is useful when you want 
+		from that channel will be highlighted until you close that irc context. This is useful when you want
 		to follow every message in a low traffic channel. If you don't specify a channel, the current one
 		is used.
 	@seealso:

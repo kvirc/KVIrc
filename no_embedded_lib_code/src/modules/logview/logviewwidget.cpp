@@ -40,25 +40,25 @@
 	#include <zlib.h>
 #endif
 
-KviLogListViewItem::KviLogListViewItem(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
-: KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
+KviLogListViewItem::KviLogListViewItem(QTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+: QTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
 {
 	setText(0,m_pFileData ? m_pFileData->name() : QString());
-};
+}
 
-KviLogListViewItem::KviLogListViewItem(KviTalTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
-: KviTalTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
+KviLogListViewItem::KviLogListViewItem(QTreeWidget * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+: QTreeWidgetItem(par), m_type(type), m_pFileData(fileData)
 {
 	setText(0,m_pFileData ? m_pFileData->name() : QString());
-};
+}
 
-KviLogListViewItemFolder::KviLogListViewItemFolder(KviTalTreeWidgetItem * par, const QString& label)
+KviLogListViewItemFolder::KviLogListViewItemFolder(QTreeWidgetItem * par, const QString& label)
 : KviLogListViewItem(par,KviLogFile::Other,0)
 {
 	setText(0,label);
-};
+}
 
-KviLogListViewItemType::KviLogListViewItemType(KviTalTreeWidget * par, KviLogFile::KviLogTypes type)
+KviLogListViewItemType::KviLogListViewItemType(QTreeWidget * par, KviLogFile::KviLogTypes type)
 : KviLogListViewItem(par,type,0)
 {
 	QIcon icon;
@@ -92,7 +92,7 @@ KviLogListViewItemType::KviLogListViewItemType(KviTalTreeWidget * par, KviLogFil
 	setText(0, text);
 }
 
-KviLogListViewLog::KviLogListViewLog(KviTalTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
+KviLogListViewLog::KviLogListViewLog(QTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
 : KviLogListViewItem(par,type,fileData)
 {
 	setText(0, m_pFileData->date().toString("dd.MM.yyyy"));

@@ -72,7 +72,7 @@ public:
 	const char * subjectOrganization(){ return dictEntry(m_pSubject,"O"); };
 	const char * subjectOrganizationalUnit(){ return dictEntry(m_pSubject,"OU"); };
 	const char * subjectCommonName(){ return dictEntry(m_pSubject,"CN"); };
-	
+
 	const char * issuerCountry(){ return dictEntry(m_pIssuer,"C"); };
 	const char * issuerStateOrProvince(){ return dictEntry(m_pIssuer,"ST"); };
 	const char * issuerLocality(){ return dictEntry(m_pIssuer,"L"); };
@@ -100,7 +100,11 @@ public:
 class KVILIB_API KviSSLCipherInfo
 {
 public:
+#if OPENSSL_VERSION_NUMBER >= 0x10000000L
+	KviSSLCipherInfo(const SSL_CIPHER * c);
+#else
 	KviSSLCipherInfo(SSL_CIPHER * c);
+#endif
 	~KviSSLCipherInfo();
 protected:
 	KviStr       m_szVersion;

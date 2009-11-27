@@ -41,7 +41,7 @@
 //
 //    BLOWFISH ENCRYPTION ALGORITHM
 //
-//    Implementation of Bruce Schneier's BLOWFISH algorithm from "Applied 
+//    Implementation of Bruce Schneier's BLOWFISH algorithm from "Applied
 //    Cryptography", Second Edition.
 //
 //    Encryption and Decryption of Byte Strings using the Blowfish Encryption Algorithm.

@@ -48,7 +48,6 @@
 #include <QTimer>
 #include <QPainter>
 #include <QFontMetrics>
-#include <QSplitter>
 #include <QToolTip>
 #include <QDateTime>
 #include <QByteArray>
@@ -67,8 +66,8 @@ KviChannelTreeWidgetItemData::~KviChannelTreeWidgetItemData()
 }
 
 
-KviChannelTreeWidgetItem::KviChannelTreeWidgetItem(KviTalTreeWidget * v,KviChannelTreeWidgetItemData * pData)
-: KviTalTreeWidgetItem(v)
+KviChannelTreeWidgetItem::KviChannelTreeWidgetItem(QTreeWidget * v,KviChannelTreeWidgetItemData * pData)
+: QTreeWidgetItem(v)
 {
 	setText(0, pData->m_szChan);
 	setText(1, pData->m_szUsers);
@@ -79,14 +78,14 @@ KviChannelTreeWidgetItem::~KviChannelTreeWidgetItem()
 {
 }
 
-int KviChannelTreeWidgetItem::width(const QFontMetrics & fm, const KviTalTreeWidget *, int iColumn) const
+int KviChannelTreeWidgetItem::width(const QFontMetrics & fm, const QTreeWidget *, int iColumn) const
 {
 	if(iColumn == 2)
 		return fm.width(KviMircCntrl::stripControlBytes(text(iColumn)));
 	else return fm.width(text(iColumn));
 }
 
-bool KviChannelTreeWidgetItem::operator<(const KviTalTreeWidgetItem & other) const
+bool KviChannelTreeWidgetItem::operator<(const QTreeWidgetItem & other) const
 {
 	int iSortCol = treeWidget()->sortColumn();
 	switch(iSortCol)
@@ -107,7 +106,7 @@ bool KviChannelTreeWidgetItem::operator<(const KviTalTreeWidgetItem & other) con
 	}
 }
 
-KviChannelTreeWidgetItemDelegate::KviChannelTreeWidgetItemDelegate(KviTalTreeWidget * pWidget)
+KviChannelTreeWidgetItemDelegate::KviChannelTreeWidgetItemDelegate(QTreeWidget * pWidget)
 : QItemDelegate(pWidget)
 {
 }
@@ -153,11 +152,11 @@ KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
 	m_pItemList = new KviPointerList<KviChannelTreeWidgetItemData>;
 	m_pItemList->setAutoDelete(false);
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("splitter");
-	m_pTopSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pTopSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pTopSplitter->setObjectName("top_splitter");
-	m_pVertSplitter = new QSplitter(Qt::Vertical,m_pSplitter);
+	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
 	m_pVertSplitter->setObjectName("vsplitter");
 
 	KviTalHBox * pBox = new KviTalHBox(m_pTopSplitter);
@@ -202,7 +201,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
 
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter,"info_label");
 
-	m_pTreeWidget  = new KviTalTreeWidget(m_pVertSplitter);
+	m_pTreeWidget  = new QTreeWidget(m_pVertSplitter);
 	m_pTreeWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTreeWidget->setItemDelegate(new KviChannelTreeWidgetItemDelegate(m_pTreeWidget));
@@ -462,7 +461,7 @@ void KviListWindow::flush()
 	m_pTreeWidget->viewport()->update();
 }
 
-void KviListWindow::itemDoubleClicked(KviTalTreeWidgetItem * it, int)
+void KviListWindow::itemDoubleClicked(QTreeWidgetItem * it, int)
 {
 	QString szText = it->text(0);
 

@@ -63,7 +63,7 @@
 
 //This comes from kvi_app.cpp
 extern KviColorWindow          * g_pColorWindow;
-extern KviTextIconWindowWidget * g_pTextIconWindow;
+extern KviTextIconWindow       * g_pTextIconWindow;
 extern KviHistoryWindowWidget  * g_pHistoryWindow;
 extern KviTalPopupMenu         * g_pInputPopup;
 
@@ -149,7 +149,7 @@ KviInput::KviInput(KviWindow * pPar, KviUserListView * pView)
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIcon::Normal,QIcon::On);
 	is2.addPixmap(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_TERMINAL)),QIcon::Normal,QIcon::Off);
 	m_pMultiEditorButton->setIcon(is2);
-	QString szTip = __tr2qs("Multi-line Editor<br>&lt;Alt+Backspace&gt;");
+	QString szTip = __tr2qs("Multi-line Editor<br>&lt;Alt+Return&gt;");
 	KviTalToolTip::add(m_pMultiEditorButton,szTip);
 
 	connect(m_pMultiEditorButton,SIGNAL(toggled(bool)),this,SLOT(multilineEditorButtonToggled(bool)));
@@ -211,11 +211,12 @@ void KviInput::keyPressEvent(QKeyEvent *e)
 {
 	//debug("KviInput::keyPressEvent(key:%d,state:%d,text:%s)",e->key(),e->state(),e->text().isEmpty() ? "empty" : e->text().toUtf8().data());
 
-	if((e->modifiers() & Qt::ControlModifier) || (e->modifiers() & Qt::AltModifier) || (e->modifiers() & Qt::MetaModifier))
+	if(e->modifiers() & Qt::AltModifier)
 	{
 		switch(e->key())
 		{
-			case Qt::Key_Backspace:
+			case Qt::Key_Enter:
+			case Qt::Key_Return:
 				multilineEditorButtonToggled(!m_pMultiLineEditor);
 			break;
 		}
@@ -319,7 +320,7 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 
 		m_pHelpLabel = new QLabel();
 		m_pHelpLabel->setIndent(5); // we only want a left margin here
-		m_pHelpLabel->setText(__tr2qs("<Ctrl+Return>; submits, <Alt+Backspace>; hides this editor"));
+		m_pHelpLabel->setText(__tr2qs("<Ctrl+Return>; submits, <Alt+Return>; hides this editor"));
 		m_pLayout->addWidget(m_pHelpLabel,0,0,1,1);
 
 		m_pMultiLineEditor = KviScriptEditor::createInstance(this);
@@ -334,9 +335,9 @@ void KviInput::multilineEditorButtonToggled(bool bOn)
 
 void KviInput::iconButtonClicked()
 {
-	if(!g_pTextIconWindow)g_pTextIconWindow = new KviTextIconWindowWidget();
+	if(!g_pTextIconWindow)g_pTextIconWindow = new KviTextIconWindow();
 	QPoint pnt = m_pIconButton->mapToGlobal(QPoint(m_pIconButton->width(),0));
-	g_pTextIconWindow->move(pnt.x()-g_pTextIconWindow->width(),pnt.y() - g_pTextIconWindow->height());
+ 	g_pTextIconWindow->move(pnt.x()-g_pTextIconWindow->width(),pnt.y() - g_pTextIconWindow->height());
 	g_pTextIconWindow->popup(this,true);
 }
 

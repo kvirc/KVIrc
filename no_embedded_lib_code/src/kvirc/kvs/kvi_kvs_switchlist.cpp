@@ -32,7 +32,7 @@ KviKvsSwitchList::KviKvsSwitchList()
 	m_pLongSwitchDict = 0;
 }
 
-	
+
 KviKvsSwitchList::~KviKvsSwitchList()
 {
 	if(m_pShortSwitchDict)delete m_pShortSwitchDict;

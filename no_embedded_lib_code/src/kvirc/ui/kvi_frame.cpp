@@ -93,10 +93,8 @@ KviFrame::KviFrame()
 {
 	g_pFrame = this;
 
-	setWindowIcon(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_KVIRC))));
-	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
-
 	m_pWinList  = new KviPointerList<KviWindow>;
+	setWindowTitle(KVI_DEFAULT_FRAME_CAPTION);
 	m_pWinList->setAutoDelete(false);
 
 	m_pModuleExtensionToolBarList = new KviPointerList<KviMexToolBar>;
@@ -162,7 +160,6 @@ KviFrame::KviFrame()
 	installAccelerators();
 
 	layout()->setSizeConstraint(QLayout::SetNoConstraint);
-	connect(this, SIGNAL(signalMaximizeMdiChildWindow(KviMdiChild*)), this, SLOT(maximizeMdiChildWindow(KviMdiChild*)), Qt::QueuedConnection);
 }
 
 KviFrame::~KviFrame()
@@ -211,7 +208,22 @@ KviFrame::~KviFrame()
 		m_pDockExtension = 0;
 	}
 
-	// the really last thing to do : close all the windows
+	if(m_pStatusBar)
+	{
+		delete m_pStatusBar;
+		m_pStatusBar = 0;
+	}
+
+	//close all console windows, so that they will destroy their irccontext and close
+	// all child windows, too (eg channels inside that irc context)
+	for(KviWindow * wnd = m_pWinList->first();wnd;wnd = m_pWinList->next())
+	{
+		if(wnd)
+			if(wnd->type() != KVI_WINDOW_TYPE_CONSOLE)
+				closeWindow(wnd);
+	}
+
+	// close all the remaining windows
 	while(m_pWinList->first())
 		closeWindow(m_pWinList->first());
 
@@ -289,8 +301,8 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		[b]Alt+RightArrow[/b]: Next window[br]
 		[b]Alt+PageUp[/b]: Previous highlighted window[br]
 		[b]Alt+PageDown[/b]: Next highlighted window[br]
-		[b]Alt+Shift+LeftArrow[/b]: Previous window in the same IRC context[/b]
-		[b]Alt+Shift+RightArrow[/b]: Next window in the same IRC context[/b]
+		[b]Alt+Shift+LeftArrow[/b]: Previous window in the same IRC context[br]
+		[b]Alt+Shift+RightArrow[/b]: Next window in the same IRC context[br]
 		[b]Ctrl+UpArrow[/b]: Maximize current window[br]
 		[b]Ctrl+DownArrow[/b] or [b]ESC[/b]: Minimize current window[br]
 		[b]Ctrl+&lt;digit&gt;[/b], [b]F1-F12[/b], [b]Shift+(F1-F12)[/b]: Script accelerators (see [event:onaccelkeypressed]OnAccelKeyPressed[/event])[br]
@@ -309,7 +321,7 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		[b]Ctrl+C[/b]: Copies the selected text to clipboard[br]
 		[b]Ctrl+X[/b]: Cuts the selected text[br]
 		[b]Ctrl+V[/b]: Pastes the clipboard contents (same as middle mouse click)[br]
-		[b]Ctrl+I[/b]: Inserts the 'icon' control code and pops up the icon list box
+		[b]Ctrl+I[/b]: Inserts the 'icon' control code and pops up the icon list box[br]
 		[b]CursorUp[/b]: Moves backward in the command history[br]
 		[b]CursorDown[/b]: Moves forward in the command history[br]
 		[b]Ctrl+PageUp[/b]: Opens the history popup[br]
@@ -318,19 +330,19 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		[b]Shift+CursorLeft[/b]: Moves the selection to the left[br]
 		[b]Shift+RightCursor[/b]: Moves the selection to the right[br]
 		[b]PageUp[/b]: Scrolls the output window up one page[br]
-		[b]PageDown[/b]: Scrolls the output window down one page[b]
+		[b]PageDown[/b]: Scrolls the output window down one page[br]
 		[b]Shift+PageUp[/b]: Scrolls the output window up one line[br]
-		[b]Shift+PageDown[/b]: Scrolls the output window down one line[b]
-		[b]Alt+lt;numeric_sequence&gt;[/b]: Inserts the character by ASCII/Unicode code[br]
-		[b]Ctrl+Backspace[/b]: Shows or hides the multiline editor[br]
-		[b]Ctrl+F4[/b]: Closes the current window[br]
-		<example>
+		[b]Shift+PageDown[/b]: Scrolls the output window down one line[br]
+		[b]Alt+Enter[/b]: Shows or hides the multiline editor[br]
+		[b]Ctrl+W[/b]: Closes the current window[br]
+		[b]Alt+&lt;numeric_sequence&gt;[/b]: Inserts the character by ASCII/Unicode code
+		[example]
 			Alt+32: Inserts ASCII/Unicode character 32: ' ' (a space)
 			Alt+00032: Same as above :)
 			Alt+13: Inserts the Carriage Return (CR) control character
 			Alt+77: Inserts ASCII/Unicode character 77: 'M'
 			Alt+23566: Inserts Unicode character 23566 (an ideogram)
-		</example>
+		[/example]
 */
 
 void KviFrame::installAccelerators()
@@ -346,7 +358,6 @@ void KviFrame::installAccelerators()
 	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT + Qt::SHIFT), this, SLOT(switchToNextWindowInContext()), 0, Qt::ApplicationShortcut);
 
 	static int accel_table[] = {
-		Qt::Key_F4 + Qt::CTRL ,     // close current window
 		Qt::Key_1 + Qt::CTRL ,       // script accels...
 		Qt::Key_2 + Qt::CTRL ,
 		Qt::Key_3 + Qt::CTRL ,
@@ -357,7 +368,6 @@ void KviFrame::installAccelerators()
 		Qt::Key_8 + Qt::CTRL ,
 		Qt::Key_9 + Qt::CTRL ,
 		Qt::Key_0 + Qt::CTRL ,
-		Qt::Key_F1 , // reserved for context sensitive help
 		Qt::Key_F2 ,
 		Qt::Key_F3 ,
 		Qt::Key_F4 ,
@@ -382,21 +392,7 @@ void KviFrame::installAccelerators()
 
 void KviFrame::accelActivated()
 {
-	int keys = (int)(((QShortcut *)sender())->key());
-	switch(keys)
-	{
-		case (Qt::Key_F4+Qt::CTRL):
-		{
-			if(g_pActiveWindow)
-				g_pActiveWindow->close();
-		}
-		break;
-		default:
-		{
-			KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed,g_pActiveWindow,(QString)(((QShortcut *)sender())->key()));
-		}
-		break;
-	};
+	KVS_TRIGGER_EVENT_1(KviEvent_OnAccelKeyPressed,g_pActiveWindow,(QString)(((QShortcut *)sender())->key()));
 }
 
 void KviFrame::executeInternalCommand(int index)
@@ -493,33 +489,6 @@ void KviFrame::closeWindow(KviWindow *wnd)
 	if(wnd->mdiParent())wnd->mdiParent()->hide();
 	else wnd->hide();
 
-	if(wnd == g_pActiveWindow)
-	{
-		// we need another active window before destroying it
-		KviMdiChild * pMdiChild = wnd->mdiParent();
-		if(pMdiChild)
-		{
-			pMdiChild = m_pMdi->highestChildExcluding(pMdiChild);
-		} else {
-			// the best candidate for the new active window
-			// is the top mdiManager's child
-			pMdiChild = m_pMdi->topChild();
-		}
-		KviWindow * pCandidate;
-		if(pMdiChild)
-		{
-			pCandidate = (KviWindow *)(pMdiChild->client());
-		} else {
-			pCandidate = m_pWinList->first();
-			if(pCandidate == wnd)pCandidate = 0;
-		}
-
-		if(pCandidate)
-		{
-			childWindowActivated(pCandidate);
-		}
-		// else { m_pActiveWindow = 0; m_pActiveContext = 0; };
-	}
 
 	if(wnd == g_pActiveWindow) // ops... :/ ... this happens only at shutdown
 	{
@@ -532,15 +501,10 @@ void KviFrame::closeWindow(KviWindow *wnd)
 	if(wnd->mdiParent())
 	{
 		//this deletes the wnd, too
-		m_pMdi->destroyChild(wnd->mdiParent(),true);
+		m_pMdi->destroyChild(wnd->mdiParent(), true);
 	} else {
 		delete wnd;
 	}
-}
-
-void KviFrame::maximizeMdiChildWindow(KviMdiChild * lpC)
-{
-	lpC->maximize();
 }
 
 void KviFrame::addWindow(KviWindow *wnd,bool bShow)
@@ -583,15 +547,12 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 				// when group settings are used , we always cascade the windows
 				// this means that windows that have no specialized config group name
 				// are always cascaded : this is true for consoles , queries (and other windows) but not channels (and some other windows)
-				KviMdiChild * lpC = dockWindow(wnd,false,bGroupSettings,&rect);
+				KviMdiChild * lpC = dockWindow(wnd,bGroupSettings,&rect);
 				lpC->setRestoredGeometry(rect);
 				wnd->triggerCreationEvents();
 				if(bShow)
 				{
-					if(bMaximized) emit signalMaximizeMdiChildWindow(lpC);
-
 					m_pMdi->showAndActivate(lpC);
-
 					// Handle the special case of this top level widget not being the active one.
 					// In this situation the child will not get the focusInEvent
 					// and thus will not call out childWindowActivated() method
@@ -603,7 +564,11 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 				if(bShow)
 				{
 					wnd->show();
-					if(bMaximized)wnd->maximize();
+					if(bMaximized)
+						wnd->maximize();
+				} else {
+					if(bMaximized)
+						wnd->setWindowState(wnd->windowState() | Qt::WindowMaximized);
 				}
 				wnd->youAreUndocked();
 				if(bShow)
@@ -618,12 +583,11 @@ void KviFrame::addWindow(KviWindow *wnd,bool bShow)
 
 default_docking:
 	{
-		KviMdiChild * lpC = dockWindow(wnd,false); //cascade it
+		KviMdiChild * lpC = dockWindow(wnd); //cascade it
 		wnd->triggerCreationEvents();
 		if(bShow)
 		{
 			m_pMdi->showAndActivate(lpC);
-			if(KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode)) wnd->maximize();
 			// Handle the special case of this top level widget not being the active one.
 			// In this situation the child will not get the focusInEvent
 			// and thus will not call out childWindowActivated() method
@@ -639,7 +603,7 @@ docking_done:
 	}
 }
 
-KviMdiChild * KviFrame::dockWindow(KviWindow * wnd, bool bShow, bool bCascade, QRect * setGeom)
+KviMdiChild * KviFrame::dockWindow(KviWindow * wnd, bool bCascade, QRect * setGeom)
 {
 	if(wnd->mdiParent())return wnd->mdiParent();
 	KviMdiChild * lpC = new KviMdiChild(m_pMdi,"");
@@ -648,7 +612,6 @@ KviMdiChild * KviFrame::dockWindow(KviWindow * wnd, bool bShow, bool bCascade, Q
 
 	wnd->youAreDocked();
 	m_pMdi->manageChild(lpC,bCascade,setGeom);
-	if(bShow) m_pMdi->showAndActivate(lpC);
 
 	return lpC;
 }
@@ -658,7 +621,7 @@ void KviFrame::undockWindow(KviWindow *wnd)
 	if(!(wnd->mdiParent()))return;
 	KviMdiChild * lpC = wnd->mdiParent();
 	lpC->unsetClient();
-	m_pMdi->destroyChild(lpC,false);
+	m_pMdi->destroyChild(lpC, false);
 	wnd->show();
 	wnd->youAreUndocked();
 	wnd->raise();
@@ -738,8 +701,10 @@ void KviFrame::unhighlightWindowsOfContext(KviIrcContext * c)
 void KviFrame::setActiveWindow(KviWindow *wnd)
 {
 	// ASSERT(m_pWinList->findRef(wnd))
-	if(wnd->isMinimized())wnd->restore();
-	if(wnd->mdiParent())wnd->setFocus();
+	if(wnd->isMinimized())
+		wnd->restore();
+	if(wnd->mdiParent())
+		m_pMdi->showAndActivate(wnd->mdiParent());
 	else wnd->delayedAutoRaise();
 }
 
@@ -796,7 +761,6 @@ void KviFrame::childConnectionUserModeChange(KviIrcConnection * c)
 	emit activeConnectionUserModeChanged();
 }
 
-
 void KviFrame::childWindowActivated(KviWindow *wnd)
 {
 	// ASSERT(m_pWinList->findRef(wnd))
@@ -810,30 +774,28 @@ void KviFrame::childWindowActivated(KviWindow *wnd)
 
 	m_pWindowList->setActiveItem(wnd->windowListItem());
 
-	
-
 	if(g_pActiveWindow->view())
 		g_pActiveWindow->view()->clearUnreaded();
 
 	emit activeWindowChanged();
-	if(bActiveContextChanged)emit{
+	if(bActiveContextChanged)
+		emit activeContextChanged();
 
-		activeContextChanged();
-	}
 	KVS_TRIGGER_EVENT_0(KviEvent_OnWindowActivated,wnd);
 }
 
-void KviFrame::windowActivationChange(bool bOldActive)
+void KviFrame::changeEvent(QEvent * e)
 {
-	// if we have just been activated by the WM
-	// then update the active window task bar item
-	// It will then reset its highlight state
-	// and hopefully make the dock widget work correctly
-	// in this case.
-	// This will also trigger the OnWindowActivated event :)
-	if(isActiveWindow())
+	if (e->type() == QEvent::ActivationChange)
 	{
-		if(!bOldActive)
+		//WINDOW (DE)ACTIVATION
+		// if we have just been activated by the WM
+		// then update the active window task bar item
+		// It will then reset its highlight state
+		// and hopefully make the dock widget work correctly
+		// in this case.
+		// This will also trigger the OnWindowActivated event :)
+		if(isActiveWindow())
 		{
 			if(g_pActiveWindow)
 			{
@@ -841,11 +803,29 @@ void KviFrame::windowActivationChange(bool bOldActive)
 				g_pActiveWindow = 0; // really ugly hack!
 				childWindowActivated(pTmp);
 			}
+		} else {
+			if(g_pActiveWindow)g_pActiveWindow->lostUserFocus();
 		}
+
+	} else if (e->type() == QEvent::WindowStateChange)
+	{
+		//MINIMIZED EVENT
+		if(isMinimized() && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
+		{
+			if(!dockExtension())
+				executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
+			if(dockExtension())
+			{
+				e->ignore();
+				QTimer::singleShot( 0, this, SLOT(hide()) );
+			}
+		}
+
 	} else {
-		if(g_pActiveWindow)g_pActiveWindow->lostUserFocus();
+		KviTalMainWindow::changeEvent(e);
 	}
 }
+
 
 void KviFrame::closeEvent(QCloseEvent *e)
 {
@@ -853,15 +833,14 @@ void KviFrame::closeEvent(QCloseEvent *e)
 	//of this signal (sender!=0), it has been generated by a "quit" action in a menu
 	if(KVI_OPTION_BOOL(KviOption_boolCloseInTray) && QObject::sender()==0)
 	{
-		e->ignore();
-
 		if(!dockExtension())
 		{
 		    executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
 		}
 		if(dockExtension())
 		{
-			hide();
+			e->ignore();
+			QTimer::singleShot( 0, this, SLOT(hide()) );
 		}
 		return;
 	}
@@ -959,8 +938,6 @@ void KviFrame::toggleStatusBar()
 		delete m_pStatusBar;
 		m_pStatusBar = 0;
 	} else {
-		//if(statusBar())delete statusBar(); // kill any existing status bar (QT BUG)
-
 		m_pStatusBar = new KviStatusBar(this);
 		m_pStatusBar->load();
 		setStatusBar(m_pStatusBar);
@@ -1062,26 +1039,15 @@ void KviFrame::toolbarsPopupSelected(int id)
 
 bool KviFrame::focusNextPrevChild(bool next)
 {
-	//debug("FOCUS NEXT PREV CHILD");
 	QWidget * w = focusWidget();
 	if(w)
 	{
 		if(w->focusPolicy() == Qt::StrongFocus)return false;
-
-		//QVariant v = w->property("KviProperty_FocusOwner");
-		//if(v.isValid())return false; // Do NOT change the focus widget!
-
 		if(w->parent())
 		{
 			QVariant v = w->parent()->property("KviProperty_ChildFocusOwner");
 			if(v.isValid())return false; // Do NOT change the focus widget!
 		}
-	}
-	// try to focus the widget on top of the Mdi
-	if(m_pMdi->topChild())
-	{
-		m_pMdi->focusTopChild();
-		return false;
 	}
 	return KviTalMainWindow::focusNextPrevChild(next);
 }
@@ -1131,16 +1097,27 @@ void KviFrame::restoreToolBarPositions()
 
 void KviFrame::createWindowList()
 {
+	Qt::DockWidgetArea area=Qt::NoDockWidgetArea;
+
+	if(m_pWindowList)
+	{
+		area = m_pWindowList->currentDockArea();
+		delete m_pWindowList;
+	}
+
 	if(KVI_OPTION_BOOL(KviOption_boolUseTreeWindowListWindowList))
 	{
 		m_pWindowList = new KviTreeWindowList();
 		m_pWindowList->setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
-		addDockWidget(Qt::LeftDockWidgetArea,m_pWindowList);
+		if(area==Qt::NoDockWidgetArea)
+			area = Qt::LeftDockWidgetArea;
 	} else {
 		m_pWindowList = new KviClassicWindowList();
 		m_pWindowList->setAllowedAreas(Qt::AllDockWidgetAreas);
-		addDockWidget(Qt::BottomDockWidgetArea,m_pWindowList);
+		if(area==Qt::NoDockWidgetArea)
+			area = Qt::BottomDockWidgetArea;
 	}
+	addDockWidget(area,m_pWindowList);
 }
 
 void KviFrame::recreateWindowList()
@@ -1150,8 +1127,9 @@ void KviFrame::recreateWindowList()
 	{
 		w->destroyWindowListItem();
 	}
-	delete m_pWindowList;
+
 	createWindowList();
+
 	for(w = m_pWinList->first();w;w = m_pWinList->next())
 	{
 		w->createWindowListItem();
@@ -1206,26 +1184,6 @@ void KviFrame::switchToNextWindowInContext(void)
 	m_pWindowList->switchWindow(true,true);
 }
 
-void KviFrame::hideEvent ( QHideEvent * e)
-{
-	if(KVI_OPTION_BOOL(KviOption_boolMinimizeInTray))
-	{
-		if(e->spontaneous())
-		{
-			e->ignore();
-			if(!dockExtension())
-			{
-				executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
-			}
-
-			if(dockExtension())
-			{
-				hide();
-			}
-
-		}
-	}
-}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_frame.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

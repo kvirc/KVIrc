@@ -189,7 +189,7 @@
 			QString des = "<p>";
 			des += eit->m_szDescription.ptr();
 			des += "<br><br>";
-			des += __tr2qs("If you dont want to encrypt a particular text line then just start it with the CTRL+P prefix");
+			des += __tr2qs("If you don't want to encrypt a particular text line then just start it with the CTRL+P prefix");
 			m_pDescriptionLabel->setText(des);
 			m_pEnableEncrypt->setEnabled(eit->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT);
 			m_pEncryptKeyLabel->setEnabled((eit->m_iFlags & KVI_CRYPTENGINE_CAN_ENCRYPT) &&

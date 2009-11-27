@@ -92,7 +92,7 @@ bool KviKvsTreeNodeSpecialCommandFor::execute(KviKvsRunTimeContext * c)
 			if(!m_pCondition->evaluateReadOnly(c,&v))return false;
 			if(!v.asBoolean())return true;
 		}
-	
+
 		if(m_pLoop)
 		{
 			if(!m_pLoop->execute(c))
@@ -111,7 +111,7 @@ bool KviKvsTreeNodeSpecialCommandFor::execute(KviKvsRunTimeContext * c)
 					return false; // propagate false ret value
 			}
 		}
-		
+
 		if(m_pUpdate)
 		{
 			if(!m_pUpdate->execute(c))

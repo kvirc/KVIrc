@@ -46,7 +46,7 @@ private:
 	QPoint	m_pnt;
 
 	QRect	m_closeIconRect;
-	
+
 	QRect	m_captionRect;
 	QRect	m_bodyRect;
 	QRect	m_titleRect;
@@ -64,7 +64,7 @@ private:
 	QPixmap * m_pixIconClose_over;
 	QPixmap * m_pixIconClose_clicked;
 	QPixmap * m_pixIconClose;
-	
+
 	QPixmap m_pixSX_N;
 	QPixmap m_pixDX_N;
 	QPixmap m_pixDWN_N;
@@ -76,7 +76,7 @@ private:
 	QPixmap m_pixIconClose_out_N;
 	QPixmap m_pixIconClose_over_N;
 	QPixmap m_pixIconClose_clicked_N;
-	
+
 	QPixmap m_pixSX_HL;
 	QPixmap m_pixDX_HL;
 	QPixmap m_pixDWN_HL;
@@ -104,13 +104,13 @@ public:
 	void resize(QSize r) { setWidth(r.width()); setHeight(r.height()); };
 	void setGeometry(QRect r) { r.topLeft(); r.size(); 	/*debug("x,y: %d,%d", r.x(), r.y()); debug("w,h: %d,%d", r.width(), r.height());*/ };
 	void setGeometry(QPoint p, QSize s) { setPoint (p.x(), p.y()); setWidth (s.width()); setHeight (s.height()); };
-										
+
 	void setPoint(int x, int y) { m_pnt.setX(x); m_pnt.setY(y); m_rct.setX(x); m_rct.setY(y);  };
-	
+
 	void setCloseIcon(int state);
 	void resetIcons();
 
-	// writing methods...	
+	// writing methods...
 	inline int x() const { return m_pnt.x(); };
 	inline int y() const { return m_pnt.y(); };
 	inline int width() const { return m_rct.width(); };
@@ -122,7 +122,7 @@ public:
 	inline QRect rect() { return m_rct; };
 	inline QRect closeRect() { return m_closeIconRect; };
 	inline QRect titleRect() { return m_titleRect; };
-	
+
 	void draw(QPainter *, bool b = false);
 	void setPics(bool b = false);
 };

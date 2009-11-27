@@ -138,8 +138,6 @@ KviNotifierWindow::KviNotifierWindow()
 	m_pLineEdit->installEventFilter(this);
 	connect(m_pLineEdit,SIGNAL(returnPressed()),this,SLOT(returnPressed()));
 
-	updateGui();
-
 	QGridLayout *layout = new QGridLayout;
 	layout->addWidget(m_pProgressBar, 0,0,2,1);
 	layout->addWidget(m_pWndTabs,0,1,1,1);
@@ -151,6 +149,7 @@ KviNotifierWindow::KviNotifierWindow()
 	setLayout(layout);
 
 	connect(g_pApp,SIGNAL(updateNotifier()),this,SLOT(updateGui()));
+	QTimer::singleShot(0,this,SLOT(updateGui()));
 }
 
 KviNotifierWindow::~KviNotifierWindow()

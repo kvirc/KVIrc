@@ -125,7 +125,7 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	sep = new QFrame(hb);
 	sep->setFrameStyle(QFrame::VLine | QFrame::Sunken);
 	sep->setMinimumWidth(12);
-	
+
 	m_pPackButton = new QToolButton(hb);
 	m_pPackButton->setIcon(*(g_pIconManager->getBigIcon(KVI_BIGICON_PACK)));
 	m_pPackButton->setIconSize(QSize(32,32));
@@ -159,19 +159,10 @@ KviScriptManagementDialog::KviScriptManagementDialog(QWidget * p)
 	m_pListWidget->setSortingEnabled(true);
 	m_pListWidget->setMinimumHeight(400);
 	m_pListWidget->setMinimumWidth(380);
-
-	QString szPic;
-	g_pApp->getGlobalKvircDirectory(szPic,KviApp::Pics);
-	// we need mandatory unix like path separator
-	szPic.replace('\\',"/");
-
-	szPic += "/kvi_dialog_addons.png";
-	QString szStyle("QListWidget {background-image: url(" + szPic + ");background-repeat: no-repeat;background-position: bottom right;}");
-	m_pListWidget->setStyleSheet(szStyle);
 	g->addWidget(m_pListWidget,1,0);
 
 	fillListView();
-	
+
 	currentChanged(0,0);
 	connect(m_pListWidget,SIGNAL(currentItemChanged(QListWidgetItem *,QListWidgetItem *)),this,SLOT(currentChanged(QListWidgetItem *,QListWidgetItem *)));
 	m_pListWidget->setCurrentItem(m_pListWidget->item(0));
@@ -261,12 +252,15 @@ void KviScriptManagementDialog::uninstallScript()
 	QString txt = "<p>";
 	txt += __tr2qs("Do you really want to uninstall the addon \"%1\" ?").arg(it->addon()->visibleName());
 	txt += "</p>";
-	
-	if(QMessageBox::question(this,
-		__tr2qs("Confirm addon uninstallation"),txt,__tr2qs("&Yes"),__tr2qs("&No"),0,1) != 0)return;
+
+	if(QMessageBox::question(
+		this,
+		__tr2qs("Confirm addon uninstallation"),
+		txt, __tr2qs("&Yes"), __tr2qs("&No"),0,1
+		) != 0) return;
 
 	KviKvsScriptAddonManager::instance()->unregisterAddon(it->addon()->name(),g_pActiveWindow);
-	
+
 	fillListView();
 	currentChanged(0,0);
 }
@@ -280,31 +274,41 @@ void KviScriptManagementDialog::installScript()
 {
 	QString szFileName, szError;
 
-	if(!KviFileDialog::askForOpenFileName(szFileName,__tr2qs("Please select the addon installation file"),QString(),KVI_FILTER_SCRIPTS,false,true))return;
+	if(!KviFileDialog::askForOpenFileName(
+		szFileName,
+		__tr2qs("Please select the addon installation file"),
+		QString(),KVI_FILTER_ADDON,false,true
+		)) return;
 
 	szFileName.replace("\\","\\\\");
 
-	// Switch between script and addon
-	if(szFileName.endsWith(".kvs"))
+	// Sanity check
+	if(szFileName.endsWith(".kva"))
 	{
-		qDebug("Script file .kvs");
-		QString szCmd = "parse \"";
-		szCmd += szFileName;
-		szCmd += "\"";
-	
-		KviKvsScript::run(szCmd,g_pActiveWindow);
-	} else if(szFileName.endsWith(".kva")){
-		qDebug("Addon file .kva");
 		if(!KviAddonFunctions::installAddonPackage(szFileName,szError,this))
 		{
-			QMessageBox::critical(this,__tr2qs_ctx("Install Addon - KVIrc","addon"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+			QMessageBox::critical(
+				this,
+				__tr2qs_ctx("Install Addon - KVIrc","addon"),
+				szError,
+				QMessageBox::Ok,
+				QMessageBox::NoButton,
+				QMessageBox::NoButton
+			);
 			return;
 		}
 	} else {
 		// Just for sanity check. We should NEVER enter here
 		qDebug("Entered sanity check");
 		KviAddonFunctions::notAValidAddonPackage(szError);
-		QMessageBox::critical(this,__tr2qs_ctx("Install Addon - KVIrc","addon"),szError,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
+		QMessageBox::critical(
+			this,
+			__tr2qs_ctx("Install Addon - KVIrc","addon"),
+			szError,
+			QMessageBox::Ok,
+			QMessageBox::NoButton,
+			QMessageBox::NoButton
+		);
 	}
 
 	fillListView();

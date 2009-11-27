@@ -40,6 +40,7 @@
 #include "kvi_kvs_variantlist.h"
 #include "kvi_pointerhashtable.h"
 #include "kvi_tal_vbox.h"
+#include "kvi_fileextensions.h"
 
 #include <QMessageBox>
 #include <QDir>
@@ -57,15 +58,15 @@ extern KviPopupEditorWindow * g_pPopupEditorWindow;
 
 
 //KviPopupEntryItem
-KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviTalTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t)
-: KviTalTreeWidgetItem(pTreeWidget, after)
+KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(QTreeWidget * pTreeWidget,KviPopupTreeWidgetItem * after,Type t)
+: QTreeWidgetItem(pTreeWidget, after)
 {
 	m_type = t;
 	init();
 }
 
 KviPopupTreeWidgetItem::KviPopupTreeWidgetItem(KviPopupTreeWidgetItem * parent,KviPopupTreeWidgetItem * after,Type t)
-: KviTalTreeWidgetItem(parent, after)
+: QTreeWidgetItem(parent, after)
 {
 	m_type = t;
 	init();
@@ -167,9 +168,9 @@ void KviPopupTreeWidgetItem::setIcon(const QString & szIcon)
 			{
 				QPixmap * pix = g_pIconManager->getImage(szIcon);
 				if(pix)
-					KviTalTreeWidgetItem::setIcon(0,QIcon(*pix));
+					QTreeWidgetItem::setIcon(0,QIcon(*pix));
 				else
-					KviTalTreeWidgetItem::setIcon(0,QIcon());
+					QTreeWidgetItem::setIcon(0,QIcon());
 			}
 		break;
 		default:
@@ -203,7 +204,7 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	spl->setObjectName("popupeditor");
 	spl->setOpaqueResize(false);
 
-	m_pTreeWidget = new KviTalTreeWidget(spl);
+	m_pTreeWidget = new QTreeWidget(spl);
 	m_pTreeWidget->setColumnCount(2);
 	QStringList labels;
 	labels << __tr2qs_ctx("Item","editor") << __tr2qs_ctx("Type","editor");
@@ -214,12 +215,11 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->header()->setSortIndicatorShown(false);
 	m_pTreeWidget->setSortingEnabled(false);
+	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 
 	connect(m_pTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
-	connect(m_pTreeWidget,SIGNAL(itemPressed(QTreeWidgetItem *, int)),
-		this,SLOT(itemPressed(QTreeWidgetItem *, int)));
-
-
+	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
+		this,SLOT(customContextMenuRequested(const QPoint &)));
 
 	m_pEditor = KviScriptEditor::createInstance(spl);
 
@@ -364,10 +364,9 @@ void KviSinglePopupEditor::testModeMenuItemClicked(KviKvsPopupMenuItem * it)
 
 }
 
-void KviSinglePopupEditor::itemPressed(QTreeWidgetItem * it, int)
+void KviSinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 {
-	if (QApplication::mouseButtons() != Qt::RightButton)
-		return;
+	QTreeWidgetItem *it=m_pTreeWidget->itemAt(pos);
 
 	m_pContextPopup->clear();
 
@@ -799,13 +798,13 @@ void KviSinglePopupEditor::selectionChanged()
 	bool bTextEditorEnabled = false;
 	bool bNameEditorEnabled = false;
 
-	KviTalTreeWidgetItem * it;
+	QTreeWidgetItem * it;
 
 	if(m_pTreeWidget->selectedItems().empty())
 	{
 		it=0;
 	} else {
-		it= (KviTalTreeWidgetItem*)m_pTreeWidget->selectedItems().first();
+		it= (QTreeWidgetItem*)m_pTreeWidget->selectedItems().first();
 	}
 
 	if(it)
@@ -982,8 +981,8 @@ void KviSinglePopupEditor::edit(KviMenuTreeWidgetItem * it)
 }
 
 
-KviMenuTreeWidgetItem::KviMenuTreeWidgetItem(KviTalTreeWidget * par,KviKvsPopupMenu * popup)
-: KviTalTreeWidgetItem(par)
+KviMenuTreeWidgetItem::KviMenuTreeWidgetItem(QTreeWidget * par,KviKvsPopupMenu * popup)
+: QTreeWidgetItem(par)
 {
 	setIcon(0,*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)));
 	setText(0,popup->popupName());
@@ -1012,7 +1011,7 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 
 	KviTalVBox * box = new KviTalVBox(spl);
 
-	m_pTreeWidget = new KviTalTreeWidget(box);
+	m_pTreeWidget = new QTreeWidget(box);
 	m_pTreeWidget->setHeaderLabel(__tr2qs_ctx("Popup","editor"));
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::ExtendedSelection);
 	m_pTreeWidget->header()->setSortIndicatorShown(true);
@@ -1028,7 +1027,8 @@ KviPopupEditor::KviPopupEditor(QWidget * par)
 	m_pLastEditedItem = 0;
 
 	m_pContextPopup = new KviTalPopupMenu(this);
-
+	m_pEmptyContextPopup = new KviTalPopupMenu(this);
+	
 	spl->setStretchFactor (0,20);
 	spl->setStretchFactor (1,80);
 
@@ -1060,38 +1060,48 @@ void KviPopupEditor::oneTimeSetup()
 		++it;
 	}
 
+	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
-	connect(m_pTreeWidget,SIGNAL(itemPressed(QTreeWidgetItem *, int)),
-		this,SLOT(itemPressed(QTreeWidgetItem *, int)));
+	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
+		this,SLOT(customContextMenuRequested(const QPoint &)));
 }
 
-void KviPopupEditor::itemPressed(QTreeWidgetItem * it, int)
+void KviPopupEditor::customContextMenuRequested(const QPoint &pos)
 {
-	if (QApplication::mouseButtons() != Qt::RightButton)
-		return;
-
+	QTreeWidgetItem *it=m_pTreeWidget->itemAt(pos);
 	__range_valid(m_bOneTimeSetupDone);
 
-	m_pContextPopup->clear();
+	if(it)
+	{
+		m_pContextPopup->clear();
 
-	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)),
-		__tr2qs_ctx("&New Popup","editor"),
-		this,SLOT(newPopup()));
+		m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)),
+			__tr2qs_ctx("&New Popup","editor"),
+			this,SLOT(newPopup()));
 
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
-		__tr2qs_ctx("Re&move Popup","editor"),
-		this,SLOT(removeCurrentPopup())),it);
+		m_pContextPopup->setItemEnabled(
+		m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_QUIT)),
+			__tr2qs_ctx("Re&move Popup","editor"),
+			this,SLOT(removeCurrentPopup())),it);
 
-	m_pContextPopup->setItemEnabled(
-	m_pContextPopup->insertItem(
-		*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
-		__tr2qs_ctx("&Export Popup To...","editor"),
-		this,SLOT(exportCurrentPopup())),it);
+		m_pContextPopup->setItemEnabled(
+		m_pContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FOLDER)),
+			__tr2qs_ctx("&Export Popup To...","editor"),
+			this,SLOT(exportCurrentPopup())),it);
 
-	m_pContextPopup->popup(QCursor::pos());
+		m_pContextPopup->popup(QCursor::pos());
+	} else {
+		m_pEmptyContextPopup->clear();
+
+		m_pEmptyContextPopup->insertItem(
+			*(g_pIconManager->getSmallIcon(KVI_SMALLICON_POPUP)),
+			__tr2qs_ctx("&New Popup","editor"),
+			this,SLOT(newPopup()));
+		m_pEmptyContextPopup->popup(QCursor::pos());
+	}
 }
 
 void KviPopupEditor::exportCurrentPopup()
@@ -1102,12 +1112,12 @@ void KviPopupEditor::exportCurrentPopup()
 
 	QString szName = QDir::homePath();
 	if(!szName.endsWith(QString(KVI_PATH_SEPARATOR)))szName += KVI_PATH_SEPARATOR;
-	szName += m_pLastEditedItem->popup()->text(0);
+	szName += m_pLastEditedItem->popup()->popupName();
 	szName += ".kvs";
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true))return;
 
 	QString szOut;
 	m_pLastEditedItem->popup()->generateDefPopup(szOut);
@@ -1157,7 +1167,7 @@ void KviPopupEditor::exportPopups(bool bSelectedOnly)
 
 	QString szFile;
 
-	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,"*.kvs",true,true,true))return;
+	if(!KviFileDialog::askForSaveFileName(szFile,__tr2qs_ctx("Choose a Filename - KVIrc","editor"),szName,KVI_FILTER_SCRIPT,true,true,true))return;
 
 	if(!KviFileUtils::writeFile(szFile,out))
 	{

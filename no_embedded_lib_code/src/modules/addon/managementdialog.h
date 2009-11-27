@@ -39,8 +39,6 @@
 class QPixmap;
 class KviKvsScriptAddon;
 
-
-
 class KviScriptAddonListViewItem : public KviTalListWidgetItem
 {
 public:
@@ -48,13 +46,12 @@ public:
 	~KviScriptAddonListViewItem();
 protected:
 	KviKvsScriptAddon * m_pAddon;
-	QTextDocument * m_pText;
-	QPixmap * m_pIcon;
-	QListWidget * m_pListWidget;
-	QString m_szKey;
+	QTextDocument     * m_pText;
+	QPixmap           * m_pIcon;
+	QListWidget       * m_pListWidget;
+	QString             m_szKey;
 public:
 	KviKvsScriptAddon * addon(){ return m_pAddon; };
-
 };
 
 
@@ -66,12 +63,12 @@ protected:
 public:
 	~KviScriptManagementDialog();
 protected:
-	KviTalListWidget * m_pListWidget;
+	KviTalListWidget                 * m_pListWidget;
 	static KviScriptManagementDialog * m_pInstance;
-	QToolButton * m_pConfigureButton;
-	QToolButton * m_pHelpButton;
-	QToolButton * m_pPackButton;
-	QToolButton * m_pUninstallButton;
+	QToolButton                      * m_pConfigureButton;
+	QToolButton                      * m_pHelpButton;
+	QToolButton                      * m_pPackButton;
+	QToolButton                      * m_pUninstallButton;
 public:
 	static KviScriptManagementDialog * instance(){ return m_pInstance; };
 	static void display();
@@ -79,9 +76,9 @@ public:
 protected:
 	void fillListView();
 	virtual void showEvent(QShowEvent * e);
-	virtual void closeEvent(QCloseEvent *e);
+	virtual void closeEvent(QCloseEvent * e);
 protected slots:
-	void currentChanged(QListWidgetItem *i,QListWidgetItem *);
+	void currentChanged(QListWidgetItem * i, QListWidgetItem *);
 	void closeClicked();
 	void configureScript();
 	void showScriptHelp();

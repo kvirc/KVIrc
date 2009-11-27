@@ -1,7 +1,7 @@
 addon.register("Theme: @THEMENAME@","@THEMEVERSION@",$tr("@THEMENAME@"),$tr("@THEMEDESCRIPTION@"),"3.2.0.99")
 {
 	# This is our uninstall callback: it will be called by KVIrc when addon.uninstall is invoked
-	
+
 	# This is an automatically generated alias that will erase the installed files
 	@ALIASNAME@_uninstallfiles
 	file.rmdir $file.localdir("themes/@SUBDIR@")

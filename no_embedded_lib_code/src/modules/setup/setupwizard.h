@@ -77,18 +77,18 @@ public:
 //	KviSetupPage  * m_pTheme;
 	KviSetupPage  * m_pDesktopIntegration;
 	KviSetupPage  * m_pServers;
-	
+
 	// Theme
 	//KviTalGroupBox  * m_pThemeButtonGroup;
 
 	QRadioButton  * m_pThemeHiRes;
 	QRadioButton  * m_pThemeLoRes;
 	QRadioButton  * m_pThemeNone;
-	
+
 	// Welcome
 	QCheckBox     * m_pCreateUrlHandlers;
 	QCheckBox     * m_pCreateDesktopShortcut;
-	
+
 	//Dir
 	QLineEdit     * m_pDataPathEdit;
 	QLineEdit     * m_pIncomingPathEdit;
@@ -103,17 +103,17 @@ public:
 	KviTalHBox         * m_pOldPathBox;
 	KviTalHBox         * m_pNewPathBox;
 	KviTalHBox         * m_pNewIncomingBox;
-	
+
 	//Identify
 	QComboBox        * m_pAgeCombo;
 	QComboBox        * m_pGenderCombo;
-	
+
 	KviStringSelector * m_pNickSelector;
 	KviStringSelector * m_pRealNameSelector;
 	KviStringSelector * m_pLocationSelector;
 	KviStringSelector * m_pLanguagesSelector;
 	//KviStringSelector * m_pOtherInfoSelector;
-	
+
 	//Servers
 	//KviTalVButtonGroup * m_pServersButtonGroup;
 	//QRadioButton  * m_pServersChooseFromList;
@@ -124,17 +124,17 @@ public:
 	QString         m_szMircServerIniFile;
 	QRadioButton  * m_pUseMircServerList;
 #endif
-	
+
 	QString		    m_szServerConfigFile;
 	QString		    m_szServerUrl;
 	QString		    m_szServerHost;
 	unsigned int        m_uServerPort;
-	
+
 	KviStringSelector * m_pServerHostSelector;
 	KviStringSelector * m_pServerUrlSelector;
 	//KviFileSelector   * m_pServerConfigSelector;
 	KviUIntSelector   *m_pServerPortSelector;
-	
+
 protected:
 	void makeLink();
 	void setUrlHandlers();
@@ -145,10 +145,10 @@ public slots:
 	void chooseIncomingPath();
 	virtual void accept();
 	virtual void reject();
-	
+
 	void oldDirClicked();
 	void newDirClicked();
-	
+
 	void oldDataTextChanged ( const QString & );
 	void newDataTextChanged ( const QString & );
 	void newIncomingTextChanged ( const QString & );

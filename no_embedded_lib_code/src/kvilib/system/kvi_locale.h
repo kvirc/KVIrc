@@ -59,7 +59,7 @@ namespace KviLocale
 	KVILIB_API void done(QApplication * app);
 	KVILIB_API const char * translate(const char * text,const char * context);
 	KVILIB_API const QString & translateToQString(const char * text,const char * context);
-};
+}
 
 // not exported
 class KviTranslationEntry

@@ -114,6 +114,7 @@ KviStatusBar::~KviStatusBar()
 	delete m_pMessageQueue;
 	delete m_pAppletDescriptors;
 	delete m_pAppletList;
+	delete m_pMessageLabel;
 }
 
 void KviStatusBar::load()
@@ -602,7 +603,7 @@ void KviStatusBar::queueMessage(KviStatusBarMessage * pMsg)
 			m_pMessageQueue->prepend(pMsg);
 		else
 			m_pMessageQueue->append(pMsg);
-	} else 
+	} else
 		m_pMessageQueue->append(pMsg);
 
 	if(!m_pMessageTimer)

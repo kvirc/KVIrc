@@ -47,10 +47,10 @@ namespace KviThemeFunctions
 		const QPixmap &pixScreenshot,
 		int iUniqueIndexInDocument = 0,
 		KviHtmlDialogData *hd=0
-		
+
 	);
 	bool makeKVIrcScreenshot(const QString &szSavePngFilePath,bool bMaximizeFrame = false);
-};
+}
 
 
 

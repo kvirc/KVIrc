@@ -40,7 +40,7 @@
 //   Intel Stuff uses Little Endian
 //   PPC is Big Endian
 //   Universal binaries on MacOSX use both Big and Little Endian
-//   
+//
 
 #ifdef BIG_ENDIAN_MACHINE_BYTE_ORDER
 	#define kvi_localCpuToLittleEndian16(u) kvi_swap16((kvi_u16_t)(u))

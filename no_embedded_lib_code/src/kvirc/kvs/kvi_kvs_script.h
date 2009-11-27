@@ -70,8 +70,8 @@ public:
 	*/
 	enum RunStatus {
 		Error = 0, /**< The script returned an error */
-		Success = 1, /**< The script ran succesfully */
-		HaltEncountered = 2 /**< The script ran succesfully and halt was encountered */
+		Success = 1, /**< The script ran successfully */
+		HaltEncountered = 2 /**< The script ran successfully and halt was encountered */
 	};
 
 	/**

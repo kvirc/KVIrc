@@ -165,6 +165,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(sentBytes)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setInteger(g_uOutgoingTraffic);
 		return true;
 	}
@@ -296,7 +299,7 @@ namespace KviKvsCoreFunctions
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	/*
 		@doc: string
 		@type:
@@ -395,7 +398,7 @@ namespace KviKvsCoreFunctions
 		}
 
 		KviKvsVariant * v;
-		
+
 
 		if(szSwitch.length() > 1)
 		{
@@ -513,6 +516,8 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(thisCKEYWORDWORKAROUND)
 	{
+		Q_UNUSED(__pParams);
+
 		// prologue: parameter handling
 		KviKvsObject * o = KVSCF_pContext->thisObject();
 		KVSCF_pRetBuffer->setHObject(o ? o->handle() : ((kvs_hobject_t)0));
@@ -767,6 +772,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(trueCKEYWORDWORKAROUND)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setBoolean(true);
 		return true;
 	}
@@ -832,6 +840,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(u)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setString(QString(QChar(KVI_TEXT_UNDERLINE)));
 		return true;
 	}
@@ -897,6 +908,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(unixtime)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setInteger((kvs_int_t)(time(0)));
 		return true;
 	}
@@ -963,7 +977,7 @@ namespace KviKvsCoreFunctions
 			in this interval of time KVIrc knows only the user's nickname.
 			This function will return the string "*" in this case.[br]
 		@seealso:
-			[fnc]$isWellKnown[/fnc], [$fnc]$hostname[/fnc], [cmd]awhois[/cmd]
+			[fnc]$isWellKnown[/fnc], [fnc]$hostname[/fnc], [fnc]$realname[/fnc], [cmd]awhois[/cmd]
 	*/
 
 	KVSCF(username)

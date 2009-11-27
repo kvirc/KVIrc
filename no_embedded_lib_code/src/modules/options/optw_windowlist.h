@@ -90,7 +90,7 @@ private:
 public:
 	KviTreeWindowListBackgroundOptionsWidget(QWidget * parent);
 	~KviTreeWindowListBackgroundOptionsWidget();
-	
+
 	virtual void commit();
 };
 

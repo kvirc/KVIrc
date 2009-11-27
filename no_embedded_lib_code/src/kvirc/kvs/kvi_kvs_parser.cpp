@@ -1089,7 +1089,7 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 			IRC context, connection dependant commands
 		@body:
 			Many KVIrc commands are connection dependant:
-			you need an IRC connection to succesfully execute them;
+			you need an IRC connection to successfully execute them;
 			usually because some data needs to be sent to the server.
 			This includes commands like [cmd]whois[/cmd],[cmd]raw[/cmd],[cmd]query[/cmd],
 			[cmd]msg[/cmd],[cmd]notice[/cmd],[cmd]op[/cmd],[cmd]ctcp[/cmd]...[br]
@@ -1269,41 +1269,42 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		[p]
 		An addon is basically a set of KVS scripts, multimedia, documentation
 		and accessory files that implement a KVIrc feature.
-		It might be a simple automatic-away subsystem, a GUI newsticker or a complex file sharing
+		It might be a simple automatic-away subsystem, a GUI newsticker or a complex
+		file sharing
 		service (commonly called "fserve"). Addons are sometimes called "scripts".
 		In fact a KVIrc addon is usually made of more than one KVS script.
 		[/p]
 		[p]
-		KVIrc has a builtin addon management system that allows the users
-		to install, configure and uninstall features with a nice graphical interface.
-		The management system allows the addons to have documentation integrated in the
-		KVIrc help and to be translated in several languages.
+		KVIrc has a builtin addon management system that allows the users to create,
+		install, configure and uninstall features with a nice graphical interface.
+		The management system allows the addons to have documentation integrated in
+		the KVIrc help and to be translated in several languages.
 		[/p]
 
 		[big]Addon installation[/big]
 		[p]
-		The addons are usually shipped in compressed archives (such as tar.gz "tarballs" or
-		zip files). Once uncompressed they should contain a KVS script file called "install.kvs".
-		KVIrc will look for and execute this file when the user will ask for your addon to
-		be installed. The install.kvs will usually contain the code for the [b]registration[/b]
-		of your addon and will [cmd]include[/cmd] all the other necessary source files.
+		The addons are usually shipped in compressed archives (.kva). KVIrc will look
+		for the installer file called "install.kvs" and executes it when the user will
+		ask for your addon to be installed. The install.kvs contains the code for the
+		[b]registration[/b] of your addon and will [cmd]include[/cmd] all the other
+		necessary source files.
 		[/p]
 
 		[big]The minimal addon[/big]
 		[p]
 		The smallest addon that you can write is the one that does nothing.
-		It just need to be writte in a file named install.kvs and contain code
-		similar to the following:
 		[example]
-			[cmd]addon.register[/cmd]("myaddon", \
-								"1.0.0", \
-								"My First Addon", \
-								"An addon that is really cool but does simply nothing", \
-								"3.2.0.99.20051230")
+			[cmd]addon.register[/cmd]("MyAddon", \
+							"1.0.0", \
+							"My First Addon", \
+							"An addon that is really cool but does
+							simply nothing", \
+							"4.0.0", \
+							"MyAddon_32.png")
 			{
 			}
 		[/example]
-		The code above does nothing but registers the "myaddon" addon.
+		The code above does nothing but registers the "MyAddon" addon.
 		[/p]
 		[p]
 		The first parameter is the internal addon id which can be used to identify
@@ -1311,133 +1312,230 @@ KviKvsTreeNodeInstruction * KviKvsParser::parseAsParameter(const QChar * pBuffer
 		name cannot be installed. The second parameter is the addon version. It should
 		be expressed in the classic format [major].[minor].[pathlevel] or something
 		really similar (in fact KVIrc just expects the version to be a string composed
-		of numbers separated by dots). The version is compared when an addon is installed
-		and KVIrc complains if the user tries to downgrade an addon (that is to install
-		a less recent version over a more recent one). The third parameter
+		of numbers separated by dots). The version is compared when an addon is
+		installed and KVIrc complains if the user tries to downgrade an addon (that is 
+		to install a less recent version over a more recent one). The third parameter
 		is the visible name of your addon: it will be displayed to the user in the
 		addon management dialog. It can contain the [fnc]$tr[/fnc] function so you
 		can have it translated to several languages. The fourth parameter
-		is a short description of the feature that the addon implements; it can contain
-		the $tr() function too. The fifth parameter is the minimal KVIrc version
-		required to run the addon. There is also a sixth parameter (the icon) and
-		some switches that can be used to fiddle a little bit more :)
+		is a short description of the feature that the addon implements; it can 
+		contain the $tr() function too. The fifth parameter is the minimal KVIrc
+		version required to run the addon. The sixth parameter is the icon to show in
+		the manager: it has to be 32x32 pixel big. There are also some switches that 
+		can be used to fiddle a little bit more :)
 		[/p]
 		[p]
 		The callback instruction that follows the registration command is the
-		uninstallation code. KVIrc will invoke it when the user will ask for
-		your addon to be uninstalled. Don't assume that your addon will be never uninstalled:
-		sooner or later it will be. For example, when upgrading an addon KVIrc
-		will first uninstall the existing version and after that install the new one.
-		The uninstallation process is a very important requisite for any program (in any
-		programming language). In the example above there is nothing to uninstall (yet)
-		so the callback code is empty, but if you continue reading we will soon fill it.
+		uninstallation code. KVIrc will invoke it when the user will ask for your
+		addon to be uninstalled. Don't assume that your addon will be never
+		uninstalled: sooner or later it will be. For example, when upgrading an addon 
+		KVIrc will first uninstall the existing version and after that install the new
+		one. The uninstallation process is a very important requisite for any program
+		(in any programming language). In the example above there is nothing to
+		uninstall (yet) so the callback code is empty, but if you continue reading we 
+		will soon fill it.
+		To uninstall all files which are not automatically spotted by the installation
+		process, you need to write an alias which handles them.
+		[example]
+			alias(MyAddon::uninstall::uninstall)
+			{
+				...
+			}
+		[/example]
 		[/p]
 
 		[big]A typical addon layout[/big]
 		[p]
 		As stated above, the addons are usually shipped in a compressed archive.
-		Once uncompressed, the archive will expand into a small directory tree
-		containing the addon code and all the related files.
-		In order to have uniformity I encourage you to use the following directory structure.
+		Once uncompressed, the installer will check the directory tree containing the
+		addon code and all the related files.
+		In order to have uniformity the installer complains if the structure is not
+		respected.
 		[/p]
 		[p]
 		[pre]
-		&nbsp; &nbsp; [b]addonId-version/[/b]
-		&nbsp; &nbsp; &nbsp; &nbsp; install.kvs
-		&nbsp; &nbsp; &nbsp; &nbsp; INSTALL
-		&nbsp; &nbsp; &nbsp; &nbsp; [b]src[/b]
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; source1.kvs
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; source2.kvs
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; source3.kvs
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; [b]pics[/b]
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; addonId_pic1.png
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; addonId_pic2.png
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; addonId_pic3.png
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; [b]audio[/b]
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; addonId_audio1.png
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; addonId_audio2.png
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; addonId_audio3.png
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; [b]help[/b]
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; en
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; index.html
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hints.html
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; it
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; index.html
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; hints.html
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; [b]locale[/b]
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; addonId_it.mo
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; addonId_ru.mo
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; addonId_de.mo
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; [b]...[/b]
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
-		&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ...
+			[b]name-version[/b]
+			 +- init.kvs
+			 +- [b]src[/b]
+			 |	+- source1.kvs
+			 |	+- source2.kvs
+			 |	\- ...
+			 +- [b]locale[/b]
+			 |	+- name_it.mo
+			 |	+- name_de.mo
+			 |	\- ...
+			 +- [b]config[/b]
+			 |	+- config1.kvc
+			 |	+- config2.kvc
+			 |	\- ...
+			 +- [b]sound[/b]
+			 |	+- audio1.wav
+			 |	+- audio2.wav
+			 |	\- ...
+			 +- [b]pics[/b]
+			 |	+- pic1.png
+			 |	+- pic2.png
+			 |	\- ...
+			 +- [b]help[/b]
+			  	+- [b]en[/b]
+			  	|   +- index.html
+			  	|   +- hints.html
+			  	|   \- ...
+			  	+- [b]it[/b]
+			  	    +- index.html
+			  	    +- hints.html
+			  	    \- ...
 		[/pre]
 		[/p]
 		[p]
 		The entries in [b]bold[/b] are directories while the other are files.
-		Please note that this is a general layout for a huge and rather complex
-		addon: you might not need all of these directories. Remember: the minimal
-		addon has only an install.kvs file. Anyway, a really cool addon
-		will probably have all of them and maybe some more.
+		Please note that you need all of these directories or the routine that
+		automagically creates the installer will fail.
 		[/p]
 		[p]
-		The toplevel directory should be named with your addonId and version.
-		Try to use no spaces in the directory entries (this will make the things
-		simplier for people that want to use your addon). The toplevel
-		directory should contain your install.kvs script and a file with
-		a small description and the basic installation instructions.
-		This file can be named INSTALL or README.
+		The toplevel directory should be named with your addon name and version.
+		Use no spaces in the directory entries (this will make the things simplier for
+		people that want to use your addon).
 		[/p]
 		[p]
 		Hint: Remember that your addon is going to be installed on different platforms
 		(at least linux, macosx and windows based).
-		The poor windows notepad has serious problems with reading text
+		The poor windows' notepad has serious problems with reading text
 		files that contain only linefeeds as line separators. Keep it in mind...
 		[/p]
 		[p]
-		The main source directory for your addon should be named "src" and
-		should contain the implementation of the feature(s) you're going to provide.
-		These files should be executed by the means of the [cmd]parse[/cmd]
-		command (or [cmd]include[/cmd] if you like the C/C++ style) from install.kvs.
-		[/p]
-		[p]
-		The "pics" and "audio" (if relevant) directories should contain your
-		multimedia files. It is a good idea to prefix the filenames with your addon id
-		in order to avoid collisions with other addons. The install.kvs script
-		should copy these files to the appropriate locations under the KVIrc local
-		directory returned by [fnc]$file.localdir[/fnc]().
-		[/p]
-		[p]
-		The "help" directory should contain subdirectories for each language that
-		your help files are written in. The languages dirs should be named
-		with the language code also used for the translation files (like "en","it" etc...).
-		Please note that english is the default language and KVIrc will
-		fallback to the "en" subdirectory when no other language is found around...
-		The help files (and subdirectories) should be copied to the "help" subdirectory of the KVIrc local
-		directory returned by [fnc]$file.localdir[/fnc]().
-		Since there will be many help files inside the language dirs, it is a good idea
-		to either prefix your help files with your addon id or (better) to create
-		a subdirectory named agains your addon inside the help language directory.
-		For an english file this would lead to something like...
+		The [b]initialization script[/b] has to be named init.kvs and must contain all the
+		routines to register your addon.
 		[example]
-			file.copy index.html $file.localdir("help/en/myaddon")
+			[comment]# Register classes[/comment]
+			MyAddon::classes::register
+			
+			[comment]# Initialize events[/comment]
+			MyAddon::events::init
+			
+			[comment]# Load configuration[/comment]
+			MyAddon::config::load
+			
+			[comment]# Setup popups[/comment]
+			defpopup("MyAddon")
+			{
+				item($tr("Something","MyAddon"),110)
+				{
+					...
+				}
+			}
+			
+			[comment]# Set options[/comment]
+			option boolAutoAcceptDccSend 1
+			option boolShowMinimizedDebugWindow 1
 		[/example]
 		[/p]
 		[p]
-		The "locale" directory should contain the *.mo files for your tranlations.
+		The main [b]source directory[/b] for your addon have to be named "src" and must
+		contain the implementation of the feature(s) you're going to provide.
+		File names should contain the namespace of the addon, the optional subnamespace
+		and the name of the feature like $addonNS_$subNS_[$subNS_[...]]$name.kvs
+		[example]
+			[comment]# A class which handles a database[/comment]
+			MyAddon_classes_database.kvs
+			
+			[comment]# A class which handles the options of our addon in a GUI[/comment]
+			MyAddon_classes_gui_options.kvs
+			
+			[comment]# A script containing some logging functions[/comment]
+			MyAddon_functions_logging.kvs
+		[/example]
+		[/p]
+		[p]
+		The "[b]locale[/b]" directory should contain the *.mo files for your tranlations.
 		The localization process of a script is explained in [doc:localization]this document[/doc].
-		The *.mo files should be copied to the "locale" subdirectory of the KVIrc local
-		directory returned by [fnc]$file.localdir[/fnc]().
-		Your *.mo filenames should be prefixed by your addon id (again to avoid collisions).
+		Your *.mo filenames should be prefixed by your addon name.
+		[/p]
+		[p]
+		The [b]configuration directory[/b] "config" should contains only the files
+		which store the configuration of your addon and must end with the .kvc
+		extension.
+		[/p]
+		[p]
+		The "[b]pics[/b]" and "[b]sound[/b]" (if relevant) directories should contain 
+		your multimedia files. I's a good idea to have your pics file in PNG format
+		and sound files in WAV format.
+		[/p]
+		[p]
+		The "[b]help[/b]" directory should contain subdirectories for each language
+		your help files are written in. The languages dirs should be named
+		with the language code also used for the translation files (like "en", "it"
+		etc...).
+		Please note that english is the default language and KVIrc will
+		fallback to the "en" subdirectory when no other language is found around...
+		[/p]
+
+		[big]Some examples[/big]
+		[p]The code below is just an example of how to write a useful initalizazion of
+		your own addon. The name of the classes refer to the ones described above.
+
+		[example]
+			[comment]# Register the classes[/comment]
+			alias(MyAddon::classes::register)
+			{
+				[comment]# Create an array with all the classes of our addon.[/comment]
+				[comment]# In this way it's easy to add or remove classes to registering routine[/comment]
+				%classes[] = [fnc]$array[/fnc]( \
+					MyAddon::classes::database, \
+					MyAddon::classes::gui::options, \
+					...
+					)
+				
+				[comment]# Scan the array and register the classes[/comment]
+				for(%i=0; %i < [fnc]$length[/fnc](%classes[]); %i++)
+				{
+					if([fnc]$classDefined[/fnc]("%classes[%i]"))
+					{
+						[cmd]objects.killclass[/cmd] %classes[%i]
+					}
+					[cmd]eval[/cmd] %classes[%i]
+				}
+			}
+			
+			[comment]# Initialize events[/comment]
+			alias(MyAddon::events::init)
+			{
+				event(OnKVIrcStartup,"MyAddon")
+				{
+					...
+					[comment]# Load the catalogue (translation) file "myaddon" from the path provided[/comment]
+					[cmd]trload[/cmd] myaddon [fnc]$file.localdir[/fnc]("locale/MyAddon")
+					MyAddon::config::load
+					...
+				}
+				event(OnChannelMessage,"MyAddon_something")
+				{
+				...
+				}
+			}
+			
+			[comment]# Load configuration[/comment]
+			alias(MyAddon::config::load)
+			{
+				[comment]# If the class ConfHandler is not defined, register all classes we have[/comment]
+				if(![fnc]$classDefined[/fnc](MyAddon::classes::ConfHandler))
+				{
+					MyAddon::classes::register
+				}
+				
+				[comment]# Sets some variables[/comment]
+				%MyAddonConfig = [fnc]$new[/fnc](MyAddon::classes::ConfHandler)
+				%MyAddonConfigPath = [fnc]$file.localdir[/fnc](config/scripts/MyAddon)
+				
+				[comment]# Open the configuration file and sets the section "general"[/comment]
+				%c = [fnc]$config.open[/fnc](%MyAddonConfigPath/MyAddon.kvc,"r")
+				[cmd]config.setsection[/cmd] %c general
+				
+				[comment]# Store the value of the key "Key" in the global variable %Key[/comment]
+				%Key = [fnc]$config.read[/fnc](%c,"Key",2)
+				...
+			}
+		[/example]
 		[/p]
 
 		[big]The help and configuration callbacks[/big]
@@ -3132,6 +3230,9 @@ KviKvsTreeNodeConstantData * KviKvsParser::__funcname() \
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseCommandLiteralParameter)
+			Q_UNUSED(pStart);
+			Q_UNUSED(iNestedTerminators);
+
 			case 0:
 			case '$':
 			case '%':
@@ -3146,6 +3247,9 @@ LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseStringLiteralParameter)
+			Q_UNUSED(pStart);
+			Q_UNUSED(iNestedTerminators);
+
 			case 0:
 			case '$':
 			case '%':
@@ -3165,6 +3269,8 @@ LITERAL_PARAM_PARSING_FUNCTION_END
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseHashKeyLiteralParameter)
+			Q_UNUSED(pStart);
+
 			case '{':
 LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR
 			case '}':
@@ -3182,6 +3288,8 @@ LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseCommaSeparatedLiteralParameter)
+			Q_UNUSED(pStart);
+
 			case '(':
 LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR
 			case ')':
@@ -3200,6 +3308,8 @@ LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseSingleLiteralParameterInParenthesis)
+			Q_UNUSED(pStart);
+
 			case '(':
 LITERAL_PARAM_PARSING_FUNCTION_WARN_NESTED_TERMINATOR
 			case ')':
@@ -3216,6 +3326,9 @@ LITERAL_PARAM_PARSING_FUNCTION_END_WITH_EXPECTED_TERMINATOR
 LITERAL_PARAM_PARSING_FUNCTION_GENERIC_END
 
 LITERAL_PARAM_PARSING_FUNCTION_BEGIN(parseBindingOperationLiteralParameter)
+			Q_UNUSED(pStart);
+			Q_UNUSED(iNestedTerminators);
+
 			case 0:
 			case '$':
 			case '%':

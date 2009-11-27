@@ -66,7 +66,7 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDns *)
 {
 	KviWindow * pWnd = window();
 	if(!g_pApp->windowExists(pWnd))pWnd = g_pActiveWindow;
-	
+
 	if(m_pCallback)
 	{
 		KviKvsVariantList params;
@@ -90,11 +90,11 @@ void KviKvsAsyncDnsOperation::lookupTerminated(KviDns *)
 		}
 
 		m_pCallback->run(pWnd,&params,0,KviKvsScript::PreserveParams);
-	
+
 		delete this;
 		return;
 	}
-	
+
 	// we have no callback : output the results
 	QString szQuery = m_pDns->query();
 	pWnd->output(KVI_OUT_HOSTLOOKUP,__tr2qs_ctx("DNS Lookup result for query \"%Q\"","kvs"),&szQuery);

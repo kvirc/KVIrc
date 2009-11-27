@@ -87,7 +87,7 @@ KviCtcpFloodProtectionOptionsWidget::KviCtcpFloodProtectionOptionsWidget(QWidget
 	u->setSuffix(__tr2qs_ctx(" requests","options"));
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>0 requests</b><br>Maximum value: <b>10000 requests</b></center>","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
-	
+
 	u = addUIntSelector(1,1,1,1,__tr2qs_ctx("within:","options"),KviOption_uintCtcpFloodCheckInterval,1,3600,6,KVI_OPTION_BOOL(KviOption_boolUseCtcpFloodProtection));
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	mergeTip(u,__tr2qs_ctx("<center>Minimum value: <b>1 sec</b><br>Maximum value: <b>3600 sec</b></center>","options"));

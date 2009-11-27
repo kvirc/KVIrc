@@ -48,21 +48,21 @@ KviInputLookOptionsWidget::KviInputLookOptionsWidget(QWidget * parent)
 	addLabel(0,8,0,8,__tr2qs_ctx("Horizontal align:","options"));
 	m_pHorizontalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pHorizontalAlign,1,8,1,8);
-	
+
 	addLabel(0,9,0,9,__tr2qs_ctx("Vertical align:","options"));
 	m_pVerticalAlign=new QComboBox(this);
 	addWidgetToLayout(m_pVerticalAlign,1,9,1,9);
-	
+
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Tile","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Left","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Right","options"));
 	m_pHorizontalAlign->addItem(__tr2qs_ctx("Center","options"));
-	
+
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Tile","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Top","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Bottom","options"));
 	m_pVerticalAlign->addItem(__tr2qs_ctx("Center","options"));
-	
+
 	switch( KVI_OPTION_UINT(KviOption_uintInputPixmapAlign) & Qt::AlignHorizontal_Mask)
 	{
 		case Qt::AlignLeft:
@@ -77,7 +77,7 @@ KviInputLookOptionsWidget::KviInputLookOptionsWidget(QWidget * parent)
 		default:
 			m_pHorizontalAlign->setCurrentIndex(0);
 	}
-	
+
 	switch( KVI_OPTION_UINT(KviOption_uintInputPixmapAlign) & Qt::AlignVertical_Mask)
 	{
 		case Qt::AlignTop:
@@ -128,7 +128,7 @@ void KviInputLookOptionsWidget::commit()
 			iFlags|=Qt::AlignVCenter;
 			break;
 	}
-	
+
 	KVI_OPTION_UINT(KviOption_uintInputPixmapAlign)=iFlags;
 	KviOptionsWidget::commit();
 }

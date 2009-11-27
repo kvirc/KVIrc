@@ -25,7 +25,7 @@
 //=============================================================================
 
 #include "kvi_optionswidget.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QCheckBox>
 
@@ -39,10 +39,10 @@ class KviProxyDataBase;
 
 extern KVIRC_API KviProxyDataBase * g_pProxyDataBase;
 
-class KviProxyOptionsTreeWidgetItem : public KviTalTreeWidgetItem
+class KviProxyOptionsTreeWidgetItem : public QTreeWidgetItem
 {
 public:
-	KviProxyOptionsTreeWidgetItem(KviTalTreeWidget *parent,const QPixmap &pm,KviProxy * prx);
+	KviProxyOptionsTreeWidgetItem(QTreeWidget *parent,const QPixmap &pm,KviProxy * prx);
 	~KviProxyOptionsTreeWidgetItem();
 public:
 	KviProxy * m_pProxyData;
@@ -62,7 +62,7 @@ public:
 	KviProxyOptionsWidget(QWidget * parent);
 	~KviProxyOptionsWidget();
 protected:
-	KviTalTreeWidget    * m_pTreeWidget;
+	QTreeWidget    * m_pTreeWidget;
 	QLabel       * m_pProxyLabel;
 	QLineEdit    * m_pProxyEdit;
 	QLabel       * m_pIpLabel;

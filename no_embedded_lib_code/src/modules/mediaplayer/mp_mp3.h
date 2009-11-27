@@ -30,7 +30,7 @@
 //   This file is based in part on:
 //
 //   * MP3Info 0.5 by Ricardo Cerqueira <rmc@rccn.net>
-//   * MP3Stat 0.9 by Ed Sweetman <safemode@voicenet.com> and 
+//   * MP3Stat 0.9 by Ed Sweetman <safemode@voicenet.com> and
 //                    Johannes Overmann <overmann@iname.com>
 //
 //   There has been also a remarkable work by Cristopher Tieckle (Crissi)

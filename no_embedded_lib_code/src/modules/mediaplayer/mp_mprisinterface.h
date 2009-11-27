@@ -96,10 +96,17 @@
 		KviQmmpInterface();
 	};
 
+	class KviXmms2Interface : public KviMPRISInterface
+	{
+	public:
+		KviXmms2Interface();
+	};
+
 	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
 	MP_DECLARE_DESCRIPTOR(KviBmpxInterface)
 	MP_DECLARE_DESCRIPTOR(KviAmarok2Interface)
 	MP_DECLARE_DESCRIPTOR(KviQmmpInterface)
+	MP_DECLARE_DESCRIPTOR(KviXmms2Interface)
 
 #endif //!COMPILE_ON_WINDOWS
 

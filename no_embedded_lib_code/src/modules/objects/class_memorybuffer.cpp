@@ -54,7 +54,7 @@
 		Load into memorybuffer the <file_name> file.
 		!fn: $saveToFile(<file_name:string>)
 		Save the memorybuffer to <file_name> file.
-	
+
 */
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_memorybuffer,"memorybuffer","object")

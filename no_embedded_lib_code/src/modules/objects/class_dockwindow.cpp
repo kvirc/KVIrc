@@ -4,7 +4,7 @@
 //   Creation date : Thu 29 Dec 2005 23:45:11 by Szymon Stefanek
 //
 //   This file is part of the KVIrc IRC Client distribution
-//   Copyright (C) 2005-2008 Szymon Stefanek <pragma at kvirc dot net>
+//   Copyright (C) 2005-2009 Szymon Stefanek <pragma at kvirc dot net>
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -33,7 +33,7 @@
 #include <QLayout>
 
 /*
-	@doc: dockwindow
+        @doc:   dockwindow
 	@title:
 		dockwindow class
 	@type:
@@ -47,27 +47,21 @@
 		A window dockable to the KVIrc main frame borders (like a toolbar).
 	@functions:
 		!fn: $addWidget(<widget:hobject>)
-			Adds <widget> to the internal layout of this dock window.[br]
-			The widget must be a child of this dock window (otherwise strange things may happen).
-		!fn: <bool> $resizeEnabled()
-			Returns $true if resizing of this window is enabled and false otherwise.
-		!fn: $setResizeEnabled(<bEnabled:bool>)
-			Enabled or disabled resizing of this window.
-		!fn: $setAllowedDockAreas(<docks:string>)
-			Sets the allowed main window dock areas for this dock window.[br]
-			<docks> must be a combination of "l","r","t","b","f" and "m".[br]
-			"l" stands for left dock area, "r" stands for right dock area, "t" stands for the top dock areas, "b" stands for the bottom dock area, "f" stands for "floating" and "m" for "minimized".[br]
-			If a flag is present then the related block area is enabled,otherwise it is disabled.
+                Adds <widget> to the internal layout of this dock window.[br]
+                The widget must be a child of this dock window (otherwise strange things may happen).
+                !fn: $setAllowedDockAreas(<docks:string>)
+                Sets the allowed main window dock areas for this dock window.[br]
+                <docks> must be a combination of "l","r","t","b","f" and "m".[br]
+                "l" stands for left dock area, "r" stands for right dock area, "t" stands for the top dock areas, "b" stands for the bottom dock area, "f" stands for "floating" and "m" for "minimized".[br]
+                If a flag is present then the related block area is enabled,otherwise it is disabled.
 		!fn: $dock(<dockarea:string>)
-			Docks this dock window to the specified dockarea of the main KVIrc window which can be one of "l" (left dock area), "t" (top dock area), "r" (right dock area), "b" (bottom dock area), "f" (floating) and "m" (minimized).
+                Docks this dock window to the specified dockarea of the main KVIrc window which can be one of "l" (left dock area), "t" (top dock area), "r" (right dock area), "b" (bottom dock area), "f" (floating) and "m" (minimized).
 */
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_dockwindow,"dockwindow","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,addWidget)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,resizeEnabled)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,setResizeEnabled)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,setAllowedDockAreas)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,setAllowedDockAreas)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_dockwindow,dock)
 KVSO_END_REGISTERCLASS(KviKvsObject_dockwindow)
 
@@ -130,24 +124,7 @@ KVSO_CLASS_FUNCTION(dockwindow,addWidget)
 	_pDockWindow->setWidget((QWidget *)(pWidget->object()));
 	return true;
 }
-// Fix me
-KVSO_CLASS_FUNCTION(dockwindow,resizeEnabled)
-{
-	CHECK_INTERNAL_POINTER(widget())
-	c->returnValue()->setBoolean(false);
-	return true;
-}
 
-// Fix me
-KVSO_CLASS_FUNCTION(dockwindow,setResizeEnabled)
-{
-	CHECK_INTERNAL_POINTER(widget())
-	bool bResizeEnabled;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bResizeEnabled)
-	KVSO_PARAMETERS_END(c)
-	return true;
-}
 
 KVSO_CLASS_FUNCTION(dockwindow,setAllowedDockAreas)
 {

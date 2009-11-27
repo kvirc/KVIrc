@@ -39,8 +39,8 @@
 #include "kvi_selectors.h"
 #include "kvi_miscutils.h"
 #include "kvi_sourcesdate.h"
-#include "kvi_tal_textedit.h"
 
+#include <QTextEdit>
 #include <QLayout>
 #include <QPushButton>
 #include <QLineEdit>
@@ -94,7 +94,6 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 				m_szPackagePath += "-";
 				m_szPackagePath += szPackageVersion;
 			}
-			m_szPackagePath += ".";
 			m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
 
 			bPackagePathSet = true;
@@ -106,7 +105,6 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 		m_szPackagePath += szPackageName;
 		m_szPackagePath += "-";
 		m_szPackagePath += szPackageVersion;
-		m_szPackagePath += ".";
 		m_szPackagePath += KVI_FILEEXTENSION_THEMEPACKAGE;
 	}
 
@@ -187,7 +185,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 
 	szThemesDescription += "</body></html>";
 
-	KviTalTextEdit * pTextEdit = new KviTalTextEdit(pPage);
+	QTextEdit * pTextEdit = new QTextEdit(pPage);
 	pTextEdit->setBackgroundRole(QPalette::Window);
 	pTextEdit->setReadOnly(true);
 	QTextDocument *doc=new QTextDocument(pTextEdit);
@@ -237,7 +235,7 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLabel->setText(__tr2qs_ctx("Description:","theme"));
 	pLayout->addWidget(pLabel,3,0);
 
-	m_pPackageDescriptionEdit = new KviTalTextEdit(pPage);
+	m_pPackageDescriptionEdit = new QTextEdit(pPage);
 	m_pPackageDescriptionEdit->setText(szPackageDescription);
 	pLayout->addWidget(m_pPackageDescriptionEdit,3,1);
 
@@ -294,12 +292,12 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Here you must choose the file name for the theme package. It should have a *.%1 extension.","theme").arg(KVI_FILEEXTENSION_THEMEPACKAGE));
+	pLabel->setText(__tr2qs_ctx("Here you must choose the file name for the theme package. It should have a *%1 extension.","theme").arg(KVI_FILEEXTENSION_THEMEPACKAGE));
 		pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0);
 
-	szFilter = "*.";
+	szFilter = "*";
 	szFilter += KVI_FILEEXTENSION_THEMEPACKAGE;
 	m_pPathSelector = new KviFileSelector(pPage,"",&m_szPackagePath,true,KviFileSelector::ChooseSaveFileName,szFilter);
 	pLayout->addWidget(m_pPathSelector,1,0);

@@ -38,7 +38,7 @@
 * \brief Returns true if the string are equals casa insensitive
 * \param pcStr1 The source string
 * \param pcStr2 The target string
-* \param iLen The lenght of the string
+* \param iLen The length of the string
 * \return bool
 */
 __KVI_EXTERN KVILIB_API bool kvi_hstrEqualCIN(const kvi_wchar_t * pcStr1, const char * pcStr2, int iLen);

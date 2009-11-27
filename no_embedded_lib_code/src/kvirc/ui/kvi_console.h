@@ -93,7 +93,9 @@ protected:
 	KviWindowToolPageButton * m_pNotifyViewButton;
 	QComboBox               * m_pAddressEdit;
 	QString                   m_szStatusString; // nick (flags) on server | not connected
+	QString                   m_szOwnSmartColor;
 	QStringList             * m_pTmpHighLightedChannels;
+	KviIrcContext           * m_pContext;
 protected:
 	// UI
 	virtual QPixmap * myIconPtr();
@@ -119,8 +121,10 @@ protected:
 	int triggerOnHighlight(KviWindow *wnd,int type,const QString &nick,const QString &user,const QString &host,const QString &szMsg,const QString &trigger);
 
 	void showNotifyList(bool bShow);
-
+	static int getSmartColorHashForNick(QString *szNick);
 public:
+	KviIrcContext * context(){ return m_pContext; };
+
 	// UI
 	inline KviUserListView * notifyListView(){ return m_pNotifyListView; };
 	inline int selectedCount();
@@ -169,7 +173,7 @@ public:
 	void setAvatarFromOptions();
 
 	// This returns the default avatar for the current KVIrc user
-	// if he has choosen a valid avatar in the options dialog
+	// if he has chosen a valid avatar in the options dialog
 	// otherwise returns 0.
 	// The avatar is allocated with new and must be deleted
 	// when no longer needed.

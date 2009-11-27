@@ -45,7 +45,7 @@ KviIrcOutputOptionsWidget::KviIrcOutputOptionsWidget(QWidget * parent)
 
 	m_pVerbosityCombo = new QComboBox(this);
 	addWidgetToLayout(m_pVerbosityCombo,1,0,1,0);
-	
+
 	m_pVerbosityCombo->addItem(__tr2qs_ctx("Mute","options"));
 	m_pVerbosityCombo->addItem(__tr2qs_ctx("Quiet","options"));
 	m_pVerbosityCombo->addItem(__tr2qs_ctx("Normal","options"));
@@ -85,7 +85,7 @@ KviIrcOutputOptionsWidget::~KviIrcOutputOptionsWidget()
 void KviIrcOutputOptionsWidget::commit()
 {
 	KviOptionsWidget::commit();
-	
+
 	int i = m_pVerbosityCombo->currentIndex();
 	if((i < 0) || (i > KVI_VERBOSITY_LEVEL_PARANOIC))i = KVI_VERBOSITY_LEVEL_NORMAL;
 	KVI_OPTION_UINT(KviOption_uintOutputVerbosityLevel) = i;

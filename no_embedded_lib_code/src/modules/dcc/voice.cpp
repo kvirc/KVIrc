@@ -43,7 +43,6 @@
 #include "kvi_tal_vbox.h"
 
 #include <QFrame>
-#include <QSplitter>
 #include <QSlider>
 #include <QToolTip>
 
@@ -160,7 +159,7 @@ bool KviDccVoiceThread::checkSoundcard()
 
 	if(ioctl(m_soundFd,SNDCTL_DSP_GETCAPS,&caps) < 0)
 	{
-		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard , use the DCC VOICE option to force half-duplex algorithm","dcc").toUtf8().data());
+		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard, use the DCC VOICE option to force half-duplex algorithm","dcc").toUtf8().data());
 		if(bOpened)closeSoundcard();
 		return false;
 	}
@@ -645,7 +644,7 @@ KviDccVoice::KviDccVoice(KviFrame *pFrm,KviDccDescriptor * dcc,const char * name
 	m_pDescriptor = dcc;
 	m_pSlaveThread = 0;
 
-	m_pSplitter = new QSplitter(Qt::Horizontal,this);
+	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("dcc_window_splitter");
 	m_pIrcView = new KviIrcView(m_pSplitter,pFrm,this);
 

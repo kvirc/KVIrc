@@ -89,7 +89,7 @@ namespace KviFileUtils
 	* \param szPath The path to the file
 	* \return bool
 	*/
-	inline bool fileExists(const QString & szPath){ return QFile::exists(szPath); };
+	inline bool fileExists(const QString & szPath){ return QFile::exists(szPath); }
 
 	/**
 	* \brief Removes a file
@@ -287,6 +287,6 @@ namespace KviFileUtils
 	* \return void
 	*/
 	KVILIB_API extern void encodeFileName(QString & path);
-};
+}
 
 #endif //_KVI_FILEUTILS_H

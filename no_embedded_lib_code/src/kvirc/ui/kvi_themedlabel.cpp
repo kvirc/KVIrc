@@ -121,7 +121,7 @@ void KviThemedLabel::paintEvent ( QPaintEvent * event )
 	r.setLeft(r.left() + 2); // some margin
 
 	p.setPen(KVI_OPTION_COLOR(KviOption_colorLabelForeground));
-	
+
 	p.drawText(r,Qt::AlignLeft | Qt::AlignVCenter,m_szText);
 }
 

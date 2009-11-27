@@ -38,8 +38,8 @@
 #include "kvi_ircuserdb.h"
 #include "kvi_time.h"
 #include "kvi_frame.h"
+#include "kvi_statusbar.h"
 
-#include <QStatusBar>
 
 namespace KviKvsCoreFunctions
 {
@@ -231,6 +231,8 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(array)
 	{
+		Q_UNUSED(__pContext);
+
 		KviKvsArray * a = new KviKvsArray();
 		kvs_int_t idx = 0;
 
@@ -319,6 +321,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(b)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setString(QString(QChar(KVI_TEXT_BOLD)));
 		return true;
 	}
@@ -666,9 +671,16 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(countStatusBarItems)
 	{
-		QList<QWidget *> widgets = g_pFrame->statusBar()->findChildren<QWidget *>();
-		KVSCF_pRetBuffer->setInteger(widgets.count());
-		return true;
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
+                if (g_pFrame->mainStatusBar())
+                {
+                    QList<QWidget *> widgets = g_pFrame->mainStatusBar()->findChildren<QWidget *>();
+                    KVSCF_pRetBuffer->setInteger(widgets.count());
+                }
+                else KVSCF_pRetBuffer->setInteger(0);
+                return true;
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
@@ -691,6 +703,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(cr)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setString(QString(QChar('\r')));
 		return true;
 	}
@@ -871,6 +886,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(falseCKEYWORDWORKAROUND)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KVSCF_pRetBuffer->setBoolean(false);
 		return true;
 	}
@@ -977,6 +995,12 @@ namespace KviKvsCoreFunctions
 	#ifdef COMPILE_WEBKIT_SUPPORT
 			"Webkit",
 	#endif
+	#ifndef COMPILE_DISABLE_DCC_VIDEO
+			"DCCVideo",
+	#endif
+	#ifndef COMPILE_DISABLE_DCC_VOICE
+			"DCCVoice",
+	#endif
 			"Qt4",
 			"KVS",
 			0
@@ -1021,6 +1045,9 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(firstConnectedConsole)
 	{
+		Q_UNUSED(__pContext);
+		Q_UNUSED(__pParams);
+
 		KviConsole * c = g_pApp->topmostConnectedConsole();
 		// FIXME: The window id's should be numeric!!!
 		KVSCF_pRetBuffer->setString(c ? c->id() : "0");
@@ -1057,6 +1084,8 @@ namespace KviKvsCoreFunctions
 
 	KVSCF(flatten)
 	{
+		Q_UNUSED(__pContext);
+
 		KviKvsArray * a = new KviKvsArray();
 		KVSCF_pRetBuffer->setArray(a);
 		unsigned int uIdx = 0;

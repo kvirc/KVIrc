@@ -46,8 +46,6 @@ public:
 	QString szSpecial;
 	KviKvsScript * pCallback;
 	KviKvsVariant * pMagic;
-	QString szCode; // <-- kill this when KVS is hardwired!
-	QString szMagic; // <-- kill this when KVS is hardwired!
 	KviWindow * pWindow;
 public:
 	KviAsyncWhoisInfo();

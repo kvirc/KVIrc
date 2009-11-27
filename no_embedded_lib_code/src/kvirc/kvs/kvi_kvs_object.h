@@ -71,7 +71,7 @@ protected:
 	KviPointerHashTable<QString,KviKvsObjectConnectionList>          * m_pSignalDict;        // our signals connected to other object functions
 
 	KviKvsObjectConnectionList                 * m_pConnectionList;    // signals connected to this object functions
-	
+
 	// this is valid when processing one of our slots
 	kvs_hobject_t                                m_hSignalSender;
 	QString                                      m_szSignalName;
@@ -98,7 +98,7 @@ public:
 	bool disconnectSignal(const QString &sigName,KviKvsObjectConnection * con);
 	bool disconnectSignal(const QString &sigName,KviKvsObject * target,const QString & slotName);
 
-	// Emits a signal by calling all the attacched slots in an unspecified order. 
+	// Emits a signal by calling all the attacched slots in an unspecified order.
 	// Returns the number of slots called (may be 0, if no slot is connected)
 	// The parameters are preserved.
 	// this is intended to be called from other function calls (the parameters are copied from pOuterCall)
@@ -128,7 +128,7 @@ public:
 	// The function may or may not be already registered in the class
 	// If szCode is empty the the private implementation is removed instead
 	void registerPrivateImplementation(const QString &szFunctionName,const QString &szCode);
-	
+
 	// ONLY pCaller can be zero here!
 	// please use one of the wrappers, if possible
 	bool callFunction(
@@ -150,10 +150,10 @@ protected:
 	bool unregisterConnection(KviKvsObjectConnection * con);
 
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
-	
+
 	void registerChild(KviKvsObject * c);
 	void unregisterChild(KviKvsObject *c);
-	
+
 	virtual bool eventFilter(QObject *o,QEvent *e); //necessary ?
 	virtual void timerEvent(QTimerEvent *e);
 protected:

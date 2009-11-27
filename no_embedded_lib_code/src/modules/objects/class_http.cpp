@@ -4,7 +4,7 @@
 //   Creation date : Fry Sep 5 18:13:45 2008 GMT by Carbone Alesssandro
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2008 Alessandro Carbone (elfonol at gmail dot com)
+//   Copyright (C) 2009 Alessandro Carbone (elfonol at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -77,11 +77,13 @@ const char * const ssl_errors_tbl[] = {
 		This class provides a standard HTTP functionality.[br]
 	@functions:
 		!fn: <id:integer>$get(<remote_path:string>,<local_file: string>)
+
 		!fn: <id:integer>$post(<remote_path:string>,<post_data:string>,<local_file: string>)
 		!fn: $abort()
 		!fn: <id:integer>$setHost(<host:string>,<remote_port:unsigned_integer>)
+
 		!fn: <id:integer>$currentId()
-		!fn: $setProxy(<host:string>,[<user:string>,<password:string>])
+                !fn: $setProxy(<host:string>,<port:integer>,[<user:string>,<password:string>])
 		!fn: $setUser(<user:string>,<password:string>)
 		!fn: $readAll()
 		!fn: <error:string> $errorString()

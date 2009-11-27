@@ -35,28 +35,27 @@
 
 #include "kvi_settings.h"
 #include "kvi_string.h"
-#include "kvi_tal_iconview.h"
 #include "kvi_iconmanager.h"
 
 #include <QPainter>
+#include <QTableWidget>
 
 #define KVI_TEXTICON_WIN_WIDTH 230
 #define KVI_TEXTICON_WIN_HEIGHT 200
-
+#define KVI_TEXTICON_COLUMNS 6
 /**
 * \class KviTextIconWindow
 * \brief Text icon window class
 */
-class KVIRC_API KviTextIconWindow : public KviTalIconView
+class KVIRC_API KviTextIconWindow : public QWidget
 {
 	Q_OBJECT
 public:
 	/**
 	* \brief Constructs the text icon window objet
-	* \param pParent The parent widget
 	* \return KviTextIconWindow
 	*/
-	KviTextIconWindow(QWidget * pParent);
+	KviTextIconWindow();
 
 	/**
 	* \brief Destroys the text icon window objet
@@ -64,42 +63,24 @@ public:
 	~KviTextIconWindow();
 private:
 	QWidget            * m_pOwner;
-	KviTalIconViewItem * m_pItem;
-	QWidget            * m_pParent;
-	QString              m_szTypedSeq;
-	QString              m_szCurFullSeq;
-	bool                 m_bAltMode; // in alt mode the itemSelected() string contains also the CTRL+I escape code
-	int                  m_iTimerId;
+	QTableWidget       * m_pTable;
+	bool                 m_bAltMode; // in alt mode the inserted string will contains also the CTRL+I escape code
 public:
 	/**
 	* \brief Shows the popup
 	* \param pOwner The owner of the widget
-	* \param bAltMode Whether to use the alternative mode, prepend the text
+	* \param bAltMode Whether to prepend the CTRL+I escape code in the inserted string
 	* \return void
 	*/
-	void popup(QWidget * pOwner, bool bAltMode = false);
+	void popup(QWidget * pOwner, bool bAltMode);
 private:
 	/**
-	* \brief Hides the parent and set the focus to the owner
+	* \brief Hides the widget and set the focus to the owner
 	* \return void
 	*/
 	void doHide();
-
-	/**
-	* \brief Shows the window
-	* \return void
-	*/
-	virtual void show();
-
-	/**
-	* \brief Searches for an icon in the char sequence typed
-	* \return bool
-	*/
-	bool findTypedSeq(); // returns true if it is a complete word
 private:
 	virtual void keyPressEvent(QKeyEvent * e);
-	virtual void mousePressEvent(QMouseEvent * e);
-	virtual void timerEvent(QTimerEvent * e);
 public slots:
 	/**
 	* \brief Fills in the text icon window
@@ -114,48 +95,11 @@ public slots:
 	void ownerDead();
 
 	/**
-	* \brief Called when the current item is changed
-	* \param pItem The selected item
-	* \return void
-	*/
-	void currentItemChanged(KviTalIconViewItem * pItem, KviTalIconViewItem *);
-
-	/**
 	* \brief Called when an item is selected
 	* \param pItem The selected item
 	* \return void
 	*/
-	void itemSelected(KviTalIconViewItem * pItem);
-};
-
-/**
-* \class KviTextIconWindowWidget
-* \brief Text icon window widget class
-*/
-class KVIRC_API KviTextIconWindowWidget : public QWidget
-{
-	Q_OBJECT
-public:
-	KviTextIconWindow * m_pWindow;
-public:
-	/**
-	* \brief Constructs the text icon window widget objet
-	* \return KviTextIconWindowWidget
-	*/
-	KviTextIconWindowWidget();
-
-	/**
-	* \brief Destroys the text icon window widget objet
-	*/
-	~KviTextIconWindowWidget();
-public:
-	/**
-	* \brief Shows the popup
-	* \param pOwner The owner of the widget
-	* \param bAltMode Whether to use the alternative mode, prepend the text
-	* \return void
-	*/
-	void popup(QWidget * pOwner, bool bAltMode = false);
+	void cellSelected(int row, int column);
 };
 
 #endif //_KVI_TEXTICONWIN_H_

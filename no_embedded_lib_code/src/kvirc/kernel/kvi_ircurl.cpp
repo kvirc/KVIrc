@@ -154,7 +154,7 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 	result.iError=0;
 
 	int iProtoLen = url.indexOf("://");
-	if(iProtoLen!=-1) { 
+	if(iProtoLen!=-1) {
 		if(KviQString::equalCIN(url,"irc",3)) {
 			// OK, seems to be a valid proto;
 			url = url.right(url.length()-3);
@@ -215,9 +215,9 @@ void KviIrcUrl::split(QString url, KviIrcUrlParts& result)
 void KviIrcUrl::join(QString &uri, KviServer* server)
 {
 	if(server)
-	{	
+	{
 		uri="irc";
-		
+
 		if(server->useSSL()) uri.append("s");
 		if(server->isIPv6()) uri.append("6");
 
@@ -233,9 +233,9 @@ void KviIrcUrl::makeJoinCmd(const QStringList& chans, QString& szJoinCommand)
 	QString szChannels,szProtectedChannels,szPasswords,szCurPass,szCurChan;
 		if(chans.count()!=0)
 		{
-			
+
 			for ( QStringList::ConstIterator it = chans.begin(); it != chans.end(); ++it ) {
-				
+
 				szCurPass=(*it).section('?',1);
 				if(szCurPass.isEmpty())
 				{
@@ -272,7 +272,7 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 	KviIrcUrlParts parts;
 	KviIrcUrl::split(text,parts);
 	QString cmdBuffer;
-	
+
 	if( (contextSpec & CurrentContext) && !pConsole) {
 		contextSpec = FirstFreeContext;
 	}
@@ -300,7 +300,7 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 
 	if(!(parts.iError & KviIrcUrl::InvalidProtocol)) {
 		g_pApp->addRecentUrl(text);
-		
+
 		QString szJoinCommand;
 		makeJoinCmd(parts.chanList,szJoinCommand);
 		QString szCommand("server ");
@@ -354,7 +354,7 @@ int KviIrcUrl::run(const QString& text,int contextSpec,KviConsole* pConsole)
 					pConsole->connection()->sendData(pConsole->connection()->encodeText(szJoinCommand).data());
 				}
 				return parts.iError;
-			} 
+			}
 		}
 		// New server
 		KviKvsScript::run(szCommand,pConsole);

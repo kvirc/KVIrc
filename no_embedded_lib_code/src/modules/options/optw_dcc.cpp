@@ -70,7 +70,7 @@ KviDccAdvancedOptionsWidget::KviDccAdvancedOptionsWidget(QWidget * parent)
 	createLayout();
 
 	KviTalGroupBox * g = addGroupBox(0,0,0,0,Qt::Horizontal,__tr2qs_ctx("Network Properties","options"));
-	
+
 	KviBoolSelector * b = addBoolSelector(g,__tr2qs_ctx("Use user-defined address or network interface","options"),KviOption_boolDccListenOnSpecifiedInterfaceByDefault);
 
 
@@ -121,7 +121,7 @@ KviDccAdvancedOptionsWidget::KviDccAdvancedOptionsWidget(QWidget * parent)
 	mergeTip(b,__tr2qs_ctx("<center>When you're behind a dialup router and also tunneling through a psyBNC bouncer, " \
 				"you can use a bug in the bouncer to force KVIrc to bind the DCC connections to the dialup router's address.<br>" \
 				"It's an ugly hack - use it only if nothing else works.</center>","options"));
-									
+
 	connect(b2,SIGNAL(toggled(bool)),b,SLOT(setEnabled(bool)));
 
 	b = addBoolSelector(0,1,1,1,__tr2qs_ctx("Notify failed DCC handshakes to the remote end","options"),KviOption_boolNotifyFailedDccHandshakes);
@@ -136,7 +136,7 @@ KviDccAdvancedOptionsWidget::KviDccAdvancedOptionsWidget(QWidget * parent)
 					"and it includes all the DCC types (send,chat,recv...). " \
 					"KVIrc will refuse the requests when this limit is reached.</center>","options"));
 
-	addUIntSelector(0,3,1,3,__tr2qs_ctx("DCC socket timeout:","options"),KviOption_uintDccSocketTimeout,10,65536,180);
+	u = addUIntSelector(0,3,1,3,__tr2qs_ctx("DCC socket timeout:","options"),KviOption_uintDccSocketTimeout,10,65536,180);
 	u->setSuffix(__tr2qs_ctx(" sec","options"));
 	mergeTip(u,__tr2qs_ctx("<center>This is the amount of time that KVIrc will wait for a response before assuming that a DCC has failed " \
 		"because the remote client was unable to connect to our listening socket.</center>","options"));
@@ -187,7 +187,7 @@ KviDccSendGeneralOptionsWidget::KviDccSendGeneralOptionsWidget(QWidget * parent)
 	addBoolSelector(g,__tr2qs_ctx("Notify completion in notifier","options"),KviOption_boolNotifyDccSendSuccessInNotifier);
 	b = addBoolSelector(g,__tr2qs_ctx("Automatically clear transfer","options"),KviOption_boolAutoCloseDccSendOnSuccess);
 	mergeTip(b,
-		__tr2qs_ctx("<center>This option will cause succesfully terminated transfers " \
+		__tr2qs_ctx("<center>This option will cause successfully terminated transfers " \
 				"to be automatically removed from the transfer window.</center>","options"));
 
 
@@ -234,7 +234,7 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 	KviUIntSelector * u = addUIntSelector(hb,"",KviOption_uintMaxDccSendSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccSendSpeed));
 	u->setSuffix(" " + __tr2qs_ctx("bytes/sec","options"));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
-	
+
 	hb = new KviTalHBox(g);
 	b = addBoolSelector(hb,__tr2qs_ctx("Limit download bandwidth to","options"),KviOption_boolLimitDccRecvSpeed);
 	u = addUIntSelector(hb,"",KviOption_uintMaxDccRecvSpeed,0,0xffffff1,1024,KVI_OPTION_BOOL(KviOption_boolLimitDccRecvSpeed));
@@ -266,7 +266,7 @@ KviDccSendAdvancedOptionsWidget::KviDccSendAdvancedOptionsWidget(QWidget * paren
 	u = addUIntSelector(hb,"",KviOption_uintDccSendIdleStepInMSec,1,65536,30,KVI_OPTION_BOOL(KviOption_boolDccSendForceIdleStep));
 	connect(b,SIGNAL(toggled(bool)),u,SLOT(setEnabled(bool)));
 	u->setSuffix(__tr2qs_ctx(" msec","options"));
-	
+
 	mergeTip(u,
 		__tr2qs_ctx("<center>This parameter controls the average delay between two packets sent or received.<br>" \
 				"A smaller interval will cause you to send data faster but will also " \

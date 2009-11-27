@@ -33,10 +33,10 @@
 
 class KviChannel;
 
-class KVIRC_API KviModeWidget : public QFrame 
+class KVIRC_API KviModeWidget : public QFrame
 {
 	Q_OBJECT
-	
+
 public:
 	KviModeWidget(QWidget * par,KviChannel* chan,const char * name=0);
 	~KviModeWidget();

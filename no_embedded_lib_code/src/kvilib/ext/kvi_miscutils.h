@@ -39,6 +39,6 @@ namespace KviMiscUtils
 	// Check if the argument string is a valid x.y.z.... version string
 	extern KVILIB_API bool isValidVersionString(const QString &szVersion);
 
-};
+}
 
 #endif //!_KVI_MISCUTILS_H_

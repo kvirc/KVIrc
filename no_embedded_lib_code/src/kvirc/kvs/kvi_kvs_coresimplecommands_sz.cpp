@@ -417,6 +417,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(setreturn)
 	{
+		Q_UNUSED(__pSwitches);
+
 		if(KVSCSC_pParams->count() == 0)
 		{
 			KVSCSC_pContext->returnValue()->setNothing();
@@ -513,6 +515,7 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(srand)
 	{
+		Q_UNUSED(__pSwitches);
 		QString tmp;
 
 		for (int i=0;i<10;i++)
@@ -590,6 +593,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(topic)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szChannel;
 		QString szTopic;
 		KVSCSC_PARAMETERS_BEGIN
@@ -861,6 +866,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(warning)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szAll;
 		KVSCSC_pParams->allAsString(szAll);
 		KVSCSC_pContext->warning("%Q",&szAll);
@@ -890,6 +897,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(who)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szChannel;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("channel",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szChannel)
@@ -950,6 +959,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(whois)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szNick;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,KVS_PF_APPENDREMAINING,szNick)
@@ -990,6 +1001,8 @@ namespace KviKvsCoreSimpleCommands
 
 	KVSCSC(whowas)
 	{
+		Q_UNUSED(__pSwitches);
+
 		QString szNick;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("nickname",KVS_PT_NONEMPTYSTRING,KVS_PF_APPENDREMAINING,szNick)

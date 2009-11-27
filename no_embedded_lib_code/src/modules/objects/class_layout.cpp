@@ -4,7 +4,7 @@
 //   Creation date : Fri Now 22 2002 00:50:01 by Szymon Stefanek
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2002-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2002-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -45,7 +45,7 @@ const char * const align_tbl[] = {
 
 
 const int align_cod[] = {
-		Qt::AlignLeft,
+                Qt::AlignLeft,
 		Qt::AlignRight,
 	    Qt::AlignHCenter,
 	    Qt::AlignVCenter,
@@ -82,7 +82,7 @@ const int align_cod[] = {
 		Sets the stretch value for a particular row of this layout. The <stretch_value>
 		must be a positive integer. The rows with bigger stretch values will take more space
 		in the layout.
-		!fn: $setColStretch(<column:uint>,<stretch:uint>)
+                !fn: $setColumnStretch(<column:uint>,<stretch:uint>)
 		Sets the stretch value for a particular column in this layout. The <stretch_value>
 		must be a positive integer. The rows with bigger stretch values will take more space
 		in the layout.
@@ -111,7 +111,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_layout,"layout","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_layout,addWidget)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_layout,addMultiCellWidget)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_layout,setRowStretch)
-	KVSO_REGISTER_HANDLER(KviKvsObject_layout,"setColStretch",setColumnStretch)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_layout,setColumnStretch)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_layout,addRowSpacing)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_layout,addColSpacing)

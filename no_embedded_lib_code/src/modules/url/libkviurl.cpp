@@ -38,6 +38,8 @@
 #include "kvi_kvs_eventmanager.h"
 #include "kvi_tal_popupmenu.h"
 #include "kvi_window.h"
+#include "kvi_options.h"
+#include "kvi_out.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -46,9 +48,14 @@
 #include <QHeaderView>
 #include <QTextStream>
 #include <QMouseEvent>
+#include <QPainter>
 
 static QPixmap * g_pUrlIconPixmap = 0;
 static KviUrlAction * g_pUrlAction = 0;
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	extern KVIRC_API QPixmap * g_pShadedChildGlobalDesktopBackground;
+#endif
 
 typedef struct _UrlDlgList
 {
@@ -84,7 +91,7 @@ static KviModuleExtension * url_extension_alloc(KviModuleExtensionAllocStruct *)
 }
 
 KviUrlDialogTreeWidget::KviUrlDialogTreeWidget(QWidget * par)
-: KviTalTreeWidget(par)
+: QTreeWidget(par)
 {
 }
 
@@ -95,7 +102,39 @@ void KviUrlDialogTreeWidget::mousePressEvent (QMouseEvent *e)
 		QTreeWidgetItem *i= itemAt(e->pos());
 		if (i) emit rightButtonPressed(i,QCursor::pos());
 	}
-	KviTalTreeWidget::mousePressEvent(e);
+	QTreeWidget::mousePressEvent(e);
+}
+
+void KviUrlDialogTreeWidget::paintEvent(QPaintEvent * event)
+{
+	QPainter *p = new QPainter(viewport());
+	QStyleOptionViewItem option = viewOptions();
+	QRect rect = event->rect();
+
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
+	{
+		p->save();
+		p->setCompositionMode(QPainter::CompositionMode_Source);
+		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
+		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
+		p->fillRect(rect, col);
+		p->restore();
+	} else if(g_pShadedChildGlobalDesktopBackground)
+	{
+		QPoint pnt = viewport()->mapToGlobal(rect.topLeft());
+		p->drawTiledPixmap(rect,*g_pShadedChildGlobalDesktopBackground,pnt);
+	} else {
+#endif
+		//FIXME this is not the treewindowlist
+		p->fillRect(rect,KVI_OPTION_COLOR(KviOption_colorTreeWindowListBackground));
+#ifdef COMPILE_PSEUDO_TRANSPARENCY
+	}
+#endif
+	delete p;
+
+	//call paint on all childrens
+	QTreeWidget::paintEvent(event);
 }
 
 KviUrlAction::KviUrlAction(QObject * pParent)
@@ -131,11 +170,12 @@ QPixmap * KviUrlAction::smallIcon()
 UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 :KviWindow(KVI_WINDOW_TYPE_TOOL,g_pFrame,"URL List")
 {
-	m_pMenuBar = new KviTalMenuBar(this,"url menu");
 	m_pUrlList = new KviUrlDialogTreeWidget(this);
+
+	m_pMenuBar = new KviTalMenuBar(this,"url menu");
 	//m_pUrlList = new KviListView(this,"list");
 	KviConfig cfg(szConfigPath,KviConfig::Read);
-
+/*
 	KviTalPopupMenu *pop;
 
 	pop = new KviTalPopupMenu(this);
@@ -151,20 +191,20 @@ UrlDialog::UrlDialog(KviPointerList<KviUrl> *)
 	pop->insertItem(__tr2qs("&Clear"),this,SLOT(clear()));
 	pop->setTitle(__tr2qs("&List"));
 	m_pMenuBar->addMenu(pop);
-
+*/
 	m_pUrlList->header()->setSortIndicatorShown(true);
 	m_pUrlList->setColumnCount(4);
 
 	QStringList labels;
 	labels << __tr2qs("URL") << __tr2qs("Window") << __tr2qs("Count") << __tr2qs("Timestamp");
 	m_pUrlList->setHeaderLabels(labels);
-
+/*
 	cfg.setGroup("colsWidth");
 	m_pUrlList->setColumnWidth(0,cfg.readIntEntry("Url",170));
 	m_pUrlList->setColumnWidth(1,cfg.readIntEntry("Window",130));
 	m_pUrlList->setColumnWidth(2,cfg.readIntEntry("Count",70));
 	m_pUrlList->setColumnWidth(3,cfg.readIntEntry("Timestamp",70));
-
+*/
 	connect(m_pUrlList,SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)),SLOT(dblclk_url(QTreeWidgetItem *, int)));
 	connect(m_pUrlList,SIGNAL(rightButtonPressed(QTreeWidgetItem *, const QPoint &)),SLOT(popup(QTreeWidgetItem *, const QPoint &)));
 
@@ -271,14 +311,14 @@ void UrlDialog::findtext()
 */
 }
 
-void UrlDialog::dblclk_url(KviTalTreeWidgetItem *item, int)
+void UrlDialog::dblclk_url(QTreeWidgetItem *item, int)
 {
 	QString cmd="openurl ";
 	cmd.append(item->text(0));
 	KviKvsScript::run(cmd,this);
 }
 
-void UrlDialog::popup(KviTalTreeWidgetItem *item, const QPoint &point)
+void UrlDialog::popup(QTreeWidgetItem *item, const QPoint &point)
 {
 	m_szUrl = item->text(0);
 	KviTalPopupMenu p(0,"menu");
@@ -321,12 +361,22 @@ QPixmap *UrlDialog::myIconPtr()
 
 void UrlDialog::addUrl(QString url, QString window, QString count, QString timestamp)
 {
-	KviTalTreeWidgetItem *UrlItem = new KviTalTreeWidgetItem(m_pUrlList);
+	QTreeWidgetItem *UrlItem = new QTreeWidgetItem(m_pUrlList);
 
 	UrlItem->setText(0, url);
 	UrlItem->setText(1, window);
 	UrlItem->setText(2, count);
 	UrlItem->setText(3, timestamp);
+
+	UrlItem->setForeground(0, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_URL).fore()));
+	UrlItem->setForeground(1, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
+	UrlItem->setForeground(2, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
+	UrlItem->setForeground(3, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
+
+	m_pUrlList->resizeColumnToContents(0);
+	m_pUrlList->resizeColumnToContents(3);
+	m_pUrlList->resizeColumnToContents(2);
+	m_pUrlList->resizeColumnToContents(1);
 }
 
 void UrlDialog::resizeEvent(QResizeEvent *)
@@ -338,6 +388,7 @@ void UrlDialog::resizeEvent(QResizeEvent *)
 
 UrlDialog::~UrlDialog()
 {
+	/*
 	KviConfig cfg(szConfigPath,KviConfig::Write);
 	cfg.setGroup("ConfigDialog");
 	if (cfg.readBoolEntry("SaveColumnWidthOnClose",false)) {
@@ -347,7 +398,7 @@ UrlDialog::~UrlDialog()
 		cfg.writeEntry("Count",m_pUrlList->columnWidth(2));
 		cfg.writeEntry("Timestamp",m_pUrlList->columnWidth(3));
 	}
-
+*/
 	delete m_pUrlList;
 /*	if (m_pListPopup) delete m_pListPopup;
 	m_pListPopup = 0;
@@ -751,7 +802,7 @@ int check_url(KviWindow *w,const QString &szUrl) // return 0 if no occurence of 
 			int count=tmpitem->dlg->m_pUrlList->topLevelItemCount();
 			for(int i=0;i<count;i++)
 			{
-				KviTalTreeWidgetItem* it=tmpitem->dlg->m_pUrlList->topLevelItem(i);
+				QTreeWidgetItem* it=tmpitem->dlg->m_pUrlList->topLevelItem(i);
 				if (it->text(0) == szUrl) {
 					int tmpCount = it->text(2).toInt();
 					tmpCount++;

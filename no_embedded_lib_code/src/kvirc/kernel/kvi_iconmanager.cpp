@@ -791,6 +791,13 @@ void KviIconManager::urlToCachedFileName(QString &szFName)
 	szFName.replace(")","_");
 	szFName.replace("?","_");
 	szFName.replace("___",".");
+	//cut filenames to 255 chars, trying to preserve file name/extension (bug #616)
+	if(szFName.size()>255)
+	{
+		QString ext = szFName.right(55);
+		szFName.truncate(200);
+		szFName.append(ext);
+	}
 }
 
 KviAvatar * KviIconManager::getAvatar(const QString &szLocalPath,const QString &szName)

@@ -28,7 +28,6 @@
 #include "kvi_scripteditor.h"
 #include "kvi_pointerlist.h"
 #include "kvi_selectors.h"
-#include "kvi_tal_textedit.h"
 #include "kvi_tal_popupmenu.h"
 
 #include <QCompleter>
@@ -55,7 +54,7 @@ public:
 public:
 	QString m_szFind;
 protected:
-	KviScriptEditorSyntaxHighlighter *m_pSyntaxHighlighter;
+	KviScriptEditorSyntaxHighlighter * m_pSyntaxHighlighter;
 	QCompleter  * m_pCompleter;
 	QStringList * m_pListModulesNames;
 	QStringList * m_pListCompletition;

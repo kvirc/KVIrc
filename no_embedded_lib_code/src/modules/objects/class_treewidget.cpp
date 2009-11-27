@@ -99,7 +99,7 @@
                 !fn: $setSelectionMode(<mode:string>)
                 Sets the selection mode for this listview. <mode> can be one of "Single","NoSelection","Multi" or "Extended".
 
-                !fn: <listviewitem> $selectedItem()
+                !fn: <listviewitem> $selectedItems()
                 Returns the currently selected [class]listviewitem[/class] or $null if no items are selected.
                 This function works only if the list view is in single selection mode.
 
@@ -128,10 +128,10 @@
                 In its argument is the newly selected item or 0 if the change made no item current.[br]
                 The default implementation emits the [classfnc]$currentChanged[/classfnc]() signal.
 
-                !fn: $returnPressedEvent(<item:object>)
-                This function is called by the framework when the enter key is pressed.[br]
-                In its arument the currrent item.[br]
-                The default implementation emits the [classfnc]$returnPressed[/classfnc]() signal.
+                !fn: $itemActivatedEvent(<item:object>)
+                This s signal is emitted when the user activates an item by single- or double-clicking or pressing 'Enter'.[br]
+                In its argument the currrent item.[br]
+                The default implementation emits the [classfnc]$itemActivated[/classfnc]() signal.
 
                 !fn: $spacePressedEvent(<item:object>)
                 This function is called by the framework when the space key is pressed.[br]
@@ -150,9 +150,9 @@
                 This event is called when an item has been collapsed, i.e. when the children of item are hidden.
                 The default implementation emits the [classfnc]$collapsed[/classfnc]() signal.
 
-                !fn: $itemRenamedEvent(<item:object>,<col:integer>,<text:string>)
+                !fn: $itemChangedEvent(<item:object>,<col:integer>,<text:string>)
                 This event is called when the item has been renamed in text, e.g. by in in-place renaming, in column col.[br]
-                The default implementation emits the [classfnc]$itemRenamed[/classfnc]() signal.
+                The default implementation emits the [classfnc]$itemChanged[/classfnc]() signal.
 
                 !fn: $rightButtonClickEvent(<item:object>,<x:integer>,>y:integer>)
                 This signal is emitted when the right button is clicked.[br]
@@ -165,8 +165,8 @@
                 This signal is emitted by the default implementation of [classfnc]$selectionChangedEvent[/classfnc]().
                 !sg: $currentChanged()
                 This signal is emitted by the default implementation of [classfnc]$currentChangedEvent[/classfnc]().
-                !sg: $returnPressed()
-                This signal is emitted by the default implementation of [classfnc]$returnPressedEvent[/classfnc]().
+                !sg: $itemActivated()
+                This signal is emitted by the default implementation of [classfnc]$itemActivatedEvent[/classfnc]().
                 !sg: $spacePressed()
                 This signal is emitted by the default implementation of [classfnc]$spacePredssedEvent[/classfnc]().
                 !sg: $onItem()
@@ -175,8 +175,8 @@
                 This signal is emitted by the default implementation of [classfnc]$itemExpandedEvent[/classfnc]().
                 !sg: $itemCollapsed()
                 This signal is emitted by the default implementation of [classfnc]$itemCollapsedEvent[/classfnc]().
-                !sg: $itemRenamed()
-                This signal is emitted by the default implementation of [classfnc]$itemRenamedEvent[/classfnc]().
+                !sg: $itemChanged()
+                This signal is emitted by the default implementation of [classfnc]$itemChangedEvent[/classfnc]().
                 !sg: $rightButtonClicked()
                 This signal is emitted by the default implementation of [classfnc]$rightButtonClickedEvent[/classfnc]().
 
@@ -200,10 +200,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setRootIsDecorated)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setAllColumnsShowFocus)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,clear)
-	//FIXME
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"selectedItem",selectedItems)//<--- remove this
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,selectedItems)
-
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,currentItem)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setSelectionMode)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,listViewHeaderIsVisible)
@@ -212,29 +209,23 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,hideListViewHeader)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,showListViewHeader)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,firstChild)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,selectionChangedEvent);
+
+
+
+
+
+        //events
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,selectionChangedEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,currentChangedEvent);
-
-	// FIX-ME
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"returnPressedEvent",itemActivatedEvent);//<- remove me
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemActivatedEvent);
-	//
-
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,onItemEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemClickedEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemExpandedEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemCollapsedEvent);
-
-	//FIXME
-	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"itemRenamedEvent",itemChangedEvent);//<- remove me
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,itemChangedEvent);
-	//
-
 	KVSO_REGISTER_HANDLER(KviKvsObject_treewidget,"rightButtonClickedEvent",customContextMenuRequestedEvent);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,customContextMenuRequestedEvent);
-
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,setAcceptDrops);
-
 	KVSO_REGISTER_STANDARD_NOTHINGRETURN_HANDLER(KviKvsObject_treewidget,"fileDroppedEvent")
 
 KVSO_END_REGISTERCLASS(KviKvsObject_treewidget)
@@ -326,6 +317,7 @@ KVSO_CLASS_FUNCTION(treewidget,setAcceptDrops)
 
 KVSO_CLASS_FUNCTION(treewidget,clear)
 {
+	Q_UNUSED(c);
 	if (widget())
 		((QTreeWidget *)object())->clear();
 	return true;
@@ -452,12 +444,14 @@ KVSO_CLASS_FUNCTION(treewidget,setAllColumnsShowFocus)
 
 KVSO_CLASS_FUNCTION(treewidget,hideListViewHeader)
 {
+	Q_UNUSED(c);
 	((QTreeWidget *)widget())->header()->hide();
 	return true;
 }
 
 KVSO_CLASS_FUNCTION(treewidget,showListViewHeader)
 {
+	Q_UNUSED(c);
 	((QTreeWidget *)widget())->header()->show();
 	return true;
 }
@@ -516,11 +510,7 @@ void KviKvsObject_treewidget::slotCurrentChanged(QTreeWidgetItem * i,QTreeWidget
 
 KVSO_CLASS_FUNCTION(treewidget,itemActivatedEvent)
 {
-	//FIXME: compatibility
-	emitSignal("returnPressed",c,c->params());//<----remove me
-	//
-
-	emitSignal("itemActivated",c,c->params());
+        emitSignal("itemActivated",c,c->params());
 	return true;
 }
 
@@ -634,7 +624,7 @@ void KviKvsTreeWidget::dragEnterEvent( QDragEnterEvent * e )
         e->acceptProposedAction();
 }
 
-void KviKvsTreeWidget::dragMoveEvent( QDragMoveEvent * e )
+void KviKvsTreeWidget::dragMoveEvent( QDragMoveEvent * )
 {
         // ?#!
 }

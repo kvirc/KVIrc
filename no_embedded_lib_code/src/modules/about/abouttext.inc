@@ -173,6 +173,31 @@ static const char * g_szAboutText = "" \
 "\"everything is possible, it only needs its time.\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Kai Wasserbäch</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"Curan (actually the correct form would be Cùran)" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"debian@carbon-project.org" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"The Debian guy in the team. Introduces bug fixes for" \
+"<br>" \
+"Debian Bugs and added the German manpage." \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"As Debian's Co-Maintainer of KVIrc I have a Debian-centric\"" \
+"<br>" \
+"\"view on some things, which is - apart from bugs reported to\"" \
+"<br>" \
+"\"Debian - the main force driving me to improve KVIrc.\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
 "<br><table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
 "<tr><td align=\"center\">" \
 "<font color=\"#000000\" size=\"+3\"><b>Translators</b></font>" \
@@ -911,6 +936,25 @@ static const char * g_szAboutText = "" \
 "</font></td></tr>" \
 "<tr><td align=\"center\"><font color=\"#606060\"><i>" \
 "\"I don't know what I want, but I know how to get it.\"" \
+"</i></font></td></tr>" \
+"</table><br><br>" \
+"<table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">" \
+"<tr><td align=\"center\">" \
+"<font color=\"#000000\" size=\"+2\"><b>Chris Petrik</b></font>" \
+"</td></tr>" \
+"<tr><td align=\"center\"><font color=\"#800020\" size=\"+2\"> (" \
+"cpet" \
+")</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#0000FF\" size=\"+1\">" \
+"[" \
+"chris at officialunix dot com" \
+"]" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#303030\">" \
+"FreeBSD Port mantainer" \
+"</font></td></tr>" \
+"<tr><td align=\"center\"><font color=\"#606060\"><i>" \
+"\"FreeBSD Gimp.\"" \
 "</i></font></td></tr>" \
 "</table><br><br>" \
 "<br>" \

@@ -81,7 +81,7 @@ protected:
 
 	QString           m_szJobPath;
 	QStringList       m_lJobFileList;
-	
+
 	int               m_iJobIndexHelper;
 
 	QString           m_szSelectedImage;

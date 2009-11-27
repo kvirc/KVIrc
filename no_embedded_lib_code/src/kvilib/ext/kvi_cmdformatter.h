@@ -59,6 +59,6 @@ namespace KviCommandFormatter
 
 	extern KVILIB_API void blockFromBuffer(KviStr &buffer);
 	extern KVILIB_API void blockFromBuffer(QString &buffer);
-};
+}
 
 #endif //_KVI_CMDFORMATTER_H_

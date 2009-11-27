@@ -5,7 +5,7 @@
 //
 //   This file is part of the KVirc irc client distribution
 //   Copyright (C) 2000 Krzysztof Godlewski
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2000-2009 Szymon Stefanek (pragma at kvirc dot net)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -103,6 +103,17 @@ KVSO_CLASS_FUNCTION(checkbox,setChecked)
 	KVSO_PARAMETERS_END(c)
 	((QCheckBox *)widget())->setChecked(bChecked);
 	return true;
+}
+
+KVSO_CLASS_FUNCTION(checkbox,setText)
+{
+        CHECK_INTERNAL_POINTER(widget())
+        QString szText;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("<text>",KVS_PT_STRING,0,szText)
+        KVSO_PARAMETERS_END(c)
+        ((QCheckBox *)widget())->setText(szText);
+        return true;
 }
 
 KVSO_CLASS_FUNCTION(checkbox,toggleEvent)

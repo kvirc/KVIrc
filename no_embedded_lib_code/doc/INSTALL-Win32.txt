@@ -13,6 +13,7 @@ Requisites:
       2000, preferably with service pack 4
       xp, preferably with at least service pack 2
       vista, preferably not :p
+      seven
 
       Notice: dos-based Windows operating system (95,98,98se,me) are not officially supported by KVIrc.
       Anyway, if you're still using such an old os, you've worst problems than this...
@@ -21,12 +22,15 @@ Requisites:
       [Configuration tool; needed to compile KVIrc, mandatory]
       Download it from http://www.cmake.org
       The package you want is called "Windows (Win32 Installer) cmake-2.6.4-win32-x86.exe" (version number may vary).
-      You need at least version 2.6 to compile KVirc.
+      You need at least version 2.6.4 to compile KVirc.
+      Version 2.8.0 will just work partially: its FindOpenSSl module is broken, but you can download a working one from here:
+      http://gdcm.svn.sf.net/viewvc/gdcm/trunk/CMake/FindOpenSSL.cmake?view=log (the working module will be part of cmake 2.8.1).
+      Recent versions of the cmake installer will ask if you want to add cmake to the system PATH: you want it, preferably for all users.
 
   - Qt 4 from Trolltech:
       [Graphic library, mandatory]
-      Download it from http://www.qtsoftware.com/downloads/windows-cpp
-      The package you want is called "qt-win-opensource-4.5.2-mingw.exe" (version number may vary).
+      Download it from http://www.qt-nokia.com/downloads/windows-cpp
+      The package you want is called "qt-win-opensource-4.5.3-mingw.exe" (version number may vary).
       You need at least Qt 4.5 upwards.
 
   - MinGW from the MinGW team:
@@ -34,25 +38,46 @@ Requisites:
       While installing Qt4, you will be asked to perform a minimal install of MinGW; you can simply answer 'yes' to get this installed.
       MinGW is still based on the 3.x brach of gcc; if you want to test the new gcc4 (it should create faster executables), follow these
       instructions:
-      Point your browset at: http://sourceforge.net/projects/mingw/ , follow the "download" link and get the "Automated MinGW Installer MinGW 5.1.4" (version number may vary) and the "GCC Version 4 Testing: gcc-4.3.0-20080502-mingw32-alpha" packages (version may vary). First execute the automated installer, then uncompress the gcc4 archive and copy it over the installation directory created by the installer (overwriting the old gcc3). You can also use TDM's GCC/mingw32 Builds (these unofficial mingw packages ships with gcc4 included) you can find here: http://www.tdragon.net/recentgcc/.
+      Point your browser at: http://sourceforge.net/projects/mingw/ , follow the "view all files" link and download "Automated MinGW Installer" (MinGW-5.1.6.exe)
+      (version number may vary). Run the installer, choose the "Current" package and select "MinGW base tools", "g++ compiler", "MinGW Make" components.
+      Then go back to http://sourceforge.net/projects/mingw/ , follow the "view all files" => "GCC Version 4" (Current Release_gcc-4.4.0)" link.
+      You'll find a file called "gcc-4.40-mingw32-notes.txt", read it carefully, at least twice. Then download these files:
+		gcc-core-4.4.0-mingw32-dll.tar.gz
+		gcc-core-4.4.0-mingw32-bin.tar.gz
+		gcc-c++-4.4.0-mingw32-dll.tar.gz
+		gcc-c++-4.4.0-mingw32-bin.tar.gz
+		pthreads-w32-2.8.0-mingw32-dll.tar.gz
+		gmp-4.2.4-mingw32-dll.tar.gz
+		mpfr-2.4.1-mingw32-dll.tar.gz
+      Uncompress all the gcc4 archives and copy it over the installation directory previously created by the mingw installer (overwriting the old gcc3).
+      You can also use TDM's GCC/mingw32 Builds (these unofficial mingw packages ships with gcc4 included) you can find here: http://www.tdragon.net/recentgcc/.
       Beware that old Qt versions (4.4.x) are packing some old win32api headers, that breaks compilation with gcc4. You can read more info about
       this issue here: http://www.qtcentre.org/forum/f-installation-and-deployment-5/t-building-qt-443-with-gcc-432-on-windows-xp-16697.html
 
   - OpenSSL compiled for Win32 from Shining Light Productions:
       [Enc/Decrypt library; needed to secure your irc sessions, optional]
       Download it from http://www.slproweb.com/products/Win32OpenSSL.html
-      The package you want is called "Win32 OpenSSL v0.9.8k" (version number may vary; there should be a notice like "Recommended for software developers" in the package description).
+      The package you want is called "Win32 OpenSSL v0.9.8l" (version number may vary; there should be a notice like "Recommended for software developers" in the package description).
       Any recent version should work; general rule: more recent means more secure.
-      Note: probably GnuWin32's version (see infos for Zlib) works too.
+      Pleae note that newer openssl versions from www.slproweb.com needs a specific version of Microsoft Visual Studio 2008 runtimes to work (this sucks).
 
   - Zlib compiled for Win32:
       [Compression library; needed for many stuffs, optional]
-      Many projects create win32 versions of zlib; a part of them support MinGW too. You can find a working version on GnuWin32's project website: http://gnuwin32.sourceforge.net/packages/zlib.htm .
-      The package you want is "Complete package, except sources" (version number may vary).
+      MinGW offers a zlib package: You'll need to download from http://sourceforge.net/projects/mingw/ the packages:
+		zlib-1.2.3-1-mingw32-dll-1.tar.gz
+		zlib-1.2.3-1-mingw32-dev-1.tar.gz
+      And uncompress them inside your mingw installation directory.
 
   - Perl for Win32:
-      [Programming language; needed for documentation creation and optional scripting support, mandatory by now]
-      Any win32 version will work; We advice you to use the version you can find at http://www.activestate.com/store/activeperl/download .
+      [Programming language; needed for documentation creation and optional scripting support]
+      Any win32 version will work; We advice you to use the version you can find at http://www.activestate.com/activeperl/downloads/ .
+      Perl is needed to extract documentation from the source files and generate help files for kvirc.
+      You'll need to run the following command from cmd prompt (start->run->cmd) after perl installation: "ppm install dmake", otherway at every attempt to run perl it will append a nice colored message that breaks compilation and can't be disabled (really braindead).
+
+  - Python for Win32:
+      [Programming language; optional scripting support]
+      Any win32 version will work; We advice you to use the version you can find at http://www.activestate.com/activepython/downloads/ .
+      Please note that we are currently supporting the 2.x version of python (currently 2.6). Python3000 (aka python3k) is not backwards compatible and supported by now.
 
   - GNU GetText for Win32:
       [Localization library; needed to translate kvirc interface into your own language, optional]
@@ -66,16 +91,15 @@ Requisites:
       Please refer to the "Getting phonon to work with mplayer frontend" at the end of this document.
 
   - Subversion cli for windows:
-	  [Versioning tool; needed for cmake to automatically set the correct revision number in kvirc build]
-	  Any version will work; We advice you to use the version you can find at http://subversion.tigris.org/servlets/ProjectDocumentList?FolderID=8100 .
-	  The package you want is called "Setup-Subversion-1.6.3.msi" (version numbers may vary).
-	  If you don't want to install subversion cli because you are already using another subversion tool (like TortoiseSvn), you can just force the correct svn revision passing to cmake the -DMANUAL_REVISION=xxxx parameter.
+      [Versioning tool; needed for cmake to automatically set the correct revision number in kvirc build]
+      Any version will work; We advice you to use the version you can find at http://subversion.tigris.org/servlets/ProjectDocumentList?FolderID=8100 .
+      The package you want is called "Setup-Subversion-1.6.6.msi" (version numbers may vary).
+      If you don't want to install subversion cli because you are already using another subversion tool (like TortoiseSvn), you can just force the correct svn revision passing to cmake the -DMANUAL_REVISION=xxxx parameter.
 
   - Nullsoft scriptable install system (NSIS)
-	  [Installer packages creator; needed if you want to create an installer package for kvirc]
+      [Installer packages creator; needed if you want to create an installer package for kvirc]
       Get it at http://nsis.sourceforge.net/Download ; the package you want is called "nsis-2.45-setup.exe" (version numbers may vary).
-	  Please note that the kvirc nsis script doesn't support -DCOEXISTENCE cmake flag by now, so you'll need to disable it before compiling if you want to create an installer package.
-	  
+
 Further reccomended download if you plan to develop KVIrc:
 
   - GNU Debugger (gdb) for Win32:
@@ -96,17 +120,19 @@ Then install the rest of the packages. Remember to write down the installation p
 Now you have to define some environmental variable:
 
   CMAKE_INCLUDE_PATH
-  Set it to the include subdirectories of the paths where you installed mingw, zlib and openssl. Example: 
-  C:\ZLIB\INCLUDE;C:\MINGW\INCLUDE;C:\openssl\include
+  Set it to the include subdirectories of the paths where you installed mingw and openssl (and zlib, if you're not using mingw's zlib package). Example:
+  C:\MINGW\INCLUDE;C:\openssl\include
 
   CMAKE_LIBRARY_PATH
-  Set it to the libs subdirectories of the paths where you installed mingw, zlib. If the library packages you are using support several compilers, be sure you're including the right libraries directory (tipically named MinGW). Add c:\windows\system32 too (the path to the system32 durectory of your windows installation). Example:
-  C:\ZLIB\LIB;C:\MINGW\LIB;C:\openssl\lib\mingw;c:\windows\system32
+  Set it to the libs subdirectories of the paths where you installed mingw and openssl (and zlib, if you're not using mingw's zlib package).
+  If the library packages you are using support several compilers, be sure you're including the right libraries directory (tipically named MinGW).
+  Add c:\windows\system32 too (the path to the system32 directory of your windows installation). Example:
+  C:\MINGW\LIB;C:\openssl\lib\mingw;c:\windows\system32
 
   PATH
   Add to the system PATH the bin directories of CMake, Qt, MinGW. If you plan to use gdb and/or straceNT, add their bin directories too. Example:
-  C:\Program Files\CMake 2.6\bin;C:\QT\4.4.0\BIN\;C:\MINGW\BIN
-  Note: if you installed subversion, it probably already added itself to the path.
+  C:\Program Files\CMake 2.6\bin;C:\QT\4.5.3\BIN\;C:\MINGW\BIN
+  Note: Cmake, perl, python, subverion probably added themselves automatically to the path.
 
 
 Now you should be ready to compile KVIrc.
@@ -149,12 +175,17 @@ Common errors, pitfalls, ..
   ----------
   This is a simple warning, it doesn't block compilation or affects any functionality.
 
-- During the compilation, we get some errors like this one:
+- During the compilation, we get a warning like this one:
   ----------
   C:/kvirctrunk/src/kvilib/system/kvi_time.h:0: Warning: No relevant classes found. No output generated.
   ----------
   In the compilation we call qt's moc to parse headers files and expand qt macros; that warning simply means that moc found nothing to expand in that header file. We can fix this removing headers that doesn't need to be moc-ed from the lists in CMakeLists.txt.
 
+- During the compilation, we get a lot of warnings like:
+  ----------
+  Warning: visibility attribute not supported in this configuration; ignored
+  ----------
+  The problem here is that visibility is an ELF feature, and windoze uses PE format, not ELF.
 
 
 Getting phonon to work with mplayer frontend
@@ -164,7 +195,7 @@ Getting phonon to work with mplayer frontend
   VideoLAN: you need to use svn version; more info at http://www.videolan.org/ (untested with kvirc)
   Please note that to use the mplayer backend you have to install smplayer to C:\Program Files\SMPlayer\ . If your are using a not-english localized version of windows, you'll probably need to change the proposed path to this one during installation.
 - Get latest phonon-vlc-mplayer source from svn
-- This frontend wants to install the mingwm10.dll library in its binary output directory; you'll probably need to fit the default path in trunk/CMakelists.txt from 
+- This frontend wants to install the mingwm10.dll library in its binary output directory; you'll probably need to fit the default path in trunk/CMakelists.txt from
   install(FILES C:/mingw/bin/mingwm10.dll DESTINATION ${BIN_INSTALL_DIR})
   to the right path where you have installed mingw in your system.
 - go to /trunk/build/ and run:

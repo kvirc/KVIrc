@@ -61,7 +61,7 @@ class(minesweeper,widget)
 			{
 				%row = $rand($($$->%rows - 1))
 				%col = $rand($($$->%cols - 1))
-			} 
+			}
 			$$->%label{%row,%col}->%bIsMine = 1
 			# increase the mine count for the adiacent cells
 			if(%row > 0)
@@ -127,5 +127,5 @@ alias(mines)
 {
 	%m = $new(minesweeper)
 	%m->$show()
-	
+
 }

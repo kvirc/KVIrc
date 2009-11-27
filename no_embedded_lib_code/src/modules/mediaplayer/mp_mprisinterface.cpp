@@ -50,7 +50,7 @@ QDBusArgument &operator<<(QDBusArgument &argument, const MPRISPlayerStatus &stat
 	argument << status.Play << status.Random << status.RepeatCurrent << status.RepeatPlaylist;
 	argument.endStructure();
 	return argument;
-};
+}
 
 const QDBusArgument &operator>>(const QDBusArgument &argument, MPRISPlayerStatus &status)
 {
@@ -58,7 +58,7 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, MPRISPlayerStatus
 	argument >> status.Play >> status.Random >> status.RepeatCurrent >> status.RepeatPlaylist;
 	argument.endStructure();
 	return argument;
-};
+}
 
 KviMPRISInterface::KviMPRISInterface()
 : KviMediaPlayerInterface()
@@ -341,6 +341,10 @@ int KviAudaciousInterface::getPlayListPos()
 
 bool KviAudaciousInterface::quit()
 {
+	if (KviMPRISInterface::quit())
+		return TRUE;
+
+	/* compability with older versions */
 	MPRIS_SIMPLE_CALL("/Player", "Quit")
 }
 
@@ -369,6 +373,12 @@ QString KviAudaciousInterface::mrl()
 
 KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
 {
+	KviMediaPlayerInterface::PlayerStatus status;
+	status = KviMPRISInterface::status();
+	if (status != KviMediaPlayerInterface::Unknown)
+		return status;
+
+	/* compability with older versions */
 	QDBusInterface dbus_iface(m_szServiceName, "/Player",
 				"org.freedesktop.MediaPlayer", QDBusConnection::sessionBus());
 	if (!dbus_iface.isValid())
@@ -386,6 +396,11 @@ KviMediaPlayerInterface::PlayerStatus KviAudaciousInterface::status()
 
 int KviAudaciousInterface::length()
 {
+	int length = KviMPRISInterface::length();
+	if (length != -1)
+		return length;
+
+	/* compability with older versions */
 	MPRIS_CALL_METHOD("GetMetadata", -1)
 
 	foreach (QVariant v, reply.arguments()) {
@@ -481,6 +496,23 @@ KviQmmpInterface::KviQmmpInterface()
 : KviMPRISInterface()
 {
         m_szServiceName = "org.mpris.qmmp";
+}
+
+/* xmms2 interface */
+MP_IMPLEMENT_DESCRIPTOR(
+	KviXmms2Interface,
+	"xmms2",
+	__tr2qs_ctx(
+		"An interface to the xmms2 media player.\n" \
+		"Download it from http://wiki.xmms2.xmms.se/index.php/Main_Page\n",
+		"mediaplayer"
+	)
+)
+
+KviXmms2Interface::KviXmms2Interface()
+: KviMPRISInterface()
+{
+	m_szServiceName = "org.mpris.xmms2";
 }
 
 #endif //!COMPILE_ON_WINDOWS

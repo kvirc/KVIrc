@@ -31,18 +31,19 @@ SUBDIRS(
 	mask math mediaplayer mircimport my
 	notifier
 	objects options
-	perlcore popupeditor proxydb
+	perlcore popupeditor proxydb pythoncore
 	raweditor regchan reguser rijndael rot13
 	serverdb setup sharedfile sharedfileswindow snd socketspy spaste str system
 	texticons term theme tip tmphighlight toolbar toolbareditor torrent trayicon
 	upnp
 	url
 	window
-
-	# forgotten ?
-	# offer
 )
 
 IF(COMPILE_PERL_SUPPORT)
 	SUBDIRS(perl)
+ENDIF()
+
+IF(COMPILE_PYTHON_SUPPORT)
+	SUBDIRS(python)
 ENDIF()

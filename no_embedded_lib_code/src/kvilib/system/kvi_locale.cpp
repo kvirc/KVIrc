@@ -998,7 +998,7 @@ namespace KviLocale
 		}
 		return g_pMainCatalogue->translateToQString(text);
 	}
-};
+}
 
 KviTranslator::KviTranslator(QObject * par,const char *)
 : QTranslator(par)

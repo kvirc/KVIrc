@@ -45,7 +45,7 @@ public:
 	virtual bool isFunctionCall(); // gets the m_pRightSide result
 	virtual bool canEvaluateInObjectScope(); // gets the m_pObjectReference result
 	//virtual bool canReleaseResult(); // gets the m_pRightSide result
-	
+
 	virtual bool evaluateReadOnly(KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);
 	virtual KviKvsRWEvaluationResult * evaluateReadWrite(KviKvsRunTimeContext * c);
 	virtual bool evaluateReadOnlyInObjectScope(KviKvsObject * o,KviKvsRunTimeContext * c,KviKvsVariant * pBuffer);

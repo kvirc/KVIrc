@@ -39,7 +39,7 @@
 #include "kvi_identityprofile.h"
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_hbox.h"
-#include "kvi_tal_treewidget.h"
+#include <QTreeWidget>
 
 #include <QCheckBox>
 #include <QLineEdit>
@@ -148,7 +148,7 @@ KviAvatarDownloadDialog::~KviAvatarDownloadDialog()
 void KviAvatarDownloadDialog::startDownload()
 {
 	connect(m_pRequest,SIGNAL(terminated(bool)),this,SLOT(downloadTerminated(bool)));
-	connect(m_pRequest,SIGNAL(status(const char *)),this,SLOT(downloadMessage(const char *)));
+	connect(m_pRequest,SIGNAL(status(const QString &)),this,SLOT(downloadMessage(const QString &)));
 
 	QString tmp = m_szUrl;
 	g_pIconManager->urlToCachedFileName(tmp);
@@ -175,14 +175,14 @@ void KviAvatarDownloadDialog::cancelClicked()
 	reject();
 }
 
-void KviAvatarDownloadDialog::downloadMessage(const char * message)
+void KviAvatarDownloadDialog::downloadMessage(const QString &szMsg)
 {
-	if(message)
+	if(!szMsg.isEmpty())
 	{
 		QString txt = "<center>";
-		txt += message;
+		txt += szMsg;
 		txt += "</center>";
-		m_pOutput->setText(message);
+		m_pOutput->setText(szMsg);
 	}
 }
 
@@ -422,7 +422,7 @@ void KviIdentityGeneralOptionsWidget::commit()
 {
 	KviOptionsWidget::commit();
 
-	if(KVI_OPTION_STRING(KviOption_stringRealname).isEmpty()) KVI_OPTION_STRING(KviOption_stringUsername)=KVI_DEFAULT_REALNAME;
+	if(KVI_OPTION_STRING(KviOption_stringRealname).isEmpty()) KVI_OPTION_STRING(KviOption_stringRealname)=KVI_DEFAULT_REALNAME;
 	if(KVI_OPTION_STRING(KviOption_stringUsername).isEmpty()) KVI_OPTION_STRING(KviOption_stringUsername)=KVI_DEFAULT_USERNAME;
 
 	KVI_OPTION_STRING(KviOption_stringNickname2) = m_szAltNicknames[0];
@@ -603,7 +603,7 @@ void KviIdentityAvatarOptionsWidget::chooseAvatar()
 		if((m_pLocalAvatar->pixmap()->width() > 1024) || (m_pLocalAvatar->pixmap()->height() > 768))
 		{
 			QMessageBox::warning(this,__tr2qs_ctx("Avatar Might Be Too Big - KVIrc","options"),
-						__tr2qs_ctx("The avatar you have choosen is bigger than 1024x768 pixels.<br>" \
+						__tr2qs_ctx("The avatar you have chosen is bigger than 1024x768 pixels.<br>" \
 							"Such a big image will not be seen on all the user monitors<br>" \
 							"and will probably be scaled by the remote clients with poor quality<br>" \
 							"algorithms to improve performance. You *should* scale it manually<br>" \
@@ -685,7 +685,7 @@ KviIdentityProfileOptionsWidget::KviIdentityProfileOptionsWidget(QWidget * pPare
 	connect(m_pProfilesCheck,SIGNAL(toggled(bool)),this,SLOT(toggleControls()));
 
 	// Profiles list
-	m_pTreeWidget = new KviTalTreeWidget(this);
+	m_pTreeWidget = new QTreeWidget(this);
 	m_pTreeWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 	m_pTreeWidget->setAllColumnsShowFocus(true);
 
@@ -724,11 +724,11 @@ KviIdentityProfileOptionsWidget::KviIdentityProfileOptionsWidget(QWidget * pPare
 	// Fill in the treewidget
 	if(pSet && pSet->profiles())
 	{
-		KviTalTreeWidgetItem * pItem;
+		QTreeWidgetItem * pItem;
 		KviPointerList<KviIdentityProfile> * pList = pSet->profiles();
 		for(KviIdentityProfile * pProfile = pList->first(); pProfile; pProfile = pList->next())
 		{
-			pItem = new KviTalTreeWidgetItem(m_pTreeWidget);
+			pItem = new QTreeWidgetItem(m_pTreeWidget);
 			pItem->setText(0,pProfile->name());
 			pItem->setText(1,pProfile->network());
 			pItem->setText(2,pProfile->nick());
@@ -763,7 +763,7 @@ void KviIdentityProfileOptionsWidget::addProfileEntry()
 
 	if(editor.editProfile(&profile))
 	{
-		KviTalTreeWidgetItem * pItem = new KviTalTreeWidgetItem(m_pTreeWidget);
+		QTreeWidgetItem * pItem = new QTreeWidgetItem(m_pTreeWidget);
 		pItem->setText(0,profile.name());
 		pItem->setText(1,profile.network());
 		pItem->setText(2,profile.nick());
@@ -775,7 +775,7 @@ void KviIdentityProfileOptionsWidget::addProfileEntry()
 
 void KviIdentityProfileOptionsWidget::editProfileEntry()
 {
-	KviTalTreeWidgetItem * pItem = (KviTalTreeWidgetItem *)m_pTreeWidget->currentItem();
+	QTreeWidgetItem * pItem = (QTreeWidgetItem *)m_pTreeWidget->currentItem();
 	if(!pItem)
 		return;
 
@@ -802,7 +802,7 @@ void KviIdentityProfileOptionsWidget::editProfileEntry()
 
 void KviIdentityProfileOptionsWidget::delProfileEntry()
 {
-	KviTalTreeWidgetItem * pItem = (KviTalTreeWidgetItem *)m_pTreeWidget->currentItem();
+	QTreeWidgetItem * pItem = (QTreeWidgetItem *)m_pTreeWidget->currentItem();
 	if(!pItem)
 		return;
 
@@ -816,10 +816,10 @@ void KviIdentityProfileOptionsWidget::commit()
 	if(m_pTreeWidget->topLevelItemCount())
 	{
 		KviIdentityProfileSet::instance()->setEnabled(m_pProfilesCheck->isChecked());
-		KviTalTreeWidgetItem * pItem;
+		QTreeWidgetItem * pItem;
 		for(int i=0; i < m_pTreeWidget->topLevelItemCount(); i++)
 		{
-			pItem = (KviTalTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
+			pItem = (QTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
 
 			KviIdentityProfile * pProfile = new KviIdentityProfile();
 			pProfile->setName(pItem->text(0));
@@ -912,7 +912,7 @@ KviIdentityProfileEditor::KviIdentityProfileEditor(QWidget * pParent)
 	connect(m_pBtnOk,SIGNAL(clicked()),this,SLOT(okPressed()));
 
 	pLayout->setColumnStretch(1,1);
-	
+
 	setMinimumWidth(250);
 }
 
@@ -961,7 +961,7 @@ void KviIdentityProfileEditor::toggleButton(const QString & szText)
 		(szText.isEmpty())
 	)
 		bEnabled = false;
-	
+
 	m_pBtnOk->setEnabled(bEnabled);
 }
 

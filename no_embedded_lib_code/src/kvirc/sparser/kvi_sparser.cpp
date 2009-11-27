@@ -23,7 +23,7 @@
 //=============================================================================
 
 #define _KVI_SPARSER_CPP_
- 
+
 #include "kvi_sparser.h"
 #include "kvi_window.h"
 #include "kvi_out.h"
@@ -59,14 +59,14 @@ void KviServerParser::parseMessage(const char * message,KviIrcConnection * pConn
 				KviKvsVariantList parms;
 				parms.append(pConnection->decodeText(msg.safePrefix()));
 				parms.append(pConnection->decodeText(msg.command()));
-	
+
 				for(KviStr * str = msg.firstParam();str;str = msg.nextParam())
 					parms.append(pConnection->console()->decodeText(str->ptr()));
 
 				if(KviKvsEventManager::instance()->triggerRaw(msg.numeric(),pConnection->console(),&parms))
 					msg.setHaltOutput();
 			}
-	
+
 			messageParseProc proc = m_numericParseProcTable[msg.numeric()];
 			if(proc)
 			{
@@ -87,7 +87,7 @@ void KviServerParser::parseMessage(const char * message,KviIrcConnection * pConn
 				if(msg.paramCount() >= 3) // might look like :prefix RPL_WHOIS* <target> <nick> [?] :<something>
 				{
 					kvi_time_t tNow = kvi_unixTime();
-					
+
 					if((tNow - pConnection->stateData()->lastReceivedWhoisReply()) < 10)
 					{
 						// we're in the middle of a RPL_WHOIS* sequence and haven't
@@ -106,22 +106,22 @@ void KviServerParser::parseMessage(const char * message,KviIrcConnection * pConn
 					if(!msg.unrecognized())return; // parsed
 				}
 			}
-	
-	
+
+
 			if(KviKvsEventManager::instance()->hasAppHandlers(KviEvent_OnUnhandledLiteral))
 			{
 				KviKvsVariantList parms;
 				parms.append(pConnection->decodeText(msg.safePrefix()));
 				parms.append(pConnection->decodeText(msg.command()));
-	
+
 				for(KviStr * str = msg.firstParam();str;str = msg.nextParam())
 					parms.append(pConnection->console()->decodeText(str->ptr()));
-					
+
 				if(KviKvsEventManager::instance()->trigger(KviEvent_OnUnhandledLiteral,pConnection->console(),&parms))
 					msg.setHaltOutput();
 			}
 		}
-	
+
 		// unhandled || unrecognized
 		if(!msg.haltOutput() && !_OUTPUT_MUTE)
 		{

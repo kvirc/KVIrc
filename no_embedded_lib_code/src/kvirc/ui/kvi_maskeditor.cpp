@@ -36,8 +36,8 @@
 #include <QLabel>
 #include <QValidator>
 
-KviMaskItem::KviMaskItem(KviTalTreeWidget* parent,KviMaskEntry* entry)
-:KviTalTreeWidgetItem(parent), m_Mask(*entry)
+KviMaskItem::KviMaskItem(QTreeWidget* parent,KviMaskEntry* entry)
+:QTreeWidgetItem(parent), m_Mask(*entry)
 {
 	QDateTime date;
 	date.setTime_t(mask()->uSetAt);
@@ -50,7 +50,7 @@ KviMaskItem::~KviMaskItem()
 {
 }
 
-int KviMaskItem::compare ( KviTalTreeWidgetItem * i, int col, bool) const
+int KviMaskItem::compare ( QTreeWidgetItem * i, int col, bool) const
 {
 	if(col==2)
 	{
@@ -184,7 +184,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	g->addWidget(l,1,1);
 	g->addWidget(l,2,0,1,2);
 
-	m_pMaskBox = new KviTalTreeWidget(this);
+	m_pMaskBox = new QTreeWidget(this);
 	m_pMaskBox->setFocusPolicy(Qt::ClickFocus);
 	m_pMaskBox->setFocusProxy(this);
 	m_pMaskBox->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
@@ -306,7 +306,7 @@ void KviMaskEditor::removeMask(KviMaskEntry *e)
 	}
 }
 
-void KviMaskEditor::itemDoubleClicked( KviTalTreeWidgetItem * pItem, int )
+void KviMaskEditor::itemDoubleClicked( QTreeWidgetItem * pItem, int )
 {
 	if(pItem)
 	{

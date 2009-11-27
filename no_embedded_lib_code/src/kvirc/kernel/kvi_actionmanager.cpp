@@ -87,14 +87,14 @@ KviActionManager::~KviActionManager()
 		++it;
 	}
 	delete m_pActions;
-	
+
 	delete m_pCategories;
 }
 
 void KviActionManager::load(const QString &szFileName)
 {
 	KviConfig cfg(szFileName,KviConfig::Read);
-	
+
 	KviConfigIterator it(*(cfg.dict()));
 	while(it.current())
 	{
@@ -110,7 +110,7 @@ void KviActionManager::save(const QString &szFileName)
 {
 	KviConfig cfg(szFileName,KviConfig::Write);
 	cfg.clear();
-	
+
 	KviPointerHashTableIterator<QString,KviAction> it(*m_pActions);
 	while(KviAction * a = it.current())
 	{
@@ -137,7 +137,7 @@ void KviActionManager::killAllKvsUserActions()
 		}
 		++it;
 	}
-	
+
 	dying.clear(); // bye :)
 }
 

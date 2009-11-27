@@ -53,7 +53,7 @@ KviCtcpPageDialog::KviCtcpPageDialog()
 	g->addWidget(m_pTabBar,1,0);
 
 	g->setRowStretch(0,1);
-	g->addItem(new QSpacerItem(0, 15), 2, 0); 
+	g->addItem(new QSpacerItem(0, 15), 2, 0);
 
 	m_pCloseButton = new QPushButton(__tr2qs("Close"),this);
 	connect(m_pCloseButton,SIGNAL(clicked()),this,SLOT(die()));

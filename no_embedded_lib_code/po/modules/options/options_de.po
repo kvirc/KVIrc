@@ -9,18 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-07-17 22:38+0200\n"
-"PO-Revision-Date: 2009-04-15 01:25+0200\n"
+"POT-Creation-Date: 2009-11-20 23:15+0100\n"
+"PO-Revision-Date: 2009-08-09 23:41+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/options/optw_avatar.cpp:72
-#: src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " Bytes"
 
@@ -35,12 +34,11 @@ msgstr " Tage"
 msgid " lines"
 msgstr " Zeilen"
 
-#: src/modules/options/optw_logging.cpp:51
+#: src/modules/options/optw_logging.cpp:50
 msgid " min"
 msgstr "Min."
 
-#: src/modules/options/optw_lag.cpp:45
-#: src/modules/options/optw_lag.cpp:56
+#: src/modules/options/optw_lag.cpp:45 src/modules/options/optw_lag.cpp:56
 #: src/modules/options/optw_connection.cpp:151
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
@@ -444,7 +442,7 @@ msgstr "<center>Bitte warten, während die Liste heruntergeladen wird</center>"
 msgid "<center>Put here a brief description of the network.</center>"
 msgstr "<center>Hier eine Kurzbeschreibung des Netzwerkes angeben.</center>"
 
-#: src/modules/options/optw_logging.cpp:53
+#: src/modules/options/optw_logging.cpp:52
 msgid ""
 "<center>Save logs with the current interval<br>Set to 0 to disable this "
 "feature</center>"
@@ -1285,7 +1283,7 @@ msgid ""
 "<center>This option will cause KVIrc to minimize the console window after "
 "successfully logging into a server.</center>"
 msgstr ""
-"<center>Diese Option wird KVIrc veranlassen, das Console-Fenster nach "
+"<center>Diese Option wird KVIrc veranlassen, das Konsolenfenster nach "
 "erfolgreichem Login zu minimieren.</center>"
 
 #: src/modules/options/optw_connection.cpp:58
@@ -1336,7 +1334,7 @@ msgstr ""
 
 #: src/modules/options/optw_dcc.cpp:190
 msgid ""
-"<center>This option will cause succesfully terminated transfers to be "
+"<center>This option will cause successfully terminated transfers to be "
 "automatically removed from the transfer window.</center>"
 msgstr ""
 "<center>Diese Option veranlasst KVIrc, erfolgreich abgeschlossene Tranfers "
@@ -1580,10 +1578,9 @@ msgid ""
 "that implements only a limited subset of the Identification Protocol "
 "specifications. If it is possible, install a real ident daemon.</p>"
 msgstr ""
-"<p><b>Warnung:</b><br>Dies ist ein <b>nicht-RFC1413/913-kompilanter</b> "
-"ident-Daemon, der nur ein begrenzte Anzahl an Spezifikationen des IDENTD-"
-"Dienstes implementiert. Wenn möglich, einen richtigen ident-Daemon "
-"installieren.</p>"
+"<p><b>Warnung:</b><br>Dies ist ein <b>nicht-RFC1413-konformer</b> ident-"
+"Daemon, der nur ein begrenzte Anzahl an Spezifikationen des IDENTD-Dienstes "
+"implementiert. Wenn möglich, einen richtigen ident-Daemon installieren.</p>"
 
 #: src/modules/options/optw_connection.cpp:253
 msgid ""
@@ -1627,29 +1624,17 @@ msgstr "Abgebrochen"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Fehlerhafte RESUME-Anfragen akzeptieren (mIRC file.ext)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:160
-msgid "Active Background"
-msgstr "Aktiver Hintergrund"
-
 #: src/modules/options/optw_servers.cpp:1166
 msgid "Active Configuration"
 msgstr "Aktive Konfiguration"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:205
+#: src/modules/options/optw_interfacelookglobal.cpp:183
 msgid "Active High-Contrast Foreground (Primary)"
 msgstr "Aktiver Vordergrund mit hohem Kontrast (Primär)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:206
+#: src/modules/options/optw_interfacelookglobal.cpp:184
 msgid "Active High-Contrast Foreground (Secondary)"
 msgstr "Aktiver Vordergrund mit hohem Kontrast (Sekundär)"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:162
-msgid "Active Text (Primary)"
-msgstr "Aktiver Text (Primär)"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:163
-msgid "Active Text (Secondary)"
-msgstr "Aktiver Text (Sekundär)"
 
 #: src/modules/options/optw_connection.cpp:200
 msgid "Active window"
@@ -1718,7 +1703,7 @@ msgstr "Alarm für hervorgehobene Wörter"
 msgid "Alert for query messages"
 msgstr "Bei Anfragenachrichten alarmieren"
 
-#: src/modules/options/optw_messages.cpp:383
+#: src/modules/options/optw_messages.cpp:387
 msgid "Alert level:"
 msgstr "Alarmstufe:"
 
@@ -1774,12 +1759,11 @@ msgstr "An SOURCE-Antwort anhängen:"
 msgid "Append to VERSION reply:"
 msgstr "An VERSION-Antwort anhängen:"
 
-#: src/modules/options/optw_logging.cpp:50
+#: src/modules/options/optw_logging.cpp:49
 msgid "Auto flush logs every"
 msgstr "Schreibe Logdateien automatisch alle"
 
-#: src/modules/options/optw_sound.cpp:68
-#: src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Automatisch erkennen"
 
@@ -1791,8 +1775,7 @@ msgstr "Automatisch feststellen"
 msgid "Automatically Log"
 msgstr "Automatisch Loggen"
 
-#: src/modules/options/optw_dcc.cpp:175
-#: src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Automatisch akzeptieren"
@@ -1845,8 +1828,8 @@ msgstr "\"Abwesend\"-Nick"
 msgid "Away:"
 msgstr "Abwesend:"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:182
-#: src/modules/options/optw_interfacelookglobal.cpp:202
+#: src/modules/options/optw_interfacelookglobal.cpp:160
+#: src/modules/options/optw_interfacelookglobal.cpp:180
 msgid "Background"
 msgstr "Hintergrund"
 
@@ -1855,8 +1838,8 @@ msgstr "Hintergrund"
 msgid "Background Colors"
 msgstr "Hintergrundfarben"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:183
-#: src/modules/options/optw_interfacelookglobal.cpp:210
+#: src/modules/options/optw_interfacelookglobal.cpp:161
+#: src/modules/options/optw_interfacelookglobal.cpp:188
 msgid "Background Image"
 msgstr "Hintergrundbild"
 
@@ -1882,7 +1865,7 @@ msgstr "Hintergrundbild"
 msgid "Background image:"
 msgstr "Hintergrundbild:"
 
-#: src/modules/options/optw_messages.cpp:358
+#: src/modules/options/optw_messages.cpp:362
 msgid "Background:"
 msgstr "Hintergrund:"
 
@@ -1930,8 +1913,7 @@ msgstr "CTCP Antworten"
 msgid "Cache IP address"
 msgstr "IP-Adresse zwischenspeichern"
 
-#: src/modules/options/dialog.cpp:242
-#: src/modules/options/optw_identity.cpp:95
+#: src/modules/options/dialog.cpp:242 src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
 #: src/modules/options/optw_nickserv.cpp:128
@@ -1945,8 +1927,7 @@ msgstr "Abbrechen"
 #: src/modules/options/optw_notifier.cpp:62
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59
-#: src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
 #: src/modules/options/optw_ircview.cpp:67
 #: src/modules/options/optw_ircview.cpp:72
 #: src/modules/options/optw_userlist.cpp:144
@@ -2007,11 +1988,11 @@ msgstr "Kindfenster-Undurchsichtigkeit:"
 msgid "Choose Avatar - KVIrc"
 msgstr "Avatar auswählen - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:556
+#: src/modules/options/optw_messages.cpp:560
 msgid "Choose a Filename - KVIrc"
 msgstr "Dateiname auswählen - KVIrc"
 
-#: src/modules/options/optw_messages.cpp:609
+#: src/modules/options/optw_messages.cpp:613
 msgid "Choose a Filename - KVIrc "
 msgstr "Dateiname auswählen - KVIrc "
 
@@ -2031,27 +2012,24 @@ msgstr "Liste löschen"
 msgid "Close in tray"
 msgstr "In Tray schließen"
 
-#: src/modules/options/dialog.cpp:229
-#: src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Um alle Änderungen zu akzeptieren, Dialog schliessen"
 
-#: src/modules/options/dialog.cpp:244
-#: src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Um alle Änderungen zu verwerfen, Dialog schliessen"
 
 #: src/modules/options/optw_input.cpp:146
 msgid "Commandline in user-friendly mode by default"
-msgstr "Kommandozeile standardmäßig in benutzerfreundlichem Modus"
+msgstr "Kommandozeile standardmäßig im benutzerfreundlichen Modus"
 
 #: src/modules/options/dialog.cpp:237
 msgid "Commit all changes immediately."
 msgstr "Änderungen sofort anwenden"
 
 #: src/modules/options/optw_proxy.cpp:106
-#: src/modules/options/optw_notify.cpp:41
-#: src/modules/options/optw_lag.cpp:43
+#: src/modules/options/optw_notify.cpp:41 src/modules/options/optw_lag.cpp:43
 #: src/modules/options/optw_connection.cpp:217
 msgid "Configuration"
 msgstr "Konfiguration"
@@ -2086,7 +2064,7 @@ msgstr "Konsole"
 
 #: src/modules/options/optw_logging.cpp:44
 msgid "Console windows"
-msgstr "Console-Fenster"
+msgstr "Konsolenfenster"
 
 #: src/modules/options/optw_input.cpp:43
 msgid "Control char color"
@@ -2300,7 +2278,7 @@ msgstr "URL-Hervorhebung aktivieren"
 
 #: src/modules/options/optw_userlist.cpp:238
 msgid "Enable animated avatars"
-msgstr "Animierte Avatars aktivieren"
+msgstr "Animierte Avatare aktivieren"
 
 #: src/modules/options/optw_ircview.cpp:160
 msgid "Enable animated smiles"
@@ -2325,7 +2303,7 @@ msgstr "Lagmeter aktivieren"
 #: src/modules/options/optw_tray.cpp:46
 msgid "Enable level-based message notification (not a message-type based)"
 msgstr ""
-"Aktiviere die level-bezogene Benachrichtigung (keine meldungstyp-bezogene)"
+"Aktiviere die Level bezogene Benachrichtigung (keine Meldungstyp bezogene)"
 
 #: src/modules/options/optw_notifier.cpp:152
 msgid "Enable notifier window fade effect"
@@ -2434,7 +2412,7 @@ msgid "Flash window when users are going online"
 msgstr "Fenster aufblinken, wenn Benutzer online geht"
 
 #: src/modules/options/optw_notifier.cpp:38
-#: src/modules/options/optw_interfacelookglobal.cpp:200
+#: src/modules/options/optw_interfacelookglobal.cpp:178
 #: src/modules/options/optw_input.cpp:38
 #: src/modules/options/optw_topiclabel.cpp:36
 msgid "Font"
@@ -2469,7 +2447,7 @@ msgstr "Erzwinge Sprache:"
 msgid "Foreground color"
 msgstr "Vordergrundfarbe"
 
-#: src/modules/options/optw_messages.cpp:371
+#: src/modules/options/optw_messages.cpp:375
 msgid "Foreground:"
 msgstr "Vordergrund:"
 
@@ -2488,7 +2466,7 @@ msgstr "Allgemeine Einstellungen"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:45
 msgid "Global application font:"
-msgstr "Globaler Anwendung-Zeichensatz:"
+msgstr "Globale Anwendungsschriftart:"
 
 #: src/modules/options/optw_userlist.cpp:85
 msgid "Grid color:"
@@ -2506,7 +2484,7 @@ msgstr "Adresse vom IRC-Server bekommen, wenn nicht routbar"
 msgid "Guess save path from media type"
 msgstr "Speicherpfad vom Medientyp bekommen"
 
-#: src/modules/options/optw_logging.cpp:46
+#: src/modules/options/optw_logging.cpp:56
 msgid "Gzip logs"
 msgstr "Gzip Logdateien"
 
@@ -2661,25 +2639,13 @@ msgstr "Bildbreite:"
 msgid "Import List"
 msgstr "Liste importieren"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:161
-msgid "Inactive Background"
-msgstr "Inaktiver Hintergrund"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:207
+#: src/modules/options/optw_interfacelookglobal.cpp:185
 msgid "Inactive High-Contrast Foreground (Primary)"
 msgstr "Inaktiver Vordergrund mit hohem Kontrast (Primär)"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:208
+#: src/modules/options/optw_interfacelookglobal.cpp:186
 msgid "Inactive High-Contrast Foreground (Secondary)"
 msgstr "Inaktiver Vordergrund mit hohem Kontrast (Sekundär)"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:164
-msgid "Inactive Text (Primary)"
-msgstr "Inaktiver Text (Primär)"
-
-#: src/modules/options/optw_interfacelookglobal.cpp:165
-msgid "Inactive Text (Secondary)"
-msgstr "Inaktiver Text (Sekundär)"
 
 #: src/modules/options/optw_query.cpp:101
 #: src/modules/options/optw_channel.cpp:134
@@ -2730,7 +2696,7 @@ msgstr "Channels offenhalten"
 #: src/modules/options/optw_connection.cpp:46
 #: src/modules/options/optw_connection.cpp:54
 msgid "Keep queries open"
-msgstr "Anfragen offen halten"
+msgstr "Anfragen offenhalten"
 
 #: src/modules/options/optw_uparser.cpp:41
 msgid "Kill broken timers"
@@ -2778,17 +2744,17 @@ msgstr "Verknüpfungsfilter:"
 
 #: src/modules/options/optw_ircview.cpp:158
 msgid "Link tooltip hide delay:"
-msgstr "Verknüpfung-Kurzinfo-Ausblendverzögerung:"
+msgstr "Link Tooltip Ausblendverzögerung:"
 
 #: src/modules/options/optw_ircview.cpp:156
 msgid "Link tooltip show delay:"
-msgstr "Verknüpfung-Kurzinfo-Anzeigeverzögerung:"
+msgstr "Link Tooltip Einblendverzögerung:"
 
 #: src/modules/options/optw_dcc.cpp:81
 msgid "Listen on address/interface:"
 msgstr "An Adresse/Schnittstelle hören:"
 
-#: src/modules/options/optw_messages.cpp:408
+#: src/modules/options/optw_messages.cpp:412
 msgid "Load From..."
 msgstr "Laden von..."
 
@@ -2804,11 +2770,11 @@ msgstr "Ort:"
 msgid "Log joined channels history"
 msgstr "Verlauf betretener Channels speichern"
 
-#: src/modules/options/optw_messages.cpp:404
+#: src/modules/options/optw_messages.cpp:408
 msgid "Log this"
 msgstr "Dieses loggen"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:203
+#: src/modules/options/optw_interfacelookglobal.cpp:181
 msgid "Low-Contrast Foreground"
 msgstr "Vordergrund mit niedrigem Kontrast"
 
@@ -2892,13 +2858,13 @@ msgstr "Medienspieler"
 msgid "Message Regexp"
 msgstr "Nachrichten-Regexp"
 
-#: src/modules/options/optw_interfacelookglobal.cpp:204
+#: src/modules/options/optw_interfacelookglobal.cpp:182
 msgid "Mid-Contrast Foreground"
 msgstr "Vordergrund mit mittlerem Kontrast"
 
 #: src/modules/options/optw_irc.cpp:49
 msgid "Minimize console after successful login"
-msgstr "Console nach erfolgreichem Login minimieren"
+msgstr "Konsole nach erfolgreichem Login minimieren"
 
 #: src/modules/options/optw_tray.cpp:43
 msgid "Minimize in tray"
@@ -3100,7 +3066,7 @@ msgstr "Benachrichtigungsfensterdeckkraft während Inaktivität"
 
 #: src/modules/options/optw_dcc.cpp:186
 msgid "Notify completion in console"
-msgstr "Notiere Erfolg in der Console"
+msgstr "Notiere Erfolg in der Konsole"
 
 #: src/modules/options/optw_dcc.cpp:187
 msgid "Notify completion in notifier"
@@ -3201,8 +3167,7 @@ msgstr "Anfrage öffnen für"
 msgid "Open all minimized"
 msgstr "Alle minimiert öffnen"
 
-#: src/modules/options/optw_dcc.cpp:307
-#: src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Minimiert erzeugen, wenn automatisch akzeptiert"
 
@@ -3249,7 +3214,7 @@ msgstr "Paranoid"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:91
 msgid "Parent window opacity:"
-msgstr "Kindfenster-Undurchsichtigkeit:"
+msgstr "Elternfenster-Undurchsichtigkeit:"
 
 #: src/modules/options/optw_identity.cpp:641
 msgid "Part message:"
@@ -3317,7 +3282,7 @@ msgstr "Benachrichtungsfenster bei neuer Anfrage-Nachricht anzeigen"
 
 #: src/modules/options/optw_notify.cpp:56
 msgid "Popup notifier when users are going online"
-msgstr "Benachrichtigung-Popup, wenn Benutzer online geht"
+msgstr "Benachrichtigungs-Popup, wenn Benutzer online geht"
 
 #: src/modules/options/optw_highlighting.cpp:72
 msgid "Popup the notifier window on highlighted messages"
@@ -3508,7 +3473,7 @@ msgstr "Channel erneut betreten"
 
 #: src/modules/options/optw_connection.cpp:57
 msgid "Rejoin channels after reconnect"
-msgstr "Channels nach neuverbinden erneut betreten"
+msgstr "Channels nach Neuverbinden erneut betreten"
 
 #: src/modules/options/optw_uparser.cpp:51
 msgid "Relay errors and warnings to debug window"
@@ -3540,7 +3505,7 @@ msgstr "Proxy löschen"
 
 #: src/modules/options/optw_connection.cpp:60
 msgid "Reopen queries after reconnect"
-msgstr "Anfragen nach neuverbinden erneut öffnen"
+msgstr "Anfragen nach Neuverbinden erneut öffnen"
 
 #: src/modules/options/optw_dcc.cpp:225
 msgid "Replace spaces with underscores in outgoing filenames"
@@ -3570,13 +3535,17 @@ msgstr "Rechts"
 msgid "SOURCE"
 msgstr "SOURCE"
 
-#: src/modules/options/optw_messages.cpp:410
+#: src/modules/options/optw_messages.cpp:414
 msgid "Save As..."
 msgstr "Speichern unter..."
 
 #: src/modules/options/optw_dcc.cpp:179
 msgid "Save Location"
 msgstr "Speicherort"
+
+#: src/modules/options/optw_logging.cpp:46
+msgid "Save logs to folder:"
+msgstr "Logdateien speichern in Verzeichnis:"
 
 #: src/modules/options/optw_mediatypes.cpp:112
 msgid "Save path:"
@@ -3691,11 +3660,11 @@ msgstr "Aktivitätsmeter in Fensterliste anzeigen"
 
 #: src/modules/options/optw_userlist.cpp:237
 msgid "Show avatars in userlist"
-msgstr "Avatars in Benutzerliste anzeigen"
+msgstr "Avatare in Benutzerliste anzeigen"
 
 #: src/modules/options/optw_messages.cpp:95
 msgid "Show channel mode prefix"
-msgstr "Channel-Modus-Vorspann anzeigen"
+msgstr "Channel-Mode Präfix anzeigen"
 
 #: src/modules/options/optw_channel.cpp:125
 msgid "Show channel sync time"
@@ -3757,7 +3726,7 @@ msgstr "Benachrichtigungsliste im aktiven Fenster anzeigen"
 
 #: src/modules/options/optw_ircoutput.cpp:72
 msgid "Show own parts in the console"
-msgstr "Eigenes Channel-Verlassen in Console anzeigen"
+msgstr "Eigenes Channel-Verlassen in der Konsole anzeigen"
 
 #: src/modules/options/optw_ircoutput.cpp:71
 msgid "Show server pings"
@@ -3819,13 +3788,13 @@ msgstr "Klangsystem"
 msgid "Sound device:"
 msgstr "Klanggerät:"
 
-#: src/modules/options/optw_logging.cpp:49
+#: src/modules/options/optw_logging.cpp:48
 msgid "Strip colors in logs"
 msgstr "Farben in Logdateien entfernen"
 
-#: src/modules/options/optw_logging.cpp:48
+#: src/modules/options/optw_logging.cpp:47
 msgid "Strip message type numbers in logs"
-msgstr ""
+msgstr "Nachrichtentypnummern in Logdateien entfernen"
 
 #: src/modules/options/optw_servers.cpp:647
 msgid "Supports STARTTLS protocol"
@@ -3835,8 +3804,7 @@ msgstr "Unterstützt das STARTTLS-Protokoll"
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71
-#: src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Test"
 
@@ -3875,7 +3843,7 @@ msgstr "Das Nickname-Feld darf keine Leerzeichen enthalten!"
 
 #: src/modules/options/optw_identity.cpp:606
 msgid ""
-"The avatar you have choosen is bigger than 1024x768 pixels.<br>Such a big "
+"The avatar you have chosen is bigger than 1024x768 pixels.<br>Such a big "
 "image will not be seen on all the user monitors<br>and will probably be "
 "scaled by the remote clients with poor quality<br>algorithms to improve "
 "performance. You *should* scale it manually<br>to a sane size (like 800x600) "
@@ -4071,8 +4039,7 @@ msgstr ""
 #: src/modules/options/optw_notifier.cpp:59
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56
-#: src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
 #: src/modules/options/optw_ircview.cpp:64
 #: src/modules/options/optw_ircview.cpp:69
 #: src/modules/options/optw_userlist.cpp:141
@@ -4090,12 +4057,11 @@ msgstr "Zeitstempel-Format:"
 
 #: src/modules/options/optw_notifier.cpp:41
 msgid "Title Font"
-msgstr ""
+msgstr "Titel-Schriftart"
 
 #: src/modules/options/optw_notifier.cpp:42
-#, fuzzy
 msgid "Title Foreground color"
-msgstr "Vordergrundfarbe"
+msgstr "Titelvordergrundfarbe"
 
 #: src/modules/options/optw_notifier.cpp:60
 #: src/modules/options/optw_windowlist.cpp:138
@@ -4115,7 +4081,7 @@ msgstr "Zuletzt gelesene Textzeile verfolgen"
 msgid "Transparency blend image:"
 msgstr "Transparenz-Mischungsbild:"
 
-#: src/modules/options/optw_messages.cpp:293
+#: src/modules/options/optw_messages.cpp:297
 msgid "Transparent"
 msgstr "Transparent"
 
@@ -4442,8 +4408,7 @@ msgstr "[VORSPANN]Nick[!Benutzername@Host][NACHSPANN] Nachricht"
 msgid "[Unknown Media Type]"
 msgstr "[Unbekannter Medientyp]"
 
-#: src/modules/options/optw_dcc.cpp:235
-#: src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "Bytes/s"
 
@@ -4462,6 +4427,15 @@ msgstr "unbenannt"
 #: src/modules/options/optw_ctcpfloodprotection.cpp:91
 msgid "within:"
 msgstr "in:"
+
+#~ msgid "Active Background"
+#~ msgstr "Aktiver Hintergrund"
+
+#~ msgid "Active Text (Primary)"
+#~ msgstr "Aktiver Text (Primär)"
+
+#~ msgid "Active Text (Secondary)"
+#~ msgstr "Aktiver Text (Sekundär)"
 
 #~ msgid "Advanced"
 #~ msgstr "Erweitert"
@@ -4531,6 +4505,15 @@ msgstr "in:"
 
 #~ msgid "Ignore"
 #~ msgstr "Ignorieren"
+
+#~ msgid "Inactive Background"
+#~ msgstr "Inaktiver Hintergrund"
+
+#~ msgid "Inactive Text (Primary)"
+#~ msgstr "Inaktiver Text (Primär)"
+
+#~ msgid "Inactive Text (Secondary)"
+#~ msgstr "Inaktiver Text (Sekundär)"
 
 #~ msgid "Input"
 #~ msgstr "Eingabe"

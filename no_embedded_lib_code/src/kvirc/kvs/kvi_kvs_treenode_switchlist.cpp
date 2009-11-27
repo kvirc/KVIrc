@@ -113,7 +113,7 @@ bool KviKvsTreeNodeSwitchList::evaluate(KviKvsRunTimeContext * c,KviKvsSwitchLis
 			KviKvsVariant * v = new KviKvsVariant();
 			if(!d->evaluateReadOnly(c,v))
 			{
-				delete v; 
+				delete v;
 				return false;
 			}
 			pSwList->addShort(it.currentKey(),v);
@@ -128,7 +128,7 @@ bool KviKvsTreeNodeSwitchList::evaluate(KviKvsRunTimeContext * c,KviKvsSwitchLis
 			KviKvsVariant * v = new KviKvsVariant();
 			if(!d->evaluateReadOnly(c,v))
 			{
-				delete v; 
+				delete v;
 				return false;
 			}
 			pSwList->addLong(it.currentKey(),v);

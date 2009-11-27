@@ -47,14 +47,29 @@
     // but we can ignore that and therefore silence the warnings.
     #define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
     // Hashes (should cover most cases)
-    #include <crypto++/md2.h>
-    #include <crypto++/md4.h>
-    #include <crypto++/md5.h>
-    #include <crypto++/sha.h>
-    #include <crypto++/ripemd.h>
-    #include <crypto++/crc.h>
+    #include <cryptopp/md2.h>
+    #include <cryptopp/md4.h>
+    #include <cryptopp/md5.h>
+    #include <cryptopp/sha.h>
+    #include <cryptopp/ripemd.h>
+    #include <cryptopp/crc.h>
     // Encoding
-    #include <crypto++/hex.h>
+    #include <cryptopp/hex.h>
+    // additional
+    #include <string>
+    // template function
+    template <typename T>
+    std::string CryptoPpStrHash(std::string szMessage){
+            T hash;
+            std::string szDigest;
+            CryptoPP::StringSource(szMessage, true, new CryptoPP::HashFilter(
+                                    hash, new CryptoPP::HexEncoder(
+                                            new CryptoPP::StringSink(szDigest)
+                                            )
+                                    )
+                            );
+            return szDigest;
+    }
 #else
     // The fallback we can always use, but with very limited set of
     // functionality.
@@ -164,11 +179,11 @@ static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 	@title:
 		$str.len
 	@short:
-		Returns the lenght of the given string
+		Returns the length of the given string
 	@syntax:
 		<uint> $str.len(<data:string>)
 	@description:
-		Returns the lenght (that is, number of characters) of the given string.
+		Returns the length (that is, number of characters) of the given string.
 		This function is internally aliased to [fnc]$str.length[/fnc]() too.
 */
 
@@ -179,11 +194,11 @@ static bool str_kvs_cmd_toClipboard(KviKvsModuleCommandCall * c)
 	@title:
 		$str.length
 	@short:
-		Returns the lenght of the given string
+		Returns the length of the given string
 	@syntax:
 		<uint> $str.length(<data:string>)
 	@description:
-		Returns the lenght (that is, number of characters) of the given string.
+		Returns the length (that is, number of characters) of the given string.
 		This function is internally aliased to [fnc]$str.len[/fnc]() too.
 */
 
@@ -230,11 +245,11 @@ static bool str_kvs_fnc_lowcase(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.upcase
 	@short:
-		Returns the given string with all characters turned to toUpper case
+		Returns the given string with all characters turned to upper case
 	@syntax:
 		<string> $str.upcase(<string_to_convert:string>)
 	@description:
-		Returns the given <string_to_convert> with all characters turned to toLower case.
+		Returns the given <string_to_convert> with all characters turned to upper case.
 		Warning: this function uses ISO-8859-1 locale to make the case translation.
 		If you want to use a locale aware translation mapping then please
 		use $str.localeupcase.
@@ -416,7 +431,7 @@ static bool str_kvs_fnc_contains(KviKvsModuleFunctionCall * c)
 		KVSM_PARAMETER("container",KVS_PT_STRING,0,szString)
 		KVSM_PARAMETER("tofind",KVS_PT_STRING,0,szSubString)
 	KVSM_PARAMETERS_END(c)
-	bIs = szString.indexOf(szSubString,Qt::CaseInsensitive) != -1;
+	bIs = szString.indexOf(szSubString,Qt::CaseSensitive) != -1;
 	c->returnValue()->setBoolean(bIs);
 	return true;
 }
@@ -1591,105 +1606,54 @@ static bool str_kvs_fnc_digest(KviKvsModuleFunctionCall * c)
 	c->returnValue()->setString(szResult);
 #elif defined(COMPILE_NO_EMBEDDED_CODE)
     // Crypto++ implementation
-    std::string digest_cpp;
+    std::string szDigest;
+    std::string szMsg = szString.toLocal8Bit().data();
 
     if(szType.toLower() == "sha1" || szType.toLower() == "sha") {
-            CryptoPP::SHA1 hash;
-            CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                true, new CryptoPP::HashFilter(
-                    hash, new CryptoPP::HexEncoder (
-                        new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA1>(szMsg);
     }
     else if(szType.toLower() == "sha224") {
-        CryptoPP::SHA224 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA224>(szMsg);
     }
     else if(szType.toLower() == "sha256") {
-        CryptoPP::SHA256 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA256>(szMsg);
     }
     else if(szType.toLower() == "sha384") {
-        CryptoPP::SHA384 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA384>(szMsg);
     }
     else if(szType.toLower() == "sha512") {
-        CryptoPP::SHA512 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::SHA512>(szMsg);
     }
     else if(szType.toLower() == "ripemd128") {
-        CryptoPP::RIPEMD128 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD128>(szMsg);
     }
     else if(szType.toLower() == "ripemd160") {
-        CryptoPP::RIPEMD160 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD160>(szMsg);
     }
     else if(szType.toLower() == "ripemd256") {
-        CryptoPP::RIPEMD256 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD256>(szMsg);
     }
     else if(szType.toLower() == "ripemd320") {
-        CryptoPP::RIPEMD320 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::RIPEMD320>(szMsg);
     }
     else if(szType.toLower() == "crc32") {
-        CryptoPP::CRC32 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::CRC32>(szMsg);
     }
     else if(szType.toLower() == "md2") {
-        CryptoPP::Weak::MD2 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::Weak::MD2>(szMsg);
     }
     else if(szType.toLower() == "md4") {
-        CryptoPP::Weak::MD4 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::Weak::MD4>(szMsg);
     }
     else if(szType.toLower() == "md5" || szType.isEmpty()){
-        CryptoPP::Weak::MD5 hash;
-        CryptoPP::StringSource(static_cast<std::string>(szString.toLocal8Bit().data()),
-                                true, new CryptoPP::HashFilter(
-                                hash, new CryptoPP::HexEncoder (
-                                new CryptoPP::StringSink(digest_cpp))));
+        szDigest = CryptoPpStrHash<CryptoPP::Weak::MD5>(szMsg);
     }
     else {
-            c->warning(__tr2qs("Unsupported message digest."));
-            return true;
+        c->warning(__tr2qs("Unsupported message digest."));
+        return true;
     }
 
-    c->returnValue()->setString(QString(digest_cpp.c_str()));
+    c->returnValue()->setString(QString(szDigest.c_str()));
 #else // fall back to QCryptographicHash
     QCryptographicHash::Algorithm qAlgo;
     if(szType.toLower() == "sha1") {

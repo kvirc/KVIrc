@@ -61,7 +61,7 @@ void KviNotifierWindowBorder::loadImages()
 		m_pixCaptionDX_N = *p;
 	if((p = g_pIconManager->getPixmap("notifier_pix_caption_bkg.png")))
 		m_pixCaptionBKG_N = *p;
-	
+
 	if((p = g_pIconManager->getPixmap("notifier_icon_close_out.png")))
 		m_pixIconClose_out_N = *p;
 	if((p = g_pIconManager->getPixmap("notifier_icon_close_over.png")))
@@ -87,17 +87,17 @@ void KviNotifierWindowBorder::loadImages()
 		m_pixCaptionDX_HL = *p;
 	if((p = g_pIconManager->getPixmap("notifier_pix_caption_bkg_hl.png")))
 		m_pixCaptionBKG_HL = *p;
-	
+
 	if((p = g_pIconManager->getPixmap("notifier_icon_close_out_hl.png")))
 		m_pixIconClose_out_HL = *p;
 	if((p = g_pIconManager->getPixmap("notifier_icon_close_over_hl.png")))
 		m_pixIconClose_over_HL = *p;
 	if((p = g_pIconManager->getPixmap("notifier_icon_close_clicked_hl.png")))
 		m_pixIconClose_clicked_HL = *p;
-	
+
 	setPics();
 	setCloseIcon(WDG_ICON_OUT);
-	
+
 	if ( m_pixCaptionDX->height()==m_pixCaptionSX->height() && m_pixCaptionDX->height()==m_pixCaptionBKG->height())		// just to be sure that the height is fitting
 		m_captionRect.setHeight(m_pixCaptionDX->height());
 
@@ -154,15 +154,15 @@ void KviNotifierWindowBorder::recalculatePositions()
 	m_closeIconRect.setY(2);
 	m_closeIconRect.setWidth(m_pixIconClose->width());
 	m_closeIconRect.setHeight(m_pixIconClose->height());
-	
+
 	m_captionRect.setTopLeft( m_rct.topLeft() );
 	m_captionRect.setSize( QSize(m_rct.width(),m_pixCaptionDX->height()) );
-	
+
 	m_bodyRect.setTopLeft( QPoint(m_pixCaptionDX->width(),m_captionRect.height()) );
 	m_bodyRect.setSize( QSize(m_captionRect.width()-(2*m_pixCaptionDX->width()),m_rct.height()-m_captionRect.height()-m_pixDWN->height()) );
 
 	m_titleRect.setTopLeft( QPoint(m_pixCaptionSX->width(),0) );
-	m_titleRect.setSize( QSize(m_rct.width()-m_pixCaptionSX->width()-m_pixCaptionDX->width(),m_captionRect.height()));
+	m_titleRect.setSize( QSize(m_rct.width()-m_pixCaptionSX->width()-m_pixCaptionDX->width()-m_pixIconClose->width(),m_captionRect.height()));
 
 }
 
@@ -185,21 +185,21 @@ void KviNotifierWindowBorder::draw(QPainter * p, bool b)
 {
 	setPics(b);
 	setCloseIcon(m_eIconState);
-		
+
 	// Draw the caption
 	p->drawPixmap(m_captionRect.x(), m_captionRect.y(), *m_pixCaptionSX);
 	p->drawTiledPixmap(m_pixCaptionSX->width(), 0, m_captionRect.width() - (m_pixCaptionSX->width() + m_pixCaptionDX->width()), m_captionRect.height(), *m_pixCaptionBKG);
 	p->drawPixmap(m_captionRect.width() - m_pixCaptionDX->width(), 0, *m_pixCaptionDX);
-	
+
 	// Draw the tiled borders
 	p->drawTiledPixmap(0, m_captionRect.height(), m_pixSX->width(), m_bodyRect.height(), *m_pixSX);
 	p->drawTiledPixmap(m_bodyRect.width() + m_bodyRect.x(), m_captionRect.height(), m_pixDX->width(), m_bodyRect.height(), *m_pixDX);
 	p->drawTiledPixmap(m_pixDWNSX->width(), m_captionRect.height() + m_bodyRect.height(), m_bodyRect.width() + 1, m_pixDWN->height(), *m_pixDWN);
-	
+
 	// Draw down corners
 	p->drawPixmap(0, m_captionRect.height() + m_bodyRect.height(), *m_pixDWNSX);
 	p->drawPixmap(m_bodyRect.width() + m_bodyRect.x(), m_captionRect.height() + m_bodyRect.height(), *m_pixDWNDX);
-				
+
 	//Drawing icons
 	p->drawPixmap(m_closeIconRect.x(), m_closeIconRect.y(), *m_pixIconClose);
 }

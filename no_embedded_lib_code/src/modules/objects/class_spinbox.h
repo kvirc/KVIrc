@@ -54,9 +54,9 @@ protected:
 	bool lineStep(KviKvsObjectFunctionCall *c);
 	bool setSpecialValueText(KviKvsObjectFunctionCall *c);
 	bool specialValueText(KviKvsObjectFunctionCall *c);
-	
+
 	bool valueChangedEvent(KviKvsObjectFunctionCall *c);
-	
+
 protected slots:
 	void valueChanged(int);
 };
