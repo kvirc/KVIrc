@@ -18,15 +18,19 @@ no_embedded_lib_code:
     functionality isn't tested as widely the one offered by a library. That
     allows security issues staying unsolved for a long time.
 
-    Additional Note:
-    ****************
-    The Debian Security Team dislikes embedded code (for reasons see above),
-    therefore I'm trying to get us rid of them.
+    Additional Notes:
+    *****************
+    - The Debian Security Team dislikes embedded code (for reasons see above),
+      therefore I'm trying to get us rid of them.
+    - The status is not set to finished yet, because I hadn't time to check
+      for some other candidates yet. But as the primary objective is reached
+      (replace the custom AES and Blowfish implementations with library calls)
+      the branch is no inactive.
 
-    Status:     active
+    Status:     temporarily inactive
     *******
 
- -- Kai Wasserbäch <debian@carbon-project.org>  Thu, 09 Jul 2009 20:12:00 +0200
+ -- Kai Wasserbäch <debian@carbon-project.org>  Fri, 27 Nov 2009 13:29:20 +0100
 
 no_openssl:
     Purpose:
@@ -39,6 +43,8 @@ no_openssl:
     releasing the source under GPLv2+ (only GPLv2 possible). As Qt offers
     QSslSocket (and friends) in the QtNetwork module, there is no longer any
     need to use OpenSSL.
+    Please note, that QSslSocket isn't the only option, depending on the
+    situation e.g. QNetworkAccessManager might a better option.
 
     Additional Note:
     ****************
@@ -50,4 +56,4 @@ no_openssl:
     Status:     active
     *******
 
- -- Kai Wasserbäch <debian@carbon-project.org>  Thu, 08 Oct 2009 17:41:42 +0200
+ -- Kai Wasserbäch <debian@carbon-project.org>  Fri, 27 Nov 2009 13:29:20 +0100
