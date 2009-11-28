@@ -25,12 +25,12 @@
 
 #include "libkvirijndael_cryptopp.h"
 
-#include <crypto++/aes.h>
-#include <crypto++/blowfish.h>
-#include <crypto++/modes.h>
-#include <crypto++/base64.h>
-#include <crypto++/hex.h>
-#include <crypto++/osrng.h>
+#include <cryptopp/aes.h>
+#include <cryptopp/blowfish.h>
+#include <cryptopp/modes.h>
+#include <cryptopp/base64.h>
+#include <cryptopp/hex.h>
+#include <cryptopp/osrng.h>
 #include <string>
 
 #include "kvi_module.h"

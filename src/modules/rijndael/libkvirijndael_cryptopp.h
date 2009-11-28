@@ -31,8 +31,8 @@
 #include "kvi_crypt.h"
 
 // class definitions for the libcrypto++ case
-#include <crypto++/aes.h>
-#include <crypto++/blowfish.h>
+#include <cryptopp/aes.h>
+#include <cryptopp/blowfish.h>
 #include <string>
 
 // The following two defines are to indicate the in-/output encoding (hex
