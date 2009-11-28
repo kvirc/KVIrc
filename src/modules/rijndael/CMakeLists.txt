@@ -13,7 +13,7 @@ IF(WANT_NO_EMBEDDED_CODE)
     SET(kvirijndael_MOC_HDRS
             libkvirijndael_cryptopp.h
        )
-ELSEIF(WANT_NO_EMBEDDED_CODE)
+ELSE(WANT_NO_EMBEDDED_CODE)
     SET(kvirijndael_SRCS
 	    libkvirijndael.cpp
 	    rijndael.cpp
