@@ -1081,12 +1081,11 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 	m_pTreeWidget = new QTreeWidget(this);
 	addWidgetToLayout(m_pTreeWidget,0,0,0,0);
 	m_pTreeWidget->setColumnCount(2);
-	m_pTreeWidget->setMinimumWidth(500);
 	QStringList columLabels;
 	columLabels.append(__tr2qs_ctx("Server","options"));
 	columLabels.append(__tr2qs_ctx("Description","options"));
-	m_pTreeWidget->setColumnWidth(0,150);
-	m_pTreeWidget->setColumnWidth(1,150);
+	m_pTreeWidget->setColumnWidth(0,250);
+	m_pTreeWidget->setColumnWidth(1,250);
 
 	m_pTreeWidget->setSortingEnabled(true);
         m_pTreeWidget->sortByColumn(0,Qt::AscendingOrder);
@@ -1220,7 +1219,7 @@ KviServerOptionsWidget::KviServerOptionsWidget(QWidget * parent)
 
 	layout()->setRowStretch(0,1);
 	layout()->setColumnStretch(0,1);
-	setMinimumWidth(320);
+	setMinimumWidth(600);
 }
 
 KviServerOptionsWidget::~KviServerOptionsWidget()
