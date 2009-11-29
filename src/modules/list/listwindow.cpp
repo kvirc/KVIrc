@@ -247,7 +247,8 @@ void KviListWindow::requestList()
 		KviStr parms = m_pParamsEdit->text();
 		if(parms.isEmpty())
 			m_pConsole->connection()->sendFmtData("list");
-		else m_pConsole->connection()->sendFmtData("list %s",m_pConsole->connection()->encodeText(parms.ptr()).data());
+		else
+			m_pConsole->connection()->sendFmtData("list %s",m_pConsole->connection()->encodeText(parms.ptr()).data());
 
 		outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Sent list request, waiting for reply..."));
 		m_pRequestButton->setEnabled(false);
@@ -435,12 +436,29 @@ void KviListWindow::processData(KviIrcMessage * pMsg)
 		m_pRequestButton->setEnabled(false);
 	}
 
-	m_pItemList->append(
-		new KviChannelTreeWidgetItemData(
-			pMsg->connection()->decodeText(pMsg->safeParam(1)),
-			pMsg->connection()->decodeText(pMsg->safeParam(2)),
-			pMsg->connection()->decodeText(pMsg->safeTrailing()))
-	);
+	if(m_pParamsEdit->text().isEmpty())
+	{
+		m_pItemList->append(
+			new KviChannelTreeWidgetItemData(
+				pMsg->connection()->decodeText(pMsg->safeParam(1)),
+				pMsg->connection()->decodeText(pMsg->safeParam(2)),
+				pMsg->connection()->decodeText(pMsg->safeTrailing()))
+		);
+	} else {
+		if(
+				pMsg->connection()->decodeText(pMsg->safeParam(1)).contains(m_pParamsEdit->text()) ||
+				pMsg->connection()->decodeText(pMsg->safeTrailing()).contains(m_pParamsEdit->text())
+			)
+		{
+			m_pItemList->append(
+					new KviChannelTreeWidgetItemData(
+							pMsg->connection()->decodeText(pMsg->safeParam(1)),
+							pMsg->connection()->decodeText(pMsg->safeParam(2)),
+							pMsg->connection()->decodeText(pMsg->safeTrailing())
+						)
+				);
+		}
+	}
 
 	if(_OUTPUT_VERBOSE)
 	{
