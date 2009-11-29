@@ -356,13 +356,13 @@ void KviListWindow::importList()
 
 	if(KviFileDialog::askForOpenFileName(szFile,__tr2qs("Choose filename"),QString(),KVI_FILTER_CONFIG,false,false,this))
 	{
-		if(m_pConsole->isConnected())
-		{
-			m_pConsole->connection()->sendFmtData("list stoplistdownloadnow");
-			outputNoFmt(KVI_OUT_SYSTEMMESSAGE,__tr2qs("Stopping the list download...")); //G&N mar 2005
-		}
 
+		m_pItemList->setAutoDelete(true);
 		m_pItemList->clear();
+		m_pItemList->setAutoDelete(false);
+
+		m_pTreeWidget->clear();
+
 
 		KviConfig cfg(szFile,KviConfig::Read);
 		KviConfigIterator it(*cfg.dict());
