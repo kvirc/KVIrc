@@ -62,6 +62,10 @@ typedef struct _KviDccVideoThreadOptions
 {
 	QString            szVideoDevice;
 	KviDccVideoCodec * pCodec;
+	bool               bForceHalfDuplex;
+	int                iPreBufferSize;
+	int                iSampleRate;
+	KviStr             szSoundDevice;
 } KviDccVideoThreadOptions;
 
 class KviDccVideoThread : public KviDccThread
@@ -75,7 +79,8 @@ protected:
 	KviDataBuffer              m_outFrameBuffer;
 	KviDataBuffer              m_inFrameBuffer;
 	KviDataBuffer              m_inSignalBuffer;
-	KviDataBuffer              m_outSignalBuffer;
+	KviDataBuffer              m_videoOutSignalBuffer;
+	KviDataBuffer              m_audioOutSignalBuffer;
 	bool                       m_bPlaying;
 	bool                       m_bRecording;
 	bool                       m_bRecordingRequestPending;
@@ -84,18 +89,30 @@ protected:
 	// stuff protected by the mutex:
 	int                        m_iInputBufferSize;
 	int                        m_iOutputBufferSize;
+	//audio
+	int                        m_soundFd;
+	int                        m_soundFdMode;
+	bool                       m_bSoundcardChecked;
 protected:
 	QImage                     m_inImage;
 	QImage                     m_outImage;
 protected:
 	bool readWriteStep();
 	bool videoStep();
+	bool audioStep();
 	void startRecording();
 	void stopRecording();
 	void startPlaying();
 	void stopPlaying();
 	inline bool isPlaying() { return m_bPlaying; };
 	virtual void run();
+	//audio
+	bool checkSoundcard();
+	bool openSoundcardWithDuplexOption(int openMode,int failMode);
+	bool openSoundcard(int mode);
+	bool openSoundcardForWriting();
+	bool openSoundcardForReading();
+	void closeSoundcard();
 };
 
 

@@ -53,16 +53,46 @@ extern KviDccBroker * g_pDccBroker;
 
 //Check for the *SS Api....we don't want to fail here...
 
+#ifndef COMPILE_DISABLE_DCC_VOICE
+	#ifdef HAVE_LINUX_SOUNDCARD_H
+		#include <linux/soundcard.h>
+	#else
+		#ifdef HAVE_SYS_SOUNDCARD_H
+			#include <sys/soundcard.h>
+		#else
+			#ifdef HAVE_SOUNDCARD_H
+				#include <soundcard.h>
+			#else
+				//CAN NOT COMPILE :(
+				#define COMPILE_DISABLE_DCC_VOICE
+				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
+					#warning "Cannot find the soundcard.h header; you will NOT be able to use DCC Voice"
+				#endif
+			#endif
+		#endif
+	#endif
+#endif
+
+
+//#define KVI_AUDIO_DEVICE "/dev/dsp"
+// 32 fragments , 512 bytes
+#define KVI_SNDCTL_FRAG_SIZE 0x00B00009
+#define KVI_FRAGMENT_SIZE_IN_BYTES 512
+#define KVI_FORMAT AFMT_S16_LE
+#define KVI_NUM_CHANNELS 1
+
 bool kvi_dcc_video_is_valid_codec(const char * codecName)
 {
 	if(kvi_strEqualCI("jpeg",codecName))return true;
+	if(kvi_strEqualCI("theora",codecName))return true;
 	return false;
 }
 
-static KviDccVideoCodec * kvi_dcc_video_get_codec(const char *)
+static KviDccVideoCodec * kvi_dcc_video_get_codec(const char *codecName)
 {
+	Q_UNUSED(codecName);
 // 	if(kvi_strEqualCI("jpeg",codecName))return new KviDccVideoJpegCodec();
-	return new KviDccVideoJpegCodec();
+	return new KviDccVideoTheoraCodec();
 }
 
 
@@ -76,6 +106,11 @@ KviDccVideoThread::KviDccVideoThread(KviWindow * wnd,kvi_socket_t fd,KviDccVideo
 	m_pInfoMutex = new KviMutex();
 	m_bRecordingRequestPending = false;
 
+#ifndef COMPILE_DISABLE_DCC_VOICE
+	m_bSoundcardChecked = false;
+	m_soundFd = -1;
+	m_soundFdMode = 0;
+#endif
 	//local video input
 	if(!g_pVideoDevicePool)
 	{
@@ -106,6 +141,163 @@ KviDccVideoThread::~KviDccVideoThread()
 #endif
 }
 
+
+bool KviDccVideoThread::checkSoundcard()
+{
+#ifdef COMPILE_DISABLE_DCC_VOICE
+	return false;
+#else
+	bool bOpened = false;
+	if(m_soundFd == -1)
+	{
+		if(!openSoundcard(O_RDONLY))return false;
+		bOpened = true;
+	}
+
+	int caps;
+
+	m_bSoundcardChecked = true;
+
+	if(ioctl(m_soundFd,SNDCTL_DSP_GETCAPS,&caps) < 0)
+	{
+		postMessageEvent(__tr2qs_ctx("WARNING: failed to check the soundcard duplex capabilities: if this is a half-duplex soundcard, use the DCC VOICE option to force half-duplex algorithm","dcc").toUtf8().data());
+		if(bOpened)closeSoundcard();
+		return false;
+	}
+
+	if(!(caps & DSP_CAP_DUPLEX))
+	{
+		m_pOpt->bForceHalfDuplex = true; // the device is half duplex...use it in that way
+		postMessageEvent(__tr2qs_ctx("Half duplex soundcard detected, you will not be able to talk and listen at the same time","dcc").toUtf8().data());
+	}
+
+	if(bOpened)closeSoundcard();
+
+	return true;
+#endif
+}
+
+
+bool KviDccVideoThread::openSoundcard(int mode)
+{
+#ifdef COMPILE_DISABLE_DCC_VOICE
+	return false;
+#else
+	int speed = m_pOpt->iSampleRate;
+	static int chans=KVI_NUM_CHANNELS;
+	static int fmt=KVI_FORMAT;
+	static int frag = KVI_SNDCTL_FRAG_SIZE;
+
+
+	if(m_soundFd != -1)
+	{
+		if(m_soundFdMode == mode)return true; // already open
+		closeSoundcard();
+	}
+
+	m_soundFd = ::open(m_pOpt->szSoundDevice.ptr(),mode | O_NONBLOCK);
+	if(m_soundFd < 0)return false;
+
+	if(!m_pOpt->bForceHalfDuplex)
+	{
+		if(ioctl(m_soundFd,SNDCTL_DSP_SETDUPLEX,0) < 0)goto exit_false;
+	}
+
+	if(ioctl(m_soundFd,SNDCTL_DSP_SETFRAGMENT,&frag)<0)goto exit_false;
+	if(ioctl(m_soundFd,SNDCTL_DSP_SETFMT,&fmt)<0)goto exit_false;
+	if(ioctl(m_soundFd,SNDCTL_DSP_CHANNELS,&chans)<0)goto exit_false;
+	if(ioctl(m_soundFd,SNDCTL_DSP_SPEED,&speed)<0)goto exit_false;
+	if(speed != m_pOpt->iSampleRate)
+	{
+		KviStr tmp(KviStr::Format,__tr2qs_ctx("WARNING: failed to set the requested sample rate (%d): the device used closest match (%d)","dcc").toUtf8().data(),
+						m_pOpt->iSampleRate,speed);
+		postMessageEvent(tmp.ptr());
+	}
+
+	//  TODO: #warning "We could also support blocking operations mode"
+
+	m_soundFdMode = mode;
+
+
+	return true;
+
+exit_false:
+	closeSoundcard();
+	return false;
+#endif
+}
+
+bool KviDccVideoThread::openSoundcardForWriting()
+{
+#ifndef COMPILE_DISABLE_DCC_VOICE
+	return openSoundcardWithDuplexOption(O_WRONLY,O_RDONLY);
+#else
+	return false;
+#endif
+}
+
+bool KviDccVideoThread::openSoundcardForReading()
+{
+#ifndef COMPILE_DISABLE_DCC_VOICE
+	return openSoundcardWithDuplexOption(O_RDONLY,O_WRONLY);
+#else
+	return false;
+#endif
+}
+
+bool KviDccVideoThread::openSoundcardWithDuplexOption(int openMode,int failMode)
+{
+#ifndef COMPILE_DISABLE_DCC_VOICE
+	if(m_soundFd == -1)
+	{
+		// soundcard not open yet...open for write (at least)
+		if(m_pOpt->bForceHalfDuplex)
+		{
+			// Forcing half duplex... (user option or the card does not support full duplex mode)
+			if(!openSoundcard(openMode))return false;
+		} else {
+			// Try read/write open
+			if(!openSoundcard(O_RDWR))
+			{
+				// half-duplex sound card ?
+				if(!m_bSoundcardChecked)
+				{
+					// We haven't checked the full-duplex support yet...
+					// Try to open in RDONLY o WRONLY mode
+					if(!openSoundcard(openMode))return false;
+					if(!checkSoundcard())
+					{
+						postMessageEvent(__tr2qs_ctx("Ops...failed to test the soundcard capabilities...expect problems...","dcc").toUtf8().data());
+					}
+				} // else the test has been done and it is a full duplex card that is just busy
+			}
+		}
+	} else {
+		// Hmmm...already open
+		// If it is open in O_RDWR or O_WRONLY mode...it is ok for us
+		// but if it is open in O_RDONLY mode...we can do nothing...just wait
+		return (m_soundFdMode != failMode);
+	}
+
+	return true;
+#else
+	return false;
+#endif
+}
+
+void KviDccVideoThread::closeSoundcard()
+{
+#ifndef COMPILE_DISABLE_DCC_VOICE
+	if(m_soundFd != -1)
+	{
+		::close(m_soundFd);
+		m_soundFd = -1;
+		m_soundFdMode = 0;
+	}
+#endif
+}
+
+
 bool KviDccVideoThread::readWriteStep()
 {
 #ifndef COMPILE_DISABLE_DCC_VIDEO
@@ -118,11 +310,11 @@ bool KviDccVideoThread::readWriteStep()
 		while(bCanRead)
 		{
 			unsigned int actualSize = m_inFrameBuffer.size();
-			m_inFrameBuffer.resize(actualSize + 1024);
-			int readLen = kvi_socket_recv(m_fd,(void *)(m_inFrameBuffer.data() + actualSize),1024);
+			m_inFrameBuffer.resize(actualSize + 4096);
+			int readLen = kvi_socket_recv(m_fd,(void *)(m_inFrameBuffer.data() + actualSize),4096);
 			if(readLen > 0)
 			{
-				if(readLen < 1024)m_inFrameBuffer.resize(actualSize + readLen);
+				if(readLen < 4096)m_inFrameBuffer.resize(actualSize + readLen);
 				m_pOpt->pCodec->decode(&m_inFrameBuffer,&m_inSignalBuffer);
 //#warning "A maximum length for the signal buffer is actually needed!!!"
 			} else {
@@ -160,11 +352,10 @@ bool KviDccVideoThread::videoStep()
 	{
 		if(m_inSignalBuffer.size() > 0)
 		{
-			QImage img;
-			img.loadFromData(m_inSignalBuffer.data(), m_inSignalBuffer.size());
+			QImage img(m_inSignalBuffer.data(), 320, 240, 1280, QImage::Format_ARGB32);
+// 			qDebug("IMG data %p size %d", m_inSignalBuffer.data(), m_inSignalBuffer.size());
 			if(!img.isNull())
 				m_inImage = img;
-			m_inSignalBuffer.clear();
 		}
 	}
 
@@ -174,22 +365,177 @@ bool KviDccVideoThread::videoStep()
 		//grab the image, compress using the codec
 		g_pVideoDevicePool->getFrame();
 		g_pVideoDevicePool->getImage(&m_outImage);
-
-		QByteArray ba;
-		QBuffer buffer(&ba);
-		buffer.open(QIODevice::WriteOnly);
-		//0 to obtain small compressed files,
-		//100 for large uncompressed files,
-		//and -1 (the default) to use the default settings.
-		m_outImage.save(&buffer, "JPEG", 20);
-// 		qDebug("framesize %d",ba.size());
-		if(ba.size() > 0)
+		if(m_outImage.numBytes() > 0)
 		{
-			m_outSignalBuffer.append((const unsigned char*) ba.data(), ba.size());
-			m_pOpt->pCodec->encode(&m_outSignalBuffer,&m_outFrameBuffer);
+			m_videoOutSignalBuffer.append((const unsigned char*) m_outImage.bits(), m_outImage.numBytes());
+			m_pOpt->pCodec->encodeVideo(&m_videoOutSignalBuffer,&m_outFrameBuffer);
 		}
 	}
 
+#endif // !COMPILE_DISABLE_DCC_VIDEO
+	return true;
+}
+
+bool KviDccVideoThread::audioStep()
+{
+#ifndef COMPILE_DISABLE_DCC_VIDEO
+#ifndef COMPILE_DISABLE_DCC_VOICE
+	// Are we playing ?
+/*
+	if(m_bPlaying)
+	{
+		// Do we have something to write ?
+		audio_buf_info info;
+		if(m_inSignalBuffer.size() > 0)
+		{
+			// Get the number of fragments that can be written to the soundcard without blocking
+
+			if(ioctl(m_soundFd,SNDCTL_DSP_GETOSPACE,&info) < 0)
+			{
+				debug("get o space failed");
+				info.bytes = KVI_FRAGMENT_SIZE_IN_BYTES; // dummy... if this is not correct...well...we will block for 1024/16000 of a sec
+				info.fragments = 1;
+				info.fragsize = KVI_FRAGMENT_SIZE_IN_BYTES;
+			}
+			if(info.fragments > 0)
+			{
+				int toWrite = info.fragments * info.fragsize;
+				//debug("Can write %d bytes",toWrite);
+				if(m_inSignalBuffer.size() < toWrite)toWrite = m_inSignalBuffer.size();
+				int written = write(m_soundFd,m_inSignalBuffer.data(),toWrite);
+				if(written > 0)m_inSignalBuffer.remove(written);
+				else {
+//#warning "Do something for -1 here ?"
+//#warning "Usleep ?"
+				}
+			} //else {
+				// No stuff can be written...we are running too fast ?
+			//	m_uSleepTime += 100; // sleep for a while
+			//}
+		} else {
+			// hmmmm....playing , but nothing to write , possible underrun or EOF
+			// a nice idea would be to use SNDCTL_DSP_GETODELAY here...
+			// but it appears to be broken on some audio devices
+			if(ioctl(m_soundFd,SNDCTL_DSP_GETOSPACE,&info) < 0)info.fragstotal = info.fragments; // dummy...but what should we do ?
+			if(info.fragstotal == info.fragments)
+			{
+				// underrun or EOF: close the device
+				stopPlaying();
+			}
+		}
+	} else {
+		// do we have anything to play ?
+		if(m_inSignalBuffer.size() > 0)
+		{
+			if(m_inSignalBuffer.size() >= m_pOpt->iPreBufferSize)
+			{
+				// yep...stuff to play... open the soundcard , if possible
+				startPlaying();
+
+				m_iLastSignalBufferSize = m_inSignalBuffer.size();
+			} else {
+				// have stuff to play , but it's not enough to fill the pre-buffer
+				//
+				struct timeval tv;
+				gettimeofday(&tv,0);
+
+				long int sigBufferTime = (tv.tv_sec * 1000) + (tv.tv_usec / 1000);
+
+				if(m_inSignalBuffer.size() == m_iLastSignalBufferSize)
+				{
+					// the same signal buffer size... check the time
+					// m_pOpt->iPreBufferSize / 16 gives us the preBufferTime in msecs
+					// we calc the remaining preBufferTime by subtracting the
+					// size of buffer already filled and we also add 50 milliseconds... smart heuristic
+					int preBufferTime = ((m_pOpt->iPreBufferSize - m_iLastSignalBufferSize) / 16) + 50;
+					// if the buffer size hasn't changed since preBufferTime
+					// it's time to start playing anyway, since there is
+					// either a network stall or it was just a really short data stream
+					if((sigBufferTime - m_iLastSignalBufferTime) > preBufferTime)
+					{
+						startPlaying();
+						if(m_bPlaying)m_iLastSignalBufferSize = 0;
+					}
+				} else {
+					// signal buffer size differs...we have received new packets
+					// and still pre-buffering
+					m_iLastSignalBufferSize = m_inSignalBuffer.size();
+					m_iLastSignalBufferTime = sigBufferTime;
+				}
+			}
+
+		}
+	}
+*/
+	// Are we recording ?
+	if(m_bRecording)
+	{
+		fd_set rs;
+		FD_ZERO(&rs);
+		FD_SET(m_soundFd,&rs);
+		struct timeval tv;
+		tv.tv_sec = 0;
+		tv.tv_usec = 10;
+		int ret = select(m_soundFd + 1,&rs,0,0,&tv);
+		if(ret > 0)
+		{
+			// This is rather easy...
+			audio_buf_info info;
+			if(ioctl(m_soundFd,SNDCTL_DSP_GETISPACE,&info) < 0)
+			{
+				debug("Ispace failed");
+				info.fragments = 0; // dummy...
+				info.bytes = 0;
+			}
+
+			//debug("INFO: fragments: %d, fragstotal: %d, fragsize: %d, bytes: %d",info.fragments,info.fragstotal,info.fragsize,info.bytes);
+
+			if(info.fragments == 0 && info.bytes == 0)
+			{
+				// force a dummy read: the device needs to be triggered
+				info.fragments = 1;
+			}
+
+			if(info.fragments > 0)
+			{
+				int oldSize = m_audioOutSignalBuffer.size();
+				int available = info.fragments * info.fragsize;
+				m_audioOutSignalBuffer.addSize(available);
+				int readed = read(m_soundFd,m_audioOutSignalBuffer.data() + oldSize,available);
+
+				if(readed < available)
+				{
+					// huh ? ...error ?
+					if(readed >= 0)m_audioOutSignalBuffer.resize(oldSize + readed);
+					else {
+						if((errno == EINTR) || (errno == EAGAIN))
+						{
+							m_audioOutSignalBuffer.resize(oldSize);
+						} else {
+//#warning "Critical error...do something reasonable!"
+							m_audioOutSignalBuffer.resize(oldSize);
+						}
+					}
+				}
+/*
+				debug("Signal buffer:");
+				for(int i=0;i<200;i+=2)
+				{
+					if(i >= m_outSignalBuffer.size())break;
+					printf("%04x ",*(((unsigned short *)(m_outSignalBuffer.data() + i))));
+					if((i % 6) == 0)printf("\n");
+				}
+				debug("END\n");
+*/
+				m_pOpt->pCodec->encodeAudio(&m_audioOutSignalBuffer,&m_outFrameBuffer);
+			}
+		}// else {
+			// Nothing to read
+	//		m_uSleepTime += 100;
+	//	}
+	}
+
+#endif // !COMPILE_DISABLE_DCC_VOICE
 #endif // !COMPILE_DISABLE_DCC_VIDEO
 	return true;
 }
@@ -199,9 +545,11 @@ void KviDccVideoThread::startRecording()
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	//debug("Start recording");
 	if(m_bRecording)return; // already started
+
+	//FIXME this is mandatory only for audio!
+	openSoundcardForReading();
+
 	
-	//if(openSoundcardForReading())
-	if(1)
 	{
 //		debug("Posting event");
 		KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
@@ -210,8 +558,8 @@ void KviDccVideoThread::startRecording()
 
 		m_bRecording = true;
 		m_bRecordingRequestPending = false;
-	} else {
-		m_bRecordingRequestPending = true;
+// 	} else {
+// 		m_bRecordingRequestPending = true;
 	}
 #endif
 }
@@ -228,7 +576,8 @@ void KviDccVideoThread::stopRecording()
 	postEvent(KviDccThread::parent(),e);
 
 	m_bRecording = false;
-// 	if(!m_bPlaying)closeSoundcard();
+	//FIXME this is mandatory only if we are using audio
+	if(!m_bPlaying)closeSoundcard();
 #endif
 }
 
@@ -237,12 +586,15 @@ void KviDccVideoThread::startPlaying()
 #ifndef COMPILE_DISABLE_DCC_VIDEO
 	//debug("Start playing");
 	if(m_bPlaying)return;
-
-	KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
-	e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_PLAYING));
-	postEvent(KviDccThread::parent(),e);
-	m_bPlaying = true;
-
+	//FIXME this is mandatory only if we are using audio
+	openSoundcardForWriting();
+	//if()
+	{
+		KviThreadDataEvent<int> * e = new KviThreadDataEvent<int>(KVI_DCC_THREAD_EVENT_ACTION);
+		e->setData(new int(KVI_DCC_VIDEO_THREAD_ACTION_START_PLAYING));
+		postEvent(KviDccThread::parent(),e);
+		m_bPlaying = true;
+	}
 #endif
 }
 
@@ -257,6 +609,8 @@ void KviDccVideoThread::stopPlaying()
 	postEvent(KviDccThread::parent(),e);
 
 	m_bPlaying = false;
+	//FIXME this is mandatory only if we are using audio
+	if(!m_bRecording)closeSoundcard();
 #endif
 }
 
@@ -288,16 +642,15 @@ void KviDccVideoThread::run()
 		}
 
 		if(!readWriteStep())goto exit_dcc;
+		//if(!videoStep() || !audioStep())goto exit_dcc;
 		if(!videoStep())goto exit_dcc;
 
 		m_pInfoMutex->lock();
-// 		m_iInputBufferSize = m_inSignalBuffer.size();
-// 		m_iOutputBufferSize = m_outSignalBuffer.size();
 		m_pInfoMutex->unlock();
 
 		//if(m_uSleepTime)usleep(m_uSleepTime);
-		//qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_inSignalBuffer.size(), m_outSignalBuffer.size());
-// usleep(200);
+// 		qDebug("in %d out %d in_sig %d out_sig %d", m_inFrameBuffer.size(), m_outFrameBuffer.size(), m_inSignalBuffer.size(), m_videoOutSignalBuffer.size());
+		usleep(200);
 
 		// Start recording if the request was not fulfilled yet
 		if(m_bRecordingRequestPending)startRecording();
@@ -594,6 +947,10 @@ void KviDccVideo::connected()
 	KviDccVideoThreadOptions * opt = new KviDccVideoThreadOptions;
 
 	opt->pCodec = kvi_dcc_video_get_codec(m_pDescriptor->szCodec.ptr());
+	opt->bForceHalfDuplex = KVI_OPTION_BOOL(KviOption_boolDccVoiceForceHalfDuplex);
+	opt->iPreBufferSize = KVI_OPTION_UINT(KviOption_uintDccVoicePreBufferSize);
+	opt->szSoundDevice = KVI_OPTION_STRING(KviOption_stringDccVoiceSoundDevice).toUtf8().data();
+	opt->iSampleRate = 8000;
 
 	output(KVI_OUT_DCCMSG,__tr2qs_ctx("Actual codec used is '%s'","dcc"),opt->pCodec->name());
 

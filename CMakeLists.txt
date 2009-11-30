@@ -828,6 +828,32 @@ ELSE()
 ENDIF()
 
 ############################################################################
+# Ogg/Vorbis and Ogg/Theora support
+############################################################################
+OPTION(WANT_OGG_THEORA "Compile Ogg/Vorbis+Theora Support" OFF)
+IF(WITH_OGG_THEORA)
+	SET(WANT_OGG_THEORA ON)
+ENDIF()
+
+FIND_PACKAGE(Theora)
+
+IF(WANT_OGG_THEORA)
+	IF(THEORA_FOUND)
+		SET(CMAKE_STATUS_OGG_THEORA_SUPPORT "Yes")
+		LIST(APPEND LIBS ${THEORA_LIBRARY})
+		INCLUDE_DIRECTORIES(${THEORA_INCLUDE_DIR})
+	ELSE()
+		SET(COMPILE_DISABLE_OGG_THEORA 1)
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_OGG_THEORA)
+		SET(CMAKE_STATUS_OGG_THEORA_SUPPORT "No")
+	ENDIF()
+ELSE()
+	SET(COMPILE_DISABLE_OGG_THEORA 1)
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_OGG_THEORA)
+	SET(CMAKE_STATUS_OGG_THEORA_SUPPORT "User Disabled")
+ENDIF()
+
+############################################################################
 # ix86 asm support
 ############################################################################
 OPTION(WANT_IX86_ASM "Compile ix86 (NOT x86_64!) asm Support" OFF)
@@ -1283,6 +1309,7 @@ MESSAGE(STATUS "  System memmove Support      : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SU
 MESSAGE(STATUS "  GSM Support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
 MESSAGE(STATUS "  DCC Voice Support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
 MESSAGE(STATUS "  DCC Video Support           : ${CMAKE_STATUS_DCC_VIDEO_SUPPORT}")
+MESSAGE(STATUS "  Ogg/Theora Support          : ${CMAKE_STATUS_OGG_THEORA_SUPPORT}")
 MESSAGE(STATUS "  Apple Universal Binary      : ${CMAKE_STATUS_BUILD_UNIVERSAL_BINARY}")
 MESSAGE(STATUS "  ix86 asm Support            : ${CMAKE_STATUS_ix86_ASM_SUPPORT}")
 MESSAGE(STATUS "  Memory Profile Support      : ${CMAKE_STATUS_MEMORY_PROFILE_SUPPORT}")

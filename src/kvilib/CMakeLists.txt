@@ -17,6 +17,7 @@ SET(kvilib_MOC_HDRS
 	ext/kvi_animatedpixmap.h
 	ext/kvi_animatedpixmapcache.h
 	ext/kvi_crypt.h
+	ext/kvi_oggtheora.h
 	ext/kvi_regusersdb.h
 	ext/kvi_sharedfiles.h
 	irc/kvi_ircuserdb.h
@@ -73,6 +74,7 @@ SET(kvilib_SRCS
 	ext/kvi_mediatype.cpp
 	ext/kvi_miscutils.cpp
 	ext/kvi_msgtype.cpp
+	ext/kvi_oggtheora.cpp
 	ext/kvi_osinfo.cpp
 	ext/kvi_pixmap.cpp
 	ext/kvi_animatedpixmap.cpp

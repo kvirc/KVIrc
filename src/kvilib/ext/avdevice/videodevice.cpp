@@ -1184,7 +1184,7 @@ int VideoDevice::getImage(QImage *qimage)
 		}
 
 	uchar *bits=qimage->bits();
-// qDebug() << "Capturing in " << pixelFormatName(m_currentbuffer.pixelformat);
+//qDebug() << "Capturing in " << pixelFormatName(m_currentbuffer.pixelformat);
 	switch(m_currentbuffer.pixelformat)
 	{
 		case PIXELFORMAT_NONE	: break;

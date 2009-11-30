@@ -25,6 +25,7 @@
 //=============================================================================
 
 #include "kvi_string.h"
+#include "kvi_oggtheora.h"
 #include "kvi_databuffer.h"
 
 class KviDccVoiceCodec
@@ -63,21 +64,27 @@ protected:
 	KviStr m_szName;
 public:
 	const char * name();
-	virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
+	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
+	virtual void encodeAudio(KviDataBuffer * audioSignal, KviDataBuffer * stream);
 	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
 };
 
-class KviDccVideoJpegCodec : public KviDccVideoCodec
+class KviDccVideoTheoraCodec : public KviDccVideoCodec
 {
 public:
-	KviDccVideoJpegCodec();
-	virtual ~KviDccVideoJpegCodec();
+	KviDccVideoTheoraCodec();
+	virtual ~KviDccVideoTheoraCodec();
 public:
-	virtual void encode(KviDataBuffer * signal,KviDataBuffer * stream);
+	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
+	virtual void encodeAudio(KviDataBuffer * audioSignal, KviDataBuffer * stream);
 	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
 	virtual int encodedFrameSize();
 	virtual int decodedFrameSize();
+private:
+	KviTheoraEncoder *m_pEncoder;
+	KviTheoraDecoder *m_pDecoder;
 };
+
 #endif //_CODEC_H_

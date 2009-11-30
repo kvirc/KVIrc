@@ -76,6 +76,7 @@ void KviDccVoiceNullCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
 {
 	if(stream->size() < 1)return;
 	signal->append(stream->data(),stream->size());
+	
 	stream->resize(0);
 }
 
@@ -99,7 +100,11 @@ KviDccVideoCodec::~KviDccVideoCodec()
 {
 }
 
-void KviDccVideoCodec::encode(KviDataBuffer *,KviDataBuffer *)
+void KviDccVideoCodec::encodeVideo(KviDataBuffer *,KviDataBuffer *)
+{
+}
+
+void KviDccVideoCodec::encodeAudio(KviDataBuffer *,KviDataBuffer *)
 {
 }
 
@@ -122,49 +127,63 @@ const char * KviDccVideoCodec::name()
 	return m_szName.ptr();
 }
 
-KviDccVideoJpegCodec::KviDccVideoJpegCodec()
+KviDccVideoTheoraCodec::KviDccVideoTheoraCodec()
 : KviDccVideoCodec()
 {
-	m_szName = "jpeg";
+	m_szName = "theora";
+	m_pEncoder = 0;
+	m_pDecoder = 0;
 }
 
-KviDccVideoJpegCodec::~KviDccVideoJpegCodec()
+KviDccVideoTheoraCodec::~KviDccVideoTheoraCodec()
 {
+	if(m_pEncoder)
+		delete m_pEncoder;
+	m_pEncoder=0;
+
+	if(m_pDecoder)
+		delete m_pDecoder;
+	m_pDecoder=0;
 }
 
-void KviDccVideoJpegCodec::encode(KviDataBuffer * signal,KviDataBuffer * stream)
+void KviDccVideoTheoraCodec::encodeVideo(KviDataBuffer * videoSignal,KviDataBuffer * stream)
 {
-	if(signal->size() < 1)return;
-	stream->append(signal->data(),signal->size());
-	signal->resize(0);
+	if(videoSignal->size() < 1) return;
+
+	if(!m_pEncoder)
+		m_pEncoder = new KviTheoraEncoder(stream);
+
+	m_pEncoder->addVideoFrame((QRgb *) videoSignal->data(),videoSignal->size());
+	videoSignal->clear();
 }
 
-void KviDccVideoJpegCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
+void KviDccVideoTheoraCodec::encodeAudio(KviDataBuffer * audioSignal,KviDataBuffer * stream)
 {
-	static unsigned const char jpg_magic_init[4] = { 0xFF, 0xD8, 0xFF, 0xE0}; //SOI + APP0
-	static unsigned const char jpg_magic_end[2] = { 0xFF, 0xD9}; //EOI
+	if(audioSignal->size() < 1) return;
 
+	if(!m_pEncoder)
+		m_pEncoder = new KviTheoraEncoder(stream);
+
+	m_pEncoder->addAudioFrame(audioSignal->data(),audioSignal->size());
+	audioSignal->clear();
+}
+
+void KviDccVideoTheoraCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
+{
 	if(stream->size() < 1)return;
-	
-	int start = stream->find(jpg_magic_init, 4);
-	int end = stream->find(jpg_magic_end, 2);
-	if(start != -1 && end != -1)
-	{
-		//remove junk before jpeg start
-		stream->remove(start);
-		int len = end - start + 1;
-		signal->clear();
-		signal->append(stream->data(),stream->size());
-		stream->remove(len);
-	}
+
+	if(!m_pDecoder)
+		m_pDecoder = new KviTheoraDecoder(signal);
+
+	m_pDecoder->addData(stream);
 }
 
-int KviDccVideoJpegCodec::encodedFrameSize()
+int KviDccVideoTheoraCodec::encodedFrameSize()
 {
 	return 0;
 }
 
-int KviDccVideoJpegCodec::decodedFrameSize()
+int KviDccVideoTheoraCodec::decodedFrameSize()
 {
 	return 0;
 }
