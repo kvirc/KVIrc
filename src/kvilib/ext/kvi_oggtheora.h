@@ -24,6 +24,8 @@
 //
 //=============================================================================
 
+#ifndef COMPILE_DISABLE_OGG_THEORA
+
 #include "kvi_settings.h"
 
 #include "theora/theoradec.h"
@@ -180,4 +182,5 @@ private:
 
 };
 
+#endif // COMPILE_DISABLE_OGG_THEORA
 #endif /* KVI_OGGTHEORA_H_ */

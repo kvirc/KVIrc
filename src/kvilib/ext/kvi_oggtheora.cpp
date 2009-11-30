@@ -35,6 +35,8 @@
 //
 //=============================================================================
 
+#ifndef COMPILE_DISABLE_OGG_THEORA
+
 #include <string.h>
 #include <stdlib.h>
 #include <time.h>
@@ -959,3 +961,5 @@ void KviTheoraDecoder::video_write(void)
 	m_pSignal->clear();
 	m_pSignal->append(RGBbuffer, size);
 }
+
+#endif // COMPILE_DISABLE_OGG_THEORA
