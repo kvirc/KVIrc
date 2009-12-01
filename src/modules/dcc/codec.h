@@ -71,6 +71,7 @@ public:
 	virtual int decodedFrameSize();
 };
 
+#ifndef COMPILE_DISABLE_OGG_THEORA
 class KviDccVideoTheoraCodec : public KviDccVideoCodec
 {
 public:
@@ -86,5 +87,5 @@ private:
 	KviTheoraEncoder *m_pEncoder;
 	KviTheoraDecoder *m_pDecoder;
 };
-
+#endif // COMPILE_DISABLE_OGG_THEORA
 #endif //_CODEC_H_

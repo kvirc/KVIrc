@@ -127,6 +127,7 @@ const char * KviDccVideoCodec::name()
 	return m_szName.ptr();
 }
 
+#ifndef COMPILE_DISABLE_OGG_THEORA
 KviDccVideoTheoraCodec::KviDccVideoTheoraCodec()
 : KviDccVideoCodec()
 {
@@ -187,3 +188,4 @@ int KviDccVideoTheoraCodec::decodedFrameSize()
 {
 	return 0;
 }
+#endif // COMPILE_DISABLE_OGG_THEORA

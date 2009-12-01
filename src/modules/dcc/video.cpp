@@ -44,6 +44,8 @@
 #include <QByteArray>
 #include <QBuffer>
 
+#include <sys/ioctl.h>
+
 extern KviDccBroker * g_pDccBroker;
 
 #ifndef COMPILE_DISABLE_DCC_VIDEO

@@ -17,7 +17,6 @@ SET(kvilib_MOC_HDRS
 	ext/kvi_animatedpixmap.h
 	ext/kvi_animatedpixmapcache.h
 	ext/kvi_crypt.h
-	ext/kvi_oggtheora.h
 	ext/kvi_regusersdb.h
 	ext/kvi_sharedfiles.h
 	irc/kvi_ircuserdb.h
@@ -54,6 +53,12 @@ IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
 	)
 ENDIF()
 
+IF(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
+	LIST(APPEND kvilib_MOC_HDRS
+		ext/kvi_oggtheora.h
+	)
+ENDIF()
+
 # Please note that the sources have alphabetic order here
 
 SET(kvilib_SRCS
@@ -74,7 +79,6 @@ SET(kvilib_SRCS
 	ext/kvi_mediatype.cpp
 	ext/kvi_miscutils.cpp
 	ext/kvi_msgtype.cpp
-	ext/kvi_oggtheora.cpp
 	ext/kvi_osinfo.cpp
 	ext/kvi_pixmap.cpp
 	ext/kvi_animatedpixmap.cpp
@@ -136,6 +140,12 @@ IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
 		ext/avdevice/videodevicemodelpool.cpp
 		ext/avdevice/bayer.cpp
 		ext/avdevice/sonix_compress.cpp
+	)
+ENDIF()
+
+IF(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
+	LIST(APPEND kvilib_SRCS
+		ext/kvi_oggtheora.cpp
 	)
 ENDIF()
 
