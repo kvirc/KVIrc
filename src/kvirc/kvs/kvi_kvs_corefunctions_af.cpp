@@ -1001,6 +1001,9 @@ namespace KviKvsCoreFunctions
 	#ifndef COMPILE_DISABLE_DCC_VOICE
 			"DCCVoice",
 	#endif
+	#ifdef COMPILE_DCC_CANVAS
+			"DCCCanvas",
+	#endif
 			"Qt4",
 			"KVS",
 			0

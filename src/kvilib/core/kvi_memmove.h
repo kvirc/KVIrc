@@ -28,9 +28,6 @@
 
 #include "kvi_settings.h"
 
-//#undef COMPILE_WITH_SYSTEM_MEMMOVE
-//#define COMPILE_MMX_ASM
-
 #ifndef _KVI_MEMMOVE_CPP_
 
 	#ifdef COMPILE_WITH_SYSTEM_MEMMOVE

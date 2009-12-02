@@ -312,6 +312,12 @@ ENDIF()
 #
 ###############################################################################
 
+# ingore sigalarm (useful with solaris threads)
+OPTION(WANT_IGNORE_SIGALARM "Ignore SIGALARM signal" OFF)
+IF(WITH_IGNORE_SIGALARM)
+	SET(WANT_IGNORE_SIGALARM ON)
+ENDIF()
+
 # Check for threads
 FIND_PACKAGE(Threads REQUIRED)
 IF(CMAKE_USE_WIN32_THREADS_INIT OR CMAKE_USE_PTHREADS_INIT)
@@ -325,12 +331,17 @@ IF(CMAKE_USE_WIN32_THREADS_INIT OR CMAKE_USE_PTHREADS_INIT)
 			LIST(APPEND LIBS ${CMAKE_THREAD_LIBS_INIT})
 		ENDIF()
 		SET(COMPILE_THREADS_USE_POSIX 1)
-		SET(CMAKE_STATUS_THREADS_SUPPORT "POSIX")
 		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS Threads=POSIX)
 		# FIXME: Solaris threads ?
 		#SET(COMPILE_THREADS_USE_SOLARIS_LIBTHREAD 1)
 		#SET(CMAKE_STATUS_THREADS_SUPPORT "SOLARIS")
 		#LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS Threads=SOLARIS)
+		IF(WANT_IGNORE_SIGALARM)
+			SET(CMAKE_STATUS_THREADS_SUPPORT "POSIX (ignoring SIGALARM)")
+			SET(COMPILE_IGNORE_SIGALARM 1)
+		ELSE()
+			SET(CMAKE_STATUS_THREADS_SUPPORT "POSIX")
+		ENDIF()
 	ENDIF()
 ELSE()
 	SET(CMAKE_STATUS_THREADS_SUPPORT "Not used")
@@ -341,7 +352,7 @@ FIND_PACKAGE(ZLIB REQUIRED)
 IF(ZLIB_FOUND)
 	INCLUDE_DIRECTORIES(${ZLIB_INCLUDE_DIR})
 	LIST(APPEND LIBS ${ZLIB_LIBRARIES})
-	ADD_DEFINITIONS(-DCOMPILE_ZLIB_SUPPORT)
+	SET(COMPILE_ZLIB_SUPPORT 1)
 ENDIF()
 
 ############################################################################
@@ -365,7 +376,6 @@ IF(QT4_FOUND)
 			SET(QT_USE_QTDBUS true)
 			SET(CMAKE_STATUS_QTDBUS_SUPPORT "Yes")
 			SET(COMPILE_DBUS_SUPPORT 1)
-			ADD_DEFINITIONS(-DCOMPILE_DBUS_SUPPORT)
 			LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS COMPILE_DBUS_SUPPORT)
 		ELSE()
 			SET(CMAKE_STATUS_QTDBUS_SUPPORT "Not available")
@@ -384,7 +394,6 @@ IF(QT4_FOUND)
 			SET(QT_USE_QTWEBKIT true)
 			SET(CMAKE_STATUS_QTWEBKIT_SUPPORT "Yes")
 			SET(COMPILE_WEBKIT_SUPPORT 1)
-			ADD_DEFINITIONS(-DCOMPILE_WEBKIT_SUPPORT)
 			LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS COMPILE_WEBKIT_SUPPORT)
 		ELSE()
 			SET(CMAKE_STATUS_QTWEBKIT_SUPPORT "Not available")
@@ -407,15 +416,16 @@ IF(UNIX)
 		FIND_PACKAGE(X11)
 		IF(X11_FOUND)
 			SET(COMPILE_X11_SUPPORT 1)
+			SET(COMPILE_XSS_SUPPORT 1)
 			SET(CMAKE_STATUS_X11_SUPPORT "Yes")
 			INCLUDE_DIRECTORIES(${X11_INCLUDE_DIR})
 			LIST(APPEND LIBS ${X11_LIBRARIES})
-            # Seems like ${X11_LIBRARIES} doesn't add -lXrender, which is needed
-            # for building with --no-add-needed/binutils-gold, see
-            # <http://bugs.debian.org/555068> for details.
-            IF(X11_Xrender_FOUND)
-                    LIST(APPEND LIBS ${X11_Xrender_LIB})
-            ENDIF(X11_Xrender_FOUND)
+			# Seems like ${X11_LIBRARIES} doesn't add -lXrender, which is needed
+			# for building with --no-add-needed/binutils-gold, see
+			# <http://bugs.debian.org/555068> for details.
+			IF(X11_Xrender_FOUND)
+				LIST(APPEND LIBS ${X11_Xrender_LIB})
+			ENDIF(X11_Xrender_FOUND)
 		ELSE()
 			SET(CMAKE_STATUS_X11_SUPPORT "Not available")
 		ENDIF()
@@ -741,12 +751,23 @@ ENDIF()
 ############################################################################
 
 INCLUDE(CheckFunctionExists)
-CHECK_FUNCTION_EXISTS("inet_ntoa" HAVE_INET_NTOA)
+CHECK_FUNCTION_EXISTS("inet_ntoa" HAVE_INET_NTOA_EXISTS)
 # what systems lacks this!?
-IF(HAVE_INET_NTOA)
-	ADD_DEFINITIONS(-DHAVE_INET_NTOA)
+IF(HAVE_INET_NTOA_EXISTS)
+	SET(HAVE_INET_NTOA 1)
 ENDIF()
 
+CHECK_FUNCTION_EXISTS("inet_aton" HAVE_INET_ATON_EXISTS)
+# what systems lacks this!?
+IF(HAVE_INET_ATON_EXISTS)
+	SET(HAVE_INET_ATON 1)
+ENDIF()
+
+# Check GET_INTERFACE_ADDRESS support
+FIND_PATH(GET_INTERFACE_ADDRESS_INCLUDE_DIR net/if.h)
+IF(GET_INTERFACE_ADDRESS_INCLUDE_DIR)
+	SET(COMPILE_GET_INTERFACE_ADDRESS 1)
+ENDIF()
 ############################################################################
 # GSM support
 ############################################################################
@@ -760,6 +781,21 @@ IF(WANT_GSM)
 ELSE()
 	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_GSM)
 	SET(CMAKE_STATUS_GSM_SUPPORT "User disabled")
+ENDIF()
+
+############################################################################
+# DCC canvas support
+############################################################################
+
+OPTION(WANT_DCC_CANVAS "Compile DCC Canvas Support" OFF)
+IF(WITH_DCC_CANVAS)
+	SET(WANT_DCC_CANVAS ON)
+ENDIF()
+IF(WANT_DCC_CANVAS)
+	SET(CMAKE_STATUS_DCC_CANVAS_SUPPORT "Yes")
+	SET(COMPILE_DCC_CANVAS 1)
+ELSE()
+	SET(CMAKE_STATUS_DCC_CANVAS_SUPPORT "No")
 ENDIF()
 
 ############################################################################
@@ -1307,6 +1343,7 @@ MESSAGE(STATUS "  Python Support              : ${CMAKE_STATUS_PYTHON_SUPPORT}")
 MESSAGE(STATUS "  IPC Support                 : ${CMAKE_STATUS_IPC_SUPPORT}")
 MESSAGE(STATUS "  System memmove Support      : ${CMAKE_STATUS_SYSTEM_MEMMOVE_SUPPORT}")
 MESSAGE(STATUS "  GSM Support                 : ${CMAKE_STATUS_GSM_SUPPORT}")
+MESSAGE(STATUS "  DCC Canvas Support          : ${CMAKE_STATUS_DCC_CANVAS_SUPPORT}")
 MESSAGE(STATUS "  DCC Voice Support           : ${CMAKE_STATUS_DCC_VOICE_SUPPORT}")
 MESSAGE(STATUS "  DCC Video Support           : ${CMAKE_STATUS_DCC_VIDEO_SUPPORT}")
 MESSAGE(STATUS "  Ogg/Theora Support          : ${CMAKE_STATUS_OGG_THEORA_SUPPORT}")

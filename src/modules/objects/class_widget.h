@@ -25,6 +25,7 @@
 //
 //=============================================================================
 
+#include "kvi_settings.h"
 #include "kvi_string.h"
 #include "kvi_tal_tooltip.h"
 #include "object_macros.h"
