@@ -26,7 +26,11 @@
 
 #include "gsmcodec.h"
 #include "broker.h"
-#include "video.h"
+
+#ifndef COMPILE_DISABLE_DCC_VIDEO
+	#include "video.h"
+#endif
+
 #include "voice.h"
 #include "utils.h"
 #include "send.h"
@@ -1068,6 +1072,7 @@ static void dccModuleParseDccVideo(KviDccRequest *dcc)
 		return;
 	}
 #endif
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 	//  Actually unused parameter
 	if(!kvi_dcc_video_is_valid_codec(dcc->szParam1.ptr()))
 	{
@@ -1112,6 +1117,7 @@ static void dccModuleParseDccVideo(KviDccRequest *dcc)
 	dcc_module_set_dcc_type(d,"VIDEO");
 	d->triggerCreationEvent();
 	g_pDccBroker->activeVideoManage(d);
+#endif
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

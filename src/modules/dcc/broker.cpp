@@ -29,7 +29,10 @@
 #include "chat.h"
 #include "send.h"
 #include "voice.h"
-#include "video.h"
+
+#ifndef COMPILE_DISABLE_DCC_VIDEO
+	#include "video.h"
+#endif
 
 #ifdef COMPILE_DCC_CANVAS
 	#include "canvas.h"
@@ -404,6 +407,7 @@ void KviDccBroker::passiveVoiceExecute(KviDccDescriptor * dcc)
 // ACTIVE VIDEO
 ///////////////////////////////////////////////////////////////////////////////
 
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 void KviDccBroker::activeVideoManage(KviDccDescriptor * dcc)
 {
 	if(!dcc->bAutoAccept)
@@ -450,6 +454,10 @@ void KviDccBroker::activeVideoExecute(KviDccBox *box,KviDccDescriptor * dcc)
 	if(bMinimized)v->minimize();
 
 	m_pDccWindowList->append(v);
+#else
+void KviDccBroker::activeVideoExecute(KviDccBox *,KviDccDescriptor *)
+{
+#endif
 }
 
 
@@ -457,6 +465,7 @@ void KviDccBroker::activeVideoExecute(KviDccBox *box,KviDccDescriptor * dcc)
 // PASSIVE VIDEO
 ///////////////////////////////////////////////////////////////////////////////
 
+#ifndef COMPILE_DISABLE_DCC_VIDEO
 void KviDccBroker::passiveVideoExecute(KviDccDescriptor * dcc)
 {
 	KviStr tmp(KviStr::Format,"dcc: video %s@%s:%s",dcc->szNick.toUtf8().data(),dcc->szIp.toUtf8().data(),dcc->szPort.toUtf8().data());
@@ -467,6 +476,7 @@ void KviDccBroker::passiveVideoExecute(KviDccDescriptor * dcc)
 	if(bMinimized)v->minimize();
 	m_pDccWindowList->append(v);
 }
+#endif
 
 
 ///////////////////////////////////////////////////////////////////////////////
