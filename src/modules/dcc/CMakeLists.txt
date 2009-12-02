@@ -6,10 +6,15 @@ SET(kvidcc_MOC_HDRS
 	dialogs.h
 	marshal.h
 	send.h
-	video.h
 	voice.h
 	window.h
 )
+
+IF(NOT DEFINED COMPILE_DISABLE_DCC_VIDEO) 
+        LIST(APPEND kvidcc_MOC_HDRS 
+                video.h 
+        ) 
+ENDIF() 
 
 SET(kvidcc_SRCS
 	adpcmcodec.cpp
@@ -27,11 +32,15 @@ SET(kvidcc_SRCS
 	send.cpp
 	thread.cpp
 	utils.cpp
-	video.cpp
 	voice.cpp
 	window.cpp
 )
 
+IF(NOT DEFINED COMPILE_DISABLE_DCC_VIDEO) 
+        LIST(APPEND kvidcc_SRCS 
+                video.cpp 
+        ) 
+ENDIF()
 
 SET(files
 	kvi_dccfiletransfericons.png
