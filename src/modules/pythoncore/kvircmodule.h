@@ -47,7 +47,7 @@ extern "C" {
 #endif
 
 	// Total number of C API pointers
-	#define PyKVIrc_API_NUM 9
+	#define PyKVIrc_API_NUM 10
 
 	#ifdef KVIRC_MODULE
 		// This section is used when compiling kvircmodule.cpp
