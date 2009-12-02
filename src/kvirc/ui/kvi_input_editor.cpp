@@ -24,24 +24,25 @@
 //   This file was originally part of kvi_input.h
 //============================================================================
 
+#include "kvi_app.h"
+#include "kvi_colorwin.h"
+#include "kvi_console.h"
+#include "kvi_fileextensions.h"
 #include "kvi_input.h"
 #include "kvi_input_editor.h"
 #include "kvi_input_history.h"
-#include "kvi_app.h"
-#include "kvi_out.h"
-#include "kvi_console.h"
-#include "kvi_locale.h"
-#include "kvi_options.h"
 #include "kvi_ircview.h"
-#include "kvi_colorwin.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_userinput.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_kernel.h"
-#include "kvi_userlistview.h"
+#include "kvi_locale.h"
+#include "kvi_mirccntrl.h"
+#include "kvi_options.h"
+#include "kvi_out.h"
+#include "kvi_tal_popupmenu.h"
 #include "kvi_texticonwin.h"
 #include "kvi_texticonmanager.h"
-#include "kvi_tal_popupmenu.h"
+#include "kvi_userinput.h"
+#include "kvi_userlistview.h"
 
 #include <QClipboard>
 #include <QLabel>
@@ -201,10 +202,19 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 						szPath.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				}
 #endif
-				szPath.prepend("/PARSE \"");
-				szPath.append("\"");
-				if(m_pKviWindow)
-					KviKvsScript::run(szPath,m_pKviWindow);
+
+				if(szPath.endsWith(KVI_FILEEXTENSION_SCRIPT,Qt::CaseInsensitive))
+				{
+					//script, parse it
+					szPath.prepend("PARSE \"");
+					szPath.append("\"");
+					if(m_pKviWindow)
+						KviKvsScript::run(szPath,m_pKviWindow);
+				} else {
+					//other file, paste link
+					szPath.append(" ");
+					insertText(szPath);
+				}
 			}
 		}
 	}
