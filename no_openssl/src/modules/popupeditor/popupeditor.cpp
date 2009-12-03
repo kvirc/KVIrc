@@ -215,10 +215,11 @@ KviSinglePopupEditor::KviSinglePopupEditor(QWidget * par)
 	m_pTreeWidget->setRootIsDecorated(true);
 	m_pTreeWidget->header()->setSortIndicatorShown(false);
 	m_pTreeWidget->setSortingEnabled(false);
-	
+	m_pTreeWidget->setContextMenuPolicy(Qt::CustomContextMenu);
+
 	connect(m_pTreeWidget,SIGNAL(itemSelectionChanged()),this,SLOT(selectionChanged()));
-	connect(m_pTreeWidget,SIGNAL(itemPressed(QTreeWidgetItem *, int)),
-		this,SLOT(itemPressed(QTreeWidgetItem *, int)));
+	connect(m_pTreeWidget,SIGNAL(customContextMenuRequested(const QPoint &)),
+		this,SLOT(customContextMenuRequested(const QPoint &)));
 
 	m_pEditor = KviScriptEditor::createInstance(spl);
 
@@ -363,10 +364,9 @@ void KviSinglePopupEditor::testModeMenuItemClicked(KviKvsPopupMenuItem * it)
 
 }
 
-void KviSinglePopupEditor::itemPressed(QTreeWidgetItem * it, int)
+void KviSinglePopupEditor::customContextMenuRequested(const QPoint &pos)
 {
-	if (QApplication::mouseButtons() != Qt::RightButton)
-		return;
+	QTreeWidgetItem *it=m_pTreeWidget->itemAt(pos);
 
 	m_pContextPopup->clear();
 

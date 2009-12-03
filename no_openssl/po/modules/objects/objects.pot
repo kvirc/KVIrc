@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"POT-Creation-Date: 2009-11-20 23:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -83,17 +83,17 @@ msgid "'%Q' is not a valid file path"
 msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1112
-#: src/modules/objects/class_painter.cpp:549
+#: src/modules/objects/class_painter.cpp:553
 msgid "The array passed as parameter must contain at least 4 elements"
 msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1125
-#: src/modules/objects/class_painter.cpp:558
+#: src/modules/objects/class_painter.cpp:562
 msgid "One of the geometry array parameters is empty"
 msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1130
-#: src/modules/objects/class_painter.cpp:563
+#: src/modules/objects/class_painter.cpp:567
 msgid "One of the geometry array parameters didn't evaluate to an integer"
 msgstr ""
 
@@ -109,9 +109,9 @@ msgstr ""
 #: src/modules/objects/class_widget.cpp:1649
 #: src/modules/objects/class_multilineedit.cpp:855
 #: src/modules/objects/class_multilineedit.cpp:1055
-#: src/modules/objects/class_painter.cpp:575
-#: src/modules/objects/class_painter.cpp:609
-#: src/modules/objects/class_painter.cpp:653
+#: src/modules/objects/class_painter.cpp:579
+#: src/modules/objects/class_painter.cpp:613
+#: src/modules/objects/class_painter.cpp:657
 msgid "The first parameter didn't evaluate to an array nor an integer"
 msgstr ""
 
@@ -119,7 +119,7 @@ msgstr ""
 #: src/modules/objects/class_widget.cpp:1292
 #: src/modules/objects/class_multilineedit.cpp:805
 #: src/modules/objects/class_multilineedit.cpp:1005
-#: src/modules/objects/class_painter.cpp:619
+#: src/modules/objects/class_painter.cpp:623
 msgid "The array passed as parameter must contain at least 3 elements"
 msgstr ""
 
@@ -158,7 +158,7 @@ msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1568
 #: src/modules/objects/class_widget.cpp:1625
-#: src/modules/objects/class_painter.cpp:585
+#: src/modules/objects/class_painter.cpp:589
 msgid "The array passed as parameter must contain at least 2 elements"
 msgstr ""
 
@@ -195,7 +195,7 @@ msgid "Unknown widget flag '%Q'"
 msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1727
-#: src/modules/objects/class_label.cpp:326
+#: src/modules/objects/class_label.cpp:329
 msgid "Unknown style '%Q'"
 msgstr ""
 
@@ -212,12 +212,12 @@ msgid "The pixmap is not valid"
 msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1854
-#: src/modules/objects/class_painter.cpp:1211
+#: src/modules/objects/class_painter.cpp:1215
 msgid "Pixmap parameter is not an object"
 msgstr ""
 
 #: src/modules/objects/class_widget.cpp:1859
-#: src/modules/objects/class_painter.cpp:1216
+#: src/modules/objects/class_painter.cpp:1220
 msgid "Pixmap object required"
 msgstr ""
 
@@ -304,7 +304,7 @@ msgid "The hex string length is not a multiple of 2"
 msgstr ""
 
 #: src/modules/objects/class_socket.cpp:633
-#: src/modules/objects/class_file.cpp:617
+#: src/modules/objects/class_file.cpp:616
 msgid "The hex string is not correct!"
 msgstr ""
 
@@ -412,24 +412,29 @@ msgstr ""
 #: src/modules/objects/class_multilineedit.cpp:1117
 #: src/modules/objects/class_groupbox.cpp:315
 #: src/modules/objects/class_hbox.cpp:197
-#: src/modules/objects/class_label.cpp:272
+#: src/modules/objects/class_label.cpp:275
 msgid "Unknown alignment '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_tablewidget.cpp:152
+#: src/modules/objects/class_tablewidget.cpp:187
 msgid "Item out of the tablewidget size"
 msgstr ""
 
-#: src/modules/objects/class_tablewidget.cpp:180
-#: src/modules/objects/class_treewidgetitem.cpp:441
+#: src/modules/objects/class_tablewidget.cpp:215
+#: src/modules/objects/class_treewidgetitem.cpp:443
 msgid "Pixmap object or image Id required"
 msgstr ""
 
-#: src/modules/objects/class_tablewidget.cpp:190
-#: src/modules/objects/class_treewidgetitem.cpp:451
+#: src/modules/objects/class_tablewidget.cpp:225
+#: src/modules/objects/class_treewidgetitem.cpp:453
 msgid ""
 "Error occured: the suitable file '%Q' is not of the correct format or it is "
 "not a valid icon number."
+msgstr ""
+
+#: src/modules/objects/class_tablewidget.cpp:492
+#: src/modules/objects/class_treewidgetitem.cpp:287
+msgid "Unknown item flag '%Q'"
 msgstr ""
 
 #: src/modules/objects/class_wrapper.cpp:148
@@ -505,11 +510,11 @@ msgstr ""
 msgid "The widget must be a child of this vbox"
 msgstr ""
 
-#: src/modules/objects/class_treewidget.cpp:405
+#: src/modules/objects/class_treewidget.cpp:396
 msgid "Invalid selection mode '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_treewidget.cpp:420
+#: src/modules/objects/class_treewidget.cpp:411
 msgid "Unknown '%Q' sort order: switching to ascending order"
 msgstr ""
 
@@ -630,7 +635,7 @@ msgstr ""
 msgid "Block parameter must be a string or a memorybuffer object"
 msgstr ""
 
-#: src/modules/objects/class_file.cpp:601
+#: src/modules/objects/class_file.cpp:600
 msgid "Lenght of hex string is not multiple of 2"
 msgstr ""
 
@@ -695,18 +700,14 @@ msgstr ""
 msgid "Buttongroup supports only checkbox and radiobox object"
 msgstr ""
 
-#: src/modules/objects/class_treewidgetitem.cpp:169
+#: src/modules/objects/class_treewidgetitem.cpp:171
 msgid "The listviewitem cannot be parentless"
 msgstr ""
 
-#: src/modules/objects/class_treewidgetitem.cpp:179
+#: src/modules/objects/class_treewidgetitem.cpp:181
 msgid ""
 "The parent of the listwidgetitem must be either another listwidgetitem or a "
 "listwidget"
-msgstr ""
-
-#: src/modules/objects/class_treewidgetitem.cpp:285
-msgid "Unknown item flag '%Q'"
 msgstr ""
 
 #: src/modules/objects/class_lcd.cpp:142
@@ -717,101 +718,101 @@ msgstr ""
 msgid "Unknown segment style '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:569
+#: src/modules/objects/class_painter.cpp:573
 msgid " requires either an array as first parameter or four integers"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:592
-#: src/modules/objects/class_painter.cpp:627
+#: src/modules/objects/class_painter.cpp:596
+#: src/modules/objects/class_painter.cpp:631
 msgid "One of the array parameters is empty"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:597
-#: src/modules/objects/class_painter.cpp:632
+#: src/modules/objects/class_painter.cpp:601
+#: src/modules/objects/class_painter.cpp:636
 msgid "One of the array parameters didn't evaluate to an integer"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:603
+#: src/modules/objects/class_painter.cpp:607
 msgid " requires either an array as first parameter or two integers"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:640
+#: src/modules/objects/class_painter.cpp:644
 msgid "The opacity value didn't evaluate to an integer"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:647
+#: src/modules/objects/class_painter.cpp:651
 msgid " requires either an array as first parameter or 3 integers"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:703
+#: src/modules/objects/class_painter.cpp:707
 msgid "Unknown '%Q' background mode"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:851
+#: src/modules/objects/class_painter.cpp:855
 #: src/modules/objects/class_button.cpp:130
 msgid "Pixmap parameter is not an object!"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:856
+#: src/modules/objects/class_painter.cpp:860
 #: src/modules/objects/class_button.cpp:136
 msgid "Object Pixmap required!"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:867
-#: src/modules/objects/class_painter.cpp:920
-#: src/modules/objects/class_painter.cpp:1560
+#: src/modules/objects/class_painter.cpp:871
+#: src/modules/objects/class_painter.cpp:924
+#: src/modules/objects/class_painter.cpp:1564
 msgid "The opacity parameter didn't evaluate to integer"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:879
-#: src/modules/objects/class_painter.cpp:932
+#: src/modules/objects/class_painter.cpp:883
+#: src/modules/objects/class_painter.cpp:936
 msgid "Color name or triplette rgb/hsv value required"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:884
-#: src/modules/objects/class_painter.cpp:937
-#: src/modules/objects/class_painter.cpp:1578
+#: src/modules/objects/class_painter.cpp:888
+#: src/modules/objects/class_painter.cpp:941
+#: src/modules/objects/class_painter.cpp:1582
 msgid "One of the triplette parameters didn't evaluate to an integer"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1012
+#: src/modules/objects/class_painter.cpp:1016
 msgid "$fontMetricsWidth: the painter is not active!"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1022
+#: src/modules/objects/class_painter.cpp:1026
 msgid "$fontMetricsHeight: the painter is not active!"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1051
+#: src/modules/objects/class_painter.cpp:1055
 msgid "Missing filename"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1077
-#: src/modules/objects/class_painter.cpp:1102
+#: src/modules/objects/class_painter.cpp:1081
+#: src/modules/objects/class_painter.cpp:1106
 msgid "No valid paint device"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1089
+#: src/modules/objects/class_painter.cpp:1093
 msgid "Pixmap or Widget parameter is not an object"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1096
+#: src/modules/objects/class_painter.cpp:1100
 msgid "Widget or Pixmap required "
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1182
+#: src/modules/objects/class_painter.cpp:1186
 msgid "Invalid mode '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1481
+#: src/modules/objects/class_painter.cpp:1485
 msgid "Unknown pen style '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1507
+#: src/modules/objects/class_painter.cpp:1511
 msgid "Unknown brush style '%Q'"
 msgstr ""
 
-#: src/modules/objects/class_painter.cpp:1573
+#: src/modules/objects/class_painter.cpp:1577
 msgid "Color name or triplette RGB/HSV values required"
 msgstr ""
 

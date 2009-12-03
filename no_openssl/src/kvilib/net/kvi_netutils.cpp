@@ -58,7 +58,7 @@
 
 // FIXME: #warning "Your system lacks the inet_aton function,"
 // FIXME: #warning "you're trying to compile this file without"
-// FIXME: #warning "the config.h created by the configure script,"
+// FIXME: #warning "the kvi_sysconfig.h created by the cmake script,"
 // FIXME: #warning "Using own internal implementation of inet_aton."
 
 #include <ctype.h>
@@ -570,7 +570,7 @@ namespace KviNetUtils
 	}
 
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
-	bool getInterfaceAddress(const QString &szInterfaceName,QString &)
+	bool getInterfaceAddress(const QString &szInterfaceName,QString &szBuffer)
 	{
 		struct sockaddr *sa;
 		struct sockaddr_in *sin;
@@ -609,7 +609,7 @@ namespace KviNetUtils
 			unsigned int uMB = uBytesPerSec / (1024 * 1024);
 			unsigned int uRem = ((uBytesPerSec % (1024 * 1024)) * 100) / (1024 * 1024);
 
-			KviQString::sprintf(szBuffer,"%u.%u%u MB/s",uMB,uRem / 10,uRem % 10);
+			KviQString::sprintf(szBuffer,"%u.%u%u MiB/s",uMB,uRem / 10,uRem % 10);
 
 			return;
 		}
@@ -619,7 +619,7 @@ namespace KviNetUtils
 			unsigned int uKB = uBytesPerSec / 1024;
 			unsigned int uRem = ((uBytesPerSec % 1024) * 100) / 1024;
 
-			KviQString::sprintf(szBuffer,"%u.%u%u KB/s",uKB,uRem / 10,uRem % 10);
+			KviQString::sprintf(szBuffer,"%u.%u%u KiB/s",uKB,uRem / 10,uRem % 10);
 
 			return;
 		}

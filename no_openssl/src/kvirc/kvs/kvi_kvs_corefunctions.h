@@ -115,6 +115,7 @@ namespace KviKvsCoreFunctions
 	KVSCF(r);
 	KVSCF(rand);
 	KVSCF(real);
+	KVSCF(realname);
 	KVSCF(receivedBytes);
 	KVSCF(rsort);
 	// s_z

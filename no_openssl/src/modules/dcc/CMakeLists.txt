@@ -10,6 +10,12 @@ SET(kvidcc_MOC_HDRS
 	window.h
 )
 
+IF(NOT DEFINED COMPILE_DISABLE_DCC_VIDEO) 
+        LIST(APPEND kvidcc_MOC_HDRS 
+                video.h 
+        ) 
+ENDIF() 
+
 SET(kvidcc_SRCS
 	adpcmcodec.cpp
 	broker.cpp
@@ -30,6 +36,11 @@ SET(kvidcc_SRCS
 	window.cpp
 )
 
+IF(NOT DEFINED COMPILE_DISABLE_DCC_VIDEO) 
+        LIST(APPEND kvidcc_SRCS 
+                video.cpp 
+        ) 
+ENDIF()
 
 SET(files
 	kvi_dccfiletransfericons.png

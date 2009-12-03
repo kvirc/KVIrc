@@ -1,3 +1,18 @@
+   October 2009
+   [HelLViS69]
+   - Reworked the whole addon system: the new packaging handler with a simple wizard will guide
+     you during the addon creation process. Moreover now you need to follow a strict set of rules
+     to ensure the standardization of .kva (KVIrc Addon) extension
+   - Added $realname() function
+   - Removed KviTalScrollView and KviTalTextEdit classes
+   - Moved bytes multiples from SI to IEC standard (KiB, MiB, GiB instead of KB, MB, GB)
+   [CtrlAltCa]
+   - Finished the Python scripting support
+   - Modified all accelerators
+   - Improved url module
+   - Removed KviTalTreeWidget class
+   - More work on Phonon
+
 26 August 2009
    [CtrlAltCa]
    - Reworked the icon window
@@ -12,7 +27,7 @@
 
 04 August 2009
    [Noldor]
-   - reworked code completer
+   - Reworked code completer
 
 01 August 2009
    [CtrlAltCa]
@@ -26,7 +41,7 @@
 
 27 July 2009
    [CtrlAltCa]
-   - support for +f channel mode
+   - Support for +f channel mode
 
 25 July 2009
    [CtrlAltCa]
@@ -34,7 +49,7 @@
 
 19 July 2009
    [CtrlAltCa]
-   - changed window.setWindowTitle() syntax to match current qt implementation
+   - Changed window.setWindowTitle() syntax to match current qt implementation
    [Curan]
    - Merged patched from no_embedded_code branch, mostly $str.digest and libcrypto++ support
 
@@ -64,7 +79,7 @@
 
 01 July 2009
    [HelLViS69]
-   - removed KviQCString with QByteArray
+   - Removed KviQCString with QByteArray
 
 25 June 2009
    [HelLViS69]
@@ -95,8 +110,8 @@
    - Added a possibility to switch to next/previous "active" window with Alt-PgUp/PgDown
 
 08 May 2009
-   [mren] [Kebianizao]
-   - updated FSF address in all source files
+   [mren & Kebianizao]
+   - Updated FSF address in all source files
 
 25 March 2009
    [CtrlAltCa]

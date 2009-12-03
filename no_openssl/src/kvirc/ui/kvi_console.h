@@ -95,6 +95,7 @@ protected:
 	QString                   m_szStatusString; // nick (flags) on server | not connected
 	QString                   m_szOwnSmartColor;
 	QStringList             * m_pTmpHighLightedChannels;
+	KviIrcContext           * m_pContext;
 protected:
 	// UI
 	virtual QPixmap * myIconPtr();
@@ -122,6 +123,8 @@ protected:
 	void showNotifyList(bool bShow);
 	static int getSmartColorHashForNick(QString *szNick);
 public:
+	KviIrcContext * context(){ return m_pContext; };
+
 	// UI
 	inline KviUserListView * notifyListView(){ return m_pNotifyListView; };
 	inline int selectedCount();

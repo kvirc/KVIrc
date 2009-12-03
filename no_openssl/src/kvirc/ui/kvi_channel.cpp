@@ -213,10 +213,14 @@ KviChannel::~KviChannel()
 {
 	// Unregister ourself
 	if(type() == KVI_WINDOW_TYPE_DEADCHANNEL)
-		context()->unregisterDeadChannel(this);
-	else
-		connection()->unregisterChannel(this);
-
+	{
+		if(context())
+			context()->unregisterDeadChannel(this);
+	} else {
+		if(connection())
+			connection()->unregisterChannel(this);
+	}
+	
 	// Then remove all the users and free mem
 	m_pUserListView->enableUpdates(false);
 	m_pUserListView->partAll();
@@ -263,7 +267,9 @@ void KviChannel::getBaseLogFileName(QString & szBuffer)
 	} else {
 		szBuffer = szChan;
 		szBuffer.append(".");
-		szBuffer.append(context()->id());
+		if(context())
+			szBuffer.append(context()->id());
+		else szBuffer.append("0");
 	}
 }
 
@@ -652,8 +658,10 @@ void KviChannel::setDeadChan()
 	m_szChannelLimit = "";
 
 	// this should be moved to irc context!
-	connection()->unregisterChannel(this);
-	context()->registerDeadChannel(this);
+	if(connection())
+		connection()->unregisterChannel(this);
+	if(context())
+		context()->registerDeadChannel(this);
 
 	setType(KVI_WINDOW_TYPE_DEADCHANNEL);
 
@@ -669,8 +677,10 @@ void KviChannel::setAliveChan()
 	setType(KVI_WINDOW_TYPE_CHANNEL);
 	m_pUserListView->setUserDataBase(connection()->userDataBase());
 	m_joinTime = QDateTime::currentDateTime();
-	context()->unregisterDeadChannel(this);
-	connection()->registerChannel(this);
+	if(context())
+		context()->unregisterDeadChannel(this);
+	if(connection())
+		connection()->registerChannel(this);
 	// Update log file name
 	if(m_pIrcView->isLogging())
 		m_pIrcView->startLogging();
@@ -1485,7 +1495,7 @@ void KviChannel::closeEvent(QCloseEvent * e)
 {
 	if((m_iStateFlags & KVI_CHANNEL_STATE_SENTPART) || (m_iStateFlags & KVI_CHANNEL_STATE_DEADCHAN) || !(m_pConsole->isConnected()))
 	{
-		m_pContext->unregisterDeadChannel(this);
+		if(context()) context()->unregisterDeadChannel(this);
 		KviWindow::closeEvent(e);
 	} else {
 		e->ignore();

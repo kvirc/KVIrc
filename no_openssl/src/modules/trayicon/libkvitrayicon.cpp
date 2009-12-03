@@ -345,20 +345,13 @@ void KviTrayIcon::fillContextPopup()
 
 void KviTrayIcon::toggleParentFrame()
 {
-	QWidget *top_widget = m_pFrm->topLevelWidget();
-
-	if(m_pFrm->isVisible()) {
+	if(m_pFrm->isVisible())
+	{
 		m_pFrm->hide();
 	} else {
-		//restore active mdichild
-		top_widget->show();
-		top_widget->raise();
-		if(g_pActiveWindow) g_pActiveWindow->setFocus();
-		
 		//restore mainwindow
 		m_pFrm->setWindowState(m_pFrm->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
 		m_pFrm->show();
-
 	}
 }
 

@@ -22,6 +22,11 @@ ENDIF()
 
 SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
 
+IF(WANT_STRIP)
+	GET_TARGET_PROPERTY(kvi_module_location ${kvi_module_name} LOCATION)
+	INSTALL(CODE "EXEC_PROGRAM(${STRIP_EXECUTABLE} ARGS -s \"${kvi_module_location}\")")
+ENDIF()
+
 IF(UNIX)
 	IF(APPLE)
 		SET_TARGET_PROPERTIES(${kvi_module_name} PROPERTIES INSTALL_NAME_DIR @executable_path/../Frameworks)

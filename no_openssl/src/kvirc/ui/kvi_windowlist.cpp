@@ -354,10 +354,7 @@ void KviWindowListButton::drawButtonLabel(QPainter * painter)
 	}
 
 	if(bMinimized)
-	{
-		szText.prepend('(');
-		szText.append(')');
-	}
+		szText.prepend('(').append(')');
 
 	pPainter->setClipRect(cRect);
 	pPainter->drawText(cRect,Qt::AlignLeft | Qt::AlignTop,szText,&bRect);
@@ -487,7 +484,7 @@ void KviClassicWindowList::insertButton(KviWindowListButton * b)
 					{
 						// same type!
 						// sort by name
-						if(!KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) || (KviQString::cmpCI(btn->kviWindow()->windowName(),b->kviWindow()->windowName()) > 0))
+						if(KVI_OPTION_BOOL(KviOption_boolSortWindowListItemsByName) && (KviQString::cmpCI(btn->kviWindow()->windowName(),b->kviWindow()->windowName()) > 0))
 						{
 							// got a "higher one"
 							m_pButtonList->insert(idx,b);

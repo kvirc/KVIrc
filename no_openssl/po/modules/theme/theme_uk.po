@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"POT-Creation-Date: 2009-11-20 23:15+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -24,7 +24,7 @@ msgstr "Застосувати тему"
 msgid "&Remove Theme"
 msgstr "Видалити тему"
 
-#: src/modules/theme/savethemedialog.cpp:218
+#: src/modules/theme/savethemedialog.cpp:217
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Зробити скріншот - KVIrc"
 
@@ -60,7 +60,7 @@ msgstr "Видалити обрані теми"
 msgid "Delete Theme - KVIrc"
 msgstr "Видалити тему - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:237
+#: src/modules/theme/packthemedialog.cpp:235
 #: src/modules/theme/savethemedialog.cpp:119
 msgid "Description:"
 msgstr "Опис:"
@@ -93,12 +93,12 @@ msgstr "Не можу зробити скріншот."
 msgid "Export Selected Themes to a Distributable Package"
 msgstr "Експортувати обрані теми в пакет для подальшого поширення"
 
-#: src/modules/theme/packthemedialog.cpp:113
-#: src/modules/theme/packthemedialog.cpp:346
-#: src/modules/theme/packthemedialog.cpp:380
-#: src/modules/theme/packthemedialog.cpp:450
-#: src/modules/theme/packthemedialog.cpp:462
-#: src/modules/theme/packthemedialog.cpp:470
+#: src/modules/theme/packthemedialog.cpp:111
+#: src/modules/theme/packthemedialog.cpp:344
+#: src/modules/theme/packthemedialog.cpp:378
+#: src/modules/theme/packthemedialog.cpp:448
+#: src/modules/theme/packthemedialog.cpp:460
+#: src/modules/theme/packthemedialog.cpp:468
 msgid "Export Theme - KVIrc"
 msgstr "Експорт теми - KVIrc"
 
@@ -106,20 +106,20 @@ msgstr "Експорт теми - KVIrc"
 msgid "Failed to apply the specified theme: %Q"
 msgstr "Не можу застосувати обрану тему: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:346
-#: src/modules/theme/savethemedialog.cpp:199
+#: src/modules/theme/packthemedialog.cpp:344
+#: src/modules/theme/savethemedialog.cpp:198
 msgid "Failed to load the selected image"
 msgstr "Не можу завантажити обране зображення"
 
-#: src/modules/theme/packthemedialog.cpp:380
+#: src/modules/theme/packthemedialog.cpp:378
 msgid "Failed to load the selected image: please fix it"
 msgstr "Не можу завантажити обране зображення: будь ласка, виправте його"
 
-#: src/modules/theme/savethemedialog.cpp:277
+#: src/modules/theme/savethemedialog.cpp:276
 msgid "Failed to load the selected screenshot image: please fix it"
 msgstr "Не можу завантажити обране зображення. Будь ласка, виправте його."
 
-#: src/modules/theme/savethemedialog.cpp:218
+#: src/modules/theme/savethemedialog.cpp:217
 msgid "Failed to make screenshot"
 msgstr "Не можу зробити скріншот"
 
@@ -127,7 +127,7 @@ msgstr "Не можу зробити скріншот"
 msgid "Failed to unpack the selected file: %Q"
 msgstr "Не можу розпакувати обраний файл: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:308
+#: src/modules/theme/packthemedialog.cpp:306
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr "Для завершення операції впакування натисніть \"Завершити\"."
 
@@ -139,7 +139,7 @@ msgstr "Одержати більше тим"
 msgid "Go Back to Package Data"
 msgstr "Повернутися до даних пакета"
 
-#: src/modules/theme/packthemedialog.cpp:268
+#: src/modules/theme/packthemedialog.cpp:266
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
@@ -162,11 +162,11 @@ msgstr ""
 "буде показано в спливаючих підказках діалогу керування теми, а також буде "
 "видно при установці пакети теми, якщо ви надалі захочете його створити."
 
-#: src/modules/theme/packthemedialog.cpp:297
+#: src/modules/theme/packthemedialog.cpp:295
 #, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *."
-"%1 extension."
+"Here you must choose the file name for the theme package. It should have a *%"
+"1 extension."
 msgstr ""
 "Тут ви можете вибрати ім'я файлу вашого пакета теми. воно повинне мати "
 "розширення *. %1"
@@ -179,18 +179,18 @@ msgstr ""
 "Тут ви повинні вказати інформацію про себе (авторі) і короткий опис теми, "
 "яку ви створюєте."
 
-#: src/modules/theme/packthemedialog.cpp:214
+#: src/modules/theme/packthemedialog.cpp:212
 msgid ""
 "Here you need to provide informations about you (the packager) and a short "
 "description of the package you're creating."
 msgstr "Тут ви повинні вказати інформацію про себе й короткий опис пакета."
 
-#: src/modules/theme/packthemedialog.cpp:126
+#: src/modules/theme/packthemedialog.cpp:124
 #: src/modules/theme/savethemedialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Натисніть \"Далі\" для продовження."
 
-#: src/modules/theme/packthemedialog.cpp:285
+#: src/modules/theme/packthemedialog.cpp:283
 msgid "Icon/Screenshot"
 msgstr "Іконка або скріншот"
 
@@ -202,7 +202,7 @@ msgstr "Установити пакет теми - KVIrc"
 msgid "Install Theme Package From Disk"
 msgstr "Установити пакет теми з локального диска"
 
-#: src/modules/theme/savethemedialog.cpp:167
+#: src/modules/theme/savethemedialog.cpp:166
 msgid "Make Screenshot Now"
 msgstr "Створити скріншот зараз."
 
@@ -214,24 +214,24 @@ msgstr "Керування темами - KVIrc"
 msgid "Open Theme - KVIrc"
 msgstr "Відкрити тему - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:245
+#: src/modules/theme/packthemedialog.cpp:243
 msgid "Package Author:"
 msgstr "Автор:"
 
-#: src/modules/theme/packthemedialog.cpp:256
+#: src/modules/theme/packthemedialog.cpp:254
 msgid "Package Informations"
 msgstr "Інформація про пакет"
 
-#: src/modules/theme/packthemedialog.cpp:220
+#: src/modules/theme/packthemedialog.cpp:218
 msgid "Package Name:"
 msgstr "Ім'я пакета:"
 
-#: src/modules/theme/packthemedialog.cpp:315
+#: src/modules/theme/packthemedialog.cpp:313
 msgid "Package Path"
 msgstr "Шлях до пакета"
 
-#: src/modules/theme/packthemedialog.cpp:447
-#: src/modules/theme/packthemedialog.cpp:459
+#: src/modules/theme/packthemedialog.cpp:445
+#: src/modules/theme/packthemedialog.cpp:457
 msgid "Packaging failed"
 msgstr "Упакування завершене невдало"
 
@@ -240,11 +240,11 @@ msgid "Put a package description here..."
 msgstr "Запишіть тут опис вашого пакета..."
 
 #: src/modules/theme/savethemedialog.cpp:64
-#: src/modules/theme/savethemedialog.cpp:199
-#: src/modules/theme/savethemedialog.cpp:234
-#: src/modules/theme/savethemedialog.cpp:255
-#: src/modules/theme/savethemedialog.cpp:267
-#: src/modules/theme/savethemedialog.cpp:277
+#: src/modules/theme/savethemedialog.cpp:198
+#: src/modules/theme/savethemedialog.cpp:233
+#: src/modules/theme/savethemedialog.cpp:254
+#: src/modules/theme/savethemedialog.cpp:266
+#: src/modules/theme/savethemedialog.cpp:276
 msgid "Save Current Theme - KVIrc"
 msgstr "Зберегти поточну тему - KVIrc"
 
@@ -252,11 +252,11 @@ msgstr "Зберегти поточну тему - KVIrc"
 msgid "Save Current Theme..."
 msgstr "Зберегти поточну тему..."
 
-#: src/modules/theme/savethemedialog.cpp:287
+#: src/modules/theme/savethemedialog.cpp:286
 msgid "Save Theme - KVIrc"
 msgstr "Зберегти тему - KVIrc"
 
-#: src/modules/theme/savethemedialog.cpp:174
+#: src/modules/theme/savethemedialog.cpp:173
 msgid "Screenshot"
 msgstr "Скріншот"
 
@@ -280,7 +280,7 @@ msgstr "Обрані файли не є пакетами теми KVIrc"
 msgid "Theme Author:"
 msgstr "Автор теми:"
 
-#: src/modules/theme/packthemedialog.cpp:201
+#: src/modules/theme/packthemedialog.cpp:199
 msgid "Theme Data"
 msgstr "Даної теми"
 
@@ -296,11 +296,11 @@ msgstr "Інформація про тему"
 msgid "Theme Name:"
 msgstr "Ім'я теми:"
 
-#: src/modules/theme/savethemedialog.cpp:284
+#: src/modules/theme/savethemedialog.cpp:283
 msgid "Theme saved successfully to "
 msgstr "Тема успішно збережена в "
 
-#: src/modules/theme/packthemedialog.cpp:147
+#: src/modules/theme/packthemedialog.cpp:145
 msgid ""
 "This is the information list for the themes you're packaging. If it looks OK "
 "press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
@@ -310,7 +310,7 @@ msgstr ""
 "натисніть \"Далі\" для продовження. Інакше, натисніть \"Скасування\" і "
 "зміните її."
 
-#: src/modules/theme/packthemedialog.cpp:122
+#: src/modules/theme/packthemedialog.cpp:120
 msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
@@ -332,15 +332,15 @@ msgstr ""
 "(наприклад, змінити або додати свої зображення або іконки) а потім "
 "експортувати в пакет теми."
 
-#: src/modules/theme/savethemedialog.cpp:255
+#: src/modules/theme/savethemedialog.cpp:254
 msgid "Unable to create theme directory."
 msgstr "Не можу створити папку теми"
 
-#: src/modules/theme/savethemedialog.cpp:266
+#: src/modules/theme/savethemedialog.cpp:265
 msgid "Unable to save theme: %Q"
 msgstr "Не можу зберегти тему: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:229
+#: src/modules/theme/packthemedialog.cpp:227
 #: src/modules/theme/savethemedialog.cpp:111
 msgid "Version:"
 msgstr "Версія:"
@@ -357,7 +357,7 @@ msgstr ""
 msgid "Warning: The theme might be incompatible with this version of KVIrc"
 msgstr "Попередження: тема може бути не сумісна з вашою версією KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:134
+#: src/modules/theme/packthemedialog.cpp:132
 #: src/modules/theme/savethemedialog.cpp:85
 msgid "Welcome"
 msgstr "Ласкаво просимо"
@@ -366,11 +366,11 @@ msgstr "Ласкаво просимо"
 msgid "Yes, Proceed"
 msgstr "Так, продовжити"
 
-#: src/modules/theme/savethemedialog.cpp:234
+#: src/modules/theme/savethemedialog.cpp:233
 msgid "You must choose a theme name!"
 msgstr "Ви повинні вибрати ім'я теми!"
 
-#: src/modules/theme/packthemedialog.cpp:124
+#: src/modules/theme/packthemedialog.cpp:122
 msgid ""
 "You will be asked to provide a package name, a description and, if you want, "
 "an icon/screenshot."

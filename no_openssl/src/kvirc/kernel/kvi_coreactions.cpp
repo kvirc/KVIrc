@@ -47,27 +47,6 @@
 
 #include <QObject>
 
-
-// Ctrl+Alt+A : KviGoAwayAction
-// Ctrl+Alt+C : Connect/Disconnect
-// Ctrl+Alt+S : Servers dialog
-// Ctrl+Alt+I : Identity dialog
-// Ctrl+Alt+O : General options
-// Ctrl+Alt+T : Theme options
-// Ctrl+Alt+J : Join Channels
-// Ctrl+Alt+X : Execute script
-// Ctrl+Alt+N : New irc context
-// Ctrl+Alt+1 : Action editor
-// Ctrl+Alt+2 : Alias editor
-// Ctrl+Alt+3 : Event editor
-// Ctrl+Alt+4 : Popup editor
-// Ctrl+Alt+5 : Raw event editor
-// Ctrl+Alt+6 : Customize toolbars
-// Ctrl+Alt+H : Show help index
-// Ctrl+Alt+R : Edit regusers
-// Ctrl+Alt+M : Manage Script Addons
-// Ctrl+Alt+F : Manage Themes
-
 void register_core_actions(KviActionManager * m)
 {
 	m->registerAction(new KviConnectAction(m)); // this as parent will destroy it on exit!
@@ -118,7 +97,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_servers.png",
 		KVI_SMALLICON_SERVER,
 		0,
-		"Ctrl+Alt+S");
+		"Ctrl+S");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_MANAGEADDONS,
@@ -129,7 +108,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_addons.png",
 		KVI_SMALLICON_ADDONS,
 		0,
-		"Ctrl+Alt+M");
+		QString());
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EDITREGUSERS,
@@ -140,7 +119,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_regusers.png",
 		KVI_SMALLICON_REGUSERS,
 		0,
-		"Ctrl+Alt+R");
+		"Ctrl+Shift+U");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_IDENTITYOPTIONS,
@@ -151,7 +130,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_identity.png",
 		KVI_SMALLICON_WHO,
 		0,
-		"Ctrl+Alt+I");
+		"Ctrl+Shift+I");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_SOCKETSPY,
@@ -195,7 +174,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_settings.png",
 		KVI_SMALLICON_OPTIONS,
 		0,
-		"Ctrl+Alt+O");
+		"Ctrl+Shift+O");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_THEMEOPTIONS,
@@ -206,7 +185,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_themeoptions.png",
 		KVI_SMALLICON_THEMEOPTIONS,
 		0,
-		"Ctrl+Alt+T");
+		"Ctrl+Shift+T");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_MANAGETHEMES,
@@ -217,7 +196,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_theme.png",
 		KVI_SMALLICON_THEME,
 		0,
-		"Ctrl+Alt+F");
+		QString());
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_TOOLBAREDITOR,
@@ -228,7 +207,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_toolbareditor.png",
 		KVI_SMALLICON_TOOLBAR,
 		0,
-		"Ctrl+Alt+6");
+		QString());
 
 
 	SCRIPT_ACTION(
@@ -240,7 +219,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_channels.png",
 		KVI_SMALLICON_CHANNEL,
 		KviKvsAction::NeedsConnection | KviKvsAction::NeedsContext,
-		"Ctrl+Alt+J");
+		"Ctrl+J");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_ACTIONEDITOR,
@@ -251,7 +230,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_actioneditor.png",
 		KVI_SMALLICON_SCRIPTACTION,
 		0,
-		"Ctrl+Alt+1");
+		"Ctrl+Shift+Q");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_ALIASEDITOR,
@@ -262,7 +241,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_aliaseditor.png",
 		KVI_SMALLICON_ALIAS,
 		0,
-		"Ctrl+Alt+2");
+		"Ctrl+Shift+L");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EVENTEDITOR,
@@ -273,7 +252,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_eventeditor.png",
 		KVI_SMALLICON_EVENT,
 		0,
-		"Ctrl+Alt+3");
+		"Ctrl+Shift+E");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_POPUPEDITOR,
@@ -284,7 +263,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_popupeditor.png",
 		KVI_SMALLICON_POPUP,
 		0,
-		"Ctrl+Alt+4");
+		"Ctrl+Shift+P");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_RAWEDITOR,
@@ -295,7 +274,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_raweditor.png",
 		KVI_SMALLICON_RAWEVENT,
 		0,
-		"Ctrl+Alt+5");
+		"Ctrl+Shift+R");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_CODETESTER,
@@ -306,7 +285,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_codetester.png",
 		KVI_SMALLICON_BOMB,
 		0,
-		"Ctrl+Alt+C");
+		"Ctrl+Shift+S");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_EXECUTEKVS,
@@ -317,18 +296,18 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_folder.png",
 		KVI_SMALLICON_FOLDER,
 		0,
-		"Ctrl+Alt+X");
+		"Ctrl+Shift+X");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_HELPINDEX,
-		"help",
+		"help -m",
 		__tr2qs("Help Index"),
 		__tr2qs("Shows the documentation index"),
 		KviActionManager::categoryGeneric(),
 		"kvi_bigicon_help.png",
 		KVI_SMALLICON_HELP,
 		0,
-		"Ctrl+Alt+H");
+		"F1");
 
 	SCRIPT_ACTION(
 		KVI_COREACTION_KVIRCMAILINGLIST,
@@ -372,7 +351,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_screenshot.png",
 		KVI_SMALLICON_SCREENSHOT,
 		0,
-		"Ctrl+Alt+A");
+		QString());
 
 
 	SLOT_ACTION(
@@ -421,7 +400,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_newirccontext.png",
 		KVI_SMALLICON_CONSOLE,
 		0,
-		"Ctrl+Alt+N");
+		"Ctrl+N");
 
 	SLOT_ACTION(
 		KVI_COREACTION_QUITKVIRC,
@@ -541,7 +520,7 @@ KviConnectAction::KviConnectAction(QObject * pParent)
 	KVI_BIGICON_CONNECTED,
 	KVI_SMALLICON_NONE, // no small icon for now
 	NeedsContext | NeedsConnection,
-	QString("Ctrl+Alt+C"))
+	QString("Ctrl+Shift+C"))
 {
 }
 
@@ -982,7 +961,7 @@ KviGoAwayAction::KviGoAwayAction(QObject * pParent)
 	"kvi_bigicon_nokeyboard.png",
 	KVI_SMALLICON_NOTAWAY,
 	KviKvsAction::NeedsContext | KviKvsAction::NeedsConnection,
-	"Ctrl+Alt+A")
+	"Ctrl+Shift+A")
 {
 }
 

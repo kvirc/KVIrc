@@ -76,6 +76,7 @@ void KviDccVoiceNullCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
 {
 	if(stream->size() < 1)return;
 	signal->append(stream->data(),stream->size());
+	
 	stream->resize(0);
 }
 
@@ -88,3 +89,103 @@ int KviDccVoiceNullCodec::decodedFrameSize()
 {
 	return 1024;
 }
+
+//--------------------------
+
+KviDccVideoCodec::KviDccVideoCodec()
+{
+}
+
+KviDccVideoCodec::~KviDccVideoCodec()
+{
+}
+
+void KviDccVideoCodec::encodeVideo(KviDataBuffer *,KviDataBuffer *)
+{
+}
+
+void KviDccVideoCodec::encodeAudio(KviDataBuffer *,KviDataBuffer *)
+{
+}
+
+void KviDccVideoCodec::decode(KviDataBuffer *,KviDataBuffer *)
+{
+}
+
+int KviDccVideoCodec::encodedFrameSize()
+{
+	return 0;
+}
+
+int KviDccVideoCodec::decodedFrameSize()
+{
+	return 0;
+}
+
+const char * KviDccVideoCodec::name()
+{
+	return m_szName.ptr();
+}
+
+#ifndef COMPILE_DISABLE_OGG_THEORA
+KviDccVideoTheoraCodec::KviDccVideoTheoraCodec()
+: KviDccVideoCodec()
+{
+	m_szName = "theora";
+	m_pEncoder = 0;
+	m_pDecoder = 0;
+}
+
+KviDccVideoTheoraCodec::~KviDccVideoTheoraCodec()
+{
+	if(m_pEncoder)
+		delete m_pEncoder;
+	m_pEncoder=0;
+
+	if(m_pDecoder)
+		delete m_pDecoder;
+	m_pDecoder=0;
+}
+
+void KviDccVideoTheoraCodec::encodeVideo(KviDataBuffer * videoSignal,KviDataBuffer * stream)
+{
+	if(videoSignal->size() < 1) return;
+
+	if(!m_pEncoder)
+		m_pEncoder = new KviTheoraEncoder(stream);
+
+	m_pEncoder->addVideoFrame((QRgb *) videoSignal->data(),videoSignal->size());
+	videoSignal->clear();
+}
+
+void KviDccVideoTheoraCodec::encodeAudio(KviDataBuffer * audioSignal,KviDataBuffer * stream)
+{
+	if(audioSignal->size() < 1) return;
+
+	if(!m_pEncoder)
+		m_pEncoder = new KviTheoraEncoder(stream);
+
+	m_pEncoder->addAudioFrame(audioSignal->data(),audioSignal->size());
+	audioSignal->clear();
+}
+
+void KviDccVideoTheoraCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
+{
+	if(stream->size() < 1)return;
+
+	if(!m_pDecoder)
+		m_pDecoder = new KviTheoraDecoder(signal);
+
+	m_pDecoder->addData(stream);
+}
+
+int KviDccVideoTheoraCodec::encodedFrameSize()
+{
+	return 0;
+}
+
+int KviDccVideoTheoraCodec::decodedFrameSize()
+{
+	return 0;
+}
+#endif // COMPILE_DISABLE_OGG_THEORA

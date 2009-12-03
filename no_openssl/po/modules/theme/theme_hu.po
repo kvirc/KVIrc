@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"POT-Creation-Date: 2009-11-20 23:15+0100\n"
 "PO-Revision-Date: 2008-03-03 10:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -24,7 +24,7 @@ msgstr "Kinézet &Alkalmazása"
 msgid "&Remove Theme"
 msgstr "Kinézet eltávolítása"
 
-#: src/modules/theme/savethemedialog.cpp:218
+#: src/modules/theme/savethemedialog.cpp:217
 msgid "Acquire Screenshot - KVIrc"
 msgstr "Képernyőkép Készítése - KVIrc"
 
@@ -60,7 +60,7 @@ msgstr "Kiválasztott Kinézet(ek) Törlése"
 msgid "Delete Theme - KVIrc"
 msgstr "Kinézet Törlése - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:237
+#: src/modules/theme/packthemedialog.cpp:235
 #: src/modules/theme/savethemedialog.cpp:119
 msgid "Description:"
 msgstr "Leírás:"
@@ -93,12 +93,12 @@ msgstr "Képernyőkép készítése sikertelen"
 msgid "Export Selected Themes to a Distributable Package"
 msgstr "A kiválsztott csomag exportálása hordozható csomagba"
 
-#: src/modules/theme/packthemedialog.cpp:113
-#: src/modules/theme/packthemedialog.cpp:346
-#: src/modules/theme/packthemedialog.cpp:380
-#: src/modules/theme/packthemedialog.cpp:450
-#: src/modules/theme/packthemedialog.cpp:462
-#: src/modules/theme/packthemedialog.cpp:470
+#: src/modules/theme/packthemedialog.cpp:111
+#: src/modules/theme/packthemedialog.cpp:344
+#: src/modules/theme/packthemedialog.cpp:378
+#: src/modules/theme/packthemedialog.cpp:448
+#: src/modules/theme/packthemedialog.cpp:460
+#: src/modules/theme/packthemedialog.cpp:468
 msgid "Export Theme - KVIrc"
 msgstr "Kinézet Exportálása - KVIrc"
 
@@ -106,20 +106,20 @@ msgstr "Kinézet Exportálása - KVIrc"
 msgid "Failed to apply the specified theme: %Q"
 msgstr "A megadott kinézet alkalmazása sikertelen: Q"
 
-#: src/modules/theme/packthemedialog.cpp:346
-#: src/modules/theme/savethemedialog.cpp:199
+#: src/modules/theme/packthemedialog.cpp:344
+#: src/modules/theme/savethemedialog.cpp:198
 msgid "Failed to load the selected image"
 msgstr "Kiválasztott kép betöltése sikertelen"
 
-#: src/modules/theme/packthemedialog.cpp:380
+#: src/modules/theme/packthemedialog.cpp:378
 msgid "Failed to load the selected image: please fix it"
 msgstr "Kiválasztott kép betöltése sikertelen: kérlek javítsd"
 
-#: src/modules/theme/savethemedialog.cpp:277
+#: src/modules/theme/savethemedialog.cpp:276
 msgid "Failed to load the selected screenshot image: please fix it"
 msgstr "A kiválasztott képernyőkép betöltése nem lehetséges: kérlek javítsd"
 
-#: src/modules/theme/savethemedialog.cpp:218
+#: src/modules/theme/savethemedialog.cpp:217
 msgid "Failed to make screenshot"
 msgstr "Képernyőkép készítése sikertelen"
 
@@ -127,7 +127,7 @@ msgstr "Képernyőkép készítése sikertelen"
 msgid "Failed to unpack the selected file: %Q"
 msgstr "A kiválaszott fájl kicsomagolása sikertelen: %Q"
 
-#: src/modules/theme/packthemedialog.cpp:308
+#: src/modules/theme/packthemedialog.cpp:306
 msgid "Finally hit the \"Finish\" button to complete the packaging operation."
 msgstr ""
 "Végül kattints a \"Befejezés\" gombra, hogy elkezdődjön a csomag készítése."
@@ -140,7 +140,7 @@ msgstr "Még több kinézet..."
 msgid "Go Back to Package Data"
 msgstr "Vissza a Csomag Adatokhoz"
 
-#: src/modules/theme/packthemedialog.cpp:268
+#: src/modules/theme/packthemedialog.cpp:266
 msgid ""
 "Here you can choose the image that will appear in the installation dialog "
 "for your theme package. It can be an icon, a logo or a screenshot and it "
@@ -164,10 +164,11 @@ msgstr ""
 "megjelenni, illetve a csomagtelepítő ablakban, ha exportálod a csomagot "
 "hordozható csomagként."
 
-#: src/modules/theme/packthemedialog.cpp:297
+#: src/modules/theme/packthemedialog.cpp:295
+#, fuzzy
 msgid ""
-"Here you must choose the file name for the theme package. It should have a *."
-"%1 extension."
+"Here you must choose the file name for the theme package. It should have a *%"
+"1 extension."
 msgstr ""
 "Itt ki kell választanod a fájlnevet a kinézet csomagodhoz. A kiterjesztésnek "
 "%1 -nek kell lennie."
@@ -180,7 +181,7 @@ msgstr ""
 "Itt meg kell adnod néhány információt magadról (készítő) és egy rövid "
 "leírást a kinézetről, amit készítettél."
 
-#: src/modules/theme/packthemedialog.cpp:214
+#: src/modules/theme/packthemedialog.cpp:212
 msgid ""
 "Here you need to provide informations about you (the packager) and a short "
 "description of the package you're creating."
@@ -188,12 +189,12 @@ msgstr ""
 "Itt meg kell adnod néhány információt magadról (csomagkészítő) és egy rövid "
 "leírást a csomagról, amit készítesz."
 
-#: src/modules/theme/packthemedialog.cpp:126
+#: src/modules/theme/packthemedialog.cpp:124
 #: src/modules/theme/savethemedialog.cpp:78
 msgid "Hit the \"Next\" button to begin."
 msgstr "Kattints a \"Következő\" gombra a kezdéshez."
 
-#: src/modules/theme/packthemedialog.cpp:285
+#: src/modules/theme/packthemedialog.cpp:283
 msgid "Icon/Screenshot"
 msgstr "Ikon/Képernyőkép"
 
@@ -205,7 +206,7 @@ msgstr "Kinézet Csomag Telepítése - KVIrc"
 msgid "Install Theme Package From Disk"
 msgstr "Kinézet csomag telepítése lemezről"
 
-#: src/modules/theme/savethemedialog.cpp:167
+#: src/modules/theme/savethemedialog.cpp:166
 msgid "Make Screenshot Now"
 msgstr "Képernyőkép készítése most"
 
@@ -217,24 +218,24 @@ msgstr "Kinézet Kezelése - KVIrc"
 msgid "Open Theme - KVIrc"
 msgstr "Kinézet Megnyitása - KVIrc"
 
-#: src/modules/theme/packthemedialog.cpp:245
+#: src/modules/theme/packthemedialog.cpp:243
 msgid "Package Author:"
 msgstr "Csomag készítő:"
 
-#: src/modules/theme/packthemedialog.cpp:256
+#: src/modules/theme/packthemedialog.cpp:254
 msgid "Package Informations"
 msgstr "Csomag információk:"
 
-#: src/modules/theme/packthemedialog.cpp:220
+#: src/modules/theme/packthemedialog.cpp:218
 msgid "Package Name:"
 msgstr "Csomag Neve:"
 
-#: src/modules/theme/packthemedialog.cpp:315
+#: src/modules/theme/packthemedialog.cpp:313
 msgid "Package Path"
 msgstr "Csomag Útvonala"
 
-#: src/modules/theme/packthemedialog.cpp:447
-#: src/modules/theme/packthemedialog.cpp:459
+#: src/modules/theme/packthemedialog.cpp:445
+#: src/modules/theme/packthemedialog.cpp:457
 msgid "Packaging failed"
 msgstr "Csomagkészítés sikertelen"
 
@@ -243,11 +244,11 @@ msgid "Put a package description here..."
 msgstr "A csomag leírása"
 
 #: src/modules/theme/savethemedialog.cpp:64
-#: src/modules/theme/savethemedialog.cpp:199
-#: src/modules/theme/savethemedialog.cpp:234
-#: src/modules/theme/savethemedialog.cpp:255
-#: src/modules/theme/savethemedialog.cpp:267
-#: src/modules/theme/savethemedialog.cpp:277
+#: src/modules/theme/savethemedialog.cpp:198
+#: src/modules/theme/savethemedialog.cpp:233
+#: src/modules/theme/savethemedialog.cpp:254
+#: src/modules/theme/savethemedialog.cpp:266
+#: src/modules/theme/savethemedialog.cpp:276
 msgid "Save Current Theme - KVIrc"
 msgstr "Aktuális Kinézet Mentése - KVIrc"
 
@@ -255,11 +256,11 @@ msgstr "Aktuális Kinézet Mentése - KVIrc"
 msgid "Save Current Theme..."
 msgstr "Aktuális Kinézet Mentése..."
 
-#: src/modules/theme/savethemedialog.cpp:287
+#: src/modules/theme/savethemedialog.cpp:286
 msgid "Save Theme - KVIrc"
 msgstr "Kinézet Mentése - KVIrc"
 
-#: src/modules/theme/savethemedialog.cpp:174
+#: src/modules/theme/savethemedialog.cpp:173
 msgid "Screenshot"
 msgstr "Képernyőkép"
 
@@ -283,7 +284,7 @@ msgstr "A kiválasztott fájl valószínűleg nem érvényes KVIrc kinézet csom
 msgid "Theme Author:"
 msgstr "Kinézet Készítője:"
 
-#: src/modules/theme/packthemedialog.cpp:201
+#: src/modules/theme/packthemedialog.cpp:199
 msgid "Theme Data"
 msgstr "Kinézet Adatok"
 
@@ -299,11 +300,11 @@ msgstr "Kinézet Információk"
 msgid "Theme Name:"
 msgstr "Kinézet Neve:"
 
-#: src/modules/theme/savethemedialog.cpp:284
+#: src/modules/theme/savethemedialog.cpp:283
 msgid "Theme saved successfully to "
 msgstr "A kinézet sikeresen mentve "
 
-#: src/modules/theme/packthemedialog.cpp:147
+#: src/modules/theme/packthemedialog.cpp:145
 msgid ""
 "This is the information list for the themes you're packaging. If it looks OK "
 "press \"Next\" to continue, otherwise press \"Cancel\" and rewiew your "
@@ -313,7 +314,7 @@ msgstr ""
 "néz ki rendben van, kattints a \"Következő\" gombra a folytatáshoz, vagy a "
 "\"Mégsem\" gombra a megszakításhoz."
 
-#: src/modules/theme/packthemedialog.cpp:122
+#: src/modules/theme/packthemedialog.cpp:120
 msgid ""
 "This procedure allows you to export the selected themes to a single package. "
 "It is useful when you want to distribute your themes to the public."
@@ -336,15 +337,15 @@ msgstr ""
 "manuálisan is módosíthatod a beállításokat és később is exportálhatod "
 "csomagba."
 
-#: src/modules/theme/savethemedialog.cpp:255
+#: src/modules/theme/savethemedialog.cpp:254
 msgid "Unable to create theme directory."
 msgstr "Kinézet könyvtár létrehozása sikertelen."
 
-#: src/modules/theme/savethemedialog.cpp:266
+#: src/modules/theme/savethemedialog.cpp:265
 msgid "Unable to save theme: %Q"
 msgstr "%Q kinézet mentése sikertelen."
 
-#: src/modules/theme/packthemedialog.cpp:229
+#: src/modules/theme/packthemedialog.cpp:227
 #: src/modules/theme/savethemedialog.cpp:111
 msgid "Version:"
 msgstr "Verzió:"
@@ -363,7 +364,7 @@ msgstr ""
 "Figyelmeztetés: A kinézet nem biztos, hogy kompatibilis a KVIrc ezen "
 "verziójával"
 
-#: src/modules/theme/packthemedialog.cpp:134
+#: src/modules/theme/packthemedialog.cpp:132
 #: src/modules/theme/savethemedialog.cpp:85
 msgid "Welcome"
 msgstr "Üdvözlet"
@@ -372,11 +373,11 @@ msgstr "Üdvözlet"
 msgid "Yes, Proceed"
 msgstr "Igen, Folytatás"
 
-#: src/modules/theme/savethemedialog.cpp:234
+#: src/modules/theme/savethemedialog.cpp:233
 msgid "You must choose a theme name!"
 msgstr "Meg kell adnod egy kinézet nevet!"
 
-#: src/modules/theme/packthemedialog.cpp:124
+#: src/modules/theme/packthemedialog.cpp:122
 msgid ""
 "You will be asked to provide a package name, a description and, if you want, "
 "an icon/screenshot."

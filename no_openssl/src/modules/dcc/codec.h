@@ -25,6 +25,7 @@
 //=============================================================================
 
 #include "kvi_string.h"
+#include "kvi_oggtheora.h"
 #include "kvi_databuffer.h"
 
 class KviDccVoiceCodec
@@ -54,4 +55,37 @@ public:
 	virtual int decodedFrameSize();
 };
 
+class KviDccVideoCodec
+{
+public:
+	KviDccVideoCodec();
+	virtual ~KviDccVideoCodec();
+protected:
+	KviStr m_szName;
+public:
+	const char * name();
+	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
+	virtual void encodeAudio(KviDataBuffer * audioSignal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual int encodedFrameSize();
+	virtual int decodedFrameSize();
+};
+
+#ifndef COMPILE_DISABLE_OGG_THEORA
+class KviDccVideoTheoraCodec : public KviDccVideoCodec
+{
+public:
+	KviDccVideoTheoraCodec();
+	virtual ~KviDccVideoTheoraCodec();
+public:
+	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
+	virtual void encodeAudio(KviDataBuffer * audioSignal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual int encodedFrameSize();
+	virtual int decodedFrameSize();
+private:
+	KviTheoraEncoder *m_pEncoder;
+	KviTheoraDecoder *m_pDecoder;
+};
+#endif // COMPILE_DISABLE_OGG_THEORA
 #endif //_CODEC_H_

@@ -1151,8 +1151,10 @@ NServers=3
 0_Description=Oddnet:%20Random%20server
 NServers=1
 [OFTC]
-0_Hostname=irc.debian.org
-0_Description=Debian%20IRC%20Server
+0_Hostname=irc.oftc.net
+0_Description=main%20OFTC.net%20server
+1_Hostname=irc.debian.org
+1_Description=Debian%20IRC%20Server
 NServers=1
 [Othernet]
 0_Hostname=irc.othernet.org
@@ -1289,6 +1291,13 @@ NServers=1
 0_Hostname=irc.raptornet.org
 0_Description=Raptornet:%20Random%20server
 NServers=1
+[RawrIRC]
+0_Hostname=irc.rawrirc.net
+0_Description=rawrIRC%20main%20server
+1_Hostname=irc.na.rawrirc.net
+1_Description=rawrIRC%20na%20server
+2_Hostname=irc.eu.rawrirc.net
+2_Description=rawrIRC%20eu%20server
 [Realirc]
 0_Hostname=irc.realirc.org
 0_Description=Realirc:%20Random%20server

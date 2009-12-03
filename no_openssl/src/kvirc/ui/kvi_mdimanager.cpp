@@ -64,7 +64,7 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 : QMdiArea(parent)
 {
 	setFrameShape(NoFrame);
-	m_bInSDIMode = false;
+	m_bInSDIMode = KVI_OPTION_BOOL(KviOption_boolMdiManagerInSdiMode);
 	m_pFrm = pFrm;
 
 	m_pWindowPopup = new KviTalPopupMenu(this);
@@ -74,39 +74,18 @@ KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 	connect(m_pTileMethodPopup,SIGNAL(activated(int)),this,SLOT(tileMethodMenuActivated(int)));
 
 	viewport()->setAutoFillBackground(false);
-//	setStaticBackground(true);
 
-	//setFocusPolicy(Qt::NoFocus);
-	//viewport()->setFocusPolicy(Qt::NoFocus);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
-	connect(g_pApp,SIGNAL(reloadImages()),this,SLOT(reloadImages()));
 }
 
 KviMdiManager::~KviMdiManager()
 {
 }
 
-void KviMdiManager::reloadImages()
-{
-}
-
-bool KviMdiManager::focusNextPrevChild(bool bNext)
-{
-	//bug("FFFFFF");
-	// this is a QScrollView bug... it doesn't pass this
-	// event to the toplevel window
-	return m_pFrm->focusNextPrevChild(bNext);
-}
-
 void KviMdiManager::paintEvent(QPaintEvent * e)
 {
 	QPainter p(viewport());
-
-    //make sure you clean your widget with a transparent
-    //  color before doing any rendering
-    //  note the usage of a composition mode Source
-    //  it's important!
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
@@ -136,18 +115,24 @@ void KviMdiManager::paintEvent(QPaintEvent * e)
 
 void KviMdiManager::manageChild(KviMdiChild * lpC, bool, QRect *)
 {
-//	__range_valid(lpC);
-
 	addSubWindow((QMdiSubWindow*)lpC);
 
-	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+	if(!m_bInSDIMode)
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
 
 void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 {
-	lpC->show();
 	setTopChild(lpC);
-	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+
+	if(m_bInSDIMode)
+	{
+		lpC->showMaximized();
+	} else {
+		lpC->show();
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+	}
+	lpC->setFocus();
 }
 
 KviMdiChild * KviMdiManager::topChild()
@@ -157,76 +142,19 @@ KviMdiChild * KviMdiManager::topChild()
 
 void KviMdiManager::setTopChild(KviMdiChild *lpC)
 {
-//	__range_valid(lpC);
-	// The following check fails safely at startup....
-
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
-
-	if (tmp.last()->inherits("KviMdiChild"))
-	{
-		KviMdiChild * oldlpC = (KviMdiChild *) tmp.last();
-		if (oldlpC && oldlpC->isMaximized()) lpC->queuedMaximize();
-	}
-
 	setActiveSubWindow((QMdiSubWindow*) lpC);
 }
 
-void KviMdiManager::destroyChild(KviMdiChild *lpC,bool bFocusTopChild)
+void KviMdiManager::destroyChild(KviMdiChild *lpC, bool bFocusTopChild)
 {
 	removeSubWindow(lpC);
 	delete lpC;
 
-	if(bFocusTopChild)focusTopChild();
-
-	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
-}
-
-KviMdiChild * KviMdiManager::highestChildExcluding(KviMdiChild * pChild)
-{
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
-	QListIterator<QMdiSubWindow*> wl(tmp);
-	wl.toBack();
-
-	KviMdiChild * c;
-	while (wl.hasPrevious())
-	{
-			c = (KviMdiChild*) wl.previous();
-			if (!c->inherits("KviMdiChild")) continue;
-			if (c == pChild) continue;
-			return c;
-	}
-	return 0;
-}
-
-QPoint KviMdiManager::getCascadePoint(int indexOfWindow)
-{
-	QPoint pnt(0,0);
-	if(indexOfWindow==0)return pnt;
-	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
-
-	if (!tmp.last()->inherits("KviMdiChild"))
-	{
-		debug("QMdiSubWindow doesn't inherit from KviMdiChild!");
-		return pnt;
-	}
-
-	KviMdiChild * lpC = (KviMdiChild *) tmp.last();
-
-	int step=0;
-	int availableHeight=viewport()->height()-(lpC ? lpC->minimumSize().height() : KVI_MDICHILD_MIN_HEIGHT);
-	int availableWidth=viewport()->width()-(lpC ? lpC->minimumSize().width() : KVI_MDICHILD_MIN_WIDTH);
-	int ax=0;
-	int ay=0;
-	for(int i=0;i<indexOfWindow;i++)
-	{
-		ax+=step;
-		ay+=step;
-		if(ax>availableWidth)ax=0;
-		if(ay>availableHeight)ay=0;
-	}
-	pnt.setX(ax);
-	pnt.setY(ay);
-	return pnt;
+	if(bFocusTopChild)
+		focusPreviousTopChild();
+	
+	if(!m_bInSDIMode)
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
 
 void KviMdiManager::mousePressEvent(QMouseEvent * e)
@@ -235,45 +163,15 @@ void KviMdiManager::mousePressEvent(QMouseEvent * e)
 	if(e->button() & Qt::RightButton) m_pWindowPopup->popup(mapToGlobal(e->pos()));
 }
 
-void KviMdiManager::childMoved(KviMdiChild *)
+void KviMdiManager::setIsInSDIMode(bool bMode)
 {
+// 	qDebug("Sdi Mode %d", bMode);
+	m_bInSDIMode = bMode;
+	if(!m_bInSDIMode)
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
+};
 
-}
-
-void KviMdiManager::childMaximized(KviMdiChild *)
-{
-	m_bInSDIMode = true;
-}
-
-
-void KviMdiManager::childMinimized(KviMdiChild *, bool bWasMaximized)
-{
-//	__range_valid(lpC);
-
-	if(subWindowList().count() > 1)
-	{
-		if(bWasMaximized)
-		{
-			if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
-		}
-		focusTopChild();
-	} else {
-		// Unique window minimized...it won't loose the focus...!!
-		setFocus(); //Remove focus from the child
-	}
-}
-
-void KviMdiManager::childRestored(KviMdiChild * lpC, bool bWasMaximized)
-{
-	if(bWasMaximized)
-	{
-		if(lpC != subWindowList().last()) return; // do nothing in this case
-	}
-	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
-	if (bWasMaximized) m_bInSDIMode = false;
-}
-
-void KviMdiManager::focusTopChild()
+void KviMdiManager::focusPreviousTopChild()
 {
 	if (!activeSubWindow()) return;
 	if (!activeSubWindow()->inherits("KviMdiChild")) return;
@@ -296,65 +194,14 @@ void KviMdiManager::focusTopChild()
 	}
 
 	if(!lpC)return;
-	if(isInSDIMode()) lpC->queuedMaximize();
+	if(isInSDIMode())
+		lpC->maximize();
+	else
+		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))
+			tile();
 	lpC->raise();
-	if(!lpC->hasFocus())lpC->setFocus();
-}
-
-void KviMdiManager::minimizeActiveChild()
-{
-	if (!activeSubWindow()->inherits("KviMdiChild")) return;
-
-	KviMdiChild * lpC = (KviMdiChild *) activeSubWindow();
-	if(lpC->state() != KviMdiChild::Minimized) lpC->minimize();
-}
-
-void KviMdiManager::restoreActiveChild()
-{
-	if (!activeSubWindow()->inherits("KviMdiChild")) return;
-
-	KviMdiChild * lpC = (KviMdiChild *) activeSubWindow();
-	if(lpC->state() == KviMdiChild::Maximized)lpC->restore();
-}
-
-void KviMdiManager::closeActiveChild()
-{
-	if (!activeSubWindow()->inherits("KviMdiChild")) return;
-
-	KviMdiChild * lpC = (KviMdiChild *) activeSubWindow();
-	lpC->close();
-}
-
-void KviMdiManager::updateContentsSize()
-{
-}
-
-void KviMdiManager::activeChildSystemPopup()
-{
-	if (!activeSubWindow()->inherits("KviMdiChild")) return;
-
-	KviMdiChild * lpC = (KviMdiChild *) activeSubWindow();
-
-	QPoint pnt;
-	/*if(m_pSdiIconButton)
-	{
-		pnt = m_pSdiIconButton->mapToGlobal(QPoint(0,m_pSdiIconButton->height()));
-	} else {
-		pnt = QCursor::pos();
-	}*/
-	lpC->emitSystemPopupRequest(pnt);
-}
-
-bool KviMdiManager::isInSDIMode()
-{
-	return m_bInSDIMode;
-}
-
-void KviMdiManager::relayoutMenuButtons()
-{
-	// also force an activation of the top MdiChild since it probably didn't get it yet
-	KviMdiChild * c = topChild();
-	if(c) c->activate();
+	if(!lpC->hasFocus())
+		lpC->setFocus();
 }
 
 #define KVI_TILE_METHOD_ANODINE 0
@@ -472,9 +319,9 @@ void KviMdiManager::menuActivated(int id)
 	id-=100;
 	QList<QMdiSubWindow *> tmp = subWindowList(QMdiArea::StackingOrder);
 
-//	__range_valid(((uint)id) < tmp.count());
-
+	if(id >= tmp.count()) return;
 	if (!tmp.at(id)->inherits("KviMdiChild")) return;
+
 	KviMdiChild * lpC = (KviMdiChild *) tmp.at(id);
 
 	if(!lpC) return;
@@ -494,7 +341,7 @@ void KviMdiManager::ensureNoMaximized()
 		if (tmp.at(i)->inherits("KviMdiChild"))
 		{
 			lpC = (KviMdiChild *) tmp.at(i);
-			if(lpC->state() == KviMdiChild::Maximized) lpC->restore();
+			if(lpC->state() == KviMdiChild::Maximized)lpC->restore();
 		}
 	}
 }
@@ -507,6 +354,9 @@ void KviMdiManager::tileMethodMenuActivated(int id)
 	if(idx >= KVI_NUM_TILE_METHODS) idx = KVI_TILE_METHOD_PRAGMA9VER;
 
 	KVI_OPTION_UINT(KviOption_uintTileMethod) = idx;
+
+	//we don't check the m_bInSDIMode value here, since it was
+	//the user forcing windows to be tiled
 
 	if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows)) tile();
 }
@@ -612,7 +462,6 @@ void KviMdiManager::restoreAll()
 	}
 }
 
-
 int KviMdiManager::getVisibleChildCount()
 {
 	QList<QMdiSubWindow *> l = subWindowList();
@@ -621,7 +470,7 @@ int KviMdiManager::getVisibleChildCount()
 	int i = 0;
 	for(i = 0; i < l.count(); i++)
 	{
-		if(!l.at(i)->isHidden()) cnt++;
+		if(!l.at(i)->isMinimized()) cnt++;
 	}
 	return cnt;
 }
@@ -655,7 +504,6 @@ void KviMdiManager::toggleAutoTile()
 	}
 }
 
-
 void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds,bool bHorizontal
 {
 
@@ -672,10 +520,6 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 	int * pRowrecall = bHorizontal ? rowrecall : colrecall;
 
 	ensureNoMaximized();
-	// this hack is needed to ensure that the scrollbars are hidden and the viewport()->width() and height() are correct
-	//resizeContents(visibleWidth(),visibleHeight());
-	// updateScrollBars();
-	//g_pApp->sendPostedEvents();
 	if (g_pApp->closingDown()) return;
 
 	KviMdiChild * lpTop = topChild();
@@ -747,7 +591,6 @@ void KviMdiManager::tileAllInternal(int maxWnds, bool bHorizontal) //int maxWnds
 		}
 	}
 	if(lpTop)lpTop->setFocus();
-	updateContentsSize();
 }
 
 void KviMdiManager::tileAnodine()

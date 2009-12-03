@@ -46,14 +46,14 @@
     #define CRYPTOPP_ENABLE_NAMESPACE_WEAK 1
 
     // Hashes (should cover most cases)
-    #include <crypto++/md2.h>
-    #include <crypto++/md4.h>
-    #include <crypto++/md5.h>
-    #include <crypto++/sha.h>
-    #include <crypto++/ripemd.h>
-    #include <crypto++/crc.h>
+    #include <cryptopp/md2.h>
+    #include <cryptopp/md4.h>
+    #include <cryptopp/md5.h>
+    #include <cryptopp/sha.h>
+    #include <cryptopp/ripemd.h>
+    #include <cryptopp/crc.h>
     // Encoding
-    #include <crypto++/hex.h>
+    #include <cryptopp/hex.h>
     // additional
     #include <string>
 
@@ -245,11 +245,11 @@ static bool str_kvs_fnc_lowcase(KviKvsModuleFunctionCall * c)
 	@title:
 		$str.upcase
 	@short:
-		Returns the given string with all characters turned to toUpper case
+		Returns the given string with all characters turned to upper case
 	@syntax:
 		<string> $str.upcase(<string_to_convert:string>)
 	@description:
-		Returns the given <string_to_convert> with all characters turned to toLower case.
+		Returns the given <string_to_convert> with all characters turned to upper case.
 		Warning: this function uses ISO-8859-1 locale to make the case translation.
 		If you want to use a locale aware translation mapping then please
 		use $str.localeupcase.

@@ -229,6 +229,16 @@ General notes for the installation of the 4.0 release of KVIrc
     complains about it. Some system have the interface builtin in libc. The
     configure script can detect it.
 
+    #
+    # WITH_NO_EMBEDDED_CODE (Optional)
+    #
+
+    If you want to build with no (or at least less) embedded copies of code or
+    reimplementations of code which can be found in widely tested libraries,
+    you need to install the following libraries (for building you also need the
+    corresponding headers):
+    - Crypto++ 5.6 <http://cryptopp.com/>
+
 ###############################################################################
 # 3. Configuring the environment
 ###############################################################################
@@ -264,6 +274,10 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITH_DEBUG
         Alias of -DDEBUG flag.
 
+    -DWITHOUT_STRIP
+        Available only if debug is disabled, this flag disables objects stripping before installation.
+        (Object stripping discards symbols from object files, lowering their size on disk)
+
     -DVERBOSE
         Generate verbose output when compiling.
 
@@ -274,6 +288,10 @@ General notes for the installation of the 4.0 release of KVIrc
         It will install libkvilib and KVIrc modules under ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
         directory. It defaults to an empty suffix. Mainly used for 64 bit distros
         (-DLIB_SUFFIX=64).
+
+    -DMANDIR=directory
+        It will install man pages under $CMAKE_INSTALL_PREFIX/$MANDIR.
+        It will default to $CMAKE_INSTALL_PREFIX/share/man
 
     -DCOEXISTENCE
         Append version information to KVIrc and libkvilib, so that different
@@ -390,10 +408,21 @@ General notes for the installation of the 4.0 release of KVIrc
         some things faster (this is not always true, depends on the compiler).
         You might want to try it if your KVIrc seems to be really slow...
 
+    -DWITH_IGNORE_SIGALARM
+        Under Solaris, both usleep() and threads implementation are based on
+        SIGALARM. KVIrc uses both, and this could lead to some spontaneous
+        application quits. This option enables a workaround for this problem.
+
     -DWITHOUT_DCC_VOICE
         Explicitly disable the DCC VOICE sound support. This might help
         if you have problems in compilation of src/modules/dcc/voice.cpp.
         It will disable the sound support (and thus make DCC VOICE not usable).
+
+    -DWITH_DCC_VIDEO
+        Enables testing DCC VIDEO support.
+
+    -DWITH_DCC_CANVAS
+        Enables DCC CANVAS support.
 
     -DWITH_MEMORY_PROFILE
         Debug stuff...enables memory allocation profiling (don't use it :)
@@ -415,16 +444,10 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITH_BEER
         Add some beers to chat :)
 
-
-
-# To add here and in main CMakeLists.txt
-COMPILE_DCC_CANVAS
-COMPILE_GET_INTERFACE_ADDRESS
-COMPILE_IGNORE_SIGALARM
-COMPILE_MMX_ASM
-COMPILE_SCRIPTTOOLBAR
-COMPILE_WITH_NO_SOUND
-COMPILE_XSS_SUPPORT
+    -DWITH_NO_EMBEDDED_CODE
+        Use functions from widely tested libraries instead of embedded code or
+        reimplementations of code/functions available from such libraries.
+        For required dependencies see section two of this document.
 
 ###############################################################################
 # 4. Interactive mode

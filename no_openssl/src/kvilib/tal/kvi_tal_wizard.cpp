@@ -129,7 +129,7 @@ public:
 	int reindexPages()
 	{
 		int iEnabledCount = 0;
-		for(KviTalWizardPageData * pData = pPageList->next();pData;pData = pPageList->next())
+		for(KviTalWizardPageData * pData = pPageList->first();pData;pData = pPageList->next())
 		{
 			if(pData->bEnabled)
 			{

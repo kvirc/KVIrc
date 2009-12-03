@@ -47,6 +47,18 @@ IF(COMPILE_DBUS_SUPPORT)
 	)
 ENDIF()
 
+IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
+	LIST(APPEND kvilib_MOC_HDRS
+		ext/avdevice/videodevicepool.h
+	)
+ENDIF()
+
+IF(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
+	LIST(APPEND kvilib_MOC_HDRS
+		ext/kvi_oggtheora.h
+	)
+ENDIF()
+
 # Please note that the sources have alphabetic order here
 
 SET(kvilib_SRCS
@@ -109,6 +121,7 @@ SET(kvilib_SRCS
 	tal/kvi_tal_mainwindow.cpp
 	tal/kvi_tal_menubar.cpp
 	tal/kvi_tal_popupmenu.cpp
+	tal/kvi_tal_splitter.cpp
 	tal/kvi_tal_tabdialog.cpp
 	tal/kvi_tal_tablewidget.cpp
 	tal/kvi_tal_toolbar.cpp
@@ -116,6 +129,25 @@ SET(kvilib_SRCS
 	tal/kvi_tal_vbox.cpp
 	tal/kvi_tal_wizard.cpp
 )
+
+IF(NOT DEFINED COMPILE_DISABLE_AVDEVICE)
+	LIST(APPEND kvilib_SRCS
+		ext/avdevice/videodevice.cpp 
+		ext/avdevice/videoinput.cpp 
+		ext/avdevice/dummyvideodevice.cpp
+		ext/avdevice/videodevicevector.cpp
+		ext/avdevice/videodevicepool.cpp 
+		ext/avdevice/videodevicemodelpool.cpp
+		ext/avdevice/bayer.cpp
+		ext/avdevice/sonix_compress.cpp
+	)
+ENDIF()
+
+IF(NOT DEFINED COMPILE_DISABLE_OGG_THEORA)
+	LIST(APPEND kvilib_SRCS
+		ext/kvi_oggtheora.cpp
+	)
+ENDIF()
 
 # After this call, files will be moc'ed to moc_kvi_*.cpp
 QT4_WRAP_CPP(kvilib_MOC_SRCS ${kvilib_MOC_HDRS})
@@ -135,6 +167,11 @@ ENDIF()
 ADD_LIBRARY(${KVILIB_BINARYNAME} SHARED ${kvilib_SRCS} ${kvilib_MOC_SRCS})
 TARGET_LINK_LIBRARIES(${KVILIB_BINARYNAME} ${LIBS})
 SET_TARGET_PROPERTIES(${KVILIB_BINARYNAME} PROPERTIES VERSION ${VERSION_RELEASE} SOVERSION ${VERSION_MAJOR} LINK_FLAGS "${ADDITIONAL_LINK_FLAGS}")
+
+IF(WANT_STRIP)
+	GET_TARGET_PROPERTY(KVILIB_LOCATION ${KVILIB_BINARYNAME} LOCATION)
+	INSTALL(CODE "EXEC_PROGRAM(${STRIP_EXECUTABLE} ARGS -s \"${KVILIB_LOCATION}\")")
+ENDIF()
 
 # Installation directives
 IF(UNIX)

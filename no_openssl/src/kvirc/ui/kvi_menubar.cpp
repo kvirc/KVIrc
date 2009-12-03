@@ -93,13 +93,6 @@ KviMenuBar::~KviMenuBar()
 	if(m_pDefaultItemId)kvi_free(m_pDefaultItemId);
 }
 
-void KviMenuBar::showEvent(QShowEvent *)
-{
-	// force a re-layout of the menubar in Qt4 (see the note in enterSDIMode())
-	// by resetting the corner widget
-	m_pFrm->mdiManager()->relayoutMenuButtons();
-}
-
 void KviMenuBar::addDefaultItem(const QString &text,KviTalPopupMenu * pop)
 {
 	m_iNumDefaultItems++;
@@ -114,12 +107,11 @@ void KviMenuBar::setupHelpPopup()
 	KviTalPopupMenu * help = (KviTalPopupMenu *)sender();
 	help->clear();
 
+	ACTION_POPUP_ITEM(KVI_COREACTION_HELPINDEX,help)
+
 	int id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_HELP)),__tr2qs("&Help Browser (Panel)"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_HELP_NEWSTATICWINDOW);
 
-	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_MDIHELP)),__tr2qs("Help Browser (&Window)"));
-	help->setItemParameter(id,KVI_INTERNALCOMMAND_HELP_NEWMDIWINDOW);
-	help->insertSeparator();
 
 	id = help->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_IDEA)),__tr2qs("&Tip of the Day"));
 	help->setItemParameter(id,KVI_INTERNALCOMMAND_TIP_OPEN);
@@ -190,11 +182,12 @@ void KviMenuBar::setupSettingsPopup()
 	// FIXME: #warning "Toggle these items on the fly ?"
 	ACTION_POPUP_ITEM(KVI_COREACTION_GENERALOPTIONS,opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_THEMEOPTIONS,opt)
+	ACTION_POPUP_ITEM(KVI_COREACTION_EDITREGUSERS,opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_MANAGETHEMES,opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_MANAGEADDONS,opt)
-	ACTION_POPUP_ITEM(KVI_COREACTION_SERVEROPTIONS,opt)
 	ACTION_POPUP_ITEM(KVI_COREACTION_TOOLBAREDITOR,opt)
-	ACTION_POPUP_ITEM(KVI_COREACTION_EDITREGUSERS,opt)
+	ACTION_POPUP_ITEM(KVI_COREACTION_SERVEROPTIONS,opt)
+	ACTION_POPUP_ITEM(KVI_COREACTION_JOINCHANNELS,opt)
 
 	opt->insertSeparator();
 	opt->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_FLOPPY)),__tr2qs("&Save Configuration"),g_pApp,SLOT(saveConfiguration()));

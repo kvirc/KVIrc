@@ -124,7 +124,7 @@ protected slots:
 	void contextNewPrologue();
 	void contextNewEpilogue();
 	void selectionChanged();
-	void itemPressed(QTreeWidgetItem * item, int column);
+	void customContextMenuRequested(const QPoint &pnt);
 	void testPopup();
 	void testModeMenuItemClicked(KviKvsPopupMenuItem * it);
 };

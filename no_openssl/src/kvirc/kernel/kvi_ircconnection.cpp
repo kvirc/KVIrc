@@ -460,8 +460,6 @@ KviChannel * KviIrcConnection::createChannel(const QString & szName)
 	} else {
 		c = new KviChannel(m_pConsole->frame(),m_pConsole,szName);
 		m_pConsole->frame()->addWindow(c,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels));
-		if(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedChannels))
-			c->minimize();
 	}
 	return c;
 }
@@ -486,8 +484,6 @@ KviQuery * KviIrcConnection::createQuery(const QString & szNick)
 	} else {
 		q = new KviQuery(m_pConsole->frame(),m_pConsole,szNick);
 		m_pConsole->frame()->addWindow(q,!KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery));
-		if(KVI_OPTION_BOOL(KviOption_boolCreateMinimizedQuery))
-			q->minimize();
 	}
 	return q;
 }

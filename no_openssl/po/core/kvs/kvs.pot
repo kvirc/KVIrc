@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"POT-Creation-Date: 2009-11-20 23:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,7 +53,7 @@ msgid "The $sw() function can be used only in aliases"
 msgstr ""
 
 #: src/kvirc/kvs/kvi_kvs_treenode_aliassimplecommand.cpp:99
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1199
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1196
 msgid "[RAW]: %Q"
 msgstr ""
 
@@ -1025,38 +1025,38 @@ msgstr ""
 msgid "Missing channel list"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:760
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:757
 #, c-format
 msgid "You don't appear to be on channel %s"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:809
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:806
 msgid "Module command call failed: can't load the module 'snd'"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:816
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:813
 msgid ""
 "Module command call failed: the module 'snd' doesn't export a command named "
 "'play'"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:871
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:868
 msgid "Popup %Q is not defined"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:879
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:876
 msgid "A popup menu cannot be popped up twice"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:904
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:901
 msgid "Invalid syntax for screen coordinates, using cursor position"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1020
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1017
 msgid "Empty target specified"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1249
+#: src/kvirc/kvs/kvi_kvs_coresimplecommands_mr.cpp:1246
 msgid "Window with id %Q not found: no rebinding performed"
 msgstr ""
 
@@ -1331,97 +1331,97 @@ msgstr ""
 msgid "Empty script"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2623
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2721
 msgid ""
 "Syntax error after '%' variable prefix. If you want to use a plain '%' in "
 "the code you need to escape it"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2640
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2738
 msgid "Objects have no extended scope variables"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2700
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2798
 msgid "Found character '%q' (unicode %x) where an instruction was expected"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2733
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2831
 msgid "Unterminated instruction block"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2734
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2832
 msgid "Unexpected end of script in instruction block (missing closing brace)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2811
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2909
 msgid ""
 "The dash after a command should be followed by a letter (switch), by a digit "
 "(negative number) or be escaped"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2815
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2913
 msgid "Unexpected character '%q' (unicode %x) after a switch dash"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2817
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2915
 msgid "Unexpected end of script after a switch dash"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2842
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:2940
 msgid ""
 "The above problem might be related to the switch dash and the following "
 "equal sign"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2918
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2985
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3016
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3083
 msgid "Unexpected end of script in parameter list"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2924
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:2991
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3022
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3089
 msgid "Unexpected end of line in parameter list"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3052
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3150
 msgid ""
 "Nested character %q corresponding to expected terminator, this might confuse "
 "me a bit: it is a good idea to enclose it in quotes"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3062
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3160
 msgid "Skipping nested terminator character %q"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3089
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3187
 msgid "Stray backslash at the end of the script"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3370
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3377
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3468
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3475
 msgid "Unterminated hash key"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3371
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3469
 msgid "Unexpected end of script in hash key (missing '}' character ?)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3378
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3476
 msgid ""
 "Unexpected end of line in hash key (missing '}' character or unescaped "
 "newline)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3656
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3663
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3754
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3761
 msgid "Unterminated string constant"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3657
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3755
 msgid "Unexpected end of script in string constant (missing \" character ?)"
 msgstr ""
 
-#: src/kvirc/kvs/kvi_kvs_parser.cpp:3664
+#: src/kvirc/kvs/kvi_kvs_parser.cpp:3762
 msgid ""
 "Unexpected end of line in string constant (missing \" character or unescaped "
 "newline)"

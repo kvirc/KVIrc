@@ -32,36 +32,12 @@
 */
 
 #include "kvi_settings.h"
-#include "kvi_pointerlist.h"
+#include "kvi_mdichild.h"
 
-#include <QWidget>
-#include <QFrame>
-#include <QPixmap>
 #include <QMdiArea>
-
-#ifdef COMPILE_ON_WINDOWS
-	#include "kvi_mdichild.h"
-#else
-	class KviMdiChild;
-#endif
 
 class KviFrame;
 class KviTalPopupMenu;
-class KviTalHBox;
-class KviSdiButtonBox;
-
-/**
-* \def KVI_MDICHILD_BORDER Defines the border of the child
-* \def KVI_MDICHILD_SPACING Defines the spacing of the child
-* \def KVI_MDICHILD_MIN_WIDTH Defines the minimum width of the child
-* \def KVI_MDICHILD_MIN_HEIGHT Defines the minimum height of the child
-* \def KVI_MDICHILD_HIDDEN_EDGE Defines the hidden edge of the child
-*/
-#define KVI_MDICHILD_BORDER 4
-#define KVI_MDICHILD_SPACING 2
-#define KVI_MDICHILD_MIN_WIDTH 100
-#define KVI_MDICHILD_MIN_HEIGHT 40
-#define KVI_MDICHILD_HIDDEN_EDGE 3
 
 /**
 * \class KviMdiManager
@@ -106,13 +82,7 @@ public:
 	* \return KviMdiChild *
 	*/
 	KviMdiChild * topChild();
-
-	/**
-	* \brief
-	* \return KviMdiChild *
-	*/
-	KviMdiChild * highestChildExcluding(KviMdiChild * pChild);
-
+ 
 	/**
 	* \brief Add an KviMdiChild to the area
 	* \param lpC The KviMdiChild
@@ -140,20 +110,20 @@ public:
 	* \brief Returns the window popup
 	* \return KviTalPopupMenu *
 	*/
-	KviTalPopupMenu * windowPopup() { return m_pWindowPopup; };
+	inline KviTalPopupMenu * windowPopup() { return m_pWindowPopup; };
 
 	/**
-	* \brief Move the focus the the top window
+	* \brief Move the focus the the previous active window
 	* \return void
 	*/
-	void focusTopChild();
+	void focusPreviousTopChild();
 
 	/**
 	* \brief Remove and delete the subwindow
 	* \param lpC The KviMdiChild which will be destroyed.
-	* \param bFocusTopChild Defines if the next window which will appear afterwards will get the focus or not.
-	* \return void
-	*/
+	* \param bFocusTopChild Defines if the previous active window will be reactivated.
+ 	* \return void
+ 	*/
 	void destroyChild(KviMdiChild * lpC, bool bFocusTopChild = true);
 
 	/**
@@ -166,51 +136,13 @@ public:
 	* \brief Check if we are in SDI mode
 	* \return bool
 	*/
-	bool isInSDIMode();
+	inline bool isInSDIMode() { return m_bInSDIMode; };
+	
 protected:
 	/**
-	 * \brief Reorders widgets on KviMdiChild
-	 * \return void
-	 * \deprecated Was used by old MDI system
-	 */
-	void updateContentsSize();
-
-	/**
-	 * \brief This has to be called if a KviMdiChild gets maximized
-	 * \param lpC The target KviMdiChild
-	 * \return void
-	 *
-	 * This updates if we are in SDI or in MDI mode.
-	 */
-	void childMaximized(KviMdiChild * lpC);
-
-	/**
-	 * \brief This has to be called if a KviMdiChild gets minimized
-	 * \param lpC The target KviMdiChild
-	 * \param bWasMaximized Tell the KviMdiManager if the KviMdiChild was maximized before minimizing
-	 * \return void
-	 *
-	 * Focus the next availiable window
-	 */
-	void childMinimized(KviMdiChild * lpC, bool bWasMaximized);
-
-	/**
-	 * \brief This has to be called if a KviMdiChild gets restored
-	 * \param lpC The target KviMdiChild
-	 * \param bWasMaximized Tell the KviMdiManager if the KviMdiChild was maximized before restoring
-	 * \return void
-	 *
-	 * Update SDI/MDI mode. In this case we leave SDI mode.
-	 */
-	void childRestored(KviMdiChild * lpC, bool bWasMaximized);
-
-	/**
-	 *  \brief This has to be called if a KviMdiChild has been moved
-	 *  \param lpC The target KviMdiChild
-	 *  \return void
-	 *  \deprecated Was used by old MDI system
-	 */
-	void childMoved(KviMdiChild * lpC);
+	* \brief Sets if we are in SDI mode
+	*/
+	void setIsInSDIMode(bool bMode);
 
 	/**
 	 * \brief Open the window popup menu
@@ -222,13 +154,9 @@ protected:
 	 */
 	virtual void paintEvent(QPaintEvent * e);
 
-	/**
-	 * \brief Passes this to the toplevel window
-	 */
-	virtual bool focusNextPrevChild(bool pNext);
 private:
 	/**
-	 * \brief Make sure that no KviMdiChild is maximized
+ 	 * \brief Make sure that no KviMdiChild is maximized
 	 * \return void
 	 *
 	 * Goes trough all KviMdiChild objects and checks for maximized mode and restores that windows
@@ -242,28 +170,18 @@ private:
 	 * \return void
 	 */
 	void tileAllInternal(int maxWnds,bool bHorizontal);
-	/**
-	 * \brief
-	 * \return QPoint
-	 */
-	QPoint getCascadePoint(int indexOfWindow);
+
 public slots:
-	void relayoutMenuButtons();
 	void cascadeWindows();
 	void cascadeMaximized();
 	void expandVertical();
 	void expandHorizontal();
 	void minimizeAll();
-	void restoreAll(); //<-- this does nothing (not working?)
+	void restoreAll();
 	void tile();
 	void toggleAutoTile();
 	void tileAnodine();
-	void reloadImages();
 protected slots:
-	void minimizeActiveChild();
-	void restoreActiveChild();
-	void closeActiveChild();
-	void activeChildSystemPopup();
 	void menuActivated(int id);
 	void tileMethodMenuActivated(int id);
 	void fillWindowPopup();

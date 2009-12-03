@@ -155,20 +155,20 @@ namespace KviQString
 
 		size/=1024;
 		if(size<1024)
-			return QString(__tr2qs("%1 KB")).arg(size,0,'f',3);
+			return QString(__tr2qs("%1 KiB")).arg(size,0,'f',3);
 
 		size/=1024;
 		if(size<1024)
-			return QString(__tr2qs("%1 MB")).arg(size,0,'f',3);
+			return QString(__tr2qs("%1 MiB")).arg(size,0,'f',3);
 
 		//Pirated DVD?;)
 		size/=1024;
 		if(size<1024)
-			return QString(__tr2qs("%1 GB")).arg(size,0,'f',3);
+			return QString(__tr2qs("%1 GiB")).arg(size,0,'f',3);
 
 		//Uhm.. We are downloading a whole internet:)))
 		size/=1024;
-		return QString(__tr2qs("%1 TB")).arg(size,0,'f',3);
+		return QString(__tr2qs("%1 TiB")).arg(size,0,'f',3);
 	}
 
 	bool equalCS(const QString &sz1,const QString &sz2)
@@ -458,14 +458,14 @@ namespace KviQString
 	void appendNumber(QString &s,kvi_i64_t iInteger)
 	{
 		char buffer[64];
-		::sprintf(buffer,"%ld",iInteger);
+		::sprintf(buffer,"%lld", (long long int) iInteger);
 		s.append(buffer);
 	}
 
 	void appendNumber(QString &s,kvi_u64_t uInteger)
 	{
 		char buffer[64];
-		::sprintf(buffer,"%lu",uInteger);
+		::sprintf(buffer,"%llu", (long long unsigned int) uInteger);
 		s.append(buffer);
 	}
 

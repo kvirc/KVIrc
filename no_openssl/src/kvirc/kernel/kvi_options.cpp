@@ -315,7 +315,10 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("PasteLastLogOnQueryJoin",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("UseSpecifiedSmartColorForOwnNick",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
 	BOOL_OPTION("UseFullWordHighlighting",false,KviOption_sectFlagIrcView),
-	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput)
+	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput),
+	BOOL_OPTION("AutoAcceptDccVideo", false, KviOption_sectFlagDcc),
+	BOOL_OPTION("CreateMinimizedDccVideo", false, KviOption_sectFlagDcc),
+	BOOL_OPTION("CreateMinimizedDccVideoWhenAutoAccepted",true,KviOption_sectFlagDcc)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)

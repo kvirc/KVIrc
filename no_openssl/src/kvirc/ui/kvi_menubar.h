@@ -60,7 +60,6 @@ protected:
 	KviScriptMenuBarItem * findMenu(const QString &text);
 	KviScriptMenuBarItem * findMenu(KviKvsPopupMenu * p);
 	void addDefaultItem(const QString &text,KviTalPopupMenu * pop);
-	virtual void showEvent(QShowEvent *e);
 public:
 	int getDefaultItemRealIndex(int iDefaultIndex);
 	void addMenu(const QString &text,KviKvsPopupMenu * p,int index);

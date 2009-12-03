@@ -277,20 +277,13 @@ void KviScriptManagementDialog::installScript()
 	if(!KviFileDialog::askForOpenFileName(
 		szFileName,
 		__tr2qs("Please select the addon installation file"),
-		QString(),KVI_FILTER_SCRIPTS,false,true
+		QString(),KVI_FILTER_ADDON,false,true
 		)) return;
 
 	szFileName.replace("\\","\\\\");
 
-	// Switch between script and addon
-	if(szFileName.endsWith(".kvs"))
-	{
-		QString szCmd = "parse \"";
-		szCmd += szFileName;
-		szCmd += "\"";
-
-		KviKvsScript::run(szCmd,g_pActiveWindow);
-	} else if(szFileName.endsWith(".kva"))
+	// Sanity check
+	if(szFileName.endsWith(".kva"))
 	{
 		if(!KviAddonFunctions::installAddonPackage(szFileName,szError,this))
 		{

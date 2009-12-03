@@ -39,6 +39,7 @@
 #include "kvi_tal_popupmenu.h"
 #include "kvi_window.h"
 #include "kvi_options.h"
+#include "kvi_out.h"
 
 #include <QFileDialog>
 #include <QMessageBox>
@@ -366,6 +367,11 @@ void UrlDialog::addUrl(QString url, QString window, QString count, QString times
 	UrlItem->setText(1, window);
 	UrlItem->setText(2, count);
 	UrlItem->setText(3, timestamp);
+
+	UrlItem->setForeground(0, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_URL).fore()));
+	UrlItem->setForeground(1, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
+	UrlItem->setForeground(2, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
+	UrlItem->setForeground(3, KVI_OPTION_MIRCCOLOR(KVI_OPTION_MSGTYPE(KVI_OUT_NONE).fore()));
 
 	m_pUrlList->resizeColumnToContents(0);
 	m_pUrlList->resizeColumnToContents(3);

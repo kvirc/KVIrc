@@ -24,24 +24,25 @@
 //   This file was originally part of kvi_input.h
 //============================================================================
 
+#include "kvi_app.h"
+#include "kvi_colorwin.h"
+#include "kvi_console.h"
+#include "kvi_fileextensions.h"
 #include "kvi_input.h"
 #include "kvi_input_editor.h"
 #include "kvi_input_history.h"
-#include "kvi_app.h"
-#include "kvi_out.h"
-#include "kvi_console.h"
-#include "kvi_locale.h"
-#include "kvi_options.h"
 #include "kvi_ircview.h"
-#include "kvi_colorwin.h"
-#include "kvi_mirccntrl.h"
-#include "kvi_userinput.h"
 #include "kvi_kvs_script.h"
 #include "kvi_kvs_kernel.h"
-#include "kvi_userlistview.h"
+#include "kvi_locale.h"
+#include "kvi_mirccntrl.h"
+#include "kvi_options.h"
+#include "kvi_out.h"
+#include "kvi_tal_popupmenu.h"
 #include "kvi_texticonwin.h"
 #include "kvi_texticonmanager.h"
-#include "kvi_tal_popupmenu.h"
+#include "kvi_userinput.h"
+#include "kvi_userlistview.h"
 
 #include <QClipboard>
 #include <QLabel>
@@ -54,6 +55,7 @@
 #include <QFontMetrics>
 #include <QKeyEvent>
 #include <QDragEnterEvent>
+#include <QInputContext>
 
 QFontMetrics * g_pLastFontMetrics = 0;
 
@@ -200,10 +202,19 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 						szPath.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
 				}
 #endif
-				szPath.prepend("/PARSE \"");
-				szPath.append("\"");
-				if(m_pKviWindow)
-					KviKvsScript::run(szPath,m_pKviWindow);
+
+				if(szPath.endsWith(KVI_FILEEXTENSION_SCRIPT,Qt::CaseInsensitive))
+				{
+					//script, parse it
+					szPath.prepend("PARSE \"");
+					szPath.append("\"");
+					if(m_pKviWindow)
+						KviKvsScript::run(szPath,m_pKviWindow);
+				} else {
+					//other file, paste link
+					szPath.append(" ");
+					insertText(szPath);
+				}
 			}
 		}
 	}
@@ -815,6 +826,14 @@ void KviInputEditor::mousePressEvent(QMouseEvent * e)
 		}
 
 		g_pInputPopup->insertItem(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_BIGGRIN)),__tr2qs("Insert Icon"),m_pIconMenu);
+
+		QInputContext *qic = g_pApp->inputContext();
+		if (qic) {
+			QList<QAction *> imActions = qic->actions();
+			for (int i = 0; i < imActions.size(); ++i)
+				g_pInputPopup->addAction(imActions.at(i));
+		}
+
 		g_pInputPopup->popup(mapToGlobal(e->pos()));
 	} else {
 		pasteSelectionWithConfirmation();
@@ -1219,30 +1238,51 @@ void KviInputEditor::inputMethodEvent(QInputMethodEvent * e)
 		return;
 	}
 
-	removeSelected();
-
-	int c = m_iCursorPosition;
-	if (e->replacementStart() <= 0)
-		c += e->commitString().length() + qMin(-e->replacementStart(), e->replacementLength());
-
-	m_iCursorPosition += e->replacementStart();
-
-	// insert commit string
-	if (e->replacementLength()) {
-		m_iIMSelectionBegin = m_iCursorPosition;
-		m_iIMLength = e->replacementLength();
-		removeSelected();
-	}
-	if (!e->commitString().isEmpty())
+	if(!m_bIMComposing)
 	{
-		m_bIMComposing = false;
-		insertText(e->commitString());
-	} else {
+		removeSelected();
+		m_iIMStart = m_iIMSelectionBegin = m_iCursorPosition;
+		m_iIMLength = 0;
 		m_bIMComposing = true;
 	}
 
-	m_iCursorPosition = c;
-	update();
+	m_bUpdatesEnabled = false;
+
+	m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
+
+	// update selection inside the pre-edit
+	m_iIMSelectionBegin = m_iIMStart + e->replacementStart();
+	m_iIMSelectionLength = e->replacementLength();
+	moveCursorTo(m_iIMSelectionBegin);
+
+	if (e->commitString().isEmpty())
+	{
+		if(e->preeditString().isEmpty())
+		{
+			m_bIMComposing = false;
+			m_iIMStart = 0;
+			m_iIMLength = 0;
+		} else {
+			// replace the preedit area with the IM result text
+			m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->preeditString());
+			// move cursor to after the IM result text
+			moveCursorTo(m_iIMStart + m_iIMLength);
+		}
+	} else {
+		// replace the preedit area with the IM result text
+		m_iIMLength = replaceSegment(m_iIMStart, m_iIMLength, e->commitString());
+		// move cursor to after the IM result text
+		moveCursorTo(m_iIMStart + m_iIMLength);
+		// reset data
+		m_bIMComposing = false;
+		m_iIMStart = 0;
+		m_iIMLength = 0;
+	}
+
+	// repaint
+	m_bUpdatesEnabled = true;
+		
+	repaintWithCursorOn();
 }
 
 void KviInputEditor::keyPressEvent(QKeyEvent * e)
@@ -1335,6 +1375,11 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 					repaintWithCursorOn();
 				}
 			break;
+			case Qt::Key_J:
+			{
+				//avoid Ctrl+J from inserting a linefeed
+				break;
+			}
 			case Qt::Key_K:
 			{
 				if(!m_bReadOnly)
@@ -2079,14 +2124,15 @@ int  KviInputEditor::xPositionFromCharIndex(QFontMetrics & fm, int iChIdx, bool 
 	// FIXME: this could use fm.width(m_szTextBuffer,chIdx)
 	int iCurXPos = bContentsCoords ? KVI_INPUT_MARGIN : frameWidth()+KVI_INPUT_MARGIN;
 	int iCurChar = m_iFirstVisibleChar;
-	while(iCurChar < iChIdx)
-	{
-		QChar c = m_szTextBuffer.at(iCurChar);
+	if(!m_szTextBuffer.isEmpty())
+		while(iCurChar < iChIdx)
+		{
+			QChar c = m_szTextBuffer.at(iCurChar);
 
-		iCurXPos += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
+			iCurXPos += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
 
-		iCurChar++;
-	}
+			iCurChar++;
+		}
 	return iCurXPos;
 }
 
@@ -2098,14 +2144,16 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx, bool bContentsCoords)
 
 	if(!g_pLastFontMetrics)
 		g_pLastFontMetrics = new QFontMetrics(font());
-	while(iCurChar < iChIdx)
-	{
-		QChar c = m_szTextBuffer.at(iCurChar);
 
-		iCurXPos += c.unicode() < 32 ? g_pLastFontMetrics->width(getSubstituteChar(c.unicode())) + 4 : g_pLastFontMetrics->width(c);
+	if(!m_szTextBuffer.isEmpty())
+		while(iCurChar < iChIdx)
+		{
+			QChar c = m_szTextBuffer.at(iCurChar);
 
-		iCurChar++;
-	}
+			iCurXPos += c.unicode() < 32 ? g_pLastFontMetrics->width(getSubstituteChar(c.unicode())) + 4 : g_pLastFontMetrics->width(c);
+
+			iCurChar++;
+		}
 
 	return iCurXPos;
 }

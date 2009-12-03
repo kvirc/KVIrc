@@ -116,7 +116,6 @@ KviWindow::KviWindow(int type,KviFrame * lpFrm,const QString &name,KviConsole * 
 	m_pSplitter             = 0;
 	m_pButtonBox            = 0;
 	m_pConsole              = lpConsole;
-	m_pContext              = lpConsole ? lpConsole->context() : 0;
 	m_pLastFocusedChild     = 0;
 	m_pTextCodec            = 0; // will be set by loadProperties
 	m_pTextEncodingButton   = 0;
@@ -257,9 +256,6 @@ bool KviWindow::focusNextPrevChild(bool next)
 	if(w)
 	{
 		if(w->focusPolicy() == Qt::StrongFocus)return false;
-		//QVariant v = w->property("KviProperty_FocusOwner");
-		//if(v.isValid())return false; // Do NOT change the focus widget!
-
 		if(w->parent())
 		{
 			if(w->parent()->metaObject()->indexOfProperty("KviProperty_ChildFocusOwner") == -1)
@@ -325,7 +321,6 @@ bool KviWindow::highlightMeter(unsigned int *v)
 
 bool KviWindow::highlightMe(unsigned int v)
 {
-// 	if(v<0) v=0;
 	if(v>5) v=5;
 	if(m_pWindowListItem)
 		m_pWindowListItem->highlight(v);
@@ -642,12 +637,8 @@ void KviWindow::updateCaption()
 		mdiParent()->setWindowTitle(m_szPlainTextCaption);
 	else
 		setWindowTitle(m_szPlainTextCaption);
-	if(m_pWindowListItem)m_pWindowListItem->captionChanged();
-}
-
-void KviWindow::updateCaptionListItem()
-{
-	if(m_pWindowListItem) m_pWindowListItem->captionChanged();
+	if(m_pWindowListItem)
+		m_pWindowListItem->captionChanged();
 }
 
 void KviWindow::createSystemTextEncodingPopup()
@@ -900,7 +891,6 @@ void KviWindow::youAreDocked()
 	m_bIsDocked=true;
 	((KviMdiChild *)parent())->setIcon(*myIconPtr());
 	updateCaption();
-	connect(((KviMdiChild *)parent()),SIGNAL(systemPopupRequest(const QPoint &)),this,SLOT(systemPopupRequest(const QPoint &)));
 }
 
 void KviWindow::youAreUndocked()
@@ -921,8 +911,6 @@ void KviWindow::activateSelf()
 		mdiParent()->activate();
 
 	g_pFrame->childWindowActivated(this);
-	// this is now done by KviFrame in childWindowActivated
-	//g_pFrame->m_pWindowList->setActiveItem(m_pWindowListItem);
 }
 
 void KviWindow::setFocus()
@@ -1094,11 +1082,6 @@ void KviWindow::childEvent(QChildEvent *e)
 	QWidget::childEvent(e);
 }
 
-void KviWindow::wheelEvent(QWheelEvent *)
-{
-	/* NOTHING HERE FOR NOW (FIXME) */
-}
-
 void KviWindow::childrenTreeChanged(QWidget *)
 {
 	//	if(widgetAdded && m_pFocusHandler)setFocusHandler(m_pFocusHandler,widgetAdded);
@@ -1168,7 +1151,6 @@ bool KviWindow::isMinimized()
 
 bool KviWindow::isMaximized()
 {
-//	debug ("check maximized %s",mdiParent()->plainCaption().utf8().data());
 	if(mdiParent())
 	{
 		return (mdiParent()->state() == KviMdiChild::Maximized);
@@ -1179,10 +1161,7 @@ bool KviWindow::isMaximized()
 void KviWindow::restore()
 {
 	if(mdiParent())
-	{
-		if(isMinimized()||isMaximized())
-			mdiParent()->restore();
-	}
+		mdiParent()->restore();
 	else
 		showNormal();
 	autoRaise();
@@ -1384,6 +1363,28 @@ QTextCodec * KviWindow::defaultTextCodec()
 		if(c)return c;
 	}
 	return KviApp::defaultTextCodec();
+}
+
+KviIrcConnection * KviWindow::connection()
+{
+	if(console())
+		if(console()->context())
+			return console()->context()->connection();
+	return 0;
+}
+
+KviIrcContext * KviWindow::context()
+{
+	if(console())
+	{
+		if(console() == this)
+		{
+			return ((KviConsole*)this)->context();
+		} else {
+			return console()->context();
+		}
+	}
+	return 0;
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
