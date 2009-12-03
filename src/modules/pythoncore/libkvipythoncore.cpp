@@ -268,7 +268,12 @@ static bool pythoncore_module_cleanup(KviModule *)
 	PyEval_AcquireLock();
 	PyThreadState_Swap(mainThreadState);
 	PyEval_ReleaseLock();
+	//FIXME currently python hangs forever on Py_Finalize()
+	//under win32/mingw; this is a (bad) workaround
+#ifndef COMPILE_ON_MINGW
 	Py_Finalize();
+#endif //COMPILE_ON_MINGW
+
 #endif // COMPILE_PYTHON_SUPPORT
 
 	return true;
