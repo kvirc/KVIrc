@@ -1004,6 +1004,12 @@ namespace KviKvsCoreFunctions
 	#ifdef COMPILE_DCC_CANVAS
 			"DCCCanvas",
 	#endif
+	#ifdef COMPILE_PERL_SUPPORT
+			"Perl",
+	#endif
+	#ifdef COMPILE_PYTHON_SUPPORT
+			"Python",
+	#endif
 			"Qt4",
 			"KVS",
 			0
