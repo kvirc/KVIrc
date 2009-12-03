@@ -106,7 +106,6 @@ SET(kvilib_SRCS
 	net/kvi_http.cpp
 	net/kvi_netutils.cpp
 	net/kvi_socket.cpp
-	net/kvi_ssl.cpp
 	net/kvi_url.cpp
 	system/kvi_env.cpp
 	system/kvi_locale.cpp
