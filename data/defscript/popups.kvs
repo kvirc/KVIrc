@@ -73,7 +73,7 @@ defpopup(channelhighlight)
 {
 	prologue
 	{
-		if($window!=""){
+		if($window!="" && !$chan.isDead()){
 			%:beingHlTmp = $tmphighlight.isChannelHighLighted($window)
 		}
 	}
