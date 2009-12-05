@@ -33,13 +33,13 @@
 //
 //=============================================================================
 
-extern inline bool kvi_strEqualCS(const char * str1,const char * str2)
+extern inline bool kvi_strEqualCS(const char * pcStr1, const char * pcStr2)
 {
 	// An instruction pattern is really useful in this case.
 	// When inlining, GCC can optimize to load esi and edi
 	// directly with the strings , without pushing and getting it
 	// from the stack...
-	register bool eax;
+	register bool bEax;
 	__asm__ __volatile__ (
 		"	cld\n"
 		"1:\n"
@@ -53,15 +53,15 @@ extern inline bool kvi_strEqualCS(const char * str1,const char * str2)
 		"2:\n"
 		"	xorl %%eax,%%eax\n"
 		"3:"
-		: "=a" (eax), "=&S" (str1), "=&D" (str2)
-		:             "1"   (str1), "2"   (str2)
+		: "=a" (bEax), "=&S" (pcStr1), "=&D" (pcStr2)
+		:             "1"   (pcStr1), "2"   (pcStr2)
 	);
-	return eax;
+	return bEax;
 }
 
-extern inline bool kvi_strEqualCSN(const char * str1,const char * str2,int len)
+extern inline bool kvi_strEqualCSN(const char * pcStr1, const char * pcStr2, int iLen)
 {
-	register bool eax;
+	register bool bEax;
 	__asm__ __volatile__ (
 		"1:\n"
 		"	decl %3\n"
@@ -79,10 +79,10 @@ extern inline bool kvi_strEqualCSN(const char * str1,const char * str2,int len)
 		"3:\n"
 		"	xorl %%eax,%%eax\n"
 		"4:\n"
-		: "=a" (eax),  "=r" (str1), "=r" (str2), "=r" (len)
-		:              "1"  (str1), "2"  (str2), "3"  (len)
+		: "=a" (bEax),  "=r" (pcStr1), "=r" (pcStr2), "=r" (iLen)
+		:              "1"  (pcStr1), "2"  (pcStr2), "3"  (iLen)
 	);
-	return eax;
+	return bEax;
 }
 
 // OPTIMIZATION
@@ -94,13 +94,13 @@ extern inline bool kvi_strEqualCSN(const char * str1,const char * str2,int len)
 // These will NOT work with localizable characters:
 // 'a' with umlaut will be not equal to 'A' with umlaut
 
-extern inline bool kvi_strEqualNoLocaleCI(const char *str1,const char *str2)
+extern inline bool kvi_strEqualNoLocaleCI(const char * pcStr1, const char * pcStr2)
 {
 	// Trivial implementation
 	// Ignores completely locales....only A-Z chars are transformed to a-z
 	// Anyway...it will work for IRC :)
-	register int reg;
-	register bool eax;
+	register int iReg;
+	register bool bEax;
 	__asm__ __volatile__ (
 		"1:\n"
 		"	movb (%2),%%al\n"
@@ -128,17 +128,17 @@ extern inline bool kvi_strEqualNoLocaleCI(const char *str1,const char *str2)
 		"4:\n"
 		"	xorl %%eax,%%eax\n"
 		"5:\n"
-		: "=a" (eax), "=q" (reg), "=r" (str1), "=r" (str2)
-		:                         "2"  (str1), "3"  (str2)
+		: "=a" (bEax), "=q" (iReg), "=r" (pcStr1), "=r" (pcStr2)
+		:                         "2"  (pcStr1), "3"  (pcStr2)
 	);
-	return eax;
+	return bEax;
 }
 
-extern inline bool kvi_strEqualNoLocaleCIN(const char *str1,const char *str2,int len)
+extern inline bool kvi_strEqualNoLocaleCIN(const char * pcStr1, const char * pcStr2, int iLen)
 {
 
-	register int reg;
-	register bool eax;
+	register int iReg;
+	register bool bEax;
 	__asm__ __volatile__ (
 		"1:\n"
 		"	decl %4\n"
@@ -169,26 +169,26 @@ extern inline bool kvi_strEqualNoLocaleCIN(const char *str1,const char *str2,int
 		"5:\n"
 		"	xorl %%eax,%%eax\n"
 		"6:\n"
-		: "=a" (eax), "=q" (reg), "=r" (str1), "=r" (str2), "=r" (len)
-		:                         "2"  (str1), "3"  (str2), "4"  (len)
+		: "=a" (bEax), "=q" (iReg), "=r" (pcStr1), "=r" (pcStr2), "=r" (iLen)
+		:                         "2"  (pcStr1), "3"  (pcStr2), "4"  (iLen)
 	);
-	return eax;
+	return bEax;
 }
 
 
-extern inline int kvi_strLen(const char * str)
+extern inline int kvi_strLen(const char * pcStr)
 {
-	register int ecx;
+	register int iEcx;
 	__asm__ __volatile__(
 		"	cld\n"
 		"	repne\n"
 		"	scasb\n"
 		"	notl %0\n"
 		"	decl %0"
-		: "=c" (ecx),        "=&D" (str)
-		: "0"  (0xffffffff), "1"   (str), "a" (0)
+		: "=c" (iEcx),        "=&D" (pcStr)
+		: "0"  (0xffffffff), "1"   (pcStr), "a" (0)
 	);
-	return ecx;
+	return iEcx;
 }
 
 #endif //_KVI_STRASM_H_
