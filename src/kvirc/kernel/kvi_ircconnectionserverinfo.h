@@ -33,11 +33,11 @@ class KVIRC_API KviBasicIrcServerInfo
 protected:
 	QString m_szServerVersion;
 public:
-	KviBasicIrcServerInfo(const QString & version = KviQString::empty);
+	KviBasicIrcServerInfo(const QString & version = KviQString::Empty);
 	virtual ~KviBasicIrcServerInfo();
 protected:
-	virtual const QString & getCustomChannelModeDescription(QChar) { return KviQString::empty; };
-	virtual const QString & getCustomUserModeDescription(QChar) { return KviQString::empty; };
+	virtual const QString & getCustomChannelModeDescription(QChar) { return KviQString::Empty; };
+	virtual const QString & getCustomUserModeDescription(QChar) { return KviQString::Empty; };
 private:
 	const QString & getBasicChannelModeDescription(QChar mode);
 	const QString & getBasicUserModeDescription(QChar mode);
@@ -50,7 +50,7 @@ public:
 class KVIRC_API KviUnrealIrcServerInfo : public KviBasicIrcServerInfo
 {
 public:
-	KviUnrealIrcServerInfo(const QString & version = KviQString::empty)
+	KviUnrealIrcServerInfo(const QString & version = KviQString::Empty)
 		:KviBasicIrcServerInfo(version) {;};
 	virtual char getRegisterModeChar() { return 'r'; };
 };
@@ -58,7 +58,7 @@ public:
 class KVIRC_API KviBahamutIrcServerInfo : public KviBasicIrcServerInfo
 {
 public:
-	KviBahamutIrcServerInfo(const QString & version = KviQString::empty)
+	KviBahamutIrcServerInfo(const QString & version = KviQString::Empty)
 		:KviBasicIrcServerInfo(version) {;};
 	virtual char getRegisterModeChar() { return 'r'; };
 };
@@ -66,7 +66,7 @@ public:
 class KVIRC_API KviHyperionIrcServerInfo : public KviBasicIrcServerInfo
 {
 public:
-	KviHyperionIrcServerInfo(const QString & version = KviQString::empty)
+	KviHyperionIrcServerInfo(const QString & version = KviQString::Empty)
 		:KviBasicIrcServerInfo(version) {;};
 	virtual char getRegisterModeChar() { return 'e'; };
 };

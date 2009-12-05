@@ -46,170 +46,587 @@
 */
 namespace KviQString
 {
+	/**
+	* \brief A global empty string (note that this is ALSO NULL under Qt 3.x)
+	*/
+	extern KVILIB_API const QString Empty;
+	
+	/**
+	* \brief Returns a readable size in byte's multiples
+	*
+	* This will return strings like KiB, MiB, GiB, TiB and so on
+	* \param size The size of the file
+	* \return QString
+	*/
 	extern KVILIB_API QString makeSizeReadable(size_t size);
-	extern KVILIB_API bool equalCS(const QString &sz1,const QString &sz2);
-	extern KVILIB_API bool equalCI(const QString &sz1,const QString &sz2);
-	extern KVILIB_API bool equalCS(const QString &sz1,const char * sz2);
-	extern KVILIB_API bool equalCI(const QString &sz1,const char * sz2);
-	// sz2 is assumed to be null terminated here!
-	extern KVILIB_API bool equalCI(const QString &sz1,const QChar * sz2);
-	inline bool equalCS(const char * sz1,const QString &sz2)
-		{ return equalCS(sz2,sz1); }
-	inline bool equalCI(const char * sz1,const QString &sz2)
-		{ return equalCI(sz2,sz1); }
-	// sz1 is assumed to be null terminated here!
-	inline bool equalCI(const QChar * sz1,const QString &sz2)
-		{ return equalCI(sz2,sz1); }
-
-	extern KVILIB_API bool equalCSN(const QString &sz1,const QString &sz2,unsigned int len);
-	extern KVILIB_API bool equalCIN(const QString &sz1,const QString &sz2,unsigned int len);
-	extern KVILIB_API bool equalCSN(const QString &sz1,const char * sz2,unsigned int len);
-	extern KVILIB_API bool equalCIN(const QString &sz1,const char * sz2,unsigned int len);
-	// sz2 is assumed to be null terminated here!
-	extern KVILIB_API bool equalCIN(const QString &sz1,const QChar * sz2,unsigned int len);
-	inline bool equalCSN(const char * sz1,const QString &sz2,unsigned int len)
-		{ return equalCSN(sz2,sz1,len); }
-	inline bool equalCIN(const char * sz1,const QString &sz2,unsigned int len)
-		{ return equalCIN(sz2,sz1,len); }
-	// sz1 is assumed to be null terminated here!
-	inline bool equalCIN(const QChar * sz1,const QString &sz2,unsigned int len)
-		{ return equalCIN(sz2,sz1,len); }
-
-	//note that greater here means that come AFTER in the alphabetic order
-	// return < 0 ---> str1 < str2
-	// return = 0 ---> str1 = str2
-	// return > 0 ---> str1 > str2
-	extern KVILIB_API int cmpCI(const QString &sz1,const QString &sz2,bool nonAlphaGreater = false);
-	extern KVILIB_API int cmpCIN(const QString &sz1,const QString &sz2,unsigned int len);
-	extern KVILIB_API int cmpCS(const QString &sz1,const QString &sz2);
-
-	extern KVILIB_API void detach(QString &sz);
-
-	// this makes the QString sz appear as a null terminated array
-	// it MAY RETURN 0 when the QString is null!
-	extern KVILIB_API const QChar * nullTerminatedArray(const QString &sz);
+	
+	/**
+	* \brief Compares two strings with case sensitive
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param sz1 First string
+	* \param sz2 Second string
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCS(const QString & sz1, const QString & sz2);
+	
+	/**
+	* \brief Compares two strings with case sensitive
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param sz1 First string
+	* \param pc2 Second string
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCS(const QString & sz1, const char * pc2);
+	
+	/**
+	* \brief Compares two strings with case sensitive
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param pc1 First string
+	* \param sz2 Second string
+	* \return bool
+	*/
+	inline bool equalCS(const char * pc1, const QString & sz2)
+		{ return equalCS(sz2,pc1); }
+	
+	/**
+	* \brief Compares two strings with case insensitive
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param sz1 First string
+	* \param sz2 Second string
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCI(const QString & sz1, const QString & sz2);
+	
+	/**
+	* \brief Compares two strings with case insensitive
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param sz1 First string
+	* \param pc2 Second string
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCI(const QString & sz1, const char * pc2);
+	
+	/**
+	* \brief Compares two strings with case insensitive
+	*
+	* It returns true if the strings are equal, false otherwise.
+	* The parameter pC2 is assumed to be null terminated here!
+	* \param sz1 First string
+	* \param pC2 Second string
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCI(const QString & sz1, const QChar * pC2);
+	
+	/**
+	* \brief Compares two strings with case insensitive
+	*
+	* It returns true if the strings are equal, false otherwise.
+	* \param pc1 First string
+	* \param sz2 Second string
+	* \return bool
+	*/
+	inline bool equalCI(const char * pc1, const QString & sz2)
+		{ return equalCI(sz2,pc1); }
+	
+	/**
+	* \brief Compares two strings with case insensitive
+	*
+	* It returns true if the strings are equal, false otherwise.
+	* The parameter pC1 is assumed to be null terminated here!
+	* \param pC1 First string
+	* \param sz2 Second string
+	* \return bool
+	*/
+	inline bool equalCI(const QChar * pC1, const QString & sz2)
+		{ return equalCI(sz2,pC1); }
+	
+	/**
+	* \brief Compares two strings with case sensitive up to N chars
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param sz1 First string
+	* \param sz2 Second string
+	* \param uLen The length of the string to check
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCSN(const QString & sz1, const QString & sz2, unsigned int uLen);
+	
+	/**
+	* \brief Compares two strings with case sensitive up to N chars
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param sz1 First string
+	* \param pc2 Second string
+	* \param uLen The length of the string to check
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCSN(const QString & sz1, const char * pc2, unsigned int uLen);
+	
+	/**
+	* \brief Compares two strings with case sensitive up to N chars
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param pc1 First string
+	* \param sz2 Second string
+	* \param uLen The length of the string to check
+	* \return bool
+	*/
+	inline bool equalCSN(const char * pc1, const QString & sz2, unsigned int uLen)
+		{ return equalCSN(sz2,pc1,uLen); }
+	
+	/**
+	* \brief Compares two strings with case insensitive up to N chars
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param sz1 First string
+	* \param sz2 Second string
+	* \param uLen The length of the string to check
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCIN(const QString & sz1, const QString & sz2, unsigned int uLen);
+	
+	/**
+	* \brief Compares two strings with case insensitive up to N chars
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param sz1 First string
+	* \param pc2 Second string
+	* \param uLen The length of the string to check
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCIN(const QString & sz1, const char * pc2, unsigned int uLen);
+	
+	/**
+	* \brief Compares two strings with case insensitive up to N chars
+	*
+	* It returns true if the strings are equal, false otherwise
+	* pC2 is assumed to be null terminated here!
+	* \param sz1 First string
+	* \param pC2 Second string
+	* \param uLen The length of the string to check
+	* \return bool
+	*/
+	extern KVILIB_API bool equalCIN(const QString & sz1, const QChar * pC2, unsigned int uLen);
+	
+	/**
+	* \brief Compares two strings with case insensitive up to N chars
+	*
+	* It returns true if the strings are equal, false otherwise
+	* \param pc1 First string
+	* \param sz2 Second string
+	* \param uLen The length of the string to check
+	* \return bool
+	*/
+	inline bool equalCIN(const char * pc1, const QString & sz2, unsigned int uLen)
+		{ return equalCIN(sz2,pc1,uLen); }
+	
+	/**
+	* \brief Compares two strings with case insensitive up to N chars
+	*
+	* It returns true if the strings are equal, false otherwise
+	* pC1 is assumed to be null terminated here!
+	* \param pC1 First string
+	* \param sz2 Second string
+	* \param uLen The length of the string to check
+	* \return bool
+	*/
+	inline bool equalCIN(const QChar * pC1, const QString & sz2, unsigned int uLen)
+		{ return equalCIN(sz2,pC1,uLen); }
 
 	/**
-	* \brief Returns true if the string ends with character c
-	* \param szString The source string
+	* \brief Compares two strings with case insensitive
+	*
+	* Note that greater here means that come AFTER in the alphabetic order
+	* return < 0 ---> str1 < str2
+	* return = 0 ---> str1 = str2
+	* return > 0 ---> str1 > str2
+	* \param sz1 The first string
+	* \param sz2 The second string
+	* \param bNonAlphaGreater Wheter to check if strings are not alphabetics
+	* \return int
+	*/
+	extern KVILIB_API int cmpCI(const QString & sz1, const QString & sz2, bool bNonAlphaGreater = false);
+	
+	/**
+	* \brief Compares two strings with case insensitive up to N chars
+	*
+	* Note that greater here means that come AFTER in the alphabetic order
+	* return < 0 ---> str1 < str2
+	* return = 0 ---> str1 = str2
+	* return > 0 ---> str1 > str2
+	* \param sz1 The first string
+	* \param sz2 The second string
+	* \param uLen The number of chars to check
+	* \return int
+	*/
+	extern KVILIB_API int cmpCIN(const QString & sz1, const QString & sz2, unsigned int uLen);
+	
+	/**
+	* \brief Compares two strings with case sensitive
+	*
+	* Note that greater here means that come AFTER in the alphabetic order
+	* return < 0 ---> str1 < str2
+	* return = 0 ---> str1 = str2
+	* return > 0 ---> str1 > str2
+	* \param sz1 The first string
+	* \param sz2 The second string
+	* \return int
+	*/
+	extern KVILIB_API int cmpCS(const QString & sz1, const QString & sz2);
+
+	/**
+	* \brief Resets the size of the string
+	* \param szSrc The source string
+	* \return void
+	*/
+	extern KVILIB_API void detach(QString & szSrc);
+
+	/**
+	* \brief Returns a pointer to the data stored in the string.
+	*
+	* This makes the string szSrc appear as a null terminated array.
+	* It MAY RETURN 0 when the string is null!
+	* \param szSrc The source string
+	* \return QChar *
+	*/
+	extern KVILIB_API const QChar * nullTerminatedArray(const QString & szSrc);
+
+	/**
+	* \brief Returns true if the string ends with the given character
+	* \param szSrc The source string
 	* \param c The char to check
 	* \return bool
 	*/
-	inline bool lastCharIs(QString & szString, const QChar & c)
-		{ return szString.endsWith(c); }
+	inline bool lastCharIs(QString & szSrc, const QChar & c)
+		{ return szSrc.endsWith(c); }
 
-	extern KVILIB_API void ensureLastCharIs(QString &szString,const QChar &c);
+	/**
+	* \brief Ensures the last char of a string is the given char
+	*
+	* If the string does not end with the given char, it appends it
+	* \param szSrc The source string
+	* \param c The char to check
+	* \return void
+	*/
+	extern KVILIB_API void ensureLastCharIs(QString & szSrc, const QChar & c);
 
-	// wild expression matching
-	extern KVILIB_API bool matchWildExpressionsCI(const QString &szM1,const QString &szM2);
-	// wild or regexp matching
-	extern KVILIB_API bool matchStringCI(const QString &szExp,const QString &szStr,bool bIsRegExp = false,bool bExact = false);
-	extern KVILIB_API bool matchStringCS(const QString &szExp,const QString &szStr,bool bIsRegExp = false,bool bExact = false);
+	/**
+	* \brief Matches two strings containging wildcards (* and ?)
+	* \param szM1 The first string to match
+	* \param szM2 The second string to match
+	* \return bool
+	*/
+	extern KVILIB_API bool matchWildExpressions(const QString & szM1, const QString & szM2);
+	
+	/**
+	* \brief Matches two string containging wildcards (* and ?) or regular expressions
+	* \param szExp The regular expression to match
+	* \param szStr The source string
+	* \param bIsRegExp Wheter to use a wildcard or regexp matching
+	* \param bExact Wheter to match the whole string
+	* \param bCs Wheter to match with case sensitive
+	* \return bool
+	*/
+	extern KVILIB_API bool matchString(const QString & szExp, const QString & szStr, bool bIsRegExp = false, bool bExact = false, bool bCs = false);
 
-	extern KVILIB_API void vsprintf(QString &s,const QString &szFmt,kvi_va_list list);
-	extern KVILIB_API QString & sprintf(QString &s,const QString &szFmt,...);
-	extern KVILIB_API void stripRightWhiteSpace(QString &s);
-	extern KVILIB_API void stripLeft(QString &s,const QChar &c);
-	extern KVILIB_API void stripRight(QString &s,const QChar &c);
-	extern KVILIB_API void appendFormatted(QString &s,const QString &szFmt,...);
-	extern KVILIB_API void appendNumber(QString &s,double dReal);
-	extern KVILIB_API void appendNumber(QString &s,kvi_i64_t iInteger);
-	extern KVILIB_API void appendNumber(QString &s,int iInteger);
-	extern KVILIB_API void appendNumber(QString &s,unsigned int uInteger);
-	extern KVILIB_API void appendNumber(QString &s,kvi_u64_t uInteger);
+	/**
+	* \brief Writes to the character string
+	* \param szSrc The source string
+	* \param szFmt The format string
+	* \param list The list of format parameters
+	* \return void
+	*/
+	extern KVILIB_API void vsprintf(QString & szSrc, const QString & szFmt, kvi_va_list list);
+	
+	/**
+	* \brief Writes to the character string
+	* \param szSrc The source string
+	* \param szFmt The format string
+	* \param ... The list of format parameters
+	* \return QString
+	*/
+	extern KVILIB_API QString & sprintf(QString & szSrc, const QString & szFmt, ...);
+	
+	/**
+	* \brief Trims all the whitespaces at the end of the given string
+	* \param szSrc The source string
+	* \return void
+	*/
+	extern KVILIB_API void stripRightWhiteSpace(QString & szSrc);
+	
+	/**
+	* \brief Trims all c chars at the start of the given string
+	* \param szSrc The source string
+	* \param c The char to trim
+	* \return void
+	*/
+	extern KVILIB_API void stripLeft(QString & szSrc, const QChar & c);
+	
+	/**
+	* \brief Trims all c chars at the end of the given string
+	* \param szSrc The source string
+	* \param c The char to trim
+	* \return void
+	*/
+	extern KVILIB_API void stripRight(QString & szSrc, const QChar & c);
+	
+	/**
+	* \brief Appends a formatted string
+	* \param szSrc The source string
+	* \param szFmt The format string
+	* \param ... Format string parameters
+	* \return void
+	*/
+	extern KVILIB_API void appendFormatted(QString & szSrc, const QString & szFmt, ...);
+	
+	/**
+	* \brief Appends the given number to the source string
+	* \param szSrc The source string
+	* \param dReal Number in double format
+	* \return void
+	*/
+	extern KVILIB_API void appendNumber(QString & szSrc, double dReal);
+	
+	/**
+	* \brief Appends the given number to the source string
+	* \param szSrc The source string
+	* \param iInteger Number in kvi_i64_t format
+	* \return void
+	*/
+	extern KVILIB_API void appendNumber(QString & szSrc, kvi_i64_t iInteger);
+	
+	/**
+	* \brief Appends the given number to the source string
+	* \param szSrc The source string
+	* \param iInteger Number in int format
+	* \return void
+	*/
+	extern KVILIB_API void appendNumber(QString & szSrc, int iInteger);
+	
+	/**
+	* \brief Appends the given number to the source string
+	* \param szSrc The source string
+	* \param uInteger Number in unsigned int format
+	* \return void
+	*/
+	extern KVILIB_API void appendNumber(QString & szSrc, unsigned int uInteger);
+	
+	/**
+	* \brief Appends the given number to the source string
+	* \param szSrc The source string
+	* \param uInteger Number in kvi_i64_t format
+	* \return void
+	*/
+	extern KVILIB_API void appendNumber(QString & szSrc, kvi_u64_t uInteger);
 
-	extern KVILIB_API void cutFromFirst(QString &s,const QChar &c,bool bIncluded = true);
-	extern KVILIB_API void cutFromLast(QString &s,const QChar &c,bool bIncluded = true);
-	extern KVILIB_API void cutToFirst(QString &s,const QChar &c,bool bIncluded = true,bool bClearIfNotFound = false);
-	extern KVILIB_API void cutToLast(QString &s,const QChar &c,bool bIncluded = true,bool bClearIfNotFound = false);
-	extern KVILIB_API void cutFromFirst(QString &s,const QString &c,bool bIncluded = true);
-	extern KVILIB_API void cutFromLast(QString &s,const QString &c,bool bIncluded = true);
-	extern KVILIB_API void cutToFirst(QString &s,const QString &c,bool bIncluded = true,bool bClearIfNotFound = false);
-	extern KVILIB_API void cutToLast(QString &s,const QString &c,bool bIncluded = true,bool bClearIfNotFound = false);
+	/**
+	* \brief Cuts the string after the first occurrence of the given char
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param c The char to search for
+	* \param bIncluded Wheter to include the given char
+	* \return void
+	*/
+	extern KVILIB_API void cutFromFirst(QString & szSrc, const QChar & c, bool bIncluded = true);
+	
+	/**
+	* \brief Cuts the string after the first occurrence of the given char
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param szFind The string to search for
+	* \param bIncluded Wheter to include the given string
+	* \return void
+	*/
+	extern KVILIB_API void cutFromFirst(QString & szSrc, const QString & szFind, bool bIncluded = true);
+	
+	/**
+	* \brief Cuts the string after the last occurrence of the given char
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param c The char to search for
+	* \param bIncluded Wheter to include the given char
+	* \return void
+	*/
+	extern KVILIB_API void cutFromLast(QString & szSrc, const QChar & c, bool bIncluded = true);
+	
+	/**
+	* \brief Cuts the string after the last occurrence of the given char
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param szFind The string to search for
+	* \param bIncluded Wheter to include the given string
+	* \return void
+	*/
+	extern KVILIB_API void cutFromLast(QString & szSrc, const QString & szFind, bool bIncluded = true);
+	
+	/**
+	* \brief Cuts the string until the first occurrence of the given char is found
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param c The char to search for
+	* \param bIncluded Wheter to include the given char in the cut
+	* \param bClearIfNotFound Wheter to cut the whole string if the char is not found
+	* \return void
+	*/
+	extern KVILIB_API void cutToFirst(QString & szSrc, const QChar & c, bool bIncluded = true, bool bClearIfNotFound = false);
+	
+	/**
+	* \brief Cuts the string until the first occurrence of the given char is found
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param szFind The string to search for
+	* \param bIncluded Wheter to include the given string in the cut
+	* \param bClearIfNotFound Wheter to cut the whole string if the string is not found
+	* \return void
+	*/
+	extern KVILIB_API void cutToFirst(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bClearIfNotFound = false);
+	
+	/**
+	* \brief Cuts the string until the last occurrence of the given char is found
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param c The char to search for
+	* \param bIncluded Wheter to include the given char in the cut
+	* \param bClearIfNotFound Wheter to cut the whole string if the char is not found
+	* \return void
+	*/
+	extern KVILIB_API void cutToLast(QString & szSrc, const QChar & c, bool bIncluded = true, bool bClearIfNotFound = false);
+	
+	/**
+	* \brief Cuts the string until the last occurrence of the given char is found
+	*
+	* If the char is not found, the string is returned as it is.
+	* \param szSrc The source string
+	* \param szFind The string to search for
+	* \param bIncluded Wheter to include the given string in the cut
+	* \param bClearIfNotFound Wheter to cut the whole string if the string is not found
+	* \return void
+	*/
+	extern KVILIB_API void cutToLast(QString & szSrc, const QString & szFind, bool bIncluded = true, bool bClearIfNotFound = false);
 
-	extern KVILIB_API QString upperISO88591(const QString &szSrc);
-	extern KVILIB_API QString lowerISO88591(const QString &szSrc);
-	extern KVILIB_API QString getToken(QString &szString,const QChar &sep);
+	/**
+	* \brief Returns an ISO-8859-1 upper case string
+	* \param szSrc The source string
+	* \return QString
+	*/
+	extern KVILIB_API QString upperISO88591(const QString & szSrc);
+	
+	/**
+	* \brief Returns an ISO-8859-1 lower case string
+	* \param szSrc The source string
+	* \return QString
+	*/
+	extern KVILIB_API QString lowerISO88591(const QString & szSrc);
+	
+	/**
+	* \brief Returns a token from a string
+	* \param szSrc The source string
+	* \param sep The token to find
+	* \return QString
+	*/
+	extern KVILIB_API QString getToken(QString & szSrc, const QChar & sep);
 
-	extern KVILIB_API void transliterate(QString &s,const QString &szToFind,const QString &szReplacement);
+	/**
+	* \brief Replaces a string with another
+	* \param szSrc The source string
+	* \param szToFind The string to replace
+	* \param szReplacement The string to replace with
+	* \return void
+	*/
+	extern KVILIB_API void transliterate(QString & szSrc, const QString & szToFind, const QString & szReplacement);
 
-	extern KVILIB_API void bufferToHex(QString &szRetBuffer,const unsigned char * buffer,unsigned int len);
-
-	// a global empty string (note that this is ALSO NULL under Qt 3.x)
-	extern KVILIB_API const QString empty;
+	/**
+	* \brief Returns an hexadecimal converted string starting from a buffer
+	* \param szRetBuffer The buffer to hold the hexadecimal string
+	* \param pcBuffer The buffer containing the string to convert
+	* \param uLen The max length of the original string
+	*/
+	extern KVILIB_API void bufferToHex(QString & szRetBuffer, const unsigned char * pcBuffer, unsigned int uLen);
 
 	/**
 	* \brief Returns the index position of the last occurrence of the character
 	*
 	* The search is made forward starting from index.
-	* \param s The source string
+	* \param szSrc The source string
 	* \param c The character to find
-	* \param index The index to start from
-	* \param cs Case sensitive search
+	* \param iIndex The index to start from
+	* \param bCs Case sensitive search
 	* \return int
 	*/
-	inline int find(const QString & s, QChar c, int index = 0, bool cs = true)
+	inline int find(const QString & szSrc, QChar c, int iIndex = 0, bool bCs = true)
 	{
-		return s.indexOf(c,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		return szSrc.indexOf(c,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
 	/**
 	* \brief Returns the index position of the last occurrence of the character
 	*
 	* The search is made forward starting from index.
-	* \param s The source string
+	* \param szSrc The source string
 	* \param c The character to find
-	* \param index The index to start from
-	* \param cs Case sensitive search
+	* \param iIndex The index to start from
+	* \param bCs Case sensitive search
 	* \return int
 	*/
-	inline int find(const QString & s, char c, int index = 0, bool cs = true)
+	inline int find(const QString & szSrc, char c, int iIndex = 0, bool bCs = true)
 	{
-		return s.indexOf(c,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		return szSrc.indexOf(c,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
 	/**
 	* \brief Returns the index position of the last occurrence of the string
 	*
 	* The search is made forward starting from index.
-	* \param s The source string
-	* \param str The string to find
-	* \param index The index to start from
-	* \param cs Case sensitive search
+	* \param szSrc The source string
+	* \param szStr The string to find
+	* \param iIndex The index to start from
+	* \param bCs Case sensitive search
 	* \return int
 	*/
-	inline int find(const QString & s, const QString & str, int index = 0, bool cs = true)
+	inline int find(const QString & szSrc, const QString & szStr, int iIndex = 0, bool bCs = true)
 	{
-		return s.indexOf(str,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		return szSrc.indexOf(szStr,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
 	/**
 	* \brief Returns the index position of the last occurrence of the string
 	*
 	* The search is made forward starting from index.
-	* \param s The source string
-	* \param str The string to find
-	* \param index The index to start from
-	* \param cs Case sensitive search
+	* \param szSrc The source string
+	* \param pcStr The string to find
+	* \param iIndex The index to start from
+	* \param bCs Case sensitive search
 	* \return int
 	*/
-	inline int find(const QString & s, const char * str, int index = 0, bool cs = true)
+	inline int find(const QString & szSrc, const char * pcStr, int iIndex = 0, bool bCs = true)
 	{
-		return s.indexOf(QString(str),index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		return szSrc.indexOf(QString(pcStr),iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
 	/**
 	* \brief Returns the index position of the last occurrence of the string
 	*
 	* The search is made forward starting from index.
-	* \param s The source string
+	* \param szSrc The source string
 	* \param rx The regexp to match
-	* \param index The index to start from
+	* \param iIndex The index to start from
 	* \return int
 	*/
-	inline int find(const QString & s, const QRegExp & rx, int index = 0)
+	inline int find(const QString & szSrc, const QRegExp & rx, int iIndex = 0)
 	{
-		return s.indexOf(rx,index);
+		return szSrc.indexOf(rx,iIndex);
 	}
 
 	/**
@@ -217,15 +634,15 @@ namespace KviQString
 	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
-	* \param s The source string
+	* \param szSrc The source string
 	* \param c The character to find
-	* \param index The index to start from
-	* \param cs Case sensitive search
+	* \param iIndex The index to start from
+	* \param bCs Case sensitive search
 	* \return int
 	*/
-	inline int findRev(const QString & s ,QChar c, int index = -1, bool cs = true)
+	inline int findRev(const QString & szSrc, QChar c, int iIndex = -1, bool bCs = true)
 	{
-		return s.lastIndexOf(c,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		return szSrc.lastIndexOf(c,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
 	/**
@@ -233,47 +650,47 @@ namespace KviQString
 	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
-	* \param s The source string
+	* \param szSrc The source string
 	* \param c The character to find
-	* \param index The index to start from
-	* \param cs Case sensitive search
+	* \param iIndex The index to start from
+	* \param bCs Case sensitive search
 	* \return int
 	*/
-	inline int findRev(const QString & s, char c, int index = -1, bool cs = true)
+	inline int findRev(const QString & szSrc, char c, int iIndex = -1, bool bCs = true)
 	{
-		return s.lastIndexOf(c,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		return szSrc.lastIndexOf(c,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
 	/**
-	* \brief Returns the index position of the last occurrence of the string str
+	* \brief Returns the index position of the last occurrence of the given string
 	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
-	* \param s The source string
-	* \param str The string to find
-	* \param index The index to start from
-	* \param cs Case sensitive search
+	* \param szSrc The source string
+	* \param szStr The string to find
+	* \param iIndex The index to start from
+	* \param bCs Case sensitive search
 	* \return int
 	*/
-	inline int findRev(const QString & s, const QString & str, int index = -1, bool cs = true)
+	inline int findRev(const QString & szSrc, const QString & szStr, int iIndex = -1, bool bCs = true)
 	{
-		return s.lastIndexOf(str,index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		return szSrc.lastIndexOf(szStr,iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
 	/**
-	* \brief Returns the index position of the last occurrence of the string str
+	* \brief Returns the index position of the last occurrence of the given string
 	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
-	* \param s The source string
-	* \param str The string to find
-	* \param index The index to start from
-	* \param cs Case sensitive search
+	* \param szSrc The source string
+	* \param pcStr The string to find
+	* \param iIndex The index to start from
+	* \param bCs Case sensitive search
 	* \return int
 	*/
-	inline int findRev(const QString & s, const char * str, int index = -1, bool cs = true)
+	inline int findRev(const QString & szSrc, const char * pcStr, int iIndex = -1, bool bCs = true)
 	{
-		return s.lastIndexOf(QString(str),index,cs ? Qt::CaseSensitive : Qt::CaseInsensitive);
+		return szSrc.lastIndexOf(QString(pcStr),iIndex,bCs ? Qt::CaseSensitive : Qt::CaseInsensitive);
 	}
 
 	/**
@@ -281,31 +698,31 @@ namespace KviQString
 	*
 	* The search is made backward.
 	* If index is -1 the search starts at the last character.
-	* \param s The source string
+	* \param szSrc The source string
 	* \param rx The regexp to match
-	* \param index The index to start from
+	* \param iIndex The index to start from
 	* \return int
 	*/
-	inline int findRev(const QString & s, const QRegExp & rx, int index = -1)
+	inline int findRev(const QString & szSrc, const QRegExp & rx, int iIndex = -1)
 	{
-		return s.lastIndexOf(rx,index);
+		return szSrc.lastIndexOf(rx,iIndex);
 	}
 
 	/**
 	* \brief Return a whitespace-trimmed string
 	*
 	* Spaces are trimmed at start and end of the string
-	* \param s The source string
+	* \param szSrc The source string
 	* \return QString
 	*/
-	inline QString trimmed(const QString & s)
+	inline QString trimmed(const QString & szSrc)
 	{
-		return s.trimmed();
+		return szSrc.trimmed();
 	}
 
 	/**
 	* \brief Return a UTF-8 formatted string
-	* \param s The source string
+	* \param szSrc The source string
 	* \return QByteArray
 	* \warning: DO NOT USE CONSTRUCTS LIKE char * c = KviQString::toUtf8(something).data();
 	* They are dangerous since with many compilers the returned string
@@ -317,24 +734,24 @@ namespace KviQString
 	* instead. Yes, I know that it sucks, but it's the only way to
 	* transit to Qt 4.x more or less cleanly...
 	*/
-	inline QByteArray toUtf8(const QString & s)
+	inline QByteArray toUtf8(const QString & szSrc)
 	{
-		return s.toUtf8();
+		return szSrc.toUtf8();
 	}
 
 	/**
 	* \brief Return the local 8-bit representation of the string
-	* \param s The source string
+	* \param szSrc The source string
 	* \return QByteArray
 	*/
-	inline QByteArray toLocal8Bit(const QString & s)
+	inline QByteArray toLocal8Bit(const QString & szSrc)
 	{
-		return s.toLocal8Bit();
+		return szSrc.toLocal8Bit();
 	}
 
 	/**
 	* \brief Return the string converted to a long
-	* \param s The source string
+	* \param szNumber The source number
 	* \param bOk The conversion error handling
 	* \return kvi_i64_t
 	*/
@@ -349,7 +766,7 @@ namespace KviQString
 
 	/**
 	* \brief Return the string converted to an unsigned long
-	* \param s The source string
+	* \param szNumber The source number
 	* \param bOk The conversion error handling
 	* \return kvi_u64_t
 	*/
@@ -362,7 +779,5 @@ namespace KviQString
 #endif
 	}
 }
-
-// QT4SUX: Because QString::null is gone. QString() is SLOWER than QString::null since it invokes a constructor and destructor.
 
 #endif //_KVI_QSTRING_H_

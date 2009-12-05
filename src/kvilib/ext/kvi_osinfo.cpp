@@ -444,7 +444,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.sysname);
-		return KviQString::empty;
+		return KviQString::Empty;
 	#endif
 #endif
 	}
@@ -457,7 +457,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.version);
-		return KviQString::empty;
+		return KviQString::Empty;
 #endif
 	}
 
@@ -469,7 +469,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.release);
-		return KviQString::empty;
+		return KviQString::Empty;
 #endif
 	}
 
@@ -482,7 +482,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.machine);
-		return KviQString::empty;
+		return KviQString::Empty;
 #endif
 	}
 
@@ -494,7 +494,7 @@ namespace KviOsInfo
 		struct utsname uts;
 		if(uname(&uts) == 0)
 			return QString::fromLocal8Bit(uts.nodename);
-		return KviQString::empty;
+		return KviQString::Empty;
 #endif
 	}
 
@@ -504,6 +504,6 @@ namespace KviOsInfo
 		if(gethostname(hbuffer,1024) == 0)
 			return QString::fromLocal8Bit(hbuffer);
 		else
-			return KviQString::empty;
+			return KviQString::Empty;
 	}
 }

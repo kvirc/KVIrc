@@ -424,14 +424,14 @@ const QString & KviWindow::lastLineOfText()
 {
 	if(m_pIrcView)
 		return m_pIrcView->lastLineOfText();
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 const QString & KviWindow::lastMessageText()
 {
 	if(m_pIrcView)
 		return m_pIrcView->lastMessageText();
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 // The following three have to be here even if the crypt support is disabled...moc does not support conditional compilations
@@ -561,7 +561,7 @@ void KviWindow::saveProperties(KviConfig *cfg)
 	QTextCodec * c = defaultTextCodec();
 	if(c && m_pTextCodec)
 	{
-		if(KviQString::equalCI(szCodec,c->name().data()))szCodec = KviQString::empty; // store "default"
+		if(KviQString::equalCI(szCodec,c->name().data()))szCodec = KviQString::Empty; // store "default"
 	}
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
@@ -582,7 +582,7 @@ void KviWindow::loadProperties(KviConfig *cfg)
 {
 	QString szKey = "TextEncoding_";
 	szKey += m_szName;
-	setTextEncoding(cfg->readQStringEntry(szKey,KviQString::empty).toUtf8().data());
+	setTextEncoding(cfg->readQStringEntry(szKey,KviQString::Empty).toUtf8().data());
 	if(m_pInput) {
 		m_pInput->setButtonsHidden(cfg->readBoolEntry("inputToolButtonsHidden",KVI_OPTION_BOOL(KviOption_boolHideInputToolButtons)));
 		m_pInput->setUserFriendly(cfg->readBoolEntry("commandLineIsUserFriendly",KVI_OPTION_BOOL(KviOption_boolCommandlineInUserFriendlyModeByDefault)));

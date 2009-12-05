@@ -199,7 +199,7 @@ KviNickServRule * KviNickServRuleSet::matchRule(const QString &szNick,const KviI
 	if(!m_pRules)return 0;
 	for(KviNickServRule *r = m_pRules->first();r;r = m_pRules->next())
 	{
-		if(!KviQString::matchStringCI(r->registeredNick(),szNick,false,true)) continue;
+		if(!KviQString::matchString(r->registeredNick(),szNick,false,true)) continue;
 		if(!szServer.isEmpty())
 		{
 			QRegExp res(r->serverMask(),Qt::CaseInsensitive,QRegExp::Wildcard);

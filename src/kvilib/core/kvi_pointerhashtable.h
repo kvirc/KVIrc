@@ -277,7 +277,7 @@ inline void kvi_hash_key_destroy(QString &,bool)
 
 inline const QString & kvi_hash_key_default(QString *)
 {
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 template<typename Key,typename T> class KviPointerHashTable;

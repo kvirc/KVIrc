@@ -1309,7 +1309,7 @@ static bool str_kvs_fnc_match(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	bool bRegExp = (szFlags.indexOf(QChar('r')) != -1) || (szFlags.indexOf(QChar('R')) != -1);
 	bool bExact = (szFlags.indexOf(QChar('e')) != -1) || (szFlags.indexOf(QChar('E')) != -1);
-	c->returnValue()->setBoolean(KviQString::matchStringCS(szWildcard,szString,bRegExp,bExact));
+	c->returnValue()->setBoolean(KviQString::matchString(szWildcard,szString,bRegExp,bExact,true));
 	return true;
 }
 
@@ -1355,7 +1355,7 @@ static bool str_kvs_fnc_matchnocase(KviKvsModuleFunctionCall * c)
 	KVSM_PARAMETERS_END(c)
 	bool bRegExp = (szFlags.indexOf(QChar('r')) != -1) || (szFlags.indexOf(QChar('R')) != -1);
 	bool bExact = (szFlags.indexOf(QChar('e')) != -1) || (szFlags.indexOf(QChar('E')) != -1);
-	c->returnValue()->setBoolean(KviQString::matchStringCI(szWildcard,szString,bRegExp,bExact));
+	c->returnValue()->setBoolean(KviQString::matchString(szWildcard,szString,bRegExp,bExact));
 	return true;
 }
 

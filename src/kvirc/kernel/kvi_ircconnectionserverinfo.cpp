@@ -213,14 +213,14 @@ const QString & KviBasicIrcServerInfo::getChannelModeDescription(QChar mode)
 {
 	QString tmp=getCustomChannelModeDescription(mode);
 	if(tmp.isNull()) return getBasicChannelModeDescription(mode);
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 const QString & KviBasicIrcServerInfo::getUserModeDescription(QChar mode)
 {
 	QString tmp=getCustomUserModeDescription(mode);
 	if(tmp.isNull()) return getBasicUserModeDescription(mode);
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 const QString & KviBasicIrcServerInfo::getBasicChannelModeDescription(QChar mode)
@@ -260,7 +260,7 @@ const QString & KviBasicIrcServerInfo::getBasicChannelModeDescription(QChar mode
 		case '7': return __tr2qs("Only 7-bit letters in nicknames allowed"); break;
 		case 'x': return __tr2qs("Impossible to use both 7-bit and 8-bit letters in nicknames"); break;
 	}
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 const QString & KviBasicIrcServerInfo::getBasicUserModeDescription(QChar mode)
@@ -281,5 +281,5 @@ const QString & KviBasicIrcServerInfo::getBasicUserModeDescription(QChar mode)
 		case 'd': return __tr2qs("d: Obscure 'DEBUG' flag"); break;
 		case 'n': return __tr2qs("n: Recipient for nick changes"); break;
 	}
-	return KviQString::empty;
+	return KviQString::Empty;
 }

@@ -163,7 +163,7 @@ public:
 
 	kvs_int_t integer() const { return m_pData ? m_pData->m_u.iInteger : 0; };
 	kvs_real_t real() const { return m_pData ? *(m_pData->m_u.pReal) : 0.0; };
-	const QString & string() const { return m_pData ? *(m_pData->m_u.pString) : KviQString::empty; };
+	const QString & string() const { return m_pData ? *(m_pData->m_u.pString) : KviQString::Empty; };
 	KviKvsArray * array() const { return m_pData ? m_pData->m_u.pArray : 0; };
 	KviKvsHash * hash() const { return m_pData ? m_pData->m_u.pHash : 0; };
 	bool boolean() const { return m_pData ? m_pData->m_u.bBoolean : false; };

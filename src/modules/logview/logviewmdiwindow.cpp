@@ -273,13 +273,13 @@ void KviLogViewMDIWindow::setupItemList()
 				continue;
 
 		if(enableNameFilter)
-			if(!KviQString::matchStringCI(nameFilterText,pFile->name()))
+			if(!KviQString::matchString(nameFilterText,pFile->name()))
 				continue;
 
 		if(enableContentFilter)
 		{
 			pFile->getText(textBuffer,m_szLogDirectory);
-			if(!KviQString::matchStringCI(contentFilterText,textBuffer))
+			if(!KviQString::matchString(contentFilterText,textBuffer))
 				continue;
 		}
 

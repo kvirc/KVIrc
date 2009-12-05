@@ -1343,7 +1343,7 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
-		if(KviQString::matchStringCI(e->szMask,szMask))
+		if(KviQString::matchString(e->szMask,szMask))
 		{
 			c->returnValue()->setString(e->szMask);
 			return true;
@@ -1392,7 +1392,7 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
-		if(KviQString::matchStringCI(e->szMask,szMask))
+		if(KviQString::matchString(e->szMask,szMask))
 		{
 			c->returnValue()->setString(e->szMask);
 			return true;
@@ -1441,7 +1441,7 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
-		if(KviQString::matchStringCI(e->szMask,szMask))
+		if(KviQString::matchString(e->szMask,szMask))
 		{
 			c->returnValue()->setString(e->szMask);
 			return true;
@@ -1494,7 +1494,7 @@ static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 
 	for(KviMaskEntry * e = l->first();e;e = l->next())
 	{
-		if(KviQString::matchStringCI(e->szMask,szMask))
+		if(KviQString::matchString(e->szMask,szMask))
 		{
 			c->returnValue()->setString(e->szMask);
 			return true;

@@ -116,7 +116,7 @@ const QString & KviAvatarCache::lookup(const KviIrcMask &mask,const QString &szN
 	szKey.append(szNetwork);
 
 	KviAvatarCacheEntry * e = m_pAvatarDict->find(szKey);
-	if(!e)return KviQString::empty;
+	if(!e)return KviQString::Empty;
 	e->tLastAccess = kvi_unixTime();
 	return e->szIdString;
 }

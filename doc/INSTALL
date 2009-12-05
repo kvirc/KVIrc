@@ -78,7 +78,7 @@ General notes for the installation of the 4.0 release of KVIrc
     On my system the output is:
 
     QMake version 2.01a
-    Using Qt version 4.5.1 in /usr/lib64/qt/lib
+    Using Qt version 4.5.3 in /usr/lib64/qt/lib
 
     If you have multiple versions of qt4 installed in your system and you want to use a specific version,
     exporting QTDIR won't suffice. Since the CMake module searching for Qt4 uses qmake itself to determine
@@ -104,7 +104,7 @@ General notes for the installation of the 4.0 release of KVIrc
 
     On my system the ouput is:
 
-    # cmake version 2.6-patch 2
+    # cmake version 2.6-patch 4
 
 
     #
@@ -243,15 +243,12 @@ General notes for the installation of the 4.0 release of KVIrc
     complains about it. Some system have the interface builtin in libc. The
     configure script can detect it.
 
-    #
-    # WITH_NO_EMBEDDED_CODE (Optional)
-    #
 
-    If you want to build with no (or at least less) embedded copies of code or
-    reimplementations of code which can be found in widely tested libraries,
-    you need to install the following libraries (for building you also need the
-    corresponding headers):
-    - Crypto++ 5.6 <http://cryptopp.com/>
+    - (Optional) If you want to build with no (or at least less) embedded copies
+    of code or reimplementations of code which can be found in widely tested
+    libraries, you need to install the following libraries (for building you also
+    need the corresponding headers):
+      - Crypto++ 5.6 <http://cryptopp.com/>
 
 ###############################################################################
 # 3. Configuring the environment
@@ -312,8 +309,9 @@ General notes for the installation of the 4.0 release of KVIrc
         KVIrc versions can cohexist in the same system.
 
     -DUSE_ENV_FLAGS
-        Kvirc install rules won't try to figure out and set CMAKE_C(XX)_FLAGS; instead, it will let CMake use
-        the ones from environment variables. Activating this flag will override -DDEBUG.
+        Kvirc install rules won't try to figure out and set CMAKE_C(XX)_FLAGS; instead, it
+        will let CMake use the ones from environment variables. Activating this flag will
+        override -DDEBUG.
 
     -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
         It will re-initialize the installation path to a good default.
@@ -330,7 +328,8 @@ General notes for the installation of the 4.0 release of KVIrc
         Disable Phonon audio backend support.
 
     -DWITHOUT_OSS
-        Disable Oss audio backend support. This automatically disables Audiofile support, too.
+        Disable Oss audio backend support. This automatically disables Audiofile support,
+        too.
 
     -DWITHOUT_AUDIOFILE
         Disable Audiofile audio backend support.

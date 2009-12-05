@@ -49,7 +49,7 @@ namespace KviUserInput
 	* \return bool
 	* \warning May destroy szData
 	*/
-	KVIRC_API bool parse(QString & szData, KviWindow * pWindow, const QString & szContext = KviQString::empty, bool bUserFriendlyCommandline = false);
+	KVIRC_API bool parse(QString & szData, KviWindow * pWindow, const QString & szContext = KviQString::Empty, bool bUserFriendlyCommandline = false);
 
 	/**
 	* \brief Returns true if the command run
@@ -59,7 +59,7 @@ namespace KviUserInput
 	* \param bUserFriendlyCommandline Whether the commandline is in user friendly mode
 	* \return bool
 	*/
-	KVIRC_API bool parseCommand(const QString & szData, KviWindow * pWindow, const QString & szContext = KviQString::empty, bool bUserFriendlyCommandline = false);
+	KVIRC_API bool parseCommand(const QString & szData, KviWindow * pWindow, const QString & szContext = KviQString::Empty, bool bUserFriendlyCommandline = false);
 
 	/**
 	* \brief Parses the non command input data
@@ -69,7 +69,7 @@ namespace KviUserInput
 	*/
 	KVIRC_API void parseNonCommand(QString & szData, KviWindow * pWindow);
 
-	//bool parseCommandWithSingleArgument(const QString & szData, KviWindow * pWindow, const QString & szContext = KviQString::empty);
+	//bool parseCommandWithSingleArgument(const QString & szData, KviWindow * pWindow, const QString & szContext = KviQString::Empty);
 }
 
 #endif //_KVI_USERINPUT_H_

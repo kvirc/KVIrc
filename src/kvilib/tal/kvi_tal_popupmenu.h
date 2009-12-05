@@ -40,7 +40,7 @@ protected:
 	QHash<QAction*, QSignalMapper*> signalMapper;
 	int identifier;
 public:
-	KviTalPopupMenu(QWidget * pParent=0,const QString &szName = KviQString::empty);
+	KviTalPopupMenu(QWidget * pParent=0,const QString &szName = KviQString::Empty);
 	virtual ~KviTalPopupMenu() ;
 	int insertItem(const QString &szText);
 	int insertItem(const QPixmap &pix,const QString &szText);

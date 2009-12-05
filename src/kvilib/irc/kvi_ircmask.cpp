@@ -557,11 +557,11 @@ bool KviIrcMask::matchedBy(const QString &szMask) const
 
 bool KviIrcMask::matches(const KviIrcMask &mask) const
 {
-	if(KviQString::matchWildExpressionsCI(m_szNick,mask.m_szNick))
+	if(KviQString::matchWildExpressions(m_szNick,mask.m_szNick))
 	{
-		if(KviQString::matchWildExpressionsCI(m_szUser,mask.m_szUser))
+		if(KviQString::matchWildExpressions(m_szUser,mask.m_szUser))
 		{
-			if(KviQString::matchWildExpressionsCI(m_szHost,mask.m_szHost))return true;
+			if(KviQString::matchWildExpressions(m_szHost,mask.m_szHost))return true;
 		}
 	}
 	return false;
@@ -569,11 +569,14 @@ bool KviIrcMask::matches(const KviIrcMask &mask) const
 
 bool KviIrcMask::matchesFixed(const KviIrcMask &mask) const
 {
-	if(KviQString::matchStringCI(m_szNick,mask.m_szNick,0,1))
+	if(KviQString::matchString(m_szNick,mask.m_szNick,false,true))
 	{
-		if(KviQString::matchStringCI(m_szUser,mask.m_szUser,0,1))
+		if(KviQString::matchString(m_szUser,mask.m_szUser,false,true))
 		{
-			if(KviQString::matchStringCI(m_szHost,mask.m_szHost,0,1))return true;
+			if(KviQString::matchString(m_szHost,mask.m_szHost,false,true))
+			{
+				return true;
+			}
 		}
 	}
 	return false;
@@ -602,9 +605,9 @@ bool KviIrcMask::matches(const char * nick,const char * user,const char * host)
 
 bool KviIrcMask::matchesFixed(const QString &nick,const QString &user,const QString &host) const
 {
-	if(!KviQString::matchStringCI(m_szNick,nick,0,1))return false;
-	if(!KviQString::matchStringCI(m_szUser,user,0,1))return false;
-	if(!KviQString::matchStringCI(m_szHost,host,0,1))return false;
+	if(!KviQString::matchString(m_szNick,nick,false,true)) return false;
+	if(!KviQString::matchString(m_szUser,user,false,true)) return false;
+	if(!KviQString::matchString(m_szHost,host,false,true)) return false;
 	return true;
 }
 

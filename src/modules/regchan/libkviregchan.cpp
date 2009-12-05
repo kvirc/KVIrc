@@ -264,8 +264,8 @@ static bool regchan_kvs_fnc_list(KviKvsModuleFunctionCall * c)
 	while(KviRegisteredChannelList * l = it.current())
 	{
 		for(KviRegisteredChannel * ch = l->first();ch;ch = l->next())
-		if(KviQString::matchWildExpressionsCI(ch->name().ptr(),szChan) &&
-			KviQString::matchWildExpressionsCI(ch->netMask().ptr(),szNetmask))
+		if(KviQString::matchWildExpressions(ch->name().ptr(),szChan) &&
+			KviQString::matchWildExpressions(ch->netMask().ptr(),szNetmask))
 		{
 //		FIXME: WE NEED TO RETURN AN ARRAY OF 2-ELEMENT ARRAYS (chan name, netmask)
 			pArray->set(aid,new KviKvsVariant(QString(ch->name()+"@"+ch->netMask())));

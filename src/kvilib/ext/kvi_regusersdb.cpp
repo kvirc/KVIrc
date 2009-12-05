@@ -253,11 +253,11 @@ bool KviRegisteredUser::getProperty(const QString & name,QString &value)
 
 const QString & KviRegisteredUser::getProperty(const QString & name)
 {
-	if(!m_pPropertyDict)return KviQString::empty;
-	if(name.isEmpty())return KviQString::empty;
+	if(!m_pPropertyDict)return KviQString::Empty;
+	if(name.isEmpty())return KviQString::Empty;
 	QString * pValue = m_pPropertyDict->find(name);
 	if(pValue)return *pValue;
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 bool KviRegisteredUser::getBoolProperty(const QString & name,bool def)

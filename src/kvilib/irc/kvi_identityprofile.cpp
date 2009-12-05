@@ -148,7 +148,7 @@ KviIdentityProfile * KviIdentityProfileSet::findName(const QString & szName)
 	KviIdentityProfile * pProfile;
 	for(pProfile = m_pProfiles->first(); pProfile; pProfile = m_pProfiles->next())
 	{
-		if(KviQString::matchStringCI(pProfile->name(),szName,false,true))
+		if(KviQString::matchString(pProfile->name(),szName,false,true))
 			return pProfile;
 	}
 
@@ -162,7 +162,7 @@ KviIdentityProfile * KviIdentityProfileSet::findNetwork(const QString & szNetwor
 	KviIdentityProfile * pProfile;
 	for(pProfile = m_pProfiles->first(); pProfile; pProfile = m_pProfiles->next())
 	{
-		if(KviQString::matchStringCI(pProfile->network(),szNetwork,false,true))
+		if(KviQString::matchString(pProfile->network(),szNetwork,false,true))
 			return pProfile;
 	}
 

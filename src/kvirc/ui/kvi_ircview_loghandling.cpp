@@ -145,12 +145,12 @@ const QString & KviIrcView::lastMessageText()
 		}
 		pCur=pCur->pPrev;
 	}
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 const QString & KviIrcView::lastLineOfText()
 {
-	if(!m_pLastLine)return KviQString::empty;
+	if(!m_pLastLine)return KviQString::Empty;
 	return m_pLastLine->szText;
 }
 

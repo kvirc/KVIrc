@@ -413,14 +413,14 @@ const QString & KviDns::firstHostname()
 {
 	QString * pStr = result()->hostnameList()->first();
 	if(pStr)return *pStr;
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 const QString & KviDns::firstIpAddress()
 {
 	QString * pStr = result()->ipAddressList()->first();
 	if(pStr)return *pStr;
-	return KviQString::empty;
+	return KviQString::Empty;
 }
 
 const QString & KviDns::query()

@@ -219,9 +219,9 @@ public:
 	inline KviInput * input(){ return m_pInput; };
 
 	// The target of this window: empty when it makes no sense :D
-	virtual const QString & target(){ return KviQString::empty; };
+	virtual const QString & target(){ return KviQString::Empty; };
 	// The local nickname bound to this window: might be empty when a local nickname makes no sense
-	virtual const QString & localNick(){ return KviQString::empty; };
+	virtual const QString & localNick(){ return KviQString::Empty; };
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	KviCryptSessionInfo * cryptSessionInfo(){ return m_pCryptSessionInfo; };
