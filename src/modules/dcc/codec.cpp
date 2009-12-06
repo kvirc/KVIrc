@@ -24,6 +24,11 @@
 
 #include "codec.h"
 
+
+#include <QImage>
+#include <QByteArray>
+#include <QBuffer>
+
 KviDccVoiceCodec::KviDccVoiceCodec()
 {
 }
@@ -126,6 +131,83 @@ const char * KviDccVideoCodec::name()
 {
 	return m_szName.ptr();
 }
+
+KviDccVideoSJpegCodec::KviDccVideoSJpegCodec()
+: KviDccVideoCodec()
+{
+	m_szName = "sjpeg";
+}
+
+KviDccVideoSJpegCodec::~KviDccVideoSJpegCodec()
+{
+}
+
+void KviDccVideoSJpegCodec::encodeVideo(KviDataBuffer * videoSignal,KviDataBuffer * stream)
+{
+	
+	if(videoSignal->size() < 1) return;
+
+	QImage img(videoSignal->data(), 320, 240, 1280, QImage::Format_ARGB32);
+	QByteArray ba;
+	QBuffer buffer(&ba);
+	buffer.open(QIODevice::WriteOnly);
+	//0 to obtain small compressed files,
+	//100 for large uncompressed files,
+	//and -1 (the default) to use the default settings.
+	img.save(&buffer, "JPEG", 20);
+	if(ba.size() > 0)
+	{
+		stream->append((const unsigned char*)ba.data(),ba.size());
+        }
+	videoSignal->clear();
+}
+
+void KviDccVideoSJpegCodec::encodeAudio(KviDataBuffer * audioSignal,KviDataBuffer * stream)
+{
+	//no audio support
+	Q_UNUSED(stream);
+	if(audioSignal->size() < 1) return;
+
+	audioSignal->clear();
+	return;
+}
+
+void KviDccVideoSJpegCodec::decode(KviDataBuffer * stream,KviDataBuffer * signal)
+{
+	static unsigned const char jpg_magic_init[4] = { 0xFF, 0xD8, 0xFF, 0xE0}; //SOI + APP0
+	static unsigned const char jpg_magic_end[2] = { 0xFF, 0xD9}; //EOI
+
+	if(stream->size() < 1)return;
+
+	int start = stream->find(jpg_magic_init, 4);
+	int end = stream->find(jpg_magic_end, 2);
+	if(start != -1 && end != -1)
+	{
+		QImage img;
+		//remove junk before jpeg start
+		stream->remove(start);
+		int len = end - start + 1;
+		
+		img.loadFromData(stream->data(), stream->size());
+		if(!img.isNull())
+		{
+			signal->clear();
+			signal->append(img.bits(),img.numBytes());
+		}
+		stream->remove(len);
+	}
+}
+
+int KviDccVideoSJpegCodec::encodedFrameSize()
+{
+	return 0;
+}
+
+int KviDccVideoSJpegCodec::decodedFrameSize()
+{
+	return 0;
+}
+
 
 #ifndef COMPILE_DISABLE_OGG_THEORA
 KviDccVideoTheoraCodec::KviDccVideoTheoraCodec()

@@ -71,6 +71,19 @@ public:
 	virtual int decodedFrameSize();
 };
 
+class KviDccVideoSJpegCodec : public KviDccVideoCodec
+{
+public:
+	KviDccVideoSJpegCodec();
+	virtual ~KviDccVideoSJpegCodec();
+public:
+	virtual void encodeVideo(KviDataBuffer * videoSignal, KviDataBuffer * stream);
+	virtual void encodeAudio(KviDataBuffer * audioSignal, KviDataBuffer * stream);
+	virtual void decode(KviDataBuffer * stream,KviDataBuffer * signal);
+	virtual int encodedFrameSize();
+	virtual int decodedFrameSize();
+};
+
 #ifndef COMPILE_DISABLE_OGG_THEORA
 class KviDccVideoTheoraCodec : public KviDccVideoCodec
 {

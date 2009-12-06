@@ -85,16 +85,19 @@ extern KviDccBroker * g_pDccBroker;
 
 bool kvi_dcc_video_is_valid_codec(const char * codecName)
 {
-	if(kvi_strEqualCI("jpeg",codecName))return true;
+	if(kvi_strEqualCI("sjpeg",codecName))return true;
+#ifndef COMPILE_DISABLE_OGG_THEORA
 	if(kvi_strEqualCI("theora",codecName))return true;
+#endif
 	return false;
 }
 
 static KviDccVideoCodec * kvi_dcc_video_get_codec(const char *codecName)
 {
-	Q_UNUSED(codecName);
-// 	if(kvi_strEqualCI("jpeg",codecName))return new KviDccVideoJpegCodec();
-	return new KviDccVideoTheoraCodec();
+#ifndef COMPILE_DISABLE_OGG_THEORA
+	if(kvi_strEqualCI("theora",codecName))return new KviDccVideoTheoraCodec();
+#endif
+	return new KviDccVideoSJpegCodec();
 }
 
 
