@@ -37,9 +37,9 @@
 #include <QSound>
 
 #ifdef COMPILE_PHONON_SUPPORT
-	#include <Phonon/MediaSource>
-	#include <Phonon/MediaObject>
-	#include <Phonon/Path>
+	#include <phonon/mediaobject.h>
+	#include <phonon/mediasource.h>
+	#include <phonon/path.h>
 	Phonon::MediaObject * g_pPhononPlayer=0;
 	#include <QUrl>
 #endif //!COMPILE_PHONON_SUPPORT
