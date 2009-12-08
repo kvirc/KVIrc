@@ -83,7 +83,7 @@ public:
 		char flag,const char * nam);
 	~KviMaskEditor();
 protected:
-	QTreeWidget      * m_pMaskBox;
+	QTreeWidget           * m_pMaskBox;
 	QPushButton           * m_pRemoveMask;
 	QPushButton           * m_pAddButton;
 	QLineEdit             * m_pSearch;
@@ -96,8 +96,9 @@ public:
 protected slots:
 	void removeClicked();
 	void addClicked();
-        void itemDoubleClicked( QTreeWidgetItem *,int );
+        void itemDoubleClicked( QTreeWidgetItem *,int);
 	void searchTextChanged ( const QString & );
+	void itemClicked( QTreeWidgetItem * item, int);
 signals:
 	void removeMasks(KviMaskEditor *,KviPointerList<KviMaskEntry> *);
 };

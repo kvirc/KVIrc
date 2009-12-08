@@ -199,13 +199,14 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	m_pMaskBox->setHeaderLabels(columnLabels);
 	m_pMaskBox->setAllColumnsShowFocus(true);
 	m_pMaskBox->setSortingEnabled(true);
-        connect(m_pMaskBox,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked( QTreeWidgetItem *,int)));
+	connect(m_pMaskBox,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked( QTreeWidgetItem *,int)));
+	connect(m_pMaskBox,SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(itemClicked( QTreeWidgetItem *,int)));
 	g->addWidget(m_pMaskBox,3,0,1,2);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
 	m_pRemoveMask->setEnabled(isEnabled);
 	m_pRemoveMask->setFocusPolicy(Qt::ClickFocus);
-        m_pRemoveMask->setFocusProxy(this);
+	m_pRemoveMask->setFocusProxy(this);
 	g->addWidget(m_pRemoveMask,4,1);
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveMask->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
@@ -328,6 +329,13 @@ void KviMaskEditor::itemDoubleClicked( QTreeWidgetItem * pItem, int )
 	}
 }
 
+void KviMaskEditor::itemClicked( QTreeWidgetItem * pItem, int )
+{
+	if(pItem && (QApplication::keyboardModifiers() & Qt::ShiftModifier))
+	{
+		removeClicked();
+	}
+}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_maskeditor.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

@@ -2094,7 +2094,7 @@ void KviUserListViewArea::keyPressEvent(QKeyEvent * e)
 		if(m_pListView->m_pKviWindow->input())
 			((QWidget*)(m_pListView->m_pKviWindow->input()))->setFocus();
 	} else if(
-		e->modifiers().testFlag(Qt::ControlModifier) &&
+		(e->modifiers() & Qt::ControlModifier) &&
 		e->key() == 'a'
 		)
 	{
