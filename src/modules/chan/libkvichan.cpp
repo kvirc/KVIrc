@@ -36,22 +36,22 @@
 #include "kvi_ircconnectiontarget.h"
 #include "kvi_ircconnection.h"
 
-static KviChannel * chan_kvs_find_channel(KviKvsModuleFunctionCall * c,QString &szChan,bool noWarnings=false)
+static KviChannel * chan_kvs_find_channel(KviKvsModuleFunctionCall * c, QString & szChan, bool bNoWarnings = false)
 {
 	if(szChan.isEmpty())
 	{
 		if(c->window()->type() == KVI_WINDOW_TYPE_CHANNEL)return (KviChannel *)(c->window());
 		if(c->window()->type() == KVI_WINDOW_TYPE_DEADCHANNEL)return (KviChannel *)(c->window());
-		if(!noWarnings) c->warning(__tr2qs("The current window is not a channel"));
+		if(!bNoWarnings) c->warning(__tr2qs("The current window is not a channel"));
 	} else {
 		KviWindow * w = g_pApp->findWindow(szChan);
 		if(!w)
 		{
-			if(!noWarnings) c->warning(__tr2qs("Can't find the window with id '%Q'"),&szChan);
+			if(!bNoWarnings) c->warning(__tr2qs("Can't find the window with id '%Q'"),&szChan);
 			return 0;
 		}
 		if(w->type() == KVI_WINDOW_TYPE_CHANNEL)return (KviChannel *)w;
-		if(!noWarnings) c->warning(__tr2qs("The specified window (%Q) is not a channel"),&szChan);
+		if(!bNoWarnings) c->warning(__tr2qs("The specified window (%Q) is not a channel"),&szChan);
 	}
 	return 0;
 }
@@ -74,7 +74,6 @@ static KviChannel * chan_kvs_find_channel(KviKvsModuleFunctionCall * c,QString &
 		The second form returns the name of the channel specified by <window_id>.[br]
 		This function works also on dead channels.[br]
 */
-
 static bool chan_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -103,7 +102,6 @@ static bool chan_kvs_fnc_name(KviKvsModuleFunctionCall * c)
 	@description:
 		Returns IRC URL for this channel
 */
-
 static bool chan_kvs_fnc_getUrl(KviKvsModuleFunctionCall * c)
 {
 	QString szId,url;
@@ -146,7 +144,6 @@ static bool chan_kvs_fnc_getUrl(KviKvsModuleFunctionCall * c)
 		Returns 1 if the channel specified by <window_id> is a dead channel and 0 otherwise.[br]
 		The form without parameters works on the current window.[br]
 */
-
 static bool chan_kvs_fnc_isdead(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -180,7 +177,6 @@ static bool chan_kvs_fnc_isdead(KviKvsModuleFunctionCall * c)
 		This function works also on dead channels altough the topic returned is the last
 		topic seen while the channel wasn't dead.[br]
 */
-
 static bool chan_kvs_fnc_topic(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -214,7 +210,6 @@ static bool chan_kvs_fnc_topic(KviKvsModuleFunctionCall * c)
 		This function works also on dead channels altough the information returned is the last
 		information seen while the channel wasn't dead.[br]
 */
-
 static bool chan_kvs_fnc_topicsetby(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -248,7 +243,6 @@ static bool chan_kvs_fnc_topicsetby(KviKvsModuleFunctionCall * c)
 		This function works also on dead channels altough the information returned is the last
 		information seen while the channel wasn't dead.[br]
 */
-
 static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -259,6 +253,7 @@ static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
 	if (ch) c->returnValue()->setString(ch->topicWidget()->topicSetAt());
 	return true;
 }
+
 /*
 	@doc: chan.usercount
 	@type:
@@ -279,7 +274,6 @@ static bool chan_kvs_fnc_topicsetat(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_usercount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -311,7 +305,6 @@ static bool chan_kvs_fnc_usercount(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_ownercount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -343,7 +336,6 @@ static bool chan_kvs_fnc_ownercount(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_admincount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -354,7 +346,6 @@ static bool chan_kvs_fnc_admincount(KviKvsModuleFunctionCall * c)
 	if (ch) c->returnValue()->setInteger(ch->chanAdminCount());
 	return true;
 }
-
 
 /*
 	@doc: chan.opcount
@@ -376,7 +367,6 @@ static bool chan_kvs_fnc_admincount(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_opcount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -408,7 +398,6 @@ static bool chan_kvs_fnc_opcount(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_voicecount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -440,7 +429,6 @@ static bool chan_kvs_fnc_voicecount(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_halfopcount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -472,7 +460,6 @@ static bool chan_kvs_fnc_halfopcount(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_useropcount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -504,7 +491,6 @@ static bool chan_kvs_fnc_useropcount(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_bancount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -536,7 +522,6 @@ static bool chan_kvs_fnc_bancount(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_banexceptioncount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -568,7 +553,6 @@ static bool chan_kvs_fnc_banexceptioncount(KviKvsModuleFunctionCall * c)
 		if the channel is not synchronized with the server (as just after the join, for example)
 		you might get a number that is actually smaller.[br]
 */
-
 static bool chan_kvs_fnc_invitecount(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -595,7 +579,6 @@ static bool chan_kvs_fnc_invitecount(KviKvsModuleFunctionCall * c)
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 */
-
 static bool chan_kvs_fnc_ison(KviKvsModuleFunctionCall * c)
 {
 	QString szId,szNick;
@@ -632,7 +615,6 @@ static bool chan_kvs_fnc_ison(KviKvsModuleFunctionCall * c)
 		If the user has more than one flag then the highest one is returned.[br]
 		If the user has no flag at all then an empty string is returned.
 */
-
 static bool chan_kvs_fnc_getflag(KviKvsModuleFunctionCall * c)
 {
 	QString szId,szNick;
@@ -684,7 +666,6 @@ static bool __clbkname(KviKvsModuleFunctionCall * c) \
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
-
 IS_KVS_FUNC(chan_kvs_fnc_isowner,isChanOwner)
 
 /*
@@ -703,7 +684,6 @@ IS_KVS_FUNC(chan_kvs_fnc_isowner,isChanOwner)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
-
 IS_KVS_FUNC(chan_kvs_fnc_isadmin,isChanAdmin)
 
 /*
@@ -715,14 +695,13 @@ IS_KVS_FUNC(chan_kvs_fnc_isadmin,isChanAdmin)
 	@short:
 		Checks if an user is at least an op on a channel
 	@syntax:
-		<boolean> $chan.isop(<nickname:string>[,<window_id:stringn>])
+		<boolean> $chan.isop(<nickname:string>[,<window_id:string>])
 	@description:
 		Returns 1 if <nickname> is at least an operator on the channel identified by <window_id>, 0 otherwise.[br]
 		If <window_id> is not specified the current window is used (assuming that it is a channel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
-
 IS_KVS_FUNC(chan_kvs_fnc_isop,isOp)
 
 /*
@@ -741,7 +720,6 @@ IS_KVS_FUNC(chan_kvs_fnc_isop,isOp)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
-
 IS_KVS_FUNC(chan_kvs_fnc_isvoice,isVoice)
 
 /*
@@ -760,7 +738,6 @@ IS_KVS_FUNC(chan_kvs_fnc_isvoice,isVoice)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
-
 IS_KVS_FUNC(chan_kvs_fnc_ishalfop,isHalfOp)
 
 /*
@@ -779,9 +756,19 @@ IS_KVS_FUNC(chan_kvs_fnc_ishalfop,isHalfOp)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		Note that if the user is not on the channel at all, you will get 0 as return value.[br]
 */
-
 IS_KVS_FUNC(chan_kvs_fnc_isuserop,isUserOp)
 
+#define IS_ME_KVS_FUNC(__clbkname,__chanfunc) \
+static bool __clbkname(KviKvsModuleFunctionCall * c) \
+{ \
+	QString szId;\
+	KVSM_PARAMETERS_BEGIN(c)\
+		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)\
+	KVSM_PARAMETERS_END(c)\
+	KviChannel * ch = chan_kvs_find_channel(c,szId); \
+	if(ch) c->returnValue()->setBoolean(ch->__chanfunc(true)); \
+	return true; \
+}
 
 /*
 	@doc: chan.ismeowner
@@ -800,19 +787,6 @@ IS_KVS_FUNC(chan_kvs_fnc_isuserop,isUserOp)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		This function is a "shortcut" for [fnc]$chan.isowner[/fnc]([fnc]$me[/fnc]).[br]
 */
-
-#define IS_ME_KVS_FUNC(__clbkname,__chanfunc) \
-static bool __clbkname(KviKvsModuleFunctionCall * c) \
-{ \
-	QString szId;\
-	KVSM_PARAMETERS_BEGIN(c)\
-		KVSM_PARAMETER("window id",KVS_PT_STRING,KVS_PF_OPTIONAL,szId)\
-	KVSM_PARAMETERS_END(c)\
-	KviChannel * ch = chan_kvs_find_channel(c,szId); \
-	if(ch) c->returnValue()->setBoolean(ch->__chanfunc(true)); \
-	return true; \
-}
-
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismeowner,isMeChanOwner)
 
 /*
@@ -832,7 +806,6 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeowner,isMeChanOwner)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		This function is a "shortcut" for [fnc]$chan.isadmin[/fnc]([fnc]$me[/fnc]).[br]
 */
-
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismeadmin,isMeChanAdmin)
 
 /*
@@ -852,7 +825,6 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeadmin,isMeChanAdmin)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		This function is a "shortcut" for [fnc]$chan.isop[/fnc]([fnc]$me[/fnc]).[br]
 */
-
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismeop,isMeOp)
 
 /*
@@ -872,7 +844,6 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeop,isMeOp)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		This function is a "shortcut" for [fnc]$chan.ishalfop[/fnc]([fnc]$me[/fnc]).[br]
 */
-
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismehalfop,isMeHalfOp)
 
 /*
@@ -892,7 +863,6 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismehalfop,isMeHalfOp)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		This function is a "shortcut" for [fnc]$chan.isvoice[/fnc]([fnc]$me[/fnc]).[br]
 */
-
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismevoice,isMeVoice)
 
 /*
@@ -912,7 +882,6 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismevoice,isMeVoice)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		This function is a "shortcut" for [fnc]$chan.isuserop[/fnc]([fnc]$me[/fnc]).[br]
 */
-
 IS_ME_KVS_FUNC(chan_kvs_fnc_ismeuserop,isMeUserOp)
 
 /*
@@ -932,7 +901,6 @@ IS_ME_KVS_FUNC(chan_kvs_fnc_ismeuserop,isMeUserOp)
 		the current window is a chnannel at all).[br]
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 */
-
 static bool chan_kvs_fnc_mode(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -948,7 +916,6 @@ static bool chan_kvs_fnc_mode(KviKvsModuleFunctionCall * c)
 	}
 	return true;
 }
-
 
 /*
 	@doc: chan.key
@@ -968,7 +935,6 @@ static bool chan_kvs_fnc_mode(KviKvsModuleFunctionCall * c)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		If the channel has no key set, an empty string is returned.[br]
 */
-
 static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -998,7 +964,6 @@ static bool chan_kvs_fnc_key(KviKvsModuleFunctionCall * c)
 		If the window is not a channel, a warning is printed and an empty string is returned.[br]
 		If the channel has no limit set, "0" is returned.[br]
 */
-
 static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 {
 	QString szId;
@@ -1019,7 +984,6 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 	}
 	return true;
 }
-
 
 /*
 	@doc: chan.users
@@ -1076,7 +1040,6 @@ static bool chan_kvs_fnc_limit(KviKvsModuleFunctionCall * c)
 		[/example]
 
 */
-
 static bool chan_kvs_fnc_users(KviKvsModuleFunctionCall * c)
 {
 	QString szWinId,szMask,szFlags;
@@ -1191,7 +1154,6 @@ next_item:
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
 */
-
 static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 {
 	QString szWinId,szMask,szFlags;
@@ -1234,7 +1196,6 @@ static bool chan_kvs_fnc_banlist(KviKvsModuleFunctionCall * c)
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
 */
-
 static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 {
 	QString szWinId,szMask,szFlags;
@@ -1277,7 +1238,6 @@ static bool chan_kvs_fnc_banexceptionlist(KviKvsModuleFunctionCall * c)
 		If [window_id] is empty, the current window is used.[br]
 		If the window designated by [window_id] is not a channel a warning is printed and an empty array is returned.[br]
 */
-
 static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
 {
 	QString szWinId,szMask,szFlags;
@@ -1322,7 +1282,6 @@ static bool chan_kvs_fnc_invitelist(KviKvsModuleFunctionCall * c)
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
 		This function is useful to determine if a ban set on the channel matches an user.[br]
 */
-
 static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 {
 	QString szWinId,szMask;
@@ -1371,7 +1330,6 @@ static bool chan_kvs_fnc_matchban(KviKvsModuleFunctionCall * c)
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
 		This function is useful to determine if a ban exception set on the channel matches an user.[br]
 */
-
 static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 {
 	QString szWinId,szMask;
@@ -1420,7 +1378,6 @@ static bool chan_kvs_fnc_matchbanexception(KviKvsModuleFunctionCall * c)
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
 		This function is useful to determine if a invite set on the channel matches an user.[br]
 */
-
 static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 {
 	QString szWinId,szMask;
@@ -1472,7 +1429,6 @@ static bool chan_kvs_fnc_matchinvite(KviKvsModuleFunctionCall * c)
 		If the window designated by [window_id] is not a channel a warning is printed and an empty string is returned.[br]
 		This function is useful to determine if a "mute ban" set on the channel matches an user.[br]
 */
-
 static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 {
 	QString szWinId,szMask;
@@ -1530,7 +1486,6 @@ static bool chan_kvs_fnc_matchqban(KviKvsModuleFunctionCall * c)
 		Note: Don't rely on this number being any particular exact value except
 		for the completely modeless users (in which case this function will return always '0').
 */
-
 static bool chan_kvs_fnc_usermodelevel(KviKvsModuleFunctionCall * c)
 {
 	QString szNick,szWinId;
@@ -1566,7 +1521,6 @@ static bool chan_kvs_fnc_usermodelevel(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$unixTime[/fnc], [fnc]$chan.userLastActionTime[/fnc]
 */
-
 static bool chan_kvs_fnc_userjointime(KviKvsModuleFunctionCall * c)
 {
 	QString szNick,szWinId;
@@ -1603,7 +1557,6 @@ static bool chan_kvs_fnc_userjointime(KviKvsModuleFunctionCall * c)
 	@seealso:
 		[fnc]$unixTime[/fnc], [fnc]$chan.userJoinTime[/fnc]
 */
-
 static bool chan_kvs_fnc_userlastactiontime(KviKvsModuleFunctionCall * c)
 {
 	QString szNick,szWinId;
@@ -1619,52 +1572,87 @@ static bool chan_kvs_fnc_userlastactiontime(KviKvsModuleFunctionCall * c)
 	return true;
 }
 
+/*
+	@doc: chan.common
+	@type:
+		function
+	@title:
+		$chan.common
+	@short:
+		Returns the common channel with a user
+	@syntax:
+		<string> $chan.common(<nickname:string>[,<context_id:string>])
+	@description:
+		Returns the common channel with the user specified by <nickname>.[br]
+		If <context_id> is not passed, the current context is used.[br]
+		If the specified window is not a channel, a warning is printed and '0' is returned.
+*/
+static bool chan_kvs_fnc_common(KviKvsModuleFunctionCall * c)
+{
+	QString szNick, szContext, szChans;
+	
+	KVSM_PARAMETERS_BEGIN(c)
+		KVSM_PARAMETER("nickname",KVS_PT_STRING,0,szNick)
+		KVSM_PARAMETER("context id",KVS_PT_STRING,KVS_PF_OPTIONAL,szContext)
+	KVSM_PARAMETERS_END(c)
+	
+	KviChannel * pChannel = chan_kvs_find_channel(c,szContext);
+	if(pChannel)
+	{
+		pChannel->connection()->getCommonChannels(szNick,szChans,false);
+		c->returnValue()->setString(szChans);
+	}
+	
+	return true;
+}
+
 static bool chan_module_init(KviModule * m)
 {
-	KVSM_REGISTER_FUNCTION(m,"name",chan_kvs_fnc_name);
-	KVSM_REGISTER_FUNCTION(m,"topic",chan_kvs_fnc_topic);
-	KVSM_REGISTER_FUNCTION(m,"topicsetby",chan_kvs_fnc_topicsetby);
-	KVSM_REGISTER_FUNCTION(m,"topicsetat",chan_kvs_fnc_topicsetat);
-	KVSM_REGISTER_FUNCTION(m,"usercount",chan_kvs_fnc_usercount);
-	KVSM_REGISTER_FUNCTION(m,"ownercount",chan_kvs_fnc_ownercount);
 	KVSM_REGISTER_FUNCTION(m,"admincount",chan_kvs_fnc_admincount);
-	KVSM_REGISTER_FUNCTION(m,"opcount",chan_kvs_fnc_opcount);
-	KVSM_REGISTER_FUNCTION(m,"voicecount",chan_kvs_fnc_voicecount);
-	KVSM_REGISTER_FUNCTION(m,"halfopcount",chan_kvs_fnc_halfopcount);
-	KVSM_REGISTER_FUNCTION(m,"useropcount",chan_kvs_fnc_useropcount);
-	KVSM_REGISTER_FUNCTION(m,"isowner",chan_kvs_fnc_isowner);
-	KVSM_REGISTER_FUNCTION(m,"ison",chan_kvs_fnc_ison);
-	KVSM_REGISTER_FUNCTION(m,"isadmin",chan_kvs_fnc_isadmin);
-	KVSM_REGISTER_FUNCTION(m,"isop",chan_kvs_fnc_isop);
-	KVSM_REGISTER_FUNCTION(m,"isvoice",chan_kvs_fnc_isvoice);
-	KVSM_REGISTER_FUNCTION(m,"ishalfop",chan_kvs_fnc_ishalfop);
-	KVSM_REGISTER_FUNCTION(m,"isuserop",chan_kvs_fnc_isuserop);
-	KVSM_REGISTER_FUNCTION(m,"ismeuserop",chan_kvs_fnc_ismeuserop);
-	KVSM_REGISTER_FUNCTION(m,"ismevoice",chan_kvs_fnc_ismevoice);
-	KVSM_REGISTER_FUNCTION(m,"ismehalfop",chan_kvs_fnc_ismehalfop);
-	KVSM_REGISTER_FUNCTION(m,"ismeop",chan_kvs_fnc_ismeop);
-	KVSM_REGISTER_FUNCTION(m,"ismeadmin",chan_kvs_fnc_ismeadmin);
-	KVSM_REGISTER_FUNCTION(m,"ismeowner",chan_kvs_fnc_ismeowner);
-	KVSM_REGISTER_FUNCTION(m,"isdead",chan_kvs_fnc_isdead);
-	KVSM_REGISTER_FUNCTION(m,"getflag",chan_kvs_fnc_getflag);
-	KVSM_REGISTER_FUNCTION(m,"usermodelevel",chan_kvs_fnc_usermodelevel);
-	KVSM_REGISTER_FUNCTION(m,"userjointime",chan_kvs_fnc_userjointime);//
-	KVSM_REGISTER_FUNCTION(m,"userlastactiontime",chan_kvs_fnc_userlastactiontime);
-	KVSM_REGISTER_FUNCTION(m,"mode",chan_kvs_fnc_mode);
-	KVSM_REGISTER_FUNCTION(m,"key",chan_kvs_fnc_key);
-	KVSM_REGISTER_FUNCTION(m,"limit",chan_kvs_fnc_limit);
-	KVSM_REGISTER_FUNCTION(m,"users",chan_kvs_fnc_users);
 	KVSM_REGISTER_FUNCTION(m,"bancount",chan_kvs_fnc_bancount);
 	KVSM_REGISTER_FUNCTION(m,"banexceptioncount",chan_kvs_fnc_banexceptioncount);
-	KVSM_REGISTER_FUNCTION(m,"invitecount",chan_kvs_fnc_invitecount);
-	KVSM_REGISTER_FUNCTION(m,"banlist",chan_kvs_fnc_banlist);
 	KVSM_REGISTER_FUNCTION(m,"banexceptionlist",chan_kvs_fnc_banexceptionlist);
+	KVSM_REGISTER_FUNCTION(m,"banlist",chan_kvs_fnc_banlist);
+	KVSM_REGISTER_FUNCTION(m,"common",chan_kvs_fnc_common);
+	KVSM_REGISTER_FUNCTION(m,"getflag",chan_kvs_fnc_getflag);
+	KVSM_REGISTER_FUNCTION(m,"geturl",chan_kvs_fnc_getUrl);
+	KVSM_REGISTER_FUNCTION(m,"halfopcount",chan_kvs_fnc_halfopcount);
+	KVSM_REGISTER_FUNCTION(m,"invitecount",chan_kvs_fnc_invitecount);
 	KVSM_REGISTER_FUNCTION(m,"invitelist",chan_kvs_fnc_invitelist);
+	KVSM_REGISTER_FUNCTION(m,"isadmin",chan_kvs_fnc_isadmin);
+	KVSM_REGISTER_FUNCTION(m,"isdead",chan_kvs_fnc_isdead);
+	KVSM_REGISTER_FUNCTION(m,"ishalfop",chan_kvs_fnc_ishalfop);
+	KVSM_REGISTER_FUNCTION(m,"ismeadmin",chan_kvs_fnc_ismeadmin);
+	KVSM_REGISTER_FUNCTION(m,"ismehalfop",chan_kvs_fnc_ismehalfop);
+	KVSM_REGISTER_FUNCTION(m,"ismeop",chan_kvs_fnc_ismeop);
+	KVSM_REGISTER_FUNCTION(m,"ismeowner",chan_kvs_fnc_ismeowner);
+	KVSM_REGISTER_FUNCTION(m,"ismeuserop",chan_kvs_fnc_ismeuserop);
+	KVSM_REGISTER_FUNCTION(m,"ismevoice",chan_kvs_fnc_ismevoice);
+	KVSM_REGISTER_FUNCTION(m,"ison",chan_kvs_fnc_ison);
+	KVSM_REGISTER_FUNCTION(m,"isop",chan_kvs_fnc_isop);
+	KVSM_REGISTER_FUNCTION(m,"isowner",chan_kvs_fnc_isowner);
+	KVSM_REGISTER_FUNCTION(m,"isuserop",chan_kvs_fnc_isuserop);
+	KVSM_REGISTER_FUNCTION(m,"isvoice",chan_kvs_fnc_isvoice);
+	KVSM_REGISTER_FUNCTION(m,"key",chan_kvs_fnc_key);
+	KVSM_REGISTER_FUNCTION(m,"limit",chan_kvs_fnc_limit);
 	KVSM_REGISTER_FUNCTION(m,"matchban",chan_kvs_fnc_matchban);
 	KVSM_REGISTER_FUNCTION(m,"matchqban",chan_kvs_fnc_matchqban);
 	KVSM_REGISTER_FUNCTION(m,"matchbanexception",chan_kvs_fnc_matchbanexception);
 	KVSM_REGISTER_FUNCTION(m,"matchinvite",chan_kvs_fnc_matchinvite);
-	KVSM_REGISTER_FUNCTION(m,"getUrl",chan_kvs_fnc_getUrl);
+	KVSM_REGISTER_FUNCTION(m,"mode",chan_kvs_fnc_mode);
+	KVSM_REGISTER_FUNCTION(m,"name",chan_kvs_fnc_name);
+	KVSM_REGISTER_FUNCTION(m,"opcount",chan_kvs_fnc_opcount);
+	KVSM_REGISTER_FUNCTION(m,"ownercount",chan_kvs_fnc_ownercount);
+	KVSM_REGISTER_FUNCTION(m,"topic",chan_kvs_fnc_topic);
+	KVSM_REGISTER_FUNCTION(m,"topicsetat",chan_kvs_fnc_topicsetat);
+	KVSM_REGISTER_FUNCTION(m,"topicsetby",chan_kvs_fnc_topicsetby);
+	KVSM_REGISTER_FUNCTION(m,"usercount",chan_kvs_fnc_usercount);
+	KVSM_REGISTER_FUNCTION(m,"userjointime",chan_kvs_fnc_userjointime);
+	KVSM_REGISTER_FUNCTION(m,"userlastactiontime",chan_kvs_fnc_userlastactiontime);
+	KVSM_REGISTER_FUNCTION(m,"usermodelevel",chan_kvs_fnc_usermodelevel);
+	KVSM_REGISTER_FUNCTION(m,"useropcount",chan_kvs_fnc_useropcount);
+	KVSM_REGISTER_FUNCTION(m,"users",chan_kvs_fnc_users);
+	KVSM_REGISTER_FUNCTION(m,"voicecount",chan_kvs_fnc_voicecount);
 
 	return true;
 }
