@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: dcc_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-10 20:40+0100\n"
-"PO-Revision-Date: 2009-11-21 01:51+0100\n"
+"PO-Revision-Date: 2009-12-10 21:27+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -510,9 +510,8 @@ msgid "Invalid codec specified, defaulting to 'adpcm'"
 msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung 'adpcm' gesetzt"
 
 #: src/modules/dcc/libkvidcc.cpp:1214
-#, fuzzy
 msgid "Invalid codec specified, defaulting to 'sjpeg'"
-msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung 'jpeg' gesetzt"
+msgstr "Ungültiger Codec angegeben: Wird auf Voreinstellung 'sjpeg' gesetzt"
 
 #: src/modules/dcc/requests.cpp:163
 #, c-format
@@ -802,7 +801,6 @@ msgstr ""
 "umbenannt</b><br> oder ein unfertiger Download <b>fortgesetzt</b> werden?"
 
 #: src/modules/dcc/broker.cpp:759
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is larger than the offered one."
 "<br>Do you wish to<br><b>overwrite</b> the existing file, or<br> <b>auto-"
@@ -999,7 +997,6 @@ msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr "WARNUNG: Die Leitung sendet Mülldaten nach dem Ende der Datei"
 
 #: src/modules/dcc/voice.cpp:162 src/modules/dcc/video.cpp:168
-#, fuzzy
 msgid ""
 "WARNING: failed to check the soundcard duplex capabilities: if this is a "
 "half-duplex soundcard, use the DCC VOICE option to force half-duplex "
@@ -1054,3 +1051,4 @@ msgstr "Bytes/Sek"
 #: src/modules/dcc/requests.cpp:142 src/modules/dcc/requests.cpp:143
 msgid "unknown"
 msgstr "unbekannt"
+
