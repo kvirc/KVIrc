@@ -188,9 +188,9 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	m_pMaskBox->setFocusPolicy(Qt::ClickFocus);
 	m_pMaskBox->setFocusProxy(this);
 	m_pMaskBox->setFrameStyle(QFrame::StyledPanel|QFrame::Sunken);
-        m_pMaskBox->setSelectionMode(QAbstractItemView::MultiSelection);
+	m_pMaskBox->setSelectionMode(QAbstractItemView::ExtendedSelection);
 
-        QStringList columnLabels;
+	QStringList columnLabels;
 	m_pMaskBox->setColumnCount(3);
 
 	columnLabels.append(__tr2qs("Mask"));
@@ -200,7 +200,6 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	m_pMaskBox->setAllColumnsShowFocus(true);
 	m_pMaskBox->setSortingEnabled(true);
 	connect(m_pMaskBox,SIGNAL(itemDoubleClicked(QTreeWidgetItem *,int)),this,SLOT(itemDoubleClicked( QTreeWidgetItem *,int)));
-	connect(m_pMaskBox,SIGNAL(itemClicked(QTreeWidgetItem *,int)),this,SLOT(itemClicked( QTreeWidgetItem *,int)));
 	g->addWidget(m_pMaskBox,3,0,1,2);
 
 	m_pRemoveMask  = new QPushButton(__tr2qs("Re&move"),this);
@@ -211,7 +210,7 @@ KviMaskEditor::KviMaskEditor(QWidget * par,KviWindowToolPageButton* button,KviPo
 	connect(m_pRemoveMask,SIGNAL(clicked()),this,SLOT(removeClicked()));
 	m_pRemoveMask->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DELETEITEM)));
 
-        m_pAddButton = new QPushButton(__tr2qs("&Add"),this);
+	m_pAddButton = new QPushButton(__tr2qs("&Add"),this);
 	m_pAddButton->setEnabled(isEnabled);
 	g->addWidget(m_pAddButton,4,0);
 	connect(m_pAddButton,SIGNAL(clicked()),this,SLOT(addClicked()));
@@ -329,13 +328,6 @@ void KviMaskEditor::itemDoubleClicked( QTreeWidgetItem * pItem, int )
 	}
 }
 
-void KviMaskEditor::itemClicked( QTreeWidgetItem * pItem, int )
-{
-	if(pItem && (QApplication::keyboardModifiers() & Qt::ShiftModifier))
-	{
-		removeClicked();
-	}
-}
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
 #include "kvi_maskeditor.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES
