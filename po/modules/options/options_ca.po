@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ca\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-20 23:15+0100\n"
+"POT-Creation-Date: 2009-12-10 20:40+0100\n"
 "PO-Revision-Date: 2005-04-23 17:52+0000\n"
 "Last-Translator: Marc Serra Romero <mad93@majomo.com>\n"
 "Language-Team: Català <ca@li.org>\n"
@@ -76,7 +76,7 @@ msgstr "&Aplicar"
 msgid "&Browse..."
 msgstr "Navegar..."
 
-#: src/modules/options/optw_servers.cpp:1471
+#: src/modules/options/optw_servers.cpp:1470
 msgid "&Copy Server"
 msgstr "&Copiar Servidor"
 
@@ -88,7 +88,7 @@ msgstr "&Nou"
 msgid "&New Proxy"
 msgstr "&Nou Proxy"
 
-#: src/modules/options/optw_servers.cpp:1468
+#: src/modules/options/optw_servers.cpp:1467
 msgid "&New Server"
 msgstr "&Nou Servidor"
 
@@ -99,7 +99,7 @@ msgstr "&Nou Servidor"
 msgid "&OK"
 msgstr "&Acceptar"
 
-#: src/modules/options/optw_servers.cpp:1473
+#: src/modules/options/optw_servers.cpp:1472
 msgid "&Paste Server"
 msgstr "Enganxar Servidor"
 
@@ -149,7 +149,7 @@ msgstr ""
 "missatges poden solicitar informació de clients o negociar transferències "
 "d'arxius.</p>"
 
-#: src/modules/options/optw_servers.cpp:1190
+#: src/modules/options/optw_servers.cpp:1189
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Premi aquí per a editar les opcions avançades d'aquesta entrada</"
@@ -245,7 +245,7 @@ msgstr ""
 "escrigui el seu nom a la caixa de text inferior i premi \"<b>Afegir</b>\".</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:1196
+#: src/modules/options/optw_servers.cpp:1195
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -323,7 +323,7 @@ msgstr ""
 "notificacions al racó inferior dret de l'escriptori quan es visualitzi un "
 "missatge ressaltat i KVIrc sigui la finestra activa</center>"
 
-#: src/modules/options/optw_servers.cpp:1211
+#: src/modules/options/optw_servers.cpp:1210
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -572,7 +572,7 @@ msgstr ""
 "codificació s'heretarà de la xarxa a la que pertanyi aquest servidor.</"
 "center>"
 
-#: src/modules/options/optw_servers.cpp:1207
+#: src/modules/options/optw_servers.cpp:1206
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -875,7 +875,7 @@ msgstr ""
 "<center>Aquesta és l'adreça fixa que s'enviarà a totes les peticions DCC si "
 "vostè marca l'opció.</center>"
 
-#: src/modules/options/optw_servers.cpp:1106
+#: src/modules/options/optw_servers.cpp:1105
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -921,7 +921,7 @@ msgstr ""
 "solicitades automàticament.<br>Un valor raonable podria ser 102400 bytes "
 "(100 K).</center>"
 
-#: src/modules/options/optw_servers.cpp:1170
+#: src/modules/options/optw_servers.cpp:1169
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr ""
@@ -1573,7 +1573,7 @@ msgstr "Avortar"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Acceptar RESUME erroni (mIRC arxiu.ext)"
 
-#: src/modules/options/optw_servers.cpp:1166
+#: src/modules/options/optw_servers.cpp:1165
 #, fuzzy
 msgid "Active Configuration"
 msgstr "Guardar Configuració"
@@ -1610,7 +1610,7 @@ msgstr "Afegir Regla"
 msgid "Advanced configuration"
 msgstr "Configuració Avançada"
 
-#: src/modules/options/optw_servers.cpp:1188
+#: src/modules/options/optw_servers.cpp:1187
 msgid "Advanced..."
 msgstr "Avançat ..."
 
@@ -1970,7 +1970,7 @@ msgstr "Trii un Arxiu d'Imatge - KVIrc"
 msgid "Choose..."
 msgstr "Triar..."
 
-#: src/modules/options/optw_servers.cpp:1478
+#: src/modules/options/optw_servers.cpp:1477
 msgid "Clear List"
 msgstr "Netejar Llista"
 
@@ -2005,7 +2005,7 @@ msgstr "Configuració"
 msgid "Confirm quit with active connections"
 msgstr "Confirmar sortida amb connexions actives"
 
-#: src/modules/options/optw_servers.cpp:1192
+#: src/modules/options/optw_servers.cpp:1191
 msgid "Connect &Now"
 msgstr "Co&nnectar Ara"
 
@@ -2039,7 +2039,7 @@ msgstr "Finestres de consola"
 msgid "Control char color"
 msgstr "Color dels caràcters de control"
 
-#: src/modules/options/optw_servers.cpp:1143
+#: src/modules/options/optw_servers.cpp:1142
 msgid "Copy Server"
 msgstr "Copiar Servidor"
 
@@ -2130,7 +2130,7 @@ msgstr "Borrar Regla"
 msgid "Delete Rule"
 msgstr "Borrar Regla"
 
-#: src/modules/options/optw_servers.cpp:1087
+#: src/modules/options/optw_servers.cpp:1086
 #: src/modules/options/optw_mediatypes.cpp:79
 msgid "Description"
 msgstr "Descripció"
@@ -2617,8 +2617,8 @@ msgstr "Alçada de la imatge:"
 msgid "Image width:"
 msgstr "Amplada de la imatge:"
 
-#: src/modules/options/optw_servers.cpp:1161
-#: src/modules/options/optw_servers.cpp:1480
+#: src/modules/options/optw_servers.cpp:1160
+#: src/modules/options/optw_servers.cpp:1479
 msgid "Import List"
 msgstr "Importar Llista"
 
@@ -2954,7 +2954,7 @@ msgstr "Xarxa:"
 msgid "Network Properties"
 msgstr "Propietats de Xarxa"
 
-#: src/modules/options/optw_servers.cpp:1371
+#: src/modules/options/optw_servers.cpp:1370
 msgid "Network:"
 msgstr "Xarxa:"
 
@@ -2962,9 +2962,9 @@ msgstr "Xarxa:"
 msgid "New Media Type"
 msgstr "Nou Tipus de Medi"
 
-#: src/modules/options/optw_servers.cpp:1120
-#: src/modules/options/optw_servers.cpp:1464
-#: src/modules/options/optw_servers.cpp:1590
+#: src/modules/options/optw_servers.cpp:1119
+#: src/modules/options/optw_servers.cpp:1463
+#: src/modules/options/optw_servers.cpp:1589
 msgid "New Network"
 msgstr "Nova Xarxa"
 
@@ -2977,7 +2977,7 @@ msgstr "Nou Proxy"
 msgid "New Query opened"
 msgstr "Mantindre els privats oberts"
 
-#: src/modules/options/optw_servers.cpp:1126
+#: src/modules/options/optw_servers.cpp:1125
 msgid "New Server"
 msgstr "Nou Servidor"
 
@@ -3038,7 +3038,7 @@ msgstr "Nick:"
 msgid "Nicknames"
 msgstr "Nick"
 
-#: src/modules/options/optw_servers.cpp:1381
+#: src/modules/options/optw_servers.cpp:1380
 msgid "No selection"
 msgstr "Sense selecció"
 
@@ -3141,7 +3141,7 @@ msgstr "En desconnexions inesperades"
 msgid "On Voice Request"
 msgstr "En Solicitut de Veu"
 
-#: src/modules/options/optw_servers.cpp:1517
+#: src/modules/options/optw_servers.cpp:1516
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3149,7 +3149,7 @@ msgstr ""
 "Ups... una cosa dolenta ha passat:<br>No puc trobar cap mòdul capaç "
 "d'importar servidors."
 
-#: src/modules/options/optw_servers.cpp:1534
+#: src/modules/options/optw_servers.cpp:1533
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3236,7 +3236,7 @@ msgstr "Missatge part"
 msgid "Password:"
 msgstr "Clau:"
 
-#: src/modules/options/optw_servers.cpp:1150
+#: src/modules/options/optw_servers.cpp:1149
 msgid "Paste Server"
 msgstr "Enganxar Servidor"
 
@@ -3460,7 +3460,7 @@ msgstr "Eli&minar"
 msgid "Re&move Proxy"
 msgstr "Eli&minar Proxy"
 
-#: src/modules/options/optw_servers.cpp:1469
+#: src/modules/options/optw_servers.cpp:1468
 msgid "Re&move Server"
 msgstr "Eli&minar Servidor"
 
@@ -3513,11 +3513,11 @@ msgstr "Recordar propietats de finestra"
 msgid "Remote open command:"
 msgstr "Comanda d'apertura remota:"
 
-#: src/modules/options/optw_servers.cpp:1465
+#: src/modules/options/optw_servers.cpp:1464
 msgid "Remove Network"
 msgstr "Eliminar Xarxa"
 
-#: src/modules/options/optw_servers.cpp:1133
+#: src/modules/options/optw_servers.cpp:1132
 msgid "Remove Network/Server"
 msgstr "Eliminar Xarxa/Servidor"
 
@@ -3631,7 +3631,7 @@ msgstr "Enviar adreça/interfície:"
 msgid "Send unknown commands as /RAW"
 msgstr "Enviar comandes desconegudes com a /RAW"
 
-#: src/modules/options/optw_servers.cpp:1086
+#: src/modules/options/optw_servers.cpp:1085
 msgid "Server"
 msgstr "Servidor"
 
@@ -3664,8 +3664,8 @@ msgstr "Notícies del servidor (+s)"
 msgid "Server replies"
 msgstr "Respostes del servidor"
 
-#: src/modules/options/optw_servers.cpp:1167
-#: src/modules/options/optw_servers.cpp:1368
+#: src/modules/options/optw_servers.cpp:1166
+#: src/modules/options/optw_servers.cpp:1367
 msgid "Server:"
 msgstr "Servidor:"
 
@@ -3772,7 +3772,7 @@ msgstr "Mostrar pings del servidor"
 msgid "Show the CTCP replies in the active window"
 msgstr "Mostrar respostes a CTCP a la finestra activa"
 
-#: src/modules/options/optw_servers.cpp:1209
+#: src/modules/options/optw_servers.cpp:1208
 msgid "Show this dialog at startup"
 msgstr "Mostrar aquest diàleg a l'inici"
 
@@ -4132,7 +4132,7 @@ msgstr "No ha estat possible escriure en l'arxiu d'àlies."
 msgid "Unknown protocol handler command:"
 msgstr "Comanda manipuladora de protocol desconegut:"
 
-#: src/modules/options/optw_servers.cpp:1398
+#: src/modules/options/optw_servers.cpp:1397
 msgid "UnknownNet"
 msgstr "Xarxa Desconeguda"
 
@@ -4440,7 +4440,7 @@ msgstr "bytes"
 msgid "en"
 msgstr ""
 
-#: src/modules/options/optw_servers.cpp:1611
+#: src/modules/options/optw_servers.cpp:1610
 msgid "irc.unknown.net"
 msgstr "irc.desconegut.net"
 

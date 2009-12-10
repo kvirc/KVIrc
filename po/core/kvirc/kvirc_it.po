@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-20 23:15+0100\n"
+"POT-Creation-Date: 2009-12-10 20:40+0100\n"
 "PO-Revision-Date: 2009-05-27 18:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -117,27 +117,27 @@ msgstr "### Sessione di Log avviata il %1 ###"
 msgid "### Log session terminated at %1 ###"
 msgstr "### Sessione di Log terminata il %1 ###"
 
-#: src/kvilib/core/kvi_qstring.cpp:167
+#: src/kvilib/core/kvi_qstring.cpp:250
 #, fuzzy
 msgid "%1 GiB"
 msgstr "%1 GB"
 
-#: src/kvilib/core/kvi_qstring.cpp:158
+#: src/kvilib/core/kvi_qstring.cpp:237
 #, fuzzy
 msgid "%1 KiB"
 msgstr "%1 KB"
 
-#: src/kvilib/core/kvi_qstring.cpp:162
+#: src/kvilib/core/kvi_qstring.cpp:243
 #, fuzzy
 msgid "%1 MiB"
 msgstr "%1 MB"
 
-#: src/kvilib/core/kvi_qstring.cpp:171
+#: src/kvilib/core/kvi_qstring.cpp:255
 #, fuzzy
 msgid "%1 TiB"
 msgstr "%1 TB"
 
-#: src/kvilib/core/kvi_qstring.cpp:154
+#: src/kvilib/core/kvi_qstring.cpp:231
 msgid "%1 bytes"
 msgstr "%1 byte"
 
@@ -373,7 +373,7 @@ msgstr "%cAzione utente: %Q"
 msgid "%d"
 msgstr "%d"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:1889
+#: src/kvirc/ui/kvi_input_editor.cpp:1899
 msgid "%d matches: %Q"
 msgstr "%d corrispondenze: %Q"
 
@@ -497,7 +497,7 @@ msgstr "Finestre a &cascata"
 msgid "&Configure KVIrc..."
 msgstr "&Configura KVIrc..."
 
-#: src/kvirc/ui/kvi_input_editor.cpp:767
+#: src/kvirc/ui/kvi_input_editor.cpp:777
 msgid "&Copy"
 msgstr "&Copia"
 
@@ -572,7 +572,7 @@ msgstr "&OK"
 msgid "&Other..."
 msgstr "&Altro..."
 
-#: src/kvirc/ui/kvi_input_editor.cpp:769
+#: src/kvirc/ui/kvi_input_editor.cpp:779
 msgid "&Paste"
 msgstr "&Incolla"
 
@@ -589,7 +589,7 @@ msgstr "&Esci"
 msgid "&Red"
 msgstr "&Rosso"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:763
+#: src/kvirc/ui/kvi_input_editor.cpp:773
 msgid "&Redo"
 msgstr "&Rifai"
 
@@ -657,7 +657,7 @@ msgstr "S&trumenti"
 msgid "&Underline"
 msgstr "Sottolinea"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:761
+#: src/kvirc/ui/kvi_input_editor.cpp:771
 msgid "&Undo"
 msgstr "Annulla"
 
@@ -1684,7 +1684,7 @@ msgstr ""
 msgid "Cannot request links: No active connection"
 msgstr "Impossibile richiedere i link: nessuna connessione attiva"
 
-#: src/modules/list/listwindow.cpp:255
+#: src/modules/list/listwindow.cpp:256
 msgid "Cannot request list: No active connection"
 msgstr "Impossibile richiedere la lista: nessuna connessione attiva"
 
@@ -1704,7 +1704,7 @@ msgstr "Impossibile inviare al canale"
 msgid "Cannot send to channel: %Q"
 msgstr "Impossibile inviare al canale: %Q"
 
-#: src/modules/list/listwindow.cpp:266
+#: src/modules/list/listwindow.cpp:267
 msgid "Cannot stop list download, no active connection."
 msgstr ""
 "Impossibile fermare lo scaricamento della lista, nessuna connessione attiva."
@@ -1780,7 +1780,7 @@ msgstr "Il canale \r!c\r%Q\r è stato creato %Q"
 msgid "Channel CTCP"
 msgstr "CTCP al Canale"
 
-#: src/modules/list/listwindow.cpp:306
+#: src/modules/list/listwindow.cpp:307
 #, c-format
 msgid "Channel List [IRC Context %u]"
 msgstr "Lista Canali [Contesto IRC %u]"
@@ -1805,7 +1805,7 @@ msgstr "Chiave del canale cambiata"
 msgid "Channel limit change"
 msgstr "Limite del canale cambiato"
 
-#: src/modules/list/listwindow.cpp:329
+#: src/modules/list/listwindow.cpp:330
 msgid "Channel list"
 msgstr "Lista Canali"
 
@@ -1813,7 +1813,7 @@ msgstr "Lista Canali"
 msgid "Channel list begin: channel, users, topic"
 msgstr "Inizio Lista del canale: canale, utenti, Topic"
 
-#: src/modules/list/listwindow.cpp:326
+#: src/modules/list/listwindow.cpp:327
 msgid "Channel list for %Q - %Q"
 msgstr "Lista Canali per %Q - %Q"
 
@@ -1866,7 +1866,7 @@ msgstr "Topic del canale:"
 msgid "Channel was created at %Q"
 msgstr "Il canale è stato creato il %Q"
 
-#: src/modules/list/listwindow.cpp:413
+#: src/modules/list/listwindow.cpp:414
 msgid "Channels list download finished"
 msgstr "Scaricamento della lista dei canali completata"
 
@@ -1918,7 +1918,7 @@ msgstr "Scegli un'immagine - KVIrc"
 msgid "Choose an Old Configuration Folder - KVIrc Setup"
 msgstr "Scegli una Directory per la Vecchia Configurazione - KVIrc Setup"
 
-#: src/modules/list/listwindow.cpp:332 src/modules/list/listwindow.cpp:356
+#: src/modules/list/listwindow.cpp:333 src/modules/list/listwindow.cpp:357
 msgid "Choose filename"
 msgstr "Scegli un file"
 
@@ -1938,7 +1938,7 @@ msgstr "Scegli un file da condividere"
 msgid "Chunk header too long: exceeded 4096 bytes"
 msgstr "Header troppo lungo: sorpassati i 4096 byte"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:785
+#: src/kvirc/ui/kvi_input_editor.cpp:795
 msgid "Clear"
 msgstr "Pulisci"
 
@@ -1965,7 +1965,7 @@ msgstr "Pulisci La Lista Dei Server Recenti"
 msgid "Click to open this link"
 msgstr "Click per aprire questo link"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:740
+#: src/kvirc/ui/kvi_input_editor.cpp:750
 msgid "Clipboard"
 msgstr "Appunti"
 
@@ -2032,7 +2032,7 @@ msgstr "Errore nell'inizializzazione della libreria di compressione"
 msgid "Compression library internal error"
 msgstr "Errore interno nella libreria di compressione"
 
-#: src/modules/list/listwindow.cpp:332
+#: src/modules/list/listwindow.cpp:333
 msgid "Configuration files (*.kvc)"
 msgstr "FIle di Configurazione (*.kvc)"
 
@@ -2089,7 +2089,7 @@ msgstr "Connetti/Disconnetti"
 msgid "Connected since"
 msgstr "Connesso da"
 
-#: src/modules/list/listwindow.cpp:278 src/modules/links/linkswindow.cpp:131
+#: src/modules/list/listwindow.cpp:279 src/modules/links/linkswindow.cpp:131
 #, c-format
 msgid "Connected to %s (%s)"
 msgstr "Connesso a %s (%s)"
@@ -2218,6 +2218,46 @@ msgstr ""
 msgid "Crypting"
 msgstr "Crittografia"
 
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:190
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:258
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:390
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:407
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:465
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:482
+msgid "Crypto++ threw the following exception: "
+msgstr ""
+
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:505
+#, fuzzy, c-format
+msgid ""
+"Cryptographic engine based on the\n"
+"Advanced Encryption Standard (AES)\n"
+"algorithm called Rijndael.\n"
+"The text is first encrypted with Rijndael\n"
+"and then converted to %s notation.\n"
+"The keys used are %d bit long and will be padded\n"
+"with zeros if you provide shorter ones.\n"
+"If only one key is provided, this engine\n"
+"will use it for both encrypting and decrypting.\n"
+"This is the Crypto++ implementation which could do\n"
+"a lot more than the current default engine, but as\n"
+"this should be a drop-in replacement, it acts just\n"
+"like that one.\n"
+"Information about the algorithm can be found at\n"
+"<http://www.cryptolounge.org/wiki/AES>\n"
+msgstr ""
+"Motorre crittografico basato sull'algoritmo\n"
+"Advanced Encryption Standard (AES)\n"
+"chiamato Rijndael.\n"
+"Il testo viene prima crittato con rijndael\n"
+"e poi convertito in notazione %s.\n"
+"Le chiavi usate sono lunghe %d bit e verranno riempite\n"
+"con zeri se le fornisci più corte.\n"
+"Se viene fornita solo una chiave, questo motore\n"
+"la userà sia per crittare che per decrittare.\n"
+"Guarda la documentazione del modulo rijndael\n"
+"per maggiori informazioni sugli algoritmi usati.\n"
+
 #: src/modules/rijndael/libkvirijndael.cpp:706
 #, c-format
 msgid ""
@@ -2249,7 +2289,7 @@ msgstr ""
 msgid "Cryptography/text transformation"
 msgstr "Cifratura/trasformazione del testo"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:765
+#: src/kvirc/ui/kvi_input_editor.cpp:775
 msgid "Cu&t"
 msgstr "&Taglia"
 
@@ -3283,7 +3323,7 @@ msgstr "Sto indicizzando i file dell'aiuto"
 msgid "Input History Disabled"
 msgstr "Cronologia Input disabilitata"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:818
+#: src/kvirc/ui/kvi_input_editor.cpp:828
 msgid "Insert Icon"
 msgstr "Inserisci Icona"
 
@@ -3708,7 +3748,7 @@ msgstr "La finestra dei link è già aperta per questo contesto IRC"
 msgid "List Download"
 msgstr "Scarica Lista"
 
-#: src/modules/list/listwindow.cpp:283
+#: src/modules/list/listwindow.cpp:284
 msgid "List cannot be requested: Not connected to a server"
 msgstr ""
 "La lista dei canali non può essere richiesta: non sei connesso ad un server"
@@ -3933,6 +3973,8 @@ msgstr ""
 
 #: src/modules/rijndael/libkvirijndael.cpp:115
 #: src/modules/rijndael/libkvirijndael.cpp:381
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:108
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:337
 msgid "Missing both encrypt and decrypt key: at least one is needed"
 msgstr "Chiavi di crittazione e decrittazione mancanti: è richiesta almeno una"
 
@@ -4142,7 +4184,7 @@ msgstr "Nessun Host da risolvere"
 msgid "No kicks able (unless U-Line)"
 msgstr "Non posso kickare (senza una U-Line)"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:1893
+#: src/kvirc/ui/kvi_input_editor.cpp:1903
 msgid "No matches"
 msgstr "Nessuna corrispondenza"
 
@@ -4681,11 +4723,11 @@ msgstr "Socket parzialmente scritto: paccheti frammentati in piccoli pezzi."
 msgid "Password"
 msgstr "Password"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:776
+#: src/kvirc/ui/kvi_input_editor.cpp:786
 msgid "Paste &File"
 msgstr "Incolla file"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:771
+#: src/kvirc/ui/kvi_input_editor.cpp:781
 msgid "Paste (Slowly)"
 msgstr "Incolla (una riga per volta)"
 
@@ -4770,6 +4812,37 @@ msgstr ""
 "se vuoi usare il modo CBC devi mettere prima delle tue\n"
 "chiavi \"cbc:\".\n"
 
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:587
+#, fuzzy
+msgid ""
+"Popular cryptographic engine based on the\n"
+"old Blowfish encryption algorithm.\n"
+"The text is first encrypted with Blowfish \n"
+"and then converted to base64 notation.\n"
+"The keys used have variable length and\n"
+"are specified as character strings.\n"
+"You can specify keys long up to 56 bytes (448 bits).\n"
+"If only one key is provided, this engine\n"
+"will use it for both encrypting and decrypting.\n"
+"This engine works in ECB mode by default:\n"
+"if you want to use CBC mode you must prefix\n"
+"your key(s) with \"cbc:\".\n"
+"\n"
+"This is the Crypto++ based version, not relying on embedded code\n"
+msgstr ""
+"Motore crittografico popolare basato sul vecchio\n"
+"algoritmo di crittazione Blowfish.\n"
+"Il testo viene prima crittato con Blowfish e poi\n"
+"convertito in notazione base64.\n"
+"Le chiavi usate devo avere lunghezza variabile e\n"
+"sono specificate come stringhe di caratteri.\n"
+"Puoi specificare chiavi lunghe fino a 56 byte (448 bit).\n"
+"Se viene fornita solo una chiave, questo motore\n"
+"la userà sia per crittare che per decrittare.\n"
+"Questo motore lavora in modo ECB come predefinito:\n"
+"se vuoi usare il modo CBC devi mettere prima delle tue\n"
+"chiavi \"cbc:\".\n"
+
 #: src/kvirc/ui/kvi_ircview.cpp:2179 src/kvirc/ui/kvi_ircview.cpp:2232
 #, c-format
 msgid "Pos %d"
@@ -4820,7 +4893,7 @@ msgstr "Elaborazione DCC %Q richiesta da \r!n\r%Q\r [%Q@\r!h\r%Q\r] (%s %s)"
 msgid "Processing link: %s"
 msgstr "Sto processando il link: %s"
 
-#: src/modules/list/listwindow.cpp:448
+#: src/modules/list/listwindow.cpp:466
 msgid "Processing list: %Q"
 msgstr "Sto processando la lista: %Q"
 
@@ -5157,7 +5230,7 @@ msgstr "Richiedi Link"
 msgid "Request List"
 msgstr "Richiedi Lista"
 
-#: src/modules/list/listwindow.cpp:402 src/modules/links/linkswindow.cpp:419
+#: src/modules/list/listwindow.cpp:403 src/modules/links/linkswindow.cpp:419
 msgid "Reset"
 msgstr "Reimposta"
 
@@ -5295,7 +5368,7 @@ msgstr "Connessione sicura al Proxy"
 msgid "Seems like the world has stopped spinning"
 msgstr "Sembra che il mondo abbia smesso di girare"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:788
+#: src/kvirc/ui/kvi_input_editor.cpp:798
 msgid "Select All"
 msgstr "Seleziona tutto"
 
@@ -5363,7 +5436,7 @@ msgstr "Inviata richiesta di connessione, aspetto il riconoscimento"
 msgid "Sent links request, waiting for reply..."
 msgstr "Inviata richiesta dei link, attendo la risposta..."
 
-#: src/modules/list/listwindow.cpp:252
+#: src/modules/list/listwindow.cpp:253
 msgid "Sent list request, waiting for reply..."
 msgstr "Inviata richiesta della lista dei canali, attendo la risposta..."
 
@@ -5850,7 +5923,7 @@ msgstr "Avvio l'ultimo log"
 msgid "Starting notify list"
 msgstr "Avvio la Notify List"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:783
+#: src/kvirc/ui/kvi_input_editor.cpp:793
 msgid "Stop Paste"
 msgstr "Interrompi incolla"
 
@@ -5858,7 +5931,7 @@ msgstr "Interrompi incolla"
 msgid "Stop list download"
 msgstr "Ferma lo scaricamento della lista"
 
-#: src/modules/list/listwindow.cpp:264 src/modules/list/listwindow.cpp:361
+#: src/modules/list/listwindow.cpp:265
 msgid "Stopping the list download..."
 msgstr "Sto fermando lo scaricamento della lista..."
 
@@ -6645,6 +6718,16 @@ msgstr "Sgancia"
 msgid "Unable to add file offer for file %Q (File not readable?)"
 msgstr "Impossibile aggiungere l'offerta del file %Q (File non leggibile?)"
 
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:252
+#, fuzzy
+msgid "Unable to determine input encoding (Hex or Base64)."
+msgstr "Impossibile determinare la cifratura corrente"
+
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:184
+#, fuzzy
+msgid "Unable to determine output encoding (Hex or Base64)."
+msgstr "Impossibile determinare la cifratura corrente"
+
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1278
 msgid "Unable to determine the current cipher"
 msgstr "Impossibile determinare la cifratura corrente"
@@ -7241,7 +7324,7 @@ msgstr ""
 msgid "You are not connected to a server"
 msgstr "Non sei connesso ad alcun server"
 
-#: src/modules/list/listwindow.cpp:318
+#: src/modules/list/listwindow.cpp:319
 msgid "You cannot export an empty list"
 msgstr "Non puoi esportare una lista vuota"
 
@@ -7595,6 +7678,9 @@ msgstr "lista Ban"
 #: src/modules/rijndael/libkvirijndael.cpp:753
 #: src/modules/rijndael/libkvirijndael.cpp:763
 #: src/modules/rijndael/libkvirijndael.cpp:773
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:556
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:566
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:576
 msgid "base64"
 msgstr "base64"
 
@@ -7673,6 +7759,9 @@ msgstr "utenti HalfOperator"
 #: src/modules/rijndael/libkvirijndael.cpp:723
 #: src/modules/rijndael/libkvirijndael.cpp:733
 #: src/modules/rijndael/libkvirijndael.cpp:743
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:526
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:536
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:546
 msgid "hexadecimal"
 msgstr "esadecimale"
 
@@ -7720,11 +7809,11 @@ msgstr "sta parlando"
 msgid "k: Recipient for server kill messages"
 msgstr "k: destinatario dei messaggi kill del Server"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:750
+#: src/kvirc/ui/kvi_input_editor.cpp:760
 msgid "line break"
 msgstr "riga"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:750
+#: src/kvirc/ui/kvi_input_editor.cpp:760
 msgid "line breaks"
 msgstr "righe"
 

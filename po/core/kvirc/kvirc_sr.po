@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_sr\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-20 23:15+0100\n"
+"POT-Creation-Date: 2009-12-10 20:40+0100\n"
 "PO-Revision-Date: 2002-06-08 21:44GMT+1\n"
 "Last-Translator: Prethorian <preth@kvsky.net>\n"
 "Language-Team: Serbian <sr@li.org>\n"
@@ -120,23 +120,23 @@ msgstr "### Sesija beleenja pokrenuta u %s ###"
 msgid "### Log session terminated at %1 ###"
 msgstr "### Sesija beleenja prekinuta u %s ###"
 
-#: src/kvilib/core/kvi_qstring.cpp:167
+#: src/kvilib/core/kvi_qstring.cpp:250
 msgid "%1 GiB"
 msgstr ""
 
-#: src/kvilib/core/kvi_qstring.cpp:158
+#: src/kvilib/core/kvi_qstring.cpp:237
 msgid "%1 KiB"
 msgstr ""
 
-#: src/kvilib/core/kvi_qstring.cpp:162
+#: src/kvilib/core/kvi_qstring.cpp:243
 msgid "%1 MiB"
 msgstr ""
 
-#: src/kvilib/core/kvi_qstring.cpp:171
+#: src/kvilib/core/kvi_qstring.cpp:255
 msgid "%1 TiB"
 msgstr ""
 
-#: src/kvilib/core/kvi_qstring.cpp:154
+#: src/kvilib/core/kvi_qstring.cpp:231
 #, fuzzy
 msgid "%1 bytes"
 msgstr "0 bajtova"
@@ -386,7 +386,7 @@ msgstr "akcija korisnika"
 msgid "%d"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:1889
+#: src/kvirc/ui/kvi_input_editor.cpp:1899
 msgid "%d matches: %Q"
 msgstr "%d podudara: %Q"
 
@@ -520,7 +520,7 @@ msgstr "&Naslai prozore"
 msgid "&Configure KVIrc..."
 msgstr "&Opcije"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:767
+#: src/kvirc/ui/kvi_input_editor.cpp:777
 #, fuzzy
 msgid "&Copy"
 msgstr "Kopiraj"
@@ -608,7 +608,7 @@ msgstr "OK"
 msgid "&Other..."
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:769
+#: src/kvirc/ui/kvi_input_editor.cpp:779
 #, fuzzy
 msgid "&Paste"
 msgstr "Prenesi"
@@ -627,7 +627,7 @@ msgstr "&Zavri"
 msgid "&Red"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:763
+#: src/kvirc/ui/kvi_input_editor.cpp:773
 #, fuzzy
 msgid "&Redo"
 msgstr "&Ukloni"
@@ -706,7 +706,7 @@ msgstr "&Alati"
 msgid "&Underline"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:761
+#: src/kvirc/ui/kvi_input_editor.cpp:771
 #, fuzzy
 msgid "&Undo"
 msgstr "&Sakrij sputen widget"
@@ -1784,7 +1784,7 @@ msgstr ""
 msgid "Cannot request links: No active connection"
 msgstr "Ne mogu da zahtevam linkove: nema aktivne konekcije"
 
-#: src/modules/list/listwindow.cpp:255
+#: src/modules/list/listwindow.cpp:256
 #, fuzzy
 msgid "Cannot request list: No active connection"
 msgstr "Ne mogu da zahtevam listu: nema aktivne konekcije"
@@ -1809,7 +1809,7 @@ msgstr "Trenutni prozor nije kanal"
 msgid "Cannot send to channel: %Q"
 msgstr "Nema postavljenog naslova za kanal \r!c\r%Q\r"
 
-#: src/modules/list/listwindow.cpp:266
+#: src/modules/list/listwindow.cpp:267
 #, fuzzy
 msgid "Cannot stop list download, no active connection."
 msgstr "Ne mogu da zahtevam listu: nema aktivne konekcije"
@@ -1895,7 +1895,7 @@ msgstr "Kanal \r!c\r%Q\r je bio kreiran u %Q"
 msgid "Channel CTCP"
 msgstr "CTCP Kanala"
 
-#: src/modules/list/listwindow.cpp:306
+#: src/modules/list/listwindow.cpp:307
 #, fuzzy, c-format
 msgid "Channel List [IRC Context %u]"
 msgstr "Nema takvog IRC konteksta (%u)"
@@ -1925,7 +1925,7 @@ msgstr "promena klju� kanala"
 msgid "Channel limit change"
 msgstr "promena limita kanala"
 
-#: src/modules/list/listwindow.cpp:329
+#: src/modules/list/listwindow.cpp:330
 #, fuzzy
 msgid "Channel list"
 msgstr "Lista kanala"
@@ -1935,7 +1935,7 @@ msgstr "Lista kanala"
 msgid "Channel list begin: channel, users, topic"
 msgstr "Po�tak liste kanala: Kamal , korisnika , naslov"
 
-#: src/modules/list/listwindow.cpp:326
+#: src/modules/list/listwindow.cpp:327
 #, fuzzy
 msgid "Channel list for %Q - %Q"
 msgstr "Mod kanala za \r!c\r%Q\r je %s"
@@ -1996,7 +1996,7 @@ msgstr "Naslov kanala (topic) je: %s"
 msgid "Channel was created at %Q"
 msgstr "Kanal je kreiran u %Q"
 
-#: src/modules/list/listwindow.cpp:413
+#: src/modules/list/listwindow.cpp:414
 msgid "Channels list download finished"
 msgstr ""
 
@@ -2058,7 +2058,7 @@ msgstr "Izaberite jednu sliku..."
 msgid "Choose an Old Configuration Folder - KVIrc Setup"
 msgstr "Izaberite jednu sliku..."
 
-#: src/modules/list/listwindow.cpp:332 src/modules/list/listwindow.cpp:356
+#: src/modules/list/listwindow.cpp:333 src/modules/list/listwindow.cpp:357
 #, fuzzy
 msgid "Choose filename"
 msgstr "Izaberi fajl za parseovanje"
@@ -2082,7 +2082,7 @@ msgstr "Izaberi fajl za parseovanje"
 msgid "Chunk header too long: exceeded 4096 bytes"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:785
+#: src/kvirc/ui/kvi_input_editor.cpp:795
 msgid "Clear"
 msgstr "O�sti"
 
@@ -2113,7 +2113,7 @@ msgstr "&Skoranji serveri"
 msgid "Click to open this link"
 msgstr "Dupli klik za postavljanje<br>"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:740
+#: src/kvirc/ui/kvi_input_editor.cpp:750
 msgid "Clipboard"
 msgstr ""
 
@@ -2187,7 +2187,7 @@ msgstr "Izvravam prethodnu inicijalizaciju..."
 msgid "Compression library internal error"
 msgstr "Ups...interna greka ?"
 
-#: src/modules/list/listwindow.cpp:332
+#: src/modules/list/listwindow.cpp:333
 #, fuzzy
 msgid "Configuration files (*.kvc)"
 msgstr "&Sa�vaj podeavanja"
@@ -2254,7 +2254,7 @@ msgstr "Konekcija"
 msgid "Connected since"
 msgstr "Povezivanje"
 
-#: src/modules/list/listwindow.cpp:278 src/modules/links/linkswindow.cpp:131
+#: src/modules/list/listwindow.cpp:279 src/modules/links/linkswindow.cpp:131
 #, fuzzy, c-format
 msgid "Connected to %s (%s)"
 msgstr "Nije zaka�n na server"
@@ -2394,6 +2394,35 @@ msgstr ""
 msgid "Crypting"
 msgstr "Opis"
 
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:190
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:258
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:390
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:407
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:465
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:482
+msgid "Crypto++ threw the following exception: "
+msgstr ""
+
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:505
+#, c-format
+msgid ""
+"Cryptographic engine based on the\n"
+"Advanced Encryption Standard (AES)\n"
+"algorithm called Rijndael.\n"
+"The text is first encrypted with Rijndael\n"
+"and then converted to %s notation.\n"
+"The keys used are %d bit long and will be padded\n"
+"with zeros if you provide shorter ones.\n"
+"If only one key is provided, this engine\n"
+"will use it for both encrypting and decrypting.\n"
+"This is the Crypto++ implementation which could do\n"
+"a lot more than the current default engine, but as\n"
+"this should be a drop-in replacement, it acts just\n"
+"like that one.\n"
+"Information about the algorithm can be found at\n"
+"<http://www.cryptolounge.org/wiki/AES>\n"
+msgstr ""
+
 #: src/modules/rijndael/libkvirijndael.cpp:706
 #, c-format
 msgid ""
@@ -2414,7 +2443,7 @@ msgstr ""
 msgid "Cryptography/text transformation"
 msgstr "Kriptografija/tekst transformacija"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:765
+#: src/kvirc/ui/kvi_input_editor.cpp:775
 #, fuzzy
 msgid "Cu&t"
 msgstr "Iseci"
@@ -3550,7 +3579,7 @@ msgstr ""
 msgid "Input History Disabled"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:818
+#: src/kvirc/ui/kvi_input_editor.cpp:828
 #, fuzzy
 msgid "Insert Icon"
 msgstr "akcija korisnika"
@@ -4010,7 +4039,7 @@ msgstr "Ovaj prozor nema odgovaraju� IRC kontekst"
 msgid "List Download"
 msgstr ""
 
-#: src/modules/list/listwindow.cpp:283
+#: src/modules/list/listwindow.cpp:284
 #, fuzzy
 msgid "List cannot be requested: Not connected to a server"
 msgstr "Niste zaka�ni na IRC server"
@@ -4249,6 +4278,8 @@ msgstr ""
 
 #: src/modules/rijndael/libkvirijndael.cpp:115
 #: src/modules/rijndael/libkvirijndael.cpp:381
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:108
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:337
 msgid "Missing both encrypt and decrypt key: at least one is needed"
 msgstr ""
 
@@ -4482,7 +4513,7 @@ msgstr "Nema hosta za reavanje"
 msgid "No kicks able (unless U-Line)"
 msgstr "nije mogu� isteravanje (kick) (osim U-Line)"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:1893
+#: src/kvirc/ui/kvi_input_editor.cpp:1903
 msgid "No matches"
 msgstr "Nema podudaranja"
 
@@ -5060,12 +5091,12 @@ msgstr "Parcijalni zapis priklju�a: paket razbijen na manje par��."
 msgid "Password"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:776
+#: src/kvirc/ui/kvi_input_editor.cpp:786
 #, fuzzy
 msgid "Paste &File"
 msgstr "Prenesi unutar"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:771
+#: src/kvirc/ui/kvi_input_editor.cpp:781
 #, fuzzy
 msgid "Paste (Slowly)"
 msgstr "Prenesi (polako)"
@@ -5129,6 +5160,24 @@ msgid ""
 "your key(s) with \"cbc:\".\n"
 msgstr ""
 
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:587
+msgid ""
+"Popular cryptographic engine based on the\n"
+"old Blowfish encryption algorithm.\n"
+"The text is first encrypted with Blowfish \n"
+"and then converted to base64 notation.\n"
+"The keys used have variable length and\n"
+"are specified as character strings.\n"
+"You can specify keys long up to 56 bytes (448 bits).\n"
+"If only one key is provided, this engine\n"
+"will use it for both encrypting and decrypting.\n"
+"This engine works in ECB mode by default:\n"
+"if you want to use CBC mode you must prefix\n"
+"your key(s) with \"cbc:\".\n"
+"\n"
+"This is the Crypto++ based version, not relying on embedded code\n"
+msgstr ""
+
 #: src/kvirc/ui/kvi_ircview.cpp:2179 src/kvirc/ui/kvi_ircview.cpp:2232
 #, c-format
 msgid "Pos %d"
@@ -5188,7 +5237,7 @@ msgstr "Obra�jem DCC %S zahtev od %Q [%Q@%Q] (%S %S)"
 msgid "Processing link: %s"
 msgstr "%s : Mati�i link %s"
 
-#: src/modules/list/listwindow.cpp:448
+#: src/modules/list/listwindow.cpp:466
 msgid "Processing list: %Q"
 msgstr ""
 
@@ -5549,7 +5598,7 @@ msgstr "DCC zahtev"
 msgid "Request List"
 msgstr "DCC zahtev"
 
-#: src/modules/list/listwindow.cpp:402 src/modules/links/linkswindow.cpp:419
+#: src/modules/list/listwindow.cpp:403 src/modules/links/linkswindow.cpp:419
 #, fuzzy
 msgid "Reset"
 msgstr "Server"
@@ -5703,7 +5752,7 @@ msgstr "Sigurna proksi konekcija"
 msgid "Seems like the world has stopped spinning"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:788
+#: src/kvirc/ui/kvi_input_editor.cpp:798
 msgid "Select All"
 msgstr "Izaberi sve"
 
@@ -5779,7 +5828,7 @@ msgstr "Poslat zahtev konektovanja, �kam potvr�vanje"
 msgid "Sent links request, waiting for reply..."
 msgstr "Poslat zahtev za listu: �kam odgovor..."
 
-#: src/modules/list/listwindow.cpp:252
+#: src/modules/list/listwindow.cpp:253
 #, fuzzy
 msgid "Sent list request, waiting for reply..."
 msgstr "Poslat zahtev za listu: �kam odgovor..."
@@ -6317,7 +6366,7 @@ msgstr "Pokre�m listu obavetenja"
 msgid "Starting notify list"
 msgstr "Pokre�m listu obavetenja"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:783
+#: src/kvirc/ui/kvi_input_editor.cpp:793
 #, fuzzy
 msgid "Stop Paste"
 msgstr "Prenesi"
@@ -6326,7 +6375,7 @@ msgstr "Prenesi"
 msgid "Stop list download"
 msgstr ""
 
-#: src/modules/list/listwindow.cpp:264 src/modules/list/listwindow.cpp:361
+#: src/modules/list/listwindow.cpp:265
 msgid "Stopping the list download..."
 msgstr ""
 
@@ -7138,6 +7187,16 @@ msgstr "&Sakrij sputen widget"
 msgid "Unable to add file offer for file %Q (File not readable?)"
 msgstr "Ne mogu da dodam ponudu fajla za fajl %s (huh ? fajl nije �tljiv ?)"
 
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:252
+#, fuzzy
+msgid "Unable to determine input encoding (Hex or Base64)."
+msgstr "Ne mogu da ustanovim trenutnu ifru"
+
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:184
+#, fuzzy
+msgid "Unable to determine output encoding (Hex or Base64)."
+msgstr "Ne mogu da ustanovim trenutnu ifru"
+
 #: src/kvirc/kernel/kvi_ircsocket.cpp:1278
 msgid "Unable to determine the current cipher"
 msgstr "Ne mogu da ustanovim trenutnu ifru"
@@ -7782,7 +7841,7 @@ msgstr ""
 msgid "You are not connected to a server"
 msgstr "Niste zaka�ni na IRC server"
 
-#: src/modules/list/listwindow.cpp:318
+#: src/modules/list/listwindow.cpp:319
 msgid "You cannot export an empty list"
 msgstr ""
 
@@ -8132,6 +8191,9 @@ msgstr "Lista URL zabrane"
 #: src/modules/rijndael/libkvirijndael.cpp:753
 #: src/modules/rijndael/libkvirijndael.cpp:763
 #: src/modules/rijndael/libkvirijndael.cpp:773
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:556
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:566
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:576
 msgid "base64"
 msgstr ""
 
@@ -8226,6 +8288,9 @@ msgstr "Operatori kanala"
 #: src/modules/rijndael/libkvirijndael.cpp:723
 #: src/modules/rijndael/libkvirijndael.cpp:733
 #: src/modules/rijndael/libkvirijndael.cpp:743
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:526
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:536
+#: src/modules/rijndael/libkvirijndael_cryptopp.cpp:546
 msgid "hexadecimal"
 msgstr ""
 
@@ -8279,11 +8344,11 @@ msgstr ""
 msgid "k: Recipient for server kill messages"
 msgstr "k: primalac serverskih kill poruka"
 
-#: src/kvirc/ui/kvi_input_editor.cpp:750
+#: src/kvirc/ui/kvi_input_editor.cpp:760
 msgid "line break"
 msgstr ""
 
-#: src/kvirc/ui/kvi_input_editor.cpp:750
+#: src/kvirc/ui/kvi_input_editor.cpp:760
 msgid "line breaks"
 msgstr ""
 

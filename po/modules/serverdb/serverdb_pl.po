@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KVIrc 4.0.0 'Insomnia'\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-20 23:15+0100\n"
+"POT-Creation-Date: 2009-12-10 20:40+0100\n"
 "PO-Revision-Date: 2009-12-06 23:23+0100\n"
 "Last-Translator: Be Mi <cannabis_ultra@o2.pl>\n"
 "Language-Team: Polska <PL@li.org>\n"
@@ -18,15 +18,30 @@ msgstr ""
 "X-Poedit-Language: Polish\n"
 "X-Poedit-Country: POLAND\n"
 
-#: src/modules/proxydb/libkviproxydb.cpp:60
-#: src/modules/proxydb/libkviproxydb.cpp:103
-#: src/modules/proxydb/libkviproxydb.cpp:357
-#: src/modules/proxydb/libkviproxydb.cpp:428
-#: src/modules/proxydb/libkviproxydb.cpp:497
-#: src/modules/proxydb/libkviproxydb.cpp:552
-#: src/modules/proxydb/libkviproxydb.cpp:596
-msgid "You must provide the proxy hostname as parameter"
-msgstr "Musisz dostarczyć nazwę komputera proxy jako parametr"
+#: src/modules/serverdb/libkviserverdb.cpp:685
+msgid "The network specified already exists"
+msgstr "Określona sieć już istnieje"
+
+#: src/modules/proxydb/libkviproxydb.cpp:453
+msgid "The specified IP is not valid"
+msgstr "Określony adres IP jest nie poprawny"
+
+#: src/modules/serverdb/libkviserverdb.cpp:169
+#: src/modules/serverdb/libkviserverdb.cpp:203
+#: src/modules/serverdb/libkviserverdb.cpp:762
+#: src/modules/serverdb/libkviserverdb.cpp:826
+#: src/modules/serverdb/libkviserverdb.cpp:868
+msgid "The specified network does not exist"
+msgstr "Określona sieć nie istnieje"
+
+#: src/modules/proxydb/libkviproxydb.cpp:311
+#: src/modules/proxydb/libkviproxydb.cpp:577
+msgid "The specified protocol does not exist"
+msgstr "Określony protokół nie istnieje"
+
+#: src/modules/proxydb/libkviproxydb.cpp:284
+msgid "The specified proxy already exists"
+msgstr "Określone proxy już istnieje"
 
 #: src/modules/proxydb/libkviproxydb.cpp:70
 #: src/modules/proxydb/libkviproxydb.cpp:113
@@ -38,40 +53,18 @@ msgstr "Musisz dostarczyć nazwę komputera proxy jako parametr"
 msgid "The specified proxy does not exist"
 msgstr "Określone proxy nie istnieje"
 
-#: src/modules/proxydb/libkviproxydb.cpp:273
-msgid "You must provide the proxy name as parameter"
-msgstr "Musisz dostarczyć nazwę proxy jako parametr"
+#: src/modules/serverdb/libkviserverdb.cpp:773
+msgid "The specified server already exists"
+msgstr "Określony serwer już istnieje"
 
-#: src/modules/proxydb/libkviproxydb.cpp:284
-msgid "The specified proxy already exists"
-msgstr "Określone proxy już istnieje"
-
-#: src/modules/proxydb/libkviproxydb.cpp:311
-#: src/modules/proxydb/libkviproxydb.cpp:577
-msgid "The specified protocol does not exist"
-msgstr "Określony protokół nie istnieje"
-
-#: src/modules/proxydb/libkviproxydb.cpp:363
-msgid "You must provide the port number as parameter"
-msgstr "Musisz dostarczyć numer portu jako parametr"
+#: src/modules/serverdb/libkviserverdb.cpp:210
+#: src/modules/serverdb/libkviserverdb.cpp:876
+msgid "The specified server does not exist"
+msgstr "Określony serwer nie istnieje"
 
 #: src/modules/proxydb/libkviproxydb.cpp:434
 msgid "You must provide the IP as parameter"
 msgstr "Musisz dostarczyć adres IP jako parametr"
-
-#: src/modules/proxydb/libkviproxydb.cpp:453
-msgid "The specified IP is not valid"
-msgstr "Określony adres IP jest nie poprawny"
-
-#: src/modules/proxydb/libkviproxydb.cpp:558
-msgid "You must provide the protocol as parameter"
-msgstr "Musisz dostarczyć protokół jako parametr"
-
-#: src/modules/proxydb/libkviproxydb.cpp:602
-#: src/modules/serverdb/libkviserverdb.cpp:818
-#: src/modules/serverdb/libkviserverdb.cpp:860
-msgid "You must provide the value as parameter"
-msgstr "Musisz dostarczyć wartość jako parametr"
 
 #: src/modules/serverdb/libkviserverdb.cpp:61
 #: src/modules/serverdb/libkviserverdb.cpp:162
@@ -83,6 +76,28 @@ msgstr "Musisz dostarczyć wartość jako parametr"
 msgid "You must provide the network name as parameter"
 msgstr "Musisz dostarczyć nazwę sieci jako parametr"
 
+#: src/modules/proxydb/libkviproxydb.cpp:363
+msgid "You must provide the port number as parameter"
+msgstr "Musisz dostarczyć numer portu jako parametr"
+
+#: src/modules/proxydb/libkviproxydb.cpp:558
+msgid "You must provide the protocol as parameter"
+msgstr "Musisz dostarczyć protokół jako parametr"
+
+#: src/modules/proxydb/libkviproxydb.cpp:60
+#: src/modules/proxydb/libkviproxydb.cpp:103
+#: src/modules/proxydb/libkviproxydb.cpp:357
+#: src/modules/proxydb/libkviproxydb.cpp:428
+#: src/modules/proxydb/libkviproxydb.cpp:497
+#: src/modules/proxydb/libkviproxydb.cpp:552
+#: src/modules/proxydb/libkviproxydb.cpp:596
+msgid "You must provide the proxy hostname as parameter"
+msgstr "Musisz dostarczyć nazwę komputera proxy jako parametr"
+
+#: src/modules/proxydb/libkviproxydb.cpp:273
+msgid "You must provide the proxy name as parameter"
+msgstr "Musisz dostarczyć nazwę proxy jako parametr"
+
 #: src/modules/serverdb/libkviserverdb.cpp:104
 #: src/modules/serverdb/libkviserverdb.cpp:196
 #: src/modules/serverdb/libkviserverdb.cpp:754
@@ -90,24 +105,8 @@ msgstr "Musisz dostarczyć nazwę sieci jako parametr"
 msgid "You must provide the server name as parameter"
 msgstr "Musisz dostarczyć nazwę serwera jako parametr"
 
-#: src/modules/serverdb/libkviserverdb.cpp:169
-#: src/modules/serverdb/libkviserverdb.cpp:203
-#: src/modules/serverdb/libkviserverdb.cpp:762
-#: src/modules/serverdb/libkviserverdb.cpp:826
-#: src/modules/serverdb/libkviserverdb.cpp:868
-msgid "The specified network does not exist"
-msgstr "Określona sieć nie istnieje"
-
-#: src/modules/serverdb/libkviserverdb.cpp:210
-#: src/modules/serverdb/libkviserverdb.cpp:876
-msgid "The specified server does not exist"
-msgstr "Określony serwer nie istnieje"
-
-#: src/modules/serverdb/libkviserverdb.cpp:685
-msgid "The network specified already exists"
-msgstr "Określona sieć już istnieje"
-
-#: src/modules/serverdb/libkviserverdb.cpp:773
-msgid "The specified server already exists"
-msgstr "Określony serwer już istnieje"
-
+#: src/modules/proxydb/libkviproxydb.cpp:602
+#: src/modules/serverdb/libkviserverdb.cpp:818
+#: src/modules/serverdb/libkviserverdb.cpp:860
+msgid "You must provide the value as parameter"
+msgstr "Musisz dostarczyć wartość jako parametr"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kvirc-3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-20 23:15+0100\n"
+"POT-Creation-Date: 2009-12-10 20:40+0100\n"
 "PO-Revision-Date: 2008-01-16 08:51+0100\n"
 "Last-Translator: Dusan Hokuv <dusan@mirc.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -78,7 +78,7 @@ msgstr "&Použít"
 msgid "&Browse..."
 msgstr "&Procházet..."
 
-#: src/modules/options/optw_servers.cpp:1471
+#: src/modules/options/optw_servers.cpp:1470
 msgid "&Copy Server"
 msgstr "&Kopírovat server"
 
@@ -90,7 +90,7 @@ msgstr "&Nový"
 msgid "&New Proxy"
 msgstr "&Nová Proxy"
 
-#: src/modules/options/optw_servers.cpp:1468
+#: src/modules/options/optw_servers.cpp:1467
 msgid "&New Server"
 msgstr "&Nový server"
 
@@ -101,7 +101,7 @@ msgstr "&Nový server"
 msgid "&OK"
 msgstr "&OK"
 
-#: src/modules/options/optw_servers.cpp:1473
+#: src/modules/options/optw_servers.cpp:1472
 msgid "&Paste Server"
 msgstr "&Vložit server"
 
@@ -149,7 +149,7 @@ msgstr ""
 "Tyto zprávy mohou požadovat informace od klientů nebo vyjednat přenosy "
 "souborů.<br><br></p>"
 
-#: src/modules/options/optw_servers.cpp:1190
+#: src/modules/options/optw_servers.cpp:1189
 msgid "<center>Click here to edit advanced options for this entry</center>"
 msgstr ""
 "<center>Klikněte zde pro úpravy pokročilých možností tohoto záznamu.</center>"
@@ -241,7 +241,7 @@ msgstr ""
 "připojeni po připojení k danému serveru. Pro přidání kanálu, napište jeho "
 "jméno do textového pole a klikněte na \"<b>Přidat</b>\".</center>"
 
-#: src/modules/options/optw_servers.cpp:1196
+#: src/modules/options/optw_servers.cpp:1195
 msgid ""
 "<center>Hit this button to connect to the currently selected server.</center>"
 msgstr ""
@@ -318,7 +318,7 @@ msgstr ""
 "okno v dolním rohu vaší obrazovky, když je zobrazena zvýrazňovaná zpráva a "
 "okno KVIrc není aktivní</center>"
 
-#: src/modules/options/optw_servers.cpp:1211
+#: src/modules/options/optw_servers.cpp:1210
 msgid ""
 "<center>If this option is enabled, the Servers dialog will appear every time "
 "you start KVIrc</center>"
@@ -563,7 +563,7 @@ msgstr ""
 "vyberete \"Použít kódování sítě\" bude kódování zvoleno podle sítě, ve které "
 "se server nachází.</center>"
 
-#: src/modules/options/optw_servers.cpp:1207
+#: src/modules/options/optw_servers.cpp:1206
 msgid ""
 "<center>This button shows a list of recently used servers. It allows you to "
 "quickly find them in the list.</center>"
@@ -867,7 +867,7 @@ msgstr ""
 "<center>Toto je pevná adresa, která bude poslána se všemi DCC požadavky, "
 "pokud povolíte volbu nacházející se výše.</center>"
 
-#: src/modules/options/optw_servers.cpp:1106
+#: src/modules/options/optw_servers.cpp:1105
 msgid ""
 "<center>This is the list of available IRC servers.<br>Right-click on the "
 "list to add or remove servers and perform other actions.<br>Double-click on "
@@ -913,7 +913,7 @@ msgstr ""
 "automaticky požadovány.<br>Přijatelnou hodnotou by mělo být 102400 bajtů "
 "(100 K).</center>"
 
-#: src/modules/options/optw_servers.cpp:1170
+#: src/modules/options/optw_servers.cpp:1169
 msgid ""
 "<center>This is the name of the currently selected server or network</center>"
 msgstr "<center>Toto je název současného zvoleného serveru nebo sítě.</center>"
@@ -1547,7 +1547,7 @@ msgstr "Přerušit"
 msgid "Accept broken RESUME (mIRC file.ext)"
 msgstr "Přijímat poškozené RESUME (mIRC soubor.ext)"
 
-#: src/modules/options/optw_servers.cpp:1166
+#: src/modules/options/optw_servers.cpp:1165
 msgid "Active Configuration"
 msgstr "Aktivní konfigurace"
 
@@ -1582,7 +1582,7 @@ msgstr "Přidat pravidlo"
 msgid "Advanced configuration"
 msgstr "Pokročilé nastavení"
 
-#: src/modules/options/optw_servers.cpp:1188
+#: src/modules/options/optw_servers.cpp:1187
 msgid "Advanced..."
 msgstr "Pokročilé..."
 
@@ -1931,7 +1931,7 @@ msgstr "Vyberte soubor obrázku - KVIrc"
 msgid "Choose..."
 msgstr "Vyberte..."
 
-#: src/modules/options/optw_servers.cpp:1478
+#: src/modules/options/optw_servers.cpp:1477
 msgid "Clear List"
 msgstr "Smazat seznam"
 
@@ -1965,7 +1965,7 @@ msgstr "Nastavení"
 msgid "Confirm quit with active connections"
 msgstr "Potvrzovat ukončení při aktivním spojení"
 
-#: src/modules/options/optw_servers.cpp:1192
+#: src/modules/options/optw_servers.cpp:1191
 msgid "Connect &Now"
 msgstr "Připojit &Nyní"
 
@@ -1997,7 +1997,7 @@ msgstr "Konzole okna"
 msgid "Control char color"
 msgstr "Barva ovládacího znaku"
 
-#: src/modules/options/optw_servers.cpp:1143
+#: src/modules/options/optw_servers.cpp:1142
 msgid "Copy Server"
 msgstr "Kopírovat Server"
 
@@ -2085,7 +2085,7 @@ msgstr "Smazat pravidlo"
 msgid "Delete Rule"
 msgstr "Smazat pravidlo"
 
-#: src/modules/options/optw_servers.cpp:1087
+#: src/modules/options/optw_servers.cpp:1086
 #: src/modules/options/optw_mediatypes.cpp:79
 msgid "Description"
 msgstr "Popis"
@@ -2565,8 +2565,8 @@ msgstr "Výška obrázku:"
 msgid "Image width:"
 msgstr "Šířka obrázku:"
 
-#: src/modules/options/optw_servers.cpp:1161
-#: src/modules/options/optw_servers.cpp:1480
+#: src/modules/options/optw_servers.cpp:1160
+#: src/modules/options/optw_servers.cpp:1479
 msgid "Import List"
 msgstr "Importovat seznam"
 
@@ -2893,7 +2893,7 @@ msgstr "Síť:"
 msgid "Network Properties"
 msgstr "Vlastnosti sítě"
 
-#: src/modules/options/optw_servers.cpp:1371
+#: src/modules/options/optw_servers.cpp:1370
 msgid "Network:"
 msgstr "Síť:"
 
@@ -2901,9 +2901,9 @@ msgstr "Síť:"
 msgid "New Media Type"
 msgstr "Nový typ média"
 
-#: src/modules/options/optw_servers.cpp:1120
-#: src/modules/options/optw_servers.cpp:1464
-#: src/modules/options/optw_servers.cpp:1590
+#: src/modules/options/optw_servers.cpp:1119
+#: src/modules/options/optw_servers.cpp:1463
+#: src/modules/options/optw_servers.cpp:1589
 msgid "New Network"
 msgstr "Nová Síť"
 
@@ -2915,7 +2915,7 @@ msgstr "Nová Proxy"
 msgid "New Query opened"
 msgstr "Nové query otevřené"
 
-#: src/modules/options/optw_servers.cpp:1126
+#: src/modules/options/optw_servers.cpp:1125
 msgid "New Server"
 msgstr "Nový Server"
 
@@ -2975,7 +2975,7 @@ msgstr "Přezdívka:"
 msgid "Nicknames"
 msgstr "Přezdívky"
 
-#: src/modules/options/optw_servers.cpp:1381
+#: src/modules/options/optw_servers.cpp:1380
 msgid "No selection"
 msgstr "Žádný výběr"
 
@@ -3075,7 +3075,7 @@ msgstr "Při neočekávaném odpojení"
 msgid "On Voice Request"
 msgstr "Při Hlasovém požadavku"
 
-#: src/modules/options/optw_servers.cpp:1517
+#: src/modules/options/optw_servers.cpp:1516
 msgid ""
 "Oops... something weird happened:<br>Can't find any module capable of "
 "importing servers."
@@ -3083,7 +3083,7 @@ msgstr ""
 "Oops... něco zvláštního se stalo:<br>Nelze nalézt žádný modul pro import "
 "serverů."
 
-#: src/modules/options/optw_servers.cpp:1534
+#: src/modules/options/optw_servers.cpp:1533
 msgid ""
 "Oops... something weird happened:<br>Can't find the module that was capable "
 "of this import action. :("
@@ -3166,7 +3166,7 @@ msgstr "Odchodová zpráva:"
 msgid "Password:"
 msgstr "Heslo:"
 
-#: src/modules/options/optw_servers.cpp:1150
+#: src/modules/options/optw_servers.cpp:1149
 msgid "Paste Server"
 msgstr "Vložit Server"
 
@@ -3387,7 +3387,7 @@ msgstr "Ode&brat"
 msgid "Re&move Proxy"
 msgstr "Ode&brat proxy"
 
-#: src/modules/options/optw_servers.cpp:1469
+#: src/modules/options/optw_servers.cpp:1468
 msgid "Re&move Server"
 msgstr "S&mazat server"
 
@@ -3439,11 +3439,11 @@ msgstr "Zapamatovat vlastnosti okna"
 msgid "Remote open command:"
 msgstr "Otevřít vzdáleně pomocí:"
 
-#: src/modules/options/optw_servers.cpp:1465
+#: src/modules/options/optw_servers.cpp:1464
 msgid "Remove Network"
 msgstr "Smazat Síť"
 
-#: src/modules/options/optw_servers.cpp:1133
+#: src/modules/options/optw_servers.cpp:1132
 msgid "Remove Network/Server"
 msgstr "Smazat Síť/Server"
 
@@ -3555,7 +3555,7 @@ msgstr "Posílací adresa/rozhraní:"
 msgid "Send unknown commands as /RAW"
 msgstr "Posílat neznámé příkazy jako /RAW"
 
-#: src/modules/options/optw_servers.cpp:1086
+#: src/modules/options/optw_servers.cpp:1085
 msgid "Server"
 msgstr "Server"
 
@@ -3587,8 +3587,8 @@ msgstr "Oznámení serveru (+s)"
 msgid "Server replies"
 msgstr "Odezvy serveru"
 
-#: src/modules/options/optw_servers.cpp:1167
-#: src/modules/options/optw_servers.cpp:1368
+#: src/modules/options/optw_servers.cpp:1166
+#: src/modules/options/optw_servers.cpp:1367
 msgid "Server:"
 msgstr "Server:"
 
@@ -3693,7 +3693,7 @@ msgstr "Zobrazit pingy serveru"
 msgid "Show the CTCP replies in the active window"
 msgstr "Zobrazit CTCP odezvy v aktivním okně"
 
-#: src/modules/options/optw_servers.cpp:1209
+#: src/modules/options/optw_servers.cpp:1208
 msgid "Show this dialog at startup"
 msgstr "Zobrazit tento dialog při spuštění"
 
@@ -4048,7 +4048,7 @@ msgstr "Nelze zapsat jazykové informace do"
 msgid "Unknown protocol handler command:"
 msgstr "Příkaz handleru neznámého protokolu:"
 
-#: src/modules/options/optw_servers.cpp:1398
+#: src/modules/options/optw_servers.cpp:1397
 msgid "UnknownNet"
 msgstr "NeznámáSíť"
 
@@ -4349,7 +4349,7 @@ msgstr "bajtů/sek"
 msgid "en"
 msgstr "en"
 
-#: src/modules/options/optw_servers.cpp:1611
+#: src/modules/options/optw_servers.cpp:1610
 msgid "irc.unknown.net"
 msgstr "irc.neznama.sit"
 
