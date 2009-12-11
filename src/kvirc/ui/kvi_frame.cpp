@@ -297,12 +297,12 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 		[b]Ctrl+RightArrow[/b]: Selection right to the next word[br]
 		[b]Ctrl+Shift+LeftArrow[/b]: Previous word[br]
 		[b]Ctrl+Shift+RightArrow[/b]: Next word[br]
-		[b]Alt+LeftArrow[/b]: Previous window[br]
-		[b]Alt+RightArrow[/b]: Next window[br]
+		[b]Alt+UpArrow[/b]: Previous window[br]
+		[b]Alt+DownArrow[/b]: Next window[br]
+		[b]Alt+Shift+UpArrow[/b]: Previous window in the same IRC context[br]
+		[b]Alt+Shift+DownArrow[/b]: Next window in the same IRC context[br]
 		[b]Alt+PageUp[/b]: Previous highlighted window[br]
 		[b]Alt+PageDown[/b]: Next highlighted window[br]
-		[b]Alt+Shift+LeftArrow[/b]: Previous window in the same IRC context[br]
-		[b]Alt+Shift+RightArrow[/b]: Next window in the same IRC context[br]
 		[b]Ctrl+UpArrow[/b]: Maximize current window[br]
 		[b]Ctrl+DownArrow[/b] or [b]ESC[/b]: Minimize current window[br]
 		[b]Ctrl+&lt;digit&gt;[/b], [b]F1-F12[/b], [b]Shift+(F1-F12)[/b]: Script accelerators (see [event:onaccelkeypressed]OnAccelKeyPressed[/event])[br]
@@ -347,15 +347,15 @@ KviMexToolBar * KviFrame::moduleExtensionToolBar(int extensionId)
 
 void KviFrame::installAccelerators()
 {
-	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT) , this, SLOT(switchToPrevWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT), this, SLOT(switchToNextWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Up + Qt::ALT) , this, SLOT(switchToPrevWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Down + Qt::ALT), this, SLOT(switchToNextWindow()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Up + Qt::ALT + Qt::SHIFT), this, SLOT(switchToPrevWindowInContext()), 0, Qt::ApplicationShortcut);
+	new QShortcut(QKeySequence(Qt::Key_Down + Qt::ALT + Qt::SHIFT), this, SLOT(switchToNextWindowInContext()), 0, Qt::ApplicationShortcut);
 	new QShortcut(QKeySequence(Qt::Key_PageUp + Qt::ALT) , this, SLOT(switchToPrevHighlightedWindow()), 0, Qt::ApplicationShortcut);
 	new QShortcut(QKeySequence(Qt::Key_PageDown + Qt::ALT), this, SLOT(switchToNextHighlightedWindow()), 0, Qt::ApplicationShortcut);
 	new QShortcut(QKeySequence(Qt::Key_Up + Qt::CTRL), this, SLOT(maximizeWindow()), 0, Qt::ApplicationShortcut);
 	new QShortcut(QKeySequence(Qt::Key_Down + Qt::CTRL), this, SLOT(minimizeWindow()), 0, Qt::ApplicationShortcut);
 	new QShortcut(QKeySequence(Qt::Key_Escape +Qt::CTRL), this, SLOT(minimizeWindow()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_Left + Qt::ALT + Qt::SHIFT), this, SLOT(switchToPrevWindowInContext()), 0, Qt::ApplicationShortcut);
-	new QShortcut(QKeySequence(Qt::Key_Right + Qt::ALT + Qt::SHIFT), this, SLOT(switchToNextWindowInContext()), 0, Qt::ApplicationShortcut);
 
 	static int accel_table[] = {
 		Qt::Key_1 + Qt::CTRL ,       // script accels...
