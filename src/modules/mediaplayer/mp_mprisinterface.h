@@ -24,8 +24,9 @@
 //
 //=============================================================================
 
-#include "kvi_settings.h"
 #include "mp_interface.h"
+
+#include "kvi_settings.h"
 
 #if (!defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MAC) && !defined(COMPILE_ON_MINGW))
 	#include <QtDBus/QtDBus>
@@ -101,13 +102,20 @@
 	public:
 		KviXmms2Interface();
 	};
+	
+	class KviSongbirdInterface : public KviMPRISInterface
+	{
+	public:
+		KviSongbirdInterface();
+	};
 
 	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
 	MP_DECLARE_DESCRIPTOR(KviBmpxInterface)
 	MP_DECLARE_DESCRIPTOR(KviAmarok2Interface)
 	MP_DECLARE_DESCRIPTOR(KviQmmpInterface)
 	MP_DECLARE_DESCRIPTOR(KviXmms2Interface)
+	MP_DECLARE_DESCRIPTOR(KviSongbirdInterface)
 
-#endif //!COMPILE_ON_WINDOWS
+#endif //COMPILE_ON_WINDOWS
 
-#endif //!_MP_AUDACIOUSINTERFACE_H_
+#endif //_MP_AUDACIOUSINTERFACE_H_

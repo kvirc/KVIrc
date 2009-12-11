@@ -27,11 +27,13 @@
 //
 //=============================================================================
 
-#include "kvi_settings.h"
 #include "mp_interface.h"
+
+#include "kvi_settings.h"
+
 #include <QLibrary>
 
-#if !defined(COMPILE_ON_WINDOWS)  && !defined(COMPILE_ON_MINGW)
+#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
 	class KviXmmsInterface : public KviMediaPlayerInterface
 	{
 	public:
@@ -79,6 +81,6 @@
 
 	MP_DECLARE_DESCRIPTOR(KviAudaciousClassicInterface)
 
-#endif //!COMPILE_ON_WINDOWS
+#endif //COMPILE_ON_WINDOWS
 
-#endif //!_MP_XMMSINTERFACE_H_
+#endif //_MP_XMMSINTERFACE_H_
