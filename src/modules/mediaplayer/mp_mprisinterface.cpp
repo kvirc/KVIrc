@@ -521,7 +521,9 @@ MP_IMPLEMENT_DESCRIPTOR(
 	"songbird",
 	__tr2qs_ctx(
 		"An interface to the Mozilla Songbird media player.\n" \
-		"Download it from http://www.getsongbird.com\n",
+		"Download it from http://www.getsongbird.com.\n" \
+		"To use it you have to install also the MPRIS addon" \
+		"available at http://addons.songbirdnest.com/addon/1626.\n",
 		"mediaplayer"
 	)
 )
