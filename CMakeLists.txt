@@ -795,7 +795,7 @@ IF(WANT_DCC_CANVAS)
 	SET(CMAKE_STATUS_DCC_CANVAS_SUPPORT "Yes")
 	SET(COMPILE_DCC_CANVAS 1)
 ELSE()
-	SET(CMAKE_STATUS_DCC_CANVAS_SUPPORT "No")
+	SET(CMAKE_STATUS_DCC_CANVAS_SUPPORT "User disabled")
 ENDIF()
 
 ############################################################################
