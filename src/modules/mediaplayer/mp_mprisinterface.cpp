@@ -534,4 +534,9 @@ KviSongbirdInterface::KviSongbirdInterface()
 	m_szServiceName = "org.mpris.songbird";
 }
 
+KviMediaPlayerInterface::PlayerStatus KviSongbirdInterface::status()
+{
+	return KviMediaPlayerInterface::Playing;
+}
+
 #endif //COMPILE_ON_WINDOWS

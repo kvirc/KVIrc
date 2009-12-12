@@ -107,6 +107,7 @@
 	{
 	public:
 		KviSongbirdInterface();
+		virtual KviMediaPlayerInterface::PlayerStatus status();
 	};
 
 	MP_DECLARE_DESCRIPTOR(KviAudaciousInterface)
