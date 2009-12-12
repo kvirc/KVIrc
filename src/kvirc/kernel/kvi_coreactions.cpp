@@ -207,7 +207,7 @@ void register_core_actions(KviActionManager * m)
 		"kvi_bigicon_toolbareditor.png",
 		KVI_SMALLICON_TOOLBAR,
 		0,
-		QString());
+		"Ctrl+Shift+B");
 
 
 	SCRIPT_ACTION(
