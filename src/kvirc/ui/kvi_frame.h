@@ -182,7 +182,7 @@ protected:
 
 	// called by KviWindow
 	void childWindowCloseRequest(KviWindow *wnd);
-	void childWindowActivated(KviWindow *wnd);
+	void childWindowActivated(KviWindow *wnd, bool bForce = false);
 
 	void childContextStateChange(KviIrcContext * c);
 	void childConnectionNickNameChange(KviIrcConnection * c);

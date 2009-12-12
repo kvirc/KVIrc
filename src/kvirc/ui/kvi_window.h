@@ -293,6 +293,7 @@ public:
 	// This should die, probably
 	void listWindowTypes();
 
+	void activateSelf();
 public slots:
 	void dock();
 	void undock();
@@ -356,8 +357,6 @@ protected:
 
 	void childInserted(QWidget * o);
 	void childRemoved(QWidget * o);
-
-	void activateSelf();
 
 	// Internal helpers
 	void createCryptControllerButton(QWidget * par);

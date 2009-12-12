@@ -132,7 +132,7 @@ void KviMdiManager::showAndActivate(KviMdiChild * lpC)
 		lpC->show();
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 	}
-	lpC->setFocus();
+	lpC->activate();
 }
 
 KviMdiChild * KviMdiManager::topChild()

@@ -139,6 +139,14 @@ void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowS
 		}
 	}
 
+	if(newState.testFlag(Qt::WindowActive) && diffState.testFlag(Qt::WindowActive))
+	{
+		if(m_pClient->inherits("KviWindow")) // actually this is always the case
+		{
+			((KviWindow *)m_pClient)->activateSelf();
+		}
+	}
+
 	if(newState.testFlag(Qt::WindowActive) && diffState.testFlag(Qt::WindowMaximized))
 	{
 		//i'm the active window and my maximized state has changed => update sdi mode

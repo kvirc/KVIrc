@@ -761,18 +761,22 @@ void KviFrame::childConnectionUserModeChange(KviIrcConnection * c)
 	emit activeConnectionUserModeChanged();
 }
 
-void KviFrame::childWindowActivated(KviWindow *wnd)
+void KviFrame::childWindowActivated(KviWindow *wnd, bool bForce)
 {
 	// ASSERT(m_pWinList->findRef(wnd))
-	if(g_pActiveWindow == wnd)return;
-	if(g_pActiveWindow)g_pActiveWindow->lostUserFocus();
-	// YES: it's HERE!
-	g_pActiveWindow = wnd;
+	// unless we want to bForce the active window to be re-activated
+	if(g_pActiveWindow == wnd && !bForce) return;
+	if(g_pActiveWindow != wnd)
+	{
+		if(g_pActiveWindow)
+			g_pActiveWindow->lostUserFocus();
+		g_pActiveWindow = wnd;
+	}
+	
+	m_pWindowList->setActiveItem(wnd->windowListItem());
 
 	bool bActiveContextChanged = (m_pActiveContext != wnd->context());
 	m_pActiveContext = wnd->context();
-
-	m_pWindowList->setActiveItem(wnd->windowListItem());
 
 	if(g_pActiveWindow->view())
 		g_pActiveWindow->view()->clearUnreaded();
@@ -798,13 +802,10 @@ void KviFrame::changeEvent(QEvent * e)
 		if(isActiveWindow())
 		{
 			if(g_pActiveWindow)
-			{
-				KviWindow * pTmp = g_pActiveWindow;
-				g_pActiveWindow = 0; // really ugly hack!
-				childWindowActivated(pTmp);
-			}
+				childWindowActivated(g_pActiveWindow, true);
 		} else {
-			if(g_pActiveWindow)g_pActiveWindow->lostUserFocus();
+			if(g_pActiveWindow)
+				g_pActiveWindow->lostUserFocus();
 		}
 
 	} else if (e->type() == QEvent::WindowStateChange)
