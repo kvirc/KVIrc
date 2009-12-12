@@ -40,22 +40,21 @@ KviTrayOptionsWidget::KviTrayOptionsWidget(QWidget * parent)
 
 	m_pEnable = addBoolSelector(0,0,0,0, __tr2qs_ctx("Enable tray icon","options"), KviOption_boolShowDockExtension);
 	m_pCloseInTray = addBoolSelector(0,1,0,1,__tr2qs_ctx("Close in tray","options"),KviOption_boolCloseInTray);
-	m_pMinimizeInTray =  addBoolSelector(0,2,0,2,__tr2qs_ctx("Minimize in tray","options"),KviOption_boolMinimizeInTray);
 
-	m_pEnableFlashing = addBoolSelector(0,3,0,3,__tr2qs_ctx("Enable tray icon flashing","options"),KviOption_boolEnableTrayIconFlashing);
-	m_pLevelBasedNotify = addBoolSelector(0,4,0,4,__tr2qs_ctx("Enable level-based message notification (not a message-type based)","options"),KviOption_boolUseLevelBasedTrayNotification);
+	m_pEnableFlashing = addBoolSelector(0,2,0,2,__tr2qs_ctx("Enable tray icon flashing","options"),KviOption_boolEnableTrayIconFlashing);
+	m_pLevelBasedNotify = addBoolSelector(0,3,0,3,__tr2qs_ctx("Enable level-based message notification (not a message-type based)","options"),KviOption_boolUseLevelBasedTrayNotification);
 
-	m_pLevelsGroup = addGroupBox(0,5,0,5,Qt::Horizontal,__tr2qs_ctx("Select message levels to notify","options"));
+	m_pLevelsGroup = addGroupBox(0,4,0,4,Qt::Horizontal,__tr2qs_ctx("Select message levels to notify","options"));
 
 	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for low-priority messages","options"),
 				KviOption_uintMinTrayLowLevelMessage,
-				1,5,1,true);
+				1,4,1,true);
 
 	addUIntSelector(m_pLevelsGroup,__tr2qs_ctx("Minimum level for high-priority message","options"),
 				KviOption_uintMinTrayHighLevelMessage,
-				1,5,4,true);
+				1,4,4,true);
 
-	addRowSpacer(0,6,0,6);
+	addRowSpacer(0,5,0,5);
 
 	connect(m_pEnable,SIGNAL(toggled(bool)),this,SLOT(setEnabled(bool)));
 	connect(m_pLevelBasedNotify,SIGNAL(toggled(bool)),this,SLOT(setEnabled(bool)));
@@ -73,7 +72,6 @@ void KviTrayOptionsWidget::setEnabled(bool)
 		m_pEnableFlashing->setEnabled(true);
 		m_pLevelBasedNotify->setEnabled(true);
 		m_pCloseInTray->setEnabled(true);
-		m_pMinimizeInTray->setEnabled(true);
 		if(m_pLevelBasedNotify->isChecked())
 			m_pLevelsGroup->setEnabled(true);
 		else
@@ -81,7 +79,6 @@ void KviTrayOptionsWidget::setEnabled(bool)
 
 	} else {
 		m_pCloseInTray->setEnabled(false);
-		m_pMinimizeInTray->setEnabled(false);
 		m_pEnableFlashing->setEnabled(false);
 		m_pLevelBasedNotify->setEnabled(false);
 		m_pLevelsGroup->setEnabled(false);

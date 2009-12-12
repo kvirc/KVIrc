@@ -788,28 +788,6 @@ void KviFrame::childWindowActivated(KviWindow *wnd, bool bForce)
 	KVS_TRIGGER_EVENT_0(KviEvent_OnWindowActivated,wnd);
 }
 
-void KviFrame::changeEvent(QEvent * e)
-{
-	if (e->type() == QEvent::WindowStateChange)
-	{
-		//MINIMIZED EVENT
-		if(isMinimized() && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
-		{
-			if(!dockExtension())
-				executeInternalCommand(KVI_INTERNALCOMMAND_TRAYICON_SHOW);
-			if(dockExtension())
-			{
-				e->ignore();
-				QTimer::singleShot( 0, this, SLOT(hide()) );
-			}
-		}
-
-	} else {
-		KviTalMainWindow::changeEvent(e);
-	}
-}
-
-
 void KviFrame::closeEvent(QCloseEvent *e)
 {
 	//check if the user just want us to minimize in tray; if we're not the sender

@@ -275,7 +275,7 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ShowExtendedInfoInQueryLabel",true,KviOption_resetUpdateGui),
 	BOOL_OPTION("UseUserListColorsAsNickColors",true,KviOption_sectFlagIrcView | KviOption_groupTheme),
 	BOOL_OPTION("GzipLogs",false,KviOption_sectFlagLogging),
-	BOOL_OPTION("MinimizeInTray",false,KviOption_resetUpdateGui),
+	BOOL_OPTION("UseFullWordHighlighting",false,KviOption_sectFlagIrcView),
 	BOOL_OPTION("NotifierFlashing",true,KviOption_sectFlagFrame),
 	BOOL_OPTION("CommandlineInUserFriendlyModeByDefault",false,KviOption_sectFlagFrame), // this confuses existing users and is not mentioned in the docs where there are commandline examples : we need it to be off by default for now
 	BOOL_OPTION("EnableVisualEffects",true,KviOption_resetUpdateGui),
@@ -314,7 +314,6 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("PasteLastLogOnChannelJoin",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("PasteLastLogOnQueryJoin",false,KviOption_sectFlagLogging),
 	BOOL_OPTION("UseSpecifiedSmartColorForOwnNick",false,KviOption_sectFlagIrcView | KviOption_resetUpdateGui | KviOption_groupTheme),
-	BOOL_OPTION("UseFullWordHighlighting",false,KviOption_sectFlagIrcView),
 	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput),
 	BOOL_OPTION("AutoAcceptDccVideo", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccVideo", false, KviOption_sectFlagDcc),

@@ -282,7 +282,7 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolShowExtendedInfoInQueryLabel 188               /* query */
 #define KviOption_boolUseUserListColorsAsNickColors 189              /* irc::usermessages */
 #define KviOption_boolGzipLogs 190                                   /* ircengine::logging */
-#define KviOption_boolMinimizeInTray 191                                   /* interface */
+#define KviOption_boolUseFullWordHighlighting 191                    /* highlight */
 #define KviOption_boolNotifierFlashing 192                                   /* interface::notifier */
 #define KviOption_boolCommandlineInUserFriendlyModeByDefault 193     /* interface::input */
 #define KviOption_boolEnableVisualEffects 194     /* interface */
@@ -321,13 +321,12 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolPasteLastLogOnChannelJoin 227                /* channel */
 #define KviOption_boolPasteLastLogOnQueryJoin 228                  /* query */
 #define KviOption_boolUseSpecifiedSmartColorForOwnNick 229 /* interface::ircview */
-#define KviOption_boolUseFullWordHighlighting 230 /* highlight */
-#define KviOption_boolZshLikeNickCompletion 231
-#define KviOption_boolAutoAcceptDccVideo 232                          /* dcc::video */
-#define KviOption_boolCreateMinimizedDccVideo 233                     /* dcc::video */
-#define KviOption_boolCreateMinimizedDccVideoWhenAutoAccepted 234     /* dcc::video */
+#define KviOption_boolZshLikeNickCompletion 230
+#define KviOption_boolAutoAcceptDccVideo 231                          /* dcc::video */
+#define KviOption_boolCreateMinimizedDccVideo 232                     /* dcc::video */
+#define KviOption_boolCreateMinimizedDccVideoWhenAutoAccepted 233     /* dcc::video */
 
-#define KVI_NUM_BOOL_OPTIONS 235
+#define KVI_NUM_BOOL_OPTIONS 234
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

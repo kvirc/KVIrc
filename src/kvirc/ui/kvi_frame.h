@@ -196,7 +196,6 @@ protected:
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void moveEvent(QMoveEvent *e);
 	virtual bool focusNextPrevChild(bool next);
-	virtual void changeEvent(QEvent * event);
 
 	void updatePseudoTransparency();
 	void installAccelerators();

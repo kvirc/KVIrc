@@ -1454,12 +1454,7 @@ void KviApp::createFrame()
 
 	if(KVI_OPTION_BOOL(KviOption_boolStartupMinimized))
 	{
-		if(KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && KVI_OPTION_BOOL(KviOption_boolShowDockExtension))
-		{
-			g_pFrame->hide();
-		} else {
-			g_pFrame->showMinimized();
-		}
+		g_pFrame->showMinimized();
 	} else {
 		g_pFrame->show();
 	}
