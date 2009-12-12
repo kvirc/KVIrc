@@ -790,25 +790,7 @@ void KviFrame::childWindowActivated(KviWindow *wnd, bool bForce)
 
 void KviFrame::changeEvent(QEvent * e)
 {
-	if (e->type() == QEvent::ActivationChange)
-	{
-		//WINDOW (DE)ACTIVATION
-		// if we have just been activated by the WM
-		// then update the active window task bar item
-		// It will then reset its highlight state
-		// and hopefully make the dock widget work correctly
-		// in this case.
-		// This will also trigger the OnWindowActivated event :)
-		if(isActiveWindow())
-		{
-			if(g_pActiveWindow)
-				childWindowActivated(g_pActiveWindow, true);
-		} else {
-			if(g_pActiveWindow)
-				g_pActiveWindow->lostUserFocus();
-		}
-
-	} else if (e->type() == QEvent::WindowStateChange)
+	if (e->type() == QEvent::WindowStateChange)
 	{
 		//MINIMIZED EVENT
 		if(isMinimized() && KVI_OPTION_BOOL(KviOption_boolMinimizeInTray) && e->spontaneous())
