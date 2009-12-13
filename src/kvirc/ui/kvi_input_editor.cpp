@@ -1156,24 +1156,7 @@ void KviInputEditor::returnPressed(bool)
 
 	m_iCurHistoryIdx = -1;
 
-	// FIXME: ALL THIS STUFF SHOULD BE CONVERTED TO QString
-	/*
-	if(m_pInputParent->inherits("KviInput"))
-	{
-		QString szBuffer(m_szTextBuffer);
-		m_szTextBuffer="";
-		selectOneChar(-1);
-		m_iCursorPosition = 0;
-		m_iFirstVisibleChar = 0;
-		if(bRepaint)repaintWithCursorOn();
-		KviUserInput::parse(szBuffer,m_pKviWindow);
-	} else {
-	*/
 	emit enterPressed();
-	/*
-		return;
-	}
-	*/
 }
 
 void KviInputEditor::focusInEvent(QFocusEvent *)
@@ -1487,26 +1470,7 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			break;
 			case Qt::Key_Return:
 			case Qt::Key_Enter:
-				if(m_pInputParent->inherits("KviInput"))
-				{
-					QString szBuffer(m_szTextBuffer);
-					m_szTextBuffer="";
-					selectOneChar(-1);
-					m_iCursorPosition = 0;
-					m_iFirstVisibleChar = 0;
-					repaintWithCursorOn();
-					KviUserInput::parseNonCommand(szBuffer,m_pKviWindow);
-					if (!szBuffer.isEmpty())
-					{
-						KviInputHistory::instance()->add(new QString(szBuffer));
-						m_pHistory->insert(0,new QString(szBuffer));
-					}
-
-					__range_valid(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
-					if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
-
-					m_iCurHistoryIdx = -1;
-				}
+				returnPressed();
 				break;
 			default:
 				if(!m_bReadOnly) insertText(e->text());

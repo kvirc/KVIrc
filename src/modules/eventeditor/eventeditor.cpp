@@ -498,27 +498,28 @@ KviEventEditorWindow::KviEventEditorWindow(KviFrame * lpFrm)
 {
 	g_pEventEditorWindow = this;
 
+	QGridLayout * g = new QGridLayout();
 	m_pEditor = new KviEventEditor(this);
+	g->addWidget(m_pEditor,0,0,1,4);
 
-	m_pBase = new QWidget(this);
-	QGridLayout * g = new QGridLayout(m_pBase);
-
-	QPushButton * btn = new QPushButton(__tr2qs_ctx("&OK","editor"),m_pBase);
+	QPushButton * btn = new QPushButton(__tr2qs_ctx("&OK","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(okClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
-	g->addWidget(btn,0,1);
+	g->addWidget(btn,1,1);
 
-	btn = new QPushButton(__tr2qs_ctx("&Apply","editor"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("&Apply","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(applyClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_ACCEPT)));
-	g->addWidget(btn,0,2);
+	g->addWidget(btn,1,2);
 
-	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),m_pBase);
+	btn = new QPushButton(__tr2qs_ctx("Cancel","editor"),this);
 	connect(btn,SIGNAL(clicked()),this,SLOT(cancelClicked()));
 	btn->setIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_DISCARD)));
-	g->addWidget(btn,0,3);
+	g->addWidget(btn,1,3);
 
+	g->setRowStretch(0,1);
 	g->setColumnStretch(0,1);
+	setLayout(g);
 }
 
 KviEventEditorWindow::~KviEventEditorWindow()
@@ -542,17 +543,9 @@ void KviEventEditorWindow::cancelClicked()
 	close();
 }
 
-
 QPixmap * KviEventEditorWindow::myIconPtr()
 {
 	return g_pIconManager->getSmallIcon(KVI_SMALLICON_EVENT);
-}
-
-void KviEventEditorWindow::resizeEvent(QResizeEvent *)
-{
-	int hght = m_pBase->sizeHint().height();
-	m_pEditor->setGeometry(0,0,width(),height()- hght);
-	m_pBase->setGeometry(0,height() - hght,width(),hght);
 }
 
 void KviEventEditorWindow::fillCaptionBuffers()

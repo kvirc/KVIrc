@@ -188,11 +188,9 @@ public:
 	~KviPopupEditorWindow();
 protected:
 	KviPopupEditor * m_pEditor;
-	QWidget        * m_pBase;
 protected:
 	virtual QPixmap * myIconPtr();
 	virtual void fillCaptionBuffers();
-	virtual void resizeEvent(QResizeEvent *e);
 	virtual void getConfigGroupName(QString &szName);
 	virtual void saveProperties(KviConfig *);
 	virtual void loadProperties(KviConfig *);

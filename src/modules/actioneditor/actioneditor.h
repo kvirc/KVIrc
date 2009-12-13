@@ -188,10 +188,8 @@ public:
 	~KviActionEditorWindow();
 protected:
 	KviActionEditor * m_pEditor;
-	QWidget         * m_pBase;
 protected:
 	virtual QPixmap * myIconPtr();
-	virtual void resizeEvent(QResizeEvent *e);
 	virtual void getConfigGroupName(QString &szName);
 	virtual void saveProperties(KviConfig *);
 	virtual void loadProperties(KviConfig *);
