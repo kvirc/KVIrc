@@ -70,6 +70,8 @@ LangString AutostartSection ${LANG_ENGLISH} "Autostart"
 LangString AutostartSectionDescr ${LANG_ENGLISH} "Start program when user login"
 LangString MsgUninstallOldInstaller ${LANG_ENGLISH} "Previous versions of KVIrc must to be uninstalled."
 LangString KVIrcIsRunning ${LANG_ENGLISH} "An instance of KVIrc is currently running. Exit KVIrc and then try again."
+LangString WinampSection ${LANG_ENGLISH} "Winamp plugin"
+LangString WinampSectionDescr ${LANG_ENGLISH} "Install Winamp plugin"
 
 !include ".\translations\*.nsi"
 
@@ -154,6 +156,12 @@ Section /o $(AutostartSection) AutostartSection_IDX
   Call AddAutostart
 SectionEnd
 
+Section $(WinampSection) WinampSection_IDX
+  ReadRegStr $R0 HKCU Software\Winamp ""
+  IfFileExists "$R0\winamp.exe" 0 +2
+  Rename "$INSTDIR\modules\gen_kvirc.dll" "$R0\Plugins\gen_kvirc.dll"
+SectionEnd
+
 ;--------------------------------
 ; Descriptions
 
@@ -168,13 +176,21 @@ SectionEnd
         $(TraySectionDescr)
 !insertmacro MUI_DESCRIPTION_TEXT ${AutostartSection_IDX} \
         $(AutostartSectionDescr)
+!insertmacro MUI_DESCRIPTION_TEXT ${WinampSection_IDX} \
+        $(WinampSectionDescr)
 !insertmacro MUI_FUNCTION_DESCRIPTION_END
 
 
 Function .onInit
-	!insertmacro MUI_LANGDLL_DISPLAY
+    !insertmacro MUI_LANGDLL_DISPLAY
 
-	Call CloseKVIrcInstances
+    Call CloseKVIrcInstances
+
+    ReadRegStr $R0 HKCU Software\Winamp ""
+    IfFileExists "$R0\winamp.exe" continue 0
+        SectionSetFlags ${WinampSection_IDX} 16 # 10000 in binary: disabled+unchecked
+continue:
+
 
     SetShellVarContext all
     ; Remove old installer
@@ -227,6 +243,11 @@ Section !un.$(UnGeneralFiles)
     RMDir /r "$INSTDIR\themes"
     Delete "$INSTDIR\*.dll"
     Delete "$INSTDIR\*.exe"
+
+    ReadRegStr $R0 HKCU Software\Winamp ""
+        IfFileExists "$R0\Plugins\gen_kvirc.dll" 0 +2
+        Delete "$R0\Plugins\gen_kvirc.dll"
+
 SectionEnd
 
 ;Remove local data dir
