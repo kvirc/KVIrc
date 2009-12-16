@@ -67,6 +67,18 @@ public:
 	* \brief Destroys the Mdi manager object
 	*/
 	~KviMdiManager();
+
+	/**
+	* \brief Filters out some (de)activation events from the QMdiArea handling
+	* This fixed #425 and #519 (unwanted mdichild activation when KviFrame is not the active window)
+	* \return bool
+	*/
+	
+	bool eventFilter(QObject*, QEvent* event)
+	{
+		return event->type() == QEvent::ApplicationActivate
+		|| event->type() == QEvent::ApplicationDeactivate;
+	};
 private:
 	bool m_bInSDIMode;
 protected:
