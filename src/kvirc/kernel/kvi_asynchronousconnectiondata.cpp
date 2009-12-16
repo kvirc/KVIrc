@@ -35,5 +35,7 @@ KviAsynchronousConnectionData::KviAsynchronousConnectionData()
 
 KviAsynchronousConnectionData::~KviAsynchronousConnectionData()
 {
+	if(m_pReconnectInfo)
+		delete m_pReconnectInfo;
 }
 
