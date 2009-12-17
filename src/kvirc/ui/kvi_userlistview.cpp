@@ -365,7 +365,7 @@ void KviUserListView::applyOptions()
 		updateUsersLabel();
 	}*/
 	setFont(KVI_OPTION_FONT(KviOption_fontUserListView));
-	QFontMetrics fm(KVI_OPTION_FONT(KviOption_fontUserListView));
+	QFontMetrics fm(font());
 
 	m_iFontHeight = fm.lineSpacing();
 	m_pViewArea->m_pScrollBar->setSingleStep(m_iFontHeight);
