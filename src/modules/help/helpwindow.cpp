@@ -61,7 +61,6 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 		} else {
 			g_pDocIndex->makeIndex();
 			g_pDocIndex->writeDict();
-			g_pDocIndex->writeDocumentList();
 		}
 		g_bIndexingDone=TRUE;
 	}
@@ -141,7 +140,6 @@ void KviHelpWindow::refreshIndex()
 	m_pIndexListWidget->clear();
 	g_pDocIndex->makeIndex();
 	g_pDocIndex->writeDict();
-	g_pDocIndex->writeDocumentList();
 	g_bIndexingDone=TRUE;
 	QStringList docList=g_pDocIndex->titlesList();
 	m_pIndexListWidget->addItems(docList);
