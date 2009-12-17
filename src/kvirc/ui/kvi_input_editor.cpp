@@ -1470,7 +1470,26 @@ void KviInputEditor::keyPressEvent(QKeyEvent * e)
 			break;
 			case Qt::Key_Return:
 			case Qt::Key_Enter:
-				returnPressed();
+				if(m_pInputParent->inherits("KviInput"))
+				{
+					QString szBuffer(m_szTextBuffer);
+					m_szTextBuffer="";
+					selectOneChar(-1);
+					m_iCursorPosition = 0;
+					m_iFirstVisibleChar = 0;
+					repaintWithCursorOn();
+					KviUserInput::parseNonCommand(szBuffer,m_pKviWindow);
+					if (!szBuffer.isEmpty())
+					{
+						KviInputHistory::instance()->add(new QString(szBuffer));
+						m_pHistory->insert(0,new QString(szBuffer));
+					}
+
+					__range_valid(KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES > 1); //ABSOLUTELY NEEDED, if not, pHist will be destroyed...
+					if(m_pHistory->count() > KVI_INPUT_MAX_LOCAL_HISTORY_ENTRIES)m_pHistory->removeLast();
+
+					m_iCurHistoryIdx = -1;
+				}
 				break;
 			default:
 				if(!m_bReadOnly) insertText(e->text());
