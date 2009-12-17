@@ -347,7 +347,7 @@ void KviTrayIcon::toggleParentFrame()
 {
 	if(m_pFrm->isMinimized())
 	{
-		m_pFrm->setWindowState(m_pFrm->windowState() & ~Qt::WindowMinimized | Qt::WindowActive);
+		m_pFrm->setWindowState(m_pFrm->windowState() & (~Qt::WindowMinimized | Qt::WindowActive));
 		m_pFrm->show();
 	} else if(!m_pFrm->isVisible())
 	{
