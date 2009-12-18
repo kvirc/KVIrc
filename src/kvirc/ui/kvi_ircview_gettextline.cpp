@@ -530,43 +530,46 @@ found_color_escape:
 found_icon_escape:
 #endif //COMPILE_USE_DYNAMIC_LABELS
 			p++;
-			if(*p > 32)
+			if(KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
 			{
-				// Icon control word... need a new attribute struct
-				const kvi_wchar_t * beginPtr = p - 1;
-				const kvi_wchar_t * icon_name = p;
-				while(*p > 32)p++;
-				int datalen = p - icon_name;
-				kvi_wchar_t save = *p;
-				// throw away constness!
-				*((kvi_wchar_t *)p) = 0;
-				// FIXME: this has to be changed! : lookupTextIcon must use wide characters!
-				QString tmpQ;
-				tmpQ.setUtf16(icon_name,datalen);
-				KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(tmpQ);
-				// throw away constness!
-				*((kvi_wchar_t *)p) = save;
-				//if(*p == KVI_TEXT_ICON)p++; // ending delimiter
-				if(icon)
+				if(*p > 32)
 				{
-					APPEND_LAST_TEXT_BLOCK(data_ptr,beginPtr - data_ptr)
-					NEW_LINE_CHUNK(KVI_TEXT_ICON)
-					line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc((datalen + 1) * sizeof(kvi_wchar_t));
-					kvi_fastmoveodd((void *)(line_ptr->pChunks[iCurChunk].szPayload),icon_name,datalen * sizeof(kvi_wchar_t));
-					line_ptr->pChunks[iCurChunk].szPayload[datalen] = 0;
-					line_ptr->pChunks[iCurChunk].szSmileId=line_ptr->pChunks[iCurChunk].szPayload;
-
-					APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(icon_name,datalen)
-
-					if(icon->animatedPixmap())
+					// Icon control word... need a new attribute struct
+					const kvi_wchar_t * beginPtr = p - 1;
+					const kvi_wchar_t * icon_name = p;
+					while(*p > 32)p++;
+					int datalen = p - icon_name;
+					kvi_wchar_t save = *p;
+					// throw away constness!
+					*((kvi_wchar_t *)p) = 0;
+					// FIXME: this has to be changed! : lookupTextIcon must use wide characters!
+					QString tmpQ;
+					tmpQ.setUtf16(icon_name,datalen);
+					KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(tmpQ);
+					// throw away constness!
+					*((kvi_wchar_t *)p) = save;
+					//if(*p == KVI_TEXT_ICON)p++; // ending delimiter
+					if(icon)
 					{
-						//FIXME: that's ugly
-						disconnect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
-						connect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
-						m_hAnimatedSmiles.insert(line_ptr,icon->animatedPixmap());
+						APPEND_LAST_TEXT_BLOCK(data_ptr,beginPtr - data_ptr)
+						NEW_LINE_CHUNK(KVI_TEXT_ICON)
+						line_ptr->pChunks[iCurChunk].szPayload = (kvi_wchar_t *)kvi_malloc((datalen + 1) * sizeof(kvi_wchar_t));
+						kvi_fastmoveodd((void *)(line_ptr->pChunks[iCurChunk].szPayload),icon_name,datalen * sizeof(kvi_wchar_t));
+						line_ptr->pChunks[iCurChunk].szPayload[datalen] = 0;
+						line_ptr->pChunks[iCurChunk].szSmileId=line_ptr->pChunks[iCurChunk].szPayload;
+
+						APPEND_LAST_TEXT_BLOCK_HIDDEN_FROM_NOW(icon_name,datalen)
+
+						if(icon->animatedPixmap())
+						{
+							//FIXME: that's ugly
+							disconnect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
+							connect(icon->animatedPixmap(),SIGNAL(frameChanged()),this,SLOT(animatedIconChange()));
+							m_hAnimatedSmiles.insert(line_ptr,icon->animatedPixmap());
+						}
+						data_ptr = p;
+						NEW_LINE_CHUNK(KVI_TEXT_UNICON)
 					}
-					data_ptr = p;
-					NEW_LINE_CHUNK(KVI_TEXT_UNICON)
 				}
 			}
 			break;
