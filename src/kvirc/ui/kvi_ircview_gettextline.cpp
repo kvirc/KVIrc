@@ -219,7 +219,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	// return to the appropriate loop
 	// This is again BAD PROGRAMMING(TM) :).... but it is faster than
 	// the version with no dynamic gotos, and really faster
-	// that any version without gotos that comed into my mind...
+	// that any version without gotos that came into my mind...
 	//
 	// This code will prolly work only with GCC...(and even needs a "smart" one)
 
@@ -246,7 +246,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	// ...we have less instructions , but the code takes longer to execute (7-8% longer)
 	// it might be also due to pipeline tricks, jump "next instruction precalculation" stuff...
 
-	// So we end up using the fist version here
+	// So we end up using the first version here
 
 	void * loop_begin;
 
@@ -321,7 +321,7 @@ const kvi_wchar_t * KviIrcView::getTextLine(int iMsgType,
 	if(KVI_OPTION_BOOL(KviOption_boolIrcViewUrlHighlighting) || KVI_OPTION_BOOL(KviOption_boolDrawEmoticons))
 	{
 		loop_begin = &&highlighting_check_loop;               // get the address of the return label
-		// forewer loop
+		// forever loop
 highlighting_check_loop:
 		// yet more optimized
 		if(*((unsigned short *)p) < 0xff)
@@ -330,16 +330,16 @@ highlighting_check_loop:
 //nothing_found:
 		p++;
 		goto highlighting_check_loop;
-		// newer here
+		// never here
 	} else {
 		loop_begin = &&escape_check_loop;                     // get the address of the return label
 		// forever loop
 escape_check_loop:
 		while(*((unsigned short *)p) > 31)p++;
 		goto check_escape_switch;                             // returns to escape_check_loop or returns from the function at all
-		// newer here
+		// never here
 	}
-	// newer here
+	// never here
 
 
 #else // !COMPILE_USE_DYNAMIC_LABELS
