@@ -157,10 +157,10 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	g_pApp->getLocalKvircDirectory(m_szLogDirectory,KviApp::Log);
 	KviQString::ensureLastCharIs(m_szLogDirectory,'/'); // Does this work on Windows?
 
-	cacheFileList();
-	setupItemList();
+	//avoid to execute the long time-consuming procedure of log indexing here:
+	//we could still be inside the context of the "Browse log files" QAction
+	QTimer::singleShot( 0, this, SLOT(cacheFileList()) );
 }
-
 
 KviLogViewMDIWindow::~KviLogViewMDIWindow()
 {
@@ -318,6 +318,8 @@ void KviLogViewMDIWindow::cacheFileList()
 		if(fi.suffix()=="gz" || fi.suffix()=="log")
 			m_logList.append(new KviLogFile(szFname));
 	}
+
+	setupItemList();
 }
 
 void KviLogViewMDIWindow::itemSelected(QTreeWidgetItem * it,QTreeWidgetItem *)

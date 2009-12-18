@@ -122,8 +122,6 @@ protected:
 	QStringList getFileNames();
 
 	void setupItemList();
-	void cacheFileList();
-
 	virtual QPixmap * myIconPtr();
 	virtual void resizeEvent(QResizeEvent *e);
 	virtual void keyPressEvent(QKeyEvent *e);
@@ -135,6 +133,7 @@ protected slots:
 	void itemSelected(QTreeWidgetItem * it, QTreeWidgetItem *);
 	void deleteCurrent();
 	void applyFilter();
+	void cacheFileList();
 };
 
 #endif //_LOGVIEWMDIWINDOW_H_
