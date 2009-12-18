@@ -1629,14 +1629,14 @@ void KviIrcView::calculateLineWraps(KviIrcViewLine *ptr,int maxWidth)
 		} else {
 			//Need word wrap
 			//First go back to an admissible width
-			while((curLineWidth >= maxWidth) && curBlockLen)
+			while((curLineWidth >= maxWidth) && (curBlockLen > 0))
 			{
 				p--;
 				curBlockLen--;
 				curLineWidth-=IRCVIEW_WCHARWIDTH(*p);
 			}
 			//Now look for a space
-			while((*p != ' ') && curBlockLen)
+			while((*p != ' ') && (curBlockLen > 0))
 			{
 				p--;
 				curBlockLen--;
