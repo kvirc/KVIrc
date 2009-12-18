@@ -384,7 +384,21 @@ bool KviPackThemeDialog::packTheme()
 
 	KviPackageWriter f;
 
-	QString szTmp = QDateTime::currentDateTime().toString();
+	QString szTmp;
+	QDateTime date = QDateTime::currentDateTime();
+	
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szTmp = date.toString();
+			break;
+		case 1:
+			szTmp = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szTmp = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
 
 	f.addInfoField("PackageType","ThemePack");
 	f.addInfoField("ThemePackVersion",KVI_CURRENT_THEME_ENGINE_VERSION);

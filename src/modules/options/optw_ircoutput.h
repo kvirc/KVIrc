@@ -43,6 +43,7 @@ public:
 	~KviIrcOutputOptionsWidget();
 protected:
 	QComboBox * m_pVerbosityCombo;
+	QComboBox * m_pDatetimeCombo;
 protected:
 	virtual void commit();
 };

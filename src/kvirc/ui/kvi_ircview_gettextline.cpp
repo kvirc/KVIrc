@@ -1000,9 +1000,23 @@ void KviIrcView::appendText(int iMsgType,const kvi_wchar_t *data_ptr,int iFlags)
 
 		if(!KVI_OPTION_BOOL(KviOption_boolStripControlCodesInLogs))
 		{
-			QString szBuffer;
+			QString szBuffer, szDate;
+			
+			QDateTime date = QDateTime::currentDateTime();
+			switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+			{
+				case 0:
+					szDate = date.toString("[hh:mm:ss] ");
+					break;
+				case 1:
+					szDate = date.toString(Qt::ISODate);
+					break;
+				case 2:
+					szDate = date.toString(Qt::SystemLocaleDate);
+					break;
+			}
 			kvi_appendWCharToQStringWithLength(&szBuffer,data_ptr,kvi_wstrlen(data_ptr));
-			szBuffer.prepend(QDateTime::currentDateTime().toString("[h:mm:ss] "));
+			szBuffer.prepend(szDate);
 			if(m_pLogFile && KVI_OPTION_MSGTYPE(iMsgType).logEnabled())
 			{
 				add2Log(szBuffer,iMsgType);

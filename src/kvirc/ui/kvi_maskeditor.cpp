@@ -31,19 +31,33 @@
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_toolwindows_container.h"
 #include "kvi_channel.h"
+#include "kvi_options.h"
 
 #include <QLayout>
 #include <QLabel>
 #include <QValidator>
 
-KviMaskItem::KviMaskItem(QTreeWidget* parent,KviMaskEntry* entry)
-:QTreeWidgetItem(parent), m_Mask(*entry)
+KviMaskItem::KviMaskItem(QTreeWidget * pParent, KviMaskEntry * pEntry)
+:QTreeWidgetItem(pParent), m_Mask(*pEntry)
 {
+	QString szDate;
 	QDateTime date;
 	date.setTime_t(mask()->uSetAt);
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szDate = date.toString();
+			break;
+		case 1:
+			szDate = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szDate = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
 	setText(0,mask()->szMask);
 	setText(1,mask()->szSetBy);
-	setText(2,date.toString());
+	setText(2,szDate);
 }
 
 KviMaskItem::~KviMaskItem()

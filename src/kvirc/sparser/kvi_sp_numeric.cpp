@@ -536,10 +536,23 @@ void KviServerParser::parseNumericTopicWhoTime(KviIrcMessage *msg)
 	unsigned long t = 0;
 	if(tmp.hasData())t = tmp.toUInt(&bOk);
 
-	QDateTime dt;
-	dt.setTime_t(t);
+	QString szDate;
+	QDateTime date;
+	date.setTime_t(t);
+	
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szDate = date.toString();
+			break;
+		case 1:
+			szDate = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szDate = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
 
-	QString szDate = dt.toString();
 	QString szWho = msg->connection()->decodeText(msg->safeParam(2));
 	KviIrcMask who(szWho);
 	QString szDisplayableWho;
@@ -598,16 +611,29 @@ void KviServerParser::parseNumericChannelModeIs(KviIrcMessage *msg)
 	}
 }
 
-void getDateTimeStringFromCharTimeT(QString &buffer,const char *time_t_string)
+void getDateTimeStringFromCharTimeT(QString & szBuffer, const char * time_t_string)
 {
-	KviStr tmp=time_t_string;
-	bool bOk=false;
-	unsigned int uTime = tmp.toUInt(&bOk);
-	if(bOk){
-		QDateTime dt;
-		dt.setTime_t(uTime);
-		buffer = dt.toString();
-	} else buffer = __tr2qs("(Unknown)");
+	KviStr szTmp = time_t_string;
+	bool bOk = false;
+	unsigned int uTime = szTmp.toUInt(&bOk);
+	if(bOk)
+	{
+		QDateTime date;
+		date.setTime_t(uTime);
+		
+		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+		{
+			case 0:
+				szBuffer = date.toString();
+				break;
+			case 1:
+				szBuffer = date.toString(Qt::ISODate);
+				break;
+			case 2:
+				szBuffer = date.toString(Qt::SystemLocaleDate);
+				break;
+		}
+	} else szBuffer = __tr2qs("(Unknown)");
 }
 
 #define PARSE_NUMERIC_ENDOFLIST(__funcname,__setGotIt,__didSendRequest,__setDone,__daicon,__szWhatQString) \
@@ -1275,12 +1301,26 @@ void KviServerParser::parseNumericWhoisIdle(KviIrcMessage *msg)
 		uTime = sign.toUInt(&bOk);
 		if(bOk)
 		{
-			QDateTime dt;
-			dt.setTime_t((time_t)uTime);
-			QString tmp = dt.toString();
+			QString szTmp;
+			QDateTime date;
+			date.setTime_t((time_t)uTime);
+			
+			switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+			{
+				case 0:
+					szTmp = date.toString();
+					break;
+				case 1:
+					szTmp = date.toString(Qt::ISODate);
+					break;
+				case 2:
+					szTmp = date.toString(Qt::SystemLocaleDate);
+					break;
+			}
+
 			pOut->output(
 				KVI_OUT_WHOISIDLE,__tr2qs("%c\r!n\r%Q\r%c's signon time: %Q"),KVI_TEXT_BOLD,
-				&szNick,KVI_TEXT_BOLD,&tmp);
+				&szNick,KVI_TEXT_BOLD,&szTmp);
 		}
 	}
 }
@@ -1491,15 +1531,29 @@ void KviServerParser::parseNumericCreationTime(KviIrcMessage *msg)
 	QString szChan = msg->connection()->decodeText(msg->safeParam(1));
 	KviChannel * chan = msg->connection()->findChannel(szChan);
 	KviStr tmstr = msg->safeParam(2);
-	QDateTime dt;
-	dt.setTime_t((time_t)tmstr.toUInt());
+	QDateTime date;
+	date.setTime_t((time_t)tmstr.toUInt());
 
 	if(!tmstr.isUnsignedNum())
 	{
 		UNRECOGNIZED_MESSAGE(msg,__tr2qs("Can't evaluate creation time"));
 		return;
 	}
-	QString szDate = dt.toString();
+	
+	QString szDate;
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szDate = date.toString();
+			break;
+		case 1:
+			szDate = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szDate = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
+	
 	if(chan)
 	{
 		if(!msg->haltOutput())

@@ -528,9 +528,22 @@ void KviWindow::getConfigGroupName(QString &buf)
 void KviWindow::getDefaultLogFileName(QString &buffer)
 {
 	// FIXME: #warning "Make it configurable ?"
-	QString date;
-	QDate dt(QDate::currentDate());
-	date=dt.toString("yyyy.MM.dd");
+	QString szDate;
+	QDate date(QDate::currentDate());
+	
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szDate = date.toString("yyyy-MM-dd");
+			break;
+		case 1:
+			szDate = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szDate = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
+
 	QString base;
 	getBaseLogFileName(base);
 	KviFileUtils::encodeFileName(base);
@@ -538,9 +551,11 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 	base=base.toLower();
 	QString tmp;
 	if(KVI_OPTION_BOOL(KviOption_boolGzipLogs))
-		KviQString::sprintf(tmp,"%s_%s_%s.log.gz",typeString(),base.toUtf8().data(),date.toUtf8().data());
-	else
-		KviQString::sprintf(tmp,"%s_%s_%s.log",typeString(),base.toUtf8().data(),date.toUtf8().data());
+	{
+		KviQString::sprintf(tmp,"%s_%s_%s.log.gz",typeString(),base.toUtf8().data(),szDate.toUtf8().data());
+	} else {
+		KviQString::sprintf(tmp,"%s_%s_%s.log",typeString(),base.toUtf8().data(),szDate.toUtf8().data());
+	}
 	g_pApp->getLocalKvircDirectory(buffer,KviApp::Log,tmp);
 }
 

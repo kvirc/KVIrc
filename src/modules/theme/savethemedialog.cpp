@@ -237,7 +237,23 @@ bool KviSaveThemeDialog::saveTheme()
 
 	sto.setAuthor(m_pAuthorNameEdit->text());
 	sto.setDescription(m_pThemeDescriptionEdit->toPlainText());
-	sto.setDate(QDateTime::currentDateTime().toString());
+	
+	QString szTmp;
+	QDateTime date = QDateTime::currentDateTime();
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szTmp = date.toString();
+			break;
+		case 1:
+			szTmp = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szTmp = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
+	
+	sto.setDate(szTmp);
 	sto.setVersion(m_pThemeVersionEdit->text());
 	sto.setApplication("KVIrc " KVI_VERSION "." KVI_SOURCES_DATE);
 

@@ -1326,7 +1326,21 @@ void KviServerParser::parseCtcpRequestTime(KviCtcpMessage *msg)
 	{
 		if(!KVI_OPTION_BOOL(KviOption_boolIgnoreCtcpTime))
 		{
-			replyCtcp(msg,QDateTime::currentDateTime().toString());
+			QString szTmp;
+			QDateTime date = QDateTime::currentDateTime();
+			switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+			{
+				case 0:
+					szTmp = date.toString();
+					break;
+				case 1:
+					szTmp = date.toString(Qt::ISODate);
+					break;
+				case 2:
+					szTmp = date.toString(Qt::SystemLocaleDate);
+					break;
+			}
+			replyCtcp(msg,szTmp);
 		} else msg->bIgnored = true;
 	}
 

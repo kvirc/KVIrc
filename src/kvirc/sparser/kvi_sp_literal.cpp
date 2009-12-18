@@ -1410,8 +1410,22 @@ void KviServerParser::parseLiteralTopic(KviIrcMessage *msg)
 
 	chan->topicWidget()->setTopic(szTopic);
 	chan->topicWidget()->setTopicSetBy(szNick);
-	QString tmp = QDateTime::currentDateTime().toString();
-	chan->topicWidget()->setTopicSetAt(tmp);
+	
+	QString szTmp;
+	QDateTime date = QDateTime::currentDateTime();
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szTmp = date.toString();
+			break;
+		case 1:
+			szTmp = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szTmp = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
+	chan->topicWidget()->setTopicSetAt(szTmp);
 
 	chan->userAction(szNick,szUser,szHost,KVI_USERACTION_TOPIC);
 

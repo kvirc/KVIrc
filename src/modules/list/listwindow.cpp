@@ -323,7 +323,21 @@ void KviListWindow::exportList()
 	QString szFile;
 	if(connection())
 	{
-		QString szDate = QDateTime::currentDateTime().toString("d MMM yyyy hh-mm");
+		QString szDate;
+		QDateTime date = QDateTime::currentDateTime();
+
+		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+		{
+			case 0:
+				szDate = date.toString("d MMM yyyy hh-mm");
+				break;
+			case 1:
+				szDate = date.toString(Qt::ISODate);
+				break;
+			case 2:
+				szDate = date.toString(Qt::SystemLocaleDate);
+				break;
+		}
 		KviQString::sprintf(szFile,__tr2qs("Channel list for %Q - %Q"),
 			&(connection()->networkName()),&(szDate));
 	} else {

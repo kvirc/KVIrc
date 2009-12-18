@@ -32,6 +32,7 @@
 #include "kvi_packagefile.h"
 #include "kvi_fileextensions.h"
 #include "kvi_sourcesdate.h"
+#include "kvi_options.h"
 
 #include <QTextEdit>
 #include <QLineEdit>
@@ -322,8 +323,22 @@ bool KviPackAddonDialog::packAddon()
 	m_szDirPath.replace("\\","/");
 	m_szSavePath.replace("\\","/");
 
-	QString szTmp = QDateTime::currentDateTime().toString();
+	QString szTmp;
+	QDateTime date = QDateTime::currentDateTime();
 
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szTmp = date.toString();
+			break;
+		case 1:
+			szTmp = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szTmp = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
+		
 	KviPackageWriter pw;
 	pw.addInfoField("PackageType","AddonPack");
 	pw.addInfoField("AddonPackVersion",KVI_CURRENT_ADDONS_ENGINE_VERSION);

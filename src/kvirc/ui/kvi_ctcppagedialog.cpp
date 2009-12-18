@@ -27,6 +27,7 @@
 #include "kvi_locale.h"
 #include "kvi_app.h"
 #include "kvi_iconmanager.h"
+#include "kvi_options.h"
 
 #include <QDateTime>
 #include <QLayout>
@@ -85,7 +86,20 @@ void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,cons
 	QLabel * l = new QLabel(this);
 	l->setFrameStyle(QFrame::Raised | QFrame::StyledPanel);
 	//l->setMaximumWidth(600);
-	QString date = QDateTime::currentDateTime().toString();
+	QString szDate;
+	QDateTime date = QDateTime::currentDateTime();
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szDate = date.toString();
+			break;
+		case 1:
+			szDate = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szDate = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
 
 	QString tmp = "<center>";
 	tmp += __tr2qs("You have been paged by");
@@ -98,7 +112,7 @@ void KviCtcpPageDialog::addPage(const QString &szNick,const QString &szUser,cons
 	tmp += "]</b>:<br><br><b>";
 	tmp += szMsg;
 	tmp += "</b><br><br>[";
-	tmp += date;
+	tmp += szDate;
 	tmp += "]</center>";
 
 	l->setText(tmp);

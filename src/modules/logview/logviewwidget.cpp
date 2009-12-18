@@ -95,7 +95,7 @@ KviLogListViewItemType::KviLogListViewItemType(QTreeWidget * par, KviLogFile::Kv
 KviLogListViewLog::KviLogListViewLog(QTreeWidgetItem * par, KviLogFile::KviLogTypes type, KviLogFile * fileData)
 : KviLogListViewItem(par,type,fileData)
 {
-	setText(0, m_pFileData->date().toString("dd.MM.yyyy"));
+	setText(0, m_pFileData->date().toString("yyyy-MM-dd"));
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

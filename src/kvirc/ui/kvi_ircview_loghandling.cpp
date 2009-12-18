@@ -47,7 +47,22 @@ void KviIrcView::stopLogging()
 {
 	if(m_pLogFile)
 	{
-		QString szLogEnd = QString(__tr2qs("### Log session terminated at %1 ###")).arg(QDateTime::currentDateTime().toString());
+		QString szDate;
+		QDateTime date = QDateTime::currentDateTime();
+		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+		{
+			case 0:
+				szDate = date.toString();
+				break;
+			case 1:
+				szDate = date.toString(Qt::ISODate);
+				break;
+			case 2:
+				szDate = date.toString(Qt::SystemLocaleDate);
+				break;
+		}
+		
+		QString szLogEnd = QString(__tr2qs("### Log session terminated at %1 ###")).arg(szDate);
 		add2Log(szLogEnd);
 		m_pLogFile->close();
 #ifdef COMPILE_ZLIB_SUPPORT
@@ -201,7 +216,22 @@ bool KviIrcView::startLogging(const QString& fname,bool bPrependCurBuffer)
 		}
 	}
 
-	QString szLogStart = QString(__tr2qs("### Log session started at %1 ###")).arg(QDateTime::currentDateTime().toString());
+	QString szDate;
+	QDateTime date = QDateTime::currentDateTime();
+	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+	{
+		case 0:
+			szDate = date.toString();
+			break;
+		case 1:
+			szDate = date.toString(Qt::ISODate);
+			break;
+		case 2:
+			szDate = date.toString(Qt::SystemLocaleDate);
+			break;
+	}
+	
+	QString szLogStart = QString(__tr2qs("### Log session started at %1 ###")).arg(szDate);
 	add2Log(szLogStart);
 	if(bPrependCurBuffer)
 	{

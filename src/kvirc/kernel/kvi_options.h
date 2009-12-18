@@ -583,7 +583,8 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_uintUserIrcViewOwnForeground 74                /* look & feel::ircview */
 #define KviOption_uintUserIrcViewOwnBackground 75                /* look & feel::ircview */
 #define KviOption_uintNotifierPixmapAlign 76
-#define KVI_NUM_UINT_OPTIONS 77
+#define KviOption_uintOutputDatetimeFormat 77                    /* irc::verbosity */
+#define KVI_NUM_UINT_OPTIONS 78
 
 namespace KviIdentdOutputMode {
 	enum Mode {

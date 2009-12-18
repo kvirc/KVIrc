@@ -1232,8 +1232,21 @@ void KviConsole::getWindowListTipText(QString &buffer)
 			buffer += "</td></tr>";
 		}
 
-		QDateTime dt;
-		dt.setTime_t(connection()->statistics()->connectionStartTime());
+		QString szTmp;
+		QDateTime date;
+		date.setTime_t(connection()->statistics()->connectionStartTime());
+		switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+		{
+			case 0:
+				szTmp = date.toString();
+				break;
+			case 1:
+				szTmp = date.toString(Qt::ISODate);
+				break;
+			case 2:
+				szTmp = date.toString(Qt::SystemLocaleDate);
+				break;
+		}
 
 		buffer += START_TABLE_NORMAL_ROW;
 
@@ -1242,7 +1255,7 @@ void KviConsole::getWindowListTipText(QString &buffer)
 		buffer += html_br;
 		buffer += html_tab;
 		buffer += html_bold;
-		buffer += dt.toString();
+		buffer += szTmp;
 		buffer += html_eofbold;
 		buffer += html_br;
 

@@ -1573,10 +1573,25 @@ void KviUserListView::maybeTip(KviUserListToolTip * pTip, const QPoint & pnt)
 
 			if(pEntry->m_joinTime != 0)
 			{
-				QDateTime dt;
-				dt.setTime_t(pEntry->m_joinTime);
+				QString szTmp;
+				QDateTime date;
+				date.setTime_t(pEntry->m_joinTime);
+				
+				switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
+				{
+					case 0:
+						szTmp = date.toString();
+						break;
+					case 1:
+						szTmp = date.toString(Qt::ISODate);
+						break;
+					case 2:
+						szTmp = date.toString(Qt::SystemLocaleDate);
+						break;
+				}
+				
 				szBuffer += "<tr><td bgcolor=\"#F0F0F0\"><nobr><font color=\"#000000\">";
-				szBuffer += __tr2qs("Joined on <b>%1</b>").arg(dt.toString());
+				szBuffer += __tr2qs("Joined on <b>%1</b>").arg(szTmp);
 				szBuffer += "</font></nobr></td></tr>";
 			}
 
