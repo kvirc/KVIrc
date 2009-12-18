@@ -1195,8 +1195,6 @@ KviWindow * KviWindow::outputProxy()
 
 void KviWindow::lostUserFocus()
 {
-	unhighlight();
-
 	if(!m_pIrcView)return;
 	if(m_pIrcView->hasLineMark())m_pIrcView->clearLineMark(true);
 }
