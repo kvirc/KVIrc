@@ -362,11 +362,11 @@ void KviInputEditor::drawContents(QPainter * p)
 		{
 			p->setPen(KVI_OPTION_COLOR(KviOption_colorInputControl));
 
-			QString s = getSubstituteChar(m_szTextBuffer[iCharIdx].unicode());
+			QChar s = getSubstituteChar(m_szTextBuffer[iCharIdx].unicode());
 
 			// the block width is 4 pixels more than the actual character
 
-			p->drawText(iCurXPos + 2,iTextBaseline,s.left(1));
+			p->drawText(iCurXPos + 2,iTextBaseline,s);
 
 			p->drawRect(iCurXPos,iTop,m_iBlockWidth-1,iBottom);
 		} else {
@@ -427,7 +427,7 @@ void KviInputEditor::drawContents(QPainter * p)
 	while(m_iBlockLen < m_iCursorPosition)
 	{
 		QChar c = m_szTextBuffer.at(m_iBlockLen);
-		m_iLastCursorXPosition+= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
+		m_iLastCursorXPosition+= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 		m_iBlockLen++;
 	}
 
@@ -542,7 +542,7 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics & fm, int iCurXPos,
 				(c != QChar(KVI_TEXT_ICON))))
 			{
 				m_iBlockLen++;
-				int iXxx = c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
+				int iXxx = (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 				m_iBlockWidth += iXxx;
 				iCurXPos      += iXxx;
 				iIdx++;
@@ -2045,13 +2045,13 @@ void KviInputEditor::moveRightFirstVisibleCharToShowCursor()
 
 	QChar c = m_szTextBuffer.at(m_iCursorPosition);
 
-	m_iLastCursorXPosition += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
+	m_iLastCursorXPosition += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 
 	while(m_iLastCursorXPosition >= contentsRect().width()-2*KVI_INPUT_MARGIN)
 	{
 		c = m_szTextBuffer.at(m_iFirstVisibleChar);
 
-		m_iLastCursorXPosition -= c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
+		m_iLastCursorXPosition -= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 
 		m_iFirstVisibleChar++;
 	}
@@ -2084,7 +2084,7 @@ int KviInputEditor::charIndexFromXPosition(int iXPos)
 	while(iCurChar < iBufLen)
 	{
 		QChar c = m_szTextBuffer.at(iCurChar);
-		int iWidthCh = (c.unicode() < 32) ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
+		int iWidthCh = (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 
 		if(iXPos < (iCurXPos+(iWidthCh/2)))
 		{
@@ -2112,7 +2112,7 @@ int  KviInputEditor::xPositionFromCharIndex(QFontMetrics & fm, int iChIdx, bool 
 		{
 			QChar c = m_szTextBuffer.at(iCurChar);
 
-			iCurXPos += c.unicode() < 32 ? fm.width(getSubstituteChar(c.unicode())) + 4 : fm.width(c);
+			iCurXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
 
 			iCurChar++;
 		}
@@ -2133,7 +2133,7 @@ int KviInputEditor::xPositionFromCharIndex(int iChIdx, bool bContentsCoords)
 		{
 			QChar c = m_szTextBuffer.at(iCurChar);
 
-			iCurXPos += c.unicode() < 32 ? g_pLastFontMetrics->width(getSubstituteChar(c.unicode())) + 4 : g_pLastFontMetrics->width(c);
+			iCurXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : g_pLastFontMetrics->width(c);
 
 			iCurChar++;
 		}
