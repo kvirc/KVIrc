@@ -6,7 +6,7 @@
 !include "LogicLib.nsh"
 
 Name "KVIrc"
-!define VERSION '4.0.0-rc1'
+!define VERSION '4.0.0-rc2'
 !define RELEASE_NAME 'Insomnia (wip)'
 !define /date RELEASE_VERSION 'r@CMAKE_KVIRC_BUILD_REVISION@'
 !define URL_ABOUT 'http://www.kvirc.net/'
@@ -14,7 +14,7 @@ Name "KVIrc"
 !define URL_UPDATE 'http://www.kvirc.net/'
 !define PUBLISHER 'Szymon Stefanek and The KVIrc Development Team'
 
-; Svn release, eg: KVIrc-4.0.0-rc1-dev-r3585.exe
+; Svn release, eg: KVIrc-4.0.0-rc2-dev-r3700.exe
 OutFile KVIrc-${VERSION}-dev-${RELEASE_VERSION}.exe
 ; Stable version, eg: KVIrc-4.0.0-Insomnia.exe
 ;OutFile KVIrc-${VERSION}-${RELEASE_NAME}.exe
