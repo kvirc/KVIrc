@@ -134,8 +134,7 @@ static bool help_kvs_cmd_open(KviKvsModuleCommandCall * c)
 			int i=g_pDocIndex->titlesList().indexOf(szParam);
 			if (i!=-1)
 			{
-        szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
-//				szDoc=(QUrl::fromLocalFile(g_pDocIndex->documentList()[ i ])).path();
+				szDoc=QUrl(g_pDocIndex->documentList()[ i ]).toLocalFile();
 				f->setFile(szDoc);
 			}
 		}

@@ -231,7 +231,7 @@ void KviHelpWindow::showIndexTopic()
 {
 	if (m_pIndexSearch->text().isEmpty()|| !m_pIndexListWidget->selectedItems().count()) return;
 	int i=g_pDocIndex->titlesList().indexOf(m_pIndexListWidget->selectedItems().at(0)->text());
-	textBrowser()->setSource(QUrl::fromLocalFile(g_pDocIndex->documentList()[ i ]));
+	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 void KviHelpWindow::searchInIndex( const QString &s )
@@ -255,14 +255,14 @@ void KviHelpWindow::indexSelected ( QListWidgetItem *item )
 {
 	if (!item) return;
 	int i=g_pDocIndex->titlesList().indexOf(item->text());
-	textBrowser()->setSource(QUrl::fromLocalFile(g_pDocIndex->documentList()[ i ]));
+	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 void KviHelpWindow::searchSelected ( QListWidgetItem *item )
 {
 	if (!item) return;
 	int i=g_pDocIndex->titlesList().indexOf(item->text());
-	textBrowser()->setSource(QUrl::fromLocalFile(g_pDocIndex->documentList()[ i ]));
+	textBrowser()->setSource(QUrl(g_pDocIndex->documentList()[ i ]));
 }
 
 QPixmap * KviHelpWindow::myIconPtr()
