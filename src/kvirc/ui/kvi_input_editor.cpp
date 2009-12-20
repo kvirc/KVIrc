@@ -195,14 +195,6 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 			{
 				QUrl url = *it;
 				QString szPath = url.path();
-#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-				if(szPath.length() > 0)
-				{
-					if(szPath[0] != QChar('/'))
-						szPath.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
-				}
-#endif
-
 				if(szPath.endsWith(KVI_FILEEXTENSION_SCRIPT,Qt::CaseInsensitive))
 				{
 					//script, parse it

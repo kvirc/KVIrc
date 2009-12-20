@@ -1068,7 +1068,6 @@ void KviIrcView::keyPressEvent(QKeyEvent *e)
 void KviIrcView::dragEnterEvent(QDragEnterEvent *e)
 {
 	if(!m_bAcceptDrops)return;
-	//e->accept(KviUriDrag::canDecode(e));
 	if(e->mimeData()->hasUrls()) e->acceptProposedAction();
 	emit dndEntered();
 }
@@ -1076,26 +1075,17 @@ void KviIrcView::dragEnterEvent(QDragEnterEvent *e)
 void KviIrcView::dropEvent(QDropEvent *e)
 {
 	if(!m_bAcceptDrops)return;
-	//QStringList list;
 	QList<QUrl> list;
 	if(e->mimeData()->hasUrls())
-	//if(KviUriDrag::decodeLocalFiles(e,list))
 	{
 		list = e->mimeData()->urls();
 		if(!list.isEmpty())
 		{
 			QList<QUrl>::Iterator it = list.begin();
-			//QStringList::ConstIterator it = list.begin(); //kewl ! :)
 			for( ; it != list.end(); ++it )
 			{
 				QUrl url = *it;
 				QString path = url.path();
-				//QString tmp = *it; //wow :)
-				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-					//if(tmp[0] != '/')tmp.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
-					if(path[0] != '/')path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
-				#endif
-				//emit fileDropped(tmp);
 				emit fileDropped(path);
 			}
 		}

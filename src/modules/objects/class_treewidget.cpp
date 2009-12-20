@@ -645,9 +645,6 @@ void KviKvsTreeWidget::dropEvent(QDropEvent * e)
 				QUrl url = *it;
 				QString path = url.path();
 				debug("path %s",path.toUtf8().data());
-				#if !defined(COMPILE_ON_WINDOWS) && !defined(COMPILE_ON_MINGW)
-					if(path[0] != '/')path.prepend("/"); //HACK HACK HACK for Qt bug (?!?)
-				#endif
                                 QTreeWidgetItem *i = itemAt( e->pos() );
                                 m_pParentScript->fileDropped(path,i);
 			}
