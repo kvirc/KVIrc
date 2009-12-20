@@ -32,7 +32,7 @@
 #include "kvi_kvs_variant.h"
 #include "kvi_heapobject.h"
 
-typedef KVIRC_API KviPointerHashTableIterator<QString,KviKvsVariant> KviKvsHashIterator;
+typedef KVIRC_API_TYPEDEF KviPointerHashTableIterator<QString,KviKvsVariant> KviKvsHashIterator;
 
 // This class must not have virtual funcitons nor destructor
 // Otherwise it will happily crash on windows when it is

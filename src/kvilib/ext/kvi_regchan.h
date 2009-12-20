@@ -50,7 +50,7 @@ public:
 	void removeProperty(const char * name){ m_pPropertyDict->remove(name); };
 };
 
-typedef KVILIB_API KviPointerList<KviRegisteredChannel> KviRegisteredChannelList;
+typedef KVILIB_API_TYPEDEF KviPointerList<KviRegisteredChannel> KviRegisteredChannelList;
 
 class KVILIB_API KviRegisteredChannelDataBase
 {

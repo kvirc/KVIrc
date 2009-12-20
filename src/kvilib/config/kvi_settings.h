@@ -45,15 +45,19 @@
 	#define COMPILE_ON_WINDOWS
 
 	#ifdef __KVILIB__
-		#define KVILIB_API __declspec(dllexport)
+		#define KVILIB_API __declspec(dllexport) __attribute__((visibility("default")))
+		#define KVILIB_API_TYPEDEF __declspec(dllexport)
 	#else
-		#define KVILIB_API __declspec(dllimport)
+		#define KVILIB_API __declspec(dllimport) __attribute__((visibility("default")))
+		#define KVILIB_API_TYPEDEF __declspec(dllimport)
 	#endif
 
         #ifdef __KVIRC__
-		#define KVIRC_API __declspec(dllexport)
+		#define KVIRC_API __declspec(dllexport) __attribute__((visibility("default")))
+		#define KVIRC_API_TYPEDEF __declspec(dllexport)
 	#else
-		#define KVIRC_API __declspec(dllimport)
+		#define KVIRC_API __declspec(dllimport) __attribute__((visibility("default")))
+		#define KVIRC_API_TYPEDEF __declspec(dllimport)
 	#endif
 #else
 	#ifdef MINGW
@@ -62,19 +66,26 @@
 		#define COMPILE_WITH_SYSTEM_MEMMOVE
 
 		#ifdef __KVILIB__
-			#define KVILIB_API __declspec(dllexport)
+			#define KVILIB_API __declspec(dllexport) __attribute__((visibility("default")))
+			#define KVILIB_API_TYPEDEF __declspec(dllexport)
 		#else
-			#define KVILIB_API __declspec(dllimport)
+			#define KVILIB_API __declspec(dllimport) __attribute__((visibility("default")))
+			#define KVILIB_API_TYPEDEF __declspec(dllimport)
 		#endif
 
 		#ifdef __KVIRC__
-			#define KVIRC_API __declspec(dllexport)
+			#define KVIRC_API __declspec(dllexport) __attribute__((visibility("default")))
+			#define KVIRC_API_TYPEDEF __declspec(dllexport)
 		#else
-			#define KVIRC_API __declspec(dllimport)
+			#define KVIRC_API __declspec(dllimport) __attribute__((visibility("default")))
+			#define KVIRC_API_TYPEDEF __declspec(dllimport)
 		#endif
 	#else
-		#define KVILIB_API
-		#define KVIRC_API
+		#define KVILIB_API __attribute__((visibility("default")))
+		#define KVILIB_API_TYPEDEF
+		
+		#define KVIRC_API __attribute__((visibility("default")))
+		#define KVIRC_API_TYPEDEF
 	#endif
 
 	#ifdef Q_OS_MACX
