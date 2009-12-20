@@ -197,6 +197,38 @@ ELSE()
 	ENDIF()
 ENDIF()
 
+############################################################################
+# Check for KDE4
+# This has been moved to the top of CMakeLists.txt, since FindKde4 overwrite
+# cmake's module search paths, forcing us to use their version of these
+# modules (eg: FindOpenSSL, see bug #655)
+############################################################################
+
+OPTION(WANT_KDE4 "Whether to use KDE4 support" ON)
+IF(WITHOUT_KDE4)
+	SET(WANT_KDE4 OFF)
+ENDIF()
+IF(WANT_KDE4)
+	FIND_PACKAGE(KDE4)
+	IF(KDE4_FOUND)
+		INCLUDE_DIRECTORIES(${KDE4_INCLUDES})
+		ADD_DEFINITIONS(${KDE4_DEFINITIONS})
+		SET(COMPILE_KDE_SUPPORT 1)
+		LIST(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_SOLID_LIBRARY})
+		SET(CMAKE_STATUS_KDE4_SUPPORT "Yes")
+		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS COMPILE_KDE_SUPPORT)
+
+		# The KDE4 cmake module has a VERY WEIRD behaviour: it adds -Wl,--no-undefined
+		# to the CMAKE_MODULE_LINKER_FLAGS .. which is BAD
+		STRING(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
+	ELSE()
+		SET(CMAKE_STATUS_KDE4_SUPPORT "Not available")
+	ENDIF()
+ELSE()
+	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_KDE4)
+	SET(CMAKE_STATUS_KDE4_SUPPORT "User disabled")
+ENDIF()
+
 ###############################################################################
 #
 # Verbose Makefile
@@ -1130,41 +1162,6 @@ ENDIF()
 #ELSE()
 #	SET(CMAKE_STATUS_GEN_USERDOC "User disabled")
 #ENDIF()
-
-############################################################################
-# Check for KDE4
-# This has been moved to the end of CMakeLists.txt, since FindKde4 tends to
-# add some insane compilation flags and overwrite cmake variables
-# (eg: OPENSSL_LIBRARIES, see bug #655)
-############################################################################
-
-OPTION(WANT_KDE4 "Whether to use KDE4 support" ON)
-IF(WITHOUT_KDE4)
-	SET(WANT_KDE4 OFF)
-ENDIF()
-IF(WANT_KDE4)
-	FIND_PACKAGE(KDE4)
-	IF(KDE4_FOUND)
-		INCLUDE_DIRECTORIES(${KDE4_INCLUDES})
-		ADD_DEFINITIONS(${KDE4_DEFINITIONS})
-		SET(COMPILE_KDE_SUPPORT 1)
-		LIST(APPEND LIBS ${KDE4_KDECORE_LIBS} ${KDE4_KDEUI_LIBRARY} ${KDE4_KPARTS_LIBRARY} ${KDE4_KFILE_LIBRARY} ${KDE4_KIO_LIBRARY} ${KDE4_SOLID_LIBRARY})
-		SET(CMAKE_STATUS_KDE4_SUPPORT "Yes")
-		LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS COMPILE_KDE_SUPPORT)
-
-		# The KDE4 cmake module has a VERY WEIRD behaviour: it adds -Wl,--no-undefined
-		# to the CMAKE_MODULE_LINKER_FLAGS .. which is BAD
-		STRING(REPLACE "-Wl,--no-undefined" "" CMAKE_MODULE_LINKER_FLAGS ${CMAKE_MODULE_LINKER_FLAGS})
-		# With certain GCC versions it also adds some insane flags around
-		STRING(REPLACE "-fvisibility=hidden" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
-		STRING(REPLACE "-fvisibility-inlines-hidden" "" CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS})
-	ELSE()
-		SET(CMAKE_STATUS_KDE4_SUPPORT "Not available")
-	ENDIF()
-ELSE()
-	LIST(APPEND CMAKE_KVIRC_BUILD_FLAGS WITHOUT_KDE4)
-	SET(CMAKE_STATUS_KDE4_SUPPORT "User disabled")
-ENDIF()
 
 ###############################################################################
 #
