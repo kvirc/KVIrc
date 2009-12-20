@@ -42,12 +42,12 @@
 
 
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-	#define KVIMODULEEXPORT extern "C" __declspec(dllexport)
+	#define KVIMODULEEXPORT extern "C" __declspec(dllexport) __attribute__((visibility("default")))
 	#define KVIMODULEEXPORTDATA KVIMODULEEXPORT
 	#define KVIMODULEEXPORTFUNC KVIMODULEEXPORT
 #else
-	#define KVIMODULEEXPORT extern "C"
-	#define KVIMODULEEXPORTDATA
+	#define KVIMODULEEXPORT extern "C" __attribute__((visibility("default")))
+	#define KVIMODULEEXPORTDATA  __attribute__((visibility("default")))
 	#define KVIMODULEEXPORTFUNC KVIMODULEEXPORT
 #endif
 
