@@ -146,7 +146,7 @@ public:
 	KviUserListEntry(KviUserListView * pParent, const QString & szNick, KviIrcUserEntry * pEntry, short int iFlags, bool bJoinTimeUnknown = true);
 
 	/**
-	* \brief Constructs the user list entry object
+	* \brief Destroys the user list entry object
 	*/
 	~KviUserListEntry();
 protected:
