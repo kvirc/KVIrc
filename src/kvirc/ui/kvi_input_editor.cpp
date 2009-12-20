@@ -194,7 +194,7 @@ void KviInputEditor::dropEvent(QDropEvent * e)
 			for( ; it != list.end(); ++it )
 			{
 				QUrl url = *it;
-				QString szPath = url.path();
+				QString szPath = url.toLocalFile();
 				if(szPath.endsWith(KVI_FILEEXTENSION_SCRIPT,Qt::CaseInsensitive))
 				{
 					//script, parse it

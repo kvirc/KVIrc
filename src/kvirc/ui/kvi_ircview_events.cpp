@@ -1085,7 +1085,7 @@ void KviIrcView::dropEvent(QDropEvent *e)
 			for( ; it != list.end(); ++it )
 			{
 				QUrl url = *it;
-				QString path = url.path();
+				QString path = url.toLocalFile();
 				emit fileDropped(path);
 			}
 		}
