@@ -559,11 +559,6 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 	g_pApp->getLocalKvircDirectory(buffer,KviApp::Log,tmp);
 }
 
-/*void KviWindow::getBaseLogFileName(KviStr &buffer)
-{
-	buffer = m_szName;
-}*/
-
 void KviWindow::getBaseLogFileName(QString &buffer)
 {
 	buffer = m_szName;

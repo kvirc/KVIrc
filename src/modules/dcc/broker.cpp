@@ -669,7 +669,9 @@ void KviDccBroker::chooseSaveFileName(KviDccBox *box,KviDccDescriptor *dcc)
 					if(KVI_OPTION_BOOL(KviOption_boolSortReceivedByDccFilesByNicks))
 					{
 						KviQString::ensureLastCharIs(dcc->szLocalFileName,KVI_PATH_SEPARATOR_CHAR);
-						dcc->szLocalFileName.append(dcc->szNick);
+						QString cleanNick = dcc->szNick;
+						KviFileUtils::cleanFileName(cleanNick);
+						dcc->szLocalFileName.append(cleanNick);
 						KviFileUtils::adjustFilePath(dcc->szLocalFileName);
 					}
 					KviFileUtils::makeDir(dcc->szLocalFileName);
@@ -684,7 +686,9 @@ void KviDccBroker::chooseSaveFileName(KviDccBox *box,KviDccDescriptor *dcc)
 			if(KVI_OPTION_BOOL(KviOption_boolSortReceivedByDccFilesByNicks))
 			{
 				KviQString::ensureLastCharIs(dcc->szLocalFileName,KVI_PATH_SEPARATOR_CHAR);
-				dcc->szLocalFileName.append(dcc->szNick);
+				QString cleanNick = dcc->szNick;
+				KviFileUtils::cleanFileName(cleanNick);
+				dcc->szLocalFileName.append(cleanNick);
 				KviFileUtils::adjustFilePath(dcc->szLocalFileName);
 				KviFileUtils::makeDir(dcc->szLocalFileName);
 			}
@@ -695,7 +699,9 @@ void KviDccBroker::chooseSaveFileName(KviDccBox *box,KviDccDescriptor *dcc)
 
 	if(!(dcc->bAutoAccept))
 	{
-		dcc->szLocalFileName+=dcc->szFileName;
+		QString cleanFilename = dcc->szFileName;
+		KviFileUtils::cleanFileName(cleanFilename);
+		dcc->szLocalFileName.append(cleanFilename);
 		if(KviFileDialog::askForSaveFileName(dcc->szLocalFileName,
 			__tr2qs_ctx("Choose Files to Save - KVIrc","dcc"),dcc->szLocalFileName))
 		{
@@ -706,7 +712,9 @@ void KviDccBroker::chooseSaveFileName(KviDccBox *box,KviDccDescriptor *dcc)
 	} else {
 		// auto accept
 		// WE choose the filename
-		dcc->szLocalFileName.append(dcc->szFileName);
+		QString cleanFilename = dcc->szFileName;
+		KviFileUtils::cleanFileName(cleanFilename);
+		dcc->szLocalFileName.append(cleanFilename);
 
 		if(_OUTPUT_VERBOSE)
 		{

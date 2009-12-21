@@ -287,6 +287,16 @@ namespace KviFileUtils
 	* \return void
 	*/
 	KVILIB_API extern void encodeFileName(QString & path);
+
+	/**
+	* \brief Removes any unusable character from a filename (with no path!)
+	*
+	* There is NO way to come back to the original string the algo is
+	* one-way only
+	* \param path
+	* \return void
+	*/
+	KVILIB_API extern void cleanFileName(QString & path);
 }
 
 #endif //_KVI_FILEUTILS_H
