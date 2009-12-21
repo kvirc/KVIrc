@@ -44,7 +44,9 @@ KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 	if(m_pPixmap)
 		m_pLabel0->setPixmap(*m_pPixmap);
 
-	m_pLabel1 = new QLabel(KviNotifierMessage::convertToHtml(m_szText));
+	m_pLabel1 = new QLabel();
+	m_pLabel1->setTextFormat(Qt::RichText);
+	m_pLabel1->setText(KviNotifierMessage::convertToHtml(m_szText));
 	m_pLabel1->setWordWrap(true);
 
 	m_pHBox = new QHBoxLayout(this);
