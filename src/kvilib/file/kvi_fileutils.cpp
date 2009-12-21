@@ -447,7 +447,7 @@ static char hexchars[16] = { '0' , '1' , '2' , '3' , '4' , '5' , '6' , '7' , '8'
 		{
 			QChar cur=src[i];
 #if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
-			if(c.unicode() < 32 || cur=='<' || cur=='>' || cur==':' || cur=='"' || cur=='/' || cur=='\\' || cur=='|' || cur=='?' || cur=='*')
+			if(cur.unicode() < 32 || cur=='<' || cur=='>' || cur==':' || cur=='"' || cur=='/' || cur=='\\' || cur=='|' || cur=='?' || cur=='*')
 #else
 			if(cur.unicode() == 0 || cur=='/')
 #endif
