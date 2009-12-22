@@ -793,6 +793,10 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 				// yep, auto resume...
 				dcc->bResume = true;
 				recvFileExecute(0,dcc);
+			} else if((iRemoteSize == ((unsigned long)(fi.size()))))
+			{ 
+				dcc->console()->output(KVI_OUT_DCCMSG,"Transfer aborted: file %Q already completed",&(dcc->szLocalFileName));
+				cancelDcc(0,dcc);
 			} else {
 				// otherwise auto rename
 				renameDccSendFile(0,dcc);
