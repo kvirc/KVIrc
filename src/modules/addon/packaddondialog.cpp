@@ -562,10 +562,8 @@ KviPackAddonSaveSelectionWidget::KviPackAddonSaveSelectionWidget(KviPackAddonDia
 
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
-	QString szDummy;
-
 	// Select save path
-	m_pSavePathSelector = new KviFileSelector(this,__tr2qs_ctx("Select save path:","addon"),&szDummy,true,KviFileSelector::ChooseSaveFileName,KVI_FILTER_ADDON);
+	m_pSavePathSelector = new KviFileSelector(this,__tr2qs_ctx("Select save path:","addon"),&m_szFilePath,true,KviFileSelector::ChooseSaveFileName,KVI_FILTER_ADDON);
 	pLayout->addWidget(m_pSavePathSelector);
 
 	// Store data in the fields

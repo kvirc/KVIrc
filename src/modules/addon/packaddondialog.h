@@ -185,6 +185,7 @@ public:
 	~KviPackAddonSaveSelectionWidget();
 protected:
 	KviFileSelector * m_pSavePathSelector;
+	QString m_szFilePath;
 protected:
 	/**
 	* \brief Perform initial tasks before showing the widget
