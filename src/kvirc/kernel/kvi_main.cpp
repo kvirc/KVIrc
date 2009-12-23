@@ -357,7 +357,9 @@ int main(int argc, char ** argv)
 	#if KDE_IS_VERSION(4,3,0)
 		pAbout->setBugAddress("https://svn.kvirc.de/kvirc/");
 	#endif
-	KCmdLineArgs::init(pAbout);
+	//fake argc/argv initialization: kde will use argv[0] as out appName in some dialogs
+	// (eg: kdebase/workspace/kwin/killer/killer.cpp)
+	KCmdLineArgs::init(1, &argv[0], pAbout);
 #endif
 
 	bool bArgVisual = false;
