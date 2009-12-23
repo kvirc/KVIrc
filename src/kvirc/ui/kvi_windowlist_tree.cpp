@@ -122,8 +122,8 @@ void KviTreeWindowListItem::highlight(int iLevel)
 	m_iHighlightLevel = iLevel;
 	setData(0, KVI_TTBID_HIGHLIGHT, m_iHighlightLevel);
 
-	if(g_pFrame->dockExtension())g_pFrame->dockExtension()->refresh();
-	if(isSelected())return;
+	if(g_pFrame->dockExtension())
+		g_pFrame->dockExtension()->refresh();
 }
 
 void KviTreeWindowListItem::setProgress(int progress)
