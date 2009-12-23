@@ -28,11 +28,12 @@ IF(USE_GETTEXT_TRANSLATIONS)
 	ADD_DEPENDENCIES(kvirc-translations kvirc-translations-${_potBasename})
 
 	IF(USE_GETTEXT_EXTRA)
-		ADD_CUSTOM_TARGET(messages-update-${_potBasename})
-		ADD_DEPENDENCIES(messages-update messages-update-${_potBasename})
-
 		ADD_CUSTOM_TARGET(messages-extract-${_potBasename})
 		ADD_DEPENDENCIES(messages-extract messages-extract-${_potBasename})
+
+		ADD_CUSTOM_TARGET(messages-update-${_potBasename})
+		ADD_DEPENDENCIES(messages-update-${_potBasename} messages-extract-${_potBasename})
+		ADD_DEPENDENCIES(messages-update messages-update-${_potBasename})
 
 		# messages-extract
 		SET(XGETTEXT_FILES)
@@ -79,5 +80,32 @@ IF(USE_GETTEXT_TRANSLATIONS)
 			TARGET messages-update-${_potBasename}
 			)
 		ENDFOREACH()
+
+		IF(SED_EXECUTABLE)
+			# wipes absolute paths from .pot? files, by mren
+			ADD_CUSTOM_TARGET(messages-tidy-${_potBasename})
+			FILE(GLOB_RECURSE FILES_TO_TIDY ${pofiles})
+			FILE(GLOB_RECURSE POTS_TO_TIDY ${_absPotFile})
+			LIST(APPEND FILES_TO_TIDY ${POTS_TO_TIDY})
+			# this is for the messages-tidy-module target
+			FOREACH(curFile ${FILES_TO_TIDY})
+				ADD_CUSTOM_COMMAND(TARGET messages-tidy-${_potBasename}
+				COMMENT "Tidying ${curFile}..."
+				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+				VERBATIM
+				DEPENDS ${curFile}
+				)
+			ENDFOREACH()
+			#this is for the messages-update-module target
+			FOREACH(curFile ${FILES_TO_TIDY})
+				ADD_CUSTOM_COMMAND(TARGET messages-update-${_potBasename}
+				COMMENT "Tidying ${curFile}..."
+				COMMAND ${SED_EXECUTABLE} -i -e "s|^#:.*/\\(src/.*\\)$|#: \\1|g" "${curFile}"
+				VERBATIM
+				DEPENDS ${curFile}
+				)
+			ENDFOREACH()
+		ENDIF()
+
 	ENDIF()
 ENDIF()

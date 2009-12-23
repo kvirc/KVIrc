@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: register_de\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-20 23:15+0100\n"
+"POT-Creation-Date: 2009-12-23 18:09+0100\n"
 "PO-Revision-Date: 2009-04-15 01:18+0200\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
@@ -45,7 +45,7 @@ msgstr " Benutzer: %c%Q"
 msgid "&Add Group..."
 msgstr "&Gruppe hinzufügen..."
 
-#: src/modules/reguser/dialog.cpp:241 src/modules/reguser/edituser.cpp:371
+#: src/modules/reguser/edituser.cpp:371 src/modules/reguser/dialog.cpp:241
 msgid "&Add..."
 msgstr "&Hinzufügen..."
 
@@ -61,8 +61,8 @@ msgstr "B&earbeiten..."
 msgid "&New"
 msgstr "&Neu"
 
-#: src/modules/reguser/dialog.cpp:287 src/modules/reguser/edituser.cpp:113
-#: src/modules/reguser/edituser.cpp:274 src/modules/reguser/edituser.cpp:487
+#: src/modules/reguser/edituser.cpp:113 src/modules/reguser/edituser.cpp:274
+#: src/modules/reguser/edituser.cpp:487 src/modules/reguser/dialog.cpp:287
 msgid "&OK"
 msgstr "&OK"
 
@@ -240,8 +240,8 @@ msgstr "Kann Datei %Q nicht zum Schreiben öffnen."
 msgid "Can't open file %s for reading."
 msgstr "Kann Datei %s nicht zum Lesen öffnen."
 
-#: src/modules/reguser/dialog.cpp:292 src/modules/reguser/edituser.cpp:117
-#: src/modules/reguser/edituser.cpp:278 src/modules/reguser/edituser.cpp:486
+#: src/modules/reguser/edituser.cpp:117 src/modules/reguser/edituser.cpp:278
+#: src/modules/reguser/edituser.cpp:486 src/modules/reguser/dialog.cpp:292
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -254,7 +254,7 @@ msgstr "Channel: %c%s@%s"
 msgid "Choose a Filename - KVIrc"
 msgstr "Dateinamen auswählen - KVIrc"
 
-#: src/modules/reguser/dialog.cpp:134 src/modules/reguser/edituser.cpp:348
+#: src/modules/reguser/edituser.cpp:348 src/modules/reguser/dialog.cpp:134
 msgid "Comment:"
 msgstr "Kommentar:"
 
@@ -454,7 +454,7 @@ msgstr "Eigenschaft"
 msgid "Property Editor"
 msgstr "Eigenschafteneditor"
 
-#: src/modules/reguser/dialog.cpp:251 src/modules/reguser/edituser.cpp:375
+#: src/modules/reguser/edituser.cpp:375 src/modules/reguser/dialog.cpp:251
 msgid "Re&move"
 msgstr "&Entfernen"
 

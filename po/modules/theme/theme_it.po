@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 20:40+0100\n"
+"POT-Creation-Date: 2009-12-23 18:29+0100\n"
 "PO-Revision-Date: 2008-07-10 01:43+0200\n"
 "Last-Translator: Elvio Basello <hellvis69@netsons.org>\n"
 "Language-Team:  <it@li.org>\n"
@@ -98,9 +98,9 @@ msgstr "Esporta Temi Selezionati in Pacchetti Distribuibili"
 #: src/modules/theme/packthemedialog.cpp:111
 #: src/modules/theme/packthemedialog.cpp:344
 #: src/modules/theme/packthemedialog.cpp:378
-#: src/modules/theme/packthemedialog.cpp:448
-#: src/modules/theme/packthemedialog.cpp:460
-#: src/modules/theme/packthemedialog.cpp:468
+#: src/modules/theme/packthemedialog.cpp:462
+#: src/modules/theme/packthemedialog.cpp:474
+#: src/modules/theme/packthemedialog.cpp:482
 msgid "Export Theme - KVIrc"
 msgstr "Esporta Tema - KVIrc"
 
@@ -117,7 +117,7 @@ msgstr "Impossibile caricare l'immagine selezionata"
 msgid "Failed to load the selected image: please fix it"
 msgstr "Impossibile caricare l'immagine selezionata: sistemala"
 
-#: src/modules/theme/savethemedialog.cpp:276
+#: src/modules/theme/savethemedialog.cpp:292
 msgid "Failed to load the selected screenshot image: please fix it"
 msgstr "Impossibile caricare l'immagine selezionata: sistemala"
 
@@ -236,8 +236,8 @@ msgstr "Nome Pacchetto:"
 msgid "Package Path"
 msgstr "Percorso Pacchetto"
 
-#: src/modules/theme/packthemedialog.cpp:445
-#: src/modules/theme/packthemedialog.cpp:457
+#: src/modules/theme/packthemedialog.cpp:459
+#: src/modules/theme/packthemedialog.cpp:471
 msgid "Packaging failed"
 msgstr "Pacchettizzazione fallita"
 
@@ -248,9 +248,9 @@ msgstr "Inserisci una descrizione del tema"
 #: src/modules/theme/savethemedialog.cpp:64
 #: src/modules/theme/savethemedialog.cpp:198
 #: src/modules/theme/savethemedialog.cpp:233
-#: src/modules/theme/savethemedialog.cpp:254
-#: src/modules/theme/savethemedialog.cpp:266
-#: src/modules/theme/savethemedialog.cpp:276
+#: src/modules/theme/savethemedialog.cpp:270
+#: src/modules/theme/savethemedialog.cpp:282
+#: src/modules/theme/savethemedialog.cpp:292
 msgid "Save Current Theme - KVIrc"
 msgstr "Salva Tema Corrente - KVIrc"
 
@@ -258,7 +258,7 @@ msgstr "Salva Tema Corrente - KVIrc"
 msgid "Save Current Theme..."
 msgstr "Salva Tema Corrente..."
 
-#: src/modules/theme/savethemedialog.cpp:286
+#: src/modules/theme/savethemedialog.cpp:302
 msgid "Save Theme - KVIrc"
 msgstr "Salva Tema - KVIrc"
 
@@ -303,7 +303,7 @@ msgstr "Informazioni Tema"
 msgid "Theme Name:"
 msgstr "Nome Tema:"
 
-#: src/modules/theme/savethemedialog.cpp:283
+#: src/modules/theme/savethemedialog.cpp:299
 msgid "Theme saved successfully to "
 msgstr "Tema salvato con successo in"
 
@@ -339,11 +339,11 @@ msgstr ""
 "inoltre di modificare manualmente i settaggi del tema e esportarli poi in un "
 "pacchetto distribuibile"
 
-#: src/modules/theme/savethemedialog.cpp:254
+#: src/modules/theme/savethemedialog.cpp:270
 msgid "Unable to create theme directory."
 msgstr "Impossibile creare la directory del tema."
 
-#: src/modules/theme/savethemedialog.cpp:265
+#: src/modules/theme/savethemedialog.cpp:281
 msgid "Unable to save theme: %Q"
 msgstr "Impossibile salvare il tema: %Q"
 

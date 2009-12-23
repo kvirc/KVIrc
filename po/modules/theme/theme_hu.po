@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_hu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 20:40+0100\n"
+"POT-Creation-Date: 2009-12-23 18:29+0100\n"
 "PO-Revision-Date: 2008-03-03 10:04+0100\n"
 "Last-Translator: Ádám Fibinger <vfiber@interware.hu>\n"
 "Language-Team: hungarian <hu@li.org>\n"
@@ -96,9 +96,9 @@ msgstr "A kiválsztott csomag exportálása hordozható csomagba"
 #: src/modules/theme/packthemedialog.cpp:111
 #: src/modules/theme/packthemedialog.cpp:344
 #: src/modules/theme/packthemedialog.cpp:378
-#: src/modules/theme/packthemedialog.cpp:448
-#: src/modules/theme/packthemedialog.cpp:460
-#: src/modules/theme/packthemedialog.cpp:468
+#: src/modules/theme/packthemedialog.cpp:462
+#: src/modules/theme/packthemedialog.cpp:474
+#: src/modules/theme/packthemedialog.cpp:482
 msgid "Export Theme - KVIrc"
 msgstr "Kinézet Exportálása - KVIrc"
 
@@ -115,7 +115,7 @@ msgstr "Kiválasztott kép betöltése sikertelen"
 msgid "Failed to load the selected image: please fix it"
 msgstr "Kiválasztott kép betöltése sikertelen: kérlek javítsd"
 
-#: src/modules/theme/savethemedialog.cpp:276
+#: src/modules/theme/savethemedialog.cpp:292
 msgid "Failed to load the selected screenshot image: please fix it"
 msgstr "A kiválasztott képernyőkép betöltése nem lehetséges: kérlek javítsd"
 
@@ -234,8 +234,8 @@ msgstr "Csomag Neve:"
 msgid "Package Path"
 msgstr "Csomag Útvonala"
 
-#: src/modules/theme/packthemedialog.cpp:445
-#: src/modules/theme/packthemedialog.cpp:457
+#: src/modules/theme/packthemedialog.cpp:459
+#: src/modules/theme/packthemedialog.cpp:471
 msgid "Packaging failed"
 msgstr "Csomagkészítés sikertelen"
 
@@ -246,9 +246,9 @@ msgstr "A csomag leírása"
 #: src/modules/theme/savethemedialog.cpp:64
 #: src/modules/theme/savethemedialog.cpp:198
 #: src/modules/theme/savethemedialog.cpp:233
-#: src/modules/theme/savethemedialog.cpp:254
-#: src/modules/theme/savethemedialog.cpp:266
-#: src/modules/theme/savethemedialog.cpp:276
+#: src/modules/theme/savethemedialog.cpp:270
+#: src/modules/theme/savethemedialog.cpp:282
+#: src/modules/theme/savethemedialog.cpp:292
 msgid "Save Current Theme - KVIrc"
 msgstr "Aktuális Kinézet Mentése - KVIrc"
 
@@ -256,7 +256,7 @@ msgstr "Aktuális Kinézet Mentése - KVIrc"
 msgid "Save Current Theme..."
 msgstr "Aktuális Kinézet Mentése..."
 
-#: src/modules/theme/savethemedialog.cpp:286
+#: src/modules/theme/savethemedialog.cpp:302
 msgid "Save Theme - KVIrc"
 msgstr "Kinézet Mentése - KVIrc"
 
@@ -300,7 +300,7 @@ msgstr "Kinézet Információk"
 msgid "Theme Name:"
 msgstr "Kinézet Neve:"
 
-#: src/modules/theme/savethemedialog.cpp:283
+#: src/modules/theme/savethemedialog.cpp:299
 msgid "Theme saved successfully to "
 msgstr "A kinézet sikeresen mentve "
 
@@ -337,11 +337,11 @@ msgstr ""
 "manuálisan is módosíthatod a beállításokat és később is exportálhatod "
 "csomagba."
 
-#: src/modules/theme/savethemedialog.cpp:254
+#: src/modules/theme/savethemedialog.cpp:270
 msgid "Unable to create theme directory."
 msgstr "Kinézet könyvtár létrehozása sikertelen."
 
-#: src/modules/theme/savethemedialog.cpp:265
+#: src/modules/theme/savethemedialog.cpp:281
 msgid "Unable to save theme: %Q"
 msgstr "%Q kinézet mentése sikertelen."
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: theme_ua\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 20:40+0100\n"
+"POT-Creation-Date: 2009-12-23 18:29+0100\n"
 "PO-Revision-Date: 2007-12-19 15:00+0200\n"
 "Last-Translator: Belyaev Stanislav <belyaev-st@yandex.ru>\n"
 "Language-Team: Ukrainian\n"
@@ -96,9 +96,9 @@ msgstr "Експортувати обрані теми в пакет для по
 #: src/modules/theme/packthemedialog.cpp:111
 #: src/modules/theme/packthemedialog.cpp:344
 #: src/modules/theme/packthemedialog.cpp:378
-#: src/modules/theme/packthemedialog.cpp:448
-#: src/modules/theme/packthemedialog.cpp:460
-#: src/modules/theme/packthemedialog.cpp:468
+#: src/modules/theme/packthemedialog.cpp:462
+#: src/modules/theme/packthemedialog.cpp:474
+#: src/modules/theme/packthemedialog.cpp:482
 msgid "Export Theme - KVIrc"
 msgstr "Експорт теми - KVIrc"
 
@@ -115,7 +115,7 @@ msgstr "Не можу завантажити обране зображення"
 msgid "Failed to load the selected image: please fix it"
 msgstr "Не можу завантажити обране зображення: будь ласка, виправте його"
 
-#: src/modules/theme/savethemedialog.cpp:276
+#: src/modules/theme/savethemedialog.cpp:292
 msgid "Failed to load the selected screenshot image: please fix it"
 msgstr "Не можу завантажити обране зображення. Будь ласка, виправте його."
 
@@ -230,8 +230,8 @@ msgstr "Ім'я пакета:"
 msgid "Package Path"
 msgstr "Шлях до пакета"
 
-#: src/modules/theme/packthemedialog.cpp:445
-#: src/modules/theme/packthemedialog.cpp:457
+#: src/modules/theme/packthemedialog.cpp:459
+#: src/modules/theme/packthemedialog.cpp:471
 msgid "Packaging failed"
 msgstr "Упакування завершене невдало"
 
@@ -242,9 +242,9 @@ msgstr "Запишіть тут опис вашого пакета..."
 #: src/modules/theme/savethemedialog.cpp:64
 #: src/modules/theme/savethemedialog.cpp:198
 #: src/modules/theme/savethemedialog.cpp:233
-#: src/modules/theme/savethemedialog.cpp:254
-#: src/modules/theme/savethemedialog.cpp:266
-#: src/modules/theme/savethemedialog.cpp:276
+#: src/modules/theme/savethemedialog.cpp:270
+#: src/modules/theme/savethemedialog.cpp:282
+#: src/modules/theme/savethemedialog.cpp:292
 msgid "Save Current Theme - KVIrc"
 msgstr "Зберегти поточну тему - KVIrc"
 
@@ -252,7 +252,7 @@ msgstr "Зберегти поточну тему - KVIrc"
 msgid "Save Current Theme..."
 msgstr "Зберегти поточну тему..."
 
-#: src/modules/theme/savethemedialog.cpp:286
+#: src/modules/theme/savethemedialog.cpp:302
 msgid "Save Theme - KVIrc"
 msgstr "Зберегти тему - KVIrc"
 
@@ -296,7 +296,7 @@ msgstr "Інформація про тему"
 msgid "Theme Name:"
 msgstr "Ім'я теми:"
 
-#: src/modules/theme/savethemedialog.cpp:283
+#: src/modules/theme/savethemedialog.cpp:299
 msgid "Theme saved successfully to "
 msgstr "Тема успішно збережена в "
 
@@ -332,11 +332,11 @@ msgstr ""
 "(наприклад, змінити або додати свої зображення або іконки) а потім "
 "експортувати в пакет теми."
 
-#: src/modules/theme/savethemedialog.cpp:254
+#: src/modules/theme/savethemedialog.cpp:270
 msgid "Unable to create theme directory."
 msgstr "Не можу створити папку теми"
 
-#: src/modules/theme/savethemedialog.cpp:265
+#: src/modules/theme/savethemedialog.cpp:281
 msgid "Unable to save theme: %Q"
 msgstr "Не можу зберегти тему: %Q"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-10 20:40+0100\n"
+"POT-Creation-Date: 2009-12-23 18:29+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <FI@li.org>\n"
@@ -96,9 +96,9 @@ msgstr "Vie valitut teemat jaettavaan pakettiin"
 #: src/modules/theme/packthemedialog.cpp:111
 #: src/modules/theme/packthemedialog.cpp:344
 #: src/modules/theme/packthemedialog.cpp:378
-#: src/modules/theme/packthemedialog.cpp:448
-#: src/modules/theme/packthemedialog.cpp:460
-#: src/modules/theme/packthemedialog.cpp:468
+#: src/modules/theme/packthemedialog.cpp:462
+#: src/modules/theme/packthemedialog.cpp:474
+#: src/modules/theme/packthemedialog.cpp:482
 msgid "Export Theme - KVIrc"
 msgstr "Vie teema - KVIrc"
 
@@ -115,7 +115,7 @@ msgstr "Ei voitu ladata valittua kuvaa"
 msgid "Failed to load the selected image: please fix it"
 msgstr "Ei voitu ladata valittua kuvaa: ole hyvä ja korjaa se"
 
-#: src/modules/theme/savethemedialog.cpp:276
+#: src/modules/theme/savethemedialog.cpp:292
 msgid "Failed to load the selected screenshot image: please fix it"
 msgstr "Ei voitu ladata kuvakaappaus -kuvaa: ole hyvä ja korjaa se"
 
@@ -232,8 +232,8 @@ msgstr "Paketin nimi:"
 msgid "Package Path"
 msgstr "Paketin polku"
 
-#: src/modules/theme/packthemedialog.cpp:445
-#: src/modules/theme/packthemedialog.cpp:457
+#: src/modules/theme/packthemedialog.cpp:459
+#: src/modules/theme/packthemedialog.cpp:471
 msgid "Packaging failed"
 msgstr "Paketointi epäonnistui"
 
@@ -244,9 +244,9 @@ msgstr "Laita tähän kuvaus..."
 #: src/modules/theme/savethemedialog.cpp:64
 #: src/modules/theme/savethemedialog.cpp:198
 #: src/modules/theme/savethemedialog.cpp:233
-#: src/modules/theme/savethemedialog.cpp:254
-#: src/modules/theme/savethemedialog.cpp:266
-#: src/modules/theme/savethemedialog.cpp:276
+#: src/modules/theme/savethemedialog.cpp:270
+#: src/modules/theme/savethemedialog.cpp:282
+#: src/modules/theme/savethemedialog.cpp:292
 msgid "Save Current Theme - KVIrc"
 msgstr "Tallenna nykyinen teema - KVIrc"
 
@@ -254,7 +254,7 @@ msgstr "Tallenna nykyinen teema - KVIrc"
 msgid "Save Current Theme..."
 msgstr "Tallenna nykyinen teema..."
 
-#: src/modules/theme/savethemedialog.cpp:286
+#: src/modules/theme/savethemedialog.cpp:302
 msgid "Save Theme - KVIrc"
 msgstr "Tallenna teema - KVIrc"
 
@@ -298,7 +298,7 @@ msgstr "Teeman tietoja"
 msgid "Theme Name:"
 msgstr "Teeman nimi:"
 
-#: src/modules/theme/savethemedialog.cpp:283
+#: src/modules/theme/savethemedialog.cpp:299
 msgid "Theme saved successfully to "
 msgstr "Teema asennettu kansioon "
 
@@ -334,11 +334,11 @@ msgstr ""
 "käyttöön yhdella napin painalluksella. Se myös sallii sinun muokata teema-"
 "asetuksia ja myöhemmin viedä ne jaettavaan pakettiin."
 
-#: src/modules/theme/savethemedialog.cpp:254
+#: src/modules/theme/savethemedialog.cpp:270
 msgid "Unable to create theme directory."
 msgstr "Ei voitu luoda teemakansiota."
 
-#: src/modules/theme/savethemedialog.cpp:265
+#: src/modules/theme/savethemedialog.cpp:281
 msgid "Unable to save theme: %Q"
 msgstr "Ei voitu tallentaa teemaa: %Q"
 
