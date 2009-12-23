@@ -780,6 +780,22 @@ FIND_PATH(GET_INTERFACE_ADDRESS_INCLUDE_DIR net/if.h)
 IF(GET_INTERFACE_ADDRESS_INCLUDE_DIR)
 	SET(COMPILE_GET_INTERFACE_ADDRESS 1)
 ENDIF()
+
+############################################################################
+# SetEnv/PutEnv support
+############################################################################
+CHECK_FUNCTION_EXISTS("setenv" HAVE_SETENV_EXISTS)
+# what systems lacks this!?
+IF(HAVE_SETENV_EXISTS)
+	SET(HAVE_SETENV 1)
+ENDIF()
+
+CHECK_FUNCTION_EXISTS("putenv" HAVE_PUTENV_EXISTS)
+# what systems lacks this!?
+IF(HAVE_PUTENV_EXISTS)
+	SET(HAVE_PUTENV 1)
+ENDIF()
+
 ############################################################################
 # GSM support
 ############################################################################

@@ -263,7 +263,7 @@ KviTheoraEncoder::~KviTheoraEncoder()
 	th_comment_clear(&tc);
 }
 
-void KviTheoraEncoder::addVideoFrame(QRgb * rgb32, int videoSize)
+void KviTheoraEncoder::addVideoFrame(QRgb * rgb32, int)
 {
 	/*
 	 * For each uncompressed frame:

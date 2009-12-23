@@ -570,10 +570,14 @@ namespace KviNetUtils
 	}
 
 #ifdef COMPILE_GET_INTERFACE_ADDRESS
+	union sockaddr_union {
+		struct sockaddr sa;
+		struct sockaddr_in sin;
+	};
+
 	bool getInterfaceAddress(const QString &szInterfaceName,QString &szBuffer)
 	{
-		struct sockaddr *sa;
-		struct sockaddr_in *sin;
+		union sockaddr_union *su;
 		struct ifreq ifr;
 		int len = szInterfaceName.length();
 		if(len > (IFNAMSIZ - 1))return false; // invalid interface anyway
@@ -587,12 +591,11 @@ namespace KviNetUtils
 
 		close(fd);
 
-		sa = (struct sockaddr *)&(ifr.ifr_addr);
+		su = (union sockaddr_union *)&(ifr.ifr_addr);
 
-		if (sa->sa_family != AF_INET) return false;
+		if (su->sa.sa_family != AF_INET) return false;
 
-		sin = (struct sockaddr_in*) sa;
-		return binaryIpToStringIp(sin->sin_addr,szBuffer);
+		return binaryIpToStringIp((struct in_addr)su->sin.sin_addr,szBuffer);
 
 		// (this seems to work for AF_INET only anyway)
 #else //!COMPILE_GET_INTERFACE_ADDRESS

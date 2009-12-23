@@ -14,6 +14,8 @@
 
 #cmakedefine SYSTEM_HAS_SYS_TYPES_H 1
 #cmakedefine SYSTEM_HAS_STRINGS_H 1
+#cmakedefine HAVE_SETENV 1
+#cmakedefine HAVE_PUTENV 1
 
 #cmakedefine COMPILE_THREADS_USE_POSIX 1
 #cmakedefine COMPILE_THREADS_USE_WIN32 1
