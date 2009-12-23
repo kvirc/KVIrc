@@ -18,13 +18,21 @@ SET(howto
 
 # User documentation
 IF(PERL_FOUND)
-	INSTALL(CODE "MESSAGE(\"-- Generating user documentation..\")")
+	ADD_CUSTOM_TARGET("kvirc-userdocs" ALL)
+	ADD_CUSTOM_TARGET(kvirc-userdocs-en)
+	ADD_DEPENDENCIES(kvirc-userdocs kvirc-userdocs-en)
+
 	IF(UNIX)
+		ADD_CUSTOM_COMMAND(
+			COMMENT "Generating user documentation.."
+			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${VERSION_RELEASE} '${CMAKE_CURRENT_BINARY_DIR}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/*.template `find ${PROJECT_SOURCE_DIR}/src -name '*.cpp' -print` `find ${PROJECT_SOURCE_DIR}/src -name '*.h' -print`
+			TARGET kvirc-userdocs-en
+		)
 		IF(APPLE)
-			INSTALL(CODE "EXEC_PROGRAM(perl ARGS ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${VERSION_RELEASE} '\$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/Contents/Resources/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/*.template `find ${PROJECT_SOURCE_DIR}/src -name '*.cpp' -print` `find ${PROJECT_SOURCE_DIR}/src -name '*.h' -print` )")
+			INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/help)
 		ELSE()
 			# Assume linux
-			INSTALL(CODE "EXEC_PROGRAM(perl ARGS ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${VERSION_RELEASE} '\$ENV{DESTDIR}/${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/*.template `find ${PROJECT_SOURCE_DIR}/src -name '*.cpp' -print` `find ${PROJECT_SOURCE_DIR}/src -name '*.h' -print` )")
+			INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/help)
 		ENDIF()
 	ELSEIF(WIN32)
 		#INSTALL(CODE "EXEC_PROGRAM(perl ARGS ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${VERSION_RELEASE} '${CMAKE_INSTALL_PREFIX}/share/kvirc/${VERSION_BRANCH}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/*.template `find ${PROJECT_SOURCE_DIR}/src -name '*.cpp' -print` `find ${PROJECT_SOURCE_DIR}/src -name '*.h' -print` )")
