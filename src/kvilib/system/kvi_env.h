@@ -52,7 +52,22 @@ inline char * kvi_getenv(const char * name)
 	#define kvi_setenv(__name,__value) SetEnvironmentVariable(__name,__value)
 	#define kvi_unsetenv(__name) SetEnvironmentVariable(__name,NULL)
 #else
-	#ifndef _KVI_ENV_CPP_
+	#ifdef _KVI_ENV_CPP_
+		/**
+		* \brief Sets environment variable
+		* \param name The name of the variable to set
+		* \param value The value of the variable
+		* \return bool
+		*/
+		KVILIB_API bool kvi_setenv(const char * name, const char * value);
+
+		/**
+		* \brief Unsets environment variable
+		* \param name The name of the variable to set
+		* \return void
+		*/
+		KVILIB_API void kvi_unsetenv(const char * name);
+	#else
 		/**
 		* \brief Sets environment variable
 		* \param name The name of the variable to set
