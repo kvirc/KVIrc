@@ -18,15 +18,16 @@ SET(howto
 
 # User documentation
 IF(PERL_FOUND)
+	SET(USERDOCS_INDEX ${CMAKE_CURRENT_BINARY_DIR}/help/en/index.html)
 	ADD_CUSTOM_TARGET("kvirc-userdocs" ALL)
-	ADD_CUSTOM_TARGET(kvirc-userdocs-en)
+	ADD_CUSTOM_TARGET(kvirc-userdocs-en DEPENDS ${USERDOCS_INDEX})
 	ADD_DEPENDENCIES(kvirc-userdocs kvirc-userdocs-en)
 
 	IF(UNIX)
 		ADD_CUSTOM_COMMAND(
+			OUTPUT ${USERDOCS_INDEX}
 			COMMENT "Generating user documentation.."
 			COMMAND ${PERL_EXECUTABLE} ${PROJECT_SOURCE_DIR}/admin/gendoc.pl -v ${VERSION_RELEASE} '${CMAKE_CURRENT_BINARY_DIR}/help/en/' ${PROJECT_SOURCE_DIR}/data/doctemplates/*.template `find ${PROJECT_SOURCE_DIR}/src -name '*.cpp' -print` `find ${PROJECT_SOURCE_DIR}/src -name '*.h' -print`
-			TARGET kvirc-userdocs-en
 		)
 		IF(APPLE)
 			INSTALL(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/help/ DESTINATION ${CMAKE_INSTALL_PREFIX}/Contents/Resources/help)
