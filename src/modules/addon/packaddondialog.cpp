@@ -398,9 +398,9 @@ bool KviPackAddonDialog::packAddon()
 		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
-#if 0
+
 	// Add help dir
-	if(!pw.addDirectory(m_szDirPath + "/help","help/"))
+	if(!pw.addDirectory(m_szDirPath + "/help","help/" + m_szName))
 	{
 		szTmp = __tr2qs_ctx("Packaging failed","addon");
 		szTmp += ": ";
@@ -408,7 +408,7 @@ bool KviPackAddonDialog::packAddon()
 		QMessageBox::critical(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),szTmp,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 		return false;
 	}
-#endif
+
 	// Add initialization script
 	if(!pw.addFile(m_szDirPath + "/init.kvs","init.kvs"))
 	{
@@ -450,8 +450,8 @@ bool KviPackAddonDialog::packAddon()
 	}
 
 	// Debug purpose
-	KviPackageReader pr;
-	pr.unpack("/home/hellvis69/Test-2.0.3.kva","/home/hellvis69/unpacked_test_kva");
+	//KviPackageReader pr;
+	//pr.unpack("/home/hellvis69/Test-2.0.3.kva","/home/hellvis69/unpacked_test_kva");
 
 	QMessageBox::information(this,__tr2qs_ctx("Export Addon - KVIrc","addon"),__tr2qs("Package saved successfully in ") + m_szSavePath,QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
