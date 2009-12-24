@@ -740,9 +740,6 @@ void KviDccBroker::renameOverwriteResume(KviDccBox *box,KviDccDescriptor * dcc)
 		unsigned long iRemoteSize = dcc->szFileSize.toULong(&bOk);
 		if(!bOk)iRemoteSize = 0;
 
-		// FIXME: Files downloaded successfully shouldn't be resumed
-		//        we should keep a db of downloaded files!
-
 		if(!dcc->bAutoAccept)
 		{
 			QString tmp;
