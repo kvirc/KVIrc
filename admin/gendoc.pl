@@ -83,13 +83,16 @@ sub usage
 {
 	print "\n";
 	print "Usage:\n";
-	print "  gendoc.pl [-v <kvirc_version>] <target_dir> <file1> <file2> ...\n";
+	print "  gendoc.pl [-v <kvirc_version>] <target_dir> <dir1> <dir2> ...\n";
 	print "Parameters:\n";
 	print "  <target_dir>       : directory where the doc files should be written\n";
-	print "  <file1> <file2> ...: a list of files from which to extract docs\n";
+	print "  <dir1> <dir2> ...  : a list of directories from which to extract docs\n";
 	print "Options:\n";
 	print "  -v forces the specified version to be displayed in the\n";
 	print "     generated documents\n";
+	print "Notes:\n";
+	print "  Docs will be extracted only by files with these extensions:\n";
+	print "  .h .cpp .template\n";
 	print "\n";
 }
 
@@ -128,8 +131,7 @@ if($g_directory eq "")
 $j = 0;
 while($ARGV[$i] ne "")
 {
-	$g_filesToProcess[$j] = $ARGV[$i];
-	$j++;
+	recurse($ARGV[$i]);
 	$i++;
 }
 
@@ -137,6 +139,32 @@ while($ARGV[$i] ne "")
 #################################################################################################
 # SUBS
 #################################################################################################
+
+sub recurse($)
+{
+	my($path) = @_;
+
+	## append a trailing / if it's not there
+	$path .= '/' if($path !~ /\/$/);
+
+	## loop through the files contained in the directory
+	for my $eachFile (glob($path.'*'))
+	{
+
+		## if the file is a directory
+		if( -d $eachFile)
+		{
+			## pass the directory to the routine ( recursion )
+			recurse($eachFile);
+		} else {
+			if($eachFile =~ /(\.cpp|\.h|\.template)$/)
+			{
+				$g_filesToProcess[$j] = $eachFile;
+				$j++;
+			}
+		}
+	}
+}
 
 sub print_header
 {
