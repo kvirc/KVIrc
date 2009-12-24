@@ -1,7 +1,12 @@
 # CMakeLists for doc/
 SUBDIRS(scriptexamples)
 
-SET(license COPYING)
+SET(license
+	COPYING
+	LICENSE-GPLV2
+	LICENSE-GPLV3
+	LICENSE-OPENSSL
+)
 SET(howto
 	README
 	FAQ
