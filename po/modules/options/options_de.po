@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-23 18:29+0100\n"
-"PO-Revision-Date: 2009-08-09 23:41+0200\n"
+"PO-Revision-Date: 2009-12-24 15:42+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -2004,9 +2004,8 @@ msgid "Choose..."
 msgstr "Auswählen..."
 
 #: src/modules/options/optw_ircoutput.cpp:62
-#, fuzzy
 msgid "Classic format"
-msgstr "klassische Fensterliste"
+msgstr "klassisches Format"
 
 #: src/modules/options/optw_servers.cpp:1477
 msgid "Clear List"
@@ -2117,9 +2116,8 @@ msgid "DashLine"
 msgstr "gestrichelte Linie"
 
 #: src/modules/options/optw_ircoutput.cpp:58
-#, fuzzy
 msgid "Datetime format"
-msgstr "Zeitstempel-Format:"
+msgstr "Zeit-/Datumsformat"
 
 #: src/modules/options/optw_servers.cpp:764
 msgid "Default"
@@ -2597,7 +2595,7 @@ msgstr "IRC Op:"
 
 #: src/modules/options/optw_ircoutput.cpp:63
 msgid "ISO 8601 format"
-msgstr ""
+msgstr "ISO 8601 Format"
 
 #: src/modules/options/optw_notify.cpp:86
 msgid "ISON delay (in seconds)"
@@ -3812,7 +3810,7 @@ msgstr "Unterstützt das STARTTLS-Protokoll"
 
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
-msgstr ""
+msgstr "Systemformat (locale)"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:103
 msgid "TIME"
