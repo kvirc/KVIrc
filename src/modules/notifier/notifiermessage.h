@@ -26,30 +26,63 @@
 //
 //=============================================================================
 
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QPixmap>
 #include <QString>
-#include <QLabel>
-#include <QHBoxLayout>
 #include <QWidget>
 
+/**
+* \class KviNotifierMessage
+* \brief A single message in a notifier window
+*
+* This is basically a single message that can appear in a notifier window
+* It's made up of an icon and a rich text content
+* This class is basically a QLabel with a method that translates a raw irc message to html code.
+*/
 class KviNotifierMessage : public QWidget
 {
 	friend class KviNotifierWindow;
 public:
+	/**
+	* \brief Constructs the KviNotifierMessage object
+	* \param pPixmap pointer to a message icon, can be null 
+	* \param szText const reference to message text in irc format
+	* \return KviNotifierMessage
+	*/
 	KviNotifierMessage(QPixmap * pPixmap, const QString &szText);
+	/**
+	* \brief Destroys the KviNotifierMessage object
+	*/
 	~KviNotifierMessage();
 private:
+	/// The message text
 	QString  	  m_szText;
+	/// The message icon (can be null)
 	QPixmap		* m_pPixmap;
+	/// Layout for the labels
 	QHBoxLayout	* m_pHBox;
+	/// Label for the message icon
 	QLabel		* m_pLabel0;
+	/// Label for the message text
 	QLabel		* m_pLabel1;
 public:
-	static QString convertToHtml(const QString &text);
+	/**
+	* \brief Converts a raw irc message to its html equivalent text
+	* \param szText const reference to a message text
+	* \return QString
+	*/
+	static QString convertToHtml(const QString &szText);
+	/**
+	* \brief Returns the original irc message
+	* \return QString
+	*/
 	inline QString text() const { return m_szText; };
+	/**
+	* \brief Returns the message icon
+	* \return QPixmap*
+	*/
 	inline QPixmap* pixmap() const { return m_pPixmap; };
-protected:
-	virtual void resizeEvent(QResizeEvent * e);
 };
 
 #endif //!_NOTIFIERMESSAGE_H_

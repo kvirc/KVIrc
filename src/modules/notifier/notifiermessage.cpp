@@ -26,23 +26,30 @@
 #include "notifiermessage.h"
 #include "notifiersettings.h"
 
+#include "kvi_iconmanager.h"
 #include "kvi_mirccntrl.h"
-#include "kvi_texticonmanager.h"
 #include "kvi_options.h"
+#include "kvi_texticonmanager.h"
 
 #include <QRect>
 #include <QResizeEvent>
 
 KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 {
+	bool bShowImages=KVI_OPTION_BOOL(KviOption_boolIrcViewShowImages);
 	m_szText=szText;
 	m_pPixmap=pPixmap;
 
-	m_pLabel0 = new QLabel();
-	m_pLabel0->setFixedSize(16,16);
+	if(bShowImages)
+	{
+		m_pLabel0 = new QLabel();
+		m_pLabel0->setFixedSize(16,16);
+		if(m_pPixmap)
+			m_pLabel0->setPixmap(*m_pPixmap);
+	} else {
+		m_pLabel0 = 0;
+	}
 
-	if(m_pPixmap)
-		m_pLabel0->setPixmap(*m_pPixmap);
 
 	m_pLabel1 = new QLabel();
 	m_pLabel1->setTextFormat(Qt::RichText);
@@ -52,8 +59,12 @@ KviNotifierMessage::KviNotifierMessage(QPixmap * pPixmap, const QString &szText)
 	m_pHBox = new QHBoxLayout(this);
 	m_pHBox->setSpacing(SPACING);
 	m_pHBox->setMargin(SPACING);
-
-	m_pHBox->addWidget(m_pLabel0);
+	
+	if(bShowImages)
+	{
+		m_pHBox->setStretch(1,99);
+		m_pHBox->addWidget(m_pLabel0);
+	}
 	m_pHBox->addWidget(m_pLabel1);
 }
 
@@ -67,33 +78,27 @@ KviNotifierMessage::~KviNotifierMessage()
 		m_pHBox->deleteLater();
 }
 
-#define LAB1_MARGIN 16+(3*SPACING)
-void KviNotifierMessage::resizeEvent(QResizeEvent * e)
-{
-	int iWidth=e->size().width()-LAB1_MARGIN;
-	if(iWidth>0)
-		m_pLabel1->setFixedWidth(iWidth);
-}
-
 //TODO merge this code with kvi_topicw.cpp's one
 #define KVI_LABEL_DEF_BACK 100
 #define KVI_LABEL_DEF_FORE 101
 
-QString KviNotifierMessage::convertToHtml(const QString &text)
+QString KviNotifierMessage::convertToHtml(const QString &szText)
 {
-	QString result;
-	bool curBold      = false;
-	bool curUnderline = false;
-	unsigned char curFore      = KVI_LABEL_DEF_FORE; //default fore
-	unsigned char curBack      = KVI_LABEL_DEF_BACK; //default back
+	QString szResult;
+	bool bCurBold      = false;
+	bool bCurUnderline = false;
+	bool bIgnoreIcons = false;
+	bool bShowIcons = KVI_OPTION_BOOL(KviOption_boolDrawEmoticons);
+	
+	unsigned char uCurFore      = KVI_LABEL_DEF_FORE; //default fore
+	unsigned char uCurBack      = KVI_LABEL_DEF_BACK; //default back
 
-	unsigned int idx = 0;
+	unsigned int uIdx = 0;
 
-	while(idx < (unsigned int)text.length())
+	while(uIdx < (unsigned int)szText.length())
 	{
-		unsigned short c = text[(int)idx].unicode();
-
-		unsigned int start = idx;
+		unsigned short c = szText[(int)uIdx].unicode();
+		unsigned int uStart = uIdx;
 
 		while(
 				(c != KVI_TEXT_COLOR) &&
@@ -101,112 +106,225 @@ QString KviNotifierMessage::convertToHtml(const QString &text)
 				(c != KVI_TEXT_UNDERLINE) &&
 				(c != KVI_TEXT_REVERSE) &&
 				(c != KVI_TEXT_RESET) &&
-				(c != KVI_TEXT_ICON)
+				(c != KVI_TEXT_ICON) &&
+				((c != ':') || bIgnoreIcons) &&
+				((c != ';') || bIgnoreIcons) &&
+				((c != '=') || bIgnoreIcons)
 			)
 		{
-			idx++;
-			if(idx >= (unsigned int)text.length())break;
-			else c = text[(int)idx].unicode();
+			uIdx++;
+			bIgnoreIcons=FALSE;
+			if(uIdx >= (unsigned int)szText.length())break;
+			else c = szText[(int)uIdx].unicode();
 		}
+		
+		bIgnoreIcons=FALSE;
+		int iLen = uIdx - uStart;
 
-		int len = idx - start;
-
-		if(len > 0)
+		if(iLen > 0)
 		{
 			bool bOpened = FALSE;
-			QString szText = text.mid(start,len);
 
-			if(curBold) result.append("<b>");
-			if(curUnderline) result.append("<u>");
-
-			if(curFore != KVI_LABEL_DEF_FORE)
+			if(uCurFore != KVI_LABEL_DEF_FORE)
 			{
-				result.append("<font color=\"");
-				result.append(KVI_OPTION_MIRCCOLOR(curFore).name());
-				result.append('"');
+				szResult.append("<span style=\"color:");
+				szResult.append(KVI_OPTION_MIRCCOLOR(uCurFore).name());
 				bOpened = TRUE;
 			}
 
-/*			if(curBack != KVI_LABEL_DEF_BACK)
+			if(uCurBack != KVI_LABEL_DEF_BACK)
 			{
 				if(!bOpened)
-					result.append("<font bgcolor=");
-				else
-					result.append(" bgcolor=");
-				result.append(KVI_OPTION_MIRCCOLOR(curBack).name());
-			}*/
+				{
+					szResult.append("<span style=\"background-color:");
+					bOpened = TRUE;
+				} else {
+					szResult.append(";background-color:");
+				}
+				szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
+			}
 
-			if(bOpened) result.append(">");
+			if(bCurUnderline)
+			{
+				if(!bOpened)
+				{
+					szResult.append("<span style=\"text-decoration:underline");
+					bOpened = TRUE;
+				} else {
+					szResult.append(";text-decoration:underline");
+				}
+			}
 
-			result.append(text.mid(start,len));
+			if(bCurBold)
+			{
+				if(!bOpened)
+				{
+					szResult.append("<span style=\"font-weight:bold");
+					bOpened = TRUE;
+				} else {
+					szResult.append(";font-weight:bold");
+				}
+			}
 
-			if( (curFore != KVI_LABEL_DEF_FORE) /*|| (curBack != KVI_LABEL_DEF_BACK)*/ )
-				result.append("</font>");
+			if(bOpened) szResult.append(";\">");
 
-			if(curUnderline) result.append("</u>");
-			if(curBold) result.append("</b>");
+			szResult.append(szText.mid(uStart,iLen));
 
+			if( (uCurFore != KVI_LABEL_DEF_FORE) || (uCurBack != KVI_LABEL_DEF_BACK) )
+				szResult.append("</span>");
 		}
 
 		switch(c)
 		{
-			case KVI_TEXT_BOLD: curBold = !curBold; ++idx; break;
-			case KVI_TEXT_UNDERLINE: curUnderline = !curUnderline; ++idx; break;
+			case KVI_TEXT_BOLD: bCurBold = !bCurBold; ++uIdx; break;
+			case KVI_TEXT_UNDERLINE: bCurUnderline = !bCurUnderline; ++uIdx; break;
 			case KVI_TEXT_REVERSE:
 				{
-					char auxBack = curBack;
-					curBack = curFore;
-					curFore = auxBack;
+					char auxBack = uCurBack;
+					uCurBack = uCurFore;
+					uCurFore = auxBack;
 				}
-				++idx;
+				++uIdx;
 			break;
 			case KVI_TEXT_RESET:
-				curFore = KVI_LABEL_DEF_FORE;
-				curBack = KVI_LABEL_DEF_BACK;
-				curBold = false;
-				curUnderline = false;
-				++idx;
+				uCurFore = KVI_LABEL_DEF_FORE;
+				uCurBack = KVI_LABEL_DEF_BACK;
+				bCurBold = false;
+				bCurUnderline = false;
+				++uIdx;
 			break;
 			case KVI_TEXT_COLOR:
 			{
-				++idx;
+				++uIdx;
 				unsigned char fore;
 				unsigned char back;
-				idx = getUnicodeColorBytes(text,idx,&fore,&back);
+				uIdx = getUnicodeColorBytes(szText,uIdx,&fore,&back);
 				if(fore != KVI_NOCHANGE)
 				{
-					curFore = fore;
-					if(back != KVI_NOCHANGE)curBack = back;
+					uCurFore = fore;
+					if(back != KVI_NOCHANGE)uCurBack = back;
 				} else {
 					// only a CTRL+K
-					curBack = KVI_LABEL_DEF_BACK;
-					curFore = KVI_LABEL_DEF_FORE;
+					uCurBack = KVI_LABEL_DEF_BACK;
+					uCurFore = KVI_LABEL_DEF_FORE;
+				}
+			}
+			break;
+			case ':':
+			case ';':
+			case '=':
+			{
+				//potential emoticon, got eyes
+				if(bShowIcons)
+				{
+					++uIdx;
+					QString szLookup;
+					szLookup.append(QChar(c));
+					unsigned short uIsEmoticon=0;
+					unsigned int uIcoStart = uIdx;
+
+					if(uIdx < (unsigned int)szText.length())
+					{
+						//look up for a nose
+						if(szText[(int)uIdx] == '-')
+						{
+							szLookup.append('-');
+							uIdx++;
+						}
+					}
+
+					if(uIdx < (unsigned int)szText.length())
+					{
+						//look up for a mouth
+						unsigned short m = szText[(int)uIdx].unicode();
+						switch(m)
+						{
+							case ')':
+							case '(':
+							case '/':
+							case 'D':
+							case 'P':
+							case 'S':
+							case 'O':
+							case '*':
+							case '|':
+								szLookup+=QChar(m);
+								uIsEmoticon++;
+								uIdx++;
+								break;
+							default:
+								break;
+						}
+					}
+
+					if(uIdx < (unsigned int)szText.length())
+					{
+						//look up for a space
+						if(szText[(int)uIdx]== ' ')
+						{
+							uIsEmoticon++;
+						}
+					} else {
+						//got a smile at the end of the szText
+						uIsEmoticon++;
+					}
+
+					if(uIsEmoticon>1)
+					{
+						KviTextIcon * pIcon  = g_pTextIconManager->lookupTextIcon(szLookup);
+						// do we have that emoticon-icon association ?
+						if(pIcon)
+						{
+							szResult.append("<img src=\"");
+							szResult.append(g_pIconManager->getSmallIconResourceName(pIcon->id()));
+							if(uCurBack != KVI_LABEL_DEF_BACK)
+							{
+								szResult.append("\" style=\"background-color:");
+								szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
+							}
+							szResult.append("\">");
+						} else {
+							bIgnoreIcons=TRUE;
+							uIdx = uIcoStart-1;
+						}
+					} else {
+						bIgnoreIcons=TRUE;
+						uIdx = uIcoStart-1;
+					}
+				} else {
+					bIgnoreIcons=TRUE;
 				}
 			}
 			break;
 			case KVI_TEXT_ICON:
 			{
-				++idx;
-
-				unsigned int icoStart = idx;
-				while((idx < (unsigned int)text.length()) && (text[(int)idx].unicode() > 32))idx++;
-
-				KviStr lookupString = text.mid(icoStart,idx - icoStart);
-
-				KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(lookupString.ptr());
-				if(icon)
+				++uIdx;
+				if(bShowIcons)
 				{
-					//TODO: icons
-/*					QPixmap * pigzmap = icon->pixmap();
-					p->drawPixmap(curX,(baseline + 2) - pigzmap->height(),*(pigzmap));
-					curX += pigzmap->width();*/
-				} else {
-					idx = icoStart;
+					unsigned int uIcoStart = uIdx;
+					while((uIdx < (unsigned int)szText.length()) && (szText[(int)uIdx].unicode() > 32))uIdx++;
+
+					QString szLookup = szText.mid(uIcoStart,uIdx - uIcoStart);
+
+					KviTextIcon * pIcon = g_pTextIconManager->lookupTextIcon(szLookup);
+					if(pIcon)
+					{
+						szResult.append("<img src=\"");
+						szResult.append(g_pIconManager->getSmallIconResourceName(pIcon->id()));
+						if(uCurBack != KVI_LABEL_DEF_BACK)
+						{
+							szResult.append("\" style=\"background-color:");
+							szResult.append(KVI_OPTION_MIRCCOLOR(uCurBack).name());
+						}
+						szResult.append("\">");
+					} else {
+						uIdx = uIcoStart;
+					}
 				}
 			}
 			break;
 		}
 	}
-	return result;
+	return szResult;
 }
 
