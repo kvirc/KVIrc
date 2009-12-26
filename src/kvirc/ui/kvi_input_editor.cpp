@@ -57,8 +57,6 @@
 #include <QDragEnterEvent>
 #include <QInputContext>
 
-QFontMetrics * g_pLastFontMetrics = 0;
-
 // from kvi_app.cpp
 extern KviTalPopupMenu         * g_pInputPopup;
 extern KviTextIconWindow       * g_pTextIconWindow;
@@ -68,13 +66,15 @@ extern KviColorWindow          * g_pColorWindow;
 	extern QPixmap       * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-static int g_iInputFontCharWidth[256];
-static bool g_bInputFontMetricsDirty = true;
-
-
+//static members initialization
+int            KviInputEditor::g_iInputInstances = 0;
+int            KviInputEditor::g_iInputFontCharWidth[256];
+QFontMetrics * KviInputEditor::g_pLastFontMetrics = 0;
+	
 KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView * pView)
 :QFrame(pPar)
 {
+	++KviInputEditor::g_iInputInstances;
 	setObjectName("input_frame");
 	m_pIconMenu            = 0;
 	m_pInputParent         = pPar;
@@ -124,9 +124,13 @@ KviInputEditor::KviInputEditor(QWidget * pPar, KviWindow * pWnd, KviUserListView
 
 KviInputEditor::~KviInputEditor()
 {
-	if(g_pLastFontMetrics)
+	--KviInputEditor::g_iInputInstances;
+	if(KviInputEditor::g_iInputInstances==0 && g_pLastFontMetrics)
+	{
+		//last instance, delete shared resources
 		delete g_pLastFontMetrics;
-	g_pLastFontMetrics = 0;
+		g_pLastFontMetrics = 0;
+	}
 
 	if(m_pIconMenu)
 		delete m_pIconMenu;
@@ -136,25 +140,6 @@ KviInputEditor::~KviInputEditor()
 	if(m_iCursorTimer)
 		killTimer(m_iCursorTimer);
 	killDragTimer();
-}
-
-void KviInputEditor::recalcFontMetrics()
-{
-	QFontMetrics fm(font());
-	unsigned short u;
-	for(u=1; u<32; u++)
-	{
-		QChar c = getSubstituteChar(u);
-		g_iInputFontCharWidth[u] = fm.width(c);
-		if(c != QChar(u))
-			g_iInputFontCharWidth[u] += 4;
-	}
-
-	for(u=32; u<256; u++)
-	{
-		g_iInputFontCharWidth[u] = fm.width(QChar(u));
-	}
-	g_bInputFontMetricsDirty = false;
 }
 
 void KviInputEditor::applyOptions()
@@ -167,8 +152,6 @@ void KviInputEditor::applyOptions()
 	//then, let font metrics be updated in lazy fashion
 	if(g_pLastFontMetrics) delete g_pLastFontMetrics;
 	g_pLastFontMetrics = 0;
-
-	g_bInputFontMetricsDirty = true;
 
 	//not that lazy, since we force an update :)
 	update();
@@ -221,9 +204,9 @@ QSize KviInputEditor::sizeHint() const
 {
 	//grabbed from qlineedit.cpp
 	ensurePolished();
-	QFontMetrics fm(font());
-	int h = qMax(fm.lineSpacing(), 14) + 2*2; /* innerMargin */
-	int w = fm.width( 'x' ) * 17; // "some"
+	QFontMetrics *fm = KviInputEditor::getLastFontMetrics(font());
+	int h = fm->height() + 4; /* innerMargin 2px * 2 */
+	int w = fm->width( 'x' ) * 17; // "some"
 	int m = frameWidth() * 2;
 	QStyleOption opt;
 	opt.initFrom(this);
@@ -247,13 +230,7 @@ void KviInputEditor::drawContents(QPainter * p)
 	int iWidgetWidth  = rect.width();
 	int iWidgetHeight = rect.height();
 
-	QFontMetrics fm(p->fontMetrics());
-
-	if(!g_pLastFontMetrics)
-		g_pLastFontMetrics = new QFontMetrics(p->fontMetrics());
-
-	if(g_bInputFontMetricsDirty)
-		recalcFontMetrics();
+	QFontMetrics * fm = KviInputEditor::getLastFontMetrics(font());
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
@@ -286,9 +263,9 @@ void KviInputEditor::drawContents(QPainter * p)
 	m_bCurBold       = false;
 	m_bCurUnderline  = false;
 
-	int iBottom       = iWidgetHeight-(iWidgetHeight-fm.height())/2;
-	int iTextBaseline = iWidgetHeight - fm.descent();
-	int iTop          = (iWidgetHeight-fm.height())/2;
+	int iTop          = 2;
+	int iBottom       = iWidgetHeight - 2;
+	int iTextBaseline = iWidgetHeight - fm->descent() - 2; //2 = bottom margin
 
 	runUpToTheFirstVisibleChar();
 
@@ -313,7 +290,7 @@ void KviInputEditor::drawContents(QPainter * p)
 		int iXLeft = xPositionFromCharIndex(fm,iSelStart,TRUE);
 		int iXRight = xPositionFromCharIndex(fm,m_iSelectionEnd + 1,TRUE);
 
-		p->fillRect(iXLeft,frameWidth(),iXRight - iXLeft,iWidgetWidth,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
+		p->fillRect(iXLeft,1,iXRight - iXLeft,iWidgetHeight,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
 	}
 
 	// When m_bIMComposing is true, the text between m_iIMStart and m_iIMStart+m_iIMLength should be highlighted to show that this is the active
@@ -331,7 +308,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 		int iXIMSelectionLeft = xPositionFromCharIndex(fm,iIMSelectionStart,TRUE);
 		int iXIMSelectionRight = xPositionFromCharIndex(fm,iIMSelectionStart + m_iIMSelectionLength,TRUE);
-		p->fillRect(iXIMSelectionLeft,0,iXIMSelectionRight - iXIMSelectionLeft, iWidgetWidth,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
+		p->fillRect(iXIMSelectionLeft,1,iXIMSelectionRight - iXIMSelectionLeft, iWidgetHeight,KVI_OPTION_COLOR(KviOption_colorInputSelectionBackground));
 
 		// highlight the IM selection
 		int iIMStart = m_iIMStart;
@@ -360,7 +337,7 @@ void KviInputEditor::drawContents(QPainter * p)
 
 			p->drawText(iCurXPos + 2,iTextBaseline,s);
 
-			p->drawRect(iCurXPos,iTop,m_iBlockWidth-1,iBottom);
+			p->drawRect(iCurXPos,iTop,m_iBlockWidth-1,iBottom-iTop);
 		} else {
 			if(m_iSelectionBegin!=-1)
 			{
@@ -419,25 +396,23 @@ void KviInputEditor::drawContents(QPainter * p)
 	while(m_iBlockLen < m_iCursorPosition)
 	{
 		QChar c = m_szTextBuffer.at(m_iBlockLen);
-		m_iLastCursorXPosition+= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+		m_iLastCursorXPosition+= (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
 		m_iBlockLen++;
 	}
-
-	//m_iLastCursorXPosition = cur1XPos;
 
 	if(m_bCursorOn)
 	{
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorInputCursor));
-		p->drawLine(m_iLastCursorXPosition,0,m_iLastCursorXPosition,iWidgetHeight);
+		p->drawLine(m_iLastCursorXPosition,1,m_iLastCursorXPosition,iWidgetHeight);
 	} else {
 		p->setPen(KVI_OPTION_COLOR(KviOption_colorInputForeground));
 	}
 }
 
-void KviInputEditor::drawTextBlock(QPainter * pa, QFontMetrics & fm, int iCurXPos, int iTextBaseline, int iCharIdx, int iLen, bool bSelected)
+void KviInputEditor::drawTextBlock(QPainter * pa, QFontMetrics *fm, int iCurXPos, int iTextBaseline, int iCharIdx, int iLen, bool bSelected)
 {
 	QString szTmp = m_szTextBuffer.mid(iCharIdx,iLen);
-	m_iBlockWidth = fm.width(szTmp);
+	m_iBlockWidth = fm->width(szTmp);
 
 	QRect rect = contentsRect();
 	int iWidgetHeight = rect.height();
@@ -458,9 +433,9 @@ void KviInputEditor::drawTextBlock(QPainter * pa, QFontMetrics & fm, int iCurXPo
 	{
 		if(((unsigned char)m_iCurBack) > 16)
 		{
-			pa->fillRect(iCurXPos,(iWidgetHeight-fm.height())/2,m_iBlockWidth,fm.height(),KVI_OPTION_COLOR(KviOption_colorInputForeground));
+			pa->fillRect(iCurXPos,2,m_iBlockWidth,iWidgetHeight-3,KVI_OPTION_COLOR(KviOption_colorInputForeground));
 		} else {
-			pa->fillRect(iCurXPos,(iWidgetHeight-fm.height())/2,m_iBlockWidth,fm.height(),KVI_OPTION_MIRCCOLOR((unsigned char)m_iCurBack));
+			pa->fillRect(iCurXPos,2,m_iBlockWidth,iWidgetHeight-3,KVI_OPTION_MIRCCOLOR((unsigned char)m_iCurBack));
 		}
 	}
 
@@ -469,7 +444,7 @@ void KviInputEditor::drawTextBlock(QPainter * pa, QFontMetrics & fm, int iCurXPo
 	if(m_bCurBold)
 		pa->drawText(iCurXPos+1,iTextBaseline,szTmp);
 	if(m_bCurUnderline)
-		pa->drawLine(iCurXPos,iTextBaseline + fm.descent(),iCurXPos+m_iBlockWidth,iTextBaseline + fm.descent());
+		pa->drawLine(iCurXPos,iTextBaseline + fm->descent(),iCurXPos+m_iBlockWidth,iTextBaseline + fm->descent());
 }
 
 QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
@@ -503,7 +478,7 @@ QChar KviInputEditor::getSubstituteChar(unsigned short uControlCode)
 	}
 }
 
-void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics & fm, int iCurXPos, int iMaxXPos)
+void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, int iMaxXPos)
 {
 	m_iBlockLen = 0;
 	m_iBlockWidth = 0;
@@ -534,7 +509,7 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics & fm, int iCurXPos,
 				(c != QChar(KVI_TEXT_ICON))))
 			{
 				m_iBlockLen++;
-				int iXxx = (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+				int iXxx = (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
 				m_iBlockWidth += iXxx;
 				iCurXPos      += iXxx;
 				iIdx++;
@@ -544,7 +519,7 @@ void KviInputEditor::extractNextBlock(int iIdx, QFontMetrics & fm, int iCurXPos,
 	} else {
 		m_bControlBlock = true;
 		m_iBlockLen = 1;
-		m_iBlockWidth = g_iInputFontCharWidth[c.unicode()];
+		m_iBlockWidth = KviInputEditor::g_iInputFontCharWidth[c.unicode()];
 		//Control code
 		switch(c.unicode())
 		{
@@ -2033,17 +2008,17 @@ void KviInputEditor::insertChar(QChar c)
 void KviInputEditor::moveRightFirstVisibleCharToShowCursor()
 {
 	// :)
-	QFontMetrics fm(font());
+	QFontMetrics * fm = KviInputEditor::getLastFontMetrics(font());
 
 	QChar c = m_szTextBuffer.at(m_iCursorPosition);
 
-	m_iLastCursorXPosition += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+	m_iLastCursorXPosition += (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
 
 	while(m_iLastCursorXPosition >= contentsRect().width()-2*KVI_INPUT_MARGIN)
 	{
 		c = m_szTextBuffer.at(m_iFirstVisibleChar);
 
-		m_iLastCursorXPosition -= (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+		m_iLastCursorXPosition -= (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
 
 		m_iFirstVisibleChar++;
 	}
@@ -2072,11 +2047,11 @@ int KviInputEditor::charIndexFromXPosition(int iXPos)
 	int iCurChar = m_iFirstVisibleChar;
 	int iBufLen  = m_szTextBuffer.length();
 
-	QFontMetrics fm(font());
+	QFontMetrics *fm = KviInputEditor::getLastFontMetrics(font());
 	while(iCurChar < iBufLen)
 	{
 		QChar c = m_szTextBuffer.at(iCurChar);
-		int iWidthCh = (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+		int iWidthCh = (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
 
 		if(iXPos < (iCurXPos+(iWidthCh/2)))
 		{
@@ -2094,9 +2069,9 @@ int KviInputEditor::charIndexFromXPosition(int iXPos)
 	return iCurChar;
 }
 
-int  KviInputEditor::xPositionFromCharIndex(QFontMetrics & fm, int iChIdx, bool bContentsCoords)
+int  KviInputEditor::xPositionFromCharIndex(QFontMetrics *fm, int iChIdx, bool bContentsCoords)
 {
-	// FIXME: this could use fm.width(m_szTextBuffer,chIdx)
+	// FIXME: this could use fm->width(m_szTextBuffer,chIdx)
 	int iCurXPos = bContentsCoords ? KVI_INPUT_MARGIN : frameWidth()+KVI_INPUT_MARGIN;
 	int iCurChar = m_iFirstVisibleChar;
 	if(!m_szTextBuffer.isEmpty())
@@ -2104,7 +2079,7 @@ int  KviInputEditor::xPositionFromCharIndex(QFontMetrics & fm, int iChIdx, bool 
 		{
 			QChar c = m_szTextBuffer.at(iCurChar);
 
-			iCurXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : fm.width(c);
+			iCurXPos += (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
 
 			iCurChar++;
 		}
@@ -2113,19 +2088,18 @@ int  KviInputEditor::xPositionFromCharIndex(QFontMetrics & fm, int iChIdx, bool 
 
 int KviInputEditor::xPositionFromCharIndex(int iChIdx, bool bContentsCoords)
 {
-	// FIXME: this could use fm.width(m_szTextBuffer,chIdx)
+	// FIXME: this could use fm->width(m_szTextBuffer,chIdx)
 	int iCurXPos = bContentsCoords ? KVI_INPUT_MARGIN : frameWidth()+KVI_INPUT_MARGIN;
 	int iCurChar = m_iFirstVisibleChar;
 
-	if(!g_pLastFontMetrics)
-		g_pLastFontMetrics = new QFontMetrics(font());
+	QFontMetrics *fm = KviInputEditor::getLastFontMetrics(font());
 
 	if(!m_szTextBuffer.isEmpty())
 		while(iCurChar < iChIdx)
 		{
 			QChar c = m_szTextBuffer.at(iCurChar);
 
-			iCurXPos += (c.unicode() < 256) ? g_iInputFontCharWidth[c.unicode()] : g_pLastFontMetrics->width(c);
+			iCurXPos += (c.unicode() < 256) ? KviInputEditor::g_iInputFontCharWidth[c.unicode()] : fm->width(c);
 
 			iCurChar++;
 		}

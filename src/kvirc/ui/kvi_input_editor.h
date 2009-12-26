@@ -92,6 +92,9 @@ public:
 	*/
 	~KviInputEditor();
 protected:
+	static int                g_iInputFontCharWidth[256];
+	static QFontMetrics     * g_pLastFontMetrics;
+	static int                g_iInputInstances;
 	QString                   m_szTextBuffer;
 	int                       m_iCursorPosition;
 	int                       m_iFirstVisibleChar;
@@ -266,7 +269,7 @@ private:
 	* \param iCurXPos The current position
 	* \param iMaxXPos The maximum position of the text
 	*/
-	void extractNextBlock(int iIdx, QFontMetrics & fm, int iCurXPos, int iMaxXPos);
+	void extractNextBlock(int iIdx, QFontMetrics *fm, int iCurXPos, int iMaxXPos);
 
 	/**
 	* \brief Draws a block of text
@@ -279,14 +282,14 @@ private:
 	* \param bSelected Whether the text is selected
 	* \return void
 	*/
-	void drawTextBlock(QPainter * pa, QFontMetrics & fm, int iCurXPos, int iTextBaseline, int iIdx, int iLen, bool bSelected = false);
+	void drawTextBlock(QPainter * pa, QFontMetrics *fm, int iCurXPos, int iTextBaseline, int iIdx, int iLen, bool bSelected = false);
 
 	/**
 	* \brief Gets the substitute character for control codes
 	* \param uControlCode The control code inserted
 	* \return QChar
 	*/
-	QChar getSubstituteChar(unsigned short uControlCode);
+	static QChar getSubstituteChar(unsigned short uControlCode);
 
 	/**
 	* \brief Moves the internal cursor to the first visibile char to the right
@@ -321,7 +324,7 @@ private:
 	* \param bContentsCoords Whether to use the frame width in addiction to the margin
 	* \return int
 	*/
-	int xPositionFromCharIndex(QFontMetrics & fm, int iChIdx, bool bContentsCoords = false);
+	int xPositionFromCharIndex(QFontMetrics *fm, int iChIdx, bool bContentsCoords = false);
 
 	/**
 	* \brief Returns the current position from a given character
@@ -398,12 +401,6 @@ private:
 	void standardNickCompletion(bool bAddMask, QString & szWord, bool bFirstWordInLine);
 
 	/**
-	* \brief Recalculates the font metrics
-	* \return void
-	*/
-	void recalcFontMetrics();
-
-	/**
 	* \brief Moves the cursor one character to the right
 	* \param bShift Whether to shift the selection
 	* \return void
@@ -441,6 +438,41 @@ private:
 	* \return void
 	*/
 	void addCommand(const Command& cmd);
+
+	/**
+	* \brief Returns the current input editor font metrics (globally shared)
+	* \return QFontMetrics *
+	*/
+	inline static QFontMetrics * getLastFontMetrics(const QFont & font)
+	{
+		if(g_pLastFontMetrics)
+		{
+			return g_pLastFontMetrics;
+		} else {
+			g_pLastFontMetrics = new QFontMetrics(font);
+			unsigned short u;
+			for(u=1; u<32; u++)
+			{
+				QChar c = getSubstituteChar(u);
+				KviInputEditor::g_iInputFontCharWidth[u] = g_pLastFontMetrics->width(c);
+				if(c != QChar(u))
+					KviInputEditor::g_iInputFontCharWidth[u] += 4;
+			}
+
+			for(u=32; u<256; u++)
+			{
+				KviInputEditor::g_iInputFontCharWidth[u] = g_pLastFontMetrics->width(QChar(u));
+			}
+
+			return g_pLastFontMetrics;
+		}
+	}
+
+	/**
+	* \brief Recalculates the font metrics
+	* \return void
+	*/
+	void recalcFontMetrics(const QFont & font);
 
 public slots:
 	/**
