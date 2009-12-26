@@ -205,14 +205,8 @@ QSize KviInputEditor::sizeHint() const
 	//grabbed from qlineedit.cpp
 	ensurePolished();
 	QFontMetrics *fm = KviInputEditor::getLastFontMetrics(font());
-	int h = fm->height() + 4; /* innerMargin 2px * 2 */
-	int w = fm->width( 'x' ) * 17; // "some"
-	int m = frameWidth() * 2;
-	QStyleOption opt;
-	opt.initFrom(this);
-	return (style()->sizeFromContents(QStyle::CT_LineEdit,&opt,
-		QSize( w + m, h + m ).
-		expandedTo(QApplication::globalStrut()),this));
+	return QSize(fm->width( 'x' ) * 17 + lineWidth() + midLineWidth(),	// "some"
+		     fm->height() + 8  + lineWidth() + midLineWidth());		// innerMargin 2px * 2
 }
 
 void KviInputEditor::paintEvent(QPaintEvent *)
