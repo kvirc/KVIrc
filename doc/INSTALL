@@ -327,7 +327,7 @@ General notes for the installation of the 4.0 release of KVIrc
         ${CMAKE_INSTALL_PREFIX}/lib${LIB_SUFFIX}
         directory. It defaults to an empty suffix. Mainly used for 64bit 
         distros.
-        (Default: -DLIB_SUFFIX=64)
+        (Default: -DLIB_SUFFIX="")
 
     -DMANDIR=DIRECTORY
         This will install man pages to DIRECTORY.
