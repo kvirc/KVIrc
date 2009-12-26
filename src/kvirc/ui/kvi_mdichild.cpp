@@ -38,7 +38,6 @@
 #include "kvi_settings.h"
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
-#include "kvi_frame.h"
 #include "kvi_tal_popupmenu.h"
 
 #ifdef COMPILE_ON_MAC
@@ -139,14 +138,7 @@ void KviMdiChild::windowStateChangedEvent(Qt::WindowStates oldState, Qt::WindowS
 			m_pManager->focusPreviousTopChild();
 		}
 	}
-	if(newState.testFlag(Qt::WindowActive) &&
-		diffState.testFlag(Qt::WindowActive) &&
-		g_pFrame->isActiveWindow() &&
-		m_pClient->inherits("KviWindow")
-		)
-	{
-		((KviWindow *)m_pClient)->activateSelf();
-	}
+
 	if(newState.testFlag(Qt::WindowActive) && diffState.testFlag(Qt::WindowMaximized))
 	{
 		//i'm the active window and my maximized state has changed => update sdi mode
