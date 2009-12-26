@@ -441,6 +441,7 @@ private:
 
 	/**
 	* \brief Returns the current input editor font metrics (globally shared)
+	* \param font The current input editor font
 	* \return QFontMetrics *
 	*/
 	inline static QFontMetrics * getLastFontMetrics(const QFont & font)
@@ -467,12 +468,6 @@ private:
 			return g_pLastFontMetrics;
 		}
 	}
-
-	/**
-	* \brief Recalculates the font metrics
-	* \return void
-	*/
-	void recalcFontMetrics(const QFont & font);
 
 public slots:
 	/**
