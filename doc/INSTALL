@@ -279,11 +279,6 @@ General notes for the installation of the 4.0 release of KVIrc
     To do it, we encourage the "out-of-source" building: build all files
     without dirtying the sources directory.
 
-    (THIS IS CURRENTLY BROKEN! You will be able to run cmake or ccmake from a
-     subdir, but it will generate all the needed files in the topdir, thus 
-     making all advantages of "out-of-source" building redundant.
-     Currently there is no known workaround, sorry.)
-
     # mkdir release
     # cd release
     # cmake [your options] ..
