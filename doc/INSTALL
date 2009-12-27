@@ -159,7 +159,7 @@ General notes for the installation of the 4.0 release of KVIrc
     If you don't have it (CMake will tell you), you can download it from your
     favorite GNU mirror.
     The configure script will also fail if the library is hidden somewhere in
-    your system (eg. not in /lib, /usr/lib or /usr/local/lib.) In this case,
+    your system (eg. not in /lib, /usr/lib or /usr/local/lib). In this case,
     you should probably move it.
 
     #
@@ -223,10 +223,10 @@ General notes for the installation of the 4.0 release of KVIrc
     the OpenSSL library and headers. (libssl.so and openssl/ssl.h)
 
     - (Optional) If you want DCC VOICE to support the gsm codec,
-       you need a recent copy of libgsm. This is not strictly required
-       at compile time since KVIrc will look for the library at run-time
-       and only if the DCC VOICE with the gsm codec is requested.
-       You can check for libgsm using the 'find' or "locate" command.
+      you need a recent copy of libgsm. This is not strictly required
+      at compile time since KVIrc will look for the library at run-time
+      and only if the DCC VOICE with the gsm codec is requested.
+      You can check for libgsm using the 'find' or 'locate' command.
 
     # find / -name libgsm*
     ## or ##
@@ -239,7 +239,7 @@ General notes for the installation of the 4.0 release of KVIrc
     This library is included in most distributions.
     Some distros ship only the static version of the library "libgsm.a".
     If the previous find or locate command returned something similar
-    to "/usr/lib/libgsm.a", you might create the shared library manally
+    to "/usr/lib/libgsm.a", you might create the shared library manually
     by running:
 
     # cd /usr/lib
