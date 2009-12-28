@@ -194,20 +194,25 @@ KviNickServRuleSet * KviNickServRuleSet::createInstance()
 }
 
 
-KviNickServRule * KviNickServRuleSet::matchRule(const QString &szNick,const KviIrcMask *nickServ,const QString &szMsg,const QString &szServer)
+KviNickServRule * KviNickServRuleSet::matchRule(const QString & szNick, const KviIrcMask * pNickServ, const QString & szMsg, const QString & szServer)
 {
-	if(!m_pRules)return 0;
+	if(!m_pRules) return 0;
+	
 	for(KviNickServRule *r = m_pRules->first();r;r = m_pRules->next())
 	{
-		if(!KviQString::matchString(r->registeredNick(),szNick,false,true)) continue;
+		if(!KviQString::matchString(r->registeredNick(),szNick,false,true))
+			continue;
+		
 		if(!szServer.isEmpty())
 		{
 			QRegExp res(r->serverMask(),Qt::CaseInsensitive,QRegExp::Wildcard);
-			if(!res.exactMatch(szServer))continue;
+			if(!res.exactMatch(szServer))
+				continue;
 		}
-		if(!nickServ->matchedBy(KviIrcMask(r->nickServMask())))continue;
-		QRegExp re(r->messageRegexp(),Qt::CaseSensitive,QRegExp::Wildcard);
-		if(re.exactMatch(szMsg))return r;
+		if(!pNickServ->matchedBy(KviIrcMask(r->nickServMask())))
+			continue;
+		QRegExp re(r->messageRegexp(),Qt::CaseInsensitive,QRegExp::Wildcard);
+		if(re.exactMatch(szMsg)) return r;
 	}
 	return 0;
 }
