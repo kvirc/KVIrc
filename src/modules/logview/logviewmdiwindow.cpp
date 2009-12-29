@@ -384,39 +384,47 @@ void KviLogViewMDIWindow::deleteCurrent()
 	}
 }
 
-KviLogFile::KviLogFile(const QString& name)
+KviLogFile::KviLogFile(const QString & szName)
 {
-	QString szTmpName=name;
-	m_szFilename=name;
+	/*
+	Log is in the format
+	$type_$nick.$network_$YYYY.$MM.$DD.log
+	Examples:
+	query_noldor.azzurra_2009.05.20.log
+	channel_#slackware.azzurra_2009.11.03.log
+	*/
+
+	QString szTmpName = szName;
+	m_szFilename = szName;
 
 	QFileInfo fi(m_szFilename);
-	m_bCompressed=(fi.suffix()=="gz");
+	m_bCompressed = (fi.suffix() == "gz");
 	if(m_bCompressed)
 	{
 		//removes trailing dot and extension
 		szTmpName.chop(3);
 	}
-	QString typeToken = szTmpName.section('_',0,0);
+	QString szTypeToken = szTmpName.section('_',0,0);
 	// Ignore non-logs files, this includes '.' and '..'
-	if( KviQString::equalCI(typeToken,"channel") )
+	if(KviQString::equalCI(szTypeToken,"channel"))
 		m_type = Channel;
-	else if( KviQString::equalCI(typeToken,"console") )
+	else if(KviQString::equalCI(szTypeToken,"console"))
 		m_type = Console;
-	else if( KviQString::equalCI(typeToken,"dccchat") )
+	else if(KviQString::equalCI(szTypeToken,"dccchat"))
 		m_type = DccChat;
-	else if( KviQString::equalCI(typeToken,"query") )
+	else if(KviQString::equalCI(szTypeToken,"query"))
 		m_type = Query;
 	else
 		m_type = Other;
 
-	KviStr undecoded = szTmpName.section('.',0,0);
-	undecoded.cutToFirst('_');
-	m_szName = undecoded.hexDecode(undecoded.ptr()).ptr();
+	KviStr szUndecoded = szTmpName.section('.',0,0);
+	szUndecoded.cutToFirst('_');
+	m_szName = szUndecoded.hexDecode(szUndecoded.ptr()).ptr();
 
-	undecoded = szTmpName.section('.',1).section('_',0,-2);
-	m_szNetwork = undecoded.hexDecode(undecoded.ptr()).ptr();
+	szUndecoded = szTmpName.section('.',1).section('_',0,-2);
+	m_szNetwork = szUndecoded.hexDecode(szUndecoded.ptr()).ptr();
 
-	QString szDate = szTmpName.section('_', -1).section('.',0,-2);
+	QString szDate = szTmpName.section('_',2).section('.',0,2);
 	int iYear = szDate.section('.',0,0).toInt();
 	int iMonth = szDate.section('.',1,1).toInt();
 	int iDay = szDate.section('.',2,2).toInt();
