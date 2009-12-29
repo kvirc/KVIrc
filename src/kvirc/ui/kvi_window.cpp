@@ -534,7 +534,7 @@ void KviWindow::getDefaultLogFileName(QString &buffer)
 	switch(KVI_OPTION_UINT(KviOption_uintOutputDatetimeFormat))
 	{
 		case 0:
-			szDate = date.toString("yyyy-MM-dd");
+			szDate = date.toString("yyyy.MM.dd");
 			break;
 		case 1:
 			szDate = date.toString(Qt::ISODate);
