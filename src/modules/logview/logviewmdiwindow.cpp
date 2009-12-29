@@ -424,7 +424,7 @@ KviLogFile::KviLogFile(const QString & szName)
 	szUndecoded = szTmpName.section('.',1).section('_',0,-2);
 	m_szNetwork = szUndecoded.hexDecode(szUndecoded.ptr()).ptr();
 
-	QString szDate = szTmpName.section('_',2).section('.',0,2);
+	QString szDate = szTmpName.section('_',-1).section('.',0,-2);
 	int iYear = szDate.section('.',0,0).toInt();
 	int iMonth = szDate.section('.',1,1).toInt();
 	int iDay = szDate.section('.',2,2).toInt();
