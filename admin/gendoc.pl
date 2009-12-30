@@ -1284,24 +1284,32 @@ sub generate_indexes
 # Force flusing of STDOUT
 $|=1;
 
-print "--\n";
-print "-- Generating documentation, this may take a while :)\n";
-print "--\n";
-print "-- Extracting keyterms\n";
+# print "--\n";
+# print "-- Generating documentation, this may take a while :)\n";
+# print "--\n";
+# print "-- Extracting keyterms\n";
 # Extract the keywords to generate the crossreferences
 $i = 0;
+$g_numFilesToProcess = @g_filesToProcess;
 
+use integer;
 while($g_filesToProcess[$i] ne "")
 {
-	print ".";
+	if(($i%($g_numFilesToProcess/10)) == 10)
+	{
+		# pad numbers
+		$num = $i*40/$g_numFilesToProcess;
+		if($num<10) { $num = " $num"; }
+		print "[ $num%] Generating documentation: Extracting keyterms (pass 1 of 3)\n";
+	}
 	extract_keyterms($g_filesToProcess[$i]);
 	$i++;
 }
-
+print "[ 40%] Generating documentation: Extracting keyterms (pass 1 of 3)\n";
 $g_files=$i - 1;
 
-print "\n";
-print "-- Extracting documents and generating crossreferences\n";
+# print "\n";
+# print "-- Extracting documents and generating crossreferences\n";
 
 # Sort them
 @g_keytermsSorted = sort {length($b) <=> length($a)} keys(%g_keyterms);
@@ -1311,33 +1319,40 @@ $i = 0;
 
 while($g_filesToProcess[$i] ne "")
 {
-	print ".";
+	if(($i%($g_numFilesToProcess/10)) == 10)
+	{
+		# pad numbers
+		$num = 40+($i*40/$g_numFilesToProcess);
+		if($num<10) { $num = " $num"; }
+		print "[ $num%] Generating documentation: Extracting documents (pass 2 of 3)\n";
+	}
+
 	process_file($g_filesToProcess[$i]);
 	$i++;
 }
+print "[ 80%] Generating documentation: Extracting documents (pass 2 of 3)\n";
+# print "\n";
+# print "-- Generating indexes\n";
 
-print "\n";
-print "-- Generating indexes\n";
-
-print ".";
+print "[ 82%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 generate_indexes("Commands","command",0);
-print ".";
+print "[ 84%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 generate_indexes("Functions","function",1);
-print ".";
+print "[ 86%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 generate_indexes("Modules","module",0);
-print ".";
+print "[ 88%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 generate_indexes("Classes","class",0);
-print ".";
+print "[ 90%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 generate_indexes("Events","event",2);
-print ".";
+print "[ 92%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 generate_indexes("Language Documentation","language",0);
-print ".";
+print "[ 94%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 generate_indexes("Features","widget",0);
-print ".";
+print "[ 96%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 generate_indexes("Misc. Documentation","generic",0);
-print ".";
+print "[ 98%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 generate_indexes("Keyterms & Concepts","keyterms",0);
-print ".";
+print "[100%] Generating documentation: Creating indexes (pass 3 of 3)\n";
 
 if(open(DOCINDEX,">$g_directory/index$g_fileextension"))
 {
@@ -1398,7 +1413,7 @@ if(open(NOHELP,">$g_directory/nohelpavailable$g_fileextension"))
 	printf "Can't open $g_directory/nohelpavailable$g_fileextension for writing\n";
 }
 
-print "\n";
-print "--\n";
-print "-- Done! (Processed $g_files files)\n";
-print "--\n";
+# print "\n";
+# print "--\n";
+# print "-- Done! (Processed $g_files files)\n";
+# print "--\n";
