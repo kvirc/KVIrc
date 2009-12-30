@@ -139,6 +139,7 @@ KviSetupWizard::KviSetupWizard()
 : KviTalWizard(0)
 {
 	setModal(true);
+	setWindowTitle(__tr2qs("KVIrc Setup"));
 
 	g_bFoundMirc = false;
 	QString szLabelText;
@@ -209,8 +210,6 @@ KviSetupWizard::KviSetupWizard()
 	addPage(m_pLicense,__tr2qs("Dreaded License Agreement"));
 
 	setHelpEnabled(m_pLicense,false);
-
-	setWindowTitle(__tr2qs("KVIrc Setup"));
 #else
 	m_pLicense = 0;
 #endif
