@@ -170,7 +170,7 @@ QString KviNotifierMessage::convertToHtml(const QString &szText)
 
 			szResult.append(szText.mid(uStart,iLen));
 
-			if( (uCurFore != KVI_LABEL_DEF_FORE) || (uCurBack != KVI_LABEL_DEF_BACK) )
+			if( bOpened )
 				szResult.append("</span>");
 		}
 
@@ -325,6 +325,7 @@ QString KviNotifierMessage::convertToHtml(const QString &szText)
 			break;
 		}
 	}
+	//qDebug("%s",szResult.toUtf8().data());
 	return szResult;
 }
 
