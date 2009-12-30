@@ -315,9 +315,9 @@ General notes for the installation of the 4.0 release of KVIrc
 
     -DVERBOSE
         Generate verbose output when compiling.
-	(Note: this will be deactivated when using a job setting higher than 1 
-         with gmake. I.e., make -j2 will *not* show any verbose compilation 
-         output.)
+        (Note: this will be deactivated when using a job setting higher than 1 
+        with gmake. I.e., make -j2 will *not* show any verbose compilation 
+        output.)
 
     -DCMAKE_INSTALL_PREFIX=PATH
         This will install all stuff under PATH directory.
@@ -342,7 +342,7 @@ General notes for the installation of the 4.0 release of KVIrc
         Instead, it will let CMake use the ones taken from environment 
         variables. 
         Activating this flag will override -DDEBUG.
-	(Default: Off)
+        (Default: Off)
 
     -DCMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT
         This will re-initialize the installation path to a good default.
@@ -361,7 +361,7 @@ General notes for the installation of the 4.0 release of KVIrc
 
     -DWITHOUT_OSS
         Disables OpenSoundSystem audio backend support. This automatically
-	disables Audiofile support as well.
+        disables Audiofile support as well.
 
     -DWITHOUT_AUDIOFILE
         Disables Audiofile audio backend support.
@@ -385,15 +385,15 @@ General notes for the installation of the 4.0 release of KVIrc
     -DWITHOUT_CRYPT
         Disables the cryptographic engines and the whole cryptography/text
         transformation support. Produces a slightly smaller executable.
-	You will lack features, though.
+        You will lack features, though.
 
     -DWITHOUT_IPV6
         The IPv6 support is compiled by default on the platforms that
         support it. This option does disable it, no matter what CMake
-	found out earlier.
+        found out earlier.
         Even if you have a plain IPv4-only connection, you might want to
         keep the IPv6 support. This way you will be able to resolve
-	IPv6 hostnames.
+        IPv6 hostnames.
 
     -DWITHOUT_TRANSPARENCY
         This option disables pseudo-transparency support.
@@ -407,15 +407,15 @@ General notes for the installation of the 4.0 release of KVIrc
         choose your desktop wallpaper, this will (more-or-less) work with
         all window managers).
         It is cool-looking but usually eats some memory and makes the
-	executable slightly bigger, when enabled. Especially when moving
-	objects around, CPU consumption may get high as well.
+        executable slightly bigger, when enabled. Especially when moving
+        objects around, CPU consumption may get high as well.
         You can thus disable pseudo-transparency here.
 
     -DWITHOUT_PERL
         Forcibly disables perl support.
         You will not be able to use Perl scripts inside of KVIrc.
-	You still can execute Perl scripts outside of KVIrc, i.e. with
-	the exec() command.
+        You still can execute Perl scripts outside of KVIrc, i.e. with
+        the exec() command.
         Note that perl support will be checked anyway, and used to generate
         the documentation if present.
 
@@ -458,7 +458,7 @@ General notes for the installation of the 4.0 release of KVIrc
         KVIrc contains some ix86 assembly routines that *could* performs
         some things faster (this is not always true, depends on the compiler).
         You might want to try it if your KVIrc seems to be really slow...
-	Note: don't enable this on x86_64 or other platforms!
+        Note: don't enable this on x86_64 or other platforms!
 
     -DWITH_IGNORE_SIGALARM
         Under Solaris, both usleep() and threads implementation are based on
@@ -478,9 +478,9 @@ General notes for the installation of the 4.0 release of KVIrc
 
     -DWITH_MEMORY_PROFILE
         Enables memory allocation profiling.
-	Don't set it, unless you are a developer and know what you are doing.
-	It will have high impact on executable size and most noteably speed.
-	Please do not use this.
+        Don't set it, unless you are a developer and know what you are doing.
+        It will have high impact on executable size and most noteably speed.
+        Please do not use this.
 
     -DWITH_MEMORY_CHECKS
         Enables malloc() memory checks. This will print a nice message if your
@@ -488,14 +488,14 @@ General notes for the installation of the 4.0 release of KVIrc
         It can't save you from buying new RAM, but at least you will know that
         your system went out of memory and it is not a proper KVIrc fault.
         Most systems do actually already notice you when you are out of RAM
-	(i.e. Linux and the OOM killer.)
-	Most probably you will not need to enable this flag.
+        (i.e. Linux and the OOM killer.)
+        Most probably you will not need to enable this flag.
 
     -DMANUAL_REVISION
         Manually set a revision number if subversion is not found on your 
         system.
         This is useful mostly on windows.
-	Please do not specify useless information here, as it will make 
+        Please do not specify useless information here, as it will make 
         debugging harder and you do not profit from it.
 
     -DWITH_PIZZA
@@ -601,6 +601,6 @@ General notes for the installation of the 4.0 release of KVIrc
     After this step, just follow your distribution's rules to make a good
     package for the distro you're running.
 
-    Alternatively, you can try the experimental Cpack support included in
-    CMakelist.txt to build a package. In this case, please refer to the cpack
+    Alternatively, you can try the experimental CPack support included in
+    CMakelist.txt to build a package. In this case, please refer to the CPack
     documentation.

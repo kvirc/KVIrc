@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: perl_es\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-09-08 23:42+0200\n"
+"POT-Creation-Date: 2009-12-30 15:41+0100\n"
 "PO-Revision-Date: 2004-10-20 23:57+0200\n"
 "Last-Translator: José Luis <jsanchezv@teleline.es>\n"
 "Language-Team: Spanish <es@li.org>\n"
@@ -20,7 +20,8 @@ msgstr ""
 msgid "Internal error: perl interpreter not initialized"
 msgstr ""
 
-#: src/modules/perl/libkviperl.cpp:477 src/modules/perl/libkviperl.cpp:481
+#: src/modules/perl/libkviperl.cpp:477
+#: src/modules/perl/libkviperl.cpp:481
 msgid "Perl execution error:"
 msgstr "Error de ejecución Perl:"
 
@@ -28,7 +29,8 @@ msgstr "Error de ejecución Perl:"
 msgid "The perlcore module can't be loaded: perl support not available"
 msgstr "El módulo perlcore no puede ser cargado: soporte de perl no disponible"
 
-#: src/modules/perl/libkviperl.cpp:460 src/modules/perl/libkviperl.cpp:534
+#: src/modules/perl/libkviperl.cpp:460
+#: src/modules/perl/libkviperl.cpp:534
 msgid ""
 "The perlcore module failed to execute the code: something is wrong with the "
 "perl support"

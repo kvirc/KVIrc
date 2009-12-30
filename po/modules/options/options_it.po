@@ -10,21 +10,23 @@
 # Eva Schaller <eva@cyberbeat.it>, 2002,2003, 2004.
 # Nate Grey <nate@paranoici.org>, 2004, 2005, 2006.
 # Elvio Basello <hellvis69 at netsons dot org>, 2005, 2006-2009.
+# HelLViS69, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-23 18:29+0100\n"
-"PO-Revision-Date: 2009-05-27 01:19+0200\n"
-"Last-Translator: \n"
+"POT-Creation-Date: 2009-12-30 15:41+0100\n"
+"PO-Revision-Date: 2009-12-30 16:02+0100\n"
+"Last-Translator: HelLViS69\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 0.3\n"
+"X-Generator: Lokalize 1.0\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
-#: src/modules/options/optw_avatar.cpp:72 src/modules/options/optw_dcc.cpp:277
+#: src/modules/options/optw_avatar.cpp:72
+#: src/modules/options/optw_dcc.cpp:277
 msgid " bytes"
 msgstr " byte"
 
@@ -46,7 +48,8 @@ msgstr " min"
 #: src/modules/options/optw_ircview.cpp:157
 #: src/modules/options/optw_ircview.cpp:159
 #: src/modules/options/optw_connection.cpp:151
-#: src/modules/options/optw_dcc.cpp:268 src/modules/options/optw_lag.cpp:45
+#: src/modules/options/optw_dcc.cpp:268
+#: src/modules/options/optw_lag.cpp:45
 #: src/modules/options/optw_lag.cpp:56
 msgid " msec"
 msgstr " msec"
@@ -101,7 +104,8 @@ msgstr "&Nuovo Server"
 
 #: src/modules/options/optw_servers.cpp:341
 #: src/modules/options/optw_identity.cpp:233
-#: src/modules/options/dialog.cpp:227 src/modules/options/container.cpp:64
+#: src/modules/options/dialog.cpp:227
+#: src/modules/options/container.cpp:64
 msgid "&OK"
 msgstr "&OK"
 
@@ -1737,7 +1741,8 @@ msgstr "Aggiungi alla risposta VERSION:"
 msgid "Auto flush logs every"
 msgstr "Svuota i log automaticamente ogni"
 
-#: src/modules/options/optw_sound.cpp:68 src/modules/options/optw_sound.cpp:83
+#: src/modules/options/optw_sound.cpp:68
+#: src/modules/options/optw_sound.cpp:83
 msgid "Auto-detect"
 msgstr "Auto-Rilevamento:"
 
@@ -1749,7 +1754,8 @@ msgstr "Rilevamento automatico"
 msgid "Automatically Log"
 msgstr "Log Automatico"
 
-#: src/modules/options/optw_dcc.cpp:175 src/modules/options/optw_dcc.cpp:306
+#: src/modules/options/optw_dcc.cpp:175
+#: src/modules/options/optw_dcc.cpp:306
 #: src/modules/options/optw_dcc.cpp:327
 msgid "Automatically accept"
 msgstr "Accetta Automaticamente"
@@ -1893,7 +1899,8 @@ msgstr "Memorizza indirizzo IP"
 #: src/modules/options/optw_identity.cpp:95
 #: src/modules/options/optw_identity.cpp:238
 #: src/modules/options/optw_identity.cpp:906
-#: src/modules/options/dialog.cpp:242 src/modules/options/container.cpp:72
+#: src/modules/options/dialog.cpp:242
+#: src/modules/options/container.cpp:72
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -1905,7 +1912,8 @@ msgstr "Annulla"
 #: src/modules/options/optw_userlist.cpp:149
 #: src/modules/options/optw_windowlist.cpp:135
 #: src/modules/options/optw_windowlist.cpp:140
-#: src/modules/options/optw_input.cpp:59 src/modules/options/optw_input.cpp:64
+#: src/modules/options/optw_input.cpp:59
+#: src/modules/options/optw_input.cpp:64
 msgid "Center"
 msgstr "Centro"
 
@@ -1980,7 +1988,7 @@ msgstr "Scegli..."
 
 #: src/modules/options/optw_ircoutput.cpp:62
 msgid "Classic format"
-msgstr ""
+msgstr "Formato classico"
 
 #: src/modules/options/optw_servers.cpp:1477
 msgid "Clear List"
@@ -1990,11 +1998,13 @@ msgstr "Pulisci Lista"
 msgid "Close in tray"
 msgstr "Chiudi nella tray"
 
-#: src/modules/options/dialog.cpp:229 src/modules/options/container.cpp:65
+#: src/modules/options/dialog.cpp:229
+#: src/modules/options/container.cpp:65
 msgid "Close this dialog, accepting all changes."
 msgstr "Chiudi questa finestra, confermando tutti i cambiamenti."
 
-#: src/modules/options/dialog.cpp:244 src/modules/options/container.cpp:73
+#: src/modules/options/dialog.cpp:244
+#: src/modules/options/container.cpp:73
 msgid "Close this dialog, discarding all changes."
 msgstr "Chiudi questa finestra, scartando tutti i cambiamenti."
 
@@ -2091,9 +2101,8 @@ msgid "DashLine"
 msgstr "Linea tratteggiata"
 
 #: src/modules/options/optw_ircoutput.cpp:58
-#, fuzzy
 msgid "Datetime format"
-msgstr "Formato del timestamp"
+msgstr "Formato della data"
 
 #: src/modules/options/optw_servers.cpp:764
 msgid "Default"
@@ -2578,7 +2587,7 @@ msgstr "IRC Op:"
 
 #: src/modules/options/optw_ircoutput.cpp:63
 msgid "ISO 8601 format"
-msgstr ""
+msgstr "Formato ISO 8601"
 
 #: src/modules/options/optw_notify.cpp:86
 msgid "ISON delay (in seconds)"
@@ -3159,7 +3168,8 @@ msgstr "Apri query per"
 msgid "Open all minimized"
 msgstr "Apri tutte minimizzate"
 
-#: src/modules/options/optw_dcc.cpp:307 src/modules/options/optw_dcc.cpp:329
+#: src/modules/options/optw_dcc.cpp:307
+#: src/modules/options/optw_dcc.cpp:329
 msgid "Open minimized when auto-accepted"
 msgstr "Crea minimizzata quando auto-accettata"
 
@@ -3537,7 +3547,7 @@ msgstr "Luogo di Salvataggio"
 
 #: src/modules/options/optw_logging.cpp:46
 msgid "Save logs to folder:"
-msgstr ""
+msgstr "Salva i log nella cartella:"
 
 #: src/modules/options/optw_mediatypes.cpp:112
 msgid "Save path:"
@@ -3784,7 +3794,7 @@ msgstr "Elimina i colori nei log"
 
 #: src/modules/options/optw_logging.cpp:47
 msgid "Strip message type numbers in logs"
-msgstr ""
+msgstr "Elimina i numer dei tipi di messaggio dai log"
 
 #: src/modules/options/optw_servers.cpp:647
 msgid "Supports STARTTLS protocol"
@@ -3792,13 +3802,14 @@ msgstr "Supporta il protocollo STARTTLS"
 
 #: src/modules/options/optw_ircoutput.cpp:64
 msgid "System locale format"
-msgstr ""
+msgstr "Formato locale del sistema"
 
 #: src/modules/options/optw_ctcpfloodprotection.cpp:103
 msgid "TIME"
 msgstr "TIME"
 
-#: src/modules/options/optw_sound.cpp:71 src/modules/options/optw_sound.cpp:86
+#: src/modules/options/optw_sound.cpp:71
+#: src/modules/options/optw_sound.cpp:86
 msgid "Test"
 msgstr "Test"
 
@@ -4034,7 +4045,8 @@ msgstr ""
 #: src/modules/options/optw_userlist.cpp:146
 #: src/modules/options/optw_windowlist.cpp:132
 #: src/modules/options/optw_windowlist.cpp:137
-#: src/modules/options/optw_input.cpp:56 src/modules/options/optw_input.cpp:61
+#: src/modules/options/optw_input.cpp:56
+#: src/modules/options/optw_input.cpp:61
 msgid "Tile"
 msgstr "Affianca"
 
@@ -4048,10 +4060,9 @@ msgstr "Formato del timestamp"
 
 #: src/modules/options/optw_notifier.cpp:41
 msgid "Title Font"
-msgstr ""
+msgstr "Font del Titolo"
 
 #: src/modules/options/optw_notifier.cpp:42
-#, fuzzy
 msgid "Title Foreground color"
 msgstr "Colore primo piano"
 
@@ -4401,7 +4412,8 @@ msgstr "[PREFISSO]nickname[!user@host][SUFFISSO] messaggio"
 msgid "[Unknown Media Type]"
 msgstr "[Tipo di File Sconosciuto]"
 
-#: src/modules/options/optw_dcc.cpp:235 src/modules/options/optw_dcc.cpp:241
+#: src/modules/options/optw_dcc.cpp:235
+#: src/modules/options/optw_dcc.cpp:241
 msgid "bytes/sec"
 msgstr "bytes/sec"
 
