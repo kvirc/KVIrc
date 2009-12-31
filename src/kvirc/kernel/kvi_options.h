@@ -325,8 +325,9 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolAutoAcceptDccVideo 231                          /* dcc::video */
 #define KviOption_boolCreateMinimizedDccVideo 232                     /* dcc::video */
 #define KviOption_boolCreateMinimizedDccVideoWhenAutoAccepted 233     /* dcc::video */
+#define KviOption_boolShowTreeWindowListHeader 234
 
-#define KVI_NUM_BOOL_OPTIONS 234
+#define KVI_NUM_BOOL_OPTIONS 235
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"

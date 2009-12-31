@@ -293,6 +293,10 @@ void KviTreeWindowListTreeWidget::paintEvent(QPaintEvent * event)
 KviTreeWindowList::KviTreeWindowList()
 : KviWindowListBase()
 {
+	// to hide the title bar completely must replace the default widget with a generic one
+	m_pTitleWidget = new KviTreeWindowListTitleWidget();
+	setTitleBarWidget( m_pTitleWidget );
+	
 	m_pTreeWidget = new KviTreeWindowListTreeWidget(this);
 	m_pTreeWidget->setColumnWidth(0,135);
 	m_pTreeWidget->header()->hide();
@@ -326,6 +330,8 @@ KviTreeWindowList::KviTreeWindowList()
 
 KviTreeWindowList::~KviTreeWindowList()
 {
+	if(m_pTitleWidget)
+		delete m_pTitleWidget;
 }
 
 void KviTreeWindowList::updatePseudoTransparency()
@@ -471,6 +477,14 @@ bool KviTreeWindowList::setIterationPointer(KviWindowListItem * it)
 
 void KviTreeWindowList::applyOptions()
 {
+	if(KVI_OPTION_BOOL(KviOption_boolShowTreeWindowListHeader))
+	{
+		m_pTitleWidget->setText(__tr2qs("Window List"));
+		m_pTitleWidget->setMargin(2);
+		m_pTitleWidget->setIndent(4);
+	} else {
+		m_pTitleWidget->setText("");
+	}
 }
 
 // KviTreeWindowListItemDelegate

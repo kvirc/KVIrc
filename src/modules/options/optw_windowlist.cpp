@@ -219,10 +219,12 @@ KviTreeWindowListFeaturesOptionsWidget::KviTreeWindowListFeaturesOptionsWidget(Q
 
 	createLayout();
 
-	addUIntSelector(0,1,0,1,__tr2qs_ctx("Minimum width:","options"),KviOption_uintTreeWindowListMinimumWidth,24,1024,125);
-	addUIntSelector(0,2,0,2,__tr2qs_ctx("Maximum width:","options"),KviOption_uintTreeWindowListMaximumWidth,24,9999,125);
+	addBoolSelector(0,1,0,1,__tr2qs_ctx("Show header","options"),KviOption_boolShowTreeWindowListHeader);
+	
+	addUIntSelector(0,2,0,2,__tr2qs_ctx("Minimum width:","options"),KviOption_uintTreeWindowListMinimumWidth,24,1024,125);
+	addUIntSelector(0,3,0,3,__tr2qs_ctx("Maximum width:","options"),KviOption_uintTreeWindowListMaximumWidth,24,9999,125);
 
-	addRowSpacer(0,3,0,3);
+	addRowSpacer(0,4,0,4);
 }
 
 

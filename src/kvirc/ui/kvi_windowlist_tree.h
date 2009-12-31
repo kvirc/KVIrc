@@ -28,6 +28,7 @@
 #include <QTreeWidget>
 #include <QStyledItemDelegate>
 #include <QAbstractItemView>
+#include <QLabel>
 
 class KviTreeWindowList;
 class KviTreeWindowListItemInternal;
@@ -80,6 +81,14 @@ public slots:
 	void reverseSort();
 };
 
+class KVIRC_API KviTreeWindowListTitleWidget : public QLabel
+{
+	Q_OBJECT
+public:
+	KviTreeWindowListTitleWidget() {};
+	~KviTreeWindowListTitleWidget() {};
+	QSize sizeHint() const { return text().isEmpty() ? QSize(4,4): QLabel::sizeHint(); };
+};
 
 class KVIRC_API KviTreeWindowList : public KviWindowListBase
 {
@@ -92,6 +101,7 @@ private:
 	KviTreeWindowListItem * m_pCurrentItem;
 	KviDynamicToolTip  * m_pToolTip;
 	QStyledItemDelegate* m_pItemDelegate;
+	KviTreeWindowListTitleWidget  * m_pTitleWidget;
 public:
 	virtual KviWindowListItem * addItem(KviWindow *);
 	virtual bool removeItem(KviWindowListItem *);

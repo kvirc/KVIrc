@@ -317,7 +317,8 @@ KviBoolOption g_boolOptionsTable[KVI_NUM_BOOL_OPTIONS]=
 	BOOL_OPTION("ZshLikeNickCompletion",false,KviOption_sectFlagInput),
 	BOOL_OPTION("AutoAcceptDccVideo", false, KviOption_sectFlagDcc),
 	BOOL_OPTION("CreateMinimizedDccVideo", false, KviOption_sectFlagDcc),
-	BOOL_OPTION("CreateMinimizedDccVideoWhenAutoAccepted",true,KviOption_sectFlagDcc)
+	BOOL_OPTION("CreateMinimizedDccVideoWhenAutoAccepted",true,KviOption_sectFlagDcc),
+	BOOL_OPTION("ShowTreeWindowListHeader",false,KviOption_sectFlagWindowList | KviOption_resetUpdateGui | KviOption_groupTheme)
 };
 
 #define STRING_OPTION(_txt,_val,_flags) KviStringOption(KVI_STRING_OPTIONS_PREFIX _txt,_val,_flags)
