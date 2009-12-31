@@ -242,7 +242,7 @@ int parseArgs(ParseArgs * a)
 			continue;
 		}
 
-		if(kvi_strEqualCI("-session",p)||kvi_strEqualCI("-display",p))
+		if(kvi_strEqualCI("-session",p)||kvi_strEqualCI("-display",p)||kvi_strEqualCI("-name",p))
 		{
 			// Qt apps are supposed to handle the params to these switches, but we'll skip arg for now
 			idx++;
