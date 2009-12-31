@@ -106,7 +106,6 @@ KviFrame::KviFrame()
 
 	m_pSplitter = new QSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName("main_frame_splitter");
-//	m_pSplitter->setFrameShape(QFrame::NoFrame);
 
 	setCentralWidget(m_pSplitter);
 
@@ -158,8 +157,6 @@ KviFrame::KviFrame()
 	applyOptions();
 
 	installAccelerators();
-
-	layout()->setSizeConstraint(QLayout::SetNoConstraint);
 }
 
 KviFrame::~KviFrame()

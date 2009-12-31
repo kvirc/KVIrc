@@ -60,6 +60,13 @@
 #include <math.h>
 
 
+/**
+* \def KVI_MDICHILD_MIN_WIDTH Defines the minimum width of the child
+* \def KVI_MDICHILD_MIN_HEIGHT Defines the minimum height of the child
+*/
+#define KVI_MDICHILD_MIN_WIDTH 100
+#define KVI_MDICHILD_MIN_HEIGHT 40
+
 KviMdiManager::KviMdiManager(QWidget * parent,KviFrame * pFrm,const char *)
 : QMdiArea(parent)
 {
