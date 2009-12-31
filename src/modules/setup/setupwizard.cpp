@@ -287,16 +287,16 @@ KviSetupWizard::KviSetupWizard()
 	m_pNewIncomingBox->setSpacing(3);
 	m_pNewIncomingBox->setStretchFactor(m_pIncomingPathEdit,1);
 
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+/*#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	if(((KviApp*) qApp)->m_bPortable)
 	{
-		tmp = m_szLocalKvircDir;
+		g_pApp->getLocalKvircDirectory(tmp,KvircSubdir::None);
 	} else {
-#endif
+#endif*/
 		tmp = QDir::homePath();
-#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+/*#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
 	}
-#endif
+#endif*/
 	KviQString::ensureLastCharIs(tmp,KVI_PATH_SEPARATOR_CHAR);
 	tmp.append(KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME);
 	KviFileUtils::adjustFilePath(tmp);
