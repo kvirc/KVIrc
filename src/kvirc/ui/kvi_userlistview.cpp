@@ -148,31 +148,31 @@ void KviUserListEntry::updateAvatarData()
 				m_pConnectedAnimation = pAv->animatedPixmap();
 			}
 		}
-	}
 
-	if(m_pConnectedAnimation != pOldMovie)
-	{
-		if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedAvatars))
+		if(m_pConnectedAnimation && (m_pConnectedAnimation != pOldMovie))
 		{
-			m_pConnectedAnimation->start();
-		} else {
-			m_pConnectedAnimation->stop();
+			if(KVI_OPTION_BOOL(KviOption_boolEnableAnimatedAvatars))
+			{
+				m_pConnectedAnimation->start();
+			} else {
+				m_pConnectedAnimation->stop();
+			}
+
+			m_pListView->connect(
+				m_pConnectedAnimation,SIGNAL(frameChanged()),
+				m_pListView,SLOT(animatedAvatarUpdated()));
+
+			/*
+			The old one is deleted.
+			So it is disconnected automagically...
+			if(pOldMovie)
+			{
+				m_pListView->disconnect(
+							pOldMovie,SIGNAL(frameChanged()),
+							m_pListView,SLOT(animatedAvatarUpdated())
+							);
+			}*/
 		}
-
-		m_pListView->connect(
-			m_pConnectedAnimation,SIGNAL(frameChanged()),
-			m_pListView,SLOT(animatedAvatarUpdated()));
-
-		/*
-		The old one is deleted.
-		So it is disconnected automagically...
-		if(pOldMovie)
-		{
-			m_pListView->disconnect(
-						pOldMovie,SIGNAL(frameChanged()),
-						m_pListView,SLOT(animatedAvatarUpdated())
-						);
-		}*/
 	}
 }
 
