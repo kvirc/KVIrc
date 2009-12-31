@@ -57,7 +57,6 @@ KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
 	m_pClient = 0;
 
 	m_restoredGeometry   = QRect(10,10,320,240);
-	setMinimumSize(KVI_MDICHILD_MIN_WIDTH,KVI_MDICHILD_MIN_HEIGHT);
 
 	connect(systemMenu(), SIGNAL(aboutToShow()), this, SLOT(updateSystemPopup()));
 	connect(this, SIGNAL(windowStateChanged(Qt::WindowStates, Qt::WindowStates)), this, SLOT(windowStateChangedEvent(Qt::WindowStates, Qt::WindowStates)));

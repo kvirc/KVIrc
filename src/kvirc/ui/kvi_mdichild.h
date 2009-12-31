@@ -40,14 +40,6 @@
 class KviMdiManager;
 
 /**
-* \def KVI_MDICHILD_MIN_WIDTH Defines the minimum width of the child
-* \def KVI_MDICHILD_MIN_HEIGHT Defines the minimum height of the child
-*/
-#define KVI_MDICHILD_MIN_WIDTH 100
-#define KVI_MDICHILD_MIN_HEIGHT 40
-
-
-/**
 * \class KviMdiChild
 * \brief Class of an MDI  window
 */
