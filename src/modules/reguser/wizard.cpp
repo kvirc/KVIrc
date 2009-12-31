@@ -192,7 +192,7 @@ KviRegistrationWizard::KviRegistrationWizard(const QString &startMask,KviRegiste
 	m_pAvatarSelector = new KviPixmapSelector(m_pPage3,__tr2qs_ctx("Store an avatar for this user","register"),m_pAvatar,true);
 	m_pPage3Layout->addWidget(m_pAvatarSelector,2,0);
 
-	m_pPage3Layout->setRowStretch(0,1);
+	m_pPage3Layout->setRowStretch(2,1);
 
 	addPage(m_pPage3,__tr2qs_ctx("Step 3: Avatar Selection","register"));
 
