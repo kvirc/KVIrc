@@ -140,15 +140,24 @@ void KviApp::getLocalKvircDirectory(QString &szData,KvircSubdir dir,const QStrin
 			// we should take special care here
 			// the user is likely to mess the path behind our back
 			// try to recover from most common problems
-			while(KviQString::lastCharIs(szData,KVI_PATH_SEPARATOR_CHAR))
+			while(szData.endsWith(KVI_PATH_SEPARATOR_CHAR))
 				szData = szData.remove(szData.length()-1,1);
 			if(szData.isEmpty())
 			{
-				// unset ?
-				KVI_OPTION_STRING(KviOption_stringIncomingPath) = QDir::homePath();
-				if(!KVI_OPTION_STRING(KviOption_stringIncomingPath).endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
-					KVI_OPTION_STRING(KviOption_stringIncomingPath).append(KVI_PATH_SEPARATOR_CHAR);
-				KVI_OPTION_STRING(KviOption_stringIncomingPath).append(KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME);
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+				if(m_bPortable)
+				{
+					szData = m_szLocalKvircDir;
+				} else {
+#endif
+					szData = QDir::homePath();
+#if defined(COMPILE_ON_WINDOWS) || defined(COMPILE_ON_MINGW)
+				}
+#endif
+				if(!szData.endsWith(QString(QChar(KVI_PATH_SEPARATOR_CHAR))))
+					szData.append(KVI_PATH_SEPARATOR_CHAR);
+				szData.append(KVI_DEFAULT_INCOMING_SUBDIRECTORY_NAME);
+				KVI_OPTION_STRING(KviOption_stringLogsPath) = szData;
 			}
 		break;
 		case Help          :
