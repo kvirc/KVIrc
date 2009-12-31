@@ -429,6 +429,7 @@ void KviIrcContext::connectToCurrentServer()
 				m_pAsynchronousConnectionData->bPortIsOk = true;
 				m_pAsynchronousConnectionData->bUseIPv6 = m_pSavedAsynchronousConnectionData->bUseIPv6;
 				m_pAsynchronousConnectionData->bUseSSL = m_pSavedAsynchronousConnectionData->bUseSSL;
+				m_pAsynchronousConnectionData->bSTARTTLS = m_pSavedAsynchronousConnectionData->bSTARTTLS;
 				if(m_pSavedAsynchronousConnectionData->m_pReconnectInfo)
 					m_pAsynchronousConnectionData->m_pReconnectInfo = new KviServerReconnectInfo(*(m_pSavedAsynchronousConnectionData->m_pReconnectInfo));
 				else m_pAsynchronousConnectionData->m_pReconnectInfo = 0;
@@ -459,6 +460,7 @@ void KviIrcContext::connectToCurrentServer()
 			d.uPort = m_pAsynchronousConnectionData->uPort;
 			d.bIPv6 = m_pAsynchronousConnectionData->bUseIPv6;
 			d.bSSL = m_pAsynchronousConnectionData->bUseSSL;
+			d.bSTARTTLS = m_pAsynchronousConnectionData->bSTARTTLS;
 			d.szLinkFilter = m_pAsynchronousConnectionData->szLinkFilter;
 			d.szPass = m_pAsynchronousConnectionData->szPass;
 			d.szNick = m_pAsynchronousConnectionData->szNick;
@@ -567,6 +569,7 @@ void KviIrcContext::connectToCurrentServer()
 	m_pSavedAsynchronousConnectionData->bPortIsOk = true;
 	m_pSavedAsynchronousConnectionData->bUseIPv6 = srv->isIPv6();
 	m_pSavedAsynchronousConnectionData->bUseSSL = srv->useSSL();
+	m_pSavedAsynchronousConnectionData->bSTARTTLS = srv->supportsSTARTTLS();
 	m_pSavedAsynchronousConnectionData->szPass = srv->password();
 	m_pSavedAsynchronousConnectionData->szServerId = srv->id();
 	m_pSavedAsynchronousConnectionData->szInitUMode = srv->m_szInitUMode;
@@ -623,6 +626,7 @@ void KviIrcContext::connectionFailed(int iError)
 			d->bPortIsOk = true;
 			d->bUseIPv6 = oldServer.isIPv6();
 			d->bUseSSL = oldServer.useSSL();
+			d->bSTARTTLS = oldServer.supportsSTARTTLS();
 			d->szPass = oldServer.password();
 			d->szNick = oldNickname;
 			d->szInitUMode = oldServer.m_szInitUMode;
@@ -803,6 +807,7 @@ void KviIrcContext::connectionTerminated()
 		d->bPortIsOk = true;
 		d->bUseIPv6 = oldServer.isIPv6();
 		d->bUseSSL = oldServer.useSSL();
+		d->bSTARTTLS = oldServer.supportsSTARTTLS();
 		d->szPass = oldServer.password();
 		d->szInitUMode = oldServer.m_szInitUMode;
 		d->m_pReconnectInfo = new KviServerReconnectInfo(*(pInfo));

@@ -293,18 +293,23 @@ KviFileTransferWindow::~KviFileTransferWindow()
 
 bool KviFileTransferWindow::eventFilter( QObject *obj, QEvent *ev )
 {
-	if( (obj==m_pTableWidget) && ( ev->type() == QEvent::KeyPress ) )
+	if( ( ev->type() == QEvent::KeyPress ) )
 	{
-		QKeyEvent *keyEvent = (QKeyEvent*)ev;
-		switch(keyEvent->key())
+		//m_pTableWidget could not have been initialized yet when KviFileTransferWindow
+		//will receive the first events.. but it will surely be on a keypress event
+		if(obj==m_pTableWidget)
 		{
-			case Qt::Key_Delete:
-				if(m_pTableWidget->currentItem())
-				{
-					delete m_pTableWidget->currentItem();
-					return TRUE;
-				}
-				break;
+			QKeyEvent *keyEvent = (QKeyEvent*)ev;
+			switch(keyEvent->key())
+			{
+				case Qt::Key_Delete:
+					if(m_pTableWidget->currentItem())
+					{
+						delete m_pTableWidget->currentItem();
+						return TRUE;
+					}
+					break;
+			}
 		}
 	}
 	return KviWindow::eventFilter( obj, ev );

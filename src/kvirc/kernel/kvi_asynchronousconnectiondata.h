@@ -42,6 +42,7 @@ public:
 	bool               bPortIsOk;
 	bool               bUseIPv6;
 	bool               bUseSSL;
+	bool               bSTARTTLS;
 	QString            szBindAddress; // ip address (or interface name) to bind the connection to
 	QString            szCommandToExecAfterConnect;
 	QString            szLinkFilter;
