@@ -1452,6 +1452,7 @@ void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 		m_pRenameButton->setEnabled(true);
 		m_pEditor->setText("");
 		m_pEditor->setEnabled(false);
+		m_pTreeWidget->setFocus();
 		return;
 	}
 
