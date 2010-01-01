@@ -349,7 +349,15 @@ static const char * g_szIconNames[KVI_NUM_SMALL_ICONS]=
 	"ircopaway", // 297
 	"deircop", // 298
 	"meircop", // 299
-	"medeircop" // 300
+	"medeircop", // 300
+	"angel", // 301
+	"clown", // 302
+	"devil", // 303
+	"inlove", // 304
+	"ninja", // 305
+	"pirate", // 306
+	"puke", // 307
+	"rage" // 308
 };
 
 KviIconWidget::KviIconWidget()
