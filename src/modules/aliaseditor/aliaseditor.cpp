@@ -1495,7 +1495,7 @@ void KviAliasEditor::recursiveCommit(KviAliasEditorTreeWidgetItem * it)
 void KviAliasEditor::commit()
 {
 	saveLastEditedItem();
-	KviKvsAliasManager::instance()->clear();
+// 	KviKvsAliasManager::instance()->clear();
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		KviAliasEditorTreeWidgetItem *item=(KviAliasEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);
