@@ -198,6 +198,7 @@ KviListWindow::KviListWindow(KviFrame * lpFrm, KviConsole * lpConsole)
 		"Commonly, masked channel names (*kvirc*) are accepted as parameters, as well as strings " \
 		"like <b>c&lt;n</b> or <b>c&gt;n</b> where <b>n</b> is the minimum or maximum of users on the channel.</center>"));
 
+	connect(m_pParamsEdit,SIGNAL(textEdited(const QString &)),this,SLOT(liveSearch(const QString &)));
 
 	m_pInfoLabel = new KviThemedLabel(m_pTopSplitter,"info_label");
 
@@ -440,6 +441,22 @@ void KviListWindow::startOfList()
 	m_pRequestButton->setEnabled(false);
 }
 
+void KviListWindow::liveSearch(const QString & szText)
+{
+	QRegExp res(szText,Qt::CaseInsensitive,QRegExp::Wildcard);
+	
+	for(int i=0; i<m_pTreeWidget->topLevelItemCount(); i++)
+	{
+		if(res.exactMatch(m_pTreeWidget->topLevelItem(i)->text(0)) ||
+			res.exactMatch(m_pTreeWidget->topLevelItem(i)->text(2)))
+		{
+			m_pTreeWidget->topLevelItem(i)->setHidden(false);
+		} else {
+			m_pTreeWidget->topLevelItem(i)->setHidden(true);
+		}
+	}
+}
+
 void KviListWindow::processData(KviIrcMessage * pMsg)
 {
 	if(!m_pFlushTimer)
@@ -459,18 +476,20 @@ void KviListWindow::processData(KviIrcMessage * pMsg)
 				pMsg->connection()->decodeText(pMsg->safeTrailing()))
 		);
 	} else {
+		//rfc2812 permits wildcards here (section 3.2.6)
+		QRegExp res(m_pParamsEdit->text(),Qt::CaseInsensitive,QRegExp::Wildcard);
 		if(
-				pMsg->connection()->decodeText(pMsg->safeParam(1)).contains(m_pParamsEdit->text()) ||
-				pMsg->connection()->decodeText(pMsg->safeTrailing()).contains(m_pParamsEdit->text())
+				res.exactMatch(pMsg->connection()->decodeText(pMsg->safeParam(1))) ||
+				res.exactMatch(pMsg->connection()->decodeText(pMsg->safeTrailing()))
 			)
 		{
 			m_pItemList->append(
-					new KviChannelTreeWidgetItemData(
-							pMsg->connection()->decodeText(pMsg->safeParam(1)),
-							pMsg->connection()->decodeText(pMsg->safeParam(2)),
-							pMsg->connection()->decodeText(pMsg->safeTrailing())
-						)
-				);
+				new KviChannelTreeWidgetItemData(
+					pMsg->connection()->decodeText(pMsg->safeParam(1)),
+					pMsg->connection()->decodeText(pMsg->safeParam(2)),
+					pMsg->connection()->decodeText(pMsg->safeTrailing())
+				)
+			);
 		}
 	}
 

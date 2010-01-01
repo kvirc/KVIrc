@@ -82,7 +82,7 @@ public:
 protected:
 	QSplitter                                    * m_pVertSplitter;
 	QSplitter                                    * m_pTopSplitter;
-	QTreeWidget                             * m_pTreeWidget;
+	QTreeWidget                                  * m_pTreeWidget;
 	QLineEdit                                    * m_pParamsEdit;
 	QToolButton                                  * m_pRequestButton;
 	QToolButton                                  * m_pStopListDownloadButton;
@@ -110,6 +110,7 @@ protected slots:
 	void connectionStateChange();
 	void exportList();
 	void importList();
+	void liveSearch(const QString & szText);
 private:
 	void reset();
 	void endOfList();
