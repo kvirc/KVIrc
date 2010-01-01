@@ -888,7 +888,7 @@ void KviScriptEditorImplementation::getText(QByteArray & szText)
 
 void KviScriptEditorImplementation::setText(const QString & szText)
 {
-        m_pEditor->setPlainText(szText);
+	m_pEditor->setPlainText(szText);
 	QTextCursor cur=m_pEditor->textCursor();
 	cur.movePosition(QTextCursor::End);
 	m_pEditor->setTextCursor(cur);

@@ -443,7 +443,6 @@ void KviAliasEditor::oneTimeSetup()
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
 }
 
-
 void KviAliasEditor::itemRenamed(QTreeWidgetItem *it,int col)
 {
 	((KviAliasEditorTreeWidgetItem *)it)->setName(it->text(col));
@@ -458,6 +457,7 @@ void KviAliasEditor::itemRenamed(QTreeWidgetItem *it,int col)
 	szLabelText += "</b>";
 	m_pNameLabel->setText(szLabelText);
 }
+
 bool KviAliasEditor::hasSelectedItemsRecursive(QTreeWidgetItem *it)
 {
 	for (int i=0;i<it->childCount();i++)
@@ -1364,7 +1364,7 @@ void KviAliasEditor::renameItem()
 			return;
 		}
 	} else {
-	// check if there is already a anmespace with this name
+	// check if there is already a namespace with this name
 		if (namespaceExists(szNewName))
 		{
 			g_pAliasEditorModule->lock();
@@ -1415,11 +1415,12 @@ void KviAliasEditor::renameItem()
 //          the name is changed explicitly with renameItem(), when needed
 void KviAliasEditor::saveLastEditedItem()
 {
-	if(!itemExists(m_pLastEditedItem)) return; // dead ?
-	((KviAliasTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
-	if(!m_pLastEditedItem || !m_pEditor->isModified()) return;
-	if(m_pLastEditedItem->isNamespace())return;
+	if(!m_pLastEditedItem)
+		return;
+	if(!itemExists(m_pLastEditedItem) || !m_pEditor->isModified() || m_pLastEditedItem->isNamespace())
+		return;
 
+	((KviAliasTreeWidgetItem *)m_pLastEditedItem)->setCursorPosition(m_pEditor->getCursor());
 	QString newCode;
 	m_pEditor->getText(newCode);
 	((KviAliasTreeWidgetItem *)m_pLastEditedItem)->setBuffer(newCode);
@@ -1427,8 +1428,8 @@ void KviAliasEditor::saveLastEditedItem()
 
 void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 {
-	saveLastEditedItem();
 
+	saveLastEditedItem();
 	m_pLastEditedItem = (KviAliasEditorTreeWidgetItem *)it;
 
 	if(!m_pLastEditedItem)
@@ -1465,6 +1466,7 @@ void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 	m_pEditor->setFocus();
 	m_pEditor->setCursorPosition(((KviAliasTreeWidgetItem *)it)->cursorPosition());
 	m_pEditor->setEnabled(true);
+
 }
 
 void KviAliasEditor::recursiveCommit(KviAliasEditorTreeWidgetItem * it)
