@@ -288,6 +288,12 @@ As of 2009.09.01:
 [pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
  244976
 
+As of 2010.01.02:
+[pragma@phoenix src]# cat $(find ./ -name \*.h) | wc -l
+  61101
+[pragma@phoenix src]# cat $(find ./ -name \*.cpp) | wc -l
+ 254434
+
 -------------------------------------------------------------------------------
 The coding style
 -------------------------------------------------------------------------------
