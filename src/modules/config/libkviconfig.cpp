@@ -716,7 +716,10 @@ static bool config_kvs_cmd_write(KviKvsModuleCommandCall * c)
 
 	if(cfg)
 	{
-		cfg->writeEntry(szKey,szVal);
+		if(!szVal.isEmpty())
+			cfg->writeEntry(szKey,szVal);
+		else
+			cfg->clearKey(szKey);
 	} else {
 		c->warning(__tr2qs("The config file with id '%Q' is not open"),&szId);
 	}
