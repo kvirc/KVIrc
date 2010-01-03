@@ -1,5 +1,4 @@
 # translation of kvirc_ru.po to Russian
-# translation of kvirc_ru.po to
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 #
@@ -9,6 +8,7 @@
 # Alexey <wizard@opendoor.ru>, 2005.
 # Alexey Uzhva <alexey ar kvirc dot ru>, 2007.
 # Voker57 <voker57@gmail.com>, 2008.
+# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2009, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: kvirc_ru\n"
@@ -137,39 +137,32 @@ msgid "### Existing data buffer:"
 msgstr "### Существующий буфер данных:"
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:234
-#, fuzzy
 msgid "### Log session started at %1 ###"
-msgstr "### Журналирование начато %s ###"
+msgstr "### Журналирование начато %1 ###"
 
 #: src/kvirc/ui/kvi_ircview_loghandling.cpp:65
-#, fuzzy
 msgid "### Log session terminated at %1 ###"
-msgstr "### Журналирование завершено %s ###"
+msgstr "### Журналирование завершено %1 ###"
 
 #: src/kvilib/core/kvi_qstring.cpp:250
-#, fuzzy
 msgid "%1 GiB"
-msgstr "%1 ГБ"
+msgstr "%1 ГиБ"
 
 #: src/kvilib/core/kvi_qstring.cpp:237
-#, fuzzy
 msgid "%1 KiB"
-msgstr "%1 КБ"
+msgstr "%1 КиБ"
 
 #: src/kvilib/core/kvi_qstring.cpp:243
-#, fuzzy
 msgid "%1 MiB"
-msgstr "%1 МБ"
+msgstr "%1 МиБ"
 
 #: src/kvilib/core/kvi_qstring.cpp:255
-#, fuzzy
 msgid "%1 TiB"
 msgstr "%1 ТБ"
 
 #: src/kvilib/core/kvi_qstring.cpp:231
-#, fuzzy
 msgid "%1 bytes"
-msgstr "байты"
+msgstr "%1 байт"
 
 #: src/kvirc/ui/kvi_console.cpp:367
 msgid "%1 hops"
@@ -865,9 +858,8 @@ msgid "< &Back"
 msgstr "Назад"
 
 #: src/kvirc/ui/kvi_input.cpp:323
-#, fuzzy
 msgid "<Ctrl+Return>; submits, <Alt+Return>; hides this editor"
-msgstr "<Ctrl+Return> отправить,   <Alt+Backspace> скрыть этот редактор"
+msgstr "<Ctrl+Return> отправить,   <Alt+Return> скрыть этот редактор"
 
 #: src/kvirc/ui/kvi_ircview_events.cpp:1002
 msgid ""
@@ -2334,7 +2326,6 @@ msgstr "Текущий шифр передачи"
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:205
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:243
 #: src/modules/tmphighlight/libkvitmphighlight.cpp:293
-#, fuzzy
 msgid "Current window is not a channel"
 msgstr "Текущее окно не является каналом"
 
@@ -2431,7 +2422,7 @@ msgstr "Детальное представление"
 
 #: src/modules/tip/libkvitip.cpp:144
 msgid "Did you know..."
-msgstr ""
+msgstr "Знаете ли вы что..."
 
 #: src/modules/links/linkswindow.cpp:288
 msgid "Direct links: %d (~%d.%d %)"
@@ -3582,9 +3573,8 @@ msgid "Join Channel"
 msgstr "Войти на канал"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:59
-#, fuzzy
 msgid "Join Channels"
-msgstr "Войти на канал"
+msgstr "Войти на каналы"
 
 #: src/kvirc/kernel/kvi_coreactions.cpp:214
 msgid "Join Channels..."
@@ -3600,11 +3590,11 @@ msgstr ""
 
 #: src/kvirc/ui/kvi_menubar.cpp:142
 msgid "Join KVIrc International Channel on Freenode"
-msgstr ""
+msgstr "Присоединиться к международному каналу KVIrc на Freenode (на английском языке)"
 
 #: src/kvirc/ui/kvi_menubar.cpp:144
 msgid "Join KVIrc International Channel on IRCNet"
-msgstr ""
+msgstr "Присоединиться к международному каналу KVIrc на IRCNet (на английском языке)"
 
 #: src/kvirc/ui/kvi_menubar.cpp:149
 msgid "Join KVIrc Italian Channel on AzzurraNet"
@@ -5718,14 +5708,12 @@ msgid "Show Window"
 msgstr "Показать окно поиска"
 
 #: src/modules/tip/libkvitip.cpp:131
-#, fuzzy
 msgid "Show at startup"
-msgstr "Показать строку статуса"
+msgstr "Показывать при запуске"
 
 #: src/modules/channelsjoin/channelsjoinwindow.cpp:107
-#, fuzzy
 msgid "Show this window after connecting"
-msgstr "Показывать полное время в сети"
+msgstr "Показывать это окно после подключения"
 
 #: src/kvirc/ui/kvi_statusbarapplet.cpp:593
 msgid "Show total connection time"
@@ -6854,7 +6842,7 @@ msgstr ""
 
 #: src/modules/snd/libkvisnd.cpp:576
 msgid "Unable to play sound '%Q'"
-msgstr ""
+msgstr "Не могу проиграть звук '%Q'"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1789
 msgid "Unable to process the above request: Cannot load DCC module (%Q)"
@@ -6894,7 +6882,7 @@ msgstr "Бан по моей маске"
 
 #: src/kvilib/net/kvi_http.cpp:982
 msgid "Unexpected SSL error"
-msgstr ""
+msgstr "Неожиданная ошибка SSL"
 
 #: src/kvilib/core/kvi_error.cpp:70
 msgid "Unexpected character"
@@ -6937,19 +6925,16 @@ msgid "Unhandled server reply"
 msgstr ""
 
 #: src/kvirc/ui/kvi_console.cpp:239
-#, fuzzy
 msgid "Unhighlight All Channels"
-msgstr "Выйти со всех каналов"
+msgstr "Снять выделение со всех каналов"
 
 #: src/kvirc/ui/kvi_console.cpp:241
-#, fuzzy
 msgid "Unhighlight All Queries"
-msgstr "Закрыть все приваты"
+msgstr "Снять выделение со всех приватов"
 
 #: src/kvirc/ui/kvi_console.cpp:236
-#, fuzzy
 msgid "Unhighlight All Windows"
-msgstr "Свернуть все окна"
+msgstr "Снять выделение со всех окон"
 
 #: src/modules/addon/libkviaddon.cpp:194
 #: src/modules/addon/libkviaddon.cpp:573
@@ -7299,7 +7284,7 @@ msgstr "Низкая активность"
 
 #: src/modules/url/libkviurl.cpp:873
 msgid "View URL list"
-msgstr ""
+msgstr "Показать список URL"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:231
 msgid "Voiced users"
@@ -7351,7 +7336,7 @@ msgstr ""
 
 #: src/modules/setup/setupwizard.cpp:174
 msgid "Welcome to KVIrc"
-msgstr ""
+msgstr "Добро пожаловать в KVIrc"
 
 #: src/kvirc/kernel/kvi_options.cpp:758
 #, fuzzy
@@ -8035,9 +8020,8 @@ msgid "query"
 msgstr ""
 
 #: src/kvirc/ui/kvi_frame.cpp:790
-#, fuzzy
 msgid "quit KVIrc?"
-msgstr "Выход из KVIrc"
+msgstr "выйти из KVIrc?"
 
 #: src/kvirc/kernel/kvi_ircconnectionserverinfo.cpp:274
 msgid ""
