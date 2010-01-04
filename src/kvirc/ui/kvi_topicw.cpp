@@ -40,6 +40,7 @@
 #include "kvi_ircconnection.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionuserinfo.h"
+#include "kvi_htmlgenerator.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_popupmenu.h"
@@ -54,6 +55,8 @@
 
 extern KviColorWindow * g_pColorWindow;
 
+#define KVI_LABEL_DEF_BACK 100
+#define KVI_LABEL_DEF_FORE 101
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
@@ -158,140 +161,6 @@ void KviTopicWidget::applyOptions()
 	//set the font
 	setFont(KVI_OPTION_FONT(KviOption_fontInput));
 	resizeEvent(0);
-}
-
-#define KVI_LABEL_DEF_BACK 100
-#define KVI_LABEL_DEF_FORE 101
-
-QString convertToHtml(const QString &text)
-{
-	QString result;
-	bool curBold      = false;
-	bool curUnderline = false;
-	unsigned char curFore      = KVI_LABEL_DEF_FORE; //default fore
-	unsigned char curBack      = KVI_LABEL_DEF_BACK; //default back
-
-	unsigned int idx = 0;
-
-	while(idx < (unsigned int)text.length())
-	{
-		unsigned short c = text[(int)idx].unicode();
-
-		unsigned int start = idx;
-
-		while(
-				(c != KVI_TEXT_COLOR) &&
-				(c != KVI_TEXT_BOLD) &&
-				(c != KVI_TEXT_UNDERLINE) &&
-				(c != KVI_TEXT_REVERSE) &&
-				(c != KVI_TEXT_RESET) &&
-				(c != KVI_TEXT_ICON)
-			)
-		{
-			idx++;
-			if(idx >= (unsigned int)text.length())break;
-			else c = text[(int)idx].unicode();
-		}
-
-		int len = idx - start;
-
-		if(len > 0)
-		{
-			bool bOpened = FALSE;
-			QString szText = text.mid(start,len);
-
-			if(curBold) result.append("<b>");
-			if(curUnderline) result.append("<u>");
-
-			if(curFore != KVI_LABEL_DEF_FORE)
-			{
-				result.append("<font color=\"");
-				result.append(KVI_OPTION_MIRCCOLOR(curFore).name());
-				result.append('"');
-				bOpened = TRUE;
-			}
-
-/*			if(curBack != KVI_LABEL_DEF_BACK)
-			{
-				if(!bOpened)
-					result.append("<font bgcolor=");
-				else
-					result.append(" bgcolor=");
-				result.append(KVI_OPTION_MIRCCOLOR(curBack).name());
-			}*/
-
-			if(bOpened) result.append(">");
-
-			result.append(text.mid(start,len));
-
-			if( (curFore != KVI_LABEL_DEF_FORE) /*|| (curBack != KVI_LABEL_DEF_BACK)*/ )
-				result.append("</font>");
-
-			if(curUnderline) result.append("</u>");
-			if(curBold) result.append("</b>");
-
-		}
-
-		switch(c)
-		{
-			case KVI_TEXT_BOLD: curBold = !curBold; ++idx; break;
-			case KVI_TEXT_UNDERLINE: curUnderline = !curUnderline; ++idx; break;
-			case KVI_TEXT_REVERSE:
-				{
-					char auxBack = curBack;
-					curBack = curFore;
-					curFore = auxBack;
-				}
-				++idx;
-			break;
-			case KVI_TEXT_RESET:
-				curFore = KVI_LABEL_DEF_FORE;
-				curBack = KVI_LABEL_DEF_BACK;
-				curBold = false;
-				curUnderline = false;
-				++idx;
-			break;
-			case KVI_TEXT_COLOR:
-			{
-				++idx;
-				unsigned char fore;
-				unsigned char back;
-				idx = getUnicodeColorBytes(text,idx,&fore,&back);
-				if(fore != KVI_NOCHANGE)
-				{
-					curFore = fore;
-					if(back != KVI_NOCHANGE)curBack = back;
-				} else {
-					// only a CTRL+K
-					curBack = KVI_LABEL_DEF_BACK;
-					curFore = KVI_LABEL_DEF_FORE;
-				}
-			}
-			break;
-			case KVI_TEXT_ICON:
-			{
-				++idx;
-
-				unsigned int icoStart = idx;
-				while((idx < (unsigned int)text.length()) && (text[(int)idx].unicode() > 32))idx++;
-
-				KviStr lookupString = text.mid(icoStart,idx - icoStart);
-
-				KviTextIcon * icon = g_pTextIconManager->lookupTextIcon(lookupString.ptr());
-				if(icon)
-				{
-					//TODO: icons
-/*					QPixmap * pigzmap = icon->pixmap();
-					p->drawPixmap(curX,(baseline + 2) - pigzmap->height(),*(pigzmap));
-					curX += pigzmap->width();*/
-				} else {
-					idx = icoStart;
-				}
-			}
-			break;
-		}
-	}
-	return result;
 }
 
 void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rect)
@@ -527,7 +396,7 @@ void KviTopicWidget::updateToolTip()
 		tmp.replace('&',"&amp;");
 		tmp.replace('<',"&lt;");
 		tmp.replace('>',"&gt;");
-		tmp = convertToHtml(tmp);
+		tmp = KviHtmlGenerator::convertToHtml(tmp);
 
 		txt += tmp;
 		txt +=          "</center></td></tr>";

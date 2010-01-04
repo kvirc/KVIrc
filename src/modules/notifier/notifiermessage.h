@@ -68,12 +68,6 @@ private:
 	QLabel		* m_pLabel1;
 public:
 	/**
-	* \brief Converts a raw irc message to its html equivalent text
-	* \param szText const reference to a message text
-	* \return QString
-	*/
-	static QString convertToHtml(const QString &szText);
-	/**
 	* \brief Returns the original irc message
 	* \return QString
 	*/

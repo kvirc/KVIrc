@@ -278,6 +278,7 @@ SET(kvirc_SRCS
 	kernel/kvi_customtoolbardescriptor.cpp
 	kernel/kvi_customtoolbarmanager.cpp
 	kernel/kvi_filetransfer.cpp
+	kernel/kvi_htmlgenerator.cpp
 	kernel/kvi_iconmanager.cpp
 	kernel/kvi_internalcmd.cpp
 	kernel/kvi_ipc.cpp
