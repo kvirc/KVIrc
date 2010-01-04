@@ -114,7 +114,36 @@ namespace KviKvsCoreSimpleCommands
 
 		KVSCSC_REQUIRE_CONNECTION
 
-		if(szReason.isEmpty())szReason = KVI_OPTION_STRING(KviOption_stringAwayMessage);
+		if(szReason.isEmpty())
+		{
+			if(KVI_OPTION_BOOL(KviOption_boolUseAwayMessage))
+			{
+				//user want to use its default away message
+				szReason = KVI_OPTION_STRING(KviOption_stringAwayMessage);
+			} else {
+				//user want to /back
+				if(KVSCSC_pSwitches->find('a',"all-networks"))
+				{
+					KviPointerHashTableIterator<QString,KviWindow> it(*g_pGlobalWindowDict);
+					while(KviWindow * wnd = it.current())
+					{
+						if(wnd->type()==KVI_WINDOW_TYPE_CONSOLE)
+						{
+							KviConsole* pConsole=(KviConsole*)wnd;
+							if(pConsole->isConnected())
+								pConsole->connection()->sendFmtData("AWAY");
+						}
+						++it;
+					}
+				} else {
+					KVSCSC_REQUIRE_CONNECTION
+
+					if(!(KVSCSC_pConnection->sendFmtData("AWAY")))
+						return KVSCSC_pContext->warningNoIrcConnection();
+				}
+				return true;
+			}
+		}
 
 		if(KVSCSC_pSwitches->find('a',"all-networks"))
 		{

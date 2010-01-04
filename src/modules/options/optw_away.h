@@ -37,12 +37,14 @@ public:
 	KviAwayOptionsWidget(QWidget * parent);
 	~KviAwayOptionsWidget();
 protected:
-	KviBoolSelector		* m_pEnableAwayNick;
-	KviBoolSelector		* m_pEnableCustomAwayNick;
+	KviBoolSelector     * m_pEnableAwayMessage;
+	KviStringSelector   * m_pAwayMessage;
+	KviBoolSelector     * m_pEnableAwayNick;
 	KviStringSelector   * m_pCustomAwayNick;
+	KviBoolSelector     * m_pEnableCustomAwayNick;
 public slots:
 	void enableCustomAwayText(bool);
-
+	void enableAwayMessage(bool);
 };
 
 #endif //_OPTW_AWAY_H_

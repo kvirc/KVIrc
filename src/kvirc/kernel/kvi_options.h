@@ -327,9 +327,10 @@ DECLARE_OPTION_STRUCT(KviStringListOption,QStringList)
 #define KviOption_boolCreateMinimizedDccVideoWhenAutoAccepted 233     /* dcc::video */
 #define KviOption_boolShowTreeWindowListHeader 234
 #define KviOption_boolFlashDccChatWindowOnNewMessages 235              /* dcc:chat */
-#define KviOption_boolPopupNotifierOnNewDccChatMessages 236             /* dcc:chat */
+#define KviOption_boolPopupNotifierOnNewDccChatMessages 236            /* dcc:chat */
+#define KviOption_boolUseAwayMessage 237                               /* away */
 
-#define KVI_NUM_BOOL_OPTIONS 237
+#define KVI_NUM_BOOL_OPTIONS 238
 
 
 #define KVI_STRING_OPTIONS_PREFIX "string"
