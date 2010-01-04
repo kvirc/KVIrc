@@ -34,7 +34,7 @@
 
 /**
 * \namespace KviHtmlGenerator
-* \brief A namespace to handle file utilities functions
+* \brief A namespace to handle html-related functions
 */
 namespace KviHtmlGenerator
 {
