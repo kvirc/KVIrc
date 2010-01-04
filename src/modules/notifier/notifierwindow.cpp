@@ -200,7 +200,10 @@ void KviNotifierWindow::addMessage(KviWindow * pWnd,const QString &szImageId,con
 		tab = new KviNotifierWindowTab(pWnd, m_pWndTabs);
 	}
 
-	m_pWndTabs->setCurrentWidget(tab);
+	//if the notifier is already visible, don't steal the focus from the current tab!
+	//the user could be writing a message on it (bug #678)
+	if(!isVisible())
+		m_pWndTabs->setCurrentWidget(tab);
 
 	tab->appendMessage(m);
 
