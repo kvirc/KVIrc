@@ -99,6 +99,9 @@ namespace KviKvsCoreSimpleCommands
 			away from the keyboard, and they will know why you're not here.[br]
 			To return from being away you must use [cmd]back[/cmd].[br]
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].[br]
+			If no away reason is specified, the behaviour of this command depends from the value
+			of the option boolUseAwayMessage: if enabled, user will be set away using the default
+			away message; otherway, the user will return from a previous away state.
 		@examples:
 			[example]
 			away I'm asleep. Don't wake me up.
