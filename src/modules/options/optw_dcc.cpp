@@ -310,7 +310,22 @@ KviDccChatOptionsWidget::KviDccChatOptionsWidget(QWidget * parent)
 
 	connect(b1,SIGNAL(toggled(bool)),b,SLOT(setNotEnabled(bool)));
 
-	addRowSpacer(0,2,0,2);
+	KviBoolSelector * b2;
+
+#if (defined(COMPILE_ON_WINDOWS) || defined(COMPILE_KDE_SUPPORT) || defined(COMPILE_ON_MINGW))
+	b2 = addBoolSelector(0,2,0,2,__tr2qs_ctx("Flash system taskbar on new dcc chat message","options"),KviOption_boolFlashDccChatWindowOnNewMessages);
+		mergeTip(b,
+			__tr2qs_ctx("<center>This option causes the system taskbar entry for KVIrc to flash when a new dcc chat message " \
+				"is received and the KVIrc window is not the active.</center>","options"));
+#endif
+
+	b2 = addBoolSelector(0,3,0,3, __tr2qs_ctx("Popup notifier on new dcc chat message","options"),KviOption_boolPopupNotifierOnNewDccChatMessages);
+	mergeTip(b,
+		__tr2qs_ctx("<center>This option causes a small notifier window to pop up " \
+			"in the low right corner of the screen when a new message is received " \
+			"and the KVIrc window is not active.</center>","options"));
+
+	addRowSpacer(0,4,0,4);
 }
 
 KviDccChatOptionsWidget::~KviDccChatOptionsWidget()

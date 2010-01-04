@@ -61,6 +61,7 @@
 #include <QEvent>
 #include <QResizeEvent>
 #include <QByteArray>
+#include <QTextDocument> //for Qt::escape
 
 #ifdef COMPILE_CRYPT_SUPPORT
 	#include "kvi_crypt.h"
@@ -421,6 +422,22 @@ bool KviDccChat::event(QEvent *e)
 					if(kvi_strEqualCIN("ACTION",d.ptr(),6))d.cutLeft(6);
 					d.stripLeftWhiteSpace();
 					output(KVI_OUT_ACTION,"%Q %s",&(m_pDescriptor->szNick),d.ptr());
+					if(!hasAttention())
+					{
+						if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
+						{
+							demandAttention();
+						}
+						if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
+						{
+							QString szMsg = "<b>";
+							szMsg += m_pDescriptor->szNick;
+							szMsg += "</b> ";
+							szMsg += Qt::escape(QString(d.ptr()));
+							//debug("kvi_sp_ctcp.cpp:975 debug: %s",szMsg.data());
+							g_pApp->notifierMessage(this,KVI_OPTION_MSGTYPE(KVI_OUT_ACTION).pixId(),szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+						}
+					}
 				} else {
 
 #ifdef COMPILE_CRYPT_SUPPORT
@@ -458,9 +475,23 @@ bool KviDccChat::event(QEvent *e)
 #endif
 						// FIXME!
 						if(!KVS_TRIGGER_EVENT_2_HALTED(KviEvent_OnDCCChatMessage,this,QString(d.ptr()),m_pDescriptor->idString()))
+						{
 							m_pFrm->firstConsole()->outputPrivmsg(this,KVI_OUT_DCCCHATMSG,
 								m_pDescriptor->szNick.toUtf8().data(),m_pDescriptor->szUser.toUtf8().data(),
 								m_pDescriptor->szHost.toUtf8().data(),d.ptr());
+							if(!hasAttention())
+							{
+								if(KVI_OPTION_BOOL(KviOption_boolFlashDccChatWindowOnNewMessages))
+								{
+									demandAttention();
+								}
+								if(KVI_OPTION_BOOL(KviOption_boolPopupNotifierOnNewDccChatMessages))
+								{
+									QString szMsg = Qt::escape(QString(d.ptr()));
+									g_pApp->notifierMessage(this,KVI_SMALLICON_DCCCHATMSG,szMsg,KVI_OPTION_UINT(KviOption_uintNotifierAutoHideTime));
+								}
+							}
+						}
 #ifdef COMPILE_CRYPT_SUPPORT
 					}
 #endif
