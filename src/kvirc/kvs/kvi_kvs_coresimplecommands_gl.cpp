@@ -35,6 +35,38 @@
 namespace KviKvsCoreSimpleCommands
 {
 	/*
+		@doc: halfop
+		@type:
+			command
+		@title:
+			halfop
+		@syntax:
+			halfop <nickname_list>
+		@short:
+			Sets halfop status to the specified users
+		@description:
+			Sets channel half operator status to the users specified in <nickname_list>,
+			which is a comma separated list of nicknames.
+			This command works only if executed in a channel window.
+			The command is translated to a set of MODE messages containing
+			a variable number of +h flags.
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@examples:
+			[example]
+			halfop Pragma,Crocodile
+			[/example]
+		@seealso:
+			[cmd]dehalfop[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd]
+	*/
+
+	KVSCSC(halfop)
+	{
+		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','h');
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	/*
 		@doc: halt
 		@type:
 			command

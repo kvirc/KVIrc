@@ -485,6 +485,70 @@ namespace KviKvsCoreSimpleCommands
 		return true;
 
 	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: chanadmin
+		@type:
+			command
+		@title:
+			chanadmin
+		@syntax:
+			chanadmin <nickname_list>
+		@short:
+			Sets chan admin status from the specified users
+		@description:
+			Sets channel administrator status to the users specified in <nickname_list>,
+			which is a comma separated list of nicknames.
+			This command works only if executed in a channel window.
+			The command is translated to a set of MODE messages containing
+			a variable number of +a flags.
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@examples:
+			[example]
+			chanadmin Pragma,Crocodile
+			[/example]
+		@seealso:
+			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
+	*/
+
+	KVSCSC(chanadmin)
+	{
+		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','a');
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: chanowner
+		@type:
+			command
+		@title:
+			chanowner
+		@syntax:
+			chanowner <nickname_list>
+		@short:
+			Sets chan owner status from the specified users
+		@description:
+			Sets channel owner status to the users specified in <nickname_list>,
+			which is a comma separated list of nicknames.
+			This command works only if executed in a channel window.
+			The command is translated to a set of MODE messages containing
+			a variable number of +q flags.
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@examples:
+			[example]
+			chanowner Pragma,Crocodile
+			[/example]
+		@seealso:
+			[cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
+	*/
+
+	KVSCSC(chanowner)
+	{
+		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','q');
+	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -590,6 +654,102 @@ namespace KviKvsCoreSimpleCommands
 		KviWindow * pWnd = KviDebugWindow::getInstance();
 		pWnd->outputNoFmt(KVI_OUT_NONE,szAll);
 		return true;
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: dechanadmin
+		@type:
+			command
+		@title:
+			dechanadmin
+		@syntax:
+			dechanadmin <nickname_list>
+		@short:
+			Removes chan admin status from the specified users
+		@description:
+			Removes channel admin status to the users specified in <nickname_list>,
+			which is a comma separated list of nicknames.
+			This command works only if executed in a channel window.
+			The command is translated to a set of MODE messages containing
+			a variable number of -a flags.
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@examples:
+			[example]
+			dechanadmin Pragma,Crocodile
+			[/example]
+		@seealso:
+			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
+	*/
+
+	KVSCSC(dechanadmin)
+	{
+		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','a');
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: dechanowner
+		@type:
+			command
+		@title:
+			dechanowner
+		@syntax:
+			dechanowner <nickname_list>
+		@short:
+			Removes chan owner status from the specified users
+		@description:
+			Removes channel owner status to the users specified in <nickname_list>,
+			which is a comma separated list of nicknames.
+			This command works only if executed in a channel window.
+			The command is translated to a set of MODE messages containing
+			a variable number of -q flags.
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@examples:
+			[example]
+			dechanowner Pragma,Crocodile
+			[/example]
+		@seealso:
+			[cmd]chanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
+	*/
+
+	KVSCSC(dechanowner)
+	{
+		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','q');
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: dehalfop
+		@type:
+			command
+		@title:
+			dehalfop
+		@syntax:
+			dehalfop <nickname_list>
+		@short:
+			Removes half op status from the specified users
+		@description:
+			Removes channel half operator status to the users specified in <nickname_list>,
+			which is a comma separated list of nicknames.
+			This command works only if executed in a channel window.
+			The command is translated to a set of MODE messages containing
+			a variable number of -h flags.
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@examples:
+			[example]
+			dehalfop Pragma,Crocodile
+			[/example]
+		@seealso:
+			[cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd]
+	*/
+
+	KVSCSC(dehalfop)
+	{
+		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','h');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -764,12 +924,44 @@ namespace KviKvsCoreSimpleCommands
 			deop Pragma,Crocodile
 			[/example]
 		@seealso:
-			[cmd]op[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd]
+			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
 	*/
 
 	KVSCSC(deop)
 	{
 		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','o');
+	}
+	
+	///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: deuserop
+		@type:
+			command
+		@title:
+			deuserop
+		@syntax:
+			deuserop <nickname_list>
+		@short:
+			Removes user op status from the specified users
+		@description:
+			Removes channel user operator status to the users specified in <nickname_list>,
+			which is a comma separated list of nicknames.
+			This command works only if executed in a channel window.
+			The command is translated to a set of MODE messages containing
+			a variable number of -o flags.
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@examples:
+			[example]
+			deuserop Pragma,Crocodile
+			[/example]
+		@seealso:
+			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd]
+	*/
+
+	KVSCSC(deuserop)
+	{
+		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','u');
 	}
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -796,7 +988,7 @@ namespace KviKvsCoreSimpleCommands
 			devoice Pragma,Crocodile
 			[/example]
 		@seealso:
-			[cmd]op[/cmd], [cmd]deop[/cmd], [cmd]voice[/cmd]
+			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd]
 	*/
 
 	KVSCSC(devoice)

@@ -64,11 +64,17 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(ban);
 	KVSCSC(beep);
 	KVSCSC(buttonctl);
+	KVSCSC(chanadmin);
+	KVSCSC(chanowner);
 	KVSCSC(ctcp);
 	KVSCSC(debugCKEYWORDWORKAROUND);
+	KVSCSC(dechanadmin);
+	KVSCSC(dechanowner);
+	KVSCSC(dehalfop);
 	KVSCSC(deleteCKEYWORDWORKAROUND);
 	KVSCSC(delpopupitem);
 	KVSCSC(deop);
+	KVSCSC(deuserop);
 	KVSCSC(devoice);
 	KVSCSC(echoprivmsg);
 	KVSCSC(echo);
@@ -77,6 +83,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(eventctl);
 	KVSCSC(exit);
 	// g_l
+	KVSCSC(halfop);
 	KVSCSC(halt);
 	KVSCSC(help);
 	KVSCSC(host);
@@ -116,6 +123,7 @@ namespace KviKvsCoreSimpleCommands
 	KVSCSC(trload);
 	KVSCSC(trunload);
 	KVSCSC(unban);
+	KVSCSC(userop);
 	KVSCSC(voice);
 	KVSCSC(warning);
 	KVSCSC(who);

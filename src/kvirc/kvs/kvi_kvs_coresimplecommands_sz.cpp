@@ -794,6 +794,38 @@ namespace KviKvsCoreSimpleCommands
 	{
 		return multipleModeCommand(__pContext,__pParams,__pSwitches,'-','b');
 	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	/*
+		@doc: userop
+		@type:
+			command
+		@title:
+			userop
+		@syntax:
+			userop <nickname_list>
+		@short:
+			Sets userop flag for the specified users
+		@description:
+			Sets the voice flag for the users specified in <nickname_list>,
+			which is a comma separated list of nicknames.
+			This command works only if executed in a channel window.
+			The command is translated to a set of MODE messages containing
+			a variable number of +u flags.
+			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@examples:
+			[example]
+			userop Pragma,Crocodile
+			[/example]
+		@seealso:
+			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]deuserop[/cmd]
+	*/
+
+	KVSCSC(userop)
+	{
+		return multipleModeCommand(__pContext,__pParams,__pSwitches,'+','u');
+	}
 
 	//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -837,7 +869,7 @@ namespace KviKvsCoreSimpleCommands
 			voice Pragma,Crocodile
 			[/example]
 		@seealso:
-			[cmd]op[/cmd], [cmd]deop[/cmd], [cmd]devoice[/cmd]
+			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]op[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
 	*/
 
 	KVSCSC(voice)

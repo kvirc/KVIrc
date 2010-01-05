@@ -298,7 +298,7 @@ namespace KviKvsCoreSimpleCommands
 		@syntax:
 			op <nickname_list>
 		@short:
-			Sets chanop status to the specified users
+			Sets op status to the specified users
 		@description:
 			Sets channel operator status to the users specified in <nickname_list>,
 			which is a comma separated list of nicknames.
@@ -311,7 +311,7 @@ namespace KviKvsCoreSimpleCommands
 			op Pragma,Crocodile
 			[/example]
 		@seealso:
-			[cmd]deop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd]
+			[cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd]
 	*/
 
 	KVSCSC(op)

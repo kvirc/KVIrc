@@ -162,7 +162,8 @@ alias(wallop)
 	}
 }
 
-alias(kill){
+alias(kill)
+{
 	raw -q kill $0 :$1-
 }
 
@@ -266,198 +267,6 @@ alias(kb)
 			else %raw2 = "mode $target +b %mask"
 
 			raw -q %raw2$cr$lf%raw
-		}
-	}
-}
-
-# chanowner
-alias(chanowner)
-{
-	if(!$0)
-	{
-		echo $tr("Usage:")
-		echo "	  /chanowner <nick_list>"
-		halt;
-	}
-	if(!$channel)
-	{
-		echo "[CHANOWNER]: " $tr("This is not a channel window")
-		halt;
-	}
-
-	foreach(%nick,$str.split(",",$0))
-	{
-		if(%nick)
-		{
-			mode $chan.name() +q %nick
-		}
-	}
-}
-
-# chanadmin
-alias(chanadmin)
-{
-	if(!$0)
-	{
-		echo $tr("Usage:")
-		echo "	  /chanadmin <nick_list>"
-		halt;
-	}
-	if(!$channel)
-	{
-		echo "[CHANADMIN]: " $tr("This is not a channel window")
-		halt;
-	}
-
-	foreach(%nick,$str.split(",",$0))
-	{
-		if(%nick)
-		{
-			mode $chan.name() +a %nick
-		}
-	}
-}
-
-# dechanowner
-alias(dechanowner)
-{
-	if(!$0)
-	{
-		echo $tr("Usage:")
-		echo "	  /dechanowner <nick_list>"
-		halt;
-	}
-	if(!$channel)
-	{
-		echo "[DECHANOWNER]: " $tr("This is not a channel window")
-		halt;
-	}
-
-	foreach(%nick,$str.split(",",$0))
-	{
-		if(%nick)
-		{
-			mode $chan.name() -q %nick
-		}
-	}
-}
-
-# dechanadmin
-alias(dechanadmin)
-{
-	if(!$0)
-	{
-		echo $tr("Usage:")
-		echo "	  /dechanadmin <nick_list>"
-		halt;
-	}
-	if(!$channel)
-	{
-		echo "[DECHANADMIN]: " $tr("This is not a channel window")
-		halt;
-	}
-
-	foreach(%nick,$str.split(",",$0))
-	{
-		if(%nick)
-		{
-			mode $chan.name() -a %nick
-		}
-	}
-}
-
-# halfop
-alias(halfop)
-{
-	if(!$0)
-	{
-		echo $tr("Usage:")
-		echo "	  /halfop <nick_list>"
-		halt;
-	}
-	if(!$channel)
-	{
-		echo "[HALFOP]: " $tr("This is not a channel window")
-		halt;
-	}
-
-	foreach(%nick,$str.split(",",$0))
-	{
-		if(%nick)
-		{
-			mode $chan.name() +h %nick
-		}
-	}
-}
-
-# dehalfop
-alias(dehalfop)
-{
-	if(!$0)
-	{
-		echo $tr("Usage:")
-		echo "	  /dehalfop <nick_list>"
-		halt;
-	}
-	if(!$channel)
-	{
-		echo "[DEHALFOP]: " $tr("This is not a channel window")
-		halt;
-	}
-
-	foreach(%nick,$str.split(",",$0))
-	{
-		if(%nick)
-		{
-			mode $chan.name() -h %nick
-		}
-	}
-}
-
-# userop
-alias(userop)
-{
-	if(!$0)
-	{
-		echo $tr("Usage:")
-		echo "	  /userop <nick_list>"
-		halt;
-	}
-	if(!$channel)
-	{
-		echo "[USEROP]: " $tr("This is not a channel window")
-		halt;
-	}
-
-	foreach(%nick,$str.split(",",$0))
-	{
-		if(%nick)
-		{
-			mode $chan.name() +u %nick
-		}
-	}
-}
-
-# deuserop
-alias(deuserop)
-{
-	if(!$0)
-	{
-		echo $tr("Usage:")
-		echo "	  /deuserop <nick_list>"
-		halt;
-	}
-	if(!$channel)
-	{
-		echo "[DEUSEROP]: " $tr("This is not a channel window")
-		halt;
-	}
-
-	foreach(%nick,$str.split(",",$0))
-	{
-		if(%nick)
-		{
-			mode $chan.name() -u %nick
 		}
 	}
 }
@@ -684,7 +493,7 @@ alias(dns)
 alias(ss)
 {
 	# Silent
-        quote ss $0-
+        msg -q SeenServ $0-
 }
 
 alias(seenserv)
@@ -695,8 +504,8 @@ alias(seenserv)
 
 alias(hs)
 {
-	#Silent
-	quote hs $0-
+	# Silent
+	msg -q HostServ $0-
 }
 
 alias(hop)
