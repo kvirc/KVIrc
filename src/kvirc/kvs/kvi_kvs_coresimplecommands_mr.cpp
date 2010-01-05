@@ -311,7 +311,7 @@ namespace KviKvsCoreSimpleCommands
 			op Pragma,Crocodile
 			[/example]
 		@seealso:
-			[cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd]
+			[cmd]chanowner[/cmd], [cmd]dechanowner[/cmd], [cmd]chanadmin[/cmd], [cmd]dechanadmin[/cmd], [cmd]deop[/cmd], [cmd]halfop[/cmd], [cmd]dehalfop[/cmd], [cmd]voice[/cmd], [cmd]devoice[/cmd], [cmd]userop[/cmd], [cmd]deuserop[/cmd]
 	*/
 
 	KVSCSC(op)

@@ -949,7 +949,7 @@ namespace KviKvsCoreSimpleCommands
 			which is a comma separated list of nicknames.
 			This command works only if executed in a channel window.
 			The command is translated to a set of MODE messages containing
-			a variable number of -o flags.
+			a variable number of -u flags.
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].
 		@examples:
 			[example]
