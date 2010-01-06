@@ -1105,6 +1105,23 @@ namespace KviKvsCoreCallbackCommands
 				[cmd]echo[/cmd] [fnc]$isTimer[/fnc](test)
 				[comment]# Repeat the command above after the 10th timeout...[/comment]
 			[/example]
+			[example]
+				[comment]# Execute a command at a precise time[/comment]
+				%secsfrom= $($date("H")*3600+$date("M")*60+$date("S")); #now
+				%secsto= $(7*3600+10*60+0); #end time: 07:10:00
+				%secsdiff=$(%secsto-%secsfrom); #difference
+				if(%secsdiff <= 0)
+				{
+					#we're past that time for today
+					%secsdiff+=86400; #60 secs * 60 mins * 24 hours
+				}
+				# timer wants msecs
+				%msecs = $(%secsdiff*1000);
+				timer -s -p (reminder, %msecs)
+				{
+					echo "Hey man it's ten past seven am, time to wake up!"
+				}
+			[/example]
 	*/
 
 	KVSCCC(timer)

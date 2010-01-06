@@ -50,214 +50,29 @@
 		where <left_operand> and [right_operand] depend on the <operator>.[br]
 		Some operators have no [right_operand] and these are called [b]unary operators[/b]:
 		they operate directly on <left_operand>.[br]
-
 		[br]
-		[big]= (Assignment)[/big][br]
-		[br]
-
-		The assignment is the "plainest" of the binary operators: it works just like in any other programming language.[br]
-		[br]
-		If the <left_operand> is a variable, then the <right_operand> is assigned to it;
-		if the variable doesn't exists yet , it is created.[br]
-		If <right_operand> evaluates to an empty value then the variable is unset.[br]
-		[example]
-		[comment]# Assigning a constant to the global variable %Tmp[/comment]
-		%Tmp = 1
-		[comment]# Assigning a string constant to the global variable %Tmp[/comment]
-		%Tmp = some string
-		[comment]# Assigning a string constant to the local variable %tmp[/comment]
-		%tmp = "some string with whitespace &nbsp; &nbsp; &nbsp; &nbsp; preserved"
-		[comment]# Assigning a variable to another variable copies its contents[/comment]
-		%tmp = %somevariable
-		[comment]# Assigning a variable string to the global variable %Z[/comment]
-		%Z = my eyes are %color
-		[comment]# Assigning a variable string (with a function call inside) to the local variable %x[/comment]
-		%x = the system os is [fnc]$system.osname[/fnc]
-		[comment]# Assigning an empty string to the local variable %y unsets %y[/comment]
-		%y =
-		[comment]# This is equivalent to the above[/comment]
-		%y = ""
-		[comment]# This is equivalent too, if $function evalutates to an empty string[/comment]
-		%y = $function()
-		[/example]
-		[br]
-		If the <left_operand> is a dictionary/array entry, then the <right_operand> is assigned to it;
-		if the dictionary/array entry doesn't exist (or the whole dictionary/array doesn't exists) it is created.[br]
-		If <right_operand> evaluates to an empty value then the dictionary/array entry (and eventually the whole
-		dictionary/array, if there are no other entries) is unset.[br]
-		[example]
-		[comment]# Assigning a variable string to a global dictionary entry[/comment]
-		%Dict[key] = [fnc]$system.osname[/fnc]\ian
-		[comment]# Unsetting a local dictionary entry[/comment]
-		%mydict[23] = ""
-		[/example]
-		[br]
-		If the <left_operand> is an array reference then the semantics depend on the <right_operand> type.
-		If <right_operand> is an array reference then its contents are copied to the <left_operand>.[br]
-		If <right_operand> is a dictionary (keys) reference then its values are copied to to <left_operand>.[br]
-		If <right_operand> is a scalar then the value is assigned to every entry of <left_operand>.[br]
-		This is an easy way of unsetting a whole array: just assign an empty string.[br]
-		If the <left_operand> is a dictionary reference then the semantics depend on the <right_operand> type.
-		If <right_operand> is a dictionary reference then its contents are copied to the <left_operand>.[br]
-		If <right_operand> is an array reference then its contents are copied to to <left_operand> using
-		the array indexes as keys.[br]
-		If <right_operand> is a dictionary key reference then the keys are copied to the <left_operand>
-		using numeric indexes starting from 0 as keys.[br]
-		If <right_operand> is a scalar then the value is assigned to every key of <left_operand>.[br]
-		This is an easy way of unsetting a whole dictionary: just assign an empty string to all its keys.[br]
-		(If you play with huge dictionaries/arrays it might be a good idea to unset them when no longer needed)
-		[example]
-		[comment]# Assigning a dictionary to another: %mydict[] becomes a copy of %anotherdict[][/comment]
-		%mydict[] = %anotherdict[]
-		[comment]# %mydict[] gets the values of the dict returned by $features[/comment]
-		%mydict[] = [fnc]$features[/fnc]
-		[comment]# Assigning a string to ALL the keys of %mydict[/comment]
-		%mydict[] = "some default value"
-		[comment]# Unsetting a whole dictionary[/comment]
-		%mydict[] =
-		%AnotherGlobalDict[] = ""
-		[/example]
-
-
-		[br]
-		[big]=~ (Binding operator)[/big][br]
-		[br]
-
-		This operator is a really ugly, poor and clueless attempt to reach at least 1% of the
-		power of the perl =~ operator :D[br]
-		It allows some complex string operations to be performed efficently by operating directly
-		on the left operand (in fact this is a lot faster in KVIrc since at least one step of parsing is skipped).[br]
-		Its basic syntax is:[br]
-		[b]<left_operand> =~ <operation>[parameters][/b][br]
-		Where <operation> may be one of 't','s' and parameters depend on it.[br]
-		<left_operand> is the target of the <operation>.[br]
-		If <left_operand> is an array or dictionary, the <operation> is executed on each item they contain.[br]
-		Operation 't' is the transliteration.[br]
-		The complete syntax with parameters is:[br]
-		[b]<left_operand> =~ t/<search characters>/<replacement characters>/[/b][br]
-		where <search characters> is a string of characters that are replaced with the corresponding
-		characters in <replacement characters>.[br]
-		This operation can be also named 'y' or 'tr' (to preserve some compatibility with other languages).[br]
-		[example]
-		%A=This is a test string
-		echo %A
-		%A=~ tr/abcdefghi/ABCDEFGHI/
-		echo %A
-		[/example]
-		Operation 's' is the substitution.[br]
-		The complete syntax with parameters is:[br]
-		[b]<left_operand> =~ s/<search pattern>/<replacement pattern>/[flags][/b][br]
-		where <search pattern> is an extended regular expression to be matched in the <left_operand>
-		and <replacement string> is a special pattern that will replace any occurence found.[br]
-		<search pattern> may contain parentheses to capture parts of the matched text.
-		<replacement string> can contain the escape sequences \\N where N is a number between 1 and 9
-		to be replaced by the captured text.[br]
-		(We use \\N because KVIrc will first unquote the string when parsing...)[br]
-		\\0 is a special escape that will be replaced by the entire match (is always valid!).[br]
-		[flags] may be a combination of the letters 'g','i' and 'w'.[br]
-		'g' causes the search to be global and not stop after the first occurence of <search pattern>.[br]
-		'i' causes the search to be case insensitive.[br]
-		'w' causes the search pattern to be interpreted as a simple wildcard regular expression.[br]
-		'm' causes the matching to be "minimal" instead of "greedy" (default). Greedy matches
-		find the longest possible match in the string while minimal (non-greedy) matches the shortest possible.[br]
-		[example]
-		%A=This is a test string
-		echo %A
-		%A=~ s/([a-z])i([a-z])/\\1I\\2/
-		echo %A
-		%A=~ s/([a-z])i([a-z])/\\1@\\2/gi
-		echo %A
-		[/example]
-
-		[br]
-		[big]X= (Arithmetic Self-operators)[/big][br]
-		[br]
-
-		The general syntax is:[br]
-		[b]<left_operand> <operation> <right_operand>[/b][br]
-		Where <left_operand> and <right_operand> must evaluate to numbers.[br]
-		All these operators perform the operation on <left_operand> and <right_operand> and then
-		store the result in <left_operand> (which therefore must be a variable, an array entry or a dictionary entry).[br]
-		<operation> may be one of:[br]
-		+= : sums the <right_operand> to <left_operand>[br]
-		-= : subtracts <right_operand> from <left_operand>[br]
-		*= : multiplies <left_operand> by <right_operand>[br]
-		%= : calculates <left_operand> modulus <right_operand>[br]
-		|= : calculates <left_operand> bitwise-or <right_operand>[br]
-		&= : calculates <left_operand> bitwise-and <right_operand>[br]
-		/= : divides <left_operand> by <right_operand>[br]
-
-		[br]
-		[big]++ and -- (Increment and Decrement)[/big][br]
-		[br]
-
-		These two operators work only on numeric operands.[br]
-		The general syntax is:[br]
-		[b]<left_operand> <operator>[/b][br]
-		There is no <right_operand>.[br]
-		++ increments <left_operand> by one, -- decrements <left_operand> by one.[br]
-		These are equivalent to += 1 and -= 1.[br]
-
-		[br]
-		[big].= , << , <+ , <, (String concatenation operators)[/big][br]
-		[br]
-
-		All these operators work also on whole arrays and dictionaries.[br]
-		Operator [b].=[/b] : APPENDS the <right_operand> to the <left_operand>[br]
-		Operator [b]<+[/b] is a synonim for .= (backward compatibility)[br]
-		Operator [b]<<[/b] : appends <right_operand> to <left_operand>
-		separating the two strings by a single space if and only if <left_operand> and <right_operand>
-		are non-empty.[br]
-		Operator [b]<,[/b] : is similar to '<<' ; appends , separating with a single ',' with the same condition.[br]
-
-	@examples:
-		First set the variable %var
-		[example]
-		%var = Ciao ciao
-		[/example]
-		Then append a nickname...
-		[example]
-		%var << Pragma
-		[/example]
-		%var now contains "Ciao ciao Pragma"[br]
-		Append a '!' character
-		[example]
-		%var <+ !
-		[/example]
-		%var now contains "Ciao ciao Pragma!"
-		Now reset it.
-		[example]
-		%var =
-		[/example]
-		Now %var is unset.[br]
-		Reset it with a comma separated list of items
-		[example]
-		%var = Pragma,Diabl0,Arter|o
-		%var <, MalboroLi
-		[/example]
-		%var now contains "Pragma,Diabl0,Arter|o,MalboroLi"[br]
-		[br]
-		Now a longer example.
-		[example]
-		%var = l
-		[cmd]echo[/cmd] It's name starts with the letter %var!
-		%var &lt;+ inux
-		[cmd]echo[/cmd] Yes , it is %var!
-		%var &lt;&lt; OS
-		[cmd]echo[/cmd] Use %var!
-		%var &lt;, Mac OS
-		[cmd]echo[/cmd] There are two items in this list : %var
-		%var = [fnc]$strlen[/fnc](%var)
-		[cmd]echo[/cmd] And it is %var characters long (including the comma)
-		%var--
-		[cmd]echo[/cmd] Excluding the comma : %var
-		%var+=%var
-		[cmd]echo[/cmd] Now it is doubled : %var
-		%var =
-		[cmd]echo[/cmd] Now the var is unset (empty): (%var) !
-		[/example]
+		[table]
+			[tr][td]Operator[/td][td]document[/td][/tr]
+			[tr][td]=[/td][td][doc:assignment]assignment operator[/doc][/td][/tr]
+			[tr][td]++[/td][td][doc:incrementdecrement]Increment and decrement operators[/doc][/td][/tr]
+			[tr][td]--[/td][td][doc:incrementdecrement]Increment and decrement operators[/doc][/td][/tr]
+			[tr][td]+=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
+			[tr][td]-=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
+			[tr][td]*=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
+			[tr][td]/=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
+			[tr][td]%=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
+			[tr][td]|=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
+			[tr][td]&=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
+			[tr][td]^=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
+			[tr][td]<<=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
+			[tr][td]>>=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
+			[tr][td].=[/td][td][doc:stringconcatenation]String concatenation operators[/doc][/td][/tr]
+			[tr][td]<<[/td][td][doc:stringconcatenation]String concatenation operators[/doc][/td][/tr]
+			[tr][td]<,[/td][td][doc:stringconcatenation]String concatenation operators[/doc][/td][/tr]
+			[tr][td]<+[/td][td][doc:arrayconcatenation]Array concatenation[/doc][/td][/tr]
+			[tr][td]=~[/td][td][doc:binding]Binding operator[/doc][/td][/tr]
+		[/table]
 */
-
 
 KviKvsTreeNodeData * KviKvsParser::parseOperationRightSide(bool bPreferNumeric)
 {
@@ -343,11 +158,12 @@ end_of_the_param:
 		The syntax is:[br]
 		[br]
 		[b]<target> = <source>[/b]
-		[br]
+		[br][br]
 		<target> must be a variable, <source> can be any parameter.[br]
 		If the <target> variable doesn't exist, it is created.
 		If it already exists, it is eventually converted to the type of <souce> (scalar, hash or array).[br]
-		If <source> evaluates to an empty value then the <target> variable is unset.[br]
+		If <source> evaluates to an empty value then the <target> variable is unset.
+	@examples:
 		[example]
 		[comment]# Assigning a constant to the variable %Tmp[/comment]
 		%Tmp = 1
@@ -389,7 +205,6 @@ end_of_the_param:
 		[comment]# Unsetting a whole hash[/comment]
 		%anotherdict =
 		[/example]
-		[/p]
 */
 
 
@@ -435,7 +250,7 @@ end_of_the_param:
 		{
 			[cmd]echo[/cmd] %a
 		}
-		[example]
+		[/example]
 	@seealso:
 		[doc:operators]Operators[/doc]
 */
@@ -496,7 +311,7 @@ end_of_the_param:
 			[comment]# nice trick[/comment]
 			%a /= %b.0
 			[cmd]echo[/cmd] %a
-		[example]
+		[/example]
 	@seealso:
 		[doc:operators]Operators[/doc]
 */
@@ -547,7 +362,7 @@ end_of_the_param:
 			[cmd]echo[/cmd] %a
 			%a <<= 1
 			[cmd]echo[/cmd] %a
-		[example]
+		[/example]
 	@seealso:
 		[doc:operators]Operators[/doc]
 */
@@ -585,7 +400,7 @@ end_of_the_param:
 			[cmd]echo[/cmd] %a
 			%a <, but linux is better!
 			[cmd]echo[/cmd] %a
-		[example]
+		[/example]
 	@seealso:
 		[doc:operators]Operators[/doc]
 */
@@ -631,16 +446,16 @@ end_of_the_param:
 		It allows some complex string operations to be performed efficently by operating directly
 		on the left operand (in fact this is a lot faster in KVIrc since at least one step of parsing is skipped).[br]
 		Its basic syntax is:[br]
-		[b]<left_operand> =~ <operation>[parameters][/b][br]
+		[br][b]<left_operand> =~ <operation>[parameters][/b][br][br]
 		Where <operation> may be one of 't','s' and parameters depend on it.[br]
 		<left_operand> is the target of the <operation>.[br]
 		If <left_operand> is an array or dictionary, the <operation> is executed on each item they contain.[br]
 		Operation 't' is the transliteration.[br]
 		The complete syntax with parameters is:[br]
-		[b]<left_operand> =~ t/<search characters>/<replacement characters>/[/b][br]
+		[br][b]<left_operand> =~ t/<search characters>/<replacement characters>/[/b][br][br]
 		where <search characters> is a string of characters that are replaced with the corresponding
 		characters in <replacement characters>.[br]
-		This operation can be also named 'y' or 'tr' (to preserve some compatibility with other languages).[br]
+		This operation can be also named 'y' or 'tr' (to preserve some compatibility with other languages).
 		[example]
 		%A=This is a test string
 		echo %A
@@ -649,7 +464,7 @@ end_of_the_param:
 		[/example]
 		Operation 's' is the substitution.[br]
 		The complete syntax with parameters is:[br]
-		[b]<left_operand> =~ s/<search pattern>/<replacement pattern>/[flags][/b][br]
+		[br][b]<left_operand> =~ s/<search pattern>/<replacement pattern>/[flags][/b][br][br]
 		where <search pattern> is an extended regular expression to be matched in the <left_operand>
 		and <replacement string> is a special pattern that will replace any occurence found.[br]
 		<search pattern> may contain parentheses to capture parts of the matched text.
@@ -660,16 +475,16 @@ end_of_the_param:
 		[flags] may be a combination of the letters 'g','i' and 'w'.[br]
 		'g' causes the search to be global and not stop after the first occurence of <search pattern>.[br]
 		'i' causes the search to be case insensitive.[br]
-		'w' causes the search pattern to be interpreted as a simple wildcard regular expression.[br]
-		[example]
-		%A=This is a test string
-		echo %A
-		%A=~ s/([a-z])i([a-z])/\\1I\\2/
-		echo %A
-		%A=~ s/([a-z])i([a-z])/\\1@\\2/gi
-		echo %A
-		[/example]
+		'w' causes the search pattern to be interpreted as a simple wildcard regular expression.
 	@examples:
+		[example]
+			%A=This is a test string
+			echo %A
+			%A=~ s/([a-z])i([a-z])/\\1I\\2/
+			echo %A
+			%A=~ s/([a-z])i([a-z])/\\1@\\2/gi
+			echo %A
+		[/example]
 		[example]
 			%a = ""
 			%a << free
@@ -680,57 +495,10 @@ end_of_the_param:
 			[cmd]echo[/cmd] %a
 			%a <, but linux is better!
 			[cmd]echo[/cmd] %a
-		[example]
+		[/example]
 	@seealso:
 		[doc:operators]Operators[/doc]
 */
-
-
-
-/*
-	@doc: operators
-	@title:
-		Operators
-	@keyterms:
-		operator,operators,assignment
-	@type:
-		language
-	@short:
-		Variable operators , assignments & co.
-	@body:
-		[p]
-		Operator constructs are commands just like the other ones.
-		All the operators work on local or global variables.[br]
-		The generic operator syntax is:[br]
-		[br]
-		&nbsp; &nbsp; &nbsp; &nbsp; [b]<left_operand> <operator> [right_operand][/b][br]
-		[br]
-		where <left_operand> is a variable and [right_operand] is a variable , a constant or a complex expression.[br]
-		Some operators do not use [right_operand] and do their job directly on <left_operand>[br]
-		[/p]
-
-		[table]
-			[tr][td]Operator[/td][td]document[/td][/td]
-			[tr][td]=[/td][td][doc:assignment]assignment operator[/doc][/td][/tr]
-			[tr][td]++[/td][td][doc:incrementdecrement]Increment and decrement operators[/doc][/td][/tr]
-			[tr][td]--[/td][td][doc:incrementdecrement]Increment and decrement operators[/doc][/td][/tr]
-			[tr][td]+=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
-			[tr][td]-=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
-			[tr][td]*=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
-			[tr][td]/=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
-			[tr][td]%=[/td][td][doc:selfarithmetic]Arithmetic self-operators[/doc][/td][/tr]
-			[tr][td]|=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
-			[tr][td]&=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
-			[tr][td]^=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
-			[tr][td]<<=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
-			[tr][td]>>=[/td][td][doc:selfbitwise]Bitwise self-operators[/doc][/td][/tr]
-			[tr][td].=[/td][td][doc:stringconcatenation]String concatenation operators[/doc][/td][/tr]
-			[tr][td]<<[/td][td][doc:stringconcatenation]String concatenation operators[/doc][/td][/tr]
-			[tr][td]<,[/td][td][doc:stringconcatenation]String concatenation operators[/doc][/td][/tr]
-			[tr][td]<+[/td][td][doc:arrayconcatenation]Array concatenation[/doc][/td][/tr]
-			[tr][td]=~[/td][td][doc:binding]Binding operator[/doc][/td][/tr]
-		[/table]
-	*/
 
 KviKvsTreeNodeData * KviKvsParser::parseBindingOperationParameter()
 {
