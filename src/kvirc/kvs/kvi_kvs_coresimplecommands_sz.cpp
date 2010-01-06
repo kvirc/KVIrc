@@ -916,13 +916,23 @@ namespace KviKvsCoreSimpleCommands
 		@title:
 			who
 		@syntax:
-			who {[mask] | [channel]}
+			who [+|-][flags] {[mask] | [channel] | [flag parameters]}
 		@short:
 			Requests WHO information
 		@description:
 			Requests WHO information about the specified user or channel.[br]
-			If no parameter is specified, requests a WHO information about the current channel.
+			The first parameter is an optional set of flags (preceeded by a + or a -) to match
+			against the user/channel: this is supported only on some servers and networks.[br]
+			If no parameter is specified at all, it requests a WHO information about the current
+			channel.[br]
 			This command is [doc:connection_dependant_commands]connection dependant[/doc].
+		@examples:
+			[example]
+			[comment]# Lists users on #kvirc[/comment]
+			who #kvirc
+			[comment]# Get a list of +o users, aka ircops (works on unreal, bahamut, others)[/comment]
+			who +m o
+			[/example]
 		@seealso:
 			[cmd]names[/cmd]
 	*/
@@ -932,8 +942,10 @@ namespace KviKvsCoreSimpleCommands
 		Q_UNUSED(__pSwitches);
 
 		QString szChannel;
+		QString szOther;
 		KVSCSC_PARAMETERS_BEGIN
 			KVSCSC_PARAMETER("channel",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL,szChannel)
+			KVSCSC_PARAMETER("other",KVS_PT_NONEMPTYSTRING,KVS_PF_OPTIONAL | KVS_PF_APPENDREMAINING,szOther)
 		KVSCSC_PARAMETERS_END
 
 		KVSCSC_REQUIRE_CONNECTION
@@ -949,8 +961,9 @@ namespace KviKvsCoreSimpleCommands
 		}
 
 		QByteArray szC = KVSCSC_pConnection->encodeText(szChannel);
-
-		if(!KVSCSC_pConnection->sendFmtData("WHO %s",szC.data()))
+		QByteArray szO = KVSCSC_pConnection->encodeText(szOther);
+		
+		if(!KVSCSC_pConnection->sendFmtData("WHO %s %s",szC.data(),szO.data()))
 			return KVSCSC_pContext->warningNoIrcConnection();
 
 		return true;
