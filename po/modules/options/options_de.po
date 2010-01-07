@@ -4,13 +4,13 @@
 #
 # Christoph Thielecke <crissi99@gmx.de>, 2004, 2005.
 # Christoph Thielecke <u15119@hs-harz.de>, 2005.
-# Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009.
+# Markus Rennings <kvirc@mrmx.de>, 2007, 2008, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_de\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-07 21:10+0100\n"
-"PO-Revision-Date: 2009-12-24 15:42+0100\n"
+"PO-Revision-Date: 2010-01-07 21:16+0100\n"
 "Last-Translator: Markus Rennings <kvirc@mrmx.de>\n"
 "Language-Team: German <>\n"
 "MIME-Version: 1.0\n"
@@ -1061,15 +1061,14 @@ msgstr ""
 "Anfragefenster mögen, wenn Sie gerade im Channel schreiben :D</center>"
 
 #: src/modules/options/optw_dcc.cpp:318
-#, fuzzy
 msgid ""
 "<center>This option causes the system taskbar entry for KVIrc to flash when "
 "a new dcc chat message is received and the KVIrc window is not the active.</"
 "center>"
 msgstr ""
-"<center>Diese Option wird KVIrc veranlassen, den Systemfensterleisteneintrag "
-"aufblinken zu lassen, wenn eine neue Anfrage-Nachricht emfangen wurde und "
-"das KVIrc-Fenster nicht aktiv ist.</center>"
+"<center>Diese Option das KVIrc-Symbol im Systembereich aufblinken zu lassen, "
+"wenn eine neue DCC_Chat-Nachricht emfangen wird und das KVIrc-Fenster nicht "
+"aktiv ist.</center>"
 
 #: src/modules/options/optw_query.cpp:76
 msgid ""
@@ -2304,9 +2303,8 @@ msgid "Enable animated smiles"
 msgstr "Animierte Smilies aktivieren"
 
 #: src/modules/options/optw_away.cpp:39
-#, fuzzy
 msgid "Enable default away message"
-msgstr "Standard \"Abwesend\"-Nachricht:"
+msgstr "Standard \"Abwesend\"-Nachricht aktivieren"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
@@ -2424,9 +2422,8 @@ msgid "File pattern:"
 msgstr "Dateimuster:"
 
 #: src/modules/options/optw_dcc.cpp:316
-#, fuzzy
 msgid "Flash system taskbar on new dcc chat message"
-msgstr "Systemfensterleiste bei neuer Anfrage-Nachricht aufblinken lassen"
+msgstr "Fensterleiste bei neuer DCC-Chat-Nachricht aufblinken lassen"
 
 #: src/modules/options/optw_query.cpp:74
 msgid "Flash system taskbar on new query message"
@@ -3306,9 +3303,8 @@ msgstr ""
 "manuell eingeben werden."
 
 #: src/modules/options/optw_dcc.cpp:322
-#, fuzzy
 msgid "Popup notifier on new dcc chat message"
-msgstr "Benachrichtungsfenster bei neuer Anfrage-Nachricht anzeigen"
+msgstr "Benachrichtungsfenster bei neuer DCC-Chat-Nachricht anzeigen"
 
 #: src/modules/options/optw_query.cpp:80
 msgid "Popup notifier on new query message"
