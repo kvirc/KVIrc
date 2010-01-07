@@ -8,13 +8,86 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-30 15:41+0100\n"
+"POT-Creation-Date: 2010-01-07 21:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/modules/theme/managementdialog.cpp:86
+msgid "by"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:113
+msgid "Manage Themes - KVIrc"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:133
+msgid "Save Current Theme..."
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:144
+msgid "Export Selected Themes to a Distributable Package"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:150
+msgid "Delete Selected Themes"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:160
+msgid "Install Theme Package From Disk"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:166
+msgid "Get More Themes..."
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:262
+msgid "&Remove Theme"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:263
+msgid "&Apply Theme"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:279
+#: src/modules/theme/managementdialog.cpp:292
+msgid "Apply theme - KVIrc"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:280
+msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:291
+msgid "Failed to apply the specified theme: %Q"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:305
+msgid "Delete Theme - KVIrc"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:306
+msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
+msgstr ""
+
+#: src/modules/theme/managementdialog.cpp:319
+msgid "Open Theme - KVIrc"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:72
+msgid "Error installing theme package: %Q"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:109
+msgid "Choose a file to save the screenshot to"
+msgstr ""
+
+#: src/modules/theme/libkvitheme.cpp:124
+msgid "Error making screenshot"
+msgstr ""
 
 #: src/modules/theme/themefunctions.cpp:47
 msgid "The selected file does not seem to be a valid KVIrc theme package"
@@ -205,79 +278,6 @@ msgstr ""
 #: src/modules/theme/packthemedialog.cpp:459
 #: src/modules/theme/packthemedialog.cpp:471
 msgid "Packaging failed"
-msgstr ""
-
-#: src/modules/theme/libkvitheme.cpp:72
-msgid "Error installing theme package: %Q"
-msgstr ""
-
-#: src/modules/theme/libkvitheme.cpp:109
-msgid "Choose a file to save the screenshot to"
-msgstr ""
-
-#: src/modules/theme/libkvitheme.cpp:124
-msgid "Error making screenshot"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:86
-msgid "by"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:113
-msgid "Manage Themes - KVIrc"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:133
-msgid "Save Current Theme..."
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:144
-msgid "Export Selected Themes to a Distributable Package"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:150
-msgid "Delete Selected Themes"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:160
-msgid "Install Theme Package From Disk"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:166
-msgid "Get More Themes..."
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:262
-msgid "&Remove Theme"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:263
-msgid "&Apply Theme"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:279
-#: src/modules/theme/managementdialog.cpp:292
-msgid "Apply theme - KVIrc"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:280
-msgid "Do you wish to apply theme \"%Q\" (version %Q)?"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:291
-msgid "Failed to apply the specified theme: %Q"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:305
-msgid "Delete Theme - KVIrc"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:306
-msgid "Do you really wish to delete theme \"%Q\" (version %Q)?"
-msgstr ""
-
-#: src/modules/theme/managementdialog.cpp:319
-msgid "Open Theme - KVIrc"
 msgstr ""
 
 #: src/modules/theme/savethemedialog.cpp:64

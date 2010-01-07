@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: register_it\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-12-30 15:41+0100\n"
+"POT-Creation-Date: 2010-01-07 21:10+0100\n"
 "PO-Revision-Date: 2009-05-27 01:21+0200\n"
 "Last-Translator: \n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
@@ -49,8 +49,7 @@ msgstr " Utente: %c%Q"
 msgid "&Add Group..."
 msgstr "&Aggiungi Gruppo..."
 
-#: src/modules/reguser/edituser.cpp:371
-#: src/modules/reguser/dialog.cpp:241
+#: src/modules/reguser/dialog.cpp:241 src/modules/reguser/edituser.cpp:371
 msgid "&Add..."
 msgstr "&Aggiungi..."
 
@@ -66,10 +65,8 @@ msgstr "Modifica..."
 msgid "&New"
 msgstr "&Nuovo"
 
-#: src/modules/reguser/edituser.cpp:113
-#: src/modules/reguser/edituser.cpp:274
-#: src/modules/reguser/edituser.cpp:487
-#: src/modules/reguser/dialog.cpp:287
+#: src/modules/reguser/dialog.cpp:287 src/modules/reguser/edituser.cpp:113
+#: src/modules/reguser/edituser.cpp:274 src/modules/reguser/edituser.cpp:487
 msgid "&OK"
 msgstr "&OK"
 
@@ -243,10 +240,8 @@ msgstr "Impossibile aprire il file %Q in scrittura."
 msgid "Can't open file %s for reading."
 msgstr "Impossibile aprire il file %s in lettura."
 
-#: src/modules/reguser/edituser.cpp:117
-#: src/modules/reguser/edituser.cpp:278
-#: src/modules/reguser/edituser.cpp:486
-#: src/modules/reguser/dialog.cpp:292
+#: src/modules/reguser/dialog.cpp:292 src/modules/reguser/edituser.cpp:117
+#: src/modules/reguser/edituser.cpp:278 src/modules/reguser/edituser.cpp:486
 msgid "Cancel"
 msgstr "Annulla"
 
@@ -255,20 +250,16 @@ msgstr "Annulla"
 msgid "Channel: %c%s@%s"
 msgstr "Canale: %c%s@%s"
 
-#: src/modules/reguser/dialog.cpp:691
-#: src/modules/reguser/dialog.cpp:791
+#: src/modules/reguser/dialog.cpp:691 src/modules/reguser/dialog.cpp:791
 msgid "Choose a Filename - KVIrc"
 msgstr "Scegli un File - KVIrc"
 
-#: src/modules/reguser/edituser.cpp:348
-#: src/modules/reguser/dialog.cpp:134
+#: src/modules/reguser/dialog.cpp:134 src/modules/reguser/edituser.cpp:348
 msgid "Comment:"
 msgstr "Commento:"
 
-#: src/modules/reguser/dialog.cpp:494
-#: src/modules/reguser/dialog.cpp:497
-#: src/modules/reguser/dialog.cpp:498
-#: src/modules/reguser/dialog.cpp:500
+#: src/modules/reguser/dialog.cpp:494 src/modules/reguser/dialog.cpp:497
+#: src/modules/reguser/dialog.cpp:498 src/modules/reguser/dialog.cpp:500
 #: src/modules/reguser/dialog.cpp:502
 msgid "Default"
 msgstr "Predefinito"
@@ -299,8 +290,7 @@ msgstr ""
 msgid "Flags"
 msgstr "Parametri"
 
-#: src/modules/reguser/dialog.cpp:397
-#: src/modules/reguser/dialog.cpp:410
+#: src/modules/reguser/dialog.cpp:397 src/modules/reguser/dialog.cpp:410
 msgid "Group name:"
 msgstr "Nome gruppo:"
 
@@ -463,8 +453,7 @@ msgstr "Proprietà"
 msgid "Property Editor"
 msgstr "Editor Proprietà"
 
-#: src/modules/reguser/edituser.cpp:375
-#: src/modules/reguser/dialog.cpp:251
+#: src/modules/reguser/dialog.cpp:251 src/modules/reguser/edituser.cpp:375
 msgid "Re&move"
 msgstr "Rimuovi"
 
