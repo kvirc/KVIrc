@@ -2103,14 +2103,21 @@ void KviServerParser::parseNumericStartTls(KviIrcMessage * msg)
 {
 	// 670: RPL_STARTTLSOK
 	// :prefix 670 <nickname> :STARTTLS successful, go ahead with TLS handshake
-	// 671: RPL_STARTTLSFAIL
-	// :prefix 671 <nickname> :STARTTLS failure
+	// 691: RPL_STARTTLSFAIL
+	// :prefix 691 <nickname> :STARTTLS failure
 
 	bool bEnable = false;
 
 	switch(msg->numeric())
 	{
 		case 670:
+			//670 is used on some ircd as a whois reply: these ircds will not be able to
+			//support starttls anyway.. see ticket #682
+			if(!msg->connection()->stateData()->sentStartTls())
+			{
+				parseNumericWhoisOther(msg);
+				return;
+			}
 			debug("STARTTLS OK");
 			bEnable = true;
 			break;
