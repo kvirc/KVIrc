@@ -10,13 +10,13 @@
 # Eva Schaller <eva@cyberbeat.it>, 2002,2003, 2004.
 # Nate Grey <nate@paranoici.org>, 2004, 2005, 2006.
 # Elvio Basello <hellvis69 at netsons dot org>, 2005, 2006-2009.
-# HelLViS69, 2009.
+# HelLViS69, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: options_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-07 21:10+0100\n"
-"PO-Revision-Date: 2009-12-30 16:02+0100\n"
+"PO-Revision-Date: 2010-01-08 19:29+0100\n"
 "Last-Translator: HelLViS69\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -1047,14 +1047,14 @@ msgstr ""
 "mentre stai scrivendo qualcosa in un canale :D</center>"
 
 #: src/modules/options/optw_dcc.cpp:318
-#, fuzzy
 msgid ""
 "<center>This option causes the system taskbar entry for KVIrc to flash when "
 "a new dcc chat message is received and the KVIrc window is not the active.</"
 "center>"
 msgstr ""
 "<center>Questa opzione fa sì che la barra delle applicazioni del sistema "
-"lampeggi quando viene ricevuto un nuovo messaggio in query e la finestra di "
+"lampeggi quando viene ricevuto un nuovo messaggio in DCC chat e la finestra "
+"di "
 "KVIrc non è attiva.</center>"
 
 #: src/modules/options/optw_query.cpp:76
@@ -2280,9 +2280,8 @@ msgid "Enable animated smiles"
 msgstr "Abilita smile animati"
 
 #: src/modules/options/optw_away.cpp:39
-#, fuzzy
 msgid "Enable default away message"
-msgstr "Messaggio di Away predefinito:"
+msgstr "Abilita messaggio di away predefinito"
 
 #: src/modules/options/optw_interfacelookglobal.cpp:67
 msgid "Enable fake transparency"
@@ -2401,11 +2400,10 @@ msgid "File pattern:"
 msgstr "File pattern:"
 
 #: src/modules/options/optw_dcc.cpp:316
-#, fuzzy
 msgid "Flash system taskbar on new dcc chat message"
 msgstr ""
 "Fai lampeggiare la barra delle applicazioni del sistema quando c'è un nuovo "
-"messaggio in query"
+"messaggio in DCC chat"
 
 #: src/modules/options/optw_query.cpp:74
 msgid "Flash system taskbar on new query message"
@@ -3292,9 +3290,9 @@ msgstr ""
 "includere <b>http://</b>)."
 
 #: src/modules/options/optw_dcc.cpp:322
-#, fuzzy
 msgid "Popup notifier on new dcc chat message"
-msgstr "Mostra la finestra di notifica quando c'è un nuovo messaggio in query"
+msgstr ""
+"Mostra la finestra di notifica quando c'è un nuovo messaggio in DCC chat"
 
 #: src/modules/options/optw_query.cpp:80
 msgid "Popup notifier on new query message"

@@ -4,13 +4,13 @@
 # This file is distributed under the same license as the PACKAGE KVIrc.
 #
 # Elvio Basello <hellvis69 at netsons dot org>, 2008, 2009.
-# HelLViS69, 2009.
+# HelLViS69, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: kvs_it\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-07 21:10+0100\n"
-"PO-Revision-Date: 2009-12-30 16:25+0100\n"
+"PO-Revision-Date: 2010-01-08 19:35+0100\n"
 "Last-Translator: HelLViS69\n"
 "Language-Team: Italian <kde-i18n-it@kde.org>\n"
 "MIME-Version: 1.0\n"
@@ -401,6 +401,8 @@ msgstr "Trovato un blocco vuoto nell'epilogo: devi sistemare il tuo script?"
 msgid ""
 "Found empty instruction for popup item: maybe you need to fix the script?"
 msgstr ""
+"Trovata un'istruzione vuota per l'elemento del popup: forse devi sistemare "
+"lo script?"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:1692
 msgid "Found empty prologue block: maybe you need to fix the script?"
@@ -429,6 +431,9 @@ msgid ""
 "'prologue','separator','label','popup','item','extpopup' or 'epilogue' label "
 "was expected"
 msgstr ""
+"Trovato il token '%Q' mentre mi aspettavo un'etichetta "
+"'prologo','separatore','etichetta','popup','elemento','popup esterno' o "
+"'epilogo'"
 
 #: src/kvirc/kvs/kvi_kvs_parser_specialcommands.cpp:811
 msgid "Garbage string after the expression in 'do' command: ignored"
@@ -1600,3 +1605,4 @@ msgstr "linea %d, vicino al carattere %d"
 #: src/kvirc/kvs/kvi_kvs_coresimplecommands_sz.cpp:90
 msgid "say: injected commandline"
 msgstr "dice: linea di comando iniettata"
+
