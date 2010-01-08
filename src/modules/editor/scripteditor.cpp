@@ -784,7 +784,7 @@ void KviScriptEditorImplementation::loadOptions()
 	g_clrVariable = cfg.readColorEntry("Variable",QColor(200,200,200));
 	g_clrPunctuation = cfg.readColorEntry("Punctuation",QColor(180,180,0));
 	g_clrFind = cfg.readColorEntry("Find",QColor(255,0,0));
-	g_fntNormal = cfg.readFontEntry("Font",QFont("Fixed",12));
+	g_fntNormal = cfg.readFontEntry("Font",QFont("Courier New",8));
 }
 
 bool KviScriptEditorImplementation::isModified()
