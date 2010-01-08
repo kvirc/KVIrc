@@ -73,11 +73,13 @@ public:
 	* This fixed #425 and #519 (unwanted mdichild activation when KviFrame is not the active window)
 	* \return bool
 	*/
-	
-	bool eventFilter(QObject*, QEvent* event)
+
+	bool eventFilter(QObject *obj, QEvent *event)
 	{
-		return event->type() == QEvent::ApplicationActivate
-		|| event->type() == QEvent::ApplicationDeactivate;
+		if(event->type() == QEvent::ApplicationActivate
+		|| event->type() == QEvent::ApplicationDeactivate)
+			return true;
+		else return QMdiArea::eventFilter(obj, event);
 	};
 private:
 	bool m_bInSDIMode;
