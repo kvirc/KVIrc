@@ -842,6 +842,7 @@ void KviWindow::undock()
 void KviWindow::dock()
 {
 	g_pFrame->dockWindow(this);
+	g_pFrame->setActiveWindow(this);
 }
 
 void KviWindow::delayedAutoRaise()
