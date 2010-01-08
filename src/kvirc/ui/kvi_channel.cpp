@@ -131,10 +131,8 @@ KviChannel::KviChannel(KviFrame * lpFrm, KviConsole * lpConsole, const QString &
 	// Central splitter
 	m_pSplitter = new KviTalSplitter(Qt::Horizontal,this);
 	m_pSplitter->setObjectName(szName);
-	m_pSplitter->setOpaqueResize(false);
 	// Spitted vertially on the left
 	m_pVertSplitter = new KviTalSplitter(Qt::Vertical,m_pSplitter);
-	m_pVertSplitter->setOpaqueResize(false);
 	// With the IRC view over
 	m_pIrcView = new KviIrcView(m_pVertSplitter,lpFrm,this);
 	m_pIrcView->setObjectName(szName);
