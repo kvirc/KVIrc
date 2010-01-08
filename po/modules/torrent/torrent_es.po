@@ -1,65 +1,74 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
+# egns <grannost@gmail.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: torrent_es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-07 21:10+0100\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2009-11-29 15:21+0100\n"
+"Last-Translator: egns <grannost@gmail.com>\n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.2-beta2\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/torrent/tc_ktorrentdbusinterface.cpp:40
 msgid ""
 "An interface to KDE's excellent KTorrent client.\n"
 "Download it from http://www.ktorrent.org\n"
 msgstr ""
+"Una interfaz para el excelente cliente de KDE KTorrent.\n"
+"Descárgalo de http://www.ktorrent.org\n"
 
 #: src/modules/torrent/libkvitorrent.cpp:102
 msgid "Choosing torrent client interface \"%Q\""
-msgstr ""
+msgstr "Eligiendo la interfaz de cliente de torrent \"%Q\""
 
 #: src/modules/torrent/libkvitorrent.cpp:719
 msgid "Invalid client interface \"%Q\"!"
-msgstr ""
+msgstr "¡Interfaz de cliente \"%Q\" no válida!"
 
 #: src/modules/torrent/libkvitorrent.cpp:129
 msgid "Last interface error: "
-msgstr ""
+msgstr "Último error de la interfaz: "
 
 #: src/modules/torrent/tc_statusbarapplet.cpp:92
 msgid "No client selected!"
-msgstr ""
+msgstr "¡No se seleccionó ningún cliente!"
 
 #: src/modules/torrent/libkvitorrent.cpp:118
 msgid "No torrent client interface selected. Try /torrent.detect"
 msgstr ""
+"No se seleccionó ninguna interfaz de cliente de torrent. Prueba "
+"/torrent.detect"
 
 #: src/modules/torrent/libkvitorrent.cpp:109
 msgid "Seems that there is no usable torrent client on this machine"
 msgstr ""
+"Parece que no hay ningún cliente de torrent usable en esta máquina"
 
 #: src/modules/torrent/libkvitorrent.cpp:128
 msgid ""
 "The selected torrent client interface failed to execute the requested "
 "function"
 msgstr ""
+"La interfaz de cliente de torrent seleccionada falló al ejecutar la "
+"función "
+"especificada"
 
 #: src/modules/torrent/tc_statusbarapplet.cpp:61
 msgid "Torrent Client"
-msgstr ""
+msgstr "Cliente de torrent"
 
 #: src/modules/torrent/libkvitorrent.cpp:62
 msgid "Trying torrent client interface \"%Q\": score %d"
 msgstr ""
+"Probando la interfaz de cliente de torrent \"%Q\": puntuación %d"
 
 #: src/modules/torrent/libkvitorrent.cpp:711
 msgid "Using client interface \"%Q\"."
-msgstr ""
+msgstr "Usando la interfaz de cliente \"%Q\"."
+

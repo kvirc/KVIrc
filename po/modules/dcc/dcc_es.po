@@ -1,18 +1,20 @@
 # translation of dcc_es.po to spanish
-# José Luis Sánchez <jsanchezv@teleline.es>, 2004-2005
 #
+# egns <grannost@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: dcc_es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-07 21:10+0100\n"
-"PO-Revision-Date: 2005-02-10 18:45+0100\n"
-"Last-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
-"Language-Team: spanish\n"
+"PO-Revision-Date: 2009-11-29 11:10+0100\n"
+"Last-Translator: egns <grannost@gmail.com>\n"
+"Language-Team: American English <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "First-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/dcc/requests.cpp:862
 msgid "\"any\""
@@ -20,12 +22,11 @@ msgstr "\"cualquiera\""
 
 #: src/modules/dcc/send.cpp:1270
 msgid "%1"
-msgstr ""
+msgstr "%1"
 
 #: src/modules/dcc/send.cpp:1259 src/modules/dcc/send.cpp:1266
-#, fuzzy
 msgid "%1 of %2 (%3%)"
-msgstr "%1 de %2 bytes (%3%)"
+msgstr "%1 de %2 (%3%)"
 
 #: src/modules/dcc/requests.cpp:697
 msgid "%Q [%Q@%Q] is ready to receive the file \"%s\""
@@ -53,7 +54,7 @@ msgstr "&Insertar"
 
 #: src/modules/dcc/canvaswidget.cpp:1492
 msgid "&Item"
-msgstr "Elemento"
+msgstr "Ele&mento"
 
 #: src/modules/dcc/canvaswidget.cpp:1478
 msgid "&Line"
@@ -65,7 +66,7 @@ msgstr "&Pentágono"
 
 #: src/modules/dcc/canvaswidget.cpp:1481
 msgid "&Pie"
-msgstr "Tarta"
+msgstr "&Tarta"
 
 #: src/modules/dcc/canvaswidget.cpp:1493
 msgid "&Polygons"
@@ -89,7 +90,7 @@ msgstr "Texto en&riquecido (html)"
 
 #: src/modules/dcc/canvaswidget.cpp:1491
 msgid "&Shape"
-msgstr "Figura"
+msgstr "Fi&gura"
 
 #: src/modules/dcc/canvaswidget.cpp:1486
 msgid "&Triangle"
@@ -123,14 +124,13 @@ msgstr ""
 "en el puerto <b>%5</b><br>"
 
 #: src/modules/dcc/broker.cpp:417
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> requests a<br><b>Direct Client Connection</b> in <b>VIDEO</"
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> peticiones a<br><b>Conexión Directa a Cliente (DCC)</b> en "
-"modo <b>VOICE</b>.<br>El destino de la conexión será la máquina <b>%4</b> en "
+"<b>%1 [%2@%3]</b> pide una<br><b>Conexión Directa a Cliente (DCC)</b> en "
+"modo <b>VIDEO</b>.<br>El destino de la conexión será la máquina <b>%4</b> en "
 "el puerto <b>%5</b><br>"
 
 #: src/modules/dcc/broker.cpp:347
@@ -139,28 +139,26 @@ msgid ""
 "b> mode.<br>The connection target will be host <b>%4</b> on port <b>%5</"
 "b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> peticiones a<br><b>Conexión Directa a Cliente (DCC)</b> en "
+"<b>%1 [%2@%3]</b> pide una<br><b>Conexión Directa a Cliente (DCC)</b> en "
 "modo <b>VOICE</b>.<br>El destino de la conexión será la máquina <b>%4</b> en "
 "el puerto <b>%5</b><br>"
 
 #: src/modules/dcc/broker.cpp:585
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>The connection target will be host <b>%6</b> on port <b>%7</b><br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> quiere enviarte el archivo '<b>%4</b>', de <b>%5</b> bytes "
-"de longitud.<br>El destino de la conexión será la máquina <b>%6</b> en el "
+"<b>%1 [%2@%3]</b> quiere enviarte el archivo '<b>%4</b>', de <b>%5</b>."
+"<br>El destino de la conexión será la máquina <b>%6</b> en el "
 "puerto <b>%7</b><br>"
 
 #: src/modules/dcc/broker.cpp:598
-#, fuzzy
 msgid ""
 "<b>%1 [%2@%3]</b> wants to send you the file '<b>%4</b>', <b>%5</b> large."
 "<br>You will be the passive side of the connection.<br>"
 msgstr ""
-"<b>%1 [%2@%3]</b> quiere enviarte el archivo '<b>%4</b>', de <b>%5</b> bytes "
-"de longitud.<br>Serás el lado pasivo de la conexión.<br>"
+"<b>%1 [%2@%3]</b> quiere enviarte el archivo '<b>%4</b>', de <b>%5</b>."
+"<br>Serás el lado pasivo de la conexión.<br>"
 
 #: src/modules/dcc/broker.cpp:611
 msgid ""
@@ -172,13 +170,13 @@ msgid ""
 "incoming avatars automatically by setting the option "
 "<tt>boolAutoAcceptIncomingAvatars</tt> to true.<br>"
 msgstr ""
-"<center><b>Nota:</b></center>El archivo parece ser un avatar que tú has "
+"<center><b>Nota:</b></center>el archivo parece ser un avatar que tú has "
 "solicitado. No deberías cambiar el nombre de archivo. Guárdalo en un lugar "
 "donde pueda encontrarlo KVIrc, como los directorios 'avatares', 'entrantes' "
-"o 'pics' de tu directorio personal o en el directorio de grabación para el "
-"tipo archivo entrante. Probablemente, la ruta de grabación por defecto "
+"o 'pics' de tu directorio personal o en el directorio de guardado para el "
+"tipo de archivo entrante. Probablemente, la ruta de guardado por defecto "
 "funcionará. Puedes pedir a KVIrc para que acepte avatares automáticamente "
-"activando la opción <tt>Aceptar automaticamente avatares entrantes</tt>.<br>"
+"activando la opción <tt>Aceptar automáticamente avatares entrantes</tt>.<br>"
 
 #: src/modules/dcc/libkvidcc.cpp:635 src/modules/dcc/requests.cpp:454
 #: src/modules/dcc/requests.cpp:744
@@ -195,17 +193,15 @@ msgstr "Interrumpida"
 
 #: src/modules/dcc/send.cpp:1807
 msgid "Accepting RESUME request, transfer will begin at position %1"
-msgstr ""
-"Aceptando petición RESUME, la transferencia comenzará en la posición %1"
+msgstr "Aceptando petición RESUME, la transferencia comenzará en la posición %1"
 
 #: src/modules/dcc/requests.cpp:963
-#, fuzzy
 msgid ""
 "Accepting file request from %Q [%Q@%Q] for '%s' (real file: %Q), offering "
 "DCC %Q"
 msgstr ""
 "Aceptando una petición de archivo desde %Q [%Q@%Q] para '%s' (archivo real: %"
-"Q), ofreciendo DCC %s"
+"Q), ofreciendo DCC %Q"
 
 #: src/modules/dcc/requests.cpp:906
 msgid ""
@@ -219,7 +215,7 @@ msgstr ""
 #: src/modules/dcc/voice.cpp:930 src/modules/dcc/video.cpp:960
 #, c-format
 msgid "Actual codec used is '%s'"
-msgstr "El codec actual es '%s'"
+msgstr "El cédec actual es '%s'"
 
 #: src/modules/dcc/send.cpp:844
 msgid "Attempting a passive DCC %1 connection"
@@ -235,7 +231,6 @@ msgid "Attempting a passive DCC CANVAS connection"
 msgstr "Intentando una conexión pasiva DCC CANVAS"
 
 #: src/modules/dcc/video.cpp:800
-#, fuzzy
 msgid "Attempting a passive DCC VIDEO connection"
 msgstr "Intentando una conexión pasiva DCC VOICE"
 
@@ -257,25 +252,20 @@ msgid "Attempting an active DCC CANVAS connection"
 msgstr "Intentando una conexión DCC CANVAS activa"
 
 #: src/modules/dcc/video.cpp:805
-#, fuzzy
 msgid "Attempting an active DCC VIDEO connection"
-msgstr "Intentando una conexión activa DCC VOICE"
+msgstr "Intentando una conexión activa DCC VIDEO"
 
 #: src/modules/dcc/voice.cpp:745
 msgid "Attempting an active DCC VOICE connection"
 msgstr "Intentando una conexión activa DCC VOICE"
 
 #: src/modules/dcc/broker.cpp:639
-#, fuzzy
 msgid "Auto-accepting DCC %Q request from %Q!%Q@%Q for file %Q"
-msgstr ""
-"Aceptando automáticamente petición DCC %s de %s!%s@%s para el archivo %s"
+msgstr "Aceptando automáticamente petición DCC %Q de %Q!%Q@%Q para el archivo %Q"
 
 #: src/modules/dcc/broker.cpp:721
-#, fuzzy
 msgid "Auto-saving DCC %Q file %Q as \r![!dbl]play $0\r%Q\r"
-msgstr ""
-"Guardando automáticamente el DCC %s archivo %s como \r![!dbl]play $0\r%s\r"
+msgstr "Guardando automáticamente el DCC %Q archivo %Q como \r![!dbl]play $0\r%Q\r"
 
 #: src/modules/dcc/send.cpp:1294
 msgid "Avg:"
@@ -288,17 +278,15 @@ msgid ""
 "disabling the option (so the next dcc will work)"
 msgstr ""
 "No puedo escuchar en el interfaz por defecto '%s': arréglalo en el diálogo "
-"de opciones deshabilitando la opción (para que funcione el próximo dcc)"
+"de opciones deshabilitando la opción (para que funcione el próximo DCC)"
 
 #: src/modules/dcc/broker.cpp:207 src/modules/dcc/broker.cpp:909
-#, fuzzy
 msgid "Can't open file %Q for reading"
-msgstr "No pude abrir el archivo %s para lectura"
+msgstr "No pude abrir el archivo %Q para lectura"
 
 #: src/modules/dcc/requests.cpp:539
 #, c-format
-msgid ""
-"Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
+msgid "Can't proceed with DCC RECV: Transfer not initiated for file %s on port %s"
 msgstr ""
 "No pude realizar el DCC REVC: la transferencia del archivo %s en el puerto %"
 "s no se inició"
@@ -317,10 +305,8 @@ msgid "Can't retrieve a suitable local IPV4 address"
 msgstr "No pude encontrar una dirección IPv4 apropiada"
 
 #: src/modules/dcc/broker.cpp:197
-#, fuzzy
 msgid "Can't send DCC %Q request to %Q: IRC connection has been terminated"
-msgstr ""
-"No pude enviar la petición DCC %s a %s: la conexión IRC ha sido finalizada"
+msgstr "No pude enviar la petición DCC %Q a %Q: la conexión IRC ha sido finalizada"
 
 #: src/modules/dcc/dialogs.cpp:158 src/modules/dcc/send.cpp:1866
 msgid "Cancel"
@@ -331,13 +317,12 @@ msgid "Cannot send data: No active connection"
 msgstr "No puedo enviar datos: No hay una conexión activa"
 
 #: src/modules/dcc/broker.cpp:706
-#, fuzzy
 msgid "Choose Files to Save - KVIrc"
-msgstr "Escoja los Archivos a Enviar - KVIrc"
+msgstr "Escoge los archivos a guardar - KVIrc"
 
 #: src/modules/dcc/broker.cpp:167 src/modules/dcc/broker.cpp:872
 msgid "Choose Files to Send - KVIrc"
-msgstr "Escoja los Archivos a Enviar - KVIrc"
+msgstr "Escoge los archivos a enviar - KVIrc"
 
 #: src/modules/dcc/requests.cpp:101
 #, c-format
@@ -348,7 +333,7 @@ msgstr ""
 
 #: src/modules/dcc/send.cpp:962
 msgid "Configure Bandwidth..."
-msgstr "Configurar Caudal..."
+msgstr "Configurar ancho de banda..."
 
 #: src/modules/dcc/send.cpp:1835
 msgid "Configure bandwidth for DCC transfer %1"
@@ -360,9 +345,8 @@ msgstr "Conectado a %1:%2"
 
 #: src/modules/dcc/voice.cpp:910 src/modules/dcc/video.cpp:940
 #: src/modules/dcc/canvas.cpp:283 src/modules/dcc/chat.cpp:556
-#, fuzzy
 msgid "Connected to %Q:%Q"
-msgstr "Conectado a %s:%s"
+msgstr "Conectado a %Q:%Q"
 
 #: src/modules/dcc/send.cpp:1488
 msgid "Contacting host %1 on port %2"
@@ -370,9 +354,8 @@ msgstr "Contactando con la máquina %1 en el puerto %2"
 
 #: src/modules/dcc/voice.cpp:755 src/modules/dcc/video.cpp:815
 #: src/modules/dcc/canvas.cpp:109 src/modules/dcc/chat.cpp:185
-#, fuzzy
 msgid "Contacting host %Q on port %Q"
-msgstr "Contactando con la máquina %s en el puerto %s"
+msgstr "Contactando con la máquina %Q en el puerto %Q"
 
 #: src/modules/dcc/broker.cpp:296 src/modules/dcc/broker.cpp:626
 msgid "DCC %1 Request - KVIrc"
@@ -383,19 +366,16 @@ msgid "DCC %1 request not sent, awaiting manual connection"
 msgstr "Petición DCC %1 no enviada, esperando conexión manual"
 
 #: src/modules/dcc/chat.cpp:528
-#, fuzzy
 msgid "DCC %Q failed: %Q"
-msgstr "DCC %s falló: %Q"
+msgstr "DCC %Q falló: %Q"
 
 #: src/modules/dcc/chat.cpp:239
-#, fuzzy
 msgid "DCC %Q request not sent, awaiting manual connection"
-msgstr "La petición DCC %s no fué enviada, esperando conexión manual"
+msgstr "La petición DCC %Q no fue enviada, esperando conexión manual"
 
 #: src/modules/dcc/send.cpp:1633
-#, fuzzy
 msgid "DCC %s transfer with %Q@%Q:%Q completed: \r![!dbl]play $0\r%s\r"
-msgstr "Transferencia DCC %s con %s@%s:%s completada: \r![!dbl]play $0\r%s\r"
+msgstr "Transferencia DCC %s con %Q@%Q:%Q completada: \r![!dbl]play $0\r%s\r"
 
 #: src/modules/dcc/broker.cpp:499
 msgid "DCC CANVAS request"
@@ -411,19 +391,16 @@ msgid "DCC Failed: %Q"
 msgstr "Falló el DCC: %Q"
 
 #: src/modules/dcc/broker.cpp:423
-#, fuzzy
 msgid "DCC VIDEO request"
-msgstr "Petición de DCC VOICE"
+msgstr "Petición de DCC VIDEO"
 
 #: src/modules/dcc/video.cpp:837
-#, fuzzy
 msgid "DCC VIDEO request not sent: awaiting manual connections"
-msgstr "No se envió la petición DCC: esperando conexiones manuales"
+msgstr "No se envió la petición DCC VIDEO: esperando conexiones manuales"
 
 #: src/modules/dcc/libkvidcc.cpp:1193
-#, fuzzy
 msgid "DCC VIDEO support not enabled at compilation time"
-msgstr "La petición anterior no puede ser aceptada: codec no soportado '%s'"
+msgstr "El soporte de DCC VIDEO no fue activado al compilar"
 
 #: src/modules/dcc/broker.cpp:353
 msgid "DCC VOICE request"
@@ -431,11 +408,11 @@ msgstr "Petición de DCC VOICE"
 
 #: src/modules/dcc/voice.cpp:777
 msgid "DCC VOICE request not sent: awaiting manual connections"
-msgstr "No se envió la petición DCC: esperando conexiones manuales"
+msgstr "No se envió la petición DCC VOICE: esperando conexiones manuales"
 
 #: src/modules/dcc/libkvidcc.cpp:1115
 msgid "DCC VOICE support not enabled at compilation time"
-msgstr ""
+msgstr "El soporte de DCC VOICE no fue activado al compilar"
 
 #: src/modules/dcc/send.cpp:362
 msgid ""
@@ -447,8 +424,7 @@ msgstr ""
 
 #: src/modules/dcc/send.cpp:369
 msgid "Data transfer was terminated 30 seconds ago, closing the connection"
-msgstr ""
-"La transferencia de datos terminó hace 30 segundos, cerrando la conexión"
+msgstr "La transferencia de datos terminó hace 30 segundos, cerrando la conexión"
 
 #: src/modules/dcc/voice.cpp:818 src/modules/dcc/video.cpp:880
 #: src/modules/dcc/chat.cpp:408
@@ -456,13 +432,12 @@ msgid "ERROR: %Q"
 msgstr "ERROR: %Q"
 
 #: src/modules/dcc/broker.cpp:838
-#, fuzzy
 msgid "File %s exists, auto-renaming to %Q"
-msgstr "El archivo %s ya existe, renombrando automáticamente a %m"
+msgstr "El archivo %s ya existe, renombrándolo automáticamente a %Q"
 
 #: src/modules/dcc/dialogs.cpp:165
 msgid "File Already Exists - KVIrc"
-msgstr "El Archivo ya Existe - KVIrc"
+msgstr "El archivo ya existe - KVIrc"
 
 #: src/modules/dcc/send.cpp:1157
 msgid "From: "
@@ -486,16 +461,16 @@ msgstr "Ignorando y notificando el fallo"
 
 #: src/modules/dcc/voice.cpp:655
 msgid "Input buffer"
-msgstr "Buffer de entrada"
+msgstr "Búfer de entrada"
 
 #: src/modules/dcc/voice.cpp:876
 #, c-format
 msgid "Input buffer: %d bytes"
-msgstr "Buffer de entrada: %d bytes"
+msgstr "Búfer de entrada: %d bytes"
 
 #: src/modules/dcc/video.cpp:708
 msgid "Input:"
-msgstr ""
+msgstr "Entrada:"
 
 #: src/modules/dcc/send.cpp:1798
 msgid "Internal error in RESUME request"
@@ -514,8 +489,7 @@ msgstr "La dirección IP en formato antiguo no es válida %s"
 #: src/modules/dcc/requests.cpp:643
 #, c-format
 msgid "Invalid RECV request: Position %u is is larger than file size"
-msgstr ""
-"Petición RECV no válida: la posición %u es mayor que el tamaño del archivo"
+msgstr "Petición RECV no válida: la posición %u es mayor que el tamaño del archivo"
 
 #: src/modules/dcc/send.cpp:1803
 msgid "Invalid RESUME request: Position %1 is larger than file size"
@@ -523,14 +497,12 @@ msgstr ""
 "Petición RESUME no válida: la posición %1 es mayor que el tamaño del archivo"
 
 #: src/modules/dcc/libkvidcc.cpp:1149
-#, fuzzy
 msgid "Invalid codec specified, defaulting to 'adpcm'"
-msgstr "Codec '%s' no válido, poniendo por defecto 'adpcm'"
+msgstr "Codec especificado no válido, poniendo por defecto 'adpcm'"
 
 #: src/modules/dcc/libkvidcc.cpp:1214
-#, fuzzy
 msgid "Invalid codec specified, defaulting to 'sjpeg'"
-msgstr "Codec '%s' no válido, poniendo por defecto 'adpcm'"
+msgstr "Codec especificado no válido, poniendo por defecto 'jpeg'"
 
 #: src/modules/dcc/requests.cpp:163
 #, c-format
@@ -543,21 +515,20 @@ msgid "Invalid resume position argument '%s'"
 msgstr "El argumento de posición de reanudación '%s' no es válido"
 
 #: src/modules/dcc/libkvidcc.cpp:1133
-#, fuzzy
 msgid "Invalid sample rate specified, defaulting to 8000"
 msgstr "Frecuencia de muestreo '%s' no válida, poniendo a 8000 por defecto"
 
 #: src/modules/dcc/requests.cpp:332
 msgid "It seems that I haven't requested this dcc chat"
-msgstr ""
+msgstr "Me parece que yo no he pedido este chat dcc"
 
 #: src/modules/dcc/send.cpp:1838
 msgid "Limit download bandwidth to"
-msgstr "Limitar el caudal de bajada a"
+msgstr "Limitar el ancho de banda de bajada a"
 
 #: src/modules/dcc/send.cpp:1838
 msgid "Limit upload bandwidth to"
-msgstr "Limitar el caudal de subida a"
+msgstr "Limitar el ancho de banda de subida a"
 
 #: src/modules/dcc/send.cpp:1495
 msgid "Listening on interface %1 port %2"
@@ -565,9 +536,8 @@ msgstr "Escuchando en el interfaz %1 puerto %2"
 
 #: src/modules/dcc/voice.cpp:758 src/modules/dcc/video.cpp:818
 #: src/modules/dcc/canvas.cpp:85 src/modules/dcc/chat.cpp:187
-#, fuzzy
 msgid "Listening on interface %Q port %Q"
-msgstr "Escuchando en el interfaz %s puerto %s"
+msgstr "Escuchando en el interfaz %Q puerto %Q"
 
 #: src/modules/dcc/send.cpp:1697
 msgid "Local end is %1:%2"
@@ -575,9 +545,8 @@ msgstr "El extremo local es %1:%2"
 
 #: src/modules/dcc/voice.cpp:912 src/modules/dcc/video.cpp:942
 #: src/modules/dcc/canvas.cpp:285 src/modules/dcc/chat.cpp:558
-#, fuzzy
 msgid "Local end is %Q:%Q"
-msgstr "El extremo final es %s:%s"
+msgstr "El extremo final es %Q:%Q"
 
 #: src/modules/dcc/chat.cpp:247 src/modules/dcc/send.cpp:1582
 msgid "Low-level transport connection established"
@@ -600,26 +569,26 @@ msgstr "No hay interfaces adecuados para escuchar, use -i"
 
 #: src/modules/dcc/send.cpp:1861
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 #: src/modules/dcc/voice.cpp:269 src/modules/dcc/video.cpp:275
 msgid "Ops...failed to test the soundcard capabilities...expect problems..."
 msgstr ""
-"Ops...falló la prueba de las capacidades de la tarjeta de sonido...puedes "
-"esperar problemas"
+"Ups... falló la prueba de las capacidades de la tarjeta de sonido... posiblemente "
+"tengas problemas..."
 
 #: src/modules/dcc/voice.cpp:657
 msgid "Output buffer"
-msgstr "Buffer de salida"
+msgstr "Búfer de salida"
 
 #: src/modules/dcc/voice.cpp:878
 #, c-format
 msgid "Output buffer: %d bytes"
-msgstr "Buffer de salida: %d bytes"
+msgstr "Búfer de salida: %d bytes"
 
 #: src/modules/dcc/dialogs.cpp:149
 msgid "Over&write"
-msgstr "Sobreescribir"
+msgstr "Sobree&scribir"
 
 #: src/modules/dcc/send.cpp:1767
 msgid "RESUME accepted, transfer will begin at position %1"
@@ -631,15 +600,15 @@ msgstr "Continuar"
 
 #: src/modules/dcc/send.cpp:964
 msgid "Resend DCC"
-msgstr ""
+msgstr "Reenviar DCC"
 
 #: src/modules/dcc/send.cpp:966
 msgid "Resend RevDCC"
-msgstr ""
+msgstr "Reenviar RevDCC"
 
 #: src/modules/dcc/send.cpp:965
 msgid "Resend TDCC"
-msgstr ""
+msgstr "Reenviar TDCC"
 
 #: src/modules/dcc/send.cpp:1569
 msgid "Sent DCC %1 request to %2, waiting for remote client to connect..."
@@ -648,17 +617,13 @@ msgstr ""
 "remoto..."
 
 #: src/modules/dcc/chat.cpp:236
-#, fuzzy
 msgid "Sent DCC %Q request to %Q, waiting for the remote client to connect..."
-msgstr ""
-"Enviada petición DCC %s a %s, esperando la conexión del cliente remoto..."
+msgstr "Enviada petición DCC %Q a %Q, esperando la conexión del cliente remoto..."
 
 #: src/modules/dcc/canvas.cpp:100
-#, fuzzy
-msgid ""
-"Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
+msgid "Sent DCC CANVAS request to %Q, waiting for the remote client to connect..."
 msgstr ""
-"Enviada petición DCC CANVAS a %s, esperando la conexión desde el cliente "
+"Enviada petición DCC CANVAS a %Q, esperando la conexión desde el cliente "
 "remoto..."
 
 #: src/modules/dcc/send.cpp:874
@@ -666,21 +631,19 @@ msgid "Sent DCC RESUME request to %1, waiting for ACCEPT"
 msgstr "Enviada petición DCC RESUME a %1, esperando el ACCEPT"
 
 #: src/modules/dcc/video.cpp:835
-#, fuzzy
 msgid ""
 "Sent DCC VIDEO (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr ""
-"Enviada petición DCC VOICE (%s) a %s, esperando la conexión del cliente "
+"Enviada petición DCC VIDEO (%s) a %Q, esperando la conexión del cliente "
 "remoto..."
 
 #: src/modules/dcc/voice.cpp:775
-#, fuzzy
 msgid ""
 "Sent DCC VOICE (%s) request to %Q, waiting for the remote client to "
 "connect..."
 msgstr ""
-"Enviada petición DCC VOICE (%s) a %s, esperando la conexión del cliente "
+"Enviada petición DCC VOICE (%s) a %Q, esperando la conexión del cliente "
 "remoto..."
 
 #: src/modules/dcc/send.cpp:785
@@ -698,7 +661,7 @@ msgstr "Vel:"
 
 #: src/modules/dcc/video.cpp:715
 msgid "Standard:"
-msgstr ""
+msgstr "Estándar:"
 
 #: src/modules/dcc/chat.cpp:248 src/modules/dcc/send.cpp:1583
 msgid "Starting Secure Socket Layer handshake"
@@ -715,22 +678,24 @@ msgid ""
 "The above request appears to be broken: Invalid sample-rate '%s', defaulting "
 "to 8000"
 msgstr ""
-"La petición anterior parece erronea: frecuencia de muestreo '%s' no válida, "
+"La petición anterior parece errónea: frecuencia de muestreo '%s' no válida, "
 "poniendo a 8000 por defecto"
 
 #: src/modules/dcc/requests.cpp:1071
-#, fuzzy
 msgid ""
 "The above request cannot be accepted: DCC VIDEO support not enabled at "
 "compilation time "
-msgstr "La petición anterior no puede ser aceptada: codec no soportado '%s'"
+msgstr ""
+"La petición anterior no puede ser aceptada: el ejecutable no fue "
+"compilado con soporte DCC VIDEO "
 
 #: src/modules/dcc/requests.cpp:997
-#, fuzzy
 msgid ""
 "The above request cannot be accepted: DCC VOICE support not enabled at "
 "compilation time "
-msgstr "La petición anterior no puede ser aceptada: codec no soportado '%s'"
+msgstr ""
+"La petición anterior no puede ser aceptada: el ejecutable no fue "
+"compilado con soporte DCC VOICE"
 
 #: src/modules/dcc/requests.cpp:1007 src/modules/dcc/requests.cpp:1082
 #, c-format
@@ -785,6 +750,8 @@ msgid ""
 "The above request is broken: it looks like a zero port tag acknowledge but I "
 "have either never seen this tag or it was sent more than 120 seconds ago"
 msgstr ""
+"La petición anterior es incorrecta: parece un tag de agradecimiento de puerto "
+"cero pero o no he visto ese tag nunca o fue enviado hace más de 120 segundos"
 
 #: src/modules/dcc/broker.cpp:291
 msgid "The connection target will be host <b>%1</b> on port <b>%2</b><br>"
@@ -797,12 +764,11 @@ msgid "The connection will be secured using SSL.<br>"
 msgstr "La conexión será asegurada usando SSL.<br>"
 
 #: src/modules/dcc/chat.cpp:340
-#, fuzzy
 msgid ""
 "The crypto engine was not able to encrypt the current message (%Q): %Q, no "
 "data was sent to the remote end"
 msgstr ""
-"El motor de cifrado no fué capaz de descifrar el mensaje actual (%Q): %s, no "
+"El motor de cifrado no fué capaz de descifrar el mensaje actual (%Q): %!, no "
 "se enviaron datos al extremo remoto"
 
 #: src/modules/dcc/libkvidcc.cpp:1643 src/modules/dcc/libkvidcc.cpp:2608
@@ -811,15 +777,14 @@ msgid "The current window has no associated DCC session"
 msgstr "La ventana actual no tiene una sesión DCC asociada"
 
 #: src/modules/dcc/broker.cpp:752
-#, fuzzy
 msgid ""
 "The file '<b>%1</b>' already exists and is <b>%2</b> large.<br>Do you wish "
 "to<br><b>overwrite</b> the existing file,<br> <b>auto-rename</b> the new "
 "file, or<br><b>resume</b> an incomplete download?"
 msgstr ""
-"El archivo '<b>%1</b>' ya existe y tiene <b>%2</b> bytes de longitud."
+"El archivo '<b>%1</b>' ya existe y es de <b>%2</b>."
 "<br>¿Desea<br><b>sobreescribir</b> el archivo existente,<br> <b>renombrar "
-"automaticamente</b> el nuevo archivo, o<br><b>continuar</b> una "
+"automáticamente</b> el nuevo archivo, o<br><b>continuar</b> una "
 "transferencia incompleta?"
 
 #: src/modules/dcc/broker.cpp:764
@@ -834,20 +799,18 @@ msgstr ""
 "automaticamente</b> el nuevo archivo?"
 
 #: src/modules/dcc/chat.cpp:468
-#, fuzzy
 msgid ""
 "The following message appears to be encrypted, but the crypto engine failed "
 "to decode it: %Q"
 msgstr ""
 "El siguiente mensaje parece estar cifrado, pero el motor de cifrado falló al "
-"decodificarlo: %s"
+"decodificarlo: %Q"
 
 #: src/modules/dcc/chat.cpp:214 src/modules/dcc/send.cpp:1523
-msgid ""
-"The local IP address is private, but have no IRC server to determine it from"
+msgid "The local IP address is private, but have no IRC server to determine it from"
 msgstr ""
 "La dirección IP local es privada, pero no tengo un servidor IRC desde el "
-"quedeterminarla"
+"que determinarla"
 
 #: src/modules/dcc/chat.cpp:211 src/modules/dcc/send.cpp:1520
 msgid ""
@@ -859,14 +822,12 @@ msgstr ""
 
 #: src/modules/dcc/send.cpp:1518
 msgid "The local IP address is private, determining from IRC server: %1"
-msgstr ""
-"La dirección IP local es privada, determinándola desde el servidor IRC: %1"
+msgstr "La dirección IP local es privada, determinándola desde el servidor IRC: %1"
 
 #: src/modules/dcc/chat.cpp:209
 #, c-format
 msgid "The local IP address is private, determining from IRC server: %s"
-msgstr ""
-"La dirección IP local es privada, determinando desde el servidor IRC: %s"
+msgstr "La dirección IP local es privada, determinando desde el servidor IRC: %s"
 
 #: src/modules/dcc/requests.cpp:703
 #, c-format
@@ -883,7 +844,7 @@ msgstr "El identificador de ventana especificado no es válido"
 
 #: src/modules/dcc/libkvidcc.cpp:1728
 msgid "This DCC session is not a DCC transfer session"
-msgstr ""
+msgstr "Esta sesión DCC no es una sesión DCC de transferencia"
 
 #: src/modules/dcc/libkvidcc.cpp:891
 msgid "This executable has been built without SSL support, -s switch ignored"
@@ -974,14 +935,12 @@ msgid "Transferring data"
 msgstr "Transfiriendo datos"
 
 #: src/modules/dcc/libkvidcc.cpp:130
-#, fuzzy
 msgid "Unable to get address of interface %Q"
-msgstr "Imposible obtener la dirección del interfaz %s"
+msgstr "Imposible obtener la dirección del interfaz %Q"
 
 #: src/modules/dcc/requests.cpp:82
-#, fuzzy
 msgid "Unable to process the above request: %Q, %Q"
-msgstr "No es posible procesar la petición anterior: %s, %Q"
+msgstr "No es posible procesar la petición anterior: %Q, %Q"
 
 #: src/modules/dcc/requests.cpp:1240
 #, c-format
@@ -998,7 +957,7 @@ msgstr ""
 
 #: src/modules/dcc/video.cpp:701
 msgid "Video device:"
-msgstr ""
+msgstr "Dispositivo de vídeo:"
 
 #: src/modules/dcc/voice.cpp:1014
 #, c-format
@@ -1010,19 +969,19 @@ msgid ""
 "WARNING: Ignoring data past the declared end of file and closing the "
 "connection"
 msgstr ""
-"ATENCION: Ignorando los datos que exceden del final de archivo declarado y "
+"ATENCIÓN: Ignorando los datos que exceden del final de archivo declarado y "
 "cerrando la conexión"
 
 #: src/modules/dcc/send.cpp:630
 msgid "WARNING: Received data in a DCC TSEND, there should be no acknowledges"
 msgstr ""
-"ATENCION: Recibiendo datos en un DCC TSEND, aquí no deberían haber "
+"ATENCIÓN: Recibiendo datos en un DCC TSEND, aquí no deberían haber "
 "confirmaciones"
 
 #: src/modules/dcc/send.cpp:260
 msgid "WARNING: The peer is sending garbage data past the end of the file"
 msgstr ""
-"ATENCION: El otro extremo está enviando datos basura pasado el final del "
+"ATENCIÓN: El otro extremo está enviando datos basura pasado el final del "
 "archivo"
 
 #: src/modules/dcc/voice.cpp:162 src/modules/dcc/video.cpp:168
@@ -1032,7 +991,7 @@ msgid ""
 "half-duplex soundcard, use the DCC VOICE option to force half-duplex "
 "algorithm"
 msgstr ""
-"ATENCION: falló la comprobación de la característica duplex de la tarjeta de "
+"ATENCIÓN: falló la comprobación de la característica duplex de la tarjeta de "
 "sonido: si esta es una tarjeta half-duplex, usa la opción DCC VOICE para "
 "forzar el algoritmo half-duplex"
 
@@ -1042,19 +1001,19 @@ msgid ""
 "WARNING: failed to set the requested sample rate (%d): the device used "
 "closest match (%d)"
 msgstr ""
-"ATENCIÖN: falló la configuración de la frecuencia de muestreo solicitada (%"
+"ATENCIÓN: falló la configuración de la frecuencia de muestreo solicitada (%"
 "d): el dispositivo usó el valor más cercano (%d)"
 
 #: src/modules/dcc/broker.cpp:287
 msgid "You will be the passive side of the connection.<br>"
-msgstr ""
+msgstr "Serás el lado pasivo de la conexión.<br>"
 
 #: src/modules/dcc/libkvidcc.cpp:105
 msgid ""
 "You're not connected to a server (an active connection is required unless -c "
 "or -n are passed)"
 msgstr ""
-"No está conectado a un servidor (se necesita una conexión activa a menos que "
+"No estás conectado a un servidor (se necesita una conexión activa a menos que "
 "se pasen los modificadores -c o -n)"
 
 #: src/modules/dcc/send.cpp:1590
@@ -1081,25 +1040,3 @@ msgstr "bytes/seg"
 #: src/modules/dcc/requests.cpp:142 src/modules/dcc/requests.cpp:143
 msgid "unknown"
 msgstr "desconocido"
-
-#~ msgid "%1 bytes"
-#~ msgstr "%1 bytes"
-
-#~ msgid "Choose Save Location - KVIrc"
-#~ msgstr "Escoge el Lugar de la Grabación - KVIrc"
-
-#~ msgid "Contacting host %s on port %s"
-#~ msgstr "Contactando con la máquina %s en el puerto %s"
-
-#~ msgid "Invalid file size specified, no message sent"
-#~ msgstr ""
-#~ "El tamaño del archivo especificado no es válido, no se envió mensaje"
-
-#~ msgid "Missing filename"
-#~ msgstr "Falta el nombre de archivo"
-
-#~ msgid "Missing target nickname"
-#~ msgstr "Falta nick de destino"
-
-#~ msgid "The file size is not an positive number"
-#~ msgstr "El tamaño del archivo no es un número positivo"

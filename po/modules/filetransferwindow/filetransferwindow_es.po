@@ -2,21 +2,23 @@
 # translation of filetransferwindow_es.po to Spanish
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
-# José Luis Sánchez<jsanchezv@teleline.es>, 2004.
-# Jose Luis Sánchez <jsanchez@todounix.homeip.net>, 2005.
 #
+# José Luis Sánchez<jsanchezv@teleline.es>, 2004.
+# Jose Luis Sánchez <jsanchez@todounix.homeip.net>, 2005, 2009.
+# egns <grannost@gmail.com>, 2009
 msgid ""
 msgstr ""
 "Project-Id-Version: filetransferwindow_es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-07 21:10+0100\n"
-"PO-Revision-Date: 2005-11-20 18:47+0100\n"
-"Last-Translator: Jose Luis Sánchez <jsanchez@todounix.homeip.net>\n"
-"Language-Team:  <es@li.org>\n"
+"PO-Revision-Date: 2009-11-29 11:30+0100\n"
+"Last-Translator: egns <grannost@gmail.com>\n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.10.2\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:511
 msgid "&Clear Terminated"
@@ -24,7 +26,7 @@ msgstr "B&orrar terminadas"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:479
 msgid "&Copy Path to Clipboard"
-msgstr "&Copiar trayectoria al Portapapeles"
+msgstr "&Copiar ruta al portapapeles"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:481
 msgid "&Delete file"
@@ -41,11 +43,11 @@ msgstr "&Otros..."
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:518
 msgid "Clear &All"
-msgstr "Borrar &Todas"
+msgstr "Borrar &todas"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:780
 msgid "Clear All Transfers? - KVIrc"
-msgstr "¿Borrar Todas las Transferencias? - KVIrc"
+msgstr "¿Borrar todas las transferencias? - KVIrc"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:776
 msgid "Clear all transfers, including any in progress?"
@@ -70,7 +72,7 @@ msgstr "No pude borrar el archivo"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:813
 msgid "File Transfers"
-msgstr "Transferencias de Archivos"
+msgstr "Transferencias de archivos"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:135
 msgid "Information"
@@ -78,7 +80,7 @@ msgstr "Información"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:483
 msgid "Local &File"
-msgstr "&Archivo Local"
+msgstr "&Archivo local"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:474
 msgid "MS-DOS Prompt at Location"
@@ -91,30 +93,29 @@ msgstr "No"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:618
 msgid "OK"
-msgstr "OK"
+msgstr "Aceptar"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:461
 #: src/modules/filetransferwindow/filetransferwindow.cpp:473
 msgid "Open &Location"
-msgstr "Abrir Destino"
+msgstr "Abrir destino"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:459
 #: src/modules/filetransferwindow/filetransferwindow.cpp:471
 msgid "Open &With"
-msgstr "Abrir Con"
+msgstr "Abrir con"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:136
 msgid "Progress"
 msgstr "Progreso"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:416
-#, fuzzy
 msgid "Size: %1"
-msgstr "Tamaño: %1 bytes"
+msgstr "Tamaño: %1"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:462
 msgid "Terminal at Location"
-msgstr "Terminal en Destino"
+msgstr "Terminal en destino"
 
 #: src/modules/filetransferwindow/filetransferwindow.cpp:134
 msgid "Type"
@@ -124,7 +125,3 @@ msgstr "Tipo"
 #: src/modules/filetransferwindow/filetransferwindow.cpp:780
 msgid "Yes"
 msgstr "Sí"
-
-#, fuzzy
-#~ msgid "Manage File &Transfers"
-#~ msgstr "Transferencias de Archivos"

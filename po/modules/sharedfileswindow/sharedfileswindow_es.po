@@ -1,19 +1,19 @@
-# SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# egns <grannost@gmail.com>, 2009.
 msgid ""
 msgstr ""
 "Project-Id-Version: sharedfileswindow_es\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2009-12-30 15:41+0100\n"
-"PO-Revision-Date: 2004-04-05 16:30+0200\n"
-"Last-Translator: José Luis Sánchez <jsanchezv@teleline.es>\n"
-"Language-Team: español <LL@li.org>\n"
+"PO-Revision-Date: 2009-11-29 14:24+0100\n"
+"Last-Translator: egns <grannost@gmail.com>\n"
+"Language-Team: Spanish <kde-i18n-doc@kde.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:243
 msgid "&Add..."
@@ -41,7 +41,7 @@ msgstr "Cancelar"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:60
 msgid "Edit Shared File - KVIrc"
-msgstr "Editar Archivo Compartido - KVIrc"
+msgstr "Editar archivo compartido - KVIrc"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:87
 msgid "Expire at:"
@@ -53,7 +53,7 @@ msgstr "Expira"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:69
 msgid "File path:"
-msgstr "Ruta del Archivo:"
+msgstr "Ruta del archivo:"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:224
 msgid "Filename"
@@ -61,7 +61,7 @@ msgstr "Nombre del archivo"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:160
 msgid "Invalid expire time"
-msgstr "Momento de expiración no válido"
+msgstr "Fecha de expiración no válido"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:169
 msgid "Invalid share name"
@@ -69,7 +69,7 @@ msgstr "El nombre de archivo a compartir no es válido"
 
 #: src/modules/sharedfileswindow/libkvisharedfileswindow.cpp:123
 msgid "Manage S&hared Files"
-msgstr "Gestionar Archivos Compartidos"
+msgstr "Gestionar arc&hivos compartidos"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:225
 msgid "Mask"
@@ -99,7 +99,7 @@ msgstr "Nombre compartido:"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:702
 msgid "Shared Files"
-msgstr "Archivos Compartidos"
+msgstr "Archivos compartidos"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:161
 msgid ""
@@ -107,7 +107,7 @@ msgid ""
 "\"check mark or specify a expire date/time in the future"
 msgstr ""
 "La fecha/hora de expiración pertenece al pasado: por favor, desactiva la "
-"opción \"comprobar expiración\" o especifica una fecha/hora del futuro"
+"opción \"comprobar expiración\" o especifica una fecha/hora en el futuro"
 
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:179
 msgid "The file doesn't exist or it is not readable, please check the path"
@@ -121,3 +121,4 @@ msgstr ""
 #: src/modules/sharedfileswindow/sharedfileswindow.cpp:80
 msgid "User mask:"
 msgstr "Máscara de usuario:"
+
