@@ -352,7 +352,6 @@ void KviTrayIcon::toggleParentFrame()
 	} else if(!m_pFrm->isVisible())
 	{
 		//restore mainwindow
-		m_pFrm->activateWindow();
 		m_pFrm->show();
 	} else {
 		m_pFrm->hide();
