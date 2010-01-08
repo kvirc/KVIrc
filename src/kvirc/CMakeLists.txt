@@ -66,6 +66,7 @@ SET(kvirc_MOC_HDRS
 	module/kvi_mextoolbar.h
 	module/kvi_modulemanager.h
 	kvs/kvi_kvs_action.h
+	kvs/kvi_kvs_aliasmanager.h
 	kvs/kvi_kvs_asyncdnsoperation.h
 	kvs/kvi_kvs_asyncoperation.h
 	kvs/kvi_kvs_dnsmanager.h

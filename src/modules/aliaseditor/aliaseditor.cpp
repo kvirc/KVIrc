@@ -439,8 +439,27 @@ void KviAliasEditor::oneTimeSetup()
 	connect(m_pTreeWidget,SIGNAL(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)),this,SLOT(currentItemChanged(QTreeWidgetItem *,QTreeWidgetItem *)));
 	connect(m_pTreeWidget,SIGNAL(rightButtonPressed(QTreeWidgetItem *,QPoint)),this,SLOT(itemPressed(QTreeWidgetItem *,QPoint)));
 	connect(m_pTreeWidget,SIGNAL(itemChanged(QTreeWidgetItem *,int)),this,SLOT(itemRenamed(QTreeWidgetItem *,int)));
-
+        connect(KviKvsAliasManager::instance(),SIGNAL(aliasRefresh(const QString &)),this,SLOT(aliasRefresh(const QString &)));
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
+}
+void KviAliasEditor::aliasRefresh(const QString &szName)
+{
+    KviAliasTreeWidgetItem * item;
+    KviKvsScript * alias = KviKvsAliasManager::instance()->aliasDict()->find(szName);
+    item = createFullAliasItem(szName);
+    if (item!=m_pLastEditedItem)
+       item->setBuffer(alias->code());
+    else{
+       if(QMessageBox::warning(0,__tr2qs("OverWrite Curernt Alias"),
+                        __tr2qs("You are about to overwrite current alias!"),
+                        QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)return ;
+        else {
+                item->setBuffer(alias->code());
+                m_pEditor->setText(alias->code());
+        }
+    }
+
+
 }
 
 void KviAliasEditor::itemRenamed(QTreeWidgetItem *it,int col)
