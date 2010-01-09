@@ -119,16 +119,17 @@ public:
 	KviAliasEditor(QWidget * par);
 	~KviAliasEditor();
 public:
-	KviScriptEditor            * m_pEditor;
-	KviAliasEditorTreeWidget   * m_pTreeWidget;
-	QLabel                     * m_pNameLabel;
-	QPushButton                * m_pRenameButton;
+	KviScriptEditor              * m_pEditor;
+	KviAliasEditorTreeWidget     * m_pTreeWidget;
+	QLabel                       * m_pNameLabel;
+	QPushButton                  * m_pRenameButton;
 	KviAliasEditorTreeWidgetItem * m_pLastEditedItem;
 	KviAliasEditorTreeWidgetItem * m_pLastClickedItem;
-	//KviAliasTreeWidgetItem * m_pLastEditedItem;
-	KviTalPopupMenu                 * m_pContextPopup;
-	QSplitter                  * m_pSplitter;
-	QString						m_szDir;
+	//KviAliasTreeWidgetItem     * m_pLastEditedItem;
+	KviTalPopupMenu              * m_pContextPopup;
+	QSplitter                    * m_pSplitter;
+	QString                        m_szDir;
+	bool                           m_bSaving;
 public:
 	//bool modified(){ return m_bModified; };
 	void commit();
