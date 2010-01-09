@@ -89,7 +89,7 @@ protected:
 	bool repaint(KviKvsObjectFunctionCall *c);
 	bool insertIntoStatusBar(KviKvsObjectFunctionCall *c);
 	bool removeFromStatusBar(KviKvsObjectFunctionCall *c);
-	bool reparent(KviKvsObjectFunctionCall *c);
+        bool setParent(KviKvsObjectFunctionCall *c);
 	bool resize(KviKvsObjectFunctionCall *c);
 	bool screenResolution(KviKvsObjectFunctionCall * c);
 	bool setAttribute(KviKvsObjectFunctionCall *c);

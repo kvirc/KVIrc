@@ -176,10 +176,7 @@ const char * const brushstyles_tbl[] = {
 		%aa->$show()[br]
 		!fn: $drawRect(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>)
 		Draws a rectangle with upper left corner at (x, y) and with width w and height h.
-		!fn: $drawWinFocusRect(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>)
-		Draws a Windows focus rectangle with upper left corner at (x, y) and with width w and height h.[br]
-		This function draws nothing if the coordinate system has been rotated or sheared.
-		!fn: $drawRoundRect(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<xCor:integer>,<yCor:integer>)
+                !fn: $drawRoundRect(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<xCor:integer>,<yCor:integer>)
 		Draws a rectangle with rounded corners at (x, y), with width w and height h.[rb]
 		The xCor and yCor arguments specify how rounded the corners should be (range is 0->99).
 		!fn: $drawPie(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<angle:integer>,<alen:integer>)
@@ -439,8 +436,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_painter,"painter","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawRect)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawLine)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawRoundRect)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawWinFocusRect)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawPoint)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawPoint)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawArc)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawEllipse)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_painter,drawPie)
@@ -741,22 +737,7 @@ KVSO_CLASS_FUNCTION(painter,drawRect)
 	m_pPainter->drawRect(iX,iY,iW,iH);
 	return true;
 }
-//FIXME: REMOVE functiondrawWinFocusRect
-KVSO_CLASS_FUNCTION(painter,drawWinFocusRect)
-{
-	CHECK_INTERNAL_POINTER(m_pPainter)
-	KviKvsVariant * pXOrArray;
-	kvs_int_t iX,iY,iW,iH;
-	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("x_or_array",KVS_PT_VARIANT,0,pXOrArray)
-		KVSO_PARAMETER("y",KVS_PT_INT,KVS_PF_OPTIONAL,iY)
-		KVSO_PARAMETER("w",KVS_PT_INT,KVS_PF_OPTIONAL,iW)
-		KVSO_PARAMETER("h",KVS_PT_INT,KVS_PF_OPTIONAL,iH)
-	KVSO_PARAMETERS_END(c)
-	QString function="$drawWinFocusRect";
-	KVSO_PARAMETERS_PAINTER(pXOrArray,iY,iW,iH)
-	return true;
-}
+
 
 KVSO_CLASS_FUNCTION(painter,drawEllipse)
 {

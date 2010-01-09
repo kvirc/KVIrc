@@ -94,7 +94,7 @@ static bool objects_module_cleanup(KviModule *)
 	// Don't attempt to change the order of these calls.
 	// Derived classes must be unregistered before the base ones.
 
-            KviKvsObject_memorybuffer::unregisterSelf();
+        KviKvsObject_memorybuffer::unregisterSelf();
 	KviKvsObject_process::unregisterSelf();
 	KviKvsObject_ftp::unregisterSelf();
 	KviKvsObject_http::unregisterSelf();
@@ -134,11 +134,11 @@ static bool objects_module_cleanup(KviModule *)
 	KviKvsObject_textbrowser::unregisterSelf();
 	KviKvsObject_textedit::unregisterSelf();
 	KviKvsObject_button::unregisterSelf();
-            KviKvsObject_datetimeedit::unregisterSelf();
-            KviKvsObject_tablewidget::unregisterSelf();
-            KviKvsObject_widget::unregisterSelf();
+        KviKvsObject_datetimeedit::unregisterSelf();
+        KviKvsObject_tablewidget::unregisterSelf();
+        KviKvsObject_widget::unregisterSelf();
 	KviKvsObject_list::unregisterSelf();
-            KviKvsObject_sql::unregisterSelf();
+        KviKvsObject_sql::unregisterSelf();
 	KviKvsObject_buttongroup::unregisterSelf();
 
 	return true;

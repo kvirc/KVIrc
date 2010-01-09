@@ -396,6 +396,8 @@ const Qt::WindowType widgettypes_cod[] = {
 		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event.
 		The default implementation does nothing.
+                !fn: $setParent(<widget_object:parent>)
+                Sets the parent of the widget to parent
 		!fn: $setWindowIcon(<image_id>)
 		Sets the icon for this widget. This is meaningful only for toplevel widgets.
 		See the [doc:image_id]image identifier[/doc] documentation for the explaination
@@ -621,7 +623,7 @@ const Qt::WindowType widgettypes_cod[] = {
 
 
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,reparent)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,setParent)
 	// apparence
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,show)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,hide)
@@ -1765,8 +1767,7 @@ KVSO_CLASS_FUNCTION(widget,addWidgetToWrappedLayout)
 	lay->addWidget(((QWidget *)(ob->object())));
 	return true;
 }
-//FIXME
-KVSO_CLASS_FUNCTION(widget,reparent)
+KVSO_CLASS_FUNCTION(widget,setParent)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsObject *ob;
@@ -1778,7 +1779,7 @@ KVSO_CLASS_FUNCTION(widget,reparent)
 	if(!widget())    return true;
 	if(!ob)
 	{
-		setParent(0);
+                widget()->setParent(0);
    		return true;
 	}
 	else
@@ -1787,9 +1788,7 @@ KVSO_CLASS_FUNCTION(widget,reparent)
 		c->warning(__tr2qs_ctx("Parent must be a widget object","objects"));
 		return true;
 	}
-	setParent(((QWidget *)(ob->object())));
-
-//	widget()->reparent(((QWidget *)(ob->object())),QPoint(((QWidget *)(ob->object()))->x(),((QWidget *)(ob->object()))->y()));
+        widget()->setParent(((QWidget *)(ob->object())));
 	return true;
 }
 

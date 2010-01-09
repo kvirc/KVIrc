@@ -33,15 +33,6 @@
 
  #include <QSqlDatabase>
 
-// FIXME: fix the doc (function QT4 renamed)
-// OLD:
-// itemRenamed signal
-// itemRenamed event
-// NEW:
-// itemActivated signal
-// itemActavatedEvent
-
-
 #include <QEvent>
 #include <QDragEnterEvent>
 #include <QDropEvent>
@@ -578,9 +569,6 @@ void KviKvsObject_treewidget::slotCustomContextMenuRequested(const QPoint &pnt)
 
 KVSO_CLASS_FUNCTION(treewidget,itemChangedEvent)
 {
-	//FIXME
-	emitSignal("itemRenamed",c,c->params());//<--remove me
-
 	emitSignal("itemChanged",c,c->params());
 	return true;
 }
