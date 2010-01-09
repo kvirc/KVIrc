@@ -208,9 +208,6 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_label)
 bool KviKvsObject_label::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {
 	SET_OBJECT(QLabel)
-        int size=sizeof(*this);
-        debug ("sizeasd %d",size);
-
 	return true;
 }
 

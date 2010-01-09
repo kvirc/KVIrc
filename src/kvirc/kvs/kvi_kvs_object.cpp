@@ -626,9 +626,7 @@ KviKvsObject::KviKvsObject(KviKvsObjectClass * pClass,KviKvsObject * pParent,con
 
 KviKvsObject::~KviKvsObject()
 {
-	debug("deleting object %s",this->m_szName.toUtf8().data());
-	callFunction(this,"destructor");
-	m_bInDelayedDeath = true;
+        m_bInDelayedDeath = true;
 	while(m_pChildList->first())delete m_pChildList->first();
 	delete m_pChildList;
 

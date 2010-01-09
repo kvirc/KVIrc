@@ -517,9 +517,6 @@ KVSO_END_REGISTERCLASS(KviKvsObject_painter)
 KVSO_BEGIN_CONSTRUCTOR(KviKvsObject_painter,KviKvsObject)
 
 	m_pPainter = new QPainter();
-        int size=sizeof(*this);
-        debug ("sizeasd %d",size);
-
         bDonotdeleteinternalqpainter=false;
 	m_pPrinter = 0 ;
 	m_pDeviceObject=0;
