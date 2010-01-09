@@ -83,6 +83,7 @@ KviScriptEditorWidget::KviScriptEditorWidget(QWidget * pParent)
 {
 	m_pSyntaxHighlighter=0;
 	setTabStopWidth(48);
+	setAcceptRichText(false);
 	setWordWrapMode(QTextOption::NoWrap);
 	m_pParent = pParent;
 	m_szHelp = "Nothing";
