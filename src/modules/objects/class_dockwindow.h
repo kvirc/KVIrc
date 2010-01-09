@@ -37,11 +37,7 @@ protected:
 	virtual bool init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams);
 
 	bool addWidget(KviKvsObjectFunctionCall *c);
-	bool orientation(KviKvsObjectFunctionCall *c);
-	bool setOrientation(KviKvsObjectFunctionCall *c);
-	bool resizeEnabled(KviKvsObjectFunctionCall *c);
-	bool setResizeEnabled(KviKvsObjectFunctionCall * c);
-	bool setAllowedDockAreas(KviKvsObjectFunctionCall * c);
+        bool setAllowedDockAreas(KviKvsObjectFunctionCall * c);
 	bool dock(KviKvsObjectFunctionCall * c);
 };
 

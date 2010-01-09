@@ -73,7 +73,7 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_dockwindow)
 KVSO_BEGIN_DESTRUCTOR(KviKvsObject_dockwindow)
 KVSO_END_DESTRUCTOR(KviKvsObject_dockwindow)
 
-#define _pDockWindow ((QT_DOCK_WINDOW *)widget())
+#define _pDockWindow ((QDockWidget *)widget())
 
 bool KviKvsObject_dockwindow::init(KviKvsRunTimeContext *,KviKvsVariantList *)
 {

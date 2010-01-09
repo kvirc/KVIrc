@@ -200,6 +200,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidget,"listview","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,hideListViewHeader)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,showListViewHeader)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,firstChild)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidget,topLevelItem)
 
 
 
@@ -274,6 +275,19 @@ KVSO_CLASS_FUNCTION(treewidget,setColumnText)
 	QTreeWidgetItem *header=((QTreeWidget *)widget())->headerItem();
 	header->setText(iCol,szLabel);
 	return true;
+}
+
+KVSO_CLASS_FUNCTION(treewidget,topLevelItem)
+{
+        if (!widget()) return true;
+         kvs_int_t iIdx;
+        KVSO_PARAMETERS_BEGIN(c)
+                KVSO_PARAMETER("column",KVS_PT_INT,0,iIdx)
+        KVSO_PARAMETERS_END(c)
+        QTreeWidgetItem *pItem=((QTreeWidget *)widget())->topLevelItem(iIdx);
+        if (!pItem) c->returnValue()->setHObject((kvs_hobject_t)0);
+        else  c->returnValue()->setHObject(KviKvsObject_treewidgetitem::itemToHandle(pItem));
+        return true;
 }
 
 KVSO_CLASS_FUNCTION(treewidget,addColumn)

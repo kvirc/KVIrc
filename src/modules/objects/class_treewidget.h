@@ -70,6 +70,7 @@ protected:
 	bool setAcceptDrops(KviKvsObjectFunctionCall *c);
 	bool setHeaderLabels(KviKvsObjectFunctionCall *c);
 	bool setColumnCount(KviKvsObjectFunctionCall *c);
+        bool topLevelItem(KviKvsObjectFunctionCall *c);
 protected slots:
 	void slotClicked(QTreeWidgetItem *,int);
 	void slotCustomContextMenuRequested(const QPoint &pnt);
