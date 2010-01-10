@@ -59,6 +59,7 @@
 	#include <zlib.h>
 #endif
 
+#include <limits.h> //for INT_MAX
 
 extern KviLogViewMDIWindow * g_pLogViewWindow;
 
@@ -147,6 +148,7 @@ KviLogViewMDIWindow::KviLogViewMDIWindow(KviModuleExtensionDescriptor * d,KviFra
 	layout->addWidget(w,11,1);
 
 	m_pIrcView = new KviIrcView(m_pSplitter,g_pFrame,this);
+	m_pIrcView->setMaxBufferSize(INT_MAX);
 	m_pIrcView->setFocusPolicy(Qt::ClickFocus);
 
 	QList<int> li;
