@@ -22,21 +22,22 @@
 //
 //=============================================================================
 
-#include "kvi_themedlineedit.h"
+#include "kvi_themedcombobox.h"
 #include "kvi_options.h"
 #include "kvi_settings.h"
 #include "kvi_app.h"
 #include "kvi_window.h"
 
 #include <QPainter>
+#include <QLineEdit>
 #include <QStyleOptionFrameV2>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviThemedLineEdit::KviThemedLineEdit(QWidget * par,const char * name)
-: QLineEdit(par)
+KviThemedComboBox::KviThemedComboBox(QWidget * par,const char * name)
+: QComboBox(par)
 {
 	setObjectName(name);
 	setAutoFillBackground(false);
@@ -51,40 +52,44 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par,const char * name)
 	applyOptions();
 }
 
-KviThemedLineEdit::~KviThemedLineEdit()
+KviThemedComboBox::~KviThemedComboBox()
 {
 }
 
-void KviThemedLineEdit::applyOptions()
+void KviThemedComboBox::applyOptions()
 {
 	setFont(KVI_OPTION_FONT(KviOption_fontLabel));
 	update();
 }
 
-void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
+void KviThemedComboBox::paintEvent ( QPaintEvent * event )
 {
 	QPainter p(this);
-	QRect r = rect();
-	QPalette pal = palette();
-	QStyleOptionFrameV2 option;
+	QLineEdit *le = lineEdit();
+	if(le)
+	{
+		QRect r = rect();
+		QPalette pal = palette();
+		QStyleOptionFrameV2 option;
 
-	option.initFrom(this);
-	option.rect = contentsRect();
-	option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, this);
-	option.midLineWidth = 0;
-	option.state |= QStyle::State_Sunken;
-	if(isReadOnly())
-		option.state |= QStyle::State_ReadOnly;
-	option.features = QStyleOptionFrameV2::None;
+		option.initFrom(this);
+		option.rect = contentsRect();
+		option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, le);
+		option.midLineWidth = 0;
+		option.state |= QStyle::State_Sunken;
+		if(le->isReadOnly())
+			option.state |= QStyle::State_ReadOnly;
+		option.features = QStyleOptionFrameV2::None;
 
-	r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
-	int left, right, top, bottom;
-	getTextMargins(&left, &top, &right, &bottom);
-	r.setX(r.x() + left);
-	r.setY(r.y() + top);
-	r.setRight(r.right() - right);
-	r.setBottom(r.bottom() - bottom);
-	p.setClipRect(r);
+		r = style()->subElementRect(QStyle::SE_LineEditContents, &option, le);
+		int left, right, top, bottom;
+		le->getTextMargins(&left, &top, &right, &bottom);
+		r.setX(r.x() + left);
+		r.setY(r.y() + top);
+		r.setRight(r.right() - right);
+		r.setBottom(r.bottom() - bottom);
+		p.setClipRect(r);
+	} // else not editable
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
@@ -113,9 +118,9 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 	}
 #endif
 
-	QLineEdit::paintEvent(event);
+	QComboBox::paintEvent(event);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
-#include "kvi_themedlineedit.moc"
+#include "kvi_themedcombobox.moc"
 #endif //!COMPILE_USE_STANDALONE_MOC_SOURCES

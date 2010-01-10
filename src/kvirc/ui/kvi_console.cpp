@@ -112,14 +112,12 @@ KviConsole::KviConsole(KviFrame * lpFrm,int iFlags)
 	m_pButtonBox->setSpacing(0);
 	m_pButtonBox->setMargin(0);
 	new QLabel(__tr2qs("Address:"),m_pButtonBox);
-	m_pAddressEdit = new QComboBox(m_pButtonBox);
-	m_pAddressEdit->setObjectName("url_editor");
+	m_pAddressEdit = new KviThemedComboBox(m_pButtonBox, "url_editor");
 	m_pAddressEdit->setAutoCompletion(true);
 	m_pAddressEdit->setDuplicatesEnabled(false);
 	m_pAddressEdit->setEditable(true);
 	m_pAddressEdit->addItem(QIcon(*(g_pIconManager->getSmallIcon(KVI_SMALLICON_URL))),"");
 	recentUrlsChanged();
-	//m_pAddressEdit->setCurrentText("");
 	m_pAddressEdit->setInsertPolicy(QComboBox::NoInsert);
 	m_pAddressEdit->setMinimumHeight(24); //icon is 16px, + margins
 	m_pButtonBox->setStretchFactor(m_pAddressEdit,1);

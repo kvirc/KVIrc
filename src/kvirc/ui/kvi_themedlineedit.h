@@ -25,7 +25,6 @@
 //=============================================================================
 
 #include "kvi_settings.h"
-#include "kvi_string.h"
 
 #include <QLineEdit>
 

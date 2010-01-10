@@ -34,10 +34,10 @@
 #include "kvi_irccontext.h"
 #include "kvi_pointerlist.h"
 #include "kvi_userlistview.h"
+#include "kvi_themedcombobox.h"
 
 #include <time.h>
 
-#include <QComboBox>
 #include <QToolButton>
 
 class QToolBar;
@@ -91,7 +91,7 @@ protected:
 	// UI
 	KviUserListView         * m_pNotifyListView;
 	KviWindowToolPageButton * m_pNotifyViewButton;
-	QComboBox               * m_pAddressEdit;
+	KviThemedComboBox       * m_pAddressEdit;
 	QString                   m_szStatusString; // nick (flags) on server | not connected
 	QString                   m_szOwnSmartColor;
 	QStringList             * m_pTmpHighLightedChannels;

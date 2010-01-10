@@ -75,7 +75,7 @@ void KviThemedLabel::applyOptions()
 	update();
 }
 
-void KviThemedLabel::paintEvent ( QPaintEvent * event )
+void KviThemedLabel::paintEvent(QPaintEvent *)
 {
 	QPainter p(this);
 #ifdef COMPILE_PSEUDO_TRANSPARENCY

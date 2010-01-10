@@ -1,12 +1,12 @@
-#ifndef _KVI_THEMEDLABEL_H_
-#define _KVI_THEMEDLABEL_H_
+#ifndef _KVI_THEMEDCOMBOBOX_H_
+#define _KVI_THEMEDCOMBOBOX_H_
 //=============================================================================
 //
-//   File : kvi_themedlabel.h
-//   Creation date : Tue Aug 29 2000 21:12:12 by Szymon Stefanek
+//   File : kvi_themedcombobox.h
+//   Creation date : Sun Jan 10 2010 12:17:00 by Fabio Bas
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -26,30 +26,20 @@
 
 #include "kvi_settings.h"
 
-#include <QFrame>
+#include <QComboBox>
 
-class KVIRC_API KviThemedLabel : public QFrame
+class KVIRC_API KviThemedComboBox : public QComboBox
 {
 	Q_OBJECT
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
 public:
-	KviThemedLabel(QWidget * par,const char * name);
-	~KviThemedLabel();
-private:
-	QString m_szText;
-	bool    m_bAutoHeight;
+	KviThemedComboBox(QWidget * par,const char * name);
+	~KviThemedComboBox();
 protected:
 	virtual void paintEvent ( QPaintEvent * event );
-	virtual void mouseDoubleClickEvent(QMouseEvent *e);
 public:
 	int dummyRead() const { return 0; };
-	void setText(const char * text);
-	void setText(const QString& text);
-	QString text() { return m_szText; };
-	void setAutoHeight(bool value) { m_bAutoHeight=value; };
 	void applyOptions();
-signals:
-	void doubleClicked();
 };
 
-#endif //_KVI_THEMEDLABEL_H_
+#endif //_KVI_THEMEDCOMBOBOX_H_

@@ -52,6 +52,7 @@ SET(kvirc_MOC_HDRS
 	ui/kvi_statusbar.h
 	ui/kvi_statusbarapplet.h
 	ui/kvi_texticonwin.h
+	ui/kvi_themedcombobox.h
 	ui/kvi_themedlabel.h
 	ui/kvi_themedlineedit.h
 	ui/kvi_toolbar.h
@@ -134,6 +135,7 @@ SET(kvirc_SRCS
 	ui/kvi_statusbar.cpp
 	ui/kvi_statusbarapplet.cpp
 	ui/kvi_texticonwin.cpp
+	ui/kvi_themedcombobox.cpp
 	ui/kvi_themedlabel.cpp
 	ui/kvi_themedlineedit.cpp
 	ui/kvi_toolbar.cpp
