@@ -1,10 +1,9 @@
 # translation of editor_ru.po to russian
-# translation of editor_ru.po to русский
-# translation of editor.po to русский
 # This file is distributed under the same license as the PACKAGE package.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER.
 # Valerius <valeragir@mail.ru>, 2004, 2005.
 # Valeriy Girchenko <valeragir@mail.ru>, 2005.
+# Igor "BugSlayer" Govorov <govorov.igor at gmail.com>, 2010
 #
 msgid ""
 msgstr ""
@@ -32,28 +31,34 @@ msgid ""
 "Parameters:\n"
 "%s"
 msgstr ""
+"\n"
+"\n"
+"Событие:\n"
+"%s\n"
+"\n"
+"Параметры:\n"
+"%s"
 
 #: src/modules/popupeditor/popupeditor.cpp:96
 msgid "### Epilogue ###"
-msgstr ""
+msgstr "### Эпилог ###"
 
 #: src/modules/popupeditor/popupeditor.cpp:100
 msgid "### Prologue ###"
-msgstr ""
+msgstr "### Пролог ###"
 
 #: src/modules/raweditor/raweditor.cpp:188
 msgid "&Add Raw Event..."
-msgstr ""
+msgstr "&Добавить заготовку события..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1571
 #: src/modules/eventeditor/eventeditor.cpp:510
 #: src/modules/popupeditor/popupeditor.cpp:1315
 #: src/modules/raweditor/raweditor.cpp:486
 msgid "&Apply"
-msgstr ""
+msgstr "Применить"
 
 #: src/modules/editor/scripteditor.cpp:1006
-#, fuzzy
 msgid "&Cancel"
 msgstr "Отмена"
 
@@ -63,46 +68,46 @@ msgstr "&Настроить редактор..."
 
 #: src/modules/popupeditor/popupeditor.cpp:430
 msgid "&Copy"
-msgstr ""
+msgstr "Копировать"
 
 #: src/modules/eventeditor/eventeditor.cpp:201
 #: src/modules/raweditor/raweditor.cpp:167
 msgid "&Disable Handler"
-msgstr ""
+msgstr "Отключить обработчик"
 
 #: src/modules/eventeditor/eventeditor.cpp:197
 #: src/modules/raweditor/raweditor.cpp:163
 msgid "&Enable Handler"
-msgstr ""
+msgstr "Включить обработчик"
 
 #: src/modules/eventeditor/eventeditor.cpp:104
 #: src/modules/popupeditor/popupeditor.cpp:1019
 #: src/modules/raweditor/raweditor.cpp:106
 msgid "&Export All To..."
-msgstr ""
+msgstr "&Экспортировать всё в..."
 
 #: src/modules/eventeditor/eventeditor.cpp:209
 #: src/modules/raweditor/raweditor.cpp:175
 msgid "&Export Handler To..."
-msgstr ""
+msgstr "&Экспорт обработчика в..."
 
 #: src/modules/popupeditor/popupeditor.cpp:1092
 msgid "&Export Popup To..."
-msgstr ""
+msgstr "&Экспортировать всплывающее меню в..."
 
 #: src/modules/popupeditor/popupeditor.cpp:1021
 msgid "&Export selected To..."
-msgstr ""
+msgstr "&Экспортировать выбранное в.."
 
 #: src/modules/eventeditor/eventeditor.cpp:214
 #: src/modules/raweditor/raweditor.cpp:180
 msgid "&New Handler"
-msgstr ""
+msgstr "&Новый обработчик"
 
 #: src/modules/popupeditor/popupeditor.cpp:1080
 #: src/modules/popupeditor/popupeditor.cpp:1101
 msgid "&New Popup"
-msgstr ""
+msgstr "&Новое всплывающее меню"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1566
 #: src/modules/eventeditor/eventeditor.cpp:453
@@ -119,15 +124,15 @@ msgstr "&Открыть..."
 
 #: src/modules/popupeditor/popupeditor.cpp:435
 msgid "&Paste Below"
-msgstr ""
+msgstr "&Вставить снизу"
 
 #: src/modules/editor/scripteditor.cpp:1011
 msgid "&Replace"
-msgstr ""
+msgstr "Заменить"
 
 #: src/modules/editor/scripteditor.cpp:1001
 msgid "&Replace in all Aliases"
-msgstr ""
+msgstr "Заменить во всех алиасах"
 
 #: src/modules/editor/scripteditor.cpp:739
 msgid "&Save As..."
@@ -139,6 +144,8 @@ msgid ""
 "order to decide if this entry has to be shown.<br>An empty condition "
 "evaluates to true.</center>"
 msgstr ""
+"<center><b>Булево условие</b><br>Будет определять показывать ли всплывающее "
+"меню во время вызова.<br>Пустое условие принимается за истину.</center>"
 
 #: src/modules/popupeditor/popupeditor.cpp:260
 msgid ""
@@ -146,6 +153,9 @@ msgid ""
 "popup menus. The popup menu with the specified name will be looked up at "
 "menu setup time.</center>"
 msgstr ""
+"<center><b>Имя внешнего меню</b><br>Это позволит вставить внешнее "
+"всплывающее меню. Меню с этим именем будет искаться во время создания меню</"
+"center>"
 
 #: src/modules/popupeditor/popupeditor.cpp:251
 msgid ""
@@ -153,12 +163,17 @@ msgid ""
 "path or a relative path.<br>Portable scripts should never use absolute paths."
 "</center>"
 msgstr ""
+"<center><b>Идентификатор иконки</b><br>Может быть внутренним ID иконки, "
+"абсолютным или относительным путём.<br>Переносимые сценарии не должны "
+"содержать абсолютных путей</center>"
 
 #: src/modules/popupeditor/popupeditor.cpp:270
 msgid ""
 "<center><b>Item id</b><br>This will allow you to use delpopupitem later.</"
 "center>"
 msgstr ""
+"<center><b>ID Пункта</b><br>Это позволит вам использовать delpopupitem позже."
+"</center>"
 
 #: src/modules/popupeditor/popupeditor.cpp:233
 msgid ""
@@ -166,67 +181,71 @@ msgid ""
 "evaluated at popup call time.<br>For labels, this text can contain also "
 "limited HTML tags.</center>"
 msgstr ""
+"<center><b>Видимый текст</b><br>Может содержать идентификаторы которые "
+"определены при вызове всплывающего меню.<br>Этот текст также может содержать "
+"некоторые HTML теги.</center>"
 
 #: src/modules/actioneditor/actioneditor.cpp:586
-#, fuzzy
 msgid "Action"
-msgstr "Функции:"
+msgstr "Действие"
 
 #: src/modules/actioneditor/actioneditor.cpp:857
 msgid "Action Editor"
-msgstr ""
+msgstr "Редактор действий"
 
 #: src/modules/actioneditor/actioneditor.cpp:126
 msgid "Action code"
-msgstr ""
+msgstr "Код действия"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:521
 #: src/modules/aliaseditor/aliaseditor.cpp:1254
 msgid "Add Alias"
-msgstr ""
+msgstr "Добавить алиас"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:526
 #: src/modules/aliaseditor/aliaseditor.cpp:1279
 msgid "Add Namespace"
-msgstr ""
+msgstr "Добавить пространство имён"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:193
 #: src/modules/toolbareditor/toolbareditor.cpp:279
 msgid "Advanced..."
-msgstr ""
+msgstr "Дополнительно..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:215
 #: src/modules/aliaseditor/aliaseditor.cpp:454
 #: src/modules/aliaseditor/aliaseditor.cpp:1459
 msgid "Alias"
-msgstr ""
+msgstr "Алиас"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1559
 msgid "Alias Editor"
-msgstr ""
+msgstr "Редактор алиасов"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:716
 #: src/modules/aliaseditor/aliaseditor.cpp:790
 msgid "Alias Export"
-msgstr ""
+msgstr "Экспорт алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1360
 msgid "Alias already exists"
-msgstr ""
+msgstr "Алиас уже существует"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1127
 msgid ""
 "Alias names can contain only letters, digits, underscores and '::' namespace "
 "separators"
 msgstr ""
+"Имя алиаса может содержать только цифры, буквы, нижние подчеркивания и '::' "
+"как разделитель пространств имён"
 
 #: src/modules/actioneditor/actioneditor.cpp:869
 msgid "Apply"
-msgstr ""
+msgstr "Применить"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:264
 msgid "Automatically"
-msgstr ""
+msgstr "Автоматически"
 
 #: src/modules/editor/scripteditor.cpp:515
 msgid "Background:"
@@ -236,17 +255,17 @@ msgstr "Фон:"
 #: src/modules/aliaseditor/aliaseditor.cpp:1140
 #: src/modules/aliaseditor/aliaseditor.cpp:1151
 msgid "Bad Alias Name"
-msgstr ""
+msgstr "Некорректное имя алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1194
 #: src/modules/aliaseditor/aliaseditor.cpp:1208
 #: src/modules/aliaseditor/aliaseditor.cpp:1219
 msgid "Bad Namespace Name"
-msgstr ""
+msgstr "Некорректное имя для пространства имён"
 
 #: src/modules/actioneditor/actioneditor.cpp:162
 msgid "Big Icon:"
-msgstr ""
+msgstr "Большая иконка:"
 
 #: src/modules/editor/scripteditor.cpp:517
 msgid "Brackets:"
@@ -275,60 +294,75 @@ msgstr "Отмена"
 
 #: src/modules/actioneditor/actioneditor.cpp:134
 msgid "Category:"
-msgstr ""
+msgstr "Категория:"
 
 #: src/modules/actioneditor/actioneditor.cpp:229
 msgid ""
 "Check this option if this action should be enabled also during the login "
 "operations (so when the logical IRC connection hasn't been estabilished yet)"
 msgstr ""
+"Включите эту опцию если действие должно быть доступно уже во время входа "
+"(когда IRC соединение ещё не установлено)."
 
 #: src/modules/actioneditor/actioneditor.cpp:208
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window belongs to an irc context"
 msgstr ""
+"Включите эту опцию если действие должно быть доступно только в случае когда "
+"активное окно принадлежит IRC контексту."
 
 #: src/modules/actioneditor/actioneditor.cpp:219
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window has an active IRC connection"
 msgstr ""
+"Включите эту опцию если действие должно быть доступно только в случае когда "
+"активное окно имеет активное IRC соединение."
 
 #: src/modules/actioneditor/actioneditor.cpp:252
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a channel"
 msgstr ""
+"Включите эту опцию если действие должно быть доступно только в активном окне "
+"канала"
 
 #: src/modules/actioneditor/actioneditor.cpp:241
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a console"
 msgstr ""
+"Включите эту опцию если действие должно быть доступно только в активном окне "
+"терминала"
 
 #: src/modules/actioneditor/actioneditor.cpp:274
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a dcc chat"
 msgstr ""
+"Включите эту опцию если действие должно быть доступно только в активном окне "
+"DCC чата"
 
 #: src/modules/actioneditor/actioneditor.cpp:263
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is a query"
 msgstr ""
+"Включите эту опцию если действие должно быть доступно только в активном окне "
+"привата"
 
 #: src/modules/actioneditor/actioneditor.cpp:235
 msgid ""
 "Check this option if this action should be enabled only when the active "
 "window is of a specified type"
 msgstr ""
+"Включите эту опцию если действие должно быть доступно только в активных "
+"окнах заданных типов."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:722
-#, fuzzy
 msgid "Choose a Directory - KVIrc"
-msgstr "Выберите имя файла - KVIrc"
+msgstr "Выберите каталог - KVIrc"
 
 #: src/modules/actioneditor/actioneditor.cpp:692
 #: src/modules/aliaseditor/aliaseditor.cpp:809
@@ -345,181 +379,179 @@ msgstr "Выберите имя файла - KVIrc"
 
 #: src/modules/actioneditor/actioneditor.cpp:139
 msgid "Choose the category that best fits for this action"
-msgstr ""
+msgstr "Выберите категорию, наиболее пригодную для этого действия"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:324
 msgid "Close"
-msgstr ""
+msgstr "Закрыть"
 
 #: src/modules/actioneditor/actioneditor.cpp:128
 msgid "Code"
-msgstr ""
+msgstr "Код"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:571
 msgid "Collapse All Namespaces"
-msgstr ""
+msgstr "Свернуть все пространства имён"
 
 #: src/modules/editor/scripteditor.cpp:513
 msgid "Colors"
-msgstr ""
+msgstr "Цвета"
 
 #: src/modules/editor/scripteditor.cpp:518
 msgid "Comments:"
 msgstr "Комментарии:"
 
 #: src/modules/popupeditor/popupeditor.cpp:236
-#, fuzzy
 msgid "Condition:"
-msgstr "Функции:"
+msgstr "Условие:"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:376
 msgid "Confirm ToolBar Deletion"
-msgstr ""
+msgstr "Подтвердите удаление панели инструментов"
 
 #: src/modules/popupeditor/popupeditor.cpp:425
 msgid "Cu&t"
-msgstr ""
+msgstr "Вырезать"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:292
 msgid "Customize Toolbars"
-msgstr ""
+msgstr "Настроить панели инструментов"
 
 #: src/modules/actioneditor/actioneditor.cpp:630
 msgid "Delete Actions"
-msgstr ""
+msgstr "Удалить действия"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:305
 msgid "Delete ToolBar"
-msgstr ""
+msgstr "Удалить панель инструментов"
 
 #: src/modules/actioneditor/actioneditor.cpp:141
 msgid "Description:"
-msgstr ""
+msgstr "Описание:"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:377
 msgid "Do you really want to delete toolbar \"%1\" ?"
-msgstr ""
+msgstr "Вы действительно хотите удалить панель инструментов \"%1\" ?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1026
 msgid "Do you really want to remove the alias \"%Q\" ?"
-msgstr ""
+msgstr "Вы действительно хотите удалить алиас \"%Q\"?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1028
 msgid "Do you really want to remove the namespace \"%Q\" ?"
-msgstr ""
+msgstr "Вы действительно хотите удалить пространство имён \"%Q\"?"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:401
 msgid "Do you want the associated actions to be exported with the toolbar ?"
-msgstr ""
+msgstr "Вы хотите экспортировать действия, связанные с панелью инструментов ?"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:65
 msgid "Drop here the icons from the toolbars to remove them"
-msgstr ""
+msgstr "Перетащите сюда иконки из панели инструментов чтобы удалить их"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:260
 msgid "Duplicate ToolBar Id"
-msgstr ""
+msgstr "Дубликат Id панели инструментов"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:309
 msgid "Edit ToolBar"
-msgstr ""
+msgstr "Редактировать панель инструментов"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:266
 msgid "Edit the alias or namespace name"
-msgstr ""
+msgstr "Редактировать имя алиаса или пространства имён"
 
 #: src/modules/eventeditor/eventeditor.cpp:115
 msgid "Edit the event handler name."
-msgstr ""
+msgstr "Редактировать имя обработчика события."
 
 #: src/modules/raweditor/raweditor.cpp:111
 msgid "Edit the raw event handler name."
-msgstr ""
+msgstr "Редактировать имя обработчика низкоуровневого события."
 
 #: src/modules/actioneditor/actioneditor.cpp:233
 msgid "Enable Only in Specified Windows"
-msgstr ""
+msgstr "Доступно только в заданных окнах"
 
 #: src/modules/actioneditor/actioneditor.cpp:228
 msgid "Enable at Login"
-msgstr ""
+msgstr "Доступно при входе"
 
 #: src/modules/actioneditor/actioneditor.cpp:251
 msgid "Enable in Channel Windows"
-msgstr ""
+msgstr "Доступно в окнах каналов"
 
 #: src/modules/actioneditor/actioneditor.cpp:240
 msgid "Enable in Console Windows"
-msgstr ""
+msgstr "Доступно в окнах каналов терминалов"
 
 #: src/modules/actioneditor/actioneditor.cpp:273
 msgid "Enable in DCC Chat Windows"
-msgstr ""
+msgstr "Доступно в окнах DCC чатов"
 
 #: src/modules/actioneditor/actioneditor.cpp:262
 msgid "Enable in Query Windows"
-msgstr ""
+msgstr "Доступно в окнах приватов"
 
 #: src/modules/raweditor/raweditor.cpp:229
 msgid "Enter the numeric code of the message (0-999)"
-msgstr ""
+msgstr "Введите числовой код сообщения (0-999)"
 
 #: src/modules/popupeditor/popupeditor.cpp:97
 msgid "Epilogue"
-msgstr ""
+msgstr "Эпилог"
 
 #: src/modules/eventeditor/eventeditor.cpp:167
 msgid "Event"
-msgstr ""
+msgstr "Событие"
 
 #: src/modules/eventeditor/eventeditor.cpp:553
 msgid "Event Editor"
-msgstr ""
+msgstr "Редактор событий"
 
 #: src/modules/actioneditor/actioneditor.cpp:633
 msgid "Export Actions..."
-msgstr ""
+msgstr "Экспортировать действия..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:557
 msgid "Export All..."
-msgstr ""
+msgstr "Экспортировать всё..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:550
 msgid "Export Selected in singles files..."
-msgstr ""
+msgstr "Экспортировать выделенное в отдельные файлы..."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:544
 msgid "Export Selected..."
-msgstr ""
+msgstr "Экспортировать выделенное..."
 
 #: src/modules/toolbareditor/toolbareditor.cpp:317
 msgid "Export ToolBar"
-msgstr ""
+msgstr "Экспортировать панель инструментов"
 
 #: src/modules/popupeditor/popupeditor.cpp:86
 msgid "External Menu"
-msgstr ""
+msgstr "Внешнее меню"
 
 #: src/modules/popupeditor/popupeditor.cpp:254
 msgid "External menu:"
-msgstr ""
+msgstr "Внешнее меню:"
 
 #: src/modules/editor/scripteditor.cpp:750
-#, fuzzy
 msgid "Find"
-msgstr "Поиск:"
+msgstr "Найти"
 
 #: src/modules/editor/scripteditor.cpp:262
 msgid "Find & Replace"
-msgstr ""
+msgstr "Найти и заменить"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:609
 msgid "Find In Aliases"
-msgstr ""
+msgstr "Найти в алиасах"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:565
 msgid "Find In Aliases..."
-msgstr ""
+msgstr "Найти в алиасах..."
 
 #: src/modules/editor/scripteditor.cpp:523
 msgid "Find:"
@@ -527,7 +559,7 @@ msgstr "Поиск:"
 
 #: src/modules/actioneditor/actioneditor.cpp:283
 msgid "Flags"
-msgstr ""
+msgstr "Флаги"
 
 #: src/modules/editor/scripteditor.cpp:511
 msgid "Font:"
@@ -535,11 +567,11 @@ msgstr "Шрифт:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1152
 msgid "Found an empty namespace in alias name"
-msgstr ""
+msgstr "Найдено пустое пространство имён в имени алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1220
 msgid "Found an empty namespace in namespace name"
-msgstr ""
+msgstr "Найдена пустая строка в имени пространства имён"
 
 #: src/modules/editor/scripteditor.cpp:519
 msgid "Functions:"
@@ -547,41 +579,40 @@ msgstr "Функции:"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:282
 msgid "Hide Advanced"
-msgstr ""
+msgstr "Скрыть дополнительные настройки"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:152
 msgid "Icon"
-msgstr ""
+msgstr "Иконка"
 
 #: src/modules/popupeditor/popupeditor.cpp:245
-#, fuzzy
 msgid "Icon:"
-msgstr "Шрифт:"
+msgstr "Иконка:"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:168
 msgid "Id"
-msgstr ""
+msgstr "Идентификатор"
 
 #: src/modules/actioneditor/actioneditor.cpp:107
 msgid "Internal unique name for the action"
-msgstr ""
+msgstr "Внутреннее уникальное имя действия"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:247
 msgid "Invalid ToolBar Label"
-msgstr ""
+msgstr "Неверная метка панели инструментов"
 
 #: src/modules/popupeditor/popupeditor.cpp:80
 #: src/modules/popupeditor/popupeditor.cpp:210
 msgid "Item"
-msgstr ""
+msgstr "Пункт"
 
 #: src/modules/popupeditor/popupeditor.cpp:263
 msgid "Item Id:"
-msgstr ""
+msgstr "Идентификатор пункта"
 
 #: src/modules/actioneditor/actioneditor.cpp:178
 msgid "Key Sequence:"
-msgstr ""
+msgstr "Комбинация клавиш:"
 
 #: src/modules/editor/scripteditor.cpp:520
 msgid "Keywords:"
@@ -590,11 +621,11 @@ msgstr "Ключевые слова:"
 #: src/modules/popupeditor/popupeditor.cpp:93
 #: src/modules/toolbareditor/toolbareditor.cpp:144
 msgid "Label"
-msgstr ""
+msgstr "Метка"
 
 #: src/modules/actioneditor/actioneditor.cpp:109
 msgid "Label:"
-msgstr ""
+msgstr "Метка:"
 
 #: src/modules/editor/scripteditor.cpp:934
 msgid "Load Script File - KVIrc"
@@ -602,145 +633,147 @@ msgstr "Загрузить файл скрипта - KVIrc"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:264
 msgid "Manually"
-msgstr ""
+msgstr "Вручную"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1113
 msgid "Missing Alias Name"
-msgstr ""
+msgstr "Отсутствует имя алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1181
 msgid "Missing Namespace Name"
-msgstr ""
+msgstr "Отсутствует имя пространства имён"
 
 #: src/modules/actioneditor/actioneditor.cpp:764
 #: src/modules/actioneditor/actioneditor.cpp:765
 msgid "My Action"
-msgstr ""
+msgstr "Моё действие"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:494
 #: src/modules/toolbareditor/toolbareditor.cpp:495
 msgid "My ToolBar"
-msgstr ""
+msgstr "Моя панель инструментов"
 
 #: src/modules/actioneditor/actioneditor.cpp:103
 msgid "Name:"
-msgstr ""
+msgstr "Имя:"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:452
 #: src/modules/aliaseditor/aliaseditor.cpp:1447
 msgid "Namespace"
-msgstr ""
+msgstr "Пространство имён"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1372
 msgid "Namespace already exists"
-msgstr ""
+msgstr "Пространство имён уже существует"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1195
 msgid ""
 "Namespace names can contain only letters, digits, underscores and '::' "
 "namespace separators"
 msgstr ""
+"Имя пространства имён может содержать только цифры, буквы, нижние "
+"подчеркивания и '::' как разделитель пространств имён"
 
 #: src/modules/actioneditor/actioneditor.cpp:217
 msgid "Needs IRC Connection"
-msgstr ""
+msgstr "Требуется IRC соединение"
 
 #: src/modules/actioneditor/actioneditor.cpp:206
 msgid "Needs IRC Context"
-msgstr ""
+msgstr "Требуется IRC контекст"
 
 #: src/modules/actioneditor/actioneditor.cpp:627
 msgid "New Action"
-msgstr ""
+msgstr "Новое действие"
 
 #: src/modules/popupeditor/popupeditor.cpp:416
 msgid "New External Menu Above"
-msgstr ""
+msgstr "Новое внешнее меню выше"
 
 #: src/modules/popupeditor/popupeditor.cpp:414
 msgid "New External Menu Below"
-msgstr ""
+msgstr "Новое внешнее меню ниже"
 
 #: src/modules/popupeditor/popupeditor.cpp:418
 msgid "New External Menu Inside"
-msgstr ""
+msgstr "Новое внешнее меню внутри"
 
 #: src/modules/popupeditor/popupeditor.cpp:400
 msgid "New Item Above"
-msgstr ""
+msgstr "Новый пункт выше"
 
 #: src/modules/popupeditor/popupeditor.cpp:398
 msgid "New Item Below"
-msgstr ""
+msgstr "Новый пункт ниже"
 
 #: src/modules/popupeditor/popupeditor.cpp:402
 msgid "New Item Inside"
-msgstr ""
+msgstr "Новый пункт внутри"
 
 #: src/modules/popupeditor/popupeditor.cpp:392
 msgid "New Label Above"
-msgstr ""
+msgstr "Новая метка выше"
 
 #: src/modules/popupeditor/popupeditor.cpp:390
 msgid "New Label Below"
-msgstr ""
+msgstr "Новая метка ниже"
 
 #: src/modules/popupeditor/popupeditor.cpp:394
 msgid "New Label Inside"
-msgstr ""
+msgstr "Новая метка внутри"
 
 #: src/modules/popupeditor/popupeditor.cpp:408
 msgid "New Menu Above"
-msgstr ""
+msgstr "Новое меню выше"
 
 #: src/modules/popupeditor/popupeditor.cpp:406
 msgid "New Menu Below"
-msgstr ""
+msgstr "Новое меню ниже"
 
 #: src/modules/popupeditor/popupeditor.cpp:462
 msgid "New Menu Epilogue"
-msgstr ""
+msgstr "Новое эпилог меню"
 
 #: src/modules/popupeditor/popupeditor.cpp:410
 msgid "New Menu Inside"
-msgstr ""
+msgstr "Новое меню внутри"
 
 #: src/modules/popupeditor/popupeditor.cpp:454
 msgid "New Menu Prologue"
-msgstr ""
+msgstr "Новое пролог меню"
 
 #: src/modules/raweditor/raweditor.cpp:229
 msgid "New Raw Event"
-msgstr ""
+msgstr "Новое низкоуровневое событие"
 
 #: src/modules/popupeditor/popupeditor.cpp:384
 msgid "New Separator Above"
-msgstr ""
+msgstr "Новый разделитель выше"
 
 #: src/modules/popupeditor/popupeditor.cpp:382
 msgid "New Separator Below"
-msgstr ""
+msgstr "Новый разделитель ниже"
 
 #: src/modules/popupeditor/popupeditor.cpp:386
 msgid "New Separator Inside"
-msgstr ""
+msgstr "Новый разделитель внутри"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:301
 msgid "New ToolBar"
-msgstr ""
+msgstr "Новая панель инструментов"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:744
 #: src/modules/aliaseditor/aliaseditor.cpp:1034
 #: src/modules/toolbareditor/toolbareditor.cpp:378
 #: src/modules/toolbareditor/toolbareditor.cpp:403
 msgid "No"
-msgstr ""
+msgstr "Нет"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:261
 #: src/modules/aliaseditor/aliaseditor.cpp:1437
 #: src/modules/eventeditor/eventeditor.cpp:368
 msgid "No item selected"
-msgstr ""
+msgstr "Ничего не выбрано"
 
 #: src/modules/editor/scripteditor.cpp:516
 msgid "Normal text:"
@@ -752,9 +785,8 @@ msgstr "Обычный текст:"
 #: src/modules/toolbareditor/toolbareditor.cpp:183
 #: src/modules/toolbareditor/toolbareditor.cpp:247
 #: src/modules/toolbareditor/toolbareditor.cpp:457
-#, fuzzy
 msgid "OK"
-msgstr "&Ok"
+msgstr "OK"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:716
 #: src/modules/aliaseditor/aliaseditor.cpp:790
@@ -764,7 +796,7 @@ msgstr "&Ok"
 #: src/modules/popupeditor/popupeditor.cpp:1174
 #: src/modules/raweditor/raweditor.cpp:466
 msgid "Ok"
-msgstr ""
+msgstr "Ok"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1115
 #: src/modules/aliaseditor/aliaseditor.cpp:1128
@@ -777,13 +809,13 @@ msgstr ""
 #: src/modules/aliaseditor/aliaseditor.cpp:1362
 #: src/modules/aliaseditor/aliaseditor.cpp:1374
 msgid "Ok, Let me try again..."
-msgstr ""
+msgstr "Хорошо, давайте попробую еще раз..."
 
 #: src/modules/actioneditor/actioneditor.cpp:246
 #: src/modules/actioneditor/actioneditor.cpp:257
 #: src/modules/actioneditor/actioneditor.cpp:268
 msgid "Only If There Are Selected Users"
-msgstr ""
+msgstr "Только если есть выбранные пользователи"
 
 #: src/modules/editor/scripteditor.cpp:947
 msgid "Open Failed - KVIrc"
@@ -797,64 +829,71 @@ msgid ""
 "\".<br>Examples of such sequences are \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,"
 "Ctrl+C\" ..."
 msgstr ""
+"Необязательная комбинация клавиш которая активирует это действие.<br> "
+"Комбинация должна быть определена как строка содержащая до четырёх клавиш, "
+"объединённых с модификаторами \"Ctrl\",\"Shift\",\"Alt\" и \"Meta\". Если вы "
+"задаёте несколько комбинаций, их нужно разделить запятыми.<br>Примеры таких "
+"комбинаций: \"Ctrl+X\", \"Ctrl+Alt+Z\", \"Ctrl+X,Ctrl+C\" ..."
 
 #: src/modules/popupeditor/popupeditor.cpp:440
 msgid "Paste Above"
-msgstr ""
+msgstr "Вставить выше"
 
 #: src/modules/popupeditor/popupeditor.cpp:444
 msgid "Paste Inside"
-msgstr ""
+msgstr "Вставить внутрь"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:223
 msgid "Please choose the icon for the ToolBar"
-msgstr ""
+msgstr "Пожалуйста выберите иконку для панели инструментов"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1254
 msgid "Please enter the name for the new alias"
-msgstr ""
+msgstr "Пожалуйста введите имя нового алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1279
 msgid "Please enter the name for the new namespace"
-msgstr ""
+msgstr "Пожалуйста введите имя нового пространства имен"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1346
 msgid "Please enter the new name for the alias"
-msgstr ""
+msgstr "Пожалуйста введите новое имя алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1348
 msgid "Please enter the new name for the namespace"
-msgstr ""
+msgstr "Пожалуйста введите новое имя пространства имён"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:610
 msgid ""
 "Please enter the text to be searched for. The matching aliases will be "
 "highlighted."
 msgstr ""
+"Пожалуйста, введите текст, который нужно найти. Алиасы, содержащие этот "
+"текст, будут подсвечены."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1030
 msgid "Please note that all the children items will be deleted too."
-msgstr ""
+msgstr "Пожалуйста учтите, что все дочерние элементы будут тоже удалены."
 
 #: src/modules/toolbareditor/toolbareditor.cpp:493
 msgid "Please specify the properties for the new toolbar"
-msgstr ""
+msgstr "Пожалуйста определите свойства для новой панели инструментов"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:467
 msgid "Please specify the properties for the toolbar \"%1\""
-msgstr ""
+msgstr "Пожалуйста определите свойства для панели инструментов \"%1\""
 
 #: src/modules/popupeditor/popupeditor.cpp:1015
 msgid "Popup"
-msgstr ""
+msgstr "Всплывающее меню"
 
 #: src/modules/popupeditor/popupeditor.cpp:1358
 msgid "Popup Editor"
-msgstr ""
+msgstr "Редактор всплывающих меню"
 
 #: src/modules/popupeditor/popupeditor.cpp:196
 msgid "Popup name"
-msgstr ""
+msgstr "Имя всплывающего меню"
 
 #: src/modules/editor/scripteditor.cpp:505
 msgid "Preferences"
@@ -862,11 +901,11 @@ msgstr "Предпочтения"
 
 #: src/modules/popupeditor/popupeditor.cpp:101
 msgid "Prologue"
-msgstr ""
+msgstr "Пролог"
 
 #: src/modules/actioneditor/actioneditor.cpp:197
 msgid "Properties"
-msgstr ""
+msgstr "Свойства"
 
 #: src/modules/editor/scripteditor.cpp:522
 msgid "Punctuation:"
@@ -874,115 +913,124 @@ msgstr "Знаки препинания:"
 
 #: src/modules/actioneditor/actioneditor.cpp:766
 msgid "Put here a short description of your action"
-msgstr ""
+msgstr "Укажите здесь краткое описание вашего действия"
 
 #: src/modules/raweditor/raweditor.cpp:529
 msgid "Raw Editor"
-msgstr ""
+msgstr "Редактор заготовок"
 
 #: src/modules/raweditor/raweditor.cpp:94
 msgid "Raw Event"
-msgstr ""
+msgstr "Низкоуровневое событие"
 
 #: src/modules/eventeditor/eventeditor.cpp:205
 #: src/modules/raweditor/raweditor.cpp:171
 msgid "Re&move Handler"
-msgstr ""
+msgstr "Удалить обработчик"
 
 #: src/modules/popupeditor/popupeditor.cpp:1086
 msgid "Re&move Popup"
-msgstr ""
+msgstr "Удалить всплывающее меню"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:536
 msgid "Remove Selected"
-msgstr ""
+msgstr "Удалить выбранное"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1034
 msgid "Remove item"
-msgstr ""
+msgstr "Удалить пункт"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:262
 msgid "Rename"
-msgstr ""
+msgstr "Переименовать"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1346
 msgid "Rename Alias"
-msgstr ""
+msgstr "Переименовать алиас"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1348
 msgid "Rename Namespace"
-msgstr ""
+msgstr "Переименовать пространство имён"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:744
 msgid "Replace file"
-msgstr ""
+msgstr "Заменить файл"
 
 #: src/modules/editor/scripteditor.cpp:989
 msgid "Replace with"
-msgstr ""
+msgstr "Заменить на"
 
 #: src/modules/editor/scripteditor.cpp:917
 #, c-format
 msgid "Row: %d Col: %d"
-msgstr "Строк: %d Колонок:%d"
+msgstr "Строк: %d Столбцов:%d"
 
 #: src/modules/editor/scripteditor.cpp:866
 msgid "Save Failed - KVIrc"
-msgstr "Ошибка записи - KVIrc"
+msgstr "Ошибка при сохранении - KVIrc"
 
 #: src/modules/popupeditor/popupeditor.cpp:90
 msgid "Separator"
-msgstr ""
+msgstr "Разделитель"
 
 #: src/modules/actioneditor/actioneditor.cpp:148
 msgid "Small Icon:"
-msgstr ""
+msgstr "Маленькая иконка"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1141
 msgid ""
 "Stray ':' character in alias name: did you mean ...<namespace>::<name> ?"
 msgstr ""
+"Одиноуое ':' в имени алиаса. Может быть вы имели ввиду <namespace>::<name> ?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1209
 msgid ""
 "Stray ':' character in namespace name: did you mean ...<namespace>::<name> ?"
 msgstr ""
+"Одиноуое ':' в имени пространства имён. Может быть вы имели ввиду "
+"<namespace>::<name> ?"
 
 #: src/modules/popupeditor/popupeditor.cpp:83
 msgid "Submenu"
-msgstr ""
+msgstr "Подменю"
 
 #: src/modules/popupeditor/popupeditor.cpp:200
 msgid "Test"
-msgstr ""
+msgstr "Тест"
 
 #: src/modules/popupeditor/popupeditor.cpp:228
 msgid "Text:"
-msgstr ""
+msgstr "Текст:"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:247
 msgid "The ToolBar Label can't be empty!"
-msgstr ""
+msgstr "Метка панели инструментов не может быть пустой!"
 
 #: src/modules/actioneditor/actioneditor.cpp:172
 msgid ""
 "The big icon associated to this action.<br>It will appear at least in the "
 "toolbar buttons when this action is inserted.<br>It has to be 32x32 pixels."
 msgstr ""
+"Большая иконка, ассоциированная с этим действием.<br>Она будет показываться "
+"по крайней мере на кнопках панели инструментов при вставке этого действия."
+"<br>Должна быть 32х32 пикселя."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:790
 msgid "The exported file would be empty: cowardly refusing to write it"
-msgstr ""
+msgstr "Экспортируемый файл будет пустым: отменяю запись в него"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:743
 msgid "The file \"%Q\" exists. Do you want to replace it ?"
-msgstr ""
+msgstr "Файл \"%Q\" существует. Хотите переписать его?"
 
 #: src/modules/actioneditor/actioneditor.cpp:156
 msgid ""
 "The small icon associated to this action.<br>It will appear at least in the "
 "popup menus when this action is inserted.<br>It has to be 16x16 pixels."
 msgstr ""
+"Маленькая иконка, ассоциированная с этим действием.<br>Она будет "
+"показываться по крайней мере во всплывающих меню при вставке этого действия."
+"<br>Должна быть 16х16 пикселей."
 
 #: src/modules/toolbareditor/toolbareditor.cpp:261
 msgid ""
@@ -990,15 +1038,18 @@ msgid ""
 "it automatically (so it doesn't collide with any other toolbar) or you "
 "prefer to do it manually ?"
 msgstr ""
+"Заданный Id панели инструментов уже существует.<br> Вы хотите чтобы KVIrc "
+"назначил его автоматически (при этом будут исключены противоречия с другими "
+"панелями) или сделаете это вручную?"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:716
 msgid "There is no selection!"
-msgstr ""
+msgstr "Ничего не выбрано!"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1361
 #: src/modules/aliaseditor/aliaseditor.cpp:1373
 msgid "This name is already in use. Please choose another one."
-msgstr ""
+msgstr "Это имя уже используется. Пожалуйста выберите другое."
 
 #: src/modules/actioneditor/actioneditor.cpp:247
 #: src/modules/actioneditor/actioneditor.cpp:258
@@ -1007,51 +1058,53 @@ msgid ""
 "This will enable the action only if there are selected users in the active "
 "window"
 msgstr ""
+"Это сделает доступным действие только если есть выбранные пользователи в "
+"активном окне"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:400
 msgid "ToolBar Export"
-msgstr ""
+msgstr "Экспорт панели инструментов"
 
 #: src/modules/toolbareditor/toolbareditor.cpp:135
 msgid "ToolBar Properties"
-msgstr ""
+msgstr "Свойства панели инструментов"
 
 #: src/modules/popupeditor/popupeditor.cpp:210
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 msgid "Unable to write to the actions file."
-msgstr ""
+msgstr "Невозможно записать файл с действиями."
 
 #: src/modules/aliaseditor/aliaseditor.cpp:820
 #: src/modules/popupeditor/popupeditor.cpp:1174
 msgid "Unable to write to the alias file."
-msgstr ""
+msgstr "Невозможно записать файл с алиасами."
 
 #: src/modules/eventeditor/eventeditor.cpp:453
 msgid "Unable to write to the event file."
-msgstr ""
+msgstr "Невозможно записать файл с событием."
 
 #: src/modules/eventeditor/eventeditor.cpp:491
 msgid "Unable to write to the events file."
-msgstr ""
+msgstr "Невозможно записать файл с событиями."
 
 #: src/modules/popupeditor/popupeditor.cpp:1127
 msgid "Unable to write to the popup file."
-msgstr ""
+msgstr "Невозможно записать файл с всплывающими меню."
 
 #: src/modules/raweditor/raweditor.cpp:426
 msgid "Unable to write to the raw event file."
-msgstr ""
+msgstr "Невозможно записать файл с низкоуровневым событием."
 
 #: src/modules/raweditor/raweditor.cpp:466
 msgid "Unable to write to the raw events file."
-msgstr ""
+msgstr "Невозможно записать файл с низкоуровневыми событиями."
 
 #: src/modules/toolbareditor/toolbareditor.cpp:457
 msgid "Unable to write to the toolbar file."
-msgstr ""
+msgstr "Невозможно записать файл с панелью инструментов."
 
 #: src/modules/editor/scripteditor.cpp:521
 msgid "Variables:"
@@ -1062,16 +1115,20 @@ msgid ""
 "Visible name for this action.<br>This string will be displayed to the user "
 "so it is a good idea to use $tr() here"
 msgstr ""
+"Видимое имя для этого действия.<br>Эта строка будет показана пользователю, "
+"хорошей идеей будет использование здесь $tr()"
 
 #: src/modules/actioneditor/actioneditor.cpp:146
 msgid ""
 "Visible short description for this action.<br>This string will be displayed "
 "to the user so it is a good idea to use $tr() here"
 msgstr ""
+"Видимое краткое описание этого действия.<br>Эта строка будет показана "
+"пользователю, хорошей идеей будет использование здесь $tr()"
 
 #: src/modules/editor/scripteditor.cpp:980
 msgid "Word to Find"
-msgstr ""
+msgstr "Слово для поиска"
 
 #: src/modules/actioneditor/actioneditor.cpp:717
 #: src/modules/aliaseditor/aliaseditor.cpp:820
@@ -1082,41 +1139,40 @@ msgstr ""
 #: src/modules/raweditor/raweditor.cpp:426
 #: src/modules/raweditor/raweditor.cpp:466
 #: src/modules/toolbareditor/toolbareditor.cpp:457
-#, fuzzy
 msgid "Write Failed - KVIrc"
-msgstr "Ошибка открытия - KVIrc"
+msgstr "Ошибка записи - KVIrc"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:744
 #: src/modules/aliaseditor/aliaseditor.cpp:1034
 #: src/modules/toolbareditor/toolbareditor.cpp:379
 #: src/modules/toolbareditor/toolbareditor.cpp:402
 msgid "Yes"
-msgstr ""
+msgstr "Да"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:744
 #: src/modules/aliaseditor/aliaseditor.cpp:1034
 msgid "Yes to All"
-msgstr ""
+msgstr "Да для всех"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1114
 msgid "You must specify a valid name for the alias"
-msgstr ""
+msgstr "Вы должны указать корректное имя алиаса"
 
 #: src/modules/aliaseditor/aliaseditor.cpp:1182
 msgid "You must specify a valid name for the namespace"
-msgstr ""
+msgstr "Вы должны указать корректное имя пространства имён"
 
 #: src/modules/eventeditor/eventeditor.cpp:265
 #: src/modules/raweditor/raweditor.cpp:261
 msgid "default"
-msgstr ""
+msgstr "по умолчанию"
 
 #: src/modules/eventeditor/eventeditor.cpp:389
 msgid "none"
-msgstr ""
+msgstr "нет"
 
 #: src/modules/eventeditor/eventeditor.cpp:227
 #: src/modules/popupeditor/popupeditor.cpp:1271
 #: src/modules/raweditor/raweditor.cpp:199
 msgid "unnamed"
-msgstr ""
+msgstr "без имени"
