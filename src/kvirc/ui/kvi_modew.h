@@ -25,15 +25,11 @@
 //
 //============================================================================
 
-#include "kvi_themedlabel.h"
-#include "kvi_tal_hbox.h"
-
-#include <QFrame>
-#include <QLineEdit>
+#include "kvi_themedlineedit.h"
 
 class KviChannel;
 
-class KVIRC_API KviModeWidget : public QFrame
+class KVIRC_API KviModeWidget : public KviThemedLineEdit
 {
 	Q_OBJECT
 
@@ -42,18 +38,14 @@ public:
 	~KviModeWidget();
 	void reset();
 	void refreshModes();
-	void applyOptions();
 private:
 	KviChannel            *  m_pChannel;
-	KviThemedLabel        *  m_pLabel;
-	QLineEdit             *  m_pLineEdit;
 protected:
-	void resizeEvent(QResizeEvent *e);
-	bool eventFilter( QObject *obj, QEvent *ev );
+	void mouseDoubleClickEvent(QMouseEvent * e);
+	void keyReleaseEvent (QKeyEvent * e);
 public slots:
-	void labelDoubleClick();
 	void editorReturnPressed();
-	void editorTextChanged( const QString & );
+	void editorTextEdited( const QString & );
 };
 
 #endif //_KVI_MODEW_H_

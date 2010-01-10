@@ -22,28 +22,21 @@
 //
 //============================================================================
 
-
-#include "kvi_themedlabel.h"
 #include "kvi_channel.h"
 #include "kvi_options.h"
 #include "kvi_ircconnectionserverinfo.h"
 #include "kvi_ircconnectionuserinfo.h"
 #include "kvi_tal_hbox.h"
 
-#include <QFrame>
-#include <QLineEdit>
 #include <QEvent>
 #include <QResizeEvent>
 #include <QByteArray>
 
 KviModeWidget::KviModeWidget(QWidget * par,KviChannel* chan,const char * name)
-:QFrame(par)
+:KviThemedLineEdit(par, name)
 {
-	setObjectName(name);
 	m_pChannel=chan;
-	m_pLabel=0;
-	m_pLineEdit=0;
-	setAutoFillBackground(false);
+	connect(this,SIGNAL(textEdited ( const QString & ) ),this,SLOT(editorTextEdited( const QString & )));
 	reset();
 }
 
@@ -53,19 +46,12 @@ KviModeWidget::~KviModeWidget()
 
 void KviModeWidget::reset()
 {
-	if(m_pLineEdit)
-	{
-		delete m_pLineEdit;
-		m_pLineEdit=0;
-	}
-	if(!m_pLabel)
-		m_pLabel=new KviThemedLabel(this,0);
+	setText(m_pChannel->channelMode());
+	setReadOnly(true);
+
 	refreshModes();
-	m_pLabel->show();
-	connect(m_pLabel,SIGNAL(doubleClicked()),this,SLOT(labelDoubleClick()));
-	QResizeEvent* ev=new QResizeEvent(size(),size());
-	resizeEvent(ev);
-	delete ev;
+	
+
 	if(m_pChannel->input()) m_pChannel->setFocus();
 }
 
@@ -76,61 +62,43 @@ void KviModeWidget::refreshModes()
 		szMode+=QString(" k:%1").arg(m_pChannel->channelKey());
 	if(!m_pChannel->channelLimit().isEmpty())
 		szMode+=QString(" l:%1").arg(m_pChannel->channelLimit().toUtf8().data());
-	if(m_pLabel)
-		m_pLabel->setText(szMode);
+	setText(szMode);
 }
 
-void KviModeWidget::applyOptions()
+void KviModeWidget::mouseDoubleClickEvent(QMouseEvent *)
 {
-	if(m_pLabel) m_pLabel->applyOptions();
-}
-
-void KviModeWidget::resizeEvent(QResizeEvent *e)
-{
-	if(e)QFrame::resizeEvent(e);
-	if(m_pLabel) m_pLabel->setGeometry(0,0,width(),height());
-	if(m_pLineEdit) m_pLineEdit->setGeometry(0,0,width(),height());
-}
-
-void KviModeWidget::labelDoubleClick()
-{
-	if(m_pLabel && ( m_pChannel->isMeHalfOp() || m_pChannel->isMeOp() || m_pChannel->isMeChanOwner() || m_pChannel->isMeChanAdmin() || m_pChannel->connection()->userInfo()->hasUserMode('o') || m_pChannel->connection()->userInfo()->hasUserMode('O')) )
+	if(m_pChannel->isMeHalfOp() ||
+		m_pChannel->isMeOp() ||
+		m_pChannel->isMeChanOwner() ||
+		m_pChannel->isMeChanAdmin() ||
+		m_pChannel->connection()->userInfo()->hasUserMode('o') ||
+		m_pChannel->connection()->userInfo()->hasUserMode('O'))
 	{
-		delete m_pLabel;
-		m_pLabel=0;
-		m_pLineEdit = new QLineEdit(this);
-		m_pLineEdit->setText(m_pChannel->channelMode());
-		m_pLineEdit->show();
-		m_pLineEdit->setFocus();
-		resizeEvent(new QResizeEvent(size(),size()));
-		m_pLineEdit->installEventFilter( this );
-		connect(m_pLineEdit,SIGNAL(textChanged ( const QString & ) ),this,SLOT(editorTextChanged( const QString & )));
+		setReadOnly(false);
 	}
 }
 
-bool KviModeWidget::eventFilter( QObject *obj, QEvent *ev )
+void KviModeWidget::keyReleaseEvent (QKeyEvent * e)
 {
-	if( (obj==m_pLineEdit) && ( ev->type() == QEvent::KeyPress ) )
+	switch(e->key())
 	{
-		QKeyEvent *keyEvent = (QKeyEvent*)ev;
-		switch(keyEvent->key())
-		{
-			case Qt::Key_Return:
-			case Qt::Key_Enter:
-				editorReturnPressed();
-				return TRUE;
-			case Qt::Key_Escape:
-				reset();
-				return TRUE;
-		}
+		case Qt::Key_Return:
+		case Qt::Key_Enter:
+			editorReturnPressed();
+			break;
+		case Qt::Key_Escape:
+			reset();
+			break;
+		default:
+			KviThemedLineEdit::keyReleaseEvent(e);
+			break;
 	}
-	return QFrame::eventFilter( obj, ev );
 }
 
 void KviModeWidget::editorReturnPressed()
 {
 	QString szCurModes=m_pChannel->channelMode();
-	QString szNewModes=m_pLineEdit->text();
+	QString szNewModes=text();
 	QString szMinusModes;
 	for(int i=0; i<szCurModes.length(); i++)
 	{
@@ -150,7 +118,7 @@ void KviModeWidget::editorReturnPressed()
 	reset();
 }
 
-void KviModeWidget::editorTextChanged( const QString & text)
+void KviModeWidget::editorTextEdited(const QString & text)
 {
 	int i = 0;
 	QString szText=text;
@@ -160,7 +128,6 @@ void KviModeWidget::editorTextChanged( const QString & text)
 			szText.indexOf(szText[i])<i,Qt::CaseInsensitive )
 			szText.remove(i,1);
 	}
-	m_pLineEdit->setText(szText);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES

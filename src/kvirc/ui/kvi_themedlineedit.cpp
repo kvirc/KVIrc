@@ -1,10 +1,10 @@
 //=============================================================================
 //
-//   File : kvi_themedlabel.cpp
-//   Creation date : Tue Aug 29 2000 21:17:01 by Szymon Stefanek
+//   File : kvi_themedlineedit.cpp
+//   Creation date : Sun Jan 10 2010 12:17:00 by Fabio Bas
 //
 //   This file is part of the KVirc irc client distribution
-//   Copyright (C) 2000-2008 Szymon Stefanek (pragma at kvirc dot net)
+//   Copyright (C) 2010 Fabio Bas (ctrlaltca at gmail dot com)
 //
 //   This program is FREE software. You can redistribute it and/or
 //   modify it under the terms of the GNU General Public License
@@ -22,62 +22,71 @@
 //
 //=============================================================================
 
-#include "kvi_themedlabel.h"
+#include "kvi_themedlineedit.h"
 #include "kvi_options.h"
 #include "kvi_settings.h"
 #include "kvi_app.h"
 #include "kvi_window.h"
 
 #include <QPainter>
+#include <QStyleOptionFrameV2>
 
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	extern QPixmap * g_pShadedChildGlobalDesktopBackground;
 #endif
 
-KviThemedLabel::KviThemedLabel(QWidget * par,const char * name)
-: QFrame(par)
+KviThemedLineEdit::KviThemedLineEdit(QWidget * par,const char * name)
+: QLineEdit(par)
 {
 	setObjectName(name);
-	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
+	setAutoFillBackground(false);
+
+	QPalette pal = palette();
+	pal.setBrush(QPalette::Active, QPalette::Base, Qt::transparent);
+	pal.setBrush(QPalette::Inactive, QPalette::Base, Qt::transparent);
+	pal.setBrush(QPalette::Disabled, QPalette::Base, Qt::transparent);
+
+	setPalette(pal);
+
 	applyOptions();
-	m_bAutoHeight=0;
 }
 
-KviThemedLabel::~KviThemedLabel()
+KviThemedLineEdit::~KviThemedLineEdit()
 {
 }
 
-void KviThemedLabel::setText(const char * text)
-{
-	m_szText = QString(text);
-	if(m_bAutoHeight)
-	{
-		int iHeight=fontMetrics().height()*m_szText.split('\n',QString::SkipEmptyParts).count()+4;
-		setMinimumHeight(iHeight);
-	}
-	update();
-}
-
-void KviThemedLabel::setText(const QString& text)
-{
-	m_szText = text;
-	if(m_bAutoHeight)
-	{
-		int iHeight=fontMetrics().height()*m_szText.split('\n',QString::SkipEmptyParts).count()+4;
-		setMinimumHeight(iHeight);
-	}
-	update();
-}
-
-void KviThemedLabel::applyOptions()
+void KviThemedLineEdit::applyOptions()
 {
 	setFont(KVI_OPTION_FONT(KviOption_fontLabel));
 	update();
 }
 
-void KviThemedLabel::paintEvent ( QPaintEvent * event )
+void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 {
 	QPainter p(this);
+	QRect r = rect();
+	QPalette pal = palette();
+	QStyleOptionFrameV2 option;
+
+	option.initFrom(this);
+	option.rect = contentsRect();
+	option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, this);
+	option.midLineWidth = 0;
+	option.state |= QStyle::State_Sunken;
+	if(isReadOnly())
+		option.state |= QStyle::State_ReadOnly;
+	if (QStyleOptionFrameV2 *optionV2 = qstyleoption_cast<QStyleOptionFrameV2 *>(&option))
+		optionV2->features = QStyleOptionFrameV2::None;
+
+	r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
+	int left, right, top, bottom;
+	getTextMargins(&left, &top, &right, &bottom);
+	r.setX(r.x() + left);
+	r.setY(r.y() + top);
+	r.setRight(r.right() - right);
+	r.setBottom(r.bottom() - bottom);
+	p.setClipRect(r);
+
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
 	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
 	{
@@ -105,17 +114,7 @@ void KviThemedLabel::paintEvent ( QPaintEvent * event )
 	}
 #endif
 
-	QRect r = contentsRect();
-	r.setLeft(r.left() + 2); // some margin
-
-	p.setPen(KVI_OPTION_COLOR(KviOption_colorLabelForeground));
-
-	p.drawText(r,Qt::AlignLeft | Qt::AlignVCenter,m_szText);
-}
-
-void KviThemedLabel::mouseDoubleClickEvent(QMouseEvent *)
-{
-	emit doubleClicked();
+	QLineEdit::paintEvent(event);
 }
 
 #ifndef COMPILE_USE_STANDALONE_MOC_SOURCES
