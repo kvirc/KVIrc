@@ -75,8 +75,7 @@ void KviThemedLineEdit::paintEvent ( QPaintEvent * event )
 	option.state |= QStyle::State_Sunken;
 	if(isReadOnly())
 		option.state |= QStyle::State_ReadOnly;
-	if (QStyleOptionFrameV2 *optionV2 = qstyleoption_cast<QStyleOptionFrameV2 *>(&option))
-		optionV2->features = QStyleOptionFrameV2::None;
+	option.features = QStyleOptionFrameV2::None;
 
 	r = style()->subElementRect(QStyle::SE_LineEditContents, &option, this);
 	int left, right, top, bottom;
