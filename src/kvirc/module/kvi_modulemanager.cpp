@@ -191,7 +191,7 @@ bool KviModuleManager::loadModule(const QString &modName)
 	}
 	if(!info->szKVIrcVersion)
 	{
-		m_szLastError = __tr2qs("This module has no version informations: refusing to load it");
+		m_szLastError = __tr2qs("This module has no version information: refusing to load it");
 		pLibrary->unload();
 		delete pLibrary;
 		return false;

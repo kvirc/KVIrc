@@ -863,7 +863,7 @@ namespace KviKvsCoreSimpleCommands
 			otherwise it is searched only in the first level.[br]
 			If the -q flag is specified the command does not complain
 			about inexisting items or inexisting popup menus.[br]
-			See [cmd]defpopup[/cmd] for more informations.[br]
+			See [cmd]defpopup[/cmd] for more information.[br]
 		@seealso:
 			[cmd]defpopup[/cmd], [cmd]popup[/cmd]
 	*/
@@ -1165,7 +1165,7 @@ namespace KviKvsCoreSimpleCommands
 			If the -f switch is present then the message will never cause
 			the system taskbar to flash.[br]
 			Actually -x and -f have a sense only if highlighting is used and thus -n is not present.[br]
-			For more informations about the icon/color schemes see [fnc]$msgtype[/fnc].
+			For more information about the icon/color schemes see [fnc]$msgtype[/fnc].
 			The KVIrc view widgets support clickable sockets that can be realized by using special [doc:escape_sequences]escape sequences[/doc].[br]
 		@examples:
 			[example]

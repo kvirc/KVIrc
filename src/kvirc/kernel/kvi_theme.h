@@ -46,9 +46,9 @@
 ///
 /// \class KviThemeInfo
 ///
-/// \brief A set of informations about a KVIrc theme
+/// \brief A set of information about a KVIrc theme
 ///
-/// This object contains a set of informations about
+/// This object contains a set of information about
 /// a theme that can be read and stored to a standard
 /// KVIrc configuration file (which is usually named
 /// themeinfo.kvc but this is not strictly necessary).
@@ -143,7 +143,7 @@ namespace KviTheme
 	///
 	/// Attempt to load (apply) a theme in the specified directory
 	/// Will return true on success and false on failure.
-	/// On success this function will return the theme informations in the buffer.
+	/// On success this function will return the theme information in the buffer.
 	/// On failure this function will also set buffer.lastError() to a meaningful value
 	/// Note that for convenience this function is implemented in kvi_options.cpp
 	///

@@ -189,7 +189,7 @@ void KviIrcLink::resolverTerminated()
 		return;
 	}
 
-	// resolver terminated succesfully
+	// resolver terminated successfully
 	delete m_pResolver;
 	m_pResolver = 0;
 

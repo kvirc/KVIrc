@@ -246,7 +246,7 @@ void KviRemoteMircServerImportWizard::getListTerminated(bool bSuccess)
 
 		QString tmp;
 		if(iCount > 0)
-			tmp = __tr2qs("%1 servers imported succesfully").arg(iCount);
+			tmp = __tr2qs("%1 servers imported successfully").arg(iCount);
 		else
 			tmp = __tr2qs("No servers imported");
 		m_pOutput->setText(tmp);

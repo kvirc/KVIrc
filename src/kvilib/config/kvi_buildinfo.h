@@ -38,7 +38,7 @@
 
 /**
 * \namespace KviBuildInfo
-* \brief This namespace contains informations gathered at KVIrc build time.
+* \brief This namespace contains information gathered at KVIrc build time.
 *
 * This, in fact, is the last time that "cmake" ran and successfully generated the
 * kvilib Makefile. Since kvilib is generally built with the kvirc

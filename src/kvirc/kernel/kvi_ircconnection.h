@@ -84,9 +84,9 @@ class KviIdentityProfileSet;
 * a KviIrcSocket.
 *
 * The connection creates and manages a lot of objects that handle
-* runtime informations. These objects include a KviIrcConnectionUserInfo which
-* contains the ACTUAL user informations, KviIrcConnectionServerInfo which
-* contains the ACTUAL server informations, KviIrcUserDataBase which is
+* runtime information. These objects include a KviIrcConnectionUserInfo which
+* contains the ACTUAL user information, KviIrcConnectionServerInfo which
+* contains the ACTUAL server information, KviIrcUserDataBase which is
 * substantially a big hash table containing all the users visible to KVIrc in
 * this connection, a list of channels, a list of queries etc...
 */
@@ -114,7 +114,7 @@ protected:
 	* takes the ownership.
 	* \param pContext The KviIrcContext we're attacched to
 	* \param pTarget The server data
-	* \param pIdentity User informations to use in ths connection
+	* \param pIdentity User information to use in ths connection
 	* \return KviIrcConnection
 	*/
 	KviIrcConnection(KviIrcContext * pContext,KviIrcConnectionTarget * pTarget,KviUserIdentity * pIdentity);
@@ -145,13 +145,13 @@ private:
 
 	KviIrcLink                           * m_pLink;                 // owned, never null
 
-	// The initial informations about the user we'll send out to the server
-	// Note that the ACTUAL user informations are in m_pUserInfo instead
+	// The initial information about the user we'll send out to the server
+	// Note that the ACTUAL user information are in m_pUserInfo instead
 	KviUserIdentity                      * m_pUserIdentity;         // owned, never null
 
-	// The ACTUAL user informations
+	// The ACTUAL user information
 	KviIrcConnectionUserInfo             * m_pUserInfo;             // owned, never null
-	// The ACTUAL server informations
+	// The ACTUAL server information
 	KviIrcConnectionServerInfo           * m_pServerInfo;           // owned, never null
 
 	KviIrcConnectionStateData            * m_pStateData;            // owned, never null
@@ -229,7 +229,7 @@ public:
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionUserInfo object
 	*
-	* It contains runtime informations about the user. This includes the
+	* It contains runtime information about the user. This includes the
 	* current nickname, username, flags and other stuff that KviUserIdentity
 	* actually doesn't contain (or has only "default" values for).
 	* The returned pointer is never NULL.
@@ -242,7 +242,7 @@ public:
 	/**
 	* \brief Returns a pointer to the KviIrcConnectionServerInfo object
 	*
-	* It contains runtime informations about the current server. This includes
+	* It contains runtime information about the current server. This includes
 	* the current servername, the server capabilities and other stuff that
 	* KviConnectionTarget actually doesn't contain (or has only "default"
 	* values for).

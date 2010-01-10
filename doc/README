@@ -18,7 +18,7 @@ Notable new features of this release include:
 - a rewritter iograph module to check your bandwidth usage;
 - support for animated avatars and smilies;
 - support for DCC VIDEO and CANVAS;
-- ability to get other user's avatars/informations like gender without the need
+- ability to get other user's avatars/information like gender without the need
   to CTCP the whole channel;
 - a better support for server tecnologies like STARTTLS, irc services;
 - network profiles to better handle your different identities online;
@@ -68,7 +68,7 @@ The best way to report a bug is to use the bugtrack system at
 http://svn.kvirc.de/kvirc/. Another way is to subscribe
 to the kvirc mailing list (see http://www.kvirc.net for instructions)
 and report the problem there. In both cases your bug report
-should be written in english and should contain most informations
+should be written in english and should contain most information
 possible about the problem. If you have encountered a crash
 on an unix platform you should include a gdb backtrace (stack dump).
 The more gdb info you send, the biggest is the possibility for us
@@ -191,7 +191,7 @@ you can obtain really good results from it.
 
 The small IRC-Context-Display has been removed from the toolbar and has been
 replaced by a real status bar that is capable of displaying the same
-informations in a much cleaner way. The IRC-Context-Display is still
+information in a much cleaner way. The IRC-Context-Display is still
 available as an action so you can just drag it back in its place
 and hide the status bar to return to the previous release configuration.
 The statusbar also supports applets that can be added/dragged/removed by the
@@ -338,7 +338,7 @@ Make sure that the libraries you use are the correct ones (!!!).
 	for me to find the problem and maybe a solution.
 - A detailed description (read : procedure) to reproduce the bug
 	Obviously if possible...
-- All informations on your system that you think that may be
+- All information on your system that you think that may be
 	related to KVIrc and to the problem itself.
 
 To enable the gdb debugging you must compile kvirc with

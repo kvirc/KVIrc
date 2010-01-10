@@ -113,7 +113,7 @@ protected:
 
 /**
 * \class KviPackAddonInfoPackageWidget
-* \brief Wizard page for addon informations
+* \brief Wizard page for addon information
 */
 class KviPackAddonInfoPackageWidget : public QWizardPage
 {
@@ -196,7 +196,7 @@ protected:
 
 /**
 * \class KviPackAddonSummaryInfoWidget
-* \brief Wizard page for showing informations inserted
+* \brief Wizard page for showing information inserted
 */
 class KviPackAddonSummaryInfoWidget : public QWizardPage
 {

@@ -62,7 +62,7 @@
 		[/example]
 		During the call the <xml_data> string will be parsed and the
 		relevant on* events (see below) will be triggered.
-		$parse will return $true when the parsing terminates succesfully
+		$parse will return $true when the parsing terminates successfully
 		or $false if it aborts for some reason (unrecoverable error
 		in the document, user abort etc...).
 		If this function return $false then you can call $lastError() to
@@ -80,7 +80,7 @@
 		The default implementation does nothing besides returning $true.
 
 		!fn: <boolean> $onDocumentEnd()
-		This function is called when the document parsing terminates succesfully.
+		This function is called when the document parsing terminates successfully.
 		You can reimplement it in order to handle this notification.
 		You should return $true if you want document parsing to continue
 		and $false if you want it to be aborted.

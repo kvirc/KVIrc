@@ -597,7 +597,7 @@ KVSO_CLASS_FUNCTION(file,writeHexBlock)
 	KVSO_PARAMETERS_END(c)
 	if (szBlock.length()%2)
 	{
-		c->warning(__tr2qs_ctx("Lenght of hex string is not multiple of 2","objects"));
+		c->warning(__tr2qs_ctx("Length of hex string is not multiple of 2","objects"));
 		return true;
 	}
 	if (uLen>((uint)szBlock.length()/2)|| !uLen) uLen=szBlock.length();

@@ -223,7 +223,7 @@ public:
 
 	/**
 	* \brief Returns the encoding associated to the server
-	* Some informations as nickname and channel names are encoded when
+	* Some information as nickname and channel names are encoded when
 	* communicating with the server
 	* \return const QString &
 	*/
@@ -356,7 +356,7 @@ public:
 
 	/**
 	* \brief Sets the encoding associated to the server
-	* Some informations as nickname and channel names are encoded when
+	* Some information as nickname and channel names are encoded when
 	* communicating with the server
 	* This is the default encoding when talking on channels or queries
 	* \param szEncoding The default encoding of the text
@@ -480,7 +480,7 @@ public:
 	inline void setId(const QString & szId){ m_szId = szId; if(m_szId.isEmpty()) generateUniqueId(); };
 
 	/**
-	* \brief Loads the informations from the configuration file
+	* \brief Loads the information from the configuration file
 	* \param cfg The configuration file
 	* \param szPrefix The prefix of the server
 	* \return bool
@@ -488,7 +488,7 @@ public:
 	bool load(KviConfig * cfg, const QString & szPrefix);
 
 	/**
-	* \brief Saves the informations to the configuration file
+	* \brief Saves the information to the configuration file
 	* \param cfg The configuration file
 	* \param szPrefix The prefix of the server
 	* \return void

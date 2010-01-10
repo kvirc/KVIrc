@@ -72,7 +72,7 @@ public:
 	// current media related
 
 	// currently played media: it should include AT least the title
-	// but may also include other informations.
+	// but may also include other information.
 	// this string MUST be non-empty when the player is playing something.
 	// If it is empty then either the player is not playing or there are
 	// communication errors.
@@ -122,7 +122,7 @@ public:
 	// reimplement only if the player knows better
 
 	// currently played media title (it's player choice if the title
-	// is to be derived from the media file name or from the informations
+	// is to be derived from the media file name or from the information
 	// stored inside the file like the ID3 tag...)
 	// If the player is not playing, the returned string should be empty
 	virtual QString title();

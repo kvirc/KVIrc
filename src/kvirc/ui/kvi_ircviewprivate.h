@@ -50,7 +50,7 @@
 #define KVI_IRCVIEW_VERTICAL_BORDER 4
 
 //
-// The LineChunk structure contains informations about
+// The LineChunk structure contains information about
 // an attribute change, an icon or a link
 //
 // type can be one of:

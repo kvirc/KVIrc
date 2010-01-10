@@ -296,7 +296,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 		[big]VERSION[/big][br]
 		[b]Syntax: <0x01>VERSION<0x01>[/b][br]
-		The VERSION request asks for informations about another user's IRC client program.
+		The VERSION request asks for information about another user's IRC client program.
 		The reply should be sent thru a NOTICE with the following syntax:[br]
 		<0x01>VERSION <client_version_data><0x01>[br]
 		The preferred form for <client_version_data> is
@@ -307,16 +307,16 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 		[big]USERINFO[/big][br]
 		[b]Syntax: <0x01>USERINFO<0x01>[/b][br]
-		The USERINFO request asks for informations about another user.
+		The USERINFO request asks for information about another user.
 		The reply should be sent thru a NOTICE with the following syntax:[br]
 		<0x01>USERINFO <user_info_data><0x01>[br]
 		The <user_info_data> should be a human readable "user defined" string;
 
 		[big]CLIENTINFO[/big][br]
 		[b]Syntax: <0x01>CLIENTINFO<0x01>[/b][br]
-		The CLIENTINFO request asks for informations about another user's IRC client program.
+		The CLIENTINFO request asks for information about another user's IRC client program.
 		While VERSION requests the client program name and version, CLIENTINFO requests
-		informations about CTCP capabilities.[br]
+		information about CTCP capabilities.[br]
 		The reply should be sent thru a NOTICE with the following syntax:[br]
 		<0x01>CLIENTINFO <client_info_data><0x01>[br]
 		The <client_info_data> should contain a list of supported CTCP request tags.
@@ -324,7 +324,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 		[big]FINGER[/big][br]
 		[b]Syntax: <0x01>FINGER<0x01>[/b][br]
-		The FINGER request asks for informations about another IRC user.
+		The FINGER request asks for information about another IRC user.
 		The reply should be sent thru a NOTICE with the following syntax:[br]
 		<0x01>FINGER <user_info_data><0x01>[br]
 		The <user_info_data> should be a human readable string containing
@@ -332,7 +332,7 @@ extern KVIRC_API KviCtcpPageDialog * g_pCtcpPageDialog;
 
 		[big]SOURCE[/big][br]
 		[b]Syntax: <0x01>SOURCE<0x01>[/b][br]
-		The SOURCE request asks for the client homepage or ftp site informations.
+		The SOURCE request asks for the client homepage or ftp site information.
 		The reply should be sent thru a NOTICE with the following syntax:[br]
 		<0x01>VERSION <homepage_url_data><0x01>[br]
 		This CTCP reply is intended to be human readable, so any form is accepted.

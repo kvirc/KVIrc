@@ -88,13 +88,13 @@ KviSaveThemeDialog::KviSaveThemeDialog(QWidget * pParent)
 	setHelpEnabled(pPage,false);
 	setFinishEnabled(pPage,false);
 
-	// packager informations ================================================================================
+	// packager information ================================================================================
 
 	pPage = new QWidget(this);
 	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
-	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the author) and a short description of the theme you're creating.","theme"));
+	pLabel->setText(__tr2qs_ctx("Here you need to provide information about you (the author) and a short description of the theme you're creating.","theme"));
 	pLabel->setWordWrap(true);
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0,1,2);

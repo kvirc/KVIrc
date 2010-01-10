@@ -132,7 +132,7 @@
 // Channels
 /**
 * \def KviEvent_OnChannelWindowCreated A channel window has just been opened
-* \def KviEvent_OnChannelSync Triggered when all the channel informations have been received
+* \def KviEvent_OnChannelSync Triggered when all the channel information have been received
 * \def KviEvent_OnChannelMessage A message has been received from the channel
 * \def KviEvent_OnChannelNotice A NOTICE have been issued to a channel
 */

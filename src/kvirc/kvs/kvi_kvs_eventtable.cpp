@@ -313,7 +313,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			The event is triggered in the console window or the active window of the IRC context depending
 			on the user options.[br]
 			(Note: If you call [cmd]halt[/cmd] in this event , you will stop the "Nick is on irc" output,
-			but this is rather a bad idea since KVIrc gives a lot of additional informations to the
+			but this is rather a bad idea since KVIrc gives a lot of additional information to the
 			user with some notify-methods).[br]
 			This is a good place to play a sound or attract the user attention in some other way.[br]
 
@@ -339,7 +339,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 			The event is triggered in the console window or the active window of the IRC context depending
 			on the user options.[br]
 			(Note: If you call [cmd]halt[/cmd] in this event , you will stop the "Nick has left irc" output,
-			but this is rather a bad idea since KVIrc gives a lot of additional informations to the
+			but this is rather a bad idea since KVIrc gives a lot of additional information to the
 			user with some notify-methods).[br]
 			This is a good place to play a sound or attract the user attention in some other way.[br]
 	*/
@@ -1160,14 +1160,14 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@title:
 			OnChannelSync
 		@short:
-			Triggered when all the channel informations have been received
+			Triggered when all the channel information have been received
 		@parameters:
 			$0 = channel sync time in milliseconds
 		@window:
 			Channel
 		@description:
 			This event is triggered after you have joined a channel
-			and all the informations have been received.[br]
+			and all the information have been received.[br]
 			This includes the channel users list, the ban list,
 			the channel mode, the topic and eventually
 			the invite and ban exception lists.[br]
@@ -3252,7 +3252,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			A DCC Chat window has been just created.
 			The [module:dcc]dcc[/module] module functions
-			can be used to retrieve the informations about the
+			can be used to retrieve the information about the
 			window and the data transfer.[br]
 			The DCC Chat connection attempt starts from here:
 			you can get [event:ondccchatterminated]OnDCCChatError[/event]
@@ -3276,9 +3276,9 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			DCC Chat
 		@description:
-			A DCC Chat connection has just been started succesfully.
+			A DCC Chat connection has just been started successfully.
 			The [module:dcc]dcc[/module] module functions
-			can be used to retrieve the informations about the
+			can be used to retrieve the information about the
 			window and the data transfer.
 			In case of a passive DCC Chat, the local ip and port
 			are known from the moment that this event triggers.
@@ -3302,7 +3302,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			A DCC Chat connection has just been established.
 			The [module:dcc]dcc[/module] module functions
-			can be used to retrieve the informations about the
+			can be used to retrieve the information about the
 			window and the data transfer.
 		@seealso:
 	*/
@@ -3325,7 +3325,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			A DCC Chat message has just been received.
 			The [module:dcc]dcc[/module] module functions
-			can be used to retrieve the informations about the
+			can be used to retrieve the information about the
 			window and the data transfer.
 		@seealso:
 	*/
@@ -3349,7 +3349,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			A DCC Chat error has just been triggered
 			The [module:dcc]dcc[/module] module functions
-			can be used to retrieve the informations about the
+			can be used to retrieve the information about the
 			window and the data transfer.
 			A DCC Chat can terminate because an error has
 			interrupted the connection or because
@@ -3377,7 +3377,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			A DCC Chat has just been disconnected for some reason.
 			The [module:dcc]dcc[/module] module functions
-			can be used to retrieve the informations about the
+			can be used to retrieve the information about the
 			window and the data transfer.
 		@seealso:
 	*/
@@ -3399,7 +3399,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@description:
 			A DCC Chat window is going to be closed.
 			The [module:dcc]dcc[/module] module functions
-			can be used to retrieve the informations about the
+			can be used to retrieve the information about the
 			window and the data transfer.
 		@seealso:
 	*/
@@ -3475,7 +3475,7 @@ KviKvsEvent KviKvsEventManager::m_appEventTable[KVI_KVS_NUM_APP_EVENTS]=
 		@window:
 			unspecified
 		@description:
-			Triggered when a DCC File transfer terminates succesfully.[br]
+			Triggered when a DCC File transfer terminates successfully.[br]
 			$0 contains the number of bytes transferred in the session.[br]
 			You can retrieve the session information by calling the [module:dcc]dcc[/module].*
 			module functions and by passing the DCC session ID parameter.

@@ -298,7 +298,7 @@ void KviStatusBar::tipRequest(QHelpEvent * e)
 		KviIrcContext * c = m_pFrame->activeContext();
 		if(c && (c->state() == KviIrcContext::Connected))
 		{
-			szTip += __tr2qs("<b>Double-click</b> to get network informations");
+			szTip += __tr2qs("<b>Double-click</b> to get network information");
 			szTip += "</p><p>";
 		}
 
@@ -534,7 +534,7 @@ void KviStatusBar::mouseReleaseEvent(QMouseEvent * e)
 
 void KviStatusBar::mouseDoubleClickEvent(QMouseEvent *)
 {
-	const QString szTitle = __tr2qs("Network informations");
+	const QString szTitle = __tr2qs("Network information");
 	QString szText, szUserModes, szAway;
 
 	KviIrcContext * c = m_pFrame->activeContext();

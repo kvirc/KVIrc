@@ -1482,7 +1482,7 @@ MP_KVS_FUNCTION(status)
 	@body:
 		The mediaplayer module is an interface to various popular media players.
 		It allows controlling them remotely to a certain degree and retrieving
-		the informations about the currently played media (in order to implement the nice /playing
+		the information about the currently played media (in order to implement the nice /playing
 		scripts). The module has replaced the old mediaplayer module which after
 		years of development had developed some design flaws and needed a complete rewrite.
 		At the moment of writing the supported players are: xmms (unix), audacious (unix), winamp (windows),
@@ -1496,11 +1496,11 @@ MP_KVS_FUNCTION(status)
 		to the winamp plugins directory and restarting winamp.[br]
 		[br]
 		The commands and functions exported by this module serve mainly for two
-		purposes: control the playback and get informations about the currently played media.
+		purposes: control the playback and get information about the currently played media.
 		Playback control is achieved by the means of [cmd]mediaplayer.play[/cmd],
 		[cmd]mediaplayer.stop[/cmd], [cmd]mediaplayer.pause[/cmd], [cmd]mediaplayer.next[/cmd],
 		[cmd]mediaplayer.prev[/cmd] and [fnc]$mediaplayer.status()[/fnc]. The
-		informations about the currently played media can be retrieved with
+		information about the currently played media can be retrieved with
 		[fnc]$mediaplayer.nowplaying()[/fnc] and [fnc]$mediaplayer.mrl()[/fnc].
 		Several other informative function are available as well but they are not
 		granted to work with all the supported media players or media types (e.g.

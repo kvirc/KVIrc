@@ -107,7 +107,7 @@ alias(aidle)
 		# the script should be uninstalled
 		case(uninstall):
 		{
-			echo "the anti idle script has been uninstalled succesfully"
+			echo "the anti idle script has been uninstalled successfully"
 			# defining the alias by empty code will remove it
 			alias(aidle){}
 			event(412,aidle){}

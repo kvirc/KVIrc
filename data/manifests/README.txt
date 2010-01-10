@@ -1,4 +1,4 @@
-This stuff is needed to succesfully
+This stuff is needed to successfully
 build a KVIrc distribution with Microsoft Visual C++ 2005 Express edition.
 
 - The manifest file Microsoft.VC80.CRT.manifest MUST be installed

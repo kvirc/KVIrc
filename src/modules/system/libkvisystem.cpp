@@ -433,7 +433,7 @@ static bool system_kvs_fnc_hostname(KviKvsModuleFunctionCall *c)
 		[br]
 		If the application name is prefixed with "?" then the call is performed in "remote test"
 		mode: no "remote" errors are printed and the function returns 1 if the call executed
-		succesfully and 0 if the call failed. This can be used with the very first
+		successfully and 0 if the call failed. This can be used with the very first
 		call to programmaticaly test if the remote application is running.
 	@examples:
 		[example]
@@ -783,7 +783,7 @@ KVIRC_MODULE(
 	"Copyright	(C) 2001 Szymon Stefanek (pragma at kvirc dot net)" \
 	"		(C) 2005 Tonino Imbesi (grifisx at barmes dot org)"\
 	"		(C) 2005 Alessandro Carbone (elfonol at gmail dot com)",// author & (C)
-	"System informations module",
+	"System information module",
 	system_module_init,
 	system_module_can_unload,
 	0,

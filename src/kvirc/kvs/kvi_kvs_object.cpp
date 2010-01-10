@@ -206,7 +206,7 @@
 			[cmd]delete[/cmd] %tmp
 		[/example]
 		There are two special functions for each objects: the "constructor" and the "destructor".
-		You will find more informations on constructors and destructors later in this document,
+		You will find more information on constructors and destructors later in this document,
 		for now it's enough that you know that these functions are called automatically by KVirc:
 		the constructor is called when the object is created and the destructor is called when the
 		object is being destroyed with [cmd]delete[/cmd].[br][br]
@@ -271,7 +271,7 @@
 		The above class is a rappresentation of a host address.
 		You create an [b]instance of this class[/b] and set the hostname field, for example,
 		to www.kernel.org.
-		The object is now able to give you informations about the hostname in a transparent way:
+		The object is now able to give you information about the hostname in a transparent way:
 		You can call the ipnumber() function, and the object will return you the
 		digits and dots rappresentation of www.kernel.org.
 		The isLocalhost() function will return true if the hostname refers to the local machine

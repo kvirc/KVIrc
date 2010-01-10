@@ -95,7 +95,7 @@ public:
 	/**
 	* \brief Returns the encoding of the network
 	*
-	* Some informations as nickname and channel names are encoded when
+	* Some information as nickname and channel names are encoded when
 	* communicating with the server
 	* \return const QString &
 	*/
@@ -199,7 +199,7 @@ public:
 	/**
 	* \brief Sets the encondig of the network
 	*
-	* Some informations as nickname and channel names are encoded when
+	* Some information as nickname and channel names are encoded when
 	* communicating with the server
 	* \param szEncoding The encoding of the network
 	* \return void

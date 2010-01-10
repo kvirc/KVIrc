@@ -1409,7 +1409,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		Both clients must agree on who is the passive and who is the active client. The active client must also
 		know the passive client's IP address and port (in order to be able to contact it).[br]
 		Finally, both clients must agree on the transfer type that has to be initiated.[br]
-		The negotiation exchanges these informations between clients by using IRC as channel and CTCP messages
+		The negotiation exchanges these information between clients by using IRC as channel and CTCP messages
 		as encoding method.[br]
 		An example will make things clearer:[br]
 		DCC Chat is the simplest (and most widely implemented) DCC subprotocol:
@@ -1424,7 +1424,7 @@ static bool dcc_module_cmd_canvas(KviModule *m,KviCommand *c)
 		your client will send a [doc:ctcp_handling]CTCP message[/doc] to Sarah using the IRC connection (and protocol) as channel:[br]
 		PRIVMSG Sarah :<0x01>DCC CHAT chat <ip_address> <port><0x01>[br]
 		where <ip_address> is the address of the listening socket and <port>
-		is the port that it has been bound to (these informations are obtained
+		is the port that it has been bound to (these information are obtained
 		after the socket has been setup). Once Sarah has received the CTCP message,
 		and agreed to connect, her (active) client will attempt to connect to the
 		specified <ip_address> and <port> (eg. to your listening socket).[br]
@@ -1670,7 +1670,7 @@ static KviDccDescriptor * dcc_kvs_find_dcc_descriptor(const kvs_uint_t &uId,KviK
 		If <dcc_id> refers to a file transfer then it the transfer is simply
 		terminated. If <dcc_id> refers to a dcc chat then the result
 		is equivalent to closing the related window.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 	@examples:
 */
 
@@ -1710,7 +1710,7 @@ static bool dcc_kvs_cmd_abort(KviKvsModuleCommandCall * c)
 		and the current window has no associated DCC session) then
 		this function  prints a warning unless the -q switch is used.[br]
 		If <dcc_id> does not refers to a file transfer a warning will be printing unless the -q switch is used.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 	@examples:
 */
 static bool dcc_kvs_cmd_setBandwidthLimit(KviKvsModuleCommandCall * c)
@@ -1749,7 +1749,7 @@ static bool dcc_kvs_cmd_setBandwidthLimit(KviKvsModuleCommandCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
@@ -1786,7 +1786,7 @@ static bool dcc_kvs_fnc_protocol(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_connectionType(KviKvsModuleFunctionCall * c)
@@ -1822,7 +1822,7 @@ static bool dcc_kvs_fnc_connectionType(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this and returns 0.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_isFileTransfer(KviKvsModuleFunctionCall * c)
@@ -1858,7 +1858,7 @@ static bool dcc_kvs_fnc_isFileTransfer(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns 0.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_isFileUpload(KviKvsModuleFunctionCall * c)
@@ -1894,7 +1894,7 @@ static bool dcc_kvs_fnc_isFileUpload(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns 0.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_isFileDownload(KviKvsModuleFunctionCall * c)
@@ -1929,7 +1929,7 @@ static bool dcc_kvs_fnc_isFileDownload(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_localNick(KviKvsModuleFunctionCall * c)
@@ -1964,7 +1964,7 @@ static bool dcc_kvs_fnc_localNick(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_localUser(KviKvsModuleFunctionCall * c)
@@ -1998,7 +1998,7 @@ static bool dcc_kvs_fnc_localUser(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_localHost(KviKvsModuleFunctionCall * c)
@@ -2033,7 +2033,7 @@ static bool dcc_kvs_fnc_localHost(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_localIp(KviKvsModuleFunctionCall * c)
@@ -2067,7 +2067,7 @@ static bool dcc_kvs_fnc_localIp(KviKvsModuleFunctionCall * c)
 		to the current window is assumed.[br]
 		If <dcc_id> is not a valid DCC session identifier then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_localPort(KviKvsModuleFunctionCall * c)
@@ -2171,7 +2171,7 @@ static bool dcc_kvs_fnc_localFileSize(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_remoteNick(KviKvsModuleFunctionCall * c)
@@ -2206,7 +2206,7 @@ static bool dcc_kvs_fnc_remoteNick(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_remoteUser(KviKvsModuleFunctionCall * c)
@@ -2240,7 +2240,7 @@ static bool dcc_kvs_fnc_remoteUser(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_remoteHost(KviKvsModuleFunctionCall * c)
@@ -2274,7 +2274,7 @@ static bool dcc_kvs_fnc_remoteHost(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_remoteIp(KviKvsModuleFunctionCall * c)
@@ -2309,7 +2309,7 @@ static bool dcc_kvs_fnc_remoteIp(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns an empty sting.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_remotePort(KviKvsModuleFunctionCall * c)
@@ -2416,7 +2416,7 @@ static bool dcc_kvs_fnc_remoteFileSize(KviKvsModuleFunctionCall * c)
 		If <dcc_id> is not a valid DCC session identifier (or it is omitted
 		and the current window has no associated DCC session) then
 		this function prints a warning and returns 0.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_ircContext(KviKvsModuleFunctionCall * c)
@@ -2456,7 +2456,7 @@ static bool dcc_kvs_fnc_ircContext(KviKvsModuleFunctionCall * c)
 		this function prints a warning and returns an empty sting.[br]
 		If the DCC session does not refer to a file transfer then
 		this function returns "".[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_transferStatus(KviKvsModuleFunctionCall * c)
@@ -2501,7 +2501,7 @@ static bool dcc_kvs_fnc_transferStatus(KviKvsModuleFunctionCall * c)
 		this function prints a warning and returns an empty sting.[br]
 		If the DCC session does not refer to a file transfer then
 		this function returns 0.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_transferredBytes(KviKvsModuleFunctionCall * c)
@@ -2547,7 +2547,7 @@ static bool dcc_kvs_fnc_transferredBytes(KviKvsModuleFunctionCall * c)
 		this function prints a warning and returns an empty sting.[br]
 		If the DCC session does not refer to a file transfer then
 		this function returns 0.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_averageSpeed(KviKvsModuleFunctionCall * c)
@@ -2651,7 +2651,7 @@ static bool dcc_kvs_fnc_session(KviKvsModuleFunctionCall * c)
 		in <filter> which may be a combination of the flags 'u' (for file upload),
 		'd' (for file download) and 'c' (for dcc chat). To select all the file transfers
 		please use the combination 'ud'.[br]
-		See the [module:dcc]dcc module[/module] documentation for more informations.[br]
+		See the [module:dcc]dcc module[/module] documentation for more information.[br]
 */
 
 static bool dcc_kvs_fnc_sessionList(KviKvsModuleFunctionCall * c)

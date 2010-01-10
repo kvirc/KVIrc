@@ -422,7 +422,7 @@ KviIrcContextDisplayAction::KviIrcContextDisplayAction(QObject * pParent)
 : KviAction(pParent,
 	QString(KVI_COREACTION_IRCCONTEXTDISPLAY),
 	__tr2qs("IRC Context Display"),
-	__tr2qs("Shows a small display with IRC context informations"),
+	__tr2qs("Shows a small display with IRC context information"),
 	KviActionManager::categoryIrc(),
 	"kvi_bigicon_irccontextdisplay.png",
 	KVI_SMALLICON_NONE,

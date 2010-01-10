@@ -302,7 +302,7 @@ namespace KviKvsCoreCallbackCommands
 			Asynchronous WHOIS
 		@switches:
 			!sw: -i | --idle-time
-			Ask the whois informations to the server that <nickname> is
+			Ask the whois information to the server that <nickname> is
 			connected to, effectively returning the user's idle time.
 		@description:
 			AWHOIS stands for Asynchronous WHOIS. It is used to obtain data for a specified

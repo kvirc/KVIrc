@@ -683,7 +683,7 @@ namespace KviKvsCoreFunctions
 			and in [fnc]$file.globaldir[/fnc]/locale/. If your catalogues are
 			in some other place then you must load them explicitly by the
 			means of [cmd]trload[/cmd].
-			For more informations see the documentation about [doc:script_localization]script localization[/doc].
+			For more information see the documentation about [doc:script_localization]script localization[/doc].
 		@examples:
 			[example]
 				[cmd]echo[/cmd] $tr("Hello World!")
@@ -1014,12 +1014,12 @@ namespace KviKvsCoreFunctions
 		@title:
 			$version
 		@short:
-			Returns informations about the version of KVIrc.
+			Returns information about the version of KVIrc.
 		@syntax:
 			<string> $version()
 			<string> $version(<type:string>)
 		@description:
-			Returns informations about the version of the currently running KVIrc.[br]
+			Returns information about the version of the currently running KVIrc.[br]
 			Type can be one of:[br]
 			[ul]
 			[li]b: return the build date in human readable form[/li]

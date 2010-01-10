@@ -202,14 +202,14 @@ KviPackThemeDialog::KviPackThemeDialog(QWidget * pParent,KviPointerList<KviTheme
 	setNextEnabled(pPage,true);
 	setFinishEnabled(pPage,false);
 
-	// packager informations ================================================================================
+	// packager information ================================================================================
 
 	pPage = new QWidget(this);
 	pLayout = new QGridLayout(pPage);
 
 	pLabel = new QLabel(pPage);
 	pLabel->setWordWrap(true);
-	pLabel->setText(__tr2qs_ctx("Here you need to provide informations about you (the packager) and a short description of the package you're creating.","theme"));
+	pLabel->setText(__tr2qs_ctx("Here you need to provide information about you (the packager) and a short description of the package you're creating.","theme"));
 	pLabel->setTextFormat(Qt::RichText);
 	pLayout->addWidget(pLabel,0,0,1,2);
 
@@ -479,7 +479,7 @@ bool KviPackThemeDialog::packTheme()
 	//KviPackageReader r;
 	//r.unpack("/root/test.kvt","/root/unpacked_test_kvt");
 
-	QMessageBox::information(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),__tr2qs("Package saved succesfully"),
+	QMessageBox::information(this,__tr2qs_ctx("Export Theme - KVIrc","theme"),__tr2qs("Package saved successfully"),
 				QMessageBox::Ok,QMessageBox::NoButton,QMessageBox::NoButton);
 
 	return true;

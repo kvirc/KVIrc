@@ -91,14 +91,14 @@ KviPackAddonDialog::KviPackAddonDialog(QWidget * pParent)
 
 	pLabel = new QLabel(pPage);
 	QString szText;
-	szText += __tr2qs_ctx("You will be asked to provide some informations like the package name, the version, a description and so on.","addon");
+	szText += __tr2qs_ctx("You will be asked to provide some information like the package name, the version, a description and so on.","addon");
 	szText += "<br><br>";
 	szText += __tr2qs_ctx("Hit the \"Next\" button to begin.","addon");
 	pLabel->setText(szText);
 	pLayout->addWidget(pLabel);
 	addPage(pPage);
 
-	// Packager informations
+	// Packager information
 	m_pPackAddonInfoPackageWidget = new KviPackAddonInfoPackageWidget(this);
 	addPage(m_pPackAddonInfoPackageWidget);
 
@@ -464,7 +464,7 @@ KviPackAddonInfoPackageWidget::KviPackAddonInfoPackageWidget(KviPackAddonDialog 
 {
 	setObjectName("addon_package_info_page");
 	setTitle(__tr2qs_ctx("Package Informations","addon"));
-	setSubTitle(__tr2qs_ctx("Here you need to provide informations about you (the packager) and a short description of the package you're creating.","addon"));
+	setSubTitle(__tr2qs_ctx("Here you need to provide information about you (the packager) and a short description of the package you're creating.","addon"));
 
 	QGridLayout * pLayout = new QGridLayout(this);
 
@@ -596,7 +596,7 @@ KviPackAddonSummaryInfoWidget::KviPackAddonSummaryInfoWidget(KviPackAddonDialog 
 {
 	setObjectName("addon_package_summary_info_page");
 	setTitle(__tr2qs_ctx("Final Informations","addon"));
-	setSubTitle(__tr2qs_ctx("Here there are the informations you provided. If these informations are correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
+	setSubTitle(__tr2qs_ctx("Here there are the information you provided. If these information are correct, hit the \"Finish\" button to complete the packaging operations.","addon"));
 
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 	m_pLabelInfo = new QLabel(this);
@@ -668,7 +668,7 @@ KviPackAddonSummaryFilesWidget::KviPackAddonSummaryFilesWidget(KviPackAddonDialo
 	QVBoxLayout * pLayout = new QVBoxLayout(this);
 
 	QLabel * pLabel = new QLabel(this);
-	pLabel->setText(__tr2qs_ctx("Here there are the files I found in the directories you provided.\nIf these and the informations showed in the previous page are correct, hit the \"Finish\" button to complete\nthe packaging operations.","addon"));
+	pLabel->setText(__tr2qs_ctx("Here there are the files I found in the directories you provided.\nIf these and the information showed in the previous page are correct, hit the \"Finish\" button to complete\nthe packaging operations.","addon"));
 	pLayout->addWidget(pLabel);
 
 	m_pFiles = new QTextEdit(this);

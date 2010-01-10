@@ -81,7 +81,7 @@ kvi_time_t g_tNotifierDisabledUntil = 0;
 		If the -i=&lt;image_id&gt; switch is present then the
 		message has the specified image displayed.
 		See the [doc:image_id]documentation on the image identifier[/doc]
-		for more informations about the image_id parameter.[br]
+		for more information about the image_id parameter.[br]
 		!sw: -q | --quiet
 		If you use -q then you must explicitly call [cmd]notifier.show[/cmd] to
 		show the notifier. If the -n switch is present then

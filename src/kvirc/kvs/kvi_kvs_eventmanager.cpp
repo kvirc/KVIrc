@@ -80,7 +80,7 @@
 		[br]
 		Certain events will pass you some data in the positional parameters.[br]
 		For example, when you are being banned from a channel, KVIrc triggers the [event:onmeban]OnMeBan[/event]
-		event: you might be interested in WHO has banned you. KVIrc will pass the "ban source" informations
+		event: you might be interested in WHO has banned you. KVIrc will pass the "ban source" information
 		in the positional parameters $0,$1 and $2.[br]
 		(Please note that the parameters started from $1 in KVIrc versions older than 3.0.0!).[br]
 		You may take a look at the list of available [doc:event_index_all]events[/doc].[br]

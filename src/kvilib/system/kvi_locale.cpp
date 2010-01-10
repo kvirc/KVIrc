@@ -544,7 +544,7 @@ bool KviMessageCatalogue::load(const QString& name)
 
 		// In some (or all?) *.mo files the first string
 		// is zero bytes long and the translated one contains
-		// informations about the translation
+		// information about the translation
 		if(e->m_szKey.len() == 0)
 		{
 			szHeader = e->m_szEncodedTranslation;
