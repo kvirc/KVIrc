@@ -50,11 +50,7 @@ public:
 	KviPointerHashTable<QString,KviKvsScript> * aliasDict(){ return m_pAliasDict; };
 	const KviKvsScript * lookup(const QString & szName)
 		{ return m_pAliasDict->find(szName); };
-	void add(const QString &szName,KviKvsScript * pAlias)
-        {
-            m_pAliasDict->replace(szName,pAlias);
-            emit aliasRefresh(szName);
-        };
+	void add(const QString &szName,KviKvsScript * pAlias);
 	bool remove(const QString & szName)
 		{ return m_pAliasDict->remove(szName); };
 	void clear()
@@ -64,10 +60,9 @@ public:
 	void load(const QString & filename);
 
 	void completeCommand(const QString &word,KviPointerList<QString> * matches);
-    signals:
+signals:
 
-
-    void aliasRefresh(const QString &);
+	void aliasRefresh(const QString &);
 };
 // namespaces are handled completly in the editing!
 #endif //!_KVI_KVS_ALIASMANAGER_H_

@@ -39,6 +39,7 @@ KviKvsAliasManager::KviKvsAliasManager()
 KviKvsAliasManager::~KviKvsAliasManager()
 {
 	delete m_pAliasDict;
+	m_pAliasManager = 0;
 }
 
 void KviKvsAliasManager::init()
@@ -59,6 +60,42 @@ void KviKvsAliasManager::done()
 		return;
 	}
 	delete KviKvsAliasManager::instance();
+}
+
+void KviKvsAliasManager::add(const QString &szName,KviKvsScript * pAlias)
+{
+	// This piece of code, when inlined by gcc (i.e, placed in a header),
+	// shows an interesting problem.
+	
+	// KviKvsPointerHashTable<>::replace() is a template and is likely to be inlined too.
+	// The internals of replace() use another template called KviKvsPointerHashTableEntry<>.
+	// When this function is called from a dynamically loaded shared library
+	// the internal template is likely to be instantiated in the shared library itself.
+	// Now if the shared library is unloaded, a dangling vtable pointer is stored
+	// in the inner template and it will die once we attempt to clear the m_pAliasDict ht.
+	//
+	// This happens for KviAliasEditor, for instance. In it's commit() function
+	// it called this method and caused the vtable pointer to be 0x7fffdfab0030.
+	//
+	// (gdb) info symbol 0x7fffdfab0030
+	// vtable for KviPointerList<KviPointerHashTableEntry<QString, KviKvsScript> > + 16 in section .data.rel.ro
+	//    of /usr/local/lib/kvirc/4.0/modules/libkvialiaseditor.so <-- inside the module
+	//
+	// while the correct vtable (the one that appears when the add() function is called from somewhere else) is
+	// 
+	//(gdb) info symbol 0x6bc210
+	// vtable for KviPointerList<KviPointerHashTableEntry<QString, KviKvsScript> > + 16 in section .rodata
+	//    of /usr/local/bin/kvirc <-- inside the executable
+	// 
+	// This is a linkage problem. Either caused by gcc itself, or maybe wrong flags
+	// passed by the cmake generated Makefiles. Gcc should notice that the symbol is already defined
+	// inside the executable and use that one instead.
+	// 
+	// So finally, we can't inline this.
+	
+	// The bad news is that this problem may pop up also in other pieces of code...
+	m_pAliasDict->replace(szName,pAlias);
+	emit aliasRefresh(szName);
 }
 
 void KviKvsAliasManager::completeCommand(const QString &word,KviPointerList<QString> * matches)

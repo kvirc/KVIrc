@@ -443,26 +443,27 @@ void KviAliasEditor::oneTimeSetup()
         connect(KviKvsAliasManager::instance(),SIGNAL(aliasRefresh(const QString &)),this,SLOT(aliasRefresh(const QString &)));
 	m_pTreeWidget->sortItems(0,Qt::AscendingOrder);
 }
+
 void KviAliasEditor::aliasRefresh(const QString &szName)
 {
-	if(m_bSaving) return;
+	if(m_bSaving)
+		return;
 	KviAliasTreeWidgetItem * item;
 	KviKvsScript * alias = KviKvsAliasManager::instance()->aliasDict()->find(szName);
 	item = createFullAliasItem(szName);
 	if(item!=m_pLastEditedItem)
 	{
 		item->setBuffer(alias->code());
-	} else {
-		if(QMessageBox::warning(0,__tr2qs("OverWrite Current Alias"),
-			__tr2qs("An external script has changed the alias you are currently editing. Do you want to accept the external changes?"),
-			QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes)
-		{
-			return;
-		} else {
-			item->setBuffer(alias->code());
-			m_pEditor->setText(alias->code());
-		}
+		return;
 	}
+	if(
+		QMessageBox::warning(0,__tr2qs("OverWrite Current Alias"),
+				__tr2qs("An external script has changed the alias you are currently editing. Do you want to accept the external changes?"),
+				QMessageBox::Yes,QMessageBox::No|QMessageBox::Default|QMessageBox::Escape) != QMessageBox::Yes
+		)
+		return;
+	item->setBuffer(alias->code());
+	m_pEditor->setText(alias->code());
 }
 
 void KviAliasEditor::itemRenamed(QTreeWidgetItem *it,int col)
@@ -1031,10 +1032,12 @@ void KviAliasEditor::appendSelectedItems(KviPointerList<KviAliasEditorTreeWidget
 
 void KviAliasEditor::removeItemChildren(KviAliasEditorTreeWidgetItem *it)
 {
-	for (int i=0;i<it->childCount();i++)
+	while(it->childCount() > 0)
 	{
-		if (it->child(i)->childCount()) removeItemChildren((KviAliasEditorTreeWidgetItem *)it->child(i));
-		delete it->child(i);
+		KviAliasEditorTreeWidgetItem * pChild = (KviAliasEditorTreeWidgetItem *)(it->child(0));
+		if(pChild->childCount())
+			removeItemChildren(pChild);
+		delete pChild;
 	}
 }
 
@@ -1075,7 +1078,8 @@ bool KviAliasEditor::removeItem(KviAliasEditorTreeWidgetItem *it,bool * pbYesToA
 		m_pLastEditedItem = 0;
 	if(it == m_pLastClickedItem)
 		m_pLastClickedItem = 0;
-	if (it->childCount()) removeItemChildren(it);
+	if (it->childCount())
+		removeItemChildren(it);
 	delete it;
 	return true;
 		/*
@@ -1495,7 +1499,8 @@ void KviAliasEditor::currentItemChanged(QTreeWidgetItem *it,QTreeWidgetItem *)
 
 void KviAliasEditor::recursiveCommit(KviAliasEditorTreeWidgetItem * it)
 {
-	if(!it)return;
+	if(!it)
+		return;
 	if(it->isAlias())
 	{
 		QString szName = buildFullItemName(it);
@@ -1506,13 +1511,10 @@ void KviAliasEditor::recursiveCommit(KviAliasEditorTreeWidgetItem * it)
 		KviKvsScript * a = new KviKvsScript(szName,((KviAliasTreeWidgetItem *)it)->buffer());
 		KviKvsAliasManager::instance()->add(szName,a);
 		return;
-	} else
-	{
-		for (int i=0;i<it->childCount();i++)
-		{
-			recursiveCommit((KviAliasEditorTreeWidgetItem *) it->child(i));
-		}
 	}
+
+	for (int i=0;i<it->childCount();i++)
+		recursiveCommit((KviAliasEditorTreeWidgetItem *) it->child(i));
 }
 
 void KviAliasEditor::commit()
@@ -1520,7 +1522,8 @@ void KviAliasEditor::commit()
 	m_bSaving = true;
 	saveLastEditedItem();
 
-// 	KviKvsAliasManager::instance()->clear();
+ 	KviKvsAliasManager::instance()->clear();
+
 	for(int i=0;i<m_pTreeWidget->topLevelItemCount();i++)
 	{
 		KviAliasEditorTreeWidgetItem *item=(KviAliasEditorTreeWidgetItem *)m_pTreeWidget->topLevelItem(i);

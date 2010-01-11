@@ -410,7 +410,8 @@ public:
 	{
 		if(!pData)return;
 		unsigned int uEntry = kvi_hash_hash(hKey,m_bCaseSensitive) % m_uSize;
-		if(!m_pDataArray[uEntry])m_pDataArray[uEntry] = new KviPointerList<KviPointerHashTableEntry<Key,T> >(true);
+		if(!m_pDataArray[uEntry])
+			m_pDataArray[uEntry] = new KviPointerList<KviPointerHashTableEntry<Key,T> >(true);
 		for(KviPointerHashTableEntry<Key,T> * e = m_pDataArray[uEntry]->first();e;e = m_pDataArray[uEntry]->next())
 		{
 			if(kvi_hash_key_equal(e->hKey,hKey,m_bCaseSensitive))
@@ -421,7 +422,8 @@ public:
 					kvi_hash_key_destroy(e->hKey,m_bDeepCopyKeys);
 					kvi_hash_key_copy(hKey,e->hKey,m_bDeepCopyKeys);
 				}
-				if(m_bAutoDelete)delete e->pData;
+				if(m_bAutoDelete)
+					delete e->pData;
 				e->pData = pData;
 				return;
 			}
@@ -536,8 +538,10 @@ public:
 					if(m_bAutoDelete)
 						delete ((T *)(e->pData));
 				}
-				delete m_pDataArray[i];
+				KviPointerList<KviPointerHashTableEntry<Key,T> > * pList = m_pDataArray[i];
+				//delete m_pDataArray[i];
 				m_pDataArray[i] = 0;
+				delete pList;
 			}
 		}
 		m_uCount = 0;
