@@ -164,12 +164,6 @@ void KviMdiManager::destroyChild(KviMdiChild *lpC, bool bFocusTopChild)
 		if(KVI_OPTION_BOOL(KviOption_boolAutoTileWindows))tile();
 }
 
-void KviMdiManager::mousePressEvent(QMouseEvent * e)
-{
-	//Popup the window menu
-	if(e->button() & Qt::RightButton) m_pWindowPopup->popup(mapToGlobal(e->pos()));
-}
-
 void KviMdiManager::setIsInSDIMode(bool bMode)
 {
 // 	qDebug("Sdi Mode %d", bMode);

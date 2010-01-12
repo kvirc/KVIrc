@@ -159,11 +159,6 @@ protected:
 	void setIsInSDIMode(bool bMode);
 
 	/**
-	 * \brief Open the window popup menu
-	 */
-	virtual void mousePressEvent(QMouseEvent * e);
-
-	/**
 	 * \brief Repaints the transparent backgrounds if activated
 	 */
 	virtual void paintEvent(QPaintEvent * e);
