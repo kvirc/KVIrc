@@ -110,19 +110,16 @@ KviSetupPage::KviSetupPage(KviSetupWizard * w)
 
 	QLabel * l = new QLabel(m_pVBox);
 	l->setAlignment(Qt::AlignLeft | Qt::AlignTop);
-	/*
-	QString szHeader = "<table border=\"0\" cellpadding=\"4\" cellspacing=\"0\" style=\"margin:0px;padding:0px;\" width=\"100%\"><tr><td bgcolor=\"#303030\">" \
-			"<h1><font color=\"#FFFFFF\">KVIrc " KVI_VERSION "</font></h1>" \
-			"</td></tr></table>";
-	*/
-	QString szHeader = "<h1><font color=\"#FFFFFF\">&nbsp;KVIrc " KVI_VERSION "</font></h1>";
-	l->setText(szHeader);
+
+	QPalette pal=l->palette();
+	pal.setColor(l->backgroundRole(), QColor(48,48,48)); //aka #303030
+	pal.setColor(l->foregroundRole(), QColor(255,255,255)); //aka #FFFFFF
+	l->setPalette(pal);
+	l->setText("<h1>&nbsp;KVIrc " KVI_VERSION "</h1>");
 	l->setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	l->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+	l->setAutoFillBackground(true);
 	l->setMargin(0);
-	QPalette p = l->palette();
-	p.setColor(backgroundRole(), QColor(48,48,48));
-	l->setPalette(p);
 
 	m_pTextLabel = new QLabel(m_pVBox);
 	m_pTextLabel->setWordWrap(true);

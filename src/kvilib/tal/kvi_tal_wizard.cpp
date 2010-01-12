@@ -369,9 +369,11 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 	{
 		m_p->pNextButton->show();
 		m_p->pNextSpacer->show();
+		m_p->pNextButton->setDefault(true);
 	} else {
 		m_p->pNextButton->hide();
 		m_p->pNextSpacer->hide();
+		m_p->pNextButton->setDefault(false);
 	}
 	m_p->pBackButton->setEnabled(bBackEnabled);
 	m_p->pHelpButton->setEnabled(bHelpEnabled);
@@ -385,9 +387,11 @@ void KviTalWizard::setCurrentPage(KviTalWizardPageData * pData)
 	{
 		m_p->pFinishButton->show();
 		m_p->pFinishSpacer->show();
+		m_p->pFinishButton->setDefault(true);
 	} else {
 		m_p->pFinishButton->hide();
 		m_p->pFinishSpacer->hide();
+		m_p->pFinishButton->setDefault(false);
 	}
 }
 
