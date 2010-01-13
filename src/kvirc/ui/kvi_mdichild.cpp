@@ -218,7 +218,7 @@ void KviMdiChild::setClient(QWidget * w)
 	setWidget(w);
 
 	KviStr tmp(KviStr::Format,"mdi_child_%s",w->objectName().toUtf8().data());
-	w->setObjectName(tmp.ptr());
+	setObjectName(tmp.ptr());
 }
 
 void KviMdiChild::unsetClient()
