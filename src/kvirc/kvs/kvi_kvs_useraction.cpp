@@ -248,10 +248,7 @@ bool KviKvsUserAction::load(KviConfig * cfg)
 	QString szCode = cfg->readQStringEntry("Code");
 	if(szCode.isEmpty())return false;
 
-	if(m_pScript)delete m_pScript;
-	QString tmp = KVI_KVS_ACTION_SCRIPT_NAME_PREFIX;
-	tmp += m_szName;
-	m_pScript = new KviKvsScript(tmp,szCode);
+	m_szScript = QString(szCode);
 
 	return true;
 }
@@ -269,5 +266,5 @@ void KviKvsUserAction::save(KviConfig * cfg)
 	if(!m_szCategory.isEmpty())cfg->writeEntry("Category",m_szCategory);
 	if(!m_szKeySequence.isEmpty())cfg->writeEntry("KeySequence",m_szKeySequence);
 	if(m_uFlags != 0)cfg->writeEntry("Flags",m_uFlags);
-	cfg->writeEntry("Code",m_pScript->code());
+	cfg->writeEntry("Code",m_szScript);
 }

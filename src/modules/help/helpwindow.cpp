@@ -51,6 +51,7 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 {
 	if(!g_bIndexingDone)
 	{
+		g_bIndexingDone=TRUE;
 		QString szDoclist,szDict;
 
 		g_pApp->getLocalKvircDirectory(szDoclist,KviApp::Help,"help.doclist." KVI_SOURCES_DATE);
@@ -62,7 +63,6 @@ KviHelpWindow::KviHelpWindow(KviFrame * lpFrm,const char * name)
 			g_pDocIndex->makeIndex();
 			g_pDocIndex->writeDict();
 		}
-		g_bIndexingDone=TRUE;
 	}
 
 	g_pHelpWindowList->append(this);

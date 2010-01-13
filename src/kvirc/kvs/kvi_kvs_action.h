@@ -29,13 +29,11 @@
 
 class KviKvsScript;
 
-#define KVI_KVS_ACTION_SCRIPT_NAME_PREFIX "action::"
-
 class KVIRC_API KviKvsAction : public KviAction
 {
 	Q_OBJECT
 protected:
-	KviKvsScript * m_pScript;
+	QString m_szScript;
 public:
 	KviKvsAction(QObject * pParent,
 		const QString &szName,

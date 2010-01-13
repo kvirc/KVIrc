@@ -40,27 +40,22 @@ KviKvsAction::KviKvsAction(QObject * pParent,
 		const QString &szKeySequence)
 	: KviAction(pParent,szName,szVisibleName,szDescription,pCategory,szBigIcon,iSmallIconId,uFlags,szKeySequence)
 {
-	QString tmp = KVI_KVS_ACTION_SCRIPT_NAME_PREFIX;
-	tmp += szName;
-	m_pScript = new KviKvsScript(tmp,szScriptCode);
+	m_szScript = QString(szScriptCode);
 }
 
 
 KviKvsAction::~KviKvsAction()
 {
 	unregisterAccelerator();
-	delete m_pScript;
 }
 
 const QString & KviKvsAction::scriptCode()
 {
-	return m_pScript->code();
+	return m_szScript;
 }
 
 void KviKvsAction::activate()
 {
-	// at the moment it executes externally!
-	// FIXME!
 	if(!isEnabled())return; // no way
-	m_pScript->run(g_pActiveWindow); // FIXME: complain more in case of error ?
+	KviKvsScript::run(m_szScript,g_pActiveWindow);
 }
