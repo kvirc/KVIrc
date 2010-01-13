@@ -603,7 +603,7 @@ docking_done:
 KviMdiChild * KviFrame::dockWindow(KviWindow * wnd, bool bCascade, QRect * setGeom)
 {
 	if(wnd->mdiParent())return wnd->mdiParent();
-	KviMdiChild * lpC = new KviMdiChild(m_pMdi,"");
+        KviMdiChild * lpC = new KviMdiChild(m_pMdi,wnd->windowName().toUtf8().data());
 	lpC->setClient(wnd);
 	lpC->setGeometry(wnd->geometry());
 
