@@ -50,7 +50,7 @@ protected:
 	QWebView * m_pWebview;
 #endif
 	virtual bool eventFilter(QObject *o,QEvent *e);
-
+        KviKvsRunTimeContext *m_pContext;
 	// ok, it is clear that we're messing with the naming conventions for the
 	// object classes :D
 	// let's try to use this one:
@@ -107,7 +107,7 @@ protected:
 	bool setMinimumHeight(KviKvsObjectFunctionCall *c);
 	bool setMinimumWidth(KviKvsObjectFunctionCall *c);
 	bool setMouseTracking(KviKvsObjectFunctionCall *c);
-	bool setPaletteForeground(KviKvsObjectFunctionCall *c);
+        bool setForegroundColor(KviKvsObjectFunctionCall *c);
 	bool setStyleSheet(KviKvsObjectFunctionCall *c);
 	bool setToolTip(KviKvsObjectFunctionCall *);
 	bool setWindowIcon(KviKvsObjectFunctionCall *c);

@@ -30,6 +30,7 @@
 #include "kvi_debug.h"
 #include "kvi_locale.h"
 #include "kvi_iconmanager.h"
+#include <QIcon>
 
 const int item_flags[] = {
         Qt::NoItemFlags,
@@ -434,6 +435,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setPixmap)
 		KVSO_PARAMETER("pixmap",KVS_PT_VARIANT,0,vPixmap)
 	KVSO_PARAMETERS_END(c)
 	QPixmap *pix = 0;
+        if (vPixmap->isEmpty()) {m_pTreeWidgetItem->setIcon(uCol,QIcon());return true;}
 	if(vPixmap->isHObject())
 	{
 		vPixmap->asHObject(obHpixmap);

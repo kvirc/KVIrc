@@ -49,7 +49,7 @@
 #endif
 
 KviMdiChild::KviMdiChild(KviMdiManager * par, const char * name)
-: QMdiSubWindow()
+: QMdiSubWindow(par)
 {
 	setObjectName(name ? name : "mdi_child");
 

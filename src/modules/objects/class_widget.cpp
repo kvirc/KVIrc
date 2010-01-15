@@ -35,7 +35,7 @@
 #include "kvi_app.h"
 #include "kvi_frame.h"
 #include "kvi_statusbar.h"
-
+#include "class_painter.h"
 
 #include <QKeyEvent>
 #include <QDesktopWidget>
@@ -389,10 +389,11 @@ const Qt::WindowType widgettypes_cod[] = {
 		This function is called immediately after this widget has been moved.
 		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event. The default implementation does nothing.
-		!fn: $paintEvent()
+                !fn: $paintEvent(<painter:h_object>,<rect_x:integer>,<rect_y:integer>,<width:integer>,<height:integer>)
 		This event handler can be reimplemented to repaint all or part of the widget.
 		It's needed by the Painter class.
 		It's very useful for drawing flicker free animations or low level special graphic effects.
+                The frameworl will pass an
 		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event.
 		The default implementation does nothing.
@@ -679,7 +680,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_widget,"widget","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,addWidgetToWrappedLayout)
 
 	// colors and image
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,setPaletteForeground)
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,setForegroundColor)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,setBackgroundColor)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,setBackgroundImage)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_widget,backgroundColor)
@@ -726,9 +727,11 @@ emit aboutToDie();
 //	if (webview) delete webview;
 KVSO_END_CONSTRUCTOR(KviKvsObject_widget)
 
-bool KviKvsObject_widget::init(KviKvsRunTimeContext *,KviKvsVariantList *)
+bool KviKvsObject_widget::init(KviKvsRunTimeContext *c,KviKvsVariantList *)
 {
 	setObject(new KviKvsWidget(this,parentScriptWidget()));
+        m_pContext=c;
+
 	widget()->setObjectName(getName());
 	return true;
 }
@@ -765,9 +768,19 @@ bool KviKvsObject_widget::eventFilter(QObject *o,QEvent *e)
 			}
 			case QEvent::Paint:
 			{
-				QRect rect=((QPaintEvent *)e)->rect();
-				KviKvsVariantList params(new KviKvsVariant((kvs_int_t)rect.x()),new KviKvsVariant((kvs_int_t)rect.y()),new KviKvsVariant((kvs_int_t)rect.width()),new KviKvsVariant((kvs_int_t)rect.height()));
-				callFunction(this,"paintEvent",retv,&params);
+
+                                QRect rect=((QPaintEvent *)e)->rect();
+                                KviKvsObjectClass * pClass = KviKvsKernel::instance()->objectController()->lookupClass("painter");
+                                KviKvsVariantList params;
+                                KviKvsObject * pObject = pClass->allocateInstance(0,"internalpainter",m_pContext,&params);
+                                QPainter p(widget());
+                                ((KviKvsObject_painter *)pObject)->setInternalPainter(&p);
+                                p.setClipRect(rect);
+                                kvs_hobject_t hobj=pObject->handle();
+                                KviKvsVariantList params2(new KviKvsVariant(hobj),new KviKvsVariant((kvs_int_t)rect.x()),new KviKvsVariant((kvs_int_t)rect.y()),new KviKvsVariant((kvs_int_t)rect.width()),new KviKvsVariant((kvs_int_t)rect.height()));
+                                callFunction(this,"paintEvent",retv,&params2);
+                                pObject=KviKvsKernel::instance()->objectController()->lookupObject(hobj);
+                                if (pObject) pObject->dieNow();
 				break;
 			}
 
@@ -1195,7 +1208,7 @@ KVSO_CLASS_FUNCTION(widget,centerToScreen)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(widget,setPaletteForeground)
+KVSO_CLASS_FUNCTION(widget,setForegroundColor)
 {
 	CHECK_INTERNAL_POINTER(widget())
 	KviKvsVariant * pColArray;

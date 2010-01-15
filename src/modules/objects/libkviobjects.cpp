@@ -630,12 +630,12 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	@short:
 		Dump the kvirc widgets.
 	@syntax:
-		$objects.dump(<flag b>)
+                <array>$objects.dump(<flag b>)
 	@description:
 		This function returns the tree of the widgets of the kvirc, if the flag <b> is planned to 1,[br]
-		will return it on the currente window, if it' is planned to 0 instead it will return it as a string.[br]
+                will return it on the currente window, if it' is planned to 0 instead it will return it as an array.[br]
 		ES:
-		%A[]=$str.split("\|",$objects.dump(0))
+                %A[]=$objects.dump(0)
 		%i=0
 		while (%i != %A[]#)
 		{

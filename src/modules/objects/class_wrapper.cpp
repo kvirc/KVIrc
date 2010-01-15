@@ -137,9 +137,6 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 			szClass = s;
 			szName  = "";
 		}
-		debug ("szClass %s",szClass.toUtf8().data());
-		debug ("szName %s",szName.toUtf8().data());
-		debug ("s %s",s.toUtf8().data());
 
 		if(KviQString::equalCI(szClass,"WinId"))
 		{

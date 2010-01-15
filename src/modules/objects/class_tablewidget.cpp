@@ -525,7 +525,8 @@ bool KviKvsObject_tablewidget::paint(QPainter * p, const QStyleOptionViewItem & 
         bool ret=false;
         KviKvsVariant *retv=new KviKvsVariant(ret);
         callFunction(this,"paintCellEvent",retv,&parameters);
-        pObject->dieNow();
+        pObject=KviKvsKernel::instance()->objectController()->lookupObject(handle);
+        if (pObject) pObject->dieNow();
         p->restore();
         return retv->asBoolean();
 }
