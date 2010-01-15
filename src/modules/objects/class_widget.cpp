@@ -393,7 +393,7 @@ const Qt::WindowType widgettypes_cod[] = {
 		This event handler can be reimplemented to repaint all or part of the widget.
 		It's needed by the Painter class.
 		It's very useful for drawing flicker free animations or low level special graphic effects.
-                The frameworl will pass an
+                The framework will pass as parameter a [class]painter[/class]object. You don't need to begin/end/delete the painter.
 		If you call "[cmd]return[/cmd] $true" you will stop the internal processing
 		of this event.
 		The default implementation does nothing.
