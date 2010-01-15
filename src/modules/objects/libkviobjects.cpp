@@ -630,24 +630,26 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 	@short:
 		Dump the kvirc widgets.
 	@syntax:
-                <array>$objects.dump(<flag b>)
+		<array> $objects.dump(<print:boolean>)
 	@description:
-		This function returns the tree of the widgets of the kvirc, if the flag <b> is planned to 1,[br]
-                will return it on the currente window, if it' is planned to 0 instead it will return it as an array.[br]
-		ES:
-                %A[]=$objects.dump(0)
+		This function return an array containing a representation of the widgets tree in kvirc;[br]
+		If the <print> flag is enabled, the array will be printed in the current window, too.
+	@examples:
+		[example]
+		%A[]=$objects.dump(0)
 		%i=0
 		while (%i != %A[]#)
 		{
 			echo %A[%i]
 			%i++
 		}
+		[/example]
 */
 
 
 	bool bFlag;
 	KVSO_PARAMETERS_BEGIN(cmd)
-		KVSO_PARAMETER("flag on video",KVS_PT_BOOL,0,bFlag)
+		KVSO_PARAMETER("print on current window",KVS_PT_BOOL,0,bFlag)
 	KVSO_PARAMETERS_END(cmd)
 	if (bFlag) cmd->window()->output(80, "Objects dump:");
 		QWidgetList list = g_pApp->topLevelWidgets();
@@ -684,7 +686,6 @@ static bool objects_kvs_fnc_listObjects(KviKvsModuleFunctionCall * cmd)
 
 			dumpChildObjects(cmd->window(), list.at(i), spacing.ptr(), bFlag,n,idx);
 		}
-	//++it;
 	}
 
 	cmd->returnValue()->setArray(n);
