@@ -90,14 +90,7 @@
 		This signal is emitted by the default implementation of [classfnc]$clickEvent[/classfnc]().[br]
 */
 
-// we should remove these functions?
-/*
-	!fn:$setPopupDelay (<int delay>)
-		Sets the time delay between pressing the button and the appearance of the associated popup menu in milliseconds to delay.[br]
-		A good value is 100.
-		!fn:<integer> $pupupDelay()
-		Returns the time delay between pressing the button and the appearance of the associated popup menu in milliseconds.
-*/
+
 KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbutton,"toolbutton","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbutton,setImage)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbutton,setUsesBigPixmap)
@@ -114,10 +107,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_toolbutton,"toolbutton","widget")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbutton,setToggleButton)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbutton,toggle)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbutton,setOn)
-/*
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbutton,"setPopupDelay", functionsetPopupDelay)
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbutton,"popupDelay", functionpopupDelay)
-	*/
+
 
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbutton,setTextPosition)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_toolbutton,textPosition)

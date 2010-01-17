@@ -176,7 +176,7 @@ const char * const brushstyles_tbl[] = {
 		%aa->$show()[br]
 		!fn: $drawRect(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>)
 		Draws a rectangle with upper left corner at (x, y) and with width w and height h.
-                !fn: $drawRoundRect(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<xCor:integer>,<yCor:integer>)
+                !fn: $drawRoundRect(<start_angle:integer>,<angle_length:integer>,<width:unsigned integer>,<height:unsigned integer>,<xr:integer>,<y:integer>)
 		Draws a rectangle with rounded corners at (x, y), with width w and height h.[rb]
 		The xCor and yCor arguments specify how rounded the corners should be (range is 0->99).
 		!fn: $drawPie(<x:integer>,<y:integer>,<w:unsigned integer>,<h:unsigned integer>,<angle:integer>,<alen:integer>)

@@ -118,7 +118,6 @@ KVSO_END_CONSTRUCTOR(KviKvsObject_wrapper)
 bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantList *pParams)
 {
 	if( !pParams ) return false;
-
 	QWidget *pWidget = 0;
 	unsigned int i=0;
 	while(i!=pParams->count())
@@ -129,41 +128,47 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		pParams->at(i)->asString(s);
 		if (!s.isEmpty())
 		{
-		int idx = s.indexOf("::");
-		if( idx != -1 ) {
-			szClass = s.left(idx);
-			szName  = s.right(s.length() - idx - 2);
-		} else {
-			szClass = s;
-			szName  = "";
-		}
-
-		if(KviQString::equalCI(szClass,"WinId"))
-		{
-			if(pWidget)
-			{
-				pContext->warning(__tr2qs_ctx("The window identifier preceded by WinId must be the first object in the search path","objects"));
-				return false;
-			} else {
-				pWidget = g_pApp->findWindow(szName);
-			}
-		} 		else {
-		if(pWidget) {
-    pWidget = findWidgetToWrap(
-     !szClass.isEmpty() ? szClass.toUtf8().data() : "", !szName.isEmpty() ? szName.toUtf8().data() : "", pWidget
-    );
-   } else {
-    pWidget = findTopLevelWidgetToWrap(!szClass.isEmpty() ? szClass.toUtf8().data() : "", !szName.isEmpty() ? szName.toUtf8().data() : "");
-   }
-		}
-		if( !pWidget )
-		{
-			pContext->warning(__tr2qs_ctx("Failed to find one of the wrap path widgets ('%Q::%Q')","objects"),&szClass,&szName);
-			return false;
-		}
-	}
+                        int idx = s.indexOf("::");
+                        if( idx != -1 )
+                        {
+                            szClass = s.left(idx);
+                            szName  = s.right(s.length() - idx - 2);
+                        }
+                        else
+                        {
+                            szClass = s;
+                            szName  = "";
+                        }
+                        if(KviQString::equalCI(szClass,"WinId"))
+                        {
+                            if(pWidget)
+                            {
+                                pContext->warning(__tr2qs_ctx("The window identifier preceded by WinId must be the first object in the search path","objects"));
+                                return false;
+                            }
+                            else
+                            {
+                                pWidget = g_pApp->findWindow(szName);
+                            }
+                        }
+                        else
+                        {
+                            if(pWidget)
+                            {
+                                pWidget = findWidgetToWrap(!szClass.isEmpty() ? szClass.toUtf8().data() : "", !szName.isEmpty() ? szName.toUtf8().data() : "", pWidget);
+                            }
+                            else
+                            {
+                                pWidget = findTopLevelWidgetToWrap(!szClass.isEmpty() ? szClass.toUtf8().data() : "", !szName.isEmpty() ? szName.toUtf8().data() : "");
+                            }
+                        }
+                        if( !pWidget )
+                        {
+                            pContext->warning(__tr2qs_ctx("Failed to find one of the wrap path widgets ('%Q::%Q')","objects"),&szClass,&szName);
+                            return false;
+                        }
+                }
 		i++;
-
 	}
 	if( !pWidget )
 	{
@@ -171,7 +176,6 @@ bool KviKvsObject_wrapper::init(KviKvsRunTimeContext * pContext,KviKvsVariantLis
 		return false;
 	}
 	setObject(pWidget,false);
-
 	return true;
 }
 QWidget *KviKvsObject_wrapper::findTopLevelWidgetToWrap(const QString szClass, const QString szName)

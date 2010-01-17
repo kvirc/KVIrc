@@ -39,6 +39,10 @@
 #include "kvi_iconmanager.h"
 #include "kvi_window.h"
 #include "kvi_tal_popupmenu.h"
+#include "kvi_ircconnection.h"
+#include "kvi_ircconnectiontarget.h"
+#include "kvi_irccontext.h"
+#include "kvi_network.h"
 
 #ifdef COMPILE_ON_MAC
 	#include "kvi_app.h"  //Needed for g_pApp
@@ -216,8 +220,15 @@ void KviMdiChild::setClient(QWidget * w)
 
 	m_pClient = w;
 	setWidget(w);
+        QString tmp1;
+        if(w->inherits("KviWindow"))
+        {
+            KviIrcConnection * pConnection=((KviWindow*)w)->connection();
+            if (pConnection) tmp1.append(pConnection->target()->network()->name()+"_");
 
-	KviStr tmp(KviStr::Format,"mdi_child_%s",w->objectName().toUtf8().data());
+        }
+
+        KviStr tmp(KviStr::Format,"mdi_child_%s%s",tmp1.toUtf8().data(),w->objectName().toUtf8().data());
 	setObjectName(tmp.ptr());
 }
 
