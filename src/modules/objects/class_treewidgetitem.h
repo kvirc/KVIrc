@@ -55,9 +55,7 @@ protected:
 	bool isCheckable(KviKvsObjectFunctionCall *c);
 	bool setChecked(KviKvsObjectFunctionCall *c);
 	bool isChecked(KviKvsObjectFunctionCall *c);
-	bool firstChild(KviKvsObjectFunctionCall *c);
-	//bool nextSibling(KviKvsObjectFunctionCall *c);
-	bool setFlags(KviKvsObjectFunctionCall *c);
+        bool setFlags(KviKvsObjectFunctionCall *c);
 
 public:
 	static kvs_hobject_t itemToHandle(QTreeWidgetItem * it);
@@ -76,17 +74,5 @@ public:
 	KviKvsObject_treewidgetitem * masterObject(){ return m_pMasterObject; }
 };
 
-/*
-class KviKvsCheckTreeWidgetItem : public KviTalCheckListItem
-{
-public:
-	KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,QTreeWidget * par);
-	KviKvsCheckTreeWidgetItem(KviKvsObject_treewidgetitem * ob,QTreeWidgetItem * par);
-	virtual ~KviKvsCheckTreeWidgetItem();
-protected:
-	KviKvsObject_treewidgetitem * m_pMasterObject;
-public:
-	KviKvsObject_treewidgetitem * masterObject(){ return m_pMasterObject; }
-};
-*/
+
 #endif // _CLASS_TREEWIDGETITEM_H_

@@ -124,8 +124,18 @@ const char * const itemflags_tbl[] = {
                 Returns the check status of this item. [classfnc:listviewitem]$setCheckable[/classfnc]() must
 		have been previously called.
 
-                !fn: <listviewitem> $firstChild()
-                Returns the first child item of this listviewitem or $null if this item has no children.
+                !fn: $setFlag(<flag1:string>, <flag2:string>, ...)
+                Sets the flags for the item to the given flags. These determine whether the item can be selected or modified. This is often used to disable an item.
+                Supported flags are:
+                - noitemflag : no flag sets;
+                - selectable : item is selecatble;
+                - editable : item is editable;
+                - dragEnabled : item can dragged;
+                - dropEnabled : item can used as drop target;
+                - userCheckable : item is checkable;
+                - enabled :item is enabled;
+                - tristate : item is checkable with three separate states.
+
 
 */
 
@@ -138,7 +148,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidgetitem,"listviewitem","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setPixmap);
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setItemEditable);
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isItemEditable);
-
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setEnabled);
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isEnabled);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setOpen);
@@ -147,8 +156,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidgetitem,"listviewitem","object")
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isCheckable);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setChecked);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isChecked);
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,firstChild);
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setFlags);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setFlags);
 
 KVSO_END_REGISTERCLASS(KviKvsObject_treewidgetitem)
 
@@ -231,14 +239,6 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setText)
 	return true;
 }
 
-KVSO_CLASS_FUNCTION(treewidgetitem,firstChild)
-{
-	if(m_pTreeWidgetItem)
-		c->returnValue()->setHObject(itemToHandle((QTreeWidgetItem*)m_pTreeWidgetItem->child(0)));
-	else
-		c->returnValue()->setHObject((kvs_hobject_t)0);
-	return true;
-}
 
 KVSO_CLASS_FUNCTION(treewidgetitem,setItemEditable)
 {
