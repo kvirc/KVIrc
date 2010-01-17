@@ -92,14 +92,17 @@ const char * const itemflags_tbl[] = {
                 !fn: $setItemEditable(<bEnabled:boolean>)
                 If bEnabled is TRUE (1), this item can be in-place editable by the user; otherwise it cannot be editable in-place.
 
+                !fn: $isItemEditable()
+                Returns $true if this item is editable and $false otherwise.
+
 		!fn: $setEnabled(<bEnabled:boolean>)
-		Enables or disables the item
+                Enables or disables the item.
 
 		!fn: $isEnabled()
-		Returns $true if this item is enabled and $false otherwise
+                Returns $true if this item is enabled and $false otherwise.
 
 		!fn: $setOpen(<bOpen:boolean>)
-		Opens or closes the item to show its children items
+                Opens or closes the item to show its children items.
 
 		!fn: $isOpen()
 		Returns the open state of this item
@@ -137,12 +140,14 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidgetitem,"listviewitem","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,text)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setPixmap);
         KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setItemEditable);
-	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"setEnabled",function_setEnabled);
-	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"isEnabled",function_isEnabled);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isItemEditable);
+
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setEnabled);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isEnabled);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setOpen);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isOpen);
-	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"setCheckable",function_setCheckable);
-	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"isCheckable",function_isCheckable);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setCheckable);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isCheckable);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setChecked);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,isChecked);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,firstChild);
@@ -258,7 +263,16 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setItemEditable)
             m_pTreeWidgetItem->setFlags(bEnabled?m_pTreeWidgetItem->flags()|Qt::ItemIsEditable:m_pTreeWidgetItem->flags()&~Qt::ItemIsEditable);
 	return true;
 }
-
+KVSO_CLASS_FUNCTION(treewidgetitem,isItemEditable)
+{
+        if(!m_pTreeWidgetItem)
+        {
+                c->returnValue()->setBoolean(false);
+                return true;
+        }
+        c->returnValue()->setBoolean(m_pTreeWidgetItem->flags()&Qt::ItemIsEditable);
+        return true;
+}
 KVSO_CLASS_FUNCTION(treewidgetitem,setFlags)
 {
 	QStringList itemflags;
@@ -290,7 +304,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setFlags)
 
 	return true;
 }
-/*
+
 KVSO_CLASS_FUNCTION(treewidgetitem,setEnabled)
 {
 	bool bEnabled;
@@ -298,7 +312,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setEnabled)
 		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
 		KVSO_PARAMETERS_END(c)
 	if(m_pTreeWidgetItem)
-		m_pTreeWidgetItem->setEnabled(bEnabled);
+                m_pTreeWidgetItem->setFlags(bEnabled?m_pTreeWidgetItem->flags()|Qt::ItemIsEnabled:m_pTreeWidgetItem->flags()&~Qt::ItemIsEnabled);
 	return true;
 }
 
@@ -309,10 +323,10 @@ KVSO_CLASS_FUNCTION(treewidgetitem,isEnabled)
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	c->returnValue()->setBoolean(m_pTreeWidgetItem->isEnabled());
+        c->returnValue()->setBoolean(m_pTreeWidgetItem->flags()&Qt::ItemIsEnabled);
 	return true;
 }
-*/
+
 KVSO_CLASS_FUNCTION(treewidgetitem,setOpen)
 {
 	bool bEnabled;
@@ -363,40 +377,15 @@ KVSO_CLASS_FUNCTION(treewidgetitem,isChecked)
 	c->returnValue()->setBoolean(((QTreeWidgetItem *)m_pTreeWidgetItem)->checkState(0)==Qt::Checked?1:0);
 	return true;
 }
-/*
+
 KVSO_CLASS_FUNCTION(treewidgetitem,setCheckable)
 {
-	bool bCheckable;
+        bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("bCheckable",KVS_PT_BOOL,0,bCheckable)
+                KVSO_PARAMETER("bCheckable",KVS_PT_BOOL,0,bEnabled)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pTreeWidgetItem)return true;
-	if(bCheckable)
-	{
-		if(m_pTreeWidgetItem->rtti() == 1)return true; // a QCheckListItem already
-		QTreeWidgetItem * pParent = m_pTreeWidgetItem->parent();
-		QTreeWidget * pLV = (QTreeWidget *)m_pTreeWidgetItem->listView();
-		// swap the items, so we don't die now
-		QTreeWidgetItem * pThis = m_pTreeWidgetItem;
-		m_pTreeWidgetItem = 0;
-		delete pThis;
-		if(pParent)
-			m_pTreeWidgetItem = new KviKvsCheckTreeWidgetItem(this,pParent);
-		else
-			m_pTreeWidgetItem = new KviKvsCheckTreeWidgetItem(this,pLV);
-	} else {
-		if(m_pTreeWidgetItem->rtti() != 1)return true; // not a QCheckListItem yet
-		QTreeWidgetItem * pParent = m_pTreeWidgetItem->parent();
-		QTreeWidget * pLV = (QTreeWidget *)m_pTreeWidgetItem->listView();
-		// swap the items, so we don't die now
-		QTreeWidgetItem * pThis = m_pTreeWidgetItem;
-		m_pTreeWidgetItem = 0;
-		delete pThis;
-		if(pParent)
-			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,pParent);
-		else
-			m_pTreeWidgetItem = new KviKvsStandardTreeWidgetItem(this,pLV);
-	}
+        m_pTreeWidgetItem->setFlags(bEnabled?m_pTreeWidgetItem->flags()|Qt::ItemIsUserCheckable:m_pTreeWidgetItem->flags()&~Qt::ItemIsUserCheckable);
 	return true;
 }
 
@@ -407,10 +396,10 @@ KVSO_CLASS_FUNCTION(treewidgetitem,isCheckable)
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	c->returnValue()->setBoolean(m_pTreeWidgetItem->rtti() == 1);
+        c->returnValue()->setBoolean(m_pTreeWidgetItem->flags()&Qt::ItemIsUserCheckable);
 	return true;
 }
-*/
+
 KVSO_CLASS_FUNCTION(treewidgetitem,text)
 {
 	kvs_uint_t uCol;
