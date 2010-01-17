@@ -89,8 +89,8 @@ const char * const itemflags_tbl[] = {
 		Sets the pixmap in column column to pm, if pm is non-null and different from the current pixmap, and if column is non-negative.
 		Pixmap can be a Kvirc imageid, an image file or a [class]pixmap[/class] object.
 
-		!fn: $setRenameEnabled(<col:integer>,<bEnabled:boolean>)
-		If b is TRUE (1), this item can be in-place renamed in the column col by the user; otherwise it cannot be renamed in-place.
+                !fn: $setItemEditable(<bEnabled:boolean>)
+                If bEnabled is TRUE (1), this item can be in-place editable by the user; otherwise it cannot be editable in-place.
 
 		!fn: $setEnabled(<bEnabled:boolean>)
 		Enables or disables the item
@@ -136,7 +136,7 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidgetitem,"listviewitem","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setText)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,text)
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setPixmap);
-	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setRenameEnabled);
+        KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setItemEditable);
 	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"setEnabled",function_setEnabled);
 	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"isEnabled",function_isEnabled);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setOpen);
@@ -248,16 +248,14 @@ KVSO_CLASS_FUNCTION(treewidgetitem,nextSibling)
 	return true;
 }
 */
-KVSO_CLASS_FUNCTION(treewidgetitem,setRenameEnabled)
+KVSO_CLASS_FUNCTION(treewidgetitem,setItemEditable)
 {
-	kvs_uint_t uCol;
-	bool bEnabled;
+        bool bEnabled;
 	KVSO_PARAMETERS_BEGIN(c)
-		KVSO_PARAMETER("column",KVS_PT_UNSIGNEDINTEGER,0,uCol)
-		KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
-		KVSO_PARAMETERS_END(c)
+                KVSO_PARAMETER("bEnabled",KVS_PT_BOOL,0,bEnabled)
+        KVSO_PARAMETERS_END(c)
 	if(m_pTreeWidgetItem)
-		m_pTreeWidgetItem->setFlags(m_pTreeWidgetItem->flags()|Qt::ItemIsEditable);
+            m_pTreeWidgetItem->setFlags(bEnabled?m_pTreeWidgetItem->flags()|Qt::ItemIsEditable:m_pTreeWidgetItem->flags()&~Qt::ItemIsEditable);
 	return true;
 }
 
