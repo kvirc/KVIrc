@@ -1115,7 +1115,7 @@ static bool str_kvs_fnc_replacenocase(KviKvsModuleFunctionCall * c)
 
 static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 {
-	QString szString,szNewString;
+	QString szString;
 	unsigned int idx=0;
 	KVSM_PARAMETERS_BEGIN(c)
 		KVSM_PARAMETER("string",KVS_PT_STRING,0,szString)
@@ -1125,23 +1125,23 @@ static bool str_kvs_fnc_urlencode(KviKvsModuleFunctionCall * c)
 		" ", "#", "$", "/", ":",
 		"<", "=", ">", "?", "@",
 		"[", "\\", "]", "^", "`",
-		"{", "|", "}"
+		"{", "|", "}", 0
 	};
 
 	const char * const newStr[]={
 		"%20", "%23", "%24", "%2F", "%3A",
 		"%3C", "%3D", "%3E", "%3F", "%40",
 		"%5B", "%5C", "%5D", "%5E", "%60",
-		"%7B", "%7C", "%7D"
+		"%7B", "%7C", "%7D", 0
 	};
 
-	while(idx < sizeof(toReplace))
+	while(toReplace[idx])
 	{
-		szNewString=szString.replace(toReplace[idx],newStr[idx],Qt::CaseInsensitive);
+		szString.replace(toReplace[idx],newStr[idx],Qt::CaseInsensitive);
 		idx++;
 	}
 
-	c->returnValue()->setString(szNewString);
+	c->returnValue()->setString(szString);
 	return true;
 }
 
