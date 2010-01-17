@@ -59,25 +59,25 @@ const char * const itemflags_tbl[] = {
 
 
 /*
-	@doc: treewidgetitem
+        @doc: listviewitem
 	@keyterms:
-		treewidget treewidgetitem class
+                listview tlistviewitem class
 	@title:
-		treewidgetitem class
+                listviewtitem class
 	@type:
 		class
 	@short:
-		A treewidgetitem class
+                A listviewitem class
 	@inherits:
-		[class]treewidgetitem[/class]
+                [class]listviewitem[/class]
 	@description:
-		The treewidgetitem class implements a list view item.
-		A list view item is a multi-column object capable of displaying itself in a [class]treewidget[/class].
-		To use this class you must instantiate it with another treewidgetitem or a [class]treewidget[/class]
+                The listviewitem class implements a list view item.
+                A list view item is a multi-column object capable of displaying itself in a [class]listview[/class].
+                To use this class you must instantiate it with another listviewitem or a [class]listview[/class]
 		as parent. The item will be automatically displayed.
 		You can set the text and a pixmap in each column and you can make it checkable
 		with [classfnc:treewidgetitem]$setCheckable[/classfnc]().
-		A checkable treewidgetitem will display a small check mark in the first column.
+                A checkable listviewitem will display a small check mark in the first column.
 	@functions:
 		!fn: $setText(<column:integer>,<text:string>)
 		Sets the text in column column to text, if column is a valid column number and text is different from the existing text.
@@ -117,19 +117,16 @@ const char * const itemflags_tbl[] = {
 		Returns $true if this item is checkable and $false otherwise
 
 		!fn: $setChecked(<bChecked:boolean>)
-		Sets this item to be checked or not. [classfnc:treewidgetitem]$setCheckable[/classfnc]() must
+                Sets this item to be checked or not. [classfnc:listviewitem]$setCheckable[/classfnc]() must
 		have been previously called.
 
 		!fn: $isChecked()
-		Returns the check status of this item. [classfnc:treewidgetitem]$setCheckable[/classfnc]() must
+                Returns the check status of this item. [classfnc:listviewitem]$setCheckable[/classfnc]() must
 		have been previously called.
 
-		!fn: <treewidgetitem> $firstChild()
-		Returns the first child item of this treewidgetitem or $null if this item has no children.
+                !fn: <listviewitem> $firstChild()
+                Returns the first child item of this listviewitem or $null if this item has no children.
 
-		!fn: <treewidgetitem> $nextSibling()
-		Returns the next sibling item of this treewidgetitem or $null if there are no sibling items.
-		Next sibling stands for the item at the same tree level coming just after :)
 */
 
 
@@ -153,7 +150,6 @@ KVSO_BEGIN_REGISTERCLASS(KviKvsObject_treewidgetitem,"listviewitem","object")
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,firstChild);
 	KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,setFlags);
 
-	//KVSO_REGISTER_HANDLER_BY_NAME(KviKvsObject_treewidgetitem,"nextSibling",function_nextSibling);
 KVSO_END_REGISTERCLASS(KviKvsObject_treewidgetitem)
 
 
@@ -243,16 +239,7 @@ KVSO_CLASS_FUNCTION(treewidgetitem,firstChild)
 		c->returnValue()->setHObject((kvs_hobject_t)0);
 	return true;
 }
-/*
-KVSO_CLASS_FUNCTION(treewidgetitem,nextSibling)
-{
-	if(m_pTreeWidgetItem)
-		c->returnValue()->setHObject(itemToHandle(m_pTreeWidgetItem->nextSibling()));
-	else
-		c->returnValue()->setHObject((kvs_hobject_t)0);
-	return true;
-}
-*/
+
 KVSO_CLASS_FUNCTION(treewidgetitem,setItemEditable)
 {
         bool bEnabled;
@@ -356,7 +343,6 @@ KVSO_CLASS_FUNCTION(treewidgetitem,setChecked)
 		KVSO_PARAMETER("bChecked",KVS_PT_BOOL,0,bChecked)
 	KVSO_PARAMETERS_END(c)
 	if(!m_pTreeWidgetItem)return true;
-	//if(m_pTreeWidgetItem->rtti() != 1)return true; // not a QCheckListItem
 	((QTreeWidgetItem *)m_pTreeWidgetItem)->setCheckState(0,bChecked?Qt::Checked:Qt::Unchecked);
 	return true;
 }
@@ -368,12 +354,6 @@ KVSO_CLASS_FUNCTION(treewidgetitem,isChecked)
 		c->returnValue()->setBoolean(false);
 		return true;
 	}
-	/*if(m_pTreeWidgetItem->rtti() != 1)
-	{
-		c->returnValue()->setBoolean(false);
-		return true;
-	}
-	*/
 	c->returnValue()->setBoolean(((QTreeWidgetItem *)m_pTreeWidgetItem)->checkState(0)==Qt::Checked?1:0);
 	return true;
 }
