@@ -49,7 +49,6 @@
 	#include "kvi_thread.h"
 	#include "kvi_ircsocket.h"
 	#include "kvi_settings.h"
-	#include "kvi_themedlabel.h"
 	#include "kvi_ircconnection.h"
 
 	#include <QSplitter>

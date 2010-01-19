@@ -36,7 +36,6 @@
 #include "kvi_windowlist.h"
 #include "kvi_frame.h"
 #include "kvi_config.h"
-#include "kvi_themedlabel.h"
 #include "kvi_maskeditor.h"
 #include "kvi_mirccntrl.h"
 #include "kvi_settings.h"

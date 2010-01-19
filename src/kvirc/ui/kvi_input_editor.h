@@ -32,7 +32,7 @@
 * \brief Input editor
 *
 * \def KVI_INPUT_MAX_BUFFER_SIZE Default maximum buffer size
-* \def KVI_INPUT_BORDER Default border
+* \def KVI_INPUT_PADDING Default padding
 * \def KVI_INPUT_MARGIN Default margin
 * \def KVI_INPUT_BLINK_TIME Cursor blink time...just don't set it to a value less than 100 if you don't want to be lagged by your cursors :)
 * \def KVI_INPUT_DRAG_TIMEOUT Drag scroll speed...(smaller values = faster)
@@ -46,7 +46,6 @@
 #include "kvi_string.h"
 #include "kvi_window.h"
 
-#include <QFrame>
 #include <QString>
 #include <QWidget>
 
@@ -56,7 +55,8 @@ class KviUserListView;
 class KviTalPopupMenu;
 
 #define KVI_INPUT_MAX_BUFFER_SIZE 400
-#define KVI_INPUT_BORDER 1
+#define KVI_INPUT_XTRAPADDING 1
+#define KVI_INPUT_PADDING 2
 #define KVI_INPUT_MARGIN 2
 #define KVI_INPUT_BLINK_TIME 800
 #define KVI_INPUT_DRAG_TIMEOUT 80
@@ -71,7 +71,7 @@ class KviTalPopupMenu;
 * \class KviInputEditor
 * \brief Input editor class
 */
-class KVIRC_API KviInputEditor : public QFrame
+class KVIRC_API KviInputEditor : public QWidget
 {
 	//Q_PROPERTY( int KviProperty_FocusOwner READ heightHint )
 	Q_PROPERTY( int TransparencyCapable READ heightHint )
@@ -226,7 +226,7 @@ public:
 	* \brief Returns true if the input line is in read only state
 	* \return bool
 	*/
-	bool readOnly() { return m_bReadOnly; };
+	bool isReadOnly() const { return m_bReadOnly; };
 private:
 	/**
 	* \brief Replaces the word before the cursor
@@ -282,7 +282,7 @@ private:
 	* \param bSelected Whether the text is selected
 	* \return void
 	*/
-	void drawTextBlock(QPainter * pa, QFontMetrics *fm, int iCurXPos, int iTextBaseline, int iIdx, int iLen, bool bSelected = false);
+	void drawTextBlock(QPainter * pa, int iTop, int iBottom, int iCurXPos, int iTextBaseline, int iIdx, int iLen, bool bSelected = false);
 
 	/**
 	* \brief Gets the substitute character for control codes
@@ -319,20 +319,10 @@ private:
 
 	/**
 	* \brief Returns the current position from a given character
-	* \param fm The font metrics
 	* \param iChIdx Th index of the character
-	* \param bContentsCoords Whether to use the frame width in addiction to the margin
 	* \return int
 	*/
-	int xPositionFromCharIndex(QFontMetrics *fm, int iChIdx, bool bContentsCoords = false);
-
-	/**
-	* \brief Returns the current position from a given character
-	* \param iChIdx Th index of the character
-	* \param bContentsCoords Whether to use the frame width in addiction to the margin
-	* \return int
-	*/
-	int xPositionFromCharIndex(int iChIdx, bool bContentsCoords = false);
+	int xPositionFromCharIndex(int iChIdx);
 
 	/**
 	* \brief Kills the drag timer

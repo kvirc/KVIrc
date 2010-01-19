@@ -38,6 +38,7 @@ class QComboBox;
 class KviChannel;
 class KviTalPopupMenu;
 class KviIrcConnection;
+class KviThemedLabel;
 
 class KVIRC_API KviTopicListBoxItemDelegate : public KviTalIconAndRichTextItemDelegate
 {
@@ -59,7 +60,7 @@ public:
 	virtual int width(const KviTalListWidget * pList) const;
 };
 
-class KVIRC_API KviTopicWidget : public QFrame
+class KVIRC_API KviTopicWidget : public QWidget
 {
 	Q_OBJECT
 	Q_PROPERTY(int TransparencyCapable READ dummyRead)
@@ -77,26 +78,21 @@ private:
 	QPushButton           * m_pHistory;
 	KviTalPopupMenu       * m_pContextPopup;
 	QAbstractItemDelegate * m_pItemDelegate;
+	KviThemedLabel        * m_pLabel;
 	KviInputEditor        * m_pInput;
 	KviTalListWidget      * m_pCompletionBox;
 protected:
 	int m_iCursorPosition;
 private:
 	QChar getSubstituteChar(unsigned short uControlCode);
-	int xCursorPostionCalculation(int iXInd);
 protected:
 	void updateToolTip();
 	void deactivate();
 	void iconButtonClicked();
 	virtual bool eventFilter(QObject * o ,QEvent * e);
-	bool handleKeyPressEvent(QKeyEvent * e);
-
-	virtual void drawContents(QPainter * p);
-	virtual void mouseDoubleClickEvent(QMouseEvent * e);
 	virtual void mousePressEvent(QMouseEvent * e);
 	virtual void keyPressEvent(QKeyEvent * e);
 	virtual void resizeEvent(QResizeEvent * e);
-	virtual void paintEvent(QPaintEvent * e);
 public:
 	void insertChar(QChar c);
 	void insertText(const QString & szText);
@@ -122,6 +118,7 @@ protected slots:
 	void copy();
 	void complete();
 	void popDownListBox();
+	void switchMode();
 signals:
 	void topicSelected(const QString & szTopic);
 };

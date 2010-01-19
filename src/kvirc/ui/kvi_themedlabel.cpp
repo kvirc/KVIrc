@@ -35,47 +35,36 @@
 #endif
 
 KviThemedLabel::KviThemedLabel(QWidget * par,const char * name)
-: QFrame(par)
+: QLabel(par)
 {
 	setObjectName(name);
 	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
+	setContentsMargins(2,2,2,2);
+	setAutoFillBackground(false);
+
+	QPalette pal = palette();
+	pal.setBrush(QPalette::Active, QPalette::Base, Qt::transparent);
+	pal.setBrush(QPalette::Inactive, QPalette::Base, Qt::transparent);
+	pal.setBrush(QPalette::Disabled, QPalette::Base, Qt::transparent);
+	setPalette(pal);
+
 	applyOptions();
-	m_bAutoHeight=0;
 }
 
 KviThemedLabel::~KviThemedLabel()
 {
 }
 
-void KviThemedLabel::setText(const char * text)
-{
-	m_szText = QString(text);
-	if(m_bAutoHeight)
-	{
-		int iHeight=fontMetrics().height()*m_szText.split('\n',QString::SkipEmptyParts).count()+4;
-		setMinimumHeight(iHeight);
-	}
-	update();
-}
-
-void KviThemedLabel::setText(const QString& text)
-{
-	m_szText = text;
-	if(m_bAutoHeight)
-	{
-		int iHeight=fontMetrics().height()*m_szText.split('\n',QString::SkipEmptyParts).count()+4;
-		setMinimumHeight(iHeight);
-	}
-	update();
-}
-
 void KviThemedLabel::applyOptions()
 {
+	QPalette pal = palette();
+	pal.setBrush(QLabel::foregroundRole(),KVI_OPTION_COLOR(KviOption_colorLabelForeground));
+	setPalette(pal);
+
 	setFont(KVI_OPTION_FONT(KviOption_fontLabel));
-	update();
 }
 
-void KviThemedLabel::paintEvent(QPaintEvent *)
+void KviThemedLabel::paintEvent(QPaintEvent *e)
 {
 	QPainter p(this);
 #ifdef COMPILE_PSEUDO_TRANSPARENCY
@@ -105,12 +94,7 @@ void KviThemedLabel::paintEvent(QPaintEvent *)
 	}
 #endif
 
-	QRect r = contentsRect();
-	r.setLeft(r.left() + 2); // some margin
-
-	p.setPen(KVI_OPTION_COLOR(KviOption_colorLabelForeground));
-
-	p.drawText(r,Qt::AlignLeft | Qt::AlignVCenter,m_szText);
+	QLabel::paintEvent(e);
 }
 
 void KviThemedLabel::mouseDoubleClickEvent(QMouseEvent *)

@@ -44,6 +44,7 @@
 #include "kvi_mirccntrl.h"
 #include "kvi_tal_tooltip.h"
 #include "kvi_tal_popupmenu.h"
+#include "kvi_themedlabel.h"
 
 #include <QLineEdit>
 #include <QPainter>
@@ -107,18 +108,22 @@ int KviTopicListBoxItem::width ( const KviTalListWidget * lb ) const
 
 
 KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
-: QFrame(par)
+: QWidget(par)
 {
 	setObjectName(name);
-	setFrameStyle(QFrame::Sunken | QFrame::StyledPanel);
 	m_pHistory = 0;
 	m_pAccept = 0;
 	m_pDiscard = 0;
 	m_pContextPopup = 0;
 	m_iCursorPosition = 0;
 	m_pInput = 0;
+	m_pLabel = 0;
 	setAutoFillBackground(false);
 	reset();
+
+	m_pLabel = new KviThemedLabel(this, "topic_label");
+	connect(m_pLabel,SIGNAL(doubleClicked()),this,SLOT(switchMode()));
+	
 	m_pCompletionBox=new KviTalListWidget(this,"topic_completion_box",Qt::Popup);
 	m_pCompletionBox->setFont( font() );
 	m_pCompletionBox->setPalette( palette() );
@@ -132,6 +137,7 @@ KviTopicWidget::KviTopicWidget(QWidget * par,const char * name)
 	connect(m_pCompletionBox,SIGNAL(itemSelectionChanged()),this,SLOT(complete()));
 	m_pCompletionBox->hide();
 
+	setContentsMargins(0,0,0,0);
 	applyOptions();
 }
 
@@ -153,14 +159,16 @@ void KviTopicWidget::reset()
 	KviTalToolTip::add(this,__tr2qs("No topic message has been received from the server yet"));
 	m_szSetAt = "";
 	m_szSetBy = "";
-	update();
 }
 
 void KviTopicWidget::applyOptions()
 {
 	//set the font
-	setFont(KVI_OPTION_FONT(KviOption_fontInput));
-	resizeEvent(0);
+	QFont newFont(KVI_OPTION_FONT(KviOption_fontInput));
+	newFont.setKerning(false);
+	setFont(newFont);
+	if(m_pLabel)
+		m_pLabel->setFont(newFont);
 }
 
 void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& cg,const QRect & rect)
@@ -298,50 +306,11 @@ void KviTopicWidget::paintColoredText(QPainter *p, QString text,const QPalette& 
 	}
 }
 
-void KviTopicWidget::paintEvent(QPaintEvent *)
-{
-	QPainter pa(this);
-	if(m_pInput == 0)
-		drawContents(&pa);
-}
-
-void KviTopicWidget::drawContents(QPainter *p)
-{
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	if(KVI_OPTION_BOOL(KviOption_boolUseCompositingForTransparency) && g_pApp->supportsCompositing())
-	{
-		p->save();
-		p->setCompositionMode(QPainter::CompositionMode_Source);
-		QColor col=KVI_OPTION_COLOR(KviOption_colorGlobalTransparencyFade);
-		col.setAlphaF((float)((float)KVI_OPTION_UINT(KviOption_uintGlobalTransparencyChildFadeFactor) / (float)100));
-		p->fillRect(rect(), col);
-		p->restore();
-	} else if(g_pShadedChildGlobalDesktopBackground)
-	{
-		QPoint pnt = mapToGlobal(contentsRect().topLeft());
-		p->drawTiledPixmap(contentsRect(),*g_pShadedChildGlobalDesktopBackground,pnt);
-	} else {
-#endif
-		if(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap())
-		{
-			p->drawTiledPixmap(contentsRect(),*(KVI_OPTION_PIXMAP(KviOption_pixmapLabelBackground).pixmap()));
-		} else {
-			p->fillRect(contentsRect(),KVI_OPTION_COLOR(KviOption_colorLabelBackground));
-		}
-#ifdef COMPILE_PSEUDO_TRANSPARENCY
-	}
-#endif
-	QPalette colorGroup;
-	colorGroup.setColor(QPalette::Text,KVI_OPTION_COLOR(KviOption_colorLabelForeground));
-	colorGroup.setColor(QPalette::Background,KVI_OPTION_COLOR(KviOption_colorLabelBackground));
-	//this ensures the painter won't cover the frame margins with text
-	p->setClipRect(contentsRect());
-	paintColoredText(p,m_szTopic,colorGroup,contentsRect());
-}
-
 void KviTopicWidget::setTopic(const QString & topic)
 {
 	m_szTopic = topic;
+	m_pLabel->setText(KviHtmlGenerator::convertToHtml(m_szTopic));
+	
 	bool bFound = false;
 	for(QStringList::Iterator it=g_pRecentTopicList->begin();it != g_pRecentTopicList->end(); ++it)
 	{
@@ -360,7 +329,6 @@ void KviTopicWidget::setTopic(const QString & topic)
 		g_pRecentTopicList->append(m_szTopic);
 	}
 	updateToolTip();
-	update();
 }
 
 void KviTopicWidget::setTopicSetBy(const QString & setBy)
@@ -439,13 +407,22 @@ void KviTopicWidget::updateToolTip()
 QSize KviTopicWidget::sizeHint() const
 {
 	QFontMetrics fm(font());
-	int hght = fm.lineSpacing() + (frameWidth() << 1) + 4;
-	int baseline = ((hght + fm.ascent() - fm.descent() + 1) >> 1);
-	if(baseline < 16)hght += (16 - baseline);
-	return QSize(width(),hght);
+	int h = qMax(fm.height(), 14) + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
+	int w = fm.width(QLatin1Char('x')) * 17 + 2*(KVI_INPUT_MARGIN + KVI_INPUT_PADDING + KVI_INPUT_XTRAPADDING);
+	QStyleOptionFrameV2 option;
+	option.initFrom(this);
+	option.rect = rect();
+	option.lineWidth = style()->pixelMetric(QStyle::PM_DefaultFrameWidth, &option, this);
+	option.midLineWidth = 0;
+
+	option.state |= QStyle::State_Sunken;
+	option.features = QStyleOptionFrameV2::None;
+
+	return (style()->sizeFromContents(QStyle::CT_LineEdit, &option, QSize(w, h).
+		expandedTo(QApplication::globalStrut()), this));
 }
 
-void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
+void KviTopicWidget::switchMode()
 {
 	int maxlen=-1;
 	QObject * w = parent();
@@ -463,7 +440,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 				}
 			break;
 		}
-	w = w->parent();
+		w = w->parent();
 	}
 	if(m_pInput == 0)
 	{
@@ -471,7 +448,7 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		m_pInput->setObjectName("topicw_inputeditor");
 		m_pInput->setReadOnly(!bCanEdit);
 		m_pInput->setMaxBufferSize(maxlen);
-		m_pInput->setGeometry(2,2,width() - (height() << 2)+height(),height());
+		m_pInput->setGeometry(0,0,width() - (height() << 2)+height(),height());
 		m_pInput->setText(m_szTopic);
 		connect(m_pInput,SIGNAL(enterPressed()),this,SLOT(acceptClicked()));
 		connect(m_pInput,SIGNAL(escapePressed()),this,SLOT(discardClicked()));
@@ -505,6 +482,10 @@ void KviTopicWidget::mouseDoubleClickEvent(QMouseEvent *)
 		m_pInput->home();
 		m_pInput->show();
 		m_pInput->setFocus();
+
+		m_pLabel->hide();
+	} else {
+		deactivate();
 	}
 }
 
@@ -584,32 +565,25 @@ bool KviTopicWidget::eventFilter(QObject *object,QEvent *e)
 			break;
 		}
 	}
-	return QFrame::eventFilter(object,e);
-}
-
-bool KviTopicWidget::handleKeyPressEvent(QKeyEvent *)
-{
-	return 1;
+	return QWidget::eventFilter(object,e);
 }
 
 void KviTopicWidget::keyPressEvent(QKeyEvent * e)
 {
-	if(handleKeyPressEvent(e))
-	{
-		e->accept();
-		return;
-	}
+	e->accept();
+	return;
 }
 
-void KviTopicWidget::resizeEvent(QResizeEvent *e)
+void KviTopicWidget::resizeEvent(QResizeEvent *)
 {
-	if(e)QFrame::resizeEvent(e);
 	if(m_pInput)
 	{
 		m_pInput->setGeometry(0,0,width() - (height() << 2)+height(),height());
 		m_pHistory->setGeometry(width() - (height() << 2)+height(),0,height(),height());
 		m_pAccept->setGeometry(width() - (height() << 1),0,height(),height());
 		m_pDiscard->setGeometry(width() - height(),0,height(),height());
+	} else {
+		m_pLabel->setGeometry(3,3,width()-6,height()-6);
 	}
 }
 
@@ -628,6 +602,8 @@ void KviTopicWidget::deactivate()
 		m_pDiscard = 0;
 	}
 
+	m_pLabel->show();
+	resizeEvent(0);
 	// try to find a KviWindow parent and give it the focus
 
 	QObject * w = parent();
@@ -676,7 +652,7 @@ void KviTopicWidget::historyClicked()
 
 void KviTopicWidget::acceptClicked()
 {
-	if(!m_pInput->readOnly())
+	if(!m_pInput->isReadOnly())
 	{
 		QString tmp = m_pInput->text();
 		if(tmp != m_szTopic)emit topicSelected(tmp);
@@ -695,10 +671,6 @@ void KviTopicWidget::insertText(const QString &c)
 		m_pInput->insertText(c);
 }
 
-int KviTopicWidget::xCursorPostionCalculation(int)
-{
-	return 0;
-}
 void KviTopicWidget::complete()
 {
 	if(m_pCompletionBox->selectedItems().count() >0)

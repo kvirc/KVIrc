@@ -1653,7 +1653,7 @@ void KviServerParser::parseUserMode(KviIrcMessage *msg,const char * modeflptr)
 
 void KviServerParser::parseLiteralMode(KviIrcMessage *msg)
 {
-	// NICK
+	// MODE
 	// :source MODE target <params>
 	//    :source MODE <me> +|-modeflag
 	//    :source MODE <channel> +-modeflags [parameters]
