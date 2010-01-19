@@ -904,7 +904,7 @@ void KviInputEditor::removeSelected()
 	if(!hasSelection()) return;
 
 	addCommand(Command(SetSelection, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd));
-	addCommand (Command(DeleteSelection, m_iCursorPosition, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin), -1, -1));
+	addCommand(Command(DeleteSelection, m_iCursorPosition, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin+1), -1, -1));
 
 	m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
 	moveCursorTo(m_iSelectionBegin,false);
@@ -920,7 +920,7 @@ void KviInputEditor::cut()
 	pClip->setText(m_szTextBuffer.mid(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1),QClipboard::Clipboard);
 
 	addCommand(Command(SetSelection, m_iCursorPosition, 0, m_iSelectionBegin, m_iSelectionEnd));
-	addCommand (Command(DeleteSelection, m_iCursorPosition, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin), -1, -1));
+	addCommand (Command(DeleteSelection, m_iCursorPosition, m_szTextBuffer.mid(m_iSelectionBegin, m_iSelectionEnd-m_iSelectionBegin+1), -1, -1));
 
 	m_szTextBuffer.remove(m_iSelectionBegin,(m_iSelectionEnd-m_iSelectionBegin)+1);
 	moveCursorTo(m_iSelectionBegin,false);
