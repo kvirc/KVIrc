@@ -40,7 +40,8 @@ KviThemedLineEdit::KviThemedLineEdit(QWidget * par,const char * name)
 {
 	setObjectName(name);
 	setAutoFillBackground(false);
-
+	setContentsMargins(2,2,2,2);
+	
 	QPalette pal = palette();
 	pal.setBrush(QPalette::Active, QPalette::Base, Qt::transparent);
 	pal.setBrush(QPalette::Inactive, QPalette::Base, Qt::transparent);
