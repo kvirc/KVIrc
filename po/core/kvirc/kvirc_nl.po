@@ -1,15 +1,16 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 #
-# valenstijn <valenstyn@gmail.com>, 2009.
+# valenstijn <valenstyn@gmail.com>, 2009, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-01-07 21:10+0100\n"
-"PO-Revision-Date: 2009-09-13 22:15+0200\n"
+"PO-Revision-Date: 2010-01-20 00:11+0100\n"
+"First-Translator: Balboy"
 "Last-Translator: valenstijn <valenstyn@gmail.com>\n"
-"Language-Team: Dutch <kvirc-subscribe@lists.omnikron.net>\n"
+"Language-Team: Nederlands <kvirc-subscribe@lists.omnikron.net>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -112,24 +113,20 @@ msgid "### Log session terminated at %1 ###"
 msgstr "### Log sessie beëindigd op %1 ###"
 
 #: src/kvilib/core/kvi_qstring.cpp:250
-#, fuzzy
 msgid "%1 GiB"
-msgstr "%1 GB"
+msgstr "%1 GiB"
 
 #: src/kvilib/core/kvi_qstring.cpp:237
-#, fuzzy
 msgid "%1 KiB"
-msgstr "%1 KB"
+msgstr "%1 KiB"
 
 #: src/kvilib/core/kvi_qstring.cpp:243
-#, fuzzy
 msgid "%1 MiB"
-msgstr "%1 MB"
+msgstr "%1 MiB"
 
 #: src/kvilib/core/kvi_qstring.cpp:255
-#, fuzzy
 msgid "%1 TiB"
-msgstr "%1 TB"
+msgstr "%1 TiB"
 
 #: src/kvilib/core/kvi_qstring.cpp:231
 msgid "%1 bytes"
@@ -1098,10 +1095,12 @@ msgid "Add Bookmark"
 msgstr "Bladwijzer toevoegen"
 
 #: src/kvirc/sparser/kvi_sp_ctcp.cpp:1540
+#, fuzzy
 msgid "Added %d sec file offer for file %Q (%Q) to recipient %Q"
 msgstr ""
 
 #: src/modules/avatar/libkviavatar.cpp:405
+#, fuzzy
 msgid "Added %d secs file offer for file %Q (%Q) and receiver %Q"
 msgstr ""
 
@@ -1591,6 +1590,7 @@ msgid "Can't send a zero-size file"
 msgstr "Kan geen 0 byte groot bestand sturen"
 
 #: src/modules/ident/libkviident.cpp:284
+#, fuzzy
 msgid ""
 "Can't set the IPv6 ident service protection level to unrestricted: the ident "
 "service won't be exposed to the internet"
@@ -2201,6 +2201,7 @@ msgid "Crypting"
 msgstr "Versleutelen"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:190
+#, fuzzy
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:258
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:390
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:407
@@ -2210,7 +2211,7 @@ msgid "Crypto++ threw the following exception: "
 msgstr ""
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:505
-#, fuzzy, c-format
+#, c-format
 msgid ""
 "Cryptographic engine based on the\n"
 "Advanced Encryption Standard (AES)\n"
@@ -2231,13 +2232,13 @@ msgstr ""
 "Cryptografische motor gebaseerd op het\n"
 "Advanced Encryption Standard (AES)\n"
 "algoritme genoemd Rijndael.\n"
-"De tekst is eerst versleuteld met rijndael\n"
+"De tekst is eerst versleuteld met Rijndael\n"
 "en dan omgezet naar %s aantekening.\n"
 "De gebruikte sleutels zijn %d bit lang en zullen aangevuld worden\n"
 "met nullen indien u te korte aanmaakt.\n"
 "Indien één enkele sleutel word aangemaakt, zal de codering\n"
 "deze gebruiken voor zowel versleutelen als ontsleutelen. \n"
-"Zie de rijndael module documentatie\n"
+"Zie de Rijndael module documentatie\n"
 "voor meer info over het gebruikte algoritme.\n"
 
 #: src/modules/rijndael/libkvirijndael.cpp:706
@@ -3697,6 +3698,7 @@ msgid "Link"
 msgstr "Koppeling"
 
 #: src/kvirc/kernel/kvi_options.cpp:714
+#, fuzzy
 msgid "Link overlay foreground"
 msgstr ""
 
@@ -4788,7 +4790,6 @@ msgstr ""
 "met \"cbc:\" laten voorafgaan.\n"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:587
-#, fuzzy
 msgid ""
 "Popular cryptographic engine based on the\n"
 "old Blowfish encryption algorithm.\n"
@@ -4809,13 +4810,13 @@ msgstr ""
 "oud Blowfish codering algoritme.\n"
 "De tekst wordt eerst gecodeerd met Blowfish \n"
 "en zet dan om naar base64 aantekening.\n"
-"De gebruikte sleutels hebben veranderlijke lengte en\n"
+"De gebruikte sleutels hebben een veranderlijke lengte en\n"
 "worden gespecificeerd als karakter reeksen.\n"
 "U kunt sleutels specificeren die tot 56 bytes (448 bits) lang zijn.\n"
 "Indien u enkel één sleutel opgeeft, zal deze gebruikt worden\n"
 "voor zowel coderen als decoderen.\n"
 "De versleuteling werkt standaard in ECB mode:\n"
-"als je CBC mode wenst te gebruiken moet je uw sleutels\n"
+"als je CBC mode wenst te gebruiken moet u uw sleutels\n"
 "met \"cbc:\" laten voorafgaan.\n"
 
 #: src/kvirc/ui/kvi_ircview.cpp:2179 src/kvirc/ui/kvi_ircview.cpp:2232
@@ -5512,6 +5513,7 @@ msgid "Set &None"
 msgstr "Niets instellen"
 
 #: src/kvirc/ui/kvi_window.cpp:766
+#, fuzzy
 msgid "Set Window Props as &default"
 msgstr ""
 
@@ -6679,7 +6681,7 @@ msgstr ""
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:252
 #, fuzzy
 msgid "Unable to determine input encoding (Hex or Base64)."
-msgstr "Kan het huidige vertaal algoritme niet vast te stellen"
+msgstr "Kan het huidige vertaal algoritme niet vast stellen"
 
 #: src/modules/rijndael/libkvirijndael_cryptopp.cpp:184
 #, fuzzy
@@ -6748,6 +6750,7 @@ msgid "Unable to start the DNS lookup"
 msgstr "Onmogelijk om het DNS opzoeking te beginnen"
 
 #: src/kvilib/net/kvi_http.cpp:246
+#, fuzzy
 msgid "Unable to start the request slave thread"
 msgstr ""
 
@@ -6927,6 +6930,7 @@ msgid "Unsupported key length"
 msgstr "Niet ondersteunde sleutel lengte"
 
 #: src/modules/str/libkvistr.cpp:1652
+#, fuzzy
 msgid "Unsupported message digest."
 msgstr ""
 
