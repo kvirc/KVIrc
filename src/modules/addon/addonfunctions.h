@@ -30,7 +30,7 @@
 #include <QWidget>
 #include <QPixmap>
 
-#define KVI_CURRENT_ADDONS_ENGINE_VERSION "1.0.0"
+#define KVI_CURRENT_ADDONS_ENGINE_VERSION "2.0.0"
 
 namespace KviAddonFunctions
 {
